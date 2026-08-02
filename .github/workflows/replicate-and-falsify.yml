@@ -1,0 +1,36 @@
+name: replicate-and-falsify
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  falsify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Golden anchors + independent audit
+        run: |
+          python -c "import json,pathlib; g=json.loads(pathlib.Path('golden/expected_anchors_v20.json').read_text()); light=(3*2+5*2*(2-6),3*16+5*16*(2-6),3*16+5*16*(8-216)); assert list(light)==g['anomalies']['light']"
+          python audit_v20_errors.py
+      - name: v20 engine
+        run: python so10_axion_v20_engine.py --output so10_axion_v20_verdict.json
+      - name: Unit tests
+        run: python -m unittest discover -v
+      - name: Adversarial falsification suite
+        run: python falsify_v20.py
+      - name: Upload falsification verdict
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: falsification-verdict
+          path: FALSIFICATION_VERDICT.json
