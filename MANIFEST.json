@@ -1,0 +1,31 @@
+{
+  "package": "SO(10)-Z17 axion programme reproducibility package",
+  "date": "2026-08-01",
+  "engines": [
+    "so10_axion_v5_engine.py",
+    "so10_axion_v6_engine.py",
+    "so10_axion_v7_engine.py",
+    "so10_axion_v8_engine.py",
+    "so10_axion_v9_engine.py",
+    "so10_axion_v10_engine.py",
+    "so10_axion_v11_engine.py",
+    "so10_axion_v12_engine.py",
+    "so10_axion_v13_engine.py",
+    "so10_axion_v2_reconstruction.py",
+    "so10_axion_v3_reconstruction.py",
+    "so10_axion_v4_labworks.py",
+    "falsification_engine_v1.py",
+    "axion_so10_theory_and_lab.py",
+    "axion_so10_verified_continuation.py"
+  ],
+  "verdicts_and_priors": [
+    "v10_falsification_verdict.json",
+    "v11_priors.json",
+    "proton_mc_priors_and_results.json",
+    "falsification_verdict.json"
+  ],
+  "seeds": {
+    "proton_MC": 20260801
+  },
+  "entry_point": "so10_axion_v13_engine.py"
+}

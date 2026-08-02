@@ -1,0 +1,96 @@
+{
+  "uv_completion": {
+    "Phi_charge": 17,
+    "anomalon_16_pair": [
+      1,
+      16
+    ],
+    "singlet_pairs": [
+      [
+        33,
+        -16
+      ],
+      [
+        31,
+        -48
+      ]
+    ],
+    "n_search_solutions": 29,
+    "decay_coupling": "16_A 16_F 10_H (renormalizable)",
+    "min_uv_pq_breaking": {
+      "dim": 21,
+      "a": -4,
+      "b": 17,
+      "h": 0
+    },
+    "C_UV_at_MGUT": 6.879715820381421e-11,
+    "scalar_delta_theta_bar_UV": 2.2262760394754283e-47
+  },
+  "two_loop": {
+    "K": 1.0000000000000202,
+    "K_err": 2.2426505097428162e-14,
+    "y_t": 0.5,
+    "m_f_GeV": 86.97413408594534,
+    "flavour_trace": 0.250054760169,
+    "envelope": 4.518432454533729e-28,
+    "delta_theta_bar_P12": 2.3653949560328363e-62,
+    "delta_theta_bar_total": 2.2262760394754283e-47
+  },
+  "falsification": {
+    "general_ansatz_k_min": 5,
+    "k_le_4_solutions": 0,
+    "k5_general_cubic_solutions": 83232,
+    "r_max_preinflationary": 1.3385414620385765e-17,
+    "band_GHz": [
+      36.62,
+      37.6
+    ],
+    "linewidth_kHz": 33.73636363636364,
+    "coverage": {
+      "ORGAN 15-50 GHz": true,
+      "MADMAX 40-400 ueV": true,
+      "ALPHA plasma 5-45 GHz": true
+    },
+    "matrix": [
+      [
+        "five-pair theorem",
+        "independent group-theory calculation",
+        "any anomaly-free spectator set with k<5 (excluded here for ALL charge assignments, not only identical pairs)"
+      ],
+      [
+        "P_min = 12 closure",
+        "independent enumeration through d=15",
+        "a genuine V=0, Q_PQ!=0 invariant with P<=11"
+      ],
+      [
+        "UV quality",
+        "integrate out the S11 anomalons explicitly",
+        "a threshold-generated PQ-breaking operator below dim 21 or coefficient exceeding (v_Phi/sqrt2 M_Pl)^4"
+      ],
+      [
+        "two-loop graph",
+        "full calculation, physical Yukawas",
+        "vanishing contraction or a substantially different K"
+      ],
+      [
+        "DM benchmark",
+        "haloscope scan 36.62-37.60 GHz below 2.34e-14 GeV^-1",
+        "a null result across the band"
+      ],
+      [
+        "pre-inflationary branch",
+        "primordial B modes",
+        "r > 1.3e-17"
+      ],
+      [
+        "GUT benchmark",
+        "Hyper-K",
+        "tau_p exclusion beyond the sampled prior subregion"
+      ]
+    ]
+  },
+  "failures": [
+    "intentional failure path (--force-fail)"
+  ],
+  "n_checks_failed": 1
+}

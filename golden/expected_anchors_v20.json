@@ -1,0 +1,41 @@
+{
+  "description": "Pristine numerical anchors. replicate.py / falsify_v20.py fail-closed if drifted without an explicit update.",
+  "version": "v20-2026-08-02",
+  "anomalies": {
+    "light": [-34, -272, -16592],
+    "heavy": [34, 272, 16592],
+    "total": [0, 0, 0]
+  },
+  "minimality": {
+    "one_pair_discriminant": -15,
+    "minimum_pairs": 3,
+    "canonical_charges": [[1, 16], [14, 3], [1, -18]]
+  },
+  "quality": {
+    "P_min_closure": 8,
+    "p8_worst_phase_unit_coeff": 6.043043168794402e-47,
+    "scalar_S17_with_hc": 6.47e-37,
+    "p12_nda_with_hc": 9.04e-28
+  },
+  "unification_one_loop": {
+    "M_I_GeV": 6.3139e11,
+    "M_GUT_GeV": 9.9176e15,
+    "alpha_inv_GUT": 37.313,
+    "relative_tol": 0.002
+  },
+  "running_soft_falsification": {
+    "inconsistent_reset_alpha_inv_vPhi": 40.0,
+    "require_continuous_differs_from_reset_by": 10.0
+  },
+  "axion_benchmark": {
+    "m_a_ueV": 153.5,
+    "nu_GHz": 37.11,
+    "scan_GHz": [36.6, 37.6],
+    "g_agamma_GeV_inv": 2.335e-14
+  },
+  "honest_scope": [
+    "anomaly-free candidate, not a dark-matter detection",
+    "unit-coefficient amplitudes are diagnostics, not predictions",
+    "haloscope mock scan is software-only"
+  ]
+}

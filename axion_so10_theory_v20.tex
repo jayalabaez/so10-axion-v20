@@ -1,0 +1,856 @@
+% Spin(10) axion v20 — decay-safe anomaly completion and exact threshold matching
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.4cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue,
+pdftitle={A Decay-Safe Gauged U(1) Origin of the Z17 Spin(10) Axion Model:
+Minimal Complete-Pair Anomalons and Two-Loop Audit v20},
+pdfauthor={Joel Ayala-Baez}]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\usepackage{placeins}
+
+\title{\bf A Decay-Safe Gauged $U(1)$ Origin of the $\mathbb{Z}_{17}$
+Spin(10) Axion Model\\ \large Minimal Complete-Pair Anomalons and Mass-Dependent
+Two-Loop Audit}
+\author{Joel Ayala-Baez\\
+\small Independent Researcher --- \texttt{jayalabaez@gmail.com}}
+\date{2 August 2026}
+
+\newcommand{\ueV}{\,\mu\mathrm{eV}}
+\newcommand{\GeV}{\,\mathrm{GeV}}
+\newcommand{\fa}{f_a}
+\newcommand{\ma}{m_a}
+\newcommand{\Zs}{\mathbb{Z}_{17}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\sloppy
+In the SO(10)$\times$U(1)$_{\rm PQ}$ axion model of Ernst, Ringwald and
+Tamarit, gauging $\Zs=U(1)_{\rm PQ}\bmod17$ requires anomaly-cancelling
+matter. For arbitrary vector-like $16\oplus\overline{16}$ spectator
+pairs massed by the PQ singlet $S$, the mixed anomaly alone forces
+$k\equiv5\pmod{17}$, independent of their individual charges. Within
+the identical-pair ansatz all discrete anomaly classes then select the
+unique charge residues $\{2,11\}\pmod{17}$. The minimal completion has
+five pairs, shifts the
+gluonic coefficient to $2N=-68$, and gives
+$N_{\rm DW}^{\rm cover}=17$, $\fa=v_S/17$, unit physical domain-wall
+number and $E/N=8/3$. The benchmark $v_S=M_I=6.31\times10^{11}\GeV$,
+$y_s=\sqrt2$ predicts $\ma=153.5\pm2.0\ueV$,
+$\nu=37.11\pm0.49$~GHz and
+$g_{a\gamma\gamma}=(2.335\pm0.125)\times10^{-14}\GeV^{-1}$.
+
+At the discrete-EFT level we distinguish a local
+PQ-breaking operator from a spurion set that can close into a vacuum
+amplitude. Although $\Zs$ permits fermionic operators of dimensions 6, 9,
+10 and 12, the renormalizable theory preserves an
+exact spectator vector number $V$. An intentionally over-complete
+enumeration of all monomials satisfying Lorentz parity, the Spin(10)
+centre and $\Zs$ excludes a PQ-sensitive, $V=0$ closure through
+$P=\sum_i(d_i-4)=11$. The bound is saturated at $P=12$ by four
+dimension-6 portals plus one PQ-conserving dimension-8 vector-breaking
+spurion. An explicit 32-dimensional Clifford-algebra and Grassmann audit
+finds nonzero Spin(10) and Lorentz contractions, verifies Fermi statistics,
+and identifies a connected two-loop graph. Wilsonian NDA gives
+$|\Delta\bar\theta|\lesssim9.04\times10^{-28}|C_{\rm eff}|$. The extra
+$\mathbb Z_3$ proposed in v15 is unnecessary and is removed.
+
+We then construct a decay-safe anomaly-free origin of the discrete
+symmetry. Gauge $U(1)_X$, break it with a PQ-neutral scalar $\Phi_{17}$,
+and add three complete pairs with charges
+$(1,16)$, $(14,3)$ and $(1,-18)$. They contribute
+$(+34,+272,+16592)$ to the mixed Spin(10), gravitational and cubic
+anomalies, exactly cancelling the light sector, while their accidental-PQ
+anomaly vanishes. Each pair has a renormalizable portal to ordinary
+$16_F$ matter through an already-present $10_H$ or $S$. Mixed-anomaly
+cancellation forces the number of single-$\Phi$-massed pairs to be odd;
+one pair would require roots of $t^2-17t+76$, whose discriminant is
+$-15$. Thus three is minimal in this complete-pair-only ansatz (with no
+Spin(10)-singlet anomalons), and exact
+enumeration finds the displayed triple uniquely in the stated
+existing-field portal basis.
+
+The decay portals change, rather than invalidate, the quality audit. A
+heavy-inclusive necessary-condition enumeration excludes a vacuum closure
+through $P=7$ and is saturated at $P=8$ by four dimension-five portals
+plus one dimension-eight spectator spurion. An explicit nonzero connected
+two-loop graph produces $\Phi^4(S^\dagger)^{18}(10_H^\dagger)^2$.
+Its repeated-pole integral retains all three masses and gives
+$2|A_8|/\chi=6.04\times10^{-47}|C_8|$ at
+$v_\Phi=10^{17}\GeV$. The direct dimension-21 scalar operator remains
+the largest explicitly computed unit-coefficient term,
+$2|A|/\chi=4.60\times10^{-43}$. A normalized decay portal as small as
+$3.1\times10^{-20}$ gives a lifetime below one second; every 16 component
+has a nonzero $10_H$ channel in the explicit Clifford representation.
+The construction is an anomaly-free field theory to the reduced Planck
+cutoff, not a string completion; flavour/Clebsch fits, hierarchy
+stabilization and the string network remain open. Three fail-closed
+engines perform 65, 59 and 42 checks; the release adds independent charge,
+decay and loop-quadrature tests.
+\end{abstract}
+
+\section{Model and conventions}
+Fields and PQ charges: $16_F$ ($+1$, three generations), $10_H$ ($-2$),
+$\overline{126}_H$ ($-2$), $210_H$ (0), $S$ ($+4$) \cite{ERT}; the axion
+is dominantly $\arg S$, phase-locked by
+$\overline{126}_H^2 10_H^2 S^2$. We gauge $\Zs := \mathrm{U(1)}_{\rm PQ}
+\bmod 17$. Spectators: $k$ identical $16_s\oplus\overline{16}_s$ pairs
+with $\Zs$ charges $(a,b)$, masses from $S\,16_s\overline{16}_s$, i.e.\
+thresholds $M_s = y_s v_S/\sqrt2$. Discrete-gauge protection of axions
+has a long history \cite{BGW,DPT,DiLuzio,BDM}; the specific result
+below concerns this particular $\Zs$ extension of the ERT model.
+
+\section{The theorem}
+\begin{theorem}[minimality and residue uniqueness, identical-pair ansatz]
+The $\Zs$ anomaly classes (mixed SO(10)$^2$, gravitational, cubic
+\cite{IR,Hsieh}) all vanish modulo 17 if and only if
+$k \equiv 5 \pmod{17}$ and $\{a,b\} \equiv \{2,11\} \pmod{17}$. The
+minimal solution therefore contains five pairs, and the charge
+\emph{residues} are unique up to interchange; $(2,-6)$ is one integer
+lift.
+\end{theorem}
+
+\begin{proof}
+The mass operator forces $a + b \equiv -4 \equiv 13$. The mixed class
+is $6 + 2k(a{+}b) \equiv 6 - 8k$; with $8^{-1} \equiv 15$, vanishing
+requires $k \equiv 90 \equiv 5$, i.e.\ $k = 5 + 17m$. The gravitational
+class $48 + 16k(a{+}b) \equiv 14 + 4k$ vanishes automatically on the
+same set. The cubic class uses
+$a^3 + b^3 = (a{+}b)^3 - 3ab(a{+}b) \equiv 4 - 5ab$, giving
+$48 + 80(a^3{+}b^3) \equiv 11 - 9ab \equiv 0$, i.e.\ $ab \equiv 5$. The
+residue pair is then the root set of $x^2 - 13x + 5 \equiv 0
+\pmod{17}$, whose only roots are $2$ and $11$; an exhaustive residue
+scan confirms uniqueness.
+\end{proof}
+
+The five-pair lower bound is stronger than the theorem's identical-pair
+wording. For arbitrary residues $(a_i,13-a_i)$, the mixed class is
+\begin{equation}
+ 6+2\sum_{i=1}^{k}\bigl[a_i+(13-a_i)\bigr]
+ \equiv 6+9k\pmod{17},
+\end{equation}
+so every charge assignment requires $k\equiv5\pmod{17}$. Direct
+enumeration gives no solution for $k\leq4$ and $83\,232$ ordered cubic
+solutions among the $17^5$ tuples at $k=5$. Thus pair-count minimality is
+charge-independent, whereas the residue uniqueness $\{2,11\}$ is
+specifically an identical-pair result. The general cubic class used here is
+$48+16\sum_i[a_i^3+(13-a_i)^3]$; the alternate engine incorrectly used
+80 per pair (valid only after five identical pairs), although its solution
+count happened to remain unchanged.
+
+The five pairs shift the gluonic coefficient to
+$2N = 2[6 + 10(a{+}b)] = -68$, so
+\begin{equation}
+N_{\rm DW}^{\rm cover} = \frac{|2N|}{X_S} = \frac{68}{4} = 17,
+\qquad
+\fa \longrightarrow \frac{v_S}{17},
+\end{equation}
+in the discrete EFT, or equivalently the $v_\Phi\gg v_S$ limit of
+Section~\ref{sec:uv}; the exact continuous-theory projection is given in
+Eq.~\eqref{eq:axionprojection}. The ratio $E/N = 8/3$ is preserved
+(complete SO(10) multiplets). All seventeen
+covering-space minima form one gauge orbit
+($4\times13\equiv1\bmod17$): the physical domain-wall number is one,
+and the one-wall object is the string sector $(\ell,n) = (13,-3)$ with
+$S$-winding $2\pi/17$ (we reserve $k$ for the pair multiplicity).
+
+\section{Benchmark and inputs}
+\label{sec:bench}
+One-loop running of $\alpha_1^{-1}(M_Z)=59.02$ (GUT-normalised),
+$\alpha_2^{-1}(M_Z)=29.57$, $\alpha_s(M_Z)=0.1179$ with 2HDM
+coefficients $(21/5,-3,-7)$ below $M_I$, Pati--Salam coefficients
+$(-7/3,2,26/3)$ above it, and matching
+$\alpha_{2R}^{-1} = \tfrac53\alpha_1^{-1} - \tfrac23\alpha_4^{-1}$
+gives $M_I = 6.31\times10^{11}\GeV$,
+$M_{\rm GUT} = 9.92\times10^{15}\GeV$,
+$\alpha_{\rm GUT}^{-1} = 37.31$. \emph{Gauge unification does not fix
+the singlet scale \cite{ERT}; we separately impose the benchmark
+identifications} $v_S = M_I$ \emph{and} $y_s = \sqrt2$ (so
+$M_s = M_I$). Then, with $\chi^{1/4} = 75.5(5)$~MeV and the QCD photon
+coefficient $1.92(4)$ from Grilli di Cortona et al.\ \cite{GrillidiCortona},
+\begin{align}
+\ma &= \frac{\chi^{1/2}}{\fa} = 153.5 \pm 2.0\ueV,
+\qquad
+\nu = \frac{\ma}{h} = (37.11\pm0.49)\ \mathrm{GHz},\\
+g_{a\gamma\gamma} &= \frac{\alpha}{2\pi\fa}
+\left|\frac{E}{N}-1.92\right|
+= (2.335\pm0.125)\times10^{-14}\GeV^{-1},
+\end{align}
+where the mass and frequency uncertainties propagate the susceptibility
+error and the coupling uncertainty propagates the $1.92(4)$ coefficient.
+The compatible determination $\chi^{1/4}=75.6(1.8)(0.9)$~MeV
+\cite{Borsanyi} would widen the mass uncertainty to about $8\ueV$.
+The spectator shift is
+$\Delta\alpha_{\rm GUT}^{-1} = -\tfrac{40/3}{2\pi}
+\ln(M_{\rm GUT}/M_s) = -20.5$ at the benchmark $y_s$; other $y_s$
+values shift it (e.g.\ $-26.1$ at $y_s = 0.1$), so $y_s$ is an explicit
+input of the proton estimate.
+
+\section{Axion quality: local operators and vacuum closure}
+\label{sec:quality}
+At the reduced Planck scale we assume every local operator allowed by
+the gauge group is present, with a dimensionless Wilson coefficient of
+order unity, and that no intermediate threshold carries additional
+explicit PQ breaking. This assumption is essential: heavy fields can
+modify naive Planck power counting \cite{Bonnefoy}.
+
+\subsection*{Scalar sector and the local-operator trap}
+The $10_H$ and $\overline{126}_H$ tensors have an odd number of SO(10)
+vector indices, whereas $210_H$ has an even number. Deltas and the
+rank-ten epsilon tensor contract an even total number of vector indices,
+so an invariant contains an even number of odd-index tensors. Including
+$S$ (charge $+4$), every scalar invariant therefore has
+$Q_{\rm PQ}=0\pmod4$. Combining this with $\Zs$ gives
+$|Q_{\rm PQ}|\geq\mathop{\rm lcm}(4,17)=68$, saturated by
+$S^{17}/M_{\rm Pl}^{13}$. At the benchmark, the one-sided coefficient is
+$(v_S/\sqrt2)^{17}/(M_{\rm Pl}^{13}\chi)=3.24\times10^{-37}$.
+With $V=A e^{ia/f_a}+{\rm h.c.}$ the worst-phase shift is
+\begin{equation}
+ \frac{|\Delta\bar\theta|_{S^{17}}}{|c_{17}|}
+ = \frac{2(v_S/\sqrt2)^{17}}{M_{\rm Pl}^{13}\chi}
+ =6.47\times10^{-37},
+ \qquad M_{\rm Pl}=2.435\times10^{18}\GeV .
+\label{eq:scalarquality}
+\end{equation}
+
+Fermions invalidate any proof that stops there; multi-fermion operators
+are known to matter in axion-quality analyses \cite{BDMquality}. Write
+$F=16_F$, $s=16_s$ and $b=\overline{16}_s$, with
+$Q_{\rm PQ}=(1,2,-6)$. SO(10)$\times\Zs$ permits, among others,
+\begin{align}
+{\cal O}_6^-&=\frac{(S^\dagger)^3(Fb)_1}{M_{\rm Pl}^{2}},
+ &(d,Q,V)&=(6,-17,-1),\nonumber\\
+{\cal O}_8^0&=\frac{(S^\dagger)^2[(ss)_{10}]^2}{M_{\rm Pl}^{4}},
+ &(d,Q,V)&=(8,0,+4),\nonumber\\
+{\cal O}_9&=\frac{(S^\dagger)^5(bb)_{10}10_H}{M_{\rm Pl}^{5}},
+ &(d,Q,V)&=(9,-34,-2),\nonumber\\
+{\cal O}_{10}&=\frac{10_H^\dagger[(bb)_{10}]^3}{M_{\rm Pl}^{6}},
+ &(d,Q,V)&=(10,-34,-6),\nonumber\\
+{\cal O}_{12}&=\frac{(S^\dagger)^6(Fs)_{10}(ss)_{10}}
+ {M_{\rm Pl}^{8}},
+ &(d,Q,V)&=(12,-17,+3),
+\label{eq:operators}
+\end{align}
+where $V(s)=+1$, $V(b)=-1$ and all ERT fields have $V=0$.
+The representation products used in these explicit contractions are
+standard, in particular $16\otimes16=10_s\oplus120_a\oplus126_s$
+\cite{Djouadi}. The dimension-10 and -12 terms are regression cases
+missed by a bilinear-only enumeration.
+
+Nor does ${\cal O}_9$ by itself generate the previously claimed term
+linear in its Majorana insertion. For one Dirac pair,
+\begin{equation}
+ {\cal M}=\begin{pmatrix}0&M_s\\M_s&\delta e^{i\phi}\end{pmatrix},
+ \quad {\rm tr}({\cal M}^\dagger{\cal M})=2M_s^2+|\delta|^2,
+ \quad \det({\cal M}^\dagger{\cal M})=M_s^4 .
+\label{eq:massmatrix}
+\end{equation}
+Both singular values, hence the one-loop Coleman--Weinberg potential,
+are independent of $\phi$. A local PQ-breaking operator is therefore
+not automatically a one-insertion axion potential.
+
+\subsection*{Finite multi-spurion proof}
+The renormalizable Lagrangian preserves the spectator vector number
+$U(1)_V$: the mass $Ssb$ is neutral and there is no dimension-four or
+lower $Q_{\rm PQ}=0$, $V\neq0$ interaction. Consequently a vacuum graph
+must have total $V=0$. Each Planck insertion has $Q_{\rm PQ}=17m$; after
+its fermions are closed with PQ-conserving vertices, scalar index parity
+also requires total $Q_{\rm PQ}=0\pmod4$. A PQ-sensitive target thus has
+\begin{equation}
+ \sum_i V_i=0,\qquad \sum_i m_i\neq0,\qquad
+ \sum_i m_i=0\pmod4 .
+\label{eq:closureconditions}
+\end{equation}
+
+The supplied engine enumerates a deliberate \emph{superset} of local
+monomials: $F,s,b$ and all conjugates; $S,S^\dagger$; charge-$\mp2$
+tensor scalars; even Weyl count; trivial Spin(10)-centre charge; and
+$Q_{\rm PQ}=0\pmod{17}$. It allows mixed-chirality contractions that may
+not exist, so failure to find a closure is a conservative exclusion.
+Neutral $210_H$, derivatives and gauge strengths can be omitted because
+they only raise dimension. For
+\begin{equation}
+ P:=\sum_i(d_i-4)\leq11,
+\end{equation}
+every insertion has $d_i\leq15$; enumeration through dimension 15 is
+therefore finite and complete for this exclusion. No state satisfying
+Eq.~\eqref{eq:closureconditions} occurs through $P=11$. At $P=12$ the
+bound is saturated by the actual Spin(10) set
+\begin{equation}
+ 4{\cal O}_6^-+{\cal O}_8^0:\qquad
+ (Q_{\rm PQ},V,P)=(-68,0,12).
+\label{eq:certificate}
+\end{equation}
+The necessary-condition search was independently reimplemented directly
+from weak compositions of field multiplicities; it reproduces all twenty
+low-cost $(P,Q_{\rm PQ}/17,V)$ frontier classes and the same absence result
+through $P=11$ without importing the main enumeration module.
+
+\subsection*{Explicit Spin(10), Lorentz and graph audit}
+Because spinors are representations of the double cover, this audit uses
+Spin(10) explicitly (``SO(10)'' elsewhere is the standard shorthand).
+Let $\Gamma^a$ be a $32\times32$ Euclidean Clifford representation and
+$C=\Gamma^2\Gamma^4\Gamma^6\Gamma^8\Gamma^{10}$. On either chiral
+16-dimensional subspace, the ten matrices
+\begin{equation}
+ T^a_\pm=(C\Gamma^a)|_{16_\pm},\qquad
+ (T^a_\pm)^T=T^a_\pm,\qquad
+ \sum_{ij}(T^a_+)^*_{ij}(T^b_+)_{ij}=16\delta^{ab}
+\label{eq:cliffordcertificate}
+\end{equation}
+are symmetric, so the same-chirality Weyl bilinear
+$\epsilon_{\alpha\beta}X_i^\alpha(T^a_\pm)_{ij}Y_j^\beta$
+has the required Fermi statistics for the $10_s$ channel. Sparse
+Grassmann evaluation gives nonzero polynomials for every operator in
+Eq.~\eqref{eq:operators}; in particular ${\cal O}_8^0$ has 240 nonzero
+canonical monomials even when its four $s$ fields share a species.
+
+For the central four-spinor tensor
+$K_{ijkl}=\sum_a(T^a_+)_{ij}(T^a_+)_{kl}$, the explicit representation
+gives 640 nonzero entries and
+\begin{equation}
+ \sum_{ijkl}|K_{ijkl}|^2=2560,
+ \qquad K^*_{ijkl}(T^1_+)_{ij}(T^1_+)_{kl}=256,
+ \qquad L_{\rm Lorentz}=4 .
+\label{eq:graphcertificate}
+\end{equation}
+Thus the certificate is not merely a centre-charge candidate: its actual
+group and Lorentz contractions are nonzero. Four $s$--$b$ same-chirality
+propagators (the four $s$ legs may be assigned four of the five spectator
+copies) and two ordinary-family $10_H$-channel chirality flips close the
+twelve fermions. With five compact vertices and six internal fermion lines,
+$L=6-5+1=2$. The resulting scalar operator is proportional to
+\begin{equation}
+ (S^\dagger)^{18}(10_H^\dagger\!\cdot10_H^\dagger),
+ \qquad Q_{\rm PQ}=-68 .
+\label{eq:scalarphase}
+\end{equation}
+A special Higgs alignment could make the dot product vanish, which would
+only strengthen the quality bound by moving the first nonzero vacuum term
+to higher order.
+
+Treating all masses and scalar insertions as no larger than the matching
+scale $M_s$ and dropping loop suppressions gives the Wilsonian-NDA upper bound
+\begin{equation}
+ \frac{|\Delta\bar\theta|}{|C_{\rm eff}|}
+ \lesssim \frac{2M_s^4}{\chi}
+ \left(\frac{M_s}{M_{\rm Pl}}\right)^{12}
+ =9.04\times10^{-28} .
+\label{eq:qualitybound}
+\end{equation}
+Here $C_{\rm eff}$ absorbs convention-dependent tensor normalisations,
+Yukawas and flavour factors. For the explicit graph, retaining the two
+loop factors and using $|v_{10}|\leq246\GeV$ yields the diagnostic
+\begin{equation}
+ \frac{|\Delta\bar\theta|_{P=12}}{|C_{\rm eff}|}
+ \lesssim 9.04\times10^{-28}(16\pi^2)^{-2}
+ \left(\frac{246\GeV}{M_s}\right)^2
+ =5.50\times10^{-51},
+\label{eq:refinedgraph}
+\end{equation}
+before any additional flavour suppression. Equation~\eqref{eq:qualitybound},
+which deliberately omits these small factors, remains the advertised
+conservative result.
+
+\begin{proposition}[quality under the stated EFT assumptions]
+At the benchmark $M_s=v_S=6.31\times10^{11}\GeV$, the minimal
+SO(10)$\times\Zs$ completion satisfies the neutron-EDM requirement
+$|\Delta\bar\theta|<10^{-10}$ provided
+$|C_{\rm eff}|<1.1\times10^{17}$. In particular, order-one Wilson
+coefficients are safe; the leading conservative bound is
+Eq.~\eqref{eq:qualitybound}, not the scalar-only value in
+Eq.~\eqref{eq:scalarquality}.
+\end{proposition}
+
+\section{An anomaly-free continuous origin of
+\texorpdfstring{$\mathbb Z_{17}$}{Z17}}
+\label{sec:uv}
+A discrete gauge symmetry can arise as the remnant of a broken continuous
+gauge group \cite{KW,BanksDine,Ibanez93}. Introduce a complex Spin(10)
+singlet $\Phi$ with $(X,{\rm PQ})=(17,0)$ and gauge a primitive
+$U(1)_X$. The light-field $X$ charges are the integer PQ lifts used above:
+$X(F,s,b,S,10_H,\overline{126}_H,210_H)=(1,2,-6,4,-2,-2,0)$.
+Replace the relic-unsafe v19 anomalons by the left-Weyl pairs
+\begin{equation}
+ (P,\overline P)\sim(16_{1},\overline{16}_{16}),\qquad
+ (Q,\overline Q)\sim(16_{14},\overline{16}_{3}),\qquad
+ (R,\overline R)\sim(16_{1},\overline{16}_{-18}).
+\label{eq:uvfields}
+\end{equation}
+Their accidental-PQ charges are respectively $(1,-1)$, $(-3,3)$ and
+$(1,-1)$. Renormalizable masses and decay portals are
+\begin{equation}
+ \Phi^\dagger(y_P P\overline P+y_QQ\overline Q)
+ +y_R\Phi R\overline R
+ +\lambda_P P F10_H+\lambda_R R F10_H
+ +\lambda_Q\overline QF S^\dagger+{\rm h.c.}
+\label{eq:uvmasses}
+\end{equation}
+Every $X$ and PQ charge sum in Eq.~\eqref{eq:uvmasses} vanishes exactly.
+The two added $16_1$ fields share the ordinary-family gauge charges. A
+generic rank-two $\Phi$ mass matrix pairs two linear combinations of the
+five $16_1$ fields with $\overline{16}_{16}$ and
+$\overline{16}_{-18}$, leaving exactly three chiral light combinations.
+Thus the labels $F,P,R$ denote a convenient UV basis, not a claim that
+the heavy--light mass matrix is diagonal.
+
+With $T(16)=2$ and $\dim16=16$, the continuous anomaly audit is
+\begin{center}
+\begin{tabular}{lrrr}
+\toprule
+sector & $A_{10^2X}$ & $A_{{\rm grav}^2X}$ & $A_{X^3}$\\
+\midrule
+light fields & $-34$ & $-272$ & $-16592$\\
+three pairs in Eq.~\eqref{eq:uvfields} & $+34$ & $+272$ & $+16592$\\
+\midrule
+total & $0$ & $0$ & $0$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The cubic entries before the common factor 16 are
+$4097+2771-5831=1037$. The heavy accidental-PQ mixed anomaly is also zero,
+so the axion's QCD anomaly and low-energy couplings are unchanged.
+
+There is a short minimality proof for an anomalon sector built only from
+complete pairs, with no Spin(10)-singlet anomalons. If every
+$16\oplus\overline{16}$ pair receives a renormalizable mass from one
+$\Phi$ or $\Phi^\dagger$, its two $X$ charges sum to $\pm17$. Cancellation
+of the mixed anomaly requires $n_+-n_-=1$, hence an odd number of pairs.
+For one pair, $x+y=17$ and cubic cancellation require
+$x^3+y^3=1037$, or $xy=76$. The roots would satisfy
+$t^2-17t+76=0$, whose discriminant is $-15$. One pair is impossible,
+whereas Eq.~\eqref{eq:uvfields} supplies three; three is therefore minimal
+under these assumptions. Exact enumeration of portals constructed from
+the already-present $10_H$, $S$ and $210_H$ finds the displayed triple as
+the unique three-pair solution. This is not a classification involving
+arbitrary Spin(10) representations, singlet anomalons or multi-scalar mass
+operators.
+
+An over-catalogue of every dimension-four-or-lower monomial satisfying
+Lorentz parity, the Spin(10) centre and exact $U(1)_X$ contains no term
+that breaks accidental PQ or the light-spectator vector number. The heavy
+pair numbers are explicitly broken by Eq.~\eqref{eq:uvmasses}, as required
+for decay. Hence PQ remains accidental but no exact anomalon number makes a
+heavy state stable. PQ is independent of the gauged generator because
+$\Phi$ has $X=17$ but PQ zero.
+Writing the canonically normalized phases as $(a_\Phi,a_S)$, define
+\begin{equation}
+ D=\sqrt{(17v_\Phi)^2+(4v_S)^2},\qquad
+ \widehat a=\frac{-4v_Sa_\Phi+17v_\Phi a_S}{D},\qquad
+ f_a=\frac{v_Sv_\Phi}{D}.
+\label{eq:axionprojection}
+\end{equation}
+The first combination is orthogonal to the gauge direction. For
+$v_\Phi=10^{17}\GeV$ the correction to $v_S/17$ is
+$-1.10\times10^{-12}$.
+
+The large charges make the Abelian running a real constraint. Including
+all fields above $v_\Phi$ gives
+\begin{equation}
+ b_X=\frac23\sum_{\rm Weyl}d(R)X^2+
+ \frac13\sum_{\rm scalar}d(R)X^2
+ =\frac23(15840)+\frac13(849)=10843.
+\end{equation}
+Requiring the one-loop Landau pole to exceed
+$M_{\rm Pl}=2.435\times10^{18}\GeV$ at $v_\Phi=10^{17}\GeV$ requires
+$g_X(v_\Phi)<0.0478$; $g_X=0.04$ gives
+$\Lambda_{\rm LP}=9.47\times10^{18}\GeV$. Complete Spin(10) multiplets
+do not change one-loop relative unification below their common threshold.
+Using $T(10,126,210)=(1,35,56)$ \cite{Chang} and conservatively treating
+even the real $210_H$ as complex gives $b_{10}\leq80/3$ above $v_\Phi$.
+An older diagnostic reset $\alpha_{10}(v_\Phi)=1/40$ would remain
+perturbative, but that reset is inconsistent with the model's own
+spectator-corrected $\alpha_{\rm GUT}^{-1}\simeq16.81$. Continuous
+one-loop running from that value is \emph{not} weakly coupled to
+$M_{\rm Pl}$ under these betas (the conservative envelope hits a Landau
+pole below $M_{\rm Pl}$). A full two-loop threshold analysis is therefore
+required before claiming Planck-safe Spin(10) perturbativity.
+
+The decay statement is quantitative. For one open normalized two-body
+channel with final mass $m_\phi$,
+\begin{equation}
+ \Gamma=\frac{|\lambda|^2M}{32\pi}\Bigl(1-\frac{m_\phi^2}{M^2}\Bigr)^2
+ \le\frac{|\lambda|^2M}{32\pi},\qquad
+ M=\frac{v_\Phi}{\sqrt2}.
+\end{equation}
+The massless formula is therefore an upper benchmark on the width. At the
+benchmark, $\lambda=10^{-8}$ and $m_\phi\to0$ gives
+$\tau=9.36\times10^{-24}$~s, while $\tau<1$~s in that massless limit
+requires only $|\lambda|>3.06\times10^{-20}$. In the explicit Clifford basis,
+$\sum_{a,j}(C\Gamma^a)_{ij}(C\Gamma^a)^*_{kj}=10\delta_{ik}$, proving
+that every component of $P$ and $R$ has a nonzero $10_H$ channel. The
+$\overline QFS^\dagger$ singlet contraction is component-diagonal. This
+removes the exact-stable-relic obstruction; a broken-phase Clebsch and
+flavour fit is still required for precision widths.
+
+Finally, the portal
+$|\Phi|^2|S|^2$ must be small enough to preserve $v_\Phi\gg v_S$.
+These are explicit perturbativity and hierarchy assumptions, so this is a
+field-theory completion to the Planck cutoff rather than an ultimate
+quantum-gravity construction.
+
+\section{Heavy-threshold closure and full loop kernels}
+\label{sec:matching}
+Heavy fields can invalidate naive axion-quality power counting
+\cite{Bonnefoy}, so the operator search was repeated with all fields in
+Eq.~\eqref{eq:uvfields} and their conjugates. Because the decay vertices
+break the heavy pair numbers, only the exact light-spectator number $V_s$
+is imposed. The resulting minimum-dimension frontier has no PQ-sensitive,
+$V_s=0$ closure through $P=7$. At $P=8$ the necessary-condition bound is
+saturated by actual Spin(10) invariants:
+\begin{align}
+ \widetilde{\cal O}_5&=\frac{(S^\dagger)^2(Qb)_1}{M_{\rm Pl}},
+ &(Q_{\rm PQ},V_s,P)&=(-17,-1,1),\nonumber\\
+ \widetilde{\cal O}_8&=\frac{(S^\dagger)^2
+ [(ss)_{10}]^2}{M_{\rm Pl}^4},
+ &(Q_{\rm PQ},V_s,P)&=(0,+4,4).
+\label{eq:p8ops}
+\end{align}
+The combination $4\widetilde{\cal O}_5+\widetilde{\cal O}_8$ closes with
+four chirality-flipping $s$--$b$ propagators generated by $Ssb$, four
+$Q$--$\overline Q$ propagators generated by
+$\Phi^\dagger Q\overline Q$, four $\overline QFS^\dagger$ decay vertices
+and two conjugate ordinary $FF10_H$ Yukawas. The left--left propagators
+carry the conjugate mass spurions, $S^\dagger$ and $\Phi$, respectively.
+Counting the five Planck vertices, four decay vertices and two ordinary
+Yukawas gives a connected graph with 12 internal fermion lines, 11
+vertices and two loops. It produces
+\begin{equation}
+ \Phi^4(S^\dagger)^{18}(10_H^\dagger)^2,
+ \qquad (X,Q_{\rm PQ},P)=(0,-68,8).
+\end{equation}
+The explicit Clifford representation gives
+$(T^a)^*_{ij}(T^b)_{ij}=16\delta^{ab}$ and the inherited four-bilinear
+two-component contraction, including both kinetic numerators, equals $-2$
+per factorized loop (hence 4 for their product), so this saturation graph
+is nonzero.
+
+The original v17 two-loop graph also survives, but its four
+${\cal O}_6^-$ portals each carry $X=-17$. Exact gauge invariance replaces
+each by $\Phi{\cal O}_6^-/M_{\rm Pl}$; the graph is therefore $P=16$.
+The full zero-momentum integral can be written without dimensional
+estimates. For degenerate spectator mass $M_s$ and a family chirality
+mass $m$,
+\begin{align}
+ I_3(M_s,m)&=\int\frac{d^4p_E}{(2\pi)^4}
+ \frac{1}{(p^2+M_s^2)^2(p^2+m^2)}\nonumber\\
+ &=\frac{1}{16\pi^2M_s^2}
+ \frac{1-r+r\ln r}{(1-r)^2},\qquad r=\frac{m^2}{M_s^2},
+ \label{eq:triangle}\\
+ J(M_s,m)&=M_s^2m\,I_3(M_s,m),\nonumber\\
+ |A_{2\ell}^{\rm EFT}|&=|C_{2\ell}|\frac{s_0^{14}}{M_{\rm Pl}^{12}}
+ J(M_s,m_1)J(M_s,m_2),\qquad s_0=\frac{v_S}{\sqrt2}.
+\label{eq:full2loop}
+\end{align}
+For unequal masses the code evaluates the symmetric divided difference
+\begin{equation}
+ I_3=\frac{1}{16\pi^2}\sum_x
+ \frac{x\ln x}{\prod_{y\ne x}(x-y)}.
+\end{equation}
+Equation
+\eqref{eq:full2loop} is finite and factorizes because the zero-momentum
+four-fermion vertex leaves two independent loop momenta. The normalized
+coefficient $C_{2\ell}$ contains the unknown Planck Wilson tensors,
+flavour contractions, the nonzero group/Lorentz normalization and RG
+matching; the EFT cannot predict it.
+
+For the $P=8$ graph, each of the two factorized loops has the independently
+evaluated kernel
+\begin{equation}
+ K(M_H,M_s,m_f)=M_H^2M_s^2\int\frac{d^4p_E}{(2\pi)^4}
+ \frac{p^2}{(p^2+M_H^2)^2(p^2+M_s^2)^2(p^2+m_f^2)^2}.
+\label{eq:chain}
+\end{equation}
+High-precision repeated-pole partial fractions retain all three masses and
+are independently checked by log-coordinate quadrature. The one-sided
+amplitude is
+\begin{equation}
+ |A_8|=|C_8|\frac{s_0^{14}h^2}{M_{\rm Pl}^{8}}
+ K(M_H,M_s,m_f)^2.
+\label{eq:fullp8}
+\end{equation}
+Here $C_8$ contains the four decay Yukawas, two family Yukawas and the
+normalized Wilson, group, flavour and RG contraction. With $M_s=v_S$,
+$M_H=v_\Phi/\sqrt2$, $m_f=h=246\GeV$ and $v_\Phi=10^{17}\GeV$,
+$16\pi^2M_H^2K=0.9999999965$. The results per unit normalized
+coefficient are
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+term & $|A|/\chi$ & worst phase $2|A|/\chi$\\
+\midrule
+v17 two-loop EFT graph, before $\Phi$ dressings & $2.15\times10^{-53}$ &
+$4.30\times10^{-53}$\\
+same graph in $U(1)_X$ ($P=16$) & $1.53\times10^{-59}$ &
+$3.06\times10^{-59}$\\
+decay-threshold graph ($P=8$) & $3.02\times10^{-47}$ &
+$6.04\times10^{-47}$\\
+direct $\Phi^4(S^\dagger)^{17}/M_{\rm Pl}^{17}$ &
+$2.30\times10^{-43}$ & $4.60\times10^{-43}$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The direct dimension-21 scalar operator dominates these explicitly
+computed terms and still lies $2.17\times10^{32}$ below the
+$10^{-10}$ criterion for a unit coefficient. This numerical margin is
+conditional on order-one normalized Wilson contractions; it is not a
+measurement or a derivation of quantum-gravity coefficients.
+
+An extra vector-like spectator $\mathbb Z_3$ is neither needed nor used.
+Indeed ${\cal O}_{10}$ and ${\cal O}_{12}$ survive it, falsifying the
+earlier claim that all fermionic breakers move to dimension 19. Such an
+exact triality would also make the lightest triality-charged state stable
+unless further structure were added. The rank-six rephasing diagnostic
+in Appendix~A remains correct but is not the quality proof. The continuous
+origin is supplied in Section~\ref{sec:uv}; its cosmic-string spectrum
+remains open.
+
+\subsection*{Adversarial merge audit of the alternate anomalon lift}
+The alternate charges
+$16_{1}\oplus\overline{16}_{16}$ and singlets
+$(33,-16,31,-48)$ do cancel the three continuous anomaly sums exactly.
+They do not, however, establish the advertised quality theorem. A physical
+axion first requires a global accidental PQ independent of the gauged
+generator; one possible repair assigns
+$Q_{\rm PQ}(16_1,\overline{16}_{16},\Phi)=(1,-1,0)$.
+With that assignment the following actual 10-channel invariants are
+allowed:
+\begin{align}
+ {cal O}_{6}^{A}&=\frac{(S^\dagger)^2
+   (\overline{16}_{16}\,\overline{16}_{s,-6})_{10}10_H}{M_{\rm Pl}^2},
+ &(Q_{\rm PQ},V_s,P)&=(-17,-1,2),\nonumber\\
+ {cal O}_{8}^{s}&=\frac{(S^\dagger)^2
+   [(16_{s,2}16_{s,2})_{10}]^2}{M_{\rm Pl}^4},
+ &(Q_{\rm PQ},V_s,P)&=(0,+4,4).
+\end{align}
+Hence $4{\cal O}_{6}^{A}+{\cal O}_{8}^{s}$ is a
+$(Q_{\rm PQ},V_s,P)=(-68,0,12)$ closure. The proposed
+$16_1 16_F10_H$ vertex breaks anomalon number, and four anomalon-mass
+propagators, four such vertices and two ordinary $16_F16_F10_H$ vertices
+provide a connected two-loop topology for the remaining fermions. An
+end-to-end Grassmann contraction of that alternate topology is still
+required. The
+scalar-only dimension-21 scan therefore misses the relevant fermionic
+threshold; this does not prove that the alternate model is unsafe, but it
+does mean its published quality bound and loop amplitude are incomplete.
+
+The same audit finds only the two $\Phi$ mass Yukawas for the four heavy
+singlets, not a renormalizable portal to light matter. It also gives
+$b_X=8263$ and $g_X(M_{\rm GUT})<0.0417$ for a Landau pole above
+$M_{\rm Pl}$. Finally, applying the exact factorized kernel to the
+\emph{old} graph at the alternate inputs gives
+$|A|/\chi=1.85\times10^{-64}$ after four dressings, rather than
+$2.37\times10^{-62}$; the ratio is the earlier 128-fold vev-normalization
+envelope. These are the reasons the alternate anomalon sector is not
+merged, while its charge-general minimality proof is retained.
+
+\section{Status of cosmology, experiment, and proton decay}
+
+\emph{Cosmology (conditional).} The v20 anomalons carry no exact heavy
+number and decay through Eq.~\eqref{eq:uvmasses}; unlike v19, avoiding a
+stable heavy relic does not require a low-reheat postulate. This statement
+does not replace a Boltzmann calculation if the $U(1)_X$ sector is
+thermally restored. Pre-inflationary: $\theta_i = 2.91$ on
+the anharmonic tail \cite{KKT}, $H_I \lesssim 9\times10^{5}\GeV$
+(UV-conditional \cite{GR25}), corresponding to
+$r<1.34\times10^{-17}$ for $A_s=2.1\times10^{-9}$. A primordial
+B-mode detection above that ceiling rejects this pre-inflationary
+all-dark-matter branch, not the post-inflationary branch. The latter is
+conditional on the
+$(\ell,n)=(13,-3)$ string's existence and production \cite{LRS}. If a
+standard network applied, current simulations disagree on the full-DM
+mass: Benabou et al.\ find $45$--$65\ueV$ before wall collapse, with
+wall effects potentially extending to $\sim300\ueV$ \cite{Benabou};
+Saikawa et al.\ report $95$--$450\ueV$ \cite{Saikawa}. The benchmark
+lies inside the latter and inside the extended range of the former;
+the nonstandard gauged network makes all such intervals indicative.
+
+\emph{Experiment.} No dark-matter haloscope has scanned $153.5\ueV$: the
+recent DALI results sit at $28.5\ueV$ \cite{DALI} (their reported
+sensitivity is disputed \cite{DALIcomment}), and no existing experiment
+reaches the predicted coupling there; CAST constrains the mass at
+$5.8\times10^{-11}\GeV^{-1}$ \cite{CAST}, a factor 2\,479 above.
+Direct tests belong to MADMAX \cite{MADMAX} and plasma-haloscope
+\cite{ALPHA} programmes; the ORGAN design range also overlaps the target
+\cite{ORGAN}. Their design ranges are not completed scans or guaranteed
+DFSZ sensitivity. The benchmark location is $36.62$--$37.60$~GHz, while
+the Galactic signal width is only about $34$~kHz for
+$Q_{\rm halo}=1.1\times10^6$. A null scan of the full location band below
+$g_{a\gamma\gamma}=2.335\times10^{-14}\GeV^{-1}$ would reject the
+all-dark-matter benchmark combination ($v_S{=}M_I$, $y_s{=}\sqrt2$), not
+the anomaly theorem itself.
+
+\emph{Proton decay (prior-region statements).} Under the diagnostic
+priors of Table~\ref{tab:priors}, the median lifetime is
+$1.1\times10^{35}$~yr; 35 per cent of sampled volume lies below the
+Super-K cutoff $2.4\times10^{34}$~yr \cite{SK} and a further 14 per
+cent below the Hyper-K reach $1\times10^{35}$~yr \cite{HKsnowmass};
+a Hyper-K null would exclude only that additional subregion.
+
+\FloatBarrier
+
+\begin{table}[h]
+\centering
+\caption{Diagnostic priors of the proton Monte Carlo (seed 20260801,
+$10^5$ trials; spectator shift applied per trial with $y_s=\sqrt2$).}
+\label{tab:priors}
+\begin{tabular}{ll}
+\toprule
+$\alpha_s(M_Z)$ & $\mathcal{N}(0.1179,\,0.0009)$ \\
+$\alpha_1^{-1},\ \alpha_2^{-1}$ & $\mathcal{N}(59.02,0.02)$,
+  $\mathcal{N}(29.57,0.02)$ \\
+threshold & $\Delta_4=\delta\sim\mathcal{U}(-1,1)$,\
+  $\Delta_{2R}=-\tfrac23\delta$,\ $\Delta_{2L}=0$ \\
+$M_X/M_{\rm GUT}$ & $\mathrm{LogU}(0.5,\,2)$ \\
+$A_R$ & $\mathcal{U}(2.0,\,3.2)$ \\
+$W_0$ [GeV$^2$] & $\mathcal{N}(0.1095,\,0.011)$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Novelty and conclusions}
+The defensible contribution now has five layers: (i) the charge-independent
+five-pair lower bound, plus residue uniqueness in the identical-pair ansatz,
+for this particular $\Zs$ extension; (ii) the discrete-EFT $P=12$
+multi-spurion lower bound and its
+explicit Spin(10) graph; (iii) the anomaly-free $U(1)_X\to\Zs$ field-theory
+embedding of Section~\ref{sec:uv}; (iv) the one-pair no-go and minimal
+three-pair decay-safe completion; and (v) the heavy-inclusive $P=8$
+closure audit plus its repeated-pole two-loop integral in
+Section~\ref{sec:matching}. These are narrow model-building and matching
+results within the established discrete-gauge axion literature
+\cite{BGW,DPT,DiLuzio,BDM}, not a derivation of the full ERT parameter
+point from one scale and not experimental evidence for an axion.
+
+The continuous embedding passes its stated tests: all local anomalies
+vanish, renormalizable PQ remains accidental, the axion survives the gauge
+projection, and the explicitly evaluated unit-coefficient quality terms
+are far below the neutron-EDM requirement. Every anomalon pair now has a
+renormalizable ordinary-matter portal, and a generic mass matrix leaves
+three chiral families. The completion also changes the EFT interpretation:
+the old two-loop graph is $P=16$, while the decay-enabled heavy matter opens
+a $P=8$ two-loop closure. Its exact benchmark shift is nevertheless four
+orders below the direct dimension-21 scalar term, which dominates the
+calculated terms. Unknown Wilson/flavour/Yukawa tensors remain parameters,
+so ``full amplitude'' here means the complete finite momentum kernel and
+mass dependence for the stated graph, not a coefficient-free prediction.
+
+The v16--v20 audit also records negative results: the v15 dimension-9
+one-insertion potential and its $\mathbb Z_3$ cure were incorrect, and the
+alternate v18 scalar-only UV-quality proof is incomplete. V19's exact
+stable-anomalon caveat is resolved rather than hidden: its charge set is
+replaced. The remaining scientific tasks are an independent
+representation-theory and diagrammatic review, broken-phase Clebsch and
+flavour fits, RG evolution of the Wilson tensors, a radiatively stable
+$v_\Phi/v_S$ hierarchy, a thermal-restoration calculation, an ultimate
+quantum-gravity origin, and the nonstandard string-network calculation.
+The release retains the v17 65-check and v19 59-check regression engines
+and adds a v20 40-check engine with a controlled nonzero-exit path and
+machine-readable verdict.
+
+\appendix
+\section{Reproduction formulas}
+The rephasing diagnostic referenced in Section~\ref{sec:quality} is
+\begin{equation}
+M =
+\begin{pmatrix}
+0 & 2 & 1 & 0 & 0 & 0\\
+0 & 2 & 0 & 1 & 0 & 0\\
+1 & 0 & 0 & 0 & 1 & 1\\
+2 & 0 & 2 & 2 & 0 & 0\\
+-3 & 1 & 0 & 0 & 0 & 1\\
+4 & 1 & 1 & 0 & 1 & 0\\
+-2 & 1 & 0 & 0 & 1 & 2\\
+-2 & 0 & 0 & 0 & 4 & 0
+\end{pmatrix}
+\end{equation}
+over $(X_S, X_F, X_{10}, X_{\overline{126}}, X_a, X_b)$, rows: the two
+Yukawas, spectator mass, ERT lock, $(S^\dagger)^3 16_F\overline{16}_s$,
+$S^4 16_F 16_s 10_H$,
+$(S^\dagger)^2(16_F\overline{16}_s)(16_s\overline{16}_s)$,
+$(S^\dagger)^2(16_s16_s)_{10}(16_s16_s)_{10}$. The proton width used in
+the Monte Carlo is
+\begin{equation}
+\Gamma(p\to e^+\pi^0) = \frac{m_p}{32\pi}
+\left[1-\frac{m_\pi^2}{m_p^2}\right]^2
+\left(\frac{4\pi\alpha_{\rm GUT}}{M_X^2}\right)^{\!2}
+A_R^2\,|W_0|^2\,\bigl[1+(1+|V_{ud}|^2)^2\bigr],
+\end{equation}
+with $W_0$ from lattice QCD \cite{Yoo} and $\tau_p = \hbar/\Gamma$.
+
+\clearpage
+
+\begin{thebibliography}{99}
+\small
+\sloppy
+\bibitem{ERT} A.~Ernst, A.~Ringwald and C.~Tamarit,
+  JHEP \textbf{02} (2018) 103, arXiv:1801.04906.
+\bibitem{Hsieh} C.-T.~Hsieh, arXiv:1808.02881.
+\bibitem{KW} L.~M.~Krauss and F.~Wilczek,
+  Phys.\ Rev.\ Lett.\ \textbf{62} (1989) 1221.
+\bibitem{BanksDine} T.~Banks and M.~Dine,
+  Phys.\ Rev.\ D \textbf{45} (1992) 1424, arXiv:hep-th/9109045.
+\bibitem{Ibanez93} L.~E.~Ib\'a\~nez,
+  Nucl.\ Phys.\ B \textbf{398} (1993) 301, arXiv:hep-ph/9210211.
+\bibitem{BGW} K.~S.~Babu, I.~Gogoladze and K.~Wang,
+  Phys.\ Lett.\ B \textbf{560} (2003) 214, arXiv:hep-ph/0212339.
+\bibitem{DPT} A.~G.~Dias, V.~Pleitez and M.~D.~Tonasse,
+  Phys.\ Rev.\ D \textbf{67} (2003) 095008, arXiv:hep-ph/0211107.
+\bibitem{DiLuzio} L.~Di Luzio, JHEP \textbf{11} (2020) 074,
+  arXiv:2008.09119.
+\bibitem{BDM} K.~S.~Babu, B.~Dutta and R.~N.~Mohapatra,
+  Phys.\ Rev.\ Lett.\ \textbf{134} (2025) 111803, arXiv:2410.07323.
+\bibitem{BDMquality} K.~S.~Babu, B.~Dutta and R.~N.~Mohapatra,
+  ``Accidental Peccei--Quinn Symmetry From Gauged U(1) and a High
+  Quality Axion,'' arXiv:2412.21157.
+\bibitem{Bonnefoy} Q.~Bonnefoy, Phys.\ Rev.\ D \textbf{108} (2023)
+  035023, arXiv:2212.00102.
+\bibitem{Djouadi} A.~Djouadi, R.~Fonseca, R.~Ouyang and M.~Raidal,
+  Eur.\ Phys.\ J.\ C \textbf{83} (2023) 654, arXiv:2212.11315.
+\bibitem{Chang} D.~Chang, T.~Fukuyama, Y.-Y.~Keum, T.~Kikuchi and
+  N.~Okada, ``Perturbative SO(10) Grand Unification,''
+  arXiv:hep-ph/0412011.
+\bibitem{LRS} Q.~Lu, M.~Reece and Z.~Sun, JHEP \textbf{07} (2024) 227,
+  arXiv:2312.07650.
+\bibitem{KKT} T.~Kobayashi, R.~Kurematsu and F.~Takahashi,
+  JCAP \textbf{09} (2013) 032, arXiv:1304.0922.
+\bibitem{GR25} P.~W.~Graham and D.~Racco, JHEP \textbf{12} (2025) 028,
+  arXiv:2506.03348.
+\bibitem{Benabou} J.~Benabou, M.~Buschmann, J.~W.~Foster and
+  B.~R.~Safdi, arXiv:2412.08699.
+\bibitem{Saikawa} K.~Saikawa, J.~Redondo, A.~Vaquero and
+  M.~Kaltschmidt, ``Spectrum of global string networks and the axion
+  dark matter mass,'' JCAP \textbf{10} (2024) 043, arXiv:2401.17253.
+\bibitem{Borsanyi} S.~Bors\'anyi et al., ``Calculation of the axion
+  mass based on high-temperature lattice quantum chromodynamics,''
+  Nature \textbf{539} (2016) 69, arXiv:1606.07494.
+\bibitem{GrillidiCortona} G.~Grilli di Cortona et al.,
+  JHEP \textbf{01} (2016) 034, arXiv:1511.02867.
+\bibitem{Yoo} J.-S.~Yoo et al., Phys.\ Rev.\ D \textbf{105} (2022)
+  074501, arXiv:2111.01608.
+\bibitem{DALI} DALI Collaboration, arXiv:2603.21951 (2026).
+\bibitem{DALIcomment} Comment on the DALI sensitivity,
+  arXiv:2607.28095 (2026).
+\bibitem{IR} L.~E.~Ib\'a\~nez and G.~G.~Ross, ``Discrete gauge
+  symmetries and the origin of baryon and lepton number conservation,''
+  Nucl.\ Phys.\ B \textbf{368} (1992) 3 (mixed-gauge discrete
+  anomalies).
+\bibitem{CAST} CAST Collaboration, Phys.\ Rev.\ Lett.\ \textbf{133}
+  (2024) 221005, arXiv:2406.16840.
+\bibitem{MADMAX} P.~Brun et al.\ (MADMAX), Eur.\ Phys.\ J.\ C
+  \textbf{79} (2019) 186.
+\bibitem{ALPHA} A.~J.~Millar et al., Phys.\ Rev.\ D \textbf{107}
+  (2023) 055013, arXiv:2210.00017.
+\bibitem{ORGAN} B.~T.~McAllister et al., Phys.\ Dark Univ.\ \textbf{18}
+  (2017) 67, arXiv:1706.00209.
+\bibitem{SK} A.~Takenaka et al.\ (Super-Kamiokande),
+  Phys.\ Rev.\ D \textbf{102} (2020) 112011.
+\bibitem{HKsnowmass} J.~Bian et al.\ (Hyper-Kamiokande),
+  arXiv:2203.02029.
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,151 @@
+{
+  "status": "PASS",
+  "n_checks_total": 25,
+  "n_checks_failed": 0,
+  "failures": [],
+  "soft_falsifications_of_manuscript_overclaims": [
+    "v20 'perturbative to M_Pl with alpha=1/40' claim fails under single RG trajectory",
+    "correct inequality is Gamma <= massless benchmark",
+    "manuscript portal list is incomplete"
+  ],
+  "verdict": "v20 is not falsified as an anomaly-free candidate, but several manuscript claims are overstated: Gamma inequality, Spin(10) alpha reset, missing h.c. factors, incomplete portal list, and unit-coefficient amplitudes. Continuous one-loop Spin(10) running from the spectator-corrected alpha_GUT is not perturbative to M_Pl under the stated beta functions.",
+  "sections": {
+    "anomaly_core_survives": [
+      {
+        "name": "light anomaly baseline",
+        "passed": true,
+        "detail": "(-34, -272, -16592)"
+      },
+      {
+        "name": "heavy anomaly opposite",
+        "passed": true,
+        "detail": "(34, 272, 16592)"
+      },
+      {
+        "name": "continuous anomalies cancel",
+        "passed": true,
+        "detail": "(0, 0, 0)"
+      },
+      {
+        "name": "one-pair discriminant is -15",
+        "passed": true,
+        "detail": "-15"
+      }
+    ],
+    "hermitian_conjugate_normalization": [
+      {
+        "name": "scalar S^17 one-sided is ~3.24e-37",
+        "passed": true,
+        "detail": "3.236e-37"
+      },
+      {
+        "name": "scalar S^17 with h.c. is ~6.47e-37",
+        "passed": true,
+        "detail": "6.472e-37"
+      },
+      {
+        "name": "P=12 NDA one-sided is ~4.52e-28",
+        "passed": true,
+        "detail": "4.518e-28"
+      },
+      {
+        "name": "P=12 NDA with h.c. is ~9.04e-28",
+        "passed": true,
+        "detail": "9.036e-28"
+      },
+      {
+        "name": "manuscript must not quote one-sided number as |Delta theta|",
+        "passed": true,
+        "detail": "V_break = A e^{ia/f}+h.c. implies worst phase 2|A|/chi"
+      }
+    ],
+    "decay_width_inequality": [
+      {
+        "name": "massless width equals |lambda|^2 M/(32 pi)",
+        "passed": true,
+        "detail": "7.033721e-02"
+      },
+      {
+        "name": "kinematic factor is always <= 1 for m_final < M",
+        "passed": true,
+        "detail": "[1.0, 1.0, 0.999999999840541, 0.5625]"
+      },
+      {
+        "name": "correct inequality is Gamma <= massless benchmark",
+        "passed": true,
+        "detail": "manuscript Gamma >= ... overstates the width"
+      },
+      {
+        "name": "lifetime lower bound uses kinematic suppression",
+        "passed": true,
+        "detail": "optimistic 1-second portal bound needs the full width"
+      }
+    ],
+    "continuous_spin10_running": [
+      {
+        "name": "spectator-corrected 1/alpha_GUT is ~16.810",
+        "passed": true,
+        "detail": "16.810"
+      },
+      {
+        "name": "resetting 1/alpha_10(v_Phi)=40 is inconsistent with continuous running",
+        "passed": true,
+        "detail": "continuous cons=7.002, phys=10.435"
+      },
+      {
+        "name": "conservative continuous trajectory hits a Landau pole below M_Pl",
+        "passed": true,
+        "detail": "1/alpha(M_Pl)_cons=-6.547"
+      },
+      {
+        "name": "physical continuous trajectory is not weakly coupled at M_Pl",
+        "passed": true,
+        "detail": "alpha(M_Pl)_phys=0.614"
+      },
+      {
+        "name": "v20 'perturbative to M_Pl with alpha=1/40' claim fails under single RG trajectory",
+        "passed": true,
+        "detail": "requires two-loop thresholds or a revised scale choice"
+      }
+    ],
+    "incomplete_lagrangian": [
+      {
+        "name": "manuscript portal list is incomplete",
+        "passed": true,
+        "detail": "27 additional charge-allowed monomials"
+      },
+      {
+        "name": "P R 10_H is gauge and PQ invariant",
+        "passed": true,
+        "detail": "cross-pair mass/mixing after Phi and electroweak breaking"
+      },
+      {
+        "name": "Qbar R S^dagger is gauge and PQ invariant",
+        "passed": true,
+        "detail": "extra heavy-light / heavy-heavy portal"
+      },
+      {
+        "name": "important extra portals exist",
+        "passed": true,
+        "detail": "['P R H', 'Qbar R Sd', 'P P H', 'R R H']"
+      }
+    ],
+    "amplitude_scope": [
+      {
+        "name": "P=8 number is per-unit normalized coefficient only",
+        "passed": true,
+        "detail": "Wilson x Yukawa x Clebsch x flavour x RG tensors remain free"
+      },
+      {
+        "name": "sum over all P=8 topologies is not completed",
+        "passed": true,
+        "detail": "one selected graph is displayed"
+      },
+      {
+        "name": "broken-phase Clebsch/flavour fit is external",
+        "passed": true,
+        "detail": "cannot be closed by anomaly arithmetic alone"
+      }
+    ]
+  }
+}

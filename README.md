@@ -1,0 +1,82 @@
+# SO(10)×ℤ₁₇ axion candidate — v20 (pristine release)
+
+[![replicate](https://img.shields.io/badge/replicate-python%20replicate.py-blue)](REPLICATE.md)
+[![falsify](https://img.shields.io/badge/falsify-python%20falsify_v20.py-red)](FALSIFICATION.md)
+[![license](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+
+**Candidate field-theory construction — not a dark-matter discovery.**
+
+This repository is a pristine, self-contained release of the v20 Spin(10) axion
+package: anomaly cancellation, decay-safe anomalons, independent error audit,
+broken-phase 10+126 Clebsch/flavour fit, continuous threshold RG, and a
+36.6–37.6 GHz haloscope **forecast** (software only).
+
+Author: Joel Ayala-Baez (`jayalabaez@gmail.com`)
+
+## Quick start
+
+```bash
+python -m pip install -r requirements.txt
+python replicate.py
+```
+
+See [REPLICATE.md](REPLICATE.md) for the full pristine process and
+[FALSIFICATION.md](FALSIFICATION.md) for what already fails / what would kill
+the model.
+
+## What is confirmed (internal)
+
+- Continuous anomalies cancel with three complete pairs `(1,16)+(14,3)+(1,-18)`
+- One complete pair is impossible (discriminant `-15`) under the stated ansatz
+- Every `16` component has a nonzero `10_H` Clifford channel
+- Charge-based absence of vector-neutral PQ closure through `P=7`
+- Finite repeated-pole kernel for the displayed `P=8` graph
+
+## What is already soft-falsified (honest labelling)
+
+- $\Gamma\ge\lambda^2M/(32\pi)$ overclaim → massless formula is an **upper** benchmark
+- Resetting $\alpha_{10}^{-1}(v_\Phi)=40$ → inconsistent with continuous RG
+- Missing hermitian-conjugate factor in some NDA quality formulae
+- Incomplete renormalizable portal list
+- Unit-coefficient loop numbers are **not** physical predictions
+
+## External next steps (computed here)
+
+| Package | Result |
+|---|---|
+| 10+126 flavour fit at exact $v_R=v_S$ | viable, stressed vs natural ~$10^{14}$ GeV |
+| Continuous thresholds | $\alpha^{-1}(v_\Phi)\sim16.6$, not 40 |
+| 37 GHz forecast | MADMAX-like projection can reach the coupling (**software only**) |
+
+## Hard experimental falsifier
+
+A real null (or signal) scan of **36.6–37.6 GHz** at
+$g_{a\gamma\gamma}\sim2.3\times10^{-14}\,{\rm GeV}^{-1}$ by MADMAX / ALPHA / ORGAN
+(or equivalent). Templates:
+
+- `haloscope_37ghz_templates/v20_axion_lineshape_37GHz.csv`
+- `haloscope_37ghz_templates/v20_haloscope_target_brief.md`
+
+## Correct public claim
+
+> We have a theoretically consistent, anomaly-free SO(10)×ℤ₁₇ construction that
+> predicts a specific axion mass/coupling **window under stated benchmarks**.
+> Whether nature realises this model is still an open experimental question.
+
+Anything stronger is incorrect.
+
+## Layout
+
+```
+replicate.py / falsify_v20.py   # pristine gates
+data/frozen_inputs_v20.json     # frozen physics inputs
+golden/expected_anchors_v20.json
+axion_so10_theory_v20.tex/.pdf  # manuscript
+*_v20.py / test_*.py            # engines + tests
+V20_ERROR_AUDIT.md              # independent overclaim audit
+V20_EXTERNAL_NEXT_STEPS.md      # flavour / RG / haloscope summary
+```
+
+## License
+
+MIT — see [LICENSE](LICENSE).

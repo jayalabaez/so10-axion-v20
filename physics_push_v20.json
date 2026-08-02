@@ -1,0 +1,137 @@
+{
+  "status": "physics push complete within stated Lagrangian",
+  "completeness_gate": {
+    "fixed_by_stated_charges_and_tensors": [
+      "continuous anomaly cancellation",
+      "one-pair no-go (discriminant -15)",
+      "three-pair portal-basis uniqueness under the stated ansatz",
+      "existence of nonzero 10_H Clifford channels for every 16 component",
+      "charge-based absence of vector-neutral PQ closure through P=7",
+      "existence of at least one P=8 matching topology",
+      "finite repeated-pole momentum kernel for the displayed graph"
+    ],
+    "needs_additional_physical_inputs": [
+      "SO(10)-breaking Higgs vacuum alignment (210, 126, 10)",
+      "full Yukawa tensors Y_10, Y_126 and portal matrices lambda",
+      "broken-phase Clebsches for every SM component",
+      "two-loop threshold matching across M_I, M_GUT, v_Phi",
+      "Planck-scale Wilson coefficients and flavour contractions",
+      "radiative stabilization of v_Phi/v_S",
+      "cosmic-string network for (ell,n)=(13,-3)"
+    ],
+    "honest_gate": "v20 does not yet specify the broken-phase Higgs vacuum and Yukawa tensors well enough for a unique Clebsch/flavour prediction or a unique two-loop threshold trajectory"
+  },
+  "extra_portals": {
+    "n_charge_allowed_monomials": 33,
+    "manuscript_listed": [
+      "P F H",
+      "Phi R Rbar",
+      "Phid P Pbar",
+      "Phid Q Qbar",
+      "Qbar F Sd",
+      "R F H"
+    ],
+    "n_extra_charge_allowed": 30,
+    "extra_examples": [
+      "F Pbar Phid",
+      "F Rbar Phi",
+      "P P H",
+      "P R H",
+      "P Pbar Phid",
+      "P Rbar Phi",
+      "R R H",
+      "R Pbar Phid",
+      "R Rbar Phi",
+      "Q Qbar Phid",
+      "Qbar R Sd",
+      "Qbar Q Phid",
+      "Pbar F Phid",
+      "Pbar P Phid",
+      "Pbar R Phid",
+      "Rbar F Phi",
+      "Rbar P Phi",
+      "Rbar R Phi"
+    ],
+    "implication": "extra portals modify the 5x2 X=1 heavy-light mass block and the matching diagrams; they are fit parameters, not fixed predictions"
+  },
+  "continuous_spin10_rg": {
+    "conservative_complex_210": {
+      "b_10": 26.666666666666664,
+      "alpha_inv_GUT_after_spectators": 16.80980099901859,
+      "alpha_inv_vPhi": 7.002209821527774,
+      "alpha_vPhi": 0.14281205869118263,
+      "alpha_inv_MPl": -6.547316173959892,
+      "alpha_MPl": null,
+      "landau_pole_below_MPl": true,
+      "weakly_coupled_at_MPl_alpha_lt_0.25": false
+    },
+    "physical_real_210": {
+      "b_10": 17.333333333333332,
+      "alpha_inv_GUT_after_spectators": 16.80980099901859,
+      "alpha_inv_vPhi": 10.43486673364956,
+      "alpha_vPhi": 0.09583256073364851,
+      "alpha_inv_MPl": 1.6276748365825764,
+      "alpha_MPl": 0.6143733241582661,
+      "landau_pole_below_MPl": false,
+      "weakly_coupled_at_MPl_alpha_lt_0.25": false
+    },
+    "inconsistent_reset_alpha_inv_vPhi": 40.0,
+    "verdict": "single-trajectory one-loop Spin(10) running from the model's spectator-corrected alpha_GUT does not remain perturbative to M_Pl under either the conservative or physical beta used here"
+  },
+  "corrected_decays": {
+    "massless_lambda_1e-8": {
+      "massless_upper_benchmark_GeV": 0.07033721219977392,
+      "kinematic_factor": 1.0,
+      "width_GeV": 0.07033721219977392,
+      "lifetime_s": 9.357947753609086e-24,
+      "inequality": "Gamma <= |lambda|^2 M/(32 pi) for m_final < M"
+    },
+    "to_EW_scale_final": {
+      "massless_upper_benchmark_GeV": 0.07033721219977392,
+      "kinematic_factor": 1.0,
+      "width_GeV": 0.07033721219977392,
+      "lifetime_s": 9.357947753609086e-24,
+      "inequality": "Gamma <= |lambda|^2 M/(32 pi) for m_final < M"
+    },
+    "to_half_mass_final": {
+      "massless_upper_benchmark_GeV": 0.07033721219977392,
+      "kinematic_factor": 0.5625,
+      "width_GeV": 0.03956468186237283,
+      "lifetime_s": 1.663635156197171e-23,
+      "inequality": "Gamma <= |lambda|^2 M/(32 pi) for m_final < M"
+    },
+    "portal_for_tau_lt_1s_massless": 3.05907629091023e-20,
+    "portal_for_tau_lt_1s_half_mass": 4.0787683878803064e-20
+  },
+  "heavy_light_rank": {
+    "n_X1_sixteen_fields": 5,
+    "n_pairing_bars_in_Phi_sector": 2,
+    "generic_rank": 2,
+    "light_chiral_families": 3,
+    "stable_under_extra_PRH_portal": true,
+    "detail": "an extra P R 10_H term mixes heavies after EW breaking but does not by itself remove the three light combinations of the Phi-mass rank count"
+  },
+  "seesaw_benchmark_at_v20_scale": {
+    "assumptions": "Type-I toy with M_R = v_R, m1=0 normal ordering, no full Clebsch/10+126 textures",
+    "v_R_GeV": 631385500000.0,
+    "delta_m21_eV2": 7.41e-05,
+    "delta_m31_eV2": 0.002511,
+    "sum_mnu_eV": 0.058718014952133135,
+    "y_dirac_eff": [
+      0.0,
+      0.013398389710293234,
+      0.032326577851435244
+    ],
+    "y_dirac_max": 0.032326577851435244,
+    "perturbative_4pi": true,
+    "boundary_stress_4pi": false,
+    "note": "a genuine 10+126 fit at v_R=6.3e11 GeV can be more stressed than this Type-I lower bound; the single-scale identification is at best a constrained benchmark, not a zero-knob prediction"
+  },
+  "not_claimed": [
+    "experimental dark-matter detection",
+    "unique broken-phase flavour solution",
+    "two-loop threshold unification fit",
+    "proof that nature realizes the model"
+  ],
+  "bottom_line": "The anomaly/minimality/portal-existence core survives. The single-scale UV-perturbativity claim does not survive continuous one-loop Spin(10) running. v20 remains a candidate model, not evidence that an axion has been found."
+}

@@ -1,0 +1,91 @@
+{
+  "status": "constrained 10+126 Clebsch/flavour benchmark",
+  "method": "down-diagonal Clebsch reconstruction + Type-I+II seesaw",
+  "clebsch_relations": {
+    "H": "(3 M_d + M_e)/(4 v_d)",
+    "F": "(M_d - M_e)/(4 v_d)",
+    "M_u": "v_u (H + F)  [soft target]",
+    "M_D": "v_u (H - 3 F)",
+    "M_R": "v_R F",
+    "m_nu": "M_L - M_D M_R^{-1} M_D^T"
+  },
+  "n_observables_in_chi2": 8,
+  "best_overall": {
+    "tag": "natural_1e14",
+    "v_r_GeV": 100000000000000.0,
+    "chi2": 3.6634617685478044,
+    "max_abs_pull": 1.9016666556269977,
+    "pulls": {
+      "sin2_th12": -0.0005646420875859981,
+      "sin2_th23": 3.239541167913511e-05,
+      "sin2_th13": -0.006308215572085654,
+      "dm21": -0.00029257170033961935,
+      "dm31": -0.0005729376361882088,
+      "delta_deg": 1.9016666556269977,
+      "up_clebsch_mismatch": 0.19825506414918054,
+      "sum_mnu": 0.0882048845237654
+    },
+    "observables": {
+      "mnu_eV": [
+        0.003801849957966121,
+        0.009452696861715513,
+        0.05027364856126898
+      ],
+      "sum_mnu_eV": 0.06352819538095061,
+      "dm21_eV2": 7.489941485659933e-05,
+      "dm31_eV2": 0.0025129856765590953,
+      "sin2_th12": 0.30799322429494896,
+      "sin2_th23": 0.47000048593117516,
+      "sin2_th13": 0.022146215070656748,
+      "delta_cp_deg": 278.5583329469449,
+      "tan_beta": 41.338069578693386,
+      "y10_max": 0.7439228731875495,
+      "y126_max": 0.24893585285712663,
+      "up_clebsch_mismatch": 0.06938927245221319,
+      "perturbative_4pi": true
+    },
+    "y126_max": 0.24893585285712663,
+    "perturbative_4pi": true
+  },
+  "v20_single_scale_point": {
+    "v_r_GeV": 631385500000.0,
+    "chi2": 11.656730932846537,
+    "pulls": {
+      "sin2_th12": 0.2699316215050522,
+      "sin2_th23": 0.04523264667159651,
+      "sin2_th13": 0.01776244115571715,
+      "dm21": 0.14659128058210152,
+      "dm31": -0.040083483012955806,
+      "delta_deg": 1.9940734477176274,
+      "up_clebsch_mismatch": 2.753395258088624,
+      "sum_mnu": 0.02993834676344124
+    },
+    "observables": {
+      "mnu_eV": [
+        0.0021091261865751726,
+        0.008924214017607452,
+        0.05016419366635502
+      ],
+      "sum_mnu_eV": 0.06119753387053765,
+      "dm21_eV2": 7.519318256116421e-05,
+      "dm31_eV2": 0.002511997912924676,
+      "sin2_th12": 0.3112391794580606,
+      "sin2_th23": 0.4706784897000739,
+      "sin2_th13": 0.02216065746469343,
+      "delta_cp_deg": 281.79257067011696,
+      "tan_beta": 1.5000000000002063,
+      "y10_max": 0.028293384389298286,
+      "y126_max": 0.015155841713014104,
+      "up_clebsch_mismatch": 0.9636883403310184,
+      "perturbative_4pi": true
+    },
+    "max_abs_pull": 2.753395258088624,
+    "y10_max": 0.028293384389298286,
+    "y126_max": 0.015155841713014104,
+    "perturbative_4pi": true,
+    "boundary_stress": false,
+    "single_scale_viable": true,
+    "note": "exact identification M_R scale = v_S; large chi2 means the single-scale claim is stressed or falsified inside this Clebsch ansatz"
+  },
+  "scope": "Fits the renormalizable 10+126 Clebsch sector. Does not uniquely fix anomalon portal flavour matrices or the full 210-breaking vacuum."
+}

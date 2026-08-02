@@ -1,0 +1,591 @@
+{
+  "theorem": {
+    "k_min": 5,
+    "residues": [
+      2,
+      11
+    ],
+    "lift": [
+      2,
+      -6
+    ],
+    "sums": [
+      -34,
+      -272,
+      -16592
+    ]
+  },
+  "rephasing": {
+    "rank_full": 6,
+    "rank_no_lock": 5,
+    "null_vector": [
+      4.0,
+      18.0,
+      -36.0,
+      -36.0,
+      2.0,
+      -6.0
+    ]
+  },
+  "unification": {
+    "M_I": 631385523052.4453,
+    "M_GUT": 9917564798898132.0,
+    "inv_alpha": 37.31304523437261
+  },
+  "spectator": {
+    "y_s": 1.4142135623730951,
+    "M_s": 631385523052.4453,
+    "delta_inv_alpha": -20.50319139152029,
+    "inv_alpha_after": 16.80985384285232
+  },
+  "axion": {
+    "f_a": 37140324885.43796,
+    "m_a_ueV": 153.478732821612,
+    "m_a_err_ueV": 2.0328308982994967,
+    "nu_GHz": 37.11099249343847,
+    "nu_err_GHz": 0.49153632441640355,
+    "g": 2.334890528735036e-14,
+    "g_err": 1.2508342118223408e-15
+  },
+  "cosmology": {
+    "theta_i": 2.908098372287116,
+    "H_I_max": 906876.4803832935,
+    "dlnOmega_dtheta": 2.3436423528533368
+  },
+  "proton": {
+    "median_yr": 1.062181253730011e+35,
+    "SK_excluded_pct": 35.03,
+    "HK_new_pct": 14.36,
+    "seed": 20260801,
+    "priors": "printed in manuscript Table 1"
+  },
+  "topology": {
+    "N_DW_physical": 1,
+    "string_sector": [
+      13,
+      -3
+    ],
+    "S_winding_over_2pi": 0.0588235294117645
+  },
+  "quality": {
+    "status": "Z17 alone is sufficient under the stated Wilsonian-NDA assumptions",
+    "method": {
+      "catalogue": "Lorentz-parity and Spin(10)-centre necessary-condition superset",
+      "vacuum_conditions": [
+        "spectator vector V=0",
+        "nonzero Q_PQ divisible by 68"
+      ],
+      "suppression_exponent": "P = sum_i (d_i - 4)",
+      "assumption": "all relevant Wilson coefficients are O(1) at M_Pl and all matching-scale vevs/masses are <= M_s"
+    },
+    "local_operator_minimum_dimension": 6,
+    "pq_conserving_vector_breaker_minimum_dimension": 8,
+    "renormalizable_vector_breakers": [],
+    "explicit_operator_regressions": {
+      "O6_portal": {
+        "label": "F b Sd^3",
+        "dimension": 6,
+        "pq": -17,
+        "m17": -1,
+        "spectator_vector": -1,
+        "spin10_centre_mod4": 0,
+        "triality_mod3": 2,
+        "n_fermions": 2,
+        "planck_power": 2
+      },
+      "O8_vector_breaker": {
+        "label": "s^4 Sd^2",
+        "dimension": 8,
+        "pq": 0,
+        "m17": 0,
+        "spectator_vector": 4,
+        "spin10_centre_mod4": 0,
+        "triality_mod3": 1,
+        "n_fermions": 4,
+        "planck_power": 4
+      },
+      "O9_one_sided": {
+        "label": "b^2 Sd^5 Hm",
+        "dimension": 9,
+        "pq": -34,
+        "m17": -2,
+        "spectator_vector": -2,
+        "spin10_centre_mod4": 0,
+        "triality_mod3": 1,
+        "n_fermions": 2,
+        "planck_power": 5
+      },
+      "O10_six_fermion": {
+        "label": "b^6 Hp",
+        "dimension": 10,
+        "pq": -34,
+        "m17": -2,
+        "spectator_vector": -6,
+        "spin10_centre_mod4": 0,
+        "triality_mod3": 0,
+        "n_fermions": 6,
+        "planck_power": 6
+      },
+      "O12_mixed": {
+        "label": "F s^3 Sd^6",
+        "dimension": 12,
+        "pq": -17,
+        "m17": -1,
+        "spectator_vector": 3,
+        "spin10_centre_mod4": 0,
+        "triality_mod3": 0,
+        "n_fermions": 4,
+        "planck_power": 8
+      },
+      "O19_dirac": {
+        "label": "s b Sd^16",
+        "dimension": 19,
+        "pq": -68,
+        "m17": -4,
+        "spectator_vector": 0,
+        "spin10_centre_mod4": 0,
+        "triality_mod3": 0,
+        "n_fermions": 2,
+        "planck_power": 15
+      },
+      "O20_family": {
+        "label": "F^2 S^16 Hp",
+        "dimension": 20,
+        "pq": 68,
+        "m17": 4,
+        "spectator_vector": 0,
+        "spin10_centre_mod4": 0,
+        "triality_mod3": 0,
+        "n_fermions": 2,
+        "planck_power": 16
+      }
+    },
+    "vacuum_closure_minimum": {
+      "overcatalogue_result": {
+        "P": 12,
+        "Q_PQ": -68,
+        "V": 0,
+        "operators": [
+          {
+            "multiplicity": 4,
+            "label": "F b Sd^3",
+            "dimension": 6,
+            "pq": -17,
+            "m17": -1,
+            "spectator_vector": -1,
+            "spin10_centre_mod4": 0,
+            "triality_mod3": 2,
+            "n_fermions": 2,
+            "planck_power": 2
+          },
+          {
+            "multiplicity": 1,
+            "label": "s^4 Sd^2",
+            "dimension": 8,
+            "pq": 0,
+            "m17": 0,
+            "spectator_vector": 4,
+            "spin10_centre_mod4": 0,
+            "triality_mod3": 1,
+            "n_fermions": 4,
+            "planck_power": 4
+          }
+        ]
+      },
+      "explicit_SO10_certificate": {
+        "P": 12,
+        "Q_PQ": -68,
+        "V": 0,
+        "operators": [
+          {
+            "multiplicity": 4,
+            "label": "F b Sd^3",
+            "dimension": 6,
+            "pq": -17,
+            "m17": -1,
+            "spectator_vector": -1,
+            "spin10_centre_mod4": 0,
+            "triality_mod3": 2,
+            "n_fermions": 2,
+            "planck_power": 2
+          },
+          {
+            "multiplicity": 1,
+            "label": "s^4 Sd^2",
+            "dimension": 8,
+            "pq": 0,
+            "m17": 0,
+            "spectator_vector": 4,
+            "spin10_centre_mod4": 0,
+            "triality_mod3": 1,
+            "n_fermions": 4,
+            "planck_power": 4
+          }
+        ],
+        "closure": "four spectator s-b chirality flips and two ordinary-family 10_H-channel chirality flips"
+      }
+    },
+    "delta_theta_NDA_per_Ceff": 4.517919865879382e-28,
+    "maximum_Ceff_at_1e-10": 2.2134080056449984e+17,
+    "scalar_only": {
+      "leading_operator": "S^17/M_Pl^13",
+      "leading_dimension": 17,
+      "delta_theta_scalar": 3.23578170128096e-37,
+      "minimum_safe_dimension": 14,
+      "v_s_quality_ceiling_GeV": 22831326071348.695
+    },
+    "one_sided_majorana_result": "no phase-dependent one-insertion Coleman-Weinberg term",
+    "optional_Z3_diagnostic_only": {
+      "local_minimum_dimension": 10,
+      "vacuum_closure_minimum_P": 13,
+      "z51_anomalies": {
+        "crt_charges": {
+          "F": 18,
+          "s": 19,
+          "b": 11
+        },
+        "mixed": 408,
+        "gravitational": 3264,
+        "cubic": 935136,
+        "quotients": [
+          8,
+          64,
+          18336
+        ],
+        "all_divisible_by_51": true
+      },
+      "model_choice": "not imposed; unnecessary and would make the lightest spectator-triality state exactly stable"
+    },
+    "catalogue_sizes": {
+      "Z17": 38,
+      "Z17_with_optional_Z3": 12
+    }
+  },
+  "referee_audit": {
+    "status": "P=12 saturation survives explicit Spin(10), Lorentz and Fermi-statistics audit",
+    "clifford": {
+      "clifford_max_error": 0.0,
+      "charge_conjugation_max_error": 0.0,
+      "chirality_plus": 16,
+      "chirality_minus": 16,
+      "C_is_antisymmetric": true,
+      "C_anticommutes_with_chirality": true,
+      "vector_bilinears_symmetric": true,
+      "conjugate_vector_bilinears_symmetric": true,
+      "vector_bilinear_gram": [
+        [
+          16,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          16,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          16,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          16,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          16,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          16,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          16,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          16,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          16,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          16
+        ]
+      ]
+    },
+    "anomalies": {
+      "linear": 1088,
+      "cubic": 107168,
+      "mixed_spin10": 136,
+      "linear_mod17": 0,
+      "cubic_mod17": 0,
+      "mixed_mod17": 0
+    },
+    "invariants": {
+      "O6_singlet": {
+        "name": "(F b)_1",
+        "grassmann_monomials": 32,
+        "coefficient_norm_squared": 32,
+        "nonzero": true
+      },
+      "O8": {
+        "name": "[(s s)_10]^2",
+        "grassmann_monomials": 240,
+        "coefficient_norm_squared": 122880,
+        "nonzero": true
+      },
+      "O10": {
+        "name": "[(b b)_10]^2 (b b)_10.H",
+        "grassmann_monomials": 2560,
+        "coefficient_norm_squared": 8257536,
+        "nonzero": true
+      },
+      "O12": {
+        "name": "(F s)_10 (s s)_10",
+        "grassmann_monomials": 960,
+        "coefficient_norm_squared": 30720,
+        "nonzero": true
+      },
+      "closure_tensor_nonzero_entries": 640,
+      "closure_group_factor": 2560,
+      "graph_group_contraction_unit_10H": 256,
+      "graph_10H_contraction_gram": [
+        [
+          256,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          256,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          256,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          256,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          256,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          256,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          256,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          256,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          256,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          256
+        ]
+      ],
+      "graph_group_contraction_formula": "256 (10_H_dagger dot 10_H_dagger)",
+      "closure_lorentz_factor": 4
+    },
+    "vacuum_graph": {
+      "planck_spurions": {
+        "O6": 4,
+        "O8": 1
+      },
+      "P": 12,
+      "Q_PQ": -68,
+      "spectator_vector": 0,
+      "vertices_compact_graph": 5,
+      "internal_fermion_lines": 6,
+      "loops": 2,
+      "same_chirality_propagators": {
+        "spectator_s_b": 4,
+        "family_10H_channel": 2
+      },
+      "resulting_scalar_phase": "(S_dagger)^18 (10_H_dagger)^2",
+      "resulting_scalar_Q_PQ": -68,
+      "NDA_bound_per_Ceff": 4.517917226627945e-28,
+      "two_loop_factor": 4.010149318236069e-05,
+      "EW_chirality_factor_upper": 1.5180322788599233e-19,
+      "diagrammatic_estimate_per_Ceff": 2.750298425064228e-51
+    },
+    "interpretation": {
+      "rigorous_bound": "4.52e-28 times C_eff under the stated Wilsonian assumptions",
+      "specific_P12_graph": "nonzero, two-loop, and requires two 10_H-channel family chirality flips",
+      "specific_graph_estimate": "<=2.8e-51 times C_eff when v_10<=246 GeV, before flavor factors",
+      "remaining_scope": "UV origin of Z17 and all threshold-generated PQ breaking are not proven"
+    }
+  },
+  "failures": [],
+  "n_checks_failed": 0,
+  "n_checks_total": 65
+}

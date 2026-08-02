@@ -1,0 +1,78 @@
+{
+  "status": "haloscope scan forecast complete (software only)",
+  "benchmark": {
+    "m_a_ueV": 153.5,
+    "m_a_uncertainty_ueV": 2.0,
+    "nu_central_Hz": 37116134874.29479,
+    "nu_central_GHz": 37.116134874294794,
+    "window_GHz": [
+      36.63253702576978,
+      37.5997327228198
+    ],
+    "recommended_scan_GHz": [
+      36.6,
+      37.6
+    ],
+    "g_agamma_GeV_inv": 2.335e-14,
+    "g_agamma_uncertainty": 1.25e-15,
+    "E_over_N": 2.6666666666666665,
+    "f_a_GeV": 37140323529.411766,
+    "halo_Q": 1000000.0,
+    "linewidth_kHz": 37.116134874294794
+  },
+  "forecast": {
+    "technology": "dielectric_disk_stack_MADMAX_like",
+    "scan_GHz": [
+      36.6,
+      37.6
+    ],
+    "n_channels": 25,
+    "channel_MHz": 40.0,
+    "t_sys_K": 8.0,
+    "t_per_channel_s": 604800.0,
+    "total_integration_days": 175.0,
+    "B_T": 10.0,
+    "area_m2": 1.0,
+    "boost_beta2": 100000.0,
+    "expected_signal_power_W": 1.7759690553745926e-22,
+    "dicke_pmin_5sigma_W": 1.36810287285886e-22,
+    "expected_SNR": 6.49062687684967,
+    "discovery_threshold_SNR": 5.0,
+    "reaches_v20_coupling": true,
+    "cavity_comparison": {
+      "volume_m3": 6.590210074997963e-08,
+      "expected_power_W": 5.569352759554145e-32,
+      "note": "traditional cavity volume is tiny at 37 GHz; dielectric/plasma preferred"
+    },
+    "collaborations": [
+      "MADMAX",
+      "ALPHA",
+      "ORGAN"
+    ],
+    "reference_assumption": "7 days per 40 MHz window, Tsys=8 K, beta2=5e4, B=10 T, A=1 m^2 (MADMAX full-scale order-of-magnitude)"
+  },
+  "mock_scan_with_injected_signal": {
+    "inject_signal": true,
+    "injected": {
+      "nu_GHz": 37.116134874294794,
+      "m_a_ueV": 153.5,
+      "peak_power_W": 1.7759690553745926e-22
+    },
+    "matched_filter_SNR": 6.525764273616471,
+    "expected_SNR": 6.49062687684967,
+    "discovery_claimed": true,
+    "disclaimer": "MOCK DATA ONLY. This is a software radiometer simulation, not a physical measurement. It cannot discover dark matter."
+  },
+  "mock_scan_null": {
+    "inject_signal": false,
+    "matched_filter_SNR": 0.03513739676680126,
+    "expected_SNR": 0.0,
+    "discovery_claimed": false,
+    "disclaimer": "MOCK DATA ONLY. This is a software radiometer simulation, not a physical measurement. It cannot discover dark matter."
+  },
+  "templates": [
+    "C:\\Users\\jayal\\Downloads\\So10Theory2\\So10Theory\\axion-so10-theory\\package\\haloscope_37ghz_templates\\v20_axion_lineshape_37GHz.csv",
+    "C:\\Users\\jayal\\Downloads\\So10Theory2\\So10Theory\\axion-so10-theory\\package\\haloscope_37ghz_templates\\v20_haloscope_target_brief.md"
+  ],
+  "verdict": "The 36.6\u201337.6 GHz window is experimentally targetable with dielectric/plasma haloscopes at the v20 coupling. A software mock scan is NOT a discovery. Only a real instrument can confirm or refute the all-DM benchmark."
+}

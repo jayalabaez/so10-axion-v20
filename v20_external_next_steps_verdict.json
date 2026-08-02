@@ -1,0 +1,51 @@
+{
+  "flavour": {
+    "best_tag": "natural_1e14",
+    "chi2_best": 3.6634617685478044,
+    "v_r_best_GeV": 100000000000000.0,
+    "chi2_v20_scale": 11.656730932846537,
+    "y126_max_v20": 0.015155841713014104,
+    "perturbative_v20": true,
+    "single_scale_viable": true,
+    "sum_mnu_eV_v20": 0.06119753387053765,
+    "sin2_th13_v20": 0.02216065746469343,
+    "finding": "Classic 10+126 Clebsches fit NuFIT at both a natural v_R~1e14 GeV (best) and the exact v20 scale v_R=v_S (viable but higher chi2). Single-scale is a stressed benchmark, not a zero-knob prediction."
+  },
+  "thresholds": {
+    "MI_one_GeV": 631385523052.4453,
+    "MI_two_GeV": 160982556355.7405,
+    "MGUT_one_GeV": 9917564798898132.0,
+    "MGUT_two_GeV": 1152023707592892.8,
+    "alpha_inv_GUT_one": 37.31304523437261,
+    "alpha_inv_GUT_two": 37.376618044042196,
+    "alpha_inv_GUT_after_spectators_two": 18.54172405931166,
+    "alpha_inv_vPhi_phys_two": 16.647292142507524,
+    "alpha_MPl_phys_two": 0.09358475823033058,
+    "alpha_MPl_cons_two": 0.18285101757858585,
+    "weakly_coupled_phys_two": true
+  },
+  "threshold_regression_ok": {
+    "expect_MI_one": 631390000000.0,
+    "expect_MGUT_one": 9917600000000000.0,
+    "expect_IU_one": 37.313,
+    "MI_one_ok": true,
+    "MGUT_one_ok": true,
+    "IU_one_ok": true
+  },
+  "haloscope": {
+    "window_GHz": [
+      36.6,
+      37.6
+    ],
+    "nu_GHz": 37.116134874294794,
+    "expected_SNR": 6.49062687684967,
+    "reaches_v20_coupling": true,
+    "mock_discovery_claimed_software_only": true,
+    "physical_detection": false,
+    "templates": [
+      "C:\\Users\\jayal\\Downloads\\So10Theory2\\So10Theory\\axion-so10-theory\\package\\haloscope_37ghz_templates\\v20_axion_lineshape_37GHz.csv",
+      "C:\\Users\\jayal\\Downloads\\So10Theory2\\So10Theory\\axion-so10-theory\\package\\haloscope_37ghz_templates\\v20_haloscope_target_brief.md"
+    ]
+  },
+  "bottom_line": "External next steps are computed. The 10+126 fit works at v_R=v_S with higher chi2 than a natural ~1e14 GeV scale. Continuous thresholds reject the alpha=1/40 reset. A MADMAX-like forecast can reach the 37 GHz coupling in software \u2014 that is not a dark-matter discovery."
+}

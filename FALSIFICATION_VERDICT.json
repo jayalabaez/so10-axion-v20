@@ -1,0 +1,147 @@
+{
+  "status": "PASS",
+  "n_checks": 15,
+  "n_hard_failed": 0,
+  "n_soft_overclaim_missed": 0,
+  "failures": [],
+  "checks": [
+    {
+      "name": "independent anomaly audit status PASS",
+      "passed": true,
+      "detail": "PASS",
+      "kind": "hard"
+    },
+    {
+      "name": "continuous anomalies cancel",
+      "passed": true,
+      "detail": "exact (0,0,0)",
+      "kind": "hard"
+    },
+    {
+      "name": "one-pair no-go discriminant -15",
+      "passed": true,
+      "detail": "-15",
+      "kind": "hard"
+    },
+    {
+      "name": "detect Gamma inequality overclaim",
+      "passed": true,
+      "detail": "Gamma <= massless upper benchmark",
+      "kind": "soft_overclaim"
+    },
+    {
+      "name": "detect alpha_10=1/40 reset overclaim",
+      "passed": true,
+      "detail": "continuous trajectory differs from reset",
+      "kind": "soft_overclaim"
+    },
+    {
+      "name": "detect incomplete portal list",
+      "passed": true,
+      "detail": "extra charge-allowed portals exist",
+      "kind": "soft_overclaim"
+    },
+    {
+      "name": "one-loop M_I matches golden",
+      "passed": true,
+      "detail": "6.313855e+11",
+      "kind": "hard"
+    },
+    {
+      "name": "one-loop M_GUT matches golden",
+      "passed": true,
+      "detail": "9.917565e+15",
+      "kind": "hard"
+    },
+    {
+      "name": "continuous alpha_inv(v_Phi) is not the 1/40 reset",
+      "passed": true,
+      "detail": "16.647 vs 40",
+      "kind": "soft_overclaim"
+    },
+    {
+      "name": "v20-scale flavour point remains perturbative",
+      "passed": true,
+      "detail": "y126_max=0.015155841713014104",
+      "kind": "stress"
+    },
+    {
+      "name": "v20-scale flavour chi2 is finite and < 100",
+      "passed": true,
+      "detail": "chi2=11.657",
+      "kind": "stress"
+    },
+    {
+      "name": "natural higher v_R can improve on exact v_S identification",
+      "passed": true,
+      "detail": "best=3.663 @ 1.000e+14; v20=11.657",
+      "kind": "stress"
+    },
+    {
+      "name": "37 GHz benchmark sits inside recommended scan window",
+      "passed": true,
+      "detail": "37.1161 GHz in [36.6,37.6]",
+      "kind": "hard"
+    },
+    {
+      "name": "package does not claim physical dark-matter detection",
+      "passed": true,
+      "detail": "The 36.6\u201337.6 GHz window is experimentally targetable with dielectric/plasma hal",
+      "kind": "hard"
+    },
+    {
+      "name": "physics push refuses discovery claim",
+      "passed": true,
+      "detail": "not_claimed includes detection",
+      "kind": "hard"
+    }
+  ],
+  "stress_tests": [
+    {
+      "name": "v20-scale flavour point remains perturbative",
+      "passed": true,
+      "detail": "y126_max=0.015155841713014104",
+      "kind": "stress"
+    },
+    {
+      "name": "v20-scale flavour chi2 is finite and < 100",
+      "passed": true,
+      "detail": "chi2=11.657",
+      "kind": "stress"
+    },
+    {
+      "name": "natural higher v_R can improve on exact v_S identification",
+      "passed": true,
+      "detail": "best=3.663 @ 1.000e+14; v20=11.657",
+      "kind": "stress"
+    }
+  ],
+  "already_soft_falsified_overclaims": [
+    "correct inequality is Gamma <= massless benchmark",
+    "manuscript portal list is incomplete",
+    "v20 'perturbative to M_Pl with alpha=1/40' claim fails under single RG trajectory"
+  ],
+  "external_hard_falsifiers": [
+    {
+      "test": "Null haloscope scan of 36.6\u201337.6 GHz at g_agamma <= 2.3e-14 GeV^{-1}",
+      "kills": "all-DM benchmark mass/coupling window",
+      "status": "NOT DONE \u2014 requires MADMAX/ALPHA/ORGAN (or equivalent)"
+    },
+    {
+      "test": "Demonstration that no portal Yukawa set yields anomalon lifetimes < 1 s after full Clebsches",
+      "kills": "decay-safe completion claim",
+      "status": "OPEN \u2014 needs full broken-phase spectrum, not just channel existence"
+    },
+    {
+      "test": "Two-loop threshold analysis proving Landau pole below M_Pl for all allowed vacua",
+      "kills": "Planck-cutoff field-theory completion claim",
+      "status": "PARTIALLY OPEN \u2014 continuous one-loop already stresses the old 1/40 reset"
+    },
+    {
+      "test": "Proof that required PQ-breaking Wilson coefficients exceed quality bounds",
+      "kills": "axion quality",
+      "status": "OPEN \u2014 unit-coefficient diagnostics are not Wilson predictions"
+    }
+  ],
+  "verdict": "Internal hard consistency survives. Several manuscript overclaims are already soft-falsified and must stay labelled as such. The all-DM 37 GHz benchmark is experimentally falsifiable but has not been scanned at the required sensitivity in this repository."
+}
