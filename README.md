@@ -56,11 +56,13 @@ the model.
 ```bash
 python run_v20_referee_next.py
 python extensive_confirm_falsify_v20.py   # 48-check adversarial campaign
+python next_physics_analysis_v20.py      # astro/PQ/flavour×proton/reach triage
 ```
 
 See [EXTENSIVE_CONFIRM_FALSIFY.md](EXTENSIVE_CONFIRM_FALSIFY.md) for the full
 A–N attack surface (anomalies, portals, MC mass blocks, kernel, flavour,
-Wilson, haloscope, golden anchors). **Passing confirms internal consistency,
+Wilson, haloscope, golden anchors). See [NEXT_PHYSICS_ANALYSIS.md](NEXT_PHYSICS_ANALYSIS.md)
+for the next in-repo physics ledger. **Passing confirms internal consistency,
 not experimental discovery.**
 
 ## Hard experimental falsifier
@@ -84,6 +86,7 @@ Anything stronger is incorrect.
 
 ```
 replicate.py / falsify_v20.py / extensive_confirm_falsify_v20.py
+next_physics_analysis_v20.py    # astro ledger, PQ history, joint constraints
 data/frozen_inputs_v20.json     # frozen physics inputs
 golden/expected_anchors_v20.json
 axion_so10_theory_v20.tex/.pdf  # manuscript
@@ -91,6 +94,7 @@ axion_so10_theory_v20.tex/.pdf  # manuscript
 V20_ERROR_AUDIT.md              # independent overclaim audit
 V20_EXTERNAL_NEXT_STEPS.md      # flavour / RG / haloscope summary
 EXTENSIVE_CONFIRM_FALSIFY.md    # strongest in-repo attack battery
+NEXT_PHYSICS_ANALYSIS.md        # next physically meaningful analyses
 ```
 
 ## License

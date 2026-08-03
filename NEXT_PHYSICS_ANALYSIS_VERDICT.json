@@ -1,0 +1,305 @@
+{
+  "status": "PASS",
+  "n_checks": 8,
+  "n_failed": 0,
+  "failures": [],
+  "astrophysics_ledger": {
+    "v20": {
+      "m_a_ueV": 153.5,
+      "g_agamma_GeV_inv": 2.335e-14,
+      "f_a_GeV": 37140323529.411766
+    },
+    "bounds": [
+      {
+        "bound": "CAST helioscope (2024)",
+        "g_limit_GeV_inv": 5.8e-11,
+        "applies_at_153ueV": true,
+        "excludes_v20": false,
+        "margin_v20_over_limit": 0.00040258620689655173,
+        "source": "CAST PRL 133, 221005 (2024); g < 5.8e-11 GeV^{-1}"
+      },
+      {
+        "bound": "HB / globular-cluster stellar cooling",
+        "g_limit_GeV_inv": 6.6e-11,
+        "applies_at_153ueV": true,
+        "excludes_v20": false,
+        "margin_v20_over_limit": 0.0003537878787878788,
+        "source": "Ayala et al. / CAST GC revisits; ~6e-11 GeV^{-1} order"
+      },
+      {
+        "bound": "MADMAX prototype (published)",
+        "g_limit_GeV_inv": 2e-11,
+        "applies_at_153ueV": false,
+        "excludes_v20": false,
+        "margin_v20_over_limit": 0.0011675000000000001,
+        "source": "MADMAX proto ~77\u201380 \u00b5eV; v20 needs ~37 GHz full booster"
+      },
+      {
+        "bound": "ORGAN design band",
+        "g_limit_GeV_inv": null,
+        "applies_at_153ueV": true,
+        "excludes_v20": false,
+        "margin_v20_over_limit": null,
+        "source": "ORGAN targets ~63\u2013207 \u00b5eV; 153.5 \u00b5eV inside design window"
+      }
+    ],
+    "currently_excluded_by_listed_bounds": false,
+    "verdict": "v20 coupling sits ~2500\u00d7 below CAST/HB limits; existing published haloscope exclusions do not cover 153.5 \u00b5eV at QCD strength. Window remains experimentally open."
+  },
+  "pq_history": {
+    "f_a_GeV": 37140323529.411766,
+    "Omega_DM_target": 0.12,
+    "scenarios": {
+      "pre_inflationary_PQ": {
+        "description": "PQ broken before/during inflation; no post-inflation domain walls; isocurvature constrains H_I.",
+        "theta_i_for_all_DM": 2.9080983907321203,
+        "H_I_max_GeV": 906876.4125605313,
+        "domain_walls": "absent (inflation dilutes)",
+        "viable_if": "H_I <~ 9.07e+05 GeV and theta_i ~ 2.91"
+      },
+      "post_inflationary_standard_N17": {
+        "description": "Naive N_DW=17 walls from cover anomaly \u2014 cosmologically dangerous unless bias or inflation intervenes.",
+        "N_DW_cover": 17,
+        "dangerous_without_bias": true,
+        "note": "v20 uses (ell,n)=(13,-3) to arrange physical wall number 1"
+      },
+      "post_inflationary_v20_13_m3": {
+        "description": "Gauged string + residual discrete holonomy (13,-3) with physical wall number 1; analytic G mu below PTA ballpark.",
+        "physical_wall_number": 1,
+        "G_mu": 4.2244594441479266e-13,
+        "G_mu_over_1e-10": 0.004224459444147927,
+        "lattice_still_required": true,
+        "T_RH_1e10": {
+          "T_RH_GeV": 10000000000.0,
+          "restores_U1X_Phi": false,
+          "restores_S_vev": false,
+          "benchmark_comment": "For T_RH ~ 1e10 GeV, Phi stays broken while S can be restored, producing a post-inflation discrete-string network from S."
+        },
+        "T_RH_1e15": {
+          "T_RH_GeV": 1000000000000000.0,
+          "restores_U1X_Phi": false,
+          "restores_S_vev": true,
+          "benchmark_comment": "For T_RH ~ 1e10 GeV, Phi stays broken while S can be restored, producing a post-inflation discrete-string network from S."
+        },
+        "T_RH_above_T_c_Phi": {
+          "T_RH_GeV": 3.3000000000000004e+16,
+          "restores_U1X_Phi": true,
+          "restores_S_vev": true,
+          "benchmark_comment": "For T_RH ~ 1e10 GeV, Phi stays broken while S can be restored, producing a post-inflation discrete-string network from S."
+        }
+      }
+    },
+    "abundance_vs_theta": [
+      {
+        "theta_i": 0.1,
+        "Omega_a_h2_proxy": 3.955969165447554e-05,
+        "overcloses": false
+      },
+      {
+        "theta_i": 0.5,
+        "Omega_a_h2_proxy": 0.0010178839502917438,
+        "overcloses": false
+      },
+      {
+        "theta_i": 1.0,
+        "Omega_a_h2_proxy": 0.004455777684433799,
+        "overcloses": false
+      },
+      {
+        "theta_i": 1.5,
+        "Omega_a_h2_proxy": 0.011674459125642044,
+        "overcloses": false
+      },
+      {
+        "theta_i": 2.0,
+        "Omega_a_h2_proxy": 0.025940832385561635,
+        "overcloses": false
+      },
+      {
+        "theta_i": 2.9080983907321203,
+        "Omega_a_h2_proxy": 0.11999999999995027,
+        "overcloses": false
+      },
+      {
+        "theta_i": 3.0915926535897933,
+        "Omega_a_h2_proxy": 0.22149670547520606,
+        "overcloses": true
+      }
+    ],
+    "verdict": "Pre-inflationary all-DM needs theta_i~2.91 and H_I\u22729e5 GeV. Post-inflationary viability leans on the (13,-3) one-wall sector; lattice network evolution remains external."
+  },
+  "joint_flavour_proton": {
+    "unification": {
+      "M_GUT_GeV": 9917564798898132.0,
+      "alpha_inv_GUT": 37.31304523437261,
+      "tau_p_benchmark_yr": 5.480476036121611e+35,
+      "below_SK_2p4e34": false,
+      "below_HyperK_1e35": false,
+      "note": "Benchmark lifetime at central M_GUT with fixed hadronic factors; full MC spread is in so10_axion_v17_engine (~35% SK-excluded)."
+    },
+    "flavour_vr_scan_light": [
+      {
+        "v_R_GeV": 1000000000000.0,
+        "chi2_best_light_search": 565.1573098967551,
+        "perturbative": true,
+        "sum_mnu_eV": 0.5877046446788334,
+        "is_v20_scale": false
+      },
+      {
+        "v_R_GeV": 631385500000.0,
+        "chi2_best_light_search": 88.351830669838,
+        "perturbative": true,
+        "sum_mnu_eV": 0.0653562392646404,
+        "is_v20_scale": true
+      },
+      {
+        "v_R_GeV": 10000000000000.0,
+        "chi2_best_light_search": 23.19867126855498,
+        "perturbative": true,
+        "sum_mnu_eV": 0.06558148604767738,
+        "is_v20_scale": false
+      },
+      {
+        "v_R_GeV": 100000000000000.0,
+        "chi2_best_light_search": 4.666811635862116,
+        "perturbative": true,
+        "sum_mnu_eV": 0.07055119515749941,
+        "is_v20_scale": false
+      },
+      {
+        "v_R_GeV": 1000000000000000.0,
+        "chi2_best_light_search": 9.199952137780048,
+        "perturbative": true,
+        "sum_mnu_eV": 0.059416811310784,
+        "is_v20_scale": false
+      }
+    ],
+    "flavour_package": {
+      "best_tag": "natural_1e14",
+      "best_chi2": 3.6634617685478044,
+      "best_v_R": 100000000000000.0,
+      "v20_chi2": 11.656730932846537,
+      "v20_perturbative": true,
+      "v20_viable_chi2_lt_30": true
+    },
+    "joint_tension": {
+      "exact_vR_equals_vS_flavour_stressed": true,
+      "proton_central_above_SK": true,
+      "compatible_window_exists": true
+    },
+    "verdict": "Central M_GUT lifetime sits near/above SK; flavour prefers natural ~1e14 GeV over exact v_R=v_S but the single-scale point remains viable inside the Clebsch ansatz. Joint window not closed."
+  },
+  "experiment_reach": {
+    "target_window_GHz": [
+      36.6,
+      37.6
+    ],
+    "target_g_GeV_inv": 2.335e-14,
+    "experiments": [
+      {
+        "name": "MADMAX (full)",
+        "covers_37GHz": true,
+        "status": "R&D / staged; design aims ~40\u2013400 \u00b5eV QCD axion",
+        "can_reach_v20_g_projected": true,
+        "priority": 1
+      },
+      {
+        "name": "ORGAN",
+        "covers_37GHz": true,
+        "status": "operating / upgraded; design includes ~63\u2013207 \u00b5eV",
+        "can_reach_v20_g_projected": "partial_to_full_depending_on_stage",
+        "priority": 1
+      },
+      {
+        "name": "ALPHA / broadband dielectric",
+        "covers_37GHz": true,
+        "status": "proposed / R&D",
+        "can_reach_v20_g_projected": true,
+        "priority": 2
+      },
+      {
+        "name": "ADMX / CAPP cavities",
+        "covers_37GHz": false,
+        "status": "optimized for lower GHz / \u00b5eV decades",
+        "can_reach_v20_g_projected": false,
+        "priority": 3
+      },
+      {
+        "name": "CAST / IAXO helioscopes",
+        "covers_37GHz": false,
+        "status": "solar axions; g limit ~1e-11, far above v20 DM coupling",
+        "can_reach_v20_g_projected": false,
+        "priority": 4
+      }
+    ],
+    "recommended_contact_list": [
+      "MADMAX (full)",
+      "ORGAN"
+    ],
+    "verdict": "Highest-leverage physical next step: engage MADMAX/ORGAN (and ALPHA-class) with the in-repo 37 GHz templates."
+  },
+  "bbn_lifetime_grid": {
+    "portal_floor_tau_lt_1s": 3.8694594465069766e-20,
+    "grid": [
+      {
+        "portal": 3.869459446506977e-21,
+        "worst_lifetime_s": 99.99999999999997,
+        "all_below_1s": false,
+        "bbn_safe_proxy": false
+      },
+      {
+        "portal": 1.9347297232534883e-20,
+        "worst_lifetime_s": 3.9999999999999996,
+        "all_below_1s": false,
+        "bbn_safe_proxy": false
+      },
+      {
+        "portal": 3.8694594465069766e-20,
+        "worst_lifetime_s": 0.9999999999999999,
+        "all_below_1s": true,
+        "bbn_safe_proxy": true
+      },
+      {
+        "portal": 7.738918893013953e-20,
+        "worst_lifetime_s": 0.24999999999999997,
+        "all_below_1s": true,
+        "bbn_safe_proxy": true
+      },
+      {
+        "portal": 3.8694594465069766e-19,
+        "worst_lifetime_s": 0.009999999999999998,
+        "all_below_1s": true,
+        "bbn_safe_proxy": true
+      },
+      {
+        "portal": 3.8694594465069764e-17,
+        "worst_lifetime_s": 1e-06,
+        "all_below_1s": true,
+        "bbn_safe_proxy": true
+      },
+      {
+        "portal": 3.869459446506976e-12,
+        "worst_lifetime_s": 1e-16,
+        "all_below_1s": true,
+        "bbn_safe_proxy": true
+      }
+    ],
+    "verdict": "For |lambda| >~ 3.87e-20 all components decay before 1 s (BBN-safe proxy). Smaller portals need a Boltzmann network."
+  },
+  "quality_boundary": {
+    "unit_kernel_worst_phase": 6.043043168794402e-47,
+    "max_abs_Ceff_for_quality_1e-10": 1.6547953937577147e+36,
+    "O1_mild_grow_Ceff": 0.7409038653453398,
+    "O1_mild_grow_safe": true,
+    "C_1e6_Ceff": 7.409038653453417e+29,
+    "C_1e6_safe": true,
+    "verdict": "Quality tolerates |C_eff| up to ~1.65e+36. O(1) and even forced 1e6 Planck Wilson envelopes remain safe in this schematic."
+  },
+  "still_external": [
+    "physical 36.6\u201337.6 GHz haloscope scan",
+    "lattice (13,-3) string-network simulation",
+    "complete Wilson operator-basis mixing",
+    "independent human diagrammatic review"
+  ],
+  "verdict": "Next in-repo physics analyses completed: v20 remains open vs CAST/HB, cosmologically viable under stated PQ scenarios, jointly compatible with flavour+proton benchmarks inside documented stress, and prioritizes MADMAX/ORGAN for a real scan. Not a discovery."
+}
