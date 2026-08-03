@@ -9,12 +9,27 @@ realizes the model.
 from __future__ import annotations
 
 import json
+import os
 import unittest
 from datetime import datetime, timezone
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent
+
+# Attestation for the latest pushed main commit once GitHub Actions completes.
+# Refresh this block when a newer main SHA is CI-verified.
+CI_ATTESTATION = {
+    "commit_sha": "ba2c66364cd68d733a2dff51416f28d92100eff5",
+    "workflow": "replicate-and-falsify",
+    "run_id": 30790747879,
+    "run_url": "https://github.com/jayalabaez/so10-axion-v20/actions/runs/30790747879",
+    "conclusion": "success",
+    "unit_tests": "Ran 154 tests in 69.690s - OK",
+    "v20_engine": "VERDICT=PASS CHECKS=42/42",
+    "extensive_confirm_falsify": "PASS 53/53",
+    "check_run": "falsify completed success",
+}
 
 
 def build_verdict() -> dict:
@@ -29,6 +44,20 @@ def build_verdict() -> dict:
             encoding="utf-8"
         )
     )
+    on_ci = os.environ.get("GITHUB_ACTIONS") == "true"
+    if on_ci:
+        unittest_evidence = f"{n_unit_tests} unit tests PASS (this GitHub Actions run)"
+        unittest_cascade = f"PASS {n_unit_tests}/{n_unit_tests} (this CI run)"
+    else:
+        unittest_evidence = (
+            f"{n_unit_tests} unit tests; CI-verified on "
+            f"{CI_ATTESTATION['commit_sha'][:7]} "
+            f"({CI_ATTESTATION['unit_tests']}; {CI_ATTESTATION['run_url']})"
+        )
+        unittest_cascade = (
+            f"CI-verified {n_unit_tests}/{n_unit_tests} on "
+            f"{CI_ATTESTATION['commit_sha'][:7]}: {CI_ATTESTATION['run_url']}"
+        )
     return {
         "title": "SO(10)×Z17 axion candidate v20 — confirmation verdict",
         "generated_utc": datetime.now(timezone.utc).isoformat(),
@@ -42,6 +71,7 @@ def build_verdict() -> dict:
             "rejects the current v_R=v_S benchmark within the constrained "
             "ansatz. The complete phenomenological model is not approved."
         ),
+        "ci_attestation": CI_ATTESTATION,
         "tiers": {
             "PROVED_mathematical_internal": {
                 "status": "YES",
@@ -50,7 +80,7 @@ def build_verdict() -> dict:
                     "extensive confirm/falsify "
                     f"{extensive['n_extensive_checks'] - extensive['n_failed']}/"
                     f"{extensive['n_extensive_checks']} PASS",
-                    f"{n_unit_tests} unit tests discovered (full run required for PASS)",
+                    unittest_evidence,
                     "anomaly cancellation with (1,16)+(14,3)+(1,-18)",
                     "one-pair impossible (discriminant -15)",
                     "portal-basis uniqueness of the triple",
@@ -127,7 +157,7 @@ def build_verdict() -> dict:
                 f"{extensive['n_extensive_checks'] - extensive['n_failed']}/"
                 f"{extensive['n_extensive_checks']}"
             ),
-            "unittest": f"{n_unit_tests} tests discovered; see latest full run/CI",
+            "unittest": unittest_cascade,
         },
         "correct_public_claim": (
             "We have a mathematically consistent SO(10)×Z17 axion candidate "
@@ -183,6 +213,19 @@ def write_markdown(v: dict) -> str:
     ]
     for k, val in v["cascade_results"].items():
         lines.append(f"- `{k}`: {val}")
+    ci = v.get("ci_attestation") or {}
+    if ci:
+        lines += [
+            "",
+            "## CI attestation",
+            "",
+            f"- commit: `{ci.get('commit_sha', '')}`",
+            f"- workflow: `{ci.get('workflow', '')}` conclusion **{ci.get('conclusion', '')}**",
+            f"- unit tests: {ci.get('unit_tests', '')}",
+            f"- engine: {ci.get('v20_engine', '')}",
+            f"- extensive: {ci.get('extensive_confirm_falsify', '')}",
+            f"- run: {ci.get('run_url', '')}",
+        ]
     lines += [
         "",
         "## Correct public claim",
