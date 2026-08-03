@@ -96,7 +96,7 @@ def main() -> int:
     )
 
     suite = unittest.defaultTestLoader.discover(str(ROOT))
-    require(suite.countTestCases() == 102, f"expected 102 tests, found {suite.countTestCases()}")
+    require(suite.countTestCases() == 154, f"expected 154 tests, found {suite.countTestCases()}")
     run([sys.executable, "-m", "unittest", "-v"])
 
     pdflatex = shutil.which("pdflatex")
@@ -130,7 +130,7 @@ def main() -> int:
     metadata = subprocess.run(
         [pdfinfo, str(PDF)], cwd=ROOT, check=True, text=True, capture_output=True
     ).stdout
-    require("Pages:           11" in metadata, "expected an eleven-page manuscript")
+    require("Pages:           12" in metadata, "expected a twelve-page manuscript")
 
     core = [
         ROOT / "README.md",
@@ -142,6 +142,13 @@ def main() -> int:
         ROOT / "decay_threshold_v20.py",
         ROOT / "audit_v20_errors.py",
         ROOT / "physics_push_v20.py",
+        ROOT / "full_fermion_matching_v20.py",
+        ROOT / "tan_beta_profile_v20.py",
+        ROOT / "reanalysis_portal_beta_v20.py",
+        ROOT / "FERMION_PORTAL_CURRENT_THEOREM.md",
+        ROOT / "FULL_FERMION_MATCHING_V20_VERDICT.json",
+        ROOT / "TAN_BETA_PROFILE_V20_VERDICT.json",
+        ROOT / "V20_PORTAL_BETA_REANALYSIS_VERDICT.json",
         V20_ENGINE,
         V20_VERDICT,
         ROOT / "test_decay_safe_completion_v20.py",
@@ -159,7 +166,7 @@ def main() -> int:
     write_checksums(core)
     print(
         "RELEASE GATE PASS: v17 65/65; v19 59/59; v20 42/42; "
-        "tests 102/102; clean 11-page PDF"
+        "tests 154/154; clean 12-page PDF"
     )
     return 0
 

@@ -17,6 +17,7 @@ K. Golden anchors vs live recomputation
 L. Discrete Z17 residue uniqueness re-derivation
 M. Component lifetime floors across Clebsch envelopes
 N. Attempt P<8 with enlarged charge catalogues (should fail)
+O. Physical portal-current dependence + corrected tan(beta) profile
 
 This is the strongest *in-repo* confirmation battery. It cannot replace a
 physical 37 GHz scan or an independent human referee.
@@ -39,6 +40,7 @@ import audit_v20_errors as audit
 import decay_safe_completion_v20 as decay
 import decay_threshold_v20 as amp
 import flavour_clebsch_fit_v20 as flavour
+import full_fermion_matching_v20 as fermion_matching
 import heavy_light_spectrum_v20 as spectrum
 import haloscope_scan_37ghz_v20 as halo
 import p8_spin10_reconstruction_v20 as p8
@@ -359,8 +361,8 @@ def attack_flavour() -> list[dict]:
     rows.append(
         _row(
             "F_flavour",
-            "exact v_R=v_S remains viable but stressed (chi2<30)",
-            ss["chi2"] < 30.0 and bool(ss["perturbative_4pi"]),
+            "corrected exact v_R=v_S benchmark is not viable (chi2>30)",
+            ss["chi2"] > 30.0 and not ss["single_scale_viable"],
             f"chi2_v20={ss['chi2']:.3f}",
         )
     )
@@ -696,6 +698,69 @@ def attack_overclaim_detectors() -> list[dict]:
     return rows
 
 
+# ---------------------------------------------------------------------------
+# O. Fermion portal-current theorem and tan(beta) status
+# ---------------------------------------------------------------------------
+def attack_fermion_matching() -> list[dict]:
+    rows = []
+    report = fermion_matching.build_report()
+    scan = report["portal_current_result"]["scan"]
+    rows.append(
+        _row(
+            "O_fermion",
+            "moving-frame identity is algebraically verified",
+            scan["worst_moving_identity_error"] < 1e-8,
+            f"worst={scan['worst_moving_identity_error']:.3e}",
+        )
+    )
+    rows.append(
+        _row(
+            "O_fermion",
+            "physical projected current remains portal dependent",
+            scan["largest_projected_current_shift"] > 0.1,
+            f"shift={scan['largest_projected_current_shift']:.3e}",
+        )
+    )
+    rows.append(
+        _row(
+            "O_fermion",
+            "random Yukawa misalignment can generate FCNC current",
+            scan["largest_random_mass_basis_offdiagonal"] > 1e-3,
+            f"{scan['largest_random_mass_basis_offdiagonal']:.3e}",
+        )
+    )
+    low = report["aligned_numerical_examples_not_full_predictions"][
+        "tan_beta_1p5"
+    ]
+    rows.append(
+        _row(
+            "O_fermion",
+            "aligned central tan(beta)=1.5 benchmark reproduced",
+            abs(low["C_e"] - 0.04072398190036261) < 1e-14
+            and abs(low["C_p_central"] + 0.4721493212669636) < 1e-14
+            and abs(low["C_n_central"] - 0.0065837104071811425) < 1e-14,
+            (
+                f"({low['C_e']:.12f},{low['C_p_central']:.12f},"
+                f"{low['C_n_central']:.12f})"
+            ),
+        )
+    )
+    profile_path = ROOT / "TAN_BETA_PROFILE_V20_VERDICT.json"
+    profile = json.loads(profile_path.read_text(encoding="utf-8"))
+    rows.append(
+        _row(
+            "O_fermion",
+            "corrected fixed-vR profile does not establish unique tan(beta)",
+            not profile["unique_tan_beta_demonstrated"],
+            (
+                f"best tanbeta={profile['best_profile_point']['tan_beta']:.3f}, "
+                f"chi2={profile['best_profile_point']['chi2']:.3f}"
+            ),
+        )
+    )
+    return rows
+
+
 def build_report() -> dict:
     sections = [
         attack_anomalies(),
@@ -712,6 +777,7 @@ def build_report() -> dict:
         attack_z17(),
         attack_lifetimes(),
         attack_overclaim_detectors(),
+        attack_fermion_matching(),
     ]
     rows = [r for sec in sections for r in sec]
     failed = [r for r in rows if not r["passed"]]
@@ -752,6 +818,7 @@ def build_report() -> dict:
             "L Z17 residue uniqueness",
             "M lifetime floors + Clifford",
             "N soft-overclaim detectors",
+            "O physical portal current + corrected tan(beta) profile",
         ],
         "cannot_confirm_in_repo": [
             "physical detection of the 153.5 ueV axion",
@@ -761,8 +828,9 @@ def build_report() -> dict:
         "verdict": (
             "Extensive in-repo confirmation battery completed. Hard internal "
             "structure survives adversarial attacks; soft overclaims remain "
-            "correctly flagged. This confirms consistency of the candidate "
-            "theory, not that nature realizes it."
+            "correctly flagged. The corrected single-scale flavour benchmark "
+            "fails and full fermion matching is open; only the core field-theory "
+            "construction is internally confirmed."
         ),
     }
 

@@ -5,6 +5,8 @@ from __future__ import annotations
 
 import unittest
 
+import numpy as np
+
 import flavour_clebsch_fit_v20 as flavour
 import two_loop_thresholds_v20 as thresholds
 import haloscope_scan_37ghz_v20 as halo
@@ -25,12 +27,15 @@ class FlavourFitTests(unittest.TestCase):
         self.assertIn("H", self.report["clebsch_relations"])
         self.assertIn("F", self.report["clebsch_relations"])
 
-    def test_fit_is_finite_and_improved(self):
+    def test_corrected_single_scale_fit_is_finite_but_not_viable(self):
         ss = self.report["v20_single_scale_point"]
-        self.assertLess(ss["chi2"], 100.0)
+        self.assertTrue(ss["chi2"] < float("inf"))
+        self.assertGreater(ss["chi2"], 30.0)
+        self.assertFalse(ss["single_scale_viable"])
         self.assertGreater(ss["observables"]["sum_mnu_eV"], 0.0)
-        self.assertLess(ss["observables"]["sum_mnu_eV"], 0.2)
         self.assertTrue(ss["perturbative_4pi"])
+        self.assertTrue(ss["observables"]["takagi_reconstruction"])
+        self.assertTrue(ss["observables"]["charged_lepton_basis_included"])
 
     def test_natural_scale_can_beat_or_match_v20(self):
         bo = self.report["best_overall"]
@@ -38,6 +43,60 @@ class FlavourFitTests(unittest.TestCase):
         self.assertLess(bo["chi2"], 50.0)
         # Natural scale should not be dramatically worse than v20.
         self.assertLess(bo["chi2"], ss["chi2"] + 5.0)
+
+    def test_tan_beta_is_not_promoted_to_unique_prediction(self):
+        ss = self.report["v20_single_scale_point"]
+        self.assertFalse(ss["tan_beta_unique"])
+        self.assertFalse(ss["fermion_coupling_numeric_point_unique"])
+        self.assertFalse(self.report["tan_beta_status"]["unique_prediction"])
+        self.assertFalse(self.report["fit_validity"]["precision_global_fit"])
+
+    def test_takagi_reconstructs_complex_symmetric_matrix(self):
+        matrix = np.array(
+            [
+                [1.0 + 0.2j, 0.3 - 0.1j, -0.2j],
+                [0.3 - 0.1j, 2.0 - 0.4j, 0.5 + 0.1j],
+                [-0.2j, 0.5 + 0.1j, 0.7 + 0.3j],
+            ],
+            dtype=complex,
+        )
+        singular, unitary = flavour.takagi(matrix)
+        rebuilt = unitary @ np.diag(singular) @ unitary.T
+        self.assertTrue(np.allclose(matrix, rebuilt, rtol=1e-9, atol=1e-12))
+
+    def test_pmns_cp_quadrant_is_recovered_with_atan2(self):
+        target_delta = 212.0
+        unitary = flavour._rotation(
+            np.sqrt(0.308),
+            np.sqrt(0.470),
+            np.sqrt(0.02215),
+            np.radians(target_delta),
+        )
+        mnu = unitary @ np.diag([0.001e-9, 0.0087e-9, 0.05e-9]) @ unitary.T
+        me = np.diag([0.000511, 0.10566, 1.777]).astype(complex)
+        obs = flavour._pmns_from_matrices(mnu, me)
+        self.assertAlmostEqual(obs["delta_cp_deg"], target_delta, places=8)
+
+    def test_old_high_beta_witness_is_invalidated(self):
+        old = np.array(
+            [
+                1.5204965809107627,
+                -3.110498657825023,
+                -3.8399334743851044,
+                -3.2993019870703604,
+                6.023852953107562,
+                3.608822982208453,
+                4.194843000843401,
+                4.00662441306889,
+                -15.585375802580941,
+                -9.087776517267574,
+                -13.209366204805681,
+                -0.00019493846115192884,
+                -8.762536280151762,
+            ]
+        )
+        corrected_chi2, _ = flavour.chi2_from_params(old, flavour.VS)
+        self.assertGreater(corrected_chi2, 1e6)
 
 
 class ThresholdTests(unittest.TestCase):

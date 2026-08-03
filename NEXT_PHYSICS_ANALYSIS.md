@@ -1,6 +1,6 @@
 # Next physics analysis — v20
 
-**Status:** PASS — 8 checks, 0 failed
+**Status:** PASS — 10 checks, 0 failed
 
 ## 1. Astrophysics / lab ledger
 
@@ -21,12 +21,14 @@ Pre-inflationary all-DM needs theta_i~2.91 and H_I≲9e5 GeV. Post-inflationary 
 
 ## 3. Joint flavour × proton decay
 
-Central M_GUT lifetime sits near/above SK; flavour prefers natural ~1e14 GeV over exact v_R=v_S but the single-scale point remains viable inside the Clebsch ansatz. Joint window not closed.
+Central M_GUT lifetime sits near/above SK. After corrected Takagi/charged-lepton-basis extraction, the current v_R=v_S profile has no chi2<30 point, so the single-scale flavour benchmark is not viable within this constrained ansatz. A precision global fit remains external.
 
 - M_GUT = 9.9176e+15 GeV
 - τ_p benchmark = 5.480e+35 yr
-- flavour best χ² = 3.66 (natural_1e14)
-- exact v_R=v_S χ² = 11.66
+- flavour best χ² = 0.02 (natural_1e14)
+- exact v_R=v_S χ² = 594.24
+- fixed-v_R profile best: tanβ=2.00, χ²=51.10
+- unique tanβ: False
 
 ## 4. Experiment reach triage
 
@@ -51,4 +53,4 @@ Quality tolerates |C_eff| up to ~1.65e+36. O(1) and even forced 1e6 Planck Wilso
 
 ## Verdict
 
-Next in-repo physics analyses completed: v20 remains open vs CAST/HB, cosmologically viable under stated PQ scenarios, jointly compatible with flavour+proton benchmarks inside documented stress, and prioritizes MADMAX/ORGAN for a real scan. Not a discovery.
+Next in-repo analyses completed: the 37 GHz photon benchmark remains open and the central proton estimate is finite, but corrected Takagi/PMNS extraction rejects the constrained v_R=v_S flavour benchmark and full fermion portal matching remains open. MADMAX/ORGAN remain the direct-search priorities. Not a discovery.

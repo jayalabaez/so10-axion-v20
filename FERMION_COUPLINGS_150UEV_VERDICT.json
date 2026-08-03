@@ -1,110 +1,168 @@
 {
-  "status": "PROVISIONAL_LEADING_CURRENT_ONLY__FULL_V20_MATCHING_OPEN",
-  "correction": {
-    "previous_error": "The previous report promoted an ERT-like N=17 substitution to a completed v20 fermion matching and called the coupling gap closed.",
-    "what_survives": "The numerical ERT-like benchmark is arithmetically reproducible and uses the correct covering-space anomaly normalization together with the exact v20 f_a projection.",
-    "what_does_not_survive": "The PASS/full-model verdict. The v20 portal matrices and heavy-light diagonalization are not fixed, so exact low-energy C_e, C_p and C_n are not yet uniquely derived."
+  "status": "ALIGNED_LEADING_BENCHMARK_REPRODUCED__FULL_PORTAL_FLAVOUR_MATCHING_OPEN",
+  "correction_history": {
+    "first_overclaim": "Rounded N=17 formulas were called unique full-v20 values.",
+    "second_overclaim": "The moving-frame identity Q_proj+A_B=I was then mistaken for a portal-independent physical current.",
+    "current_resolution": "The physical projected current is Q_proj=I-4W and depends on the full A,B,C,D portals and their Yukawa alignment."
   },
   "normalization": {
-    "v_S_GeV": 631385500000.0,
-    "v_Phi_GeV": 1e+17,
-    "covering_QCD_anomaly_normalization": 17.0,
-    "physical_gauge_inequivalent_wall_count": 1,
-    "f_a_exact_GeV": 37140323529.37078,
-    "f_a_vS_over_17_GeV": 37140323529.411766,
-    "relative_projection_correction": -1.1035616864774056e-12,
-    "clarification": "The physical wall count N_wall=1 does not replace the covering anomaly 17 in local coupling normalization. Nevertheless, choosing 17 is only one part of the matching."
+    "D_GeV": 1.700000000001876e+18,
+    "f_a_GeV": 37140323529.37078,
+    "xi": 0.058823529411634885,
+    "one_over_17": 0.058823529411764705,
+    "xi_minus_one_over_17": -1.2981976604820034e-13,
+    "relative_fa_correction_vs_vS_over_17": -1.1035616864774056e-12,
+    "scope": "Exact in the reduced (a_Phi,a_S) phase theory. Electroweak-Higgs components are O(v_EW^2/v_S^2), below 1e-19.",
+    "physical_gauge_inequivalent_wall_count": 1
   },
-  "conditional_benchmarks": {
-    "tan_beta_1p5_fit_point": {
-      "classification": "PROVISIONAL_ERT_LEADING_CURRENT_EXTRAPOLATION",
+  "portal_current_status": {
+    "physical_regular_current": "Q_proj = I_3 - 4 W (pure PQ basis)",
+    "berry_connection": "A_B = +4 W",
+    "moving_frame_identity": "Q_proj + A_B = I_3",
+    "interpretation": "The moving-frame sum is coordinate-convention dependent. Physical derivative/Yukawa couplings retain Q_proj and are portal dependent.",
+    "full_block": "A,B,C,D with Schur complement A-C D^{-1}B; rank two is required for three light modes",
+    "scan": {
+      "trials": 256,
+      "seed": 20260803,
+      "worst_analytic_formula_error": 5.987563693889617e-11,
+      "worst_moving_identity_error": 5.98438205587699e-11,
+      "largest_projected_current_shift": 3.9999915369209447,
+      "largest_random_mass_basis_offdiagonal": 3.2523111669641054,
+      "C_portal_exercised": true,
+      "one_family_counterexample": {
+        "Q_projected_eigenvalues": [
+          -0.9999999999999999,
+          1.0,
+          1.0
+        ],
+        "berry_eigenvalues": [
+          0.0,
+          0.0,
+          1.9999999999999998
+        ],
+        "moving_sum_eigenvalues": [
+          0.9999999999999999,
+          1.0,
+          1.0
+        ],
+        "contains_minus_one_projected_charge": true,
+        "moving_sum_is_identity": true
+      },
+      "passes_fail_closed_detection": true
+    }
+  },
+  "aligned_symbolic_benchmark": {
+    "scope": "conditional on aligned projected current Q_proj=I",
+    "xi": "17 v_Phi^2 / ((17 v_Phi)^2 + (4 v_S)^2)",
+    "C_u0_Cc0_Ct0": "xi cos^2(beta)",
+    "C_d0_Cs0_Cb0_Ce": "xi sin^2(beta)",
+    "C_p_central": "-0.47 + xi*(0.8645 cos^2(beta) - 0.437 sin^2(beta))",
+    "C_n_central": "-0.02 + xi*(-0.4055 cos^2(beta) + 0.833 sin^2(beta))",
+    "precision_status": "Tree formulas are aligned-current benchmarks. Nucleon constants are central hadronic values and require threshold/RG matching."
+  },
+  "aligned_examples_not_full_predictions": {
+    "tan_beta_1p5": {
+      "classification": "ALIGNED_CURRENT_BENCHMARK_NOT_FULL_V20",
       "tan_beta": 1.5000000000002063,
       "sin2_beta": 0.6923076923077509,
       "cos2_beta": 0.3076923076922491,
-      "tree_quark_coefficients_if_no_portal_current_shift": {
-        "C_u0": 0.01809954751130877,
-        "C_d0": 0.04072398190045594
+      "tree": {
+        "C_u0": 0.018099547511268826,
+        "C_c0": 0.018099547511268826,
+        "C_t0": 0.018099547511268826,
+        "C_d0": 0.04072398190036606,
+        "C_s0": 0.04072398190036606,
+        "C_b0": 0.04072398190036606,
+        "C_e0": 0.04072398190036606
       },
-      "C_e": 0.04072398190045594,
-      "C_p": -0.47257918552036654,
-      "C_n": 0.006606334841633303,
-      "sigma_C_p_hadronic_illustrative": 0.03020689900345357,
-      "sigma_C_n_hadronic_illustrative": 0.03020689900345357,
-      "g_ae": 5.603050812009053e-16,
-      "g_ap": -1.1938718273913172e-11,
-      "g_an": 1.6712519395978133e-13,
-      "TRGB_limit_over_abs_g_ae": 232.01645739383662,
-      "SN1987A_quadratic_lhs": 8.591556906322154e-23,
-      "SN1987A_bound_over_lhs": 9614.089844323587,
-      "SN1987A_amplitude_margin": 98.05146528391907
+      "C_e": 0.04072398190036606,
+      "C_p_central": -0.47214932126696807,
+      "C_n_central": 0.006583710407185417,
+      "g_ae": 5.603050811996687e-16,
+      "g_ap_central": -1.1927858658478143e-11,
+      "g_an_central": 1.6655284740363878e-13,
+      "TRGB_limit_over_abs_g_ae": 232.01645739434866,
+      "SN1987A_quadratic_lhs_central": 8.576185730253501e-23,
+      "SN1987A_amplitude_margin_central": 98.1392952156377,
+      "hadronic_uncertainty": {
+        "model_independent_Cp": 0.03,
+        "model_independent_Cn": 0.03,
+        "note": "Central di Cortona/PDG matching; coefficients are correlated and the small C_n central value is not statistically robust."
+      },
+      "C_p": -0.47214932126696807,
+      "C_n": 0.006583710407185417,
+      "g_ap": -1.1927858658478143e-11,
+      "g_an": 1.6655284740363878e-13,
+      "SN1987A_quadratic_lhs": 8.576185730253501e-23,
+      "SN1987A_amplitude_margin": 98.1392952156377
     },
-    "tan_beta_41p34_comparison": {
-      "classification": "PROVISIONAL_ERT_LEADING_CURRENT_EXTRAPOLATION",
-      "tan_beta": 41.338069578693386,
-      "sin2_beta": 0.9994151485861503,
-      "cos2_beta": 0.0005848514138497114,
-      "tree_quark_coefficients_if_no_portal_current_shift": {
-        "C_u0": 3.440302434410067e-05,
-        "C_d0": 0.05878912638742061
+    "tan_beta_high": {
+      "classification": "ALIGNED_CURRENT_BENCHMARK_NOT_FULL_V20",
+      "tan_beta": 41.2996623,
+      "sin2_beta": 0.9994140609342475,
+      "cos2_beta": 0.0005859390657525498,
+      "tree": {
+        "C_u0": 3.4467003867720984e-05,
+        "C_c0": 3.4467003867720984e-05,
+        "C_t0": 3.4467003867720984e-05,
+        "C_d0": 0.05878906240776716,
+        "C_s0": 0.05878906240776716,
+        "C_b0": 0.05878906240776716,
+        "C_e0": 0.05878906240776716
       },
-      "C_e": 0.05878912638742061,
-      "C_p": -0.49642517624315985,
-      "C_n": 0.0293684168952088,
-      "sigma_C_p_hadronic_illustrative": 0.03020689900345357,
-      "sigma_C_n_hadronic_illustrative": 0.03020689900345357,
-      "g_ae": 8.088562241961217e-16,
-      "g_ap": -1.2541137030228685e-11,
-      "g_an": 7.429539203753137e-13,
-      "TRGB_limit_over_abs_g_ae": 160.720775968807,
-      "SN1987A_quadratic_lhs": 9.155458444553129e-23,
-      "SN1987A_bound_over_lhs": 9021.940353968987,
-      "SN1987A_amplitude_margin": 94.98389523476591
+      "C_e": 0.05878906240776716,
+      "C_p_central": -0.4956610235473506,
+      "C_n_central": 0.028957312615601687,
+      "g_ae": 8.088553439254987e-16,
+      "g_ap_central": -1.2521832321022178e-11,
+      "g_an_central": 7.325539203580502e-13,
+      "TRGB_limit_over_abs_g_ae": 160.72095087990655,
+      "SN1987A_quadratic_lhs_central": 9.132072269934691e-23,
+      "SN1987A_amplitude_margin_central": 95.10543882220333,
+      "hadronic_uncertainty": {
+        "model_independent_Cp": 0.03,
+        "model_independent_Cn": 0.03,
+        "note": "Central di Cortona/PDG matching; coefficients are correlated and the small C_n central value is not statistically robust."
+      },
+      "C_p": -0.4956610235473506,
+      "C_n": 0.028957312615601687,
+      "g_ap": -1.2521832321022178e-11,
+      "g_an": 7.325539203580502e-13,
+      "SN1987A_quadratic_lhs": 9.132072269934691e-23,
+      "SN1987A_amplitude_margin": 95.10543882220333
     }
   },
-  "conditional_bound_checks": {
-    "TRGB_electron": {
-      "limit_95CL": 1.3e-13,
-      "largest_ERT_like_prediction_tanbeta_1p5_to_50": 8.090059593508321e-16,
-      "limit_over_prediction": 160.69102890702493,
-      "conditional_pass": true,
-      "full_model_pass": null
-    },
-    "SN1987A_correlated_nucleon": {
-      "inequality": "g_an^2 + 0.61 g_ap^2 + 0.53 g_an g_ap < 8.26e-19",
-      "bound": 8.26e-19,
-      "largest_ERT_like_lhs_tanbeta_1p5_to_50": 9.155820406093956e-23,
-      "bound_over_lhs": 9021.583685173955,
-      "amplitude_margin": 94.98201769374009,
-      "conditional_pass": true,
-      "full_model_pass": null,
-      "caveat": "The supernova inequality is itself indicative and the couplings inserted here are provisional."
-    },
-    "universal_QCD_axion_SN": {
-      "f_a_lower_GeV_68CL": 110000000.0,
-      "v20_f_a_exact_GeV": 37140323529.37078,
-      "mass_upper_eV_68CL": 0.053,
-      "v20_mass_eV": 0.0001535,
-      "passes_model_independent_bound": true
-    }
+  "aligned_bound_checks_only": {
+    "tan_beta_interval": [
+      1.5,
+      50.0
+    ],
+    "TRGB_safe_central": true,
+    "SN1987A_safe_central": true,
+    "model_independent_SN_fa_pass": true,
+    "full_model_pass": null
   },
-  "portal_mixing_diagnostic_order_one": {
-    "classification": "DIAGNOSTIC_NOT_FULL_MATCHING",
+  "one_family_diagnostic": {
+    "classification": "PHYSICAL_PROJECTED_CURRENT_DIAGNOSTIC",
     "mixing_ratio_abs": 6.313855e-06,
-    "sin2_eta": 3.98647649594358e-11,
-    "light_PQ_charge_shift": -1.594590598377432e-10,
-    "message": "Order-one lambda_q/y_q makes this correction tiny, but the repository does not fix the portal matrix or y_q, so it cannot be set to zero in a final model verdict."
+    "Q_projected_eigenvalues": [
+      0.9999999998405411,
+      1.0,
+      1.0
+    ],
+    "projected_shift_norm": 1.5945889053625706e-10,
+    "berry_norm": 1.594590598377432e-10,
+    "moving_identity_error": 2.220446049250313e-16,
+    "physical_shift_is_zero": false,
+    "message": "Q_proj and the Berry connection sum to a coordinate identity, but Q_proj remains the portal-dependent regular current."
   },
   "missing_for_full_v20_matching": [
-    "Specify the complete generation-dependent Phi and S portal matrices.",
-    "Diagonalize the full axion-dependent 6x3 heavy-light 16/bar16 mass matrix.",
-    "Project the physical axion current onto the three light mass eigenstates.",
-    "Run quark coefficients through thresholds and RG evolution.",
-    "Propagate correlated hadronic uncertainties into C_p and C_n."
+    "complete representation-aware A,B,C,D portal tensors",
+    "component-level 10_H and 126_H Yukawa tensors",
+    "rotation of Q_proj into each SM fermion mass basis",
+    "heavy-threshold Wess-Zumino/anomaly matching",
+    "correct Takagi/PMNS flavour fit and a defensible tan(beta)",
+    "threshold/RG evolution and correlated hadronic matching"
   ],
-  "full_matching_under_stated_ansatz": {
-    "module": "full_fermion_matching_v20.py",
-    "doc": "FULL_FERMION_MATCHING_V20.md",
-    "note": "Unique C_e, C_p, C_n exist only after declaring the manuscript-minimal flavour-universal unit-Yukawa ansatz; see that module for the closed derivation."
-  },
-  "verdict": "The provisional ERT-like leading-current benchmark lies well below the displayed electron and nucleon bounds, and the universal supernova QCD-axion bound is passed. Exact unique C_e, C_p, C_n are not fixed by charges alone; under the stated manuscript-minimal universal ansatz they are derived in full_fermion_matching_v20.py (portal shifts negligible). The 37 GHz photon benchmark remains an open direct-search target."
+  "verdict": "The exact reduced normalization and aligned-current central benchmark are reproducible, but arbitrary anomalon portals can change Q_proj and generate flavour dependence. Exact full-v20 C_e,C_p,C_n and a full stellar/SN verdict remain open."
 }

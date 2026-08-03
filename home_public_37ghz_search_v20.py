@@ -197,7 +197,7 @@ def falsification_roadmap() -> dict:
         },
         "soft_kill_channels": [
             "NS-radio non-detection stacked over GRAVITAS targets after adequate exposure",
-            "Fermion-coupling revision: provisional ERT-like numbers are conditional; full portal matching remains open",
+            "Aligned fermion benchmark is safe, but full portal/Yukawa matching and stellar/SN verdict remain open",
             "Lattice (13,-3) cosmology incompatible with PTA/CMB",
         ],
         "does_not_count_as_falsification": [

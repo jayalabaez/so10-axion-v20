@@ -1,9 +1,9 @@
 {
   "status": "PASS",
-  "n_checks": 10,
+  "n_checks": 11,
   "n_failed": 0,
   "failures": [],
-  "honesty": "No public-data channel in this matrix *proves* the theory. Together they show the candidate remains viable under current indirect anchors and identify where to hunt next.",
+  "honesty": "No public-data channel in this matrix *proves* the theory. They leave the photon benchmark open, while full fermion matching and the corrected single-scale flavour sector remain unresolved.",
   "brainstorm_matrix": [
     {
       "id": "A_haloscope_templates",
@@ -25,11 +25,11 @@
     },
     {
       "id": "C_fermion_stellar_SN",
-      "channel": "Provisional ERT-like fermion couplings vs TRGB & SN (gap NOT closed)",
+      "channel": "Aligned C_f(tan beta) benchmark vs TRGB & SN",
       "public_data": "published g_ae, correlated SN1987A, universal SN f_a bound",
       "status": "RUNNABLE_NOW",
       "proves": false,
-      "tests": "conditional benchmark only; full portal matching open",
+      "tests": "aligned benchmark only; full portal/flavour matching open",
       "python": "fermion_couplings_150uev_v20.py"
     },
     {
@@ -198,18 +198,16 @@
   "executed": {
     "literature_photon": {
       "fails": false,
-      "sentence": "DOES NOT FAIL \u2014 no published bound excludes the v20 all-DM benchmark at 153.5 \u00b5eV / 37 GHz; the window is experimentally OPEN."
+      "sentence": "PHOTON BENCHMARK DOES NOT FAIL \u2014 no published direct bound excludes 153.5 \u00b5eV / 37 GHz at the quoted coupling. This does not clear the unresolved full fermion/flavour model."
     },
     "fermion": {
-      "status": "PROVISIONAL_LEADING_CURRENT_ONLY__FULL_V20_MATCHING_OPEN",
-      "TRGB_conditional_pass": true,
-      "TRGB_full_model_pass": null,
-      "SN_conditional_pass": true,
-      "SN_full_model_pass": null,
-      "safety_TRGB_conditional": 160.69102890702493,
-      "SN_amplitude_margin_conditional": 94.98201769374009,
-      "gap_closed": false,
-      "verdict": "The provisional ERT-like leading-current benchmark lies well below the displayed electron and nucleon bounds, and the universal supernova QCD-axion bound is passed. However, the v20 fermion coupling gap is NOT closed: exact C_e, C_p and C_n remain conditional on the unspecified heavy-light portal matching. The 37 GHz photon benchmark remains an open direct-search target."
+      "status": "ALIGNED_LEADING_BENCHMARK_REPRODUCED__FULL_PORTAL_FLAVOUR_MATCHING_OPEN",
+      "portal_gap_closed": false,
+      "portal_dependence_detected": true,
+      "aligned_TRGB_pass": true,
+      "aligned_SN_pass": true,
+      "full_model_pass": null,
+      "verdict": "The exact reduced normalization and aligned-current central benchmark are reproducible, but arbitrary anomalon portals can change Q_proj and generate flavour dependence. Exact full-v20 C_e,C_p,C_n and a full stellar/SN verdict remain open."
     },
     "pta_strings": {
       "v20_Gmu": 4.2244594441479266e-13,
@@ -277,5 +275,5 @@
     "Optional: SDR DSP twin using mock radiometer spectra",
     "Do NOT claim CMB map residuals as axion proof/falsification"
   ],
-  "verdict": "Inventoried 20 channels; 13 runnable now on this Python stack. Public/indirect tests leave v20 viable and do not prove it. Decisive evidence still requires B-field conversion (haloscope or NS-radio)."
+  "verdict": "Inventoried 20 channels; 13 runnable now on this Python stack. The 37 GHz photon benchmark is not excluded, but the complete phenomenological model is not validated. Decisive evidence still requires B-field conversion and the open theory matching."
 }

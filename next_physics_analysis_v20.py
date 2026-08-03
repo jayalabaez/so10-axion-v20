@@ -249,6 +249,12 @@ def joint_flavour_proton() -> dict:
     package = flavour.run_fit(seed=20)
     ss = package["v20_single_scale_point"]
     best = package["best_overall"]
+    beta_profile = json.loads(
+        ROOT.joinpath("TAN_BETA_PROFILE_V20_VERDICT.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    beta_best = beta_profile["best_profile_point"]
 
     return {
         "unification": {
@@ -270,6 +276,15 @@ def joint_flavour_proton() -> dict:
             "v20_chi2": ss["chi2"],
             "v20_perturbative": ss["perturbative_4pi"],
             "v20_viable_chi2_lt_30": ss["single_scale_viable"],
+            "tan_beta_unique": beta_profile["unique_tan_beta_demonstrated"],
+            "fixed_vR_profile_best_tan_beta": beta_best["tan_beta"],
+            "fixed_vR_profile_best_chi2": beta_best["chi2"],
+            "profile_improves_reference": beta_profile[
+                "corrected_profile_improves_reference"
+            ],
+            "any_profile_point_viable_chi2_lt_30": beta_profile[
+                "any_profile_point_viable_chi2_lt_30"
+            ],
         },
         "joint_tension": {
             "exact_vR_equals_vS_flavour_stressed": ss["chi2"] > best["chi2"] + 2.0,
@@ -279,9 +294,11 @@ def joint_flavour_proton() -> dict:
             ),
         },
         "verdict": (
-            "Central M_GUT lifetime sits near/above SK; flavour prefers natural "
-            "~1e14 GeV over exact v_R=v_S but the single-scale point remains viable "
-            "inside the Clebsch ansatz. Joint window not closed."
+            "Central M_GUT lifetime sits near/above SK. After corrected "
+            "Takagi/charged-lepton-basis extraction, the current v_R=v_S "
+            "profile has no chi2<30 point, so the single-scale flavour "
+            "benchmark is not viable within this constrained ansatz. A "
+            "precision global fit remains external."
         ),
     }
 
@@ -405,6 +422,17 @@ def build_report() -> dict:
         ("preinflation_theta_finite", math.isfinite(pq["scenarios"]["pre_inflationary_PQ"]["theta_i_for_all_DM"])),
         ("Gmu_below_1e-10", pq["scenarios"]["post_inflationary_v20_13_m3"]["G_mu"] < 1e-10),
         ("flavour_v20_chi2_finite", math.isfinite(joint["flavour_package"]["v20_chi2"])),
+        (
+            "flavour_tan_beta_nonunique_detected",
+            not joint["flavour_package"]["tan_beta_unique"],
+        ),
+        (
+            "corrected_single_scale_flavour_not_viable",
+            not joint["flavour_package"]["v20_viable_chi2_lt_30"]
+            and not joint["flavour_package"][
+                "any_profile_point_viable_chi2_lt_30"
+            ],
+        ),
         ("proton_central_finite", math.isfinite(joint["unification"]["tau_p_benchmark_yr"])),
         ("madmax_organ_priority", reach["recommended_contact_list"] == ["MADMAX (full)", "ORGAN"]),
         ("bbn_floor_positive", bbn["portal_floor_tau_lt_1s"] is not None and bbn["portal_floor_tau_lt_1s"] > 0),
@@ -430,10 +458,11 @@ def build_report() -> dict:
             "independent human diagrammatic review",
         ],
         "verdict": (
-            "Next in-repo physics analyses completed: v20 remains open vs "
-            "CAST/HB, cosmologically viable under stated PQ scenarios, jointly "
-            "compatible with flavour+proton benchmarks inside documented stress, "
-            "and prioritizes MADMAX/ORGAN for a real scan. Not a discovery."
+            "Next in-repo analyses completed: the 37 GHz photon benchmark remains "
+            "open and the central proton estimate is finite, but corrected "
+            "Takagi/PMNS extraction rejects the constrained v_R=v_S flavour "
+            "benchmark and full fermion portal matching remains open. "
+            "MADMAX/ORGAN remain the direct-search priorities. Not a discovery."
         ),
     }
 
@@ -473,6 +502,9 @@ def write_markdown(report: dict) -> str:
         f"- flavour best χ² = {report['joint_flavour_proton']['flavour_package']['best_chi2']:.2f} "
         f"({report['joint_flavour_proton']['flavour_package']['best_tag']})",
         f"- exact v_R=v_S χ² = {report['joint_flavour_proton']['flavour_package']['v20_chi2']:.2f}",
+        f"- fixed-v_R profile best: tanβ={report['joint_flavour_proton']['flavour_package']['fixed_vR_profile_best_tan_beta']:.2f}, "
+        f"χ²={report['joint_flavour_proton']['flavour_package']['fixed_vR_profile_best_chi2']:.2f}",
+        f"- unique tanβ: {report['joint_flavour_proton']['flavour_package']['tan_beta_unique']}",
         "",
         "## 4. Experiment reach triage",
         "",

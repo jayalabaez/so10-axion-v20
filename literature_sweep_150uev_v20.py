@@ -225,8 +225,9 @@ def classify(entries: list[dict]) -> dict:
             "FAIL — literature already excludes the v20 coupling at 153.5 µeV."
             if theory_fails_from_literature
             else (
-                "DOES NOT FAIL — no published bound excludes the v20 all-DM "
-                "benchmark at 153.5 µeV / 37 GHz; the window is experimentally OPEN."
+                "PHOTON BENCHMARK DOES NOT FAIL — no published direct bound "
+                "excludes 153.5 µeV / 37 GHz at the quoted coupling. This does "
+                "not clear the unresolved full fermion/flavour model."
             )
         ),
     }
@@ -267,7 +268,7 @@ def write_markdown(report: dict) -> str:
     lines = [
         "# Literature sweep — ~150 µeV axion bounds (v20)",
         "",
-        f"**Does the theory fail from published bounds?** {cls['one_sentence']}",
+        f"**Does the photon/local-DM benchmark fail from published bounds?** {cls['one_sentence']}",
         "",
         "## v20 target",
         "",

@@ -33,6 +33,12 @@ def main() -> int:
 
     ss = flav["v20_single_scale_point"]
     bo = flav["best_overall"]
+    beta_profile = json.loads(
+        (Path(__file__).resolve().parent / "TAN_BETA_PROFILE_V20_VERDICT.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    beta_best = beta_profile["best_profile_point"]
     summary = {
         "flavour": {
             "best_tag": bo["tag"],
@@ -44,11 +50,17 @@ def main() -> int:
             "single_scale_viable": ss.get("single_scale_viable"),
             "sum_mnu_eV_v20": ss["observables"].get("sum_mnu_eV"),
             "sin2_th13_v20": ss["observables"].get("sin2_th13"),
+            "tan_beta_unique": beta_profile["unique_tan_beta_demonstrated"],
+            "fixed_vR_profile_best_tan_beta": beta_best["tan_beta"],
+            "fixed_vR_profile_best_chi2": beta_best["chi2"],
+            "fixed_vR_profile_has_viable_point": beta_profile[
+                "any_profile_point_viable_chi2_lt_30"
+            ],
             "finding": (
-                "Classic 10+126 Clebsches fit NuFIT at both a natural "
-                "v_R~1e14 GeV (best) and the exact v20 scale v_R=v_S "
-                "(viable but higher chi2). Single-scale is a stressed "
-                "benchmark, not a zero-knob prediction."
+                "Correct Takagi/charged-lepton-basis extraction gives a good "
+                "underconstrained natural-v_R benchmark, but no chi2<30 point "
+                "in the current fixed-v_R=v_S profile. The earlier viable "
+                "single-scale claim was an invalid diagonalization artifact."
             ),
         },
         "thresholds": thr["comparison"],
@@ -66,7 +78,7 @@ def main() -> int:
         },
         "bottom_line": (
             "External next steps are computed. The 10+126 fit works at "
-            "v_R=v_S with higher chi2 than a natural ~1e14 GeV scale. "
+            "a natural v_R, but the corrected v_R=v_S profile is not viable. "
             "Continuous thresholds reject the alpha=1/40 reset. A "
             "MADMAX-like forecast can reach the 37 GHz coupling in "
             "software — that is not a dark-matter discovery."
@@ -86,11 +98,17 @@ def main() -> int:
 | Exact v20 scale $v_R=v_S$ | {ss['chi2']:.3f} | {ss['v_r_GeV']:.3e} GeV | {ss['y126_max']:.3f} | {ss['observables'].get('sum_mnu_eV', float('nan')):.4f} eV |
 
 **Finding:** the classic $10_H+\\overline{{126}}_H$ Clebsch ansatz fits NuFIT at a
-**natural** B–L scale ~$10^{{14}}$ GeV ($\\chi^2\\approx{bo['chi2']:.2f}$) and remains
-**viable** at the exact v20 identification $v_R=v_S$ ($\\chi^2\\approx{ss['chi2']:.2f}$,
+**natural** B–L scale ~$10^{{14}}$ GeV ($\\chi^2\\approx{bo['chi2']:.2f}$), while it is
+**not viable** at the exact v20 identification $v_R=v_S$ ($\\chi^2\\approx{ss['chi2']:.2f}$,
 $\\sum m_\\nu\\approx{ss['observables'].get('sum_mnu_eV', float('nan')):.4f}$ eV,
-$y_{{126,\\max}}\\approx{ss['y126_max']:.3f}$). Single-scale is therefore a
-stressed benchmark, not a zero-knob prediction.
+$y_{{126,\\max}}\\approx{ss['y126_max']:.3f}$). The constrained single-scale
+benchmark is rejected by this objective.
+
+At fixed $v_R=v_S$, the corrected explicit profile finds
+$\\tan\\beta={beta_best['tan_beta']:.2f}$ with
+$\\chi^2={beta_best['chi2']:.2f}$; no scanned point has $\\chi^2<30$.
+Thus the constrained single-scale fit fails, while a full precision global
+flavour fit remains external.
 
 ## 2. Two-loop threshold RG
 

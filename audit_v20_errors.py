@@ -268,6 +268,61 @@ def amplitude_scope_audit() -> list[dict]:
     ]
 
 
+def fermion_current_audit() -> list[dict]:
+    """Independent one-family connection check and exact beta normalization."""
+    ratio = VS / VPHI
+    sin2_eta = ratio**2 / (1.0 + ratio**2)
+    projected = 1.0 - 4.0 * sin2_eta
+    connection = 4.0 * sin2_eta
+    moving_total = projected + connection
+
+    d = math.hypot(17.0 * VPHI, 4.0 * VS)
+    xi = 17.0 * VPHI**2 / d**2
+    tan_beta = 1.5
+    sin2_beta = tan_beta**2 / (1.0 + tan_beta**2)
+    cos2_beta = 1.0 - sin2_beta
+    ce = xi * sin2_beta
+    cp = -0.47 + xi * (0.8645 * cos2_beta - 0.437 * sin2_beta)
+    cn = -0.02 + xi * (-0.4055 * cos2_beta + 0.833 * sin2_beta)
+
+    frozen = json.loads(
+        Path(__file__)
+        .resolve()
+        .parent.joinpath("data", "frozen_inputs_v20.json")
+        .read_text(encoding="utf-8")
+    )
+    benchmark = frozen["v20_benchmark"]
+    return [
+        _row(
+            "moving-frame identity does not erase projected portal shift",
+            abs(moving_total - 1.0) < 1e-15
+            and connection > 0.0
+            and projected != 1.0,
+            (
+                f"Qproj={projected:.16f}, Berry={connection:.3e}, "
+                f"sum={moving_total:.16f}"
+            ),
+        ),
+        _row(
+            "exact finite-vPhi xi is ~0.058823529411635",
+            abs(xi - 0.058823529411634885) < 1e-15,
+            f"{xi:.16f}",
+        ),
+        _row(
+            "aligned full-central hadronic benchmark replaces rounded ERT values",
+            abs(ce - 0.04072398190036261) < 1e-14
+            and abs(cp + 0.4721493212669636) < 1e-14
+            and abs(cn - 0.0065837104071811425) < 1e-14,
+            f"(Ce,Cp,Cn)=({ce:.12f},{cp:.12f},{cn:.12f})",
+        ),
+        _row(
+            "tan_beta is absent from frozen v20 inputs",
+            "tan_beta" not in benchmark,
+            "numeric C_e,C_p,C_n cannot be a frozen unique prediction",
+        ),
+    ]
+
+
 def build_audit() -> dict:
     sections = {
         "anomaly_core_survives": anomaly_cancellation(),
@@ -276,6 +331,7 @@ def build_audit() -> dict:
         "continuous_spin10_running": continuous_spin10_running_audit(),
         "incomplete_lagrangian": incomplete_lagrangian_audit(),
         "amplitude_scope": amplitude_scope_audit(),
+        "fermion_current_and_beta": fermion_current_audit(),
     }
     rows = [row for group in sections.values() for row in group]
     # Soft-falsification flags: overclaims that fail under corrected physics.

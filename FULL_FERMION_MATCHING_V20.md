@@ -1,49 +1,47 @@
-# Full v20 fermion matching — C_e, C_p, C_n
+# Full heavy-light fermion matching — fail-closed v20 status
 
-**Status:** `UNIQUE_UNDER_STATED_ANSATZ__HADRONIC_UNCERTAINTY_REMAINS`
+**Status:** `PORTAL_DEPENDENT_PHYSICAL_CURRENT__FULL_FERMION_MATCHING_OPEN__ALIGNED_BENCHMARK_ONLY`
 
-## Ansatz (required for uniqueness)
+## Correct current decomposition
 
-- Name: `manuscript_minimal_flavor_universal_unit_yukawa`
-- Without this ansatz the charge-allowed Lagrangian does not fix unique C_e, C_p, C_n. With it, they are unique up to hadronic matching uncertainty on C_p, C_n.
+- Physical projected current: `Q_proj = I_3 - 4 W`
+- Berry connection: `A_B = +4 W`
+- Moving-coordinate sum: `Q_proj + A_B = I_3`
+- The sum is basis/convention dependent; it is not the observable current.
 
-## Unique values at v20 tanβ = 1.5
+- Random full-block trials: 256
+- Largest physical projected shift: `4.000e+00`
+- Largest random mass-basis off-diagonal: `3.252e+00`
+- Moving-frame identity error: `5.984e-11`
 
-| Coefficient | Value |
-|---|---:|
-| C_e | `4.07239819e-02` |
-| C_p | `-4.72579186e-01` |
-| C_n | `6.60633484e-03` |
-| g_ae | `5.60305081e-16` |
-| g_ap | `-1.19387183e-11` |
-| g_an | `1.67125194e-13` |
-| max \|PQ shift\| | `1.595e-10` |
-| TRGB margin | `232.0` |
-| SN1987A amplitude margin | `98.1` |
+The scan includes the additionally allowed `S Q Rbar` portal through
+the full `A,B,C,D` Schur-complement block.
 
-## Portal-ratio robustness
+## Explicit equal-mixing counterexample
 
-- max \|ΔC_e\| in scan: `2.165e-10`
-- max \|ΔC_p\| in scan: `1.371e-11`
-- max \|ΔC_n\| in scan: `1.414e-10`
+- Projected-current eigenvalues: `[-0.9999999999999999, 1.0, 1.0]`
+- Berry eigenvalues: `[0.0, 0.0, 1.9999999999999998]`
+- Moving-sum eigenvalues: `[0.9999999999999999, 1.0, 1.0]`
 
-## Bound checks under ansatz
+## Aligned-current examples only
 
-- `TRGB_conditional`: True
-- `SN1987A_conditional`: True
-- `universal_SN_fa`: True
-- `portal_correction_below_hadronic_on_Cp`: True
-- `three_light_families`: True
-- `ansatz_fully_specified`: True
-- `full_model_pass_without_ansatz`: None
-- `full_model_pass_under_stated_ansatz`: True
+| tan(beta) | C_e | C_p central | C_n central |
+|---:|---:|---:|---:|
+| 1.5 | 0.0407239819004 | -0.472149321267 | 0.00658371040719 |
+| 41.2997 | 0.0587890624078 | -0.495661023547 | 0.0289573126156 |
 
-## Still open without the ansatz
+These numbers require `Q_proj=I` aligned with each SM Yukawa matrix.
+They are not exact full-v20 predictions.
 
-- Arbitrary generation-dependent λ_Q^{i}, λ_P^{iα}, λ_R^{iα}
-- Extra charge-allowed portals (PR 10_H, Qbar R S†, …) as free matrices
-- Correlated hadronic ΔC_p, ΔC_n beyond illustrative σ
+## Missing for closure
+
+- complete representation-aware A,B,C,D portal tensors
+- component-level 10_H and 126_H Yukawa tensors
+- rotation of Q_proj into each SM fermion mass basis
+- heavy-threshold Wess-Zumino/anomaly matching
+- correct Takagi/PMNS flavour fit and a defensible tan(beta)
+- threshold/RG evolution and correlated hadronic matching
 
 ## Verdict
 
-Under the stated ansatz `manuscript_minimal_flavor_universal_unit_yukawa`, the v20 couplings are uniquely derived at tanβ=1.500: C_e=4.072398e-02, C_p=-4.725792e-01, C_n=6.606335e-03. Portal-induced shifts are |ΔC_p|=1.371e-13 (≪ illustrative hadronic σ=3.021e-02). Without that ansatz the fermion gap remains open. The 37 GHz photon benchmark is independent and still experimentally open.
+The Berry cancellation identity is verified but does not close the physical portal gap. Q_proj=I-4W is portal dependent and can be flavour off-diagonal. The displayed C_f(tan beta) remain aligned benchmarks only. Exact full-v20 C_e,C_p,C_n are not derived.

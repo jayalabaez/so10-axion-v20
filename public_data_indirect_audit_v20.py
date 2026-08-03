@@ -68,11 +68,11 @@ def brainstorm_matrix() -> list[dict]:
         },
         {
             "id": "C_fermion_stellar_SN",
-            "channel": "Provisional ERT-like fermion couplings vs TRGB & SN (gap NOT closed)",
+            "channel": "Aligned C_f(tan beta) benchmark vs TRGB & SN",
             "public_data": "published g_ae, correlated SN1987A, universal SN f_a bound",
             "status": "RUNNABLE_NOW",
             "proves": False,
-            "tests": "conditional benchmark only; full portal matching open",
+            "tests": "aligned benchmark only; full portal/flavour matching open",
             "python": "fermion_couplings_150uev_v20.py",
         },
         {
@@ -348,16 +348,22 @@ def build_report() -> dict:
     checks = [
         ("literature_open", not lit_rep["classification"]["theory_fails_from_published_bounds"]),
         (
-            "fermion_conditional_trgb",
-            ferm["conditional_bound_checks"]["TRGB_electron"]["conditional_pass"],
+            "fermion_aligned_beta_envelope_trgb",
+            ferm["aligned_bound_checks_only"]["TRGB_safe_central"],
         ),
         (
-            "fermion_full_model_still_null",
-            ferm["conditional_bound_checks"]["TRGB_electron"]["full_model_pass"] is None,
+            "fermion_aligned_beta_envelope_sn",
+            ferm["aligned_bound_checks_only"]["SN1987A_safe_central"],
         ),
         (
-            "fermion_gap_not_closed",
-            "NOT closed" in ferm["verdict"] or "not closed" in ferm["verdict"].lower(),
+            "fermion_physical_portal_dependence_detected",
+            ferm["portal_current_status"]["scan"][
+                "passes_fail_closed_detection"
+            ],
+        ),
+        (
+            "fermion_full_model_pass_still_open",
+            ferm["aligned_bound_checks_only"]["full_model_pass"] is None,
         ),
         ("pta_gmu_below_1e-10", pta["below_nanograv_ballpark"]),
         ("cmb_not_useful", all(not r["useful_for_v20_DM_line_search"] for r in cmb["rows"])),
@@ -385,8 +391,8 @@ def build_report() -> dict:
         "failures": failed,
         "honesty": (
             "No public-data channel in this matrix *proves* the theory. "
-            "Together they show the candidate remains viable under current "
-            "indirect anchors and identify where to hunt next."
+            "They leave the photon benchmark open, while full fermion matching "
+            "and the corrected single-scale flavour sector remain unresolved."
         ),
         "brainstorm_matrix": matrix,
         "scorecard": scorecard,
@@ -397,25 +403,19 @@ def build_report() -> dict:
             },
             "fermion": {
                 "status": ferm["status"],
-                "TRGB_conditional_pass": ferm["conditional_bound_checks"]["TRGB_electron"][
-                    "conditional_pass"
+                "portal_gap_closed": False,
+                "portal_dependence_detected": ferm["portal_current_status"][
+                    "scan"
+                ]["passes_fail_closed_detection"],
+                "aligned_TRGB_pass": ferm["aligned_bound_checks_only"][
+                    "TRGB_safe_central"
                 ],
-                "TRGB_full_model_pass": ferm["conditional_bound_checks"]["TRGB_electron"][
+                "aligned_SN_pass": ferm["aligned_bound_checks_only"][
+                    "SN1987A_safe_central"
+                ],
+                "full_model_pass": ferm["aligned_bound_checks_only"][
                     "full_model_pass"
                 ],
-                "SN_conditional_pass": ferm["conditional_bound_checks"][
-                    "SN1987A_correlated_nucleon"
-                ]["conditional_pass"],
-                "SN_full_model_pass": ferm["conditional_bound_checks"][
-                    "SN1987A_correlated_nucleon"
-                ]["full_model_pass"],
-                "safety_TRGB_conditional": ferm["conditional_bound_checks"]["TRGB_electron"][
-                    "limit_over_prediction"
-                ],
-                "SN_amplitude_margin_conditional": ferm["conditional_bound_checks"][
-                    "SN1987A_correlated_nucleon"
-                ]["amplitude_margin"],
-                "gap_closed": False,
                 "verdict": ferm["verdict"],
             },
             "pta_strings": pta,
@@ -437,8 +437,9 @@ def build_report() -> dict:
         ],
         "verdict": (
             f"Inventoried {len(matrix)} channels; {len(runnable)} runnable now on this "
-            "Python stack. Public/indirect tests leave v20 viable and do not prove it. "
-            "Decisive evidence still requires B-field conversion (haloscope or NS-radio)."
+            "Python stack. The 37 GHz photon benchmark is not excluded, but the "
+            "complete phenomenological model is not validated. Decisive evidence "
+            "still requires B-field conversion and the open theory matching."
         ),
     }
 
@@ -472,13 +473,12 @@ def write_markdown(report: dict) -> str:
         "## Executed ledger (this run)",
         "",
         f"- Photon literature: {ex['literature_photon']['sentence']}",
-        f"- Fermion status: `{ex['fermion']['status']}` (gap closed? `{ex['fermion']['gap_closed']}`)",
-        f"- TRGB conditional: pass={ex['fermion']['TRGB_conditional_pass']} "
-        f"(safety×{ex['fermion']['safety_TRGB_conditional']:.0f}); "
-        f"full_model_pass={ex['fermion']['TRGB_full_model_pass']}",
-        f"- SN1987A correlated conditional: pass={ex['fermion']['SN_conditional_pass']} "
-        f"(amplitude margin×{ex['fermion']['SN_amplitude_margin_conditional']:.0f}); "
-        f"full_model_pass={ex['fermion']['SN_full_model_pass']}",
+        f"- Fermion status: `{ex['fermion']['status']}`",
+        f"- Renormalizable portal gap closed: {ex['fermion']['portal_gap_closed']}",
+        f"- Physical portal dependence detected: {ex['fermion']['portal_dependence_detected']}",
+        f"- Aligned TRGB/SN central benchmark: "
+        f"{ex['fermion']['aligned_TRGB_pass']}/{ex['fermion']['aligned_SN_pass']}",
+        f"- Full-model stellar/SN pass: {ex['fermion']['full_model_pass']}",
         f"- PTA/strings: {ex['pta_strings']['verdict']}",
         f"- Proton central: τ_p={ex['proton']['tau_p_benchmark_yr']:.2e} yr "
         f"(above SK={ex['proton']['passes_SK_central']})",

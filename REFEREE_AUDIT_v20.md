@@ -22,6 +22,9 @@
    at high precision and checked by an independent quadrature.
 7. The computed `P=8` term is safe for a unit normalized contraction; the
    direct dimension-21 scalar term remains the largest computed term.
+8. The heavy-light moving-frame identity is reproduced, but the physical
+   projected current remains portal dependent. The aligned ERT-like
+   `C_e(tan beta),C_p(tan beta),C_n(tan beta)` are benchmarks only.
 
 ## What v20 does not establish
 
@@ -40,6 +43,11 @@
   string network.
 - It does not solve the thermal history if the full `U(1)_X` sector is
   restored after inflation.
+- The earlier `tan(beta)` minima are invalid because the flavour code used
+  Hermitian `eigh` rather than Takagi diagonalization and omitted the
+  charged-lepton basis. The corrected fixed-$v_R$ profile is not viable.
+- It does not remove correlated hadronic/RG uncertainty from precision
+  numerical nucleon couplings.
 
 ## Highest-value independent checks
 
@@ -58,6 +66,11 @@
 5. Analyze finite-temperature restoration, entropy injection and the
    `(ell,n)=(13,-3)` string network.
    **Analytic estimates done:** `thermal_string_v20.py` (lattice simulation external).
+6. Derive the full anomalon portal current including `A,B,C,D`, the Berry
+   connection and SM-Yukawa alignment. **Partial in-repo:**
+   `full_fermion_matching_v20.py` proves the moving-frame identity but also
+   detects physical portal dependence/possible FCNCs. Exact matching remains
+   open.
 
 Run: `python run_v20_referee_next.py`
 
@@ -66,7 +79,7 @@ Run: `python run_v20_referee_next.py`
 - v17 regression: 65 checks.
 - v19 regression: 59 checks.
 - v20 completion/matching: 42 checks (includes continuous-RG soft falsification).
-- Full unittest discovery: 102 tests, including independent error-audit and physics-push tests.
+- Full unittest discovery is reported dynamically by the extensive verdict.
 - Independent audit: `audit_v20_errors.py` / `V20_ERROR_AUDIT.md` (imports no v20 engine).
 - All engines have injected nonzero-exit tests.
-- The release gate requires a warning-free, byte-stable 11-page PDF.
+- The release gate rebuilds the manuscript PDF after physics changes.

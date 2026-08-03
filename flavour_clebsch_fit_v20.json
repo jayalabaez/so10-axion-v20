@@ -1,6 +1,6 @@
 {
-  "status": "constrained 10+126 Clebsch/flavour benchmark",
-  "method": "down-diagonal Clebsch reconstruction + Type-I+II seesaw",
+  "status": "corrected Takagi/charged-lepton-basis constrained 10+126 Clebsch benchmark",
+  "method": "down-diagonal Clebsch reconstruction + Type-I+II seesaw + Takagi(Mnu,Me) + U_PMNS=Ue^dagger Unu",
   "clebsch_relations": {
     "H": "(3 M_d + M_e)/(4 v_d)",
     "F": "(M_d - M_e)/(4 v_d)",
@@ -10,82 +10,146 @@
     "m_nu": "M_L - M_D M_R^{-1} M_D^T"
   },
   "n_observables_in_chi2": 8,
+  "saved_witnesses_revalidated": true,
   "best_overall": {
     "tag": "natural_1e14",
     "v_r_GeV": 100000000000000.0,
-    "chi2": 3.6634617685478044,
-    "max_abs_pull": 1.9016666556269977,
+    "chi2": 0.020204598891095278,
+    "max_abs_pull": 0.10992182435453526,
     "pulls": {
-      "sin2_th12": -0.0005646420875859981,
-      "sin2_th23": 3.239541167913511e-05,
-      "sin2_th13": -0.006308215572085654,
-      "dm21": -0.00029257170033961935,
-      "dm31": -0.0005729376361882088,
-      "delta_deg": 1.9016666556269977,
-      "up_clebsch_mismatch": 0.19825506414918054,
-      "sum_mnu": 0.0882048845237654
+      "sin2_th12": 0.0010023333815861735,
+      "sin2_th23": -0.001019118833767152,
+      "sin2_th13": 2.796169870875979e-05,
+      "dm21": 0.001531851404411148,
+      "dm31": 0.00410375831448595,
+      "delta_deg": 0.007096234263947768,
+      "up_clebsch_mismatch": 0.10992182435453526,
+      "sum_mnu": 0.08972292584755841
     },
     "observables": {
       "mnu_eV": [
-        0.003801849957966121,
-        0.009452696861715513,
-        0.05027364856126898
+        0.003841962491237866,
+        0.009469093910553823,
+        0.05027786063211064
       ],
-      "sum_mnu_eV": 0.06352819538095061,
-      "dm21_eV2": 7.489941485659933e-05,
-      "dm31_eV2": 0.0025129856765590953,
-      "sin2_th12": 0.30799322429494896,
-      "sin2_th23": 0.47000048593117516,
-      "sin2_th13": 0.022146215070656748,
-      "delta_cp_deg": 278.5583329469449,
-      "tan_beta": 41.338069578693386,
-      "y10_max": 0.7439228731875495,
-      "y126_max": 0.24893585285712663,
-      "up_clebsch_mismatch": 0.06938927245221319,
+      "sum_mnu_eV": 0.06358891703390233,
+      "dm21_eV2": 7.490306370280883e-05,
+      "dm31_eV2": 0.002513102593957862,
+      "sin2_th12": 0.30801202800057903,
+      "sin2_th23": 0.46998471321749347,
+      "sin2_th13": 0.022150016777019225,
+      "delta_cp_deg": 211.75163180076183,
+      "takagi_reconstruction": true,
+      "charged_lepton_basis_included": true,
+      "tan_beta": 40.573104969427675,
+      "y10_max": 0.6292876098301319,
+      "y126_max": 0.34529159455497527,
+      "up_clebsch_mismatch": 0.03847263852408734,
       "perturbative_4pi": true
     },
-    "y126_max": 0.24893585285712663,
-    "perturbative_4pi": true
+    "y126_max": 0.34529159455497527,
+    "perturbative_4pi": true,
+    "params": [
+      1.4218676004929112,
+      0.2090406269413792,
+      -0.9791499184254684,
+      -1.3192246545594597,
+      -0.005620082656326017,
+      0.15481289129134793,
+      4.604195582242317,
+      -3.2298228424934026,
+      -3.5596603713154122,
+      -0.18027972352891564,
+      0.8883224232785161,
+      -0.15394678103885306,
+      -9.854189462598201
+    ]
   },
   "v20_single_scale_point": {
     "v_r_GeV": 631385500000.0,
-    "chi2": 11.656730932846537,
+    "chi2": 594.2404458698759,
+    "params": [
+      -5.41555862002479,
+      -0.8129597186732718,
+      -0.28793377790750446,
+      0.2279396565777469,
+      -1.1458628142893397,
+      -2.524983591824358,
+      3.1098966963022767,
+      -1.0109363391147979,
+      -0.8853769626188024,
+      -0.10729639156170953,
+      -1.0338386351548206,
+      0.3527826949879518,
+      -8.672787699880601
+    ],
     "pulls": {
-      "sin2_th12": 0.2699316215050522,
-      "sin2_th23": 0.04523264667159651,
-      "sin2_th13": 0.01776244115571715,
-      "dm21": 0.14659128058210152,
-      "dm31": -0.040083483012955806,
-      "delta_deg": 1.9940734477176274,
-      "up_clebsch_mismatch": 2.753395258088624,
-      "sum_mnu": 0.02993834676344124
+      "sin2_th12": 13.134347281182544,
+      "sin2_th23": 17.20269201101791,
+      "sin2_th13": 2.121732076108482,
+      "dm21": 0.006042196497977226,
+      "dm31": 0.12311942831249797,
+      "delta_deg": 1.8212030665959218,
+      "up_clebsch_mismatch": 2.7386044184554414,
+      "sum_mnu": 10.510141686300573
     },
     "observables": {
       "mnu_eV": [
-        0.0021091261865751726,
-        0.008924214017607452,
-        0.05016419366635502
+        0.15745709059934146,
+        0.1576947921283459,
+        0.16525378472433555
       ],
-      "sum_mnu_eV": 0.06119753387053765,
-      "dm21_eV2": 7.519318256116421e-05,
-      "dm31_eV2": 0.002511997912924676,
-      "sin2_th12": 0.3112391794580606,
-      "sin2_th23": 0.4706784897000739,
-      "sin2_th13": 0.02216065746469343,
-      "delta_cp_deg": 281.79257067011696,
-      "tan_beta": 1.5000000000002063,
-      "y10_max": 0.028293384389298286,
-      "y126_max": 0.015155841713014104,
-      "up_clebsch_mismatch": 0.9636883403310184,
+      "sum_mnu_eV": 0.4804056674520229,
+      "dm21_eV2": 7.491208439299596e-05,
+      "dm31_eV2": 0.0025160779857078125,
+      "sin2_th12": 0.46561216737419053,
+      "sin2_th23": 0.7280403801652686,
+      "sin2_th13": 0.02342303924566509,
+      "delta_cp_deg": 275.74210733085727,
+      "takagi_reconstruction": true,
+      "charged_lepton_basis_included": true,
+      "tan_beta": 1.7147175539530406,
+      "y10_max": 0.03820533801409343,
+      "y126_max": 0.010317987930581191,
+      "up_clebsch_mismatch": 0.9585115464594045,
       "perturbative_4pi": true
     },
-    "max_abs_pull": 2.753395258088624,
-    "y10_max": 0.028293384389298286,
-    "y126_max": 0.015155841713014104,
+    "max_abs_pull": 17.20269201101791,
+    "y10_max": 0.03820533801409343,
+    "y126_max": 0.010317987930581191,
     "perturbative_4pi": true,
-    "boundary_stress": false,
-    "single_scale_viable": true,
-    "note": "exact identification M_R scale = v_S; large chi2 means the single-scale claim is stressed or falsified inside this Clebsch ansatz"
+    "boundary_stress": true,
+    "tan_beta_parameterization": "1.5 + 48.5 sigmoid(x0)",
+    "tan_beta_allowed_interval": [
+      1.5,
+      50.0
+    ],
+    "tan_beta_at_parameter_boundary": false,
+    "tan_beta_unique": false,
+    "fermion_coupling_numeric_point_unique": false,
+    "single_scale_viable": false,
+    "note": "Exact identification M_R scale = v_S. With corrected Takagi diagonalization and U_PMNS=U_e^dagger U_nu, the current multistart point is strongly disfavoured. This benchmark does not establish a unique/global tan(beta) or a unique numerical C_e,C_p,C_n."
   },
-  "scope": "Fits the renormalizable 10+126 Clebsch sector. Does not uniquely fix anomalon portal flavour matrices or the full 210-breaking vacuum."
+  "tan_beta_status": {
+    "parameterized_interval": [
+      1.5,
+      50.0
+    ],
+    "unique_prediction": false,
+    "profile_module": "tan_beta_profile_v20.py",
+    "best_known_fixed_vR_tan_beta": 1.7147175539530406,
+    "best_known_fixed_vR_chi2": 594.2404458698759,
+    "implication": "The corrected flavour objective does not uniquely fix tan(beta); portal-dependent currents add a separate ambiguity."
+  },
+  "fit_validity": {
+    "Takagi_Majorana_diagonalization": true,
+    "charged_lepton_basis_in_PMNS": true,
+    "CP_phase_uses_atan2": true,
+    "CKM_in_chi2": false,
+    "common_scale_RG_inputs": false,
+    "parameters": 13,
+    "observables_in_chi2": 8,
+    "precision_global_fit": false
+  },
+  "scope": "Fits a constrained 10+126 Clebsch benchmark using low-scale mass inputs. Correct matrix diagonalization is now used, but CKM pulls and common-scale RG inputs are absent and the objective is underconstrained. It does not prove a global minimum, uniquely fix tan(beta), or constitute a precision high-scale flavour fit."
 }

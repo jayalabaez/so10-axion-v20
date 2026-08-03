@@ -1,6 +1,6 @@
 {
   "status": "PASS",
-  "n_checks": 8,
+  "n_checks": 10,
   "n_failed": 0,
   "failures": [],
   "astrophysics_ledger": {
@@ -140,54 +140,59 @@
     "flavour_vr_scan_light": [
       {
         "v_R_GeV": 1000000000000.0,
-        "chi2_best_light_search": 565.1573098967551,
+        "chi2_best_light_search": 411.0353758751425,
         "perturbative": true,
-        "sum_mnu_eV": 0.5877046446788334,
+        "sum_mnu_eV": 0.07361435348685177,
         "is_v20_scale": false
       },
       {
         "v_R_GeV": 631385500000.0,
-        "chi2_best_light_search": 88.351830669838,
+        "chi2_best_light_search": 318.3011675922779,
         "perturbative": true,
-        "sum_mnu_eV": 0.0653562392646404,
+        "sum_mnu_eV": 0.21786601283557877,
         "is_v20_scale": true
       },
       {
         "v_R_GeV": 10000000000000.0,
-        "chi2_best_light_search": 23.19867126855498,
+        "chi2_best_light_search": 620.4451710395251,
         "perturbative": true,
-        "sum_mnu_eV": 0.06558148604767738,
+        "sum_mnu_eV": 0.3430577561726199,
         "is_v20_scale": false
       },
       {
         "v_R_GeV": 100000000000000.0,
-        "chi2_best_light_search": 4.666811635862116,
+        "chi2_best_light_search": 195.61099442281775,
         "perturbative": true,
-        "sum_mnu_eV": 0.07055119515749941,
+        "sum_mnu_eV": 0.06011689575792515,
         "is_v20_scale": false
       },
       {
         "v_R_GeV": 1000000000000000.0,
-        "chi2_best_light_search": 9.199952137780048,
+        "chi2_best_light_search": 23.307320325193714,
         "perturbative": true,
-        "sum_mnu_eV": 0.059416811310784,
+        "sum_mnu_eV": 0.06409657985041681,
         "is_v20_scale": false
       }
     ],
     "flavour_package": {
       "best_tag": "natural_1e14",
-      "best_chi2": 3.6634617685478044,
+      "best_chi2": 0.020204598891095278,
       "best_v_R": 100000000000000.0,
-      "v20_chi2": 11.656730932846537,
+      "v20_chi2": 594.2404458698759,
       "v20_perturbative": true,
-      "v20_viable_chi2_lt_30": true
+      "v20_viable_chi2_lt_30": false,
+      "tan_beta_unique": false,
+      "fixed_vR_profile_best_tan_beta": 2.0,
+      "fixed_vR_profile_best_chi2": 51.10322445213014,
+      "profile_improves_reference": true,
+      "any_profile_point_viable_chi2_lt_30": false
     },
     "joint_tension": {
       "exact_vR_equals_vS_flavour_stressed": true,
       "proton_central_above_SK": true,
-      "compatible_window_exists": true
+      "compatible_window_exists": false
     },
-    "verdict": "Central M_GUT lifetime sits near/above SK; flavour prefers natural ~1e14 GeV over exact v_R=v_S but the single-scale point remains viable inside the Clebsch ansatz. Joint window not closed."
+    "verdict": "Central M_GUT lifetime sits near/above SK. After corrected Takagi/charged-lepton-basis extraction, the current v_R=v_S profile has no chi2<30 point, so the single-scale flavour benchmark is not viable within this constrained ansatz. A precision global fit remains external."
   },
   "experiment_reach": {
     "target_window_GHz": [
@@ -301,5 +306,5 @@
     "complete Wilson operator-basis mixing",
     "independent human diagrammatic review"
   ],
-  "verdict": "Next in-repo physics analyses completed: v20 remains open vs CAST/HB, cosmologically viable under stated PQ scenarios, jointly compatible with flavour+proton benchmarks inside documented stress, and prioritizes MADMAX/ORGAN for a real scan. Not a discovery."
+  "verdict": "Next in-repo analyses completed: the 37 GHz photon benchmark remains open and the central proton estimate is finite, but corrected Takagi/PMNS extraction rejects the constrained v_R=v_S flavour benchmark and full fermion portal matching remains open. MADMAX/ORGAN remain the direct-search priorities. Not a discovery."
 }

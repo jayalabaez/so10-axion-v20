@@ -1,6 +1,6 @@
 # Literature sweep — ~150 µeV axion bounds (v20)
 
-**Does the theory fail from published bounds?** DOES NOT FAIL — no published bound excludes the v20 all-DM benchmark at 153.5 µeV / 37 GHz; the window is experimentally OPEN.
+**Does the photon/local-DM benchmark fail from published bounds?** PHOTON BENCHMARK DOES NOT FAIL — no published direct bound excludes 153.5 µeV / 37 GHz at the quoted coupling. This does not clear the unresolved full fermion/flavour model.
 
 ## v20 target
 
@@ -150,4 +150,4 @@
 
 ## Verdict
 
-DOES NOT FAIL — no published bound excludes the v20 all-DM benchmark at 153.5 µeV / 37 GHz; the window is experimentally OPEN.
+PHOTON BENCHMARK DOES NOT FAIL — no published direct bound excludes 153.5 µeV / 37 GHz at the quoted coupling. This does not clear the unresolved full fermion/flavour model.

@@ -33,6 +33,18 @@ class IndependentAuditTests(unittest.TestCase):
         self.assertTrue(rows["scalar S^17 with h.c. is ~6.47e-37"]["passed"])
         self.assertTrue(rows["P=12 NDA with h.c. is ~9.04e-28"]["passed"])
 
+    def test_fermion_connection_and_beta_audit(self):
+        rows = {
+            row["name"]: row
+            for row in self.report["sections"]["fermion_current_and_beta"]
+        }
+        self.assertTrue(
+            rows["moving-frame identity does not erase projected portal shift"][
+                "passed"
+            ]
+        )
+        self.assertTrue(rows["tan_beta is absent from frozen v20 inputs"]["passed"])
+
     def test_no_v20_engine_import(self):
         # Guardrail: this audit module must stay independent.
         from pathlib import Path

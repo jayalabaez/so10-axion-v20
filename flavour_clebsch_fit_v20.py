@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import json
 import math
+import argparse
 from pathlib import Path
 
 import numpy as np
@@ -38,8 +39,8 @@ QUARK_LEPTON = {
     "m_mu": 0.10566,
     "m_tau": 1.777,
 }
-# CKM (approximate PDG)
-CKM_S12, CKM_S23, CKM_S13, CKM_D = 0.2250, 0.0418, 0.00369, 1.196
+# The bounded up-sector rotation below is a nuisance parametrization, not a
+# CKM fit.  CKM observables are not included in this benchmark objective.
 # NuFIT-6.0 NO with atm
 NUFIT = {
     "sin2_th12": (0.308, 0.012),
@@ -49,6 +50,13 @@ NUFIT = {
     "dm31": (2.513e-3, 0.025e-3),
     "delta_deg": (212.0, 35.0),
 }
+
+def tan_beta_coordinate(tan_beta: float) -> float:
+    """Inverse of the constrained 1.5+48.5*sigmoid coordinate."""
+    if not 1.5 < tan_beta < 50.0:
+        raise ValueError("tan_beta must lie inside the fitter interval (1.5,50)")
+    fraction = (tan_beta - 1.5) / 48.5
+    return math.log(fraction / (1.0 - fraction))
 
 
 def _rotation(s12, s23, s13, delta):
@@ -76,29 +84,73 @@ def _diag(a, b, c):
     return np.diag([a, b, c]).astype(complex)
 
 
-def _pmns_from_mnu(mnu: np.ndarray) -> dict:
-    evals, vecs = np.linalg.eigh(mnu)
-    order = np.argsort(np.abs(evals))
-    evals = np.real(evals[order])
-    vecs = vecs[:, order]
-    # normal-ordering masses
-    masses = np.abs(evals) * 1e9  # GeV -> eV
-    u = vecs
+def takagi(matrix: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+    """Autonne-Takagi factorization M=U diag(s) U^T.
+
+    The real-block construction is stable for the 3x3 complex-symmetric
+    Majorana and charged-lepton matrices used here.
+    """
+    matrix = np.asarray(matrix, dtype=complex)
+    if matrix.ndim != 2 or matrix.shape[0] != matrix.shape[1]:
+        raise ValueError("Takagi input must be square")
+    if not np.allclose(matrix, matrix.T, rtol=1e-9, atol=1e-15):
+        raise ValueError("Takagi input must be complex symmetric")
+    n = matrix.shape[0]
+    block = np.block(
+        [
+            [-matrix.real, matrix.imag],
+            [matrix.imag, matrix.real],
+        ]
+    )
+    eigenvalues, eigenvectors = np.linalg.eigh(block)
+    positive = np.argsort(eigenvalues)[-n:]
+    singular = eigenvalues[positive]
+    unitary = (
+        eigenvectors[n:, positive] + 1.0j * eigenvectors[:n, positive]
+    )
+    order = np.argsort(singular)
+    singular = np.real(singular[order])
+    unitary = unitary[:, order]
+    reconstruction = unitary @ np.diag(singular) @ unitary.T
+    relative_error = np.linalg.norm(matrix - reconstruction) / max(
+        np.linalg.norm(matrix), 1e-30
+    )
+    if relative_error > 1e-8:
+        raise ValueError(f"Takagi reconstruction failed: {relative_error}")
+    return singular, unitary
+
+
+def _pmns_from_matrices(mnu: np.ndarray, me: np.ndarray) -> dict:
+    neutrino_singular, u_nu = takagi(mnu)
+    _charged_singular, u_e = takagi(me)
+    # Normal ordering and charged-lepton mass ordering are already ascending.
+    masses = neutrino_singular * 1e9  # GeV -> eV
+    u = u_e.conj().T @ u_nu
     s13 = abs(u[0, 2])
     c13 = math.sqrt(max(1e-30, 1 - s13**2))
     s12 = min(1.0, abs(u[0, 1]) / c13)
     s23 = min(1.0, abs(u[1, 2]) / c13)
-    jarl = np.imag(np.conj(u[0, 0]) * u[0, 2] * np.conj(u[2, 2]) * u[2, 0])
-    denom = (
-        s12
-        * s23
-        * s13
-        * c13
-        * math.sqrt(max(0.0, 1 - s12**2))
-        * math.sqrt(max(0.0, 1 - s23**2))
+    c12 = math.sqrt(max(0.0, 1.0 - s12**2))
+    c23 = math.sqrt(max(0.0, 1.0 - s23**2))
+    jarl = np.imag(u[0, 0] * u[1, 1] * np.conj(u[0, 1]) * np.conj(u[1, 0]))
+    sin_denom = c12 * c23 * c13**2 * s12 * s23 * s13
+    sin_delta = (
+        0.0
+        if sin_denom < 1e-30
+        else float(np.clip(jarl / sin_denom, -1.0, 1.0))
     )
-    sind = 0.0 if denom < 1e-30 else float(np.clip(jarl / denom, -1, 1))
-    delta = math.degrees(math.asin(sind)) % 360.0
+    cos_denom = 2.0 * s12 * c12 * c23 * s23 * s13
+    cos_numer = (
+        abs(u[1, 0]) ** 2
+        - s12**2 * c23**2
+        - c12**2 * s23**2 * s13**2
+    )
+    cos_delta = (
+        1.0
+        if cos_denom < 1e-30
+        else float(np.clip(cos_numer / cos_denom, -1.0, 1.0))
+    )
+    delta = math.degrees(math.atan2(sin_delta, cos_delta)) % 360.0
     return {
         "mnu_eV": masses.tolist(),
         "sum_mnu_eV": float(np.sum(masses)),
@@ -108,11 +160,18 @@ def _pmns_from_mnu(mnu: np.ndarray) -> dict:
         "sin2_th23": s23**2,
         "sin2_th13": s13**2,
         "delta_cp_deg": delta,
+        "takagi_reconstruction": True,
+        "charged_lepton_basis_included": True,
     }
 
 
 def build_matrices(params: np.ndarray, v_r: float) -> dict:
-    """params: tanβ, phases/angles for charged-lepton vs down misalignment, Type-II, ..."""
+    """Build the constrained benchmark matrices.
+
+    ``params[0]`` is not a prediction: it maps by construction to
+    ``1.5 < tan(beta) < 50``.  A fit at either endpoint is therefore a
+    boundary stress, not a uniquely derived Higgs-sector value.
+    """
     tan_beta = 1.5 + 48.5 / (1.0 + math.exp(-params[0]))
     v_u = VEV * math.sin(math.atan(tan_beta))
     v_d = VEV * math.cos(math.atan(tan_beta))
@@ -185,7 +244,7 @@ def build_matrices(params: np.ndarray, v_r: float) -> dict:
 def chi2_from_params(params: np.ndarray, v_r: float) -> tuple[float, dict]:
     try:
         data = build_matrices(params, v_r)
-        lep = _pmns_from_mnu(data["M_nu"])
+        lep = _pmns_from_matrices(data["M_nu"], data["M_e"])
     except Exception:
         return 1.0e9, {"pulls": {}, "observables": {}, "data": {}}
     pulls = {}
@@ -237,7 +296,39 @@ def chi2_from_params(params: np.ndarray, v_r: float) -> tuple[float, dict]:
     return chi2, {"pulls": pulls, "observables": obs, "data": data}
 
 
-def run_fit(seed: int = 20) -> dict:
+def _load_revalidated_saved_report() -> dict | None:
+    """Load saved witnesses only after recomputing their objective values."""
+    path = Path(__file__).resolve().parent / "flavour_clebsch_fit_v20.json"
+    if not path.exists():
+        return None
+    try:
+        report = json.loads(path.read_text(encoding="utf-8"))
+        best = report["best_overall"]
+        v20 = report["v20_single_scale_point"]
+        best_params = np.asarray(best["params"], dtype=float)
+        v20_params = np.asarray(v20["params"], dtype=float)
+        best_chi2, _ = chi2_from_params(best_params, best["v_r_GeV"])
+        v20_chi2, _ = chi2_from_params(v20_params, VS)
+    except (KeyError, TypeError, ValueError, json.JSONDecodeError):
+        return None
+    if (
+        abs(best_chi2 - best["chi2"]) > 1e-7
+        or abs(v20_chi2 - v20["chi2"]) > 1e-7
+        or not report.get("fit_validity", {}).get(
+            "Takagi_Majorana_diagonalization", False
+        )
+    ):
+        return None
+    report.pop("v20_lower_boundary_benchmark", None)
+    report["saved_witnesses_revalidated"] = True
+    return report
+
+
+def run_fit(seed: int = 20, *, full_search: bool = False) -> dict:
+    if not full_search:
+        saved = _load_revalidated_saved_report()
+        if saved is not None:
+            return saved
     rng = np.random.default_rng(seed)
     best = None
     for trial in range(24):
@@ -292,10 +383,19 @@ def run_fit(seed: int = 20) -> dict:
     if chi2_seed < best_v20[0]:
         best_v20 = (chi2_seed, res_seed.x, detail_seed)
 
-    chi2_v20, _, detail_v20 = best_v20[0], best_v20[1], best_v20[2]
+    chi2_v20, params_v20, detail_v20 = best_v20[0], best_v20[1], best_v20[2]
+    tan_beta_v20 = detail_v20["observables"].get("tan_beta")
+    tan_beta_at_boundary = bool(
+        tan_beta_v20 is not None
+        and (
+            abs(tan_beta_v20 - 1.5) < 1.0e-6
+            or abs(tan_beta_v20 - 50.0) < 1.0e-6
+        )
+    )
     v20 = {
         "v_r_GeV": VS,
         "chi2": chi2_v20,
+        "params": params_v20.tolist(),
         "pulls": detail_v20["pulls"],
         "observables": detail_v20["observables"],
         "max_abs_pull": float(max(abs(p) for p in detail_v20["pulls"].values()))
@@ -307,18 +407,32 @@ def run_fit(seed: int = 20) -> dict:
         "boundary_stress": bool(
             detail_v20["observables"].get("y126_max", 0) > 1.0
             or chi2_v20 > 50.0
+            or tan_beta_at_boundary
         ),
+        "tan_beta_parameterization": "1.5 + 48.5 sigmoid(x0)",
+        "tan_beta_allowed_interval": [1.5, 50.0],
+        "tan_beta_at_parameter_boundary": tan_beta_at_boundary,
+        "tan_beta_unique": False,
+        "fermion_coupling_numeric_point_unique": False,
         "single_scale_viable": bool(chi2_v20 < 30.0 and detail_v20["observables"].get("perturbative_4pi")),
         "note": (
-            "exact identification M_R scale = v_S; large chi2 means the "
-            "single-scale claim is stressed or falsified inside this Clebsch ansatz"
+            "Exact identification M_R scale = v_S. With corrected Takagi "
+            "diagonalization and U_PMNS=U_e^dagger U_nu, the current multistart "
+            "point is strongly disfavoured. This benchmark does not establish "
+            "a unique/global tan(beta) or a unique numerical C_e,C_p,C_n."
         ),
     }
 
     # Also report best natural-scale point
     return {
-        "status": "constrained 10+126 Clebsch/flavour benchmark",
-        "method": "down-diagonal Clebsch reconstruction + Type-I+II seesaw",
+        "status": (
+            "corrected Takagi/charged-lepton-basis constrained 10+126 "
+            "Clebsch benchmark"
+        ),
+        "method": (
+            "down-diagonal Clebsch reconstruction + Type-I+II seesaw + "
+            "Takagi(Mnu,Me) + U_PMNS=Ue^dagger Unu"
+        ),
         "clebsch_relations": {
             "H": "(3 M_d + M_e)/(4 v_d)",
             "F": "(M_d - M_e)/(4 v_d)",
@@ -328,6 +442,7 @@ def run_fit(seed: int = 20) -> dict:
             "m_nu": "M_L - M_D M_R^{-1} M_D^T",
         },
         "n_observables_in_chi2": 8,
+        "saved_witnesses_revalidated": False,
         "best_overall": {
             "tag": best["tag"],
             "v_r_GeV": best["v_r_GeV"],
@@ -337,17 +452,42 @@ def run_fit(seed: int = 20) -> dict:
             "observables": best["observables"],
             "y126_max": best["y126_max"],
             "perturbative_4pi": best["perturbative_4pi"],
+            "params": best["x"],
         },
         "v20_single_scale_point": v20,
+        "tan_beta_status": {
+            "parameterized_interval": [1.5, 50.0],
+            "unique_prediction": False,
+            "profile_module": "tan_beta_profile_v20.py",
+            "best_known_fixed_vR_tan_beta": v20["observables"].get("tan_beta"),
+            "best_known_fixed_vR_chi2": v20["chi2"],
+            "implication": (
+                "The corrected flavour objective does not uniquely fix "
+                "tan(beta); portal-dependent currents add a separate ambiguity."
+            ),
+        },
+        "fit_validity": {
+            "Takagi_Majorana_diagonalization": True,
+            "charged_lepton_basis_in_PMNS": True,
+            "CP_phase_uses_atan2": True,
+            "CKM_in_chi2": False,
+            "common_scale_RG_inputs": False,
+            "parameters": 13,
+            "observables_in_chi2": 8,
+            "precision_global_fit": False,
+        },
         "scope": (
-            "Fits the renormalizable 10+126 Clebsch sector. Does not uniquely fix "
-            "anomalon portal flavour matrices or the full 210-breaking vacuum."
+            "Fits a constrained 10+126 Clebsch benchmark using low-scale mass "
+            "inputs. Correct matrix diagonalization is now used, but CKM pulls "
+            "and common-scale RG inputs are absent and the objective is "
+            "underconstrained. It does not prove a global minimum, uniquely fix "
+            "tan(beta), or constitute a precision high-scale flavour fit."
         ),
     }
 
 
-def main() -> int:
-    report = run_fit(seed=20)
+def main(*, full_search: bool = False) -> int:
+    report = run_fit(seed=20, full_search=full_search)
     Path(__file__).resolve().parent.joinpath("flavour_clebsch_fit_v20.json").write_text(
         json.dumps(report, indent=2) + "\n"
     )
@@ -372,4 +512,10 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--full-search",
+        action="store_true",
+        help="rerun the expensive multistart search instead of revalidating saved witnesses",
+    )
+    raise SystemExit(main(full_search=parser.parse_args().full_search))

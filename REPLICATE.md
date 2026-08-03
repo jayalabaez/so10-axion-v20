@@ -10,6 +10,8 @@ A self-contained release of the **SO(10)×ℤ₁₇ axion candidate (v20)** with
 - continuous one-/two-loop threshold RG
 - 36.6–37.6 GHz haloscope **forecast** (software only)
 - adversarial falsification suite
+- arbitrary-matrix physical portal-current matching
+- aligned fermion benchmark and corrected fixed-$v_R$ $\tan\beta$ profile
 
 It is **not** a dark-matter discovery.
 
@@ -37,7 +39,9 @@ python replicate.py
 4. run `so10_axion_v20_engine.py`
 5. run the full unittest discovery
 6. run `falsify_v20.py`
-7. run `run_v20_external_next_steps.py`
+7. run all external/referee/extensive/public-data packages
+8. run the portal-current theorem and exact $C_f(\tan\beta)$ matching
+9. profile the constrained flavour objective versus $\tan\beta$
 
 ## Manual steps (optional)
 
@@ -50,6 +54,8 @@ python flavour_clebsch_fit_v20.py
 python two_loop_thresholds_v20.py
 python haloscope_scan_37ghz_v20.py
 python run_v20_external_next_steps.py
+python full_fermion_matching_v20.py
+python tan_beta_profile_v20.py
 ```
 
 PDF rebuild (optional; requires a TeX distribution):
@@ -67,6 +73,9 @@ pdflatex -interaction=nonstopmode -halt-on-error axion_so10_theory_v20.tex
 | One-pair no-go | PASS |
 | Soft overclaim detection (Γ inequality, α=1/40 reset, incomplete portals) | PASS (overclaims detected) |
 | Flavour at exact $v_R=v_S$ | viable but stressed vs natural ~$10^{14}$ GeV |
+| Anomalon portal current | moving-frame sum is universal; physical $Q_{\rm proj}$ remains portal dependent |
+| Fermion coefficients | aligned benchmark only; exact full matching open |
+| Corrected $v_R=v_S$ flavour profile | no $\chi^2<30$ point in current constrained ansatz |
 | Continuous $\alpha^{-1}(v_\Phi)$ | ~16.6, **not** 40 |
 | Haloscope mock | software forecast only |
 

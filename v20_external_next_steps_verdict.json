@@ -1,15 +1,19 @@
 {
   "flavour": {
     "best_tag": "natural_1e14",
-    "chi2_best": 3.6634617685478044,
+    "chi2_best": 0.020204598891095278,
     "v_r_best_GeV": 100000000000000.0,
-    "chi2_v20_scale": 11.656730932846537,
-    "y126_max_v20": 0.015155841713014104,
+    "chi2_v20_scale": 594.2404458698759,
+    "y126_max_v20": 0.010317987930581191,
     "perturbative_v20": true,
-    "single_scale_viable": true,
-    "sum_mnu_eV_v20": 0.06119753387053765,
-    "sin2_th13_v20": 0.02216065746469343,
-    "finding": "Classic 10+126 Clebsches fit NuFIT at both a natural v_R~1e14 GeV (best) and the exact v20 scale v_R=v_S (viable but higher chi2). Single-scale is a stressed benchmark, not a zero-knob prediction."
+    "single_scale_viable": false,
+    "sum_mnu_eV_v20": 0.4804056674520229,
+    "sin2_th13_v20": 0.02342303924566509,
+    "tan_beta_unique": false,
+    "fixed_vR_profile_best_tan_beta": 2.0,
+    "fixed_vR_profile_best_chi2": 51.10322445213014,
+    "fixed_vR_profile_has_viable_point": false,
+    "finding": "Correct Takagi/charged-lepton-basis extraction gives a good underconstrained natural-v_R benchmark, but no chi2<30 point in the current fixed-v_R=v_S profile. The earlier viable single-scale claim was an invalid diagonalization artifact."
   },
   "thresholds": {
     "MI_one_GeV": 631385523052.4453,
@@ -43,9 +47,9 @@
     "mock_discovery_claimed_software_only": true,
     "physical_detection": false,
     "templates": [
-      "C:\\Users\\jayal\\Downloads\\So10Theory2\\So10Theory\\axion-so10-theory\\package\\haloscope_37ghz_templates\\v20_axion_lineshape_37GHz.csv",
-      "C:\\Users\\jayal\\Downloads\\So10Theory2\\So10Theory\\axion-so10-theory\\package\\haloscope_37ghz_templates\\v20_haloscope_target_brief.md"
+      "C:\\Users\\jayal\\Downloads\\So10Theory2\\so10-axion-v20\\haloscope_37ghz_templates\\v20_axion_lineshape_37GHz.csv",
+      "C:\\Users\\jayal\\Downloads\\So10Theory2\\so10-axion-v20\\haloscope_37ghz_templates\\v20_haloscope_target_brief.md"
     ]
   },
-  "bottom_line": "External next steps are computed. The 10+126 fit works at v_R=v_S with higher chi2 than a natural ~1e14 GeV scale. Continuous thresholds reject the alpha=1/40 reset. A MADMAX-like forecast can reach the 37 GHz coupling in software \u2014 that is not a dark-matter discovery."
+  "bottom_line": "External next steps are computed. The 10+126 fit works at a natural v_R, but the corrected v_R=v_S profile is not viable. Continuous thresholds reject the alpha=1/40 reset. A MADMAX-like forecast can reach the 37 GHz coupling in software \u2014 that is not a dark-matter discovery."
 }

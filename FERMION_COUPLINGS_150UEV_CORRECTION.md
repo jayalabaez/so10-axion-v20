@@ -4,6 +4,14 @@
 **Scope:** correction to `fermion_couplings_150uev_v20.py` and
 `FERMION_COUPLINGS_150UEV_VERDICT.json`.
 
+> **Final portal clarification (3 August 2026):** a later draft incorrectly
+> promoted the moving-frame identity `Qproj+Berry=I` to a physical
+> portal-independence theorem. The sum is basis dependent. The regular
+> projected current remains `Qproj=I-4W`, so portal matrices and Yukawa
+> alignment are genuinely required and FCNCs are possible. See
+> `FERMION_PORTAL_CURRENT_THEOREM.md`. This document's fail-closed conclusion
+> that exact full-v20 `C_e,C_p,C_n` remain open is therefore restored.
+
 ## Error being corrected
 
 The first fermion-coupling report made a scientific overclaim. It inserted the
@@ -85,7 +93,7 @@ coefficients are not fixed by the repository. A final result requires:
 4. threshold and RG evolution to low energy;
 5. correlated hadronic matching for `C_p` and `C_n`.
 
-## Correct verdict
+## Historical verdict (superseded as described above)
 
 > The provisional ERT-like leading-current benchmark is safely below the
 > displayed stellar and supernova constraints. However, the exact v20

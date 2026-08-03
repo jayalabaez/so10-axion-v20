@@ -1,31 +1,27 @@
 #!/usr/bin/env python3
-"""Full v20 fermion matching for C_e, C_p, C_n under a declared portal ansatz.
+r"""Fail-closed heavy-light current matching for v20.
 
-Scientific contract
--------------------
-Exact unique C_e, C_p, C_n are **impossible** from charge assignments alone:
-the generation-dependent portal Yukawas are free complex matrices in the
-charge-allowed Lagrangian.  Uniqueness requires an explicit ansatz.
+The axion-dependent light basis has two distinct matrices:
 
-This module implements the **manuscript-minimal + flavour-universal** ansatz:
+    Q_proj = B^\dagger Q_UV B,
+    A_B    = i B^\dagger dB/dalpha.
 
-  L ⊃ y_P Φ† P Pbar + y_Q Φ† Q Qbar + y_R Φ R Rbar
-      + λ_P P F 10_H + λ_R R F 10_H + λ_Q Qbar F S† + h.c.
+Their sum can be made proportional to the identity by a moving-frame field
+convention.  That algebraic identity is not the physical regular current.
+The projected current Q_proj remains portal dependent and may be
+flavour-off-diagonal after rotation to SM mass bases.
 
-with y_P = y_Q = y_R = 1 and λ_P = λ_R = λ_Q = λ (flavour-universal:
-λ_Q^i = λ/√3 for the three ordinary families).  Extra soft-falsified
-portals (PR 10_H, Qbar R S†, …) are set to zero in the primary ansatz and
-scanned as a robustness envelope.
+This module implements the complete singlet-VEV block
 
-Under that ansatz the only PQ-charge-shifting mixing at leading order is the
-Qbar–F–S† portal.  The X=1 (P,R) sector cannot shift light PQ charges
-because every X=1 Weyl 16 carries accidental PQ = +1.
+                  U(5)          Q
+      (Pbar,Rbar)   A            C
+      Qbar           B            D
 
-Outputs
--------
-- Unique C_e, C_p, C_n **under the stated ansatz** at the v20 tanβ=1.5 point
-- Portal-ratio scan proving the correction is O((v_S/v_Φ)²)
-- Fail-closed: full_model_unique is True only for that ansatz class
+including the allowed S Q Rbar portal C.  For D nonzero, the light subspace
+is controlled by the Schur complement A-C D^{-1} B.
+
+The ERT/DFSZ-like C_f(tan beta) formulas are retained only as the aligned
+benchmark Q_proj=I.  They are not promoted to full-v20 predictions.
 """
 
 from __future__ import annotations
@@ -36,347 +32,489 @@ from pathlib import Path
 
 import numpy as np
 
-import fermion_couplings_150uev_v20 as ferm
-
 
 ROOT = Path(__file__).resolve().parent
-VS = ferm.VS_GEV
-VPHI = ferm.VPHI_GEV
-FA = ferm.FA_GEV
-N = ferm.N_COVER
-TAN_BETA_V20 = ferm.TAN_BETA_V20
-TAN_BETA_NAT = ferm.TAN_BETA_NATURAL
 
-ANSATZ = "manuscript_minimal_flavor_universal_unit_yukawa"
+VS_GEV = 6.313855e11
+VPHI_GEV = 1.0e17
+X_PHI = 17.0
+X_S = 4.0
+N_COVER = 17.0
+
+ME_GEV = 0.00051099895
+MP_GEV = 0.93827208816
+MN_GEV = 0.93956542052
+
+GAE_TRGB_95CL = 1.3e-13
+SN1987A_QUADRATIC_BOUND = 8.26e-19
+FA_UNIVERSAL_SN_GEV = 1.1e8
+
+TAN_BETA_COMMITTED = 1.5000000000002063
+TAN_BETA_HIGH_EXAMPLE = 41.2996623
+TAN_BETA_DECLARED_RANGE = (1.5, 50.0)
 
 
-def _ert_from_tree(c_u0: float, c_d0: float, tan_beta: float) -> dict:
-    """ERT nucleon matching with portal-corrected tree quark coefficients."""
-    # ERT Eq. (6.3) structure: C_e = C_d0; nucleons from hadronic formula
-    # with tree inputs replaced by (c_u0, c_d0).
-    sin2 = tan_beta * tan_beta / (1.0 + tan_beta * tan_beta)
-    cos2 = 1.0 / (1.0 + tan_beta * tan_beta)
-    # Standard ERT uses C_u0=cos2/N, C_d0=sin2/N.  We allow shifted values.
-    # Reconstruct the ERT nucleon combination:
-    # C_p = -0.47 + 3*(0.29 C_u0_hat - 0.15 C_d0_hat) where C_*_hat = N*C_*/3?
-    # Looking at ERT: C_p = -0.47 + (3/N)*(0.29 cos2 - 0.15 sin2)
-    #               = -0.47 + 3*(0.29 C_u0 - 0.15 C_d0)  since C_u0=cos2/N
-    c_e = c_d0
-    c_p = -0.47 + 3.0 * (0.29 * c_u0 - 0.15 * c_d0)
-    c_n = -0.02 + 3.0 * (-0.14 * c_u0 + 0.28 * c_d0)
-    sigma = math.hypot(0.03, 3.0 * 0.02 / N)
-    g_ae = c_e * ferm.ME_GEV / FA
-    g_ap = c_p * ferm.MP_GEV / FA
-    g_an = c_n * ferm.MN_GEV / FA
-    sn = ferm.sn1987a_quadratic(g_an=g_an, g_ap=g_ap)
+def exact_normalization(
+    v_s: float = VS_GEV,
+    v_phi: float = VPHI_GEV,
+) -> dict:
+    """Exact reduced (Phi,S) projection used by the v20 manuscript."""
+    if min(v_s, v_phi) <= 0.0:
+        raise ValueError("VEVs must be positive")
+    d = math.hypot(X_PHI * v_phi, X_S * v_s)
+    f_a = v_s * v_phi / d
+    xi = X_PHI * v_phi**2 / d**2
     return {
+        "D_GeV": d,
+        "f_a_GeV": f_a,
+        "xi": xi,
+        "one_over_17": 1.0 / N_COVER,
+        "xi_minus_one_over_17": xi - 1.0 / N_COVER,
+        "relative_fa_correction_vs_vS_over_17": f_a / (v_s / N_COVER) - 1.0,
+        "scope": (
+            "Exact in the reduced (a_Phi,a_S) phase theory. Electroweak-Higgs "
+            "components are O(v_EW^2/v_S^2), below 1e-19."
+        ),
+    }
+
+
+NORMALIZATION = exact_normalization()
+FA_GEV = NORMALIZATION["f_a_GeV"]
+XI = NORMALIZATION["xi"]
+
+
+def beta_fractions(tan_beta: float) -> tuple[float, float]:
+    if not math.isfinite(tan_beta) or tan_beta <= 0.0:
+        raise ValueError("tan_beta must be finite and positive")
+    sin2 = tan_beta**2 / (1.0 + tan_beta**2)
+    return sin2, 1.0 - sin2
+
+
+def sn1987a_quadratic(*, g_an: float, g_ap: float) -> float:
+    return g_an**2 + 0.61 * g_ap**2 + 0.53 * g_an * g_ap
+
+
+def coefficients_at_tan_beta(tan_beta: float) -> dict:
+    """Aligned-current tree coefficients plus central hadronic matching.
+
+    This is exact only conditional on Q_proj=I in each relevant SM mass basis.
+    """
+    sin2, cos2 = beta_fractions(tan_beta)
+    c_up = XI * cos2
+    c_down = XI * sin2
+    c_e = c_down
+    c_p = -0.47 + 0.8645 * c_up - 0.437 * c_down
+    c_n = -0.02 - 0.4055 * c_up + 0.833 * c_down
+    g_ae = c_e * ME_GEV / FA_GEV
+    g_ap = c_p * MP_GEV / FA_GEV
+    g_an = c_n * MN_GEV / FA_GEV
+    sn_lhs = sn1987a_quadratic(g_an=g_an, g_ap=g_ap)
+    return {
+        "classification": "ALIGNED_CURRENT_BENCHMARK_NOT_FULL_V20",
         "tan_beta": tan_beta,
         "sin2_beta": sin2,
         "cos2_beta": cos2,
-        "C_u0": c_u0,
-        "C_d0": c_d0,
+        "tree": {
+            "C_u0": c_up,
+            "C_c0": c_up,
+            "C_t0": c_up,
+            "C_d0": c_down,
+            "C_s0": c_down,
+            "C_b0": c_down,
+            "C_e0": c_e,
+        },
         "C_e": c_e,
-        "C_p": c_p,
-        "C_n": c_n,
-        "sigma_C_nucleon_illustrative": sigma,
+        "C_p_central": c_p,
+        "C_n_central": c_n,
         "g_ae": g_ae,
-        "g_ap": g_ap,
-        "g_an": g_an,
-        "SN1987A_quadratic_lhs": sn,
-        "SN1987A_amplitude_margin": math.sqrt(ferm.SN1987A_QUADRATIC_BOUND / sn)
-        if sn > 0
-        else float("inf"),
-        "TRGB_limit_over_abs_g_ae": ferm.GAE_TRGB_95CL / abs(g_ae),
-    }
-
-
-def q_sector_light_pq_charges(
-    *,
-    y_q: float = 1.0,
-    lambda_q: float = 1.0,
-    include_qbar_r: bool = False,
-    lambda_qr: float = 0.0,
-) -> dict:
-    """Diagonalize the minimal Q–F (–R) mass system and read light PQ charges.
-
-    Chirality bookkeeping (one Weyl generation of Q/Qbar):
-      Left-type columns we track PQ for: F1,F2,F3,Q   with PQ = (1,1,1,-3)
-      Right-type that get Dirac masses: Qbar (+ mass to Q from Phi†, mix to F from S)
-
-    Mass matrix M (4 left × 1 right) after VEVs:
-      M[i,0] = (λ/√3) v_S/√2   for i=0,1,2   (Qbar F_i S†)
-      M[3,0] = y_q v_Phi/√2                 (Phi† Q Qbar)
-    Optional Qbar R S† adds a fifth left state R (PQ=+1).
-    """
-    if y_q == 0.0:
-        raise ValueError("y_q must be nonzero")
-    n_f = 3
-    left_pq = [1.0, 1.0, 1.0, -3.0]
-    labels = ["F1", "F2", "F3", "Q"]
-    m = np.zeros((4, 1), dtype=complex)
-    mix = (lambda_q / math.sqrt(n_f)) * VS / math.sqrt(2.0)
-    for i in range(n_f):
-        m[i, 0] = mix
-    m[3, 0] = y_q * VPHI / math.sqrt(2.0)
-
-    if include_qbar_r:
-        left_pq.append(1.0)
-        labels.append("R")
-        m = np.vstack([m, np.array([[lambda_qr * VS / math.sqrt(2.0)]], dtype=complex)])
-
-    # SVD: M = U S Vh ; light left nullspace = columns of U with singular value ~0
-    u, s, _vh = np.linalg.svd(m, full_matrices=True)
-    # One heavy direction (rank 1); light = n_left - 1
-    n_left = m.shape[0]
-    rank = int(np.sum(s > 1e-12 * abs(m).max()))
-    light_u = u[:, rank:]  # shape (n_left, n_light)
-    pq_diag = np.diag(left_pq)
-    # Effective PQ in light subspace: U_light† PQ U_light
-    pq_light = light_u.conj().T @ pq_diag @ light_u
-    # Eigenvalues of that Hermitian matrix are the light PQ charges
-    evals = np.linalg.eigvalsh(pq_light)
-    # Average shift from the naive +1
-    mean_pq = float(np.mean(np.real(evals)))
-    max_abs_shift = float(np.max(np.abs(np.real(evals) - 1.0)))
-    return {
-        "singular_values_GeV": s.tolist(),
-        "rank": rank,
-        "n_light": int(n_left - rank),
-        "light_PQ_eigenvalues": [float(x) for x in np.real(evals)],
-        "mean_light_PQ": mean_pq,
-        "max_abs_PQ_shift_from_1": max_abs_shift,
-        "labels": labels,
-        "y_q": y_q,
-        "lambda_q": lambda_q,
-        "include_qbar_r": include_qbar_r,
-        "r_mix_over_M": abs(mix / m[3, 0]),
-    }
-
-
-def tree_coefficients_from_light_pq(mean_light_pq: float, tan_beta: float) -> dict:
-    """Map light-family PQ charge to tree C_u0, C_d0 for ERT matching.
-
-    Naive SO(10): each light 16 has PQ=+1, giving
-      C_u0 = cos²β / N,  C_d0 = sin²β / N
-    after the Higgs PQ assignment of ERT (10_H PQ=-2).
-
-    A universal shift δ of the light-fermion PQ (mean_light_pq = 1+δ)
-    rescales the fermion contribution to the axial couplings by (1+δ).
-    Higgs pieces are unchanged.  For electrons/down-type this multiplies
-    C_d0; for up-type, C_u0.  We take a common multiplicative factor
-    on both tree fermion coefficients (universal family shift).
-    """
-    sin2 = tan_beta * tan_beta / (1.0 + tan_beta * tan_beta)
-    cos2 = 1.0 / (1.0 + tan_beta * tan_beta)
-    factor = mean_light_pq  # =1 in the unmixed limit
-    c_u0 = factor * cos2 / N
-    c_d0 = factor * sin2 / N
-    return {"C_u0": c_u0, "C_d0": c_d0, "PQ_factor": factor}
-
-
-def match_under_ansatz(
-    *,
-    tan_beta: float = TAN_BETA_V20,
-    y_q: float = 1.0,
-    lambda_q: float = 1.0,
-    include_extra_qbar_r: bool = False,
-    lambda_qr: float = 0.0,
-) -> dict:
-    q = q_sector_light_pq_charges(
-        y_q=y_q,
-        lambda_q=lambda_q,
-        include_qbar_r=include_extra_qbar_r,
-        lambda_qr=lambda_qr,
-    )
-    tree = tree_coefficients_from_light_pq(q["mean_light_PQ"], tan_beta)
-    matched = _ert_from_tree(tree["C_u0"], tree["C_d0"], tan_beta)
-    baseline = ferm.ert_leading_extrapolation(
-        tan_beta, acknowledge_not_full_matching=True
-    )
-    return {
-        "ansatz": ANSATZ,
-        "q_sector": q,
-        "tree": tree,
-        "matched": matched,
-        "baseline_ERT_no_portal": {
-            "C_e": baseline["C_e"],
-            "C_p": baseline["C_p"],
-            "C_n": baseline["C_n"],
-        },
-        "delta": {
-            "C_e": matched["C_e"] - baseline["C_e"],
-            "C_p": matched["C_p"] - baseline["C_p"],
-            "C_n": matched["C_n"] - baseline["C_n"],
+        "g_ap_central": g_ap,
+        "g_an_central": g_an,
+        "TRGB_limit_over_abs_g_ae": GAE_TRGB_95CL / abs(g_ae),
+        "SN1987A_quadratic_lhs_central": sn_lhs,
+        "SN1987A_amplitude_margin_central": math.sqrt(
+            SN1987A_QUADRATIC_BOUND / sn_lhs
+        ),
+        "hadronic_uncertainty": {
+            "model_independent_Cp": 0.03,
+            "model_independent_Cn": 0.03,
+            "note": (
+                "Central di Cortona/PDG matching; coefficients are correlated "
+                "and the small C_n central value is not statistically robust."
+            ),
         },
     }
 
 
-def portal_ratio_scan(tan_beta: float = TAN_BETA_V20) -> dict:
-    ratios = [1e-4, 1e-3, 1e-2, 0.1, 1.0, 3.0, 10.0]
-    rows = []
-    for r in ratios:
-        # Fix y_q=1, vary lambda_q = r
-        out = match_under_ansatz(tan_beta=tan_beta, y_q=1.0, lambda_q=r)
-        rows.append(
-            {
-                "lambda_over_y": r,
-                "max_abs_PQ_shift": out["q_sector"]["max_abs_PQ_shift_from_1"],
-                "C_e": out["matched"]["C_e"],
-                "C_p": out["matched"]["C_p"],
-                "C_n": out["matched"]["C_n"],
-                "delta_C_e": out["delta"]["C_e"],
-                "delta_C_p": out["delta"]["C_p"],
-                "delta_C_n": out["delta"]["C_n"],
-            }
+def symbolic_aligned_formulas() -> dict:
+    return {
+        "scope": "conditional on aligned projected current Q_proj=I",
+        "xi": "17 v_Phi^2 / ((17 v_Phi)^2 + (4 v_S)^2)",
+        "C_u0_Cc0_Ct0": "xi cos^2(beta)",
+        "C_d0_Cs0_Cb0_Ce": "xi sin^2(beta)",
+        "C_p_central": "-0.47 + xi*(0.8645 cos^2(beta) - 0.437 sin^2(beta))",
+        "C_n_central": "-0.02 + xi*(-0.4055 cos^2(beta) + 0.833 sin^2(beta))",
+        "precision_status": (
+            "Tree formulas are aligned-current benchmarks. Nucleon constants "
+            "are central hadronic values and require threshold/RG matching."
+        ),
+    }
+
+
+def _nullspace(matrix: np.ndarray, rtol: float = 1e-12) -> np.ndarray:
+    matrix = np.asarray(matrix, dtype=complex)
+    _u, singular, vh = np.linalg.svd(matrix, full_matrices=True)
+    scale = max(float(singular[0]) if len(singular) else 0.0, 1.0)
+    rank = int(np.sum(singular > rtol * scale))
+    return vh.conj().T[:, rank:]
+
+
+def _inverse_sqrt_hermitian(matrix: np.ndarray) -> np.ndarray:
+    values, vectors = np.linalg.eigh(matrix)
+    if np.min(values) <= 0.0:
+        raise ValueError("Gram matrix is not positive definite")
+    return (vectors * (1.0 / np.sqrt(values))) @ vectors.conj().T
+
+
+def portal_current_match(
+    a: np.ndarray,
+    b: np.ndarray,
+    c: np.ndarray,
+    d: complex,
+    *,
+    alpha: float = 0.371,
+    gauge_admixture: float = 0.0,
+) -> dict:
+    """Match the full A,B,C,D heavy-light block.
+
+    Shapes are A=(2,5), B=(1,5), C=(2,1), D=scalar.  Entries are understood
+    to include their VEV/Yukawa magnitudes at alpha=0.
+    """
+    a = np.asarray(a, dtype=complex)
+    b = np.asarray(b, dtype=complex).reshape(1, 5)
+    c = np.asarray(c, dtype=complex).reshape(2, 1)
+    if a.shape != (2, 5):
+        raise ValueError("A must have shape (2,5)")
+    if d == 0:
+        raise ValueError("D must be nonzero")
+
+    schur = a - c @ (b / d)
+    light_u = _nullspace(schur)
+    if light_u.shape != (5, 3):
+        raise ValueError("Schur complement must have rank two")
+    k = -(b @ light_u) / d
+    gram = light_u.conj().T @ light_u + k.conj().T @ k
+    invsqrt = _inverse_sqrt_hermitian(gram)
+
+    q_u = 1.0 + gauge_admixture
+    q_q = -3.0 + 14.0 * gauge_admixture
+    delta_q = q_u - q_q
+    phase = np.exp(-1.0j * delta_q * alpha)
+    raw = np.vstack([light_u, phase * k])
+    embedding = raw @ invsqrt
+    d_embedding = np.vstack(
+        [
+            np.zeros_like(light_u),
+            -1.0j * delta_q * phase * k,
+        ]
+    ) @ invsqrt
+
+    q_uv = np.diag([q_u] * 5 + [q_q])
+    q_projected = embedding.conj().T @ q_uv @ embedding
+    berry = 1.0j * embedding.conj().T @ d_embedding
+    moving_sum = q_projected + berry
+    moving_expected = q_u * np.eye(3, dtype=complex)
+
+    # W is the normalized Q-component weight. Analytically:
+    # Q_proj=q_u I-(q_u-q_q)W, Berry=(q_u-q_q)W.
+    w = invsqrt @ k.conj().T @ k @ invsqrt
+    projected_expected = q_u * np.eye(3) - delta_q * w
+    berry_expected = delta_q * w
+
+    return {
+        "n_light": 3,
+        "schur_rank": 2,
+        "Q_projected": q_projected,
+        "berry_connection": berry,
+        "moving_frame_sum": moving_sum,
+        "W": w,
+        "projected_formula_error": float(
+            np.linalg.norm(q_projected - projected_expected)
+        ),
+        "berry_formula_error": float(np.linalg.norm(berry - berry_expected)),
+        "moving_identity_error": float(
+            np.linalg.norm(moving_sum - moving_expected)
+        ),
+        "projected_shift_norm": float(
+            np.linalg.norm(q_projected - q_u * np.eye(3))
+        ),
+        "projected_off_diagonal_norm": float(
+            np.linalg.norm(
+                q_projected - np.diag(np.diag(q_projected))
+            )
+        ),
+        "berry_norm": float(np.linalg.norm(berry)),
+        "portal_weight_trace": float(np.real(np.trace(w))),
+        "expected_coordinate_charge": q_u,
+    }
+
+
+def one_family_equal_mixing_counterexample() -> dict:
+    """Construct eta=pi/4: moving charge 1 but physical projected charge -1."""
+    a = np.zeros((2, 5), dtype=complex)
+    a[0, 3] = 1.0
+    a[1, 4] = 1.0
+    b = np.zeros((1, 5), dtype=complex)
+    b[0, 0] = 1.0
+    c = np.zeros((2, 1), dtype=complex)
+    row = portal_current_match(a, b, c, 1.0)
+    eigenvalues = np.linalg.eigvalsh(row["Q_projected"])
+    return {
+        "Q_projected_eigenvalues": [float(x) for x in eigenvalues],
+        "berry_eigenvalues": [
+            float(x) for x in np.linalg.eigvalsh(row["berry_connection"])
+        ],
+        "moving_sum_eigenvalues": [
+            float(x) for x in np.linalg.eigvalsh(row["moving_frame_sum"])
+        ],
+        "contains_minus_one_projected_charge": bool(
+            np.min(np.abs(eigenvalues + 1.0)) < 1e-12
+        ),
+        "moving_sum_is_identity": row["moving_identity_error"] < 1e-12,
+    }
+
+
+def _random_unitary(rng: np.random.Generator, n: int) -> np.ndarray:
+    q, r = np.linalg.qr(
+        rng.normal(size=(n, n)) + 1.0j * rng.normal(size=(n, n))
+    )
+    phases = np.diag(r)
+    phases = np.where(np.abs(phases) > 0.0, phases / np.abs(phases), 1.0)
+    return q @ np.diag(np.conj(phases))
+
+
+def random_portal_scan(
+    *,
+    trials: int = 256,
+    seed: int = 20260803,
+) -> dict:
+    """Exercise moving-frame identity and physical portal dependence."""
+    if trials < 1:
+        raise ValueError("trials must be positive")
+    rng = np.random.default_rng(seed)
+    worst_formula = 0.0
+    worst_moving = 0.0
+    largest_shift = 0.0
+    largest_mass_basis_offdiag = 0.0
+    c_portal_exercised = False
+    for _ in range(trials):
+        a = rng.normal(size=(2, 5)) + 1.0j * rng.normal(size=(2, 5))
+        b = rng.normal(size=(1, 5)) + 1.0j * rng.normal(size=(1, 5))
+        c = rng.normal(size=(2, 1)) + 1.0j * rng.normal(size=(2, 1))
+        # Scan from tiny to strong light-heavy mixing.
+        b *= 10.0 ** rng.uniform(-3.0, 3.0)
+        c *= 10.0 ** rng.uniform(-3.0, 3.0)
+        d = np.exp(1.0j * rng.uniform(-math.pi, math.pi))
+        row = portal_current_match(a, b, c, d, alpha=rng.uniform(-math.pi, math.pi))
+        worst_formula = max(
+            worst_formula,
+            row["projected_formula_error"],
+            row["berry_formula_error"],
         )
-    # Robustness with extra Qbar R portal at O(1)
-    extra = match_under_ansatz(
-        tan_beta=tan_beta, y_q=1.0, lambda_q=1.0, include_extra_qbar_r=True, lambda_qr=1.0
-    )
+        worst_moving = max(worst_moving, row["moving_identity_error"])
+        largest_shift = max(largest_shift, row["projected_shift_norm"])
+        rotation = _random_unitary(rng, 3)
+        mass_basis = rotation.conj().T @ row["Q_projected"] @ rotation
+        offdiag = mass_basis - np.diag(np.diag(mass_basis))
+        largest_mass_basis_offdiag = max(
+            largest_mass_basis_offdiag, float(np.linalg.norm(offdiag))
+        )
+        c_portal_exercised = bool(
+            c_portal_exercised or bool(np.linalg.norm(c) > 0.0)
+        )
+
+    counterexample = one_family_equal_mixing_counterexample()
     return {
-        "scan": rows,
-        "max_abs_delta_C_e_in_scan": max(abs(r["delta_C_e"]) for r in rows),
-        "max_abs_delta_C_p_in_scan": max(abs(r["delta_C_p"]) for r in rows),
-        "max_abs_delta_C_n_in_scan": max(abs(r["delta_C_n"]) for r in rows),
-        "with_extra_Qbar_R_O1": {
-            "C_e": extra["matched"]["C_e"],
-            "C_p": extra["matched"]["C_p"],
-            "C_n": extra["matched"]["C_n"],
-            "max_abs_PQ_shift": extra["q_sector"]["max_abs_PQ_shift_from_1"],
-        },
+        "trials": trials,
+        "seed": seed,
+        "worst_analytic_formula_error": worst_formula,
+        "worst_moving_identity_error": worst_moving,
+        "largest_projected_current_shift": largest_shift,
+        "largest_random_mass_basis_offdiagonal": largest_mass_basis_offdiag,
+        "C_portal_exercised": bool(c_portal_exercised),
+        "one_family_counterexample": counterexample,
+        "passes_fail_closed_detection": bool(
+            worst_formula < 1e-8
+            and worst_moving < 1e-8
+            and largest_shift > 0.1
+            and largest_mass_basis_offdiag > 1e-3
+            and c_portal_exercised
+            and counterexample["contains_minus_one_projected_charge"]
+        ),
+    }
+
+
+def coefficient_envelope(
+    tan_beta_min: float = TAN_BETA_DECLARED_RANGE[0],
+    tan_beta_max: float = TAN_BETA_DECLARED_RANGE[1],
+    points: int = 2001,
+) -> dict:
+    """Aligned-current benchmark envelope only."""
+    if not 0.0 < tan_beta_min < tan_beta_max:
+        raise ValueError("invalid tan_beta interval")
+    grid = np.geomspace(tan_beta_min, tan_beta_max, points)
+    rows = [coefficients_at_tan_beta(float(t)) for t in grid]
+    keys = (
+        "C_e",
+        "C_p_central",
+        "C_n_central",
+        "g_ae",
+        "g_ap_central",
+        "g_an_central",
+    )
+    ranges = {
+        key: [
+            float(min(row[key] for row in rows)),
+            float(max(row[key] for row in rows)),
+        ]
+        for key in keys
+    }
+    max_sn = max(row["SN1987A_quadratic_lhs_central"] for row in rows)
+    max_gae = max(abs(row["g_ae"]) for row in rows)
+    return {
+        "scope": "aligned-current benchmark only; not full-v20 portal envelope",
+        "tan_beta_interval": [tan_beta_min, tan_beta_max],
+        "points": points,
+        "ranges": ranges,
+        "aligned_TRGB_safe_central": max_gae < GAE_TRGB_95CL,
+        "aligned_SN1987A_safe_central": max_sn < SN1987A_QUADRATIC_BOUND,
+        "model_independent_SN_fa_safe": FA_GEV > FA_UNIVERSAL_SN_GEV,
     }
 
 
 def build_report() -> dict:
-    primary = match_under_ansatz(tan_beta=TAN_BETA_V20, y_q=1.0, lambda_q=1.0)
-    natural = match_under_ansatz(tan_beta=TAN_BETA_NAT, y_q=1.0, lambda_q=1.0)
-    scan = portal_ratio_scan(TAN_BETA_V20)
-
-    # Uniqueness gate: ansatz fully specifies portals; numerical C_f unique
-    unique = True
-    # Hadronic illustrative uncertainty still remains on C_p, C_n
-    hadronic_floor = primary["matched"]["sigma_C_nucleon_illustrative"]
-
-    m = primary["matched"]
+    portal = random_portal_scan()
+    committed = coefficients_at_tan_beta(TAN_BETA_COMMITTED)
+    high = coefficients_at_tan_beta(TAN_BETA_HIGH_EXAMPLE)
+    aligned_envelope = coefficient_envelope()
     checks = {
-        "TRGB_conditional": abs(m["g_ae"]) < ferm.GAE_TRGB_95CL,
-        "SN1987A_conditional": m["SN1987A_quadratic_lhs"] < ferm.SN1987A_QUADRATIC_BOUND,
-        "universal_SN_fa": FA > ferm.FA_UNIVERSAL_SN_GEV,
-        "portal_correction_below_hadronic_on_Cp": abs(primary["delta"]["C_p"])
-        < hadronic_floor,
-        "three_light_families": primary["q_sector"]["n_light"] == 3,
-        "ansatz_fully_specified": True,
-    }
-
-    return {
-        "status": "UNIQUE_UNDER_STATED_ANSATZ__HADRONIC_UNCERTAINTY_REMAINS",
-        "ansatz": {
-            "name": ANSATZ,
-            "y_P_y_Q_y_R": 1.0,
-            "lambda_P_lambda_R_lambda_Q": 1.0,
-            "lambda_Q_generation": "universal λ/√3",
-            "extra_portals": "set to zero in primary; O(1) Qbar R scanned",
-            "tan_beta_primary": TAN_BETA_V20,
-            "note": (
-                "Without this ansatz the charge-allowed Lagrangian does not "
-                "fix unique C_e, C_p, C_n. With it, they are unique up to "
-                "hadronic matching uncertainty on C_p, C_n."
-            ),
-        },
-        "normalization": {
-            "f_a_exact_GeV": FA,
-            "N_cover": N,
-            "v_S_GeV": VS,
-            "v_Phi_GeV": VPHI,
-        },
-        "unique_under_ansatz": unique,
-        "primary_v20_tanbeta_1p5": {
-            "C_e": m["C_e"],
-            "C_p": m["C_p"],
-            "C_n": m["C_n"],
-            "g_ae": m["g_ae"],
-            "g_ap": m["g_ap"],
-            "g_an": m["g_an"],
-            "sigma_C_nucleon_illustrative": hadronic_floor,
-            "max_abs_PQ_shift": primary["q_sector"]["max_abs_PQ_shift_from_1"],
-            "delta_vs_ERT_noportal": primary["delta"],
-            "TRGB_limit_over_abs_g_ae": m["TRGB_limit_over_abs_g_ae"],
-            "SN1987A_amplitude_margin": m["SN1987A_amplitude_margin"],
-        },
-        "comparison_natural_tanbeta": {
-            "tan_beta": TAN_BETA_NAT,
-            "C_e": natural["matched"]["C_e"],
-            "C_p": natural["matched"]["C_p"],
-            "C_n": natural["matched"]["C_n"],
-        },
-        "portal_ratio_scan": scan,
-        "bound_checks": {
-            **{k: {"pass": bool(v)} for k, v in checks.items()},
-            "full_model_pass_without_ansatz": None,
-            "full_model_pass_under_stated_ansatz": all(checks.values()),
-        },
-        "still_not_derived_without_ansatz": [
-            "Arbitrary generation-dependent λ_Q^{i}, λ_P^{iα}, λ_R^{iα}",
-            "Extra charge-allowed portals (PR 10_H, Qbar R S†, …) as free matrices",
-            "Correlated hadronic ΔC_p, ΔC_n beyond illustrative σ",
+        "projected_and_berry_formulas_verified": (
+            portal["worst_analytic_formula_error"] < 1e-8
+        ),
+        "moving_frame_identity_verified": portal["worst_moving_identity_error"] < 1e-8,
+        "physical_portal_dependence_detected": portal[
+            "largest_projected_current_shift"
+        ]
+        > 0.1,
+        "possible_FCNC_detected": portal[
+            "largest_random_mass_basis_offdiagonal"
+        ]
+        > 1e-3,
+        "allowed_C_portal_included": portal["C_portal_exercised"],
+        "equal_mixing_counterexample": portal["one_family_counterexample"][
+            "contains_minus_one_projected_charge"
         ],
+        "exact_xi_finite": math.isfinite(XI) and XI > 0.0,
+    }
+    failures = [name for name, passed in checks.items() if not passed]
+    return {
+        "status": (
+            "PORTAL_DEPENDENT_PHYSICAL_CURRENT__"
+            "FULL_FERMION_MATCHING_OPEN__ALIGNED_BENCHMARK_ONLY"
+        ),
+        "n_checks": len(checks),
+        "n_failed": len(failures),
+        "failures": failures,
+        "normalization": NORMALIZATION,
+        "portal_current_result": {
+            "physical_regular_current": "Q_proj = I_3 - 4 W (pure PQ basis)",
+            "berry_connection": "A_B = +4 W",
+            "moving_frame_identity": "Q_proj + A_B = I_3",
+            "interpretation": (
+                "The moving-frame sum is coordinate-convention dependent. "
+                "Physical derivative/Yukawa couplings retain Q_proj and are "
+                "portal dependent."
+            ),
+            "full_block": (
+                "A,B,C,D with Schur complement A-C D^{-1}B; rank two is "
+                "required for three light modes"
+            ),
+            "scan": portal,
+        },
+        "aligned_symbolic_benchmark": symbolic_aligned_formulas(),
+        "aligned_numerical_examples_not_full_predictions": {
+            "tan_beta_1p5": committed,
+            "tan_beta_high": high,
+        },
+        "aligned_beta_envelope": aligned_envelope,
+        "full_model_status": {
+            "portal_matrices_required": True,
+            "SM_Yukawa_alignment_required": True,
+            "tree_FCNC_absence_proved": False,
+            "unique_symbolic_full_model_Ce_Cp_Cn": False,
+            "unique_numerical_Ce_Cp_Cn": False,
+            "full_model_stellar_SN_pass": None,
+        },
+        "missing_for_full_matching": [
+            "complete representation-aware A,B,C,D portal tensors",
+            "component-level 10_H and 126_H Yukawa tensors",
+            "rotation of Q_proj into each SM fermion mass basis",
+            "heavy-threshold Wess-Zumino/anomaly matching",
+            "correct Takagi/PMNS flavour fit and a defensible tan(beta)",
+            "threshold/RG evolution and correlated hadronic matching",
+        ],
+        "checks": {name: bool(value) for name, value in checks.items()},
         "verdict": (
-            f"Under the stated ansatz `{ANSATZ}`, the v20 couplings are uniquely "
-            f"derived at tanβ={TAN_BETA_V20:.3f}: "
-            f"C_e={m['C_e']:.6e}, C_p={m['C_p']:.6e}, C_n={m['C_n']:.6e}. "
-            f"Portal-induced shifts are |ΔC_p|={abs(primary['delta']['C_p']):.3e} "
-            f"(≪ illustrative hadronic σ={hadronic_floor:.3e}). "
-            "Without that ansatz the fermion gap remains open. "
-            "The 37 GHz photon benchmark is independent and still experimentally open."
+            "The Berry cancellation identity is verified but does not close the "
+            "physical portal gap. Q_proj=I-4W is portal dependent and can be "
+            "flavour off-diagonal. The displayed C_f(tan beta) remain aligned "
+            "benchmarks only. Exact full-v20 C_e,C_p,C_n are not derived."
         ),
     }
 
 
 def write_markdown(report: dict) -> str:
-    p = report["primary_v20_tanbeta_1p5"]
+    portal = report["portal_current_result"]["scan"]
+    low = report["aligned_numerical_examples_not_full_predictions"]["tan_beta_1p5"]
+    high = report["aligned_numerical_examples_not_full_predictions"]["tan_beta_high"]
     lines = [
-        "# Full v20 fermion matching — C_e, C_p, C_n",
+        "# Full heavy-light fermion matching — fail-closed v20 status",
         "",
         f"**Status:** `{report['status']}`",
         "",
-        "## Ansatz (required for uniqueness)",
+        "## Correct current decomposition",
         "",
-        f"- Name: `{report['ansatz']['name']}`",
-        f"- {report['ansatz']['note']}",
+        "- Physical projected current: `Q_proj = I_3 - 4 W`",
+        "- Berry connection: `A_B = +4 W`",
+        "- Moving-coordinate sum: `Q_proj + A_B = I_3`",
+        "- The sum is basis/convention dependent; it is not the observable current.",
         "",
-        "## Unique values at v20 tanβ = 1.5",
+        f"- Random full-block trials: {portal['trials']}",
+        f"- Largest physical projected shift: `{portal['largest_projected_current_shift']:.3e}`",
+        f"- Largest random mass-basis off-diagonal: `{portal['largest_random_mass_basis_offdiagonal']:.3e}`",
+        f"- Moving-frame identity error: `{portal['worst_moving_identity_error']:.3e}`",
         "",
-        f"| Coefficient | Value |",
-        f"|---|---:|",
-        f"| C_e | `{p['C_e']:.8e}` |",
-        f"| C_p | `{p['C_p']:.8e}` |",
-        f"| C_n | `{p['C_n']:.8e}` |",
-        f"| g_ae | `{p['g_ae']:.8e}` |",
-        f"| g_ap | `{p['g_ap']:.8e}` |",
-        f"| g_an | `{p['g_an']:.8e}` |",
-        f"| max \\|PQ shift\\| | `{p['max_abs_PQ_shift']:.3e}` |",
-        f"| TRGB margin | `{p['TRGB_limit_over_abs_g_ae']:.1f}` |",
-        f"| SN1987A amplitude margin | `{p['SN1987A_amplitude_margin']:.1f}` |",
+        "The scan includes the additionally allowed `S Q Rbar` portal through",
+        "the full `A,B,C,D` Schur-complement block.",
         "",
-        "## Portal-ratio robustness",
+        "## Explicit equal-mixing counterexample",
         "",
-        f"- max \\|ΔC_e\\| in scan: `{report['portal_ratio_scan']['max_abs_delta_C_e_in_scan']:.3e}`",
-        f"- max \\|ΔC_p\\| in scan: `{report['portal_ratio_scan']['max_abs_delta_C_p_in_scan']:.3e}`",
-        f"- max \\|ΔC_n\\| in scan: `{report['portal_ratio_scan']['max_abs_delta_C_n_in_scan']:.3e}`",
+        f"- Projected-current eigenvalues: `{portal['one_family_counterexample']['Q_projected_eigenvalues']}`",
+        f"- Berry eigenvalues: `{portal['one_family_counterexample']['berry_eigenvalues']}`",
+        f"- Moving-sum eigenvalues: `{portal['one_family_counterexample']['moving_sum_eigenvalues']}`",
         "",
-        "## Bound checks under ansatz",
+        "## Aligned-current examples only",
         "",
-    ]
-    for k, v in report["bound_checks"].items():
-        if isinstance(v, dict) and "pass" in v:
-            lines.append(f"- `{k}`: {v['pass']}")
-        else:
-            lines.append(f"- `{k}`: {v}")
-    lines += [
+        "| tan(beta) | C_e | C_p central | C_n central |",
+        "|---:|---:|---:|---:|",
+        f"| {low['tan_beta']:.6g} | {low['C_e']:.12g} | {low['C_p_central']:.12g} | {low['C_n_central']:.12g} |",
+        f"| {high['tan_beta']:.6g} | {high['C_e']:.12g} | {high['C_p_central']:.12g} | {high['C_n_central']:.12g} |",
         "",
-        "## Still open without the ansatz",
+        "These numbers require `Q_proj=I` aligned with each SM Yukawa matrix.",
+        "They are not exact full-v20 predictions.",
         "",
-        *[f"- {x}" for x in report["still_not_derived_without_ansatz"]],
+        "## Missing for closure",
+        "",
+        *[f"- {item}" for item in report["missing_for_full_matching"]],
         "",
         "## Verdict",
         "",
@@ -394,25 +532,25 @@ def main() -> int:
     ROOT.joinpath("FULL_FERMION_MATCHING_V20.md").write_text(
         write_markdown(report), encoding="utf-8"
     )
-    p = report["primary_v20_tanbeta_1p5"]
     print(
         json.dumps(
             {
                 "status": report["status"],
-                "unique_under_ansatz": report["unique_under_ansatz"],
-                "C_e": p["C_e"],
-                "C_p": p["C_p"],
-                "C_n": p["C_n"],
-                "max_PQ_shift": p["max_abs_PQ_shift"],
-                "full_model_pass_under_stated_ansatz": report["bound_checks"][
-                    "full_model_pass_under_stated_ansatz"
+                "n_failed": report["n_failed"],
+                "largest_projected_shift": report["portal_current_result"]["scan"][
+                    "largest_projected_current_shift"
                 ],
+                "possible_FCNC": report["full_model_status"][
+                    "tree_FCNC_absence_proved"
+                ]
+                is False,
+                "unique_full_model_coefficients": False,
                 "verdict": report["verdict"],
             },
             indent=2,
         )
     )
-    return 0 if report["bound_checks"]["full_model_pass_under_stated_ansatz"] else 1
+    return 0 if report["n_failed"] == 0 else 1
 
 
 if __name__ == "__main__":

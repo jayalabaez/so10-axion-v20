@@ -1,7 +1,7 @@
 # Extensive confirmation / falsification campaign
 
-**Status:** PASS — 48 checks, 0 failed
-**Unittest discovery:** 136 tests available in package
+**Status:** PASS — 53 checks, 0 failed
+**Unittest discovery:** 154 tests available in package
 
 ## Coverage
 
@@ -19,6 +19,7 @@
 - L Z17 residue uniqueness
 - M lifetime floors + Clifford
 - N soft-overclaim detectors
+- O physical portal current + corrected tan(beta) profile
 
 ## Section results
 
@@ -51,10 +52,10 @@
 - [PASS] P=8 amplitude finite and positive: `9.817785e-52`
 
 ### F_flavour — PASS (5/5)
-- [PASS] package best fit is finite and perturbative: `chi2=3.663, tag=natural_1e14, y126=0.2489`
-- [PASS] exact v_R=v_S remains viable but stressed (chi2<30): `chi2_v20=11.657`
-- [PASS] multi-seed v20-scale fits remain finite: `min=21.530, median=348.019`
-- [PASS] natural 1e14 scale often beats or matches v20 median: `med_nat=10.614, med_v20=348.019`
+- [PASS] package best fit is finite and perturbative: `chi2=0.020, tag=natural_1e14, y126=0.3453`
+- [PASS] corrected exact v_R=v_S benchmark is not viable (chi2>30): `chi2_v20=594.240`
+- [PASS] multi-seed v20-scale fits remain finite: `min=113.934, median=2178.792`
+- [PASS] natural 1e14 scale often beats or matches v20 median: `med_nat=5.174, med_v20=2178.792`
 - [PASS] at least one multi-seed start yields perturbative v20 fit: `perturbative_seeds=10/10`
 
 ### G_seesaw — PASS (2/2)
@@ -98,6 +99,13 @@
 - [PASS] detector armed: manuscript portal list is incomplete: `armed`
 - [PASS] continuous alpha_inv(vPhi) != 40: `16.647`
 
+### O_fermion — PASS (5/5)
+- [PASS] moving-frame identity is algebraically verified: `worst=5.984e-11`
+- [PASS] physical projected current remains portal dependent: `shift=4.000e+00`
+- [PASS] random Yukawa misalignment can generate FCNC current: `3.252e+00`
+- [PASS] aligned central tan(beta)=1.5 benchmark reproduced: `(0.040723981900,-0.472149321267,0.006583710407)`
+- [PASS] corrected fixed-vR profile does not establish unique tan(beta): `best tanbeta=2.000, chi2=51.103`
+
 ## Cannot confirm in-repo
 
 - physical detection of the 153.5 ueV axion
@@ -106,4 +114,4 @@
 
 ## Verdict
 
-Extensive in-repo confirmation battery completed. Hard internal structure survives adversarial attacks; soft overclaims remain correctly flagged. This confirms consistency of the candidate theory, not that nature realizes it.
+Extensive in-repo confirmation battery completed. Hard internal structure survives adversarial attacks; soft overclaims remain correctly flagged. The corrected single-scale flavour benchmark fails and full fermion matching is open; only the core field-theory construction is internally confirmed.

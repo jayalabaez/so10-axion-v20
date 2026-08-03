@@ -9,6 +9,7 @@ realizes the model.
 from __future__ import annotations
 
 import json
+import unittest
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -17,25 +18,39 @@ ROOT = Path(__file__).resolve().parent
 
 
 def build_verdict() -> dict:
+    n_unit_tests = unittest.defaultTestLoader.discover(str(ROOT)).countTestCases()
+    extensive = json.loads(
+        ROOT.joinpath("EXTENSIVE_CONFIRM_FALSIFY_VERDICT.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    next_physics = json.loads(
+        ROOT.joinpath("NEXT_PHYSICS_ANALYSIS_VERDICT.json").read_text(
+            encoding="utf-8"
+        )
+    )
     return {
         "title": "SO(10)×Z17 axion candidate v20 — confirmation verdict",
         "generated_utc": datetime.now(timezone.utc).isoformat(),
         "question_asked": "Execute analysis and prove this theory",
         "short_answer": (
-            "PROVED as an internally consistent, anomaly-free candidate theory "
-            "with an open 37 GHz photon target. Photon literature and "
-            "model-independent SN f_a bounds do not exclude it. Fermion "
-            "couplings are only a provisional ERT-like benchmark (gap NOT "
-            "closed). NOT PROVED that nature realizes the model or that DM "
-            "was detected."
+            "The anomaly/operator core passes internal consistency checks and "
+            "the 37 GHz photon target remains open. Photon literature and "
+            "model-independent SN f_a bounds do not exclude it. Exact full "
+            "C_e,C_p,C_n are NOT derived: the physical projected current is "
+            "portal dependent, and the corrected Takagi/PMNS flavour analysis "
+            "rejects the current v_R=v_S benchmark within the constrained "
+            "ansatz. The complete phenomenological model is not approved."
         ),
         "tiers": {
             "PROVED_mathematical_internal": {
                 "status": "YES",
                 "evidence": [
                     "v20 engine 42/42 PASS",
-                    "extensive confirm/falsify 48/48 PASS",
-                    "136 unit tests PASS",
+                    "extensive confirm/falsify "
+                    f"{extensive['n_extensive_checks'] - extensive['n_failed']}/"
+                    f"{extensive['n_extensive_checks']} PASS",
+                    f"{n_unit_tests} unit tests discovered (full run required for PASS)",
                     "anomaly cancellation with (1,16)+(14,3)+(1,-18)",
                     "one-pair impossible (discriminant -15)",
                     "portal-basis uniqueness of the triple",
@@ -51,7 +66,7 @@ def build_verdict() -> dict:
                     "CAST/HB cover mass but g limits ~2500× too weak",
                     "ORGAN/MADMAX proto exclusions at wrong masses",
                     "universal QCD-axion SN bound on f_a/m_a passes (model-independent)",
-                    "provisional ERT-like fermion benchmark is conditionally below TRGB/SN1987A, but full_model_pass=null (gap NOT closed)",
+                    "aligned-current C_f(tan beta) benchmark is centrally below TRGB/SN1987A, but full-model pass remains open",
                     "analytic Gμ~4.2e-13 below NANOGrav NG ballpark ~1e-10",
                     "central proton lifetime above SK",
                     "public/indirect audit: no hard public kill of the photon benchmark",
@@ -60,11 +75,12 @@ def build_verdict() -> dict:
             "CONFIRMED_with_documented_stress": {
                 "status": "YES_WITH_STRESS",
                 "evidence": [
-                    "exact v_R=v_S flavour chi2~11.7 (viable but worse than ~1e14)",
+                    "previous flavour minima used eigh on a non-Hermitian Majorana matrix and omitted U_e^dagger",
+                    "corrected fixed-v_R profile has no chi2<30 point; constrained single-scale benchmark fails",
                     "continuous Spin(10) RG rejects alpha(vPhi)=1/40 reset",
                     "conservative one-loop running not Planck-safe without thresholds",
-                    "fermion C_e/C_p/C_n unique under manuscript-minimal universal ansatz "
-                    "(full_fermion_matching_v20); without ansatz still open",
+                    "moving-frame Q_proj+Berry=I identity is basis dependent",
+                    "physical Q_proj=I-4W is portal dependent and may be flavour off-diagonal",
                 ],
             },
             "SOFT_FALSIFIED_overclaims_only": {
@@ -83,7 +99,9 @@ def build_verdict() -> dict:
                     "real 36.6–37.6 GHz haloscope scan at g~2.3e-14 GeV^{-1}",
                     "NS-radio detection of Doppler-modulated 37 GHz line",
                     "lattice (13,-3) string-network confirmation",
-                    "full generation-dependent portals without ansatz (unique C_f need stated ansatz)",
+                    "complete A,B,C,D portal tensors and SM Yukawa alignment",
+                    "viable global high-scale flavour/Higgs fit",
+                    "correlated hadronic and threshold/RG precision matching",
                     "independent human diagrammatic referee",
                     "proof that local DM is this axion (abundance + detection)",
                 ],
@@ -93,23 +111,33 @@ def build_verdict() -> dict:
             "v20_engine": "PASS 42/42",
             "error_audit": "PASS (soft overclaims flagged)",
             "falsify_v20": "PASS 0 hard failures",
-            "fermion_couplings": "PROVISIONAL_LEADING_CURRENT_ONLY__FULL_V20_MATCHING_OPEN",
+            "fermion_couplings": "ALIGNED_BENCHMARK_ONLY / FULL_MATCHING_OPEN",
+            "tan_beta_profile": "corrected Takagi/PMNS profile: no chi2<30 point",
             "literature_150ueV": "OPEN (does not fail)",
             "home_public_37GHz": "PASS (CMB mythbust)",
             "gravitas_37GHz": "PASS (21 targets)",
             "public_indirect_audit": "PASS 20 channels / 13 runnable; proves=false",
-            "next_physics": "PASS 8/8",
-            "extensive_confirm_falsify": "PASS 48/48",
-            "unittest": "PASS 136/136",
+            "next_physics": (
+                f"{next_physics['status']} "
+                f"{next_physics['n_checks'] - next_physics['n_failed']}/"
+                f"{next_physics['n_checks']}"
+            ),
+            "extensive_confirm_falsify": (
+                f"{extensive['status']} "
+                f"{extensive['n_extensive_checks'] - extensive['n_failed']}/"
+                f"{extensive['n_extensive_checks']}"
+            ),
+            "unittest": f"{n_unit_tests} tests discovered; see latest full run/CI",
         },
         "correct_public_claim": (
             "We have a mathematically consistent SO(10)×Z17 axion candidate "
             "that survives adversarial in-repo tests. Current published photon "
             "bounds and the model-independent SN f_a window do not exclude the "
-            "37 GHz all-DM benchmark. Provisional ERT-like fermion couplings "
-            "look safe under stated assumptions, but exact C_e/C_p/C_n are not "
-            "uniquely derived (portal matching open). Whether nature realizes "
-            "this model remains an open experimental question."
+            "37 GHz all-DM photon benchmark. Exact full fermion couplings are "
+            "not yet derived because the projected current depends on portal "
+            "mixing/Yukawa alignment. The corrected constrained flavour fit "
+            "does not support v_R=v_S. Whether a fuller model or nature realizes "
+            "the construction remains open."
         ),
         "incorrect_claim_do_not_use": (
             "We proved dark matter is a 153.5 µeV SO(10) axion / we detected "
@@ -119,7 +147,7 @@ def build_verdict() -> dict:
             "Positive laboratory conversion signal in 36.6–37.6 GHz at the predicted coupling",
             "Or: astrophysical NS-conversion line phase-locked to GRAVITAS ephemeris",
         ],
-        "verdict_code": "INTERNALLY_PROVED_EMPIRICALLY_OPEN",
+        "verdict_code": "CORE_INTERNAL_CHECKS_PASS__PHENOMENOLOGY_OPEN",
     }
 
 

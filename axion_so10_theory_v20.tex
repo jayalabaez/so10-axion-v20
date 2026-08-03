@@ -413,7 +413,23 @@ total & $0$ & $0$ & $0$\\
 \end{center}
 The cubic entries before the common factor 16 are
 $4097+2771-5831=1037$. The heavy accidental-PQ mixed anomaly is also zero,
-so the axion's QCD anomaly and low-energy couplings are unchanged.
+so the gauge-anomaly coefficients are unchanged. This does not by itself
+fix the regular light-fermion current. For a complete singlet-VEV mass block
+with submatrices $(A,B,C,D)$, where $C$ includes the allowed $SQ\overline R$
+portal, let $B_\ell(\alpha)$ embed the three canonically normalized light
+modes. Then
+\begin{equation}
+ Q_{\rm proj}=B_\ell^\dagger Q_{\rm UV}B_\ell
+ =\mathbf1-4W,\qquad
+ {\cal A}_\alpha=iB_\ell^\dagger\frac{dB_\ell}{d\alpha}=4W.
+\label{eq:portalcurrent}
+\end{equation}
+The sum $Q_{\rm proj}+{\cal A}_\alpha=\mathbf1$ is a moving-coordinate
+identity and is basis dependent; it does not erase the physical projected
+current. General portal matrices make $W$ non-universal, and misalignment
+with the SM Yukawa matrices can generate flavour-changing axion currents.
+A full matching therefore requires the portal tensors and component Yukawa
+matrices, even though the total anomaly is unchanged.
 
 There is a short minimality proof for an anomalon sector built only from
 complete pairs, with no Spin(10)-singlet anomalons. If every
@@ -447,6 +463,42 @@ Writing the canonically normalized phases as $(a_\Phi,a_S)$, define
 The first combination is orthogonal to the gauge direction. For
 $v_\Phi=10^{17}\GeV$ the correction to $v_S/17$ is
 $-1.10\times10^{-12}$.
+
+The exact coefficient converting the $S$ phase into $\widehat a/f_a$ is
+\begin{equation}
+ \xi=\frac{17v_\Phi^2}{(17v_\Phi)^2+(4v_S)^2}
+ =0.0588235294116349
+\label{eq:xiexact}
+\end{equation}
+at the frozen v20 point. If the physical projected current is aligned as
+$Q_{\rm proj}=\mathbf1$ in the SM mass bases, standard axial-basis matching
+gives the conditional tree benchmark
+\begin{equation}
+ C^0_{u,c,t}=\xi\cos^2\!\beta,\qquad
+ C^0_{d,s,b}=C_e=\xi\sin^2\!\beta.
+\label{eq:fermiontreeexact}
+\end{equation}
+Using central low-energy hadronic coefficients \cite{GrillidiCortona},
+\begin{align}
+ C_p&=-0.47+\xi(0.8645\cos^2\!\beta-0.437\sin^2\!\beta),\nonumber\\
+ C_n&=-0.02+\xi(-0.4055\cos^2\!\beta+0.833\sin^2\!\beta).
+\label{eq:nucleoncentral}
+\end{align}
+The constants in Eq.~\eqref{eq:nucleoncentral} carry correlated hadronic
+uncertainties of order $0.03$ and a precision result requires a declared
+threshold/RG convention. At the constrained benchmark $\tan\beta=1.5$ the
+central values are
+\begin{equation}
+ (C_e,C_p,C_n)=(0.04072398,-0.47214932,0.00658371).
+\end{equation}
+These are not unique numerical v20 predictions. They assume current/Yukawa
+alignment, while Eq.~\eqref{eq:portalcurrent} shows that general portals can
+change the physical current. Moreover, the corrected flavour analysis must
+use Takagi diagonalization of the complex-symmetric Majorana matrix and
+$U_{\rm PMNS}=U_e^\dagger U_\nu$. After this correction the previous
+$\tan\beta=1.5$ and high-$\tan\beta$ minima are invalid; the current
+$v_R=v_S$ profile has no point with $\chi^2<30$. Precision matching also
+requires threshold/RG evolution and correlated hadronic uncertainties.
 
 The large charges make the Abelian running a real constraint. Including
 all fields above $v_\Phi$ gives
@@ -693,7 +745,7 @@ a Hyper-K null would exclude only that additional subregion.
 
 \FloatBarrier
 
-\begin{table}[h]
+\begin{table}[ht]
 \centering
 \caption{Diagnostic priors of the proton Monte Carlo (seed 20260801,
 $10^5$ trials; spectator shift applied per trial with $y_s=\sqrt2$).}

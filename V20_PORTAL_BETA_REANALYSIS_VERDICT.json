@@ -1,0 +1,705 @@
+{
+  "status": "IN_REPO_REANALYSIS_PASS__FIELD_THEORY_CANDIDATE__FERMION_AND_SINGLE_SCALE_FLAVOUR_OPEN",
+  "n_checks": 9,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "independent_error_audit_pass": true,
+    "extensive_campaign_pass": true,
+    "moving_frame_identity_verified": true,
+    "physical_portal_dependence_detected": true,
+    "possible_FCNC_detected": true,
+    "complete_C_portal_included": true,
+    "full_model_coefficients_not_overclaimed": true,
+    "corrected_Takagi_PMNS_used": true,
+    "corrected_single_scale_profile_not_viable": true
+  },
+  "corrected_conclusions": {
+    "moving_frame_identity": "Q_proj + Berry = I (basis dependent)",
+    "physical_regular_current": "Q_proj = I - 4W (portal dependent)",
+    "tree_FCNC_absence_proved": false,
+    "aligned_Cf_benchmark_reproducible": true,
+    "unique_full_model_Ce_Cp_Cn": false,
+    "corrected_vR_equals_vS_flavour_viable": false,
+    "photon_37GHz_benchmark_experimentally_open": true
+  },
+  "portal_matching": {
+    "physical_regular_current": "Q_proj = I_3 - 4 W (pure PQ basis)",
+    "berry_connection": "A_B = +4 W",
+    "moving_frame_identity": "Q_proj + A_B = I_3",
+    "interpretation": "The moving-frame sum is coordinate-convention dependent. Physical derivative/Yukawa couplings retain Q_proj and are portal dependent.",
+    "full_block": "A,B,C,D with Schur complement A-C D^{-1}B; rank two is required for three light modes",
+    "scan": {
+      "trials": 256,
+      "seed": 20260803,
+      "worst_analytic_formula_error": 5.987563693889617e-11,
+      "worst_moving_identity_error": 5.98438205587699e-11,
+      "largest_projected_current_shift": 3.9999915369209447,
+      "largest_random_mass_basis_offdiagonal": 3.2523111669641054,
+      "C_portal_exercised": true,
+      "one_family_counterexample": {
+        "Q_projected_eigenvalues": [
+          -0.9999999999999999,
+          1.0,
+          1.0
+        ],
+        "berry_eigenvalues": [
+          0.0,
+          0.0,
+          1.9999999999999998
+        ],
+        "moving_sum_eigenvalues": [
+          0.9999999999999999,
+          1.0,
+          1.0
+        ],
+        "contains_minus_one_projected_charge": true,
+        "moving_sum_is_identity": true
+      },
+      "passes_fail_closed_detection": true
+    }
+  },
+  "aligned_examples_not_full_predictions": {
+    "tan_beta_1p5": {
+      "classification": "ALIGNED_CURRENT_BENCHMARK_NOT_FULL_V20",
+      "tan_beta": 1.5000000000002063,
+      "sin2_beta": 0.6923076923077509,
+      "cos2_beta": 0.3076923076922491,
+      "tree": {
+        "C_u0": 0.018099547511268826,
+        "C_c0": 0.018099547511268826,
+        "C_t0": 0.018099547511268826,
+        "C_d0": 0.04072398190036606,
+        "C_s0": 0.04072398190036606,
+        "C_b0": 0.04072398190036606,
+        "C_e0": 0.04072398190036606
+      },
+      "C_e": 0.04072398190036606,
+      "C_p_central": -0.47214932126696807,
+      "C_n_central": 0.006583710407185417,
+      "g_ae": 5.603050811996687e-16,
+      "g_ap_central": -1.1927858658478143e-11,
+      "g_an_central": 1.6655284740363878e-13,
+      "TRGB_limit_over_abs_g_ae": 232.01645739434866,
+      "SN1987A_quadratic_lhs_central": 8.576185730253501e-23,
+      "SN1987A_amplitude_margin_central": 98.1392952156377,
+      "hadronic_uncertainty": {
+        "model_independent_Cp": 0.03,
+        "model_independent_Cn": 0.03,
+        "note": "Central di Cortona/PDG matching; coefficients are correlated and the small C_n central value is not statistically robust."
+      }
+    },
+    "tan_beta_high": {
+      "classification": "ALIGNED_CURRENT_BENCHMARK_NOT_FULL_V20",
+      "tan_beta": 41.2996623,
+      "sin2_beta": 0.9994140609342475,
+      "cos2_beta": 0.0005859390657525498,
+      "tree": {
+        "C_u0": 3.4467003867720984e-05,
+        "C_c0": 3.4467003867720984e-05,
+        "C_t0": 3.4467003867720984e-05,
+        "C_d0": 0.05878906240776716,
+        "C_s0": 0.05878906240776716,
+        "C_b0": 0.05878906240776716,
+        "C_e0": 0.05878906240776716
+      },
+      "C_e": 0.05878906240776716,
+      "C_p_central": -0.4956610235473506,
+      "C_n_central": 0.028957312615601687,
+      "g_ae": 8.088553439254987e-16,
+      "g_ap_central": -1.2521832321022178e-11,
+      "g_an_central": 7.325539203580502e-13,
+      "TRGB_limit_over_abs_g_ae": 160.72095087990655,
+      "SN1987A_quadratic_lhs_central": 9.132072269934691e-23,
+      "SN1987A_amplitude_margin_central": 95.10543882220333,
+      "hadronic_uncertainty": {
+        "model_independent_Cp": 0.03,
+        "model_independent_Cn": 0.03,
+        "note": "Central di Cortona/PDG matching; coefficients are correlated and the small C_n central value is not statistically robust."
+      }
+    }
+  },
+  "flavour_status": {
+    "corrected_multistart": {
+      "v_r_GeV": 631385500000.0,
+      "chi2": 594.2404458698759,
+      "params": [
+        -5.41555862002479,
+        -0.8129597186732718,
+        -0.28793377790750446,
+        0.2279396565777469,
+        -1.1458628142893397,
+        -2.524983591824358,
+        3.1098966963022767,
+        -1.0109363391147979,
+        -0.8853769626188024,
+        -0.10729639156170953,
+        -1.0338386351548206,
+        0.3527826949879518,
+        -8.672787699880601
+      ],
+      "pulls": {
+        "sin2_th12": 13.134347281182544,
+        "sin2_th23": 17.20269201101791,
+        "sin2_th13": 2.121732076108482,
+        "dm21": 0.006042196497977226,
+        "dm31": 0.12311942831249797,
+        "delta_deg": 1.8212030665959218,
+        "up_clebsch_mismatch": 2.7386044184554414,
+        "sum_mnu": 10.510141686300573
+      },
+      "observables": {
+        "mnu_eV": [
+          0.15745709059934146,
+          0.1576947921283459,
+          0.16525378472433555
+        ],
+        "sum_mnu_eV": 0.4804056674520229,
+        "dm21_eV2": 7.491208439299596e-05,
+        "dm31_eV2": 0.0025160779857078125,
+        "sin2_th12": 0.46561216737419053,
+        "sin2_th23": 0.7280403801652686,
+        "sin2_th13": 0.02342303924566509,
+        "delta_cp_deg": 275.74210733085727,
+        "takagi_reconstruction": true,
+        "charged_lepton_basis_included": true,
+        "tan_beta": 1.7147175539530406,
+        "y10_max": 0.03820533801409343,
+        "y126_max": 0.010317987930581191,
+        "up_clebsch_mismatch": 0.9585115464594045,
+        "perturbative_4pi": true
+      },
+      "max_abs_pull": 17.20269201101791,
+      "y10_max": 0.03820533801409343,
+      "y126_max": 0.010317987930581191,
+      "perturbative_4pi": true,
+      "boundary_stress": true,
+      "tan_beta_parameterization": "1.5 + 48.5 sigmoid(x0)",
+      "tan_beta_allowed_interval": [
+        1.5,
+        50.0
+      ],
+      "tan_beta_at_parameter_boundary": false,
+      "tan_beta_unique": false,
+      "fermion_coupling_numeric_point_unique": false,
+      "single_scale_viable": false,
+      "note": "Exact identification M_R scale = v_S. With corrected Takagi diagonalization and U_PMNS=U_e^dagger U_nu, the current multistart point is strongly disfavoured. This benchmark does not establish a unique/global tan(beta) or a unique numerical C_e,C_p,C_n."
+    },
+    "corrected_profile": {
+      "status": "PROFILE_COMPLETE",
+      "method": "fixed-tan(beta) multi-start Nelder-Mead profile of the repository's 12-nuisance constrained 10+126 objective at v_R=v_S",
+      "grid": [
+        1.500001,
+        2.0,
+        5.0,
+        10.0,
+        20.0,
+        30.0,
+        41.3,
+        49.0
+      ],
+      "starts_per_point": 6,
+      "maxiter": 5000,
+      "corrected_multistart_reference": {
+        "tan_beta": 1.7147175539530406,
+        "chi2": 594.2404458698759
+      },
+      "points": [
+        {
+          "tan_beta": 1.500001,
+          "v_r_GeV": 631385500000.0,
+          "chi2": 382.51243310459097,
+          "nuisance": [
+            -7.031680543728111,
+            -2.145668426316061,
+            -0.7055644353328228,
+            0.008222216229094678,
+            6.313289658924541,
+            -3.138821478196788,
+            3.1440372886774552,
+            0.6461300763485132,
+            1.2167261245942087,
+            -6.728710275403641,
+            50.55508300899319,
+            -9.143828616939558
+          ],
+          "pulls": {
+            "sin2_th12": 5.509580201201856,
+            "sin2_th23": 17.71249925354692,
+            "sin2_th13": 3.5009945002749574,
+            "dm21": 0.5270357777552873,
+            "dm31": 4.153061939049431,
+            "delta_deg": 0.8342916918226275,
+            "up_clebsch_mismatch": 2.753616629886474,
+            "sum_mnu": 0.6026852090544672
+          },
+          "observables": {
+            "sum_mnu_eV": 0.08410740836217868,
+            "dm21_eV2": 7.595407155551058e-05,
+            "dm31_eV2": 0.002616826548476236,
+            "sin2_th12": 0.37411496241442227,
+            "sin2_th23": 0.7356874888032038,
+            "sin2_th13": 0.024250596700164974,
+            "delta_cp_deg": 182.79979078620804,
+            "y10_max": 0.02786641094140228,
+            "y126_max": 0.015415804002157332,
+            "up_clebsch_mismatch": 0.9637658204602658,
+            "perturbative_4pi": true
+          },
+          "fermion_coefficients": {
+            "C_e": 0.04072399860762738,
+            "C_p_central": -0.47214934301146866,
+            "C_n_central": 0.006583731099128569
+          }
+        },
+        {
+          "tan_beta": 2.0,
+          "v_r_GeV": 631385500000.0,
+          "chi2": 51.10322445213014,
+          "nuisance": [
+            3.9718375856299923,
+            -2.3318769432552626,
+            -1.3496238885801417,
+            -0.7701213545432026,
+            1.6226432315766037,
+            0.8728471809420217,
+            0.0003449546435220413,
+            -3097.256069446983,
+            -18551.311210994645,
+            28597.553887119928,
+            2899.646848568557,
+            -8.381460372295383
+          ],
+          "pulls": {
+            "sin2_th12": -0.007146290515264164,
+            "sin2_th23": 0.012633118808928295,
+            "sin2_th13": -0.06845945738116407,
+            "dm21": -0.015213244033819118,
+            "dm31": 0.011064908250393163,
+            "delta_deg": 0.3621405405638151,
+            "up_clebsch_mismatch": 2.718827446753036,
+            "sum_mnu": 6.601121477320361
+          },
+          "observables": {
+            "sum_mnu_eV": 0.32404485909281444,
+            "dm21_eV2": 7.486957351193237e-05,
+            "dm31_eV2": 0.00251327662270626,
+            "sin2_th12": 0.3079142445138168,
+            "sin2_th23": 0.4701894967821339,
+            "sin2_th13": 0.0221089243255713,
+            "delta_cp_deg": 224.67491891973353,
+            "y10_max": 0.04596835920548887,
+            "y126_max": 0.007716588848640267,
+            "up_clebsch_mismatch": 0.9515896063635625,
+            "perturbative_4pi": true
+          },
+          "fermion_coefficients": {
+            "C_e": 0.04705882352930791,
+            "C_p_central": -0.4803941176470359,
+            "C_n_central": 0.014429411764629897
+          }
+        },
+        {
+          "tan_beta": 5.0,
+          "v_r_GeV": 631385500000.0,
+          "chi2": 564.2889843250963,
+          "nuisance": [
+            26.233405758498183,
+            -2.1976380891458716,
+            -3.0038455294315756,
+            -1.4500439032336303,
+            0.31168192711200743,
+            -0.09706400834058804,
+            7.302130730275324e-05,
+            710.8773213800187,
+            -98.34184649084096,
+            -460.6109515175426,
+            5.225648161736995,
+            -7.93860185150498
+          ],
+          "pulls": {
+            "sin2_th12": -0.07391116918686418,
+            "sin2_th23": 7.9238554324353085,
+            "sin2_th13": 5.0396968855007,
+            "dm21": 0.0006011301886631572,
+            "dm31": 0.1185576594775993,
+            "delta_deg": 3.1907353587768372,
+            "up_clebsch_mismatch": 2.511325198312139,
+            "sum_mnu": 21.438187637738903
+          },
+          "observables": {
+            "sum_mnu_eV": 0.9175275055095562,
+            "dm21_eV2": 7.490120226037733e-05,
+            "dm31_eV2": 0.00251596394148694,
+            "sin2_th12": 0.3071130659697576,
+            "sin2_th23": 0.5888578314865296,
+            "sin2_th13": 0.02517381813130042,
+            "delta_cp_deg": 100.32426244281069,
+            "y10_max": 0.10482429477347152,
+            "y126_max": 0.017596221538807803,
+            "up_clebsch_mismatch": 0.8789638194092486,
+            "perturbative_4pi": true
+          },
+          "fermion_coefficients": {
+            "C_e": 0.056561085972725855,
+            "C_p_central": -0.4927613122171443,
+            "C_n_central": 0.026197963800803022
+          }
+        },
+        {
+          "tan_beta": 10.0,
+          "v_r_GeV": 631385500000.0,
+          "chi2": 2160.570382152678,
+          "nuisance": [
+            22.4991275228198,
+            -2.18791700459518,
+            -3.714655630925173,
+            -1.472094650991801,
+            0.374894696064007,
+            -0.06843134381362236,
+            7.822721254120154e-05,
+            758.7797469727608,
+            -99.539490214973,
+            -408.171579554614,
+            5.53780818913355,
+            -7.630947445144242
+          ],
+          "pulls": {
+            "sin2_th12": -0.06811494691152016,
+            "sin2_th23": 8.763355860473137,
+            "sin2_th13": 5.512688986446541,
+            "dm21": 0.0007445492777679143,
+            "dm31": 0.047707307390728454,
+            "delta_deg": 3.1798509953975302,
+            "up_clebsch_mismatch": 2.165522769217494,
+            "sum_mnu": 45.15059666216655
+          },
+          "observables": {
+            "sum_mnu_eV": 1.8660238664866622,
+            "dm21_eV2": 7.490148909855554e-05,
+            "dm31_eV2": 0.0025141926826847683,
+            "sin2_th12": 0.30718262063706175,
+            "sin2_th23": 0.601450337907097,
+            "sin2_th13": 0.025457613391867924,
+            "delta_cp_deg": 100.70521516108644,
+            "y10_max": 0.2066025398202,
+            "y126_max": 0.03468129115486681,
+            "up_clebsch_mismatch": 0.7579329692261229,
+            "perturbative_4pi": true
+          },
+          "fermion_coefficients": {
+            "C_e": 0.05824111822934147,
+            "C_p_central": -0.49494787419912956,
+            "C_n_central": 0.028278683750621463
+          }
+        },
+        {
+          "tan_beta": 20.0,
+          "v_r_GeV": 631385500000.0,
+          "chi2": 7507.668293161045,
+          "nuisance": [
+            -0.42419539720632216,
+            -1.1368570084665164,
+            -0.4000400015642441,
+            3.2921069668601164,
+            -1.5711405638245997,
+            -2.7048265838923458,
+            -3.0690219032973944,
+            2.5867346566948832,
+            47.12246303678984,
+            14.438140974462588,
+            -131.69674921279795,
+            -7.844153911062197
+          ],
+          "pulls": {
+            "sin2_th12": 13.915334245269515,
+            "sin2_th23": 31.003125656920837,
+            "sin2_th13": 0.6369603657326607,
+            "dm21": -0.5599821723045929,
+            "dm31": -1.13312242266567,
+            "delta_deg": 0.7164898192695919,
+            "up_clebsch_mismatch": 1.4807611900923041,
+            "sum_mnu": 79.67514473897045
+          },
+          "observables": {
+            "sum_mnu_eV": 3.247005789558818,
+            "dm21_eV2": 7.378003565539082e-05,
+            "dm31_eV2": 0.0024846719394333583,
+            "sin2_th12": 0.47498401094323417,
+            "sin2_th23": 0.9350468848538125,
+            "sin2_th13": 0.022532176219439596,
+            "delta_cp_deg": 186.92285632556428,
+            "y10_max": 0.3101762984172759,
+            "y126_max": 0.1706575300568389,
+            "up_clebsch_mismatch": 0.5182664165323064,
+            "perturbative_4pi": true
+          },
+          "fermion_coefficients": {
+            "C_e": 0.05867683731833904,
+            "C_p_central": -0.4955149625934599,
+            "C_n_central": 0.028818321842344948
+          }
+        },
+        {
+          "tan_beta": 30.0,
+          "v_r_GeV": 631385500000.0,
+          "chi2": 14988.88870521428,
+          "nuisance": [
+            -0.41042771953482715,
+            -1.1365400219687447,
+            -0.41628716334201055,
+            3.25829485141447,
+            -1.5879327035813802,
+            -2.7692030413916884,
+            -3.0830518340941486,
+            2.5914334251961644,
+            47.247387255364785,
+            14.677741735510885,
+            -132.30048082831325,
+            -7.671969721290605
+          ],
+          "pulls": {
+            "sin2_th12": 10.18159819463782,
+            "sin2_th23": 28.170166030971956,
+            "sin2_th13": 2.9330007217083107,
+            "dm21": -0.0010098375524870582,
+            "dm31": 0.029073697155931194,
+            "delta_deg": 0.5028851776655545,
+            "up_clebsch_mismatch": 0.8017622852855872,
+            "sum_mnu": 118.66830433358142
+          },
+          "observables": {
+            "sum_mnu_eV": 4.806732173343256,
+            "dm21_eV2": 7.489798032489503e-05,
+            "dm31_eV2": 0.0025137268424288983,
+            "sin2_th12": 0.43017917833565383,
+            "sin2_th23": 0.8925524904645793,
+            "sin2_th13": 0.023909800433024986,
+            "delta_cp_deg": 194.3990187817056,
+            "y10_max": 0.46485422734953863,
+            "y126_max": 0.25586472858660264,
+            "up_clebsch_mismatch": 0.2806167998499555,
+            "perturbative_4pi": true
+          },
+          "fermion_coefficients": {
+            "C_e": 0.05875824247555094,
+            "C_p_central": -0.49562091140557113,
+            "C_n_central": 0.028919142129551895
+          }
+        },
+        {
+          "tan_beta": 41.3,
+          "v_r_GeV": 631385500000.0,
+          "chi2": 11588.673805648792,
+          "nuisance": [
+            -111.77089665173305,
+            -189.01006645000544,
+            -0.4936710290600532,
+            15.097664389578295,
+            117.40281166156099,
+            -9.444038769055663,
+            2.8526879840995747,
+            -3.1075740094846056,
+            590.177100473016,
+            829.090193486378,
+            63.38880642517617,
+            -7.5845668485378575
+          ],
+          "pulls": {
+            "sin2_th12": 15.358148266766781,
+            "sin2_th23": 35.33333333333332,
+            "sin2_th13": -36.91666666666667,
+            "dm21": 0.6991212841922311,
+            "dm31": 0.2576551184225138,
+            "delta_deg": 0.9142658772791549,
+            "up_clebsch_mismatch": 0.20747743401225477,
+            "sum_mnu": 93.48840719325867
+          },
+          "observables": {
+            "sum_mnu_eV": 3.799536287730347,
+            "dm21_eV2": 7.629824256838447e-05,
+            "dm31_eV2": 0.002519441377960563,
+            "sin2_th12": 0.4922977792012014,
+            "sin2_th23": 0.9999999999999998,
+            "sin2_th13": 3.780840555354472e-26,
+            "delta_cp_deg": 180.00069429522958,
+            "y10_max": 0.6437069072561199,
+            "y126_max": 0.3501252746614766,
+            "up_clebsch_mismatch": 0.07261710190428916,
+            "perturbative_4pi": true
+          },
+          "fermion_coefficients": {
+            "C_e": 0.05878906297109112,
+            "C_p_central": -0.49566102428051667,
+            "C_n_central": 0.028957313313278405
+          }
+        },
+        {
+          "tan_beta": 49.0,
+          "v_r_GeV": 631385500000.0,
+          "chi2": 14957.483049895593,
+          "nuisance": [
+            -112.58381400341972,
+            -188.17851434867956,
+            -0.49434795362933404,
+            15.11976305640769,
+            117.61987249677742,
+            -9.483739499217211,
+            2.8665639854725935,
+            -3.1631171328602794,
+            602.6792275537053,
+            835.1803279769695,
+            62.989923867518186,
+            -7.5048805289441765
+          ],
+          "pulls": {
+            "sin2_th12": 13.8484737541645,
+            "sin2_th23": 35.33333333333332,
+            "sin2_th13": -36.91666666666667,
+            "dm21": -0.2146630273591933,
+            "dm31": 0.1472050607093621,
+            "delta_deg": 0.9142691183363922,
+            "up_clebsch_mismatch": 0.5783204499839066,
+            "sum_mnu": 110.24146230091816
+          },
+          "observables": {
+            "sum_mnu_eV": 4.469658492036726,
+            "dm21_eV2": 7.447067394528162e-05,
+            "dm31_eV2": 0.002516680126517734,
+            "sin2_th12": 0.474181685049974,
+            "sin2_th23": 0.9999999999999998,
+            "sin2_th13": 2.22279355402652e-26,
+            "delta_cp_deg": 180.00058085822627,
+            "y10_max": 0.763097625815,
+            "y126_max": 0.4157092595131117,
+            "up_clebsch_mismatch": 0.2024121574943673,
+            "perturbative_4pi": true
+          },
+          "fermion_coefficients": {
+            "C_e": 0.058799040015543445,
+            "C_p_central": -0.4956740094038714,
+            "C_n_central": 0.02896966988283261
+          }
+        }
+      ],
+      "best_profile_point": {
+        "tan_beta": 2.0,
+        "v_r_GeV": 631385500000.0,
+        "chi2": 51.10322445213014,
+        "nuisance": [
+          3.9718375856299923,
+          -2.3318769432552626,
+          -1.3496238885801417,
+          -0.7701213545432026,
+          1.6226432315766037,
+          0.8728471809420217,
+          0.0003449546435220413,
+          -3097.256069446983,
+          -18551.311210994645,
+          28597.553887119928,
+          2899.646848568557,
+          -8.381460372295383
+        ],
+        "pulls": {
+          "sin2_th12": -0.007146290515264164,
+          "sin2_th23": 0.012633118808928295,
+          "sin2_th13": -0.06845945738116407,
+          "dm21": -0.015213244033819118,
+          "dm31": 0.011064908250393163,
+          "delta_deg": 0.3621405405638151,
+          "up_clebsch_mismatch": 2.718827446753036,
+          "sum_mnu": 6.601121477320361
+        },
+        "observables": {
+          "sum_mnu_eV": 0.32404485909281444,
+          "dm21_eV2": 7.486957351193237e-05,
+          "dm31_eV2": 0.00251327662270626,
+          "sin2_th12": 0.3079142445138168,
+          "sin2_th23": 0.4701894967821339,
+          "sin2_th13": 0.0221089243255713,
+          "delta_cp_deg": 224.67491891973353,
+          "y10_max": 0.04596835920548887,
+          "y126_max": 0.007716588848640267,
+          "up_clebsch_mismatch": 0.9515896063635625,
+          "perturbative_4pi": true
+        },
+        "fermion_coefficients": {
+          "C_e": 0.04705882352930791,
+          "C_p_central": -0.4803941176470359,
+          "C_n_central": 0.014429411764629897
+        }
+      },
+      "low_boundary_profile_point": {
+        "tan_beta": 1.500001,
+        "v_r_GeV": 631385500000.0,
+        "chi2": 382.51243310459097,
+        "nuisance": [
+          -7.031680543728111,
+          -2.145668426316061,
+          -0.7055644353328228,
+          0.008222216229094678,
+          6.313289658924541,
+          -3.138821478196788,
+          3.1440372886774552,
+          0.6461300763485132,
+          1.2167261245942087,
+          -6.728710275403641,
+          50.55508300899319,
+          -9.143828616939558
+        ],
+        "pulls": {
+          "sin2_th12": 5.509580201201856,
+          "sin2_th23": 17.71249925354692,
+          "sin2_th13": 3.5009945002749574,
+          "dm21": 0.5270357777552873,
+          "dm31": 4.153061939049431,
+          "delta_deg": 0.8342916918226275,
+          "up_clebsch_mismatch": 2.753616629886474,
+          "sum_mnu": 0.6026852090544672
+        },
+        "observables": {
+          "sum_mnu_eV": 0.08410740836217868,
+          "dm21_eV2": 7.595407155551058e-05,
+          "dm31_eV2": 0.002616826548476236,
+          "sin2_th12": 0.37411496241442227,
+          "sin2_th23": 0.7356874888032038,
+          "sin2_th13": 0.024250596700164974,
+          "delta_cp_deg": 182.79979078620804,
+          "y10_max": 0.02786641094140228,
+          "y126_max": 0.015415804002157332,
+          "up_clebsch_mismatch": 0.9637658204602658,
+          "perturbative_4pi": true
+        },
+        "fermion_coefficients": {
+          "C_e": 0.04072399860762738,
+          "C_p_central": -0.47214934301146866,
+          "C_n_central": 0.006583731099128569
+        }
+      },
+      "corrected_profile_improves_reference": true,
+      "profile_best_materially_distinct_tan_beta": false,
+      "any_profile_point_viable_chi2_lt_30": false,
+      "unique_tan_beta_demonstrated": false,
+      "reason": "The corrected Takagi/charged-lepton-basis objective is bounded by construction, underconstrained, omits CKM and common-scale RG inputs, and does not establish a unique physical tan(beta)."
+    },
+    "fit_validity": {
+      "Takagi_Majorana_diagonalization": true,
+      "charged_lepton_basis_in_PMNS": true,
+      "CP_phase_uses_atan2": true,
+      "CKM_in_chi2": false,
+      "common_scale_RG_inputs": false,
+      "parameters": 13,
+      "observables_in_chi2": 8,
+      "precision_global_fit": false
+    }
+  },
+  "approval_scope": "The repository passes internal anomaly/operator/release gates as a candidate field-theory construction. It is not approved as a complete phenomenological model: exact fermion matching and the v_R=v_S flavour benchmark remain unresolved/failing.",
+  "remaining_high_value_work": [
+    "specify complete representation-aware A,B,C,D portal tensors",
+    "rotate Q_proj into corrected SM fermion mass bases and test FCNCs",
+    "perform a common-scale RG-evolved global 10+126(+210) flavour fit",
+    "include CKM pulls and defensible tan(beta) priors",
+    "precision threshold/RG and correlated hadronic matching",
+    "real 36.6-37.6 GHz conversion scan"
+  ]
+}

@@ -25,6 +25,8 @@ python falsify_v20.py
 | Test | Result |
 |---|---|
 | Exact $v_R=v_S$ 10+126 flavour fit | viable but higher $\chi^2$ than natural ~$10^{14}$ GeV |
+| Corrected fixed-$v_R$ profile | Takagi + charged-lepton basis; no $\chi^2<30$ point at $v_R=v_S$ |
+| Renormalizable anomalon portals | moving-frame identity is basis dependent; physical current remains portal/texture dependent |
 | Continuous Spin(10) running | rejects 1/40 reset |
 | MADMAX-like 37 GHz forecast | coupling reachable in projection (software only) |
 | 5×2 heavy–light block + component lifetimes | 3 light families; all components decay for $\lambda\gtrsim3.9\times10^{-20}$ |

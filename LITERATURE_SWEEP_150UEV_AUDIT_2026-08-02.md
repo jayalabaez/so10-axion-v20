@@ -8,7 +8,10 @@
 
 > **OPEN FOR THE PHOTON/LOCAL-DM BENCHMARK:** no published direct dark-matter scan was found that excludes `g_aγγ = 2.335×10^-14 GeV^-1` across `151.5–155.5 µeV` (`36.6–37.6 GHz`).
 >
-> **FULL-MODEL VERDICT INCOMPLETE:** the repository must derive and test its low-energy electron and nucleon coefficients `C_e`, `C_p`, and `C_n` before claiming that the complete SO(10) axion benchmark passes all astrophysical bounds.
+> **FULL-MODEL VERDICT INCOMPLETE:** the aligned-current fermion benchmark is
+> reproducible, but the physical projected current remains portal/Yukawa
+> dependent and may contain FCNCs. Exact full-v20 `C_e,C_p,C_n` and the
+> corresponding stellar/SN verdict are unresolved.
 
 This result is not evidence for an axion and is not an experimental discovery.
 
@@ -30,8 +33,8 @@ This result is not evidence for an axion and is not an experimental discovery.
 | Projection | MADMAX full booster | concept `40–400 µeV` | **CAN TEST LATER** | Full system is intended for QCD-axion sensitivity; no target scan is published. |
 | Projection | ORGAN baseline | program covers target frequencies | **NOT DEEP ENOUGH AS COMPILED** | The compiled baseline curve near 150 µeV is roughly an order of magnitude above the v20 coupling. |
 | Projection | BREAD baseline | starts around `200 µeV` | **WRONG MASS** | Baseline projection begins above the target. |
-| Supernova | QCD-axion nucleon/pion/muon channels | mass-sensitive | **UNRESOLVED** | Requires model-specific `C_p` and `C_n`; a photon-only comparison is insufficient. |
-| Stellar cooling | electron coupling | light axions | **UNRESOLVED** | Requires model-specific `C_e`; the manuscript does not yet provide a complete low-energy matching calculation. |
+| Supernova | QCD-axion nucleon/pion/muon channels | mass-sensitive | **UNRESOLVED FULL MODEL** | Aligned benchmark is safe, but physical portal/Yukawa matching is open. |
+| Stellar cooling | electron coupling | light axions | **UNRESOLVED FULL MODEL** | Aligned benchmark is safe, but exact light-current projection is open. |
 
 ### Excluded bucket
 
@@ -41,9 +44,10 @@ No published direct photon-coupling exclusion was found at the v20 target point.
 
 The direct `36.6–37.6 GHz` local-DM window is open at the quoted coupling, subject to the assumed local axion fraction and density.
 
-### Not yet adjudicated
+### Remaining precision qualification
 
-The full theory is not cleared until electron and nucleon couplings are computed and confronted with stellar and supernova likelihoods.
+The full model still requires complete portal tensors, current/Yukawa
+alignment, corrected flavour fitting, and correlated hadronic/RG matching.
 
 ## Important correction to the previous repository sweep
 
@@ -51,11 +55,13 @@ The previous `LITERATURE_SWEEP_150UEV.md` states that the theory “does not fai
 
 At the benchmark,
 
-- `f_a = v_S/17 = 3.712×10^10 GeV`,
+- `f_a = v_S v_Phi/D = 3.714032352937×10^10 GeV`,
 - `g_ae = C_e m_e/f_a = 1.377×10^-14 C_e`,
 - `g_aN = C_N m_N/f_a = 2.529×10^-11 C_N`.
 
-These prefactors do not themselves establish exclusion or safety. The actual coefficients must be derived using a convention-fixed PQ-current analysis, fermion mixing, threshold matching, RG running, and low-energy hadronic matching.
+`FERMION_PORTAL_CURRENT_THEOREM.md` shows that the Berry sum is basis
+dependent and that the physical projected current remains portal dependent.
+The prefactors alone do not clear stellar/SN constraints for the full model.
 
 ## Future experiments with meaningful target reach
 
@@ -89,4 +95,8 @@ These prefactors do not themselves establish exclusion or safety. The actual coe
 
 ## Bottom line
 
-The 150 µeV target is a legitimate experimentally open **photon-coupling search target**. The honest scientific next step is twofold: derive the missing fermionic couplings and seek a real 37 GHz scan. The literature sweep alone cannot establish that nature realizes the model.
+The 150 µeV target is a legitimate experimentally open **photon-coupling
+search target**. Exact full fermion matching and a viable corrected
+single-scale flavour fit are still missing. The decisive empirical step
+remains a real 37 GHz scan; the literature sweep cannot establish that nature
+realizes the model.

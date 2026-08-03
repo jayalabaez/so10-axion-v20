@@ -82,7 +82,9 @@ def inventory_renormalizable_yukawas() -> dict:
         ][:20],
         "implication": (
             "extra portals modify the 5x2 X=1 heavy-light mass block and the "
-            "matching diagrams; they are fit parameters, not fixed predictions"
+            "spectrum/textures. The moving-frame Berry identity does not remove "
+            "their effect on the physical projected current; full portal and "
+            "Yukawa alignment is required for leading C_f."
         ),
     }
 

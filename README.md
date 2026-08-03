@@ -52,6 +52,9 @@ the model.
 | Explicit P=8 Spin(10) reconstruction | matches unit kernel |
 | Wilson RG envelopes | O(1) Planck Wilson quality-safe |
 | Thermal / $(\ell,n)=(13,-3)$ strings | analytic $G\mu\sim4\times10^{-13}$; lattice still external |
+| Fermion portal matching | moving-frame identity verified, but physical $Q_{\rm proj}=\mathbf1-4W$ remains portal dependent |
+| Fermion coefficients | aligned ERT-like benchmark reproducible; exact full $C_{e,p,n}$ remain open |
+| Corrected flavour fit | Takagi + $U_e^\dagger U_\nu$ extraction; current $v_R=v_S$ profile has no $\chi^2<30$ point |
 
 ```bash
 python run_v20_referee_next.py
@@ -61,7 +64,8 @@ python literature_sweep_150uev_v20.py    # excluded vs open near 150 µeV
 python home_public_37ghz_search_v20.py   # honest home-PC / public-data roadmap
 python gravitas_axion_v20_37ghz.py       # GRAVITAS retarget to 37 GHz
 python public_data_indirect_audit_v20.py # 20-channel public/indirect matrix
-python full_fermion_matching_v20.py      # unique C_e,C_p,C_n under stated ansatz
+python full_fermion_matching_v20.py      # physical projected portal current
+python tan_beta_profile_v20.py           # corrected fixed-v_R profile (slow)
 ```
 
 See [EXTENSIVE_CONFIRM_FALSIFY.md](EXTENSIVE_CONFIRM_FALSIFY.md) for the full
@@ -70,10 +74,15 @@ Wilson, haloscope, golden anchors). See [NEXT_PHYSICS_ANALYSIS.md](NEXT_PHYSICS_
 for the next in-repo physics ledger, [LITERATURE_SWEEP_150UEV.md](LITERATURE_SWEEP_150UEV.md)
 for the published-bound map, [HOME_PUBLIC_37GHZ_SEARCH.md](HOME_PUBLIC_37GHZ_SEARCH.md)
 for home-PC limits, [PUBLIC_DATA_INDIRECT_AUDIT.md](PUBLIC_DATA_INDIRECT_AUDIT.md)
-for the full public/indirect channel brainstorm, and
-[FULL_FERMION_MATCHING_V20.md](FULL_FERMION_MATCHING_V20.md) for unique
-\(C_e,C_p,C_n\) under the manuscript-minimal portal ansatz. **Passing confirms internal consistency,
-not experimental discovery.**
+for the full public/indirect channel brainstorm,
+[FULL_FERMION_MATCHING_V20.md](FULL_FERMION_MATCHING_V20.md) for the
+fail-closed portal-dependent current result,
+[FERMION_PORTAL_CURRENT_THEOREM.md](FERMION_PORTAL_CURRENT_THEOREM.md) for
+the arbitrary-matrix connection proof, and
+[TAN_BETA_PROFILE_V20.md](TAN_BETA_PROFILE_V20.md) for why no unique numerical
+point is currently justified. The consolidated verdict is
+[V20_PORTAL_BETA_REANALYSIS.md](V20_PORTAL_BETA_REANALYSIS.md). **Passing
+confirms internal consistency, not experimental discovery.**
 
 ## Hard experimental falsifier
 

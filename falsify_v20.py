@@ -17,6 +17,7 @@ import audit_v20_errors as audit
 import physics_push_v20 as push
 import two_loop_thresholds_v20 as thr
 import flavour_clebsch_fit_v20 as flavour
+import full_fermion_matching_v20 as fermion_matching
 import haloscope_scan_37ghz_v20 as halo
 
 
@@ -130,8 +131,8 @@ def build_falsification_report() -> dict:
     )
     rows.append(
         _row(
-            "v20-scale flavour chi2 is finite and < 100",
-            ss["chi2"] < 100.0,
+            "corrected v20-scale constrained flavour benchmark is not viable",
+            ss["chi2"] > 30.0 and not ss["single_scale_viable"],
             f"chi2={ss['chi2']:.3f}",
             "stress",
         )
@@ -141,6 +142,34 @@ def build_falsification_report() -> dict:
             "natural higher v_R can improve on exact v_S identification",
             bo["chi2"] <= ss["chi2"] + 1e-9,
             f"best={bo['chi2']:.3f} @ {bo['v_r_GeV']:.3e}; v20={ss['chi2']:.3f}",
+            "stress",
+        )
+    )
+    ferm = fermion_matching.build_report()
+    rows.append(
+        _row(
+            "physical anomalon portal dependence is detected fail-closed",
+            ferm["portal_current_result"]["scan"][
+                "passes_fail_closed_detection"
+            ],
+            (
+                "largest projected shift="
+                f"{ferm['portal_current_result']['scan']['largest_projected_current_shift']:.3e}"
+            ),
+            "hard",
+        )
+    )
+    profile = json.loads(
+        (ROOT / "TAN_BETA_PROFILE_V20_VERDICT.json").read_text(encoding="utf-8")
+    )
+    rows.append(
+        _row(
+            "corrected flavour profile does not establish unique tan_beta",
+            not profile["unique_tan_beta_demonstrated"],
+            (
+                f"best fixed-vR tanbeta={profile['best_profile_point']['tan_beta']}, "
+                f"chi2={profile['best_profile_point']['chi2']:.3f}"
+            ),
             "stress",
         )
     )
@@ -198,6 +227,11 @@ def build_falsification_report() -> dict:
             "status": "PARTIALLY OPEN — continuous one-loop already stresses the old 1/40 reset",
         },
         {
+            "test": "Complete A,B,C,D portal/Yukawa matching violates stellar, SN, or FCNC bounds",
+            "kills": "full fermion phenomenology benchmark",
+            "status": "OPEN — aligned ERT-like numbers are not the full projected current",
+        },
+        {
             "test": "Proof that required PQ-breaking Wilson coefficients exceed quality bounds",
             "kills": "axion quality",
             "status": "OPEN — unit-coefficient diagnostics are not Wilson predictions",
@@ -216,9 +250,10 @@ def build_falsification_report() -> dict:
         "external_hard_falsifiers": external_hard_falsifiers,
         "verdict": (
             "Internal hard consistency survives. Several manuscript overclaims "
-            "are already soft-falsified and must stay labelled as such. The "
-            "all-DM 37 GHz benchmark is experimentally falsifiable but has not "
-            "been scanned at the required sensitivity in this repository."
+            "are already soft-falsified. Corrected flavour extraction rejects "
+            "the constrained v_R=v_S benchmark, and full fermion portal matching "
+            "is open. The all-DM 37 GHz photon benchmark remains experimentally "
+            "falsifiable but unscanned at the required sensitivity."
         ),
     }
     return report

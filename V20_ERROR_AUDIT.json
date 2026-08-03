@@ -1,6 +1,6 @@
 {
   "status": "PASS",
-  "n_checks_total": 25,
+  "n_checks_total": 29,
   "n_checks_failed": 0,
   "failures": [],
   "soft_falsifications_of_manuscript_overclaims": [
@@ -145,6 +145,28 @@
         "name": "broken-phase Clebsch/flavour fit is external",
         "passed": true,
         "detail": "cannot be closed by anomaly arithmetic alone"
+      }
+    ],
+    "fermion_current_and_beta": [
+      {
+        "name": "moving-frame identity does not erase projected portal shift",
+        "passed": true,
+        "detail": "Qproj=0.9999999998405409, Berry=1.595e-10, sum=1.0000000000000000"
+      },
+      {
+        "name": "exact finite-vPhi xi is ~0.058823529411635",
+        "passed": true,
+        "detail": "0.0588235294116349"
+      },
+      {
+        "name": "aligned full-central hadronic benchmark replaces rounded ERT values",
+        "passed": true,
+        "detail": "(Ce,Cp,Cn)=(0.040723981900,-0.472149321267,0.006583710407)"
+      },
+      {
+        "name": "tan_beta is absent from frozen v20 inputs",
+        "passed": true,
+        "detail": "numeric C_e,C_p,C_n cannot be a frozen unique prediction"
       }
     ]
   }

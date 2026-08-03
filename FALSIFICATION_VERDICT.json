@@ -1,6 +1,6 @@
 {
   "status": "PASS",
-  "n_checks": 15,
+  "n_checks": 17,
   "n_hard_failed": 0,
   "n_soft_overclaim_missed": 0,
   "failures": [],
@@ -62,19 +62,31 @@
     {
       "name": "v20-scale flavour point remains perturbative",
       "passed": true,
-      "detail": "y126_max=0.015155841713014104",
+      "detail": "y126_max=0.010317987930581191",
       "kind": "stress"
     },
     {
-      "name": "v20-scale flavour chi2 is finite and < 100",
+      "name": "corrected v20-scale constrained flavour benchmark is not viable",
       "passed": true,
-      "detail": "chi2=11.657",
+      "detail": "chi2=594.240",
       "kind": "stress"
     },
     {
       "name": "natural higher v_R can improve on exact v_S identification",
       "passed": true,
-      "detail": "best=3.663 @ 1.000e+14; v20=11.657",
+      "detail": "best=0.020 @ 1.000e+14; v20=594.240",
+      "kind": "stress"
+    },
+    {
+      "name": "physical anomalon portal dependence is detected fail-closed",
+      "passed": true,
+      "detail": "largest projected shift=4.000e+00",
+      "kind": "hard"
+    },
+    {
+      "name": "corrected flavour profile does not establish unique tan_beta",
+      "passed": true,
+      "detail": "best fixed-vR tanbeta=2.0, chi2=51.103",
       "kind": "stress"
     },
     {
@@ -100,19 +112,25 @@
     {
       "name": "v20-scale flavour point remains perturbative",
       "passed": true,
-      "detail": "y126_max=0.015155841713014104",
+      "detail": "y126_max=0.010317987930581191",
       "kind": "stress"
     },
     {
-      "name": "v20-scale flavour chi2 is finite and < 100",
+      "name": "corrected v20-scale constrained flavour benchmark is not viable",
       "passed": true,
-      "detail": "chi2=11.657",
+      "detail": "chi2=594.240",
       "kind": "stress"
     },
     {
       "name": "natural higher v_R can improve on exact v_S identification",
       "passed": true,
-      "detail": "best=3.663 @ 1.000e+14; v20=11.657",
+      "detail": "best=0.020 @ 1.000e+14; v20=594.240",
+      "kind": "stress"
+    },
+    {
+      "name": "corrected flavour profile does not establish unique tan_beta",
+      "passed": true,
+      "detail": "best fixed-vR tanbeta=2.0, chi2=51.103",
       "kind": "stress"
     }
   ],
@@ -138,10 +156,15 @@
       "status": "PARTIALLY OPEN \u2014 continuous one-loop already stresses the old 1/40 reset"
     },
     {
+      "test": "Complete A,B,C,D portal/Yukawa matching violates stellar, SN, or FCNC bounds",
+      "kills": "full fermion phenomenology benchmark",
+      "status": "OPEN \u2014 aligned ERT-like numbers are not the full projected current"
+    },
+    {
       "test": "Proof that required PQ-breaking Wilson coefficients exceed quality bounds",
       "kills": "axion quality",
       "status": "OPEN \u2014 unit-coefficient diagnostics are not Wilson predictions"
     }
   ],
-  "verdict": "Internal hard consistency survives. Several manuscript overclaims are already soft-falsified and must stay labelled as such. The all-DM 37 GHz benchmark is experimentally falsifiable but has not been scanned at the required sensitivity in this repository."
+  "verdict": "Internal hard consistency survives. Several manuscript overclaims are already soft-falsified. Corrected flavour extraction rejects the constrained v_R=v_S benchmark, and full fermion portal matching is open. The all-DM 37 GHz photon benchmark remains experimentally falsifiable but unscanned at the required sensitivity."
 }
