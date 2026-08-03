@@ -1,6 +1,6 @@
 {
   "status": "PASS",
-  "n_checks": 78,
+  "n_checks": 86,
   "n_failed": 0,
   "failures": [],
   "classification": {
@@ -20,34 +20,49 @@
     "portal_sector_posterior": "DISCRETE_GRID_ON_CONDITIONAL_SECTOR",
     "full_portal_yukawa_posterior": "OPEN",
     "complex_F1_F2_orientation_map": "SCANNED_AT_FIXED_NORM_AND_ORDERED_HEAVY_YQ",
+    "full_complex_three_family_orientation": "HAAR_S5_LOW_DISCREPANCY_SAMPLE_AT_FIXED_NORM",
+    "chosen_geometric_NA62_excluded_fraction": "0.9940185546875",
+    "geometric_fraction_interpretation": "NOT_A_UV_PROBABILITY_OR_POSTERIOR",
     "na62_orientation_dependence": "EXCLUDED_AND_SURVIVING_ORIENTATIONS_FOUND",
-    "twist_orientation_dependence": "ALL_5856_SAMPLED_ORIENTATIONS_BELOW_PUBLISHED_BENCHMARKS",
-    "orientation_grid_fraction": "NOT_A_PROBABILITY_OR_UV_POSTERIOR",
-    "full_complex_three_family_orientation": "OPEN",
+    "twist_orientation_dependence": "ALL_16384_SAMPLED_ORIENTATIONS_BELOW_PUBLISHED_BENCHMARKS",
+    "joint_orientation_and_portal_magnitudes": "OPEN",
     "full_portal_parameter_space": "OPEN",
     "lab_37ghz_limit_comparison": "EXECUTED__NO_DETECTION",
     "whole_model_exclusion": "NOT_ESTABLISHED"
   },
   "orientation_summary": {
-    "n_grid_points": 5856,
-    "n_NA62_excluded": 5664,
-    "n_NA62_surviving": 192,
-    "n_TWIST_excluded": 0,
-    "min_NA62_ratio": 1.3873975425444243e-29,
-    "max_NA62_ratio": 822.2130400577903,
-    "max_TWIST_ratio": 0.0052556334376686956,
-    "grid_fraction_is_probability": false
+    "F1_F2_plane": {
+      "n_grid_points": 5856,
+      "n_NA62_excluded": 5664,
+      "n_NA62_surviving": 192,
+      "min_NA62_ratio": 1.3873975425444243e-29,
+      "max_NA62_ratio": 822.2130400577903,
+      "grid_fraction_is_probability": false
+    },
+    "full_complex_S5": {
+      "n_total_points": 16384,
+      "n_NA62_excluded": 16286,
+      "n_NA62_surviving": 98,
+      "n_TWIST_excluded": 0,
+      "chosen_measure_excluded_fraction": 0.9940185546875,
+      "replicate_min": 0.99169921875,
+      "replicate_max": 0.99658203125,
+      "sampled_min_NA62_ratio": 0.0008303658272651671,
+      "sampled_max_NA62_ratio": 820.9303432095173,
+      "sampled_max_TWIST_ratio": 0.005664625615732507,
+      "geometric_fraction_is_uv_probability": false
+    }
   },
   "required_for_closure": [
     "validated type-II matrix beta functions and running VEVs",
     "explicit component-level Pati-Salam and EW threshold matching of PQ currents",
     "reference-derived full two-loop SO(10)+210 representation contractions (SARAH/PyR@TE)",
     "component-specific left/right PQ currents after all thresholds",
-    "full complex F1-F2-F3 orientation and all portal magnitudes/phases",
+    "joint scan of portal magnitudes/phases beyond the fixed-norm orientation sphere",
     "full UV portal-Yukawa prior/posterior beyond the conditional sector grid",
     "full 151-point correlated NA62 likelihood and continuous TWIST A likelihood",
     "real 36.6-37.6 GHz conversion data under the all-DM assumption",
     "a UV principle that uniquely fixes the full scalar-quartic landscape without extra axioms"
   ],
-  "verdict": "Blueprint certification modules are fail-closed: vacuum alignment yields unique C_f only under a named principle; the piecewise Yukawa chain applies the \u22123 lepton Clebsch; exact FCNC BRs enter a pointwise UL likelihood on vendored anchors. Published SO(10)+210 two-loop contractions, full correlated NA62, and unconditional unique C_f remain open."
+  "verdict": "The full complex three-family orientation sphere is sampled at fixed norm and ordered-heavy y_Q using an explicit rotationally invariant measure. Under that chosen geometric measure 16286/16384 samples exceed NA62, but 98 survive and exact survivor anchors exist; all sampled orientations remain below TWIST. The 0.9940186 fraction is not a UV probability. Blueprint certification modules remain fail-closed: vacuum alignment yields unique C_f only under a named principle; the piecewise Yukawa chain applies the \u22123 lepton Clebsch; exact FCNC BRs enter a pointwise UL likelihood on vendored anchors. Joint portal-magnitude inference, published SO(10)+210 two-loop contractions, full correlated NA62, and unconditional unique C_f remain open."
 }
