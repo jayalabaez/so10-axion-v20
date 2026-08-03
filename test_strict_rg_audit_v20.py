@@ -4,23 +4,23 @@ from pathlib import Path
 from unittest import mock
 import channel_fcnc_rates_v20 as channel
 import na62_pointwise_limit_v20 as na62
+import twist_massless_limit_v20 as twist
 import strict_rg_audit_v20 as strict
 
 class StrictRGAuditTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        channel_report=channel.build_report()
-        channel.ROOT.joinpath("CHANNEL_FCNC_RATES_V20_VERDICT.json").write_text(json.dumps(channel_report,indent=2)+"\n",encoding="utf-8")
-        na62_report=na62.build_report()
-        na62.ROOT.joinpath("NA62_POINTWISE_LIMIT_V20_VERDICT.json").write_text(json.dumps(na62_report,indent=2)+"\n",encoding="utf-8")
+        for module,name in ((channel,"CHANNEL_FCNC_RATES_V20_VERDICT.json"),(na62,"NA62_POINTWISE_LIMIT_V20_VERDICT.json"),(twist,"TWIST_MASSLESS_LIMIT_V20_VERDICT.json")):
+            report=module.build_report(); module.ROOT.joinpath(name).write_text(json.dumps(report,indent=2)+"\n",encoding="utf-8")
     def test_current_artifacts_pass_honesty_audit(self):
-        r=strict.build_report(); self.assertEqual(r["status"],"PASS"); self.assertEqual(r["n_failed"],0); self.assertEqual(r["classification"]["full_two_loop_so10_210_yukawa_system"],"OPEN"); self.assertEqual(r["classification"]["channel_level_fcnc_formulae"],"IMPLEMENTED"); self.assertEqual(r["classification"]["na62_pointwise_observed_upper_limit"],"IMPLEMENTED"); self.assertEqual(r["classification"]["whole_model_exclusion"],"NOT_ESTABLISHED")
-    def _write_minimal_artifacts(self, root:Path, *, matrix_closed:bool=False, whole_model_excluded:bool=False, correlated_likelihood:bool=False):
+        r=strict.build_report(); self.assertEqual(r["status"],"PASS"); self.assertEqual(r["n_failed"],0); self.assertEqual(r["classification"]["full_two_loop_so10_210_yukawa_system"],"OPEN"); self.assertEqual(r["classification"]["na62_pointwise_observed_upper_limit"],"IMPLEMENTED"); self.assertEqual(r["classification"]["twist_massless_A_minus1_0_plus1_limits"],"IMPLEMENTED"); self.assertEqual(r["classification"]["continuous_twist_asymmetry_likelihood"],"OPEN"); self.assertEqual(r["classification"]["whole_model_exclusion"],"NOT_ESTABLISHED")
+    def _write_minimal_artifacts(self, root:Path, *, matrix_closed:bool=False, whole_model_excluded:bool=False, correlated_likelihood:bool=False, twist_continuous:bool=False, twist_A_predicted:bool=False):
         (root/"PUSH_PHENOMENOLOGY_LIMITS_V20_VERDICT.json").write_text(json.dumps({"one_loop_matrix_yukawa_rge":{"flag":{"actual_one_loop_matrix_beta_system_solved":matrix_closed}}}))
         (root/"COMMON_SCALE_SO10_YUKAWA_V20_VERDICT.json").write_text(json.dumps({"flag":{}}))
         (root/"TWO_LOOP_SO10_210_V20_VERDICT.json").write_text(json.dumps({"flag":{},"fcnc_limits":{"flag":{}}}))
-        (root/"CHANNEL_FCNC_RATES_V20_VERDICT.json").write_text(json.dumps({"flag":{"channel_level_amplitudes_implemented":True,"channel_level_branching_ratios_implemented":True,"left_right_mass_basis_rotations_implemented":True,"component_specific_uv_chiral_currents_derived":False,"finite_model_fcnc_absence_proved":False,"unconditional_model_exclusion_claimed":False}}))
+        (root/"CHANNEL_FCNC_RATES_V20_VERDICT.json").write_text(json.dumps({"flag":{"channel_level_amplitudes_implemented":True,"channel_level_branching_ratios_implemented":True,"left_right_mass_basis_rotations_implemented":True,"finite_model_fcnc_absence_proved":False,"unconditional_model_exclusion_claimed":False}}))
         (root/"NA62_POINTWISE_LIMIT_V20_VERDICT.json").write_text(json.dumps({"flag":{"official_pointwise_observed_limit_ingested":True,"offline_provenance_hash_verified":True,"generation_dependent_portal_point_excluded":True,"whole_v20_model_excluded":whole_model_excluded,"all_portal_parameter_space_excluded":False,"full_correlated_experimental_likelihood_implemented":correlated_likelihood,"component_specific_uv_chiral_currents_derived":False}}))
+        (root/"TWIST_MASSLESS_LIMIT_V20_VERDICT.json").write_text(json.dumps({"flag":{"three_published_asymmetry_limits_ingested":True,"offline_provenance_hash_verified":True,"hierarchical_survives_all_three_TWIST_benchmarks":True,"generation_dependent_survives_all_three_TWIST_benchmarks":True,"continuous_arbitrary_A_likelihood_implemented":twist_continuous,"TWIST_asymmetry_predicted_from_uv_currents":twist_A_predicted,"full_muon_channel_likelihood_implemented":False,"whole_v20_model_excluded":whole_model_excluded}}))
     def test_rg_overclaim_fails(self):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp); self._write_minimal_artifacts(root,matrix_closed=True)
@@ -36,5 +36,15 @@ class StrictRGAuditTests(unittest.TestCase):
             root=Path(tmp); self._write_minimal_artifacts(root,correlated_likelihood=True)
             with mock.patch.object(strict,"ROOT",root): r=strict.build_report()
             self.assertEqual(r["status"],"FAIL"); self.assertIn("correlated_likelihood_open",r["failures"])
+    def test_twist_continuous_likelihood_overclaim_fails(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp); self._write_minimal_artifacts(root,twist_continuous=True)
+            with mock.patch.object(strict,"ROOT",root): r=strict.build_report()
+            self.assertEqual(r["status"],"FAIL"); self.assertIn("twist_continuous_A_likelihood_open",r["failures"])
+    def test_twist_A_prediction_overclaim_fails(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp); self._write_minimal_artifacts(root,twist_A_predicted=True)
+            with mock.patch.object(strict,"ROOT",root): r=strict.build_report()
+            self.assertEqual(r["status"],"FAIL"); self.assertIn("twist_A_not_uv_predicted",r["failures"])
 
 if __name__=="__main__": unittest.main()
