@@ -4,43 +4,58 @@ import fermion_couplings_150uev_v20 as m
 
 
 class FermionCouplingAudit(unittest.TestCase):
-    def test_decay_constant_uses_covering_anomaly(self):
-        self.assertAlmostEqual(m.FA_GEV, m.VS_GEV / 17.0)
-        self.assertNotAlmostEqual(m.FA_GEV, m.VS_GEV)
+    def test_exact_axion_projection(self):
+        expected = (
+            m.VS_GEV
+            * m.VPHI_GEV
+            / ((17.0 * m.VPHI_GEV) ** 2 + (4.0 * m.VS_GEV) ** 2) ** 0.5
+        )
+        self.assertAlmostEqual(m.FA_GEV, expected)
+        self.assertLess(abs(m.FA_GEV / (m.VS_GEV / 17.0) - 1.0), 2e-12)
 
-    def test_electron_identity(self):
-        row = m.coefficients(1.5)
-        expected = row["sin2_beta"] * m.ME_GEV / m.VS_GEV
-        self.assertAlmostEqual(row["g_ae"], expected, places=28)
+    def test_extrapolation_requires_explicit_acknowledgement(self):
+        with self.assertRaises(RuntimeError):
+            m.ert_leading_extrapolation(1.5)
 
-    def test_v20_numbers(self):
-        row = m.coefficients(1.5)
+    def test_provisional_numbers_are_reproducible(self):
+        row = m.ert_leading_extrapolation(
+            1.5, acknowledge_not_full_matching=True
+        )
         self.assertAlmostEqual(row["C_e"], 0.04072398190045249)
         self.assertAlmostEqual(row["C_p"], -0.472579185520362)
         self.assertAlmostEqual(row["C_n"], 0.006606334841628959)
-        self.assertAlmostEqual(row["g_ae"], 5.603050812002396e-16)
-        self.assertAlmostEqual(row["g_ap"], -1.1938718273899883e-11)
-        self.assertAlmostEqual(row["g_an"], 1.6712519395948702e-13)
+        self.assertAlmostEqual(row["g_ae"], 5.60305081200856e-16, places=27)
+        self.assertAlmostEqual(row["g_ap"], -1.1938718273913018e-11, places=22)
+        self.assertAlmostEqual(row["g_an"], 1.671251939596709e-13, places=24)
 
-    def test_all_bound_gates_pass(self):
+    def test_sn1987a_correlated_form(self):
+        row = m.ert_leading_extrapolation(
+            1.5, acknowledge_not_full_matching=True
+        )
+        lhs = m.sn1987a_quadratic(g_an=row["g_an"], g_ap=row["g_ap"])
+        self.assertAlmostEqual(lhs, row["SN1987A_quadratic_lhs"])
+        self.assertLess(lhs, m.SN1987A_QUADRATIC_BOUND)
+        self.assertGreater(row["SN1987A_amplitude_margin"], 90.0)
+
+    def test_report_fails_closed(self):
         report = m.build_report()
-        self.assertTrue(
-            all(x["passes"] for x in report["published_bound_checks"].values())
+        self.assertIn("PROVISIONAL", report["status"])
+        self.assertIsNone(
+            report["conditional_bound_checks"]["TRGB_electron"]["full_model_pass"]
         )
-        self.assertGreater(
-            report["published_bound_checks"]["TRGB_electron"]["safety_factor"],
-            100,
+        self.assertIsNone(
+            report["conditional_bound_checks"]["SN1987A_correlated_nucleon"][
+                "full_model_pass"
+            ]
         )
-        self.assertGreater(
-            report["published_bound_checks"]["generic_SN_nucleon_envelope"]
-            ["safety_factor"],
-            50,
-        )
+        self.assertIn("NOT closed", report["verdict"])
+        self.assertNotIn("gap is closed", report["verdict"])
 
-    def test_wrong_physical_wall_normalization_is_rejected(self):
-        correct = m.coefficients(1.5)["C_e"]
-        wrong = (1.5**2 / (1 + 1.5**2)) / m.N_PHYSICAL_WALL
-        self.assertAlmostEqual(wrong / correct, 17.0)
+    def test_q_portal_diagnostic_is_not_declared_zero(self):
+        row = m.q_portal_one_family_diagnostic(lambda_q=1.0, y_q=1.0)
+        self.assertLess(abs(row["light_PQ_charge_shift"]), 1e-8)
+        self.assertNotEqual(row["light_PQ_charge_shift"], 0.0)
+        self.assertIn("NOT_FULL_MATCHING", row["classification"])
 
 
 if __name__ == "__main__":
