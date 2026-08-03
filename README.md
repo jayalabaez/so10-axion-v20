@@ -58,13 +58,16 @@ python run_v20_referee_next.py
 python extensive_confirm_falsify_v20.py   # 48-check adversarial campaign
 python next_physics_analysis_v20.py      # astro/PQ/flavour×proton/reach triage
 python literature_sweep_150uev_v20.py    # excluded vs open near 150 µeV
+python home_public_37ghz_search_v20.py   # honest home-PC / public-data roadmap
+python gravitas_axion_v20_37ghz.py       # GRAVITAS retarget to 37 GHz
 ```
 
 See [EXTENSIVE_CONFIRM_FALSIFY.md](EXTENSIVE_CONFIRM_FALSIFY.md) for the full
 A–N attack surface (anomalies, portals, MC mass blocks, kernel, flavour,
 Wilson, haloscope, golden anchors). See [NEXT_PHYSICS_ANALYSIS.md](NEXT_PHYSICS_ANALYSIS.md)
-for the next in-repo physics ledger and [LITERATURE_SWEEP_150UEV.md](LITERATURE_SWEEP_150UEV.md)
-for the published-bound map. **Passing confirms internal consistency,
+for the next in-repo physics ledger, [LITERATURE_SWEEP_150UEV.md](LITERATURE_SWEEP_150UEV.md)
+for the published-bound map, and [HOME_PUBLIC_37GHZ_SEARCH.md](HOME_PUBLIC_37GHZ_SEARCH.md)
+for what a home PC / public archives can and cannot do. **Passing confirms internal consistency,
 not experimental discovery.**
 
 ## Hard experimental falsifier

@@ -36,6 +36,10 @@ jobs:
         run: python next_physics_analysis_v20.py
       - name: Literature sweep ~150 ueV
         run: python literature_sweep_150uev_v20.py
+      - name: Home/public 37 GHz roadmap + GRAVITAS retarget
+        run: |
+          python home_public_37ghz_search_v20.py
+          python gravitas_axion_v20_37ghz.py
       - name: Upload falsification verdict
         if: always()
         uses: actions/upload-artifact@v4
@@ -51,3 +55,7 @@ jobs:
             NEXT_PHYSICS_ANALYSIS.md
             LITERATURE_SWEEP_150UEV_VERDICT.json
             LITERATURE_SWEEP_150UEV.md
+            HOME_PUBLIC_37GHZ_SEARCH_VERDICT.json
+            HOME_PUBLIC_37GHZ_SEARCH.md
+            GRAVITAS_AXION_V20_37GHZ.md
+            outputs/gravitas_axion_v20_37ghz/

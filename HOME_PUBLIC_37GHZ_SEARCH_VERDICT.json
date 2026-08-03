@@ -1,0 +1,161 @@
+{
+  "status": "PASS",
+  "n_checks": 4,
+  "n_failed": 0,
+  "failures": [],
+  "v20_target": {
+    "m_a_ueV": 153.5,
+    "nu_GHz": 37.11,
+    "linewidth_kHz": 37.11,
+    "g_agamma_GeV_inv": 2.335e-14,
+    "scan_GHz": [
+      36.6,
+      37.6
+    ]
+  },
+  "cmb_mythbust": {
+    "verdict": "CMB maps cannot perform the v20 37 GHz DM line search",
+    "rows": [
+      {
+        "instrument": "WMAP Ka (~33 GHz)",
+        "channel_bandwidth_Hz": 7000000000.0,
+        "axion_linewidth_Hz": 37110.0,
+        "dilution_factor": 188628.4020479655,
+        "can_resolve_v20_line": false,
+        "useful_for_v20_DM_line_search": false,
+        "why": "Broadband continuum channel; line power diluted by ~1.9e+05. Also: free-sky axion emission without B-field conversion is not the DM signal."
+      },
+      {
+        "instrument": "Planck LFI 30 GHz",
+        "channel_bandwidth_Hz": 6000000000.0,
+        "axion_linewidth_Hz": 37110.0,
+        "dilution_factor": 161681.4874696847,
+        "can_resolve_v20_line": false,
+        "useful_for_v20_DM_line_search": false,
+        "why": "Broadband continuum channel; line power diluted by ~1.6e+05. Also: free-sky axion emission without B-field conversion is not the DM signal."
+      },
+      {
+        "instrument": "Planck LFI 44 GHz",
+        "channel_bandwidth_Hz": 8800000000.0,
+        "axion_linewidth_Hz": 37110.0,
+        "dilution_factor": 237132.8482888709,
+        "can_resolve_v20_line": false,
+        "useful_for_v20_DM_line_search": false,
+        "why": "Broadband continuum channel; line power diluted by ~2.4e+05. Also: free-sky axion emission without B-field conversion is not the DM signal."
+      }
+    ],
+    "correct_use_of_CMB": [
+      "Foreground / continuum practice for mapmaking skills",
+      "Noise and beam characterization exercises",
+      "NOT a substitute for MADMAX/ORGAN/ALPHA or NS-radio searches"
+    ]
+  },
+  "public_resources": [
+    {
+      "name": "NRAO Archive (VLA / GBT)",
+      "url": "https://data.nrao.edu/",
+      "bands": "Ka / Q (26\u201350 GHz) on selected receivers",
+      "home_PC_use": "Search metadata for 36\u201338 GHz spectral setups toward GC, pulsars, or GRAVITAS targets; download reduced spectra if public",
+      "can_detect_v20_DM": "Only if sensitivity + B-field conversion geometry allow; usually not yet at QCD depth",
+      "priority": 1
+    },
+    {
+      "name": "Planck Legacy Archive",
+      "url": "https://pla.esac.esa.int/",
+      "bands": "LFI 30/44/70 GHz continuum",
+      "home_PC_use": "Pipeline practice only; see dilution analysis",
+      "can_detect_v20_DM": false,
+      "priority": 3
+    },
+    {
+      "name": "WMAP data products (LAMBDA)",
+      "url": "https://lambda.gsfc.nasa.gov/product/map/dr5/",
+      "bands": "K/Ka/Q/V/W continuum",
+      "home_PC_use": "Pipeline practice only; Ka brackets 37 GHz but is broadband",
+      "can_detect_v20_DM": false,
+      "priority": 3
+    },
+    {
+      "name": "ATCA / Australia Telescope Online Archive",
+      "url": "https://atoa.atnf.csiro.au/",
+      "bands": "selected cm/mm including Ka-ish campaigns",
+      "home_PC_use": "Archive query for Ka spectral projects",
+      "can_detect_v20_DM": "Unlikely for all-DM QCD depth without dedicated design",
+      "priority": 2
+    },
+    {
+      "name": "In-repo haloscope templates",
+      "url": "haloscope_37ghz_templates/",
+      "bands": "36.6\u201337.6 GHz target brief + lineshape CSV",
+      "home_PC_use": "Send to MADMAX/ORGAN/ALPHA; run software forecast",
+      "can_detect_v20_DM": "Software forecast only \u2014 not a detection",
+      "priority": 1
+    },
+    {
+      "name": "GRAVITAS gold SB1 catalog (sibling So10Theory outputs)",
+      "url": "../So10Theory/outputs/gravitas_omniscan_v14/v14_vetted_gold.csv",
+      "bands": "ephemerides for Doppler-tracked 37 GHz NS-conversion search",
+      "home_PC_use": "Run gravitas_axion_v20_37ghz.py to retarget line centres",
+      "can_detect_v20_DM": "Requires telescope time; PC prepares target list",
+      "priority": 1
+    }
+  ],
+  "home_pc_playbook": {
+    "do_now_on_PC": [
+      {
+        "step": 1,
+        "task": "Run gravitas_axion_v20_37ghz.py",
+        "outcome": "37 GHz Doppler target list for NS-regime companions"
+      },
+      {
+        "step": 2,
+        "task": "Run haloscope_scan_37ghz_v20.py",
+        "outcome": "Dicke SNR forecast + mock spectrum (software only)"
+      },
+      {
+        "step": 3,
+        "task": "Query NRAO/ATCA metadata for 36\u201338 GHz",
+        "outcome": "List of public Ka spectra overlapping target directions"
+      },
+      {
+        "step": 4,
+        "task": "Optional: SDR + Ka downconverter IF chain",
+        "outcome": "Real RF noise to test matched-filter DSP \u2014 not axion reach"
+      },
+      {
+        "step": 5,
+        "task": "Email MADMAX/ORGAN with templates/",
+        "outcome": "Path to a real falsifier at g~2.3e-14 GeV^{-1}"
+      }
+    ],
+    "cannot_do_at_home": [
+      "Direct axion DM detection (signal << thermal noise without lab B/cryo)",
+      "Competitive 37 GHz cavity/dielectric haloscope",
+      "Meaningful sky-brightness axion line from a backyard dish",
+      "Resolving the 37 kHz line inside WMAP/Planck broadband maps"
+    ],
+    "cheap_hardware_optional": {
+      "SDR": "RTL-SDR / HackRF / USRP for IF DSP drills",
+      "Ka_downconverter": "commercial LNBs/mixers (~26\u201340 GHz \u2192 IF)",
+      "honesty": "Educational RF only; sensitivity gap to QCD axion is enormous"
+    }
+  },
+  "falsification_roadmap": {
+    "hard_kill_all_DM_photon_benchmark": {
+      "criterion": "Null scan of 36.6\u201337.6 GHz at g_agamma <= 2.335e-14 GeV^{-1} (local DM density assumed)",
+      "who": "MADMAX / ORGAN / ALPHA-class",
+      "home_PC_role": "prepare templates, forecasts, and collaboration brief"
+    },
+    "soft_kill_channels": [
+      "NS-radio non-detection stacked over GRAVITAS targets after adequate exposure",
+      "Fermion-coupling revision that violates TRGB/SN (currently passes envelopes)",
+      "Lattice (13,-3) cosmology incompatible with PTA/CMB"
+    ],
+    "does_not_count_as_falsification": [
+      "Null result in Planck/WMAP continuum maps",
+      "Mock radiometer software 'discovery'",
+      "Home SDR non-detection"
+    ]
+  },
+  "verdict": "Home PC work is real and useful for target lists, forecasts, and archive planning \u2014 but CMB continuum maps cannot search the v20 37 GHz DM line. The decisive path remains a lab/astrophysical B-field conversion experiment (haloscope or NS-radio)."
+}

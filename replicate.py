@@ -58,6 +58,8 @@ def main() -> int:
     run([sys.executable, "extensive_confirm_falsify_v20.py"])
     run([sys.executable, "next_physics_analysis_v20.py"])
     run([sys.executable, "literature_sweep_150uev_v20.py"])
+    run([sys.executable, "home_public_37ghz_search_v20.py"])
+    run([sys.executable, "gravitas_axion_v20_37ghz.py"])
     print("=== REPLICATION PASS ===", flush=True)
     print(
         "Remember: passing tests means internal consistency of the candidate "
