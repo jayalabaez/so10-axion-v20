@@ -18,10 +18,14 @@ def build_report()->dict[str,Any]:
     ray=read_json("PORTAL_CONSTRAINT_RAY_V20_VERDICT.json")
     spectrum=read_json("PORTAL_BOUNDARY_HEAVY_SPECTRUM_V20_VERDICT.json")
     orientation=read_json("PORTAL_FAMILY_ORIENTATION_MAP_V20_VERDICT.json")
+    sphere=read_json("PORTAL_FULL_COMPLEX_ORIENTATION_SPHERE_V20_VERDICT.json")
     p=push.get("one_loop_matrix_yukawa_rge",{}).get("flag",{})
     c=common.get("flag",{}); t=two.get("flag",{}); oldf=two.get("fcnc_limits",{}).get("flag",{})
-    ch=channel.get("flag",{}); n=na62.get("flag",{}); w=twist.get("flag",{}); r=ray.get("flag",{}); s=spectrum.get("flag",{}); o=orientation.get("flag",{})
-    counts=(orientation.get("scan") or {}).get("counts",{})
+    ch=channel.get("flag",{}); n=na62.get("flag",{}); w=twist.get("flag",{}); r=ray.get("flag",{}); s=spectrum.get("flag",{}); o=orientation.get("flag",{}); q=sphere.get("flag",{})
+    plane_counts=(orientation.get("scan") or {}).get("counts",{})
+    sphere_scan=sphere.get("scan") or {}
+    sphere_counts=sphere_scan.get("aggregate_counts",{})
+    sphere_diag=sphere_scan.get("replicate_fraction_diagnostics",{})
     checks={
         "matrix_rge_open":not p.get("actual_one_loop_matrix_beta_system_solved",False),
         "matrix_coefficients_unvalidated":not p.get("reference_validated_type_II_coefficients",False),
@@ -63,23 +67,35 @@ def build_report()->dict[str,Any]:
         "orientation_has_na62_excluded_points":o.get("NA62_has_excluded_grid_points",False),
         "orientation_has_na62_surviving_points":o.get("NA62_has_surviving_grid_points",False),
         "orientation_has_no_twist_excluded_points":not o.get("TWIST_has_excluded_grid_points",True) and o.get("TWIST_has_surviving_grid_points",False),
-        "orientation_counts_reproduced":counts.get("n_grid_points")==5856 and counts.get("n_NA62_excluded")==5664 and counts.get("n_NA62_surviving")==192 and counts.get("n_TWIST_excluded")==0,
-        "grid_fraction_not_probability":not o.get("grid_fraction_is_probability",True) and not counts.get("grid_fraction_is_probability",True),
-        "full_three_family_orientation_open":not o.get("full_complex_three_family_orientation_scanned",False),
-        "all_portal_magnitudes_phases_open":not o.get("all_portal_magnitudes_and_phases_scanned",False),
-        "orientation_posterior_open":not o.get("portal_yukawa_posterior_derived",False),
-        "orientation_component_currents_open":not o.get("component_specific_uv_chiral_currents_derived",False),
-        "full_portal_space_remains_open":not r.get("full_portal_parameter_space_scanned",False),
-        "portal_posterior_remains_open":not r.get("portal_yukawa_posterior_derived",False),
-        "whole_model_not_rejected":all(not x.get("whole_v20_model_excluded",False) for x in (n,w,r,s,o)),
-        "all_portals_not_rejected":not n.get("all_portal_parameter_space_excluded",False) and not r.get("full_portal_parameter_space_scanned",False) and not o.get("all_portal_magnitudes_and_phases_scanned",False),
-        "correlated_likelihood_open":not n.get("full_correlated_experimental_likelihood_implemented",False) and not r.get("full_correlated_likelihood_implemented",False),
-        "component_uv_currents_open":not n.get("component_specific_uv_chiral_currents_derived",False) and not r.get("component_specific_uv_chiral_currents_derived",False) and not o.get("component_specific_uv_chiral_currents_derived",False),
+        "orientation_counts_reproduced":plane_counts.get("n_grid_points")==5856 and plane_counts.get("n_NA62_excluded")==5664 and plane_counts.get("n_NA62_surviving")==192 and plane_counts.get("n_TWIST_excluded")==0,
+        "grid_fraction_not_probability":not o.get("grid_fraction_is_probability",True) and not plane_counts.get("grid_fraction_is_probability",True),
+        "full_complex_sphere_sampled":q.get("full_complex_three_family_orientation_sphere_sampled",False),
+        "sphere_measure_explicit":q.get("rotationally_invariant_orientation_measure_explicit",False),
+        "sphere_scrambled_replicates_executed":q.get("scrambled_sobol_replicates_executed",False),
+        "sphere_has_na62_excluded_samples":q.get("NA62_has_excluded_samples",False),
+        "sphere_has_na62_surviving_samples":q.get("NA62_has_surviving_samples",False),
+        "sphere_has_no_twist_excluded_samples":not q.get("TWIST_has_excluded_samples",True) and q.get("TWIST_has_surviving_samples",False),
+        "sphere_counts_reproduced":sphere_counts.get("n_total_points")==16384 and sphere_counts.get("n_NA62_excluded")==16286 and sphere_counts.get("n_NA62_surviving")==98 and sphere_counts.get("n_TWIST_excluded")==0 and sphere_counts.get("n_TWIST_surviving")==16384,
+        "sphere_fraction_reproduced":sphere_counts.get("NA62_excluded_fraction_under_chosen_geometric_measure")==0.9940185546875,
+        "sphere_replicate_range_reproduced":sphere_diag.get("NA62_min")==0.99169921875 and sphere_diag.get("NA62_max")==0.99658203125 and sphere_diag.get("NA62_mean")==0.9940185546875,
+        "geometric_fraction_not_uv_probability":not q.get("geometric_fraction_is_uv_probability",True) and not sphere_counts.get("geometric_fraction_is_uv_probability",True),
+        "replicate_spread_not_uv_uncertainty":sphere_diag.get("replicate_spread_is_not_a_uv_posterior_uncertainty",False),
+        "all_portal_magnitudes_phases_open":not q.get("all_portal_magnitudes_and_phases_scanned",False),
+        "sphere_posterior_open":not q.get("portal_yukawa_posterior_derived",False),
+        "sphere_component_currents_open":not q.get("component_specific_uv_chiral_currents_derived",False),
+        "sphere_continuous_likelihoods_open":not q.get("continuous_experimental_likelihoods_implemented",False),
+        "full_portal_space_remains_open":not r.get("full_portal_parameter_space_scanned",False) and not q.get("all_portal_magnitudes_and_phases_scanned",False),
+        "portal_posterior_remains_open":not r.get("portal_yukawa_posterior_derived",False) and not q.get("portal_yukawa_posterior_derived",False),
+        "whole_model_not_rejected":all(not x.get("whole_v20_model_excluded",False) for x in (n,w,r,s,o,q)),
+        "all_portals_not_rejected":not n.get("all_portal_parameter_space_excluded",False) and not r.get("full_portal_parameter_space_scanned",False) and not q.get("all_portal_magnitudes_and_phases_scanned",False),
+        "correlated_likelihood_open":not n.get("full_correlated_experimental_likelihood_implemented",False) and not r.get("full_correlated_likelihood_implemented",False) and not q.get("continuous_experimental_likelihoods_implemented",False),
+        "component_uv_currents_open":not n.get("component_specific_uv_chiral_currents_derived",False) and not r.get("component_specific_uv_chiral_currents_derived",False) and not q.get("component_specific_uv_chiral_currents_derived",False),
         "finite_fcnc_absence_open":not ch.get("finite_model_fcnc_absence_proved",False),
         "unconditional_exclusion_open":not ch.get("unconditional_model_exclusion_claimed",False),
     }
     failures=[name for name,ok in checks.items() if not ok]
-    extrema=((orientation.get("scan") or {}).get("extrema") or {})
+    plane_extrema=((orientation.get("scan") or {}).get("extrema") or {})
+    sphere_extrema=sphere_scan.get("sampled_extrema") or {}
     return {
         "status":"PASS" if not failures else "FAIL",
         "n_checks":len(checks),"n_failed":len(failures),"failures":failures,
@@ -90,33 +106,29 @@ def build_report()->dict[str,Any]:
             "bare_D_mass_interpretation":"NOT_A_PHYSICAL_EIGENMASS",
             "piecewise_component_threshold_matching":"OPEN",
             "complex_F1_F2_orientation_map":"SCANNED_AT_FIXED_NORM_AND_ORDERED_HEAVY_YQ",
+            "full_complex_three_family_orientation":"HAAR_S5_LOW_DISCREPANCY_SAMPLE_AT_FIXED_NORM",
+            "chosen_geometric_NA62_excluded_fraction":"0.9940185546875",
+            "geometric_fraction_interpretation":"NOT_A_UV_PROBABILITY_OR_POSTERIOR",
             "na62_orientation_dependence":"EXCLUDED_AND_SURVIVING_ORIENTATIONS_FOUND",
-            "twist_orientation_dependence":"ALL_5856_SAMPLED_ORIENTATIONS_BELOW_PUBLISHED_BENCHMARKS",
-            "orientation_grid_fraction":"NOT_A_PROBABILITY_OR_UV_POSTERIOR",
-            "full_complex_three_family_orientation":"OPEN",
+            "twist_orientation_dependence":"ALL_16384_SAMPLED_ORIENTATIONS_BELOW_PUBLISHED_BENCHMARKS",
+            "joint_orientation_and_portal_magnitudes":"OPEN",
             "full_portal_parameter_space":"OPEN",
             "whole_model_exclusion":"NOT_ESTABLISHED"
         },
         "orientation_summary":{
-            "n_grid_points":counts.get("n_grid_points"),
-            "n_NA62_excluded":counts.get("n_NA62_excluded"),
-            "n_NA62_surviving":counts.get("n_NA62_surviving"),
-            "n_TWIST_excluded":counts.get("n_TWIST_excluded"),
-            "min_NA62_ratio":((extrema.get("min_NA62_ratio") or {}).get("NA62_ratio")),
-            "max_NA62_ratio":((extrema.get("max_NA62_ratio") or {}).get("NA62_ratio")),
-            "max_TWIST_ratio":((extrema.get("max_TWIST_ratio") or {}).get("TWIST_ratio")),
-            "grid_fraction_is_probability":False,
+            "F1_F2_plane":{"n_grid_points":plane_counts.get("n_grid_points"),"n_NA62_excluded":plane_counts.get("n_NA62_excluded"),"n_NA62_surviving":plane_counts.get("n_NA62_surviving"),"min_NA62_ratio":((plane_extrema.get("min_NA62_ratio") or {}).get("NA62_ratio")),"max_NA62_ratio":((plane_extrema.get("max_NA62_ratio") or {}).get("NA62_ratio")),"grid_fraction_is_probability":False},
+            "full_complex_S5":{"n_total_points":sphere_counts.get("n_total_points"),"n_NA62_excluded":sphere_counts.get("n_NA62_excluded"),"n_NA62_surviving":sphere_counts.get("n_NA62_surviving"),"n_TWIST_excluded":sphere_counts.get("n_TWIST_excluded"),"chosen_measure_excluded_fraction":sphere_counts.get("NA62_excluded_fraction_under_chosen_geometric_measure"),"replicate_min":sphere_diag.get("NA62_min"),"replicate_max":sphere_diag.get("NA62_max"),"sampled_min_NA62_ratio":((sphere_extrema.get("min_NA62_ratio") or {}).get("NA62_ratio")),"sampled_max_NA62_ratio":((sphere_extrema.get("max_NA62_ratio") or {}).get("NA62_ratio")),"sampled_max_TWIST_ratio":((sphere_extrema.get("max_TWIST_ratio") or {}).get("TWIST_ratio")),"geometric_fraction_is_uv_probability":False}
         },
         "required_for_closure":[
             "validated type-II matrix beta functions and running VEVs",
             "Pati-Salam RGEs and explicit component threshold matching",
             "reference-derived full two-loop representation contractions",
             "component-specific left/right PQ currents after all thresholds",
-            "full complex F1-F2-F3 orientation and all portal magnitudes/phases",
+            "joint scan of y_Q, portal norm, lam_Q_R, lam_S_Q_Rbar, and remaining portal magnitudes/phases",
             "a derived UV portal-Yukawa prior or posterior",
             "continuous NA62/TWIST likelihood information"
         ],
-        "verdict":"At fixed portal norm and an orientation-invariant ordered-heavy spectrum, the sampled F1-F2 direction changes the NA62 prediction from far below to hundreds of times above the limit. Both excluded and surviving orientations exist; all sampled orientations survive the published TWIST benchmarks. The grid fraction is not a probability, and full portal-space or whole-model conclusions remain open."
+        "verdict":"The full complex three-family orientation sphere is sampled at fixed norm and ordered-heavy y_Q using an explicit rotationally invariant measure. Under that chosen geometric measure 16286/16384 samples exceed NA62, but 98 survive and exact survivor anchors exist; all sampled orientations remain below TWIST. The 0.9940186 fraction is not a UV probability, and joint portal-magnitude inference plus threshold matching remain open."
     }
 
 def write_markdown(r):
