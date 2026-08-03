@@ -2,9 +2,14 @@
 import json, tempfile, unittest
 from pathlib import Path
 from unittest import mock
+import channel_fcnc_rates_v20 as channel
 import strict_rg_audit_v20 as strict
 
 class StrictRGAuditTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        report=channel.build_report()
+        channel.ROOT.joinpath("CHANNEL_FCNC_RATES_V20_VERDICT.json").write_text(json.dumps(report,indent=2)+"\n",encoding="utf-8")
     def test_current_artifacts_pass_honesty_audit(self):
         r=strict.build_report(); self.assertEqual(r["status"],"PASS"); self.assertEqual(r["n_failed"],0); self.assertEqual(r["classification"]["full_two_loop_so10_210_yukawa_system"],"OPEN"); self.assertEqual(r["classification"]["channel_level_fcnc_formulae"],"IMPLEMENTED"); self.assertEqual(r["classification"]["pointwise_experimental_fcnc_likelihoods"],"OPEN")
     def _write_minimal_artifacts(self, root:Path, *, matrix_closed:bool=False, pointwise_likelihood:bool=False):
