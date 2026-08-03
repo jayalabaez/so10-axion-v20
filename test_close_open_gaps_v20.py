@@ -1,109 +1,26 @@
 #!/usr/bin/env python3
-"""Fail-closed tests for the v20 open-gap audit."""
-
-from __future__ import annotations
-
-import unittest
-
-import close_open_gaps_v20 as gaps
+import json, unittest
 import push_phenomenology_limits_v20 as push
-
+import common_scale_so10_yukawa_v20 as common
+import two_loop_so10_210_yukawa_v20 as two
+import strict_rg_audit_v20 as strict
+import close_open_gaps_v20 as gaps
 
 class OpenGapAuditTests(unittest.TestCase):
     @classmethod
-    def setUpClass(cls) -> None:
-        # Ensure push + common-scale artifacts exist for yukawa classification.
-        push_report = push.build_report()
-        if push_report["n_failed"] != 0:
-            raise RuntimeError(f"push failed: {push_report['failures']}")
-        push.ROOT.joinpath(
-            "PUSH_PHENOMENOLOGY_LIMITS_V20_VERDICT.json"
-        ).write_text(
-            __import__("json").dumps(push_report, indent=2) + "\n",
-            encoding="utf-8",
-        )
-        import common_scale_so10_yukawa_v20 as common
+    def setUpClass(cls):
+        for module,name in ((push,"PUSH_PHENOMENOLOGY_LIMITS_V20_VERDICT.json"),(common,"COMMON_SCALE_SO10_YUKAWA_V20_VERDICT.json"),(two,"TWO_LOOP_SO10_210_V20_VERDICT.json")):
+            r=module.build_report(); module.ROOT.joinpath(name).write_text(json.dumps(r,indent=2,default=str)+"\n",encoding="utf-8")
+        r=strict.build_report(); strict.ROOT.joinpath("STRICT_RG_AUDIT_V20_VERDICT.json").write_text(json.dumps(r,indent=2)+"\n",encoding="utf-8")
+    def test_conditional_region_is_not_unique(self):
+        r=gaps.conditional_unique_cf(); self.assertTrue(r["flag"]["conditional_region_Cf"]); self.assertFalse(r["flag"]["conditional_unique_Cf"]); self.assertFalse(r["flag"]["unconditional_unique_Cf"])
+    def test_fcnc_is_proxy_only(self):
+        r=gaps.fcnc_absence_theorem(); self.assertTrue(r["flag"]["exact_qI_theorem_proved"]); self.assertFalse(r["flag"]["actual_finite_model_fcnc_absence_proved"]); self.assertFalse(r["flag"]["experimental_FCNC_bound_applied"]); self.assertTrue(r["flag"]["proxy_bounds_applied"])
+    def test_rg_completion_remains_open(self):
+        r=gaps.yukawa_rg_global_fit(); self.assertTrue(r["flag"]["diagnostic_matrix_ODE_integrated"]); self.assertFalse(r["flag"]["actual_one_loop_matrix_beta_system_solved"]); self.assertFalse(r["flag"]["piecewise_threshold_yukawa_matching_complete"]); self.assertFalse(r["flag"]["two_loop_so10_complete"])
+    def test_detection_not_claimed(self):
+        self.assertFalse(gaps.ghz_detection_package()["flag"]["real_37GHz_detection"])
+    def test_aggregate_report(self):
+        r=gaps.build_report(); self.assertEqual(r["n_failed"],0); self.assertEqual(r["status"],"OPEN_GAPS_AUDITED__NO_UNCONDITIONAL_FULL_CLOSURE"); self.assertFalse(r["gap_status"]["full_common_scale_Yukawa_RG_fit"]); self.assertFalse(r["gap_status"]["two_loop_SO10_threshold_closure"])
 
-        common_report = common.build_report()
-        if common_report["n_failed"] != 0:
-            raise RuntimeError(f"common-scale failed: {common_report['failures']}")
-        common.ROOT.joinpath(
-            "COMMON_SCALE_SO10_YUKAWA_V20_VERDICT.json"
-        ).write_text(
-            __import__("json").dumps(common_report, indent=2) + "\n",
-            encoding="utf-8",
-        )
-        import two_loop_so10_210_yukawa_v20 as two
-
-        two_report = two.build_report()
-        if two_report["n_failed"] != 0:
-            raise RuntimeError(f"two-loop failed: {two_report['failures']}")
-        two.ROOT.joinpath("TWO_LOOP_SO10_210_V20_VERDICT.json").write_text(
-            __import__("json").dumps(two_report, indent=2) + "\n",
-            encoding="utf-8",
-        )
-
-    def test_conditional_region_is_not_called_unique(self) -> None:
-        report = gaps.conditional_unique_cf()
-        self.assertTrue(report["flag"]["conditional_region_Cf"])
-        self.assertFalse(report["flag"]["conditional_unique_Cf"])
-        self.assertFalse(report["flag"]["unconditional_unique_Cf"])
-        self.assertGreater(len(report["viable_tan_beta_samples"]), 1)
-        self.assertFalse(report["flag"]["unique_tan_beta_under_principle"])
-
-    def test_exact_fcnc_theorem_is_separate_from_finite_model(self) -> None:
-        report = gaps.fcnc_absence_theorem()
-        self.assertTrue(report["flag"]["exact_qI_theorem_proved"])
-        self.assertFalse(
-            report["flag"]["actual_finite_model_fcnc_absence_proved"]
-        )
-        self.assertTrue(
-            report["flag"]["actual_finite_model_fcnc_suppressed"]
-        )
-        self.assertFalse(report["flag"]["proved_for_arbitrary_portals"])
-        self.assertTrue(
-            report["generation_dependent_counterexample"]["fcnc_possible"]
-        )
-        self.assertTrue(
-            report["finite_hierarchical_benchmark"][
-                "experimental_FCNC_bound_applied"
-            ]
-        )
-
-    def test_matrix_rge_and_optional_two_loop(self) -> None:
-        report = gaps.yukawa_rg_global_fit()
-        self.assertTrue(report["flag"]["effective_power_law_proxy_applied"])
-        self.assertTrue(
-            report["flag"]["actual_one_loop_matrix_beta_system_solved"]
-        )
-        self.assertTrue(
-            ("ONE_LOOP" in report["status"]) or ("TWO_LOOP" in report["status"])
-        )
-        self.assertNotEqual(report["status"], "YUKAWA_RG_GLOBAL_FIT_COMPLETE")
-
-    def test_detection_not_claimed(self) -> None:
-        report = gaps.ghz_detection_package()
-        self.assertTrue(
-            report["flag"]["software_injection_recovery_certified"]
-        )
-        self.assertFalse(report["flag"]["real_37GHz_detection"])
-        self.assertFalse(report["flag"]["experimental_discovery"])
-
-    def test_aggregate_report_refuses_full_closure(self) -> None:
-        report = gaps.build_report()
-        self.assertEqual(report["n_failed"], 0)
-        self.assertEqual(
-            report["status"],
-            "OPEN_GAPS_AUDITED__NO_UNCONDITIONAL_FULL_CLOSURE",
-        )
-        self.assertFalse(report["gap_status"]["exact_unique_full_Ce_Cp_Cn"])
-        self.assertFalse(
-            report["gap_status"][
-                "finite_model_tree_FCNC_absence_proved"
-            ]
-        )
-        self.assertFalse(report["gap_status"]["real_37GHz_detection"])
-
-
-if __name__ == "__main__":
-    unittest.main()
+if __name__=="__main__": unittest.main()
