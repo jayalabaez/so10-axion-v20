@@ -1,28 +1,23 @@
-# Open-gap closure report — v20
+# Open-gap audit — v20
 
-**Status:** `OPEN_GAPS_BOUNDED__CONDITIONAL_CLOSURES_EXECUTED`
+**Status:** `OPEN_GAPS_AUDITED__NO_UNCONDITIONAL_FULL_CLOSURE`
 
-## Gap board
+## Conditional aligned benchmark
 
-### 1. UV-fixed unique C_e, C_p, C_n
-- unconditional: **False**
-- conditional under stated principle: **True**
-- point: tanβ=34.95, C_e=0.0587754, C_p=-0.495643, C_n=0.0289404
+- Representative tan(beta): 34.9498
+- C_e: 0.05877541
+- C_p central: -0.4956433
+- C_n central: 0.02894041
+- Unique full-v20 prediction: **False**
+- Unique tan(beta): **False**
 
-### 2. Tree-level FCNC absence
-- arbitrary portals: **False**
-- under universal aligned hierarchical portals: **True**
+## Remaining blockers
 
-### 3. Full Yukawa-RG global fit
-- one-loop effective: **True**
-- two-loop SO(10) complete: **False**
-- best: v_R=1.000e+14, chi2=0.959, tanβ=23.32
-
-### 4. Real 37 GHz detection
-- detected: **False**
-- package ready: **True**
-- injection recovery: **True**
+- UV-fixed portal Yukawas and unique mass-basis C_f
+- finite-model FCNC likelihood/bounds
+- explicit matrix Yukawa beta functions and threshold matching
+- real 37 GHz conversion data
 
 ## Verdict
 
-Under the stated UV-fixing principle, C_e,C_p,C_n are conditionally unique and tree FCNCs are absent. A one-loop Yukawa-RG global fit is implemented and can remain viable at natural v_R. Real 37 GHz detection is not possible in software; the experimental package and injection-recovery pipeline are certified ready for collaborations.
+The new calculations strengthen a conditional aligned benchmark and demonstrate viable proxy-fit regions, but they do not finish the full v20 phenomenology. Exact unique C_e,C_p,C_n, finite-model FCNC closure, matrix Yukawa RG evolution, and experimental realization remain open.

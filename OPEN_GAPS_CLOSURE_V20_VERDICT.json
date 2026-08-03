@@ -1,95 +1,42 @@
 {
-  "status": "OPEN_GAPS_BOUNDED__CONDITIONAL_CLOSURES_EXECUTED",
+  "status": "OPEN_GAPS_AUDITED__NO_UNCONDITIONAL_FULL_CLOSURE",
   "n_checks": 8,
   "n_failed": 0,
   "failures": [],
-  "gap_status": {
-    "UV_fixed_unique_Ce_Cp_Cn": {
-      "unconditional": false,
-      "conditional_under_stated_principle": true,
-      "status": "CONDITIONAL_UNIQUE_UNDER_UV_FIXING_PRINCIPLE",
-      "point": {
-        "classification": "CONDITIONAL_FULL_V20_UNDER_STATED_AXIOMS",
-        "tan_beta": 34.94979626444526,
-        "C_e": 0.05877541154303195,
-        "C_p_central": -0.4956432569468977,
-        "C_n_central": 0.028940406019627128,
-        "g_ae": 8.086675271031501e-16,
-        "g_ap_central": -1.2521383485263027e-11,
-        "g_an_central": 7.321262220655505e-13,
-        "TRGB_safe": true,
-        "SN1987A_safe": true
-      }
-    },
-    "tree_level_FCNC_absence": {
-      "arbitrary_portals": false,
-      "under_universal_aligned_hierarchical": true,
-      "status": "PROVED_UNDER_UNIVERSAL_ALIGNED_HIERARCHICAL_PORTALS"
-    },
-    "full_Yukawa_RG_global_fit": {
-      "one_loop_effective_complete": true,
-      "two_loop_SO10_complete": false,
-      "any_viable": true,
-      "best": {
-        "v_r_GeV": 100000000000000.0,
-        "chi2": 0.9588655637956743,
-        "tan_beta": 23.32347856156982
-      },
-      "status": "YUKAWA_RG_GLOBAL_FIT_COMPLETE"
-    },
-    "real_37GHz_detection": {
-      "detected": false,
-      "package_ready": true,
-      "injection_recovery": true,
-      "status": "EXPERIMENTAL_PACKAGE_STRENGTHENED__NO_DISCOVERY"
-    }
-  },
-  "conditional_unique_cf": {
-    "status": "CONDITIONAL_UNIQUE_UNDER_UV_FIXING_PRINCIPLE",
-    "uv_fixing_principle": {
-      "name": "v20_minimal_universal_aligned_hierarchical",
-      "axioms": [
-        "Portal Yukawas to ordinary families are generation-universal: lam_Q_F = lam*(1,1,1).",
-        "No generation-dependent Phi light-heavy Yukawas for F_i (y_F_Pbar=y_F_Rbar=0).",
-        "Q Phi-mass Yukawa y_Q is O(1), so portal weight W is suppressed by ~(v_S/v_Phi)^2.",
-        "Physical current is therefore Q_proj = I + O((v_S/v_Phi)^2) in the family basis.",
-        "tan(beta) is taken from the viable natural-scale flavour region (not v_R=v_S).",
-        "Hadronic C_p,C_n use central di Cortona/PDG matching with documented envelope."
+  "conditional_cf_region": {
+    "status": "CONDITIONAL_CF_REGION__NOT_UNIQUE_FULL_V20",
+    "axioms": {
+      "name": "universal_aligned_hierarchical_portal_benchmark",
+      "assumptions": [
+        "lam_Q_F is generation-universal",
+        "generation-dependent Phi light-heavy Yukawas are set to zero",
+        "y_Q is order one, so v_S/v_Phi suppresses Q-sector mixing",
+        "the displayed tan(beta) is selected from a viable proxy-fit region",
+        "central hadronic matching is used with a documented envelope"
       ],
-      "not_claimed": "Unconditional uniqueness in the full UV landscape with arbitrary portals."
+      "scope": "These are additional benchmark assumptions, not consequences of the charge assignments and not a unique UV completion."
     },
     "portal_diagnostics": {
       "projected_shift_norm": 1.913444258902787e-11,
       "projected_off_diagonal_norm": 1.5623330997925625e-11,
-      "expected_hierarchy_suppression": 3.9864764961025004e-11,
-      "aligned_to_1e-3": true
+      "hierarchically_suppressed": true
     },
-    "tan_beta_source": {
+    "representative_best_fit_point": {
+      "tan_beta": 34.94979626444526,
       "v_r_GeV": 300000000000000.0,
       "chi2": 4.954642447825638,
-      "tan_beta": 34.94979626444526,
-      "viable_chi2_lt_30": true,
-      "aligned_C_e": 0.05877541154303195,
-      "aligned_C_p_central": -0.4956432569468977,
-      "aligned_C_n_central": 0.028940406019627128
+      "C_e": 0.05877541154303195,
+      "C_p_central": -0.4956432569468977,
+      "C_n_central": 0.028940406019627128,
+      "g_ae": 8.086675271031501e-16,
+      "g_ap_central": -1.2521383485263027e-11,
+      "g_an_central": 7.321262220655505e-13
     },
     "viable_tan_beta_samples": [
       11.811361,
       34.949796,
       47.018843
     ],
-    "unique_point_under_principle": {
-      "classification": "CONDITIONAL_FULL_V20_UNDER_STATED_AXIOMS",
-      "tan_beta": 34.94979626444526,
-      "C_e": 0.05877541154303195,
-      "C_p_central": -0.4956432569468977,
-      "C_n_central": 0.028940406019627128,
-      "g_ae": 8.086675271031501e-16,
-      "g_ap_central": -1.2521383485263027e-11,
-      "g_an_central": 7.321262220655505e-13,
-      "TRGB_safe": true,
-      "SN1987A_safe": true
-    },
     "viable_region_envelope": {
       "C_e": [
         0.05840488118302578,
@@ -104,182 +51,109 @@
         0.0289670612727316
       ]
     },
-    "unconditional_unique_full_landscape": false,
     "flag": {
-      "conditional_unique_Cf": true,
-      "unconditional_unique_Cf": false
-    }
-  },
-  "fcnc_theorem": {
-    "status": "PROVED_UNDER_UNIVERSAL_ALIGNED_HIERARCHICAL_PORTALS",
-    "theorem": "If the light projected current satisfies Q_proj = q I_3 in the UV family basis (universal hierarchical portals), then for every unitary mass-basis rotation U, U^dagger Q_proj U = q I_3. Therefore tree-level axion FCNCs vanish identically.",
-    "aligned_case": {
-      "uv_offdiag": 1.5623330997925625e-11,
-      "lepton_offdiag": 1.3334956087976289e-11,
-      "quark_offdiag": 1.5623330997925625e-11,
-      "random_basis_offdiag": 1.5166917308754998e-11,
-      "fcnc_absent": true
+      "conditional_region_Cf": true,
+      "conditional_unique_Cf": false,
+      "unconditional_unique_Cf": false,
+      "unique_tan_beta_under_principle": false
     },
-    "counterexample_generation_dependent": {
-      "lepton_offdiag": 2.6950912153821425,
+    "reason_not_unique": "The portal assumptions suppress current distortion, but they do not select one tan(beta); multiple viable proxy-fit values remain."
+  },
+  "fcnc_analysis": {
+    "status": "EXACT_SCALAR_CURRENT_THEOREM_PROVED__FINITE_MODEL_ONLY_SUPPRESSED",
+    "exact_theorem": "If Q_proj equals q times the identity exactly, then every unitary mass-basis rotation leaves it equal to q times the identity and tree-level axion FCNCs vanish exactly.",
+    "finite_hierarchical_benchmark": {
+      "departure_from_q_identity": 1.5623331005420602e-11,
+      "lepton_off_diagonal_norm": 1.3334956087976289e-11,
+      "quark_off_diagonal_norm": 1.5623330997925625e-11,
+      "exactly_scalar_to_1e_14": false,
+      "numerically_suppressed_to_1e_8": true,
+      "experimental_FCNC_bound_applied": false
+    },
+    "generation_dependent_counterexample": {
+      "lepton_off_diagonal_norm": 2.6950912153821425,
       "fcnc_possible": true
     },
-    "tree_FCNC_absence_proved_under_hypothesis": true,
-    "tree_FCNC_absence_proved_for_arbitrary_portals": false,
     "flag": {
-      "proved_under_alignment": true,
+      "exact_qI_theorem_proved": true,
+      "actual_finite_model_fcnc_absence_proved": false,
+      "actual_finite_model_fcnc_suppressed": true,
       "proved_for_arbitrary_portals": false
-    }
+    },
+    "reason_not_closed": "The benchmark current is only approximately scalar and no complete mass-basis FCNC experimental likelihood has been applied."
   },
-  "yukawa_rg_fit": {
-    "status": "YUKAWA_RG_GLOBAL_FIT_COMPLETE",
-    "flag": {
-      "one_loop_yukawa_RG_applied": true,
-      "two_loop_so10_complete": false,
-      "full_RG_global_fit_minimal": true
+  "yukawa_rg_analysis": {
+    "status": "EFFECTIVE_RG_PROXY_COMPLETE__FULL_YUKAWA_RG_OPEN",
+    "proxy_best_point": {
+      "v_r_GeV": 300000000000000.0,
+      "chi2": 4.954642447825638,
+      "tan_beta": 34.94979626444526,
+      "viable_chi2_lt_30": true
     },
-    "thresholds_used": {
-      "M_I_GeV": 631385523052.4453,
-      "M_GUT_GeV": 9917564798898132.0
-    },
-    "rg_targets": {
-      "mu_high_GeV": 9917564798898132.0,
-      "scheme": "one-loop_effective_2HDM_gauge_driven",
-      "masses_GeV": {
-        "m_u": 0.00924900188389563,
-        "m_c": 5.438070552105301,
-        "m_t": 1021.5814512145561,
-        "m_d": 0.023503922347790588,
-        "m_s": 0.4680652630288062,
-        "m_b": 29.064605827016432,
-        "m_e": 0.0008297895076539432,
-        "m_mu": 0.17157643714034373,
-        "m_tau": 3.1793905166678744
-      },
-      "note": "Effective power-law RG, not a complete two-loop SO(10) Yukawa system. Sufficient to test whether RG-evolved inputs preserve natural-scale viability."
-    },
-    "points": [
-      {
-        "v_r_GeV": 631385500000.0,
-        "chi2": 2798.6276321232126,
-        "tan_beta": 1.500000000009806,
-        "viable_chi2_lt_30": false
-      },
-      {
-        "v_r_GeV": 10000000000000.0,
-        "chi2": 7.780107403293302,
-        "tan_beta": 1.5024009582497249,
-        "viable_chi2_lt_30": true
-      },
-      {
-        "v_r_GeV": 100000000000000.0,
-        "chi2": 0.9588655637956743,
-        "tan_beta": 23.32347856156982,
-        "viable_chi2_lt_30": true
-      },
-      {
+    "gauge_threshold_bookkeeping": {
+      "flavour_best": {
         "v_r_GeV": 300000000000000.0,
-        "chi2": 8.644743698966046,
-        "tan_beta": 29.270530288256282,
-        "viable_chi2_lt_30": true
+        "chi2": 4.954642447825638,
+        "tan_beta": 34.94979626444526,
+        "viable_chi2_lt_30": true,
+        "aligned_C_e": 0.05877541154303195,
+        "aligned_C_p_central": -0.4956432569468977,
+        "aligned_C_n_central": 0.028940406019627128
+      },
+      "one_loop_thresholds": {
+        "M_I_GeV": 631385523052.4453,
+        "M_GUT_GeV": 9917564798898132.0,
+        "alpha_inv_GUT_after_spectators": 16.80985384285232
+      },
+      "two_loop_thresholds": {
+        "M_I_GeV": 160982556355.7405,
+        "M_GUT_GeV": 1152023707592892.8,
+        "alpha_inv_GUT_after_spectators": 18.54172405931166
+      },
+      "yukawa_RG_applied": false,
+      "common_scale_identification": {
+        "v_R_vs_M_I": 474.145515769263,
+        "note": "Compares flavour best v_R to gauge intermediate scale M_I. A full common-scale RG fit needs Yukawa anomalous dimensions."
+      },
+      "flag": {
+        "gauge_thresholds_coupled_as_bookkeeping": true,
+        "full_RG_global_fit": false
       }
+    },
+    "flag": {
+      "effective_power_law_proxy_applied": true,
+      "actual_one_loop_matrix_beta_system_solved": false,
+      "two_loop_so10_complete": false,
+      "full_RG_global_fit_minimal": false
+    },
+    "missing_for_closure": [
+      "explicit matrix-valued Yukawa beta functions",
+      "piecewise matching across every broken-phase threshold",
+      "consistent common-scale fermion inputs and uncertainties",
+      "two-loop SO(10)/intermediate-group evolution"
     ],
-    "any_viable": true,
-    "vR_equals_vS_viable": false,
-    "unique_tan_beta_demonstrated": false,
-    "best_point": {
-      "v_r_GeV": 100000000000000.0,
-      "chi2": 0.9588655637956743,
-      "tan_beta": 23.32347856156982,
-      "viable_chi2_lt_30": true,
-      "params": [
-        -0.20079744319299864,
-        8.521700127142786,
-        -1.149404047357844,
-        -0.48292455024097136,
-        -1.8973817754080153,
-        -12.232435673971544,
-        -4.783012284664018,
-        -0.018611257729243727,
-        -30.9336051398398,
-        -1.1476905717996337,
-        0.2069264335379133,
-        -0.12311433411663975,
-        -10.798391778184765
-      ]
-    }
+    "reason_not_closed": "Hand-selected average power-law exponents are a sensitivity proxy, not a solved one-loop matrix RGE system."
   },
   "ghz37_package": {
-    "status": "EXPERIMENTAL_PACKAGE_STRENGTHENED__NO_DISCOVERY",
-    "flag": {
-      "real_37GHz_detection": false,
-      "software_injection_recovery_certified": true,
-      "facility_forecasts_computed": true
-    },
-    "facilities": [
-      {
-        "facility": "MADMAX-like dielectric",
-        "B_T": 9.0,
-        "volume_m3": 0.2,
-        "Tsys_K": 8.0,
-        "bandwidth_Hz": 50000.0,
-        "integration_hours": 24.0,
-        "expected_power_W": 8.214322185000001e-26,
-        "SNR_order_of_magnitude": 0.0009776205730796803,
-        "reaches_SNR5_order": false,
-        "is_real_detection": false
-      },
-      {
-        "facility": "ORGAN-like open resonator",
-        "B_T": 7.0,
-        "volume_m3": 0.05,
-        "Tsys_K": 20.0,
-        "bandwidth_Hz": 50000.0,
-        "integration_hours": 100.0,
-        "expected_power_W": 8.281929775000001e-27,
-        "SNR_order_of_magnitude": 8.047935990297117e-05,
-        "reaches_SNR5_order": false,
-        "is_real_detection": false
-      },
-      {
-        "facility": "ALPHA-like metamaterial",
-        "B_T": 10.0,
-        "volume_m3": 0.15,
-        "Tsys_K": 10.0,
-        "bandwidth_Hz": 50000.0,
-        "integration_hours": 48.0,
-        "expected_power_W": 6.3382115625e-26,
-        "SNR_order_of_magnitude": 0.0008534347366075561,
-        "reaches_SNR5_order": false,
-        "is_real_detection": false
-      },
-      {
-        "facility": "GBT Ka spectral (NS-radio)",
-        "B_T": 0.0,
-        "volume_m3": 0.0,
-        "Tsys_K": 40.0,
-        "bandwidth_Hz": 50000.0,
-        "integration_hours": 20.0,
-        "expected_power_W": 0.0,
-        "SNR_order_of_magnitude": 0.0,
-        "reaches_SNR5_order": false,
-        "is_real_detection": false
-      }
-    ],
+    "status": "SOFTWARE_INJECTION_RECOVERY_PASS__NO_EXPERIMENTAL_DETECTION",
     "injection_recovery": {
       "injected_GHz": 37.11,
       "recovered_GHz": 37.11,
-      "tolerance_kHz": 111.33,
       "pass": true
     },
-    "submission_targets": [
-      "MADMAX",
-      "ORGAN",
-      "ALPHA",
-      "GBT/VLA Ka for GRAVITAS"
-    ],
-    "hard_falsifier": "A real null at g<=2.3e-14 GeV^{-1} over 36.6-37.6 GHz kills the all-DM photon benchmark.",
-    "discovery_claim": false
+    "flag": {
+      "software_injection_recovery_certified": true,
+      "real_37GHz_detection": false,
+      "experimental_discovery": false
+    },
+    "hard_falsifier": "A real null result reaching g_agamma <= 2.3e-14 GeV^-1 over 36.6-37.6 GHz kills the all-DM photon benchmark."
   },
-  "verdict": "Under the stated UV-fixing principle, C_e,C_p,C_n are conditionally unique and tree FCNCs are absent. A one-loop Yukawa-RG global fit is implemented and can remain viable at natural v_R. Real 37 GHz detection is not possible in software; the experimental package and injection-recovery pipeline are certified ready for collaborations."
+  "gap_status": {
+    "exact_unique_full_Ce_Cp_Cn": false,
+    "conditional_aligned_Cf_region": true,
+    "finite_model_tree_FCNC_absence_proved": false,
+    "full_common_scale_Yukawa_RG_fit": false,
+    "real_37GHz_detection": false
+  },
+  "verdict": "The new calculations strengthen a conditional aligned benchmark and demonstrate viable proxy-fit regions, but they do not finish the full v20 phenomenology. Exact unique C_e,C_p,C_n, finite-model FCNC closure, matrix Yukawa RG evolution, and experimental realization remain open."
 }
