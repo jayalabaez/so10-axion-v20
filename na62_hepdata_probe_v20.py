@@ -112,7 +112,12 @@ def find_figure_2a_table(publication: dict[str, Any]) -> dict[str, Any]:
 def normalize_data_url(raw_url: str) -> str:
     if not raw_url:
         raise ValueError("Figure 2-a table has no JSON download URL")
-    return urllib.parse.urljoin("https://www.hepdata.net", raw_url)
+    joined = urllib.parse.urljoin("https://www.hepdata.net", raw_url)
+    parts = urllib.parse.urlsplit(joined)
+    encoded_path = urllib.parse.quote(urllib.parse.unquote(parts.path), safe="/;:@")
+    return urllib.parse.urlunsplit(
+        (parts.scheme, parts.netloc, encoded_path, parts.query, parts.fragment)
+    )
 
 
 def payload_diagnostics(payload: Any, url: str) -> dict[str, Any]:
