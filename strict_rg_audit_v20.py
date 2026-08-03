@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
-"""Strict fail-closed audit for v20 RG, threshold, and FCNC claims."""
+"""Strict fail-closed audit for v20 RG, threshold, FCNC, and portal claims."""
 from __future__ import annotations
 import json
 from pathlib import Path
 from typing import Any
 ROOT=Path(__file__).resolve().parent
 
-def read_json(name:str)->dict[str,Any]:
-    return json.loads(ROOT.joinpath(name).read_text(encoding="utf-8"))
+def read_json(name:str)->dict[str,Any]: return json.loads(ROOT.joinpath(name).read_text(encoding="utf-8"))
 
 def build_report()->dict[str,Any]:
     push=read_json("PUSH_PHENOMENOLOGY_LIMITS_V20_VERDICT.json")
@@ -18,8 +17,11 @@ def build_report()->dict[str,Any]:
     twist=read_json("TWIST_MASSLESS_LIMIT_V20_VERDICT.json")
     ray=read_json("PORTAL_CONSTRAINT_RAY_V20_VERDICT.json")
     spectrum=read_json("PORTAL_BOUNDARY_HEAVY_SPECTRUM_V20_VERDICT.json")
+    orientation=read_json("PORTAL_FAMILY_ORIENTATION_MAP_V20_VERDICT.json")
     p=push.get("one_loop_matrix_yukawa_rge",{}).get("flag",{})
-    c=common.get("flag",{}); t=two.get("flag",{}); oldf=two.get("fcnc_limits",{}).get("flag",{}); ch=channel.get("flag",{}); n=na62.get("flag",{}); w=twist.get("flag",{}); r=ray.get("flag",{}); s=spectrum.get("flag",{})
+    c=common.get("flag",{}); t=two.get("flag",{}); oldf=two.get("fcnc_limits",{}).get("flag",{})
+    ch=channel.get("flag",{}); n=na62.get("flag",{}); w=twist.get("flag",{}); r=ray.get("flag",{}); s=spectrum.get("flag",{}); o=orientation.get("flag",{})
+    counts=(orientation.get("scan") or {}).get("counts",{})
     checks={
         "matrix_rge_open":not p.get("actual_one_loop_matrix_beta_system_solved",False),
         "matrix_coefficients_unvalidated":not p.get("reference_validated_type_II_coefficients",False),
@@ -55,64 +57,72 @@ def build_report()->dict[str,Any]:
         "ordered_point_passes_twist":s.get("ordered_point_survives_TWIST",False),
         "Q_like_eigenstate_not_overidentified":not s.get("individual_Q_like_mass_eigenstate_uniquely_identified",False),
         "spectrum_piecewise_matching_open":not s.get("piecewise_threshold_matching_complete",False),
+        "orientation_plane_scanned":o.get("complex_F1_F2_orientation_plane_scanned",False),
+        "orientation_uses_ordered_heavy_boundary":o.get("ordered_heavy_boundary_used",False),
+        "orientation_preserves_heavy_spectrum":o.get("heavy_spectrum_orientation_invariant_at_fixed_norm",False),
+        "orientation_has_na62_excluded_points":o.get("NA62_has_excluded_grid_points",False),
+        "orientation_has_na62_surviving_points":o.get("NA62_has_surviving_grid_points",False),
+        "orientation_has_no_twist_excluded_points":not o.get("TWIST_has_excluded_grid_points",True) and o.get("TWIST_has_surviving_grid_points",False),
+        "orientation_counts_reproduced":counts.get("n_grid_points")==5856 and counts.get("n_NA62_excluded")==5664 and counts.get("n_NA62_surviving")==192 and counts.get("n_TWIST_excluded")==0,
+        "grid_fraction_not_probability":not o.get("grid_fraction_is_probability",True) and not counts.get("grid_fraction_is_probability",True),
+        "full_three_family_orientation_open":not o.get("full_complex_three_family_orientation_scanned",False),
+        "all_portal_magnitudes_phases_open":not o.get("all_portal_magnitudes_and_phases_scanned",False),
+        "orientation_posterior_open":not o.get("portal_yukawa_posterior_derived",False),
+        "orientation_component_currents_open":not o.get("component_specific_uv_chiral_currents_derived",False),
         "full_portal_space_remains_open":not r.get("full_portal_parameter_space_scanned",False),
         "portal_posterior_remains_open":not r.get("portal_yukawa_posterior_derived",False),
-        "whole_model_not_rejected":not n.get("whole_v20_model_excluded",False) and not w.get("whole_v20_model_excluded",False) and not r.get("whole_v20_model_excluded",False) and not s.get("whole_v20_model_excluded",False),
-        "all_portals_not_rejected":not n.get("all_portal_parameter_space_excluded",False) and not r.get("full_portal_parameter_space_scanned",False),
+        "whole_model_not_rejected":all(not x.get("whole_v20_model_excluded",False) for x in (n,w,r,s,o)),
+        "all_portals_not_rejected":not n.get("all_portal_parameter_space_excluded",False) and not r.get("full_portal_parameter_space_scanned",False) and not o.get("all_portal_magnitudes_and_phases_scanned",False),
         "correlated_likelihood_open":not n.get("full_correlated_experimental_likelihood_implemented",False) and not r.get("full_correlated_likelihood_implemented",False),
-        "component_uv_currents_open":not n.get("component_specific_uv_chiral_currents_derived",False) and not r.get("component_specific_uv_chiral_currents_derived",False),
+        "component_uv_currents_open":not n.get("component_specific_uv_chiral_currents_derived",False) and not r.get("component_specific_uv_chiral_currents_derived",False) and not o.get("component_specific_uv_chiral_currents_derived",False),
         "finite_fcnc_absence_open":not ch.get("finite_model_fcnc_absence_proved",False),
         "unconditional_exclusion_open":not ch.get("unconditional_model_exclusion_claimed",False),
     }
     failures=[name for name,ok in checks.items() if not ok]
-    rate_boundary=(ray.get("form_factor_boundary_band") or {}).get("f0_central") or {}
-    mass_boundary=(spectrum.get("lightest_heavy_equals_vS_scan") or {}).get("unique_ordering_boundary") or {}
-    rate_spectrum=((spectrum.get("na62_survival_boundary") or {}).get("heavy_spectrum") or {})
+    extrema=((orientation.get("scan") or {}).get("extrema") or {})
     return {
         "status":"PASS" if not failures else "FAIL",
         "n_checks":len(checks),"n_failed":len(failures),"failures":failures,
         "classification":{
-            "portal_and_hierarchy_diagnostics":"AVAILABLE",
-            "broken_phase_matrix_ode":"DIAGNOSTIC_ONLY",
-            "precision_common_scale_fit":"OPEN",
-            "pati_salam_interval_matching":"OPEN",
             "full_two_loop_so10_210_yukawa_system":"OPEN",
-            "channel_level_fcnc_formulae":"IMPLEMENTED",
-            "na62_pointwise_observed_upper_limit":"IMPLEMENTED",
-            "generation_dependent_kaon_counterexample":"ABOVE_NA62_90CL_LIMIT_UNDER_COMMON_CURRENT_ASSUMPTION",
             "conditional_na62_yQ_survival_boundary":"SOLVED_ON_ONE_FIXED_PORTAL_RAY",
             "full_heavy_singular_spectrum":"COMPUTED_ON_THE_FIXED_RAY",
             "bare_D_mass_interpretation":"NOT_A_PHYSICAL_EIGENMASS",
-            "lightest_heavy_equals_vS_boundary":"SOLVED_ON_THE_FIXED_RAY",
             "piecewise_component_threshold_matching":"OPEN",
+            "complex_F1_F2_orientation_map":"SCANNED_AT_FIXED_NORM_AND_ORDERED_HEAVY_YQ",
+            "na62_orientation_dependence":"EXCLUDED_AND_SURVIVING_ORIENTATIONS_FOUND",
+            "twist_orientation_dependence":"ALL_5856_SAMPLED_ORIENTATIONS_BELOW_PUBLISHED_BENCHMARKS",
+            "orientation_grid_fraction":"NOT_A_PROBABILITY_OR_UV_POSTERIOR",
+            "full_complex_three_family_orientation":"OPEN",
             "full_portal_parameter_space":"OPEN",
-            "twist_massless_A_minus1_0_plus1_limits":"IMPLEMENTED",
-            "generation_dependent_muon_counterexample":"BELOW_ALL_THREE_PUBLISHED_TWIST_BENCHMARK_LIMITS",
-            "continuous_twist_asymmetry_likelihood":"OPEN",
-            "component_specific_uv_chiral_matching":"OPEN",
             "whole_model_exclusion":"NOT_ESTABLISHED"
         },
-        "conditional_boundaries":{
-            "na62_rate_boundary":{"y_Q":rate_boundary.get("y_Q"),"bare_D_GeV":rate_spectrum.get("bare_D_GeV"),"lightest_heavy_singular_GeV":rate_spectrum.get("lightest_heavy_singular_GeV"),"lightest_heavy_over_vS":rate_spectrum.get("lightest_heavy_over_vS")},
-            "ordered_heavy_boundary":{"y_Q":mass_boundary.get("y_Q"),"bare_D_GeV":mass_boundary.get("bare_D_GeV"),"lightest_heavy_singular_GeV":mass_boundary.get("lightest_heavy_singular_GeV"),"lightest_heavy_over_vS":mass_boundary.get("lightest_heavy_over_vS")},
-            "scope":"one fixed generation-dependent texture; not full portal space"
+        "orientation_summary":{
+            "n_grid_points":counts.get("n_grid_points"),
+            "n_NA62_excluded":counts.get("n_NA62_excluded"),
+            "n_NA62_surviving":counts.get("n_NA62_surviving"),
+            "n_TWIST_excluded":counts.get("n_TWIST_excluded"),
+            "min_NA62_ratio":((extrema.get("min_NA62_ratio") or {}).get("NA62_ratio")),
+            "max_NA62_ratio":((extrema.get("max_NA62_ratio") or {}).get("NA62_ratio")),
+            "max_TWIST_ratio":((extrema.get("max_TWIST_ratio") or {}).get("TWIST_ratio")),
+            "grid_fraction_is_probability":False,
         },
         "required_for_closure":[
             "validated type-II matrix beta functions and running VEVs",
             "Pati-Salam RGEs and explicit component threshold matching",
             "reference-derived full two-loop representation contractions",
             "component-specific left/right PQ currents after all thresholds",
-            "complete multidimensional portal-Yukawa posterior scan across the NA62 curve",
-            "derive the TWIST asymmetry A and obtain a continuous angular likelihood"
+            "full complex F1-F2-F3 orientation and all portal magnitudes/phases",
+            "a derived UV portal-Yukawa prior or posterior",
+            "continuous NA62/TWIST likelihood information"
         ],
-        "verdict":"The NA62 rate boundary and the full heavy singular spectrum are solved on one fixed portal ray. Bare D is not a physical mass eigenvalue. The rate boundary has its lightest heavy singular value below v_S; a second, heavier point enforces lightest-heavy >= v_S and safely passes NA62 and TWIST. Piecewise matching and full portal-space conclusions remain open."
+        "verdict":"At fixed portal norm and an orientation-invariant ordered-heavy spectrum, the sampled F1-F2 direction changes the NA62 prediction from far below to hundreds of times above the limit. Both excluded and surviving orientations exist; all sampled orientations survive the published TWIST benchmarks. The grid fraction is not a probability, and full portal-space or whole-model conclusions remain open."
     }
 
 def write_markdown(r):
     lines=["# Strict RG / threshold / FCNC audit — v20","",f"**Status:** `{r['status']}`","","## Classification",""]
     lines += [f"- {k}: **{v}**" for k,v in r["classification"].items()]
-    lines += ["","## Conditional boundaries",""]+[f"- NA62 rate boundary: {r['conditional_boundaries']['na62_rate_boundary']}",f"- ordered-heavy boundary: {r['conditional_boundaries']['ordered_heavy_boundary']}",f"- scope: {r['conditional_boundaries']['scope']}"]
-    lines += ["","## Required for closure",""]+[f"- {x}" for x in r["required_for_closure"]]+["","## Verdict","",r["verdict"],""]
+    lines += ["","## Orientation summary","",f"```json\n{json.dumps(r['orientation_summary'],indent=2)}\n```","","## Required for closure",""]+[f"- {x}" for x in r["required_for_closure"]]+["","## Verdict","",r["verdict"],""]
     return "\n".join(lines)
 
 def main():
