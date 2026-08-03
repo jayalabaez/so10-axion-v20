@@ -51,7 +51,7 @@ jobs:
           python portal_tensors_abcd_v20.py
           python physical_cf_matching_v20.py
           python global_flavour_fit_v20.py
-      - name: CMB, diagnostic RG, FCNC limits, and strict re-audit
+      - name: CMB, diagnostic RG, FCNC limits, portal boundary, and strict re-audit
         run: |
           python cmb_public_data_pipeline_v20.py
           python empirical_roadmap_lock_v20.py
@@ -62,6 +62,7 @@ jobs:
           python channel_fcnc_rates_v20.py
           python na62_pointwise_limit_v20.py
           python twist_massless_limit_v20.py
+          python portal_constraint_ray_v20.py
           python strict_rg_audit_v20.py
           python close_open_gaps_v20.py
       - name: Final honest verdict + ultimate approval gate
@@ -119,6 +120,8 @@ jobs:
             NA62_POINTWISE_LIMIT_V20.md
             TWIST_MASSLESS_LIMIT_V20_VERDICT.json
             TWIST_MASSLESS_LIMIT_V20.md
+            PORTAL_CONSTRAINT_RAY_V20_VERDICT.json
+            PORTAL_CONSTRAINT_RAY_V20.md
             STRICT_RG_AUDIT_V20_VERDICT.json
             STRICT_RG_AUDIT_V20.md
             OPEN_GAPS_CLOSURE_V20_VERDICT.json
