@@ -38,6 +38,15 @@ class PortalBoundaryHeavySpectrumTests(unittest.TestCase):
         self.assertIsNotNone(boundary)
         self.assertTrue(math.isclose(boundary["lightest_heavy_over_vS"], 1.0, rel_tol=1e-8))
 
+    def test_dominant_two_entry_estimate_matches_full_ordering_boundary(self):
+        boundary = self.report["lightest_heavy_equals_vS_scan"][
+            "unique_ordering_boundary"
+        ]
+        estimate = spectrum.portals.VS / spectrum.portals.VPHI
+        relative_difference = boundary["y_Q"] / estimate - 1.0
+        self.assertLess(abs(relative_difference), 1.0e-3)
+        self.assertAlmostEqual(relative_difference, -4.962255230045454e-5, delta=1e-8)
+
     def test_ordered_point_survives_both_channels(self):
         point = self.report["ordered_threshold_point_rate_result"]
         self.assertTrue(point["NA62_survives"])
