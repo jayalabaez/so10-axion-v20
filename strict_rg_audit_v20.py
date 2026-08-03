@@ -13,8 +13,9 @@ def build_report()->dict[str,Any]:
     push=read_json("PUSH_PHENOMENOLOGY_LIMITS_V20_VERDICT.json")
     common=read_json("COMMON_SCALE_SO10_YUKAWA_V20_VERDICT.json")
     two=read_json("TWO_LOOP_SO10_210_V20_VERDICT.json")
+    channel=read_json("CHANNEL_FCNC_RATES_V20_VERDICT.json")
     pflag=push.get("one_loop_matrix_yukawa_rge",{}).get("flag",{})
-    cflag=common.get("flag",{}); tflag=two.get("flag",{}); fflag=two.get("fcnc_limits",{}).get("flag",{})
+    cflag=common.get("flag",{}); tflag=two.get("flag",{}); fflag=two.get("fcnc_limits",{}).get("flag",{}); chflag=channel.get("flag",{})
     checks={
         "matrix_rge_not_overclaimed":not pflag.get("actual_one_loop_matrix_beta_system_solved",False),
         "matrix_coefficients_not_called_validated":not pflag.get("reference_validated_type_II_coefficients",False),
@@ -23,14 +24,20 @@ def build_report()->dict[str,Any]:
         "piecewise_matching_not_overclaimed":not cflag.get("piecewise_threshold_yukawa_matching_complete",False),
         "two_loop_not_overclaimed":not tflag.get("two_loop_so10_complete",False),
         "reference_two_loop_not_overclaimed":not tflag.get("explicit_two_loop_yukawa_betas",False),
-        "fcnc_likelihood_not_overclaimed":not fflag.get("experimental_FCNC_bound_applied",False),
-        "finite_fcnc_absence_not_overclaimed":not fflag.get("actual_finite_model_fcnc_absence_proved",False),
+        "legacy_fcnc_likelihood_not_overclaimed":not fflag.get("experimental_FCNC_bound_applied",False),
+        "channel_amplitudes_are_implemented":chflag.get("channel_level_amplitudes_implemented",False),
+        "channel_branching_ratios_are_implemented":chflag.get("channel_level_branching_ratios_implemented",False),
+        "chiral_mass_basis_rotations_are_implemented":chflag.get("left_right_mass_basis_rotations_implemented",False),
+        "pointwise_likelihood_not_overclaimed":not chflag.get("pointwise_experimental_likelihoods_implemented",False),
+        "component_specific_uv_currents_not_overclaimed":not chflag.get("component_specific_uv_chiral_currents_derived",False),
+        "finite_fcnc_absence_not_overclaimed":not chflag.get("finite_model_fcnc_absence_proved",False),
+        "unconditional_exclusion_not_overclaimed":not chflag.get("unconditional_model_exclusion_claimed",False),
     }
     failures=[n for n,ok in checks.items() if not ok]
     return {"status":"PASS" if not failures else "FAIL","n_checks":len(checks),"n_failed":len(failures),"failures":failures,
-            "classification":{"portal_and_hierarchy_diagnostics":"AVAILABLE","broken_phase_matrix_ode":"DIAGNOSTIC_ONLY","precision_common_scale_fit":"OPEN","pati_salam_interval_matching":"OPEN","full_two_loop_so10_210_yukawa_system":"OPEN","channel_level_fcnc_likelihood":"OPEN"},
-            "required_for_closure":["published-convention validated type-II matrix beta functions","running VEV/scalar-sector treatment","Pati-Salam Yukawa beta functions between M_I and M_GUT","explicit component threshold matching at M_I and M_GUT","reference-derived two-loop representation contractions and scalar-quartic terms","channel-level FCNC amplitudes, form factors, branching ratios, and experimental likelihoods"],
-            "verdict":"The new calculations are useful diagnostic envelopes, but none of the precision matrix-RG, Pati-Salam matching, full two-loop SO(10)+210, or finite-model FCNC-likelihood blockers is closed."}
+            "classification":{"portal_and_hierarchy_diagnostics":"AVAILABLE","broken_phase_matrix_ode":"DIAGNOSTIC_ONLY","precision_common_scale_fit":"OPEN","pati_salam_interval_matching":"OPEN","full_two_loop_so10_210_yukawa_system":"OPEN","channel_level_fcnc_formulae":"IMPLEMENTED","conditional_left_right_mass_basis_rates":"IMPLEMENTED","component_specific_uv_chiral_matching":"OPEN","pointwise_experimental_fcnc_likelihoods":"OPEN"},
+            "required_for_closure":["published-convention validated type-II matrix beta functions","running VEV/scalar-sector treatment","Pati-Salam Yukawa beta functions between M_I and M_GUT","explicit component threshold matching at M_I and M_GUT","reference-derived two-loop representation contractions and scalar-quartic terms","component-specific left/right PQ currents after all thresholds","complete portal-Yukawa posterior propagation","pointwise TWIST and NA62 likelihood ingestion with correlations"],
+            "verdict":"Channel-level mu->e a and K->pi a amplitudes and branching ratios are now implemented under an explicit common-family-current assumption. Precision RG, Pati-Salam matching, component-specific UV chiral currents, and pointwise experimental likelihoods remain open."}
 
 def write_markdown(r):
     lines=["# Strict RG / threshold / FCNC audit — v20","",f"**Status:** `{r['status']}`","","## Classification",""]
