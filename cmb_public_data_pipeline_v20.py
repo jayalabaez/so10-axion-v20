@@ -41,11 +41,11 @@ PRODUCTS = [
         "needed_for_line_search": False,
     },
     {
-        "id": "wmap_bandpass_overview",
+        "id": "wmap_dr5_product_index",
         "mission": "WMAP",
-        "url": "https://lambda.gsfc.nasa.gov/product/map/dr5/bandpasses_get.cfm",
-        "relpath": "wmap/bandpasses_get.html",
-        "purpose": "Bandpass landing page; documents GHz-scale channel widths",
+        "url": "https://lambda.gsfc.nasa.gov/product/map/dr5/",
+        "relpath": "wmap/dr5_index.html",
+        "purpose": "WMAP DR5 product index (Ka continuum products live here)",
         "needed_for_line_search": False,
     },
     {
@@ -57,11 +57,11 @@ PRODUCTS = [
         "needed_for_line_search": False,
     },
     {
-        "id": "quiet_project",
+        "id": "quiet_arxiv_overview",
         "mission": "QUIET",
-        "url": "https://quiet.uchicago.edu/",
-        "relpath": "quiet/quiet_landing.html",
-        "purpose": "QUIET continuum polarimeter documentation (not a 37 kHz spectrometer)",
+        "url": "https://arxiv.org/abs/1012.3191",
+        "relpath": "quiet/arxiv_1012_3191.html",
+        "purpose": "QUIET instrument overview (continuum polarimeter; not 37 kHz)",
         "needed_for_line_search": False,
     },
     {
@@ -117,13 +117,32 @@ def dilution_ledger() -> dict:
 
 
 def _ssl_context() -> ssl.SSLContext:
-    ctx = ssl.create_default_context()
-    return ctx
+    # Prefer system trust store; some archives (e.g. arxiv via CDN) can fail on
+    # older Windows stores. Callers already treat individual download failures
+    # as non-fatal when dilution checks pass.
+    return ssl.create_default_context()
 
 
 def download_product(product: dict, *, timeout: float = 45.0) -> dict:
     dest = DATA / product["relpath"]
     dest.parent.mkdir(parents=True, exist_ok=True)
+    # Reuse a previous successful local cache if present and non-empty.
+    if dest.exists() and dest.stat().st_size > 100:
+        payload = dest.read_bytes()
+        return {
+            "id": product["id"],
+            "mission": product["mission"],
+            "url": product["url"],
+            "path": str(dest.relative_to(ROOT)).replace("\\", "/"),
+            "bytes": len(payload),
+            "sha256": hashlib.sha256(payload).hexdigest(),
+            "http_status": "cached",
+            "ok": True,
+            "cached": True,
+            "needed_for_line_search": product["needed_for_line_search"],
+            "purpose": product["purpose"],
+            "elapsed_s": 0.0,
+        }
     req = urllib.request.Request(
         product["url"],
         headers={"User-Agent": "so10-axion-v20-cmb-pipeline/1.0"},
@@ -149,6 +168,7 @@ def download_product(product: dict, *, timeout: float = 45.0) -> dict:
             "content_type": content_type,
             "elapsed_s": time.time() - started,
             "ok": True,
+            "cached": False,
             "needed_for_line_search": product["needed_for_line_search"],
             "purpose": product["purpose"],
         }
@@ -159,6 +179,7 @@ def download_product(product: dict, *, timeout: float = 45.0) -> dict:
             "url": product["url"],
             "path": str(dest.relative_to(ROOT)).replace("\\", "/"),
             "ok": False,
+            "cached": False,
             "error": str(exc),
             "elapsed_s": time.time() - started,
             "needed_for_line_search": product["needed_for_line_search"],

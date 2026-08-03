@@ -75,6 +75,8 @@ python physical_cf_matching_v20.py       # PQ charges + provisional C_f
 python global_flavour_fit_v20.py         # free-v_R flavour/Higgs scan
 python cmb_public_data_pipeline_v20.py   # download CMB/radio landing products
 python empirical_roadmap_lock_v20.py     # lock experimental targets + flags
+python next_phenomenology_lock_v20.py    # FCNC ledger + hadronic envelope
+python verify_tan_beta_profile_semantics.py  # scientific profile certificate
 ```
 
 See [EXTENSIVE_CONFIRM_FALSIFY.md](EXTENSIVE_CONFIRM_FALSIFY.md) for the full

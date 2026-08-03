@@ -19,15 +19,15 @@
 ## Downloads
 
 - [OK] `wmap_dr5_readme` — https://lambda.gsfc.nasa.gov/product/map/dr5/map_bibliography.html
-- [FAIL] `wmap_bandpass_overview` — https://lambda.gsfc.nasa.gov/product/map/dr5/bandpasses_get.cfm
+- [OK] `wmap_dr5_product_index` — https://lambda.gsfc.nasa.gov/product/map/dr5/
 - [OK] `planck_legacy_archive` — https://pla.esac.esa.int/
-- [FAIL] `quiet_project` — https://quiet.uchicago.edu/
+- [OK] `quiet_arxiv_overview` — https://arxiv.org/abs/1012.3191
 - [OK] `cbi_caltech` — https://www.astro.caltech.edu/~tjp/CBI/
 - [OK] `nrao_archive` — https://data.nrao.edu/
 
 ## Verdict
 
-Downloaded/recorded 4/6 public CMB/radio landing products for reproducible continuum practice. Dilution analysis confirms CMB/QUIET/CBI continuum data cannot perform the v20 37 GHz DM line search.
+Downloaded/recorded 6/6 public CMB/radio landing products for reproducible continuum practice. Dilution analysis confirms CMB/QUIET/CBI continuum data cannot perform the v20 37 GHz DM line search.
 
 ## Do instead
 

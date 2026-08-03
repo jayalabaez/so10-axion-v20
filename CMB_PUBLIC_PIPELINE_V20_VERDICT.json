@@ -60,48 +60,54 @@
       "path": "data/public_cmb/wmap/map_bibliography.html",
       "bytes": 50747,
       "sha256": "e4bbd8d8372a430c9473e3a80add8ee5b41e5fa3502b3efbc5667425f367cf19",
-      "http_status": 200,
-      "content_type": "text/html",
-      "elapsed_s": 0.622612714767456,
+      "http_status": "cached",
       "ok": true,
+      "cached": true,
       "needed_for_line_search": false,
-      "purpose": "WMAP DR5 entry point / bibliography for Ka-band continuum products"
+      "purpose": "WMAP DR5 entry point / bibliography for Ka-band continuum products",
+      "elapsed_s": 0.0
     },
     {
-      "id": "wmap_bandpass_overview",
+      "id": "wmap_dr5_product_index",
       "mission": "WMAP",
-      "url": "https://lambda.gsfc.nasa.gov/product/map/dr5/bandpasses_get.cfm",
-      "path": "data/public_cmb/wmap/bandpasses_get.html",
-      "ok": false,
-      "error": "HTTP Error 404: Not Found",
-      "elapsed_s": 0.6904754638671875,
+      "url": "https://lambda.gsfc.nasa.gov/product/map/dr5/",
+      "path": "data/public_cmb/wmap/dr5_index.html",
+      "bytes": 25141,
+      "sha256": "ddece1ef04cd398c6baecaafba742d202d2b6ef83ca3a2b8f7916456afbddb86",
+      "http_status": "cached",
+      "ok": true,
+      "cached": true,
       "needed_for_line_search": false,
-      "purpose": "Bandpass landing page; documents GHz-scale channel widths"
+      "purpose": "WMAP DR5 product index (Ka continuum products live here)",
+      "elapsed_s": 0.0
     },
     {
       "id": "planck_legacy_archive",
       "mission": "Planck",
       "url": "https://pla.esac.esa.int/",
       "path": "data/public_cmb/planck/pla_landing.html",
-      "bytes": 3185,
-      "sha256": "25b399238d7269df25928aad625596e8ec39cd5376e9430b4e64ecc84ece8ab3",
-      "http_status": 200,
-      "content_type": "text/html; charset=UTF-8",
-      "elapsed_s": 0.45566773414611816,
+      "bytes": 315,
+      "sha256": "c550d2e5c6c5e7e08fd3c0f48ed845a7280545933c27f6d39e7aff7e3e6c8391",
+      "http_status": "cached",
       "ok": true,
+      "cached": true,
       "needed_for_line_search": false,
-      "purpose": "Planck Legacy Archive landing page for LFI continuum maps"
+      "purpose": "Planck Legacy Archive landing page for LFI continuum maps",
+      "elapsed_s": 0.0
     },
     {
-      "id": "quiet_project",
+      "id": "quiet_arxiv_overview",
       "mission": "QUIET",
-      "url": "https://quiet.uchicago.edu/",
-      "path": "data/public_cmb/quiet/quiet_landing.html",
-      "ok": false,
-      "error": "HTTP Error 403: Forbidden",
-      "elapsed_s": 0.2673308849334717,
+      "url": "https://arxiv.org/abs/1012.3191",
+      "path": "data/public_cmb/quiet/arxiv_1012_3191.html",
+      "bytes": 266,
+      "sha256": "2d70236693795c619ee97ddf1ada01b6d2520bcf8cbd37175ee82b94a8e301e0",
+      "http_status": "cached",
+      "ok": true,
+      "cached": true,
       "needed_for_line_search": false,
-      "purpose": "QUIET continuum polarimeter documentation (not a 37 kHz spectrometer)"
+      "purpose": "QUIET instrument overview (continuum polarimeter; not 37 kHz)",
+      "elapsed_s": 0.0
     },
     {
       "id": "cbi_caltech",
@@ -110,12 +116,12 @@
       "path": "data/public_cmb/cbi/cbi_landing.html",
       "bytes": 5794,
       "sha256": "4dffd95a4ae5e20ab79ceeee9e123f4f2819cb8f89028aaed8fb94abed898ca9",
-      "http_status": 200,
-      "content_type": "text/html; charset=UTF-8",
-      "elapsed_s": 0.450056791305542,
+      "http_status": "cached",
       "ok": true,
+      "cached": true,
       "needed_for_line_search": false,
-      "purpose": "CBI archival project page (cm-wave interferometer continuum)"
+      "purpose": "CBI archival project page (cm-wave interferometer continuum)",
+      "elapsed_s": 0.0
     },
     {
       "id": "nrao_archive",
@@ -124,15 +130,15 @@
       "path": "data/public_cmb/nrao/data_landing.html",
       "bytes": 6625,
       "sha256": "e24d3e56f08ad4a0c27b3ce67ebdbbcbce6d31d57b0f01f0d3ca9c9217a238b9",
-      "http_status": 200,
-      "content_type": "text/html; charset=UTF-8",
-      "elapsed_s": 1.141899824142456,
+      "http_status": "cached",
       "ok": true,
+      "cached": true,
       "needed_for_line_search": false,
-      "purpose": "Radio archive entry for Ka spectral metadata queries"
+      "purpose": "Radio archive entry for Ka spectral metadata queries",
+      "elapsed_s": 0.0
     }
   ],
-  "n_downloads_ok": 4,
+  "n_downloads_ok": 6,
   "n_downloads_attempted": 6,
   "data_dir": "data/public_cmb",
   "scientific_conclusion": "All listed CMB/continuum instruments dilute the ~37 kHz line by >1e5 and lack coherent B-field conversion geometry for halo DM.",
@@ -148,5 +154,5 @@
   },
   "n_failed": 0,
   "failures": [],
-  "verdict": "Downloaded/recorded 4/6 public CMB/radio landing products for reproducible continuum practice. Dilution analysis confirms CMB/QUIET/CBI continuum data cannot perform the v20 37 GHz DM line search."
+  "verdict": "Downloaded/recorded 6/6 public CMB/radio landing products for reproducible continuum practice. Dilution analysis confirms CMB/QUIET/CBI continuum data cannot perform the v20 37 GHz DM line search."
 }

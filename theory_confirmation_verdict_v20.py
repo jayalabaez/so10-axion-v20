@@ -163,6 +163,8 @@ def build_verdict() -> dict:
             "global_flavour_scan": "natural v_R can be viable; unique tan_beta not established",
             "cmb_public_pipeline": "downloads ok for practice; line search impossible by dilution",
             "empirical_roadmap_lock": "haloscope + GRAVITAS + flags locked",
+            "tan_beta_semantic_certificate": "PASS (scientific invariants, not byte-identical optimizer path)",
+            "next_phenomenology_lock": "FCNC ledger + hadronic envelope + threshold bookkeeping",
         },
         "correct_public_claim": (
             "We have a mathematically consistent SO(10)×Z17 axion candidate "

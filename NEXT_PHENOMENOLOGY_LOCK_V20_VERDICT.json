@@ -1,0 +1,149 @@
+{
+  "status": "NEXT_PHENOMENOLOGY_LOCK_PASS__FULL_UNIQUE_CF_STILL_OPEN",
+  "n_checks": 6,
+  "n_failed": 0,
+  "failures": [],
+  "flag": {
+    "provisional_hadronic_envelope": true,
+    "full_unique_Ce_Cp_Cn": false,
+    "tree_FCNC_absence_proved": false,
+    "full_RG_global_fit": false
+  },
+  "fcnc_ledger": {
+    "rows": [
+      {
+        "scenario": "aligned_limit",
+        "lepton_offdiag": 1.3705254196115545e-15,
+        "quark_offdiag": 2.85319922212756e-16,
+        "fcnc_possible": false,
+        "projected_shift_norm": 5.278472168314863e-16
+      },
+      {
+        "scenario": "manuscript_minimal",
+        "lepton_offdiag": 1.3334956087976289e-11,
+        "quark_offdiag": 1.5623330997925625e-11,
+        "fcnc_possible": false,
+        "projected_shift_norm": 1.913444258902787e-11
+      },
+      {
+        "scenario": "audit_extended",
+        "lepton_offdiag": 1.2444476321014548e-11,
+        "quark_offdiag": 1.5623435531868044e-11,
+        "fcnc_possible": false,
+        "projected_shift_norm": 1.9134379912391435e-11
+      },
+      {
+        "scenario": "light_Q",
+        "lepton_offdiag": 2.1516301074800164,
+        "quark_offdiag": 2.7013054610413296,
+        "fcnc_possible": true,
+        "projected_shift_norm": 3.3084100094766673
+      }
+    ],
+    "any_fcnc_possible": true,
+    "tree_FCNC_absence_proved": false,
+    "note": "FCNC absence is not proved. Misaligned / light-Q portals can induce off-diagonal light currents in mass bases."
+  },
+  "hadronic_envelope": {
+    "flag": "PROVISIONAL_ALIGNED_HADRONIC_ENVELOPE",
+    "full_unique_Ce_Cp_Cn": false,
+    "tan_beta": 34.94979626444526,
+    "central": {
+      "C_e": 0.05877541154303195,
+      "C_p_central": -0.4956432569468977,
+      "C_n_central": 0.028940406019627128,
+      "g_ae": 8.086675271031501e-16,
+      "g_ap_central": -1.2521383485263027e-11,
+      "g_an_central": 7.321262220655505e-13
+    },
+    "C_p_range": [
+      -0.49740507575713055,
+      -0.49388143813666485
+    ],
+    "C_n_range": [
+      0.028528545078008477,
+      0.032055069770590396
+    ],
+    "samples": [
+      {
+        "C_p": -0.49388143813666485,
+        "C_n": 0.028529988614066564,
+        "delta_u": 0.8099999999999999,
+        "delta_d": 0.4
+      },
+      {
+        "C_p": -0.4956447004829558,
+        "C_n": 0.028528545078008477,
+        "delta_u": 0.8099999999999999,
+        "delta_d": 0.43
+      },
+      {
+        "C_p": -0.49564181341083957,
+        "C_n": 0.032055069770590396,
+        "delta_u": 0.87,
+        "delta_d": 0.43
+      },
+      {
+        "C_p": -0.49740507575713055,
+        "C_n": 0.032053626234532305,
+        "delta_u": 0.87,
+        "delta_d": 0.45999999999999996
+      }
+    ],
+    "inputs": {
+      "delta_u": 0.84,
+      "delta_d": 0.43,
+      "delta_s": -0.09,
+      "sigma_delta_u": 0.03,
+      "sigma_delta_d": 0.03,
+      "sigma_delta_s": 0.03,
+      "correlation_ud": 0.5
+    },
+    "note": "Envelope around central di Cortona/PDG matching with correlated delta_u/delta_d. Not a full lattice/chiral matching calculation."
+  },
+  "threshold_flavour_coupling": {
+    "flavour_best": {
+      "v_r_GeV": 300000000000000.0,
+      "chi2": 4.954642447825638,
+      "tan_beta": 34.94979626444526,
+      "viable_chi2_lt_30": true,
+      "aligned_C_e": 0.05877541154303195,
+      "aligned_C_p_central": -0.4956432569468977,
+      "aligned_C_n_central": 0.028940406019627128
+    },
+    "one_loop_thresholds": {
+      "M_I_GeV": 631385523052.4453,
+      "M_GUT_GeV": 9917564798898132.0,
+      "alpha_inv_GUT_after_spectators": 16.80985384285232
+    },
+    "two_loop_thresholds": {
+      "M_I_GeV": 160982556355.7405,
+      "M_GUT_GeV": 1152023707592892.8,
+      "alpha_inv_GUT_after_spectators": 18.54172405931166
+    },
+    "yukawa_RG_applied": false,
+    "common_scale_identification": {
+      "v_R_vs_M_I": 474.145515769263,
+      "note": "Compares flavour best v_R to gauge intermediate scale M_I. A full common-scale RG fit needs Yukawa anomalous dimensions."
+    },
+    "flag": {
+      "gauge_thresholds_coupled_as_bookkeeping": true,
+      "full_RG_global_fit": false
+    }
+  },
+  "completed_in_repo": [
+    "representation-aware A,B,C,D portal tensors",
+    "Q_proj rotation into flavour mass bases + FCNC ledger",
+    "soft CKM pulls in free-v_R flavour scan",
+    "correlated hadronic C_p,C_n envelope (provisional)",
+    "gauge-threshold bookkeeping vs flavour best v_R",
+    "empirical 36.6-37.6 GHz + GRAVITAS roadmap lock"
+  ],
+  "still_open": [
+    "UV-fixed unique portal Yukawas for exact unique C_e,C_p,C_n",
+    "proof of tree-level FCNC absence",
+    "full common-scale Yukawa RG global 10+126(+210) fit",
+    "real laboratory/astrophysical 37 GHz conversion detection"
+  ],
+  "verdict": "Next phenomenology lock executed: FCNC ledger, correlated hadronic envelope, and gauge-threshold bookkeeping are in place. Exact unique C_e,C_p,C_n and full Yukawa-RG global fit remain open."
+}

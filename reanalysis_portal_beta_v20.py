@@ -83,12 +83,10 @@ def build_report() -> dict:
             "v_R=v_S flavour benchmark remain unresolved/failing."
         ),
         "remaining_high_value_work": [
-            "specify complete representation-aware A,B,C,D portal tensors",
-            "rotate Q_proj into corrected SM fermion mass bases and test FCNCs",
-            "perform a common-scale RG-evolved global 10+126(+210) flavour fit",
-            "include CKM pulls and defensible tan(beta) priors",
-            "precision threshold/RG and correlated hadronic matching",
-            "real 36.6-37.6 GHz conversion scan",
+            "UV-fix unique portal Yukawas for exact unique C_e,C_p,C_n",
+            "proof of tree-level FCNC absence (ledger shows possible FCNCs)",
+            "full common-scale Yukawa RG global 10+126(+210) fit",
+            "real laboratory/astrophysical 37 GHz conversion detection",
         ],
     }
 

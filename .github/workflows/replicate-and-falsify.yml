@@ -32,6 +32,8 @@ jobs:
         run: python run_v20_referee_next.py
       - name: Extensive confirm/falsify campaign
         run: python extensive_confirm_falsify_v20.py
+      - name: Semantic tan(beta) profile certificate
+        run: python verify_tan_beta_profile_semantics.py
       - name: Next physics analysis
         run: python next_physics_analysis_v20.py
       - name: Literature sweep ~150 ueV
@@ -53,6 +55,7 @@ jobs:
         run: |
           python cmb_public_data_pipeline_v20.py
           python empirical_roadmap_lock_v20.py
+          python next_phenomenology_lock_v20.py
       - name: Upload falsification verdict
         if: always()
         uses: actions/upload-artifact@v4
@@ -89,6 +92,8 @@ jobs:
             CMB_PUBLIC_PIPELINE_V20.md
             EMPIRICAL_ROADMAP_LOCK_V20_VERDICT.json
             EMPIRICAL_ROADMAP_LOCK_V20.md
+            NEXT_PHENOMENOLOGY_LOCK_V20_VERDICT.json
+            NEXT_PHENOMENOLOGY_LOCK_V20.md
             outputs/gravitas_axion_v20_37ghz/
             outputs/cmb_public_pipeline_v20/
             data/public_cmb/

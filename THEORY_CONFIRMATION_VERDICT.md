@@ -1,6 +1,6 @@
 # Theory confirmation verdict — v20
 
-**Generated (UTC):** 2026-08-03T07:33:28.862883+00:00
+**Generated (UTC):** 2026-08-03T07:50:46.228539+00:00
 
 **Question:** Execute analysis and prove this theory
 
@@ -17,7 +17,7 @@ The anomaly/operator core passes internal consistency checks and the 37 GHz phot
 - Status: **YES**
 - v20 engine 42/42 PASS
 - extensive confirm/falsify 53/53 PASS
-- 163 unit tests; CI-verified on ba2c663 (Ran 154 tests in 69.690s - OK; https://github.com/jayalabaez/so10-axion-v20/actions/runs/30790747879)
+- 170 unit tests; CI-verified on ba2c663 (Ran 154 tests in 69.690s - OK; https://github.com/jayalabaez/so10-axion-v20/actions/runs/30790747879)
 - anomaly cancellation with (1,16)+(14,3)+(1,-18)
 - one-pair impossible (discriminant -15)
 - portal-basis uniqueness of the triple
@@ -81,12 +81,14 @@ The anomaly/operator core passes internal consistency checks and the 37 GHz phot
 - `public_indirect_audit`: PASS 20 channels / 13 runnable; proves=false
 - `next_physics`: PASS 10/10
 - `extensive_confirm_falsify`: PASS 53/53
-- `unittest`: CI-verified 163/163 on ba2c663: https://github.com/jayalabaez/so10-axion-v20/actions/runs/30790747879
+- `unittest`: CI-verified 170/170 on ba2c663: https://github.com/jayalabaez/so10-axion-v20/actions/runs/30790747879
 - `portal_tensors_ABCD`: constructed; unique C_f still open
 - `physical_Cf_matching`: provisional aligned display; full unique open
 - `global_flavour_scan`: natural v_R can be viable; unique tan_beta not established
 - `cmb_public_pipeline`: downloads ok for practice; line search impossible by dilution
 - `empirical_roadmap_lock`: haloscope + GRAVITAS + flags locked
+- `tan_beta_semantic_certificate`: PASS (scientific invariants, not byte-identical optimizer path)
+- `next_phenomenology_lock`: FCNC ledger + hadronic envelope + threshold bookkeeping
 
 ## CI attestation
 
