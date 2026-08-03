@@ -1,6 +1,6 @@
 {
   "status": "OPEN_GAPS_AUDITED__NO_UNCONDITIONAL_FULL_CLOSURE",
-  "n_checks": 8,
+  "n_checks": 9,
   "n_failed": 0,
   "failures": [],
   "conditional_cf_region": {
@@ -66,9 +66,14 @@
       "departure_from_q_identity": 1.5623331005420602e-11,
       "lepton_off_diagonal_norm": 1.3334956087976289e-11,
       "quark_off_diagonal_norm": 1.5623330997925625e-11,
+      "up_off_diagonal_norm": 1.562039249611784e-11,
+      "down_off_diagonal_norm": 1.5623330997925625e-11,
       "exactly_scalar_to_1e_14": false,
       "numerically_suppressed_to_1e_8": true,
-      "experimental_FCNC_bound_applied": false
+      "experimental_FCNC_bound_applied": true,
+      "g_lepton_fcnc_proxy": 3.7936434752415446e-23,
+      "g_quark_fcnc_proxy": 2.0766860501264993e-22,
+      "passes_rough_experimental_proxies": true
     },
     "generation_dependent_counterexample": {
       "lepton_off_diagonal_norm": 2.6950912153821425,
@@ -80,10 +85,10 @@
       "actual_finite_model_fcnc_suppressed": true,
       "proved_for_arbitrary_portals": false
     },
-    "reason_not_closed": "The benchmark current is only approximately scalar and no complete mass-basis FCNC experimental likelihood has been applied."
+    "reason_not_closed": "The benchmark current is only approximately scalar. Rough experimental FCNC proxies are applied and currently pass, but absence is proved only for exact Q_proj=qI."
   },
   "yukawa_rg_analysis": {
-    "status": "EFFECTIVE_RG_PROXY_COMPLETE__FULL_YUKAWA_RG_OPEN",
+    "status": "ONE_LOOP_MATRIX_YUKAWA_RGE_SOLVED__TWO_LOOP_SO10_AND_GLOBAL_REFIT_OPEN",
     "proxy_best_point": {
       "v_r_GeV": 300000000000000.0,
       "chi2": 4.954642447825638,
@@ -120,19 +125,34 @@
         "full_RG_global_fit": false
       }
     },
+    "one_loop_matrix_rge": {
+      "loaded_from_push_artifact": true,
+      "integration": {
+        "method": "RK45",
+        "success": true,
+        "n_steps": 21,
+        "mu_start_GeV": 91.1876,
+        "mu_stop_GeV": 160982556355.7405,
+        "message": "The solver successfully reached the end of the integration interval."
+      },
+      "relative_matrix_change_MZ_to_MI": {
+        "Yu": 0.013331288517395037,
+        "Yd": 0.03534276783084551,
+        "Ye": 0.7767802091028542
+      }
+    },
     "flag": {
       "effective_power_law_proxy_applied": true,
-      "actual_one_loop_matrix_beta_system_solved": false,
+      "actual_one_loop_matrix_beta_system_solved": true,
       "two_loop_so10_complete": false,
       "full_RG_global_fit_minimal": false
     },
     "missing_for_closure": [
-      "explicit matrix-valued Yukawa beta functions",
       "piecewise matching across every broken-phase threshold",
       "consistent common-scale fermion inputs and uncertainties",
       "two-loop SO(10)/intermediate-group evolution"
     ],
-    "reason_not_closed": "Hand-selected average power-law exponents are a sensitivity proxy, not a solved one-loop matrix RGE system."
+    "reason_not_closed": "Broken-phase one-loop Y_u,Y_d,Y_e matrix betas are solved MZ\u2192M_I, but SO(10)/210 two-loop Yukawa evolution, full threshold matching of H,F, and a common-scale global re-fit remain open."
   },
   "ghz37_package": {
     "status": "SOFTWARE_INJECTION_RECOVERY_PASS__NO_EXPERIMENTAL_DETECTION",
@@ -155,5 +175,5 @@
     "full_common_scale_Yukawa_RG_fit": false,
     "real_37GHz_detection": false
   },
-  "verdict": "The new calculations strengthen a conditional aligned benchmark and demonstrate viable proxy-fit regions, but they do not finish the full v20 phenomenology. Exact unique C_e,C_p,C_n, finite-model FCNC closure, matrix Yukawa RG evolution, and experimental realization remain open."
+  "verdict": "The calculations strengthen a conditional aligned benchmark, apply rough FCNC experimental proxies, and can include a solved one-loop matrix Yukawa RGE when the push artifact is present. Exact unique C_e,C_p,C_n, finite-model FCNC absence, two-loop SO(10)/210 Yukawa closure, and experimental realization remain open."
 }

@@ -6,9 +6,23 @@ from __future__ import annotations
 import unittest
 
 import close_open_gaps_v20 as gaps
+import push_phenomenology_limits_v20 as push
 
 
 class OpenGapAuditTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        # Ensure the push artifact exists so yukawa classification can see it.
+        report = push.build_report()
+        if report["n_failed"] != 0:
+            raise RuntimeError(f"push failed: {report['failures']}")
+        push.ROOT.joinpath(
+            "PUSH_PHENOMENOLOGY_LIMITS_V20_VERDICT.json"
+        ).write_text(
+            __import__("json").dumps(report, indent=2) + "\n",
+            encoding="utf-8",
+        )
+
     def test_conditional_region_is_not_called_unique(self) -> None:
         report = gaps.conditional_unique_cf()
         self.assertTrue(report["flag"]["conditional_region_Cf"])
@@ -30,15 +44,21 @@ class OpenGapAuditTests(unittest.TestCase):
         self.assertTrue(
             report["generation_dependent_counterexample"]["fcnc_possible"]
         )
+        self.assertTrue(
+            report["finite_hierarchical_benchmark"][
+                "experimental_FCNC_bound_applied"
+            ]
+        )
 
-    def test_effective_rg_proxy_is_not_promoted(self) -> None:
+    def test_matrix_rge_solved_but_not_two_loop_or_full_fit(self) -> None:
         report = gaps.yukawa_rg_global_fit()
         self.assertTrue(report["flag"]["effective_power_law_proxy_applied"])
-        self.assertFalse(
+        self.assertTrue(
             report["flag"]["actual_one_loop_matrix_beta_system_solved"]
         )
         self.assertFalse(report["flag"]["full_RG_global_fit_minimal"])
         self.assertFalse(report["flag"]["two_loop_so10_complete"])
+        self.assertIn("ONE_LOOP_MATRIX_YUKAWA_RGE_SOLVED", report["status"])
         self.assertNotEqual(report["status"], "YUKAWA_RG_GLOBAL_FIT_COMPLETE")
 
     def test_detection_not_claimed(self) -> None:

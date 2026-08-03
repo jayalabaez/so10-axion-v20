@@ -14,10 +14,16 @@
 ## Remaining blockers
 
 - UV-fixed portal Yukawas and unique mass-basis C_f
-- finite-model FCNC likelihood/bounds
-- explicit matrix Yukawa beta functions and threshold matching
+- exact finite-model FCNC absence (needs Q_proj=qI)
+- two-loop SO(10)/210 Yukawa evolution and common-scale global re-fit
 - real 37 GHz conversion data
+
+## Advances retained as non-closure
+
+- rough experimental FCNC proxies applied to hierarchical portal
+- SVD quark mass bases used in FCNC diagnostics
+- one-loop matrix Yukawa RGE MZ→M_I when push artifact is present
 
 ## Verdict
 
-The new calculations strengthen a conditional aligned benchmark and demonstrate viable proxy-fit regions, but they do not finish the full v20 phenomenology. Exact unique C_e,C_p,C_n, finite-model FCNC closure, matrix Yukawa RG evolution, and experimental realization remain open.
+The calculations strengthen a conditional aligned benchmark, apply rough FCNC experimental proxies, and can include a solved one-loop matrix Yukawa RGE when the push artifact is present. Exact unique C_e,C_p,C_n, finite-model FCNC absence, two-loop SO(10)/210 Yukawa closure, and experimental realization remain open.

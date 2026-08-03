@@ -99,18 +99,25 @@ def flavour_mass_bases() -> dict:
     data = flavour.build_matrices(params, best["v_r_GeV"])
     _s_nu, u_nu = flavour.takagi(data["M_nu"])
     _s_e, u_e = flavour.takagi(data["M_e"])
+    u_u, _su, vh_u = np.linalg.svd(data["M_u_target"], full_matrices=True)
+    u_d, _sd, vh_d = np.linalg.svd(data["M_d"], full_matrices=True)
     return {
         "tan_beta": data["tan_beta"],
         "v_r_GeV": best["v_r_GeV"],
         "chi2": best["chi2"],
         "U_e": u_e,
         "U_nu": u_nu,
+        "U_uL": u_u,
+        "U_uR": vh_u.conj().T,
+        "U_dL": u_d,
+        "U_dR": vh_d.conj().T,
         "natural_scale_viable": bool(
             best["chi2"] < 30.0 and abs(best["v_r_GeV"] - flavour.VS) > 1.0
         ),
         "fit_note": (
-            "Mass bases from corrected Takagi/PMNS flavour witness. "
-            "v_R=v_S remains non-viable; natural v_R~1e14 may be viable."
+            "Mass bases from corrected Takagi/PMNS flavour witness plus SVD "
+            "quark left bases. v_R=v_S remains non-viable; natural v_R~1e14 "
+            "may be viable."
         ),
     }
 
@@ -123,7 +130,20 @@ def match_scenario(name: str, block: dict, bases: dict) -> dict:
     phys = portals.physical_current_from_abcd(block)
     charges = light_pq_charges(q_proj)
     lepton = rotate_to_basis(q_proj, bases["U_e"])
-    quark = rotate_to_basis(q_proj, np.eye(3, dtype=complex))
+    up = rotate_to_basis(q_proj, bases.get("U_uL", np.eye(3, dtype=complex)))
+    down = rotate_to_basis(q_proj, bases.get("U_dL", np.eye(3, dtype=complex)))
+    quark = {
+        "diagonal_charges": [
+            0.5 * (a + b)
+            for a, b in zip(up["diagonal_charges"], down["diagonal_charges"])
+        ],
+        "off_diagonal_norm": max(
+            float(up["off_diagonal_norm"]), float(down["off_diagonal_norm"])
+        ),
+        "fcnc_possible": bool(up["fcnc_possible"] or down["fcnc_possible"]),
+        "up": up,
+        "down": down,
+    }
     fcnc = lepton["fcnc_possible"] or quark["fcnc_possible"]
     if phys["is_approximately_aligned"] and not fcnc:
         flag = "PROVISIONAL_ALIGNED_BENCHMARK"

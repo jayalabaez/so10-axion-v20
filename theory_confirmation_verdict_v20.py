@@ -147,19 +147,31 @@ def build_verdict() -> dict[str, Any]:
         )
         if not closed
     ]
+    remaining = ", ".join(blockers) if blockers else "none"
+    short = (
+        "The anomaly/operator core survives the in-repository attacks, a "
+        "conditional aligned benchmark is numerically safe, natural-scale "
+        "flavour proxy points exist, and the 37 GHz photon target remains "
+        "experimentally open. "
+    )
+    if matrix_rg_closed:
+        short += (
+            "A broken-phase one-loop matrix Yukawa RGE has been solved, but "
+            "full phenomenological approval remains blocked by: "
+            f"{remaining}."
+        )
+    else:
+        short += (
+            "The full phenomenological theory is not approved: unique full "
+            "C_e,C_p,C_n, finite-model FCNC closure, and explicit matrix "
+            "Yukawa RG/two-loop threshold evolution remain open."
+        )
 
     return {
         "title": "SO(10)×Z17 axion candidate v20 — confirmation verdict",
         "generated_utc": datetime.now(timezone.utc).isoformat(),
         "question_asked": "Execute the ultimate approval/falsification analysis",
-        "short_answer": (
-            "The anomaly/operator core survives the in-repository attacks, a "
-            "conditional aligned benchmark is numerically safe, natural-scale "
-            "flavour proxy points exist, and the 37 GHz photon target remains "
-            "experimentally open. The full phenomenological theory is not "
-            "approved: unique full C_e,C_p,C_n, finite-model FCNC closure, and "
-            "explicit matrix Yukawa RG/two-loop threshold evolution remain open."
-        ),
+        "short_answer": short,
         "ci_attestation": attestation,
         "approval": {
             "internal_candidate": True,

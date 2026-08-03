@@ -104,7 +104,7 @@ class UltimateGateTests(unittest.TestCase):
         self.assertTrue(result["conditional_benchmark_approved"])
         self.assertFalse(result["full_phenomenology_approved"])
         self.assertFalse(result["empirical_realization_approved"])
-        self.assertGreaterEqual(len(result["full_approval_blockers"]), 4)
+        self.assertGreaterEqual(len(result["full_approval_blockers"]), 3)
 
     def test_core_sabotage_explodes(self) -> None:
         reports = fixture()

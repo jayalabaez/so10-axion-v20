@@ -10,13 +10,12 @@
 - Conditional benchmark: **True**
 - Full phenomenology: **False**
 - Empirical realization: **False**
-- Current unit tests: **182**
+- Current unit tests: **187**
 
 ## Full-approval blockers
 
 - UV-fixed unique full-v20 C_e,C_p,C_n
 - finite-model tree-level FCNC closure
-- explicit matrix-valued Yukawa RG system
 - two-loop SO(10)/threshold closure
 
 ## Integrity errors

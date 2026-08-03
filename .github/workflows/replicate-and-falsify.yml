@@ -56,6 +56,7 @@ jobs:
           python cmb_public_data_pipeline_v20.py
           python empirical_roadmap_lock_v20.py
           python next_phenomenology_lock_v20.py
+          python push_phenomenology_limits_v20.py
           python close_open_gaps_v20.py
       - name: Final honest verdict + ultimate approval gate
         run: |
@@ -100,6 +101,8 @@ jobs:
             EMPIRICAL_ROADMAP_LOCK_V20.md
             NEXT_PHENOMENOLOGY_LOCK_V20_VERDICT.json
             NEXT_PHENOMENOLOGY_LOCK_V20.md
+            PUSH_PHENOMENOLOGY_LIMITS_V20_VERDICT.json
+            PUSH_PHENOMENOLOGY_LIMITS_V20.md
             OPEN_GAPS_CLOSURE_V20_VERDICT.json
             OPEN_GAPS_CLOSURE_V20.md
             THEORY_CONFIRMATION_VERDICT.json
