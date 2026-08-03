@@ -86,15 +86,28 @@ def fetch_first(urls: list[str]) -> tuple[dict[str, Any], str, list[str]]:
     raise RuntimeError("all official endpoints failed: " + " | ".join(failures))
 
 
-def parse_observed_curve(payload: dict[str, Any]) -> list[dict[str, float]]:
+def parse_observed_curve(payload: dict[str, Any]) -> tuple[list[dict[str, float]], dict[str, Any]]:
     headers = payload.get("headers")
     values = payload.get("values")
     if not isinstance(headers, list) or len(headers) < 2:
         raise ValueError("missing HEPData headers")
-    if str(headers[0].get("name", "")) != "X mass":
-        raise ValueError("unexpected independent-variable header")
-    if str(headers[1].get("name", "")) != "Obs. BR UL":
-        raise ValueError("unexpected observed-limit header")
+    independent_units = str(headers[0].get("units", ""))
+    if "mev" not in independent_units.lower():
+        raise ValueError(
+            f"unexpected independent-variable units: {independent_units!r}"
+        )
+    observed_header_index = None
+    for index, header in enumerate(headers[1:]):
+        name = str(header.get("name", "")).lower()
+        if "obs" in name and "br" in name and "ul" in name:
+            observed_header_index = index
+            break
+    if observed_header_index is None:
+        raise ValueError(
+            "observed BR upper-limit header not found: "
+            + json.dumps(headers, sort_keys=True)
+        )
+    observed_group = str(observed_header_index)
     if not isinstance(values, list):
         raise ValueError("missing HEPData values")
 
@@ -104,7 +117,7 @@ def parse_observed_curve(payload: dict[str, Any]) -> list[dict[str, float]]:
         y = row.get("y") or []
         if len(x) != 1:
             raise ValueError("expected one X-mass value per row")
-        observed = [item for item in y if str(item.get("group")) == "0"]
+        observed = [item for item in y if str(item.get("group")) == observed_group]
         if len(observed) != 1:
             raise ValueError("expected one observed upper limit per row")
         mass = float(x[0]["value"])
@@ -114,7 +127,11 @@ def parse_observed_curve(payload: dict[str, Any]) -> list[dict[str, float]]:
         curve.append({"mass_MeV": mass, "observed_br_ul_90cl": limit})
     if any(b["mass_MeV"] <= a["mass_MeV"] for a, b in zip(curve, curve[1:])):
         raise ValueError("NA62 mass grid is not strictly increasing")
-    return curve
+    return curve, {
+        "independent_header": headers[0],
+        "observed_header": headers[1 + observed_header_index],
+        "observed_group": observed_group,
+    }
 
 
 def build_report() -> dict[str, Any]:
@@ -126,31 +143,26 @@ def build_report() -> dict[str, Any]:
         payload, endpoint, failed_before_success = fetch_first(
             endpoint_candidates(publication, table)
         )
-        curve = parse_observed_curve(payload)
+        curve, parsed_headers = parse_observed_curve(payload)
         anchor = json.loads(ANCHOR_PATH.read_text(encoding="utf-8"))
         expected = anchor["anchor_points"]
         comparisons = []
         for expected_row, live_row in zip(expected, curve[: len(expected)]):
             mass_match = math.isclose(
-                float(expected_row["mass_MeV"]),
-                live_row["mass_MeV"],
-                rel_tol=0.0,
-                abs_tol=1e-15,
+                float(expected_row["mass_MeV"]), live_row["mass_MeV"],
+                rel_tol=0.0, abs_tol=1e-15,
             )
             limit_match = math.isclose(
                 float(expected_row["observed_br_ul_90cl"]),
                 live_row["observed_br_ul_90cl"],
-                rel_tol=1e-12,
-                abs_tol=0.0,
+                rel_tol=1e-12, abs_tol=0.0,
             )
-            comparisons.append(
-                {
-                    "expected": expected_row,
-                    "live": live_row,
-                    "mass_match": mass_match,
-                    "limit_match": limit_match,
-                }
-            )
+            comparisons.append({
+                "expected": expected_row,
+                "live": live_row,
+                "mass_match": mass_match,
+                "limit_match": limit_match,
+            })
         drift = any(
             not row["mass_match"] or not row["limit_match"]
             for row in comparisons
@@ -165,6 +177,7 @@ def build_report() -> dict[str, Any]:
             "version": publication.get("version"),
             "successful_endpoint": endpoint,
             "failed_endpoints_before_success": failed_before_success,
+            "parsed_headers": parsed_headers,
             "n_curve_points": len(curve),
             "curve_first": curve[:2],
             "curve_last": curve[-2:],
@@ -191,8 +204,7 @@ def build_report() -> dict[str, Any]:
         },
         "verdict": (
             "The official NA62 Figure 2-a observed-limit anchors match the vendored offline values."
-            if passed
-            else "The online NA62 provenance or drift check failed."
+            if passed else "The online NA62 provenance or drift check failed."
         ),
     }
 
