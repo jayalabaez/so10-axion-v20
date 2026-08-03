@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Probe the official NA62 HEPData Figure 2-a payload via publication links."""
+"""Probe official HEPData endpoints for the NA62 Figure 2-a payload."""
 from __future__ import annotations
 
 import json
@@ -20,8 +20,11 @@ def fetch_json(url: str, timeout: float = 45.0) -> Any:
     request = urllib.request.Request(
         url,
         headers={
-            "User-Agent": "so10-axion-v20-reproducibility/1.0",
-            "Accept": "application/json",
+            "User-Agent": (
+                "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+                "Chrome/150.0 Safari/537.36"
+            ),
+            "Accept": "application/json,text/plain,*/*",
             "Referer": "https://www.hepdata.net/record/ins2953428",
         },
     )
@@ -32,7 +35,17 @@ def fetch_json(url: str, timeout: float = 45.0) -> Any:
     return json.loads(payload.decode("utf-8"))
 
 
-def schema_summary(value: Any, *, depth: int = 0, max_depth: int = 5) -> Any:
+def fetch_first_json(urls: list[str]) -> tuple[Any, str, list[str]]:
+    attempts: list[str] = []
+    for url in urls:
+        try:
+            return fetch_json(url), url, attempts
+        except (OSError, RuntimeError, json.JSONDecodeError, urllib.error.URLError) as exc:
+            attempts.append(f"{url}: {type(exc).__name__}: {exc}")
+    raise RuntimeError("all official table endpoints failed: " + " | ".join(attempts))
+
+
+def schema_summary(value: Any, *, depth: int = 0, max_depth: int = 6) -> Any:
     if depth >= max_depth:
         if isinstance(value, dict):
             return {"type": "dict", "n_keys": len(value), "keys": list(value)[:16]}
@@ -44,7 +57,7 @@ def schema_summary(value: Any, *, depth: int = 0, max_depth: int = 5) -> Any:
             "type": "dict",
             "keys": {
                 str(key): schema_summary(child, depth=depth + 1, max_depth=max_depth)
-                for key, child in list(value.items())[:30]
+                for key, child in list(value.items())[:40]
             },
         }
     if isinstance(value, list):
@@ -53,7 +66,7 @@ def schema_summary(value: Any, *, depth: int = 0, max_depth: int = 5) -> Any:
             "length": len(value),
             "sample": [
                 schema_summary(child, depth=depth + 1, max_depth=max_depth)
-                for child in value[:3]
+                for child in value[:4]
             ],
         }
     return {"type": type(value).__name__, "value": value}
@@ -84,8 +97,9 @@ def keyword_paths(value: Any, keywords: tuple[str, ...], path: tuple[str, ...] =
     if isinstance(value, dict):
         for key, child in value.items():
             new_path = path + (str(key),)
-            text = str(key).lower()
-            if any(token in text for token in keywords):
+            key_text = str(key).lower()
+            value_text = str(child).lower() if isinstance(child, str) else ""
+            if any(token in key_text or token in value_text for token in keywords):
                 found.append(new_path)
             found.extend(keyword_paths(child, keywords, new_path))
     elif isinstance(value, list):
@@ -120,27 +134,43 @@ def normalize_data_url(raw_url: str) -> str:
     )
 
 
+def table_endpoint_candidates(publication: dict[str, Any], table: dict[str, Any]) -> list[str]:
+    recid = int(publication.get("recid", 160245))
+    version = int(publication.get("version", 2))
+    table_id = int(table["id"])
+    encoded_name = urllib.parse.quote(str(table["name"]), safe="")
+    raw_download = str((table.get("data") or {}).get("json", ""))
+    candidates = [
+        f"https://www.hepdata.net/record/ins2953428?format=json&table={encoded_name}",
+        f"https://www.hepdata.net/record/data/{recid}/{table_id}/{version}?format=json",
+        f"https://www.hepdata.net/record/data/{recid}/{table_id}/{version}",
+    ]
+    if raw_download:
+        candidates.append(normalize_data_url(raw_download))
+    return candidates
+
+
 def payload_diagnostics(payload: Any, url: str) -> dict[str, Any]:
     numeric = list(iter_numeric_leaves(payload))
     return {
         "url": url,
         "schema": schema_summary(payload),
         "top_level_type": type(payload).__name__,
-        "top_level_keys": list(payload)[:50] if isinstance(payload, dict) else None,
+        "top_level_keys": list(payload)[:60] if isinstance(payload, dict) else None,
         "numeric_leaf_count": len(numeric),
         "numeric_leaf_head": [
-            {"path": list(path), "value": number} for path, number in numeric[:40]
+            {"path": list(path), "value": number} for path, number in numeric[:80]
         ],
         "numeric_leaf_tail": [
-            {"path": list(path), "value": number} for path, number in numeric[-40:]
+            {"path": list(path), "value": number} for path, number in numeric[-80:]
         ],
         "mass_keyword_paths": [
             list(path)
-            for path in keyword_paths(payload, ("mass", "m_x", "mx", "gev", "mev"))[:150]
+            for path in keyword_paths(payload, ("mass", "m_x", "mx", "gev", "mev"))[:250]
         ],
         "limit_keyword_paths": [
             list(path)
-            for path in keyword_paths(payload, ("limit", "upper", "branch", "dependent", "observed"))[:150]
+            for path in keyword_paths(payload, ("limit", "upper", "branch", "dependent", "observed"))[:250]
         ],
     }
 
@@ -150,7 +180,8 @@ def build_report() -> dict[str, Any]:
     records: dict[str, Any] = {}
     table_metadata: dict[str, Any] | None = None
     table_payload: Any | None = None
-    table_url = ""
+    successful_url = ""
+    failed_endpoints: list[str] = []
     try:
         publication = fetch_json(PUBLICATION_RECORD)
         records["publication"] = {
@@ -161,17 +192,18 @@ def build_report() -> dict[str, Any]:
             "n_visible_tables": len(publication.get("data_tables") or []),
         }
         table_metadata = find_figure_2a_table(publication)
-        data_links = table_metadata.get("data") or {}
-        table_url = normalize_data_url(str(data_links.get("json", "")))
-        table_payload = fetch_json(table_url)
-        records["figure_2a"] = payload_diagnostics(table_payload, table_url)
+        candidates = table_endpoint_candidates(publication, table_metadata)
+        table_payload, successful_url, failed_endpoints = fetch_first_json(candidates)
+        records["figure_2a"] = payload_diagnostics(table_payload, successful_url)
         records["figure_2a"]["metadata"] = {
             "name": table_metadata.get("name"),
             "description": table_metadata.get("description"),
             "doi": table_metadata.get("doi"),
             "id": table_metadata.get("id"),
             "location": table_metadata.get("location"),
-            "all_download_links": data_links,
+            "all_download_links": table_metadata.get("data") or {},
+            "endpoint_candidates": candidates,
+            "failed_endpoints_before_success": failed_endpoints,
         }
     except (OSError, RuntimeError, KeyError, ValueError, json.JSONDecodeError, urllib.error.URLError) as exc:
         errors.append(f"{type(exc).__name__}: {exc}")
