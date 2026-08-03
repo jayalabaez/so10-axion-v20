@@ -44,6 +44,8 @@ jobs:
           python full_fermion_matching_v20.py
           python tan_beta_profile_v20.py
           python reanalysis_portal_beta_v20.py
+      - name: Verify tan beta scientific invariants
+        run: python verify_tan_beta_profile_semantics.py
       - name: Upload falsification verdict
         if: always()
         uses: actions/upload-artifact@v4
