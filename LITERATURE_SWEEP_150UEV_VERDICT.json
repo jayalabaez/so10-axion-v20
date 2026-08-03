@@ -1,0 +1,228 @@
+{
+  "status": "PASS",
+  "v20_benchmark": {
+    "m_a_ueV": 153.5,
+    "m_a_unc_ueV": 2.0,
+    "nu_GHz": 37.11,
+    "scan_GHz": [
+      36.6,
+      37.6
+    ],
+    "g_agamma_GeV_inv": 2.335e-14,
+    "g_unc": 1.25e-15,
+    "assumption": "axion = 100% local DM at rho~0.3\u20130.45 GeV/cm^3"
+  },
+  "entries": [
+    {
+      "name": "CAST helioscope (2024 Xe)",
+      "kind": "helioscope",
+      "mass_window_ueV": [
+        0.0,
+        20000.0
+      ],
+      "g_limit_GeV_inv": 5.8e-11,
+      "covers_v20_mass": true,
+      "excludes_v20_coupling": false,
+      "status_at_v20": "OPEN \u2014 bound too weak",
+      "citation": "Altenm\u00fcller et al., PRL 133, 221005 (2024)",
+      "note": "Solar axions; g<5.8e-11 for m_a\u22720.02 eV. v20 g is ~2500\u00d7 smaller.",
+      "sensitivity_ratio_g_lim_over_v20": 2483.9400428265526
+    },
+    {
+      "name": "HB / globular-cluster stellar cooling",
+      "kind": "astrophysics",
+      "mass_window_ueV": [
+        0.0,
+        100000.0
+      ],
+      "g_limit_GeV_inv": 6.6e-11,
+      "covers_v20_mass": true,
+      "excludes_v20_coupling": false,
+      "status_at_v20": "OPEN \u2014 bound too weak",
+      "citation": "Ayala et al., PRL 113, 191302 (2014); CAST GC revisits 2024",
+      "note": "Order 6e-11 GeV^{-1}; does not touch QCD-axion strength at 150 \u00b5eV.",
+      "sensitivity_ratio_g_lim_over_v20": 2826.5524625267667
+    },
+    {
+      "name": "SN1987A / supernova photon-coupling (schematic)",
+      "kind": "astrophysics",
+      "mass_window_ueV": [
+        0.0,
+        100000.0
+      ],
+      "g_limit_GeV_inv": 5e-10,
+      "covers_v20_mass": true,
+      "excludes_v20_coupling": false,
+      "status_at_v20": "OPEN \u2014 bound too weak / model-dependent",
+      "citation": "literature envelope used in MADMAX proto comparisons",
+      "note": "Much weaker than CAST/HB for this coupling; not a v20 killer.",
+      "sensitivity_ratio_g_lim_over_v20": 21413.276231263386
+    },
+    {
+      "name": "ORGAN Phase 1a",
+      "kind": "haloscope",
+      "mass_window_ueV": [
+        63.0,
+        67.0
+      ],
+      "g_limit_GeV_inv": null,
+      "covers_v20_mass": false,
+      "excludes_v20_coupling": false,
+      "status_at_v20": "OPEN \u2014 wrong mass window",
+      "citation": "Quiskamp et al., Sci. Adv. 8, eabq3765 (2022)",
+      "note": "Excluded ALP-cogenesis near 63\u201367 \u00b5eV; does not cover 153.5 \u00b5eV.",
+      "sensitivity_ratio_g_lim_over_v20": null
+    },
+    {
+      "name": "ORGAN Phase 1b",
+      "kind": "haloscope",
+      "mass_window_ueV": [
+        107.42,
+        111.93
+      ],
+      "g_limit_GeV_inv": null,
+      "covers_v20_mass": false,
+      "excludes_v20_coupling": false,
+      "status_at_v20": "OPEN \u2014 wrong mass window",
+      "citation": "Quiskamp et al., PRL 132, 031601 (2024) [arXiv:2310.00904]",
+      "note": "Excluded ALP-cogenesis at 107\u2013112 \u00b5eV (~26\u201327 GHz). v20 is ~37 GHz.",
+      "sensitivity_ratio_g_lim_over_v20": null
+    },
+    {
+      "name": "MADMAX CB200 prototype",
+      "kind": "haloscope",
+      "mass_window_ueV": [
+        76.56,
+        79.53
+      ],
+      "g_limit_GeV_inv": 2e-11,
+      "covers_v20_mass": false,
+      "excludes_v20_coupling": false,
+      "status_at_v20": "OPEN \u2014 wrong mass window",
+      "citation": "MADMAX, PRL (2025) DOI 10.1103/c749-419q",
+      "note": "First dielectric-haloscope axion search; ~77\u201380 \u00b5eV at g~2e-11. Not 153 \u00b5eV.",
+      "sensitivity_ratio_g_lim_over_v20": 856.5310492505353
+    },
+    {
+      "name": "QUAX-a\u03b3 (~43 \u00b5eV)",
+      "kind": "haloscope",
+      "mass_window_ueV": [
+        42.0,
+        44.0
+      ],
+      "g_limit_GeV_inv": 7.7e-14,
+      "covers_v20_mass": false,
+      "excludes_v20_coupling": false,
+      "status_at_v20": "OPEN \u2014 wrong mass window",
+      "citation": "Alesini et al., PRD 103, 102004 (2021)",
+      "note": "Near-QCD sensitivity around 43 \u00b5eV / 10 GHz; far from 37 GHz.",
+      "sensitivity_ratio_g_lim_over_v20": 3.297644539614561
+    },
+    {
+      "name": "ADMX / HAYSTAC / CAPP (low-GHz cavities)",
+      "kind": "haloscope",
+      "mass_window_ueV": [
+        1.0,
+        40.0
+      ],
+      "g_limit_GeV_inv": 1e-15,
+      "covers_v20_mass": false,
+      "excludes_v20_coupling": false,
+      "status_at_v20": "OPEN \u2014 wrong mass window",
+      "citation": "ADMX G2 / HAYSTAC / CAPP published runs (various)",
+      "note": "Mature QCD exclusions exist at few\u2013tens of \u00b5eV, not at 150 \u00b5eV.",
+      "sensitivity_ratio_g_lim_over_v20": 0.04282655246252677
+    },
+    {
+      "name": "ORGAN design envelope (future phases)",
+      "kind": "haloscope_design",
+      "mass_window_ueV": [
+        62.0,
+        207.0
+      ],
+      "g_limit_GeV_inv": null,
+      "covers_v20_mass": true,
+      "excludes_v20_coupling": false,
+      "status_at_v20": "OPEN \u2014 not yet scanned at v20 depth",
+      "citation": "ORGAN programme: 15\u201350 GHz design band",
+      "note": "153.5 \u00b5eV sits inside design band; QCD-depth scan at 37 GHz not published.",
+      "sensitivity_ratio_g_lim_over_v20": null
+    },
+    {
+      "name": "MADMAX full booster (design)",
+      "kind": "haloscope_design",
+      "mass_window_ueV": [
+        40.0,
+        400.0
+      ],
+      "g_limit_GeV_inv": null,
+      "covers_v20_mass": true,
+      "excludes_v20_coupling": false,
+      "status_at_v20": "OPEN \u2014 not yet scanned at v20 depth",
+      "citation": "MADMAX design / DESY programme",
+      "note": "Design aims post-inflationary ~100 \u00b5eV QCD axions; 37 GHz is on-roadmap.",
+      "sensitivity_ratio_g_lim_over_v20": null
+    },
+    {
+      "name": "ALPHA / dielectric broadband (design)",
+      "kind": "haloscope_design",
+      "mass_window_ueV": [
+        80.0,
+        200.0
+      ],
+      "g_limit_GeV_inv": null,
+      "covers_v20_mass": true,
+      "excludes_v20_coupling": false,
+      "status_at_v20": "OPEN \u2014 not yet scanned at v20 depth",
+      "citation": "ALPHA collaboration proposals",
+      "note": "Later stages advertised around 80\u2013200 \u00b5eV; no v20 exclusion yet.",
+      "sensitivity_ratio_g_lim_over_v20": null
+    }
+  ],
+  "classification": {
+    "theory_fails_from_published_bounds": false,
+    "n_entries": 11,
+    "n_excluding_v20": 0,
+    "buckets": {
+      "EXCLUDED_by_literature": [],
+      "OPEN_mass_covered_but_g_too_weak": [
+        "CAST helioscope (2024 Xe)",
+        "HB / globular-cluster stellar cooling",
+        "SN1987A / supernova photon-coupling (schematic)"
+      ],
+      "OPEN_published_haloscope_wrong_mass": [
+        "ORGAN Phase 1a",
+        "ORGAN Phase 1b",
+        "MADMAX CB200 prototype",
+        "QUAX-a\u03b3 (~43 \u00b5eV)",
+        "ADMX / HAYSTAC / CAPP (low-GHz cavities)"
+      ],
+      "OPEN_design_reach_not_yet_done": [
+        "ORGAN design envelope (future phases)",
+        "MADMAX full booster (design)",
+        "ALPHA / dielectric broadband (design)"
+      ]
+    },
+    "one_sentence": "DOES NOT FAIL \u2014 no published bound excludes the v20 all-DM benchmark at 153.5 \u00b5eV / 37 GHz; the window is experimentally OPEN."
+  },
+  "soft_stresses_not_literature_exclusion": [
+    "exact v_R=v_S flavour fit stressed vs natural ~1e14 GeV",
+    "continuous RG rejects old alpha_10(v_Phi)=1/40 reset",
+    "unit-coefficient loop numbers are diagnostics, not predictions",
+    "lattice (13,-3) string network not simulated"
+  ],
+  "next_physical_step": {
+    "action": "Request / collaborate on a real 36.6\u201337.6 GHz scan",
+    "targets": [
+      "ORGAN",
+      "MADMAX",
+      "ALPHA-class"
+    ],
+    "deliverables_in_repo": [
+      "haloscope_37ghz_templates/v20_haloscope_target_brief.md",
+      "haloscope_37ghz_templates/v20_axion_lineshape_37GHz.csv"
+    ],
+    "what_would_fail_the_theory": "A null result at g_agamma \u2272 2.3e-14 GeV^{-1} over 36.6\u201337.6 GHz kills the all-DM benchmark (not necessarily every diluted/subcomponent scenario)."
+  },
+  "verdict": "DOES NOT FAIL \u2014 no published bound excludes the v20 all-DM benchmark at 153.5 \u00b5eV / 37 GHz; the window is experimentally OPEN."
+}
