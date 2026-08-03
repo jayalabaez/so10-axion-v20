@@ -13,11 +13,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Probe official Figure 2-a table
+      - name: Check official Figure 2-a anchors for drift
         run: python na62_hepdata_probe_v20.py
-      - name: Upload NA62 probe
+      - name: Upload NA62 drift verdict
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: na62-hepdata-probe
-          path: NA62_HEPDATA_PROBE_V20_VERDICT.json
+          name: na62-hepdata-drift
+          path: NA62_HEPDATA_DRIFT_V20_VERDICT.json
