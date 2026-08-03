@@ -40,6 +40,7 @@ jobs:
         run: |
           python home_public_37ghz_search_v20.py
           python gravitas_axion_v20_37ghz.py
+          python public_data_indirect_audit_v20.py
       - name: Upload falsification verdict
         if: always()
         uses: actions/upload-artifact@v4
@@ -58,4 +59,6 @@ jobs:
             HOME_PUBLIC_37GHZ_SEARCH_VERDICT.json
             HOME_PUBLIC_37GHZ_SEARCH.md
             GRAVITAS_AXION_V20_37GHZ.md
+            PUBLIC_DATA_INDIRECT_AUDIT_VERDICT.json
+            PUBLIC_DATA_INDIRECT_AUDIT.md
             outputs/gravitas_axion_v20_37ghz/
