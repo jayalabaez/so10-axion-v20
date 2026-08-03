@@ -1,0 +1,100 @@
+{
+  "status": "PASS_WITH_STATED_MATCHING_ASSUMPTIONS",
+  "normalization": {
+    "v_S_GeV": 631385500000.0,
+    "covering_color_anomaly_N": 17,
+    "physical_domain_wall_count_after_Z17_quotient": 1,
+    "f_a_GeV": 37140323529.411766,
+    "warning": "Local derivative couplings use the covering anomaly N=17. Substituting the physical one-wall count N=1 would overstate the tree fermion coefficients by a factor of 17."
+  },
+  "benchmarks": {
+    "v20_single_scale_fit": {
+      "tan_beta": 1.5000000000002063,
+      "sin2_beta": 0.6923076923077509,
+      "cos2_beta": 0.3076923076922491,
+      "tree_quark_coefficients": {
+        "C_u0": 0.01809954751130877,
+        "C_d0": 0.04072398190045594
+      },
+      "C_e": 0.04072398190045594,
+      "C_p": -0.47257918552036654,
+      "C_n": 0.006606334841633303,
+      "sigma_C_p_hadronic": 0.03020689900345357,
+      "sigma_C_n_hadronic": 0.03020689900345357,
+      "g_ae": 5.60305081200287e-16,
+      "g_ap": -1.1938718273899999e-11,
+      "g_an": 1.671251939595969e-13,
+      "sigma_g_ap_hadronic": 7.631137133838935e-13,
+      "sigma_g_an_hadronic": 7.641656040586067e-13,
+      "electron_margin_limit_over_prediction": 232.01645739409264,
+      "sn_generic_margin_limit_over_max_nucleon": 83.76108532405564
+    },
+    "natural_1e14_fit": {
+      "tan_beta": 41.338069578693386,
+      "sin2_beta": 0.9994151485861503,
+      "cos2_beta": 0.0005848514138497114,
+      "tree_quark_coefficients": {
+        "C_u0": 3.440302434410067e-05,
+        "C_d0": 0.05878912638742061
+      },
+      "C_e": 0.05878912638742061,
+      "C_p": -0.49642517624315985,
+      "C_n": 0.0293684168952088,
+      "sigma_C_p_hadronic": 0.03020689900345357,
+      "sigma_C_n_hadronic": 0.03020689900345357,
+      "g_ae": 8.088562241952291e-16,
+      "g_ap": -1.2541137030214845e-11,
+      "g_an": 7.429539203744939e-13,
+      "sigma_g_ap_hadronic": 7.631137133838935e-13,
+      "sigma_g_an_hadronic": 7.641656040586067e-13,
+      "electron_margin_limit_over_prediction": 160.72077596898436,
+      "sn_generic_margin_limit_over_max_nucleon": 79.73758659926459
+    }
+  },
+  "tan_beta_envelope_1p5_to_50": {
+    "g_ae_abs_min": 5.603050812002396e-16,
+    "g_ae_abs_max": 8.090059593499394e-16,
+    "g_ap_abs_min": 1.1938718273899883e-11,
+    "g_ap_abs_max": 1.2541499946532954e-11,
+    "g_an_central_abs_min": 1.6712519395948702e-13,
+    "g_an_central_abs_max": 7.433008180085074e-13,
+    "note": "The quoted hadronic uncertainty on C_n is comparable to its central value."
+  },
+  "published_bound_checks": {
+    "TRGB_electron": {
+      "limit_95CL": 1.3e-13,
+      "largest_prediction_in_scan": 8.090059593499394e-16,
+      "safety_factor": 160.69102890720225,
+      "passes": true
+    },
+    "generic_SN_nucleon_envelope": {
+      "indicative_excluded_above": 1e-09,
+      "largest_predicted_abs_nucleon_coupling": 1.2541499946532954e-11,
+      "safety_factor": 79.7352792140661,
+      "passes": true,
+      "caveat": "Envelope comparison, not a reproduction of the SN likelihood."
+    },
+    "canonical_QCD_axion_SN_mass": {
+      "literature_scale_eV": 0.01,
+      "v20_mass_eV": 0.0001535,
+      "safety_factor": 65.14657980456026,
+      "passes": true
+    },
+    "universal_SN_QCD_axion": {
+      "f_a_lower_GeV_68CL": 110000000.0,
+      "v20_f_a_GeV": 37140323529.411766,
+      "f_a_safety_factor": 337.6393048128342,
+      "mass_upper_eV_68CL": 0.053,
+      "v20_mass_eV": 0.0001535,
+      "mass_safety_factor": 345.2768729641694,
+      "passes": true
+    }
+  },
+  "assumptions": [
+    "The three light chiral families inherit the ordinary 16_F PQ current at leading order.",
+    "Anomalon-induced light-family admixtures do not introduce order-one non-universal PQ charges.",
+    "The standard two-Higgs SO(10) current matching and the repository tan(beta) convention apply.",
+    "Hadronic matching uses the ERT Eq. (6.3) numerical coefficients and uncertainties."
+  ],
+  "verdict": "The electron and nucleon coupling gap is closed at leading order: the v20 benchmark passes the published TRGB and supernova envelopes by large margins. The 37 GHz photon/local-DM benchmark remains open. This does not establish the cosmological abundance or prove the model."
+}
