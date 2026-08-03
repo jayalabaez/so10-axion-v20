@@ -24,8 +24,12 @@ jobs:
           python audit_v20_errors.py
       - name: v20 engine
         run: python so10_axion_v20_engine.py --output so10_axion_v20_verdict.json
-      - name: Unit tests
-        run: python -m unittest discover -v
+      - name: Precompute clean-checkout unit-test artifacts
+        run: python prepare_validation_artifacts_v20.py --pre-unit
+      - name: Unit tests + scoped attestation
+        run: |
+          python -m unittest discover -v
+          python -c "import json,os,pathlib,unittest; n=unittest.defaultTestLoader.discover('.').countTestCases(); payload={'passed':True,'tests_discovered':n,'commit_sha':os.getenv('GITHUB_SHA',''),'workflow_run_id':os.getenv('GITHUB_RUN_ID',''),'scope':'CURRENT_WORKFLOW_RUN'}; pathlib.Path('CURRENT_UNIT_TEST_ATTESTATION.json').write_text(json.dumps(payload,indent=2)+'\n',encoding='utf-8')"
       - name: Adversarial falsification suite
         run: python falsify_v20.py
       - name: Referee next-step packages
@@ -76,6 +80,8 @@ jobs:
           python strict_rg_audit_v20.py
           python close_open_gaps_v20.py
           python integrate_full_complex_orientation_v20.py
+      - name: Full scientific validity matrix
+        run: python theory_validation_matrix_v20.py --expect-conditional
       - name: Final honest verdict + ultimate approval gate
         run: |
           python theory_confirmation_verdict_v20.py
@@ -87,6 +93,12 @@ jobs:
         with:
           name: falsification-verdict
           path: |
+            V20_ERROR_AUDIT.json
+            VALIDATION_EXECUTION_V20_VERDICT.json
+            VALIDATION_EXECUTION_V20.md
+            CURRENT_UNIT_TEST_ATTESTATION.json
+            THEORY_VALIDATION_MATRIX_V20_VERDICT.json
+            THEORY_VALIDATION_MATRIX_V20.md
             FALSIFICATION_VERDICT.json
             v20_referee_next_verdict.json
             V20_REFEREE_NEXT_STEPS.md
