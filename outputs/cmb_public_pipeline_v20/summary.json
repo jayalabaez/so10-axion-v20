@@ -1,0 +1,152 @@
+{
+  "status": "CMB_PIPELINE_EXECUTED__LINE_SEARCH_IMPOSSIBLE_BY_DILUTION",
+  "flag": {
+    "provisional_continuum_practice": true,
+    "full_v20_line_detection_from_CMB": false,
+    "downloads_attempted": true
+  },
+  "dilution": {
+    "nu_GHz": 37.11,
+    "linewidth_Hz": 37110.0,
+    "rows": [
+      {
+        "instrument": "WMAP Ka",
+        "channel_bandwidth_Hz": 7000000000.0,
+        "axion_linewidth_Hz": 37110.0,
+        "dilution_factor": 188628.4020479655,
+        "can_resolve_v20_line": false,
+        "useful_for_v20_DM_line_search": false
+      },
+      {
+        "instrument": "Planck LFI 30",
+        "channel_bandwidth_Hz": 6000000000.0,
+        "axion_linewidth_Hz": 37110.0,
+        "dilution_factor": 161681.4874696847,
+        "can_resolve_v20_line": false,
+        "useful_for_v20_DM_line_search": false
+      },
+      {
+        "instrument": "Planck LFI 44",
+        "channel_bandwidth_Hz": 8800000000.0,
+        "axion_linewidth_Hz": 37110.0,
+        "dilution_factor": 237132.8482888709,
+        "can_resolve_v20_line": false,
+        "useful_for_v20_DM_line_search": false
+      },
+      {
+        "instrument": "QUIET Q-band typical continuum",
+        "channel_bandwidth_Hz": 8000000000.0,
+        "axion_linewidth_Hz": 37110.0,
+        "dilution_factor": 215575.3166262463,
+        "can_resolve_v20_line": false,
+        "useful_for_v20_DM_line_search": false
+      },
+      {
+        "instrument": "CBI 26-36 GHz continuum envelope",
+        "channel_bandwidth_Hz": 10000000000.0,
+        "axion_linewidth_Hz": 37110.0,
+        "dilution_factor": 269469.14578280784,
+        "can_resolve_v20_line": false,
+        "useful_for_v20_DM_line_search": false
+      }
+    ],
+    "verdict": "All listed CMB/continuum instruments dilute the ~37 kHz line by >1e5 and lack coherent B-field conversion geometry for halo DM."
+  },
+  "downloads": [
+    {
+      "id": "wmap_dr5_readme",
+      "mission": "WMAP",
+      "url": "https://lambda.gsfc.nasa.gov/product/map/dr5/map_bibliography.html",
+      "path": "data/public_cmb/wmap/map_bibliography.html",
+      "bytes": 50747,
+      "sha256": "e4bbd8d8372a430c9473e3a80add8ee5b41e5fa3502b3efbc5667425f367cf19",
+      "http_status": 200,
+      "content_type": "text/html",
+      "elapsed_s": 0.6780774593353271,
+      "ok": true,
+      "needed_for_line_search": false,
+      "purpose": "WMAP DR5 entry point / bibliography for Ka-band continuum products"
+    },
+    {
+      "id": "wmap_bandpass_overview",
+      "mission": "WMAP",
+      "url": "https://lambda.gsfc.nasa.gov/product/map/dr5/bandpasses_get.cfm",
+      "path": "data/public_cmb/wmap/bandpasses_get.html",
+      "ok": false,
+      "error": "HTTP Error 404: Not Found",
+      "elapsed_s": 0.6899299621582031,
+      "needed_for_line_search": false,
+      "purpose": "Bandpass landing page; documents GHz-scale channel widths"
+    },
+    {
+      "id": "planck_legacy_archive",
+      "mission": "Planck",
+      "url": "https://pla.esac.esa.int/",
+      "path": "data/public_cmb/planck/pla_landing.html",
+      "bytes": 3185,
+      "sha256": "25b399238d7269df25928aad625596e8ec39cd5376e9430b4e64ecc84ece8ab3",
+      "http_status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "elapsed_s": 0.5717785358428955,
+      "ok": true,
+      "needed_for_line_search": false,
+      "purpose": "Planck Legacy Archive landing page for LFI continuum maps"
+    },
+    {
+      "id": "quiet_project",
+      "mission": "QUIET",
+      "url": "https://quiet.uchicago.edu/",
+      "path": "data/public_cmb/quiet/quiet_landing.html",
+      "ok": false,
+      "error": "HTTP Error 403: Forbidden",
+      "elapsed_s": 0.37604737281799316,
+      "needed_for_line_search": false,
+      "purpose": "QUIET continuum polarimeter documentation (not a 37 kHz spectrometer)"
+    },
+    {
+      "id": "cbi_caltech",
+      "mission": "CBI",
+      "url": "https://www.astro.caltech.edu/~tjp/CBI/",
+      "path": "data/public_cmb/cbi/cbi_landing.html",
+      "bytes": 5794,
+      "sha256": "4dffd95a4ae5e20ab79ceeee9e123f4f2819cb8f89028aaed8fb94abed898ca9",
+      "http_status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "elapsed_s": 0.8752014636993408,
+      "ok": true,
+      "needed_for_line_search": false,
+      "purpose": "CBI archival project page (cm-wave interferometer continuum)"
+    },
+    {
+      "id": "nrao_archive",
+      "mission": "NRAO",
+      "url": "https://data.nrao.edu/",
+      "path": "data/public_cmb/nrao/data_landing.html",
+      "bytes": 6625,
+      "sha256": "e24d3e56f08ad4a0c27b3ce67ebdbbcbce6d31d57b0f01f0d3ca9c9217a238b9",
+      "http_status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "elapsed_s": 1.253187656402588,
+      "ok": true,
+      "needed_for_line_search": false,
+      "purpose": "Radio archive entry for Ka spectral metadata queries"
+    }
+  ],
+  "n_downloads_ok": 4,
+  "n_downloads_attempted": 6,
+  "data_dir": "data/public_cmb",
+  "scientific_conclusion": "All listed CMB/continuum instruments dilute the ~37 kHz line by >1e5 and lack coherent B-field conversion geometry for halo DM.",
+  "what_to_do_instead": [
+    "Use haloscope_37ghz_templates/ for MADMAX/ORGAN/ALPHA",
+    "Use gravitas_axion_v20_37ghz.py for NS-radio Doppler targets",
+    "Query NRAO/ATCA Ka spectral metadata toward GRAVITAS fields"
+  ],
+  "checks": {
+    "dilution_all_fail_line_resolution": true,
+    "no_false_cmb_detection_claim": true,
+    "at_least_one_download_or_offline_ok": true
+  },
+  "n_failed": 0,
+  "failures": [],
+  "verdict": "Downloaded/recorded 4/6 public CMB/radio landing products for reproducible continuum practice. Dilution analysis confirms CMB/QUIET/CBI continuum data cannot perform the v20 37 GHz DM line search."
+}

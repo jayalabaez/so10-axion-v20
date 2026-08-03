@@ -1,0 +1,451 @@
+{
+  "status": "PHYSICAL_PQ_EXTRACTED__PROVISIONAL_CF_AVAILABLE__FULL_UNIQUE_CF_STILL_OPEN",
+  "flag": {
+    "provisional_aligned_Cf": true,
+    "full_unique_Ce_Cp_Cn": false,
+    "tree_FCNC_absence_proved": false,
+    "uses_corrected_Takagi_PMNS": true
+  },
+  "n_checks": 5,
+  "n_failed": 0,
+  "failures": [],
+  "flavour_basis_source": {
+    "tan_beta": 40.573104969427675,
+    "v_r_GeV": 100000000000000.0,
+    "chi2": 0.020204598891095278,
+    "natural_scale_viable": true,
+    "note": "Mass bases from corrected Takagi/PMNS flavour witness. v_R=v_S remains non-viable; natural v_R~1e14 may be viable."
+  },
+  "scenarios": [
+    {
+      "scenario": "aligned_limit",
+      "flag": "PROVISIONAL_ALIGNED_BENCHMARK",
+      "full_unique_Ce_Cp_Cn": false,
+      "physical_current_classification": "PROVISIONAL_ALIGNED_LIMIT",
+      "light_pq_charges": {
+        "eigenvalues": [
+          0.9999999999999996,
+          1.0,
+          1.0
+        ],
+        "mean_charge": 0.9999999999999999,
+        "spread": 4.440892098500626e-16,
+        "off_diagonal_norm": 2.85319922212756e-16,
+        "eigenvectors_abs": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.9144608667897017,
+            0.4046743420458321,
+            0.0
+          ],
+          [
+            0.4046743420458321,
+            0.9144608667897017,
+            0.0
+          ]
+        ]
+      },
+      "lepton_mass_basis": {
+        "diagonal_charges": [
+          1.0000000000000004,
+          0.9999999999999991,
+          1.0000000000000004
+        ],
+        "off_diagonal_norm": 1.3705254196115545e-15,
+        "fcnc_possible": false,
+        "rotated_real_part": [
+          [
+            1.0000000000000004,
+            -1.7119831293089393e-16,
+            -7.862389102812741e-17
+          ],
+          [
+            -1.8642374969426317e-16,
+            0.9999999999999991,
+            1.959585071192712e-16
+          ],
+          [
+            -7.966345667848113e-17,
+            2.0168422208797897e-16,
+            1.0000000000000004
+          ]
+        ]
+      },
+      "quark_mass_basis": {
+        "diagonal_charges": [
+          1.0,
+          0.9999999999999996,
+          1.0
+        ],
+        "off_diagonal_norm": 2.85319922212756e-16,
+        "fcnc_possible": false,
+        "rotated_real_part": [
+          [
+            1.0,
+            1.1959429488307495e-22,
+            1.19594294883075e-22
+          ],
+          [
+            1.1959429488307497e-22,
+            0.9999999999999996,
+            -2.017516518041871e-16
+          ],
+          [
+            1.19594294883075e-22,
+            -2.017516518041871e-16,
+            1.0
+          ]
+        ]
+      },
+      "coefficients": {
+        "tan_beta": 40.573104969427675,
+        "q_up": 1.0,
+        "q_down": 1.0,
+        "q_e": 1.0,
+        "C_u_tree": 3.57117267182084e-05,
+        "C_d_tree": 0.05878781768491668,
+        "C_e": 0.05878781768491668,
+        "C_p_central": -0.4956594035405607,
+        "C_n_central": 0.02895577102635136,
+        "g_ae": 8.088382182785146e-16,
+        "g_ap_central": -1.2521791394960983e-11,
+        "g_an_central": 7.325149216683618e-13,
+        "SN1987A_quadratic_lhs_central": 9.132031505850881e-23,
+        "TRGB_safe_central": true,
+        "SN1987A_safe_central": true
+      },
+      "stellar_bounds_central_pass": true
+    },
+    {
+      "scenario": "manuscript_minimal",
+      "flag": "PROVISIONAL_ALIGNED_BENCHMARK",
+      "full_unique_Ce_Cp_Cn": false,
+      "physical_current_classification": "PROVISIONAL_ALIGNED_LIMIT",
+      "light_pq_charges": {
+        "eigenvalues": [
+          0.9999999999808655,
+          1.0000000000000002,
+          1.0000000000000002
+        ],
+        "mean_charge": 0.999999999993622,
+        "spread": 1.9134693829414573e-11,
+        "off_diagonal_norm": 1.562333099792563e-11,
+        "eigenvectors_abs": [
+          [
+            0.5773618148152916,
+            0.8158634762056323,
+            0.03193936422119768
+          ],
+          [
+            0.5773342926565912,
+            0.38027569880318857,
+            0.7225479274224375
+          ],
+          [
+            0.5773546997434992,
+            0.43561127291819246,
+            0.6905826305306888
+          ]
+        ]
+      },
+      "lepton_mass_basis": {
+        "diagonal_charges": [
+          0.9999999999887109,
+          0.9999999999999555,
+          0.9999999999921998
+        ],
+        "off_diagonal_norm": 1.333496825418865e-11,
+        "fcnc_possible": false,
+        "rotated_real_part": [
+          [
+            0.9999999999887109,
+            -4.297487243793416e-13,
+            -1.1377891722535647e-12
+          ],
+          [
+            -4.2974928660871613e-13,
+            0.9999999999999555,
+            4.189180897186245e-13
+          ],
+          [
+            -1.1377901668377233e-12,
+            4.189223281072772e-13,
+            0.9999999999921998
+          ]
+        ]
+      },
+      "quark_mass_basis": {
+        "diagonal_charges": [
+          0.9999999999936218,
+          0.9999999999936224,
+          0.999999999993622
+        ],
+        "off_diagonal_norm": 1.562333099792563e-11,
+        "fcnc_possible": false,
+        "rotated_real_part": [
+          [
+            0.9999999999936218,
+            6.378236323850638e-12,
+            6.3783413673696955e-12
+          ],
+          [
+            6.3782363238506386e-12,
+            0.9999999999936224,
+            -6.378016818242539e-12
+          ],
+          [
+            6.3783413673696955e-12,
+            -6.378016818242539e-12,
+            0.999999999993622
+          ]
+        ]
+      },
+      "coefficients": {
+        "tan_beta": 40.573104969427675,
+        "q_up": 1.0,
+        "q_down": 1.0,
+        "q_e": 1.0,
+        "C_u_tree": 3.57117267182084e-05,
+        "C_d_tree": 0.05878781768491668,
+        "C_e": 0.05878781768491668,
+        "C_p_central": -0.4956594035405607,
+        "C_n_central": 0.02895577102635136,
+        "g_ae": 8.088382182785146e-16,
+        "g_ap_central": -1.2521791394960983e-11,
+        "g_an_central": 7.325149216683618e-13,
+        "SN1987A_quadratic_lhs_central": 9.132031505850881e-23,
+        "TRGB_safe_central": true,
+        "SN1987A_safe_central": true
+      },
+      "stellar_bounds_central_pass": true
+    },
+    {
+      "scenario": "audit_extended",
+      "flag": "PROVISIONAL_ALIGNED_BENCHMARK",
+      "full_unique_Ce_Cp_Cn": false,
+      "physical_current_classification": "PROVISIONAL_ALIGNED_LIMIT",
+      "light_pq_charges": {
+        "eigenvalues": [
+          0.9999999999808655,
+          1.0000000000000004,
+          1.0000000000000004
+        ],
+        "mean_charge": 0.9999999999936221,
+        "spread": 1.9134915874019498e-11,
+        "off_diagonal_norm": 1.5623435531868044e-11,
+        "eigenvectors_abs": [
+          [
+            0.5773570180746149,
+            0.8164918087035465,
+            0.0
+          ],
+          [
+            0.577345821656076,
+            0.4082523038638569,
+            0.7071080954183198
+          ],
+          [
+            0.5773479677770239,
+            0.40825382142714134,
+            0.7071054669523327
+          ]
+        ]
+      },
+      "lepton_mass_basis": {
+        "diagonal_charges": [
+          0.9999999999863359,
+          0.9999999999994541,
+          0.9999999999950767
+        ],
+        "off_diagonal_norm": 1.2444467595640456e-11,
+        "fcnc_possible": false,
+        "rotated_real_part": [
+          [
+            0.9999999999863359,
+            -1.6606360408180555e-12,
+            9.940061242655647e-13
+          ],
+          [
+            -1.6606830358523308e-12,
+            0.9999999999994541,
+            -1.170543254476174e-12
+          ],
+          [
+            9.940056183248007e-13,
+            -1.1705634208397498e-12,
+            0.9999999999950767
+          ]
+        ]
+      },
+      "quark_mass_basis": {
+        "diagonal_charges": [
+          0.999999999993622,
+          0.9999999999936224,
+          0.9999999999936222
+        ],
+        "off_diagonal_norm": 1.5623435531868044e-11,
+        "fcnc_possible": false,
+        "rotated_real_part": [
+          [
+            0.999999999993622,
+            6.37833289198409e-12,
+            -6.3783566016453006e-12
+          ],
+          [
+            6.37833289198409e-12,
+            0.9999999999936224,
+            6.378033042443424e-12
+          ],
+          [
+            -6.3783566016453006e-12,
+            6.378033042443425e-12,
+            0.9999999999936222
+          ]
+        ]
+      },
+      "coefficients": {
+        "tan_beta": 40.573104969427675,
+        "q_up": 1.0,
+        "q_down": 1.0,
+        "q_e": 1.0,
+        "C_u_tree": 3.57117267182084e-05,
+        "C_d_tree": 0.05878781768491668,
+        "C_e": 0.05878781768491668,
+        "C_p_central": -0.4956594035405607,
+        "C_n_central": 0.02895577102635136,
+        "g_ae": 8.088382182785146e-16,
+        "g_ap_central": -1.2521791394960983e-11,
+        "g_an_central": 7.325149216683618e-13,
+        "SN1987A_quadratic_lhs_central": 9.132031505850881e-23,
+        "TRGB_safe_central": true,
+        "SN1987A_safe_central": true
+      },
+      "stellar_bounds_central_pass": true
+    },
+    {
+      "scenario": "light_Q_hierarchy",
+      "flag": "FULL_MATCHING_OPEN_FCNC_OR_MISALIGNMENT",
+      "full_unique_Ce_Cp_Cn": false,
+      "physical_current_classification": "FULL_PORTAL_DEPENDENT_CURRENT",
+      "light_pq_charges": {
+        "eigenvalues": [
+          -2.308410009476667,
+          0.9999999999999991,
+          0.9999999999999998
+        ],
+        "mean_charge": -0.10280333649222266,
+        "spread": 3.308410009476667,
+        "off_diagonal_norm": 2.7013054610413296,
+        "eigenvectors_abs": [
+          [
+            0.5773498088706946,
+            0.7275448983803791,
+            0.37060169864378095
+          ],
+          [
+            0.5773498088706948,
+            0.6847223206914503,
+            0.44477246064014225
+          ],
+          [
+            0.5773511898263868,
+            0.042822475262392856,
+            0.8153722090054681
+          ]
+        ]
+      },
+      "lepton_mass_basis": {
+        "diagonal_charges": [
+          -1.3626961456884064,
+          0.9056561051729054,
+          0.1486300310388328
+        ],
+        "off_diagonal_norm": 2.1516301074800164,
+        "fcnc_possible": true,
+        "rotated_real_part": [
+          [
+            -1.3626961456884064,
+            -0.28714022795261185,
+            0.1718755060655829
+          ],
+          [
+            -0.2871402279526118,
+            0.9056561051729054,
+            -0.20242453215633535
+          ],
+          [
+            0.1718755060655829,
+            -0.2024245321563353,
+            0.1486300310388328
+          ]
+        ]
+      },
+      "quark_mass_basis": {
+        "diagonal_charges": [
+          -0.10280157797203994,
+          -0.1028015779720391,
+          -0.10280685353258844
+        ],
+        "off_diagonal_norm": 2.7013054610413296,
+        "fcnc_possible": true,
+        "rotated_real_part": [
+          [
+            -0.10280157797203994,
+            1.1028015779720388,
+            -1.1028042157491598
+          ],
+          [
+            1.1028015779720388,
+            -0.1028015779720391,
+            1.1028042157491589
+          ],
+          [
+            -1.1028042157491598,
+            1.1028042157491589,
+            -0.10280685353258844
+          ]
+        ]
+      },
+      "coefficients": {
+        "tan_beta": 40.573104969427675,
+        "q_up": -0.1028033364922225,
+        "q_down": -0.1028033364922225,
+        "q_e": -0.10280333649222273,
+        "C_u_tree": -3.671284658530271e-06,
+        "C_d_tree": -0.006043583803105918,
+        "C_e": -0.0060435838031059315,
+        "C_p_central": -0.46736212770362995,
+        "C_n_central": -0.025032816602058194,
+        "g_ae": -8.315126752145603e-17,
+        "g_ap_central": -1.1806920290842566e-11,
+        "g_an_central": -6.332731280305923e-13,
+        "SN1987A_quadratic_lhs_central": 8.939990140765925e-23,
+        "TRGB_safe_central": true,
+        "SN1987A_safe_central": true
+      },
+      "stellar_bounds_central_pass": true
+    }
+  ],
+  "provisional_aligned_display": {
+    "tan_beta": 40.573104969427675,
+    "q_up": 1.0,
+    "q_down": 1.0,
+    "q_e": 1.0,
+    "C_u_tree": 3.57117267182084e-05,
+    "C_d_tree": 0.05878781768491668,
+    "C_e": 0.05878781768491668,
+    "C_p_central": -0.4956594035405607,
+    "C_n_central": 0.02895577102635136,
+    "g_ae": 8.088382182785146e-16,
+    "g_ap_central": -1.2521791394960983e-11,
+    "g_an_central": 7.325149216683618e-13,
+    "SN1987A_quadratic_lhs_central": 9.132031505850881e-23,
+    "TRGB_safe_central": true,
+    "SN1987A_safe_central": true
+  },
+  "verdict": "Physical light PQ charges are extracted from representation-aware A,B,C,D. Aligned-limit C_e,C_p,C_n are provisional benchmarks. Exact unique full-v20 values remain open because portal Yukawas are not UV-fixed and FCNCs are possible under misalignment."
+}

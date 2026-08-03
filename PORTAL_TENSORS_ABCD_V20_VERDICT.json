@@ -1,0 +1,1232 @@
+{
+  "status": "PORTAL_TENSORS_CONSTRUCTED__PHYSICAL_CURRENT_PORTAL_DEPENDENT__UNIQUE_CF_STILL_OPEN",
+  "flag": {
+    "provisional_aligned_benchmark": true,
+    "full_unique_Ce_Cp_Cn": false,
+    "representation_aware_ABCD": true,
+    "yukawa_magnitudes_unique": false
+  },
+  "n_checks": 7,
+  "n_failed": 0,
+  "failures": [],
+  "operator_catalogue": {
+    "basis": {
+      "U_columns": [
+        "F1",
+        "F2",
+        "F3",
+        "P",
+        "R"
+      ],
+      "A_rows": [
+        "Pbar",
+        "Rbar"
+      ],
+      "B_row": "Qbar",
+      "C_column": "Q",
+      "D": "Q-Qbar Phi mass"
+    },
+    "manuscript_minimal": [
+      {
+        "operator": "Phid P Pbar",
+        "fills": "A[Pbar,P]",
+        "vev": "v_Phi/sqrt(2)",
+        "coupling": "y_P"
+      },
+      {
+        "operator": "Phi R Rbar",
+        "fills": "A[Rbar,R]",
+        "vev": "v_Phi/sqrt(2)",
+        "coupling": "y_R"
+      },
+      {
+        "operator": "Phid Q Qbar",
+        "fills": "D",
+        "vev": "v_Phi/sqrt(2)",
+        "coupling": "y_Q"
+      },
+      {
+        "operator": "Qbar Fi Sd",
+        "fills": "B[Qbar,Fi]",
+        "vev": "v_S/sqrt(2)",
+        "coupling": "lam_Q_F[i]"
+      }
+    ],
+    "audit_extras_included": [
+      {
+        "operator": "Qbar R Sd",
+        "fills": "B[Qbar,R]",
+        "vev": "v_S/sqrt(2)",
+        "coupling": "lam_Q_R"
+      },
+      {
+        "operator": "S Q Rbar",
+        "fills": "C[Rbar,Q]",
+        "vev": "v_S/sqrt(2)",
+        "coupling": "lam_S_Q_Rbar"
+      },
+      {
+        "operator": "P R H",
+        "fills": "optional EW heavy mixing (not A,B,C,D high-scale)",
+        "vev": "v_EW",
+        "coupling": "lam_P_R_H"
+      }
+    ],
+    "not_claimed_unique": "Numerical Yukawas are free UV parameters. Defaults are O(1) benchmarks used to exercise the matching pipeline."
+  },
+  "manuscript_minimal_block": {
+    "A": [
+      [
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        },
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        },
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        },
+        {
+          "re": 7.0710678118654744e+16,
+          "im": 0.0,
+          "abs": 7.0710678118654744e+16
+        },
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        }
+      ],
+      [
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        },
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        },
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        },
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        },
+        {
+          "re": 7.0710678118654744e+16,
+          "im": 0.0,
+          "abs": 7.0710678118654744e+16
+        }
+      ]
+    ],
+    "B": [
+      [
+        {
+          "re": 89291393718.57178,
+          "im": 0.0,
+          "abs": 89291393718.57178
+        },
+        {
+          "re": 89291393718.57178,
+          "im": 0.0,
+          "abs": 89291393718.57178
+        },
+        {
+          "re": 89291393718.57178,
+          "im": 0.0,
+          "abs": 89291393718.57178
+        },
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        },
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        }
+      ]
+    ],
+    "C": [
+      [
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        }
+      ],
+      [
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        }
+      ]
+    ],
+    "D": {
+      "re": 7.0710678118654744e+16,
+      "im": 0.0,
+      "abs": 7.0710678118654744e+16
+    },
+    "couplings": {
+      "y_P": {
+        "re": 1.0,
+        "im": 0.0,
+        "abs": 1.0
+      },
+      "y_R": {
+        "re": 1.0,
+        "im": 0.0,
+        "abs": 1.0
+      },
+      "y_Q": {
+        "re": 1.0,
+        "im": 0.0,
+        "abs": 1.0
+      },
+      "lam_Q_F": [
+        {
+          "re": 0.2,
+          "im": 0.0,
+          "abs": 0.2
+        },
+        {
+          "re": 0.2,
+          "im": 0.0,
+          "abs": 0.2
+        },
+        {
+          "re": 0.2,
+          "im": 0.0,
+          "abs": 0.2
+        }
+      ],
+      "lam_Q_R": 0.0,
+      "lam_S_Q_Rbar": 0.0,
+      "lam_P_R_H": 0.0,
+      "y_F_Pbar": [
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        },
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        },
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        }
+      ],
+      "y_F_Rbar": [
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        },
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        },
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        }
+      ]
+    },
+    "vevs": {
+      "v_Phi_GeV": 1e+17,
+      "v_S_GeV": 631385500000.0,
+      "v_EW_GeV": 174.104
+    },
+    "occupied_entries": {
+      "A_nonzero": 2,
+      "B_nonzero": 3,
+      "C_nonzero": 0,
+      "D_nonzero": true
+    },
+    "U_basis": [
+      "F1",
+      "F2",
+      "F3",
+      "P",
+      "R"
+    ],
+    "ew_heavy_mixing_lam_PR_H": {
+      "re": 0.0,
+      "im": 0.0,
+      "abs": 0.0
+    },
+    "physical_current": {
+      "Q_projected": [
+        [
+          {
+            "re": 0.9999999999936218,
+            "im": 0.0,
+            "abs": 0.9999999999936218
+          },
+          {
+            "re": 6.378236323850638e-12,
+            "im": 0.0,
+            "abs": 6.378236323850638e-12
+          },
+          {
+            "re": 6.3783413673696955e-12,
+            "im": 0.0,
+            "abs": 6.3783413673696955e-12
+          }
+        ],
+        [
+          {
+            "re": 6.3782363238506386e-12,
+            "im": 0.0,
+            "abs": 6.3782363238506386e-12
+          },
+          {
+            "re": 0.9999999999936224,
+            "im": 0.0,
+            "abs": 0.9999999999936224
+          },
+          {
+            "re": -6.378016818242539e-12,
+            "im": 0.0,
+            "abs": 6.378016818242539e-12
+          }
+        ],
+        [
+          {
+            "re": 6.3783413673696955e-12,
+            "im": 0.0,
+            "abs": 6.3783413673696955e-12
+          },
+          {
+            "re": -6.378016818242539e-12,
+            "im": 0.0,
+            "abs": 6.378016818242539e-12
+          },
+          {
+            "re": 0.999999999993622,
+            "im": 0.0,
+            "abs": 0.999999999993622
+          }
+        ]
+      ],
+      "Q_projected_eigenvalues": [
+        0.9999999999808655,
+        1.0000000000000002,
+        1.0000000000000002
+      ],
+      "berry_connection_eigenvalues": [
+        -1.860167346280606e-27,
+        1.0523737793342885e-27,
+        1.913508718120048e-11
+      ],
+      "moving_identity_error": 1.1431956196019308e-15,
+      "projected_shift_norm": 1.9134331569132727e-11,
+      "projected_off_diagonal_norm": 1.562333099792563e-11,
+      "portal_weight_trace": 4.7837717953001195e-12,
+      "is_approximately_aligned": true,
+      "classification": "PROVISIONAL_ALIGNED_LIMIT"
+    }
+  },
+  "audit_extended_block": {
+    "A": [
+      [
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        },
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        },
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        },
+        {
+          "re": 7.0710678118654744e+16,
+          "im": 0.0,
+          "abs": 7.0710678118654744e+16
+        },
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        }
+      ],
+      [
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        },
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        },
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        },
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        },
+        {
+          "re": 7.0710678118654744e+16,
+          "im": 0.0,
+          "abs": 7.0710678118654744e+16
+        }
+      ]
+    ],
+    "B": [
+      [
+        {
+          "re": 89291393718.57178,
+          "im": 0.0,
+          "abs": 89291393718.57178
+        },
+        {
+          "re": 89291393718.57178,
+          "im": 0.0,
+          "abs": 89291393718.57178
+        },
+        {
+          "re": 89291393718.57178,
+          "im": 0.0,
+          "abs": 89291393718.57178
+        },
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        },
+        {
+          "re": 66968545288.92883,
+          "im": -17858278743.714355,
+          "abs": 69308759747.98216
+        }
+      ]
+    ],
+    "C": [
+      [
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        }
+      ],
+      [
+        {
+          "re": 44645696859.28589,
+          "im": 0.0,
+          "abs": 44645696859.28589
+        }
+      ]
+    ],
+    "D": {
+      "re": 7.0710678118654744e+16,
+      "im": 0.0,
+      "abs": 7.0710678118654744e+16
+    },
+    "couplings": {
+      "y_P": {
+        "re": 1.0,
+        "im": 0.0,
+        "abs": 1.0
+      },
+      "y_R": {
+        "re": 1.0,
+        "im": 0.0,
+        "abs": 1.0
+      },
+      "y_Q": {
+        "re": 1.0,
+        "im": 0.0,
+        "abs": 1.0
+      },
+      "lam_Q_F": [
+        {
+          "re": 0.2,
+          "im": 0.0,
+          "abs": 0.2
+        },
+        {
+          "re": 0.2,
+          "im": 0.0,
+          "abs": 0.2
+        },
+        {
+          "re": 0.2,
+          "im": 0.0,
+          "abs": 0.2
+        }
+      ],
+      "lam_Q_R": {
+        "re": 0.15,
+        "im": -0.04,
+        "abs": 0.15524174696260024
+      },
+      "lam_S_Q_Rbar": {
+        "re": 0.1,
+        "im": 0.0,
+        "abs": 0.1
+      },
+      "lam_P_R_H": {
+        "re": 0.0,
+        "im": 0.0,
+        "abs": 0.0
+      },
+      "y_F_Pbar": [
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        },
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        },
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        }
+      ],
+      "y_F_Rbar": [
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        },
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        },
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        }
+      ]
+    },
+    "vevs": {
+      "v_Phi_GeV": 1e+17,
+      "v_S_GeV": 631385500000.0,
+      "v_EW_GeV": 174.104
+    },
+    "occupied_entries": {
+      "A_nonzero": 2,
+      "B_nonzero": 4,
+      "C_nonzero": 1,
+      "D_nonzero": true
+    },
+    "U_basis": [
+      "F1",
+      "F2",
+      "F3",
+      "P",
+      "R"
+    ],
+    "ew_heavy_mixing_lam_PR_H": {
+      "re": 0.0,
+      "im": 0.0,
+      "abs": 0.0
+    },
+    "physical_current": {
+      "Q_projected": [
+        [
+          {
+            "re": 0.999999999993622,
+            "im": 1.1272216824651532e-41,
+            "abs": 0.999999999993622
+          },
+          {
+            "re": 6.37833289198409e-12,
+            "im": -9.232753974987189e-40,
+            "abs": 6.37833289198409e-12
+          },
+          {
+            "re": -6.3783566016453006e-12,
+            "im": -1.0170048241752853e-24,
+            "abs": 6.3783566016453006e-12
+          }
+        ],
+        [
+          {
+            "re": 6.37833289198409e-12,
+            "im": 1.0054743428571658e-39,
+            "abs": 6.37833289198409e-12
+          },
+          {
+            "re": 0.9999999999936224,
+            "im": -9.347116218309844e-41,
+            "abs": 0.9999999999936224
+          },
+          {
+            "re": 6.378033042443424e-12,
+            "im": 1.016809011711864e-24,
+            "abs": 6.378033042443424e-12
+          }
+        ],
+        [
+          {
+            "re": -6.3783566016453006e-12,
+            "im": 1.0170048241752853e-24,
+            "abs": 6.3783566016453006e-12
+          },
+          {
+            "re": 6.378033042443425e-12,
+            "im": -1.016809011711864e-24,
+            "abs": 6.378033042443425e-12
+          },
+          {
+            "re": 0.9999999999936222,
+            "im": 7.756599374714898e-30,
+            "abs": 0.9999999999936222
+          }
+        ]
+      ],
+      "Q_projected_eigenvalues": [
+        0.9999999999808655,
+        1.0000000000000004,
+        1.0000000000000004
+      ],
+      "berry_connection_eigenvalues": [
+        -4.663798333257315e-28,
+        4.663798333257316e-28,
+        1.9135087181223364e-11
+      ],
+      "moving_identity_error": 1.2839636891297257e-15,
+      "projected_shift_norm": 1.9134268894709358e-11,
+      "projected_off_diagonal_norm": 1.5623435531868044e-11,
+      "portal_weight_trace": 4.783771795305841e-12,
+      "is_approximately_aligned": true,
+      "classification": "PROVISIONAL_ALIGNED_LIMIT"
+    }
+  },
+  "aligned_limit_block": {
+    "A": [
+      [
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        },
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        },
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        },
+        {
+          "re": 7.0710678118654744e+16,
+          "im": 0.0,
+          "abs": 7.0710678118654744e+16
+        },
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        }
+      ],
+      [
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        },
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        },
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        },
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        },
+        {
+          "re": 7.0710678118654744e+16,
+          "im": 0.0,
+          "abs": 7.0710678118654744e+16
+        }
+      ]
+    ],
+    "B": [
+      [
+        {
+          "re": 446456.9685928589,
+          "im": 0.0,
+          "abs": 446456.9685928589
+        },
+        {
+          "re": 446456.9685928589,
+          "im": 0.0,
+          "abs": 446456.9685928589
+        },
+        {
+          "re": 446456.9685928589,
+          "im": 0.0,
+          "abs": 446456.9685928589
+        },
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        },
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        }
+      ]
+    ],
+    "C": [
+      [
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        }
+      ],
+      [
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        }
+      ]
+    ],
+    "D": {
+      "re": 7.0710678118654744e+16,
+      "im": 0.0,
+      "abs": 7.0710678118654744e+16
+    },
+    "couplings": {
+      "y_P": {
+        "re": 1.0,
+        "im": 0.0,
+        "abs": 1.0
+      },
+      "y_R": {
+        "re": 1.0,
+        "im": 0.0,
+        "abs": 1.0
+      },
+      "y_Q": {
+        "re": 1.0,
+        "im": 0.0,
+        "abs": 1.0
+      },
+      "lam_Q_F": [
+        {
+          "re": 1e-06,
+          "im": 0.0,
+          "abs": 1e-06
+        },
+        {
+          "re": 1e-06,
+          "im": 0.0,
+          "abs": 1e-06
+        },
+        {
+          "re": 1e-06,
+          "im": 0.0,
+          "abs": 1e-06
+        }
+      ],
+      "lam_Q_R": 0.0,
+      "lam_S_Q_Rbar": 0.0,
+      "lam_P_R_H": {
+        "re": 0.0,
+        "im": 0.0,
+        "abs": 0.0
+      },
+      "y_F_Pbar": [
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        },
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        },
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        }
+      ],
+      "y_F_Rbar": [
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        },
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        },
+        {
+          "re": 0.0,
+          "im": 0.0,
+          "abs": 0.0
+        }
+      ]
+    },
+    "vevs": {
+      "v_Phi_GeV": 1e+17,
+      "v_S_GeV": 631385500000.0,
+      "v_EW_GeV": 174.104
+    },
+    "occupied_entries": {
+      "A_nonzero": 2,
+      "B_nonzero": 3,
+      "C_nonzero": 0,
+      "D_nonzero": true
+    },
+    "U_basis": [
+      "F1",
+      "F2",
+      "F3",
+      "P",
+      "R"
+    ],
+    "ew_heavy_mixing_lam_PR_H": {
+      "re": 0.0,
+      "im": 0.0,
+      "abs": 0.0
+    },
+    "physical_current": {
+      "Q_projected": [
+        [
+          {
+            "re": 1.0,
+            "im": 0.0,
+            "abs": 1.0
+          },
+          {
+            "re": 1.1959429488307495e-22,
+            "im": 0.0,
+            "abs": 1.1959429488307495e-22
+          },
+          {
+            "re": 1.19594294883075e-22,
+            "im": 0.0,
+            "abs": 1.19594294883075e-22
+          }
+        ],
+        [
+          {
+            "re": 1.1959429488307497e-22,
+            "im": 0.0,
+            "abs": 1.1959429488307497e-22
+          },
+          {
+            "re": 0.9999999999999996,
+            "im": 0.0,
+            "abs": 0.9999999999999996
+          },
+          {
+            "re": -2.017516518041871e-16,
+            "im": 0.0,
+            "abs": 2.017516518041871e-16
+          }
+        ],
+        [
+          {
+            "re": 1.19594294883075e-22,
+            "im": 0.0,
+            "abs": 1.19594294883075e-22
+          },
+          {
+            "re": -2.017516518041871e-16,
+            "im": 0.0,
+            "abs": 2.017516518041871e-16
+          },
+          {
+            "re": 1.0,
+            "im": 0.0,
+            "abs": 1.0
+          }
+        ]
+      ],
+      "Q_projected_eigenvalues": [
+        0.9999999999999996,
+        1.0,
+        1.0
+      ],
+      "berry_connection_eigenvalues": [
+        1.4623828076838575e-38,
+        5.590583297249867e-38,
+        4.783771795322999e-22
+      ],
+      "moving_identity_error": 5.278470949358641e-16,
+      "projected_shift_norm": 5.278472168314863e-16,
+      "projected_off_diagonal_norm": 2.85319922212756e-16,
+      "portal_weight_trace": 1.1959429488307497e-22,
+      "is_approximately_aligned": true,
+      "classification": "PROVISIONAL_ALIGNED_LIMIT"
+    }
+  },
+  "generation_universal_mix_scan": {
+    "rows": [
+      {
+        "y_Q_abs": 1.0,
+        "lam_Q_F_abs": 1e-08,
+        "classification": "PROVISIONAL_ALIGNED_LIMIT",
+        "projected_shift_norm": 5.278471254188874e-16,
+        "projected_off_diagonal_norm": 2.8531975309769507e-16,
+        "Q_projected_eigenvalues": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "portal_weight_trace": 1.1959429488307498e-26
+      },
+      {
+        "y_Q_abs": 1.0,
+        "lam_Q_F_abs": 1e-06,
+        "classification": "PROVISIONAL_ALIGNED_LIMIT",
+        "projected_shift_norm": 5.278472168314863e-16,
+        "projected_off_diagonal_norm": 2.85319922212756e-16,
+        "Q_projected_eigenvalues": [
+          0.9999999999999996,
+          1.0,
+          1.0
+        ],
+        "portal_weight_trace": 1.1959429488307497e-22
+      },
+      {
+        "y_Q_abs": 1.0,
+        "lam_Q_F_abs": 0.0001,
+        "classification": "PROVISIONAL_ALIGNED_LIMIT",
+        "projected_shift_norm": 5.287686665924914e-16,
+        "projected_off_diagonal_norm": 2.8702103836608983e-16,
+        "Q_projected_eigenvalues": [
+          0.9999999999999996,
+          1.0,
+          1.0
+        ],
+        "portal_weight_trace": 1.1959429488307497e-18
+      },
+      {
+        "y_Q_abs": 1.0,
+        "lam_Q_F_abs": 0.01,
+        "classification": "PROVISIONAL_ALIGNED_LIMIT",
+        "projected_shift_norm": 4.8250517203559136e-14,
+        "projected_off_diagonal_norm": 3.9146488729928424e-14,
+        "Q_projected_eigenvalues": [
+          0.9999999999999516,
+          0.9999999999999993,
+          1.0000000000000002
+        ],
+        "portal_weight_trace": 1.1959429488307356e-14
+      },
+      {
+        "y_Q_abs": 1.0,
+        "lam_Q_F_abs": 0.1,
+        "classification": "PROVISIONAL_ALIGNED_LIMIT",
+        "projected_shift_norm": 4.784359696942134e-12,
+        "projected_off_diagonal_norm": 3.906398876009498e-12,
+        "Q_projected_eigenvalues": [
+          0.9999999999952156,
+          0.9999999999999996,
+          1.0000000000000002
+        ],
+        "portal_weight_trace": 1.1959429488293764e-12
+      },
+      {
+        "y_Q_abs": 1.0,
+        "lam_Q_F_abs": 1.0,
+        "classification": "PROVISIONAL_ALIGNED_LIMIT",
+        "projected_shift_norm": 4.783776007645168e-10,
+        "projected_off_diagonal_norm": 3.9059378279471994e-10,
+        "Q_projected_eigenvalues": [
+          0.9999999995216224,
+          0.9999999999999998,
+          1.0000000000000007
+        ],
+        "portal_weight_trace": 1.195942948693443e-10
+      },
+      {
+        "y_Q_abs": 0.01,
+        "lam_Q_F_abs": 1e-08,
+        "classification": "PROVISIONAL_ALIGNED_LIMIT",
+        "projected_shift_norm": 5.278472168314863e-16,
+        "projected_off_diagonal_norm": 2.85319922212756e-16,
+        "Q_projected_eigenvalues": [
+          0.9999999999999996,
+          1.0,
+          1.0
+        ],
+        "portal_weight_trace": 1.1959429488307497e-22
+      },
+      {
+        "y_Q_abs": 0.01,
+        "lam_Q_F_abs": 1e-06,
+        "classification": "PROVISIONAL_ALIGNED_LIMIT",
+        "projected_shift_norm": 5.287686665924914e-16,
+        "projected_off_diagonal_norm": 2.8702103836608983e-16,
+        "Q_projected_eigenvalues": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "portal_weight_trace": 1.1959429488307494e-18
+      },
+      {
+        "y_Q_abs": 0.01,
+        "lam_Q_F_abs": 0.0001,
+        "classification": "PROVISIONAL_ALIGNED_LIMIT",
+        "projected_shift_norm": 4.7156257010571995e-14,
+        "projected_off_diagonal_norm": 3.88033663497933e-14,
+        "Q_projected_eigenvalues": [
+          0.9999999999999526,
+          0.9999999999999999,
+          1.0000000000000007
+        ],
+        "portal_weight_trace": 1.1959429488307367e-14
+      },
+      {
+        "y_Q_abs": 0.01,
+        "lam_Q_F_abs": 0.01,
+        "classification": "PROVISIONAL_ALIGNED_LIMIT",
+        "projected_shift_norm": 4.783770881265885e-10,
+        "projected_off_diagonal_norm": 3.905933362425588e-10,
+        "Q_projected_eigenvalues": [
+          0.999999999521623,
+          0.9999999999999999,
+          1.0000000000000004
+        ],
+        "portal_weight_trace": 1.1959429486877793e-10
+      },
+      {
+        "y_Q_abs": 0.01,
+        "lam_Q_F_abs": 0.1,
+        "classification": "PROVISIONAL_ALIGNED_LIMIT",
+        "projected_shift_norm": 4.783771675432344e-08,
+        "projected_off_diagonal_norm": 3.905933233690708e-08,
+        "Q_projected_eigenvalues": [
+          0.9999999521622831,
+          0.9999999999999999,
+          1.0000000000000004
+        ],
+        "portal_weight_trace": 1.1959429345336766e-08
+      },
+      {
+        "y_Q_abs": 0.01,
+        "lam_Q_F_abs": 1.0,
+        "classification": "PROVISIONAL_ALIGNED_LIMIT",
+        "projected_shift_norm": 4.783766076520938e-06,
+        "projected_off_diagonal_norm": 3.905928645450743e-06,
+        "Q_projected_eigenvalues": [
+          0.9999952162339234,
+          0.9999999999999997,
+          1.0000000000000004
+        ],
+        "portal_weight_trace": 1.1959415191250337e-06
+      },
+      {
+        "y_Q_abs": 0.0001,
+        "lam_Q_F_abs": 1e-08,
+        "classification": "PROVISIONAL_ALIGNED_LIMIT",
+        "projected_shift_norm": 5.287686665924914e-16,
+        "projected_off_diagonal_norm": 2.8702103836608983e-16,
+        "Q_projected_eigenvalues": [
+          0.9999999999999996,
+          1.0,
+          1.0
+        ],
+        "portal_weight_trace": 1.1959429488307497e-18
+      },
+      {
+        "y_Q_abs": 0.0001,
+        "lam_Q_F_abs": 1e-06,
+        "classification": "PROVISIONAL_ALIGNED_LIMIT",
+        "projected_shift_norm": 4.7156257010571995e-14,
+        "projected_off_diagonal_norm": 3.88033663497933e-14,
+        "Q_projected_eigenvalues": [
+          0.9999999999999526,
+          0.9999999999999999,
+          1.0000000000000007
+        ],
+        "portal_weight_trace": 1.1959429488307367e-14
+      },
+      {
+        "y_Q_abs": 0.0001,
+        "lam_Q_F_abs": 0.0001,
+        "classification": "PROVISIONAL_ALIGNED_LIMIT",
+        "projected_shift_norm": 4.783774191096896e-10,
+        "projected_off_diagonal_norm": 3.905934696644348e-10,
+        "Q_projected_eigenvalues": [
+          0.9999999995216229,
+          0.9999999999999993,
+          1.0000000000000007
+        ],
+        "portal_weight_trace": 1.1959429486877222e-10
+      },
+      {
+        "y_Q_abs": 0.0001,
+        "lam_Q_F_abs": 0.01,
+        "classification": "PROVISIONAL_ALIGNED_LIMIT",
+        "projected_shift_norm": 4.783766073889621e-06,
+        "projected_off_diagonal_norm": 3.9059286438597384e-06,
+        "Q_projected_eigenvalues": [
+          0.9999952162339264,
+          1.0000000000000004,
+          1.000000000000001
+        ],
+        "portal_weight_trace": 1.195941518558645e-06
+      },
+      {
+        "y_Q_abs": 0.0001,
+        "lam_Q_F_abs": 0.1,
+        "classification": "PROVISIONAL_ALIGNED_LIMIT",
+        "projected_shift_norm": 0.0004783199754201903,
+        "projected_off_diagonal_norm": 0.00039054662452049383,
+        "Q_projected_eigenvalues": [
+          0.9995216800245796,
+          1.0000000000000002,
+          1.0000000000000007
+        ],
+        "portal_weight_trace": 0.00011957999385523222
+      },
+      {
+        "y_Q_abs": 0.0001,
+        "lam_Q_F_abs": 1.0,
+        "classification": "FULL_PORTAL_DEPENDENT_CURRENT",
+        "projected_shift_norm": 0.04727236964313903,
+        "projected_off_diagonal_norm": 0.03859772818597432,
+        "Q_projected_eigenvalues": [
+          0.9527276303568607,
+          1.0,
+          1.0000000000000004
+        ],
+        "portal_weight_trace": 0.011818092410784754
+      },
+      {
+        "y_Q_abs": 1e-06,
+        "lam_Q_F_abs": 1e-08,
+        "classification": "PROVISIONAL_ALIGNED_LIMIT",
+        "projected_shift_norm": 4.7245438952271405e-14,
+        "projected_off_diagonal_norm": 3.828000394354709e-14,
+        "Q_projected_eigenvalues": [
+          0.9999999999999525,
+          0.9999999999999991,
+          1.0
+        ],
+        "portal_weight_trace": 1.195942948830737e-14
+      },
+      {
+        "y_Q_abs": 1e-06,
+        "lam_Q_F_abs": 1e-06,
+        "classification": "PROVISIONAL_ALIGNED_LIMIT",
+        "projected_shift_norm": 4.783778229632702e-10,
+        "projected_off_diagonal_norm": 3.9059396428162603e-10,
+        "Q_projected_eigenvalues": [
+          0.9999999995216223,
+          0.9999999999999998,
+          1.0000000000000007
+        ],
+        "portal_weight_trace": 1.1959429486877217e-10
+      },
+      {
+        "y_Q_abs": 1e-06,
+        "lam_Q_F_abs": 0.0001,
+        "classification": "PROVISIONAL_ALIGNED_LIMIT",
+        "projected_shift_norm": 4.783766074123099e-06,
+        "projected_off_diagonal_norm": 3.905928643601792e-06,
+        "Q_projected_eigenvalues": [
+          0.9999952162339256,
+          0.9999999999999999,
+          1.0000000000000002
+        ],
+        "portal_weight_trace": 1.1959415185529815e-06
+      },
+      {
+        "y_Q_abs": 1e-06,
+        "lam_Q_F_abs": 0.01,
+        "classification": "FULL_PORTAL_DEPENDENT_CURRENT",
+        "projected_shift_norm": 0.04727236743081048,
+        "projected_off_diagonal_norm": 0.03859772637961583,
+        "Q_projected_eigenvalues": [
+          0.9527276325691895,
+          0.9999999999999998,
+          1.0
+        ],
+        "portal_weight_trace": 0.011818091857702467
+      },
+      {
+        "y_Q_abs": 1e-06,
+        "lam_Q_F_abs": 0.1,
+        "classification": "FULL_PORTAL_DEPENDENT_CURRENT",
+        "projected_shift_norm": 2.1784590998061377,
+        "projected_off_diagonal_norm": 1.778704406682581,
+        "Q_projected_eigenvalues": [
+          -1.1784590998061373,
+          1.0000000000000002,
+          1.0000000000000009
+        ],
+        "portal_weight_trace": 0.5446147749515344
+      },
+      {
+        "y_Q_abs": 1e-06,
+        "lam_Q_F_abs": 1.0,
+        "classification": "FULL_PORTAL_DEPENDENT_CURRENT",
+        "projected_shift_norm": 3.9668310923975043,
+        "projected_off_diagonal_norm": 3.2389040236485647,
+        "Q_projected_eigenvalues": [
+          -2.966831092397504,
+          0.9999999999999801,
+          0.999999999999993
+        ],
+        "portal_weight_trace": 0.9917077730993757
+      }
+    ],
+    "aligned_window_exists": true,
+    "portal_dependence_demonstrated": true,
+    "hierarchy_note": "For y_Q~1 the projected shift is VEV-suppressed (~v_S/v_Phi). Visible O(1) shifts appear when the Q mass portal is lighter."
+  },
+  "verdict": "Full A,B,C,D tensors are now built from named charge-allowed Yukawa x VEV operators. Physical Q_proj remains portal dependent; exact unique C_e,C_p,C_n still require fixed UV Yukawas and SM mass-basis alignment."
+}

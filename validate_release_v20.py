@@ -96,7 +96,8 @@ def main() -> int:
     )
 
     suite = unittest.defaultTestLoader.discover(str(ROOT))
-    require(suite.countTestCases() == 154, f"expected 154 tests, found {suite.countTestCases()}")
+    n_tests = suite.countTestCases()
+    require(n_tests >= 154, f"expected at least 154 tests, found {n_tests}")
     run([sys.executable, "-m", "unittest", "-v"])
 
     pdflatex = shutil.which("pdflatex")
@@ -143,10 +144,20 @@ def main() -> int:
         ROOT / "audit_v20_errors.py",
         ROOT / "physics_push_v20.py",
         ROOT / "full_fermion_matching_v20.py",
+        ROOT / "portal_tensors_abcd_v20.py",
+        ROOT / "physical_cf_matching_v20.py",
+        ROOT / "global_flavour_fit_v20.py",
+        ROOT / "cmb_public_data_pipeline_v20.py",
+        ROOT / "empirical_roadmap_lock_v20.py",
         ROOT / "tan_beta_profile_v20.py",
         ROOT / "reanalysis_portal_beta_v20.py",
         ROOT / "FERMION_PORTAL_CURRENT_THEOREM.md",
         ROOT / "FULL_FERMION_MATCHING_V20_VERDICT.json",
+        ROOT / "PORTAL_TENSORS_ABCD_V20_VERDICT.json",
+        ROOT / "PHYSICAL_CF_MATCHING_V20_VERDICT.json",
+        ROOT / "GLOBAL_FLAVOUR_FIT_V20_VERDICT.json",
+        ROOT / "CMB_PUBLIC_PIPELINE_V20_VERDICT.json",
+        ROOT / "EMPIRICAL_ROADMAP_LOCK_V20_VERDICT.json",
         ROOT / "TAN_BETA_PROFILE_V20_VERDICT.json",
         ROOT / "V20_PORTAL_BETA_REANALYSIS_VERDICT.json",
         V20_ENGINE,
@@ -165,8 +176,8 @@ def main() -> int:
     require(all(path.exists() for path in core), "release core is incomplete")
     write_checksums(core)
     print(
-        "RELEASE GATE PASS: v17 65/65; v19 59/59; v20 42/42; "
-        "tests 154/154; clean 12-page PDF"
+        f"RELEASE GATE PASS: v17 65/65; v19 59/59; v20 42/42; "
+        f"tests {n_tests}/{n_tests}; clean 12-page PDF"
     )
     return 0
 

@@ -1,0 +1,483 @@
+{
+  "status": "GLOBAL_FLAVOUR_SCAN_COMPLETE",
+  "method": "multi-start Nelder-Mead on corrected Takagi/PMNS 10+126 objective with optional soft CKM pulls over a free v_R grid",
+  "include_ckm": true,
+  "v_r_grid_GeV": [
+    631385500000.0,
+    1000000000000.0,
+    3000000000000.0,
+    10000000000000.0,
+    30000000000000.0,
+    100000000000000.0,
+    300000000000000.0,
+    1000000000000000.0
+  ],
+  "best_point": {
+    "v_r_GeV": 300000000000000.0,
+    "chi2": 4.954642447825638,
+    "params": [
+      0.7986541674572487,
+      -11.064797599872715,
+      -1.4239880359551829,
+      0.0023304411005953046,
+      1.5543868977392656,
+      -2.1789788598197504,
+      0.3547142582770927,
+      -2.3565648538244615,
+      4.150983172202267,
+      0.5938115167978253,
+      -1.6285148578385946,
+      0.3637190938218407,
+      -9.823463135184198
+    ],
+    "pulls": {
+      "sin2_th12": -0.17312249114663966,
+      "sin2_th23": 0.08372404892032319,
+      "sin2_th13": 0.027010974772643158,
+      "dm21": -0.039090363925778276,
+      "dm31": 0.007368720924220279,
+      "delta_deg": 0.7121660892264629,
+      "up_clebsch_mismatch": 0.4632220399748818,
+      "sum_mnu": 0.18284944673099476,
+      "ckm_s12": 1.1719004108172906,
+      "ckm_s23": -0.22142161916403197,
+      "ckm_s13": -1.6546244781580313
+    },
+    "observables": {
+      "mnu_eV": [
+        0.006175309534961562,
+        0.01062808859225099,
+        0.05051057974202724
+      ],
+      "sum_mnu_eV": 0.06731397786923979,
+      "dm21_eV2": 7.482181927214845e-05,
+      "dm31_eV2": 0.0025131842180231055,
+      "sin2_th12": 0.3059225301062403,
+      "sin2_th23": 0.4712558607338048,
+      "sin2_th13": 0.022166206584863585,
+      "delta_cp_deg": 236.9258131229262,
+      "takagi_reconstruction": true,
+      "charged_lepton_basis_included": true,
+      "tan_beta": 34.94979626444526,
+      "y10_max": 0.5704672986201206,
+      "y126_max": 0.2794888844584721,
+      "up_clebsch_mismatch": 0.16212771399120862,
+      "perturbative_4pi": true
+    },
+    "ckm_angles": {
+      "s12": 0.24993800821634582,
+      "s23": 0.03831578380835968,
+      "s13": 0.00037075104368393733
+    },
+    "include_ckm": true,
+    "rg_threshold_status": {
+      "common_scale_RG_inputs_applied": false,
+      "two_loop_thresholds_coupled": false,
+      "note": "Gauge-threshold machinery exists in two_loop_thresholds_v20.py but Yukawa RG anomalous dimensions are not yet supplied; this scan therefore uses low-scale mass inputs as a constrained proxy."
+    },
+    "tan_beta": 34.94979626444526,
+    "viable_chi2_lt_30": true,
+    "aligned_Cf": {
+      "classification": "ALIGNED_CURRENT_BENCHMARK_NOT_FULL_V20",
+      "tan_beta": 34.94979626444526,
+      "sin2_beta": 0.9991819962337484,
+      "cos2_beta": 0.0008180037662516293,
+      "tree": {
+        "C_u0": 4.8117868602930826e-05,
+        "C_c0": 4.8117868602930826e-05,
+        "C_t0": 4.8117868602930826e-05,
+        "C_d0": 0.05877541154303195,
+        "C_s0": 0.05877541154303195,
+        "C_b0": 0.05877541154303195,
+        "C_e0": 0.05877541154303195
+      },
+      "C_e": 0.05877541154303195,
+      "C_p_central": -0.4956432569468977,
+      "C_n_central": 0.028940406019627128,
+      "g_ae": 8.086675271031501e-16,
+      "g_ap_central": -1.2521383485263027e-11,
+      "g_an_central": 7.321262220655505e-13,
+      "TRGB_limit_over_abs_g_ae": 160.75827907383965,
+      "SN1987A_quadratic_lhs_central": 9.131625229126398e-23,
+      "SN1987A_amplitude_margin_central": 95.10776674800212,
+      "hadronic_uncertainty": {
+        "model_independent_Cp": 0.03,
+        "model_independent_Cn": 0.03,
+        "note": "Central di Cortona/PDG matching; coefficients are correlated and the small C_n central value is not statistically robust."
+      }
+    }
+  },
+  "viable_points": [
+    {
+      "v_r_GeV": 30000000000000.0,
+      "chi2": 14.433710929727106,
+      "params": [
+        -1.3092917688765355,
+        1.1891581227248549,
+        -1.1507482858071012,
+        -0.39631680251273654,
+        -1.520175931215038,
+        0.46696949119525916,
+        0.4384135473170774,
+        3.1064048779725666,
+        1.1348682020932488,
+        0.6865980763192131,
+        2.8183721708775162,
+        -0.13076291331775014,
+        -9.925641105961729
+      ],
+      "pulls": {
+        "sin2_th12": -0.06450131692130323,
+        "sin2_th23": 0.08517223242813973,
+        "sin2_th13": 0.024143205053321164,
+        "dm21": -0.015565503307503684,
+        "dm31": 0.011584468137849913,
+        "delta_deg": 0.5865238695462454,
+        "up_clebsch_mismatch": 2.042129993436606,
+        "sum_mnu": 0.17117304430076044,
+        "ckm_s12": 0.0042426745429993695,
+        "ckm_s23": -0.06351975336232052,
+        "ckm_s13": 3.142241030129557
+      },
+      "observables": {
+        "mnu_eV": [
+          0.00589729144118837,
+          0.010471242301451085,
+          0.050478388029390954
+        ],
+        "sum_mnu_eV": 0.06684692177203042,
+        "dm21_eV2": 7.4868868993385e-05,
+        "dm31_eV2": 0.0025132896117034463,
+        "sin2_th12": 0.30722598419694436,
+        "sin2_th23": 0.47127758348642207,
+        "sin2_th13": 0.022164485923031992,
+        "delta_cp_deg": 232.5283354341186,
+        "takagi_reconstruction": true,
+        "charged_lepton_basis_included": true,
+        "tan_beta": 11.81136097603499,
+        "y10_max": 0.18353537804459638,
+        "y126_max": 0.10106225620340721,
+        "up_clebsch_mismatch": 0.714745497702812,
+        "perturbative_4pi": true
+      },
+      "ckm_angles": {
+        "s12": 0.22658485349086,
+        "s23": 0.03989480246637679,
+        "s13": 0.009964482060259114
+      },
+      "include_ckm": true,
+      "rg_threshold_status": {
+        "common_scale_RG_inputs_applied": false,
+        "two_loop_thresholds_coupled": false,
+        "note": "Gauge-threshold machinery exists in two_loop_thresholds_v20.py but Yukawa RG anomalous dimensions are not yet supplied; this scan therefore uses low-scale mass inputs as a constrained proxy."
+      },
+      "tan_beta": 11.81136097603499,
+      "viable_chi2_lt_30": true,
+      "aligned_Cf": {
+        "classification": "ALIGNED_CURRENT_BENCHMARK_NOT_FULL_V20",
+        "tan_beta": 11.81136097603499,
+        "sin2_beta": 0.9928829800849545,
+        "cos2_beta": 0.0071170199150455415,
+        "tree": {
+          "C_u0": 0.00041864823029587263,
+          "C_c0": 0.00041864823029587263,
+          "C_t0": 0.00041864823029587263,
+          "C_d0": 0.05840488118133901,
+          "C_s0": 0.05840488118133901,
+          "C_b0": 0.05840488118133901,
+          "C_e0": 0.05840488118133901
+        },
+        "C_e": 0.05840488118133901,
+        "C_p_central": -0.49516101168115434,
+        "C_n_central": 0.02848150416667042,
+        "g_ae": 8.03569547124099e-16,
+        "g_ap_central": -1.2509200573820791e-11,
+        "g_an_central": 7.20517052530188e-13,
+        "TRGB_limit_over_abs_g_ae": 161.7781565581448,
+        "SN1987A_quadratic_lhs_central": 9.119506627730672e-23,
+        "SN1987A_amplitude_margin_central": 95.17093850236974,
+        "hadronic_uncertainty": {
+          "model_independent_Cp": 0.03,
+          "model_independent_Cn": 0.03,
+          "note": "Central di Cortona/PDG matching; coefficients are correlated and the small C_n central value is not statistically robust."
+        }
+      }
+    },
+    {
+      "v_r_GeV": 100000000000000.0,
+      "chi2": 8.142209554522637,
+      "params": [
+        2.725814804784628,
+        0.03480493988228814,
+        -0.9887119281218015,
+        -1.1223997184146213,
+        -1.5502323476681292,
+        -2.351515285218656,
+        2.345594788400451,
+        -2.989459594683438,
+        6.539667839431725,
+        0.5447739982834947,
+        -1.16924304472549,
+        0.12687490417589659,
+        -9.81828153793556
+      ],
+      "pulls": {
+        "sin2_th12": -0.4753045079801584,
+        "sin2_th23": -0.3119089803348111,
+        "sin2_th13": 0.13516172916896535,
+        "dm21": -0.12497886419433907,
+        "dm31": -0.05251627322840763,
+        "delta_deg": 2.032569642200482,
+        "up_clebsch_mismatch": 0.4286934696774128,
+        "sum_mnu": 0.17155794813028707,
+        "ckm_s12": 1.1749739008842228,
+        "ckm_s23": -0.31151701571028173,
+        "ckm_s13": -1.400073394140452
+      },
+      "observables": {
+        "mnu_eV": [
+          0.005922103791378572,
+          0.010474796207443455,
+          0.05046541792638946
+        ],
+        "sum_mnu_eV": 0.06686231792521148,
+        "dm21_eV2": 7.465004227161133e-05,
+        "dm31_eV2": 0.00251168709316929,
+        "sin2_th12": 0.3022963459042381,
+        "sin2_th23": 0.4653213652949778,
+        "sin2_th13": 0.02223109703750138,
+        "delta_cp_deg": 283.1399374770169,
+        "takagi_reconstruction": true,
+        "charged_lepton_basis_included": true,
+        "tan_beta": 47.01884275626789,
+        "y10_max": 0.7301691445404097,
+        "y126_max": 0.3995617158830867,
+        "up_clebsch_mismatch": 0.15004271438709446,
+        "perturbative_4pi": true
+      },
+      "ckm_angles": {
+        "s12": 0.24999947801768446,
+        "s23": 0.03741482984289718,
+        "s13": 0.000879853211719096
+      },
+      "include_ckm": true,
+      "rg_threshold_status": {
+        "common_scale_RG_inputs_applied": false,
+        "two_loop_thresholds_coupled": false,
+        "note": "Gauge-threshold machinery exists in two_loop_thresholds_v20.py but Yukawa RG anomalous dimensions are not yet supplied; this scan therefore uses low-scale mass inputs as a constrained proxy."
+      },
+      "tan_beta": 47.01884275626789,
+      "viable_chi2_lt_30": true,
+      "aligned_Cf": {
+        "classification": "ALIGNED_CURRENT_BENCHMARK_NOT_FULL_V20",
+        "tan_beta": 47.01884275626789,
+        "sin2_beta": 0.9995478737444261,
+        "cos2_beta": 0.0004521262555738925,
+        "tree": {
+          "C_u0": 2.6595662092523218e-05,
+          "C_c0": 2.6595662092523218e-05,
+          "C_t0": 2.6595662092523218e-05,
+          "C_d0": 0.05879693374954236,
+          "C_s0": 0.05879693374954236,
+          "C_b0": 0.05879693374954236,
+          "C_e0": 0.05879693374954236
+        },
+        "C_e": 0.05879693374954236,
+        "C_p_central": -0.495671268098671,
+        "C_n_central": 0.02896706127239027,
+        "g_ae": 8.089636425885148e-16,
+        "g_ap_central": -1.252209112804501e-11,
+        "g_an_central": 7.328005391255961e-13,
+        "TRGB_limit_over_abs_g_ae": 160.6994346297531,
+        "SN1987A_quadratic_lhs_central": 9.132330060507758e-23,
+        "SN1987A_amplitude_margin_central": 95.10409647811171,
+        "hadronic_uncertainty": {
+          "model_independent_Cp": 0.03,
+          "model_independent_Cn": 0.03,
+          "note": "Central di Cortona/PDG matching; coefficients are correlated and the small C_n central value is not statistically robust."
+        }
+      }
+    },
+    {
+      "v_r_GeV": 300000000000000.0,
+      "chi2": 4.954642447825638,
+      "params": [
+        0.7986541674572487,
+        -11.064797599872715,
+        -1.4239880359551829,
+        0.0023304411005953046,
+        1.5543868977392656,
+        -2.1789788598197504,
+        0.3547142582770927,
+        -2.3565648538244615,
+        4.150983172202267,
+        0.5938115167978253,
+        -1.6285148578385946,
+        0.3637190938218407,
+        -9.823463135184198
+      ],
+      "pulls": {
+        "sin2_th12": -0.17312249114663966,
+        "sin2_th23": 0.08372404892032319,
+        "sin2_th13": 0.027010974772643158,
+        "dm21": -0.039090363925778276,
+        "dm31": 0.007368720924220279,
+        "delta_deg": 0.7121660892264629,
+        "up_clebsch_mismatch": 0.4632220399748818,
+        "sum_mnu": 0.18284944673099476,
+        "ckm_s12": 1.1719004108172906,
+        "ckm_s23": -0.22142161916403197,
+        "ckm_s13": -1.6546244781580313
+      },
+      "observables": {
+        "mnu_eV": [
+          0.006175309534961562,
+          0.01062808859225099,
+          0.05051057974202724
+        ],
+        "sum_mnu_eV": 0.06731397786923979,
+        "dm21_eV2": 7.482181927214845e-05,
+        "dm31_eV2": 0.0025131842180231055,
+        "sin2_th12": 0.3059225301062403,
+        "sin2_th23": 0.4712558607338048,
+        "sin2_th13": 0.022166206584863585,
+        "delta_cp_deg": 236.9258131229262,
+        "takagi_reconstruction": true,
+        "charged_lepton_basis_included": true,
+        "tan_beta": 34.94979626444526,
+        "y10_max": 0.5704672986201206,
+        "y126_max": 0.2794888844584721,
+        "up_clebsch_mismatch": 0.16212771399120862,
+        "perturbative_4pi": true
+      },
+      "ckm_angles": {
+        "s12": 0.24993800821634582,
+        "s23": 0.03831578380835968,
+        "s13": 0.00037075104368393733
+      },
+      "include_ckm": true,
+      "rg_threshold_status": {
+        "common_scale_RG_inputs_applied": false,
+        "two_loop_thresholds_coupled": false,
+        "note": "Gauge-threshold machinery exists in two_loop_thresholds_v20.py but Yukawa RG anomalous dimensions are not yet supplied; this scan therefore uses low-scale mass inputs as a constrained proxy."
+      },
+      "tan_beta": 34.94979626444526,
+      "viable_chi2_lt_30": true,
+      "aligned_Cf": {
+        "classification": "ALIGNED_CURRENT_BENCHMARK_NOT_FULL_V20",
+        "tan_beta": 34.94979626444526,
+        "sin2_beta": 0.9991819962337484,
+        "cos2_beta": 0.0008180037662516293,
+        "tree": {
+          "C_u0": 4.8117868602930826e-05,
+          "C_c0": 4.8117868602930826e-05,
+          "C_t0": 4.8117868602930826e-05,
+          "C_d0": 0.05877541154303195,
+          "C_s0": 0.05877541154303195,
+          "C_b0": 0.05877541154303195,
+          "C_e0": 0.05877541154303195
+        },
+        "C_e": 0.05877541154303195,
+        "C_p_central": -0.4956432569468977,
+        "C_n_central": 0.028940406019627128,
+        "g_ae": 8.086675271031501e-16,
+        "g_ap_central": -1.2521383485263027e-11,
+        "g_an_central": 7.321262220655505e-13,
+        "TRGB_limit_over_abs_g_ae": 160.75827907383965,
+        "SN1987A_quadratic_lhs_central": 9.131625229126398e-23,
+        "SN1987A_amplitude_margin_central": 95.10776674800212,
+        "hadronic_uncertainty": {
+          "model_independent_Cp": 0.03,
+          "model_independent_Cn": 0.03,
+          "note": "Central di Cortona/PDG matching; coefficients are correlated and the small C_n central value is not statistically robust."
+        }
+      }
+    }
+  ],
+  "any_viable": true,
+  "vR_equals_vS_viable": false,
+  "unique_tan_beta_demonstrated": false,
+  "viable_tan_beta_samples": [
+    11.811361,
+    34.949796,
+    47.018843
+  ],
+  "rg_threshold_note": "Gauge-threshold machinery exists in two_loop_thresholds_v20.py but Yukawa RG anomalous dimensions are not yet supplied; this scan therefore uses low-scale mass inputs as a constrained proxy.",
+  "flag": {
+    "provisional_natural_scale_flavour": true,
+    "full_RG_global_fit": false,
+    "unique_tan_beta": false,
+    "exact_vR_eq_vS": false
+  },
+  "n_checks": 5,
+  "n_failed": 0,
+  "failures": [],
+  "display_best": {
+    "v_r_GeV": 300000000000000.0,
+    "chi2": 4.954642447825638,
+    "tan_beta": 34.94979626444526,
+    "viable_chi2_lt_30": true,
+    "aligned_C_e": 0.05877541154303195,
+    "aligned_C_p_central": -0.4956432569468977,
+    "aligned_C_n_central": 0.028940406019627128
+  },
+  "verdict": "Free-v_R corrected flavour scan completed. Exact v_R=v_S remains non-viable under the constrained ansatz. Natural seesaw-scale points can be viable and support a tan(beta) region, but not a unique tan(beta). Full common-scale Yukawa RG is still external.",
+  "points": [
+    {
+      "v_r_GeV": 631385500000.0,
+      "chi2": 715.3093465445232,
+      "tan_beta": 1.772313296468624,
+      "viable_chi2_lt_30": false,
+      "max_abs_pull": 17.836240829387805
+    },
+    {
+      "v_r_GeV": 1000000000000.0,
+      "chi2": 784.0588769276985,
+      "tan_beta": 1.5061847592847035,
+      "viable_chi2_lt_30": false,
+      "max_abs_pull": 24.27453679332669
+    },
+    {
+      "v_r_GeV": 3000000000000.0,
+      "chi2": 437.9916129383208,
+      "tan_beta": 1.501223876469645,
+      "viable_chi2_lt_30": false,
+      "max_abs_pull": 17.160998349941107
+    },
+    {
+      "v_r_GeV": 10000000000000.0,
+      "chi2": 153.68512705032856,
+      "tan_beta": 1.5004893231993084,
+      "viable_chi2_lt_30": false,
+      "max_abs_pull": 11.325
+    },
+    {
+      "v_r_GeV": 30000000000000.0,
+      "chi2": 14.433710929727106,
+      "tan_beta": 11.81136097603499,
+      "viable_chi2_lt_30": true,
+      "max_abs_pull": 3.142241030129557
+    },
+    {
+      "v_r_GeV": 100000000000000.0,
+      "chi2": 8.142209554522637,
+      "tan_beta": 47.01884275626789,
+      "viable_chi2_lt_30": true,
+      "max_abs_pull": 2.032569642200482
+    },
+    {
+      "v_r_GeV": 300000000000000.0,
+      "chi2": 4.954642447825638,
+      "tan_beta": 34.94979626444526,
+      "viable_chi2_lt_30": true,
+      "max_abs_pull": 1.6546244781580313
+    },
+    {
+      "v_r_GeV": 1000000000000000.0,
+      "chi2": 48.904766067929685,
+      "tan_beta": 10.068764833486505,
+      "viable_chi2_lt_30": false,
+      "max_abs_pull": 4.935360322065652
+    }
+  ]
+}

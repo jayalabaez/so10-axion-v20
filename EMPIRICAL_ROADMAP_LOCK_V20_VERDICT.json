@@ -1,0 +1,106 @@
+{
+  "status": "EMPIRICAL_ROADMAP_LOCKED__THEORY_FLAGS_EXPLICIT",
+  "haloscope": {
+    "m_a_ueV": 153.5,
+    "nu_GHz": 37.11,
+    "scan_GHz": [
+      36.6,
+      37.6
+    ],
+    "g_agamma_GeV_inv": 2.335e-14,
+    "E_over_N": 2.6666666666666665,
+    "collaborations": [
+      "MADMAX",
+      "ORGAN",
+      "ALPHA"
+    ],
+    "brief_chars": 1144,
+    "lineshape_csv_exists": true,
+    "hard_falsifier": "Null result at g_agamma <= 2.3e-14 GeV^{-1} over 36.6-37.6 GHz kills the all-DM photon benchmark"
+  },
+  "ns_radio": {
+    "line_centre_GHz": 37.11,
+    "method": "NS magnetosphere axion-photon conversion",
+    "doppler_modulation": true,
+    "phase_lock_to": "GRAVITAS compact-object ephemerides",
+    "n_targets": 21,
+    "n_ns_regime_soft": 0,
+    "status": "PASS",
+    "verdict": "GRAVITAS ephemerides retargeted to 37.11 GHz. This prepares an astrophysical conversion search; it is not a detection. QCD-depth NS-radio reach at g~2e-14 is extremely challenging and needs large-N stacking and/or next-generation collecting area.",
+    "observing_ask": {
+      "frequency_GHz": 37.116134874294794,
+      "tune_window_GHz": [
+        36.6,
+        37.6
+      ],
+      "spectral_resolution_needed_kHz": "\u227210 (resolve ~37 kHz halo line / orbital dnu)",
+      "facilities": [
+        "GBT Ka",
+        "VLA Ka",
+        "ATCA",
+        "future ngVLA / SKA-mid extensions"
+      ],
+      "smoking_gun": "Line centre tracks GRAVITAS orbital ephemeris (dnu_orb) for NS companions; absent for BH companions"
+    },
+    "search_criteria": [
+      "Tune to barycentric 37.11 GHz then apply binary Doppler from ephemeris",
+      "Coherent fold at orbital period; search residual ~37 kHz halo width",
+      "Prefer high-B NS / magnetar environments",
+      "Stack large-N targets; QCD-depth still extremely challenging",
+      "Smoking gun: line tracks GRAVITAS orbital ephemeris for NS, absent for BH"
+    ]
+  },
+  "cmb_pipeline": {
+    "status": "CMB_PIPELINE_EXECUTED__LINE_SEARCH_IMPOSSIBLE_BY_DILUTION",
+    "n_downloads_ok": 4,
+    "n_downloads_attempted": 6,
+    "flag": {
+      "provisional_continuum_practice": true,
+      "full_v20_line_detection_from_CMB": false,
+      "downloads_attempted": true
+    },
+    "verdict": "Downloaded/recorded 4/6 public CMB/radio landing products for reproducible continuum practice. Dilution analysis confirms CMB/QUIET/CBI continuum data cannot perform the v20 37 GHz DM line search."
+  },
+  "home_public": {
+    "status": "PASS"
+  },
+  "theory_flags": {
+    "portal_tensors_ABCD": {
+      "provisional_aligned_benchmark": true,
+      "full_unique_Ce_Cp_Cn": false,
+      "representation_aware_ABCD": true,
+      "yukawa_magnitudes_unique": false
+    },
+    "provisional_vs_full": {
+      "aligned_Cf_benchmark": "PROVISIONAL",
+      "unique_full_Ce_Cp_Cn": "OPEN",
+      "vR_eq_vS_flavour": "FAILS_CONSTRAINED_FIT",
+      "natural_scale_flavour": "SCAN_FOR_VIABLE_REGION",
+      "anomaly_operator_core": "INTERNALLY_PASSES",
+      "experimental_discovery": "NO"
+    },
+    "portal_status": "PORTAL_TENSORS_CONSTRUCTED__PHYSICAL_CURRENT_PORTAL_DEPENDENT__UNIQUE_CF_STILL_OPEN"
+  },
+  "drift_guard": {
+    "required_artifacts": {
+      "PORTAL_TENSORS_ABCD_V20_VERDICT.json": true,
+      "PHYSICAL_CF_MATCHING_V20_VERDICT.json": true,
+      "GLOBAL_FLAVOUR_FIT_V20_VERDICT.json": true,
+      "CMB_PUBLIC_PIPELINE_V20_VERDICT.json": true,
+      "TAN_BETA_PROFILE_V20_VERDICT.json": true,
+      "FULL_FERMION_MATCHING_V20_VERDICT.json": true,
+      "V20_PORTAL_BETA_REANALYSIS_VERDICT.json": true,
+      "THEORY_CONFIRMATION_VERDICT.json": true,
+      "SHA256SUMS": true,
+      ".github/workflows/replicate-and-falsify.yml": true
+    },
+    "all_required_paths_known": true,
+    "ci_workflow": "replicate-and-falsify",
+    "byte_reproducible_release_gate": "validate_release_v20.py",
+    "note": "CI must regenerate verdicts; validate_release_v20.py locks PDF and core SHA256SUMS with SOURCE_DATE_EPOCH."
+  },
+  "n_checks": 6,
+  "n_failed": 0,
+  "failures": [],
+  "verdict": "Empirical roadmap locked: 36.6-37.6 GHz haloscope brief, GRAVITAS NS-radio Doppler criteria, and CMB public-data pipeline (practice only). Theory flags separate provisional aligned C_f from open full matching. Drift-guard artifacts are enumerated for CI."
+}

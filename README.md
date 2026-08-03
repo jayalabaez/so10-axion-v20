@@ -45,7 +45,7 @@ the model.
 
 | Package | Result |
 |---|---|
-| 10+126 flavour fit at exact $v_R=v_S$ | viable, stressed vs natural ~$10^{14}$ GeV |
+| 10+126 flavour fit at exact $v_R=v_S$ | fails corrected Takagi/PMNS constrained fit |
 | Continuous thresholds | $\alpha^{-1}(v_\Phi)\sim16.6$, not 40 |
 | 37 GHz forecast | MADMAX-like projection can reach the coupling (**software only**) |
 | Heavy–light spectrum + lifetimes | 3 light families; all components decay above portal floor |
@@ -55,10 +55,14 @@ the model.
 | Fermion portal matching | moving-frame identity verified, but physical $Q_{\rm proj}=\mathbf1-4W$ remains portal dependent |
 | Fermion coefficients | aligned ERT-like benchmark reproducible; exact full $C_{e,p,n}$ remain open |
 | Corrected flavour fit | Takagi + $U_e^\dagger U_\nu$ extraction; current $v_R=v_S$ profile has no $\chi^2<30$ point |
+| Portal tensors $A,B,C,D$ | representation-aware Yukawa$\times$VEV construction; magnitudes not UV-unique |
+| Physical $C_e,C_p,C_n$ pipeline | provisional aligned display available; full unique values still open |
+| Global flavour scan | free $v_R$ grid; natural scale can be viable; unique $\tan\beta$ not established |
+| CMB public pipeline | downloads continuum landing products; dilution forbids 37 kHz line search |
 
 ```bash
 python run_v20_referee_next.py
-python extensive_confirm_falsify_v20.py   # 48-check adversarial campaign
+python extensive_confirm_falsify_v20.py   # adversarial campaign
 python next_physics_analysis_v20.py      # astro/PQ/flavour×proton/reach triage
 python literature_sweep_150uev_v20.py    # excluded vs open near 150 µeV
 python home_public_37ghz_search_v20.py   # honest home-PC / public-data roadmap
@@ -66,6 +70,11 @@ python gravitas_axion_v20_37ghz.py       # GRAVITAS retarget to 37 GHz
 python public_data_indirect_audit_v20.py # 20-channel public/indirect matrix
 python full_fermion_matching_v20.py      # physical projected portal current
 python tan_beta_profile_v20.py           # corrected fixed-v_R profile (slow)
+python portal_tensors_abcd_v20.py        # named A,B,C,D portal tensors
+python physical_cf_matching_v20.py       # PQ charges + provisional C_f
+python global_flavour_fit_v20.py         # free-v_R flavour/Higgs scan
+python cmb_public_data_pipeline_v20.py   # download CMB/radio landing products
+python empirical_roadmap_lock_v20.py     # lock experimental targets + flags
 ```
 
 See [EXTENSIVE_CONFIRM_FALSIFY.md](EXTENSIVE_CONFIRM_FALSIFY.md) for the full
@@ -77,8 +86,14 @@ for home-PC limits, [PUBLIC_DATA_INDIRECT_AUDIT.md](PUBLIC_DATA_INDIRECT_AUDIT.m
 for the full public/indirect channel brainstorm,
 [FULL_FERMION_MATCHING_V20.md](FULL_FERMION_MATCHING_V20.md) for the
 fail-closed portal-dependent current result,
-[FERMION_PORTAL_CURRENT_THEOREM.md](FERMION_PORTAL_CURRENT_THEOREM.md) for
-the arbitrary-matrix connection proof, and
+[PORTAL_TENSORS_ABCD_V20.md](PORTAL_TENSORS_ABCD_V20.md) /
+[PHYSICAL_CF_MATCHING_V20.md](PHYSICAL_CF_MATCHING_V20.md) for the
+provisional-vs-full fermion pipeline,
+[GLOBAL_FLAVOUR_FIT_V20.md](GLOBAL_FLAVOUR_FIT_V20.md) for the free-$v_R$ scan,
+[CMB_PUBLIC_PIPELINE_V20.md](CMB_PUBLIC_PIPELINE_V20.md) for continuum downloads,
+[EMPIRICAL_ROADMAP_LOCK_V20.md](EMPIRICAL_ROADMAP_LOCK_V20.md) for locked
+experimental targets, [FERMION_PORTAL_CURRENT_THEOREM.md](FERMION_PORTAL_CURRENT_THEOREM.md)
+for the arbitrary-matrix connection proof, and
 [TAN_BETA_PROFILE_V20.md](TAN_BETA_PROFILE_V20.md) for why no unique numerical
 point is currently justified. The consolidated verdict is
 [V20_PORTAL_BETA_REANALYSIS.md](V20_PORTAL_BETA_REANALYSIS.md). **Passing
