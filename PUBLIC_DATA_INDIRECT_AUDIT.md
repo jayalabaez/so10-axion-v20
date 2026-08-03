@@ -1,6 +1,6 @@
 # Public-data / indirect multi-channel brainstorm — v20
 
-**Status:** PASS — 8 checks, 0 failed
+**Status:** PASS — 10 checks, 0 failed
 
 ## Honesty
 
@@ -14,7 +14,7 @@ No public-data channel in this matrix *proves* the theory. Together they show th
 |---|---|---|---|
 | `A_haloscope_templates` | Lab haloscope target brief + lineshape | RUNNABLE_NOW | False |
 | `B_literature_photon` | Published photon-coupling exclusions near 150 µeV | RUNNABLE_NOW | False |
-| `C_fermion_stellar_SN` | Electron / nucleon couplings vs TRGB & SN envelopes | RUNNABLE_NOW | False |
+| `C_fermion_stellar_SN` | Provisional ERT-like fermion couplings vs TRGB & SN (gap NOT closed) | RUNNABLE_NOW | False |
 | `D_flavour_nufit` | 10+126 Clebsch fit vs NuFIT-6 public neutrino data | RUNNABLE_NOW | False |
 | `E_proton_decay` | GUT-scale proton lifetime vs SK / Hyper-K public limits | RUNNABLE_NOW | False |
 | `F_pta_strings` | Analytic Gμ of (13,-3) sector vs NANOGrav/CMB string anchors | RUNNABLE_NOW | False |
@@ -36,8 +36,9 @@ No public-data channel in this matrix *proves* the theory. Together they show th
 ## Executed ledger (this run)
 
 - Photon literature: DOES NOT FAIL — no published bound excludes the v20 all-DM benchmark at 153.5 µeV / 37 GHz; the window is experimentally OPEN.
-- TRGB electron: pass=True (safety×161)
-- SN nucleon envelope: pass=True
+- Fermion status: `PROVISIONAL_LEADING_CURRENT_ONLY__FULL_V20_MATCHING_OPEN` (gap closed? `False`)
+- TRGB conditional: pass=True (safety×161); full_model_pass=None
+- SN1987A correlated conditional: pass=True (amplitude margin×95); full_model_pass=None
 - PTA/strings: Analytic Gμ=4.224e-13 sits below the oft-quoted 1e-10 NG ballpark and far below CMB 1e-7 — not excluded by frozen PTA anchors, but not proven either.
 - Proton central: τ_p=5.48e+35 yr (above SK=True)
 - BH SR: Stellar-mass BH clouds are NOT in the v20 window; the cloud mass sits at asteroid-scale PBHs. Public stellar-BH catalogs therefore do not probe this mass. PBH microlensing is the relevant public path.

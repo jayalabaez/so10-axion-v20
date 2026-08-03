@@ -22,10 +22,12 @@ def build_verdict() -> dict:
         "generated_utc": datetime.now(timezone.utc).isoformat(),
         "question_asked": "Execute analysis and prove this theory",
         "short_answer": (
-            "PROVED as an internally consistent, anomaly-free, currently "
-            "unexcluded candidate theory with a definite 37 GHz experimental "
-            "target. NOT PROVED that nature realizes it or that dark matter "
-            "has been detected."
+            "PROVED as an internally consistent, anomaly-free candidate theory "
+            "with an open 37 GHz photon target. Photon literature and "
+            "model-independent SN f_a bounds do not exclude it. Fermion "
+            "couplings are only a provisional ERT-like benchmark (gap NOT "
+            "closed). NOT PROVED that nature realizes the model or that DM "
+            "was detected."
         ),
         "tiers": {
             "PROVED_mathematical_internal": {
@@ -43,15 +45,16 @@ def build_verdict() -> dict:
                 ],
             },
             "PROVED_not_excluded_by_current_public_bounds": {
-                "status": "YES",
+                "status": "YES_FOR_PHOTON_AND_MODEL_INDEPENDENT_SN",
                 "evidence": [
                     "literature sweep: 0 excluding published bounds at 153.5 µeV",
                     "CAST/HB cover mass but g limits ~2500× too weak",
                     "ORGAN/MADMAX proto exclusions at wrong masses",
-                    "fermion TRGB safety ~160×; SN envelope ~80×",
+                    "universal QCD-axion SN bound on f_a/m_a passes (model-independent)",
+                    "provisional ERT-like fermion benchmark is conditionally below TRGB/SN1987A, but full_model_pass=null (gap NOT closed)",
                     "analytic Gμ~4.2e-13 below NANOGrav NG ballpark ~1e-10",
                     "central proton lifetime above SK",
-                    "public/indirect 20-channel audit: no hard public kill",
+                    "public/indirect audit: no hard public kill of the photon benchmark",
                 ],
             },
             "CONFIRMED_with_documented_stress": {
@@ -60,6 +63,7 @@ def build_verdict() -> dict:
                     "exact v_R=v_S flavour chi2~11.7 (viable but worse than ~1e14)",
                     "continuous Spin(10) RG rejects alpha(vPhi)=1/40 reset",
                     "conservative one-loop running not Planck-safe without thresholds",
+                    "fermion C_e/C_p/C_n still require full portal matching (PR #2 correction)",
                 ],
             },
             "SOFT_FALSIFIED_overclaims_only": {
@@ -78,6 +82,7 @@ def build_verdict() -> dict:
                     "real 36.6–37.6 GHz haloscope scan at g~2.3e-14 GeV^{-1}",
                     "NS-radio detection of Doppler-modulated 37 GHz line",
                     "lattice (13,-3) string-network confirmation",
+                    "full generation-dependent portal matrices → unique C_e, C_p, C_n",
                     "independent human diagrammatic referee",
                     "proof that local DM is this axion (abundance + detection)",
                 ],
@@ -87,7 +92,7 @@ def build_verdict() -> dict:
             "v20_engine": "PASS 42/42",
             "error_audit": "PASS (soft overclaims flagged)",
             "falsify_v20": "PASS 0 hard failures",
-            "fermion_couplings": "PASS_WITH_STATED_MATCHING_ASSUMPTIONS",
+            "fermion_couplings": "PROVISIONAL_LEADING_CURRENT_ONLY__FULL_V20_MATCHING_OPEN",
             "literature_150ueV": "OPEN (does not fail)",
             "home_public_37GHz": "PASS (CMB mythbust)",
             "gravitas_37GHz": "PASS (21 targets)",
@@ -98,10 +103,12 @@ def build_verdict() -> dict:
         },
         "correct_public_claim": (
             "We have a mathematically consistent SO(10)×Z17 axion candidate "
-            "that survives adversarial in-repo tests and is not excluded by "
-            "current published photon/stellar/SN/PTA anchors. It predicts a "
-            "specific all-DM search window near 37 GHz. Whether nature "
-            "realizes this model remains an open experimental question."
+            "that survives adversarial in-repo tests. Current published photon "
+            "bounds and the model-independent SN f_a window do not exclude the "
+            "37 GHz all-DM benchmark. Provisional ERT-like fermion couplings "
+            "look safe under stated assumptions, but exact C_e/C_p/C_n are not "
+            "uniquely derived (portal matching open). Whether nature realizes "
+            "this model remains an open experimental question."
         ),
         "incorrect_claim_do_not_use": (
             "We proved dark matter is a 153.5 µeV SO(10) axion / we detected "

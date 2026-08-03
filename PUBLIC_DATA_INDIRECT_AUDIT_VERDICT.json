@@ -1,6 +1,6 @@
 {
   "status": "PASS",
-  "n_checks": 8,
+  "n_checks": 10,
   "n_failed": 0,
   "failures": [],
   "honesty": "No public-data channel in this matrix *proves* the theory. Together they show the candidate remains viable under current indirect anchors and identify where to hunt next.",
@@ -25,11 +25,11 @@
     },
     {
       "id": "C_fermion_stellar_SN",
-      "channel": "Electron / nucleon couplings vs TRGB & SN envelopes",
-      "public_data": "published g_ae, g_aN limits",
+      "channel": "Provisional ERT-like fermion couplings vs TRGB & SN (gap NOT closed)",
+      "public_data": "published g_ae, correlated SN1987A, universal SN f_a bound",
       "status": "RUNNABLE_NOW",
       "proves": false,
-      "tests": "indirect stellar/SN consistency",
+      "tests": "conditional benchmark only; full portal matching open",
       "python": "fermion_couplings_150uev_v20.py"
     },
     {
@@ -201,9 +201,15 @@
       "sentence": "DOES NOT FAIL \u2014 no published bound excludes the v20 all-DM benchmark at 153.5 \u00b5eV / 37 GHz; the window is experimentally OPEN."
     },
     "fermion": {
-      "TRGB_passes": true,
-      "SN_passes": true,
-      "safety_TRGB": 160.69102890720225
+      "status": "PROVISIONAL_LEADING_CURRENT_ONLY__FULL_V20_MATCHING_OPEN",
+      "TRGB_conditional_pass": true,
+      "TRGB_full_model_pass": null,
+      "SN_conditional_pass": true,
+      "SN_full_model_pass": null,
+      "safety_TRGB_conditional": 160.69102890702493,
+      "SN_amplitude_margin_conditional": 94.98201769374009,
+      "gap_closed": false,
+      "verdict": "The provisional ERT-like leading-current benchmark lies well below the displayed electron and nucleon bounds, and the universal supernova QCD-axion bound is passed. However, the v20 fermion coupling gap is NOT closed: exact C_e, C_p and C_n remain conditional on the unspecified heavy-light portal matching. The 37 GHz photon benchmark remains an open direct-search target."
     },
     "pta_strings": {
       "v20_Gmu": 4.2244594441479266e-13,
