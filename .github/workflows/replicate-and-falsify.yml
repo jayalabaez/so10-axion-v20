@@ -18,6 +18,8 @@ jobs:
           cache: pip
       - name: Install dependencies
         run: python -m pip install -r requirements.txt
+      - name: Official NA62 HEPData schema probe
+        run: python na62_hepdata_probe_v20.py
       - name: Golden anchors + independent audit
         run: |
           python -c "import json,pathlib; g=json.loads(pathlib.Path('golden/expected_anchors_v20.json').read_text()); light=(3*2+5*2*(2-6),3*16+5*16*(2-6),3*16+5*16*(8-216)); assert list(light)==g['anomalies']['light']"
@@ -73,6 +75,7 @@ jobs:
         with:
           name: falsification-verdict
           path: |
+            NA62_HEPDATA_PROBE_V20_VERDICT.json
             FALSIFICATION_VERDICT.json
             v20_referee_next_verdict.json
             V20_REFEREE_NEXT_STEPS.md
