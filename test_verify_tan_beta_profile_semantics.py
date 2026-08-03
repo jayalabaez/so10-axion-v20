@@ -36,7 +36,9 @@ class TanBetaSemanticVerifierTests(unittest.TestCase):
         report = copy.deepcopy(self.report)
         report["points"][0]["nuisance"][0] += 0.5
         errors = validate_report(report)
-        self.assertTrue(any("does not recompute" in error for error in errors))
+        self.assertTrue(
+            any("exceeds recomputation tolerance" in error for error in errors)
+        )
 
     def test_rejects_viable_flag_mismatch(self):
         report = copy.deepcopy(self.report)
