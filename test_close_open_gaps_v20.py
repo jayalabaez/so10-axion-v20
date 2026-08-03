@@ -33,6 +33,15 @@ class OpenGapAuditTests(unittest.TestCase):
             __import__("json").dumps(common_report, indent=2) + "\n",
             encoding="utf-8",
         )
+        import two_loop_so10_210_yukawa_v20 as two
+
+        two_report = two.build_report()
+        if two_report["n_failed"] != 0:
+            raise RuntimeError(f"two-loop failed: {two_report['failures']}")
+        two.ROOT.joinpath("TWO_LOOP_SO10_210_V20_VERDICT.json").write_text(
+            __import__("json").dumps(two_report, indent=2) + "\n",
+            encoding="utf-8",
+        )
 
     def test_conditional_region_is_not_called_unique(self) -> None:
         report = gaps.conditional_unique_cf()
@@ -61,14 +70,15 @@ class OpenGapAuditTests(unittest.TestCase):
             ]
         )
 
-    def test_matrix_rge_solved_but_not_two_loop(self) -> None:
+    def test_matrix_rge_and_optional_two_loop(self) -> None:
         report = gaps.yukawa_rg_global_fit()
         self.assertTrue(report["flag"]["effective_power_law_proxy_applied"])
         self.assertTrue(
             report["flag"]["actual_one_loop_matrix_beta_system_solved"]
         )
-        self.assertFalse(report["flag"]["two_loop_so10_complete"])
-        self.assertIn("ONE_LOOP", report["status"])
+        self.assertTrue(
+            ("ONE_LOOP" in report["status"]) or ("TWO_LOOP" in report["status"])
+        )
         self.assertNotEqual(report["status"], "YUKAWA_RG_GLOBAL_FIT_COMPLETE")
 
     def test_detection_not_claimed(self) -> None:
@@ -92,7 +102,6 @@ class OpenGapAuditTests(unittest.TestCase):
                 "finite_model_tree_FCNC_absence_proved"
             ]
         )
-        self.assertFalse(report["gap_status"]["two_loop_so10_complete"])
         self.assertFalse(report["gap_status"]["real_37GHz_detection"])
 
 

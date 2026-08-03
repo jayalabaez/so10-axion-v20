@@ -1,0 +1,139 @@
+{
+  "status": "TWO_LOOP_SO10_210_CLOSED__UNIQUE_CF_AND_FINITE_FCNC_STILL_OPEN",
+  "n_checks": 7,
+  "n_failed": 0,
+  "failures": [],
+  "two_loop_so10_210_layer": {
+    "status": "TWO_LOOP_SO10_210_THRESHOLD_YUKAWA_COMPLETE",
+    "yukawa_content": {
+      "includes_10": true,
+      "includes_126": true,
+      "includes_120_yukawa": false,
+      "includes_210_as_yukawa": false,
+      "includes_210_in_gauge_threshold_beta": true,
+      "note": "210 enters the continuous Spin(10) gauge/threshold \u03b2-function; it does not provide a 16\u00d716 Yukawa. Optional 120 Yukawa is outside the v20 minimal ansatz."
+    },
+    "gauge_anchor": {
+      "scheme": "two-loop-corrected",
+      "M_I_GeV": 160982556355.7405,
+      "M_GUT_GeV": 1152023707592892.8,
+      "alpha_inv_GUT_after_spectators": 18.54172405931166,
+      "alpha_inv_vPhi_physical_210": 16.647292142507524,
+      "b_light_inferred": 2.6666666666666687,
+      "two_loop_gauge_chain": true
+    },
+    "MI_to_MGUT_two_loop": {
+      "n_steps": 5,
+      "relative_change_H": 0.12363989980636299,
+      "relative_change_F": 0.15756652803584065,
+      "max_abs_H": 0.5051552563709323,
+      "max_abs_F": 0.36480159967452513
+    },
+    "MGUT_to_vPhi_two_loop": {
+      "n_steps": 4,
+      "relative_change_H": 0.07565028189633011,
+      "relative_change_F": 0.09044612200051844,
+      "max_abs_H": 0.4669561729178724,
+      "max_abs_F": 0.3318228936959511
+    },
+    "one_loop_comparison_MI_to_MGUT": {
+      "relative_change_H": 0.2723736275799634,
+      "relative_change_F": 0.29469714865707614,
+      "delta_rel_H_two_minus_one": -0.14873372777360044,
+      "delta_rel_F_two_minus_one": -0.1371306206212355
+    },
+    "flag": {
+      "two_loop_so10_complete": true,
+      "explicit_two_loop_yukawa_betas": true,
+      "uses_10pct_damping_fudge": false,
+      "includes_210_gauge_threshold": true,
+      "includes_120_yukawa": false
+    }
+  },
+  "uv_fixing": {
+    "status": "CONDITIONAL_UV_FIXED_POINT__NOT_UNCONDITIONAL",
+    "principle": {
+      "name": "hierarchical_universal_portal_plus_global_chi2_minimum",
+      "axioms": [
+        "lam_Q_F is generation-universal",
+        "Phi-sector light-heavy Yukawas y_F_Pbar=y_F_Rbar=0",
+        "lam_Q_R=lam_S_Q_Rbar=0 (hierarchical Q portal)",
+        "y_P=y_R=y_Q=1 (O(1) benchmark magnitudes, not derived)",
+        "select the global chi2-minimizing tan(beta) among viable common-scale points",
+        "central hadronic matching for C_p,C_n"
+      ],
+      "scope": "These axioms fix a conditional display point. They are not implied by the Z17 charge assignments alone, so unconditional unique C_e,C_p,C_n remains false."
+    },
+    "source": "COMMON_SCALE_SO10_YUKAWA_V20_VERDICT",
+    "selected_point": {
+      "tan_beta": 30.065694127696233,
+      "chi2": 8.257232076182314,
+      "C_e": 0.058758527155376494,
+      "C_p_central": -0.4956212819163641,
+      "C_n_central": 0.028919494705515837,
+      "viable_chi2_lt_30": true
+    },
+    "flag": {
+      "conditional_unique_Cf_under_principle": true,
+      "unconditional_unique_Cf": false,
+      "unique_tan_beta_under_principle": true,
+      "reason": "These axioms fix a conditional display point. They are not implied by the Z17 charge assignments alone, so unconditional unique C_e,C_p,C_n remains false."
+    }
+  },
+  "fcnc_limits": {
+    "status": "EXACT_EPSILON_LIMIT_THEOREM__FINITE_MODEL_LIKELIHOOD_APPLIED",
+    "exact_limit_theorem": "For generation-universal hierarchical portals, \u03b5=\u03bb v_S/(y_Q v_\u03a6)\u21920 implies W\u21920, hence Q_proj\u2192I exactly, and every unitary mass-basis rotation preserves Q_proj=I, so tree-level axion FCNCs vanish exactly in that limit.",
+    "epsilon": 1.262771e-06,
+    "aligned_limit_departure_from_I": 5.278472168314863e-16,
+    "aligned_limit_exactly_scalar": true,
+    "finite_hierarchical": {
+      "scalar_departure": 1.5623331005420602e-11,
+      "exactly_scalar_to_1e_14": false,
+      "lepton_off_diagonal_norm": 1.3334956087976289e-11,
+      "quark_off_diagonal_norm": 1.5623330997925625e-11,
+      "experimental_likelihood_channels": {
+        "mu_to_e_a_proxy": {
+          "coupling": 3.7936434752415446e-23,
+          "bound": 1e-12,
+          "pass": true
+        },
+        "tau_to_mu_a_proxy": {
+          "coupling": 6.380185931766254e-22,
+          "bound": 1e-11,
+          "pass": true
+        },
+        "K_to_pi_a_proxy": {
+          "coupling": 2.0766860501264993e-22,
+          "bound": 1e-12,
+          "pass": true
+        },
+        "B_to_K_a_proxy": {
+          "coupling": 2.2206474392401892e-21,
+          "bound": 1e-11,
+          "pass": true
+        }
+      },
+      "all_proxy_channels_pass": true,
+      "experimental_FCNC_bound_applied": true
+    },
+    "flag": {
+      "exact_epsilon_limit_fcnc_absence_proved": true,
+      "aligned_limit_fcnc_absence_proved": true,
+      "actual_finite_model_fcnc_absence_proved": false,
+      "experimental_FCNC_bound_applied": true,
+      "reason": "Finite-\u03b5 hierarchical portal is only approximately scalar; exact absence holds in the \u03b5\u21920 / aligned limits, and the finite model currently passes an expanded proxy likelihood."
+    }
+  },
+  "flag": {
+    "two_loop_so10_complete": true,
+    "actual_one_loop_matrix_beta_system_solved": true,
+    "full_RG_global_fit_minimal": true,
+    "piecewise_threshold_yukawa_matching_complete": true,
+    "unconditional_unique_Cf": false,
+    "conditional_unique_Cf_under_principle": true,
+    "actual_finite_model_fcnc_absence_proved": false,
+    "exact_epsilon_limit_fcnc_absence_proved": true,
+    "experimental_FCNC_bound_applied": true
+  },
+  "verdict": "Explicit two-loop SO(10) 10+126 Yukawa betas with 210-aware gauge thresholds are solved. A named UV-fixing principle yields only a conditional C_f point. Exact FCNC absence holds in the \u03b5\u21920/aligned limits; the finite hierarchical model remains approximately scalar and is constrained by an expanded proxy likelihood, not proved absent."
+}

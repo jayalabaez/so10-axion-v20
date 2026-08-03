@@ -1,7 +1,7 @@
 # Extensive confirmation / falsification campaign
 
 **Status:** PASS — 53 checks, 0 failed
-**Unittest discovery:** 192 tests available in package
+**Unittest discovery:** 198 tests available in package
 
 ## Coverage
 

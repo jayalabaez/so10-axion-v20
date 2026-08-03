@@ -154,7 +154,13 @@ def build_verdict() -> dict[str, Any]:
         "flavour proxy points exist, and the 37 GHz photon target remains "
         "experimentally open. "
     )
-    if matrix_rg_closed:
+    if two_loop_closed and matrix_rg_closed:
+        short += (
+            "One-loop matrix and two-loop SO(10)+210 Yukawa/threshold layers "
+            "are solved, but full phenomenological approval remains blocked by: "
+            f"{remaining}."
+        )
+    elif matrix_rg_closed:
         short += (
             "A broken-phase one-loop matrix Yukawa RGE has been solved, but "
             "full phenomenological approval remains blocked by: "

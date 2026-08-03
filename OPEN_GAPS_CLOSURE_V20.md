@@ -26,4 +26,4 @@
 
 ## Verdict
 
-Conditional aligned benchmark, rough FCNC proxies, one-loop matrix Yukawa RGE, and (when present) common-scale/SO(10) threshold layers are audited. Exact unique C_e,C_p,C_n, finite-model FCNC absence, complete two-loop SO(10)+210 Yukawa closure, and experimental realization remain open.
+Conditional aligned benchmark, rough/expanded FCNC proxies, one-loop matrix Yukawa RGE, common-scale/SO(10) layers, and (when present) explicit two-loop SO(10)+210 threshold Yukawas are audited. Exact unique C_e,C_p,C_n, finite-model FCNC absence, and experimental realization remain open.

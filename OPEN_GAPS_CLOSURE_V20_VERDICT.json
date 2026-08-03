@@ -88,7 +88,7 @@
     "reason_not_closed": "The benchmark current is only approximately scalar. Rough experimental FCNC proxies are applied and currently pass, but absence is proved only for exact Q_proj=qI."
   },
   "yukawa_rg_analysis": {
-    "status": "ONE_LOOP_MATRIX_AND_COMMON_SCALE_SO10_LAYER_COMPLETE__TWO_LOOP_SO10_OPEN",
+    "status": "TWO_LOOP_SO10_210_YUKAWA_THRESHOLD_COMPLETE",
     "proxy_best_point": {
       "v_r_GeV": 300000000000000.0,
       "chi2": 4.954642447825638,
@@ -152,17 +152,30 @@
         "C_n_central": 0.028919494705515837
       }
     },
+    "two_loop_so10_210": {
+      "loaded_from_two_loop_artifact": true,
+      "status": "TWO_LOOP_SO10_210_CLOSED__UNIQUE_CF_AND_FINITE_FCNC_STILL_OPEN",
+      "flag": {
+        "two_loop_so10_complete": true,
+        "actual_one_loop_matrix_beta_system_solved": true,
+        "full_RG_global_fit_minimal": true,
+        "piecewise_threshold_yukawa_matching_complete": true,
+        "unconditional_unique_Cf": false,
+        "conditional_unique_Cf_under_principle": true,
+        "actual_finite_model_fcnc_absence_proved": false,
+        "exact_epsilon_limit_fcnc_absence_proved": true,
+        "experimental_FCNC_bound_applied": true
+      }
+    },
     "flag": {
       "effective_power_law_proxy_applied": true,
       "actual_one_loop_matrix_beta_system_solved": true,
-      "two_loop_so10_complete": false,
+      "two_loop_so10_complete": true,
       "full_RG_global_fit_minimal": true,
       "piecewise_threshold_yukawa_matching_complete": true
     },
-    "missing_for_closure": [
-      "two-loop SO(10)/intermediate-group evolution"
-    ],
-    "reason_not_closed": "Broken-phase one-loop matrix RGE, common-scale re-fit, and one-loop SO(10) H,F threshold layer are in place; a complete two-loop SO(10)+210 Yukawa system remains open."
+    "missing_for_closure": [],
+    "reason_not_closed": "Explicit two-loop SO(10) 10+126 Yukawa betas with 210-aware gauge thresholds are recorded as complete. Unique C_f and finite-model FCNC absence remain separate blockers."
   },
   "ghz37_package": {
     "status": "SOFTWARE_INJECTION_RECOVERY_PASS__NO_EXPERIMENTAL_DETECTION",
@@ -184,8 +197,8 @@
     "finite_model_tree_FCNC_absence_proved": false,
     "full_common_scale_Yukawa_RG_fit": true,
     "piecewise_threshold_yukawa_matching": true,
-    "two_loop_so10_complete": false,
+    "two_loop_so10_complete": true,
     "real_37GHz_detection": false
   },
-  "verdict": "Conditional aligned benchmark, rough FCNC proxies, one-loop matrix Yukawa RGE, and (when present) common-scale/SO(10) threshold layers are audited. Exact unique C_e,C_p,C_n, finite-model FCNC absence, complete two-loop SO(10)+210 Yukawa closure, and experimental realization remain open."
+  "verdict": "Conditional aligned benchmark, rough/expanded FCNC proxies, one-loop matrix Yukawa RGE, common-scale/SO(10) layers, and (when present) explicit two-loop SO(10)+210 threshold Yukawas are audited. Exact unique C_e,C_p,C_n, finite-model FCNC absence, and experimental realization remain open."
 }
