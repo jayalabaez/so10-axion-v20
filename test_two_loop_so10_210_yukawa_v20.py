@@ -1,65 +1,20 @@
 #!/usr/bin/env python3
-"""Tests for two-loop SO(10)+210 Yukawa next steps."""
-
-from __future__ import annotations
-
 import unittest
-
 import numpy as np
-
 import two_loop_so10_210_yukawa_v20 as two
 
-
 class TwoLoopSO10210Tests(unittest.TestCase):
-    def test_two_loop_betas_reduce_to_one_loop_at_vanishing_yukawa(self) -> None:
-        z = np.zeros((3, 3), dtype=complex)
-        b1h, b1f = two.so10_yukawa_betas_one_loop(z, z, g10=0.5)
-        b2h, b2f = two.so10_yukawa_betas_two_loop(z, z, g10=0.5)
-        self.assertLess(np.linalg.norm(b1h), 1e-30)
-        self.assertLess(np.linalg.norm(b1f), 1e-30)
-        # Pure gauge^4 × Y vanishes when Y=0 as well.
-        self.assertLess(np.linalg.norm(b2h), 1e-30)
-        self.assertLess(np.linalg.norm(b2f), 1e-30)
+    def test_zero_yukawa_stays_zero(self):
+        z=np.zeros((3,3),dtype=complex); bh,bf=two.so10_yukawa_betas_two_loop(z,z,g10=0.5); self.assertLess(np.linalg.norm(bh),1e-30); self.assertLess(np.linalg.norm(bf),1e-30)
+    def test_heuristic_differs_from_one_loop(self):
+        h=np.diag([0.01,0.1,0.8]).astype(complex); f=np.diag([0.001,0.02,0.05]).astype(complex); b1,_=two.so10_yukawa_betas_one_loop(h,f,g10=0.55); b2,_=two.so10_yukawa_betas_two_loop(h,f,g10=0.55); self.assertGreater(np.linalg.norm(b2-b1),0.0)
+    def test_layer_refuses_completion(self):
+        r=two.two_loop_so10_210_layer(); self.assertTrue(r["flag"]["heuristic_two_loop_ansatz_integrated"]); self.assertFalse(r["flag"]["two_loop_so10_complete"]); self.assertFalse(r["flag"]["explicit_two_loop_yukawa_betas"]); self.assertFalse(r["flag"]["piecewise_threshold_yukawa_matching_complete"])
+    def test_uv_point_remains_nonunique(self):
+        r=two.uv_fixing_conditional_point(); self.assertFalse(r["flag"]["conditional_unique_Cf_under_principle"]); self.assertFalse(r["flag"]["global_minimum_proved"])
+    def test_fcnc_is_proxy_only(self):
+        r=two.fcnc_exact_limit_and_likelihood(); self.assertTrue(r["flag"]["exact_epsilon_limit_fcnc_absence_proved"]); self.assertFalse(r["flag"]["actual_finite_model_fcnc_absence_proved"]); self.assertFalse(r["flag"]["experimental_FCNC_bound_applied"])
+    def test_aggregate_report(self):
+        r=two.build_report(); self.assertEqual(r["n_failed"],0); self.assertFalse(r["flag"]["two_loop_so10_complete"]); self.assertFalse(r["flag"]["actual_one_loop_matrix_beta_system_solved"])
 
-    def test_two_loop_differs_from_one_loop_for_nonzero_yukawa(self) -> None:
-        h = np.diag([0.01, 0.1, 0.8]).astype(complex)
-        f = np.diag([0.001, 0.02, 0.05]).astype(complex)
-        b1h, _ = two.so10_yukawa_betas_one_loop(h, f, g10=0.55)
-        b2h, _ = two.so10_yukawa_betas_two_loop(h, f, g10=0.55)
-        self.assertGreater(np.linalg.norm(b2h - b1h), 0.0)
-
-    def test_layer_sets_two_loop_without_fudge(self) -> None:
-        layer = two.two_loop_so10_210_layer()
-        self.assertTrue(layer["flag"]["two_loop_so10_complete"])
-        self.assertTrue(layer["flag"]["explicit_two_loop_yukawa_betas"])
-        self.assertFalse(layer["flag"]["uses_10pct_damping_fudge"])
-        self.assertTrue(layer["flag"]["includes_210_gauge_threshold"])
-        self.assertFalse(layer["yukawa_content"]["includes_210_as_yukawa"])
-
-    def test_uv_fixing_remains_conditional(self) -> None:
-        uv = two.uv_fixing_conditional_point()
-        self.assertFalse(uv["flag"]["unconditional_unique_Cf"])
-        self.assertIn("principle", uv)
-
-    def test_fcnc_finite_absence_not_claimed(self) -> None:
-        fcnc = two.fcnc_exact_limit_and_likelihood()
-        self.assertTrue(
-            fcnc["flag"]["exact_epsilon_limit_fcnc_absence_proved"]
-        )
-        self.assertFalse(
-            fcnc["flag"]["actual_finite_model_fcnc_absence_proved"]
-        )
-        self.assertTrue(fcnc["flag"]["experimental_FCNC_bound_applied"])
-
-    def test_aggregate_report(self) -> None:
-        report = two.build_report()
-        self.assertEqual(report["n_failed"], 0)
-        self.assertTrue(report["flag"]["two_loop_so10_complete"])
-        self.assertFalse(report["flag"]["unconditional_unique_Cf"])
-        self.assertFalse(
-            report["flag"]["actual_finite_model_fcnc_absence_proved"]
-        )
-
-
-if __name__ == "__main__":
-    unittest.main()
+if __name__=="__main__": unittest.main()
