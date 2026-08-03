@@ -32,9 +32,9 @@ class TanBetaSemanticVerifierTests(unittest.TestCase):
         errors = validate_report(report)
         self.assertTrue(any("unique tan_beta" in error for error in errors))
 
-    def test_rejects_nonrecomputing_witness(self):
+    def test_rejects_corrupted_witness_chi2(self):
         report = copy.deepcopy(self.report)
-        report["points"][0]["nuisance"][0] += 0.5
+        report["points"][0]["chi2"] *= 1.1
         errors = validate_report(report)
         self.assertTrue(
             any("exceeds recomputation tolerance" in error for error in errors)
