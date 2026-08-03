@@ -1,36 +1,22 @@
 {
   "status": "OPEN_GAPS_AUDITED__NO_UNCONDITIONAL_FULL_CLOSURE",
-  "n_checks": 9,
+  "n_checks": 7,
   "n_failed": 0,
   "failures": [],
   "conditional_cf_region": {
     "status": "CONDITIONAL_CF_REGION__NOT_UNIQUE_FULL_V20",
-    "axioms": {
-      "name": "universal_aligned_hierarchical_portal_benchmark",
-      "assumptions": [
-        "lam_Q_F is generation-universal",
-        "generation-dependent Phi light-heavy Yukawas are set to zero",
-        "y_Q is order one, so v_S/v_Phi suppresses Q-sector mixing",
-        "the displayed tan(beta) is selected from a viable proxy-fit region",
-        "central hadronic matching is used with a documented envelope"
-      ],
-      "scope": "These are additional benchmark assumptions, not consequences of the charge assignments and not a unique UV completion."
-    },
-    "portal_diagnostics": {
-      "projected_shift_norm": 1.913444258902787e-11,
-      "projected_off_diagonal_norm": 1.5623330997925625e-11,
-      "hierarchically_suppressed": true
-    },
     "representative_best_fit_point": {
       "tan_beta": 34.94979626444526,
       "v_r_GeV": 300000000000000.0,
       "chi2": 4.954642447825638,
       "C_e": 0.05877541154303195,
       "C_p_central": -0.4956432569468977,
-      "C_n_central": 0.028940406019627128,
-      "g_ae": 8.086675271031501e-16,
-      "g_ap_central": -1.2521383485263027e-11,
-      "g_an_central": 7.321262220655505e-13
+      "C_n_central": 0.028940406019627128
+    },
+    "portal_diagnostics": {
+      "projected_shift_norm": 1.913444258902787e-11,
+      "projected_off_diagonal_norm": 1.5623330997925625e-11,
+      "hierarchically_suppressed": true
     },
     "viable_tan_beta_samples": [
       11.811361,
@@ -57,23 +43,19 @@
       "unconditional_unique_Cf": false,
       "unique_tan_beta_under_principle": false
     },
-    "reason_not_unique": "The portal assumptions suppress current distortion, but they do not select one tan(beta); multiple viable proxy-fit values remain."
+    "reason_not_unique": "Portal assumptions and a finite scan do not derive one UV point or one tan(beta)."
   },
   "fcnc_analysis": {
-    "status": "EXACT_SCALAR_CURRENT_THEOREM_PROVED__FINITE_MODEL_ONLY_SUPPRESSED",
-    "exact_theorem": "If Q_proj equals q times the identity exactly, then every unitary mass-basis rotation leaves it equal to q times the identity and tree-level axion FCNCs vanish exactly.",
+    "status": "EXACT_QI_THEOREM__FINITE_MODEL_FCNC_PROXY_ONLY",
+    "exact_theorem": "If Q_proj=qI exactly, every unitary mass-basis rotation preserves qI and tree-level axion FCNCs vanish.",
     "finite_hierarchical_benchmark": {
       "departure_from_q_identity": 1.5623331005420602e-11,
       "lepton_off_diagonal_norm": 1.3334956087976289e-11,
       "quark_off_diagonal_norm": 1.5623330997925625e-11,
-      "up_off_diagonal_norm": 1.562039249611784e-11,
-      "down_off_diagonal_norm": 1.5623330997925625e-11,
       "exactly_scalar_to_1e_14": false,
       "numerically_suppressed_to_1e_8": true,
-      "experimental_FCNC_bound_applied": true,
-      "g_lepton_fcnc_proxy": 3.7936434752415446e-23,
-      "g_quark_fcnc_proxy": 2.0766860501264993e-22,
-      "passes_rough_experimental_proxies": true
+      "experimental_FCNC_bound_applied": false,
+      "proxy_bounds_applied": true
     },
     "generation_dependent_counterexample": {
       "lepton_off_diagonal_norm": 2.6950912153821425,
@@ -83,122 +65,62 @@
       "exact_qI_theorem_proved": true,
       "actual_finite_model_fcnc_absence_proved": false,
       "actual_finite_model_fcnc_suppressed": true,
+      "experimental_FCNC_bound_applied": false,
+      "proxy_bounds_applied": true,
       "proved_for_arbitrary_portals": false
     },
-    "reason_not_closed": "The benchmark current is only approximately scalar. Rough experimental FCNC proxies are applied and currently pass, but absence is proved only for exact Q_proj=qI."
+    "reason_not_closed": "Finite current is not exactly scalar and no channel-level likelihood is implemented."
   },
   "yukawa_rg_analysis": {
-    "status": "TWO_LOOP_SO10_210_YUKAWA_THRESHOLD_COMPLETE",
+    "status": "RG_DIAGNOSTICS_AVAILABLE__PRECISION_MATRIX_AND_TWO_LOOP_OPEN",
     "proxy_best_point": {
       "v_r_GeV": 300000000000000.0,
       "chi2": 4.954642447825638,
       "tan_beta": 34.94979626444526,
       "viable_chi2_lt_30": true
     },
-    "gauge_threshold_bookkeeping": {
-      "flavour_best": {
-        "v_r_GeV": 300000000000000.0,
-        "chi2": 4.954642447825638,
-        "tan_beta": 34.94979626444526,
-        "viable_chi2_lt_30": true,
-        "aligned_C_e": 0.05877541154303195,
-        "aligned_C_p_central": -0.4956432569468977,
-        "aligned_C_n_central": 0.028940406019627128
-      },
-      "one_loop_thresholds": {
-        "M_I_GeV": 631385523052.4453,
-        "M_GUT_GeV": 9917564798898132.0,
-        "alpha_inv_GUT_after_spectators": 16.80985384285232
-      },
-      "two_loop_thresholds": {
-        "M_I_GeV": 160982556355.7405,
-        "M_GUT_GeV": 1152023707592892.8,
-        "alpha_inv_GUT_after_spectators": 18.54172405931166
-      },
-      "yukawa_RG_applied": false,
-      "common_scale_identification": {
-        "v_R_vs_M_I": 474.145515769263,
-        "note": "Compares flavour best v_R to gauge intermediate scale M_I. A full common-scale RG fit needs Yukawa anomalous dimensions."
-      },
-      "flag": {
-        "gauge_thresholds_coupled_as_bookkeeping": true,
-        "full_RG_global_fit": false
-      }
-    },
-    "one_loop_matrix_rge": {
-      "loaded_from_push_artifact": true,
-      "integration": {
-        "method": "RK45",
-        "success": true,
-        "n_steps": 21,
-        "mu_start_GeV": 91.1876,
-        "mu_stop_GeV": 160982556355.7405,
-        "message": "The solver successfully reached the end of the integration interval."
-      },
-      "relative_matrix_change_MZ_to_MI": {
-        "Yu": 0.013331288517395037,
-        "Yd": 0.03534276783084551,
-        "Ye": 0.7767802091028542
-      }
-    },
-    "common_scale_so10": {
-      "loaded_from_common_artifact": true,
-      "status": "COMMON_SCALE_AND_ONE_LOOP_SO10_LAYER_COMPLETE__UNIQUE_CF_AND_TWO_LOOP_STILL_OPEN",
-      "representative_aligned_Cf": {
-        "tan_beta": 30.065694127696233,
-        "chi2": 8.257232076182314,
-        "C_e": 0.058758527155376494,
-        "C_p_central": -0.4956212819163641,
-        "C_n_central": 0.028919494705515837
-      }
-    },
-    "two_loop_so10_210": {
-      "loaded_from_two_loop_artifact": true,
-      "status": "TWO_LOOP_SO10_210_CLOSED__UNIQUE_CF_AND_FINITE_FCNC_STILL_OPEN",
-      "flag": {
-        "two_loop_so10_complete": true,
-        "actual_one_loop_matrix_beta_system_solved": true,
-        "full_RG_global_fit_minimal": true,
-        "piecewise_threshold_yukawa_matching_complete": true,
-        "unconditional_unique_Cf": false,
-        "conditional_unique_Cf_under_principle": true,
-        "actual_finite_model_fcnc_absence_proved": false,
-        "exact_epsilon_limit_fcnc_absence_proved": true,
-        "experimental_FCNC_bound_applied": true
-      }
+    "diagnostic_artifacts": {
+      "push": "PHENOMENOLOGY_DIAGNOSTICS_PASS__COMPLETION_FLAGS_OPEN",
+      "common": "COMMON_SCALE_AND_SO10_DIAGNOSTICS_PASS__PRECISION_RG_OPEN",
+      "two_loop": "TWO_LOOP_SO10_210_HEURISTIC_ENVELOPE__FULL_RG_OPEN",
+      "strict_audit": "PASS"
     },
     "flag": {
       "effective_power_law_proxy_applied": true,
-      "actual_one_loop_matrix_beta_system_solved": true,
-      "two_loop_so10_complete": true,
-      "full_RG_global_fit_minimal": true,
-      "piecewise_threshold_yukawa_matching_complete": true
+      "diagnostic_matrix_ODE_integrated": true,
+      "actual_one_loop_matrix_beta_system_solved": false,
+      "reference_validated_type_II_coefficients": false,
+      "running_vevs_included": false,
+      "piecewise_threshold_yukawa_matching_complete": false,
+      "full_RG_global_fit_minimal": false,
+      "two_loop_so10_complete": false
     },
-    "missing_for_closure": [],
-    "reason_not_closed": "Explicit two-loop SO(10) 10+126 Yukawa betas with 210-aware gauge thresholds are recorded as complete. Unique C_f and finite-model FCNC absence remain separate blockers."
+    "missing_for_closure": [
+      "published-convention validated type-II matrix beta functions",
+      "running VEV/scalar-sector treatment",
+      "Pati-Salam Yukawa beta functions between M_I and M_GUT",
+      "explicit component threshold matching at M_I and M_GUT",
+      "reference-derived two-loop representation contractions and scalar-quartic terms",
+      "channel-level FCNC amplitudes, form factors, branching ratios, and experimental likelihoods"
+    ],
+    "reason_not_closed": "The new calculations are useful diagnostic envelopes, but none of the precision matrix-RG, Pati-Salam matching, full two-loop SO(10)+210, or finite-model FCNC-likelihood blockers is closed."
   },
   "ghz37_package": {
     "status": "SOFTWARE_INJECTION_RECOVERY_PASS__NO_EXPERIMENTAL_DETECTION",
-    "injection_recovery": {
-      "injected_GHz": 37.11,
-      "recovered_GHz": 37.11,
-      "pass": true
-    },
     "flag": {
       "software_injection_recovery_certified": true,
       "real_37GHz_detection": false,
       "experimental_discovery": false
     },
-    "hard_falsifier": "A real null result reaching g_agamma <= 2.3e-14 GeV^-1 over 36.6-37.6 GHz kills the all-DM photon benchmark."
+    "hard_falsifier": "A real null at g_agamma<=2.3e-14 GeV^-1 over 36.6-37.6 GHz kills the all-DM benchmark."
   },
   "gap_status": {
     "exact_unique_full_Ce_Cp_Cn": false,
     "conditional_aligned_Cf_region": true,
     "finite_model_tree_FCNC_absence_proved": false,
-    "full_common_scale_Yukawa_RG_fit": true,
-    "piecewise_threshold_yukawa_matching": true,
-    "two_loop_so10_complete": true,
+    "full_common_scale_Yukawa_RG_fit": false,
+    "two_loop_SO10_threshold_closure": false,
     "real_37GHz_detection": false
   },
-  "verdict": "Conditional aligned benchmark, rough/expanded FCNC proxies, one-loop matrix Yukawa RGE, common-scale/SO(10) layers, and (when present) explicit two-loop SO(10)+210 threshold Yukawas are audited. Exact unique C_e,C_p,C_n, finite-model FCNC absence, and experimental realization remain open."
+  "verdict": "The useful new numerical diagnostics survive, but all precision RG, threshold, finite-FCNC, unique-C_f, and experimental blockers remain open."
 }

@@ -1,9 +1,9 @@
 {
-  "status": "PHENOMENOLOGY_LIMITS_PUSHED__UNIQUE_CF_AND_TWO_LOOP_SO10_STILL_OPEN",
-  "n_checks": 9,
+  "status": "PHENOMENOLOGY_DIAGNOSTICS_PASS__COMPLETION_FLAGS_OPEN",
+  "n_checks": 5,
   "n_failed": 0,
   "failures": [],
-  "hierarchical_w_expansion": {
+  "hierarchical_portal_expansion": {
     "epsilon": 1.262771e-06,
     "trace_W_exact": 4.7837717953001195e-12,
     "trace_W_leading_3eps2": 4.783771795323e-12,
@@ -12,7 +12,7 @@
     "frobenius_error_resummed": 3.905933314801037e-12,
     "projected_shift_norm_exact": 1.913444258902787e-11,
     "projected_shift_leading_4eps2": 6.3783623937640005e-12,
-    "asymptotic_statement": "For generation-universal lam_Q_F=\u03bb and y_Q~O(1), W = O(\u03b5\u00b2) with \u03b5=\u03bb v_S/(y_Q v_\u03a6), so Q_proj = I - 4W = I + O(\u03b5\u00b2). Exact vanishing requires \u03b5\u21920 or an exact qI alignment principle.",
+    "asymptotic_statement": "For the stated hierarchical benchmark W=O(epsilon^2). Exact vanishing requires epsilon->0 or an exact scalar-current axiom.",
     "claims_exact_vanishing": false
   },
   "portal_cf_envelope": {
@@ -27,22 +27,22 @@
     ],
     "envelope_all_draws": {
       "C_e": [
-        0.05840488115747952,
-        0.05879693374978636
+        0.058404881144743216,
+        0.05879693374976589
       ],
       "off_diagonal_norm": [
-        1.2819973461326902e-12,
-        1.069143998164011e-09
+        2.1284849661792237e-12,
+        1.5028858539605285e-09
       ],
       "projected_shift_norm": [
-        1.6131505621142464e-12,
-        1.3121994608067122e-09
+        2.6577229037927897e-12,
+        1.9664060578078083e-09
       ]
     },
     "envelope_approx_aligned": {
       "C_e": [
-        0.05840488115747952,
-        0.05879693374978636
+        0.058404881144743216,
+        0.05879693374976589
       ],
       "C_p_central": [
         -0.4956712680990297,
@@ -56,11 +56,11 @@
     "flag": {
       "portal_envelope_constructed": true,
       "unconditional_unique_Cf": false,
-      "reason": "An envelope over free O(1) portals is not a UV-fixed unique prediction. Multiple viable tan(beta) values remain."
+      "reason": "Free portal draws define an envelope, not a prediction."
     }
   },
-  "fcnc_bound_application": {
-    "status": "EXPERIMENTAL_FCNC_BOUNDS_APPLIED__ABSENCE_STILL_UNPROVED",
+  "fcnc_proxy_ledger": {
+    "status": "FCNC_PROXY_LEDGER_ONLY__EXPERIMENTAL_LIKELIHOOD_OPEN",
     "mass_bases": {
       "uses_U_e": true,
       "uses_U_uL": true,
@@ -73,26 +73,26 @@
       "down_off_diagonal_norm": 1.5623330997925625e-11,
       "g_lepton_fcnc_proxy": 3.7936434752415446e-23,
       "g_quark_fcnc_proxy": 2.0766860501264993e-22,
-      "lepton_bound": 1e-12,
-      "quark_bound": 1e-12,
-      "passes_lepton_bound": true,
-      "passes_quark_bound": true,
+      "illustrative_lepton_scale": 1e-12,
+      "illustrative_quark_scale": 1e-12,
+      "passes_illustrative_scales": true,
       "scalar_departure": 1.5623331005420602e-11,
       "exactly_scalar_to_1e_14": false
     },
     "flag": {
-      "experimental_FCNC_bound_applied": true,
-      "hierarchical_benchmark_passes_rough_bounds": true,
+      "proxy_bounds_applied": true,
+      "experimental_FCNC_bound_applied": false,
+      "channel_amplitudes_computed": false,
       "actual_finite_model_fcnc_absence_proved": false,
-      "reason": "Rough \u03bc\u2192e a / K-sector style proxies constrain the numerical off-diagonals, but absence is proved only for exact Q_proj=qI."
+      "reason": "Matrix norms times a representative mass are not branching ratios, form-factor calculations, or an experimental likelihood."
     }
   },
   "one_loop_matrix_yukawa_rge": {
-    "status": "ONE_LOOP_MATRIX_YUKAWA_RGE_SOLVED__TWO_LOOP_SO10_OPEN",
+    "status": "DIAGNOSTIC_MATRIX_ODE_INTEGRATED__VALIDATED_2HDM_RGE_OPEN",
     "integration": {
       "method": "RK45",
       "success": true,
-      "n_steps": 21,
+      "n_steps": 10,
       "mu_start_GeV": 91.1876,
       "mu_stop_GeV": 160982556355.7405,
       "message": "The solver successfully reached the end of the integration interval."
@@ -100,130 +100,106 @@
     "gauge_anchor": {
       "scheme": "two-loop-corrected",
       "M_I_GeV": 160982556355.7405,
-      "M_GUT_GeV": 1152023707592892.8,
-      "two_loop_gauge_chain": true
-    },
-    "low_scale_max_abs_Y": {
-      "Yu": 0.97440083460268,
-      "Yd": 0.97440083460268,
-      "Ye": 0.4078676836469043
-    },
-    "mi_scale_max_abs_Y": {
-      "Yu": 0.986759534080813,
-      "Yd": 1.0086525606226255,
-      "Ye": 0.7248353320373475
+      "M_GUT_GeV": 1152023707592892.8
     },
     "relative_matrix_change_MZ_to_MI": {
-      "Yu": 0.013331288517395037,
-      "Yd": 0.03534276783084551,
-      "Ye": 0.7767802091028542
+      "Yu": 0.4242918189226624,
+      "Yd": 0.38953198737522116,
+      "Ye": 0.10412331761725958
     },
     "running_masses_at_MI_GeV": {
-      "up_descending_SVD": [
-        171.74662453944634,
-        3.0760859051970058,
-        0.15445239696385082
-      ],
-      "down_descending_SVD": [
-        4.3269335920896985,
-        0.07732513382718056,
-        0.0038825453712716335
-      ],
-      "charged_lepton_descending_SVD": [
-        3.157968720886811,
-        0.17634138298898017,
-        0.0008526555258160522
-      ],
       "up": [
-        0.15445239696385082,
-        3.0760859051970058,
-        171.74662453944634
+        0.09479159955742154,
+        1.8878269245402068,
+        97.64447188069943
       ],
       "down": [
-        0.0038825453712716335,
-        0.07732513382718056,
-        4.3269335920896985
+        0.0024696889428980776,
+        0.04918527513346338,
+        2.5519432856007356
       ],
       "charged_lepton": [
-        0.0008526555258160522,
-        0.17634138298898017,
-        3.157968720886811
+        0.000542375232971744,
+        0.11216257720456849,
+        1.9622398334857747
       ],
-      "ordering": "light_to_heavy in up/down/charged_lepton keys"
+      "ordering": "light_to_heavy"
     },
     "flag": {
-      "actual_one_loop_matrix_beta_system_solved": true,
+      "diagnostic_matrix_ode_integrated": true,
+      "actual_one_loop_matrix_beta_system_solved": false,
+      "reference_validated_type_II_coefficients": false,
+      "running_vevs_included": false,
       "two_loop_so10_complete": false,
       "full_RG_global_fit_minimal": false,
       "piecewise_threshold_yukawa_matching_complete": false,
-      "reason_still_open": "Broken-phase one-loop Y_u,Y_d,Y_e matrix betas are solved MZ\u2192M_I, but SO(10)/210 two-loop Yukawa evolution, full threshold matching of H,F, and a common-scale global re-fit remain open."
+      "reason_still_open": "The ODE is a diagnostic ansatz. Published-convention validation, VEV running, scalar-sector dependence, and threshold matching remain."
     }
   },
   "common_scale_sensitivity": {
-    "status": "COMMON_SCALE_SENSITIVITY_ONLY__GLOBAL_REFIT_OPEN",
+    "status": "COMMON_SCALE_SENSITIVITY_ONLY__PRECISION_TARGETS_OPEN",
     "mass_shifts": {
       "m_u": {
-        "low_GeV": 0.18947640020722747,
-        "MI_GeV": 0.15445239696385082,
-        "ratio_MI_over_low": 0.8151537436584639
+        "low_GeV": 0.00216,
+        "MI_GeV_diagnostic": 0.09479159955742154,
+        "ratio_MI_over_low": 43.884999795102566
       },
       "m_c": {
-        "low_GeV": 3.773298762156779,
-        "MI_GeV": 3.0760859051970058,
-        "ratio_MI_over_low": 0.8152245817499875
+        "low_GeV": 1.27,
+        "MI_GeV_diagnostic": 1.8878269245402068,
+        "ratio_MI_over_low": 1.4864778933387455
       },
       "m_t": {
-        "low_GeV": 169.59557877220786,
-        "MI_GeV": 171.74662453944634,
-        "ratio_MI_over_low": 1.0126833835104136
+        "low_GeV": 172.69,
+        "MI_GeV_diagnostic": 97.64447188069943,
+        "ratio_MI_over_low": 0.5654321146603708
       },
       "m_d": {
         "low_GeV": 0.00467,
-        "MI_GeV": 0.0038825453712716335,
-        "ratio_MI_over_low": 0.8313801651545254
+        "MI_GeV_diagnostic": 0.0024696889428980776,
+        "ratio_MI_over_low": 0.528841315395734
       },
       "m_s": {
-        "low_GeV": 0.09300000000000001,
-        "MI_GeV": 0.07732513382718056,
-        "ratio_MI_over_low": 0.8314530519051673
+        "low_GeV": 0.093,
+        "MI_GeV_diagnostic": 0.04918527513346338,
+        "ratio_MI_over_low": 0.5288739261662729
       },
       "m_b": {
         "low_GeV": 4.18,
-        "MI_GeV": 4.3269335920896985,
-        "ratio_MI_over_low": 1.035151577054952
+        "MI_GeV_diagnostic": 2.5519432856007356,
+        "ratio_MI_over_low": 0.6105127477513722
       },
       "m_e": {
-        "low_GeV": 0.0005110000000000221,
-        "MI_GeV": 0.0008526555258160522,
-        "ratio_MI_over_low": 1.6686018117730241
+        "low_GeV": 0.000511,
+        "MI_GeV_diagnostic": 0.000542375232971744,
+        "ratio_MI_over_low": 1.0613996731345285
       },
       "m_mu": {
-        "low_GeV": 0.10566000000000018,
-        "MI_GeV": 0.17634138298898017,
-        "ratio_MI_over_low": 1.6689511923999607
+        "low_GeV": 0.10566,
+        "MI_GeV_diagnostic": 0.11216257720456849,
+        "ratio_MI_over_low": 1.0615424683377672
       },
       "m_tau": {
-        "low_GeV": 1.7769999999999995,
-        "MI_GeV": 3.157968720886811,
-        "ratio_MI_over_low": 1.7771349020184648
+        "low_GeV": 1.777,
+        "MI_GeV_diagnostic": 1.9622398334857747,
+        "ratio_MI_over_low": 1.1042430126537843
       }
     },
-    "ordering_note": "Singular values are reported light\u2192heavy. Low-scale values are from the Clebsch-consistent H,F matrices, not independent PDG targets, so this is an RGE sensitivity diagnostic only.",
+    "ordering_note": "Diagnostic singular-value ratios only.",
     "flag": {
       "sensitivity_reported": true,
       "global_fit_replaced_by_common_scale_targets": false
     }
   },
   "advances": {
-    "portal_landscape_envelope": true,
-    "analytic_hierarchical_W_expansion": true,
-    "quark_mass_bases_from_flavour_SVD": true,
-    "experimental_FCNC_bound_applied": true,
-    "one_loop_matrix_Yukawa_RGE_solved": true,
+    "portal_envelope_constructed": true,
+    "hierarchical_W_expansion_controlled": true,
+    "fcnc_proxy_ledger_constructed": true,
+    "diagnostic_matrix_ODE_integrated": true,
+    "one_loop_matrix_Yukawa_RGE_solved": false,
     "unconditional_unique_Cf": false,
     "finite_model_fcnc_absence_proved": false,
-    "two_loop_so10_yukawa_complete": false,
-    "common_scale_global_refit": false
+    "two_loop_so10_yukawa_complete": false
   },
-  "verdict": "Pushed the open phenomenology to its current mathematical limit: portal C_f envelopes, \u03b5\u00b2 hierarchical W control, SVD quark bases with rough FCNC bounds, and an explicit one-loop matrix Yukawa RGE MZ\u2192M_I. Unique UV-fixed C_e,C_p,C_n, exact finite-model FCNC absence, and two-loop SO(10)/210 Yukawa closure remain open."
+  "verdict": "Useful portal, FCNC-proxy, and matrix-ODE diagnostics were executed. They do not constitute a validated experimental likelihood or a complete one-loop/two-loop Yukawa-RG solution."
 }

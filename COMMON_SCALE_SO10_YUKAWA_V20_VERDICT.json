@@ -1,143 +1,150 @@
 {
-  "status": "COMMON_SCALE_AND_ONE_LOOP_SO10_LAYER_COMPLETE__UNIQUE_CF_AND_TWO_LOOP_STILL_OPEN",
+  "status": "COMMON_SCALE_AND_SO10_DIAGNOSTICS_PASS__PRECISION_RG_OPEN",
   "n_checks": 5,
   "n_failed": 0,
   "failures": [],
   "common_scale_refit": {
-    "status": "COMMON_SCALE_REFIT_VIABLE",
+    "status": "COMMON_SCALE_PROXY_WITNESS__PRECISION_REFIT_OPEN",
     "scale_GeV": 160982556355.7405,
     "mass_target_construction": {
+      "status": "CLIPPED_DIAGNOSTIC_TARGETS__PRECISION_COMMON_SCALE_OPEN",
       "scale_GeV": 160982556355.7405,
       "targets": {
-        "m_u": 0.001760732086302282,
-        "m_c": 1.035335218822484,
-        "m_t": 174.88029349841332,
-        "m_d": 0.0038825453712716335,
-        "m_s": 0.07732513382718055,
-        "m_b": 4.326933592089699,
-        "m_e": 0.0008526555258160152,
-        "m_mu": 0.17634138298897986,
-        "m_tau": 3.157968720886812
+        "m_u": 0.0108,
+        "m_c": 1.8878269245402068,
+        "m_t": 97.64447188069943,
+        "m_d": 0.0024696889428980776,
+        "m_s": 0.04918527513346338,
+        "m_b": 2.5519432856007356,
+        "m_e": 0.000542375232971744,
+        "m_mu": 0.11216257720456849,
+        "m_tau": 1.9622398334857747
       },
       "ratios_MI_over_low_clipped": {
-        "m_u": 0.8151537436584639,
-        "m_c": 0.8152245817499875,
-        "m_t": 1.0126833835104136,
-        "m_d": 0.8313801651545254,
-        "m_s": 0.8314530519051673,
-        "m_b": 1.035151577054952,
-        "m_e": 1.6686018117730241,
-        "m_mu": 1.6689511923999607,
-        "m_tau": 1.7771349020184648
+        "m_u": 5.0,
+        "m_c": 1.4864778933387455,
+        "m_t": 0.5654321146603708,
+        "m_d": 0.528841315395734,
+        "m_s": 0.5288739261662729,
+        "m_b": 0.6105127477513722,
+        "m_e": 1.0613996731345285,
+        "m_mu": 1.0615424683377672,
+        "m_tau": 1.1042430126537843
       },
-      "clip_note": "Ratios are clipped to [0.05, 5] to suppress hierarchical SVD noise on the lightest eigenvalues; this is a controlled common-scale proxy, not a precision mass library.",
-      "rge_status": "ONE_LOOP_MATRIX_YUKAWA_RGE_SOLVED__TWO_LOOP_SO10_OPEN"
+      "clipped_channels": [
+        "m_u"
+      ],
+      "clip_note": "Clipping and diagnostic singular-value ratios prevent these targets from serving as a precision common-scale data set.",
+      "rge_status": "DIAGNOSTIC_MATRIX_ODE_INTEGRATED__VALIDATED_2HDM_RGE_OPEN",
+      "flag": {
+        "diagnostic_targets_constructed": true,
+        "precision_common_scale_targets": false,
+        "validated_one_loop_matrix_rge": false
+      }
     },
     "v_r_grid_GeV": [
-      300000000000000.0,
-      100000000000000.0,
-      160982556355.7405,
       30000000000000.0,
-      631385500000.0
+      100000000000000.0,
+      300000000000000.0
     ],
     "points": [
       {
-        "v_r_GeV": 300000000000000.0,
-        "chi2": 36.70898252719056,
-        "tan_beta": 29.33650555537953,
-        "viable_chi2_lt_30": false
-      },
-      {
-        "v_r_GeV": 100000000000000.0,
-        "chi2": 8.257232076182314,
-        "tan_beta": 30.065694127696233,
+        "v_r_GeV": 30000000000000.0,
+        "chi2": 14.433710929727106,
+        "tan_beta": 11.81136097603499,
         "viable_chi2_lt_30": true
       },
       {
-        "v_r_GeV": 160982556355.7405,
-        "chi2": 47154100.69447139,
-        "tan_beta": 1.500000000005732,
-        "viable_chi2_lt_30": false
+        "v_r_GeV": 100000000000000.0,
+        "chi2": 8.142209554522637,
+        "tan_beta": 47.01884275626789,
+        "viable_chi2_lt_30": true
       },
       {
-        "v_r_GeV": 30000000000000.0,
-        "chi2": 62.59848174495362,
-        "tan_beta": 16.702250843047963,
-        "viable_chi2_lt_30": false
-      },
-      {
-        "v_r_GeV": 631385500000.0,
-        "chi2": 1219.6380740667685,
-        "tan_beta": 1.500344831789639,
-        "viable_chi2_lt_30": false
+        "v_r_GeV": 300000000000000.0,
+        "chi2": 4.954642447825638,
+        "tan_beta": 34.94979626444526,
+        "viable_chi2_lt_30": true
       }
     ],
     "best_point": {
-      "v_r_GeV": 100000000000000.0,
-      "chi2": 8.257232076182314,
-      "chi2_flavour_only": 0.7591209331964109,
+      "v_r_GeV": 300000000000000.0,
+      "chi2": 4.954642447825638,
+      "chi2_flavour_only": 4.954642447825638,
       "params": [
-        0.35976433113928097,
-        0.07182851959845757,
-        -1.0733342200504519,
-        -2.0515705565947435,
-        0.025709788268838074,
-        0.2329665603751998,
-        4.300580134277912,
-        -3.217071250220367,
-        1.2409125638359217,
-        -0.3513649762083668,
-        0.26482553486372173,
-        -0.34491726932634503,
-        -9.72900343415845
+        0.7986541674572487,
+        -11.064797599872715,
+        -1.4239880359551829,
+        0.0023304411005953046,
+        1.5543868977392656,
+        -2.1789788598197504,
+        0.3547142582770927,
+        -2.3565648538244615,
+        4.150983172202267,
+        0.5938115167978253,
+        -1.6285148578385946,
+        0.3637190938218407,
+        -9.823463135184198
       ],
-      "tan_beta": 30.065694127696233,
+      "tan_beta": 34.94979626444526,
       "viable_chi2_lt_30": true,
       "pulls": {
-        "sin2_th12": 0.15156435792804124,
-        "sin2_th23": -0.07299826146581016,
-        "sin2_th13": -0.0696317610502685,
-        "dm21": 0.04110874323568393,
-        "dm31": 0.006098019678137112,
-        "delta_deg": 0.3987538563971652,
-        "up_clebsch_mismatch": 0.7346140890706399,
-        "sum_mnu": 0.15994448352840973
+        "sin2_th12": -0.17312249114663966,
+        "sin2_th23": 0.08372404892032319,
+        "sin2_th13": 0.027010974772643158,
+        "dm21": -0.039090363925778276,
+        "dm31": 0.007368720924220279,
+        "delta_deg": 0.7121660892264629,
+        "up_clebsch_mismatch": 0.4632220399748818,
+        "sum_mnu": 0.18284944673099476,
+        "ckm_s12": 1.1719004108172906,
+        "ckm_s23": -0.22142161916403197,
+        "ckm_s13": -1.6546244781580313
       },
       "observables": {
-        "sum_mnu_eV": 0.06639777934113639,
-        "dm21_eV2": 7.498221748647137e-05,
-        "dm31_eV2": 0.0025131524504919535,
-        "sin2_th12": 0.3098187722951365,
-        "sin2_th23": 0.4689050260780128,
-        "sin2_th13": 0.02210822094336984,
-        "delta_cp_deg": 198.04361502609922,
-        "tan_beta": 30.065694127696233,
-        "up_clebsch_mismatch": 0.25711493117472395,
-        "perturbative_4pi": 1.0
+        "mnu_eV": [
+          0.006175309534961562,
+          0.01062808859225099,
+          0.05051057974202724
+        ],
+        "sum_mnu_eV": 0.06731397786923979,
+        "dm21_eV2": 7.482181927214845e-05,
+        "dm31_eV2": 0.0025131842180231055,
+        "sin2_th12": 0.3059225301062403,
+        "sin2_th23": 0.4712558607338048,
+        "sin2_th13": 0.022166206584863585,
+        "delta_cp_deg": 236.9258131229262,
+        "takagi_reconstruction": true,
+        "charged_lepton_basis_included": true,
+        "tan_beta": 34.94979626444526,
+        "y10_max": 0.5704672986201206,
+        "y126_max": 0.2794888844584721,
+        "up_clebsch_mismatch": 0.16212771399120862,
+        "perturbative_4pi": true
       },
       "aligned_Cf": {
         "classification": "ALIGNED_CURRENT_BENCHMARK_NOT_FULL_V20",
-        "tan_beta": 30.065694127696233,
-        "sin2_beta": 0.9988949616436049,
-        "cos2_beta": 0.0011050383563950827,
+        "tan_beta": 34.94979626444526,
+        "sin2_beta": 0.9991819962337484,
+        "cos2_beta": 0.0008180037662516293,
         "tree": {
-          "C_u0": 6.500225625839082e-05,
-          "C_c0": 6.500225625839082e-05,
-          "C_t0": 6.500225625839082e-05,
-          "C_d0": 0.058758527155376494,
-          "C_s0": 0.058758527155376494,
-          "C_b0": 0.058758527155376494,
-          "C_e0": 0.058758527155376494
+          "C_u0": 4.8117868602930826e-05,
+          "C_c0": 4.8117868602930826e-05,
+          "C_t0": 4.8117868602930826e-05,
+          "C_d0": 0.05877541154303195,
+          "C_s0": 0.05877541154303195,
+          "C_b0": 0.05877541154303195,
+          "C_e0": 0.05877541154303195
         },
-        "C_e": 0.058758527155376494,
-        "C_p_central": -0.4956212819163641,
-        "C_n_central": 0.028919494705515837,
-        "g_ae": 8.084352215241071e-16,
-        "g_ap_central": -1.2520828332377246e-11,
-        "g_an_central": 7.315972135440963e-13,
-        "TRGB_limit_over_abs_g_ae": 160.80447330698527,
-        "SN1987A_quadratic_lhs_central": 9.131072352827804e-23,
-        "SN1987A_amplitude_margin_central": 95.11064603928804,
+        "C_e": 0.05877541154303195,
+        "C_p_central": -0.4956432569468977,
+        "C_n_central": 0.028940406019627128,
+        "g_ae": 8.086675271031501e-16,
+        "g_ap_central": -1.2521383485263027e-11,
+        "g_an_central": 7.321262220655505e-13,
+        "TRGB_limit_over_abs_g_ae": 160.75827907383965,
+        "SN1987A_quadratic_lhs_central": 9.131625229126398e-23,
+        "SN1987A_amplitude_margin_central": 95.10776674800212,
         "hadronic_uncertainty": {
           "model_independent_Cp": 0.03,
           "model_independent_Cn": 0.03,
@@ -147,75 +154,68 @@
     },
     "any_viable": true,
     "viable_tan_beta_samples": [
-      30.065694
+      11.811361,
+      34.949796,
+      47.018843
     ],
     "flag": {
-      "full_RG_global_fit_minimal": true,
+      "proxy_witness_available": true,
+      "full_RG_global_fit_minimal": false,
+      "precision_common_scale_refit": false,
+      "global_minimum_proved": false,
       "unique_tan_beta": false,
       "unconditional_unique_Cf": false,
-      "uses_RGE_scaled_targets": true
+      "uses_RGE_scaled_targets": false
     }
   },
   "so10_threshold_yukawa_layer": {
-    "status": "ONE_LOOP_SO10_THRESHOLD_YUKAWA_LAYER_COMPLETE__TWO_LOOP_OPEN",
+    "status": "SO10_STYLE_ENVELOPE_ONLY__PATI_SALAM_MATCHING_OPEN",
     "broken_phase": {
-      "status": "ONE_LOOP_MATRIX_YUKAWA_RGE_SOLVED__TWO_LOOP_SO10_OPEN",
+      "status": "DIAGNOSTIC_MATRIX_ODE_INTEGRATED__VALIDATED_2HDM_RGE_OPEN",
       "mu_stop_GeV": 160982556355.7405,
       "relative_matrix_change_MZ_to_MI": {
-        "Yu": 0.013331288517395037,
-        "Yd": 0.03534276783084551,
-        "Ye": 0.7767802091028542
+        "Yu": 0.4242918189226624,
+        "Yd": 0.38953198737522116,
+        "Ye": 0.10412331761725958
       }
     },
     "matching_at_MI": {
-      "method": "rebuild H,F from scaled Yd,Ye combinations",
-      "yu_scale": 1.013331288517395,
-      "yd_scale": 1.0353427678308456,
-      "ye_scale": 1.7767802091028542,
-      "max_abs_H": 0.5763683859667525,
-      "max_abs_F": 0.43297833178497996
+      "method": "not performed",
+      "pati_salam_decomposition_included": false,
+      "exact_matching_matrices_included": false
     },
-    "MI_to_MGUT": {
+    "MI_to_MGUT_diagnostic": {
       "n_steps": 5,
-      "relative_change_H": 0.2723736275799634,
-      "relative_change_F": 0.29469714865707614,
-      "max_abs_H": 0.4194101791854301,
-      "max_abs_F": 0.30540950852377
-    },
-    "MGUT_to_vPhi": {
-      "n_steps": 5,
-      "relative_change_H": 0.17129937929558547,
-      "relative_change_F": 0.17902108929458718,
-      "max_abs_H": 0.3475721036547265,
-      "max_abs_F": 0.25074153232040997,
-      "b_light_inferred": 2.6666666666666687
-    },
-    "two_loop_shift_envelope_MI_to_MGUT": {
-      "relative_change_H": 0.29699191242654743,
-      "relative_change_F": 0.32002011373878103,
-      "note": "10% additive damping envelope only; not a complete two-loop SO(10)+210 Yukawa calculation."
+      "relative_change_H": 0.268492344681773,
+      "relative_change_F": 0.2967609967640828,
+      "max_abs_H": 0.46034169837346905,
+      "max_abs_F": 0.24283566052554784,
+      "uses_GUT_coupling_across_broken_interval": true
     },
     "flag": {
-      "piecewise_threshold_yukawa_matching_complete": true,
-      "one_loop_so10_HF_layer_solved": true,
+      "diagnostic_so10_HF_envelope_integrated": true,
+      "one_loop_so10_HF_layer_solved": false,
+      "piecewise_threshold_yukawa_matching_complete": false,
+      "full_RG_global_fit_minimal": false,
       "two_loop_so10_complete": false,
       "includes_210_yukawa_sector": false
     }
   },
   "representative_aligned_Cf": {
-    "tan_beta": 30.065694127696233,
-    "chi2": 8.257232076182314,
-    "C_e": 0.058758527155376494,
-    "C_p_central": -0.4956212819163641,
-    "C_n_central": 0.028919494705515837
+    "tan_beta": 34.94979626444526,
+    "chi2": 4.954642447825638,
+    "C_e": 0.05877541154303195,
+    "C_p_central": -0.4956432569468977,
+    "C_n_central": 0.028940406019627128
   },
   "flag": {
-    "full_RG_global_fit_minimal": true,
-    "piecewise_threshold_yukawa_matching_complete": true,
-    "actual_one_loop_matrix_beta_system_solved": true,
+    "full_RG_global_fit_minimal": false,
+    "piecewise_threshold_yukawa_matching_complete": false,
+    "actual_one_loop_matrix_beta_system_solved": false,
+    "diagnostic_matrix_ODE_integrated": true,
     "two_loop_so10_complete": false,
     "unconditional_unique_Cf": false,
     "finite_model_fcnc_absence_proved": false
   },
-  "verdict": "Common-scale flavour re-fit on RGE-scaled targets and a one-loop SO(10) H,F threshold Yukawa layer (M_I\u2192M_GUT\u2192v_\u03a6) are in place. Unique UV-fixed C_e,C_p,C_n and a complete two-loop SO(10)+210 Yukawa system remain open."
+  "verdict": "A diagnostic common-scale witness and SO(10)-style evolution envelope exist. Clipped targets, unvalidated matrix coefficients, and absent Pati-Salam matching prevent RG or threshold closure."
 }
