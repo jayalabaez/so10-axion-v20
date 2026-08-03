@@ -1,0 +1,53 @@
+{
+  "status": "thermal + string analytic report",
+  "critical_temperatures": {
+    "T_c_Phi_GeV": 3e+16,
+    "T_c_S_GeV": 189415650000.0,
+    "hierarchy": "T_c_Phi >> T_c_S for vPhi >> vS",
+    "note": "coefficients O(0.1\u20131) depend on portal |Phi|^2|S|^2 and g_X"
+  },
+  "restoration_benchmarks": {
+    "T_RH_1e10": {
+      "T_RH_GeV": 10000000000.0,
+      "restores_U1X_Phi": false,
+      "restores_S_vev": false,
+      "benchmark_comment": "For T_RH ~ 1e10 GeV, Phi stays broken while S can be restored, producing a post-inflation discrete-string network from S."
+    },
+    "T_RH_1e15": {
+      "T_RH_GeV": 1000000000000000.0,
+      "restores_U1X_Phi": false,
+      "restores_S_vev": true,
+      "benchmark_comment": "For T_RH ~ 1e10 GeV, Phi stays broken while S can be restored, producing a post-inflation discrete-string network from S."
+    }
+  },
+  "string_network": {
+    "sector": {
+      "ell": 13,
+      "n": -3
+    },
+    "f_a_GeV": 37140323529.411766,
+    "string_tension_mu_GeV2": 2.504777054772799e+24,
+    "G_mu": 4.2244594441479266e-13,
+    "G_mu_vs_PTA_ballpark_1e-10": 0.004224459444147927,
+    "wall_tension_sigma_GeV3": 1693673033.5882351,
+    "N_DW_cover": 17,
+    "physical_wall_number": 1,
+    "gw_comment": "G mu ~ 4e-13 for v_S~6e11 sits below typical PTA signal interpretations around 1e-10, but a dedicated network simulation is required for spectra, especially with nonstandard (13,-3) holonomy."
+  },
+  "entropy": {
+    "assumed_delta_rho_over_rho": 0.01,
+    "dilution_factor": 1.01,
+    "bbn_safe_if_lifetime_lt_1s": true,
+    "note": "Quantitative dilution needs a Boltzmann network; this is a bound."
+  },
+  "open_simulation_tasks": [
+    "lattice evolution of the (13,-3) gauged-string + wall network",
+    "GW spectrum including loop chopping for this holonomy",
+    "full Boltzmann anomalon decay / entropy injection"
+  ],
+  "falsification_hooks": [
+    "PTA detection of a string spectrum incompatible with G mu(v_S)",
+    "Cosmology requiring T_RH that restores U(1)_X without a viable PQ realignment / domain-wall solution"
+  ],
+  "verdict": "Analytic estimates are BBN-safe for tiny portals and give G mu \u226a 10^{-10}. The nonstandard string network is not simulated."
+}

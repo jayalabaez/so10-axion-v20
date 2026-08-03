@@ -45,15 +45,21 @@
 
 1. Reconstruct the `P=8` graph with explicit Spin(10) indices and
    two-component propagator conventions, including its overall sign and
-   group normalization.
+   group normalization. **Done in-repo:** `p8_spin10_reconstruction_v20.py`
+   (unit kernel reproduced; full multi-topology sign review still external).
 2. Fit the full `5 x 2` `X=1` heavy-light mass block and the `16_14` block
    after Spin(10) breaking; verify component lifetimes and induced flavour
-   operators.
+   operators. **Done in-repo:** `heavy_light_spectrum_v20.py`.
 3. Run two-loop Spin(10)×`U(1)_X` RGEs with realistic GUT thresholds.
+   **Partial:** `two_loop_thresholds_v20.py` + `wilson_rg_evolution_v20.py`.
 4. Evolve the dimension-five and dimension-eight Wilson tensors from
    `M_Pl` through `vPhi`, the GUT thresholds and `vS`.
+   **Envelope done:** `wilson_rg_evolution_v20.py` (full mixing basis external).
 5. Analyze finite-temperature restoration, entropy injection and the
    `(ell,n)=(13,-3)` string network.
+   **Analytic estimates done:** `thermal_string_v20.py` (lattice simulation external).
+
+Run: `python run_v20_referee_next.py`
 
 ## Machine audit
 

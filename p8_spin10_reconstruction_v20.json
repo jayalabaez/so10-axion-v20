@@ -1,0 +1,56 @@
+{
+  "status": "explicit P=8 Spin(10) reconstruction",
+  "topology": {
+    "operators": "4 (S\u2020)^2 (16_14 16bar_s) + (S\u2020)^2 [(ss)_10]^2",
+    "renormalizable_insertions": "four s-b propagators with S\u2020, four 16_14-16bar_3 with Phi, four decay portals, two conjugate family Yukawas",
+    "closed_phase": "Phi^4 (S\u2020)^18 (10_H\u2020)^2",
+    "X": 0,
+    "Q_PQ": -68,
+    "P": 8,
+    "loops": 2,
+    "charge_ok": true
+  },
+  "spin10_group_factors": {
+    "channel_gram_diag": [
+      16.0,
+      16.0,
+      16.0,
+      16.0,
+      16.0,
+      16.0,
+      16.0,
+      16.0,
+      16.0,
+      16.0
+    ],
+    "channel_offdiag_max": 0.0,
+    "component_gram_diag_unique": [
+      10
+    ],
+    "unit_10_direction_norm_sq": 16.0,
+    "expected_channel_diag": 16.0,
+    "expected_component_diag": 10,
+    "group_ok": true
+  },
+  "lorentz": {
+    "one_loop_lorentz_factor": -2,
+    "two_loop_factor_product": 4,
+    "nonzero": true
+  },
+  "amplitude_unit_coefficient": {
+    "chirality_chain_GeV_inv2": 1.266514791136171e-36,
+    "one_sided_amplitude_GeV4": 9.817784780242567e-52,
+    "A_over_chi": 3.0215215843972007e-47,
+    "worst_phase_2A_over_chi": 6.043043168794401e-47,
+    "coefficient_abs": 1.0,
+    "group_lorentz_envelope": 1.0,
+    "safe_below_1e-10_for_unit_C": true,
+    "scope": "C_8 still absorbs Wilson x Yukawa x flavour x RG tensors; this reconstruction only makes the Spin(10)/Lorentz normalizations explicit"
+  },
+  "compared_to_engine_benchmark": {
+    "engine_worst_phase": 6.043043168794402e-47,
+    "this_worst_phase": 6.043043168794401e-47,
+    "relative_difference": 1.1102230246251565e-16
+  },
+  "verdict": "The displayed P=8 topology has nonzero Spin(10) and Lorentz factors and reproduces the unit-coefficient kernel. Full diagrammatic sign/convention review across all P=8 topologies remains an external referee task."
+}

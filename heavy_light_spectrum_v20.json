@@ -1,0 +1,63 @@
+{
+  "status": "heavy-light spectrum + component lifetime report",
+  "x1_block_with_extra_portals": {
+    "rank": 2,
+    "n_light_chiral_families": 3,
+    "singular_values_GeV": [
+      1.9867892811800502e+17,
+      1.421938512431974e+17
+    ]
+  },
+  "x1_block_without_extra_portals": {
+    "rank": 2,
+    "n_light_chiral_families": 3
+  },
+  "light_family_count_stable": true,
+  "q_sector": {
+    "M_Q_GeV": 2.5369110970897564e+16,
+    "abs_mix_Qbar_F_GeV": 92039461940.07118,
+    "abs_mix_Qbar_R_GeV": 69308759747.98216
+  },
+  "lifetimes_example_portal_1e-8": {
+    "Q_L": {
+      "lifetime_s": 2.4954527342957568e-24,
+      "width_GeV": 0.26376454574915215,
+      "clebsch_envelope": 3.75
+    },
+    "L_L": {
+      "lifetime_s": 7.48635820288727e-24,
+      "width_GeV": 0.08792151524971739,
+      "clebsch_envelope": 1.25
+    },
+    "u_R": {
+      "lifetime_s": 4.9909054685915136e-24,
+      "width_GeV": 0.13188227287457607,
+      "clebsch_envelope": 1.875
+    },
+    "d_R": {
+      "lifetime_s": 4.9909054685915136e-24,
+      "width_GeV": 0.13188227287457607,
+      "clebsch_envelope": 1.875
+    },
+    "e_R": {
+      "lifetime_s": 1.497271640577454e-23,
+      "width_GeV": 0.043960757624858696,
+      "clebsch_envelope": 0.625
+    },
+    "nu_R": {
+      "lifetime_s": 1.4972716408162075e-23,
+      "width_GeV": 0.043960757617848754,
+      "clebsch_envelope": 0.625
+    }
+  },
+  "all_components_decay_before_1s_at_1e-8": true,
+  "max_portal_floor_for_1s": 3.8694594465069766e-20,
+  "all_components_decay_at_portal_floor": true,
+  "induced_flavour": {
+    "schematic_coeff_GeV_inv": 1.4142135623730954e-37,
+    "mix_angle_assumed": 1e-10,
+    "note": "Induced flavour operators scale as theta^2/M; with tiny portal mixings they remain far below typical mu->e gamma / K mixing bounds. A dedicated fit is still external.",
+    "safe_under_theta_lt_1e-6": true
+  },
+  "falsification_statement": "Exact stable anomalons are falsified under O(1) Clebsches for any portal above the computed floor. Precision lifetimes remain portal- and vacuum-dependent."
+}

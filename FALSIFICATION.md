@@ -27,13 +27,17 @@ python falsify_v20.py
 | Exact $v_R=v_S$ 10+126 flavour fit | viable but higher $\chi^2$ than natural ~$10^{14}$ GeV |
 | Continuous Spin(10) running | rejects 1/40 reset |
 | MADMAX-like 37 GHz forecast | coupling reachable in projection (software only) |
+| 5×2 heavy–light block + component lifetimes | 3 light families; all components decay for $\lambda\gtrsim3.9\times10^{-20}$ |
+| Explicit P=8 Spin(10)/Lorentz reconstruction | group+charge OK; matches unit kernel |
+| Wilson RG envelopes | O(1) Planck Wilson remains quality-safe |
+| Thermal/strings analytic | $G\mu\sim4\times10^{-13}$; lattice network still external |
 
 ## Hard external falsifiers (not done in this repo)
 
 1. **Null result** from a real 36.6–37.6 GHz haloscope at $g_{a\gamma\gamma}\lesssim 2.3\times10^{-14}\,{\rm GeV}^{-1}$ → kills the all-DM benchmark.
-2. **No viable portal set** with full Clebsches giving anomalon lifetimes $<1$ s → kills decay-safe completion.
-3. **Landau pole below $M_{\rm Pl}$** for all allowed vacua in a referee-grade two-loop threshold analysis → kills Planck-cutoff claim.
-4. **Wilson coefficients** forced above quality bounds → kills axion quality.
+2. **Lattice simulation** of the $(\ell,n)=(13,-3)$ network incompatible with cosmology / PTA.
+3. **Complete Wilson operator-basis mixing** forcing quality violation for all allowed UV completions.
+4. **Independent diagrammatic review** finding a lower PQ-breaking closure than $P=8$.
 
 ## What would *not* count as falsification
 

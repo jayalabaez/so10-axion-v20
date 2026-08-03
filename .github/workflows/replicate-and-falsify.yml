@@ -28,9 +28,14 @@ jobs:
         run: python -m unittest discover -v
       - name: Adversarial falsification suite
         run: python falsify_v20.py
+      - name: Referee next-step packages
+        run: python run_v20_referee_next.py
       - name: Upload falsification verdict
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: falsification-verdict
-          path: FALSIFICATION_VERDICT.json
+          path: |
+            FALSIFICATION_VERDICT.json
+            v20_referee_next_verdict.json
+            V20_REFEREE_NEXT_STEPS.md

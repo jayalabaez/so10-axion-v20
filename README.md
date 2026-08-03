@@ -40,13 +40,21 @@ the model.
 - Incomplete renormalizable portal list
 - Unit-coefficient loop numbers are **not** physical predictions
 
-## External next steps (computed here)
+## External / referee next steps (computed here)
 
 | Package | Result |
 |---|---|
 | 10+126 flavour fit at exact $v_R=v_S$ | viable, stressed vs natural ~$10^{14}$ GeV |
 | Continuous thresholds | $\alpha^{-1}(v_\Phi)\sim16.6$, not 40 |
 | 37 GHz forecast | MADMAX-like projection can reach the coupling (**software only**) |
+| Heavy–light spectrum + lifetimes | 3 light families; all components decay above portal floor |
+| Explicit P=8 Spin(10) reconstruction | matches unit kernel |
+| Wilson RG envelopes | O(1) Planck Wilson quality-safe |
+| Thermal / $(\ell,n)=(13,-3)$ strings | analytic $G\mu\sim4\times10^{-13}$; lattice still external |
+
+```bash
+python run_v20_referee_next.py
+```
 
 ## Hard experimental falsifier
 

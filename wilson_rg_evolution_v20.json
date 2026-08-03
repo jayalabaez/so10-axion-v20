@@ -1,0 +1,63 @@
+{
+  "status": "Wilson RG envelope report",
+  "method": "one-loop anomalous-dimension envelope on schematic coefficients",
+  "scales_GeV": {
+    "M_Pl": 2.435e+18,
+    "v_Phi": 1e+17,
+    "M_GUT": 9917600000000000.0,
+    "v_S": 631385500000.0
+  },
+  "operator_running": {
+    "NDA_O1_at_MPl_mild_shrink": {
+      "C5_at_vS": 1.0512508418147892,
+      "C8_at_vS": 1.1051283324163008,
+      "C8_eff_schematic": 1.349702770863388,
+      "quality": {
+        "worst_phase": 8.156312109368873e-47,
+        "safe_below_1e-10": true,
+        "max_abs_C8_for_quality": 1.6547953937577147e+36
+      }
+    },
+    "NDA_O1_at_MPl_mild_grow": {
+      "C5_at_vS": 0.9512477519387154,
+      "C8_at_vS": 0.9048722855684596,
+      "C8_eff_schematic": 0.7409038653453398,
+      "quality": {
+        "worst_phase": 4.477314042208523e-47,
+        "safe_below_1e-10": true,
+        "max_abs_C8_for_quality": 1.6547953937577147e+36
+      }
+    },
+    "large_Wilson_1e6_at_MPl": {
+      "C5_at_vS": 951247.7519387156,
+      "C8_at_vS": 904872.285568461,
+      "C8_eff_schematic": 7.409038653453417e+29,
+      "quality": {
+        "worst_phase": 4.477314042208535e-17,
+        "safe_below_1e-10": true,
+        "max_abs_C8_for_quality": 1.6547953937577147e+36
+      }
+    }
+  },
+  "direct_scalar_dimension21": {
+    "NDA_O1_at_MPl_mild_shrink": {
+      "C21_at_vS": 1.0512501756564605,
+      "worst_phase": 4.837925414602259e-43,
+      "safe_below_1e-10": true
+    },
+    "NDA_O1_at_MPl_mild_grow": {
+      "C21_at_vS": 0.8607593637797503,
+      "worst_phase": 3.961273632402967e-43,
+      "safe_below_1e-10": true
+    },
+    "large_Wilson_1e6_at_MPl": {
+      "C21_at_vS": 860759.3637797495,
+      "worst_phase": 3.961273632402964e-37,
+      "safe_below_1e-10": true
+    }
+  },
+  "quality_bound": 1e-10,
+  "falsification_rule": "If a UV completion forces |C8_eff| above ~1e10/unit or |C21| above the direct-scalar ceiling, axion quality is falsified.",
+  "verdict": "O(1) Planck Wilson coefficients remain safe after this envelope. A forced |C|\u22731e6 at M_Pl with IR growth can threaten quality \u2014 that is a UV-completion constraint, not a prediction of v20.",
+  "honest_limitation": "Full operator mixing, gauge thresholds, and flavour tensors are not included; replace gamma envelopes with a complete basis for referee-grade numbers."
+}

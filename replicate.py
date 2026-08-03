@@ -54,6 +54,7 @@ def main() -> int:
     run([sys.executable, "-m", "unittest", "discover", "-v"])
     run([sys.executable, "falsify_v20.py"])
     run([sys.executable, "run_v20_external_next_steps.py"])
+    run([sys.executable, "run_v20_referee_next.py"])
     print("=== REPLICATION PASS ===", flush=True)
     print(
         "Remember: passing tests means internal consistency of the candidate "
