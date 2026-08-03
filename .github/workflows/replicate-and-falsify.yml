@@ -30,6 +30,8 @@ jobs:
         run: python falsify_v20.py
       - name: Referee next-step packages
         run: python run_v20_referee_next.py
+      - name: Extensive confirm/falsify campaign
+        run: python extensive_confirm_falsify_v20.py
       - name: Upload falsification verdict
         if: always()
         uses: actions/upload-artifact@v4
@@ -39,3 +41,5 @@ jobs:
             FALSIFICATION_VERDICT.json
             v20_referee_next_verdict.json
             V20_REFEREE_NEXT_STEPS.md
+            EXTENSIVE_CONFIRM_FALSIFY_VERDICT.json
+            EXTENSIVE_CONFIRM_FALSIFY.md

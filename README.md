@@ -2,6 +2,7 @@
 
 [![replicate](https://img.shields.io/badge/replicate-python%20replicate.py-blue)](REPLICATE.md)
 [![falsify](https://img.shields.io/badge/falsify-python%20falsify_v20.py-red)](FALSIFICATION.md)
+[![extensive](https://img.shields.io/badge/extensive-confirm%2Ffalsify-orange)](EXTENSIVE_CONFIRM_FALSIFY.md)
 [![license](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 **Candidate field-theory construction — not a dark-matter discovery.**
@@ -54,7 +55,13 @@ the model.
 
 ```bash
 python run_v20_referee_next.py
+python extensive_confirm_falsify_v20.py   # 48-check adversarial campaign
 ```
+
+See [EXTENSIVE_CONFIRM_FALSIFY.md](EXTENSIVE_CONFIRM_FALSIFY.md) for the full
+A–N attack surface (anomalies, portals, MC mass blocks, kernel, flavour,
+Wilson, haloscope, golden anchors). **Passing confirms internal consistency,
+not experimental discovery.**
 
 ## Hard experimental falsifier
 
@@ -76,13 +83,14 @@ Anything stronger is incorrect.
 ## Layout
 
 ```
-replicate.py / falsify_v20.py   # pristine gates
+replicate.py / falsify_v20.py / extensive_confirm_falsify_v20.py
 data/frozen_inputs_v20.json     # frozen physics inputs
 golden/expected_anchors_v20.json
 axion_so10_theory_v20.tex/.pdf  # manuscript
 *_v20.py / test_*.py            # engines + tests
 V20_ERROR_AUDIT.md              # independent overclaim audit
 V20_EXTERNAL_NEXT_STEPS.md      # flavour / RG / haloscope summary
+EXTENSIVE_CONFIRM_FALSIFY.md    # strongest in-repo attack battery
 ```
 
 ## License

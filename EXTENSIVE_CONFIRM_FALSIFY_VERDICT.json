@@ -1,0 +1,403 @@
+{
+  "status": "PASS",
+  "n_extensive_checks": 48,
+  "n_failed": 0,
+  "failures": [],
+  "n_unittest_discovered": 119,
+  "sections": {
+    "A_anomaly": {
+      "n": 5,
+      "n_failed": 0,
+      "checks": [
+        {
+          "section": "A_anomaly",
+          "name": "cancel under permutation ((1, 16), (14, 3), (1, -18))",
+          "passed": true,
+          "detail": "(0, 0, 0)"
+        },
+        {
+          "section": "A_anomaly",
+          "name": "cancel under permutation ((14, 3), (1, 16), (1, -18))",
+          "passed": true,
+          "detail": "(0, 0, 0)"
+        },
+        {
+          "section": "A_anomaly",
+          "name": "cancel under permutation ((1, -18), (14, 3), (1, 16))",
+          "passed": true,
+          "detail": "(0, 0, 0)"
+        },
+        {
+          "section": "A_anomaly",
+          "name": "global X -> -X keeps cancellation",
+          "passed": true,
+          "detail": "both sides flip"
+        },
+        {
+          "section": "A_anomaly",
+          "name": "one-pair discriminant remains -15",
+          "passed": true,
+          "detail": "-15"
+        }
+      ]
+    },
+    "B_portal": {
+      "n": 4,
+      "n_failed": 0,
+      "checks": [
+        {
+          "section": "B_portal",
+          "name": "canonical triple unique in stated portal basis",
+          "passed": true,
+          "detail": "[((1, 16), (14, 3), (1, -18))]"
+        },
+        {
+          "section": "B_portal",
+          "name": "enlarged portal basis cannot create one-pair solution",
+          "passed": true,
+          "detail": "discriminant -15 is portal-independent"
+        },
+        {
+          "section": "B_portal",
+          "name": "free Diophantine lattice admits alternate cubic=1037 triples",
+          "passed": true,
+          "detail": "found_other=2/5000 (uniqueness is NOT lattice-level)"
+        },
+        {
+          "section": "B_portal",
+          "name": "none of those free-lattice alternates lie in the portal catalogue",
+          "passed": true,
+          "detail": "portal_alts=0, canonicalish=0"
+        }
+      ]
+    },
+    "C_mass": {
+      "n": 3,
+      "n_failed": 0,
+      "checks": [
+        {
+          "section": "C_mass",
+          "name": "200 random 5x2 blocks always leave 3 light families",
+          "passed": true,
+          "detail": "unique_counts=[3]"
+        },
+        {
+          "section": "C_mass",
+          "name": "rank-1 adversarial block leaves 4 lights (detected)",
+          "passed": true,
+          "detail": "rank=1"
+        },
+        {
+          "section": "C_mass",
+          "name": "generic assumption is required for 3-family claim",
+          "passed": true,
+          "detail": "non-generic rank drops are physically tuned, not accidental"
+        }
+      ]
+    },
+    "D_frontier": {
+      "n": 3,
+      "n_failed": 0,
+      "checks": [
+        {
+          "section": "D_frontier",
+          "name": "no vacuum closure through P=7",
+          "passed": true,
+          "detail": "None"
+        },
+        {
+          "section": "D_frontier",
+          "name": "first closure at P=8 with Q_PQ=-68",
+          "passed": true,
+          "detail": "Closure(planck_power=8, pq=-68, spectator_vector=0, operators=(Operator(dimension=5, x=0, pq=-17, spectator_vector=-1, n_fermions=2, labels=('Q', 'b', 'Sd', 'Sd')), Operator(dimension=5, x=0, pq=-17, spectator_vector=-1, n_fermions=2, labels=('Q', 'b', 'Sd', 'Sd')), Operator(dimension=5, x=0, pq=-17, spectator_vector=-1, n_fermions=2, labels=('Q', 'b', 'Sd', 'Sd')), Operator(dimension=5, x=0, pq=-17, spectator_vector=-1, n_fermions=2, labels=('Q', 'b', 'Sd', 'Sd')), Operator(dimension=8, x=0, pq=0, spectator_vector=4, n_fermions=4, labels=('s', 's', 's', 's', 'Sd', 'Sd'))))"
+        },
+        {
+          "section": "D_frontier",
+          "name": "P<=7 still empty with dim<=20 catalogue",
+          "passed": true,
+          "detail": "frontier_states=36"
+        }
+      ]
+    },
+    "E_kernel": {
+      "n": 3,
+      "n_failed": 0,
+      "checks": [
+        {
+          "section": "E_kernel",
+          "name": "SciPy log-quadrature matches decimal kernel",
+          "passed": true,
+          "detail": "rel=3.331e-16, analytic=1.000000e+00, numeric=1.000000e+00"
+        },
+        {
+          "section": "E_kernel",
+          "name": "chirality chain positive across mf scan",
+          "passed": true,
+          "detail": "[True, True, True, True, True]"
+        },
+        {
+          "section": "E_kernel",
+          "name": "P=8 amplitude finite and positive",
+          "passed": true,
+          "detail": "9.817785e-52"
+        }
+      ]
+    },
+    "F_flavour": {
+      "n": 5,
+      "n_failed": 0,
+      "checks": [
+        {
+          "section": "F_flavour",
+          "name": "package best fit is finite and perturbative",
+          "passed": true,
+          "detail": "chi2=3.663, tag=natural_1e14, y126=0.2489"
+        },
+        {
+          "section": "F_flavour",
+          "name": "exact v_R=v_S remains viable but stressed (chi2<30)",
+          "passed": true,
+          "detail": "chi2_v20=11.657"
+        },
+        {
+          "section": "F_flavour",
+          "name": "multi-seed v20-scale fits remain finite",
+          "passed": true,
+          "detail": "min=21.530, median=348.019"
+        },
+        {
+          "section": "F_flavour",
+          "name": "natural 1e14 scale often beats or matches v20 median",
+          "passed": true,
+          "detail": "med_nat=10.614, med_v20=348.019"
+        },
+        {
+          "section": "F_flavour",
+          "name": "at least one multi-seed start yields perturbative v20 fit",
+          "passed": true,
+          "detail": "perturbative_seeds=10/10"
+        }
+      ]
+    },
+    "G_seesaw": {
+      "n": 2,
+      "n_failed": 0,
+      "checks": [
+        {
+          "section": "G_seesaw",
+          "name": "Type-I Dirac yukawa perturbative from 1e11 to 1e15 GeV",
+          "passed": true,
+          "detail": "[('1.0e+11', '0.013'), ('6.3e+11', '0.032'), ('1.0e+12', '0.041'), ('1.0e+13', '0.129'), ('1.0e+14', '0.407'), ('1.0e+15', '1.287')]"
+        },
+        {
+          "section": "G_seesaw",
+          "name": "single-scale v_R=v_S is more stressed than 1e14 in full Clebsch fit",
+          "passed": true,
+          "detail": "documented by flavour package chi2_v20 > chi2_natural"
+        }
+      ]
+    },
+    "H_wilson": {
+      "n": 4,
+      "n_failed": 0,
+      "checks": [
+        {
+          "section": "H_wilson",
+          "name": "O(1) mild-shrink safe",
+          "passed": true,
+          "detail": "1.349702770863388"
+        },
+        {
+          "section": "H_wilson",
+          "name": "O(1) mild-grow safe",
+          "passed": true,
+          "detail": "0.7409038653453398"
+        },
+        {
+          "section": "H_wilson",
+          "name": "critical Planck |C| for quality violation is >> 1",
+          "passed": true,
+          "detail": "C_crit_lower_bound~1.861e+07"
+        },
+        {
+          "section": "H_wilson",
+          "name": "forced 1e6 scenario remains tracked",
+          "passed": true,
+          "detail": "safe=True"
+        }
+      ]
+    },
+    "I_halo": {
+      "n": 3,
+      "n_failed": 0,
+      "checks": [
+        {
+          "section": "I_halo",
+          "name": "benchmark frequency inside 36.6\u201337.6 GHz",
+          "passed": true,
+          "detail": "37.1161"
+        },
+        {
+          "section": "I_halo",
+          "name": "full-scale grid can reach coupling in some configs",
+          "passed": true,
+          "detail": "reaches=3/18"
+        },
+        {
+          "section": "I_halo",
+          "name": "mock scan disclaimer forbids discovery claim",
+          "passed": true,
+          "detail": "MOCK DATA ONLY. This is a software radiometer simulation, no"
+        }
+      ]
+    },
+    "J_inject": {
+      "n": 3,
+      "n_failed": 0,
+      "checks": [
+        {
+          "section": "J_inject",
+          "name": "so10_axion_v20_engine.py inject-failure exits nonzero",
+          "passed": true,
+          "detail": "rc=1"
+        },
+        {
+          "section": "J_inject",
+          "name": "so10_axion_v19_engine.py inject-failure exits nonzero",
+          "passed": true,
+          "detail": "rc=1"
+        },
+        {
+          "section": "J_inject",
+          "name": "so10_axion_v17_engine.py inject-failure exits nonzero",
+          "passed": true,
+          "detail": "rc=1"
+        }
+      ]
+    },
+    "K_golden": {
+      "n": 4,
+      "n_failed": 0,
+      "checks": [
+        {
+          "section": "K_golden",
+          "name": "light anomaly matches golden",
+          "passed": true,
+          "detail": "(-34, -272, -16592)"
+        },
+        {
+          "section": "K_golden",
+          "name": "M_I golden",
+          "passed": true,
+          "detail": "6.313855e+11"
+        },
+        {
+          "section": "K_golden",
+          "name": "M_GUT golden",
+          "passed": true,
+          "detail": "9.917565e+15"
+        },
+        {
+          "section": "K_golden",
+          "name": "P=8 reconstruction group_ok",
+          "passed": true,
+          "detail": "group"
+        }
+      ]
+    },
+    "L_z17": {
+      "n": 2,
+      "n_failed": 0,
+      "checks": [
+        {
+          "section": "L_z17",
+          "name": "unique residue pair {2,11}",
+          "passed": true,
+          "detail": "[(2, 11)]"
+        },
+        {
+          "section": "L_z17",
+          "name": "minimal k=5",
+          "passed": true,
+          "detail": "k=5+17m"
+        }
+      ]
+    },
+    "M_lifetime": {
+      "n": 3,
+      "n_failed": 0,
+      "checks": [
+        {
+          "section": "M_lifetime",
+          "name": "all components decay at lambda=1e-8",
+          "passed": true,
+          "detail": "{'Q_L': '2.495e-24', 'L_L': '7.486e-24', 'u_R': '4.991e-24', 'd_R': '4.991e-24', 'e_R': '1.497e-23', 'nu_R': '1.497e-23'}"
+        },
+        {
+          "section": "M_lifetime",
+          "name": "portal floor +1% decays all components before 1s",
+          "passed": true,
+          "detail": "floor=3.869e-20"
+        },
+        {
+          "section": "M_lifetime",
+          "name": "every 16 index has strength 10",
+          "passed": true,
+          "detail": "Clifford identity"
+        }
+      ]
+    },
+    "N_overclaim": {
+      "n": 4,
+      "n_failed": 0,
+      "checks": [
+        {
+          "section": "N_overclaim",
+          "name": "detector armed: correct inequality is Gamma <= massless benchmark",
+          "passed": true,
+          "detail": "armed"
+        },
+        {
+          "section": "N_overclaim",
+          "name": "detector armed: v20 'perturbative to M_Pl with alpha=1/40' claim fails under single RG trajectory",
+          "passed": true,
+          "detail": "armed"
+        },
+        {
+          "section": "N_overclaim",
+          "name": "detector armed: manuscript portal list is incomplete",
+          "passed": true,
+          "detail": "armed"
+        },
+        {
+          "section": "N_overclaim",
+          "name": "continuous alpha_inv(vPhi) != 40",
+          "passed": true,
+          "detail": "16.647"
+        }
+      ]
+    }
+  },
+  "brainstorm_coverage": [
+    "A anomaly conventions",
+    "B portal uniqueness (portal basis) + free-lattice honesty",
+    "C Monte Carlo mass blocks",
+    "D operator frontier P<=7",
+    "E kernel SciPy cross-check",
+    "F flavour multi-seed",
+    "G seesaw v_R scan",
+    "H Wilson |C| boundary",
+    "I haloscope sensitivity grid",
+    "J injected engine failures",
+    "K golden anchors",
+    "L Z17 residue uniqueness",
+    "M lifetime floors + Clifford",
+    "N soft-overclaim detectors"
+  ],
+  "cannot_confirm_in_repo": [
+    "physical detection of the 153.5 ueV axion",
+    "lattice (13,-3) string network",
+    "independent human referee diagrammatic audit"
+  ],
+  "verdict": "Extensive in-repo confirmation battery completed. Hard internal structure survives adversarial attacks; soft overclaims remain correctly flagged. This confirms consistency of the candidate theory, not that nature realizes it."
+}
