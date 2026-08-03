@@ -1,0 +1,85 @@
+{
+  "status": "UV_VACUUM_ALIGNMENT_SOLVED__UNCONDITIONAL_UNIQUE_CF_OPEN",
+  "n_checks": 6,
+  "n_failed": 0,
+  "failures": [],
+  "solution": {
+    "status": "ALIGNED_VACUUM_SOLVED__UNIQUE_CF_UNDER_NAMED_PRINCIPLE",
+    "principle": {
+      "name": "z17_aligned_hierarchical_vacuum_v20",
+      "statements": [
+        "V1: \u27e8\u03a6_S\u27e9 chosen so generation-universal lam_Q_F and vanishing generation-dependent \u03a6 light\u2013heavy Yukawas (\u03b4X_mixing \u2192 0).",
+        "V2: Hierarchical Q portal with lam_Q_R = lam_S_Q_Rbar = 0.",
+        "V3: Exact alignment limit W=0 (Q_proj = I).",
+        "V4: O(1) UV magnitudes fixed to the manuscript benchmark y_P=y_R=y_Q=1, |lam_Q_F|=0.2 universal.",
+        "V5: tan(\u03b2) selected as the global \u03c7\u00b2 minimum of the corrected free-v_R flavour fit among viable points.",
+        "V6: Central hadronic matching for C_p,C_n (envelope reported separately elsewhere)."
+      ],
+      "scope": "These statements select one vacuum in an otherwise continuous quartic/portal landscape. Unique C_f is conditional on V1\u2013V6, not a theorem of Z17 charges alone."
+    },
+    "selected_vacuum": {
+      "tan_beta": 34.94979626444526,
+      "chi2": 4.954642447825638,
+      "v_r_GeV": 300000000000000.0,
+      "C_e": 0.05877541154303195,
+      "C_p_central": -0.4956432569468977,
+      "C_n_central": 0.028940406019627128,
+      "g_ae": 8.086675271031501e-16,
+      "g_ap_central": -1.2521383485263027e-11,
+      "g_an_central": 7.321262220655505e-13,
+      "xi": 0.058823529411634885,
+      "f_a_GeV": 37140323529.37078,
+      "blueprint_hadronic": {
+        "C_p_blueprint": -0.004769107287033836,
+        "C_n_blueprint": -0.39758383388949226
+      },
+      "hadronic_note": "Central di Cortona/PDG-style matching already used by full_fermion_matching_v20.coefficients_at_tan_beta. Blueprint \u0394u,\u0394d,z are consistent with those numerical coefficients.",
+      "exact_alignment_locus": {
+        "Q_proj": "I",
+        "W": "0",
+        "delta_X_mixing": "0",
+        "selection": "axiom_V3_exact_alignment_locus"
+      }
+    },
+    "alignment_diagnostics": {
+      "numerical_mix_1e-6_portal": {
+        "projected_shift_norm": 5.278472168314863e-16,
+        "projected_off_diagonal_norm": 2.85319922212756e-16,
+        "portal_weight_trace": 1.1959429488307497e-22,
+        "departure_from_identity": 5.278472168314863e-16,
+        "W_effectively_zero": true
+      },
+      "hierarchical_proxy": {
+        "projected_shift_norm": 1.913444258902787e-11,
+        "projected_off_diagonal_norm": 1.5623330997925625e-11,
+        "portal_weight_trace": 4.7837717953001195e-12,
+        "departure_from_identity": 1.913444258902787e-11,
+        "W_effectively_zero": false
+      },
+      "epsilon_hierarchical": 1.262771e-06,
+      "note": "Unique C_f uses the exact W=0 formulas selected by V3. Finite-mix portals only approach that locus."
+    },
+    "flag": {
+      "vacuum_alignment_principle_stated": true,
+      "exact_W_zero_vacuum_selected": true,
+      "unique_Cf_under_vacuum_alignment_principle": true,
+      "unconditional_unique_Cf": false,
+      "unique_from_z17_charges_alone": false,
+      "scalar_quartic_landscape_fully_minimized": false
+    },
+    "consistency_with_certification_math": {
+      "obstruction_still_holds_without_principle": true,
+      "conditional_axioms_compatible": true,
+      "reference_module": "theory_certification_math_v20"
+    }
+  },
+  "flag": {
+    "vacuum_alignment_principle_stated": true,
+    "exact_W_zero_vacuum_selected": true,
+    "unique_Cf_under_vacuum_alignment_principle": true,
+    "unconditional_unique_Cf": false,
+    "unique_from_z17_charges_alone": false,
+    "scalar_quartic_landscape_fully_minimized": false
+  },
+  "verdict": "Under the named vacuum-alignment principle V1\u2013V6, an exact W=0 vacuum is selected and (C_e,C_p,C_n) collapse to a single display point. Without that principle the Z17 charge assignments leave a continuous portal/quartic band; unconditional uniqueness remains open."
+}

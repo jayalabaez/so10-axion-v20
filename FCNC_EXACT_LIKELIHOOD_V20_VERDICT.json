@@ -1,0 +1,180 @@
+{
+  "status": "EXACT_FCNC_BR_AND_POINTWISE_UL_LIKELIHOOD_COMPLETE__FULL_151_CORRELATED_OPEN",
+  "n_checks": 7,
+  "n_failed": 0,
+  "failures": [],
+  "analytical_identities": {
+    "kaon_zero_couplings_zero_br": true,
+    "muon_zero_couplings_zero_br": true,
+    "kaon_KL_plus_KR_identity": true,
+    "lattice_f_plus_0": 0.9704,
+    "lattice_reference": "arXiv:1312.1228"
+  },
+  "hierarchical_universal_benchmark": {
+    "scenario": "hierarchical_universal",
+    "exact_BR_K_to_pi_a": 9.737785334278848e-31,
+    "exact_BR_mu_to_e_a": 2.834977738345154e-32,
+    "NA62_pointwise": {
+      "n_anchor_points_used": 2,
+      "anchors": [
+        {
+          "prediction": 9.737785334278848e-31,
+          "upper_limit_90cl": 2.912e-11,
+          "ratio": 3.3440196889693846e-20,
+          "survives_90cl": true,
+          "neg_log_likelihood": 0.0,
+          "chi2_surrogate": 0.0,
+          "mass_MeV": 0.0
+        },
+        {
+          "prediction": 9.737785334278848e-31,
+          "upper_limit_90cl": 2.975e-11,
+          "ratio": 3.273205154379445e-20,
+          "survives_90cl": true,
+          "neg_log_likelihood": 0.0,
+          "chi2_surrogate": 0.0,
+          "mass_MeV": 1.4
+        }
+      ],
+      "at_v20_mass": {
+        "prediction": 9.737785334278848e-31,
+        "upper_limit_90cl": 2.912e-11,
+        "ratio": 3.3440196889693846e-20,
+        "survives_90cl": true,
+        "neg_log_likelihood": 0.0,
+        "chi2_surrogate": 0.0,
+        "mass_MeV": 1.535e-10
+      },
+      "full_151_point_curve_ingested": false,
+      "correlated_likelihood": false
+    },
+    "TWIST_pointwise": {
+      "n_asymmetry_hypotheses": 3,
+      "rows": [
+        {
+          "prediction": 2.834977738345154e-32,
+          "upper_limit_90cl": 5.8e-05,
+          "ratio": 4.887892652319231e-28,
+          "survives_90cl": true,
+          "neg_log_likelihood": 0.0,
+          "chi2_surrogate": 0.0,
+          "asymmetry_A": -1.0
+        },
+        {
+          "prediction": 2.834977738345154e-32,
+          "upper_limit_90cl": 2.1e-05,
+          "ratio": 1.349989399211978e-27,
+          "survives_90cl": true,
+          "neg_log_likelihood": 0.0,
+          "chi2_surrogate": 0.0,
+          "asymmetry_A": 0.0
+        },
+        {
+          "prediction": 2.834977738345154e-32,
+          "upper_limit_90cl": 1e-05,
+          "ratio": 2.8349777383451535e-27,
+          "survives_90cl": true,
+          "neg_log_likelihood": 0.0,
+          "chi2_surrogate": 0.0,
+          "asymmetry_A": 1.0
+        }
+      ],
+      "survives_all_three": true,
+      "continuous_A_likelihood": false
+    },
+    "combined_neg_log_likelihood": 0.0,
+    "combined_chi2_surrogate": 0.0,
+    "survives_all_vendored_limits": true
+  },
+  "generation_dependent_counterexample": {
+    "scenario": "generation_dependent_counterexample",
+    "exact_BR_K_to_pi_a": 3.65003319938114e-11,
+    "exact_BR_mu_to_e_a": 1.9517061772610018e-07,
+    "NA62_pointwise": {
+      "n_anchor_points_used": 2,
+      "anchors": [
+        {
+          "prediction": 3.65003319938114e-11,
+          "upper_limit_90cl": 2.912e-11,
+          "ratio": 1.2534454668204464,
+          "survives_90cl": false,
+          "neg_log_likelihood": 0.08689437386043103,
+          "chi2_surrogate": 0.17378874772086206,
+          "mass_MeV": 0.0
+        },
+        {
+          "prediction": 3.65003319938114e-11,
+          "upper_limit_90cl": 2.975e-11,
+          "ratio": 1.2269019157583663,
+          "survives_90cl": false,
+          "neg_log_likelihood": 0.0696464409340339,
+          "chi2_surrogate": 0.1392928818680678,
+          "mass_MeV": 1.4
+        }
+      ],
+      "at_v20_mass": {
+        "prediction": 3.65003319938114e-11,
+        "upper_limit_90cl": 2.912e-11,
+        "ratio": 1.2534454668204464,
+        "survives_90cl": false,
+        "neg_log_likelihood": 0.08689437386043103,
+        "chi2_surrogate": 0.17378874772086206,
+        "mass_MeV": 1.535e-10
+      },
+      "full_151_point_curve_ingested": false,
+      "correlated_likelihood": false
+    },
+    "TWIST_pointwise": {
+      "n_asymmetry_hypotheses": 3,
+      "rows": [
+        {
+          "prediction": 1.9517061772610018e-07,
+          "upper_limit_90cl": 5.8e-05,
+          "ratio": 0.003365010650450003,
+          "survives_90cl": true,
+          "neg_log_likelihood": 0.0,
+          "chi2_surrogate": 0.0,
+          "asymmetry_A": -1.0
+        },
+        {
+          "prediction": 1.9517061772610018e-07,
+          "upper_limit_90cl": 2.1e-05,
+          "ratio": 0.009293838939338104,
+          "survives_90cl": true,
+          "neg_log_likelihood": 0.0,
+          "chi2_surrogate": 0.0,
+          "asymmetry_A": 0.0
+        },
+        {
+          "prediction": 1.9517061772610018e-07,
+          "upper_limit_90cl": 1e-05,
+          "ratio": 0.019517061772610016,
+          "survives_90cl": true,
+          "neg_log_likelihood": 0.0,
+          "chi2_surrogate": 0.0,
+          "asymmetry_A": 1.0
+        }
+      ],
+      "survives_all_three": true,
+      "continuous_A_likelihood": false
+    },
+    "combined_neg_log_likelihood": 0.08689437386043103,
+    "combined_chi2_surrogate": 0.17378874772086206,
+    "survives_all_vendored_limits": false
+  },
+  "flag": {
+    "exact_kaon_branching_ratio_implemented": true,
+    "exact_muon_branching_ratio_implemented": true,
+    "lattice_form_factor_f_plus_used": true,
+    "pointwise_ul_likelihood_implemented": true,
+    "official_NA62_anchors_in_likelihood": true,
+    "official_TWIST_asymmetry_limits_in_likelihood": true,
+    "full_151_point_NA62_curve_ingested": false,
+    "full_correlated_experimental_likelihood_implemented": false,
+    "continuous_TWIST_asymmetry_likelihood_implemented": false,
+    "proxy_matrix_norms_replaced": true,
+    "finite_model_fcnc_absence_proved": false,
+    "whole_v20_model_excluded": false
+  },
+  "verdict": "Exact BR(K+\u2192\u03c0+a) and BR(\u03bc\u2192ea) with lattice f+(0) are evaluated and wrapped in a one-sided pointwise UL likelihood on the vendored NA62 and TWIST anchors. The hierarchical benchmark survives; the generation-dependent counterexample is excluded by NA62. The full 151-point correlated NA62 likelihood remains open (curve not vendored; HEPData download blocked)."
+}

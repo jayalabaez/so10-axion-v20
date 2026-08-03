@@ -69,6 +69,9 @@ jobs:
           python pati_salam_yukawa_matching_v20.py
           python portal_yukawa_posterior_v20.py
           python haloscope_37ghz_limit_compare_v20.py
+          python uv_vacuum_alignment_v20.py
+          python yukawa_rge_2loop_v20.py
+          python fcnc_exact_likelihood_v20.py
           python strict_rg_audit_v20.py
           python close_open_gaps_v20.py
       - name: Final honest verdict + ultimate approval gate
@@ -140,6 +143,12 @@ jobs:
             PORTAL_YUKAWA_POSTERIOR_V20.md
             HALOSCOPE_37GHZ_LIMIT_COMPARE_V20_VERDICT.json
             HALOSCOPE_37GHZ_LIMIT_COMPARE_V20.md
+            UV_VACUUM_ALIGNMENT_V20_VERDICT.json
+            UV_VACUUM_ALIGNMENT_V20.md
+            YUKAWA_RGE_2LOOP_V20_VERDICT.json
+            YUKAWA_RGE_2LOOP_V20.md
+            FCNC_EXACT_LIKELIHOOD_V20_VERDICT.json
+            FCNC_EXACT_LIKELIHOOD_V20.md
             STRICT_RG_AUDIT_V20_VERDICT.json
             STRICT_RG_AUDIT_V20.md
             OPEN_GAPS_CLOSURE_V20_VERDICT.json

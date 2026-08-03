@@ -1,6 +1,6 @@
 {
   "status": "PASS",
-  "n_checks": 66,
+  "n_checks": 78,
   "n_failed": 0,
   "failures": [],
   "classification": {
@@ -10,8 +10,13 @@
     "bare_D_mass_interpretation": "NOT_A_PHYSICAL_EIGENMASS",
     "piecewise_component_threshold_matching": "OPEN",
     "pati_salam_one_loop_yukawa_layer": "SOLVED_ON_MI_TO_MGUT",
+    "clebsch_threshold_matching_chain": "IMPLEMENTED_WITH_FACTOR_MINUS_THREE",
+    "published_two_loop_SO10_210_contractions": "OPEN",
     "unique_Cf_from_charges_alone": "IMPOSSIBLE_BY_THEOREM",
     "conditional_unique_Cf_under_named_axioms": "DERIVED",
+    "unique_Cf_under_vacuum_alignment_principle": "DERIVED",
+    "exact_fcnc_pointwise_ul_likelihood": "IMPLEMENTED_ON_VENDORED_ANCHORS",
+    "full_151_point_correlated_NA62_likelihood": "OPEN",
     "portal_sector_posterior": "DISCRETE_GRID_ON_CONDITIONAL_SECTOR",
     "full_portal_yukawa_posterior": "OPEN",
     "complex_F1_F2_orientation_map": "SCANNED_AT_FIXED_NORM_AND_ORDERED_HEAVY_YQ",
@@ -36,12 +41,13 @@
   "required_for_closure": [
     "validated type-II matrix beta functions and running VEVs",
     "explicit component-level Pati-Salam and EW threshold matching of PQ currents",
-    "reference-derived full two-loop SO(10)+210 representation contractions",
+    "reference-derived full two-loop SO(10)+210 representation contractions (SARAH/PyR@TE)",
     "component-specific left/right PQ currents after all thresholds",
     "full complex F1-F2-F3 orientation and all portal magnitudes/phases",
     "full UV portal-Yukawa prior/posterior beyond the conditional sector grid",
-    "continuous NA62/TWIST likelihood information",
-    "real 36.6-37.6 GHz conversion data under the all-DM assumption"
+    "full 151-point correlated NA62 likelihood and continuous TWIST A likelihood",
+    "real 36.6-37.6 GHz conversion data under the all-DM assumption",
+    "a UV principle that uniquely fixes the full scalar-quartic landscape without extra axioms"
   ],
-  "verdict": "Certification math proves unique C_f cannot follow from Z17 charges alone; a conditional unique point exists only under named UV axioms. One-loop PS Yukawa evolution on M_I\u2192M_GUT is solved, and a conditional portal-sector posterior/survival map exists. Orientation NA62 dependence remains mixed. Full UV posterior, component matching, two-loop SO(10)+210, and real 37 GHz detection remain open."
+  "verdict": "Blueprint certification modules are fail-closed: vacuum alignment yields unique C_f only under a named principle; the piecewise Yukawa chain applies the \u22123 lepton Clebsch; exact FCNC BRs enter a pointwise UL likelihood on vendored anchors. Published SO(10)+210 two-loop contractions, full correlated NA62, and unconditional unique C_f remain open."
 }

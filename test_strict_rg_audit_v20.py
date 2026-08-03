@@ -12,12 +12,15 @@ import pati_salam_yukawa_matching_v20 as ps
 import theory_certification_math_v20 as cert
 import portal_yukawa_posterior_v20 as posterior
 import haloscope_37ghz_limit_compare_v20 as halo
+import uv_vacuum_alignment_v20 as vac
+import yukawa_rge_2loop_v20 as rge2
+import fcnc_exact_likelihood_v20 as lik
 import strict_rg_audit_v20 as strict
 
 class StrictRGAuditTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        for module,name in ((channel,"CHANNEL_FCNC_RATES_V20_VERDICT.json"),(na62,"NA62_POINTWISE_LIMIT_V20_VERDICT.json"),(twist,"TWIST_MASSLESS_LIMIT_V20_VERDICT.json"),(ray,"PORTAL_CONSTRAINT_RAY_V20_VERDICT.json"),(spectrum,"PORTAL_BOUNDARY_HEAVY_SPECTRUM_V20_VERDICT.json"),(orientation,"PORTAL_FAMILY_ORIENTATION_MAP_V20_VERDICT.json"),(ps,"PATI_SALAM_YUKAWA_MATCHING_V20_VERDICT.json"),(cert,"THEORY_CERTIFICATION_MATH_V20_VERDICT.json"),(posterior,"PORTAL_YUKAWA_POSTERIOR_V20_VERDICT.json"),(halo,"HALOSCOPE_37GHZ_LIMIT_COMPARE_V20_VERDICT.json")):
+        for module,name in ((channel,"CHANNEL_FCNC_RATES_V20_VERDICT.json"),(na62,"NA62_POINTWISE_LIMIT_V20_VERDICT.json"),(twist,"TWIST_MASSLESS_LIMIT_V20_VERDICT.json"),(ray,"PORTAL_CONSTRAINT_RAY_V20_VERDICT.json"),(spectrum,"PORTAL_BOUNDARY_HEAVY_SPECTRUM_V20_VERDICT.json"),(orientation,"PORTAL_FAMILY_ORIENTATION_MAP_V20_VERDICT.json"),(ps,"PATI_SALAM_YUKAWA_MATCHING_V20_VERDICT.json"),(cert,"THEORY_CERTIFICATION_MATH_V20_VERDICT.json"),(posterior,"PORTAL_YUKAWA_POSTERIOR_V20_VERDICT.json"),(halo,"HALOSCOPE_37GHZ_LIMIT_COMPARE_V20_VERDICT.json"),(vac,"UV_VACUUM_ALIGNMENT_V20_VERDICT.json"),(rge2,"YUKAWA_RGE_2LOOP_V20_VERDICT.json"),(lik,"FCNC_EXACT_LIKELIHOOD_V20_VERDICT.json")):
             report=module.build_report(); module.ROOT.joinpath(name).write_text(json.dumps(report,indent=2,default=str)+"\n",encoding="utf-8")
     def test_current_artifacts_pass_honesty_audit(self):
         r=strict.build_report(); self.assertEqual(r["status"],"PASS"); self.assertEqual(r["n_failed"],0)
@@ -28,6 +31,9 @@ class StrictRGAuditTests(unittest.TestCase):
         self.assertEqual(r["classification"]["full_complex_three_family_orientation"],"OPEN")
         self.assertEqual(r["classification"]["pati_salam_one_loop_yukawa_layer"],"SOLVED_ON_MI_TO_MGUT")
         self.assertEqual(r["classification"]["unique_Cf_from_charges_alone"],"IMPOSSIBLE_BY_THEOREM")
+        self.assertEqual(r["classification"]["unique_Cf_under_vacuum_alignment_principle"],"DERIVED")
+        self.assertEqual(r["classification"]["clebsch_threshold_matching_chain"],"IMPLEMENTED_WITH_FACTOR_MINUS_THREE")
+        self.assertEqual(r["classification"]["exact_fcnc_pointwise_ul_likelihood"],"IMPLEMENTED_ON_VENDORED_ANCHORS")
         self.assertEqual(r["classification"]["portal_sector_posterior"],"DISCRETE_GRID_ON_CONDITIONAL_SECTOR")
         self.assertEqual(r["classification"]["lab_37ghz_limit_comparison"],"EXECUTED__NO_DETECTION")
         self.assertEqual(r["classification"]["whole_model_exclusion"],"NOT_ESTABLISHED")
@@ -46,6 +52,9 @@ class StrictRGAuditTests(unittest.TestCase):
         (root/"THEORY_CERTIFICATION_MATH_V20_VERDICT.json").write_text(json.dumps({"flag":{"mathematical_obstruction_proved":True,"conditional_unique_Cf_under_named_axioms":True,"unconditional_unique_Cf":False}}))
         (root/"PORTAL_YUKAWA_POSTERIOR_V20_VERDICT.json").write_text(json.dumps({"flag":{"portal_sector_posterior_derived":True,"full_portal_yukawa_posterior_derived":False,"survival_fraction_is_probability":False,"whole_v20_model_excluded":whole_model_excluded}}))
         (root/"HALOSCOPE_37GHZ_LIMIT_COMPARE_V20_VERDICT.json").write_text(json.dumps({"flag":{"lab_limit_comparison_executed":True,"real_37GHz_detection":False,"experimental_discovery":False,"all_dm_photon_benchmark_currently_open":True}}))
+        (root/"UV_VACUUM_ALIGNMENT_V20_VERDICT.json").write_text(json.dumps({"flag":{"vacuum_alignment_principle_stated":True,"exact_W_zero_vacuum_selected":True,"unique_Cf_under_vacuum_alignment_principle":True,"unconditional_unique_Cf":False,"unique_from_z17_charges_alone":False,"scalar_quartic_landscape_fully_minimized":False}}))
+        (root/"YUKAWA_RGE_2LOOP_V20_VERDICT.json").write_text(json.dumps({"flag":{"clebsch_threshold_matching_implemented":True,"piecewise_yukawa_chain_integrated":True,"published_210_tensor_contractions":False,"two_loop_so10_complete":False}}))
+        (root/"FCNC_EXACT_LIKELIHOOD_V20_VERDICT.json").write_text(json.dumps({"flag":{"exact_kaon_branching_ratio_implemented":True,"exact_muon_branching_ratio_implemented":True,"pointwise_ul_likelihood_implemented":True,"full_151_point_NA62_curve_ingested":False,"full_correlated_experimental_likelihood_implemented":False,"whole_v20_model_excluded":whole_model_excluded}}))
     def _audit(self, **kwargs):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp); self._write_minimal_artifacts(root,**kwargs)

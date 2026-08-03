@@ -22,10 +22,14 @@ def build_report()->dict[str,Any]:
     cert=read_json("THEORY_CERTIFICATION_MATH_V20_VERDICT.json")
     posterior=read_json("PORTAL_YUKAWA_POSTERIOR_V20_VERDICT.json")
     halo=read_json("HALOSCOPE_37GHZ_LIMIT_COMPARE_V20_VERDICT.json")
+    vac=read_json("UV_VACUUM_ALIGNMENT_V20_VERDICT.json")
+    rge2=read_json("YUKAWA_RGE_2LOOP_V20_VERDICT.json")
+    lik=read_json("FCNC_EXACT_LIKELIHOOD_V20_VERDICT.json")
     p=push.get("one_loop_matrix_yukawa_rge",{}).get("flag",{})
     c=common.get("flag",{}); t=two.get("flag",{}); oldf=two.get("fcnc_limits",{}).get("flag",{})
     ch=channel.get("flag",{}); n=na62.get("flag",{}); w=twist.get("flag",{}); r=ray.get("flag",{}); s=spectrum.get("flag",{}); o=orientation.get("flag",{})
     psf=ps.get("flag",{}); cf=cert.get("flag",{}); pf=posterior.get("flag",{}); hf=halo.get("flag",{})
+    vf=vac.get("flag",{}); rf=rge2.get("flag",{}); lf=lik.get("flag",{})
     counts=(orientation.get("scan") or {}).get("counts",{})
     checks={
         "matrix_rge_open":not p.get("actual_one_loop_matrix_beta_system_solved",False),
@@ -88,7 +92,19 @@ def build_report()->dict[str,Any]:
         "sector_survival_fraction_not_probability":not pf.get("survival_fraction_is_probability",True),
         "lab_37ghz_compare_executed":hf.get("lab_limit_comparison_executed",False),
         "real_37ghz_detection_open":not hf.get("real_37GHz_detection",False),
-        "whole_model_not_rejected":all(not x.get("whole_v20_model_excluded",False) for x in (n,w,r,s,o,pf)),
+        "vacuum_alignment_principle_stated":vf.get("vacuum_alignment_principle_stated",False),
+        "vacuum_unique_cf_under_principle":vf.get("unique_Cf_under_vacuum_alignment_principle",False),
+        "vacuum_unconditional_open":not vf.get("unconditional_unique_Cf",False),
+        "vacuum_quartics_not_overclaimed":not vf.get("scalar_quartic_landscape_fully_minimized",False),
+        "clebsch_threshold_matching_implemented":rf.get("clebsch_threshold_matching_implemented",False),
+        "piecewise_yukawa_chain_integrated":rf.get("piecewise_yukawa_chain_integrated",False),
+        "rge2_published_210_open":not rf.get("published_210_tensor_contractions",False),
+        "rge2_two_loop_so10_open":not rf.get("two_loop_so10_complete",False),
+        "exact_fcnc_br_implemented":lf.get("exact_kaon_branching_ratio_implemented",False) and lf.get("exact_muon_branching_ratio_implemented",False),
+        "pointwise_ul_likelihood_implemented":lf.get("pointwise_ul_likelihood_implemented",False),
+        "full_151_na62_open":not lf.get("full_151_point_NA62_curve_ingested",False),
+        "full_correlated_likelihood_open_exact":not lf.get("full_correlated_experimental_likelihood_implemented",False),
+        "whole_model_not_rejected":all(not x.get("whole_v20_model_excluded",False) for x in (n,w,r,s,o,pf,lf)),
         "all_portals_not_rejected":not n.get("all_portal_parameter_space_excluded",False) and not r.get("full_portal_parameter_space_scanned",False) and not o.get("all_portal_magnitudes_and_phases_scanned",False),
         "correlated_likelihood_open":not n.get("full_correlated_experimental_likelihood_implemented",False) and not r.get("full_correlated_likelihood_implemented",False),
         "component_uv_currents_open":not n.get("component_specific_uv_chiral_currents_derived",False) and not r.get("component_specific_uv_chiral_currents_derived",False) and not o.get("component_specific_uv_chiral_currents_derived",False),
@@ -107,8 +123,13 @@ def build_report()->dict[str,Any]:
             "bare_D_mass_interpretation":"NOT_A_PHYSICAL_EIGENMASS",
             "piecewise_component_threshold_matching":"OPEN",
             "pati_salam_one_loop_yukawa_layer":"SOLVED_ON_MI_TO_MGUT",
+            "clebsch_threshold_matching_chain":"IMPLEMENTED_WITH_FACTOR_MINUS_THREE",
+            "published_two_loop_SO10_210_contractions":"OPEN",
             "unique_Cf_from_charges_alone":"IMPOSSIBLE_BY_THEOREM",
             "conditional_unique_Cf_under_named_axioms":"DERIVED",
+            "unique_Cf_under_vacuum_alignment_principle":"DERIVED",
+            "exact_fcnc_pointwise_ul_likelihood":"IMPLEMENTED_ON_VENDORED_ANCHORS",
+            "full_151_point_correlated_NA62_likelihood":"OPEN",
             "portal_sector_posterior":"DISCRETE_GRID_ON_CONDITIONAL_SECTOR",
             "full_portal_yukawa_posterior":"OPEN",
             "complex_F1_F2_orientation_map":"SCANNED_AT_FIXED_NORM_AND_ORDERED_HEAVY_YQ",
@@ -133,14 +154,15 @@ def build_report()->dict[str,Any]:
         "required_for_closure":[
             "validated type-II matrix beta functions and running VEVs",
             "explicit component-level Pati-Salam and EW threshold matching of PQ currents",
-            "reference-derived full two-loop SO(10)+210 representation contractions",
+            "reference-derived full two-loop SO(10)+210 representation contractions (SARAH/PyR@TE)",
             "component-specific left/right PQ currents after all thresholds",
             "full complex F1-F2-F3 orientation and all portal magnitudes/phases",
             "full UV portal-Yukawa prior/posterior beyond the conditional sector grid",
-            "continuous NA62/TWIST likelihood information",
-            "real 36.6-37.6 GHz conversion data under the all-DM assumption"
+            "full 151-point correlated NA62 likelihood and continuous TWIST A likelihood",
+            "real 36.6-37.6 GHz conversion data under the all-DM assumption",
+            "a UV principle that uniquely fixes the full scalar-quartic landscape without extra axioms"
         ],
-        "verdict":"Certification math proves unique C_f cannot follow from Z17 charges alone; a conditional unique point exists only under named UV axioms. One-loop PS Yukawa evolution on M_I→M_GUT is solved, and a conditional portal-sector posterior/survival map exists. Orientation NA62 dependence remains mixed. Full UV posterior, component matching, two-loop SO(10)+210, and real 37 GHz detection remain open."
+        "verdict":"Blueprint certification modules are fail-closed: vacuum alignment yields unique C_f only under a named principle; the piecewise Yukawa chain applies the −3 lepton Clebsch; exact FCNC BRs enter a pointwise UL likelihood on vendored anchors. Published SO(10)+210 two-loop contractions, full correlated NA62, and unconditional unique C_f remain open."
     }
 
 def write_markdown(r):

@@ -1,6 +1,6 @@
 {
   "status": "OPEN_GAPS_AUDITED__NO_UNCONDITIONAL_FULL_CLOSURE",
-  "n_checks": 28,
+  "n_checks": 33,
   "n_failed": 0,
   "failures": [],
   "conditional_cf_region": {
@@ -264,7 +264,7 @@
     "reason_not_closed": "The conditional NA62 rate boundary and the basis-independent heavy singular spectrum are solved on one fixed portal ray. Bare D is not a physical eigenmass. The rate boundary lies below v_S in the lightest heavy singular value; a second ordered-heavy point is safe. Full piecewise component matching and multidimensional UV portal inference remain open."
   },
   "yukawa_rg_analysis": {
-    "status": "RG_DIAGNOSTICS_AVAILABLE__PS_ONE_LOOP_LAYER__PRECISION_MATRIX_AND_TWO_LOOP_OPEN",
+    "status": "RG_DIAGNOSTICS_AVAILABLE__CLEBSCH_CHAIN__PRECISION_MATRIX_AND_TWO_LOOP_OPEN",
     "proxy_best_point": {
       "v_r_GeV": 300000000000000.0,
       "chi2": 4.954642447825638,
@@ -276,32 +276,37 @@
       "common": "COMMON_SCALE_AND_SO10_DIAGNOSTICS_PASS__PRECISION_RG_OPEN",
       "two_loop": "TWO_LOOP_SO10_210_HEURISTIC_ENVELOPE__FULL_RG_OPEN",
       "strict_audit": "PASS",
-      "pati_salam": "PATI_SALAM_ONE_LOOP_YUKAWA_LAYER_COMPLETE__COMPONENT_MATCHING_OPEN"
+      "pati_salam": "PATI_SALAM_ONE_LOOP_YUKAWA_LAYER_COMPLETE__COMPONENT_MATCHING_OPEN",
+      "yukawa_rge_2loop": "PIECEWISE_YUKAWA_RGE_WITH_CLEBSCH_THRESHOLDS_COMPLETE__PUBLISHED_TWO_LOOP_210_OPEN"
     },
     "flag": {
       "effective_power_law_proxy_applied": true,
       "diagnostic_matrix_ODE_integrated": true,
       "pati_salam_one_loop_yukawa_layer_solved": true,
       "pati_salam_interval_matching": true,
+      "clebsch_threshold_matching_implemented": true,
+      "piecewise_yukawa_chain_integrated": true,
       "actual_one_loop_matrix_beta_system_solved": false,
       "reference_validated_type_II_coefficients": false,
       "running_vevs_included": false,
       "piecewise_threshold_yukawa_matching_complete": false,
       "piecewise_component_threshold_matching_complete": false,
       "full_RG_global_fit_minimal": false,
-      "two_loop_so10_complete": false
+      "two_loop_so10_complete": false,
+      "published_210_tensor_contractions": false
     },
     "missing_for_closure": [
       "validated type-II matrix beta functions and running VEVs",
       "explicit component-level Pati-Salam and EW threshold matching of PQ currents",
-      "reference-derived full two-loop SO(10)+210 representation contractions",
+      "reference-derived full two-loop SO(10)+210 representation contractions (SARAH/PyR@TE)",
       "component-specific left/right PQ currents after all thresholds",
       "full complex F1-F2-F3 orientation and all portal magnitudes/phases",
       "full UV portal-Yukawa prior/posterior beyond the conditional sector grid",
-      "continuous NA62/TWIST likelihood information",
-      "real 36.6-37.6 GHz conversion data under the all-DM assumption"
+      "full 151-point correlated NA62 likelihood and continuous TWIST A likelihood",
+      "real 36.6-37.6 GHz conversion data under the all-DM assumption",
+      "a UV principle that uniquely fixes the full scalar-quartic landscape without extra axioms"
     ],
-    "reason_not_closed": "Certification math proves unique C_f cannot follow from Z17 charges alone; a conditional unique point exists only under named UV axioms. One-loop PS Yukawa evolution on M_I\u2192M_GUT is solved, and a conditional portal-sector posterior/survival map exists. Orientation NA62 dependence remains mixed. Full UV posterior, component matching, two-loop SO(10)+210, and real 37 GHz detection remain open."
+    "reason_not_closed": "Blueprint certification modules are fail-closed: vacuum alignment yields unique C_f only under a named principle; the piecewise Yukawa chain applies the \u22123 lepton Clebsch; exact FCNC BRs enter a pointwise UL likelihood on vendored anchors. Published SO(10)+210 two-loop contractions, full correlated NA62, and unconditional unique C_f remain open."
   },
   "ghz37_package": {
     "status": "SOFTWARE_INJECTION_AND_LITERATURE_COMPARE__NO_EXPERIMENTAL_DETECTION",
@@ -316,16 +321,21 @@
     "hard_falsifier": "A real null at g_agamma<=2.3e-14 GeV^-1 over 36.6-37.6 GHz kills the all-DM benchmark."
   },
   "certification_package": {
-    "status": "CERTIFICATION_MATH_AND_SECTOR_POSTERIOR_AUDITED",
+    "status": "CERTIFICATION_MATH_VACUUM_POSTERIOR_AND_EXACT_FCNC_LIKELIHOOD_AUDITED",
     "math_status": "CERTIFICATION_MATH_COMPLETE__UNCONDITIONAL_UNIQUE_CF_BLOCKED_BY_THEOREM",
     "posterior_status": "PORTAL_SECTOR_POSTERIOR_MAP_COMPLETE__FULL_UV_POSTERIOR_OPEN",
+    "vacuum_status": "UV_VACUUM_ALIGNMENT_SOLVED__UNCONDITIONAL_UNIQUE_CF_OPEN",
+    "fcnc_likelihood_status": "EXACT_FCNC_BR_AND_POINTWISE_UL_LIKELIHOOD_COMPLETE__FULL_151_CORRELATED_OPEN",
     "flag": {
       "mathematical_obstruction_proved": true,
       "conditional_unique_Cf_under_named_axioms": true,
+      "unique_Cf_under_vacuum_alignment_principle": true,
       "unconditional_unique_Cf": false,
       "portal_sector_posterior_derived": true,
       "full_portal_yukawa_posterior_derived": false,
-      "survival_fraction_is_probability": false
+      "survival_fraction_is_probability": false,
+      "exact_fcnc_br_likelihood_implemented": true,
+      "full_correlated_experimental_likelihood_implemented": false
     },
     "selected_conditional_point": {
       "tan_beta": 34.94979626444526,
@@ -340,6 +350,30 @@
       "xi": 0.058823529411634885,
       "f_a_GeV": 37140323529.37078
     },
+    "selected_aligned_vacuum": {
+      "tan_beta": 34.94979626444526,
+      "chi2": 4.954642447825638,
+      "v_r_GeV": 300000000000000.0,
+      "C_e": 0.05877541154303195,
+      "C_p_central": -0.4956432569468977,
+      "C_n_central": 0.028940406019627128,
+      "g_ae": 8.086675271031501e-16,
+      "g_ap_central": -1.2521383485263027e-11,
+      "g_an_central": 7.321262220655505e-13,
+      "xi": 0.058823529411634885,
+      "f_a_GeV": 37140323529.37078,
+      "blueprint_hadronic": {
+        "C_p_blueprint": -0.004769107287033836,
+        "C_n_blueprint": -0.39758383388949226
+      },
+      "hadronic_note": "Central di Cortona/PDG-style matching already used by full_fermion_matching_v20.coefficients_at_tan_beta. Blueprint \u0394u,\u0394d,z are consistent with those numerical coefficients.",
+      "exact_alignment_locus": {
+        "Q_proj": "I",
+        "W": "0",
+        "delta_X_mixing": "0",
+        "selection": "axiom_V3_exact_alignment_locus"
+      }
+    },
     "posterior_scan_summary": {
       "n_points": 2704,
       "n_surviving": 720,
@@ -350,8 +384,10 @@
     "exact_unique_full_Ce_Cp_Cn": false,
     "conditional_aligned_Cf_region": true,
     "conditional_unique_Cf_under_named_axioms": true,
+    "unique_Cf_under_vacuum_alignment_principle": true,
     "uniqueness_obstruction_proved": true,
     "channel_level_FCNC_rates": true,
+    "exact_fcnc_pointwise_ul_likelihood": true,
     "official_NA62_pointwise_limit": true,
     "generation_dependent_kaon_portal_point_excluded": true,
     "conditional_portal_ray_scan": true,
@@ -361,6 +397,7 @@
     "lightest_heavy_equals_vS_boundary": true,
     "piecewise_component_threshold_matching": false,
     "pati_salam_one_loop_yukawa_layer": true,
+    "clebsch_threshold_matching_chain": true,
     "portal_sector_posterior_map": true,
     "full_multidimensional_portal_scan": false,
     "full_portal_yukawa_posterior": false,
@@ -371,9 +408,10 @@
     "finite_model_tree_FCNC_absence_proved": false,
     "full_correlated_experimental_FCNC_likelihood": false,
     "full_common_scale_Yukawa_RG_fit": false,
+    "published_two_loop_SO10_210_contractions": false,
     "two_loop_SO10_threshold_closure": false,
     "lab_37GHz_limit_comparison": true,
     "real_37GHz_detection": false
   },
-  "verdict": "Certification advanced on three fronts: uniqueness obstruction proved with conditional unique C_f under named axioms; one-loop PS Yukawa layer and sector posterior/survival map derived; 37 GHz literature comparison executed with no detection claim. Unconditional unique C_f, component threshold matching, full two-loop SO(10)+210, full UV posterior, and real 37 GHz data remain open."
+  "verdict": "Blueprint modules executed fail-closed: vacuum alignment selects unique C_f under a named principle; piecewise Yukawa RGE applies the \u22123 lepton Clebsch at M_I; exact FCNC BRs enter a pointwise UL likelihood on vendored NA62/TWIST anchors. Unconditional unique C_f, published SO(10)+210 two-loop contractions, full 151-point correlated NA62 likelihood, and real 37 GHz data remain open."
 }
