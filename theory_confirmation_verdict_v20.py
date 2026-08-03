@@ -63,7 +63,8 @@ def build_verdict() -> dict:
                     "exact v_R=v_S flavour chi2~11.7 (viable but worse than ~1e14)",
                     "continuous Spin(10) RG rejects alpha(vPhi)=1/40 reset",
                     "conservative one-loop running not Planck-safe without thresholds",
-                    "fermion C_e/C_p/C_n still require full portal matching (PR #2 correction)",
+                    "fermion C_e/C_p/C_n unique under manuscript-minimal universal ansatz "
+                    "(full_fermion_matching_v20); without ansatz still open",
                 ],
             },
             "SOFT_FALSIFIED_overclaims_only": {
@@ -82,7 +83,7 @@ def build_verdict() -> dict:
                     "real 36.6–37.6 GHz haloscope scan at g~2.3e-14 GeV^{-1}",
                     "NS-radio detection of Doppler-modulated 37 GHz line",
                     "lattice (13,-3) string-network confirmation",
-                    "full generation-dependent portal matrices → unique C_e, C_p, C_n",
+                    "full generation-dependent portals without ansatz (unique C_f need stated ansatz)",
                     "independent human diagrammatic referee",
                     "proof that local DM is this axion (abundance + detection)",
                 ],

@@ -50,6 +50,7 @@ class FermionCouplingAudit(unittest.TestCase):
         )
         self.assertIn("NOT closed", report["verdict"])
         self.assertNotIn("gap is closed", report["verdict"])
+        self.assertIn("full_fermion_matching_v20.py", report["verdict"])
 
     def test_q_portal_diagnostic_is_not_declared_zero(self):
         row = m.q_portal_one_family_diagnostic(lambda_q=1.0, y_q=1.0)

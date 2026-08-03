@@ -101,5 +101,10 @@
     "Run quark coefficients through thresholds and RG evolution.",
     "Propagate correlated hadronic uncertainties into C_p and C_n."
   ],
-  "verdict": "The provisional ERT-like leading-current benchmark lies well below the displayed electron and nucleon bounds, and the universal supernova QCD-axion bound is passed. However, the v20 fermion coupling gap is NOT closed: exact C_e, C_p and C_n remain conditional on the unspecified heavy-light portal matching. The 37 GHz photon benchmark remains an open direct-search target."
+  "full_matching_under_stated_ansatz": {
+    "module": "full_fermion_matching_v20.py",
+    "doc": "FULL_FERMION_MATCHING_V20.md",
+    "note": "Unique C_e, C_p, C_n exist only after declaring the manuscript-minimal flavour-universal unit-Yukawa ansatz; see that module for the closed derivation."
+  },
+  "verdict": "The provisional ERT-like leading-current benchmark lies well below the displayed electron and nucleon bounds, and the universal supernova QCD-axion bound is passed. Exact unique C_e, C_p, C_n are not fixed by charges alone; under the stated manuscript-minimal universal ansatz they are derived in full_fermion_matching_v20.py (portal shifts negligible). The 37 GHz photon benchmark remains an open direct-search target."
 }

@@ -61,6 +61,7 @@ python literature_sweep_150uev_v20.py    # excluded vs open near 150 µeV
 python home_public_37ghz_search_v20.py   # honest home-PC / public-data roadmap
 python gravitas_axion_v20_37ghz.py       # GRAVITAS retarget to 37 GHz
 python public_data_indirect_audit_v20.py # 20-channel public/indirect matrix
+python full_fermion_matching_v20.py      # unique C_e,C_p,C_n under stated ansatz
 ```
 
 See [EXTENSIVE_CONFIRM_FALSIFY.md](EXTENSIVE_CONFIRM_FALSIFY.md) for the full
@@ -68,8 +69,10 @@ A–N attack surface (anomalies, portals, MC mass blocks, kernel, flavour,
 Wilson, haloscope, golden anchors). See [NEXT_PHYSICS_ANALYSIS.md](NEXT_PHYSICS_ANALYSIS.md)
 for the next in-repo physics ledger, [LITERATURE_SWEEP_150UEV.md](LITERATURE_SWEEP_150UEV.md)
 for the published-bound map, [HOME_PUBLIC_37GHZ_SEARCH.md](HOME_PUBLIC_37GHZ_SEARCH.md)
-for home-PC limits, and [PUBLIC_DATA_INDIRECT_AUDIT.md](PUBLIC_DATA_INDIRECT_AUDIT.md)
-for the full public/indirect channel brainstorm. **Passing confirms internal consistency,
+for home-PC limits, [PUBLIC_DATA_INDIRECT_AUDIT.md](PUBLIC_DATA_INDIRECT_AUDIT.md)
+for the full public/indirect channel brainstorm, and
+[FULL_FERMION_MATCHING_V20.md](FULL_FERMION_MATCHING_V20.md) for unique
+\(C_e,C_p,C_n\) under the manuscript-minimal portal ansatz. **Passing confirms internal consistency,
 not experimental discovery.**
 
 ## Hard experimental falsifier

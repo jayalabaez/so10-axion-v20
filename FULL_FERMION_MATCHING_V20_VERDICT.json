@@ -1,0 +1,153 @@
+{
+  "status": "UNIQUE_UNDER_STATED_ANSATZ__HADRONIC_UNCERTAINTY_REMAINS",
+  "ansatz": {
+    "name": "manuscript_minimal_flavor_universal_unit_yukawa",
+    "y_P_y_Q_y_R": 1.0,
+    "lambda_P_lambda_R_lambda_Q": 1.0,
+    "lambda_Q_generation": "universal \u03bb/\u221a3",
+    "extra_portals": "set to zero in primary; O(1) Qbar R scanned",
+    "tan_beta_primary": 1.5000000000002063,
+    "note": "Without this ansatz the charge-allowed Lagrangian does not fix unique C_e, C_p, C_n. With it, they are unique up to hadronic matching uncertainty on C_p, C_n."
+  },
+  "normalization": {
+    "f_a_exact_GeV": 37140323529.37078,
+    "N_cover": 17.0,
+    "v_S_GeV": 631385500000.0,
+    "v_Phi_GeV": 1e+17
+  },
+  "unique_under_ansatz": true,
+  "primary_v20_tanbeta_1p5": {
+    "C_e": 0.04072398189829132,
+    "C_p": -0.47257918552022943,
+    "C_n": 0.006606334840219091,
+    "g_ae": 5.603050811711232e-16,
+    "g_ap": -1.193871827390971e-11,
+    "g_an": 1.67125193924005e-13,
+    "sigma_C_nucleon_illustrative": 0.03020689900345357,
+    "max_abs_PQ_shift": 1.5945955667007183e-10,
+    "delta_vs_ERT_noportal": {
+      "C_e": -2.1646157088994755e-12,
+      "C_p": 1.3711254354120683e-13,
+      "C_n": -1.4142124971083803e-12
+    },
+    "TRGB_limit_over_abs_g_ae": 232.01645740616905,
+    "SN1987A_amplitude_margin": 98.05146528382532
+  },
+  "comparison_natural_tanbeta": {
+    "tan_beta": 41.338069578693386,
+    "C_e": 0.058789126384295766,
+    "C_p": -0.4964251762417553,
+    "C_n": 0.0293684168925847
+  },
+  "portal_ratio_scan": {
+    "scan": [
+      {
+        "lambda_over_y": 0.0001,
+        "max_abs_PQ_shift": 0.0,
+        "C_e": 0.04072398190045594,
+        "C_p": -0.47257918552036654,
+        "C_n": 0.006606334841633307,
+        "delta_C_e": 0.0,
+        "delta_C_p": 0.0,
+        "delta_C_n": 3.469446951953614e-18
+      },
+      {
+        "lambda_over_y": 0.001,
+        "max_abs_PQ_shift": 0.0,
+        "C_e": 0.04072398190045594,
+        "C_p": -0.47257918552036654,
+        "C_n": 0.006606334841633307,
+        "delta_C_e": 0.0,
+        "delta_C_p": 0.0,
+        "delta_C_n": 3.469446951953614e-18
+      },
+      {
+        "lambda_over_y": 0.01,
+        "max_abs_PQ_shift": 1.63202784619898e-14,
+        "C_e": 0.040723981900455716,
+        "C_p": -0.4725791855203665,
+        "C_n": 0.006606334841633161,
+        "delta_C_e": -2.220446049250313e-16,
+        "delta_C_p": 5.551115123125783e-17,
+        "delta_C_n": -1.4224732503009818e-16
+      },
+      {
+        "lambda_over_y": 0.1,
+        "max_abs_PQ_shift": 1.5946133302691123e-12,
+        "C_e": 0.04072398190043429,
+        "C_p": -0.47257918552036515,
+        "C_n": 0.006606334841619162,
+        "delta_C_e": -2.1649348980190553e-14,
+        "delta_C_p": 1.3877787807814457e-15,
+        "delta_C_n": -1.4141465776162931e-14
+      },
+      {
+        "lambda_over_y": 1.0,
+        "max_abs_PQ_shift": 1.5945955667007183e-10,
+        "C_e": 0.04072398189829132,
+        "C_p": -0.47257918552022943,
+        "C_n": 0.006606334840219091,
+        "delta_C_e": -2.1646157088994755e-12,
+        "delta_C_p": 1.3711254354120683e-13,
+        "delta_C_n": -1.4142124971083803e-12
+      },
+      {
+        "lambda_over_y": 3.0,
+        "max_abs_PQ_shift": 1.4351316801608505e-09,
+        "C_e": 0.04072398188097452,
+        "C_p": -0.4725791855191327,
+        "C_n": 0.006606334828905446,
+        "delta_C_e": -1.948141648000501e-11,
+        "delta_C_p": 1.2338463584171677e-12,
+        "delta_C_n": -1.2727856962824191e-11
+      },
+      {
+        "lambda_over_y": 10.0,
+        "max_abs_PQ_shift": 1.5945906151060285e-08,
+        "C_e": 0.040723981683995665,
+        "C_p": -0.47257918550665734,
+        "C_n": 0.006606334700212591,
+        "delta_C_e": -2.1646027331678752e-10,
+        "delta_C_p": 1.3709200441525127e-11,
+        "delta_C_n": -1.4142071194656047e-10
+      }
+    ],
+    "max_abs_delta_C_e_in_scan": 2.1646027331678752e-10,
+    "max_abs_delta_C_p_in_scan": 1.3709200441525127e-11,
+    "max_abs_delta_C_n_in_scan": 1.4142071194656047e-10,
+    "with_extra_Qbar_R_O1": {
+      "C_e": 0.04072398189720904,
+      "C_p": -0.47257918552016087,
+      "C_n": 0.0066063348395119965,
+      "max_abs_PQ_shift": 3.1891800311711904e-10
+    }
+  },
+  "bound_checks": {
+    "TRGB_conditional": {
+      "pass": true
+    },
+    "SN1987A_conditional": {
+      "pass": true
+    },
+    "universal_SN_fa": {
+      "pass": true
+    },
+    "portal_correction_below_hadronic_on_Cp": {
+      "pass": true
+    },
+    "three_light_families": {
+      "pass": true
+    },
+    "ansatz_fully_specified": {
+      "pass": true
+    },
+    "full_model_pass_without_ansatz": null,
+    "full_model_pass_under_stated_ansatz": true
+  },
+  "still_not_derived_without_ansatz": [
+    "Arbitrary generation-dependent \u03bb_Q^{i}, \u03bb_P^{i\u03b1}, \u03bb_R^{i\u03b1}",
+    "Extra charge-allowed portals (PR 10_H, Qbar R S\u2020, \u2026) as free matrices",
+    "Correlated hadronic \u0394C_p, \u0394C_n beyond illustrative \u03c3"
+  ],
+  "verdict": "Under the stated ansatz `manuscript_minimal_flavor_universal_unit_yukawa`, the v20 couplings are uniquely derived at tan\u03b2=1.500: C_e=4.072398e-02, C_p=-4.725792e-01, C_n=6.606335e-03. Portal-induced shifts are |\u0394C_p|=1.371e-13 (\u226a illustrative hadronic \u03c3=3.021e-02). Without that ansatz the fermion gap remains open. The 37 GHz photon benchmark is independent and still experimentally open."
+}
