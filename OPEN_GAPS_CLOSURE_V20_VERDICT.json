@@ -1,6 +1,6 @@
 {
   "status": "OPEN_GAPS_AUDITED__NO_UNCONDITIONAL_FULL_CLOSURE",
-  "n_checks": 7,
+  "n_checks": 28,
   "n_failed": 0,
   "failures": [],
   "conditional_cf_region": {
@@ -46,7 +46,7 @@
     "reason_not_unique": "Portal assumptions and a finite scan do not derive one UV point or one tan(beta)."
   },
   "fcnc_analysis": {
-    "status": "EXACT_QI_THEOREM__FINITE_MODEL_FCNC_PROXY_ONLY",
+    "status": "EXACT_QI_THEOREM__CHANNEL_RATES_EXPERIMENTAL_LIMITS_RAY_AND_HEAVY_SPECTRUM_APPLIED__MODEL_CLOSURE_OPEN",
     "exact_theorem": "If Q_proj=qI exactly, every unitary mass-basis rotation preserves qI and tree-level axion FCNCs vanish.",
     "finite_hierarchical_benchmark": {
       "departure_from_q_identity": 1.5623331005420602e-11,
@@ -54,25 +54,217 @@
       "quark_off_diagonal_norm": 1.5623330997925625e-11,
       "exactly_scalar_to_1e_14": false,
       "numerically_suppressed_to_1e_8": true,
-      "experimental_FCNC_bound_applied": false,
-      "proxy_bounds_applied": true
+      "BR_mu_to_e_a": 2.834977738345154e-32,
+      "BR_K_to_pi_a": 9.737785334278848e-31,
+      "NA62_observed_limit_90cl": 2.9120000000069075e-11,
+      "NA62_pointwise_excluded": false,
+      "TWIST_survives_A_minus1_0_plus1": true,
+      "channel_level_amplitudes_implemented": true,
+      "channel_level_branching_ratios_implemented": true
     },
     "generation_dependent_counterexample": {
       "lepton_off_diagonal_norm": 2.6950912153821425,
-      "fcnc_possible": true
+      "fcnc_possible": true,
+      "BR_mu_to_e_a": 1.9517061772610018e-07,
+      "BR_K_to_pi_a": 3.65003319938114e-11,
+      "NA62_observed_limit_90cl": 2.9120000000069075e-11,
+      "prediction_over_NA62_limit": 1.253445466817473,
+      "NA62_pointwise_excluded": true,
+      "TWIST_survives_A_minus1_0_plus1": true,
+      "TWIST_strongest_safety_factor": 51.23722062525757
+    },
+    "conditional_portal_ray": {
+      "status": "CONDITIONAL_PORTAL_RAY_SCANNED__NA62_SURVIVAL_BOUNDARY_SOLVED__FULL_PORTAL_SPACE_OPEN",
+      "fixed_texture": {
+        "lam_Q_F": [
+          1.0,
+          0.01,
+          0.0
+        ],
+        "lam_Q_R": 0.3,
+        "lam_S_Q_Rbar": 0.2
+      },
+      "central_survival_boundary": {
+        "y_Q": 2.421866868824094e-06,
+        "bare_D_GeV": 171251848607.65475,
+        "lightest_heavy_singular_GeV": 478195456806.1202,
+        "lightest_heavy_over_vS": 0.7573747841946326,
+        "BR_mu_to_e_a": 1.5585272260180575e-07,
+        "TWIST_ratio": 0.015585272260180574
+      },
+      "form_factor_boundary_band": {
+        "f0_minus_1sigma": {
+          "y_Q": 2.390569369800478e-06,
+          "bare_D_GeV": 169038781228.27692,
+          "bare_D_over_vS": 0.2677267394139981,
+          "bare_D_is_physical_mass_eigenvalue": false,
+          "epsilon_QF": [
+            2.6411511331825386,
+            0.026411511331825385,
+            0.0
+          ],
+          "epsilon_QR": 0.7923453399547615,
+          "epsilon_SQRbar": 0.5282302266365076,
+          "K_L_plus_K_R_abs": 0.06998673652122124,
+          "BR_K_to_pi_a": 2.9119999998415663e-11,
+          "NA62_observed_limit_90cl": 2.9120000000069075e-11,
+          "NA62_ratio": 0.9999999999432208,
+          "NA62_survives": true,
+          "BR_mu_to_e_a": 1.5688436337486958e-07,
+          "TWIST_strongest_limit_90cl": 1e-05,
+          "TWIST_ratio": 0.01568843633748696,
+          "TWIST_survives_strongest_published_case": true,
+          "f0": 0.9672000000000001
+        },
+        "f0_central": {
+          "y_Q": 2.421866868824094e-06,
+          "bare_D_GeV": 171251848607.65475,
+          "bare_D_over_vS": 0.27123183634666104,
+          "bare_D_is_physical_mass_eigenvalue": false,
+          "epsilon_QF": [
+            2.6070198495533363,
+            0.026070198495533364,
+            0.0
+          ],
+          "epsilon_QR": 0.7821059548660009,
+          "epsilon_SQRbar": 0.5214039699106673,
+          "K_L_plus_K_R_abs": 0.06975594761538159,
+          "BR_K_to_pi_a": 2.912000000068801e-11,
+          "NA62_observed_limit_90cl": 2.9120000000069075e-11,
+          "NA62_ratio": 1.0000000000212548,
+          "NA62_survives": false,
+          "BR_mu_to_e_a": 1.5585272260180575e-07,
+          "TWIST_strongest_limit_90cl": 1e-05,
+          "TWIST_ratio": 0.015585272260180574,
+          "TWIST_survives_strongest_published_case": true,
+          "f0": 0.9704
+        },
+        "f0_plus_1sigma": {
+          "y_Q": 2.452766298048402e-06,
+          "bare_D_GeV": 173436768201.58493,
+          "bare_D_over_vS": 0.27469235229758193,
+          "bare_D_is_physical_mass_eigenvalue": false,
+          "epsilon_QF": [
+            2.574177166827414,
+            0.025741771668274138,
+            0.0
+          ],
+          "epsilon_QR": 0.7722531500482241,
+          "epsilon_SQRbar": 0.5148354333654828,
+          "K_L_plus_K_R_abs": 0.06952667580670228,
+          "BR_K_to_pi_a": 2.912000000020539e-11,
+          "NA62_observed_limit_90cl": 2.9120000000069075e-11,
+          "NA62_ratio": 1.0000000000046811,
+          "NA62_survives": false,
+          "BR_mu_to_e_a": 1.5483118275380142e-07,
+          "TWIST_strongest_limit_90cl": 1e-05,
+          "TWIST_ratio": 0.015483118275380141,
+          "TWIST_survives_strongest_published_case": true,
+          "f0": 0.9736
+        }
+      },
+      "full_portal_parameter_space_scanned": false
+    },
+    "physical_heavy_spectrum": {
+      "status": "FULL_HEAVY_SINGULAR_SPECTRUM_RESOLVED__ORDERING_BOUNDARY_SOLVED__PIECEWISE_MATCHING_OPEN",
+      "bare_D_is_not_physical_eigenmass": true,
+      "three_heavy_singular_values_at_rate_boundary": [
+        478195456806.1202,
+        7.071067811865474e+16,
+        7.071067811883797e+16
+      ],
+      "ordered_threshold_boundary": {
+        "y_Q": 6.313541690400045e-06,
+        "bare_D_GeV": 446434814258.58496,
+        "lightest_heavy_singular_GeV": 631385499956.4607,
+        "NA62_ratio": 0.32890249466584215,
+        "TWIST_ratio": 0.005128110410117724
+      },
+      "piecewise_threshold_matching_complete": false
+    },
+    "na62_artifact": {
+      "status": "NA62_POINTWISE_LIMIT_APPLIED__GENERATION_DEPENDENT_POINT_EXCLUDED",
+      "source": {
+        "collaboration": "NA62",
+        "publication_title": "Searches for hidden sectors using K+ to pi+ X decays",
+        "publication_hepdata_doi": "10.17182/hepdata.160245.v2",
+        "table_doi": "10.17182/hepdata.160245.v2/t3",
+        "publication_recid": 160245,
+        "table_id": 1815429,
+        "version": 2,
+        "table_name": "Figure 2-a",
+        "endpoint": "https://www.hepdata.net/record/data/160245/1815429/2?format=json",
+        "license": "CC0",
+        "canonical_payload_sha256": "dc4e94e6223dc4e002413c68f0a4d752afca7b4030943eb0bc9aec3ce14e2555",
+        "vendored_scope": "Minimal offline anchor sufficient for the v20 axion mass, which is 1.535e-10 MeV and lies effectively at zero mass. The complete 151-point curve remains available from the official endpoint."
+      },
+      "interpretation": "At the v20 mass the official NA62 observed 90% CL upper limit is 2.912000e-11. The hierarchical universal benchmark is far below it. The selected generation-dependent counterexample exceeds the pointwise limit and is excluded under the common-family-current assumption. This removes that portal point, not the whole v20 model, because the UV portal tensors and component-specific chiral currents are not uniquely fixed."
+    },
+    "twist_artifact": {
+      "status": "TWIST_MASSLESS_BENCHMARK_LIMITS_APPLIED__BOTH_SCENARIOS_SURVIVE",
+      "source": {
+        "experiment": "TWIST",
+        "publication_title": "Search for two-body muon decay signals",
+        "arxiv": "1409.0638",
+        "doi": "10.1103/PhysRevD.91.052020",
+        "table": "Table II",
+        "confidence_level": 0.9,
+        "mass_hypothesis": "massless X0 endpoint",
+        "canonical_payload_sha256": "7e9719b0254180164a15e33aa79871b0e3730973fd44b58935675cf72909c826",
+        "scope": "Published 90% CL massless-X benchmark limits for A=-1,0,+1. They do not constitute a continuous arbitrary-A likelihood."
+      },
+      "interpretation": "The hierarchical benchmark is negligible. The generation-dependent portal point predicts BR(mu->ea)=1.951706e-07 and remains below the strongest published TWIST massless benchmark limit 1.000000e-05 by a safety factor 51.237. It therefore survives the three published A=-1,0,+1 hypotheses. No arbitrary-A or full angular-likelihood statement is made."
+    },
+    "channel_rate_artifact": {
+      "status": "CHANNEL_LEVEL_FCNC_RATES_IMPLEMENTED__UV_COMPONENT_MATCHING_AND_POINTWISE_LIKELIHOODS_OPEN",
+      "references": {
+        "interaction": "(partial a/f_a)(fbar_L K_L gamma f_L + fbar_R K_R gamma f_R)",
+        "mu_rate_reference": "arXiv:1908.00008, Eqs. (2),(3),(5)",
+        "kaon_rate_reference": "arXiv:1901.02031, Eqs. (5)-(7) and K->pi a rate",
+        "form_factor_reference": "arXiv:1312.1228",
+        "mu_limit_reference": "TWIST arXiv:1409.0638",
+        "kaon_limit_reference": "NA62 arXiv:2507.17286"
+      },
+      "remaining_for_closure": [
+        "derive component-specific left/right PQ currents after all thresholds",
+        "propagate the complete portal-Yukawa posterior rather than two examples",
+        "ingest the pointwise TWIST angular-asymmetry likelihood",
+        "ingest the pointwise NA62 K+->pi+X limit curve and correlations",
+        "include form-factor covariance and matching-scale uncertainty"
+      ]
     },
     "flag": {
       "exact_qI_theorem_proved": true,
       "actual_finite_model_fcnc_absence_proved": false,
       "actual_finite_model_fcnc_suppressed": true,
-      "experimental_FCNC_bound_applied": false,
-      "proxy_bounds_applied": true,
+      "channel_level_amplitudes_implemented": true,
+      "channel_level_branching_ratios_implemented": true,
+      "official_NA62_pointwise_limit_ingested": true,
+      "hierarchical_benchmark_passes_NA62": true,
+      "generation_dependent_portal_point_excluded_by_NA62": true,
+      "conditional_portal_ray_scanned": true,
+      "conditional_NA62_survival_boundary_solved": true,
+      "form_factor_uncertainty_propagated": true,
+      "full_heavy_singular_spectrum_computed": true,
+      "bare_D_not_physical_eigenmass": true,
+      "lightest_heavy_equals_vS_boundary_solved": true,
+      "ordered_threshold_point_passes_NA62": true,
+      "ordered_threshold_point_passes_TWIST": true,
+      "piecewise_threshold_matching_complete": false,
+      "TWIST_three_published_asymmetry_limits_ingested": true,
+      "hierarchical_benchmark_passes_all_three_TWIST_cases": true,
+      "generation_dependent_portal_point_passes_all_three_TWIST_cases": true,
+      "continuous_TWIST_asymmetry_likelihood_implemented": false,
+      "all_portal_parameter_space_excluded": false,
+      "whole_v20_model_excluded": false,
+      "full_correlated_experimental_likelihood_implemented": false,
+      "component_specific_uv_chiral_currents_derived": false,
       "proved_for_arbitrary_portals": false
     },
-    "reason_not_closed": "Finite current is not exactly scalar and no channel-level likelihood is implemented."
+    "reason_not_closed": "The conditional NA62 rate boundary and the basis-independent heavy singular spectrum are solved on one fixed portal ray. Bare D is not a physical eigenmass. The rate boundary lies below v_S in the lightest heavy singular value; a second ordered-heavy point is safe. Full piecewise component matching and multidimensional UV portal inference remain open."
   },
   "yukawa_rg_analysis": {
-    "status": "RG_DIAGNOSTICS_AVAILABLE__PRECISION_MATRIX_AND_TWO_LOOP_OPEN",
+    "status": "RG_DIAGNOSTICS_AVAILABLE__PS_ONE_LOOP_LAYER__PRECISION_MATRIX_AND_TWO_LOOP_OPEN",
     "proxy_best_point": {
       "v_r_GeV": 300000000000000.0,
       "chi2": 4.954642447825638,
@@ -83,44 +275,105 @@
       "push": "PHENOMENOLOGY_DIAGNOSTICS_PASS__COMPLETION_FLAGS_OPEN",
       "common": "COMMON_SCALE_AND_SO10_DIAGNOSTICS_PASS__PRECISION_RG_OPEN",
       "two_loop": "TWO_LOOP_SO10_210_HEURISTIC_ENVELOPE__FULL_RG_OPEN",
-      "strict_audit": "PASS"
+      "strict_audit": "PASS",
+      "pati_salam": "PATI_SALAM_ONE_LOOP_YUKAWA_LAYER_COMPLETE__COMPONENT_MATCHING_OPEN"
     },
     "flag": {
       "effective_power_law_proxy_applied": true,
       "diagnostic_matrix_ODE_integrated": true,
+      "pati_salam_one_loop_yukawa_layer_solved": true,
+      "pati_salam_interval_matching": true,
       "actual_one_loop_matrix_beta_system_solved": false,
       "reference_validated_type_II_coefficients": false,
       "running_vevs_included": false,
       "piecewise_threshold_yukawa_matching_complete": false,
+      "piecewise_component_threshold_matching_complete": false,
       "full_RG_global_fit_minimal": false,
       "two_loop_so10_complete": false
     },
     "missing_for_closure": [
-      "published-convention validated type-II matrix beta functions",
-      "running VEV/scalar-sector treatment",
-      "Pati-Salam Yukawa beta functions between M_I and M_GUT",
-      "explicit component threshold matching at M_I and M_GUT",
-      "reference-derived two-loop representation contractions and scalar-quartic terms",
-      "channel-level FCNC amplitudes, form factors, branching ratios, and experimental likelihoods"
+      "validated type-II matrix beta functions and running VEVs",
+      "explicit component-level Pati-Salam and EW threshold matching of PQ currents",
+      "reference-derived full two-loop SO(10)+210 representation contractions",
+      "component-specific left/right PQ currents after all thresholds",
+      "full complex F1-F2-F3 orientation and all portal magnitudes/phases",
+      "full UV portal-Yukawa prior/posterior beyond the conditional sector grid",
+      "continuous NA62/TWIST likelihood information",
+      "real 36.6-37.6 GHz conversion data under the all-DM assumption"
     ],
-    "reason_not_closed": "The new calculations are useful diagnostic envelopes, but none of the precision matrix-RG, Pati-Salam matching, full two-loop SO(10)+210, or finite-model FCNC-likelihood blockers is closed."
+    "reason_not_closed": "Certification math proves unique C_f cannot follow from Z17 charges alone; a conditional unique point exists only under named UV axioms. One-loop PS Yukawa evolution on M_I\u2192M_GUT is solved, and a conditional portal-sector posterior/survival map exists. Orientation NA62 dependence remains mixed. Full UV posterior, component matching, two-loop SO(10)+210, and real 37 GHz detection remain open."
   },
   "ghz37_package": {
-    "status": "SOFTWARE_INJECTION_RECOVERY_PASS__NO_EXPERIMENTAL_DETECTION",
+    "status": "SOFTWARE_INJECTION_AND_LITERATURE_COMPARE__NO_EXPERIMENTAL_DETECTION",
+    "literature_compare_status": "HALOSCOPE_37GHZ_LIMIT_COMPARISON_COMPLETE__NO_DETECTION",
     "flag": {
       "software_injection_recovery_certified": true,
+      "lab_limit_comparison_executed": true,
+      "all_dm_photon_benchmark_currently_open": true,
       "real_37GHz_detection": false,
       "experimental_discovery": false
     },
     "hard_falsifier": "A real null at g_agamma<=2.3e-14 GeV^-1 over 36.6-37.6 GHz kills the all-DM benchmark."
   },
+  "certification_package": {
+    "status": "CERTIFICATION_MATH_AND_SECTOR_POSTERIOR_AUDITED",
+    "math_status": "CERTIFICATION_MATH_COMPLETE__UNCONDITIONAL_UNIQUE_CF_BLOCKED_BY_THEOREM",
+    "posterior_status": "PORTAL_SECTOR_POSTERIOR_MAP_COMPLETE__FULL_UV_POSTERIOR_OPEN",
+    "flag": {
+      "mathematical_obstruction_proved": true,
+      "conditional_unique_Cf_under_named_axioms": true,
+      "unconditional_unique_Cf": false,
+      "portal_sector_posterior_derived": true,
+      "full_portal_yukawa_posterior_derived": false,
+      "survival_fraction_is_probability": false
+    },
+    "selected_conditional_point": {
+      "tan_beta": 34.94979626444526,
+      "chi2": 4.954642447825638,
+      "v_r_GeV": 300000000000000.0,
+      "C_e": 0.05877541154303195,
+      "C_p_central": -0.4956432569468977,
+      "C_n_central": 0.028940406019627128,
+      "g_ae": 8.086675271031501e-16,
+      "g_ap_central": -1.2521383485263027e-11,
+      "g_an_central": 7.321262220655505e-13,
+      "xi": 0.058823529411634885,
+      "f_a_GeV": 37140323529.37078
+    },
+    "posterior_scan_summary": {
+      "n_points": 2704,
+      "n_surviving": 720,
+      "survival_fraction_of_grid": 0.26627218934911245
+    }
+  },
   "gap_status": {
     "exact_unique_full_Ce_Cp_Cn": false,
     "conditional_aligned_Cf_region": true,
+    "conditional_unique_Cf_under_named_axioms": true,
+    "uniqueness_obstruction_proved": true,
+    "channel_level_FCNC_rates": true,
+    "official_NA62_pointwise_limit": true,
+    "generation_dependent_kaon_portal_point_excluded": true,
+    "conditional_portal_ray_scan": true,
+    "conditional_NA62_yQ_survival_boundary": true,
+    "full_heavy_singular_spectrum_on_ray": true,
+    "bare_D_is_physical_eigenmass": false,
+    "lightest_heavy_equals_vS_boundary": true,
+    "piecewise_component_threshold_matching": false,
+    "pati_salam_one_loop_yukawa_layer": true,
+    "portal_sector_posterior_map": true,
+    "full_multidimensional_portal_scan": false,
+    "full_portal_yukawa_posterior": false,
+    "TWIST_three_massless_asymmetry_benchmarks": true,
+    "generation_dependent_muon_portal_point_survives_TWIST_benchmarks": true,
+    "continuous_TWIST_asymmetry_likelihood": false,
+    "all_portal_parameter_space_excluded": false,
     "finite_model_tree_FCNC_absence_proved": false,
+    "full_correlated_experimental_FCNC_likelihood": false,
     "full_common_scale_Yukawa_RG_fit": false,
     "two_loop_SO10_threshold_closure": false,
+    "lab_37GHz_limit_comparison": true,
     "real_37GHz_detection": false
   },
-  "verdict": "The useful new numerical diagnostics survive, but all precision RG, threshold, finite-FCNC, unique-C_f, and experimental blockers remain open."
+  "verdict": "Certification advanced on three fronts: uniqueness obstruction proved with conditional unique C_f under named axioms; one-loop PS Yukawa layer and sector posterior/survival map derived; 37 GHz literature comparison executed with no detection claim. Unconditional unique C_f, component threshold matching, full two-loop SO(10)+210, full UV posterior, and real 37 GHz data remain open."
 }

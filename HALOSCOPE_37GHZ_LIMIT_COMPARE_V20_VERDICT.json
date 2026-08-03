@@ -1,0 +1,48 @@
+{
+  "status": "HALOSCOPE_37GHZ_LIMIT_COMPARISON_COMPLETE__NO_DETECTION",
+  "n_checks": 4,
+  "n_failed": 0,
+  "failures": [],
+  "benchmark": {
+    "m_a_ueV": 153.5,
+    "m_a_uncertainty_ueV": 2.0,
+    "nu_central_Hz": 37116134874.29479,
+    "nu_central_GHz": 37.116134874294794,
+    "window_GHz": [
+      36.63253702576978,
+      37.5997327228198
+    ],
+    "recommended_scan_GHz": [
+      36.6,
+      37.6
+    ],
+    "g_agamma_GeV_inv": 2.335e-14,
+    "g_agamma_uncertainty": 1.25e-15,
+    "E_over_N": 2.6666666666666665,
+    "f_a_GeV": 37140323529.411766,
+    "halo_Q": 1000000.0,
+    "linewidth_kHz": 37.116134874294794
+  },
+  "forecast_summary": {
+    "n_channels": 25,
+    "total_integration_days": 175.0,
+    "expected_SNR": 6.49062687684967,
+    "reaches_v20_coupling_in_forecast": true,
+    "note": "Dicke radiometer forecast only; not experimental data."
+  },
+  "literature_comparison": {
+    "n_entries": 11,
+    "n_covering_mass": 6,
+    "n_excluding_v20_coupling": 0,
+    "n_open_at_v20": 11,
+    "theory_fails_from_published_bounds": false,
+    "hard_falsifier": "A published null reaching g_a\u03b3\u03b3 \u2264 2.3e-14 GeV^{-1} over 36.6\u201337.6 GHz under the all-local-DM assumption kills the photon benchmark."
+  },
+  "flag": {
+    "lab_limit_comparison_executed": true,
+    "real_37GHz_detection": false,
+    "experimental_discovery": false,
+    "all_dm_photon_benchmark_currently_open": true
+  },
+  "verdict": "The 37 GHz all-DM benchmark remains experimentally open against the curated published/design ledger. Repository forecasts and templates are ready for collaboration use; no real conversion detection is claimed."
+}

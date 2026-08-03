@@ -18,9 +18,14 @@ def build_report()->dict[str,Any]:
     ray=read_json("PORTAL_CONSTRAINT_RAY_V20_VERDICT.json")
     spectrum=read_json("PORTAL_BOUNDARY_HEAVY_SPECTRUM_V20_VERDICT.json")
     orientation=read_json("PORTAL_FAMILY_ORIENTATION_MAP_V20_VERDICT.json")
+    ps=read_json("PATI_SALAM_YUKAWA_MATCHING_V20_VERDICT.json")
+    cert=read_json("THEORY_CERTIFICATION_MATH_V20_VERDICT.json")
+    posterior=read_json("PORTAL_YUKAWA_POSTERIOR_V20_VERDICT.json")
+    halo=read_json("HALOSCOPE_37GHZ_LIMIT_COMPARE_V20_VERDICT.json")
     p=push.get("one_loop_matrix_yukawa_rge",{}).get("flag",{})
     c=common.get("flag",{}); t=two.get("flag",{}); oldf=two.get("fcnc_limits",{}).get("flag",{})
     ch=channel.get("flag",{}); n=na62.get("flag",{}); w=twist.get("flag",{}); r=ray.get("flag",{}); s=spectrum.get("flag",{}); o=orientation.get("flag",{})
+    psf=ps.get("flag",{}); cf=cert.get("flag",{}); pf=posterior.get("flag",{}); hf=halo.get("flag",{})
     counts=(orientation.get("scan") or {}).get("counts",{})
     checks={
         "matrix_rge_open":not p.get("actual_one_loop_matrix_beta_system_solved",False),
@@ -70,8 +75,20 @@ def build_report()->dict[str,Any]:
         "orientation_posterior_open":not o.get("portal_yukawa_posterior_derived",False),
         "orientation_component_currents_open":not o.get("component_specific_uv_chiral_currents_derived",False),
         "full_portal_space_remains_open":not r.get("full_portal_parameter_space_scanned",False),
-        "portal_posterior_remains_open":not r.get("portal_yukawa_posterior_derived",False),
-        "whole_model_not_rejected":all(not x.get("whole_v20_model_excluded",False) for x in (n,w,r,s,o)),
+        "ray_full_posterior_open":not r.get("portal_yukawa_posterior_derived",False),
+        "ps_one_loop_yukawa_layer_solved":psf.get("pati_salam_one_loop_yukawa_layer_solved",False),
+        "ps_not_using_so10_beta_on_interval":not psf.get("uses_so10_beta_across_PS_interval",True),
+        "ps_component_matching_open":not psf.get("piecewise_component_threshold_matching_complete",False),
+        "ps_two_loop_not_overclaimed":not psf.get("two_loop_so10_complete",False),
+        "uniqueness_obstruction_proved":cf.get("mathematical_obstruction_proved",False),
+        "conditional_axioms_unique_cf":cf.get("conditional_unique_Cf_under_named_axioms",False),
+        "unconditional_unique_cf_open":not cf.get("unconditional_unique_Cf",False),
+        "portal_sector_posterior_derived":pf.get("portal_sector_posterior_derived",False),
+        "full_portal_posterior_open":not pf.get("full_portal_yukawa_posterior_derived",False),
+        "sector_survival_fraction_not_probability":not pf.get("survival_fraction_is_probability",True),
+        "lab_37ghz_compare_executed":hf.get("lab_limit_comparison_executed",False),
+        "real_37ghz_detection_open":not hf.get("real_37GHz_detection",False),
+        "whole_model_not_rejected":all(not x.get("whole_v20_model_excluded",False) for x in (n,w,r,s,o,pf)),
         "all_portals_not_rejected":not n.get("all_portal_parameter_space_excluded",False) and not r.get("full_portal_parameter_space_scanned",False) and not o.get("all_portal_magnitudes_and_phases_scanned",False),
         "correlated_likelihood_open":not n.get("full_correlated_experimental_likelihood_implemented",False) and not r.get("full_correlated_likelihood_implemented",False),
         "component_uv_currents_open":not n.get("component_specific_uv_chiral_currents_derived",False) and not r.get("component_specific_uv_chiral_currents_derived",False) and not o.get("component_specific_uv_chiral_currents_derived",False),
@@ -89,12 +106,18 @@ def build_report()->dict[str,Any]:
             "full_heavy_singular_spectrum":"COMPUTED_ON_THE_FIXED_RAY",
             "bare_D_mass_interpretation":"NOT_A_PHYSICAL_EIGENMASS",
             "piecewise_component_threshold_matching":"OPEN",
+            "pati_salam_one_loop_yukawa_layer":"SOLVED_ON_MI_TO_MGUT",
+            "unique_Cf_from_charges_alone":"IMPOSSIBLE_BY_THEOREM",
+            "conditional_unique_Cf_under_named_axioms":"DERIVED",
+            "portal_sector_posterior":"DISCRETE_GRID_ON_CONDITIONAL_SECTOR",
+            "full_portal_yukawa_posterior":"OPEN",
             "complex_F1_F2_orientation_map":"SCANNED_AT_FIXED_NORM_AND_ORDERED_HEAVY_YQ",
             "na62_orientation_dependence":"EXCLUDED_AND_SURVIVING_ORIENTATIONS_FOUND",
             "twist_orientation_dependence":"ALL_5856_SAMPLED_ORIENTATIONS_BELOW_PUBLISHED_BENCHMARKS",
             "orientation_grid_fraction":"NOT_A_PROBABILITY_OR_UV_POSTERIOR",
             "full_complex_three_family_orientation":"OPEN",
             "full_portal_parameter_space":"OPEN",
+            "lab_37ghz_limit_comparison":"EXECUTED__NO_DETECTION",
             "whole_model_exclusion":"NOT_ESTABLISHED"
         },
         "orientation_summary":{
@@ -109,14 +132,15 @@ def build_report()->dict[str,Any]:
         },
         "required_for_closure":[
             "validated type-II matrix beta functions and running VEVs",
-            "Pati-Salam RGEs and explicit component threshold matching",
-            "reference-derived full two-loop representation contractions",
+            "explicit component-level Pati-Salam and EW threshold matching of PQ currents",
+            "reference-derived full two-loop SO(10)+210 representation contractions",
             "component-specific left/right PQ currents after all thresholds",
             "full complex F1-F2-F3 orientation and all portal magnitudes/phases",
-            "a derived UV portal-Yukawa prior or posterior",
-            "continuous NA62/TWIST likelihood information"
+            "full UV portal-Yukawa prior/posterior beyond the conditional sector grid",
+            "continuous NA62/TWIST likelihood information",
+            "real 36.6-37.6 GHz conversion data under the all-DM assumption"
         ],
-        "verdict":"At fixed portal norm and an orientation-invariant ordered-heavy spectrum, the sampled F1-F2 direction changes the NA62 prediction from far below to hundreds of times above the limit. Both excluded and surviving orientations exist; all sampled orientations survive the published TWIST benchmarks. The grid fraction is not a probability, and full portal-space or whole-model conclusions remain open."
+        "verdict":"Certification math proves unique C_f cannot follow from Z17 charges alone; a conditional unique point exists only under named UV axioms. One-loop PS Yukawa evolution on M_I→M_GUT is solved, and a conditional portal-sector posterior/survival map exists. Orientation NA62 dependence remains mixed. Full UV posterior, component matching, two-loop SO(10)+210, and real 37 GHz detection remain open."
     }
 
 def write_markdown(r):

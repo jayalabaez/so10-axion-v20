@@ -2,4 +2,4 @@
 
 **Status:** `OPEN_GAPS_AUDITED__NO_UNCONDITIONAL_FULL_CLOSURE`
 
-The useful new numerical diagnostics survive, but all precision RG, threshold, finite-FCNC, unique-C_f, and experimental blockers remain open.
+Certification advanced on three fronts: uniqueness obstruction proved with conditional unique C_f under named axioms; one-loop PS Yukawa layer and sector posterior/survival map derived; 37 GHz literature comparison executed with no detection claim. Unconditional unique C_f, component threshold matching, full two-loop SO(10)+210, full UV posterior, and real 37 GHz data remain open.

@@ -1,0 +1,109 @@
+{
+  "status": "CERTIFICATION_MATH_COMPLETE__UNCONDITIONAL_UNIQUE_CF_BLOCKED_BY_THEOREM",
+  "n_checks": 4,
+  "n_failed": 0,
+  "failures": [],
+  "uniqueness_obstruction": {
+    "theorem": "Charge-allowed portal moduli Y have positive dimension. Q_proj=I-4W(Y) depends on Y, so the map (Y,tan\u03b2)\u2192(C_e,C_p,C_n) is not injective. Unique C_f cannot follow from Z17 charges alone.",
+    "witness_portals": [
+      {
+        "portal": "aligned",
+        "projected_shift_norm": 5.278472168314863e-16,
+        "projected_off_diagonal_norm": 2.85319922212756e-16,
+        "portal_weight_trace": 1.1959429488307497e-22
+      },
+      {
+        "portal": "hierarchical_universal",
+        "projected_shift_norm": 1.913444258902787e-11,
+        "projected_off_diagonal_norm": 1.5623330997925625e-11,
+        "portal_weight_trace": 4.7837717953001195e-12
+      },
+      {
+        "portal": "generation_dependent",
+        "projected_shift_norm": 3.9021261674826473,
+        "projected_off_diagonal_norm": 0.055222869151865875,
+        "portal_weight_trace": 0.9755315418706618
+      }
+    ],
+    "aligned_benchmark_at_shared_tan_beta": {
+      "tan_beta": 34.94979626444526,
+      "C_e": 0.05877541154303195,
+      "C_p_central": -0.4956432569468977,
+      "C_n_central": 0.028940406019627128,
+      "note": "These C_f values assume Q_proj=I. Misaligned portals produce different mass-basis charges and can induce FCNCs."
+    },
+    "flag": {
+      "uniqueness_from_charges_alone": false,
+      "obstruction_demonstrated": true
+    }
+  },
+  "conditional_unique_cf": {
+    "status": "CONDITIONAL_UNIQUE_CF_UNDER_NAMED_AXIOMS",
+    "axioms": {
+      "name": "maximal_aligned_hierarchical_uv_completion_v20",
+      "axioms": [
+        "A1: generation-universal lam_Q_F and vanishing generation-dependent Phi light-heavy Yukawas",
+        "A2: hierarchical Q portal with lam_Q_R = lam_S_Q_Rbar = 0",
+        "A3: exact alignment limit \u03b5\u21920 (equivalently W=0, Q_proj=I)",
+        "A4: O(1) UV magnitudes fixed to the manuscript benchmark y_P=y_R=y_Q=1",
+        "A5: tan(beta) selected as the global chi2 minimum of the corrected free-v_R flavour fit among viable points",
+        "A6: central di Cortona/PDG hadronic matching for C_p,C_n (envelope reported separately)"
+      ],
+      "scope": "These axioms are an explicit UV completion choice. They are not implied by Z17 charge assignments. Unique C_f under this set is conditional, not unconditional."
+    },
+    "selected_point": {
+      "tan_beta": 34.94979626444526,
+      "chi2": 4.954642447825638,
+      "v_r_GeV": 300000000000000.0,
+      "C_e": 0.05877541154303195,
+      "C_p_central": -0.4956432569468977,
+      "C_n_central": 0.028940406019627128,
+      "g_ae": 8.086675271031501e-16,
+      "g_ap_central": -1.2521383485263027e-11,
+      "g_an_central": 7.321262220655505e-13,
+      "xi": 0.058823529411634885,
+      "f_a_GeV": 37140323529.37078
+    },
+    "alignment_diagnostics": {
+      "epsilon": 1.262771e-06,
+      "projected_shift_norm": 1.913444258902787e-11,
+      "projected_off_diagonal_norm": 1.5623330997925625e-11,
+      "exact_W_zero": false,
+      "hierarchical_suppression_used_as_A3_proxy": true,
+      "note": "Finite \u03b5 gives approximate alignment. Exact uniqueness of the aligned formulas requires the strict W=0 locus in A3."
+    },
+    "flag": {
+      "conditional_unique_Cf_under_named_axioms": true,
+      "unconditional_unique_Cf": false,
+      "unique_from_z17_charges_alone": false
+    }
+  },
+  "roadmap": {
+    "front_1_uv_coupling": {
+      "unique_Cf_from_charges": "IMPOSSIBLE_BY_THEOREM",
+      "conditional_unique_Cf_under_named_axioms": "IMPLEMENTABLE",
+      "full_two_loop_SO10_210_published_contractions": "OPEN",
+      "pati_salam_component_threshold_matching": "OPEN_TO_PARTIAL"
+    },
+    "front_2_flavour": {
+      "channel_level_mu_and_kaon_rates": "IMPLEMENTED",
+      "NA62_pointwise_and_TWIST_massless_limits": "IMPLEMENTED",
+      "orientation_plane_scan": "IMPLEMENTED",
+      "full_portal_posterior": "PARTIAL_GRID",
+      "component_specific_L_R_UV_currents": "OPEN",
+      "continuous_experimental_likelihoods": "OPEN"
+    },
+    "front_3_direct_experiment": {
+      "37GHz_forecast_and_templates": "IMPLEMENTED",
+      "literature_bound_comparison": "IMPLEMENTED",
+      "real_conversion_data_detection": "NOT_AVAILABLE_IN_REPO"
+    },
+    "honest_summary": "The pipeline is a rigorously tested, fail-closed candidate with channel-level FCNC rates and official NA62/TWIST comparisons. Full certification as a unique UV theory is blocked by a mathematical uniqueness obstruction unless additional UV axioms are adopted, and by unfinished PS/two-loop and real 37 GHz data."
+  },
+  "flag": {
+    "unconditional_unique_Cf": false,
+    "conditional_unique_Cf_under_named_axioms": true,
+    "mathematical_obstruction_proved": true
+  },
+  "verdict": "The pipeline is a rigorously tested, fail-closed candidate with channel-level FCNC rates and official NA62/TWIST comparisons. Full certification as a unique UV theory is blocked by a mathematical uniqueness obstruction unless additional UV axioms are adopted, and by unfinished PS/two-loop and real 37 GHz data."
+}

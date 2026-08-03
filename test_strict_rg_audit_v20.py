@@ -8,13 +8,17 @@ import twist_massless_limit_v20 as twist
 import portal_constraint_ray_v20 as ray
 import portal_boundary_heavy_spectrum_v20 as spectrum
 import portal_family_orientation_map_v20 as orientation
+import pati_salam_yukawa_matching_v20 as ps
+import theory_certification_math_v20 as cert
+import portal_yukawa_posterior_v20 as posterior
+import haloscope_37ghz_limit_compare_v20 as halo
 import strict_rg_audit_v20 as strict
 
 class StrictRGAuditTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        for module,name in ((channel,"CHANNEL_FCNC_RATES_V20_VERDICT.json"),(na62,"NA62_POINTWISE_LIMIT_V20_VERDICT.json"),(twist,"TWIST_MASSLESS_LIMIT_V20_VERDICT.json"),(ray,"PORTAL_CONSTRAINT_RAY_V20_VERDICT.json"),(spectrum,"PORTAL_BOUNDARY_HEAVY_SPECTRUM_V20_VERDICT.json"),(orientation,"PORTAL_FAMILY_ORIENTATION_MAP_V20_VERDICT.json")):
-            report=module.build_report(); module.ROOT.joinpath(name).write_text(json.dumps(report,indent=2)+"\n",encoding="utf-8")
+        for module,name in ((channel,"CHANNEL_FCNC_RATES_V20_VERDICT.json"),(na62,"NA62_POINTWISE_LIMIT_V20_VERDICT.json"),(twist,"TWIST_MASSLESS_LIMIT_V20_VERDICT.json"),(ray,"PORTAL_CONSTRAINT_RAY_V20_VERDICT.json"),(spectrum,"PORTAL_BOUNDARY_HEAVY_SPECTRUM_V20_VERDICT.json"),(orientation,"PORTAL_FAMILY_ORIENTATION_MAP_V20_VERDICT.json"),(ps,"PATI_SALAM_YUKAWA_MATCHING_V20_VERDICT.json"),(cert,"THEORY_CERTIFICATION_MATH_V20_VERDICT.json"),(posterior,"PORTAL_YUKAWA_POSTERIOR_V20_VERDICT.json"),(halo,"HALOSCOPE_37GHZ_LIMIT_COMPARE_V20_VERDICT.json")):
+            report=module.build_report(); module.ROOT.joinpath(name).write_text(json.dumps(report,indent=2,default=str)+"\n",encoding="utf-8")
     def test_current_artifacts_pass_honesty_audit(self):
         r=strict.build_report(); self.assertEqual(r["status"],"PASS"); self.assertEqual(r["n_failed"],0)
         self.assertEqual(r["classification"]["complex_F1_F2_orientation_map"],"SCANNED_AT_FIXED_NORM_AND_ORDERED_HEAVY_YQ")
@@ -22,6 +26,10 @@ class StrictRGAuditTests(unittest.TestCase):
         self.assertEqual(r["classification"]["twist_orientation_dependence"],"ALL_5856_SAMPLED_ORIENTATIONS_BELOW_PUBLISHED_BENCHMARKS")
         self.assertEqual(r["classification"]["orientation_grid_fraction"],"NOT_A_PROBABILITY_OR_UV_POSTERIOR")
         self.assertEqual(r["classification"]["full_complex_three_family_orientation"],"OPEN")
+        self.assertEqual(r["classification"]["pati_salam_one_loop_yukawa_layer"],"SOLVED_ON_MI_TO_MGUT")
+        self.assertEqual(r["classification"]["unique_Cf_from_charges_alone"],"IMPOSSIBLE_BY_THEOREM")
+        self.assertEqual(r["classification"]["portal_sector_posterior"],"DISCRETE_GRID_ON_CONDITIONAL_SECTOR")
+        self.assertEqual(r["classification"]["lab_37ghz_limit_comparison"],"EXECUTED__NO_DETECTION")
         self.assertEqual(r["classification"]["whole_model_exclusion"],"NOT_ESTABLISHED")
     def _write_minimal_artifacts(self, root:Path, *, matrix_closed=False, whole_model_excluded=False, correlated_likelihood=False, twist_continuous=False, twist_A_predicted=False, boundary_solved=True, full_portal_scan=False, bare_D_physical=False, spectrum_solved=True, piecewise_complete=False, grid_probability=False, full_three_family=False, orientation_posterior=False, orientation_mixed=True):
         (root/"PUSH_PHENOMENOLOGY_LIMITS_V20_VERDICT.json").write_text(json.dumps({"one_loop_matrix_yukawa_rge":{"flag":{"actual_one_loop_matrix_beta_system_solved":matrix_closed}}}))
@@ -34,6 +42,10 @@ class StrictRGAuditTests(unittest.TestCase):
         (root/"PORTAL_BOUNDARY_HEAVY_SPECTRUM_V20_VERDICT.json").write_text(json.dumps({"flag":{"bare_D_is_not_a_physical_mass_eigenvalue":not bare_D_physical,"full_three_heavy_singular_values_computed":spectrum_solved,"lightest_heavy_equals_vS_boundary_solved":spectrum_solved,"ordered_point_survives_NA62":spectrum_solved,"ordered_point_survives_TWIST":spectrum_solved,"individual_Q_like_mass_eigenstate_uniquely_identified":False,"piecewise_threshold_matching_complete":piecewise_complete,"whole_v20_model_excluded":whole_model_excluded}}))
         excluded=5664 if orientation_mixed else 5856; surviving=192 if orientation_mixed else 0
         (root/"PORTAL_FAMILY_ORIENTATION_MAP_V20_VERDICT.json").write_text(json.dumps({"flag":{"complex_F1_F2_orientation_plane_scanned":True,"ordered_heavy_boundary_used":True,"heavy_spectrum_orientation_invariant_at_fixed_norm":True,"NA62_has_excluded_grid_points":excluded>0,"NA62_has_surviving_grid_points":surviving>0,"TWIST_has_excluded_grid_points":False,"TWIST_has_surviving_grid_points":True,"grid_fraction_is_probability":grid_probability,"full_complex_three_family_orientation_scanned":full_three_family,"all_portal_magnitudes_and_phases_scanned":full_portal_scan,"portal_yukawa_posterior_derived":orientation_posterior,"component_specific_uv_chiral_currents_derived":False,"whole_v20_model_excluded":whole_model_excluded},"scan":{"counts":{"n_grid_points":5856,"n_NA62_excluded":excluded,"n_NA62_surviving":surviving,"n_TWIST_excluded":0,"grid_fraction_is_probability":grid_probability},"extrema":{}}}))
+        (root/"PATI_SALAM_YUKAWA_MATCHING_V20_VERDICT.json").write_text(json.dumps({"flag":{"pati_salam_one_loop_yukawa_layer_solved":True,"pati_salam_interval_matching":True,"piecewise_component_threshold_matching_complete":False,"two_loop_so10_complete":False,"uses_so10_beta_across_PS_interval":False}}))
+        (root/"THEORY_CERTIFICATION_MATH_V20_VERDICT.json").write_text(json.dumps({"flag":{"mathematical_obstruction_proved":True,"conditional_unique_Cf_under_named_axioms":True,"unconditional_unique_Cf":False}}))
+        (root/"PORTAL_YUKAWA_POSTERIOR_V20_VERDICT.json").write_text(json.dumps({"flag":{"portal_sector_posterior_derived":True,"full_portal_yukawa_posterior_derived":False,"survival_fraction_is_probability":False,"whole_v20_model_excluded":whole_model_excluded}}))
+        (root/"HALOSCOPE_37GHZ_LIMIT_COMPARE_V20_VERDICT.json").write_text(json.dumps({"flag":{"lab_limit_comparison_executed":True,"real_37GHz_detection":False,"experimental_discovery":False,"all_dm_photon_benchmark_currently_open":True}}))
     def _audit(self, **kwargs):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp); self._write_minimal_artifacts(root,**kwargs)
