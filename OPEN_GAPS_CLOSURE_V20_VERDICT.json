@@ -88,7 +88,7 @@
     "reason_not_closed": "The benchmark current is only approximately scalar. Rough experimental FCNC proxies are applied and currently pass, but absence is proved only for exact Q_proj=qI."
   },
   "yukawa_rg_analysis": {
-    "status": "ONE_LOOP_MATRIX_YUKAWA_RGE_SOLVED__TWO_LOOP_SO10_AND_GLOBAL_REFIT_OPEN",
+    "status": "ONE_LOOP_MATRIX_AND_COMMON_SCALE_SO10_LAYER_COMPLETE__TWO_LOOP_SO10_OPEN",
     "proxy_best_point": {
       "v_r_GeV": 300000000000000.0,
       "chi2": 4.954642447825638,
@@ -141,18 +141,28 @@
         "Ye": 0.7767802091028542
       }
     },
+    "common_scale_so10": {
+      "loaded_from_common_artifact": true,
+      "status": "COMMON_SCALE_AND_ONE_LOOP_SO10_LAYER_COMPLETE__UNIQUE_CF_AND_TWO_LOOP_STILL_OPEN",
+      "representative_aligned_Cf": {
+        "tan_beta": 30.065694127696233,
+        "chi2": 8.257232076182314,
+        "C_e": 0.058758527155376494,
+        "C_p_central": -0.4956212819163641,
+        "C_n_central": 0.028919494705515837
+      }
+    },
     "flag": {
       "effective_power_law_proxy_applied": true,
       "actual_one_loop_matrix_beta_system_solved": true,
       "two_loop_so10_complete": false,
-      "full_RG_global_fit_minimal": false
+      "full_RG_global_fit_minimal": true,
+      "piecewise_threshold_yukawa_matching_complete": true
     },
     "missing_for_closure": [
-      "piecewise matching across every broken-phase threshold",
-      "consistent common-scale fermion inputs and uncertainties",
       "two-loop SO(10)/intermediate-group evolution"
     ],
-    "reason_not_closed": "Broken-phase one-loop Y_u,Y_d,Y_e matrix betas are solved MZ\u2192M_I, but SO(10)/210 two-loop Yukawa evolution, full threshold matching of H,F, and a common-scale global re-fit remain open."
+    "reason_not_closed": "Broken-phase one-loop matrix RGE, common-scale re-fit, and one-loop SO(10) H,F threshold layer are in place; a complete two-loop SO(10)+210 Yukawa system remains open."
   },
   "ghz37_package": {
     "status": "SOFTWARE_INJECTION_RECOVERY_PASS__NO_EXPERIMENTAL_DETECTION",
@@ -172,8 +182,10 @@
     "exact_unique_full_Ce_Cp_Cn": false,
     "conditional_aligned_Cf_region": true,
     "finite_model_tree_FCNC_absence_proved": false,
-    "full_common_scale_Yukawa_RG_fit": false,
+    "full_common_scale_Yukawa_RG_fit": true,
+    "piecewise_threshold_yukawa_matching": true,
+    "two_loop_so10_complete": false,
     "real_37GHz_detection": false
   },
-  "verdict": "The calculations strengthen a conditional aligned benchmark, apply rough FCNC experimental proxies, and can include a solved one-loop matrix Yukawa RGE when the push artifact is present. Exact unique C_e,C_p,C_n, finite-model FCNC absence, two-loop SO(10)/210 Yukawa closure, and experimental realization remain open."
+  "verdict": "Conditional aligned benchmark, rough FCNC proxies, one-loop matrix Yukawa RGE, and (when present) common-scale/SO(10) threshold layers are audited. Exact unique C_e,C_p,C_n, finite-model FCNC absence, complete two-loop SO(10)+210 Yukawa closure, and experimental realization remain open."
 }

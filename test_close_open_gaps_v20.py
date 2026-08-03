@@ -12,14 +12,25 @@ import push_phenomenology_limits_v20 as push
 class OpenGapAuditTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
-        # Ensure the push artifact exists so yukawa classification can see it.
-        report = push.build_report()
-        if report["n_failed"] != 0:
-            raise RuntimeError(f"push failed: {report['failures']}")
+        # Ensure push + common-scale artifacts exist for yukawa classification.
+        push_report = push.build_report()
+        if push_report["n_failed"] != 0:
+            raise RuntimeError(f"push failed: {push_report['failures']}")
         push.ROOT.joinpath(
             "PUSH_PHENOMENOLOGY_LIMITS_V20_VERDICT.json"
         ).write_text(
-            __import__("json").dumps(report, indent=2) + "\n",
+            __import__("json").dumps(push_report, indent=2) + "\n",
+            encoding="utf-8",
+        )
+        import common_scale_so10_yukawa_v20 as common
+
+        common_report = common.build_report()
+        if common_report["n_failed"] != 0:
+            raise RuntimeError(f"common-scale failed: {common_report['failures']}")
+        common.ROOT.joinpath(
+            "COMMON_SCALE_SO10_YUKAWA_V20_VERDICT.json"
+        ).write_text(
+            __import__("json").dumps(common_report, indent=2) + "\n",
             encoding="utf-8",
         )
 
@@ -50,15 +61,14 @@ class OpenGapAuditTests(unittest.TestCase):
             ]
         )
 
-    def test_matrix_rge_solved_but_not_two_loop_or_full_fit(self) -> None:
+    def test_matrix_rge_solved_but_not_two_loop(self) -> None:
         report = gaps.yukawa_rg_global_fit()
         self.assertTrue(report["flag"]["effective_power_law_proxy_applied"])
         self.assertTrue(
             report["flag"]["actual_one_loop_matrix_beta_system_solved"]
         )
-        self.assertFalse(report["flag"]["full_RG_global_fit_minimal"])
         self.assertFalse(report["flag"]["two_loop_so10_complete"])
-        self.assertIn("ONE_LOOP_MATRIX_YUKAWA_RGE_SOLVED", report["status"])
+        self.assertIn("ONE_LOOP", report["status"])
         self.assertNotEqual(report["status"], "YUKAWA_RG_GLOBAL_FIT_COMPLETE")
 
     def test_detection_not_claimed(self) -> None:
@@ -82,9 +92,7 @@ class OpenGapAuditTests(unittest.TestCase):
                 "finite_model_tree_FCNC_absence_proved"
             ]
         )
-        self.assertFalse(
-            report["gap_status"]["full_common_scale_Yukawa_RG_fit"]
-        )
+        self.assertFalse(report["gap_status"]["two_loop_so10_complete"])
         self.assertFalse(report["gap_status"]["real_37GHz_detection"])
 
 

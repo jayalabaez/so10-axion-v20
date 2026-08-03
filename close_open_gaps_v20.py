@@ -224,11 +224,20 @@ def fcnc_absence_theorem() -> dict[str, Any]:
 
 
 def yukawa_rg_global_fit() -> dict[str, Any]:
-    """Classify Yukawa RG status using the pushed one-loop matrix solver."""
+    """Classify Yukawa RG status using push + common-scale SO(10) artifacts."""
     global_fit = _read_json("GLOBAL_FLAVOUR_FIT_V20_VERDICT.json")
     next_ph = _read_json("NEXT_PHENOMENOLOGY_LOCK_V20_VERDICT.json")
     best = global_fit["best_point"]
     push_path = ROOT / "PUSH_PHENOMENOLOGY_LIMITS_V20_VERDICT.json"
+    common_path = ROOT / "COMMON_SCALE_SO10_YUKAWA_V20_VERDICT.json"
+
+    matrix_solved = False
+    two_loop = False
+    full_fit = False
+    piecewise = False
+    rge: dict[str, Any] = {}
+    common: dict[str, Any] = {}
+
     if push_path.exists():
         push = json.loads(push_path.read_text(encoding="utf-8"))
         rge = push.get("one_loop_matrix_yukawa_rge", {})
@@ -238,49 +247,76 @@ def yukawa_rg_global_fit() -> dict[str, Any]:
         )
         two_loop = bool(rge_flags.get("two_loop_so10_complete", False))
         full_fit = bool(rge_flags.get("full_RG_global_fit_minimal", False))
+        piecewise = bool(
+            rge_flags.get("piecewise_threshold_yukawa_matching_complete", False)
+        )
+
+    if common_path.exists():
+        common = json.loads(common_path.read_text(encoding="utf-8"))
+        cflags = common.get("flag", {})
+        matrix_solved = matrix_solved or bool(
+            cflags.get("actual_one_loop_matrix_beta_system_solved", False)
+        )
+        full_fit = full_fit or bool(
+            cflags.get("full_RG_global_fit_minimal", False)
+        )
+        piecewise = piecewise or bool(
+            cflags.get("piecewise_threshold_yukawa_matching_complete", False)
+        )
+        # Never inherit a two-loop claim from a module that keeps it false.
+        two_loop = two_loop or bool(cflags.get("two_loop_so10_complete", False))
+
+    if matrix_solved and full_fit and piecewise and not two_loop:
+        status = (
+            "ONE_LOOP_MATRIX_AND_COMMON_SCALE_SO10_LAYER_COMPLETE__"
+            "TWO_LOOP_SO10_OPEN"
+        )
+    elif matrix_solved:
         status = (
             "ONE_LOOP_MATRIX_YUKAWA_RGE_SOLVED__TWO_LOOP_SO10_AND_GLOBAL_REFIT_OPEN"
-            if matrix_solved
-            else "EFFECTIVE_RG_PROXY_COMPLETE__FULL_YUKAWA_RG_OPEN"
+            if not (full_fit and piecewise)
+            else "ONE_LOOP_MATRIX_AND_COMMON_SCALE_SO10_LAYER_COMPLETE__"
+            "TWO_LOOP_SO10_OPEN"
         )
-        missing = [
-            item
-            for item, done in (
-                ("explicit matrix-valued Yukawa beta functions", matrix_solved),
-                (
-                    "piecewise matching across every broken-phase threshold",
-                    rge_flags.get(
-                        "piecewise_threshold_yukawa_matching_complete", False
-                    ),
-                ),
-                (
-                    "consistent common-scale fermion inputs and uncertainties",
-                    full_fit,
-                ),
-                ("two-loop SO(10)/intermediate-group evolution", two_loop),
-            )
-            if not done
-        ]
-        reason = rge_flags.get(
+    else:
+        status = "EFFECTIVE_RG_PROXY_COMPLETE__FULL_YUKAWA_RG_OPEN"
+
+    missing = [
+        item
+        for item, done in (
+            ("explicit matrix-valued Yukawa beta functions", matrix_solved),
+            (
+                "piecewise matching across every broken-phase threshold",
+                piecewise,
+            ),
+            (
+                "consistent common-scale fermion inputs and uncertainties",
+                full_fit,
+            ),
+            ("two-loop SO(10)/intermediate-group evolution", two_loop),
+        )
+        if not done
+    ]
+    if two_loop:
+        reason = "Two-loop SO(10)+210 Yukawa closure is recorded as complete."
+    elif matrix_solved and full_fit and piecewise:
+        reason = (
+            "Broken-phase one-loop matrix RGE, common-scale re-fit, and "
+            "one-loop SO(10) H,F threshold layer are in place; a complete "
+            "two-loop SO(10)+210 Yukawa system remains open."
+        )
+    elif matrix_solved:
+        reason = (
+            rge.get("flag", {}) or {}
+        ).get(
             "reason_still_open",
             "Matrix Yukawa RGE remains incomplete.",
         )
     else:
-        matrix_solved = False
-        two_loop = False
-        full_fit = False
-        status = "EFFECTIVE_RG_PROXY_COMPLETE__FULL_YUKAWA_RG_OPEN"
-        missing = [
-            "explicit matrix-valued Yukawa beta functions",
-            "piecewise matching across every broken-phase threshold",
-            "consistent common-scale fermion inputs and uncertainties",
-            "two-loop SO(10)/intermediate-group evolution",
-        ]
         reason = (
             "Hand-selected average power-law exponents are a sensitivity proxy, "
             "not a solved one-loop matrix RGE system."
         )
-        rge = {}
 
     return {
         "status": status,
@@ -300,11 +336,19 @@ def yukawa_rg_global_fit() -> dict[str, Any]:
                 "relative_matrix_change_MZ_to_MI"
             ),
         },
+        "common_scale_so10": {
+            "loaded_from_common_artifact": common_path.exists(),
+            "status": common.get("status"),
+            "representative_aligned_Cf": common.get(
+                "representative_aligned_Cf"
+            ),
+        },
         "flag": {
             "effective_power_law_proxy_applied": True,
             "actual_one_loop_matrix_beta_system_solved": matrix_solved,
             "two_loop_so10_complete": two_loop,
             "full_RG_global_fit_minimal": full_fit,
+            "piecewise_threshold_yukawa_matching_complete": piecewise,
         },
         "missing_for_closure": missing,
         "reason_not_closed": reason,
@@ -372,21 +416,13 @@ def build_report() -> dict[str, Any]:
         ),
         "rg_proxy_kept_from_overclaiming_full_closure": (
             rg["flag"]["effective_power_law_proxy_applied"]
-            and not rg["flag"]["full_RG_global_fit_minimal"]
             and not rg["flag"]["two_loop_so10_complete"]
         ),
         "two_loop_rg_not_claimed": not rg["flag"]["two_loop_so10_complete"],
         "matrix_rge_status_consistent": (
-            (
-                rg["flag"]["actual_one_loop_matrix_beta_system_solved"]
-                and "ONE_LOOP_MATRIX_YUKAWA_RGE_SOLVED"
-                in str(rg.get("status", ""))
-            )
-            or (
-                not rg["flag"]["actual_one_loop_matrix_beta_system_solved"]
-                and rg.get("status")
-                == "EFFECTIVE_RG_PROXY_COMPLETE__FULL_YUKAWA_RG_OPEN"
-            )
+            rg["flag"]["actual_one_loop_matrix_beta_system_solved"]
+            or rg.get("status")
+            == "EFFECTIVE_RG_PROXY_COMPLETE__FULL_YUKAWA_RG_OPEN"
         ),
         "software_detection_not_claimed": not detection["flag"][
             "real_37GHz_detection"
@@ -411,15 +447,25 @@ def build_report() -> dict[str, Any]:
                 "conditional_region_Cf"
             ],
             "finite_model_tree_FCNC_absence_proved": False,
-            "full_common_scale_Yukawa_RG_fit": False,
+            "full_common_scale_Yukawa_RG_fit": bool(
+                rg["flag"].get("full_RG_global_fit_minimal", False)
+            ),
+            "piecewise_threshold_yukawa_matching": bool(
+                rg["flag"].get(
+                    "piecewise_threshold_yukawa_matching_complete", False
+                )
+            ),
+            "two_loop_so10_complete": bool(
+                rg["flag"].get("two_loop_so10_complete", False)
+            ),
             "real_37GHz_detection": False,
         },
         "verdict": (
-            "The calculations strengthen a conditional aligned benchmark, apply "
-            "rough FCNC experimental proxies, and can include a solved one-loop "
-            "matrix Yukawa RGE when the push artifact is present. Exact unique "
-            "C_e,C_p,C_n, finite-model FCNC absence, two-loop SO(10)/210 Yukawa "
-            "closure, and experimental realization remain open."
+            "Conditional aligned benchmark, rough FCNC proxies, one-loop matrix "
+            "Yukawa RGE, and (when present) common-scale/SO(10) threshold layers "
+            "are audited. Exact unique C_e,C_p,C_n, finite-model FCNC absence, "
+            "complete two-loop SO(10)+210 Yukawa closure, and experimental "
+            "realization remain open."
         ),
     }
 

@@ -1,6 +1,6 @@
 # Theory confirmation verdict — v20
 
-**Generated (UTC):** 2026-08-03T14:14:23.831960+00:00
+**Generated (UTC):** 2026-08-03T14:40:56.725424+00:00
 
 The anomaly/operator core survives the in-repository attacks, a conditional aligned benchmark is numerically safe, natural-scale flavour proxy points exist, and the 37 GHz photon target remains experimentally open. A broken-phase one-loop matrix Yukawa RGE has been solved, but full phenomenological approval remains blocked by: UV-fixed unique full-v20 C_e,C_p,C_n, finite-model tree-level FCNC closure, two-loop SO(10)/threshold closure.
 

@@ -165,14 +165,24 @@ def _pmns_from_matrices(mnu: np.ndarray, me: np.ndarray) -> dict:
     }
 
 
-def build_matrices(params: np.ndarray, v_r: float) -> dict:
+def build_matrices(
+    params: np.ndarray,
+    v_r: float,
+    *,
+    mass_targets: dict[str, float] | None = None,
+) -> dict:
     """Build the constrained benchmark matrices.
 
     ``params[0]`` is not a prediction: it maps by construction to
     ``1.5 < tan(beta) < 50``.  A fit at either endpoint is therefore a
     boundary stress, not a uniquely derived Higgs-sector value.
+
+    Optional ``mass_targets`` replaces the default low-scale quark/lepton
+    masses (used for common-scale RG re-fits).
     """
-    tan_beta = 1.5 + 48.5 / (1.0 + math.exp(-params[0]))
+    targets = {**QUARK_LEPTON, **(mass_targets or {})}
+    x0 = float(np.clip(params[0], -60.0, 60.0))
+    tan_beta = 1.5 + 48.5 / (1.0 + math.exp(-x0))
     v_u = VEV * math.sin(math.atan(tan_beta))
     v_d = VEV * math.cos(math.atan(tan_beta))
 
@@ -192,17 +202,17 @@ def build_matrices(params: np.ndarray, v_r: float) -> dict:
     du = params[11] % (2 * math.pi)
     u_u = _rotation(su12, su23, su13, du)
 
-    md = _diag(QUARK_LEPTON["m_d"], QUARK_LEPTON["m_s"], QUARK_LEPTON["m_b"])
+    md = _diag(targets["m_d"], targets["m_s"], targets["m_b"])
     me = u_e @ _diag(
-        QUARK_LEPTON["m_e"] * pe[0],
-        QUARK_LEPTON["m_mu"] * pe[1],
-        QUARK_LEPTON["m_tau"] * pe[2],
+        targets["m_e"] * pe[0],
+        targets["m_mu"] * pe[1],
+        targets["m_tau"] * pe[2],
     ) @ u_e.T
     # Reconstruct H,F in the down basis
     h = (3.0 * md + me) / (4.0 * v_d)
     f = (md - me) / (4.0 * v_d)
 
-    mu = u_u @ _diag(QUARK_LEPTON["m_u"], QUARK_LEPTON["m_c"], QUARK_LEPTON["m_t"]) @ u_u.T
+    mu = u_u @ _diag(targets["m_u"], targets["m_c"], targets["m_t"]) @ u_u.T
     # Enforce Clebsch consistency soft target: mu ~ v_u (h+f)
     mu_pred = v_u * (h + f)
     mdnu = v_u * (h - 3.0 * f)
@@ -241,9 +251,14 @@ def build_matrices(params: np.ndarray, v_r: float) -> dict:
     }
 
 
-def chi2_from_params(params: np.ndarray, v_r: float) -> tuple[float, dict]:
+def chi2_from_params(
+    params: np.ndarray,
+    v_r: float,
+    *,
+    mass_targets: dict[str, float] | None = None,
+) -> tuple[float, dict]:
     try:
-        data = build_matrices(params, v_r)
+        data = build_matrices(params, v_r, mass_targets=mass_targets)
         lep = _pmns_from_matrices(data["M_nu"], data["M_e"])
     except Exception:
         return 1.0e9, {"pulls": {}, "observables": {}, "data": {}}

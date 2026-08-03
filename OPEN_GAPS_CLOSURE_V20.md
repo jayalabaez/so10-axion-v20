@@ -26,4 +26,4 @@
 
 ## Verdict
 
-The calculations strengthen a conditional aligned benchmark, apply rough FCNC experimental proxies, and can include a solved one-loop matrix Yukawa RGE when the push artifact is present. Exact unique C_e,C_p,C_n, finite-model FCNC absence, two-loop SO(10)/210 Yukawa closure, and experimental realization remain open.
+Conditional aligned benchmark, rough FCNC proxies, one-loop matrix Yukawa RGE, and (when present) common-scale/SO(10) threshold layers are audited. Exact unique C_e,C_p,C_n, finite-model FCNC absence, complete two-loop SO(10)+210 Yukawa closure, and experimental realization remain open.
