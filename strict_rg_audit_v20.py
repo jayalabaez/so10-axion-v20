@@ -15,8 +15,9 @@ def build_report()->dict[str,Any]:
     two=read_json("TWO_LOOP_SO10_210_V20_VERDICT.json")
     channel=read_json("CHANNEL_FCNC_RATES_V20_VERDICT.json")
     na62=read_json("NA62_POINTWISE_LIMIT_V20_VERDICT.json")
+    twist=read_json("TWIST_MASSLESS_LIMIT_V20_VERDICT.json")
     p=push.get("one_loop_matrix_yukawa_rge",{}).get("flag",{})
-    c=common.get("flag",{}); t=two.get("flag",{}); oldf=two.get("fcnc_limits",{}).get("flag",{}); ch=channel.get("flag",{}); n=na62.get("flag",{})
+    c=common.get("flag",{}); t=two.get("flag",{}); oldf=two.get("fcnc_limits",{}).get("flag",{}); ch=channel.get("flag",{}); n=na62.get("flag",{}); w=twist.get("flag",{})
     checks={
         "matrix_rge_open":not p.get("actual_one_loop_matrix_beta_system_solved",False),
         "matrix_coefficients_unvalidated":not p.get("reference_validated_type_II_coefficients",False),
@@ -31,8 +32,15 @@ def build_report()->dict[str,Any]:
         "chiral_rotations_implemented":ch.get("left_right_mass_basis_rotations_implemented",False),
         "na62_limit_ingested":n.get("official_pointwise_observed_limit_ingested",False),
         "na62_provenance_verified":n.get("offline_provenance_hash_verified",False),
-        "counterexample_point_classified":n.get("generation_dependent_portal_point_excluded",False),
-        "whole_model_not_rejected":not n.get("whole_v20_model_excluded",False),
+        "na62_counterexample_point_classified":n.get("generation_dependent_portal_point_excluded",False),
+        "twist_three_limits_ingested":w.get("three_published_asymmetry_limits_ingested",False),
+        "twist_provenance_verified":w.get("offline_provenance_hash_verified",False),
+        "twist_hierarchical_survives":w.get("hierarchical_survives_all_three_TWIST_benchmarks",False),
+        "twist_counterexample_survives":w.get("generation_dependent_survives_all_three_TWIST_benchmarks",False),
+        "twist_continuous_A_likelihood_open":not w.get("continuous_arbitrary_A_likelihood_implemented",False),
+        "twist_A_not_uv_predicted":not w.get("TWIST_asymmetry_predicted_from_uv_currents",False),
+        "twist_full_likelihood_open":not w.get("full_muon_channel_likelihood_implemented",False),
+        "whole_model_not_rejected":not n.get("whole_v20_model_excluded",False) and not w.get("whole_v20_model_excluded",False),
         "all_portals_not_rejected":not n.get("all_portal_parameter_space_excluded",False),
         "correlated_likelihood_open":not n.get("full_correlated_experimental_likelihood_implemented",False),
         "component_uv_currents_open":not n.get("component_specific_uv_chiral_currents_derived",False),
@@ -51,10 +59,11 @@ def build_report()->dict[str,Any]:
             "full_two_loop_so10_210_yukawa_system":"OPEN",
             "channel_level_fcnc_formulae":"IMPLEMENTED",
             "na62_pointwise_observed_upper_limit":"IMPLEMENTED",
-            "generation_dependent_counterexample":"ABOVE_90CL_UPPER_LIMIT_UNDER_COMMON_CURRENT_ASSUMPTION",
-            "hierarchical_universal_benchmark":"BELOW_NA62_POINTWISE_LIMIT",
+            "generation_dependent_kaon_counterexample":"ABOVE_NA62_90CL_LIMIT_UNDER_COMMON_CURRENT_ASSUMPTION",
+            "twist_massless_A_minus1_0_plus1_limits":"IMPLEMENTED",
+            "generation_dependent_muon_counterexample":"BELOW_ALL_THREE_PUBLISHED_TWIST_BENCHMARK_LIMITS",
+            "continuous_twist_asymmetry_likelihood":"OPEN",
             "component_specific_uv_chiral_matching":"OPEN",
-            "full_correlated_fcnc_likelihoods":"OPEN",
             "whole_model_exclusion":"NOT_ESTABLISHED"
         },
         "required_for_closure":[
@@ -63,9 +72,9 @@ def build_report()->dict[str,Any]:
             "reference-derived full two-loop representation contractions",
             "component-specific left/right PQ currents after all thresholds",
             "complete portal-Yukawa posterior scan across the NA62 curve",
-            "TWIST angular likelihood and any released NA62 nuisance correlations"
+            "derive the TWIST asymmetry A and obtain a continuous angular likelihood"
         ],
-        "verdict":"The official NA62 zero-mass observed upper limit is applied. The selected generation-dependent portal point is above that limit, while the hierarchical benchmark is below it. This does not establish whole-model exclusion because the UV portal distribution and component-specific currents are not fixed."
+        "verdict":"The kaon counterexample is above the official NA62 pointwise limit. Its muon rate remains below all three published TWIST massless A=-1,0,+1 benchmark limits. Neither result establishes whole-model exclusion because the UV portal distribution and component-specific currents are not fixed."
     }
 
 def write_markdown(r):
