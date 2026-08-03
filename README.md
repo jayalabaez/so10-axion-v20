@@ -77,6 +77,7 @@ python cmb_public_data_pipeline_v20.py   # download CMB/radio landing products
 python empirical_roadmap_lock_v20.py     # lock experimental targets + flags
 python next_phenomenology_lock_v20.py    # FCNC ledger + hadronic envelope
 python verify_tan_beta_profile_semantics.py  # scientific profile certificate
+python close_open_gaps_v20.py            # conditional unique C_f + RG fit + 37 GHz package
 ```
 
 See [EXTENSIVE_CONFIRM_FALSIFY.md](EXTENSIVE_CONFIRM_FALSIFY.md) for the full

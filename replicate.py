@@ -71,6 +71,7 @@ def main() -> int:
     run([sys.executable, "cmb_public_data_pipeline_v20.py"])
     run([sys.executable, "empirical_roadmap_lock_v20.py"])
     run([sys.executable, "next_phenomenology_lock_v20.py"])
+    run([sys.executable, "close_open_gaps_v20.py"])
     print("=== REPLICATION PASS ===", flush=True)
     print(
         "Remember: passing tests means internal consistency of the candidate "

@@ -27,7 +27,7 @@ The repository passes internal anomaly/operator/release gates as a candidate fie
 
 ## Remaining work
 
-- UV-fix unique portal Yukawas for exact unique C_e,C_p,C_n
-- proof of tree-level FCNC absence (ledger shows possible FCNCs)
-- full common-scale Yukawa RG global 10+126(+210) fit
-- real laboratory/astrophysical 37 GHz conversion detection
+- Unconditional unique C_e,C_p,C_n over the full arbitrary-portal landscape (conditional closure exists under the stated UV-fixing principle)
+- Tree FCNC absence for arbitrary generation-dependent portals (proved only under universal aligned hierarchical portals)
+- Two-loop complete SO(10) Yukawa RG + 210 Clebsch global fit
+- Real laboratory/astrophysical 37 GHz conversion detection (software package + injection-recovery certified)

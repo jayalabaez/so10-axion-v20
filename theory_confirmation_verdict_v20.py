@@ -165,6 +165,7 @@ def build_verdict() -> dict:
             "empirical_roadmap_lock": "haloscope + GRAVITAS + flags locked",
             "tan_beta_semantic_certificate": "PASS (scientific invariants, not byte-identical optimizer path)",
             "next_phenomenology_lock": "FCNC ledger + hadronic envelope + threshold bookkeeping",
+            "open_gaps_closure": "conditional unique C_f + FCNC theorem + one-loop RG fit + 37 GHz package",
         },
         "correct_public_claim": (
             "We have a mathematically consistent SO(10)×Z17 axion candidate "
