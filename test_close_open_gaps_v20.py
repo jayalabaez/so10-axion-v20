@@ -8,13 +8,14 @@ import na62_pointwise_limit_v20 as na62
 import twist_massless_limit_v20 as twist
 import portal_constraint_ray_v20 as ray
 import portal_boundary_heavy_spectrum_v20 as spectrum
+import portal_family_orientation_map_v20 as orientation
 import strict_rg_audit_v20 as strict
 import close_open_gaps_v20 as gaps
 
 class OpenGapAuditTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        for module,name in ((push,"PUSH_PHENOMENOLOGY_LIMITS_V20_VERDICT.json"),(common,"COMMON_SCALE_SO10_YUKAWA_V20_VERDICT.json"),(two,"TWO_LOOP_SO10_210_V20_VERDICT.json"),(channel,"CHANNEL_FCNC_RATES_V20_VERDICT.json"),(na62,"NA62_POINTWISE_LIMIT_V20_VERDICT.json"),(twist,"TWIST_MASSLESS_LIMIT_V20_VERDICT.json"),(ray,"PORTAL_CONSTRAINT_RAY_V20_VERDICT.json"),(spectrum,"PORTAL_BOUNDARY_HEAVY_SPECTRUM_V20_VERDICT.json")):
+        for module,name in ((push,"PUSH_PHENOMENOLOGY_LIMITS_V20_VERDICT.json"),(common,"COMMON_SCALE_SO10_YUKAWA_V20_VERDICT.json"),(two,"TWO_LOOP_SO10_210_V20_VERDICT.json"),(channel,"CHANNEL_FCNC_RATES_V20_VERDICT.json"),(na62,"NA62_POINTWISE_LIMIT_V20_VERDICT.json"),(twist,"TWIST_MASSLESS_LIMIT_V20_VERDICT.json"),(ray,"PORTAL_CONSTRAINT_RAY_V20_VERDICT.json"),(spectrum,"PORTAL_BOUNDARY_HEAVY_SPECTRUM_V20_VERDICT.json"),(orientation,"PORTAL_FAMILY_ORIENTATION_MAP_V20_VERDICT.json")):
             r=module.build_report(); module.ROOT.joinpath(name).write_text(json.dumps(r,indent=2,default=str)+"\n",encoding="utf-8")
         r=strict.build_report(); strict.ROOT.joinpath("STRICT_RG_AUDIT_V20_VERDICT.json").write_text(json.dumps(r,indent=2)+"\n",encoding="utf-8")
     def test_conditional_region_is_not_unique(self):
