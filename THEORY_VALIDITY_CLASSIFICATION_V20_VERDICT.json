@@ -1,0 +1,151 @@
+{
+  "status": "THEORY_VALIDITY_CLASSIFIED__FAIL_CLOSED",
+  "tier": "YELLOW",
+  "meaning": "Conditional candidate: internally consistent with surviving parameter regions; critical portal/threshold/flavour/cosmology gaps remain",
+  "n_checks": 7,
+  "n_failed": 0,
+  "failures": [],
+  "red_triggers": [],
+  "green_requirements": {
+    "operator_basis_complete": false,
+    "full_scalar_potential_vacuum": false,
+    "two_loop_rg_threshold_matching": false,
+    "global_fermion_neutrino_fit": false,
+    "proton_decay": false,
+    "uv_portal_flavour_derivation": false,
+    "complete_axion_cosmology": false,
+    "multi_observable_fingerprint_frozen": false
+  },
+  "green_ready": false,
+  "blue_requirements": {
+    "real_37ghz_observed": false,
+    "second_independent_prediction_observed": false,
+    "independent_reproduction": false
+  },
+  "blue_ready": false,
+  "open_critical_for_green": [
+    "operator_basis_complete",
+    "full_scalar_potential_vacuum",
+    "two_loop_rg_threshold_matching",
+    "global_fermion_neutrino_fit",
+    "proton_decay",
+    "uv_portal_flavour_derivation",
+    "complete_axion_cosmology",
+    "multi_observable_fingerprint_frozen"
+  ],
+  "checklist": {
+    "anomaly_lorentz_core": {
+      "status": "PASS",
+      "present": true,
+      "detail": "Engine anomaly / operator core present in so10_axion_v20_verdict.json"
+    },
+    "operator_basis_complete": {
+      "status": "OPEN",
+      "present": false,
+      "detail": "Independent Hilbert-series / exhaustive invariant basis not closed; soft audit incomplete-Lagrangian=True",
+      "hard_reject_if": "|\u0394\u03b8\u0304|\u227310^{-10} from omitted lower-dimensional PQ-breaking operator"
+    },
+    "full_scalar_potential_vacuum": {
+      "status": "OPEN",
+      "present": false,
+      "detail": "Complete SO(10)\u2192PS\u2192SM vacuum, mass matrices, Goldstones not proved",
+      "hard_reject_if": "no stable/long-lived vacuum realizes the assumed chain"
+    },
+    "two_loop_rg_threshold_matching": {
+      "status": "OPEN",
+      "present": true,
+      "detail": "Clebsch/PS one-loop layer exists; published SO(10)+210 two-loop contractions=False; Planck perturbativity proved=False",
+      "hard_reject_if": "every allowed threshold spectrum Landau-poles below claimed cutoff"
+    },
+    "global_fermion_neutrino_fit": {
+      "status": "CONDITIONAL",
+      "present": true,
+      "detail": "Proxy / conditional flavour region exists; full RG-propagated global fit open",
+      "hard_reject_if": "no acceptable global fit after complete RG+thresholds"
+    },
+    "proton_decay": {
+      "status": "OPEN",
+      "present": false,
+      "detail": "p\u2192e\u207a\u03c0\u2070 / \u03bd\u0304K\u207a / \u03bd\u0304\u03c0\u207a not computed from frozen UV point",
+      "hard_reject_if": "unavoidable lifetime below experimental bound"
+    },
+    "uv_portal_flavour_derivation": {
+      "status": "OPEN",
+      "present": true,
+      "detail": "Orientation sphere sampled (geometric measure only); UV derivation of \u03bb_QF, \u03bb_QR, \u03bb_SQR\u0304, y_Q magnitudes/phases remains open",
+      "hard_reject_if": "all UV-derived portal points excluded by NA62/TWIST/CLFV"
+    },
+    "complete_axion_cosmology": {
+      "status": "CONDITIONAL",
+      "present": false,
+      "detail": "All-DM m_a\u2243153.5 \u00b5eV benchmark assumed; full pre/post-inflation cosmology open",
+      "hard_reject_if": "every history over/underproduces, fails isocurvature/BBN, or insoluble DW"
+    },
+    "real_37ghz_blind_experiment": {
+      "status": "OPEN",
+      "present": true,
+      "detail": "Literature compare executed; real_37GHz_detection=False; photon window open=True",
+      "hard_reject_if": "calibrated null over 36.6\u201337.6 GHz at g\u22642.3e-14 GeV^{-1}"
+    },
+    "multi_observable_fingerprint_frozen": {
+      "status": "OPEN",
+      "present": false,
+      "detail": "Frozen public {m_a,g_a\u03b3\u03b3,g_ae,g_ap,g_an,BRs,\u03c4_p,ratios,\u03bd} table not published"
+    },
+    "ultimate_gate_decision": {
+      "status": "REJECT",
+      "present": true,
+      "detail": "REJECT"
+    },
+    "extensive_campaign": {
+      "status": "PASS",
+      "present": true,
+      "detail": "n_failed=0"
+    },
+    "strict_rg_audit": {
+      "status": "PASS",
+      "present": true,
+      "detail": "The full complex three-family orientation sphere is sampled at fixed norm and ordered-heavy y_Q using an explicit rotationally invariant measure. Under that chosen geometric measure 16286/16384 samples exceed NA62, but 98 survive and exact "
+    }
+  },
+  "classification_ladder": [
+    {
+      "tier": "RED",
+      "meaning": "Invalid \u2014 contradiction or unavoidable data conflict"
+    },
+    {
+      "tier": "YELLOW",
+      "meaning": "Internally consistent / phenomenologically conditional"
+    },
+    {
+      "tier": "GREEN",
+      "meaning": "Complete viable theory (all critical closures)"
+    },
+    {
+      "tier": "BLUE",
+      "meaning": "Empirically supported (independent predefined hits)"
+    }
+  ],
+  "recommended_next_sequence": [
+    "Keep CI artifact ordering fail-closed (sphere before dependent audits)",
+    "Complete full scalar potential, vacuum, and physical spectrum",
+    "Use that spectrum for genuine two-loop RG + threshold matching",
+    "Calculate proton decay from the same frozen UV point",
+    "Derive portal flavour (\u03bb_QF, \u2026) from UV; joint FCNC likelihood",
+    "One global fermion/neutrino/FCNC fit; freeze public falsification table",
+    "Only then interpret real 36.6\u201337.6 GHz conversion data"
+  ],
+  "flag": {
+    "tier_is_yellow": true,
+    "tier_is_green": false,
+    "tier_is_blue": false,
+    "tier_is_red": false,
+    "green_not_claimed": true,
+    "blue_not_claimed": true,
+    "uniquely_confirmed": false,
+    "empirically_supported": false,
+    "complete_viable_theory": false,
+    "conditional_candidate": true
+  },
+  "verdict": "Tier=YELLOW. Conditional candidate: internally consistent with surviving parameter regions; critical portal/threshold/flavour/cosmology gaps remain. v20 is not uniquely confirmed and not empirically supported. Open for GREEN: operator_basis_complete, full_scalar_potential_vacuum, two_loop_rg_threshold_matching, global_fermion_neutrino_fit, proton_decay, uv_portal_flavour_derivation, complete_axion_cosmology, multi_observable_fingerprint_frozen."
+}

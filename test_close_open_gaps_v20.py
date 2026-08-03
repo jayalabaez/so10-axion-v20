@@ -17,12 +17,15 @@ import haloscope_37ghz_limit_compare_v20 as halo
 import uv_vacuum_alignment_v20 as vac
 import yukawa_rge_2loop_v20 as rge2
 import fcnc_exact_likelihood_v20 as lik
+import ensure_portal_artifacts_v20 as ensure
 import strict_rg_audit_v20 as strict
 import close_open_gaps_v20 as gaps
 
 class OpenGapAuditTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        # Sphere and portal chain must exist before strict_rg_audit reads them.
+        ensure.ensure_portal_artifacts(force=True)
         for module,name in ((push,"PUSH_PHENOMENOLOGY_LIMITS_V20_VERDICT.json"),(common,"COMMON_SCALE_SO10_YUKAWA_V20_VERDICT.json"),(two,"TWO_LOOP_SO10_210_V20_VERDICT.json"),(channel,"CHANNEL_FCNC_RATES_V20_VERDICT.json"),(na62,"NA62_POINTWISE_LIMIT_V20_VERDICT.json"),(twist,"TWIST_MASSLESS_LIMIT_V20_VERDICT.json"),(ray,"PORTAL_CONSTRAINT_RAY_V20_VERDICT.json"),(spectrum,"PORTAL_BOUNDARY_HEAVY_SPECTRUM_V20_VERDICT.json"),(orientation,"PORTAL_FAMILY_ORIENTATION_MAP_V20_VERDICT.json"),(sphere,"PORTAL_FULL_COMPLEX_ORIENTATION_SPHERE_V20_VERDICT.json"),(ps,"PATI_SALAM_YUKAWA_MATCHING_V20_VERDICT.json"),(cert,"THEORY_CERTIFICATION_MATH_V20_VERDICT.json"),(posterior,"PORTAL_YUKAWA_POSTERIOR_V20_VERDICT.json"),(halo,"HALOSCOPE_37GHZ_LIMIT_COMPARE_V20_VERDICT.json"),(vac,"UV_VACUUM_ALIGNMENT_V20_VERDICT.json"),(rge2,"YUKAWA_RGE_2LOOP_V20_VERDICT.json"),(lik,"FCNC_EXACT_LIKELIHOOD_V20_VERDICT.json")):
             r=module.build_report(); module.ROOT.joinpath(name).write_text(json.dumps(r,indent=2,default=str)+"\n",encoding="utf-8")
         r=strict.build_report(); strict.ROOT.joinpath("STRICT_RG_AUDIT_V20_VERDICT.json").write_text(json.dumps(r,indent=2)+"\n",encoding="utf-8")

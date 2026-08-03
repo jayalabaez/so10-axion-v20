@@ -16,11 +16,13 @@ import haloscope_37ghz_limit_compare_v20 as halo
 import uv_vacuum_alignment_v20 as vac
 import yukawa_rge_2loop_v20 as rge2
 import fcnc_exact_likelihood_v20 as lik
+import ensure_portal_artifacts_v20 as ensure
 import strict_rg_audit_v20 as strict
 
 class StrictRGAuditTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        ensure.ensure_portal_artifacts(force=True)
         for module,name in (
             (channel,"CHANNEL_FCNC_RATES_V20_VERDICT.json"),
             (na62,"NA62_POINTWISE_LIMIT_V20_VERDICT.json"),

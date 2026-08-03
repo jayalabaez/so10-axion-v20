@@ -1,6 +1,6 @@
 # Theory confirmation verdict — v20
 
-**Generated (UTC):** 2026-08-03T21:24:57.707155+00:00
+**Generated (UTC):** 2026-08-03T22:25:16.319319+00:00
 
 The anomaly/operator core survives the in-repository attacks, a conditional aligned benchmark is numerically safe, natural-scale flavour proxy points exist, and the 37 GHz photon target remains experimentally open. The full phenomenological theory is not approved: unique full C_e,C_p,C_n, finite-model FCNC closure, and explicit matrix Yukawa RG/two-loop threshold evolution remain open.
 
