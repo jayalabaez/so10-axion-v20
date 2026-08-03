@@ -33,7 +33,16 @@ class PortalConstraintRayTests(unittest.TestCase):
         self.assertLess(boundary["y_Q"], 1.0e-2)
         self.assertTrue(math.isclose(boundary["NA62_ratio"], 1.0, rel_tol=1e-8))
 
-    def test_high_mass_side_survives(self):
+    def test_bare_D_is_not_mislabeled_as_physical_mass(self):
+        boundary = self.report["central_scan"]["unique_survival_boundary"]
+        self.assertIn("bare_D_GeV", boundary)
+        self.assertIn("bare_D_over_vS", boundary)
+        self.assertNotIn("M_Q_GeV", boundary)
+        self.assertNotIn("M_Q_over_vS", boundary)
+        self.assertFalse(boundary["bare_D_is_physical_mass_eigenvalue"])
+        self.assertTrue(self.report["flag"]["bare_D_is_not_a_physical_mass_eigenvalue"])
+
+    def test_high_yq_side_survives(self):
         high = self.report["central_scan"]["high_endpoint"]
         self.assertTrue(high["NA62_survives"])
         self.assertLess(high["NA62_ratio"], 1.0)
