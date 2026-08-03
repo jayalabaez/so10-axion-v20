@@ -91,10 +91,14 @@ def parse_observed_curve(payload: dict[str, Any]) -> tuple[list[dict[str, float]
     values = payload.get("values")
     if not isinstance(headers, list) or len(headers) < 2:
         raise ValueError("missing HEPData headers")
-    independent_units = str(headers[0].get("units", ""))
-    if "mev" not in independent_units.lower():
+    independent_header = headers[0]
+    independent_text = " ".join(
+        str(independent_header.get(key, "")) for key in ("name", "units")
+    ).lower()
+    if "mass" not in independent_text or "mev" not in independent_text:
         raise ValueError(
-            f"unexpected independent-variable units: {independent_units!r}"
+            "unexpected independent-variable header: "
+            + json.dumps(independent_header, sort_keys=True)
         )
     observed_header_index = None
     for index, header in enumerate(headers[1:]):
@@ -128,7 +132,7 @@ def parse_observed_curve(payload: dict[str, Any]) -> tuple[list[dict[str, float]
     if any(b["mass_MeV"] <= a["mass_MeV"] for a, b in zip(curve, curve[1:])):
         raise ValueError("NA62 mass grid is not strictly increasing")
     return curve, {
-        "independent_header": headers[0],
+        "independent_header": independent_header,
         "observed_header": headers[1 + observed_header_index],
         "observed_group": observed_group,
     }
