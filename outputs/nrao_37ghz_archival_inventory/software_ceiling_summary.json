@@ -1,0 +1,40 @@
+{
+  "status": "ARCHIVAL_37GHZ_SOFTWARE_CEILING_REACHED__NO_DETECTION",
+  "units_lock": {
+    "observing_band": "GHz (36.6\u201337.6)",
+    "line_and_channel_resolution": "kHz (halo line ~37 kHz)",
+    "archived_Darling_Ka_channels": "2000 kHz = 2 MHz"
+  },
+  "literature_J1745": {
+    "published_does_not_exclude_v20": true,
+    "g_v20": 2.335e-14,
+    "g_published_standard": 1.4e-11,
+    "g_published_maximal_cusp": 1.4e-13,
+    "ratio_standard_over_v20": 599.5717344753748,
+    "ratio_cusp_over_v20": 5.995717344753748,
+    "citation": "Darling, ApJL 900, L2 (2020) Table; Ka-band archival VLA"
+  },
+  "flag": {
+    "real_37GHz_detection": false,
+    "new_experimental_exclusion": false,
+    "software_injection_recovery_demo": true,
+    "metadata_inventory_complete": true,
+    "v20_still_open": true
+  },
+  "hard_ceiling": {
+    "can_inventory_public_metadata": true,
+    "can_download_MS_without_AAT_login": false,
+    "can_rerun_CASA_pipeline_here": false,
+    "can_simulate_injection_recovery": true,
+    "can_quote_published_J1745_limits": true,
+    "can_claim_new_experimental_exclusion": false,
+    "can_claim_detection": false,
+    "archived_Ka_2MHz_resolves_37kHz_halo_line": false,
+    "next_human_steps": [
+      "Use AAT to download 14A-232 / SGRA Measurement Sets",
+      "Reduce overlapping SPWs at native 2 MHz (magnetospheric templates only)",
+      "Request/obtain \u226437 kHz Ka spectra (new VLA/GBT time or other archives)",
+      "Dedicated MADMAX/ORGAN/ALPHA 36.6\u201337.6 GHz scan for g\u22722.3e-14"
+    ]
+  }
+}
