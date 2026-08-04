@@ -14,8 +14,11 @@ This gate separates three statements that had previously been mixed together:
 The missing calculation is the invariant-normalization map from the exact
 non-supersymmetric operator ``Phi(210) H(10) Sigmabar(126bar) S`` to the
 Aulakh gamma convention, using canonically normalized component states and the
-surviving physical-EW vacuum.  This module fails closed until an evidence-backed
+surviving physical-EW vacuum. This module fails closed until an evidence-backed
 normalization artifact is supplied.
+
+A successful artifact closes only this CGC-normalization subproblem. It can
+never, by itself, validate the complete SO(10) model.
 """
 from __future__ import annotations
 
@@ -23,6 +26,8 @@ import argparse
 import hashlib
 import inspect
 import json
+import math
+import re
 from pathlib import Path
 from typing import Any, Callable
 
@@ -40,7 +45,7 @@ ROOT = Path(__file__).resolve().parent
 OUT_JSON = ROOT / "EFJX_CGC_PHYSICAL_NORMALIZATION_GATE_V20.json"
 OUT_MD = ROOT / "EFJX_CGC_PHYSICAL_NORMALIZATION_GATE_V20.md"
 NORMALIZATION_ARTIFACT = ROOT / "EFJX_CGC_NORMALIZATION_INPUT_V20.json"
-SCHEMA_VERSION = "efjx-cgc-normalization-v1"
+SCHEMA_VERSION = "efjx-cgc-normalization-v2"
 
 BLOCKS: dict[str, Callable[[dict[str, complex]], np.ndarray]] = {
     "E": mixed.aulakh_E,
@@ -58,7 +63,60 @@ REQUIRED_NORMALIZATION_FIELDS = {
     "gamma_mapping",
     "source_manifest",
     "acceptance_evidence",
+    "artifact_hashes",
+    "efjx_slot_match",
+    "physical_EW_reminimization",
+    "closure_complete",
+    "n_failed",
 }
+
+FIELD_REQUIREMENTS: dict[str, tuple[str, ...]] = {
+    "Phi210": (
+        "kinetic_convention",
+        "antisymmetry_convention",
+        "state_basis_artifact",
+    ),
+    "H10": (
+        "kinetic_convention",
+        "state_basis_artifact",
+    ),
+    "Sigmabar126": (
+        "kinetic_convention",
+        "duality_convention",
+        "epsilon_convention",
+        "state_basis_artifact",
+    ),
+    "S": (
+        "kinetic_convention",
+        "real_or_complex_convention",
+        "state_basis_artifact",
+    ),
+}
+
+EVIDENCE_CRITERIA: dict[str, str] = {
+    "canonical_kinetic_normalization": (
+        "Canonical kinetic normalization is demonstrated for Phi210, H10, "
+        "Sigmabar126 and S in one declared convention."
+    ),
+    "direct_tensor_contraction": (
+        "The exact Phi_abcd H_e Sigmabar_abcde S contraction, factorials and "
+        "duality signs are derived directly."
+    ),
+    "independent_matrix_reconstruction": (
+        "Every gamma-dependent E/F/J/X slot is independently reconstructed "
+        "and matched to the target convention."
+    ),
+    "physical_EW_branch_reminimized": (
+        "The complete supplied component potential is re-minimized on the "
+        "physical hEW=174 GeV branch."
+    ),
+    "non_goldstone_spectrum_positive": (
+        "Exactly 33 gauge Goldstones are removed and every remaining scalar "
+        "mass-squared eigenvalue is positive."
+    ),
+}
+
+_SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 
 
 def _matrix_response(
@@ -90,13 +148,71 @@ def _matrix_response(
     }
 
 
+def _nonempty_string(value: Any) -> bool:
+    return isinstance(value, str) and bool(value.strip())
+
+
+def _finite_number(value: Any) -> bool:
+    return (
+        isinstance(value, (int, float))
+        and not isinstance(value, bool)
+        and math.isfinite(float(value))
+    )
+
+
+def _safe_relative_artifact(base_dir: Path, raw_path: Any) -> Path | None:
+    if not _nonempty_string(raw_path):
+        return None
+    rel = Path(str(raw_path))
+    if rel.is_absolute() or ".." in rel.parts:
+        return None
+    base = base_dir.resolve()
+    candidate = (base / rel).resolve()
+    try:
+        candidate.relative_to(base)
+    except ValueError:
+        return None
+    return candidate
+
+
+def _sha256(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def _artifact_reference_errors(
+    *,
+    base_dir: Path,
+    raw_path: Any,
+    hashes: Any,
+    prefix: str,
+) -> list[str]:
+    errors: list[str] = []
+    candidate = _safe_relative_artifact(base_dir, raw_path)
+    if candidate is None:
+        return [f"{prefix}_artifact_path_invalid"]
+    rel = str(Path(str(raw_path)).as_posix())
+    if not candidate.is_file():
+        errors.append(f"{prefix}_artifact_missing")
+    if not isinstance(hashes, dict):
+        errors.append("artifact_hashes_missing")
+        return errors
+    declared = hashes.get(rel)
+    if not isinstance(declared, str) or not _SHA256_RE.fullmatch(declared):
+        errors.append(f"{prefix}_sha256_missing_or_invalid")
+    elif candidate.is_file() and _sha256(candidate) != declared:
+        errors.append(f"{prefix}_sha256_mismatch")
+    return errors
+
+
 def _load_normalization_artifact() -> dict[str, Any]:
     if not NORMALIZATION_ARTIFACT.is_file():
         return {
             "exists": False,
             "accepted": False,
             "reason": "required normalization artifact absent",
+            "validation_errors": [],
         }
+
     raw = NORMALIZATION_ARTIFACT.read_bytes()
     digest = hashlib.sha256(raw).hexdigest()
     try:
@@ -107,55 +223,234 @@ def _load_normalization_artifact() -> dict[str, Any]:
             "accepted": False,
             "sha256": digest,
             "reason": f"invalid JSON: {exc}",
+            "validation_errors": ["invalid_json"],
         }
 
+    errors: list[str] = []
     missing = sorted(REQUIRED_NORMALIZATION_FIELDS - set(data))
-    field_norms = data.get("field_normalizations", {})
-    vev_projection = data.get("singlet_vev_projection", {})
-    mapping = data.get("gamma_mapping", {})
-    evidence = data.get("acceptance_evidence", {})
-    sources = data.get("source_manifest", [])
+    errors.extend(f"missing_{name}" for name in missing)
+    base_dir = NORMALIZATION_ARTIFACT.parent
+    hashes = data.get("artifact_hashes")
 
-    checks = {
-        "schema": data.get("schema_version") == SCHEMA_VERSION,
-        "invariant": data.get("invariant")
-        == "Phi210_H10_Sigmabar126_S",
-        "contraction_recorded": isinstance(data.get("contraction"), str)
-        and len(data.get("contraction", "").strip()) > 20,
-        "all_field_normalizations": all(
-            key in field_norms for key in ("Phi210", "H10", "Sigmabar126", "S")
-        ),
-        "physical_vev_projection": all(
-            key in vev_projection for key in ("p", "a", "omega", "vS", "hEW")
-        )
-        and float(vev_projection.get("hEW", 0.0)) == 174.0,
-        "finite_gamma_mapping": isinstance(
-            mapping.get("gamma_eff_over_lambda4"), (int, float)
-        )
-        and np.isfinite(float(mapping.get("gamma_eff_over_lambda4", np.nan))),
-        "sources_present": isinstance(sources, list) and len(sources) >= 2,
-        "acceptance_evidence_complete": isinstance(evidence, dict)
-        and all(
-            evidence.get(key)
-            for key in (
-                "canonical_kinetic_normalization",
-                "direct_tensor_contraction",
-                "independent_matrix_reconstruction",
-                "physical_EW_branch_reminimized",
+    if data.get("schema_version") != SCHEMA_VERSION:
+        errors.append("schema_version_mismatch")
+    if data.get("invariant") != "Phi210_H10_Sigmabar126_S":
+        errors.append("invariant_mismatch")
+    if not _nonempty_string(data.get("contraction")) or len(
+        data.get("contraction", "").strip()
+    ) <= 40:
+        errors.append("contraction_missing_or_too_short")
+
+    field_norms = data.get("field_normalizations")
+    if not isinstance(field_norms, dict):
+        errors.append("field_normalizations_missing")
+    else:
+        for field, requirements in FIELD_REQUIREMENTS.items():
+            item = field_norms.get(field)
+            if not isinstance(item, dict):
+                errors.append(f"{field}_normalization_missing")
+                continue
+            for key in requirements:
+                if not _nonempty_string(item.get(key)):
+                    errors.append(f"{field}_{key}_missing")
+            basis_path = item.get("state_basis_artifact")
+            errors.extend(
+                _artifact_reference_errors(
+                    base_dir=base_dir,
+                    raw_path=basis_path,
+                    hashes=hashes,
+                    prefix=f"{field}_state_basis",
+                )
             )
-        ),
-        "closure_flags": bool(data.get("closure_complete"))
-        and int(data.get("n_failed", 1)) == 0,
-    }
-    accepted = not missing and all(checks.values())
+
+    vev = data.get("singlet_vev_projection")
+    if not isinstance(vev, dict):
+        errors.append("singlet_vev_projection_missing")
+    else:
+        for key in ("p", "a", "omega", "vS", "hEW"):
+            if not _finite_number(vev.get(key)):
+                errors.append(f"vev_{key}_not_finite")
+        if _finite_number(vev.get("hEW")) and float(vev["hEW"]) != 174.0:
+            errors.append("hEW_not_174_GeV")
+        if vev.get("units") != "GeV":
+            errors.append("vev_units_not_GeV")
+        errors.extend(
+            _artifact_reference_errors(
+                base_dir=base_dir,
+                raw_path=vev.get("projection_artifact"),
+                hashes=hashes,
+                prefix="singlet_vev_projection",
+            )
+        )
+
+    mapping = data.get("gamma_mapping")
+    ratio: float | None = None
+    if not isinstance(mapping, dict):
+        errors.append("gamma_mapping_missing")
+    else:
+        raw_ratio = mapping.get("gamma_eff_over_lambda4")
+        if not _finite_number(raw_ratio):
+            errors.append("gamma_eff_over_lambda4_not_finite")
+        else:
+            ratio = float(raw_ratio)
+            if ratio == 0.0:
+                errors.append("gamma_eff_over_lambda4_zero")
+        sign = mapping.get("sign")
+        if sign not in (-1, 1):
+            errors.append("gamma_mapping_sign_invalid")
+        elif ratio is not None and (1 if ratio > 0 else -1) != sign:
+            errors.append("gamma_mapping_sign_mismatch")
+        if not _nonempty_string(mapping.get("phase_convention")):
+            errors.append("gamma_mapping_phase_convention_missing")
+        errors.extend(
+            _artifact_reference_errors(
+                base_dir=base_dir,
+                raw_path=mapping.get("mapping_artifact"),
+                hashes=hashes,
+                prefix="gamma_mapping",
+            )
+        )
+
+    sources = data.get("source_manifest")
+    if not isinstance(sources, list) or len(sources) < 2:
+        errors.append("source_manifest_missing")
+    else:
+        for index, source in enumerate(sources, start=1):
+            if not isinstance(source, dict):
+                errors.append(f"source_{index}_invalid")
+                continue
+            for key in ("citation", "use", "locator"):
+                if not _nonempty_string(source.get(key)):
+                    errors.append(f"source_{index}_{key}_missing")
+
+    if not isinstance(hashes, dict) or not hashes:
+        errors.append("artifact_hashes_missing")
+    elif any(
+        not _nonempty_string(path)
+        or not isinstance(value, str)
+        or not _SHA256_RE.fullmatch(value)
+        for path, value in hashes.items()
+    ):
+        errors.append("artifact_hashes_invalid")
+
+    evidence = data.get("acceptance_evidence")
+    if not isinstance(evidence, dict):
+        errors.append("acceptance_evidence_missing")
+    else:
+        for key, criterion in EVIDENCE_CRITERIA.items():
+            item = evidence.get(key)
+            if not isinstance(item, dict):
+                errors.append(f"{key}_evidence_missing")
+                continue
+            if item.get("passed") is not True:
+                errors.append(f"{key}_not_passed")
+            if item.get("criterion") != criterion:
+                errors.append(f"{key}_criterion_mismatch")
+            artifacts = item.get("artifacts")
+            if not isinstance(artifacts, list) or not artifacts:
+                errors.append(f"{key}_artifacts_missing")
+                continue
+            for index, artifact in enumerate(artifacts, start=1):
+                errors.extend(
+                    _artifact_reference_errors(
+                        base_dir=base_dir,
+                        raw_path=artifact,
+                        hashes=hashes,
+                        prefix=f"{key}_{index}",
+                    )
+                )
+
+    slot_match = data.get("efjx_slot_match")
+    if not isinstance(slot_match, dict):
+        errors.append("efjx_slot_match_missing")
+    else:
+        for block in BLOCKS:
+            item = slot_match.get(block)
+            if not isinstance(item, dict):
+                errors.append(f"{block}_slot_match_missing")
+                continue
+            residual_value = item.get("max_abs_residual_GeV")
+            tolerance = item.get("tolerance_GeV")
+            if not _finite_number(residual_value) or float(residual_value) < 0.0:
+                errors.append(f"{block}_slot_residual_invalid")
+            if not _finite_number(tolerance) or float(tolerance) <= 0.0:
+                errors.append(f"{block}_slot_tolerance_invalid")
+            if (
+                _finite_number(residual_value)
+                and _finite_number(tolerance)
+                and float(residual_value) > float(tolerance)
+            ):
+                errors.append(f"{block}_slot_match_exceeds_tolerance")
+            if item.get("passed") is not True:
+                errors.append(f"{block}_slot_match_not_passed")
+            errors.extend(
+                _artifact_reference_errors(
+                    base_dir=base_dir,
+                    raw_path=item.get("artifact"),
+                    hashes=hashes,
+                    prefix=f"{block}_slot_match",
+                )
+            )
+
+    remin = data.get("physical_EW_reminimization")
+    if not isinstance(remin, dict):
+        errors.append("physical_EW_reminimization_missing")
+    else:
+        if not _finite_number(remin.get("hEW_GeV")) or float(
+            remin.get("hEW_GeV", 0.0)
+        ) != 174.0:
+            errors.append("reminimization_hEW_not_174_GeV")
+        residual_value = remin.get("stationarity_residual_GeV3")
+        tolerance = remin.get("stationarity_tolerance_GeV3")
+        if not _finite_number(residual_value) or float(residual_value) < 0.0:
+            errors.append("stationarity_residual_invalid")
+        if not _finite_number(tolerance) or float(tolerance) <= 0.0:
+            errors.append("stationarity_tolerance_invalid")
+        if (
+            _finite_number(residual_value)
+            and _finite_number(tolerance)
+            and float(residual_value) > float(tolerance)
+        ):
+            errors.append("stationarity_residual_exceeds_tolerance")
+        if remin.get("gauge_goldstone_count") != 33:
+            errors.append("gauge_goldstone_count_not_33")
+        min_eigenvalue = remin.get("min_non_goldstone_eigenvalue_GeV2")
+        if not _finite_number(min_eigenvalue) or float(min_eigenvalue) <= 0.0:
+            errors.append("non_goldstone_spectrum_not_positive")
+        for key in (
+            "efjx_thresholds_passed",
+            "competing_extrema_checked",
+            "boundedness_checked",
+        ):
+            if remin.get(key) is not True:
+                errors.append(f"{key}_not_true")
+        errors.extend(
+            _artifact_reference_errors(
+                base_dir=base_dir,
+                raw_path=remin.get("artifact"),
+                hashes=hashes,
+                prefix="physical_EW_reminimization",
+            )
+        )
+
+    if data.get("closure_complete") is not True:
+        errors.append("closure_complete_not_true")
+    try:
+        if int(data.get("n_failed", 1)) != 0:
+            errors.append("n_failed_nonzero")
+    except (TypeError, ValueError):
+        errors.append("n_failed_invalid")
+
+    errors = sorted(set(errors))
+    accepted = not errors
     return {
         "exists": True,
         "accepted": accepted,
         "sha256": digest,
         "missing_fields": missing,
-        "checks": checks,
-        "gamma_eff_over_lambda4": mapping.get("gamma_eff_over_lambda4"),
-        "reason": "accepted" if accepted else "artifact present but evidence contract fails",
+        "validation_errors": errors,
+        "gamma_eff_over_lambda4": ratio,
+        "reason": "accepted" if accepted else "artifact schema/evidence validation failed",
     }
 
 
@@ -236,10 +531,27 @@ def build_report() -> dict[str, Any]:
     state = (
         "EXECUTION_FAIL"
         if execution_failures or failed_checks
-        else "PASS"
+        else "CGC_CLOSED"
         if exact_mapping_closed
         else "BLOCKED"
     )
+
+    if exact_mapping_closed:
+        verdict = (
+            "The evidence-backed Phi H Sigmabar S normalization artifact closes "
+            "the E/F/J/X CGC-normalization subproblem and revalidates its supplied "
+            "physical-EW branch. This does not close the remaining irreducible "
+            "SO(10) gaps and does not validate the whole model."
+        )
+    else:
+        verdict = (
+            "The exact E/F/J/X matrices already determine how each component "
+            "block responds to the Aulakh gamma convention. The remaining gap "
+            "is the normalized tensor map from Phi H Sigmabar S to gamma on "
+            "the physical h=174 GeV branch. The numerical c_cgc ratio obtained "
+            "from the old H10=M_I radial proxy is not a physical Clebsch "
+            "prediction and cannot be used to validate or exclude the model."
+        )
 
     return {
         "status": "EFJX_CGC_PHYSICAL_NORMALIZATION_GATE_EXECUTED",
@@ -272,6 +584,7 @@ def build_report() -> dict[str, Any]:
             "schema_version": SCHEMA_VERSION,
             "required_fields": sorted(REQUIRED_NORMALIZATION_FIELDS),
             "required_invariant": "Phi210_H10_Sigmabar126_S",
+            "evidence_criteria": EVIDENCE_CRITERIA,
         },
         "flags": {
             "exact_EFJX_gamma_response_known": bool(responses)
@@ -279,19 +592,13 @@ def build_report() -> dict[str, Any]:
             "proxy_cgc_ratio_invalid_as_physical_prediction": bool(
                 proxy_dependency and historical_tachyon
             ),
-            "physical_CGC_normalization_derived": bool(exact_mapping_closed),
-            "physical_EW_branch_revalidated": bool(exact_mapping_closed),
+            "physical_CGC_normalization_derived": exact_mapping_closed,
+            "physical_EW_branch_revalidated": exact_mapping_closed,
+            "CGC_subproblem_closed": exact_mapping_closed,
             "whole_model_excluded": False,
-            "whole_model_validated": state == "PASS",
+            "whole_model_validated": False,
         },
-        "verdict": (
-            "The exact E/F/J/X matrices already determine how each component "
-            "block responds to the Aulakh gamma convention. The remaining gap "
-            "is the normalized tensor map from Phi H Sigmabar S to gamma on "
-            "the physical h=174 GeV branch. The numerical c_cgc ratio obtained "
-            "from the old H10=M_I radial proxy is not a physical Clebsch "
-            "prediction and cannot be used to validate or exclude the model."
-        ),
+        "verdict": verdict,
     }
 
 

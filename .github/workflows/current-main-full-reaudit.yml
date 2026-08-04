@@ -54,6 +54,8 @@ jobs:
           assert e['flags']['proxy_cgc_ratio_invalid_as_physical_prediction']
           assert not e['flags']['physical_CGC_normalization_derived']
           assert not e['flags']['physical_EW_branch_revalidated']
+          assert not e['flags'].get('CGC_subproblem_closed', False)
+          assert e['required_artifact']['schema_version']=='efjx-cgc-normalization-v2'
           assert l['n_failed']==0, l
           assert l['valid_new_closures']['EFJX_gamma_response_matrices_known_in_Aulakh_convention']
           assert l['invalidated_selected_point_claims']['proxy_c_cgc_needed_abs_approx_is_physical']
