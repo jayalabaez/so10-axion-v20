@@ -28,6 +28,7 @@ class TauPUltimateResidualChecklistTests(unittest.TestCase):
         self.assertTrue(flags["full_quartic_soft_live_dump"])
         self.assertTrue(flags["cal_G_portal_decision_resolved"])
         self.assertTrue(flags["selected_lambda_lock_raised_to_cal_G_lift"])
+        self.assertTrue(flags["lam4_potential_raise_proved_spoiling"])
         self.assertFalse(flags["extra_new_portal_required"])
         self.assertFalse(flags["exact_unique_proton_lifetime"])
         self.assertFalse(flags["whole_model_excluded"])
@@ -40,6 +41,10 @@ class TauPUltimateResidualChecklistTests(unittest.TestCase):
         self.assertNotIn("selected_lambda_lock_below_cal_G_lift_threshold", still)
         self.assertTrue(still["selected_lam4_below_gut_null_tol_threshold"])
         self.assertTrue(still["lam4_cgc_and_dim6_lock_not_in_live_dump"])
+        self.assertTrue(still["physical_efjx_cgc_for_210_10_126_S_undetermined"])
+        self.assertGreater(
+            self.report["certificate"]["c_cgc_needed_abs_approx"], 1.0
+        )
 
     def test_lifetime_positive(self):
         life = self.report["lifetime"]
