@@ -41,6 +41,14 @@ class IntegratedTests(unittest.TestCase):
     def test_report_executes(self):
         self.assertEqual(self.report["n_failed"], 0, self.report.get("failures"))
 
+    def test_signed_floor_is_used(self):
+        enlarged = self.report["enlarged_basis"]
+        flags = self.report["flag"]
+        self.assertEqual(enlarged["signed_guaranteed_floor_total"], 34)
+        self.assertEqual(enlarged["mechanical_augmented_total_rejected"], 37)
+        self.assertTrue(flags["signed_floor34_used"])
+        self.assertTrue(flags["mechanical_floor37_rejected"])
+
     def test_physical_electroweak_target_is_used(self):
         self.assertAlmostEqual(self.report["target_vevs_GeV"]["H10_EW"], 174.0)
         flags = self.report["flag"]
