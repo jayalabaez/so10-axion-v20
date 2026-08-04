@@ -1,0 +1,49 @@
+name: lam4-potential-efjx-decoupling
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  lam4-potential-efjx-decoupling:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Execute λ₄ / E/F/J/X decoupling certificate
+        run: python lam4_potential_efjx_decoupling_v20.py
+      - name: Focused regression tests
+        run: python -m unittest -v test_lam4_potential_efjx_decoupling_v20.py
+      - name: Assert honest scientific scope
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('LAM4_POTENTIAL_EFJX_DECOUPLING_V20_VERDICT.json'))
+          assert r['status']=='LAM4_POTENTIAL_EFJX_DECOUPLING_PROVED__TAU_P_OPEN'
+          assert r['n_failed']==0
+          assert r['flag']['lam4_potential_raise_proved_spoiling']
+          assert r['flag']['gamma_eff_decoupled_from_lam4_potential']
+          assert r['flag']['cgc_ratio_needed_quantified']
+          assert r['couplings']['c_cgc_needed_abs_approx'] > 1.0
+          assert r['efjx']['at_gamma_crit_lam4_potential_fixed']['clears_gut_null_tol']
+          assert r['flag']['selected_lam4_still_below_gut_null_tol']
+          assert r['flag']['lam4_cgc_and_dim6_lock_not_in_live_dump']
+          assert not r['flag']['exact_unique_proton_lifetime']
+          assert not r['flag']['whole_model_excluded']
+          PY
+      - name: Upload λ₄ / E/F/J/X decoupling verdicts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lam4-potential-efjx-decoupling-verdict
+          path: |
+            LAM4_POTENTIAL_EFJX_DECOUPLING_V20_VERDICT.json
+            LAM4_POTENTIAL_EFJX_DECOUPLING_V20.md
