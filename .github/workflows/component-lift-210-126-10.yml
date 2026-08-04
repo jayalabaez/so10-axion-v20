@@ -1,0 +1,54 @@
+name: component-lift-210-126-10
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  component-lift-210-126-10:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Execute component lift
+        run: python component_lift_210_126_10_v20.py
+      - name: Focused regression tests
+        run: python -m unittest -v test_component_lift_210_126_10_v20.py
+      - name: Assert honest scientific scope
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('COMPONENT_LIFT_210_126_10_V20_VERDICT.json'))
+          assert r['status']=='COMPONENT_LIFT_OF_REDUCED_VACUUM_COMPLETE__FULL_CG_OPEN'
+          assert r['n_failed']==0
+          assert r['component_ledger']['n_radial_components']==8
+          assert abs(r['component_ledger']['210_sum_check']['a_plus_omega_plus_p_over_MGUT']-1.0)<1e-12
+          assert r['goldstone_ledger']['broken_generators_eaten']==33
+          by={p['name']:p for p in r['points']}
+          assert by['locking_only']['phase']['reduced_n_positive']==1
+          assert by['locking_only']['phase']['reduced_n_zero']==2
+          assert by['finite_kappa_benchmark']['phase']['reduced_n_positive']==2
+          assert by['finite_kappa_benchmark']['phase']['reduced_n_zero']==1
+          assert all(p['radial']['positive_definite'] for p in r['points'])
+          assert r['flag']['component_lift_of_reduced_vacuum']
+          assert not r['flag']['full_cg_tensors_normalized']
+          assert not r['flag']['complete_so10_scalar_potential']
+          assert not r['flag']['exact_unique_proton_lifetime']
+          assert not r['flag']['whole_model_excluded']
+          PY
+      - name: Upload component-lift verdicts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: component-lift-210-126-10-verdict
+          path: |
+            COMPONENT_LIFT_210_126_10_V20_VERDICT.json
+            COMPONENT_LIFT_210_126_10_V20.md
