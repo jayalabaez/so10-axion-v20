@@ -42,6 +42,10 @@ jobs:
         run: python nonsusy_reduced_hessian_v20.py
       - name: Test physical-EW non-SUSY reduced Hessian
         run: python -m unittest -v test_nonsusy_reduced_hessian_v20.py
+      - name: Execute perturbative floor37 no-rescue bound
+        run: python ew_portal_rescue_bound_v20.py
+      - name: Test perturbative floor37 no-rescue bound
+        run: python -m unittest -v test_ew_portal_rescue_bound_v20.py
       - name: Execute exact SO10 gauge-orbit certificate
         run: python so10_nonsusy_gauge_orbit_v20.py
       - name: Test exact SO10 gauge-orbit certificate
@@ -54,6 +58,10 @@ jobs:
         run: python current_main_repair_closure_v20.py
       - name: Test repaired breakpoint closure
         run: python -m unittest -v test_current_main_repair_closure_v20.py
+      - name: Execute final scalar theory gate
+        run: python final_scalar_theory_gate_v20.py
+      - name: Test final scalar theory gate
+        run: python -m unittest -v test_final_scalar_theory_gate_v20.py
       - name: Reproduce pristine release
         run: python replicate.py
       - name: Validate release anchors
@@ -73,8 +81,10 @@ jobs:
           i=json.load(open('MIXED_REP_INVARIANT_FLOOR_AUDIT_V20.json'))
           e=json.load(open('MIXED_REP_ENLARGED_FLOOR_BASIS_V20.json'))
           n=json.load(open('NONSUSY_REDUCED_HESSIAN_V20_VERDICT.json'))
+          u=json.load(open('EW_PORTAL_RESCUE_BOUND_V20.json'))
           g=json.load(open('SO10_NONSUSY_GAUGE_ORBIT_V20_VERDICT.json'))
           f=json.load(open('CURRENT_MAIN_REPAIR_CLOSURE_V20.json'))
+          z=json.load(open('FINAL_SCALAR_THEORY_GATE_V20.json'))
           c=r['certificates']
           assert r['overall_state']=='BLOCKED', r
           assert c['all_critical_modules_executed']
@@ -107,6 +117,12 @@ jobs:
           assert not n['flag']['uses_aulakh_or_msgut_component_matrices']
           assert not n['flag']['full_component_nonsusy_hessian']
           assert not n['flag']['whole_model_excluded']
+          assert u['n_failed']==0, u
+          assert u['flag']['historical_lam4_point_excluded_within_guaranteed_floor']
+          assert u['flag']['guaranteed_H4_channels_insufficient_perturbatively']
+          assert u['numerical']['required_over_combined_perturbative_allowance'] > 1e20
+          assert u['numerical']['best_case_rescued_HH_curvature_GeV2'] < 0
+          assert not u['flag']['whole_model_excluded']
           assert g['orbit']['combined_orbit_rank_goldstones']==33
           assert g['orbit']['combined_stabilizer_dimension']==12
           assert g['orbit']['so6_stabilizer_dimension']==8
@@ -129,6 +145,16 @@ jobs:
           assert f['remaining_blockers']['exact_unique_proton_lifetime']
           assert not f['flags']['whole_model_excluded']
           assert not f['flags']['whole_model_validated']
+          assert z['overall_state']=='BLOCKED', z
+          assert all(z['resolved_breakpoints'].values())
+          assert z['flags']['historical_lambda4_benchmark_excluded']
+          assert z['flags']['historical_lambda4_benchmark_not_rescuable_with_floor37_perturbative_even_H_terms']
+          assert z['flags']['reduced_survival_region_exists']
+          assert z['remaining_blockers']['new_odd_H_tensor_channel_or_hierarchy_mechanism']
+          assert z['remaining_blockers']['full_component_nonsusy_hessian']
+          assert z['remaining_blockers']['exact_unique_proton_lifetime']
+          assert not z['flags']['whole_model_excluded']
+          assert not z['flags']['whole_model_validated']
           PY
       - name: Upload re-audit verdict
         if: always()
@@ -149,7 +175,11 @@ jobs:
             MIXED_REP_ENLARGED_FLOOR_BASIS_V20.md
             NONSUSY_REDUCED_HESSIAN_V20_VERDICT.json
             NONSUSY_REDUCED_HESSIAN_V20.md
+            EW_PORTAL_RESCUE_BOUND_V20.json
+            EW_PORTAL_RESCUE_BOUND_V20.md
             SO10_NONSUSY_GAUGE_ORBIT_V20_VERDICT.json
             SO10_NONSUSY_GAUGE_ORBIT_V20.md
             CURRENT_MAIN_REPAIR_CLOSURE_V20.json
             CURRENT_MAIN_REPAIR_CLOSURE_V20.md
+            FINAL_SCALAR_THEORY_GATE_V20.json
+            FINAL_SCALAR_THEORY_GATE_V20.md
