@@ -1,0 +1,49 @@
+name: cg-normalized-mt-locking-mix
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  cg-normalized-mt-locking-mix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Execute CG-normalized M_T + locking + dim-4 mix
+        run: python cg_normalized_mt_locking_mix_v20.py
+      - name: Focused regression tests
+        run: python -m unittest -v test_cg_normalized_mt_locking_mix_v20.py
+      - name: Assert honest scientific scope
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('CG_NORMALIZED_MT_LOCKING_MIX_V20_VERDICT.json'))
+          assert r['status']=='CG_NORMALIZED_DIAGONAL_MT__LOCKING_54_PROVED__DIM4_MIX_ALLOWED'
+          assert r['n_failed']==0
+          assert r['flag']['cg_factors_transcribed']
+          assert r['flag']['locking_so10_proved_via_54']
+          assert r['flag']['dim4_210_10_126_S_mix_allowed']
+          assert r['flag']['forbidden_10_126_S_cubic_still_forbidden']
+          assert not r['flag']['invented_unpublished_cg_values']
+          assert not r['flag']['whole_model_excluded']
+          assert r['locking_54_channel']['so10_channel']=='54'
+          assert r['dim4_mix_210_10_126_S']['charge_totals']['PQ']==0
+          assert any(s['flag']['dim4_mix_used'] and abs(s['filled']['m12_GeV'])>0 for s in r['scenarios'])
+          PY
+      - name: Upload CG-normalized M_T verdicts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cg-normalized-mt-locking-mix-verdict
+          path: |
+            CG_NORMALIZED_MT_LOCKING_MIX_V20_VERDICT.json
+            CG_NORMALIZED_MT_LOCKING_MIX_V20.md
