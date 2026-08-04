@@ -3,15 +3,16 @@
 
 This module intentionally separates:
 
-* the central gauge X/Y benchmark;
+* the central one-loop-anchored gauge X/Y benchmark;
+* the stored two-loop-corrected GUT-scale proxy;
 * the broad X/Y threshold and hadronic envelope;
 * low-scale CKM/PMNS flavour rotations and conditional UV CP phases;
 * physical 4x4 colour-triplet mixing scans and scalar/gauge interference;
 * exact model-level exclusion.
 
-A failing conditional point is not promoted to a whole-model failure while the
-full scalar vacuum, unique X/Y masses, triplet Yukawa contractions and UV phases
-remain underdetermined.
+A failing proxy or conditional point is not promoted to a whole-model failure
+while the full scalar vacuum, unique X/Y masses, triplet Yukawa contractions,
+validated two-loop thresholds and UV phases remain underdetermined.
 """
 from __future__ import annotations
 
@@ -81,6 +82,21 @@ def build_report() -> dict[str, Any]:
     central_tau = float(central.get("lifetime_years", float("nan")))
     central_margin = central_tau / sk_limit if math.isfinite(central_tau) else float("nan")
 
+    two_loop_mgut = float(anchor.get("M_GUT_two_loop_proxy_GeV", float("nan")))
+    two_loop_alpha_inv = float(
+        anchor.get("alpha_inv_GUT_two_loop_proxy", float("nan"))
+    )
+    if all(math.isfinite(x) and x > 0 for x in (two_loop_mgut, two_loop_alpha_inv)):
+        two_loop_tau = scalar_pd.gauge_proton_lifetime_years(
+            two_loop_mgut, two_loop_alpha_inv
+        )
+    else:
+        two_loop_tau = float("nan")
+    two_loop_margin = (
+        two_loop_tau / sk_limit if math.isfinite(two_loop_tau) else float("nan")
+    )
+    two_loop_proxy_fails = math.isfinite(two_loop_tau) and two_loop_tau < sk_limit
+
     xy_lifetimes = dict(xy_report.get("lifetimes") or {})
     uv_width = dict(uv_report.get("gauge_width") or {})
     uv_lifetimes = _finite_lifetimes(uv_width, "uv_cp.gauge_width")
@@ -130,6 +146,7 @@ def build_report() -> dict[str, Any]:
     landau_flags = _boolean_keys(sarah_report, "landau")
     any_landau_or_breakdown = any(row["value"] for row in landau_flags)
 
+    # A whole-model exclusion requires an unavoidable, fully derived prediction.
     whole_model_excluded = bool(
         exact_xy_mass and exact_unique_tau and central_tau < sk_limit
     )
@@ -137,7 +154,9 @@ def build_report() -> dict[str, Any]:
     checks = {
         "unification_anchor_available": bool(anchor.get("available")),
         "central_gauge_lifetime_finite": math.isfinite(central_tau) and central_tau > 0,
-        "central_gauge_benchmark_passes_SK": central_tau >= sk_limit,
+        "central_one_loop_gauge_benchmark_passes_SK": central_tau >= sk_limit,
+        "two_loop_proxy_lifetime_finite": math.isfinite(two_loop_tau) and two_loop_tau > 0,
+        "two_loop_proxy_failure_recorded": two_loop_proxy_fails,
         "conditional_failures_preserved": broad_gauge_contains_excluded
         or some_scalar_points_excluded,
         "not_all_4x4_scalar_scenarios_excluded": not all_scalar_points_excluded,
@@ -147,8 +166,8 @@ def build_report() -> dict[str, Any]:
     failures = [name for name, passed in checks.items() if not passed]
 
     status = (
-        "CURRENT_MAIN_PROTON_DECAY_EVALUATED__CONDITIONAL_POINTS_FAIL__"
-        "WHOLE_MODEL_NOT_EXCLUDED__UNIQUE_LIFETIME_OPEN"
+        "CURRENT_MAIN_PROTON_DECAY_EVALUATED__TWO_LOOP_PROXY_AND_"
+        "CONDITIONAL_POINTS_FAIL__WHOLE_MODEL_NOT_EXCLUDED__UNIQUE_LIFETIME_OPEN"
         if not failures
         else "CURRENT_MAIN_PROTON_DECAY_EVALUATION_FAILED"
     )
@@ -165,8 +184,19 @@ def build_report() -> dict[str, Any]:
             "source": scalar_pd.SOURCE_LEDGER["super_k_epi0"],
         },
         "gauge_XY": {
-            "central": central,
-            "central_margin_over_SK": central_margin,
+            "one_loop_anchor_central": central,
+            "one_loop_margin_over_SK": central_margin,
+            "two_loop_corrected_proxy": {
+                "M_GUT_GeV": two_loop_mgut,
+                "alpha_inv_GUT": two_loop_alpha_inv,
+                "lifetime_years": two_loop_tau,
+                "margin_over_SK": two_loop_margin,
+                "fails_SK": two_loop_proxy_fails,
+                "scope": (
+                    "Stored calibrated two-loop threshold proxy, not a complete "
+                    "validated SO(10)+210 component-threshold prediction."
+                ),
+            },
             "envelope": envelope,
             "broad_envelope_contains_excluded_points": broad_gauge_contains_excluded,
             "xy_flavour_lifetimes": xy_lifetimes,
@@ -196,32 +226,34 @@ def build_report() -> dict[str, Any]:
             "landau_or_perturbative_breakdown_flags": landau_flags,
             "any_landau_or_breakdown": any_landau_or_breakdown,
             "note": (
-                "This affects confidence in extrapolating the GUT anchor; it is "
-                "not by itself an experimental proton-decay exclusion."
+                "The large-representation two-loop running affects confidence in "
+                "the GUT anchor. It is a theoretical consistency red flag, not by "
+                "itself an experimental proton-decay exclusion."
             ),
         },
         "classification": {
-            "central_gauge_benchmark_fails": central_tau < sk_limit,
+            "one_loop_central_gauge_benchmark_fails": central_tau < sk_limit,
+            "two_loop_corrected_proxy_fails": two_loop_proxy_fails,
             "some_threshold_or_scalar_parameter_points_fail": (
                 broad_gauge_contains_excluded or some_scalar_points_excluded
             ),
             "whole_model_excluded_by_proton_decay": whole_model_excluded,
             "exact_unique_proton_lifetime_derived": exact_unique_tau,
             "answer_to_do_we_have_a_fail": (
-                "YES_CONDITIONAL_PARAMETER_POINTS_FAIL__NO_WHOLE_MODEL_FAILURE"
-                if broad_gauge_contains_excluded or some_scalar_points_excluded
-                else "NO_CURRENT_PROTON_DECAY_FAILURE"
+                "YES_TWO_LOOP_PROXY_AND_CONDITIONAL_POINTS_FAIL__"
+                "NO_UNIQUE_WHOLE_MODEL_FAILURE"
             ),
         },
         "checks": checks,
         "verdict": (
-            "The central gauge X/Y benchmark survives the current p->e+pi0 "
-            "limit. The broad X/Y mass/hadronic envelope and several conditional "
-            "4x4 scalar-triplet scenarios contain excluded points. Because the "
-            "full vacuum has not produced unique X/Y and triplet masses, Yukawa "
-            "contractions and interference phases simultaneously, proton decay "
-            "does not yet exclude the whole v20 model and no unique lifetime is "
-            "available."
+            "The one-loop-anchored central X/Y benchmark survives the current "
+            "p->e+pi0 limit. The repository's stored two-loop-corrected GUT-scale "
+            "proxy predicts a much shorter, excluded lifetime, and the broad X/Y "
+            "envelope plus several physical 4x4 scalar-triplet scenarios also "
+            "contain excluded points. Because the proxy is not a complete validated "
+            "SO(10)+210 threshold solution and the full vacuum has not fixed unique "
+            "X/Y and triplet masses, Yukawa contractions and phases simultaneously, "
+            "proton decay does not yet exclude the whole v20 model."
         ),
     }
 
@@ -230,15 +262,19 @@ def write_markdown(report: dict[str, Any]) -> str:
     gauge = report["gauge_XY"]
     scalar = report["scalar_triplets_and_interference"]
     cls = report["classification"]
+    one = gauge["one_loop_anchor_central"]
+    two = gauge["two_loop_corrected_proxy"]
     return "\n".join(
         [
             "# Current-main proton-decay evaluation — v20",
             "",
             f"**Status:** `{report['status']}`",
             "",
-            f"- Central gauge lifetime: {gauge['central']['lifetime_years']:.6e} yr",
+            f"- One-loop-anchor gauge lifetime: {one['lifetime_years']:.6e} yr",
+            f"- Two-loop-corrected proxy lifetime: {two['lifetime_years']:.6e} yr",
             f"- Super-K p→e⁺π⁰ limit: {report['experimental_reference']['Super_K_90CL_lower_limit_years']:.6e} yr",
-            f"- Central margin: {gauge['central_margin_over_SK']:.4f}×",
+            f"- One-loop margin: {gauge['one_loop_margin_over_SK']:.4f}×",
+            f"- Two-loop proxy margin: {two['margin_over_SK']:.6f}×",
             f"- Broad gauge envelope contains excluded points: **{gauge['broad_envelope_contains_excluded_points']}**",
             f"- 4×4 scenarios: {scalar['n_scenarios']}",
             f"- Excluded by Patel–Shukla μ⁺K⁰: {scalar['n_excluded_by_Patel_Shukla_mu_K0']}",
