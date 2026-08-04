@@ -1,10 +1,11 @@
 name: off-singlet-210-fluctuation-cg
 
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: off-singlet-210-fluctuation-cg-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   off-singlet-210-fluctuation-cg:

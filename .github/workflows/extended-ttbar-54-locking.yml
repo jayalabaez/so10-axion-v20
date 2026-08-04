@@ -1,10 +1,11 @@
 name: extended-ttbar-54-locking
 
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: extended-ttbar-54-locking-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   extended-ttbar-54-locking:

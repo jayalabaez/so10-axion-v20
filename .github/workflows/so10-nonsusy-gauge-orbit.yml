@@ -1,8 +1,11 @@
 name: so10-nonsusy-gauge-orbit
 
 on:
-  pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: so10-nonsusy-gauge-orbit-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   gauge-orbit:

@@ -1,10 +1,11 @@
 name: uv-cp-phases-from-potential
 
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: uv-cp-phases-from-potential-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   uv-cp-phases-from-potential:

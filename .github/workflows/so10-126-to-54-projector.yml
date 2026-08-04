@@ -1,10 +1,11 @@
 name: so10-126-to-54-projector
 
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: so10-126-to-54-projector-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   so10-126-to-54-projector:

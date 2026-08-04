@@ -1,8 +1,11 @@
 name: nonsusy-reduced-hessian
 
 on:
-  pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: nonsusy-reduced-hessian-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   nonsusy-reduced-hessian:

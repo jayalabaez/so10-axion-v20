@@ -1,10 +1,11 @@
 name: quartic-soft-betas-sarah
 
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: quartic-soft-betas-sarah-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   quartic-soft-betas-sarah:

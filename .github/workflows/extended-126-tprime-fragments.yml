@@ -1,10 +1,11 @@
 name: extended-126-tprime-fragments
 
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: extended-126-tprime-fragments-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   extended-126-tprime-fragments:

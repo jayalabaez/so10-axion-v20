@@ -134,6 +134,7 @@ def build_report() -> dict[str, Any]:
     }
     operational_risks = {
         "pull_request_workflow_fanout": workflows["n_pull_request_workflows"],
+        "pull_request_fanout_consolidated": workflows["n_pull_request_workflows"] <= 5,
         "scripts_repeated_across_workflows": len(
             workflows["duplicate_script_invocations"]
         ),
@@ -174,6 +175,9 @@ def build_report() -> dict[str, Any]:
             "main_post_merge_reaudit_configured": bool(aggregate.get("push_main")),
             "aggregate_stale_run_cancellation_configured": bool(
                 aggregate.get("concurrency_cancel")
+            ),
+            "pull_request_fanout_consolidated": bool(
+                workflows["n_pull_request_workflows"] <= 5
             ),
             "scientific_blockers_distinguished_from_execution_failures": True,
             "legacy_proxy_cannot_validate_model": True,

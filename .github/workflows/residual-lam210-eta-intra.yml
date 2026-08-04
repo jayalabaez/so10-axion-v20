@@ -1,10 +1,11 @@
 name: residual-lam210-eta-intra
 
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: residual-lam210-eta-intra-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   residual-lam210-eta-intra:

@@ -1,10 +1,11 @@
 name: ckm-pmns-rg-gauge-width
 
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: ckm-pmns-rg-gauge-width-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   ckm-pmns-rg-gauge-width:

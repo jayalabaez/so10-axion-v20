@@ -1,10 +1,11 @@
 name: xy-cp-flavour-tensors
 
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: xy-cp-flavour-tensors-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   xy-cp-flavour-tensors:

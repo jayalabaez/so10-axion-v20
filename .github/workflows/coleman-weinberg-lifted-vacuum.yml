@@ -1,10 +1,11 @@
 name: coleman-weinberg-lifted-vacuum
 
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: coleman-weinberg-lifted-vacuum-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   coleman-weinberg-lifted-vacuum:

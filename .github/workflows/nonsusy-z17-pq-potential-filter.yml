@@ -1,10 +1,11 @@
 name: nonsusy-z17-pq-potential-filter
 
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: nonsusy-z17-pq-potential-filter-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   nonsusy-z17-pq-filter:

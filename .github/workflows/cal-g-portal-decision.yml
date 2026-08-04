@@ -1,10 +1,11 @@
 name: cal-g-portal-decision
 
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: cal-g-portal-decision-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   cal-g-portal-decision:

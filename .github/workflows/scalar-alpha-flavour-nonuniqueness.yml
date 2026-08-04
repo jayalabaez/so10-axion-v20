@@ -1,10 +1,11 @@
 name: scalar-alpha-flavour-nonuniqueness
 
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: scalar-alpha-flavour-nonuniqueness-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   scalar-alpha-flavour-nonuniqueness:

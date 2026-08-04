@@ -1,10 +1,11 @@
 name: sarah-pyrate-210n-model-file
 
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: sarah-pyrate-210n-model-file-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   sarah-pyrate-210n-model-file:

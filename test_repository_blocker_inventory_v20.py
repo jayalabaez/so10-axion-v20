@@ -37,6 +37,13 @@ class RepositoryBlockerInventoryTests(unittest.TestCase):
                 "superseded_aggregate_runs_not_cancelled"
             ]
         )
+        self.assertLessEqual(
+            self.report["workflow_inventory"]["n_pull_request_workflows"], 5
+        )
+        self.assertTrue(self.report["flags"]["pull_request_fanout_consolidated"])
+        self.assertTrue(
+            self.report["operational_risks"]["pull_request_fanout_consolidated"]
+        )
 
     def test_execution_and_physics_are_not_conflated(self):
         self.assertTrue(

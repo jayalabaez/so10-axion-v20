@@ -1,10 +1,11 @@
 name: nonsusy-signed-mt2-proxy
 
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: nonsusy-charge-allowed-mt-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   signed-mt2:
