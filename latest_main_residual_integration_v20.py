@@ -1,12 +1,5 @@
 #!/usr/bin/env python3
-"""Integrate latest-main residual closures with the physical-EW scalar audit.
-
-Valid live PyR@TE artifacts and flavour non-uniqueness results are retained.
-Selected-point conclusions that reuse the intermediate-scale ``10_H`` radial
-proxy are invalidated by the physical ``h=174 GeV`` Hessian.  The E/F/J/X
-response to the Aulakh gamma convention is now retained separately from the
-still-missing physical normalization map of ``Phi H Sigmabar S``.
-"""
+"""Integrate latest-main residual closures with the physical-EW scalar audit."""
 from __future__ import annotations
 
 import argparse
@@ -54,24 +47,21 @@ def build_report() -> dict[str, Any]:
         and historical_tachyon
         and lifted.get("flag", {}).get("selected_point_not_spoiled_by_lock_raise")
     )
-    ultimate_selected_closure_invalidated = bool(
-        historical_tachyon
-        and ultimate_report.get("flag", {}).get(
-            "all_post_hessian_residuals_closed"
-        )
-    )
+
+    # The old ultimate chain is invalidated by the physical tachyon even when
+    # newer upstream code has already failed closed and cleared its stale
+    # all-residuals-closed flag.  Requiring that stale flag caused CI to fail
+    # for the honest state it was meant to certify.
+    ultimate_selected_closure_invalidated = bool(historical_tachyon)
 
     efjx_executes = bool(
         efjx.get("n_failed", 1) == 0
         and efjx.get("flags", {}).get("exact_EFJX_gamma_response_known")
     )
     proxy_cgc_ratio_invalidated = bool(
-        efjx.get("flags", {}).get(
-            "proxy_cgc_ratio_invalid_as_physical_prediction"
-        )
+        efjx.get("flags", {}).get("proxy_cgc_ratio_invalid_as_physical_prediction")
         and not efjx.get("flags", {}).get("physical_CGC_normalization_derived")
     )
-
     gauge_valid = bool(
         gauge_dump.get("live_run_executed")
         and gauge_dump.get("matches_ingested_one_loop_b")
@@ -118,12 +108,12 @@ def build_report() -> dict[str, Any]:
         in quartic_dump.get("not_encoded", []),
         "dim6_lambda_lock_live_encoding": "dim6_lambda_lock"
         in quartic_dump.get("not_encoded", []),
-        "physical_EFJX_CGC_normalization_on_h174_branch": not efjx.get(
-            "flags", {}
-        ).get("physical_CGC_normalization_derived", False),
-        "physical_EW_reminimization_after_EFJX_CGC": not efjx.get(
-            "flags", {}
-        ).get("physical_EW_branch_revalidated", False),
+        "physical_EFJX_CGC_normalization_on_h174_branch": not efjx.get("flags", {}).get(
+            "physical_CGC_normalization_derived", False
+        ),
+        "physical_EW_reminimization_after_EFJX_CGC": not efjx.get("flags", {}).get(
+            "physical_EW_branch_revalidated", False
+        ),
         "cal_G_lift_revalidation_on_physical_EW_survival_point": selected_point_claim_invalidated,
         "ultimate_tau_p_revalidation_after_physical_EW_falsification": ultimate_selected_closure_invalidated,
         "exact_unique_proton_lifetime": True,
@@ -150,11 +140,8 @@ def build_report() -> dict[str, Any]:
             "all_post_hessian_residuals_closed": ultimate_selected_closure_invalidated,
             "proxy_c_cgc_needed_abs_approx_is_physical": proxy_cgc_ratio_invalidated,
             "reason": (
-                "Selected-point conclusions reuse the intermediate-scale 10_H "
-                "radial proxy, while the physical h=174 GeV Hessian proves the "
-                "fixed historical lambda4 point tachyonic. The E/F/J/X gamma "
-                "response is known, but its invariant-to-gamma normalization "
-                "must be derived and reminimized on the physical-EW branch."
+                "Selected-point conclusions reuse the intermediate-scale 10_H radial proxy, "
+                "while the physical h=174 GeV Hessian excludes the historical point."
             ),
         },
         "still_open": still_open,
@@ -164,15 +151,15 @@ def build_report() -> dict[str, Any]:
             "physical_historical_min_eigenvalue_GeV2": physical.get(
                 "historical_benchmark", {}
             ).get("min_eigenvalue_GeV2"),
-            "ultimate_exact_unique_proton_lifetime": ultimate_report.get(
-                "flag", {}
-            ).get("exact_unique_proton_lifetime"),
-            "EFJX_reported_proxy_cgc_ratio": efjx.get(
-                "proxy_dependency_audit", {}
-            ).get("reported_proxy_c_cgc_needed_abs_approx"),
-            "EFJX_physical_cgc_normalization_derived": efjx.get(
-                "flags", {}
-            ).get("physical_CGC_normalization_derived"),
+            "ultimate_exact_unique_proton_lifetime": ultimate_report.get("flag", {}).get(
+                "exact_unique_proton_lifetime"
+            ),
+            "EFJX_reported_proxy_cgc_ratio": efjx.get("proxy_dependency_audit", {}).get(
+                "reported_proxy_c_cgc_needed_abs_approx"
+            ),
+            "EFJX_physical_cgc_normalization_derived": efjx.get("flags", {}).get(
+                "physical_CGC_normalization_derived"
+            ),
         },
         "upstream_status": {
             "scalar_alpha": alpha.get("status"),
@@ -183,8 +170,7 @@ def build_report() -> dict[str, Any]:
             "EFJX_CGC_normalization": efjx.get("overall_state"),
         },
         "flag": {
-            "live_sarah_or_pyrate_executable_artifact_validated": gauge_valid
-            and quartic_valid,
+            "live_sarah_or_pyrate_executable_artifact_validated": gauge_valid and quartic_valid,
             "scalar_alpha_nonuniqueness_closed": alpha_proven,
             "cal_G_mechanism_identified_but_physical_point_not_revalidated": True,
             "latest_main_selected_point_closure_invalidated": selected_point_claim_invalidated,
@@ -194,14 +180,10 @@ def build_report() -> dict[str, Any]:
             "whole_model_excluded": False,
         },
         "verdict": (
-            "Latest main contributes valid live PyR@TE gauge and reduced "
-            "quartic/soft artifacts, proves scalar-alpha non-uniqueness, and "
-            "now extracts the exact E/F/J/X response matrices in the Aulakh "
-            "gamma convention. Selected-point lambda_lock, tau_p, and the "
-            "numerical proxy c_cgc ratio remain invalid as physical closures "
-            "because they reuse the intermediate-scale 10_H proxy. The exact "
-            "Phi H Sigmabar S normalization and full physical-EW reminimization "
-            "remain open."
+            "Valid live artifacts and the E/F/J/X gamma response are retained. "
+            "Proxy-selected lambda_lock, tau_p and c_cgc closures remain invalid; "
+            "the physical Phi H Sigmabar S normalization and h=174 GeV "
+            "re-minimization remain open."
         ),
     }
 
@@ -213,9 +195,7 @@ def main(argv: list[str] | None = None) -> int:
         json.dumps(report, indent=2) + "\n", encoding="utf-8"
     )
     ROOT.joinpath("LATEST_MAIN_RESIDUAL_INTEGRATION_V20.md").write_text(
-        "# Latest-main residual integration — v20\n\n"
-        + report["verdict"]
-        + "\n",
+        "# Latest-main residual integration — v20\n\n" + report["verdict"] + "\n",
         encoding="utf-8",
     )
     print(json.dumps(report, indent=2))
