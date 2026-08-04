@@ -2,7 +2,14 @@ name: current-main-full-reaudit
 
 on:
   pull_request:
+  push:
+    branches:
+      - main
   workflow_dispatch:
+
+concurrency:
+  group: current-main-full-reaudit-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   full-reaudit:
@@ -39,6 +46,8 @@ jobs:
           python latest_main_residual_integration_v20.py
           python current_main_repair_closure_v20.py
           python final_scalar_theory_gate_v20.py
+          python irreducible_gap_closure_contract_v20.py
+          python repository_blocker_inventory_v20.py
       - name: Run focused signed-gate tests
         run: |
           python -m unittest -v \
@@ -53,7 +62,9 @@ jobs:
             test_scalar_proton_falsification_gate_v20.py \
             test_latest_main_residual_integration_v20.py \
             test_current_main_repair_closure_v20.py \
-            test_final_scalar_theory_gate_v20.py
+            test_final_scalar_theory_gate_v20.py \
+            test_irreducible_gap_closure_contract_v20.py \
+            test_repository_blocker_inventory_v20.py
       - name: Reproduce pristine release
         run: python replicate.py
       - name: Validate release anchors
@@ -76,6 +87,8 @@ jobs:
           g=json.load(open('SO10_NONSUSY_GAUGE_ORBIT_V20_VERDICT.json'))
           l=json.load(open('LATEST_MAIN_RESIDUAL_INTEGRATION_V20.json'))
           z=json.load(open('FINAL_SCALAR_THEORY_GATE_V20.json'))
+          k=json.load(open('IRREDUCIBLE_GAP_CLOSURE_CONTRACT_V20.json'))
+          r=json.load(open('REPOSITORY_BLOCKER_INVENTORY_V20.json'))
           assert q['flag']['pati_salam_subgroup_resolved']
           assert q['flag']['charged_10_126_casimirs_nonzero']
           assert q['flag']['separate_g4_gL_gR_running']
@@ -125,6 +138,16 @@ jobs:
           assert z['remaining_blockers']['exact_unique_proton_lifetime']
           assert not z['flags']['whole_model_excluded']
           assert not z['flags']['whole_model_validated']
+          assert k['overall_state']=='BLOCKED', k
+          assert k['n_gaps']==8 and k['n_open']==8
+          assert r['overall_state']=='BLOCKED', r
+          assert r['n_failed']==0, r
+          assert r['flags']['software_chain_executes']
+          assert r['flags']['main_post_merge_reaudit_configured']
+          assert r['flags']['aggregate_stale_run_cancellation_configured']
+          assert len(r['irreducible_gap_contract_open'])==8
+          assert not r['flags']['whole_model_excluded']
+          assert not r['flags']['whole_model_validated']
           PY
       - name: Upload re-audit verdicts
         if: always()
@@ -148,3 +171,7 @@ jobs:
             CURRENT_MAIN_REPAIR_CLOSURE_V20.json
             FINAL_SCALAR_THEORY_GATE_V20.json
             FINAL_SCALAR_THEORY_GATE_V20.md
+            IRREDUCIBLE_GAP_CLOSURE_CONTRACT_V20.json
+            IRREDUCIBLE_GAP_CLOSURE_CONTRACT_V20.md
+            REPOSITORY_BLOCKER_INVENTORY_V20.json
+            REPOSITORY_BLOCKER_INVENTORY_V20.md
