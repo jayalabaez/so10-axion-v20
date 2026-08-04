@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 r"""Fold post-live residuals into the ultimate τ_p checklist (v20).
 
-Next step after ``lambda_lock_cal_g_lift_v20``:
+Next step after ``lam4_potential_efjx_decoupling_v20``:
 
 1. Collect closed residuals including the |λ_lock| raise that clears the
    cal G soft mode without spoiling the selected window.
-2. Merge them into the full-stack τ_p residual checklist.
+2. Fold the proved negative result that raising radial |λ₄| to the
+   E/F/J/X GUT null-tol spoils the selected Hessian, and the quantified
+   ``|c_cgc|`` needed to clear at fixed λ₄_potential.
 3. Keep ``exact_unique_proton_lifetime`` OPEN for remaining selected
-   |λ₄| GUT null-tol and live-dump incompleteness.
+   |λ₄| GUT null-tol, undetermined E/F/J/X CGC, and live-dump incompleteness.
 
 Honesty
 -------
@@ -26,6 +28,7 @@ from typing import Any
 
 import cal_g_portal_decision_v20 as portal
 import cal_g_soft_mode_classification_v20 as calg
+import lam4_potential_efjx_decoupling_v20 as lam4dec
 import lambda_lock_cal_g_lift_v20 as locklift
 import live_pyrate_quartic_soft_dump_v20 as qsoft
 import live_pyrate_so10_beta_dump_v20 as live
@@ -47,11 +50,13 @@ RESIDUALS_NOW_CLOSED = [
     "full_quartic_soft_live_dump",
     "cal_G_portal_decision_resolved",
     "selected_lambda_lock_raised_to_cal_G_lift",
+    "lam4_potential_raise_to_efjx_tol_proved_spoiling",
 ]
 
 RESIDUAL_STILL_OPEN = [
     "selected_lam4_below_gut_null_tol_threshold",
     "lam4_cgc_and_dim6_lock_not_in_live_dump",
+    "physical_efjx_cgc_for_210_10_126_S_undetermined",
 ]
 
 SOURCES = {
@@ -63,6 +68,7 @@ SOURCES = {
     "quartic_soft_live": "live_pyrate_quartic_soft_dump_v20",
     "cal_g_portal": "cal_g_portal_decision_v20",
     "lambda_lock_lift": "lambda_lock_cal_g_lift_v20",
+    "lam4_efjx_decoupling": "lam4_potential_efjx_decoupling_v20",
 }
 
 
@@ -75,6 +81,7 @@ def build_report() -> dict[str, Any]:
     qsoft_rep = qsoft.build_report(force_rerun=False)
     portal_rep = portal.build_report()
     lock_rep = locklift.build_report()
+    lam4dec_rep = lam4dec.build_report()
 
     if hess_rep.get("n_failed", 1) != 0:
         return {
@@ -132,6 +139,10 @@ def build_report() -> dict[str, Any]:
             lock_rep.get("n_failed", 1) == 0
             and lock_rep["flag"]["selected_lambda_lock_raised_to_cal_G_lift"]
         ),
+        "lam4_potential_raise_to_efjx_tol_proved_spoiling": bool(
+            lam4dec_rep.get("n_failed", 1) == 0
+            and lam4dec_rep["flag"]["lam4_potential_raise_proved_spoiling"]
+        ),
     }
     all_closed = all(closed.values())
 
@@ -139,7 +150,16 @@ def build_report() -> dict[str, Any]:
         "selected_lam4_below_gut_null_tol_threshold": bool(
             not pq_rep.get("flag", {}).get("selected_lam4_clears_gut_null_tol", False)
         ),
-        "lam4_cgc_and_dim6_lock_not_in_live_dump": True,
+        "lam4_cgc_and_dim6_lock_not_in_live_dump": bool(
+            lam4dec_rep.get("flag", {}).get(
+                "lam4_cgc_and_dim6_lock_not_in_live_dump", True
+            )
+        ),
+        "physical_efjx_cgc_for_210_10_126_S_undetermined": bool(
+            lam4dec_rep.get("certificate", {}).get(
+                "physical_cgc_still_required", True
+            )
+        ),
     }
 
     checks = {
@@ -155,6 +175,8 @@ def build_report() -> dict[str, Any]:
         and portal_rep["flag"]["cal_G_portal_decision_resolved"],
         "lock_lift_ok": lock_rep.get("n_failed", 1) == 0
         and lock_rep["flag"]["selected_lambda_lock_raised_to_cal_G_lift"],
+        "lam4_decoupling_ok": lam4dec_rep.get("n_failed", 1) == 0
+        and lam4dec_rep["flag"]["lam4_potential_raise_proved_spoiling"],
         "all_checklist_closed": all_closed,
         "tau_positive": float(life["selected_tau_e_years"]) > 0.0,
         "exact_unique_not_overclaimed": True,
@@ -182,6 +204,7 @@ def build_report() -> dict[str, Any]:
             "quartic_soft_live": qsoft_rep.get("status"),
             "cal_g_portal": portal_rep.get("status"),
             "lambda_lock_lift": lock_rep.get("status"),
+            "lam4_efjx_decoupling": lam4dec_rep.get("status"),
         },
         "certificate": {
             "residual_now_closed": closed,
@@ -191,21 +214,27 @@ def build_report() -> dict[str, Any]:
             "lambda_lock_raised": lock_rep.get("couplings", {}).get(
                 "lambda_lock_raised"
             ),
+            "c_cgc_needed_abs_approx": lam4dec_rep.get("couplings", {}).get(
+                "c_cgc_needed_abs_approx"
+            ),
             "interpretation": (
                 "The ultimate selected-point τ_p checklist now includes closed "
                 "Hessian positivity, λ₄ PQ-null exact-kernel lift, proven "
                 "scalar-α non-uniqueness, live PyR@TE gauge β, classified "
                 "cal G soft mode, δ-contracted live quartic/soft dump, "
-                "resolved cal G portal decision, and a |λ_lock| raise that "
+                "resolved cal G portal decision, a |λ_lock| raise that "
                 "clears the cal G soft mode without spoiling the selected "
-                "window. Exact whole-model unique τ_p remains OPEN because "
-                "selected |λ₄| is below the GUT null-tol threshold and "
-                "λ₄ CGC / dim-6 are not in the live dump."
+                "window, and a proved negative that raising radial |λ₄| to "
+                "the E/F/J/X null-tol spoils the selected Hessian. Exact "
+                "whole-model unique τ_p remains OPEN because selected |λ₄| "
+                "is below the GUT null-tol threshold, the physical E/F/J/X "
+                "CGC is undetermined, and λ₄ CGC / dim-6 are not in the "
+                "live dump."
             ),
         },
         "next_exact_calculation": [
-            "Assess whether |λ₄| can be raised to clear the GUT null-tol without spoiling the selected point",
-            "Re-evaluate exact unique τ_p only after remaining λ₄ / live-dump caveats close",
+            "Derive SO(10) Clebsch coefficients for 210·10·126bar·S onto E/F/J/X channels",
+            "Re-evaluate exact unique τ_p only after remaining λ₄ CGC / live-dump caveats close",
         ],
         "flag": {
             "ultimate_residual_checklist_folded": True,
@@ -219,6 +248,11 @@ def build_report() -> dict[str, Any]:
             "full_quartic_soft_live_dump": True,
             "cal_G_portal_decision_resolved": True,
             "selected_lambda_lock_raised_to_cal_G_lift": True,
+            "lam4_potential_raise_proved_spoiling": bool(
+                lam4dec_rep.get("flag", {}).get(
+                    "lam4_potential_raise_proved_spoiling", False
+                )
+            ),
             "extra_new_portal_required": bool(
                 portal_rep.get("flag", {}).get("extra_new_portal_required", True)
             ),
@@ -230,7 +264,9 @@ def build_report() -> dict[str, Any]:
             f"τ(p→eπ⁰)={float(life['selected_tau_e_years']):.3e} yr "
             f"(SK pass={life['selected_passes_SK']}); "
             f"closed={all_closed}; |λ_lock| raised→"
-            f"{lock_rep.get('couplings', {}).get('lambda_lock_raised')}. "
+            f"{lock_rep.get('couplings', {}).get('lambda_lock_raised')}; "
+            f"|c_cgc|_needed≈"
+            f"{lam4dec_rep.get('couplings', {}).get('c_cgc_needed_abs_approx')}. "
             f"exact_unique_proton_lifetime remains False."
         ),
     }
