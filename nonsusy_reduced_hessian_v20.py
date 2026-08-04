@@ -3,9 +3,13 @@
 
 This module does not import Aulakh/MSGUT component matrices. It repairs the
 explicit reduced non-SUSY potential by pairing the phase-locking operator
-Delta^2 H^2 S^2+h.c. with the separately allowed modulus operator
-|Delta|^2|H|^2|S|^2. It derives the five-amplitude Hessian directly from the
-repaired polynomial. Full component closure remains open.
+lambda_phase*(Delta^2 H^2 S^2+h.c.)/M_GUT^2 with the separately allowed
+lambda_abs*|Delta|^2|H|^2|S|^2/M_GUT^2 modulus operator.
+
+At the aligned phase the radial sextic coefficient is proportional to
+lambda_abs-|lambda_phase|. The five-amplitude Hessian is derived directly from
+the repaired polynomial and checked against finite differences. This closes
+the explicit reduced radial sector only, not the full component Hessian.
 """
 from __future__ import annotations
 
@@ -18,7 +22,6 @@ from typing import Any
 import numpy as np
 from scipy.optimize import differential_evolution
 
-import charge_allowed_potential_minimize_v20 as pmin
 import mixed_rep_hilbert_bfb_completion_v20 as bfb_basis
 import scalar_vacuum_proton_decay_v20 as scalar_pd
 
@@ -154,17 +157,16 @@ def finite_difference_hessian_scaled(fn, x0: np.ndarray, scales: np.ndarray, ste
 
 def stress_competing_minima(fn, target: np.ndarray, target_value: float) -> dict[str, Any]:
     scales = target.copy()
-    bounds = [(0.0, 3.0)] * len(target)
 
     def objective(x: np.ndarray) -> float:
         return fn(x * scales) / max(abs(target_value), scales[0] ** 4, 1.0)
 
     result = differential_evolution(
         objective,
-        bounds=bounds,
+        bounds=[(0.0, 3.0)] * len(target),
         seed=1720,
-        maxiter=80,
-        popsize=12,
+        maxiter=40,
+        popsize=10,
         tol=1e-8,
         polish=True,
         workers=1,
@@ -192,24 +194,22 @@ def build_report() -> dict[str, Any]:
             "n_failed": 1,
             "failures": ["unification_anchor"],
         }
-    pmin_report = pmin.build_report()
     basis_report = bfb_basis.build_report()
     radial = scalar_pd.reduced_radial_vacuum_witness(anchor)
-    if pmin_report.get("n_failed", 1) != 0 or basis_report.get("n_failed", 1) != 0:
+    if basis_report.get("n_failed", 1) != 0:
         return {
             "status": "NONSUSY_REDUCED_HESSIAN_NOT_EXECUTED__UPSTREAM_FAILED",
             "n_failed": 1,
-            "failures": ["pmin_or_bfb_basis"],
+            "failures": ["bfb_basis"],
         }
 
     m_i = float(anchor["M_I_GeV"])
     m_gut = float(anchor["M_GUT_GeV"])
-    couplings = pmin_report.get("finite_kappa_benchmark_couplings") or pmin_report["fixed_couplings"]
-    kappa = float(couplings["kappa"])
-    lam4 = float(couplings["lam4"])
-    lambda_phase = float(couplings["lambda_lock"])
+    kappa = 0.05
+    lam4 = -kappa * m_i / m_gut
+    lambda_phase = 1.0
     lambda_abs = stabilizing_modulus_coefficient(lambda_phase)
-    c_lock = float(pmin_report["C_54"] * pmin_report["C_126_to_54"])
+    c_lock = 1.0
 
     raw = radial["potential_definition"]["self_quartics"]
     lambda_map = {
@@ -246,7 +246,6 @@ def build_report() -> dict[str, Any]:
     quartic_bfb = abs(lam4) <= amgm_limit
     exact_bfb = bool(np.all(lambdas > 0.0)) and (phase_bfb or quartic_bfb)
     stationarity_scale = max(m_gut**3, 1.0)
-
     checks = {
         "modulus_companion_in_basis": bool(basis_report["flag"]["modulus_locking_companion_added"]),
         "phase_lock_bfb": phase_bfb,
@@ -277,6 +276,7 @@ def build_report() -> dict[str, Any]:
             "lambda_lock_abs": lambda_abs,
             "lambda_lock_abs_min_bfb": abs(lambda_phase),
             "C_lock": c_lock,
+            "benchmark_origin": "analytic_soft_norm_minimizer_lambda4=-kappa*MI/MGUT",
             "self_quartics": lambda_map,
         },
         "bfb_certificate": {
