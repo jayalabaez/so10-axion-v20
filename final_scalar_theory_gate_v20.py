@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Final fail-closed scalar-theory gate after all executable repairs.
+"""Final fail-closed scalar-theory gate on synchronized latest main.
 
-This gate composes the physical-EW repair closure, the perturbative floor37
-no-rescue theorem, and the latest-main residual integration. Valid live
-PyR@TE artifacts and scalar-alpha non-uniqueness are retained. Proxy-selected
-cal-G/tau_p closures are rejected until re-evaluated on the surviving physical
-EW branch.
+The gate composes the signed invariant audit, physical-EW high-precision
+Hessian, signed-floor34 perturbative no-rescue theorem, exact gauge orbit, and
+latest-main residual dependency audit. Valid live PyR@TE artifacts and scalar
+alpha non-uniqueness are retained; stale proxy-selected cal-G/tau_p closures
+are rejected until re-evaluated on the surviving physical-EW branch.
 """
 from __future__ import annotations
 
@@ -26,7 +26,7 @@ def build_report() -> dict[str, Any]:
     no_rescue = rescue.build_report()
     latest_report = latest.build_report()
 
-    execution_failures = []
+    execution_failures: list[str] = []
     if repaired.get("execution_failures"):
         execution_failures.extend(repaired["execution_failures"])
     for label, report in (
@@ -38,9 +38,9 @@ def build_report() -> dict[str, Any]:
 
     hard_failures = list(repaired.get("hard_theory_failures", []))
     resolved = dict(repaired.get("resolved_breakpoints", {}))
-    resolved["floor37_perturbative_no_rescue_theorem"] = bool(
+    resolved["signed_floor34_perturbative_no_rescue_theorem"] = bool(
         no_rescue.get("flag", {}).get(
-            "historical_lam4_point_excluded_within_guaranteed_floor"
+            "historical_lam4_point_excluded_within_signed_floor34"
         )
         and no_rescue.get("flag", {}).get(
             "guaranteed_H4_channels_insufficient_perturbatively"
@@ -61,15 +61,9 @@ def build_report() -> dict[str, Any]:
     )
 
     remaining = dict(repaired.get("remaining_blockers", {}))
-    # Latest main supplies validated artifacts, so the stale environment-level
-    # blocker is removed. The full tensor encoding remains open below.
     remaining.pop("live_sarah_or_pyrate_run", None)
-    # The old generic cal-G blocker is replaced by a sharper physical-EW
-    # revalidation requirement.
     remaining.pop("cal_G_soft_mode", None)
-    remaining[
-        "new_odd_H_tensor_channel_or_hierarchy_mechanism"
-    ] = bool(
+    remaining["new_odd_H_tensor_channel_or_hierarchy_mechanism"] = bool(
         no_rescue.get("flag", {}).get(
             "unknown_beyond_floor_odd_H_channel_or_new_mechanism_required"
         )
@@ -95,10 +89,10 @@ def build_report() -> dict[str, Any]:
             "required_total_H4_rescue_coupling": no_rescue.get(
                 "numerical", {}
             ).get("required_total_H4_coupling"),
-            "required_over_floor37_perturbative_allowance": no_rescue.get(
+            "required_over_signed_floor34_perturbative_allowance": no_rescue.get(
                 "numerical", {}
             ).get("required_over_combined_perturbative_allowance"),
-            "best_case_floor37_rescued_HH_curvature_GeV2": no_rescue.get(
+            "best_case_signed_floor34_rescued_HH_curvature_GeV2": no_rescue.get(
                 "numerical", {}
             ).get("best_case_rescued_HH_curvature_GeV2"),
             "latest_main_physical_historical_min_eigenvalue_GeV2": latest_report.get(
@@ -110,7 +104,7 @@ def build_report() -> dict[str, Any]:
     audit_findings = list(repaired.get("audit_findings", []))
     audit_findings.extend(
         [
-            "the guaranteed 37-invariant floor cannot perturbatively rescue the historical lambda4 electroweak tachyon",
+            "signed floor34 cannot perturbatively rescue the historical lambda4 electroweak tachyon",
             "latest-main live PyR@TE gauge and reduced quartic/soft artifacts are valid and retained",
             "latest-main scalar-alpha non-uniqueness is proven and retained",
             "latest-main cal-G and ultimate selected-point closures are invalidated because they reuse the old intermediate-scale 10_H proxy",
@@ -130,9 +124,17 @@ def build_report() -> dict[str, Any]:
             "historical_invariant_ledger_falsified": bool(
                 repaired.get("flags", {}).get("historical_basis_claim_falsified")
             ),
+            "mechanical_floor37_rejected": bool(
+                repaired.get("flags", {}).get("mechanical_floor37_rejected")
+            ),
+            "signed_guaranteed_floor34_emitted": bool(
+                repaired.get("resolved_breakpoints", {}).get(
+                    "signed_guaranteed_floor34_emitted"
+                )
+            ),
             "historical_lambda4_benchmark_excluded": True,
-            "historical_lambda4_benchmark_not_rescuable_with_floor37_perturbative_even_H_terms": bool(
-                resolved["floor37_perturbative_no_rescue_theorem"]
+            "historical_lambda4_benchmark_not_rescuable_with_signed_floor34_perturbative_even_H_terms": bool(
+                resolved["signed_floor34_perturbative_no_rescue_theorem"]
             ),
             "reduced_survival_region_exists": bool(
                 repaired.get("flags", {}).get("survival_parameter_region_exists")
@@ -156,16 +158,16 @@ def build_report() -> dict[str, Any]:
         },
         "verdict": (
             "All currently executable scalar breakpoints have been pushed to a "
-            "fail-closed endpoint on latest main. The historical 25-invariant "
-            "completeness claim is false; the guaranteed floor is 37. The "
+            "fail-closed endpoint on latest main. The historical invariant "
+            "ledger is both incomplete and internally over-counted: mechanical "
+            "37 is rejected and the conservative signed floor is 34. The "
             "physical h=174 GeV arbitrary-precision Hessian excludes the "
             "historical lambda4=-kappa*M_I/M_GUT benchmark, and perturbative "
-            "floor37 even-H quartics cannot rescue it. A lambda4=0 reduced "
-            "survival point remains. Latest main validly adds live one-loop "
-            "PyR@TE artifacts and proves scalar-alpha non-uniqueness, but its "
-            "cal-G/ultimate selected-point closures reuse the invalidated old "
-            "10_H proxy and must be redone on the physical-EW branch. The whole "
-            "theory remains BLOCKED, not dead."
+            "signed-floor34 even-H quartics cannot rescue it. A lambda4=0 "
+            "reduced survival point remains. Latest-main live one-loop PyR@TE "
+            "artifacts and scalar-alpha non-uniqueness are valid, but cal-G and "
+            "ultimate selected-point closures must be redone on the physical-EW "
+            "branch. The whole theory remains BLOCKED, not excluded."
         ),
     }
 
