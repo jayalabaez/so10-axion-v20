@@ -1,0 +1,61 @@
+{
+  "status": "SCALAR_AND_PROTON_FALSIFICATION_GATE_EXECUTED",
+  "input_sha256": "9900be2fe60693f96bab2e5e65c33bdd95590e1bc1fec6127e2e5d3380653028",
+  "overall_state": "BLOCKED",
+  "scalar_potential": {
+    "state": "BLOCKED",
+    "failures": [],
+    "blockers": [
+      "external invariant-basis reference is missing",
+      "invariant-basis SHA-256 certificate is missing",
+      "externally certified invariant count is missing",
+      "independent invariant ledger is empty",
+      "vacuum stationarity equations have not been solved",
+      "full physical component Hessian is missing",
+      "Goldstone count has not been demonstrated",
+      "bounded-from-below certificate is missing",
+      "competing-vacuum comparison is missing",
+      "physical X/Y gauge-boson masses are missing",
+      "physical colour-triplet mass/mixing spectrum is missing"
+    ],
+    "claim_allowed": false
+  },
+  "proton_decay": {
+    "state": "BLOCKED",
+    "central": {
+      "lifetime_years": 5.481054597611512e+35,
+      "margin_over_limit": 22.837727490047968,
+      "passes": true
+    },
+    "gauge_scan": {
+      "points": 45,
+      "minimum": {
+        "M_X_over_M_GUT": 0.5,
+        "A_R": 3.0,
+        "W_GeV2": 0.13,
+        "lifetime_years": 1.7032575359318316e+34,
+        "passes": false
+      },
+      "all_pass": false
+    },
+    "critical_M_X_over_M_GUT_central": 0.45744278109818604,
+    "triplet_kill_curve": [
+      {"effective_yukawa": 1e-05, "minimum_triplet_mass_GeV_proxy": 79055097695.1046},
+      {"effective_yukawa": 0.0001, "minimum_triplet_mass_GeV_proxy": 790550976951.046},
+      {"effective_yukawa": 0.001, "minimum_triplet_mass_GeV_proxy": 7905509769510.459}
+    ],
+    "conditional_triplet_points_excluded": 3,
+    "exact_lifetime_years": null,
+    "exact_calculation_completed": false,
+    "model_excluded": false
+  },
+  "hard_findings": {
+    "full_scalar_potential_completed": false,
+    "central_gauge_benchmark_passes": true,
+    "broad_gauge_scan_fully_passes": false,
+    "conditional_triplet_points_excluded": 3,
+    "whole_model_excluded": false,
+    "whole_model_validated": false
+  },
+  "verdict": "Current v20 inputs do not close the complete SO(10) scalar potential or a unique proton-decay prediction. Conditional kill surfaces are computed; missing tensor-level inputs remain BLOCKED, not passed."
+}
