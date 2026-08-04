@@ -12,8 +12,9 @@ class EWPortalRescueBoundTests(unittest.TestCase):
     def test_report_executes(self):
         self.assertEqual(self.report["n_failed"], 0, self.report["failures"])
 
-    def test_historical_direct_curvature_is_negative(self):
+    def test_signed_floor_and_historical_curvature(self):
         numerical = self.report["numerical"]
+        self.assertEqual(numerical["signed_guaranteed_invariant_floor"], 34)
         self.assertEqual(numerical["physical_h_GeV"], 174.0)
         self.assertLess(
             numerical["historical_direct_HH_curvature_GeV2"], -1.0e30
@@ -33,7 +34,7 @@ class EWPortalRescueBoundTests(unittest.TestCase):
     def test_scope(self):
         flags = self.report["flag"]
         self.assertTrue(
-            flags["historical_lam4_point_excluded_within_guaranteed_floor"]
+            flags["historical_lam4_point_excluded_within_signed_floor34"]
         )
         self.assertTrue(
             flags["guaranteed_even_H2_portals_cannot_directly_rescue"]
@@ -44,6 +45,7 @@ class EWPortalRescueBoundTests(unittest.TestCase):
         self.assertTrue(
             flags["unknown_beyond_floor_odd_H_channel_or_new_mechanism_required"]
         )
+        self.assertTrue(flags["mechanical_floor37_rejected"])
         self.assertFalse(flags["full_invariant_ring_complete"])
         self.assertFalse(flags["whole_model_excluded"])
 
