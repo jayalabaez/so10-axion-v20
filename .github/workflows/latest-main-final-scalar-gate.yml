@@ -1,11 +1,15 @@
 name: latest-main-final-scalar-gate
 
+# Heavy scalar gate: manual / main-only. PR coverage is the fast job in
+# current-main-full-reaudit (pr-efjx-gate).
 on:
-  pull_request:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 concurrency:
-  group: latest-main-final-scalar-gate-${{ github.event.pull_request.number || github.ref }}
+  group: latest-main-final-scalar-gate-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:

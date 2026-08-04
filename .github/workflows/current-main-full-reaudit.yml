@@ -12,7 +12,71 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # Fast PR gate: exercise the new EFJX CGC contract without the 3h discover suite.
+  pr-efjx-gate:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      PYTHONHASHSEED: "0"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Compile repository
+        run: python -m compileall -q .
+      - name: Execute EFJX physical CGC gate and residual integration
+        run: |
+          python efjx_cgc_physical_normalization_gate_v20.py
+          python latest_main_residual_integration_v20.py
+          python irreducible_gap_closure_contract_v20.py
+      - name: Focused PR tests
+        run: |
+          python -m unittest -v \
+            test_efjx_cgc_physical_normalization_gate_v20.py \
+            test_efjx_cgc_normalization_input_contract_v20.py \
+            test_latest_main_residual_integration_v20.py \
+            test_irreducible_gap_closure_contract_v20.py
+      - name: Assert EFJX physical scope
+        run: |
+          python - <<'PY'
+          import json
+          e=json.load(open('EFJX_CGC_PHYSICAL_NORMALIZATION_GATE_V20.json'))
+          l=json.load(open('LATEST_MAIN_RESIDUAL_INTEGRATION_V20.json'))
+          k=json.load(open('IRREDUCIBLE_GAP_CLOSURE_CONTRACT_V20.json'))
+          assert e['overall_state']=='BLOCKED', e
+          assert e['n_failed']==0, e
+          assert e['flags']['exact_EFJX_gamma_response_known']
+          assert e['flags']['proxy_cgc_ratio_invalid_as_physical_prediction']
+          assert not e['flags']['physical_CGC_normalization_derived']
+          assert not e['flags']['physical_EW_branch_revalidated']
+          assert l['n_failed']==0, l
+          assert l['valid_new_closures']['EFJX_gamma_response_matrices_known_in_Aulakh_convention']
+          assert l['invalidated_selected_point_claims']['proxy_c_cgc_needed_abs_approx_is_physical']
+          assert l['still_open']['physical_EFJX_CGC_normalization_on_h174_branch']
+          assert k['overall_state']=='BLOCKED', k
+          assert k['n_gaps']==8 and k['n_open']==8
+          assert not e['flags']['whole_model_excluded']
+          assert not e['flags']['whole_model_validated']
+          PY
+      - name: Upload PR EFJX artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr-efjx-cgc-gate
+          path: |
+            EFJX_CGC_PHYSICAL_NORMALIZATION_GATE_V20.json
+            EFJX_CGC_PHYSICAL_NORMALIZATION_GATE_V20.md
+            LATEST_MAIN_RESIDUAL_INTEGRATION_V20.json
+            IRREDUCIBLE_GAP_CLOSURE_CONTRACT_V20.json
+
+  # Full post-merge / manual gate (unchanged scientific coverage).
   full-reaudit:
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     timeout-minutes: 180
     env:
@@ -43,6 +107,7 @@ jobs:
       - name: Execute latest-main dependency and final gates
         run: |
           python scalar_proton_falsification_gate_v20.py
+          python efjx_cgc_physical_normalization_gate_v20.py
           python latest_main_residual_integration_v20.py
           python current_main_repair_closure_v20.py
           python final_scalar_theory_gate_v20.py
@@ -60,6 +125,7 @@ jobs:
             test_ew_portal_rescue_bound_v20.py \
             test_so10_nonsusy_gauge_orbit_v20.py \
             test_scalar_proton_falsification_gate_v20.py \
+            test_efjx_cgc_physical_normalization_gate_v20.py \
             test_latest_main_residual_integration_v20.py \
             test_current_main_repair_closure_v20.py \
             test_final_scalar_theory_gate_v20.py \
@@ -85,6 +151,7 @@ jobs:
           n=json.load(open('NONSUSY_REDUCED_HESSIAN_V20_VERDICT.json'))
           u=json.load(open('EW_PORTAL_RESCUE_BOUND_V20.json'))
           g=json.load(open('SO10_NONSUSY_GAUGE_ORBIT_V20_VERDICT.json'))
+          e=json.load(open('EFJX_CGC_PHYSICAL_NORMALIZATION_GATE_V20.json'))
           l=json.load(open('LATEST_MAIN_RESIDUAL_INTEGRATION_V20.json'))
           z=json.load(open('FINAL_SCALAR_THEORY_GATE_V20.json'))
           k=json.load(open('IRREDUCIBLE_GAP_CLOSURE_CONTRACT_V20.json'))
@@ -113,11 +180,20 @@ jobs:
           assert u['numerical']['required_over_combined_perturbative_allowance'] > 1e20
           assert g['orbit']['combined_orbit_rank_goldstones']==33
           assert g['orbit']['combined_stabilizer_dimension']==12
+          assert e['overall_state']=='BLOCKED', e
+          assert e['n_failed']==0, e
+          assert e['flags']['exact_EFJX_gamma_response_known']
+          assert e['flags']['proxy_cgc_ratio_invalid_as_physical_prediction']
+          assert not e['flags']['physical_CGC_normalization_derived']
+          assert not e['flags']['physical_EW_branch_revalidated']
           assert l['n_failed']==0, l
           assert l['valid_new_closures']['live_pyrate_gauge_artifact']
           assert l['valid_new_closures']['live_pyrate_reduced_quartic_soft_artifact']
           assert l['valid_new_closures']['scalar_alpha_nonunique_from_current_flavour_fit']
+          assert l['valid_new_closures']['EFJX_gamma_response_matrices_known_in_Aulakh_convention']
           assert l['invalidated_selected_point_claims']['lambda_lock_raise_does_not_spoil_selected_point']
+          assert l['invalidated_selected_point_claims']['proxy_c_cgc_needed_abs_approx_is_physical']
+          assert l['still_open']['physical_EFJX_CGC_normalization_on_h174_branch']
           assert z['overall_state']=='BLOCKED', z
           assert all(z['resolved_breakpoints'].values())
           assert z['flags']['mechanical_floor37_rejected']
@@ -165,13 +241,11 @@ jobs:
             NONSUSY_REDUCED_HESSIAN_V20_VERDICT.json
             NONSUSY_REDUCED_HESSIAN_V20.md
             EW_PORTAL_RESCUE_BOUND_V20.json
-            EW_PORTAL_RESCUE_BOUND_V20.md
             SO10_NONSUSY_GAUGE_ORBIT_V20_VERDICT.json
+            EFJX_CGC_PHYSICAL_NORMALIZATION_GATE_V20.json
+            EFJX_CGC_PHYSICAL_NORMALIZATION_GATE_V20.md
             LATEST_MAIN_RESIDUAL_INTEGRATION_V20.json
-            CURRENT_MAIN_REPAIR_CLOSURE_V20.json
             FINAL_SCALAR_THEORY_GATE_V20.json
-            FINAL_SCALAR_THEORY_GATE_V20.md
             IRREDUCIBLE_GAP_CLOSURE_CONTRACT_V20.json
-            IRREDUCIBLE_GAP_CLOSURE_CONTRACT_V20.md
             REPOSITORY_BLOCKER_INVENTORY_V20.json
             REPOSITORY_BLOCKER_INVENTORY_V20.md
