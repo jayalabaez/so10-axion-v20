@@ -1,0 +1,41 @@
+name: irreducible-gap-closure-contract
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  closure-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Execute closure contract
+        run: python irreducible_gap_closure_contract_v20.py
+      - name: Run focused contract tests
+        run: python -m unittest -v test_irreducible_gap_closure_contract_v20.py
+      - name: Assert honest open-gap state
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('IRREDUCIBLE_GAP_CLOSURE_CONTRACT_V20.json'))
+          assert r['status']=='IRREDUCIBLE_GAP_CLOSURE_CONTRACT_EVALUATED'
+          assert r['n_failed']==0
+          assert r['n_gaps']==8
+          assert r['overall_state']=='BLOCKED'
+          assert r['flags']['dependency_order_enforced']
+          assert r['flags']['proxy_substitution_forbidden']
+          assert not r['flags']['whole_model_validated']
+          assert not r['flags']['whole_model_excluded']
+          PY
+      - name: Upload closure contract
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: irreducible-gap-closure-contract
+          path: |
+            IRREDUCIBLE_GAP_CLOSURE_CONTRACT_V20.json
+            IRREDUCIBLE_GAP_CLOSURE_CONTRACT_V20.md
