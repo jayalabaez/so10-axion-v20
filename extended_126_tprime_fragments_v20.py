@@ -157,17 +157,25 @@ def fill_4x4(
     eta_intra: float,
     include_dim4_mix: bool,
     include_intra_126: bool,
+    a: float | None = None,
+    omega: float | None = None,
+    p: float | None = None,
 ) -> dict[str, Any]:
-    """Charge-allowed 4×4 M_T with transcribed CG magnitudes on T' rows."""
+    """Charge-allowed 4×4 M_T with transcribed CG magnitudes on T' rows.
+
+    Default ``(a,ω,p)`` is the legacy stack ``(0.3,0.5,0.2)×M_GUT``; callers
+    that have selected unique ratios should pass them explicitly.
+    """
     import cg_normalized_mt_locking_mix_v20 as cgmod
 
-    weights = cgmod.cg_weighted_210_vev(
-        a=0.3 * m_gut, p=0.2 * m_gut, omega=0.5 * m_gut
-    )
+    a_v = 0.3 * m_gut if a is None else float(a)
+    omega_v = 0.5 * m_gut if omega is None else float(omega)
+    p_v = 0.2 * m_gut if p is None else float(p)
+
+    weights = cgmod.cg_weighted_210_vev(a=a_v, p=p_v, omega=omega_v)
     # T' diagonal uses the Aulakh t4 structure ~ M + 2η(p+a); encode as
     # separate λ210_tprime × published (p+a) combination.
-    p_plus_a = 0.2 * m_gut + 0.3 * m_gut
-    omega = 0.5 * m_gut
+    p_plus_a = p_v + a_v
 
     m00 = mu_t + lam210_10 * weights["eff_210_for_10_GeV"] + lamS_10 * m_i
     m11 = mu_tbar + lam210_10 * weights["eff_210_for_10_GeV"] + lamS_10 * m_i
@@ -177,12 +185,12 @@ def fill_4x4(
     m01 = kappa * m_i
     # Dim-4 210·10·126·S: T gets O(1); T' gets Aulakh 2√2 magnitude relative to ω
     m02 = lam4 * m_i if include_dim4_mix else 0.0
-    m03 = (lam4 * CG_2SQRT2 * (omega / m_gut) * m_i) if include_dim4_mix else 0.0
+    m03 = (lam4 * CG_2SQRT2 * (omega_v / m_gut) * m_i) if include_dim4_mix else 0.0
     m12 = m02
     m13 = m03
     # Intra-126bar T–T' from 210·126†·126: Aulakh |M_t4,t2| ~ 4√2 |ω η|
     m23 = (
-        eta_intra * CG_4SQRT2 * omega
+        eta_intra * CG_4SQRT2 * omega_v
         if include_intra_126
         else 0.0
     )
