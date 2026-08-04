@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
-r"""Signed SO(10) Kronecker ledger and locked non-SUSY triplet proxy.
+r"""Signed SO(10) Kronecker ledger for the conditional non-SUSY M_T^2 proxy.
 
-The historical ledger incorrectly claimed a singlet in ``210 tensor 10 tensor
-10``. Since ``10 tensor 10 = 1 + 45 + 54`` contains no 210, the cubic
-``210_H 10_H^dag 10_H`` is forbidden. Consequently, every triplet proxy term
-linear in ``<210>`` generated from that cubic is removed. The allowed Higgs
-norm portal begins at ``(210^dag 210)(10^dag 10)`` and requires a mass-squared
-component calculation not represented by the old linear-mass proxy.
+Two historical cubic claims are removed:
 
-The off-diagonal 10-126-S cubic remains SO(10)-forbidden and is locked to zero.
-All returned triplet scenarios are conditional diagnostics, not a physical
-non-SUSY component spectrum.
+* ``210_H 10_H^dag 10_H`` is forbidden because 10 tensor 10 has no 210;
+* ``10_H 126bar_H S`` is forbidden because 10 tensor 126bar has no singlet.
+
+The allowed quartic ``lambda4 210_H 10_H 126bar_H S`` is distinct and can
+produce an off-diagonal mass-squared entry after 210 and S acquire VEVs. Thus
+the forbidden cubic contribution is locked to zero, but the complete M12 is
+not generally zero; it remains conditional on the unresolved lambda4 component
+CG coefficient.
 """
 from __future__ import annotations
 
@@ -24,56 +24,21 @@ import nonsusy_z17_pq_potential_filter_v20 as z17
 import scalar_vacuum_proton_decay_v20 as scalar_pd
 
 ROOT = Path(__file__).resolve().parent
-
 SOURCES = {
     "vector_product": "10 tensor 10 = 1 + 45 + 54; no 210",
-    "conjugacy": "a singlet in A tensor B requires conjugate representations",
-    "scope": "operator existence and conditional triplet proxy only",
+    "conjugacy": "10 tensor 126bar has no singlet",
+    "allowed_lambda4": "210 tensor 10 tensor 126 contains a singlet; S restores PQ neutrality",
+    "scope": "existence ledger and conditional mass-squared proxy",
 }
 
 KRONECKER = [
-    {
-        "product": "10 tensor 10",
-        "contains_singlet": True,
-        "decomposition_note": "1 + 45 + 54",
-        "implication": "10_H^2 S is SO(10)-allowed",
-    },
-    {
-        "product": "210 tensor 10 tensor 10",
-        "contains_singlet": False,
-        "decomposition_note": "10 tensor 10 has no 210",
-        "implication": "210_H 10_H^dag 10_H is SO(10)-forbidden",
-    },
-    {
-        "product": "10 tensor 126bar",
-        "contains_singlet": False,
-        "decomposition_note": "representations are not conjugates",
-        "implication": "10_H 126bar_H S is SO(10)-forbidden",
-    },
-    {
-        "product": "126bar tensor 126bar",
-        "contains_singlet": False,
-        "decomposition_note": "singlet occurs in 126 tensor 126bar",
-        "implication": "126bar_H^2 S is SO(10)-forbidden",
-    },
-    {
-        "product": "126 tensor 126bar",
-        "contains_singlet": True,
-        "decomposition_note": "contains 1",
-        "implication": "126bar_H^dag 126bar_H is allowed",
-    },
-    {
-        "product": "210 tensor 126bar tensor 126",
-        "contains_singlet": True,
-        "decomposition_note": "standard Phi Delta-bar Delta coupling",
-        "implication": "one 210_H 126bar_H^dag 126bar_H channel guaranteed",
-    },
-    {
-        "product": "210 tensor 10 tensor 126",
-        "contains_singlet": True,
-        "decomposition_note": "standard Phi H Delta coupling",
-        "implication": "SO(10)-allowed but PQ-odd without S; lambda4 with S is charge-neutral",
-    },
+    {"product": "10 tensor 10", "contains_singlet": True, "implication": "10_H^2 S allowed"},
+    {"product": "210 tensor 10 tensor 10", "contains_singlet": False, "implication": "210_H 10_H^dag 10_H forbidden"},
+    {"product": "10 tensor 126bar", "contains_singlet": False, "implication": "10_H 126bar_H S forbidden"},
+    {"product": "126bar tensor 126bar", "contains_singlet": False, "implication": "126bar_H^2 S forbidden"},
+    {"product": "126 tensor 126bar", "contains_singlet": True, "implication": "126bar_H^dag 126bar_H allowed"},
+    {"product": "210 tensor 126bar tensor 126", "contains_singlet": True, "implication": "one 210_H 126bar_H^dag 126bar_H channel guaranteed"},
+    {"product": "210 tensor 10 tensor 126", "contains_singlet": True, "implication": "lambda4 210 10 126bar S allowed after charge restoration"},
 ]
 
 
@@ -87,20 +52,14 @@ def resolve_operators() -> list[dict[str, Any]]:
         "bare_126bar_H^2": ("FORBIDDEN", "126bar tensor 126bar has no singlet"),
         "210_H 126bar_H^dag 126bar_H": ("ALLOWED", "standard Phi Delta-bar Delta coupling"),
         "210 · 10 · 126 · S": ("ALLOWED", "Phi H Delta singlet times S"),
-        "126bar_H^2 10_H^2 S^2": (
-            "LITERATURE_CLAIMED",
-            "locking channel requires explicit CG normalization",
-        ),
+        "126bar_H^2 10_H^2 S^2": ("LITERATURE_CLAIMED", "locking CG normalization open"),
     }
     output: list[dict[str, Any]] = []
     for operator in z17.operator_catalogue():
         row = dict(operator)
         if row["name"] in resolutions:
             verdict, reason = resolutions[row["name"]]
-            row["so10_resolution"] = {
-                "so10_verdict": verdict,
-                "reason": reason,
-            }
+            row["so10_resolution"] = {"so10_verdict": verdict, "reason": reason}
             row["so10_invariant_exists"] = verdict in {
                 "ALLOWED",
                 "ALLOWED_BUT_PQ_FORBIDDEN",
@@ -116,82 +75,105 @@ def resolve_operators() -> list[dict[str, Any]]:
     return output
 
 
-def locked_mt_scenarios(
+def audited_mt_scenarios(
     m_i: float, m_gut: float, tau_gauge: float
 ) -> list[dict[str, Any]]:
-    scenarios: list[dict[str, Any]] = []
+    rows: list[dict[str, Any]] = []
     for original in camt.SCENARIOS:
         scenario = dict(original)
-        scenario["name"] = original["name"] + "__signed_forbidden_terms_off"
+        scenario["name"] = original["name"] + "__signed_kronecker"
+        # Only forbidden historical inputs are forced off. The allowed lambda4
+        # component slot is preserved.
         scenario["include_conditional_mix"] = False
         scenario["lam_mix"] = 0.0
         scenario["lam210_10"] = 0.0
         row = camt.evaluate_scenario(
             scenario, m_i=m_i, m_gut=m_gut, tau_gauge=tau_gauge
         )
-        row["include_conditional_10_126_S"] = False
-        row["flag"]["so10_mix_locked_off"] = True
-        row["flag"]["forbidden_210_10dag10_locked_off"] = True
-        row["flag"]["M12_is_zero"] = abs(row["mass_matrix_GeV"][0][1]) < 1e-30
-        row["flag"]["physical_2102_10dag10_mass_squared_included"] = False
-        row["flag"]["physical_triplet_spectrum_complete"] = False
-        scenarios.append(row)
-    return scenarios
+        matrix_sq = row["mass_squared_matrix_GeV2"]
+        expected_lambda4 = float(scenario.get("lam4_cg", 0.0)) * m_gut * m_i
+        row["flag"]["forbidden_10_126_S_contribution_locked_zero"] = True
+        row["flag"]["forbidden_210_10dag10_locked_zero"] = True
+        row["flag"]["lambda4_offdiag_matches_conditional_slot"] = abs(
+            float(matrix_sq[0][1]) - expected_lambda4
+        ) <= 1e-12 * max(abs(expected_lambda4), 1.0)
+        rows.append(row)
+    return rows
 
 
 def build_report() -> dict[str, Any]:
     anchor = scalar_pd._unification_anchor()
     if not anchor.get("available"):
         return {
-            "status": "SO10_KRONECKER_MT_LOCK_NOT_EXECUTED__ANCHOR_MISSING",
+            "status": "SO10_KRONECKER_MT2_NOT_EXECUTED__ANCHOR_MISSING",
             "n_failed": 1,
             "failures": ["unification_anchor"],
         }
-
     m_i = float(anchor["M_I_GeV"])
     m_gut = float(anchor["M_GUT_GeV"])
-    gauge = scalar_pd.gauge_proton_decay(anchor)
-    tau_gauge = float(gauge["central"]["lifetime_years"])
+    tau_gauge = float(scalar_pd.gauge_proton_decay(anchor)["central"]["lifetime_years"])
     resolved = resolve_operators()
     by_name = {row["name"]: row for row in resolved}
-    rows = locked_mt_scenarios(m_i, m_gut, tau_gauge)
+    rows = audited_mt_scenarios(m_i, m_gut, tau_gauge)
 
-    all_m12_zero = all(row["flag"]["M12_is_zero"] for row in rows)
-    all_forbidden_diagonal_zero = all(
-        row["flag"]["forbidden_210_10dag10_locked_off"] for row in rows
+    forbidden_cubics_zero = all(
+        row["flag"]["forbidden_10_126_S_contribution_locked_zero"]
+        and row["flag"]["forbidden_210_10dag10_locked_zero"]
+        for row in rows
     )
+    lambda4_slots_correct = all(
+        row["flag"]["lambda4_offdiag_matches_conditional_slot"] for row in rows
+    )
+    lambda4_rows = [
+        row
+        for row in rows
+        if abs(row["allowed_conditional_inputs"]["lam4_cg"]) > 0.0
+    ]
+    zero_lambda4_rows = [
+        row
+        for row in rows
+        if abs(row["allowed_conditional_inputs"]["lam4_cg"]) == 0.0
+    ]
     excluded = [
         row
         for row in rows
-        if row["flag"].get("conditionally_excluded_by_ps_mu_K0", False)
+        if row["flag"]["conditionally_excluded_by_ps_mu_K0"]
     ]
-    physical = [row for row in rows if not row["flag"].get("singular", False)]
-    lightest = min(physical, key=lambda row: row["lightest_GeV"]) if physical else None
-    aulakh_totals = z17._total_charge(
-        {"210_H": 1, "10_H": 1, "126bar_H": 1}
-    )
+    positive = [
+        row for row in rows if not row["flag"]["tachyonic"] and row["lightest_GeV"] > 0.0
+    ]
+    lightest = min(positive, key=lambda row: row["lightest_GeV"])
+    aulakh_totals = z17._total_charge({"210_H": 1, "10_H": 1, "126bar_H": 1})
 
     checks = {
-        "kronecker_ledger_nonempty": len(KRONECKER) >= 7,
+        "kronecker_ledger_nonempty": len(KRONECKER) == 7,
         "ten2_S_so10_allowed": by_name["10_H^2 S"]["status"] == "ALLOWED_CHARGE_AND_SO10",
         "210_10dag10_so10_forbidden": by_name["210_H 10_H^dag 10_H"]["status"] == "SO10_FORBIDDEN",
         "ten_126_S_so10_forbidden": by_name["10_H 126bar_H S"]["status"] == "SO10_FORBIDDEN",
-        "1262_S_so10_forbidden": by_name["126bar_H^2 S"]["status"] == "SO10_FORBIDDEN",
-        "aulakh_phi_h_delta_without_S_pq_forbidden": aulakh_totals["PQ"] != 0,
-        "all_locked_M12_zero": all_m12_zero,
-        "forbidden_linear_210_Higgs_mass_locked_zero": all_forbidden_diagonal_zero,
-        "old_proxy_not_marked_physical": all(
+        "lambda4_charge_and_so10_allowed": by_name["210 · 10 · 126 · S"]["status"] == "ALLOWED_CHARGE_AND_SO10",
+        "aulakh_without_S_pq_forbidden": aulakh_totals["PQ"] != 0,
+        "forbidden_cubic_contributions_zero": forbidden_cubics_zero,
+        "lambda4_slots_correct": lambda4_slots_correct,
+        "some_lambda4_offdiagonal_nonzero": any(
+            abs(row["mass_squared_matrix_GeV2"][0][1]) > 0.0 for row in lambda4_rows
+        ),
+        "zero_lambda4_rows_have_zero_offdiagonal": all(
+            abs(row["mass_squared_matrix_GeV2"][0][1]) == 0.0 for row in zero_lambda4_rows
+        ),
+        "all_spectra_marked_incomplete": all(
             not row["flag"]["physical_triplet_spectrum_complete"] for row in rows
         ),
+        "some_survive": len(positive) > 0,
+        "some_conditionally_fail": len(excluded) > 0,
         "whole_model_not_declared_dead": True,
     }
     failures = [name for name, passed in checks.items() if not passed]
 
     return {
         "status": (
-            "SO10_KRONECKER_RESOLVED__MT_MIX_LOCKED_OFF__CG_NORMS_OPEN"
+            "SO10_KRONECKER_SIGNED__FORBIDDEN_CUBICS_OFF__LAMBDA4_CG_OPEN"
             if not failures
-            else "SO10_KRONECKER_MT_LOCK_FAILED"
+            else "SO10_KRONECKER_MT2_AUDIT_FAILED"
         ),
         "n_checks": len(checks),
         "n_failed": len(failures),
@@ -203,44 +185,41 @@ def build_report() -> dict[str, Any]:
             "10_H^2_S": by_name["10_H^2 S"]["status"],
             "210_H_10dag_H": by_name["210_H 10_H^dag 10_H"]["status"],
             "10_H_126bar_H_S": by_name["10_H 126bar_H S"]["status"],
-            "126bar_H^2_S": by_name["126bar_H^2 S"]["status"],
+            "lambda4_210_10_126bar_S": by_name["210 · 10 · 126 · S"]["status"],
             "aulakh_210_10_126_PQ_totals": aulakh_totals,
-            "aulakh_210_10_126_pq_forbidden_in_v20": aulakh_totals["PQ"] != 0,
+            "aulakh_210_10_126_pq_forbidden_without_S": aulakh_totals["PQ"] != 0,
         },
-        "locked_mt": {
+        "audited_mt2": {
             "n_scenarios": len(rows),
-            "n_excluded_by_ps_mu_K0": len(excluded),
-            "excluded_scenario_names": [row["name"] for row in excluded],
-            "all_M12_zero": all_m12_zero,
-            "forbidden_linear_210_Higgs_mass_zero": all_forbidden_diagonal_zero,
-            "lightest_scenario": None
-            if lightest is None
-            else {
+            "n_excluded_conditionally": len(excluded),
+            "forbidden_cubic_contributions_zero": forbidden_cubics_zero,
+            "lambda4_component_slot_preserved": True,
+            "n_nonzero_lambda4_scenarios": len(lambda4_rows),
+            "lightest_scenario": {
                 "name": lightest["name"],
                 "lightest_GeV": lightest["lightest_GeV"],
                 "dominance": lightest["dominance_class"],
             },
             "scenarios": rows,
             "physical_interpretation": (
-                "conditional only; the allowed 210^dag210 10^dag10 quartic "
-                "must be projected into the non-SUSY mass-squared matrix"
+                "conditional mass-squared proxy; lambda4 and all diagonal component CG coefficients remain open"
             ),
         },
         "next_exact_calculation": [
-            "Project (210^dag210)(10^dag10) into every color-triplet component mass-squared entry",
-            "Project the allowed 210 Delta-bar Delta cubic with dimensionful normalization",
-            "Normalize the lambda4 Phi H Delta S CG coefficient",
-            "Rebuild the complete non-SUSY triplet mass-squared matrix",
+            "derive component CG coefficients for (210^dag210)(10^dag10)",
+            "derive the dimensionful 210 Delta-bar Delta component coefficients",
+            "derive the lambda4 210 10 126bar S off-diagonal coefficient",
+            "construct and diagonalize the complete non-SUSY color-triplet M_T^2",
         ],
         "flag": {
             "kronecker_resolved": True,
             "ten2_S_so10_and_charge_allowed": True,
             "forbidden_210_10dag10_removed": True,
-            "ten_126_S_so10_forbidden": True,
-            "mt_offdiag_locked_zero": all_m12_zero,
-            "forbidden_linear_210_Higgs_diagonal_locked_zero": all_forbidden_diagonal_zero,
-            "aulakh_offdiag_not_imported_pq": aulakh_totals["PQ"] != 0,
-            "physical_2102_10dag10_mass_squared_included": False,
+            "forbidden_10_126_S_removed": True,
+            "forbidden_cubic_contributions_locked_zero": forbidden_cubics_zero,
+            "lambda4_offdiag_allowed_but_CG_open": True,
+            "lambda4_offdiag_not_locked_zero": len(lambda4_rows) > 0,
+            "physical_component_CG_complete": False,
             "physical_triplet_spectrum_complete": False,
             "invented_unpublished_cg_normalizations": False,
             "complete_so10_scalar_potential": False,
@@ -249,11 +228,11 @@ def build_report() -> dict[str, Any]:
             "whole_model_excluded": False,
         },
         "verdict": (
-            "The signed Kronecker ledger removes both forbidden off-diagonal "
-            "10·126bar·S mixing and forbidden diagonal 210·10†·10 mass. The "
-            "returned proxy matrices set those entries to zero. They are not "
-            "physical spectra until the allowed quartic 210†210·10†10 is "
-            "projected into a complete mass-squared matrix."
+            "Forbidden 210·10†·10 and 10·126bar·S cubic contributions are "
+            "locked to zero. The distinct allowed lambda4·210·10·126bar·S "
+            "off-diagonal mass-squared slot is retained and is not zero in "
+            "general. Its component CG coefficient and the complete physical "
+            "triplet spectrum remain open."
         ),
     }
 
@@ -261,14 +240,14 @@ def build_report() -> dict[str, Any]:
 def write_markdown(report: dict[str, Any]) -> str:
     return "\n".join(
         [
-            "# Signed SO(10) Kronecker and triplet proxy audit — v20",
+            "# Signed SO(10) Kronecker M_T^2 audit — v20",
             "",
             f"**Status:** `{report['status']}`",
             "",
             report["verdict"],
             "",
-            f"- All M12 zero: {report['locked_mt']['all_M12_zero']}",
-            f"- Forbidden linear-210 Higgs mass zero: {report['locked_mt']['forbidden_linear_210_Higgs_mass_zero']}",
+            f"- Forbidden cubic contributions zero: {report['audited_mt2']['forbidden_cubic_contributions_zero']}",
+            f"- Lambda4 component slot preserved: {report['audited_mt2']['lambda4_component_slot_preserved']}",
             f"- Physical triplet spectrum complete: {report['flag']['physical_triplet_spectrum_complete']}",
             "",
         ]
