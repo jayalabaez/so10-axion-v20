@@ -20,8 +20,11 @@ class InvariantOmissionAuditTests(unittest.TestCase):
         deficits = self.report["multiplicity_deficits"]
         self.assertEqual(len(deficits), 5)
         self.assertTrue(all(row["proven_lower_bound"] >= 2 for row in deficits))
+        self.assertTrue(
+            all(row["exact_integer_determinant"] != 0 for row in deficits)
+        )
 
-    def test_explicit_tensor_contractions_have_rank_two(self):
+    def test_exact_tensor_contractions_have_rank_two(self):
         ranks = self.report["numerical_independence"]
         self.assertTrue(
             all(row["evaluation_rank"] == 2 for row in ranks.values()), ranks
@@ -29,17 +32,21 @@ class InvariantOmissionAuditTests(unittest.TestCase):
 
     def test_mechanical_augmentation_is_not_final_signed_floor(self):
         counts = self.report["counts"]
+        flags = self.report["flag"]
         self.assertEqual(counts["historical_upstream_invariants_total"], 25)
         self.assertEqual(counts["after_locking_modulus_overlay"], 26)
         self.assertEqual(counts["additional_renormalizable_floor"], 11)
-        self.assertEqual(counts["corrected_total_invariant_floor"], 37)
-        # The signed audit consumes these omissions but removes historical
-        # over-counts separately; this module alone does not certify 37.
+        self.assertEqual(
+            counts["mechanical_augmented_total_before_signed_corrections"], 37
+        )
+        self.assertTrue(flags["mechanical_augmented_total_not_signed_floor"])
+        self.assertFalse(flags["guaranteed_invariant_floor_constructed"])
 
     def test_scope(self):
         flags = self.report["flag"]
         self.assertFalse(flags["historical_filtered_basis_complete"])
         self.assertTrue(flags["historical_complete_filtered_basis_claim_falsified"])
+        self.assertTrue(flags["omission_set_constructed"])
         self.assertFalse(flags["full_unfiltered_molien_haar_series"])
         self.assertFalse(flags["whole_model_excluded"])
 
