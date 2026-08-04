@@ -4,87 +4,64 @@ import unittest
 import scalar_proton_falsification_gate_v20 as audit
 
 
-class CurrentMainScalarProtonAuditTests(unittest.TestCase):
+class CanonicalScalarProtonAuditTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.report = audit.build_report()
 
-    def test_current_stack_executes(self):
-        self.assertTrue(
-            self.report["certificates"]["all_critical_modules_executed"],
-            self.report["execution_failures"],
-        )
+    def test_canonical_stack_executes(self):
         self.assertEqual(self.report["execution_failures"], [])
+        self.assertEqual(self.report["hard_theory_failures"], [])
+        self.assertTrue(
+            self.report["certificates"]["all_canonical_modules_executed"]
+        )
 
-    def test_current_verdict_is_fail_closed(self):
+    def test_all_repaired_breakpoints_reproduce(self):
+        self.assertTrue(
+            all(self.report["resolved_breakpoints"].values()),
+            self.report["resolved_breakpoints"],
+        )
+        cert = self.report["certificates"]
+        self.assertTrue(cert["pati_salam_subgroup_RGE_repaired"])
+        self.assertTrue(cert["forbidden_210_10dag10_removed"])
+        self.assertTrue(cert["signed_floor34_emitted"])
+        self.assertTrue(cert["physical_EW_survival_point_reproduced"])
+        self.assertTrue(cert["historical_lambda4_point_excluded"])
+        self.assertTrue(cert["perturbative_even_H_no_rescue_proved"])
+        self.assertTrue(cert["signed_mass_squared_triplet_proxy_built"])
+        self.assertTrue(cert["kronecker_gate_corrected"])
+        self.assertTrue(cert["legacy_triplet_dependency_graph_classified"])
+        self.assertTrue(cert["exact_gauge_orbit_reproduced"])
+
+    def test_legacy_chain_is_invalidated_not_executed_as_physics(self):
+        self.assertTrue(
+            self.report["certificates"][
+                "legacy_modules_not_used_as_physical_certificates"
+            ]
+        )
+        self.assertTrue(
+            self.report["remaining_blockers"][
+                "legacy_triplet_threshold_lifetime_chain_rebuild"
+            ]
+        )
+        self.assertTrue(
+            self.report["remaining_blockers"][
+                "physical_component_triplet_CG_coefficients"
+            ]
+        )
+
+    def test_final_state_is_honest(self):
         self.assertEqual(self.report["overall_state"], "BLOCKED")
         self.assertFalse(self.report["certificates"]["whole_model_excluded"])
         self.assertFalse(self.report["certificates"]["whole_model_validated"])
-        self.assertEqual(self.report["hard_theory_failures"], [])
-
-    def test_documented_hessian_stack_reproduces(self):
         self.assertTrue(
-            self.report["certificates"]["hessian_residuals_closed_in_repository_stack"]
+            self.report["remaining_blockers"]["full_component_nonsusy_hessian"]
         )
         self.assertTrue(
-            self.report["certificates"]["mixed_spectrum_positive_in_repository_stack"]
+            self.report["remaining_blockers"]["full_tensor_two_loop_betas"]
         )
-
-    def test_charged_ps_casimir_error_is_resolved(self):
-        cert = self.report["certificates"]
-        self.assertFalse(cert["charged_PS_fields_zero_casimir_in_quartic_rg"])
-        rows = self.report["rge_audit"][
-            "charged_parent_sectors_evolved_with_zero_casimir"
-        ]
-        self.assertEqual(rows, [])
-        quartic = self.report["module_summaries"]["quartic_soft_betas"]
-        flags = quartic["flags"]
-        self.assertTrue(flags["pati_salam_subgroup_resolved"])
-        self.assertTrue(flags["charged_10_126_casimirs_nonzero"])
-        self.assertTrue(flags["separate_g4_gL_gR_running"])
-        self.assertFalse(flags["two_loop_quartic_betas_complete"])
-
-    def test_susy_component_transfer_is_conditional(self):
-        self.assertFalse(
-            self.report["certificates"][
-                "nonsusy_component_hessian_independently_derived"
-            ]
-        )
-        modules = self.report["component_matrix_audit"][
-            "aulakh_msgut_dependent_modules"
-        ]
-        self.assertGreaterEqual(len(modules), 1)
-        blockers = "\n".join(self.report["scientific_blockers"])
-        self.assertIn("supersymmetric component matrices", blockers)
-        self.assertIn("non-supersymmetric", blockers)
-
-    def test_exact_pq_kernel_lift_reproduces_but_light_modes_remain(self):
-        self.assertTrue(self.report["certificates"]["exact_pq_kernel_lifted"])
-        self.assertFalse(
-            self.report["certificates"]["selected_lam4_clears_null_tolerance"]
-        )
-        self.assertTrue(self.report["certificates"]["cal_G_soft_mode_remaining"])
-
-    def test_live_external_tensor_run_is_not_overclaimed(self):
-        self.assertFalse(self.report["certificates"]["live_sarah_or_pyrate_run"])
-        self.assertFalse(self.report["certificates"]["exact_unique_proton_lifetime"])
-        blockers = "\n".join(self.report["scientific_blockers"])
-        self.assertIn("live SARAH/PyR@TE", blockers)
-        self.assertIn("exact_unique_proton_lifetime", blockers)
-
-    def test_selected_proton_lifetime_is_reported_conditionally(self):
-        numerical = self.report["numerical_findings"]
-        self.assertIsNotNone(numerical["selected_tau_e_years"])
-        self.assertGreater(numerical["selected_tau_e_years"], 0.0)
-        if numerical["selected_point_excluded_conditionally"]:
-            self.assertFalse(self.report["certificates"]["whole_model_excluded"])
-
-    def test_recursive_helpers_are_fail_closed(self):
-        sample = {"a": {"flag": False}, "b": [{"flag": True}]}
-        self.assertTrue(audit._any_true(sample, "flag"))
-        self.assertTrue(audit._all_true_mapping({"x": {"gate": {"a": True}}}, "gate"))
-        self.assertFalse(
-            audit._all_true_mapping({"x": {"gate": {"a": True, "b": False}}}, "gate")
+        self.assertTrue(
+            self.report["remaining_blockers"]["exact_unique_proton_lifetime"]
         )
 
 
