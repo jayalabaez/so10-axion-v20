@@ -30,18 +30,19 @@ class CurrentMainScalarProtonAuditTests(unittest.TestCase):
             self.report["certificates"]["mixed_spectrum_positive_in_repository_stack"]
         )
 
-    def test_charged_ps_fields_are_not_accepted_as_zero_casimir(self):
+    def test_charged_ps_casimir_error_is_resolved(self):
         cert = self.report["certificates"]
-        self.assertTrue(cert["charged_PS_fields_zero_casimir_in_quartic_rg"])
+        self.assertFalse(cert["charged_PS_fields_zero_casimir_in_quartic_rg"])
         rows = self.report["rge_audit"][
             "charged_parent_sectors_evolved_with_zero_casimir"
         ]
-        names = {row["name"] for row in rows}
-        self.assertIn("DeltaR_126bar", names)
-        self.assertIn("H10_eff", names)
-        blockers = "\n".join(self.report["scientific_blockers"])
-        self.assertIn("Pati-Salam-stage", blockers)
-        self.assertIn("subgroup RGEs", blockers)
+        self.assertEqual(rows, [])
+        quartic = self.report["module_summaries"]["quartic_soft_betas"]
+        flags = quartic["flags"]
+        self.assertTrue(flags["pati_salam_subgroup_resolved"])
+        self.assertTrue(flags["charged_10_126_casimirs_nonzero"])
+        self.assertTrue(flags["separate_g4_gL_gR_running"])
+        self.assertFalse(flags["two_loop_quartic_betas_complete"])
 
     def test_susy_component_transfer_is_conditional(self):
         self.assertFalse(
