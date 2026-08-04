@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import unittest
+from unittest.mock import patch
 
 import efjx_cgc_physical_normalization_gate_v20 as gate
 
@@ -50,6 +51,26 @@ class EFJXCGCPhysicalNormalizationGateTests(unittest.TestCase):
     def test_no_model_overclaim(self):
         self.assertFalse(self.report["flags"]["whole_model_excluded"])
         self.assertFalse(self.report["flags"]["whole_model_validated"])
+
+    def test_accepted_cgc_artifact_closes_only_the_subproblem(self):
+        accepted = {
+            "exists": True,
+            "accepted": True,
+            "sha256": "a" * 64,
+            "missing_fields": [],
+            "validation_errors": [],
+            "gamma_eff_over_lambda4": -2.0,
+            "reason": "accepted",
+        }
+        with patch.object(gate, "_load_normalization_artifact", return_value=accepted):
+            report = gate.build_report()
+        self.assertEqual(report["n_failed"], 0, report)
+        self.assertEqual(report["overall_state"], "CGC_CLOSED")
+        self.assertTrue(report["flags"]["CGC_subproblem_closed"])
+        self.assertTrue(report["flags"]["physical_CGC_normalization_derived"])
+        self.assertTrue(report["flags"]["physical_EW_branch_revalidated"])
+        self.assertFalse(report["flags"]["whole_model_validated"])
+        self.assertFalse(report["flags"]["whole_model_excluded"])
 
 
 if __name__ == "__main__":
