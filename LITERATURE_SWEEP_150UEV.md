@@ -19,6 +19,7 @@
 - CAST helioscope (2024 Xe)
 - HB / globular-cluster stellar cooling
 - SN1987A / supernova photon-coupling (schematic)
+- VLA magnetar PSR J1745−2900 (Darling 2020)
 
 ### OPEN_published_haloscope_wrong_mass
 
@@ -107,6 +108,15 @@
 - g_lim / g_v20: 4.3e-02× weaker than needed
 - Cite: ADMX G2 / HAYSTAC / CAPP published runs (various)
 - Note: Mature QCD exclusions exist at few–tens of µeV, not at 150 µeV.
+
+### VLA magnetar PSR J1745−2900 (Darling 2020)
+
+- Kind: `astrophysics`
+- Mass window: 126.0–159.3 µeV
+- Status at v20: **OPEN — mass covered but g too weak**
+- g_lim / g_v20: 2.6e+02× weaker than needed
+- Cite: Darling, ApJL 900, L2 (2020); PRL 125, 121103 (2020)
+- Note: Covers 126–159.3 µeV (~37 GHz). Standard-profile g≳6–34e-12; maximal-cusp g≳6–34e-14. Does not exclude v20 g=2.335e-14. Ka channel widths ~2 MHz ≫ 37 kHz halo line.
 
 ### ORGAN design envelope (future phases)
 

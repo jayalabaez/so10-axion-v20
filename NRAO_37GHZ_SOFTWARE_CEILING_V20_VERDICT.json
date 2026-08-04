@@ -1,0 +1,229 @@
+{
+  "status": "ARCHIVAL_37GHZ_SOFTWARE_CEILING_REACHED__NO_DETECTION",
+  "n_checks": 5,
+  "n_failed": 0,
+  "failures": [],
+  "benchmark": {
+    "nu_GHz": 37.12,
+    "m_a_ueV": 153.5,
+    "halo_linewidth_kHz": 37.12,
+    "g_agamma_GeV_inv": 2.335e-14
+  },
+  "units_lock": {
+    "observing_band": "GHz (36.6\u201337.6)",
+    "line_and_channel_resolution": "kHz (halo line ~37 kHz)",
+    "archived_Darling_Ka_channels": "2000 kHz = 2 MHz"
+  },
+  "literature_J1745": {
+    "published_does_not_exclude_v20": true,
+    "g_v20": 2.335e-14,
+    "g_published_standard": 1.4e-11,
+    "g_published_maximal_cusp": 1.4e-13,
+    "ratio_standard_over_v20": 599.5717344753748,
+    "ratio_cusp_over_v20": 5.995717344753748,
+    "citation": "Darling, ApJL 900, L2 (2020) Table; Ka-band archival VLA"
+  },
+  "simulation_campaign": [
+    {
+      "name": "archived_14A232_Ka_2MHz",
+      "channel_Hz": 2000000.0,
+      "real_archive": true,
+      "note": "Actual Darling/14A-232 Ka correlator channel width",
+      "channel_kHz": 2000.0,
+      "channel_MHz": 2.0,
+      "resolution_vs_37kHz_halo": "not_suitable",
+      "templates": [
+        {
+          "template_kHz": 5.0,
+          "null_SNR": -0.7435960295088448,
+          "injected_SNR": 35.95766769016012,
+          "flux_UL_5sigma_Jy": 0.01,
+          "recovers_injection": true
+        },
+        {
+          "template_kHz": 10.0,
+          "null_SNR": -0.7435960295088448,
+          "injected_SNR": 35.95766769016012,
+          "flux_UL_5sigma_Jy": 0.007071067811865475,
+          "recovers_injection": true
+        },
+        {
+          "template_kHz": 20.0,
+          "null_SNR": -0.7435960295088448,
+          "injected_SNR": 35.95766769016012,
+          "flux_UL_5sigma_Jy": 0.005,
+          "recovers_injection": true
+        },
+        {
+          "template_kHz": 37.12,
+          "null_SNR": -0.7435960295088448,
+          "injected_SNR": 35.95766769016012,
+          "flux_UL_5sigma_Jy": 0.0036701263719668966,
+          "recovers_injection": true
+        },
+        {
+          "template_kHz": 50.0,
+          "null_SNR": -0.7435960295088448,
+          "injected_SNR": 35.95766769016012,
+          "flux_UL_5sigma_Jy": 0.0031622776601683794,
+          "recovers_injection": true
+        },
+        {
+          "template_kHz": 100.0,
+          "null_SNR": -0.7435960295088448,
+          "injected_SNR": 35.95766769016012,
+          "flux_UL_5sigma_Jy": 0.00223606797749979,
+          "recovers_injection": true
+        }
+      ],
+      "flux_UL_at_37kHz_template_Jy": 0.0036701263719668966,
+      "schematic_g_limit_standard_GeV_inv": 1.4e-11,
+      "schematic_g_limit_maximal_cusp_GeV_inv": 1.4e-13,
+      "excludes_v20_standard": false,
+      "excludes_v20_maximal_cusp": false,
+      "dilution_channel_over_line": 53.87931034482759
+    },
+    {
+      "name": "halo_capable_8kHz_demo",
+      "channel_Hz": 8000.0,
+      "real_archive": false,
+      "note": "Synthetic; shows what \u226437 kHz data would enable",
+      "channel_kHz": 8.0,
+      "channel_MHz": 0.008,
+      "resolution_vs_37kHz_halo": "excellent",
+      "templates": [
+        {
+          "template_kHz": 5.0,
+          "null_SNR": -0.8068625095010968,
+          "injected_SNR": 4.200403896850257,
+          "flux_UL_5sigma_Jy": 0.0006324555320336759,
+          "recovers_injection": false
+        },
+        {
+          "template_kHz": 10.0,
+          "null_SNR": -1.0747053707342427,
+          "injected_SNR": 5.241980624216807,
+          "flux_UL_5sigma_Jy": 0.0005,
+          "recovers_injection": true
+        },
+        {
+          "template_kHz": 20.0,
+          "null_SNR": -1.5185909376194422,
+          "injected_SNR": 7.0205114409514024,
+          "flux_UL_5sigma_Jy": 0.0005,
+          "recovers_injection": true
+        },
+        {
+          "template_kHz": 37.12,
+          "null_SNR": -1.2259512096989178,
+          "injected_SNR": 8.118151440826349,
+          "flux_UL_5sigma_Jy": 0.0005,
+          "recovers_injection": true
+        },
+        {
+          "template_kHz": 50.0,
+          "null_SNR": -0.8601548661305437,
+          "injected_SNR": 8.281895198653467,
+          "flux_UL_5sigma_Jy": 0.0005,
+          "recovers_injection": true
+        },
+        {
+          "template_kHz": 100.0,
+          "null_SNR": -0.06364518632238211,
+          "injected_SNR": 7.484246043013326,
+          "flux_UL_5sigma_Jy": 0.0005,
+          "recovers_injection": true
+        }
+      ],
+      "flux_UL_at_37kHz_template_Jy": 0.0005,
+      "schematic_g_limit_standard_GeV_inv": 5.167405327799687e-12,
+      "schematic_g_limit_maximal_cusp_GeV_inv": 5.167405327799688e-14,
+      "excludes_v20_standard": false,
+      "excludes_v20_maximal_cusp": false,
+      "dilution_channel_over_line": 0.21551724137931033
+    },
+    {
+      "name": "halo_capable_37kHz_demo",
+      "channel_Hz": 37120.0,
+      "real_archive": false,
+      "note": "Synthetic edge of usable class",
+      "channel_kHz": 37.12,
+      "channel_MHz": 0.03712,
+      "resolution_vs_37kHz_halo": "usable",
+      "templates": [
+        {
+          "template_kHz": 5.0,
+          "null_SNR": 3.0335854821149075,
+          "injected_SNR": 8.033585482114908,
+          "flux_UL_5sigma_Jy": 0.0013623509092741122,
+          "recovers_injection": true
+        },
+        {
+          "template_kHz": 10.0,
+          "null_SNR": 3.0335854821149075,
+          "injected_SNR": 8.033585482114908,
+          "flux_UL_5sigma_Jy": 0.0009633275663033837,
+          "recovers_injection": true
+        },
+        {
+          "template_kHz": 20.0,
+          "null_SNR": 3.033567619421721,
+          "injected_SNR": 8.033612057709844,
+          "flux_UL_5sigma_Jy": 0.0006811754546370561,
+          "recovers_injection": true
+        },
+        {
+          "template_kHz": 37.12,
+          "null_SNR": 3.006190405510959,
+          "injected_SNR": 8.025683657985907,
+          "flux_UL_5sigma_Jy": 0.0005,
+          "recovers_injection": true
+        },
+        {
+          "template_kHz": 50.0,
+          "null_SNR": 2.8487298822901774,
+          "injected_SNR": 7.758425204603394,
+          "flux_UL_5sigma_Jy": 0.0005,
+          "recovers_injection": true
+        },
+        {
+          "template_kHz": 100.0,
+          "null_SNR": 2.03748974297541,
+          "injected_SNR": 5.8483268073145345,
+          "flux_UL_5sigma_Jy": 0.0005,
+          "recovers_injection": true
+        }
+      ],
+      "flux_UL_at_37kHz_template_Jy": 0.0005,
+      "schematic_g_limit_standard_GeV_inv": 5.167405327799687e-12,
+      "schematic_g_limit_maximal_cusp_GeV_inv": 5.167405327799688e-14,
+      "excludes_v20_standard": false,
+      "excludes_v20_maximal_cusp": false,
+      "dilution_channel_over_line": 1.0
+    }
+  ],
+  "hard_ceiling": {
+    "can_inventory_public_metadata": true,
+    "can_download_MS_without_AAT_login": false,
+    "can_rerun_CASA_pipeline_here": false,
+    "can_simulate_injection_recovery": true,
+    "can_quote_published_J1745_limits": true,
+    "can_claim_new_experimental_exclusion": false,
+    "can_claim_detection": false,
+    "archived_Ka_2MHz_resolves_37kHz_halo_line": false,
+    "next_human_steps": [
+      "Use AAT to download 14A-232 / SGRA Measurement Sets",
+      "Reduce overlapping SPWs at native 2 MHz (magnetospheric templates only)",
+      "Request/obtain \u226437 kHz Ka spectra (new VLA/GBT time or other archives)",
+      "Dedicated MADMAX/ORGAN/ALPHA 36.6\u201337.6 GHz scan for g\u22722.3e-14"
+    ]
+  },
+  "flag": {
+    "real_37GHz_detection": false,
+    "new_experimental_exclusion": false,
+    "software_injection_recovery_demo": true,
+    "metadata_inventory_complete": true,
+    "v20_still_open": true
+  },
+  "verdict": "Software ceiling for the archival path: public TAP inventory + published J1745 limits + injection-recovery demos at real 2 MHz and synthetic \u226437 kHz resolutions. Archived Ka data do not resolve the 37 kHz halo line; published g limits do not exclude v20. No detection and no new exclusion are claimed. Further progress needs AAT downloads/CASA or a dedicated high-resolution 37 GHz experiment."
+}

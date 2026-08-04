@@ -19,8 +19,14 @@ Axion linewidth ≈ 37.11 kHz at 37.11 GHz.
 ### P1: NRAO Archive (VLA / GBT)
 
 - URL/path: `https://data.nrao.edu/`
-- Home-PC use: Search metadata for 36–38 GHz spectral setups toward GC, pulsars, or GRAVITAS targets; download reduced spectra if public
-- Detect v20 DM?: `Only if sensitivity + B-field conversion geometry allow; usually not yet at QCD depth`
+- Home-PC use: Run nrao_37ghz_archival_inventory_v20.py (--live for TAP); download ranked filesets via Archive Access Tool
+- Detect v20 DM?: `Only if sensitivity + B-field conversion geometry allow; metadata inventory is not a detection. Published J1745 limits do not exclude v20 g.`
+
+### P1: In-repo NRAO 37 GHz archival inventory
+
+- URL/path: `nrao_37ghz_archival_inventory_v20.py`
+- Home-PC use: Rank spectral resolution vs ~37 kHz line; emit download queue
+- Detect v20 DM?: `Inventory / planning only — not a detection`
 
 ### P1: In-repo haloscope templates
 
@@ -54,11 +60,12 @@ Axion linewidth ≈ 37.11 kHz at 37.11 GHz.
 
 ## Home-PC playbook
 
-1. **Run gravitas_axion_v20_37ghz.py** — 37 GHz Doppler target list for NS-regime companions
-2. **Run haloscope_scan_37ghz_v20.py** — Dicke SNR forecast + mock spectrum (software only)
-3. **Query NRAO/ATCA metadata for 36–38 GHz** — List of public Ka spectra overlapping target directions
-4. **Optional: SDR + Ka downconverter IF chain** — Real RF noise to test matched-filter DSP — not axion reach
-5. **Email MADMAX/ORGAN with templates/** — Path to a real falsifier at g~2.3e-14 GeV^{-1}
+1. **Run nrao_37ghz_archival_inventory_v20.py** — TAP inventory + ranked AAT download queue for 36.6–37.6 GHz
+2. **Run gravitas_axion_v20_37ghz.py** — 37 GHz Doppler target list for NS-regime companions
+3. **Run haloscope_scan_37ghz_v20.py** — Dicke SNR forecast + mock spectrum (software only)
+4. **Download top queue filesets from data.nrao.edu AAT** — Calibrated MS/SDFITS for CASA/GBT reanalysis + injections
+5. **Optional: SDR + Ka downconverter IF chain** — Real RF noise to test matched-filter DSP — not axion reach
+6. **Email MADMAX/ORGAN with templates/** — Path to a real falsifier at g~2.3e-14 GeV^{-1}
 
 ## Cannot do at home
 

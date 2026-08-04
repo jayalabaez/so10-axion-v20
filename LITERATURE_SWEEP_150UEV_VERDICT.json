@@ -134,6 +134,21 @@
       "sensitivity_ratio_g_lim_over_v20": 0.04282655246252677
     },
     {
+      "name": "VLA magnetar PSR J1745\u22122900 (Darling 2020)",
+      "kind": "astrophysics",
+      "mass_window_ueV": [
+        126.0,
+        159.3
+      ],
+      "g_limit_GeV_inv": 6e-12,
+      "covers_v20_mass": true,
+      "excludes_v20_coupling": false,
+      "status_at_v20": "OPEN \u2014 mass covered but g too weak",
+      "citation": "Darling, ApJL 900, L2 (2020); PRL 125, 121103 (2020)",
+      "note": "Covers 126\u2013159.3 \u00b5eV (~37 GHz). Standard-profile g\u22736\u201334e-12; maximal-cusp g\u22736\u201334e-14. Does not exclude v20 g=2.335e-14. Ka channel widths ~2 MHz \u226b 37 kHz halo line.",
+      "sensitivity_ratio_g_lim_over_v20": 256.95931477516064
+    },
+    {
       "name": "ORGAN design envelope (future phases)",
       "kind": "haloscope_design",
       "mass_window_ueV": [
@@ -181,14 +196,15 @@
   ],
   "classification": {
     "theory_fails_from_published_bounds": false,
-    "n_entries": 11,
+    "n_entries": 12,
     "n_excluding_v20": 0,
     "buckets": {
       "EXCLUDED_by_literature": [],
       "OPEN_mass_covered_but_g_too_weak": [
         "CAST helioscope (2024 Xe)",
         "HB / globular-cluster stellar cooling",
-        "SN1987A / supernova photon-coupling (schematic)"
+        "SN1987A / supernova photon-coupling (schematic)",
+        "VLA magnetar PSR J1745\u22122900 (Darling 2020)"
       ],
       "OPEN_published_haloscope_wrong_mass": [
         "ORGAN Phase 1a",
