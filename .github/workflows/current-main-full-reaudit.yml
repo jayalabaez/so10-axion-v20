@@ -39,17 +39,23 @@ jobs:
           python - <<'PY'
           import json
           r=json.load(open('SCALAR_PROTON_FALSIFICATION_GATE_V20.json'))
+          c=r['certificates']
           assert r['overall_state']=='BLOCKED', r
-          assert r['certificates']['all_critical_modules_executed']
-          assert r['certificates']['hessian_residuals_closed_in_repository_stack']
-          assert r['certificates']['mixed_spectrum_positive_in_repository_stack']
-          assert r['certificates']['exact_pq_kernel_lifted']
-          assert not r['certificates']['selected_lam4_clears_null_tolerance']
-          assert r['certificates']['cal_G_soft_mode_remaining']
-          assert not r['certificates']['live_sarah_or_pyrate_run']
-          assert not r['certificates']['exact_unique_proton_lifetime']
-          assert not r['certificates']['whole_model_excluded']
-          assert not r['certificates']['whole_model_validated']
+          assert c['all_critical_modules_executed']
+          assert c['hessian_residuals_closed_in_repository_stack']
+          assert c['mixed_spectrum_positive_in_repository_stack']
+          assert c['exact_pq_kernel_lifted']
+          assert not c['selected_lam4_clears_null_tolerance']
+          assert c['cal_G_soft_mode_remaining']
+          assert not c['live_sarah_or_pyrate_run']
+          assert c['charged_PS_fields_zero_casimir_in_quartic_rg']
+          assert not c['nonsusy_component_hessian_independently_derived']
+          assert not c['exact_unique_proton_lifetime']
+          assert not c['whole_model_excluded']
+          assert not c['whole_model_validated']
+          rows=r['rge_audit']['charged_parent_sectors_evolved_with_zero_casimir']
+          assert {'DeltaR_126bar','H10_eff'} <= {x['name'] for x in rows}
+          assert r['component_matrix_audit']['aulakh_msgut_dependent_modules']
           PY
       - name: Upload re-audit verdict
         if: always()
