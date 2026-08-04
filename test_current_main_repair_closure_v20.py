@@ -13,12 +13,26 @@ class RepairClosureTests(unittest.TestCase):
         self.assertEqual(self.report["execution_failures"], [])
         self.assertEqual(self.report["hard_theory_failures"], [])
 
-    def test_reduced_breakpoints_resolved(self):
+    def test_executable_breakpoints_resolved(self):
         self.assertTrue(
             all(self.report["resolved_breakpoints"].values()),
             self.report["resolved_breakpoints"],
         )
-        self.assertTrue(self.report["flags"]["reduced_sector_repaired"])
+        self.assertTrue(self.report["flags"]["executable_breakpoints_repaired"])
+
+    def test_invariant_ledger_completeness_claim_is_falsified(self):
+        numerical = self.report["numerical"]
+        self.assertEqual(numerical["historical_invariant_total"], 25)
+        self.assertGreaterEqual(numerical["corrected_guaranteed_invariant_floor"], 37)
+        self.assertEqual(numerical["missing_norm_quartics"], 6)
+        self.assertEqual(numerical["multiplicity_deficits"], 5)
+        self.assertTrue(self.report["flags"]["historical_basis_claim_falsified"])
+        self.assertTrue(
+            self.report["remaining_blockers"]["complete_mixed_rep_invariant_enumeration"]
+        )
+        self.assertTrue(
+            self.report["remaining_blockers"]["enlarged_potential_reminimization"]
+        )
 
     def test_exact_goldstone_problem_resolved(self):
         numerical = self.report["numerical"]
