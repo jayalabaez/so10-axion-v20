@@ -1,0 +1,45 @@
+# YAML 1.1
+# Live v20 gauge-content model for PyR@TE 3 (arXiv:2007.12700).
+# Matches above-vPhi ledger: 3 Weyl 16 + real 210 + complex 10 + complex 126.
+# Dynkin labels used where dimension is ambiguous (210).
+# Global PQ/X/Z17 are not gauged in this executable dump.
+---
+Author: so10-axion-v20
+Date: 04.08.2026
+Name: SO10Z17AxionV20_live
+Groups: {SO10: SO10}
+
+Fermions: {
+    Psi16: {Gen: 3, Qnb:{SO10: [0, 0, 0, 0, 1]}},
+}
+
+RealScalars: {
+    Phi210: {Gen: 1, Qnb:{SO10: [0, 0, 0, 1, 1]}},
+}
+
+ComplexScalars: {
+    H10: {RealFields: [H10r, H10i], Norm: 1/Sqrt(2), Qnb:{SO10: [1, 0, 0, 0, 0]}},
+    Delta126: {RealFields: [D126r, D126i], Norm: 1/Sqrt(2), Qnb:{SO10: [0, 0, 0, 0, 2]}},
+}
+
+Potential: {
+    Definitions: {},
+    Yukawas: {},
+    QuarticTerms: {},
+}
+
+Substitutions: {
+    g_SO10 : g10,
+}
+
+Latex: {
+    Psi16: \Psi_{16},
+    Phi210: \Phi_{210},
+    H10: H_{10},
+    H10r: H_{10}^{r},
+    H10i: H_{10}^{i},
+    Delta126: \Delta_{126},
+    D126r: \Delta_{126}^{r},
+    D126i: \Delta_{126}^{i},
+    g10: g_{10},
+}
