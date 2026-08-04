@@ -1,0 +1,36 @@
+{
+  "status": "NRAO_37GHZ_ARCHIVAL_INVENTORY_COMPLETE__NO_DETECTION",
+  "summary": {
+    "n_rows_ingested": 5,
+    "n_overlapping_observations": 5,
+    "n_unique_filesets": 2,
+    "n_usable_for_37kHz_halo_line": 1,
+    "resolution_class_counts": {
+      "excellent": 1,
+      "not_suitable": 4
+    },
+    "note_on_2MHz_ka_windows": "Many EVLA Ka windows in the Darling programs have 2 MHz channels and are classed not_suitable for a 37 kHz halo line."
+  },
+  "flag": {
+    "targeted_archival_inventory_executed": true,
+    "all_sky_scan": false,
+    "real_37GHz_detection": false,
+    "experimental_discovery": false,
+    "flux_limit_derived": false,
+    "j1745_literature_excludes_v20": false,
+    "v20_photon_benchmark_open": true,
+    "cmb_myth_rejected": true
+  },
+  "benchmark_comparison": {
+    "v20_g": 2.335e-14,
+    "J1745_standard_profile_g_limit_over_v20": [
+      256.95931477516064,
+      1456.10278372591
+    ],
+    "J1745_maximal_cusp_g_limit_over_v20": [
+      2.569593147751606,
+      14.561027837259102
+    ],
+    "excludes_v20": false
+  }
+}

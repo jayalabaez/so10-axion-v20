@@ -159,6 +159,20 @@ def literature_entries() -> list[dict]:
             "Mature QCD exclusions exist at few–tens of µeV, not at 150 µeV.",
         ),
         row(
+            "VLA magnetar PSR J1745−2900 (Darling 2020)",
+            "astrophysics",
+            126.0,
+            159.3,
+            6.0e-12,  # standard-profile end of published envelope
+            True,
+            False,
+            "OPEN — mass covered but g too weak",
+            "Darling, ApJL 900, L2 (2020); PRL 125, 121103 (2020)",
+            "Covers 126–159.3 µeV (~37 GHz). Standard-profile g≳6–34e-12; "
+            "maximal-cusp g≳6–34e-14. Does not exclude v20 g=2.335e-14. "
+            "Ka channel widths ~2 MHz ≫ 37 kHz halo line.",
+        ),
+        row(
             "ORGAN design envelope (future phases)",
             "haloscope_design",
             62.0,

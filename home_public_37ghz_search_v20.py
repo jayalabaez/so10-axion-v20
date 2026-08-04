@@ -93,10 +93,24 @@ def public_resources() -> list[dict]:
             "url": "https://data.nrao.edu/",
             "bands": "Ka / Q (26–50 GHz) on selected receivers",
             "home_PC_use": (
-                "Search metadata for 36–38 GHz spectral setups toward GC, "
-                "pulsars, or GRAVITAS targets; download reduced spectra if public"
+                "Run nrao_37ghz_archival_inventory_v20.py (--live for TAP); "
+                "download ranked filesets via Archive Access Tool"
             ),
-            "can_detect_v20_DM": "Only if sensitivity + B-field conversion geometry allow; usually not yet at QCD depth",
+            "can_detect_v20_DM": (
+                "Only if sensitivity + B-field conversion geometry allow; "
+                "metadata inventory is not a detection. Published J1745 limits "
+                "do not exclude v20 g."
+            ),
+            "priority": 1,
+        },
+        {
+            "name": "In-repo NRAO 37 GHz archival inventory",
+            "url": "nrao_37ghz_archival_inventory_v20.py",
+            "bands": "36.6–37.6 GHz targeted TAP inventory",
+            "home_PC_use": (
+                "Rank spectral resolution vs ~37 kHz line; emit download queue"
+            ),
+            "can_detect_v20_DM": "Inventory / planning only — not a detection",
             "priority": 1,
         },
         {
@@ -147,26 +161,31 @@ def home_pc_playbook() -> dict:
         "do_now_on_PC": [
             {
                 "step": 1,
+                "task": "Run nrao_37ghz_archival_inventory_v20.py",
+                "outcome": "TAP inventory + ranked AAT download queue for 36.6–37.6 GHz",
+            },
+            {
+                "step": 2,
                 "task": "Run gravitas_axion_v20_37ghz.py",
                 "outcome": "37 GHz Doppler target list for NS-regime companions",
             },
             {
-                "step": 2,
+                "step": 3,
                 "task": "Run haloscope_scan_37ghz_v20.py",
                 "outcome": "Dicke SNR forecast + mock spectrum (software only)",
             },
             {
-                "step": 3,
-                "task": "Query NRAO/ATCA metadata for 36–38 GHz",
-                "outcome": "List of public Ka spectra overlapping target directions",
+                "step": 4,
+                "task": "Download top queue filesets from data.nrao.edu AAT",
+                "outcome": "Calibrated MS/SDFITS for CASA/GBT reanalysis + injections",
             },
             {
-                "step": 4,
+                "step": 5,
                 "task": "Optional: SDR + Ka downconverter IF chain",
                 "outcome": "Real RF noise to test matched-filter DSP — not axion reach",
             },
             {
-                "step": 5,
+                "step": 6,
                 "task": "Email MADMAX/ORGAN with templates/",
                 "outcome": "Path to a real falsifier at g~2.3e-14 GeV^{-1}",
             },
