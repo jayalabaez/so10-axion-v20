@@ -44,8 +44,10 @@ jobs:
           assert r['flag']['ultimate_residual_checklist_folded']
           assert r['flag']['all_post_hessian_residuals_closed']
           assert r['flag']['live_sarah_or_pyrate_executable_run']
-          assert r['certificate']['residual_still_open']['full_quartic_soft_live_dump']
-          assert not r['flag']['full_quartic_soft_live_dump']
+          assert r['flag']['full_quartic_soft_live_dump']
+          assert r['certificate']['residual_now_closed']['full_quartic_soft_live_dump']
+          assert r['certificate']['residual_still_open']['lam4_cgc_and_dim6_lock_not_in_live_dump']
+          assert 'full_quartic_soft_live_dump' not in r['certificate']['residual_still_open']
           assert not r['flag']['exact_unique_proton_lifetime']
           assert not r['flag']['whole_model_excluded']
           assert r['lifetime']['selected_tau_e_years']>0

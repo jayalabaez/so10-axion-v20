@@ -1,0 +1,69 @@
+{
+  "tool": "PyR@TE 3",
+  "citation": "arXiv:2007.12700",
+  "model": "models/SO10Z17AxionV20_quartic_live.model",
+  "loops": 1,
+  "sector": "gauge_quartic_trilinear_soft",
+  "scope": "delta_contracted_charge_allowed_renormalizable_reduced",
+  "expected_couplings": {
+    "quartics": [
+      "lam10",
+      "lam126",
+      "lamS",
+      "lam210",
+      "lam10S",
+      "lam126S",
+      "lam210S",
+      "lam10126"
+    ],
+    "trilinear": [
+      "kappa"
+    ],
+    "soft": [
+      "m2102",
+      "m102",
+      "m1262",
+      "mS2"
+    ]
+  },
+  "coverage": {
+    "gauge_g10_match_minus4": true,
+    "gauge_parsed": {
+      "parsed": true,
+      "coeff": -4.0,
+      "coeff_fraction": "-4/1",
+      "raw": "-4*g10^3"
+    },
+    "quartics_present": true,
+    "trilinear_present": true,
+    "soft_present": true,
+    "n_quartics_expected": 8,
+    "n_trilinear_expected": 1,
+    "n_soft_expected": 4,
+    "missing": []
+  },
+  "beta_raw": {
+    "g10": "-4*g10^3",
+    "lam10": "(27/2)*g10^4 - 54*g10^2*lam10 + 56*lam10^2 + lam10S^2 + 126*lam10126^2",
+    "lam126": "(135/2)*g10^4 - 150*g10^2*lam126 + 10*lam10126^2 + 520*lam126^2 + lam126S^2",
+    "lamS": "10*lam10S^2 + 126*lam126S^2 + 420*lam210S^2 + 20*lamS^2",
+    "lam210": "12*g10^4 - 144*g10^2*lam210 + 1744*lam210^2 + lam210S^2",
+    "lam10S": "-27*g10^2*lam10S + 44*lam10*lam10S + 4*lam10S^2 + 8*lam10S*lamS + 252*lam10126*lam126S",
+    "lam126S": "-75*g10^2*lam126S + 20*lam10S*lam10126 + 508*lam126*lam126S + 4*lam126S^2 + 8*lam126S*lamS",
+    "lam210S": "-72*g10^2*lam210S + 1696*lam210*lam210S + 8*lam210S^2 + 8*lam210S*lamS",
+    "lam10126": "15*g10^4 - 102*g10^2*lam10126 + 44*lam10*lam10126 + 2*lam10S*lam126S + 4*lam10126^2 + 508*lam10126*lam126",
+    "kappa": "-27*g10^2*kappa + 4*kappa*lam10 + 4*kappa*lam10S",
+    "m2102": "-72*g10^2*m2102 + 1696*lam210*m2102 + 2*lam210S*mS2",
+    "m102": "-27*g10^2*m102 + 8*kappa*Conjugate[kappa] + 44*lam10*m102 + 2*lam10S*mS2 + 252*lam10126*m1262",
+    "m1262": "-75*g10^2*m1262 + 20*lam10126*m102 + 508*lam126*m1262 + 2*lam126S*mS2",
+    "mS2": "40*kappa*Conjugate[kappa] + 20*lam10S*m102 + 252*lam126S*m1262 + 840*lam210S*m2102 + 8*lamS*mS2"
+  },
+  "live_run_executed": true,
+  "mathematica_artifact": "C:\\Users\\jayal\\Downloads\\So10Theory2\\so10-axion-v20\\models\\SO10Z17AxionV20_quartic_live_BETA.m",
+  "backend": null,
+  "not_encoded": [
+    "full_210_T2_T4_invariant_basis",
+    "lam4_210_10_126_S_CGC",
+    "dim6_lambda_lock"
+  ]
+}
