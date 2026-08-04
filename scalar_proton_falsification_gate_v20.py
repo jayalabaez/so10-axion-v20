@@ -104,12 +104,15 @@ def build_report() -> dict[str, Any]:
         ),
         "kronecker_gate_corrected": bool(
             kron.get("forbidden_210_10dag10_removed")
-            and kron.get("forbidden_10_126_S_cubic_locked_zero")
-            and kron.get("lambda4_offdiag_slot_preserved")
+            and kron.get("forbidden_cubic_contributions_locked_zero")
+            and kron.get("forbidden_10_126_S_removed")
+            and kron.get("lambda4_offdiag_allowed_but_CG_open")
         ),
         "legacy_triplet_dependency_graph_classified": bool(
             contam.get("n_failed", 1) == 0
-            and contam.get("flag", {}).get("legacy_chain_invalidated_fail_closed")
+            and contam.get("flag", {}).get(
+                "legacy_physical_triplet_chain_invalidated"
+            )
         ),
         "exact_gauge_orbit_reproduced": bool(
             orbit.get("orbit", {}).get("combined_orbit_rank_goldstones") == 33
@@ -125,9 +128,9 @@ def build_report() -> dict[str, Any]:
             "physical_component_CG_complete", False
         ),
         "legacy_triplet_threshold_lifetime_chain_rebuild": bool(
-            contam.get("invalidated_modules")
-            or contam.get("contaminated_modules")
-            or contam.get("n_contaminated_modules", 0)
+            contam.get("scan", {}).get("contaminated_modules")
+            or contam.get("contaminated_lifetime_modules")
+            or contam.get("invalidation")
         ),
         "full_component_nonsusy_hessian": True,
         "full_tensor_two_loop_betas": True,
