@@ -1,0 +1,41 @@
+name: scalar-proton-falsification-gate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  fail-closed-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Execute fail-closed scalar/proton gate
+        run: python scalar_proton_falsification_gate_v20.py
+      - name: Run focused mathematical regression tests
+        run: python -m unittest -v test_scalar_proton_falsification_gate_v20.py
+      - name: Assert current claim remains blocked, not passed
+        run: |
+          python - <<'PY'
+          import json
+          report = json.load(open('SCALAR_PROTON_FALSIFICATION_GATE_V20.json'))
+          assert report['overall_state'] == 'BLOCKED'
+          assert not report['hard_findings']['full_scalar_potential_completed']
+          assert report['hard_findings']['central_gauge_benchmark_passes']
+          assert report['hard_findings']['conditional_triplet_points_excluded'] > 0
+          assert not report['hard_findings']['whole_model_excluded']
+          assert not report['hard_findings']['whole_model_validated']
+          PY
+      - name: Upload falsification report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: scalar-proton-falsification-gate
+          path: |
+            SCALAR_PROTON_FALSIFICATION_GATE_V20.json
+            SCALAR_PROTON_FALSIFICATION_GATE_V20.md
