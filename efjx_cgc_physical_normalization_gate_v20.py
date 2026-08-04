@@ -210,8 +210,9 @@ def build_report() -> dict[str, Any]:
         physical.get("historical_benchmark", {}).get("tachyonic")
     )
     proxy_ratio = proxy.get("couplings", {}).get("c_cgc_needed_abs_approx")
-    proxy_ratio_numeric = isinstance(proxy_ratio, (int, float)) and np.isfinite(
-        float(proxy_ratio)
+    proxy_ratio_numeric = bool(
+        isinstance(proxy_ratio, (int, float))
+        and np.isfinite(float(proxy_ratio))
     )
     normalization = _load_normalization_artifact()
 
@@ -219,9 +220,9 @@ def build_report() -> dict[str, Any]:
         "all_upstreams_executed": not execution_failures,
         "four_gamma_response_blocks_extracted": set(responses) == set(BLOCKS),
         "all_blocks_linear_in_gamma": bool(responses)
-        and all(row["linear_in_gamma"] for row in responses.values()),
+        and bool(all(row["linear_in_gamma"] for row in responses.values())),
         "all_blocks_have_nonzero_gamma_slots": bool(responses)
-        and all(row["n_nonzero_slots"] > 0 for row in responses.values()),
+        and bool(all(row["n_nonzero_slots"] > 0 for row in responses.values())),
         "physical_EW_target_is_174_GeV": h_ew == 174.0,
         "historical_physical_point_is_tachyonic": historical_tachyon,
         "decoupling_certificate_uses_intermediate_H10_proxy": proxy_dependency,
@@ -274,11 +275,12 @@ def build_report() -> dict[str, Any]:
         },
         "flags": {
             "exact_EFJX_gamma_response_known": bool(responses)
-            and all(row["linear_in_gamma"] for row in responses.values()),
-            "proxy_cgc_ratio_invalid_as_physical_prediction": proxy_dependency
-            and historical_tachyon,
-            "physical_CGC_normalization_derived": exact_mapping_closed,
-            "physical_EW_branch_revalidated": exact_mapping_closed,
+            and bool(all(row["linear_in_gamma"] for row in responses.values())),
+            "proxy_cgc_ratio_invalid_as_physical_prediction": bool(
+                proxy_dependency and historical_tachyon
+            ),
+            "physical_CGC_normalization_derived": bool(exact_mapping_closed),
+            "physical_EW_branch_revalidated": bool(exact_mapping_closed),
             "whole_model_excluded": False,
             "whole_model_validated": state == "PASS",
         },
@@ -293,8 +295,43 @@ def build_report() -> dict[str, Any]:
     }
 
 
+def _json_default(obj: Any) -> Any:
+    if isinstance(obj, (np.bool_,)):
+        return bool(obj)
+    if isinstance(obj, (np.integer,)):
+        return int(obj)
+    if isinstance(obj, (np.floating,)):
+        return float(obj)
+    if isinstance(obj, np.ndarray):
+        return obj.tolist()
+    raise TypeError(f"Object of type {type(obj).__name__} is not JSON serializable")
+
+
+def _sanitize(obj: Any) -> Any:
+    """Convert numpy scalars/arrays into plain Python JSON types."""
+    if isinstance(obj, dict):
+        return {str(k): _sanitize(v) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [_sanitize(v) for v in obj]
+    if isinstance(obj, tuple):
+        return [_sanitize(v) for v in obj]
+    if isinstance(obj, (np.bool_,)):
+        return bool(obj)
+    if isinstance(obj, (np.integer,)):
+        return int(obj)
+    if isinstance(obj, (np.floating,)):
+        return float(obj)
+    if isinstance(obj, np.ndarray):
+        return obj.tolist()
+    return obj
+
+
 def write_report(report: dict[str, Any]) -> None:
-    OUT_JSON.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    clean = _sanitize(report)
+    OUT_JSON.write_text(
+        json.dumps(clean, indent=2, sort_keys=True, default=_json_default) + "\n",
+        encoding="utf-8",
+    )
     lines = [
         "# E/F/J/X physical CGC-normalization gate — v20",
         "",
@@ -320,9 +357,9 @@ def write_report(report: dict[str, Any]) -> None:
 
 def main(argv: list[str] | None = None) -> int:
     argparse.ArgumentParser(description=__doc__).parse_args(argv)
-    report = build_report()
+    report = _sanitize(build_report())
     write_report(report)
-    print(json.dumps(report, indent=2, sort_keys=True))
+    print(json.dumps(report, indent=2, sort_keys=True, default=_json_default))
     return 1 if report["overall_state"] == "EXECUTION_FAIL" else 0
 
 
