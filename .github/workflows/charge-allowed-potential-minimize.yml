@@ -1,0 +1,57 @@
+name: charge-allowed-potential-minimize
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  charge-allowed-potential-minimize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Execute potential minimization
+        run: python charge_allowed_potential_minimize_v20.py
+      - name: Focused regression tests
+        run: python -m unittest -v test_charge_allowed_potential_minimize_v20.py
+      - name: Assert honest scientific scope
+        run: |
+          python - <<'PY'
+          import json, math
+          r=json.load(open('CHARGE_ALLOWED_POTENTIAL_MINIMIZE_V20_VERDICT.json'))
+          assert r['status']=='CHARGE_ALLOWED_POTENTIAL_MINIMIZED__COUPLINGS_CONDITIONAL'
+          assert r['n_failed']==0
+          f=r['fixed_couplings']
+          assert all(math.isfinite(f[k]) for k in ('kappa','lam4','lambda_lock'))
+          assert abs(f['lambda_lock'])>0
+          b=r['minimization']['best']
+          assert b['soft']['stationarity_restored']
+          assert b['radial_hessian_positive_definite']
+          assert b['phase_n_positive']==1 and b['phase_n_zero']==2
+          assert b['perturbative']
+          assert r['flag']['couplings_minimized_on_reduced_potential']
+          assert r['flag']['soft_mass_shifts_used']
+          assert r['flag']['finite_kappa_window_demonstrated']
+          assert r['finite_kappa_benchmark_couplings'] is not None
+          assert abs(r['finite_kappa_benchmark_couplings']['kappa'])>=0.05
+          assert not r['flag']['unique_uv_couplings']
+          assert not r['flag']['complete_so10_scalar_potential']
+          assert not r['flag']['exact_unique_proton_lifetime']
+          assert not r['flag']['whole_model_excluded']
+          PY
+      - name: Upload potential-minimize verdicts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: charge-allowed-potential-minimize-verdict
+          path: |
+            CHARGE_ALLOWED_POTENTIAL_MINIMIZE_V20_VERDICT.json
+            CHARGE_ALLOWED_POTENTIAL_MINIMIZE_V20.md
