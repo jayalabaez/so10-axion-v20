@@ -1,15 +1,14 @@
 #!/usr/bin/env python3
 r"""Fold post-live residuals into the ultimate τ_p checklist (v20).
 
-Next step after ``live_pyrate_quartic_soft_dump_v20``:
+Next step after ``cal_g_portal_decision_v20``:
 
-1. Collect closed residuals from the post-Hessian ladder:
-   Hessian closure, λ₄ PQ-null lift, scalar-α non-uniqueness, live PyR@TE
-   gauge β dump, cal G soft-mode classification, and the δ-contracted
-   quartic/soft live dump.
+1. Collect closed residuals from the post-Hessian ladder, including the
+   cal G portal decision (no extra *new* portal; existing λ_lock lifts
+   in principle).
 2. Merge them into the full-stack τ_p residual checklist.
-3. Keep ``exact_unique_proton_lifetime`` OPEN for remaining light-mode /
-   λ₄-threshold caveats (and documented λ₄ CGC / dim-6 incompleteness).
+3. Keep ``exact_unique_proton_lifetime`` OPEN for remaining selected-point
+   soft thresholds (λ_lock / λ₄) and documented live-dump incompleteness.
 
 Honesty
 -------
@@ -26,6 +25,7 @@ import json
 from pathlib import Path
 from typing import Any
 
+import cal_g_portal_decision_v20 as portal
 import cal_g_soft_mode_classification_v20 as calg
 import live_pyrate_quartic_soft_dump_v20 as qsoft
 import live_pyrate_so10_beta_dump_v20 as live
@@ -45,11 +45,12 @@ RESIDUALS_NOW_CLOSED = [
     "live_sarah_or_pyrate_executable_run",
     "cal_G_soft_mode_classification",
     "full_quartic_soft_live_dump",
+    "cal_G_portal_decision_resolved",
 ]
 
 RESIDUAL_STILL_OPEN = [
     "selected_lam4_below_gut_null_tol_threshold",
-    "cal_G_residual_light_singlet_mass",
+    "selected_lambda_lock_below_cal_G_lift_threshold",
     "lam4_cgc_and_dim6_lock_not_in_live_dump",
 ]
 
@@ -60,6 +61,7 @@ SOURCES = {
     "live_pyrate": "live_pyrate_so10_beta_dump_v20",
     "cal_g": "cal_g_soft_mode_classification_v20",
     "quartic_soft_live": "live_pyrate_quartic_soft_dump_v20",
+    "cal_g_portal": "cal_g_portal_decision_v20",
 }
 
 
@@ -70,6 +72,7 @@ def build_report() -> dict[str, Any]:
     live_rep = live.build_report(force_rerun=False)
     calg_rep = calg.build_report()
     qsoft_rep = qsoft.build_report(force_rerun=False)
+    portal_rep = portal.build_report()
 
     if hess_rep.get("n_failed", 1) != 0:
         return {
@@ -119,6 +122,10 @@ def build_report() -> dict[str, Any]:
             qsoft_rep.get("n_failed", 1) == 0
             and qsoft_rep["flag"]["full_quartic_soft_live_dump"]
         ),
+        "cal_G_portal_decision_resolved": bool(
+            portal_rep.get("n_failed", 1) == 0
+            and portal_rep["flag"]["cal_G_portal_decision_resolved"]
+        ),
     }
     all_closed = all(closed.values())
 
@@ -126,8 +133,10 @@ def build_report() -> dict[str, Any]:
         "selected_lam4_below_gut_null_tol_threshold": bool(
             not pq_rep.get("flag", {}).get("selected_lam4_clears_gut_null_tol", False)
         ),
-        "cal_G_residual_light_singlet_mass": bool(
-            calg_rep.get("primary_classification", {}).get("soft_vs_null_tol", True)
+        "selected_lambda_lock_below_cal_G_lift_threshold": bool(
+            portal_rep.get("flag", {}).get(
+                "cal_G_residual_light_singlet_still_soft_at_selected", True
+            )
         ),
         "lam4_cgc_and_dim6_lock_not_in_live_dump": True,
     }
@@ -141,6 +150,8 @@ def build_report() -> dict[str, Any]:
         "calg_ok": calg_rep.get("n_failed", 1) == 0,
         "qsoft_ok": qsoft_rep.get("n_failed", 1) == 0
         and qsoft_rep["flag"]["full_quartic_soft_live_dump"],
+        "portal_ok": portal_rep.get("n_failed", 1) == 0
+        and portal_rep["flag"]["cal_G_portal_decision_resolved"],
         "all_checklist_closed": all_closed,
         "tau_positive": float(life["selected_tau_e_years"]) > 0.0,
         "exact_unique_not_overclaimed": True,
@@ -166,24 +177,26 @@ def build_report() -> dict[str, Any]:
             "live_pyrate": live_rep.get("status"),
             "cal_g": calg_rep.get("status"),
             "quartic_soft_live": qsoft_rep.get("status"),
+            "cal_g_portal": portal_rep.get("status"),
         },
         "certificate": {
             "residual_now_closed": closed,
             "residual_still_open": still_open,
             "cal_G_primary_label": calg_rep.get("flag", {}).get("primary_label"),
+            "cal_G_portal_decision": portal_rep.get("decision", {}).get("label"),
             "interpretation": (
                 "The ultimate selected-point τ_p checklist now includes closed "
                 "Hessian positivity, λ₄ PQ-null exact-kernel lift, proven "
                 "scalar-α non-uniqueness, live PyR@TE gauge β, classified "
-                "cal G soft mode, and a δ-contracted live quartic/soft dump. "
-                "Exact whole-model unique τ_p remains OPEN because selected "
-                "λ₄ is below the GUT null-tol threshold, the cal G residual "
-                "light singlet remains, and λ₄ CGC / dim-6 lock are not in "
-                "the live dump."
+                "cal G soft mode, δ-contracted live quartic/soft dump, and a "
+                "resolved cal G portal decision (no extra new portal; existing "
+                "λ_lock lifts in principle). Exact whole-model unique τ_p "
+                "remains OPEN because selected λ₄ / λ_lock sit below their "
+                "lift thresholds and λ₄ CGC / dim-6 are not in the live dump."
             ),
         },
         "next_exact_calculation": [
-            "Decide whether the cal G residual light singlet requires an extra portal",
+            "Raise |λ_lock| to the cal G lift threshold and re-evaluate the soft mode",
             "Assess whether |λ₄| can be raised to clear the GUT null-tol without spoiling the selected point",
             "Re-evaluate exact unique τ_p only after remaining light-mode / λ₄ caveats close",
         ],
@@ -197,6 +210,10 @@ def build_report() -> dict[str, Any]:
             "scalar_alpha_proven_nonunique_from_flavour": True,
             "cal_G_soft_mode_classified": True,
             "full_quartic_soft_live_dump": True,
+            "cal_G_portal_decision_resolved": True,
+            "extra_new_portal_required": bool(
+                portal_rep.get("flag", {}).get("extra_new_portal_required", True)
+            ),
             "exact_unique_proton_lifetime": False,
             "whole_model_excluded": False,
         },
@@ -204,9 +221,8 @@ def build_report() -> dict[str, Any]:
             f"Ultimate τ_p residual checklist folded: "
             f"τ(p→eπ⁰)={float(life['selected_tau_e_years']):.3e} yr "
             f"(SK pass={life['selected_passes_SK']}); "
-            f"closed={all_closed}; cal G label="
-            f"{calg_rep.get('flag', {}).get('primary_label')}. "
-            f"full_quartic_soft_live_dump closed (δ-contracted). "
+            f"closed={all_closed}; cal G portal="
+            f"{portal_rep.get('decision', {}).get('label')}. "
             f"exact_unique_proton_lifetime remains False."
         ),
     }
