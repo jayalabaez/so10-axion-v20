@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Aggregate the executable repairs and preserve remaining fail-closed scope."""
+"""Aggregate executable repairs while preserving remaining fail-closed scope."""
 from __future__ import annotations
 
 import argparse
@@ -11,6 +11,7 @@ import mixed_rep_hilbert_bfb_completion_v20 as bfb_basis
 import nonsusy_reduced_hessian_v20 as nonsusy
 import quartic_soft_betas_v20 as ps_rge
 import scalar_proton_falsification_gate_v20 as base_audit
+import so10_nonsusy_gauge_orbit_v20 as gauge_orbit
 
 ROOT = Path(__file__).resolve().parent
 OUT_JSON = ROOT / "CURRENT_MAIN_REPAIR_CLOSURE_V20.json"
@@ -22,6 +23,7 @@ def build_report() -> dict[str, Any]:
     rge = ps_rge.build_report()
     basis = bfb_basis.build_report()
     hessian = nonsusy.build_report()
+    orbit = gauge_orbit.build_report()
 
     execution_failures = []
     for label, report in (
@@ -29,6 +31,7 @@ def build_report() -> dict[str, Any]:
         ("ps_rge", rge),
         ("bfb_basis", basis),
         ("nonsusy_hessian", hessian),
+        ("gauge_orbit", orbit),
     ):
         if report.get("n_failed", 0) != 0:
             execution_failures.append(f"{label}: {report.get('failures')}")
@@ -40,8 +43,9 @@ def build_report() -> dict[str, Any]:
             and rge.get("flag", {}).get("separate_g4_gL_gR_running")
             and not rge.get("flag", {}).get("two_loop_quartic_betas_complete")
         ),
-        "phase_lock_modulus_companion": bool(
+        "canonical_phase_lock_modulus_companion": bool(
             basis.get("flag", {}).get("modulus_locking_companion_added")
+            and basis.get("flag", {}).get("canonical_completed_basis_emitted")
         ),
         "reduced_nonsusy_bounded_from_below": bool(
             hessian.get("flag", {}).get("reduced_potential_bounded_from_below")
@@ -52,6 +56,14 @@ def build_report() -> dict[str, Any]:
         ),
         "reduced_local_minimum_positive_definite": bool(
             hessian.get("flag", {}).get("reduced_local_minimum_positive_definite")
+        ),
+        "exact_goldstone_count_33": bool(
+            orbit.get("flag", {}).get("goldstone_count_33_exact")
+        ),
+        "sm_sized_stabilizer_12": bool(
+            orbit.get("flag", {}).get("sm_sized_stabilizer_dimension_12")
+            and orbit.get("flag", {}).get("su3_sized_so6_stabilizer_8")
+            and orbit.get("flag", {}).get("su2_u1_sized_so4_stabilizer_4")
         ),
     }
 
@@ -102,11 +114,16 @@ def build_report() -> dict[str, Any]:
             "lambda_lock_abs": hessian.get("couplings", {}).get("lambda_lock_abs"),
             "lambda4_amgm_limit": hessian.get("bfb_certificate", {}).get("quartic_amgm_limit"),
             "lambda4_abs": hessian.get("bfb_certificate", {}).get("abs_lam4"),
+            "goldstone_count": orbit.get("orbit", {}).get("combined_orbit_rank_goldstones"),
+            "unbroken_stabilizer_dimension": orbit.get("orbit", {}).get("combined_stabilizer_dimension"),
+            "so6_stabilizer_dimension": orbit.get("orbit", {}).get("so6_stabilizer_dimension"),
+            "so4_stabilizer_dimension": orbit.get("orbit", {}).get("so4_stabilizer_dimension"),
         },
         "flags": {
             "whole_model_excluded": bool(base_cert.get("whole_model_excluded")),
             "whole_model_validated": state == "PASS",
             "reduced_sector_repaired": all_resolved,
+            "goldstone_problem_resolved": resolved["exact_goldstone_count_33"],
             "full_component_problem_resolved": not remaining["full_component_nonsusy_hessian"],
         },
         "upstream_status": {
@@ -114,10 +131,12 @@ def build_report() -> dict[str, Any]:
             "ps_rge": rge.get("status"),
             "bfb_basis": basis.get("status"),
             "nonsusy_hessian": hessian.get("status"),
+            "gauge_orbit": orbit.get("status"),
         },
         "verdict": (
-            "The executable breakpoint repairs are complete for the reduced theory: Pati-Salam charged-sector running is restored, "
-            "the missing modulus locking companion supplies an exact reduced BFB condition, and the five-amplitude non-SUSY Hessian is independently derived. "
+            "The executable reduced-theory breakpoints are closed: Pati-Salam charged-sector running is restored, "
+            "the canonical locking pair supplies a conservative analytic BFB certificate, the five-amplitude non-SUSY Hessian is independently derived, "
+            "and the explicit 210 plus 126bar tensor VEVs give exactly 33 Goldstones with a 12-dimensional SM-sized stabilizer. "
             "The result remains BLOCKED at the full-component level because the complete non-SUSY tensor Hessian, full tensor beta system, external-tool dump, and exact unique proton lifetime are still absent."
         ),
     }
