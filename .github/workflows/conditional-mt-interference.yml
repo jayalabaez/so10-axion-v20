@@ -1,0 +1,50 @@
+name: conditional-mt-interference
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  conditional-mt-interference:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Execute conditional M_T + interference
+        run: python conditional_mt_interference_v20.py
+      - name: Focused regression tests
+        run: python -m unittest -v test_conditional_mt_interference_v20.py
+      - name: Assert honest scientific scope
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('CONDITIONAL_MT_INTERFERENCE_V20_VERDICT.json'))
+          assert r['status']=='CONDITIONAL_MT_DIAGONALIZED__INTERFERENCE_ENVELOPE_COMPUTED__FULL_TENSORS_OPEN'
+          assert r['n_failed']==0
+          assert r['flag']['conditional_spectrum_diagonalized']
+          assert r['flag']['mixing_angles_extracted']
+          assert r['flag']['gauge_scalar_interference_envelope_computed']
+          assert not r['flag']['msgut_cal_T_used_as_v20_spectrum']
+          assert not r['flag']['complete_so10_scalar_potential']
+          assert not r['flag']['numeric_triplet_spectrum_from_full_potential']
+          assert not r['flag']['exact_unique_proton_lifetime']
+          assert not r['flag']['whole_model_excluded']
+          assert r['flag']['conditional_parameter_points_excluded']
+          assert 0 < r['n_excluded_by_ps_mu_K0'] < r['n_scenarios']
+          PY
+      - name: Upload conditional M_T interference verdicts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: conditional-mt-interference-verdict
+          path: |
+            CONDITIONAL_MT_INTERFERENCE_V20_VERDICT.json
+            CONDITIONAL_MT_INTERFERENCE_V20.md
