@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "EFJX_CGC_NORMALIZATION_SCHEMA_V20.json",
+  "title": "E/F/J/X physical Clebsch normalization evidence",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "invariant",
+    "contraction",
+    "field_normalizations",
+    "singlet_vev_projection",
+    "gamma_mapping",
+    "source_manifest",
+    "acceptance_evidence",
+    "closure_complete",
+    "n_failed"
+  ],
+  "properties": {
+    "schema_version": {"const": "efjx-cgc-normalization-v1"},
+    "invariant": {"const": "Phi210_H10_Sigmabar126_S"},
+    "contraction": {"type": "string", "minLength": 21},
+    "field_normalizations": {
+      "type": "object",
+      "required": ["Phi210", "H10", "Sigmabar126", "S"]
+    },
+    "singlet_vev_projection": {
+      "type": "object",
+      "required": ["p", "a", "omega", "vS", "hEW"],
+      "properties": {"hEW": {"const": 174.0}}
+    },
+    "gamma_mapping": {
+      "type": "object",
+      "required": ["gamma_eff_over_lambda4"],
+      "properties": {
+        "gamma_eff_over_lambda4": {"type": "number"}
+      }
+    },
+    "source_manifest": {"type": "array", "minItems": 2},
+    "acceptance_evidence": {
+      "type": "object",
+      "required": [
+        "canonical_kinetic_normalization",
+        "direct_tensor_contraction",
+        "independent_matrix_reconstruction",
+        "physical_EW_branch_reminimized"
+      ]
+    },
+    "closure_complete": {"const": true},
+    "n_failed": {"const": 0}
+  },
+  "additionalProperties": true
+}
