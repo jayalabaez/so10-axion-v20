@@ -1,26 +1,27 @@
 {
-  "schema_version": "efjx-cgc-normalization-v1",
+  "schema_version": "efjx-cgc-normalization-v2",
   "invariant": "Phi210_H10_Sigmabar126_S",
-  "contraction": "REPLACE_WITH_EXACT_INDEX_CONTRACTION_AND_ALL_FACTORIALS",
+  "contraction": "REPLACE_WITH_EXACT_Phi_abcd_H_e_Sigmabar_abcde_S_CONTRACTION_AND_FACTORIALS",
   "field_normalizations": {
     "Phi210": {
-      "tensor_rank": 4,
       "kinetic_convention": "REQUIRED",
-      "state_basis": "REQUIRED"
+      "antisymmetry_convention": "REQUIRED",
+      "state_basis_artifact": "evidence/phi210_basis.json"
     },
     "H10": {
-      "tensor_rank": 1,
       "kinetic_convention": "REQUIRED",
-      "state_basis": "REQUIRED"
+      "state_basis_artifact": "evidence/h10_basis.json"
     },
     "Sigmabar126": {
-      "tensor_rank": 5,
-      "duality_convention": "REQUIRED",
       "kinetic_convention": "REQUIRED",
-      "state_basis": "REQUIRED"
+      "duality_convention": "REQUIRED",
+      "epsilon_convention": "REQUIRED",
+      "state_basis_artifact": "evidence/sigmabar126_basis.json"
     },
     "S": {
-      "normalization": "canonical real or complex singlet convention REQUIRED"
+      "kinetic_convention": "REQUIRED",
+      "real_or_complex_convention": "REQUIRED",
+      "state_basis_artifact": "evidence/s_basis.json"
     }
   },
   "singlet_vev_projection": {
@@ -29,32 +30,75 @@
     "omega": null,
     "vS": null,
     "hEW": 174.0,
-    "units": "GeV"
+    "units": "GeV",
+    "projection_artifact": "evidence/vev_projection.json"
   },
   "gamma_mapping": {
-    "definition": "gamma_eff = (gamma_eff_over_lambda4) * lambda4",
     "gamma_eff_over_lambda4": null,
-    "phase_convention": "REQUIRED"
+    "sign": null,
+    "phase_convention": "REQUIRED",
+    "mapping_artifact": "evidence/gamma_mapping.json"
   },
   "source_manifest": [
     {
       "citation": "Chen, Zhang and Bai, arXiv:1707.00580",
-      "use": "normalized SO(10) states and independent CGC cross-check"
+      "use": "normalized SO(10) states and independent CGC cross-check",
+      "locator": "exact equation/table/page REQUIRED"
     },
     {
       "citation": "Fukuyama et al., arXiv:hep-ph/0405300",
-      "use": "G422 component states and mass-matrix cross-check"
+      "use": "G422 component states and mass-matrix cross-check",
+      "locator": "exact equation/table/page REQUIRED"
     }
   ],
+  "artifact_hashes": {},
   "acceptance_evidence": {
-    "canonical_kinetic_normalization": null,
-    "direct_tensor_contraction": null,
-    "independent_matrix_reconstruction": null,
-    "physical_EW_branch_reminimized": null
+    "canonical_kinetic_normalization": {
+      "criterion": "Canonical kinetic normalization is demonstrated for Phi210, H10, Sigmabar126 and S in one declared convention.",
+      "passed": false,
+      "artifacts": []
+    },
+    "direct_tensor_contraction": {
+      "criterion": "The exact Phi_abcd H_e Sigmabar_abcde S contraction, factorials and duality signs are derived directly.",
+      "passed": false,
+      "artifacts": []
+    },
+    "independent_matrix_reconstruction": {
+      "criterion": "Every gamma-dependent E/F/J/X slot is independently reconstructed and matched to the target convention.",
+      "passed": false,
+      "artifacts": []
+    },
+    "physical_EW_branch_reminimized": {
+      "criterion": "The complete supplied component potential is re-minimized on the physical hEW=174 GeV branch.",
+      "passed": false,
+      "artifacts": []
+    },
+    "non_goldstone_spectrum_positive": {
+      "criterion": "Exactly 33 gauge Goldstones are removed and every remaining scalar mass-squared eigenvalue is positive.",
+      "passed": false,
+      "artifacts": []
+    }
+  },
+  "efjx_slot_match": {
+    "E": {"max_abs_residual_GeV": null, "tolerance_GeV": null, "passed": false, "artifact": "evidence/E_slot_match.json"},
+    "F": {"max_abs_residual_GeV": null, "tolerance_GeV": null, "passed": false, "artifact": "evidence/F_slot_match.json"},
+    "J": {"max_abs_residual_GeV": null, "tolerance_GeV": null, "passed": false, "artifact": "evidence/J_slot_match.json"},
+    "X": {"max_abs_residual_GeV": null, "tolerance_GeV": null, "passed": false, "artifact": "evidence/X_slot_match.json"}
+  },
+  "physical_EW_reminimization": {
+    "hEW_GeV": 174.0,
+    "stationarity_residual_GeV3": null,
+    "stationarity_tolerance_GeV3": null,
+    "gauge_goldstone_count": null,
+    "min_non_goldstone_eigenvalue_GeV2": null,
+    "efjx_thresholds_passed": false,
+    "competing_extrema_checked": false,
+    "boundedness_checked": false,
+    "artifact": "evidence/physical_EW_reminimization.json"
   },
   "closure_complete": false,
   "n_failed": 1,
   "failures": [
-    "template only: exact tensor contraction and physical-EW reminimization absent"
+    "template only: exact tensor contraction and physical-EW re-minimization absent"
   ]
 }
