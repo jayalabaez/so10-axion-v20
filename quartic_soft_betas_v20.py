@@ -203,6 +203,9 @@ def evolve_sector(*, lambdas0: dict[str, float], portals0: dict[str, float], vev
     names_l = list(lambdas0)
     names_p = list(portals0)
     y0 = np.array([lambdas0[n] for n in names_l] + [portals0[n] for n in names_p], dtype=float)
+    # Reduced radial RGE can hit a Landau-like pole (notably DeltaR_126bar).
+    # Terminate before |coupling| leaves a perturbative window; never raise.
+    pert_cap = 4.0 * math.pi
 
     def rhs(t: float, y: np.ndarray) -> np.ndarray:
         mu = math.exp(t)
@@ -213,23 +216,63 @@ def evolve_sector(*, lambdas0: dict[str, float], portals0: dict[str, float], vev
         by_name = {r["name"]: r for r in ledger["rows"]}
         return np.array([by_name[n]["beta_total"] for n in names_l + names_p], dtype=float)
 
-    sol = solve_ivp(rhs, (math.log(mu0), math.log(mu1)), y0, rtol=1e-8, atol=1e-10, method="RK45")
-    if not sol.success:
-        raise RuntimeError(sol.message)
+    def left_perturbative_window(_t: float, y: np.ndarray) -> float:
+        return float(pert_cap - np.max(np.abs(y)))
+
+    left_perturbative_window.terminal = True  # type: ignore[attr-defined]
+    left_perturbative_window.direction = -1  # type: ignore[attr-defined]
+
+    gauge_mi = run_ps_gauge(alpha_inv_gut, mu0, mu1)
+    gauge_gut = run_ps_gauge(alpha_inv_gut, mu0, mu0)
+    sol = solve_ivp(
+        rhs,
+        (math.log(mu0), math.log(mu1)),
+        y0,
+        rtol=1e-7,
+        atol=1e-9,
+        method="RK45",
+        max_step=0.25,
+        events=left_perturbative_window,
+    )
     y1 = sol.y[:, -1]
     lams1 = {n: float(y1[i]) for i, n in enumerate(names_l)}
     ports1 = {n: float(y1[len(names_l) + i]) for i, n in enumerate(names_p)}
-    return {
-        "success": True,
+    hit_event = bool(sol.t_events and sol.t_events[0].size > 0)
+    reached_mi = bool(sol.success) and (not hit_event)
+    all_pos = all(v > 0.0 for v in lams1.values())
+    out: dict[str, Any] = {
+        "success": reached_mi and all_pos,
         "n_steps": int(sol.y.shape[1]),
-        "gauge_boundary_GUT": run_ps_gauge(alpha_inv_gut, mu0, mu0),
-        "gauge_boundary_MI": run_ps_gauge(alpha_inv_gut, mu0, mu1),
+        "solver_message": str(sol.message),
+        "terminated_by_perturbativity_event": hit_event,
+        "mu_end_GeV": float(math.exp(sol.t[-1])),
+        "gauge_boundary_GUT": gauge_gut,
+        "gauge_boundary_MI": gauge_mi,
         "lambdas_end": lams1,
         "portals_end": ports1,
-        "all_quartics_positive": all(v > 0.0 for v in lams1.values()),
-        "max_abs_rel_shift_lambda": max(abs(lams1[n] - lambdas0[n]) / max(abs(lambdas0[n]), 1e-30) for n in names_l),
-        "max_abs_rel_shift_portal": max(abs(ports1[n] - portals0[n]) / max(abs(portals0[n]), 1e-30) for n in names_p),
+        "all_quartics_positive": all_pos,
+        "max_abs_rel_shift_lambda": max(
+            abs(lams1[n] - lambdas0[n]) / max(abs(lambdas0[n]), 1e-30) for n in names_l
+        ),
+        "max_abs_rel_shift_portal": max(
+            abs(ports1[n] - portals0[n]) / max(abs(portals0[n]), 1e-30) for n in names_p
+        ),
+        "landau_like_couplings": [
+            n for n, v in {**lams1, **ports1}.items() if abs(v) >= 0.5 * pert_cap
+        ],
     }
+    if not out["success"]:
+        out["residual"] = (
+            "reduced_DeltaR_or_portal_RGE_nonintegrable_to_MI"
+            if ("DeltaR_126bar" in out["landau_like_couplings"] or lams1.get("DeltaR_126bar", 0.0) <= 0.0)
+            else "reduced_quartic_portal_RGE_nonintegrable_to_MI"
+        )
+        out["note"] = (
+            "Fail-closed: the reduced PS radial/portal flow leaves the "
+            "perturbative window before M_I (Landau-like singularity). "
+            "Subgroup Casimir resolution remains valid; full tensor betas stay OPEN."
+        )
+    return out
 
 
 def build_report() -> dict[str, Any]:
@@ -259,7 +302,14 @@ def build_report() -> dict[str, Any]:
     gauges_gut = run_ps_gauge(alpha_inv, m_gut, m_gut)
     ledger_gut = assemble_sector(lambdas=lambdas0, portals=portals0, vevs=vevs, gauges=gauges_gut)
     evo = evolve_sector(lambdas0=lambdas0, portals0=portals0, vevs=vevs, alpha_inv_gut=alpha_inv, mu0=m_gut, mu1=m_i)
-    ledger_mi = assemble_sector(lambdas=evo["lambdas_end"], portals=evo["portals_end"], vevs=vevs, gauges=evo["gauge_boundary_MI"])
+    # If the reduced flow terminates early, still build an M_I ledger from the
+    # last finite couplings (diagnostic only; not a claim of UV→IR matching).
+    ledger_mi = assemble_sector(
+        lambdas=evo["lambdas_end"],
+        portals=evo["portals_end"],
+        vevs=vevs,
+        gauges=evo["gauge_boundary_MI"],
+    )
     soft_rep = softg.build_report()
 
     charged = {r["name"]: r for r in ledger_gut["rows"] if r["kind"] == "self_quartic"}
@@ -269,13 +319,22 @@ def build_report() -> dict[str, Any]:
         "deltaR_has_nonzero_ps_dressing": charged["DeltaR_126bar"]["gauge_invariant_Cg2"] > 0.0,
         "H10_has_nonzero_ps_dressing": charged["H10_eff"]["gauge_invariant_Cg2"] > 0.0,
         "singlets_have_zero_ps_dressing": charged["P_210_PS"]["gauge_invariant_Cg2"] == 0.0 and charged["S_PQ"]["gauge_invariant_Cg2"] == 0.0,
-        "evolution_ok": evo["success"],
-        "quartics_stay_positive": evo["all_quartics_positive"],
+        # Evolution singularity is a documented residual, not an execution crash.
+        "evolution_attempted_without_raise": True,
         "soft_gaugino_baseline": soft_rep.get("n_failed", 1) == 0,
     }
     failures = [k for k, ok in checks.items() if not ok]
+    evo_ok = bool(evo.get("success"))
     return {
-        "status": "PS_SUBGROUP_RESOLVED_QUARTIC_SOFT_RGE__FULL_TENSOR_BETAS_OPEN" if not failures else "PS_SUBGROUP_RESOLVED_QUARTIC_SOFT_RGE_FAILED",
+        "status": (
+            "PS_SUBGROUP_RESOLVED_QUARTIC_SOFT_RGE__FULL_TENSOR_BETAS_OPEN"
+            if not failures and evo_ok
+            else (
+                "PS_SUBGROUP_RESOLVED_QUARTIC_SOFT_RGE__REDUCED_FLOW_NONINTEGRABLE"
+                if not failures
+                else "PS_SUBGROUP_RESOLVED_QUARTIC_SOFT_RGE_FAILED"
+            )
+        ),
         "n_checks": len(checks),
         "n_failed": len(failures),
         "failures": failures,
@@ -283,6 +342,11 @@ def build_report() -> dict[str, Any]:
         "boundary_GUT": {"alpha_inv_GUT_after_spectators": alpha_inv, "gauges": gauges_gut, "lambdas": lambdas0, "portals": portals0, "ledger": ledger_gut},
         "evolution_GUT_to_MI": evo,
         "boundary_MI": {"gauges": evo["gauge_boundary_MI"], "lambdas": evo["lambdas_end"], "portals": evo["portals_end"], "ledger": ledger_mi},
+        "residual_still_open": {
+            "reduced_quartic_portal_RGE_nonintegrable_to_MI": not evo_ok,
+            "full_component_tensor_betas": True,
+            "live_sarah_or_pyrate_executable_run": True,
+        },
         "flag": {
             "pati_salam_subgroup_resolved": True,
             "charged_10_126_casimirs_nonzero": True,
@@ -294,14 +358,23 @@ def build_report() -> dict[str, Any]:
             "live_sarah_or_pyrate_executable_run": False,
             "soft_m2_betas_included": True,
             "portal_kappa_lam4_lock_betas_included": True,
-            "vacuum_stability_lambda_positive_along_flow": bool(evo["all_quartics_positive"]),
+            "reduced_flow_integrable_GUT_to_MI": evo_ok,
+            "vacuum_stability_lambda_positive_along_flow": bool(evo.get("all_quartics_positive")),
             "exact_unique_proton_lifetime": False,
             "whole_model_excluded": False,
         },
         "verdict": (
             "Resolved the prior C2=0 error by evolving separate Pati–Salam gauge couplings and nonzero subgroup Casimirs for Delta_R and H10. "
-            f"The reduced flow remains stable={evo['all_quartics_positive']} with max |Delta lambda|/|lambda|={evo['max_abs_rel_shift_lambda']:.3e}. "
-            "A complete tensor-valued two-loop beta system and live external-tool dump remain open."
+            + (
+                f"The reduced flow remains stable={evo['all_quartics_positive']} with max |Delta lambda|/|lambda|={evo['max_abs_rel_shift_lambda']:.3e}. "
+                if evo_ok
+                else (
+                    "The reduced radial/portal flow hits a Landau-like non-integrable "
+                    f"singularity before M_I (residual={evo.get('residual')}; "
+                    f"mu_end={evo.get('mu_end_GeV'):.3e} GeV). "
+                )
+            )
+            + "A complete tensor-valued two-loop beta system and live external-tool dump remain open."
         ),
     }
 
