@@ -1,0 +1,50 @@
+name: fermion-tower-cw
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  fermion-tower-cw:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Execute fermion tower CW
+        run: python fermion_tower_cw_v20.py
+      - name: Focused regression tests
+        run: python -m unittest -v test_fermion_tower_cw_v20.py
+      - name: Assert honest scientific scope
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('FERMION_TOWER_CW_V20_VERDICT.json'))
+          assert r['status']=='FERMION_TOWER_IN_CW__G_SINGLET_AND_SARAH_OPEN'
+          assert r['n_failed']==0
+          assert r['ledger']['n_soft_gaugino_majoranas']==33
+          assert r['flag']['fermion_tower_complete']
+          assert r['flag']['matter_16_tower_in_cw']
+          assert r['flag']['soft_gaugino_conditional']
+          assert r['flag']['fermion_proxy_replaced']
+          assert r['flag']['one_loop_stability_conditional']
+          assert not r['flag']['exact_soft_gaugino_masses_from_uv']
+          assert not r['flag']['g_singlet_6x6_complete']
+          assert not r['flag']['exact_unique_proton_lifetime']
+          assert not r['flag']['whole_model_excluded']
+          PY
+      - name: Upload fermion tower CW verdicts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fermion-tower-cw-verdict
+          path: |
+            FERMION_TOWER_CW_V20_VERDICT.json
+            FERMION_TOWER_CW_V20.md
