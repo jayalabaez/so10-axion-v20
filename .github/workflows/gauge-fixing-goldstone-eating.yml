@@ -1,0 +1,52 @@
+name: gauge-fixing-goldstone-eating
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  gauge-fixing-goldstone-eating:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Execute gauge fixing / Goldstone eating
+        run: python gauge_fixing_goldstone_eating_v20.py
+      - name: Focused regression tests
+        run: python -m unittest -v test_gauge_fixing_goldstone_eating_v20.py
+      - name: Assert honest scientific scope
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('GAUGE_FIXING_GOLDSTONE_EATING_V20_VERDICT.json'))
+          assert r['status']=='UNITARY_GAUGE_GOLDSTONE_EATING_COMPLETE__FLAVOUR_ROTATIONS_OPEN'
+          assert r['n_failed']==0
+          assert r['breaking_chain']['broken']['SO10_to_SM_total']==33
+          assert r['massive_gauge_map']['matches_broken_generators']
+          assert r['massive_gauge_map']['n_goldstones_eaten']==33
+          by={p['name']:p for p in r['points']}
+          assert by['locking_only']['physical_phase']['n_positive']==1
+          assert by['locking_only']['physical_phase']['n_zero']==2
+          assert by['finite_kappa_benchmark']['physical_phase']['n_positive']==2
+          assert by['finite_kappa_benchmark']['physical_phase']['n_zero']==1
+          assert r['flag']['unitary_gauge_goldstone_eating_complete']
+          assert not r['flag']['unique_flavour_rotations_for_XY']
+          assert not r['flag']['exact_unique_proton_lifetime']
+          assert not r['flag']['whole_model_excluded']
+          PY
+      - name: Upload gauge-fixing verdicts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gauge-fixing-goldstone-eating-verdict
+          path: |
+            GAUGE_FIXING_GOLDSTONE_EATING_V20_VERDICT.json
+            GAUGE_FIXING_GOLDSTONE_EATING_V20.md
