@@ -18,13 +18,18 @@ jobs:
         run: python -m pip install -r requirements.txt
       - name: Execute invariant-floor audit
         run: python mixed_rep_invariant_floor_audit_v20.py
-      - name: Focused regression tests
+      - name: Test invariant-floor audit
         run: python -m unittest -v test_mixed_rep_invariant_floor_audit_v20.py
+      - name: Execute exact integer witnesses
+        run: python mixed_rep_invariant_exact_witness_v20.py
+      - name: Test exact integer witnesses
+        run: python -m unittest -v test_mixed_rep_invariant_exact_witness_v20.py
       - name: Assert historical completeness claim is falsified
         run: |
           python - <<'PY'
           import json
           r=json.load(open('MIXED_REP_INVARIANT_FLOOR_AUDIT_V20.json'))
+          w=json.load(open('MIXED_REP_INVARIANT_EXACT_WITNESS_V20.json'))
           assert r['n_failed']==0, r
           assert r['counts']['historical_upstream_invariants_total']==25
           assert r['counts']['corrected_total_invariant_floor']>=37
@@ -34,6 +39,11 @@ jobs:
           assert r['flag']['historical_complete_filtered_basis_claim_falsified']
           assert not r['flag']['full_unfiltered_molien_haar_series']
           assert not r['flag']['whole_model_excluded']
+          assert w['n_failed']==0, w
+          assert w['flag']['five_rank_two_sectors_exactly_witnessed']
+          assert all(v!=0 for v in w['determinants'].values())
+          assert not w['flag']['full_molien_series']
+          assert not w['flag']['whole_model_excluded']
           PY
       - name: Upload verdicts
         if: always()
@@ -43,3 +53,4 @@ jobs:
           path: |
             MIXED_REP_INVARIANT_FLOOR_AUDIT_V20.json
             MIXED_REP_INVARIANT_FLOOR_AUDIT_V20.md
+            MIXED_REP_INVARIANT_EXACT_WITNESS_V20.json
