@@ -1,0 +1,61 @@
+name: current-main-full-reaudit
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  full-reaudit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      PYTHONHASHSEED: "0"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Compile every Python module
+        run: python -m compileall -q .
+      - name: Execute current-main scalar/proton re-audit
+        run: python scalar_proton_falsification_gate_v20.py
+      - name: Focused fail-closed re-audit tests
+        run: python -m unittest -v test_scalar_proton_falsification_gate_v20.py
+      - name: Reproduce pristine release
+        run: python replicate.py
+      - name: Validate release anchors
+        run: python validate_release_v20.py
+      - name: Run explicit falsification suite
+        run: python falsify_v20.py
+      - name: Run extensive adversarial campaign
+        run: python extensive_confirm_falsify_v20.py
+      - name: Discover and run the full test suite
+        run: python -m unittest discover -v -p 'test_*.py'
+      - name: Assert honest final scope
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('SCALAR_PROTON_FALSIFICATION_GATE_V20.json'))
+          assert r['overall_state']=='BLOCKED', r
+          assert r['certificates']['all_critical_modules_executed']
+          assert r['certificates']['hessian_residuals_closed_in_repository_stack']
+          assert r['certificates']['mixed_spectrum_positive_in_repository_stack']
+          assert r['certificates']['exact_pq_kernel_lifted']
+          assert not r['certificates']['selected_lam4_clears_null_tolerance']
+          assert r['certificates']['cal_G_soft_mode_remaining']
+          assert not r['certificates']['live_sarah_or_pyrate_run']
+          assert not r['certificates']['exact_unique_proton_lifetime']
+          assert not r['certificates']['whole_model_excluded']
+          assert not r['certificates']['whole_model_validated']
+          PY
+      - name: Upload re-audit verdict
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: current-main-scalar-proton-reaudit
+          path: |
+            SCALAR_PROTON_FALSIFICATION_GATE_V20.json
+            SCALAR_PROTON_FALSIFICATION_GATE_V20.md
