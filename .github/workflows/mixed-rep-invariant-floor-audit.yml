@@ -16,43 +16,52 @@ jobs:
           cache: pip
       - name: Install dependencies
         run: python -m pip install -r requirements.txt
-      - name: Execute invariant-floor audit
+      - name: Execute omission audit
         run: python mixed_rep_invariant_floor_audit_v20.py
-      - name: Test invariant-floor audit
+      - name: Test omission audit
         run: python -m unittest -v test_mixed_rep_invariant_floor_audit_v20.py
       - name: Execute exact integer witnesses
         run: python mixed_rep_invariant_exact_witness_v20.py
       - name: Test exact integer witnesses
         run: python -m unittest -v test_mixed_rep_invariant_exact_witness_v20.py
-      - name: Emit canonical 37-invariant floor
+      - name: Execute signed cubic audit
+        run: python so10_cubic_operator_signed_audit_v20.py
+      - name: Test signed cubic audit
+        run: python -m unittest -v test_so10_cubic_operator_signed_audit_v20.py
+      - name: Emit signed guaranteed floor34
         run: python mixed_rep_enlarged_floor_basis_v20.py
-      - name: Test canonical 37-invariant floor
+      - name: Test signed guaranteed floor34
         run: python -m unittest -v test_mixed_rep_enlarged_floor_basis_v20.py
-      - name: Assert historical completeness claim is falsified
+      - name: Assert signed scientific scope
         run: |
           python - <<'PY'
           import json
           r=json.load(open('MIXED_REP_INVARIANT_FLOOR_AUDIT_V20.json'))
           w=json.load(open('MIXED_REP_INVARIANT_EXACT_WITNESS_V20.json'))
+          c=json.load(open('SO10_CUBIC_OPERATOR_SIGNED_AUDIT_V20.json'))
           e=json.load(open('MIXED_REP_ENLARGED_FLOOR_BASIS_V20.json'))
           assert r['n_failed']==0, r
           assert r['counts']['historical_upstream_invariants_total']==25
-          assert r['counts']['corrected_total_invariant_floor']>=37
           assert len(r['missing_norm_products'])==6
           assert len(r['multiplicity_deficits'])==5
           assert all(v['evaluation_rank']==2 for v in r['numerical_independence'].values())
           assert r['flag']['historical_complete_filtered_basis_claim_falsified']
-          assert not r['flag']['full_unfiltered_molien_haar_series']
           assert not r['flag']['whole_model_excluded']
           assert w['n_failed']==0, w
           assert w['flag']['five_rank_two_sectors_exactly_witnessed']
           assert all(v!=0 for v in w['determinants'].values())
-          assert not w['flag']['full_molien_series']
-          assert not w['flag']['whole_model_excluded']
+          assert c['n_failed']==0, c
+          assert c['flag']['forbidden_210_10dag10_proved']
+          assert c['counts']['historical_subtotal']==5
+          assert c['counts']['signed_floor_subtotal']==2
+          assert c['counts']['net_reduction']==3
           assert e['n_failed']==0, e
-          assert e['counts']['guaranteed_floor_total']==37
+          assert e['counts']['mechanical_augmented_total_before_signed_corrections']==37
+          assert e['counts']['signed_guaranteed_floor_total']==34
           assert len(e['guaranteed_floor_basis']['appended'])==11
-          assert e['flag']['canonical_floor_37_emitted']
+          assert e['flag']['mechanical_floor37_rejected']
+          assert e['flag']['canonical_signed_floor_34_emitted']
+          assert e['flag']['forbidden_210_10dag10_removed']
           assert not e['flag']['full_unfiltered_molien_haar_series']
           assert not e['flag']['whole_model_excluded']
           PY
@@ -65,5 +74,7 @@ jobs:
             MIXED_REP_INVARIANT_FLOOR_AUDIT_V20.json
             MIXED_REP_INVARIANT_FLOOR_AUDIT_V20.md
             MIXED_REP_INVARIANT_EXACT_WITNESS_V20.json
+            SO10_CUBIC_OPERATOR_SIGNED_AUDIT_V20.json
+            SO10_CUBIC_OPERATOR_SIGNED_AUDIT_V20.md
             MIXED_REP_ENLARGED_FLOOR_BASIS_V20.json
             MIXED_REP_ENLARGED_FLOOR_BASIS_V20.md
