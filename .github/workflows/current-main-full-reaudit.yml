@@ -30,6 +30,10 @@ jobs:
         run: python nonsusy_reduced_hessian_v20.py
       - name: Test independent non-SUSY reduced Hessian
         run: python -m unittest -v test_nonsusy_reduced_hessian_v20.py
+      - name: Execute exact SO10 gauge-orbit certificate
+        run: python so10_nonsusy_gauge_orbit_v20.py
+      - name: Test exact SO10 gauge-orbit certificate
+        run: python -m unittest -v test_so10_nonsusy_gauge_orbit_v20.py
       - name: Execute current-main scalar/proton re-audit
         run: python scalar_proton_falsification_gate_v20.py
       - name: Focused fail-closed re-audit tests
@@ -55,6 +59,7 @@ jobs:
           r=json.load(open('SCALAR_PROTON_FALSIFICATION_GATE_V20.json'))
           q=json.load(open('QUARTIC_SOFT_BETAS_V20_VERDICT.json'))
           n=json.load(open('NONSUSY_REDUCED_HESSIAN_V20_VERDICT.json'))
+          g=json.load(open('SO10_NONSUSY_GAUGE_ORBIT_V20_VERDICT.json'))
           f=json.load(open('CURRENT_MAIN_REPAIR_CLOSURE_V20.json'))
           c=r['certificates']
           assert r['overall_state']=='BLOCKED', r
@@ -66,14 +71,22 @@ jobs:
           assert q['flag']['charged_10_126_casimirs_nonzero']
           assert q['flag']['separate_g4_gL_gR_running']
           assert not q['flag']['two_loop_quartic_betas_complete']
+          assert n['bfb_certificate']['sextic_highest_degree_nonnegative']
+          assert n['bfb_certificate']['quartic_amgm_passes']
           assert n['flag']['independent_nonsusy_reduced_hessian']
-          assert n['flag']['phase_lock_modulus_companion_added']
           assert n['flag']['reduced_potential_bounded_from_below']
           assert n['flag']['reduced_local_minimum_positive_definite']
           assert not n['flag']['uses_aulakh_or_msgut_component_matrices']
           assert not n['flag']['full_component_nonsusy_hessian']
+          assert g['orbit']['combined_orbit_rank_goldstones']==33
+          assert g['orbit']['combined_stabilizer_dimension']==12
+          assert g['orbit']['so6_stabilizer_dimension']==8
+          assert g['orbit']['so4_stabilizer_dimension']==4
+          assert g['flag']['independent_of_susy_mass_matrices']
+          assert not g['flag']['full_component_hessian_derived']
           assert f['overall_state']=='BLOCKED'
           assert all(f['resolved_breakpoints'].values())
+          assert f['numerical']['goldstone_count']==33
           assert f['remaining_blockers']['full_component_nonsusy_hessian']
           assert f['remaining_blockers']['full_tensor_two_loop_betas']
           assert f['remaining_blockers']['exact_unique_proton_lifetime']
@@ -93,5 +106,7 @@ jobs:
             MIXED_REP_HILBERT_BFB_COMPLETION_V20.md
             NONSUSY_REDUCED_HESSIAN_V20_VERDICT.json
             NONSUSY_REDUCED_HESSIAN_V20.md
+            SO10_NONSUSY_GAUGE_ORBIT_V20_VERDICT.json
+            SO10_NONSUSY_GAUGE_ORBIT_V20.md
             CURRENT_MAIN_REPAIR_CLOSURE_V20.json
             CURRENT_MAIN_REPAIR_CLOSURE_V20.md
