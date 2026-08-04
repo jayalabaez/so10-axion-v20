@@ -22,11 +22,12 @@ jobs:
         run: python -m compileall -q .
       - name: Execute subgroup-resolved RGE
         run: python quartic_soft_betas_v20.py
-      - name: Execute invariant floor audit
+      - name: Execute signed invariant chain
         run: |
           python mixed_rep_hilbert_bfb_completion_v20.py
           python mixed_rep_invariant_floor_audit_v20.py
           python mixed_rep_invariant_exact_witness_v20.py
+          python so10_cubic_operator_signed_audit_v20.py
           python mixed_rep_enlarged_floor_basis_v20.py
       - name: Execute physical-EW Hessian and no-rescue theorem
         run: |
@@ -36,14 +37,17 @@ jobs:
         run: python so10_nonsusy_gauge_orbit_v20.py
       - name: Execute latest-main dependency audit
         run: python latest_main_residual_integration_v20.py
-      - name: Execute final scalar gate
-        run: python final_scalar_theory_gate_v20.py
+      - name: Execute repair and final gates
+        run: |
+          python current_main_repair_closure_v20.py
+          python final_scalar_theory_gate_v20.py
       - name: Run focused tests
         run: |
           python -m unittest -v \
             test_quartic_soft_betas_v20.py \
             test_mixed_rep_invariant_floor_audit_v20.py \
             test_mixed_rep_invariant_exact_witness_v20.py \
+            test_so10_cubic_operator_signed_audit_v20.py \
             test_mixed_rep_enlarged_floor_basis_v20.py \
             test_nonsusy_reduced_hessian_v20.py \
             test_ew_portal_rescue_bound_v20.py \
@@ -55,19 +59,27 @@ jobs:
         run: |
           python - <<'PY'
           import json
+          c=json.load(open('SO10_CUBIC_OPERATOR_SIGNED_AUDIT_V20.json'))
           e=json.load(open('MIXED_REP_ENLARGED_FLOOR_BASIS_V20.json'))
           n=json.load(open('NONSUSY_REDUCED_HESSIAN_V20_VERDICT.json'))
           u=json.load(open('EW_PORTAL_RESCUE_BOUND_V20.json'))
           l=json.load(open('LATEST_MAIN_RESIDUAL_INTEGRATION_V20.json'))
           z=json.load(open('FINAL_SCALAR_THEORY_GATE_V20.json'))
-          assert e['counts']['guaranteed_floor_total']==37
-          assert e['flag']['canonical_floor_37_emitted']
+          assert c['n_failed']==0, c
+          assert c['flag']['forbidden_210_10dag10_proved']
+          assert c['counts']['net_reduction']==3
+          assert e['counts']['mechanical_augmented_total_before_signed_corrections']==37
+          assert e['counts']['signed_guaranteed_floor_total']==34
+          assert e['flag']['mechanical_floor37_rejected']
+          assert e['flag']['canonical_signed_floor_34_emitted']
+          assert n['enlarged_basis']['signed_guaranteed_floor_total']==34
+          assert n['flag']['signed_floor34_used']
           assert n['target_vevs_GeV']['H10_EW']==174.0
           assert n['survival_benchmark']['positive_definite']
           assert n['historical_benchmark']['tachyonic']
           assert n['flag']['historical_selected_lam4_point_excluded']
-          assert u['n_failed']==0
-          assert u['flag']['historical_lam4_point_excluded_within_guaranteed_floor']
+          assert u['n_failed']==0, u
+          assert u['flag']['historical_lam4_point_excluded_within_signed_floor34']
           assert u['flag']['guaranteed_H4_channels_insufficient_perturbatively']
           assert u['numerical']['required_over_combined_perturbative_allowance'] > 1e20
           assert l['n_failed']==0, l
@@ -78,8 +90,10 @@ jobs:
           assert l['invalidated_selected_point_claims']['all_post_hessian_residuals_closed']
           assert z['overall_state']=='BLOCKED', z
           assert all(z['resolved_breakpoints'].values())
+          assert z['flags']['mechanical_floor37_rejected']
+          assert z['flags']['signed_guaranteed_floor34_emitted']
           assert z['flags']['historical_lambda4_benchmark_excluded']
-          assert z['flags']['historical_lambda4_benchmark_not_rescuable_with_floor37_perturbative_even_H_terms']
+          assert z['flags']['historical_lambda4_benchmark_not_rescuable_with_signed_floor34_perturbative_even_H_terms']
           assert z['flags']['live_pyrate_artifacts_validated']
           assert z['flags']['scalar_alpha_nonuniqueness_proven']
           assert z['flags']['latest_main_proxy_selected_point_closures_invalidated']
@@ -97,10 +111,12 @@ jobs:
         with:
           name: latest-main-final-scalar-gate
           path: |
+            SO10_CUBIC_OPERATOR_SIGNED_AUDIT_V20.json
             MIXED_REP_ENLARGED_FLOOR_BASIS_V20.json
             NONSUSY_REDUCED_HESSIAN_V20_VERDICT.json
             EW_PORTAL_RESCUE_BOUND_V20.json
             SO10_NONSUSY_GAUGE_ORBIT_V20_VERDICT.json
             LATEST_MAIN_RESIDUAL_INTEGRATION_V20.json
+            CURRENT_MAIN_REPAIR_CLOSURE_V20.json
             FINAL_SCALAR_THEORY_GATE_V20.json
             FINAL_SCALAR_THEORY_GATE_V20.md
