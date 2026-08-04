@@ -1,0 +1,51 @@
+name: nonsusy-z17-pq-potential-filter
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  nonsusy-z17-pq-filter:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Execute Z17/PQ nonsusy operator filter
+        run: python nonsusy_z17_pq_potential_filter_v20.py
+      - name: Focused regression tests
+        run: python -m unittest -v test_nonsusy_z17_pq_potential_filter_v20.py
+      - name: Assert honest scientific scope
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('NONSUSY_Z17_PQ_POTENTIAL_FILTER_V20_VERDICT.json'))
+          assert r['status']=='NONSUSY_Z17_PQ_OPERATOR_FILTER_COMPLETE__FULL_TENSORS_OPEN'
+          assert r['n_failed']==0
+          assert r['flag']['z17_pq_x_filter_applied']
+          assert r['flag']['bare_10_squared_forbidden']
+          assert r['flag']['ten2_S_allowed']
+          assert r['flag']['locking_operator_charge_allowed']
+          assert not r['flag']['invented_unpublished_cg_tensors']
+          assert not r['flag']['complete_so10_scalar_potential']
+          assert not r['flag']['full_component_tensors_normalized']
+          assert not r['flag']['whole_model_excluded']
+          ops={o['name']:o for o in r['operators']}
+          assert not ops['bare_10_H^2']['charge_allowed']['all']
+          assert ops['10_H^2 S']['charge_allowed']['all']
+          PY
+      - name: Upload Z17/PQ filter verdicts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nonsusy-z17-pq-potential-filter-verdict
+          path: |
+            NONSUSY_Z17_PQ_POTENTIAL_FILTER_V20_VERDICT.json
+            NONSUSY_Z17_PQ_POTENTIAL_FILTER_V20.md
