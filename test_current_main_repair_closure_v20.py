@@ -20,19 +20,21 @@ class RepairClosureTests(unittest.TestCase):
         )
         self.assertTrue(self.report["flags"]["executable_breakpoints_repaired"])
 
-    def test_invariant_ledger_completeness_claim_is_falsified(self):
+    def test_signed_invariant_audit(self):
         numerical = self.report["numerical"]
-        self.assertEqual(numerical["historical_invariant_total"], 25)
-        self.assertEqual(numerical["corrected_guaranteed_invariant_floor"], 37)
+        self.assertEqual(numerical["historical_invariant_claimed_total"], 25)
+        self.assertEqual(numerical["mechanical_augmented_total_rejected"], 37)
+        self.assertEqual(numerical["signed_guaranteed_invariant_floor"], 34)
         self.assertEqual(numerical["missing_norm_quartics"], 6)
         self.assertEqual(numerical["multiplicity_deficits"], 5)
         self.assertTrue(self.report["flags"]["historical_basis_claim_falsified"])
+        self.assertTrue(self.report["flags"]["mechanical_floor37_rejected"])
         self.assertTrue(
             self.report["remaining_blockers"]["complete_mixed_rep_invariant_enumeration"]
         )
         self.assertTrue(
             self.report["remaining_blockers"][
-                "full_37_channel_tensor_projection_and_reminimization"
+                "full_signed_floor34_tensor_projection_and_reminimization"
             ]
         )
 
