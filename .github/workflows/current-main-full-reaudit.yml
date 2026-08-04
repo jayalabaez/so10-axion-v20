@@ -32,6 +32,7 @@ jobs:
       - name: Execute EFJX physical CGC gate and residual integration
         run: |
           python efjx_cgc_physical_normalization_gate_v20.py
+          python phi210_h10_sigmabar126_s_cgc_derivation_v20.py --write
           python latest_main_residual_integration_v20.py
           python irreducible_gap_closure_contract_v20.py
       - name: Focused PR tests
@@ -39,6 +40,7 @@ jobs:
           python -m unittest -v \
             test_efjx_cgc_physical_normalization_gate_v20.py \
             test_efjx_cgc_normalization_input_contract_v20.py \
+            test_phi210_h10_sigmabar126_s_cgc_derivation_v20.py \
             test_latest_main_residual_integration_v20.py \
             test_irreducible_gap_closure_contract_v20.py
       - name: Assert EFJX physical scope
