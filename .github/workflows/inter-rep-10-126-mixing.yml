@@ -1,0 +1,48 @@
+name: inter-rep-10-126-mixing
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  inter-rep-10-126-mixing:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Execute inter-rep 10–126 mixing
+        run: python inter_rep_10_126_mixing_v20.py
+      - name: Focused regression tests
+        run: python -m unittest -v test_inter_rep_10_126_mixing_v20.py
+      - name: Assert honest scientific scope
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('INTER_REP_10_126_MIXING_V20_VERDICT.json'))
+          assert r['status']=='INTER_REP_10_126_MIXING_DERIVED__UNIQUE_SPECTRUM_OPEN'
+          assert r['n_failed']==0
+          m=r['mt_and_mixing']['mixing']
+          assert abs(m['frac_10_parent']+m['frac_126_parent']-1.0)<1e-9
+          assert m['lightest_abs_GeV']>0
+          assert r['flag']['inter_rep_mixing_angles_derived']
+          assert r['flag']['uv_selected_kappa_lam4_used']
+          assert not r['flag']['unique_full_triplet_spectrum']
+          assert not r['flag']['exact_unique_proton_lifetime']
+          assert not r['flag']['whole_model_excluded']
+          PY
+      - name: Upload inter-rep mixing verdicts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: inter-rep-10-126-mixing-verdict
+          path: |
+            INTER_REP_10_126_MIXING_V20_VERDICT.json
+            INTER_REP_10_126_MIXING_V20.md
