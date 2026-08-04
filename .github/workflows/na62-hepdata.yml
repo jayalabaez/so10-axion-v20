@@ -1,8 +1,11 @@
 name: na62-hepdata
 
 on:
-  pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: na62-hepdata-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   ingest:

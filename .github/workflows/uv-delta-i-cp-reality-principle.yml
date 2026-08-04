@@ -1,10 +1,11 @@
 name: uv-delta-i-cp-reality-principle
 
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: uv-delta-i-cp-reality-principle-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   uv-delta-i-cp-reality-principle:

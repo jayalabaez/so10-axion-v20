@@ -1,10 +1,11 @@
 name: two-loop-matrix-flavour-rg-ps
 
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: two-loop-matrix-flavour-rg-ps-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   two-loop-matrix-flavour-rg-ps:

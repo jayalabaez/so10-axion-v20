@@ -1,10 +1,11 @@
 name: replicate-and-falsify
 
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: replicate-and-falsify-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   falsify:

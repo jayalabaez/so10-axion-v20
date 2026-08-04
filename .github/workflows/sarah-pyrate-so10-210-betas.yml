@@ -1,10 +1,11 @@
 name: sarah-pyrate-so10-210-betas
 
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: sarah-pyrate-so10-210-betas-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   sarah-pyrate-so10-210-betas:

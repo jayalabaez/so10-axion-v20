@@ -1,20 +1,11 @@
 name: portal-full-complex-orientation-sphere
 
 on:
-  pull_request:
-    paths:
-      - "portal_full_complex_orientation_sphere_v20.py"
-      - "test_portal_full_complex_orientation_sphere_v20.py"
-      - "portal_family_orientation_map_v20.py"
-      - "portal_constraint_ray_v20.py"
-      - "portal_boundary_heavy_spectrum_v20.py"
-      - "channel_fcnc_rates_v20.py"
-      - "na62_pointwise_limit_v20.py"
-      - "twist_massless_limit_v20.py"
-      - "portal_tensors_abcd_v20.py"
-      - "physical_cf_matching_v20.py"
-      - ".github/workflows/portal-full-complex-orientation-sphere.yml"
   workflow_dispatch:
+
+concurrency:
+  group: portal-full-complex-orientation-sphere-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   sample:

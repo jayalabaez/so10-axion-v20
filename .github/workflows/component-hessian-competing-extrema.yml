@@ -1,10 +1,11 @@
 name: component-hessian-competing-extrema
 
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: component-hessian-competing-extrema-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   component-hessian-competing-extrema:

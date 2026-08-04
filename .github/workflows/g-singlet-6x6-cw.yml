@@ -1,10 +1,11 @@
 name: g-singlet-6x6-cw
 
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: g-singlet-6x6-cw-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   g-singlet-6x6-cw:

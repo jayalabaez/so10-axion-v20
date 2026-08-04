@@ -1,10 +1,11 @@
 name: cg-normalized-mt-locking-mix
 
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: cg-normalized-mt-locking-mix-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   cg-normalized-mt-locking-mix:

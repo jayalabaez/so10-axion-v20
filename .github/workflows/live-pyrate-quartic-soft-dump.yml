@@ -1,10 +1,11 @@
 name: live-pyrate-quartic-soft-dump
 
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: live-pyrate-quartic-soft-dump-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   live-pyrate-quartic-soft-dump:

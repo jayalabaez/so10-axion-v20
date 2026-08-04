@@ -1,10 +1,11 @@
 name: mixed-210-126-10-hilbert-hessian
 
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: mixed-210-126-10-hilbert-hessian-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   mixed-210-126-10-hilbert-hessian:

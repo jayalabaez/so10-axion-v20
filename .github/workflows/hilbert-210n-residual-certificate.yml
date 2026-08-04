@@ -1,10 +1,11 @@
 name: hilbert-210n-residual-certificate
 
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: hilbert-210n-residual-certificate-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   hilbert-210n-residual-certificate:

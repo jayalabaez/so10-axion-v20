@@ -1,10 +1,11 @@
 name: tau-p-uv-vacuum-selection
 
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: tau-p-uv-vacuum-selection-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   tau-p-uv-vacuum-selection:

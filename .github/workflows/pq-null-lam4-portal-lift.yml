@@ -1,10 +1,11 @@
 name: pq-null-lam4-portal-lift
 
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: pq-null-lam4-portal-lift-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   pq-null-lam4-portal-lift:

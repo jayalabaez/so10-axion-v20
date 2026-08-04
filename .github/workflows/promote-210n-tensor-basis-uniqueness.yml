@@ -1,10 +1,11 @@
 name: promote-210n-tensor-basis-uniqueness
 
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: promote-210n-tensor-basis-uniqueness-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   promote-210n-tensor-basis-uniqueness:

@@ -1,10 +1,11 @@
 name: lam4-potential-efjx-decoupling
 
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: lam4-potential-efjx-decoupling-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   lam4-potential-efjx-decoupling:

@@ -1,10 +1,11 @@
 name: soft-gaugino-uv-masses
 
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: soft-gaugino-uv-masses-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   soft-gaugino-uv-masses:

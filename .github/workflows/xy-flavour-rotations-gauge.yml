@@ -1,10 +1,11 @@
 name: xy-flavour-rotations-gauge
 
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: xy-flavour-rotations-gauge-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   xy-flavour-rotations-gauge:

@@ -1,10 +1,11 @@
 name: hilbert-mixed-8comp-hessian
 
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: hilbert-mixed-8comp-hessian-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   hilbert-mixed-8comp-hessian:

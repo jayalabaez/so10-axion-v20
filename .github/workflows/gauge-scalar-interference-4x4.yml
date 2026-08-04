@@ -1,10 +1,11 @@
 name: gauge-scalar-interference-4x4
 
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: gauge-scalar-interference-4x4-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   gauge-scalar-interference-4x4:

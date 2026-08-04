@@ -1,10 +1,11 @@
 name: patel-shukla-scalar-pdecay
 
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: patel-shukla-scalar-pdecay-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   patel-shukla-channels:

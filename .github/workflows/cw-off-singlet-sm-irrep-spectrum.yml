@@ -1,10 +1,11 @@
 name: cw-off-singlet-sm-irrep-spectrum
 
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: cw-off-singlet-sm-irrep-spectrum-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   cw-off-singlet-sm-irrep-spectrum:

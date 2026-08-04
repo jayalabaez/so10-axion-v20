@@ -1,10 +1,11 @@
 name: current-main-proton-decay
 
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: current-main-proton-decay-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   evaluate-current-main-proton-decay:

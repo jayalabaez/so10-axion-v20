@@ -1,10 +1,11 @@
 name: conditional-mt-interference
 
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: conditional-mt-interference-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   conditional-mt-interference:

@@ -1,8 +1,11 @@
 name: mixed-rep-invariant-floor-audit
 
 on:
-  pull_request:
   workflow_dispatch:
+
+concurrency:
+  group: mixed-rep-invariant-floor-audit-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   invariant-floor:
