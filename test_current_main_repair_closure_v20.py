@@ -20,6 +20,14 @@ class RepairClosureTests(unittest.TestCase):
         )
         self.assertTrue(self.report["flags"]["reduced_sector_repaired"])
 
+    def test_exact_goldstone_problem_resolved(self):
+        numerical = self.report["numerical"]
+        self.assertEqual(numerical["goldstone_count"], 33)
+        self.assertEqual(numerical["unbroken_stabilizer_dimension"], 12)
+        self.assertEqual(numerical["so6_stabilizer_dimension"], 8)
+        self.assertEqual(numerical["so4_stabilizer_dimension"], 4)
+        self.assertTrue(self.report["flags"]["goldstone_problem_resolved"])
+
     def test_full_theory_remains_fail_closed(self):
         self.assertEqual(self.report["overall_state"], "BLOCKED")
         self.assertTrue(self.report["remaining_blockers"]["full_component_nonsusy_hessian"])
