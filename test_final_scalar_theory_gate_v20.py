@@ -19,23 +19,30 @@ class FinalScalarTheoryGateTests(unittest.TestCase):
             self.report["resolved_breakpoints"],
         )
 
-    def test_historical_point_is_excluded_and_not_perturbatively_rescued(self):
+    def test_signed_invariant_audit_and_no_rescue(self):
         flags = self.report["flags"]
         numerical = self.report["numerical"]
+        self.assertTrue(flags["historical_invariant_ledger_falsified"])
+        self.assertTrue(flags["mechanical_floor37_rejected"])
+        self.assertTrue(flags["signed_guaranteed_floor34_emitted"])
+        self.assertEqual(numerical["signed_guaranteed_invariant_floor"], 34)
+        self.assertEqual(numerical["mechanical_augmented_total_rejected"], 37)
         self.assertTrue(flags["historical_lambda4_benchmark_excluded"])
         self.assertTrue(
             flags[
-                "historical_lambda4_benchmark_not_rescuable_with_floor37_perturbative_even_H_terms"
+                "historical_lambda4_benchmark_not_rescuable_with_signed_floor34_perturbative_even_H_terms"
             ]
         )
         self.assertLess(
             numerical["historical_direct_HH_curvature_GeV2"], -1.0e30
         )
         self.assertGreater(
-            numerical["required_over_floor37_perturbative_allowance"], 1.0e20
+            numerical["required_over_signed_floor34_perturbative_allowance"],
+            1.0e20,
         )
         self.assertLess(
-            numerical["best_case_floor37_rescued_HH_curvature_GeV2"], 0.0
+            numerical["best_case_signed_floor34_rescued_HH_curvature_GeV2"],
+            0.0,
         )
 
     def test_latest_main_valid_results_are_retained(self):
