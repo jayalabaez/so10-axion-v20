@@ -1,0 +1,66 @@
+name: tau-p-ultimate-residual-checklist
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  tau-p-ultimate-residual-checklist:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Install PyR@TE 3 (for live residual flag continuity)
+        run: |
+          mkdir -p "$HOME/lab"
+          git clone --depth 1 https://github.com/LSartore/pyrate.git "$HOME/lab/pyrate"
+          python -m venv "$HOME/lab/pyrate-venv"
+          "$HOME/lab/pyrate-venv/bin/pip" install -U pip
+          "$HOME/lab/pyrate-venv/bin/pip" install "PyYAML>=5.3" "sympy>=1.5" "h5py>=2.10" "numpy>=1.18" "scipy>=1.4" "matplotlib>=3.1"
+          echo "$HOME/lab/bin" >> "$GITHUB_PATH"
+          mkdir -p "$HOME/lab/bin"
+          printf '%s\n' '#!/usr/bin/env bash' 'exec "$HOME/lab/pyrate-venv/bin/python" "$HOME/lab/pyrate/pyR@TE.py" "$@"' > "$HOME/lab/bin/pyrate3"
+          chmod +x "$HOME/lab/bin/pyrate3"
+          ln -sf pyrate3 "$HOME/lab/bin/pyrate"
+      - name: Execute ultimate τ_p residual checklist
+        run: python tau_p_ultimate_residual_checklist_v20.py
+      - name: Focused regression tests
+        run: python -m unittest -v test_tau_p_ultimate_residual_checklist_v20.py
+      - name: Assert honest scientific scope
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('TAU_P_ULTIMATE_RESIDUAL_CHECKLIST_V20_VERDICT.json'))
+          assert r['status']=='TAU_P_ULTIMATE_RESIDUAL_CHECKLIST_FOLDED__EXACT_UNIQUE_OPEN'
+          assert r['n_failed']==0
+          assert r['flag']['ultimate_residual_checklist_folded']
+          assert r['flag']['all_post_hessian_residuals_closed']
+          assert r['flag']['live_sarah_or_pyrate_executable_run']
+          assert r['flag']['full_quartic_soft_live_dump']
+          assert r['flag']['cal_G_portal_decision_resolved']
+          assert r['flag']['selected_lambda_lock_raised_to_cal_G_lift']
+          assert not r['flag']['extra_new_portal_required']
+          assert r['certificate']['residual_now_closed']['selected_lambda_lock_raised_to_cal_G_lift']
+          assert r['certificate']['residual_still_open']['selected_lam4_below_gut_null_tol_threshold']
+          assert r['certificate']['residual_still_open']['lam4_cgc_and_dim6_lock_not_in_live_dump']
+          assert 'selected_lambda_lock_below_cal_G_lift_threshold' not in r['certificate']['residual_still_open']
+          assert not r['flag']['exact_unique_proton_lifetime']
+          assert not r['flag']['whole_model_excluded']
+          assert r['lifetime']['selected_tau_e_years']>0
+          PY
+      - name: Upload ultimate checklist verdicts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tau-p-ultimate-residual-checklist-verdict
+          path: |
+            TAU_P_ULTIMATE_RESIDUAL_CHECKLIST_V20_VERDICT.json
+            TAU_P_ULTIMATE_RESIDUAL_CHECKLIST_V20.md
