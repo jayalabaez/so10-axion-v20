@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
 r"""Fold post-live residuals into the ultimate τ_p checklist (v20).
 
-Next step after ``cal_g_portal_decision_v20``:
+Next step after ``lambda_lock_cal_g_lift_v20``:
 
-1. Collect closed residuals from the post-Hessian ladder, including the
-   cal G portal decision (no extra *new* portal; existing λ_lock lifts
-   in principle).
+1. Collect closed residuals including the |λ_lock| raise that clears the
+   cal G soft mode without spoiling the selected window.
 2. Merge them into the full-stack τ_p residual checklist.
-3. Keep ``exact_unique_proton_lifetime`` OPEN for remaining selected-point
-   soft thresholds (λ_lock / λ₄) and documented live-dump incompleteness.
+3. Keep ``exact_unique_proton_lifetime`` OPEN for remaining selected
+   |λ₄| GUT null-tol and live-dump incompleteness.
 
 Honesty
 -------
@@ -27,6 +26,7 @@ from typing import Any
 
 import cal_g_portal_decision_v20 as portal
 import cal_g_soft_mode_classification_v20 as calg
+import lambda_lock_cal_g_lift_v20 as locklift
 import live_pyrate_quartic_soft_dump_v20 as qsoft
 import live_pyrate_so10_beta_dump_v20 as live
 import pq_null_lam4_portal_lift_v20 as pqnull
@@ -46,11 +46,11 @@ RESIDUALS_NOW_CLOSED = [
     "cal_G_soft_mode_classification",
     "full_quartic_soft_live_dump",
     "cal_G_portal_decision_resolved",
+    "selected_lambda_lock_raised_to_cal_G_lift",
 ]
 
 RESIDUAL_STILL_OPEN = [
     "selected_lam4_below_gut_null_tol_threshold",
-    "selected_lambda_lock_below_cal_G_lift_threshold",
     "lam4_cgc_and_dim6_lock_not_in_live_dump",
 ]
 
@@ -62,6 +62,7 @@ SOURCES = {
     "cal_g": "cal_g_soft_mode_classification_v20",
     "quartic_soft_live": "live_pyrate_quartic_soft_dump_v20",
     "cal_g_portal": "cal_g_portal_decision_v20",
+    "lambda_lock_lift": "lambda_lock_cal_g_lift_v20",
 }
 
 
@@ -73,6 +74,7 @@ def build_report() -> dict[str, Any]:
     calg_rep = calg.build_report()
     qsoft_rep = qsoft.build_report(force_rerun=False)
     portal_rep = portal.build_report()
+    lock_rep = locklift.build_report()
 
     if hess_rep.get("n_failed", 1) != 0:
         return {
@@ -126,17 +128,16 @@ def build_report() -> dict[str, Any]:
             portal_rep.get("n_failed", 1) == 0
             and portal_rep["flag"]["cal_G_portal_decision_resolved"]
         ),
+        "selected_lambda_lock_raised_to_cal_G_lift": bool(
+            lock_rep.get("n_failed", 1) == 0
+            and lock_rep["flag"]["selected_lambda_lock_raised_to_cal_G_lift"]
+        ),
     }
     all_closed = all(closed.values())
 
     still_open = {
         "selected_lam4_below_gut_null_tol_threshold": bool(
             not pq_rep.get("flag", {}).get("selected_lam4_clears_gut_null_tol", False)
-        ),
-        "selected_lambda_lock_below_cal_G_lift_threshold": bool(
-            portal_rep.get("flag", {}).get(
-                "cal_G_residual_light_singlet_still_soft_at_selected", True
-            )
         ),
         "lam4_cgc_and_dim6_lock_not_in_live_dump": True,
     }
@@ -152,6 +153,8 @@ def build_report() -> dict[str, Any]:
         and qsoft_rep["flag"]["full_quartic_soft_live_dump"],
         "portal_ok": portal_rep.get("n_failed", 1) == 0
         and portal_rep["flag"]["cal_G_portal_decision_resolved"],
+        "lock_lift_ok": lock_rep.get("n_failed", 1) == 0
+        and lock_rep["flag"]["selected_lambda_lock_raised_to_cal_G_lift"],
         "all_checklist_closed": all_closed,
         "tau_positive": float(life["selected_tau_e_years"]) > 0.0,
         "exact_unique_not_overclaimed": True,
@@ -178,27 +181,31 @@ def build_report() -> dict[str, Any]:
             "cal_g": calg_rep.get("status"),
             "quartic_soft_live": qsoft_rep.get("status"),
             "cal_g_portal": portal_rep.get("status"),
+            "lambda_lock_lift": lock_rep.get("status"),
         },
         "certificate": {
             "residual_now_closed": closed,
             "residual_still_open": still_open,
             "cal_G_primary_label": calg_rep.get("flag", {}).get("primary_label"),
             "cal_G_portal_decision": portal_rep.get("decision", {}).get("label"),
+            "lambda_lock_raised": lock_rep.get("couplings", {}).get(
+                "lambda_lock_raised"
+            ),
             "interpretation": (
                 "The ultimate selected-point τ_p checklist now includes closed "
                 "Hessian positivity, λ₄ PQ-null exact-kernel lift, proven "
                 "scalar-α non-uniqueness, live PyR@TE gauge β, classified "
-                "cal G soft mode, δ-contracted live quartic/soft dump, and a "
-                "resolved cal G portal decision (no extra new portal; existing "
-                "λ_lock lifts in principle). Exact whole-model unique τ_p "
-                "remains OPEN because selected λ₄ / λ_lock sit below their "
-                "lift thresholds and λ₄ CGC / dim-6 are not in the live dump."
+                "cal G soft mode, δ-contracted live quartic/soft dump, "
+                "resolved cal G portal decision, and a |λ_lock| raise that "
+                "clears the cal G soft mode without spoiling the selected "
+                "window. Exact whole-model unique τ_p remains OPEN because "
+                "selected |λ₄| is below the GUT null-tol threshold and "
+                "λ₄ CGC / dim-6 are not in the live dump."
             ),
         },
         "next_exact_calculation": [
-            "Raise |λ_lock| to the cal G lift threshold and re-evaluate the soft mode",
             "Assess whether |λ₄| can be raised to clear the GUT null-tol without spoiling the selected point",
-            "Re-evaluate exact unique τ_p only after remaining light-mode / λ₄ caveats close",
+            "Re-evaluate exact unique τ_p only after remaining λ₄ / live-dump caveats close",
         ],
         "flag": {
             "ultimate_residual_checklist_folded": True,
@@ -211,6 +218,7 @@ def build_report() -> dict[str, Any]:
             "cal_G_soft_mode_classified": True,
             "full_quartic_soft_live_dump": True,
             "cal_G_portal_decision_resolved": True,
+            "selected_lambda_lock_raised_to_cal_G_lift": True,
             "extra_new_portal_required": bool(
                 portal_rep.get("flag", {}).get("extra_new_portal_required", True)
             ),
@@ -221,8 +229,8 @@ def build_report() -> dict[str, Any]:
             f"Ultimate τ_p residual checklist folded: "
             f"τ(p→eπ⁰)={float(life['selected_tau_e_years']):.3e} yr "
             f"(SK pass={life['selected_passes_SK']}); "
-            f"closed={all_closed}; cal G portal="
-            f"{portal_rep.get('decision', {}).get('label')}. "
+            f"closed={all_closed}; |λ_lock| raised→"
+            f"{lock_rep.get('couplings', {}).get('lambda_lock_raised')}. "
             f"exact_unique_proton_lifetime remains False."
         ),
     }
