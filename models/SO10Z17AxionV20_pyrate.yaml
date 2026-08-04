@@ -1,0 +1,69 @@
+# PyR@TE-3 style model scaffold: SO(10)×Z17 axion candidate v20
+# Not a live executable run — field content + Dynkin ledger for a future
+# PyR@TE invocation. Gauge group is simple SO(10); U(1)_X/PQ are global.
+#
+# Live probe must find `pyrate` / `pyrate3` and emit a β JSON dump to claim
+# live_sarah_or_pyrate_executable_run.
+
+name: SO10Z17AxionV20
+groups:
+  - name: SO10
+    type: SO
+    N: 10
+    coupling: g10
+
+fields:
+  scalars:
+    - name: Phi210
+      irrep: { SO10: 210 }
+      real: true
+      charges: { PQ: 0, X: 0 }
+    - name: Delta126bar
+      irrep: { SO10: 126 }
+      real: false
+      charges: { PQ: -2, X: 0 }
+    - name: H10
+      irrep: { SO10: 10 }
+      real: false
+      charges: { PQ: -2, X: 0 }
+    - name: S
+      irrep: { SO10: 1 }
+      real: false
+      charges: { PQ: 4, X: 0 }
+    - name: Phi17
+      irrep: { SO10: 1 }
+      real: false
+      charges: { PQ: 0, X: 17 }
+  fermions:
+    - name: Psi16
+      irrep: { SO10: 16 }
+      generations: 3
+      weyl: true
+      charges: { PQ: 0, X: 0 }
+    # Decay-safe heavy 16 pairs: counted in continuous Spin(10) β ledger
+    # as additional Weyl 16 content below v_Phi (see decay_safe_completion_v20).
+
+potential:
+  note: >
+    Charge-allowed operators only. Bare H10^2 forbidden by PQ.
+    Dim-3 10·126·S forbidden by SO(10). Dim-4 mix: Phi210·H10·Delta126bar·S.
+    Locking: Delta126bar^2 H10^2 S^2 / M_GUT^2.
+  operators:
+    - { name: kappa, monomial: "H10^2 S", pq: 0 }
+    - { name: lam4, monomial: "Phi210 H10 Delta126bar S", pq: 0 }
+    - { name: lambda_lock, monomial: "Delta126bar^2 H10^2 S^2", dim: 6 }
+    - { name: pure_210_In, note: "Hilbert H2=1,H3=2,H4=4 basis; CG from Aulakh/PS" }
+
+dynkin_T:
+  "1": 0
+  "10": 1
+  "16": 2
+  "45": 8
+  "54": 12
+  "120": 28
+  "126": 35
+  "210": 56
+
+honesty:
+  live_run_required_for_flag: true
+  formula_ingest_elsewhere: sarah_pyrate_so10_210_betas_v20 / quartic_soft_betas_v20
