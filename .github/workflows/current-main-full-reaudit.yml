@@ -20,6 +20,10 @@ jobs:
         run: python -m pip install -r requirements.txt
       - name: Compile every Python module
         run: python -m compileall -q .
+      - name: Execute subgroup-resolved quartic RGE
+        run: python quartic_soft_betas_v20.py
+      - name: Test subgroup-resolved quartic RGE
+        run: python -m unittest -v test_quartic_soft_betas_v20.py
       - name: Execute current-main scalar/proton re-audit
         run: python scalar_proton_falsification_gate_v20.py
       - name: Focused fail-closed re-audit tests
@@ -39,6 +43,7 @@ jobs:
           python - <<'PY'
           import json
           r=json.load(open('SCALAR_PROTON_FALSIFICATION_GATE_V20.json'))
+          q=json.load(open('QUARTIC_SOFT_BETAS_V20_VERDICT.json'))
           c=r['certificates']
           assert r['overall_state']=='BLOCKED', r
           assert c['all_critical_modules_executed']
@@ -48,13 +53,16 @@ jobs:
           assert not c['selected_lam4_clears_null_tolerance']
           assert c['cal_G_soft_mode_remaining']
           assert not c['live_sarah_or_pyrate_run']
-          assert c['charged_PS_fields_zero_casimir_in_quartic_rg']
+          assert not c['charged_PS_fields_zero_casimir_in_quartic_rg']
           assert not c['nonsusy_component_hessian_independently_derived']
           assert not c['exact_unique_proton_lifetime']
           assert not c['whole_model_excluded']
           assert not c['whole_model_validated']
-          rows=r['rge_audit']['charged_parent_sectors_evolved_with_zero_casimir']
-          assert {'DeltaR_126bar','H10_eff'} <= {x['name'] for x in rows}
+          assert r['rge_audit']['charged_parent_sectors_evolved_with_zero_casimir']==[]
+          assert q['flag']['pati_salam_subgroup_resolved']
+          assert q['flag']['charged_10_126_casimirs_nonzero']
+          assert q['flag']['separate_g4_gL_gR_running']
+          assert not q['flag']['two_loop_quartic_betas_complete']
           assert r['component_matrix_audit']['aulakh_msgut_dependent_modules']
           PY
       - name: Upload re-audit verdict
@@ -65,3 +73,5 @@ jobs:
           path: |
             SCALAR_PROTON_FALSIFICATION_GATE_V20.json
             SCALAR_PROTON_FALSIFICATION_GATE_V20.md
+            QUARTIC_SOFT_BETAS_V20_VERDICT.json
+            QUARTIC_SOFT_BETAS_V20.md
