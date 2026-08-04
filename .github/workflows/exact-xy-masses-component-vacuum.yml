@@ -1,0 +1,50 @@
+name: exact-xy-masses-component-vacuum
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  exact-xy-masses-component-vacuum:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Execute exact X/Y masses
+        run: python exact_xy_masses_component_vacuum_v20.py
+      - name: Focused regression tests
+        run: python -m unittest -v test_exact_xy_masses_component_vacuum_v20.py
+      - name: Assert honest scientific scope
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('EXACT_XY_MASSES_COMPONENT_VACUUM_V20_VERDICT.json'))
+          assert r['status']=='EXACT_XY_MASSES_FROM_COMPONENT_VACUUM__VEV_RATIOS_OPEN'
+          assert r['n_failed']==0
+          assert r['masses']['M_U_GeV'] > 0
+          assert r['masses']['M_V_GeV'] > 0
+          assert r['literature_check_126_only']['V_massless']
+          assert r['flag']['exact_XY_mass_from_component_vacuum']
+          assert r['flag']['replaced_g_MGUT_proxy']
+          assert not r['flag']['unique_vev_ratios_from_full_potential']
+          assert not r['flag']['exact_unique_proton_lifetime']
+          assert not r['flag']['whole_model_excluded']
+          # Conditional SK status under stack VEV split is reported, not a hard fail
+          assert 'selected_point_passes_SK' in r['flag']
+          PY
+      - name: Upload exact X/Y verdicts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: exact-xy-masses-component-vacuum-verdict
+          path: |
+            EXACT_XY_MASSES_COMPONENT_VACUUM_V20_VERDICT.json
+            EXACT_XY_MASSES_COMPONENT_VACUUM_V20.md

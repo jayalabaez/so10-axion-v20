@@ -1,0 +1,48 @@
+name: component-hessian-competing-extrema
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  component-hessian-competing-extrema:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Execute component Hessian / competing extrema map
+        run: python component_hessian_competing_extrema_v20.py
+      - name: Focused regression tests
+        run: python -m unittest -v test_component_hessian_competing_extrema_v20.py
+      - name: Assert honest scientific scope
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('COMPONENT_HESSIAN_COMPETING_EXTREMA_V20_VERDICT.json'))
+          assert r['status']=='COMPONENT_HESSIAN_COMPETING_EXTREMA_MAPPED__OFF_SINGLET_OPEN'
+          assert r['n_failed']==0
+          assert r['selected']['hilbert_3x3']['positive_definite']
+          assert r['flag']['full_component_hessian_and_competing_extrema_mapped']
+          assert r['flag']['selected_hilbert_slice_locally_stable']
+          assert r['flag']['selected_unique_among_catalogue_soft_mpd']
+          assert not r['flag']['full_sm_irrep_mass_matrices']
+          assert not r['flag']['live_sarah_or_pyrate_executable_run']
+          assert not r['flag']['exact_unique_proton_lifetime']
+          assert not r['flag']['whole_model_excluded']
+          PY
+      - name: Upload component Hessian verdicts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: component-hessian-competing-extrema-verdict
+          path: |
+            COMPONENT_HESSIAN_COMPETING_EXTREMA_V20_VERDICT.json
+            COMPONENT_HESSIAN_COMPETING_EXTREMA_V20.md

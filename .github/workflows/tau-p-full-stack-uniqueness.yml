@@ -1,0 +1,47 @@
+name: tau-p-full-stack-uniqueness
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  tau-p-full-stack-uniqueness:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Execute full-stack τ_p uniqueness
+        run: python tau_p_full_stack_uniqueness_v20.py
+      - name: Focused regression tests
+        run: python -m unittest -v test_tau_p_full_stack_uniqueness_v20.py
+      - name: Assert honest scientific scope
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('TAU_P_FULL_STACK_UNIQUENESS_V20_VERDICT.json'))
+          assert r['status']=='TAU_P_UNIQUE_UNDER_FULL_UV_STACK__EXACT_UNIQUE_OPEN'
+          assert r['n_failed']==0
+          assert r['certificate']['selected_tau_e_years']>0
+          assert r['flag']['tau_p_unique_under_full_uv_stack']
+          assert r['flag']['exact_XY_masses_used']
+          assert not r['flag']['live_sarah_or_pyrate_executable_run']
+          assert not r['flag']['exact_unique_proton_lifetime']
+          assert not r['flag']['whole_model_excluded']
+          assert r['certificate']['residual_still_open']['live_sarah_or_pyrate_executable_run']
+          PY
+      - name: Upload full-stack τ_p uniqueness verdicts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tau-p-full-stack-uniqueness-verdict
+          path: |
+            TAU_P_FULL_STACK_UNIQUENESS_V20_VERDICT.json
+            TAU_P_FULL_STACK_UNIQUENESS_V20.md
