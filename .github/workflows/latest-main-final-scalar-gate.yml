@@ -24,6 +24,7 @@ jobs:
         run: python quartic_soft_betas_v20.py
       - name: Execute signed invariant chain
         run: |
+          python mixed_rep_hilbert_series_v20.py
           python mixed_rep_hilbert_bfb_completion_v20.py
           python mixed_rep_invariant_floor_audit_v20.py
           python mixed_rep_invariant_exact_witness_v20.py
@@ -33,6 +34,12 @@ jobs:
         run: |
           python nonsusy_reduced_hessian_v20.py
           python ew_portal_rescue_bound_v20.py
+      - name: Execute signed triplet mass-squared chain
+        run: |
+          python nonsusy_z17_pq_potential_filter_v20.py
+          python nonsusy_charge_allowed_mt_v20.py
+          python so10_kronecker_existence_mt_lock_v20.py
+          python triplet_proxy_contamination_audit_v20.py
       - name: Execute exact gauge orbit
         run: python so10_nonsusy_gauge_orbit_v20.py
       - name: Execute latest-main dependency audit
@@ -45,12 +52,17 @@ jobs:
         run: |
           python -m unittest -v \
             test_quartic_soft_betas_v20.py \
+            test_mixed_rep_hilbert_series_v20.py \
             test_mixed_rep_invariant_floor_audit_v20.py \
             test_mixed_rep_invariant_exact_witness_v20.py \
             test_so10_cubic_operator_signed_audit_v20.py \
             test_mixed_rep_enlarged_floor_basis_v20.py \
             test_nonsusy_reduced_hessian_v20.py \
             test_ew_portal_rescue_bound_v20.py \
+            test_nonsusy_z17_pq_potential_filter_v20.py \
+            test_nonsusy_charge_allowed_mt_v20.py \
+            test_so10_kronecker_existence_mt_lock_v20.py \
+            test_triplet_proxy_contamination_audit_v20.py \
             test_so10_nonsusy_gauge_orbit_v20.py \
             test_latest_main_residual_integration_v20.py \
             test_current_main_repair_closure_v20.py \
@@ -63,6 +75,9 @@ jobs:
           e=json.load(open('MIXED_REP_ENLARGED_FLOOR_BASIS_V20.json'))
           n=json.load(open('NONSUSY_REDUCED_HESSIAN_V20_VERDICT.json'))
           u=json.load(open('EW_PORTAL_RESCUE_BOUND_V20.json'))
+          m=json.load(open('NONSUSY_CHARGE_ALLOWED_MT_V20_VERDICT.json'))
+          k=json.load(open('SO10_KRONECKER_MT_LOCK_V20_VERDICT.json'))
+          t=json.load(open('TRIPLET_PROXY_CONTAMINATION_AUDIT_V20.json'))
           l=json.load(open('LATEST_MAIN_RESIDUAL_INTEGRATION_V20.json'))
           z=json.load(open('FINAL_SCALAR_THEORY_GATE_V20.json'))
           assert c['n_failed']==0, c
@@ -77,30 +92,42 @@ jobs:
           assert n['target_vevs_GeV']['H10_EW']==174.0
           assert n['survival_benchmark']['positive_definite']
           assert n['historical_benchmark']['tachyonic']
-          assert n['flag']['historical_selected_lam4_point_excluded']
-          assert u['n_failed']==0, u
           assert u['flag']['historical_lam4_point_excluded_within_signed_floor34']
           assert u['flag']['guaranteed_H4_channels_insufficient_perturbatively']
-          assert u['numerical']['required_over_combined_perturbative_allowance'] > 1e20
+          assert m['n_failed']==0, m
+          assert m['flag']['mass_squared_matrix_used']
+          assert m['flag']['forbidden_210_10dag10_absent']
+          assert m['flag']['forbidden_10_126_S_absent']
+          assert m['flag']['lambda4_offdiag_slot_included']
+          assert not m['flag']['physical_triplet_spectrum_complete']
+          assert k['n_failed']==0, k
+          assert k['flag']['forbidden_cubic_contributions_locked_zero']
+          assert k['flag']['lambda4_offdiag_allowed_but_CG_open']
+          assert k['flag']['lambda4_offdiag_not_locked_zero']
+          assert t['n_failed']==0, t
+          assert t['flag']['legacy_physical_triplet_chain_invalidated']
+          assert t['flag']['canonical_signed_mt2_path_available']
+          assert len(t['scan']['contaminated_modules']) > 6
           assert l['n_failed']==0, l
           assert l['valid_new_closures']['live_pyrate_gauge_artifact']
           assert l['valid_new_closures']['live_pyrate_reduced_quartic_soft_artifact']
           assert l['valid_new_closures']['scalar_alpha_nonunique_from_current_flavour_fit']
           assert l['invalidated_selected_point_claims']['lambda_lock_raise_does_not_spoil_selected_point']
-          assert l['invalidated_selected_point_claims']['all_post_hessian_residuals_closed']
           assert z['overall_state']=='BLOCKED', z
           assert all(z['resolved_breakpoints'].values())
           assert z['flags']['mechanical_floor37_rejected']
           assert z['flags']['signed_guaranteed_floor34_emitted']
           assert z['flags']['historical_lambda4_benchmark_excluded']
           assert z['flags']['historical_lambda4_benchmark_not_rescuable_with_signed_floor34_perturbative_even_H_terms']
+          assert z['flags']['canonical_signed_triplet_mt2_available']
+          assert z['flags']['legacy_triplet_spectrum_threshold_lifetime_chain_invalidated']
           assert z['flags']['live_pyrate_artifacts_validated']
           assert z['flags']['scalar_alpha_nonuniqueness_proven']
           assert z['flags']['latest_main_proxy_selected_point_closures_invalidated']
           assert z['flags']['reduced_survival_region_exists']
+          assert z['remaining_blockers']['complete_physical_triplet_mass_squared_CG_matrix']
+          assert z['remaining_blockers']['rebuild_contaminated_triplet_threshold_lifetime_chain']
           assert z['remaining_blockers']['cal_G_lift_revalidation_on_physical_EW_survival_point']
-          assert z['remaining_blockers']['lambda4_CGC_live_encoding']
-          assert z['remaining_blockers']['dim6_lambda_lock_live_encoding']
           assert z['remaining_blockers']['exact_unique_proton_lifetime']
           assert not z['flags']['whole_model_excluded']
           assert not z['flags']['whole_model_validated']
@@ -115,6 +142,10 @@ jobs:
             MIXED_REP_ENLARGED_FLOOR_BASIS_V20.json
             NONSUSY_REDUCED_HESSIAN_V20_VERDICT.json
             EW_PORTAL_RESCUE_BOUND_V20.json
+            NONSUSY_Z17_PQ_POTENTIAL_FILTER_V20.json
+            NONSUSY_CHARGE_ALLOWED_MT_V20_VERDICT.json
+            SO10_KRONECKER_MT_LOCK_V20_VERDICT.json
+            TRIPLET_PROXY_CONTAMINATION_AUDIT_V20.json
             SO10_NONSUSY_GAUGE_ORBIT_V20_VERDICT.json
             LATEST_MAIN_RESIDUAL_INTEGRATION_V20.json
             CURRENT_MAIN_REPAIR_CLOSURE_V20.json
