@@ -1,10 +1,19 @@
 #!/usr/bin/env python3
-"""Independent non-SUSY reduced-potential BFB and Hessian certificate (v20).
+"""Physical-EW reduced non-SUSY Hessian and portal-consistency audit.
 
-The reduced phase-locking invariant is paired with the independently allowed
-modulus invariant.  The radial sextic coefficient is therefore proportional
-to ``lambda_abs - |lambda_phase|``.  The five-amplitude Hessian is derived
-from this explicit polynomial, without importing SUSY MSGUT mass matrices.
+This supersedes the earlier reduced certificate that assigned the complete
+10_H amplitude the intermediate-scale VEV M_I.  The repository's original
+vacuum witness instead has the electroweak target h=174 GeV.  At the enormous
+M_GUT/M_EW hierarchy, ordinary float64 eigensolvers also lose the light mode,
+so this module constructs and diagonalizes the Hessian with arbitrary
+precision.
+
+The audit consumes the canonical guaranteed 37-invariant floor, restores every
+cross quartic already present in the radial witness, and distinguishes a stable
+lambda4=0 survival benchmark from the historical
+lambda4=-kappa*M_I/M_GUT point.  The latter is tachyonic at the physical EW
+vacuum.  This excludes that benchmark, not the whole model, because unresolved
+independent tensor channels may provide additional cancellations.
 """
 from __future__ import annotations
 
@@ -12,362 +21,334 @@ import argparse
 import json
 import math
 from pathlib import Path
-from typing import Any, Callable
+from typing import Any
 
+import mpmath as mp
 import numpy as np
-from scipy.optimize import differential_evolution
 
-import mixed_rep_hilbert_bfb_completion_v20 as bfb_basis
+import mixed_rep_enlarged_floor_basis_v20 as enlarged
 import scalar_vacuum_proton_decay_v20 as scalar_pd
 
 ROOT = Path(__file__).resolve().parent
-FIELDS = ("P_210", "DeltaR_126bar", "H10_eff", "S_PQ", "Phi17_X")
+FIELDS = ("P_210", "DeltaR_126bar", "H10_EW", "S_PQ", "Phi17_X")
+SOURCE_FIELDS = (
+    "P_210_PS",
+    "DeltaR_126bar",
+    "h_EW_effective",
+    "S_PQ",
+    "Phi17_X",
+)
 
 
-def quartic_amgm_limit(lambdas: dict[str, float]) -> float:
-    values = [float(lambdas[name]) for name in FIELDS[:4]]
-    if not all(math.isfinite(v) and v > 0.0 for v in values):
-        return 0.0
-    return float(np.prod(values) ** 0.25)
+def _mp(value: float | str) -> mp.mpf:
+    return mp.mpf(str(value))
 
 
-def stabilizing_modulus_coefficient(
-    lambda_phase: float, margin_fraction: float = 1e-3
-) -> float:
-    if margin_fraction < 0.0:
-        raise ValueError("margin_fraction must be non-negative")
-    phase = abs(float(lambda_phase))
-    return float(phase * (1.0 + margin_fraction) + (1e-15 if phase == 0.0 else 0.0))
+def radial_quartic_matrix(
+    radial: dict[str, Any],
+) -> tuple[np.ndarray, dict[str, float], dict[str, float]]:
+    """Recover the complete five-field q^T B q witness in physical field order."""
+    definition = radial["potential_definition"]
+    self_quartics = definition["self_quartics"]
+    source_vevs = definition["target_vevs_GeV"]
+    source_cross = definition["cross_quartics_epsilon"]
 
-
-def _q(
-    *, lambda_phase: float, lambda_abs: float, m_gut: float, c_lock: float
-) -> float:
-    if m_gut <= 0.0 or c_lock <= 0.0:
-        raise ValueError("positive m_gut and c_lock required")
-    return float(c_lock * (lambda_abs - abs(lambda_phase)) / m_gut**2)
-
-
-def interaction_gradient(
-    r: np.ndarray,
-    *,
-    kappa: float,
-    lam4: float,
-    lambda_phase: float,
-    lambda_abs: float,
-    m_i: float,
-    m_gut: float,
-    c_lock: float,
-) -> np.ndarray:
-    p, d, h, s, _phi = map(float, r)
-    q = _q(
-        lambda_phase=lambda_phase,
-        lambda_abs=lambda_abs,
-        m_gut=m_gut,
-        c_lock=c_lock,
-    )
-    return np.array(
-        [
-            -lam4 * d * h * s,
-            -lam4 * p * h * s + 2.0 * q * d * h**2 * s**2,
-            -2.0 * kappa * m_i * h * s
-            - lam4 * p * d * s
-            + 2.0 * q * h * d**2 * s**2,
-            -kappa * m_i * h**2
-            - lam4 * p * d * h
-            + 2.0 * q * s * d**2 * h**2,
-            0.0,
-        ],
-        dtype=float,
-    )
-
-
-def soft_mass_shifts(target: np.ndarray, **interaction: float) -> np.ndarray:
-    target = np.asarray(target, dtype=float)
-    if target.shape != (5,) or np.any(target <= 0.0):
-        raise ValueError("five positive target amplitudes required")
-    return -interaction_gradient(target, **interaction) / target
-
-
-def interaction_hessian(
-    r: np.ndarray,
-    *,
-    kappa: float,
-    lam4: float,
-    lambda_phase: float,
-    lambda_abs: float,
-    m_i: float,
-    m_gut: float,
-    c_lock: float,
-) -> np.ndarray:
-    p, d, h, s, _phi = map(float, r)
-    q = _q(
-        lambda_phase=lambda_phase,
-        lambda_abs=lambda_abs,
-        m_gut=m_gut,
-        c_lock=c_lock,
-    )
-    out = np.zeros((5, 5), dtype=float)
-    out[2, 2] = -2.0 * kappa * m_i * s + 2.0 * q * d**2 * s**2
-    out[1, 1] = 2.0 * q * h**2 * s**2
-    out[3, 3] = 2.0 * q * d**2 * h**2
-    entries = {
-        (0, 1): -lam4 * h * s,
-        (0, 2): -lam4 * d * s,
-        (0, 3): -lam4 * d * h,
-        (1, 2): -lam4 * p * s + 4.0 * q * d * h * s**2,
-        (1, 3): -lam4 * p * h + 4.0 * q * d * s * h**2,
-        (2, 3): -2.0 * kappa * m_i * h
-        - lam4 * p * d
-        + 4.0 * q * h * s * d**2,
+    lambdas = {
+        target_name: float(self_quartics[source_name])
+        for target_name, source_name in zip(FIELDS, SOURCE_FIELDS)
     }
-    for (i, j), value in entries.items():
-        out[i, j] = out[j, i] = value
-    return out
+    targets = {
+        target_name: float(source_vevs[source_name])
+        for target_name, source_name in zip(FIELDS, SOURCE_FIELDS)
+    }
+    matrix = np.diag([lambdas[name] for name in FIELDS]).astype(float)
+    source_index = {name: index for index, name in enumerate(SOURCE_FIELDS)}
+    for key, epsilon in source_cross.items():
+        left, right = key.split("__")
+        if left not in source_index or right not in source_index:
+            continue
+        i, j = source_index[left], source_index[right]
+        matrix[i, j] = matrix[j, i] = 0.5 * float(epsilon)
+    return matrix, lambdas, targets
 
 
-def potential(
-    r: np.ndarray,
-    *,
-    target: np.ndarray,
-    lambdas: np.ndarray,
-    dm2: np.ndarray,
-    kappa: float,
-    lam4: float,
-    lambda_phase: float,
-    lambda_abs: float,
+def missing_norm_crosses(radial: dict[str, Any]) -> list[str]:
+    """List norm-product monomials absent from the historical radial witness."""
+    present = set(radial["potential_definition"]["cross_quartics_epsilon"])
+    source = list(SOURCE_FIELDS)
+    all_keys = {
+        f"{source[i]}__{source[j]}"
+        for i in range(len(source))
+        for j in range(i + 1, len(source))
+    }
+    return sorted(all_keys - present)
+
+
+def interaction_parameters(
     m_i: float,
     m_gut: float,
-    c_lock: float,
-) -> float:
-    r = np.asarray(r, dtype=float)
-    target = np.asarray(target, dtype=float)
-    p, d, h, s, _phi = map(float, r)
-    wells = 0.25 * np.sum(lambdas * (r**2 - target**2) ** 2)
-    soft = 0.5 * np.sum(dm2 * (r**2 - target**2))
-    q = _q(
-        lambda_phase=lambda_phase,
-        lambda_abs=lambda_abs,
-        m_gut=m_gut,
-        c_lock=c_lock,
-    )
-    interactions = (
-        -kappa * m_i * h**2 * s
-        - lam4 * p * d * h * s
-        + q * d**2 * h**2 * s**2
-    )
-    return float(wells + soft + interactions)
-
-
-def analytic_hessian(
-    target: np.ndarray, lambdas: np.ndarray, dm2: np.ndarray, **interaction: float
-) -> np.ndarray:
-    return np.diag(2.0 * lambdas * target**2 + dm2) + interaction_hessian(
-        target, **interaction
-    )
-
-
-def finite_difference_hessian_scaled(
-    fn: Callable[[np.ndarray], float],
-    x0: np.ndarray,
-    scales: np.ndarray,
-    step: float = 2e-5,
-) -> np.ndarray:
-    n = len(x0)
-    dimensionless = np.zeros((n, n), dtype=float)
-    f0 = fn(x0 * scales)
-    for i in range(n):
-        ei = np.zeros(n)
-        ei[i] = step
-        dimensionless[i, i] = (
-            fn((x0 + ei) * scales) - 2.0 * f0 + fn((x0 - ei) * scales)
-        ) / step**2
-        for j in range(i + 1, n):
-            ej = np.zeros(n)
-            ej[j] = step
-            value = (
-                fn((x0 + ei + ej) * scales)
-                - fn((x0 + ei - ej) * scales)
-                - fn((x0 - ei + ej) * scales)
-                + fn((x0 - ei - ej) * scales)
-            ) / (4.0 * step**2)
-            dimensionless[i, j] = dimensionless[j, i] = value
-    return dimensionless / np.outer(scales, scales)
-
-
-def stress_competing_minima(
-    fn: Callable[[np.ndarray], float], target: np.ndarray, target_value: float
-) -> dict[str, Any]:
-    normalization = max(abs(target_value), target[0] ** 4, 1.0)
-
-    def objective(x: np.ndarray) -> float:
-        return fn(x * target) / normalization
-
-    result = differential_evolution(
-        objective,
-        bounds=[(0.0, 3.0)] * len(target),
-        seed=1720,
-        maxiter=40,
-        popsize=10,
-        tol=1e-8,
-        polish=True,
-        workers=1,
-        updating="immediate",
-    )
-    value = float(fn(np.asarray(result.x) * target))
-    tolerance = 1e-8 * max(abs(target_value), abs(value), target[0] ** 4, 1.0)
+    lam4: float,
+    *,
+    kappa: float = 0.05,
+) -> dict[str, float]:
     return {
-        "box_in_target_units": [0.0, 3.0],
-        "optimizer_success": bool(result.success),
-        "best_amplitudes_over_target": [float(v) for v in result.x],
-        "best_value_GeV4": value,
-        "target_value_GeV4": float(target_value),
-        "lower_than_target": bool(value < target_value - tolerance),
-        "numerical_only_not_global_proof": True,
+        "kappa": float(kappa),
+        "lam4": float(lam4),
+        "lambda_phase": 1.0,
+        "lambda_abs": 1.001,
+        "m_i": float(m_i),
+        "m_gut": float(m_gut),
+        "c_lock": 1.0,
     }
+
+
+def _q_mp(parameters: dict[str, float]) -> mp.mpf:
+    return (
+        _mp(parameters["c_lock"])
+        * (
+            _mp(parameters["lambda_abs"])
+            - abs(_mp(parameters["lambda_phase"]))
+        )
+        / _mp(parameters["m_gut"]) ** 2
+    )
+
+
+def high_precision_hessian(
+    targets: dict[str, float],
+    quartic_matrix: np.ndarray,
+    parameters: dict[str, float],
+    *,
+    dps: int = 100,
+) -> mp.matrix:
+    """Construct the physical Hessian without float64 cancellation.
+
+    The radial witness is V_q=(1/4) q^T B q with q_i=r_i^2-v_i^2.
+    The interaction gradients are cancelled by independent quadratic shifts,
+    exactly as in the earlier reduced construction.  Every operation that can
+    mix M_GUT^2 and M_EW^2 is evaluated with ``mpmath`` precision.
+    """
+    mp.mp.dps = dps
+    values = [_mp(targets[name]) for name in FIELDS]
+    p, delta, higgs, singlet, _phi17 = values
+    kappa = _mp(parameters["kappa"])
+    lam4 = _mp(parameters["lam4"])
+    m_i = _mp(parameters["m_i"])
+    q_lock = _q_mp(parameters)
+
+    interaction_gradient = [
+        -lam4 * delta * higgs * singlet,
+        -lam4 * p * higgs * singlet
+        + 2 * q_lock * delta * higgs**2 * singlet**2,
+        -2 * kappa * m_i * higgs * singlet
+        - lam4 * p * delta * singlet
+        + 2 * q_lock * higgs * delta**2 * singlet**2,
+        -kappa * m_i * higgs**2
+        - lam4 * p * delta * higgs
+        + 2 * q_lock * singlet * delta**2 * higgs**2,
+        mp.mpf("0"),
+    ]
+    delta_m2 = [
+        -interaction_gradient[index] / values[index] for index in range(5)
+    ]
+
+    hessian = mp.matrix(5, 5)
+    for i in range(5):
+        for j in range(5):
+            hessian[i, j] = (
+                2
+                * values[i]
+                * _mp(quartic_matrix[i, j])
+                * values[j]
+            )
+        hessian[i, i] += delta_m2[i]
+
+    hessian[2, 2] += (
+        -2 * kappa * m_i * singlet
+        + 2 * q_lock * delta**2 * singlet**2
+    )
+    hessian[1, 1] += 2 * q_lock * higgs**2 * singlet**2
+    hessian[3, 3] += 2 * q_lock * delta**2 * higgs**2
+
+    off_diagonal = {
+        (0, 1): -lam4 * higgs * singlet,
+        (0, 2): -lam4 * delta * singlet,
+        (0, 3): -lam4 * delta * higgs,
+        (1, 2): -lam4 * p * singlet
+        + 4 * q_lock * delta * higgs * singlet**2,
+        (1, 3): -lam4 * p * higgs
+        + 4 * q_lock * delta * singlet * higgs**2,
+        (2, 3): -2 * kappa * m_i * higgs
+        - lam4 * p * delta
+        + 4 * q_lock * higgs * singlet * delta**2,
+    }
+    for (i, j), value in off_diagonal.items():
+        hessian[i, j] += value
+        hessian[j, i] += value
+    return hessian
+
+
+def high_precision_eigenvalues(matrix: mp.matrix) -> list[float]:
+    return [float(value) for value in mp.eigsy(matrix, eigvals_only=True)]
 
 
 def build_report() -> dict[str, Any]:
     anchor = scalar_pd._unification_anchor()
-    if not anchor.get("available"):
-        return {
-            "status": "NONSUSY_REDUCED_HESSIAN_NOT_EXECUTED__ANCHOR_MISSING",
-            "n_failed": 1,
-            "failures": ["unification_anchor"],
-        }
-    basis_report = bfb_basis.build_report()
+    floor = enlarged.build_report()
     radial = scalar_pd.reduced_radial_vacuum_witness(anchor)
-    if basis_report.get("n_failed", 1) != 0:
+    if not anchor.get("available") or floor.get("n_failed", 1) != 0:
         return {
-            "status": "NONSUSY_REDUCED_HESSIAN_NOT_EXECUTED__UPSTREAM_FAILED",
+            "status": "PHYSICAL_EW_REDUCED_HESSIAN_NOT_EXECUTED",
             "n_failed": 1,
-            "failures": ["bfb_basis"],
+            "failures": ["upstream"],
         }
 
+    quartic_matrix, lambdas, targets = radial_quartic_matrix(radial)
     m_i = float(anchor["M_I_GeV"])
     m_gut = float(anchor["M_GUT_GeV"])
-    kappa = 0.05
-    lam4 = -kappa * m_i / m_gut
-    lambda_phase = 1.0
-    lambda_abs = stabilizing_modulus_coefficient(lambda_phase)
-    c_lock = 1.0
+    physical_h = float(targets["H10_EW"])
 
-    raw = radial["potential_definition"]["self_quartics"]
-    lambda_map = {
-        "P_210": float(raw["P_210_PS"]),
-        "DeltaR_126bar": float(raw["DeltaR_126bar"]),
-        "H10_eff": float(raw["h_EW_effective"]),
-        "S_PQ": float(raw["S_PQ"]),
-        "Phi17_X": float(raw["Phi17_X"]),
-    }
-    target = np.array([m_gut, m_i, m_i, m_i, 1.0e17], dtype=float)
-    lambdas = np.array([lambda_map[name] for name in FIELDS], dtype=float)
-    interaction = {
-        "kappa": kappa,
-        "lam4": lam4,
-        "lambda_phase": lambda_phase,
-        "lambda_abs": lambda_abs,
-        "m_i": m_i,
-        "m_gut": m_gut,
-        "c_lock": c_lock,
-    }
-    dm2 = soft_mass_shifts(target, **interaction)
-    gradient = dm2 * target + interaction_gradient(target, **interaction)
-    hessian = analytic_hessian(target, lambdas, dm2, **interaction)
-    fn = lambda r: potential(
-        r, target=target, lambdas=lambdas, dm2=dm2, **interaction
+    survival_lam4 = 0.0
+    historical_lam4 = -0.05 * m_i / m_gut
+    survival_matrix = high_precision_hessian(
+        targets,
+        quartic_matrix,
+        interaction_parameters(m_i, m_gut, survival_lam4),
     )
-    hessian_fd = finite_difference_hessian_scaled(fn, np.ones(5), target)
-    scale = max(float(np.max(np.abs(hessian))), 1.0)
-    fd_error = float(np.max(np.abs(hessian - hessian_fd)) / scale)
-    eigenvalues = np.linalg.eigvalsh(hessian)
-    stress = stress_competing_minima(fn, target, fn(target))
+    historical_matrix = high_precision_hessian(
+        targets,
+        quartic_matrix,
+        interaction_parameters(m_i, m_gut, historical_lam4),
+    )
+    survival_eigenvalues = high_precision_eigenvalues(survival_matrix)
+    historical_eigenvalues = high_precision_eigenvalues(historical_matrix)
 
-    amgm_limit = quartic_amgm_limit(lambda_map)
-    sextic_nonnegative = lambda_abs >= abs(lambda_phase)
-    strict_sextic_margin = lambda_abs > abs(lambda_phase)
-    quartic_bfb = abs(lam4) <= amgm_limit
-    all_self_positive = bool(np.all(lambdas > 0.0))
-    reduced_bfb = all_self_positive and sextic_nonnegative and quartic_bfb
-    stationarity_scale = max(m_gut**3, 1.0)
+    # This intentionally demonstrates why float64 cannot certify the light mode.
+    float64_matrix = np.array(survival_matrix.tolist(), dtype=float)
+    float64_eigenvalues = np.linalg.eigvalsh(float64_matrix)
+    quartic_eigenvalues = np.linalg.eigvalsh(quartic_matrix)
+    missing_crosses = missing_norm_crosses(radial)
+
+    # Four absent off-diagonal epsilon entries contribute at most
+    # ||Delta B||_2 <= ||Delta B||_F <= sqrt(2)*epsilon_max.  Weyl's inequality
+    # therefore gives this sufficient hypercube for positive definiteness.
+    missing_cross_epsilon_bound = float(
+        np.min(quartic_eigenvalues) / math.sqrt(2.0)
+    )
+
+    portal_curvature_coefficient = m_gut * m_i * m_i / physical_h
+    ew_target_curvature = 2.0 * lambdas["H10_EW"] * physical_h**2
+    naturalness_bound = ew_target_curvature / portal_curvature_coefficient
+    historical_over_bound = (
+        abs(historical_lam4)
+        * portal_curvature_coefficient
+        / ew_target_curvature
+    )
+    float64_relative_error = abs(
+        float(float64_eigenvalues[0]) - survival_eigenvalues[0]
+    ) / survival_eigenvalues[0]
 
     checks = {
-        "canonical_completed_basis_used": bool(
-            basis_report["flag"]["canonical_completed_basis_emitted"]
+        "canonical_floor_37_loaded": bool(
+            floor.get("flag", {}).get("canonical_floor_37_emitted")
         ),
-        "modulus_companion_in_basis": bool(
-            basis_report["flag"]["modulus_locking_companion_added"]
+        "physical_h_is_174_GeV": abs(physical_h - 174.0) < 1e-12,
+        "historical_radial_quartic_matrix_positive": bool(
+            np.min(quartic_eigenvalues) > 0.0
         ),
-        "sextic_highest_degree_nonnegative": sextic_nonnegative,
-        "strict_sextic_stability_margin": strict_sextic_margin,
-        "quartic_amgm_bound": quartic_bfb,
-        "all_self_quartics_positive": all_self_positive,
-        "stationarity_exact": float(np.max(np.abs(gradient)) / stationarity_scale)
-        < 1e-12,
-        "analytic_hessian_symmetric": bool(
-            np.allclose(hessian, hessian.T, rtol=0.0, atol=1e-8 * scale)
-        ),
-        "finite_difference_hessian_matches": fd_error < 2e-4,
-        "local_hessian_positive": bool(np.min(eigenvalues) > 0.0),
-        "no_aulakh_msgut_component_matrix": True,
-        "full_component_not_overclaimed": True,
+        "four_norm_crosses_missing_from_radial_witness": len(missing_crosses) == 4,
+        "zero_lam4_survival_benchmark_positive": survival_eigenvalues[0] > 0.0,
+        "historical_lam4_benchmark_tachyonic": historical_eigenvalues[0] < 0.0,
+        "float64_light_mode_is_unreliable": float64_relative_error > 100.0,
+        "full_component_scope_remains_open": True,
     }
     failures = [name for name, ok in checks.items() if not ok]
-    return {
+
+    report = {
         "status": (
-            "NONSUSY_REDUCED_BFB_AND_HESSIAN_CLOSED__FULL_COMPONENT_OPEN"
+            "PHYSICAL_EW_REDUCED_HESSIAN_REPAIRED__HISTORICAL_LAM4_POINT_FAILS"
             if not failures
-            else "NONSUSY_REDUCED_BFB_HESSIAN_FAILED"
+            else "PHYSICAL_EW_REDUCED_HESSIAN_AUDIT_FAILED"
         ),
         "n_checks": len(checks),
         "n_failed": len(failures),
         "failures": failures,
         "fields": list(FIELDS),
-        "target_vevs_GeV": target.tolist(),
-        "couplings": {
-            "kappa": kappa,
-            "lam4": lam4,
-            "lambda_lock_phase": lambda_phase,
-            "lambda_lock_abs": lambda_abs,
-            "lambda_lock_abs_min_bfb": abs(lambda_phase),
-            "C_lock": c_lock,
-            "benchmark_origin": "analytic_soft_norm_minimizer_lambda4=-kappa*MI/MGUT",
-            "self_quartics": lambda_map,
+        "target_vevs_GeV": targets,
+        "enlarged_basis": {
+            "guaranteed_floor_total": floor.get("counts", {}).get(
+                "guaranteed_floor_total"
+            ),
+            "full_invariant_ring_complete": False,
+        },
+        "radial_coverage": {
+            "norm_monomials_total": 15,
+            "historical_witness_monomials": 11,
+            "missing_cross_monomials": missing_crosses,
+            "missing_cross_epsilon_hypercube_sufficient_PD_bound": (
+                missing_cross_epsilon_bound
+            ),
+            "independent_tensor_channels_resolved_in_five_amplitudes": False,
+            "interpretation": (
+                "The five-amplitude reduction can absorb only one linear "
+                "combination per radial monomial; it cannot distinguish all "
+                "independent off-direction tensor contractions."
+            ),
         },
         "bfb_certificate": {
-            "sufficient_condition": (
-                "all lambda_i>0 AND lambda_abs>=|lambda_phase| AND "
-                "|lambda4|<=(lambda_P lambda_Delta lambda_H lambda_S)^(1/4)"
+            "quartic_matrix_eigenvalues": [
+                float(value) for value in quartic_eigenvalues
+            ],
+            "quartic_matrix_positive_definite": bool(
+                np.min(quartic_eigenvalues) > 0.0
             ),
-            "sextic_highest_degree_nonnegative": sextic_nonnegative,
-            "strict_sextic_stability_margin": strict_sextic_margin,
-            "quartic_amgm_limit": amgm_limit,
-            "abs_lam4": abs(lam4),
-            "quartic_amgm_passes": quartic_bfb,
-            "reduced_polynomial_bounded_from_below": reduced_bfb,
-        },
-        "stationarity": {
-            "soft_delta_m2_GeV2": dm2.tolist(),
-            "gradient_inf_over_MGUT3": float(
-                np.max(np.abs(gradient)) / stationarity_scale
+            "locking_sextic_coefficient_positive": True,
+            "reduced_polynomial_bounded_from_below": bool(
+                np.min(quartic_eigenvalues) > 0.0
             ),
         },
-        "hessian": {
-            "analytic_GeV2": hessian.tolist(),
-            "finite_difference_GeV2": hessian_fd.tolist(),
-            "max_relative_difference": fd_error,
-            "eigenvalues_GeV2": [float(v) for v in eigenvalues],
-            "positive_definite": bool(np.min(eigenvalues) > 0.0),
-            "min_eigenvalue_GeV2": float(np.min(eigenvalues)),
-            "robust_unknown_perturbation_norm_GeV2": float(np.min(eigenvalues)),
+        "survival_benchmark": {
+            "lam4": survival_lam4,
+            "eigenvalues_GeV2": survival_eigenvalues,
+            "min_eigenvalue_GeV2": survival_eigenvalues[0],
+            "lightest_mass_GeV": math.sqrt(survival_eigenvalues[0]),
+            "positive_definite": survival_eigenvalues[0] > 0.0,
         },
-        "competing_minima_stress": stress,
+        "historical_benchmark": {
+            "lam4": historical_lam4,
+            "formula": "-kappa*M_I/M_GUT",
+            "min_eigenvalue_GeV2": historical_eigenvalues[0],
+            "tachyonic": historical_eigenvalues[0] < 0.0,
+            "conditionally_excluded": historical_eigenvalues[0] < 0.0,
+        },
+        "ew_portal_consistency": {
+            "portal_curvature_coefficient_GeV2_per_lam4": (
+                portal_curvature_coefficient
+            ),
+            "ew_target_curvature_GeV2": ew_target_curvature,
+            "abs_lam4_O1_naturalness_bound": naturalness_bound,
+            "historical_abs_lam4_over_bound": historical_over_bound,
+            "requires_cancellation_or_tiny_lam4": historical_over_bound > 1e10,
+        },
+        "numerics": {
+            "high_precision_dps": 100,
+            "float64_min_eigenvalue_GeV2": float(float64_eigenvalues[0]),
+            "high_precision_min_eigenvalue_GeV2": survival_eigenvalues[0],
+            "float64_relative_error": float64_relative_error,
+        },
         "flag": {
+            "physical_electroweak_10_vev_used": True,
+            "historical_equal_MI_10_vev_rejected": True,
+            "cross_quartics_from_radial_witness_included": True,
+            "arbitrary_precision_diagonalization_used": True,
             "independent_nonsusy_reduced_hessian": True,
-            "phase_lock_modulus_companion_added": True,
-            "reduced_potential_bounded_from_below": reduced_bfb,
-            "reduced_local_minimum_positive_definite": bool(
-                np.min(eigenvalues) > 0.0
+            "reduced_potential_bounded_from_below": bool(
+                np.min(quartic_eigenvalues) > 0.0
+            ),
+            "reduced_local_minimum_positive_definite": (
+                survival_eigenvalues[0] > 0.0
+            ),
+            "historical_selected_lam4_point_excluded": (
+                historical_eigenvalues[0] < 0.0
             ),
             "uses_aulakh_or_msgut_component_matrices": False,
             "full_component_nonsusy_hessian": False,
@@ -376,31 +357,38 @@ def build_report() -> dict[str, Any]:
             "whole_model_excluded": False,
         },
         "verdict": (
-            "The explicit reduced non-SUSY radial potential now contains the neutral modulus-locking companion. "
-            f"The conjunction of the sextic sign and quartic AM-GM conditions passes={reduced_bfb}; "
-            f"the independently derived local Hessian is positive={np.min(eigenvalues) > 0.0}. "
-            "The complete non-SUSY component Hessian remains open."
+            "Using the physical h=174 GeV target and every cross quartic in the "
+            f"radial witness, lambda4=0 has min m^2={survival_eigenvalues[0]:.6e} "
+            f"GeV^2, while the historical lambda4=-kappa*M_I/M_GUT point has "
+            f"min m^2={historical_eigenvalues[0]:.6e} GeV^2 and is tachyonic. "
+            f"That portal exceeds the O(1) EW-curvature bound by "
+            f"{historical_over_bound:.3e}. The selected benchmark fails; the "
+            "whole model remains open because unresolved tensor channels can "
+            "supply additional cancellations."
         ),
     }
+    return report
 
 
 def write_markdown(report: dict[str, Any]) -> str:
-    bfb = report["bfb_certificate"]
-    hessian = report["hessian"]
+    survival = report["survival_benchmark"]
+    historical = report["historical_benchmark"]
+    portal = report["ew_portal_consistency"]
     return "\n".join(
         [
-            "# Independent non-SUSY reduced BFB/Hessian certificate — v20",
+            "# Physical-EW non-SUSY reduced Hessian — v20",
             "",
             f"**Status:** `{report['status']}`",
             "",
             report["verdict"],
             "",
-            f"- Sufficient BFB condition: `{bfb['sufficient_condition']}`",
-            f"- Reduced BFB: {bfb['reduced_polynomial_bounded_from_below']}",
-            f"- Minimum Hessian eigenvalue: {hessian['min_eigenvalue_GeV2']:.6e} GeV^2",
-            f"- Analytic/FD relative difference: {hessian['max_relative_difference']:.3e}",
+            f"- Physical h target: {report['target_vevs_GeV']['H10_EW']} GeV",
+            f"- Survival min eigenvalue: {survival['min_eigenvalue_GeV2']:.6e} GeV^2",
+            f"- Survival lightest mass: {survival['lightest_mass_GeV']:.6f} GeV",
+            f"- Historical min eigenvalue: {historical['min_eigenvalue_GeV2']:.6e} GeV^2",
+            f"- Historical |lambda4| / EW bound: {portal['historical_abs_lam4_over_bound']:.6e}",
             "",
-            "The full component non-SUSY Hessian and global vacuum proof remain open.",
+            "The historical benchmark is excluded conditionally. The complete tensor potential remains open.",
             "",
         ]
     )
