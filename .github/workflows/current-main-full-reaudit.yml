@@ -7,7 +7,7 @@ on:
 jobs:
   full-reaudit:
     runs-on: ubuntu-latest
-    timeout-minutes: 150
+    timeout-minutes: 180
     env:
       PYTHONHASHSEED: "0"
     steps:
@@ -26,6 +26,10 @@ jobs:
         run: python -m unittest -v test_quartic_soft_betas_v20.py
       - name: Complete reduced BFB locking basis
         run: python mixed_rep_hilbert_bfb_completion_v20.py
+      - name: Execute invariant-floor falsification audit
+        run: python mixed_rep_invariant_floor_audit_v20.py
+      - name: Test invariant-floor falsification audit
+        run: python -m unittest -v test_mixed_rep_invariant_floor_audit_v20.py
       - name: Execute independent non-SUSY reduced Hessian
         run: python nonsusy_reduced_hessian_v20.py
       - name: Test independent non-SUSY reduced Hessian
@@ -58,6 +62,7 @@ jobs:
           import json
           r=json.load(open('SCALAR_PROTON_FALSIFICATION_GATE_V20.json'))
           q=json.load(open('QUARTIC_SOFT_BETAS_V20_VERDICT.json'))
+          i=json.load(open('MIXED_REP_INVARIANT_FLOOR_AUDIT_V20.json'))
           n=json.load(open('NONSUSY_REDUCED_HESSIAN_V20_VERDICT.json'))
           g=json.load(open('SO10_NONSUSY_GAUGE_ORBIT_V20_VERDICT.json'))
           f=json.load(open('CURRENT_MAIN_REPAIR_CLOSURE_V20.json'))
@@ -71,6 +76,12 @@ jobs:
           assert q['flag']['charged_10_126_casimirs_nonzero']
           assert q['flag']['separate_g4_gL_gR_running']
           assert not q['flag']['two_loop_quartic_betas_complete']
+          assert i['counts']['historical_upstream_invariants_total']==25
+          assert i['counts']['corrected_total_invariant_floor']>=37
+          assert len(i['missing_norm_products'])==6
+          assert len(i['multiplicity_deficits'])==5
+          assert i['flag']['historical_complete_filtered_basis_claim_falsified']
+          assert not i['flag']['whole_model_excluded']
           assert n['bfb_certificate']['sextic_highest_degree_nonnegative']
           assert n['bfb_certificate']['quartic_amgm_passes']
           assert n['flag']['independent_nonsusy_reduced_hessian']
@@ -86,7 +97,10 @@ jobs:
           assert not g['flag']['full_component_hessian_derived']
           assert f['overall_state']=='BLOCKED'
           assert all(f['resolved_breakpoints'].values())
+          assert f['numerical']['corrected_guaranteed_invariant_floor']>=37
           assert f['numerical']['goldstone_count']==33
+          assert f['remaining_blockers']['complete_mixed_rep_invariant_enumeration']
+          assert f['remaining_blockers']['enlarged_potential_reminimization']
           assert f['remaining_blockers']['full_component_nonsusy_hessian']
           assert f['remaining_blockers']['full_tensor_two_loop_betas']
           assert f['remaining_blockers']['exact_unique_proton_lifetime']
@@ -104,6 +118,8 @@ jobs:
             QUARTIC_SOFT_BETAS_V20.md
             MIXED_REP_HILBERT_BFB_COMPLETION_V20_VERDICT.json
             MIXED_REP_HILBERT_BFB_COMPLETION_V20.md
+            MIXED_REP_INVARIANT_FLOOR_AUDIT_V20.json
+            MIXED_REP_INVARIANT_FLOOR_AUDIT_V20.md
             NONSUSY_REDUCED_HESSIAN_V20_VERDICT.json
             NONSUSY_REDUCED_HESSIAN_V20.md
             SO10_NONSUSY_GAUGE_ORBIT_V20_VERDICT.json
