@@ -12,13 +12,33 @@ class EnlargedFloorBasisTests(unittest.TestCase):
     def test_report_executes(self):
         self.assertEqual(self.report["n_failed"], 0, self.report["failures"])
 
-    def test_guaranteed_floor_is_37(self):
+    def test_signed_guaranteed_floor_is_34(self):
         counts = self.report["counts"]
-        self.assertEqual(counts["historical_ledger_total"], 25)
-        self.assertEqual(counts["locking_completion_total"], 26)
+        self.assertEqual(counts["historical_ledger_claimed_total"], 25)
+        self.assertEqual(counts["mechanical_locking_completion_total"], 26)
+        self.assertEqual(
+            counts["mechanical_augmented_total_before_signed_corrections"], 37
+        )
+        self.assertEqual(
+            counts["signed_base_total_after_forbidden_and_unproven_removal"], 23
+        )
         self.assertEqual(counts["new_norm_products"], 6)
         self.assertEqual(counts["new_independent_tensor_channels"], 5)
-        self.assertEqual(counts["guaranteed_floor_total"], 37)
+        self.assertEqual(counts["signed_guaranteed_floor_total"], 34)
+
+    def test_signed_corrections(self):
+        corrections = {row["name"]: row for row in self.report["signed_corrections"]}
+        self.assertEqual(
+            corrections["210_H 10_H^dag 10_H"]["signed_floor_multiplicity"],
+            0,
+        )
+        self.assertEqual(corrections["210_H^3"]["signed_floor_multiplicity"], 1)
+        self.assertEqual(
+            corrections["210_H 126bar_H^dag 126bar_H"][
+                "signed_floor_multiplicity"
+            ],
+            1,
+        )
 
     def test_appended_entries_are_unique(self):
         appended = self.report["guaranteed_floor_basis"]["appended"]
@@ -33,7 +53,9 @@ class EnlargedFloorBasisTests(unittest.TestCase):
 
     def test_scope_remains_fail_closed(self):
         flags = self.report["flag"]
-        self.assertTrue(flags["canonical_floor_37_emitted"])
+        self.assertTrue(flags["mechanical_floor37_rejected"])
+        self.assertTrue(flags["canonical_signed_floor_34_emitted"])
+        self.assertTrue(flags["forbidden_210_10dag10_removed"])
         self.assertFalse(flags["full_unfiltered_molien_haar_series"])
         self.assertFalse(flags["full_tensor_normalizations"])
         self.assertFalse(flags["whole_model_excluded"])
