@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Integrate latest-main residual closures with the physical-EW scalar audit."""
+"""Integrate latest-main residual closures after the EFJX gauge/gamma correction."""
 from __future__ import annotations
 
 import argparse
@@ -47,21 +47,27 @@ def build_report() -> dict[str, Any]:
         and historical_tachyon
         and lifted.get("flag", {}).get("selected_point_not_spoiled_by_lock_raise")
     )
-
-    # The old ultimate chain is invalidated by the physical tachyon even when
-    # newer upstream code has already failed closed and cleared its stale
-    # all-residuals-closed flag.  Requiring that stale flag caused CI to fail
-    # for the honest state it was meant to certify.
     ultimate_selected_closure_invalidated = bool(historical_tachyon)
 
-    efjx_executes = bool(
+    efjx_source_corrected = bool(
         efjx.get("n_failed", 1) == 0
-        and efjx.get("flags", {}).get("exact_EFJX_gamma_response_known")
+        and efjx.get("flags", {}).get("exact_EFJX_gauge_response_known")
+        and efjx.get("flags", {}).get("efjx_cgc_route_invalidated")
+        and not efjx.get("flags", {}).get("exact_EFJX_gamma_response_known")
     )
     proxy_cgc_ratio_invalidated = bool(
         efjx.get("flags", {}).get("proxy_cgc_ratio_invalid_as_physical_prediction")
         and not efjx.get("flags", {}).get("physical_CGC_normalization_derived")
     )
+    old_8p8e29_bound_withdrawn = bool(
+        not efjx.get("flags", {}).get("old_8p8e29_bound_valid", True)
+    )
+    direct_tensor_executes = bool(
+        efjx.get("direct_tensor_replacement", {}).get("map_shape") == [10, 126]
+        and efjx.get("direct_tensor_replacement", {}).get("equivariance_residual", 1.0)
+        < 1e-10
+    )
+
     gauge_valid = bool(
         gauge_dump.get("live_run_executed")
         and gauge_dump.get("matches_ingested_one_loop_b")
@@ -92,8 +98,10 @@ def build_report() -> dict[str, Any]:
         "physical_EW_historical_point_tachyonic": historical_tachyon,
         "proxy_selected_point_closure_invalidated": selected_point_claim_invalidated,
         "ultimate_selected_point_closure_invalidated": ultimate_selected_closure_invalidated,
-        "EFJX_gamma_response_matrices_extracted": efjx_executes,
-        "proxy_EFJX_cgc_ratio_invalidated_as_physical": proxy_cgc_ratio_invalidated,
+        "EFJX_gauge_gamma_symbol_collision_corrected": efjx_source_corrected,
+        "old_EFJX_cgc_ratio_invalidated": proxy_cgc_ratio_invalidated,
+        "old_8p8e29_bound_withdrawn": old_8p8e29_bound_withdrawn,
+        "direct_10x126_tensor_map_executes": direct_tensor_executes,
         "exact_unique_lifetime_not_overclaimed": not ultimate_report.get("flag", {}).get(
             "exact_unique_proton_lifetime", True
         ),
@@ -108,12 +116,9 @@ def build_report() -> dict[str, Any]:
         in quartic_dump.get("not_encoded", []),
         "dim6_lambda_lock_live_encoding": "dim6_lambda_lock"
         in quartic_dump.get("not_encoded", []),
-        "physical_EFJX_CGC_normalization_on_h174_branch": not efjx.get("flags", {}).get(
-            "physical_CGC_normalization_derived", False
-        ),
-        "physical_EW_reminimization_after_EFJX_CGC": not efjx.get("flags", {}).get(
-            "physical_EW_branch_revalidated", False
-        ),
+        "published_state_label_dictionary_for_direct_tensor": True,
+        "direct_nonsusy_component_mass_squared_insertion": True,
+        "full_component_hessian_after_direct_tensor": True,
         "cal_G_lift_revalidation_on_physical_EW_survival_point": selected_point_claim_invalidated,
         "ultimate_tau_p_revalidation_after_physical_EW_falsification": ultimate_selected_closure_invalidated,
         "exact_unique_proton_lifetime": True,
@@ -121,7 +126,7 @@ def build_report() -> dict[str, Any]:
 
     return {
         "status": (
-            "LATEST_MAIN_RESIDUALS_INTEGRATED__PROXY_CLOSURES_INVALIDATED"
+            "LATEST_MAIN_RESIDUALS_INTEGRATED__EFJX_ROUTE_CORRECTED"
             if not failures
             else "LATEST_MAIN_RESIDUAL_INTEGRATION_FAILED"
         ),
@@ -133,15 +138,18 @@ def build_report() -> dict[str, Any]:
             "live_pyrate_reduced_quartic_soft_artifact": quartic_valid,
             "scalar_alpha_nonunique_from_current_flavour_fit": alpha_proven,
             "cal_G_lambda_lock_lift_mechanism_exists_in_principle": calg_mechanism_in_principle,
-            "EFJX_gamma_response_matrices_known_in_Aulakh_convention": efjx_executes,
+            "EFJX_gauge_superhiggs_response_identified": efjx_source_corrected,
+            "direct_Phi_H_Sigmabar_10x126_tensor_map": direct_tensor_executes,
         },
         "invalidated_selected_point_claims": {
             "lambda_lock_raise_does_not_spoil_selected_point": selected_point_claim_invalidated,
             "all_post_hessian_residuals_closed": ultimate_selected_closure_invalidated,
             "proxy_c_cgc_needed_abs_approx_is_physical": proxy_cgc_ratio_invalidated,
+            "EFJX_gauge_response_is_lambda4_gamma_response": efjx_source_corrected,
+            "c_norm_needed_is_8p8e29": old_8p8e29_bound_withdrawn,
             "reason": (
-                "Selected-point conclusions reuse the intermediate-scale 10_H radial proxy, "
-                "while the physical h=174 GeV Hessian excludes the historical point."
+                "The physical h=174 GeV audit invalidates the old radial selected point, "
+                "and the Aulakh source shows E/F/J/X g is the gauge coupling rather than gamma."
             ),
         },
         "still_open": still_open,
@@ -154,12 +162,13 @@ def build_report() -> dict[str, Any]:
             "ultimate_exact_unique_proton_lifetime": ultimate_report.get("flag", {}).get(
                 "exact_unique_proton_lifetime"
             ),
-            "EFJX_reported_proxy_cgc_ratio": efjx.get("proxy_dependency_audit", {}).get(
-                "reported_proxy_c_cgc_needed_abs_approx"
+            "EFJX_reported_proxy_cgc_ratio": None,
+            "EFJX_old_8p8e29_bound": None,
+            "EFJX_is_gauge_superhiggs_block": efjx_source_corrected,
+            "direct_tensor_map_shape": efjx.get("direct_tensor_replacement", {}).get(
+                "map_shape"
             ),
-            "EFJX_physical_cgc_normalization_derived": efjx.get("flags", {}).get(
-                "physical_CGC_normalization_derived"
-            ),
+            "physical_cgc_normalization_derived": False,
         },
         "upstream_status": {
             "scalar_alpha": alpha.get("status"),
@@ -167,23 +176,25 @@ def build_report() -> dict[str, Any]:
             "lambda_lock_lift": lifted.get("status"),
             "ultimate_tau_p": ultimate_report.get("status"),
             "physical_EW_hessian": physical.get("status"),
-            "EFJX_CGC_normalization": efjx.get("overall_state"),
+            "EFJX_source_correction": efjx.get("status"),
         },
         "flag": {
             "live_sarah_or_pyrate_executable_artifact_validated": gauge_valid and quartic_valid,
             "scalar_alpha_nonuniqueness_closed": alpha_proven,
             "cal_G_mechanism_identified_but_physical_point_not_revalidated": True,
             "latest_main_selected_point_closure_invalidated": selected_point_claim_invalidated,
-            "EFJX_response_known_but_physical_CGC_open": efjx_executes
-            and proxy_cgc_ratio_invalidated,
+            "EFJX_cgc_route_invalidated_direct_tensor_open": efjx_source_corrected
+            and direct_tensor_executes,
+            "old_8p8e29_bound_valid": False,
             "exact_unique_proton_lifetime": False,
             "whole_model_excluded": False,
+            "whole_model_validated": False,
         },
         "verdict": (
-            "Valid live artifacts and the E/F/J/X gamma response are retained. "
-            "Proxy-selected lambda_lock, tau_p and c_cgc closures remain invalid; "
-            "the physical Phi H Sigmabar S normalization and h=174 GeV "
-            "re-minimization remain open."
+            "Valid live artifacts are retained. The E/F/J/X lambda4-CGC route and its "
+            "8.8e29 bound are withdrawn because Aulakh g is the gauge coupling. A direct "
+            "SO(10)-equivariant 10x126 p,a,omega tensor map now exists, while labeled "
+            "component mass-squared insertion, the full Hessian, and tau_p remain open."
         ),
     }
 
