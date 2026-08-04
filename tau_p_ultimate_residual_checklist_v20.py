@@ -1,19 +1,22 @@
 #!/usr/bin/env python3
 r"""Fold post-live residuals into the ultimate τ_p checklist (v20).
 
-Next step after ``cal_g_soft_mode_classification_v20``:
+Next step after ``live_pyrate_quartic_soft_dump_v20``:
 
 1. Collect closed residuals from the post-Hessian ladder:
    Hessian closure, λ₄ PQ-null lift, scalar-α non-uniqueness, live PyR@TE
-   gauge β dump, and cal G soft-mode classification.
+   gauge β dump, cal G soft-mode classification, and the δ-contracted
+   quartic/soft live dump.
 2. Merge them into the full-stack τ_p residual checklist.
-3. Keep ``exact_unique_proton_lifetime`` OPEN for the remaining
-   ``full_quartic_soft_live_dump`` (and documented light-mode caveats).
+3. Keep ``exact_unique_proton_lifetime`` OPEN for remaining light-mode /
+   λ₄-threshold caveats (and documented λ₄ CGC / dim-6 incompleteness).
 
 Honesty
 -------
 * Closing this checklist does **not** claim a unique whole-model τ_p.
 * Selected-point SK failure (if any) remains conditional.
+* The quartic/soft live dump is δ-contracted / reduced — not full SO(10)
+  tensor basis, λ₄ CGC, or dim-6 lock.
 """
 
 from __future__ import annotations
@@ -24,6 +27,7 @@ from pathlib import Path
 from typing import Any
 
 import cal_g_soft_mode_classification_v20 as calg
+import live_pyrate_quartic_soft_dump_v20 as qsoft
 import live_pyrate_so10_beta_dump_v20 as live
 import pq_null_lam4_portal_lift_v20 as pqnull
 import scalar_alpha_flavour_nonuniqueness_v20 as alpha
@@ -40,12 +44,13 @@ RESIDUALS_NOW_CLOSED = [
     "scalar_alpha_not_unique_from_flavour",
     "live_sarah_or_pyrate_executable_run",
     "cal_G_soft_mode_classification",
+    "full_quartic_soft_live_dump",
 ]
 
 RESIDUAL_STILL_OPEN = [
-    "full_quartic_soft_live_dump",
     "selected_lam4_below_gut_null_tol_threshold",
     "cal_G_residual_light_singlet_mass",
+    "lam4_cgc_and_dim6_lock_not_in_live_dump",
 ]
 
 SOURCES = {
@@ -54,6 +59,7 @@ SOURCES = {
     "scalar_alpha": "scalar_alpha_flavour_nonuniqueness_v20",
     "live_pyrate": "live_pyrate_so10_beta_dump_v20",
     "cal_g": "cal_g_soft_mode_classification_v20",
+    "quartic_soft_live": "live_pyrate_quartic_soft_dump_v20",
 }
 
 
@@ -63,6 +69,7 @@ def build_report() -> dict[str, Any]:
     alpha_rep = alpha.build_report()
     live_rep = live.build_report(force_rerun=False)
     calg_rep = calg.build_report()
+    qsoft_rep = qsoft.build_report(force_rerun=False)
 
     if hess_rep.get("n_failed", 1) != 0:
         return {
@@ -108,17 +115,21 @@ def build_report() -> dict[str, Any]:
             calg_rep.get("n_failed", 1) == 0
             and calg_rep["flag"]["cal_G_soft_mode_classified"]
         ),
+        "full_quartic_soft_live_dump": bool(
+            qsoft_rep.get("n_failed", 1) == 0
+            and qsoft_rep["flag"]["full_quartic_soft_live_dump"]
+        ),
     }
     all_closed = all(closed.values())
 
     still_open = {
-        "full_quartic_soft_live_dump": True,
         "selected_lam4_below_gut_null_tol_threshold": bool(
             not pq_rep.get("flag", {}).get("selected_lam4_clears_gut_null_tol", False)
         ),
         "cal_G_residual_light_singlet_mass": bool(
             calg_rep.get("primary_classification", {}).get("soft_vs_null_tol", True)
         ),
+        "lam4_cgc_and_dim6_lock_not_in_live_dump": True,
     }
 
     checks = {
@@ -128,9 +139,10 @@ def build_report() -> dict[str, Any]:
         "live_ok": live_rep.get("n_failed", 1) == 0
         and live_rep["flag"]["live_sarah_or_pyrate_executable_run"],
         "calg_ok": calg_rep.get("n_failed", 1) == 0,
+        "qsoft_ok": qsoft_rep.get("n_failed", 1) == 0
+        and qsoft_rep["flag"]["full_quartic_soft_live_dump"],
         "all_checklist_closed": all_closed,
         "tau_positive": float(life["selected_tau_e_years"]) > 0.0,
-        "quartic_soft_still_open": still_open["full_quartic_soft_live_dump"],
         "exact_unique_not_overclaimed": True,
         "whole_model_not_declared_dead": True,
     }
@@ -153,6 +165,7 @@ def build_report() -> dict[str, Any]:
             "scalar_alpha": alpha_rep.get("status"),
             "live_pyrate": live_rep.get("status"),
             "cal_g": calg_rep.get("status"),
+            "quartic_soft_live": qsoft_rep.get("status"),
         },
         "certificate": {
             "residual_now_closed": closed,
@@ -161,16 +174,18 @@ def build_report() -> dict[str, Any]:
             "interpretation": (
                 "The ultimate selected-point τ_p checklist now includes closed "
                 "Hessian positivity, λ₄ PQ-null exact-kernel lift, proven "
-                "scalar-α non-uniqueness, live PyR@TE gauge β, and classified "
-                "cal G soft mode. Exact whole-model unique τ_p remains OPEN "
-                "because a full quartic/soft live dump is not closed (and "
-                "light-mode caveats from λ₄ and cal G remain documented)."
+                "scalar-α non-uniqueness, live PyR@TE gauge β, classified "
+                "cal G soft mode, and a δ-contracted live quartic/soft dump. "
+                "Exact whole-model unique τ_p remains OPEN because selected "
+                "λ₄ is below the GUT null-tol threshold, the cal G residual "
+                "light singlet remains, and λ₄ CGC / dim-6 lock are not in "
+                "the live dump."
             ),
         },
         "next_exact_calculation": [
-            "Extend the live PyR@TE dump to quartic/soft βs for the charge-allowed potential",
             "Decide whether the cal G residual light singlet requires an extra portal",
-            "Re-evaluate exact unique τ_p only after full_quartic_soft_live_dump closes",
+            "Assess whether |λ₄| can be raised to clear the GUT null-tol without spoiling the selected point",
+            "Re-evaluate exact unique τ_p only after remaining light-mode / λ₄ caveats close",
         ],
         "flag": {
             "ultimate_residual_checklist_folded": True,
@@ -181,7 +196,7 @@ def build_report() -> dict[str, Any]:
             "live_sarah_or_pyrate_executable_run": True,
             "scalar_alpha_proven_nonunique_from_flavour": True,
             "cal_G_soft_mode_classified": True,
-            "full_quartic_soft_live_dump": False,
+            "full_quartic_soft_live_dump": True,
             "exact_unique_proton_lifetime": False,
             "whole_model_excluded": False,
         },
@@ -191,7 +206,7 @@ def build_report() -> dict[str, Any]:
             f"(SK pass={life['selected_passes_SK']}); "
             f"closed={all_closed}; cal G label="
             f"{calg_rep.get('flag', {}).get('primary_label')}. "
-            f"Still OPEN: full_quartic_soft_live_dump. "
+            f"full_quartic_soft_live_dump closed (δ-contracted). "
             f"exact_unique_proton_lifetime remains False."
         ),
     }

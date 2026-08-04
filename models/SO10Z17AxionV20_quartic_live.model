@@ -1,0 +1,89 @@
+# YAML 1.1
+# Live v20 charge-allowed renormalizable scalar sector for PyR@TE 3.
+# Field content: 3 Weyl 16 + real 210 + complex 10 + complex 126 + complex S.
+# Encodes δ-contracted self-quartics, κ-like 10^2 S trilinear, soft m^2,
+# and |φ|^2|S|^2 portals. The full 210·10·126·S (λ4) CGC monomial and dim-6
+# λ_lock remain documented OPEN (no invented unpublished CGCs).
+# Global PQ/X/Z17 are not gauged.
+# Note: 210 self-quartics use the δ_ab singlet projector (Phi·Phi)^2, not the
+# full SO(10) invariant basis (T2/T4 require the 45 adjoint embedding).
+---
+Author: so10-axion-v20
+Date: 04.08.2026
+Name: SO10Z17AxionV20_quartic_live
+Groups: {SO10: SO10}
+
+Fermions: {
+    Psi16: {Gen: 3, Qnb:{SO10: [0, 0, 0, 0, 1]}},
+}
+
+RealScalars: {
+    Phi210: {Gen: 1, Qnb:{SO10: [0, 0, 0, 1, 1]}},
+}
+
+ComplexScalars: {
+    H10: {RealFields: [H10r, H10i], Norm: 1/Sqrt(2), Qnb:{SO10: [1, 0, 0, 0, 0]}},
+    Delta126: {RealFields: [D126r, D126i], Norm: 1/Sqrt(2), Qnb:{SO10: [0, 0, 0, 0, 2]}},
+    S: {RealFields: [Sr, Si], Norm: 1/Sqrt(2), Qnb:{SO10: [0, 0, 0, 0, 0]}},
+}
+
+Potential: {
+
+    Definitions: {},
+
+    Yukawas: {},
+
+    QuarticTerms: {
+        # Self-quartics (δ-contracted singlet projectors)
+        lam10 : (H10bar[i] H10[i])*(H10bar[j] H10[j]),
+        lam126 : (Delta126bar[i] Delta126[i])*(Delta126bar[j] Delta126[j]),
+        lamS : (Sbar * S)*(Sbar * S),
+        lam210 : (Phi210[a] Phi210[a])*(Phi210[b] Phi210[b]),
+
+        # Charge-allowed |φ|^2|S|^2 portals (renormalizable)
+        lam10S : (H10bar[i] H10[i])*(Sbar * S),
+        lam126S : (Delta126bar[i] Delta126[i])*(Sbar * S),
+        lam210S : (Phi210[a] Phi210[a])*(Sbar * S),
+
+        # Mixed |10|^2|126|^2 portal (δ-contracted)
+        lam10_126 : (H10bar[i] H10[i])*(Delta126bar[j] Delta126[j]),
+    },
+
+    TrilinearTerms: {
+        # PQ-allowed 10_H^2 S (κ portal) — singlet contraction of 10×10
+        kappa : (H10[i] H10[i]) * S,
+    },
+
+    ScalarMasses: {
+        m2102 : Phi210[a]*Phi210[a],
+        m102 : H10bar[i] H10[i],
+        m1262 : Delta126bar[i] Delta126[i],
+        mS2 : Sbar * S,
+    },
+}
+
+Substitutions: {
+    g_SO10 : g10,
+}
+
+Latex: {
+    Psi16: \Psi_{16},
+    Phi210: \Phi_{210},
+    H10: H_{10},
+    Delta126: \Delta_{126},
+    S: S,
+    g10: g_{10},
+    lam10: \lambda_{10},
+    lam126: \lambda_{126},
+    lamS: \lambda_{S},
+    lam210: \lambda_{210},
+    lam10S: \lambda_{10S},
+    lam126S: \lambda_{126S},
+    lam210S: \lambda_{210S},
+    lam10_126: \lambda_{10,126},
+    kappa: \kappa,
+    m2102: m_{210}^{2},
+    m102: m_{10}^{2},
+    m1262: m_{126}^{2},
+    mS2: m_{S}^{2},
+}
