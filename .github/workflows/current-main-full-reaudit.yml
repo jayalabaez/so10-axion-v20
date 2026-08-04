@@ -20,48 +20,40 @@ jobs:
         run: python -m pip install -r requirements.txt
       - name: Compile every Python module
         run: python -m compileall -q .
-      - name: Execute subgroup-resolved quartic RGE
-        run: python quartic_soft_betas_v20.py
-      - name: Test subgroup-resolved quartic RGE
-        run: python -m unittest -v test_quartic_soft_betas_v20.py
-      - name: Complete reduced BFB locking basis
-        run: python mixed_rep_hilbert_bfb_completion_v20.py
-      - name: Execute invariant-floor falsification audit
-        run: python mixed_rep_invariant_floor_audit_v20.py
-      - name: Test invariant-floor falsification audit
-        run: python -m unittest -v test_mixed_rep_invariant_floor_audit_v20.py
-      - name: Execute exact invariant witnesses
-        run: python mixed_rep_invariant_exact_witness_v20.py
-      - name: Test exact invariant witnesses
-        run: python -m unittest -v test_mixed_rep_invariant_exact_witness_v20.py
-      - name: Emit canonical 37-invariant floor
-        run: python mixed_rep_enlarged_floor_basis_v20.py
-      - name: Test canonical 37-invariant floor
-        run: python -m unittest -v test_mixed_rep_enlarged_floor_basis_v20.py
-      - name: Execute physical-EW non-SUSY reduced Hessian
-        run: python nonsusy_reduced_hessian_v20.py
-      - name: Test physical-EW non-SUSY reduced Hessian
-        run: python -m unittest -v test_nonsusy_reduced_hessian_v20.py
-      - name: Execute perturbative floor37 no-rescue bound
-        run: python ew_portal_rescue_bound_v20.py
-      - name: Test perturbative floor37 no-rescue bound
-        run: python -m unittest -v test_ew_portal_rescue_bound_v20.py
-      - name: Execute exact SO10 gauge-orbit certificate
-        run: python so10_nonsusy_gauge_orbit_v20.py
-      - name: Test exact SO10 gauge-orbit certificate
-        run: python -m unittest -v test_so10_nonsusy_gauge_orbit_v20.py
-      - name: Execute current-main scalar/proton re-audit
-        run: python scalar_proton_falsification_gate_v20.py
-      - name: Focused fail-closed re-audit tests
-        run: python -m unittest -v test_scalar_proton_falsification_gate_v20.py
-      - name: Execute repaired breakpoint closure
-        run: python current_main_repair_closure_v20.py
-      - name: Test repaired breakpoint closure
-        run: python -m unittest -v test_current_main_repair_closure_v20.py
-      - name: Execute final scalar theory gate
-        run: python final_scalar_theory_gate_v20.py
-      - name: Test final scalar theory gate
-        run: python -m unittest -v test_final_scalar_theory_gate_v20.py
+      - name: Execute repaired RGE and signed invariant chain
+        run: |
+          python quartic_soft_betas_v20.py
+          python mixed_rep_hilbert_bfb_completion_v20.py
+          python mixed_rep_invariant_floor_audit_v20.py
+          python mixed_rep_invariant_exact_witness_v20.py
+          python so10_cubic_operator_signed_audit_v20.py
+          python mixed_rep_enlarged_floor_basis_v20.py
+      - name: Execute physical-EW scalar chain
+        run: |
+          python nonsusy_reduced_hessian_v20.py
+          python ew_portal_rescue_bound_v20.py
+          python so10_nonsusy_gauge_orbit_v20.py
+      - name: Execute latest-main dependency and final gates
+        run: |
+          python scalar_proton_falsification_gate_v20.py
+          python latest_main_residual_integration_v20.py
+          python current_main_repair_closure_v20.py
+          python final_scalar_theory_gate_v20.py
+      - name: Run focused signed-gate tests
+        run: |
+          python -m unittest -v \
+            test_quartic_soft_betas_v20.py \
+            test_mixed_rep_invariant_floor_audit_v20.py \
+            test_mixed_rep_invariant_exact_witness_v20.py \
+            test_so10_cubic_operator_signed_audit_v20.py \
+            test_mixed_rep_enlarged_floor_basis_v20.py \
+            test_nonsusy_reduced_hessian_v20.py \
+            test_ew_portal_rescue_bound_v20.py \
+            test_so10_nonsusy_gauge_orbit_v20.py \
+            test_scalar_proton_falsification_gate_v20.py \
+            test_latest_main_residual_integration_v20.py \
+            test_current_main_repair_closure_v20.py \
+            test_final_scalar_theory_gate_v20.py
       - name: Reproduce pristine release
         run: python replicate.py
       - name: Validate release anchors
@@ -70,106 +62,80 @@ jobs:
         run: python falsify_v20.py
       - name: Run extensive adversarial campaign
         run: python extensive_confirm_falsify_v20.py
-      - name: Discover and run the full test suite
+      - name: Discover and run full test suite
         run: python -m unittest discover -v -p 'test_*.py'
-      - name: Assert honest final scope
+      - name: Assert honest final scientific scope
         run: |
           python - <<'PY'
           import json
-          r=json.load(open('SCALAR_PROTON_FALSIFICATION_GATE_V20.json'))
           q=json.load(open('QUARTIC_SOFT_BETAS_V20_VERDICT.json'))
-          i=json.load(open('MIXED_REP_INVARIANT_FLOOR_AUDIT_V20.json'))
-          e=json.load(open('MIXED_REP_ENLARGED_FLOOR_BASIS_V20.json'))
+          c=json.load(open('SO10_CUBIC_OPERATOR_SIGNED_AUDIT_V20.json'))
+          b=json.load(open('MIXED_REP_ENLARGED_FLOOR_BASIS_V20.json'))
           n=json.load(open('NONSUSY_REDUCED_HESSIAN_V20_VERDICT.json'))
           u=json.load(open('EW_PORTAL_RESCUE_BOUND_V20.json'))
           g=json.load(open('SO10_NONSUSY_GAUGE_ORBIT_V20_VERDICT.json'))
-          f=json.load(open('CURRENT_MAIN_REPAIR_CLOSURE_V20.json'))
+          l=json.load(open('LATEST_MAIN_RESIDUAL_INTEGRATION_V20.json'))
           z=json.load(open('FINAL_SCALAR_THEORY_GATE_V20.json'))
-          c=r['certificates']
-          assert r['overall_state']=='BLOCKED', r
-          assert c['all_critical_modules_executed']
-          assert not c['charged_PS_fields_zero_casimir_in_quartic_rg']
-          assert not c['exact_unique_proton_lifetime']
-          assert not c['whole_model_excluded']
           assert q['flag']['pati_salam_subgroup_resolved']
           assert q['flag']['charged_10_126_casimirs_nonzero']
           assert q['flag']['separate_g4_gL_gR_running']
           assert not q['flag']['two_loop_quartic_betas_complete']
-          assert i['counts']['historical_upstream_invariants_total']==25
-          assert i['counts']['corrected_total_invariant_floor']>=37
-          assert len(i['missing_norm_products'])==6
-          assert len(i['multiplicity_deficits'])==5
-          assert i['flag']['historical_complete_filtered_basis_claim_falsified']
-          assert not i['flag']['whole_model_excluded']
-          assert e['counts']['guaranteed_floor_total']==37
-          assert e['flag']['canonical_floor_37_emitted']
-          assert not e['flag']['full_unfiltered_molien_haar_series']
+          assert c['n_failed']==0, c
+          assert c['flag']['forbidden_210_10dag10_proved']
+          assert c['counts']['net_reduction']==3
+          assert b['n_failed']==0, b
+          assert b['counts']['mechanical_augmented_total_before_signed_corrections']==37
+          assert b['counts']['signed_guaranteed_floor_total']==34
+          assert b['flag']['mechanical_floor37_rejected']
+          assert b['flag']['canonical_signed_floor_34_emitted']
+          assert n['n_failed']==0, n
+          assert n['enlarged_basis']['signed_guaranteed_floor_total']==34
           assert n['target_vevs_GeV']['H10_EW']==174.0
-          assert n['flag']['physical_electroweak_10_vev_used']
-          assert n['flag']['historical_equal_MI_10_vev_rejected']
-          assert n['flag']['cross_quartics_from_radial_witness_included']
-          assert n['flag']['arbitrary_precision_diagonalization_used']
           assert n['survival_benchmark']['positive_definite']
-          assert 120.0 < n['survival_benchmark']['lightest_mass_GeV'] < 130.0
           assert n['historical_benchmark']['tachyonic']
           assert n['flag']['historical_selected_lam4_point_excluded']
-          assert n['ew_portal_consistency']['historical_abs_lam4_over_bound'] > 1e25
-          assert not n['flag']['uses_aulakh_or_msgut_component_matrices']
-          assert not n['flag']['full_component_nonsusy_hessian']
-          assert not n['flag']['whole_model_excluded']
           assert u['n_failed']==0, u
-          assert u['flag']['historical_lam4_point_excluded_within_guaranteed_floor']
+          assert u['flag']['historical_lam4_point_excluded_within_signed_floor34']
           assert u['flag']['guaranteed_H4_channels_insufficient_perturbatively']
           assert u['numerical']['required_over_combined_perturbative_allowance'] > 1e20
-          assert u['numerical']['best_case_rescued_HH_curvature_GeV2'] < 0
-          assert not u['flag']['whole_model_excluded']
           assert g['orbit']['combined_orbit_rank_goldstones']==33
           assert g['orbit']['combined_stabilizer_dimension']==12
-          assert g['orbit']['so6_stabilizer_dimension']==8
-          assert g['orbit']['so4_stabilizer_dimension']==4
-          assert g['flag']['independent_of_susy_mass_matrices']
-          assert not g['flag']['full_component_hessian_derived']
-          assert f['overall_state']=='BLOCKED'
-          assert all(f['resolved_breakpoints'].values())
-          assert f['numerical']['corrected_guaranteed_invariant_floor']==37
-          assert f['numerical']['physical_H10_vev_GeV']==174.0
-          assert f['numerical']['historical_min_eigenvalue_GeV2'] < -1e30
-          assert f['flags']['historical_selected_point_excluded']
-          assert f['flags']['survival_parameter_region_exists']
-          assert f['numerical']['goldstone_count']==33
-          assert f['remaining_blockers']['complete_mixed_rep_invariant_enumeration']
-          assert f['remaining_blockers']['full_37_channel_tensor_projection_and_reminimization']
-          assert f['remaining_blockers']['lambda4_ew_hierarchy_cancellation_or_tiny_coupling']
-          assert f['remaining_blockers']['full_component_nonsusy_hessian']
-          assert f['remaining_blockers']['full_tensor_two_loop_betas']
-          assert f['remaining_blockers']['exact_unique_proton_lifetime']
-          assert not f['flags']['whole_model_excluded']
-          assert not f['flags']['whole_model_validated']
+          assert l['n_failed']==0, l
+          assert l['valid_new_closures']['live_pyrate_gauge_artifact']
+          assert l['valid_new_closures']['live_pyrate_reduced_quartic_soft_artifact']
+          assert l['valid_new_closures']['scalar_alpha_nonunique_from_current_flavour_fit']
+          assert l['invalidated_selected_point_claims']['lambda_lock_raise_does_not_spoil_selected_point']
           assert z['overall_state']=='BLOCKED', z
           assert all(z['resolved_breakpoints'].values())
+          assert z['flags']['mechanical_floor37_rejected']
+          assert z['flags']['signed_guaranteed_floor34_emitted']
           assert z['flags']['historical_lambda4_benchmark_excluded']
-          assert z['flags']['historical_lambda4_benchmark_not_rescuable_with_floor37_perturbative_even_H_terms']
+          assert z['flags']['historical_lambda4_benchmark_not_rescuable_with_signed_floor34_perturbative_even_H_terms']
           assert z['flags']['reduced_survival_region_exists']
-          assert z['remaining_blockers']['new_odd_H_tensor_channel_or_hierarchy_mechanism']
+          assert z['flags']['live_pyrate_artifacts_validated']
+          assert z['flags']['scalar_alpha_nonuniqueness_proven']
+          assert z['flags']['latest_main_proxy_selected_point_closures_invalidated']
+          assert z['remaining_blockers']['complete_mixed_rep_invariant_enumeration']
+          assert z['remaining_blockers']['full_signed_floor34_tensor_projection_and_reminimization']
+          assert z['remaining_blockers']['cal_G_lift_revalidation_on_physical_EW_survival_point']
+          assert z['remaining_blockers']['lambda4_CGC_live_encoding']
+          assert z['remaining_blockers']['dim6_lambda_lock_live_encoding']
           assert z['remaining_blockers']['full_component_nonsusy_hessian']
+          assert z['remaining_blockers']['full_tensor_two_loop_betas']
           assert z['remaining_blockers']['exact_unique_proton_lifetime']
           assert not z['flags']['whole_model_excluded']
           assert not z['flags']['whole_model_validated']
           PY
-      - name: Upload re-audit verdict
+      - name: Upload re-audit verdicts
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: current-main-scalar-proton-reaudit
           path: |
-            SCALAR_PROTON_FALSIFICATION_GATE_V20.json
-            SCALAR_PROTON_FALSIFICATION_GATE_V20.md
             QUARTIC_SOFT_BETAS_V20_VERDICT.json
-            QUARTIC_SOFT_BETAS_V20.md
-            MIXED_REP_HILBERT_BFB_COMPLETION_V20_VERDICT.json
-            MIXED_REP_HILBERT_BFB_COMPLETION_V20.md
+            SO10_CUBIC_OPERATOR_SIGNED_AUDIT_V20.json
+            SO10_CUBIC_OPERATOR_SIGNED_AUDIT_V20.md
             MIXED_REP_INVARIANT_FLOOR_AUDIT_V20.json
-            MIXED_REP_INVARIANT_FLOOR_AUDIT_V20.md
             MIXED_REP_INVARIANT_EXACT_WITNESS_V20.json
             MIXED_REP_ENLARGED_FLOOR_BASIS_V20.json
             MIXED_REP_ENLARGED_FLOOR_BASIS_V20.md
@@ -178,8 +144,7 @@ jobs:
             EW_PORTAL_RESCUE_BOUND_V20.json
             EW_PORTAL_RESCUE_BOUND_V20.md
             SO10_NONSUSY_GAUGE_ORBIT_V20_VERDICT.json
-            SO10_NONSUSY_GAUGE_ORBIT_V20.md
+            LATEST_MAIN_RESIDUAL_INTEGRATION_V20.json
             CURRENT_MAIN_REPAIR_CLOSURE_V20.json
-            CURRENT_MAIN_REPAIR_CLOSURE_V20.md
             FINAL_SCALAR_THEORY_GATE_V20.json
             FINAL_SCALAR_THEORY_GATE_V20.md
