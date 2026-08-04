@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "model_label": "SO(10)xZ17 axion candidate v20",
+  "field_content": [
+    {"name": "210_H", "so10_rep": "210", "field_reality": "real", "role": "SO(10) to Pati-Salam breaking"},
+    {"name": "126bar_H", "so10_rep": "126bar", "field_reality": "complex", "role": "Pati-Salam to SM and right-handed-neutrino scale"},
+    {"name": "10_H", "so10_rep": "10", "field_reality": "complex", "role": "electroweak doublets and Yukawa sector"},
+    {"name": "S", "so10_rep": "1", "field_reality": "complex", "role": "PQ breaking"},
+    {"name": "Phi17", "so10_rep": "1", "field_reality": "complex", "role": "discrete-symmetry UV sector"}
+  ],
+  "unification_anchor": {
+    "M_I_GeV": 631390000000.0,
+    "M_GUT_GeV": 9917600000000000.0,
+    "alpha_inv_GUT": 37.313
+  },
+  "scalar_completion": {
+    "external_invariant_basis_reference": null,
+    "invariant_basis_sha256": null,
+    "expected_independent_invariant_count": null,
+    "declared_independent_invariants": [],
+    "stationarity_residual_inf": null,
+    "stationarity_tolerance": 1e-10,
+    "physical_hessian_eigenvalues_GeV2": [],
+    "goldstone_count_expected": 33,
+    "goldstone_count_found": null,
+    "target_vacuum_energy_GeV4": null,
+    "competing_vacua_energies_GeV4": [],
+    "bounded_from_below_certificate": null,
+    "xy_mass_eigenvalues_GeV": [],
+    "color_triplet_states": []
+  },
+  "proton_decay": {
+    "p_to_e_pi0_limit_years": 2.4e34,
+    "central_A_R": 2.5,
+    "central_hadronic_W_GeV2": 0.11,
+    "V_ud": 0.9737,
+    "M_X_over_M_GUT_scan": [0.5, 0.75, 1.0, 1.5, 2.0],
+    "A_R_scan": [2.0, 2.5, 3.0],
+    "hadronic_W_scan_GeV2": [0.09, 0.11, 0.13],
+    "effective_yukawa_scan": [1e-5, 1e-4, 1e-3],
+    "triplet_mass_scan_GeV": [631390000000.0, 1e12, 1e13, 9917600000000000.0],
+    "exact_operator_running_hadronic_matching": false,
+    "exact_gauge_channel_lifetime_years": null,
+    "exact_scalar_channel_lifetime_years": null,
+    "exact_combined_channel_lifetime_years": null
+  }
+}
