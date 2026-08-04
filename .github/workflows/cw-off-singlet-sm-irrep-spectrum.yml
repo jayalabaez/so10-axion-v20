@@ -1,0 +1,47 @@
+name: cw-off-singlet-sm-irrep-spectrum
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  cw-off-singlet-sm-irrep-spectrum:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Execute CW + off-singlet SM-irrep spectrum
+        run: python cw_off_singlet_sm_irrep_v20.py
+      - name: Focused regression tests
+        run: python -m unittest -v test_cw_off_singlet_sm_irrep_v20.py
+      - name: Assert honest scientific scope
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('CW_OFF_SINGLET_SM_IRREP_V20_VERDICT.json'))
+          assert r['status']=='CW_OFF_SINGLET_SM_IRREP_SPECTRUM_INCLUDED__FERMION_TOWER_OPEN'
+          assert r['n_failed']==0
+          assert r['off_singlet_cw']['n_entries']==10
+          assert r['flag']['cw_off_singlet_spectrum_included']
+          assert r['flag']['one_loop_stability_conditional']
+          assert not r['flag']['fermion_tower_complete']
+          assert not r['flag']['mixed_210_126_10_in_cw']
+          assert not r['flag']['exact_unique_proton_lifetime']
+          assert not r['flag']['whole_model_excluded']
+          PY
+      - name: Upload CW off-singlet verdicts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cw-off-singlet-sm-irrep-verdict
+          path: |
+            CW_OFF_SINGLET_SM_IRREP_V20_VERDICT.json
+            CW_OFF_SINGLET_SM_IRREP_V20.md
