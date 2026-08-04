@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Any
 
 import mixed_rep_hilbert_bfb_completion_v20 as bfb_basis
+import mixed_rep_invariant_floor_audit_v20 as invariant_floor
 import nonsusy_reduced_hessian_v20 as nonsusy
 import quartic_soft_betas_v20 as ps_rge
 import scalar_proton_falsification_gate_v20 as base_audit
@@ -22,6 +23,7 @@ def build_report() -> dict[str, Any]:
     base = base_audit.build_report()
     rge = ps_rge.build_report()
     basis = bfb_basis.build_report()
+    floor = invariant_floor.build_report()
     hessian = nonsusy.build_report()
     orbit = gauge_orbit.build_report()
 
@@ -30,6 +32,7 @@ def build_report() -> dict[str, Any]:
         ("base_audit", base),
         ("ps_rge", rge),
         ("bfb_basis", basis),
+        ("invariant_floor", floor),
         ("nonsusy_hessian", hessian),
         ("gauge_orbit", orbit),
     ):
@@ -46,6 +49,10 @@ def build_report() -> dict[str, Any]:
         "canonical_phase_lock_modulus_companion": bool(
             basis.get("flag", {}).get("modulus_locking_companion_added")
             and basis.get("flag", {}).get("canonical_completed_basis_emitted")
+        ),
+        "guaranteed_invariant_floor_audited": bool(
+            floor.get("flag", {}).get("historical_complete_filtered_basis_claim_falsified")
+            and floor.get("flag", {}).get("guaranteed_invariant_floor_constructed")
         ),
         "reduced_nonsusy_bounded_from_below": bool(
             hessian.get("flag", {}).get("reduced_potential_bounded_from_below")
@@ -69,6 +76,12 @@ def build_report() -> dict[str, Any]:
 
     base_cert = base.get("certificates", {})
     remaining = {
+        "complete_mixed_rep_invariant_enumeration": not bool(
+            floor.get("flag", {}).get("full_unfiltered_molien_haar_series")
+        ),
+        "enlarged_potential_reminimization": bool(
+            floor.get("flag", {}).get("historical_complete_filtered_basis_claim_falsified")
+        ),
         "full_component_nonsusy_hessian": not bool(
             hessian.get("flag", {}).get("full_component_nonsusy_hessian")
         ),
@@ -79,7 +92,6 @@ def build_report() -> dict[str, Any]:
             rge.get("flag", {}).get("full_component_tensor_betas")
         ),
         "live_sarah_or_pyrate_run": not bool(base_cert.get("live_sarah_or_pyrate_run")),
-        "unfiltered_molien_haar": not bool(base_cert.get("unfiltered_molien_haar_closed")),
         "exact_unique_proton_lifetime": not bool(base_cert.get("exact_unique_proton_lifetime")),
         "selected_lam4_below_null_tolerance": not bool(
             base_cert.get("selected_lam4_clears_null_tolerance")
@@ -88,6 +100,12 @@ def build_report() -> dict[str, Any]:
     }
 
     hard_failures = list(base.get("hard_theory_failures", []))
+    audit_findings = []
+    if floor.get("flag", {}).get("historical_complete_filtered_basis_claim_falsified"):
+        audit_findings.append(
+            "historical mixed-representation complete-filtered-basis claim is false"
+        )
+
     all_resolved = all(resolved.values())
     if execution_failures:
         state = "EXECUTION_FAIL"
@@ -105,9 +123,14 @@ def build_report() -> dict[str, Any]:
         "overall_state": state,
         "execution_failures": execution_failures,
         "hard_theory_failures": hard_failures,
+        "audit_findings": audit_findings,
         "resolved_breakpoints": resolved,
         "remaining_blockers": remaining,
         "numerical": {
+            "historical_invariant_total": floor.get("counts", {}).get("historical_upstream_invariants_total"),
+            "corrected_guaranteed_invariant_floor": floor.get("counts", {}).get("corrected_total_invariant_floor"),
+            "missing_norm_quartics": floor.get("counts", {}).get("historical_missing_norm_products"),
+            "multiplicity_deficits": floor.get("counts", {}).get("historical_multiplicity_deficits"),
             "reduced_hessian_min_eigenvalue_GeV2": hessian.get("hessian", {}).get("min_eigenvalue_GeV2"),
             "reduced_hessian_fd_relative_error": hessian.get("hessian", {}).get("max_relative_difference"),
             "lambda_lock_phase": hessian.get("couplings", {}).get("lambda_lock_phase"),
@@ -122,22 +145,25 @@ def build_report() -> dict[str, Any]:
         "flags": {
             "whole_model_excluded": bool(base_cert.get("whole_model_excluded")),
             "whole_model_validated": state == "PASS",
-            "reduced_sector_repaired": all_resolved,
+            "executable_breakpoints_repaired": all_resolved,
             "goldstone_problem_resolved": resolved["exact_goldstone_count_33"],
+            "historical_basis_claim_falsified": bool(audit_findings),
             "full_component_problem_resolved": not remaining["full_component_nonsusy_hessian"],
         },
         "upstream_status": {
             "base_audit": base.get("overall_state"),
             "ps_rge": rge.get("status"),
             "bfb_basis": basis.get("status"),
+            "invariant_floor": floor.get("status"),
             "nonsusy_hessian": hessian.get("status"),
             "gauge_orbit": orbit.get("status"),
         },
         "verdict": (
-            "The executable reduced-theory breakpoints are closed: Pati-Salam charged-sector running is restored, "
-            "the canonical locking pair supplies a conservative analytic BFB certificate, the five-amplitude non-SUSY Hessian is independently derived, "
-            "and the explicit 210 plus 126bar tensor VEVs give exactly 33 Goldstones with a 12-dimensional SM-sized stabilizer. "
-            "The result remains BLOCKED at the full-component level because the complete non-SUSY tensor Hessian, full tensor beta system, external-tool dump, and exact unique proton lifetime are still absent."
+            "The executable reduced-theory breakpoints are repaired: Pati-Salam charged-sector running is restored, "
+            "the locking pair supplies a conservative BFB certificate, the five-amplitude non-SUSY Hessian is independently derived, "
+            "and the explicit tensor VEVs give exactly 33 Goldstones with a 12-dimensional SM-sized stabilizer. "
+            "However, the invariant-floor audit proves the historical 25-invariant ledger incomplete: the guaranteed floor is at least 37. "
+            "The potential must therefore be enlarged and re-minimized before any full-component Hessian or unique proton lifetime is accepted."
         ),
     }
 
@@ -150,9 +176,11 @@ def write_markdown(report: dict[str, Any]) -> str:
         "",
         report["verdict"],
         "",
-        "## Resolved",
+        "## Audit findings",
         "",
     ]
+    lines.extend(f"- {item}" for item in report["audit_findings"] or ["none"])
+    lines.extend(["", "## Resolved", ""])
     lines.extend(f"- `{k}`: {v}" for k, v in report["resolved_breakpoints"].items())
     lines.extend(["", "## Remaining blockers", ""])
     lines.extend(f"- `{k}`: {v}" for k, v in report["remaining_blockers"].items())
