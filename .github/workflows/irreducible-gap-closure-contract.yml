@@ -2,7 +2,15 @@ name: irreducible-gap-closure-contract
 
 on:
   pull_request:
+    paths:
+      - "irreducible_gap_closure_contract_v20.py"
+      - "test_irreducible_gap_closure_contract_v20.py"
+      - ".github/workflows/irreducible-gap-closure-contract.yml"
   workflow_dispatch:
+
+concurrency:
+  group: irreducible-gap-closure-contract-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   closure-contract:
@@ -26,8 +34,11 @@ jobs:
           assert r['n_failed']==0
           assert r['n_gaps']==8
           assert r['overall_state']=='BLOCKED'
+          assert r['schema_version']==1
           assert r['flags']['dependency_order_enforced']
           assert r['flags']['proxy_substitution_forbidden']
+          assert r['flags']['artifact_schema_and_acceptance_evidence_enforced']
+          assert r['flags']['artifact_sha256_recorded']
           assert not r['flags']['whole_model_validated']
           assert not r['flags']['whole_model_excluded']
           PY
