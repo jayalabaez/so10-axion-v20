@@ -2,33 +2,34 @@
 """Independent fail-closed re-audit of the current v20 scalar/proton stack.
 
 This gate is intentionally stricter than checking that each upstream module
-returns ``n_failed == 0``.  A green software test means that the implemented
+returns ``n_failed == 0``. A green software test means that the implemented
 calculation is internally reproducible; it does not prove that the adopted
 SO(10) invariant basis, non-SUSY component spectrum, vacuum catalogue, or
 proton-decay amplitude is complete.
 
 The whole theory may be marked FAIL only by a demonstrated mathematical
 contradiction or by an exact, complete proton-decay calculation below the
-experimental bound.  Missing external tensor validation, live SARAH/PyR@TE,
-near-null modes, or non-unique flavour inputs remain BLOCKED.
+experimental bound. Missing external tensor validation, live SARAH/PyR@TE,
+near-null modes, non-unique flavour inputs, or invalid effective-RG assumptions
+remain BLOCKED.
 """
 from __future__ import annotations
 
 import argparse
 import importlib
+import inspect
 import json
 import math
 import traceback
 from pathlib import Path
-from typing import Any
+from typing import Any, Iterator
 
 ROOT = Path(__file__).resolve().parent
 OUT_JSON = ROOT / "SCALAR_PROTON_FALSIFICATION_GATE_V20.json"
 OUT_MD = ROOT / "SCALAR_PROTON_FALSIFICATION_GATE_V20.md"
 
-# These are the highest-level current-main packages relevant to the requested
-# scalar-potential/vacuum/proton-decay falsification.  Their own build_report
-# calls traverse the lower-level stack.
+# Highest-level current-main packages relevant to scalar-potential/vacuum/
+# proton-decay falsification. Their build_report() calls traverse lower layers.
 MODULES: dict[str, str] = {
     "baseline_scalar_proton": "scalar_vacuum_proton_decay_v20",
     "pure_210_tensor_basis": "promote_210n_tensor_basis_uniqueness_v20",
@@ -44,10 +45,21 @@ MODULES: dict[str, str] = {
     "pq_null_lam4_lift": "pq_null_lam4_portal_lift_v20",
 }
 
+# These modules explicitly route component masses through Aulakh/MSGUT-style
+# matrices. That can be useful as a conditional cross-check, but in this
+# non-supersymmetric candidate it is not an independent derivation of the
+# Hessian of the stated non-SUSY scalar potential.
+COMPONENT_TRANSFER_MODULES = (
+    "inter_rep_triplet_mixing",
+    "mixed_full_hessian",
+    "pq_null_lam4_lift",
+)
+
 
 def _json_default(obj: Any) -> Any:
     try:
         import numpy as np
+
         if isinstance(obj, np.bool_):
             return bool(obj)
         if isinstance(obj, np.integer):
@@ -90,11 +102,21 @@ def _run_report(module_name: str) -> dict[str, Any]:
         }
 
 
+def _dicts(obj: Any) -> Iterator[dict[str, Any]]:
+    if isinstance(obj, dict):
+        yield obj
+        for value in obj.values():
+            yield from _dicts(value)
+    elif isinstance(obj, list):
+        for value in obj:
+            yield from _dicts(value)
+
+
 def _values(obj: Any, key: str) -> list[Any]:
     out: list[Any] = []
     if isinstance(obj, dict):
-        for k, value in obj.items():
-            if k == key:
+        for current_key, value in obj.items():
+            if current_key == key:
                 out.append(value)
             out.extend(_values(value, key))
     elif isinstance(obj, list):
@@ -116,11 +138,56 @@ def _any_true(obj: Any, key: str) -> bool:
 
 
 def _all_true_mapping(obj: Any, key: str) -> bool | None:
-    vals = _values(obj, key)
-    for value in vals:
+    for value in _values(obj, key):
         if isinstance(value, dict) and value:
-            return all(v is True for v in value.values())
+            return all(item is True for item in value.values())
     return None
+
+
+def _module_mentions_aulakh(module_name: str) -> bool:
+    """Detect explicit dependence on Aulakh/MSGUT component matrices."""
+    try:
+        source = inspect.getsource(importlib.import_module(module_name)).lower()
+    except Exception:
+        return False
+    return "aulakh" in source or "msgut" in source
+
+
+def _charged_zero_casimir_rows(quartic_report: dict[str, Any]) -> list[dict[str, Any]]:
+    """Find charged parent representations evolved with C2_used=0.
+
+    The issue is not that an order parameter can be gauge-invariant. The issue
+    is using C2=0 for the complete M_GUT→M_I coupling evolution of fields whose
+    active Pati-Salam components (notably the 10 and 126 sectors) are charged.
+    A proper PS-stage RGE requires subgroup representations and their Casimirs.
+    """
+    rows: list[dict[str, Any]] = []
+    seen: set[tuple[Any, ...]] = set()
+    for node in _dicts(quartic_report):
+        if not {"name", "rep", "C2_parent", "C2_used"}.issubset(node):
+            continue
+        rep = str(node.get("rep"))
+        parent = node.get("C2_parent")
+        used = node.get("C2_used")
+        if rep not in {"10", "126"}:
+            continue
+        if not isinstance(parent, (int, float)) or not isinstance(used, (int, float)):
+            continue
+        if float(parent) <= 0.0 or abs(float(used)) > 1e-15:
+            continue
+        key = (node.get("name"), rep, float(parent), float(used))
+        if key in seen:
+            continue
+        seen.add(key)
+        rows.append(
+            {
+                "name": node.get("name"),
+                "rep": rep,
+                "C2_parent": float(parent),
+                "C2_used": float(used),
+            }
+        )
+    return rows
 
 
 def build_report() -> dict[str, Any]:
@@ -134,6 +201,7 @@ def build_report() -> dict[str, Any]:
                 f"{label}: {report.get('_audit_error') or report.get('failures') or n_failed}"
             )
 
+    quartic = reports["quartic_soft_betas"]
     sarah = reports["sarah_pyrate_model"]
     tau_full = reports["tau_p_full_stack"]
     tau_hess = reports["tau_p_hessian_closure"]
@@ -153,9 +221,7 @@ def build_report() -> dict[str, Any]:
     except Exception:
         pass
 
-    hessian_closed = _all_true_mapping(
-        tau_hess, "hessian_residuals_closed"
-    )
+    hessian_closed = _all_true_mapping(tau_hess, "hessian_residuals_closed")
     exact_pq_kernel_lifted = _any_true(
         pq_lift, "pq_null_exact_kernel_lifted_by_lam4"
     )
@@ -173,9 +239,21 @@ def build_report() -> dict[str, Any]:
         for value in _values(tau_hess, "scalar_alpha_not_unique_from_flavour")
     )
     whole_model_flags = [
-        value for report in reports.values() for value in _values(report, "whole_model_excluded")
+        value
+        for report in reports.values()
+        for value in _values(report, "whole_model_excluded")
     ]
     upstream_whole_model_excluded = any(value is True for value in whole_model_flags)
+
+    charged_zero_rows = _charged_zero_casimir_rows(quartic)
+    zero_ps_casimir_problem = bool(charged_zero_rows)
+
+    aulakh_transfer_modules = [
+        MODULES[label]
+        for label in COMPONENT_TRANSFER_MODULES
+        if _module_mentions_aulakh(MODULES[label])
+    ]
+    susy_transfer_requires_validation = bool(aulakh_transfer_modules)
 
     hard_theory_failures: list[str] = []
     if hessian_closed is False:
@@ -194,6 +272,18 @@ def build_report() -> dict[str, Any]:
     blockers: list[str] = []
     if not live_sarah:
         blockers.append("no live SARAH/PyR@TE executable beta-function and spectrum dump")
+    if zero_ps_casimir_problem:
+        names = ", ".join(str(row["name"]) for row in charged_zero_rows)
+        blockers.append(
+            "quartic/soft M_GUT-to-M_I flow uses residual C2=0 for charged "
+            f"Pati-Salam-stage 10/126 sectors ({names}); subgroup RGEs are required"
+        )
+    if susy_transfer_requires_validation:
+        blockers.append(
+            "Aulakh/MSGUT supersymmetric component matrices are transferred into "
+            "the non-supersymmetric scalar-spectrum/Hessian stack without an "
+            "independent derivation from the stated non-SUSY potential"
+        )
     if not exact_unique:
         blockers.append("exact_unique_proton_lifetime remains false")
     if alpha_open:
@@ -207,11 +297,9 @@ def build_report() -> dict[str, Any]:
     if hessian_closed is not True:
         blockers.append("full Hessian/competing-extrema closure is not independently established")
 
-    selected_point_excluded = (
-        selected_tau is not None and selected_tau < limit
-    )
+    selected_point_excluded = selected_tau is not None and selected_tau < limit
     # A selected benchmark can fail without killing the theory when free UV or
-    # flavour inputs still exist.  This distinction is enforced here.
+    # flavour inputs still exist. This distinction is enforced here.
     whole_model_excluded = bool(
         upstream_whole_model_excluded
         or (exact_unique and selected_point_excluded)
@@ -267,6 +355,21 @@ def build_report() -> dict[str, Any]:
         "hard_theory_failures": hard_theory_failures,
         "scientific_blockers": blockers,
         "numerical_findings": numerical,
+        "rge_audit": {
+            "charged_parent_sectors_evolved_with_zero_casimir": charged_zero_rows,
+            "interpretation": (
+                "The Pati-Salam-stage flow cannot be certified by replacing the "
+                "subgroup Casimirs of active 10/126 components with zero."
+            ),
+        },
+        "component_matrix_audit": {
+            "aulakh_msgut_dependent_modules": aulakh_transfer_modules,
+            "interpretation": (
+                "These matrices remain conditional cross-checks until derived "
+                "from the non-supersymmetric v20 potential with the same field "
+                "normalizations and symmetry restrictions."
+            ),
+        },
         "certificates": {
             "all_critical_modules_executed": not execution_failures,
             "hessian_residuals_closed_in_repository_stack": hessian_closed,
@@ -275,6 +378,10 @@ def build_report() -> dict[str, Any]:
             "selected_lam4_clears_null_tolerance": selected_lam4_clears,
             "cal_G_soft_mode_remaining": cal_g_soft_mode,
             "live_sarah_or_pyrate_run": live_sarah,
+            "charged_PS_fields_zero_casimir_in_quartic_rg": zero_ps_casimir_problem,
+            "nonsusy_component_hessian_independently_derived": (
+                not susy_transfer_requires_validation
+            ),
             "unfiltered_molien_haar_closed": unfiltered_molien_closed,
             "exact_unique_proton_lifetime": exact_unique,
             "whole_model_excluded": whole_model_excluded,
@@ -282,18 +389,21 @@ def build_report() -> dict[str, Any]:
         },
         "module_summaries": summaries,
         "verdict": (
-            "The latest main branch is internally testable and has closed several prior "
-            "conditional subproblems, but it has not reached an externally validated, "
-            "tensor-complete scalar vacuum and exact unique proton-decay prediction. "
-            "A selected-point failure is not promoted to whole-model death while the "
-            "documented UV/flavour/spectrum residuals remain open."
+            "The latest main branch is internally testable and has closed several "
+            "conditional subproblems, but it has not reached an externally "
+            "validated, tensor-complete non-supersymmetric scalar vacuum and exact "
+            "unique proton-decay prediction. In particular, the current reduced "
+            "quartic flow drops Pati-Salam gauge dressing for charged sectors and "
+            "the component Hessian imports SUSY MSGUT matrices. A selected-point "
+            "failure is not promoted to whole-model death while these residuals "
+            "and the documented UV/flavour/spectrum gaps remain open."
         ),
     }
 
 
 def write_markdown(report: dict[str, Any]) -> str:
-    n = report["numerical_findings"]
-    c = report["certificates"]
+    numerical = report["numerical_findings"]
+    certificates = report["certificates"]
     lines = [
         "# Current-main scalar/proton re-audit — v20",
         "",
@@ -304,11 +414,17 @@ def write_markdown(report: dict[str, Any]) -> str:
         "## Numerical findings",
         "",
     ]
-    for key, value in n.items():
+    for key, value in numerical.items():
         lines.append(f"- `{key}`: `{value}`")
     lines.extend(["", "## Certificates", ""])
-    for key, value in c.items():
+    for key, value in certificates.items():
         lines.append(f"- `{key}`: **{value}**")
+    lines.extend(["", "## Charged-sector RGE audit", ""])
+    for row in report["rge_audit"]["charged_parent_sectors_evolved_with_zero_casimir"]:
+        lines.append(
+            f"- `{row['name']}` (parent `{row['rep']}`): "
+            f"C2_parent={row['C2_parent']}, C2_used={row['C2_used']}"
+        )
     lines.extend(["", "## Scientific blockers", ""])
     for item in report["scientific_blockers"] or ["none"]:
         lines.append(f"- {item}")
