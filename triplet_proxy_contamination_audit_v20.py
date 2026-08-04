@@ -183,7 +183,7 @@ def build_report() -> dict[str, Any]:
         "n_failed": len(failures),
         "failures": failures,
         "canonical_replacements": {
-            "operator_filter": signed_filter.get("status"),
+            "operator_filter": filter_report.get("status"),
             "triplet_mass_squared_proxy": mt2_report.get("status"),
             "kronecker_audit": kron_report.get("status"),
         },
