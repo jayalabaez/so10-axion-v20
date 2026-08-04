@@ -24,12 +24,17 @@ jobs:
         run: python mixed_rep_invariant_exact_witness_v20.py
       - name: Test exact integer witnesses
         run: python -m unittest -v test_mixed_rep_invariant_exact_witness_v20.py
+      - name: Emit canonical 37-invariant floor
+        run: python mixed_rep_enlarged_floor_basis_v20.py
+      - name: Test canonical 37-invariant floor
+        run: python -m unittest -v test_mixed_rep_enlarged_floor_basis_v20.py
       - name: Assert historical completeness claim is falsified
         run: |
           python - <<'PY'
           import json
           r=json.load(open('MIXED_REP_INVARIANT_FLOOR_AUDIT_V20.json'))
           w=json.load(open('MIXED_REP_INVARIANT_EXACT_WITNESS_V20.json'))
+          e=json.load(open('MIXED_REP_ENLARGED_FLOOR_BASIS_V20.json'))
           assert r['n_failed']==0, r
           assert r['counts']['historical_upstream_invariants_total']==25
           assert r['counts']['corrected_total_invariant_floor']>=37
@@ -44,6 +49,12 @@ jobs:
           assert all(v!=0 for v in w['determinants'].values())
           assert not w['flag']['full_molien_series']
           assert not w['flag']['whole_model_excluded']
+          assert e['n_failed']==0, e
+          assert e['counts']['guaranteed_floor_total']==37
+          assert len(e['guaranteed_floor_basis']['appended'])==11
+          assert e['flag']['canonical_floor_37_emitted']
+          assert not e['flag']['full_unfiltered_molien_haar_series']
+          assert not e['flag']['whole_model_excluded']
           PY
       - name: Upload verdicts
         if: always()
@@ -54,3 +65,5 @@ jobs:
             MIXED_REP_INVARIANT_FLOOR_AUDIT_V20.json
             MIXED_REP_INVARIANT_FLOOR_AUDIT_V20.md
             MIXED_REP_INVARIANT_EXACT_WITNESS_V20.json
+            MIXED_REP_ENLARGED_FLOOR_BASIS_V20.json
+            MIXED_REP_ENLARGED_FLOOR_BASIS_V20.md
