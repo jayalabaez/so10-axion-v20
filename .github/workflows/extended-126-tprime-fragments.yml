@@ -1,0 +1,50 @@
+name: extended-126-tprime-fragments
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  extended-126-tprime-fragments:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Execute extended 126 T-prime fragments
+        run: python extended_126_tprime_fragments_v20.py
+      - name: Focused regression tests
+        run: python -m unittest -v test_extended_126_tprime_fragments_v20.py
+      - name: Assert honest scientific scope
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('EXTENDED_126_TPRIME_FRAGMENTS_V20_VERDICT.json'))
+          assert r['status']=='EXTENDED_126_TPRIME_FRAGMENTS_LOCKED__4x4_MT'
+          assert r['n_failed']==0
+          assert r['fragment_ledger']['working_basis']==['T_10','Tbar_10','T_126','Tprime_126']
+          assert r['flag']['complete_126bar_fragment_multiplicity_locked']
+          assert r['flag']['tprime_included']
+          assert r['flag']['t3_126_absent_without_126_H']
+          assert not r['flag']['invented_unpublished_cg_values']
+          assert not r['flag']['whole_model_excluded']
+          assert not r['flag']['exact_unique_proton_lifetime']
+          assert 0 < r['n_excluded_by_ps_mu_K0'] < r['n_scenarios']
+          assert r['locking_phase_hessian']['n_positive']==1
+          assert r['locking_phase_hessian']['n_zero']==2
+          PY
+      - name: Upload T-prime fragment verdicts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: extended-126-tprime-fragments-verdict
+          path: |
+            EXTENDED_126_TPRIME_FRAGMENTS_V20_VERDICT.json
+            EXTENDED_126_TPRIME_FRAGMENTS_V20.md
