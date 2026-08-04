@@ -1,0 +1,47 @@
+name: two-loop-matrix-flavour-rg-ps
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  two-loop-matrix-flavour-rg-ps:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Execute two-loop matrix flavour RG + PS
+        run: python two_loop_matrix_flavour_rg_ps_v20.py
+      - name: Focused regression tests
+        run: python -m unittest -v test_two_loop_matrix_flavour_rg_ps_v20.py
+      - name: Assert honest scientific scope
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('TWO_LOOP_MATRIX_FLAVOUR_RG_PS_V20_VERDICT.json'))
+          assert r['status']=='TWO_LOOP_MATRIX_FLAVOUR_RG_PS_THRESHOLDS_IN_GAUGE_WIDTH__SARAH_SO10_210_OPEN'
+          assert r['n_failed']==0
+          assert r['flag']['two_loop_matrix_flavour_rge']
+          assert r['flag']['ps_threshold_matching_in_chain']
+          assert r['gauge_width']['passes_SK_e_pi0']
+          assert not r['flag']['two_loop_so10_complete']
+          assert not r['flag']['sarah_validated_210_betas']
+          assert not r['flag']['exact_unique_proton_lifetime']
+          assert not r['flag']['whole_model_excluded']
+          PY
+      - name: Upload two-loop matrix flavour RG verdicts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: two-loop-matrix-flavour-rg-ps-verdict
+          path: |
+            TWO_LOOP_MATRIX_FLAVOUR_RG_PS_V20_VERDICT.json
+            TWO_LOOP_MATRIX_FLAVOUR_RG_PS_V20.md
