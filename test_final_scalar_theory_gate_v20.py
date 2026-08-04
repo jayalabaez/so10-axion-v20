@@ -65,6 +65,26 @@ class FinalScalarTheoryGateTests(unittest.TestCase):
             self.report["remaining_blockers"]["dim6_lambda_lock_live_encoding"]
         )
 
+    def test_canonical_triplet_path_and_legacy_invalidation(self):
+        flags = self.report["flags"]
+        numerical = self.report["numerical"]
+        self.assertTrue(flags["canonical_signed_triplet_mt2_available"])
+        self.assertTrue(
+            flags["legacy_triplet_spectrum_threshold_lifetime_chain_invalidated"]
+        )
+        self.assertGreater(numerical["contaminated_legacy_module_count"], 6)
+        self.assertGreater(numerical["contaminated_lifetime_module_count"], 0)
+        self.assertTrue(
+            self.report["remaining_blockers"][
+                "complete_physical_triplet_mass_squared_CG_matrix"
+            ]
+        )
+        self.assertTrue(
+            self.report["remaining_blockers"][
+                "rebuild_contaminated_triplet_threshold_lifetime_chain"
+            ]
+        )
+
     def test_survival_region_exists_but_model_remains_blocked(self):
         flags = self.report["flags"]
         self.assertTrue(flags["reduced_survival_region_exists"])
