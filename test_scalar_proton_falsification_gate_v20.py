@@ -30,6 +30,33 @@ class CurrentMainScalarProtonAuditTests(unittest.TestCase):
             self.report["certificates"]["mixed_spectrum_positive_in_repository_stack"]
         )
 
+    def test_charged_ps_fields_are_not_accepted_as_zero_casimir(self):
+        cert = self.report["certificates"]
+        self.assertTrue(cert["charged_PS_fields_zero_casimir_in_quartic_rg"])
+        rows = self.report["rge_audit"][
+            "charged_parent_sectors_evolved_with_zero_casimir"
+        ]
+        names = {row["name"] for row in rows}
+        self.assertIn("DeltaR_126bar", names)
+        self.assertIn("H10_eff", names)
+        blockers = "\n".join(self.report["scientific_blockers"])
+        self.assertIn("Pati-Salam-stage", blockers)
+        self.assertIn("subgroup RGEs", blockers)
+
+    def test_susy_component_transfer_is_conditional(self):
+        self.assertFalse(
+            self.report["certificates"][
+                "nonsusy_component_hessian_independently_derived"
+            ]
+        )
+        modules = self.report["component_matrix_audit"][
+            "aulakh_msgut_dependent_modules"
+        ]
+        self.assertGreaterEqual(len(modules), 1)
+        blockers = "\n".join(self.report["scientific_blockers"])
+        self.assertIn("supersymmetric component matrices", blockers)
+        self.assertIn("non-supersymmetric", blockers)
+
     def test_exact_pq_kernel_lift_reproduces_but_light_modes_remain(self):
         self.assertTrue(self.report["certificates"]["exact_pq_kernel_lifted"])
         self.assertFalse(
