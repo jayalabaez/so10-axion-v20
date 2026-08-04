@@ -1,0 +1,356 @@
+{
+  "status": "FULL_HILBERT_FORMS_BUILT__SINGLET_TADPOLE_VANISHES__COMPONENT_ROUTE_REQUIRED",
+  "overall_state": "BLOCKED",
+  "approach_selected": "A_direct_antisymmetric_forms_then_pivot_to_component_CG",
+  "approaches_compared": {
+    "A_forms": "EXECUTED: published (p,a,\u03c9) four-forms constructed; singlet\u00b7\u0394_R\u2192H tadpole vanishes for all three \u2014 forces component-level reconstruction",
+    "B_chen_fukuyama_tables": "NEXT CROSS-CHECK: transcribe normalized SU(5)/G422 state tables from arXiv:1707.00580 / hep-ph/0405300",
+    "C_aulakh_component_oracle": "REQUIRED NEXT: expand gamma Phi H Sigmabar on the published PS component basis that produces E/F/J/X (hep-ph/0204097 \u00a74\u20135 / hep-ph/0405074 App.)"
+  },
+  "n_checks": 10,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "basis_forms_constructed": true,
+    "basis_approximately_orthogonal": true,
+    "pure_p_channel_vanishes": true,
+    "all_ps_singlet_H_channels_vanish_against_geometric_deltaR": true,
+    "efjx_gamma_response_still_known": true,
+    "component_borne_map_recognized": true,
+    "algebraic_dictionary_is_ordinary_scale": true,
+    "full_EFJX_component_reconstruction_not_claimed": true,
+    "c_norm_not_faked": true,
+    "whole_model_not_overclaimed": true
+  },
+  "sources": {
+    "aulakh_ps_vevs": {
+      "citation": "Aulakh\u2013Girdhar, hep-ph/0204097 Eqs. (170),(173),(175)",
+      "cross_check": "hep-ph/0405074 Eqs. (13)\u2013(16)",
+      "use": "explicit (p,a,\u03c9) four-form embeddings"
+    },
+    "orbit_forms": {
+      "citation": "so10_nonsusy_gauge_orbit_v20",
+      "use": "wedge/Hodge algebra and Delta_R five-form"
+    },
+    "aulakh_gamma": {
+      "citation": "hep-ph/0405074 Eq. (1) / (168)",
+      "use": "W \u2283 (1/4!) H_i Phi_jklm gamma Sigmabar_ijklm"
+    }
+  },
+  "form_basis": {
+    "sources": {
+      "aulakh_ps_vevs": {
+        "citation": "Aulakh\u2013Girdhar, hep-ph/0204097 Eqs. (170),(173),(175)",
+        "cross_check": "hep-ph/0405074 Eqs. (13)\u2013(16)",
+        "use": "explicit (p,a,\u03c9) four-form embeddings"
+      },
+      "orbit_forms": {
+        "citation": "so10_nonsusy_gauge_orbit_v20",
+        "use": "wedge/Hodge algebra and Delta_R five-form"
+      },
+      "aulakh_gamma": {
+        "citation": "hep-ph/0405074 Eq. (1) / (168)",
+        "use": "W \u2283 (1/4!) H_i Phi_jklm gamma Sigmabar_ijklm"
+      }
+    },
+    "norms": {
+      "p": 1.0,
+      "a": 1.7320508075688772,
+      "omega": 2.449489742783178
+    },
+    "inner_products_abs": {
+      "a_p": 0.0,
+      "a_omega": 0.0,
+      "omega_p": 0.0
+    },
+    "approximately_orthogonal": true,
+    "embeddings": {
+      "p": "e6\u2227e7\u2227e8\u2227e9  (hep-ph/0204097 Eq.175)",
+      "a": "(*_{SO6} J6) on indices 0..5  (Eq.170)",
+      "omega": "J6\u2227J4  (Eq.173)"
+    }
+  },
+  "channels": {
+    "p_only": {
+      "frobenius": 0.0,
+      "nonzero": false,
+      "components_Re_Im": {
+        "0": [
+          0.0,
+          0.0
+        ],
+        "1": [
+          0.0,
+          0.0
+        ],
+        "2": [
+          0.0,
+          0.0
+        ],
+        "3": [
+          0.0,
+          0.0
+        ],
+        "4": [
+          0.0,
+          0.0
+        ],
+        "5": [
+          0.0,
+          0.0
+        ],
+        "6": [
+          0.0,
+          0.0
+        ],
+        "7": [
+          0.0,
+          0.0
+        ],
+        "8": [
+          0.0,
+          0.0
+        ],
+        "9": [
+          0.0,
+          0.0
+        ]
+      },
+      "support_indices": []
+    },
+    "a_only": {
+      "frobenius": 0.0,
+      "nonzero": false,
+      "components_Re_Im": {
+        "0": [
+          0.0,
+          0.0
+        ],
+        "1": [
+          0.0,
+          0.0
+        ],
+        "2": [
+          0.0,
+          0.0
+        ],
+        "3": [
+          0.0,
+          0.0
+        ],
+        "4": [
+          0.0,
+          0.0
+        ],
+        "5": [
+          0.0,
+          0.0
+        ],
+        "6": [
+          0.0,
+          0.0
+        ],
+        "7": [
+          0.0,
+          0.0
+        ],
+        "8": [
+          0.0,
+          0.0
+        ],
+        "9": [
+          0.0,
+          0.0
+        ]
+      },
+      "support_indices": []
+    },
+    "omega_only": {
+      "frobenius": 0.0,
+      "nonzero": false,
+      "components_Re_Im": {
+        "0": [
+          0.0,
+          0.0
+        ],
+        "1": [
+          0.0,
+          0.0
+        ],
+        "2": [
+          0.0,
+          0.0
+        ],
+        "3": [
+          0.0,
+          0.0
+        ],
+        "4": [
+          0.0,
+          0.0
+        ],
+        "5": [
+          0.0,
+          0.0
+        ],
+        "6": [
+          0.0,
+          0.0
+        ],
+        "7": [
+          0.0,
+          0.0
+        ],
+        "8": [
+          0.0,
+          0.0
+        ],
+        "9": [
+          0.0,
+          0.0
+        ]
+      },
+      "support_indices": []
+    }
+  },
+  "unit_channel_frobenius": {
+    "a": 0.0,
+    "omega": 0.0,
+    "p": 0.0
+  },
+  "hilbert_projection": {
+    "frobenius": 0.0,
+    "nonzero": false,
+    "components_Re_Im": {
+      "0": [
+        0.0,
+        0.0
+      ],
+      "1": [
+        0.0,
+        0.0
+      ],
+      "2": [
+        0.0,
+        0.0
+      ],
+      "3": [
+        0.0,
+        0.0
+      ],
+      "4": [
+        0.0,
+        0.0
+      ],
+      "5": [
+        0.0,
+        0.0
+      ],
+      "6": [
+        0.0,
+        0.0
+      ],
+      "7": [
+        0.0,
+        0.0
+      ],
+      "8": [
+        0.0,
+        0.0
+      ],
+      "9": [
+        0.0,
+        0.0
+      ]
+    },
+    "support_indices": [],
+    "vev_GeV": {
+      "a": 495878239944906.6,
+      "omega": 495878239944906.6,
+      "p": 8925808319008318.0,
+      "units": "GeV"
+    },
+    "phi_norm": 9048928732581324.0
+  },
+  "algebraic_convention_dictionary": {
+    "aulakh_phi_kinetic_factorial": 24.0,
+    "aulakh_sigma_kinetic_factorial": 120.0,
+    "aulakh_sigma_self_dual_half": 0.5,
+    "aulakh_cubic_prefactor": "1/24.0",
+    "nonsusy_operator_prefactor_candidate": "1/(24.0*120.0)",
+    "proxy_dictionary": "gamma_eff = lambda4 at <sigma>=<S>=M_I",
+    "algebraic_scale_from_factorials_only": 24.0,
+    "note": "These O(1)\u2013O(100) factors cannot produce 1e30. They bound the convention map once the component CG is known; they are not yet the physical c_norm."
+  },
+  "aulakh_gamma_slot_targets": {
+    "E": [
+      "\u00b1i\u221a2 \u03b3 \u03c3* on (0,3)/(3,0)",
+      "2\u03b3(a*-\u03c9*) on (1,3)/(3,1)",
+      "\u221a2 \u03b3(\u03c9*-p*) on (2,3)/(3,2)"
+    ],
+    "F": [
+      "-\u221a2 \u03b3 \u03c3* on (0,2)/(2,0)",
+      "\u00b1i\u221a24 \u03b3 \u03c9* on (1,2)/(2,1)"
+    ],
+    "J": [
+      "-i\u221a2 \u03b3 \u03c3* on (0,3)/(3,0)",
+      "\u22132i\u221a2 \u03b3 a* on (1,3)/(3,1)",
+      "\u22134i \u03b3 \u03c9* on (2,3)/(3,2)"
+    ],
+    "X": [
+      "-2\u03b3(a*+\u03c9*) on (0,2)/(2,0)",
+      "\u221a2 \u03b3(\u03c9*+p*) on (1,2)/(2,1)"
+    ],
+    "note": "H-channel contraction controls overall \u03a6\u00b7\u03a3\u0304\u219210 strength; reproducing these off-diagonal PS irrep patterns still requires component-state projection beyond the singlet H vector."
+  },
+  "evidence": {
+    "form_basis": {
+      "path": "evidence/full_hilbert_cgc/form_basis.json",
+      "sha256": "0886d776c3012e1c032a574ba2017992e36564fc464e91df19102bab4b65a578"
+    },
+    "channel_decomposition": {
+      "path": "evidence/full_hilbert_cgc/channel_decomposition.json",
+      "sha256": "cb5ce5de3a42385e799f3764052f02d4c27da26d529e66c645c08ecfb631a32e"
+    },
+    "hilbert_projection": {
+      "path": "evidence/full_hilbert_cgc/hilbert_projection.json",
+      "sha256": "617e1e035cf1b65436b69662e978541f33b38e41b144f3184943f51b291b8977"
+    },
+    "aulakh_slot_targets": {
+      "path": "evidence/full_hilbert_cgc/aulakh_slot_targets.json",
+      "sha256": "391344182db25869861d2e2c87f02a898d8fe7ee9e7d899cfbfb145cd914ada3"
+    },
+    "algebraic_convention_dictionary": {
+      "path": "evidence/full_hilbert_cgc/algebraic_convention_dictionary.json",
+      "sha256": "5f3c43e09be84a7340ae167210f861673e07df853fd831f3dfdba3b41cd34a88"
+    },
+    "redesign_forks": {
+      "path": "evidence/full_hilbert_cgc/redesign_forks.json",
+      "sha256": "42cb0149af067a7000663611068846ac6c6bed322a2285cf3f350efa8c8d242f"
+    }
+  },
+  "remaining_blockers": {
+    "component_projection_to_EFJX_irreps": true,
+    "canonical_kinetic_normalization_match_to_aulakh": true,
+    "absolute_c_norm_extraction": true,
+    "chen_fukuyama_state_table_crosscheck": true,
+    "full_nonsusy_component_hessian": true
+  },
+  "redesign_forks": {
+    "A_current_v20_dies": "If the exact algebraic c_norm is O(1)\u2013O(10^3) and the full non-SUSY potential adds no new hierarchy protection, the \u03bb4 portal branch is falsified.",
+    "B_full_potential_rescue": "Additional allowed quartics / one-loop Coleman-Weinberg terms could stabilize a different vacuum where \u03bb4 is not forced to carry the EW hierarchy. Requires G1\u2013G3 closure.",
+    "C_new_scalar_or_symmetry": "Add 54_H, 120_H, missing-partner / pseudo-Goldstone hierarchy, or a different PQ charge assignment. This is a new model, not a proof that v20 was correct.",
+    "37p11_GHz": "Keep 37.11 GHz as a conditional benchmark only; do not treat it as a prediction until a surviving physical vacuum is established."
+  },
+  "flag": {
+    "full_hilbert_p_a_omega_forms_constructed": true,
+    "ps_singlet_tadpole_into_10_vanishes": true,
+    "physical_CGC_normalization_derived": false,
+    "CGC_subproblem_closed": false,
+    "whole_model_excluded": false,
+    "whole_model_validated": false,
+    "current_lambda4_natural_rescue_still_disfavored": true,
+    "so10_axion_direction_not_declared_unsolvable": true
+  },
+  "verdict": "Approach A constructed the published Aulakh (p,a,\u03c9) four-forms. Their contraction against the geometric \u0394_R five-form into the 10-channel vanishes for every singlet direction \u2014 including the full Hilbert combination. Therefore c_norm cannot be read from a singlet tadpole; it must come from the PS-component expansion that already underlies Aulakh E/F/J/X. Factorial/kinetic dictionary factors are ordinary (O(1)\u2013O(100)), not 1e30. The reduced natural \u03bb4 rescue remains disfavored; SO(10)+axion is not declared dead."
+}
