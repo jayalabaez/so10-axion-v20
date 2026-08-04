@@ -38,6 +38,26 @@ class FinalScalarTheoryGateTests(unittest.TestCase):
             numerical["best_case_floor37_rescued_HH_curvature_GeV2"], 0.0
         )
 
+    def test_latest_main_valid_results_are_retained(self):
+        flags = self.report["flags"]
+        self.assertTrue(flags["live_pyrate_artifacts_validated"])
+        self.assertTrue(flags["scalar_alpha_nonuniqueness_proven"])
+        self.assertTrue(flags["latest_main_proxy_selected_point_closures_invalidated"])
+        self.assertNotIn(
+            "live_sarah_or_pyrate_run", self.report["remaining_blockers"]
+        )
+        self.assertTrue(
+            self.report["remaining_blockers"][
+                "cal_G_lift_revalidation_on_physical_EW_survival_point"
+            ]
+        )
+        self.assertTrue(
+            self.report["remaining_blockers"]["lambda4_CGC_live_encoding"]
+        )
+        self.assertTrue(
+            self.report["remaining_blockers"]["dim6_lambda_lock_live_encoding"]
+        )
+
     def test_survival_region_exists_but_model_remains_blocked(self):
         flags = self.report["flags"]
         self.assertTrue(flags["reduced_survival_region_exists"])
