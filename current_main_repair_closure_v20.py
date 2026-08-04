@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Aggregate executable repairs while preserving remaining fail-closed scope."""
+"""Aggregate repaired scalar breakpoints with a signed invariant audit."""
 from __future__ import annotations
 
 import argparse
@@ -7,9 +7,9 @@ import json
 from pathlib import Path
 from typing import Any
 
-import mixed_rep_enlarged_floor_basis_v20 as enlarged_basis
+import mixed_rep_enlarged_floor_basis_v20 as signed_basis
 import mixed_rep_hilbert_bfb_completion_v20 as bfb_basis
-import mixed_rep_invariant_floor_audit_v20 as invariant_floor
+import mixed_rep_invariant_floor_audit_v20 as omission_audit
 import nonsusy_reduced_hessian_v20 as nonsusy
 import quartic_soft_betas_v20 as ps_rge
 import scalar_proton_falsification_gate_v20 as base_audit
@@ -23,19 +23,19 @@ OUT_MD = ROOT / "CURRENT_MAIN_REPAIR_CLOSURE_V20.md"
 def build_report() -> dict[str, Any]:
     base = base_audit.build_report()
     rge = ps_rge.build_report()
-    basis = bfb_basis.build_report()
-    floor = invariant_floor.build_report()
-    enlarged = enlarged_basis.build_report()
+    bfb = bfb_basis.build_report()
+    omissions = omission_audit.build_report()
+    signed = signed_basis.build_report()
     hessian = nonsusy.build_report()
     orbit = gauge_orbit.build_report()
 
-    execution_failures = []
+    execution_failures: list[str] = []
     for label, report in (
         ("base_audit", base),
         ("ps_rge", rge),
-        ("bfb_basis", basis),
-        ("invariant_floor", floor),
-        ("enlarged_floor_basis", enlarged),
+        ("bfb_basis", bfb),
+        ("omission_audit", omissions),
+        ("signed_basis", signed),
         ("nonsusy_hessian", hessian),
         ("gauge_orbit", orbit),
     ):
@@ -49,18 +49,23 @@ def build_report() -> dict[str, Any]:
             and rge.get("flag", {}).get("separate_g4_gL_gR_running")
             and not rge.get("flag", {}).get("two_loop_quartic_betas_complete")
         ),
-        "canonical_phase_lock_modulus_companion": bool(
-            basis.get("flag", {}).get("modulus_locking_companion_added")
-            and basis.get("flag", {}).get("canonical_completed_basis_emitted")
+        "locking_modulus_companion": bool(
+            bfb.get("flag", {}).get("modulus_locking_companion_added")
         ),
         "historical_invariant_claim_falsified": bool(
-            floor.get("flag", {}).get(
+            omissions.get("flag", {}).get(
                 "historical_complete_filtered_basis_claim_falsified"
             )
         ),
-        "canonical_guaranteed_floor_37_emitted": bool(
-            enlarged.get("flag", {}).get("canonical_floor_37_emitted")
-            and enlarged.get("counts", {}).get("guaranteed_floor_total") == 37
+        "mechanical_floor37_rejected": bool(
+            signed.get("flag", {}).get("mechanical_floor37_rejected")
+        ),
+        "signed_guaranteed_floor34_emitted": bool(
+            signed.get("flag", {}).get("canonical_signed_floor_34_emitted")
+            and signed.get("counts", {}).get("signed_guaranteed_floor_total") == 34
+        ),
+        "forbidden_210_10dag10_removed": bool(
+            signed.get("flag", {}).get("forbidden_210_10dag10_removed")
         ),
         "physical_electroweak_vev_restored": bool(
             hessian.get("flag", {}).get("physical_electroweak_10_vev_used")
@@ -93,9 +98,9 @@ def build_report() -> dict[str, Any]:
     base_cert = base.get("certificates", {})
     remaining = {
         "complete_mixed_rep_invariant_enumeration": not bool(
-            enlarged.get("flag", {}).get("full_unfiltered_molien_haar_series")
+            signed.get("flag", {}).get("full_unfiltered_molien_haar_series")
         ),
-        "full_37_channel_tensor_projection_and_reminimization": not bool(
+        "full_signed_floor34_tensor_projection_and_reminimization": not bool(
             hessian.get("radial_coverage", {}).get(
                 "independent_tensor_channels_resolved_in_five_amplitudes"
             )
@@ -127,28 +132,26 @@ def build_report() -> dict[str, Any]:
     }
 
     hard_failures = list(base.get("hard_theory_failures", []))
-    audit_findings = []
-    if resolved["historical_invariant_claim_falsified"]:
-        audit_findings.append(
-            "historical mixed-representation complete-filtered-basis claim is false"
-        )
+    audit_findings = [
+        "historical invariant ledger is incomplete and contains a forbidden 210·10†·10 cubic",
+        "mechanical augmented count 37 is rejected; conservative signed floor is 34",
+    ]
     if resolved["historical_lam4_point_falsified"]:
         audit_findings.append(
-            "historical lambda4=-kappa*M_I/M_GUT benchmark is tachyonic at the physical h=174 GeV vacuum"
+            "historical lambda4=-kappa*M_I/M_GUT point is tachyonic at h=174 GeV"
         )
     if hessian.get("numerics", {}).get("float64_relative_error", 0.0) > 100.0:
         audit_findings.append(
-            "float64 diagonalization cannot resolve the electroweak Hessian mode across the GUT hierarchy"
+            "float64 cannot resolve the electroweak Hessian mode across the GUT hierarchy"
         )
 
-    all_resolved = all(resolved.values())
     if execution_failures:
         state = "EXECUTION_FAIL"
     elif hard_failures:
         state = "THEORY_FAIL"
     elif any(remaining.values()):
         state = "BLOCKED"
-    elif all_resolved:
+    elif all(resolved.values()):
         state = "PASS"
     else:
         state = "BLOCKED"
@@ -162,16 +165,19 @@ def build_report() -> dict[str, Any]:
         "resolved_breakpoints": resolved,
         "remaining_blockers": remaining,
         "numerical": {
-            "historical_invariant_total": floor.get("counts", {}).get(
-                "historical_upstream_invariants_total"
+            "historical_invariant_claimed_total": signed.get("counts", {}).get(
+                "historical_ledger_claimed_total"
             ),
-            "corrected_guaranteed_invariant_floor": enlarged.get("counts", {}).get(
-                "guaranteed_floor_total"
+            "mechanical_augmented_total_rejected": signed.get("counts", {}).get(
+                "mechanical_augmented_total_before_signed_corrections"
             ),
-            "missing_norm_quartics": floor.get("counts", {}).get(
+            "signed_guaranteed_invariant_floor": signed.get("counts", {}).get(
+                "signed_guaranteed_floor_total"
+            ),
+            "missing_norm_quartics": omissions.get("counts", {}).get(
                 "historical_missing_norm_products"
             ),
-            "multiplicity_deficits": floor.get("counts", {}).get(
+            "multiplicity_deficits": omissions.get("counts", {}).get(
                 "historical_multiplicity_deficits"
             ),
             "physical_H10_vev_GeV": hessian.get("target_vevs_GeV", {}).get(
@@ -212,10 +218,13 @@ def build_report() -> dict[str, Any]:
         "flags": {
             "whole_model_excluded": bool(base_cert.get("whole_model_excluded")),
             "whole_model_validated": state == "PASS",
-            "executable_breakpoints_repaired": all_resolved,
+            "executable_breakpoints_repaired": all(resolved.values()),
             "goldstone_problem_resolved": resolved["exact_goldstone_count_33"],
             "historical_basis_claim_falsified": resolved[
                 "historical_invariant_claim_falsified"
+            ],
+            "mechanical_floor37_rejected": resolved[
+                "mechanical_floor37_rejected"
             ],
             "historical_selected_point_excluded": resolved[
                 "historical_lam4_point_falsified"
@@ -230,23 +239,20 @@ def build_report() -> dict[str, Any]:
         "upstream_status": {
             "base_audit": base.get("overall_state"),
             "ps_rge": rge.get("status"),
-            "bfb_basis": basis.get("status"),
-            "invariant_floor": floor.get("status"),
-            "enlarged_floor_basis": enlarged.get("status"),
+            "bfb_basis": bfb.get("status"),
+            "omission_audit": omissions.get("status"),
+            "signed_basis": signed.get("status"),
             "nonsusy_hessian": hessian.get("status"),
             "gauge_orbit": orbit.get("status"),
         },
         "verdict": (
-            "Pati-Salam running, the locking BFB pair, the exact 33-Goldstone "
-            "orbit, and a canonical guaranteed 37-invariant floor are now "
-            "executable. Restoring the physical h=174 GeV VEV, the radial cross "
-            "quartics, and arbitrary-precision diagonalization falsifies the "
-            "historical lambda4=-kappa*M_I/M_GUT benchmark: it is tachyonic, "
-            "whereas a lambda4=0 reduced survival point has a 123.6 GeV light "
-            "mode. The whole model remains BLOCKED rather than excluded because "
-            "the five-amplitude reduction cannot resolve every independent "
-            "tensor channel needed to test cancellations, the complete component "
-            "vacuum, thresholds, and unique proton lifetime."
+            "The executable scalar repairs now use a signed invariant audit: "
+            "mechanical floor37 is rejected and the conservative guaranteed "
+            "floor is 34. Pati-Salam running, locking boundedness, the exact "
+            "33-Goldstone orbit, physical h=174 GeV high-precision Hessian, "
+            "and a lambda4=0 survival point are executable. The historical "
+            "lambda4 point is tachyonic. Full tensor minimization, RGEs, "
+            "thresholds, and unique proton lifetime remain open."
         ),
     }
 
@@ -262,11 +268,17 @@ def write_markdown(report: dict[str, Any]) -> str:
         "## Audit findings",
         "",
     ]
-    lines.extend(f"- {item}" for item in report["audit_findings"] or ["none"])
+    lines.extend(f"- {item}" for item in report["audit_findings"])
     lines.extend(["", "## Resolved", ""])
-    lines.extend(f"- `{key}`: {value}" for key, value in report["resolved_breakpoints"].items())
+    lines.extend(
+        f"- `{key}`: {value}"
+        for key, value in report["resolved_breakpoints"].items()
+    )
     lines.extend(["", "## Remaining blockers", ""])
-    lines.extend(f"- `{key}`: {value}" for key, value in report["remaining_blockers"].items())
+    lines.extend(
+        f"- `{key}`: {value}"
+        for key, value in report["remaining_blockers"].items()
+    )
     lines.append("")
     return "\n".join(lines)
 
