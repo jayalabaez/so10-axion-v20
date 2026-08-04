@@ -1,0 +1,50 @@
+name: so10-210-cg-threshold-masses
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  so10-210-cg-threshold-masses:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Execute 210 CG + threshold masses
+        run: python so10_210_cg_threshold_masses_v20.py
+      - name: Focused regression tests
+        run: python -m unittest -v test_so10_210_cg_threshold_masses_v20.py
+      - name: Assert honest scientific scope
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('SO10_210_CG_THRESHOLD_MASSES_V20_VERDICT.json'))
+          assert r['status']=='210_CG_PS_SINGLETS_NORMALIZED__SM_THRESHOLD_MASSES_BUILT'
+          assert r['n_failed']==0
+          led=r['invariant_cg_ledger']
+          assert led['n_normalized_or_transcribed']>=5
+          assert led['n_open_full_basis']>=1
+          assert r['sm_irrep_thresholds']['n_entries']>=8
+          assert r['flag']['ps_singlet_sector_normalized']
+          assert not r['flag']['hilbert_series_certificate']
+          assert not r['flag']['complete_independent_invariant_basis']
+          assert not r['flag']['exact_unique_proton_lifetime']
+          assert not r['flag']['whole_model_excluded']
+          assert not r['flag']['invented_unpublished_cg_values']
+          PY
+      - name: Upload 210 CG threshold verdicts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: so10-210-cg-threshold-masses-verdict
+          path: |
+            SO10_210_CG_THRESHOLD_MASSES_V20_VERDICT.json
+            SO10_210_CG_THRESHOLD_MASSES_V20.md
