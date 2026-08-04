@@ -239,6 +239,71 @@ class EFJXNormalizationInputContractTests(unittest.TestCase):
                 state,
             )
 
+    def test_wrong_goldstone_count_is_rejected(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            base = Path(tmp)
+            data = self._complete_candidate(base)
+            data["physical_EW_reminimization"]["gauge_goldstone_count"] = 32
+            path = base / "candidate.json"
+            path.write_text(json.dumps(data), encoding="utf-8")
+            with patch.object(gate, "NORMALIZATION_ARTIFACT", path):
+                state = gate._load_normalization_artifact()
+            self.assertFalse(state["accepted"])
+            self.assertIn("gauge_goldstone_count_not_33", state["validation_errors"])
+
+    def test_nonpositive_non_goldstone_mass_is_rejected(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            base = Path(tmp)
+            data = self._complete_candidate(base)
+            data["physical_EW_reminimization"][
+                "min_non_goldstone_eigenvalue_GeV2"
+            ] = -1.0
+            path = base / "candidate.json"
+            path.write_text(json.dumps(data), encoding="utf-8")
+            with patch.object(gate, "NORMALIZATION_ARTIFACT", path):
+                state = gate._load_normalization_artifact()
+            self.assertFalse(state["accepted"])
+            self.assertIn(
+                "non_goldstone_spectrum_not_positive", state["validation_errors"]
+            )
+
+    def test_schema_v1_placeholder_is_rejected(self):
+        data = {
+            "schema_version": "efjx-cgc-normalization-v1",
+            "invariant": "Phi210_H10_Sigmabar126_S",
+            "contraction": "x" * 50,
+            "field_normalizations": {
+                "Phi210": {},
+                "H10": {},
+                "Sigmabar126": {},
+                "S": {},
+            },
+            "singlet_vev_projection": {
+                "p": None,
+                "a": None,
+                "omega": None,
+                "vS": None,
+                "hEW": 174.0,
+            },
+            "gamma_mapping": {"gamma_eff_over_lambda4": 1.0},
+            "source_manifest": [{"source": "A"}, {"source": "B"}],
+            "acceptance_evidence": {
+                "canonical_kinetic_normalization": "a",
+                "direct_tensor_contraction": "b",
+                "independent_matrix_reconstruction": "c",
+                "physical_EW_branch_reminimized": "d",
+            },
+            "closure_complete": True,
+            "n_failed": 0,
+        }
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "candidate.json"
+            path.write_text(json.dumps(data), encoding="utf-8")
+            with patch.object(gate, "NORMALIZATION_ARTIFACT", path):
+                state = gate._load_normalization_artifact()
+            self.assertFalse(state["accepted"])
+            self.assertIn("schema_version_mismatch", state["validation_errors"])
+
 
 if __name__ == "__main__":
     unittest.main()

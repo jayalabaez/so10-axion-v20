@@ -22,7 +22,10 @@ jobs:
       - name: Extract E/F/J/X gamma-response matrices
         run: python efjx_cgc_physical_normalization_gate_v20.py
       - name: Run focused tests
-        run: python -m unittest -v test_efjx_cgc_physical_normalization_gate_v20.py
+        run: |
+          python -m unittest -v \
+            test_efjx_cgc_physical_normalization_gate_v20.py \
+            test_efjx_cgc_normalization_input_contract_v20.py
       - name: Assert honest physical scope
         run: |
           python - <<'PY'
@@ -34,8 +37,10 @@ jobs:
           assert r['flags']['proxy_cgc_ratio_invalid_as_physical_prediction']
           assert not r['flags']['physical_CGC_normalization_derived']
           assert not r['flags']['physical_EW_branch_revalidated']
+          assert not r['flags'].get('CGC_subproblem_closed', False)
           assert not r['flags']['whole_model_excluded']
           assert not r['flags']['whole_model_validated']
+          assert r['required_artifact']['schema_version']=='efjx-cgc-normalization-v2'
           PY
       - name: Upload normalization-gate artifacts
         if: always()
