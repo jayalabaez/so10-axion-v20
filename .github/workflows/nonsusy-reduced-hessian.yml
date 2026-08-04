@@ -1,0 +1,48 @@
+name: nonsusy-reduced-hessian
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  nonsusy-reduced-hessian:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Complete reduced BFB operator pair
+        run: python mixed_rep_hilbert_bfb_completion_v20.py
+      - name: Execute independent non-SUSY reduced Hessian
+        run: python nonsusy_reduced_hessian_v20.py
+      - name: Focused regression tests
+        run: python -m unittest -v test_nonsusy_reduced_hessian_v20.py
+      - name: Assert scope
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('NONSUSY_REDUCED_HESSIAN_V20_VERDICT.json'))
+          assert r['n_failed']==0, r
+          assert r['flag']['independent_nonsusy_reduced_hessian']
+          assert r['flag']['phase_lock_modulus_companion_added']
+          assert r['flag']['reduced_potential_bounded_from_below']
+          assert r['flag']['reduced_local_minimum_positive_definite']
+          assert not r['flag']['uses_aulakh_or_msgut_component_matrices']
+          assert not r['flag']['full_component_nonsusy_hessian']
+          assert not r['flag']['full_component_global_vacuum_proof']
+          PY
+      - name: Upload verdicts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nonsusy-reduced-hessian-verdict
+          path: |
+            MIXED_REP_HILBERT_BFB_COMPLETION_V20_VERDICT.json
+            MIXED_REP_HILBERT_BFB_COMPLETION_V20.md
+            NONSUSY_REDUCED_HESSIAN_V20_VERDICT.json
+            NONSUSY_REDUCED_HESSIAN_V20.md
