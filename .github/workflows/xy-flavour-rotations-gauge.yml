@@ -1,0 +1,48 @@
+name: xy-flavour-rotations-gauge
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  xy-flavour-rotations-gauge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Execute X/Y flavour rotations
+        run: python xy_flavour_rotations_gauge_v20.py
+      - name: Focused regression tests
+        run: python -m unittest -v test_xy_flavour_rotations_gauge_v20.py
+      - name: Assert honest scientific scope
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('XY_FLAVOUR_ROTATIONS_GAUGE_V20_VERDICT.json'))
+          assert r['status']=='XY_FLAVOUR_ROTATIONS_FROM_CKM_PMNS__UV_UNIQUENESS_OPEN'
+          assert r['n_failed']==0
+          assert abs(r['lifetimes']['ratio_e_to_legacy']-1.0)<0.01
+          assert r['lifetimes']['passes_SK_e_pi0']
+          assert r['flag']['xy_flavour_rotations_from_ckm_pmns']
+          assert r['flag']['legacy_vud_limit_reproduced']
+          assert not r['flag']['unique_flavour_rotations_for_XY']
+          assert not r['flag']['uv_yukawa_textures_unique']
+          assert not r['flag']['exact_unique_proton_lifetime']
+          assert not r['flag']['whole_model_excluded']
+          PY
+      - name: Upload X/Y flavour verdicts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: xy-flavour-rotations-gauge-verdict
+          path: |
+            XY_FLAVOUR_ROTATIONS_GAUGE_V20_VERDICT.json
+            XY_FLAVOUR_ROTATIONS_GAUGE_V20.md
