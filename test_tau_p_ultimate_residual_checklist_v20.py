@@ -26,6 +26,8 @@ class TauPUltimateResidualChecklistTests(unittest.TestCase):
         self.assertTrue(flags["scalar_alpha_proven_nonunique_from_flavour"])
         self.assertTrue(flags["cal_G_soft_mode_classified"])
         self.assertTrue(flags["full_quartic_soft_live_dump"])
+        self.assertTrue(flags["cal_G_portal_decision_resolved"])
+        self.assertFalse(flags["extra_new_portal_required"])
         self.assertFalse(flags["exact_unique_proton_lifetime"])
         self.assertFalse(flags["whole_model_excluded"])
 
@@ -34,7 +36,8 @@ class TauPUltimateResidualChecklistTests(unittest.TestCase):
         for name in mod.RESIDUALS_NOW_CLOSED:
             self.assertTrue(closed[name], msg=name)
         still = self.report["certificate"]["residual_still_open"]
-        self.assertFalse(still.get("full_quartic_soft_live_dump", False))
+        self.assertNotIn("cal_G_residual_light_singlet_mass", still)
+        self.assertTrue(still["selected_lambda_lock_below_cal_G_lift_threshold"])
         self.assertTrue(still["lam4_cgc_and_dim6_lock_not_in_live_dump"])
 
     def test_lifetime_positive(self):
