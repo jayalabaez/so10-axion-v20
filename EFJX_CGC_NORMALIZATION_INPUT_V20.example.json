@@ -1,0 +1,60 @@
+{
+  "schema_version": "efjx-cgc-normalization-v1",
+  "invariant": "Phi210_H10_Sigmabar126_S",
+  "contraction": "REPLACE_WITH_EXACT_INDEX_CONTRACTION_AND_ALL_FACTORIALS",
+  "field_normalizations": {
+    "Phi210": {
+      "tensor_rank": 4,
+      "kinetic_convention": "REQUIRED",
+      "state_basis": "REQUIRED"
+    },
+    "H10": {
+      "tensor_rank": 1,
+      "kinetic_convention": "REQUIRED",
+      "state_basis": "REQUIRED"
+    },
+    "Sigmabar126": {
+      "tensor_rank": 5,
+      "duality_convention": "REQUIRED",
+      "kinetic_convention": "REQUIRED",
+      "state_basis": "REQUIRED"
+    },
+    "S": {
+      "normalization": "canonical real or complex singlet convention REQUIRED"
+    }
+  },
+  "singlet_vev_projection": {
+    "p": null,
+    "a": null,
+    "omega": null,
+    "vS": null,
+    "hEW": 174.0,
+    "units": "GeV"
+  },
+  "gamma_mapping": {
+    "definition": "gamma_eff = (gamma_eff_over_lambda4) * lambda4",
+    "gamma_eff_over_lambda4": null,
+    "phase_convention": "REQUIRED"
+  },
+  "source_manifest": [
+    {
+      "citation": "Chen, Zhang and Bai, arXiv:1707.00580",
+      "use": "normalized SO(10) states and independent CGC cross-check"
+    },
+    {
+      "citation": "Fukuyama et al., arXiv:hep-ph/0405300",
+      "use": "G422 component states and mass-matrix cross-check"
+    }
+  ],
+  "acceptance_evidence": {
+    "canonical_kinetic_normalization": null,
+    "direct_tensor_contraction": null,
+    "independent_matrix_reconstruction": null,
+    "physical_EW_branch_reminimized": null
+  },
+  "closure_complete": false,
+  "n_failed": 1,
+  "failures": [
+    "template only: exact tensor contraction and physical-EW reminimization absent"
+  ]
+}
