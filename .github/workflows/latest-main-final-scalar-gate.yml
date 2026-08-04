@@ -1,0 +1,106 @@
+name: latest-main-final-scalar-gate
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  final-scalar-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      PYTHONHASHSEED: "0"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Compile repository
+        run: python -m compileall -q .
+      - name: Execute subgroup-resolved RGE
+        run: python quartic_soft_betas_v20.py
+      - name: Execute invariant floor audit
+        run: |
+          python mixed_rep_hilbert_bfb_completion_v20.py
+          python mixed_rep_invariant_floor_audit_v20.py
+          python mixed_rep_invariant_exact_witness_v20.py
+          python mixed_rep_enlarged_floor_basis_v20.py
+      - name: Execute physical-EW Hessian and no-rescue theorem
+        run: |
+          python nonsusy_reduced_hessian_v20.py
+          python ew_portal_rescue_bound_v20.py
+      - name: Execute exact gauge orbit
+        run: python so10_nonsusy_gauge_orbit_v20.py
+      - name: Execute latest-main dependency audit
+        run: python latest_main_residual_integration_v20.py
+      - name: Execute final scalar gate
+        run: python final_scalar_theory_gate_v20.py
+      - name: Run focused tests
+        run: |
+          python -m unittest -v \
+            test_quartic_soft_betas_v20.py \
+            test_mixed_rep_invariant_floor_audit_v20.py \
+            test_mixed_rep_invariant_exact_witness_v20.py \
+            test_mixed_rep_enlarged_floor_basis_v20.py \
+            test_nonsusy_reduced_hessian_v20.py \
+            test_ew_portal_rescue_bound_v20.py \
+            test_so10_nonsusy_gauge_orbit_v20.py \
+            test_latest_main_residual_integration_v20.py \
+            test_current_main_repair_closure_v20.py \
+            test_final_scalar_theory_gate_v20.py
+      - name: Assert final scientific scope
+        run: |
+          python - <<'PY'
+          import json
+          e=json.load(open('MIXED_REP_ENLARGED_FLOOR_BASIS_V20.json'))
+          n=json.load(open('NONSUSY_REDUCED_HESSIAN_V20_VERDICT.json'))
+          u=json.load(open('EW_PORTAL_RESCUE_BOUND_V20.json'))
+          l=json.load(open('LATEST_MAIN_RESIDUAL_INTEGRATION_V20.json'))
+          z=json.load(open('FINAL_SCALAR_THEORY_GATE_V20.json'))
+          assert e['counts']['guaranteed_floor_total']==37
+          assert e['flag']['canonical_floor_37_emitted']
+          assert n['target_vevs_GeV']['H10_EW']==174.0
+          assert n['survival_benchmark']['positive_definite']
+          assert n['historical_benchmark']['tachyonic']
+          assert n['flag']['historical_selected_lam4_point_excluded']
+          assert u['n_failed']==0
+          assert u['flag']['historical_lam4_point_excluded_within_guaranteed_floor']
+          assert u['flag']['guaranteed_H4_channels_insufficient_perturbatively']
+          assert u['numerical']['required_over_combined_perturbative_allowance'] > 1e20
+          assert l['n_failed']==0, l
+          assert l['valid_new_closures']['live_pyrate_gauge_artifact']
+          assert l['valid_new_closures']['live_pyrate_reduced_quartic_soft_artifact']
+          assert l['valid_new_closures']['scalar_alpha_nonunique_from_current_flavour_fit']
+          assert l['invalidated_selected_point_claims']['lambda_lock_raise_does_not_spoil_selected_point']
+          assert l['invalidated_selected_point_claims']['all_post_hessian_residuals_closed']
+          assert z['overall_state']=='BLOCKED', z
+          assert all(z['resolved_breakpoints'].values())
+          assert z['flags']['historical_lambda4_benchmark_excluded']
+          assert z['flags']['historical_lambda4_benchmark_not_rescuable_with_floor37_perturbative_even_H_terms']
+          assert z['flags']['live_pyrate_artifacts_validated']
+          assert z['flags']['scalar_alpha_nonuniqueness_proven']
+          assert z['flags']['latest_main_proxy_selected_point_closures_invalidated']
+          assert z['flags']['reduced_survival_region_exists']
+          assert z['remaining_blockers']['cal_G_lift_revalidation_on_physical_EW_survival_point']
+          assert z['remaining_blockers']['lambda4_CGC_live_encoding']
+          assert z['remaining_blockers']['dim6_lambda_lock_live_encoding']
+          assert z['remaining_blockers']['exact_unique_proton_lifetime']
+          assert not z['flags']['whole_model_excluded']
+          assert not z['flags']['whole_model_validated']
+          PY
+      - name: Upload final gate artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: latest-main-final-scalar-gate
+          path: |
+            MIXED_REP_ENLARGED_FLOOR_BASIS_V20.json
+            NONSUSY_REDUCED_HESSIAN_V20_VERDICT.json
+            EW_PORTAL_RESCUE_BOUND_V20.json
+            SO10_NONSUSY_GAUGE_ORBIT_V20_VERDICT.json
+            LATEST_MAIN_RESIDUAL_INTEGRATION_V20.json
+            FINAL_SCALAR_THEORY_GATE_V20.json
+            FINAL_SCALAR_THEORY_GATE_V20.md
