@@ -1,0 +1,48 @@
+name: unique-soft-scale-stationarity
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  unique-soft-scale-stationarity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Execute unique soft-scale matching
+        run: python unique_soft_scale_stationarity_v20.py
+      - name: Focused regression tests
+        run: python -m unittest -v test_unique_soft_scale_stationarity_v20.py
+      - name: Assert honest scientific scope
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('UNIQUE_SOFT_SCALE_V20_VERDICT.json'))
+          assert r['status']=='UNIQUE_SOFT_SCALE_FROM_STATIONARITY__TAU_P_OPEN'
+          assert r['n_failed']==0
+          assert r['matched_soft_scale']['M_1_2_GeV'] > 0
+          assert r['spectra']['xi0_stationarity_matched']['n_majoranas']==32
+          assert abs(r['matched_soft_scale']['M_1_2_GeV']-r['prior_ansatz']['M_1_2_GeV'])/r['prior_ansatz']['M_1_2_GeV'] > 1e-6
+          assert r['flag']['unique_soft_scale_under_stationarity_matching']
+          assert r['flag']['replaced_abs_kappa_MI_ansatz']
+          assert not r['flag']['unique_soft_scale_model_independent']
+          assert not r['flag']['exact_unique_proton_lifetime']
+          assert not r['flag']['whole_model_excluded']
+          PY
+      - name: Upload unique soft-scale verdicts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unique-soft-scale-stationarity-verdict
+          path: |
+            UNIQUE_SOFT_SCALE_V20_VERDICT.json
+            UNIQUE_SOFT_SCALE_V20.md
