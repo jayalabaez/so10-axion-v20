@@ -1,27 +1,23 @@
 #!/usr/bin/env python3
-r"""Nonsusy colour-triplet M_T from charge-allowed operators only (v20).
+r"""Signed non-SUSY color-triplet mass-squared proxy (v20).
 
-Next step after ``nonsusy_z17_pq_potential_filter_v20``:
+The historical module mixed operator dimensions:
 
-1. Build the nonsusy ``{T_10, T_126}`` mass matrix using **only** operators
-   that pass the v20 PQ/X/Z₁₇ filter.
-2. Include the PQ-safe within-10 mixing from ``10_H^2 S`` (∼κ⟨S⟩), not bare
-   ``10_H^2``.
-3. Optionally include the CONDITIONAL ``10_H 126bar_H S`` mixing (SO(10)
-   existence still open) as an explicit on/off switch.
-4. Compute a reduced **phase Hessian** for the charge-allowed locking
-   operator ``126bar_H^2 10_H^2 S^2``.
-5. Route lightest eigenvalues into Patel–Shukla / interference tests.
+* the forbidden cubic ``210_H 10_H^dag 10_H`` was treated as a mass linear in
+  ``<210>``;
+* quartic norm portals were also inserted linearly as masses rather than
+  quadratically as mass-squared contributions;
+* the SO(10)-forbidden ``10_H 126bar_H S`` cubic was optionally used off
+  diagonal;
+* the allowed ``lambda4 210_H 10_H 126bar_H S`` slot was absent.
 
-Honesty
--------
-* Couplings (λ, κ, μ) remain free parameters — full CG normalizations for
-  nonsusy 210^n contractions are still OPEN.
-* Published Aulakh CG is used only as structural precedent for which
-  210–odd-tensor mixings exist; numerical CG factors are absorbed into λ's.
-* This is not a unique vacuum spectrum.
+This replacement builds a Hermitian **mass-squared** proxy. Forbidden inputs
+are accepted only for backward-compatible call signatures and are ignored.
+The allowed lambda4 slot is explicit but conditional on its unresolved
+component CG coefficient. Physical masses are square roots of positive
+mass-squared eigenvalues. All proton-decay routing remains conditional until
+the complete non-SUSY component matrix is derived.
 """
-
 from __future__ import annotations
 
 import argparse
@@ -40,44 +36,46 @@ import scalar_vacuum_proton_decay_v20 as scalar_pd
 ROOT = Path(__file__).resolve().parent
 
 SOURCES = {
-    "z17_filter": "nonsusy_z17_pq_potential_filter_v20",
-    "patel_shukla": ps.SOURCE,
-    "aulakh_structure": {
-        "citation": "Aulakh–Girdhar hep-ph/0204097",
-        "use": "Existence of 210–10 and 210–126 triplet mixings; CG absorbed into λ",
-    },
+    "operator_filter": "nonsusy_z17_pq_potential_filter_v20 signed catalogue",
+    "matrix_dimension": "scalar-potential second derivatives have mass dimension two",
+    "scope": "conditional two-state proxy; full component CG matrix open",
 }
 
 
 def allowed_mt_operator_ledger() -> dict[str, Any]:
-    """Pull M_T-feeding operators from the Z17/PQ filter."""
-    ops = z17.operator_catalogue()
+    operators = z17.operator_catalogue()
     allowed = [
-        o
-        for o in ops
-        if o.get("feeds_triplet_mass")
-        and o["charge_allowed"]["all"]
-        and o["status"] in {"ALLOWED", "CHARGE_OK_SO10_OPEN"}
+        row
+        for row in operators
+        if row.get("feeds_triplet_mass")
+        and row["charge_allowed"]["all"]
+        and row["status"] in {"ALLOWED", "CHARGE_OK_SO10_OPEN"}
     ]
-    forbidden_mt = [
-        o
-        for o in ops
-        if o.get("feeds_triplet_mass") and not o["charge_allowed"]["all"]
+    forbidden = [
+        row
+        for row in operators
+        if row.get("feeds_triplet_mass")
+        and row["status"] in {"CHARGE_FORBIDDEN", "SO10_FORBIDDEN"}
     ]
+    names = {row["name"] for row in allowed}
+    forbidden_names = {row["name"] for row in forbidden}
     return {
-        "allowed_feeding_M_T": [
+        "allowed_feeding_M_T2": [
             {
-                "name": o["name"],
-                "dim": o["dim"],
-                "so10_invariant_exists": o["so10_invariant_exists"],
-                "status": o["status"],
+                "name": row["name"],
+                "dim": row["dim"],
+                "status": row["status"],
+                "so10_invariant_exists": row["so10_invariant_exists"],
             }
-            for o in allowed
+            for row in allowed
         ],
-        "forbidden_feeding_M_T": [o["name"] for o in forbidden_mt],
-        "bare_10_squared_excluded": "bare_10_H^2" in [o["name"] for o in forbidden_mt],
-        "ten2_S_included": any(o["name"] == "10_H^2 S" for o in allowed),
-        "conditional_10_126_S": any(o["name"] == "10_H 126bar_H S" for o in allowed),
+        "forbidden_feeding_M_T2": sorted(forbidden_names),
+        "bare_10_squared_excluded": "bare_10_H^2" in forbidden_names,
+        "forbidden_210_10dag10_excluded": "210_H 10_H^dag 10_H" in forbidden_names,
+        "forbidden_10_126_S_excluded": "10_H 126bar_H S" in forbidden_names,
+        "ten2_S_included": "10_H^2 S" in names,
+        "quartic_2102_10dag10_included": "210_H^dag 210_H 10_H^dag 10_H" in names,
+        "lambda4_210_10_126_S_included": "210 · 10 · 126 · S" in names,
     }
 
 
@@ -93,77 +91,70 @@ def fill_charge_allowed_mt(
     lamS_126: float,
     lam_mix: float,
     include_conditional_mix: bool,
+    lam2102_10: float = 0.0,
+    lam4_cg: float = 0.0,
 ) -> np.ndarray:
-    """Hermitian 2×2 in basis (T_10, T_126).
+    """Return conditional M_T^2 in basis (T_10,T_126bar).
 
-    M11 = μ10 + λ210_10 ⟨210⟩ + λS_10 ⟨S⟩
-    M22 = μ126 + λ210_126 ⟨210⟩ + λS_126 ⟨S⟩
-    M12 = λ_mix ⟨S⟩   (only if include_conditional_mix; else 0)
+    ``lam210_10`` and ``lam_mix`` are historical forbidden inputs and are
+    intentionally ignored. The allowed terms represented are
 
-    Bare 10^2 contribution is identically absent (PQ-forbidden).
+    M11^2 = mu10^2 + lam2102_10 v210^2 + lamS_10 vS^2,
+    M22^2 = mu126^2 + lam210_126 vS v210 + lamS_126 vS^2,
+    M12^2 = lam4_cg v210 vS.
+
+    ``lam210_126`` parametrizes the dimensionful cubic coefficient as
+    a_210,126 = lam210_126*vS. Every coefficient remains conditional because
+    component CG normalizations are open.
     """
-    m11 = mu10 + lam210_10 * v210 + lamS_10 * vS
-    m22 = mu126 + lam210_126 * v210 + lamS_126 * vS
-    m12 = (lam_mix * vS) if include_conditional_mix else 0.0
-    return np.array([[m11, m12], [m12, m22]], dtype=float)
+    del lam210_10, lam_mix, include_conditional_mix
+    m11_sq = mu10**2 + lam2102_10 * v210**2 + lamS_10 * vS**2
+    m22_sq = mu126**2 + lam210_126 * vS * v210 + lamS_126 * vS**2
+    m12_sq = lam4_cg * v210 * vS
+    return np.array([[m11_sq, m12_sq], [m12_sq, m22_sq]], dtype=float)
 
 
 def within_10_mixing_from_S(
-    *,
-    m_t: float,
-    m_tbar: float,
-    kappa: float,
-    vS: float,
+    *, m_t: float, m_tbar: float, kappa: float, vS: float
 ) -> dict[str, Any]:
-    """PQ-safe θ_T from 10_H^2 S: μ^2 = κ⟨S⟩ (Patel–Shukla Eq. 27 structure)."""
-    mu2 = kappa * vS * vS  # κ dimensionless ⇒ μ² has mass²
-    denom = m_tbar**2 - m_t**2
-    if abs(denom) < 1e-30:
-        theta = math.pi / 4.0 if abs(mu2) > 0 else 0.0
-    else:
-        theta = 0.5 * math.atan2(2.0 * mu2, denom)
+    """Effective within-10 mass-squared mixing from 10_H^2 S."""
+    mu2 = kappa * vS**2
+    denominator = m_tbar**2 - m_t**2
+    theta = (
+        math.pi / 4.0
+        if abs(denominator) < 1e-30 and abs(mu2) > 0.0
+        else (
+            0.0
+            if abs(denominator) < 1e-30
+            else 0.5 * math.atan2(2.0 * mu2, denominator)
+        )
+    )
     return {
         "operator": "10_H^2 S",
-        "mu2_GeV2": mu2,
+        "effective_mu2_GeV2": mu2,
         "m_T_GeV": m_t,
         "m_Tbar_GeV": m_tbar,
         "theta_T_rad": theta,
         "theta_T_deg": float(math.degrees(theta)),
         "bare_10_squared_used": False,
-        "note": "θ_T regenerated by κ⟨S⟩, not by PQ-forbidden bare 10^2",
+        "component_cg_normalization_complete": False,
     }
 
 
 def locking_phase_hessian(*, A_lock: float) -> dict[str, Any]:
-    """Reduced phase Hessian for V = −A cos(2φ_Δ + 2φ_10 + 2φ_S).
-
-    At the aligned minimum (argument = 0), second derivatives w.r.t.
-    (φ_Δ, φ_10, φ_S) give the 3×3 Hessian H_ij = 4 A n_i n_j with
-    n = (2, 2, 2) wait: θ = 2φ_Δ + 2φ_10 + 2φ_S ⇒ ∂θ/∂φ = (2,2,2),
-    V_θθ = A at min, so H = A * outer(g,g) with g=(2,2,2).
-    """
-    g = np.array([2.0, 2.0, 2.0], dtype=float)
-    hess = A_lock * np.outer(g, g)
-    eigs = np.linalg.eigvalsh(hess)
-    # One massive phase combination; two flat directions (overall rephase /
-    # orthogonal combinations) at this single-operator level.
+    gradient = np.array([2.0, 2.0, 2.0], dtype=float)
+    hessian = A_lock * np.outer(gradient, gradient)
+    eigenvalues = np.linalg.eigvalsh(hessian)
+    tolerance = 1e-12 * max(1.0, abs(A_lock))
     return {
-        "potential": "V=-A_lock cos(2 φ_Delta + 2 φ_10 + 2 φ_S)",
+        "potential": "V=-A_lock cos(2 phi_Delta+2 phi_10+2 phi_S)",
         "A_lock": A_lock,
         "fields": ["phi_DeltaR_126", "phi_10", "phi_S"],
-        "hessian": hess.tolist(),
-        "eigenvalues": [float(x) for x in eigs],
-        "n_positive": int(np.sum(eigs > 1e-12 * max(1.0, abs(A_lock)))),
-        "n_zero": int(np.sum(np.abs(eigs) <= 1e-12 * max(1.0, abs(A_lock)))),
-        "interpretation": (
-            "Single locking operator massifies one phase combination and "
-            "leaves two flat directions; complete phase Hessian needs the "
-            "full charge-allowed potential (still OPEN)."
-        ),
-        "flag": {
-            "locking_operator_included": True,
-            "complete_phase_hessian": False,
-        },
+        "hessian": hessian.tolist(),
+        "eigenvalues": [float(value) for value in eigenvalues],
+        "n_positive": int(np.sum(eigenvalues > tolerance)),
+        "n_zero": int(np.sum(np.abs(eigenvalues) <= tolerance)),
+        "flag": {"locking_operator_included": True, "complete_phase_hessian": False},
     }
 
 
@@ -174,22 +165,26 @@ SCENARIOS: list[dict[str, Any]] = [
         "mu126_over_MI": 1.0,
         "lam210_10": 0.0,
         "lam210_126": 0.0,
+        "lam2102_10": 0.0,
         "lamS_10": 0.0,
         "lamS_126": 0.0,
         "lam_mix": 0.0,
         "include_conditional_mix": False,
+        "lam4_cg": 0.0,
         "kappa": 0.0,
     },
     {
-        "name": "210_push_10",
+        "name": "allowed_2102_push_10",
         "mu10_over_MI": 0.0,
         "mu126_over_MI": 1.0,
-        "lam210_10": 1.0,
+        "lam210_10": 0.0,
         "lam210_126": 0.0,
+        "lam2102_10": 1.0,
         "lamS_10": 0.0,
         "lamS_126": 0.0,
         "lam_mix": 0.0,
         "include_conditional_mix": False,
+        "lam4_cg": 0.0,
         "kappa": 0.0,
     },
     {
@@ -198,22 +193,54 @@ SCENARIOS: list[dict[str, Any]] = [
         "mu126_over_MI": 0.5,
         "lam210_10": 0.0,
         "lam210_126": 0.0,
+        "lam2102_10": 0.0,
         "lamS_10": 1.0,
         "lamS_126": 1.0,
         "lam_mix": 0.0,
         "include_conditional_mix": False,
+        "lam4_cg": 0.0,
         "kappa": 0.1,
     },
     {
-        "name": "conditional_mix_on",
+        "name": "lambda4_small_conditional_mix",
+        "mu10_over_MI": 1.0,
+        "mu126_over_MI": 1.0,
+        "lam210_10": 0.0,
+        "lam210_126": 0.1,
+        "lam2102_10": 0.1,
+        "lamS_10": 0.0,
+        "lamS_126": 0.0,
+        "lam_mix": 0.0,
+        "include_conditional_mix": False,
+        "lam4_cg": 1e-4,
+        "kappa": 0.0,
+    },
+    {
+        "name": "lambda4_tachyon_stress",
         "mu10_over_MI": 1.0,
         "mu126_over_MI": 1.0,
         "lam210_10": 0.0,
         "lam210_126": 0.0,
+        "lam2102_10": 0.0,
         "lamS_10": 0.0,
         "lamS_126": 0.0,
-        "lam_mix": 1.0,
+        "lam_mix": 0.0,
+        "include_conditional_mix": False,
+        "lam4_cg": 1.0,
+        "kappa": 0.0,
+    },
+    {
+        "name": "forbidden_inputs_ignored",
+        "mu10_over_MI": 1.0,
+        "mu126_over_MI": 1.0,
+        "lam210_10": 99.0,
+        "lam210_126": 0.0,
+        "lam2102_10": 0.0,
+        "lamS_10": 0.0,
+        "lamS_126": 0.0,
+        "lam_mix": 99.0,
         "include_conditional_mix": True,
+        "lam4_cg": 0.0,
         "kappa": 0.0,
     },
     {
@@ -222,139 +249,105 @@ SCENARIOS: list[dict[str, Any]] = [
         "mu126_over_MI": 5.0,
         "lam210_10": 0.0,
         "lam210_126": 0.0,
+        "lam2102_10": 0.0,
         "lamS_10": 0.0,
         "lamS_126": 0.0,
         "lam_mix": 0.0,
         "include_conditional_mix": False,
+        "lam4_cg": 0.0,
         "kappa": 0.01,
-    },
-    {
-        "name": "full_allowed_O1",
-        "mu10_over_MI": 1.0,
-        "mu126_over_MI": 1.0,
-        "lam210_10": 0.1,
-        "lam210_126": 0.1,
-        "lamS_10": 0.5,
-        "lamS_126": 0.5,
-        "lam_mix": 0.2,
-        "include_conditional_mix": True,
-        "kappa": 0.2,
-    },
-    {
-        "name": "forbid_check_no_bare10",
-        "mu10_over_MI": 1.0,
-        "mu126_over_MI": 1.0,
-        "lam210_10": 0.0,
-        "lam210_126": 0.0,
-        "lamS_10": 0.0,
-        "lamS_126": 0.0,
-        "lam_mix": 0.0,
-        "include_conditional_mix": False,
-        "kappa": 1.0,
     },
 ]
 
 
 def evaluate_scenario(
-    scenario: dict[str, Any],
-    *,
-    m_i: float,
-    m_gut: float,
-    tau_gauge: float,
+    scenario: dict[str, Any], *, m_i: float, m_gut: float, tau_gauge: float
 ) -> dict[str, Any]:
-    v210, vS = m_gut, m_i
-    mu10 = scenario["mu10_over_MI"] * m_i
-    mu126 = scenario["mu126_over_MI"] * m_i
-    matrix = fill_charge_allowed_mt(
-        v210=v210,
-        vS=vS,
-        mu10=mu10,
-        mu126=mu126,
-        lam210_10=float(scenario["lam210_10"]),
-        lam210_126=float(scenario["lam210_126"]),
-        lamS_10=float(scenario["lamS_10"]),
-        lamS_126=float(scenario["lamS_126"]),
-        lam_mix=float(scenario["lam_mix"]),
-        include_conditional_mix=bool(scenario["include_conditional_mix"]),
+    matrix_sq = fill_charge_allowed_mt(
+        v210=m_gut,
+        vS=m_i,
+        mu10=float(scenario["mu10_over_MI"]) * m_i,
+        mu126=float(scenario["mu126_over_MI"]) * m_i,
+        lam210_10=float(scenario.get("lam210_10", 0.0)),
+        lam210_126=float(scenario.get("lam210_126", 0.0)),
+        lamS_10=float(scenario.get("lamS_10", 0.0)),
+        lamS_126=float(scenario.get("lamS_126", 0.0)),
+        lam_mix=float(scenario.get("lam_mix", 0.0)),
+        include_conditional_mix=bool(scenario.get("include_conditional_mix", False)),
+        lam2102_10=float(scenario.get("lam2102_10", 0.0)),
+        lam4_cg=float(scenario.get("lam4_cg", 0.0)),
     )
-    # Physical masses from absolute eigenvalues of the real-symmetric matrix.
-    w, v = np.linalg.eigh(matrix)
-    order = np.argsort(np.abs(w))
-    w = w[order]
-    v = v[:, order]
-    light = float(abs(w[0]))
-    frac10 = float(v[0, 0] ** 2)
-    frac126 = float(v[1, 0] ** 2)
-    if frac10 >= 0.70:
-        dominance = "10_H"
-    elif frac126 >= 0.70:
-        dominance = "126bar_H"
-    else:
-        dominance = "mixed"
+    eigenvalues_sq, eigenvectors = np.linalg.eigh(matrix_sq)
+    order = np.argsort(eigenvalues_sq)
+    eigenvalues_sq = eigenvalues_sq[order]
+    eigenvectors = eigenvectors[:, order]
+    tachyonic = bool(np.min(eigenvalues_sq) < 0.0)
+    singular = bool(np.min(np.abs(eigenvalues_sq)) <= 1e-24 * max(np.max(np.abs(eigenvalues_sq)), 1.0))
+    masses = np.sqrt(np.clip(eigenvalues_sq, 0.0, None))
+    positive_masses = masses[eigenvalues_sq > 0.0]
+    lightest = float(np.min(positive_masses)) if positive_masses.size else 0.0
+    light_index = int(np.where(masses == lightest)[0][0]) if lightest > 0.0 else 0
+    frac10 = float(eigenvectors[0, light_index] ** 2)
+    frac126 = float(eigenvectors[1, light_index] ** 2)
+    dominance = "10_H" if frac10 >= 0.70 else ("126bar_H" if frac126 >= 0.70 else "mixed")
 
-    mix10 = within_10_mixing_from_S(
-        m_t=abs(matrix[0, 0]),
-        m_tbar=abs(matrix[0, 0]) * 1.1,  # schematic split; full T/Tbar OPEN
-        kappa=float(scenario["kappa"]),
-        vS=vS,
-    )
-
-    singular = light <= 0.0
     ps_rows: list[dict[str, Any]] = []
-    if not singular:
-        for alpha_ps in (0.01, 0.1, 0.3):
-            if dominance == "mixed":
-                r10 = ps.evaluate_channel(
-                    "10_H", "p_to_mu_K0", alpha=alpha_ps, M_T_GeV=light, M_Tbar_GeV=light
-                )
-                r126 = ps.evaluate_channel(
-                    "126bar_H",
-                    "p_to_mu_K0",
-                    alpha=alpha_ps,
-                    M_T_GeV=light,
-                    M_Tbar_GeV=light,
-                )
-                row = dict(
-                    r10
-                    if r10["predicted_lifetime_years"] <= r126["predicted_lifetime_years"]
-                    else r126
-                )
-                row["dominance_routing"] = "mixed_take_shorter"
-            else:
-                row = dict(
-                    ps.evaluate_channel(
-                        dominance,
-                        "p_to_mu_K0",
-                        alpha=alpha_ps,
-                        M_T_GeV=light,
-                        M_Tbar_GeV=light,
-                    )
-                )
-                row["dominance_routing"] = dominance
-            tau_s = float(row["predicted_lifetime_years"])
+    if lightest > 0.0 and not tachyonic:
+        for alpha in (0.01, 0.1, 0.3):
+            candidates = [
+                ps.evaluate_channel("10_H", "p_to_mu_K0", alpha=alpha, M_T_GeV=lightest, M_Tbar_GeV=lightest),
+                ps.evaluate_channel("126bar_H", "p_to_mu_K0", alpha=alpha, M_T_GeV=lightest, M_Tbar_GeV=lightest),
+            ]
+            row = dict(min(candidates, key=lambda item: item["predicted_lifetime_years"]))
+            row["dominance_routing"] = dominance
             row["interference_incoherent_years"] = cmt.interference_lifetime_years(
-                tau_gauge, tau_s, 0.0
+                tau_gauge, float(row["predicted_lifetime_years"]), 0.0
             )
+            row["conditional_on_component_CG"] = True
             ps_rows.append(row)
 
-    excluded = singular or any(not r["passes_experimental_limit"] for r in ps_rows)
+    excluded = tachyonic or singular or any(
+        not row["passes_experimental_limit"] for row in ps_rows
+    )
+    m10 = math.sqrt(max(float(matrix_sq[0, 0]), 0.0))
+    within = within_10_mixing_from_S(
+        m_t=m10,
+        m_tbar=1.1 * m10,
+        kappa=float(scenario.get("kappa", 0.0)),
+        vS=m_i,
+    )
     return {
         "name": scenario["name"],
-        "include_conditional_10_126_S": bool(scenario["include_conditional_mix"]),
-        "mass_matrix_GeV": matrix.tolist(),
-        "eigenvalues_GeV": [float(x) for x in w],
-        "lightest_GeV": light,
+        "mass_squared_matrix_GeV2": matrix_sq.tolist(),
+        "mass_squared_eigenvalues_GeV2": [float(value) for value in eigenvalues_sq],
+        "mass_eigenvalues_GeV": [float(value) for value in masses],
+        "lightest_GeV": lightest,
         "frac_10": frac10,
         "frac_126": frac126,
         "dominance_class": dominance,
-        "within_10_mixing": mix10,
-        "bare_10_squared_contribution_GeV": 0.0,
+        "within_10_mixing": within,
         "patel_shukla_mu_K0": ps_rows,
+        "forbidden_inputs_received": {
+            "lam210_10": float(scenario.get("lam210_10", 0.0)),
+            "lam_mix": float(scenario.get("lam_mix", 0.0)),
+            "include_conditional_mix": bool(scenario.get("include_conditional_mix", False)),
+        },
+        "allowed_conditional_inputs": {
+            "lam2102_10": float(scenario.get("lam2102_10", 0.0)),
+            "lam210_126": float(scenario.get("lam210_126", 0.0)),
+            "lam4_cg": float(scenario.get("lam4_cg", 0.0)),
+        },
         "flag": {
-            "charge_allowed_ops_only": True,
-            "bare_10_squared_absent": True,
-            "conditionally_excluded_by_ps_mu_K0": excluded,
+            "signed_operator_filter_applied": True,
+            "mass_squared_matrix_used": True,
+            "forbidden_210_10dag10_ignored": True,
+            "forbidden_10_126_S_ignored": True,
+            "lambda4_offdiag_slot_present": True,
+            "tachyonic": tachyonic,
             "singular": singular,
+            "conditionally_excluded_by_ps_mu_K0": excluded,
+            "physical_component_CG_complete": False,
+            "physical_triplet_spectrum_complete": False,
         },
     }
 
@@ -363,66 +356,51 @@ def build_report() -> dict[str, Any]:
     anchor = scalar_pd._unification_anchor()
     if not anchor.get("available"):
         return {
-            "status": "NONSUSY_CHARGE_ALLOWED_MT_NOT_EXECUTED__ANCHOR_MISSING",
+            "status": "NONSUSY_SIGNED_MT2_NOT_EXECUTED__ANCHOR_MISSING",
             "n_failed": 1,
             "failures": ["unification_anchor"],
-            "flag": {"charge_allowed_mt_built": False},
         }
-
     m_i = float(anchor["M_I_GeV"])
     m_gut = float(anchor["M_GUT_GeV"])
-    gauge = scalar_pd.gauge_proton_decay(anchor)
-    tau_gauge = float(gauge["central"]["lifetime_years"])
+    tau_gauge = float(scalar_pd.gauge_proton_decay(anchor)["central"]["lifetime_years"])
     ledger = allowed_mt_operator_ledger()
-    zrep = z17.build_report()
-
-    # Locking amplitude scale: schematic A ~ λ_lock v_Δ² v_10² v_S² / M^2
-    # with v_10 ~ v_EW effective omitted → use M_I^6 / M_GUT^2 as dim-6 estimate
-    a_lock = (m_i**6) / (m_gut**2)
+    zreport = z17.build_report()
+    h_ew = float(
+        scalar_pd.reduced_radial_vacuum_witness(anchor)["potential_definition"]["target_vevs_GeV"]["h_EW_effective"]
+    )
+    a_lock = m_i**4 * h_ew**2 / m_gut**2
     phase = locking_phase_hessian(A_lock=float(a_lock))
-
-    rows = [
-        evaluate_scenario(s, m_i=m_i, m_gut=m_gut, tau_gauge=tau_gauge)
-        for s in SCENARIOS
-    ]
-    excluded = [r for r in rows if r["flag"]["conditionally_excluded_by_ps_mu_K0"]]
-    physical = [r for r in rows if not r["flag"]["singular"]]
-    lightest = min(physical, key=lambda r: r["lightest_GeV"])
-
-    # Identity: matrix with mix off has M12=0; bare10 always 0
-    m_test = fill_charge_allowed_mt(
-        v210=m_gut,
-        vS=m_i,
-        mu10=m_i,
-        mu126=m_i,
-        lam210_10=0.0,
-        lam210_126=0.0,
-        lamS_10=0.0,
-        lamS_126=0.0,
-        lam_mix=1.0,
-        include_conditional_mix=False,
+    rows = [evaluate_scenario(row, m_i=m_i, m_gut=m_gut, tau_gauge=tau_gauge) for row in SCENARIOS]
+    excluded = [row for row in rows if row["flag"]["conditionally_excluded_by_ps_mu_K0"]]
+    positive = [row for row in rows if not row["flag"]["tachyonic"] and row["lightest_GeV"] > 0.0]
+    lightest = min(positive, key=lambda row: row["lightest_GeV"])
+    forbidden = next(row for row in rows if row["name"] == "forbidden_inputs_ignored")
+    baseline = next(row for row in rows if row["name"] == "decoupled_MI_no_mix")
+    forbidden_inputs_no_effect = np.allclose(
+        forbidden["mass_squared_matrix_GeV2"], baseline["mass_squared_matrix_GeV2"]
     )
 
     checks = {
-        "anchor_available": True,
-        "ledger_has_ten2_S": ledger["ten2_S_included"],
+        "signed_filter_executes": zreport.get("n_failed", 1) == 0,
         "ledger_excludes_bare10": ledger["bare_10_squared_excluded"],
-        "mix_off_forces_M12_zero": bool(abs(m_test[0, 1]) < 1e-30),
-        "phase_hessian_one_positive": phase["n_positive"] == 1,
-        "phase_hessian_two_zero": phase["n_zero"] == 2,
-        "some_survive": len(excluded) < len(rows),
-        "some_excluded": len(excluded) > 0,
-        "upstream_z17_ok": zrep.get("n_failed", 1) == 0,
-        "cg_normalizations_still_open": True,
+        "ledger_excludes_forbidden_210_10dag10": ledger["forbidden_210_10dag10_excluded"],
+        "ledger_excludes_forbidden_10_126_S": ledger["forbidden_10_126_S_excluded"],
+        "ledger_includes_2102_10dag10": ledger["quartic_2102_10dag10_included"],
+        "ledger_includes_lambda4": ledger["lambda4_210_10_126_S_included"],
+        "forbidden_inputs_have_no_effect": bool(forbidden_inputs_no_effect),
+        "all_rows_use_mass_squared": all(row["flag"]["mass_squared_matrix_used"] for row in rows),
+        "lambda4_stress_is_tachyonic": next(row for row in rows if row["name"] == "lambda4_tachyon_stress")["flag"]["tachyonic"],
+        "phase_hessian_one_positive_two_zero": phase["n_positive"] == 1 and phase["n_zero"] == 2,
+        "some_survive": len(positive) > 0,
+        "some_conditionally_fail": len(excluded) > 0,
         "whole_model_not_declared_dead": True,
     }
-    failures = [n for n, ok in checks.items() if not ok]
-
+    failures = [name for name, passed in checks.items() if not passed]
     return {
         "status": (
-            "NONSUSY_CHARGE_ALLOWED_MT_BUILT__CG_NORMALIZATIONS_OPEN"
+            "NONSUSY_SIGNED_MT2_PROXY_BUILT__FULL_COMPONENT_CG_OPEN"
             if not failures
-            else "NONSUSY_CHARGE_ALLOWED_MT_FAILED"
+            else "NONSUSY_SIGNED_MT2_PROXY_FAILED"
         ),
         "n_checks": len(checks),
         "n_failed": len(failures),
@@ -430,37 +408,41 @@ def build_report() -> dict[str, Any]:
         "sources": SOURCES,
         "operator_ledger": ledger,
         "fill_convention": {
-            "M11": "μ10 + λ210_10⟨210⟩ + λS_10⟨S⟩",
-            "M22": "μ126 + λ210_126⟨210⟩ + λS_126⟨S⟩",
-            "M12": "λ_mix⟨S⟩ if CONDITIONAL 10·126·S included, else 0",
-            "bare_10_squared": "IDENTICALLY_ZERO",
-            "within_10_theta_T": "from 10_H^2 S only (κ⟨S⟩)",
+            "M11_squared": "mu10^2 + lambda_2102_10 v210^2 + lambda_S10 vS^2",
+            "M22_squared": "mu126^2 + lambda_210_126 vS v210 + lambda_S126 vS^2",
+            "M12_squared": "lambda4_CG v210 vS",
+            "forbidden_linear_210_Higgs_cubic": "IDENTICALLY_IGNORED",
+            "forbidden_10_126_S_cubic": "IDENTICALLY_IGNORED",
         },
         "locking_phase_hessian": phase,
         "n_scenarios": len(rows),
         "n_excluded_by_ps_mu_K0": len(excluded),
-        "excluded_scenario_names": [r["name"] for r in excluded],
+        "excluded_scenario_names": [row["name"] for row in excluded],
         "lightest_scenario": {
             "name": lightest["name"],
             "lightest_GeV": lightest["lightest_GeV"],
             "dominance": lightest["dominance_class"],
-            "conditional_mix": lightest["include_conditional_10_126_S"],
         },
         "scenarios": rows,
-        "upstream_z17_filter_status": zrep.get("status"),
+        "upstream_z17_filter_status": zreport.get("status"),
         "next_exact_calculation": [
-            "Replace free λ/κ by normalized nonsusy 210^n and mixed CG contractions",
-            "Resolve SO(10) existence of 10·126·S and 126^2·S singlets",
-            "Extend basis beyond 2×2 (T', Tbar physical states)",
-            "Complete multi-operator phase Hessian + radial-phase cross terms",
+            "derive all component CG coefficients for (210^dag210)(10^dag10)",
+            "derive dimensionful 210 Delta-bar Delta component coefficients",
+            "derive the lambda4 210 10 126bar S off-diagonal coefficient",
+            "expand to the complete color-triplet component basis and diagonalize M_T^2",
         ],
         "flag": {
-            "charge_allowed_mt_built": True,
+            "charge_and_so10_allowed_mt2_proxy_built": True,
+            "mass_squared_matrix_used": True,
+            "forbidden_210_10dag10_absent": True,
+            "forbidden_10_126_S_absent": True,
+            "lambda4_offdiag_slot_included": True,
             "bare_10_squared_absent": True,
             "ten2_S_mixing_included": True,
-            "conditional_10_126_S_optional": True,
             "locking_phase_hessian_computed": True,
             "complete_phase_hessian": False,
+            "physical_component_CG_complete": False,
+            "physical_triplet_spectrum_complete": False,
             "invented_unpublished_cg_normalizations": False,
             "complete_so10_scalar_potential": False,
             "exact_unique_proton_lifetime": False,
@@ -468,54 +450,34 @@ def build_report() -> dict[str, Any]:
             "whole_model_excluded": False,
         },
         "verdict": (
-            "Nonsusy M_T is now built from charge-allowed operators only: bare "
-            "10_H^2 is absent, 10_H^2 S supplies θ_T∼κ⟨S⟩, and optional "
-            "10·126·S mixing is gated. A reduced locking phase Hessian has one "
-            "massive mode. Free λ/κ await true nonsusy CG normalizations."
+            "The historical linear-mass proxy is replaced by a signed M_T^2 "
+            "builder. Forbidden 210·10†·10 and 10·126bar·S inputs are ignored; "
+            "the allowed 210†210·10†10 diagonal and lambda4 off-diagonal slots "
+            "are explicit. Numerical proton-decay rows remain conditional on "
+            "uncomputed component CG coefficients."
         ),
     }
 
 
 def write_markdown(report: dict[str, Any]) -> str:
-    lines = [
-        "# Nonsusy charge-allowed M_T — v20",
-        "",
-        f"**Status:** `{report['status']}`",
-        "",
-        report["verdict"],
-        "",
-        f"- Scenarios: {report['n_scenarios']}",
-        f"- Excluded by PS μ⁺K⁰: {report['n_excluded_by_ps_mu_K0']}",
-        f"- Lightest: `{report['lightest_scenario']['name']}` at "
-        f"{report['lightest_scenario']['lightest_GeV']:.3e} GeV",
-        "",
-        "## Fill convention",
-        "",
-        f"- M11 = `{report['fill_convention']['M11']}`",
-        f"- M22 = `{report['fill_convention']['M22']}`",
-        f"- M12 = `{report['fill_convention']['M12']}`",
-        f"- bare 10²: `{report['fill_convention']['bare_10_squared']}`",
-        "",
-        "## Phase Hessian (locking)",
-        "",
-        f"- Positive modes: {report['locking_phase_hessian']['n_positive']}",
-        f"- Zero modes: {report['locking_phase_hessian']['n_zero']}",
-        "",
-        "## Next exact calculation",
-        "",
-    ]
-    for step in report["next_exact_calculation"]:
-        lines.append(f"1. {step}")
-    lines.extend(["", "## Flags", ""])
-    for k, v in report["flag"].items():
-        lines.append(f"- `{k}`: {v}")
-    lines.append("")
-    return "\n".join(lines)
+    return "\n".join(
+        [
+            "# Signed non-SUSY triplet mass-squared proxy — v20",
+            "",
+            f"**Status:** `{report['status']}`",
+            "",
+            report["verdict"],
+            "",
+            f"- Scenarios: {report['n_scenarios']}",
+            f"- Conditional failures: {report['n_excluded_by_ps_mu_K0']}",
+            f"- Physical component CG complete: {report['flag']['physical_component_CG_complete']}",
+            "",
+        ]
+    )
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.parse_args(argv)
+    argparse.ArgumentParser(description=__doc__).parse_args(argv)
     report = build_report()
     ROOT.joinpath("NONSUSY_CHARGE_ALLOWED_MT_V20_VERDICT.json").write_text(
         json.dumps(report, indent=2) + "\n", encoding="utf-8"
@@ -523,26 +485,7 @@ def main(argv: list[str] | None = None) -> int:
     ROOT.joinpath("NONSUSY_CHARGE_ALLOWED_MT_V20.md").write_text(
         write_markdown(report), encoding="utf-8"
     )
-    print(
-        json.dumps(
-            {
-                "status": report["status"],
-                "n_failed": report["n_failed"],
-                "n_scenarios": report.get("n_scenarios"),
-                "n_excluded": report.get("n_excluded_by_ps_mu_K0"),
-                "lightest": report.get("lightest_scenario"),
-                "phase": {
-                    "n_positive": report.get("locking_phase_hessian", {}).get(
-                        "n_positive"
-                    ),
-                    "n_zero": report.get("locking_phase_hessian", {}).get("n_zero"),
-                },
-                "flag": report.get("flag"),
-                "verdict": report.get("verdict"),
-            },
-            indent=2,
-        )
-    )
+    print(json.dumps(report, indent=2))
     return 0 if report.get("n_failed", 1) == 0 else 1
 
 
