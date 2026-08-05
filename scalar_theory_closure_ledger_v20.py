@@ -117,10 +117,13 @@ def build_report() -> dict[str, Any]:
             evidence=[
                 f"unique_soft_scale_stationarity: {soft_status}",
                 "component_lift ledger includes hEW=174",
+                "UV κ stationarity-constrained at physical hEW (not unique)",
+                "physical A_κ = |κ| M_I hEW² v_S",
             ],
             blockers=[
                 "technically natural hierarchy proof incomplete",
                 "full stationarity of complete potential OPEN",
+                "unique UV κ not fixed (finite window + soft shifts)",
             ],
         ),
         _gate(
@@ -148,6 +151,7 @@ def build_report() -> dict[str, Any]:
                 f"scoped_bfb_boundedness_gate: {bfb_status}",
                 "reduced quartic spectral PD + co-positivity + Schur PD",
                 "projected Goldstone+axion skeleton non-negative",
+                "reduced polynomial competing-extrema census (historical λ₄ tachyonic)",
             ],
             blockers=[
                 "competing extrema of the complete potential",

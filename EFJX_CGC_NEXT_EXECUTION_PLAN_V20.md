@@ -236,6 +236,17 @@ co-positivity of the reduced five-amplitude quartic Λ (pairwise + Monte-Carlo
 on the simplex) together with the Schur portal margin. Wired into
 `scoped_bfb_boundedness_gate_v20`. Full-ring BFB remains OPEN.
 
+## Completed reduced competing-extrema census + UV κ constraint
+
+`reduced_polynomial_competing_extrema_v20.py` censuses nine amplitude points
+on the reduced polynomial: selected `hEW=174`, `λ₄=0` is locally PD;
+historical `λ₄` is tachyonic. V_total ranking among fixed probes is
+diagnostic only (not free extrema). Full-ring extrema remain OPEN.
+
+`uv_kappa_stationarity_constraint_v20.py` evaluates physical
+`A_κ = |κ| M_I hEW² v_S` from the finite-κ stationarity window, withdraws the
+`M_I`-equal proxy, and records that κ is constrained but **not** UV-unique.
+
 ## Correct next goal
 
 Theory completion still requires transcribed CG for 120/320/1050/4125 and
@@ -252,8 +263,8 @@ Do not invent missing CG and do not reopen a reduced-sector phase hunt.
    - Transcribe missing CG tensors (especially 120, 320, 1050, 4125) into the Cartesian basis.
    - Prefer operators with nonzero tensor projection on the actual `(Delta_R,hEW,S,Phi)` vacuum for phase locking.
    - Next combinatorial targets without invented tables: channel-1050 Young
-     projector only from published/combinatorial tensors; competing-extrema
-     census on the reduced polynomial; UV determination of κ.
+     projector only from published/combinatorial tensors; wire physical `A_κ`
+     into the extended Hessian scale (replacing diagnostic `m²_210/5`).
 
 2. **Full component projection**
    - Project every invariant into canonical Pati-Salam and Standard Model component fields.

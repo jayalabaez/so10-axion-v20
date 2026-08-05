@@ -1,0 +1,339 @@
+{
+  "status": "REDUCED_POLYNOMIAL_COMPETING_EXTREMA_CENSUSED__FULL_RING_OPEN",
+  "overall_state": "BLOCKED",
+  "n_checks": 9,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "physical_hEW_174": true,
+    "selected_survival_pd": true,
+    "historical_lam4_tachyonic": true,
+    "selected_among_lam0_census": true,
+    "at_least_one_pd_lam0": true,
+    "census_size_ge_8": true,
+    "full_ring_extrema_not_claimed": true,
+    "cg_not_invented": true,
+    "whole_model_not_overclaimed": true
+  },
+  "couplings": {
+    "kappa": 0.05000012135631412,
+    "lambda_lock": 0.9554946272252851,
+    "source": "charge_allowed_potential_minimize finite-\u03ba / fixed"
+  },
+  "selected_targets_GeV": {
+    "P_210": 9917564798898132.0,
+    "DeltaR_126bar": 631385523052.4453,
+    "H10_EW": 174.0,
+    "S_PQ": 631385523052.4453,
+    "Phi17_X": 1e+17
+  },
+  "census": [
+    {
+      "name": "selected_hEW174_lam4_0",
+      "rho_GeV": {
+        "P_210": 9917564798898132.0,
+        "DeltaR_126bar": 631385523052.4453,
+        "H10_EW": 174.0,
+        "S_PQ": 631385523052.4453,
+        "Phi17_X": 1e+17
+      },
+      "lam4": 0.0,
+      "kappa": 0.05000012135631412,
+      "V4_GeV4": 7.502499249126418e+67,
+      "V_int_GeV4": -6.034743185568671e+26,
+      "V_total_GeV4": 7.502499249126418e+67,
+      "hessian": {
+        "min_eig_GeV2": 15285.310969635348,
+        "positive_definite": true,
+        "eigenvalues_GeV2": [
+          15285.310969635348,
+          3.5697445477075515e+23,
+          5.1884985543888255e+23,
+          1.0816748135668043e+32,
+          1.5000026419338898e+34
+        ]
+      }
+    },
+    {
+      "name": "selected_hEW174_historical_lam4",
+      "rho_GeV": {
+        "P_210": 9917564798898132.0,
+        "DeltaR_126bar": 631385523052.4453,
+        "H10_EW": 174.0,
+        "S_PQ": 631385523052.4453,
+        "Phi17_X": 1e+17
+      },
+      "lam4": -3.1831681257207113e-06,
+      "kappa": 0.05000012135631412,
+      "V4_GeV4": 7.502499249126418e+67,
+      "V_int_GeV4": 2.17174164167556e+52,
+      "V_total_GeV4": 7.50249924912642e+67,
+      "hessian": {
+        "min_eig_GeV2": -7.232769343172498e+31,
+        "positive_definite": false,
+        "eigenvalues_GeV2": [
+          -7.232769343172498e+31,
+          3.569744547686251e+23,
+          5.188498554410126e+23,
+          1.0816748135668043e+32,
+          1.5000026419338898e+34
+        ]
+      }
+    },
+    {
+      "name": "H10_equals_MI_proxy_lam4_0",
+      "rho_GeV": {
+        "P_210": 9917564798898132.0,
+        "DeltaR_126bar": 631385523052.4453,
+        "H10_EW": 631385523052.4453,
+        "S_PQ": 631385523052.4453,
+        "Phi17_X": 1e+17
+      },
+      "lam4": 0.0,
+      "kappa": 0.05000012135631412,
+      "V4_GeV4": 7.502499249126418e+67,
+      "V_int_GeV4": -7.946017844495824e+45,
+      "V_total_GeV4": 7.502499249126418e+67,
+      "hessian": {
+        "min_eig_GeV2": 1.9691056756682815e+23,
+        "positive_definite": true,
+        "eigenvalues_GeV2": [
+          1.9691056756682815e+23,
+          3.854185351814909e+23,
+          5.191298419953639e+23,
+          1.0816748135668043e+32,
+          1.5000026419338898e+34
+        ]
+      }
+    },
+    {
+      "name": "H10_unbroken_lam4_0",
+      "rho_GeV": {
+        "P_210": 9917564798898132.0,
+        "DeltaR_126bar": 631385523052.4453,
+        "H10_EW": 1.0,
+        "S_PQ": 631385523052.4453,
+        "Phi17_X": 1e+17
+      },
+      "lam4": 0.0,
+      "kappa": 0.05000012135631412,
+      "V4_GeV4": 7.502499249126418e+67,
+      "V_int_GeV4": -1.993243224193642e+22,
+      "V_total_GeV4": 7.502499249126418e+67,
+      "hessian": {
+        "min_eig_GeV2": 0.504865602115053,
+        "positive_definite": true,
+        "eigenvalues_GeV2": [
+          0.504865602115053,
+          3.5697445477075515e+23,
+          5.1884985543888255e+23,
+          1.0816748135668043e+32,
+          1.5000026419338898e+34
+        ]
+      }
+    },
+    {
+      "name": "S_plus_20pct_lam4_0",
+      "rho_GeV": {
+        "P_210": 9917564798898132.0,
+        "DeltaR_126bar": 631385523052.4453,
+        "H10_EW": 174.0,
+        "S_PQ": 757662627662.9343,
+        "Phi17_X": 1e+17
+      },
+      "lam4": 0.0,
+      "kappa": 0.05000012135631412,
+      "V4_GeV4": 7.502499249131696e+67,
+      "V_int_GeV4": -7.241691817415326e+26,
+      "V_total_GeV4": 7.502499249131696e+67,
+      "hessian": {
+        "min_eig_GeV2": 15388.315284482496,
+        "positive_definite": true,
+        "eigenvalues_GeV2": [
+          15388.315284482496,
+          4.979458066125132e+23,
+          5.356230420715005e+23,
+          1.0816748135669511e+32,
+          1.5000026419339004e+34
+        ]
+      }
+    },
+    {
+      "name": "S_minus_20pct_lam4_0",
+      "rho_GeV": {
+        "P_210": 9917564798898132.0,
+        "DeltaR_126bar": 631385523052.4453,
+        "H10_EW": 174.0,
+        "S_PQ": 505108418441.9563,
+        "Phi17_X": 1e+17
+      },
+      "lam4": 0.0,
+      "kappa": 0.05000012135631412,
+      "V4_GeV4": 7.502499249122098e+67,
+      "V_int_GeV4": -4.827794551966324e+26,
+      "V_total_GeV4": 7.502499249122098e+67,
+      "hessian": {
+        "min_eig_GeV2": 15095.689390023601,
+        "positive_definite": true,
+        "eigenvalues_GeV2": [
+          15095.689390023601,
+          2.2890014427165846e+23,
+          5.17860452640729e+23,
+          1.081674813566684e+32,
+          1.5000026419338812e+34
+        ]
+      }
+    },
+    {
+      "name": "P210_plus_20pct_lam4_0",
+      "rho_GeV": {
+        "P_210": 1.1901077758677758e+16,
+        "DeltaR_126bar": 631385523052.4453,
+        "H10_EW": 174.0,
+        "S_PQ": 631385523052.4453,
+        "Phi17_X": 1e+17
+      },
+      "lam4": 0.0,
+      "kappa": 0.05000012135631412,
+      "V4_GeV4": 7.503936049235272e+67,
+      "V_int_GeV4": -6.034743185568671e+26,
+      "V_total_GeV4": 7.503936049235272e+67,
+      "hessian": {
+        "min_eig_GeV2": 15285.310969635348,
+        "positive_definite": true,
+        "eigenvalues_GeV2": [
+          15285.310969635348,
+          3.569744547707632e+23,
+          5.18849855440241e+23,
+          1.5576105117709877e+32,
+          1.5000038165824005e+34
+        ]
+      }
+    },
+    {
+      "name": "P210_minus_20pct_lam4_0",
+      "rho_GeV": {
+        "P_210": 7934051839118506.0,
+        "DeltaR_126bar": 631385523052.4453,
+        "H10_EW": 174.0,
+        "S_PQ": 631385523052.4453,
+        "Phi17_X": 1e+17
+      },
+      "lam4": 0.0,
+      "kappa": 0.05000012135631412,
+      "V4_GeV4": 7.501476926537467e+67,
+      "V_int_GeV4": -6.034743185568671e+26,
+      "V_total_GeV4": 7.501476926537467e+67,
+      "hessian": {
+        "min_eig_GeV2": 15285.310969635348,
+        "positive_definite": true,
+        "eigenvalues_GeV2": [
+          15285.310969635348,
+          3.569744547707403e+23,
+          5.188498554363818e+23,
+          6.922723216655747e+31,
+          1.5000016864279045e+34
+        ]
+      }
+    },
+    {
+      "name": "equal_split_intermediates_lam4_0",
+      "rho_GeV": {
+        "P_210": 631385523052.4453,
+        "DeltaR_126bar": 631385523052.4453,
+        "H10_EW": 174.0,
+        "S_PQ": 631385523052.4453,
+        "Phi17_X": 631385523052.4453
+      },
+      "lam4": 0.0,
+      "kappa": 0.05000012135631412,
+      "V4_GeV4": 4.068351276774701e+47,
+      "V_int_GeV4": -6.034743185568671e+26,
+      "V_total_GeV4": 4.068351276774701e+47,
+      "hessian": {
+        "min_eig_GeV2": 15285.310969635348,
+        "positive_definite": true,
+        "eigenvalues_GeV2": [
+          15285.310969635348,
+          3.5662031123755334e+23,
+          4.335223304252466e+23,
+          5.23950826825314e+23,
+          5.994153893688937e+23
+        ]
+      }
+    }
+  ],
+  "ranking_lam4_0_by_V_total": [
+    {
+      "rank": 0,
+      "name": "equal_split_intermediates_lam4_0",
+      "V_total_GeV4": 4.068351276774701e+47
+    },
+    {
+      "rank": 1,
+      "name": "P210_minus_20pct_lam4_0",
+      "V_total_GeV4": 7.501476926537467e+67
+    },
+    {
+      "rank": 2,
+      "name": "S_minus_20pct_lam4_0",
+      "V_total_GeV4": 7.502499249122098e+67
+    },
+    {
+      "rank": 3,
+      "name": "selected_hEW174_lam4_0",
+      "V_total_GeV4": 7.502499249126418e+67
+    },
+    {
+      "rank": 4,
+      "name": "H10_equals_MI_proxy_lam4_0",
+      "V_total_GeV4": 7.502499249126418e+67
+    },
+    {
+      "rank": 5,
+      "name": "H10_unbroken_lam4_0",
+      "V_total_GeV4": 7.502499249126418e+67
+    },
+    {
+      "rank": 6,
+      "name": "S_plus_20pct_lam4_0",
+      "V_total_GeV4": 7.502499249131696e+67
+    },
+    {
+      "rank": 7,
+      "name": "P210_plus_20pct_lam4_0",
+      "V_total_GeV4": 7.503936049235272e+67
+    }
+  ],
+  "selected_rank_among_lam4_0": 3,
+  "selected_relative_gap_to_lam0_min": 1.0,
+  "ranking_note": "V_total ranking among fixed amplitude probes is diagnostic; points are not solved free extrema. Local PD of the selected survival point is the stability certificate.",
+  "pd_lam4_0_points": [
+    "selected_hEW174_lam4_0",
+    "H10_equals_MI_proxy_lam4_0",
+    "H10_unbroken_lam4_0",
+    "S_plus_20pct_lam4_0",
+    "S_minus_20pct_lam4_0",
+    "P210_plus_20pct_lam4_0",
+    "P210_minus_20pct_lam4_0",
+    "equal_split_intermediates_lam4_0"
+  ],
+  "tachyonic_points": [
+    "selected_hEW174_historical_lam4"
+  ],
+  "flags": {
+    "reduced_competing_extrema_censused": true,
+    "selected_survival_locally_stable": true,
+    "historical_lam4_excluded_as_tachyonic": true,
+    "full_invariant_ring_extrema": false,
+    "cg_120_320_1050_4125_invented": false,
+    "whole_model_validated": false,
+    "whole_model_excluded": false
+  },
+  "remaining_blockers": {
+    "full_ring_competing_extrema": true,
+    "missing_cg_120_320_1050_4125": true,
+    "full_nonsusy_vacuum_hessian": true
+  },
+  "verdict": "Reduced census (9 points): selected hEW=174, \u03bb\u2084=0 is locally PD; historical \u03bb\u2084 is tachyonic. Among \u03bb\u2084=0 candidates selected ranks 3/8 by V_total (relative gap to min 1.000e+00). Full-ring competing extrema remain OPEN. Theory remains BLOCKED."
+}

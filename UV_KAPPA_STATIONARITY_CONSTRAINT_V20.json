@@ -1,0 +1,67 @@
+{
+  "status": "UV_KAPPA_STATIONARITY_CONSTRAINED__NOT_UNIQUE",
+  "overall_state": "BLOCKED",
+  "n_checks": 11,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "pmin_green": true,
+    "physical_hEW_174": true,
+    "vS_positive": true,
+    "a_kappa_physical_positive": true,
+    "kappa_nonzero_in_window": true,
+    "soft_scale_green": true,
+    "d210_green": true,
+    "physical_A_uses_hEW_not_MI": true,
+    "uv_kappa_not_claimed_unique": true,
+    "cg_not_invented": true,
+    "whole_model_not_overclaimed": true
+  },
+  "vevs_GeV": {
+    "hEW": 174.0,
+    "vS": 631385523052.4453,
+    "M_I": 631385523052.4453,
+    "M_GUT": 9917564798898132.0
+  },
+  "couplings": {
+    "source": "finite_kappa_benchmark_couplings",
+    "kappa": 0.05000012135631412,
+    "lam4": -3.1782723424023393e-06,
+    "lambda_lock": 0.9554946272252851,
+    "finite_kappa_window": true,
+    "unique_uv_couplings": false
+  },
+  "A_kappa": {
+    "physical_GeV2": 6.0347432075148345e+26,
+    "formula": "A_\u03ba = |\u03ba| M_I hEW\u00b2 v_S",
+    "mi_equal_proxy_GeV2": 7.946017873392598e+45,
+    "mi_proxy_withdrawn": true,
+    "diagnostic_m2_210_over_5_GeV2": 2.163878013887554e+31,
+    "ratio_physical_over_diagnostic": 2.788855549520099e-05,
+    "m2_heavy_cp_odd_GeV2": 3.0173716037574174e+27,
+    "note": "Physical A_\u03ba uses hEW=174 and ledger v_S; diagnostic m\u00b2_210/5 was only a numerical scale for the extended Hessian."
+  },
+  "stationarity": {
+    "soft_shifts_restore_radial": true,
+    "pmin_status": "CHARGE_ALLOWED_POTENTIAL_MINIMIZED__COUPLINGS_CONDITIONAL",
+    "soft_scale_status": "UNIQUE_SOFT_SCALE_FROM_STATIONARITY__TAU_P_OPEN",
+    "M_1_2_GeV": 115319223031.39503,
+    "principle": "Finite \u03ba requires soft \u03b4m\u00b2 shifts for stationarity at unification VEVs; \u03ba is constrained but not unique."
+  },
+  "flags": {
+    "uv_kappa_stationarity_constrained": true,
+    "uv_kappa_uniquely_determined": false,
+    "physical_A_kappa_ready": true,
+    "finite_kappa_window_open": true,
+    "cg_120_320_1050_4125_invented": false,
+    "whole_model_validated": false,
+    "whole_model_excluded": false
+  },
+  "remaining_blockers": {
+    "unique_uv_kappa": true,
+    "pq_breaking_beyond_kappa": true,
+    "missing_cg_120_320_1050_4125": true,
+    "full_nonsusy_vacuum_hessian": true
+  },
+  "verdict": "\u03ba=0.0500001 from finite_kappa_benchmark_couplings: physical A_\u03ba=6.034743e+26 GeV\u00b2 (=|\u03ba| M_I hEW\u00b2 v_S) at hEW=174; m\u00b2_heavy=5 A_\u03ba=3.017372e+27 GeV\u00b2. Finite-\u03ba window open; \u03ba is stationarity-constrained but not UV-unique. Theory remains BLOCKED."
+}
