@@ -28,13 +28,18 @@ class DiagonalIsotropic54SlotsTests(unittest.TestCase):
         self.assertGreater(min(self.report["A_partial_GeV2"]), 0.0)
         self.assertGreater(min(self.report["C_partial_GeV2"]), 0.0)
 
-    def test_three_filled_two_withdrawn(self):
+    def test_four_filled_two_withdrawn(self):
         partial = self.report["partial_diagonals"]
-        self.assertEqual(len(partial["filled_slots"]), 3)
+        self.assertEqual(len(partial["filled_slots"]), 4)
         self.assertEqual(len(partial["withdrawn_slots"]), 2)
         self.assertEqual(partial["components"]["locking_isotropic_seed"], 0.0)
+        self.assertIn("OPEN_MIXED_126", partial["filled_slots"])
+        self.assertNotIn("OPEN_MIXED_126", partial["still_open_slots"])
         self.assertIn("OPEN_H10_54", partial["still_open_slots"])
         self.assertIn("OPEN_126_54_LOCKING", partial["still_open_slots"])
+        self.assertGreater(
+            partial["filled_slots"]["OPEN_MIXED_126"]["contribution_GeV2"], 0.0
+        )
 
     def test_schur_report_present(self):
         sch = self.report["schur_with_partial_diagonals"]

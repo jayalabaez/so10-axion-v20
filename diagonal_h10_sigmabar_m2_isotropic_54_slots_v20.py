@@ -30,6 +30,7 @@ import numpy as np
 
 import cg_normalized_mt_locking_mix_v20 as cgmix
 import component_lift_210_126_10_v20 as clift
+import diagonal_sigmabar_m2_mixed_126_ps_singlet_v20 as mixed126
 import direct_portal_mass2_schur_gate_v20 as schur
 import h10_intermediate_vev_consistency_audit_v20 as h10_audit
 import nonsusy_reduced_hessian_v20 as reduced
@@ -109,7 +110,7 @@ def build_partial_diagonals(
     lam_210_sigma: float = DEFAULT_LAM_210_SIGMA,
     lam_lock: float = 0.0,
 ) -> dict[str, Any]:
-    del m_i, m_gut, lam_lock
+    del m_i, lam_lock
     weights = cgmix.cg_weighted_210_vev(
         a=vevs["a"], p=vevs["p"], omega=vevs["omega"]
     )
@@ -118,11 +119,18 @@ def build_partial_diagonals(
     )
     h_from_210 = float(lam_210_h) * phi2
     s_from_210 = float(lam_210_sigma) * phi2
+    mixed = mixed126.mixed_126_mass2_seed(
+        a=vevs["a"],
+        p=vevs["p"],
+        omega=vevs["omega"],
+        m_gut=m_gut,
+    )
+    mixed_c = float(mixed["delta_M2_GeV2"])
 
     a_iso = float(soft["mu2_H10"])
     c_iso = float(soft["mu2_Sigmabar"])
     a_vec = np.full(10, a_iso + h_from_210, dtype=float)
-    c_vec = np.full(126, c_iso + s_from_210, dtype=float)
+    c_vec = np.full(126, c_iso + s_from_210 + mixed_c, dtype=float)
 
     filled = {
         "OPEN_H10_SOFT_OR_NORM": {
@@ -143,6 +151,14 @@ def build_partial_diagonals(
             "feeds": "C",
             "phi_norm_sq_GeV2": phi2,
             "lam_210_sigma": lam_210_sigma,
+        },
+        "OPEN_MIXED_126": {
+            "status": "PARTIAL_PS_SINGLET_M2_FILLED",
+            "contribution_GeV2": mixed_c,
+            "feeds": "C",
+            "eff_210_for_126_GeV": mixed["eff_210_for_126_GeV"],
+            "lam_tilde": mixed["lam_tilde"],
+            "full_cartesian_cg": False,
         },
     }
     withdrawn = {
@@ -173,7 +189,6 @@ def build_partial_diagonals(
         "OPEN_210_CHANNEL_1050",
         "OPEN_MIXED_10",
         "OPEN_MIXED_120",
-        "OPEN_MIXED_126",
         "OPEN_MIXED_320",
         "OPEN_126_1050",
         "OPEN_126_4125",
@@ -191,6 +206,7 @@ def build_partial_diagonals(
             "isotropic_Sigmabar": c_iso,
             "210_norm_H10": h_from_210,
             "210_norm_Sigmabar": s_from_210,
+            "mixed_126_ps_singlet_Sigmabar": mixed_c,
             "locking_isotropic_seed": 0.0,
         },
         "cg_weighted_diagnostic": {
@@ -257,7 +273,7 @@ def build_report() -> dict[str, Any]:
         "partial_C_shape_126": len(partial["C_partial_GeV2"]) == 126,
         "partial_A_positive": partial["A_min_GeV2"] > 0.0,
         "partial_C_positive": partial["C_min_GeV2"] > 0.0,
-        "three_defensible_slots_filled": len(partial["filled_slots"]) == 3,
+        "four_defensible_slots_filled": len(partial["filled_slots"]) == 4,
         "two_54_slots_withdrawn": len(partial["withdrawn_slots"]) == 2,
         "locking_seed_zero": partial["components"]["locking_isotropic_seed"] == 0.0,
         "schur_report_emitted": "positive_definite" in schur_rep,
@@ -326,12 +342,12 @@ def build_report() -> dict[str, Any]:
             "whole_model_excluded": False,
         },
         "verdict": (
-            "The exact portal B and defensible isotropic/210-norm A/C seeds are "
-            "retained. The physical hEW=174 GeV 54-channel Hessian is executed: "
-            "OPEN_H10_54 remains exact zero and OPEN_126_54_LOCKING is a "
-            "holomorphic ΣΣ kernel, not a positive Hermitian Schur C seed. "
-            "Missing CG channels and the full component Hessian remain OPEN; "
-            "the theory remains BLOCKED."
+            "The exact portal B, defensible isotropic/210-norm A/C seeds, and the "
+            "guaranteed 210·126†·126 PS-singlet OPEN_MIXED_126 Hermitian C seed "
+            "are retained. Physical hEW=174 54-channel Hessian: OPEN_H10_54 exact "
+            "zero; OPEN_126_54_LOCKING holomorphic not-PD. Missing CG channels "
+            "120/320/1050/4125 and the full component Hessian remain OPEN; the "
+            "theory remains BLOCKED."
         ),
     }
 

@@ -116,13 +116,21 @@ UV/CP descendants (`uv_cp_phases_from_potential`, `component_lift_210_126_10`,
 - `OPEN_126_54_LOCKING` is a holomorphic `ΣΣ` kernel on the Δ_R eigenspace,
   suppressed by `(hEW/M_I)^2`, and is **not** a positive Hermitian Schur C seed.
 
+## Completed OPEN_MIXED_126 PS-singlet Sigmabar M² fill
+
+`diagonal_sigmabar_m2_mixed_126_ps_singlet_v20.py` fills inventory slot
+`OPEN_MIXED_126` (`210_H 126bar† 126bar`) from the guaranteed PS-singlet
+reduction `eff_210_for_126 = |ω+a|+|p|`, giving a positive Hermitian Schur C
+seed. Full Cartesian CG, second multiplicity, and channels 120/320/1050/4125
+remain OPEN.
+
 ## Correct next goal
 
 Continue the full component scalar mass-squared matrix and global
-`hEW=174 GeV` vacuum: fill remaining diagonal channels that do not invent
-120/320/1050/4125 CG (e.g. `OPEN_MIXED_126`), then root-by-root removal of
-all 33 Goldstones, stationarity, boundedness, thresholds, and τ_p. Do not
-reopen a reduced-sector phase hunt.
+`hEW=174 GeV` vacuum: remaining charge-allowed diagonals that do not invent
+120/320/1050/4125 CG, then root-by-root removal of all 33 Goldstones,
+stationarity, boundedness, thresholds, and τ_p. Do not reopen a reduced-sector
+phase hunt.
 
 ## Executable sequence
 

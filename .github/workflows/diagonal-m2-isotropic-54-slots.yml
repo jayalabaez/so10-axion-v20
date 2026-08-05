@@ -9,6 +9,8 @@ on:
       - test_physical_h10_54_mass_block_from_deltar_v20.py
       - physical_54_component_hessian_at_hew_v20.py
       - test_physical_54_component_hessian_at_hew_v20.py
+      - diagonal_sigmabar_m2_mixed_126_ps_singlet_v20.py
+      - test_diagonal_sigmabar_m2_mixed_126_ps_singlet_v20.py
       - selected_vacuum_lambda4_portal_null_audit_v20.py
       - test_selected_vacuum_lambda4_portal_null_audit_v20.py
       - selected_vacuum_lambda4_dependency_audit_v20.py
@@ -44,6 +46,7 @@ jobs:
             h10_intermediate_vev_consistency_audit_v20.py \
             physical_h10_54_mass_block_from_deltar_v20.py \
             physical_54_component_hessian_at_hew_v20.py \
+            diagonal_sigmabar_m2_mixed_126_ps_singlet_v20.py \
             selected_vacuum_lambda4_portal_null_audit_v20.py \
             selected_vacuum_lambda4_dependency_audit_v20.py \
             phase_operator_independence_audit_v20.py \
@@ -134,7 +137,9 @@ jobs:
           assert r['flag']['unphysical_H10_MI_54_seed_withdrawn'], r
           assert not r['flag']['whole_model_validated'], r
           assert not r['flag']['whole_model_excluded'], r
-          assert len(r['partial_diagonals']['filled_slots'])==3, r
+          assert len(r['partial_diagonals']['filled_slots'])==4, r
+          assert 'OPEN_MIXED_126' in r['partial_diagonals']['filled_slots'], r
+          assert 'OPEN_MIXED_126' not in r['partial_diagonals']['still_open_slots'], r
           assert len(r['partial_diagonals']['withdrawn_slots'])==2, r
           assert r['partial_diagonals']['components']['locking_isotropic_seed']==0.0, r
           PY
