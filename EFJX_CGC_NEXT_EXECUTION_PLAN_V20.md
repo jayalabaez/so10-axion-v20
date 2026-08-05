@@ -149,15 +149,24 @@ positive-diagonal M² skeleton from the isotropic/norm A/C seeds (including
 0 negative modes. The Aulakh Schur 272 portal Hessian is recorded upstream
 but **not** identified with the form basis (Cartesian portal basis map OPEN).
 
+## Completed Hodge 126bar C-embedding and portal lift
+
+`hodge_126bar_c_embedding_portal_lift_v20.py` places physical diagonal
+`C₁₂₆` into ambient ℝ⁵⁰⁴ via the canonical anti-self-dual (`*Σ=−iΣ`) frame
+shared with the Schur portal tensor, proves `Δ_R` lies in that subspace
+(projector residual 0), and lifts holomorphic `B=λ₄ v_S T_Φ` to
+H10_real↔504 mixing. The upgraded partial dynamical Hessian gate now uses
+Hodge-placed C + lifted B under the 36-Goldstone projector. Im H remains
+outside the 724 orbit embedding.
+
 ## Correct next goal
 
 Continue the full component scalar mass-squared matrix and global
-`hEW=174 GeV` vacuum: map form ↔ Aulakh bases so portal B can enter the
-form-basis Hessian, fill remaining charge-allowed diagonals that do not
-invent 120/320/1050/4125 CG, include `S`/`Φ₁₇` dynamical blocks, then
-apply root-by-root Goldstone removal to the complete dynamical Hessian,
-stationarity, boundedness, thresholds, and τ_p. Do not reopen a
-reduced-sector phase hunt.
+`hEW=174 GeV` vacuum: extend the embedding with Im H (full holomorphic
+portal), include `S`/`Φ₁₇` dynamical blocks, fill remaining charge-allowed
+diagonals that do not invent 120/320/1050/4125 CG, then apply root-by-root
+Goldstone removal to the complete dynamical Hessian, stationarity,
+boundedness, thresholds, and τ_p. Do not reopen a reduced-sector phase hunt.
 
 ## Executable sequence
 
@@ -182,8 +191,9 @@ reduced-sector phase hunt.
    - Construct the complete real scalar `M^2` matrix.
    - Remove exactly 36 gauge Goldstones (SO(10)→U(1)_EM; SM-only was 33).
    - Require every remaining eigenvalue to be positive.
-   - Partial form-basis gate with isotropic A/C + hEW projector is in place;
-     portal B still needs the form↔Aulakh basis map.
+   - Partial form-basis gate with Hodge-placed C, lifted portal B, and
+     hEW 36-Goldstone projector is in place; Im H still outside the 724
+     orbit embedding.
 
 5. **Global vacuum and boundedness**
    - Check all enumerated competing extrema.

@@ -39,9 +39,10 @@ jobs:
           assert dyn['n_positive']==688
           assert dyn['n_negative']==0
           assert r['embedding']['total']==724
-          assert not r['form_basis_skeleton']['uses_portal_B']
-          assert not r['flags']['portal_B_in_form_basis']
-          assert not r['flags']['cartesian_portal_basis_map']
+          assert r['form_basis_skeleton']['uses_portal_B']
+          assert r['flags']['hodge_c_embedding_applied']
+          assert r['flags']['portal_b_lifted_into_form_basis']
+          assert not r['flags']['im_H_in_orbit_embedding']
           assert not r['flags']['full_component_hessian_complete']
           assert not r['flags']['whole_model_validated']
           PY
