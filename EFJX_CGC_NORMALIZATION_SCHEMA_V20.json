@@ -10,7 +10,9 @@
     "closure_complete",
     "reason",
     "invalid_target",
+    "forbidden_closure_fields",
     "replacement_artifacts",
+    "remaining_required_artifacts",
     "whole_model_validated",
     "whole_model_excluded"
   ],
@@ -56,7 +58,24 @@
     },
     "remaining_required_artifacts": {
       "type": "array",
-      "minItems": 3
+      "minItems": 3,
+      "allOf": [
+        {
+          "contains": {
+            "const": "FULL_MIXED_REP_INVARIANT_RING_V20.json"
+          }
+        },
+        {
+          "contains": {
+            "const": "FULL_TENSOR_PROJECTED_POTENTIAL_V20.json"
+          }
+        },
+        {
+          "contains": {
+            "const": "FULL_NONSUSY_VACUUM_HESSIAN_V20.json"
+          }
+        }
+      ]
     },
     "whole_model_validated": {
       "const": false
