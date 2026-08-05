@@ -89,11 +89,12 @@ def build_report() -> dict[str, Any]:
                 "36 Goldstone SM root catalog (SVD stabilizer basis)",
                 "OPEN_210_CHANNEL_1050 blocker: residual ≠ unique 1050 (await Young/CG)",
                 "off-singlet mixed-45 vacuum⊗δΦ census (mode CG OPEN)",
+                "off-singlet mixed-45 SM Cartan labels (sector×Q; CG coeffs OPEN)",
             ],
             blockers=[
                 "CG tensors 120 / 320 / 1050 / 4125 missing",
                 "OPEN_210_CHANNEL_1050 awaits published Young/CG",
-                "off-singlet-45 mode-by-mode SM irrep CG OPEN",
+                "off-singlet-45 mode-by-mode SM irrep CG coefficients OPEN",
                 "FULL_MIXED_REP_INVARIANT_RING_V20.json absent",
             ],
         ),

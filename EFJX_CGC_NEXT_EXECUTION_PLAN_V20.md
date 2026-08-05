@@ -273,10 +273,18 @@ Full-ring extrema remain OPEN.
 `unique_kappa_principle_probe_v20.py` compares soft-norm, portal-matching, and
 finite-κ-window κ values; they disagree, so `uv_kappa_uniquely_determined=false`.
 
+## Completed off-singlet-45 SM Cartan quantum numbers
+
+`open_210_channel_45_off_singlet_sm_quantum_numbers_v20.py` labels all 207
+`(Φ⊗δΦ)_45` images by so6/so4/cross dominance and `Q=T3_L+T3_R=-i M_67`
+adjoint activity (Cartan only — no Young CG). Empirically all modes are
+Q-charged under the activity cut; most are cross-sector dominant. Status
+`PARTIAL_SM_QUANTUM_NUMBERS_READY`; CG coefficients remain OPEN.
+
 ## Correct next goal
 
 Theory completion still requires transcribed CG for 120/320/1050/4125 and
-off-singlet mixed-45 **mode** CG (G1), mode-by-mode diagonals (G2),
+off-singlet mixed-45 **CG coefficients** (G1), mode-by-mode diagonals (G2),
 complete stationarity/hierarchy (G3), the full dynamical Hessian artifact
 (G4), then global BFB, thresholds, two-loop RGE, and unique τ_p (G5–G8).
 Do not invent missing CG and do not reopen a reduced-sector phase hunt.
@@ -288,9 +296,9 @@ Do not invent missing CG and do not reopen a reduced-sector phase hunt.
    - Prove linear independence and record Hermitian-conjugation conventions.
    - Transcribe missing CG tensors (especially 120, 320, 1050, 4125) into the Cartesian basis.
    - Prefer operators with nonzero tensor projection on the actual `(Delta_R,hEW,S,Phi)` vacuum for phase locking.
-   - Next without invented tables: off-singlet-45 SM irrep decomposition from
-     published CG; any remaining charge-allowed mixed channels with nonzero
-     vacuum projection.
+   - Next without invented tables: Schur↔form portal basis identification;
+     charge-allowed ring scaffold toward `FULL_MIXED_REP_INVARIANT_RING_V20.json`;
+     partial G6 threshold spectrum from published Aulakh/Susyno formulae.
 
 2. **Full component projection**
    - Project every invariant into canonical Pati-Salam and Standard Model component fields.

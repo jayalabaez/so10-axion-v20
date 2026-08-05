@@ -36,7 +36,9 @@ class Diagonal210RadialCubicPsSingletTests(unittest.TestCase):
         self.assertTrue(self.report["flags"]["open_210_channel_54_ps_singlet_seed"])
         self.assertTrue(self.report["flags"]["open_210_channel_45_same_field_vanishes"])
         self.assertTrue(self.report["flags"]["open_210_channel_45_off_singlet_census"])
+        self.assertTrue(self.report["flags"]["open_210_channel_45_off_singlet_sm_qn"])
         self.assertTrue(self.report["flags"]["open_210_channel_210_ps_singlet_seed"])
+        self.assertIn("bucket_counts", self.report["channel_45_off_singlet"])
 
 
 if __name__ == "__main__":

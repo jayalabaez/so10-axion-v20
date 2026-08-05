@@ -216,12 +216,12 @@ def build_partial_diagonals(
             ),
         },
         "OPEN_210_CHANNEL_45_OFF_SINGLET": {
-            "status": "PARTIAL_OFF_SINGLET_CENSUS_READY",
+            "status": "PARTIAL_SM_QUANTUM_NUMBERS_READY",
             "contribution_GeV2": 0.0,
             "reason": (
-                "open_210_channel_45_off_singlet_census_v20: vacuum⊗off-singlet "
-                "(Φ⊗δΦ)_45 census ready (diagnostic seed in diagonal_210); "
-                "mode-by-mode SM irrep CG remains OPEN"
+                "open_210_channel_45_off_singlet_sm_quantum_numbers_v20: "
+                "Cartan/sector labels on vacuum⊗δΦ (Φ⊗δΦ)_45 images; "
+                "mode-by-mode SM irrep CG coeffs remain OPEN"
             ),
         },
         "OPEN_210_CHANNEL_210": {

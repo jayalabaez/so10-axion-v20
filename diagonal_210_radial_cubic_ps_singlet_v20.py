@@ -39,6 +39,7 @@ import hilbert_210n_residual_certificate_v20 as hilbert
 import nonsusy_reduced_hessian_v20 as reduced
 import scalar_vacuum_proton_decay_v20 as scalar_pd
 import open_210_channel_45_off_singlet_census_v20 as off45
+import open_210_channel_45_off_singlet_sm_quantum_numbers_v20 as off45qn
 import so10_210_to_45_projector_v20 as p45
 import so10_210_to_54_projector_v20 as p54
 import so10_210_to_210_self_map_v20 as p210map
@@ -119,6 +120,7 @@ def build_report() -> dict[str, Any]:
     ch45 = p45.build_report()
     ch210 = p210map.build_report()
     ch45off = off45.build_report()
+    ch45qn = off45qn.build_report()
     seed54 = float(
         ch54["selected_vacuum"]["OPEN_210_CHANNEL_54_seed_GeV2"]
     )
@@ -161,16 +163,17 @@ def build_report() -> dict[str, Any]:
             ),
         },
         "OPEN_210_CHANNEL_45_OFF_SINGLET": {
-            "status": "PARTIAL_OFF_SINGLET_CENSUS_READY",
+            "status": "PARTIAL_SM_QUANTUM_NUMBERS_READY",
             "contribution_GeV2": seed45off,
             "feeds": "diagnostic_channel_seed_not_added_to_isotropic_m2",
             "scope": (
-                "vacuum⊗off-singlet (Φ⊗δΦ)_45 census on 207-dim complement; "
-                "mode-by-mode SM irrep CG OPEN"
+                "vacuum⊗off-singlet (Φ⊗δΦ)_45 census + SM Cartan labels "
+                "(so6/so4/cross × Q); mode-by-mode CG coeffs OPEN"
             ),
             "formula": ch45off["diagnostic_seed"]["formula"],
             "lam_tilde": ch45off["diagnostic_seed"]["lam_tilde"],
             "n_nonzero_modes": ch45off["census"]["n_nonzero_modes"],
+            "sm_qn_buckets": ch45qn["quantum_numbers"]["bucket_counts"],
         },
         "OPEN_210_CHANNEL_210": {
             "status": "PARTIAL_PS_SINGLET_TENSOR_MAP_READY",
@@ -202,6 +205,7 @@ def build_report() -> dict[str, Any]:
         "channel_45_projector_green": ch45.get("n_failed", 1) == 0,
         "channel_45_off_singlet_census_green": ch45off.get("n_failed", 1) == 0,
         "channel_45_off_singlet_seed_positive": seed45off > 0.0,
+        "channel_45_off_singlet_sm_qn_green": ch45qn.get("n_failed", 1) == 0,
         "channel_210_self_map_green": ch210.get("n_failed", 1) == 0,
         "channel_210_seed_positive": seed210 > 0.0,
         "off_singlet_1050_not_faked": True,
@@ -233,8 +237,10 @@ def build_report() -> dict[str, Any]:
         },
         "channel_45_off_singlet": {
             "status": ch45off.get("status"),
+            "sm_qn_status": ch45qn.get("status"),
             "seed_GeV2": seed45off,
             "n_nonzero_modes": ch45off["census"]["n_nonzero_modes"],
+            "bucket_counts": ch45qn["quantum_numbers"]["bucket_counts"],
             "mode_cg": False,
         },
         "channel_210": {
@@ -250,6 +256,7 @@ def build_report() -> dict[str, Any]:
             "open_210_channel_54_ps_singlet_seed": not bool(failures),
             "open_210_channel_45_same_field_vanishes": not bool(failures),
             "open_210_channel_45_off_singlet_census": not bool(failures),
+            "open_210_channel_45_off_singlet_sm_qn": not bool(failures),
             "open_210_channel_210_ps_singlet_seed": not bool(failures),
             "off_singlet_210_channel_cg": False,
             "full_component_hessian_complete": False,
