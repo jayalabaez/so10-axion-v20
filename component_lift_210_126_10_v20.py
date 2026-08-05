@@ -9,7 +9,8 @@ Next step after ``gauge_scalar_interference_4x4_v20``:
 2. Embed the reduced radial wells + soft-mass stationarity shifts into this
    larger radial vector (block Hessian).
 3. Embed the multi-operator phase Hessian into the larger phase vector, with
-   ``(φ_a, φ_ω, φ_p)`` treated as gauge-fixed / heavy at the PS minimum.
+   ``(φ_a, φ_ω, φ_p)`` treated as gauge-fixed / heavy at the PS minimum and
+   ``φ_Δ`` classified as the eaten Z' Goldstone on the selected vacuum.
 4. Record a Goldstone ledger for ``SO(10)→SM`` (33 eaten) vs residual
    global/PQ flat directions.
 
@@ -34,6 +35,7 @@ import numpy as np
 import charge_allowed_potential_minimize_v20 as pmin
 import multi_operator_phase_hessian_v20 as mph
 import scalar_vacuum_proton_decay_v20 as scalar_pd
+import selected_vacuum_neutral_phase_gauge_quotient_v20 as gauge_quot
 import so10_126_to_54_projector_v20 as c126mod
 
 ROOT = Path(__file__).resolve().parent
@@ -45,7 +47,10 @@ SOURCES = {
     },
     "upstream_radial": "scalar_vacuum_proton_decay_v20.reduced_radial_vacuum_witness",
     "upstream_minimize": "charge_allowed_potential_minimize_v20",
-    "upstream_phase": "multi_operator_phase_hessian_v20",
+    "upstream_phase": (
+        "multi_operator_phase_hessian_v20 / "
+        "selected_vacuum_neutral_phase_gauge_quotient_v20"
+    ),
 }
 
 # Radial component names in the lifted space
@@ -172,7 +177,18 @@ def goldstone_ledger() -> dict[str, Any]:
         "residual_global": {
             "PQ_approx_U1": {
                 "physical_mode": "axion (eaten by none if PQ global)",
-                "related_flat_direction_reduced": "(1,1,-2) when κ≠0 in (φ_Δ,φ_10,φ_S)",
+                "related_flat_direction_reduced": (
+                    "(1,-2) in gauge-fixed (φ_10,φ_S) when κ≠0; "
+                    "prequotient (1,1,-2) among the two unquotiented nulls"
+                ),
+            },
+            "Zprime_BL_R_eaten_DeltaR_phase": {
+                "class": "gauge_fixed_or_eaten",
+                "orbit": "(1,0,0) on (φ_Δ,φ_10,φ_S)",
+                "note": (
+                    "Selected-vacuum unquotiented second null is the broken "
+                    "neutral Z'_R/B−L Goldstone, not a physical flat phase."
+                ),
             },
             "Z17": {"discrete": True, "continuous_goldstone": False},
             "U1_X_broken_by_Phi17": {
@@ -182,15 +198,18 @@ def goldstone_ledger() -> dict[str, Any]:
         "phase_components_in_lift": list(PHASE_COMPONENTS),
         "n_phase_components": len(PHASE_COMPONENTS),
         "n_gauge_fixed_or_heavy_210_phases": 3,
-        "n_active_reduced_phases": 3,
+        "n_active_reduced_phases_prequotient": 3,
+        "n_physical_reduced_phases_after_Zprime_quotient": 2,
         "flag": {
             "goldstone_counting_recorded": True,
             "complete_gauge_fixing_in_full_component_space": False,
+            "selected_vacuum_DeltaR_phase_classified_as_eaten": True,
         },
         "verdict": (
-            f"SO(10)→SM eats {broken} Goldstones. Residual PQ-flat direction "
-            "matches the reduced multi-operator null mode when κ≠0; full "
-            "component gauge fixing remains open."
+            f"SO(10)→SM eats {broken} Goldstones. On the selected vacuum the "
+            "reduced φ_Δ null is the eaten Z' Goldstone; the sole physical "
+            "null after quotient is the PQ axion. Full component gauge fixing "
+            "remains open."
         ),
     }
 
@@ -345,6 +364,8 @@ def lifted_phase_hessian(
 
     210 phases and φ_Φ17 are spectators (zero rows) at this lift — treated as
     gauge-fixed / heavy — while (φ_Δ, φ_10, φ_S) carry the active Hessian.
+    On the selected vacuum φ_Δ is the eaten Z' Goldstone; physical closure is
+    reported via the upstream gauge quotient when A_κ>0.
     """
     names = list(PHASE_COMPONENTS)
     n = len(names)
@@ -370,6 +391,11 @@ def lifted_phase_hessian(
     n_pos = int(np.sum(eigs > tol))
     n_zero = int(np.sum(np.abs(eigs) <= tol))
     n_neg = int(np.sum(eigs < -tol))
+
+    physical = None
+    if a_kappa > 0.0 and abs(a_lock) == 0.0 and abs(a_lam4) == 0.0:
+        physical = gauge_quot.quotient_report(a_kappa)
+
     return {
         "fields": names,
         "active_subspace": ["phi_DeltaR_126", "phi_10", "phi_S"],
@@ -379,10 +405,25 @@ def lifted_phase_hessian(
             "phi_p_210",
             "phi_Phi17",
         ],
+        "eaten_zprime_phase": "phi_DeltaR_126",
         "reduced_operator_rank": reduced["operator_charge_rank"],
         "reduced_n_positive": reduced["n_positive"],
         "reduced_n_zero": reduced["n_zero"],
         "reduced_flat_direction": reduced["flat_direction"],
+        "physical_after_gauge_quotient": (
+            {
+                "rank": physical["hessian"]["rank_after_quotient"],
+                "nullity": physical["hessian"]["nullity_after_quotient"],
+                "physical_null_vector_integer": physical["hessian"][
+                    "physical_null_vector_integer"
+                ],
+                "extra_nonaxion_flat_phase": physical["flags"][
+                    "extra_nonaxion_flat_phase_present"
+                ],
+            }
+            if physical is not None
+            else None
+        ),
         "hessian_eigenvalues": [float(x) for x in eigs],
         "n_positive": n_pos,
         "n_zero": n_zero,
@@ -391,6 +432,7 @@ def lifted_phase_hessian(
         "flag": {
             "phase_hessian_lifted_to_component_space": True,
             "210_phases_gauge_fixed": True,
+            "selected_vacuum_DeltaR_eaten_classified": True,
             "full_component_phase_space_dynamical": False,
         },
     }
@@ -469,6 +511,9 @@ def build_report() -> dict[str, Any]:
                 "reduced_n_zero": phase["reduced_n_zero"],
                 "extra_spectator_zeros": extra_zeros,
                 "flat_direction_reduced": phase["reduced_flat_direction"],
+                "physical_after_gauge_quotient": phase[
+                    "physical_after_gauge_quotient"
+                ],
             },
             "amplitudes": {
                 "A_lock": amp["A_lock"],
@@ -497,6 +542,7 @@ def build_report() -> dict[str, Any]:
 
     locking_only = next(p for p in points if p["name"] == "locking_only")
     finite_k = next(p for p in points if p["name"] == "finite_kappa_benchmark")
+    fk_phys = finite_k["phase"]["physical_after_gauge_quotient"]
 
     checks = {
         "ledger_8_components": ledger["n_radial_components"] == 8,
@@ -508,10 +554,18 @@ def build_report() -> dict[str, Any]:
             base.get("flag", {}).get("reduced_radial_global_minimum_proved")
         ),
         "all_points_radial_pd": all(p["radial"]["positive_definite"] for p in points),
-        "locking_only_phase_pattern": locking_only["phase"]["reduced_n_positive"] == 1
-        and locking_only["phase"]["reduced_n_zero"] == 2,
-        "finite_kappa_phase_pattern": finite_k["phase"]["reduced_n_positive"] == 2
-        and finite_k["phase"]["reduced_n_zero"] == 1,
+        # Selected vacuum: A_lock=A_lam4=0. locking_only ⇒ fully flat reduced.
+        "locking_only_phase_pattern": locking_only["phase"]["reduced_n_positive"] == 0
+        and locking_only["phase"]["reduced_n_zero"] == 3,
+        # Finite κ ⇒ prequotient rank 1 / nullity 2; physical quotient closed.
+        "finite_kappa_phase_pattern": finite_k["phase"]["reduced_n_positive"] == 1
+        and finite_k["phase"]["reduced_n_zero"] == 2,
+        "finite_kappa_physical_quotient_closed": (
+            fk_phys is not None
+            and fk_phys["rank"] == 1
+            and fk_phys["nullity"] == 1
+            and not fk_phys["extra_nonaxion_flat_phase"]
+        ),
         "spectator_zeros_match": all(
             p["phase"]["extra_spectator_zeros"]
             == p["phase_full"]["expected_extra_zeros_from_spectators"]
@@ -586,8 +640,10 @@ def build_report() -> dict[str, Any]:
         "verdict": (
             "Reduced vacuum and multi-operator phase Hessian lifted into an "
             "8-component radial + 7-phase space with 210 split into (a,ω,p). "
-            "Radial Hessians are PD; phase patterns embed with 4 spectator "
-            "zeros. Full 210^n CG tensors and complete SM-irrep spectra remain OPEN."
+            "Radial Hessians are PD; selected-vacuum phase patterns embed with "
+            "4 spectator zeros, φ_Δ classified as the eaten Z' Goldstone, and "
+            "physical quotient closure when κ≠0. Full 210^n CG tensors and "
+            "complete SM-irrep spectra remain OPEN."
         ),
     }
 

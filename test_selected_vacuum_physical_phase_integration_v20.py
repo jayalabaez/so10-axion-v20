@@ -16,7 +16,7 @@ class SelectedVacuumPhysicalPhaseIntegrationTests(unittest.TestCase):
         self.assertEqual(self.report["n_failed"], 0, self.report)
         self.assertEqual(
             self.report["status"],
-            "PHYSICAL_NEUTRAL_PHASE_CLOSED__CORE_CONSUMERS_REVALIDATED",
+            "PHYSICAL_NEUTRAL_PHASE_CLOSED__ALL_REDUCED_CONSUMERS_REVALIDATED",
         )
         closed = self.report["closed_subproblem"]
         self.assertEqual(closed["physical_rank"], 1)
@@ -24,18 +24,24 @@ class SelectedVacuumPhysicalPhaseIntegrationTests(unittest.TestCase):
         self.assertEqual(closed["physical_null"], "PQ axion")
         self.assertFalse(closed["extra_physical_nonaxion_flat_phase"])
 
-    def test_core_consumers_revalidated(self):
+    def test_all_reduced_consumers_revalidated(self):
         audit = self.report["legacy_consumer_audit"]
-        self.assertGreaterEqual(audit["n_revalidated"], 3)
+        self.assertEqual(audit["n_revalidated"], 6)
+        self.assertFalse(audit["stale_or_dependent_paths"])
         for path in (
             "multi_operator_phase_hessian_v20.py",
             "gauge_fixing_goldstone_eating_v20.py",
             "phase_operator_independence_audit_v20.py",
+            "uv_cp_phases_from_potential_v20.py",
+            "component_lift_210_126_10_v20.py",
+            "uv_delta_i_cp_reality_principle_v20.py",
         ):
             self.assertIn(path, audit["revalidated_paths"])
-            self.assertNotIn(path, audit["stale_or_dependent_paths"])
         self.assertTrue(self.report["flags"]["core_prequotient_consumers_revalidated"])
-        self.assertFalse(self.report["flags"]["legacy_phase_consumers_fully_revalidated"])
+        self.assertTrue(self.report["flags"]["legacy_phase_consumers_fully_revalidated"])
+        self.assertFalse(
+            self.report["open_integration_work"]["revalidate_UV_CP_phase_consumers"]
+        )
 
     def test_finite_search_is_corroboration(self):
         finite = self.report["finite_invariant_search_audit"]

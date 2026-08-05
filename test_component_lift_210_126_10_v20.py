@@ -46,12 +46,17 @@ class ComponentLiftTests(unittest.TestCase):
 
     def test_phase_embedding(self):
         lo = self.by_name["locking_only"]
-        self.assertEqual(lo["phase"]["reduced_n_positive"], 1)
-        self.assertEqual(lo["phase"]["reduced_n_zero"], 2)
+        self.assertEqual(lo["phase"]["reduced_n_positive"], 0)
+        self.assertEqual(lo["phase"]["reduced_n_zero"], 3)
         self.assertEqual(lo["phase"]["extra_spectator_zeros"], 4)
         fk = self.by_name["finite_kappa_benchmark"]
-        self.assertEqual(fk["phase"]["reduced_n_positive"], 2)
-        self.assertEqual(fk["phase"]["reduced_n_zero"], 1)
+        self.assertEqual(fk["phase"]["reduced_n_positive"], 1)
+        self.assertEqual(fk["phase"]["reduced_n_zero"], 2)
+        phys = fk["phase"]["physical_after_gauge_quotient"]
+        self.assertIsNotNone(phys)
+        self.assertEqual(phys["rank"], 1)
+        self.assertEqual(phys["nullity"], 1)
+        self.assertFalse(phys["extra_nonaxion_flat_phase"])
 
     def test_all_radial_pd(self):
         for p in self.report["points"]:

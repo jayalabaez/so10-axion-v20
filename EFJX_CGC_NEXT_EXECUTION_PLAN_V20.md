@@ -101,8 +101,9 @@ zeros corroborate this identity; they are not required to prove physical
 phase closure of the reduced sector.
 
 Core pre-quotient consumers (`multi_operator_phase_hessian`,
-`gauge_fixing_goldstone_eating`, `phase_operator_independence_audit`) are
-source-rewritten. UV/CP descendants remain open.
+`gauge_fixing_goldstone_eating`, `phase_operator_independence_audit`) and
+UV/CP descendants (`uv_cp_phases_from_potential`, `component_lift_210_126_10`,
+`uv_delta_i_cp_reality_principle`) are source-rewritten against the Z' quotient.
 
 ## Correct next goal
 

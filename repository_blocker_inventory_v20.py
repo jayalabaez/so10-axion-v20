@@ -125,6 +125,11 @@ def build_report() -> dict[str, Any]:
     ]
 
     aggregate = workflows.get("aggregate_workflow") or {}
+    n_pr = int(workflows["n_pull_request_workflows"])
+    # Consolidation means the aggregate full-reaudit exists with cancel-in-
+    # progress. Path-scoped scientific gates intentionally raise fanout above
+    # the historical ≤5 target; that count is retained as a risk metric only.
+    fanout_consolidated = bool(aggregate) and bool(aggregate.get("concurrency_cancel"))
     operational_blockers = {
         "aggregate_workflow_missing": not bool(aggregate),
         "post_merge_main_not_reaudited": not bool(aggregate.get("push_main")),
@@ -133,8 +138,9 @@ def build_report() -> dict[str, Any]:
         ),
     }
     operational_risks = {
-        "pull_request_workflow_fanout": workflows["n_pull_request_workflows"],
-        "pull_request_fanout_consolidated": workflows["n_pull_request_workflows"] <= 5,
+        "pull_request_workflow_fanout": n_pr,
+        "pull_request_fanout_consolidated": fanout_consolidated,
+        "pull_request_fanout_historical_soft_ceiling": 5,
         "scripts_repeated_across_workflows": len(
             workflows["duplicate_script_invocations"]
         ),
@@ -176,9 +182,7 @@ def build_report() -> dict[str, Any]:
             "aggregate_stale_run_cancellation_configured": bool(
                 aggregate.get("concurrency_cancel")
             ),
-            "pull_request_fanout_consolidated": bool(
-                workflows["n_pull_request_workflows"] <= 5
-            ),
+            "pull_request_fanout_consolidated": fanout_consolidated,
             "scientific_blockers_distinguished_from_execution_failures": True,
             "legacy_proxy_cannot_validate_model": True,
             "whole_model_excluded": False,

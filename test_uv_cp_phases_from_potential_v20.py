@@ -24,6 +24,7 @@ class UVCPPhasesFromPotentialTests(unittest.TestCase):
         self.assertTrue(flags["real_couplings_cp_conserving_vacuum"])
         self.assertTrue(flags["complex_coupling_phases_conditional"])
         self.assertTrue(flags["axion_flat_direction_quotiented"])
+        self.assertTrue(flags["zprime_gauge_goldstone_fixed"])
         self.assertTrue(flags["fed_into_xy_gauge_width"])
         self.assertFalse(flags["unique_uv_cp_phases"])
         self.assertFalse(flags["exact_unique_proton_lifetime"])
@@ -32,9 +33,12 @@ class UVCPPhasesFromPotentialTests(unittest.TestCase):
     def test_real_and_conditional(self):
         real = self.report["real_coupling_vacuum"]
         self.assertTrue(real["cp_conserving"])
-        self.assertLess(abs(real["invariants"]["psi_10_minus_Delta"]), 1e-6)
+        self.assertLess(abs(real["invariants"]["psi_physical_uv_phase"]), 1e-6)
+        self.assertLess(abs(real["invariants"]["theta_kappa"]), 1e-6)
+        self.assertTrue(real["selected_vacuum_kappa_only"])
+        self.assertTrue(real["gauge_fixed_DeltaR"])
         cond = self.report["conditional_uv_point"]
-        self.assertTrue(abs(cond["psi_10_minus_Delta"]) > 1e-3)
+        self.assertTrue(abs(cond["psi_physical_uv_phase"]) > 1e-3)
         gw = self.report["gauge_width"]
         self.assertGreater(gw["conditional_uv_cp"]["tau_e_years"], 0.0)
         self.assertTrue(gw["conditional_uv_cp"]["passes_SK"])

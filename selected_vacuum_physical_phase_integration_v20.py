@@ -40,13 +40,17 @@ LEGACY_CONSUMERS: dict[str, list[str]] = {
         "additional unresolved flat phase",
     ],
     "uv_cp_phases_from_potential_v20.py": [
-        "multi_operator_phase_hessian_v20",
+        # Pre-quotient mixed gauge ψ and 3D axion flat without Z' fix.
+        "quotient by the residual flat direction\n   ``∝ (1,1,−2)``",
+        "FLAT = np.array([1.0, 1.0, -2.0]",
     ],
     "component_lift_210_126_10_v20.py": [
-        "multi_operator_phase_hessian_v20",
+        # Pre-selected-vacuum lock/λ₄ phase pattern expectations.
+        'finite_kappa_phase_pattern": finite_k["phase"]["reduced_n_positive"] == 2',
+        'related_flat_direction_reduced": "(1,1,-2) when κ≠0 in (φ_Δ,φ_10,φ_S)"',
     ],
     "uv_delta_i_cp_reality_principle_v20.py": [
-        "multi_operator_phase_hessian_v20",
+        "Propagate the selected vacuum (ψ = φ₁₀ − φ_Δ = 0 mod axion flat",
     ],
 }
 
@@ -54,6 +58,9 @@ REVALIDATED_CONSUMERS = {
     "multi_operator_phase_hessian_v20.py",
     "gauge_fixing_goldstone_eating_v20.py",
     "phase_operator_independence_audit_v20.py",
+    "uv_cp_phases_from_potential_v20.py",
+    "component_lift_210_126_10_v20.py",
+    "uv_delta_i_cp_reality_principle_v20.py",
 }
 
 FINITE_SEARCH_MODULES = [
@@ -131,12 +138,7 @@ def build_report(a_kappa: float = 1.0) -> dict[str, Any]:
         "all_finite_search_modules_present": not missing_finite,
         "core_prequotient_consumers_revalidated": set(revalidated)
         >= REVALIDATED_CONSUMERS,
-        "remaining_stale_are_downstream_only": set(stale_or_dependent)
-        <= {
-            "uv_cp_phases_from_potential_v20.py",
-            "component_lift_210_126_10_v20.py",
-            "uv_delta_i_cp_reality_principle_v20.py",
-        },
+        "remaining_stale_are_downstream_only": not stale_or_dependent,
         "finite_search_not_required_for_closure": all(
             not row["required_for_physical_phase_closure"] for row in finite
         ),
@@ -146,7 +148,7 @@ def build_report(a_kappa: float = 1.0) -> dict[str, Any]:
 
     return {
         "status": (
-            "PHYSICAL_NEUTRAL_PHASE_CLOSED__CORE_CONSUMERS_REVALIDATED"
+            "PHYSICAL_NEUTRAL_PHASE_CLOSED__ALL_REDUCED_CONSUMERS_REVALIDATED"
             if not failures
             else "PHYSICAL_PHASE_INTEGRATION_AUDIT_FAILED"
         ),
@@ -165,7 +167,7 @@ def build_report(a_kappa: float = 1.0) -> dict[str, Any]:
             "stale_or_dependent_paths": stale_or_dependent,
             "missing_paths": missing_legacy,
             "classification": (
-                "core_prequotient_consumers_revalidated__UV_downstream_open"
+                "all_reduced_phase_consumers_revalidated__full_hessian_open"
             ),
         },
         "finite_invariant_search_audit": {
@@ -191,7 +193,7 @@ def build_report(a_kappa: float = 1.0) -> dict[str, Any]:
             "rewrite_multi_operator_phase_hessian_as_prequotient_plus_physical_quotient": False,
             "correct_gauge_fixing_DeltaR_classification": False,
             "revalidate_phase_operator_independence_audit": False,
-            "revalidate_UV_CP_phase_consumers": True,
+            "revalidate_UV_CP_phase_consumers": False,
             "full_component_scalar_hessian": True,
             "root_by_root_33_goldstone_projection": True,
             "global_stationarity_boundedness_competing_extrema": True,
@@ -210,9 +212,10 @@ def build_report(a_kappa: float = 1.0) -> dict[str, Any]:
         "verdict": (
             "The reduced neutral phase sector is physically closed after removing "
             "the Z' gauge Goldstone: one CP-odd mode is massive and the sole "
-            "physical null is the PQ axion. Core pre-quotient consumers have been "
-            "source-rewritten; UV/CP descendants and the full scalar Hessian remain "
-            "open. The theory remains BLOCKED."
+            "physical null is the PQ axion. All reduced-sector consumers "
+            "(core pre-quotient + UV/CP descendants) are source-rewritten. The "
+            "full component scalar Hessian, 33 Goldstone projection, and unique "
+            "τ_p remain open. The theory remains BLOCKED."
         ),
     }
 

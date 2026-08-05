@@ -1,28 +1,29 @@
 #!/usr/bin/env python3
 r"""UV principle fixing coupling phases δ_i (v20).
 
-Next step after ``quartic_soft_betas_v20``:
+Next step after ``quartic_soft_betas_v20``, rewritten after the Z' quotient:
 
 1. Count continuous field-rephasing freedom on ``(Δ̄, 10, S)`` acting on
-   the charge-allowed coupling phases ``(δ_L, δ_κ, δ₄)``.
-2. Prove the rephasing map has rank 2 ⇒ **one** physical invariant
+   the formal charge-allowed coupling phases ``(δ_L, δ_κ, δ₄)``.
+2. Prove the formal rephasing map has rank 2 ⇒ **one** physical invariant
 
        δ_phys = δ_L − 2 δ₄
 
-   with ``δ_κ`` always absorbable.
+   with ``δ_κ`` always absorbable. On the *selected vacuum* A_lock=A_lam4=0,
+   only κ is dynamical and δ_κ is absorbable in the gauge-fixed
+   ``(φ_10, φ_S)`` sector, so no continuous physical coupling phase remains.
 3. Apply the UV principle **CP-conserving renormalizable boundary**:
    all charge-allowed renormalizable couplings are real up to rephasing
    ⇒ ``δ_phys = 0`` uniquely.
-4. Propagate the selected vacuum (ψ = φ₁₀ − φ_Δ = 0 mod axion flat
-   direction) into X/Y gauge widths as the UV-selected point — not a
-   conditional complex scan point.
+4. Propagate the selected physical vacuum (θ_κ = 0 after Z' gauge fix and
+   PQ quotient) into X/Y gauge widths as the UV-selected point.
 
 Honesty
 -------
 * Uniqueness holds **under** the CP-reality UV principle, not model-
   independently for arbitrary complex couplings.
-* This is the reduced ``(Δ,10,S)`` sector; full-component SO(10) phases
-  and unique ``τ_p`` remain OPEN.
+* This is the reduced selected-vacuum neutral phase sector; full-component
+  SO(10) phases and unique ``τ_p`` remain OPEN.
 * Unique soft scale ``M_{1/2}`` beyond ``|κ|M_I`` remains OPEN.
 """
 
@@ -60,7 +61,10 @@ REPHASING_MATRIX = np.array(
 
 SOURCES = {
     "principle": "CP-conserving renormalizable UV boundary + field rephasing",
-    "phase_potential": "uv_cp_phases_from_potential_v20 / multi_operator_phase_hessian_v20",
+    "phase_potential": (
+        "uv_cp_phases_from_potential_v20 / multi_operator_phase_hessian_v20 / "
+        "selected_vacuum_neutral_phase_gauge_quotient_v20"
+    ),
     "upstream_betas": "quartic_soft_betas_v20",
 }
 
@@ -126,16 +130,15 @@ def physical_delta(*, delta_lock: float, delta_lam4: float) -> float:
 
 def apply_cp_reality_principle() -> dict[str, Any]:
     """CP-reality ⇒ δ_phys=0; select real-coupling aligned vacuum."""
-    # Under the principle all δ_i = 0 (or rephasable to 0).
+    # Selected-vacuum unit-κ toy (A_lock=A_lam4=0).
     real = uvcp.minimize_phases(
-        a_lock=1.0,  # overall scale irrelevant for vacuum location at aligned point
+        a_lock=0.0,
         a_kappa=1.0,
-        a_lam4=1.0,
+        a_lam4=0.0,
         delta_lock=0.0,
         delta_kappa=0.0,
         delta_lam4=0.0,
     )
-    # Use realistic amplitudes from the UV CP report for the width map
     uv_rep = uvcp.build_report()
     coup = uv_rep["couplings"]
     real_phys = uvcp.minimize_phases(
@@ -146,11 +149,13 @@ def apply_cp_reality_principle() -> dict[str, Any]:
         delta_kappa=0.0,
         delta_lam4=0.0,
     )
-    psi = float(real_phys["invariants"]["psi_10_minus_Delta"])
+    psi = float(real_phys["invariants"]["psi_physical_uv_phase"])
+    theta = float(real_phys["invariants"]["theta_kappa"])
     return {
         "principle": (
             "CP-conserving renormalizable UV: charge-allowed couplings "
-            "are real up to field rephasing ⇒ δ_phys = δ_L − 2δ₄ = 0"
+            "are real up to field rephasing ⇒ δ_phys = δ_L − 2δ₄ = 0; "
+            "selected-vacuum κ phase is absorbable after Z' gauge fixing"
         ),
         "delta_phys": 0.0,
         "delta_lock": 0.0,
@@ -158,11 +163,19 @@ def apply_cp_reality_principle() -> dict[str, Any]:
         "delta_lam4": 0.0,
         "vacuum": real_phys,
         "psi_10_minus_Delta": psi,
+        "psi_physical_uv_phase": psi,
+        "theta_kappa": theta,
         "cp_conserving": bool(
-            abs(psi) < 1e-6 and real_phys["aligned_to_floor_rel"] < 1e-6
+            abs(psi) < 1e-6
+            and abs(theta) < 1e-6
+            and real_phys["aligned_to_floor_rel"] < 1e-6
         ),
         "toy_unit_amplitude_vacuum_ok": bool(real["success"]),
         "upstream_uv_cp_status": uv_rep.get("status"),
+        "selected_vacuum_note": (
+            "A_lock=A_lam4=0 on the selected vacuum; formal δ_phys multiplies "
+            "null amplitudes and does not enter the physical phase potential."
+        ),
     }
 
 
@@ -191,10 +204,11 @@ def build_report() -> dict[str, Any]:
         pmns=pmns,
     )
 
-    # Contrast: nonzero δ_phys is physical and moves ψ (not absorbable)
+    # Formal contrast: nonzero δ_phys with artificial A_lock,A_lam4 (not
+    # selected-vacuum amplitudes). Shows the formal invariant is physical
+    # when those operators are present.
     contrast = []
     for d_phys in (0.0, 0.4, 1.0):
-        # Gauge: δ₄=0, δ_κ=0, δ_L=d_phys
         m = uvcp.minimize_phases(
             a_lock=1.0,
             a_kappa=1.0,
@@ -209,6 +223,7 @@ def build_report() -> dict[str, Any]:
                 "psi": float(m["invariants"]["psi_10_minus_Delta"]),
                 "aligned_to_floor_rel": float(m["aligned_to_floor_rel"]),
                 "success": bool(m["success"]),
+                "formal_non_selected_amplitudes": True,
             }
         )
 
@@ -270,9 +285,10 @@ def build_report() -> dict[str, Any]:
             "whole_model_excluded": False,
         },
         "verdict": (
-            f"Rephasing rank {reph['rank']} ⇒ one physical coupling phase "
-            f"δ_phys=δ_L−2δ₄; CP-reality UV principle fixes δ_phys=0 and "
-            f"selects ψ={selected['psi_10_minus_Delta']:.3e} "
+            f"Formal rephasing rank {reph['rank']} ⇒ one physical coupling "
+            f"phase δ_phys=δ_L−2δ₄; CP-reality fixes δ_phys=0. On the selected "
+            f"vacuum only κ is dynamical and is absorbable after Z' gauge "
+            f"fixing, selecting ψ_phys={selected['psi_physical_uv_phase']:.3e} "
             f"(τ_e={width['tau_e_years']:.3e} yr, SK pass={width['passes_SK']}). "
             "Model-independent complex δ_i, unique soft scale, and unique τ_p remain OPEN."
         ),

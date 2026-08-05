@@ -1,27 +1,23 @@
 #!/usr/bin/env python3
 r"""UV CP phases from the charge-allowed SO(10)×Z₁₇ phase potential (v20).
 
-Next step after ``sarah_pyrate_so10_210_betas_v20``:
+Selected-vacuum rewrite after the neutral Z' gauge quotient:
 
-1. Build the multi-operator phase potential on physical ``(φ_Δ, φ_10, φ_S)``
+1. On the physical selected vacuum only κ is active (A_lock = A_lam4 = 0).
+2. φ_Δ is the eaten Z'_R/B−L Goldstone and is gauge-fixed to zero.
+3. Minimize on physical ``(φ_10, φ_S)``:
 
-       V(φ) = −Σ_i |A_i| cos(g_i·φ + δ_i)
+       V = −|A_κ| cos(2 φ_10 + φ_S + δ_κ)
 
-   with charge vectors from ``multi_operator_phase_hessian_v20`` and
-   amplitudes from the finite-κ / best-fit charge-allowed couplings.
-2. Minimize on the 3-torus; quotient by the residual flat direction
-   ``∝ (1,1,−2)`` (axion / PQ) to extract **physical** UV phases.
-3. For real couplings (δ_i=0): prove the aligned CP-conserving vacuum.
-4. For conditional complex coupling phases δ_i: map the physical relative
-   phase ``ψ = φ_10 − φ_Δ`` into the CKM CP sector and recompute X/Y
-   coherent flavour factors / gauge lifetimes.
+4. Quotient by the residual PQ flat direction ``(1,−2)`` and report the
+   physical CP-odd combo ``θ_κ = 2 φ_10 + φ_S``.
+5. Map that physical UV phase into the CKM CP sector for conditional widths.
 
 Honesty
 -------
-* This derives UV phases from the **reduced** charge-allowed phase
-  potential, not a unique full-component SO(10) vacuum.
-* Coupling phases ``δ_i`` remain free UV inputs when complex; unique
-  ``τ_p`` remains OPEN.
+* Reduced selected-vacuum neutral phase sector only.
+* Coupling phases remain free UV inputs when complex; unique ``τ_p`` OPEN.
+* Full-component SO(10) phases remain OPEN.
 """
 
 from __future__ import annotations
@@ -45,13 +41,17 @@ import xy_flavour_rotations_gauge_v20 as xy
 
 ROOT = Path(__file__).resolve().parent
 
-FLAT = np.array([1.0, 1.0, -2.0], dtype=float)
-FLAT /= np.linalg.norm(FLAT)
+# Physical PQ null in the gauge-fixed sector (φ_10, φ_S).
+PQ_PHYS = np.array([1.0, -2.0], dtype=float)
+PQ_PHYS /= np.linalg.norm(PQ_PHYS)
 
 SOURCES = {
-    "phase_potential": "multi_operator_phase_hessian_v20 (locking, κ, λ₄)",
+    "phase_potential": (
+        "multi_operator_phase_hessian_v20 + "
+        "selected_vacuum_neutral_phase_gauge_quotient_v20"
+    ),
     "couplings": "charge_allowed_potential_minimize_v20 finite_κ / best-fit",
-    "cp_map": "physical ψ=φ_10−φ_Δ → δ_CKM shift in Wolfenstein CKM",
+    "cp_map": "physical θ_κ (gauge-fixed, PQ-quotiented) → δ_CKM shift",
     "xy": "xy_cp_flavour_tensors_v20 coherent F factors",
 }
 
@@ -61,30 +61,38 @@ def phase_potential(
     *,
     amplitudes: list[tuple[np.ndarray, float, float]],
 ) -> float:
-    """V = −Σ |A| cos(g·φ + δ)."""
+    """V = −Σ |A| cos(g·φ + δ) on the prequotient (φ_Δ, φ_10, φ_S)."""
     total = 0.0
     for g, a, delta in amplitudes:
         total += -abs(a) * math.cos(float(np.dot(g, phi) + delta))
     return float(total)
 
 
-def quotient_flat(phi: np.ndarray) -> np.ndarray:
-    """Remove the component along the residual flat direction."""
-    p = np.asarray(phi, dtype=float)
-    return p - float(np.dot(p, FLAT)) * FLAT
+def quotient_pq_physical(phi_10: float, phi_s: float) -> np.ndarray:
+    """Remove the PQ component in the gauge-fixed (φ_10, φ_S) plane."""
+    v = np.array([phi_10, phi_s], dtype=float)
+    return v - float(np.dot(v, PQ_PHYS)) * PQ_PHYS
 
 
 def physical_invariants(phi: np.ndarray) -> dict[str, float]:
-    """Gauge-invariant combinations orthogonal to the axion flat direction."""
-    q = quotient_flat(phi)
+    """Physical invariants after Z' gauge fix φ_Δ=0 and PQ quotient."""
+    # Gauge fix: discard the eaten Δ_R phase.
+    phi_10 = float(phi[1])
+    phi_s = float(phi[2])
+    q = quotient_pq_physical(phi_10, phi_s)
+    theta_kappa = 2.0 * phi_10 + phi_s
+    # PQ gauge representative with φ_S=0: φ_10_phys = θ_κ/2.
+    psi_physical = 0.5 * theta_kappa
     return {
-        "phi_Delta_phys": float(q[0]),
-        "phi_10_phys": float(q[1]),
-        "phi_S_phys": float(q[2]),
-        "psi_10_minus_Delta": float(q[1] - q[0]),
-        "theta_kappa_combo": float(2.0 * q[1] + q[2]),
-        "theta_lam4_combo": float(q[0] + q[1] + q[2]),
-        "flat_projection": float(np.dot(phi, FLAT)),
+        "phi_Delta_gauge_fixed": 0.0,
+        "phi_10_phys": float(q[0]),
+        "phi_S_phys": float(q[1]),
+        "theta_kappa": float(theta_kappa),
+        # Legacy key retained as the CKM-map UV phase (gauge-fixed, not
+        # the old mixed gauge combination φ_10−φ_Δ).
+        "psi_10_minus_Delta": float(psi_physical),
+        "psi_physical_uv_phase": float(psi_physical),
+        "pq_projection": float(np.dot([phi_10, phi_s], PQ_PHYS)),
     }
 
 
@@ -102,7 +110,6 @@ def minimize_phases(
         (mph.G_KAPPA, a_kappa, delta_kappa),
         (mph.G_LAM4, a_lam4, delta_lam4),
     ]
-    # Drop vanishing amplitudes
     amps = [(g, a, d) for g, a, d in amps if abs(a) > 0.0]
     if not amps:
         return {
@@ -113,26 +120,47 @@ def minimize_phases(
         }
 
     scale = max(abs(a) for _, a, _ in amps)
-
-    def objective(x: np.ndarray) -> float:
-        return phase_potential(x, amplitudes=amps) / scale
-
-    bounds = [(-math.pi, math.pi)] * 3
-    result = differential_evolution(
-        objective, bounds=bounds, seed=20, polish=True, atol=1e-12, tol=1e-12
+    selected_vacuum_kappa_only = (
+        abs(a_lock) <= 0.0 and abs(a_lam4) <= 0.0 and abs(a_kappa) > 0.0
     )
-    phi = np.asarray(result.x, dtype=float)
-    # Fold into (−π,π]
+
+    if selected_vacuum_kappa_only:
+        # Physical sector after Z' gauge fix: (φ_10, φ_S) only.
+        def objective(x: np.ndarray) -> float:
+            phi = np.array([0.0, float(x[0]), float(x[1])], dtype=float)
+            return phase_potential(phi, amplitudes=amps) / scale
+
+        bounds = [(-math.pi, math.pi)] * 2
+        result = differential_evolution(
+            objective, bounds=bounds, seed=20, polish=True, atol=1e-12, tol=1e-12
+        )
+        phi = np.array(
+            [0.0, float(result.x[0]), float(result.x[1])], dtype=float
+        )
+    else:
+        # Formal / non-selected amplitudes (rephasing demos only).
+        def objective(x: np.ndarray) -> float:
+            return phase_potential(x, amplitudes=amps) / scale
+
+        bounds = [(-math.pi, math.pi)] * 3
+        result = differential_evolution(
+            objective, bounds=bounds, seed=20, polish=True, atol=1e-12, tol=1e-12
+        )
+        phi = np.asarray(result.x, dtype=float)
+
     phi = (phi + math.pi) % (2.0 * math.pi) - math.pi
+    if selected_vacuum_kappa_only:
+        phi[0] = 0.0
     v = phase_potential(phi, amplitudes=amps)
     inv = physical_invariants(phi)
-    # Aligned reference V_min if all cos=+1
     v_aligned = -sum(abs(a) for _, a, _ in amps)
     return {
         "success": bool(result.success),
         "phi": [float(x) for x in phi],
         "phi_quotient_flat": [
-            float(x) for x in quotient_flat(phi)
+            0.0,
+            float(inv["phi_10_phys"]),
+            float(inv["phi_S_phys"]),
         ],
         "V": float(v),
         "V_over_scale": float(v / scale),
@@ -142,6 +170,8 @@ def minimize_phases(
         ),
         "invariants": inv,
         "nfev": int(result.nfev),
+        "selected_vacuum_kappa_only": selected_vacuum_kappa_only,
+        "gauge_fixed_DeltaR": True,
         "deltas": {
             "delta_lock": delta_lock,
             "delta_kappa": delta_kappa,
@@ -153,7 +183,7 @@ def minimize_phases(
 def ckm_with_uv_phase_shift(
     w: dict[str, float], *, psi: float
 ) -> np.ndarray:
-    """Wolfenstein CKM with δ_CKM → δ_CKM + ψ from the UV relative phase."""
+    """Wolfenstein CKM with δ_CKM → δ_CKM + ψ from the UV physical phase."""
     lam = w["lambda"]
     a_w = w["A"]
     rho, eta = w["rho_bar"], w["eta_bar"]
@@ -242,7 +272,6 @@ def build_report() -> dict[str, Any]:
         c126=c126,
     )
 
-    # --- Real couplings: CP-conserving aligned vacuum ---
     real_min = minimize_phases(
         a_lock=amp["A_lock"],
         a_kappa=amp["A_kappa"],
@@ -251,15 +280,16 @@ def build_report() -> dict[str, Any]:
         delta_kappa=0.0,
         delta_lam4=0.0,
     )
-    psi_real = abs(real_min["invariants"]["psi_10_minus_Delta"])
+    psi_real = abs(real_min["invariants"]["psi_physical_uv_phase"])
+    theta_real = abs(real_min["invariants"]["theta_kappa"])
     real_cp_conserving = (
         real_min["success"]
         and real_min["aligned_to_floor_rel"] < 1e-6
         and psi_real < 1e-6
+        and theta_real < 1e-6
     )
 
-    # --- Conditional complex coupling phases ---
-    # Representative: relative arg(κ) vs arg(λ₄); locking phase fixed to 0.
+    # Selected vacuum: only δ_κ is dynamical. δ_lam4 multiplies a null amplitude.
     complex_scan = []
     for dk, d4 in (
         (0.0, 0.0),
@@ -281,14 +311,14 @@ def build_report() -> dict[str, Any]:
             {
                 "delta_kappa": dk,
                 "delta_lam4": d4,
-                "psi": m["invariants"]["psi_10_minus_Delta"],
+                "psi": m["invariants"]["psi_physical_uv_phase"],
+                "theta_kappa": m["invariants"]["theta_kappa"],
                 "aligned_to_floor_rel": m["aligned_to_floor_rel"],
                 "phi_quotient_flat": m["phi_quotient_flat"],
                 "success": m["success"],
             }
         )
 
-    # Pick a nontrivial conditional point for width impact
     nontrivial = next(
         (r for r in complex_scan if abs(r["psi"]) > 1e-3), complex_scan[-1]
     )
@@ -312,21 +342,22 @@ def build_report() -> dict[str, Any]:
         else float("nan")
     )
 
-    # Upstream β ingest available (stack continuity)
     beta_rep = sarah.build_report()
 
     checks = {
         "real_min_succeeded": real_min["success"],
         "real_couplings_cp_conserving": real_cp_conserving,
+        "selected_vacuum_amplitudes_kappa_only": (
+            abs(amp["A_lock"]) == 0.0 and abs(amp["A_lam4"]) == 0.0
+        ),
         "complex_scan_ran": len(complex_scan) >= 4,
         "nontrivial_psi_when_deltas": abs(psi_uv) > 0.0 or all(
-            abs(r["delta_kappa"]) + abs(r["delta_lam4"]) < 1e-15
-            for r in complex_scan
+            abs(r["delta_kappa"]) < 1e-15 for r in complex_scan
         ),
         "widths_positive": width_uv["tau_e_years"] > 0
         and width_pdg["tau_e_years"] > 0,
         "sk_still_passes_uv": width_uv["passes_SK"],
-        "flat_direction_quotiented": True,
+        "gauge_fixed_and_pq_quotiented": True,
         "unique_cp_not_overclaimed": True,
         "beta_baseline_available": beta_rep.get("n_failed", 1) == 0,
         "whole_model_not_declared_dead": True,
@@ -355,8 +386,8 @@ def build_report() -> dict[str, Any]:
             **real_min,
             "cp_conserving": real_cp_conserving,
             "interpretation": (
-                "Real charge-allowed couplings select the aligned "
-                "CP-conserving phase vacuum (mod axion flat direction)."
+                "Real selected-vacuum κ selects the CP-conserving physical "
+                "phase vacuum after Z' gauge fixing and PQ quotient."
             ),
         },
         "complex_coupling_scan": complex_scan,
@@ -364,7 +395,13 @@ def build_report() -> dict[str, Any]:
             "delta_kappa": nontrivial["delta_kappa"],
             "delta_lam4": nontrivial["delta_lam4"],
             "psi_10_minus_Delta": psi_uv,
+            "psi_physical_uv_phase": psi_uv,
+            "theta_kappa": float(nontrivial["theta_kappa"]),
             "phi_quotient_flat": nontrivial["phi_quotient_flat"],
+            "note": (
+                "δ_lam4 is inert on the selected vacuum (A_lam4=0); only δ_κ "
+                "shifts the physical UV phase."
+            ),
         },
         "gauge_width": {
             "pdg_cp": width_pdg,
@@ -383,6 +420,7 @@ def build_report() -> dict[str, Any]:
             "real_couplings_cp_conserving_vacuum": real_cp_conserving,
             "complex_coupling_phases_conditional": True,
             "axion_flat_direction_quotiented": True,
+            "zprime_gauge_goldstone_fixed": True,
             "unique_uv_cp_phases": False,
             "fed_into_xy_gauge_width": True,
             "one_loop_stability_conditional": True,
@@ -390,11 +428,11 @@ def build_report() -> dict[str, Any]:
             "whole_model_excluded": False,
         },
         "verdict": (
-            f"UV CP phases derived from the charge-allowed phase potential: "
-            f"real couplings ⇒ CP-conserving aligned vacuum; "
-            f"conditional (δ_κ,δ₄)=({nontrivial['delta_kappa']:.3g},"
-            f"{nontrivial['delta_lam4']:.3g}) ⇒ ψ=φ₁₀−φ_Δ={psi_uv:.3e}, "
-            f"Δτ_e/τ(PDG CP)={d_tau:.3e}. Unique δ_i vacuum remains OPEN."
+            f"UV CP phases from the selected-vacuum κ potential after Z' "
+            f"gauge fixing: real couplings ⇒ CP-conserving vacuum; "
+            f"conditional δ_κ={nontrivial['delta_kappa']:.3g} ⇒ "
+            f"ψ_phys={psi_uv:.3e}, Δτ_e/τ(PDG CP)={d_tau:.3e}. "
+            "Unique δ_i vacuum remains OPEN."
         ),
     }
 
@@ -413,13 +451,14 @@ def write_markdown(report: dict[str, Any]) -> str:
         "## Real couplings",
         "",
         f"- CP-conserving: {real['cp_conserving']}",
-        f"- ψ = φ₁₀−φ_Δ: {real['invariants']['psi_10_minus_Delta']:.3e}",
+        f"- θ_κ: {real['invariants']['theta_kappa']:.3e}",
+        f"- ψ_phys: {real['invariants']['psi_physical_uv_phase']:.3e}",
         f"- Aligned-floor relative: {real['aligned_to_floor_rel']:.3e}",
         "",
         "## Conditional complex point",
         "",
         f"- (δ_κ, δ₄) = ({cond['delta_kappa']:.6g}, {cond['delta_lam4']:.6g})",
-        f"- ψ = {cond['psi_10_minus_Delta']:.6e}",
+        f"- ψ_phys = {cond['psi_physical_uv_phase']:.6e}",
         f"- Δτ_e/τ vs PDG CP = {gw['delta_rel_tau_uv_vs_pdg']:.6e}",
         "",
         "## Next exact calculation",
@@ -454,7 +493,7 @@ def main(argv: list[str] | None = None) -> int:
                         "cp_conserving"
                     ],
                     "psi": report["real_coupling_vacuum"]["invariants"][
-                        "psi_10_minus_Delta"
+                        "psi_physical_uv_phase"
                     ],
                 },
                 "conditional_uv_point": report.get("conditional_uv_point"),
