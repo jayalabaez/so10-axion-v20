@@ -1,6 +1,11 @@
 name: extended-ttbar-54-locking
 
 on:
+  pull_request:
+    paths:
+      - extended_ttbar_54_locking_v20.py
+      - test_extended_ttbar_54_locking_v20.py
+      - .github/workflows/extended-ttbar-54-locking.yml
   workflow_dispatch:
 
 concurrency:
@@ -28,18 +33,23 @@ jobs:
           python - <<'PY'
           import json, math
           r=json.load(open('EXTENDED_TTBAR_54_LOCKING_V20_VERDICT.json'))
-          assert r['status']=='EXTENDED_TTBAR_3x3__54_PROJECTOR_LOCKING_NORMALIZED'
+          assert r['status']=='EXTENDED_TTBAR_3x3__54_PROJECTOR_SELECTED_VACUUM_LOCK_WITHDRAWN'
           assert r['n_failed']==0
           p=r['projector_54_10x10']
           assert abs(p['trace']-54)<1e-8
           assert p['idempotence_max_abs_error']<1e-10
           assert abs(p['C_54_normalization']-1/math.sqrt(54))<1e-12
           assert r['flag']['projector_54_on_10x10_exact']
+          assert r['flag']['selected_vacuum_locking_amplitude_withdrawn']
           assert r['flag']['extended_ttbar_126_basis']
           assert not r['flag']['126_to_54_fully_expanded']
           assert not r['flag']['whole_model_excluded']
           assert r['basis']==['T_10','Tbar_10','T_126']
           assert 0 < r['n_excluded_by_ps_mu_K0'] < r['n_scenarios']
+          for row in r['scenarios']:
+              assert row['locking_amplitude']['A_54']==0.0
+              assert row['phase_hessian']['n_positive']==0
+              assert row['phase_hessian']['n_zero']==3
           PY
       - name: Upload extended T/Tbar 54 locking verdicts
         if: always()

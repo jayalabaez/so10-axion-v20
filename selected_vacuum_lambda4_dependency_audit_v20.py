@@ -29,14 +29,17 @@ REVALIDATE: dict[str, list[str]] = {
     "scalar_proton_falsification_gate_v20.py": ["historical_lam4"],
     "latest_main_residual_integration_v20.py": ["historical_tachyon"],
     "direct_phi_h_sigmabar_portal_m2_block_v20.py": ["high_precision_hessian", "lam4"],
-    "diagonal_h10_sigmabar_m2_isotropic_54_slots_v20.py": ["historical_lam4"],
     "charge_allowed_potential_minimize_v20.py": ["lam4"],
-    "multi_operator_phase_hessian_v20.py": ["lam4"],
     "hilbert_mixed_8comp_hessian_v20.py": ["lam4"],
     "unique_soft_scale_stationarity_v20.py": ["lam4"],
     "uv_cp_phases_from_potential_v20.py": ["lam4"],
     "tau_p_uv_vacuum_selection_v20.py": ["lam4"],
     "coleman_weinberg_lifted_vacuum_v20.py": ["lam4"],
+}
+
+REVALIDATED: dict[str, list[str]] = {
+    "multi_operator_phase_hessian_v20.py": ["lam4", "A_lam4"],
+    "diagonal_h10_sigmabar_m2_isotropic_54_slots_v20.py": ["historical_lam4"],
 }
 
 RETAINED_FLUCTUATION_ONLY: dict[str, list[str]] = {
@@ -73,11 +76,15 @@ def build_report() -> dict[str, Any]:
         _row(path, tokens, "REVALIDATION_REQUIRED")
         for path, tokens in REVALIDATE.items()
     ]
+    revalidated = [
+        _row(path, tokens, "REVALIDATED_ON_SELECTED_VACUUM_NULL")
+        for path, tokens in REVALIDATED.items()
+    ]
     retained = [
         _row(path, tokens, "RETAINED_FLUCTUATION_RESULT")
         for path, tokens in RETAINED_FLUCTUATION_ONLY.items()
     ]
-    rows = revalidate + retained
+    rows = revalidate + revalidated + retained
     missing = [row["path"] for row in rows if not row["file_exists"]]
     undetected = [row["path"] for row in rows if not row["dependency_detected"]]
 
@@ -91,9 +98,13 @@ def build_report() -> dict[str, Any]:
 
     return {
         "status": (
-            "SELECTED_VACUUM_LAMBDA4_DEPENDENCY_CHAIN_IDENTIFIED__REVALIDATION_OPEN"
-            if not failures
-            else "SELECTED_VACUUM_LAMBDA4_DEPENDENCY_AUDIT_FAILED"
+            "SELECTED_VACUUM_LAMBDA4_DEPENDENCY_CHAIN_PARTIALLY_REVALIDATED"
+            if not failures and revalidated and revalidate
+            else (
+                "SELECTED_VACUUM_LAMBDA4_DEPENDENCY_CHAIN_IDENTIFIED__REVALIDATION_OPEN"
+                if not failures
+                else "SELECTED_VACUUM_LAMBDA4_DEPENDENCY_AUDIT_FAILED"
+            )
         ),
         "overall_state": "BLOCKED",
         "n_checks": len(checks),
@@ -110,11 +121,12 @@ def build_report() -> dict[str, Any]:
         "counts": {
             "n_revalidation_required": len(revalidate),
             "n_retained_fluctuation_results": len(retained),
-            "n_revalidated": 0,
+            "n_revalidated": len(revalidated),
             "n_missing_files": len(missing),
             "n_undetected_dependencies": len(undetected),
         },
         "revalidation_required": revalidate,
+        "revalidated": revalidated,
         "retained_fluctuation_results": retained,
         "withdrawn_selected_vacuum_claims": {
             "minus_lambda4_p_Delta_h_S_radial_term": True,
@@ -131,7 +143,7 @@ def build_report() -> dict[str, Any]:
         },
         "flags": {
             "all_known_selected_vacuum_consumers_identified": not bool(failures),
-            "all_selected_vacuum_consumers_revalidated": False,
+            "all_selected_vacuum_consumers_revalidated": not bool(revalidate),
             "fluctuation_portal_results_retained": True,
             "historical_lambda4_tachyon_valid": False,
             "repository_ready_for_release": False,
@@ -141,15 +153,14 @@ def build_report() -> dict[str, Any]:
         "next_actions": [
             "Rebuild the reduced vacuum potential with no lambda4 radial monomial.",
             "Retain lambda4 only in the full component fluctuation mass matrix.",
-            "Recompute phase rank, stationarity, competing extrema and loop vacuum.",
+            "Recompute stationarity, competing extrema and loop vacuum for open consumers.",
             "Revalidate every proton-decay and threshold result that selected this vacuum.",
         ],
         "verdict": (
-            f"The selected-vacuum lambda4 proxy contaminates {len(revalidate)} "
-            "known modules, while three exact fluctuation-level portal results "
-            "remain valid. None of the vacuum consumers has yet been revalidated. "
-            "The historical radial tachyon is withdrawn and the repository is "
-            "not release-ready."
+            f"Selected-vacuum lambda4 null: {len(revalidated)} consumers "
+            f"revalidated; {len(revalidate)} still require rewrite. "
+            "Fluctuation portal results remain valid. The repository is not "
+            "release-ready."
         ),
     }
 
@@ -160,6 +171,7 @@ def write_report(report: dict[str, Any]) -> None:
         "# Selected-vacuum lambda4 dependency audit — v20\n\n"
         f"**Status:** `{report['status']}`\n\n"
         f"- Revalidation required: `{report['counts']['n_revalidation_required']}`\n"
+        f"- Revalidated: `{report['counts']['n_revalidated']}`\n"
         f"- Retained fluctuation results: `{report['counts']['n_retained_fluctuation_results']}`\n"
         f"- Release ready: `{report['flags']['repository_ready_for_release']}`\n\n"
         + report["verdict"]

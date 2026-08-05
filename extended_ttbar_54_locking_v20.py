@@ -122,19 +122,23 @@ def locking_amplitude_54(
     c_54: float,
     c_126_to_54: float = 1.0,
 ) -> dict[str, Any]:
-    """A_54 for V = -A cos(2φ_Δ + 2φ_10 + 2φ_S).
+    """Selected-vacuum locking amplitude for V = -A cos(2φ_Δ + 2φ_10 + 2φ_S).
 
-    A_54 = λ_lock · C_54 · C_126→54 · v_Δ² · v_10² · v_S² / M_GUT²
-    with v_Δ = v_S = M_I and v_10,eff ~ v_EW omitted → use M_I as ΔR and S,
-    and an effective EW-ish placeholder is NOT used (would be tiny). For the
-    GUT/intermediate locking relevant to axion alignment we take
-    v_10,PS-singlet-proxy = M_I as well when the EW 10 VEV is not the
-    locking VEV — manuscript locking uses the same order-parameter fields
-    that break PQ, so all three VEVs are intermediate/GUT-adjacent.
-    Here: v_Δ = v_10_eff = v_S = M_I.
+    The historical MI-proxy formula
+
+        A_proxy = λ_lock · C_54 · C_126→54 · M_I^6 / M_GUT²
+
+    is retained only as a withdrawn bookkeeping object. Exact evaluation of
+    P_54(Delta_R, Delta_R) on the canonical anti-self-dual Delta_R vacuum
+    gives zero (``physical_h10_54_mass_block_from_deltar_v20``), so the
+    physical selected-vacuum amplitude is
+
+        A_54 = 0.
+
+    Generic 10×10→54 and 126×126→54 projectors remain valid.
     """
     v = m_i
-    a54 = (
+    a54_proxy = (
         lambda_lock
         * c_54
         * c_126_to_54
@@ -151,10 +155,14 @@ def locking_amplitude_54(
         "v_10eff_GeV": v,
         "v_S_GeV": v,
         "M_GUT_GeV": m_gut,
-        "A_54": float(a54),
+        "A_54_historical_MI_proxy": float(a54_proxy),
+        "A_54": 0.0,
+        "selected_vacuum_P54_DeltaR_DeltaR": 0.0,
+        "status": "WITHDRAWN_SELECTED_VACUUM_AMPLITUDE_ZERO",
         "note": (
-            "C_126_to_54=1 is a schematic placeholder; the 10→54 projector "
-            "normalization C_54=1/√54 is exact."
+            "Physical A_54=0 because P54(Delta_R,Delta_R)=0. The MI-proxy "
+            "amplitude is withdrawn and must not be used for phase lift, "
+            "stationarity or vacuum selection. C_54=1/√54 remains exact."
         ),
     }
 
@@ -424,10 +432,13 @@ def build_report() -> dict[str, Any]:
         "projector_trace_54": proj["flag"]["trace_equals_54"],
         "c54_positive": c_54 > 0,
         "extended_basis_len_3": True,
-        "all_phase_one_massive": all(
-            r["phase_hessian"]["n_positive"] == 1 for r in rows
+        "all_phase_zero_massive": all(
+            r["phase_hessian"]["n_positive"] == 0 for r in rows
         ),
-        "all_phase_two_flat": all(r["phase_hessian"]["n_zero"] == 2 for r in rows),
+        "all_phase_three_flat": all(r["phase_hessian"]["n_zero"] == 3 for r in rows),
+        "all_physical_A54_zero": all(
+            abs(float(r["locking_amplitude"]["A_54"])) <= 1e-30 for r in rows
+        ),
         "some_survive": len(excluded) < len(rows),
         "some_excluded": len(excluded) > 0,
         "upstream_cg_ok": upstream.get("n_failed", 1) == 0,
@@ -437,7 +448,7 @@ def build_report() -> dict[str, Any]:
 
     return {
         "status": (
-            "EXTENDED_TTBAR_3x3__54_PROJECTOR_LOCKING_NORMALIZED"
+            "EXTENDED_TTBAR_3x3__54_PROJECTOR_SELECTED_VACUUM_LOCK_WITHDRAWN"
             if not failures
             else "EXTENDED_TTBAR_54_LOCKING_FAILED"
         ),
@@ -467,19 +478,22 @@ def build_report() -> dict[str, Any]:
         "flag": {
             "projector_54_on_10x10_exact": True,
             "locking_amplitude_54_normalized": True,
+            "selected_vacuum_locking_amplitude_withdrawn": True,
             "extended_ttbar_126_basis": True,
             "126_to_54_fully_expanded": False,
             "invented_unpublished_cg_values": False,
             "complete_so10_scalar_potential": False,
             "exact_unique_proton_lifetime": False,
             "conditional_parameter_points_excluded": len(excluded) > 0,
+            "whole_model_validated": False,
             "whole_model_excluded": False,
         },
         "verdict": (
-            "Exact 10⊗10→54 projector constructed (P²=P, Tr=54) and used to "
-            "normalize the locking amplitude; the colour-triplet sector is "
-            "extended to (T_10, Tbar_10, T_126) with only allowed operators. "
-            "The 126→54 projector remains schematic."
+            "Exact 10⊗10→54 projector constructed (P²=P, Tr=54). The "
+            "selected-vacuum locking amplitude is withdrawn: A_54=0 because "
+            "P54(Delta_R,Delta_R)=0. The colour-triplet 3×3 remains for "
+            "conditional mass diagnostics only; phase lift from this channel "
+            "is not claimed."
         ),
     }
 

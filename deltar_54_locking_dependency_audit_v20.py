@@ -29,54 +29,67 @@ CONSUMERS: dict[str, dict[str, Any]] = {
     "extended_ttbar_54_locking_v20.py": {
         "role": "root proxy amplitude and rank-one phase Hessian",
         "tokens": ["locking_amplitude_54", "v_10eff_GeV", "A_54"],
+        "revalidated": True,
     },
     "so10_126_to_54_projector_v20.py": {
         "role": "generic projector plus proxy-amplitude reevaluation",
         "tokens": ["evaluate_locking_with_c126", "locking_amplitude_54"],
+        "revalidated": True,
     },
     "cg_normalized_mt_locking_mix_v20.py": {
         "role": "locking-channel existence and triplet diagnostic",
         "tokens": ["locking_54_channel", "126bar² 10² S²"],
+        "revalidated": False,
     },
     "extended_126_tprime_fragments_v20.py": {
         "role": "extended triplet/locking consumer",
         "tokens": ["locking_amplitude_54"],
+        "revalidated": True,
     },
     "charge_allowed_potential_minimize_v20.py": {
         "role": "stationarity and vacuum minimization with A_54",
         "tokens": ["locking_amplitude_54", "lambda_lock"],
+        "revalidated": True,
     },
     "multi_operator_phase_hessian_v20.py": {
         "role": "phase Hessian containing locking operator",
         "tokens": ["lambda_lock"],
+        "revalidated": True,
     },
     "component_lift_210_126_10_v20.py": {
         "role": "H10_eff=M_I component ledger and lifted phases",
         "tokens": ["H10_eff", "lambda_lock"],
+        "revalidated": False,
     },
     "hilbert_mixed_8comp_hessian_v20.py": {
         "role": "lifted Hessian downstream of locking proxy",
         "tokens": ["lambda_lock"],
+        "revalidated": False,
     },
     "gauge_scalar_interference_4x4_v20.py": {
         "role": "gauge/scalar interference downstream of locking proxy",
         "tokens": ["lambda_lock"],
+        "revalidated": False,
     },
     "unique_soft_scale_stationarity_v20.py": {
         "role": "soft-scale stationarity using locking term",
         "tokens": ["lambda_lock"],
+        "revalidated": False,
     },
     "uv_cp_phases_from_potential_v20.py": {
         "role": "UV CP phase selection using locking term",
         "tokens": ["lambda_lock"],
+        "revalidated": False,
     },
     "tau_p_uv_vacuum_selection_v20.py": {
         "role": "proton-decay vacuum selection downstream of locking",
         "tokens": ["lambda_lock"],
+        "revalidated": False,
     },
     "coleman_weinberg_lifted_vacuum_v20.py": {
         "role": "loop vacuum calculation downstream of lifted locking vacuum",
         "tokens": ["lambda_lock"],
+        "revalidated": False,
     },
 }
 
@@ -85,13 +98,16 @@ def _inspect(path: str, metadata: dict[str, Any]) -> dict[str, Any]:
     file_path = ROOT / path
     text = file_path.read_text(encoding="utf-8") if file_path.is_file() else ""
     found = {token: token in text for token in metadata["tokens"]}
+    revalidated = bool(metadata.get("revalidated"))
     return {
         "path": path,
         "role": metadata["role"],
         "file_exists": file_path.is_file(),
         "token_presence": found,
         "dependency_detected": file_path.is_file() and any(found.values()),
-        "scientific_status": "REVALIDATION_REQUIRED",
+        "scientific_status": (
+            "REVALIDATED_ON_EXACT_ZERO" if revalidated else "REVALIDATION_REQUIRED"
+        ),
         "can_support_selected_vacuum_locking": False,
     }
 
@@ -101,6 +117,16 @@ def build_report() -> dict[str, Any]:
     rows = [_inspect(path, metadata) for path, metadata in CONSUMERS.items()]
     missing = [row["path"] for row in rows if not row["file_exists"]]
     undetected = [row["path"] for row in rows if not row["dependency_detected"]]
+    revalidated = [
+        row["path"]
+        for row in rows
+        if row["scientific_status"] == "REVALIDATED_ON_EXACT_ZERO"
+    ]
+    still_open = [
+        row["path"]
+        for row in rows
+        if row["scientific_status"] == "REVALIDATION_REQUIRED"
+    ]
     upstream_ok = bool(
         exact.get("n_failed") == 0
         and exact.get("flags", {}).get("DeltaR_squared_54_projection_zero")
@@ -119,9 +145,13 @@ def build_report() -> dict[str, Any]:
 
     return {
         "status": (
-            "DELTAR_54_LOCKING_DEPENDENCY_CHAIN_IDENTIFIED__REVALIDATION_OPEN"
-            if not failures
-            else "DELTAR_54_LOCKING_DEPENDENCY_AUDIT_FAILED"
+            "DELTAR_54_LOCKING_DEPENDENCY_CHAIN_PARTIALLY_REVALIDATED"
+            if not failures and revalidated and still_open
+            else (
+                "DELTAR_54_LOCKING_DEPENDENCY_CHAIN_IDENTIFIED__REVALIDATION_OPEN"
+                if not failures
+                else "DELTAR_54_LOCKING_DEPENDENCY_AUDIT_FAILED"
+            )
         ),
         "overall_state": "BLOCKED",
         "n_checks": len(checks),
@@ -137,12 +167,14 @@ def build_report() -> dict[str, Any]:
         },
         "counts": {
             "n_known_consumers": len(rows),
-            "n_revalidation_required": len(rows),
-            "n_revalidated_on_exact_zero": 0,
+            "n_revalidation_required": len(still_open),
+            "n_revalidated_on_exact_zero": len(revalidated),
             "n_missing_files": len(missing),
             "n_dependency_not_detected": len(undetected),
         },
         "consumers": rows,
+        "revalidated_consumers": revalidated,
+        "open_consumers": still_open,
         "missing_files": missing,
         "undetected_dependencies": undetected,
         "withdrawn_selected_vacuum_claims": {
@@ -154,23 +186,21 @@ def build_report() -> dict[str, Any]:
         },
         "flags": {
             "all_known_consumers_identified": not bool(failures),
-            "all_consumers_revalidated": False,
+            "all_consumers_revalidated": not still_open,
             "selected_vacuum_lambda_lock_chain_valid": False,
             "repository_ready_for_release": False,
             "whole_model_validated": False,
             "whole_model_excluded": False,
         },
         "next_actions": [
-            "Rewrite root locking amplitude to evaluate the exact Delta_R projection.",
-            "Re-run stationarity and all phase Hessians with this channel removed.",
+            "Revalidate remaining UV-phase, CW, soft-scale and proton-decay consumers.",
             "Search the complete charge-allowed invariant ring for another nonzero phase-sensitive operator.",
-            "Recompute UV phase, Coleman-Weinberg, and proton-decay vacuum-selection descendants.",
+            "Rebuild stationarity after κ-only selected phase Hessian.",
         ],
         "verdict": (
-            f"The exact Delta_R^2->54 zero invalidates the selected-vacuum "
-            f"locking input used by {len(rows)} known modules. The dependency "
-            "chain is now enumerated, but none of those consumers has yet been "
-            "revalidated on the exact-zero result. The repository is not "
+            f"Exact Delta_R^2->54 zero: {len(revalidated)}/{len(rows)} known "
+            "locking consumers revalidated on A_54=0; "
+            f"{len(still_open)} remain open. The repository is not "
             "release-ready and the theory remains BLOCKED."
         ),
     }

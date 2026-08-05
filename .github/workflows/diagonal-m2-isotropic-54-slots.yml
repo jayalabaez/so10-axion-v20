@@ -100,6 +100,7 @@ jobs:
           assert not q['flags']['repository_ready_for_release'], q
           assert q['counts']['n_revalidation_required'] >= 10, q
           assert q['counts']['n_retained_fluctuation_results'] >= 3, q
+          assert q['counts']['n_revalidated'] >= 2, q
           assert p['n_failed']==0 and p['overall_state']=='BLOCKED', p
           assert p['formal_operator_algebra']['rank_kappa_lambda4']==2, p
           assert p['formal_operator_algebra']['rank_after_adding_lambda_lock']==2, p
@@ -109,6 +110,7 @@ jobs:
           assert d['n_failed']==0 and d['overall_state']=='BLOCKED', d
           assert d['flags']['all_known_consumers_identified'], d
           assert not d['flags']['all_consumers_revalidated'], d
+          assert d['counts']['n_revalidated_on_exact_zero'] >= 5, d
           assert not d['flags']['repository_ready_for_release'], d
           assert r['n_failed']==0 and r['overall_state']=='BLOCKED', r
           assert not r['flag']['isotropic_norm_54_slots_partially_filled'], r

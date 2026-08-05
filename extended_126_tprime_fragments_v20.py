@@ -558,8 +558,9 @@ def build_report() -> dict[str, Any]:
         "some_survive": len(excluded) < len(rows),
         "lightest_has_tprime_frac_key": "Tprime_126"
         in lightest["lightest_fractions"],
-        "phase_one_massive": phase["n_positive"] == 1,
-        "phase_two_flat": phase["n_zero"] == 2,
+        "phase_locking_channel_null": phase["n_positive"] == 0,
+        "phase_three_flat": phase["n_zero"] == 3,
+        "physical_A54_zero": abs(float(amp["A_54"])) <= 1e-30,
         "upstream_minimize_ok": vmin.get("n_failed", 1) == 0,
         "no_invented_fragments": not ledger["flag"]["invented_extra_fragments"],
         "whole_model_not_declared_dead": True,

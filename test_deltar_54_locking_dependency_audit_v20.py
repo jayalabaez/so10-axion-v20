@@ -13,13 +13,15 @@ class DeltaR54LockingDependencyAuditTests(unittest.TestCase):
         self.assertEqual(self.report["n_failed"], 0, self.report)
         self.assertEqual(self.report["overall_state"], "BLOCKED")
 
-    def test_chain_identified_and_not_ready(self):
+    def test_partial_revalidation(self):
         counts = self.report["counts"]
         self.assertGreaterEqual(counts["n_known_consumers"], 10)
+        self.assertGreaterEqual(counts["n_revalidated_on_exact_zero"], 5)
+        self.assertGreater(counts["n_revalidation_required"], 0)
         self.assertEqual(
-            counts["n_revalidation_required"], counts["n_known_consumers"]
+            counts["n_revalidated_on_exact_zero"] + counts["n_revalidation_required"],
+            counts["n_known_consumers"],
         )
-        self.assertEqual(counts["n_revalidated_on_exact_zero"], 0)
         self.assertEqual(counts["n_missing_files"], 0)
         self.assertEqual(counts["n_dependency_not_detected"], 0)
         flags = self.report["flags"]
@@ -32,7 +34,10 @@ class DeltaR54LockingDependencyAuditTests(unittest.TestCase):
         for row in self.report["consumers"]:
             self.assertTrue(row["file_exists"], row)
             self.assertTrue(row["dependency_detected"], row)
-            self.assertEqual(row["scientific_status"], "REVALIDATION_REQUIRED")
+            self.assertIn(
+                row["scientific_status"],
+                {"REVALIDATION_REQUIRED", "REVALIDATED_ON_EXACT_ZERO"},
+            )
             self.assertFalse(row["can_support_selected_vacuum_locking"])
 
     def test_whole_model_flags_false(self):

@@ -1,6 +1,15 @@
 name: multi-operator-phase-hessian
 
 on:
+  pull_request:
+    paths:
+      - multi_operator_phase_hessian_v20.py
+      - test_multi_operator_phase_hessian_v20.py
+      - extended_ttbar_54_locking_v20.py
+      - charge_allowed_potential_minimize_v20.py
+      - physical_h10_54_mass_block_from_deltar_v20.py
+      - selected_vacuum_lambda4_portal_null_audit_v20.py
+      - .github/workflows/multi-operator-phase-hessian.yml
   workflow_dispatch:
 
 concurrency:
@@ -28,19 +37,22 @@ jobs:
           python - <<'PY'
           import json
           r=json.load(open('MULTI_OPERATOR_PHASE_HESSIAN_V20_VERDICT.json'))
-          assert r['status']=='MULTI_OPERATOR_PHASE_HESSIAN_COMPLETE__REDUCED_SECTOR'
+          assert r['status']=='MULTI_OPERATOR_PHASE_HESSIAN_REVALIDATED__KAPPA_ONLY_SELECTED_VACUUM'
           assert r['n_failed']==0
           by={p['name']:p for p in r['points']}
-          assert by['locking_only']['multi_operator_hessian']['n_positive']==1
-          assert by['locking_only']['multi_operator_hessian']['n_zero']==2
-          assert by['finite_kappa_benchmark']['multi_operator_hessian']['n_positive']==2
-          assert by['finite_kappa_benchmark']['multi_operator_hessian']['n_zero']==1
-          assert by['finite_kappa_benchmark']['multi_operator_hessian']['flat_direction']==[1.0,1.0,-2.0]
+          assert by['locking_only']['amplitudes']['A_lock']==0.0
+          assert by['locking_only']['amplitudes']['A_lam4']==0.0
+          assert by['locking_only']['multi_operator_hessian']['n_positive']==0
+          assert by['locking_only']['multi_operator_hessian']['n_zero']==3
+          assert by['finite_kappa_benchmark']['multi_operator_hessian']['n_positive']==1
+          assert by['finite_kappa_benchmark']['multi_operator_hessian']['n_zero']==2
+          assert by['kappa_and_lam4_on']['multi_operator_hessian']['n_positive']==1
           assert r['charge_vectors']['g_lock']==[2.0,2.0,2.0]
           assert r['flag']['multi_operator_phase_hessian']
-          assert r['flag']['complete_multi_operator_phase_hessian_reduced_sector']
+          assert r['flag']['selected_vacuum_lock_and_lam4_null']
+          assert r['flag']['selected_vacuum_phase_rank_one']
           assert not r['flag']['full_component_phase_space']
-          assert not r['flag']['exact_unique_proton_lifetime']
+          assert not r['flag']['whole_model_validated']
           assert not r['flag']['whole_model_excluded']
           PY
       - name: Upload multi-operator Hessian verdicts

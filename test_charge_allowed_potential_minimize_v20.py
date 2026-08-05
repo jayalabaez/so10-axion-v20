@@ -33,8 +33,9 @@ class ChargeAllowedMinimizeTests(unittest.TestCase):
     def test_stationarity_and_hessian(self):
         self.assertTrue(self.best["soft"]["stationarity_restored"])
         self.assertTrue(self.best["radial_hessian_positive_definite"])
-        self.assertEqual(self.best["phase_n_positive"], 1)
-        self.assertEqual(self.best["phase_n_zero"], 2)
+        self.assertEqual(self.best["phase_n_positive"], 0)
+        self.assertEqual(self.best["phase_n_zero"], 3)
+        self.assertEqual(self.best["locking_amplitude_A54"], 0.0)
 
     def test_couplings_finite_perturbative(self):
         for key in ("kappa", "lam4", "lambda_lock"):

@@ -317,7 +317,7 @@ def _cost(row: dict[str, Any]) -> float:
         cost += 20.0 + row["perturbativity_max_abs"]
     if row["conditionally_excluded_by_ps_mu_K0"]:
         cost += 30.0
-    if row["phase_n_positive"] != 1 or row["phase_n_zero"] != 2:
+    if row["phase_n_positive"] != 0 or row["phase_n_zero"] != 3:
         cost += 10.0
     # Prefer O(0.1–few) locking without forcing uniqueness
     cost += 0.05 * abs(math.log10(max(abs(row["lambda_lock"]), 1e-12)))
@@ -378,8 +378,8 @@ def minimize_couplings(
         and best["radial_hessian_positive_definite"]
         and best["soft"]["stationarity_restored"]
         and best["perturbative"]
-        and best["phase_n_positive"] == 1
-        and best["phase_n_zero"] == 2
+        and best["phase_n_positive"] == 0
+        and best["phase_n_zero"] == 3
     )
     best["optimizer"] = {
         "success": bool(result.success) or accepted,
@@ -489,8 +489,9 @@ def build_report() -> dict[str, Any]:
         "optimizer_success": bool(best["optimizer"]["success"]),
         "stationarity_restored": bool(best["soft"]["stationarity_restored"]),
         "radial_hessian_pd": bool(best["radial_hessian_positive_definite"]),
-        "phase_one_massive": best["phase_n_positive"] == 1,
-        "phase_two_flat": best["phase_n_zero"] == 2,
+        "phase_locking_channel_null": best["phase_n_positive"] == 0,
+        "phase_three_flat_without_kappa_lift": best["phase_n_zero"] == 3,
+        "physical_A54_zero": abs(float(best["locking_amplitude_A54"])) <= 1e-30,
         "perturbative": bool(best["perturbative"]),
         "finite_kappa_window_open": bool(fit["finite_kappa_benchmark"]["accepted"]),
         "c126_positive": c126 > 0,

@@ -1,6 +1,12 @@
 name: so10-126-to-54-projector
 
 on:
+  pull_request:
+    paths:
+      - so10_126_to_54_projector_v20.py
+      - test_so10_126_to_54_projector_v20.py
+      - extended_ttbar_54_locking_v20.py
+      - .github/workflows/so10-126-to-54-projector.yml
   workflow_dispatch:
 
 concurrency:
@@ -39,8 +45,9 @@ jobs:
           assert r['flag']['combinatorial_cg_not_published_table']
           assert not r['flag']['invented_unpublished_cg_values']
           assert not r['flag']['whole_model_excluded']
-          assert r['locking_reeval']['all_phase_one_massive']
-          assert r['locking_reeval']['all_phase_two_flat']
+          assert r['locking_reeval']['all_phase_zero_massive']
+          assert r['locking_reeval']['all_phase_three_flat']
+          assert r['locking_reeval']['all_physical_A54_zero']
           PY
       - name: Upload 126 to 54 projector verdicts
         if: always()

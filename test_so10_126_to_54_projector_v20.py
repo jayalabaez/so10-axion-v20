@@ -48,8 +48,9 @@ class So10126To54Tests(unittest.TestCase):
 
     def test_locking_phase_pattern(self):
         lock = self.report["locking_reeval"]
-        self.assertTrue(lock["all_phase_one_massive"])
-        self.assertTrue(lock["all_phase_two_flat"])
+        self.assertTrue(lock["all_phase_zero_massive"])
+        self.assertTrue(lock["all_phase_three_flat"])
+        self.assertTrue(lock["all_physical_A54_zero"])
         self.assertAlmostEqual(lock["C_126_to_54"], self.proj["C_126_to_54"])
 
 

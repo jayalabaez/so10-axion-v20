@@ -1,29 +1,27 @@
 #!/usr/bin/env python3
-r"""Multi-operator phase Hessian with cross terms (v20).
+r"""Multi-operator phase Hessian with selected-vacuum nulls enforced (v20).
 
-Next step after ``extended_126_tprime_fragments_v20``:
+Revalidated after PR #97: on the physical selected vacuum,
 
-Replace the single-operator locking Hessian
-``H = A_lock · g_L g_Lᵀ`` by the **sum of all charge-allowed phase
-operators** active in the reduced ``(φ_Δ, φ_10, φ_S)`` sector:
+* P54(Delta_R, Delta_R) = 0 ⇒ A_lock = 0;
+* T_Phi Delta_R = 0 ⇒ A_lam4 = 0;
+* only κ H²S remains active.
 
-1. Locking ``126bar² 10² S²``:  ``V = −A_L cos(2φ_Δ + 2φ_10 + 2φ_S)``
-2. ``10_H² S`` (κ):              ``V = −A_κ cos(2φ_10 + φ_S)``
-3. Dim-4 ``210·10·126·S`` (λ₄):  ``V = −A_4 cos(φ_Δ + φ_10 + φ_S)``
-   (with ``φ_210`` fixed by the PS/GUT vacuum)
+Formal charge vectors are still recorded:
 
-At a common phase-aligned minimum, the Hessian is the sum of rank-1
-updates ``Σ_i A_i g_i g_iᵀ`` (operator cross terms). Radial–phase mixed
-second derivatives vanish for pure ``−A(r)cosθ(φ)`` potentials at
-``sinθ=0``.
+1. Locking ``126bar² 10² S²``:  g_L = (2,2,2)
+2. ``10_H² S`` (κ):              g_κ = (0,2,1)
+3. Dim-4 ``210·10·126·S`` (λ₄):  g_4 = (1,1,1)
+
+with g_L = 2 g_4.  Historical MI-proxy amplitudes are retained only as
+withdrawn bookkeeping.
 
 Honesty
 -------
-* This completes the multi-operator Hessian in the **reduced** three-phase
-  sector, not the full 210+126+10 component phase space.
-* ``g_L = 2 g_4`` ⇒ locking and λ₄ are parallel; a nonzero κ lifts a second
-  massive mode and leaves a single flat direction ∝ (1,1,−2).
-* Unique ``τ_p`` and full-component Goldstone counting remain OPEN.
+* Reduced three-phase sector only.
+* Selected-vacuum rank is one (κ) with two flat directions, one being the
+  PQ axion (1,1,−2) and one additional unresolved flat phase.
+* Unique τ_p and full-component Goldstone counting remain OPEN.
 """
 
 from __future__ import annotations
@@ -38,25 +36,27 @@ import numpy as np
 
 import charge_allowed_potential_minimize_v20 as pmin
 import extended_ttbar_54_locking_v20 as ext
+import physical_h10_54_mass_block_from_deltar_v20 as lock_zero
 import scalar_vacuum_proton_decay_v20 as scalar_pd
+import selected_vacuum_lambda4_portal_null_audit_v20 as lam4_zero
 import so10_126_to_54_projector_v20 as c126mod
 
 ROOT = Path(__file__).resolve().parent
 
 FIELDS = ("phi_DeltaR_126", "phi_10", "phi_S")
 
-# Charge vectors g for θ = g·φ in V = −A cos(θ)
-G_LOCK = np.array([2.0, 2.0, 2.0], dtype=float)  # 2φ_Δ + 2φ_10 + 2φ_S
-G_KAPPA = np.array([0.0, 2.0, 1.0], dtype=float)  # 2φ_10 + φ_S
-G_LAM4 = np.array([1.0, 1.0, 1.0], dtype=float)  # φ_Δ + φ_10 + φ_S (φ_210=0)
+G_LOCK = np.array([2.0, 2.0, 2.0], dtype=float)
+G_KAPPA = np.array([0.0, 2.0, 1.0], dtype=float)
+G_LAM4 = np.array([1.0, 1.0, 1.0], dtype=float)
 
 SOURCES = {
     "operators": {
-        "locking": "126bar_H^2 10_H^2 S^2 / M_GUT^2 (54-channel)",
+        "locking": "126bar_H^2 10_H^2 S^2 / M_GUT^2 (54-channel; selected vacuum null)",
         "kappa": "10_H^2 S",
-        "lam4": "210·10·126·S with φ_210 fixed",
+        "lam4": "210·10·126·S (selected-vacuum radial/phase amplitude null)",
     },
-    "upstream_c126": "so10_126_to_54_projector_v20",
+    "upstream_exact_lock_null": "physical_h10_54_mass_block_from_deltar_v20",
+    "upstream_exact_lam4_null": "selected_vacuum_lambda4_portal_null_audit_v20",
     "upstream_minimize": "charge_allowed_potential_minimize_v20",
 }
 
@@ -71,31 +71,35 @@ def phase_amplitudes(
     c54: float,
     c126: float,
 ) -> dict[str, Any]:
-    """Amplitudes A_i of V = −Σ A_i cos(θ_i) at r_Δ=r_10=r_S=M_I."""
+    """Selected-vacuum amplitudes with exact lock/λ₄ nulls enforced."""
     v = m_i
-    a_lock = (
+    a_lock_proxy = (
         lambda_lock * c54 * c126 * (v**2) * (v**2) * (v**2) / (m_gut**2)
     )
-    # Match magnitude potential used in minimization: |V_κ|=κ M_I r_10² r_S
     a_kappa = abs(kappa) * m_i * (v**2) * v
-    # |V_4|=|λ4| M_GUT r_10 r_Δ r_S
-    a_lam4 = abs(lam4) * m_gut * v * v * v
+    a_lam4_proxy = abs(lam4) * m_gut * v * v * v
     return {
-        "A_lock": float(a_lock),
+        "A_lock": 0.0,
         "A_kappa": float(a_kappa),
-        "A_lam4": float(a_lam4),
+        "A_lam4": 0.0,
+        "A_lock_historical_MI_proxy": float(a_lock_proxy),
+        "A_lam4_historical_MI_proxy": float(a_lam4_proxy),
         "signs": {
             "kappa_sign": 1.0 if kappa >= 0 else -1.0,
             "lam4_sign": 1.0 if lam4 >= 0 else -1.0,
             "lambda_lock_sign": 1.0 if lambda_lock >= 0 else -1.0,
             "note": (
-                "Hessian at a cos=+1 aligned minimum uses A_i≥0; relative "
-                "signs are absorbed into the definition of the aligned point."
+                "Selected-vacuum A_lock and A_lam4 forced to zero by exact "
+                "tensor evaluations; proxies are withdrawn bookkeeping only."
             ),
         },
         "vevs_GeV": {"r_Delta": v, "r_10": v, "r_S": v, "M_GUT": m_gut},
         "C_54": c54,
         "C_126_to_54": c126,
+        "selected_vacuum_nulls": {
+            "P54_DeltaR_DeltaR": 0.0,
+            "T_Phi_DeltaR": 0.0,
+        },
     }
 
 
@@ -116,8 +120,7 @@ def multi_operator_phase_hessian(
     for op in ops:
         a = float(op["A"])
         g = np.asarray(op["g"], dtype=float)
-        contrib = a * np.outer(g, g)
-        hess = hess + contrib
+        hess = hess + a * np.outer(g, g)
         active.append(
             {
                 "name": op["name"],
@@ -130,14 +133,12 @@ def multi_operator_phase_hessian(
             }
         )
 
-    # Analytic / stable spectrum: work in units of max(A‖g‖²)
     scale = max(
         abs(a_lock) * float(np.dot(G_LOCK, G_LOCK)),
         abs(a_kappa) * float(np.dot(G_KAPPA, G_KAPPA)),
         abs(a_lam4) * float(np.dot(G_LAM4, G_LAM4)),
         1.0,
     )
-    # Normalize before eigh to avoid float64 noise at ~1e38
     eigs = np.linalg.eigvalsh(hess / scale) * scale
     eigs = np.sort(eigs)
     tol = 1e-10 * scale
@@ -145,10 +146,9 @@ def multi_operator_phase_hessian(
     n_zero = int(np.sum(np.abs(eigs) <= tol))
     n_neg = int(np.sum(eigs < -tol))
 
-    # Rank / dependence: g_L = 2 g_4
     g_stack = []
     if a_lock > 0 or a_lam4 > 0:
-        g_stack.append(G_LAM4)  # represents both locking and lam4
+        g_stack.append(G_LAM4)
     if a_kappa > 0:
         g_stack.append(G_KAPPA)
     rank = 0
@@ -156,27 +156,30 @@ def multi_operator_phase_hessian(
         m = np.column_stack(g_stack)
         rank = int(np.linalg.matrix_rank(m, tol=1e-12))
 
-    # Flat direction when rank=2: ∝ (1,1,−2)
-    flat_dir = None
+    flat_dir: Any = None
     if rank == 2 and a_kappa > 0 and (a_lock > 0 or a_lam4 > 0):
         flat_dir = [1.0, 1.0, -2.0]
     elif rank == 1:
-        # Orthogonal plane to g_4 (or g_κ alone)
         g = G_LAM4 if (a_lock > 0 or a_lam4 > 0) else G_KAPPA
-        # Two orthonormal null vectors via SVD
         _, _, vh = np.linalg.svd(np.array([g]))
         flat_dir = {
             "null_basis": vh[1:].tolist(),
-            "note": "Two flat directions orthogonal to the single active g",
+            "pq_axion_among_nulls": True,
+            "note": (
+                "Two flat directions orthogonal to the single active g; "
+                "one contains the PQ combination (1,1,-2)."
+            ),
+        }
+    elif rank == 0:
+        flat_dir = {
+            "null_basis": np.eye(3).tolist(),
+            "note": "No active phase operator; full three-flat sector.",
         }
 
-    # Radial–phase cross block at aligned minimum
     radial_phase = {
         "status": "RADIAL_PHASE_CROSS_VANISHES_AT_ALIGNED_MINIMUM",
         "argument": (
-            "For V=−A(r)cosθ(φ), ∂²V/∂r∂φ ∝ (∂A/∂r)sinθ vanishes at sinθ=0. "
-            "No radial–phase mixing in the Hessian at the aligned point for "
-            "this operator class."
+            "For V=−A(r)cosθ(φ), ∂²V/∂r∂φ ∝ (∂A/∂r)sinθ vanishes at sinθ=0."
         ),
         "cross_block_GeV2": np.zeros((3, 3)).tolist(),
         "flag": {"radial_phase_cross_zero_at_minimum": True},
@@ -201,6 +204,7 @@ def multi_operator_phase_hessian(
         "flag": {
             "multi_operator_phase_hessian": True,
             "includes_kappa_and_lam4_cross_terms": True,
+            "selected_vacuum_lock_and_lam4_null": True,
             "radial_phase_cross_included": True,
             "full_component_phase_space": False,
         },
@@ -232,7 +236,6 @@ def evaluate_point(
         a_kappa=amp["A_kappa"],
         a_lam4=amp["A_lam4"],
     )
-    # Single-operator baseline for comparison
     single = ext.phase_hessian_from_A(amp["A_lock"])
     return {
         "name": name,
@@ -271,6 +274,8 @@ def build_report() -> dict[str, Any]:
     vmin = pmin.build_report()
     best = vmin.get("fixed_couplings") or {}
     fk = vmin.get("finite_kappa_benchmark_couplings") or {}
+    lock_rep = lock_zero.build_report()
+    lam4_rep = lam4_zero.build_report()
 
     points = [
         evaluate_point(
@@ -315,23 +320,21 @@ def build_report() -> dict[str, Any]:
         ),
     ]
 
-    # Expected pattern checks
     locking_only = next(p for p in points if p["name"] == "locking_only")
     finite_k = next(p for p in points if p["name"] == "finite_kappa_benchmark")
     both = next(p for p in points if p["name"] == "kappa_and_lam4_on")
 
     checks = {
-        "locking_only_one_massive": locking_only["multi_operator_hessian"][
-            "n_positive"
-        ]
+        "locking_only_null": locking_only["multi_operator_hessian"]["n_positive"]
+        == 0,
+        "locking_only_three_flat": locking_only["multi_operator_hessian"]["n_zero"]
+        == 3,
+        "finite_kappa_one_massive": finite_k["multi_operator_hessian"]["n_positive"]
         == 1,
-        "locking_only_two_flat": locking_only["multi_operator_hessian"]["n_zero"]
-        == 2,
-        "finite_kappa_two_massive": finite_k["multi_operator_hessian"]["n_positive"]
-        == 2,
-        "finite_kappa_one_flat": finite_k["multi_operator_hessian"]["n_zero"] == 1,
-        "kappa_lam4_two_massive": both["multi_operator_hessian"]["n_positive"] == 2,
-        "kappa_lam4_one_flat": both["multi_operator_hessian"]["n_zero"] == 1,
+        "finite_kappa_two_flat": finite_k["multi_operator_hessian"]["n_zero"] == 2,
+        "kappa_lam4_still_one_massive": both["multi_operator_hessian"]["n_positive"]
+        == 1,
+        "kappa_lam4_still_two_flat": both["multi_operator_hessian"]["n_zero"] == 2,
         "g_lock_parallel_documented": both["multi_operator_hessian"][
             "g_lock_parallel_g_lam4"
         ],
@@ -344,6 +347,12 @@ def build_report() -> dict[str, Any]:
         "no_negative_modes": all(
             p["multi_operator_hessian"]["n_negative"] == 0 for p in points
         ),
+        "exact_lock_null_upstream": bool(
+            lock_rep.get("flags", {}).get("DeltaR_squared_54_projection_zero")
+        ),
+        "exact_lam4_null_upstream": bool(
+            lam4_rep.get("flags", {}).get("selected_DeltaR_is_portal_null_vector")
+        ),
         "upstream_minimize_ok": vmin.get("n_failed", 1) == 0,
         "c126_positive": c126 > 0,
         "not_claiming_full_component_space": True,
@@ -353,10 +362,11 @@ def build_report() -> dict[str, Any]:
 
     return {
         "status": (
-            "MULTI_OPERATOR_PHASE_HESSIAN_COMPLETE__REDUCED_SECTOR"
+            "MULTI_OPERATOR_PHASE_HESSIAN_REVALIDATED__KAPPA_ONLY_SELECTED_VACUUM"
             if not failures
             else "MULTI_OPERATOR_PHASE_HESSIAN_FAILED"
         ),
+        "overall_state": "BLOCKED",
         "n_checks": len(checks),
         "n_failed": len(failures),
         "failures": failures,
@@ -366,42 +376,49 @@ def build_report() -> dict[str, Any]:
             "g_lock": G_LOCK.tolist(),
             "g_kappa": G_KAPPA.tolist(),
             "g_lam4": G_LAM4.tolist(),
-            "identity": "g_lock = 2·g_lam4 (locking ∥ λ₄)",
+            "identity": "g_lock = 2·g_lam4 (locking ∥ λ₄; both null on vacuum)",
         },
         "C_54": c54,
         "C_126_to_54": c126,
         "points": points,
         "upstream_minimize_status": vmin.get("status"),
+        "upstream_exact_nulls": {
+            "lock": lock_rep.get("status"),
+            "lam4": lam4_rep.get("status"),
+        },
         "next_exact_calculation": [
-            "Include gauge–scalar interference with physical 4×4 mixings",
-            "Lift the reduced minimum / phase Hessian to the full 210+126+10 component space",
-            "Optionally restore t3 if a light 126_H is added to the field content",
+            "Find a charge-allowed invariant with nonzero selected-vacuum phase amplitude",
+            "Lift the κ-only reduced Hessian to the full 210+126+10 component space",
+            "Include gauge–scalar interference with physical mixings",
             "Goldstone counting across every broken generator",
         ],
         "flag": {
             "multi_operator_phase_hessian": True,
             "includes_kappa_lam4_locking_cross_terms": True,
+            "selected_vacuum_lock_and_lam4_null": True,
+            "selected_vacuum_phase_rank_one": True,
             "radial_phase_cross_analyzed": True,
             "complete_multi_operator_phase_hessian_reduced_sector": True,
             "full_component_phase_space": False,
             "invented_unpublished_cg_values": False,
             "complete_so10_scalar_potential": False,
             "exact_unique_proton_lifetime": False,
+            "whole_model_validated": False,
             "whole_model_excluded": False,
         },
         "verdict": (
-            "Multi-operator phase Hessian constructed: H=Σ A_i g_i g_iᵀ with "
-            "locking, κ(10²S), and λ₄(210·10·126·S). Locking ∥ λ₄; nonzero κ "
-            "lifts a second massive mode and leaves one flat direction ∝(1,1,−2). "
-            "Radial–phase cross terms vanish at the aligned minimum. Full "
-            "component phase space remains OPEN."
+            "Selected-vacuum multi-operator phase Hessian revalidated: A_lock "
+            "and A_lam4 are exact zeros, so only κ is active. Rank is one with "
+            "two flat directions (PQ axion plus one unresolved flat phase). "
+            "A different nonzero phase-sensitive invariant is required; the "
+            "theory remains BLOCKED."
         ),
     }
 
 
 def write_markdown(report: dict[str, Any]) -> str:
     lines = [
-        "# Multi-operator phase Hessian — v20",
+        "# Multi-operator phase Hessian — selected-vacuum revalidation",
         "",
         f"**Status:** `{report['status']}`",
         "",
@@ -423,7 +440,8 @@ def write_markdown(report: dict[str, Any]) -> str:
             f"- `{p['name']}`: n₊={h['n_positive']}, n₀={h['n_zero']}, "
             f"rank={h['operator_charge_rank']} "
             f"(κ={p['couplings']['kappa']:.4g}, λ₄={p['couplings']['lam4']:.4g}, "
-            f"λ_lock={p['couplings']['lambda_lock']:.4g})"
+            f"λ_lock={p['couplings']['lambda_lock']:.4g}; "
+            f"A_lock={p['amplitudes']['A_lock']}, A_lam4={p['amplitudes']['A_lam4']})"
         )
     lines.extend(["", "## Next exact calculation", ""])
     for step in report["next_exact_calculation"]:
@@ -457,6 +475,8 @@ def main(argv: list[str] | None = None) -> int:
                         "n_positive": p["multi_operator_hessian"]["n_positive"],
                         "n_zero": p["multi_operator_hessian"]["n_zero"],
                         "rank": p["multi_operator_hessian"]["operator_charge_rank"],
+                        "A_lock": p["amplitudes"]["A_lock"],
+                        "A_lam4": p["amplitudes"]["A_lam4"],
                     }
                     for p in report.get("points", [])
                 ],

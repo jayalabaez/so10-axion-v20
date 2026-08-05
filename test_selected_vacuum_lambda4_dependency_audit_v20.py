@@ -13,11 +13,11 @@ class SelectedVacuumLambda4DependencyAuditTests(unittest.TestCase):
         self.assertEqual(self.report["n_failed"], 0, self.report)
         self.assertEqual(self.report["overall_state"], "BLOCKED")
 
-    def test_vacuum_chain_not_ready(self):
+    def test_partial_revalidation(self):
         counts = self.report["counts"]
         self.assertGreaterEqual(counts["n_revalidation_required"], 10)
         self.assertGreaterEqual(counts["n_retained_fluctuation_results"], 3)
-        self.assertEqual(counts["n_revalidated"], 0)
+        self.assertGreaterEqual(counts["n_revalidated"], 2)
         self.assertEqual(counts["n_missing_files"], 0)
         self.assertEqual(counts["n_undetected_dependencies"], 0)
         flags = self.report["flags"]
@@ -32,6 +32,12 @@ class SelectedVacuumLambda4DependencyAuditTests(unittest.TestCase):
             self.assertTrue(row["file_exists"], row)
             self.assertTrue(row["dependency_detected"], row)
             self.assertEqual(row["scientific_status"], "REVALIDATION_REQUIRED")
+        for row in self.report["revalidated"]:
+            self.assertTrue(row["file_exists"], row)
+            self.assertTrue(row["dependency_detected"], row)
+            self.assertEqual(
+                row["scientific_status"], "REVALIDATED_ON_SELECTED_VACUUM_NULL"
+            )
         for row in self.report["retained_fluctuation_results"]:
             self.assertTrue(row["file_exists"], row)
             self.assertTrue(row["dependency_detected"], row)

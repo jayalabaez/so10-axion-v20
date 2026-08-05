@@ -406,8 +406,11 @@ def evaluate_locking_with_c126(c_126: float) -> dict[str, Any]:
         "C_126_to_54": c_126,
         "C_54": c_54,
         "n_scenarios": len(rows),
-        "all_phase_one_massive": all(r["phase_hessian"]["n_positive"] == 1 for r in rows),
-        "all_phase_two_flat": all(r["phase_hessian"]["n_zero"] == 2 for r in rows),
+        "all_phase_zero_massive": all(r["phase_hessian"]["n_positive"] == 0 for r in rows),
+        "all_phase_three_flat": all(r["phase_hessian"]["n_zero"] == 3 for r in rows),
+        "all_physical_A54_zero": all(
+            abs(float(r["locking_amplitude"]["A_54"])) <= 1e-30 for r in rows
+        ),
         "scenarios": rows,
     }
 
@@ -423,8 +426,9 @@ def build_report() -> dict[str, Any]:
         "c126_finite": math.isfinite(c126) and c126 > 0,
         "locking_reeval_ok": locking.get("status")
         == "LOCKING_REEVAL_WITH_COMBINATORIAL_C126",
-        "phase_pattern_ok": bool(locking.get("all_phase_one_massive"))
-        and bool(locking.get("all_phase_two_flat")),
+        "phase_pattern_ok": bool(locking.get("all_phase_zero_massive"))
+        and bool(locking.get("all_phase_three_flat"))
+        and bool(locking.get("all_physical_A54_zero")),
         "upstream_extended_ok": upstream.get("n_failed", 1) == 0,
         "flag_expanded_true": bool(proj["flag"]["126_to_54_fully_expanded"]),
         "not_claiming_unique_taup": True,

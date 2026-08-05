@@ -67,13 +67,24 @@ Cartesian second-derivative slots are recorded as `OPEN_AWAITING_CG`. Index CG t
 
 ## Completed isotropic + 54 partial Schur A/C fill
 
-`diagonal_h10_sigmabar_m2_isotropic_54_slots_v20.py` fills five inventory slots that already have repository support:
+`diagonal_h10_sigmabar_m2_isotropic_54_slots_v20.py` fills inventory slots that
+already have repository support:
 
 - isotropic H10 / Σ̄ soft-norm seeds;
-- 210-norm portals into H10 and Σ̄;
-- 54-locking isotropic seeds using `C_54=1/√54` and combinatorial `C_126→54`.
+- 210-norm portals into H10 and Σ̄.
 
-These produce *partial* positive diagonals `A_partial` (10) and `C_partial` (126) that feed the exact Schur gate with closed `B`. Channels 120/320/1050/4125 remain open.
+The former isotropic `54-locking` mass seed that used `H10_eff=M_I` is
+**withdrawn** (PR #97): `10_H` has no PS/SM singlet, and
+`P_54(Delta_R,Delta_R)=0` on the selected vacuum. Selected-vacuum `lambda4`
+radial/phase amplitudes are likewise null (`T_Phi Delta_R=0`). Partial
+positive diagonals therefore come only from soft/norm and 210-norm seeds.
+Channels 120/320/1050/4125 remain open.
+
+## Completed selected-vacuum phase-Hessian revalidation
+
+Root `A_54=0` and κ-only multi-operator phase Hessian consumers have been
+rewritten against the exact nulls. Remaining UV/CW/proton-decay descendants
+still require revalidation. Selected phase rank is one (κ) with two flats.
 
 ## Correct next goal
 
@@ -85,6 +96,7 @@ Build the complete physical non-supersymmetric scalar mass-squared matrix and so
    - Enumerate every charge-allowed independent scalar operator through the declared engineering dimension.
    - Prove linear independence and record Hermitian-conjugation conventions.
    - Transcribe missing CG tensors (especially 120, 320, 1050, 4125) into the Cartesian basis.
+   - Prefer operators with nonzero tensor projection on the actual `(Delta_R,hEW,S,Phi)` vacuum for phase locking.
 
 2. **Full component projection**
    - Project every invariant into canonical Pati-Salam and Standard Model component fields.
@@ -117,4 +129,4 @@ Build the complete physical non-supersymmetric scalar mass-squared matrix and so
 - `FULL_TENSOR_PROJECTED_POTENTIAL_V20.json`
 - `FULL_NONSUSY_VACUUM_HESSIAN_V20.json`
 
-The direct tensor, scoped portal block, exact Schur gate, classic diagonal-channel inventory, and isotropic+54 partial A/C fill are in place. Missing CG transcription and the complete scalar theory remain open.
+The direct tensor, scoped portal block, exact Schur gate, classic diagonal-channel inventory, corrected isotropic/norm A/C seeds, and selected-vacuum A54/λ₄ null revalidation of the reduced phase Hessian are in place. Missing CG transcription and the complete scalar theory remain open.

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Tests for multi-operator phase Hessian."""
+"""Tests for multi-operator phase Hessian (selected-vacuum revalidation)."""
 
 from __future__ import annotations
 
@@ -17,38 +17,44 @@ class MultiOperatorPhaseHessianTests(unittest.TestCase):
     def test_status_and_flags(self):
         self.assertEqual(
             self.report["status"],
-            "MULTI_OPERATOR_PHASE_HESSIAN_COMPLETE__REDUCED_SECTOR",
+            "MULTI_OPERATOR_PHASE_HESSIAN_REVALIDATED__KAPPA_ONLY_SELECTED_VACUUM",
         )
         self.assertEqual(self.report["n_failed"], 0)
         flags = self.report["flag"]
         self.assertTrue(flags["multi_operator_phase_hessian"])
-        self.assertTrue(flags["includes_kappa_lam4_locking_cross_terms"])
-        self.assertTrue(flags["complete_multi_operator_phase_hessian_reduced_sector"])
+        self.assertTrue(flags["selected_vacuum_lock_and_lam4_null"])
+        self.assertTrue(flags["selected_vacuum_phase_rank_one"])
         self.assertFalse(flags["full_component_phase_space"])
         self.assertFalse(flags["exact_unique_proton_lifetime"])
+        self.assertFalse(flags["whole_model_validated"])
         self.assertFalse(flags["whole_model_excluded"])
 
-    def test_locking_only_rank1(self):
+    def test_locking_only_null(self):
         h = self.by_name["locking_only"]["multi_operator_hessian"]
+        amp = self.by_name["locking_only"]["amplitudes"]
+        self.assertEqual(amp["A_lock"], 0.0)
+        self.assertEqual(amp["A_lam4"], 0.0)
+        self.assertEqual(h["n_positive"], 0)
+        self.assertEqual(h["n_zero"], 3)
+        self.assertEqual(h["operator_charge_rank"], 0)
+
+    def test_kappa_only_rank_one(self):
+        h = self.by_name["finite_kappa_benchmark"]["multi_operator_hessian"]
         self.assertEqual(h["n_positive"], 1)
         self.assertEqual(h["n_zero"], 2)
         self.assertEqual(h["operator_charge_rank"], 1)
 
-    def test_kappa_lifts_second_mode(self):
-        h = self.by_name["finite_kappa_benchmark"]["multi_operator_hessian"]
-        self.assertEqual(h["n_positive"], 2)
-        self.assertEqual(h["n_zero"], 1)
-        self.assertEqual(h["flat_direction"], [1.0, 1.0, -2.0])
-
-    def test_g_lock_parallel_lam4(self):
+    def test_lam4_does_not_add_rank(self):
         self.assertEqual(
             self.report["charge_vectors"]["g_lock"],
             [2.0 * x for x in self.report["charge_vectors"]["g_lam4"]],
         )
         h = self.by_name["kappa_and_lam4_on"]["multi_operator_hessian"]
+        amp = self.by_name["kappa_and_lam4_on"]["amplitudes"]
+        self.assertEqual(amp["A_lam4"], 0.0)
         self.assertTrue(h["g_lock_parallel_g_lam4"])
-        self.assertEqual(h["n_positive"], 2)
-        self.assertEqual(h["n_zero"], 1)
+        self.assertEqual(h["n_positive"], 1)
+        self.assertEqual(h["n_zero"], 2)
 
     def test_radial_phase_cross_zero(self):
         for p in self.report["points"]:

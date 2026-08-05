@@ -46,8 +46,9 @@ class Extended126TprimeTests(unittest.TestCase):
 
     def test_phase_hessian(self):
         ph = self.report["locking_phase_hessian"]
-        self.assertEqual(ph["n_positive"], 1)
-        self.assertEqual(ph["n_zero"], 2)
+        self.assertEqual(ph["n_positive"], 0)
+        self.assertEqual(ph["n_zero"], 3)
+        self.assertEqual(ph["A_54"], 0.0)
 
     def test_some_excluded_some_survive(self):
         self.assertGreater(self.report["n_excluded_by_ps_mu_K0"], 0)
