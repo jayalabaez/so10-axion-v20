@@ -1,0 +1,69 @@
+name: g1-exact-character-census
+
+on:
+  pull_request:
+    paths:
+      - 'g1_exact_renormalizable_character_census_v20.py'
+      - 'test_g1_exact_renormalizable_character_census_v20.py'
+      - '.github/workflows/g1-exact-character-census.yml'
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: g1-exact-character-census-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  exact-census:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.10', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run exact character tests
+        run: python -m unittest -v test_g1_exact_renormalizable_character_census_v20.py
+      - name: Emit exact census
+        run: python g1_exact_renormalizable_character_census_v20.py --write
+      - name: Assert exact but fail-closed scope
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open('G1_EXACT_RENORMALIZABLE_CHARACTER_CENSUS_V20.json'))
+          assert d['n_failed']==0 and d['overall_state']=='BLOCKED', d
+          assert d['character_dimensions']=={'10':10,'16':16,'126':126,'126bar':126,'210':210}, d
+          assert d['anchors']['Sym2_210']==1, d
+          assert d['anchors']['Sym3_210']==1, d
+          assert d['anchors']['Sym4_210']==4, d
+          assert d['anchors']['Sym2_126_x_Sym2_126bar']==4, d
+          assert d['anchors']['renormalizable_54_quartic_unique']==1, d
+          assert d['anchors']['dimensionful_cubic_unique']==1, d
+          assert d['anchors']['S_dependent_portal_unique']==1, d
+          assert d['anchors']['P2_H_126dag_multiplicity']==2, d
+          assert d['anchors']['P2_126bar_126_multiplicity']==6, d
+          assert d['anchors']['P2_H_Hdag_multiplicity']==3, d
+          assert d['counts']['charge_and_so10_allowed_multidegrees']==34, d
+          assert d['counts']['hermitian_conjugacy_orbits']==28, d
+          assert d['counts']['total_complex_invariant_multiplicity']==51, d
+          assert d['counts']['total_potential_orbit_multiplicity']==44, d
+          assert d['counts']['total_real_potential_parameters']==51, d
+          assert d['closure']['charge_neutral_multidegree_enumeration_closed'], d
+          assert d['closure']['so10_singlet_multiplicities_degree_le_4_closed'], d
+          assert d['closure']['historical_floor_34_superseded_as_completion_metric'], d
+          assert not d['closure']['explicit_component_tensor_basis_closed'], d
+          assert not d['closure']['full_component_potential_G2_closed'], d
+          assert not d['flags']['whole_model_validated'], d
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: g1-exact-character-census-${{ matrix.python-version }}
+          path: |
+            G1_EXACT_RENORMALIZABLE_CHARACTER_CENSUS_V20.json
+            G1_EXACT_RENORMALIZABLE_CHARACTER_CENSUS_V20.md

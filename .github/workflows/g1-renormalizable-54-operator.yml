@@ -1,0 +1,61 @@
+name: g1-renormalizable-operator-corrections
+
+on:
+  pull_request:
+    paths:
+      - 'g1_renormalizable_operator_inventory_v20.py'
+      - 'test_g1_renormalizable_operator_inventory_v20.py'
+      - '.github/workflows/g1-renormalizable-54-operator.yml'
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: g1-renormalizable-operators-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  operator-audit:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.10', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - run: python -m pip install --upgrade pip
+      - run: python -m pip install numpy scipy mpmath
+      - run: python -m unittest -v test_g1_renormalizable_operator_inventory_v20.py
+      - run: python g1_renormalizable_operator_inventory_v20.py --write
+      - name: Assert exact scope
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open('G1_RENORMALIZABLE_OPERATOR_INVENTORY_V20.json'))
+          assert d['n_failed']==0 and d['overall_state']=='BLOCKED', d
+          assert len(d['restored_operators'])==2, d
+          assert all(row['status']=='ALLOWED' for row in d['restored_operators']), d
+          assert all(row['multiplicity']==1 for row in d['restored_operators']), d
+          assert d['corrected_catalogue_size']==d['historical_catalogue_size']+2, d
+          assert d['scope']['two_operator_existence_closed'], d
+          assert d['scope']['two_operator_multiplicities_closed'], d
+          assert d['scope']['selected_background_values_closed_zero'], d
+          assert d['cubic']['generic_fluctuation_block_nonzero'], d
+          assert d['quartic_54']['generic_fluctuation_hessian_relevant'], d
+          assert d['flags']['dimensionful_cubic_required'], d
+          assert d['flags']['renormalizable_54_quartic_required'], d
+          assert not d['flags']['new_selected_phase_lock_found'], d
+          assert not d['scope']['complete_mixed_invariant_ring_G1_closed'], d
+          assert not d['flags']['whole_model_validated'], d
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: g1-renormalizable-operators-${{ matrix.python-version }}
+          path: |
+            G1_RENORMALIZABLE_OPERATOR_INVENTORY_V20.json
+            G1_RENORMALIZABLE_OPERATOR_INVENTORY_V20.md
