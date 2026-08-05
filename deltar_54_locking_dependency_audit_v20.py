@@ -35,8 +35,8 @@ CONSUMERS: dict[str, dict[str, Any]] = {
         "tokens": ["evaluate_locking_with_c126", "locking_amplitude_54"],
     },
     "cg_normalized_mt_locking_mix_v20.py": {
-        "role": "locking-normalized triplet diagnostic",
-        "tokens": ["lambda_lock"],
+        "role": "locking-channel existence and triplet diagnostic",
+        "tokens": ["locking_54_channel", "126bar² 10² S²"],
     },
     "extended_126_tprime_fragments_v20.py": {
         "role": "extended triplet/locking consumer",
