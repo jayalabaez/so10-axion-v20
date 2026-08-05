@@ -13,8 +13,10 @@ This corrected module retains:
 * exact 210-norm portals into H10 and Sigmabar;
 * the exact portal B=lambda4*vS*T_Phi and Schur theorem.
 
-It does not add a 54 mass contribution until the charge-allowed invariant is
-differentiated in the physical hEW=174 GeV component basis.
+It does not add a positive 54 mass contribution to Schur A/C: the physical
+hEW=174 GeV differentiation (``physical_54_component_hessian_at_hew_v20``)
+shows OPEN_H10_54 remains exact zero and OPEN_126_54_LOCKING is a holomorphic
+ΣΣ kernel, not a positive Hermitian seed.
 """
 
 from __future__ import annotations
@@ -31,6 +33,7 @@ import component_lift_210_126_10_v20 as clift
 import direct_portal_mass2_schur_gate_v20 as schur
 import h10_intermediate_vev_consistency_audit_v20 as h10_audit
 import nonsusy_reduced_hessian_v20 as reduced
+import physical_54_component_hessian_at_hew_v20 as hew54
 import scalar_vacuum_proton_decay_v20 as scalar_pd
 
 ROOT = Path(__file__).resolve().parent
@@ -144,16 +147,20 @@ def build_partial_diagonals(
     }
     withdrawn = {
         "OPEN_H10_54": {
-            "status": "WITHDRAWN_UNPHYSICAL_H10_MI_PROXY",
-            "contribution_GeV2": 0.0,
-            "reason": "10_H has no PS/SM singlet; v10_eff=M_I is not a physical vacuum",
-        },
-        "OPEN_126_54_LOCKING": {
-            "status": "WITHDRAWN_UNPHYSICAL_H10_MI_PROXY",
+            "status": "PHYSICAL_EXACT_ZERO_AT_HEW",
             "contribution_GeV2": 0.0,
             "reason": (
-                "the previous positive isotropic seed was manufactured from a "
-                "phase amplitude evaluated with v10_eff=M_I"
+                "physical_54_component_hessian_at_hew_v20: "
+                "P54(Delta_R,Delta_R)=0 ⇒ no H10 mass from 54 locking"
+            ),
+        },
+        "OPEN_126_54_LOCKING": {
+            "status": "PHYSICAL_HOLOMORPHIC_KERNEL_NOT_PD_SCHUR_SEED",
+            "contribution_GeV2": 0.0,
+            "reason": (
+                "physical_54_component_hessian_at_hew_v20: P54(hEW,hEW) sources "
+                "an indefinite holomorphic ΣΣ kernel, not a positive isotropic "
+                "Hermitian C seed; the withdrawn MI-proxy seed remains invalid"
             ),
         },
     }
@@ -210,6 +217,7 @@ def build_report() -> dict[str, Any]:
     historical_lam4 = -0.05 * m_i / m_gut
     vevs = _ledger_vevs(anchor)
     audit = h10_audit.build_report()
+    hew = hew54.build_report()
     soft = isotropic_soft_diagonals(
         m_i=m_i, m_gut=m_gut, lam4=historical_lam4, vevs=vevs
     )
@@ -241,6 +249,10 @@ def build_report() -> dict[str, Any]:
         "unphysical_54_seed_identified": not audit["flags"][
             "legacy_isotropic_54_mass_seed_physical"
         ],
+        "physical_54_hew_hessian_green": hew.get("n_failed") == 0,
+        "physical_54_hew_not_pd_schur_seed": not hew["flags"][
+            "OPEN_126_54_LOCKING_positive_schur_seed"
+        ],
         "partial_A_shape_10": len(partial["A_partial_GeV2"]) == 10,
         "partial_C_shape_126": len(partial["C_partial_GeV2"]) == 126,
         "partial_A_positive": partial["A_min_GeV2"] > 0.0,
@@ -267,6 +279,12 @@ def build_report() -> dict[str, Any]:
         "failures": failures,
         "checks": checks,
         "H10_intermediate_vev_audit": audit,
+        "physical_54_component_hessian_at_hEW": {
+            "status": hew.get("status"),
+            "n_failed": hew.get("n_failed"),
+            "OPEN_H10_54": hew.get("blocks", {}).get("OPEN_H10_54"),
+            "OPEN_126_54_LOCKING": hew.get("blocks", {}).get("OPEN_126_54_LOCKING"),
+        },
         "vevs_GeV": vevs,
         "soft_isotropic": soft,
         "partial_diagonals": {
@@ -285,7 +303,7 @@ def build_report() -> dict[str, Any]:
         "real_hessian_min_eigenvalue_GeV2": float(eigs[0]),
         "real_hessian_positive_definite": bool(eigs[0] > 0.0),
         "remaining_blockers": {
-            "derive_physical_54_component_hessian_at_hEW": True,
+            "derive_physical_54_component_hessian_at_hEW": False,
             "transcribe_missing_CG_120_320_1050_4125": True,
             "full_component_diagonal_H10_m2": True,
             "full_component_diagonal_Sigmabar_m2": True,
@@ -309,10 +327,11 @@ def build_report() -> dict[str, Any]:
         },
         "verdict": (
             "The exact portal B and defensible isotropic/210-norm A/C seeds are "
-            "retained. The former positive 54-locking isotropic seed is withdrawn "
-            "because it used an unphysical H10_eff=M_I vacuum proxy. The exact "
-            "54 projectors remain valid, but their physical hEW=174 GeV component "
-            "Hessian is still open; the theory remains BLOCKED."
+            "retained. The physical hEW=174 GeV 54-channel Hessian is executed: "
+            "OPEN_H10_54 remains exact zero and OPEN_126_54_LOCKING is a "
+            "holomorphic ΣΣ kernel, not a positive Hermitian Schur C seed. "
+            "Missing CG channels and the full component Hessian remain OPEN; "
+            "the theory remains BLOCKED."
         ),
     }
 

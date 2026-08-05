@@ -105,11 +105,24 @@ Core pre-quotient consumers (`multi_operator_phase_hessian`,
 UV/CP descendants (`uv_cp_phases_from_potential`, `component_lift_210_126_10`,
 `uv_delta_i_cp_reality_principle`) are source-rewritten against the Z' quotient.
 
+## Completed physical 54-channel Hessian at hEW=174 GeV
+
+`physical_54_component_hessian_at_hew_v20.py` differentiates the charge-allowed
+54-locking operator on the physical electroweak background:
+
+- `P54(hEW,hEW)` is nonzero;
+- selected-vacuum amplitude `⟨P54(hEW,hEW), P54(Δ_R,Δ_R)⟩ = 0`;
+- `OPEN_H10_54` remains exact zero from `P54(Δ_R,Δ_R)=0`;
+- `OPEN_126_54_LOCKING` is a holomorphic `ΣΣ` kernel on the Δ_R eigenspace,
+  suppressed by `(hEW/M_I)^2`, and is **not** a positive Hermitian Schur C seed.
+
 ## Correct next goal
 
 Continue the full component scalar mass-squared matrix and global
-`hEW=174 GeV` vacuum: root-by-root removal of all 33 Goldstones, stationarity,
-boundedness, thresholds, and τ_p. Do not reopen a reduced-sector phase hunt.
+`hEW=174 GeV` vacuum: fill remaining diagonal channels that do not invent
+120/320/1050/4125 CG (e.g. `OPEN_MIXED_126`), then root-by-root removal of
+all 33 Goldstones, stationarity, boundedness, thresholds, and τ_p. Do not
+reopen a reduced-sector phase hunt.
 
 ## Executable sequence
 
