@@ -1,0 +1,76 @@
+name: selected-vacuum-dim7-closure-dim8-census
+
+on:
+  pull_request:
+    paths:
+      - selected_vacuum_dimension7_complete_no_go_v20.py
+      - selected_vacuum_dimension8_phase_census_v20.py
+      - test_selected_vacuum_dimension7_closure_dimension8_census_v20.py
+      - .github/workflows/selected-vacuum-dim7-closure-dim8-census.yml
+  workflow_dispatch:
+
+concurrency:
+  group: selected-vacuum-dim7-closure-dim8-census-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  closure-and-census:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      PYTHONHASHSEED: "0"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - name: Compile closure and census
+        run: |
+          python -m compileall -q \
+            selected_vacuum_dimension7_complete_no_go_v20.py \
+            selected_vacuum_dimension8_phase_census_v20.py \
+            test_selected_vacuum_dimension7_closure_dimension8_census_v20.py
+      - name: Execute closure and dimension-eight census
+        run: |
+          python selected_vacuum_dimension7_complete_no_go_v20.py --write
+          python selected_vacuum_dimension8_phase_census_v20.py --write
+      - name: Focused tests
+        run: |
+          python -m unittest -v \
+            test_selected_vacuum_dimension7_closure_dimension8_census_v20.py
+      - name: Assert honest boundary
+        run: |
+          python - <<'PY'
+          import json
+          d7=json.load(open('SELECTED_VACUUM_DIMENSION7_COMPLETE_NO_GO_V20.json'))
+          d8=json.load(open('SELECTED_VACUUM_DIMENSION8_PHASE_CENSUS_V20.json'))
+          assert d7['n_failed']==0, d7
+          assert d7['status']=='SELECTED_VACUUM_PHASE_LIFTING_NO_GO_THROUGH_DIMENSION7', d7
+          assert d7['counts']['dimension7_even_H_conjugacy_representatives']==13, d7
+          assert d7['counts']['dimension7_total_metric_graphs']==33389, d7
+          assert d7['counts']['dimension7_total_graph_coefficient_evaluations']==62948, d7
+          assert d7['counts']['dimension7_maximum_abs_coefficient']==0.0, d7
+          assert d7['flags']['full_selected_vacuum_phase_lifting_no_go_through_dimension7'], d7
+          assert not d7['flags']['dimension8_and_above_excluded'], d7
+          assert not d7['flags']['whole_model_excluded'], d7
+          assert d8['n_failed']==0, d8
+          assert d8['status']=='DIMENSION8_PHASE_CENSUS_COMPLETE__COEFFICIENT_SCREEN_OPEN', d8
+          assert d8['calibration']['dim7_signature_4_0_2_0_0']==4691, d8
+          assert d8['calibration']['dim7_signature_0_2_4_0_0']==12043, d8
+          assert d8['calibration']['dim7_signature_3_0_2_2_0']==3387, d8
+          assert d8['counts']['genuinely_new_representatives'] > 0, d8
+          assert not d8['flags']['dimension8_coefficients_evaluated'], d8
+          assert not d8['flags']['dimension8_phase_lifting_no_go_proven'], d8
+          assert not d8['flags']['whole_model_excluded'], d8
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: selected-vacuum-dim7-closure-dim8-census
+          path: |
+            SELECTED_VACUUM_DIMENSION7_COMPLETE_NO_GO_V20.json
+            SELECTED_VACUUM_DIMENSION7_COMPLETE_NO_GO_V20.md
+            SELECTED_VACUUM_DIMENSION8_PHASE_CENSUS_V20.json
+            SELECTED_VACUUM_DIMENSION8_PHASE_CENSUS_V20.md
