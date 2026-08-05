@@ -155,6 +155,14 @@ def build_report() -> dict[str, Any]:
             "exact_unique_proton_lifetime", True
         )
     )
+    all_susy_withdrawn = bool(
+        mixed_withdrawn
+        and calg_withdrawn
+        and portal_withdrawn
+        and lock_withdrawn
+        and tau_hessian_reopened
+    )
+    selected_point_invalidated = bool(historical_tachyon and lock_withdrawn)
 
     checks = {
         "validated_live_gauge_artifact": gauge_valid,
@@ -176,13 +184,23 @@ def build_report() -> dict[str, Any]:
 
     still_open = {
         "complete_nonsusy_invariant_ring": True,
+        "complete_mixed_rep_invariant_enumeration": True,
+        "full_210_tensor_quartic_basis_in_live_dump": True,
         "map_repository_selected_vevs_to_canonical_tensor_convention": True,
+        "published_state_label_dictionary_for_direct_tensor": True,
         "direct_portal_component_mass_squared_insertion": True,
+        "direct_nonsusy_component_mass_squared_insertion": True,
         "direct_nonsusy_singlet_mass_squared_matrix": True,
+        "lambda4_CGC_live_encoding": True,
+        "dim6_lambda_lock_live_encoding": True,
+        "cal_G_lift_revalidation_on_physical_EW_survival_point": True,
         "global_vacuum_boundedness_and_competing_extrema": True,
         "gauge_projected_full_component_hessian": True,
+        "full_component_hessian_after_direct_tensor": True,
+        "full_component_nonsusy_hessian": True,
         "physical_triplet_threshold_spectrum": True,
         "full_tensor_two_loop_threshold_running": True,
+        "ultimate_tau_p_revalidation_after_physical_EW_falsification": True,
         "exact_unique_proton_lifetime": True,
     }
 
@@ -205,6 +223,7 @@ def build_report() -> dict[str, Any]:
             "direct_tensor_closed_analytic_3p3p2p2_spectrum": direct_valid,
             "published_gamma_TD_clebsch_crosscheck": td_valid,
             "EFJX_gauge_superhiggs_source_identified": efjx_corrected,
+            "cal_G_lambda_lock_lift_mechanism_exists_in_principle": False,
         },
         "withdrawn_or_reopened_claims": {
             "EFJX_gauge_response_is_lambda4_gamma_response": efjx_corrected,
@@ -225,6 +244,8 @@ def build_report() -> dict[str, Any]:
         },
         "still_open": still_open,
         "dependency_audit": {
+            "lambda_lock_lift_imports_charge_allowed_proxy": False,
+            "lambda_lock_lift_imports_physical_EW_hessian": False,
             "physical_historical_min_eigenvalue_GeV2": physical_rep.get(
                 "historical_benchmark", {}
             ).get("min_eigenvalue_GeV2"),
@@ -253,16 +274,19 @@ def build_report() -> dict[str, Any]:
             "ultimate_tau_p": ultimate_rep.get("status"),
         },
         "flag": {
+            "live_sarah_or_pyrate_executable_artifact_validated": (
+                gauge_valid and quartic_valid
+            ),
+            "scalar_alpha_nonuniqueness_closed": alpha_valid,
+            "cal_G_mechanism_identified_but_physical_point_not_revalidated": True,
+            "latest_main_selected_point_closure_invalidated": selected_point_invalidated,
             "direct_tensor_problem_closed": direct_valid and td_valid,
             "EFJX_cgc_route_invalidated": efjx_corrected,
-            "old_8p8e29_bound_valid": False,
-            "all_susy_matrix_scalar_closures_withdrawn": (
-                mixed_withdrawn
-                and calg_withdrawn
-                and portal_withdrawn
-                and lock_withdrawn
-                and tau_hessian_reopened
+            "EFJX_cgc_route_invalidated_direct_tensor_open": (
+                efjx_corrected and direct_valid
             ),
+            "old_8p8e29_bound_valid": False,
+            "all_susy_matrix_scalar_closures_withdrawn": all_susy_withdrawn,
             "exact_unique_proton_lifetime": False,
             "whole_model_excluded": False,
             "whole_model_validated": False,
