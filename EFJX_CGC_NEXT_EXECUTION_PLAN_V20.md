@@ -34,6 +34,16 @@ The independent Aulakh VEV dictionary is
 
 and the direct spectrum matches the genuine `gamma`-dependent chiral triplet/doublet Clebsch magnitudes.
 
+## Completed scoped portal M² insertion
+
+Repository Aulakh-style VEVs are traced into the canonical `(P,A,W)` dictionary and the portal block
+
+`M^2_{H–Σ̄} = lambda4 v_S T_Phi`
+
+is inserted into a scoped non-SUSY `10 x 126` mass-squared sector (`direct_phi_h_sigmabar_portal_m2_block_v20.py`).
+
+This closes the VEV-dictionary trace and the *scoped* portal bilinear insertion only. It does **not** close the complete invariant ring, full component projection, global Hessian, or issue #86.
+
 ## Correct next goal
 
 Build the complete physical non-supersymmetric scalar mass-squared matrix and solve the global `hEW=174 GeV` vacuum.
@@ -46,7 +56,7 @@ Build the complete physical non-supersymmetric scalar mass-squared matrix and so
 
 2. **Full component projection**
    - Project every invariant into canonical Pati-Salam and Standard Model component fields.
-   - Insert the direct `lambda4 vS T_Phi` off-diagonal block.
+   - The direct `lambda4 vS T_Phi` off-diagonal block is already available as a scoped insertion; extend it to the full projected potential.
    - Do not import SUSY fermion/gaugino matrices as scalar masses.
 
 3. **Stationarity and hierarchy**
@@ -74,4 +84,4 @@ Build the complete physical non-supersymmetric scalar mass-squared matrix and so
 - `FULL_TENSOR_PROJECTED_POTENTIAL_V20.json`
 - `FULL_NONSUSY_VACUUM_HESSIAN_V20.json`
 
-The direct tensor problem is solved. The complete scalar theory remains open.
+The direct tensor and scoped portal-block steps are solved. The complete scalar theory remains open.

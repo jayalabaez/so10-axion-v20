@@ -29,6 +29,7 @@ jobs:
         run: |
           python direct_phi_h_sigmabar_tensor_v20.py
           python direct_phi_h_sigmabar_td_crosscheck_v20.py
+          python direct_phi_h_sigmabar_portal_m2_block_v20.py --write
           python mixed_210_126_10_cw_v20.py
           python g_singlet_6x6_cw_v20.py
           python mixed_210_126_10_hilbert_hessian_v20.py
@@ -49,6 +50,7 @@ jobs:
           python -m unittest -v \
             test_direct_phi_h_sigmabar_tensor_v20.py \
             test_direct_phi_h_sigmabar_td_crosscheck_v20.py \
+            test_direct_phi_h_sigmabar_portal_m2_block_v20.py \
             test_mixed_210_126_10_cw_v20.py \
             test_g_singlet_6x6_cw_v20.py \
             test_mixed_210_126_10_hilbert_hessian_v20.py \
@@ -71,6 +73,7 @@ jobs:
           import json
           d=json.load(open('DIRECT_PHI_H_SIGMABAR_TENSOR_V20.json'))
           x=json.load(open('DIRECT_PHI_H_SIGMABAR_TD_CROSSCHECK_V20.json'))
+          pm=json.load(open('DIRECT_PHI_H_SIGMABAR_PORTAL_M2_BLOCK_V20.json'))
           e=json.load(open('EFJX_CGC_PHYSICAL_NORMALIZATION_GATE_V20.json'))
           mc=json.load(open('MIXED_210_126_10_CW_V20_VERDICT.json'))
           gc=json.load(open('G_SINGLET_6x6_CW_V20_VERDICT.json'))
@@ -98,6 +101,11 @@ jobs:
           assert x['max_abs_residual'] < 1e-12, x
           assert x['flags']['published_gamma_TD_magnitudes_matched'], x
           assert x['canonical_dictionary']=={'P':'p','A':'sqrt(3)*a','W':'sqrt(6)*omega'}, x
+          assert pm['n_failed']==0 and pm['overall_state']=='BLOCKED', pm
+          assert pm['flag']['portal_m2_block_inserted'], pm
+          assert pm['goldstone_orbit']['generic_rank']==33, pm
+          assert not pm['flag']['full_component_hessian'], pm
+          assert not pm['flag']['whole_model_validated'], pm
           assert e['n_failed']==0 and e['overall_state']=='BLOCKED', e
           assert e['flags']['exact_EFJX_gauge_response_known'], e
           assert not e['flags']['exact_EFJX_gamma_response_known'], e
@@ -116,6 +124,8 @@ jobs:
           assert p['joint_physical_constraint']['c_norm_needed_for_negative_portal_natural_window'] is None, p
           assert l['n_failed']==0, l
           assert l['valid_new_closures']['direct_Phi_H_Sigmabar_10x126_tensor_map'], l
+          assert l['valid_new_closures']['direct_portal_component_mass_squared_insertion'], l
+          assert l['flag']['direct_portal_m2_block_inserted'], l
           assert l['flag']['all_susy_matrix_scalar_closures_withdrawn'], l
           assert l['flag']['all_susy_matrix_scalar_CW_paths_withdrawn'], l
           assert l['dependency_audit']['susy_matrix_contamination_n_remaining']==0, l
@@ -136,6 +146,8 @@ jobs:
             DIRECT_PHI_H_SIGMABAR_TENSOR_V20.md
             DIRECT_PHI_H_SIGMABAR_TD_CROSSCHECK_V20.json
             DIRECT_PHI_H_SIGMABAR_TD_CROSSCHECK_V20.md
+            DIRECT_PHI_H_SIGMABAR_PORTAL_M2_BLOCK_V20.json
+            DIRECT_PHI_H_SIGMABAR_PORTAL_M2_BLOCK_V20.md
             EFJX_CGC_PHYSICAL_NORMALIZATION_GATE_V20.json
             EFJX_CGC_PHYSICAL_NORMALIZATION_GATE_V20.md
             MIXED_210_126_10_CW_V20_VERDICT.json
@@ -179,6 +191,7 @@ jobs:
           python so10_nonsusy_gauge_orbit_v20.py
           python direct_phi_h_sigmabar_tensor_v20.py
           python direct_phi_h_sigmabar_td_crosscheck_v20.py
+          python direct_phi_h_sigmabar_portal_m2_block_v20.py --write
           python mixed_210_126_10_cw_v20.py
           python g_singlet_6x6_cw_v20.py
           python mixed_210_126_10_hilbert_hessian_v20.py
@@ -207,6 +220,7 @@ jobs:
           import json
           d=json.load(open('DIRECT_PHI_H_SIGMABAR_TENSOR_V20.json'))
           x=json.load(open('DIRECT_PHI_H_SIGMABAR_TD_CROSSCHECK_V20.json'))
+          pm=json.load(open('DIRECT_PHI_H_SIGMABAR_PORTAL_M2_BLOCK_V20.json'))
           e=json.load(open('EFJX_CGC_PHYSICAL_NORMALIZATION_GATE_V20.json'))
           mc=json.load(open('MIXED_210_126_10_CW_V20_VERDICT.json'))
           gc=json.load(open('G_SINGLET_6x6_CW_V20_VERDICT.json'))
@@ -226,6 +240,9 @@ jobs:
           assert d['flags']['closed_analytic_portal_spectrum_derived'], d
           assert x['n_failed']==0 and x['max_abs_residual'] < 1e-12, x
           assert x['flags']['published_gamma_TD_magnitudes_matched'], x
+          assert pm['n_failed']==0 and pm['flag']['portal_m2_block_inserted'], pm
+          assert pm['goldstone_orbit']['generic_rank']==33, pm
+          assert not pm['flag']['full_component_hessian'], pm
           assert e['flags']['efjx_cgc_route_invalidated'], e
           assert not e['flags']['exact_EFJX_gamma_response_known'], e
           assert mc['flag']['scalar_CW_contribution_withdrawn'], mc
@@ -240,6 +257,8 @@ jobs:
           assert not p['flag']['old_8p8e29_bound_valid'], p
           assert l['n_failed']==0, l
           assert l['valid_new_closures']['direct_Phi_H_Sigmabar_10x126_tensor_map'], l
+          assert l['valid_new_closures']['direct_portal_component_mass_squared_insertion'], l
+          assert l['flag']['direct_portal_m2_block_inserted'], l
           assert l['flag']['all_susy_matrix_scalar_closures_withdrawn'], l
           assert l['flag']['all_susy_matrix_scalar_CW_paths_withdrawn'], l
           assert z['overall_state']=='BLOCKED', z
@@ -257,6 +276,8 @@ jobs:
             DIRECT_PHI_H_SIGMABAR_TENSOR_V20.md
             DIRECT_PHI_H_SIGMABAR_TD_CROSSCHECK_V20.json
             DIRECT_PHI_H_SIGMABAR_TD_CROSSCHECK_V20.md
+            DIRECT_PHI_H_SIGMABAR_PORTAL_M2_BLOCK_V20.json
+            DIRECT_PHI_H_SIGMABAR_PORTAL_M2_BLOCK_V20.md
             EFJX_CGC_PHYSICAL_NORMALIZATION_GATE_V20.json
             EFJX_CGC_PHYSICAL_NORMALIZATION_GATE_V20.md
             MIXED_210_126_10_CW_V20_VERDICT.json
