@@ -35,6 +35,8 @@ class DiagonalIsotropic54SlotsTests(unittest.TestCase):
         self.assertEqual(partial["components"]["locking_isotropic_seed"], 0.0)
         self.assertIn("OPEN_MIXED_126", partial["filled_slots"])
         self.assertNotIn("OPEN_MIXED_126", partial["still_open_slots"])
+        self.assertNotIn("OPEN_MIXED_10", partial["still_open_slots"])
+        self.assertIn("OPEN_MIXED_10", partial["absorbed_slots"])
         self.assertIn("OPEN_H10_54", partial["still_open_slots"])
         self.assertIn("OPEN_126_54_LOCKING", partial["still_open_slots"])
         self.assertGreater(

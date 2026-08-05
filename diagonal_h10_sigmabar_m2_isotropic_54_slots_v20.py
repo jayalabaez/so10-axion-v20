@@ -187,12 +187,21 @@ def build_partial_diagonals(
         "OPEN_210_CHANNEL_54",
         "OPEN_210_CHANNEL_210",
         "OPEN_210_CHANNEL_1050",
-        "OPEN_MIXED_10",
         "OPEN_MIXED_120",
         "OPEN_MIXED_320",
         "OPEN_126_1050",
         "OPEN_126_4125",
     ]
+    absorbed = {
+        "OPEN_MIXED_10": {
+            "status": "ABSORBED_INTO_PORTAL_B",
+            "contribution_GeV2": 0.0,
+            "reason": (
+                "210·126†·10 opens H–Σ mixing via T_Φ, already inserted as "
+                "portal B=λ₄ v_S T_Φ (diagonal_mixed_10_portal_absorption_v20)"
+            ),
+        },
+    }
 
     return {
         "A_partial_GeV2": a_vec.tolist(),
@@ -222,6 +231,7 @@ def build_partial_diagonals(
         },
         "filled_slots": filled,
         "withdrawn_slots": withdrawn,
+        "absorbed_slots": absorbed,
         "still_open_slots": still_open,
     }
 

@@ -176,13 +176,23 @@ removes it together with the 36 SO(10) Goldstones. Combined projected
 spectrum: **37 zeros / 701 positive / 0 negative**. UV value of `κ` and full
 component Hessian remain OPEN.
 
+## Completed OPEN_MIXED_10 portal absorption + closure ledger
+
+`diagonal_mixed_10_portal_absorption_v20.py` proves the charge-allowed cubic
+`210·126†·10` opens H–Σ mixing through the same `T_Φ` as portal
+`B=λ₄ v_S T_Φ` (absorbed; not a new diagonal). 
+`filled_mass_ps_sm_irrep_spectrum_v20.py` assigns PS multiplicities to the
+isotropic A/C seeds. `scalar_theory_closure_ledger_v20.py` scores G1–G8 as
+**0 CLOSED / 3 PARTIAL (G2,G3,G4) / 5 OPEN** — theory remains **BLOCKED**,
+not complete.
+
 ## Correct next goal
 
-Continue the full component scalar mass-squared matrix and global
-`hEW=174 GeV` vacuum: fill remaining charge-allowed diagonals that do not
-invent 120/320/1050/4125 CG, complete SM-irrep mass matrices, then
-stationarity, boundedness, thresholds, and τ_p. Do not reopen a
-reduced-sector phase hunt.
+Theory completion still requires transcribed CG for 120/320/1050/4125 (G1),
+the full projected potential and mode-by-mode diagonals (G2), complete
+stationarity/hierarchy (G3), the full dynamical Hessian artifact (G4), then
+BFB, thresholds, two-loop RGE, and unique τ_p (G5–G8). Do not invent missing
+CG and do not reopen a reduced-sector phase hunt.
 
 ## Executable sequence
 
