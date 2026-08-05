@@ -90,10 +90,11 @@ def build_report() -> dict[str, Any]:
         {
             "order": 1,
             "task": (
-                "Insert selected-vacuum source Sym²→45/54/210/1050 densities into "
-                "reduced/mixed potential, then revalidate BFB/Hessian"
+                "Promote (p,a,ω) split into reduced amplitudes / mixed potential "
+                "after source-patched λ_P insertion (Λ BFB + λ₄=0 Hessian PD)"
             ),
             "closes": "G3-G5 prerequisites (partial)",
+            "upstream_insertion": "source_pure210_reduced_potential_insertion_v20",
             "selected_vacuum_45_density": selected["selected_vacuum"][
                 "effective_quartic_densities"
             ]["||(ΦΦ)_45||^2 / ||Φ||^4"],

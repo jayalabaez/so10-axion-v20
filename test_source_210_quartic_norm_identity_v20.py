@@ -26,7 +26,12 @@ class SelectedVacuumSourceQuarticDensityTests(unittest.TestCase):
         self.assertGreater(dens["||(ΦΦ)_45||^2 / ||Φ||^4"], 0.0)
         self.assertGreaterEqual(dens["||(ΦΦ)_1050||^2 / ||Φ||^4"], -1e-12)
         self.assertGreaterEqual(self.report["ps_span_probe"]["rhs_1050_min"], -1e-9)
-        self.assertTrue(self.report["flags"]["reduced_potential_insertion_pending"])
+        self.assertFalse(self.report["flags"]["reduced_potential_insertion_pending"])
+        self.assertFalse(self.report["flags"]["bfb_hessian_revalidation_pending"])
+        self.assertEqual(
+            self.report["flags"]["see_insertion_module"],
+            "source_pure210_reduced_potential_insertion_v20",
+        )
 
 
 if __name__ == "__main__":

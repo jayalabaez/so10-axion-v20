@@ -87,6 +87,7 @@ def build_report() -> dict[str, Any]:
                 "(210⊗210)_a→45 antisym same-field/PS-span vanishes",
                 "source Sym²(210)→45 (gr-qc/9507053) REOPENED — dual channel",
                 "Sym² residual after 1/45/54/210 includes 770+1050+1050bar+4125+8910+5940",
+                "source_pure210_reduced_potential_insertion: patched Λ BFB + λ₄=0 Hessian PD (mpmath)",
                 "source_210_quartic_norm_identity: selected vacuum 45/1050 densities ready",
                 "pure-210 Eq.(2.6) CLOSED upstream (so10_210_source_quartic_basis_v20)",
                 "OPEN_210_CHANNEL_1050 blocker superseded as incomplete residual",
@@ -94,7 +95,7 @@ def build_report() -> dict[str, Any]:
                 "charge-subspace linear-independence certificate (PARTIAL)",
             ],
             blockers=[
-                "insert source-normalized 45 into reduced/mixed potential / BFB / Hessian",
+                "promote (p,a,ω) split into reduced/mixed amplitudes",
                 "CG tensors 120 / 320 / 1050 / 4125 missing",
                 "true Sym² residual sectors 8910/5940/1050bar still OPEN",
                 "off-singlet-45 mode-by-mode SM irrep CG coefficients OPEN",

@@ -132,15 +132,16 @@ def build_report(*, n_ps: int = 32, seed: int = 21026) -> dict[str, Any]:
             "selected_vacuum_source_quartic_densities_ready": not bool(failures),
             "pure_210_identity_owned_upstream": True,
             "normalization_reconciliation_complete": True,
-            "reduced_potential_insertion_pending": True,
-            "bfb_hessian_revalidation_pending": True,
+            "reduced_potential_insertion_pending": False,
+            "see_insertion_module": "source_pure210_reduced_potential_insertion_v20",
+            "bfb_hessian_revalidation_pending": False,
             "closes_full_1050_mode_cg": False,
             "g1_closed": False,
             "whole_model_validated": False,
             "whole_model_excluded": False,
         },
         "remaining_blockers": {
-            "insert_source_45_into_reduced_mixed_potential_bfb_hessian": True,
+            "promote_p_a_omega_split_into_reduced_amplitudes": True,
             "missing_cg_120_320_1050_4125": True,
             "full_mixed_rep_invariant_ring_G1": True,
         },
@@ -148,8 +149,10 @@ def build_report(*, n_ps: int = 32, seed: int = 21026) -> dict[str, Any]:
             "On the selected (p,a,ω) vacuum the source-normalized pure-210 basis "
             f"gives ||45||²/||Φ||⁴={vac_dens['||(ΦΦ)_45||^2 / ||Φ||^4']:.6g} and "
             f"||1050||²/||Φ||⁴={vac_dens['||(ΦΦ)_1050||^2 / ||Φ||^4']:.6g}. "
-            "Pure-210 identity remains closed upstream; insert these densities into "
-            "the reduced/mixed potential next. Theory remains BLOCKED."
+            "Densities are inserted into the reduced P_210 proxy by "
+            "source_pure210_reduced_potential_insertion_v20 (patched Λ BFB + "
+            "λ₄=0 Hessian PD under mpmath). Next: promote (p,a,ω) split / mixed G1. "
+            "Theory remains BLOCKED."
         ),
     }
 

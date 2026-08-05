@@ -325,11 +325,11 @@ hEW (full stationarity / unique κ remain OPEN).
 
 ## Correct next goal
 
-**Immediate:** insert the source-normalized pure-210 Sym²→45 / 54 / 210 / 1050
-densities (from `so10_210_source_quartic_basis_v20`, scored on the selected
-vacuum by `source_210_quartic_norm_identity_v20`) into the reduced/mixed
-potential → BFB / Hessian revalidation. Pure-210 identity is CLOSED; full
-mixed G1 remains OPEN. Do **not** claim whole-model validation.
+**Immediate:** promote the `(p,a,ω)` split into reduced amplitudes / mixed
+potential. Source-patched `λ_P` insertion already holds quartic BFB and the
+λ₄=0 five-amplitude Hessian is PD under mpmath
+(`source_pure210_reduced_potential_insertion_v20`). Pure-210 identity is
+CLOSED; mixed G1 remains OPEN. Do **not** claim whole-model validation.
 
 Theory completion still requires transcribed CG for 120/320/1050/4125 and
 off-singlet mixed-45 **CG coefficients** (G1), mode-by-mode diagonals (G2),
