@@ -38,7 +38,9 @@ jobs:
           python efjx_cgc_physical_normalization_gate_v20.py
           python phi210_h10_sigmabar126_s_cgc_derivation_v20.py --write
           python latest_main_residual_integration_v20.py
+          python final_scalar_theory_gate_v20.py
           python irreducible_gap_closure_contract_v20.py
+          python repository_blocker_inventory_v20.py
       - name: Focused tests
         run: |
           python -m unittest -v \
@@ -49,10 +51,14 @@ jobs:
             test_cal_g_portal_decision_v20.py \
             test_lambda_lock_cal_g_lift_v20.py \
             test_tau_p_hessian_residual_closure_v20.py \
+            test_tau_p_ultimate_residual_checklist_v20.py \
+            test_scalar_alpha_flavour_nonuniqueness_v20.py \
             test_efjx_cgc_physical_normalization_gate_v20.py \
             test_phi210_h10_sigmabar126_s_cgc_derivation_v20.py \
             test_latest_main_residual_integration_v20.py \
-            test_irreducible_gap_closure_contract_v20.py
+            test_final_scalar_theory_gate_v20.py \
+            test_irreducible_gap_closure_contract_v20.py \
+            test_repository_blocker_inventory_v20.py
       - name: Assert honest correction
         run: |
           python - <<'PY'
@@ -67,7 +73,9 @@ jobs:
           t=json.load(open('TAU_P_HESSIAN_RESIDUAL_CLOSURE_V20_VERDICT.json'))
           p=json.load(open('PHI210_H10_SIGMABAR126_S_CGC_DERIVATION_V20.json'))
           l=json.load(open('LATEST_MAIN_RESIDUAL_INTEGRATION_V20.json'))
+          z=json.load(open('FINAL_SCALAR_THEORY_GATE_V20.json'))
           k=json.load(open('IRREDUCIBLE_GAP_CLOSURE_CONTRACT_V20.json'))
+          r=json.load(open('REPOSITORY_BLOCKER_INVENTORY_V20.json'))
           assert d['n_failed']==0 and d['overall_state']=='BLOCKED', d
           assert d['representation']['tensor_map_shape']==[10,126], d
           assert d['singlet_basis']['generic_orbit_rank']==33, d
@@ -98,6 +106,8 @@ jobs:
           assert l['flag']['all_susy_matrix_scalar_closures_withdrawn'], l
           assert l['invalidated_selected_point_claims']['EFJX_gauge_response_is_lambda4_gamma_response'], l
           assert l['invalidated_selected_point_claims']['c_norm_needed_is_8p8e29'], l
+          assert z['overall_state']=='BLOCKED', z
+          assert r['overall_state']=='BLOCKED', r
           assert k['overall_state']=='BLOCKED' and k['n_open']==8, k
           assert not e['flags']['whole_model_validated'], e
           assert not e['flags']['whole_model_excluded'], e
@@ -121,7 +131,9 @@ jobs:
             PHI210_H10_SIGMABAR126_S_CGC_DERIVATION_V20.json
             PHI210_H10_SIGMABAR126_S_CGC_DERIVATION_V20.md
             LATEST_MAIN_RESIDUAL_INTEGRATION_V20.json
+            FINAL_SCALAR_THEORY_GATE_V20.json
             IRREDUCIBLE_GAP_CLOSURE_CONTRACT_V20.json
+            REPOSITORY_BLOCKER_INVENTORY_V20.json
 
   full-reaudit:
     if: github.event_name != 'pull_request'
