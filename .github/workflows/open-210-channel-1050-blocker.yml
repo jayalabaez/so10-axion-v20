@@ -1,0 +1,53 @@
+name: open-210-channel-1050-blocker
+
+on:
+  pull_request:
+    paths:
+      - open_210_channel_1050_irreducible_blocker_v20.py
+      - test_open_210_channel_1050_irreducible_blocker_v20.py
+      - so10_210_to_54_projector_v20.py
+      - so10_210_to_210_self_map_v20.py
+      - .github/workflows/open-210-channel-1050-blocker.yml
+  workflow_dispatch:
+
+concurrency:
+  group: open-210-channel-1050-blocker-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  open-210-channel-1050-blocker:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Execute 1050 blocker
+        run: python open_210_channel_1050_irreducible_blocker_v20.py --write
+      - name: Focused regression tests
+        run: python -m unittest -v test_open_210_channel_1050_irreducible_blocker_v20.py
+      - name: Assert honest scientific scope
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('OPEN_210_CHANNEL_1050_IRREDUCIBLE_BLOCKER_V20.json'))
+          assert r['status']=='OPEN_210_CHANNEL_1050_BLOCKED__AWAITING_YOUNG_CG'
+          assert r['n_failed']==0
+          assert r['overall_state']=='BLOCKED'
+          assert r['inventory_slot']['status']=='OPEN_AWAITING_YOUNG_CG'
+          assert not r['flags']['open_210_channel_1050_filled']
+          assert not r['flags']['cg_1050_invented']
+          assert not r['flags']['whole_model_validated']
+          PY
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: open-210-channel-1050-blocker
+          path: |
+            OPEN_210_CHANNEL_1050_IRREDUCIBLE_BLOCKER_V20.json
+            OPEN_210_CHANNEL_1050_IRREDUCIBLE_BLOCKER_V20.md

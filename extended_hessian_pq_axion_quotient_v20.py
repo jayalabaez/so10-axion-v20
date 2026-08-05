@@ -19,11 +19,13 @@ Hessian:
 4. Project ``P_phys = I − P_G − P_axion`` and require 37 exact zeros with a
    positive physical complement.
 
+``A_κ`` is taken from the physical formula
+``A_κ = |κ| M_I hEW² v_S`` (``uv_kappa_stationarity_constraint_v20``), not
+the former diagnostic ``min(A,C)/5``.
+
 Honesty
 -------
-* ``A_κ`` is set to the A/C mass scale so the massive CP-odd mode is
-  numerically visible beside GUT-scale soft entries (finite-κ pattern, not a
-  UV determination of ``κ``).
+* κ remains stationarity-constrained but not UV-unique.
 * PQ quotient is for this extended skeleton only — not full G1–G8 closure.
 * Does not invent 120/320/1050/4125 CG. Theory remains BLOCKED.
 """
@@ -44,6 +46,7 @@ import extended_form_basis_hessian_imh_spectators_v20 as ext
 import selected_vacuum_neutral_phase_gauge_quotient_v20 as pq
 import so10_gauge_orbit_with_hew_v20 as hew_orbit
 import so10_goldstone_nullspace_projector_v20 as gproj
+import uv_kappa_stationarity_constraint_v20 as uv_kappa
 
 ROOT = Path(__file__).resolve().parent
 OUT_JSON = ROOT / "EXTENDED_HESSIAN_PQ_AXION_QUOTIENT_V20.json"
@@ -160,12 +163,20 @@ def combined_physical_projector(
 
 
 def spectrum_after_projection(
-    hessian: np.ndarray, p_phys: np.ndarray, *, rel_tol: float = 1e-10
+    hessian: np.ndarray,
+    p_phys: np.ndarray,
+    *,
+    rel_tol: float = 1e-10,
+    abs_tol: float | None = None,
 ) -> dict[str, Any]:
     h_proj = gproj.project_hessian(hessian, p_phys)
     eigs = np.linalg.eigvalsh(h_proj)
     scale = max(1.0, float(np.max(np.abs(eigs))))
     tol = rel_tol * scale
+    if abs_tol is not None:
+        # Physical A_κ can place the CP-odd massive mode far below soft median;
+        # tighten tol so that mode is not falsely counted as a zero.
+        tol = min(tol, float(abs_tol))
     return {
         "n_zero": int(np.sum(np.abs(eigs) <= tol)),
         "n_positive": int(np.sum(eigs > tol)),
@@ -185,8 +196,10 @@ def build_report() -> dict[str, Any]:
     h_ew = float(vevs["hEW"])
     v_s = float(vevs["vS"])
     scale = float(min(np.min(a), np.min(c)))
-    # Finite-κ pattern: massive CP-odd eigenvalue 5 A_κ at the A/C scale.
-    a_kappa = scale / 5.0
+    # Former diagnostic (visibility only); physical A_κ from UV-κ module.
+    a_kappa_diagnostic = scale / 5.0
+    uv = uv_kappa.build_report()
+    a_kappa = float(uv["A_kappa"]["physical_GeV2"])
 
     # Reuse extended assembly path.
     import scalar_vacuum_proton_decay_v20 as scalar_pd
@@ -256,13 +269,21 @@ def build_report() -> dict[str, Any]:
 
     diag = np.abs(np.diag(hess))
     median = float(np.median(diag[diag > 0.0])) if np.any(diag > 0.0) else 1.0
-    dyn_spec = spectrum_after_projection(hess / median, projs["P_phys"])
+    # Rank-1 Im-space massive eigenvalue: A_κ ||Jᵀ g||² with g=(2,1).
+    expected_im_massive = a_kappa * (4.0 / (h_ew**2) + 1.0 / (v_s**2))
+    expected_scaled = expected_im_massive / max(median, 1.0)
+    dyn_abs_tol = max(1e-18, 0.1 * expected_scaled)
+    dyn_spec = spectrum_after_projection(
+        hess / median, projs["P_phys"], abs_tol=dyn_abs_tol
+    )
 
     # Upstream reduced quotient must stay green.
     reduced = pq.quotient_report(a_kappa=1.0)
 
     checks = {
         "isotropic_partial_green": iso_report.get("n_failed", 1) == 0,
+        "uv_kappa_green": uv.get("n_failed", 1) == 0,
+        "physical_A_kappa_positive": a_kappa > 0.0,
         "reduced_pq_quotient_green": reduced.get("n_failed", 1) == 0,
         "field_dim_738": n_field == EXPECTED_FIELD_DIM,
         "goldstone_rank_36": frame_info["rank"] == EXPECTED_GOLDSTONES,
@@ -303,7 +324,10 @@ def build_report() -> dict[str, Any]:
         "embedding": tang["embedding"],
         "kappa_phase": {
             "A_kappa_GeV2": a_kappa,
-            "A_kappa_scale_rule": "min(A,C)/5 so massive eig 5 A_κ matches A/C scale",
+            "A_kappa_scale_rule": "physical |κ| M_I hEW² v_S (uv_kappa_stationarity)",
+            "A_kappa_diagnostic_minAC_over_5_GeV2": a_kappa_diagnostic,
+            "A_kappa_source_status": uv.get("status"),
+            "kappa_coupling": uv["couplings"]["kappa"],
             "hEW_GeV": h_ew,
             "vS_GeV": v_s,
             "H_phi": phase["H_phi"].tolist(),
@@ -326,12 +350,17 @@ def build_report() -> dict[str, Any]:
             "unit_spectrum": unit_spec,
             "dynamical_scaled_spectrum": dyn_spec,
             "median_abs_diag_GeV2": median,
+            "expected_im_massive_GeV2": expected_im_massive,
+            "expected_scaled_massive": expected_scaled,
+            "dyn_abs_tol_used": dyn_abs_tol,
         },
         "upstream_reduced_quotient_status": reduced.get("status"),
         "flags": {
             "pq_axion_quotient_on_extended_hessian": not bool(failures),
             "gauge_36_and_axion_1_removed": not bool(failures),
             "kappa_phase_block_injected": True,
+            "physical_A_kappa_wired": not bool(failures),
+            "uv_kappa_uniquely_determined": False,
             "full_component_hessian_complete": False,
             "whole_model_validated": False,
             "whole_model_excluded": False,
@@ -340,12 +369,12 @@ def build_report() -> dict[str, Any]:
             "missing_cg_120_320_1050_4125": True,
             "complete_sm_irrep_mass_matrices": True,
             "global_stationarity_boundedness": True,
-            "uv_determination_of_kappa": True,
+            "unique_uv_kappa": True,
         },
         "verdict": (
-            "Injected κ phase Hessian on (Im H[hEW], Im S) yields an exact PQ "
-            f"axion null; combined removal of {EXPECTED_GOLDSTONES} Goldstones + "
-            f"{EXPECTED_AXIONS} axion leaves "
+            "Injected physical A_κ phase Hessian on (Im H[hEW], Im S) yields an "
+            f"exact PQ axion null; combined removal of {EXPECTED_GOLDSTONES} "
+            f"Goldstones + {EXPECTED_AXIONS} axion leaves "
             f"{dyn_spec['n_zero']} zeros / {dyn_spec['n_positive']} positive / "
             f"{dyn_spec['n_negative']} negative modes on the dim-{EXPECTED_FIELD_DIM} "
             "skeleton. Full component Hessian and theory closure remain BLOCKED."

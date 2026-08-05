@@ -38,7 +38,11 @@ jobs:
           assert dyn['n_positive']==701
           assert dyn['n_negative']==0
           assert r['kappa_phase']['axion_phi_integer']==[1,-2]
+          assert 'physical' in r['kappa_phase']['A_kappa_scale_rule']
+          assert r['kappa_phase']['A_kappa_GeV2']>0
           assert r['flags']['pq_axion_quotient_on_extended_hessian']
+          assert r['flags']['physical_A_kappa_wired']
+          assert not r['flags']['uv_kappa_uniquely_determined']
           assert not r['flags']['full_component_hessian_complete']
           assert not r['flags']['whole_model_validated']
           PY

@@ -165,7 +165,7 @@ def build_report() -> dict[str, Any]:
         },
     }
     still_open = [
-        "OPEN_210_CHANNEL_1050",
+        "OPEN_210_CHANNEL_1050",  # see open_210_channel_1050_irreducible_blocker
         "OPEN_210_CHANNEL_45_OFF_SINGLET",
     ]
 

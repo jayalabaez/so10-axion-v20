@@ -247,10 +247,21 @@ diagnostic only (not free extrema). Full-ring extrema remain OPEN.
 `A_κ = |κ| M_I hEW² v_S` from the finite-κ stationarity window, withdraws the
 `M_I`-equal proxy, and records that κ is constrained but **not** UV-unique.
 
+## Completed physical A_κ wiring + 1050 irreducible blocker
+
+`extended_hessian_pq_axion_quotient_v20.py` now injects **physical** `A_κ`
+(from `uv_kappa_stationarity_constraint_v20`) instead of diagnostic
+`min(A,C)/5`. Spectrum gate remains 37 zeros / 701 positive / 0 negative.
+`effective_pq_axion_potential_v20` uses the same physical `A_κ`.
+
+`open_210_channel_1050_irreducible_blocker_v20.py` proves
+`OPEN_210_CHANNEL_1050` cannot be filled from residual after 1/54/210 maps
+(residual mixes ≥770⊕1050⊕4125). Status: `OPEN_AWAITING_YOUNG_CG`. No CG invented.
+
 ## Correct next goal
 
 Theory completion still requires transcribed CG for 120/320/1050/4125 and
-off-singlet 210 channel 1050 plus mixed-45 (G1), mode-by-mode diagonals (G2),
+off-singlet mixed-45 (G1), mode-by-mode diagonals (G2),
 complete stationarity/hierarchy (G3), the full dynamical Hessian artifact
 (G4), then global BFB, thresholds, two-loop RGE, and unique τ_p (G5–G8).
 Do not invent missing CG and do not reopen a reduced-sector phase hunt.
@@ -262,9 +273,9 @@ Do not invent missing CG and do not reopen a reduced-sector phase hunt.
    - Prove linear independence and record Hermitian-conjugation conventions.
    - Transcribe missing CG tensors (especially 120, 320, 1050, 4125) into the Cartesian basis.
    - Prefer operators with nonzero tensor projection on the actual `(Delta_R,hEW,S,Phi)` vacuum for phase locking.
-   - Next combinatorial targets without invented tables: channel-1050 Young
-     projector only from published/combinatorial tensors; wire physical `A_κ`
-     into the extended Hessian scale (replacing diagnostic `m²_210/5`).
+   - Next without invented tables: off-singlet mixed-45 operator census;
+     competing free-extrema solve on reduced amplitudes; unique-κ principle
+     beyond soft matching.
 
 2. **Full component projection**
    - Project every invariant into canonical Pati-Salam and Standard Model component fields.

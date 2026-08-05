@@ -1,0 +1,81 @@
+{
+  "status": "OPEN_210_CHANNEL_1050_BLOCKED__AWAITING_YOUNG_CG",
+  "overall_state": "BLOCKED",
+  "n_checks": 8,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "known_54_map_ready": true,
+    "known_210_map_ready": true,
+    "generic_known_channels_fire": true,
+    "residual_irrep_sum_gt_1050": true,
+    "1050_not_uniquely_isolated": true,
+    "cg_1050_not_invented": true,
+    "channel_remains_open": true,
+    "whole_model_not_overclaimed": true
+  },
+  "inventory_slot": {
+    "id": "OPEN_210_CHANNEL_1050",
+    "status": "OPEN_AWAITING_YOUNG_CG",
+    "filled": false,
+    "reason": "After removing 1/54/210 images, the residual of (210\u2297210)_s still mixes at least 770\u22951050\u22954125; no unique combinatorial 1050 projector without published Young/CG data."
+  },
+  "representation_theory": {
+    "symmetric_product_contains": [
+      "1",
+      "54",
+      "210",
+      "770",
+      "1050",
+      "4125",
+      "\u2026"
+    ],
+    "constructed_in_repo": [
+      "1 (radial)",
+      "54",
+      "210"
+    ],
+    "residual_irrep_dims": {
+      "770": 770,
+      "1050": 1050,
+      "4125": 4125
+    },
+    "residual_dim_sum": 5945,
+    "uniqueness": "1050 not uniquely fixed by residual"
+  },
+  "diagnostics": {
+    "generic_unit_phi": {
+      "unit_phi": true,
+      "Q54_frobenius": 0.33557870786273397,
+      "Xi210_norm": 0.28157720798326846,
+      "singlet_trace_amp": 0.4000000000000001,
+      "known_channels_nontrivial": true
+    },
+    "ps_span_unit_combo": {
+      "unit_phi": true,
+      "Q54_frobenius": 0.258198889747161,
+      "Xi210_norm": 0.5544908795262429,
+      "singlet_trace_amp": 0.4000000000000001,
+      "known_channels_nontrivial": true
+    }
+  },
+  "required_to_close": [
+    "Published SO(10) Young projector (210\u2297210)_s \u2192 1050",
+    "Or transcribed CG tensors from a cited source into Cartesian basis",
+    "Do not invent numerical CG coefficients"
+  ],
+  "flags": {
+    "open_210_channel_1050_blocker_ready": true,
+    "open_210_channel_1050_filled": false,
+    "cg_1050_invented": false,
+    "cg_120_320_1050_4125_invented": false,
+    "whole_model_validated": false,
+    "whole_model_excluded": false
+  },
+  "remaining_blockers": {
+    "young_or_cg_1050": true,
+    "missing_cg_120_320_4125": true,
+    "full_nonsusy_vacuum_hessian": true
+  },
+  "verdict": "OPEN_210_CHANNEL_1050 remains OPEN: residual after 1/54/210 maps is not uniquely 1050 (residual irrep dim sum \u2265 5945). Await published Young/CG; do not invent. Theory remains BLOCKED."
+}

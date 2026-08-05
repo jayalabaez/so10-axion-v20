@@ -24,6 +24,8 @@ class ExtendedHessianPqAxionQuotientTests(unittest.TestCase):
         self.assertTrue(flags["pq_axion_quotient_on_extended_hessian"])
         self.assertTrue(flags["gauge_36_and_axion_1_removed"])
         self.assertTrue(flags["kappa_phase_block_injected"])
+        self.assertTrue(flags["physical_A_kappa_wired"])
+        self.assertFalse(flags["uv_kappa_uniquely_determined"])
         self.assertFalse(flags["full_component_hessian_complete"])
         self.assertFalse(flags["whole_model_validated"])
         self.assertFalse(flags["whole_model_excluded"])
@@ -35,6 +37,8 @@ class ExtendedHessianPqAxionQuotientTests(unittest.TestCase):
         self.assertAlmostEqual(proj["trace_P_axion"], 1.0, places=6)
         self.assertAlmostEqual(proj["trace_P_phys"], 701.0, places=6)
         self.assertEqual(self.report["kappa_phase"]["axion_phi_integer"], [1, -2])
+        self.assertIn("physical", self.report["kappa_phase"]["A_kappa_scale_rule"])
+        self.assertGreater(self.report["kappa_phase"]["A_kappa_GeV2"], 0.0)
         ga = self.report["goldstone_axion_projection"]
         self.assertEqual(ga["n_removed"], 37)
         dyn = ga["dynamical_scaled_spectrum"]

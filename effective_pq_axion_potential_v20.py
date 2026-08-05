@@ -133,11 +133,13 @@ def build_report(*, a_kappa: float | None = None) -> dict[str, Any]:
     # Match extended Hessian scale rule when A_κ not supplied: use a finite
     # positive diagnostic scale (not a UV determination of κ).
     if a_kappa is None:
-        # Prefer reduced P_210 mass as a GUT-ish reference / 5 (same spirit as min(A,C)/5).
+        uv = __import__(
+            "uv_kappa_stationarity_constraint_v20", fromlist=["build_report"]
+        ).build_report()
+        a_kappa = float(uv["A_kappa"]["physical_GeV2"])
+        scale_rule = "physical |κ| M_I hEW² v_S (uv_kappa_stationarity)"
         d210_rep = d210.build_report()
         m2_210 = float(d210_rep["mass"]["m2_210_form_basis_GeV2"])
-        a_kappa = m2_210 / 5.0
-        scale_rule = "m2_210_form_basis/5 (diagnostic; UV κ OPEN)"
     else:
         d210_rep = d210.build_report()
         m2_210 = float(d210_rep["mass"]["m2_210_form_basis_GeV2"])
