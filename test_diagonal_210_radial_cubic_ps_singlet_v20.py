@@ -1,0 +1,27 @@
+#!/usr/bin/env python3
+"""Tests for 210 radial/cubic PS-singlet fill."""
+
+from __future__ import annotations
+
+import unittest
+
+import diagonal_210_radial_cubic_ps_singlet_v20 as mod
+
+
+class Diagonal210RadialCubicPsSingletTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.report = mod.build_report()
+
+    def test_executes_fail_closed(self):
+        self.assertEqual(self.report["n_failed"], 0, self.report["failures"])
+        self.assertEqual(self.report["overall_state"], "BLOCKED")
+        self.assertTrue(self.report["flags"]["open_210_radial_ps_singlet_filled"])
+        self.assertFalse(self.report["flags"]["off_singlet_210_channel_cg"])
+        self.assertFalse(self.report["flags"]["whole_model_validated"])
+        self.assertGreater(self.report["mass"]["mu2_P210_GeV2"], 0.0)
+        self.assertIn("OPEN_210_CHANNEL_1050", self.report["still_open_slots"])
+
+
+if __name__ == "__main__":
+    unittest.main()

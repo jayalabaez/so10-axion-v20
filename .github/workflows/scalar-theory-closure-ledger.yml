@@ -21,14 +21,20 @@ jobs:
         run: python -m pip install -r requirements.txt
       - name: Execute MIXED_10 absorption
         run: python diagonal_mixed_10_portal_absorption_v20.py --write
+      - name: Execute 210 radial/cubic PS-singlet fill
+        run: python diagonal_210_radial_cubic_ps_singlet_v20.py --write
       - name: Execute filled mass PS/SM spectrum
         run: python filled_mass_ps_sm_irrep_spectrum_v20.py --write
+      - name: Execute scoped BFB gate
+        run: python scoped_bfb_boundedness_gate_v20.py --write
       - name: Execute scalar theory closure ledger
         run: python scalar_theory_closure_ledger_v20.py --write
       - name: Focused regression tests
         run: |
           python -m unittest -v \
             test_diagonal_mixed_10_portal_absorption_v20.py \
+            test_diagonal_210_radial_cubic_ps_singlet_v20.py \
+            test_scoped_bfb_boundedness_gate_v20.py \
             test_filled_mass_ps_sm_irrep_spectrum_v20.py \
             test_scalar_theory_closure_ledger_v20.py
       - name: Assert BLOCKED ledger honesty
@@ -39,13 +45,19 @@ jobs:
           assert r['n_failed']==0, r
           assert r['overall_state']=='BLOCKED'
           assert r['gate_summary']['n_closed']==0
-          assert r['gate_summary']['n_partial']==3
-          assert r['gate_summary']['n_open']==5
+          assert r['gate_summary']['n_partial']==4
+          assert r['gate_summary']['n_open']==4
           assert not r['flags']['theory_complete']
           assert not r['flags']['whole_model_validated']
           m=json.load(open('DIAGONAL_MIXED_10_PORTAL_ABSORPTION_V20.json'))
           assert m['n_failed']==0
           assert m['flags']['open_mixed_10_absorbed_into_portal']
+          d=json.load(open('DIAGONAL_210_RADIAL_CUBIC_PS_SINGLET_V20.json'))
+          assert d['n_failed']==0
+          b=json.load(open('SCOPED_BFB_BOUNDEDNESS_GATE_V20.json'))
+          assert b['n_failed']==0
+          assert b['flags']['g5_partial']
+          assert not b['flags']['full_invariant_ring_bfb']
           PY
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
@@ -56,5 +68,9 @@ jobs:
             SCALAR_THEORY_CLOSURE_LEDGER_V20.md
             DIAGONAL_MIXED_10_PORTAL_ABSORPTION_V20.json
             DIAGONAL_MIXED_10_PORTAL_ABSORPTION_V20.md
+            DIAGONAL_210_RADIAL_CUBIC_PS_SINGLET_V20.json
+            DIAGONAL_210_RADIAL_CUBIC_PS_SINGLET_V20.md
+            SCOPED_BFB_BOUNDEDNESS_GATE_V20.json
+            SCOPED_BFB_BOUNDEDNESS_GATE_V20.md
             FILLED_MASS_PS_SM_IRREP_SPECTRUM_V20.json
             FILLED_MASS_PS_SM_IRREP_SPECTRUM_V20.md

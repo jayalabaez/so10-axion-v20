@@ -33,6 +33,7 @@ from typing import Any
 
 import numpy as np
 
+import diagonal_210_radial_cubic_ps_singlet_v20 as d210
 import diagonal_h10_sigmabar_m2_isotropic_54_slots_v20 as iso
 import direct_portal_mass2_schur_gate_v20 as schur
 import hodge_126bar_c_embedding_portal_lift_v20 as hodge
@@ -280,7 +281,11 @@ def build_report() -> dict[str, Any]:
         v_s=vevs["vS"],
         lam4=lam4,
     )
-    m2_210 = float(max(SOFT_FLOOR_GEV2, float(np.min(a)), float(np.min(c))))
+    m2_210 = float(
+        d210.reduced_p210_mass2(m_i=m_i, m_gut=m_gut, lam4=0.0)[
+            "m2_210_form_basis_GeV2"
+        ]
+    )
     assembled = assemble_extended_hessian(
         a_h10=a,
         c_diag=c,

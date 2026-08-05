@@ -25,8 +25,10 @@ import json
 from pathlib import Path
 from typing import Any
 
+import diagonal_210_radial_cubic_ps_singlet_v20 as d210
 import diagonal_mixed_10_portal_absorption_v20 as mixed10
 import extended_hessian_pq_axion_quotient_v20 as pq_ext
+import scoped_bfb_boundedness_gate_v20 as bfb
 import unique_soft_scale_stationarity_v20 as soft_stat
 
 ROOT = Path(__file__).resolve().parent
@@ -55,6 +57,7 @@ def _gate(
 def build_report() -> dict[str, Any]:
     mix = mixed10.build_report()
     pq = pq_ext.build_report()
+    d210_rep = d210.build_report()
     try:
         soft = soft_stat.build_report()
         soft_ok = soft.get("n_failed", 1) == 0
@@ -62,6 +65,13 @@ def build_report() -> dict[str, Any]:
     except Exception as exc:  # pragma: no cover - defensive
         soft_ok = False
         soft_status = f"UNAVAILABLE: {exc}"
+    try:
+        bfb_rep = bfb.build_report()
+        bfb_ok = bfb_rep.get("n_failed", 1) == 0
+        bfb_status = bfb_rep.get("status")
+    except Exception as exc:  # pragma: no cover
+        bfb_ok = False
+        bfb_status = f"UNAVAILABLE: {exc}"
 
     gates = [
         _gate(
@@ -72,9 +82,11 @@ def build_report() -> dict[str, Any]:
                 "diagonal_h10_sigmabar_m2_channel_inventory_v20 transcribed",
                 "OPEN_MIXED_126 PS-singlet fill",
                 "OPEN_MIXED_10 absorbed into portal B (not a diagonal)",
+                "OPEN_210_RADIAL/CUBIC PS-singlet fill",
             ],
             blockers=[
                 "CG tensors 120 / 320 / 1050 / 4125 missing",
+                "OPEN_210_CHANNEL_45/54/210/1050 off-singlet CG missing",
                 "FULL_MIXED_REP_INVARIANT_RING_V20.json absent",
             ],
         ),
@@ -86,6 +98,7 @@ def build_report() -> dict[str, Any]:
                 "direct lambda4 vS T_Phi portal B closed",
                 "Schur 272 gate with partial isotropic/norm A/C",
                 "Hodge C embedding + full (Re/Im H) portal lift",
+                f"210 PS-singlet m2 from reduced Hessian: {d210_rep.get('status')}",
             ],
             blockers=[
                 "mode-by-mode CG for remaining open slots",
@@ -111,7 +124,7 @@ def build_report() -> dict[str, Any]:
             status="PARTIAL",
             evidence=[
                 "SO(10)→U(1)_EM orbit rank 36",
-                "extended dim-738 form-basis skeleton",
+                "extended dim-738 form-basis skeleton with PS 210 mass",
                 "PQ axion quotient: 37 zeros / 701 positive / 0 negative",
                 f"pq module status: {pq.get('status')}",
             ],
@@ -123,8 +136,11 @@ def build_report() -> dict[str, Any]:
         _gate(
             gate_id="G5",
             title="Global vacuum selection and boundedness",
-            status="OPEN",
-            evidence=["scoped Schur positivity on partial A/C+B"],
+            status="PARTIAL" if bfb_ok else "OPEN",
+            evidence=[
+                f"scoped_bfb_boundedness_gate: {bfb_status}",
+                "reduced quartic PD + Schur PD + projected skeleton non-negative",
+            ],
             blockers=[
                 "competing extrema of the complete potential",
                 "BFB certificate for the full invariant ring",
@@ -167,7 +183,9 @@ def build_report() -> dict[str, Any]:
         "eight_gates_listed": len(gates) == 8,
         "no_gate_falsely_closed": n_closed == 0,
         "g4_partial_from_pq_skeleton": gates[3]["status"] == "PARTIAL",
+        "g5_partial_from_scoped_bfb": gates[4]["status"] == "PARTIAL",
         "mixed10_absorption_green": mix.get("n_failed", 1) == 0,
+        "d210_ps_singlet_green": d210_rep.get("n_failed", 1) == 0,
         "pq_extended_green": pq.get("n_failed", 1) == 0,
         "whole_model_not_overclaimed": True,
         "theory_not_claimed_complete": True,
@@ -176,7 +194,7 @@ def build_report() -> dict[str, Any]:
 
     return {
         "status": (
-            "SCALAR_THEORY_CLOSURE_LEDGER_BLOCKED__PARTIAL_G2_G3_G4"
+            "SCALAR_THEORY_CLOSURE_LEDGER_BLOCKED__PARTIAL_G2_G3_G4_G5"
             if not failures
             else "SCALAR_THEORY_CLOSURE_LEDGER_FAILED"
         ),
@@ -195,8 +213,10 @@ def build_report() -> dict[str, Any]:
         "gates": gates,
         "upstream": {
             "mixed10_status": mix.get("status"),
+            "d210_status": d210_rep.get("status"),
             "pq_extended_status": pq.get("status"),
             "soft_stationarity_status": soft_status,
+            "scoped_bfb_status": bfb_status,
         },
         "flags": {
             "theory_closure_ledger_ready": not bool(failures),
@@ -206,9 +226,9 @@ def build_report() -> dict[str, Any]:
         },
         "verdict": (
             f"Scalar closure ledger: {n_closed}/8 CLOSED, {n_partial}/8 PARTIAL, "
-            f"{n_open}/8 OPEN. G2/G3/G4 are PARTIAL via portal+Schur, soft "
-            "stationarity, and the dim-738 Goldstone+axion projected skeleton. "
-            "Missing CG (120/320/1050/4125), full Hessian, BFB, thresholds, "
+            f"{n_open}/8 OPEN. G2–G5 are PARTIAL via portal/Schur/210 PS-singlet, "
+            "soft stationarity, Goldstone+axion Hessian skeleton, and scoped BFB. "
+            "Missing CG (120/320/1050/4125), full Hessian, global BFB, thresholds, "
             "two-loop RGE, and unique τ_p keep the theory BLOCKED — not complete."
         ),
     }

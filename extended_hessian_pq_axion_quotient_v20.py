@@ -37,6 +37,7 @@ from typing import Any
 
 import numpy as np
 
+import diagonal_210_radial_cubic_ps_singlet_v20 as d210
 import diagonal_h10_sigmabar_m2_isotropic_54_slots_v20 as iso
 import direct_portal_mass2_schur_gate_v20 as schur
 import extended_form_basis_hessian_imh_spectators_v20 as ext
@@ -207,7 +208,11 @@ def build_report() -> dict[str, Any]:
         v_s=v_s,
         lam4=lam4,
     )
-    m2_210 = float(max(ext.SOFT_FLOOR_GEV2, scale))
+    m2_210 = float(
+        d210.reduced_p210_mass2(m_i=m_i, m_gut=m_gut, lam4=0.0)[
+            "m2_210_form_basis_GeV2"
+        ]
+    )
     assembled = ext.assemble_extended_hessian(
         a_h10=a,
         c_diag=c,

@@ -182,17 +182,23 @@ component Hessian remain OPEN.
 `210·126†·10` opens H–Σ mixing through the same `T_Φ` as portal
 `B=λ₄ v_S T_Φ` (absorbed; not a new diagonal). 
 `filled_mass_ps_sm_irrep_spectrum_v20.py` assigns PS multiplicities to the
-isotropic A/C seeds. `scalar_theory_closure_ledger_v20.py` scores G1–G8 as
-**0 CLOSED / 3 PARTIAL (G2,G3,G4) / 5 OPEN** — theory remains **BLOCKED**,
-not complete.
+isotropic A/C seeds. `scalar_theory_closure_ledger_v20.py` scores G1–G8.
+
+## Completed OPEN_210_RADIAL/CUBIC PS-singlet fill + scoped BFB
+
+`diagonal_210_radial_cubic_ps_singlet_v20.py` fills the form-basis 210 mass
+from the reduced `P_210` curvature (radial + Aulakh cubics) at `hEW=174`.
+`scoped_bfb_boundedness_gate_v20.py` aggregates reduced-quartic BFB, Schur
+PD, and the Goldstone+axion-projected skeleton. Closure ledger:
+**0 CLOSED / 4 PARTIAL (G2–G5) / 4 OPEN**. Theory remains **BLOCKED**.
 
 ## Correct next goal
 
-Theory completion still requires transcribed CG for 120/320/1050/4125 (G1),
-the full projected potential and mode-by-mode diagonals (G2), complete
-stationarity/hierarchy (G3), the full dynamical Hessian artifact (G4), then
-BFB, thresholds, two-loop RGE, and unique τ_p (G5–G8). Do not invent missing
-CG and do not reopen a reduced-sector phase hunt.
+Theory completion still requires transcribed CG for 120/320/1050/4125 and
+off-singlet 210 channels 45/54/210/1050 (G1), mode-by-mode diagonals (G2),
+complete stationarity/hierarchy (G3), the full dynamical Hessian artifact
+(G4), then global BFB, thresholds, two-loop RGE, and unique τ_p (G5–G8).
+Do not invent missing CG and do not reopen a reduced-sector phase hunt.
 
 ## Executable sequence
 
