@@ -168,13 +168,21 @@ Goldstone rank stays **36**, inserts the full holomorphic portal on
 Projected spectrum: 36 zeros / 702 positive / 0 negative. PQ axion quotient
 remains OPEN.
 
+## Completed PQ-axion quotient on the extended Hessian
+
+`extended_hessian_pq_axion_quotient_v20.py` injects the κ phase Hessian into
+`(Im H[hEW], Im S)`, realizes the exact PQ null `(φ_10,φ_S)∥(1,-2)`, and
+removes it together with the 36 SO(10) Goldstones. Combined projected
+spectrum: **37 zeros / 701 positive / 0 negative**. UV value of `κ` and full
+component Hessian remain OPEN.
+
 ## Correct next goal
 
 Continue the full component scalar mass-squared matrix and global
-`hEW=174 GeV` vacuum: apply the PQ-axion quotient on the extended Hessian,
-fill remaining charge-allowed diagonals that do not invent 120/320/1050/4125
-CG, complete SM-irrep mass matrices, then stationarity, boundedness,
-thresholds, and τ_p. Do not reopen a reduced-sector phase hunt.
+`hEW=174 GeV` vacuum: fill remaining charge-allowed diagonals that do not
+invent 120/320/1050/4125 CG, complete SM-irrep mass matrices, then
+stationarity, boundedness, thresholds, and τ_p. Do not reopen a
+reduced-sector phase hunt.
 
 ## Executable sequence
 
@@ -200,8 +208,8 @@ thresholds, and τ_p. Do not reopen a reduced-sector phase hunt.
    - Remove exactly 36 gauge Goldstones (SO(10)→U(1)_EM; SM-only was 33).
    - Require every remaining eigenvalue to be positive.
    - Partial form-basis gate with Hodge-placed C, full (Re/Im H) portal B,
-     S/Φ₁₇ soft blocks, and hEW 36-Goldstone projector is in place on dim 738;
-     PQ axion quotient still OPEN.
+     S/Φ₁₇ soft blocks, κ phase block, and combined 36 Goldstone + 1 PQ-axion
+     projector is in place on dim 738 (37 removed / 701 physical).
 
 5. **Global vacuum and boundedness**
    - Check all enumerated competing extrema.

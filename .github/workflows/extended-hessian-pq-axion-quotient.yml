@@ -1,0 +1,51 @@
+name: extended-hessian-pq-axion-quotient
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: extended-hessian-pq-axion-quotient-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pq-axion-quotient:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Execute PQ-axion quotient on extended Hessian
+        run: python extended_hessian_pq_axion_quotient_v20.py --write
+      - name: Focused regression tests
+        run: python -m unittest -v test_extended_hessian_pq_axion_quotient_v20.py
+      - name: Assert 37 removed modes and honesty flags
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('EXTENDED_HESSIAN_PQ_AXION_QUOTIENT_V20.json'))
+          assert r['n_failed']==0, r
+          assert r['embedding']['total']==738
+          assert abs(r['projectors']['trace_P_G']-36.0)<1e-6
+          assert abs(r['projectors']['trace_P_axion']-1.0)<1e-6
+          assert abs(r['projectors']['trace_P_phys']-701.0)<1e-6
+          dyn=r['goldstone_axion_projection']['dynamical_scaled_spectrum']
+          assert dyn['n_zero']==37
+          assert dyn['n_positive']==701
+          assert dyn['n_negative']==0
+          assert r['kappa_phase']['axion_phi_integer']==[1,-2]
+          assert r['flags']['pq_axion_quotient_on_extended_hessian']
+          assert not r['flags']['full_component_hessian_complete']
+          assert not r['flags']['whole_model_validated']
+          PY
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: extended-hessian-pq-axion-quotient
+          path: |
+            EXTENDED_HESSIAN_PQ_AXION_QUOTIENT_V20.json
+            EXTENDED_HESSIAN_PQ_AXION_QUOTIENT_V20.md
