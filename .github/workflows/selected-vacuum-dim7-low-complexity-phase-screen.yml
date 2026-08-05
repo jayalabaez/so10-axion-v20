@@ -1,0 +1,79 @@
+name: selected-vacuum-dim7-low-complexity-phase-screen
+
+on:
+  pull_request:
+    paths:
+      - selected_vacuum_dim7_low_complexity_phase_screen_v20.py
+      - test_selected_vacuum_dim7_low_complexity_phase_screen_v20.py
+      - selected_vacuum_neutral_h10_dim6_no_go_v20.py
+      - selected_vacuum_phase_invariant_dim6_metric_audit_v20.py
+      - .github/workflows/selected-vacuum-dim7-low-complexity-phase-screen.yml
+  workflow_dispatch:
+
+concurrency:
+  group: selected-vacuum-dim7-low-complexity-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  dim7-low-complexity-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      PYTHONHASHSEED: "0"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - name: Compile targeted dimension-seven screen
+        run: |
+          python -m compileall -q \
+            selected_vacuum_dim7_low_complexity_phase_screen_v20.py \
+            test_selected_vacuum_dim7_low_complexity_phase_screen_v20.py
+      - name: Execute targeted dimension-seven screen
+        run: python selected_vacuum_dim7_low_complexity_phase_screen_v20.py --write
+      - name: Focused tests
+        run: |
+          python -m unittest -v \
+            test_selected_vacuum_dim7_low_complexity_phase_screen_v20.py
+      - name: Assert honest staged result
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('SELECTED_VACUUM_DIM7_LOW_COMPLEXITY_PHASE_SCREEN_V20.json'))
+          assert r['n_failed']==0 and r['overall_state']=='BLOCKED', r
+          e=r['enumeration']
+          s=r['screen']
+          f=r['flags']
+          assert e['dimension7_charge_allowed_monomials']==98, r
+          assert e['dimension7_tensor_signatures']==98, r
+          assert e['new_tensor_signatures_beyond_dim6']==68, r
+          assert e['new_odd_H_signatures']==42, r
+          assert e['new_even_H_signatures']==26, r
+          assert e['new_even_H_conjugacy_representatives']==13, r
+          assert len(e['low_complexity_representatives'])==8, r
+          assert len(e['high_complexity_representatives'])==5, r
+          assert s['total_metric_graphs']==1128, r
+          assert s['total_graph_coefficient_evaluations']==5835, r
+          assert s['n_nonzero_representatives']==len(s['nonzero_representatives']), r
+          assert f['dimension7_low_complexity_screen_complete'], r
+          assert f['nonzero_dimension7_phase_channel_found']==bool(s['nonzero_representatives']), r
+          assert not f['stationarity_rebuilt_with_dimension7_operator'], r
+          assert not f['selected_vacuum_fully_stabilized'], r
+          assert not f['whole_model_validated'], r
+          assert not f['whole_model_excluded'], r
+          for row in s['nonzero_representatives']:
+              assert row['maximum_abs_coefficient'] > 1e-10, row
+              for record in row['phase_rank_records']:
+                  assert record['rank_with_kappa']==2, record
+                  assert record['null_is_PQ_1_1_minus2'], record
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: selected-vacuum-dim7-low-complexity-phase-screen
+          path: |
+            SELECTED_VACUUM_DIM7_LOW_COMPLEXITY_PHASE_SCREEN_V20.json
+            SELECTED_VACUUM_DIM7_LOW_COMPLEXITY_PHASE_SCREEN_V20.md
