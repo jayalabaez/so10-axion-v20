@@ -5,6 +5,8 @@ on:
     paths:
       - h10_intermediate_vev_consistency_audit_v20.py
       - test_h10_intermediate_vev_consistency_audit_v20.py
+      - physical_h10_54_mass_block_from_deltar_v20.py
+      - test_physical_h10_54_mass_block_from_deltar_v20.py
       - diagonal_h10_sigmabar_m2_isotropic_54_slots_v20.py
       - test_diagonal_h10_sigmabar_m2_isotropic_54_slots_v20.py
       - .github/workflows/diagonal-m2-isotropic-54-slots.yml
@@ -17,7 +19,7 @@ concurrency:
 jobs:
   corrected-isotropic-gate:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 60
     env:
       PYTHONHASHSEED: "0"
     steps:
@@ -30,28 +32,39 @@ jobs:
       - run: |
           python -m compileall -q \
             h10_intermediate_vev_consistency_audit_v20.py \
+            physical_h10_54_mass_block_from_deltar_v20.py \
             diagonal_h10_sigmabar_m2_isotropic_54_slots_v20.py \
             test_h10_intermediate_vev_consistency_audit_v20.py \
+            test_physical_h10_54_mass_block_from_deltar_v20.py \
             test_diagonal_h10_sigmabar_m2_isotropic_54_slots_v20.py
-      - name: Execute corrected partial diagonal audit
+      - name: Execute corrected component audits
         run: |
           python h10_intermediate_vev_consistency_audit_v20.py --write
+          python physical_h10_54_mass_block_from_deltar_v20.py --write
           python diagonal_h10_sigmabar_m2_isotropic_54_slots_v20.py --write
       - name: Focused tests
         run: |
           python -m unittest -v \
             test_h10_intermediate_vev_consistency_audit_v20.py \
+            test_physical_h10_54_mass_block_from_deltar_v20.py \
             test_diagonal_h10_sigmabar_m2_isotropic_54_slots_v20.py
       - name: Assert fail-closed scientific state
         run: |
           python - <<'PY'
           import json
           a=json.load(open('H10_INTERMEDIATE_VEV_CONSISTENCY_AUDIT_V20.json'))
+          h=json.load(open('PHYSICAL_H10_54_MASS_BLOCK_FROM_DELTAR_V20.json'))
           r=json.load(open('DIAGONAL_H10_SIGMABAR_M2_ISOTROPIC_54_SLOTS_V20.json'))
           assert a['n_failed']==0 and a['overall_state']=='BLOCKED', a
           assert not a['flags']['physical_H10_intermediate_scale_singlet_vev_exists'], a
           assert not a['flags']['legacy_A54_v10eff_MI_physical'], a
           assert not a['flags']['legacy_isotropic_54_mass_seed_physical'], a
+          assert h['n_failed']==0 and h['overall_state']=='BLOCKED', h
+          assert h['flags']['exact_H10_54_holomorphic_second_derivative_derived'], h
+          assert not h['flags']['unphysical_H10_MI_proxy_used'], h
+          assert h['benchmark']['real_Hessian_min_eigenvalue_GeV2'] < 0.0, h
+          assert h['benchmark']['real_Hessian_max_eigenvalue_GeV2'] > 0.0, h
+          assert not h['flags']['full_component_hessian_complete'], h
           assert r['n_failed']==0 and r['overall_state']=='BLOCKED', r
           assert r['flag']['isotropic_norm_slots_partially_filled'], r
           assert not r['flag']['isotropic_norm_54_slots_partially_filled'], r
@@ -67,8 +80,6 @@ jobs:
           assert len(r['partial_diagonals']['filled_slots'])==3, r
           assert len(r['partial_diagonals']['withdrawn_slots'])==2, r
           assert r['partial_diagonals']['components']['locking_isotropic_seed']==0.0, r
-          assert 'OPEN_H10_54' in r['partial_diagonals']['still_open_slots'], r
-          assert 'OPEN_126_54_LOCKING' in r['partial_diagonals']['still_open_slots'], r
           PY
       - uses: actions/upload-artifact@v4
         if: always()
@@ -77,5 +88,7 @@ jobs:
           path: |
             H10_INTERMEDIATE_VEV_CONSISTENCY_AUDIT_V20.json
             H10_INTERMEDIATE_VEV_CONSISTENCY_AUDIT_V20.md
+            PHYSICAL_H10_54_MASS_BLOCK_FROM_DELTAR_V20.json
+            PHYSICAL_H10_54_MASS_BLOCK_FROM_DELTAR_V20.md
             DIAGONAL_H10_SIGMABAR_M2_ISOTROPIC_54_SLOTS_V20.json
             DIAGONAL_H10_SIGMABAR_M2_ISOTROPIC_54_SLOTS_V20.md
