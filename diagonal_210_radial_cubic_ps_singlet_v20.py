@@ -40,6 +40,7 @@ import nonsusy_reduced_hessian_v20 as reduced
 import scalar_vacuum_proton_decay_v20 as scalar_pd
 import open_210_channel_45_off_singlet_census_v20 as off45
 import open_210_channel_45_off_singlet_sm_quantum_numbers_v20 as off45qn
+import open_210_channel_54_off_singlet_census_v20 as off54mod
 import so10_210_to_45_projector_v20 as p45
 import so10_210_to_54_projector_v20 as p54
 import so10_210_to_210_self_map_v20 as p210map
@@ -121,6 +122,7 @@ def build_report() -> dict[str, Any]:
     ch210 = p210map.build_report()
     ch45off = off45.build_report()
     ch45qn = off45qn.build_report()
+    ch54off = off54mod.build_report()
     seed54 = float(
         ch54["selected_vacuum"]["OPEN_210_CHANNEL_54_seed_GeV2"]
     )
@@ -147,12 +149,20 @@ def build_report() -> dict[str, Any]:
             "note": "Not a separate additive seed; cubics are inside the reduced Hessian",
         },
         "OPEN_210_CHANNEL_54": {
-            "status": "PARTIAL_PS_SINGLET_TENSOR_MAP_READY",
+            "status": "PARTIAL_PS_SINGLET_AND_OFF_SINGLET_CENSUS",
             "contribution_GeV2": seed54,
             "feeds": "diagnostic_channel_seed_not_added_to_isotropic_m2",
-            "scope": "exact (210⊗210)→54 on selected vacuum; off-singlet CG OPEN",
+            "scope": (
+                "exact (210⊗210)→54 on selected vacuum + off-singlet mixed "
+                "census; mode-by-mode CG OPEN"
+            ),
             "formula": ch54["selected_vacuum"]["formula"],
             "lam_tilde": ch54["selected_vacuum"]["lam_tilde"],
+            "off_singlet_seed_GeV2": float(
+                ch54off["diagnostic_seed"][
+                    "OPEN_210_CHANNEL_54_OFF_SINGLET_seed_GeV2"
+                ]
+            ),
         },
         "OPEN_210_CHANNEL_45": {
             "status": "PARTIAL_PS_AND_SAME_FIELD_QUADRATIC_VANISHES",
@@ -202,6 +212,7 @@ def build_report() -> dict[str, Any]:
         "hilbert_ps_support_green": hilb.get("n_failed", 1) == 0,
         "channel_54_projector_green": ch54.get("n_failed", 1) == 0,
         "channel_54_seed_positive": seed54 > 0.0,
+        "channel_54_off_singlet_census_green": ch54off.get("n_failed", 1) == 0,
         "channel_45_projector_green": ch45.get("n_failed", 1) == 0,
         "channel_45_off_singlet_census_green": ch45off.get("n_failed", 1) == 0,
         "channel_45_off_singlet_seed_positive": seed45off > 0.0,
@@ -228,7 +239,11 @@ def build_report() -> dict[str, Any]:
         "hilbert_ps": hilb,
         "channel_54": {
             "status": ch54.get("status"),
+            "off_singlet_census_status": ch54off.get("status"),
             "seed_GeV2": seed54,
+            "off_singlet_seed_GeV2": ch54off["diagnostic_seed"][
+                "OPEN_210_CHANNEL_54_OFF_SINGLET_seed_GeV2"
+            ],
             "Q54_frobenius": ch54["selected_vacuum"]["Q54_frobenius"],
         },
         "channel_45": {

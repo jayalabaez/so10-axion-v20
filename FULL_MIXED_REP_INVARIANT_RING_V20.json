@@ -1294,9 +1294,30 @@
     "n_cg_missing": 16
   },
   "independence": {
-    "status": "OPEN",
+    "status": "PARTIAL_ON_CHARGE_SUBSPACES",
+    "method": "charge grading + monomial exponent-matrix SVD rank",
+    "n_charge_dim_subspaces": 4,
+    "n_subspaces_independent": 0,
+    "n_subspaces_partial_missing_cg": 2,
+    "n_subspaces_dependent_exponents": 2,
+    "n_forbidden_excluded": 7,
+    "ready_subset": {
+      "n": 3,
+      "rank": 2,
+      "full_rank": false,
+      "cg_ready_tags": [
+        "READY"
+      ],
+      "operator_ids": [
+        "Z17_030",
+        "10x10_1_isotropic",
+        "lambda4_portal_offdiag"
+      ],
+      "status": "DEPENDENT_OR_COLLINEAR_EXPONENTS"
+    },
     "proven_basis_size": null,
-    "note": "Scaffold does not prove linear independence of the ring"
+    "full_ring_independence": false,
+    "note": "Distinct (dim,PQ,X,Z17) grades are independent by charge. Within a grade, rank is of exponent vectors only \u2014 not a proof of SO(10) tensor independence for MISSING CG channels."
   },
   "cartesian_slots": {
     "convention": "P=p, A=sqrt(3)*a, W=sqrt(6)*omega",

@@ -297,6 +297,19 @@ cg_ready READY/PARTIAL/MISSING; no invented CG).
 multiplicities + Aulakh Table-1/R + Susyno gauge UV. Ledger G6 → PARTIAL.
 Closure scoreboard: **0 CLOSED / 5 PARTIAL (G2–G6) / 3 OPEN**.
 
+## Completed ring independence + off-singlet-54 census + hierarchy soft matching
+
+`charge_allowed_ring_linear_independence_certificate_v20.py` certifies
+PARTIAL independence on charge×dim subspaces via grading + monomial
+exponent SVD rank (full ring with CG still OPEN).
+
+`open_210_channel_54_off_singlet_census_v20.py` censuses vacuum⊗off-singlet
+`(Φ⊗δΦ)_54` on the 207-dim complement (published `P_54` only).
+
+`technically_natural_hierarchy_soft_matching_v20.py` quantifies
+`hEW/M_I`, `|δm²|/M_I²`, and matched `M_{1/2}` vs `|κ|M_I` at physical
+hEW (full stationarity / unique κ remain OPEN).
+
 ## Correct next goal
 
 Theory completion still requires transcribed CG for 120/320/1050/4125 and
@@ -313,9 +326,9 @@ Do not invent missing CG and do not reopen a reduced-sector phase hunt.
    - Prove linear independence and record Hermitian-conjugation conventions.
    - Transcribe missing CG tensors (especially 120, 320, 1050, 4125) into the Cartesian basis.
    - Prefer operators with nonzero tensor projection on the actual `(Delta_R,hEW,S,Phi)` vacuum for phase locking.
-   - Next without invented tables: ring linear-independence certificates on
-     charge-allowed subspaces; any remaining vacuum-projected mixed channels
-     with published CG only.
+   - Next without invented tables: `FULL_TENSOR_PROJECTED_POTENTIAL_V20.json`
+     scaffold; off-singlet-210 vacuum census with published self-map;
+     READY-subspace BFB only.
 
 2. **Full component projection**
    - Project every invariant into canonical Pati-Salam and Standard Model component fields.

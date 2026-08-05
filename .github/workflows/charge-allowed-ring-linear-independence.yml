@@ -1,0 +1,51 @@
+name: charge-allowed-ring-linear-independence
+
+on:
+  pull_request:
+    paths:
+      - charge_allowed_ring_linear_independence_certificate_v20.py
+      - test_charge_allowed_ring_linear_independence_certificate_v20.py
+      - charge_allowed_invariant_ring_scaffold_v20.py
+      - .github/workflows/charge-allowed-ring-linear-independence.yml
+  workflow_dispatch:
+
+concurrency:
+  group: charge-allowed-ring-linear-independence-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  charge-allowed-ring-linear-independence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Execute ring independence certificate
+        run: python charge_allowed_ring_linear_independence_certificate_v20.py --write
+      - name: Focused regression tests
+        run: python -m unittest -v test_charge_allowed_ring_linear_independence_certificate_v20.py
+      - name: Assert honest scientific scope
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('CHARGE_ALLOWED_RING_LINEAR_INDEPENDENCE_V20.json'))
+          assert r['status']=='RING_LINEAR_INDEPENDENCE_PARTIAL_ON_CHARGE_SUBSPACES__CG_OPEN'
+          assert r['n_failed']==0
+          assert r['overall_state']=='BLOCKED'
+          assert r['flags']['ring_linear_independence_partial']
+          assert not r['flags']['full_invariant_ring_complete']
+          assert not r['flags']['whole_model_validated']
+          PY
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: charge-allowed-ring-linear-independence
+          path: |
+            CHARGE_ALLOWED_RING_LINEAR_INDEPENDENCE_V20.json
+            CHARGE_ALLOWED_RING_LINEAR_INDEPENDENCE_V20.md

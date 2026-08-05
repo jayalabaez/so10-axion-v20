@@ -1,0 +1,77 @@
+{
+  "status": "TECHNICALLY_NATURAL_HIERARCHY_SOFT_MATCHING_PARTIAL__FULL_STATIONARITY_OPEN",
+  "overall_state": "BLOCKED",
+  "n_checks": 11,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "physical_hEW_174": true,
+    "soft_stat_green": true,
+    "uv_kappa_green": true,
+    "free_extrema_green": true,
+    "soft_matched_near_selected": true,
+    "bare_may_drift": true,
+    "hierarchy_ratios_recorded": true,
+    "soft_dm2_finite": true,
+    "kappa_not_unique": true,
+    "cg_not_invented": true,
+    "whole_model_not_overclaimed": true
+  },
+  "hierarchy_ratios": {
+    "hEW_over_MI": 2.7558439914617254e-10,
+    "vS_over_MI": 1.0,
+    "DeltaR_over_MI": 1.0,
+    "hEW_GeV": 174.0,
+    "M_I_GeV": 631385523052.4453,
+    "vS_GeV": 631385523052.4453,
+    "DeltaR_GeV": 631385523052.4453
+  },
+  "soft_naturalness": {
+    "delta_m2_GeV2": [
+      -1.9901727341576353e+22,
+      1.996313728727048e+22,
+      3.070497284706218e+19
+    ],
+    "delta_m2_over_MI2": [
+      -0.04992309852516246,
+      0.05007714418746576,
+      7.702283115164556e-05
+    ],
+    "max_abs_delta_m2_over_MI2": 0.05007714418746576,
+    "M_1_2_matched_GeV": 115319223031.39503,
+    "M_1_2_prior_abs_kappa_MI_GeV": 31569352775.24213,
+    "M_1_2_ratio_matched_over_prior": 3.6528852476770663,
+    "technically_soft_under_universal_matching": true,
+    "note": "\u03b4m\u00b2 fixed by stationarity at unification VEVs; under universal soft matching they are tied to M_1/2, not free hard masses."
+  },
+  "lambda4_naturalness": {
+    "abs_lam4_O1_naturalness_bound": 6.875482169895492e-34,
+    "historical_abs_lam4_over_bound": 4.6297380271863835e+27,
+    "historical_tachyonic": true,
+    "survival_lam4_0": true,
+    "source": "nonsusy_reduced_hessian_v20.ew_portal_consistency"
+  },
+  "kappa_status": {
+    "uv_kappa_uniquely_determined": false,
+    "probes_agree": false,
+    "relative_spread": 2.5482673157397837
+  },
+  "free_extrema_crosscheck": {
+    "with_soft_max_rel_shift": 1.70669568e-09,
+    "no_soft_max_rel_shift": 0.8
+  },
+  "flags": {
+    "technically_natural_hierarchy_soft_matching_partial": true,
+    "full_potential_stationarity": false,
+    "uv_kappa_uniquely_determined": false,
+    "cg_120_320_1050_4125_invented": false,
+    "whole_model_validated": false,
+    "whole_model_excluded": false
+  },
+  "remaining_blockers": {
+    "full_potential_stationarity": true,
+    "uv_axiom_fixing_unique_kappa": true,
+    "missing_cg_120_320_1050_4125": true
+  },
+  "verdict": "Hierarchy soft-matching PARTIAL at hEW=174.0: hEW/M_I=2.756e-10, max|\u03b4m\u00b2|/M_I\u00b2=5.008e-02, M_1/2(matched)/(|\u03ba|M_I)=3.653e+00. Soft matching anchors the reduced vacuum; UV \u03ba and full stationarity remain OPEN. Theory remains BLOCKED."
+}

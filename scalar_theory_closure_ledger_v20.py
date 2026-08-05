@@ -91,12 +91,13 @@ def build_report() -> dict[str, Any]:
                 "off-singlet mixed-45 vacuum⊗δΦ census (mode CG OPEN)",
                 "off-singlet mixed-45 SM Cartan labels (sector×Q; CG coeffs OPEN)",
                 "FULL_MIXED_REP_INVARIANT_RING_V20.json scaffold (independence OPEN)",
+                "charge-subspace linear-independence certificate (PARTIAL)",
             ],
             blockers=[
                 "CG tensors 120 / 320 / 1050 / 4125 missing",
                 "OPEN_210_CHANNEL_1050 awaits published Young/CG",
                 "off-singlet-45 mode-by-mode SM irrep CG coefficients OPEN",
-                "ring linear-independence proof OPEN",
+                "full ring independence with CG OPEN",
             ],
         ),
         _gate(
@@ -125,9 +126,9 @@ def build_report() -> dict[str, Any]:
                 "UV κ stationarity-constrained at physical hEW (not unique)",
                 "physical A_κ = |κ| M_I hEW² v_S",
                 "unique-κ principle probes disagree (soft-norm vs portal vs window)",
+                "technically natural hierarchy under soft matching (PARTIAL)",
             ],
             blockers=[
-                "technically natural hierarchy proof incomplete",
                 "full stationarity of complete potential OPEN",
                 "unique UV κ not fixed (finite window + soft shifts; probes disagree)",
             ],

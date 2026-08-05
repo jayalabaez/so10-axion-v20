@@ -1,0 +1,185 @@
+{
+  "status": "RING_LINEAR_INDEPENDENCE_PARTIAL_ON_CHARGE_SUBSPACES__CG_OPEN",
+  "overall_state": "BLOCKED",
+  "n_checks": 7,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "scaffold_green": true,
+    "allowed_nonempty": true,
+    "subspaces_enumerated": true,
+    "ready_subset_recorded": true,
+    "missing_cg_not_faked_independent": true,
+    "cg_not_invented": true,
+    "whole_model_not_overclaimed": true
+  },
+  "field_basis": [
+    "10_H",
+    "10_H_dag",
+    "126bar_H",
+    "126bar_H_dag",
+    "210_H",
+    "210_H_dag",
+    "S",
+    "S_dag",
+    "Phi17",
+    "Phi17_dag"
+  ],
+  "independence": {
+    "status": "PARTIAL_ON_CHARGE_SUBSPACES",
+    "method": "charge grading + monomial exponent-matrix SVD rank",
+    "n_charge_dim_subspaces": 4,
+    "n_subspaces_independent": 0,
+    "n_subspaces_partial_missing_cg": 2,
+    "n_subspaces_dependent_exponents": 2,
+    "n_forbidden_excluded": 7,
+    "ready_subset": {
+      "n": 3,
+      "rank": 2,
+      "full_rank": false,
+      "cg_ready_tags": [
+        "READY"
+      ],
+      "operator_ids": [
+        "Z17_030",
+        "10x10_1_isotropic",
+        "lambda4_portal_offdiag"
+      ],
+      "status": "DEPENDENT_OR_COLLINEAR_EXPONENTS"
+    },
+    "proven_basis_size": null,
+    "full_ring_independence": false,
+    "note": "Distinct (dim,PQ,X,Z17) grades are independent by charge. Within a grade, rank is of exponent vectors only \u2014 not a proof of SO(10) tensor independence for MISSING CG channels."
+  },
+  "subspaces": [
+    {
+      "n": 7,
+      "rank": 5,
+      "full_rank": false,
+      "cg_ready_tags": [
+        "PARTIAL",
+        "READY"
+      ],
+      "operator_ids": [
+        "Z17_000",
+        "Z17_001",
+        "Z17_002",
+        "Z17_003",
+        "Z17_004",
+        "210x210_1_isotropic",
+        "10x10_1_isotropic"
+      ],
+      "status": "DEPENDENT_OR_COLLINEAR_EXPONENTS",
+      "charge_dim_key": {
+        "dim": 2,
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      }
+    },
+    {
+      "n": 8,
+      "rank": 4,
+      "full_rank": false,
+      "cg_ready_tags": [
+        "MISSING",
+        "PARTIAL"
+      ],
+      "operator_ids": [
+        "Z17_005",
+        "Z17_007",
+        "Z17_009",
+        "210_cubic_channels",
+        "210x126_10",
+        "210x126_120",
+        "210x126_126",
+        "210x126_320"
+      ],
+      "status": "PARTIAL_RANK_LOWER_BOUND__MISSING_CG",
+      "charge_dim_key": {
+        "dim": 3,
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      }
+    },
+    {
+      "n": 26,
+      "rank": 7,
+      "full_rank": false,
+      "cg_ready_tags": [
+        "MISSING",
+        "PARTIAL",
+        "READY"
+      ],
+      "operator_ids": [
+        "Z17_015",
+        "Z17_016",
+        "Z17_017",
+        "Z17_018",
+        "Z17_019",
+        "Z17_020",
+        "Z17_021",
+        "Z17_022",
+        "Z17_023",
+        "Z17_024",
+        "Z17_025",
+        "Z17_026",
+        "Z17_027",
+        "Z17_028",
+        "Z17_029",
+        "Z17_030",
+        "210x210_45",
+        "210x210_54",
+        "210x210_210",
+        "210x210_1050",
+        "126_quartic_1050",
+        "126_quartic_4125",
+        "10x10_54",
+        "2102_10dag10_quartic",
+        "2102_126dag126_quartic",
+        "lambda4_portal_offdiag"
+      ],
+      "status": "PARTIAL_RANK_LOWER_BOUND__MISSING_CG",
+      "charge_dim_key": {
+        "dim": 4,
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      }
+    },
+    {
+      "n": 3,
+      "rank": 2,
+      "full_rank": false,
+      "cg_ready_tags": [
+        "PARTIAL"
+      ],
+      "operator_ids": [
+        "Z17_031",
+        "Z17_032",
+        "126_quartic_54"
+      ],
+      "status": "DEPENDENT_OR_COLLINEAR_EXPONENTS",
+      "charge_dim_key": {
+        "dim": 6,
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      }
+    }
+  ],
+  "flags": {
+    "ring_linear_independence_partial": true,
+    "full_invariant_ring_complete": false,
+    "cg_120_320_1050_4125_invented": false,
+    "whole_model_validated": false,
+    "whole_model_excluded": false
+  },
+  "remaining_blockers": {
+    "full_ring_independence_with_cg": true,
+    "missing_cg_120_320_1050_4125": true,
+    "full_nonsusy_vacuum_hessian": true
+  },
+  "verdict": "Ring linear-independence PARTIAL: 4 charge\u00d7dim subspaces (0 exponent-independent, 2 partial/missing-CG, 2 collinear). Full ring with CG remains OPEN. Theory remains BLOCKED."
+}
