@@ -26,12 +26,47 @@ class QuarticSoftBetasTests(unittest.TestCase):
         self.assertTrue(flags["pati_salam_subgroup_resolved"])
         self.assertTrue(flags["charged_10_126_casimirs_nonzero"])
         self.assertTrue(flags["separate_g4_gL_gR_running"])
+        self.assertTrue(flags["physical_H10_EW_background_used"])
+        self.assertFalse(flags["unphysical_H10_MI_background_used"])
         self.assertFalse(flags["two_loop_quartic_betas_complete"])
         self.assertFalse(flags["full_component_tensor_betas"])
         self.assertFalse(flags["live_sarah_or_pyrate_executable_run"])
         self.assertFalse(flags["soft_gaugino_baseline_required_for_ps_rge"])
         self.assertFalse(flags["exact_unique_proton_lifetime"])
         self.assertFalse(flags["whole_model_excluded"])
+
+    def test_physical_h10_background_is_174_gev(self):
+        self.assertEqual(
+            self.report["physical_backgrounds_GeV"]["H10_eff"],
+            mod.H10_EW_VEV_GEV,
+        )
+        self.assertEqual(mod.H10_EW_VEV_GEV, 174.0)
+        self.assertEqual(
+            self.report["boundary_GUT"]["ledger"]["background_vevs_GeV"][
+                "H10_eff"
+            ],
+            174.0,
+        )
+        self.assertEqual(
+            self.report["boundary_MI"]["ledger"]["background_vevs_GeV"][
+                "H10_eff"
+            ],
+            174.0,
+        )
+        self.assertNotEqual(
+            self.report["physical_backgrounds_GeV"]["H10_eff"],
+            self.report["physical_backgrounds_GeV"]["DeltaR_126bar"],
+        )
+        rows = {
+            row["name"]: row
+            for row in self.report["boundary_GUT"]["ledger"]["rows"]
+            if row["kind"] == "self_quartic"
+        }
+        self.assertEqual(rows["H10_eff"]["background_vev_GeV"], 174.0)
+        self.assertAlmostEqual(
+            rows["H10_eff"]["m2_GeV2"],
+            rows["H10_eff"]["value"] * 174.0**2,
+        )
 
     def test_soft_gaugino_revalidation_is_separate(self):
         diagnostic = self.report["soft_gaugino_downstream_diagnostic"]
