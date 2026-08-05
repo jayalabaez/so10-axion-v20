@@ -389,6 +389,14 @@ def build_report() -> dict[str, Any]:
         )
         for name in ("plus", "minus")
     }
+    for row in alignment.values():
+        row["max_abs_combination_over_MGUT"] = (
+            float(row["max_abs_combination_GeV"]) / m_gut
+        )
+    generic_doublet_probe_fails = all(
+        not bool(row.get("positive_on_assumption"))
+        for row in doublet_requirements.values()
+    )
 
     rank_loss = {
         "triplet_minus_at_p_eq_a": aulakh_branch_singular_values(
@@ -498,6 +506,15 @@ def build_report() -> dict[str, Any]:
             "branch_singular_values": branches,
             "branch_requirements": doublet_requirements,
             "alignment_tolerances": alignment,
+            "generic_probe_both_doublet_branches_fail_on_assumption": (
+                generic_doublet_probe_fails
+            ),
+            "interpretation": (
+                "Conditional result only: with Sigma-doublet mass M_GUT, "
+                "the historical lambda4 requires near a=±omega alignment "
+                "or additional diagonal component mass. This does not "
+                "exclude the full model before that diagonal Hessian is derived."
+            ),
         },
         "rank_loss_surfaces": {
             "triplet_minus": "p=a",
@@ -511,6 +528,9 @@ def build_report() -> dict[str, Any]:
             "exact_schur_positivity_gate_derived": True,
             "exact_isotropic_spectrum_derived": True,
             "doublet_alignment_escape_surfaces_identified": True,
+            "historical_generic_probe_requires_alignment_or_larger_diagonal_mass": (
+                generic_doublet_probe_fails
+            ),
             "historical_lambda4_full_model_excluded": False,
             "full_nonsusy_diagonal_component_hessian_supplied": False,
             "full_component_hessian_complete": False,
