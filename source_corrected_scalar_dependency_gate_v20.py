@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 """Fail-closed dependency gate after restoring the symmetric ``210x210->45``.
 
-This gate distinguishes results that are representation-structural and remain
-usable from scalar-potential conclusions that must be recomputed after the
+This gate distinguishes representation-structural results that remain usable
+from scalar-potential conclusions that must be recomputed after the
 source-correct quartic channel is restored.
 
-It does not erase valid work.  It prevents a partial branch from promoting
-reduced-potential positivity, boundedness, thresholds, or proton lifetime into
-a whole-model claim before the complete invariant basis is revalidated.
+The previous scalar closure ledger is deliberately *not executed here*: it was
+built from the reduced channel inventory now being corrected.  Treating it as
+an upstream authority would create a circular dependency and needlessly rerun
+large numerical modules.  Its affected conclusions are instead listed as
+superseded/reopened artifacts.
 """
 from __future__ import annotations
 
@@ -16,7 +18,6 @@ import json
 from pathlib import Path
 from typing import Any
 
-import scalar_theory_closure_ledger_v20 as old_ledger
 import so10_210_symmetric_45_source_projector_v20 as source45
 import so10_210_symmetric_product_source_audit_v20 as source_audit
 
@@ -24,18 +25,20 @@ ROOT = Path(__file__).resolve().parent
 OUT_JSON = ROOT / "SOURCE_CORRECTED_SCALAR_DEPENDENCY_GATE_V20.json"
 OUT_MD = ROOT / "SOURCE_CORRECTED_SCALAR_DEPENDENCY_GATE_V20.md"
 
+SUPERSEDED_ARTIFACTS = [
+    "OPEN_210_CHANNEL_1050_IRREDUCIBLE_BLOCKER_V20.json",
+    "SO10_210_TO_45_PROJECTOR_V20.json (same-field quartic interpretation only)",
+    "FULL_MIXED_REP_INVARIANT_RING_V20.json completeness interpretation",
+    "SCALAR_THEORY_CLOSURE_LEDGER_V20.json downstream scalar statuses",
+]
+
 
 def build_report() -> dict[str, Any]:
     projector = source45.build_report()
     audit = source_audit.build_report()
-    ledger = old_ledger.build_report()
 
     execution_failures: list[str] = []
-    for name, report in (
-        ("source45", projector),
-        ("source_audit", audit),
-        ("old_ledger", ledger),
-    ):
+    for name, report in (("source45", projector), ("source_audit", audit)):
         if int(report.get("n_failed", 1)) != 0:
             execution_failures.append(f"{name}: {report.get('failures')}")
 
@@ -110,7 +113,7 @@ def build_report() -> dict[str, Any]:
         "old_residual_superseded": bool(
             audit.get("flags", {}).get("old_1050_blocker_superseded")
         ),
-        "old_ledger_already_fail_closed": ledger.get("overall_state") == "BLOCKED",
+        "superseded_ledger_not_executed_as_upstream": True,
         "no_gate_falsely_closed": all("CLOSED" not in state for state in gate_states.values()),
         "valid_structural_results_retained": all(retained_results.values()),
         "affected_downstream_results_reopened": all(reopened_results.values()),
@@ -134,16 +137,18 @@ def build_report() -> dict[str, Any]:
         "checks": checks,
         "retained_results": retained_results,
         "reopened_results": reopened_results,
+        "superseded_artifacts": SUPERSEDED_ARTIFACTS,
         "gate_states": gate_states,
         "required_recomputations": required_recomputations,
         "upstream": {
             "source45": projector.get("status"),
             "source_audit": audit.get("status"),
-            "previous_scalar_ledger": ledger.get("status"),
+            "previous_scalar_ledger": "SUPERSEDED_AS_UPSTREAM__REVALIDATION_REQUIRED",
         },
         "flags": {
             "source_level_defect_corrected": not failures,
             "partial_branch_salvaged_not_discarded": True,
+            "superseded_ledger_execution_avoided": True,
             "merge_to_main_safe": False,
             "pr98_must_remain_draft": True,
             "whole_model_validated": False,
@@ -174,6 +179,8 @@ def write_report(report: dict[str, Any]) -> None:
     lines.extend(f"- `{name}`" for name, keep in report["retained_results"].items() if keep)
     lines.extend(["", "## Reopened scalar dependencies", ""])
     lines.extend(f"- `{name}`" for name, reopen in report["reopened_results"].items() if reopen)
+    lines.extend(["", "## Superseded artifacts", ""])
+    lines.extend(f"- `{item}`" for item in report["superseded_artifacts"])
     lines.extend(["", "## Required execution order", ""])
     lines.extend(
         f"{item['order']}. {item['task']} — {item['closes']}"
