@@ -131,14 +131,33 @@ remain OPEN.
 `(210_PS ⊕ 126bar)`, and validates Hessian projection on synthetic spectra.
 Full dynamical component Hessian remains OPEN.
 
+## Completed hEW-extended gauge orbit (36 Goldstones)
+
+`so10_gauge_orbit_with_hew_v20.py` stacks the physical electroweak VEV
+`⟨H⟩=hEW·ê` (direction index 6) into the differential-form tangent with
+`(210_PS, Δ_R)`. Orbit rank rises from 33 to **36**, residual stabilizer
+dimension **9** (`SU(3)_c×U(1)_EM`). Extended projectors are validated on
+synthetic Hessians in the 724-dim embedding
+`(210 ⊕ 126bar_ℂ ⊕ H10)`. Spectators `S`, `Φ₁₇` remain outside the orbit.
+
+## Completed partial dynamical Hessian + hEW Goldstone gate
+
+`partial_dynamical_hessian_hew_goldstone_gate_v20.py` builds a form-basis
+positive-diagonal M² skeleton from the isotropic/norm A/C seeds (including
+`OPEN_MIXED_126`) on the 724 embedding, applies the exact 36-Goldstone
+`P_phys`, and proves the projected spectrum has 36 zeros / 688 positive /
+0 negative modes. The Aulakh Schur 272 portal Hessian is recorded upstream
+but **not** identified with the form basis (Cartesian portal basis map OPEN).
+
 ## Correct next goal
 
 Continue the full component scalar mass-squared matrix and global
-`hEW=174 GeV` vacuum: extend the Goldstone projector to the full component
-field space, fill remaining charge-allowed diagonals that do not invent
-120/320/1050/4125 CG, then apply root-by-root Goldstone removal to the
-dynamical Hessian, stationarity, boundedness, thresholds, and τ_p. Do not
-reopen a reduced-sector phase hunt.
+`hEW=174 GeV` vacuum: map form ↔ Aulakh bases so portal B can enter the
+form-basis Hessian, fill remaining charge-allowed diagonals that do not
+invent 120/320/1050/4125 CG, include `S`/`Φ₁₇` dynamical blocks, then
+apply root-by-root Goldstone removal to the complete dynamical Hessian,
+stationarity, boundedness, thresholds, and τ_p. Do not reopen a
+reduced-sector phase hunt.
 
 ## Executable sequence
 
@@ -161,8 +180,10 @@ reopen a reduced-sector phase hunt.
 
 4. **Gauge-projected component Hessian**
    - Construct the complete real scalar `M^2` matrix.
-   - Remove exactly 33 gauge Goldstones.
+   - Remove exactly 36 gauge Goldstones (SO(10)→U(1)_EM; SM-only was 33).
    - Require every remaining eigenvalue to be positive.
+   - Partial form-basis gate with isotropic A/C + hEW projector is in place;
+     portal B still needs the form↔Aulakh basis map.
 
 5. **Global vacuum and boundedness**
    - Check all enumerated competing extrema.

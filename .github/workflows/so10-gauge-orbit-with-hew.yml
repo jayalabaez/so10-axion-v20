@@ -1,0 +1,48 @@
+name: so10-gauge-orbit-with-hew
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: so10-gauge-orbit-with-hew-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gauge-orbit-hew:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Execute hEW-extended gauge orbit
+        run: python so10_gauge_orbit_with_hew_v20.py --write
+      - name: Focused regression tests
+        run: python -m unittest -v test_so10_gauge_orbit_with_hew_v20.py
+      - name: Assert 36 Goldstones and EM stabilizer
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('SO10_GAUGE_ORBIT_WITH_HEW_V20.json'))
+          assert r['n_failed']==0, r
+          assert r['breaking_chain']['SO10_to_SM']['goldstones']==33
+          assert r['breaking_chain']['SM_to_UEM']['added_goldstones']==3
+          assert r['breaking_chain']['SO10_to_UEM']['goldstones']==36
+          assert r['breaking_chain']['SO10_to_UEM']['stabilizer_dim']==9
+          assert r['embedding']['total']==724
+          assert abs(r['projectors']['trace_P_G']-36.0)<1e-6
+          assert r['synthetic_validation']['n_zero']==36
+          assert not r['flags']['full_component_hessian_complete']
+          assert not r['flags']['whole_model_validated']
+          PY
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: so10-gauge-orbit-with-hew
+          path: |
+            SO10_GAUGE_ORBIT_WITH_HEW_V20.json
+            SO10_GAUGE_ORBIT_WITH_HEW_V20.md

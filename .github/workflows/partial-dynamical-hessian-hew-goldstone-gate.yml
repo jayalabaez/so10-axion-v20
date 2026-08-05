@@ -1,0 +1,54 @@
+name: partial-dynamical-hessian-hew-goldstone-gate
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: partial-dynamical-hessian-hew-goldstone-gate-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  partial-hessian-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Execute partial dynamical Hessian + hEW Goldstone gate
+        run: python partial_dynamical_hessian_hew_goldstone_gate_v20.py --write
+      - name: Focused regression tests
+        run: python -m unittest -v test_partial_dynamical_hessian_hew_goldstone_gate_v20.py
+      - name: Assert projected spectrum and honesty flags
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('PARTIAL_DYNAMICAL_HESSIAN_HEW_GOLDSTONE_GATE_V20.json'))
+          assert r['n_failed']==0, r
+          assert r['goldstone_projection']['rank']==36
+          unit=r['goldstone_projection']['unit_skeleton_spectrum']
+          assert unit['n_zero']==36
+          assert unit['n_positive']==688
+          assert unit['n_negative']==0
+          dyn=r['goldstone_projection']['dynamical_scaled_spectrum']
+          assert dyn['n_zero']==36
+          assert dyn['n_positive']==688
+          assert dyn['n_negative']==0
+          assert r['embedding']['total']==724
+          assert not r['form_basis_skeleton']['uses_portal_B']
+          assert not r['flags']['portal_B_in_form_basis']
+          assert not r['flags']['cartesian_portal_basis_map']
+          assert not r['flags']['full_component_hessian_complete']
+          assert not r['flags']['whole_model_validated']
+          PY
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: partial-dynamical-hessian-hew-goldstone-gate
+          path: |
+            PARTIAL_DYNAMICAL_HESSIAN_HEW_GOLDSTONE_GATE_V20.json
+            PARTIAL_DYNAMICAL_HESSIAN_HEW_GOLDSTONE_GATE_V20.md
