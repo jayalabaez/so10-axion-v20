@@ -49,7 +49,10 @@ jobs:
           assert r['reduced_quartic']['spectral_source_patched']['positive_definite'], r
           assert r['reduced_quartic']['copositive_source_patched'], r
           assert r['singlet_span']['bfb']['nonnegative'], r
-          assert r['flags']['reduced_hessian_soft_rematch_open'], r
+          assert r['reduced_hessian_lam4_0']['positive_definite'], r
+          assert r['reduced_hessian_lam4_0']['min_eig_mpmath'] > 0.0, r
+          assert r['reduced_hessian_lam4_0']['float64_false_tachyon_documented'], r
+          assert not r['flags']['reduced_hessian_soft_rematch_open'], r
           assert not r['flags']['whole_model_validated'], r
           assert not r['flags']['g1_closed'], r
           PY
