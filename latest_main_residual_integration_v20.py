@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Integrate source-correct closures and withdrawals on latest main.
+"""Integrate valid results and source-correct withdrawals on latest main.
 
-Valid executable work is retained: live reduced beta artifacts, scalar-alpha
-non-uniqueness, the direct Phi-H-Sigmabar tensor map and its published T/D
-cross-check. Claims contaminated by imported SUSY fermion/gaugino matrices are
-explicitly reopened.
+This aggregate consumes the authoritative SUSY-matrix scalar-contamination
+audit. It retains independently valid artifacts and the direct portal tensor,
+while preserving compatibility keys needed by older final gates. Compatibility
+keys describe invalidation/open scope; they do not restore withdrawn physics.
 """
 from __future__ import annotations
 
@@ -13,16 +13,12 @@ import json
 from pathlib import Path
 from typing import Any
 
-import cal_g_portal_decision_v20 as calg_portal
-import cal_g_soft_mode_classification_v20 as calg_soft
 import direct_phi_h_sigmabar_td_crosscheck_v20 as tdcheck
 import direct_phi_h_sigmabar_tensor_v20 as direct
 import efjx_cgc_physical_normalization_gate_v20 as efjx
-import lambda_lock_cal_g_lift_v20 as lock_lift
-import mixed_210_126_10_hilbert_hessian_v20 as mixed_hessian
 import nonsusy_reduced_hessian_v20 as physical_hessian
 import scalar_alpha_flavour_nonuniqueness_v20 as alpha_nonunique
-import tau_p_hessian_residual_closure_v20 as tau_hessian
+import susy_matrix_scalar_contamination_audit_v20 as contamination
 import tau_p_ultimate_residual_checklist_v20 as ultimate
 
 ROOT = Path(__file__).resolve().parent
@@ -41,14 +37,10 @@ def build_report() -> dict[str, Any]:
     direct_rep = direct.build_report()
     td_rep = tdcheck.build_report()
     efjx_rep = efjx.build_report()
-    mixed_rep = mixed_hessian.build_report()
-    calg_rep = calg_soft.build_report()
-    portal_rep = calg_portal.build_report()
-    lock_rep = lock_lift.build_report()
-    tau_hess_rep = tau_hessian.build_report()
-    ultimate_rep = ultimate.build_report()
+    contamination_rep = contamination.build_report()
     alpha_rep = alpha_nonunique.build_report()
     physical_rep = physical_hessian.build_report()
+    ultimate_rep = ultimate.build_report()
 
     gauge_valid = bool(
         gauge_dump.get("live_run_executed")
@@ -72,7 +64,6 @@ def build_report() -> dict[str, Any]:
     historical_tachyon = bool(
         physical_rep.get("historical_benchmark", {}).get("tachyonic")
     )
-
     direct_valid = bool(
         direct_rep.get("n_failed") == 0
         and direct_rep.get("representation", {}).get("tensor_map_shape")
@@ -104,65 +95,22 @@ def build_report() -> dict[str, Any]:
             "old_8p8e29_bound_valid", True
         )
     )
-    mixed_withdrawn = bool(
-        mixed_rep.get("n_failed") == 0
-        and mixed_rep.get("flag", {}).get(
-            "imported_susy_hessian_withdrawn"
+    all_contamination_withdrawn = bool(
+        contamination_rep.get("n_failed") == 0
+        and contamination_rep.get("flag", {}).get(
+            "all_known_susy_matrix_scalar_paths_withdrawn"
         )
-        and not mixed_rep.get("flag", {}).get(
-            "mixed_210_126_10_complete", True
-        )
+        and contamination_rep.get("counts", {}).get("n_remaining") == 0
     )
-    calg_withdrawn = bool(
-        calg_rep.get("n_failed") == 0
-        and calg_rep.get("flag", {}).get(
-            "cal_G_susy_gaugino_diagnostic_only"
-        )
-        and not calg_rep.get("flag", {}).get(
-            "cal_G_soft_mode_classified", True
-        )
-    )
-    portal_withdrawn = bool(
-        portal_rep.get("n_failed") == 0
-        and portal_rep.get("flag", {}).get(
-            "cal_G_susy_gaugino_target_withdrawn"
-        )
-        and not portal_rep.get("flag", {}).get(
-            "cal_G_portal_decision_resolved", True
-        )
-    )
-    lock_withdrawn = bool(
-        lock_rep.get("n_failed") == 0
-        and lock_rep.get("flag", {}).get(
-            "cal_G_susy_gaugino_target_withdrawn"
-        )
-        and not lock_rep.get("flag", {}).get(
-            "selected_lambda_lock_raised_to_cal_G_lift", True
-        )
-    )
-    tau_hessian_reopened = bool(
-        tau_hess_rep.get("n_failed") == 0
-        and tau_hess_rep.get("flag", {}).get(
-            "imported_susy_hessian_withdrawn"
-        )
-        and not tau_hess_rep.get("flag", {}).get(
-            "full_component_hessian_residual_closed", True
-        )
-    )
-    ultimate_open = bool(
+    exact_tau_open = bool(
         ultimate_rep.get("n_failed") == 0
         and not ultimate_rep.get("flag", {}).get(
             "exact_unique_proton_lifetime", True
         )
     )
-    all_susy_withdrawn = bool(
-        mixed_withdrawn
-        and calg_withdrawn
-        and portal_withdrawn
-        and lock_withdrawn
-        and tau_hessian_reopened
+    selected_point_invalidated = bool(
+        historical_tachyon and all_contamination_withdrawn
     )
-    selected_point_invalidated = bool(historical_tachyon and lock_withdrawn)
 
     checks = {
         "validated_live_gauge_artifact": gauge_valid,
@@ -172,12 +120,10 @@ def build_report() -> dict[str, Any]:
         "direct_canonical_tensor_map": direct_valid,
         "published_gamma_TD_crosscheck": td_valid,
         "EFJX_gauge_gamma_collision_corrected": efjx_corrected,
-        "imported_susy_scalar_hessian_withdrawn": mixed_withdrawn,
-        "cal_G_scalar_classification_withdrawn": calg_withdrawn,
-        "cal_G_portal_decision_withdrawn": portal_withdrawn,
-        "lambda_lock_lift_withdrawn": lock_withdrawn,
-        "proton_hessian_closure_reopened": tau_hessian_reopened,
-        "exact_unique_lifetime_open": ultimate_open,
+        "all_known_susy_matrix_scalar_paths_withdrawn": (
+            all_contamination_withdrawn
+        ),
+        "exact_unique_lifetime_open": exact_tau_open,
         "whole_model_not_overclaimed": True,
     }
     failures = [name for name, passed in checks.items() if not passed]
@@ -191,6 +137,7 @@ def build_report() -> dict[str, Any]:
         "direct_portal_component_mass_squared_insertion": True,
         "direct_nonsusy_component_mass_squared_insertion": True,
         "direct_nonsusy_singlet_mass_squared_matrix": True,
+        "physical_scalar_Coleman_Weinberg_spectrum": True,
         "lambda4_CGC_live_encoding": True,
         "dim6_lambda_lock_live_encoding": True,
         "cal_G_lift_revalidation_on_physical_EW_survival_point": True,
@@ -202,6 +149,28 @@ def build_report() -> dict[str, Any]:
         "full_tensor_two_loop_threshold_running": True,
         "ultimate_tau_p_revalidation_after_physical_EW_falsification": True,
         "exact_unique_proton_lifetime": True,
+    }
+
+    withdrawn = {
+        "EFJX_gauge_response_is_lambda4_gamma_response": efjx_corrected,
+        "c_norm_needed_is_8p8e29": efjx_corrected,
+        "imported_susy_matrices_form_scalar_Coleman_Weinberg": (
+            all_contamination_withdrawn
+        ),
+        "imported_susy_matrices_form_complete_scalar_hessian": (
+            all_contamination_withdrawn
+        ),
+        "cal_G_fermion_singular_vector_is_physical_scalar_mode": (
+            all_contamination_withdrawn
+        ),
+        "existing_lambda_lock_proven_to_lift_physical_cal_G_scalar": (
+            all_contamination_withdrawn
+        ),
+        "selected_point_not_spoiled_by_lambda_lock_raise": (
+            all_contamination_withdrawn
+        ),
+        "full_component_hessian_closed": all_contamination_withdrawn,
+        "exact_unique_proton_lifetime": exact_tau_open,
     }
 
     return {
@@ -225,19 +194,12 @@ def build_report() -> dict[str, Any]:
             "EFJX_gauge_superhiggs_source_identified": efjx_corrected,
             "cal_G_lambda_lock_lift_mechanism_exists_in_principle": False,
         },
-        "withdrawn_or_reopened_claims": {
-            "EFJX_gauge_response_is_lambda4_gamma_response": efjx_corrected,
-            "c_norm_needed_is_8p8e29": efjx_corrected,
-            "imported_susy_matrices_form_complete_scalar_hessian": mixed_withdrawn,
-            "cal_G_fermion_singular_vector_is_physical_scalar_mode": calg_withdrawn,
-            "existing_lambda_lock_proven_to_lift_physical_cal_G_scalar": portal_withdrawn,
-            "selected_point_not_spoiled_by_lambda_lock_raise": lock_withdrawn,
-            "full_component_hessian_closed": tau_hessian_reopened,
-            "exact_unique_proton_lifetime": ultimate_open,
-        },
+        "withdrawn_or_reopened_claims": withdrawn,
         "invalidated_selected_point_claims": {
-            "lambda_lock_raise_does_not_spoil_selected_point": lock_withdrawn,
-            "all_post_hessian_residuals_closed": tau_hessian_reopened,
+            "lambda_lock_raise_does_not_spoil_selected_point": (
+                all_contamination_withdrawn
+            ),
+            "all_post_hessian_residuals_closed": all_contamination_withdrawn,
             "proxy_c_cgc_needed_abs_approx_is_physical": efjx_corrected,
             "EFJX_gauge_response_is_lambda4_gamma_response": efjx_corrected,
             "c_norm_needed_is_8p8e29": efjx_corrected,
@@ -254,10 +216,14 @@ def build_report() -> dict[str, Any]:
                 "representation", {}
             ).get("tensor_map_shape"),
             "direct_TD_crosscheck_residual": td_rep.get("max_abs_residual"),
-            "mixed_susy_hessian_withdrawn": mixed_withdrawn,
-            "cal_G_route_withdrawn": calg_withdrawn
-            and portal_withdrawn
-            and lock_withdrawn,
+            "susy_matrix_contamination_n_paths": contamination_rep.get(
+                "counts", {}
+            ).get("n_paths"),
+            "susy_matrix_contamination_n_remaining": contamination_rep.get(
+                "counts", {}
+            ).get("n_remaining"),
+            "mixed_susy_hessian_withdrawn": all_contamination_withdrawn,
+            "cal_G_route_withdrawn": all_contamination_withdrawn,
             "ultimate_exact_unique_proton_lifetime": ultimate_rep.get(
                 "flag", {}
             ).get("exact_unique_proton_lifetime"),
@@ -266,11 +232,7 @@ def build_report() -> dict[str, Any]:
             "direct_tensor": direct_rep.get("status"),
             "direct_TD_crosscheck": td_rep.get("status"),
             "EFJX_source_correction": efjx_rep.get("status"),
-            "mixed_hessian": mixed_rep.get("status"),
-            "cal_G_classification": calg_rep.get("status"),
-            "cal_G_portal": portal_rep.get("status"),
-            "lambda_lock_lift": lock_rep.get("status"),
-            "tau_hessian": tau_hess_rep.get("status"),
+            "contamination_audit": contamination_rep.get("status"),
             "ultimate_tau_p": ultimate_rep.get("status"),
         },
         "flag": {
@@ -279,24 +241,32 @@ def build_report() -> dict[str, Any]:
             ),
             "scalar_alpha_nonuniqueness_closed": alpha_valid,
             "cal_G_mechanism_identified_but_physical_point_not_revalidated": True,
-            "latest_main_selected_point_closure_invalidated": selected_point_invalidated,
+            "latest_main_selected_point_closure_invalidated": (
+                selected_point_invalidated
+            ),
             "direct_tensor_problem_closed": direct_valid and td_valid,
             "EFJX_cgc_route_invalidated": efjx_corrected,
             "EFJX_cgc_route_invalidated_direct_tensor_open": (
                 efjx_corrected and direct_valid
             ),
             "old_8p8e29_bound_valid": False,
-            "all_susy_matrix_scalar_closures_withdrawn": all_susy_withdrawn,
+            "all_susy_matrix_scalar_closures_withdrawn": (
+                all_contamination_withdrawn
+            ),
+            "all_susy_matrix_scalar_CW_paths_withdrawn": (
+                all_contamination_withdrawn
+            ),
             "exact_unique_proton_lifetime": False,
             "whole_model_excluded": False,
             "whole_model_validated": False,
         },
         "verdict": (
             "The direct canonically normalized Phi-H-Sigmabar tensor map and "
-            "independent Aulakh gamma T/D cross-check are retained. EFJX, cal G, "
-            "mixed-Hessian, lambda-lock and proton-lifetime closures contaminated "
-            "by SUSY fermion/gaugino matrices are withdrawn. The tensor problem is "
-            "closed; the complete non-SUSY scalar theory remains BLOCKED."
+            "independent Aulakh gamma T/D cross-check are retained. The "
+            "authoritative contamination audit withdraws every known use of "
+            "SUSY fermion/gaugino matrices as non-SUSY scalar Hessian or "
+            "Coleman-Weinberg inputs. The tensor problem is closed; the "
+            "complete non-SUSY scalar theory remains BLOCKED."
         ),
     }
 
