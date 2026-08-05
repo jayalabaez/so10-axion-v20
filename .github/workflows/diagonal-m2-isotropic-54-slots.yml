@@ -3,6 +3,8 @@ name: diagonal-m2-isotropic-54-slots
 on:
   pull_request:
     paths:
+      - h10_intermediate_vev_consistency_audit_v20.py
+      - test_h10_intermediate_vev_consistency_audit_v20.py
       - diagonal_h10_sigmabar_m2_isotropic_54_slots_v20.py
       - test_diagonal_h10_sigmabar_m2_isotropic_54_slots_v20.py
       - .github/workflows/diagonal-m2-isotropic-54-slots.yml
@@ -13,9 +15,9 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  isotropic-54-gate:
+  corrected-isotropic-gate:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 45
     env:
       PYTHONHASHSEED: "0"
     steps:
@@ -27,38 +29,53 @@ jobs:
       - run: python -m pip install -r requirements.txt
       - run: |
           python -m compileall -q \
+            h10_intermediate_vev_consistency_audit_v20.py \
             diagonal_h10_sigmabar_m2_isotropic_54_slots_v20.py \
+            test_h10_intermediate_vev_consistency_audit_v20.py \
             test_diagonal_h10_sigmabar_m2_isotropic_54_slots_v20.py
-      - name: Execute isotropic+54 slot fill
-        run: python diagonal_h10_sigmabar_m2_isotropic_54_slots_v20.py --write
+      - name: Execute corrected partial diagonal audit
+        run: |
+          python h10_intermediate_vev_consistency_audit_v20.py --write
+          python diagonal_h10_sigmabar_m2_isotropic_54_slots_v20.py --write
       - name: Focused tests
         run: |
           python -m unittest -v \
+            test_h10_intermediate_vev_consistency_audit_v20.py \
             test_diagonal_h10_sigmabar_m2_isotropic_54_slots_v20.py
       - name: Assert fail-closed scientific state
         run: |
           python - <<'PY'
           import json
+          a=json.load(open('H10_INTERMEDIATE_VEV_CONSISTENCY_AUDIT_V20.json'))
           r=json.load(open('DIAGONAL_H10_SIGMABAR_M2_ISOTROPIC_54_SLOTS_V20.json'))
-          assert r['n_failed']==0, r
-          assert r['overall_state']=='BLOCKED', r
-          assert r['flag']['isotropic_norm_54_slots_partially_filled'], r
+          assert a['n_failed']==0 and a['overall_state']=='BLOCKED', a
+          assert not a['flags']['physical_H10_intermediate_scale_singlet_vev_exists'], a
+          assert not a['flags']['legacy_A54_v10eff_MI_physical'], a
+          assert not a['flags']['legacy_isotropic_54_mass_seed_physical'], a
+          assert r['n_failed']==0 and r['overall_state']=='BLOCKED', r
+          assert r['flag']['isotropic_norm_slots_partially_filled'], r
+          assert not r['flag']['isotropic_norm_54_slots_partially_filled'], r
+          assert r['flag']['unphysical_H10_MI_54_seed_withdrawn'], r
           assert r['flag']['schur_fed_with_partial_A_C'], r
           assert not r['flag']['diagonal_h10_m2_fully_derived'], r
           assert not r['flag']['diagonal_sigmabar_m2_fully_derived'], r
-          assert not r['flag']['cg_tensors_120_320_4125_invented'], r
           assert not r['flag']['full_component_hessian'], r
           assert not r['flag']['whole_model_validated'], r
           assert not r['flag']['whole_model_excluded'], r
           assert len(r['A_partial_GeV2'])==10, r
           assert len(r['C_partial_GeV2'])==126, r
-          assert len(r['partial_diagonals']['filled_slots'])==5, r
-          assert 'OPEN_MIXED_120' in r['partial_diagonals']['still_open_slots'], r
+          assert len(r['partial_diagonals']['filled_slots'])==3, r
+          assert len(r['partial_diagonals']['withdrawn_slots'])==2, r
+          assert r['partial_diagonals']['components']['locking_isotropic_seed']==0.0, r
+          assert 'OPEN_H10_54' in r['partial_diagonals']['still_open_slots'], r
+          assert 'OPEN_126_54_LOCKING' in r['partial_diagonals']['still_open_slots'], r
           PY
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: diagonal-m2-isotropic-54-slots
+          name: diagonal-m2-proxy-withdrawal
           path: |
+            H10_INTERMEDIATE_VEV_CONSISTENCY_AUDIT_V20.json
+            H10_INTERMEDIATE_VEV_CONSISTENCY_AUDIT_V20.md
             DIAGONAL_H10_SIGMABAR_M2_ISOTROPIC_54_SLOTS_V20.json
             DIAGONAL_H10_SIGMABAR_M2_ISOTROPIC_54_SLOTS_V20.md
