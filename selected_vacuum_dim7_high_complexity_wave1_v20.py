@@ -2,10 +2,11 @@
 """Dimension-seven high-complexity phase screen, wave 1.
 
 The low-complexity wave found no selected-vacuum phase channel. This module
-fully evaluates the two smallest remaining metric representatives:
+fully evaluates the two smallest remaining representatives by total workload
+(metric graphs times neutral-H multilinear assignments):
 
-    (4,0,2,0,0)  with 4,691 graphs,
-    (2,1,3,0,0)  with 7,243 graphs.
+    (4,0,2,0,0)  with 4,691 evaluations,
+    (2,1,3,0,0)  with 7,243 evaluations.
 
 They contain no H factors, so no neutral-H assignment sampling is involved;
 each graph is evaluated directly on the selected p,a,omega,Delta_R tensors.
@@ -75,9 +76,13 @@ def build_report() -> dict[str, Any]:
         )
         for signature in representatives
     }
+    evaluation_costs = {
+        signature: graph_counts[signature] * 2 ** (signature[3] + signature[4])
+        for signature in representatives
+    }
     high = sorted(
         [signature for signature in representatives if graph_counts[signature] > low.GRAPH_LIMIT],
-        key=lambda signature: graph_counts[signature],
+        key=lambda signature: (evaluation_costs[signature], graph_counts[signature], signature),
     )
     wave = high[:2]
 
@@ -104,6 +109,7 @@ def build_report() -> dict[str, Any]:
         rows.append(
             {
                 **audit,
+                "planned_evaluation_cost": evaluation_costs[signature],
                 "dimension7_monomials": monomials,
                 "phase_rank_records": [
                     {
@@ -163,6 +169,18 @@ def build_report() -> dict[str, Any]:
         "n_failed": len(failures),
         "failures": failures,
         "checks": checks,
+        "workload_ordering": {
+            "criterion": "metric_graphs * 2^(nH+nHdag)",
+            "all_high_complexity_costs": [
+                {
+                    "signature_P_D_Db_H_Hb": list(signature),
+                    "n_metric_graphs": graph_counts[signature],
+                    "n_neutral_assignments": 2 ** (signature[3] + signature[4]),
+                    "evaluation_cost": evaluation_costs[signature],
+                }
+                for signature in high
+            ],
+        },
         "wave1": {
             "representatives": rows,
             "total_metric_graphs": total_graphs,
@@ -175,6 +193,8 @@ def build_report() -> dict[str, Any]:
             {
                 "signature_P_D_Db_H_Hb": list(signature),
                 "n_metric_graphs": graph_counts[signature],
+                "n_neutral_assignments": 2 ** (signature[3] + signature[4]),
+                "evaluation_cost": evaluation_costs[signature],
                 "dimension7_monomials": candidate_map[signature],
             }
             for signature in remaining
