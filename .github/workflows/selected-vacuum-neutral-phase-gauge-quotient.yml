@@ -1,0 +1,64 @@
+name: selected-vacuum-neutral-phase-gauge-quotient
+
+on:
+  pull_request:
+    paths:
+      - selected_vacuum_neutral_phase_gauge_quotient_v20.py
+      - test_selected_vacuum_neutral_phase_gauge_quotient_v20.py
+      - .github/workflows/selected-vacuum-neutral-phase-gauge-quotient.yml
+  workflow_dispatch:
+
+concurrency:
+  group: selected-vacuum-neutral-phase-gauge-quotient-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  neutral-phase-gauge-quotient:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      PYTHONHASHSEED: "0"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - name: Compile gauge quotient
+        run: |
+          python -m compileall -q \
+            selected_vacuum_neutral_phase_gauge_quotient_v20.py \
+            test_selected_vacuum_neutral_phase_gauge_quotient_v20.py
+      - name: Execute gauge quotient
+        run: python selected_vacuum_neutral_phase_gauge_quotient_v20.py --write
+      - name: Focused tests
+        run: python -m unittest -v test_selected_vacuum_neutral_phase_gauge_quotient_v20.py
+      - name: Assert physical phase spectrum
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open('SELECTED_VACUUM_NEUTRAL_PHASE_GAUGE_QUOTIENT_V20.json'))
+          h=d['hessian']
+          f=d['flags']
+          assert d['n_failed']==0, d
+          assert d['status']=='SELECTED_VACUUM_NEUTRAL_PHASE_CLOSED_AFTER_GAUGE_QUOTIENT', d
+          assert h['rank_before_quotient']==1 and h['nullity_before_quotient']==2, d
+          assert h['gauge_orbit_rank_removed']==1, d
+          assert h['rank_after_quotient']==1 and h['nullity_after_quotient']==1, d
+          assert h['physical_null_vector_integer']==[1,-2], d
+          assert f['DeltaR_phase_eaten_by_Zprime_BL_R'], d
+          assert not f['extra_nonaxion_flat_phase_present'], d
+          assert f['exactly_one_physical_PQ_null'], d
+          assert not f['finite_dimension_phase_search_required_for_closure'], d
+          assert not f['full_component_scalar_hessian_complete'], d
+          assert not f['whole_model_validated'], d
+          assert not f['whole_model_excluded'], d
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: selected-vacuum-neutral-phase-gauge-quotient
+          path: |
+            SELECTED_VACUUM_NEUTRAL_PHASE_GAUGE_QUOTIENT_V20.json
+            SELECTED_VACUUM_NEUTRAL_PHASE_GAUGE_QUOTIENT_V20.md
