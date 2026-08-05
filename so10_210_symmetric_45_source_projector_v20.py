@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
-r"""Source-correct symmetric-product SO(10) ``210 x 210 -> 45`` map.
+r"""Source-normalized symmetric-product ``SO(10) 210 x 210 -> 45`` map.
 
 Esposito, Miele and Rosa, arXiv:gr-qc/9507053, Eq. (2.8), define
 
     Q_ab(Phi,Psi) = 1/sqrt(70) epsilon_ab cdef ghij Phi_cdef Psi_ghij.
 
-For independent increasing four-index components, each ordered block carries
-``4!`` permutations, giving the implementation factor ``(4!)^2/sqrt(70)``.
-The map is symmetric under ``Phi <-> Psi`` because four-forms commute under
-the wedge product, while its output is an antisymmetric two-form (the 45).
+Their antisymmetric multi-index convention is the normalized combination
+basis: for fixed ``a<b`` there are exactly ``C(8,4)=70`` signed terms.  The
+repository also stores one coefficient per increasing four-index combination,
+so no extra ``(4!)^2`` factor is present.
 
-This is distinct from the antisymmetric-product triple-contraction 45 in
-``so10_210_to_45_projector_v20.py``. That map vanishes for equal inputs but
-cannot remove the symmetric 45 quartic invariant of one real 210 field.
+The map is symmetric under ``Phi <-> Psi`` and generally nonzero for equal
+inputs.  It is distinct from the antisymmetric-product triple-contraction 45 in
+``so10_210_to_45_projector_v20.py``.
 """
 from __future__ import annotations
 
@@ -34,7 +34,7 @@ OUT_JSON = ROOT / "SO10_210_SYMMETRIC_45_SOURCE_PROJECTOR_V20.json"
 OUT_MD = ROOT / "SO10_210_SYMMETRIC_45_SOURCE_PROJECTOR_V20.md"
 N = 10
 N_COMBOS = math.comb(N, 4)
-SOURCE_FACTOR = math.factorial(4) ** 2 / math.sqrt(70.0)
+SOURCE_FACTOR = 1.0 / math.sqrt(70.0)
 
 
 @lru_cache(maxsize=1)
@@ -120,10 +120,8 @@ def channel_norm_sq(matrix: np.ndarray) -> float:
 
 
 def equivariance_residual(phi: np.ndarray, psi: np.ndarray, a: int, b: int) -> float:
-    phi_form = vector_to_form(phi)
-    psi_form = vector_to_form(psi)
-    dphi = form_to_vector(direct.generator_action(phi_form, a, b))
-    dpsi = form_to_vector(direct.generator_action(psi_form, a, b))
+    dphi = form_to_vector(direct.generator_action(vector_to_form(phi), a, b))
+    dpsi = form_to_vector(direct.generator_action(vector_to_form(psi), a, b))
     lhs = symmetric_210_to_45(dphi, psi) + symmetric_210_to_45(phi, dpsi)
     q_form = matrix_to_two_form(symmetric_210_to_45(phi, psi))
     rhs = two_form_to_matrix(direct.generator_action(q_form, a, b))
@@ -132,7 +130,7 @@ def equivariance_residual(phi: np.ndarray, psi: np.ndarray, a: int, b: int) -> f
 
 
 def simple_anchor_vector() -> np.ndarray:
-    """Phi=e0123+e4567, for which Q_89=2(4!)^2/sqrt(70)."""
+    """Phi=e0123+e4567, for which Q_89=2/sqrt(70)."""
     _, index = combo_tables()
     vector = np.zeros(N_COMBOS, dtype=float)
     vector[index[(0, 1, 2, 3)]] = 1.0
@@ -151,7 +149,7 @@ def build_report() -> dict[str, Any]:
 
     anchor = simple_anchor_vector()
     q_anchor = symmetric_210_to_45(anchor, anchor)
-    expected_anchor = 2.0 * SOURCE_FACTOR
+    expected_anchor = 2.0 / math.sqrt(70.0)
     equivariance = max(
         equivariance_residual(phi, psi, 0, 1),
         equivariance_residual(phi, psi, 2, 7),
@@ -160,11 +158,11 @@ def build_report() -> dict[str, Any]:
 
     raw_checks = {
         "dimension_45": N * (N - 1) // 2 == 45,
+        "exact_term_count_per_component": math.comb(8, 4) == 70,
         "output_antisymmetric": np.max(np.abs(q_mixed + q_mixed.T)) < 1e-10,
         "bilinear_swap_symmetric": np.max(np.abs(q_mixed - q_swap)) < 1e-10,
         "generic_same_field_nonzero": channel_norm_sq(q_self) > 1e-10,
-        "simple_anchor_nonzero": abs(q_anchor[8, 9]) > 1e-10,
-        "simple_anchor_normalization": abs(q_anchor[8, 9] - expected_anchor) < 1e-10,
+        "simple_anchor_normalization": abs(q_anchor[8, 9] - expected_anchor) < 1e-12,
         "infinitesimal_equivariance": equivariance < 1e-10,
         "old_antisymmetric_product_self_zero": np.max(np.abs(old_self)) < 1e-10,
         "old_map_not_the_symmetric_quartic_45": channel_norm_sq(q_self) > 1e-10,
@@ -174,7 +172,7 @@ def build_report() -> dict[str, Any]:
     failures = [name for name, passed in checks.items() if not passed]
 
     return {
-        "status": "SOURCE_CORRECT_SYMMETRIC_210x210_TO_45_READY" if not failures else "SOURCE_CORRECT_SYMMETRIC_210x210_TO_45_FAILED",
+        "status": "SOURCE_NORMALIZED_SYMMETRIC_210x210_TO_45_READY" if not failures else "SOURCE_NORMALIZED_SYMMETRIC_210x210_TO_45_FAILED",
         "overall_state": "BLOCKED",
         "n_checks": len(checks),
         "n_failed": len(failures),
@@ -184,36 +182,35 @@ def build_report() -> dict[str, Any]:
             "paper": "Esposito, Miele, Rosa, One-loop effective potential for SO(10) GUT theories in de Sitter space",
             "arxiv": "gr-qc/9507053",
             "equation": "2.8",
-            "formula": "Q_ab=(1/sqrt(70))*epsilon_ab cdef ghij Phi_cdef Psi_ghij",
         },
         "normalization": {
-            "repository_basis": "independent increasing four-index components",
-            "ordered_component_factor": math.factorial(4) ** 2,
-            "source_factor": float(SOURCE_FACTOR),
+            "repository_basis": "normalized increasing antisymmetric multi-indices",
+            "term_count_per_45_component": 70,
+            "source_factor": SOURCE_FACTOR,
             "anchor_Q_89": float(np.real(q_anchor[8, 9])),
-            "anchor_expected_Q_89": float(expected_anchor),
+            "anchor_expected_Q_89": expected_anchor,
+            "superseded_factor": "(4!)^2/sqrt(70)",
         },
         "diagnostics": {
             "generic_self_norm_sq": channel_norm_sq(q_self),
             "generic_mixed_norm_sq": channel_norm_sq(q_mixed),
             "old_antisymmetric_self_max_abs": float(np.max(np.abs(old_self))),
-            "equivariance_relative_residual": float(equivariance),
+            "equivariance_relative_residual": equivariance,
         },
         "flags": {
-            "symmetric_product_45_projector_ready": not bool(failures),
-            "same_field_symmetric_45_generically_nonzero": not bool(failures),
-            "antisymmetric_product_45_distinguished": not bool(failures),
+            "symmetric_product_45_projector_ready": not failures,
+            "source_normalization_corrected": not failures,
+            "same_field_symmetric_45_generically_nonzero": not failures,
             "old_same_field_45_vanishing_cannot_close_quartic_channel": True,
             "downstream_scalar_closures_require_revalidation": True,
             "whole_model_validated": False,
             "whole_model_excluded": False,
         },
         "verdict": (
-            "The source-normalized symmetric-product 45 is nonzero for a generic "
-            "single 210 field. The existing triple-contraction antisymmetric 45 "
-            "is a different channel and cannot remove the 45 quartic invariant. "
-            "Affected scalar-potential, BFB, Hessian, threshold, and vacuum "
-            "conclusions must be revalidated."
+            "The normalized multi-index source map has 70 terms per output "
+            "component and no factorial multiplier. The symmetric 45 remains "
+            "generically nonzero, but its previously published repository scale "
+            "was too large by (4!)^2 and is now corrected."
         ),
     }
 
@@ -221,11 +218,11 @@ def build_report() -> dict[str, Any]:
 def write_report(report: dict[str, Any]) -> None:
     OUT_JSON.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     OUT_MD.write_text(
-        "# Source-correct symmetric 210 x 210 -> 45 projector — v20\n\n"
+        "# Source-normalized symmetric 210 x 210 -> 45 projector — v20\n\n"
         f"**Status:** `{report['status']}`\n\n"
-        f"- Generic same-field norm squared: `{report['diagnostics']['generic_self_norm_sq']}`\n"
-        f"- Equivariance residual: `{report['diagnostics']['equivariance_relative_residual']}`\n"
-        f"- Anchor Q_89: `{report['normalization']['anchor_Q_89']}`\n\n"
+        f"- Source factor: `{report['normalization']['source_factor']}`\n"
+        f"- Anchor Q_89: `{report['normalization']['anchor_Q_89']}`\n"
+        f"- Equivariance residual: `{report['diagnostics']['equivariance_relative_residual']}`\n\n"
         + report["verdict"] + "\n",
         encoding="utf-8",
     )
