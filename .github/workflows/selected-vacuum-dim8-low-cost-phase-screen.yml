@@ -1,0 +1,80 @@
+name: selected-vacuum-dim8-low-cost-phase-screen
+
+on:
+  pull_request:
+    paths:
+      - selected_vacuum_dim7_complete_no_go_v20.py
+      - test_selected_vacuum_dim7_complete_no_go_v20.py
+      - selected_vacuum_dim8_low_cost_phase_screen_v20.py
+      - test_selected_vacuum_dim8_low_cost_phase_screen_v20.py
+      - .github/workflows/selected-vacuum-dim8-low-cost-phase-screen.yml
+  workflow_dispatch:
+
+concurrency:
+  group: selected-vacuum-dim8-low-cost-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  dim8-low-cost-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      PYTHONHASHSEED: "0"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - name: Compile dimension-seven ledger and dimension-eight screen
+        run: |
+          python -m compileall -q \
+            selected_vacuum_dim7_complete_no_go_v20.py \
+            test_selected_vacuum_dim7_complete_no_go_v20.py \
+            selected_vacuum_dim8_low_cost_phase_screen_v20.py \
+            test_selected_vacuum_dim8_low_cost_phase_screen_v20.py
+      - name: Execute dimension-eight low-cost screen
+        run: |
+          python selected_vacuum_dim7_complete_no_go_v20.py --write
+          python selected_vacuum_dim8_low_cost_phase_screen_v20.py --write
+      - name: Focused tests
+        run: |
+          python -m unittest -v \
+            test_selected_vacuum_dim7_complete_no_go_v20.py \
+            test_selected_vacuum_dim8_low_cost_phase_screen_v20.py
+      - name: Assert honest staged result
+        run: |
+          python - <<'PY'
+          import json
+          d7=json.load(open('SELECTED_VACUUM_DIM7_COMPLETE_NO_GO_V20.json'))
+          d8=json.load(open('SELECTED_VACUUM_DIM8_LOW_COST_PHASE_SCREEN_V20.json'))
+          assert d7['n_failed']==0, d7
+          assert d7['flags']['full_selected_vacuum_dimension7_phase_lifting_no_go_proven'], d7
+          assert d7['dimension7_summary']['exact_graph_coefficient_evaluations']==62948, d7
+          assert d7['dimension7_summary']['maximum_abs_coefficient']==0.0, d7
+          assert d8['n_failed']==0, d8
+          assert d8['enumeration']['dimension8_charge_allowed_monomials']==166, d8
+          assert d8['enumeration']['genuinely_new_dimension8_tensor_signatures']==108, d8
+          assert d8['enumeration']['new_even_H_conjugacy_representatives']==21, d8
+          assert d8['screen']['total_metric_graphs']==956, d8
+          assert d8['screen']['total_graph_coefficient_evaluations']==7388, d8
+          assert len(d8['screen']['representatives_remaining'])==15, d8
+          for row in d8['screen']['nonzero_representatives']:
+              for record in row['phase_rank_records']:
+                  assert record['rank_with_kappa']==2, record
+                  assert record['null_is_PQ_1_1_minus2'], record
+          assert not d8['flags']['full_selected_vacuum_dimension8_phase_lifting_no_go_proven'], d8
+          assert not d8['flags']['stationarity_rebuilt'], d8
+          assert not d8['flags']['whole_model_validated'], d8
+          assert not d8['flags']['whole_model_excluded'], d8
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: selected-vacuum-dim8-low-cost-phase-screen
+          path: |
+            SELECTED_VACUUM_DIM7_COMPLETE_NO_GO_V20.json
+            SELECTED_VACUUM_DIM7_COMPLETE_NO_GO_V20.md
+            SELECTED_VACUUM_DIM8_LOW_COST_PHASE_SCREEN_V20.json
+            SELECTED_VACUUM_DIM8_LOW_COST_PHASE_SCREEN_V20.md
