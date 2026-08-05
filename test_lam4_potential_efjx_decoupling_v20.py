@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Tests for λ₄-potential / E/F/J/X decoupling certificate."""
+"""Tests for the withdrawn λ₄-potential / E/F/J/X decoupling certificate."""
 
 from __future__ import annotations
 
@@ -14,42 +14,47 @@ class Lam4PotentialEfjxDecouplingTests(unittest.TestCase):
         cls.report = mod.build_report()
 
     def test_status_ok(self):
-        self.assertEqual(self.report["n_failed"], 0)
+        self.assertEqual(self.report["n_failed"], 0, self.report)
         self.assertEqual(
             self.report["status"],
-            "LAM4_POTENTIAL_EFJX_DECOUPLING_PROVED__TAU_P_OPEN",
+            "LAM4_EFJX_DECOUPLING_CERTIFICATE_WITHDRAWN__DIRECT_TENSOR_REQUIRED",
         )
+        self.assertEqual(self.report["overall_state"], "BLOCKED")
 
-    def test_raise_spoils_and_cgc_needed(self):
+    def test_old_spoiling_claims_are_withdrawn(self):
         flags = self.report["flag"]
-        self.assertTrue(flags["lam4_potential_raise_proved_spoiling"])
-        self.assertTrue(flags["gamma_eff_decoupled_from_lam4_potential"])
-        self.assertTrue(flags["cgc_ratio_needed_quantified"])
-        c = self.report["couplings"]
-        self.assertGreater(c["raise_factor"], 1.0)
-        self.assertGreater(c["c_cgc_needed_abs_approx"], 1.0)
-        self.assertFalse(
-            self.report["spoilage"]["at_raised_lam4_potential"][
-                "radial_hessian_positive_definite"
-            ]
-        )
+        self.assertFalse(flags["lam4_potential_raise_proved_spoiling"])
+        self.assertTrue(flags["old_lam4_efjx_decoupling_certificate_withdrawn"])
+        self.assertFalse(flags["cgc_ratio_needed_quantified"])
+        withdrawn = self.report["withdrawn_claims"]
+        self.assertIsNone(withdrawn["lam4_crit_abs"])
+        self.assertIsNone(withdrawn["c_cgc_needed_abs_approx"])
+        self.assertFalse(withdrawn["gamma_at_crit_clears_efjx"])
+        self.assertFalse(withdrawn["raise_to_efjx_tol_proved_spoiling"])
 
-    def test_gamma_crit_clears_efjx(self):
-        efjx = self.report["efjx"]["at_gamma_crit_lam4_potential_fixed"]
-        self.assertTrue(efjx["clears_gut_null_tol"])
-        self.assertEqual(efjx["efjx_n_null_below_tol"], 0)
+    def test_historical_radial_still_tachyonic(self):
+        self.assertTrue(
+            self.report["checks"]["historical_radial_point_still_tachyonic"]
+        )
+        self.assertTrue(self.report["historical_radial_result"]["tachyonic"])
+
+    def test_direct_tensor_replacement_required(self):
+        cert = self.report["certificate"]
+        self.assertTrue(cert["direct_scalar_tensor_map_now_required"])
+        self.assertFalse(cert["old_decoupling_certificate_valid"])
+        self.assertFalse(cert["physical_cgc_still_required"])
+        shape = self.report["direct_tensor_replacement"]["map_shape"]
+        self.assertEqual(shape, [10, 126])
 
     def test_honesty(self):
         flags = self.report["flag"]
-        self.assertTrue(flags["selected_lam4_still_below_gut_null_tol"])
         self.assertTrue(flags["lam4_cgc_and_dim6_lock_not_in_live_dump"])
         self.assertFalse(flags["exact_unique_proton_lifetime"])
         self.assertFalse(flags["whole_model_excluded"])
-
-    def test_raised_helper(self):
-        out = mod.raised_lam4(-3.18e-6, 6.06e-4)
-        self.assertLess(out["lam4_potential_raised"], 0.0)
-        self.assertGreaterEqual(abs(out["lam4_potential_raised"]), 6.06e-4)
+        self.assertFalse(flags["whole_model_validated"])
+        self.assertTrue(
+            self.report["still_open"]["complete_nonsusy_component_hessian"]
+        )
 
 
 if __name__ == "__main__":

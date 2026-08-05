@@ -80,11 +80,19 @@ class RetiredEFJXNormalizationContractTests(unittest.TestCase):
         self.assertIn("FULL_NONSUSY_VACUUM_HESSIAN_V20.json", remaining)
 
     def test_old_v2_contract_markers_are_absent(self):
+        example = self.example
         example_text = EXAMPLE_PATH.read_text(encoding="utf-8")
         self.assertNotIn("efjx-cgc-normalization-v2", example_text)
-        self.assertNotIn("gamma_eff_over_lambda4", example_text)
         self.assertNotIn("max_abs_residual_GeV", example_text)
         self.assertNotIn("efjx_thresholds_passed", example_text)
+        # Forbidden-list names may mention retired symbols, but active
+        # closure fields must not reappear as top-level keys.
+        self.assertNotIn("gamma_eff_over_lambda4", example)
+        self.assertNotIn("gamma_eff_over_lambda4_from_EFJX", example)
+        self.assertIn(
+            "gamma_eff_over_lambda4_from_EFJX",
+            example["forbidden_closure_fields"],
+        )
 
 
 if __name__ == "__main__":
