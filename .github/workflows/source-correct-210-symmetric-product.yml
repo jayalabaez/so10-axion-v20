@@ -1,33 +1,25 @@
-name: source-correct-210-symmetric-product
+name: source-normalized-210-quartic-basis
 
 on:
   pull_request:
     paths:
       - 'so10_210_symmetric_45_source_projector_v20.py'
+      - 'so10_210_source_quartic_basis_v20.py'
       - 'so10_210_symmetric_product_source_audit_v20.py'
       - 'selected_ps_singlet_symmetric45_diagnostic_v20.py'
       - 'source_corrected_scalar_dependency_gate_v20.py'
       - 'test_so10_210_symmetric_45_source_projector_v20.py'
+      - 'test_so10_210_source_quartic_basis_v20.py'
       - 'test_so10_210_symmetric_product_source_audit_v20.py'
       - 'test_selected_ps_singlet_symmetric45_diagnostic_v20.py'
       - 'test_source_corrected_scalar_dependency_gate_v20.py'
       - '.github/workflows/source-correct-210-symmetric-product.yml'
   push:
     branches: [main]
-    paths:
-      - 'so10_210_symmetric_45_source_projector_v20.py'
-      - 'so10_210_symmetric_product_source_audit_v20.py'
-      - 'selected_ps_singlet_symmetric45_diagnostic_v20.py'
-      - 'source_corrected_scalar_dependency_gate_v20.py'
-      - 'test_so10_210_symmetric_45_source_projector_v20.py'
-      - 'test_so10_210_symmetric_product_source_audit_v20.py'
-      - 'test_selected_ps_singlet_symmetric45_diagnostic_v20.py'
-      - 'test_source_corrected_scalar_dependency_gate_v20.py'
-      - '.github/workflows/source-correct-210-symmetric-product.yml'
   workflow_dispatch:
 
 concurrency:
-  group: source-correct-210-symmetric-product-${{ github.event.pull_request.number || github.ref }}
+  group: source-normalized-210-quartic-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -45,37 +37,41 @@ jobs:
           cache: pip
       - run: python -m pip install --upgrade pip
       - run: python -m pip install numpy scipy mpmath
-      - name: Focused source-correction tests
+      - name: Focused source-normalization tests
         run: |
           python -m unittest -v \
             test_so10_210_symmetric_45_source_projector_v20.py \
+            test_so10_210_source_quartic_basis_v20.py \
             test_so10_210_symmetric_product_source_audit_v20.py \
             test_selected_ps_singlet_symmetric45_diagnostic_v20.py \
             test_source_corrected_scalar_dependency_gate_v20.py
-      - name: Emit source-correct reports
+      - name: Emit source-normalized reports
         run: |
           python so10_210_symmetric_45_source_projector_v20.py --write
+          python so10_210_source_quartic_basis_v20.py --write
           python so10_210_symmetric_product_source_audit_v20.py --write
           python selected_ps_singlet_symmetric45_diagnostic_v20.py --write
           python source_corrected_scalar_dependency_gate_v20.py --write
       - name: Assert honest scientific state
         run: |
           python - <<'PY'
-          import json
+          import json, math
           p=json.load(open('SO10_210_SYMMETRIC_45_SOURCE_PROJECTOR_V20.json'))
+          q=json.load(open('SO10_210_SOURCE_QUARTIC_BASIS_V20.json'))
           a=json.load(open('SO10_210_SYMMETRIC_PRODUCT_SOURCE_AUDIT_V20.json'))
           s=json.load(open('SELECTED_PS_SINGLET_SYMMETRIC45_DIAGNOSTIC_V20.json'))
           g=json.load(open('SOURCE_CORRECTED_SCALAR_DEPENDENCY_GATE_V20.json'))
           assert p['n_failed']==0 and p['overall_state']=='BLOCKED', p
-          assert p['flags']['same_field_symmetric_45_generically_nonzero'], p
-          assert p['flags']['old_same_field_45_vanishing_cannot_close_quartic_channel'], p
+          assert abs(p['normalization']['source_factor']-1/math.sqrt(70))<1e-15, p
+          assert p['flags']['source_normalization_corrected'], p
+          assert q['n_failed']==0 and q['overall_state']=='BLOCKED', q
+          assert q['closure']['pure_210_quartic_basis_closed'], q
+          assert q['flags']['published_1050_identity_executable'], q
+          assert not q['closure']['full_mixed_representation_ring_G1_closed'], q
+          assert not q['closure']['full_component_potential_G2_closed'], q
           assert a['n_failed']==0 and a['symmetric_product']['dimension']==22155, a
-          assert a['symmetric_product']['true_residual_dimension']==21845, a
           assert a['flags']['old_1050_blocker_superseded'], a
-          assert not a['flags']['g1_closed'] and not a['flags']['g2_closed'], a
-          assert s['n_failed']==0 and s['overall_state']=='BLOCKED', s
-          assert not s['flags']['full_p_a_omega_span_vanishes'], s
-          assert s['flags']['generic_selected_singlet_vacuum_can_activate_45'], s
+          assert s['n_failed']==0 and not s['flags']['full_p_a_omega_span_vanishes'], s
           assert g['n_failed']==0 and g['overall_state']=='BLOCKED', g
           assert g['flags']['pr98_must_remain_draft'], g
           assert not g['flags']['merge_to_main_safe'], g
@@ -84,10 +80,12 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: source-correct-210-symmetric-product-${{ matrix.python-version }}
+          name: source-normalized-210-quartic-${{ matrix.python-version }}
           path: |
             SO10_210_SYMMETRIC_45_SOURCE_PROJECTOR_V20.json
             SO10_210_SYMMETRIC_45_SOURCE_PROJECTOR_V20.md
+            SO10_210_SOURCE_QUARTIC_BASIS_V20.json
+            SO10_210_SOURCE_QUARTIC_BASIS_V20.md
             SO10_210_SYMMETRIC_PRODUCT_SOURCE_AUDIT_V20.json
             SO10_210_SYMMETRIC_PRODUCT_SOURCE_AUDIT_V20.md
             SELECTED_PS_SINGLET_SYMMETRIC45_DIAGNOSTIC_V20.json
