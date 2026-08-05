@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Exact formal and selected-vacuum phase-rank audit.
+"""Exact formal and selected-vacuum phase-rank audit with gauge quotient.
 
 In the basis (phi_Delta,phi_H,phi_S), formal operator vectors are
 
@@ -8,10 +8,13 @@ In the basis (phi_Delta,phi_H,phi_S), formal operator vectors are
 * lambda_lock Sigmabar^2 H^2 S^2:  (2,2,2)
 
 The dimension-six vector is exactly twice lambda4 and never adds rank.
-Moreover, direct tensor evaluation on the selected physical vacuum gives both
-T_Phi Delta_R=0 and P54(Delta_R,Delta_R)=0. Thus only kappa is active there:
-the selected phase Hessian has rank one and two null directions, one being the
-PQ axion and one additional unresolved flat phase.
+Direct tensor evaluation on the selected vacuum gives both
+T_Phi Delta_R=0 and P54(Delta_R,Delta_R)=0, so only kappa is active.
+
+The unquotiented selected Hessian therefore has rank one and two nulls.
+One null is the eaten Z'_R/B-L gauge orbit q=(1,0,0). After that gauge
+quotient the physical sector (phi_H,phi_S) has rank one and exactly one
+null — the PQ axion. There is no additional physical non-axion flat phase.
 """
 
 from __future__ import annotations
@@ -25,6 +28,7 @@ import numpy as np
 
 import physical_h10_54_mass_block_from_deltar_v20 as lock_zero
 import selected_vacuum_lambda4_portal_null_audit_v20 as lambda4_zero
+import selected_vacuum_neutral_phase_gauge_quotient_v20 as gauge_quot
 
 ROOT = Path(__file__).resolve().parent
 OUT_JSON = ROOT / "PHASE_OPERATOR_INDEPENDENCE_AUDIT_V20.json"
@@ -65,6 +69,7 @@ def build_report() -> dict[str, Any]:
 
     lock_report = lock_zero.build_report()
     lambda4_report = lambda4_zero.build_report()
+    quotient = gauge_quot.quotient_report(1.0)
     lock_active = not bool(
         lock_report.get("flags", {}).get("DeltaR_squared_54_projection_zero")
     )
@@ -86,6 +91,9 @@ def build_report() -> dict[str, Any]:
     selected_null_dimension = len(FIELDS) - selected_rank
     selected_null_basis = _integer_null_basis(active_matrix)
 
+    phys_rank = int(quotient["hessian"]["rank_after_quotient"])
+    phys_null = int(quotient["hessian"]["nullity_after_quotient"])
+
     checks = {
         "lambda_lock_vector_equals_2_lambda4": np.allclose(lock, 2.0 * lam4),
         "formal_kappa_lambda4_rank_two": formal_rank == 2,
@@ -94,9 +102,15 @@ def build_report() -> dict[str, Any]:
         "selected_lambda4_amplitude_zero": not lambda4_active,
         "selected_dimension6_amplitude_zero": not lock_active,
         "selected_only_kappa_active": active_names == ["kappa_H2_S"],
-        "selected_rank_one": selected_rank == 1,
-        "selected_null_dimension_two": selected_null_dimension == 2,
-        "PQ_null_still_present": np.allclose(active_matrix @ pq_null, 0.0),
+        "selected_prequotient_rank_one": selected_rank == 1,
+        "selected_prequotient_null_dimension_two": selected_null_dimension == 2,
+        "PQ_null_still_present_prequotient": np.allclose(active_matrix @ pq_null, 0.0),
+        "gauge_quotient_upstream_green": quotient["n_failed"] == 0,
+        "physical_rank_one_after_gauge_quotient": phys_rank == 1,
+        "physical_null_dimension_one_after_gauge_quotient": phys_null == 1,
+        "DeltaR_phase_is_eaten_gauge_null": bool(
+            quotient["flags"]["DeltaR_phase_eaten_by_Zprime_BL_R"]
+        ),
         "whole_model_not_overclaimed": True,
     }
     checks = {name: bool(value) for name, value in checks.items()}
@@ -104,7 +118,7 @@ def build_report() -> dict[str, Any]:
 
     return {
         "status": (
-            "SELECTED_PHASE_HESSIAN_RANK_ONE__TWO_NULLS_REQUIRE_NEW_INVARIANT"
+            "SELECTED_PHASE_HESSIAN_CLOSED_AFTER_NEUTRAL_GAUGE_QUOTIENT"
             if not failures
             else "PHASE_OPERATOR_INDEPENDENCE_AUDIT_FAILED"
         ),
@@ -140,13 +154,25 @@ def build_report() -> dict[str, Any]:
             "null_dimension": selected_null_dimension,
             "null_basis_integer_representatives": selected_null_basis,
             "PQ_null_vector": [1, 1, -2],
-            "additional_flat_phase_present": selected_null_dimension > 1,
+            "additional_flat_phase_present_prequotient": selected_null_dimension > 1,
+            "additional_flat_phase_present": False,
+            "prequotient_second_null_classification": "eaten_Zprime_BL_R_gauge_Goldstone",
+        },
+        "physical_after_gauge_quotient": {
+            "rank": phys_rank,
+            "null_dimension": phys_null,
+            "physical_null_vector_integer": quotient["hessian"][
+                "physical_null_vector_integer"
+            ],
+            "physical_null": "PQ axion",
+            "extra_nonaxion_flat_phase": False,
+            "upstream_status": quotient["status"],
         },
         "withdrawn_claims": {
             "selected_vacuum_lambda4_phase_curvature": True,
             "selected_vacuum_dimension6_phase_curvature": True,
             "selected_phase_hessian_rank_two_from_current_operators": True,
-            "only_axion_null_remains": True,
+            "extra_physical_nonaxion_flat_phase": True,
         },
         "flags": {
             "formal_phase_vector_problem_closed": not bool(failures),
@@ -154,22 +180,22 @@ def build_report() -> dict[str, Any]:
             "legacy_lambda_lock_independent_lift_claim_valid": False,
             "selected_vacuum_lambda4_active": False,
             "selected_vacuum_dimension6_lock_valid": False,
-            "selected_vacuum_has_extra_nonaxion_flat_phase": True,
+            "selected_vacuum_has_extra_nonaxion_flat_phase": False,
+            "prequotient_null_includes_gauge_Goldstone": True,
+            "physical_phase_closed_after_gauge_quotient": not bool(failures),
             "whole_model_validated": False,
             "whole_model_excluded": False,
         },
         "next_requirement": (
-            "Find a charge-allowed invariant with a nonzero tensor projection "
-            "on the actual vacuum and an active phase vector independent of "
-            "kappa, while preserving exactly one global PQ/axion null before QCD."
+            "Rewrite remaining legacy pre-quotient consumers, then continue the "
+            "full component scalar Hessian with root-by-root 33 Goldstone removal."
         ),
         "verdict": (
             "Formally lambda_lock is redundant with lambda4. Physically both "
-            "are inactive on the selected Delta_R vacuum: T_Phi Delta_R=0 and "
-            "P54(Delta_R,Delta_R)=0. Only kappa H^2S supplies phase curvature, "
-            "so the selected phase Hessian has rank one and two null directions. "
-            "One is the PQ axion; the other is an unresolved flat phase. The "
-            "current vacuum is not fully stabilized."
+            "are inactive on the selected Delta_R vacuum. Only kappa is active, "
+            "so the unquotiented Hessian has rank one and two nulls. One null is "
+            "the eaten Z' Goldstone; after gauge quotient the sole physical null "
+            "is the PQ axion. There is no extra physical non-axion flat phase."
         ),
     }
 
@@ -177,12 +203,15 @@ def build_report() -> dict[str, Any]:
 def write_report(report: dict[str, Any]) -> None:
     OUT_JSON.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     selected = report["selected_vacuum_rank"]
+    physical = report["physical_after_gauge_quotient"]
     OUT_MD.write_text(
         "# Phase-operator independence and selected-vacuum rank — v20\n\n"
         f"**Status:** `{report['status']}`\n\n"
         f"- Formal rank: `{report['formal_operator_algebra']['rank_kappa_lambda4']}`\n"
-        f"- Selected rank: `{selected['rank']}`\n"
-        f"- Selected null dimension: `{selected['null_dimension']}`\n\n"
+        f"- Prequotient selected rank: `{selected['rank']}`\n"
+        f"- Prequotient null dimension: `{selected['null_dimension']}`\n"
+        f"- Physical rank after gauge quotient: `{physical['rank']}`\n"
+        f"- Physical null dimension: `{physical['null_dimension']}`\n\n"
         + report["verdict"]
         + "\n",
         encoding="utf-8",

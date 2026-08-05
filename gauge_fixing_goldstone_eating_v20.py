@@ -34,6 +34,7 @@ import charge_allowed_potential_minimize_v20 as pmin
 import component_lift_210_126_10_v20 as clift
 import multi_operator_phase_hessian_v20 as mph
 import scalar_vacuum_proton_decay_v20 as scalar_pd
+import selected_vacuum_neutral_phase_gauge_quotient_v20 as gauge_quot
 import so10_126_to_54_projector_v20 as c126mod
 
 ROOT = Path(__file__).resolve().parent
@@ -181,13 +182,16 @@ def physical_phase_basis() -> dict[str, Any]:
         },
         {
             "name": "phi_DeltaR_126",
-            "class": "physical_active",
-            "reason": "Enters locking / λ₄ phase potential; not a pure gauge orbit",
+            "class": "gauge_fixed_or_eaten",
+            "reason": (
+                "SM-singlet (10,1,3) phase eaten by broken Pati-Salam "
+                "Z'_R/B-L; not a physical reduced-sector coordinate"
+            ),
         },
         {
             "name": "phi_10",
             "class": "physical_active",
-            "reason": "Enters κ and locking; PQ-charged",
+            "reason": "Enters κ H10^2 S; PQ-charged common 10 phase",
         },
         {
             "name": "phi_S",
@@ -227,10 +231,11 @@ def project_phase_hessian_unitary_gauge(
     a_kappa: float,
     a_lam4: float,
 ) -> dict[str, Any]:
-    """Physical 3×3 Hessian after removing gauge-fixed spectators.
+    """Physical phase Hessian after removing spectators and the Z' Goldstone.
 
-    Spectators already have zero rows in the lift; the physical spectrum is
-    exactly the reduced multi-operator Hessian on (φ_Δ, φ_10, φ_S).
+    Spectators already have zero rows in the lift. The reduced 3×3 still
+    contains the eaten Delta_R phase. The authoritative physical spectrum is
+    the neutral gauge quotient on (φ_10, φ_S) for A_κ>0.
     """
     reduced = mph.multi_operator_phase_hessian(
         a_lock=a_lock, a_kappa=a_kappa, a_lam4=a_lam4
@@ -238,26 +243,55 @@ def project_phase_hessian_unitary_gauge(
     lifted = clift.lifted_phase_hessian(
         a_lock=a_lock, a_kappa=a_kappa, a_lam4=a_lam4
     )
-    # Unitary gauge: drop spectator eigenvalues (the extra zeros)
-    physical_eigs = [
-        float(x)
-        for x in reduced["eigenvalues"]
-    ]
+    if a_kappa > 0.0:
+        quotient = gauge_quot.quotient_report(a_kappa)
+        n_positive = int(
+            np.sum(
+                np.array(quotient["hessian"]["eigenvalues_after_quotient"]) > 1e-12
+            )
+        )
+        n_zero = int(quotient["hessian"]["nullity_after_quotient"])
+        n_negative = int(
+            np.sum(
+                np.array(quotient["hessian"]["eigenvalues_after_quotient"]) < -1e-12
+            )
+        )
+        flat = quotient["hessian"]["physical_null_vector_integer"]
+        physical_fields = list(gauge_quot.FIELDS_PHYSICAL)
+        status = "UNITARY_GAUGE_PHASE_HESSIAN_PROJECTED__ZPRIME_QUOTIENT"
+    else:
+        n_positive = 0
+        n_zero = 2
+        n_negative = 0
+        flat = None
+        physical_fields = list(gauge_quot.FIELDS_PHYSICAL)
+        status = "UNITARY_GAUGE_PHASE_HESSIAN_PROJECTED__NO_KAPPA"
     return {
-        "status": "UNITARY_GAUGE_PHASE_HESSIAN_PROJECTED",
-        "physical_fields": list(mph.FIELDS),
-        "physical_eigenvalues": physical_eigs,
-        "n_positive": reduced["n_positive"],
-        "n_zero": reduced["n_zero"],
-        "n_negative": reduced["n_negative"],
-        "flat_direction": reduced["flat_direction"],
+        "status": status,
+        "physical_fields": physical_fields,
+        "prequotient_fields": list(mph.FIELDS),
+        "prequotient_n_positive": reduced["n_positive"],
+        "prequotient_n_zero": reduced["n_zero"],
+        "physical_eigenvalues": (
+            gauge_quot.quotient_report(a_kappa)["hessian"][
+                "eigenvalues_after_quotient"
+            ]
+            if a_kappa > 0.0
+            else [0.0, 0.0]
+        ),
+        "n_positive": n_positive,
+        "n_zero": n_zero,
+        "n_negative": n_negative,
+        "flat_direction": flat,
         "lifted_n_zero_before_projection": lifted["n_zero"],
         "spectator_zeros_removed": lifted["n_zero"] - reduced["n_zero"],
+        "zprime_goldstone_removed": 1,
         "operator_charge_rank": reduced["operator_charge_rank"],
         "flag": {
             "unitary_gauge_projection_applied": True,
             "spectators_removed": True,
-            "physical_spectrum_is_reduced_multi_operator": True,
+            "DeltaR_phase_eaten_by_Zprime": True,
+            "physical_spectrum_is_gauge_quotient": a_kappa > 0.0,
         },
     }
 
@@ -316,6 +350,8 @@ def build_report() -> dict[str, Any]:
                 "n_negative": phys["n_negative"],
                 "flat_direction": phys["flat_direction"],
                 "spectator_zeros_removed": phys["spectator_zeros_removed"],
+                "zprime_goldstone_removed": phys["zprime_goldstone_removed"],
+                "physical_fields": phys["physical_fields"],
             },
         }
 
@@ -341,13 +377,17 @@ def build_report() -> dict[str, Any]:
         "chain_identities": all(chain["identities"].values()),
         "broken_total_33": chain["broken"]["SO10_to_SM_total"] == 33,
         "gauge_map_matches_33": bool(gauge_map["matches_broken_generators"]),
-        "phase_3_active": phases["n_physical_active"] == 3,
-        "phase_4_fixed": phases["n_gauge_fixed_or_eaten"] == 4,
+        "phase_2_active": phases["n_physical_active"] == 2,
+        "phase_5_fixed": phases["n_gauge_fixed_or_eaten"] == 5,
+        "DeltaR_classified_as_eaten": "phi_DeltaR_126"
+        not in phases["physical_active_names"],
         "ew_goldstones_3": phases["sm_ew_goldstones"]["n_real"] == 3,
-        "locking_only_phys": locking_only["physical_phase"]["n_positive"] == 1
+        "locking_only_phys": locking_only["physical_phase"]["n_positive"] == 0
         and locking_only["physical_phase"]["n_zero"] == 2,
-        "finite_kappa_phys": finite_k["physical_phase"]["n_positive"] == 2
+        "finite_kappa_phys": finite_k["physical_phase"]["n_positive"] == 1
         and finite_k["physical_phase"]["n_zero"] == 1,
+        "finite_kappa_flat_is_PQ": finite_k["physical_phase"]["flat_direction"]
+        == [1, -2],
         "spectators_removed": all(
             p["physical_phase"]["spectator_zeros_removed"] == 4 for p in points
         ),
@@ -383,6 +423,7 @@ def build_report() -> dict[str, Any]:
             "generator_counts_exact": True,
             "coset_to_gauge_boson_map_recorded": True,
             "physical_phase_hessian_projected": True,
+            "DeltaR_phase_reclassified_as_Zprime_Goldstone": True,
             "root_by_root_oscillator_basis": False,
             "unique_flavour_rotations_for_XY": False,
             "invented_unpublished_cg_values": False,

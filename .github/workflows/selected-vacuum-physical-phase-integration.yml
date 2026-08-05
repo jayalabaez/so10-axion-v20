@@ -54,12 +54,13 @@ jobs:
           assert not q['flags']['extra_nonaxion_flat_phase_present'], q
           assert q['flags']['exactly_one_physical_PQ_null'], q
           assert i['n_failed']==0, i
-          assert i['status']=='PHYSICAL_NEUTRAL_PHASE_CLOSED__LEGACY_CONSUMERS_REVALIDATION_OPEN', i
+          assert i['status']=='PHYSICAL_NEUTRAL_PHASE_CLOSED__CORE_CONSUMERS_REVALIDATED', i
           assert i['closed_subproblem']['physical_rank']==1, i
           assert i['closed_subproblem']['physical_nullity']==1, i
           assert i['closed_subproblem']['physical_null']=='PQ axion', i
           assert not i['closed_subproblem']['extra_physical_nonaxion_flat_phase'], i
-          assert i['legacy_consumer_audit']['n_stale_or_dependent'] >= 2, i
+          assert i['legacy_consumer_audit']['n_revalidated'] >= 3, i
+          assert i['flags']['core_prequotient_consumers_revalidated'], i
           assert not i['flags']['legacy_phase_consumers_fully_revalidated'], i
           assert not i['flags']['finite_dimension_search_workflows_scientifically_required'], i
           assert not i['flags']['full_component_scalar_hessian_complete'], i

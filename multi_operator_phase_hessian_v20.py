@@ -1,11 +1,16 @@
 #!/usr/bin/env python3
-r"""Multi-operator phase Hessian with selected-vacuum nulls enforced (v20).
+r"""Multi-operator phase Hessian with selected-vacuum nulls and gauge quotient.
 
-Revalidated after PR #97: on the physical selected vacuum,
+On the physical selected vacuum,
 
 * P54(Delta_R, Delta_R) = 0 ⇒ A_lock = 0;
 * T_Phi Delta_R = 0 ⇒ A_lam4 = 0;
 * only κ H²S remains active.
+
+The unquotiented reduced Hessian on (φ_Δ, φ_10, φ_S) therefore has rank one
+and two nulls. One null is the eaten Z'_R/B-L gauge orbit q=(1,0,0). After
+that gauge quotient the physical sector (φ_10, φ_S) has rank one and exactly
+one PQ/axion null. There is no extra physical non-axion flat phase.
 
 Formal charge vectors are still recorded:
 
@@ -13,15 +18,13 @@ Formal charge vectors are still recorded:
 2. ``10_H² S`` (κ):              g_κ = (0,2,1)
 3. Dim-4 ``210·10·126·S`` (λ₄):  g_4 = (1,1,1)
 
-with g_L = 2 g_4.  Historical MI-proxy amplitudes are retained only as
-withdrawn bookkeeping.
+with g_L = 2 g_4. Historical MI-proxy amplitudes remain withdrawn bookkeeping.
 
 Honesty
 -------
-* Reduced three-phase sector only.
-* Selected-vacuum rank is one (κ) with two flat directions, one being the
-  PQ axion (1,1,−2) and one additional unresolved flat phase.
-* Unique τ_p and full-component Goldstone counting remain OPEN.
+* Reduced neutral phase sector only; full 33 Goldstone projection remains OPEN.
+* Physical closure of this reduced sector is conditional on A_κ > 0.
+* Unique τ_p and the complete component Hessian remain OPEN.
 """
 
 from __future__ import annotations
@@ -39,6 +42,7 @@ import extended_ttbar_54_locking_v20 as ext
 import physical_h10_54_mass_block_from_deltar_v20 as lock_zero
 import scalar_vacuum_proton_decay_v20 as scalar_pd
 import selected_vacuum_lambda4_portal_null_audit_v20 as lam4_zero
+import selected_vacuum_neutral_phase_gauge_quotient_v20 as gauge_quot
 import so10_126_to_54_projector_v20 as c126mod
 
 ROOT = Path(__file__).resolve().parent
@@ -57,6 +61,7 @@ SOURCES = {
     },
     "upstream_exact_lock_null": "physical_h10_54_mass_block_from_deltar_v20",
     "upstream_exact_lam4_null": "selected_vacuum_lambda4_portal_null_audit_v20",
+    "upstream_gauge_quotient": "selected_vacuum_neutral_phase_gauge_quotient_v20",
     "upstream_minimize": "charge_allowed_potential_minimize_v20",
 }
 
@@ -166,8 +171,10 @@ def multi_operator_phase_hessian(
             "null_basis": vh[1:].tolist(),
             "pq_axion_among_nulls": True,
             "note": (
-                "Two flat directions orthogonal to the single active g; "
-                "one contains the PQ combination (1,1,-2)."
+                "Two unquotiented nulls orthogonal to the single active g; "
+                "one is the eaten Z' gauge orbit and one contains the PQ "
+                "combination. Use selected_vacuum_neutral_phase_gauge_quotient_v20 "
+                "for the physical spectrum."
             ),
         }
     elif rank == 0:
@@ -237,6 +244,9 @@ def evaluate_point(
         a_lam4=amp["A_lam4"],
     )
     single = ext.phase_hessian_from_A(amp["A_lock"])
+    physical = None
+    if amp["A_kappa"] > 0.0:
+        physical = gauge_quot.quotient_report(amp["A_kappa"])
     return {
         "name": name,
         "couplings": {
@@ -246,6 +256,39 @@ def evaluate_point(
         },
         "amplitudes": amp,
         "multi_operator_hessian": hess,
+        "prequotient_classification": {
+            "n_positive": hess["n_positive"],
+            "n_zero": hess["n_zero"],
+            "operator_charge_rank": hess["operator_charge_rank"],
+            "second_null_if_kappa_active": (
+                "eaten_Zprime_BL_R_gauge_Goldstone"
+                if amp["A_kappa"] > 0.0 and hess["n_zero"] == 2
+                else None
+            ),
+        },
+        "physical_after_gauge_quotient": (
+            {
+                "status": physical["status"],
+                "n_failed": physical["n_failed"],
+                "rank": physical["hessian"]["rank_after_quotient"],
+                "nullity": physical["hessian"]["nullity_after_quotient"],
+                "physical_null_vector_integer": physical["hessian"][
+                    "physical_null_vector_integer"
+                ],
+                "extra_nonaxion_flat_phase": physical["flags"][
+                    "extra_nonaxion_flat_phase_present"
+                ],
+            }
+            if physical is not None
+            else {
+                "status": "PHYSICAL_QUOTIENT_NOT_APPLICABLE__A_KAPPA_NONPOSITIVE",
+                "n_failed": 0,
+                "rank": 0,
+                "nullity": 2,
+                "physical_null_vector_integer": None,
+                "extra_nonaxion_flat_phase": False,
+            }
+        ),
         "single_locking_baseline": {
             "n_positive": single["n_positive"],
             "n_zero": single["n_zero"],
@@ -329,12 +372,33 @@ def build_report() -> dict[str, Any]:
         == 0,
         "locking_only_three_flat": locking_only["multi_operator_hessian"]["n_zero"]
         == 3,
-        "finite_kappa_one_massive": finite_k["multi_operator_hessian"]["n_positive"]
+        "finite_kappa_one_massive_prequotient": finite_k["multi_operator_hessian"][
+            "n_positive"
+        ]
         == 1,
-        "finite_kappa_two_flat": finite_k["multi_operator_hessian"]["n_zero"] == 2,
-        "kappa_lam4_still_one_massive": both["multi_operator_hessian"]["n_positive"]
+        "finite_kappa_two_flat_prequotient": finite_k["multi_operator_hessian"][
+            "n_zero"
+        ]
+        == 2,
+        "finite_kappa_physical_rank_one": finite_k["physical_after_gauge_quotient"][
+            "rank"
+        ]
         == 1,
-        "kappa_lam4_still_two_flat": both["multi_operator_hessian"]["n_zero"] == 2,
+        "finite_kappa_physical_nullity_one": finite_k["physical_after_gauge_quotient"][
+            "nullity"
+        ]
+        == 1,
+        "finite_kappa_physical_null_is_PQ": finite_k["physical_after_gauge_quotient"][
+            "physical_null_vector_integer"
+        ]
+        == [1, -2],
+        "kappa_lam4_still_one_massive_prequotient": both["multi_operator_hessian"][
+            "n_positive"
+        ]
+        == 1,
+        "kappa_lam4_physical_closed": both["physical_after_gauge_quotient"]["rank"]
+        == 1
+        and both["physical_after_gauge_quotient"]["nullity"] == 1,
         "g_lock_parallel_documented": both["multi_operator_hessian"][
             "g_lock_parallel_g_lam4"
         ],
@@ -362,7 +426,7 @@ def build_report() -> dict[str, Any]:
 
     return {
         "status": (
-            "MULTI_OPERATOR_PHASE_HESSIAN_REVALIDATED__KAPPA_ONLY_SELECTED_VACUUM"
+            "MULTI_OPERATOR_PHASE_HESSIAN_REVALIDATED__GAUGE_QUOTIENT_PHYSICAL_CLOSURE"
             if not failures
             else "MULTI_OPERATOR_PHASE_HESSIAN_FAILED"
         ),
@@ -377,6 +441,7 @@ def build_report() -> dict[str, Any]:
             "g_kappa": G_KAPPA.tolist(),
             "g_lam4": G_LAM4.tolist(),
             "identity": "g_lock = 2·g_lam4 (locking ∥ λ₄; both null on vacuum)",
+            "neutral_gauge_orbit": [1.0, 0.0, 0.0],
         },
         "C_54": c54,
         "C_126_to_54": c126,
@@ -387,16 +452,18 @@ def build_report() -> dict[str, Any]:
             "lam4": lam4_rep.get("status"),
         },
         "next_exact_calculation": [
-            "Find a charge-allowed invariant with nonzero selected-vacuum phase amplitude",
-            "Lift the κ-only reduced Hessian to the full 210+126+10 component space",
+            "Continue full component scalar Hessian with root-by-root 33 Goldstone removal",
             "Include gauge–scalar interference with physical mixings",
-            "Goldstone counting across every broken generator",
+            "Global stationarity, boundedness and competing extrema",
         ],
         "flag": {
             "multi_operator_phase_hessian": True,
             "includes_kappa_lam4_locking_cross_terms": True,
             "selected_vacuum_lock_and_lam4_null": True,
             "selected_vacuum_phase_rank_one": True,
+            "prequotient_second_null_is_gauge_Goldstone": True,
+            "physical_phase_closed_after_gauge_quotient": True,
+            "extra_physical_nonaxion_flat_phase": False,
             "radial_phase_cross_analyzed": True,
             "complete_multi_operator_phase_hessian_reduced_sector": True,
             "full_component_phase_space": False,
@@ -408,10 +475,11 @@ def build_report() -> dict[str, Any]:
         },
         "verdict": (
             "Selected-vacuum multi-operator phase Hessian revalidated: A_lock "
-            "and A_lam4 are exact zeros, so only κ is active. Rank is one with "
-            "two flat directions (PQ axion plus one unresolved flat phase). "
-            "A different nonzero phase-sensitive invariant is required; the "
-            "theory remains BLOCKED."
+            "and A_lam4 are exact zeros, so only κ is active. The unquotiented "
+            "rank-one Hessian has two nulls; one is the eaten Z' Goldstone. After "
+            "gauge quotient the physical sector has one massive CP-odd mode and "
+            "exactly one PQ/axion null. No extra physical non-axion flat phase "
+            "remains in this reduced sector. The full scalar theory stays BLOCKED."
         ),
     }
 

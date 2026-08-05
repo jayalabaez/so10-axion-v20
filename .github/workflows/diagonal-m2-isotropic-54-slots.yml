@@ -106,7 +106,12 @@ jobs:
           assert p['formal_operator_algebra']['rank_after_adding_lambda_lock']==2, p
           assert p['selected_vacuum_rank']['rank']==1, p
           assert p['selected_vacuum_rank']['null_dimension']==2, p
-          assert p['flags']['selected_vacuum_has_extra_nonaxion_flat_phase'], p
+          assert p['selected_vacuum_rank']['additional_flat_phase_present_prequotient'], p
+          assert not p['selected_vacuum_rank']['additional_flat_phase_present'], p
+          assert p['physical_after_gauge_quotient']['rank']==1, p
+          assert p['physical_after_gauge_quotient']['null_dimension']==1, p
+          assert not p['flags']['selected_vacuum_has_extra_nonaxion_flat_phase'], p
+          assert p['flags']['physical_phase_closed_after_gauge_quotient'], p
           assert d['n_failed']==0 and d['overall_state']=='BLOCKED', d
           assert d['flags']['all_known_consumers_identified'], d
           assert not d['flags']['all_consumers_revalidated'], d

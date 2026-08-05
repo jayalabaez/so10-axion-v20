@@ -83,12 +83,32 @@ Channels 120/320/1050/4125 remain open.
 ## Completed selected-vacuum phase-Hessian revalidation
 
 Root `A_54=0` and κ-only multi-operator phase Hessian consumers have been
-rewritten against the exact nulls. Remaining UV/CW/proton-decay descendants
-still require revalidation. Selected phase rank is one (κ) with two flats.
+rewritten against the exact nulls.
+
+## Corrected: the "extra flat phase" was a gauge Goldstone
+
+The unquotiented reduced Hessian on `(φ_Δ,φ_10,φ_S)` has rank one and two
+nulls when `A_κ>0`. One null is the eaten Pati–Salam `Z'_R/B-L` orbit
+`q=(1,0,0)`. After that gauge quotient the physical sector `(φ_10,φ_S)` has
+
+- one massive CP-odd eigenvalue `5 A_κ`;
+- exactly one physical null `(1,-2)`, the PQ axion;
+- **no** additional physical non-axion flat phase.
+
+All-orders: B−L neutrality forces `d=0` and PQ/Z17 then forces every nonzero
+selected-vacuum polynomial phase vector parallel to `κ`. Finite dim-6/7/8
+zeros corroborate this identity; they are not required to prove physical
+phase closure of the reduced sector.
+
+Core pre-quotient consumers (`multi_operator_phase_hessian`,
+`gauge_fixing_goldstone_eating`, `phase_operator_independence_audit`) are
+source-rewritten. UV/CP descendants remain open.
 
 ## Correct next goal
 
-Build the complete physical non-supersymmetric scalar mass-squared matrix and solve the global `hEW=174 GeV` vacuum.
+Continue the full component scalar mass-squared matrix and global
+`hEW=174 GeV` vacuum: root-by-root removal of all 33 Goldstones, stationarity,
+boundedness, thresholds, and τ_p. Do not reopen a reduced-sector phase hunt.
 
 ## Executable sequence
 

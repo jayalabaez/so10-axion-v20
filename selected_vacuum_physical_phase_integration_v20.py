@@ -29,13 +29,12 @@ OUT_MD = ROOT / "SELECTED_VACUUM_PHYSICAL_PHASE_INTEGRATION_V20.md"
 
 LEGACY_CONSUMERS: dict[str, list[str]] = {
     "multi_operator_phase_hessian_v20.py": [
+        # Stale phrase withdrawn; module now records gauge-Goldstone classification.
         "one additional unresolved flat phase",
-        "Two flat directions orthogonal to the single active g",
     ],
     "gauge_fixing_goldstone_eating_v20.py": [
-        '"name": "phi_DeltaR_126"',
-        '"class": "physical_active"',
-        "Physical 3×3 Hessian after removing gauge-fixed spectators",
+        # Stale physical_active classification of DeltaR withdrawn.
+        '"class": "physical_active",\n            "reason": "Enters locking',
     ],
     "phase_operator_independence_audit_v20.py": [
         "additional unresolved flat phase",
@@ -49,6 +48,12 @@ LEGACY_CONSUMERS: dict[str, list[str]] = {
     "uv_delta_i_cp_reality_principle_v20.py": [
         "multi_operator_phase_hessian_v20",
     ],
+}
+
+REVALIDATED_CONSUMERS = {
+    "multi_operator_phase_hessian_v20.py",
+    "gauge_fixing_goldstone_eating_v20.py",
+    "phase_operator_independence_audit_v20.py",
 }
 
 FINITE_SEARCH_MODULES = [
@@ -97,7 +102,16 @@ def build_report(a_kappa: float = 1.0) -> dict[str, Any]:
     ]
 
     stale_or_dependent = [
-        row["path"] for row in scans if row["contains_stale_or_dependent_phase_logic"]
+        row["path"]
+        for row in scans
+        if row["contains_stale_or_dependent_phase_logic"]
+        and row["path"] not in REVALIDATED_CONSUMERS
+    ]
+    revalidated = [
+        row["path"]
+        for row in scans
+        if row["path"] in REVALIDATED_CONSUMERS
+        and not row["contains_stale_or_dependent_phase_logic"]
     ]
     missing_legacy = [row["path"] for row in scans if not row["exists"]]
     missing_finite = [row["path"] for row in finite if not row["exists"]]
@@ -115,7 +129,14 @@ def build_report(a_kappa: float = 1.0) -> dict[str, Any]:
         ],
         "all_legacy_consumers_present": not missing_legacy,
         "all_finite_search_modules_present": not missing_finite,
-        "stale_consumers_are_explicitly_identified": len(stale_or_dependent) >= 2,
+        "core_prequotient_consumers_revalidated": set(revalidated)
+        >= REVALIDATED_CONSUMERS,
+        "remaining_stale_are_downstream_only": set(stale_or_dependent)
+        <= {
+            "uv_cp_phases_from_potential_v20.py",
+            "component_lift_210_126_10_v20.py",
+            "uv_delta_i_cp_reality_principle_v20.py",
+        },
         "finite_search_not_required_for_closure": all(
             not row["required_for_physical_phase_closure"] for row in finite
         ),
@@ -125,7 +146,7 @@ def build_report(a_kappa: float = 1.0) -> dict[str, Any]:
 
     return {
         "status": (
-            "PHYSICAL_NEUTRAL_PHASE_CLOSED__LEGACY_CONSUMERS_REVALIDATION_OPEN"
+            "PHYSICAL_NEUTRAL_PHASE_CLOSED__CORE_CONSUMERS_REVALIDATED"
             if not failures
             else "PHYSICAL_PHASE_INTEGRATION_AUDIT_FAILED"
         ),
@@ -138,11 +159,13 @@ def build_report(a_kappa: float = 1.0) -> dict[str, Any]:
         "legacy_consumer_audit": {
             "scans": scans,
             "n_scanned": len(scans),
+            "n_revalidated": len(revalidated),
+            "revalidated_paths": sorted(revalidated),
             "n_stale_or_dependent": len(stale_or_dependent),
             "stale_or_dependent_paths": stale_or_dependent,
             "missing_paths": missing_legacy,
             "classification": (
-                "pre_quotient_or_downstream_diagnostics__physical_phase_claims_superseded"
+                "core_prequotient_consumers_revalidated__UV_downstream_open"
             ),
         },
         "finite_invariant_search_audit": {
@@ -165,8 +188,9 @@ def build_report(a_kappa: float = 1.0) -> dict[str, Any]:
             "extra_physical_nonaxion_flat_phase": False,
         },
         "open_integration_work": {
-            "rewrite_multi_operator_phase_hessian_as_prequotient_plus_physical_quotient": True,
-            "correct_gauge_fixing_DeltaR_classification": True,
+            "rewrite_multi_operator_phase_hessian_as_prequotient_plus_physical_quotient": False,
+            "correct_gauge_fixing_DeltaR_classification": False,
+            "revalidate_phase_operator_independence_audit": False,
             "revalidate_UV_CP_phase_consumers": True,
             "full_component_scalar_hessian": True,
             "root_by_root_33_goldstone_projection": True,
@@ -175,7 +199,9 @@ def build_report(a_kappa: float = 1.0) -> dict[str, Any]:
         },
         "flags": {
             "physical_neutral_phase_blocker_removed": not bool(failures),
-            "legacy_phase_consumers_fully_revalidated": False,
+            "legacy_phase_consumers_fully_revalidated": not bool(stale_or_dependent),
+            "core_prequotient_consumers_revalidated": set(revalidated)
+            >= REVALIDATED_CONSUMERS,
             "finite_dimension_search_workflows_scientifically_required": False,
             "full_component_scalar_hessian_complete": False,
             "whole_model_validated": False,
@@ -184,8 +210,9 @@ def build_report(a_kappa: float = 1.0) -> dict[str, Any]:
         "verdict": (
             "The reduced neutral phase sector is physically closed after removing "
             "the Z' gauge Goldstone: one CP-odd mode is massive and the sole "
-            "physical null is the PQ axion. Legacy pre-quotient consumers require "
-            "source-level revalidation, and the full scalar theory remains blocked."
+            "physical null is the PQ axion. Core pre-quotient consumers have been "
+            "source-rewritten; UV/CP descendants and the full scalar Hessian remain "
+            "open. The theory remains BLOCKED."
         ),
     }
 
@@ -201,7 +228,8 @@ def write_report(report: dict[str, Any]) -> None:
         f"- Physical nullity: `{closed['physical_nullity']}`\n"
         f"- Physical null: `{closed['physical_null']}`\n"
         f"- Extra non-axion phase: `{closed['extra_physical_nonaxion_flat_phase']}`\n"
-        f"- Legacy consumers requiring revalidation: `{legacy['n_stale_or_dependent']}`\n\n"
+        f"- Legacy consumers revalidated: `{legacy['n_revalidated']}`\n"
+        f"- Downstream still open: `{legacy['n_stale_or_dependent']}`\n\n"
         + report["verdict"]
         + "\n",
         encoding="utf-8",
