@@ -28,6 +28,7 @@ import diagonal_210_radial_cubic_ps_singlet_v20 as d210
 import diagonal_h10_sigmabar_m2_isotropic_54_slots_v20 as iso
 import extended_hessian_pq_axion_quotient_v20 as pq_ext
 import nonsusy_reduced_hessian_v20 as reduced
+import reduced_quartic_copositivity_bfb_v20 as copos
 
 ROOT = Path(__file__).resolve().parent
 OUT_JSON = ROOT / "SCOPED_BFB_BOUNDEDNESS_GATE_V20.json"
@@ -39,6 +40,7 @@ def build_report() -> dict[str, Any]:
     iso_rep = iso.build_report()
     d210_rep = d210.build_report()
     pq_rep = pq_ext.build_report()
+    copos_rep = copos.build_report()
 
     bfb = reduced_rep.get("bfb_certificate", {})
     schur = iso_rep.get("schur_with_partial_diagonals", {})
@@ -51,6 +53,8 @@ def build_report() -> dict[str, Any]:
         "reduced_quartic_pd": bool(bfb.get("quartic_matrix_positive_definite")),
         "reduced_polynomial_bfb": bool(bfb.get("reduced_polynomial_bounded_from_below")),
         "locking_sextic_positive": bool(bfb.get("locking_sextic_coefficient_positive")),
+        "copositivity_green": copos_rep.get("n_failed", 1) == 0,
+        "copositivity_scoped": bool(copos_rep.get("flags", {}).get("reduced_quartic_copositive")),
         "isotropic_schur_green": iso_rep.get("n_failed", 1) == 0,
         "schur_positive_definite": bool(schur.get("positive_definite")),
         "d210_ps_singlet_green": d210_rep.get("n_failed", 1) == 0,
@@ -76,6 +80,19 @@ def build_report() -> dict[str, Any]:
         "checks": checks,
         "sectors": {
             "reduced_quartic_bfb": bfb.get("reduced_polynomial_bounded_from_below"),
+            "copositivity": {
+                "status": copos_rep.get("status"),
+                "spectral_pd": copos_rep.get("flags", {}).get(
+                    "reduced_quartic_spectral_pd"
+                ),
+                "copositive": copos_rep.get("flags", {}).get(
+                    "reduced_quartic_copositive"
+                ),
+                "min_eig": copos_rep.get("spectral", {}).get("min_eig"),
+                "mc_min_xTLx": copos_rep.get("monte_carlo_copositivity", {}).get(
+                    "min_xTLx"
+                ),
+            },
             "schur_margin": schur.get("schur_margin"),
             "schur_positive_definite": schur.get("positive_definite"),
             "m2_210_GeV2": d210_rep.get("mass", {}).get("m2_210_form_basis_GeV2"),
@@ -94,10 +111,10 @@ def build_report() -> dict[str, Any]:
             "full_ring_boundedness_certificate": True,
         },
         "verdict": (
-            "Scoped BFB holds on the reduced quartic slice, Schur portal "
-            "sector, and Goldstone+axion-projected extended Hessian skeleton. "
-            "Global BFB of the complete invariant ring remains OPEN. "
-            "Theory remains BLOCKED."
+            "Scoped BFB holds on the reduced quartic (spectral PD + "
+            "co-positivity), Schur portal sector, and Goldstone+axion-projected "
+            "extended Hessian skeleton. Global BFB of the complete invariant "
+            "ring remains OPEN. Theory remains BLOCKED."
         ),
     }
 
@@ -108,6 +125,7 @@ def write_report(report: dict[str, Any]) -> None:
         "# Scoped BFB / boundedness gate — v20\n\n"
         f"**Status:** `{report['status']}`\n\n"
         f"- Reduced quartic BFB: `{report['sectors']['reduced_quartic_bfb']}`\n"
+        f"- Co-positivity: `{report['sectors']['copositivity']}`\n"
         f"- Schur PD: `{report['sectors']['schur_positive_definite']}`\n"
         f"- Extended projected neg: "
         f"`{report['sectors']['extended_projected_spectrum'].get('n_negative')}`\n\n"

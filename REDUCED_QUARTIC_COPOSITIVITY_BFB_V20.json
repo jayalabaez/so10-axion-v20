@@ -1,0 +1,121 @@
+{
+  "status": "REDUCED_QUARTIC_COPOSITIVITY_BFB_PARTIAL__FULL_RING_OPEN",
+  "overall_state": "BLOCKED",
+  "n_checks": 11,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "reduced_hessian_green": true,
+    "quartic_spectral_pd": true,
+    "quartic_diags_nonnegative": true,
+    "quartic_pairwise_copositive": true,
+    "quartic_mc_copositive": true,
+    "quartic_copositive_scoped": true,
+    "isotropic_schur_green": true,
+    "schur_positive_definite": true,
+    "schur_margin_positive": true,
+    "full_ring_bfb_not_claimed": true,
+    "whole_model_not_overclaimed": true
+  },
+  "fields": [
+    "P_210",
+    "DeltaR_126bar",
+    "H10_EW",
+    "S_PQ",
+    "Phi17_X"
+  ],
+  "targets_GeV": {
+    "P_210": 9917564798898132.0,
+    "DeltaR_126bar": 631385523052.4453,
+    "H10_EW": 174.0,
+    "S_PQ": 631385523052.4453,
+    "Phi17_X": 1e+17
+  },
+  "self_quartics": {
+    "P_210": 0.55,
+    "DeltaR_126bar": 0.65,
+    "H10_EW": 0.258,
+    "S_PQ": 0.45,
+    "Phi17_X": 0.75
+  },
+  "quartic_matrix": [
+    [
+      0.55,
+      0.025,
+      0.0,
+      0.005,
+      0.01
+    ],
+    [
+      0.025,
+      0.65,
+      0.0,
+      0.02,
+      0.005
+    ],
+    [
+      0.0,
+      0.0,
+      0.258,
+      0.0,
+      0.0
+    ],
+    [
+      0.005,
+      0.02,
+      0.0,
+      0.45,
+      0.015
+    ],
+    [
+      0.01,
+      0.005,
+      0.0,
+      0.015,
+      0.75
+    ]
+  ],
+  "spectral": {
+    "eigenvalues": [
+      0.2579999999999999,
+      0.4472875803296053,
+      0.543741195003312,
+      0.6571602630515351,
+      0.7518109616155472
+    ],
+    "min_eig": 0.2579999999999999,
+    "positive_definite": true
+  },
+  "pairwise_copositivity": {
+    "diags_nonnegative": true,
+    "pairwise_ok": true,
+    "pair_failures": []
+  },
+  "monte_carlo_copositivity": {
+    "n_samples": 4000,
+    "min_xTLx": 0.09758123601076434,
+    "mean_xTLx": 0.1826922899564745,
+    "nonnegative_on_samples": true
+  },
+  "schur_portal": {
+    "positive_definite": true,
+    "schur_margin": 0.9999999865213026,
+    "largest_normalized_singular_value": 1.3478697338437138e-08,
+    "criterion": "\u03c3_max(A^{-1/2} B C^{-1/2}) < 1"
+  },
+  "flags": {
+    "reduced_quartic_copositive": true,
+    "reduced_quartic_spectral_pd": true,
+    "schur_portal_pd": true,
+    "full_invariant_ring_bfb": false,
+    "g5_partial": true,
+    "whole_model_validated": false,
+    "whole_model_excluded": false
+  },
+  "remaining_blockers": {
+    "complete_invariant_ring_G1": true,
+    "global_competing_extrema": true,
+    "full_ring_boundedness_certificate": true
+  },
+  "verdict": "Reduced quartic \u039b is spectrally PD and co-positive on the tested positive orthant (min eig=2.580000e-01; MC min x\u1d40\u039bx=9.758124e-02). Schur portal PD with margin 0.9999999865213026. Global full-ring BFB remains OPEN. Theory remains BLOCKED."
+}

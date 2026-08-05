@@ -132,6 +132,7 @@ def build_report() -> dict[str, Any]:
                 "Goldstone SM root catalog: stab L2 = 8_color + 1_EM",
                 "extended dim-738 form-basis skeleton with PS 210 mass",
                 "PQ axion quotient: 37 zeros / 701 positive / 0 negative",
+                "tree-level V_eff(a)=0 after integrating heavy CP-odd (m²=5 A_κ)",
                 f"pq module status: {pq.get('status')}",
             ],
             blockers=[
@@ -145,7 +146,8 @@ def build_report() -> dict[str, Any]:
             status="PARTIAL" if bfb_ok else "OPEN",
             evidence=[
                 f"scoped_bfb_boundedness_gate: {bfb_status}",
-                "reduced quartic PD + Schur PD + projected skeleton non-negative",
+                "reduced quartic spectral PD + co-positivity + Schur PD",
+                "projected Goldstone+axion skeleton non-negative",
             ],
             blockers=[
                 "competing extrema of the complete potential",
@@ -173,7 +175,10 @@ def build_report() -> dict[str, Any]:
             gate_id="G8",
             title="Unique τ_p / whole-model validation",
             status="OPEN",
-            evidence=["reduced-sector physical phase closed after Z' quotient"],
+            evidence=[
+                "reduced-sector physical phase closed after Z' quotient",
+                "tree-level V_eff(a) flat; UV κ OPEN",
+            ],
             blockers=[
                 "unique τ_p from complete UV potential",
                 "whole_model_validated remains false by construction",

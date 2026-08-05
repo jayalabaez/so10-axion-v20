@@ -1,0 +1,54 @@
+name: reduced-quartic-copositivity-bfb
+
+on:
+  pull_request:
+    paths:
+      - reduced_quartic_copositivity_bfb_v20.py
+      - test_reduced_quartic_copositivity_bfb_v20.py
+      - scoped_bfb_boundedness_gate_v20.py
+      - nonsusy_reduced_hessian_v20.py
+      - .github/workflows/reduced-quartic-copositivity-bfb.yml
+  workflow_dispatch:
+
+concurrency:
+  group: reduced-quartic-copositivity-bfb-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  reduced-quartic-copositivity-bfb:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Execute co-positivity BFB
+        run: python reduced_quartic_copositivity_bfb_v20.py --write
+      - name: Focused regression tests
+        run: python -m unittest -v test_reduced_quartic_copositivity_bfb_v20.py
+      - name: Assert honest scientific scope
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('REDUCED_QUARTIC_COPOSITIVITY_BFB_V20.json'))
+          assert r['status']=='REDUCED_QUARTIC_COPOSITIVITY_BFB_PARTIAL__FULL_RING_OPEN'
+          assert r['n_failed']==0
+          assert r['overall_state']=='BLOCKED'
+          assert r['spectral']['positive_definite']
+          assert r['flags']['reduced_quartic_copositive']
+          assert r['schur_portal']['positive_definite']
+          assert not r['flags']['full_invariant_ring_bfb']
+          assert not r['flags']['whole_model_validated']
+          PY
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reduced-quartic-copositivity-bfb
+          path: |
+            REDUCED_QUARTIC_COPOSITIVITY_BFB_V20.json
+            REDUCED_QUARTIC_COPOSITIVITY_BFB_V20.md

@@ -223,6 +223,19 @@ weights split as **8 (so6_color) + 1 (so4_weak)** = `SU(3)_c×U(1)_EM`, with
 unbroken generators as linear combinations (only `M_89` has a vanishing
 column alone). Cartans `T3_L/R` recorded. Dynamical masses remain OPEN.
 
+## Completed effective PQ axion potential + co-positivity BFB
+
+`effective_pq_axion_potential_v20.py` integrates the heavy CP-odd mode of
+`V_κ=(5 A_κ/2) h²` at tree level, proving `V_eff(a)=0` in the κ truncation,
+records `f_a=√(hEW²+4 v_S²)`, and applies the all-orders selection rule to
+show radial 210/126 integration cannot lift the axion without new PQ
+breaking. UV `κ` remains OPEN.
+
+`reduced_quartic_copositivity_bfb_v20.py` certifies spectral PD and
+co-positivity of the reduced five-amplitude quartic Λ (pairwise + Monte-Carlo
+on the simplex) together with the Schur portal margin. Wired into
+`scoped_bfb_boundedness_gate_v20`. Full-ring BFB remains OPEN.
+
 ## Correct next goal
 
 Theory completion still requires transcribed CG for 120/320/1050/4125 and
@@ -238,10 +251,9 @@ Do not invent missing CG and do not reopen a reduced-sector phase hunt.
    - Prove linear independence and record Hermitian-conjugation conventions.
    - Transcribe missing CG tensors (especially 120, 320, 1050, 4125) into the Cartesian basis.
    - Prefer operators with nonzero tensor projection on the actual `(Delta_R,hEW,S,Phi)` vacuum for phase locking.
-   - Next combinatorial targets without invented tables: effective axion
-     potential after integrating heavy modes; co-positivity BFB on reduced
-     quartic + portal Schur. Channel 1050 needs a published/combinatorial
-     Young projector — do not invent coefficients.
+   - Next combinatorial targets without invented tables: channel-1050 Young
+     projector only from published/combinatorial tensors; competing-extrema
+     census on the reduced polynomial; UV determination of κ.
 
 2. **Full component projection**
    - Project every invariant into canonical Pati-Salam and Standard Model component fields.

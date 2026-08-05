@@ -1,0 +1,105 @@
+{
+  "status": "EFFECTIVE_PQ_AXION_POTENTIAL_FLAT_AT_TREE__UV_KAPPA_OPEN",
+  "overall_state": "BLOCKED",
+  "n_checks": 11,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "heavy_mass_is_5_A_kappa": true,
+    "axion_mass_vanishes": true,
+    "ha_basis_diagonal": true,
+    "tree_level_V_eff_flat": true,
+    "f_a_positive": true,
+    "radial_does_not_lift_axion": true,
+    "upstream_quotient_green": true,
+    "d210_green": true,
+    "uv_kappa_not_claimed": true,
+    "cg_not_invented": true,
+    "whole_model_not_overclaimed": true
+  },
+  "phase_sector": {
+    "A_kappa": 2.163878013887554e+31,
+    "H_phi": [
+      [
+        8.655512055550215e+31,
+        4.327756027775108e+31
+      ],
+      [
+        4.327756027775108e+31,
+        2.163878013887554e+31
+      ]
+    ],
+    "H_ha": [
+      [
+        1.0819390069437769e+32,
+        3388779057221327.0
+      ],
+      [
+        1873214314142196.5,
+        -0.039415133373417566
+      ]
+    ],
+    "m2_heavy_GeV2": 1.0819390069437769e+32,
+    "m2_axion_GeV2": -0.039415133373417566,
+    "cross_ha": 3388779057221327.0,
+    "V_formula": "V_\u03ba = (A_\u03ba/2)(2 \u03c6_10 + \u03c6_S)\u00b2 = (5 A_\u03ba/2) h\u00b2",
+    "tree_level_V_eff_a": 0.0,
+    "integration": "\u2202V/\u2202h = 5 A_\u03ba h = 0 \u21d2 h=0 \u21d2 V_eff(a)=0"
+  },
+  "A_kappa_scale": {
+    "A_kappa_GeV2": 2.163878013887554e+31,
+    "rule": "m2_210_form_basis/5 (diagnostic; UV \u03ba OPEN)",
+    "uv_kappa_determined": false
+  },
+  "decay_constant": {
+    "hEW_GeV": 174.0,
+    "vS_GeV": 631385523052.4453,
+    "axion_im_direction": [
+      174.0,
+      -1262771046104.8906
+    ],
+    "f_a_GeV": 1262771046104.8906,
+    "formula": "f_a = ||(hEW, -2 v_S)|| = \u221a(hEW\u00b2 + 4 v_S\u00b2)"
+  },
+  "radial_heavy_integration": {
+    "selected_vacuum_nulls": {
+      "A_lock": 0.0,
+      "A_lam4": 0.0,
+      "active_operator": "kappa H_10^2 S only"
+    },
+    "all_orders_selection_rule": {
+      "field_difference_vector": [
+        "d=Delta-Delta_dag",
+        "h=H-H_dag",
+        "s=S-S_dag"
+      ],
+      "BL_neutrality_on_selected_VEVs": "d=0",
+      "PQ_Z17_neutrality": "-2*d - 2*h + 4*s = 0",
+      "combined_result": "(d,h,s)=s*(0,2,1)",
+      "interpretation": "Every nonzero selected-vacuum polynomial phase vector is parallel to kappa. The Delta phase absence is the eaten Z' gauge direction; after quotient the only remaining zero is PQ."
+    },
+    "heavy_radial_masses_GeV2": {
+      "P_210": 1.0819390069437769e+32,
+      "DeltaR_proxy_or_none": null
+    },
+    "conclusion": "Any selected-vacuum polynomial built from charge-allowed operators has phase vector \u2225 \u03ba; after Z' quotient the only flat direction is the PQ axion. Integrating radial heavies at tree level therefore cannot lift V_eff(a) without additional PQ-breaking operators.",
+    "generates_axion_potential": false
+  },
+  "flags": {
+    "tree_level_axion_potential_flat": true,
+    "heavy_cp_odd_integrated": true,
+    "radial_selection_rule_no_lift": true,
+    "uv_kappa_determined": false,
+    "cg_120_320_1050_4125_invented": false,
+    "full_component_hessian_complete": false,
+    "whole_model_validated": false,
+    "whole_model_excluded": false
+  },
+  "remaining_blockers": {
+    "uv_determination_of_kappa": true,
+    "pq_breaking_beyond_kappa": true,
+    "missing_cg_120_320_1050_4125": true,
+    "full_nonsusy_vacuum_hessian": true
+  },
+  "verdict": "After Z' quotient, V_\u03ba=(5 A_\u03ba/2) h\u00b2; integrating the heavy CP-odd mode (m\u00b2=1.081939e+32 GeV\u00b2) leaves V_eff(a)=0 at tree level. f_a\u22481.262771e+12 GeV. Radial heavies cannot lift the axion without new PQ breaking (selection rule). UV \u03ba and full Hessian remain OPEN. Theory remains BLOCKED."
+}
