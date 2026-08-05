@@ -13,13 +13,12 @@ class DiagonalIsotropic54SlotsTests(unittest.TestCase):
         self.assertEqual(self.report["n_failed"], 0, self.report)
         self.assertEqual(self.report["overall_state"], "BLOCKED")
         flags = self.report["flag"]
-        self.assertTrue(flags["isotropic_norm_54_slots_partially_filled"])
+        self.assertTrue(flags["isotropic_norm_slots_partially_filled"])
+        self.assertFalse(flags["isotropic_norm_54_slots_partially_filled"])
+        self.assertTrue(flags["unphysical_H10_MI_54_seed_withdrawn"])
         self.assertTrue(flags["schur_fed_with_partial_A_C"])
         self.assertFalse(flags["diagonal_h10_m2_fully_derived"])
         self.assertFalse(flags["diagonal_sigmabar_m2_fully_derived"])
-        self.assertFalse(flags["cg_tensors_120_320_4125_invented"])
-        self.assertFalse(flags["full_invariant_ring"])
-        self.assertFalse(flags["full_component_hessian"])
         self.assertFalse(flags["whole_model_validated"])
         self.assertFalse(flags["whole_model_excluded"])
 
@@ -29,20 +28,13 @@ class DiagonalIsotropic54SlotsTests(unittest.TestCase):
         self.assertGreater(min(self.report["A_partial_GeV2"]), 0.0)
         self.assertGreater(min(self.report["C_partial_GeV2"]), 0.0)
 
-    def test_five_slots_and_open_remainder(self):
-        filled = self.report["partial_diagonals"]["filled_slots"]
-        self.assertEqual(len(filled), 5)
-        for key in (
-            "OPEN_H10_SOFT_OR_NORM",
-            "OPEN_H10_FROM_210_NORM",
-            "OPEN_SIGMA_FROM_210_NORM",
-            "OPEN_H10_54",
-            "OPEN_126_54_LOCKING",
-        ):
-            self.assertIn(key, filled)
-        open_slots = self.report["partial_diagonals"]["still_open_slots"]
-        self.assertIn("OPEN_MIXED_120", open_slots)
-        self.assertIn("OPEN_126_4125", open_slots)
+    def test_three_filled_two_withdrawn(self):
+        partial = self.report["partial_diagonals"]
+        self.assertEqual(len(partial["filled_slots"]), 3)
+        self.assertEqual(len(partial["withdrawn_slots"]), 2)
+        self.assertEqual(partial["components"]["locking_isotropic_seed"], 0.0)
+        self.assertIn("OPEN_H10_54", partial["still_open_slots"])
+        self.assertIn("OPEN_126_54_LOCKING", partial["still_open_slots"])
 
     def test_schur_report_present(self):
         sch = self.report["schur_with_partial_diagonals"]

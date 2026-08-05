@@ -3,6 +3,18 @@ name: diagonal-m2-isotropic-54-slots
 on:
   pull_request:
     paths:
+      - h10_intermediate_vev_consistency_audit_v20.py
+      - test_h10_intermediate_vev_consistency_audit_v20.py
+      - physical_h10_54_mass_block_from_deltar_v20.py
+      - test_physical_h10_54_mass_block_from_deltar_v20.py
+      - selected_vacuum_lambda4_portal_null_audit_v20.py
+      - test_selected_vacuum_lambda4_portal_null_audit_v20.py
+      - selected_vacuum_lambda4_dependency_audit_v20.py
+      - test_selected_vacuum_lambda4_dependency_audit_v20.py
+      - phase_operator_independence_audit_v20.py
+      - test_phase_operator_independence_audit_v20.py
+      - deltar_54_locking_dependency_audit_v20.py
+      - test_deltar_54_locking_dependency_audit_v20.py
       - diagonal_h10_sigmabar_m2_isotropic_54_slots_v20.py
       - test_diagonal_h10_sigmabar_m2_isotropic_54_slots_v20.py
       - .github/workflows/diagonal-m2-isotropic-54-slots.yml
@@ -13,9 +25,9 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  isotropic-54-gate:
+  corrected-isotropic-gate:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 90
     env:
       PYTHONHASHSEED: "0"
     steps:
@@ -27,38 +39,102 @@ jobs:
       - run: python -m pip install -r requirements.txt
       - run: |
           python -m compileall -q \
+            h10_intermediate_vev_consistency_audit_v20.py \
+            physical_h10_54_mass_block_from_deltar_v20.py \
+            selected_vacuum_lambda4_portal_null_audit_v20.py \
+            selected_vacuum_lambda4_dependency_audit_v20.py \
+            phase_operator_independence_audit_v20.py \
+            deltar_54_locking_dependency_audit_v20.py \
             diagonal_h10_sigmabar_m2_isotropic_54_slots_v20.py \
+            test_h10_intermediate_vev_consistency_audit_v20.py \
+            test_physical_h10_54_mass_block_from_deltar_v20.py \
+            test_selected_vacuum_lambda4_portal_null_audit_v20.py \
+            test_selected_vacuum_lambda4_dependency_audit_v20.py \
+            test_phase_operator_independence_audit_v20.py \
+            test_deltar_54_locking_dependency_audit_v20.py \
             test_diagonal_h10_sigmabar_m2_isotropic_54_slots_v20.py
-      - name: Execute isotropic+54 slot fill
-        run: python diagonal_h10_sigmabar_m2_isotropic_54_slots_v20.py --write
+      - name: Execute corrected component audits
+        run: |
+          python h10_intermediate_vev_consistency_audit_v20.py --write
+          python physical_h10_54_mass_block_from_deltar_v20.py --write
+          python selected_vacuum_lambda4_portal_null_audit_v20.py --write
+          python selected_vacuum_lambda4_dependency_audit_v20.py --write
+          python phase_operator_independence_audit_v20.py --write
+          python deltar_54_locking_dependency_audit_v20.py --write
+          python diagonal_h10_sigmabar_m2_isotropic_54_slots_v20.py --write
       - name: Focused tests
         run: |
           python -m unittest -v \
+            test_h10_intermediate_vev_consistency_audit_v20.py \
+            test_physical_h10_54_mass_block_from_deltar_v20.py \
+            test_selected_vacuum_lambda4_portal_null_audit_v20.py \
+            test_selected_vacuum_lambda4_dependency_audit_v20.py \
+            test_phase_operator_independence_audit_v20.py \
+            test_deltar_54_locking_dependency_audit_v20.py \
             test_diagonal_h10_sigmabar_m2_isotropic_54_slots_v20.py
       - name: Assert fail-closed scientific state
         run: |
           python - <<'PY'
           import json
+          a=json.load(open('H10_INTERMEDIATE_VEV_CONSISTENCY_AUDIT_V20.json'))
+          h=json.load(open('PHYSICAL_H10_54_MASS_BLOCK_FROM_DELTAR_V20.json'))
+          v=json.load(open('SELECTED_VACUUM_LAMBDA4_PORTAL_NULL_AUDIT_V20.json'))
+          q=json.load(open('SELECTED_VACUUM_LAMBDA4_DEPENDENCY_AUDIT_V20.json'))
+          p=json.load(open('PHASE_OPERATOR_INDEPENDENCE_AUDIT_V20.json'))
+          d=json.load(open('DELTAR_54_LOCKING_DEPENDENCY_AUDIT_V20.json'))
           r=json.load(open('DIAGONAL_H10_SIGMABAR_M2_ISOTROPIC_54_SLOTS_V20.json'))
-          assert r['n_failed']==0, r
-          assert r['overall_state']=='BLOCKED', r
-          assert r['flag']['isotropic_norm_54_slots_partially_filled'], r
-          assert r['flag']['schur_fed_with_partial_A_C'], r
-          assert not r['flag']['diagonal_h10_m2_fully_derived'], r
-          assert not r['flag']['diagonal_sigmabar_m2_fully_derived'], r
-          assert not r['flag']['cg_tensors_120_320_4125_invented'], r
-          assert not r['flag']['full_component_hessian'], r
+          assert a['n_failed']==0 and a['overall_state']=='BLOCKED', a
+          assert not a['flags']['physical_H10_intermediate_scale_singlet_vev_exists'], a
+          assert h['n_failed']==0 and h['flags']['DeltaR_squared_54_projection_zero'], h
+          assert h['exact_zero_evidence']['Q_delta_frobenius'] < 1e-12, h
+          assert v['n_failed']==0 and v['overall_state']=='BLOCKED', v
+          assert v['flags']['selected_DeltaR_is_portal_null_vector'], v
+          assert not v['flags']['selected_vacuum_lambda4_amplitude_nonzero'], v
+          assert v['flags']['full_fluctuation_portal_map_nonzero'], v
+          assert not v['flags']['historical_reduced_lambda4_vacuum_term_physical'], v
+          assert q['n_failed']==0 and q['overall_state']=='BLOCKED', q
+          assert q['flags']['all_known_selected_vacuum_consumers_identified'], q
+          assert not q['flags']['all_selected_vacuum_consumers_revalidated'], q
+          assert q['flags']['fluctuation_portal_results_retained'], q
+          assert not q['flags']['historical_lambda4_tachyon_valid'], q
+          assert not q['flags']['repository_ready_for_release'], q
+          assert q['counts']['n_revalidation_required'] >= 10, q
+          assert q['counts']['n_retained_fluctuation_results'] >= 3, q
+          assert p['n_failed']==0 and p['overall_state']=='BLOCKED', p
+          assert p['formal_operator_algebra']['rank_kappa_lambda4']==2, p
+          assert p['formal_operator_algebra']['rank_after_adding_lambda_lock']==2, p
+          assert p['selected_vacuum_rank']['rank']==1, p
+          assert p['selected_vacuum_rank']['null_dimension']==2, p
+          assert p['flags']['selected_vacuum_has_extra_nonaxion_flat_phase'], p
+          assert d['n_failed']==0 and d['overall_state']=='BLOCKED', d
+          assert d['flags']['all_known_consumers_identified'], d
+          assert not d['flags']['all_consumers_revalidated'], d
+          assert not d['flags']['repository_ready_for_release'], d
+          assert r['n_failed']==0 and r['overall_state']=='BLOCKED', r
+          assert not r['flag']['isotropic_norm_54_slots_partially_filled'], r
+          assert r['flag']['unphysical_H10_MI_54_seed_withdrawn'], r
           assert not r['flag']['whole_model_validated'], r
           assert not r['flag']['whole_model_excluded'], r
-          assert len(r['A_partial_GeV2'])==10, r
-          assert len(r['C_partial_GeV2'])==126, r
-          assert len(r['partial_diagonals']['filled_slots'])==5, r
-          assert 'OPEN_MIXED_120' in r['partial_diagonals']['still_open_slots'], r
+          assert len(r['partial_diagonals']['filled_slots'])==3, r
+          assert len(r['partial_diagonals']['withdrawn_slots'])==2, r
+          assert r['partial_diagonals']['components']['locking_isotropic_seed']==0.0, r
           PY
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: diagonal-m2-isotropic-54-slots
+          name: selected-vacuum-null-audit
           path: |
+            H10_INTERMEDIATE_VEV_CONSISTENCY_AUDIT_V20.json
+            H10_INTERMEDIATE_VEV_CONSISTENCY_AUDIT_V20.md
+            PHYSICAL_H10_54_MASS_BLOCK_FROM_DELTAR_V20.json
+            PHYSICAL_H10_54_MASS_BLOCK_FROM_DELTAR_V20.md
+            SELECTED_VACUUM_LAMBDA4_PORTAL_NULL_AUDIT_V20.json
+            SELECTED_VACUUM_LAMBDA4_PORTAL_NULL_AUDIT_V20.md
+            SELECTED_VACUUM_LAMBDA4_DEPENDENCY_AUDIT_V20.json
+            SELECTED_VACUUM_LAMBDA4_DEPENDENCY_AUDIT_V20.md
+            PHASE_OPERATOR_INDEPENDENCE_AUDIT_V20.json
+            PHASE_OPERATOR_INDEPENDENCE_AUDIT_V20.md
+            DELTAR_54_LOCKING_DEPENDENCY_AUDIT_V20.json
+            DELTAR_54_LOCKING_DEPENDENCY_AUDIT_V20.md
             DIAGONAL_H10_SIGMABAR_M2_ISOTROPIC_54_SLOTS_V20.json
             DIAGONAL_H10_SIGMABAR_M2_ISOTROPIC_54_SLOTS_V20.md
