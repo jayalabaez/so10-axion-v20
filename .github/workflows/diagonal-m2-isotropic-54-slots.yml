@@ -7,6 +7,8 @@ on:
       - test_h10_intermediate_vev_consistency_audit_v20.py
       - physical_h10_54_mass_block_from_deltar_v20.py
       - test_physical_h10_54_mass_block_from_deltar_v20.py
+      - phase_operator_independence_audit_v20.py
+      - test_phase_operator_independence_audit_v20.py
       - deltar_54_locking_dependency_audit_v20.py
       - test_deltar_54_locking_dependency_audit_v20.py
       - diagonal_h10_sigmabar_m2_isotropic_54_slots_v20.py
@@ -35,16 +37,19 @@ jobs:
           python -m compileall -q \
             h10_intermediate_vev_consistency_audit_v20.py \
             physical_h10_54_mass_block_from_deltar_v20.py \
+            phase_operator_independence_audit_v20.py \
             deltar_54_locking_dependency_audit_v20.py \
             diagonal_h10_sigmabar_m2_isotropic_54_slots_v20.py \
             test_h10_intermediate_vev_consistency_audit_v20.py \
             test_physical_h10_54_mass_block_from_deltar_v20.py \
+            test_phase_operator_independence_audit_v20.py \
             test_deltar_54_locking_dependency_audit_v20.py \
             test_diagonal_h10_sigmabar_m2_isotropic_54_slots_v20.py
       - name: Execute corrected component audits
         run: |
           python h10_intermediate_vev_consistency_audit_v20.py --write
           python physical_h10_54_mass_block_from_deltar_v20.py --write
+          python phase_operator_independence_audit_v20.py --write
           python deltar_54_locking_dependency_audit_v20.py --write
           python diagonal_h10_sigmabar_m2_isotropic_54_slots_v20.py --write
       - name: Focused tests
@@ -52,6 +57,7 @@ jobs:
           python -m unittest -v \
             test_h10_intermediate_vev_consistency_audit_v20.py \
             test_physical_h10_54_mass_block_from_deltar_v20.py \
+            test_phase_operator_independence_audit_v20.py \
             test_deltar_54_locking_dependency_audit_v20.py \
             test_diagonal_h10_sigmabar_m2_isotropic_54_slots_v20.py
       - name: Assert fail-closed scientific state
@@ -60,6 +66,7 @@ jobs:
           import json
           a=json.load(open('H10_INTERMEDIATE_VEV_CONSISTENCY_AUDIT_V20.json'))
           h=json.load(open('PHYSICAL_H10_54_MASS_BLOCK_FROM_DELTAR_V20.json'))
+          p=json.load(open('PHASE_OPERATOR_INDEPENDENCE_AUDIT_V20.json'))
           d=json.load(open('DELTAR_54_LOCKING_DEPENDENCY_AUDIT_V20.json'))
           r=json.load(open('DIAGONAL_H10_SIGMABAR_M2_ISOTROPIC_54_SLOTS_V20.json'))
           assert a['n_failed']==0 and a['overall_state']=='BLOCKED', a
@@ -72,7 +79,13 @@ jobs:
           assert not h['flags']['physical_H10_54_mass_block_from_DeltaR'], h
           assert h['exact_zero_evidence']['generic_map_nonzero'], h
           assert h['exact_zero_evidence']['Q_delta_frobenius'] < 1e-12, h
-          assert h['exact_zero_evidence']['D_HH_frobenius_GeV2_at_lambda1'] < 1e-6, h
+          assert p['n_failed']==0 and p['overall_state']=='BLOCKED', p
+          assert p['linear_algebra']['rank_kappa_lambda4']==2, p
+          assert p['linear_algebra']['rank_after_adding_lambda_lock']==2, p
+          assert p['linear_algebra']['rank_increment_from_lambda_lock']==0, p
+          assert p['linear_algebra']['common_null_vector']==[1,1,-2], p
+          assert not p['flags']['legacy_lambda_lock_independent_lift_claim_valid'], p
+          assert not p['flags']['selected_vacuum_dimension6_lock_valid'], p
           assert d['n_failed']==0 and d['overall_state']=='BLOCKED', d
           assert d['flags']['all_known_consumers_identified'], d
           assert not d['flags']['all_consumers_revalidated'], d
@@ -103,6 +116,8 @@ jobs:
             H10_INTERMEDIATE_VEV_CONSISTENCY_AUDIT_V20.md
             PHYSICAL_H10_54_MASS_BLOCK_FROM_DELTAR_V20.json
             PHYSICAL_H10_54_MASS_BLOCK_FROM_DELTAR_V20.md
+            PHASE_OPERATOR_INDEPENDENCE_AUDIT_V20.json
+            PHASE_OPERATOR_INDEPENDENCE_AUDIT_V20.md
             DELTAR_54_LOCKING_DEPENDENCY_AUDIT_V20.json
             DELTAR_54_LOCKING_DEPENDENCY_AUDIT_V20.md
             DIAGONAL_H10_SIGMABAR_M2_ISOTROPIC_54_SLOTS_V20.json
