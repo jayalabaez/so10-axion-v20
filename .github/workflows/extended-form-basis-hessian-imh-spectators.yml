@@ -1,0 +1,51 @@
+name: extended-form-basis-hessian-imh-spectators
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: extended-form-basis-hessian-imh-spectators-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  extended-hessian:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Execute extended form-basis Hessian
+        run: python extended_form_basis_hessian_imh_spectators_v20.py --write
+      - name: Focused regression tests
+        run: python -m unittest -v test_extended_form_basis_hessian_imh_spectators_v20.py
+      - name: Assert embedding, portal, and Goldstone spectrum
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('EXTENDED_FORM_BASIS_HESSIAN_IMH_SPECTATORS_V20.json'))
+          assert r['n_failed']==0, r
+          assert r['embedding']['total']==738
+          assert r['goldstone_projection']['rank']==36
+          dyn=r['goldstone_projection']['dynamical_scaled_spectrum']
+          assert dyn['n_zero']==36
+          assert dyn['n_positive']==702
+          assert dyn['n_negative']==0
+          assert r['flags']['im_H_in_embedding']
+          assert r['flags']['full_holomorphic_portal_lifted']
+          assert r['flags']['S_Phi17_dynamical_blocks']
+          assert not r['flags']['pq_axion_null_removed']
+          assert not r['flags']['full_component_hessian_complete']
+          assert not r['flags']['whole_model_validated']
+          PY
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: extended-form-basis-hessian-imh-spectators
+          path: |
+            EXTENDED_FORM_BASIS_HESSIAN_IMH_SPECTATORS_V20.json
+            EXTENDED_FORM_BASIS_HESSIAN_IMH_SPECTATORS_V20.md

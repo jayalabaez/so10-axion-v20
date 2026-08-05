@@ -159,14 +159,22 @@ H10_real↔504 mixing. The upgraded partial dynamical Hessian gate now uses
 Hodge-placed C + lifted B under the 36-Goldstone projector. Im H remains
 outside the 724 orbit embedding.
 
+## Completed Im H + S/Φ₁₇ extended form-basis Hessian
+
+`extended_form_basis_hessian_imh_spectators_v20.py` upgrades the embedding to
+dim **738** (`210 ⊕ 504 ⊕ ℂ¹⁰ ⊕ ℂ_S ⊕ ℂ_Φ₁₇`), pads the hEW tangent so the
+Goldstone rank stays **36**, inserts the full holomorphic portal on
+`(Re H, Im H)`, and places reduced-radial soft masses for S and Φ₁₇.
+Projected spectrum: 36 zeros / 702 positive / 0 negative. PQ axion quotient
+remains OPEN.
+
 ## Correct next goal
 
 Continue the full component scalar mass-squared matrix and global
-`hEW=174 GeV` vacuum: extend the embedding with Im H (full holomorphic
-portal), include `S`/`Φ₁₇` dynamical blocks, fill remaining charge-allowed
-diagonals that do not invent 120/320/1050/4125 CG, then apply root-by-root
-Goldstone removal to the complete dynamical Hessian, stationarity,
-boundedness, thresholds, and τ_p. Do not reopen a reduced-sector phase hunt.
+`hEW=174 GeV` vacuum: apply the PQ-axion quotient on the extended Hessian,
+fill remaining charge-allowed diagonals that do not invent 120/320/1050/4125
+CG, complete SM-irrep mass matrices, then stationarity, boundedness,
+thresholds, and τ_p. Do not reopen a reduced-sector phase hunt.
 
 ## Executable sequence
 
@@ -191,9 +199,9 @@ boundedness, thresholds, and τ_p. Do not reopen a reduced-sector phase hunt.
    - Construct the complete real scalar `M^2` matrix.
    - Remove exactly 36 gauge Goldstones (SO(10)→U(1)_EM; SM-only was 33).
    - Require every remaining eigenvalue to be positive.
-   - Partial form-basis gate with Hodge-placed C, lifted portal B, and
-     hEW 36-Goldstone projector is in place; Im H still outside the 724
-     orbit embedding.
+   - Partial form-basis gate with Hodge-placed C, full (Re/Im H) portal B,
+     S/Φ₁₇ soft blocks, and hEW 36-Goldstone projector is in place on dim 738;
+     PQ axion quotient still OPEN.
 
 5. **Global vacuum and boundedness**
    - Check all enumerated competing extrema.
