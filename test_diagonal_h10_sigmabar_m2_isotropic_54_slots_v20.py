@@ -37,8 +37,13 @@ class DiagonalIsotropic54SlotsTests(unittest.TestCase):
         self.assertNotIn("OPEN_MIXED_126", partial["still_open_slots"])
         self.assertNotIn("OPEN_MIXED_10", partial["still_open_slots"])
         self.assertIn("OPEN_MIXED_10", partial["absorbed_slots"])
+        self.assertIn("OPEN_210_CHANNEL_54", partial["absorbed_slots"])
+        self.assertIn("OPEN_210_CHANNEL_45", partial["absorbed_slots"])
+        self.assertNotIn("OPEN_210_CHANNEL_54", partial["still_open_slots"])
+        self.assertNotIn("OPEN_210_CHANNEL_45", partial["still_open_slots"])
         self.assertIn("OPEN_H10_54", partial["still_open_slots"])
         self.assertIn("OPEN_126_54_LOCKING", partial["still_open_slots"])
+        self.assertIn("OPEN_210_CHANNEL_1050", partial["still_open_slots"])
         self.assertGreater(
             partial["filled_slots"]["OPEN_MIXED_126"]["contribution_GeV2"], 0.0
         )

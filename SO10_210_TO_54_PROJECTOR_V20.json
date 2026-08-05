@@ -1,0 +1,110 @@
+{
+  "status": "SO10_210_TO_54_PROJECTOR_READY__OFF_SINGLET_FLUCTUATION_OPEN",
+  "overall_state": "BLOCKED",
+  "n_checks": 12,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "kernel_shape_10x10x210x210": true,
+    "swap_identity": true,
+    "P54_image_traceless": true,
+    "P54_image_symmetric": true,
+    "self_map_nontrivial_generic": true,
+    "ps_p_image_in_54": true,
+    "ps_a_image_in_54": true,
+    "ps_omega_image_in_54": true,
+    "selected_vacuum_Q54_nontrivial": true,
+    "delta_m2_210_positive": true,
+    "cg_120_320_not_invented": true,
+    "whole_model_not_overclaimed": true
+  },
+  "mathematics": {
+    "representation": "real four-forms on R^10, dim C(10,4)=210",
+    "bilinear": "M_ij = \u03a3_{k<l<m} s(i;klm)s(j;klm) \u03a6_iklm \u03a8_jklm",
+    "projector": "P_54 = Sym_0 on 10\u00d710",
+    "swap_residual": 5.773159728050814e-15,
+    "generic_P54_trace_abs": 1.1102230246251565e-16,
+    "generic_P54_asymmetry": 0.0,
+    "generic_unit_self_frobenius": 0.13761786782255547
+  },
+  "combinatorial_C": {
+    "mode": "monte_carlo",
+    "estimator": "monte_carlo_pairwise",
+    "n_sample": 36,
+    "n_pairs": 1296,
+    "C_210_to_54_rms_estimate": 0.2649534043183979,
+    "C_210_to_54_channel_estimate": 0.036055591455188885,
+    "mean_fnorm_sq": 0.07020030645990843
+  },
+  "ps_singlets": {
+    "p": {
+      "frobenius": 2.4,
+      "trace_abs": 2.220446049250313e-16,
+      "eig_abs_max": 0.6
+    },
+    "a": {
+      "frobenius": 1.0666666666666673,
+      "trace_abs": 2.220446049250313e-16,
+      "eig_abs_max": 0.40000000000000013
+    },
+    "omega": {
+      "frobenius": 0.06666666666666668,
+      "trace_abs": 3.3306690738754696e-16,
+      "eig_abs_max": 0.09999999999999998
+    }
+  },
+  "selected_vacuum": {
+    "vevs_GeV": {
+      "p": 1983512959779626.5,
+      "a": 2975269439669439.5,
+      "omega": 4958782399449066.0
+    },
+    "phi_combo_norm": 6113597532167986.0,
+    "Q54_frobenius": 1.0899727299843325e+61,
+    "Q54_over_phi_norm2": 2.9162311351435156e+29,
+    "OPEN_210_CHANNEL_54_seed_GeV2": 3.1786124116376866e+88,
+    "lam_tilde": 0.01,
+    "formula": "\u0394M\u00b2_210 \u2248 \u03bb\u0303 ||(\u03a6\u03a6)_54||_F\u00b2 / ||\u03a6||\u00b2"
+  },
+  "inventory_slot": {
+    "id": "OPEN_210_CHANNEL_54",
+    "status": "PARTIAL_PS_SINGLET_TENSOR_MAP_READY",
+    "feeds_diag_210_radial": true,
+    "feeds_diag_H10": "via \u27e8Q54\u27e9\u00b7P54(H,H) \u2014 see physical_54 module",
+    "feeds_diag_Sigmabar": "via \u27e8Q54\u27e9\u00b7P54(\u03a3,\u03a3) \u2014 holomorphic/locking OPEN",
+    "off_singlet_fluctuation_cg": false
+  },
+  "flags": {
+    "so10_210_to_54_projector_ready": true,
+    "open_210_channel_54_ps_singlet_seed": true,
+    "off_singlet_210_fluctuation_cg": false,
+    "cg_120_320_1050_4125_invented": false,
+    "full_component_hessian_complete": false,
+    "whole_model_validated": false,
+    "whole_model_excluded": false
+  },
+  "remaining_blockers": {
+    "off_singlet_45_210_1050_projectors": true,
+    "missing_cg_120_320_1050_4125": true,
+    "full_nonsusy_vacuum_hessian": true
+  },
+  "verdict": "Constructed the exact SO(10) bilinear (210\u2297210)\u219254 from four-form triple contraction + P_54. Selected-vacuum ||(\u03a6\u03a6)_54|| is nonzero, giving a PS-singlet OPEN_210_CHANNEL_54 curvature seed \u0394M\u00b2\u22483.178612e+88 GeV\u00b2 (\u03bb\u0303=0.01). Off-singlet fluctuation CG and channels 120/320/1050/4125 remain OPEN. Theory remains BLOCKED.",
+  "physics_math_enhancement": {
+    "kronecker_s": "(210\u2297210)_s \u2283 1 \u2295 54 \u2295 210 \u2295 770 \u2295 1050 \u2295 \u2026",
+    "kronecker_a": "(210\u2297210)_a \u2283 45 \u2295 210 \u2295 945 \u2295 \u2026",
+    "potential_term_54": "V \u2283 (\u03bb\u0303/2) ||P_54(M(\u03a6,\u03a6))||_F\u00b2 contributes radial + traceless-symmetric masses; seed \u0394M\u00b2=\u03bb\u0303||Q||\u00b2/||\u03a6||\u00b2",
+    "potential_term_45": "Same-field P_45(M(\u03a6,\u03a6))=0 \u21d2 no diagonal \u03a6\u00b2\u219245 mass; see so10_210_to_45_projector_v20",
+    "portal_to_10_126": "\u27e8Q54\u27e9 contracts with P_54(H,H) and P_54(\u03a3,\u03a3) (physical_54 / OPEN_H10_54 / OPEN_126_54_LOCKING)",
+    "goldstone_count": "dim G \u2212 dim H = 45 \u2212 9 = 36 with H=SU(3)_c\u00d7U(1)_EM at \u27e8H\u27e9\u22600",
+    "axion_null": "\u03ba-phase Hessian null (\u03c6_10,\u03c6_S)\u2225(1,-2) after Z\u2032 quotient",
+    "schur_gate": "\u03c3_max(A^{-1/2} B C^{-1/2}) < 1 with B=\u03bb\u2084 v_S T_\u03a6",
+    "forbidden": "Do not invent CG for 120 / 320 / 1050 / 4125"
+  },
+  "physics_brainstorm_next": [
+    "Build (210\u2297210)\u2192210 self-map from four-form Young projectors",
+    "Root-by-root SM quantum numbers for the 36 Goldstones",
+    "Integrate out heavy 210/126 modes \u2192 effective axion potential V_eff(a)",
+    "Co-positivity / spectral BFB for reduced quartic + portal Schur",
+    "Off-singlet fluctuation CG only from published/combinatorial tensors"
+  ]
+}

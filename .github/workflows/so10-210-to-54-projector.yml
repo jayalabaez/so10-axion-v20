@@ -1,0 +1,52 @@
+name: so10-210-to-54-projector
+
+on:
+  pull_request:
+    paths:
+      - so10_210_to_54_projector_v20.py
+      - test_so10_210_to_54_projector_v20.py
+      - so10_126_to_54_projector_v20.py
+      - .github/workflows/so10-210-to-54-projector.yml
+  workflow_dispatch:
+
+concurrency:
+  group: so10-210-to-54-projector-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  so10-210-to-54-projector:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Execute 210 to 54 projector
+        run: python so10_210_to_54_projector_v20.py --write
+      - name: Focused regression tests
+        run: python -m unittest -v test_so10_210_to_54_projector_v20.py
+      - name: Assert honest scientific scope
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('SO10_210_TO_54_PROJECTOR_V20.json'))
+          assert r['status']=='SO10_210_TO_54_PROJECTOR_READY__OFF_SINGLET_FLUCTUATION_OPEN'
+          assert r['n_failed']==0
+          assert r['overall_state']=='BLOCKED'
+          assert r['selected_vacuum']['OPEN_210_CHANNEL_54_seed_GeV2']>0
+          assert r['flags']['so10_210_to_54_projector_ready']
+          assert not r['flags']['cg_120_320_1050_4125_invented']
+          assert not r['flags']['whole_model_validated']
+          PY
+      - name: Upload 210 to 54 projector artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: so10-210-to-54-projector
+          path: |
+            SO10_210_TO_54_PROJECTOR_V20.json
+            SO10_210_TO_54_PROJECTOR_V20.md

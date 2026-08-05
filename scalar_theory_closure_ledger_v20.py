@@ -83,10 +83,12 @@ def build_report() -> dict[str, Any]:
                 "OPEN_MIXED_126 PS-singlet fill",
                 "OPEN_MIXED_10 absorbed into portal B (not a diagonal)",
                 "OPEN_210_RADIAL/CUBIC PS-singlet fill",
+                "exact (210⊗210)→54 four-form projector + PS-singlet seed",
+                "(210⊗210)→45 same-field quadratic vanishes (mixed OPEN)",
             ],
             blockers=[
                 "CG tensors 120 / 320 / 1050 / 4125 missing",
-                "OPEN_210_CHANNEL_45/54/210/1050 off-singlet CG missing",
+                "OPEN_210_CHANNEL_210/1050 and mixed-45 off-singlet CG missing",
                 "FULL_MIXED_REP_INVARIANT_RING_V20.json absent",
             ],
         ),
@@ -99,6 +101,7 @@ def build_report() -> dict[str, Any]:
                 "Schur 272 gate with partial isotropic/norm A/C",
                 "Hodge C embedding + full (Re/Im H) portal lift",
                 f"210 PS-singlet m2 from reduced Hessian: {d210_rep.get('status')}",
+                "210→54/45 combinatorial channel maps (PS / same-field)",
             ],
             blockers=[
                 "mode-by-mode CG for remaining open slots",

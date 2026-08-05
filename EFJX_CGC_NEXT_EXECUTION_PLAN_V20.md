@@ -192,10 +192,27 @@ from the reduced `P_210` curvature (radial + Aulakh cubics) at `hEW=174`.
 PD, and the Goldstone+axion-projected skeleton. Closure ledger:
 **0 CLOSED / 4 PARTIAL (G2–G5) / 4 OPEN**. Theory remains **BLOCKED**.
 
+## Completed (210⊗210)→54 and →45 combinatorial projectors
+
+`so10_210_to_54_projector_v20.py` builds the exact SO(10) bilinear
+`(210⊗210)→54` by triple-contracting two four-forms and applying
+`P_54=Sym_0`. On the selected `(p,a,ω)` vacuum this yields a nonzero
+`||(ΦΦ)_54||` and a PS-singlet curvature seed
+`ΔM² ≈ λ̃ ||Q||_F² / ||Φ||²` for `OPEN_210_CHANNEL_54` (off-singlet CG OPEN).
+
+`so10_210_to_45_projector_v20.py` uses the same kernel with
+`P_45=(M−Mᵀ)/2`. Swap identity proves `P_45(M(Φ,Φ))=0` for every Φ.
+Stronger: the full Aulakh PS-singlet span `{p,a,ω}` has vanishing 45
+bilinears among itself, so selected-vacuum quadratic `OPEN_210_CHANNEL_45`
+is closed; singlet⊗off-singlet remains nontrivial and OPEN.
+
+These maps are wired into `diagonal_210_radial_cubic_ps_singlet_v20` and
+absorbed in the isotropic inventory without inventing 120/320/1050/4125.
+
 ## Correct next goal
 
 Theory completion still requires transcribed CG for 120/320/1050/4125 and
-off-singlet 210 channels 45/54/210/1050 (G1), mode-by-mode diagonals (G2),
+off-singlet 210 channels 210/1050 plus mixed-45 (G1), mode-by-mode diagonals (G2),
 complete stationarity/hierarchy (G3), the full dynamical Hessian artifact
 (G4), then global BFB, thresholds, two-loop RGE, and unique τ_p (G5–G8).
 Do not invent missing CG and do not reopen a reduced-sector phase hunt.
@@ -207,6 +224,8 @@ Do not invent missing CG and do not reopen a reduced-sector phase hunt.
    - Prove linear independence and record Hermitian-conjugation conventions.
    - Transcribe missing CG tensors (especially 120, 320, 1050, 4125) into the Cartesian basis.
    - Prefer operators with nonzero tensor projection on the actual `(Delta_R,hEW,S,Phi)` vacuum for phase locking.
+   - Next combinatorial targets without invented tables: `(210⊗210)→210` self-map;
+     Goldstone SM root catalog; effective axion potential after integrating heavy modes.
 
 2. **Full component projection**
    - Project every invariant into canonical Pati-Salam and Standard Model component fields.

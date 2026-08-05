@@ -1,0 +1,70 @@
+{
+  "status": "SO10_210_TO_45_SAME_FIELD_VANISHES__MIXED_OPEN",
+  "overall_state": "BLOCKED",
+  "n_checks": 12,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "same_field_45_vanishes_generic": true,
+    "mixed_45_nontrivial_generic": true,
+    "symmetrized_mixed_45_vanishes": true,
+    "ps_p_same_field_45_zero": true,
+    "ps_a_same_field_45_zero": true,
+    "ps_omega_same_field_45_zero": true,
+    "selected_vacuum_same_field_45_zero": true,
+    "ps_singlet_span_45_closes": true,
+    "ps_singlet_times_off_singlet_45_nontrivial": true,
+    "adjoint_dim_45": true,
+    "cg_120_320_not_invented": true,
+    "whole_model_not_overclaimed": true
+  },
+  "mathematics": {
+    "representation": "45 = antisymmetric 10\u00d710 = so(10) adjoint",
+    "bilinear": "same triple-contraction kernel as (210\u2297210)\u219254",
+    "projector": "P_45(M)=(M\u2212M\u1d40)/2",
+    "swap_identity": "M(\u03a6,\u03a8)\u1d40 = M(\u03a8,\u03a6)",
+    "theorem_same_field": "P_45(M(\u03a6,\u03a6))=0 for all \u03a6",
+    "theorem_ps_singlet_span": "P_45(M(\u03a6,\u03a8))=0 for all \u03a6,\u03a8 in span{p,a,\u03c9} (selected-vacuum quadratic 45 channel closed)",
+    "generic_same_field_fnorm": 5.665623673200595e-29,
+    "generic_mixed_fnorm": 2003.2440397832463,
+    "ps_p_a_mixed_fnorm": 0.0,
+    "ps_p_omega_mixed_fnorm": 0.0,
+    "ps_a_omega_mixed_fnorm": 0.0,
+    "ps_p_times_generic_fnorm": 13.777859247230818,
+    "selected_vacuum_same_field_fnorm": 0.0
+  },
+  "inventory_slot": {
+    "id": "OPEN_210_CHANNEL_45",
+    "status": "PARTIAL_PS_AND_SAME_FIELD_QUADRATIC_VANISHES",
+    "same_field_quadratic_mass": false,
+    "ps_singlet_span_quadratic_mass": false,
+    "mixed_off_singlet_uses": true,
+    "off_singlet_fluctuation_cg": false,
+    "physics": "Diagonal M\u00b2 from (\u03a6\u03a6)_45 vanishes for any single 210 and for the full Aulakh PS-singlet span. Nontrivial 45 masses require off-singlet 210 fluctuations or higher operators."
+  },
+  "flags": {
+    "so10_210_to_45_projector_ready": true,
+    "open_210_channel_45_same_field_vanishes": true,
+    "open_210_channel_45_ps_span_vanishes": true,
+    "open_210_channel_45_mixed_still_open": true,
+    "off_singlet_210_fluctuation_cg": false,
+    "cg_120_320_1050_4125_invented": false,
+    "full_component_hessian_complete": false,
+    "whole_model_validated": false,
+    "whole_model_excluded": false
+  },
+  "remaining_blockers": {
+    "mixed_45_off_singlet_operator_cg": true,
+    "off_singlet_54_210_1050_projectors": true,
+    "missing_cg_120_320_1050_4125": true,
+    "full_nonsusy_vacuum_hessian": true
+  },
+  "verdict": "Proved (210\u2297210)\u219245 via P_45=(M\u2212M\u1d40)/2 on the four-form triple-contraction kernel. Same-field and full PS-singlet-span (p,a,\u03c9) bilinears vanish; singlet\u2297off-singlet is nontrivial. OPEN_210_CHANNEL_45 is PARTIAL at the selected-vacuum quadratic level. Theory remains BLOCKED.",
+  "physics_brainstorm_next": [
+    "Build (210\u2297210)\u2192210 self-map (four-form identity / Young projector)",
+    "Quartic co-positivity on reduced (P,a,\u03c9,\u0394,h,S) amplitudes",
+    "Root catalog of the 36 Goldstones under SU(3)_c\u00d7U(1)_EM",
+    "Integrate out heavy 210 modes \u2192 V_eff(a) for the PQ axion",
+    "Do not invent 120/320/1050/4125 CG tables"
+  ]
+}

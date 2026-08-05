@@ -183,10 +183,9 @@ def build_partial_diagonals(
     still_open = [
         "OPEN_H10_54",
         "OPEN_126_54_LOCKING",
-        "OPEN_210_CHANNEL_45",
-        "OPEN_210_CHANNEL_54",
         "OPEN_210_CHANNEL_210",
         "OPEN_210_CHANNEL_1050",
+        "OPEN_210_CHANNEL_45_OFF_SINGLET",
         "OPEN_MIXED_120",
         "OPEN_MIXED_320",
         "OPEN_126_1050",
@@ -199,6 +198,23 @@ def build_partial_diagonals(
             "reason": (
                 "210·126†·10 opens H–Σ mixing via T_Φ, already inserted as "
                 "portal B=λ₄ v_S T_Φ (diagonal_mixed_10_portal_absorption_v20)"
+            ),
+        },
+        "OPEN_210_CHANNEL_54": {
+            "status": "PARTIAL_PS_SINGLET_TENSOR_MAP_READY",
+            "contribution_GeV2": 0.0,
+            "reason": (
+                "so10_210_to_54_projector_v20: exact (210⊗210)→54 bilinear; "
+                "PS-singlet seed recorded in diagonal_210_radial (not added "
+                "into isotropic A/C to avoid double-count)"
+            ),
+        },
+        "OPEN_210_CHANNEL_45": {
+            "status": "PARTIAL_PS_AND_SAME_FIELD_QUADRATIC_VANISHES",
+            "contribution_GeV2": 0.0,
+            "reason": (
+                "so10_210_to_45_projector_v20: P_45 vanishes on same-field and "
+                "on the full PS-singlet span {p,a,ω}; off-singlet mixed OPEN"
             ),
         },
     }

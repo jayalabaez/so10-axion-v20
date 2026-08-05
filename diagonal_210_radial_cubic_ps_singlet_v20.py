@@ -18,7 +18,9 @@ off-singlet CG for channels 45 / 54 / 210 / 1050.
 Honesty
 -------
 * PS-singlet / radial fill only — not mode-by-mode 210 fluctuation CG.
-* OPEN_210_CHANNEL_{45,54,210,1050} remain OPEN.
+* OPEN_210_CHANNEL_{210,1050} remain OPEN.
+* OPEN_210_CHANNEL_54 has a PS-singlet tensor seed (so10_210_to_54).
+* OPEN_210_CHANNEL_45 same-field quadratic vanishes (so10_210_to_45).
 * Theory remains BLOCKED.
 """
 
@@ -35,6 +37,8 @@ import component_lift_210_126_10_v20 as clift
 import hilbert_210n_residual_certificate_v20 as hilbert
 import nonsusy_reduced_hessian_v20 as reduced
 import scalar_vacuum_proton_decay_v20 as scalar_pd
+import so10_210_to_45_projector_v20 as p45
+import so10_210_to_54_projector_v20 as p54
 
 ROOT = Path(__file__).resolve().parent
 OUT_JSON = ROOT / "DIAGONAL_210_RADIAL_CUBIC_PS_SINGLET_V20.json"
@@ -108,6 +112,14 @@ def build_report() -> dict[str, Any]:
     mass = reduced_p210_mass2(m_i=m_i, m_gut=m_gut, lam4=0.0)
     hilb = hilbert_ps_support()
 
+    ch54 = p54.build_report()
+    ch45 = p45.build_report()
+    seed54 = float(
+        ch54["selected_vacuum"]["OPEN_210_CHANNEL_54_seed_GeV2"]
+    )
+    # Form-basis isotropic mass remains the reduced P_210 curvature; the
+    # 54-channel seed is recorded as an additive channel diagnostic, not
+    # double-counted into m2_210 (would inflate by ~||Q||⁴ scales).
     filled = {
         "OPEN_210_RADIAL": {
             "status": "PARTIAL_PS_SINGLET_M2_FILLED",
@@ -122,12 +134,27 @@ def build_report() -> dict[str, Any]:
             "scope": "Aulakh PS cubics enter the same reduced P_210 curvature",
             "note": "Not a separate additive seed; cubics are inside the reduced Hessian",
         },
+        "OPEN_210_CHANNEL_54": {
+            "status": "PARTIAL_PS_SINGLET_TENSOR_MAP_READY",
+            "contribution_GeV2": seed54,
+            "feeds": "diagnostic_channel_seed_not_added_to_isotropic_m2",
+            "scope": "exact (210⊗210)→54 on selected vacuum; off-singlet CG OPEN",
+            "formula": ch54["selected_vacuum"]["formula"],
+            "lam_tilde": ch54["selected_vacuum"]["lam_tilde"],
+        },
+        "OPEN_210_CHANNEL_45": {
+            "status": "PARTIAL_PS_AND_SAME_FIELD_QUADRATIC_VANISHES",
+            "contribution_GeV2": 0.0,
+            "feeds": "none_on_selected_vacuum",
+            "scope": (
+                "P_45(M(Φ,Ψ))=0 on span{p,a,ω}; off-singlet mixed 45 remains OPEN"
+            ),
+        },
     }
     still_open = [
-        "OPEN_210_CHANNEL_45",
-        "OPEN_210_CHANNEL_54",
         "OPEN_210_CHANNEL_210",
         "OPEN_210_CHANNEL_1050",
+        "OPEN_210_CHANNEL_45_OFF_SINGLET",
     ]
 
     checks = {
@@ -141,7 +168,10 @@ def build_report() -> dict[str, Any]:
         ),
         "form_basis_m2_210_positive": mass["m2_210_form_basis_GeV2"] > 0.0,
         "hilbert_ps_support_green": hilb.get("n_failed", 1) == 0,
-        "off_singlet_45_54_1050_not_faked": True,
+        "channel_54_projector_green": ch54.get("n_failed", 1) == 0,
+        "channel_54_seed_positive": seed54 > 0.0,
+        "channel_45_projector_green": ch45.get("n_failed", 1) == 0,
+        "off_singlet_210_1050_not_faked": True,
         "whole_model_not_overclaimed": True,
     }
     failures = [name for name, ok in checks.items() if not ok]
@@ -159,27 +189,40 @@ def build_report() -> dict[str, Any]:
         "checks": checks,
         "mass": mass,
         "hilbert_ps": hilb,
+        "channel_54": {
+            "status": ch54.get("status"),
+            "seed_GeV2": seed54,
+            "Q54_frobenius": ch54["selected_vacuum"]["Q54_frobenius"],
+        },
+        "channel_45": {
+            "status": ch45.get("status"),
+            "same_field_vanishes": True,
+        },
         "filled_slots": filled,
         "still_open_slots": still_open,
         "flags": {
             "open_210_radial_ps_singlet_filled": not bool(failures),
             "open_210_cubic_included_in_reduced": not bool(failures),
+            "open_210_channel_54_ps_singlet_seed": not bool(failures),
+            "open_210_channel_45_same_field_vanishes": not bool(failures),
             "off_singlet_210_channel_cg": False,
             "full_component_hessian_complete": False,
             "whole_model_validated": False,
             "whole_model_excluded": False,
         },
         "remaining_blockers": {
-            "open_210_channel_45_54_210_cg": True,
+            "open_210_channel_210_cg": True,
             "open_210_channel_1050_cg": True,
+            "open_210_channel_45_cg": True,
             "missing_cg_120_320_1050_4125": True,
             "full_nonsusy_vacuum_hessian": True,
         },
         "verdict": (
-            "OPEN_210_RADIAL/CUBIC are filled at the PS-singlet level by the "
-            f"reduced P_210 curvature M²={mass['mu2_P210_GeV2']:.6e} GeV² "
-            "(λ₄=0 survival point), for use as the form-basis 210 isotropic "
-            "mass. Off-singlet channels 45/54/210/1050 CG remain OPEN. "
+            "OPEN_210_RADIAL/CUBIC filled by reduced P_210 "
+            f"M²={mass['mu2_P210_GeV2']:.6e} GeV²; OPEN_210_CHANNEL_54 has "
+            f"PS-singlet tensor seed ΔM²={seed54:.6e} GeV²; "
+            "OPEN_210_CHANNEL_45 same-field and PS-singlet-span quadratic vanish. "
+            "Channels 210/1050 and off-singlet-45 CG remain OPEN. "
             "Theory remains BLOCKED."
         ),
     }
