@@ -1,0 +1,43 @@
+name: axion-cqit-bridge
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  bridge:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - run: python -m pip install numpy
+      - run: python -m unittest -v test_axion_cqit_bridge_v20.py
+      - run: python axion_cqit_bridge_v20.py
+      - name: Assert honest bridge verdict
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open('AXION_CQIT_BRIDGE_V20_VERDICT.json'))
+          assert d['status']=='CQIT receiver bridge complete', d
+          assert d['scientific_scope']['local_mode_identity_verified'], d
+          assert not d['scientific_scope']['new_axion_interaction_added'], d
+          assert not d['scientific_scope']['cosmological_redshift_relevant_to_haloscope_signal'], d
+          assert d['claims']['improves_falsification_and_receiver_accounting'], d
+          assert not d['claims']['validates_so10_model'], d
+          assert not d['claims']['detects_axion'], d
+          assert not d['claims']['new_physics'], d
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: axion-cqit-bridge-${{ matrix.python-version }}
+          path: AXION_CQIT_BRIDGE_V20_VERDICT.json
