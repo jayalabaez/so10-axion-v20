@@ -1,0 +1,78 @@
+name: selected-vacuum-dimension8-second-wave
+
+on:
+  pull_request:
+    paths:
+      - selected_vacuum_dimension8_second_wave_v20.py
+      - test_selected_vacuum_dimension8_second_wave_v20.py
+      - .github/workflows/selected-vacuum-dimension8-second-wave.yml
+  workflow_dispatch:
+
+concurrency:
+  group: selected-vacuum-dimension8-second-wave-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  dimension8-second-wave:
+    strategy:
+      fail-fast: false
+      matrix:
+        wave: [8m, 8n, 8o]
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      PYTHONHASHSEED: "0"
+      WAVE: ${{ matrix.wave }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - name: Compile second-wave evaluator
+        run: |
+          python -m compileall -q \
+            selected_vacuum_dimension8_second_wave_v20.py \
+            test_selected_vacuum_dimension8_second_wave_v20.py
+      - name: Verify second-wave partition
+        run: |
+          python -m unittest -v test_selected_vacuum_dimension8_second_wave_v20.py
+      - name: Execute second dimension-eight wave
+        run: |
+          python selected_vacuum_dimension8_second_wave_v20.py \
+            --wave "$WAVE" --write
+      - name: Assert honest result
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import selected_vacuum_dimension8_second_wave_v20 as mod
+
+          wave=os.environ['WAVE']; tag=wave.upper(); spec=mod.WAVE_SPECS[wave]
+          report=json.load(open(f'SELECTED_VACUUM_DIMENSION8_SECOND_WAVE_{tag}_V20.json'))
+          result=report['result']
+          assert report['n_failed']==0, report
+          assert report['overall_state']=='BLOCKED', report
+          assert tuple(result['signature_P_D_Db_H_Hb'])==spec['signature'], report
+          assert result['n_metric_graphs']==spec['graphs'], report
+          assert result['n_H_multilinear_assignments']==spec['assignments'], report
+          assert result['n_graph_coefficient_evaluations']==spec['cost'], report
+          assert result['maximum_abs_coefficient'] >= 0.0, report
+          assert report['status'] in {
+              f'DIMENSION8_SECOND_WAVE_{tag}_ZERO',
+              f'DIMENSION8_SECOND_WAVE_{tag}_NONZERO_CHANNEL_FOUND__STATIONARITY_OPEN',
+          }, report
+          assert not report['flags']['stationarity_rebuilt'], report
+          assert not report['flags']['boundedness_reproved'], report
+          assert not report['flags']['full_scalar_hessian_rebuilt'], report
+          assert not report['flags']['whole_model_validated'], report
+          assert not report['flags']['whole_model_excluded'], report
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: selected-vacuum-dimension8-second-wave-${{ matrix.wave }}
+          path: |
+            SELECTED_VACUUM_DIMENSION8_SECOND_WAVE_*_V20.json
+            SELECTED_VACUUM_DIMENSION8_SECOND_WAVE_*_V20.md
