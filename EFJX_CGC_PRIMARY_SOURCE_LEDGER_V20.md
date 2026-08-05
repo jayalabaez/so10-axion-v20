@@ -1,57 +1,100 @@
-# E/F/J/X Clebsch-normalization source ledger — v20
+# Direct `Phi H Sigmabar S` tensor-source ledger — v20
 
-## Exact question
+## Correct physical question
 
-Derive the convention map
-
-\[
-\gamma_{\rm eff}=c_{\rm norm}\,\lambda_4
-\]
-
-for the non-supersymmetric invariant
+For the non-supersymmetric scalar invariant
 
 \[
-\Phi(210)\,H(10)\,\overline{\Sigma}(\overline{126})\,S,
+V\supset \frac{\lambda_4}{4!}\,S\,H_i\Phi_{jklm}
+\overline{\Sigma}_{ijklm}+\text{h.c.},
 \]
 
-using canonically normalized fields and the physical electroweak branch.
+derive the canonically normalized scalar bilinear generated after
+`S` and the `210` singlets acquire VEVs.  This is a `10 x 126` scalar
+mass-squared map.  It is not an E/F/J/X gaugino-mass response.
 
-## Primary sources
+## Primary-source correction
 
-1. **Chen, Zhang and Bai, arXiv:1707.00580**
-   - Supplies normalized 10, 126/126bar and 210 states in an SU(5) basis.
-   - Defines the general renormalizable invariant containing `H Phi Delta` and `H Phi Deltabar`.
-   - Table 6 records the conversion between historical invariant couplings and order-one normalized couplings.
-   - Its F- and D-flatness equations and physical SUSY mass spectrum are not imported into the non-supersymmetric model.
+### Aulakh and Girdhar, hep-ph/0405074
 
-2. **Fukuyama, Ilakovac, Kikuchi, Meljanac and Okada, arXiv:hep-ph/0405300**
-   - Supplies an independent G422 component-state and Clebsch table.
-   - Used only as a representation-theory cross-check.
+- Eq. (1) contains the superpotential coupling
+  `H_i Phi_jklm (gamma Sigma_ijklm + gamma_bar Sigmabar_ijklm) / 4!`.
+- Eq. (3) gives the tensor kinetic terms.  The self-dual `126/126bar`
+  has the extra factor `1/2`, so a canonical five-form state has raw
+  component norm `sqrt(2)`.
+- Section 3.3 is explicitly titled **Mixed Chiral-Gauge**.
+- The Appendix-A E/F/J/X bases explicitly contain `lambda`, the SO(10)
+  gaugino field.
+- The symbol `g` in Eqs. (87)-(90) is the SO(10) gauge coupling entering
+  super-Higgs chiral-fermion/gaugino mixing.  It is not `gamma`.
 
-3. **Aulakh-sector E/F/J/X matrices already transcribed in `mixed_210_126_10_cw_v20.py`**
-   - These matrices determine the exact linear response to the Aulakh `gamma` convention.
-   - They do not determine how the repository's reduced radial `lambda4` proxy maps onto `gamma`.
+Therefore the former repository operation
 
-## Why the old ratio is not physical
+```text
+replace Aulakh g by gamma, scan E/F/J/X, infer gamma_eff/lambda4
+```
 
-`lam4_potential_efjx_decoupling_v20.py` obtains its selected `lambda4` from
-`charge_allowed_potential_minimize_v20.py`, whose target point sets the effective
-radial 10_H magnitude to the intermediate scale. The canonical physical audit
-instead requires the electroweak 10_H VEV to be 174 GeV and finds the historical
-point tachyonic. Therefore `gamma_crit/lambda4_selected` is only a diagnostic of
-that reduced proxy and cannot be quoted as a physical SO(10) Clebsch coefficient.
+was a category error.  The associated `8.8e29` Clebsch bound is withdrawn.
 
-## Required direct calculation
+## Executed replacement
 
-1. Write the exact antisymmetric-index contraction, including factorials and the
-   126bar duality convention.
-2. Insert normalized 210 singlet states for the selected `(p,a,omega)` direction,
-   the normalized 126bar and 10 component states, and the normalized singlet S.
-3. Reconstruct every gamma-dependent E/F/J/X matrix slot directly.
-4. Match the result to the Aulakh gamma convention and extract `c_norm`.
-5. Insert the derived mapping into the complete non-supersymmetric component
-   potential and re-minimize on the physical `h=174 GeV` branch.
-6. Accept the result only after an independent reconstruction agrees slot by slot.
+`direct_phi_h_sigmabar_tensor_v20.py` now:
 
-The accompanying JSON example is intentionally non-closing until all six steps
-have evidence.
+1. represents `210` as a real four-form on `R^10`;
+2. constructs a canonical kinetic-orthonormal `126bar` basis in the
+   `-i` Hodge eigenspace;
+3. constructs the full canonical `(p,a,omega)` singlet basis;
+4. evaluates the direct contraction
+   `C_i = Phi_jklm Sigmabar_ijklm`;
+5. verifies SO(10) equivariance;
+6. derives the closed singular-value spectrum independently of the
+   numerical SVD.
+
+For real canonical singlet coefficients `(p,a,omega)`, the four branches are
+
+\[
+\begin{aligned}
+s^2_{T+}&=\left(p+\frac{a}{\sqrt3}\right)^2+
+          \frac{4\omega^2}{3}, &&\text{multiplicity }3,\\
+s^2_{T-}&=\left(p-\frac{a}{\sqrt3}\right)^2,
+          &&\text{multiplicity }3,\\
+s^2_{D+}&=\left(a+\frac{\omega}{\sqrt2}\right)^2,
+          &&\text{multiplicity }2,\\
+s^2_{D-}&=\left(a-\frac{\omega}{\sqrt2}\right)^2,
+          &&\text{multiplicity }2.
+\end{aligned}
+\]
+
+The `3+3` degeneracies are the two color-triplet branches of
+`10_H -> (6,1,1)`.  The `2+2` degeneracies are the two electroweak-doublet
+branches of `10_H -> (1,2,2)`.
+
+After `S=v_S`, the direct off-diagonal scalar mass-squared singular values are
+
+\[
+|\lambda_4 v_S|\,s_{T\pm,D\pm}.
+\]
+
+## Independent cross-check routes
+
+1. **Direct Cartesian forms — executed.**
+   Numerical `10 x 126` construction, Hodge duality, kinetic Gram matrix,
+   gauge orbit and SO(10) equivariance.
+2. **Closed analytic reconstruction — executed.**
+   Diagonalize `T_Phi T_Phi^dagger` into the `3+3+2+2` branches above and
+   compare to the numerical SVD.
+3. **Published state-table dictionary — still open.**
+   Chen-Zhang-Bai and Fukuyama et al. can independently map phases and labels
+   between Cartesian, SU(5), and G422 conventions.  This is now a convention
+   cross-check, not the producer of the tensor map.
+
+## What remains open
+
+- map the repository's historical numerical `p,a,omega` parameters to these
+  canonical Cartesian coefficients without reusing proxy normalizations;
+- insert the direct block into the complete non-supersymmetric scalar
+  mass-squared matrix;
+- enumerate the complete allowed scalar invariant ring;
+- solve stationarity, boundedness, competing extrema and the full Hessian.
+
+The direct tensor contraction is solved.  The complete scalar theory is not.
