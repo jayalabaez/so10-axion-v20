@@ -1,16 +1,28 @@
 {
-  "aulakh_cubic": "H_i Phi_jklm gamma Sigmabar_ijklm",
-  "aulakh_source": "hep-ph/0405074 Eq.(1)",
-  "contraction_statement": "Aulakh hep-ph/0405074 Eq.(1): H_i Phi_jklm (gamma Sigmabar_ijklm + gamma_bar Sigma_ijklm). Non-SUSY PQ-safe lift replaces the bare cubic by lambda4/(4! 5!) Phi_abcd H_e Sigmabar_abcde S with epsilon_12345678910=+1, 210 total antisymmetry, and 126bar Hodge eigenvalue -i (so10_nonsusy_gauge_orbit_v20).",
-  "epsilon_convention": "epsilon_12345678910=+1",
-  "factorial_prefactor": "1/(4! 5!)",
+  "status": "DIRECT_TENSOR_CONVENTIONS_CORRECTED",
   "invariant": "Phi210_H10_Sigmabar126_S",
-  "kinetic_H10": "Lkin = (1/2!) dH* dH",
-  "kinetic_S": "real PQ singlet, Lkin = |dS|^2",
-  "kinetic_phi210": "Lkin = (1/4!) dPhi* dPhi on independent components",
-  "kinetic_sigmabar": "Aulakh 1/2 factor for self-dual 126 components (hep-ph/0405074 canonical note)",
-  "matching_dictionary_proxy": "pq_null_lam4_portal_lift_v20: gamma_eff=lambda4 under gamma*<sigma> <-> lambda4*<S> with <sigma>=<S>=M_I",
-  "nonsusy_operator": "lambda4 Phi H Sigmabar S",
-  "phi210_antisymmetry": "totally antisymmetric real 4-form",
-  "sigmabar126_duality": "complex 5-form with Hodge eigenvalue -i"
+  "aulakh_source": "hep-ph/0405074 Eqs. (1) and (3)",
+  "aulakh_superpotential_cubic": "gamma H_i Phi_jklm Sigma_ijklm / 4!",
+  "nonsusy_operator": "lambda4 S H_i Phi_jklm Sigmabar_ijklm / 4! + h.c.",
+  "factorial_prefactor": "1/4!",
+  "epsilon_convention": "epsilon_0123456789=+1",
+  "phi210_antisymmetry": "real totally antisymmetric four-form",
+  "sigmabar126_duality": "complex five-form with Hodge eigenvalue -i",
+  "kinetic_phi210": "canonical independent-component inner product from 1/4!",
+  "kinetic_H10": "canonical vector inner product",
+  "kinetic_sigmabar": "canonical inner product is raw five-form inner product divided by 2, from 1/(2*5!)",
+  "kinetic_S": "canonical singlet normalization; real/complex convention belongs to full potential",
+  "direct_tensor_map": "C_i = Phi_jklm Sigmabar_ijklm",
+  "aulakh_to_cartesian_vev_dictionary": {
+    "P": "p",
+    "A": "sqrt(3)*a",
+    "W": "sqrt(6)*omega"
+  },
+  "withdrawn_proxy_dictionary": {
+    "statement": "gamma_eff=lambda4 from equal VEV proxies",
+    "valid": false,
+    "reason": "E/F/J/X g was a gauge coupling, not gamma"
+  },
+  "whole_model_validated": false,
+  "whole_model_excluded": false
 }
