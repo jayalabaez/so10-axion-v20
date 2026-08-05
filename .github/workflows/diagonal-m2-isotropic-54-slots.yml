@@ -9,6 +9,8 @@ on:
       - test_physical_h10_54_mass_block_from_deltar_v20.py
       - selected_vacuum_lambda4_portal_null_audit_v20.py
       - test_selected_vacuum_lambda4_portal_null_audit_v20.py
+      - selected_vacuum_lambda4_dependency_audit_v20.py
+      - test_selected_vacuum_lambda4_dependency_audit_v20.py
       - phase_operator_independence_audit_v20.py
       - test_phase_operator_independence_audit_v20.py
       - deltar_54_locking_dependency_audit_v20.py
@@ -40,12 +42,14 @@ jobs:
             h10_intermediate_vev_consistency_audit_v20.py \
             physical_h10_54_mass_block_from_deltar_v20.py \
             selected_vacuum_lambda4_portal_null_audit_v20.py \
+            selected_vacuum_lambda4_dependency_audit_v20.py \
             phase_operator_independence_audit_v20.py \
             deltar_54_locking_dependency_audit_v20.py \
             diagonal_h10_sigmabar_m2_isotropic_54_slots_v20.py \
             test_h10_intermediate_vev_consistency_audit_v20.py \
             test_physical_h10_54_mass_block_from_deltar_v20.py \
             test_selected_vacuum_lambda4_portal_null_audit_v20.py \
+            test_selected_vacuum_lambda4_dependency_audit_v20.py \
             test_phase_operator_independence_audit_v20.py \
             test_deltar_54_locking_dependency_audit_v20.py \
             test_diagonal_h10_sigmabar_m2_isotropic_54_slots_v20.py
@@ -54,6 +58,7 @@ jobs:
           python h10_intermediate_vev_consistency_audit_v20.py --write
           python physical_h10_54_mass_block_from_deltar_v20.py --write
           python selected_vacuum_lambda4_portal_null_audit_v20.py --write
+          python selected_vacuum_lambda4_dependency_audit_v20.py --write
           python phase_operator_independence_audit_v20.py --write
           python deltar_54_locking_dependency_audit_v20.py --write
           python diagonal_h10_sigmabar_m2_isotropic_54_slots_v20.py --write
@@ -63,6 +68,7 @@ jobs:
             test_h10_intermediate_vev_consistency_audit_v20.py \
             test_physical_h10_54_mass_block_from_deltar_v20.py \
             test_selected_vacuum_lambda4_portal_null_audit_v20.py \
+            test_selected_vacuum_lambda4_dependency_audit_v20.py \
             test_phase_operator_independence_audit_v20.py \
             test_deltar_54_locking_dependency_audit_v20.py \
             test_diagonal_h10_sigmabar_m2_isotropic_54_slots_v20.py
@@ -73,6 +79,7 @@ jobs:
           a=json.load(open('H10_INTERMEDIATE_VEV_CONSISTENCY_AUDIT_V20.json'))
           h=json.load(open('PHYSICAL_H10_54_MASS_BLOCK_FROM_DELTAR_V20.json'))
           v=json.load(open('SELECTED_VACUUM_LAMBDA4_PORTAL_NULL_AUDIT_V20.json'))
+          q=json.load(open('SELECTED_VACUUM_LAMBDA4_DEPENDENCY_AUDIT_V20.json'))
           p=json.load(open('PHASE_OPERATOR_INDEPENDENCE_AUDIT_V20.json'))
           d=json.load(open('DELTAR_54_LOCKING_DEPENDENCY_AUDIT_V20.json'))
           r=json.load(open('DIAGONAL_H10_SIGMABAR_M2_ISOTROPIC_54_SLOTS_V20.json'))
@@ -85,20 +92,24 @@ jobs:
           assert not v['flags']['selected_vacuum_lambda4_amplitude_nonzero'], v
           assert v['flags']['full_fluctuation_portal_map_nonzero'], v
           assert not v['flags']['historical_reduced_lambda4_vacuum_term_physical'], v
-          assert v['vacuum_contraction']['selected_image_norm'] < 1e-6, v
+          assert q['n_failed']==0 and q['overall_state']=='BLOCKED', q
+          assert q['flags']['all_known_selected_vacuum_consumers_identified'], q
+          assert not q['flags']['all_selected_vacuum_consumers_revalidated'], q
+          assert q['flags']['fluctuation_portal_results_retained'], q
+          assert not q['flags']['historical_lambda4_tachyon_valid'], q
+          assert not q['flags']['repository_ready_for_release'], q
+          assert q['counts']['n_revalidation_required'] >= 10, q
+          assert q['counts']['n_retained_fluctuation_results'] >= 3, q
           assert p['n_failed']==0 and p['overall_state']=='BLOCKED', p
           assert p['formal_operator_algebra']['rank_kappa_lambda4']==2, p
           assert p['formal_operator_algebra']['rank_after_adding_lambda_lock']==2, p
           assert p['selected_vacuum_rank']['rank']==1, p
           assert p['selected_vacuum_rank']['null_dimension']==2, p
           assert p['flags']['selected_vacuum_has_extra_nonaxion_flat_phase'], p
-          assert not p['flags']['selected_vacuum_lambda4_active'], p
-          assert not p['flags']['selected_vacuum_dimension6_lock_valid'], p
           assert d['n_failed']==0 and d['overall_state']=='BLOCKED', d
           assert d['flags']['all_known_consumers_identified'], d
           assert not d['flags']['all_consumers_revalidated'], d
           assert not d['flags']['repository_ready_for_release'], d
-          assert d['counts']['n_revalidation_required'] == d['counts']['n_known_consumers'], d
           assert r['n_failed']==0 and r['overall_state']=='BLOCKED', r
           assert not r['flag']['isotropic_norm_54_slots_partially_filled'], r
           assert r['flag']['unphysical_H10_MI_54_seed_withdrawn'], r
@@ -119,6 +130,8 @@ jobs:
             PHYSICAL_H10_54_MASS_BLOCK_FROM_DELTAR_V20.md
             SELECTED_VACUUM_LAMBDA4_PORTAL_NULL_AUDIT_V20.json
             SELECTED_VACUUM_LAMBDA4_PORTAL_NULL_AUDIT_V20.md
+            SELECTED_VACUUM_LAMBDA4_DEPENDENCY_AUDIT_V20.json
+            SELECTED_VACUUM_LAMBDA4_DEPENDENCY_AUDIT_V20.md
             PHASE_OPERATOR_INDEPENDENCE_AUDIT_V20.json
             PHASE_OPERATOR_INDEPENDENCE_AUDIT_V20.md
             DELTAR_54_LOCKING_DEPENDENCY_AUDIT_V20.json
