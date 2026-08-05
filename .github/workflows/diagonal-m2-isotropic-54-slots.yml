@@ -60,10 +60,12 @@ jobs:
           assert not a['flags']['legacy_A54_v10eff_MI_physical'], a
           assert not a['flags']['legacy_isotropic_54_mass_seed_physical'], a
           assert h['n_failed']==0 and h['overall_state']=='BLOCKED', h
-          assert h['flags']['exact_H10_54_holomorphic_second_derivative_derived'], h
-          assert not h['flags']['unphysical_H10_MI_proxy_used'], h
-          assert h['benchmark']['real_Hessian_min_eigenvalue_GeV2'] < 0.0, h
-          assert h['benchmark']['real_Hessian_max_eigenvalue_GeV2'] > 0.0, h
+          assert h['flags']['DeltaR_squared_54_projection_zero'], h
+          assert not h['flags']['physical_locking_amplitude_on_selected_vacuum'], h
+          assert not h['flags']['physical_H10_54_mass_block_from_DeltaR'], h
+          assert h['exact_zero_evidence']['generic_map_nonzero'], h
+          assert h['exact_zero_evidence']['Q_delta_frobenius'] < 1e-12, h
+          assert h['exact_zero_evidence']['D_HH_frobenius_GeV2_at_lambda1'] < 1e-6, h
           assert not h['flags']['full_component_hessian_complete'], h
           assert r['n_failed']==0 and r['overall_state']=='BLOCKED', r
           assert r['flag']['isotropic_norm_slots_partially_filled'], r
