@@ -1,0 +1,63 @@
+name: diagonal-m2-channel-inventory
+
+on:
+  pull_request:
+    paths:
+      - diagonal_h10_sigmabar_m2_channel_inventory_v20.py
+      - test_diagonal_h10_sigmabar_m2_channel_inventory_v20.py
+      - .github/workflows/diagonal-m2-channel-inventory.yml
+  workflow_dispatch:
+
+concurrency:
+  group: diagonal-m2-channel-inventory-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  inventory-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      PYTHONHASHSEED: "0"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - run: |
+          python -m compileall -q \
+            diagonal_h10_sigmabar_m2_channel_inventory_v20.py \
+            test_diagonal_h10_sigmabar_m2_channel_inventory_v20.py
+      - name: Execute channel inventory
+        run: python diagonal_h10_sigmabar_m2_channel_inventory_v20.py --write
+      - name: Focused tests
+        run: |
+          python -m unittest -v \
+            test_diagonal_h10_sigmabar_m2_channel_inventory_v20.py
+      - name: Assert fail-closed scientific state
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('DIAGONAL_H10_SIGMABAR_M2_CHANNEL_INVENTORY_V20.json'))
+          assert r['n_failed']==0, r
+          assert r['overall_state']=='BLOCKED', r
+          assert r['flag']['classic_channel_inventory_transcribed'], r
+          assert r['flag']['pq_z17_charge_filter_applied'], r
+          assert not r['flag']['diagonal_h10_m2_derived'], r
+          assert not r['flag']['diagonal_sigmabar_m2_derived'], r
+          assert not r['flag']['cg_tensors_invented'], r
+          assert not r['flag']['full_invariant_ring'], r
+          assert not r['flag']['full_component_hessian'], r
+          assert not r['flag']['whole_model_validated'], r
+          assert not r['flag']['whole_model_excluded'], r
+          assert r['counts']['n_channels'] >= 13, r
+          assert r['cartesian_second_derivative_slots']['n_open_slots'] >= 10, r
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: diagonal-m2-channel-inventory
+          path: |
+            DIAGONAL_H10_SIGMABAR_M2_CHANNEL_INVENTORY_V20.json
+            DIAGONAL_H10_SIGMABAR_M2_CHANNEL_INVENTORY_V20.md

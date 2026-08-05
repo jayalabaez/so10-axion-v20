@@ -44,6 +44,27 @@ is inserted into a scoped non-SUSY `10 x 126` mass-squared sector (`direct_phi_h
 
 This closes the VEV-dictionary trace and the *scoped* portal bilinear insertion only. It does **not** close the complete invariant ring, full component projection, global Hessian, or issue #86.
 
+## Completed exact portal Schur gate
+
+The holomorphic block `B = lambda4 vS T_Phi` is embedded in the exact 272-real-mode Hessian for `(Re H, Im H, Re Σ̄, Im Σ̄)` with positivity criterion
+
+`sigma_max(A^{-1/2} B C^{-1/2}) < 1`.
+
+Diagonal `A = M²_H` and `C = M²_Σ̄` remain open inputs.
+
+## Completed diagonal-channel inventory scaffold
+
+Classic Kronecker channels that can source those diagonals are inventoried and PQ/X/Z17-filtered in
+
+`diagonal_h10_sigmabar_m2_channel_inventory_v20.py`:
+
+- `210×210`: 45, 54, 210, 1050 (+ cubics);
+- `210×126`: 10, 120, 320, 126;
+- `126` quartics: 54, 1050, 4125;
+- `10_H` via isotropic and 54 projections.
+
+Cartesian second-derivative slots are recorded as `OPEN_AWAITING_CG`. Index CG tensors are **not** invented.
+
 ## Correct next goal
 
 Build the complete physical non-supersymmetric scalar mass-squared matrix and solve the global `hEW=174 GeV` vacuum.
@@ -53,10 +74,12 @@ Build the complete physical non-supersymmetric scalar mass-squared matrix and so
 1. **Complete invariant ring**
    - Enumerate every charge-allowed independent scalar operator through the declared engineering dimension.
    - Prove linear independence and record Hermitian-conjugation conventions.
+   - Transcribe missing CG tensors (especially 120, 320, 1050, 4125) into the Cartesian basis.
 
 2. **Full component projection**
    - Project every invariant into canonical Pati-Salam and Standard Model component fields.
    - The direct `lambda4 vS T_Phi` off-diagonal block is already available as a scoped insertion; extend it to the full projected potential.
+   - Fill diagonal `H10` and `Sigmabar126` mass-squared matrices from charge-allowed channels.
    - Do not import SUSY fermion/gaugino matrices as scalar masses.
 
 3. **Stationarity and hierarchy**
@@ -84,4 +107,4 @@ Build the complete physical non-supersymmetric scalar mass-squared matrix and so
 - `FULL_TENSOR_PROJECTED_POTENTIAL_V20.json`
 - `FULL_NONSUSY_VACUUM_HESSIAN_V20.json`
 
-The direct tensor and scoped portal-block steps are solved. The complete scalar theory remains open.
+The direct tensor, scoped portal block, exact Schur gate, and classic diagonal-channel inventory scaffold are in place. Index CG transcription and the complete scalar theory remain open.
