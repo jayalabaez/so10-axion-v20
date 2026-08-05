@@ -1,104 +1,24 @@
 {
-  "schema_version": "efjx-cgc-normalization-v2",
-  "invariant": "Phi210_H10_Sigmabar126_S",
-  "contraction": "REPLACE_WITH_EXACT_Phi_abcd_H_e_Sigmabar_abcde_S_CONTRACTION_AND_FACTORIALS",
-  "field_normalizations": {
-    "Phi210": {
-      "kinetic_convention": "REQUIRED",
-      "antisymmetry_convention": "REQUIRED",
-      "state_basis_artifact": "evidence/phi210_basis.json"
-    },
-    "H10": {
-      "kinetic_convention": "REQUIRED",
-      "state_basis_artifact": "evidence/h10_basis.json"
-    },
-    "Sigmabar126": {
-      "kinetic_convention": "REQUIRED",
-      "duality_convention": "REQUIRED",
-      "epsilon_convention": "REQUIRED",
-      "state_basis_artifact": "evidence/sigmabar126_basis.json"
-    },
-    "S": {
-      "kinetic_convention": "REQUIRED",
-      "real_or_complex_convention": "REQUIRED",
-      "state_basis_artifact": "evidence/s_basis.json"
-    }
-  },
-  "singlet_vev_projection": {
-    "p": null,
-    "a": null,
-    "omega": null,
-    "vS": null,
-    "hEW": 174.0,
-    "units": "GeV",
-    "projection_artifact": "evidence/vev_projection.json"
-  },
-  "gamma_mapping": {
-    "gamma_eff_over_lambda4": null,
-    "sign": null,
-    "phase_convention": "REQUIRED",
-    "mapping_artifact": "evidence/gamma_mapping.json"
-  },
-  "source_manifest": [
-    {
-      "citation": "Chen, Zhang and Bai, arXiv:1707.00580",
-      "use": "normalized SO(10) states and independent CGC cross-check",
-      "locator": "exact equation/table/page REQUIRED"
-    },
-    {
-      "citation": "Fukuyama et al., arXiv:hep-ph/0405300",
-      "use": "G422 component states and mass-matrix cross-check",
-      "locator": "exact equation/table/page REQUIRED"
-    }
-  ],
-  "artifact_hashes": {},
-  "acceptance_evidence": {
-    "canonical_kinetic_normalization": {
-      "criterion": "Canonical kinetic normalization is demonstrated for Phi210, H10, Sigmabar126 and S in one declared convention.",
-      "passed": false,
-      "artifacts": []
-    },
-    "direct_tensor_contraction": {
-      "criterion": "The exact Phi_abcd H_e Sigmabar_abcde S contraction, factorials and duality signs are derived directly.",
-      "passed": false,
-      "artifacts": []
-    },
-    "independent_matrix_reconstruction": {
-      "criterion": "Every gamma-dependent E/F/J/X slot is independently reconstructed and matched to the target convention.",
-      "passed": false,
-      "artifacts": []
-    },
-    "physical_EW_branch_reminimized": {
-      "criterion": "The complete supplied component potential is re-minimized on the physical hEW=174 GeV branch.",
-      "passed": false,
-      "artifacts": []
-    },
-    "non_goldstone_spectrum_positive": {
-      "criterion": "Exactly 33 gauge Goldstones are removed and every remaining scalar mass-squared eigenvalue is positive.",
-      "passed": false,
-      "artifacts": []
-    }
-  },
-  "efjx_slot_match": {
-    "E": {"max_abs_residual_GeV": null, "tolerance_GeV": null, "passed": false, "artifact": "evidence/E_slot_match.json"},
-    "F": {"max_abs_residual_GeV": null, "tolerance_GeV": null, "passed": false, "artifact": "evidence/F_slot_match.json"},
-    "J": {"max_abs_residual_GeV": null, "tolerance_GeV": null, "passed": false, "artifact": "evidence/J_slot_match.json"},
-    "X": {"max_abs_residual_GeV": null, "tolerance_GeV": null, "passed": false, "artifact": "evidence/X_slot_match.json"}
-  },
-  "physical_EW_reminimization": {
-    "hEW_GeV": 174.0,
-    "stationarity_residual_GeV3": null,
-    "stationarity_tolerance_GeV3": null,
-    "gauge_goldstone_count": null,
-    "min_non_goldstone_eigenvalue_GeV2": null,
-    "efjx_thresholds_passed": false,
-    "competing_extrema_checked": false,
-    "boundedness_checked": false,
-    "artifact": "evidence/physical_EW_reminimization.json"
-  },
+  "schema_version": "efjx-cgc-normalization-retired-v3",
+  "retired": true,
   "closure_complete": false,
-  "n_failed": 1,
-  "failures": [
-    "template only: exact tensor contraction and physical-EW re-minimization absent"
-  ]
+  "reason": "Aulakh E/F/J/X are mixed chiral-gauge fermion/gaugino matrices. Their gauge-coupling g entries cannot normalize the non-supersymmetric scalar lambda4 portal.",
+  "invalid_target": "Aulakh_E_F_J_X_mixed_chiral_gauge_fermion_gaugino_matrices",
+  "forbidden_closure_fields": [
+    "efjx_slot_match",
+    "gamma_eff_over_lambda4_from_EFJX",
+    "EFJX_threshold_c_norm_bound"
+  ],
+  "replacement_artifacts": [
+    "DIRECT_PHI_H_SIGMABAR_TENSOR_V20.json",
+    "DIRECT_PHI_H_SIGMABAR_TD_CROSSCHECK_V20.json",
+    "SUSY_MATRIX_SCALAR_CONTAMINATION_AUDIT_V20.json"
+  ],
+  "remaining_required_artifacts": [
+    "FULL_MIXED_REP_INVARIANT_RING_V20.json",
+    "FULL_TENSOR_PROJECTED_POTENTIAL_V20.json",
+    "FULL_NONSUSY_VACUUM_HESSIAN_V20.json"
+  ],
+  "whole_model_validated": false,
+  "whole_model_excluded": false
 }

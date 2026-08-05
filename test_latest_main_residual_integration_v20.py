@@ -4,60 +4,54 @@ import unittest
 import latest_main_residual_integration_v20 as mod
 
 
-class LatestMainResidualIntegrationTests(unittest.TestCase):
+class LatestMainSourceCorrectionIntegrationTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.report = mod.build_report()
 
     def test_execution(self):
-        self.assertEqual(self.report["n_failed"], 0, self.report["failures"])
+        self.assertEqual(self.report["n_failed"], 0, self.report)
+        self.assertEqual(self.report["overall_state"], "BLOCKED")
 
-    def test_valid_new_closures_are_kept(self):
+    def test_valid_work_is_retained(self):
         valid = self.report["valid_new_closures"]
         self.assertTrue(valid["live_pyrate_gauge_artifact"])
         self.assertTrue(valid["live_pyrate_reduced_quartic_soft_artifact"])
         self.assertTrue(valid["scalar_alpha_nonunique_from_current_flavour_fit"])
-        self.assertTrue(valid["cal_G_lambda_lock_lift_mechanism_exists_in_principle"])
-        self.assertTrue(
-            valid["EFJX_gamma_response_matrices_known_in_Aulakh_convention"]
-        )
+        self.assertTrue(valid["direct_Phi_H_Sigmabar_10x126_tensor_map"])
+        self.assertTrue(valid["direct_tensor_closed_analytic_3p3p2p2_spectrum"])
+        self.assertTrue(valid["published_gamma_TD_clebsch_crosscheck"])
+        self.assertTrue(valid["EFJX_gauge_superhiggs_source_identified"])
 
-    def test_proxy_selected_point_closures_are_invalidated(self):
-        invalid = self.report["invalidated_selected_point_claims"]
-        self.assertTrue(invalid["lambda_lock_raise_does_not_spoil_selected_point"])
-        self.assertTrue(invalid["all_post_hessian_residuals_closed"])
-        self.assertTrue(invalid["proxy_c_cgc_needed_abs_approx_is_physical"])
-        self.assertLess(
-            self.report["dependency_audit"][
-                "physical_historical_min_eigenvalue_GeV2"
-            ],
-            -1.0e30,
+    def test_contaminated_claims_are_withdrawn(self):
+        withdrawn = self.report["withdrawn_or_reopened_claims"]
+        for name, value in withdrawn.items():
+            self.assertTrue(value, name)
+        self.assertIsNone(
+            self.report["dependency_audit"]["EFJX_old_8p8e29_bound"]
         )
-        self.assertFalse(
+        self.assertTrue(
             self.report["dependency_audit"][
-                "EFJX_physical_cgc_normalization_derived"
+                "mixed_susy_hessian_withdrawn"
             ]
+        )
+        self.assertTrue(
+            self.report["dependency_audit"]["cal_G_route_withdrawn"]
         )
 
     def test_remaining_scope(self):
-        remaining = self.report["still_open"]
-        self.assertTrue(remaining["full_210_tensor_quartic_basis_in_live_dump"])
-        self.assertTrue(remaining["lambda4_CGC_live_encoding"])
-        self.assertTrue(remaining["dim6_lambda_lock_live_encoding"])
-        self.assertTrue(
-            remaining["physical_EFJX_CGC_normalization_on_h174_branch"]
-        )
-        self.assertTrue(
-            remaining["physical_EW_reminimization_after_EFJX_CGC"]
-        )
-        self.assertTrue(
-            remaining["cal_G_lift_revalidation_on_physical_EW_survival_point"]
-        )
-        self.assertTrue(remaining["exact_unique_proton_lifetime"])
-        self.assertTrue(
-            self.report["flag"]["EFJX_response_known_but_physical_CGC_open"]
-        )
-        self.assertFalse(self.report["flag"]["whole_model_excluded"])
+        for name, value in self.report["still_open"].items():
+            self.assertTrue(value, name)
+
+    def test_final_flags(self):
+        flags = self.report["flag"]
+        self.assertTrue(flags["direct_tensor_problem_closed"])
+        self.assertTrue(flags["EFJX_cgc_route_invalidated"])
+        self.assertFalse(flags["old_8p8e29_bound_valid"])
+        self.assertTrue(flags["all_susy_matrix_scalar_closures_withdrawn"])
+        self.assertFalse(flags["exact_unique_proton_lifetime"])
+        self.assertFalse(flags["whole_model_excluded"])
+        self.assertFalse(flags["whole_model_validated"])
 
 
 if __name__ == "__main__":

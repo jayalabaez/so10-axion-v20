@@ -1,24 +1,11 @@
 #!/usr/bin/env python3
-r"""Fold post-live residuals into the ultimate τ_p checklist (v20).
+"""Correct the ultimate proton-lifetime checklist after EFJX source invalidation.
 
-Next step after ``lam4_potential_efjx_decoupling_v20``:
-
-1. Collect closed residuals including the |λ_lock| raise that clears the
-   cal G soft mode without spoiling the selected window.
-2. Fold the proved negative result that raising radial |λ₄| to the
-   E/F/J/X GUT null-tol spoils the selected Hessian, and the quantified
-   ``|c_cgc|`` needed to clear at fixed λ₄_potential.
-3. Keep ``exact_unique_proton_lifetime`` OPEN for remaining selected
-   |λ₄| GUT null-tol, undetermined E/F/J/X CGC, and live-dump incompleteness.
-
-Honesty
--------
-* Closing this checklist does **not** claim a unique whole-model τ_p.
-* Selected-point SK failure (if any) remains conditional.
-* The quartic/soft live dump is δ-contracted / reduced — not full SO(10)
-  tensor basis, λ₄ CGC, or dim-6 lock.
+The previous checklist counted the alleged lambda4 lift of EFJX nulls and the
+lambda4/EFJX decoupling result as closed residuals. Both depended on confusing
+the Appendix-A gauge coupling g with superpotential gamma. They are now open
+and replaced by the direct non-SUSY scalar tensor/Hessian task.
 """
-
 from __future__ import annotations
 
 import argparse
@@ -26,311 +13,114 @@ import json
 from pathlib import Path
 from typing import Any
 
-import cal_g_portal_decision_v20 as portal
-import cal_g_soft_mode_classification_v20 as calg
 import lam4_potential_efjx_decoupling_v20 as lam4dec
-import lambda_lock_cal_g_lift_v20 as locklift
-import live_pyrate_quartic_soft_dump_v20 as qsoft
-import live_pyrate_so10_beta_dump_v20 as live
 import pq_null_lam4_portal_lift_v20 as pqnull
 import scalar_alpha_flavour_nonuniqueness_v20 as alpha
 import tau_p_hessian_residual_closure_v20 as hess
 
 ROOT = Path(__file__).resolve().parent
-
-RESIDUALS_NOW_CLOSED = [
-    "full_component_hessian_and_competing_extrema",
-    "operator_based_8comp_hessian_pd",
-    "off_singlet_210_fluctuation_hessian",
-    "mixed_210_126_10_off_singlet_mass_matrices",
-    "pq_null_exact_kernel_from_absent_gamma",
-    "scalar_alpha_not_unique_from_flavour",
-    "live_sarah_or_pyrate_executable_run",
-    "cal_G_soft_mode_classification",
-    "full_quartic_soft_live_dump",
-    "cal_G_portal_decision_resolved",
-    "selected_lambda_lock_raised_to_cal_G_lift",
-    "lam4_potential_raise_to_efjx_tol_proved_spoiling",
-]
-
-RESIDUAL_STILL_OPEN = [
-    "selected_lam4_below_gut_null_tol_threshold",
-    "lam4_cgc_and_dim6_lock_not_in_live_dump",
-    "physical_efjx_cgc_for_210_10_126_S_undetermined",
-]
-
-SOURCES = {
-    "hessian_tau": "tau_p_hessian_residual_closure_v20",
-    "pq_null": "pq_null_lam4_portal_lift_v20",
-    "scalar_alpha": "scalar_alpha_flavour_nonuniqueness_v20",
-    "live_pyrate": "live_pyrate_so10_beta_dump_v20",
-    "cal_g": "cal_g_soft_mode_classification_v20",
-    "quartic_soft_live": "live_pyrate_quartic_soft_dump_v20",
-    "cal_g_portal": "cal_g_portal_decision_v20",
-    "lambda_lock_lift": "lambda_lock_cal_g_lift_v20",
-    "lam4_efjx_decoupling": "lam4_potential_efjx_decoupling_v20",
-}
+OUT_JSON = ROOT / "TAU_P_ULTIMATE_RESIDUAL_CHECKLIST_V20_VERDICT.json"
+OUT_MD = ROOT / "TAU_P_ULTIMATE_RESIDUAL_CHECKLIST_V20.md"
 
 
 def build_report() -> dict[str, Any]:
     hess_rep = hess.build_report()
     pq_rep = pqnull.build_report()
+    dec_rep = lam4dec.build_report()
     alpha_rep = alpha.build_report()
-    live_rep = live.build_report(force_rerun=False)
-    calg_rep = calg.build_report()
-    qsoft_rep = qsoft.build_report(force_rerun=False)
-    portal_rep = portal.build_report()
-    lock_rep = locklift.build_report()
-    lam4dec_rep = lam4dec.build_report()
-
     if hess_rep.get("n_failed", 1) != 0:
         return {
             "status": "TAU_P_ULTIMATE_CHECKLIST_NOT_EXECUTED__HESS_FAILED",
             "n_failed": 1,
             "failures": ["tau_p_hessian_residual_closure"],
-            "flag": {"ultimate_residual_checklist_folded": False},
+            "flag": {"exact_unique_proton_lifetime": False},
         }
 
     life = hess_rep["lifetime"]
-    closed = {
-        "full_component_hessian_and_competing_extrema": bool(
-            hess_rep["flag"]["full_component_hessian_residual_closed"]
-        ),
-        "operator_based_8comp_hessian_pd": bool(
-            hess_rep["certificate"]["hessian_residuals_closed"][
-                "operator_based_8comp_hessian_pd"
-            ]
-        ),
-        "off_singlet_210_fluctuation_hessian": bool(
-            hess_rep["certificate"]["hessian_residuals_closed"][
-                "off_singlet_210_fluctuation_hessian"
-            ]
-        ),
-        "mixed_210_126_10_off_singlet_mass_matrices": bool(
-            hess_rep["certificate"]["hessian_residuals_closed"][
-                "mixed_210_126_10_off_singlet_mass_matrices"
-            ]
-        ),
-        "pq_null_exact_kernel_from_absent_gamma": bool(
-            pq_rep.get("n_failed", 1) == 0
-            and pq_rep["flag"]["pq_null_exact_kernel_lifted_by_lam4"]
-        ),
-        "scalar_alpha_not_unique_from_flavour": bool(
-            alpha_rep.get("n_failed", 1) == 0
-            and alpha_rep["flag"]["scalar_alpha_proven_nonunique_from_flavour"]
-        ),
-        "live_sarah_or_pyrate_executable_run": bool(
-            live_rep.get("n_failed", 1) == 0
-            and live_rep["flag"]["live_sarah_or_pyrate_executable_run"]
-        ),
-        "cal_G_soft_mode_classification": bool(
-            calg_rep.get("n_failed", 1) == 0
-            and calg_rep["flag"]["cal_G_soft_mode_classified"]
-        ),
-        "full_quartic_soft_live_dump": bool(
-            qsoft_rep.get("n_failed", 1) == 0
-            and qsoft_rep["flag"]["full_quartic_soft_live_dump"]
-        ),
-        "cal_G_portal_decision_resolved": bool(
-            portal_rep.get("n_failed", 1) == 0
-            and portal_rep["flag"]["cal_G_portal_decision_resolved"]
-        ),
-        "selected_lambda_lock_raised_to_cal_G_lift": bool(
-            lock_rep.get("n_failed", 1) == 0
-            and lock_rep["flag"]["selected_lambda_lock_raised_to_cal_G_lift"]
-        ),
-        "lam4_potential_raise_to_efjx_tol_proved_spoiling": bool(
-            lam4dec_rep.get("n_failed", 1) == 0
-            and lam4dec_rep["flag"]["lam4_potential_raise_proved_spoiling"]
-        ),
-    }
-    all_closed = all(closed.values())
-
-    still_open = {
-        "selected_lam4_below_gut_null_tol_threshold": bool(
-            not pq_rep.get("flag", {}).get("selected_lam4_clears_gut_null_tol", False)
-        ),
-        "lam4_cgc_and_dim6_lock_not_in_live_dump": bool(
-            lam4dec_rep.get("flag", {}).get(
-                "lam4_cgc_and_dim6_lock_not_in_live_dump", True
-            )
-        ),
-        "physical_efjx_cgc_for_210_10_126_S_undetermined": bool(
-            lam4dec_rep.get("certificate", {}).get(
-                "physical_cgc_still_required", True
-            )
-        ),
-    }
-
     checks = {
-        "hess_ok": hess_rep.get("n_failed", 1) == 0,
-        "pq_ok": pq_rep.get("n_failed", 1) == 0,
-        "alpha_ok": alpha_rep.get("n_failed", 1) == 0,
-        "live_ok": live_rep.get("n_failed", 1) == 0
-        and live_rep["flag"]["live_sarah_or_pyrate_executable_run"],
-        "calg_ok": calg_rep.get("n_failed", 1) == 0,
-        "qsoft_ok": qsoft_rep.get("n_failed", 1) == 0
-        and qsoft_rep["flag"]["full_quartic_soft_live_dump"],
-        "portal_ok": portal_rep.get("n_failed", 1) == 0
-        and portal_rep["flag"]["cal_G_portal_decision_resolved"],
-        "lock_lift_ok": lock_rep.get("n_failed", 1) == 0
-        and lock_rep["flag"]["selected_lambda_lock_raised_to_cal_G_lift"],
-        "lam4_decoupling_ok": lam4dec_rep.get("n_failed", 1) == 0
-        and lam4dec_rep["flag"]["lam4_potential_raise_proved_spoiling"],
-        "all_checklist_closed": all_closed,
-        "tau_positive": float(life["selected_tau_e_years"]) > 0.0,
+        "hessian_stack_executes": True,
+        "pq_portal_audit_executes": pq_rep.get("n_failed", 1) == 0,
+        "decoupling_correction_executes": dec_rep.get("n_failed", 1) == 0,
+        "scalar_alpha_nonuniqueness_retained": alpha_rep.get("n_failed", 1) == 0
+        and alpha_rep.get("flag", {}).get("scalar_alpha_proven_nonunique_from_flavour"),
+        "efjx_lift_not_counted_closed": not pq_rep.get("flag", {}).get(
+            "pq_null_exact_kernel_lifted_by_lam4", True
+        ),
+        "efjx_decoupling_not_counted_closed": not dec_rep.get("flag", {}).get(
+            "lam4_potential_raise_proved_spoiling", True
+        ),
         "exact_unique_not_overclaimed": True,
-        "whole_model_not_declared_dead": True,
     }
-    failures = [n for n, ok in checks.items() if not ok]
-
+    failures = [name for name, passed in checks.items() if not passed]
+    closed = {
+        "scalar_alpha_not_unique_from_flavour": bool(
+            alpha_rep.get("flag", {}).get("scalar_alpha_proven_nonunique_from_flavour")
+        ),
+        "efjx_gauge_gamma_source_collision_identified": True,
+        "old_efjx_cgc_bound_withdrawn": True,
+    }
+    still_open = {
+        "direct_phi_h_sigmabar_component_label_projection": True,
+        "direct_scalar_mass_squared_block": True,
+        "full_nonsusy_component_hessian": True,
+        "physical_triplet_threshold_spectrum": True,
+        "full_two_loop_threshold_running": True,
+        "unique_flavour_and_interference_solution": True,
+    }
     return {
         "status": (
-            "TAU_P_ULTIMATE_RESIDUAL_CHECKLIST_FOLDED__EXACT_UNIQUE_OPEN"
+            "TAU_P_CHECKLIST_CORRECTED__EFJX_CLOSURES_REOPENED"
             if not failures
             else "TAU_P_ULTIMATE_RESIDUAL_CHECKLIST_FAILED"
         ),
+        "overall_state": "BLOCKED",
         "n_checks": len(checks),
         "n_failed": len(failures),
         "failures": failures,
-        "sources": SOURCES,
+        "checks": checks,
         "lifetime": life,
         "upstream_status": {
             "hessian_tau": hess_rep.get("status"),
-            "pq_null": pq_rep.get("status"),
+            "pq_portal_correction": pq_rep.get("status"),
+            "lam4_efjx_correction": dec_rep.get("status"),
             "scalar_alpha": alpha_rep.get("status"),
-            "live_pyrate": live_rep.get("status"),
-            "cal_g": calg_rep.get("status"),
-            "quartic_soft_live": qsoft_rep.get("status"),
-            "cal_g_portal": portal_rep.get("status"),
-            "lambda_lock_lift": lock_rep.get("status"),
-            "lam4_efjx_decoupling": lam4dec_rep.get("status"),
         },
         "certificate": {
             "residual_now_closed": closed,
             "residual_still_open": still_open,
-            "cal_G_primary_label": calg_rep.get("flag", {}).get("primary_label"),
-            "cal_G_portal_decision": portal_rep.get("decision", {}).get("label"),
-            "lambda_lock_raised": lock_rep.get("couplings", {}).get(
-                "lambda_lock_raised"
-            ),
-            "c_cgc_needed_abs_approx": lam4dec_rep.get("couplings", {}).get(
-                "c_cgc_needed_abs_approx"
-            ),
+            "c_cgc_needed_abs_approx": None,
             "interpretation": (
-                "The ultimate selected-point τ_p checklist now includes closed "
-                "Hessian positivity, λ₄ PQ-null exact-kernel lift, proven "
-                "scalar-α non-uniqueness, live PyR@TE gauge β, classified "
-                "cal G soft mode, δ-contracted live quartic/soft dump, "
-                "resolved cal G portal decision, a |λ_lock| raise that "
-                "clears the cal G soft mode without spoiling the selected "
-                "window, and a proved negative that raising radial |λ₄| to "
-                "the E/F/J/X null-tol spoils the selected Hessian. Exact "
-                "whole-model unique τ_p remains OPEN because selected |λ₄| "
-                "is below the GUT null-tol threshold, the physical E/F/J/X "
-                "CGC is undetermined, and λ₄ CGC / dim-6 are not in the "
-                "live dump."
+                "The former EFJX lambda4 lift and c_cgc decoupling closures are reopened. "
+                "Any displayed historical lifetime is conditional and cannot become a "
+                "unique model prediction until the direct scalar spectrum, thresholds, "
+                "running, and flavour amplitudes are rebuilt."
             ),
         },
-        "next_exact_calculation": [
-            "Derive SO(10) Clebsch coefficients for 210·10·126bar·S onto E/F/J/X channels",
-            "Re-evaluate exact unique τ_p only after remaining λ₄ CGC / live-dump caveats close",
-        ],
         "flag": {
-            "ultimate_residual_checklist_folded": True,
-            "all_post_hessian_residuals_closed": all_closed,
-            "tau_p_unique_under_hessian_closed_stack": bool(
-                hess_rep["flag"]["tau_p_unique_under_hessian_closed_stack"]
-            ),
-            "live_sarah_or_pyrate_executable_run": True,
-            "scalar_alpha_proven_nonunique_from_flavour": True,
-            "cal_G_soft_mode_classified": True,
-            "full_quartic_soft_live_dump": True,
-            "cal_G_portal_decision_resolved": True,
-            "selected_lambda_lock_raised_to_cal_G_lift": True,
-            "lam4_potential_raise_proved_spoiling": bool(
-                lam4dec_rep.get("flag", {}).get(
-                    "lam4_potential_raise_proved_spoiling", False
-                )
-            ),
-            "extra_new_portal_required": bool(
-                portal_rep.get("flag", {}).get("extra_new_portal_required", True)
-            ),
+            "ultimate_residual_checklist_folded": False,
+            "all_post_hessian_residuals_closed": False,
+            "EFJX_false_closures_reopened": True,
+            "scalar_alpha_proven_nonunique_from_flavour": bool(closed[
+                "scalar_alpha_not_unique_from_flavour"
+            ]),
             "exact_unique_proton_lifetime": False,
             "whole_model_excluded": False,
+            "whole_model_validated": False,
         },
         "verdict": (
-            f"Ultimate τ_p residual checklist folded: "
-            f"τ(p→eπ⁰)={float(life['selected_tau_e_years']):.3e} yr "
-            f"(SK pass={life['selected_passes_SK']}); "
-            f"closed={all_closed}; |λ_lock| raised→"
-            f"{lock_rep.get('couplings', {}).get('lambda_lock_raised')}; "
-            f"|c_cgc|_needed≈"
-            f"{lam4dec_rep.get('couplings', {}).get('c_cgc_needed_abs_approx')}. "
-            f"exact_unique_proton_lifetime remains False."
+            "The ultimate proton-lifetime checklist is corrected: EFJX/lambda4 closures "
+            "and the c_cgc estimate are withdrawn. Exact unique proton lifetime remains open."
         ),
     }
 
 
-def write_markdown(report: dict[str, Any]) -> str:
-    cert = report["certificate"]
-    life = report["lifetime"]
-    lines = [
-        "# τ_p ultimate residual checklist — v20",
-        "",
-        f"**Status:** `{report['status']}`",
-        "",
-        report["verdict"],
-        "",
-        f"- Selected τ(p→eπ⁰): {life['selected_tau_e_years']:.6e} yr",
-        f"- SK pass: {life['selected_passes_SK']}",
-        f"- M_PD: {life['M_PD_GeV']:.6e} GeV",
-        "",
-        "## Residuals closed",
-        "",
-    ]
-    for k, v in cert["residual_now_closed"].items():
-        lines.append(f"- `{k}`: {v}")
-    lines.extend(["", "## Still open", ""])
-    for k, v in cert["residual_still_open"].items():
-        lines.append(f"- `{k}`: {v}")
-    lines.extend(["", "## Next exact calculation", ""])
-    for step in report["next_exact_calculation"]:
-        lines.append(f"1. {step}")
-    lines.extend(["", "## Flags", ""])
-    for k, v in report["flag"].items():
-        lines.append(f"- `{k}`: {v}")
-    lines.append("")
-    return "\n".join(lines)
-
-
-def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.parse_args(argv)
+def main() -> int:
+    argparse.ArgumentParser(description=__doc__).parse_args()
     report = build_report()
-    ROOT.joinpath("TAU_P_ULTIMATE_RESIDUAL_CHECKLIST_V20_VERDICT.json").write_text(
-        json.dumps(report, indent=2) + "\n", encoding="utf-8"
-    )
-    ROOT.joinpath("TAU_P_ULTIMATE_RESIDUAL_CHECKLIST_V20.md").write_text(
-        write_markdown(report), encoding="utf-8"
-    )
-    print(
-        json.dumps(
-            {
-                "status": report["status"],
-                "n_failed": report["n_failed"],
-                "lifetime": report.get("lifetime"),
-                "closed": report.get("certificate", {}).get("residual_now_closed"),
-                "still_open": report.get("certificate", {}).get(
-                    "residual_still_open"
-                ),
-                "flag": report.get("flag"),
-                "verdict": report.get("verdict"),
-            },
-            indent=2,
-        )
-    )
-    return 0 if report.get("n_failed", 1) == 0 else 1
+    OUT_JSON.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    OUT_MD.write_text("# Corrected ultimate proton-lifetime checklist — v20\n\n" + report["verdict"] + "\n", encoding="utf-8")
+    print(json.dumps(report, indent=2))
+    return 0 if report["n_failed"] == 0 else 1
 
 
 if __name__ == "__main__":

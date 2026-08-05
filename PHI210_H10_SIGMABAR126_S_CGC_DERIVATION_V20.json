@@ -1,340 +1,74 @@
 {
-  "status": "PHYSICAL_CGC_DERIVATION_EXECUTED__LITERATURE_SCALE_MAP_EXCLUDED",
+  "status": "PHYSICAL_CGC_CAMPAIGN_CORRECTED__EFJX_BOUND_WITHDRAWN",
   "overall_state": "BLOCKED",
-  "n_checks": 9,
+  "n_checks": 7,
   "n_failed": 0,
   "failures": [],
   "checks": {
-    "conventions_frozen": true,
-    "efjx_gamma_response_known": true,
-    "pure_ps_p_channel_vanishes": true,
-    "goldstone_count_is_33": true,
-    "literature_negative_portal_excluded": true,
-    "literature_positive_portal_not_natural": true,
-    "proxy_c_190_not_accepted_as_physical": true,
-    "normalization_input_artifact_not_faked": true,
+    "source_symbol_collision_identified": true,
+    "old_efjx_gamma_threshold_withdrawn": true,
+    "old_8p8e29_bound_withdrawn": true,
+    "direct_full_p_a_omega_map_constructed": true,
+    "direct_tensor_map_equivariant": true,
+    "closing_artifact_not_invented": true,
     "whole_model_not_overclaimed": true
   },
-  "conventions": {
-    "invariant": "Phi210_H10_Sigmabar126_S",
-    "aulakh_cubic": "H_i Phi_jklm gamma Sigmabar_ijklm",
-    "aulakh_source": "hep-ph/0405074 Eq.(1)",
-    "nonsusy_operator": "lambda4 Phi H Sigmabar S",
-    "factorial_prefactor": "1/(4! 5!)",
-    "epsilon_convention": "epsilon_12345678910=+1",
-    "phi210_antisymmetry": "totally antisymmetric real 4-form",
-    "sigmabar126_duality": "complex 5-form with Hodge eigenvalue -i",
-    "kinetic_phi210": "Lkin = (1/4!) dPhi* dPhi on independent components",
-    "kinetic_sigmabar": "Aulakh 1/2 factor for self-dual 126 components (hep-ph/0405074 canonical note)",
-    "kinetic_H10": "Lkin = (1/2!) dH* dH",
-    "kinetic_S": "real PQ singlet, Lkin = |dS|^2",
-    "matching_dictionary_proxy": "pq_null_lam4_portal_lift_v20: gamma_eff=lambda4 under gamma*<sigma> <-> lambda4*<S> with <sigma>=<S>=M_I",
-    "contraction_statement": "Aulakh hep-ph/0405074 Eq.(1): H_i Phi_jklm (gamma Sigmabar_ijklm + gamma_bar Sigma_ijklm). Non-SUSY PQ-safe lift replaces the bare cubic by lambda4/(4! 5!) Phi_abcd H_e Sigmabar_abcde S with epsilon_12345678910=+1, 210 total antisymmetry, and 126bar Hodge eigenvalue -i (so10_nonsusy_gauge_orbit_v20)."
+  "source_correction": {
+    "aulakh_eq1_prefactor": "1/4! for H_i Phi_jklm Sigma_ijklm",
+    "aulakh_kinetic_126_prefactor": "1/(2*5!)",
+    "aulakh_appendix_E_F_J_X_symbol": "g = SO(10) gauge coupling",
+    "appendix_basis_contains_gauginos": true,
+    "previous_repository_interpretation": "incorrectly mapped g to gamma",
+    "consequence": "The EFJX-derived gamma threshold and 8.8e29 c_norm bound are withdrawn. The non-SUSY portal is a scalar mass-squared mixing lambda4*<S>*T_<Phi>."
   },
-  "pure_ps_singlet_contraction": {
-    "phi_embedding": "e6^e7^e8^e9",
-    "delta_embedding": "(e0+i e1)(e2+i e3)(e4+i e5) wedge (e6e7+e8e9)",
-    "factorial_stripped_H_channel_frobenius": 0.0,
-    "H_channel_components_Re_Im": {
-      "0": [
-        0.0,
-        0.0
-      ],
-      "1": [
-        0.0,
-        0.0
-      ],
-      "2": [
-        0.0,
-        0.0
-      ],
-      "3": [
-        0.0,
-        0.0
-      ],
-      "4": [
-        0.0,
-        0.0
-      ],
-      "5": [
-        0.0,
-        0.0
-      ],
-      "6": [
-        0.0,
-        0.0
-      ],
-      "7": [
-        0.0,
-        0.0
-      ],
-      "8": [
-        0.0,
-        0.0
-      ],
-      "9": [
-        0.0,
-        0.0
-      ]
+  "direct_tensor_result": {
+    "status": "DIRECT_NONSUSY_PHI_H_SIGMABAR_TENSOR_MAP_EXECUTED",
+    "map_shape": [10, 126],
+    "analytic_spectrum": {
+      "color_triplet_branch_plus": {
+        "multiplicity": 3,
+        "formula_squared": "(P+A/sqrt(3))^2+4*W^2/3"
+      },
+      "color_triplet_branch_minus": {
+        "multiplicity": 3,
+        "formula_squared": "(P-A/sqrt(3))^2"
+      },
+      "electroweak_doublet_branch_plus": {
+        "multiplicity": 2,
+        "formula_squared": "(A+W/sqrt(2))^2"
+      },
+      "electroweak_doublet_branch_minus": {
+        "multiplicity": 2,
+        "formula_squared": "(A-W/sqrt(2))^2"
+      }
     },
-    "vanishes": true,
-    "implication": "Pure PS p-volume does not feed the 10-channel against Delta_R; the physical map requires the full Hilbert (p,a,omega) 210 VEV and component Clebsch tables (Chen/Fukuyama/Aulakh)."
+    "equivariance_max_abs_residual": 0.0
   },
   "joint_physical_constraint": {
-    "efjx_crit_abs": 0.0006055300292260313,
-    "naturalness_abs_lam4_bound": 6.875482169895492e-34,
-    "c_norm_needed_for_negative_portal_natural_window": 8.807091841170979e+29,
-    "rows": [
-      {
-        "c_norm": 1.0,
-        "portal_sign": -1.0,
-        "lam4": -0.0006055300292260313,
-        "gamma_eff": -0.0006055300292260313,
-        "under_naturalness_bound": false,
-        "hessian_positive_definite": false,
-        "min_eigenvalue_GeV2": -1.3758805249297895e+34,
-        "efjx_thresholds_passed": true,
-        "joint_accept_reduced": false,
-        "joint_accept_ignoring_naturalness": false
-      },
-      {
-        "c_norm": 1.0,
-        "portal_sign": 1.0,
-        "lam4": 0.0006055300292260313,
-        "gamma_eff": 0.0006055300292260313,
-        "under_naturalness_bound": false,
-        "hessian_positive_definite": true,
-        "min_eigenvalue_GeV2": 3.569744551759512e+23,
-        "efjx_thresholds_passed": true,
-        "joint_accept_reduced": false,
-        "joint_accept_ignoring_naturalness": true
-      },
-      {
-        "c_norm": 190.0,
-        "portal_sign": -1.0,
-        "lam4": -3.1870001538212173e-06,
-        "gamma_eff": -0.0006055300292260313,
-        "under_naturalness_bound": false,
-        "hessian_positive_definite": false,
-        "min_eigenvalue_GeV2": -7.241476446998892e+31,
-        "efjx_thresholds_passed": true,
-        "joint_accept_reduced": false,
-        "joint_accept_ignoring_naturalness": false
-      },
-      {
-        "c_norm": 190.0,
-        "portal_sign": 1.0,
-        "lam4": 3.1870001538212173e-06,
-        "gamma_eff": 0.0006055300292260313,
-        "under_naturalness_bound": false,
-        "hessian_positive_definite": true,
-        "min_eigenvalue_GeV2": 3.5697445477288774e+23,
-        "efjx_thresholds_passed": true,
-        "joint_accept_reduced": false,
-        "joint_accept_ignoring_naturalness": true
-      },
-      {
-        "c_norm": 1000.0,
-        "portal_sign": -1.0,
-        "lam4": -6.055300292260313e-07,
-        "gamma_eff": -0.0006055300292260313,
-        "under_naturalness_bound": false,
-        "hessian_positive_definite": false,
-        "min_eigenvalue_GeV2": -1.3758805249297895e+31,
-        "efjx_thresholds_passed": true,
-        "joint_accept_reduced": false,
-        "joint_accept_ignoring_naturalness": false
-      },
-      {
-        "c_norm": 1000.0,
-        "portal_sign": 1.0,
-        "lam4": 6.055300292260313e-07,
-        "gamma_eff": 0.0006055300292260313,
-        "under_naturalness_bound": false,
-        "hessian_positive_definite": true,
-        "min_eigenvalue_GeV2": 3.5697445477116035e+23,
-        "efjx_thresholds_passed": true,
-        "joint_accept_reduced": false,
-        "joint_accept_ignoring_naturalness": true
-      },
-      {
-        "c_norm": 1000000.0,
-        "portal_sign": -1.0,
-        "lam4": -6.055300292260313e-10,
-        "gamma_eff": -0.0006055300292260313,
-        "under_naturalness_bound": false,
-        "hessian_positive_definite": false,
-        "min_eigenvalue_GeV2": -1.3758805249297894e+28,
-        "efjx_thresholds_passed": true,
-        "joint_accept_reduced": false,
-        "joint_accept_ignoring_naturalness": false
-      },
-      {
-        "c_norm": 1000000.0,
-        "portal_sign": 1.0,
-        "lam4": 6.055300292260313e-10,
-        "gamma_eff": 0.0006055300292260313,
-        "under_naturalness_bound": false,
-        "hessian_positive_definite": true,
-        "min_eigenvalue_GeV2": 3.5697445477075555e+23,
-        "efjx_thresholds_passed": true,
-        "joint_accept_reduced": false,
-        "joint_accept_ignoring_naturalness": true
-      },
-      {
-        "c_norm": 1e+20,
-        "portal_sign": -1.0,
-        "lam4": -6.055300292260313e-24,
-        "gamma_eff": -0.0006055300292260313,
-        "under_naturalness_bound": false,
-        "hessian_positive_definite": false,
-        "min_eigenvalue_GeV2": -137588052477693.64,
-        "efjx_thresholds_passed": true,
-        "joint_accept_reduced": false,
-        "joint_accept_ignoring_naturalness": false
-      },
-      {
-        "c_norm": 1e+20,
-        "portal_sign": 1.0,
-        "lam4": 6.055300292260313e-24,
-        "gamma_eff": 0.0006055300292260313,
-        "under_naturalness_bound": false,
-        "hessian_positive_definite": true,
-        "min_eigenvalue_GeV2": 137588052508264.27,
-        "efjx_thresholds_passed": true,
-        "joint_accept_reduced": false,
-        "joint_accept_ignoring_naturalness": true
-      },
-      {
-        "c_norm": 1e+29,
-        "portal_sign": -1.0,
-        "lam4": -6.0553002922603134e-33,
-        "gamma_eff": -0.0006055300292260313,
-        "under_naturalness_bound": false,
-        "hessian_positive_definite": false,
-        "min_eigenvalue_GeV2": -122302.73988695661,
-        "efjx_thresholds_passed": true,
-        "joint_accept_reduced": false,
-        "joint_accept_ignoring_naturalness": false
-      },
-      {
-        "c_norm": 1e+29,
-        "portal_sign": 1.0,
-        "lam4": 6.0553002922603134e-33,
-        "gamma_eff": 0.0006055300292260313,
-        "under_naturalness_bound": false,
-        "hessian_positive_definite": true,
-        "min_eigenvalue_GeV2": 152873.3650990013,
-        "efjx_thresholds_passed": true,
-        "joint_accept_reduced": false,
-        "joint_accept_ignoring_naturalness": true
-      },
-      {
-        "c_norm": 1e+30,
-        "portal_sign": -1.0,
-        "lam4": -6.055300292260312e-34,
-        "gamma_eff": -0.0006055300292260313,
-        "under_naturalness_bound": true,
-        "hessian_positive_definite": true,
-        "min_eigenvalue_GeV2": 1526.507356724456,
-        "efjx_thresholds_passed": true,
-        "joint_accept_reduced": true,
-        "joint_accept_ignoring_naturalness": true
-      },
-      {
-        "c_norm": 1e+30,
-        "portal_sign": 1.0,
-        "lam4": 6.055300292260312e-34,
-        "gamma_eff": 0.0006055300292260313,
-        "under_naturalness_bound": true,
-        "hessian_positive_definite": true,
-        "min_eigenvalue_GeV2": 29044.11785532024,
-        "efjx_thresholds_passed": true,
-        "joint_accept_reduced": true,
-        "joint_accept_ignoring_naturalness": true
-      },
-      {
-        "c_norm": 1e+31,
-        "portal_sign": -1.0,
-        "lam4": -6.055300292260313e-35,
-        "gamma_eff": -0.0006055300292260313,
-        "under_naturalness_bound": true,
-        "hessian_positive_definite": true,
-        "min_eigenvalue_GeV2": 13909.432081092558,
-        "efjx_thresholds_passed": true,
-        "joint_accept_reduced": true,
-        "joint_accept_ignoring_naturalness": true
-      },
-      {
-        "c_norm": 1e+31,
-        "portal_sign": 1.0,
-        "lam4": 6.055300292260313e-35,
-        "gamma_eff": 0.0006055300292260313,
-        "under_naturalness_bound": true,
-        "hessian_positive_definite": true,
-        "min_eigenvalue_GeV2": 16661.19313095214,
-        "efjx_thresholds_passed": true,
-        "joint_accept_reduced": true,
-        "joint_accept_ignoring_naturalness": true
-      }
-    ],
-    "literature_scale_max_tested": 1000000.0,
-    "literature_negative_portal_any_joint_accept": false,
-    "literature_negative_portal_any_pd_and_efjx": false,
-    "literature_positive_portal_any_pd_and_efjx": true,
-    "literature_positive_portal_any_natural": false,
-    "verdict": "Every literature-scale |c_norm|<=1e6 fails the joint physical-EW naturalness window. Negative portal sign is tachyonic whenever E/F/J/X are cleared at those scales. Positive portal sign can clear E/F/J/X with a PD reduced Hessian only by taking |lambda4| ~ 1e30 above the O(1) naturalness bound. Closing issue #86 still requires an independent tensor derivation of c_norm; it cannot be the proxy ratio ~190."
-  },
-  "upstream": {
-    "efjx_gate": "BLOCKED",
-    "physical_hessian": "PHYSICAL_EW_REDUCED_HESSIAN_REPAIRED__HISTORICAL_LAM4_POINT_FAILS",
-    "pq_null": "PQ_NULL_EXACT_KERNEL_LIFTED_BY_LAM4__LIGHT_MASSES_DOCUMENTED",
-    "goldstones": "EXACT_SO10_GAUGE_ORBIT_33_GOLDSTONES__SM_STABILIZER"
-  },
-  "singlet_vev_projection": {
-    "p": 8925808319008318.0,
-    "a": 495878239944906.6,
-    "omega": 495878239944906.6,
-    "vS": 631385523052.4453,
-    "hEW": 174.0,
-    "units": "GeV"
-  },
-  "evidence": {
-    "conventions": {
-      "path": "evidence/efjx_cgc/conventions.json",
-      "sha256": "8a5f4030c645811dab15a94abb6dd6894cd9ba30bf37c3af5fa6320b528565df"
-    },
-    "ps_singlet_contraction": {
-      "path": "evidence/efjx_cgc/ps_singlet_contraction.json",
-      "sha256": "78c2796f06a1e332209b42e84a0ea83393cf6e69b48571ff7cb131dd38443677"
-    },
-    "joint_physical_scan": {
-      "path": "evidence/efjx_cgc/joint_physical_scan.json",
-      "sha256": "70e40984de627b5616e64933d3e544421d8959d26363dfb308a26d966ab2642a"
-    },
-    "gamma_response_summary": {
-      "path": "evidence/efjx_cgc/gamma_response_summary.json",
-      "sha256": "7a3c15003138c4870ce820ed5b89b23ba52a6223a93dbc212d1b769cedd2478c"
-    },
-    "physical_EW_reminimization_attempt": {
-      "path": "evidence/efjx_cgc/physical_EW_reminimization_attempt.json",
-      "sha256": "d3794f12fe4f20b2546e2174fbe8e5dcd8b418ca30784655d0c596ceb0beb837"
-    }
+    "withdrawn": true,
+    "efjx_crit_abs": null,
+    "naturalness_abs_lam4_bound": null,
+    "c_norm_needed_for_negative_portal_natural_window": null,
+    "former_value": 8.807091841170979e+29,
+    "reason": "The former threshold varied Aulakh E/F/J/X gauge coupling g, mislabeled gamma in Python. It is not a lambda4 Clebsch bound."
   },
   "remaining_blockers": {
-    "full_Hilbert_tensor_contraction_to_EFJX_slots": true,
-    "canonical_Chen_Fukuyama_state_basis_match": true,
-    "finite_literature_scale_c_norm_on_natural_physical_branch": true,
-    "full_component_hessian_G3": true,
+    "published_cartesian_to_PS_SM_state_dictionary": true,
+    "direct_component_label_projection_for_H10_and_Sigmabar126": true,
+    "direct_mass_squared_block_in_complete_nonsusy_potential": true,
+    "full_component_hessian_and_global_vacuum": true,
     "issue_86_closure_artifact": true
   },
   "flag": {
     "physical_CGC_normalization_derived": false,
-    "literature_scale_c_norm_excluded_on_natural_physical_branch": true,
+    "literature_scale_c_norm_excluded_on_natural_physical_branch": false,
     "proxy_c_cgc_190_invalid": true,
+    "old_8p8e29_bound_valid": false,
+    "EFJX_cgc_route_invalidated": true,
+    "direct_tensor_map_constructed": true,
     "CGC_subproblem_closed": false,
     "whole_model_excluded": false,
     "whole_model_validated": false
   },
-  "verdict": "Every literature-scale |c_norm|<=1e6 fails the joint physical-EW naturalness window. Negative portal sign is tachyonic whenever E/F/J/X are cleared at those scales. Positive portal sign can clear E/F/J/X with a PD reduced Hessian only by taking |lambda4| ~ 1e30 above the O(1) naturalness bound. Closing issue #86 still requires an independent tensor derivation of c_norm; it cannot be the proxy ratio ~190."
+  "verdict": "The PR #89 8.8e29 Clebsch no-go is withdrawn because E/F/J/X g is the SO(10) gauge coupling. A direct SO(10)-equivariant 10x126 non-SUSY tensor map with full p,a,omega basis now exists. The complete labeled scalar mass-squared Hessian remains open."
 }

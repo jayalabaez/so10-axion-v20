@@ -1,26 +1,26 @@
 {
-  "blocks": {
-    "E": {
-      "frobenius_norm_GeV": 1.6859860205416382e+16,
-      "linear_in_gamma": true,
-      "n_nonzero_slots": 4
-    },
-    "F": {
-      "frobenius_norm_GeV": 3435545455882066.5,
-      "linear_in_gamma": true,
-      "n_nonzero_slots": 4
-    },
-    "J": {
-      "frobenius_norm_GeV": 3435545455882067.0,
-      "linear_in_gamma": true,
-      "n_nonzero_slots": 6
-    },
-    "X": {
-      "frobenius_norm_GeV": 1.905101986204064e+16,
-      "linear_in_gamma": true,
-      "n_nonzero_slots": 4
-    }
+  "status": "SOURCE_CORRECTED__EFJX_GAUGE_RESPONSE_NOT_GAMMA_RESPONSE",
+  "overall_state": "BLOCKED",
+  "exact_EFJX_gamma_response_known": false,
+  "exact_EFJX_gauge_response_known": true,
+  "parameter": {
+    "paper_symbol": "g",
+    "meaning": "SO(10) gauge coupling",
+    "basis_contains_gauginos": true,
+    "former_python_alias": "gamma",
+    "former_alias_valid": false
   },
-  "exact_EFJX_gamma_response_known": true,
-  "overall_state": "BLOCKED"
+  "blocks": {
+    "E": {"physical_type": "mixed chiral-gauge fermion matrix"},
+    "F": {"physical_type": "mixed chiral-gauge fermion matrix"},
+    "J": {"physical_type": "mixed chiral-gauge fermion matrix"},
+    "X": {"physical_type": "mixed chiral-gauge fermion matrix"}
+  },
+  "replacement": {
+    "direct_tensor": "DIRECT_PHI_H_SIGMABAR_TENSOR_V20.json",
+    "published_gamma_crosscheck": "DIRECT_PHI_H_SIGMABAR_TD_CROSSCHECK_V20.json"
+  },
+  "old_8p8e29_bound_valid": false,
+  "whole_model_validated": false,
+  "whole_model_excluded": false
 }

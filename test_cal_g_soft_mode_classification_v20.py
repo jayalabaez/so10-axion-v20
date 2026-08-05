@@ -1,46 +1,59 @@
 #!/usr/bin/env python3
-"""Tests for cal G soft-mode classification."""
-
-from __future__ import annotations
-
 import unittest
 
 import cal_g_soft_mode_classification_v20 as mod
 
 
-class CalGSoftModeClassificationTests(unittest.TestCase):
+class CalGSourceCorrectionTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.report = mod.build_report()
 
-    def test_status_and_flags(self):
+    def test_withdrawn_fail_closed(self):
+        self.assertEqual(self.report["n_failed"], 0, self.report)
+        self.assertEqual(self.report["overall_state"], "BLOCKED")
         self.assertEqual(
             self.report["status"],
-            "CAL_G_SOFT_MODE_CLASSIFIED__TAU_P_OPEN",
+            "CAL_G_SCALAR_CLASSIFICATION_WITHDRAWN__SUSY_GAUGINO_MATRIX",
         )
-        self.assertEqual(self.report["n_failed"], 0)
+
+    def test_no_scalar_classification(self):
         flags = self.report["flag"]
-        self.assertTrue(flags["cal_G_soft_mode_classified"])
-        self.assertTrue(flags["cal_G_gamma_independent"])
-        self.assertTrue(flags["goldstone_compatible_slice_null5"])
-        self.assertEqual(flags["primary_label"], "residual_flat_or_light_singlet")
-        self.assertFalse(flags["exact_unique_proton_lifetime"])
-        self.assertFalse(flags["whole_model_excluded"])
+        self.assertFalse(flags["cal_G_soft_mode_classified"])
+        self.assertTrue(flags["cal_G_susy_gaugino_diagnostic_only"])
+        self.assertFalse(flags["old_goldstone_classification_valid"])
+        self.assertEqual(
+            flags["primary_label"],
+            "withdrawn_susy_fermion_gaugino_diagnostic",
+        )
 
-    def test_slices(self):
-        gflat = self.report["slices"]["hilbert_goldstone_compatible_M"]
-        hilb = self.report["slices"]["hilbert_generic_M"]
-        self.assertTrue(gflat["chiral_5x5_null"]["ok"])
-        self.assertGreater(gflat["spectrum_6x6"]["lightest_GeV"], 0.0)
-        self.assertGreater(hilb["spectrum_6x6"]["lightest_GeV"], 0.0)
-        self.assertTrue(gflat["classification"]["gamma_independent"])
+    def test_slices_are_withdrawn(self):
+        for row in self.report["slices"].values():
+            self.assertTrue(row["withdrawn"])
+            self.assertFalse(
+                row["classification"][
+                    "physical_scalar_classification_allowed"
+                ]
+            )
 
-    def test_primary(self):
-        prim = self.report["primary_classification"]
-        self.assertEqual(prim["label"], "residual_flat_or_light_singlet")
-        self.assertTrue(prim["soft_vs_null_tol"])
-        self.assertTrue(prim["residual_flat_candidate"])
-        self.assertFalse(prim["goldstone_like"])
+    def test_helpers_preserve_software_compatibility(self):
+        p = mod.hilbert_g_params(
+            a=1.0,
+            omega=1.0,
+            p=1.0,
+            m_i=1.0,
+            m_gut=1.0,
+            lam=0.1,
+            eta=0.1,
+            goldstone_compatible=True,
+        )
+        self.assertIn("diagnostic", p["physical_use"])
+        self.assertTrue(p["goldstone_compatible_requested"])
+
+    def test_no_model_overclaim(self):
+        self.assertFalse(self.report["flag"]["whole_model_validated"])
+        self.assertFalse(self.report["flag"]["whole_model_excluded"])
+        self.assertFalse(self.report["flag"]["exact_unique_proton_lifetime"])
 
 
 if __name__ == "__main__":

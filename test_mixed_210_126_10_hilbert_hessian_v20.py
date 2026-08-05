@@ -1,49 +1,63 @@
 #!/usr/bin/env python3
-"""Tests for mixed 210–126–10 masses at Hilbert VEVs."""
-
-from __future__ import annotations
-
 import unittest
 
 import mixed_210_126_10_hilbert_hessian_v20 as mod
 
 
-class Mixed21012610HilbertHessianTests(unittest.TestCase):
+class MixedHessianSourceCorrectionTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.report = mod.build_report()
 
-    def test_status_and_flags(self):
+    def test_withdrawn_fail_closed(self):
+        self.assertEqual(self.report["n_failed"], 0, self.report)
+        self.assertEqual(self.report["overall_state"], "BLOCKED")
         self.assertEqual(
             self.report["status"],
-            "MIXED_210_126_10_COMPLETE_AT_HILBERT__PQ_NULLS_DOCUMENTED",
+            "MIXED_SUSY_FERMION_MATRICES_WITHDRAWN_FROM_NONSUSY_HESSIAN",
         )
-        self.assertEqual(self.report["n_failed"], 0)
+
+    def test_old_scalar_hessian_claim_is_false(self):
         flags = self.report["flag"]
-        self.assertTrue(flags["mixed_210_126_10_complete"])
-        self.assertTrue(flags["mixed_evaluated_at_hilbert_vevs"])
-        self.assertTrue(flags["cal_T_D_E_F_J_X_G_included"])
-        self.assertTrue(flags["pq_gamma_set_to_zero"])
-        self.assertTrue(flags["pq_null_modes_documented"])
-        self.assertTrue(flags["combined_extended_hessian_pd"])
-        self.assertFalse(flags["live_sarah_or_pyrate_executable_run"])
-        self.assertFalse(flags["exact_unique_proton_lifetime"])
-        self.assertFalse(flags["whole_model_excluded"])
+        self.assertFalse(flags["mixed_210_126_10_complete"])
+        self.assertFalse(flags["cal_T_D_E_F_J_X_G_included_as_scalar_hessian"])
+        self.assertTrue(flags["imported_susy_hessian_withdrawn"])
+        self.assertFalse(flags["combined_extended_hessian_pd"])
+        self.assertFalse(flags["full_sm_irrep_mass_matrices"])
 
-    def test_spectra(self):
-        sp = self.report["mixed_spectra"]
-        self.assertEqual(sp["n_blocks"], 7)
-        self.assertTrue(sp["all_physical_positive"])
-        self.assertGreaterEqual(sp["n_pq_null_modes"], 1)
-        self.assertGreater(sp["n_physical_modes"], 0)
-        self.assertGreater(sp["lightest_GeV"], 0.0)
+    def test_direct_tensor_is_retained(self):
+        self.assertTrue(self.report["flag"]["direct_portal_tensor_available"])
+        self.assertEqual(
+            self.report["direct_tensor_replacement"]["map_shape"], [10, 126]
+        )
+        self.assertTrue(
+            self.report["direct_tensor_replacement"]["analytic_spectrum_derived"]
+        )
 
-    def test_helper_params(self):
+    def test_no_scalar_rows_emitted(self):
+        self.assertTrue(self.report["mixed_spectra"]["withdrawn"])
+        self.assertEqual(self.report["mixed_spectra"]["n_blocks"], 0)
+        self.assertEqual(self.report["hessian_extension"]["n_physical_rows"], 0)
+        self.assertEqual(mod.hessian_rows_from_mixed({}), [])
+
+    def test_helper_is_diagnostic_only(self):
         p = mod.hilbert_matched_params(
-            a=1.0, omega=1.0, p=1.0, m_i=1.0, m_gut=1.0, lam=0.1, eta=0.1
+            a=1.0,
+            omega=1.0,
+            p=1.0,
+            m_i=1.0,
+            m_gut=1.0,
+            lam=0.1,
+            eta=0.1,
         )
         self.assertEqual(p["gamma"], 0.0)
         self.assertTrue(p["pq_gamma_forbidden"])
+        self.assertIn("diagnostic", p["physical_use"])
+
+    def test_no_model_overclaim(self):
+        self.assertFalse(self.report["flag"]["whole_model_validated"])
+        self.assertFalse(self.report["flag"]["whole_model_excluded"])
+        self.assertFalse(self.report["flag"]["exact_unique_proton_lifetime"])
 
 
 if __name__ == "__main__":
