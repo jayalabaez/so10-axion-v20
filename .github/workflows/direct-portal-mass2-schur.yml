@@ -1,0 +1,80 @@
+name: direct-portal-mass2-schur
+
+on:
+  pull_request:
+    paths:
+      - direct_portal_mass2_schur_gate_v20.py
+      - direct_portal_mass2_integration_v20.py
+      - test_direct_portal_mass2_schur_gate_v20.py
+      - test_direct_portal_mass2_integration_v20.py
+      - .github/workflows/direct-portal-mass2-schur.yml
+  workflow_dispatch:
+
+concurrency:
+  group: direct-portal-mass2-schur-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  schur-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      PYTHONHASHSEED: "0"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - run: |
+          python -m compileall -q \
+            direct_portal_mass2_schur_gate_v20.py \
+            direct_portal_mass2_integration_v20.py \
+            test_direct_portal_mass2_schur_gate_v20.py \
+            test_direct_portal_mass2_integration_v20.py
+      - name: Execute exact portal Hessian insertion
+        run: |
+          python direct_portal_mass2_schur_gate_v20.py
+          python direct_portal_mass2_integration_v20.py
+      - name: Run focused theorem and integration tests
+        run: |
+          python -m unittest -v \
+            test_direct_portal_mass2_schur_gate_v20.py \
+            test_direct_portal_mass2_integration_v20.py
+      - name: Assert fail-closed scientific state
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('DIRECT_PORTAL_MASS2_SCHUR_GATE_V20.json'))
+          i=json.load(open('DIRECT_PORTAL_MASS2_INTEGRATION_V20.json'))
+          assert r['n_failed']==0, r
+          assert r['overall_state']=='BLOCKED', r
+          assert r['mass2_interpretation']['B_shape']==[10,126], r
+          assert r['mass2_interpretation']['real_hessian_shape']==[272,272], r
+          assert r['flags']['direct_portal_mass2_block_constructed'], r
+          assert r['flags']['exact_schur_positivity_gate_derived'], r
+          assert r['flags']['doublet_alignment_escape_surfaces_identified'], r
+          assert r['flags']['historical_generic_probe_requires_alignment_or_larger_diagonal_mass'], r
+          assert not r['flags']['full_nonsusy_diagonal_component_hessian_supplied'], r
+          assert not r['flags']['full_component_hessian_complete'], r
+          assert not r['flags']['historical_lambda4_full_model_excluded'], r
+          assert not r['flags']['whole_model_validated'], r
+          assert not r['flags']['whole_model_excluded'], r
+          assert i['n_failed']==0 and i['overall_state']=='BLOCKED', i
+          assert i['flags']['direct_portal_component_mass_squared_insertion_closed'], i
+          assert not i['flags']['full_nonsusy_diagonal_component_hessian_supplied'], i
+          assert not i['flags']['full_component_hessian_complete'], i
+          assert not i['conditional_historical_diagnostic']['full_model_exclusion'], i
+          assert not i['flags']['whole_model_validated'], i
+          assert not i['flags']['whole_model_excluded'], i
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: direct-portal-mass2-schur
+          path: |
+            DIRECT_PORTAL_MASS2_SCHUR_GATE_V20.json
+            DIRECT_PORTAL_MASS2_SCHUR_GATE_V20.md
+            DIRECT_PORTAL_MASS2_INTEGRATION_V20.json
+            DIRECT_PORTAL_MASS2_INTEGRATION_V20.md
