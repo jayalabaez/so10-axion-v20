@@ -1,0 +1,53 @@
+name: partial-g6-threshold-spectrum
+
+on:
+  pull_request:
+    paths:
+      - partial_g6_threshold_spectrum_certificate_v20.py
+      - test_partial_g6_threshold_spectrum_certificate_v20.py
+      - filled_mass_ps_sm_irrep_spectrum_v20.py
+      - off_singlet_210_fluctuation_cg_v20.py
+      - exact_xy_masses_component_vacuum_v20.py
+      - .github/workflows/partial-g6-threshold-spectrum.yml
+  workflow_dispatch:
+
+concurrency:
+  group: partial-g6-threshold-spectrum-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  partial-g6-threshold-spectrum:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Execute partial G6 certificate
+        run: python partial_g6_threshold_spectrum_certificate_v20.py --write
+      - name: Focused regression tests
+        run: python -m unittest -v test_partial_g6_threshold_spectrum_certificate_v20.py
+      - name: Assert honest scientific scope
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('PARTIAL_G6_THRESHOLD_SPECTRUM_CERTIFICATE_V20.json'))
+          assert r['status']=='PARTIAL_G6_THRESHOLD_SPECTRUM_CERTIFIED__MIXED_CG_OPEN'
+          assert r['n_failed']==0
+          assert r['overall_state']=='BLOCKED'
+          assert r['flags']['partial_g6_threshold_spectrum_bundled']
+          assert not r['flags']['mode_by_mode_cg_splitting']
+          assert not r['flags']['whole_model_validated']
+          PY
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: partial-g6-threshold-spectrum
+          path: |
+            PARTIAL_G6_THRESHOLD_SPECTRUM_CERTIFICATE_V20.json
+            PARTIAL_G6_THRESHOLD_SPECTRUM_CERTIFICATE_V20.md

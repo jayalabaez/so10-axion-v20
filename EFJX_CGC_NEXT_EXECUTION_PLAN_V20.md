@@ -190,7 +190,9 @@ isotropic A/C seeds. `scalar_theory_closure_ledger_v20.py` scores G1–G8.
 from the reduced `P_210` curvature (radial + Aulakh cubics) at `hEW=174`.
 `scoped_bfb_boundedness_gate_v20.py` aggregates reduced-quartic BFB, Schur
 PD, and the Goldstone+axion-projected skeleton. Closure ledger:
-**0 CLOSED / 4 PARTIAL (G2–G5) / 4 OPEN**. Theory remains **BLOCKED**.
+**0 CLOSED / 5 PARTIAL (G2–G6) / 3 OPEN**. Theory remains **BLOCKED**.
+(Historical note at PS-singlet fill time was 4 PARTIAL / 4 OPEN; G6 later
+advanced via the published threshold bundle.)
 
 ## Completed (210⊗210)→54 and →45 combinatorial projectors
 
@@ -281,12 +283,27 @@ adjoint activity (Cartan only — no Young CG). Empirically all modes are
 Q-charged under the activity cut; most are cross-sector dominant. Status
 `PARTIAL_SM_QUANTUM_NUMBERS_READY`; CG coefficients remain OPEN.
 
+## Completed Schur↔form portal ID + ring scaffold + partial G6
+
+`schur_form_basis_portal_identification_v20.py` proves Schur 272 portal
+blocks equal form-738 pullback/2 (`EᵀE=2I`); 724 omits Im H; spectators
+outside Schur support. Cartesian portal basis map CLOSED for shared B.
+
+`charge_allowed_invariant_ring_scaffold_v20.py` emits
+`FULL_MIXED_REP_INVARIANT_RING_V20.json` (scaffold; independence OPEN;
+cg_ready READY/PARTIAL/MISSING; no invented CG).
+
+`partial_g6_threshold_spectrum_certificate_v20.py` bundles isotropic PS
+multiplicities + Aulakh Table-1/R + Susyno gauge UV. Ledger G6 → PARTIAL.
+Closure scoreboard: **0 CLOSED / 5 PARTIAL (G2–G6) / 3 OPEN**.
+
 ## Correct next goal
 
 Theory completion still requires transcribed CG for 120/320/1050/4125 and
 off-singlet mixed-45 **CG coefficients** (G1), mode-by-mode diagonals (G2),
 complete stationarity/hierarchy (G3), the full dynamical Hessian artifact
-(G4), then global BFB, thresholds, two-loop RGE, and unique τ_p (G5–G8).
+(G4), full-ring BFB (G5), complete thresholds from full M² (G6), then
+two-loop RGE and unique τ_p (G7–G8).
 Do not invent missing CG and do not reopen a reduced-sector phase hunt.
 
 ## Executable sequence
@@ -296,9 +313,9 @@ Do not invent missing CG and do not reopen a reduced-sector phase hunt.
    - Prove linear independence and record Hermitian-conjugation conventions.
    - Transcribe missing CG tensors (especially 120, 320, 1050, 4125) into the Cartesian basis.
    - Prefer operators with nonzero tensor projection on the actual `(Delta_R,hEW,S,Phi)` vacuum for phase locking.
-   - Next without invented tables: Schur↔form portal basis identification;
-     charge-allowed ring scaffold toward `FULL_MIXED_REP_INVARIANT_RING_V20.json`;
-     partial G6 threshold spectrum from published Aulakh/Susyno formulae.
+   - Next without invented tables: ring linear-independence certificates on
+     charge-allowed subspaces; any remaining vacuum-projected mixed channels
+     with published CG only.
 
 2. **Full component projection**
    - Project every invariant into canonical Pati-Salam and Standard Model component fields.

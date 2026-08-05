@@ -1,0 +1,1500 @@
+{
+  "status": "CHARGE_ALLOWED_INVARIANT_RING_SCAFFOLD_READY__CG_OPEN",
+  "overall_state": "BLOCKED",
+  "n_checks": 9,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "inventory_green": true,
+    "mixed10_green": true,
+    "operators_nonempty": true,
+    "has_ready_portal": true,
+    "has_missing_cg_slots": true,
+    "engineering_dim_cap": true,
+    "independence_not_faked": true,
+    "cg_not_invented": true,
+    "whole_model_not_overclaimed": true
+  },
+  "ring_artifact": "FULL_MIXED_REP_INVARIANT_RING_V20.json",
+  "summary": {
+    "n_operators": 51,
+    "n_charge_allowed_or_channel": 44,
+    "n_forbidden": 7,
+    "n_cg_ready": 3,
+    "n_cg_partial": 32,
+    "n_cg_missing": 16
+  },
+  "independence": {
+    "status": "OPEN",
+    "proven_basis_size": null,
+    "note": "Scaffold does not prove linear independence of the ring"
+  },
+  "cartesian_slots_summary": {
+    "n_open_slots": 17,
+    "n_slots": 18
+  },
+  "flags": {
+    "full_invariant_ring_complete": false,
+    "ring_scaffold_ready": true,
+    "cg_120_320_1050_4125_invented": false,
+    "whole_model_validated": false,
+    "whole_model_excluded": false
+  },
+  "remaining_blockers": {
+    "linear_independence_proof": true,
+    "missing_cg_120_320_1050_4125": true,
+    "full_nonsusy_vacuum_hessian": true
+  },
+  "ring": {
+    "status": "FULL_MIXED_REP_INVARIANT_RING_SCAFFOLD_READY__CG_OPEN",
+    "overall_state": "BLOCKED",
+    "engineering_dim_max": 6,
+    "hc_convention": "Operators stored as monomials with explicit _dag counts. Holomorphic portals enter the potential as (term + h.c.). Self-adjoint norms are Hermitian by construction.",
+    "operators": [
+      {
+        "id": "Z17_000",
+        "source": "nonsusy_z17_pq_potential_filter",
+        "name": "10_H^dag 10_H",
+        "counts": {
+          "10_H_dag": 1,
+          "10_H": 1
+        },
+        "dim": 2,
+        "charge_status": "ALLOWED",
+        "charge_totals": {
+          "PQ": 0,
+          "X": 0,
+          "Z17": 0
+        },
+        "charge_allowed": {
+          "PQ": true,
+          "X": true,
+          "Z17": true,
+          "all": true
+        },
+        "so10_invariant_exists": true,
+        "feeds_triplet_mass": true,
+        "note": "quadratic norm",
+        "cg_in_repo": "PARTIAL_EXISTENCE",
+        "hc": "self_adjoint",
+        "slot": null,
+        "cg_ready": "PARTIAL"
+      },
+      {
+        "id": "Z17_001",
+        "source": "nonsusy_z17_pq_potential_filter",
+        "name": "126bar_H^dag 126bar_H",
+        "counts": {
+          "126bar_H_dag": 1,
+          "126bar_H": 1
+        },
+        "dim": 2,
+        "charge_status": "ALLOWED",
+        "charge_totals": {
+          "PQ": 0,
+          "X": 0,
+          "Z17": 0
+        },
+        "charge_allowed": {
+          "PQ": true,
+          "X": true,
+          "Z17": true,
+          "all": true
+        },
+        "so10_invariant_exists": true,
+        "feeds_triplet_mass": true,
+        "note": "quadratic norm",
+        "cg_in_repo": "PARTIAL_EXISTENCE",
+        "hc": "self_adjoint",
+        "slot": null,
+        "cg_ready": "PARTIAL"
+      },
+      {
+        "id": "Z17_002",
+        "source": "nonsusy_z17_pq_potential_filter",
+        "name": "210_H^dag 210_H",
+        "counts": {
+          "210_H_dag": 1,
+          "210_H": 1
+        },
+        "dim": 2,
+        "charge_status": "ALLOWED",
+        "charge_totals": {
+          "PQ": 0,
+          "X": 0,
+          "Z17": 0
+        },
+        "charge_allowed": {
+          "PQ": true,
+          "X": true,
+          "Z17": true,
+          "all": true
+        },
+        "so10_invariant_exists": true,
+        "feeds_triplet_mass": false,
+        "note": "quadratic norm",
+        "cg_in_repo": "PARTIAL_EXISTENCE",
+        "hc": "self_adjoint",
+        "slot": null,
+        "cg_ready": "PARTIAL"
+      },
+      {
+        "id": "Z17_003",
+        "source": "nonsusy_z17_pq_potential_filter",
+        "name": "S^dag S",
+        "counts": {
+          "S_dag": 1,
+          "S": 1
+        },
+        "dim": 2,
+        "charge_status": "ALLOWED",
+        "charge_totals": {
+          "PQ": 0,
+          "X": 0,
+          "Z17": 0
+        },
+        "charge_allowed": {
+          "PQ": true,
+          "X": true,
+          "Z17": true,
+          "all": true
+        },
+        "so10_invariant_exists": true,
+        "feeds_triplet_mass": false,
+        "note": "quadratic norm",
+        "cg_in_repo": "PARTIAL_EXISTENCE",
+        "hc": "self_adjoint",
+        "slot": null,
+        "cg_ready": "PARTIAL"
+      },
+      {
+        "id": "Z17_004",
+        "source": "nonsusy_z17_pq_potential_filter",
+        "name": "Phi17^dag Phi17",
+        "counts": {
+          "Phi17_dag": 1,
+          "Phi17": 1
+        },
+        "dim": 2,
+        "charge_status": "ALLOWED",
+        "charge_totals": {
+          "PQ": 0,
+          "X": 0,
+          "Z17": 0
+        },
+        "charge_allowed": {
+          "PQ": true,
+          "X": true,
+          "Z17": true,
+          "all": true
+        },
+        "so10_invariant_exists": true,
+        "feeds_triplet_mass": false,
+        "note": "quadratic norm",
+        "cg_in_repo": "PARTIAL_EXISTENCE",
+        "hc": "self_adjoint",
+        "slot": null,
+        "cg_ready": "PARTIAL"
+      },
+      {
+        "id": "Z17_005",
+        "source": "nonsusy_z17_pq_potential_filter",
+        "name": "210_H^3",
+        "counts": {
+          "210_H": 3
+        },
+        "dim": 3,
+        "charge_status": "ALLOWED",
+        "charge_totals": {
+          "PQ": 0,
+          "X": 0,
+          "Z17": 0
+        },
+        "charge_allowed": {
+          "PQ": true,
+          "X": true,
+          "Z17": true,
+          "all": true
+        },
+        "so10_invariant_exists": true,
+        "feeds_triplet_mass": false,
+        "note": "one channel independently guaranteed; complete multiplicity open",
+        "cg_in_repo": "PARTIAL_EXISTENCE",
+        "hc": "plus_hc",
+        "slot": null,
+        "cg_ready": "PARTIAL"
+      },
+      {
+        "id": "Z17_006",
+        "source": "nonsusy_z17_pq_potential_filter",
+        "name": "210_H 10_H^dag 10_H",
+        "counts": {
+          "210_H": 1,
+          "10_H_dag": 1,
+          "10_H": 1
+        },
+        "dim": 3,
+        "charge_status": "SO10_FORBIDDEN",
+        "charge_totals": {
+          "PQ": 0,
+          "X": 0,
+          "Z17": 0
+        },
+        "charge_allowed": {
+          "PQ": true,
+          "X": true,
+          "Z17": true,
+          "all": true
+        },
+        "so10_invariant_exists": false,
+        "feeds_triplet_mass": true,
+        "note": "FORBIDDEN: 10 tensor 10 contains 1+45+54 and no 210",
+        "cg_in_repo": "MISSING",
+        "hc": "self_adjoint_or_plus_hc",
+        "slot": null,
+        "cg_ready": "MISSING"
+      },
+      {
+        "id": "Z17_007",
+        "source": "nonsusy_z17_pq_potential_filter",
+        "name": "210_H 126bar_H^dag 126bar_H",
+        "counts": {
+          "210_H": 1,
+          "126bar_H_dag": 1,
+          "126bar_H": 1
+        },
+        "dim": 3,
+        "charge_status": "ALLOWED",
+        "charge_totals": {
+          "PQ": 0,
+          "X": 0,
+          "Z17": 0
+        },
+        "charge_allowed": {
+          "PQ": true,
+          "X": true,
+          "Z17": true,
+          "all": true
+        },
+        "so10_invariant_exists": true,
+        "feeds_triplet_mass": true,
+        "note": "one channel independently guaranteed; complete multiplicity open",
+        "cg_in_repo": "PARTIAL_EXISTENCE",
+        "hc": "self_adjoint_or_plus_hc",
+        "slot": null,
+        "cg_ready": "PARTIAL"
+      },
+      {
+        "id": "Z17_008",
+        "source": "nonsusy_z17_pq_potential_filter",
+        "name": "bare_10_H^2",
+        "counts": {
+          "10_H": 2
+        },
+        "dim": 2,
+        "charge_status": "CHARGE_FORBIDDEN",
+        "charge_totals": {
+          "PQ": -4,
+          "X": -4,
+          "Z17": 13
+        },
+        "charge_allowed": {
+          "PQ": false,
+          "X": false,
+          "Z17": false,
+          "all": false
+        },
+        "so10_invariant_exists": true,
+        "feeds_triplet_mass": true,
+        "note": "SO(10)-allowed but PQ-forbidden",
+        "cg_in_repo": "MISSING",
+        "hc": "plus_hc",
+        "slot": null,
+        "cg_ready": "MISSING"
+      },
+      {
+        "id": "Z17_009",
+        "source": "nonsusy_z17_pq_potential_filter",
+        "name": "10_H^2 S",
+        "counts": {
+          "10_H": 2,
+          "S": 1
+        },
+        "dim": 3,
+        "charge_status": "ALLOWED",
+        "charge_totals": {
+          "PQ": 0,
+          "X": 0,
+          "Z17": 0
+        },
+        "charge_allowed": {
+          "PQ": true,
+          "X": true,
+          "Z17": true,
+          "all": true
+        },
+        "so10_invariant_exists": true,
+        "feeds_triplet_mass": true,
+        "note": "PQ-safe within-10 mixing",
+        "cg_in_repo": "PARTIAL_EXISTENCE",
+        "hc": "plus_hc",
+        "slot": null,
+        "cg_ready": "PARTIAL"
+      },
+      {
+        "id": "Z17_010",
+        "source": "nonsusy_z17_pq_potential_filter",
+        "name": "bare_126bar_H^2",
+        "counts": {
+          "126bar_H": 2
+        },
+        "dim": 2,
+        "charge_status": "CHARGE_FORBIDDEN",
+        "charge_totals": {
+          "PQ": -4,
+          "X": -4,
+          "Z17": 13
+        },
+        "charge_allowed": {
+          "PQ": false,
+          "X": false,
+          "Z17": false,
+          "all": false
+        },
+        "so10_invariant_exists": false,
+        "feeds_triplet_mass": true,
+        "note": "no singlet in (126bar)^2",
+        "cg_in_repo": "MISSING",
+        "hc": "plus_hc",
+        "slot": null,
+        "cg_ready": "MISSING"
+      },
+      {
+        "id": "Z17_011",
+        "source": "nonsusy_z17_pq_potential_filter",
+        "name": "126bar_H^2 S",
+        "counts": {
+          "126bar_H": 2,
+          "S": 1
+        },
+        "dim": 3,
+        "charge_status": "SO10_FORBIDDEN",
+        "charge_totals": {
+          "PQ": 0,
+          "X": 0,
+          "Z17": 0
+        },
+        "charge_allowed": {
+          "PQ": true,
+          "X": true,
+          "Z17": true,
+          "all": true
+        },
+        "so10_invariant_exists": false,
+        "feeds_triplet_mass": true,
+        "note": "no singlet in (126bar)^2",
+        "cg_in_repo": "MISSING",
+        "hc": "plus_hc",
+        "slot": null,
+        "cg_ready": "MISSING"
+      },
+      {
+        "id": "Z17_012",
+        "source": "nonsusy_z17_pq_potential_filter",
+        "name": "10_H 126bar_H S",
+        "counts": {
+          "10_H": 1,
+          "126bar_H": 1,
+          "S": 1
+        },
+        "dim": 3,
+        "charge_status": "SO10_FORBIDDEN",
+        "charge_totals": {
+          "PQ": 0,
+          "X": 0,
+          "Z17": 0
+        },
+        "charge_allowed": {
+          "PQ": true,
+          "X": true,
+          "Z17": true,
+          "all": true
+        },
+        "so10_invariant_exists": false,
+        "feeds_triplet_mass": true,
+        "note": "10 tensor 126bar has no singlet",
+        "cg_in_repo": "MISSING",
+        "hc": "plus_hc",
+        "slot": null,
+        "cg_ready": "MISSING"
+      },
+      {
+        "id": "Z17_013",
+        "source": "nonsusy_z17_pq_potential_filter",
+        "name": "S^3",
+        "counts": {
+          "S": 3
+        },
+        "dim": 3,
+        "charge_status": "CHARGE_FORBIDDEN",
+        "charge_totals": {
+          "PQ": 12,
+          "X": 12,
+          "Z17": 12
+        },
+        "charge_allowed": {
+          "PQ": false,
+          "X": false,
+          "Z17": false,
+          "all": false
+        },
+        "so10_invariant_exists": true,
+        "feeds_triplet_mass": false,
+        "note": "charge-forbidden",
+        "cg_in_repo": "MISSING",
+        "hc": "plus_hc",
+        "slot": null,
+        "cg_ready": "MISSING"
+      },
+      {
+        "id": "Z17_014",
+        "source": "nonsusy_z17_pq_potential_filter",
+        "name": "Phi17^3",
+        "counts": {
+          "Phi17": 3
+        },
+        "dim": 3,
+        "charge_status": "CHARGE_FORBIDDEN",
+        "charge_totals": {
+          "PQ": 0,
+          "X": 51,
+          "Z17": 0
+        },
+        "charge_allowed": {
+          "PQ": true,
+          "X": false,
+          "Z17": true,
+          "all": false
+        },
+        "so10_invariant_exists": true,
+        "feeds_triplet_mass": false,
+        "note": "X-forbidden",
+        "cg_in_repo": "MISSING",
+        "hc": "plus_hc",
+        "slot": null,
+        "cg_ready": "MISSING"
+      },
+      {
+        "id": "Z17_015",
+        "source": "nonsusy_z17_pq_potential_filter",
+        "name": "210_H^4",
+        "counts": {
+          "210_H": 4
+        },
+        "dim": 4,
+        "charge_status": "ALLOWED",
+        "charge_totals": {
+          "PQ": 0,
+          "X": 0,
+          "Z17": 0
+        },
+        "charge_allowed": {
+          "PQ": true,
+          "X": true,
+          "Z17": true,
+          "all": true
+        },
+        "so10_invariant_exists": true,
+        "feeds_triplet_mass": false,
+        "note": "multiple contractions; multiplicity open",
+        "cg_in_repo": "PARTIAL_EXISTENCE",
+        "hc": "plus_hc",
+        "slot": null,
+        "cg_ready": "PARTIAL"
+      },
+      {
+        "id": "Z17_016",
+        "source": "nonsusy_z17_pq_potential_filter",
+        "name": "(10_H^dag 10_H)^2",
+        "counts": {
+          "10_H_dag": 2,
+          "10_H": 2
+        },
+        "dim": 4,
+        "charge_status": "ALLOWED",
+        "charge_totals": {
+          "PQ": 0,
+          "X": 0,
+          "Z17": 0
+        },
+        "charge_allowed": {
+          "PQ": true,
+          "X": true,
+          "Z17": true,
+          "all": true
+        },
+        "so10_invariant_exists": true,
+        "feeds_triplet_mass": true,
+        "note": "at least two independent channels",
+        "cg_in_repo": "PARTIAL_EXISTENCE",
+        "hc": "self_adjoint",
+        "slot": null,
+        "cg_ready": "PARTIAL"
+      },
+      {
+        "id": "Z17_017",
+        "source": "nonsusy_z17_pq_potential_filter",
+        "name": "(126bar_H^dag 126bar_H)^2",
+        "counts": {
+          "126bar_H_dag": 2,
+          "126bar_H": 2
+        },
+        "dim": 4,
+        "charge_status": "ALLOWED",
+        "charge_totals": {
+          "PQ": 0,
+          "X": 0,
+          "Z17": 0
+        },
+        "charge_allowed": {
+          "PQ": true,
+          "X": true,
+          "Z17": true,
+          "all": true
+        },
+        "so10_invariant_exists": true,
+        "feeds_triplet_mass": true,
+        "note": "at least two independent channels",
+        "cg_in_repo": "PARTIAL_EXISTENCE",
+        "hc": "self_adjoint",
+        "slot": null,
+        "cg_ready": "PARTIAL"
+      },
+      {
+        "id": "Z17_018",
+        "source": "nonsusy_z17_pq_potential_filter",
+        "name": "10_H^dag 10_H 126bar_H^dag 126bar_H",
+        "counts": {
+          "10_H_dag": 1,
+          "10_H": 1,
+          "126bar_H_dag": 1,
+          "126bar_H": 1
+        },
+        "dim": 4,
+        "charge_status": "ALLOWED",
+        "charge_totals": {
+          "PQ": 0,
+          "X": 0,
+          "Z17": 0
+        },
+        "charge_allowed": {
+          "PQ": true,
+          "X": true,
+          "Z17": true,
+          "all": true
+        },
+        "so10_invariant_exists": true,
+        "feeds_triplet_mass": true,
+        "note": "at least two independent channels",
+        "cg_in_repo": "PARTIAL_EXISTENCE",
+        "hc": "self_adjoint",
+        "slot": null,
+        "cg_ready": "PARTIAL"
+      },
+      {
+        "id": "Z17_019",
+        "source": "nonsusy_z17_pq_potential_filter",
+        "name": "210_H^dag 210_H 10_H^dag 10_H",
+        "counts": {
+          "210_H_dag": 1,
+          "210_H": 1,
+          "10_H_dag": 1,
+          "10_H": 1
+        },
+        "dim": 4,
+        "charge_status": "ALLOWED",
+        "charge_totals": {
+          "PQ": 0,
+          "X": 0,
+          "Z17": 0
+        },
+        "charge_allowed": {
+          "PQ": true,
+          "X": true,
+          "Z17": true,
+          "all": true
+        },
+        "so10_invariant_exists": true,
+        "feeds_triplet_mass": true,
+        "note": "allowed quartic replacement for forbidden linear-210 cubic",
+        "cg_in_repo": "PARTIAL_EXISTENCE",
+        "hc": "self_adjoint",
+        "slot": null,
+        "cg_ready": "PARTIAL"
+      },
+      {
+        "id": "Z17_020",
+        "source": "nonsusy_z17_pq_potential_filter",
+        "name": "210_H^dag 210_H 126bar_H^dag 126bar_H",
+        "counts": {
+          "210_H_dag": 1,
+          "210_H": 1,
+          "126bar_H_dag": 1,
+          "126bar_H": 1
+        },
+        "dim": 4,
+        "charge_status": "ALLOWED",
+        "charge_totals": {
+          "PQ": 0,
+          "X": 0,
+          "Z17": 0
+        },
+        "charge_allowed": {
+          "PQ": true,
+          "X": true,
+          "Z17": true,
+          "all": true
+        },
+        "so10_invariant_exists": true,
+        "feeds_triplet_mass": true,
+        "note": "at least two independent channels",
+        "cg_in_repo": "PARTIAL_EXISTENCE",
+        "hc": "self_adjoint",
+        "slot": null,
+        "cg_ready": "PARTIAL"
+      },
+      {
+        "id": "Z17_021",
+        "source": "nonsusy_z17_pq_potential_filter",
+        "name": "|S|^2 |10_H|^2",
+        "counts": {
+          "S_dag": 1,
+          "S": 1,
+          "10_H_dag": 1,
+          "10_H": 1
+        },
+        "dim": 4,
+        "charge_status": "ALLOWED",
+        "charge_totals": {
+          "PQ": 0,
+          "X": 0,
+          "Z17": 0
+        },
+        "charge_allowed": {
+          "PQ": true,
+          "X": true,
+          "Z17": true,
+          "all": true
+        },
+        "so10_invariant_exists": true,
+        "feeds_triplet_mass": true,
+        "note": "norm portal",
+        "cg_in_repo": "PARTIAL_EXISTENCE",
+        "hc": "self_adjoint",
+        "slot": null,
+        "cg_ready": "PARTIAL"
+      },
+      {
+        "id": "Z17_022",
+        "source": "nonsusy_z17_pq_potential_filter",
+        "name": "|S|^2 |126bar_H|^2",
+        "counts": {
+          "S_dag": 1,
+          "S": 1,
+          "126bar_H_dag": 1,
+          "126bar_H": 1
+        },
+        "dim": 4,
+        "charge_status": "ALLOWED",
+        "charge_totals": {
+          "PQ": 0,
+          "X": 0,
+          "Z17": 0
+        },
+        "charge_allowed": {
+          "PQ": true,
+          "X": true,
+          "Z17": true,
+          "all": true
+        },
+        "so10_invariant_exists": true,
+        "feeds_triplet_mass": true,
+        "note": "norm portal",
+        "cg_in_repo": "PARTIAL_EXISTENCE",
+        "hc": "self_adjoint",
+        "slot": null,
+        "cg_ready": "PARTIAL"
+      },
+      {
+        "id": "Z17_023",
+        "source": "nonsusy_z17_pq_potential_filter",
+        "name": "|Phi17|^2 |S|^2",
+        "counts": {
+          "Phi17_dag": 1,
+          "Phi17": 1,
+          "S_dag": 1,
+          "S": 1
+        },
+        "dim": 4,
+        "charge_status": "ALLOWED",
+        "charge_totals": {
+          "PQ": 0,
+          "X": 0,
+          "Z17": 0
+        },
+        "charge_allowed": {
+          "PQ": true,
+          "X": true,
+          "Z17": true,
+          "all": true
+        },
+        "so10_invariant_exists": true,
+        "feeds_triplet_mass": false,
+        "note": "hierarchy portal",
+        "cg_in_repo": "PARTIAL_EXISTENCE",
+        "hc": "self_adjoint",
+        "slot": null,
+        "cg_ready": "PARTIAL"
+      },
+      {
+        "id": "Z17_024",
+        "source": "nonsusy_z17_pq_potential_filter",
+        "name": "(S^dag S)^2",
+        "counts": {
+          "S_dag": 2,
+          "S": 2
+        },
+        "dim": 4,
+        "charge_status": "ALLOWED",
+        "charge_totals": {
+          "PQ": 0,
+          "X": 0,
+          "Z17": 0
+        },
+        "charge_allowed": {
+          "PQ": true,
+          "X": true,
+          "Z17": true,
+          "all": true
+        },
+        "so10_invariant_exists": true,
+        "feeds_triplet_mass": false,
+        "note": "self quartic",
+        "cg_in_repo": "PARTIAL_EXISTENCE",
+        "hc": "self_adjoint",
+        "slot": null,
+        "cg_ready": "PARTIAL"
+      },
+      {
+        "id": "Z17_025",
+        "source": "nonsusy_z17_pq_potential_filter",
+        "name": "(Phi17^dag Phi17)^2",
+        "counts": {
+          "Phi17_dag": 2,
+          "Phi17": 2
+        },
+        "dim": 4,
+        "charge_status": "ALLOWED",
+        "charge_totals": {
+          "PQ": 0,
+          "X": 0,
+          "Z17": 0
+        },
+        "charge_allowed": {
+          "PQ": true,
+          "X": true,
+          "Z17": true,
+          "all": true
+        },
+        "so10_invariant_exists": true,
+        "feeds_triplet_mass": false,
+        "note": "self quartic",
+        "cg_in_repo": "PARTIAL_EXISTENCE",
+        "hc": "self_adjoint",
+        "slot": null,
+        "cg_ready": "PARTIAL"
+      },
+      {
+        "id": "Z17_026",
+        "source": "nonsusy_z17_pq_potential_filter",
+        "name": "210_H^dag 210_H S^dag S",
+        "counts": {
+          "210_H_dag": 1,
+          "210_H": 1,
+          "S_dag": 1,
+          "S": 1
+        },
+        "dim": 4,
+        "charge_status": "ALLOWED",
+        "charge_totals": {
+          "PQ": 0,
+          "X": 0,
+          "Z17": 0
+        },
+        "charge_allowed": {
+          "PQ": true,
+          "X": true,
+          "Z17": true,
+          "all": true
+        },
+        "so10_invariant_exists": true,
+        "feeds_triplet_mass": false,
+        "note": "norm portal",
+        "cg_in_repo": "PARTIAL_EXISTENCE",
+        "hc": "self_adjoint",
+        "slot": null,
+        "cg_ready": "PARTIAL"
+      },
+      {
+        "id": "Z17_027",
+        "source": "nonsusy_z17_pq_potential_filter",
+        "name": "210_H^dag 210_H Phi17^dag Phi17",
+        "counts": {
+          "210_H_dag": 1,
+          "210_H": 1,
+          "Phi17_dag": 1,
+          "Phi17": 1
+        },
+        "dim": 4,
+        "charge_status": "ALLOWED",
+        "charge_totals": {
+          "PQ": 0,
+          "X": 0,
+          "Z17": 0
+        },
+        "charge_allowed": {
+          "PQ": true,
+          "X": true,
+          "Z17": true,
+          "all": true
+        },
+        "so10_invariant_exists": true,
+        "feeds_triplet_mass": false,
+        "note": "norm portal",
+        "cg_in_repo": "PARTIAL_EXISTENCE",
+        "hc": "self_adjoint",
+        "slot": null,
+        "cg_ready": "PARTIAL"
+      },
+      {
+        "id": "Z17_028",
+        "source": "nonsusy_z17_pq_potential_filter",
+        "name": "|Phi17|^2 |10_H|^2",
+        "counts": {
+          "Phi17_dag": 1,
+          "Phi17": 1,
+          "10_H_dag": 1,
+          "10_H": 1
+        },
+        "dim": 4,
+        "charge_status": "ALLOWED",
+        "charge_totals": {
+          "PQ": 0,
+          "X": 0,
+          "Z17": 0
+        },
+        "charge_allowed": {
+          "PQ": true,
+          "X": true,
+          "Z17": true,
+          "all": true
+        },
+        "so10_invariant_exists": true,
+        "feeds_triplet_mass": true,
+        "note": "norm portal",
+        "cg_in_repo": "PARTIAL_EXISTENCE",
+        "hc": "self_adjoint",
+        "slot": null,
+        "cg_ready": "PARTIAL"
+      },
+      {
+        "id": "Z17_029",
+        "source": "nonsusy_z17_pq_potential_filter",
+        "name": "|Phi17|^2 |126bar_H|^2",
+        "counts": {
+          "Phi17_dag": 1,
+          "Phi17": 1,
+          "126bar_H_dag": 1,
+          "126bar_H": 1
+        },
+        "dim": 4,
+        "charge_status": "ALLOWED",
+        "charge_totals": {
+          "PQ": 0,
+          "X": 0,
+          "Z17": 0
+        },
+        "charge_allowed": {
+          "PQ": true,
+          "X": true,
+          "Z17": true,
+          "all": true
+        },
+        "so10_invariant_exists": true,
+        "feeds_triplet_mass": true,
+        "note": "norm portal",
+        "cg_in_repo": "PARTIAL_EXISTENCE",
+        "hc": "self_adjoint",
+        "slot": null,
+        "cg_ready": "PARTIAL"
+      },
+      {
+        "id": "Z17_030",
+        "source": "nonsusy_z17_pq_potential_filter",
+        "name": "210 \u00b7 10 \u00b7 126 \u00b7 S",
+        "counts": {
+          "210_H": 1,
+          "10_H": 1,
+          "126bar_H": 1,
+          "S": 1
+        },
+        "dim": 4,
+        "charge_status": "ALLOWED",
+        "charge_totals": {
+          "PQ": 0,
+          "X": 0,
+          "Z17": 0
+        },
+        "charge_allowed": {
+          "PQ": true,
+          "X": true,
+          "Z17": true,
+          "all": true
+        },
+        "so10_invariant_exists": true,
+        "feeds_triplet_mass": true,
+        "note": "lambda4 odd-H portal; CG normalization remains open",
+        "cg_in_repo": "PRESENT_DIRECT_TENSOR",
+        "hc": "plus_hc",
+        "slot": null,
+        "cg_ready": "READY"
+      },
+      {
+        "id": "Z17_031",
+        "source": "nonsusy_z17_pq_potential_filter",
+        "name": "126bar_H^2 10_H^2 S^2",
+        "counts": {
+          "126bar_H": 2,
+          "10_H": 2,
+          "S": 2
+        },
+        "dim": 6,
+        "charge_status": "CHARGE_OK_SO10_OPEN",
+        "charge_totals": {
+          "PQ": 0,
+          "X": 0,
+          "Z17": 0
+        },
+        "charge_allowed": {
+          "PQ": true,
+          "X": true,
+          "Z17": true,
+          "all": true
+        },
+        "so10_invariant_exists": "LITERATURE_CLAIMED",
+        "feeds_triplet_mass": false,
+        "note": "phase-sensitive locking operator",
+        "cg_in_repo": "PARTIAL_EXISTENCE",
+        "hc": "plus_hc",
+        "slot": null,
+        "cg_ready": "PARTIAL"
+      },
+      {
+        "id": "Z17_032",
+        "source": "nonsusy_z17_pq_potential_filter",
+        "name": "|126bar_H|^2 |10_H|^2 |S|^2",
+        "counts": {
+          "126bar_H_dag": 1,
+          "126bar_H": 1,
+          "10_H_dag": 1,
+          "10_H": 1,
+          "S_dag": 1,
+          "S": 1
+        },
+        "dim": 6,
+        "charge_status": "ALLOWED",
+        "charge_totals": {
+          "PQ": 0,
+          "X": 0,
+          "Z17": 0
+        },
+        "charge_allowed": {
+          "PQ": true,
+          "X": true,
+          "Z17": true,
+          "all": true
+        },
+        "so10_invariant_exists": true,
+        "feeds_triplet_mass": false,
+        "note": "positive modulus companion to phase locking",
+        "cg_in_repo": "PARTIAL_EXISTENCE",
+        "hc": "self_adjoint",
+        "slot": null,
+        "cg_ready": "PARTIAL"
+      },
+      {
+        "id": "210x210_1_isotropic",
+        "source": "classic_channel_inventory",
+        "name": "210_H^dag 210_H",
+        "counts": {
+          "210_H_dag": 1,
+          "210_H": 1
+        },
+        "dim": 2,
+        "charge_status": "CHARGE_OK_CG_PARTIAL",
+        "cg_in_repo": "PARTIAL_PS_SINGLET",
+        "hc": "self_adjoint_or_plus_hc",
+        "slot": "OPEN_210_RADIAL",
+        "note": "Isotropic 210 norm; PS residual certified in hilbert_210n",
+        "cg_ready": "PARTIAL"
+      },
+      {
+        "id": "210x210_45",
+        "source": "classic_channel_inventory",
+        "name": "(210\u2297210)_45^2",
+        "counts": {
+          "210_H_dag": 2,
+          "210_H": 2
+        },
+        "dim": 4,
+        "charge_status": "CITED_CG_TENSOR_MISSING",
+        "cg_in_repo": "MISSING_OFF_SINGLET",
+        "hc": "plus_hc",
+        "slot": "OPEN_210_CHANNEL_45",
+        "note": "Nontrivial 45 projection; CG tensor not transcribed",
+        "cg_ready": "MISSING"
+      },
+      {
+        "id": "210x210_54",
+        "source": "classic_channel_inventory",
+        "name": "(210\u2297210)_54^2",
+        "counts": {
+          "210_H_dag": 2,
+          "210_H": 2
+        },
+        "dim": 4,
+        "charge_status": "CITED_CG_TENSOR_MISSING",
+        "cg_in_repo": "MISSING_OFF_SINGLET",
+        "hc": "plus_hc",
+        "slot": "OPEN_210_CHANNEL_54",
+        "note": "54 can lock onto 10\u229710 and 126\u2297126 54-projections after VEV insertion; index CG still missing",
+        "cg_ready": "MISSING"
+      },
+      {
+        "id": "210x210_210",
+        "source": "classic_channel_inventory",
+        "name": "(210\u2297210)_210^2",
+        "counts": {
+          "210_H_dag": 2,
+          "210_H": 2
+        },
+        "dim": 4,
+        "charge_status": "CITED_CG_TENSOR_MISSING",
+        "cg_in_repo": "MISSING_OFF_SINGLET",
+        "hc": "plus_hc",
+        "slot": "OPEN_210_CHANNEL_210",
+        "note": "Self-channel in 210; off-singlet CG missing",
+        "cg_ready": "MISSING"
+      },
+      {
+        "id": "210x210_1050",
+        "source": "classic_channel_inventory",
+        "name": "(210\u2297210)_1050^2",
+        "counts": {
+          "210_H_dag": 2,
+          "210_H": 2
+        },
+        "dim": 4,
+        "charge_status": "CITED_CG_TENSOR_MISSING",
+        "cg_in_repo": "MISSING_OFF_SINGLET",
+        "hc": "plus_hc",
+        "slot": "OPEN_210_CHANNEL_1050",
+        "note": "Literature quartic channel; CG tensor missing",
+        "cg_ready": "MISSING"
+      },
+      {
+        "id": "210_cubic_channels",
+        "source": "classic_channel_inventory",
+        "name": "210_H^3",
+        "counts": {
+          "210_H": 3
+        },
+        "dim": 3,
+        "charge_status": "CHARGE_OK_CG_PARTIAL",
+        "cg_in_repo": "PARTIAL_PS_SINGLET",
+        "hc": "self_adjoint_or_plus_hc",
+        "slot": "OPEN_210_CUBIC",
+        "note": "Two independent cubics on PS singlets (Aulakh\u2013Girdhar)",
+        "cg_ready": "PARTIAL"
+      },
+      {
+        "id": "210x126_10",
+        "source": "classic_channel_inventory",
+        "name": "210_H 126bar_H^dag 10_H",
+        "counts": {
+          "210_H": 1,
+          "126bar_H_dag": 1,
+          "10_H": 1
+        },
+        "dim": 3,
+        "charge_status": "CITED_CG_TENSOR_MISSING",
+        "cg_in_repo": "MISSING",
+        "hc": "self_adjoint_or_plus_hc",
+        "slot": "OPEN_MIXED_10",
+        "note": "Charge-filtered separately; may fail PQ without S insertions",
+        "cg_ready": "MISSING",
+        "slot_override": "ABSORBED_INTO_PORTAL_B"
+      },
+      {
+        "id": "210x126_120",
+        "source": "classic_channel_inventory",
+        "name": "(210\u2297126)_120 channel",
+        "counts": {
+          "210_H": 1,
+          "126bar_H_dag": 1,
+          "10_H": 1
+        },
+        "dim": 3,
+        "charge_status": "CITED_CG_TENSOR_MISSING",
+        "cg_in_repo": "MISSING",
+        "hc": "self_adjoint_or_plus_hc",
+        "slot": "OPEN_MIXED_120",
+        "note": "No repository CG for 120",
+        "cg_ready": "MISSING"
+      },
+      {
+        "id": "210x126_126",
+        "source": "classic_channel_inventory",
+        "name": "210_H 126bar_H^dag 126bar_H",
+        "counts": {
+          "210_H": 1,
+          "126bar_H_dag": 1,
+          "126bar_H": 1
+        },
+        "dim": 3,
+        "charge_status": "CHARGE_OK_CG_PARTIAL",
+        "cg_in_repo": "PARTIAL_EXISTENCE",
+        "hc": "self_adjoint_or_plus_hc",
+        "slot": "OPEN_MIXED_126",
+        "note": "Z17 filter marks one channel independently guaranteed",
+        "cg_ready": "PARTIAL"
+      },
+      {
+        "id": "210x126_320",
+        "source": "classic_channel_inventory",
+        "name": "(210\u2297126)_320 channel",
+        "counts": {
+          "210_H": 1,
+          "126bar_H_dag": 1,
+          "126bar_H": 1
+        },
+        "dim": 3,
+        "charge_status": "CITED_CG_TENSOR_MISSING",
+        "cg_in_repo": "MISSING",
+        "hc": "self_adjoint_or_plus_hc",
+        "slot": "OPEN_MIXED_320",
+        "note": "No repository CG for 320",
+        "cg_ready": "MISSING"
+      },
+      {
+        "id": "126_quartic_54",
+        "source": "classic_channel_inventory",
+        "name": "(126bar\u2297126bar)_54 (10\u229710)_54 / locking",
+        "counts": {
+          "126bar_H": 2,
+          "10_H": 2,
+          "S": 2
+        },
+        "dim": 6,
+        "charge_status": "CHARGE_OK_CG_PARTIAL",
+        "cg_in_repo": "PARTIAL_54_PROJECTOR",
+        "hc": "self_adjoint_or_plus_hc",
+        "slot": "OPEN_126_54_LOCKING",
+        "note": "Repository has 126\u219254 projector and locking notes; full M\u00b2 open",
+        "cg_ready": "PARTIAL"
+      },
+      {
+        "id": "126_quartic_1050",
+        "source": "classic_channel_inventory",
+        "name": "(126\u2297126)_1050^2",
+        "counts": {
+          "126bar_H_dag": 2,
+          "126bar_H": 2
+        },
+        "dim": 4,
+        "charge_status": "CITED_CG_TENSOR_MISSING",
+        "cg_in_repo": "MISSING",
+        "hc": "self_adjoint_or_plus_hc",
+        "slot": "OPEN_126_1050",
+        "note": "CG tensor missing",
+        "cg_ready": "MISSING"
+      },
+      {
+        "id": "126_quartic_4125",
+        "source": "classic_channel_inventory",
+        "name": "(126\u2297126)_4125^2",
+        "counts": {
+          "126bar_H_dag": 2,
+          "126bar_H": 2
+        },
+        "dim": 4,
+        "charge_status": "CITED_CG_TENSOR_MISSING",
+        "cg_in_repo": "MISSING",
+        "hc": "self_adjoint_or_plus_hc",
+        "slot": "OPEN_126_4125",
+        "note": "CG tensor missing; decisive for \u03a3\u0304 splittings",
+        "cg_ready": "MISSING"
+      },
+      {
+        "id": "10x10_1_isotropic",
+        "source": "classic_channel_inventory",
+        "name": "10_H^dag 10_H",
+        "counts": {
+          "10_H_dag": 1,
+          "10_H": 1
+        },
+        "dim": 2,
+        "charge_status": "CHARGE_OK_CG_PRESENT_INCOMPLETE_M2",
+        "cg_in_repo": "PRESENT_NORM",
+        "hc": "self_adjoint_or_plus_hc",
+        "slot": "OPEN_H10_SOFT_OR_NORM",
+        "note": "Isotropic H10 soft/norm mass; not a vacuum-direction channel",
+        "cg_ready": "READY"
+      },
+      {
+        "id": "10x10_54",
+        "source": "classic_channel_inventory",
+        "name": "(10\u229710)_54 with 126/210 54 projections",
+        "counts": {
+          "10_H_dag": 2,
+          "10_H": 2
+        },
+        "dim": 4,
+        "charge_status": "CHARGE_OK_CG_PARTIAL",
+        "cg_in_repo": "PARTIAL_LOCKING",
+        "hc": "self_adjoint_or_plus_hc",
+        "slot": "OPEN_H10_54",
+        "note": "Transforms as 54; couples to 126\u219254 and 210\u219254 channels",
+        "cg_ready": "PARTIAL"
+      },
+      {
+        "id": "2102_10dag10_quartic",
+        "source": "classic_channel_inventory",
+        "name": "210_H^dag 210_H 10_H^dag 10_H",
+        "counts": {
+          "210_H_dag": 1,
+          "210_H": 1,
+          "10_H_dag": 1,
+          "10_H": 1
+        },
+        "dim": 4,
+        "charge_status": "CHARGE_OK_CG_PARTIAL",
+        "cg_in_repo": "PARTIAL_EXISTENCE",
+        "hc": "self_adjoint_or_plus_hc",
+        "slot": "OPEN_H10_FROM_210_NORM",
+        "note": "Allowed replacement for forbidden linear-210 cubic",
+        "cg_ready": "PARTIAL"
+      },
+      {
+        "id": "2102_126dag126_quartic",
+        "source": "classic_channel_inventory",
+        "name": "210_H^dag 210_H 126bar_H^dag 126bar_H",
+        "counts": {
+          "210_H_dag": 1,
+          "210_H": 1,
+          "126bar_H_dag": 1,
+          "126bar_H": 1
+        },
+        "dim": 4,
+        "charge_status": "CHARGE_OK_CG_PARTIAL",
+        "cg_in_repo": "PARTIAL_EXISTENCE",
+        "hc": "self_adjoint_or_plus_hc",
+        "slot": "OPEN_SIGMA_FROM_210_NORM",
+        "note": "Norm portal into \u03a3\u0304 diagonals after \u27e8210\u27e9",
+        "cg_ready": "PARTIAL"
+      },
+      {
+        "id": "lambda4_portal_offdiag",
+        "source": "classic_channel_inventory",
+        "name": "210 \u00b7 10 \u00b7 126 \u00b7 S",
+        "counts": {
+          "210_H": 1,
+          "10_H": 1,
+          "126bar_H": 1,
+          "S": 1
+        },
+        "dim": 4,
+        "charge_status": "OFFDIAG_CLOSED_DIAG_OPEN",
+        "cg_in_repo": "PRESENT_DIRECT_TENSOR",
+        "hc": "self_adjoint_or_plus_hc",
+        "slot": "CLOSED_AS_OFFDIAG_B",
+        "note": "Off-diagonal B only; does not supply A or C",
+        "cg_ready": "READY"
+      }
+    ],
+    "summary": {
+      "n_operators": 51,
+      "n_charge_allowed_or_channel": 44,
+      "n_forbidden": 7,
+      "n_cg_ready": 3,
+      "n_cg_partial": 32,
+      "n_cg_missing": 16
+    },
+    "independence": {
+      "status": "OPEN",
+      "proven_basis_size": null,
+      "note": "Scaffold does not prove linear independence of the ring"
+    },
+    "cartesian_slots": {
+      "convention": "P=p, A=sqrt(3)*a, W=sqrt(6)*omega",
+      "schur_inputs": {
+        "A_matrix": "M2_H10 diagonal block \u2014 OPEN",
+        "C_matrix": "M2_Sigmabar diagonal block \u2014 OPEN",
+        "B_matrix": "lambda4*vS*T_Phi \u2014 CLOSED"
+      },
+      "slots": {
+        "OPEN_210_RADIAL": {
+          "channel_id": "210x210_1_isotropic",
+          "feeds_diag_H10": false,
+          "feeds_diag_Sigmabar": false,
+          "status": "OPEN_AWAITING_CG",
+          "basis": "canonical Cartesian (P,A,W) with P=p, A=\u221a3 a, W=\u221a6 \u03c9"
+        },
+        "OPEN_210_CHANNEL_45": {
+          "channel_id": "210x210_45",
+          "feeds_diag_H10": false,
+          "feeds_diag_Sigmabar": false,
+          "status": "OPEN_AWAITING_CG",
+          "basis": "canonical Cartesian (P,A,W) with P=p, A=\u221a3 a, W=\u221a6 \u03c9"
+        },
+        "OPEN_210_CHANNEL_54": {
+          "channel_id": "210x210_54",
+          "feeds_diag_H10": true,
+          "feeds_diag_Sigmabar": true,
+          "status": "OPEN_AWAITING_CG",
+          "basis": "canonical Cartesian (P,A,W) with P=p, A=\u221a3 a, W=\u221a6 \u03c9"
+        },
+        "OPEN_210_CHANNEL_210": {
+          "channel_id": "210x210_210",
+          "feeds_diag_H10": false,
+          "feeds_diag_Sigmabar": false,
+          "status": "OPEN_AWAITING_CG",
+          "basis": "canonical Cartesian (P,A,W) with P=p, A=\u221a3 a, W=\u221a6 \u03c9"
+        },
+        "OPEN_210_CHANNEL_1050": {
+          "channel_id": "210x210_1050",
+          "feeds_diag_H10": false,
+          "feeds_diag_Sigmabar": false,
+          "status": "OPEN_AWAITING_CG",
+          "basis": "canonical Cartesian (P,A,W) with P=p, A=\u221a3 a, W=\u221a6 \u03c9"
+        },
+        "OPEN_210_CUBIC": {
+          "channel_id": "210_cubic_channels",
+          "feeds_diag_H10": false,
+          "feeds_diag_Sigmabar": false,
+          "status": "OPEN_AWAITING_CG",
+          "basis": "canonical Cartesian (P,A,W) with P=p, A=\u221a3 a, W=\u221a6 \u03c9"
+        },
+        "OPEN_MIXED_10": {
+          "channel_id": "210x126_10",
+          "feeds_diag_H10": true,
+          "feeds_diag_Sigmabar": true,
+          "status": "OPEN_AWAITING_CG",
+          "basis": "canonical Cartesian (P,A,W) with P=p, A=\u221a3 a, W=\u221a6 \u03c9"
+        },
+        "OPEN_MIXED_120": {
+          "channel_id": "210x126_120",
+          "feeds_diag_H10": true,
+          "feeds_diag_Sigmabar": true,
+          "status": "OPEN_AWAITING_CG",
+          "basis": "canonical Cartesian (P,A,W) with P=p, A=\u221a3 a, W=\u221a6 \u03c9"
+        },
+        "OPEN_MIXED_126": {
+          "channel_id": "210x126_126",
+          "feeds_diag_H10": false,
+          "feeds_diag_Sigmabar": true,
+          "status": "OPEN_AWAITING_CG",
+          "basis": "canonical Cartesian (P,A,W) with P=p, A=\u221a3 a, W=\u221a6 \u03c9"
+        },
+        "OPEN_MIXED_320": {
+          "channel_id": "210x126_320",
+          "feeds_diag_H10": false,
+          "feeds_diag_Sigmabar": true,
+          "status": "OPEN_AWAITING_CG",
+          "basis": "canonical Cartesian (P,A,W) with P=p, A=\u221a3 a, W=\u221a6 \u03c9"
+        },
+        "OPEN_126_54_LOCKING": {
+          "channel_id": "126_quartic_54",
+          "feeds_diag_H10": true,
+          "feeds_diag_Sigmabar": true,
+          "status": "OPEN_AWAITING_CG",
+          "basis": "canonical Cartesian (P,A,W) with P=p, A=\u221a3 a, W=\u221a6 \u03c9"
+        },
+        "OPEN_126_1050": {
+          "channel_id": "126_quartic_1050",
+          "feeds_diag_H10": false,
+          "feeds_diag_Sigmabar": true,
+          "status": "OPEN_AWAITING_CG",
+          "basis": "canonical Cartesian (P,A,W) with P=p, A=\u221a3 a, W=\u221a6 \u03c9"
+        },
+        "OPEN_126_4125": {
+          "channel_id": "126_quartic_4125",
+          "feeds_diag_H10": false,
+          "feeds_diag_Sigmabar": true,
+          "status": "OPEN_AWAITING_CG",
+          "basis": "canonical Cartesian (P,A,W) with P=p, A=\u221a3 a, W=\u221a6 \u03c9"
+        },
+        "OPEN_H10_SOFT_OR_NORM": {
+          "channel_id": "10x10_1_isotropic",
+          "feeds_diag_H10": true,
+          "feeds_diag_Sigmabar": false,
+          "status": "OPEN_AWAITING_CG",
+          "basis": "canonical Cartesian (P,A,W) with P=p, A=\u221a3 a, W=\u221a6 \u03c9"
+        },
+        "OPEN_H10_54": {
+          "channel_id": "10x10_54",
+          "feeds_diag_H10": true,
+          "feeds_diag_Sigmabar": false,
+          "status": "OPEN_AWAITING_CG",
+          "basis": "canonical Cartesian (P,A,W) with P=p, A=\u221a3 a, W=\u221a6 \u03c9"
+        },
+        "OPEN_H10_FROM_210_NORM": {
+          "channel_id": "2102_10dag10_quartic",
+          "feeds_diag_H10": true,
+          "feeds_diag_Sigmabar": false,
+          "status": "OPEN_AWAITING_CG",
+          "basis": "canonical Cartesian (P,A,W) with P=p, A=\u221a3 a, W=\u221a6 \u03c9"
+        },
+        "OPEN_SIGMA_FROM_210_NORM": {
+          "channel_id": "2102_126dag126_quartic",
+          "feeds_diag_H10": false,
+          "feeds_diag_Sigmabar": true,
+          "status": "OPEN_AWAITING_CG",
+          "basis": "canonical Cartesian (P,A,W) with P=p, A=\u221a3 a, W=\u221a6 \u03c9"
+        },
+        "CLOSED_AS_OFFDIAG_B": {
+          "channel_id": "lambda4_portal_offdiag",
+          "feeds_diag_H10": false,
+          "feeds_diag_Sigmabar": false,
+          "status": "CLOSED_OFFDIAG",
+          "basis": "canonical Cartesian (P,A,W) with P=p, A=\u221a3 a, W=\u221a6 \u03c9"
+        }
+      },
+      "n_open_slots": 17
+    },
+    "open_mixed_10": "ABSORBED_INTO_PORTAL_B",
+    "flags": {
+      "full_invariant_ring_complete": false,
+      "ring_scaffold_ready": true,
+      "cg_120_320_1050_4125_invented": false,
+      "whole_model_validated": false,
+      "whole_model_excluded": false
+    },
+    "remaining_blockers": {
+      "linear_independence_proof": true,
+      "missing_cg_120_320_1050_4125": true,
+      "full_nonsusy_vacuum_hessian": true
+    }
+  },
+  "verdict": "Invariant-ring scaffold: 51 operators (READY=3, PARTIAL=32, MISSING=16); independence OPEN; CG 120/320/1050/4125 not invented. Theory remains BLOCKED."
+}

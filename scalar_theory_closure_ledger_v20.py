@@ -90,12 +90,13 @@ def build_report() -> dict[str, Any]:
                 "OPEN_210_CHANNEL_1050 blocker: residual ≠ unique 1050 (await Young/CG)",
                 "off-singlet mixed-45 vacuum⊗δΦ census (mode CG OPEN)",
                 "off-singlet mixed-45 SM Cartan labels (sector×Q; CG coeffs OPEN)",
+                "FULL_MIXED_REP_INVARIANT_RING_V20.json scaffold (independence OPEN)",
             ],
             blockers=[
                 "CG tensors 120 / 320 / 1050 / 4125 missing",
                 "OPEN_210_CHANNEL_1050 awaits published Young/CG",
                 "off-singlet-45 mode-by-mode SM irrep CG coefficients OPEN",
-                "FULL_MIXED_REP_INVARIANT_RING_V20.json absent",
+                "ring linear-independence proof OPEN",
             ],
         ),
         _gate(
@@ -142,6 +143,7 @@ def build_report() -> dict[str, Any]:
                 "PQ axion quotient: 37 zeros / 701 positive / 0 negative",
                 "physical A_κ wired into extended Hessian (|κ| M_I hEW² v_S)",
                 "tree-level V_eff(a)=0 after integrating heavy CP-odd (m²=5 A_κ)",
+                "Schur 272 ↔ form 738 portal identified (pullback/2 = [P,−Q])",
                 f"pq module status: {pq.get('status')}",
             ],
             blockers=[
@@ -168,8 +170,13 @@ def build_report() -> dict[str, Any]:
         _gate(
             gate_id="G6",
             title="Physical thresholds and proton-decay predictions",
-            status="OPEN",
-            evidence=["scalar_vacuum_proton_decay scaffold exists"],
+            status="PARTIAL",
+            evidence=[
+                "isotropic PS multiplicities for filled A/C",
+                "Aulakh Table-1 unmixed 210 + R-octet thresholds",
+                "Susyno/Fonseca gauge X/Y/U/V from component VEVs",
+                "partial_g6_threshold_spectrum_certificate_v20 bundled",
+            ],
             blockers=[
                 "physical triplet/doublet/singlet spectrum from full M²",
                 "threshold matching from complete Hessian",
@@ -206,6 +213,7 @@ def build_report() -> dict[str, Any]:
         "no_gate_falsely_closed": n_closed == 0,
         "g4_partial_from_pq_skeleton": gates[3]["status"] == "PARTIAL",
         "g5_partial_from_scoped_bfb": gates[4]["status"] == "PARTIAL",
+        "g6_partial_from_threshold_bundle": gates[5]["status"] == "PARTIAL",
         "mixed10_absorption_green": mix.get("n_failed", 1) == 0,
         "d210_ps_singlet_green": d210_rep.get("n_failed", 1) == 0,
         "pq_extended_green": pq.get("n_failed", 1) == 0,
@@ -216,7 +224,7 @@ def build_report() -> dict[str, Any]:
 
     return {
         "status": (
-            "SCALAR_THEORY_CLOSURE_LEDGER_BLOCKED__PARTIAL_G2_G3_G4_G5"
+            "SCALAR_THEORY_CLOSURE_LEDGER_BLOCKED__PARTIAL_G2_G3_G4_G5_G6"
             if not failures
             else "SCALAR_THEORY_CLOSURE_LEDGER_FAILED"
         ),
@@ -248,10 +256,11 @@ def build_report() -> dict[str, Any]:
         },
         "verdict": (
             f"Scalar closure ledger: {n_closed}/8 CLOSED, {n_partial}/8 PARTIAL, "
-            f"{n_open}/8 OPEN. G2–G5 are PARTIAL via portal/Schur/210 PS-singlet, "
-            "soft stationarity, Goldstone+axion Hessian skeleton, and scoped BFB. "
-            "Missing CG (120/320/1050/4125), full Hessian, global BFB, thresholds, "
-            "two-loop RGE, and unique τ_p keep the theory BLOCKED — not complete."
+            f"{n_open}/8 OPEN. G2–G6 are PARTIAL via portal/Schur/210 PS-singlet, "
+            "soft stationarity, Goldstone+axion Hessian skeleton, scoped BFB, "
+            "and published threshold bundle. Missing CG (120/320/1050/4125), "
+            "full Hessian, global BFB, two-loop RGE, and unique τ_p keep the "
+            "theory BLOCKED — not complete."
         ),
     }
 

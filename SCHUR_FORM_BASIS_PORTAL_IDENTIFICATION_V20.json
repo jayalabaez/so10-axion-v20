@@ -1,0 +1,94 @@
+{
+  "status": "SCHUR_FORM_PORTAL_IDENTIFIED__SPECTATORS_OUTSIDE_272",
+  "overall_state": "BLOCKED",
+  "n_checks": 17,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "iso_green": true,
+    "schur_hessian_272": true,
+    "frame_gram_near_2I": true,
+    "hodge_minus_i_small": true,
+    "E_gram_2I": true,
+    "schur_us_matches_P": true,
+    "schur_ut_matches_mQ": true,
+    "schur_vs_matches_mQ": true,
+    "schur_vt_matches_mP": true,
+    "form_pullback_u_maps_to_schur": true,
+    "form_pullback_v_maps_to_schur": true,
+    "lift724_reH_equals_738_reH": true,
+    "lift724_omits_imH": true,
+    "lift738_includes_imH": true,
+    "spectators_outside_272_recorded": true,
+    "cg_not_invented": true,
+    "whole_model_not_overclaimed": true
+  },
+  "dimensions": {
+    "schur_real": 272,
+    "form_reH_only": 724,
+    "form_extended": 738,
+    "ambient_fiveform": 504,
+    "kinetic_st": 252
+  },
+  "convention_map": {
+    "schur_fields": "x=(u+iv)/\u221a2, y=(s+it)/\u221a2 \u2192 Hess blocks [P,\u2212Q]",
+    "form_fields": "real (u,v,s,t); r=E w, w=E\u1d40 r/2",
+    "pullback_identity": "mixing_form @ E = 2 [P,\u2212Q] (E\u1d40E=2I)",
+    "identification": "Schur_block = (mixing_form @ E) / 2"
+  },
+  "residuals": {
+    "schur_us_vs_P": 0.0,
+    "schur_ut_vs_mQ": 0.0,
+    "schur_vs_vs_mQ": 0.0,
+    "schur_vt_vs_mP": 0.0,
+    "mapped_pull_u_vs_target": 0.0,
+    "mapped_pull_v_vs_target": 0.0,
+    "lift724_vs_738_reH": 0.0,
+    "B_frobenius_GeV2": 6.5686202759679064e+22
+  },
+  "form_slices_738": {
+    "210": [
+      0,
+      210
+    ],
+    "fiveform_504": [
+      210,
+      714
+    ],
+    "H10_Re": [
+      714,
+      724
+    ],
+    "H10_Im": [
+      724,
+      734
+    ],
+    "S": [
+      734,
+      736
+    ],
+    "Phi17": [
+      736,
+      738
+    ]
+  },
+  "outside_schur_272": [
+    "210",
+    "fiveform_complement_floor",
+    "S",
+    "Phi17"
+  ],
+  "flags": {
+    "cartesian_portal_basis_map_closed": true,
+    "im_H_identified_on_738": true,
+    "reH_only_724_consistent": true,
+    "cg_120_320_1050_4125_invented": false,
+    "whole_model_validated": false,
+    "whole_model_excluded": false
+  },
+  "remaining_blockers": {
+    "full_nonsusy_vacuum_hessian": true,
+    "missing_cg_120_320_1050_4125": true
+  },
+  "verdict": "Schur 272 \u2194 form 738 portal identified: pullback/2 matches [P,\u2212Q]/[\u2212Q,\u2212P] (rel err u=0.000e+00, v=0.000e+00); 724 Omits Im H; spectators 210/S/\u03a6\u2081\u2087 outside Schur support. Theory remains BLOCKED."
+}

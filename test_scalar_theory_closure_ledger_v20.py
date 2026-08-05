@@ -20,8 +20,8 @@ class ScalarTheoryClosureLedgerTests(unittest.TestCase):
         self.assertFalse(self.report["flags"]["whole_model_validated"])
         self.assertFalse(self.report["flags"]["whole_model_excluded"])
         self.assertEqual(self.report["gate_summary"]["n_closed"], 0)
-        self.assertEqual(self.report["gate_summary"]["n_partial"], 4)
-        self.assertEqual(self.report["gate_summary"]["n_open"], 4)
+        self.assertEqual(self.report["gate_summary"]["n_partial"], 5)
+        self.assertEqual(self.report["gate_summary"]["n_open"], 3)
         self.assertEqual(len(self.report["gates"]), 8)
 
 

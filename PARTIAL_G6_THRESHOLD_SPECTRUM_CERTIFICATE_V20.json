@@ -1,0 +1,268 @@
+{
+  "status": "PARTIAL_G6_THRESHOLD_SPECTRUM_CERTIFIED__MIXED_CG_OPEN",
+  "overall_state": "BLOCKED",
+  "n_checks": 11,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "filled_green": true,
+    "off210_green": true,
+    "xy_green": true,
+    "h10_dims_10": true,
+    "sigma_dims_126": true,
+    "aulakh_masses_positive": true,
+    "gauge_masses_positive": true,
+    "v_vanishes_126_only": true,
+    "no_fake_full_spectrum": true,
+    "cg_not_invented": true,
+    "whole_model_not_overclaimed": true
+  },
+  "sections": {
+    "isotropic_ps_multiplicities": {
+      "status": "FILLED_MASS_PS_SM_IRREP_SPECTRUM_ISOTROPIC_ONLY__CG_SPLIT_OPEN",
+      "H10": {
+        "M2_GeV2_isotropic": 1.7802814568802147e+30,
+        "ps_components": [
+          {
+            "ps": "(6,1,1)",
+            "dim": 6,
+            "sm_note": "colour sextet / antitriplet pairs; no EW VEV",
+            "M2_GeV2": 1.7802814568802147e+30,
+            "source": "isotropic A_partial (soft+210-norm)",
+            "differentiated_cg": false
+          },
+          {
+            "ps": "(1,2,2)",
+            "dim": 4,
+            "sm_note": "EW bidoublet; hosts hEW=174",
+            "M2_GeV2": 1.7802814568802147e+30,
+            "source": "isotropic A_partial (soft+210-norm)",
+            "differentiated_cg": false
+          }
+        ],
+        "dim_sum": 10
+      },
+      "Sigmabar126": {
+        "M2_GeV2_isotropic": 2.763862890525631e+30,
+        "dim_sum": 126,
+        "ps_components": [
+          {
+            "ps": "(10,1,3)",
+            "dim": 30,
+            "sm_note": "contains Delta_R SM singlet",
+            "M2_GeV2": 2.763862890525631e+30,
+            "source": "isotropic C_partial (soft+210-norm+MIXED_126)",
+            "differentiated_cg": false
+          },
+          {
+            "ps": "(15,2,2)",
+            "dim": 60,
+            "sm_note": "bidoublet fragments",
+            "M2_GeV2": 2.763862890525631e+30,
+            "source": "isotropic C_partial (soft+210-norm+MIXED_126)",
+            "differentiated_cg": false
+          },
+          {
+            "ps": "(6,1,1)",
+            "dim": 6,
+            "sm_note": "colour fragments",
+            "M2_GeV2": 2.763862890525631e+30,
+            "source": "isotropic C_partial (soft+210-norm+MIXED_126)",
+            "differentiated_cg": false
+          },
+          {
+            "ps": "(10,3,1)",
+            "dim": 30,
+            "sm_note": "left triplets",
+            "M2_GeV2": 2.763862890525631e+30,
+            "source": "isotropic C_partial (soft+210-norm+MIXED_126)",
+            "differentiated_cg": false
+          }
+        ]
+      }
+    },
+    "aulakh_off_singlet_210": {
+      "status": "OFF_SINGLET_210_FLUCTUATION_CG_THRESHOLDS_BUILT__MIXED_126_10_OPEN",
+      "n_unmixed": 8,
+      "n_mixed_R": 2,
+      "lightest_GeV": 936643311385987.5,
+      "heaviest_GeV": 3.818262447575781e+16,
+      "unmixed_210_thresholds": [
+        {
+          "name": "I",
+          "sm": "(3,1,10/3)",
+          "ps_parent": "(15,1,3)_210",
+          "expression": "\u22122(m + \u03bb(p + a + 4\u03c9))",
+          "mass_GeV": 3.818262447575781e+16,
+          "status": "CG_TRANSCRIBED_AULAKH_TABLE1",
+          "source": "hep-ph/0405074 Table 1 (unmixed \u03c6)"
+        },
+        {
+          "name": "S",
+          "sm": "(1,3,0)",
+          "ps_parent": "(15,3,1)_210",
+          "expression": "2(m + \u03bb(2a \u2212 p))",
+          "mass_GeV": 1.5273049790303124e+16,
+          "status": "CG_TRANSCRIBED_AULAKH_TABLE1",
+          "source": "hep-ph/0405074 Table 1 (unmixed \u03c6)"
+        },
+        {
+          "name": "Q",
+          "sm": "(8,3,0)",
+          "ps_parent": "(15,3,1)_210",
+          "expression": "2(m \u2212 \u03bb(a + p))",
+          "mass_GeV": 5454660639393973.0,
+          "status": "CG_TRANSCRIBED_AULAKH_TABLE1",
+          "source": "hep-ph/0405074 Table 1 (unmixed \u03c6)"
+        },
+        {
+          "name": "U",
+          "sm": "(3,3,4/3)",
+          "ps_parent": "(15,3,1)_210",
+          "expression": "\u22122(m \u2212 \u03bb(p \u2212 a))",
+          "mass_GeV": 1.200025340666674e+16,
+          "status": "CG_TRANSCRIBED_AULAKH_TABLE1",
+          "source": "hep-ph/0405074 Table 1 (unmixed \u03c6)"
+        },
+        {
+          "name": "V",
+          "sm": "(1,2,\u22123)",
+          "ps_parent": "(10,2,2)/(10bar,2,2)_210",
+          "expression": "2(m + 3\u03bb(a + \u03c9))",
+          "mass_GeV": 3.7091692347879016e+16,
+          "status": "CG_TRANSCRIBED_AULAKH_TABLE1",
+          "source": "hep-ph/0405074 Table 1 (unmixed \u03c6)"
+        },
+        {
+          "name": "B",
+          "sm": "(6,2,5/3)",
+          "ps_parent": "(6,2,2)_210",
+          "expression": "\u22122(m + \u03bb(\u03c9 \u2212 a))",
+          "mass_GeV": 1.3091185534545536e+16,
+          "status": "CG_TRANSCRIBED_AULAKH_TABLE1",
+          "source": "hep-ph/0405074 Table 1 (unmixed \u03c6)"
+        },
+        {
+          "name": "Y",
+          "sm": "(6,2,\u22121/3)",
+          "ps_parent": "(6,2,2)_210",
+          "expression": "2(m \u2212 \u03bb(a + \u03c9))",
+          "mass_GeV": 2181864255757589.0,
+          "status": "CG_TRANSCRIBED_AULAKH_TABLE1",
+          "source": "hep-ph/0405074 Table 1 (unmixed \u03c6)"
+        },
+        {
+          "name": "Z",
+          "sm": "(8,1,\u00b12)",
+          "ps_parent": "(15,1,3)_210",
+          "expression": "2(m + \u03bb(p \u2212 a))",
+          "mass_GeV": 9818389150909152.0,
+          "status": "CG_TRANSCRIBED_AULAKH_TABLE1",
+          "source": "hep-ph/0405074 Table 1 (unmixed \u03c6)"
+        }
+      ],
+      "mixed_R_octet": {
+        "name": "R",
+        "sm": "(8,1,0) \u00d7 2",
+        "ps_parent": "(15,1,1)+(15,1,3)_210",
+        "expression": "2\u00d7[[m\u2212\u03bba, \u2212\u221a2 \u03bb\u03c9],[\u2212\u221a2 \u03bb\u03c9, m+\u03bb(p\u2212a)]]",
+        "matrix": [
+          [
+            7636524895151562.0,
+            -7714055054373656.0
+          ],
+          [
+            -7714055054373656.0,
+            9818389150909152.0
+          ]
+        ],
+        "eigenvalues_GeV": [
+          936643311385987.5,
+          1.6518270734674726e+16
+        ],
+        "masses_GeV": [
+          936643311385987.5,
+          1.6518270734674726e+16
+        ],
+        "mass_min_GeV": 936643311385987.5,
+        "mass_max_GeV": 1.6518270734674726e+16,
+        "status": "CG_TRANSCRIBED_AULAKH_R_2x2",
+        "source": "hep-ph/0405074 Eqs. (85)\u2013(86)"
+      }
+    },
+    "susyno_gauge_uv": {
+      "status": "EXACT_XY_MASSES_FROM_COMPONENT_VACUUM__VEV_RATIOS_OPEN",
+      "masses": {
+        "M_U_GeV": 2171766097196595.5,
+        "M_V_GeV": 1654271749744712.5,
+        "M_X_PS_GeV": 2740144478932347.5,
+        "M_WR_GeV": 2877727304705552.0,
+        "M_Zp_GeV": 579347595507.4901,
+        "proton_decay_mediator_GeV": 1654271749744712.5,
+        "positive_masses": true
+      },
+      "bosons": {
+        "U_proton_decay": {
+          "m_over_g2": 1.4004800576423532e+31,
+          "mass_GeV": 2171766097196595.5,
+          "sm": "(3,2,\u00b15/6)-like",
+          "role": "gauge d=6 proton decay",
+          "equation": "1811.07910 Eq. (6)"
+        },
+        "V_proton_decay": {
+          "m_over_g2": 8.12577021947756e+30,
+          "mass_GeV": 1654271749744712.5,
+          "sm": "(3,2,\u22135/6)-like",
+          "role": "gauge d=6 proton decay",
+          "equation": "1811.07910 Eq. (7)"
+        },
+        "X_PS_leptoquark": {
+          "m_over_g2": 2.229450094846833e+31,
+          "mass_GeV": 2740144478932347.5,
+          "sm": "PS (6,2,2) fragment",
+          "role": "rare meson decays / PS threshold",
+          "equation": "1811.07910 Eq. (8)"
+        },
+        "W_R": {
+          "m_over_g2": 2.4589523084409677e+31,
+          "mass_GeV": 2877727304705552.0,
+          "sm": "SU(2)_R",
+          "role": "PS\u2192SM charged",
+          "equation": "1811.07910 Eq. (9)"
+        },
+        "Z_prime": {
+          "m_over_g2": 9.966191968005249e+23,
+          "mass_GeV": 579347595507.4901,
+          "sm": "U(1)' mix",
+          "role": "PS\u2192SM neutral",
+          "equation": "1811.07910 Eq. (10)"
+        }
+      },
+      "literature_check_126_only": {
+        "M_U_GeV": 259092121231.15994,
+        "M_V_GeV": 0.0,
+        "V_massless": true,
+        "note": "\u27e8126\u27e9 alone \u21d2 SO(10)\u2192SU(5); V stays massless (Eq. 7)"
+      }
+    }
+  },
+  "flags": {
+    "partial_g6_threshold_spectrum_bundled": true,
+    "isotropic_scalar_multiplicities_only": true,
+    "aulakh_table1_unmixed_included": true,
+    "aulakh_R_octet_included": true,
+    "susyno_gauge_uv_included": true,
+    "mixed_210_126_10_complete": false,
+    "mode_by_mode_cg_splitting": false,
+    "cg_120_320_1050_4125_invented": false,
+    "unique_vev_ratios_from_full_potential": false,
+    "whole_model_validated": false,
+    "whole_model_excluded": false
+  },
+  "remaining_blockers": {
+    "complete_sm_irrep_mass_matrices_from_full_M2": true,
+    "missing_cg_120_320_1050_4125": true,
+    "full_nonsusy_vacuum_hessian": true
+  },
+  "verdict": "Partial G6 certificate: isotropic PS multiplicities + Aulakh 8 unmixed/R-octet thresholds + Susyno gauge UV bundled. Full mixed CG / dynamical M\u00b2 remain OPEN. Theory remains BLOCKED."
+}
