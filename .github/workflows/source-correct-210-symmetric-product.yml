@@ -1,0 +1,84 @@
+name: source-correct-210-symmetric-product
+
+on:
+  pull_request:
+    paths:
+      - 'so10_210_symmetric_45_source_projector_v20.py'
+      - 'so10_210_symmetric_product_source_audit_v20.py'
+      - 'source_corrected_scalar_dependency_gate_v20.py'
+      - 'test_so10_210_symmetric_45_source_projector_v20.py'
+      - 'test_so10_210_symmetric_product_source_audit_v20.py'
+      - 'test_source_corrected_scalar_dependency_gate_v20.py'
+      - '.github/workflows/source-correct-210-symmetric-product.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'so10_210_symmetric_45_source_projector_v20.py'
+      - 'so10_210_symmetric_product_source_audit_v20.py'
+      - 'source_corrected_scalar_dependency_gate_v20.py'
+      - 'test_so10_210_symmetric_45_source_projector_v20.py'
+      - 'test_so10_210_symmetric_product_source_audit_v20.py'
+      - 'test_source_corrected_scalar_dependency_gate_v20.py'
+      - '.github/workflows/source-correct-210-symmetric-product.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: source-correct-210-symmetric-product-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  source-audit:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.10', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - run: python -m pip install --upgrade pip
+      - run: python -m pip install numpy scipy
+      - name: Focused source-correction tests
+        run: |
+          python -m unittest -v \
+            test_so10_210_symmetric_45_source_projector_v20.py \
+            test_so10_210_symmetric_product_source_audit_v20.py \
+            test_source_corrected_scalar_dependency_gate_v20.py
+      - name: Emit source-correct reports
+        run: |
+          python so10_210_symmetric_45_source_projector_v20.py --write
+          python so10_210_symmetric_product_source_audit_v20.py --write
+          python source_corrected_scalar_dependency_gate_v20.py --write
+      - name: Assert honest scientific state
+        run: |
+          python - <<'PY'
+          import json
+          p=json.load(open('SO10_210_SYMMETRIC_45_SOURCE_PROJECTOR_V20.json'))
+          a=json.load(open('SO10_210_SYMMETRIC_PRODUCT_SOURCE_AUDIT_V20.json'))
+          g=json.load(open('SOURCE_CORRECTED_SCALAR_DEPENDENCY_GATE_V20.json'))
+          assert p['n_failed']==0 and p['overall_state']=='BLOCKED', p
+          assert p['flags']['same_field_symmetric_45_generically_nonzero'], p
+          assert p['flags']['old_same_field_45_vanishing_cannot_close_quartic_channel'], p
+          assert a['n_failed']==0 and a['symmetric_product']['dimension']==22155, a
+          assert a['symmetric_product']['true_residual_dimension']==21845, a
+          assert a['flags']['old_1050_blocker_superseded'], a
+          assert not a['flags']['g1_closed'] and not a['flags']['g2_closed'], a
+          assert g['n_failed']==0 and g['overall_state']=='BLOCKED', g
+          assert g['flags']['pr98_must_remain_draft'], g
+          assert not g['flags']['merge_to_main_safe'], g
+          assert not g['flags']['whole_model_validated'], g
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: source-correct-210-symmetric-product-${{ matrix.python-version }}
+          path: |
+            SO10_210_SYMMETRIC_45_SOURCE_PROJECTOR_V20.json
+            SO10_210_SYMMETRIC_45_SOURCE_PROJECTOR_V20.md
+            SO10_210_SYMMETRIC_PRODUCT_SOURCE_AUDIT_V20.json
+            SO10_210_SYMMETRIC_PRODUCT_SOURCE_AUDIT_V20.md
+            SOURCE_CORRECTED_SCALAR_DEPENDENCY_GATE_V20.json
+            SOURCE_CORRECTED_SCALAR_DEPENDENCY_GATE_V20.md
