@@ -258,10 +258,25 @@ diagnostic only (not free extrema). Full-ring extrema remain OPEN.
 `OPEN_210_CHANNEL_1050` cannot be filled from residual after 1/54/210 maps
 (residual mixes ≥770⊕1050⊕4125). Status: `OPEN_AWAITING_YOUNG_CG`. No CG invented.
 
+## Completed off-singlet mixed-45 census + free extrema + unique-κ probes
+
+`open_210_channel_45_off_singlet_census_v20.py` censuses vacuum⊗off-singlet
+`(Φ⊗δΦ)_45` on the 207-dim PS complement (all modes source nonzero bilinears;
+diagnostic seed only; mode-by-mode SM irrep CG OPEN). Wired into
+`diagonal_210_radial_cubic_ps_singlet_v20` / isotropic inventory as PARTIAL.
+
+`reduced_amplitude_free_extrema_v20.py` freely minimizes `V₄+V_int` on
+`(P,Δ,S,Φ)` at fixed `hEW=174`, `λ₄=0`: with stationarity-restoring soft δm²
+the selected vacuum is recovered; without soft amplitudes can drift to bounds.
+Full-ring extrema remain OPEN.
+
+`unique_kappa_principle_probe_v20.py` compares soft-norm, portal-matching, and
+finite-κ-window κ values; they disagree, so `uv_kappa_uniquely_determined=false`.
+
 ## Correct next goal
 
 Theory completion still requires transcribed CG for 120/320/1050/4125 and
-off-singlet mixed-45 (G1), mode-by-mode diagonals (G2),
+off-singlet mixed-45 **mode** CG (G1), mode-by-mode diagonals (G2),
 complete stationarity/hierarchy (G3), the full dynamical Hessian artifact
 (G4), then global BFB, thresholds, two-loop RGE, and unique τ_p (G5–G8).
 Do not invent missing CG and do not reopen a reduced-sector phase hunt.
@@ -273,9 +288,9 @@ Do not invent missing CG and do not reopen a reduced-sector phase hunt.
    - Prove linear independence and record Hermitian-conjugation conventions.
    - Transcribe missing CG tensors (especially 120, 320, 1050, 4125) into the Cartesian basis.
    - Prefer operators with nonzero tensor projection on the actual `(Delta_R,hEW,S,Phi)` vacuum for phase locking.
-   - Next without invented tables: off-singlet mixed-45 operator census;
-     competing free-extrema solve on reduced amplitudes; unique-κ principle
-     beyond soft matching.
+   - Next without invented tables: off-singlet-45 SM irrep decomposition from
+     published CG; any remaining charge-allowed mixed channels with nonzero
+     vacuum projection.
 
 2. **Full component projection**
    - Project every invariant into canonical Pati-Salam and Standard Model component fields.

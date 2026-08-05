@@ -1,0 +1,53 @@
+name: unique-kappa-principle-probe
+
+on:
+  pull_request:
+    paths:
+      - unique_kappa_principle_probe_v20.py
+      - test_unique_kappa_principle_probe_v20.py
+      - uv_kappa_stationarity_constraint_v20.py
+      - charge_allowed_potential_minimize_v20.py
+      - .github/workflows/unique-kappa-principle-probe.yml
+  workflow_dispatch:
+
+concurrency:
+  group: unique-kappa-principle-probe-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  unique-kappa-principle-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Execute unique-κ probes
+        run: python unique_kappa_principle_probe_v20.py --write
+      - name: Focused regression tests
+        run: python -m unittest -v test_unique_kappa_principle_probe_v20.py
+      - name: Assert honest scientific scope
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('UNIQUE_KAPPA_PRINCIPLE_PROBE_V20.json'))
+          assert r['status']=='UNIQUE_KAPPA_PRINCIPLE_PROBES_DISAGREE__NOT_UNIQUE'
+          assert r['n_failed']==0
+          assert r['overall_state']=='BLOCKED'
+          assert r['flags']['unique_kappa_probes_executed']
+          assert not r['flags']['uv_kappa_uniquely_determined']
+          assert not r['flags']['probes_numerically_agree']
+          assert not r['flags']['whole_model_validated']
+          PY
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unique-kappa-principle-probe
+          path: |
+            UNIQUE_KAPPA_PRINCIPLE_PROBE_V20.json
+            UNIQUE_KAPPA_PRINCIPLE_PROBE_V20.md

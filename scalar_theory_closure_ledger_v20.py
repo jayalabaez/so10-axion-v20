@@ -88,10 +88,12 @@ def build_report() -> dict[str, Any]:
                 "exact (210⊗210)→210 self-map + PS-singlet seed",
                 "36 Goldstone SM root catalog (SVD stabilizer basis)",
                 "OPEN_210_CHANNEL_1050 blocker: residual ≠ unique 1050 (await Young/CG)",
+                "off-singlet mixed-45 vacuum⊗δΦ census (mode CG OPEN)",
             ],
             blockers=[
                 "CG tensors 120 / 320 / 1050 / 4125 missing",
-                "OPEN_210_CHANNEL_1050 awaits published Young/CG; off-singlet-45 OPEN",
+                "OPEN_210_CHANNEL_1050 awaits published Young/CG",
+                "off-singlet-45 mode-by-mode SM irrep CG OPEN",
                 "FULL_MIXED_REP_INVARIANT_RING_V20.json absent",
             ],
         ),
@@ -120,11 +122,12 @@ def build_report() -> dict[str, Any]:
                 "component_lift ledger includes hEW=174",
                 "UV κ stationarity-constrained at physical hEW (not unique)",
                 "physical A_κ = |κ| M_I hEW² v_S",
+                "unique-κ principle probes disagree (soft-norm vs portal vs window)",
             ],
             blockers=[
                 "technically natural hierarchy proof incomplete",
                 "full stationarity of complete potential OPEN",
-                "unique UV κ not fixed (finite window + soft shifts)",
+                "unique UV κ not fixed (finite window + soft shifts; probes disagree)",
             ],
         ),
         _gate(
@@ -154,6 +157,7 @@ def build_report() -> dict[str, Any]:
                 "reduced quartic spectral PD + co-positivity + Schur PD",
                 "projected Goldstone+axion skeleton non-negative",
                 "reduced polynomial competing-extrema census (historical λ₄ tachyonic)",
+                "reduced free-extrema L-BFGS-B: soft-matched near selected; bare drifts",
             ],
             blockers=[
                 "competing extrema of the complete potential",

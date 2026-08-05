@@ -184,7 +184,6 @@ def build_partial_diagonals(
         "OPEN_H10_54",
         "OPEN_126_54_LOCKING",
         "OPEN_210_CHANNEL_1050",
-        "OPEN_210_CHANNEL_45_OFF_SINGLET",
         "OPEN_MIXED_120",
         "OPEN_MIXED_320",
         "OPEN_126_1050",
@@ -213,7 +212,16 @@ def build_partial_diagonals(
             "contribution_GeV2": 0.0,
             "reason": (
                 "so10_210_to_45_projector_v20: P_45 vanishes on same-field and "
-                "on the full PS-singlet span {p,a,ω}; off-singlet mixed OPEN"
+                "on the full PS-singlet span {p,a,ω}"
+            ),
+        },
+        "OPEN_210_CHANNEL_45_OFF_SINGLET": {
+            "status": "PARTIAL_OFF_SINGLET_CENSUS_READY",
+            "contribution_GeV2": 0.0,
+            "reason": (
+                "open_210_channel_45_off_singlet_census_v20: vacuum⊗off-singlet "
+                "(Φ⊗δΦ)_45 census ready (diagnostic seed in diagonal_210); "
+                "mode-by-mode SM irrep CG remains OPEN"
             ),
         },
         "OPEN_210_CHANNEL_210": {

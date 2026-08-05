@@ -1,0 +1,52 @@
+name: open-210-channel-45-off-singlet-census
+
+on:
+  pull_request:
+    paths:
+      - open_210_channel_45_off_singlet_census_v20.py
+      - test_open_210_channel_45_off_singlet_census_v20.py
+      - so10_210_to_45_projector_v20.py
+      - .github/workflows/open-210-channel-45-off-singlet-census.yml
+  workflow_dispatch:
+
+concurrency:
+  group: open-210-channel-45-off-singlet-census-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  open-210-channel-45-off-singlet-census:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Execute off-singlet mixed-45 census
+        run: python open_210_channel_45_off_singlet_census_v20.py --write
+      - name: Focused regression tests
+        run: python -m unittest -v test_open_210_channel_45_off_singlet_census_v20.py
+      - name: Assert honest scientific scope
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('OPEN_210_CHANNEL_45_OFF_SINGLET_CENSUS_V20.json'))
+          assert r['status']=='OPEN_210_CHANNEL_45_OFF_SINGLET_CENSUS_READY__CG_OPEN'
+          assert r['n_failed']==0
+          assert r['overall_state']=='BLOCKED'
+          assert r['inventory_slot']['status']=='PARTIAL_OFF_SINGLET_CENSUS_READY'
+          assert r['flags']['off_singlet_45_census_ready']
+          assert not r['flags']['off_singlet_45_mode_cg']
+          assert not r['flags']['whole_model_validated']
+          PY
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: open-210-channel-45-off-singlet-census
+          path: |
+            OPEN_210_CHANNEL_45_OFF_SINGLET_CENSUS_V20.json
+            OPEN_210_CHANNEL_45_OFF_SINGLET_CENSUS_V20.md

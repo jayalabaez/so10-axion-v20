@@ -1,0 +1,63 @@
+{
+  "status": "OPEN_210_CHANNEL_45_OFF_SINGLET_CENSUS_READY__CG_OPEN",
+  "overall_state": "BLOCKED",
+  "n_checks": 8,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "ps_span_rank_3": true,
+    "off_singlet_frame_207": true,
+    "vacuum_times_ps_span_45_vanishes": true,
+    "vacuum_times_off_singlet_nontrivial": true,
+    "seed_positive": true,
+    "cg_not_invented": true,
+    "mode_by_mode_sm_not_claimed": true,
+    "whole_model_not_overclaimed": true
+  },
+  "inventory_slot": {
+    "id": "OPEN_210_CHANNEL_45_OFF_SINGLET",
+    "status": "PARTIAL_OFF_SINGLET_CENSUS_READY",
+    "same_field_and_ps_span": "vanishes (upstream)",
+    "off_singlet_mixed": true,
+    "mode_by_mode_cg": false
+  },
+  "selected_vacuum": {
+    "vevs_GeV": {
+      "p": 1983512959779626.5,
+      "a": 2975269439669439.5,
+      "omega": 4958782399449066.0
+    },
+    "phi_norm": 6113597532167986.0
+  },
+  "census": {
+    "n_off_singlet_modes": 207,
+    "norm_sq_min": 5.48028836011943e+29,
+    "norm_sq_max": 3.9942195894887096e+30,
+    "norm_sq_mean": 2.1667289730626366e+30,
+    "norm_sq_rms": 1471981308666192.5,
+    "n_nonzero_modes": 207,
+    "adjoint_sector_fractions": {
+      "so6_color": 0.2982456140350878,
+      "so4_weak": 0.10964912280701751,
+      "so6_so4_cross": 0.5921052631578947
+    }
+  },
+  "diagnostic_seed": {
+    "lam_tilde": 0.01,
+    "OPEN_210_CHANNEL_45_OFF_SINGLET_seed_GeV2": 2.1667289730626365e+28,
+    "formula": "\u0394M\u00b2 \u2248 \u03bb\u0303 \u00b7 RMS_k ||(\u03a6_vac \u2297 \u00ea_k)_45||_F\u00b2"
+  },
+  "flags": {
+    "off_singlet_45_census_ready": true,
+    "off_singlet_45_mode_cg": false,
+    "cg_120_320_1050_4125_invented": false,
+    "whole_model_validated": false,
+    "whole_model_excluded": false
+  },
+  "remaining_blockers": {
+    "off_singlet_45_sm_irrep_cg": true,
+    "missing_cg_120_320_1050_4125": true,
+    "full_nonsusy_vacuum_hessian": true
+  },
+  "verdict": "Off-singlet mixed-45 census: vacuum\u2297PS-span vanishes; 207/207 off-singlet modes source nonzero (\u03a6\u2297\u03b4\u03a6)_45 (RMS=1.471981e+15). Diagnostic seed \u0394M\u00b2\u22482.166729e+28 GeV\u00b2. Mode-by-mode CG remains OPEN. Theory remains BLOCKED."
+}

@@ -1,0 +1,65 @@
+{
+  "status": "UNIQUE_KAPPA_PRINCIPLE_PROBES_DISAGREE__NOT_UNIQUE",
+  "overall_state": "BLOCKED",
+  "n_checks": 8,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "pmin_green": true,
+    "uv_kappa_green": true,
+    "softmin_in_window": true,
+    "portal_kappa_finite": true,
+    "relative_spread_recorded": true,
+    "unique_uv_kappa_false": true,
+    "cg_not_invented": true,
+    "whole_model_not_overclaimed": true
+  },
+  "probes": {
+    "soft_norm_minimizer": {
+      "kappa": 0.0500463358044316,
+      "soft_norm_GeV2": 2.8214898880772682e+22,
+      "optimizer_success": true
+    },
+    "portal_matching_eps_m2_210": {
+      "kappa": 0.896427234549994,
+      "epsilon": 0.0001,
+      "target_A_kappa_GeV2": 1.081939006943777e+28,
+      "formula": "\u03ba = \u03b5 m\u00b2_210 / (M_I hEW\u00b2 v_S)"
+    },
+    "finite_kappa_benchmark": {
+      "kappa": 0.05000012135631412,
+      "soft_norm_GeV2": 2.818876627886035e+22,
+      "lam4": -3.1782723424023393e-06,
+      "lambda_lock": 0.9554946272252851
+    },
+    "best_fit_may_be_near_zero": {
+      "kappa": 9.534022553658872e-07,
+      "note": "Unconstrained best fit often drives \u03ba\u21920 without |\u03ba|\u22650.05 cut"
+    }
+  },
+  "comparison": {
+    "kappa_values": [
+      0.0500463358044316,
+      0.896427234549994,
+      0.05000012135631412
+    ],
+    "absolute_spread": 0.8464271131936798,
+    "relative_spread": 2.5482673157397837,
+    "agree_within_5pct": false,
+    "A_kappa_benchmark_GeV2": 6.0347432075148345e+26
+  },
+  "flags": {
+    "unique_kappa_probes_executed": true,
+    "uv_kappa_uniquely_determined": false,
+    "probes_numerically_agree": false,
+    "cg_120_320_1050_4125_invented": false,
+    "whole_model_validated": false,
+    "whole_model_excluded": false
+  },
+  "remaining_blockers": {
+    "uv_axiom_fixing_unique_kappa": true,
+    "missing_cg_120_320_1050_4125": true,
+    "full_nonsusy_vacuum_hessian": true
+  },
+  "verdict": "Unique-\u03ba probes: soft-norm minimizer \u03ba=0.0500463, portal-matching \u03ba=0.896427, finite-\u03ba benchmark \u03ba=0.0500001 (relative spread 2.548e+00). UV \u03ba remains not uniquely determined. Theory remains BLOCKED."
+}

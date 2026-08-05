@@ -21,6 +21,7 @@ Honesty
 * OPEN_210_CHANNEL_1050 remain OPEN.
 * OPEN_210_CHANNEL_{54,210} have PS-singlet tensor seeds.
 * OPEN_210_CHANNEL_45 same-field/PS-span quadratic vanishes.
+* OPEN_210_CHANNEL_45_OFF_SINGLET has a vacuum⊗off-singlet census (mode CG OPEN).
 * Theory remains BLOCKED.
 """
 
@@ -37,6 +38,7 @@ import component_lift_210_126_10_v20 as clift
 import hilbert_210n_residual_certificate_v20 as hilbert
 import nonsusy_reduced_hessian_v20 as reduced
 import scalar_vacuum_proton_decay_v20 as scalar_pd
+import open_210_channel_45_off_singlet_census_v20 as off45
 import so10_210_to_45_projector_v20 as p45
 import so10_210_to_54_projector_v20 as p54
 import so10_210_to_210_self_map_v20 as p210map
@@ -116,11 +118,15 @@ def build_report() -> dict[str, Any]:
     ch54 = p54.build_report()
     ch45 = p45.build_report()
     ch210 = p210map.build_report()
+    ch45off = off45.build_report()
     seed54 = float(
         ch54["selected_vacuum"]["OPEN_210_CHANNEL_54_seed_GeV2"]
     )
     seed210 = float(
         ch210["selected_vacuum"]["OPEN_210_CHANNEL_210_seed_GeV2"]
+    )
+    seed45off = float(
+        ch45off["diagnostic_seed"]["OPEN_210_CHANNEL_45_OFF_SINGLET_seed_GeV2"]
     )
     # Form-basis isotropic mass remains the reduced P_210 curvature; channel
     # seeds are diagnostic only (210 self-map largely overlaps radial).
@@ -151,8 +157,20 @@ def build_report() -> dict[str, Any]:
             "contribution_GeV2": 0.0,
             "feeds": "none_on_selected_vacuum",
             "scope": (
-                "P_45(M(Φ,Ψ))=0 on span{p,a,ω}; off-singlet mixed 45 remains OPEN"
+                "P_45(M(Φ,Ψ))=0 on span{p,a,ω}; off-singlet mixed census separate"
             ),
+        },
+        "OPEN_210_CHANNEL_45_OFF_SINGLET": {
+            "status": "PARTIAL_OFF_SINGLET_CENSUS_READY",
+            "contribution_GeV2": seed45off,
+            "feeds": "diagnostic_channel_seed_not_added_to_isotropic_m2",
+            "scope": (
+                "vacuum⊗off-singlet (Φ⊗δΦ)_45 census on 207-dim complement; "
+                "mode-by-mode SM irrep CG OPEN"
+            ),
+            "formula": ch45off["diagnostic_seed"]["formula"],
+            "lam_tilde": ch45off["diagnostic_seed"]["lam_tilde"],
+            "n_nonzero_modes": ch45off["census"]["n_nonzero_modes"],
         },
         "OPEN_210_CHANNEL_210": {
             "status": "PARTIAL_PS_SINGLET_TENSOR_MAP_READY",
@@ -166,7 +184,6 @@ def build_report() -> dict[str, Any]:
     }
     still_open = [
         "OPEN_210_CHANNEL_1050",  # see open_210_channel_1050_irreducible_blocker
-        "OPEN_210_CHANNEL_45_OFF_SINGLET",
     ]
 
     checks = {
@@ -183,6 +200,8 @@ def build_report() -> dict[str, Any]:
         "channel_54_projector_green": ch54.get("n_failed", 1) == 0,
         "channel_54_seed_positive": seed54 > 0.0,
         "channel_45_projector_green": ch45.get("n_failed", 1) == 0,
+        "channel_45_off_singlet_census_green": ch45off.get("n_failed", 1) == 0,
+        "channel_45_off_singlet_seed_positive": seed45off > 0.0,
         "channel_210_self_map_green": ch210.get("n_failed", 1) == 0,
         "channel_210_seed_positive": seed210 > 0.0,
         "off_singlet_1050_not_faked": True,
@@ -212,6 +231,12 @@ def build_report() -> dict[str, Any]:
             "status": ch45.get("status"),
             "same_field_vanishes": True,
         },
+        "channel_45_off_singlet": {
+            "status": ch45off.get("status"),
+            "seed_GeV2": seed45off,
+            "n_nonzero_modes": ch45off["census"]["n_nonzero_modes"],
+            "mode_cg": False,
+        },
         "channel_210": {
             "status": ch210.get("status"),
             "seed_GeV2": seed210,
@@ -224,6 +249,7 @@ def build_report() -> dict[str, Any]:
             "open_210_cubic_included_in_reduced": not bool(failures),
             "open_210_channel_54_ps_singlet_seed": not bool(failures),
             "open_210_channel_45_same_field_vanishes": not bool(failures),
+            "open_210_channel_45_off_singlet_census": not bool(failures),
             "open_210_channel_210_ps_singlet_seed": not bool(failures),
             "off_singlet_210_channel_cg": False,
             "full_component_hessian_complete": False,
@@ -232,7 +258,7 @@ def build_report() -> dict[str, Any]:
         },
         "remaining_blockers": {
             "open_210_channel_1050_cg": True,
-            "open_210_channel_45_cg": True,
+            "open_210_channel_45_off_singlet_mode_cg": True,
             "missing_cg_120_320_1050_4125": True,
             "full_nonsusy_vacuum_hessian": True,
         },
@@ -241,8 +267,9 @@ def build_report() -> dict[str, Any]:
             f"M²={mass['mu2_P210_GeV2']:.6e} GeV²; channels 54/210 have "
             f"PS-singlet tensor seeds (ΔM²_54={seed54:.6e}, "
             f"ΔM²_210={seed210:.6e} GeV²); channel 45 vanishes on the "
-            "PS-singlet span. Channel 1050 and off-singlet CG remain OPEN. "
-            "Theory remains BLOCKED."
+            "PS-singlet span; off-singlet mixed-45 census seed "
+            f"ΔM²={seed45off:.6e} GeV² (mode CG OPEN). Channel 1050 remains "
+            "OPEN. Theory remains BLOCKED."
         ),
     }
 

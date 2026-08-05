@@ -1,0 +1,146 @@
+{
+  "status": "REDUCED_AMPLITUDE_FREE_EXTREMA_SOLVED__FULL_RING_OPEN",
+  "overall_state": "BLOCKED",
+  "n_checks": 8,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "physical_hEW_174": true,
+    "minimize_no_soft_ran": true,
+    "minimize_with_soft_ran": true,
+    "selected_start_pd_lam4_0": true,
+    "with_soft_near_selected": true,
+    "full_ring_not_claimed": true,
+    "cg_not_invented": true,
+    "whole_model_not_overclaimed": true
+  },
+  "couplings": {
+    "kappa": 0.05000012135631412,
+    "lam4": 0.0,
+    "lambda_lock": 0.9554946272252851,
+    "note": "\u03bb\u2084=0 survival slice; \u03ba/\u03bb_lock from finite-\u03ba window"
+  },
+  "soft_shifts": {
+    "fields": [
+      "P_210",
+      "DeltaR_126bar",
+      "S_PQ",
+      "Phi17_X"
+    ],
+    "interaction_plus_quartic_gradient_GeV3": [
+      6.113065865911192e+48,
+      0.0,
+      0.0,
+      3.00039343241829e+51
+    ],
+    "delta_m2_GeV2_on_FIELDS": [
+      -6.16387791748068e+32,
+      -0.0,
+      0.0,
+      -0.0,
+      -3.00039343241829e+34
+    ],
+    "stationarity_restored_by_construction": true,
+    "note": "Soft shifts match this module's V\u2084+V_int (\u03bb\u2084=0 survival slice); not the three-field pmin (\u0394,h,S) soft map."
+  },
+  "selected_targets_GeV": {
+    "P_210": 9917564798898132.0,
+    "DeltaR_126bar": 631385523052.4453,
+    "H10_EW": 174.0,
+    "S_PQ": 631385523052.4453,
+    "Phi17_X": 1e+17
+  },
+  "V_selected_GeV4": 7.502499249126418e+67,
+  "free_minimize_no_soft": {
+    "success": true,
+    "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+    "nfev": 10,
+    "V_GeV4": 1.2003998799223626e+65,
+    "rho_GeV": {
+      "P_210": 1983512959779626.5,
+      "DeltaR_126bar": 631385523052.4453,
+      "H10_EW": 174.0,
+      "S_PQ": 631385523052.4453,
+      "Phi17_X": 2e+16
+    },
+    "x0_GeV": {
+      "P_210": 9917564798898132.0,
+      "DeltaR_126bar": 631385523052.4453,
+      "H10_EW": 174.0,
+      "S_PQ": 631385523052.4453,
+      "Phi17_X": 1e+17
+    },
+    "hessian": {
+      "min_eig_GeV2": 15285.310969635348,
+      "positive_definite": true,
+      "eigenvalues_GeV2": [
+        15285.310969635348,
+        3.569744547699958e+23,
+        5.188498553321543e+23,
+        4.3266992551645895e+30,
+        6.000010567738111e+32
+      ]
+    },
+    "relative_shift_from_x0": {
+      "P_210": -0.8,
+      "DeltaR_126bar": 0.0,
+      "S_PQ": 0.0,
+      "Phi17_X": -0.8
+    }
+  },
+  "free_minimize_with_soft": {
+    "success": true,
+    "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+    "nfev": 20,
+    "V_GeV4": -7.502499249307288e+67,
+    "rho_GeV": {
+      "P_210": 9917564798898132.0,
+      "DeltaR_126bar": 631385523052.4453,
+      "H10_EW": 174.0,
+      "S_PQ": 631385523052.4453,
+      "Phi17_X": 9.999999982933043e+16
+    },
+    "x0_GeV": {
+      "P_210": 9917564798898132.0,
+      "DeltaR_126bar": 631385523052.4453,
+      "H10_EW": 174.0,
+      "S_PQ": 631385523052.4453,
+      "Phi17_X": 1e+17
+    },
+    "hessian": {
+      "min_eig_GeV2": 15285.310969635348,
+      "positive_definite": true,
+      "eigenvalues_GeV2": [
+        15285.310969635348,
+        3.5697445477075515e+23,
+        5.1884985543888255e+23,
+        1.0816748135667977e+32,
+        1.5000026368138027e+34
+      ]
+    },
+    "relative_shift_from_x0": {
+      "P_210": 0.0,
+      "DeltaR_126bar": 0.0,
+      "S_PQ": 0.0,
+      "Phi17_X": -1.70669568e-09
+    }
+  },
+  "max_relative_shift": {
+    "with_soft": 1.70669568e-09,
+    "no_soft": 0.8
+  },
+  "flags": {
+    "reduced_free_extrema_solved": true,
+    "selected_near_soft_matched_minimum": true,
+    "full_invariant_ring_extrema": false,
+    "cg_120_320_1050_4125_invented": false,
+    "whole_model_validated": false,
+    "whole_model_excluded": false
+  },
+  "remaining_blockers": {
+    "full_ring_free_extrema": true,
+    "missing_cg_120_320_1050_4125": true,
+    "full_nonsusy_vacuum_hessian": true
+  },
+  "verdict": "Free L-BFGS-B solve on (P,\u0394,S,\u03a6) at hEW=174, \u03bb\u2084=0: with stationarity-restoring soft \u03b4m\u00b2 max relative move 1.707e-09 from selected targets; without soft max relative move 8.000e-01. Full-ring free extrema remain OPEN. Theory remains BLOCKED."
+}
