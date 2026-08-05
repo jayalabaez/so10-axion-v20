@@ -19,7 +19,12 @@ class So10210To45Tests(unittest.TestCase):
         self.assertTrue(self.report["flags"]["so10_210_to_45_projector_ready"])
         self.assertTrue(self.report["flags"]["open_210_channel_45_same_field_vanishes"])
         self.assertTrue(self.report["flags"]["open_210_channel_45_mixed_still_open"])
+        self.assertTrue(self.report["flags"]["symmetric_45_quartic_not_closed_by_this_map"])
         self.assertFalse(self.report["flags"]["whole_model_validated"])
+        self.assertEqual(
+            self.report["inventory_slot"]["status"],
+            "PARTIAL_ANTISYM_SAME_FIELD_VANISHES__SYMMETRIC_SOURCE_OPEN",
+        )
 
     def test_theorem_same_field_vanishes_mixed_lives(self):
         self.assertTrue(self.report["checks"]["same_field_45_vanishes_generic"])

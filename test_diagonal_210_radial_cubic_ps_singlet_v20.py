@@ -35,8 +35,15 @@ class Diagonal210RadialCubicPsSingletTests(unittest.TestCase):
         self.assertGreater(self.report["channel_45_off_singlet"]["seed_GeV2"], 0.0)
         self.assertTrue(self.report["flags"]["open_210_channel_54_ps_singlet_seed"])
         self.assertTrue(self.report["flags"]["open_210_channel_45_same_field_vanishes"])
+        self.assertTrue(self.report["flags"]["open_210_channel_45_symmetric_source_reopened"])
         self.assertTrue(self.report["flags"]["open_210_channel_45_off_singlet_census"])
         self.assertTrue(self.report["flags"]["open_210_channel_45_off_singlet_sm_qn"])
+        self.assertEqual(
+            self.report["filled_slots"]["OPEN_210_CHANNEL_45"]["status"],
+            "PARTIAL_ANTISYM_VANISHES__SYMMETRIC_SOURCE_REOPENED",
+        )
+        self.assertTrue(self.report["channel_45"]["symmetric_source_reopened"])
+        self.assertTrue(self.report["remaining_blockers"]["symmetric_45_quartic_in_potential"])
         self.assertTrue(self.report["flags"]["open_210_channel_210_ps_singlet_seed"])
         self.assertIn("bucket_counts", self.report["channel_45_off_singlet"])
 

@@ -13,4 +13,4 @@
 2. `P_45(M(Φ,Ψ))=0` for all Φ,Ψ in the Aulakh PS-singlet span `{p,a,ω}`.
 3. Singlet⊗off-singlet mixed 45 is generally nonzero.
 
-Proved (210⊗210)→45 via P_45=(M−Mᵀ)/2 on the four-form triple-contraction kernel. Same-field and full PS-singlet-span (p,a,ω) bilinears vanish; singlet⊗off-singlet is nontrivial. OPEN_210_CHANNEL_45 is PARTIAL at the selected-vacuum quadratic level. Theory remains BLOCKED.
+Proved antisymmetric (210⊗210)_a→45 via P_45=(M−Mᵀ)/2: same-field and PS-singlet-span bilinears vanish; singlet⊗off-singlet is nontrivial. This does not close the source Sym²→45 quartic (gr-qc/9507053). Theory remains BLOCKED.

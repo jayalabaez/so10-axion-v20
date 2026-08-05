@@ -1,0 +1,48 @@
+{
+  "checks": {
+    "bilinear_swap_symmetric": true,
+    "dimension_45": true,
+    "generic_same_field_nonzero": true,
+    "infinitesimal_equivariance": true,
+    "old_antisymmetric_product_self_zero": true,
+    "old_map_not_the_symmetric_quartic_45": true,
+    "output_antisymmetric": true,
+    "simple_anchor_nonzero": true,
+    "simple_anchor_normalization": true,
+    "whole_model_not_overclaimed": true
+  },
+  "diagnostics": {
+    "equivariance_relative_residual": 5.312211383126342e-16,
+    "generic_mixed_norm_sq": 10713115.038000626,
+    "generic_self_norm_sq": 30395062.430562913,
+    "old_antisymmetric_self_max_abs": 1.7763568394002505e-15
+  },
+  "failures": [],
+  "flags": {
+    "antisymmetric_product_45_distinguished": true,
+    "downstream_scalar_closures_require_revalidation": true,
+    "old_same_field_45_vanishing_cannot_close_quartic_channel": true,
+    "same_field_symmetric_45_generically_nonzero": true,
+    "symmetric_product_45_projector_ready": true,
+    "whole_model_excluded": false,
+    "whole_model_validated": false
+  },
+  "n_checks": 10,
+  "n_failed": 0,
+  "normalization": {
+    "anchor_Q_89": 137.69033579532214,
+    "anchor_expected_Q_89": 137.69033579532214,
+    "ordered_component_factor": 576,
+    "repository_basis": "independent increasing four-index components",
+    "source_factor": 68.84516789766107
+  },
+  "overall_state": "BLOCKED",
+  "source": {
+    "arxiv": "gr-qc/9507053",
+    "equation": "2.8",
+    "formula": "Q_ab=(1/sqrt(70))*epsilon_ab cdef ghij Phi_cdef Psi_ghij",
+    "paper": "Esposito, Miele, Rosa, One-loop effective potential for SO(10) GUT theories in de Sitter space"
+  },
+  "status": "SOURCE_CORRECT_SYMMETRIC_210x210_TO_45_READY",
+  "verdict": "The source-normalized symmetric-product 45 is nonzero for a generic single 210 field. The existing triple-contraction antisymmetric 45 is a different channel and cannot remove the 45 quartic invariant. Affected scalar-potential, BFB, Hessian, threshold, and vacuum conclusions must be revalidated."
+}

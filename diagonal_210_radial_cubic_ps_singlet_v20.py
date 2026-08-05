@@ -20,7 +20,8 @@ Honesty
 * PS-singlet / radial fill only — not mode-by-mode 210 fluctuation CG.
 * OPEN_210_CHANNEL_1050 remain OPEN.
 * OPEN_210_CHANNEL_{54,210} have PS-singlet tensor seeds.
-* OPEN_210_CHANNEL_45 same-field/PS-span quadratic vanishes.
+* OPEN_210_CHANNEL_45 antisymmetric same-field/PS-span quadratic vanishes;
+  source-correct Sym²→45 quartic is REOPENED (gr-qc/9507053).
 * OPEN_210_CHANNEL_45_OFF_SINGLET has a vacuum⊗off-singlet census (mode CG OPEN).
 * Theory remains BLOCKED.
 """
@@ -41,6 +42,7 @@ import scalar_vacuum_proton_decay_v20 as scalar_pd
 import open_210_channel_45_off_singlet_census_v20 as off45
 import open_210_channel_45_off_singlet_sm_quantum_numbers_v20 as off45qn
 import open_210_channel_54_off_singlet_census_v20 as off54mod
+import so10_210_symmetric_45_source_projector_v20 as sym45
 import so10_210_to_45_projector_v20 as p45
 import so10_210_to_54_projector_v20 as p54
 import so10_210_to_210_self_map_v20 as p210map
@@ -123,6 +125,7 @@ def build_report() -> dict[str, Any]:
     ch45off = off45.build_report()
     ch45qn = off45qn.build_report()
     ch54off = off54mod.build_report()
+    ch45sym = sym45.build_report()
     seed54 = float(
         ch54["selected_vacuum"]["OPEN_210_CHANNEL_54_seed_GeV2"]
     )
@@ -165,11 +168,17 @@ def build_report() -> dict[str, Any]:
             ),
         },
         "OPEN_210_CHANNEL_45": {
-            "status": "PARTIAL_PS_AND_SAME_FIELD_QUADRATIC_VANISHES",
+            "status": "PARTIAL_ANTISYM_VANISHES__SYMMETRIC_SOURCE_REOPENED",
             "contribution_GeV2": 0.0,
-            "feeds": "none_on_selected_vacuum",
+            "feeds": "antisymmetric_mixed_and_symmetric_quartic_dual_channel",
             "scope": (
-                "P_45(M(Φ,Ψ))=0 on span{p,a,ω}; off-singlet mixed census separate"
+                "Antisym P_45 vanishes on same-field and span{p,a,ω}; "
+                "source Sym²→45 (gr-qc/9507053) is nonzero on generic/"
+                "selected singlet vacuum — must enter the potential"
+            ),
+            "symmetric_source_status": ch45sym.get("status"),
+            "symmetric_source_nonzero": bool(
+                ch45sym.get("flags", {}).get("generic_same_field_nonzero", True)
             ),
         },
         "OPEN_210_CHANNEL_45_OFF_SINGLET": {
@@ -214,6 +223,7 @@ def build_report() -> dict[str, Any]:
         "channel_54_seed_positive": seed54 > 0.0,
         "channel_54_off_singlet_census_green": ch54off.get("n_failed", 1) == 0,
         "channel_45_projector_green": ch45.get("n_failed", 1) == 0,
+        "channel_45_symmetric_source_green": ch45sym.get("n_failed", 1) == 0,
         "channel_45_off_singlet_census_green": ch45off.get("n_failed", 1) == 0,
         "channel_45_off_singlet_seed_positive": seed45off > 0.0,
         "channel_45_off_singlet_sm_qn_green": ch45qn.get("n_failed", 1) == 0,
@@ -248,7 +258,9 @@ def build_report() -> dict[str, Any]:
         },
         "channel_45": {
             "status": ch45.get("status"),
-            "same_field_vanishes": True,
+            "same_field_vanishes_antisym": True,
+            "symmetric_source_status": ch45sym.get("status"),
+            "symmetric_source_reopened": True,
         },
         "channel_45_off_singlet": {
             "status": ch45off.get("status"),
@@ -270,6 +282,7 @@ def build_report() -> dict[str, Any]:
             "open_210_cubic_included_in_reduced": not bool(failures),
             "open_210_channel_54_ps_singlet_seed": not bool(failures),
             "open_210_channel_45_same_field_vanishes": not bool(failures),
+            "open_210_channel_45_symmetric_source_reopened": True,
             "open_210_channel_45_off_singlet_census": not bool(failures),
             "open_210_channel_45_off_singlet_sm_qn": not bool(failures),
             "open_210_channel_210_ps_singlet_seed": not bool(failures),
@@ -281,6 +294,7 @@ def build_report() -> dict[str, Any]:
         "remaining_blockers": {
             "open_210_channel_1050_cg": True,
             "open_210_channel_45_off_singlet_mode_cg": True,
+            "symmetric_45_quartic_in_potential": True,
             "missing_cg_120_320_1050_4125": True,
             "full_nonsusy_vacuum_hessian": True,
         },
@@ -288,10 +302,10 @@ def build_report() -> dict[str, Any]:
             "OPEN_210_RADIAL/CUBIC filled by reduced P_210 "
             f"M²={mass['mu2_P210_GeV2']:.6e} GeV²; channels 54/210 have "
             f"PS-singlet tensor seeds (ΔM²_54={seed54:.6e}, "
-            f"ΔM²_210={seed210:.6e} GeV²); channel 45 vanishes on the "
-            "PS-singlet span; off-singlet mixed-45 census seed "
-            f"ΔM²={seed45off:.6e} GeV² (mode CG OPEN). Channel 1050 remains "
-            "OPEN. Theory remains BLOCKED."
+            f"ΔM²_210={seed210:.6e} GeV²); antisym channel 45 vanishes on the "
+            "PS-singlet span but source Sym²→45 is REOPENED; off-singlet "
+            f"mixed-45 census seed ΔM²={seed45off:.6e} GeV² (mode CG OPEN). "
+            "Channel 1050 remains OPEN. Theory remains BLOCKED."
         ),
     }
 

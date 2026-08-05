@@ -204,12 +204,22 @@ advanced via the published threshold bundle.)
 
 `so10_210_to_45_projector_v20.py` uses the same kernel with
 `P_45=(M−Mᵀ)/2`. Swap identity proves `P_45(M(Φ,Φ))=0` for every Φ.
-Stronger: the full Aulakh PS-singlet span `{p,a,ω}` has vanishing 45
-bilinears among itself, so selected-vacuum quadratic `OPEN_210_CHANNEL_45`
-is closed; singlet⊗off-singlet remains nontrivial and OPEN.
+Stronger: the full Aulakh PS-singlet span `{p,a,ω}` has vanishing
+**antisymmetric** 45 bilinears among itself. That does **not** close the
+source-correct **Sym²(210)→45** quartic (`so10_210_symmetric_45_source_projector_v20`,
+gr-qc/9507053 Eq. 2.8): same-field / selected-singlet span are nontrivial
+there. `OPEN_210_CHANNEL_45` is therefore
+`PARTIAL_ANTISYM_VANISHES__SYMMETRIC_SOURCE_REOPENED`. Antisym mixed
+singlet⊗off-singlet remains nontrivial and OPEN.
 
-These maps are wired into `diagonal_210_radial_cubic_ps_singlet_v20` and
-absorbed in the isotropic inventory without inventing 120/320/1050/4125.
+`source_corrected_scalar_dependency_gate_v20.py` supersedes the old
+“residual = 770+1050+4125” 1050-blocker as incomplete (true Sym² residual
+after 1/45/54/210 includes 1050+1050bar+4125+8910+5940+770). Downstream
+scalar ledger / BFB / Hessian statuses require revalidation after the
+source-normalized 45 enters the potential. Do not invent 120/320/1050/4125.
+
+These dual-channel maps are wired into `diagonal_210_radial_cubic_ps_singlet_v20`
+and absorbed in the isotropic inventory.
 
 ## Completed (210⊗210)→210 self-map + Goldstone SM root catalog
 
@@ -256,9 +266,12 @@ diagnostic only (not free extrema). Full-ring extrema remain OPEN.
 `min(A,C)/5`. Spectrum gate remains 37 zeros / 701 positive / 0 negative.
 `effective_pq_axion_potential_v20` uses the same physical `A_κ`.
 
-`open_210_channel_1050_irreducible_blocker_v20.py` proves
-`OPEN_210_CHANNEL_1050` cannot be filled from residual after 1/54/210 maps
-(residual mixes ≥770⊕1050⊕4125). Status: `OPEN_AWAITING_YOUNG_CG`. No CG invented.
+`open_210_channel_1050_irreducible_blocker_v20.py` proved residual after
+1/54/210 mixes ≥770⊕1050⊕4125 (`OPEN_AWAITING_YOUNG_CG`). That residual
+census is **incomplete** once Sym²→45 is restored: see
+`so10_210_symmetric_product_source_audit_v20` / dependency gate
+(true residual after 1/45/54/210 includes 1050+1050bar+4125+8910+5940+770).
+No CG invented; 1050 remains OPEN.
 
 ## Completed off-singlet mixed-45 census + free extrema + unique-κ probes
 
@@ -311,6 +324,10 @@ exponent SVD rank (full ring with CG still OPEN).
 hEW (full stationarity / unique κ remain OPEN).
 
 ## Correct next goal
+
+**Immediate:** insert source-normalized Sym²(210)→45 into the reduced
+potential / BFB / Hessian path and reconcile 45/54/210(/1050) identities
+in one Cartesian convention. Do **not** claim G1 closed.
 
 Theory completion still requires transcribed CG for 120/320/1050/4125 and
 off-singlet mixed-45 **CG coefficients** (G1), mode-by-mode diagonals (G2),

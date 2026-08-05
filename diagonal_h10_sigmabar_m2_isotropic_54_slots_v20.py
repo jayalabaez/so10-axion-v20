@@ -208,11 +208,12 @@ def build_partial_diagonals(
             ),
         },
         "OPEN_210_CHANNEL_45": {
-            "status": "PARTIAL_PS_AND_SAME_FIELD_QUADRATIC_VANISHES",
+            "status": "PARTIAL_ANTISYM_VANISHES__SYMMETRIC_SOURCE_REOPENED",
             "contribution_GeV2": 0.0,
             "reason": (
-                "so10_210_to_45_projector_v20: P_45 vanishes on same-field and "
-                "on the full PS-singlet span {p,a,ω}"
+                "Antisym so10_210_to_45_projector: P_45 vanishes on same-field "
+                "and PS-singlet span; source Sym²→45 (gr-qc/9507053) is nonzero "
+                "and reopens the same-field 45 quartic — revalidation required"
             ),
         },
         "OPEN_210_CHANNEL_45_OFF_SINGLET": {

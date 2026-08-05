@@ -19,14 +19,17 @@ Swap identity ``M(Φ,Ψ)ᵀ = M(Ψ,Φ)`` implies:
 * ``P_45(M(Φ,Ψ))`` is generally nonzero for Φ ≠ Ψ
   ⇒ Mixed 210_a–210_b / cubic / portal uses remain open and nontrivial.
 
-This is a structural closure result for inventory slot
-``OPEN_210_CHANNEL_45`` at the same-field quadratic level — not an invented
-CG table, and not a fill of 120/320/1050/4125.
+This is a structural result for the **antisymmetric** inventory channel
+``OPEN_210_CHANNEL_45_ANTISYM`` (same-field / PS-span quadratic vanishes).
+It is not a fill of the source Sym²→45 quartic, and not 120/320/1050/4125 CG.
 
 Honesty
 -------
-* Off-singlet fluctuation CG still OPEN.
-* Same-field 45 quadratic vanishes; mixed uses remain OPEN.
+* This module is the **antisymmetric** Kronecker channel only.
+* Same-field ``P_45(M(Φ,Φ))=0`` does **not** remove the source-correct
+  **symmetric-product** 45 quartic (``so10_210_symmetric_45_source_projector_v20``,
+  arXiv:gr-qc/9507053 Eq. 2.8), which is nonzero for a generic single 210.
+* Off-singlet mixed antisym CG still OPEN.
 * Theory remains BLOCKED.
 """
 
@@ -168,16 +171,20 @@ def build_report() -> dict[str, Any]:
             "selected_vacuum_same_field_fnorm": frobenius(vac45),
         },
         "inventory_slot": {
-            "id": "OPEN_210_CHANNEL_45",
-            "status": "PARTIAL_PS_AND_SAME_FIELD_QUADRATIC_VANISHES",
-            "same_field_quadratic_mass": False,
-            "ps_singlet_span_quadratic_mass": False,
+            "id": "OPEN_210_CHANNEL_45_ANTISYM",
+            "status": "PARTIAL_ANTISYM_SAME_FIELD_VANISHES__SYMMETRIC_SOURCE_OPEN",
+            "same_field_quadratic_mass_antisym": False,
+            "ps_singlet_span_quadratic_mass_antisym": False,
             "mixed_off_singlet_uses": True,
+            "symmetric_product_45_quartic": (
+                "OPEN — see so10_210_symmetric_45_source_projector_v20"
+            ),
             "off_singlet_fluctuation_cg": False,
             "physics": (
-                "Diagonal M² from (ΦΦ)_45 vanishes for any single 210 and for "
-                "the full Aulakh PS-singlet span. Nontrivial 45 masses require "
-                "off-singlet 210 fluctuations or higher operators."
+                "Antisymmetric Kronecker (ΦΦ)_45 vanishes for any single 210 "
+                "and for span{p,a,ω}. The source-correct Sym²(210)→45 map "
+                "(gr-qc/9507053) is a different channel and is nonzero for a "
+                "generic single field / selected singlet vacuum."
             ),
         },
         "flags": {
@@ -185,6 +192,7 @@ def build_report() -> dict[str, Any]:
             "open_210_channel_45_same_field_vanishes": not bool(failures),
             "open_210_channel_45_ps_span_vanishes": not bool(failures),
             "open_210_channel_45_mixed_still_open": True,
+            "symmetric_45_quartic_not_closed_by_this_map": True,
             "off_singlet_210_fluctuation_cg": False,
             "cg_120_320_1050_4125_invented": False,
             "full_component_hessian_complete": False,
@@ -192,23 +200,20 @@ def build_report() -> dict[str, Any]:
             "whole_model_excluded": False,
         },
         "remaining_blockers": {
+            "symmetric_45_source_quartic_in_potential": True,
             "mixed_45_off_singlet_operator_cg": True,
-            "off_singlet_54_210_1050_projectors": True,
             "missing_cg_120_320_1050_4125": True,
             "full_nonsusy_vacuum_hessian": True,
         },
         "verdict": (
-            "Proved (210⊗210)→45 via P_45=(M−Mᵀ)/2 on the four-form "
-            "triple-contraction kernel. Same-field and full PS-singlet-span "
-            "(p,a,ω) bilinears vanish; singlet⊗off-singlet is nontrivial. "
-            "OPEN_210_CHANNEL_45 is PARTIAL at the selected-vacuum quadratic "
-            "level. Theory remains BLOCKED."
+            "Proved antisymmetric (210⊗210)_a→45 via P_45=(M−Mᵀ)/2: same-field "
+            "and PS-singlet-span bilinears vanish; singlet⊗off-singlet is "
+            "nontrivial. This does not close the source Sym²→45 quartic "
+            "(gr-qc/9507053). Theory remains BLOCKED."
         ),
         "physics_brainstorm_next": [
-            "Build (210⊗210)→210 self-map (four-form identity / Young projector)",
-            "Quartic co-positivity on reduced (P,a,ω,Δ,h,S) amplitudes",
-            "Root catalog of the 36 Goldstones under SU(3)_c×U(1)_EM",
-            "Integrate out heavy 210 modes → V_eff(a) for the PQ axion",
+            "Insert source-normalized Sym²→45 into the reduced potential / BFB",
+            "Reconcile 54/210/1050 norm identities in one Cartesian convention",
             "Do not invent 120/320/1050/4125 CG tables",
         ],
     }

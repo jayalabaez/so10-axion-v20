@@ -1,0 +1,184 @@
+{
+  "status": "SCALAR_THEORY_CLOSURE_LEDGER_BLOCKED__PARTIAL_G2_G3_G4_G5_G6",
+  "overall_state": "BLOCKED",
+  "n_checks": 10,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "eight_gates_listed": true,
+    "no_gate_falsely_closed": true,
+    "g4_partial_from_pq_skeleton": true,
+    "g5_partial_from_scoped_bfb": true,
+    "g6_partial_from_threshold_bundle": true,
+    "mixed10_absorption_green": true,
+    "d210_ps_singlet_green": true,
+    "pq_extended_green": true,
+    "whole_model_not_overclaimed": true,
+    "theory_not_claimed_complete": true
+  },
+  "issue": "#86",
+  "gate_summary": {
+    "n_closed": 0,
+    "n_partial": 5,
+    "n_open": 3,
+    "n_gates": 8
+  },
+  "gates": [
+    {
+      "id": "G1",
+      "title": "Complete charge-allowed invariant ring + CG tensors",
+      "status": "OPEN",
+      "evidence": [
+        "diagonal_h10_sigmabar_m2_channel_inventory_v20 transcribed",
+        "OPEN_MIXED_126 PS-singlet fill",
+        "OPEN_MIXED_10 absorbed into portal B (not a diagonal)",
+        "OPEN_210_RADIAL/CUBIC PS-singlet fill",
+        "exact (210\u2297210)\u219254 four-form projector + PS-singlet seed",
+        "(210\u2297210)_a\u219245 antisym same-field/PS-span vanishes",
+        "source Sym\u00b2(210)\u219245 (gr-qc/9507053) REOPENED \u2014 dual channel",
+        "Sym\u00b2 residual after 1/45/54/210 includes 770+1050+1050bar+4125+8910+5940",
+        "OPEN_210_CHANNEL_1050 blocker superseded as incomplete residual",
+        "FULL_MIXED_REP_INVARIANT_RING scaffold (independence PARTIAL)",
+        "charge-subspace linear-independence certificate (PARTIAL)"
+      ],
+      "blockers": [
+        "source-normalized Sym\u00b2\u219245 must enter potential / BFB / Hessian",
+        "CG tensors 120 / 320 / 1050 / 4125 missing",
+        "true Sym\u00b2 residual sectors 8910/5940/1050bar still OPEN",
+        "off-singlet-45 mode-by-mode SM irrep CG coefficients OPEN",
+        "full ring independence with CG OPEN",
+        "downstream scalar ledger revalidation after source correction"
+      ],
+      "closed": false
+    },
+    {
+      "id": "G2",
+      "title": "Full tensor-projected potential and complete A/C diagonals",
+      "status": "PARTIAL",
+      "evidence": [
+        "direct lambda4 vS T_Phi portal B closed",
+        "Schur 272 gate with partial isotropic/norm A/C",
+        "Hodge C embedding + full (Re/Im H) portal lift",
+        "210 PS-singlet m2 from reduced Hessian: DIAGONAL_210_RADIAL_CUBIC_PS_SINGLET_FILLED__OFF_SINGLET_CG_OPEN",
+        "210\u219254/45/210 maps + source Sym\u00b2\u219245 reopen (dependency gate)"
+      ],
+      "blockers": [
+        "source-corrected quartic basis before claiming A/C closed",
+        "mode-by-mode CG for remaining open slots",
+        "FULL_TENSOR_PROJECTED_POTENTIAL_V20.json absent"
+      ],
+      "closed": false
+    },
+    {
+      "id": "G3",
+      "title": "Stationarity and hierarchy at hEW=174 GeV",
+      "status": "PARTIAL",
+      "evidence": [
+        "unique_soft_scale_stationarity: UNIQUE_SOFT_SCALE_FROM_STATIONARITY__TAU_P_OPEN",
+        "component_lift ledger includes hEW=174",
+        "UV \u03ba stationarity-constrained at physical hEW (not unique)",
+        "physical A_\u03ba = |\u03ba| M_I hEW\u00b2 v_S",
+        "unique-\u03ba principle probes disagree (soft-norm vs portal vs window)",
+        "technically natural hierarchy under soft matching (PARTIAL)"
+      ],
+      "blockers": [
+        "full stationarity of complete potential OPEN",
+        "unique UV \u03ba not fixed (finite window + soft shifts; probes disagree)"
+      ],
+      "closed": false
+    },
+    {
+      "id": "G4",
+      "title": "Gauge+axion projected component Hessian",
+      "status": "PARTIAL",
+      "evidence": [
+        "SO(10)\u2192U(1)_EM orbit rank 36",
+        "Goldstone SM root catalog: stab L2 = 8_color + 1_EM",
+        "extended dim-738 form-basis skeleton with PS 210 mass",
+        "PQ axion quotient: 37 zeros / 701 positive / 0 negative",
+        "physical A_\u03ba wired into extended Hessian (|\u03ba| M_I hEW\u00b2 v_S)",
+        "tree-level V_eff(a)=0 after integrating heavy CP-odd (m\u00b2=5 A_\u03ba)",
+        "Schur 272 \u2194 form 738 portal identified (pullback/2 = [P,\u2212Q])",
+        "pq module status: EXTENDED_HESSIAN_PQ_AXION_QUOTIENT_READY__FULL_HESSIAN_OPEN"
+      ],
+      "blockers": [
+        "not the complete dynamical M\u00b2 (missing CG channels)",
+        "FULL_NONSUSY_VACUUM_HESSIAN_V20.json absent"
+      ],
+      "closed": false
+    },
+    {
+      "id": "G5",
+      "title": "Global vacuum selection and boundedness",
+      "status": "PARTIAL",
+      "evidence": [
+        "scoped_bfb_boundedness_gate: SCOPED_BFB_BOUNDEDNESS_GATE_PARTIAL__FULL_RING_OPEN",
+        "reduced quartic spectral PD + co-positivity + Schur PD",
+        "projected Goldstone+axion skeleton non-negative",
+        "reduced polynomial competing-extrema census (historical \u03bb\u2084 tachyonic)",
+        "reduced free-extrema L-BFGS-B: soft-matched near selected; bare drifts"
+      ],
+      "blockers": [
+        "competing extrema of the complete potential",
+        "BFB certificate for the full invariant ring"
+      ],
+      "closed": false
+    },
+    {
+      "id": "G6",
+      "title": "Physical thresholds and proton-decay predictions",
+      "status": "PARTIAL",
+      "evidence": [
+        "isotropic PS multiplicities for filled A/C",
+        "Aulakh Table-1 unmixed 210 + R-octet thresholds",
+        "Susyno/Fonseca gauge X/Y/U/V from component VEVs",
+        "partial_g6_threshold_spectrum_certificate_v20 bundled"
+      ],
+      "blockers": [
+        "physical triplet/doublet/singlet spectrum from full M\u00b2",
+        "threshold matching from complete Hessian"
+      ],
+      "closed": false
+    },
+    {
+      "id": "G7",
+      "title": "Two-loop RGE / threshold evolution",
+      "status": "OPEN",
+      "evidence": [
+        "pati_salam_yukawa_matching one-loop layer"
+      ],
+      "blockers": [
+        "two-loop SO(10)/PS/SM threshold closure"
+      ],
+      "closed": false
+    },
+    {
+      "id": "G8",
+      "title": "Unique \u03c4_p / whole-model validation",
+      "status": "OPEN",
+      "evidence": [
+        "reduced-sector physical phase closed after Z' quotient",
+        "tree-level V_eff(a) flat; UV \u03ba OPEN"
+      ],
+      "blockers": [
+        "unique \u03c4_p from complete UV potential",
+        "whole_model_validated remains false by construction"
+      ],
+      "closed": false
+    }
+  ],
+  "upstream": {
+    "mixed10_status": "OPEN_MIXED_10_ABSORBED_INTO_PORTAL_B__DIAGONAL_NOT_CLAIMED",
+    "d210_status": "DIAGONAL_210_RADIAL_CUBIC_PS_SINGLET_FILLED__OFF_SINGLET_CG_OPEN",
+    "pq_extended_status": "EXTENDED_HESSIAN_PQ_AXION_QUOTIENT_READY__FULL_HESSIAN_OPEN",
+    "soft_stationarity_status": "UNIQUE_SOFT_SCALE_FROM_STATIONARITY__TAU_P_OPEN",
+    "scoped_bfb_status": "SCOPED_BFB_BOUNDEDNESS_GATE_PARTIAL__FULL_RING_OPEN"
+  },
+  "flags": {
+    "theory_closure_ledger_ready": true,
+    "whole_model_validated": false,
+    "whole_model_excluded": false,
+    "theory_complete": false
+  },
+  "verdict": "Scalar closure ledger: 0/8 CLOSED, 5/8 PARTIAL, 3/8 OPEN. G2\u2013G6 are PARTIAL via portal/Schur/210 PS-singlet, soft stationarity, Goldstone+axion Hessian skeleton, scoped BFB, and published threshold bundle. Missing CG (120/320/1050/4125), full Hessian, global BFB, two-loop RGE, and unique \u03c4_p keep the theory BLOCKED \u2014 not complete."
+}

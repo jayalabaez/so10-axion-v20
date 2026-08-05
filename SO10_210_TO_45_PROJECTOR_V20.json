@@ -34,19 +34,21 @@
     "selected_vacuum_same_field_fnorm": 0.0
   },
   "inventory_slot": {
-    "id": "OPEN_210_CHANNEL_45",
-    "status": "PARTIAL_PS_AND_SAME_FIELD_QUADRATIC_VANISHES",
-    "same_field_quadratic_mass": false,
-    "ps_singlet_span_quadratic_mass": false,
+    "id": "OPEN_210_CHANNEL_45_ANTISYM",
+    "status": "PARTIAL_ANTISYM_SAME_FIELD_VANISHES__SYMMETRIC_SOURCE_OPEN",
+    "same_field_quadratic_mass_antisym": false,
+    "ps_singlet_span_quadratic_mass_antisym": false,
     "mixed_off_singlet_uses": true,
+    "symmetric_product_45_quartic": "OPEN \u2014 see so10_210_symmetric_45_source_projector_v20",
     "off_singlet_fluctuation_cg": false,
-    "physics": "Diagonal M\u00b2 from (\u03a6\u03a6)_45 vanishes for any single 210 and for the full Aulakh PS-singlet span. Nontrivial 45 masses require off-singlet 210 fluctuations or higher operators."
+    "physics": "Antisymmetric Kronecker (\u03a6\u03a6)_45 vanishes for any single 210 and for span{p,a,\u03c9}. The source-correct Sym\u00b2(210)\u219245 map (gr-qc/9507053) is a different channel and is nonzero for a generic single field / selected singlet vacuum."
   },
   "flags": {
     "so10_210_to_45_projector_ready": true,
     "open_210_channel_45_same_field_vanishes": true,
     "open_210_channel_45_ps_span_vanishes": true,
     "open_210_channel_45_mixed_still_open": true,
+    "symmetric_45_quartic_not_closed_by_this_map": true,
     "off_singlet_210_fluctuation_cg": false,
     "cg_120_320_1050_4125_invented": false,
     "full_component_hessian_complete": false,
@@ -54,17 +56,15 @@
     "whole_model_excluded": false
   },
   "remaining_blockers": {
+    "symmetric_45_source_quartic_in_potential": true,
     "mixed_45_off_singlet_operator_cg": true,
-    "off_singlet_54_210_1050_projectors": true,
     "missing_cg_120_320_1050_4125": true,
     "full_nonsusy_vacuum_hessian": true
   },
-  "verdict": "Proved (210\u2297210)\u219245 via P_45=(M\u2212M\u1d40)/2 on the four-form triple-contraction kernel. Same-field and full PS-singlet-span (p,a,\u03c9) bilinears vanish; singlet\u2297off-singlet is nontrivial. OPEN_210_CHANNEL_45 is PARTIAL at the selected-vacuum quadratic level. Theory remains BLOCKED.",
+  "verdict": "Proved antisymmetric (210\u2297210)_a\u219245 via P_45=(M\u2212M\u1d40)/2: same-field and PS-singlet-span bilinears vanish; singlet\u2297off-singlet is nontrivial. This does not close the source Sym\u00b2\u219245 quartic (gr-qc/9507053). Theory remains BLOCKED.",
   "physics_brainstorm_next": [
-    "Build (210\u2297210)\u2192210 self-map (four-form identity / Young projector)",
-    "Quartic co-positivity on reduced (P,a,\u03c9,\u0394,h,S) amplitudes",
-    "Root catalog of the 36 Goldstones under SU(3)_c\u00d7U(1)_EM",
-    "Integrate out heavy 210 modes \u2192 V_eff(a) for the PQ axion",
+    "Insert source-normalized Sym\u00b2\u219245 into the reduced potential / BFB",
+    "Reconcile 54/210/1050 norm identities in one Cartesian convention",
     "Do not invent 120/320/1050/4125 CG tables"
   ]
 }

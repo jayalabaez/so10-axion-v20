@@ -1,0 +1,168 @@
+{
+  "checks": {
+    "full_mode_cg_not_falsely_claimed": true,
+    "old_residual_dimension_incomplete": true,
+    "omitted_dimension_accounted": true,
+    "published_1050_identity_recorded": true,
+    "source_decomposition_dimension_closes": true,
+    "symmetric_45_source_projector_green": true,
+    "symmetric_space_dimension": true,
+    "true_residual_after_1_45_54_210": true,
+    "two_distinct_1050_sectors_present": true,
+    "whole_model_not_overclaimed": true
+  },
+  "failures": [],
+  "flags": {
+    "downstream_revalidation_required": true,
+    "g1_closed": false,
+    "g2_closed": false,
+    "old_1050_blocker_superseded": true,
+    "source_decomposition_corrected": true,
+    "symmetric_45_restored": true,
+    "whole_model_excluded": false,
+    "whole_model_validated": false
+  },
+  "invalidated_or_reopened": [
+    "same-field symmetric 45 channel marked absent",
+    "old residual irrep dimension 5945",
+    "G1 ring completeness arguments that omit 45/1050bar/8910/5940",
+    "BFB or vacuum conclusions that set the symmetric 45 quartic to zero",
+    "component Hessian and threshold conclusions inheriting that reduced potential"
+  ],
+  "n_checks": 10,
+  "n_failed": 0,
+  "overall_state": "BLOCKED",
+  "projector_route": {
+    "conjugate_1050_caveat": "1050 and 1050bar share the quadratic Casimir; separating them requires an additional commuting invariant/chirality operator.",
+    "published_norm_identity_preferred_for_210_only_quartic": true,
+    "quadratic_casimir_spectral_projection": "Construct total SO(10) Casimir on Sym^2(Lambda^4 R10) and use spectral polynomials for sectors with distinct Casimir eigenvalues."
+  },
+  "published_1050_norm_identity": {
+    "can_close_210_only_quartic_invariant_after_normalization": true,
+    "closes_full_1050_mode_cg": false,
+    "coefficients": {
+      "norm_210_sq": 1.25,
+      "norm_45_sq": -5.833333333333333,
+      "norm_54_sq": -2.3333333333333335,
+      "norm_phi_fourth": 0.1
+    },
+    "formula": "||(Phi Phi)_1050||^2 = -35/6 ||(Phi Phi)_45||^2 -7/3 ||(Phi Phi)_54||^2 +5/4 ||(Phi Phi)_210||^2 +1/10 ||Phi||^4",
+    "normalization_reconciliation_complete": false
+  },
+  "remaining_to_close": [
+    "reconcile exact source normalizations for 45, 54, and 210 maps",
+    "verify Eq. (2.6) numerically on random four-forms",
+    "enumerate all mixed-representation invariant multiplicities",
+    "construct mode-level CG tensors needed by the complete component Hessian",
+    "rerun stationarity, BFB, Goldstone projection, thresholds, and proton decay"
+  ],
+  "source": {
+    "arxiv": "gr-qc/9507053",
+    "decomposition_equation": "2.4",
+    "paper": "Esposito, Miele, Rosa, One-loop effective potential for SO(10) GUT theories in de Sitter space",
+    "quartic_basis_equations": [
+      "2.5",
+      "2.6",
+      "2.8",
+      "2.9",
+      "2.10"
+    ]
+  },
+  "status": "SOURCE_CORRECTED_SYM2_210_DECOMPOSITION__G1_REVALIDATION_REQUIRED",
+  "superseded_blocker": {
+    "old_claim_superseded": "Residual after 1/54/210 is not only 770+1050+4125. The exact symmetric product also contains 45, 1050bar, 8910, and 5940.",
+    "old_residual_dimension": 5945,
+    "old_residual_irreps": {
+      "1050": 1050,
+      "4125": 4125,
+      "770": 770
+    },
+    "omitted_dimension_before_source45_fix": 15945,
+    "omitted_names_before_source45_fix": [
+      "45",
+      "1050bar",
+      "8910",
+      "5940"
+    ]
+  },
+  "symmetric_product": {
+    "constructed_source_level_channels": [
+      "1",
+      "210",
+      "45",
+      "54"
+    ],
+    "decomposition_dimension": 22155,
+    "dimension": 22155,
+    "irreps": [
+      {
+        "dimension": 1,
+        "name": "1"
+      },
+      {
+        "dimension": 45,
+        "name": "45"
+      },
+      {
+        "dimension": 54,
+        "name": "54"
+      },
+      {
+        "dimension": 210,
+        "name": "210"
+      },
+      {
+        "dimension": 770,
+        "name": "770"
+      },
+      {
+        "dimension": 1050,
+        "name": "1050"
+      },
+      {
+        "dimension": 1050,
+        "name": "1050bar"
+      },
+      {
+        "dimension": 4125,
+        "name": "4125"
+      },
+      {
+        "dimension": 8910,
+        "name": "8910"
+      },
+      {
+        "dimension": 5940,
+        "name": "5940"
+      }
+    ],
+    "true_residual_after_constructed": [
+      {
+        "dimension": 770,
+        "name": "770"
+      },
+      {
+        "dimension": 1050,
+        "name": "1050"
+      },
+      {
+        "dimension": 1050,
+        "name": "1050bar"
+      },
+      {
+        "dimension": 4125,
+        "name": "4125"
+      },
+      {
+        "dimension": 8910,
+        "name": "8910"
+      },
+      {
+        "dimension": 5940,
+        "name": "5940"
+      }
+    ],
+    "true_residual_dimension": 21845
+  },
+  "verdict": "PR #98 contains valuable partial calculations, but its 210-channel inventory cannot be merged as a complete scalar closure. The exact symmetric product restores a nonzero same-field 45 and four omitted sectors. G1 remains open; downstream reduced-potential results must be revalidated with the source-correct quartic basis."
+}

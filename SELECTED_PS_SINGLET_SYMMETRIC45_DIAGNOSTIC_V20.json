@@ -1,0 +1,59 @@
+{
+  "basis": [
+    "p",
+    "a",
+    "omega"
+  ],
+  "checks": {
+    "a_omega_mixed_nonzero": true,
+    "a_self_zero": true,
+    "equal_p_a_omega_combo_nonzero": true,
+    "full_ps_singlet_span_not_identically_zero": true,
+    "generic_singlet_combo_nonzero": true,
+    "omega_self_nonzero": true,
+    "p_a_mixed_nonzero": true,
+    "p_omega_mixed_zero": true,
+    "p_self_zero": true,
+    "whole_model_not_overclaimed": true
+  },
+  "equal_combo_norm": 257.15430896323875,
+  "failures": [],
+  "flags": {
+    "actual_selected_coefficients_must_be_recomputed_in_source_convention": true,
+    "downstream_revalidation_required": true,
+    "full_p_a_omega_span_vanishes": false,
+    "generic_selected_singlet_vacuum_can_activate_45": true,
+    "special_rays_can_vanish": true,
+    "whole_model_excluded": false,
+    "whole_model_validated": false
+  },
+  "n_checks": 10,
+  "n_failed": 0,
+  "nonzero_pairs": [
+    "axomega",
+    "omegaxomega",
+    "pxa"
+  ],
+  "overall_state": "BLOCKED",
+  "pair_norms": {
+    "axa": 0.0,
+    "axomega": 68.84516789766109,
+    "omegaxomega": 79.49555243623922,
+    "pxa": 68.84516789766107,
+    "pxomega": 0.0,
+    "pxp": 0.0
+  },
+  "random_coefficients": {
+    "a": 0.9293692508132387,
+    "omega": 1.0809427883222043,
+    "p": -1.7857796925829055
+  },
+  "random_combo_norm": 193.724814263013,
+  "status": "PS_SINGLET_SYMMETRIC45_SPAN_NONTRIVIAL",
+  "verdict": "The source-correct symmetric 45 is not identically zero on the canonical p/a/omega singlet span. Although the p and a self-rays vanish, omega self and p-a/a-omega interference are nonzero. A generic selected singlet vacuum therefore activates this quartic channel, and the actual VEV combination must be reevaluated.",
+  "zero_pairs": [
+    "axa",
+    "pxomega",
+    "pxp"
+  ]
+}

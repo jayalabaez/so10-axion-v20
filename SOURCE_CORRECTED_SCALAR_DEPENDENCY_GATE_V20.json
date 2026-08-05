@@ -1,0 +1,98 @@
+{
+  "checks": {
+    "affected_downstream_results_reopened": true,
+    "no_gate_falsely_closed": true,
+    "old_residual_superseded": true,
+    "source_decomposition_audit_executes": true,
+    "source_projector_executes": true,
+    "superseded_ledger_not_executed_as_upstream": true,
+    "symmetric_same_field_45_restored": true,
+    "valid_structural_results_retained": true,
+    "whole_model_not_excluded": true,
+    "whole_model_not_validated": true
+  },
+  "failures": [],
+  "flags": {
+    "merge_to_main_safe": false,
+    "partial_branch_salvaged_not_discarded": true,
+    "pr98_must_remain_draft": true,
+    "source_level_defect_corrected": true,
+    "superseded_ledger_execution_avoided": true,
+    "whole_model_excluded": false,
+    "whole_model_validated": false
+  },
+  "gate_states": {
+    "G1_complete_invariant_ring": "OPEN_SOURCE_REVALIDATION",
+    "G2_full_tensor_projection": "OPEN_DEPENDS_ON_G1",
+    "G3_global_vacuum_and_component_hessian": "OPEN_DEPENDS_ON_G2",
+    "G4_viable_hierarchy_mechanism": "PARTIAL_REVALIDATION_REQUIRED",
+    "G5_calG_lock_revalidation": "PARTIAL_PHASE_RESULT_RETAINED_FULL_HESSIAN_OPEN",
+    "G6_full_tensor_two_loop_RGE_thresholds": "OPEN_DEPENDS_ON_PHYSICAL_SPECTRUM",
+    "G7_physical_triplet_and_threshold_spectrum": "OPEN_DEPENDS_ON_G2_G3",
+    "G8_exact_unique_proton_lifetime": "OPEN_DEPENDS_ON_G5_G6_G7"
+  },
+  "n_checks": 10,
+  "n_failed": 0,
+  "overall_state": "BLOCKED",
+  "reopened_results": {
+    "complete_210_quartic_invariant_basis": true,
+    "complete_bfb_certificate": true,
+    "complete_component_hessian": true,
+    "full_mixed_rep_invariant_ring_G1": true,
+    "full_tensor_projected_potential_G2": true,
+    "global_vacuum_selection": true,
+    "old_sym2_210_residual_dimension_5945": true,
+    "physical_threshold_spectrum": true,
+    "same_field_symmetric_45_quartic_absent": true,
+    "two_loop_threshold_chain": true,
+    "unique_proton_lifetime": true
+  },
+  "required_recomputations": [
+    {
+      "closes": "the one-field 210 quartic sub-basis only",
+      "order": 1,
+      "task": "Normalize and verify the source 45, 54, 210 and 1050 invariant identities in one Cartesian convention"
+    },
+    {
+      "closes": "G1 and G2",
+      "order": 2,
+      "task": "Complete mixed-representation invariant multiplicities and component CG maps"
+    },
+    {
+      "closes": "G3-G5 prerequisites",
+      "order": 3,
+      "task": "Rebuild stationarity, BFB, competing extrema and gauge-projected full Hessian"
+    },
+    {
+      "closes": "G6-G7 prerequisites",
+      "order": 4,
+      "task": "Regenerate physical scalar/triplet thresholds and two-loop matching"
+    },
+    {
+      "closes": "G8",
+      "order": 5,
+      "task": "Recompute gauge plus scalar proton decay with one physical flavour solution"
+    }
+  ],
+  "retained_results": {
+    "canonical_126_kinetic_basis": true,
+    "cqit_haloscope_receiver_bridge": true,
+    "direct_210_10_126_portal_tensor_map": true,
+    "one_heavy_cp_odd_plus_one_pq_axion_in_reduced_neutral_sector": true,
+    "selected_neutral_phase_gauge_quotient_for_positive_kappa": true,
+    "so10_generator_and_gauge_orbit_constructions": true
+  },
+  "status": "SOURCE_CORRECTED_SCALAR_DEPENDENCY_GATE_BLOCKED",
+  "superseded_artifacts": [
+    "OPEN_210_CHANNEL_1050_IRREDUCIBLE_BLOCKER_V20.json",
+    "SO10_210_TO_45_PROJECTOR_V20.json (same-field quartic interpretation only)",
+    "FULL_MIXED_REP_INVARIANT_RING_V20.json completeness interpretation",
+    "SCALAR_THEORY_CLOSURE_LEDGER_V20.json downstream scalar statuses"
+  ],
+  "upstream": {
+    "previous_scalar_ledger": "SUPERSEDED_AS_UPSTREAM__REVALIDATION_REQUIRED",
+    "source45": "SOURCE_CORRECT_SYMMETRIC_210x210_TO_45_READY",
+    "source_audit": "SOURCE_CORRECTED_SYM2_210_DECOMPOSITION__G1_REVALIDATION_REQUIRED"
+  },
+  "verdict": "The corrected symmetric 45 changes the complete scalar-potential dependency graph. Structural tensor, gauge, and reduced neutral-phase results remain useful, but G1-G8 are not closed. PR #98 must remain draft until the source-normalized quartic basis and all downstream vacuum, Hessian, threshold, and proton-decay calculations are rerun."
+}
