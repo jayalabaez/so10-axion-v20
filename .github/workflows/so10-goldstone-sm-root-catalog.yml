@@ -1,0 +1,55 @@
+name: so10-goldstone-sm-root-catalog
+
+on:
+  pull_request:
+    paths:
+      - so10_goldstone_sm_root_catalog_v20.py
+      - test_so10_goldstone_sm_root_catalog_v20.py
+      - so10_gauge_orbit_with_hew_v20.py
+      - so10_nonsusy_gauge_orbit_v20.py
+      - .github/workflows/so10-goldstone-sm-root-catalog.yml
+  workflow_dispatch:
+
+concurrency:
+  group: so10-goldstone-sm-root-catalog-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  so10-goldstone-sm-root-catalog:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Execute Goldstone SM root catalog
+        run: python so10_goldstone_sm_root_catalog_v20.py --write
+      - name: Focused regression tests
+        run: python -m unittest -v test_so10_goldstone_sm_root_catalog_v20.py
+      - name: Assert honest scientific scope
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('SO10_GOLDSTONE_SM_ROOT_CATALOG_V20.json'))
+          assert r['status']=='SO10_GOLDSTONE_SM_ROOT_CATALOG_READY'
+          assert r['n_failed']==0
+          assert r['overall_state']=='BLOCKED'
+          assert r['orbit']['svd_rank_goldstones']==36
+          assert r['orbit']['stabilizer_dim']==9
+          stab=r['subspace_sector_l2_weights']['stabilizer_9']
+          assert abs(stab['so6_color']-8.0)<1e-6
+          assert abs(stab['so4_weak']-1.0)<1e-6
+          assert not r['flags']['whole_model_validated']
+          PY
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: so10-goldstone-sm-root-catalog
+          path: |
+            SO10_GOLDSTONE_SM_ROOT_CATALOG_V20.json
+            SO10_GOLDSTONE_SM_ROOT_CATALOG_V20.md

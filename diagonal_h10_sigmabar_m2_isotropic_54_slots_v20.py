@@ -183,7 +183,6 @@ def build_partial_diagonals(
     still_open = [
         "OPEN_H10_54",
         "OPEN_126_54_LOCKING",
-        "OPEN_210_CHANNEL_210",
         "OPEN_210_CHANNEL_1050",
         "OPEN_210_CHANNEL_45_OFF_SINGLET",
         "OPEN_MIXED_120",
@@ -215,6 +214,14 @@ def build_partial_diagonals(
             "reason": (
                 "so10_210_to_45_projector_v20: P_45 vanishes on same-field and "
                 "on the full PS-singlet span {p,a,ω}; off-singlet mixed OPEN"
+            ),
+        },
+        "OPEN_210_CHANNEL_210": {
+            "status": "PARTIAL_PS_SINGLET_TENSOR_MAP_READY",
+            "contribution_GeV2": 0.0,
+            "reason": (
+                "so10_210_to_210_self_map_v20: exact (210⊗210)→210; selected "
+                "vacuum Ξ mostly ∥ Φ (radial overlap); diagnostic seed only"
             ),
         },
     }

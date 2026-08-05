@@ -23,10 +23,14 @@ class Diagonal210RadialCubicPsSingletTests(unittest.TestCase):
         self.assertIn("OPEN_210_CHANNEL_1050", self.report["still_open_slots"])
         self.assertIn("OPEN_210_CHANNEL_54", self.report["filled_slots"])
         self.assertIn("OPEN_210_CHANNEL_45", self.report["filled_slots"])
+        self.assertIn("OPEN_210_CHANNEL_210", self.report["filled_slots"])
         self.assertNotIn("OPEN_210_CHANNEL_54", self.report["still_open_slots"])
+        self.assertNotIn("OPEN_210_CHANNEL_210", self.report["still_open_slots"])
         self.assertGreater(self.report["channel_54"]["seed_GeV2"], 0.0)
+        self.assertGreater(self.report["channel_210"]["seed_GeV2"], 0.0)
         self.assertTrue(self.report["flags"]["open_210_channel_54_ps_singlet_seed"])
         self.assertTrue(self.report["flags"]["open_210_channel_45_same_field_vanishes"])
+        self.assertTrue(self.report["flags"]["open_210_channel_210_ps_singlet_seed"])
 
 
 if __name__ == "__main__":

@@ -209,10 +209,24 @@ is closed; singlet⊗off-singlet remains nontrivial and OPEN.
 These maps are wired into `diagonal_210_radial_cubic_ps_singlet_v20` and
 absorbed in the isotropic inventory without inventing 120/320/1050/4125.
 
+## Completed (210⊗210)→210 self-map + Goldstone SM root catalog
+
+`so10_210_to_210_self_map_v20.py` builds the double-contracted Alt₄ bilinear
+`Ξ(Φ,Ψ)∈∧⁴≅210`. On the selected vacuum `Ξ∥Φ` (overlap ≈0.997, mostly radial)
+with seed `ΔM²≈λ̃‖Ξ‖²/‖Φ‖²`. Notably `Ξ(p,p)=0` while `a` and `ω` self-maps
+are nontrivial. Seed is diagnostic only (not double-counted into isotropic
+`m²_210`).
+
+`so10_goldstone_sm_root_catalog_v20.py` SVD-catalogues the 45 adjoint planes
+on `(210,Δ,hEW)`: rank **36** Goldstones, stabilizer **9**. Stabilizer L2
+weights split as **8 (so6_color) + 1 (so4_weak)** = `SU(3)_c×U(1)_EM`, with
+unbroken generators as linear combinations (only `M_89` has a vanishing
+column alone). Cartans `T3_L/R` recorded. Dynamical masses remain OPEN.
+
 ## Correct next goal
 
 Theory completion still requires transcribed CG for 120/320/1050/4125 and
-off-singlet 210 channels 210/1050 plus mixed-45 (G1), mode-by-mode diagonals (G2),
+off-singlet 210 channel 1050 plus mixed-45 (G1), mode-by-mode diagonals (G2),
 complete stationarity/hierarchy (G3), the full dynamical Hessian artifact
 (G4), then global BFB, thresholds, two-loop RGE, and unique τ_p (G5–G8).
 Do not invent missing CG and do not reopen a reduced-sector phase hunt.
@@ -224,8 +238,10 @@ Do not invent missing CG and do not reopen a reduced-sector phase hunt.
    - Prove linear independence and record Hermitian-conjugation conventions.
    - Transcribe missing CG tensors (especially 120, 320, 1050, 4125) into the Cartesian basis.
    - Prefer operators with nonzero tensor projection on the actual `(Delta_R,hEW,S,Phi)` vacuum for phase locking.
-   - Next combinatorial targets without invented tables: `(210⊗210)→210` self-map;
-     Goldstone SM root catalog; effective axion potential after integrating heavy modes.
+   - Next combinatorial targets without invented tables: effective axion
+     potential after integrating heavy modes; co-positivity BFB on reduced
+     quartic + portal Schur. Channel 1050 needs a published/combinatorial
+     Young projector — do not invent coefficients.
 
 2. **Full component projection**
    - Project every invariant into canonical Pati-Salam and Standard Model component fields.

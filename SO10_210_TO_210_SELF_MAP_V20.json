@@ -1,0 +1,91 @@
+{
+  "status": "SO10_210_TO_210_SELF_MAP_READY__OFF_SINGLET_CG_OPEN",
+  "overall_state": "BLOCKED",
+  "n_checks": 10,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "swap_symmetric": true,
+    "generic_self_nontrivial": true,
+    "generic_mixed_nontrivial": true,
+    "ps_p_self_vanishes": true,
+    "ps_a_self_nontrivial": true,
+    "ps_omega_self_nontrivial": true,
+    "selected_vacuum_self_nontrivial": true,
+    "delta_m2_positive": true,
+    "cg_120_320_not_invented": true,
+    "whole_model_not_overclaimed": true
+  },
+  "mathematics": {
+    "representation": "\u039e(\u03a6,\u03a8) \u2208 \u2227\u2074 R^10 \u2245 210",
+    "bilinear": "\u039e_ijkl = (1/4!) \u03a3_\u03c3 sign(\u03c3) \u03a3_{m,n} \u03a6_\u03c31\u03c32mn \u03a8_\u03c33\u03c34mn",
+    "swap_residual": 4.440892098500626e-15,
+    "generic_self_norm": 70.78273072125995,
+    "generic_mixed_norm": 47.66908052174723,
+    "ps_mixed_norms": {
+      "p_a": 0.0,
+      "p_omega": 0.33333333333333337,
+      "a_omega": 0.3849001794597506
+    }
+  },
+  "ps_singlets": {
+    "p": {
+      "self_map_norm": 0.0,
+      "overlap_with_self": 0.0,
+      "vanishes": true
+    },
+    "a": {
+      "self_map_norm": 0.38490017945975064,
+      "overlap_with_self": 1.0000000000000002,
+      "vanishes": false
+    },
+    "omega": {
+      "self_map_norm": 0.5091750772173157,
+      "overlap_with_self": 0.0,
+      "vanishes": false
+    }
+  },
+  "selected_vacuum": {
+    "vevs_GeV": {
+      "p": 1983512959779626.5,
+      "a": 2975269439669439.5,
+      "omega": 4958782399449066.0
+    },
+    "phi_combo_norm": 6113597532167986.0,
+    "Xi210_norm": 2.3532911913078323e+31,
+    "overlap_with_phi": 0.9966547278042228,
+    "mostly_radial": true,
+    "OPEN_210_CHANNEL_210_seed_GeV2": 1.481691018357178e+29,
+    "lam_tilde": 0.01,
+    "formula": "\u0394M\u00b2_210 \u2248 \u03bb\u0303 ||\u039e(\u03a6,\u03a6)||\u00b2 / ||\u03a6||\u00b2"
+  },
+  "inventory_slot": {
+    "id": "OPEN_210_CHANNEL_210",
+    "status": "PARTIAL_PS_SINGLET_TENSOR_MAP_READY",
+    "feeds_diag_210_radial": "partially overlaps radial when \u039e\u2225\u03a6 (selected vacuum ~0.997)",
+    "off_singlet_fluctuation_cg": false,
+    "note_p_channel": "\u039e(p,p)=0 on the PS volume singlet"
+  },
+  "flags": {
+    "so10_210_to_210_self_map_ready": true,
+    "open_210_channel_210_ps_singlet_seed": true,
+    "off_singlet_210_fluctuation_cg": false,
+    "cg_120_320_1050_4125_invented": false,
+    "full_component_hessian_complete": false,
+    "whole_model_validated": false,
+    "whole_model_excluded": false
+  },
+  "remaining_blockers": {
+    "open_210_channel_1050_cg": true,
+    "off_singlet_fluctuation_cg": true,
+    "missing_cg_120_320_1050_4125": true,
+    "full_nonsusy_vacuum_hessian": true
+  },
+  "verdict": "Constructed the exact SO(10) bilinear (210\u2297210)\u2192210 by double-contracted Alt\u2084 of two four-forms. Selected-vacuum \u2016\u039e\u2016\u22600 (overlap with \u03a6\u22480.9967, mostly radial) gives OPEN_210_CHANNEL_210 seed \u0394M\u00b2\u22481.481691e+29 GeV\u00b2. \u039e(p,p)=0; a and \u03c9 self-maps nontrivial. Off-singlet CG and 1050 remain OPEN. Theory remains BLOCKED.",
+  "physics_brainstorm_next": [
+    "1050 channel requires a different Young tableau \u2014 do not invent",
+    "Goldstone SM root catalog under SU(3)_c\u00d7U(1)_EM",
+    "Integrate out heavy 210 \u2192 V_eff(a) for the PQ axion",
+    "Co-positivity BFB on reduced quartic + portal Schur"
+  ]
+}
