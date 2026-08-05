@@ -13,6 +13,7 @@ import json
 from pathlib import Path
 from typing import Any
 
+import direct_phi_h_sigmabar_portal_m2_block_v20 as portal_m2
 import direct_phi_h_sigmabar_td_crosscheck_v20 as tdcheck
 import direct_phi_h_sigmabar_tensor_v20 as direct
 import efjx_cgc_physical_normalization_gate_v20 as efjx
@@ -36,6 +37,7 @@ def build_report() -> dict[str, Any]:
 
     direct_rep = direct.build_report()
     td_rep = tdcheck.build_report()
+    portal_rep = portal_m2.build_report()
     efjx_rep = efjx.build_report()
     contamination_rep = contamination.build_report()
     alpha_rep = alpha_nonunique.build_report()
@@ -82,6 +84,19 @@ def build_report() -> dict[str, Any]:
             "published_gamma_TD_magnitudes_matched"
         )
     )
+    portal_valid = bool(
+        portal_rep.get("n_failed") == 0
+        and portal_rep.get("flag", {}).get("portal_m2_block_inserted")
+        and portal_rep.get("checks", {}).get("portal_matrix_shape_10x126")
+        and portal_rep.get("checks", {}).get("portal_svd_matches_analytic")
+        and portal_rep.get("checks", {}).get(
+            "generic_goldstone_orbit_rank_33"
+        )
+        and not portal_rep.get("flag", {}).get("full_component_hessian")
+        and not portal_rep.get("flag", {}).get(
+            "susy_fermion_matrices_used_as_scalar_m2", True
+        )
+    )
     efjx_corrected = bool(
         efjx_rep.get("n_failed") == 0
         and efjx_rep.get("flags", {}).get("efjx_cgc_route_invalidated")
@@ -119,6 +134,7 @@ def build_report() -> dict[str, Any]:
         "physical_historical_point_tachyonic": historical_tachyon,
         "direct_canonical_tensor_map": direct_valid,
         "published_gamma_TD_crosscheck": td_valid,
+        "direct_portal_m2_block_inserted": portal_valid,
         "EFJX_gauge_gamma_collision_corrected": efjx_corrected,
         "all_known_susy_matrix_scalar_paths_withdrawn": (
             all_contamination_withdrawn
@@ -132,9 +148,7 @@ def build_report() -> dict[str, Any]:
         "complete_nonsusy_invariant_ring": True,
         "complete_mixed_rep_invariant_enumeration": True,
         "full_210_tensor_quartic_basis_in_live_dump": True,
-        "map_repository_selected_vevs_to_canonical_tensor_convention": True,
         "published_state_label_dictionary_for_direct_tensor": True,
-        "direct_portal_component_mass_squared_insertion": True,
         "direct_nonsusy_component_mass_squared_insertion": True,
         "direct_nonsusy_singlet_mass_squared_matrix": True,
         "physical_scalar_Coleman_Weinberg_spectrum": True,
@@ -191,6 +205,10 @@ def build_report() -> dict[str, Any]:
             "direct_Phi_H_Sigmabar_10x126_tensor_map": direct_valid,
             "direct_tensor_closed_analytic_3p3p2p2_spectrum": direct_valid,
             "published_gamma_TD_clebsch_crosscheck": td_valid,
+            "map_repository_selected_vevs_to_canonical_tensor_convention": (
+                portal_valid
+            ),
+            "direct_portal_component_mass_squared_insertion": portal_valid,
             "EFJX_gauge_superhiggs_source_identified": efjx_corrected,
             "cal_G_lambda_lock_lift_mechanism_exists_in_principle": False,
         },
@@ -216,6 +234,10 @@ def build_report() -> dict[str, Any]:
                 "representation", {}
             ).get("tensor_map_shape"),
             "direct_TD_crosscheck_residual": td_rep.get("max_abs_residual"),
+            "portal_m2_block_status": portal_rep.get("status"),
+            "portal_m2_generic_goldstone_rank": portal_rep.get(
+                "goldstone_orbit", {}
+            ).get("generic_rank"),
             "susy_matrix_contamination_n_paths": contamination_rep.get(
                 "counts", {}
             ).get("n_paths"),
@@ -231,6 +253,7 @@ def build_report() -> dict[str, Any]:
         "upstream_status": {
             "direct_tensor": direct_rep.get("status"),
             "direct_TD_crosscheck": td_rep.get("status"),
+            "direct_portal_m2_block": portal_rep.get("status"),
             "EFJX_source_correction": efjx_rep.get("status"),
             "contamination_audit": contamination_rep.get("status"),
             "ultimate_tau_p": ultimate_rep.get("status"),
@@ -245,6 +268,7 @@ def build_report() -> dict[str, Any]:
                 selected_point_invalidated
             ),
             "direct_tensor_problem_closed": direct_valid and td_valid,
+            "direct_portal_m2_block_inserted": portal_valid,
             "EFJX_cgc_route_invalidated": efjx_corrected,
             "EFJX_cgc_route_invalidated_direct_tensor_open": (
                 efjx_corrected and direct_valid
@@ -261,12 +285,13 @@ def build_report() -> dict[str, Any]:
             "whole_model_validated": False,
         },
         "verdict": (
-            "The direct canonically normalized Phi-H-Sigmabar tensor map and "
-            "independent Aulakh gamma T/D cross-check are retained. The "
-            "authoritative contamination audit withdraws every known use of "
-            "SUSY fermion/gaugino matrices as non-SUSY scalar Hessian or "
-            "Coleman-Weinberg inputs. The tensor problem is closed; the "
-            "complete non-SUSY scalar theory remains BLOCKED."
+            "The direct canonically normalized Phi-H-Sigmabar tensor map, "
+            "Aulakh gamma T/D cross-check, and scoped lambda4 vS T_Phi portal "
+            "M2 block are retained. The contamination audit withdraws every "
+            "known use of SUSY fermion/gaugino matrices as non-SUSY scalar "
+            "Hessian or Coleman-Weinberg inputs. The tensor and portal-block "
+            "steps are closed; the complete non-SUSY scalar theory remains "
+            "BLOCKED."
         ),
     }
 

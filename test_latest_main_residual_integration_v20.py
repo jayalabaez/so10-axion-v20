@@ -21,6 +21,10 @@ class LatestMainSourceCorrectionIntegrationTests(unittest.TestCase):
         self.assertTrue(valid["direct_Phi_H_Sigmabar_10x126_tensor_map"])
         self.assertTrue(valid["direct_tensor_closed_analytic_3p3p2p2_spectrum"])
         self.assertTrue(valid["published_gamma_TD_clebsch_crosscheck"])
+        self.assertTrue(
+            valid["map_repository_selected_vevs_to_canonical_tensor_convention"]
+        )
+        self.assertTrue(valid["direct_portal_component_mass_squared_insertion"])
         self.assertTrue(valid["EFJX_gauge_superhiggs_source_identified"])
 
     def test_contaminated_claims_are_withdrawn(self):
@@ -46,6 +50,7 @@ class LatestMainSourceCorrectionIntegrationTests(unittest.TestCase):
     def test_final_flags(self):
         flags = self.report["flag"]
         self.assertTrue(flags["direct_tensor_problem_closed"])
+        self.assertTrue(flags["direct_portal_m2_block_inserted"])
         self.assertTrue(flags["EFJX_cgc_route_invalidated"])
         self.assertFalse(flags["old_8p8e29_bound_valid"])
         self.assertTrue(flags["all_susy_matrix_scalar_closures_withdrawn"])
