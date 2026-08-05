@@ -7,6 +7,8 @@ on:
       - test_selected_vacuum_phase_invariant_dim6_metric_audit_v20.py
       - selected_vacuum_phase_invariant_dim6_epsilon_reduction_v20.py
       - test_selected_vacuum_phase_invariant_dim6_epsilon_reduction_v20.py
+      - selected_vacuum_neutral_h10_dim6_no_go_v20.py
+      - test_selected_vacuum_neutral_h10_dim6_no_go_v20.py
       - quartic_soft_betas_v20.py
       - test_quartic_soft_betas_v20.py
       - .github/workflows/selected-vacuum-phase-invariant-dim6-metric.yml
@@ -19,7 +21,7 @@ concurrency:
 jobs:
   dim6-phase-gate:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 35
     env:
       PYTHONHASHSEED: "0"
     steps:
@@ -36,18 +38,22 @@ jobs:
             test_selected_vacuum_phase_invariant_dim6_metric_audit_v20.py \
             selected_vacuum_phase_invariant_dim6_epsilon_reduction_v20.py \
             test_selected_vacuum_phase_invariant_dim6_epsilon_reduction_v20.py \
+            selected_vacuum_neutral_h10_dim6_no_go_v20.py \
+            test_selected_vacuum_neutral_h10_dim6_no_go_v20.py \
             quartic_soft_betas_v20.py \
             test_quartic_soft_betas_v20.py
-      - name: Execute dimension-six metric and epsilon audits
+      - name: Execute dimension-six tensor audits
         run: |
           python selected_vacuum_phase_invariant_dim6_metric_audit_v20.py --write
           python selected_vacuum_phase_invariant_dim6_epsilon_reduction_v20.py --write
+          python selected_vacuum_neutral_h10_dim6_no_go_v20.py --write
           python quartic_soft_betas_v20.py
       - name: Focused tests
         run: |
           python -m unittest -v \
             test_selected_vacuum_phase_invariant_dim6_metric_audit_v20.py \
             test_selected_vacuum_phase_invariant_dim6_epsilon_reduction_v20.py \
+            test_selected_vacuum_neutral_h10_dim6_no_go_v20.py \
             test_quartic_soft_betas_v20.py
       - name: Assert honest scientific boundary
         run: |
@@ -55,6 +61,7 @@ jobs:
           import json
           p=json.load(open('SELECTED_VACUUM_PHASE_INVARIANT_DIM6_METRIC_AUDIT_V20.json'))
           e=json.load(open('SELECTED_VACUUM_PHASE_INVARIANT_DIM6_EPSILON_REDUCTION_V20.json'))
+          n=json.load(open('SELECTED_VACUUM_NEUTRAL_H10_DIM6_NO_GO_V20.json'))
           q=json.load(open('QUARTIC_SOFT_BETAS_V20_VERDICT.json'))
           assert p['n_failed']==0 and p['overall_state']=='BLOCKED', p
           assert p['counts']['charge_allowed_phase_sensitive_monomials']==110, p
@@ -63,7 +70,6 @@ jobs:
           assert p['counts']['conjugacy_representatives']==15, p
           assert p['counts']['metric_graphs_per_weak_embedding']==1006, p
           assert p['selected_vacuum']['maximum_abs_metric_contraction'] < 1e-9, p
-          assert not p['flags']['dimension6_full_SO10_no_go_proven'], p
           assert not p['flags']['whole_model_validated'], p
           assert not p['flags']['whole_model_excluded'], p
           assert e['n_failed']==0 and e['overall_state']=='BLOCKED', e
@@ -75,11 +81,21 @@ jobs:
           assert e['flags']['epsilon_sector_reduced_to_metric_sector'], e
           assert not e['flags']['epsilon_channels_independent_of_metric_sector'], e
           assert not e['flags']['nonzero_selected_epsilon_phase_channel_found'], e
-          assert e['flags']['delta_epsilon_tensor_sector_closed_for_tested_embeddings'], e
-          assert not e['flags']['exact_published_hEW_component_dictionary_complete'], e
-          assert not e['flags']['full_selected_vacuum_dimension6_no_go_proven'], e
           assert not e['flags']['whole_model_validated'], e
           assert not e['flags']['whole_model_excluded'], e
+          assert n['n_failed']==0 and n['overall_state']=='BLOCKED', n
+          assert n['checks']['weak_cartan_dictionary_exact'], n
+          assert set(n['neutral_H10_basis']['states'])=={'z89_plus','z89_minus'}, n
+          assert n['multilinear_metric_audit']['total_graph_coefficient_evaluations']==2662, n
+          assert n['multilinear_metric_audit']['maximum_abs_coefficient'] < 1e-10, n
+          assert n['flags']['exact_neutral_H10_cartesian_dictionary_derived'], n
+          assert n['flags']['metric_zero_for_arbitrary_neutral_H10_VEV'], n
+          assert n['flags']['epsilon_sector_reduced_to_metric'], n
+          assert n['flags']['full_selected_vacuum_dimension6_phase_lifting_no_go_proven'], n
+          assert not n['flags']['current_selected_vacuum_fully_phase_stabilized'], n
+          assert n['flags']['dimension7_or_changed_vacuum_required'], n
+          assert not n['flags']['whole_model_validated'], n
+          assert not n['flags']['whole_model_excluded'], n
           assert q['n_failed']==0, q
           assert q['physical_backgrounds_GeV']['H10_eff']==174.0, q
           assert q['flag']['physical_H10_EW_background_used'], q
@@ -96,5 +112,7 @@ jobs:
             SELECTED_VACUUM_PHASE_INVARIANT_DIM6_METRIC_AUDIT_V20.md
             SELECTED_VACUUM_PHASE_INVARIANT_DIM6_EPSILON_REDUCTION_V20.json
             SELECTED_VACUUM_PHASE_INVARIANT_DIM6_EPSILON_REDUCTION_V20.md
+            SELECTED_VACUUM_NEUTRAL_H10_DIM6_NO_GO_V20.json
+            SELECTED_VACUUM_NEUTRAL_H10_DIM6_NO_GO_V20.md
             QUARTIC_SOFT_BETAS_V20_VERDICT.json
             QUARTIC_SOFT_BETAS_V20.md
