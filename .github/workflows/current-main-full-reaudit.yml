@@ -28,6 +28,7 @@ jobs:
       - name: Execute corrected tensor chain
         run: |
           python direct_phi_h_sigmabar_tensor_v20.py
+          python direct_phi_h_sigmabar_td_crosscheck_v20.py
           python efjx_cgc_physical_normalization_gate_v20.py
           python phi210_h10_sigmabar126_s_cgc_derivation_v20.py --write
           python latest_main_residual_integration_v20.py
@@ -36,6 +37,7 @@ jobs:
         run: |
           python -m unittest -v \
             test_direct_phi_h_sigmabar_tensor_v20.py \
+            test_direct_phi_h_sigmabar_td_crosscheck_v20.py \
             test_efjx_cgc_physical_normalization_gate_v20.py \
             test_phi210_h10_sigmabar126_s_cgc_derivation_v20.py \
             test_latest_main_residual_integration_v20.py \
@@ -45,29 +47,38 @@ jobs:
           python - <<'PY'
           import json
           d=json.load(open('DIRECT_PHI_H_SIGMABAR_TENSOR_V20.json'))
+          x=json.load(open('DIRECT_PHI_H_SIGMABAR_TD_CROSSCHECK_V20.json'))
           e=json.load(open('EFJX_CGC_PHYSICAL_NORMALIZATION_GATE_V20.json'))
           p=json.load(open('PHI210_H10_SIGMABAR126_S_CGC_DERIVATION_V20.json'))
           l=json.load(open('LATEST_MAIN_RESIDUAL_INTEGRATION_V20.json'))
           k=json.load(open('IRREDUCIBLE_GAP_CLOSURE_CONTRACT_V20.json'))
-          assert d['n_failed']==0 and d['overall_state']=='BLOCKED'
-          assert d['representation']['tensor_map_shape']==[10,126]
-          assert d['singlet_basis']['generic_orbit_rank']==33
-          assert d['flags']['efjx_cgc_route_invalidated']
-          assert not d['flags']['old_8p8e29_bound_valid']
-          assert e['n_failed']==0 and e['overall_state']=='BLOCKED'
-          assert e['flags']['exact_EFJX_gauge_response_known']
-          assert not e['flags']['exact_EFJX_gamma_response_known']
-          assert e['flags']['efjx_cgc_route_invalidated']
-          assert not e['flags']['physical_CGC_normalization_derived']
-          assert p['joint_physical_constraint']['withdrawn']
-          assert p['joint_physical_constraint']['c_norm_needed_for_negative_portal_natural_window'] is None
-          assert l['n_failed']==0
-          assert l['valid_new_closures']['direct_Phi_H_Sigmabar_10x126_tensor_map']
-          assert l['invalidated_selected_point_claims']['EFJX_gauge_response_is_lambda4_gamma_response']
-          assert l['invalidated_selected_point_claims']['c_norm_needed_is_8p8e29']
-          assert k['overall_state']=='BLOCKED' and k['n_open']==8
-          assert not e['flags']['whole_model_validated']
-          assert not e['flags']['whole_model_excluded']
+          assert d['n_failed']==0 and d['overall_state']=='BLOCKED', d
+          assert d['representation']['tensor_map_shape']==[10,126], d
+          assert d['singlet_basis']['generic_orbit_rank']==33, d
+          assert d['flags']['canonical_126_kinetic_basis_constructed'], d
+          assert d['flags']['closed_analytic_portal_spectrum_derived'], d
+          assert d['analytic_match']['max_abs_singular_value_residual'] < 1e-12, d
+          assert d['canonical_normalization']['sigma_kinetic_gram_max_abs_residual'] < 1e-12, d
+          assert d['flags']['efjx_cgc_route_invalidated'], d
+          assert not d['flags']['old_8p8e29_bound_valid'], d
+          assert x['n_failed']==0 and x['overall_state']=='BLOCKED', x
+          assert x['max_abs_residual'] < 1e-12, x
+          assert x['flags']['published_gamma_TD_magnitudes_matched'], x
+          assert x['canonical_dictionary']=={'P':'p','A':'sqrt(3)*a','W':'sqrt(6)*omega'}, x
+          assert e['n_failed']==0 and e['overall_state']=='BLOCKED', e
+          assert e['flags']['exact_EFJX_gauge_response_known'], e
+          assert not e['flags']['exact_EFJX_gamma_response_known'], e
+          assert e['flags']['efjx_cgc_route_invalidated'], e
+          assert not e['flags']['physical_CGC_normalization_derived'], e
+          assert p['joint_physical_constraint']['withdrawn'], p
+          assert p['joint_physical_constraint']['c_norm_needed_for_negative_portal_natural_window'] is None, p
+          assert l['n_failed']==0, l
+          assert l['valid_new_closures']['direct_Phi_H_Sigmabar_10x126_tensor_map'], l
+          assert l['invalidated_selected_point_claims']['EFJX_gauge_response_is_lambda4_gamma_response'], l
+          assert l['invalidated_selected_point_claims']['c_norm_needed_is_8p8e29'], l
+          assert k['overall_state']=='BLOCKED' and k['n_open']==8, k
+          assert not e['flags']['whole_model_validated'], e
+          assert not e['flags']['whole_model_excluded'], e
           PY
       - uses: actions/upload-artifact@v4
         if: always()
@@ -76,6 +87,8 @@ jobs:
           path: |
             DIRECT_PHI_H_SIGMABAR_TENSOR_V20.json
             DIRECT_PHI_H_SIGMABAR_TENSOR_V20.md
+            DIRECT_PHI_H_SIGMABAR_TD_CROSSCHECK_V20.json
+            DIRECT_PHI_H_SIGMABAR_TD_CROSSCHECK_V20.md
             EFJX_CGC_PHYSICAL_NORMALIZATION_GATE_V20.json
             EFJX_CGC_PHYSICAL_NORMALIZATION_GATE_V20.md
             PHI210_H10_SIGMABAR126_S_CGC_DERIVATION_V20.json
@@ -108,6 +121,7 @@ jobs:
           python ew_portal_rescue_bound_v20.py
           python so10_nonsusy_gauge_orbit_v20.py
           python direct_phi_h_sigmabar_tensor_v20.py
+          python direct_phi_h_sigmabar_td_crosscheck_v20.py
           python scalar_proton_falsification_gate_v20.py
           python efjx_cgc_physical_normalization_gate_v20.py
           python phi210_h10_sigmabar126_s_cgc_derivation_v20.py --write
@@ -126,24 +140,29 @@ jobs:
           python - <<'PY'
           import json
           d=json.load(open('DIRECT_PHI_H_SIGMABAR_TENSOR_V20.json'))
+          x=json.load(open('DIRECT_PHI_H_SIGMABAR_TD_CROSSCHECK_V20.json'))
           e=json.load(open('EFJX_CGC_PHYSICAL_NORMALIZATION_GATE_V20.json'))
           p=json.load(open('PHI210_H10_SIGMABAR126_S_CGC_DERIVATION_V20.json'))
           l=json.load(open('LATEST_MAIN_RESIDUAL_INTEGRATION_V20.json'))
           z=json.load(open('FINAL_SCALAR_THEORY_GATE_V20.json'))
           k=json.load(open('IRREDUCIBLE_GAP_CLOSURE_CONTRACT_V20.json'))
           r=json.load(open('REPOSITORY_BLOCKER_INVENTORY_V20.json'))
-          assert d['n_failed']==0 and d['representation']['tensor_map_shape']==[10,126]
-          assert e['flags']['efjx_cgc_route_invalidated']
-          assert not e['flags']['exact_EFJX_gamma_response_known']
-          assert p['joint_physical_constraint']['withdrawn']
-          assert not p['flag']['old_8p8e29_bound_valid']
-          assert l['n_failed']==0
-          assert l['valid_new_closures']['direct_Phi_H_Sigmabar_10x126_tensor_map']
-          assert z['overall_state']=='BLOCKED'
-          assert k['overall_state']=='BLOCKED' and k['n_open']==8
-          assert r['overall_state']=='BLOCKED'
-          assert not z['flags']['whole_model_validated']
-          assert not z['flags']['whole_model_excluded']
+          assert d['n_failed']==0 and d['representation']['tensor_map_shape']==[10,126], d
+          assert d['flags']['canonical_126_kinetic_basis_constructed'], d
+          assert d['flags']['closed_analytic_portal_spectrum_derived'], d
+          assert x['n_failed']==0 and x['max_abs_residual'] < 1e-12, x
+          assert x['flags']['published_gamma_TD_magnitudes_matched'], x
+          assert e['flags']['efjx_cgc_route_invalidated'], e
+          assert not e['flags']['exact_EFJX_gamma_response_known'], e
+          assert p['joint_physical_constraint']['withdrawn'], p
+          assert not p['flag']['old_8p8e29_bound_valid'], p
+          assert l['n_failed']==0, l
+          assert l['valid_new_closures']['direct_Phi_H_Sigmabar_10x126_tensor_map'], l
+          assert z['overall_state']=='BLOCKED', z
+          assert k['overall_state']=='BLOCKED' and k['n_open']==8, k
+          assert r['overall_state']=='BLOCKED', r
+          assert not z['flags']['whole_model_validated'], z
+          assert not z['flags']['whole_model_excluded'], z
           PY
       - uses: actions/upload-artifact@v4
         if: always()
@@ -152,6 +171,8 @@ jobs:
           path: |
             DIRECT_PHI_H_SIGMABAR_TENSOR_V20.json
             DIRECT_PHI_H_SIGMABAR_TENSOR_V20.md
+            DIRECT_PHI_H_SIGMABAR_TD_CROSSCHECK_V20.json
+            DIRECT_PHI_H_SIGMABAR_TD_CROSSCHECK_V20.md
             EFJX_CGC_PHYSICAL_NORMALIZATION_GATE_V20.json
             EFJX_CGC_PHYSICAL_NORMALIZATION_GATE_V20.md
             PHI210_H10_SIGMABAR126_S_CGC_DERIVATION_V20.json
