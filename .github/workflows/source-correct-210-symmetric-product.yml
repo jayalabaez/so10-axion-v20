@@ -70,7 +70,10 @@ jobs:
           assert not q['closure']['full_mixed_representation_ring_G1_closed'], q
           assert not q['closure']['full_component_potential_G2_closed'], q
           assert a['n_failed']==0 and a['symmetric_product']['dimension']==22155, a
-          assert a['flags']['old_1050_blocker_superseded'], a
+          assert a['symmetric_product']['mode_level_residual_dimension']==21845, a
+          assert a['flags']['old_1050_table_blocker_removed_for_pure_210'], a
+          assert a['closure']['pure_210_quartic_subsector_closed'], a
+          assert not a['closure']['full_mixed_representation_ring_G1_closed'], a
           assert s['n_failed']==0 and not s['flags']['full_p_a_omega_span_vanishes'], s
           assert g['n_failed']==0 and g['overall_state']=='BLOCKED', g
           assert g['flags']['pr98_must_remain_draft'], g
