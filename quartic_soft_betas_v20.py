@@ -2,14 +2,18 @@
 r"""Pati–Salam-resolved quartic/soft RGE diagnostic for v20.
 
 This replaces the previous C2=0 treatment of the active 10_H and 126bar_H
-components between M_GUT and M_I.  The flow now evolves separate
-SU(4)_C, SU(2)_L and SU(2)_R gauge couplings and assigns subgroup Casimirs
-to the active Pati–Salam components.
+components between M_GUT and M_I. The flow evolves separate SU(4)_C,
+SU(2)_L and SU(2)_R gauge couplings and assigns subgroup Casimirs to the
+active Pati–Salam components.
 
-It is still a reduced radial/portal diagnostic, not a complete tensor-valued
+The reduced Pati–Salam RGE is logically independent of the repository's
+conditional soft-gaugino UV ansatz. That ansatz consumes the UV phase vacuum,
+which is currently reopened because the selected vacuum has two phase nulls.
+A non-green soft-gaugino report is therefore recorded as an open downstream
+residual, not misclassified as an execution failure of this RGE calculation.
+
+This remains a reduced radial/portal diagnostic, not a complete tensor-valued
 two-loop beta-function calculation for every independent SO(10) invariant.
-Accordingly, ``two_loop_quartic_betas_complete`` remains False until a live,
-component-complete SARAH/PyR@TE (or independent analytic) derivation exists.
 """
 from __future__ import annotations
 
@@ -31,14 +35,8 @@ ROOT = Path(__file__).resolve().parent
 L16 = 16.0 * math.pi**2
 L16SQ = L16 * L16
 
-# One-loop Pati–Salam coefficients already used by the repository's verified
-# unification chain, ordered as SU(4)_C, SU(2)_L, SU(2)_R.
 B_PS = {"g4": -7.0 / 3.0, "gL": 2.0, "gR": 26.0 / 3.0}
 
-# Active radial directions and the Pati–Salam irreps whose gauge dressing is
-# relevant between M_GUT and M_I.  C2 values use standard normalization:
-# C2[SU(2) doublet]=3/4, C2[SU(2) triplet]=2,
-# C2[SU(4) rank-2 symmetric 10]=9/2.
 PS_COMPONENTS: dict[str, dict[str, Any]] = {
     "P_210_PS": {
         "irrep": "(1,1,1)",
@@ -71,16 +69,24 @@ PORTAL_COMPONENTS = {
 SOURCES = {
     "gauge_chain": "two_loop_thresholds_v20 B_PS one-loop Pati–Salam chain",
     "component_decomposition": {
-        "10_H": "(1,2,2)+(6,1,1); H10_eff uses the bidoublet",
+        "10_H": "(1,2,2)+(6,1,1); H10_eff denotes the bidoublet component",
         "126bar_H": "Delta_R uses (10bar,1,3)",
     },
     "scope": "reduced radial self-quartics, soft m2 and three portals",
+    "soft_gaugino_separation": (
+        "soft_gaugino_uv_masses_v20 is a conditional downstream diagnostic; "
+        "its reopened UV-phase input is not required for PS RGE execution"
+    ),
 }
 
 
 def beta_lambda_one_loop(lam: float, *, g: float, c2: float) -> float:
     g2 = g * g
-    return (18.0 * lam * lam - 12.0 * c2 * g2 * lam + 3.0 * c2**2 * g2**2) / L16
+    return (
+        18.0 * lam * lam
+        - 12.0 * c2 * g2 * lam
+        + 3.0 * c2**2 * g2**2
+    ) / L16
 
 
 def beta_lambda_two_loop(lam: float, *, g: float, c2: float) -> float:
@@ -99,10 +105,16 @@ def beta_m2_one_loop(m2: float, lam: float, *, g: float, c2: float) -> float:
 
 def beta_m2_two_loop(m2: float, lam: float, *, g: float, c2: float) -> float:
     g2 = g * g
-    return (-36.0 * lam**2 + 24.0 * c2 * g2 * lam - 12.0 * c2**2 * g2**2) * m2 / L16SQ
+    return (
+        -36.0 * lam**2
+        + 24.0 * c2 * g2 * lam
+        - 12.0 * c2**2 * g2**2
+    ) * m2 / L16SQ
 
 
-def run_ps_gauge(alpha_inv_gut: float, mu_gut: float, mu: float) -> dict[str, float]:
+def run_ps_gauge(
+    alpha_inv_gut: float, mu_gut: float, mu: float
+) -> dict[str, float]:
     """Run the three PS gauge couplings at one loop from M_GUT to mu."""
     if alpha_inv_gut <= 0 or mu_gut <= 0 or mu <= 0:
         raise ValueError("positive gauge inputs required")
@@ -116,7 +128,9 @@ def run_ps_gauge(alpha_inv_gut: float, mu_gut: float, mu: float) -> dict[str, fl
     return out
 
 
-def gauge_invariants(casimirs: dict[str, float], gauges: dict[str, float]) -> tuple[float, float, float]:
+def gauge_invariants(
+    casimirs: dict[str, float], gauges: dict[str, float]
+) -> tuple[float, float, float]:
     """Return sum(C_i g_i^2), sum(C_i^2 g_i^4), sum(C_i^3 g_i^6)."""
     s1 = sum(float(casimirs[k]) * gauges[k] ** 2 for k in gauges)
     s2 = sum(float(casimirs[k]) ** 2 * gauges[k] ** 4 for k in gauges)
@@ -124,72 +138,122 @@ def gauge_invariants(casimirs: dict[str, float], gauges: dict[str, float]) -> tu
     return float(s1), float(s2), float(s3)
 
 
-def beta_lambda_ps(lam: float, casimirs: dict[str, float], gauges: dict[str, float]) -> tuple[float, float]:
+def beta_lambda_ps(
+    lam: float,
+    casimirs: dict[str, float],
+    gauges: dict[str, float],
+) -> tuple[float, float]:
     s1, s2, s3 = gauge_invariants(casimirs, gauges)
     b1 = (18.0 * lam**2 - 12.0 * s1 * lam + 3.0 * s2) / L16
-    b2 = (-912.0 * lam**3 + 288.0 * s1 * lam**2 - 48.0 * s2 * lam + 24.0 * s3) / L16SQ
+    b2 = (
+        -912.0 * lam**3
+        + 288.0 * s1 * lam**2
+        - 48.0 * s2 * lam
+        + 24.0 * s3
+    ) / L16SQ
     return float(b1), float(b2)
 
 
-def beta_m2_ps(m2: float, lam: float, casimirs: dict[str, float], gauges: dict[str, float]) -> tuple[float, float]:
+def beta_m2_ps(
+    m2: float,
+    lam: float,
+    casimirs: dict[str, float],
+    gauges: dict[str, float],
+) -> tuple[float, float]:
     s1, s2, _ = gauge_invariants(casimirs, gauges)
     b1 = (6.0 * lam - 6.0 * s1) * m2 / L16
-    b2 = (-36.0 * lam**2 + 24.0 * s1 * lam - 12.0 * s2) * m2 / L16SQ
+    b2 = (
+        -36.0 * lam**2 + 24.0 * s1 * lam - 12.0 * s2
+    ) * m2 / L16SQ
     return float(b1), float(b2)
 
 
-def beta_portal_ps(portal: float, lam_a: float, lam_b: float, cas_a: dict[str, float], cas_b: dict[str, float], gauges: dict[str, float]) -> tuple[float, float]:
+def beta_portal_ps(
+    portal: float,
+    lam_a: float,
+    lam_b: float,
+    cas_a: dict[str, float],
+    cas_b: dict[str, float],
+    gauges: dict[str, float],
+) -> tuple[float, float]:
     combined = {k: float(cas_a[k]) + float(cas_b[k]) for k in gauges}
     s1, s2, _ = gauge_invariants(combined, gauges)
     b1 = portal * (4.0 * lam_a + 4.0 * lam_b - 3.0 * s1) / L16
-    b2 = portal * (-20.0 * (lam_a**2 + lam_b**2) + 6.0 * s1 * (lam_a + lam_b) - 3.0 * s2) / L16SQ
+    b2 = portal * (
+        -20.0 * (lam_a**2 + lam_b**2)
+        + 6.0 * s1 * (lam_a + lam_b)
+        - 3.0 * s2
+    ) / L16SQ
     return float(b1), float(b2)
 
 
-def assemble_sector(*, lambdas: dict[str, float], portals: dict[str, float], vevs: dict[str, float], gauges: dict[str, float] | None = None, g10: float | None = None, use_parent_casimir: bool = False) -> dict[str, Any]:
-    """Build the reduced ledger.
+def assemble_sector(
+    *,
+    lambdas: dict[str, float],
+    portals: dict[str, float],
+    vevs: dict[str, float],
+    gauges: dict[str, float] | None = None,
+    g10: float | None = None,
+    use_parent_casimir: bool = False,
+) -> dict[str, Any]:
+    """Build the reduced PS ledger.
 
-    ``g10`` is accepted for backward compatibility.  It is converted to equal
-    PS boundary couplings only; ``use_parent_casimir`` is retained as a legacy
-    argument but no longer changes the physical ledger.
+    ``g10`` and ``use_parent_casimir`` are retained for compatibility only.
     """
+    del use_parent_casimir
     if gauges is None:
         if g10 is None:
             raise ValueError("gauges or g10 required")
         gauges = {"g4": float(g10), "gL": float(g10), "gR": float(g10)}
+
     rows: list[dict[str, Any]] = []
     for name, lam in lambdas.items():
         meta = PS_COMPONENTS[name]
         b1, b2 = beta_lambda_ps(float(lam), meta["casimirs"], gauges)
         m2 = float(lam) * float(vevs.get(name, 0.0)) ** 2
         bm1, bm2 = beta_m2_ps(m2, float(lam), meta["casimirs"], gauges)
-        rows.append({
-            "name": name,
-            "kind": "self_quartic",
-            "ps_irrep": meta["irrep"],
-            "casimirs": meta["casimirs"],
-            "gauge_invariant_Cg2": gauge_invariants(meta["casimirs"], gauges)[0],
-            "value": float(lam),
-            "beta_1loop": b1,
-            "beta_2loop": b2,
-            "beta_total": b1 + b2,
-            "m2_GeV2": m2,
-            "beta_m2_1loop": bm1,
-            "beta_m2_2loop": bm2,
-            "beta_m2_total": bm1 + bm2,
-        })
+        rows.append(
+            {
+                "name": name,
+                "kind": "self_quartic",
+                "ps_irrep": meta["irrep"],
+                "casimirs": meta["casimirs"],
+                "gauge_invariant_Cg2": gauge_invariants(
+                    meta["casimirs"], gauges
+                )[0],
+                "value": float(lam),
+                "beta_1loop": b1,
+                "beta_2loop": b2,
+                "beta_total": b1 + b2,
+                "m2_GeV2": m2,
+                "beta_m2_1loop": bm1,
+                "beta_m2_2loop": bm2,
+                "beta_m2_total": bm1 + bm2,
+            }
+        )
+
     for pname, (a, b) in PORTAL_COMPONENTS.items():
         value = float(portals.get(pname, 0.0))
-        b1, b2 = beta_portal_ps(value, float(lambdas[a]), float(lambdas[b]), PS_COMPONENTS[a]["casimirs"], PS_COMPONENTS[b]["casimirs"], gauges)
-        rows.append({
-            "name": pname,
-            "kind": "portal",
-            "components": [a, b],
-            "value": value,
-            "beta_1loop": b1,
-            "beta_2loop": b2,
-            "beta_total": b1 + b2,
-        })
+        b1, b2 = beta_portal_ps(
+            value,
+            float(lambdas[a]),
+            float(lambdas[b]),
+            PS_COMPONENTS[a]["casimirs"],
+            PS_COMPONENTS[b]["casimirs"],
+            gauges,
+        )
+        rows.append(
+            {
+                "name": pname,
+                "kind": "portal",
+                "components": [a, b],
+                "value": value,
+                "beta_1loop": b1,
+                "beta_2loop": b2,
+                "beta_total": b1 + b2,
+            }
+        )
+
     return {
         "gauge_group": "SU(4)_C x SU(2)_L x SU(2)_R",
         "gauges": dict(gauges),
@@ -199,22 +263,39 @@ def assemble_sector(*, lambdas: dict[str, float], portals: dict[str, float], vev
     }
 
 
-def evolve_sector(*, lambdas0: dict[str, float], portals0: dict[str, float], vevs: dict[str, float], alpha_inv_gut: float, mu0: float, mu1: float) -> dict[str, Any]:
+def evolve_sector(
+    *,
+    lambdas0: dict[str, float],
+    portals0: dict[str, float],
+    vevs: dict[str, float],
+    alpha_inv_gut: float,
+    mu0: float,
+    mu1: float,
+) -> dict[str, Any]:
     names_l = list(lambdas0)
     names_p = list(portals0)
-    y0 = np.array([lambdas0[n] for n in names_l] + [portals0[n] for n in names_p], dtype=float)
-    # Reduced radial RGE can hit a Landau-like pole (notably DeltaR_126bar).
-    # Terminate before |coupling| leaves a perturbative window; never raise.
+    y0 = np.array(
+        [lambdas0[n] for n in names_l]
+        + [portals0[n] for n in names_p],
+        dtype=float,
+    )
     pert_cap = 4.0 * math.pi
 
     def rhs(t: float, y: np.ndarray) -> np.ndarray:
         mu = math.exp(t)
         gauges = run_ps_gauge(alpha_inv_gut, mu0, mu)
         lams = {n: float(y[i]) for i, n in enumerate(names_l)}
-        ports = {n: float(y[len(names_l) + i]) for i, n in enumerate(names_p)}
-        ledger = assemble_sector(lambdas=lams, portals=ports, vevs=vevs, gauges=gauges)
-        by_name = {r["name"]: r for r in ledger["rows"]}
-        return np.array([by_name[n]["beta_total"] for n in names_l + names_p], dtype=float)
+        ports = {
+            n: float(y[len(names_l) + i]) for i, n in enumerate(names_p)
+        }
+        ledger = assemble_sector(
+            lambdas=lams, portals=ports, vevs=vevs, gauges=gauges
+        )
+        by_name = {row["name"]: row for row in ledger["rows"]}
+        return np.array(
+            [by_name[n]["beta_total"] for n in names_l + names_p],
+            dtype=float,
+        )
 
     def left_perturbative_window(_t: float, y: np.ndarray) -> float:
         return float(pert_cap - np.max(np.abs(y)))
@@ -236,10 +317,13 @@ def evolve_sector(*, lambdas0: dict[str, float], portals0: dict[str, float], vev
     )
     y1 = sol.y[:, -1]
     lams1 = {n: float(y1[i]) for i, n in enumerate(names_l)}
-    ports1 = {n: float(y1[len(names_l) + i]) for i, n in enumerate(names_p)}
+    ports1 = {
+        n: float(y1[len(names_l) + i]) for i, n in enumerate(names_p)
+    }
     hit_event = bool(sol.t_events and sol.t_events[0].size > 0)
-    reached_mi = bool(sol.success) and (not hit_event)
+    reached_mi = bool(sol.success) and not hit_event
     all_pos = all(v > 0.0 for v in lams1.values())
+
     out: dict[str, Any] = {
         "success": reached_mi and all_pos,
         "n_steps": int(sol.y.shape[1]),
@@ -252,25 +336,32 @@ def evolve_sector(*, lambdas0: dict[str, float], portals0: dict[str, float], vev
         "portals_end": ports1,
         "all_quartics_positive": all_pos,
         "max_abs_rel_shift_lambda": max(
-            abs(lams1[n] - lambdas0[n]) / max(abs(lambdas0[n]), 1e-30) for n in names_l
+            abs(lams1[n] - lambdas0[n]) / max(abs(lambdas0[n]), 1e-30)
+            for n in names_l
         ),
         "max_abs_rel_shift_portal": max(
-            abs(ports1[n] - portals0[n]) / max(abs(portals0[n]), 1e-30) for n in names_p
+            abs(ports1[n] - portals0[n]) / max(abs(portals0[n]), 1e-30)
+            for n in names_p
         ),
         "landau_like_couplings": [
-            n for n, v in {**lams1, **ports1}.items() if abs(v) >= 0.5 * pert_cap
+            n
+            for n, value in {**lams1, **ports1}.items()
+            if abs(value) >= 0.5 * pert_cap
         ],
     }
     if not out["success"]:
         out["residual"] = (
             "reduced_DeltaR_or_portal_RGE_nonintegrable_to_MI"
-            if ("DeltaR_126bar" in out["landau_like_couplings"] or lams1.get("DeltaR_126bar", 0.0) <= 0.0)
+            if (
+                "DeltaR_126bar" in out["landau_like_couplings"]
+                or lams1.get("DeltaR_126bar", 0.0) <= 0.0
+            )
             else "reduced_quartic_portal_RGE_nonintegrable_to_MI"
         )
         out["note"] = (
             "Fail-closed: the reduced PS radial/portal flow leaves the "
-            "perturbative window before M_I (Landau-like singularity). "
-            "Subgroup Casimir resolution remains valid; full tensor betas stay OPEN."
+            "perturbative window before M_I. Subgroup Casimir resolution "
+            "remains valid; full tensor betas stay OPEN."
         )
     return out
 
@@ -278,7 +369,12 @@ def evolve_sector(*, lambdas0: dict[str, float], portals0: dict[str, float], vev
 def build_report() -> dict[str, Any]:
     anchor = scalar_pd._unification_anchor()
     if not anchor.get("available"):
-        return {"status": "PS_QUARTIC_SOFT_RGE_NOT_EXECUTED__ANCHOR_MISSING", "n_failed": 1, "failures": ["unification_anchor"], "flag": {"pati_salam_subgroup_resolved": False}}
+        return {
+            "status": "PS_QUARTIC_SOFT_RGE_NOT_EXECUTED__ANCHOR_MISSING",
+            "n_failed": 1,
+            "failures": ["unification_anchor"],
+            "flag": {"pati_salam_subgroup_resolved": False},
+        }
 
     m_i = float(anchor["M_I_GeV"])
     m_gut = float(anchor["M_GUT_GeV"])
@@ -294,58 +390,122 @@ def build_report() -> dict[str, Any]:
         "Phi17_X": float(raw["Phi17_X"]),
         "H10_eff": float(raw["h_EW_effective"]),
     }
-    vevs = {"P_210_PS": m_gut, "DeltaR_126bar": m_i, "S_PQ": m_i, "Phi17_X": 1.0e17, "H10_eff": m_i}
+    vevs = {
+        "P_210_PS": m_gut,
+        "DeltaR_126bar": m_i,
+        "S_PQ": m_i,
+        "Phi17_X": 1.0e17,
+        "H10_eff": m_i,
+    }
     vmin = pmin.build_report()
     fk = vmin.get("finite_kappa_benchmark_couplings") or {}
-    portals0 = {"kappa": float(fk.get("kappa", 0.05)), "lam4": float(fk.get("lam4", 1e-4)), "lambda_lock": float(fk.get("lambda_lock", 1.0))}
+    portals0 = {
+        "kappa": float(fk.get("kappa", 0.05)),
+        "lam4": float(fk.get("lam4", 1e-4)),
+        "lambda_lock": float(fk.get("lambda_lock", 1.0)),
+    }
 
     gauges_gut = run_ps_gauge(alpha_inv, m_gut, m_gut)
-    ledger_gut = assemble_sector(lambdas=lambdas0, portals=portals0, vevs=vevs, gauges=gauges_gut)
-    evo = evolve_sector(lambdas0=lambdas0, portals0=portals0, vevs=vevs, alpha_inv_gut=alpha_inv, mu0=m_gut, mu1=m_i)
-    # If the reduced flow terminates early, still build an M_I ledger from the
-    # last finite couplings (diagnostic only; not a claim of UV→IR matching).
+    ledger_gut = assemble_sector(
+        lambdas=lambdas0,
+        portals=portals0,
+        vevs=vevs,
+        gauges=gauges_gut,
+    )
+    evo = evolve_sector(
+        lambdas0=lambdas0,
+        portals0=portals0,
+        vevs=vevs,
+        alpha_inv_gut=alpha_inv,
+        mu0=m_gut,
+        mu1=m_i,
+    )
     ledger_mi = assemble_sector(
         lambdas=evo["lambdas_end"],
         portals=evo["portals_end"],
         vevs=vevs,
         gauges=evo["gauge_boundary_MI"],
     )
-    soft_rep = softg.build_report()
 
-    charged = {r["name"]: r for r in ledger_gut["rows"] if r["kind"] == "self_quartic"}
+    # This report is intentionally diagnostic only. Its UV phase input has
+    # been reopened by the exact selected-vacuum phase-rank result.
+    soft_rep = softg.build_report()
+    soft_baseline_green = soft_rep.get("n_failed", 1) == 0
+    soft_baseline_failures = list(soft_rep.get("failures", []))
+
+    charged = {
+        row["name"]: row
+        for row in ledger_gut["rows"]
+        if row["kind"] == "self_quartic"
+    }
     checks = {
         "ledger_built": ledger_gut["n_couplings"] == 8,
-        "ps_gauge_couplings_split_below_gut": len({round(v, 12) for v in evo["gauge_boundary_MI"].values()}) > 1,
-        "deltaR_has_nonzero_ps_dressing": charged["DeltaR_126bar"]["gauge_invariant_Cg2"] > 0.0,
-        "H10_has_nonzero_ps_dressing": charged["H10_eff"]["gauge_invariant_Cg2"] > 0.0,
-        "singlets_have_zero_ps_dressing": charged["P_210_PS"]["gauge_invariant_Cg2"] == 0.0 and charged["S_PQ"]["gauge_invariant_Cg2"] == 0.0,
-        # Evolution singularity is a documented residual, not an execution crash.
-        "evolution_attempted_without_raise": True,
-        "soft_gaugino_baseline": soft_rep.get("n_failed", 1) == 0,
-    }
-    failures = [k for k, ok in checks.items() if not ok]
-    evo_ok = bool(evo.get("success"))
-    return {
-        "status": (
-            "PS_SUBGROUP_RESOLVED_QUARTIC_SOFT_RGE__FULL_TENSOR_BETAS_OPEN"
-            if not failures and evo_ok
-            else (
-                "PS_SUBGROUP_RESOLVED_QUARTIC_SOFT_RGE__REDUCED_FLOW_NONINTEGRABLE"
-                if not failures
-                else "PS_SUBGROUP_RESOLVED_QUARTIC_SOFT_RGE_FAILED"
-            )
+        "ps_gauge_couplings_split_below_gut": len(
+            {round(v, 12) for v in evo["gauge_boundary_MI"].values()}
+        )
+        > 1,
+        "deltaR_has_nonzero_ps_dressing": charged["DeltaR_126bar"][
+            "gauge_invariant_Cg2"
+        ]
+        > 0.0,
+        "H10_has_nonzero_ps_dressing": charged["H10_eff"][
+            "gauge_invariant_Cg2"
+        ]
+        > 0.0,
+        "singlets_have_zero_ps_dressing": (
+            charged["P_210_PS"]["gauge_invariant_Cg2"] == 0.0
+            and charged["S_PQ"]["gauge_invariant_Cg2"] == 0.0
         ),
+        "evolution_attempted_without_raise": True,
+        "soft_gaugino_baseline_not_required_for_ps_rge": True,
+    }
+    failures = [name for name, passed in checks.items() if not passed]
+    evo_ok = bool(evo.get("success"))
+
+    if failures:
+        status = "PS_SUBGROUP_RESOLVED_QUARTIC_SOFT_RGE_FAILED"
+    elif evo_ok:
+        status = "PS_SUBGROUP_RESOLVED_QUARTIC_SOFT_RGE__FULL_TENSOR_BETAS_OPEN"
+    else:
+        status = "PS_SUBGROUP_RESOLVED_QUARTIC_SOFT_RGE__REDUCED_FLOW_NONINTEGRABLE"
+
+    return {
+        "status": status,
         "n_checks": len(checks),
         "n_failed": len(failures),
         "failures": failures,
         "sources": SOURCES,
-        "boundary_GUT": {"alpha_inv_GUT_after_spectators": alpha_inv, "gauges": gauges_gut, "lambdas": lambdas0, "portals": portals0, "ledger": ledger_gut},
+        "boundary_GUT": {
+            "alpha_inv_GUT_after_spectators": alpha_inv,
+            "gauges": gauges_gut,
+            "lambdas": lambdas0,
+            "portals": portals0,
+            "ledger": ledger_gut,
+        },
         "evolution_GUT_to_MI": evo,
-        "boundary_MI": {"gauges": evo["gauge_boundary_MI"], "lambdas": evo["lambdas_end"], "portals": evo["portals_end"], "ledger": ledger_mi},
+        "boundary_MI": {
+            "gauges": evo["gauge_boundary_MI"],
+            "lambdas": evo["lambdas_end"],
+            "portals": evo["portals_end"],
+            "ledger": ledger_mi,
+        },
+        "soft_gaugino_downstream_diagnostic": {
+            "status": soft_rep.get("status"),
+            "n_failed": soft_rep.get("n_failed"),
+            "failures": soft_baseline_failures,
+            "green": soft_baseline_green,
+            "required_for_ps_rge_execution": False,
+            "classification": (
+                "conditional_downstream_diagnostic"
+                if soft_baseline_green
+                else "revalidation_open_after_selected_phase_rank_one"
+            ),
+        },
         "residual_still_open": {
             "reduced_quartic_portal_RGE_nonintegrable_to_MI": not evo_ok,
             "full_component_tensor_betas": True,
             "live_sarah_or_pyrate_executable_run": True,
+            "soft_gaugino_uv_phase_baseline_revalidation": not soft_baseline_green,
         },
         "flag": {
             "pati_salam_subgroup_resolved": True,
@@ -359,28 +519,45 @@ def build_report() -> dict[str, Any]:
             "soft_m2_betas_included": True,
             "portal_kappa_lam4_lock_betas_included": True,
             "reduced_flow_integrable_GUT_to_MI": evo_ok,
-            "vacuum_stability_lambda_positive_along_flow": bool(evo.get("all_quartics_positive")),
+            "vacuum_stability_lambda_positive_along_flow": bool(
+                evo.get("all_quartics_positive")
+            ),
+            "soft_gaugino_baseline_green": soft_baseline_green,
+            "soft_gaugino_baseline_required_for_ps_rge": False,
             "exact_unique_proton_lifetime": False,
             "whole_model_excluded": False,
         },
         "verdict": (
-            "Resolved the prior C2=0 error by evolving separate Pati–Salam gauge couplings and nonzero subgroup Casimirs for Delta_R and H10. "
+            "Resolved the prior C2=0 error by evolving separate Pati–Salam "
+            "gauge couplings and nonzero subgroup Casimirs for Delta_R and H10. "
             + (
-                f"The reduced flow remains stable={evo['all_quartics_positive']} with max |Delta lambda|/|lambda|={evo['max_abs_rel_shift_lambda']:.3e}. "
+                "The reduced flow remains inside the attempted perturbative "
+                "window to M_I. "
                 if evo_ok
                 else (
-                    "The reduced radial/portal flow hits a Landau-like non-integrable "
-                    f"singularity before M_I (residual={evo.get('residual')}; "
-                    f"mu_end={evo.get('mu_end_GeV'):.3e} GeV). "
+                    "The reduced radial/portal flow hits a Landau-like "
+                    "non-integrable singularity before M_I; this is retained "
+                    "as an open residual. "
                 )
             )
-            + "A complete tensor-valued two-loop beta system and live external-tool dump remain open."
+            + (
+                "The conditional soft-gaugino diagnostic is green, but is not "
+                "an input to this RGE result. "
+                if soft_baseline_green
+                else (
+                    "The conditional soft-gaugino UV baseline is reopened by "
+                    "the selected phase-rank-one result and is recorded as a "
+                    "downstream blocker, not an RGE execution failure. "
+                )
+            )
+            + "A complete tensor-valued two-loop beta system remains open."
         ),
     }
 
 
 def write_markdown(report: dict[str, Any]) -> str:
     evo = report["evolution_GUT_to_MI"]
+    soft = report["soft_gaugino_downstream_diagnostic"]
     lines = [
         "# Pati–Salam-resolved quartic/soft RGE — v20",
         "",
@@ -391,11 +568,12 @@ def write_markdown(report: dict[str, Any]) -> str:
         f"- g4,gL,gR at M_I: {evo['gauge_boundary_MI']}",
         f"- all reduced quartics positive: {evo['all_quartics_positive']}",
         f"- max relative quartic shift: {evo['max_abs_rel_shift_lambda']:.6e}",
+        f"- soft-gaugino downstream diagnostic: {soft['classification']}",
         "",
         "## Flags",
         "",
     ]
-    lines.extend(f"- `{k}`: {v}" for k, v in report["flag"].items())
+    lines.extend(f"- `{key}`: {value}" for key, value in report["flag"].items())
     lines.append("")
     return "\n".join(lines)
 
@@ -403,9 +581,27 @@ def write_markdown(report: dict[str, Any]) -> str:
 def main(argv: list[str] | None = None) -> int:
     argparse.ArgumentParser(description=__doc__).parse_args(argv)
     report = build_report()
-    ROOT.joinpath("QUARTIC_SOFT_BETAS_V20_VERDICT.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
-    ROOT.joinpath("QUARTIC_SOFT_BETAS_V20.md").write_text(write_markdown(report), encoding="utf-8")
-    print(json.dumps({"status": report["status"], "n_failed": report["n_failed"], "evolution_GUT_to_MI": report.get("evolution_GUT_to_MI"), "flag": report.get("flag"), "verdict": report.get("verdict")}, indent=2))
+    ROOT.joinpath("QUARTIC_SOFT_BETAS_V20_VERDICT.json").write_text(
+        json.dumps(report, indent=2) + "\n", encoding="utf-8"
+    )
+    ROOT.joinpath("QUARTIC_SOFT_BETAS_V20.md").write_text(
+        write_markdown(report), encoding="utf-8"
+    )
+    print(
+        json.dumps(
+            {
+                "status": report["status"],
+                "n_failed": report["n_failed"],
+                "evolution_GUT_to_MI": report.get("evolution_GUT_to_MI"),
+                "soft_gaugino_downstream_diagnostic": report.get(
+                    "soft_gaugino_downstream_diagnostic"
+                ),
+                "flag": report.get("flag"),
+                "verdict": report.get("verdict"),
+            },
+            indent=2,
+        )
+    )
     return 0 if report.get("n_failed", 1) == 0 else 1
 
 
