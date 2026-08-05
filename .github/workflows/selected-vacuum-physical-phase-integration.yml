@@ -1,0 +1,77 @@
+name: selected-vacuum-physical-phase-integration
+
+on:
+  pull_request:
+    paths:
+      - selected_vacuum_neutral_phase_gauge_quotient_v20.py
+      - test_selected_vacuum_neutral_phase_gauge_quotient_v20.py
+      - selected_vacuum_physical_phase_integration_v20.py
+      - test_selected_vacuum_physical_phase_integration_v20.py
+      - .github/workflows/selected-vacuum-physical-phase-integration.yml
+  workflow_dispatch:
+
+concurrency:
+  group: selected-vacuum-physical-phase-integration-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  physical-phase-integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      PYTHONHASHSEED: "0"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - name: Compile physical phase authority
+        run: |
+          python -m compileall -q \
+            selected_vacuum_neutral_phase_gauge_quotient_v20.py \
+            test_selected_vacuum_neutral_phase_gauge_quotient_v20.py \
+            selected_vacuum_physical_phase_integration_v20.py \
+            test_selected_vacuum_physical_phase_integration_v20.py
+      - name: Execute physical phase authority
+        run: |
+          python selected_vacuum_neutral_phase_gauge_quotient_v20.py --write
+          python selected_vacuum_physical_phase_integration_v20.py --write
+      - name: Focused tests
+        run: |
+          python -m unittest -v \
+            test_selected_vacuum_neutral_phase_gauge_quotient_v20.py \
+            test_selected_vacuum_physical_phase_integration_v20.py
+      - name: Assert authoritative scientific boundary
+        run: |
+          python - <<'PY'
+          import json
+          q=json.load(open('SELECTED_VACUUM_NEUTRAL_PHASE_GAUGE_QUOTIENT_V20.json'))
+          i=json.load(open('SELECTED_VACUUM_PHYSICAL_PHASE_INTEGRATION_V20.json'))
+          assert q['n_failed']==0, q
+          assert q['flags']['DeltaR_phase_eaten_by_Zprime_BL_R'], q
+          assert not q['flags']['extra_nonaxion_flat_phase_present'], q
+          assert q['flags']['exactly_one_physical_PQ_null'], q
+          assert i['n_failed']==0, i
+          assert i['status']=='PHYSICAL_NEUTRAL_PHASE_CLOSED__LEGACY_CONSUMERS_REVALIDATION_OPEN', i
+          assert i['closed_subproblem']['physical_rank']==1, i
+          assert i['closed_subproblem']['physical_nullity']==1, i
+          assert i['closed_subproblem']['physical_null']=='PQ axion', i
+          assert not i['closed_subproblem']['extra_physical_nonaxion_flat_phase'], i
+          assert i['legacy_consumer_audit']['n_stale_or_dependent'] >= 2, i
+          assert not i['flags']['legacy_phase_consumers_fully_revalidated'], i
+          assert not i['flags']['finite_dimension_search_workflows_scientifically_required'], i
+          assert not i['flags']['full_component_scalar_hessian_complete'], i
+          assert not i['flags']['whole_model_validated'], i
+          assert not i['flags']['whole_model_excluded'], i
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: selected-vacuum-physical-phase-integration
+          path: |
+            SELECTED_VACUUM_NEUTRAL_PHASE_GAUGE_QUOTIENT_V20.json
+            SELECTED_VACUUM_NEUTRAL_PHASE_GAUGE_QUOTIENT_V20.md
+            SELECTED_VACUUM_PHYSICAL_PHASE_INTEGRATION_V20.json
+            SELECTED_VACUUM_PHYSICAL_PHASE_INTEGRATION_V20.md
