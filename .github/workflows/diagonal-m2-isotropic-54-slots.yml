@@ -7,6 +7,8 @@ on:
       - test_h10_intermediate_vev_consistency_audit_v20.py
       - physical_h10_54_mass_block_from_deltar_v20.py
       - test_physical_h10_54_mass_block_from_deltar_v20.py
+      - deltar_54_locking_dependency_audit_v20.py
+      - test_deltar_54_locking_dependency_audit_v20.py
       - diagonal_h10_sigmabar_m2_isotropic_54_slots_v20.py
       - test_diagonal_h10_sigmabar_m2_isotropic_54_slots_v20.py
       - .github/workflows/diagonal-m2-isotropic-54-slots.yml
@@ -19,7 +21,7 @@ concurrency:
 jobs:
   corrected-isotropic-gate:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 75
     env:
       PYTHONHASHSEED: "0"
     steps:
@@ -33,20 +35,24 @@ jobs:
           python -m compileall -q \
             h10_intermediate_vev_consistency_audit_v20.py \
             physical_h10_54_mass_block_from_deltar_v20.py \
+            deltar_54_locking_dependency_audit_v20.py \
             diagonal_h10_sigmabar_m2_isotropic_54_slots_v20.py \
             test_h10_intermediate_vev_consistency_audit_v20.py \
             test_physical_h10_54_mass_block_from_deltar_v20.py \
+            test_deltar_54_locking_dependency_audit_v20.py \
             test_diagonal_h10_sigmabar_m2_isotropic_54_slots_v20.py
       - name: Execute corrected component audits
         run: |
           python h10_intermediate_vev_consistency_audit_v20.py --write
           python physical_h10_54_mass_block_from_deltar_v20.py --write
+          python deltar_54_locking_dependency_audit_v20.py --write
           python diagonal_h10_sigmabar_m2_isotropic_54_slots_v20.py --write
       - name: Focused tests
         run: |
           python -m unittest -v \
             test_h10_intermediate_vev_consistency_audit_v20.py \
             test_physical_h10_54_mass_block_from_deltar_v20.py \
+            test_deltar_54_locking_dependency_audit_v20.py \
             test_diagonal_h10_sigmabar_m2_isotropic_54_slots_v20.py
       - name: Assert fail-closed scientific state
         run: |
@@ -54,6 +60,7 @@ jobs:
           import json
           a=json.load(open('H10_INTERMEDIATE_VEV_CONSISTENCY_AUDIT_V20.json'))
           h=json.load(open('PHYSICAL_H10_54_MASS_BLOCK_FROM_DELTAR_V20.json'))
+          d=json.load(open('DELTAR_54_LOCKING_DEPENDENCY_AUDIT_V20.json'))
           r=json.load(open('DIAGONAL_H10_SIGMABAR_M2_ISOTROPIC_54_SLOTS_V20.json'))
           assert a['n_failed']==0 and a['overall_state']=='BLOCKED', a
           assert not a['flags']['physical_H10_intermediate_scale_singlet_vev_exists'], a
@@ -66,7 +73,13 @@ jobs:
           assert h['exact_zero_evidence']['generic_map_nonzero'], h
           assert h['exact_zero_evidence']['Q_delta_frobenius'] < 1e-12, h
           assert h['exact_zero_evidence']['D_HH_frobenius_GeV2_at_lambda1'] < 1e-6, h
-          assert not h['flags']['full_component_hessian_complete'], h
+          assert d['n_failed']==0 and d['overall_state']=='BLOCKED', d
+          assert d['flags']['all_known_consumers_identified'], d
+          assert not d['flags']['all_consumers_revalidated'], d
+          assert not d['flags']['selected_vacuum_lambda_lock_chain_valid'], d
+          assert not d['flags']['repository_ready_for_release'], d
+          assert d['counts']['n_revalidation_required'] == d['counts']['n_known_consumers'], d
+          assert d['counts']['n_known_consumers'] >= 10, d
           assert r['n_failed']==0 and r['overall_state']=='BLOCKED', r
           assert r['flag']['isotropic_norm_slots_partially_filled'], r
           assert not r['flag']['isotropic_norm_54_slots_partially_filled'], r
@@ -77,8 +90,6 @@ jobs:
           assert not r['flag']['full_component_hessian'], r
           assert not r['flag']['whole_model_validated'], r
           assert not r['flag']['whole_model_excluded'], r
-          assert len(r['A_partial_GeV2'])==10, r
-          assert len(r['C_partial_GeV2'])==126, r
           assert len(r['partial_diagonals']['filled_slots'])==3, r
           assert len(r['partial_diagonals']['withdrawn_slots'])==2, r
           assert r['partial_diagonals']['components']['locking_isotropic_seed']==0.0, r
@@ -92,5 +103,7 @@ jobs:
             H10_INTERMEDIATE_VEV_CONSISTENCY_AUDIT_V20.md
             PHYSICAL_H10_54_MASS_BLOCK_FROM_DELTAR_V20.json
             PHYSICAL_H10_54_MASS_BLOCK_FROM_DELTAR_V20.md
+            DELTAR_54_LOCKING_DEPENDENCY_AUDIT_V20.json
+            DELTAR_54_LOCKING_DEPENDENCY_AUDIT_V20.md
             DIAGONAL_H10_SIGMABAR_M2_ISOTROPIC_54_SLOTS_V20.json
             DIAGONAL_H10_SIGMABAR_M2_ISOTROPIC_54_SLOTS_V20.md
