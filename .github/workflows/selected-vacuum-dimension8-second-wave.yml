@@ -8,9 +8,11 @@ on:
       - .github/workflows/selected-vacuum-dimension8-second-wave.yml
   workflow_dispatch:
 
+# Expensive tensor jobs must survive unrelated commits from concurrent audits.
+# Scope concurrency to the exact commit instead of the PR number.
 concurrency:
-  group: selected-vacuum-dimension8-second-wave-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
+  group: selected-vacuum-dimension8-second-wave-${{ github.sha }}
+  cancel-in-progress: false
 
 jobs:
   dimension8-second-wave:
