@@ -1,0 +1,58 @@
+name: so10-goldstone-nullspace-projector
+
+on:
+  pull_request:
+    paths:
+      - so10_goldstone_nullspace_projector_v20.py
+      - test_so10_goldstone_nullspace_projector_v20.py
+      - so10_nonsusy_gauge_orbit_v20.py
+      - test_so10_nonsusy_gauge_orbit_v20.py
+      - .github/workflows/so10-goldstone-nullspace-projector.yml
+  workflow_dispatch:
+
+concurrency:
+  group: goldstone-nullspace-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  goldstone-nullspace-projector:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - name: Execute Goldstone nullspace projector
+        run: python so10_goldstone_nullspace_projector_v20.py --write
+      - name: Focused tests
+        run: |
+          python -m unittest -v \
+            test_so10_nonsusy_gauge_orbit_v20.py \
+            test_so10_goldstone_nullspace_projector_v20.py
+      - name: Assert honest scientific boundary
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('SO10_GOLDSTONE_NULLSPACE_PROJECTOR_V20.json'))
+          assert r['n_failed']==0, r
+          assert r['overall_state']=='BLOCKED', r
+          assert r['status']=='SO10_GOLDSTONE_NULLSPACE_PROJECTOR_READY__FULL_HESSIAN_OPEN', r
+          assert r['orbit']['goldstone_rank']==33, r
+          assert r['orbit']['physical_complement_dimension']==681, r
+          assert abs(r['projectors']['trace_P_G']-33.0)<1e-6, r
+          assert r['synthetic_validation']['n_zero_after_reproject']==33, r
+          assert not r['flags']['full_component_hessian_complete'], r
+          assert not r['flags']['root_by_root_33_goldstone_projection_on_dynamical_hessian'], r
+          assert not r['flags']['whole_model_validated'], r
+          assert not r['flags']['whole_model_excluded'], r
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: so10-goldstone-nullspace-projector
+          path: |
+            SO10_GOLDSTONE_NULLSPACE_PROJECTOR_V20.json
+            SO10_GOLDSTONE_NULLSPACE_PROJECTOR_V20.md

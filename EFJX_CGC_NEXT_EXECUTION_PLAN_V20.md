@@ -124,13 +124,21 @@ reduction `eff_210_for_126 = |ω+a|+|p|`, giving a positive Hermitian Schur C
 seed. Full Cartesian CG, second multiplicity, and channels 120/320/1050/4125
 remain OPEN.
 
+## Completed Goldstone nullspace projector (orbit embedding)
+
+`so10_goldstone_nullspace_projector_v20.py` builds exact projectors
+`P_G` (trace 33) and `P_phys` (trace 681) on the orbit-certificate embedding
+`(210_PS ⊕ 126bar)`, and validates Hessian projection on synthetic spectra.
+Full dynamical component Hessian remains OPEN.
+
 ## Correct next goal
 
 Continue the full component scalar mass-squared matrix and global
-`hEW=174 GeV` vacuum: remaining charge-allowed diagonals that do not invent
-120/320/1050/4125 CG, then root-by-root removal of all 33 Goldstones,
-stationarity, boundedness, thresholds, and τ_p. Do not reopen a reduced-sector
-phase hunt.
+`hEW=174 GeV` vacuum: extend the Goldstone projector to the full component
+field space, fill remaining charge-allowed diagonals that do not invent
+120/320/1050/4125 CG, then apply root-by-root Goldstone removal to the
+dynamical Hessian, stationarity, boundedness, thresholds, and τ_p. Do not
+reopen a reduced-sector phase hunt.
 
 ## Executable sequence
 
