@@ -1,49 +1,31 @@
 {
-  "H_channel_components_Re_Im": {
-    "0": [
-      0.0,
-      0.0
-    ],
-    "1": [
-      0.0,
-      0.0
-    ],
-    "2": [
-      0.0,
-      0.0
-    ],
-    "3": [
-      0.0,
-      0.0
-    ],
-    "4": [
-      0.0,
-      0.0
-    ],
-    "5": [
-      0.0,
-      0.0
-    ],
-    "6": [
-      0.0,
-      0.0
-    ],
-    "7": [
-      0.0,
-      0.0
-    ],
-    "8": [
-      0.0,
-      0.0
-    ],
-    "9": [
-      0.0,
-      0.0
-    ]
-  },
-  "delta_embedding": "(e0+i e1)(e2+i e3)(e4+i e5) wedge (e6e7+e8e9)",
-  "factorial_stripped_H_channel_frobenius": 0.0,
-  "implication": "Pure PS p-volume does not feed the 10-channel against Delta_R; the physical map requires the full Hilbert (p,a,omega) 210 VEV and component Clebsch tables (Chen/Fukuyama/Aulakh).",
+  "status": "PURE_P_CHANNEL_ZERO_RETAINED__FULL_TENSOR_MAP_NOW_AVAILABLE",
   "phi_embedding": "e6^e7^e8^e9",
-  "vanishes": true
+  "delta_embedding": "(e0+i e1)(e2+i e3)(e4+i e5) wedge (e6e7+e8e9)",
+  "factorial_reduced_H_channel_frobenius": 0.0,
+  "vanishes": true,
+  "H_channel_components_Re_Im": {
+    "0": [0.0, 0.0],
+    "1": [0.0, 0.0],
+    "2": [0.0, 0.0],
+    "3": [0.0, 0.0],
+    "4": [0.0, 0.0],
+    "5": [0.0, 0.0],
+    "6": [0.0, 0.0],
+    "7": [0.0, 0.0],
+    "8": [0.0, 0.0],
+    "9": [0.0, 0.0]
+  },
+  "interpretation": "The pure canonical p direction has zero image on this selected Delta_R state. This is one matrix element, not a zero tensor invariant.",
+  "replacement_full_map": {
+    "artifact": "DIRECT_PHI_H_SIGMABAR_TENSOR_V20.json",
+    "basis": "complete canonical p,a,omega",
+    "map_shape": [10, 126],
+    "generic_rank": 10,
+    "analytic_branch_multiplicities": [3, 3, 2, 2]
+  },
+  "component_tables_required_to_construct_map": false,
+  "published_TD_tables_used_as_independent_crosscheck": true,
+  "whole_model_validated": false,
+  "whole_model_excluded": false
 }
