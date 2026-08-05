@@ -16,24 +16,26 @@ class SymmetricProductSourceAuditTests(unittest.TestCase):
         names = {row["name"] for row in report["symmetric_product"]["irreps"]}
         self.assertTrue({"45", "1050bar", "8910", "5940"}.issubset(names))
         self.assertEqual(report["superseded_blocker"]["old_residual_dimension"], 5945)
-        self.assertEqual(report["symmetric_product"]["true_residual_dimension"], 21845)
+        self.assertEqual(report["symmetric_product"]["mode_level_residual_dimension"], 21845)
 
-    def test_fail_closed_reclassification(self):
+    def test_pure_210_closed_but_full_ring_fail_closed(self):
         report = audit.build_report()
         self.assertEqual(report["overall_state"], "BLOCKED")
         self.assertTrue(report["flags"]["source_decomposition_corrected"])
-        self.assertTrue(report["flags"]["old_1050_blocker_superseded"])
-        self.assertTrue(report["flags"]["downstream_revalidation_required"])
+        self.assertTrue(report["flags"]["source_normalizations_reconciled"])
+        self.assertTrue(report["flags"]["old_1050_table_blocker_removed_for_pure_210"])
+        self.assertTrue(report["closure"]["pure_210_quartic_subsector_closed"])
         self.assertFalse(report["flags"]["g1_closed"])
         self.assertFalse(report["flags"]["g2_closed"])
         self.assertFalse(report["flags"]["whole_model_validated"])
 
-    def test_published_norm_identity_not_overclaimed(self):
+    def test_published_norm_identity_scope(self):
         report = audit.build_report()
         identity = report["published_1050_norm_identity"]
-        self.assertTrue(identity["can_close_210_only_quartic_invariant_after_normalization"])
-        self.assertFalse(identity["normalization_reconciliation_complete"])
+        self.assertTrue(identity["normalization_reconciliation_complete"])
+        self.assertTrue(identity["closes_pure_210_quartic_invariant"])
         self.assertFalse(identity["closes_full_1050_mode_cg"])
+        self.assertFalse(report["closure"]["full_mixed_representation_ring_G1_closed"])
 
 
 if __name__ == "__main__":
