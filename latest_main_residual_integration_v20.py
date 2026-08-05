@@ -1,18 +1,28 @@
 #!/usr/bin/env python3
-"""Integrate latest-main residual closures after the EFJX gauge/gamma correction."""
+"""Integrate source-correct closures and withdrawals on latest main.
+
+Valid executable work is retained: live reduced beta artifacts, scalar-alpha
+non-uniqueness, the direct Phi-H-Sigmabar tensor map and its published T/D
+cross-check. Claims contaminated by imported SUSY fermion/gaugino matrices are
+explicitly reopened.
+"""
 from __future__ import annotations
 
 import argparse
-import inspect
 import json
 from pathlib import Path
 from typing import Any
 
 import cal_g_portal_decision_v20 as calg_portal
-import efjx_cgc_physical_normalization_gate_v20 as efjx_cgc
+import cal_g_soft_mode_classification_v20 as calg_soft
+import direct_phi_h_sigmabar_td_crosscheck_v20 as tdcheck
+import direct_phi_h_sigmabar_tensor_v20 as direct
+import efjx_cgc_physical_normalization_gate_v20 as efjx
 import lambda_lock_cal_g_lift_v20 as lock_lift
+import mixed_210_126_10_hilbert_hessian_v20 as mixed_hessian
 import nonsusy_reduced_hessian_v20 as physical_hessian
 import scalar_alpha_flavour_nonuniqueness_v20 as alpha_nonunique
+import tau_p_hessian_residual_closure_v20 as tau_hessian
 import tau_p_ultimate_residual_checklist_v20 as ultimate
 
 ROOT = Path(__file__).resolve().parent
@@ -27,46 +37,18 @@ def _load(path: Path) -> dict[str, Any]:
 def build_report() -> dict[str, Any]:
     gauge_dump = _load(GAUGE_DUMP) if GAUGE_DUMP.is_file() else {}
     quartic_dump = _load(QUARTIC_DUMP) if QUARTIC_DUMP.is_file() else {}
-    alpha = alpha_nonunique.build_report()
-    portal = calg_portal.build_report()
-    lifted = lock_lift.build_report()
-    ultimate_report = ultimate.build_report()
-    physical = physical_hessian.build_report()
-    efjx = efjx_cgc.build_report()
 
-    lock_source = inspect.getsource(lock_lift)
-    proxy_dependency = (
-        "charge_allowed_potential_minimize_v20" in lock_source
-        and "nonsusy_reduced_hessian_v20" not in lock_source
-    )
-    historical_tachyon = bool(
-        physical.get("historical_benchmark", {}).get("tachyonic")
-    )
-    selected_point_claim_invalidated = bool(
-        proxy_dependency
-        and historical_tachyon
-        and lifted.get("flag", {}).get("selected_point_not_spoiled_by_lock_raise")
-    )
-    ultimate_selected_closure_invalidated = bool(historical_tachyon)
-
-    efjx_source_corrected = bool(
-        efjx.get("n_failed", 1) == 0
-        and efjx.get("flags", {}).get("exact_EFJX_gauge_response_known")
-        and efjx.get("flags", {}).get("efjx_cgc_route_invalidated")
-        and not efjx.get("flags", {}).get("exact_EFJX_gamma_response_known")
-    )
-    proxy_cgc_ratio_invalidated = bool(
-        efjx.get("flags", {}).get("proxy_cgc_ratio_invalid_as_physical_prediction")
-        and not efjx.get("flags", {}).get("physical_CGC_normalization_derived")
-    )
-    old_8p8e29_bound_withdrawn = bool(
-        not efjx.get("flags", {}).get("old_8p8e29_bound_valid", True)
-    )
-    direct_tensor_executes = bool(
-        efjx.get("direct_tensor_replacement", {}).get("map_shape") == [10, 126]
-        and efjx.get("direct_tensor_replacement", {}).get("equivariance_residual", 1.0)
-        < 1e-10
-    )
+    direct_rep = direct.build_report()
+    td_rep = tdcheck.build_report()
+    efjx_rep = efjx.build_report()
+    mixed_rep = mixed_hessian.build_report()
+    calg_rep = calg_soft.build_report()
+    portal_rep = calg_portal.build_report()
+    lock_rep = lock_lift.build_report()
+    tau_hess_rep = tau_hessian.build_report()
+    ultimate_rep = ultimate.build_report()
+    alpha_rep = alpha_nonunique.build_report()
+    physical_rep = physical_hessian.build_report()
 
     gauge_valid = bool(
         gauge_dump.get("live_run_executed")
@@ -81,120 +63,216 @@ def build_report() -> dict[str, Any]:
         and coverage.get("trilinear_present")
         and coverage.get("soft_present")
     )
-    alpha_proven = bool(
-        alpha.get("flag", {}).get("scalar_alpha_proven_nonunique_from_flavour")
+    alpha_valid = bool(
+        alpha_rep.get("n_failed") == 0
+        and alpha_rep.get("flag", {}).get(
+            "scalar_alpha_proven_nonunique_from_flavour"
+        )
     )
-    calg_mechanism_in_principle = bool(
-        portal.get("flag", {}).get("cal_G_portal_decision_resolved")
-        and portal.get("flag", {}).get("existing_lambda_lock_sufficient_in_principle")
+    historical_tachyon = bool(
+        physical_rep.get("historical_benchmark", {}).get("tachyonic")
+    )
+
+    direct_valid = bool(
+        direct_rep.get("n_failed") == 0
+        and direct_rep.get("representation", {}).get("tensor_map_shape")
+        == [10, 126]
+        and direct_rep.get("flags", {}).get(
+            "canonical_126_kinetic_basis_constructed"
+        )
+        and direct_rep.get("flags", {}).get(
+            "closed_analytic_portal_spectrum_derived"
+        )
+    )
+    td_valid = bool(
+        td_rep.get("n_failed") == 0
+        and td_rep.get("max_abs_residual", 1.0) < 1e-12
+        and td_rep.get("flags", {}).get(
+            "published_gamma_TD_magnitudes_matched"
+        )
+    )
+    efjx_corrected = bool(
+        efjx_rep.get("n_failed") == 0
+        and efjx_rep.get("flags", {}).get("efjx_cgc_route_invalidated")
+        and efjx_rep.get("flags", {}).get(
+            "exact_EFJX_gauge_response_known"
+        )
+        and not efjx_rep.get("flags", {}).get(
+            "exact_EFJX_gamma_response_known"
+        )
+        and not efjx_rep.get("flags", {}).get(
+            "old_8p8e29_bound_valid", True
+        )
+    )
+    mixed_withdrawn = bool(
+        mixed_rep.get("n_failed") == 0
+        and mixed_rep.get("flag", {}).get(
+            "imported_susy_hessian_withdrawn"
+        )
+        and not mixed_rep.get("flag", {}).get(
+            "mixed_210_126_10_complete", True
+        )
+    )
+    calg_withdrawn = bool(
+        calg_rep.get("n_failed") == 0
+        and calg_rep.get("flag", {}).get(
+            "cal_G_susy_gaugino_diagnostic_only"
+        )
+        and not calg_rep.get("flag", {}).get(
+            "cal_G_soft_mode_classified", True
+        )
+    )
+    portal_withdrawn = bool(
+        portal_rep.get("n_failed") == 0
+        and portal_rep.get("flag", {}).get(
+            "cal_G_susy_gaugino_target_withdrawn"
+        )
+        and not portal_rep.get("flag", {}).get(
+            "cal_G_portal_decision_resolved", True
+        )
+    )
+    lock_withdrawn = bool(
+        lock_rep.get("n_failed") == 0
+        and lock_rep.get("flag", {}).get(
+            "cal_G_susy_gaugino_target_withdrawn"
+        )
+        and not lock_rep.get("flag", {}).get(
+            "selected_lambda_lock_raised_to_cal_G_lift", True
+        )
+    )
+    tau_hessian_reopened = bool(
+        tau_hess_rep.get("n_failed") == 0
+        and tau_hess_rep.get("flag", {}).get(
+            "imported_susy_hessian_withdrawn"
+        )
+        and not tau_hess_rep.get("flag", {}).get(
+            "full_component_hessian_residual_closed", True
+        )
+    )
+    ultimate_open = bool(
+        ultimate_rep.get("n_failed") == 0
+        and not ultimate_rep.get("flag", {}).get(
+            "exact_unique_proton_lifetime", True
+        )
     )
 
     checks = {
         "validated_live_gauge_artifact": gauge_valid,
         "validated_live_reduced_quartic_soft_artifact": quartic_valid,
-        "scalar_alpha_nonuniqueness_proven": alpha_proven,
-        "cal_G_lambda_lock_mechanism_identified_in_principle": calg_mechanism_in_principle,
-        "lambda_lock_selected_point_uses_old_proxy": proxy_dependency,
-        "physical_EW_historical_point_tachyonic": historical_tachyon,
-        "proxy_selected_point_closure_invalidated": selected_point_claim_invalidated,
-        "ultimate_selected_point_closure_invalidated": ultimate_selected_closure_invalidated,
-        "EFJX_gauge_gamma_symbol_collision_corrected": efjx_source_corrected,
-        "old_EFJX_cgc_ratio_invalidated": proxy_cgc_ratio_invalidated,
-        "old_8p8e29_bound_withdrawn": old_8p8e29_bound_withdrawn,
-        "direct_10x126_tensor_map_executes": direct_tensor_executes,
-        "exact_unique_lifetime_not_overclaimed": not ultimate_report.get("flag", {}).get(
-            "exact_unique_proton_lifetime", True
-        ),
-        "whole_model_not_declared_excluded": True,
+        "scalar_alpha_nonuniqueness_proven": alpha_valid,
+        "physical_historical_point_tachyonic": historical_tachyon,
+        "direct_canonical_tensor_map": direct_valid,
+        "published_gamma_TD_crosscheck": td_valid,
+        "EFJX_gauge_gamma_collision_corrected": efjx_corrected,
+        "imported_susy_scalar_hessian_withdrawn": mixed_withdrawn,
+        "cal_G_scalar_classification_withdrawn": calg_withdrawn,
+        "cal_G_portal_decision_withdrawn": portal_withdrawn,
+        "lambda_lock_lift_withdrawn": lock_withdrawn,
+        "proton_hessian_closure_reopened": tau_hessian_reopened,
+        "exact_unique_lifetime_open": ultimate_open,
+        "whole_model_not_overclaimed": True,
     }
     failures = [name for name, passed in checks.items() if not passed]
 
     still_open = {
-        "full_210_tensor_quartic_basis_in_live_dump": "full_210_T2_T4_invariant_basis"
-        in quartic_dump.get("not_encoded", []),
-        "lambda4_CGC_live_encoding": "lam4_210_10_126_S_CGC"
-        in quartic_dump.get("not_encoded", []),
-        "dim6_lambda_lock_live_encoding": "dim6_lambda_lock"
-        in quartic_dump.get("not_encoded", []),
-        "published_state_label_dictionary_for_direct_tensor": True,
-        "direct_nonsusy_component_mass_squared_insertion": True,
-        "full_component_hessian_after_direct_tensor": True,
-        "cal_G_lift_revalidation_on_physical_EW_survival_point": selected_point_claim_invalidated,
-        "ultimate_tau_p_revalidation_after_physical_EW_falsification": ultimate_selected_closure_invalidated,
+        "complete_nonsusy_invariant_ring": True,
+        "map_repository_selected_vevs_to_canonical_tensor_convention": True,
+        "direct_portal_component_mass_squared_insertion": True,
+        "direct_nonsusy_singlet_mass_squared_matrix": True,
+        "global_vacuum_boundedness_and_competing_extrema": True,
+        "gauge_projected_full_component_hessian": True,
+        "physical_triplet_threshold_spectrum": True,
+        "full_tensor_two_loop_threshold_running": True,
         "exact_unique_proton_lifetime": True,
     }
 
     return {
         "status": (
-            "LATEST_MAIN_RESIDUALS_INTEGRATED__EFJX_ROUTE_CORRECTED"
+            "LATEST_MAIN_SOURCE_CORRECTIONS_INTEGRATED__THEORY_BLOCKED"
             if not failures
             else "LATEST_MAIN_RESIDUAL_INTEGRATION_FAILED"
         ),
+        "overall_state": "BLOCKED",
         "n_checks": len(checks),
         "n_failed": len(failures),
         "failures": failures,
+        "checks": checks,
         "valid_new_closures": {
             "live_pyrate_gauge_artifact": gauge_valid,
             "live_pyrate_reduced_quartic_soft_artifact": quartic_valid,
-            "scalar_alpha_nonunique_from_current_flavour_fit": alpha_proven,
-            "cal_G_lambda_lock_lift_mechanism_exists_in_principle": calg_mechanism_in_principle,
-            "EFJX_gauge_superhiggs_response_identified": efjx_source_corrected,
-            "direct_Phi_H_Sigmabar_10x126_tensor_map": direct_tensor_executes,
+            "scalar_alpha_nonunique_from_current_flavour_fit": alpha_valid,
+            "direct_Phi_H_Sigmabar_10x126_tensor_map": direct_valid,
+            "direct_tensor_closed_analytic_3p3p2p2_spectrum": direct_valid,
+            "published_gamma_TD_clebsch_crosscheck": td_valid,
+            "EFJX_gauge_superhiggs_source_identified": efjx_corrected,
+        },
+        "withdrawn_or_reopened_claims": {
+            "EFJX_gauge_response_is_lambda4_gamma_response": efjx_corrected,
+            "c_norm_needed_is_8p8e29": efjx_corrected,
+            "imported_susy_matrices_form_complete_scalar_hessian": mixed_withdrawn,
+            "cal_G_fermion_singular_vector_is_physical_scalar_mode": calg_withdrawn,
+            "existing_lambda_lock_proven_to_lift_physical_cal_G_scalar": portal_withdrawn,
+            "selected_point_not_spoiled_by_lambda_lock_raise": lock_withdrawn,
+            "full_component_hessian_closed": tau_hessian_reopened,
+            "exact_unique_proton_lifetime": ultimate_open,
         },
         "invalidated_selected_point_claims": {
-            "lambda_lock_raise_does_not_spoil_selected_point": selected_point_claim_invalidated,
-            "all_post_hessian_residuals_closed": ultimate_selected_closure_invalidated,
-            "proxy_c_cgc_needed_abs_approx_is_physical": proxy_cgc_ratio_invalidated,
-            "EFJX_gauge_response_is_lambda4_gamma_response": efjx_source_corrected,
-            "c_norm_needed_is_8p8e29": old_8p8e29_bound_withdrawn,
-            "reason": (
-                "The physical h=174 GeV audit invalidates the old radial selected point, "
-                "and the Aulakh source shows E/F/J/X g is the gauge coupling rather than gamma."
-            ),
+            "lambda_lock_raise_does_not_spoil_selected_point": lock_withdrawn,
+            "all_post_hessian_residuals_closed": tau_hessian_reopened,
+            "proxy_c_cgc_needed_abs_approx_is_physical": efjx_corrected,
+            "EFJX_gauge_response_is_lambda4_gamma_response": efjx_corrected,
+            "c_norm_needed_is_8p8e29": efjx_corrected,
         },
         "still_open": still_open,
         "dependency_audit": {
-            "lambda_lock_lift_imports_charge_allowed_proxy": proxy_dependency,
-            "lambda_lock_lift_imports_physical_EW_hessian": False,
-            "physical_historical_min_eigenvalue_GeV2": physical.get(
+            "physical_historical_min_eigenvalue_GeV2": physical_rep.get(
                 "historical_benchmark", {}
             ).get("min_eigenvalue_GeV2"),
-            "ultimate_exact_unique_proton_lifetime": ultimate_report.get("flag", {}).get(
-                "exact_unique_proton_lifetime"
-            ),
-            "EFJX_reported_proxy_cgc_ratio": None,
             "EFJX_old_8p8e29_bound": None,
-            "EFJX_is_gauge_superhiggs_block": efjx_source_corrected,
-            "direct_tensor_map_shape": efjx.get("direct_tensor_replacement", {}).get(
-                "map_shape"
-            ),
-            "physical_cgc_normalization_derived": False,
+            "direct_tensor_map_shape": direct_rep.get(
+                "representation", {}
+            ).get("tensor_map_shape"),
+            "direct_TD_crosscheck_residual": td_rep.get("max_abs_residual"),
+            "mixed_susy_hessian_withdrawn": mixed_withdrawn,
+            "cal_G_route_withdrawn": calg_withdrawn
+            and portal_withdrawn
+            and lock_withdrawn,
+            "ultimate_exact_unique_proton_lifetime": ultimate_rep.get(
+                "flag", {}
+            ).get("exact_unique_proton_lifetime"),
         },
         "upstream_status": {
-            "scalar_alpha": alpha.get("status"),
-            "cal_G_portal": portal.get("status"),
-            "lambda_lock_lift": lifted.get("status"),
-            "ultimate_tau_p": ultimate_report.get("status"),
-            "physical_EW_hessian": physical.get("status"),
-            "EFJX_source_correction": efjx.get("status"),
+            "direct_tensor": direct_rep.get("status"),
+            "direct_TD_crosscheck": td_rep.get("status"),
+            "EFJX_source_correction": efjx_rep.get("status"),
+            "mixed_hessian": mixed_rep.get("status"),
+            "cal_G_classification": calg_rep.get("status"),
+            "cal_G_portal": portal_rep.get("status"),
+            "lambda_lock_lift": lock_rep.get("status"),
+            "tau_hessian": tau_hess_rep.get("status"),
+            "ultimate_tau_p": ultimate_rep.get("status"),
         },
         "flag": {
-            "live_sarah_or_pyrate_executable_artifact_validated": gauge_valid and quartic_valid,
-            "scalar_alpha_nonuniqueness_closed": alpha_proven,
-            "cal_G_mechanism_identified_but_physical_point_not_revalidated": True,
-            "latest_main_selected_point_closure_invalidated": selected_point_claim_invalidated,
-            "EFJX_cgc_route_invalidated_direct_tensor_open": efjx_source_corrected
-            and direct_tensor_executes,
+            "direct_tensor_problem_closed": direct_valid and td_valid,
+            "EFJX_cgc_route_invalidated": efjx_corrected,
             "old_8p8e29_bound_valid": False,
+            "all_susy_matrix_scalar_closures_withdrawn": (
+                mixed_withdrawn
+                and calg_withdrawn
+                and portal_withdrawn
+                and lock_withdrawn
+                and tau_hessian_reopened
+            ),
             "exact_unique_proton_lifetime": False,
             "whole_model_excluded": False,
             "whole_model_validated": False,
         },
         "verdict": (
-            "Valid live artifacts are retained. The E/F/J/X lambda4-CGC route and its "
-            "8.8e29 bound are withdrawn because Aulakh g is the gauge coupling. A direct "
-            "SO(10)-equivariant 10x126 p,a,omega tensor map now exists, while labeled "
-            "component mass-squared insertion, the full Hessian, and tau_p remain open."
+            "The direct canonically normalized Phi-H-Sigmabar tensor map and "
+            "independent Aulakh gamma T/D cross-check are retained. EFJX, cal G, "
+            "mixed-Hessian, lambda-lock and proton-lifetime closures contaminated "
+            "by SUSY fermion/gaugino matrices are withdrawn. The tensor problem is "
+            "closed; the complete non-SUSY scalar theory remains BLOCKED."
         ),
     }
 
@@ -206,11 +284,13 @@ def main(argv: list[str] | None = None) -> int:
         json.dumps(report, indent=2) + "\n", encoding="utf-8"
     )
     ROOT.joinpath("LATEST_MAIN_RESIDUAL_INTEGRATION_V20.md").write_text(
-        "# Latest-main residual integration — v20\n\n" + report["verdict"] + "\n",
+        "# Latest-main source-correction integration — v20\n\n"
+        + report["verdict"]
+        + "\n",
         encoding="utf-8",
     )
     print(json.dumps(report, indent=2))
-    return 0 if report.get("n_failed", 1) == 0 else 1
+    return 0 if report["n_failed"] == 0 else 1
 
 
 if __name__ == "__main__":
