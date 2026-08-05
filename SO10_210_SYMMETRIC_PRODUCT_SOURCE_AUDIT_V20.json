@@ -47,11 +47,13 @@
       "norm_phi_fourth": 0.1
     },
     "formula": "||(Phi Phi)_1050||^2 = -35/6 ||(Phi Phi)_45||^2 -7/3 ||(Phi Phi)_54||^2 +5/4 ||(Phi Phi)_210||^2 +1/10 ||Phi||^4",
-    "normalization_reconciliation_complete": false
+    "normalization_reconciliation_complete": false,
+    "normalization_reconciliation_partial_ready": true,
+    "see_module": "source_210_quartic_norm_identity_v20"
   },
   "remaining_to_close": [
-    "reconcile exact source normalizations for 45, 54, and 210 maps",
-    "verify Eq. (2.6) numerically on random four-forms",
+    "insert source Sym\u00b2\u219245 into reduced potential / BFB / Hessian",
+    "replace empirical 54 diagonal scale with published a=b completion",
     "enumerate all mixed-representation invariant multiplicities",
     "construct mode-level CG tensors needed by the complete component Hessian",
     "rerun stationarity, BFB, Goldstone projection, thresholds, and proton decay"

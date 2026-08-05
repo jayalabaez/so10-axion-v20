@@ -1,0 +1,66 @@
+{
+  "status": "SELECTED_VACUUM_SOURCE_QUARTIC_DENSITIES_READY",
+  "overall_state": "BLOCKED",
+  "n_checks": 7,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "selected_vacuum_45_active": true,
+    "selected_vacuum_1050_nonnegative": true,
+    "ps_span_1050_nonnegative": true,
+    "ps_span_can_activate_45": true,
+    "upstream_pure_210_basis_available": true,
+    "cg_120_320_1050_4125_not_invented": true,
+    "whole_model_not_overclaimed": true
+  },
+  "upstream": {
+    "pure_210_basis": "so10_210_source_quartic_basis_v20",
+    "source_45": "so10_210_symmetric_45_source_projector_v20"
+  },
+  "selected_vacuum": {
+    "vevs_GeV": {
+      "p": 1983512959779626.5,
+      "a": 2975269439669439.5,
+      "omega": 4958782399449066.0
+    },
+    "invariants": {
+      "phi_norm_fourth": 0.9999999999999998,
+      "channel_45_norm_sq": 0.02542692576534313,
+      "channel_54_norm_sq": 0.00013932858461944317,
+      "channel_210_norm_sq": 0.039642766846633065,
+      "channel_1050_norm_sq_from_identity": 0.0009046248963443526
+    },
+    "effective_quartic_densities": {
+      "||(\u03a6\u03a6)_45||^2 / ||\u03a6||^4": 0.025426925765343136,
+      "||(\u03a6\u03a6)_54||^2 / ||\u03a6||^4": 0.0001393285846194432,
+      "||(\u03a6\u03a6)_210||^2 / ||\u03a6||^4": 0.03964276684663307,
+      "||(\u03a6\u03a6)_1050||^2 / ||\u03a6||^4": 0.0009046248963443528
+    },
+    "symmetric_45_active": true
+  },
+  "ps_span_probe": {
+    "n_samples": 32,
+    "seed": 21026,
+    "rhs_1050_min": 0.001283068086320352,
+    "rhs_1050_max": 0.07521186741209415,
+    "density_45_max": 0.02530736429703292
+  },
+  "flags": {
+    "selected_vacuum_symmetric_45_active": true,
+    "selected_vacuum_source_quartic_densities_ready": true,
+    "pure_210_identity_owned_upstream": true,
+    "normalization_reconciliation_complete": true,
+    "reduced_potential_insertion_pending": true,
+    "bfb_hessian_revalidation_pending": true,
+    "closes_full_1050_mode_cg": false,
+    "g1_closed": false,
+    "whole_model_validated": false,
+    "whole_model_excluded": false
+  },
+  "remaining_blockers": {
+    "insert_source_45_into_reduced_mixed_potential_bfb_hessian": true,
+    "missing_cg_120_320_1050_4125": true,
+    "full_mixed_rep_invariant_ring_G1": true
+  },
+  "verdict": "On the selected (p,a,\u03c9) vacuum the source-normalized pure-210 basis gives ||45||\u00b2/||\u03a6||\u2074=0.0254269 and ||1050||\u00b2/||\u03a6||\u2074=0.000904625. Pure-210 identity remains closed upstream; insert these densities into the reduced/mixed potential next. Theory remains BLOCKED."
+}

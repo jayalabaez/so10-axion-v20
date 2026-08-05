@@ -23,7 +23,13 @@ class PSSingletSymmetric45DiagnosticTests(unittest.TestCase):
     def test_fail_closed(self):
         report = diag.build_report()
         self.assertEqual(report["overall_state"], "BLOCKED")
-        self.assertTrue(report["flags"]["actual_selected_coefficients_must_be_recomputed_in_source_convention"])
+        self.assertFalse(
+            report["flags"]["actual_selected_coefficients_must_be_recomputed_in_source_convention"]
+        )
+        self.assertEqual(
+            report["flags"]["see_selected_vacuum_module"],
+            "source_210_quartic_norm_identity_v20",
+        )
         self.assertTrue(report["flags"]["downstream_revalidation_required"])
         self.assertFalse(report["flags"]["whole_model_validated"])
 

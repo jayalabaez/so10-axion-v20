@@ -95,7 +95,8 @@ def build_report() -> dict[str, Any]:
             "special_rays_can_vanish": True,
             "full_p_a_omega_span_vanishes": False,
             "generic_selected_singlet_vacuum_can_activate_45": not failures,
-            "actual_selected_coefficients_must_be_recomputed_in_source_convention": True,
+            "actual_selected_coefficients_must_be_recomputed_in_source_convention": False,
+            "see_selected_vacuum_module": "source_210_quartic_norm_identity_v20",
             "downstream_revalidation_required": True,
             "whole_model_validated": False,
             "whole_model_excluded": False,
@@ -103,9 +104,9 @@ def build_report() -> dict[str, Any]:
         "verdict": (
             "The source-correct symmetric 45 is not identically zero on the "
             "canonical p/a/omega singlet span. Although the p and a self-rays "
-            "vanish, omega self and p-a/a-omega interference are nonzero. A "
-            "generic selected singlet vacuum therefore activates this quartic "
-            "channel, and the actual VEV combination must be reevaluated."
+            "vanish, omega self and p-a/a-omega interference are nonzero. "
+            "Selected-vacuum activation and Eq. (2.6) densities are scored in "
+            "source_210_quartic_norm_identity_v20."
         ),
     }
 

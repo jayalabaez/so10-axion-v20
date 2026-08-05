@@ -8,12 +8,14 @@ on:
       - 'so10_210_symmetric_product_source_audit_v20.py'
       - 'pure_210_ps_singlet_quartic_polynomials_v20.py'
       - 'selected_ps_singlet_symmetric45_diagnostic_v20.py'
+      - 'source_210_quartic_norm_identity_v20.py'
       - 'source_corrected_scalar_dependency_gate_v20.py'
       - 'test_so10_210_symmetric_45_source_projector_v20.py'
       - 'test_so10_210_source_quartic_basis_v20.py'
       - 'test_so10_210_symmetric_product_source_audit_v20.py'
       - 'test_pure_210_ps_singlet_quartic_polynomials_v20.py'
       - 'test_selected_ps_singlet_symmetric45_diagnostic_v20.py'
+      - 'test_source_210_quartic_norm_identity_v20.py'
       - 'test_source_corrected_scalar_dependency_gate_v20.py'
       - '.github/workflows/source-correct-210-symmetric-product.yml'
   push:
@@ -47,6 +49,7 @@ jobs:
             test_so10_210_symmetric_product_source_audit_v20.py \
             test_pure_210_ps_singlet_quartic_polynomials_v20.py \
             test_selected_ps_singlet_symmetric45_diagnostic_v20.py \
+            test_source_210_quartic_norm_identity_v20.py \
             test_source_corrected_scalar_dependency_gate_v20.py
       - name: Emit source-normalized reports
         run: |
@@ -55,6 +58,7 @@ jobs:
           python so10_210_symmetric_product_source_audit_v20.py --write
           python pure_210_ps_singlet_quartic_polynomials_v20.py --write
           python selected_ps_singlet_symmetric45_diagnostic_v20.py --write
+          python source_210_quartic_norm_identity_v20.py --write
           python source_corrected_scalar_dependency_gate_v20.py --write
       - name: Assert honest scientific state
         run: |
@@ -65,6 +69,7 @@ jobs:
           a=json.load(open('SO10_210_SYMMETRIC_PRODUCT_SOURCE_AUDIT_V20.json'))
           x=json.load(open('PURE_210_PS_SINGLET_QUARTIC_POLYNOMIALS_V20.json'))
           s=json.load(open('SELECTED_PS_SINGLET_SYMMETRIC45_DIAGNOSTIC_V20.json'))
+          n=json.load(open('SOURCE_210_QUARTIC_NORM_IDENTITY_V20.json'))
           g=json.load(open('SOURCE_CORRECTED_SCALAR_DEPENDENCY_GATE_V20.json'))
           assert p['n_failed']==0 and p['overall_state']=='BLOCKED', p
           assert abs(p['normalization']['source_factor']-1/math.sqrt(70))<1e-15, p
@@ -82,10 +87,13 @@ jobs:
           assert x['flags']['manifest_sum_of_squares_certificate'], x
           assert not x['closure']['mixed_field_invariant_ring_G1_closed'], x
           assert s['n_failed']==0 and not s['flags']['full_p_a_omega_span_vanishes'], s
+          assert n['n_failed']==0 and n['flags']['selected_vacuum_symmetric_45_active'], n
+          assert n['selected_vacuum']['effective_quartic_densities']['||(ΦΦ)_45||^2 / ||Φ||^4']>0, n
           assert g['n_failed']==0 and g['overall_state']=='BLOCKED', g
           assert g['flags']['pr98_must_remain_draft'], g
           assert not g['flags']['merge_to_main_safe'], g
           assert not g['flags']['whole_model_validated'], g
+          assert g['checks']['selected_vacuum_densities_ready'], g
           PY
       - uses: actions/upload-artifact@v4
         if: always()
@@ -102,5 +110,7 @@ jobs:
             PURE_210_PS_SINGLET_QUARTIC_POLYNOMIALS_V20.md
             SELECTED_PS_SINGLET_SYMMETRIC45_DIAGNOSTIC_V20.json
             SELECTED_PS_SINGLET_SYMMETRIC45_DIAGNOSTIC_V20.md
+            SOURCE_210_QUARTIC_NORM_IDENTITY_V20.json
+            SOURCE_210_QUARTIC_NORM_IDENTITY_V20.md
             SOURCE_CORRECTED_SCALAR_DEPENDENCY_GATE_V20.json
             SOURCE_CORRECTED_SCALAR_DEPENDENCY_GATE_V20.md

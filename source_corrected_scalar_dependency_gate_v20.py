@@ -17,6 +17,7 @@ import pure_210_ps_singlet_quartic_polynomials_v20 as singlet_poly
 import so10_210_source_quartic_basis_v20 as quartic
 import so10_210_symmetric_45_source_projector_v20 as source45
 import so10_210_symmetric_product_source_audit_v20 as source_audit
+import source_210_quartic_norm_identity_v20 as vac_dens
 
 ROOT = Path(__file__).resolve().parent
 OUT_JSON = ROOT / "SOURCE_CORRECTED_SCALAR_DEPENDENCY_GATE_V20.json"
@@ -35,12 +36,14 @@ def build_report() -> dict[str, Any]:
     pure_quartic = quartic.build_report()
     singlet = singlet_poly.build_report()
     audit = source_audit.build_report()
+    selected = vac_dens.build_report(n_ps=16)
 
     upstream = {
         "source45": projector,
         "pure_quartic": pure_quartic,
         "singlet_polynomials": singlet,
         "source_audit": audit,
+        "selected_vacuum_densities": selected,
     }
     execution_failures = [
         f"{name}: {report.get('failures')}"
@@ -86,26 +89,37 @@ def build_report() -> dict[str, Any]:
     required_recomputations = [
         {
             "order": 1,
+            "task": (
+                "Insert selected-vacuum source Sym²→45/54/210/1050 densities into "
+                "reduced/mixed potential, then revalidate BFB/Hessian"
+            ),
+            "closes": "G3-G5 prerequisites (partial)",
+            "selected_vacuum_45_density": selected["selected_vacuum"][
+                "effective_quartic_densities"
+            ]["||(ΦΦ)_45||^2 / ||Φ||^4"],
+        },
+        {
+            "order": 2,
             "task": "Complete mixed 210+126bar+10+S invariant multiplicities and component CG maps",
             "closes": "G1 and G2",
         },
         {
-            "order": 2,
+            "order": 3,
             "task": "Rebuild full stationarity, BFB, competing extrema and gauge-projected Hessian",
             "closes": "G3-G5 prerequisites",
         },
         {
-            "order": 3,
+            "order": 4,
             "task": "Regenerate physical scalar/triplet thresholds and two-loop matching",
             "closes": "G6-G7 prerequisites",
         },
         {
-            "order": 4,
+            "order": 5,
             "task": "Recompute gauge plus scalar proton decay with one physical flavour solution",
             "closes": "G8",
         },
         {
-            "order": 5,
+            "order": 6,
             "task": "Obtain external 36.6-37.6 GHz haloscope data",
             "closes": "experimental realization only",
         },
@@ -127,6 +141,10 @@ def build_report() -> dict[str, Any]:
         ),
         "old_1050_table_blocker_removed_for_pure_210": audit.get("flags", {}).get(
             "old_1050_table_blocker_removed_for_pure_210"
+        ),
+        "selected_vacuum_densities_ready": selected.get("n_failed") == 0
+        and bool(
+            selected.get("flags", {}).get("selected_vacuum_symmetric_45_active")
         ),
         "all_G1_to_G8_states_remain_open_or_partial": all(
             "CLOSED" not in state for state in open_scientific_states
