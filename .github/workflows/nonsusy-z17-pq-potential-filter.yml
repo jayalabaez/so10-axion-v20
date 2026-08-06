@@ -22,7 +22,7 @@ jobs:
       - name: Execute signed Z17/PQ and SO10 operator filter
         run: python nonsusy_z17_pq_potential_filter_v20.py
       - name: Focused regression tests
-        run: python -m unittest -v test_nonsusy_z17_pq_potential_filter_v20.py
+        run: python -m pytest -q test_nonsusy_z17_pq_potential_filter_v20.py
       - name: Assert honest scientific scope
         run: |
           python - <<'PY'
@@ -30,11 +30,15 @@ jobs:
           r=json.load(open('NONSUSY_Z17_PQ_POTENTIAL_FILTER_V20.json'))
           assert r['status']=='NONSUSY_Z17_PQ_OPERATOR_FILTER_COMPLETE__FULL_TENSORS_OPEN'
           assert r['n_failed']==0, r
-          assert r['flag']['z17_pq_x_filter_applied']
+          assert r['flag']['z17_pq_filter_applied']
+          assert not r['flag']['z17_pq_x_filter_applied']
+          assert not r['flag']['continuous_x_filter_applied']
           assert r['flag']['bare_10_squared_forbidden']
           assert r['flag']['ten2_S_allowed']
           assert r['flag']['locking_operator_charge_allowed']
           assert r['flag']['forbidden_210_10dag10_removed']
+          assert r['flag']['mixed_dagger_cubic_retained']
+          assert r['flag']['mixed_dagger_cubic_requires_complete_hessian_reaudit']
           assert r['flag']['quartic_2102_10dag10_retained']
           assert not r['flag']['invented_unpublished_cg_tensors']
           assert not r['flag']['complete_so10_scalar_potential']
@@ -43,6 +47,8 @@ jobs:
           assert ops['bare_10_H^2']['status']=='CHARGE_FORBIDDEN'
           assert ops['10_H^2 S']['status']=='ALLOWED'
           assert ops['210_H 10_H^dag 10_H']['status']=='SO10_FORBIDDEN'
+          assert ops['210_H 10_H_dag 126bar_H']['status']=='ALLOWED'
+          assert ops['210_H 10_H_dag 126bar_H']['feeds_triplet_mass']
           assert ops['210_H^dag 210_H 10_H^dag 10_H']['status']=='ALLOWED'
           assert ops['210 · 10 · 126 · S']['status']=='ALLOWED'
           PY
