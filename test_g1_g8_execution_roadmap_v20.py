@@ -77,5 +77,5 @@ def test_exact_phi2_hdagh_family_is_a_subgate_only():
     assert report["flag"]["whole_model_validated"] is False
 
 
-# Workflow bootstrap PR #131 is now on main; this tracked update resynchronizes
-# PR #130 so the focused gate runs from the trusted base workflow definition.
+# PR #131 registered the trusted workflow on main. This normal contents commit
+# emits the final synchronize event for the focused PR #130 validation.
