@@ -90,12 +90,16 @@ def build_report() -> dict[str, Any]:
         {
             "order": 1,
             "task": (
-                "Transcribe missing CG (120/320/1050/4125) and off-singlet "
-                "mode-by-mode coeffs to close G2 beyond the READY-subspace "
-                "FULL_TENSOR scaffold; keep S/Φ17 residual until published CG"
+                "Fill remaining READY/PARTIAL inventory with published "
+                "projectors only; transcribe 120/320/1050/4125 CG solely from "
+                "external published tables (do not invent). OPEN_126_54_LOCKING "
+                "ΣΣ census shows indefinite real Hessian — need other C channels"
             ),
-            "closes": "G1-G2 (partial → toward CLOSED)",
+            "closes": "G1-G2 (partial)",
             "upstream_scaffold": "full_tensor_projected_potential_scaffold_v20",
+            "upstream_126_54_census": (
+                "open_126_54_locking_hermitian_fluctuation_census_v20"
+            ),
             "upstream_promotion": "promote_paw_split_reduced_amplitudes_v20",
             "upstream_insertion": "source_pure210_reduced_potential_insertion_v20",
             "selected_vacuum_45_density": selected["selected_vacuum"][

@@ -1,0 +1,57 @@
+name: open-126-54-locking-hermitian-census
+
+on:
+  pull_request:
+    paths:
+      - 'open_126_54_locking_hermitian_fluctuation_census_v20.py'
+      - 'test_open_126_54_locking_hermitian_fluctuation_census_v20.py'
+      - 'physical_54_component_hessian_at_hew_v20.py'
+      - 'so10_126_to_54_projector_v20.py'
+      - '.github/workflows/open-126-54-locking-hermitian-census.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'open_126_54_locking_hermitian_fluctuation_census_v20.py'
+      - '.github/workflows/open-126-54-locking-hermitian-census.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: open-126-54-census-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  census:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: python -m pip install --upgrade pip
+      - run: python -m pip install numpy scipy mpmath
+      - name: Focused census tests
+        run: python -m unittest -v test_open_126_54_locking_hermitian_fluctuation_census_v20.py
+      - name: Emit census report
+        run: python open_126_54_locking_hermitian_fluctuation_census_v20.py --write
+      - name: Assert honest scientific state
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('OPEN_126_54_LOCKING_HERMITIAN_FLUCTUATION_CENSUS_V20.json'))
+          assert r['n_failed']==0 and r['overall_state']=='BLOCKED', r
+          assert r['flags']['open_126_54_locking_hermitian_census_ready'], r
+          assert not r['flags']['open_126_54_locking_positive_schur_seed'], r
+          assert not r['flags']['cg_120_320_1050_4125_invented'], r
+          full=r['census']['full_252']['classification']
+          assert full['indefinite'] and full['n_positive']==full['n_negative']==252, full
+          assert not r['flags']['whole_model_validated'], r
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: open-126-54-locking-hermitian-census
+          path: |
+            OPEN_126_54_LOCKING_HERMITIAN_FLUCTUATION_CENSUS_V20.json
+            OPEN_126_54_LOCKING_HERMITIAN_FLUCTUATION_CENSUS_V20.md

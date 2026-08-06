@@ -1,0 +1,129 @@
+{
+  "status": "OPEN_126_54_LOCKING_HERMITIAN_FLUCTUATION_CENSUS_PARTIAL__CG_OPEN",
+  "overall_state": "BLOCKED",
+  "n_checks": 12,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "uses_only_published_126_to_54_projector": true,
+    "hew_q54_nonzero": true,
+    "q_delta_still_exact_zero": true,
+    "hermitizes_beyond_holomorphic_sigma_sigma_kernel": true,
+    "full_space_indefinite": true,
+    "delta_space_indefinite": true,
+    "equal_pos_neg_full": true,
+    "does_not_claim_positive_schur_c_seed": true,
+    "no_invented_cg_120_320_1050_4125": true,
+    "no_invented_s_phi17_linear_cg": true,
+    "whole_model_not_overclaimed": true,
+    "g2_not_closed": true
+  },
+  "inventory_slot": {
+    "id": "OPEN_126_54_LOCKING",
+    "status": "PARTIAL_HERMITIAN_FLUCTUATION_CENSUS_READY",
+    "cg_in_repo": "PARTIAL_54_PROJECTOR",
+    "positive_hermitian_schur_seed": false,
+    "feeds": "C"
+  },
+  "operator": {
+    "formula": "lambda_lock*S^2/M_GUT^2 * <P54(H,H), P54(Sigmabar,Sigmabar)> + h.c.",
+    "real_quadratic_form": "2 \u03b1 Re(\u03a3\u1d40 M \u03a3) with M from P54(hEW,hEW)",
+    "alpha": 4.0530237266417216e-09,
+    "hEW_GeV": 174.0,
+    "note": "\u03a3\u03a3 locking \u2014 not \u03a3\u2020\u03a3; real Hessian is indefinite"
+  },
+  "tensors": {
+    "Q_H_frobenius": 28722.335531777357,
+    "Q_Delta_frobenius": 0.0,
+    "delta_r_space": "plus_i_self_dual"
+  },
+  "census": {
+    "full_252": {
+      "label": "full_252_complex",
+      "n_real_modes": 504,
+      "n_complex_modes": 252,
+      "classification": {
+        "n_positive": 252,
+        "n_negative": 252,
+        "n_zero": 0,
+        "min_eig": -0.0001227093463478048,
+        "max_eig": 0.0001227093463478048,
+        "indefinite": true,
+        "positive_semidefinite": false,
+        "floor": 1e-12
+      },
+      "diagnostic_seed": {
+        "rms_abs_eig_GeV2": 0.00012270934634780477,
+        "formula": "RMS(|eig|) of real Hessian of 2\u03b1 Re(\u03a3\u1d40 M \u03a3)",
+        "not_positive_schur_c_seed": true
+      },
+      "spectrum_sample": {
+        "most_negative": [
+          -0.0001227093463478048,
+          -0.0001227093463478048,
+          -0.0001227093463478048,
+          -0.0001227093463478048,
+          -0.0001227093463478048
+        ],
+        "most_positive": [
+          0.0001227093463478048,
+          0.0001227093463478048,
+          0.0001227093463478048,
+          0.0001227093463478048,
+          0.0001227093463478048
+        ]
+      }
+    },
+    "delta_r_eigenspace": {
+      "label": "delta_r_eigenspace_126_complex",
+      "n_real_modes": 252,
+      "n_complex_modes": 126,
+      "classification": {
+        "n_positive": 126,
+        "n_negative": 126,
+        "n_zero": 0,
+        "min_eig": -0.00012270934634780477,
+        "max_eig": 0.00012270934634780477,
+        "indefinite": true,
+        "positive_semidefinite": false,
+        "floor": 1e-12
+      },
+      "diagnostic_seed": {
+        "rms_abs_eig_GeV2": 0.00012270934634780477,
+        "formula": "RMS(|eig|) of real Hessian of 2\u03b1 Re(\u03a3\u1d40 M \u03a3)",
+        "not_positive_schur_c_seed": true
+      },
+      "spectrum_sample": {
+        "most_negative": [
+          -0.00012270934634780477,
+          -0.00012270934634780477,
+          -0.00012270934634780477,
+          -0.00012270934634780477,
+          -0.00012270934634780477
+        ],
+        "most_positive": [
+          0.00012270934634780477,
+          0.00012270934634780477,
+          0.00012270934634780477,
+          0.00012270934634780477,
+          0.00012270934634780477
+        ]
+      }
+    }
+  },
+  "flags": {
+    "open_126_54_locking_hermitian_census_ready": true,
+    "open_126_54_locking_positive_schur_seed": false,
+    "cg_120_320_1050_4125_invented": false,
+    "whole_model_validated": false,
+    "whole_model_excluded": false
+  },
+  "remaining_blockers": {
+    "missing_cg_120_320_1050_4125": true,
+    "published_linear_cg_for_S_Phi17_cross": true,
+    "full_cartesian_m2_from_126_54": true,
+    "positive_diagonal_C_from_other_channels": true,
+    "full_nonsusy_vacuum_hessian": true
+  },
+  "verdict": "OPEN_126_54_LOCKING Hermitian/real fluctuation census PARTIAL: full space 252+/252-/00; Delta_R space 126+/126-/00. Indefinite Re(\u03a3\u1d40M\u03a3) is not a PD Schur C seed. No 120/320/1050/4125 CG invented. Theory remains BLOCKED."
+}

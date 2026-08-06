@@ -47,10 +47,11 @@
   },
   "required_recomputations": [
     {
-      "closes": "G1-G2 (partial \u2192 toward CLOSED)",
+      "closes": "G1-G2 (partial)",
       "order": 1,
       "selected_vacuum_45_density": 0.025426925765343136,
-      "task": "Transcribe missing CG (120/320/1050/4125) and off-singlet mode-by-mode coeffs to close G2 beyond the READY-subspace FULL_TENSOR scaffold; keep S/\u03a617 residual until published CG",
+      "task": "Fill remaining READY/PARTIAL inventory with published projectors only; transcribe 120/320/1050/4125 CG solely from external published tables (do not invent). OPEN_126_54_LOCKING \u03a3\u03a3 census shows indefinite real Hessian \u2014 need other C channels",
+      "upstream_126_54_census": "open_126_54_locking_hermitian_fluctuation_census_v20",
       "upstream_insertion": "source_pure210_reduced_potential_insertion_v20",
       "upstream_promotion": "promote_paw_split_reduced_amplitudes_v20",
       "upstream_scaffold": "full_tensor_projected_potential_scaffold_v20"

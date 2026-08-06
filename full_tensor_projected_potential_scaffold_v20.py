@@ -36,6 +36,7 @@ from pathlib import Path
 from typing import Any
 
 import direct_phi_h_sigmabar_portal_m2_block_v20 as portal
+import open_126_54_locking_hermitian_fluctuation_census_v20 as census12654
 import open_210_channel_210_off_singlet_census_v20 as census210
 import open_210_channel_45_off_singlet_census_v20 as census45
 import open_210_channel_54_off_singlet_census_v20 as census54
@@ -114,6 +115,13 @@ def build_ready_operator_table() -> list[dict[str, Any]]:
             "source_module": "open_210_channel_210_off_singlet_census_v20",
             "source_fn": "build_report",
             "note": "Published self-map Ξ; mode CG OPEN",
+        },
+        {
+            "id": "OPEN_126_54_LOCKING_HERMITIAN_CENSUS",
+            "projection_status": "CENSUS_ONLY",
+            "source_module": "open_126_54_locking_hermitian_fluctuation_census_v20",
+            "source_fn": "build_report",
+            "note": "Real Hessian of ΣΣ locking indefinite; not PD Schur C",
         },
         {
             "id": "MISSING_CG_120",
@@ -225,6 +233,7 @@ def build_report() -> dict[str, Any]:
     c45 = census45.build_report()
     c54 = census54.build_report()
     c210 = census210.build_report()
+    c12654 = census12654.build_report()
     bfb = build_ready_subspace_bfb()
 
     checks = {
@@ -253,6 +262,8 @@ def build_report() -> dict[str, Any]:
         "off_singlet_45_census_ready": c45.get("n_failed", 1) == 0,
         "off_singlet_54_census_ready": c54.get("n_failed", 1) == 0,
         "off_singlet_210_census_ready": c210.get("n_failed", 1) == 0,
+        "open_126_54_locking_hermitian_census_ready": c12654.get("n_failed", 1)
+        == 0,
         "ready_subspace_bfb_green": bfb["ready_subspace_bfb_green"],
         "g2_not_closed": True,
         "whole_model_not_overclaimed": True,
@@ -290,6 +301,24 @@ def build_report() -> dict[str, Any]:
                     "OPEN_210_CHANNEL_210_OFF_SINGLET_seed_GeV2"
                 ),
             },
+            "126_54_locking": {
+                "status": c12654.get("status"),
+                "full_pos_neg_zero": [
+                    c12654.get("census", {})
+                    .get("full_252", {})
+                    .get("classification", {})
+                    .get("n_positive"),
+                    c12654.get("census", {})
+                    .get("full_252", {})
+                    .get("classification", {})
+                    .get("n_negative"),
+                    c12654.get("census", {})
+                    .get("full_252", {})
+                    .get("classification", {})
+                    .get("n_zero"),
+                ],
+                "positive_schur_seed": False,
+            },
         },
         "ready_subspace_bfb": bfb,
         "flags": {
@@ -312,8 +341,9 @@ def build_report() -> dict[str, Any]:
         "verdict": (
             "FULL_TENSOR_PROJECTED_POTENTIAL scaffold PARTIAL: READY subspace "
             f"({len(ready_ids)} ops) BFB green via composed certificates; "
-            "off-singlet 45/54/210 censuses ready; 120/320/1050/4125 and S/Φ₁₇ "
-            "linear CG remain OPEN. G2 not closed. Theory remains BLOCKED."
+            "off-singlet 45/54/210 and OPEN_126_54_LOCKING censuses ready; "
+            "120/320/1050/4125 and S/Φ₁₇ linear CG remain OPEN. G2 not closed. "
+            "Theory remains BLOCKED."
         ),
     }
 

@@ -40,6 +40,15 @@ class FullTensorProjectedPotentialScaffoldTests(unittest.TestCase):
         self.assertEqual(
             self.report["off_singlet_censuses"]["210"]["n_nonzero"], 207
         )
+        self.assertTrue(
+            self.report["checks"]["open_126_54_locking_hermitian_census_ready"]
+        )
+        self.assertEqual(
+            self.report["off_singlet_censuses"]["126_54_locking"][
+                "positive_schur_seed"
+            ],
+            False,
+        )
 
 
 if __name__ == "__main__":

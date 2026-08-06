@@ -41,6 +41,7 @@
         "promote_paw_split_reduced_amplitudes: P_210\u2192(p,a,\u03c9); \u0394/H10 linear CG; S/\u03a6 isotropic residual",
         "full_tensor_projected_potential_scaffold: READY-subspace BFB PARTIAL",
         "open_210_channel_210_off_singlet_census: \u039e mixed census READY",
+        "open_126_54_locking_hermitian_fluctuation_census: indefinite \u03a3\u03a3 (not PD Schur C)",
         "source_210_quartic_norm_identity: selected vacuum 45/1050 densities ready",
         "pure-210 Eq.(2.6) CLOSED upstream (so10_210_source_quartic_basis_v20)",
         "OPEN_210_CHANNEL_1050 blocker superseded as incomplete residual",
@@ -68,13 +69,15 @@
         "210 PS-singlet m2 from reduced Hessian: DIAGONAL_210_RADIAL_CUBIC_PS_SINGLET_FILLED__OFF_SINGLET_CG_OPEN",
         "210\u219254/45/210 maps + source Sym\u00b2\u219245 reopen (dependency gate)",
         "FULL_TENSOR_PROJECTED_POTENTIAL scaffold PARTIAL (READY-subspace BFB)",
-        "off-singlet 210 census READY via published \u039e self-map"
+        "off-singlet 210 census READY via published \u039e self-map",
+        "OPEN_126_54_LOCKING Hermitian/real fluctuation census PARTIAL (indefinite \u03a3\u03a3)"
       ],
       "blockers": [
         "full PS/SM Clebsch projection of every invariant (G2 CLOSED bar)",
         "mode-by-mode CG for remaining open slots",
         "missing CG 120 / 320 / 1050 / 4125",
-        "S/\u03a617 linear CG residual (isotropic only)"
+        "S/\u03a617 linear CG residual (isotropic only)",
+        "positive diagonal C not supplied by 54-locking \u03a3\u03a3 channel"
       ],
       "closed": false
     },

@@ -1,7 +1,7 @@
 {
   "status": "FULL_TENSOR_PROJECTED_POTENTIAL_SCAFFOLD_PARTIAL__CG_OPEN",
   "overall_state": "BLOCKED",
-  "n_checks": 14,
+  "n_checks": 15,
   "n_failed": 0,
   "failures": [],
   "checks": {
@@ -16,6 +16,7 @@
     "off_singlet_45_census_ready": true,
     "off_singlet_54_census_ready": true,
     "off_singlet_210_census_ready": true,
+    "open_126_54_locking_hermitian_census_ready": true,
     "ready_subspace_bfb_green": true,
     "g2_not_closed": true,
     "whole_model_not_overclaimed": true
@@ -85,6 +86,13 @@
       "note": "Published self-map \u039e; mode CG OPEN"
     },
     {
+      "id": "OPEN_126_54_LOCKING_HERMITIAN_CENSUS",
+      "projection_status": "CENSUS_ONLY",
+      "source_module": "open_126_54_locking_hermitian_fluctuation_census_v20",
+      "source_fn": "build_report",
+      "note": "Real Hessian of \u03a3\u03a3 locking indefinite; not PD Schur C"
+    },
+    {
       "id": "MISSING_CG_120",
       "projection_status": "OPEN_AWAITING_CG",
       "source_module": null,
@@ -121,7 +129,8 @@
     "SCOPED_BFB_AGGREGATE",
     "OFF_SINGLET_45_CENSUS",
     "OFF_SINGLET_54_CENSUS",
-    "OFF_SINGLET_210_CENSUS"
+    "OFF_SINGLET_210_CENSUS",
+    "OPEN_126_54_LOCKING_HERMITIAN_CENSUS"
   ],
   "isotropic_residuals": [
     "PROMOTED_S_PHI17_ISOTROPIC_RESIDUAL"
@@ -145,6 +154,15 @@
       "status": "OPEN_210_CHANNEL_210_OFF_SINGLET_CENSUS_READY__CG_OPEN",
       "n_nonzero": 207,
       "seed_GeV2": 1.7219143646273261e+28
+    },
+    "126_54_locking": {
+      "status": "OPEN_126_54_LOCKING_HERMITIAN_FLUCTUATION_CENSUS_PARTIAL__CG_OPEN",
+      "full_pos_neg_zero": [
+        252,
+        252,
+        0
+      ],
+      "positive_schur_seed": false
     }
   },
   "ready_subspace_bfb": {
@@ -192,5 +210,5 @@
     "full_nonsusy_vacuum_hessian": true,
     "full_g2_ps_sm_clebsch_projection": true
   },
-  "verdict": "FULL_TENSOR_PROJECTED_POTENTIAL scaffold PARTIAL: READY subspace (8 ops) BFB green via composed certificates; off-singlet 45/54/210 censuses ready; 120/320/1050/4125 and S/\u03a6\u2081\u2087 linear CG remain OPEN. G2 not closed. Theory remains BLOCKED."
+  "verdict": "FULL_TENSOR_PROJECTED_POTENTIAL scaffold PARTIAL: READY subspace (9 ops) BFB green via composed certificates; off-singlet 45/54/210 and OPEN_126_54_LOCKING censuses ready; 120/320/1050/4125 and S/\u03a6\u2081\u2087 linear CG remain OPEN. G2 not closed. Theory remains BLOCKED."
 }

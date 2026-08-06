@@ -91,6 +91,7 @@ def build_report() -> dict[str, Any]:
                 "promote_paw_split_reduced_amplitudes: P_210→(p,a,ω); Δ/H10 linear CG; S/Φ isotropic residual",
                 "full_tensor_projected_potential_scaffold: READY-subspace BFB PARTIAL",
                 "open_210_channel_210_off_singlet_census: Ξ mixed census READY",
+                "open_126_54_locking_hermitian_fluctuation_census: indefinite ΣΣ (not PD Schur C)",
                 "source_210_quartic_norm_identity: selected vacuum 45/1050 densities ready",
                 "pure-210 Eq.(2.6) CLOSED upstream (so10_210_source_quartic_basis_v20)",
                 "OPEN_210_CHANNEL_1050 blocker superseded as incomplete residual",
@@ -118,12 +119,14 @@ def build_report() -> dict[str, Any]:
                 "210→54/45/210 maps + source Sym²→45 reopen (dependency gate)",
                 "FULL_TENSOR_PROJECTED_POTENTIAL scaffold PARTIAL (READY-subspace BFB)",
                 "off-singlet 210 census READY via published Ξ self-map",
+                "OPEN_126_54_LOCKING Hermitian/real fluctuation census PARTIAL (indefinite ΣΣ)",
             ],
             blockers=[
                 "full PS/SM Clebsch projection of every invariant (G2 CLOSED bar)",
                 "mode-by-mode CG for remaining open slots",
                 "missing CG 120 / 320 / 1050 / 4125",
                 "S/Φ17 linear CG residual (isotropic only)",
+                "positive diagonal C not supplied by 54-locking ΣΣ channel",
             ],
         ),
         _gate(

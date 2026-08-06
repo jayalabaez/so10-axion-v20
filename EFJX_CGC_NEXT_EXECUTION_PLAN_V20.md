@@ -325,14 +325,13 @@ hEW (full stationarity / unique κ remain OPEN).
 
 ## Correct next goal
 
-**Immediate:** continue mixed G1 / full G2 projection only with transcribed CG
-(120/320/1050/4125 and off-singlet mode-by-mode coeffs). The
-`FULL_TENSOR_PROJECTED_POTENTIAL_V20` scaffold is PARTIAL with READY-subspace
-BFB green and off-singlet 45/54/210 censuses ready
-(`full_tensor_projected_potential_scaffold_v20`). Residual S/Φ₁₇ isotropic
-P↔X stays residual (no published linear CG in-repo). Do **not** invent CG
-and do **not** claim whole-model validation. Pure-210 identity is CLOSED;
-mixed G1 / G2 remain OPEN.
+**Immediate:** G2 still needs transcribed CG for 120/320/1050/4125 (external
+published tables only — do **not** invent). Until then, fill remaining
+READY/PARTIAL inventory slots with published projectors only. The
+`OPEN_126_54_LOCKING` real-fluctuation census is PARTIAL and proves the ΣΣ
+locking Hessian is indefinite (not a PD Schur C seed). S/Φ₁₇ isotropic
+residual stays. Pure-210 identity CLOSED; mixed G1/G2 OPEN. Do **not**
+claim whole-model validation.
 
 Theory completion still requires transcribed CG for 120/320/1050/4125 and
 off-singlet mixed-45 **CG coefficients** (G1), mode-by-mode diagonals (G2),
