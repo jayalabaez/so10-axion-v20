@@ -1,0 +1,72 @@
+name: exact-hsigma-45-background-hessian
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "exact_hsigma_45_background_hessian_v20.py"
+      - "test_exact_hsigma_45_background_hessian_v20.py"
+      - "exact_mixed_45_triplet_channel_v20.py"
+      - "exact_126bar_triplet_clebsch_v20.py"
+      - ".github/workflows/exact-hsigma-45-background-hessian.yml"
+  push:
+    branches: [main]
+    paths:
+      - "exact_hsigma_45_background_hessian_v20.py"
+      - "test_exact_hsigma_45_background_hessian_v20.py"
+      - "exact_mixed_45_triplet_channel_v20.py"
+      - "exact_126bar_triplet_clebsch_v20.py"
+      - ".github/workflows/exact-hsigma-45-background-hessian.yml"
+
+concurrency:
+  group: exact-hsigma-45-background-hessian-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  exact-background-hessian-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Compile exact background-Hessian modules
+        run: |
+          python -m py_compile \
+            exact_hsigma_45_background_hessian_v20.py \
+            test_exact_hsigma_45_background_hessian_v20.py
+      - name: Run exact background-Hessian tests
+        run: python -m unittest -v test_exact_hsigma_45_background_hessian_v20.py
+      - name: Generate exact background-Hessian report
+        run: python exact_hsigma_45_background_hessian_v20.py
+      - name: Assert exact result and fail-closed scope
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('EXACT_HSIGMA_45_BACKGROUND_HESSIAN_V20.json'))
+          assert r['n_failed']==0, r['failures']
+          assert r['overall_state']=='CLOSED_SUBPROBLEM'
+          assert r['flag']['exact_HSigma_45_background_Hessian']
+          assert r['flag']['exact_HSigma_45_Nambu_projection']
+          assert r['checks']['opposite_charge_Hermitian_terms_zero']
+          assert r['checks']['same_charge_holomorphic_terms_zero']
+          assert r['checks']['three_color_spectra_degenerate']
+          assert not r['flag']['all_HSigma_invariants_complete']
+          assert not r['flag']['complete_component_potential']
+          assert not r['flag']['physical_triplet_spectrum_complete']
+          assert not r['flag']['exact_unique_proton_lifetime']
+          assert not r['flag']['whole_model_validated']
+          assert not r['flag']['whole_model_excluded']
+          assert not r['flag']['empirical_discovery']
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: exact-hsigma-45-background-hessian
+          path: |
+            EXACT_HSIGMA_45_BACKGROUND_HESSIAN_V20.json
+            EXACT_HSIGMA_45_BACKGROUND_HESSIAN_V20.md
