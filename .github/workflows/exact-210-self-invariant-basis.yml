@@ -1,0 +1,71 @@
+name: exact-210-self-invariant-basis
+
+on:
+  pull_request:
+    paths:
+      - 'exact_210_self_invariant_basis_v20.py'
+      - 'test_exact_210_self_invariant_basis_v20.py'
+      - '.github/workflows/exact-210-self-invariant-basis.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'exact_210_self_invariant_basis_v20.py'
+      - 'test_exact_210_self_invariant_basis_v20.py'
+      - '.github/workflows/exact-210-self-invariant-basis.yml'
+  workflow_dispatch:
+
+jobs:
+  exact-210-self-invariant-basis:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: python -m pip install --upgrade pip numpy scipy mpmath pytest
+
+      - name: Compile 210 self-invariant modules
+        run: >-
+          python -m py_compile
+          exact_210_self_invariant_basis_v20.py
+          test_exact_210_self_invariant_basis_v20.py
+
+      - name: Run Hilbert-count and tensor-basis tests
+        run: >-
+          python -m pytest -q
+          test_exact_210_self_invariant_basis_v20.py
+
+      - name: Generate authoritative 210 self certificate
+        run: python exact_210_self_invariant_basis_v20.py
+
+      - name: Assert complete operator basis and fail-closed scope
+        run: |
+          python - <<'PY'
+          import json
+
+          report = json.load(open('EXACT_210_SELF_INVARIANT_BASIS_V20.json'))
+          assert report['n_failed'] == 0, report['failures']
+          count = report['exact_hilbert_count']
+          assert count['Sym2_trivial_multiplicity'] == 1
+          assert count['Sym3_trivial_multiplicity'] == 1
+          assert count['Sym4_trivial_multiplicity'] == 4
+          assert report['flag']['complete_210_self_operator_basis'] is True
+          assert report['flag']['complete_component_potential'] is False
+          assert report['flag']['unique_full_vacuum'] is False
+          assert report['flag']['physical_full_Hessian_complete'] is False
+          assert report['flag']['physical_threshold_spectrum_complete'] is False
+          assert report['flag']['exact_unique_proton_lifetime'] is False
+          assert report['flag']['whole_model_validated'] is False
+          assert report['flag']['empirical_discovery'] is False
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: exact-210-self-invariant-basis
+          path: |
+            EXACT_210_SELF_INVARIANT_BASIS_V20.json
+            EXACT_210_SELF_INVARIANT_BASIS_V20.md
