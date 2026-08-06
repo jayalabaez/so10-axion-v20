@@ -1,0 +1,60 @@
+name: g1-exact-declared-symmetry-character-census
+
+on:
+  pull_request:
+    paths:
+      - 'g1_exact_declared_symmetry_character_census_v20.py'
+      - 'test_g1_exact_declared_symmetry_character_census_v20.py'
+      - '.github/workflows/g1-exact-declared-symmetry-character-census.yml'
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: g1-exact-declared-census-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  exact-declared-census:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.10', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run exact live-contract character tests
+        run: python -m pytest -q test_g1_exact_declared_symmetry_character_census_v20.py
+      - name: Emit exact live-contract census
+        run: python g1_exact_declared_symmetry_character_census_v20.py --write
+      - name: Assert exact but fail-closed scope
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open('G1_EXACT_DECLARED_SYMMETRY_CHARACTER_CENSUS_V20.json'))
+          assert d['n_failed']==0 and d['overall_state']=='BLOCKED', d
+          assert d['live_symmetry_contract']=={'SO10':True,'PQ':True,'Z17':True,'continuous_X':False}, d
+          assert d['counts']['charge_and_so10_allowed_multidegrees']==74, d
+          assert d['counts']['hermitian_conjugacy_orbits']==48, d
+          assert d['counts']['total_complex_invariant_multiplicity']==91, d
+          assert d['counts']['total_potential_orbit_multiplicity']==64, d
+          assert d['counts']['total_real_potential_parameters']==91, d
+          old=d['historical_continuous_X_comparison']['counts']
+          assert old['total_potential_orbit_multiplicity']==44, d
+          assert d['closure']['so10_singlet_multiplicities_degree_le_4_closed'], d
+          assert d['closure']['historical_X_filtered_44_superseded'], d
+          assert not d['closure']['explicit_component_tensor_basis_closed'], d
+          assert not d['flags']['g1_closed'], d
+          assert not d['flags']['whole_model_validated'], d
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: g1-exact-declared-census-${{ matrix.python-version }}
+          path: |
+            G1_EXACT_DECLARED_SYMMETRY_CHARACTER_CENSUS_V20.json
+            G1_EXACT_DECLARED_SYMMETRY_CHARACTER_CENSUS_V20.md
