@@ -1,0 +1,105 @@
+name: live-g2-exact-remaining-cubic-derivatives
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - live_g2_exact_remaining_cubic_derivatives_v20.py
+      - test_live_g2_exact_remaining_cubic_derivatives_v20.py
+      - live_g2_exact_portal_family_derivatives_v20.py
+      - live_g2_exact_quadratic_family_derivatives_v20.py
+      - live_g2_canonical_486_field_chart_v20.py
+      - live_g2_arbitrary_component_potential_values_v20.py
+      - .github/workflows/live-g2-exact-remaining-cubic-derivatives.yml
+  push:
+    branches: [main]
+    paths:
+      - live_g2_exact_remaining_cubic_derivatives_v20.py
+      - test_live_g2_exact_remaining_cubic_derivatives_v20.py
+      - live_g2_exact_portal_family_derivatives_v20.py
+      - live_g2_exact_quadratic_family_derivatives_v20.py
+      - live_g2_canonical_486_field_chart_v20.py
+      - live_g2_arbitrary_component_potential_values_v20.py
+      - .github/workflows/live-g2-exact-remaining-cubic-derivatives.yml
+
+concurrency:
+  group: live-g2-remaining-cubic-derivatives-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  exact-remaining-cubic-derivatives:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt pytest
+      - name: Compile cubic derivative stack
+        run: |
+          python -m py_compile \
+            live_g2_exact_quadratic_family_derivatives_v20.py \
+            live_g2_exact_portal_family_derivatives_v20.py \
+            live_g2_exact_remaining_cubic_derivatives_v20.py \
+            test_live_g2_exact_remaining_cubic_derivatives_v20.py
+      - name: Run focused cubic derivative tests
+        run: |
+          python -m pytest -q \
+            test_live_g2_exact_quadratic_family_derivatives_v20.py \
+            test_live_g2_exact_portal_family_derivatives_v20.py \
+            test_live_g2_exact_remaining_cubic_derivatives_v20.py
+      - name: Generate exact cubic certificate
+        run: python live_g2_exact_remaining_cubic_derivatives_v20.py --write
+      - name: Assert nonzero exact scope and fail-closed boundary
+        run: |
+          python - <<'PY'
+          import json
+
+          report=json.load(open('LIVE_G2_EXACT_REMAINING_CUBIC_DERIVATIVES_V20.json'))
+          assert report['n_failed']==0, report['failures']
+          assert report['coverage']['base_families_closed']==[
+              'Phi_Sigma_Sigmadag_cubic','Phi_cubic'
+          ]
+          assert report['coverage']['base_family_count_closed_here']==2
+          assert report['coverage']['cumulative_base_family_count_with_parents']==9
+          assert report['coverage']['base_family_count_total']==18
+          assert report['coverage']['remaining_base_families']==9
+          assert report['coverage']['direction_count_closed_here']>0
+          assert report['coverage']['parameter_count_closed_here']>0
+          assert all(v>0 for v in report['coverage']['expected_direction_counts'].values())
+          assert report['coverage']['expected_direction_counts']==report['coverage']['observed_direction_counts']
+          assert report['coverage']['real_field_dimension']==486
+          assert report['coverage']['Hessian_shape']==[486,486]
+          coefficient=report['coefficient_audit']
+          assert coefficient['Phi_two_form_basis_shape']==[210,45,45]
+          assert coefficient['Phi_two_form_basis_symmetry_residual']<1e-15
+          assert coefficient['PhiSigma_operator_shape']==[210,126,126]
+          assert coefficient['PhiSigma_operator_Hermiticity_residual']<1e-12
+          assert coefficient['PhiSigma_nonzero_entries']>0
+          assert report['maximum_base_support_residual']<1e-11
+          assert report['maximum_direction_value_residual']<1e-9
+          assert report['maximum_Hessian_asymmetry']<1e-11
+          assert report['maximum_self_conjugate_imaginary_residual']<1e-9
+          assert report['directional_reconstruction']['value_residual']<1e-8
+          assert report['directional_reconstruction']['first_residual']<2e-7
+          assert report['directional_reconstruction']['second_residual']<2e-6
+          assert report['flags']['remaining_two_cubic_base_adapters_closed']
+          assert report['flags']['all_cubic_base_adapters_closed_cumulatively']
+          assert report['flags']['cumulative_nine_of_eighteen_base_adapters_closed']
+          assert not report['flags']['all_64_direction_gradients_complete']
+          assert not report['flags']['all_64_direction_Hessians_complete']
+          assert not report['flags']['G2_closed']
+          assert not report['flags']['whole_model_validated']
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-g2-exact-remaining-cubic-derivatives
+          path: |
+            LIVE_G2_EXACT_REMAINING_CUBIC_DERIVATIVES_V20.json
+            LIVE_G2_EXACT_REMAINING_CUBIC_DERIVATIVES_V20.md
