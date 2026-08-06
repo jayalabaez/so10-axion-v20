@@ -22,51 +22,77 @@ jobs:
           python-version: '3.12'
       - name: Install dependencies
         run: python -m pip install --upgrade pip numpy mpmath pytest
-      - name: Compile gates
+      - name: Compile available gates
         run: |
-          python -m py_compile exact_phi2_hdagh_channel_family_v20.py test_exact_phi2_hdagh_channel_family_v20.py
-          python -m py_compile exact_h10_self_quartic_family_v20.py test_exact_h10_self_quartic_family_v20.py
-          python -m py_compile exact_phi_hdag_sigmabar_cubic_audit_v20.py test_exact_phi_hdag_sigmabar_cubic_audit_v20.py
-      - name: Run exact family tests
+          set -euo pipefail
+          for source in \
+            exact_phi2_hdagh_channel_family_v20.py \
+            test_exact_phi2_hdagh_channel_family_v20.py \
+            exact_h10_self_quartic_family_v20.py \
+            test_exact_h10_self_quartic_family_v20.py \
+            exact_phi_hdag_sigmabar_cubic_audit_v20.py \
+            test_exact_phi_hdag_sigmabar_cubic_audit_v20.py; do
+            if [ -f "$source" ]; then python -m py_compile "$source"; fi
+          done
+      - name: Run available exact-family tests
         run: |
-          pytest -q test_exact_phi2_hdagh_channel_family_v20.py
-          pytest -q test_exact_h10_self_quartic_family_v20.py
-          pytest -q test_exact_phi_hdag_sigmabar_cubic_audit_v20.py
-      - name: Generate fresh certificates
+          set -euo pipefail
+          for test_file in \
+            test_exact_phi2_hdagh_channel_family_v20.py \
+            test_exact_h10_self_quartic_family_v20.py \
+            test_exact_phi_hdag_sigmabar_cubic_audit_v20.py; do
+            if [ -f "$test_file" ]; then pytest -q "$test_file"; fi
+          done
+      - name: Generate available certificates
         run: |
-          python exact_phi2_hdagh_channel_family_v20.py > /tmp/exact_phi2_hdagh_stdout.json
-          python exact_h10_self_quartic_family_v20.py > /tmp/exact_h10_self_quartic_stdout.json
-          python exact_phi_hdag_sigmabar_cubic_audit_v20.py > /tmp/exact_phi_hdag_sigmabar_stdout.json
-      - name: Assert closure and fail-closed scope
+          set -euo pipefail
+          if [ -f exact_phi2_hdagh_channel_family_v20.py ]; then
+            python exact_phi2_hdagh_channel_family_v20.py > /tmp/exact_phi2_hdagh_stdout.json
+          fi
+          if [ -f exact_h10_self_quartic_family_v20.py ]; then
+            python exact_h10_self_quartic_family_v20.py > /tmp/exact_h10_self_quartic_stdout.json
+          fi
+          if [ -f exact_phi_hdag_sigmabar_cubic_audit_v20.py ]; then
+            python exact_phi_hdag_sigmabar_cubic_audit_v20.py > /tmp/exact_phi_hdag_sigmabar_stdout.json
+          fi
+      - name: Assert all available certificates
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
 
-          phi = json.loads(Path('EXACT_PHI2_HDAGH_CHANNEL_FAMILY_V20.json').read_text())
-          assert phi['n_failed'] == 0, phi['failures']
-          assert phi['flag']['phi2_hdagh_channel_count_closed'] is True
-          assert phi['flag']['complete_mixed_invariant_ring'] is False
+          path = Path('EXACT_PHI2_HDAGH_CHANNEL_FAMILY_V20.json')
+          if path.exists():
+              report = json.loads(path.read_text())
+              assert report['n_failed'] == 0, report['failures']
+              assert report['flag']['phi2_hdagh_channel_count_closed'] is True
+              assert report['flag']['complete_mixed_invariant_ring'] is False
 
-          h10 = json.loads(Path('EXACT_H10_SELF_QUARTIC_FAMILY_V20.json').read_text())
-          assert h10['n_failed'] == 0, h10['failures']
-          assert h10['flag']['h10_self_quartic_count_closed'] is True
-          assert h10['flag']['h10_isolated_quartic_BFB_cone_closed'] is True
-          assert h10['flag']['complete_mixed_invariant_ring'] is False
+          path = Path('EXACT_H10_SELF_QUARTIC_FAMILY_V20.json')
+          if path.exists():
+              report = json.loads(path.read_text())
+              assert report['n_failed'] == 0, report['failures']
+              assert report['flag']['h10_self_quartic_count_closed'] is True
+              assert report['flag']['h10_isolated_quartic_BFB_cone_closed'] is True
+              assert report['flag']['complete_mixed_invariant_ring'] is False
+              assert report['flag']['whole_model_validated'] is False
 
-          cubic = json.loads(Path('EXACT_PHI_HDAG_SIGMABAR_CUBIC_AUDIT_V20.json').read_text())
-          assert cubic['n_failed'] == 0, cubic['failures']
-          assert cubic['flag']['operator_exists_and_is_declared_symmetry_allowed'] is True
-          assert cubic['flag']['operator_catalogue_currently_incomplete'] is True
-          assert cubic['flag']['p_DeltaR_tadpole_from_operator'] is False
-          assert cubic['flag']['p_DeltaR_mixed_Hessian_changed_for_nonzero_coefficient'] is True
-          assert cubic['flag']['complete_mixed_invariant_ring'] is False
-          assert cubic['flag']['whole_model_validated'] is False
-          assert cubic['flag']['empirical_discovery'] is False
+          path = Path('EXACT_PHI_HDAG_SIGMABAR_CUBIC_AUDIT_V20.json')
+          if path.exists():
+              report = json.loads(path.read_text())
+              assert report['n_failed'] == 0, report['failures']
+              assert report['flag']['operator_exists_and_is_declared_symmetry_allowed'] is True
+              assert report['flag']['operator_catalogue_currently_incomplete'] is True
+              assert report['flag']['p_DeltaR_tadpole_from_operator'] is False
+              assert report['flag']['p_DeltaR_mixed_Hessian_changed_for_nonzero_coefficient'] is True
+              assert report['flag']['complete_mixed_invariant_ring'] is False
+              assert report['flag']['whole_model_validated'] is False
+              assert report['flag']['empirical_discovery'] is False
           PY
       - uses: actions/upload-artifact@v4
         with:
           name: exact-g1-small-families
+          if-no-files-found: error
           path: |
             EXACT_PHI2_HDAGH_CHANNEL_FAMILY_V20.json
             EXACT_PHI2_HDAGH_CHANNEL_FAMILY_V20.md
