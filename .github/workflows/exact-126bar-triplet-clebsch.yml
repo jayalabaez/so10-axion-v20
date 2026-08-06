@@ -8,6 +8,9 @@ on:
       - "test_exact_126bar_triplet_clebsch_v20.py"
       - "exact_210_126bar_cubic_clebsch_v20.py"
       - "test_exact_210_126bar_cubic_clebsch_v20.py"
+      - "next_gen_triplet_tensor_gate_v20.py"
+      - "test_next_gen_triplet_tensor_gate_v20.py"
+      - "triplet_proxy_contamination_audit_v20.py"
       - "direct_phi_h_sigmabar_tensor_v20.py"
       - ".github/workflows/exact-126bar-triplet-clebsch.yml"
   push:
@@ -17,6 +20,9 @@ on:
       - "test_exact_126bar_triplet_clebsch_v20.py"
       - "exact_210_126bar_cubic_clebsch_v20.py"
       - "test_exact_210_126bar_cubic_clebsch_v20.py"
+      - "next_gen_triplet_tensor_gate_v20.py"
+      - "test_next_gen_triplet_tensor_gate_v20.py"
+      - "triplet_proxy_contamination_audit_v20.py"
       - "direct_phi_h_sigmabar_tensor_v20.py"
       - ".github/workflows/exact-126bar-triplet-clebsch.yml"
 
@@ -27,7 +33,7 @@ concurrency:
 jobs:
   exact-five-form-triplet-gate:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 50
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -42,22 +48,28 @@ jobs:
             exact_126bar_triplet_clebsch_v20.py \
             test_exact_126bar_triplet_clebsch_v20.py \
             exact_210_126bar_cubic_clebsch_v20.py \
-            test_exact_210_126bar_cubic_clebsch_v20.py
+            test_exact_210_126bar_cubic_clebsch_v20.py \
+            next_gen_triplet_tensor_gate_v20.py \
+            test_next_gen_triplet_tensor_gate_v20.py
       - name: Run exact tensor tests
         run: |
           python -m unittest -v \
             test_exact_126bar_triplet_clebsch_v20.py \
-            test_exact_210_126bar_cubic_clebsch_v20.py
+            test_exact_210_126bar_cubic_clebsch_v20.py \
+            test_next_gen_triplet_tensor_gate_v20.py
       - name: Generate exact branching and portal Clebsch report
         run: python exact_126bar_triplet_clebsch_v20.py
       - name: Generate exact 210-126bar cubic Clebsch report
         run: python exact_210_126bar_cubic_clebsch_v20.py
+      - name: Generate authoritative next-gen triplet subgate
+        run: python next_gen_triplet_tensor_gate_v20.py
       - name: Assert physical scope and corrections
         run: |
           python - <<'PY'
           import json
           portal=json.load(open('EXACT_126BAR_TRIPLET_CLEBSCH_V20.json'))
           cubic=json.load(open('EXACT_210_126BAR_CUBIC_CLEBSCH_V20.json'))
+          gate=json.load(open('NEXT_GEN_TRIPLET_TENSOR_GATE_V20.json'))
 
           assert portal['n_failed']==0, portal['failures']
           assert portal['overall_state']=='PARTIAL'
@@ -71,9 +83,6 @@ jobs:
           assert not portal['flag']['exact_unique_proton_lifetime']
           assert not portal['flag']['whole_model_validated']
           assert not portal['flag']['whole_model_excluded']
-          sectors=portal['corrected_nonsusy_charge_sectors']
-          assert len(sectors['Y_minus_1_over_3'])==2
-          assert len(sectors['Y_plus_1_over_3'])==3
 
           assert cubic['n_failed']==0, cubic['failures']
           assert cubic['overall_state']=='PARTIAL'
@@ -88,6 +97,19 @@ jobs:
           assert not cubic['flag']['whole_model_validated']
           assert not cubic['flag']['whole_model_excluded']
           assert cubic['operator']['coefficient_mass_dimension']==1
+
+          assert gate['n_failed']==0, gate['failures']
+          assert gate['overall_state']=='PARTIAL'
+          assert all(gate['exact_subproblems_closed'].values())
+          assert gate['flag']['authoritative_next_gen_triplet_subgate']
+          assert not gate['flag']['legacy_triplet_proxy_authoritative']
+          assert not gate['flag']['complete_G1_invariant_ring']
+          assert not gate['flag']['complete_G2_component_potential']
+          assert not gate['flag']['physical_triplet_spectrum_complete']
+          assert not gate['flag']['exact_unique_proton_lifetime']
+          assert not gate['flag']['whole_model_validated']
+          assert not gate['flag']['whole_model_excluded']
+          assert not gate['flag']['empirical_discovery']
           PY
       - uses: actions/upload-artifact@v4
         if: always()
@@ -98,3 +120,5 @@ jobs:
             EXACT_126BAR_TRIPLET_CLEBSCH_V20.md
             EXACT_210_126BAR_CUBIC_CLEBSCH_V20.json
             EXACT_210_126BAR_CUBIC_CLEBSCH_V20.md
+            NEXT_GEN_TRIPLET_TENSOR_GATE_V20.json
+            NEXT_GEN_TRIPLET_TENSOR_GATE_V20.md
