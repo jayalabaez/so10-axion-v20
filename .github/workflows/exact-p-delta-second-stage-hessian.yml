@@ -1,0 +1,56 @@
+name: exact-p-delta-second-stage-hessian
+
+on:
+  push:
+    branches:
+      - agent/stabilize-p-delta-second-stage
+  pull_request:
+    paths:
+      - exact_p_delta_second_stage_hessian_v20.py
+      - test_exact_p_delta_second_stage_hessian_v20.py
+      - .github/workflows/exact-p-delta-second-stage-hessian.yml
+  workflow_dispatch:
+
+jobs:
+  exact-p-delta-second-stage-hessian:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt pytest
+      - name: Compile fixed-P gate
+        run: python -m py_compile exact_p_delta_second_stage_hessian_v20.py test_exact_p_delta_second_stage_hessian_v20.py
+      - name: Run cubic, boundedness and Hessian tests
+        run: python -m pytest -q test_exact_p_delta_second_stage_hessian_v20.py
+      - name: Generate authoritative certificate
+        run: python exact_p_delta_second_stage_hessian_v20.py > /tmp/exact-p-delta-second-stage.log
+      - name: Assert nine Goldstones and fail-closed scope
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path('EXACT_P_DELTA_SECOND_STAGE_HESSIAN_V20.json').read_text())
+          assert report['n_failed'] == 0, report['failures']
+          benchmark = report['benchmark']
+          assert benchmark['negative_modes'] == 0
+          assert benchmark['zero_modes'] == 9
+          assert benchmark['PS_to_SM_orbit_rank'] == 9
+          assert benchmark['minimum_physical_eigenvalue'] > 0
+          assert benchmark['boundedness_certificate']['strict_mixed_quartic_margin'] > 0
+          assert report['flag']['fixed_P_second_stage_stabilized'] is True
+          assert report['flag']['full_simultaneous_vacuum_complete'] is False
+          assert report['flag']['whole_model_validated'] is False
+          assert report['flag']['empirical_discovery'] is False
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: exact-p-delta-second-stage-hessian
+          path: |
+            EXACT_P_DELTA_SECOND_STAGE_HESSIAN_V20.json
+            EXACT_P_DELTA_SECOND_STAGE_HESSIAN_V20.md
