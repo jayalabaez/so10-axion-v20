@@ -46,31 +46,66 @@ def component_ledger() -> list[dict[str, Any]]:
             "id": "T126_primary",
             "parent_so10": "126bar_H",
             "sm": "(3,1,-1/3)",
+            "ps": "(6,1,1)",
+            "aulakh_label": "t2",
             "conjugate_id": "T126bar_primary",
             "mediates_scalar_d6_proton_decay": True,
             "kinetic_normalization_derived": False,
             "yukawa_tensor": "Y_126",
-            "status": "PRIMARY_CHANNEL_IDENTIFIED__MULTIPLICITY_OPEN",
+            "status": "PUBLISHED_PS_BRANCHING_LOCKED__NORM_AND_CG_OPEN",
         },
         {
             "id": "T126bar_primary",
             "parent_so10": "126bar_H",
             "sm": "(3bar,1,+1/3)",
+            "ps": "conjugate of (6,1,1)",
+            "aulakh_label": "t2bar",
             "conjugate_id": "T126_primary",
             "mediates_scalar_d6_proton_decay": True,
             "kinetic_normalization_derived": False,
             "yukawa_tensor": "Y_126",
-            "status": "PRIMARY_CHANNEL_IDENTIFIED__MULTIPLICITY_OPEN",
+            "status": "PUBLISHED_PS_BRANCHING_LOCKED__NORM_AND_CG_OPEN",
         },
         {
-            "id": "T126_additional_OPEN",
+            "id": "Tprime_126",
             "parent_so10": "126bar_H",
-            "sm": None,
-            "conjugate_id": None,
-            "mediates_scalar_d6_proton_decay": None,
+            "sm": "(3,1,-1/3)",
+            "ps": "(10,1,3)",
+            "aulakh_label": "t4",
+            "conjugate_id": "Tprime_126bar",
+            "mediates_scalar_d6_proton_decay": True,
             "kinetic_normalization_derived": False,
             "yukawa_tensor": "Y_126",
-            "status": "FULL_SM_BRANCHING_AND_MULTIPLICITY_OPEN",
+            "status": "PUBLISHED_PS_BRANCHING_LOCKED__NORM_AND_CG_OPEN",
+            "note": (
+                "Aulakh t4 from 126bar (10,1,3); promoted from the former "
+                "T126_additional_OPEN slot. Kinetic norm and nonsusy CG remain OPEN."
+            ),
+        },
+        {
+            "id": "Tprime_126bar",
+            "parent_so10": "126bar_H",
+            "sm": "(3bar,1,+1/3)",
+            "ps": "conjugate of (10,1,3)",
+            "aulakh_label": "t4bar",
+            "conjugate_id": "Tprime_126",
+            "mediates_scalar_d6_proton_decay": True,
+            "kinetic_normalization_derived": False,
+            "yukawa_tensor": "Y_126",
+            "status": "PUBLISHED_PS_BRANCHING_LOCKED__NORM_AND_CG_OPEN",
+        },
+        {
+            "id": "T210_t5_heavy",
+            "parent_so10": "210_H",
+            "sm": None,
+            "ps": "(15,1,3)",
+            "aulakh_label": "t5",
+            "conjugate_id": None,
+            "mediates_scalar_d6_proton_decay": False,
+            "kinetic_normalization_derived": False,
+            "yukawa_tensor": None,
+            "status": "PUBLISHED_HEAVY_AT_MGUT__NOT_IN_LIGHT_WORKING_BASIS",
+            "note": "Integrated out at M_GUT; not a light d=6 scalar mediator.",
         },
         {
             "id": "T210_mixing_fragments_OPEN",
@@ -80,7 +115,7 @@ def component_ledger() -> list[dict[str, Any]]:
             "mediates_scalar_d6_proton_decay": None,
             "kinetic_normalization_derived": False,
             "yukawa_tensor": None,
-            "status": "MIXING_RELEVANT_COMPONENT_ENUMERATION_OPEN",
+            "status": "ANY_LIGHT_MIXING_FRAGMENT_BEYOND_HEAVY_T5_REMAINS_OPEN",
         },
     ]
 
@@ -152,14 +187,21 @@ def build_report() -> dict[str, Any]:
     failures = [name for name, passed in checks.items() if not passed]
     return {
         "status": (
-            "SIGNED_TRIPLET_COMPONENT_LEDGER_BUILT__CG_AND_MULTIPLICITY_OPEN"
-            if not failures else "SIGNED_TRIPLET_COMPONENT_LEDGER_FAILED"
+            "SIGNED_TRIPLET_COMPONENT_LEDGER_BUILT__PS_BRANCHING_PARTIAL__CG_OPEN"
+            if not failures
+            else "SIGNED_TRIPLET_COMPONENT_LEDGER_FAILED"
         ),
         "n_checks": len(checks),
         "n_failed": len(failures),
         "failures": failures,
         "components": components,
         "matrix_basis_minimal": ["T10", "T126_primary"],
+        "matrix_basis_published_light": [
+            "T10",
+            "T10bar",
+            "T126_primary",
+            "Tprime_126",
+        ],
         "matrix_entries": matrix_entries,
         "signed_allowed_triplet_operators": sorted(allowed_mt),
         "forbidden_operator_status": forbidden_present,
@@ -168,18 +210,21 @@ def build_report() -> dict[str, Any]:
             "machine_readable_component_ledger": True,
             "signed_operator_filter_applied": True,
             "mass_squared_provenance_recorded": True,
+            "published_ps_126bar_t2_t4_locked": True,
             "full_component_basis_complete": False,
             "full_126_multiplicity_complete": False,
+            "kinetic_normalization_derived": False,
             "mixing_relevant_210_fragments_complete": False,
             "physical_component_CG_complete": False,
             "physical_triplet_spectrum_complete": False,
             "exact_unique_proton_lifetime": False,
         },
         "next_exact_calculation": [
-            "complete 126bar and 210 SM triplet branching with normalized tensors",
-            "derive each listed diagonal component Clebsch coefficient",
+            "derive kinetic normalization tensors for T10/T126/Tprime working states",
+            "derive each listed diagonal component Clebsch coefficient (nonsusy)",
             "derive the lambda4 off-diagonal component Clebsch coefficient",
-            "expand the minimal basis to the full physical M_T^2 basis",
+            "expand the minimal 2x2 ledger matrix to the published 4-state light basis",
+            "decide whether any light 210 mixing fragment beyond heavy t5 is required",
         ],
     }
 

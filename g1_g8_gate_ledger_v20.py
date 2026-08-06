@@ -73,6 +73,16 @@ SOURCE_CONTRACTS: dict[str, tuple[str, ...]] = {
         '"exact_unique_proton_lifetime_derived": exact_unique',
         '"whole_model_excluded_by_proton_decay": False',
     ),
+    "nonsusy_triplet_component_ledger_v20.py": (
+        '"published_ps_126bar_t2_t4_locked": True',
+        '"physical_component_CG_complete": False',
+        '"physical_triplet_spectrum_complete": False',
+    ),
+    "nonsusy_sm_triplet_branching_census_v20.py": (
+        '"published_ps_branching_census_ready"',
+        '"physical_component_CG_complete": False',
+        '"whole_model_validated": False',
+    ),
 }
 
 DEPENDENCIES: dict[str, list[str]] = {
@@ -205,6 +215,12 @@ def _gates() -> dict[str, dict[str, Any]]:
                 "bookkeeping_sum_33_plus_4": 37,
                 "thirty_seven_physical_null_modes": False,
                 "spectator_zeros_are_removed_before_physical_spectrum": True,
+                "so10_to_sm_count_is_not_so10_to_uem_with_hew": True,
+                "note_33_vs_36": (
+                    "33 counts broken SO(10)→SM generators on this ledger. "
+                    "A separate SO(10)→U(1)_EM + h_EW count of 36 is a different "
+                    "breaking stage and must not be added into 37 physical null modes."
+                ),
             },
             "closure_route_defined": True,
             "current_runner_can_close_without_G2_and_G3": False,
@@ -227,14 +243,17 @@ def _gates() -> dict[str, dict[str, Any]]:
                 "exact gauge-scale formulas and direct portal branches",
                 "signed Hermitian M_T-squared conditional proxy",
                 "triplet component/provenance ledger",
+                "published Aulakh PS light-triplet branching census (t1/t2/t4; t3 absent; t5 heavy)",
             ],
             "open_scope": [
+                "kinetic normalizations and nonsusy component Clebsches for M_T^2",
                 "complete positive physical scalar spectrum with SM irreps and uncertainties",
             ],
             "corrections": {
                 "legacy_aulakh_susy_matrices_are_nonsusy_scalar_masses": False,
                 "legacy_locked_triplet_threshold_chain_is_physical": False,
                 "signed_mt2_proxy_is_complete_physical_spectrum": False,
+                "published_ps_branching_is_full_physical_spectrum": False,
             },
             "closure_route_defined": True,
             "current_runner_can_close_without_G3_G4_G5": False,

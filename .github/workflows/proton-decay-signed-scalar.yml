@@ -8,6 +8,8 @@ on:
       - "test_proton_decay_signed_scalar_bridge_v20.py"
       - "nonsusy_triplet_component_ledger_v20.py"
       - "test_nonsusy_triplet_component_ledger_v20.py"
+      - "nonsusy_sm_triplet_branching_census_v20.py"
+      - "test_nonsusy_sm_triplet_branching_census_v20.py"
       - "proton_decay_falsification_gate_v20.py"
       - "nonsusy_charge_allowed_mt_v20.py"
       - "nonsusy_z17_pq_potential_filter_v20.py"
@@ -19,6 +21,8 @@ on:
       - "test_proton_decay_signed_scalar_bridge_v20.py"
       - "nonsusy_triplet_component_ledger_v20.py"
       - "test_nonsusy_triplet_component_ledger_v20.py"
+      - "nonsusy_sm_triplet_branching_census_v20.py"
+      - "test_nonsusy_sm_triplet_branching_census_v20.py"
       - "proton_decay_falsification_gate_v20.py"
       - "nonsusy_charge_allowed_mt_v20.py"
       - "nonsusy_z17_pq_potential_filter_v20.py"
@@ -39,20 +43,28 @@ jobs:
         run: |
           python -m unittest -v \
             test_proton_decay_signed_scalar_bridge_v20.py \
-            test_nonsusy_triplet_component_ledger_v20.py
+            test_nonsusy_triplet_component_ledger_v20.py \
+            test_nonsusy_sm_triplet_branching_census_v20.py
       - run: python nonsusy_triplet_component_ledger_v20.py
+      - run: python nonsusy_sm_triplet_branching_census_v20.py
       - run: python proton_decay_signed_scalar_bridge_v20.py
       - name: Assert conditional scalar scope
         run: |
           python - <<'PY'
           import json
           ledger=json.load(open('NONSUSY_TRIPLET_COMPONENT_LEDGER_V20.json'))
+          census=json.load(open('NONSUSY_SM_TRIPLET_BRANCHING_CENSUS_V20.json'))
           r=json.load(open('PROTON_DECAY_SIGNED_SCALAR_BRIDGE_V20.json'))
           assert ledger['n_failed']==0, ledger['failures']
           assert ledger['flag']['machine_readable_component_ledger']
           assert ledger['flag']['mass_squared_provenance_recorded']
+          assert ledger['flag']['published_ps_126bar_t2_t4_locked']
           assert not ledger['flag']['full_component_basis_complete']
           assert not ledger['flag']['physical_component_CG_complete']
+          assert any(row['id']=='Tprime_126' for row in ledger['components'])
+          assert census['n_failed']==0, census['failures']
+          assert census['working_light_basis']==['T_10','Tbar_10','T_126','Tprime_126']
+          assert not census['flag']['physical_component_CG_complete']
           assert r['n_failed']==0, r['failures']
           assert r['signed_scalar']['conditional_only']
           assert not r['signed_scalar']['physical_component_CG_complete']
@@ -66,4 +78,6 @@ jobs:
           name: proton-decay-signed-scalar
           path: |
             NONSUSY_TRIPLET_COMPONENT_LEDGER_V20.json
+            NONSUSY_SM_TRIPLET_BRANCHING_CENSUS_V20.json
+            NONSUSY_SM_TRIPLET_BRANCHING_CENSUS_V20.md
             PROTON_DECAY_SIGNED_SCALAR_BRIDGE_V20.json

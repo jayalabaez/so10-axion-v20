@@ -8,6 +8,10 @@ on:
       - "test_g1_g8_gate_ledger_v20.py"
       - "authoritative_full_model_gate_v20.py"
       - "test_authoritative_full_model_gate_v20.py"
+      - "publication_referee_gate_v20.py"
+      - "test_publication_referee_gate_v20.py"
+      - "nonsusy_sm_triplet_branching_census_v20.py"
+      - "nonsusy_triplet_component_ledger_v20.py"
       - "promote_210n_tensor_basis_uniqueness_v20.py"
       - "mixed_rep_enlarged_floor_basis_v20.py"
       - "direct_phi_h_sigmabar_portal_m2_block_v20.py"
@@ -27,6 +31,10 @@ on:
       - "test_g1_g8_gate_ledger_v20.py"
       - "authoritative_full_model_gate_v20.py"
       - "test_authoritative_full_model_gate_v20.py"
+      - "publication_referee_gate_v20.py"
+      - "test_publication_referee_gate_v20.py"
+      - "nonsusy_sm_triplet_branching_census_v20.py"
+      - "nonsusy_triplet_component_ledger_v20.py"
       - "promote_210n_tensor_basis_uniqueness_v20.py"
       - "mixed_rep_enlarged_floor_basis_v20.py"
       - "direct_phi_h_sigmabar_portal_m2_block_v20.py"
@@ -62,22 +70,32 @@ jobs:
             g1_g8_gate_ledger_v20.py \
             test_g1_g8_gate_ledger_v20.py \
             authoritative_full_model_gate_v20.py \
-            test_authoritative_full_model_gate_v20.py
+            test_authoritative_full_model_gate_v20.py \
+            publication_referee_gate_v20.py \
+            test_publication_referee_gate_v20.py \
+            nonsusy_sm_triplet_branching_census_v20.py \
+            nonsusy_triplet_component_ledger_v20.py
       - name: Run gate tests
         run: |
           python -m unittest -v \
             test_g1_g8_gate_ledger_v20.py \
-            test_authoritative_full_model_gate_v20.py
+            test_authoritative_full_model_gate_v20.py \
+            test_publication_referee_gate_v20.py \
+            test_nonsusy_sm_triplet_branching_census_v20.py \
+            test_nonsusy_triplet_component_ledger_v20.py
       - name: Generate G1-G8 ledger
         run: python g1_g8_gate_ledger_v20.py
       - name: Generate canonical full-model gate
         run: python authoritative_full_model_gate_v20.py
+      - name: Generate publication referee package
+        run: python publication_referee_gate_v20.py
       - name: Assert fail-closed scope
         run: |
           python - <<'PY'
           import json
           ledger=json.load(open('G1_G8_GATE_LEDGER_V20.json'))
           full=json.load(open('AUTHORITATIVE_FULL_MODEL_GATE_V20.json'))
+          ref=json.load(open('PUBLICATION_REFEREE_GATE_V20.json'))
           assert ledger['n_failed']==0, ledger['failures']
           assert ledger['overall_state']=='BLOCKED'
           assert ledger['summary']['n_closed']==0
@@ -94,6 +112,10 @@ jobs:
           assert not full['flag']['legacy_ultimate_gate_authoritative']
           assert not full['classification']['whole_model_validated']
           assert not full['classification']['whole_model_excluded']
+          assert ref['n_failed']==0, ref['failures']
+          assert ref['overall_state']=='BLOCKED'
+          assert not ref['flag']['theory_proven']
+          assert ref['flag']['ready_for_honest_submission_as_blocked_program']
           PY
       - uses: actions/upload-artifact@v4
         if: always()
@@ -104,3 +126,7 @@ jobs:
             G1_G8_GATE_LEDGER_V20.md
             AUTHORITATIVE_FULL_MODEL_GATE_V20.json
             AUTHORITATIVE_FULL_MODEL_GATE_V20.md
+            PUBLICATION_REFEREE_GATE_V20.json
+            PUBLICATION_REFEREE_GATE_V20.md
+            NONSUSY_SM_TRIPLET_BRANCHING_CENSUS_V20.json
+            NONSUSY_SM_TRIPLET_BRANCHING_CENSUS_V20.md

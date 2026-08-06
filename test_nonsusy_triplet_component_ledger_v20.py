@@ -13,7 +13,7 @@ class SignedTripletLedgerTests(unittest.TestCase):
         self.assertEqual(self.report["n_failed"], 0, self.report)
         self.assertEqual(
             self.report["status"],
-            "SIGNED_TRIPLET_COMPONENT_LEDGER_BUILT__CG_AND_MULTIPLICITY_OPEN",
+            "SIGNED_TRIPLET_COMPONENT_LEDGER_BUILT__PS_BRANCHING_PARTIAL__CG_OPEN",
         )
 
     def test_forbidden_operators_absent(self):
@@ -36,11 +36,15 @@ class SignedTripletLedgerTests(unittest.TestCase):
         self.assertFalse(self.report["flag"]["physical_triplet_spectrum_complete"])
         self.assertFalse(self.report["flag"]["exact_unique_proton_lifetime"])
 
-    def test_unknown_multiplicities_are_explicit(self):
+    def test_tprime_promoted_and_open_slots_honest(self):
         states = {row["id"]: row for row in self.report["components"]}
-        self.assertIsNone(states["T126_additional_OPEN"]["sm"])
+        self.assertEqual(states["Tprime_126"]["aulakh_label"], "t4")
+        self.assertEqual(states["Tprime_126"]["sm"], "(3,1,-1/3)")
+        self.assertEqual(states["T210_t5_heavy"]["aulakh_label"], "t5")
         self.assertIsNone(states["T210_mixing_fragments_OPEN"]["sm"])
+        self.assertTrue(self.report["flag"]["published_ps_126bar_t2_t4_locked"])
         self.assertFalse(self.report["flag"]["full_component_basis_complete"])
+        self.assertFalse(self.report["flag"]["kinetic_normalization_derived"])
 
 
 if __name__ == "__main__":
