@@ -1,0 +1,97 @@
+name: next-gen-triplet-diagonal-baseline
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "exact_universal_triplet_norm_shifts_v20.py"
+      - "test_exact_universal_triplet_norm_shifts_v20.py"
+      - "next_gen_triplet_diagonal_baseline_gate_v20.py"
+      - "test_next_gen_triplet_diagonal_baseline_gate_v20.py"
+      - "next_gen_triplet_quadratic_gate_v20.py"
+      - "exact_10h_squared_s_bterm_v20.py"
+      - "next_gen_triplet_nambu_hessian_v20.py"
+      - "next_gen_triplet_tensor_gate_v20.py"
+      - ".github/workflows/next-gen-triplet-diagonal-baseline.yml"
+  push:
+    branches: [main]
+    paths:
+      - "exact_universal_triplet_norm_shifts_v20.py"
+      - "test_exact_universal_triplet_norm_shifts_v20.py"
+      - "next_gen_triplet_diagonal_baseline_gate_v20.py"
+      - "test_next_gen_triplet_diagonal_baseline_gate_v20.py"
+      - "next_gen_triplet_quadratic_gate_v20.py"
+      - "exact_10h_squared_s_bterm_v20.py"
+      - "next_gen_triplet_nambu_hessian_v20.py"
+      - "next_gen_triplet_tensor_gate_v20.py"
+      - ".github/workflows/next-gen-triplet-diagonal-baseline.yml"
+
+concurrency:
+  group: next-gen-triplet-diagonal-baseline-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  exact-diagonal-baseline-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Compile diagonal baseline modules
+        run: |
+          python -m py_compile \
+            exact_universal_triplet_norm_shifts_v20.py \
+            test_exact_universal_triplet_norm_shifts_v20.py \
+            next_gen_triplet_diagonal_baseline_gate_v20.py \
+            test_next_gen_triplet_diagonal_baseline_gate_v20.py
+      - name: Run diagonal baseline tests
+        run: |
+          python -m unittest -v \
+            test_exact_universal_triplet_norm_shifts_v20.py \
+            test_next_gen_triplet_diagonal_baseline_gate_v20.py
+      - name: Generate universal norm-shift report
+        run: python exact_universal_triplet_norm_shifts_v20.py
+      - name: Generate diagonal baseline report
+        run: python next_gen_triplet_diagonal_baseline_gate_v20.py
+      - name: Assert reduction and scope
+        run: |
+          python - <<'PY'
+          import json
+          u=json.load(open('EXACT_UNIVERSAL_TRIPLET_NORM_SHIFTS_V20.json'))
+          g=json.load(open('NEXT_GEN_TRIPLET_DIAGONAL_BASELINE_GATE_V20.json'))
+
+          assert u['n_failed']==0, u['failures']
+          assert u['overall_state']=='CLOSED_SUBPROBLEM'
+          assert u['flag']['exact_universal_norm_shifts_derived']
+          assert u['flag']['five_diagonal_placeholders_reducible_to_two_baselines_plus_residuals']
+          assert not u['flag']['anisotropic_component_CG_complete']
+          assert not u['flag']['physical_triplet_spectrum_complete']
+
+          assert g['n_failed']==0, g['failures']
+          assert g['overall_state']=='PARTIAL'
+          assert g['flag']['authoritative_diagonal_baseline_subgate']
+          assert g['flag']['universal_diagonal_channels_complete']
+          assert g['parameter_reduction']['exact_universal_baselines']==2
+          assert g['parameter_reduction']['residual_count']==5
+          assert not g['flag']['anisotropic_component_CG_complete']
+          assert not g['flag']['complete_component_potential']
+          assert not g['flag']['physical_triplet_spectrum_complete']
+          assert not g['flag']['exact_unique_proton_lifetime']
+          assert not g['flag']['whole_model_validated']
+          assert not g['flag']['whole_model_excluded']
+          assert not g['flag']['empirical_discovery']
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: next-gen-triplet-diagonal-baseline
+          path: |
+            EXACT_UNIVERSAL_TRIPLET_NORM_SHIFTS_V20.json
+            EXACT_UNIVERSAL_TRIPLET_NORM_SHIFTS_V20.md
+            NEXT_GEN_TRIPLET_DIAGONAL_BASELINE_GATE_V20.json
+            NEXT_GEN_TRIPLET_DIAGONAL_BASELINE_GATE_V20.md
