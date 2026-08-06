@@ -4,7 +4,9 @@ import live_g1_tensor_closure_ledger_v20 as ledger
 
 def test_all_eighteen_base_families_are_present():
     assert len(ledger.BASE_FAMILIES) == 18
-    assert sum(base['multiplicity'] for base in ledger.BASE_FAMILIES.values()) == 39
+    # Base families are reused by singlet dressings; their undressed
+    # multiplicities sum to 34, while the 48 dressed orbits sum to 64.
+    assert sum(base['multiplicity'] for base in ledger.BASE_FAMILIES.values()) == 34
     assert all(base['basis'] for base in ledger.BASE_FAMILIES.values())
     assert all(base['normalization'] for base in ledger.BASE_FAMILIES.values())
 
