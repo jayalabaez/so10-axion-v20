@@ -1,0 +1,70 @@
+name: exact-phisigma-bose-channel-census
+
+on:
+  pull_request:
+    paths:
+      - 'exact_phisigma_bose_channel_census_v20.py'
+      - 'test_exact_phisigma_bose_channel_census_v20.py'
+      - '.github/workflows/exact-phisigma-bose-channel-census.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'exact_phisigma_bose_channel_census_v20.py'
+      - 'test_exact_phisigma_bose_channel_census_v20.py'
+      - '.github/workflows/exact-phisigma-bose-channel-census.yml'
+  workflow_dispatch:
+
+jobs:
+  exact-phisigma-bose-channel-census:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: python -m pip install --upgrade pip numpy mpmath pytest
+
+      - name: Compile census modules
+        run: >-
+          python -m py_compile
+          exact_phisigma_bose_channel_census_v20.py
+          test_exact_phisigma_bose_channel_census_v20.py
+
+      - name: Run representation and physics tests
+        run: >-
+          python -m pytest -q
+          test_exact_phisigma_bose_channel_census_v20.py
+
+      - name: Generate authoritative census
+        run: python exact_phisigma_bose_channel_census_v20.py
+
+      - name: Assert exact count and fail-closed scope
+        run: |
+          python - <<'PY'
+          import json
+
+          report = json.load(open('EXACT_PHISIGMA_BOSE_CHANNEL_CENSUS_V20.json'))
+          assert report['n_failed'] == 0, report['failures']
+          accounting = report['channel_accounting']
+          assert accounting['total_independent_Hermitian_PhiSigma_quartics'] == 6
+          assert accounting['exact_independent_span_dimension'] == 3
+          assert accounting['remaining_independent_span_dimension'] == 3
+          assert report['flag']['exact_PhiSigma_channel_census_complete'] is True
+          assert report['flag']['all_PhiSigma_quartic_component_Clebsches_complete'] is False
+          assert report['flag']['complete_component_potential'] is False
+          assert report['flag']['physical_triplet_spectrum_complete'] is False
+          assert report['flag']['exact_unique_proton_lifetime'] is False
+          assert report['flag']['whole_model_validated'] is False
+          assert report['flag']['empirical_discovery'] is False
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: exact-phisigma-bose-channel-census
+          path: |
+            EXACT_PHISIGMA_BOSE_CHANNEL_CENSUS_V20.json
+            EXACT_PHISIGMA_BOSE_CHANNEL_CENSUS_V20.md
