@@ -1,36 +1,27 @@
 #!/usr/bin/env python3
-"""Exact 486-real gradients/Hessians for the first five G2 base families.
+"""Exact 486-real derivatives for five authoritative quadratic G2 families.
 
-This module differentiates every live invariant direction whose non-singlet
-base family is one of
+This module differentiates every live direction whose G1 base-family ID is
 
-  B00 singlet_constant,
-  B01 sigma_norm,
-  B02 hbar_hbar_singlet,
-  B03 h_norm,
-  B04 phi_norm,
+* ``singlet_polynomial``;
+* ``126bar_norm``;
+* ``Hdag_Hdag_pair``;
+* ``Hdag_H_norm``;
+* ``Phi_norm``.
 
-including every allowed S/Sdag/Phi17/Phi17dag dressing from the closed G1
-ring.  No finite difference is used in the construction.
+Every allowed S/Sdag/Phi17/Phi17dag dressing is included.  Each selected
+operator factors as F(q)=B(u)D(s,x), so its exact dense derivatives follow from
 
-Every selected direction factors as
+    grad F = D grad B + B grad D,
+    Hess F = D Hess B + B Hess D
+             + grad B outer grad D + grad D outer grad B.
 
-  F(q) = B(u) D(s,x),
+Coverage is tied to the authoritative G1 orbit ledger.  Every selected family
+must have a nonzero expected and observed direction count; zero-direction
+vacuous success is forbidden.
 
-where B is constant or quadratic in one non-singlet block and D is a complex
-singlet monomial.  The exact product rules are
-
-  grad F = D grad B + B grad D,
-  Hess F = D Hess B + B Hess D
-           + grad B outer grad D + grad D outer grad B.
-
-The module emits exact complex direction derivatives and converts them into
-the real 91-parameter Hermitian-potential convention.  Independent five-point
-directional reconstructions validate the assembled value, gradient, and
-Hessian on the canonical 486-real chart.
-
-This closes five of eighteen base-family derivative adapters only.  G2 remains
-PARTIAL until all eighteen families and all sixty-four directions are covered.
+This closes five of eighteen base-family derivative adapters only.  The other
+thirteen families, complete all-64 derivatives, and G2 remain open.
 """
 from __future__ import annotations
 
@@ -52,14 +43,19 @@ OUT_JSON = ROOT / "LIVE_G2_EXACT_QUADRATIC_FAMILY_DERIVATIVES_V20.json"
 OUT_MD = ROOT / "LIVE_G2_EXACT_QUADRATIC_FAMILY_DERIVATIVES_V20.md"
 
 SELECTED_FAMILIES = (
-    "B00_singlet_constant",
-    "B01_sigma_norm",
-    "B02_hbar_hbar_singlet",
-    "B03_h_norm",
-    "B04_phi_norm",
+    "singlet_polynomial",
+    "126bar_norm",
+    "Hdag_Hdag_pair",
+    "Hdag_H_norm",
+    "Phi_norm",
 )
 SINGLET_GLOBAL_INDICES = np.asarray(
-    [chart.S_SLICE.start, chart.S_SLICE.start + 1, chart.X_SLICE.start, chart.X_SLICE.start + 1],
+    [
+        chart.S_SLICE.start,
+        chart.S_SLICE.start + 1,
+        chart.X_SLICE.start,
+        chart.X_SLICE.start + 1,
+    ],
     dtype=int,
 )
 
@@ -87,15 +83,13 @@ class SmallJet2:
         )
 
     def __mul__(self, other: "SmallJet2") -> "SmallJet2":
-        left = self
-        right = other
         return SmallJet2(
-            left.value * right.value,
-            left.gradient * right.value + left.value * right.gradient,
-            left.hessian * right.value
-            + left.value * right.hessian
-            + np.outer(left.gradient, right.gradient)
-            + np.outer(right.gradient, left.gradient),
+            self.value * other.value,
+            self.gradient * other.value + self.value * other.gradient,
+            self.hessian * other.value
+            + self.value * other.hessian
+            + np.outer(self.gradient, other.gradient)
+            + np.outer(other.gradient, self.gradient),
         )
 
     def __pow__(self, exponent: int) -> "SmallJet2":
@@ -144,7 +138,9 @@ def _jsonable(value: Any) -> Any:
     return value
 
 
-def selected_directions(state: potential.FieldState) -> tuple[potential.Direction, ...]:
+def selected_directions(
+    state: potential.FieldState,
+) -> tuple[potential.Direction, ...]:
     return tuple(
         row
         for row in potential.evaluate_directions(state)
@@ -153,25 +149,28 @@ def selected_directions(state: potential.FieldState) -> tuple[potential.Directio
 
 
 def _singlet_linear_jets(q: np.ndarray) -> dict[str, SmallJet2]:
-    local = np.asarray(q, dtype=float).reshape(chart.TOTAL_DIM)[SINGLET_GLOBAL_INDICES]
+    local = np.asarray(q, dtype=float).reshape(chart.TOTAL_DIM)[
+        SINGLET_GLOBAL_INDICES
+    ]
     inv = 1.0 / np.sqrt(2.0)
-    s = SmallJet2.linear(
-        (local[0] + 1j * local[1]) * inv,
-        np.asarray([inv, 1j * inv, 0.0, 0.0], dtype=complex),
-    )
-    sb = SmallJet2.linear(
-        (local[0] - 1j * local[1]) * inv,
-        np.asarray([inv, -1j * inv, 0.0, 0.0], dtype=complex),
-    )
-    x = SmallJet2.linear(
-        (local[2] + 1j * local[3]) * inv,
-        np.asarray([0.0, 0.0, inv, 1j * inv], dtype=complex),
-    )
-    xb = SmallJet2.linear(
-        (local[2] - 1j * local[3]) * inv,
-        np.asarray([0.0, 0.0, inv, -1j * inv], dtype=complex),
-    )
-    return {"S": s, "Sb": sb, "X": x, "Xb": xb}
+    return {
+        "S": SmallJet2.linear(
+            (local[0] + 1j * local[1]) * inv,
+            np.asarray([inv, 1j * inv, 0.0, 0.0], dtype=complex),
+        ),
+        "Sb": SmallJet2.linear(
+            (local[0] - 1j * local[1]) * inv,
+            np.asarray([inv, -1j * inv, 0.0, 0.0], dtype=complex),
+        ),
+        "X": SmallJet2.linear(
+            (local[2] + 1j * local[3]) * inv,
+            np.asarray([0.0, 0.0, inv, 1j * inv], dtype=complex),
+        ),
+        "Xb": SmallJet2.linear(
+            (local[2] - 1j * local[3]) * inv,
+            np.asarray([0.0, 0.0, inv, -1j * inv], dtype=complex),
+        ),
+    }
 
 
 def dressing_jet(q: np.ndarray, counts: Mapping[str, int]) -> SmallJet2:
@@ -195,10 +194,10 @@ def base_derivative(
     coordinates = np.asarray(q, dtype=float).reshape(chart.TOTAL_DIM)
     gradient, hessian = _empty_complex_derivatives()
 
-    if base_family == "B00_singlet_constant":
+    if base_family == "singlet_polynomial":
         return 1.0 + 0.0j, gradient, hessian
 
-    if base_family == "B01_sigma_norm":
+    if base_family == "126bar_norm":
         block = coordinates[chart.SIGMA_SLICE]
         value = 0.5 * float(np.dot(block, block))
         gradient[chart.SIGMA_SLICE] = block
@@ -207,7 +206,7 @@ def base_derivative(
         )
         return complex(value), gradient, hessian
 
-    if base_family == "B02_hbar_hbar_singlet":
+    if base_family == "Hdag_Hdag_pair":
         block = coordinates[chart.H_SLICE]
         value = 0.0 + 0.0j
         pair_hessian = np.asarray(
@@ -224,14 +223,14 @@ def base_derivative(
             hessian[start : start + 2, start : start + 2] = pair_hessian
         return value, gradient, hessian
 
-    if base_family == "B03_h_norm":
+    if base_family == "Hdag_H_norm":
         block = coordinates[chart.H_SLICE]
         value = 0.5 * float(np.dot(block, block))
         gradient[chart.H_SLICE] = block
         hessian[chart.H_SLICE, chart.H_SLICE] = np.eye(chart.H_REAL_DIM)
         return complex(value), gradient, hessian
 
-    if base_family == "B04_phi_norm":
+    if base_family == "Phi_norm":
         block = coordinates[chart.PHI_SLICE]
         value = float(np.dot(block, block))
         gradient[chart.PHI_SLICE] = 2.0 * block
@@ -253,19 +252,15 @@ def direction_derivative(
     q: np.ndarray, direction: potential.Direction
 ) -> DirectionDerivative:
     if direction.base_family not in SELECTED_FAMILIES:
-        raise KeyError(f"direction {direction.direction_id} not covered")
-    counts = dict(zip(potential.FIELD_ORDER, direction.counts))
+        raise KeyError(f"direction {direction.direction_id} is not covered")
+    counts = dict(zip(potential.FIELD_ORDER, direction.counts, strict=True))
     base_value, base_gradient, base_hessian = base_derivative(
         q, direction.base_family
     )
     dressing = dressing_jet(q, counts)
     dressing_gradient, dressing_hessian = _embed_singlet_jet(dressing)
-
     value = base_value * dressing.value
-    gradient = (
-        dressing.value * base_gradient
-        + base_value * dressing_gradient
-    )
+    gradient = dressing.value * base_gradient + base_value * dressing_gradient
     hessian = (
         dressing.value * base_hessian
         + base_value * dressing_hessian
@@ -408,9 +403,7 @@ def five_point_directional_audit(
         -f_p2 + 16.0 * f_p1 - 30.0 * f_0 + 16.0 * f_m1 - f_m2
     ) / (12.0 * step**2)
     analytic_first = float(np.dot(assembled["gradient"], direction))
-    analytic_second = float(
-        direction @ assembled["hessian"] @ direction
-    )
+    analytic_second = float(direction @ assembled["hessian"] @ direction)
     return {
         "step": step,
         "value_residual": abs(f_0 - assembled["value"]),
@@ -420,6 +413,18 @@ def five_point_directional_audit(
         "analytic_second": analytic_second,
         "numerical_second": numerical_second,
         "second_residual": abs(analytic_second - numerical_second),
+    }
+
+
+def expected_family_counts() -> dict[str, int]:
+    g1 = ledger.build_report()
+    return {
+        family: sum(
+            int(orbit["multiplicity"])
+            for orbit in g1["operator_orbits"]
+            if orbit["base_family"] == family
+        )
+        for family in SELECTED_FAMILIES
     }
 
 
@@ -443,8 +448,7 @@ def build_report() -> dict[str, Any]:
         for row in analytic
     }
     hessian_symmetry = max(
-        float(np.max(np.abs(row.hessian - row.hessian.T)))
-        for row in analytic
+        float(np.max(np.abs(row.hessian - row.hessian.T))) for row in analytic
     )
     self_imaginary = max(
         [
@@ -462,14 +466,9 @@ def build_report() -> dict[str, Any]:
         family: sum(row.base_family == family for row in analytic)
         for family in SELECTED_FAMILIES
     }
-    expected_counts = {
-        family: sum(
-            row.base_family == family
-            for row in potential.evaluate_directions(state)
-        )
-        for family in SELECTED_FAMILIES
-    }
-    full_parameter_ids = {
+    expected_counts = expected_family_counts()
+    actual_families = {row.base_family for row in analytic}
+    live_parameter_ids = {
         row.parameter_id
         for row in potential.parameter_schema(
             potential.evaluate_directions(state)
@@ -480,15 +479,25 @@ def build_report() -> dict[str, Any]:
     checks = {
         "corrected_value_layer_executes": value_layer["n_failed"] == 0,
         "canonical_chart_executes": chart_report["n_failed"] == 0,
-        "exactly_five_base_families_selected": set(family_counts) == set(
-            SELECTED_FAMILIES
+        "authoritative_selected_family_ids_exist": set(SELECTED_FAMILIES).issubset(
+            {row["id"] for row in ledger.BASE_FAMILIES.values()}
         ),
-        "every_selected_direction_differentiated": family_counts == expected_counts,
+        "exactly_five_nonzero_base_families_selected": (
+            actual_families == set(SELECTED_FAMILIES)
+            and all(count > 0 for count in family_counts.values())
+        ),
+        "expected_G1_counts_are_nonzero": all(
+            count > 0 for count in expected_counts.values()
+        ),
+        "every_expected_direction_differentiated": family_counts == expected_counts,
+        "direction_count_is_nonzero": len(analytic) > 0,
+        "parameter_count_is_nonzero": len(parameters) > 0,
         "all_direction_values_match_authoritative_evaluator": max(
-            value_residuals.values(), default=0.0
+            value_residuals.values()
         ) < 1.0e-10,
-        "all_parameter_derivatives_belong_to_live_91_schema": parameter_ids.issubset(
-            full_parameter_ids
+        "all_parameter_derivatives_belong_to_live_91_schema": (
+            parameter_ids.issubset(live_parameter_ids)
+            and len(parameter_ids) == len(parameters)
         ),
         "all_Hessians_symmetric": hessian_symmetry < 1.0e-12,
         "self_conjugate_derivatives_real": self_imaginary < 1.0e-10,
@@ -501,8 +510,8 @@ def build_report() -> dict[str, Any]:
         "five_point_second_derivative_reconstruction": directional[
             "second_residual"
         ] < 1.0e-7,
-        "combined_Hessian_finite": np.all(np.isfinite(combined["hessian"])),
-        "combined_gradient_finite": np.all(np.isfinite(combined["gradient"])),
+        "combined_Hessian_finite": bool(np.all(np.isfinite(combined["hessian"]))),
+        "combined_gradient_finite": bool(np.all(np.isfinite(combined["gradient"]))),
         "remaining_13_base_families_not_claimed": True,
         "G2_not_closed": True,
         "whole_model_not_validated": True,
@@ -524,15 +533,14 @@ def build_report() -> dict[str, Any]:
                 "base_families_closed": list(SELECTED_FAMILIES),
                 "base_family_count_closed": len(SELECTED_FAMILIES),
                 "base_family_count_total": len(ledger.BASE_FAMILIES),
-                "direction_counts": family_counts,
+                "expected_direction_counts": expected_counts,
+                "observed_direction_counts": family_counts,
                 "direction_count_closed": len(analytic),
                 "parameter_count_closed": len(parameters),
                 "real_field_dimension": chart.TOTAL_DIM,
                 "Hessian_shape": [chart.TOTAL_DIM, chart.TOTAL_DIM],
             },
-            "maximum_direction_value_residual": max(
-                value_residuals.values(), default=0.0
-            ),
+            "maximum_direction_value_residual": max(value_residuals.values()),
             "maximum_Hessian_symmetry_residual": hessian_symmetry,
             "maximum_self_conjugate_imaginary_residual": self_imaginary,
             "directional_reconstruction": directional,
@@ -544,10 +552,9 @@ def build_report() -> dict[str, Any]:
                 ),
             },
             "flags": {
-                "singlet_and_quadratic_family_values_exact": not failures,
-                "singlet_and_quadratic_family_gradients_exact": not failures,
-                "singlet_and_quadratic_family_Hessians_exact": not failures,
-                "five_of_eighteen_base_derivative_adapters_closed": not failures,
+                "five_authoritative_nonzero_family_adapters_closed": not failures,
+                "all_selected_direction_gradients_exact": not failures,
+                "all_selected_direction_Hessians_exact": not failures,
                 "all_64_direction_gradients_complete": False,
                 "all_64_direction_Hessians_complete": False,
                 "G2_closed": False,
@@ -555,15 +562,13 @@ def build_report() -> dict[str, Any]:
                 "empirical_discovery": False,
             },
             "next_exact_target": (
-                "Differentiate the two cubic base families B05 and B08 and "
-                "the two mixed cubic portal families B06 and B07 on the same chart."
+                "Differentiate Phi_Sigma_Sigmadag_cubic and Phi_cubic, then the "
+                "Phi_Hdag_Sigmadag and Phi_Hdag_Sigma portal families."
             ),
             "verdict": (
-                "Every singlet-only and dressed quadratic live direction now "
-                "has an exact 486-gradient and 486x486 Hessian, independently "
-                "reconstructed by polynomial-exact five-point directional "
-                "tests. Five of eighteen base-family derivative adapters are "
-                "closed; G2 remains partial."
+                "Five authoritative nonzero G1 base families now have exact dense "
+                "486-gradients and 486x486 Hessians with all live singlet dressings. "
+                "Thirteen families remain, so G2 stays PARTIAL."
             ),
         }
     )
@@ -572,7 +577,7 @@ def build_report() -> dict[str, Any]:
 def write_report(report: dict[str, Any]) -> None:
     OUT_JSON.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     OUT_MD.write_text(
-        "# G2 exact singlet/quadratic family derivatives\n\n"
+        "# Exact derivatives for five G2 base families\n\n"
         f"**Status:** `{report['status']}`\n\n"
         + report["verdict"]
         + "\n\n"
