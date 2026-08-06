@@ -1,7 +1,7 @@
 {
   "status": "DIAGONAL_210_RADIAL_CUBIC_PS_SINGLET_FILLED__OFF_SINGLET_CG_OPEN",
   "overall_state": "BLOCKED",
-  "n_checks": 19,
+  "n_checks": 20,
   "n_failed": 0,
   "failures": [],
   "checks": {
@@ -22,6 +22,7 @@
     "channel_45_off_singlet_sm_qn_green": true,
     "channel_210_self_map_green": true,
     "channel_210_seed_positive": true,
+    "channel_210_off_singlet_sm_qn_green": true,
     "off_singlet_1050_not_faked": true,
     "whole_model_not_overclaimed": true
   },
@@ -88,8 +89,13 @@
   },
   "channel_210": {
     "status": "SO10_210_TO_210_SELF_MAP_READY__OFF_SINGLET_CG_OPEN",
+    "sm_qn_status": "OPEN_210_CHANNEL_210_OFF_SINGLET_SM_QN_READY__CG_OPEN",
     "seed_GeV2": 1.481691018357178e+29,
-    "overlap_with_phi": 0.9966547278042228
+    "overlap_with_phi": 0.9966547278042228,
+    "bucket_counts": {
+      "so6_so4_cross__Qcharged": 207
+    },
+    "mode_cg": false
   },
   "filled_slots": {
     "OPEN_210_RADIAL": {
@@ -149,13 +155,16 @@
       }
     },
     "OPEN_210_CHANNEL_210": {
-      "status": "PARTIAL_PS_SINGLET_TENSOR_MAP_READY",
+      "status": "PARTIAL_SM_QUANTUM_NUMBERS_READY",
       "contribution_GeV2": 1.481691018357178e+29,
       "feeds": "diagnostic_mostly_radial_overlap_not_added_to_isotropic_m2",
-      "scope": "exact (210\u2297210)\u2192210; selected vacuum \u039e\u2225\u03a6; off-singlet CG OPEN",
+      "scope": "exact (210\u2297210)\u2192210; selected vacuum \u039e\u2225\u03a6; off-singlet census + SM Cartan labels on \u039e(\u03a6,\u03b4\u03a6); mode-by-mode CG OPEN",
       "formula": "\u0394M\u00b2_210 \u2248 \u03bb\u0303 ||\u039e(\u03a6,\u03a6)||\u00b2 / ||\u03a6||\u00b2",
       "overlap_with_phi": 0.9966547278042228,
-      "lam_tilde": 0.01
+      "lam_tilde": 0.01,
+      "sm_qn_buckets": {
+        "so6_so4_cross__Qcharged": 207
+      }
     }
   },
   "still_open_slots": [
@@ -171,6 +180,7 @@
     "open_210_channel_45_off_singlet_census": true,
     "open_210_channel_45_off_singlet_sm_qn": true,
     "open_210_channel_210_ps_singlet_seed": true,
+    "open_210_channel_210_off_singlet_sm_qn": true,
     "off_singlet_210_channel_cg": false,
     "full_component_hessian_complete": false,
     "whole_model_validated": false,

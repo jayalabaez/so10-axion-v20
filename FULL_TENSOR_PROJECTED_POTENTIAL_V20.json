@@ -1,7 +1,7 @@
 {
   "status": "FULL_TENSOR_PROJECTED_POTENTIAL_SCAFFOLD_PARTIAL__CG_OPEN",
   "overall_state": "BLOCKED",
-  "n_checks": 16,
+  "n_checks": 18,
   "n_failed": 0,
   "failures": [],
   "checks": {
@@ -14,9 +14,11 @@
     "paw_delta_h10_linear_cg_referenced": true,
     "s_phi17_residual_not_retired_without_cg": true,
     "off_singlet_45_census_ready": true,
+    "off_singlet_45_sm_qn_ready": true,
     "off_singlet_54_census_ready": true,
     "off_singlet_54_sm_qn_ready": true,
     "off_singlet_210_census_ready": true,
+    "off_singlet_210_sm_qn_ready": true,
     "open_126_54_locking_hermitian_census_ready": true,
     "ready_subspace_bfb_green": true,
     "g2_not_closed": true,
@@ -73,6 +75,13 @@
       "note": "Diagnostic seed; mode CG OPEN"
     },
     {
+      "id": "OFF_SINGLET_45_SM_QN",
+      "projection_status": "CENSUS_ONLY",
+      "source_module": "open_210_channel_45_off_singlet_sm_quantum_numbers_v20",
+      "source_fn": "build_report",
+      "note": "Cartan/sector labels on (\u03a6\u2297\u03b4\u03a6)_45; mode CG OPEN"
+    },
+    {
       "id": "OFF_SINGLET_54_CENSUS",
       "projection_status": "CENSUS_ONLY",
       "source_module": "open_210_channel_54_off_singlet_census_v20",
@@ -92,6 +101,13 @@
       "source_module": "open_210_channel_210_off_singlet_census_v20",
       "source_fn": "build_report",
       "note": "Published self-map \u039e; mode CG OPEN"
+    },
+    {
+      "id": "OFF_SINGLET_210_SM_QN",
+      "projection_status": "CENSUS_ONLY",
+      "source_module": "open_210_channel_210_off_singlet_sm_quantum_numbers_v20",
+      "source_fn": "build_report",
+      "note": "Cartan/sector labels on \u039e(\u03a6,\u03b4\u03a6)_210; mode CG OPEN"
     },
     {
       "id": "OPEN_126_54_LOCKING_HERMITIAN_CENSUS",
@@ -136,9 +152,11 @@
     "PORTAL_LAMBDA4_VS_T_PHI",
     "SCOPED_BFB_AGGREGATE",
     "OFF_SINGLET_45_CENSUS",
+    "OFF_SINGLET_45_SM_QN",
     "OFF_SINGLET_54_CENSUS",
     "OFF_SINGLET_54_SM_QN",
     "OFF_SINGLET_210_CENSUS",
+    "OFF_SINGLET_210_SM_QN",
     "OPEN_126_54_LOCKING_HERMITIAN_CENSUS"
   ],
   "isotropic_residuals": [
@@ -153,7 +171,13 @@
   "off_singlet_censuses": {
     "45": {
       "status": "OPEN_210_CHANNEL_45_OFF_SINGLET_CENSUS_READY__CG_OPEN",
-      "n_nonzero": 207
+      "n_nonzero": 207,
+      "sm_qn_status": "OPEN_210_CHANNEL_45_OFF_SINGLET_SM_QN_READY__CG_OPEN",
+      "sm_qn_buckets": {
+        "mixed__Qcharged": 68,
+        "so6_color__Qcharged": 10,
+        "so6_so4_cross__Qcharged": 129
+      }
     },
     "54": {
       "status": "OPEN_210_CHANNEL_54_OFF_SINGLET_CENSUS_READY__CG_OPEN",
@@ -169,7 +193,11 @@
     "210": {
       "status": "OPEN_210_CHANNEL_210_OFF_SINGLET_CENSUS_READY__CG_OPEN",
       "n_nonzero": 207,
-      "seed_GeV2": 1.7219143646273261e+28
+      "seed_GeV2": 1.7219143646273261e+28,
+      "sm_qn_status": "OPEN_210_CHANNEL_210_OFF_SINGLET_SM_QN_READY__CG_OPEN",
+      "sm_qn_buckets": {
+        "so6_so4_cross__Qcharged": 207
+      }
     },
     "126_54_locking": {
       "status": "OPEN_126_54_LOCKING_HERMITIAN_FLUCTUATION_CENSUS_PARTIAL__CG_OPEN",
@@ -226,5 +254,5 @@
     "full_nonsusy_vacuum_hessian": true,
     "full_g2_ps_sm_clebsch_projection": true
   },
-  "verdict": "FULL_TENSOR_PROJECTED_POTENTIAL scaffold PARTIAL: READY subspace (10 ops) BFB green via composed certificates; off-singlet 45/54/210 and OPEN_126_54_LOCKING censuses ready; 120/320/1050/4125 and S/\u03a6\u2081\u2087 linear CG remain OPEN. G2 not closed. Theory remains BLOCKED."
+  "verdict": "FULL_TENSOR_PROJECTED_POTENTIAL scaffold PARTIAL: READY subspace (12 ops) BFB green via composed certificates; off-singlet 45/54/210 censuses + SM Cartan QN and OPEN_126_54_LOCKING censuses ready; 120/320/1050/4125 and S/\u03a6\u2081\u2087 linear CG remain OPEN. G2 not closed. Theory remains BLOCKED."
 }

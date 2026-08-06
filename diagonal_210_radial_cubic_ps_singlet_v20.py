@@ -43,6 +43,7 @@ import open_210_channel_45_off_singlet_census_v20 as off45
 import open_210_channel_45_off_singlet_sm_quantum_numbers_v20 as off45qn
 import open_210_channel_54_off_singlet_census_v20 as off54mod
 import open_210_channel_54_off_singlet_sm_quantum_numbers_v20 as off54qn
+import open_210_channel_210_off_singlet_sm_quantum_numbers_v20 as off210qn
 import so10_210_symmetric_45_source_projector_v20 as sym45
 import so10_210_to_45_projector_v20 as p45
 import so10_210_to_54_projector_v20 as p54
@@ -127,6 +128,7 @@ def build_report() -> dict[str, Any]:
     ch45qn = off45qn.build_report()
     ch54off = off54mod.build_report()
     ch54qn = off54qn.build_report()
+    ch210qn = off210qn.build_report()
     ch45sym = sym45.build_report()
     seed54 = float(
         ch54["selected_vacuum"]["OPEN_210_CHANNEL_54_seed_GeV2"]
@@ -211,13 +213,17 @@ def build_report() -> dict[str, Any]:
             "sm_qn_buckets": ch45qn["quantum_numbers"]["bucket_counts"],
         },
         "OPEN_210_CHANNEL_210": {
-            "status": "PARTIAL_PS_SINGLET_TENSOR_MAP_READY",
+            "status": "PARTIAL_SM_QUANTUM_NUMBERS_READY",
             "contribution_GeV2": seed210,
             "feeds": "diagnostic_mostly_radial_overlap_not_added_to_isotropic_m2",
-            "scope": "exact (210⊗210)→210; selected vacuum Ξ∥Φ; off-singlet CG OPEN",
+            "scope": (
+                "exact (210⊗210)→210; selected vacuum Ξ∥Φ; off-singlet census "
+                "+ SM Cartan labels on Ξ(Φ,δΦ); mode-by-mode CG OPEN"
+            ),
             "formula": ch210["selected_vacuum"]["formula"],
             "overlap_with_phi": ch210["selected_vacuum"]["overlap_with_phi"],
             "lam_tilde": ch210["selected_vacuum"]["lam_tilde"],
+            "sm_qn_buckets": ch210qn["quantum_numbers"]["bucket_counts"],
         },
     }
     still_open = [
@@ -246,6 +252,7 @@ def build_report() -> dict[str, Any]:
         "channel_45_off_singlet_sm_qn_green": ch45qn.get("n_failed", 1) == 0,
         "channel_210_self_map_green": ch210.get("n_failed", 1) == 0,
         "channel_210_seed_positive": seed210 > 0.0,
+        "channel_210_off_singlet_sm_qn_green": ch210qn.get("n_failed", 1) == 0,
         "off_singlet_1050_not_faked": True,
         "whole_model_not_overclaimed": True,
     }
@@ -291,8 +298,11 @@ def build_report() -> dict[str, Any]:
         },
         "channel_210": {
             "status": ch210.get("status"),
+            "sm_qn_status": ch210qn.get("status"),
             "seed_GeV2": seed210,
             "overlap_with_phi": ch210["selected_vacuum"]["overlap_with_phi"],
+            "bucket_counts": ch210qn["quantum_numbers"]["bucket_counts"],
+            "mode_cg": False,
         },
         "filled_slots": filled,
         "still_open_slots": still_open,
@@ -306,6 +316,7 @@ def build_report() -> dict[str, Any]:
             "open_210_channel_45_off_singlet_census": not bool(failures),
             "open_210_channel_45_off_singlet_sm_qn": not bool(failures),
             "open_210_channel_210_ps_singlet_seed": not bool(failures),
+            "open_210_channel_210_off_singlet_sm_qn": not bool(failures),
             "off_singlet_210_channel_cg": False,
             "full_component_hessian_complete": False,
             "whole_model_validated": False,

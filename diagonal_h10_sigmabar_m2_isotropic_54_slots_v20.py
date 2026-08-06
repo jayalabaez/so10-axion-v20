@@ -235,11 +235,12 @@ def build_partial_diagonals(
             ),
         },
         "OPEN_210_CHANNEL_210": {
-            "status": "PARTIAL_PS_SINGLET_TENSOR_MAP_READY",
+            "status": "PARTIAL_SM_QUANTUM_NUMBERS_READY",
             "contribution_GeV2": 0.0,
             "reason": (
-                "so10_210_to_210_self_map_v20: exact (210⊗210)→210; selected "
-                "vacuum Ξ mostly ∥ Φ (radial overlap); diagnostic seed only"
+                "open_210_channel_210_off_singlet_sm_quantum_numbers_v20: "
+                "Cartan/sector labels on vacuum⊗δΦ Ξ(Φ,δΦ)_210 images; "
+                "mode-by-mode SM irrep CG coeffs remain OPEN"
             ),
         },
     }

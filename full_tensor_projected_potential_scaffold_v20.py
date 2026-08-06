@@ -38,7 +38,9 @@ from typing import Any
 import direct_phi_h_sigmabar_portal_m2_block_v20 as portal
 import open_126_54_locking_hermitian_fluctuation_census_v20 as census12654
 import open_210_channel_210_off_singlet_census_v20 as census210
+import open_210_channel_210_off_singlet_sm_quantum_numbers_v20 as census210qn
 import open_210_channel_45_off_singlet_census_v20 as census45
+import open_210_channel_45_off_singlet_sm_quantum_numbers_v20 as census45qn
 import open_210_channel_54_off_singlet_census_v20 as census54
 import open_210_channel_54_off_singlet_sm_quantum_numbers_v20 as census54qn
 import promote_paw_split_reduced_amplitudes_v20 as paw
@@ -104,6 +106,13 @@ def build_ready_operator_table() -> list[dict[str, Any]]:
             "note": "Diagnostic seed; mode CG OPEN",
         },
         {
+            "id": "OFF_SINGLET_45_SM_QN",
+            "projection_status": "CENSUS_ONLY",
+            "source_module": "open_210_channel_45_off_singlet_sm_quantum_numbers_v20",
+            "source_fn": "build_report",
+            "note": "Cartan/sector labels on (Φ⊗δΦ)_45; mode CG OPEN",
+        },
+        {
             "id": "OFF_SINGLET_54_CENSUS",
             "projection_status": "CENSUS_ONLY",
             "source_module": "open_210_channel_54_off_singlet_census_v20",
@@ -123,6 +132,13 @@ def build_ready_operator_table() -> list[dict[str, Any]]:
             "source_module": "open_210_channel_210_off_singlet_census_v20",
             "source_fn": "build_report",
             "note": "Published self-map Ξ; mode CG OPEN",
+        },
+        {
+            "id": "OFF_SINGLET_210_SM_QN",
+            "projection_status": "CENSUS_ONLY",
+            "source_module": "open_210_channel_210_off_singlet_sm_quantum_numbers_v20",
+            "source_fn": "build_report",
+            "note": "Cartan/sector labels on Ξ(Φ,δΦ)_210; mode CG OPEN",
         },
         {
             "id": "OPEN_126_54_LOCKING_HERMITIAN_CENSUS",
@@ -239,9 +255,11 @@ def build_report() -> dict[str, Any]:
 
     ring_present = RING_JSON.is_file()
     c45 = census45.build_report()
+    c45qn = census45qn.build_report()
     c54 = census54.build_report()
     c54qn = census54qn.build_report()
     c210 = census210.build_report()
+    c210qn = census210qn.build_report()
     c12654 = census12654.build_report()
     bfb = build_ready_subspace_bfb()
 
@@ -269,9 +287,11 @@ def build_report() -> dict[str, Any]:
             "PROMOTED_S_PHI17_ISOTROPIC_RESIDUAL" in residual_ids
         ),
         "off_singlet_45_census_ready": c45.get("n_failed", 1) == 0,
+        "off_singlet_45_sm_qn_ready": c45qn.get("n_failed", 1) == 0,
         "off_singlet_54_census_ready": c54.get("n_failed", 1) == 0,
         "off_singlet_54_sm_qn_ready": c54qn.get("n_failed", 1) == 0,
         "off_singlet_210_census_ready": c210.get("n_failed", 1) == 0,
+        "off_singlet_210_sm_qn_ready": c210qn.get("n_failed", 1) == 0,
         "open_126_54_locking_hermitian_census_ready": c12654.get("n_failed", 1)
         == 0,
         "ready_subspace_bfb_green": bfb["ready_subspace_bfb_green"],
@@ -299,6 +319,10 @@ def build_report() -> dict[str, Any]:
             "45": {
                 "status": c45.get("status"),
                 "n_nonzero": c45.get("census", {}).get("n_nonzero_modes"),
+                "sm_qn_status": c45qn.get("status"),
+                "sm_qn_buckets": c45qn.get("quantum_numbers", {}).get(
+                    "bucket_counts"
+                ),
             },
             "54": {
                 "status": c54.get("status"),
@@ -313,6 +337,10 @@ def build_report() -> dict[str, Any]:
                 "n_nonzero": c210.get("census", {}).get("n_nonzero_modes"),
                 "seed_GeV2": c210.get("diagnostic_seed", {}).get(
                     "OPEN_210_CHANNEL_210_OFF_SINGLET_seed_GeV2"
+                ),
+                "sm_qn_status": c210qn.get("status"),
+                "sm_qn_buckets": c210qn.get("quantum_numbers", {}).get(
+                    "bucket_counts"
                 ),
             },
             "126_54_locking": {
@@ -355,7 +383,8 @@ def build_report() -> dict[str, Any]:
         "verdict": (
             "FULL_TENSOR_PROJECTED_POTENTIAL scaffold PARTIAL: READY subspace "
             f"({len(ready_ids)} ops) BFB green via composed certificates; "
-            "off-singlet 45/54/210 and OPEN_126_54_LOCKING censuses ready; "
+            "off-singlet 45/54/210 censuses + SM Cartan QN and "
+            "OPEN_126_54_LOCKING censuses ready; "
             "120/320/1050/4125 and S/Φ₁₇ linear CG remain OPEN. G2 not closed. "
             "Theory remains BLOCKED."
         ),

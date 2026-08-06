@@ -55,6 +55,12 @@ class Diagonal210RadialCubicPsSingletTests(unittest.TestCase):
         self.assertTrue(self.report["channel_45"]["symmetric_source_reopened"])
         self.assertTrue(self.report["remaining_blockers"]["symmetric_45_quartic_in_potential"])
         self.assertTrue(self.report["flags"]["open_210_channel_210_ps_singlet_seed"])
+        self.assertTrue(self.report["flags"]["open_210_channel_210_off_singlet_sm_qn"])
+        self.assertEqual(
+            self.report["filled_slots"]["OPEN_210_CHANNEL_210"]["status"],
+            "PARTIAL_SM_QUANTUM_NUMBERS_READY",
+        )
+        self.assertIn("bucket_counts", self.report["channel_210"])
         self.assertIn("bucket_counts", self.report["channel_45_off_singlet"])
 
 

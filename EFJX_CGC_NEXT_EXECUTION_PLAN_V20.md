@@ -326,6 +326,11 @@ Empirically all are Q-charged; most mixed/cross. Status
 `PARTIAL_SM_QUANTUM_NUMBERS_READY`; mode CG OPEN. Wired into
 `diagonal_210` / FULL_TENSOR scaffold as CENSUS_ONLY.
 
+`open_210_channel_210_off_singlet_sm_quantum_numbers_v20.py` labels all 207
+Ξ(Φ,δΦ)_210 images via ∧⁴ so6/so4/cross combo weights and so(10) Cartan
+action on four-forms. Empirically all Q-charged and cross-sector dominant.
+Status `PARTIAL_SM_QUANTUM_NUMBERS_READY`; mode CG OPEN.
+
 `technically_natural_hierarchy_soft_matching_v20.py` quantifies
 `hEW/M_I`, `|δm²|/M_I²`, and matched `M_{1/2}` vs `|κ|M_I` at physical
 hEW (full stationarity / unique κ remain OPEN).
@@ -333,12 +338,12 @@ hEW (full stationarity / unique κ remain OPEN).
 ## Correct next goal
 
 **Immediate:** G2 still needs transcribed CG for 120/320/1050/4125 (external
-published tables only — do **not** invent). Off-singlet 45/54 Cartan labels
-are READY; mode-by-mode SM-irrep CG coeffs remain OPEN. Until external CG
-tables exist, only published-projector PARTIAL slots remain fillable.
-`OPEN_126_54_LOCKING` ΣΣ Hessian is indefinite (not PD Schur C). S/Φ₁₇
-isotropic residual stays. Pure-210 identity CLOSED; mixed G1/G2 OPEN. Do
-**not** claim whole-model validation.
+published tables only — do **not** invent). Off-singlet 45/54/210 Cartan
+labels are READY; mode-by-mode SM-irrep CG coeffs remain OPEN. Without
+external CG tables, published-projector PARTIAL inventory for these
+channels is exhausted. `OPEN_126_54_LOCKING` ΣΣ Hessian is indefinite
+(not PD Schur C). S/Φ₁₇ isotropic residual stays. Pure-210 identity CLOSED;
+mixed G1/G2 OPEN. Do **not** claim whole-model validation.
 
 Theory completion still requires transcribed CG for 120/320/1050/4125 and
 off-singlet mixed-45 **CG coefficients** (G1), mode-by-mode diagonals (G2),

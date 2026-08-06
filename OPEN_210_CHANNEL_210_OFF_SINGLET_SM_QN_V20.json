@@ -1,0 +1,80 @@
+{
+  "status": "OPEN_210_CHANNEL_210_OFF_SINGLET_SM_QN_READY__CG_OPEN",
+  "overall_state": "BLOCKED",
+  "n_checks": 9,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "off_singlet_frame_207": true,
+    "all_nonzero_modes_labeled": true,
+    "vacuum_self_210_nontrivial": true,
+    "buckets_nonempty": true,
+    "cartan_activities_finite": true,
+    "q_activity_span_recorded": true,
+    "cg_not_invented": true,
+    "full_sm_irrep_cg_not_claimed": true,
+    "whole_model_not_overclaimed": true
+  },
+  "conventions": {
+    "cartans": {
+      "H0": "i M_01",
+      "H1": "i M_23",
+      "H2": "i M_45",
+      "H3": "i M_67",
+      "H4": "i M_89"
+    },
+    "Q_em": "T3_L + T3_R = -i M_67",
+    "Q_neutral_tol": 0.15,
+    "dominant_sector_frac": 0.55,
+    "representation": "so(10) action on \u2227\u2074 \u2245 210 (combo basis)",
+    "note": "Labels from \u2227\u2074 Cartan activity + so6/so4/cross L2 on combo coeffs; not Young-tableau CG multiplicities."
+  },
+  "inventory_slot": {
+    "id": "OPEN_210_CHANNEL_210",
+    "status": "PARTIAL_SM_QUANTUM_NUMBERS_READY",
+    "mode_by_mode_cg": false
+  },
+  "selected_vacuum": {
+    "vevs_GeV": {
+      "p": 1983512959779626.5,
+      "a": 2975269439669439.5,
+      "omega": 4958782399449066.0
+    },
+    "phi_norm": 6113597532167986.0,
+    "self_210_frobenius": 5.537979431087037e+62
+  },
+  "quantum_numbers": {
+    "n_modes_labeled": 207,
+    "n_Q_neutral": 0,
+    "n_Q_charged": 207,
+    "dominant_sector_counts": {
+      "so6_so4_cross": 207
+    },
+    "bucket_counts": {
+      "so6_so4_cross__Qcharged": 207
+    },
+    "mean_cartan_adjoint_activity": {
+      "H0": 0.776918812023926,
+      "H1": 0.7760669902079219,
+      "H2": 0.7769819997638572,
+      "H3": 0.7812913740696091,
+      "H4": 0.7813058245329744,
+      "Q_em": 0.7812913740696091
+    },
+    "Q_em_activity_min": 0.5921685967690652,
+    "Q_em_activity_max": 0.9083115188671467
+  },
+  "flags": {
+    "off_singlet_210_sm_qn_ready": true,
+    "off_singlet_210_mode_cg": false,
+    "cg_120_320_1050_4125_invented": false,
+    "whole_model_validated": false,
+    "whole_model_excluded": false
+  },
+  "remaining_blockers": {
+    "off_singlet_210_sm_irrep_cg_coeffs": true,
+    "missing_cg_120_320_1050_4125": true,
+    "full_nonsusy_vacuum_hessian": true
+  },
+  "verdict": "Off-singlet mixed-210 SM Cartan labels: 207/207 modes classified; Q-neutral=0, Q-charged=207; dominant sectors {'so6_so4_cross': 207}. Mode-by-mode CG coefficients remain OPEN. Theory remains BLOCKED."
+}

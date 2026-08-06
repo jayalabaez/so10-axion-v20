@@ -41,6 +41,8 @@ class FullTensorProjectedPotentialScaffoldTests(unittest.TestCase):
             self.report["off_singlet_censuses"]["210"]["n_nonzero"], 207
         )
         self.assertTrue(self.report["checks"]["off_singlet_54_sm_qn_ready"])
+        self.assertTrue(self.report["checks"]["off_singlet_210_sm_qn_ready"])
+        self.assertTrue(self.report["checks"]["off_singlet_45_sm_qn_ready"])
         self.assertTrue(
             self.report["checks"]["open_126_54_locking_hermitian_census_ready"]
         )
