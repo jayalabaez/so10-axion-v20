@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
-"""Executable audit explaining why PR #155 did not close G2.
+"""Executable audit showing why merged PR #155 did not close G2.
 
-The audit reproduces four concrete defects in the superseded assembler:
+The certificate reproduces six independent defects or scope failures:
 
-1. H--Sigma singlet quartic used ||Sigma|| instead of ||Sigma||^2.
-2. Phi Sigma-dag Sigma cubic used the wrong conjugation order.
-3. A one-component Sigma finite-difference perturbation leaves the physical
-   -i Hodge eigenspace.
-4. An 8-coordinate species probe is not a 486-real gradient/Hessian.
-
-It also records the Phi^2 Hdag Sigma orientation correction, whose canonical
-source is the conjugate of the +i H Sigma-dag projector family.
+1. H--Sigma used ||Sigma|| instead of the polynomial ||Sigma||^2.
+2. Phi Sigma-dag Sigma used the wrong conjugation order.
+3. A one-component Sigma perturbation left the physical -i Hodge space.
+4. The Phi^2 Hdag Sigma orientation must be the complex conjugate of the
+   canonical +i Phi^2 H Sigma-dag source in both 210 and 1050 channels.
+5. Six graph contractions cannot be directly relabelled as the named pure
+   1,45,210,770,5940,8910 projector basis.
+6. An eight-coordinate probe is not the complete 486-real gradient/Hessian.
 """
 from __future__ import annotations
 
@@ -32,6 +32,7 @@ OUT_MD = ROOT / "LIVE_G2_PR155_CORRECTION_AUDIT_V20.md"
 
 def build_report() -> dict[str, Any]:
     state = corrected.deterministic_state(155)
+
     scaled_sigma = direct.scale_form(state.sigma, 2.3)
     sigma_norm = direct.sigma_kinetic_norm(scaled_sigma)
     sigma_norm_squared = float(
@@ -64,10 +65,11 @@ def build_report() -> dict[str, Any]:
         )
     )
 
-    complete_dimension = 210 + 20 + 252 + 2 + 2
-    complete_symmetric_hessian_entries = (
-        complete_dimension * (complete_dimension + 1) // 2
-    )
+    orientation = corrected.phi2_hdag_sigma_orientation_audit(state)
+    basis_audit = corrected.graph_projector_basis_audit(state)
+
+    complete_dimension = corrected.REAL_FIELD_DIMENSION
+    complete_symmetric_hessian_entries = corrected.SYMMETRIC_HESSIAN_ENTRIES
     historical_probe_dimension = 8
 
     checks = {
@@ -85,23 +87,28 @@ def build_report() -> dict[str, Any]:
         ),
         "physical_sigma_starts_in_minus_i_space": physical_chirality < 1.0e-12,
         "single_component_sigma_probe_leaves_chiral_space": chirality_leak > 1.0e-8,
+        "Phi2_Hdag_Sigma_conjugate_orientation_reconstructed": orientation[
+            "maximum_conjugation_residual"
+        ]
+        < 1.0e-11,
+        "graph_contractions_not_direct_projector_labels": not basis_audit[
+            "direct_graph_to_projector_relabeling_valid"
+        ],
         "complete_field_dimension_is_486": complete_dimension == 486,
         "historical_probe_is_only_eight_dimensional": historical_probe_dimension == 8,
-        "historical_probe_not_complete_gradient": (
-            historical_probe_dimension < complete_dimension
-        ),
+        "historical_probe_not_complete_gradient": historical_probe_dimension
+        < complete_dimension,
         "historical_probe_not_complete_Hessian": (
             historical_probe_dimension * (historical_probe_dimension + 1) // 2
             < complete_symmetric_hessian_entries
         ),
-        "Phi2_Hdag_Sigma_requires_conjugate_projector_orientation": True,
         "G2_closure_withdrawn": True,
         "whole_model_not_validated": True,
     }
     failures = [name for name, passed in checks.items() if not passed]
     return {
         "status": (
-            "PR155_G2_CLOSURE_FALSIFIED__VALUE_LAYER_RETAINED"
+            "PR155_G2_CLOSURE_FALSIFIED__CORRECTED_VALUE_LAYER_RETAINED"
             if not failures
             else "PR155_CORRECTION_AUDIT_FAILED"
         ),
@@ -130,11 +137,15 @@ def build_report() -> dict[str, Any]:
             "physical_residual": physical_chirality,
             "single_component_probe_residual": chirality_leak,
         },
+        "Phi2_Hdag_Sigma_orientation": orientation,
+        "Phi2_Sigma_basis": basis_audit,
         "derivative_scope": {
             "historical_probe_dimension": historical_probe_dimension,
             "complete_real_field_dimension": complete_dimension,
             "historical_symmetric_Hessian_entries": 36,
-            "complete_symmetric_Hessian_entries": complete_symmetric_hessian_entries,
+            "complete_symmetric_Hessian_entries": (
+                complete_symmetric_hessian_entries
+            ),
         },
         "flags": {
             "PR155_G2_closed_claim_rejected": not failures,
@@ -146,10 +157,10 @@ def build_report() -> dict[str, Any]:
             "empirical_discovery": False,
         },
         "verdict": (
-            "PR #155 did not close G2. Its 64-direction catalogue is useful, "
-            "but the corrected value layer must replace three tensor formulas, "
-            "preserve physical 126bar chirality, and remain PARTIAL until the "
-            "complete 486-real gradient and Hessian are constructed."
+            "PR #155 did not close G2. The corrected arbitrary-field value layer "
+            "retains the useful 64-direction catalogue while fixing polynomial "
+            "degree, conjugation, chirality, orientation, and basis contracts. "
+            "G2 remains PARTIAL until the complete 486-real gradient and Hessian exist."
         ),
     }
 
@@ -160,7 +171,9 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     report = build_report()
     if args.write:
-        OUT_JSON.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+        OUT_JSON.write_text(
+            json.dumps(report, indent=2) + "\n", encoding="utf-8"
+        )
         OUT_MD.write_text(
             "# PR #155 G2 correction audit\n\n"
             f"**Status:** `{report['status']}`\n\n"

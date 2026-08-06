@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Regression tests for the live 64-direction arbitrary-field G2 compiler."""
+"""Regression tests for the hardened all-64 G2 value compiler."""
 from __future__ import annotations
 
 import numpy as np
@@ -24,10 +24,12 @@ def test_full_report_passes_fail_closed():
     assert all(report["checks"].values())
     assert report["flags"]["all_64_arbitrary_component_values_callable"]
     assert report["flags"]["real_Hermitian_potential_assembled"]
+    assert report["flags"]["real_210_field_enforced"]
     assert report["flags"]["field_gradient_complete"] is False
     assert report["flags"]["field_Hessian_complete"] is False
     assert report["flags"]["G2_closed"] is False
     assert report["flags"]["whole_model_validated"] is False
+    assert "486-real" in report["next_exact_target"]
 
 
 def test_exact_counts_and_unique_ids(directions):
@@ -38,6 +40,8 @@ def test_exact_counts_and_unique_ids(directions):
     assert len(parameters) == 91
     assert len({row.parameter_id for row in parameters}) == 91
     assert len(mod.coefficient_jacobian(directions)) == 91
+    assert mod.REAL_FIELD_DIMENSION == 486
+    assert mod.SYMMETRIC_HESSIAN_ENTRIES == 118341
 
 
 def test_all_18_base_families_are_used(directions):
@@ -47,9 +51,7 @@ def test_all_18_base_families_are_used(directions):
 
 
 def test_self_conjugate_directions_are_real(directions):
-    residual = max(
-        abs(row.value.imag) for row in directions if row.self_conjugate
-    )
+    residual = max(abs(row.value.imag) for row in directions if row.self_conjugate)
     assert residual < 1.0e-9
 
 
@@ -101,3 +103,33 @@ def test_chiral_sigma_orientation_is_enforced(state):
     )
     with pytest.raises(ValueError):
         bad.validated()
+
+
+def test_real_phi_contract_is_enforced(state):
+    phi = dict(state.phi)
+    key = next(iter(phi))
+    phi[key] = complex(phi[key]) + 1.0e-4j
+    bad = mod.FieldState(
+        phi=phi,
+        h=state.h,
+        sigma=state.sigma,
+        s=state.s,
+        x=state.x,
+    )
+    with pytest.raises(ValueError):
+        bad.validated()
+
+
+def test_phi2_hdag_sigma_is_conjugate_of_source_orientation(state):
+    audit = mod.phi2_hdag_sigma_orientation_audit(state)
+    assert audit["source_orientation"] == "Phi2_H_SigmaDag"
+    assert audit["ledger_orientation"] == "Phi2_Hdag_Sigma"
+    assert audit["maximum_conjugation_residual"] < 1.0e-11
+
+
+def test_graph_basis_is_not_directly_relabelled_as_pure_projectors(state):
+    audit = mod.graph_projector_basis_audit(state)
+    assert audit["graph_basis_dimension"] == 6
+    assert audit["pure_projector_basis_dimension"] == 6
+    assert audit["direct_relabeling_residual"] > 1.0e-10
+    assert audit["direct_graph_to_projector_relabeling_valid"] is False
