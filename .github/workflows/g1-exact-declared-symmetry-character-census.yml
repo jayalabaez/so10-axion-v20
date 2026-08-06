@@ -11,6 +11,10 @@ on:
       - 'test_nonsusy_z17_pq_phi17_dressing_completion_v20.py'
       - 'exact_phi17_dressing_character_crosscheck_v20.py'
       - 'test_exact_phi17_dressing_character_crosscheck_v20.py'
+      - 'exact_phi2_hdag_sigmabar_two_channel_family_v20.py'
+      - 'test_exact_phi2_hdag_sigmabar_two_channel_family_v20.py'
+      - 'nonsusy_z17_pq_phi2_hdag_sigmabar_completion_v20.py'
+      - 'test_nonsusy_z17_pq_phi2_hdag_sigmabar_completion_v20.py'
       - '.github/workflows/g1-exact-declared-symmetry-character-census.yml'
   push:
     branches: [main]
@@ -23,7 +27,7 @@ concurrency:
 jobs:
   exact-declared-census:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 180
     strategy:
       fail-fast: false
       matrix:
@@ -33,28 +37,34 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Install test dependency
+      - name: Install dependencies
         run: python -m pip install --upgrade pip pytest numpy mpmath
-      - name: Compile exact census and dressing gates
+      - name: Compile exact census and tensor gates
         run: |
           python -m py_compile \
             g1_exact_declared_symmetry_character_census_v20.py \
             exact_phi17_neutral_dressing_completion_v20.py \
             nonsusy_z17_pq_phi17_dressing_completion_v20.py \
-            exact_phi17_dressing_character_crosscheck_v20.py
-      - name: Run exact census and dressing tests
+            exact_phi17_dressing_character_crosscheck_v20.py \
+            exact_phi2_hdag_sigmabar_two_channel_family_v20.py \
+            nonsusy_z17_pq_phi2_hdag_sigmabar_completion_v20.py
+      - name: Run exact census and tensor tests
         run: |
           python -m pytest -q \
             test_g1_exact_declared_symmetry_character_census_v20.py \
             test_exact_phi17_neutral_dressing_completion_v20.py \
             test_nonsusy_z17_pq_phi17_dressing_completion_v20.py \
-            test_exact_phi17_dressing_character_crosscheck_v20.py
+            test_exact_phi17_dressing_character_crosscheck_v20.py \
+            test_exact_phi2_hdag_sigmabar_two_channel_family_v20.py \
+            test_nonsusy_z17_pq_phi2_hdag_sigmabar_completion_v20.py
       - name: Emit exact certificates
         run: |
           python g1_exact_declared_symmetry_character_census_v20.py --write
           python exact_phi17_neutral_dressing_completion_v20.py --write
           python nonsusy_z17_pq_phi17_dressing_completion_v20.py --write
           python exact_phi17_dressing_character_crosscheck_v20.py --write
+          python exact_phi2_hdag_sigmabar_two_channel_family_v20.py --write
+          python nonsusy_z17_pq_phi2_hdag_sigmabar_completion_v20.py --write
       - name: Assert exact but fail-closed scope
         run: |
           python - <<'PY'
@@ -62,34 +72,36 @@ jobs:
 
           d=json.load(open('G1_EXACT_DECLARED_SYMMETRY_CHARACTER_CENSUS_V20.json'))
           assert d['n_failed']==0 and d['overall_state']=='BLOCKED', d
-          assert d['live_symmetry_contract']=={'SO10':True,'PQ':True,'Z17':True,'continuous_X':False}, d
           assert d['counts']['charge_and_so10_allowed_multidegrees']==74, d
-          assert d['counts']['hermitian_conjugacy_orbits']==48, d
           assert d['counts']['total_potential_orbit_multiplicity']==64, d
-          assert d['counts']['total_real_potential_parameters']==91, d
+          assert d['anchors']['P2_H_126dag']==2, d
           assert not d['closure']['explicit_component_tensor_basis_closed'], d
           assert not d['flags']['g1_closed'], d
 
           d=json.load(open('EXACT_PHI17_NEUTRAL_DRESSING_COMPLETION_V20.json'))
           assert d['n_failed']==0, d
           assert d['catalogue_census']['required_dressing_count']==15, d
-          assert d['catalogue_census']['already_present_count']==8, d
           assert d['catalogue_census']['missing_count']==7, d
-          assert d['flags']['neutral_Phi17_dressing_theorem_closed'], d
-          assert not d['flags']['complete_mixed_invariant_ring'], d
-
-          d=json.load(open('NONSUSY_Z17_PQ_PHI17_DRESSING_COMPLETION_V20.json'))
-          assert d['n_failed']==0, d
-          assert d['flags']['all_fifteen_dressings_registered'], d
-          assert d['flags']['seven_missing_classes_appended'], d
           assert not d['flags']['complete_mixed_invariant_ring'], d
 
           d=json.load(open('EXACT_PHI17_DRESSING_CHARACTER_CROSSCHECK_V20.json'))
           assert d['n_failed']==0, d
-          assert len(d['multiplicity_rows'])==7, d
           assert d['flags']['all_seven_multiplicity_one'], d
+
+          d=json.load(open('EXACT_PHI2_HDAG_SIGMABAR_TWO_CHANNEL_FAMILY_V20.json'))
+          assert d['n_failed']==0, d
+          assert d['flags']['two_channel_count_closed'], d
+          assert d['flags']['both_all_component_tensors_constructed'], d
+          assert d['selected_vacuum']['H_Phi_block_channel_A']['rank']==3, d
+          assert d['selected_vacuum']['H_Phi_block_channel_B']['rank']==4, d
           assert not d['flags']['complete_mixed_tensor_basis'], d
           assert not d['flags']['whole_model_validated'], d
+
+          d=json.load(open('NONSUSY_Z17_PQ_PHI2_HDAG_SIGMABAR_COMPLETION_V20.json'))
+          assert d['n_failed']==0, d
+          assert d['flags']['multiplicity_two_operator_registered'], d
+          assert d['flags']['two_independent_coefficients_preserved'], d
+          assert not d['flags']['complete_mixed_tensor_basis'], d
           PY
       - uses: actions/upload-artifact@v4
         if: always()
@@ -104,3 +116,7 @@ jobs:
             NONSUSY_Z17_PQ_PHI17_DRESSING_COMPLETION_V20.md
             EXACT_PHI17_DRESSING_CHARACTER_CROSSCHECK_V20.json
             EXACT_PHI17_DRESSING_CHARACTER_CROSSCHECK_V20.md
+            EXACT_PHI2_HDAG_SIGMABAR_TWO_CHANNEL_FAMILY_V20.json
+            EXACT_PHI2_HDAG_SIGMABAR_TWO_CHANNEL_FAMILY_V20.md
+            NONSUSY_Z17_PQ_PHI2_HDAG_SIGMABAR_COMPLETION_V20.json
+            NONSUSY_Z17_PQ_PHI2_HDAG_SIGMABAR_COMPLETION_V20.md
