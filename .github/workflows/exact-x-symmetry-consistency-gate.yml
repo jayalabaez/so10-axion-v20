@@ -1,0 +1,54 @@
+name: exact-x-symmetry-consistency-gate
+
+on:
+  push:
+    branches:
+      - agent/x-symmetry-consistency-gate
+  pull_request:
+    paths:
+      - exact_x_symmetry_consistency_gate_v20.py
+      - test_exact_x_symmetry_consistency_gate_v20.py
+      - models/SO10Z17AxionV20.m
+      - nonsusy_z17_pq_potential_filter_v20.py
+      - .github/workflows/exact-x-symmetry-consistency-gate.yml
+  workflow_dispatch:
+
+jobs:
+  exact-x-symmetry-consistency-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install test dependency
+        run: python -m pip install pytest
+      - name: Compile gate
+        run: python -m py_compile exact_x_symmetry_consistency_gate_v20.py test_exact_x_symmetry_consistency_gate_v20.py
+      - name: Run symmetry-contract tests
+        run: python -m pytest -q test_exact_x_symmetry_consistency_gate_v20.py
+      - name: Generate certificate
+        run: python exact_x_symmetry_consistency_gate_v20.py > /tmp/exact-x-symmetry.log
+      - name: Assert mismatch and fail-closed scope
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path('EXACT_X_SYMMETRY_CONSISTENCY_GATE_V20.json').read_text())
+          assert report['n_failed'] == 0, report['failures']
+          assert report['declared_symmetries']['u1x_gauged'] is False
+          assert report['declared_symmetries']['x_declared_global'] is False
+          assert report['signed_filter_contract']['requires_exact_x_neutrality_by_default'] is True
+          assert report['phase_sensitive_count'] > 0
+          assert report['dimension17_candidate']['breaks_continuous_X_by_units'] == 289.0
+          assert report['dimension17_candidate']['breaks_PQ'] is False
+          assert report['flag']['complete_multifield_model'] is False
+          assert report['flag']['whole_model_validated'] is False
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: exact-x-symmetry-consistency-gate
+          path: |
+            EXACT_X_SYMMETRY_CONSISTENCY_GATE_V20.json
+            EXACT_X_SYMMETRY_CONSISTENCY_GATE_V20.md
