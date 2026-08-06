@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
-"""Superseding live G1-G8 ledger after exact closure of G1 and G2.
+"""Superseding live G1-G8 ledger after exact G1 closure and G2 audit.
 
-The historical g1_g8_gate_ledger_v20 remains useful for its downstream source
-contracts, but its G1/G2 entries predate the live SO(10)+PQ+Z17 character census,
-the completed 64-direction tensor ledger, and the assembled component potential.
-This module imports that downstream evidence and replaces G1 and G2.  G3-G8
-remain fail-closed.
+The live SO(10)+PQ+Z17 tensor ring is closed at G1. A first G2 assembler was
+merged in PR #155, but audit found that it mixed tensor bases/conjugations and
+used ||Sigma|| where the polynomial invariant requires ||Sigma||^2. Its
+8-coordinate finite-difference probe was also not the complete 486-real field
+gradient/Hessian. That assembler is therefore removed and G2 is restored to
+PARTIAL until the corrected arbitrary-field value compiler and the complete
+field-coordinate derivatives pass executable verification.
 """
 from __future__ import annotations
 
@@ -17,7 +19,6 @@ from typing import Any
 
 import g1_g8_gate_ledger_v20 as historical
 import live_g1_tensor_closure_ledger_v20 as g1
-import live_g2_component_potential_v20 as g2
 
 ROOT = Path(__file__).resolve().parent
 OUT_JSON = ROOT / "LIVE_G1_G8_GATE_LEDGER_V20.json"
@@ -27,7 +28,6 @@ OUT_MD = ROOT / "LIVE_G1_G8_GATE_LEDGER_V20.md"
 def build_report() -> dict[str, Any]:
     historical_report = historical.build_report()
     g1_report = g1.build_report()
-    g2_report = g2.build_report()
     gates = copy.deepcopy(historical_report["gates"])
     gates["G1"] = {
         "title": "Invariant ring and component Clebsch tensors",
@@ -53,22 +53,31 @@ def build_report() -> dict[str, Any]:
     }
     gates["G2"] = {
         "title": "Fully projected non-SUSY component potential",
-        "status": historical.STATUS_CLOSED,
+        "status": historical.STATUS_PARTIAL,
         "closed_scope": [
-            "all 64 G1 directions assembled into one numerical potential",
-            "91-parameter real coupling layout with Hermitian completion",
-            "complete operator-provenance map for every direction",
-            "stratified finite-difference gradient and Hessian probes",
+            "all 64 normalized tensor directions identified at G1",
+            "91-real-parameter Hermitian coupling schema determined by conjugacy",
+            "selected-vacuum projections and several exact Hessian subblocks",
         ],
-        "open_scope": [],
-        "corrections": {
-            "selected_projectors_are_complete_potential": False,
-            "live_assembled_directions": 64,
-            "live_real_couplings": 91,
+        "open_scope": [
+            "verified arbitrary-component value compiler for all 64 directions",
+            "one canonical 486-real field-coordinate chart",
+            "complete 486-component gradient with per-operator provenance",
+            "complete 486x486 Hessian with direct reconstruction tests",
+            "hosted execution of the corrected G2 suite",
+        ],
+        "audit_corrections": {
+            "PR155_G2_closure_valid": False,
+            "sigma_norm_must_be_quadratic": True,
+            "Phi2_Sigma_basis_must_match_pure_projector_labels": True,
+            "Phi_Sigma_dag_Sigma_conjugation_must_use_canonical_inner_product": True,
+            "Phi2_Hdag_Sigma_must_use_physical_chirality_and_conjugate_orientation": True,
+            "eight_coordinate_probe_is_complete_486_real_gradient_Hessian": False,
+            "full_real_field_dimension": 486,
         },
         "closure_route_defined": True,
         "current_runner_can_close_without_G1": False,
-        "closure_source": "live_g2_component_potential_v20.py",
+        "closure_source": "corrected arbitrary-field compiler pending verification",
     }
 
     statuses = {name: row["status"] for name, row in gates.items()}
@@ -80,20 +89,23 @@ def build_report() -> dict[str, Any]:
     checks = {
         "historical_downstream_ledger_executes": historical_report.get("n_failed", 1) == 0,
         "live_G1_ledger_executes": g1_report.get("n_failed", 1) == 0,
-        "live_G2_assembler_executes": g2_report.get("n_failed", 1) == 0,
         "all_eight_gates_present": set(gates) == {f"G{i}" for i in range(1, 9)},
         "G1_is_closed": gates["G1"]["status"] == historical.STATUS_CLOSED,
-        "G2_is_closed": gates["G2"]["status"] == historical.STATUS_CLOSED,
+        "G2_is_restored_to_partial": gates["G2"]["status"] == historical.STATUS_PARTIAL,
         "G1_has_64_explicit_directions": gates["G1"]["corrections"][
             "live_independent_invariant_coefficients"
         ]
         == 64
         and gates["G1"]["corrections"]["all_live_tensor_directions_explicit"],
+        "G2_audit_records_486_real_fields": gates["G2"]["audit_corrections"][
+            "full_real_field_dimension"
+        ]
+        == 486,
         "G7_remains_open": gates["G7"]["status"] == historical.STATUS_OPEN,
-        "only_G1_and_G2_are_closed": closed == ["G1", "G2"],
+        "only_G1_is_closed": closed == ["G1"],
         "no_downstream_gate_promoted": all(
             gates[name]["status"] != historical.STATUS_CLOSED
-            for name in ("G3", "G4", "G5", "G6", "G7", "G8")
+            for name in ("G2", "G3", "G4", "G5", "G6", "G7", "G8")
         ),
         "whole_model_not_overclaimed": True,
     }
@@ -101,7 +113,7 @@ def build_report() -> dict[str, Any]:
     failures = [name for name, passed in checks.items() if not passed]
     return {
         "status": (
-            "LIVE_G1_G8_LEDGER_VERIFIED__G1_G2_CLOSED__MODEL_BLOCKED"
+            "LIVE_G1_G8_LEDGER_VERIFIED__G1_CLOSED__G2_AUDIT_PARTIAL__MODEL_BLOCKED"
             if not failures
             else "LIVE_G1_G8_LEDGER_INTEGRITY_FAILED"
         ),
@@ -134,13 +146,16 @@ def build_report() -> dict[str, Any]:
             {
                 "wave": 2,
                 "gates": ["G2"],
-                "status": "COMPLETE",
-                "deliverable": "Assemble all 64 directions into one component potential.",
+                "status": "ACTIVE",
+                "deliverable": (
+                    "Verify all 64 arbitrary-field values, then derive the complete "
+                    "486-real gradient and Hessian."
+                ),
             },
             {
                 "wave": 3,
                 "gates": ["G3", "G4", "G5"],
-                "status": "ACTIVE",
+                "status": "BLOCKED_BY_G2",
                 "deliverable": "Global vacuum, gauge quotient Hessian, and global BFB.",
             },
             {
@@ -164,20 +179,22 @@ def build_report() -> dict[str, Any]:
         ],
         "flags": {
             "g1_closed": not failures,
-            "g2_closed": not failures,
+            "g2_value_layer_candidate_available": False,
+            "g2_closed": False,
             "all_g1_g8_closed": False,
             "whole_model_validated": False,
             "whole_model_excluded": False,
             "empirical_discovery": False,
         },
         "next_exact_target": (
-            "G3: solve simultaneous all-component stationarity of the assembled "
-            "G2 potential and classify competing extrema."
+            "G2: execute the corrected 64-direction arbitrary-field compiler, then "
+            "construct the complete canonical 486-real gradient and Hessian."
         ),
         "verdict": (
-            "G1 and G2 are closed under the live declared symmetry contract. "
-            "G3-G8 remain open or partial, so the candidate theory is still blocked "
-            "and has not been validated or excluded."
+            "G1 remains closed. The merged G2 closure claim was invalidated by "
+            "explicit tensor, conjugation, polynomial-degree, and derivative-coverage "
+            "errors. G2 is PARTIAL again; G3-G8 remain open or partial, and the "
+            "candidate theory is not validated or excluded."
         ),
     }
 
