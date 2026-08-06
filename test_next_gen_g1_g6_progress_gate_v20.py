@@ -14,7 +14,7 @@ class NextGenG1G6ProgressGateTests(unittest.TestCase):
     def test_gate_executes(self) -> None:
         self.assertEqual(self.report["n_failed"], 0, self.report["failures"])
         self.assertEqual(self.report["overall_state"], "PARTIAL")
-        self.assertEqual(self.report["n_closed_subproblems"], 22)
+        self.assertEqual(self.report["n_closed_subproblems"], 26)
         self.assertTrue(all(self.report["closed_subproblems"].values()))
 
     def test_top_level_gates_remain_honest(self) -> None:
@@ -43,6 +43,14 @@ class NextGenG1G6ProgressGateTests(unittest.TestCase):
         self.assertEqual(channel54["Q54_126bardag126bar"], 0.0)
         self.assertEqual(channel54["PhiSigma_Hermitian_54_parameter"], "absent")
         self.assertEqual(channel54["HSigma_Hermitian_54_parameter"], "absent")
+        channel45 = structure["exact_Hermitian_45"]
+        self.assertEqual(channel45["T10_shift"], "+lambda_PhiH_45 k_color")
+        self.assertEqual(channel45["T10bar_shift"], "-lambda_PhiH_45 k_color")
+        self.assertEqual(channel45["t2_shift"], "+lambda_PhiSigma_45 k_color")
+        self.assertEqual(channel45["t2bar_shift"], "-lambda_PhiSigma_45 k_color")
+        self.assertEqual(channel45["t4bar_shift"], "-lambda_PhiSigma_45 k_color")
+        self.assertEqual(structure["PhiH_Hermitian_channels"], ["1", "45", "54"])
+        self.assertTrue(structure["PhiH_Hermitian_family_complete"])
         self.assertFalse(
             structure["legacy_symmetric_dimension_one_4x4_authoritative"]
         )
@@ -53,6 +61,8 @@ class NextGenG1G6ProgressGateTests(unittest.TestCase):
         self.assertTrue(flags["authoritative_next_gen_G1_G6_progress_gate"])
         self.assertTrue(flags["all_recorded_exact_subproblems_closed"])
         self.assertTrue(flags["shared_Hermitian_54_channel_closed"])
+        self.assertTrue(flags["shared_Hermitian_45_channel_closed"])
+        self.assertTrue(flags["PhiH_Hermitian_channel_family_complete"])
         self.assertFalse(flags["G1_closed"])
         self.assertFalse(flags["G6_closed"])
         self.assertFalse(flags["physical_triplet_spectrum_complete"])
