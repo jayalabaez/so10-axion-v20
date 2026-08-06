@@ -1,0 +1,51 @@
+name: exact-s-phi17-renormalizable-phase-gate
+
+on:
+  push:
+    branches:
+      - agent/complete-singlet-phase-gate
+  pull_request:
+    paths:
+      - exact_s_phi17_renormalizable_phase_gate_v20.py
+      - test_exact_s_phi17_renormalizable_phase_gate_v20.py
+      - .github/workflows/exact-s-phi17-renormalizable-phase-gate.yml
+  workflow_dispatch:
+
+jobs:
+  exact-s-phi17-renormalizable-phase-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt pytest
+      - name: Compile gate
+        run: python -m py_compile exact_s_phi17_renormalizable_phase_gate_v20.py test_exact_s_phi17_renormalizable_phase_gate_v20.py
+      - name: Run exact census and Hessian tests
+        run: python -m pytest -q test_exact_s_phi17_renormalizable_phase_gate_v20.py
+      - name: Generate certificate
+        run: python exact_s_phi17_renormalizable_phase_gate_v20.py > /tmp/exact-s-phi17.log
+      - name: Assert obstruction and fail-closed scope
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path('EXACT_S_PHI17_RENORMALIZABLE_PHASE_GATE_V20.json').read_text())
+          assert report['n_failed'] == 0, report['failures']
+          assert report['checks']['phi17_only_modulus_at_renormalizable_order'] is True
+          assert report['hessian']['phi17_phase_zero'] is True
+          assert report['theorem']['minimum_pure_phi17_phase_sensitive_power'] == 17
+          assert report['flag']['complete_10H_S_Phi17_potential'] is False
+          assert report['flag']['whole_model_validated'] is False
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: exact-s-phi17-renormalizable-phase-gate
+          path: |
+            EXACT_S_PHI17_RENORMALIZABLE_PHASE_GATE_V20.json
+            EXACT_S_PHI17_RENORMALIZABLE_PHASE_GATE_V20.md
