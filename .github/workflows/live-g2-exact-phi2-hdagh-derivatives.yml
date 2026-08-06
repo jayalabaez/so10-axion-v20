@@ -1,0 +1,106 @@
+name: live-g2-exact-phi2-hdagh-derivatives
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - live_g2_exact_phi2_hdagh_derivatives_v20.py
+      - test_live_g2_exact_phi2_hdagh_derivatives_v20.py
+      - exact_phi2_hdagh_channel_family_v20.py
+      - live_g2_exact_hsigma_hermitian_derivatives_v20.py
+      - live_g2_exact_quadratic_family_derivatives_v20.py
+      - live_g2_canonical_486_field_chart_v20.py
+      - live_g2_arbitrary_component_potential_values_v20.py
+      - .github/workflows/live-g2-exact-phi2-hdagh-derivatives.yml
+  push:
+    branches: [main]
+    paths:
+      - live_g2_exact_phi2_hdagh_derivatives_v20.py
+      - test_live_g2_exact_phi2_hdagh_derivatives_v20.py
+      - exact_phi2_hdagh_channel_family_v20.py
+      - live_g2_exact_hsigma_hermitian_derivatives_v20.py
+      - live_g2_exact_quadratic_family_derivatives_v20.py
+      - live_g2_canonical_486_field_chart_v20.py
+      - live_g2_arbitrary_component_potential_values_v20.py
+      - .github/workflows/live-g2-exact-phi2-hdagh-derivatives.yml
+
+concurrency:
+  group: live-g2-phi2-hdagh-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  exact-phi2-hdagh-derivatives:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt pytest
+      - name: Compile derivative stack
+        run: |
+          python -m py_compile \
+            live_g2_exact_quadratic_family_derivatives_v20.py \
+            live_g2_exact_hsigma_hermitian_derivatives_v20.py \
+            live_g2_exact_phi2_hdagh_derivatives_v20.py \
+            test_live_g2_exact_phi2_hdagh_derivatives_v20.py
+      - name: Run focused tests
+        run: |
+          python -m pytest -q \
+            test_live_g2_exact_hsigma_hermitian_derivatives_v20.py \
+            test_live_g2_exact_phi2_hdagh_derivatives_v20.py
+      - name: Generate exact Phi2-HdagH certificate
+        run: python live_g2_exact_phi2_hdagh_derivatives_v20.py --write
+      - name: Assert exact three-channel scope
+        run: |
+          python - <<'PY'
+          import json
+
+          report=json.load(open('LIVE_G2_EXACT_PHI2_HDAGH_DERIVATIVES_V20.json'))
+          assert report['n_failed']==0, report['failures']
+          assert report['coverage']['base_family']=='Phi2_HdagH_channels'
+          assert report['coverage']['base_family_count_closed_here']==1
+          assert report['coverage']['cumulative_base_family_count_with_parents']==12
+          assert report['coverage']['base_family_count_total']==18
+          assert report['coverage']['remaining_base_families']==6
+          assert report['coverage']['expected_direction_count']>0
+          assert report['coverage']['expected_direction_count']==report['coverage']['observed_direction_count']
+          assert report['coverage']['parameter_count_closed_here']>0
+          assert report['coverage']['basis_indices']==[0,1,2]
+          assert report['coverage']['basis_labels']==['1','45','54']
+          coefficient=report['coefficient_audit']
+          assert coefficient['interior_table_shape']==[10,210,120]
+          assert coefficient['channel45_nonzero_pair_count']>0
+          assert coefficient['channel45_pair_Hermiticity_residual']<1e-12
+          assert coefficient['channel45_pair_symmetry_residual']<1e-15
+          source=report['source_normalization_audit']
+          assert source['maximum_operator_residual']<1e-10
+          assert source['maximum_value_residual']<1e-10
+          assert report['maximum_dressed_value_residual']<1e-9
+          assert report['maximum_Hessian_asymmetry']<1e-10
+          assert report['maximum_self_conjugate_imaginary_residual']<1e-9
+          assert report['directional_reconstruction']['value_residual']<1e-8
+          assert report['directional_reconstruction']['first_residual']<2e-7
+          assert report['directional_reconstruction']['second_residual']<2e-6
+          assert report['flags']['Phi2_HdagH_1_derivatives_exact']
+          assert report['flags']['Phi2_HdagH_45_derivatives_exact']
+          assert report['flags']['Phi2_HdagH_54_derivatives_exact']
+          assert report['flags']['authoritative_Phi2_HdagH_adapter_closed']
+          assert report['flags']['cumulative_twelve_of_eighteen_base_adapters_closed']
+          assert not report['flags']['all_64_direction_gradients_complete']
+          assert not report['flags']['all_64_direction_Hessians_complete']
+          assert not report['flags']['G2_closed']
+          assert not report['flags']['whole_model_validated']
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-g2-exact-phi2-hdagh-derivatives
+          path: |
+            LIVE_G2_EXACT_PHI2_HDAGH_DERIVATIVES_V20.json
+            LIVE_G2_EXACT_PHI2_HDAGH_DERIVATIVES_V20.md
