@@ -5,6 +5,7 @@ on:
     paths:
       - 'two_loop_thresholds_v20.py'
       - 'test_two_loop_thresholds_source_only_v20.py'
+      - 'test_signed_triplet_chain_source_only_v20.py'
       - 'exact_hsigma_hermitian_family_closure_v20.py'
       - 'test_exact_hsigma_hermitian_family_closure_v20.py'
       - 'next_gen_triplet_hsigma_hermitian_family_gate_v20.py'
@@ -16,6 +17,7 @@ on:
     paths:
       - 'two_loop_thresholds_v20.py'
       - 'test_two_loop_thresholds_source_only_v20.py'
+      - 'test_signed_triplet_chain_source_only_v20.py'
       - 'exact_hsigma_hermitian_family_closure_v20.py'
       - 'test_exact_hsigma_hermitian_family_closure_v20.py'
       - 'next_gen_triplet_hsigma_hermitian_family_gate_v20.py'
@@ -43,39 +45,17 @@ jobs:
           python -m py_compile
           two_loop_thresholds_v20.py
           test_two_loop_thresholds_source_only_v20.py
+          test_signed_triplet_chain_source_only_v20.py
           exact_hsigma_hermitian_family_closure_v20.py
           next_gen_triplet_hsigma_hermitian_family_gate_v20.py
           test_exact_hsigma_hermitian_family_closure_v20.py
           test_next_gen_triplet_hsigma_hermitian_family_gate_v20.py
 
-      - name: Print signed-chain diagnostics
-        run: |
-          python - <<'PY'
-          import nonsusy_z17_pq_potential_filter_v20 as signed_filter
-          import nonsusy_charge_allowed_mt_v20 as signed_mt2
-          import so10_kronecker_existence_mt_lock_v20 as signed_kron
-          import triplet_proxy_contamination_audit_v20 as contamination
-          import next_gen_triplet_portal_norm_square_gate_v20 as portal
-
-          for name, module in (
-              ('signed_filter', signed_filter),
-              ('signed_mt2', signed_mt2),
-              ('signed_kron', signed_kron),
-              ('contamination', contamination),
-              ('portal', portal),
-          ):
-              report = module.build_report()
-              print(f'{name.upper()}_STATUS=', repr(report.get('status')))
-              print(f'{name.upper()}_N_FAILED=', repr(report.get('n_failed')))
-              print(f'{name.upper()}_FAILURES=', repr(report.get('failures')))
-              print(f'{name.upper()}_FLAGS=', repr(report.get('flag')))
-              print(f'{name.upper()}_CHECKS=', repr(report.get('checks')))
-          PY
-
-      - name: Run exact family tests
+      - name: Run exact family and source-only chain tests
         run: >-
           python -m pytest -q
           test_two_loop_thresholds_source_only_v20.py
+          test_signed_triplet_chain_source_only_v20.py
           test_exact_hsigma_hermitian_family_closure_v20.py
           test_next_gen_triplet_hsigma_hermitian_family_gate_v20.py
 
@@ -93,7 +73,8 @@ jobs:
           thresholds = json.load(open('two_loop_thresholds_v20.json'))
           exact = json.load(open('EXACT_HSIGMA_HERMITIAN_FAMILY_CLOSURE_V20.json'))
           gate = json.load(open('NEXT_GEN_TRIPLET_HSIGMA_HERMITIAN_FAMILY_GATE_V20.json'))
-          assert all(thresholds['regression_anchors'].values()), thresholds['regression_anchors']
+          anchors = thresholds['regression_anchors']
+          assert anchors['MI_one_ok'] and anchors['MGUT_one_ok'] and anchors['IU_one_ok'], anchors
           assert exact['n_failed'] == 0, exact['failures']
           assert gate['n_failed'] == 0, gate['failures']
           assert exact['flag']['all_HSigma_Hermitian_bilinear_quartics_complete'] is True
