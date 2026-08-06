@@ -38,6 +38,7 @@ Together with the exact singlet and 54 channels this closes the full
 from __future__ import annotations
 
 import argparse
+import itertools
 import json
 import math
 from fractions import Fraction
@@ -58,6 +59,30 @@ OUT_MD = ROOT / "EXACT_MIXED_45_TRIPLET_CHANNEL_V20.md"
 COLOR_PLANES = ((0, 1), (2, 3), (4, 5))
 WEAK_PLANES = ((6, 7), (8, 9))
 ALL_PLANES = COLOR_PLANES + WEAK_PLANES
+PAIRS = tuple(itertools.combinations(range(direct.N), 2))
+
+
+def generator_action(
+    form: direct.Form, first: int, second: int
+) -> direct.Form:
+    """Apply the canonical anti-Hermitian SO(10) generator M_first,second."""
+    if not (0 <= first < second < direct.N):
+        raise ValueError("generator requires 0 <= first < second < 10")
+    return direct.generator_action(form, first, second)
+
+
+def generator_matrix(first: int, second: int) -> np.ndarray:
+    """Return the vector-10 matrix matching ``generator_action`` exactly."""
+    if not (0 <= first < second < direct.N):
+        raise ValueError("generator requires 0 <= first < second < 10")
+    matrix = np.zeros((direct.N, direct.N), dtype=complex)
+    for source_index in range(direct.N):
+        image = generator_action({(source_index,): 1.0 + 0.0j}, first, second)
+        matrix[:, source_index] = np.asarray(
+            [image.get((target_index,), 0.0) for target_index in range(direct.N)],
+            dtype=complex,
+        )
+    return matrix
 
 
 def conjugate_form(form: direct.Form) -> direct.Form:
