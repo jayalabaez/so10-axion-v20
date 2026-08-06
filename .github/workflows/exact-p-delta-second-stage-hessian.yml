@@ -4,10 +4,12 @@ on:
   push:
     branches:
       - agent/stabilize-p-delta-second-stage
+      - agent/coupled-p-delta-backreaction-scan
   pull_request:
     paths:
       - exact_p_delta_second_stage_hessian_v20.py
       - test_exact_p_delta_second_stage_hessian_v20.py
+      - exact_phisigma_126bar_minus_projectors_v20.py
       - .github/workflows/exact-p-delta-second-stage-hessian.yml
   workflow_dispatch:
 
@@ -43,9 +45,13 @@ jobs:
           assert benchmark['PS_to_SM_orbit_rank'] == 9
           assert benchmark['minimum_physical_eigenvalue'] > 0
           assert benchmark['boundedness_certificate']['strict_mixed_quartic_margin'] > 0
+          assert report['flag']['physical_126bar_chirality'] is True
           assert report['flag']['fixed_P_second_stage_stabilized'] is True
-          assert report['flag']['full_simultaneous_vacuum_complete'] is False
+          assert report['flag']['complete_multifield_model'] is False
+          assert report['flag']['physical_threshold_spectrum_complete'] is False
+          assert report['flag']['exact_unique_proton_lifetime'] is False
           assert report['flag']['whole_model_validated'] is False
+          assert report['flag']['whole_model_excluded'] is False
           assert report['flag']['empirical_discovery'] is False
           PY
       - uses: actions/upload-artifact@v4
