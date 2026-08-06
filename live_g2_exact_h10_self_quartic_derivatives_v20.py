@@ -1,19 +1,19 @@
 #!/usr/bin/env python3
-"""Exact 486-real derivatives for the authoritative H10 self quartics.
+"""Exact 486-real derivatives for the pure H10 quartic projector basis.
 
-The live G1 family ``H_self_quartics`` contains
+The authoritative G1 family ``H_self_quartics`` is normalized as
 
-    I_1  = (Hdag H)^2,
-    I_54 = |H.H|^2.
+    I_1  = |H.H|^2 / 10,
+    I_54 = (Hdag H)^2 - |H.H|^2 / 10.
 
-With canonical real coordinates H_i=(x_i+i y_i)/sqrt(2), both values,
-gradients, and Hessians are elementary quartic polynomials.  This module maps
-them to every authoritative live direction in the family, applies any exact
-singlet dressing through the shared product rule, and emits live real-parameter
-derivative tensors.
+This is not the raw basis ``((Hdag H)^2, |H.H|^2)``.  The distinction matters
+for every coupling and Hessian entry.  With canonical real coordinates
+H_i=(x_i+i y_i)/sqrt(2), this module differentiates both projector channels
+exactly, maps every authoritative live direction through the common singlet-
+dressing product rule, and emits live real-parameter derivative tensors.
 
-This closes one quartic base-family adapter only.  Across the stacked chain ten
-of eighteen adapters are targeted; eight quartic families and G2 remain open.
+One quartic base-family adapter is covered here.  Across the stacked chain ten
+of eighteen adapters are targeted; eight families and G2 remain open.
 """
 from __future__ import annotations
 
@@ -26,6 +26,7 @@ from typing import Any
 
 import numpy as np
 
+import exact_h10_self_quartic_family_v20 as source
 import live_g1_tensor_closure_ledger_v20 as ledger
 import live_g2_arbitrary_component_potential_values_v20 as potential
 import live_g2_canonical_486_field_chart_v20 as chart
@@ -73,32 +74,61 @@ def h_squared_jet(q_h: np.ndarray) -> tuple[complex, np.ndarray, np.ndarray]:
     return value, gradient, hessian
 
 
+def raw_quartic_derivatives(
+    q_h: np.ndarray,
+) -> dict[str, tuple[float, np.ndarray, np.ndarray]]:
+    block = np.asarray(q_h, dtype=float).reshape(chart.H_REAL_DIM)
+    norm = 0.5 * float(np.dot(block, block))
+    norm_squared_value = norm**2
+    norm_squared_gradient = 2.0 * norm * block
+    norm_squared_hessian = 2.0 * np.outer(block, block) + 2.0 * norm * np.eye(
+        chart.H_REAL_DIM
+    )
+
+    pair, pair_gradient, pair_hessian = h_squared_jet(block)
+    pair_modulus_value = float(abs(pair) ** 2)
+    pair_modulus_gradient = 2.0 * np.real(
+        np.conjugate(pair) * pair_gradient
+    )
+    pair_modulus_hessian = 2.0 * np.real(
+        np.conjugate(pair) * pair_hessian
+        + np.outer(np.conjugate(pair_gradient), pair_gradient)
+    )
+    return {
+        "norm_squared": (
+            norm_squared_value,
+            norm_squared_gradient,
+            norm_squared_hessian,
+        ),
+        "pair_modulus_squared": (
+            pair_modulus_value,
+            pair_modulus_gradient,
+            pair_modulus_hessian,
+        ),
+    }
+
+
 def base_derivative(
     q: np.ndarray, basis_index: int
 ) -> tuple[complex, np.ndarray, np.ndarray]:
     coordinates = np.asarray(q, dtype=float).reshape(chart.TOTAL_DIM)
-    q_h = coordinates[chart.H_SLICE]
-    gradient = np.zeros(chart.TOTAL_DIM, dtype=complex)
-    hessian = np.zeros((chart.TOTAL_DIM, chart.TOTAL_DIM), dtype=complex)
+    raw = raw_quartic_derivatives(coordinates[chart.H_SLICE])
+    n_value, n_gradient, n_hessian = raw["norm_squared"]
+    p_value, p_gradient, p_hessian = raw["pair_modulus_squared"]
 
     if int(basis_index) == 0:
-        norm = 0.5 * float(np.dot(q_h, q_h))
-        value = norm**2
-        gradient_h = 2.0 * norm * q_h
-        hessian_h = 2.0 * np.outer(q_h, q_h) + 2.0 * norm * np.eye(
-            chart.H_REAL_DIM
-        )
+        value = p_value / 10.0
+        gradient_h = p_gradient / 10.0
+        hessian_h = p_hessian / 10.0
     elif int(basis_index) == 1:
-        pair, pair_gradient, pair_hessian = h_squared_jet(q_h)
-        value = float(abs(pair) ** 2)
-        gradient_h = 2.0 * np.real(np.conjugate(pair) * pair_gradient)
-        hessian_h = 2.0 * np.real(
-            np.conjugate(pair) * pair_hessian
-            + np.outer(np.conjugate(pair_gradient), pair_gradient)
-        )
+        value = n_value - p_value / 10.0
+        gradient_h = n_gradient - p_gradient / 10.0
+        hessian_h = n_hessian - p_hessian / 10.0
     else:
         raise KeyError(f"unknown H self-quartic basis index {basis_index}")
 
+    gradient = np.zeros(chart.TOTAL_DIM, dtype=complex)
+    hessian = np.zeros((chart.TOTAL_DIM, chart.TOTAL_DIM), dtype=complex)
     gradient[chart.H_SLICE] = gradient_h
     hessian[chart.H_SLICE, chart.H_SLICE] = hessian_h
     return complex(value), gradient, 0.5 * (hessian + hessian.T)
@@ -161,6 +191,34 @@ def expected_direction_count() -> int:
     )
 
 
+def source_normalization_audit(state: potential.FieldState) -> dict[str, Any]:
+    q = chart.pack(state)
+    source_values = source.invariants(state.h)
+    residuals = {}
+    values = {}
+    for basis_index, label in enumerate(BASIS_LABELS):
+        value, _, _ = base_derivative(q, basis_index)
+        residuals[label] = float(abs(value - source_values[label]))
+        values[label] = complex(value)
+    raw = raw_quartic_derivatives(q[chart.H_SLICE])
+    return {
+        "values": values,
+        "source_values": source_values,
+        "residuals": residuals,
+        "maximum_residual": max(residuals.values()),
+        "projector_sum_residual": float(
+            abs(
+                values["I_1"]
+                + values["I_54"]
+                - raw["norm_squared"][0]
+            )
+        ),
+        "singlet_channel_ratio_residual": float(
+            abs(values["I_1"] - raw["pair_modulus_squared"][0] / 10.0)
+        ),
+    }
+
+
 def base_support_audit(q: np.ndarray) -> dict[str, Any]:
     rows: dict[str, Any] = {}
     active = np.zeros(chart.TOTAL_DIM, dtype=bool)
@@ -201,10 +259,9 @@ def build_report() -> dict[str, Any]:
     basis_indices = sorted({row.basis_index for row in directions})
     basis_labels = sorted({row.basis_label for row in directions})
     expected_count = expected_direction_count()
+    normalization = source_normalization_audit(state)
     support = base_support_audit(q)
-    support_residual = max(
-        max(row.values()) for row in support.values()
-    )
+    support_residual = max(max(row.values()) for row in support.values())
     hessian_asymmetry = max(
         float(np.max(np.abs(row.hessian - row.hessian.T))) for row in analytic
     )
@@ -236,6 +293,15 @@ def build_report() -> dict[str, Any]:
         "every_expected_direction_differentiated": len(analytic) == expected_count,
         "both_basis_indices_present": basis_indices == [0, 1],
         "both_basis_labels_present": basis_labels == sorted(BASIS_LABELS),
+        "projector_values_match_authoritative_source": normalization[
+            "maximum_residual"
+        ] < 1.0e-12,
+        "projector_channels_sum_to_norm_squared": normalization[
+            "projector_sum_residual"
+        ] < 1.0e-12,
+        "singlet_channel_is_pair_modulus_over_10": normalization[
+            "singlet_channel_ratio_residual"
+        ] < 1.0e-12,
         "all_values_match_authoritative_evaluator": max(value_residuals.values())
         < 1.0e-10,
         "all_parameter_ids_belong_to_live_schema": (
@@ -261,7 +327,7 @@ def build_report() -> dict[str, Any]:
     return _jsonable(
         {
             "status": (
-                "G2_EXACT_H10_SELF_QUARTIC_DERIVATIVES_CLOSED"
+                "G2_EXACT_H10_PROJECTOR_QUARTIC_DERIVATIVES_CLOSED"
                 if not failures
                 else "G2_H10_SELF_QUARTIC_DERIVATIVES_FAILED"
             ),
@@ -284,6 +350,7 @@ def build_report() -> dict[str, Any]:
                 "real_field_dimension": chart.TOTAL_DIM,
                 "Hessian_shape": [chart.TOTAL_DIM, chart.TOTAL_DIM],
             },
+            "projector_normalization_audit": normalization,
             "base_support_audit": support,
             "maximum_base_support_residual": support_residual,
             "maximum_direction_value_residual": max(value_residuals.values()),
@@ -292,8 +359,9 @@ def build_report() -> dict[str, Any]:
             "directional_reconstruction": directional,
             "flags": {
                 "authoritative_H_self_quartic_adapter_closed": not failures,
-                "I1_gradient_Hessian_exact": not failures,
-                "I54_gradient_Hessian_exact": not failures,
+                "I1_projector_gradient_Hessian_exact": not failures,
+                "I54_projector_gradient_Hessian_exact": not failures,
+                "raw_basis_not_mislabeled_as_projector_basis": not failures,
                 "cumulative_ten_of_eighteen_base_adapters_closed": not failures,
                 "all_64_direction_gradients_complete": False,
                 "all_64_direction_Hessians_complete": False,
@@ -306,9 +374,9 @@ def build_report() -> dict[str, Any]:
                 "continue through the remaining projector quartics."
             ),
             "verdict": (
-                "Both normalized H10 self-quartic directions now have exact dense "
-                "derivatives for every authoritative live copy. Eight base-family "
-                "adapters remain, so G2 is still PARTIAL."
+                "The pure 1 and 54 H10 projector quartics now have exact dense "
+                "derivatives in the authoritative normalization. The raw norm/pair "
+                "basis is not mislabeled. Eight adapters remain and G2 is PARTIAL."
             ),
         }
     )
@@ -317,7 +385,7 @@ def build_report() -> dict[str, Any]:
 def write_report(report: dict[str, Any]) -> None:
     OUT_JSON.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     OUT_MD.write_text(
-        "# Exact authoritative H10 self-quartic derivatives\n\n"
+        "# Exact H10 projector-quartic derivatives\n\n"
         f"**Status:** `{report['status']}`\n\n"
         + report["verdict"]
         + "\n\n"
