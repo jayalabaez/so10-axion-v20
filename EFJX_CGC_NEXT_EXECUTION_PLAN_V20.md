@@ -325,11 +325,13 @@ hEW (full stationarity / unique κ remain OPEN).
 
 ## Correct next goal
 
-**Immediate:** promote the `(p,a,ω)` split into reduced amplitudes / mixed
-potential. Source-patched `λ_P` insertion already holds quartic BFB and the
-λ₄=0 five-amplitude Hessian is PD under mpmath
-(`source_pure210_reduced_potential_insertion_v20`). Pure-210 identity is
-CLOSED; mixed G1 remains OPEN. Do **not** claim whole-model validation.
+**Immediate:** replace the isotropic ‖Φ‖² `P↔X` cross proxy with published
+linear CG weights (`eff_10` / `eff_126`), then continue mixed G1 (no invented
+120/320/1050/4125 tables). The `(p,a,ω)` split is promoted into reduced
+amplitudes via `promote_paw_split_reduced_amplitudes_v20` (source pure-210
+`V₄` wired; λ₄=0 seven-amplitude Hessian PSD under the reduced soft
+convention). Pure-210 identity is CLOSED; mixed G1 remains OPEN. Do **not**
+claim whole-model validation.
 
 Theory completion still requires transcribed CG for 120/320/1050/4125 and
 off-singlet mixed-45 **CG coefficients** (G1), mode-by-mode diagonals (G2),

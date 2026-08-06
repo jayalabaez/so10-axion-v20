@@ -1,0 +1,137 @@
+{
+  "status": "PROMOTE_PAW_SPLIT_REDUCED_AMPLITUDES_PARTIAL",
+  "overall_state": "BLOCKED",
+  "n_checks": 13,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "upstream_source_pure210_insertion_green": true,
+    "promoted_fields_are_seven": true,
+    "P_210_absent_from_promoted_fields": true,
+    "dictionary_P_A_W_traced": true,
+    "p_plus_a_plus_omega_equals_MGUT": true,
+    "singlet_span_bfb_unit_couplings": true,
+    "selected_singlet_hessian_psd": true,
+    "promoted_hessian_lam4_0_psd_mpmath": true,
+    "pure210_block_psd": true,
+    "ray_proxy_consistent_with_insertion": true,
+    "historical_five_amplitude_not_mutated": true,
+    "mixed_cg_not_invented": true,
+    "whole_model_not_overclaimed": true
+  },
+  "promoted_fields": [
+    "p_210",
+    "a_210",
+    "omega_210",
+    "DeltaR_126bar",
+    "H10_EW",
+    "S_PQ",
+    "Phi17_X"
+  ],
+  "couplings_diagnostic": {
+    "g45": 1.0,
+    "g210": 1.0,
+    "g1050": 1.0,
+    "lam": 0.0
+  },
+  "targets_GeV": {
+    "p_210": 1983512959779626.5,
+    "a_210": 2975269439669439.5,
+    "omega_210": 4958782399449066.0,
+    "DeltaR_126bar": 631385523052.4453,
+    "H10_EW": 174.0,
+    "S_PQ": 631385523052.4453,
+    "Phi17_X": 1e+17
+  },
+  "aulakh_to_canonical_PAW": {
+    "p": 1983512959779626.5,
+    "a": 5153317835714453.0,
+    "omega": 1.2146486624144242e+16
+  },
+  "conventions": {
+    "phi_norm2_cartesian": "p^2+a^2+omega^2",
+    "stack_split": "a+omega+p = M_GUT (0.3+0.5+0.2)",
+    "P_cross_proxy": "historical \u039b_{P X} * (p^2+a^2+omega^2) * X^2",
+    "soft_convention": "interaction soft on non-210 only; pure-210 quartic not soft-rematched",
+    "not_equated": [
+      "P_210 = M_GUT (coarse)",
+      "\u2016\u03a6\u2016 = sqrt(p^2+a^2+omega^2)",
+      "Aulakh kinetic p^2+3a^2+6omega^2"
+    ]
+  },
+  "ray_consistency_vs_insertion": {
+    "phi_norm2": 3.737607478533047e+31,
+    "V_pure210": 9.216420608444881e+61,
+    "V_proxy_lambda_P_over_4": 9.216420608444875e+61,
+    "relative_residual": 6.194368739630625e-16,
+    "consistent": true,
+    "note": "Exact on the selected ray only when \u03bb_P was built from the same densities/couplings; stack fractions are not the unique soft optimum."
+  },
+  "promoted_hessian_lam4_0": {
+    "fields": [
+      "p_210",
+      "a_210",
+      "omega_210",
+      "DeltaR_126bar",
+      "H10_EW",
+      "S_PQ",
+      "Phi17_X"
+    ],
+    "delta_m2_non210_GeV2": [
+      -2.454186926955825e-07,
+      3.986476786878954e+22,
+      1513.7999997545814,
+      -0.0
+    ],
+    "pure210_block_min_eig": 7.178486254735947e+30,
+    "eigenvalues_mpmath": [
+      -0.0003229190226382524,
+      3.737611063730649e+29,
+      1.8688042568309752e+30,
+      2.0717847881956343e+32,
+      2.1669162372816874e+32,
+      2.296694237183319e+32,
+      1.5000788006852274e+34
+    ],
+    "min_eig_mpmath": -0.0003229190226382524,
+    "positive_definite": false,
+    "positive_semidefinite": true,
+    "psd_floor": 1.5000788006852274e+16,
+    "float64_min_eig": -92129862310846.05,
+    "float64_false_tachyon_documented": false,
+    "soft_convention": "interaction soft on non-210 only; pure-210 quartic not soft-rematched"
+  },
+  "singlet_span": {
+    "bfb": {
+      "n_samples": 68,
+      "min_V": 0.0,
+      "nonnegative": true
+    },
+    "selected_vacuum_hessian": {
+      "eigenvalues": [
+        7.178486254735947e+30,
+        1.6691982343009041e+31,
+        2.9709542952190802e+31
+      ],
+      "min_eig": 7.178486254735947e+30,
+      "positive_semidefinite": true,
+      "scale_GeV": 4958782399449066.0
+    }
+  },
+  "flags": {
+    "paw_split_promoted_into_reduced_amplitudes": true,
+    "pure210_source_potential_wired": true,
+    "isotropic_P_cross_proxy_only": true,
+    "mixed_field_cg_invented": false,
+    "g1_closed": false,
+    "whole_model_validated": false,
+    "whole_model_excluded": false
+  },
+  "remaining_blockers": {
+    "uv_fix_pure210_couplings_g45_g210_g1050_lam": true,
+    "replace_isotropic_P_cross_proxy_with_published_linear_cg": true,
+    "mixed_field_invariants_and_cg": true,
+    "full_component_hessian": true
+  },
+  "verdict": "Promoted reduced amplitudes replace P_210 by (p,a,\u03c9) with the source-normalized pure-210 quartic and an isotropic \u2016\u03a6\u2016\u00b2 proxy for historical P\u2194X crosses. \u03bb\u2084=0 seven-amplitude Hessian min eig (mpmath)=-0.000322919 (PSD). Mixed G1 CG remains OPEN. Theory remains BLOCKED."
+}

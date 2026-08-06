@@ -29,7 +29,7 @@ The pure-210 quartic basis and its p/a/omega restriction are now closed in a sou
 
 ## Required execution order
 
-1. Promote (p,a,ω) split into reduced amplitudes / mixed potential after source-patched λ_P insertion (Λ BFB + λ₄=0 Hessian PD) — G3-G5 prerequisites (partial)
+1. Replace isotropic ‖Φ‖² P↔X proxy with published linear CG (eff_10/eff_126) after (p,a,ω) promotion; then mixed G1 — G3-G5 prerequisites (partial)
 2. Complete mixed 210+126bar+10+S invariant multiplicities and component CG maps — G1 and G2
 3. Rebuild full stationarity, BFB, competing extrema and gauge-projected Hessian — G3-G5 prerequisites
 4. Regenerate physical scalar/triplet thresholds and two-loop matching — G6-G7 prerequisites

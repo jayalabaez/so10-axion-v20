@@ -317,9 +317,8 @@ def build_report() -> dict[str, Any]:
             "whole_model_excluded": False,
         },
         "remaining_blockers": {
-            "rematch_soft_masses_to_source_lambda_P": False,
+            "replace_isotropic_P_cross_proxy_with_published_linear_cg": True,
             "uv_fix_pure210_couplings_g45_g210_g1050_lam": True,
-            "promote_p_a_omega_split_into_reduced_amplitudes": True,
             "mixed_field_invariants_and_cg": True,
             "full_component_hessian": True,
         },
@@ -330,7 +329,8 @@ def build_report() -> dict[str, Any]:
             f"{'PD/co-positive' if copositive_src and spec_src['positive_definite'] else 'NOT BFB'}; "
             f"pure-210 singlet span BFB holds; selected-singlet Hessian is PSD. "
             f"λ₄=0 five-amplitude Hessian min eig (mpmath)={hess_min:.6g} (PD). "
-            "Couplings remain diagnostic; next is (p,a,ω) promotion / mixed G1. "
+            "Couplings remain diagnostic; (p,a,ω) promotion is in "
+            "promote_paw_split_reduced_amplitudes_v20; mixed G1 OPEN. "
             "Theory remains BLOCKED."
         ),
     }

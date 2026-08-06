@@ -90,10 +90,11 @@ def build_report() -> dict[str, Any]:
         {
             "order": 1,
             "task": (
-                "Promote (p,a,ω) split into reduced amplitudes / mixed potential "
-                "after source-patched λ_P insertion (Λ BFB + λ₄=0 Hessian PD)"
+                "Replace isotropic ‖Φ‖² P↔X proxy with published linear CG "
+                "(eff_10/eff_126) after (p,a,ω) promotion; then mixed G1"
             ),
             "closes": "G3-G5 prerequisites (partial)",
+            "upstream_promotion": "promote_paw_split_reduced_amplitudes_v20",
             "upstream_insertion": "source_pure210_reduced_potential_insertion_v20",
             "selected_vacuum_45_density": selected["selected_vacuum"][
                 "effective_quartic_densities"

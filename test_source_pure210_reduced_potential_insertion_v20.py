@@ -38,10 +38,14 @@ class SourcePure210ReducedInsertionTests(unittest.TestCase):
         )
         self.assertFalse(self.report["flags"]["reduced_hessian_soft_rematch_open"])
         self.assertFalse(
-            self.report["remaining_blockers"]["rematch_soft_masses_to_source_lambda_P"]
+            self.report["remaining_blockers"].get(
+                "rematch_soft_masses_to_source_lambda_P", False
+            )
         )
         self.assertTrue(
-            self.report["remaining_blockers"]["promote_p_a_omega_split_into_reduced_amplitudes"]
+            self.report["remaining_blockers"][
+                "replace_isotropic_P_cross_proxy_with_published_linear_cg"
+            ]
         )
 
 if __name__ == "__main__":
