@@ -60,3 +60,18 @@ def test_reduced_backreaction_is_not_promoted_to_full_closure():
     assert report["gates"]["G3"]["status"] == "PARTIAL"
     assert report["gates"]["G5"]["status"] == "PARTIAL"
     assert "empirical discovery" in report["new_physics_policy"]
+
+
+def test_exact_phi2_hdagh_family_is_a_subgate_only():
+    import exact_phi2_hdagh_channel_family_v20 as family
+
+    report = family.build_report()
+    assert report["n_failed"] == 0, report["failures"]
+    assert report["representation_census"]["common_channels"] == {
+        "1": 1,
+        "45": 1,
+        "54": 1,
+    }
+    assert report["flag"]["phi2_hdagh_channel_count_closed"] is True
+    assert report["flag"]["complete_mixed_invariant_ring"] is False
+    assert report["flag"]["whole_model_validated"] is False
