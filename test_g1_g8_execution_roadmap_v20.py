@@ -77,5 +77,5 @@ def test_exact_phi2_hdagh_family_is_a_subgate_only():
     assert report["flag"]["whole_model_validated"] is False
 
 
-# This tracked-file update intentionally forces a fresh pull-request workflow
-# synchronize event after GitHub failed to schedule the newly introduced gate.
+# Workflow bootstrap PR #131 is now on main; this tracked update resynchronizes
+# PR #130 so the focused gate runs from the trusted base workflow definition.
