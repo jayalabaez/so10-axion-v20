@@ -53,4 +53,4 @@ def test_report_fail_closed():
     assert report["flag"]["empirical_discovery"] is False
 
 
-# This tracked update emits a normal synchronize event after the main ancestry merge.
+# The reusable trusted-base G1 workflow is now registered on main.
