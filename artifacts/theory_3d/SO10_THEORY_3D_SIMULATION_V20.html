@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>SO(10) Theory 3D Simulation v20</title>
+<style>
+  :root {
+    --bg0: #071018; --ink: #e8f1f8; --muted: #8fa3b8;
+    --accent: #3ecf8e; --warn: #e0a14a; --open: #e05a5a;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin:0; height:100%; background: radial-gradient(1200px 800px at 20% 10%, #123049, var(--bg0)); color: var(--ink); font-family: "Segoe UI", "IBM Plex Sans", sans-serif; }
+  #app { display:grid; grid-template-columns: 320px 1fr; height:100%; }
+  aside { padding:18px 16px; border-right:1px solid #1e3348; background: linear-gradient(180deg, #0b1724, #08131d); overflow:auto; }
+  h1 { font-size:1.05rem; margin:0 0 6px; }
+  .sub { color:var(--muted); font-size:0.78rem; line-height:1.35; margin-bottom:14px; }
+  .badge { display:inline-block; padding:2px 8px; border-radius:999px; font-size:0.7rem; background:#1a2f42; color:var(--warn); border:1px solid #2b4660; }
+  label { display:block; font-size:0.72rem; color:var(--muted); margin:10px 0 4px; }
+  input[type=range] { width:100%; }
+  .val { float:right; color:var(--accent); font-variant-numeric: tabular-nums; }
+  .panel { margin-top:14px; padding-top:10px; border-top:1px solid #1e3348; }
+  .mass { display:flex; justify-content:space-between; font-size:0.78rem; padding:3px 0; border-bottom:1px dashed #1a2d40; }
+  .mass b { color:var(--accent); }
+  .gates { display:grid; grid-template-columns: repeat(4,1fr); gap:6px; margin-top:8px; }
+  .gate { text-align:center; font-size:0.65rem; padding:6px 2px; border-radius:8px; background:#122233; border:1px solid #243b52; white-space:pre-line; }
+  .OPEN { color:var(--open); } .PARTIAL { color:var(--warn); }
+  #stage { position:relative; }
+  canvas { display:block; width:100%; height:100%; }
+  #hud { position:absolute; left:16px; bottom:14px; right:16px; pointer-events:none; font-size:0.78rem; color:var(--muted); }
+  #hud strong { color:var(--ink); }
+</style>
+</head>
+<body>
+<div id="app">
+  <aside>
+    <h1>SO(10) axion · theory 3D</h1>
+    <div class="sub">Exact H–Σ 45 mass split + progress-30 certificate. Theory remains <span class="badge">BLOCKED</span> — not a discovery claim.</div>
+    <div class="panel">
+      <div style="font-size:0.75rem;color:var(--muted)">Certificate</div>
+      <div style="font-size:0.9rem;margin-top:4px"><span id="nClosed">30</span> closed · <span id="nBlock">13</span> blockers</div>
+      <div class="gates" id="gateGrid"></div>
+    </div>
+    <div class="panel">
+      <label>λ<sub>HΣ,45</sub> <span class="val" id="v_lamHS">0.25</span></label>
+      <input id="lamHS" type="range" min="-1" max="1" step="0.01" value="0.25"/>
+      <label>v<sub>R</sub> <span class="val" id="v_vr">1.00</span></label>
+      <input id="vr" type="range" min="0.2" max="2.0" step="0.01" value="1.0"/>
+      <label>λ<sub>ΦH,45</sub> <span class="val" id="v_lamPH">0.15</span></label>
+      <input id="lamPH" type="range" min="-1" max="1" step="0.01" value="0.15"/>
+      <label>λ<sub>ΦΣ,45</sub> <span class="val" id="v_lamPS">0.10</span></label>
+      <input id="lamPS" type="range" min="-1" max="1" step="0.01" value="0.10"/>
+      <label>p <span class="val" id="v_p">0.20</span></label>
+      <input id="p" type="range" min="-1" max="1" step="0.01" value="0.2"/>
+      <label>a <span class="val" id="v_a">0.30</span></label>
+      <input id="a" type="range" min="-1" max="1" step="0.01" value="0.3"/>
+      <label>ω <span class="val" id="v_w">0.50</span></label>
+      <input id="w" type="range" min="-1" max="1" step="0.01" value="0.5"/>
+    </div>
+    <div class="panel">
+      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:6px">Color-triplet m² shifts</div>
+      <div id="massList"></div>
+      <div class="sub" style="margin-top:8px">ΔB = 0 · T10 ↔ T10bar opposite H–Σ split · independent of h<sub>u</sub>, h<sub>d</sub></div>
+    </div>
+  </aside>
+  <div id="stage">
+    <div id="hud"><strong>Drag</strong> to orbit · scroll to zoom · spheres = fields · pillars = triplet mass shifts · ring = G1–G8</div>
+  </div>
+</div>
+<script type="importmap">
+{"imports": {
+  "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+}}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const DATA = {"title": "SO(10) axion v20 \u2014 interactive theory 3D", "honesty": {"whole_model_validated": false, "whole_model_excluded": false, "exact_unique_proton_lifetime": false, "G1": "OPEN", "G6": "PARTIAL", "note": "Visualization of closed subproblems and exact H\u2013\u03a3 45 mass shifts. Full theory remains BLOCKED."}, "certificate": {"status": "NEXT_GEN_G1_G6_PROGRESS_30_VERIFIED__FULL_THEORY_STILL_BLOCKED", "n_closed_subproblems": 30, "n_remaining_blockers": 13, "gate_states": {"G1": "OPEN", "G2": "PARTIAL", "G6": "PARTIAL", "G7": "OPEN", "G8": "PARTIAL"}, "closed_keys": ["10H_squared_S_triplet_B_entry", "10H_squared_S_vector_bilinear_normalization", "10dag10_126bardag126bar_54_channel_eliminated", "126bar_t2_t2bar_t4bar_branching", "126bardag126bar_Hermitian_54_vanishing_theorem", "210_126bar_dag_126bar_cubic_contraction", "210dag210_10dag10_45_triplet_Clebsch", "210dag210_10dag10_54_triplet_Clebsch", "210dag210_126bardag126bar_45_triplet_Clebsches", "210dag210_126bardag126bar_54_channel_eliminated", "210dag210_to_45_on_singlet_vacuum", "210dag210_to_54_on_singlet_vacuum", "CCdag_CdagC_spectrum_match", "canonical_126bar_triplet_kinetic_normalization", "complete_210dag210_10dag10_Hermitian_channel_family", "correct_5x5_Nambu_M2_architecture", "exact_210_singlet_norm", "exact_CPhi_dagger_CPhi_triplet_block", "exact_t2bar_t4bar_quartic_mixing", "lambda4_portal_triplet_Clebsches", "legacy_triplet_proxy_non_authoritative", "norm_self_quartic_factor_two", "positive_semidefinite_rank_structure", "second_10H_quartic_B_correction", "second_10H_quartic_triplet_projection", "second_10H_quartic_zero_Hermitian_diagonal", "t2bar_t4bar_cubic_mixing_Clebsch", "t4bar_cubic_diagonal_Clebsch", "universal_10_triplet_identity_baseline", "universal_126bar_triplet_identity_baseline"], "blocker_keys": ["10dag10_126bardag126bar_background_insertions", "Q_H0_from_unique_electroweak_vacuum", "all_mixing_relevant_210_component_states", "complete_mixed_invariant_ring", "complete_projected_nonSUSY_component_potential", "exact_unique_proton_lifetime", "global_stationary_gauge_quotiented_vacuum", "holomorphic_10_126bar_channels_and_charge_dressing", "mass_basis_proton_decay_Wilson_tensors", "other_independent_PhiSigma_irrep_contractions", "physical_threshold_spectrum_with_uncertainties", "positive_full_component_Hessian", "validated_two_loop_component_matching"], "next_exact_target": "Derive the remaining independent Phi-Sigma irrep contractions, project 10dag10\u00b7126bardag126bar around DeltaR and hEW, and build all mixing-relevant 210 component states.", "verdict": "Thirty triplet tensor/quadratic subproblems are now exact. The Hermitian Phi-H family 1+45+54 is complete, the Hermitian 126bar 54 is absent, the 126bar 45 currents are exact, and the first higher Phi-Sigma contraction fixes a positive-semidefinite rank-one t2bar/t4bar quartic block. G1 and G6 remain unclosed."}, "fields": [{"id": "Phi210", "label": "\u03a6\u2082\u2081\u2080", "vevs": ["p", "a", "\u03c9"], "role": "GUT"}, {"id": "Sigma126", "label": "\u03a3\u0304\u2081\u2082\u2086", "vevs": ["v_R"], "role": "LR"}, {"id": "H10", "label": "H\u2081\u2080", "vevs": ["h_u", "h_d"], "role": "EW"}, {"id": "S", "label": "S", "vevs": ["\u27e8S\u27e9"], "role": "PQ"}, {"id": "Phi17", "label": "\u03a6\u2081\u2087", "vevs": ["|\u03a6\u2081\u2087|"], "role": "Z17"}], "triplets": [{"id": "T10", "parent": "H10", "Y": -0.3333333333333333}, {"id": "t2", "parent": "Sigma126", "Y": -0.3333333333333333}, {"id": "T10bar", "parent": "H10", "Y": 0.3333333333333333}, {"id": "t2bar", "parent": "Sigma126", "Y": 0.3333333333333333}, {"id": "t4bar", "parent": "Sigma126", "Y": 0.3333333333333333, "alias": "T'"}], "gates": {"G1": "OPEN", "G2": "PARTIAL", "G3": "PARTIAL", "G4": "PARTIAL", "G5": "PARTIAL", "G6": "PARTIAL", "G7": "OPEN", "G8": "PARTIAL"}, "scene": {"k_color": 0.23594869896942175, "hsigma_shift": 0.25, "delta_B": 0.0, "masses_GeV2": {"T10": -0.21460769515458675, "t2": 0.023594869896942178, "T10bar": 0.21460769515458675, "t2bar": -0.023594869896942178, "t4bar": -0.023594869896942178}, "formula": {"Delta_A_u": "diag(-\u03bb_H\u03a345 v_R^2, 0)", "Delta_A_v": "diag(+\u03bb_H\u03a345 v_R^2, 0, 0)", "Delta_B": "0", "independent_of_hu_hd": true}, "knobs": {"p": 0.2, "a": 0.3, "omega": 0.5, "v_r": 1.0, "lambda_hsigma_45": 0.25, "lambda_phih_45": 0.15, "lambda_phisigma_45": 0.1}}, "hsigma_closed": {"operator": "\u03bb_H\u03a345 J45[H]:J45[\u03a3]", "merged_on_main": "PR #108 / 08b533e", "formula": {"Delta_A_u": "diag(-\u03bb_H\u03a345 v_R^2, 0)", "Delta_A_v": "diag(+\u03bb_H\u03a345 v_R^2, 0, 0)", "Delta_B": "0", "independent_of_hu_hd": true}, "note": "Exact closed formula verified on main; theory still BLOCKED."}};
+const stage = document.getElementById('stage');
+const renderer = new THREE.WebGLRenderer({ antialias:true, alpha:true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setSize(stage.clientWidth, stage.clientHeight);
+stage.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(48, stage.clientWidth/stage.clientHeight, 0.1, 200);
+camera.position.set(8.5, 5.2, 9.5);
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.target.set(0, 1.2, 0);
+
+scene.add(new THREE.AmbientLight(0xb8d0e8, 0.55));
+const key = new THREE.DirectionalLight(0xffffff, 1.05);
+key.position.set(6, 10, 4); scene.add(key);
+const rim = new THREE.PointLight(0x3ecf8e, 1.2, 40);
+rim.position.set(-4, 3, -3); scene.add(rim);
+
+const floor = new THREE.Mesh(new THREE.CircleGeometry(12, 64), new THREE.MeshStandardMaterial({ color:0x0b1622, roughness:0.92 }));
+floor.rotation.x = -Math.PI/2; scene.add(floor);
+scene.add(new THREE.GridHelper(16, 24, 0x1e3a52, 0x122536));
+
+function makeLabelCanvas(text, color='#e8f1f8') {
+  const c = document.createElement('canvas'); c.width=512; c.height=128;
+  const ctx = c.getContext('2d');
+  ctx.fillStyle = color; ctx.font = 'bold 48px Segoe UI, sans-serif';
+  ctx.textAlign = 'center'; ctx.fillText(text, 256, 72); return c;
+}
+function spriteLabel(text, color) {
+  const tex = new THREE.CanvasTexture(makeLabelCanvas(text, color));
+  const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent:true }));
+  s.scale.set(2.2, 0.55, 1); return s;
+}
+
+const fieldGeom = {
+  Phi210: { pos:[0, 2.6, 0], color:0x4ea8de, r:0.85 },
+  Sigma126: { pos:[-3.2, 1.8, 1.2], color:0x3ecf8e, r:0.7 },
+  H10: { pos:[3.2, 1.8, 1.2], color:0xe0a14a, r:0.65 },
+  S: { pos:[-2.4, 3.6, -2.2], color:0xc084fc, r:0.45 },
+  Phi17: { pos:[2.4, 3.6, -2.2], color:0xf472b6, r:0.4 },
+};
+const fieldMeshes = {};
+for (const [id, cfg] of Object.entries(fieldGeom)) {
+  const mesh = new THREE.Mesh(
+    new THREE.SphereGeometry(cfg.r, 36, 24),
+    new THREE.MeshStandardMaterial({ color:cfg.color, roughness:0.35, metalness:0.25, emissive:cfg.color, emissiveIntensity:0.18 })
+  );
+  mesh.position.set(...cfg.pos); scene.add(mesh);
+  const lab = spriteLabel((DATA.fields.find(f=>f.id===id)||{}).label || id);
+  lab.position.set(cfg.pos[0], cfg.pos[1]+cfg.r+0.55, cfg.pos[2]); scene.add(lab);
+  fieldMeshes[id] = mesh;
+}
+function bond(a,b,color=0x2a4a66) {
+  const A = new THREE.Vector3(...fieldGeom[a].pos), B = new THREE.Vector3(...fieldGeom[b].pos);
+  const dir = new THREE.Vector3().subVectors(B,A), len = dir.length();
+  const mid = new THREE.Vector3().addVectors(A,B).multiplyScalar(0.5);
+  const cyl = new THREE.Mesh(new THREE.CylinderGeometry(0.04,0.04,len,10), new THREE.MeshStandardMaterial({ color, transparent:true, opacity:0.55 }));
+  cyl.position.copy(mid); cyl.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0), dir.normalize()); scene.add(cyl);
+}
+bond('Phi210','Sigma126',0x2f6f8f); bond('Phi210','H10',0x8a6a3a);
+bond('Sigma126','H10',0x3a7a5a); bond('S','H10',0x6a4a8a); bond('Phi17','S',0x8a3a6a);
+
+const gateGroup = new THREE.Group();
+const gateIds = Object.keys(DATA.gates);
+gateIds.forEach((g,i) => {
+  const ang = (i/gateIds.length)*Math.PI*2, r=5.6, st=DATA.gates[g];
+  const col = st==='OPEN' ? 0xe05a5a : 0xe0a14a;
+  const tor = new THREE.Mesh(new THREE.TorusGeometry(0.28,0.08,10,24), new THREE.MeshStandardMaterial({ color:col, emissive:col, emissiveIntensity:0.35 }));
+  tor.position.set(Math.cos(ang)*r, 0.35, Math.sin(ang)*r); tor.rotation.x = Math.PI/2; gateGroup.add(tor);
+  const lab = spriteLabel(g, st==='OPEN' ? '#e05a5a' : '#e0a14a');
+  lab.position.set(Math.cos(ang)*r, 0.95, Math.sin(ang)*r); lab.scale.set(1.3,0.35,1); gateGroup.add(lab);
+});
+scene.add(gateGroup);
+
+document.getElementById('nClosed').textContent = DATA.certificate.n_closed_subproblems;
+document.getElementById('nBlock').textContent = DATA.certificate.n_remaining_blockers;
+const gridEl = document.getElementById('gateGrid');
+for (const [g,st] of Object.entries(DATA.gates)) {
+  const d = document.createElement('div'); d.className = 'gate '+st; d.textContent = g+'\n'+st; gridEl.appendChild(d);
+}
+
+const tripletLayout = [
+  { id:'T10', x:-1.6, z:3.4, color:0x60a5fa },
+  { id:'t2', x:-0.5, z:3.4, color:0x34d399 },
+  { id:'T10bar', x:0.6, z:3.4, color:0xfbbf24 },
+  { id:'t2bar', x:1.7, z:3.4, color:0xfb7185 },
+  { id:'t4bar', x:2.8, z:3.4, color:0xa78bfa },
+];
+const pillars = {};
+for (const t of tripletLayout) {
+  const mesh = new THREE.Mesh(new THREE.CylinderGeometry(0.18,0.22,1,18), new THREE.MeshStandardMaterial({ color:t.color, emissive:t.color, emissiveIntensity:0.22 }));
+  mesh.position.set(t.x, 0.5, t.z); scene.add(mesh);
+  const lab = spriteLabel(t.id); lab.position.set(t.x, 1.4, t.z); lab.scale.set(1.4,0.35,1); scene.add(lab);
+  pillars[t.id] = mesh;
+}
+
+function kColor(p,a,w) { return 2*p*a/Math.sqrt(3) + 2*w*w/3; }
+function computeMasses(kn) {
+  const shift = kn.lambda_hsigma_45 * kn.v_r * kn.v_r;
+  const kc = kColor(kn.p, kn.a, kn.omega);
+  return {
+    T10: -shift + kn.lambda_phih_45 * kc,
+    t2: kn.lambda_phisigma_45 * kc,
+    T10bar: +shift - kn.lambda_phih_45 * kc,
+    t2bar: -kn.lambda_phisigma_45 * kc,
+    t4bar: -kn.lambda_phisigma_45 * kc,
+    k_color: kc, hsigma_shift: shift,
+  };
+}
+function fmt(x) { return (x>=0?'+':'') + x.toFixed(3); }
+function updateUI(m, kn) {
+  document.getElementById('v_lamHS').textContent = kn.lambda_hsigma_45.toFixed(2);
+  document.getElementById('v_vr').textContent = kn.v_r.toFixed(2);
+  document.getElementById('v_lamPH').textContent = kn.lambda_phih_45.toFixed(2);
+  document.getElementById('v_lamPS').textContent = kn.lambda_phisigma_45.toFixed(2);
+  document.getElementById('v_p').textContent = kn.p.toFixed(2);
+  document.getElementById('v_a').textContent = kn.a.toFixed(2);
+  document.getElementById('v_w').textContent = kn.omega.toFixed(2);
+  const list = document.getElementById('massList'); list.innerHTML = '';
+  for (const id of ['T10','t2','T10bar','t2bar','t4bar']) {
+    const row = document.createElement('div'); row.className='mass';
+    row.innerHTML = `<span>${id}</span><b>${fmt(m[id])}</b>`; list.appendChild(row);
+  }
+  for (const [id, mesh] of Object.entries(pillars)) {
+    const h = Math.max(0.15, Math.min(3.8, Math.abs(m[id])*2.2 + 0.2));
+    mesh.scale.y = h; mesh.position.y = h/2;
+    mesh.material.emissive.setHex((Math.sign(m[id])||1) > 0 ? 0x3ecf8e : 0xe05a5a);
+    mesh.material.emissiveIntensity = 0.15 + Math.min(0.55, Math.abs(m[id])*0.35);
+  }
+  fieldMeshes.Sigma126.scale.setScalar(0.85 + 0.35*kn.v_r);
+  fieldMeshes.Phi210.scale.setScalar(0.9 + 0.25*Math.min(1.5, Math.abs(m.k_color)));
+}
+
+const knobs = { ...DATA.scene.knobs };
+const ids = { lamHS:'lambda_hsigma_45', vr:'v_r', lamPH:'lambda_phih_45', lamPS:'lambda_phisigma_45', p:'p', a:'a', w:'omega' };
+for (const [el, key] of Object.entries(ids)) {
+  const node = document.getElementById(el); node.value = knobs[key];
+  node.addEventListener('input', () => { knobs[key] = parseFloat(node.value); updateUI(computeMasses(knobs), knobs); });
+}
+updateUI(computeMasses(knobs), knobs);
+
+window.addEventListener('resize', () => {
+  camera.aspect = stage.clientWidth/stage.clientHeight; camera.updateProjectionMatrix();
+  renderer.setSize(stage.clientWidth, stage.clientHeight);
+});
+let t0 = performance.now();
+function animate(now) {
+  requestAnimationFrame(animate);
+  const t = (now-t0)/1000;
+  gateGroup.rotation.y = t*0.08;
+  fieldMeshes.Phi210.rotation.y = t*0.25;
+  fieldMeshes.S.position.y = 3.6 + 0.12*Math.sin(t*1.3);
+  fieldMeshes.Phi17.position.y = 3.6 + 0.12*Math.cos(t*1.1);
+  controls.update(); renderer.render(scene, camera);
+}
+animate(performance.now());
+</script>
+</body>
+</html>

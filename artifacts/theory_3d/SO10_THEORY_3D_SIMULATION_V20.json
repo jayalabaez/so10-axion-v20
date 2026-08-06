@@ -1,0 +1,193 @@
+{
+  "title": "SO(10) axion v20 \u2014 interactive theory 3D",
+  "honesty": {
+    "whole_model_validated": false,
+    "whole_model_excluded": false,
+    "exact_unique_proton_lifetime": false,
+    "G1": "OPEN",
+    "G6": "PARTIAL",
+    "note": "Visualization of closed subproblems and exact H\u2013\u03a3 45 mass shifts. Full theory remains BLOCKED."
+  },
+  "certificate": {
+    "status": "NEXT_GEN_G1_G6_PROGRESS_30_VERIFIED__FULL_THEORY_STILL_BLOCKED",
+    "n_closed_subproblems": 30,
+    "n_remaining_blockers": 13,
+    "gate_states": {
+      "G1": "OPEN",
+      "G2": "PARTIAL",
+      "G6": "PARTIAL",
+      "G7": "OPEN",
+      "G8": "PARTIAL"
+    },
+    "closed_keys": [
+      "10H_squared_S_triplet_B_entry",
+      "10H_squared_S_vector_bilinear_normalization",
+      "10dag10_126bardag126bar_54_channel_eliminated",
+      "126bar_t2_t2bar_t4bar_branching",
+      "126bardag126bar_Hermitian_54_vanishing_theorem",
+      "210_126bar_dag_126bar_cubic_contraction",
+      "210dag210_10dag10_45_triplet_Clebsch",
+      "210dag210_10dag10_54_triplet_Clebsch",
+      "210dag210_126bardag126bar_45_triplet_Clebsches",
+      "210dag210_126bardag126bar_54_channel_eliminated",
+      "210dag210_to_45_on_singlet_vacuum",
+      "210dag210_to_54_on_singlet_vacuum",
+      "CCdag_CdagC_spectrum_match",
+      "canonical_126bar_triplet_kinetic_normalization",
+      "complete_210dag210_10dag10_Hermitian_channel_family",
+      "correct_5x5_Nambu_M2_architecture",
+      "exact_210_singlet_norm",
+      "exact_CPhi_dagger_CPhi_triplet_block",
+      "exact_t2bar_t4bar_quartic_mixing",
+      "lambda4_portal_triplet_Clebsches",
+      "legacy_triplet_proxy_non_authoritative",
+      "norm_self_quartic_factor_two",
+      "positive_semidefinite_rank_structure",
+      "second_10H_quartic_B_correction",
+      "second_10H_quartic_triplet_projection",
+      "second_10H_quartic_zero_Hermitian_diagonal",
+      "t2bar_t4bar_cubic_mixing_Clebsch",
+      "t4bar_cubic_diagonal_Clebsch",
+      "universal_10_triplet_identity_baseline",
+      "universal_126bar_triplet_identity_baseline"
+    ],
+    "blocker_keys": [
+      "10dag10_126bardag126bar_background_insertions",
+      "Q_H0_from_unique_electroweak_vacuum",
+      "all_mixing_relevant_210_component_states",
+      "complete_mixed_invariant_ring",
+      "complete_projected_nonSUSY_component_potential",
+      "exact_unique_proton_lifetime",
+      "global_stationary_gauge_quotiented_vacuum",
+      "holomorphic_10_126bar_channels_and_charge_dressing",
+      "mass_basis_proton_decay_Wilson_tensors",
+      "other_independent_PhiSigma_irrep_contractions",
+      "physical_threshold_spectrum_with_uncertainties",
+      "positive_full_component_Hessian",
+      "validated_two_loop_component_matching"
+    ],
+    "next_exact_target": "Derive the remaining independent Phi-Sigma irrep contractions, project 10dag10\u00b7126bardag126bar around DeltaR and hEW, and build all mixing-relevant 210 component states.",
+    "verdict": "Thirty triplet tensor/quadratic subproblems are now exact. The Hermitian Phi-H family 1+45+54 is complete, the Hermitian 126bar 54 is absent, the 126bar 45 currents are exact, and the first higher Phi-Sigma contraction fixes a positive-semidefinite rank-one t2bar/t4bar quartic block. G1 and G6 remain unclosed."
+  },
+  "fields": [
+    {
+      "id": "Phi210",
+      "label": "\u03a6\u2082\u2081\u2080",
+      "vevs": [
+        "p",
+        "a",
+        "\u03c9"
+      ],
+      "role": "GUT"
+    },
+    {
+      "id": "Sigma126",
+      "label": "\u03a3\u0304\u2081\u2082\u2086",
+      "vevs": [
+        "v_R"
+      ],
+      "role": "LR"
+    },
+    {
+      "id": "H10",
+      "label": "H\u2081\u2080",
+      "vevs": [
+        "h_u",
+        "h_d"
+      ],
+      "role": "EW"
+    },
+    {
+      "id": "S",
+      "label": "S",
+      "vevs": [
+        "\u27e8S\u27e9"
+      ],
+      "role": "PQ"
+    },
+    {
+      "id": "Phi17",
+      "label": "\u03a6\u2081\u2087",
+      "vevs": [
+        "|\u03a6\u2081\u2087|"
+      ],
+      "role": "Z17"
+    }
+  ],
+  "triplets": [
+    {
+      "id": "T10",
+      "parent": "H10",
+      "Y": -0.3333333333333333
+    },
+    {
+      "id": "t2",
+      "parent": "Sigma126",
+      "Y": -0.3333333333333333
+    },
+    {
+      "id": "T10bar",
+      "parent": "H10",
+      "Y": 0.3333333333333333
+    },
+    {
+      "id": "t2bar",
+      "parent": "Sigma126",
+      "Y": 0.3333333333333333
+    },
+    {
+      "id": "t4bar",
+      "parent": "Sigma126",
+      "Y": 0.3333333333333333,
+      "alias": "T'"
+    }
+  ],
+  "gates": {
+    "G1": "OPEN",
+    "G2": "PARTIAL",
+    "G3": "PARTIAL",
+    "G4": "PARTIAL",
+    "G5": "PARTIAL",
+    "G6": "PARTIAL",
+    "G7": "OPEN",
+    "G8": "PARTIAL"
+  },
+  "scene": {
+    "k_color": 0.23594869896942175,
+    "hsigma_shift": 0.25,
+    "delta_B": 0.0,
+    "masses_GeV2": {
+      "T10": -0.21460769515458675,
+      "t2": 0.023594869896942178,
+      "T10bar": 0.21460769515458675,
+      "t2bar": -0.023594869896942178,
+      "t4bar": -0.023594869896942178
+    },
+    "formula": {
+      "Delta_A_u": "diag(-\u03bb_H\u03a345 v_R^2, 0)",
+      "Delta_A_v": "diag(+\u03bb_H\u03a345 v_R^2, 0, 0)",
+      "Delta_B": "0",
+      "independent_of_hu_hd": true
+    },
+    "knobs": {
+      "p": 0.2,
+      "a": 0.3,
+      "omega": 0.5,
+      "v_r": 1.0,
+      "lambda_hsigma_45": 0.25,
+      "lambda_phih_45": 0.15,
+      "lambda_phisigma_45": 0.1
+    }
+  },
+  "hsigma_closed": {
+    "operator": "\u03bb_H\u03a345 J45[H]:J45[\u03a3]",
+    "merged_on_main": "PR #108 / 08b533e",
+    "formula": {
+      "Delta_A_u": "diag(-\u03bb_H\u03a345 v_R^2, 0)",
+      "Delta_A_v": "diag(+\u03bb_H\u03a345 v_R^2, 0, 0)",
+      "Delta_B": "0",
+      "independent_of_hu_hd": true
+    },
+    "note": "Exact closed formula verified on main; theory still BLOCKED."
+  }
+}

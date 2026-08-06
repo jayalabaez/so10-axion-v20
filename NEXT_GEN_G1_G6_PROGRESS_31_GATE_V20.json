@@ -1,0 +1,162 @@
+{
+  "status": "NEXT_GEN_G1_G6_PROGRESS_31_VERIFIED__FULL_THEORY_STILL_BLOCKED",
+  "overall_state": "PARTIAL",
+  "n_checks": 9,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "progress30_certificate_loaded": true,
+    "progress30_status_verified": true,
+    "all_31_recorded_subproblems_closed": true,
+    "G1_still_open": true,
+    "G6_still_partial": true,
+    "whole_model_not_validated": true,
+    "whole_model_not_excluded": true,
+    "unique_lifetime_still_open": true,
+    "hsigma_formula_recorded": true
+  },
+  "gate_states": {
+    "G1": "OPEN",
+    "G2": "PARTIAL",
+    "G6": "PARTIAL",
+    "G7": "OPEN",
+    "G8": "PARTIAL"
+  },
+  "closed_subproblems": {
+    "126bar_t2_t2bar_t4bar_branching": true,
+    "canonical_126bar_triplet_kinetic_normalization": true,
+    "lambda4_portal_triplet_Clebsches": true,
+    "210_126bar_dag_126bar_cubic_contraction": true,
+    "t4bar_cubic_diagonal_Clebsch": true,
+    "t2bar_t4bar_cubic_mixing_Clebsch": true,
+    "10H_squared_S_vector_bilinear_normalization": true,
+    "10H_squared_S_triplet_B_entry": true,
+    "correct_5x5_Nambu_M2_architecture": true,
+    "exact_210_singlet_norm": true,
+    "universal_10_triplet_identity_baseline": true,
+    "universal_126bar_triplet_identity_baseline": true,
+    "norm_self_quartic_factor_two": true,
+    "second_10H_quartic_triplet_projection": true,
+    "second_10H_quartic_B_correction": true,
+    "second_10H_quartic_zero_Hermitian_diagonal": true,
+    "legacy_triplet_proxy_non_authoritative": true,
+    "210dag210_to_54_on_singlet_vacuum": true,
+    "210dag210_10dag10_54_triplet_Clebsch": true,
+    "126bardag126bar_Hermitian_54_vanishing_theorem": true,
+    "210dag210_126bardag126bar_54_channel_eliminated": true,
+    "10dag10_126bardag126bar_54_channel_eliminated": true,
+    "210dag210_to_45_on_singlet_vacuum": true,
+    "210dag210_10dag10_45_triplet_Clebsch": true,
+    "210dag210_126bardag126bar_45_triplet_Clebsches": true,
+    "complete_210dag210_10dag10_Hermitian_channel_family": true,
+    "exact_CPhi_dagger_CPhi_triplet_block": true,
+    "exact_t2bar_t4bar_quartic_mixing": true,
+    "positive_semidefinite_rank_structure": true,
+    "CCdag_CdagC_spectrum_match": true,
+    "exact_HSigma_45_triplet_background_formula": true
+  },
+  "n_closed_subproblems": 31,
+  "remaining_blockers": {
+    "complete_mixed_invariant_ring": true,
+    "10dag10_126bardag126bar_background_insertions": true,
+    "holomorphic_10_126bar_channels_and_charge_dressing": true,
+    "all_mixing_relevant_210_component_states": true,
+    "Q_H0_from_unique_electroweak_vacuum": true,
+    "complete_projected_nonSUSY_component_potential": true,
+    "global_stationary_gauge_quotiented_vacuum": true,
+    "positive_full_component_Hessian": true,
+    "physical_threshold_spectrum_with_uncertainties": true,
+    "validated_two_loop_component_matching": true,
+    "mass_basis_proton_decay_Wilson_tensors": true,
+    "exact_unique_proton_lifetime": true,
+    "other_independent_PhiSigma_irrep_contractions": true,
+    "other_independent_HSigma_irrep_contractions": true
+  },
+  "n_remaining_blockers": 14,
+  "authoritative_triplet_structure": {
+    "independent_fields": {
+      "Y_minus_1_over_3": [
+        "T10",
+        "t2"
+      ],
+      "Y_plus_1_over_3": [
+        "T10bar",
+        "t2bar",
+        "t4bar"
+      ]
+    },
+    "quadratic_object": "5x5 Hermitian Nambu mass-squared matrix",
+    "B_T10_T10bar": "kappa10 <S> + 2 lambda10_hol (H0\u00b7H0)^*",
+    "portal_Clebsches": {
+      "Hbar10_from_t2": "p-a/sqrt(3)",
+      "H10_from_t2bar": "p+a/sqrt(3)",
+      "H10_from_t4bar": "2 omega/sqrt(3)"
+    },
+    "cubic_126bar_block": {
+      "t4bar_diagonal": "mu_eta (2p+2a/sqrt(3))",
+      "t2bar_t4bar": "mu_eta (4omega/sqrt(3))"
+    },
+    "universal_diagonal_baselines": [
+      "d10",
+      "d126"
+    ],
+    "exact_Hermitian_54": {
+      "q_color": "-2p^2/5 + 4a^2/15 - omega^2/15",
+      "q_weak": "3p^2/5 - 2a^2/5 + omega^2/10",
+      "T10_and_T10bar_shift": "lambda_PhiH_54 q_color",
+      "Q54_126bardag126bar": 0.0,
+      "PhiSigma_Hermitian_54_parameter": "absent",
+      "HSigma_Hermitian_54_parameter": "absent"
+    },
+    "exact_Hermitian_45": {
+      "k_color": "2 p a/sqrt(3) + 2 omega^2/3",
+      "k_weak": "sqrt(2) a omega",
+      "T10_shift": "+lambda_PhiH_45 k_color",
+      "T10bar_shift": "-lambda_PhiH_45 k_color",
+      "t2_shift": "+lambda_PhiSigma_45 k_color",
+      "t2bar_shift": "-lambda_PhiSigma_45 k_color",
+      "t4bar_shift": "-lambda_PhiSigma_45 k_color"
+    },
+    "PhiH_Hermitian_channels": [
+      "1",
+      "45",
+      "54"
+    ],
+    "PhiH_Hermitian_family_complete": true,
+    "legacy_symmetric_dimension_one_4x4_authoritative": false,
+    "exact_portal_norm_square": {
+      "operator": "lambda_PhiSigma_C ||C_Phi Sigma||^2",
+      "x_minus": "p-a/sqrt(3)",
+      "x_plus": "p+a/sqrt(3)",
+      "y": "2omega/sqrt(3)",
+      "t2_shift": "lambda_C x_minus^2",
+      "t2bar_t4bar_block": "lambda_C [[x_plus^2,x_plus*y],[x_plus*y,y^2]]",
+      "positive_sector_rank": 1,
+      "positive_semidefinite_for_lambda_C_nonnegative": true
+    },
+    "exact_HSigma_45": {
+      "operator": "lambda_HSigma45 J45[H]:J45[Sigma]",
+      "background": "H0=hu Hu0 + hd Hd0; Sigma0 = vR DeltaR",
+      "Delta_A_u": "diag(-lambda v_R^2, 0) on (T10, t2)",
+      "Delta_A_v": "diag(+lambda v_R^2, 0, 0) on (T10bar, t2bar, t4bar)",
+      "Delta_B": 0.0,
+      "independent_of_hu_hd": true,
+      "shifts_t2_family": false,
+      "source": "exact_hsigma_45_closed_formula_v20 / PR #108"
+    }
+  },
+  "upstream_status": {
+    "progress30": "NEXT_GEN_G1_G6_PROGRESS_30_VERIFIED__FULL_THEORY_STILL_BLOCKED"
+  },
+  "next_exact_target": "Derive remaining independent H\u2013\u03a3 / \u03a6\u2013\u03a3 irrep contractions beyond the closed Hermitian 45 channel; project all mixing-relevant 210 components; keep G1 OPEN until the mixed ring is complete.",
+  "flag": {
+    "authoritative_next_gen_G1_G6_progress_31_gate": true,
+    "exact_HSigma_45_promoted": true,
+    "physical_triplet_spectrum_complete": false,
+    "exact_unique_proton_lifetime": false,
+    "whole_model_validated": false,
+    "whole_model_excluded": false,
+    "empirical_discovery": false
+  },
+  "verdict": "Progress-31 verified: exact H\u2013\u03a3 45 triplet formula promoted onto the ledger (31 closed). G1 remains OPEN, G6 PARTIAL, theory BLOCKED."
+}
