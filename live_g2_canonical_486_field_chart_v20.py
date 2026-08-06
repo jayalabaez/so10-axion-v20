@@ -63,6 +63,15 @@ SIGMA_SLICE = slice(H_SLICE.stop, H_SLICE.stop + SIGMA_REAL_DIM)
 S_SLICE = slice(SIGMA_SLICE.stop, SIGMA_SLICE.stop + S_REAL_DIM)
 X_SLICE = slice(S_SLICE.stop, S_SLICE.stop + X_REAL_DIM)
 
+# Stable public ordering shared by every analytic derivative adapter.  The
+# function below is retained for existing callers; both APIs return the same
+# immutable object and therefore cannot silently drift apart.
+PHI_INDICES = tuple(itertools.combinations(range(direct.N), 4))
+if len(PHI_INDICES) != PHI_DIM:
+    raise AssertionError(
+        f"expected {PHI_DIM} independent Phi components, found {len(PHI_INDICES)}"
+    )
+
 
 @dataclasses.dataclass(frozen=True)
 class ChartBlock:
@@ -136,7 +145,7 @@ def _jsonable(value: Any) -> Any:
 
 @lru_cache(maxsize=1)
 def phi_indices() -> tuple[tuple[int, ...], ...]:
-    return tuple(itertools.combinations(range(10), 4))
+    return PHI_INDICES
 
 
 @lru_cache(maxsize=1)
