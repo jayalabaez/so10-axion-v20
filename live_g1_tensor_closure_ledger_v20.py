@@ -306,6 +306,7 @@ def build_report() -> dict[str, Any]:
         },
         "operator_orbits": orbit_entries,
         "closure": {
+            "G1_closed": g1_closed,
             "live_multiplicity_census_closed": g1_closed,
             "explicit_tensor_basis_all_64_directions_closed": g1_closed,
             "normalization_all_64_directions_specified": g1_closed,
