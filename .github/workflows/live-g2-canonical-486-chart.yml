@@ -1,0 +1,93 @@
+name: live-g2-canonical-486-chart
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - live_g2_canonical_486_field_chart_v20.py
+      - test_live_g2_canonical_486_field_chart_v20.py
+      - live_g2_arbitrary_component_potential_values_v20.py
+      - test_live_g2_arbitrary_component_potential_values_v20.py
+      - direct_phi_h_sigmabar_tensor_v20.py
+      - .github/workflows/live-g2-canonical-486-chart.yml
+  push:
+    branches: [main]
+    paths:
+      - live_g2_canonical_486_field_chart_v20.py
+      - test_live_g2_canonical_486_field_chart_v20.py
+      - live_g2_arbitrary_component_potential_values_v20.py
+      - test_live_g2_arbitrary_component_potential_values_v20.py
+      - direct_phi_h_sigmabar_tensor_v20.py
+      - .github/workflows/live-g2-canonical-486-chart.yml
+
+concurrency:
+  group: live-g2-486-chart-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  canonical-field-chart:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt pytest
+      - name: Compile chart and value compiler
+        run: |
+          python -m py_compile \
+            live_g2_arbitrary_component_potential_values_v20.py \
+            live_g2_canonical_486_field_chart_v20.py \
+            test_live_g2_canonical_486_field_chart_v20.py
+      - name: Execute chart certificate
+        run: python live_g2_canonical_486_field_chart_v20.py --write
+      - name: Run focused tests
+        run: |
+          python -m pytest -q \
+            test_live_g2_arbitrary_component_potential_values_v20.py \
+            test_live_g2_canonical_486_field_chart_v20.py
+      - name: Assert exact chart scope
+        run: |
+          python - <<'PY'
+          import json
+
+          report = json.load(open('LIVE_G2_CANONICAL_486_FIELD_CHART_V20.json'))
+          assert report['n_failed'] == 0, report['failures']
+          assert report['dimensions'] == {
+              'Phi_real': 210,
+              'H_real': 20,
+              'Sigma_real': 252,
+              'S_real': 2,
+              'Phi17_real': 2,
+              'total_real': 486,
+              'gradient_entries': 486,
+              'symmetric_Hessian_entries': 118341,
+          }
+          assert report['Sigma_basis_audit']['dimension'] == 126
+          assert report['Sigma_basis_audit']['Gram_residual'] < 1e-12
+          assert report['Sigma_basis_audit']['maximum_minus_i_Hodge_residual'] < 1e-12
+          assert report['kinetic_metric']['absolute_residual'] < 1e-11
+          assert report['direction_value_roundtrip']['direction_count'] == 64
+          assert report['direction_value_roundtrip']['maximum_abs_residual'] < 1e-9
+          assert report['potential_roundtrip_residual'] < 1e-9
+          assert report['flags']['canonical_486_real_chart_complete']
+          assert report['flags']['pack_unpack_reversible']
+          assert report['flags']['physical_chirality_preserved']
+          assert report['flags']['kinetic_metric_fixed']
+          assert not report['flags']['complete_field_gradient']
+          assert not report['flags']['complete_field_Hessian']
+          assert not report['flags']['G2_closed']
+          assert not report['flags']['whole_model_validated']
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-g2-canonical-486-chart
+          path: |
+            LIVE_G2_CANONICAL_486_FIELD_CHART_V20.json
+            LIVE_G2_CANONICAL_486_FIELD_CHART_V20.md
