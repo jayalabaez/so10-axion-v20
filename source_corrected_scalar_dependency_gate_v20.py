@@ -90,13 +90,14 @@ def build_report() -> dict[str, Any]:
         {
             "order": 1,
             "task": (
-                "Casimir Sym² residual ledger + PAW free extrema READY. "
-                "Still need transcribed 120/320/1050/4125 CG from external "
-                "published tables only (do not invent). Next READY: antisym "
-                "45 off-singlet census / Goldstone D-term masses / "
-                "READY-subset ring independence"
+                "ROADBLOCK AUDIT: theory completion ABSOLUTELY needs "
+                "transcribed 120/320/1050/4125 CG (do not invent). "
+                "Navigable now without invention: Goldstone D-term M_V², "
+                "CQIT/37GHz track, transcription pipeline. Stop exhausted "
+                "Cartan/Schur/Casimir PARTIAL fills. Antisym-45 census already DONE."
             ),
-            "closes": "G1-G2 (partial)",
+            "closes": "G1-G2 (blocked on CG) / gauge-side G4 (partial)",
+            "roadblock_verdict": "NAVIGABLE_WITH_LIMITS",
             "upstream_scaffold": "full_tensor_projected_potential_scaffold_v20",
             "upstream_casimir": (
                 "so10_210_sym2_casimir_residual_projectors_v20"
@@ -104,6 +105,7 @@ def build_report() -> dict[str, Any]:
             "upstream_paw_extrema": (
                 "promote_paw_free_extrema_stationarity_v20"
             ),
+            "upstream_goldstone_catalog": "so10_goldstone_sm_root_catalog_v20",
             "upstream_schur_c_alts": (
                 "schur_c_alternative_channels_certificate_v20"
             ),

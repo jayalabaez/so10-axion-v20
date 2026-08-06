@@ -47,14 +47,16 @@
   },
   "required_recomputations": [
     {
-      "closes": "G1-G2 (partial)",
+      "closes": "G1-G2 (blocked on CG) / gauge-side G4 (partial)",
       "order": 1,
+      "roadblock_verdict": "NAVIGABLE_WITH_LIMITS",
       "selected_vacuum_45_density": 0.025426925765343136,
-      "task": "Casimir Sym\u00b2 residual ledger + PAW free extrema READY. Still need transcribed 120/320/1050/4125 CG from external published tables only (do not invent). Next READY: antisym 45 off-singlet census / Goldstone D-term masses / READY-subset ring independence",
+      "task": "ROADBLOCK AUDIT: theory completion ABSOLUTELY needs transcribed 120/320/1050/4125 CG (do not invent). Navigable now without invention: Goldstone D-term M_V\u00b2, CQIT/37GHz track, transcription pipeline. Stop exhausted Cartan/Schur/Casimir PARTIAL fills. Antisym-45 census already DONE.",
       "upstream_126_54_census": "open_126_54_locking_hermitian_fluctuation_census_v20",
       "upstream_210_sm_qn": "open_210_channel_210_off_singlet_sm_quantum_numbers_v20",
       "upstream_54_sm_qn": "open_210_channel_54_off_singlet_sm_quantum_numbers_v20",
       "upstream_casimir": "so10_210_sym2_casimir_residual_projectors_v20",
+      "upstream_goldstone_catalog": "so10_goldstone_sm_root_catalog_v20",
       "upstream_insertion": "source_pure210_reduced_potential_insertion_v20",
       "upstream_paw_extrema": "promote_paw_free_extrema_stationarity_v20",
       "upstream_promotion": "promote_paw_split_reduced_amplitudes_v20",

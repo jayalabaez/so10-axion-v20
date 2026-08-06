@@ -360,12 +360,24 @@ hEW (full stationarity / unique κ remain OPEN).
 
 ## Correct next goal
 
-**Immediate:** G2 still needs transcribed CG for 120/320/1050/4125 (external
-published tables only — do **not** invent). Casimir residual ledger and PAW
-free extrema are READY. Next READY physics without invented CG: antisym 45
-off-singlet census, Goldstone D-term masses, READY-subset ring independence.
-Chirality to split 1050 vs 1050̄ still needs a published operator. Pure-210
-identity CLOSED; mixed G1/G2 OPEN. Do **not** claim whole-model validation.
+**Roadblock verdict: NAVIGABLE_WITH_LIMITS.**
+
+**Absolute for theory completion:** G2/G1 still need transcribed CG for
+120/320/1050/4125 (external published tables only — do **not** invent).
+Esposito (`artifacts/9507053.tex`) closes the pure-210 1050 *norm identity*
+but explicitly avoids the 1050 Young table (“quite complicated”); Cornwell
+1984b is cited and not transcribed. Off-singlet mode CG, 770/1050 split,
+full Hessian, unique κ, and unique τ_p remain OPEN. PR #98 stays draft.
+
+**Navigable now without invention:** (1) Goldstone D-term / gauge `M_V²`
+from existing orbit generators + Susyno X/Y formulas (catalog flags
+dynamical masses OPEN); (2) CQIT / 37 GHz experimental track; (3) design a
+transcription acceptance pipeline. Stop further Cartan/Schur/Casimir PARTIAL
+certificates — those PARTIALs are exhausted. Antisym-45 off-singlet census
+is already DONE.
+
+Pure-210 identity CLOSED; mixed G1/G2 OPEN. Do **not** claim whole-model
+validation.
 
 Theory completion still requires transcribed CG for 120/320/1050/4125 and
 off-singlet mixed-45 **CG coefficients** (G1), mode-by-mode diagonals (G2),
