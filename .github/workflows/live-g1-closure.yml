@@ -1,0 +1,83 @@
+name: live-g1-closure
+
+on:
+  pull_request:
+    paths:
+      - 'g1_exact_declared_symmetry_character_census_v20.py'
+      - 'exact_unique_hsigma_chiral_quartics_v20.py'
+      - 'live_g1_tensor_closure_ledger_v20.py'
+      - 'live_g1_g8_gate_ledger_v20.py'
+      - 'test_exact_unique_hsigma_chiral_quartics_v20.py'
+      - 'test_live_g1_tensor_closure_ledger_v20.py'
+      - 'test_live_g1_g8_gate_ledger_v20.py'
+      - '.github/workflows/live-g1-closure.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'g1_exact_declared_symmetry_character_census_v20.py'
+      - 'exact_unique_hsigma_chiral_quartics_v20.py'
+      - 'live_g1_tensor_closure_ledger_v20.py'
+      - 'live_g1_g8_gate_ledger_v20.py'
+      - 'test_exact_unique_hsigma_chiral_quartics_v20.py'
+      - 'test_live_g1_tensor_closure_ledger_v20.py'
+      - 'test_live_g1_g8_gate_ledger_v20.py'
+      - '.github/workflows/live-g1-closure.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: live-g1-closure-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify-live-g1:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt pytest
+      - name: Execute exact live census
+        run: python g1_exact_declared_symmetry_character_census_v20.py > /tmp/g1-census.json
+      - name: Execute final unique quartics
+        run: python exact_unique_hsigma_chiral_quartics_v20.py > /tmp/g1-unique-quartics.json
+      - name: Execute 64-direction tensor ledger
+        run: python live_g1_tensor_closure_ledger_v20.py > /tmp/g1-tensor-ledger.json
+      - name: Execute superseding G1-G8 ledger
+        run: python live_g1_g8_gate_ledger_v20.py --no-write > /tmp/g1-g8-ledger.json
+      - name: Focused regression tests
+        run: |
+          python -m pytest -q \
+            test_exact_unique_hsigma_chiral_quartics_v20.py \
+            test_live_g1_tensor_closure_ledger_v20.py \
+            test_live_g1_g8_gate_ledger_v20.py
+      - name: Independently assert closure counts and fail-closed scope
+        run: |
+          python - <<'PY'
+          import live_g1_tensor_closure_ledger_v20 as g1
+          import live_g1_g8_gate_ledger_v20 as gates
+
+          r = g1.build_report()
+          assert r['n_failed'] == 0, r
+          assert len(r['operator_orbits']) == 48
+          assert sum(row['multiplicity'] for row in r['operator_orbits']) == 64
+          assert sum(len(row['basis']) for row in r['operator_orbits']) == 64
+          assert not r['missing_base_keys']
+          assert not r['multiplicity_mismatches']
+          assert not r['missing_source_modules']
+          assert not r['normalization_missing']
+
+          q = gates.build_report()
+          assert q['n_failed'] == 0, q
+          assert q['summary']['closed'] == ['G1']
+          assert q['gates']['G1']['status'] == 'CLOSED'
+          for gate in ('G2','G3','G4','G5','G6','G7','G8'):
+              assert q['gates'][gate]['status'] != 'CLOSED'
+          assert not q['flags']['whole_model_validated']
+          assert not q['flags']['all_g1_g8_closed']
+          PY
