@@ -20,10 +20,12 @@ import exact_10h_holomorphic_quartic_triplet_v20 as h_quartic
 import exact_10h_squared_s_bterm_v20 as h_bterm
 import exact_126bar_triplet_clebsch_v20 as portal
 import exact_210_126bar_cubic_clebsch_v20 as cubic
+import exact_mixed_45_triplet_channel_v20 as mixed45
 import exact_mixed_54_triplet_channel_v20 as mixed54
 import exact_universal_triplet_norm_shifts_v20 as universal
 import g1_g8_gate_ledger_v20 as ledger
 import next_gen_triplet_10h_quartic_gate_v20 as h_quartic_gate
+import next_gen_triplet_45_channel_gate_v20 as gate45
 import next_gen_triplet_54_channel_gate_v20 as gate54
 import next_gen_triplet_diagonal_baseline_gate_v20 as diagonal_gate
 import next_gen_triplet_nambu_hessian_v20 as nambu
@@ -44,12 +46,14 @@ def build_report() -> dict[str, Any]:
         "universal": universal.build_report(),
         "h_quartic": h_quartic.build_report(),
         "mixed54": mixed54.build_report(),
+        "mixed45": mixed45.build_report(),
         "tensor_gate": tensor_gate.build_report(),
         "nambu": nambu.build_report(),
         "quadratic": quadratic.build_report(),
         "diagonal_gate": diagonal_gate.build_report(),
         "h_quartic_gate": h_quartic_gate.build_report(),
         "gate54": gate54.build_report(),
+        "gate45": gate45.build_report(),
     }
     execution_failures = [
         f"{name}: {report.get('failures')}"
@@ -124,12 +128,26 @@ def build_report() -> dict[str, Any]:
         "10dag10_126bardag126bar_54_channel_eliminated": reports["mixed54"][
             "newly_closed_subproblem"
         ]["10dag10_126bardag126bar_54_channel_eliminated"],
+        "210dag210_to_45_on_singlet_vacuum": reports["mixed45"][
+            "newly_closed_subproblem"
+        ]["210dag210_to_45_on_singlet_vacuum"],
+        "210dag210_10dag10_45_triplet_Clebsch": reports["mixed45"][
+            "newly_closed_subproblem"
+        ]["210dag210_10dag10_45_triplet_Clebsch"],
+        "210dag210_126bardag126bar_45_triplet_Clebsches": reports["mixed45"][
+            "newly_closed_subproblem"
+        ]["210dag210_126bardag126bar_45_triplet_Clebsches"],
+        "complete_210dag210_10dag10_Hermitian_channel_family": reports[
+            "mixed45"
+        ]["newly_closed_subproblem"][
+            "complete_210dag210_10dag10_Hermitian_channel_family"
+        ],
     }
 
     remaining_blockers = {
         "complete_mixed_invariant_ring": True,
-        "non54_210dag210_10dag10_tensor_Clebsches": True,
-        "non54_210dag210_126bardag126bar_tensor_Clebsches": True,
+        "higher_210dag210_126bardag126bar_tensor_Clebsches": True,
+        "10dag10_126bardag126bar_background_insertions": True,
         "holomorphic_10_126bar_channels_and_charge_dressing": True,
         "all_mixing_relevant_210_component_states": True,
         "Q_H0_from_unique_electroweak_vacuum": True,
@@ -152,22 +170,31 @@ def build_report() -> dict[str, Any]:
         "spurious_Hermitian_126bar_54_parameters_removed": reports["gate54"][
             "flag"
         ]["spurious_Hermitian_126bar_54_parameters_removed"],
+        "exact_45_inserted": reports["gate45"]["flag"][
+            "exact_PhiH_45_triplet_shifts_inserted"
+        ]
+        and reports["gate45"]["flag"][
+            "exact_PhiSigma_45_triplet_shifts_inserted"
+        ],
+        "PhiH_Hermitian_family_complete": reports["gate45"]["flag"][
+            "PhiH_Hermitian_channel_family_complete"
+        ],
         "G1_still_open": top["gates"]["G1"]["status"] == "OPEN",
         "G6_still_partial": top["gates"]["G6"]["status"] == "PARTIAL",
         "G8_still_partial": top["gates"]["G8"]["status"] == "PARTIAL",
-        "physical_spectrum_still_open": not reports["gate54"]["flag"][
+        "physical_spectrum_still_open": not reports["gate45"]["flag"][
             "physical_triplet_spectrum_complete"
         ],
-        "unique_lifetime_still_open": not reports["gate54"]["flag"][
+        "unique_lifetime_still_open": not reports["gate45"]["flag"][
             "exact_unique_proton_lifetime"
         ],
-        "whole_model_not_validated": not reports["gate54"]["flag"][
+        "whole_model_not_validated": not reports["gate45"]["flag"][
             "whole_model_validated"
         ],
-        "whole_model_not_excluded": not reports["gate54"]["flag"][
+        "whole_model_not_excluded": not reports["gate45"]["flag"][
             "whole_model_excluded"
         ],
-        "empirical_discovery_false": not reports["gate54"]["flag"][
+        "empirical_discovery_false": not reports["gate45"]["flag"][
             "empirical_discovery"
         ],
     }
@@ -220,21 +247,33 @@ def build_report() -> dict[str, Any]:
                 "PhiSigma_Hermitian_54_parameter": "absent",
                 "HSigma_Hermitian_54_parameter": "absent",
             },
+            "exact_Hermitian_45": {
+                "k_color": "2 p a/sqrt(3) + 2 omega^2/3",
+                "k_weak": "sqrt(2) a omega",
+                "T10_shift": "+lambda_PhiH_45 k_color",
+                "T10bar_shift": "-lambda_PhiH_45 k_color",
+                "t2_shift": "+lambda_PhiSigma_45 k_color",
+                "t2bar_shift": "-lambda_PhiSigma_45 k_color",
+                "t4bar_shift": "-lambda_PhiSigma_45 k_color",
+            },
+            "PhiH_Hermitian_channels": ["1", "45", "54"],
+            "PhiH_Hermitian_family_complete": True,
             "legacy_symmetric_dimension_one_4x4_authoritative": False,
         },
         "upstream_status": {
             name: report.get("status") for name, report in reports.items()
         },
         "next_exact_target": (
-            "Decompose the remaining non-54 Hermitian mixed tensor channels and "
-            "construct every mixing-relevant 210 component state. Keep the "
-            "holomorphic 126bar x 126bar 54 channel separate from the vanished "
-            "Hermitian 126bar†126bar projection."
+            "Decompose the higher Hermitian 210dag210·126bardag126bar irreps, "
+            "then project 10dag10·126bardag126bar around the physical DeltaR and "
+            "electroweak backgrounds and construct every mixing-relevant 210 state."
         ),
         "flag": {
             "authoritative_next_gen_G1_G6_progress_gate": True,
             "all_recorded_exact_subproblems_closed": not failures,
             "shared_Hermitian_54_channel_closed": not failures,
+            "shared_Hermitian_45_channel_closed": not failures,
+            "PhiH_Hermitian_channel_family_complete": not failures,
             "G1_closed": False,
             "G6_closed": False,
             "physical_triplet_spectrum_complete": False,
@@ -244,12 +283,12 @@ def build_report() -> dict[str, Any]:
             "empirical_discovery": False,
         },
         "verdict": (
-            "Twenty-two triplet tensor/quadratic subproblems are now exact. The "
-            "shared Hermitian 54 channel is closed: Phi-H gives the exact q_color "
-            "shift, while chiral 126bar†126bar has no Hermitian 54 and two "
-            "spurious couplings are removed. G1 and G6 remain unclosed because "
-            "non-54 tensor channels, 210 component mixing, and the unique full "
-            "vacuum are still missing."
+            "Twenty-six triplet tensor/quadratic subproblems are now exact. The "
+            "Hermitian Phi-H family is complete in channels 1+45+54; the 45 "
+            "currents for t2, t2bar, and t4bar are also inserted, while the "
+            "Hermitian 126bar 54 is proved absent. G1 and G6 remain unclosed "
+            "because higher Phi-Sigma irreps, mixed-background channels, 210 "
+            "component mixing, and the unique full vacuum are still missing."
         ),
     }
 
