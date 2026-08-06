@@ -1,32 +1,27 @@
 #!/usr/bin/env python3
-"""Assemble the live 64-direction scalar ring into one arbitrary-field potential.
+"""Compile all 64 live scalar invariants on arbitrary physical fields.
 
-G1 closed the live SO(10)+PQ+Z17 renormalizable tensor ring at
-
-* 48 Hermitian conjugacy orbits,
-* 64 independent invariant coefficients,
-* 91 real potential parameters.
-
-This module is the first true G2 compiler.  It evaluates every normalized G1
-direction on one arbitrary field state
+The live SO(10)+PQ+Z17 ring contains 48 Hermitian-conjugacy orbits, 64
+normalized invariant directions, and 91 real potential parameters through
+degree four. This module evaluates every direction on one common field state
 
     (Phi_210, H_10, Sigma_126bar, S, Phi17),
 
-applies the exact singlet dressing recorded by the live G1 ledger, constructs a
-deterministic 64-direction value vector, emits the 91-real-parameter schema,
-and evaluates the real Hermitian potential
+applies the exact singlet dressing from the live G1 census, and assembles
 
     V = sum_self lambda_a I_a + sum_pairs 2 Re(c_a I_a).
 
-The eighteen base-family adapters call the exact arbitrary-component source
-modules fixed by G1.  Pure-irrep bases are used where the ledger fixes them;
-explicit graph bases are used where those graphs define the normalization.
-No proxy coefficient, named assumption, or selected-vacuum substitution is
-introduced.
+Physical contracts are enforced at the boundary:
 
-This closes arbitrary-field *values* and coefficient assembly only.  The
-complete real field-coordinate gradient/Hessian, simultaneous vacuum,
-boundedness proof, spectrum, running, and whole-model validation remain open.
+* Phi_210 is a real independent-component four-form;
+* H_10 is a complex length-10 vector;
+* Sigma_126bar is a complex five-form in the physical -i Hodge eigenspace;
+* S and Phi17 are complex singlets.
+
+The scalar chart has exactly 210+20+252+2+2 = 486 real coordinates. This module
+closes only arbitrary-field values and coefficient assembly. The complete
+486-entry field gradient, 486x486 Hessian, vacuum, BFB theorem, thresholds,
+running, and proton decay remain open.
 """
 from __future__ import annotations
 
@@ -34,7 +29,6 @@ import argparse
 import dataclasses
 import itertools
 import json
-from functools import lru_cache
 from pathlib import Path
 from typing import Any, Iterable, Mapping
 
@@ -60,10 +54,11 @@ OUT_MD = ROOT / "LIVE_G2_ARBITRARY_COMPONENT_POTENTIAL_VALUES_V20.md"
 
 FIELD_ORDER = census.FIELD_ORDER
 NON_SINGLET_ORDER = ("P", "H", "Hb", "D", "Db")
-SINGLET_ORDER = ("S", "Sb", "X", "Xb")
 SIGMA_SELF_ORDER = ("54", "1050bar", "2772bar", "4125")
 PHISIGMA_ORDER = ("1", "45", "210", "770", "5940", "8910")
 PHIH_ORDER = ("1", "45", "54")
+REAL_FIELD_DIMENSION = 210 + 20 + 252 + 2 + 2
+SYMMETRIC_HESSIAN_ENTRIES = REAL_FIELD_DIMENSION * (REAL_FIELD_DIMENSION + 1) // 2
 
 
 def _jsonable(value: Any) -> Any:
@@ -95,8 +90,13 @@ def vector_form(vector: np.ndarray) -> direct.Form:
     }
 
 
-def normalized_sigma(form: direct.Form) -> direct.Form:
-    return direct.normalize_126(form)
+def _canonical_indices(indices: tuple[int, ...], degree: int) -> bool:
+    return (
+        len(indices) == degree
+        and len(set(indices)) == degree
+        and tuple(indices) == tuple(sorted(indices))
+        and all(0 <= index < 10 for index in indices)
+    )
 
 
 @dataclasses.dataclass(frozen=True)
@@ -111,10 +111,15 @@ class FieldState:
         h = np.asarray(self.h, dtype=complex)
         if h.shape != (10,):
             raise ValueError("H10 vector must have shape (10,)")
-        if any(len(indices) != 4 for indices in self.phi):
-            raise ValueError("Phi must be an antisymmetric four-form")
-        if any(len(indices) != 5 for indices in self.sigma):
-            raise ValueError("Sigma must be an antisymmetric five-form")
+        if not all(_canonical_indices(indices, 4) for indices in self.phi):
+            raise ValueError("Phi must use canonical independent four-form indices")
+        phi_imaginary_residual = max(
+            [abs(complex(value).imag) for value in self.phi.values()] or [0.0]
+        )
+        if phi_imaginary_residual > 1.0e-12:
+            raise ValueError("Phi_210 is a real field; imaginary components are forbidden")
+        if not all(_canonical_indices(indices, 5) for indices in self.sigma):
+            raise ValueError("Sigma must use canonical independent five-form indices")
         chirality = direct.tensor_norm(
             direct.add_forms(
                 direct.hodge_star(self.sigma),
@@ -123,10 +128,20 @@ class FieldState:
         )
         if chirality > 1.0e-10:
             raise ValueError("Sigma must lie in the physical -i Hodge eigenspace")
+        phi = {
+            indices: complex(complex(value).real)
+            for indices, value in self.phi.items()
+            if abs(value) > 1.0e-14
+        }
+        sigma = {
+            indices: complex(value)
+            for indices, value in self.sigma.items()
+            if abs(value) > 1.0e-14
+        }
         return FieldState(
-            phi=dict(self.phi),
+            phi=phi,
             h=h.copy(),
-            sigma=dict(self.sigma),
+            sigma=sigma,
             s=complex(self.s),
             x=complex(self.x),
         )
@@ -167,18 +182,16 @@ def deterministic_state(seed: int = 20260806) -> FieldState:
         for index, indices in enumerate(itertools.combinations(range(10), 4))
         if abs(phi_vector[index]) > 1.0e-14
     }
-
     h = rng.normal(size=10) + 1j * rng.normal(size=10)
     h /= np.sqrt(np.vdot(h, h).real)
-
     sigma_basis = direct.anti_self_dual_five_form_basis()
     coefficients = rng.normal(size=126) + 1j * rng.normal(size=126)
     sigma: direct.Form = {}
-    for coefficient, state in zip(coefficients, sigma_basis):
+    for coefficient, basis_state in zip(coefficients, sigma_basis, strict=True):
         sigma = direct.add_forms(
-            sigma, direct.scale_form(state, complex(coefficient))
+            sigma, direct.scale_form(basis_state, complex(coefficient))
         )
-    sigma = normalized_sigma(sigma)
+    sigma = direct.normalize_126(sigma)
     return FieldState(
         phi=phi,
         h=h,
@@ -215,11 +228,13 @@ def _dense_state(state: FieldState) -> dict[str, Any]:
 def _phi2_sigma_pure_values(
     state: FieldState, dense: Mapping[str, Any]
 ) -> list[complex]:
-    indices = phi2_sigma_projector.projectors.FOUR_INDICES
     phi_vector = np.asarray(
-        [state.phi.get(index, 0.0) for index in indices], dtype=complex
+        [state.phi.get(index, 0.0) for index in phi2_sigma_projector.projectors.FOUR_INDICES],
+        dtype=complex,
     )
-    pair = np.outer(phi_vector, phi_vector)
+    if np.max(np.abs(phi_vector.imag), initial=0.0) > 1.0e-12:
+        raise ValueError("Phi_210 must be real")
+    pair = np.outer(phi_vector.real, phi_vector.real)
     powers = phi2_sigma_projector.projectors.casimir_powers(pair)
     sigma_vector = np.asarray(dense["sigma_coordinates"], dtype=complex)
     output: list[complex] = []
@@ -236,21 +251,18 @@ def _phi2_sigma_pure_values(
 def _phi2_hdag_sigma_values(
     state: FieldState, dense: Mapping[str, Any]
 ) -> list[complex]:
-    # The canonical source orientation is Phi^2 H Sigma^dag.  The live orbit
-    # representative is its Hermitian conjugate Phi^2 Hdag Sigma.
+    """Evaluate ledger orientation Phi^2 Hdag Sigma in 210 and 1050 channels."""
     bilinear = phi2_hsigma.phi2_bilinear(state.phi, state.phi, +1)
     sigma_dag_vector = phi2_hsigma.five_to_vector(dense["sigma_dag"])
-    external = state.h[:, None] * sigma_dag_vector[None, :]
-    values: list[complex] = []
-    for projector in (
-        phi2_hsigma.project_210,
-        phi2_hsigma.project_1050,
-    ):
-        left = projector(bilinear, +1)
-        right = projector(external, +1)
-        source_orientation = np.vdot(left, right)
-        values.append(complex(np.conjugate(source_orientation)))
-    return values
+    external_source = state.h[:, None] * sigma_dag_vector[None, :]
+    output: list[complex] = []
+    for projector in (phi2_hsigma.project_210, phi2_hsigma.project_1050):
+        source_value = np.vdot(
+            projector(bilinear, +1),
+            projector(external_source, +1),
+        )
+        output.append(complex(np.conjugate(source_value)))
+    return output
 
 
 def _base_values(
@@ -261,7 +273,6 @@ def _base_values(
     h = state.h
     sigma = state.sigma
     sigma_dag = dense["sigma_dag"]
-
     if base_key == (0, 0, 0, 0, 0):
         return [1.0 + 0.0j]
     if base_key == (0, 0, 0, 1, 1):
@@ -289,16 +300,20 @@ def _base_values(
         return [complex(values[name]) for name in SIGMA_SELF_ORDER]
     if base_key == (0, 0, 1, 2, 1):
         return [
-            unique_hsigma.invariant_hdag_sigma2_sigmadag(
-                np.conjugate(h),
-                dense["sigma_dense"],
-                dense["sigma_dag_dense"],
+            complex(
+                unique_hsigma.invariant_hdag_sigma2_sigmadag(
+                    np.conjugate(h),
+                    dense["sigma_dense"],
+                    dense["sigma_dag_dense"],
+                )
             )
         ]
     if base_key == (0, 0, 2, 2, 0):
         return [
-            unique_hsigma.invariant_hdag2_sigma2(
-                np.conjugate(h), dense["sigma_dense"]
+            complex(
+                unique_hsigma.invariant_hdag2_sigma2(
+                    np.conjugate(h), dense["sigma_dense"]
+                )
             )
         ]
     if base_key == (0, 1, 1, 1, 1):
@@ -309,8 +324,7 @@ def _base_values(
         sigma_current = current45.hermitian_current_45(
             sigma, kinetic_factor=0.5
         )
-        adjoint = complex(direct.tensor_inner(h_current, sigma_current))
-        return [norm, adjoint]
+        return [norm, complex(direct.tensor_inner(h_current, sigma_current))]
     if base_key == (0, 2, 2, 0, 0):
         values = h_self.invariants(h)
         return [complex(values["I_1"]), complex(values["I_54"])]
@@ -343,34 +357,25 @@ def _direction_id(orbit_index: int, basis_index: int, base_family: str) -> str:
 def evaluate_directions(state: FieldState) -> tuple[Direction, ...]:
     value = state.validated()
     dense = _dense_state(value)
-    rows = census.census(False)
-    orbits = census.orbits(rows)
     directions: list[Direction] = []
-    for orbit_index, orbit in enumerate(orbits):
+    for orbit_index, orbit in enumerate(census.orbits(census.census(False))):
         counts_tuple = tuple(int(item) for item in orbit["orbit_key"])
-        counts = dict(zip(FIELD_ORDER, counts_tuple))
+        counts = dict(zip(FIELD_ORDER, counts_tuple, strict=True))
         base_key = tuple(counts[name] for name in NON_SINGLET_ORDER)
         base = ledger.BASE_FAMILIES[base_key]
         values = _base_values(value, base_key, dense)
-        if len(values) != int(orbit["so10_singlet_multiplicity"]):
+        expected = int(orbit["so10_singlet_multiplicity"])
+        if len(values) != expected or len(values) != len(base["basis"]):
             raise AssertionError(
-                f"{orbit['representative']} expected "
-                f"{orbit['so10_singlet_multiplicity']} values, got {len(values)}"
-            )
-        if len(values) != len(base["basis"]):
-            raise AssertionError(
-                f"base label/value mismatch for {base['id']}: "
-                f"{len(base['basis'])} vs {len(values)}"
+                f"{orbit['representative']}: expected {expected} values, got {len(values)}"
             )
         dressing = _dressing(value, counts)
         for basis_index, (label, base_value) in enumerate(
-            zip(base["basis"], values)
+            zip(base["basis"], values, strict=True)
         ):
             directions.append(
                 Direction(
-                    direction_id=_direction_id(
-                        orbit_index, basis_index, base["id"]
-                    ),
+                    direction_id=_direction_id(orbit_index, basis_index, base["id"]),
                     orbit_index=orbit_index,
                     basis_index=basis_index,
                     representative=orbit["representative"],
@@ -392,25 +397,17 @@ def evaluate_directions(state: FieldState) -> tuple[Direction, ...]:
 def parameter_schema(directions: Iterable[Direction]) -> tuple[Parameter, ...]:
     parameters: list[Parameter] = []
     for direction in directions:
-        if direction.self_conjugate:
+        components = ("real",) if direction.self_conjugate else ("re", "im")
+        for component in components:
+            prefix = "lambda" if component == "real" else component
             parameters.append(
                 Parameter(
-                    parameter_id=f"lambda::{direction.direction_id}",
+                    parameter_id=f"{prefix}::{direction.direction_id}",
                     direction_id=direction.direction_id,
-                    component="real",
-                    self_conjugate=True,
+                    component=component,
+                    self_conjugate=direction.self_conjugate,
                 )
             )
-        else:
-            for component in ("re", "im"):
-                parameters.append(
-                    Parameter(
-                        parameter_id=f"{component}::{direction.direction_id}",
-                        direction_id=direction.direction_id,
-                        component=component,
-                        self_conjugate=False,
-                    )
-                )
     return tuple(parameters)
 
 
@@ -418,16 +415,10 @@ def coefficient_jacobian(directions: Iterable[Direction]) -> dict[str, float]:
     output: dict[str, float] = {}
     for direction in directions:
         if direction.self_conjugate:
-            output[f"lambda::{direction.direction_id}"] = float(
-                direction.value.real
-            )
+            output[f"lambda::{direction.direction_id}"] = float(direction.value.real)
         else:
-            output[f"re::{direction.direction_id}"] = float(
-                2.0 * direction.value.real
-            )
-            output[f"im::{direction.direction_id}"] = float(
-                -2.0 * direction.value.imag
-            )
+            output[f"re::{direction.direction_id}"] = float(2.0 * direction.value.real)
+            output[f"im::{direction.direction_id}"] = float(-2.0 * direction.value.imag)
     return output
 
 
@@ -439,7 +430,10 @@ def potential_value(
     if unknown:
         raise KeyError(f"unknown coefficient keys: {sorted(unknown)}")
     return float(
-        sum(float(coefficients.get(name, 0.0)) * derivative for name, derivative in jacobian.items())
+        sum(
+            float(coefficients.get(name, 0.0)) * derivative
+            for name, derivative in jacobian.items()
+        )
     )
 
 
@@ -450,13 +444,15 @@ def deterministic_coefficients(parameters: Iterable[Parameter]) -> dict[str, flo
     }
 
 
-def scaling_audit(state: FieldState, directions: tuple[Direction, ...]) -> dict[str, Any]:
+def scaling_audit(
+    state: FieldState, directions: tuple[Direction, ...]
+) -> dict[str, Any]:
     factor = 1.37
     scaled = evaluate_directions(scale_state(state, factor))
     if [row.direction_id for row in scaled] != [row.direction_id for row in directions]:
         raise AssertionError("direction order changed under scaling")
     residuals: dict[str, float] = {}
-    for original, transformed in zip(directions, scaled):
+    for original, transformed in zip(directions, scaled, strict=True):
         target = original.value * factor ** original.degree
         scale = max(abs(target), abs(transformed.value), 1.0)
         residuals[original.direction_id] = float(
@@ -469,6 +465,69 @@ def scaling_audit(state: FieldState, directions: tuple[Direction, ...]) -> dict[
     }
 
 
+def phi2_hdag_sigma_orientation_audit(state: FieldState) -> dict[str, Any]:
+    value = state.validated()
+    dense = _dense_state(value)
+    actual = _phi2_hdag_sigma_values(value, dense)
+    bilinear = phi2_hsigma.phi2_bilinear(value.phi, value.phi, +1)
+    sigma_dag_vector = phi2_hsigma.five_to_vector(dense["sigma_dag"])
+    external_source = value.h[:, None] * sigma_dag_vector[None, :]
+    expected = []
+    source_values = []
+    for projector in (phi2_hsigma.project_210, phi2_hsigma.project_1050):
+        source = complex(
+            np.vdot(
+                projector(bilinear, +1),
+                projector(external_source, +1),
+            )
+        )
+        source_values.append(source)
+        expected.append(np.conjugate(source))
+    residuals = [abs(left - right) for left, right in zip(actual, expected, strict=True)]
+    return {
+        "source_orientation": "Phi2_H_SigmaDag",
+        "ledger_orientation": "Phi2_Hdag_Sigma",
+        "source_values": source_values,
+        "ledger_values": actual,
+        "maximum_conjugation_residual": float(max(residuals)),
+    }
+
+
+def graph_projector_basis_audit(state: FieldState) -> dict[str, Any]:
+    value = state.validated()
+    dense = _dense_state(value)
+    graph_values = phi2_sigma_graph.selected_contractions(
+        dense["phi_dense"],
+        dense["phi_dense"],
+        dense["sigma_dag_dense"],
+        dense["sigma_dense"],
+    )
+    projector_values = _phi2_sigma_pure_values(value, dense)
+    direct_label_residual = max(
+        abs(complex(graph) - complex(projector))
+        for graph, projector in zip(graph_values, projector_values, strict=True)
+    )
+    return {
+        "graph_basis_dimension": len(graph_values),
+        "pure_projector_basis_dimension": len(projector_values),
+        "direct_relabeling_residual": float(direct_label_residual),
+        "direct_graph_to_projector_relabeling_valid": bool(
+            direct_label_residual < 1.0e-10
+        ),
+    }
+
+
+def _complex_phi_rejected(state: FieldState) -> bool:
+    key = next(iter(state.phi))
+    phi = dict(state.phi)
+    phi[key] = complex(phi[key]) + 1.0e-4j
+    try:
+        FieldState(phi=phi, h=state.h, sigma=state.sigma, s=state.s, x=state.x).validated()
+    except ValueError:
+        return True
+    return False
+
+
 def build_report() -> dict[str, Any]:
     g1 = ledger.build_report()
     state = deterministic_state()
@@ -478,18 +537,14 @@ def build_report() -> dict[str, Any]:
     coefficients = deterministic_coefficients(parameters)
     potential = potential_value(directions, coefficients)
     scaling = scaling_audit(state, directions)
+    orientation = phi2_hdag_sigma_orientation_audit(state)
+    basis_audit = graph_projector_basis_audit(state)
 
     family_counts: dict[str, int] = {}
     for direction in directions:
-        family_counts[direction.base_family] = (
-            family_counts.get(direction.base_family, 0) + 1
-        )
+        family_counts[direction.base_family] = family_counts.get(direction.base_family, 0) + 1
     self_imaginary_residual = max(
-        [
-            abs(direction.value.imag)
-            for direction in directions
-            if direction.self_conjugate
-        ]
+        [abs(direction.value.imag) for direction in directions if direction.self_conjugate]
         or [0.0]
     )
     finite_values = all(
@@ -506,22 +561,22 @@ def build_report() -> dict[str, Any]:
     }
     parameter_ids = [parameter.parameter_id for parameter in parameters]
     direction_ids = [direction.direction_id for direction in directions]
+    expected_family_counts = {
+        row["id"]: sum(
+            int(orbit["multiplicity"])
+            for orbit in g1["operator_orbits"]
+            if orbit["base_family"] == row["id"]
+        )
+        for row in ledger.BASE_FAMILIES.values()
+    }
     checks = {
         "authoritative_G1_ledger_executes": g1["n_failed"] == 0,
-        "authoritative_G1_is_closed": g1["closure"]["G1_closed"],
+        "authoritative_G1_is_closed": bool(g1["closure"]["G1_closed"]),
         "all_48_orbits_compiled": len({row.orbit_index for row in directions}) == 48,
         "all_64_directions_compiled": len(directions) == 64,
-        "all_18_base_adapters_used": set(family_counts) == {
-            row["id"] for row in ledger.BASE_FAMILIES.values()
-        },
-        "family_direction_counts_match_G1": family_counts == {
-            row["id"]: sum(
-                int(orbit["multiplicity"])
-                for orbit in g1["operator_orbits"]
-                if orbit["base_family"] == row["id"]
-            )
-            for row in ledger.BASE_FAMILIES.values()
-        },
+        "all_18_base_adapters_used": set(family_counts)
+        == {row["id"] for row in ledger.BASE_FAMILIES.values()},
+        "family_direction_counts_match_G1": family_counts == expected_family_counts,
         "all_direction_ids_unique": len(set(direction_ids)) == 64,
         "exactly_91_real_parameters": len(parameters) == 91,
         "all_parameter_ids_unique": len(set(parameter_ids)) == 91,
@@ -531,9 +586,17 @@ def build_report() -> dict[str, Any]:
         "self_conjugate_values_real": self_imaginary_residual < 1.0e-9,
         "potential_value_real_and_finite": np.isfinite(potential),
         "zero_coefficients_give_zero": abs(potential_value(directions, {})) < 1.0e-15,
-        "homogeneous_degree_scaling_all_64": scaling[
-            "maximum_relative_residual"
-        ] < 1.0e-8,
+        "homogeneous_degree_scaling_all_64": scaling["maximum_relative_residual"] < 1.0e-8,
+        "real_210_contract_enforced": _complex_phi_rejected(state),
+        "Phi2_Hdag_Sigma_orientation_reconstructed": orientation[
+            "maximum_conjugation_residual"
+        ]
+        < 1.0e-11,
+        "graph_basis_not_directly_relabelled_as_projectors": not basis_audit[
+            "direct_graph_to_projector_relabeling_valid"
+        ],
+        "complete_real_field_dimension_is_486": REAL_FIELD_DIMENSION == 486,
+        "symmetric_Hessian_entries_are_118341": SYMMETRIC_HESSIAN_ENTRIES == 118341,
         "G2_field_gradient_not_claimed": True,
         "G2_field_Hessian_not_claimed": True,
         "whole_model_not_validated": True,
@@ -556,6 +619,8 @@ def build_report() -> dict[str, Any]:
                 "invariant_directions": len(directions),
                 "real_parameters": len(parameters),
                 "base_families": len(family_counts),
+                "real_field_dimension": REAL_FIELD_DIMENSION,
+                "symmetric_Hessian_entries": SYMMETRIC_HESSIAN_ENTRIES,
             },
             "field_conventions": {
                 "Phi": "real independent-component SO(10) four-form",
@@ -573,12 +638,15 @@ def build_report() -> dict[str, Any]:
             "generic_family_nonzero": nonzero_families,
             "self_conjugate_imaginary_residual": self_imaginary_residual,
             "scaling_audit": scaling,
+            "Phi2_Hdag_Sigma_orientation_audit": orientation,
+            "Phi2_Sigma_basis_audit": basis_audit,
             "flags": {
                 "all_64_arbitrary_component_values_callable": not failures,
                 "all_48_Hermitian_orbits_compiled": not failures,
                 "all_91_real_parameters_compiled": not failures,
                 "real_Hermitian_potential_assembled": not failures,
                 "coefficient_Jacobian_exact": not failures,
+                "real_210_field_enforced": not failures,
                 "field_gradient_complete": False,
                 "field_Hessian_complete": False,
                 "G2_closed": False,
@@ -587,16 +655,16 @@ def build_report() -> dict[str, Any]:
                 "empirical_discovery": False,
             },
             "next_exact_target": (
-                "Introduce one canonical 484-real field-coordinate vector and "
+                "Introduce one canonical 486-real field-coordinate vector and "
                 "differentiate this 91-parameter potential to emit the complete "
                 "gradient and Hessian with operator provenance."
             ),
             "verdict": (
-                "All 64 normalized G1 directions now evaluate on arbitrary "
-                "fields in one deterministic order and assemble into a real "
-                "91-parameter Hermitian potential. This closes the value and "
-                "coefficient-assembly layer of G2; field differentiation and "
-                "the simultaneous vacuum remain open."
+                "All 64 normalized G1 directions evaluate on arbitrary physical "
+                "fields and assemble into a real 91-parameter Hermitian potential. "
+                "The real-210, chiral-126bar, projector-basis, and fragile conjugate "
+                "orientation contracts are explicit. G2 remains PARTIAL until the "
+                "complete 486-real gradient and Hessian are constructed."
             ),
         }
     )
