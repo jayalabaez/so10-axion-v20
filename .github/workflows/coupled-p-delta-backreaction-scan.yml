@@ -1,0 +1,64 @@
+name: coupled-p-delta-backreaction-scan
+
+on:
+  push:
+    branches:
+      - agent/coupled-p-delta-backreaction-scan
+  pull_request:
+    paths:
+      - coupled_p_delta_backreaction_scan_v20.py
+      - .github/workflows/coupled-p-delta-backreaction-scan.yml
+  workflow_dispatch:
+
+jobs:
+  coupled-p-delta-backreaction-scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+      - name: Compile coupled scan
+        run: python -m py_compile coupled_p_delta_backreaction_scan_v20.py
+      - name: Execute complete 462-real scan
+        id: scan
+        continue-on-error: true
+        run: |
+          python coupled_p_delta_backreaction_scan_v20.py > /tmp/coupled-p-delta.log
+          echo "exit_code=$?" >> "$GITHUB_OUTPUT"
+      - name: Print scan report
+        if: always()
+        run: |
+          test -f COUPLED_P_DELTA_BACKREACTION_SCAN_V20.json && cat COUPLED_P_DELTA_BACKREACTION_SCAN_V20.json || cat /tmp/coupled-p-delta.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: coupled-p-delta-backreaction-scan
+          path: |
+            COUPLED_P_DELTA_BACKREACTION_SCAN_V20.json
+            COUPLED_P_DELTA_BACKREACTION_SCAN_V20.md
+          if-no-files-found: warn
+      - name: Assert coupled local vacuum or fail closed
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          path = Path('COUPLED_P_DELTA_BACKREACTION_SCAN_V20.json')
+          assert path.exists(), 'scan report missing'
+          report = json.loads(path.read_text())
+          assert report['n_failed'] == 0, report['failures']
+          scan = report['scan']
+          assert scan['negative_modes'] == 0
+          assert scan['zero_modes'] == 33
+          assert scan['gauge_orbit_rank'] == 33
+          assert scan['minimum_physical_eigenvalue'] > 1e-6
+          assert scan['bfb_margin'] > 0
+          assert report['flag']['complete_multifield_model'] is False
+          assert report['flag']['whole_model_validated'] is False
+          assert report['flag']['empirical_discovery'] is False
+          PY
