@@ -97,6 +97,8 @@ def build_blocks(
         raise ValueError(f"diagonal_m2 mismatch: missing={missing}, extra={extra}")
     if not all(np.isfinite(float(diagonal_m2[name])) for name in required):
         raise ValueError("all diagonal M2 inputs must be finite real values")
+    if abs(float(np.imag(mu_eta))) > 1.0e-14:
+        raise ValueError("mu_eta must be real in this CP-aligned Hermitian gate")
 
     cg = exact_clebsch_values(p=p, a=a, omega=omega)
     a_u = np.array(
@@ -131,10 +133,6 @@ def build_blocks(
         ],
         dtype=complex,
     )
-    # A real 210 VEV requires a Hermitian potential. A complex mu_eta can be
-    # rephased only together with fields/couplings; fail closed on the diagonal.
-    if abs(float(np.imag(mu_eta))) > 1.0e-14:
-        raise ValueError("mu_eta must be real in this CP-aligned Hermitian gate")
 
     b = np.zeros((2, 3), dtype=complex)
     b[0, 0] = b_hh_m2
@@ -425,12 +423,27 @@ def write_markdown(report: dict[str, Any]) -> str:
     )
 
 
+def _json_default(obj: Any) -> Any:
+    if isinstance(obj, np.bool_):
+        return bool(obj)
+    if isinstance(obj, np.integer):
+        return int(obj)
+    if isinstance(obj, np.floating):
+        return float(obj)
+    if isinstance(obj, np.ndarray):
+        return obj.tolist()
+    if isinstance(obj, complex):
+        return {"re": float(obj.real), "im": float(obj.imag)}
+    raise TypeError(f"Object of type {type(obj).__name__} is not JSON serializable")
+
+
 def main(argv: list[str] | None = None) -> int:
     argparse.ArgumentParser(description=__doc__).parse_args(argv)
     report = build_report()
-    OUT_JSON.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    payload = json.dumps(report, indent=2, default=_json_default) + "\n"
+    OUT_JSON.write_text(payload, encoding="utf-8")
     OUT_MD.write_text(write_markdown(report), encoding="utf-8")
-    print(json.dumps(report, indent=2))
+    print(payload, end="")
     return 0 if report["n_failed"] == 0 else 1
 
 
