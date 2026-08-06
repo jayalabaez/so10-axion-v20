@@ -40,6 +40,22 @@ jobs:
           test_exact_hsigma_hermitian_family_closure_v20.py
           test_next_gen_triplet_hsigma_hermitian_family_gate_v20.py
 
+      - name: Print upstream portal diagnostics
+        run: |
+          python - <<'PY'
+          import json
+          import next_gen_triplet_portal_norm_square_gate_v20 as upstream
+
+          report = upstream.build_report()
+          print(json.dumps({
+              'status': report.get('status'),
+              'n_failed': report.get('n_failed'),
+              'failures': report.get('failures'),
+              'checks': report.get('checks'),
+              'upstream_status': report.get('upstream_status'),
+          }, indent=2))
+          PY
+
       - name: Run exact family tests
         run: >-
           python -m pytest -q
