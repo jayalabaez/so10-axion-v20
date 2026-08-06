@@ -8,7 +8,9 @@ on:
       - 'live_g1_tensor_closure_ledger_v20.py'
       - 'live_g1_g8_gate_ledger_v20.py'
       - 'live_g2_arbitrary_component_potential_values_v20.py'
+      - 'live_g2_pr155_correction_audit_v20.py'
       - 'test_live_g2_arbitrary_component_potential_values_v20.py'
+      - 'test_live_g2_pr155_correction_audit_v20.py'
       - 'test_exact_unique_hsigma_chiral_quartics_v20.py'
       - 'test_live_g1_tensor_closure_ledger_v20.py'
       - 'test_live_g1_g8_gate_ledger_v20.py'
@@ -21,7 +23,9 @@ on:
       - 'live_g1_tensor_closure_ledger_v20.py'
       - 'live_g1_g8_gate_ledger_v20.py'
       - 'live_g2_arbitrary_component_potential_values_v20.py'
+      - 'live_g2_pr155_correction_audit_v20.py'
       - 'test_live_g2_arbitrary_component_potential_values_v20.py'
+      - 'test_live_g2_pr155_correction_audit_v20.py'
       - 'test_exact_unique_hsigma_chiral_quartics_v20.py'
       - 'test_live_g1_tensor_closure_ledger_v20.py'
       - 'test_live_g1_g8_gate_ledger_v20.py'
@@ -46,30 +50,32 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt pytest
-      - name: Compile G1 and G2 modules
+      - name: Compile modules
         run: |
           python -m py_compile \
             live_g1_tensor_closure_ledger_v20.py \
             live_g1_g8_gate_ledger_v20.py \
             live_g2_arbitrary_component_potential_values_v20.py \
-            test_live_g2_arbitrary_component_potential_values_v20.py
-      - name: Execute exact live census and G1 closure
+            live_g2_pr155_correction_audit_v20.py \
+            test_live_g2_arbitrary_component_potential_values_v20.py \
+            test_live_g2_pr155_correction_audit_v20.py
+      - name: Execute certificates
         run: |
           python g1_exact_declared_symmetry_character_census_v20.py > /tmp/g1-census.json
           python exact_unique_hsigma_chiral_quartics_v20.py > /tmp/g1-unique-quartics.json
           python live_g1_tensor_closure_ledger_v20.py > /tmp/g1-tensor-ledger.json
           python live_g1_g8_gate_ledger_v20.py --no-write > /tmp/g1-g8-ledger.json
-      - name: Execute arbitrary-field G2 value compiler
-        run: |
           python live_g2_arbitrary_component_potential_values_v20.py --write > /tmp/g2-values.json
+          python live_g2_pr155_correction_audit_v20.py --write > /tmp/g2-audit.json
       - name: Focused regression tests
         run: |
           python -m pytest -q \
             test_exact_unique_hsigma_chiral_quartics_v20.py \
             test_live_g1_tensor_closure_ledger_v20.py \
             test_live_g1_g8_gate_ledger_v20.py \
-            test_live_g2_arbitrary_component_potential_values_v20.py
-      - name: Independently assert G1 closure and G2 value layer
+            test_live_g2_arbitrary_component_potential_values_v20.py \
+            test_live_g2_pr155_correction_audit_v20.py
+      - name: Assert exact counts, orientations, and fail-closed scope
         run: |
           python - <<'PY'
           import json
@@ -87,26 +93,31 @@ jobs:
           assert q['n_failed'] == 0, q
           assert q['summary']['closed'] == ['G1']
           assert q['gates']['G1']['status'] == 'CLOSED'
-          assert q['gates']['G2']['status'] != 'CLOSED'
+          assert q['gates']['G2']['status'] == 'PARTIAL'
           assert not q['flags']['whole_model_validated']
 
-          d=json.load(open('LIVE_G2_ARBITRARY_COMPONENT_POTENTIAL_VALUES_V20.json'))
-          assert d['n_failed']==0, d['failures']
-          assert d['counts']=={
-              'Hermitian_orbits':48,
-              'invariant_directions':64,
-              'real_parameters':91,
-              'base_families':18,
-          }, d['counts']
-          assert d['flags']['all_64_arbitrary_component_values_callable']
-          assert d['flags']['all_91_real_parameters_compiled']
-          assert d['flags']['real_Hermitian_potential_assembled']
-          assert d['flags']['coefficient_Jacobian_exact']
+          d = json.load(open('LIVE_G2_ARBITRARY_COMPONENT_POTENTIAL_VALUES_V20.json'))
+          assert d['n_failed'] == 0, d['failures']
+          assert d['counts']['Hermitian_orbits'] == 48
+          assert d['counts']['invariant_directions'] == 64
+          assert d['counts']['real_parameters'] == 91
+          assert d['counts']['base_families'] == 18
+          assert d['counts']['real_field_dimension'] == 486
+          assert d['counts']['symmetric_Hessian_entries'] == 118341
+          assert d['flags']['real_210_field_enforced']
+          assert d['Phi2_Hdag_Sigma_orientation_audit']['maximum_conjugation_residual'] < 1e-11
+          assert not d['Phi2_Sigma_basis_audit']['direct_graph_to_projector_relabeling_valid']
           assert d['scaling_audit']['maximum_relative_residual'] < 1e-8
           assert not d['flags']['field_gradient_complete']
           assert not d['flags']['field_Hessian_complete']
           assert not d['flags']['G2_closed']
           assert not d['flags']['whole_model_validated']
+
+          a = json.load(open('LIVE_G2_PR155_CORRECTION_AUDIT_V20.json'))
+          assert a['n_failed'] == 0, a['failures']
+          assert a['flags']['PR155_G2_closed_claim_rejected']
+          assert a['derivative_scope']['complete_real_field_dimension'] == 486
+          assert a['derivative_scope']['complete_symmetric_Hessian_entries'] == 118341
           PY
       - uses: actions/upload-artifact@v4
         if: always()
@@ -115,3 +126,5 @@ jobs:
           path: |
             LIVE_G2_ARBITRARY_COMPONENT_POTENTIAL_VALUES_V20.json
             LIVE_G2_ARBITRARY_COMPONENT_POTENTIAL_VALUES_V20.md
+            LIVE_G2_PR155_CORRECTION_AUDIT_V20.json
+            LIVE_G2_PR155_CORRECTION_AUDIT_V20.md
