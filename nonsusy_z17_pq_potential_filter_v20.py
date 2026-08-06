@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
-r"""Signed SO(10)×Z17/PQ operator filter for the non-SUSY v20 scalar EFT.
+r"""Declared-symmetry SO(10) x Z17/PQ operator filter for non-SUSY v20.
 
 Charge neutrality and SO(10) singlet existence are separate requirements.
-The historical catalogue incorrectly marked ``210_H 10_H^dag 10_H`` as an
-SO(10) invariant. It is forbidden because ``10 tensor 10 = 1 + 45 + 54``
-contains no 210. The allowed 210-dependent Higgs norm portal starts at
-``(210_H^dag 210_H)(10_H^dag 10_H)``, not a cubic linear in 210.
+The live model declares SO(10), Z17, and the PQ scalar selection rule, but no
+continuous U(1)_X. X charges are retained only as historical metadata and are
+not imposed by default. Call ``_allowed(..., require_x=True)`` only for an
+explicit comparison with the superseded continuous-X assumption.
 
-The filter remains an operator-existence ledger, not a complete invariant-ring
-multiplicity calculation or a full component potential.
+The filter remains an operator-existence ledger rather than a complete
+invariant-ring multiplicity calculation.
 """
 from __future__ import annotations
 
@@ -37,28 +37,33 @@ CHARGES = {
 
 SOURCES = {
     "charges": "axion_so10_theory_v20.tex canonical PQ/X/Z17 assignment",
+    "declared_contract": "SO(10) gauge + Z17 + PQ scalar selection; continuous X absent",
     "vector_product": "10 tensor 10 = 1 + 45 + 54; no 210",
-    "scope": "existence and charge filtering; tensor multiplicities remain open",
+    "scope": "existence and declared-charge filtering; tensor multiplicities may remain open",
 }
 
 
 def _total_charge(counts: dict[str, int]) -> dict[str, int]:
-    pq = x = z = 0
+    totals = {"PQ": 0, "X": 0, "Z17": 0}
     for name, multiplicity in counts.items():
-        if multiplicity == 0:
-            continue
-        charge = CHARGES[name]
-        pq += multiplicity * charge["PQ"]
-        x += multiplicity * charge["X"]
-        z += multiplicity * charge["Z17"]
-    return {"PQ": pq, "X": x, "Z17": z % 17}
+        if multiplicity:
+            for charge in totals:
+                totals[charge] += multiplicity * CHARGES[name][charge]
+    totals["Z17"] %= 17
+    return totals
 
 
-def _allowed(totals: dict[str, int], *, require_x: bool = True) -> dict[str, bool]:
+def _allowed(totals: dict[str, int], *, require_x: bool = False) -> dict[str, bool]:
     pq_ok = totals["PQ"] == 0
     z17_ok = totals["Z17"] == 0
     x_ok = totals["X"] == 0 if require_x else True
-    return {"PQ": pq_ok, "X": x_ok, "Z17": z17_ok, "all": pq_ok and x_ok and z17_ok}
+    return {
+        "PQ": pq_ok,
+        "X": x_ok,
+        "Z17": z17_ok,
+        "X_enforced": require_x,
+        "all": pq_ok and z17_ok and x_ok,
+    }
 
 
 def _entry(
@@ -69,9 +74,10 @@ def _entry(
     *,
     feeds_triplet_mass: bool = False,
     note: str = "",
+    require_x: bool = False,
 ) -> dict[str, Any]:
     totals = _total_charge(counts)
-    charge = _allowed(totals)
+    charge = _allowed(totals, require_x=require_x)
     if not charge["all"]:
         status = "CHARGE_FORBIDDEN"
     elif so10 is False:
@@ -93,64 +99,33 @@ def _entry(
     }
 
 
-def operator_catalogue() -> list[dict[str, Any]]:
+def operator_catalogue(*, require_x: bool = False) -> list[dict[str, Any]]:
     raw = [
+        ("Phi17", {"Phi17": 1}, 1, True, False, "allowed by declared symmetry; include h.c."),
+        ("Phi17^2", {"Phi17": 2}, 2, True, False, "phase-sensitive quadratic; include h.c."),
         ("10_H^dag 10_H", {"10_H_dag": 1, "10_H": 1}, 2, True, True, "quadratic norm"),
         ("126bar_H^dag 126bar_H", {"126bar_H_dag": 1, "126bar_H": 1}, 2, True, True, "quadratic norm"),
         ("210_H^dag 210_H", {"210_H_dag": 1, "210_H": 1}, 2, True, False, "quadratic norm"),
         ("S^dag S", {"S_dag": 1, "S": 1}, 2, True, False, "quadratic norm"),
         ("Phi17^dag Phi17", {"Phi17_dag": 1, "Phi17": 1}, 2, True, False, "quadratic norm"),
-        ("210_H^3", {"210_H": 3}, 3, True, False, "one channel independently guaranteed; complete multiplicity open"),
-        (
-            "210_H 10_H^dag 10_H",
-            {"210_H": 1, "10_H_dag": 1, "10_H": 1},
-            3,
-            False,
-            True,
-            "FORBIDDEN: 10 tensor 10 contains 1+45+54 and no 210",
-        ),
-        (
-            "210_H 126bar_H^dag 126bar_H",
-            {"210_H": 1, "126bar_H_dag": 1, "126bar_H": 1},
-            3,
-            True,
-            True,
-            "one channel independently guaranteed; complete multiplicity open",
-        ),
+        ("210_H^3", {"210_H": 3}, 3, True, False, "unique cubic now derived elsewhere"),
+        ("210_H 10_H^dag 10_H", {"210_H": 1, "10_H_dag": 1, "10_H": 1}, 3, False, True, "FORBIDDEN: 10 tensor 10 contains no 210"),
+        ("210_H 126bar_H^dag 126bar_H", {"210_H": 1, "126bar_H_dag": 1, "126bar_H": 1}, 3, True, True, "exact cubic channel derived elsewhere"),
         ("bare_10_H^2", {"10_H": 2}, 2, True, True, "SO(10)-allowed but PQ-forbidden"),
         ("10_H^2 S", {"10_H": 2, "S": 1}, 3, True, True, "PQ-safe within-10 mixing"),
         ("bare_126bar_H^2", {"126bar_H": 2}, 2, False, True, "no singlet in (126bar)^2"),
         ("126bar_H^2 S", {"126bar_H": 2, "S": 1}, 3, False, True, "no singlet in (126bar)^2"),
         ("10_H 126bar_H S", {"10_H": 1, "126bar_H": 1, "S": 1}, 3, False, True, "10 tensor 126bar has no singlet"),
-        ("S^3", {"S": 3}, 3, True, False, "charge-forbidden"),
-        ("Phi17^3", {"Phi17": 3}, 3, True, False, "X-forbidden"),
-        ("210_H^4", {"210_H": 4}, 4, True, False, "multiple contractions; multiplicity open"),
-        ("(10_H^dag 10_H)^2", {"10_H_dag": 2, "10_H": 2}, 4, True, True, "at least two independent channels"),
-        ("(126bar_H^dag 126bar_H)^2", {"126bar_H_dag": 2, "126bar_H": 2}, 4, True, True, "at least two independent channels"),
-        (
-            "10_H^dag 10_H 126bar_H^dag 126bar_H",
-            {"10_H_dag": 1, "10_H": 1, "126bar_H_dag": 1, "126bar_H": 1},
-            4,
-            True,
-            True,
-            "at least two independent channels",
-        ),
-        (
-            "210_H^dag 210_H 10_H^dag 10_H",
-            {"210_H_dag": 1, "210_H": 1, "10_H_dag": 1, "10_H": 1},
-            4,
-            True,
-            True,
-            "allowed quartic replacement for forbidden linear-210 cubic",
-        ),
-        (
-            "210_H^dag 210_H 126bar_H^dag 126bar_H",
-            {"210_H_dag": 1, "210_H": 1, "126bar_H_dag": 1, "126bar_H": 1},
-            4,
-            True,
-            True,
-            "at least two independent channels",
-        ),
+        ("S^3", {"S": 3}, 3, True, False, "PQ-forbidden"),
+        ("Phi17^3", {"Phi17": 3}, 3, True, False, "allowed by declared symmetry; include h.c."),
+        ("10_H^dag 10_H Phi17", {"10_H_dag": 1, "10_H": 1, "Phi17": 1}, 3, True, True, "allowed cubic norm portal; include h.c."),
+        ("Phi17^4", {"Phi17": 4}, 4, True, False, "allowed by declared symmetry; include h.c."),
+        ("210_H^4", {"210_H": 4}, 4, True, False, "four exact self-quartics derived elsewhere"),
+        ("(10_H^dag 10_H)^2", {"10_H_dag": 2, "10_H": 2}, 4, True, True, "two vector quartics: norm square and |H.H|^2"),
+        ("(126bar_H^dag 126bar_H)^2", {"126bar_H_dag": 2, "126bar_H": 2}, 4, True, True, "four exact self-quartics derived elsewhere"),
+        ("10_H^dag 10_H 126bar_H^dag 126bar_H", {"10_H_dag": 1, "10_H": 1, "126bar_H_dag": 1, "126bar_H": 1}, 4, True, True, "singlet and 45 Hermitian channels"),
+        ("210_H^dag 210_H 10_H^dag 10_H", {"210_H_dag": 1, "210_H": 1, "10_H_dag": 1, "10_H": 1}, 4, True, True, "quartic replacement for forbidden linear-210 cubic"),
+        ("210_H^dag 210_H 126bar_H^dag 126bar_H", {"210_H_dag": 1, "210_H": 1, "126bar_H_dag": 1, "126bar_H": 1}, 4, True, True, "six pure-irrep channels derived elsewhere"),
         ("|S|^2 |10_H|^2", {"S_dag": 1, "S": 1, "10_H_dag": 1, "10_H": 1}, 4, True, True, "norm portal"),
         ("|S|^2 |126bar_H|^2", {"S_dag": 1, "S": 1, "126bar_H_dag": 1, "126bar_H": 1}, 4, True, True, "norm portal"),
         ("|Phi17|^2 |S|^2", {"Phi17_dag": 1, "Phi17": 1, "S_dag": 1, "S": 1}, 4, True, False, "hierarchy portal"),
@@ -160,33 +135,14 @@ def operator_catalogue() -> list[dict[str, Any]]:
         ("210_H^dag 210_H Phi17^dag Phi17", {"210_H_dag": 1, "210_H": 1, "Phi17_dag": 1, "Phi17": 1}, 4, True, False, "norm portal"),
         ("|Phi17|^2 |10_H|^2", {"Phi17_dag": 1, "Phi17": 1, "10_H_dag": 1, "10_H": 1}, 4, True, True, "norm portal"),
         ("|Phi17|^2 |126bar_H|^2", {"Phi17_dag": 1, "Phi17": 1, "126bar_H_dag": 1, "126bar_H": 1}, 4, True, True, "norm portal"),
-        (
-            "210 · 10 · 126 · S",
-            {"210_H": 1, "10_H": 1, "126bar_H": 1, "S": 1},
-            4,
-            True,
-            True,
-            "lambda4 odd-H portal; CG normalization remains open",
-        ),
-        (
-            "126bar_H^2 10_H^2 S^2",
-            {"126bar_H": 2, "10_H": 2, "S": 2},
-            6,
-            "LITERATURE_CLAIMED",
-            False,
-            "phase-sensitive locking operator",
-        ),
-        (
-            "|126bar_H|^2 |10_H|^2 |S|^2",
-            {"126bar_H_dag": 1, "126bar_H": 1, "10_H_dag": 1, "10_H": 1, "S_dag": 1, "S": 1},
-            6,
-            True,
-            False,
-            "positive modulus companion to phase locking",
-        ),
+        ("10_H^dag 10_H Phi17^2", {"10_H_dag": 1, "10_H": 1, "Phi17": 2}, 4, True, True, "phase-sensitive norm portal; include h.c."),
+        ("10_H^2 S Phi17", {"10_H": 2, "S": 1, "Phi17": 1}, 4, True, True, "declared-symmetry extension of kappa channel; include h.c."),
+        ("210 · 10 · 126 · S", {"210_H": 1, "10_H": 1, "126bar_H": 1, "S": 1}, 4, True, True, "lambda4 odd-H portal"),
+        ("126bar_H^2 10_H^2 S^2", {"126bar_H": 2, "10_H": 2, "S": 2}, 6, "LITERATURE_CLAIMED", False, "phase-sensitive locking operator"),
+        ("|126bar_H|^2 |10_H|^2 |S|^2", {"126bar_H_dag": 1, "126bar_H": 1, "10_H_dag": 1, "10_H": 1, "S_dag": 1, "S": 1}, 6, True, False, "positive modulus companion"),
     ]
     return [
-        _entry(name, counts, dim, so10, feeds_triplet_mass=feeds, note=note)
+        _entry(name, counts, dim, so10, feeds_triplet_mass=feeds, note=note, require_x=require_x)
         for name, counts, dim, so10, feeds, note in raw
     ]
 
@@ -194,23 +150,12 @@ def operator_catalogue() -> list[dict[str, Any]]:
 def pq_consequences_for_triplet_mixing(ops: list[dict[str, Any]]) -> dict[str, Any]:
     by_name = {row["name"]: row for row in ops}
     return {
-        "status": "SIGNED_PQ_FILTERED_TRIPLET_MIXING_CONSEQUENCES",
-        "bare_10_squared": {
-            "charge_allowed": by_name["bare_10_H^2"]["charge_allowed"]["all"],
-            "status": by_name["bare_10_H^2"]["status"],
-        },
-        "10_squared_S": {
-            "charge_allowed": by_name["10_H^2 S"]["charge_allowed"]["all"],
-            "status": by_name["10_H^2 S"]["status"],
-        },
-        "forbidden_210_10dag10": {
-            "status": by_name["210_H 10_H^dag 10_H"]["status"],
-            "implication": "no triplet diagonal mass linear in the 210 VEV from this cubic",
-        },
-        "susy_cal_T_translation": {
-            "identified_with_nonsusy_v20": False,
-            "note": "SUSY superpotential mass matrices are not the non-SUSY Hessian",
-        },
+        "status": "DECLARED_PQ_FILTERED_TRIPLET_MIXING_CONSEQUENCES",
+        "bare_10_squared": {"charge_allowed": by_name["bare_10_H^2"]["charge_allowed"]["all"], "status": by_name["bare_10_H^2"]["status"]},
+        "10_squared_S": {"charge_allowed": by_name["10_H^2 S"]["charge_allowed"]["all"], "status": by_name["10_H^2 S"]["status"]},
+        "forbidden_210_10dag10": {"status": by_name["210_H 10_H^dag 10_H"]["status"], "implication": "no triplet diagonal mass linear in the 210 VEV from this cubic"},
+        "phi17_extensions": {"Hnorm_Phi17": by_name["10_H^dag 10_H Phi17"]["status"], "H2_S_Phi17": by_name["10_H^2 S Phi17"]["status"]},
+        "susy_cal_T_translation": {"identified_with_nonsusy_v20": False, "note": "SUSY superpotential mass matrices are not the non-SUSY Hessian"},
     }
 
 
@@ -219,27 +164,31 @@ def charge_allowed_reduced_potential(anchor: dict[str, float]) -> dict[str, Any]
     if not base.get("flag", {}).get("reduced_radial_global_minimum_proved"):
         return {"status": "REDUCED_POTENTIAL_UPSTREAM_FAILED", "flag": {"radial_global_minimum_preserved": False}}
     return {
-        "status": "SIGNED_CHARGE_ALLOWED_REDUCED_POTENTIAL__FULL_TENSORS_OPEN",
+        "status": "DECLARED_CHARGE_REDUCED_POTENTIAL__FULL_TENSORS_OPEN",
         "base_witness_status": base.get("status"),
         "target_vevs_GeV": base["potential_definition"]["target_vevs_GeV"],
         "radial_quartic_eigenvalues": base["proof"]["normalized_quartic_eigenvalues"],
         "radial_positive_definite": True,
         "flag": {
-            "pq_z17_x_filter_applied": True,
+            "pq_z17_filter_applied": True,
+            "pq_z17_x_filter_applied": False,
+            "continuous_x_filter_applied": False,
             "radial_global_minimum_preserved": True,
             "forbidden_210_10dag10_removed": True,
             "full_component_tensors_normalized": False,
             "complete_so10_scalar_potential": False,
             "phase_hessian_complete": False,
         },
-        "verdict": "Reduced witness survives after removing the forbidden cubic; full tensor minimization remains open.",
+        "verdict": "Reduced witness survives under the declared no-X contract; full tensor minimization remains open.",
     }
 
 
 def build_report() -> dict[str, Any]:
     anchor = scalar_pd._unification_anchor()
-    operators = operator_catalogue()
+    operators = operator_catalogue(require_x=False)
+    historical_x = operator_catalogue(require_x=True)
     by_name = {row["name"]: row for row in operators}
+    historical_by_name = {row["name"]: row for row in historical_x}
     allowed = [row for row in operators if row["status"] in {"ALLOWED", "CHARGE_OK_SO10_OPEN"}]
     forbidden_charge = [row for row in operators if row["status"] == "CHARGE_FORBIDDEN"]
     forbidden_so10 = [row for row in operators if row["status"] == "SO10_FORBIDDEN"]
@@ -248,11 +197,13 @@ def build_report() -> dict[str, Any]:
     literature = lit_cg.build_report()
 
     checks = {
-        "catalogue_nonempty": len(operators) >= 30,
+        "catalogue_nonempty": len(operators) >= 38,
         "bare_10_squared_pq_forbidden": by_name["bare_10_H^2"]["status"] == "CHARGE_FORBIDDEN",
         "10_squared_S_allowed": by_name["10_H^2 S"]["status"] == "ALLOWED",
         "locking_operator_charge_allowed": by_name["126bar_H^2 10_H^2 S^2"]["charge_allowed"]["all"],
-        "phi3_x_forbidden": by_name["Phi17^3"]["status"] == "CHARGE_FORBIDDEN",
+        "phi3_allowed_without_X": by_name["Phi17^3"]["status"] == "ALLOWED",
+        "phi3_forbidden_only_in_historical_X_mode": historical_by_name["Phi17^3"]["status"] == "CHARGE_FORBIDDEN",
+        "H2S_Phi17_allowed_without_X": by_name["10_H^2 S Phi17"]["status"] == "ALLOWED",
         "forbidden_210_10dag10": by_name["210_H 10_H^dag 10_H"]["status"] == "SO10_FORBIDDEN",
         "forbidden_cubic_not_feeding_MT": "210_H 10_H^dag 10_H" not in [row["name"] for row in feed_mt],
         "quartic_2102_10dag10_allowed": by_name["210_H^dag 210_H 10_H^dag 10_H"]["status"] == "ALLOWED",
@@ -262,62 +213,31 @@ def build_report() -> dict[str, Any]:
     }
     failures = [name for name, passed in checks.items() if not passed]
     return {
-        "status": (
-            "NONSUSY_Z17_PQ_OPERATOR_FILTER_COMPLETE__FULL_TENSORS_OPEN"
-            if not failures
-            else "NONSUSY_Z17_PQ_OPERATOR_FILTER_FAILED"
-        ),
-        "n_checks": len(checks),
-        "n_failed": len(failures),
-        "failures": failures,
+        "status": "NONSUSY_Z17_PQ_OPERATOR_FILTER_COMPLETE__FULL_TENSORS_OPEN" if not failures else "NONSUSY_Z17_PQ_OPERATOR_FILTER_FAILED",
+        "n_checks": len(checks), "n_failed": len(failures), "failures": failures,
         "sources": SOURCES,
+        "declared_symmetry_contract": {"gauge": ["SO(10)"], "global": ["Z17", "PQ_as_scalar_selection_rule"], "continuous_X_imposed": False},
         "charges": CHARGES,
-        "n_operators": len(operators),
-        "n_allowed_or_so10_open": len(allowed),
-        "n_charge_forbidden": len(forbidden_charge),
-        "n_so10_forbidden": len(forbidden_so10),
-        "n_allowed_feeding_M_T": len(feed_mt),
-        "operators": operators,
-        "allowed_feeding_M_T": [row["name"] for row in feed_mt],
-        "forbidden_names": [row["name"] for row in forbidden_charge + forbidden_so10],
+        "n_operators": len(operators), "n_allowed_or_so10_open": len(allowed), "n_charge_forbidden": len(forbidden_charge), "n_so10_forbidden": len(forbidden_so10), "n_allowed_feeding_M_T": len(feed_mt),
+        "operators": operators, "allowed_feeding_M_T": [row["name"] for row in feed_mt], "forbidden_names": [row["name"] for row in forbidden_charge + forbidden_so10],
+        "historical_continuous_X_comparison": {"Phi17^3_status": historical_by_name["Phi17^3"]["status"], "not_the_declared_model": True},
         "pq_triplet_consequences": pq_consequences_for_triplet_mixing(operators),
         "charge_allowed_reduced_potential": potential,
         "upstream_literature_cg_status": literature.get("status"),
+        "checks": checks,
         "flag": {
-            "z17_pq_x_filter_applied": True,
-            "bare_10_squared_forbidden": True,
-            "ten2_S_allowed": True,
-            "locking_operator_charge_allowed": True,
-            "forbidden_210_10dag10_removed": True,
-            "quartic_2102_10dag10_retained": True,
-            "charge_allowed_reduced_potential_built": True,
-            "invented_unpublished_cg_tensors": False,
-            "complete_so10_scalar_potential": False,
-            "whole_model_excluded": False,
+            "z17_pq_filter_applied": True, "z17_pq_x_filter_applied": False, "continuous_x_filter_applied": False,
+            "bare_10_squared_forbidden": True, "ten2_S_allowed": True, "locking_operator_charge_allowed": True,
+            "phi17_low_dimension_terms_retained": True, "forbidden_210_10dag10_removed": True,
+            "quartic_2102_10dag10_retained": True, "charge_allowed_reduced_potential_built": True,
+            "invented_unpublished_cg_tensors": False, "complete_so10_scalar_potential": False, "whole_model_excluded": False,
         },
-        "verdict": (
-            "Charge and SO(10) existence are now separated. The impossible "
-            "210·10†·10 cubic is removed, while the allowed 210†210·10†10 "
-            "quartic remains. All spectra that used a mass linear in <210> "
-            "from the forbidden cubic require revalidation."
-        ),
+        "verdict": "The signed filter now follows the declared SO(10)+Z17+PQ contract. Continuous X is metadata only, so low-dimensional Phi17 terms and their H10 portals are retained. The SO(10)-forbidden 210·10dag·10 cubic remains excluded.",
     }
 
 
 def write_markdown(report: dict[str, Any]) -> str:
-    return "\n".join(
-        [
-            "# Signed non-SUSY Z17/PQ operator filter — v20",
-            "",
-            f"**Status:** `{report['status']}`",
-            "",
-            report["verdict"],
-            "",
-            f"- SO(10)-forbidden operators: {report['n_so10_forbidden']}",
-            f"- Allowed M_T-feeding operators: {report['n_allowed_feeding_M_T']}",
-            "",
-        ]
-    )
+    return "\n".join(["# Declared-symmetry non-SUSY Z17/PQ filter — v20", "", f"**Status:** `{report['status']}`", "", report["verdict"], "", f"- Continuous X imposed: {report['declared_symmetry_contract']['continuous_X_imposed']}", f"- Allowed M_T-feeding operators: {report['n_allowed_feeding_M_T']}", ""])
 
 
 def main(argv: list[str] | None = None) -> int:

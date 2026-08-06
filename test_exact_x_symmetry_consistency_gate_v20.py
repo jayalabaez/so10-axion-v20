@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import exact_x_symmetry_consistency_gate_v20 as gate
 
 
@@ -11,10 +12,23 @@ def test_declared_symmetry_inventory():
     assert sym["x_declared_global"] is False
 
 
+def test_option_c_applied_in_filter():
+    report = gate.build_report()
+    contract = report["signed_filter_contract"]
+    assert contract["requires_exact_x_neutrality_by_default"] is False
+    assert contract["declared_option_C_no_continuous_X"] is True
+    assert report["flag"]["option_C_no_continuous_X_applied"] is True
+    assert report["flag"]["x_selection_rule_consistently_declared"] is True
+
+
 def test_low_dimension_phi17_terms_are_allowed_by_declared_theory():
     report = gate.build_report()
     rows = report["declared_dim_le4_phi17_monomials"]
-    pure = {r["dimension"] for r in rows if r["phase_sensitive"] and r["powers"]["Phi17dag"] == 0}
+    pure = {
+        r["dimension"]
+        for r in rows
+        if r["phase_sensitive"] and r["powers"]["Phi17dag"] == 0
+    }
     assert pure == {1, 2, 3, 4}
     assert report["phase_sensitive_count"] > 0
 
@@ -30,7 +44,6 @@ def test_dimension17_is_explicit_x_breaking_not_pq_breaking():
 
 def test_fail_closed_scope():
     flags = gate.build_report()["flag"]
-    assert flags["x_selection_rule_consistently_declared"] is False
     assert flags["phi17_phase_eaten"] is False
     assert flags["dimension17_operator_is_x_invariant"] is False
     assert flags["complete_multifield_model"] is False

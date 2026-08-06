@@ -1,0 +1,51 @@
+name: exact-neutral-h10-s-phi17-hessian
+on:
+  pull_request:
+    paths:
+      - exact_neutral_h10_s_phi17_hessian_v20.py
+      - test_exact_neutral_h10_s_phi17_hessian_v20.py
+      - nonsusy_z17_pq_potential_filter_v20.py
+      - test_nonsusy_z17_pq_potential_filter_v20.py
+      - .github/workflows/exact-neutral-h10-s-phi17-hessian.yml
+  push:
+    branches: [main]
+    paths:
+      - exact_neutral_h10_s_phi17_hessian_v20.py
+      - test_exact_neutral_h10_s_phi17_hessian_v20.py
+      - nonsusy_z17_pq_potential_filter_v20.py
+      - test_nonsusy_z17_pq_potential_filter_v20.py
+      - .github/workflows/exact-neutral-h10-s-phi17-hessian.yml
+jobs:
+  exact-neutral-h10-s-phi17-hessian:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Install dependencies
+        run: python -m pip install --upgrade pip numpy pytest
+      - name: Compile gates
+        run: python -m py_compile exact_neutral_h10_s_phi17_hessian_v20.py test_exact_neutral_h10_s_phi17_hessian_v20.py nonsusy_z17_pq_potential_filter_v20.py test_nonsusy_z17_pq_potential_filter_v20.py
+      - name: Run declared-filter and neutral-Hessian tests
+        run: pytest -q test_nonsusy_z17_pq_potential_filter_v20.py test_exact_neutral_h10_s_phi17_hessian_v20.py
+      - name: Generate certificate
+        run: python exact_neutral_h10_s_phi17_hessian_v20.py --json exact_neutral_h10_s_phi17_hessian_v20.json
+      - name: Assert exact closure and fail-closed scope
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('exact_neutral_h10_s_phi17_hessian_v20.json'))
+          assert r['n_failed']==0, r['failures']
+          assert r['counts']['complex_monomials']==36
+          assert r['benchmark']['zero_modes']==2
+          assert r['benchmark']['negative_modes']==0
+          assert r['benchmark']['quotient']['zero_modes']==1
+          assert r['benchmark']['quotient']['negative_modes']==0
+          assert not r['flag']['charged_color_H10_complete']
+          assert not r['flag']['full_210_126_10_S_Phi17_hessian']
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: exact-neutral-h10-s-phi17-hessian
+          path: exact_neutral_h10_s_phi17_hessian_v20.json

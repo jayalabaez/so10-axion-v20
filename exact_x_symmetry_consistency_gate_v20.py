@@ -2,10 +2,10 @@
 """Fail-closed audit of the repository's X/Phi17 symmetry assumptions.
 
 The live model scaffold declares SO(10) gauge symmetry and Z17 global symmetry.
-It assigns an auxiliary continuous X charge to fields, while the signed scalar
-operator filter requires exact X neutrality.  This module checks whether that
-selection rule is actually declared and enumerates the Phi17 monomials allowed
-by the declared theory.
+After option C, the signed operator filter no longer imposes undeclared
+continuous-X neutrality.  This gate certifies that alignment, while documenting
+that historical X charges remain metadata and that the dimension-17 Phi17
+operator is explicit X breaking (not PQ breaking).
 """
 from __future__ import annotations
 
@@ -24,50 +24,68 @@ OUT_MD = ROOT / "EXACT_X_SYMMETRY_CONSISTENCY_GATE_V20.md"
 def declared_symmetries(model_text: str) -> dict[str, Any]:
     gauge_rows = re.findall(r"Gauge\[\[\d+\]\]\s*=\s*\{([^;]+)\};", model_text)
     global_match = re.search(r"GlobalSymmetry\s*=\s*\{([^}]*)\}", model_text)
-    global_rows = [] if global_match is None else [x.strip() for x in global_match.group(1).split(",") if x.strip()]
+    global_rows = (
+        []
+        if global_match is None
+        else [x.strip() for x in global_match.group(1).split(",") if x.strip()]
+    )
     return {
         "gauge_rows": gauge_rows,
         "global_rows": global_rows,
         "so10_gauged": any("SO" in row and "10" in row for row in gauge_rows),
-        "u1x_gauged": any(re.search(r"U\s*\[?1\]?|U1|X", row, re.I) for row in gauge_rows[1:]),
+        "u1x_gauged": any(
+            re.search(r"U\s*\[?1\]?|U1|X", row, re.I) for row in gauge_rows[1:]
+        ),
         "x_declared_global": any("X" in row for row in global_rows),
         "z17_declared_global": any("17" in row for row in global_rows),
     }
 
 
 def filter_contract(filter_text: str) -> dict[str, Any]:
-    requires_x_default = bool(re.search(r"def _allowed\([^)]*require_x:\s*bool\s*=\s*True", filter_text, re.S))
-    phi_match = re.search(r'"Phi17"\s*:\s*\{[^}]*"X"\s*:\s*(-?\d+)[^}]*"Z17"\s*:\s*(-?\d+)', filter_text, re.S)
+    requires_x_default = bool(
+        re.search(r"def _allowed\([^)]*require_x:\s*bool\s*=\s*True", filter_text, re.S)
+    )
+    no_x_default = bool(
+        re.search(r"def _allowed\([^)]*require_x:\s*bool\s*=\s*False", filter_text, re.S)
+    )
+    phi_match = re.search(
+        r'"Phi17"\s*:\s*\{[^}]*"X"\s*:\s*(-?\d+)[^}]*"Z17"\s*:\s*(-?\d+)',
+        filter_text,
+        re.S,
+    )
     if phi_match is None:
         raise RuntimeError("Phi17 charge row not found in signed filter")
     return {
         "requires_exact_x_neutrality_by_default": requires_x_default,
+        "declared_option_C_no_continuous_X": no_x_default and not requires_x_default,
         "phi17_X": int(phi_match.group(1)),
         "phi17_Z17": int(phi_match.group(2)) % 17,
     }
 
 
 def declared_phi17_monomials(max_dimension: int = 4) -> list[dict[str, Any]]:
-    # Phi17 is an SO(10) singlet and has Z17=0 in the signed charge ledger.
     rows = []
     for p in range(max_dimension + 1):
         for q in range(max_dimension + 1 - p):
             degree = p + q
             if degree == 0:
                 continue
-            rows.append({
-                "label": f"Phi17^{p} Phi17dag^{q}",
-                "dimension": degree,
-                "powers": {"Phi17": p, "Phi17dag": q},
-                "phase_sensitive": p != q,
-                "declared_SO10xZ17_allowed": True,
-                "continuous_X_charge": 17 * (p - q),
-            })
+            rows.append(
+                {
+                    "label": f"Phi17^{p} Phi17dag^{q}",
+                    "dimension": degree,
+                    "powers": {"Phi17": p, "Phi17dag": q},
+                    "phase_sensitive": p != q,
+                    "declared_SO10xZ17_allowed": True,
+                    "continuous_X_charge": 17 * (p - q),
+                }
+            )
     return sorted(rows, key=lambda r: (r["dimension"], r["label"]))
 
 
-def dimension17_lift(v_phi_gev: float = 1.0e17, cutoff_gev: float = 2.435e18, kappa: float = 1.0) -> dict[str, float]:
-    # Phi=(v/sqrt2) exp(i a/v), V=k Phi^17/M^13+h.c.
+def dimension17_lift(
+    v_phi_gev: float = 1.0e17, cutoff_gev: float = 2.435e18, kappa: float = 1.0
+) -> dict[str, float]:
     amplitude = 2.0 * abs(kappa) * (v_phi_gev / 2.0**0.5) ** 17 / cutoff_gev**13
     mass2 = (17.0 / v_phi_gev) ** 2 * amplitude
     return {
@@ -84,8 +102,8 @@ def dimension17_lift(v_phi_gev: float = 1.0e17, cutoff_gev: float = 2.435e18, ka
 
 
 def build_report() -> dict[str, Any]:
-    model_text = MODEL.read_text()
-    filter_text = FILTER.read_text()
+    model_text = MODEL.read_text(encoding="utf-8")
+    filter_text = FILTER.read_text(encoding="utf-8")
     sym = declared_symmetries(model_text)
     contract = filter_contract(filter_text)
     monomials = declared_phi17_monomials()
@@ -103,16 +121,26 @@ def build_report() -> dict[str, Any]:
         "z17_is_declared_global_symmetry": sym["z17_declared_global"],
         "u1x_is_not_declared_gauged": not sym["u1x_gauged"],
         "x_is_not_declared_global": not sym["x_declared_global"],
-        "signed_filter_requires_x_neutrality": contract["requires_exact_x_neutrality_by_default"],
+        "signed_filter_does_not_require_undeclared_x": not contract[
+            "requires_exact_x_neutrality_by_default"
+        ],
+        "option_C_encoded_in_filter_default": contract["declared_option_C_no_continuous_X"],
         "phi17_is_z17_neutral": contract["phi17_Z17"] == 0,
         "declared_theory_allows_phase_sensitive_dim_le4_terms": len(phase_rows) > 0,
-        "declared_theory_allows_phi_powers_1_to_4": {r["dimension"] for r in low_pure} == {1, 2, 3, 4},
-        "symmetry_contract_mismatch_detected": mismatch,
-        "dimension17_term_explicitly_breaks_x_not_pq": d17["breaks_continuous_X_by_units"] == 289.0 and d17["breaks_PQ"] is False,
+        "declared_theory_allows_phi_powers_1_to_4": {r["dimension"] for r in low_pure}
+        == {1, 2, 3, 4},
+        "symmetry_contract_mismatch_resolved": not mismatch,
+        "dimension17_term_explicitly_breaks_x_not_pq": d17["breaks_continuous_X_by_units"]
+        == 289.0
+        and d17["breaks_PQ"] is False,
     }
     failures = [name for name, ok in checks.items() if not ok]
     return {
-        "status": "X_SELECTION_RULE_UNDECLARED__FULL_MODEL_BLOCKED" if not failures else "X_SYMMETRY_AUDIT_FAILED",
+        "status": (
+            "DECLARED_SO10_Z17_OPTION_C_APPLIED__FULL_MODEL_BLOCKED"
+            if not failures
+            else "X_SYMMETRY_AUDIT_FAILED"
+        ),
         "n_checks": len(checks),
         "n_failed": len(failures),
         "failures": failures,
@@ -123,6 +151,7 @@ def build_report() -> dict[str, Any]:
         "phase_sensitive_count": len(phase_rows),
         "dimension17_candidate": d17,
         "required_resolution": {
+            "selected": "option_C_no_continuous_X",
             "option_A_gauge_U1X": [
                 "declare U(1)_X in the gauge group",
                 "supply anomaly-cancelling fermion content",
@@ -141,7 +170,8 @@ def build_report() -> dict[str, Any]:
             ],
         },
         "flag": {
-            "x_selection_rule_consistently_declared": False,
+            "x_selection_rule_consistently_declared": not bool(failures),
+            "option_C_no_continuous_X_applied": not bool(failures),
             "phi17_phase_eaten": False,
             "dimension17_operator_is_x_invariant": False,
             "dimension17_operator_directly_breaks_pq": False,
@@ -150,33 +180,37 @@ def build_report() -> dict[str, Any]:
             "empirical_discovery": False,
         },
         "verdict": (
-            "The current repository enforces continuous X neutrality in operator filters but declares neither gauged nor global U(1)_X. "
-            "Under the actually declared SO(10)xZ17 symmetry, low-dimensional phase-sensitive Phi17 terms are allowed. "
-            "The dimension-17 term can lift the phase only as explicit X breaking and does not directly violate PQ."
+            "Option C is applied: the signed filter matches the declared "
+            "SO(10)×Z17 contract and no longer requires undeclared continuous X. "
+            "Low-dimensional phase-sensitive Phi17 operators are allowed. The "
+            "dimension-17 term remains explicit X breaking and does not directly "
+            "violate PQ. The full multifield model remains open."
         ),
     }
 
 
 def write_markdown(report: dict[str, Any]) -> str:
     d17 = report["dimension17_candidate"]
-    return "\n".join([
-        "# Exact X-symmetry consistency gate — v20",
-        "",
-        f"**Status:** `{report['status']}`",
-        "",
-        report["verdict"],
-        "",
-        f"- declared phase-sensitive Phi17 monomials at dimension <=4: `{report['phase_sensitive_count']}`",
-        f"- dimension-17 benchmark angular mass: `{d17['phi17_angular_mass_GeV']:.6e} GeV`",
-        f"- dimension-17 continuous-X violation: `{d17['breaks_continuous_X_by_units']:.0f}` units",
-        f"- direct PQ/theta-bar breaking: `{d17['breaks_PQ']}`",
-        "",
-    ])
+    return "\n".join(
+        [
+            "# Exact X-symmetry consistency gate — v20",
+            "",
+            f"**Status:** `{report['status']}`",
+            "",
+            report["verdict"],
+            "",
+            f"- declared phase-sensitive Phi17 monomials at dimension <=4: `{report['phase_sensitive_count']}`",
+            f"- dimension-17 benchmark angular mass: `{d17['phi17_angular_mass_GeV']:.6e} GeV`",
+            f"- dimension-17 continuous-X violation: `{d17['breaks_continuous_X_by_units']:.0f}` units",
+            f"- direct PQ/theta-bar breaking: `{d17['breaks_PQ']}`",
+            "",
+        ]
+    )
 
 
 if __name__ == "__main__":
     report = build_report()
-    OUT_JSON.write_text(json.dumps(report, indent=2, sort_keys=True))
-    OUT_MD.write_text(write_markdown(report))
+    OUT_JSON.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    OUT_MD.write_text(write_markdown(report), encoding="utf-8")
     print(json.dumps(report, indent=2, sort_keys=True))
     raise SystemExit(0 if report["n_failed"] == 0 else 1)

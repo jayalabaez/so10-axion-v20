@@ -1,0 +1,235 @@
+{
+  "checks": {
+    "declared_theory_allows_phase_sensitive_dim_le4_terms": true,
+    "declared_theory_allows_phi_powers_1_to_4": true,
+    "dimension17_term_explicitly_breaks_x_not_pq": true,
+    "option_C_encoded_in_filter_default": true,
+    "phi17_is_z17_neutral": true,
+    "signed_filter_does_not_require_undeclared_x": true,
+    "so10_is_declared_gauge_symmetry": true,
+    "symmetry_contract_mismatch_resolved": true,
+    "u1x_is_not_declared_gauged": true,
+    "x_is_not_declared_global": true,
+    "z17_is_declared_global_symmetry": true
+  },
+  "declared_dim_le4_phi17_monomials": [
+    {
+      "continuous_X_charge": -17,
+      "declared_SO10xZ17_allowed": true,
+      "dimension": 1,
+      "label": "Phi17^0 Phi17dag^1",
+      "phase_sensitive": true,
+      "powers": {
+        "Phi17": 0,
+        "Phi17dag": 1
+      }
+    },
+    {
+      "continuous_X_charge": 17,
+      "declared_SO10xZ17_allowed": true,
+      "dimension": 1,
+      "label": "Phi17^1 Phi17dag^0",
+      "phase_sensitive": true,
+      "powers": {
+        "Phi17": 1,
+        "Phi17dag": 0
+      }
+    },
+    {
+      "continuous_X_charge": -34,
+      "declared_SO10xZ17_allowed": true,
+      "dimension": 2,
+      "label": "Phi17^0 Phi17dag^2",
+      "phase_sensitive": true,
+      "powers": {
+        "Phi17": 0,
+        "Phi17dag": 2
+      }
+    },
+    {
+      "continuous_X_charge": 0,
+      "declared_SO10xZ17_allowed": true,
+      "dimension": 2,
+      "label": "Phi17^1 Phi17dag^1",
+      "phase_sensitive": false,
+      "powers": {
+        "Phi17": 1,
+        "Phi17dag": 1
+      }
+    },
+    {
+      "continuous_X_charge": 34,
+      "declared_SO10xZ17_allowed": true,
+      "dimension": 2,
+      "label": "Phi17^2 Phi17dag^0",
+      "phase_sensitive": true,
+      "powers": {
+        "Phi17": 2,
+        "Phi17dag": 0
+      }
+    },
+    {
+      "continuous_X_charge": -51,
+      "declared_SO10xZ17_allowed": true,
+      "dimension": 3,
+      "label": "Phi17^0 Phi17dag^3",
+      "phase_sensitive": true,
+      "powers": {
+        "Phi17": 0,
+        "Phi17dag": 3
+      }
+    },
+    {
+      "continuous_X_charge": -17,
+      "declared_SO10xZ17_allowed": true,
+      "dimension": 3,
+      "label": "Phi17^1 Phi17dag^2",
+      "phase_sensitive": true,
+      "powers": {
+        "Phi17": 1,
+        "Phi17dag": 2
+      }
+    },
+    {
+      "continuous_X_charge": 17,
+      "declared_SO10xZ17_allowed": true,
+      "dimension": 3,
+      "label": "Phi17^2 Phi17dag^1",
+      "phase_sensitive": true,
+      "powers": {
+        "Phi17": 2,
+        "Phi17dag": 1
+      }
+    },
+    {
+      "continuous_X_charge": 51,
+      "declared_SO10xZ17_allowed": true,
+      "dimension": 3,
+      "label": "Phi17^3 Phi17dag^0",
+      "phase_sensitive": true,
+      "powers": {
+        "Phi17": 3,
+        "Phi17dag": 0
+      }
+    },
+    {
+      "continuous_X_charge": -68,
+      "declared_SO10xZ17_allowed": true,
+      "dimension": 4,
+      "label": "Phi17^0 Phi17dag^4",
+      "phase_sensitive": true,
+      "powers": {
+        "Phi17": 0,
+        "Phi17dag": 4
+      }
+    },
+    {
+      "continuous_X_charge": -34,
+      "declared_SO10xZ17_allowed": true,
+      "dimension": 4,
+      "label": "Phi17^1 Phi17dag^3",
+      "phase_sensitive": true,
+      "powers": {
+        "Phi17": 1,
+        "Phi17dag": 3
+      }
+    },
+    {
+      "continuous_X_charge": 0,
+      "declared_SO10xZ17_allowed": true,
+      "dimension": 4,
+      "label": "Phi17^2 Phi17dag^2",
+      "phase_sensitive": false,
+      "powers": {
+        "Phi17": 2,
+        "Phi17dag": 2
+      }
+    },
+    {
+      "continuous_X_charge": 34,
+      "declared_SO10xZ17_allowed": true,
+      "dimension": 4,
+      "label": "Phi17^3 Phi17dag^1",
+      "phase_sensitive": true,
+      "powers": {
+        "Phi17": 3,
+        "Phi17dag": 1
+      }
+    },
+    {
+      "continuous_X_charge": 68,
+      "declared_SO10xZ17_allowed": true,
+      "dimension": 4,
+      "label": "Phi17^4 Phi17dag^0",
+      "phase_sensitive": true,
+      "powers": {
+        "Phi17": 4,
+        "Phi17dag": 0
+      }
+    }
+  ],
+  "declared_symmetries": {
+    "gauge_rows": [
+      "G10, SO, 10, globalU1Charges -> {0}"
+    ],
+    "global_rows": [
+      "Z[17]"
+    ],
+    "so10_gauged": true,
+    "u1x_gauged": false,
+    "x_declared_global": false,
+    "z17_declared_global": true
+  },
+  "dimension17_candidate": {
+    "abs_kappa": 1.0,
+    "breaks_PQ": false,
+    "breaks_continuous_X_by_units": 289.0,
+    "cutoff_GeV": 2.435e+18,
+    "direct_theta_bar_shift_from_PQ_charge": 0.0,
+    "phi17_angular_mass2_GeV2": 1.508989865813613e+16,
+    "phi17_angular_mass_GeV": 122840948.6211179,
+    "potential_amplitude_GeV4": 5.221418220808349e+47,
+    "v_phi_GeV": 1e+17
+  },
+  "failures": [],
+  "flag": {
+    "complete_multifield_model": false,
+    "dimension17_operator_directly_breaks_pq": false,
+    "dimension17_operator_is_x_invariant": false,
+    "empirical_discovery": false,
+    "option_C_no_continuous_X_applied": true,
+    "phi17_phase_eaten": false,
+    "whole_model_validated": false,
+    "x_selection_rule_consistently_declared": true
+  },
+  "n_checks": 11,
+  "n_failed": 0,
+  "phase_sensitive_count": 12,
+  "required_resolution": {
+    "option_A_gauge_U1X": [
+      "declare U(1)_X in the gauge group",
+      "supply anomaly-cancelling fermion content",
+      "add covariant derivatives and gauge coupling",
+      "prove the Phi17 phase is the eaten Goldstone"
+    ],
+    "option_B_exact_global_U1X": [
+      "declare U(1)_X as an exact global symmetry",
+      "accept a physical Goldstone after spontaneous breaking unless explicit breaking is added",
+      "treat Phi17^17 as an explicit-X-breaking UV operator, not an X-invariant term"
+    ],
+    "option_C_no_continuous_X": [
+      "remove require_x=True from operator filters",
+      "include all SO(10)xZ17-allowed relevant and marginal Phi17 operators",
+      "re-solve the hierarchy and phase vacuum"
+    ],
+    "selected": "option_C_no_continuous_X"
+  },
+  "signed_filter_contract": {
+    "declared_option_C_no_continuous_X": true,
+    "phi17_X": 17,
+    "phi17_Z17": 0,
+    "requires_exact_x_neutrality_by_default": false
+  },
+  "status": "DECLARED_SO10_Z17_OPTION_C_APPLIED__FULL_MODEL_BLOCKED",
+  "verdict": "Option C is applied: the signed filter matches the declared SO(10)\u00d7Z17 contract and no longer requires undeclared continuous X. Low-dimensional phase-sensitive Phi17 operators are allowed. The dimension-17 term remains explicit X breaking and does not directly violate PQ. The full multifield model remains open."
+}
