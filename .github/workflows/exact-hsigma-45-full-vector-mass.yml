@@ -1,0 +1,57 @@
+name: exact-hsigma-45-full-vector-mass
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - exact_hsigma_45_full_vector_mass_v20.py
+      - test_exact_hsigma_45_full_vector_mass_v20.py
+      - exact_operator_derived_h10_mass_block_v20.py
+      - exact_hsigma_45_background_hessian_v20.py
+      - exact_mixed_45_triplet_channel_v20.py
+      - .github/workflows/exact-hsigma-45-full-vector-mass.yml
+  push:
+    branches: [main]
+    paths:
+      - exact_hsigma_45_full_vector_mass_v20.py
+      - test_exact_hsigma_45_full_vector_mass_v20.py
+      - exact_operator_derived_h10_mass_block_v20.py
+      - .github/workflows/exact-hsigma-45-full-vector-mass.yml
+
+jobs:
+  exact-hsigma-45-full-vector-mass:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: python -m pip install --upgrade pip numpy scipy pytest
+      - name: Compile
+        run: |
+          python -m py_compile \
+            exact_hsigma_45_full_vector_mass_v20.py \
+            test_exact_hsigma_45_full_vector_mass_v20.py
+      - name: Run full-vector H–Σ 45 mass tests
+        run: python -m pytest -q test_exact_hsigma_45_full_vector_mass_v20.py
+      - name: Generate certificate
+        run: python exact_hsigma_45_full_vector_mass_v20.py
+      - name: Assert fail-closed scope
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('EXACT_HSIGMA_45_FULL_VECTOR_MASS_V20.json'))
+          assert r['n_failed']==0, r['failures']
+          assert r['flag']['hsigma_45_full_vector_complete']
+          assert r['inserted_benchmark']['spectrum_full']['zero_modes']==33
+          assert not r['flag']['nonzero_electroweak_backreaction']
+          assert not r['flag']['whole_model_validated']
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: exact-hsigma-45-full-vector-mass
+          path: |
+            EXACT_HSIGMA_45_FULL_VECTOR_MASS_V20.json
+            EXACT_HSIGMA_45_FULL_VECTOR_MASS_V20.md
