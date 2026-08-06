@@ -8,6 +8,8 @@ on:
       - "test_next_gen_g1_g6_progress_gate_v20.py"
       - "exact_mixed_54_triplet_channel_v20.py"
       - "next_gen_triplet_54_channel_gate_v20.py"
+      - "exact_mixed_45_triplet_channel_v20.py"
+      - "next_gen_triplet_45_channel_gate_v20.py"
       - "next_gen_triplet_10h_quartic_gate_v20.py"
       - "next_gen_triplet_diagonal_baseline_gate_v20.py"
       - "next_gen_triplet_quadratic_gate_v20.py"
@@ -21,6 +23,8 @@ on:
       - "test_next_gen_g1_g6_progress_gate_v20.py"
       - "exact_mixed_54_triplet_channel_v20.py"
       - "next_gen_triplet_54_channel_gate_v20.py"
+      - "exact_mixed_45_triplet_channel_v20.py"
+      - "next_gen_triplet_45_channel_gate_v20.py"
       - "next_gen_triplet_10h_quartic_gate_v20.py"
       - "next_gen_triplet_diagonal_baseline_gate_v20.py"
       - "next_gen_triplet_quadratic_gate_v20.py"
@@ -60,7 +64,7 @@ jobs:
           r=json.load(open('NEXT_GEN_G1_G6_PROGRESS_GATE_V20.json'))
           assert r['n_failed']==0, r['failures']
           assert r['overall_state']=='PARTIAL'
-          assert r['n_closed_subproblems']==22
+          assert r['n_closed_subproblems']==26
           assert all(r['closed_subproblems'].values())
           assert r['gate_states']['G1']=='OPEN'
           assert r['gate_states']['G2']=='PARTIAL'
@@ -70,9 +74,19 @@ jobs:
           assert r['flag']['authoritative_next_gen_G1_G6_progress_gate']
           assert r['flag']['all_recorded_exact_subproblems_closed']
           assert r['flag']['shared_Hermitian_54_channel_closed']
-          assert r['authoritative_triplet_structure']['exact_Hermitian_54']['Q54_126bardag126bar']==0.0
-          assert r['authoritative_triplet_structure']['exact_Hermitian_54']['PhiSigma_Hermitian_54_parameter']=='absent'
-          assert r['authoritative_triplet_structure']['exact_Hermitian_54']['HSigma_Hermitian_54_parameter']=='absent'
+          assert r['flag']['shared_Hermitian_45_channel_closed']
+          assert r['flag']['PhiH_Hermitian_channel_family_complete']
+          structure=r['authoritative_triplet_structure']
+          assert structure['PhiH_Hermitian_channels']==['1','45','54']
+          assert structure['PhiH_Hermitian_family_complete']
+          assert structure['exact_Hermitian_54']['Q54_126bardag126bar']==0.0
+          assert structure['exact_Hermitian_54']['PhiSigma_Hermitian_54_parameter']=='absent'
+          assert structure['exact_Hermitian_54']['HSigma_Hermitian_54_parameter']=='absent'
+          assert structure['exact_Hermitian_45']['T10_shift']=='+lambda_PhiH_45 k_color'
+          assert structure['exact_Hermitian_45']['T10bar_shift']=='-lambda_PhiH_45 k_color'
+          assert structure['exact_Hermitian_45']['t2_shift']=='+lambda_PhiSigma_45 k_color'
+          assert structure['exact_Hermitian_45']['t2bar_shift']=='-lambda_PhiSigma_45 k_color'
+          assert structure['exact_Hermitian_45']['t4bar_shift']=='-lambda_PhiSigma_45 k_color'
           assert not r['flag']['G1_closed']
           assert not r['flag']['G6_closed']
           assert not r['flag']['physical_triplet_spectrum_complete']
