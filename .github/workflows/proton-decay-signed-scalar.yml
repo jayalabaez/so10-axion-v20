@@ -1,0 +1,83 @@
+name: proton-decay-signed-scalar
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "proton_decay_signed_scalar_bridge_v20.py"
+      - "test_proton_decay_signed_scalar_bridge_v20.py"
+      - "nonsusy_triplet_component_ledger_v20.py"
+      - "test_nonsusy_triplet_component_ledger_v20.py"
+      - "nonsusy_sm_triplet_branching_census_v20.py"
+      - "test_nonsusy_sm_triplet_branching_census_v20.py"
+      - "proton_decay_falsification_gate_v20.py"
+      - "nonsusy_charge_allowed_mt_v20.py"
+      - "nonsusy_z17_pq_potential_filter_v20.py"
+      - ".github/workflows/proton-decay-signed-scalar.yml"
+  push:
+    branches: [main]
+    paths:
+      - "proton_decay_signed_scalar_bridge_v20.py"
+      - "test_proton_decay_signed_scalar_bridge_v20.py"
+      - "nonsusy_triplet_component_ledger_v20.py"
+      - "test_nonsusy_triplet_component_ledger_v20.py"
+      - "nonsusy_sm_triplet_branching_census_v20.py"
+      - "test_nonsusy_sm_triplet_branching_census_v20.py"
+      - "proton_decay_falsification_gate_v20.py"
+      - "nonsusy_charge_allowed_mt_v20.py"
+      - "nonsusy_z17_pq_potential_filter_v20.py"
+      - ".github/workflows/proton-decay-signed-scalar.yml"
+
+jobs:
+  signed-scalar-bridge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - name: Run signed scalar and component-ledger tests
+        run: |
+          python -m unittest -v \
+            test_proton_decay_signed_scalar_bridge_v20.py \
+            test_nonsusy_triplet_component_ledger_v20.py \
+            test_nonsusy_sm_triplet_branching_census_v20.py
+      - run: python nonsusy_triplet_component_ledger_v20.py
+      - run: python nonsusy_sm_triplet_branching_census_v20.py
+      - run: python proton_decay_signed_scalar_bridge_v20.py
+      - name: Assert conditional scalar scope
+        run: |
+          python - <<'PY'
+          import json
+          ledger=json.load(open('NONSUSY_TRIPLET_COMPONENT_LEDGER_V20.json'))
+          census=json.load(open('NONSUSY_SM_TRIPLET_BRANCHING_CENSUS_V20.json'))
+          r=json.load(open('PROTON_DECAY_SIGNED_SCALAR_BRIDGE_V20.json'))
+          assert ledger['n_failed']==0, ledger['failures']
+          assert ledger['flag']['machine_readable_component_ledger']
+          assert ledger['flag']['mass_squared_provenance_recorded']
+          assert ledger['flag']['published_ps_126bar_t2_t4_locked']
+          assert not ledger['flag']['full_component_basis_complete']
+          assert not ledger['flag']['physical_component_CG_complete']
+          assert any(row['id']=='Tprime_126' for row in ledger['components'])
+          assert census['n_failed']==0, census['failures']
+          assert census['working_light_basis']==['T_10','Tbar_10','T_126','Tprime_126']
+          assert not census['flag']['physical_component_CG_complete']
+          assert r['n_failed']==0, r['failures']
+          assert r['signed_scalar']['conditional_only']
+          assert not r['signed_scalar']['physical_component_CG_complete']
+          assert not r['signed_scalar']['physical_triplet_spectrum_complete']
+          assert not r['classification']['exact_unique_proton_lifetime_derived']
+          assert not r['classification']['whole_model_excluded_by_proton_decay']
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: proton-decay-signed-scalar
+          path: |
+            NONSUSY_TRIPLET_COMPONENT_LEDGER_V20.json
+            NONSUSY_SM_TRIPLET_BRANCHING_CENSUS_V20.json
+            NONSUSY_SM_TRIPLET_BRANCHING_CENSUS_V20.md
+            PROTON_DECAY_SIGNED_SCALAR_BRIDGE_V20.json

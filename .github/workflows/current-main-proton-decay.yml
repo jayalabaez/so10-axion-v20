@@ -2,13 +2,28 @@ name: current-main-proton-decay
 
 on:
   workflow_dispatch:
+  pull_request:
+    paths:
+      - "**proton**"
+      - "**tau_p**"
+      - "**xy**"
+      - "**threshold**"
+      - ".github/workflows/current-main-proton-decay.yml"
+  push:
+    branches: [main]
+    paths:
+      - "**proton**"
+      - "**tau_p**"
+      - "**xy**"
+      - "**threshold**"
+      - ".github/workflows/current-main-proton-decay.yml"
 
 concurrency:
   group: current-main-proton-decay-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:
-  evaluate-current-main-proton-decay:
+  proton-decay-falsification-gate:
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
@@ -19,33 +34,33 @@ jobs:
           cache: pip
       - name: Install dependencies
         run: python -m pip install -r requirements.txt
-      - name: Evaluate proton decay on current tree
-        run: python current_main_proton_decay_evaluation_v20.py
-      - name: Focused regression tests
+      - name: Run physics-invariant tests
         run: python -m unittest -v test_current_main_proton_decay_evaluation_v20.py
-      - name: Assert honest classification
+      - name: Evaluate current repository fail-closed
+        run: python current_main_proton_decay_evaluation_v20.py
+      - name: Assert no unsupported discovery or model verdict
         run: |
           python - <<'PY'
           import json
-          r=json.load(open('CURRENT_MAIN_PROTON_DECAY_EVALUATION_V20_VERDICT.json'))
+          r=json.load(open('PROTON_DECAY_FALSIFICATION_GATE_V20_VERDICT.json'))
           c=r['classification']
-          g=r['gauge_XY']
-          limit=r['experimental_reference']['Super_K_90CL_lower_limit_years']
-          assert r['n_failed']==0
-          assert not c['one_loop_central_gauge_benchmark_fails']
-          assert c['two_loop_corrected_proxy_fails']
-          assert c['some_threshold_or_scalar_parameter_points_fail']
-          assert not c['whole_model_excluded_by_proton_decay']
-          assert not c['exact_unique_proton_lifetime_derived']
-          assert g['one_loop_anchor_central']['lifetime_years'] > limit
-          assert g['two_loop_corrected_proxy']['lifetime_years'] < limit
-          assert g['broad_envelope_contains_excluded_points']
+          assert r['n_failed'] == 0, r['failures']
+          assert c['proton_decay_observed'] is False
+          assert c['exact_unique_proton_lifetime_derived'] is False
+          assert c['whole_model_excluded_by_proton_decay'] is False
+          assert r['experimental_reference']['limit_90CL_years'] == 2.4e34
+          for row in r['benchmarks'].values():
+              point=row['canonical_literature_normalization']
+              assert point['derivation_complete'] is False
+              assert point['whole_model_excluded'] is False
           PY
-      - name: Upload current proton-decay verdict
+      - name: Upload proton-decay audit
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: current-main-proton-decay-verdict
+          name: proton-decay-falsification-gate
           path: |
+            PROTON_DECAY_FALSIFICATION_GATE_V20_VERDICT.json
+            PROTON_DECAY_FALSIFICATION_GATE_V20.md
             CURRENT_MAIN_PROTON_DECAY_EVALUATION_V20_VERDICT.json
             CURRENT_MAIN_PROTON_DECAY_EVALUATION_V20.md

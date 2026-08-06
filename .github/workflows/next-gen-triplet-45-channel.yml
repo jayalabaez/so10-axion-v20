@@ -1,0 +1,72 @@
+name: next-gen-triplet-45-channel
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "exact_mixed_45_triplet_channel_v20.py"
+      - "next_gen_triplet_45_channel_gate_v20.py"
+      - "test_next_gen_triplet_45_channel_gate_v20.py"
+      - "next_gen_triplet_54_channel_gate_v20.py"
+      - ".github/workflows/next-gen-triplet-45-channel.yml"
+  push:
+    branches: [main]
+    paths:
+      - "exact_mixed_45_triplet_channel_v20.py"
+      - "next_gen_triplet_45_channel_gate_v20.py"
+      - "test_next_gen_triplet_45_channel_gate_v20.py"
+      - "next_gen_triplet_54_channel_gate_v20.py"
+      - ".github/workflows/next-gen-triplet-45-channel.yml"
+
+concurrency:
+  group: next-gen-triplet-45-channel-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  exact-45-nambu-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Compile exact 45 integration modules
+        run: |
+          python -m py_compile \
+            next_gen_triplet_45_channel_gate_v20.py \
+            test_next_gen_triplet_45_channel_gate_v20.py
+      - name: Run exact 45 integration tests
+        run: python -m unittest -v test_next_gen_triplet_45_channel_gate_v20.py
+      - name: Generate exact 45 integration report
+        run: python next_gen_triplet_45_channel_gate_v20.py
+      - name: Assert insertion and fail-closed scope
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('NEXT_GEN_TRIPLET_45_CHANNEL_GATE_V20.json'))
+          assert r['n_failed']==0, r['failures']
+          assert r['overall_state']=='PARTIAL'
+          assert r['flag']['authoritative_exact_45_subgate']
+          assert r['flag']['exact_PhiH_45_triplet_shifts_inserted']
+          assert r['flag']['exact_PhiSigma_45_triplet_shifts_inserted']
+          assert r['flag']['PhiH_Hermitian_channel_family_complete']
+          assert r['authoritative_input_contract']['PhiH_Hermitian_channels']==['1','45','54']
+          assert not r['flag']['all_PhiSigma_anisotropic_channels_complete']
+          assert not r['flag']['complete_component_potential']
+          assert not r['flag']['physical_triplet_spectrum_complete']
+          assert not r['flag']['exact_unique_proton_lifetime']
+          assert not r['flag']['whole_model_validated']
+          assert not r['flag']['whole_model_excluded']
+          assert not r['flag']['empirical_discovery']
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: next-gen-triplet-45-channel
+          path: |
+            NEXT_GEN_TRIPLET_45_CHANNEL_GATE_V20.json
+            NEXT_GEN_TRIPLET_45_CHANNEL_GATE_V20.md
