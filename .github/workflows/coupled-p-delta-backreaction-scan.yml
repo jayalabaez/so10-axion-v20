@@ -9,13 +9,16 @@ on:
       - exact_phisigma_126bar_minus_projectors_v20.py
       - coupled_p_delta_physical_chirality_search_v20.py
       - test_coupled_p_delta_physical_chirality_search_v20.py
+      - exact_phi_hdag_sigmabar_cubic_audit_v20.py
+      - exact_muD_482_schur_stability_v20.py
+      - test_exact_muD_482_schur_stability_v20.py
       - .github/workflows/coupled-p-delta-backreaction-scan.yml
   workflow_dispatch:
 
 jobs:
   coupled-p-delta-backreaction-scan:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 150
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -25,36 +28,55 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt pytest
-      - name: Compile physical-chirality coupled scan
-        run: python -m py_compile exact_phisigma_126bar_minus_projectors_v20.py coupled_p_delta_physical_chirality_search_v20.py test_coupled_p_delta_physical_chirality_search_v20.py
+      - name: Compile coupled and mu_D gates
+        run: |
+          python -m py_compile \
+            exact_phisigma_126bar_minus_projectors_v20.py \
+            coupled_p_delta_physical_chirality_search_v20.py \
+            test_coupled_p_delta_physical_chirality_search_v20.py \
+            exact_phi_hdag_sigmabar_cubic_audit_v20.py \
+            exact_muD_482_schur_stability_v20.py \
+            test_exact_muD_482_schur_stability_v20.py
       - name: Run physical-chirality regression tests
         run: python -m pytest -q test_coupled_p_delta_physical_chirality_search_v20.py
+      - name: Run mu_D 482-real Schur tests
+        run: python -m pytest -q test_exact_muD_482_schur_stability_v20.py
       - name: Execute fresh physical-chirality 462-real search
         id: scan
         continue-on-error: true
         run: |
           python coupled_p_delta_physical_chirality_search_v20.py > /tmp/coupled-p-delta.log
           echo "exit_code=$?" >> "$GITHUB_OUTPUT"
-      - name: Print search report
+      - name: Execute fresh mu_D 482-real Schur gate
+        id: mud
+        continue-on-error: true
+        run: |
+          python exact_muD_482_schur_stability_v20.py > /tmp/mud-482.log
+          echo "exit_code=$?" >> "$GITHUB_OUTPUT"
+      - name: Print reports
         if: always()
         run: |
           test -f COUPLED_P_DELTA_PHYSICAL_CHIRALITY_SEARCH_V20.json && cat COUPLED_P_DELTA_PHYSICAL_CHIRALITY_SEARCH_V20.json || cat /tmp/coupled-p-delta.log
+          test -f EXACT_MUD_482_SCHUR_STABILITY_V20.json && cat EXACT_MUD_482_SCHUR_STABILITY_V20.json || cat /tmp/mud-482.log
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: coupled-p-delta-backreaction-scan
+          name: coupled-p-delta-and-muD-482
           path: |
             COUPLED_P_DELTA_PHYSICAL_CHIRALITY_SEARCH_V20.json
             COUPLED_P_DELTA_PHYSICAL_CHIRALITY_SEARCH_V20.md
+            EXACT_MUD_482_SCHUR_STABILITY_V20.json
+            EXACT_MUD_482_SCHUR_STABILITY_V20.md
           if-no-files-found: warn
-      - name: Assert coupled local vacuum or fail closed
+      - name: Assert coupled local vacuum and mu_D bound or fail closed
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
-          path = Path('COUPLED_P_DELTA_PHYSICAL_CHIRALITY_SEARCH_V20.json')
-          assert path.exists(), 'search report missing'
-          report = json.loads(path.read_text())
+
+          coupled_path = Path('COUPLED_P_DELTA_PHYSICAL_CHIRALITY_SEARCH_V20.json')
+          assert coupled_path.exists(), 'coupled search report missing'
+          report = json.loads(coupled_path.read_text())
           assert report['n_failed'] == 0, report['failures']
           scan = report['search']
           assert report['source_correction']['all_126bar_blocks_use_minus_i_basis'] is True
@@ -67,4 +89,20 @@ jobs:
           assert report['flag']['complete_multifield_model'] is False
           assert report['flag']['whole_model_validated'] is False
           assert report['flag']['empirical_discovery'] is False
+
+          mud_path = Path('EXACT_MUD_482_SCHUR_STABILITY_V20.json')
+          assert mud_path.exists(), 'mu_D Schur report missing'
+          mud = json.loads(mud_path.read_text())
+          assert mud['n_failed'] == 0, mud['failures']
+          assert mud['dimensions']['enlarged_real_Hessian'] == 482
+          assert mud['dimensions']['enlarged_physical_quotient'] == 449
+          assert mud['flag']['muD_cross_block_inserted'] is True
+          assert mud['flag']['exact_effective_H_mass_stability_bound'] is True
+          assert mud['flag']['gauge_goldstones_preserved_above_bound'] is True
+          assert mud['flag']['tachyon_below_bound_exhibited'] is True
+          assert mud['flag']['complete_operator_derived_H_mass_matrix'] is False
+          assert mud['flag']['nonzero_electroweak_backreaction'] is False
+          assert mud['flag']['complete_component_potential'] is False
+          assert mud['flag']['whole_model_validated'] is False
+          assert mud['flag']['empirical_discovery'] is False
           PY
