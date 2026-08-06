@@ -3,6 +3,8 @@ name: exact-hsigma-hermitian-family
 on:
   pull_request:
     paths:
+      - 'two_loop_thresholds_v20.py'
+      - 'test_two_loop_thresholds_source_only_v20.py'
       - 'exact_hsigma_hermitian_family_closure_v20.py'
       - 'test_exact_hsigma_hermitian_family_closure_v20.py'
       - 'next_gen_triplet_hsigma_hermitian_family_gate_v20.py'
@@ -12,6 +14,8 @@ on:
   push:
     branches: [main]
     paths:
+      - 'two_loop_thresholds_v20.py'
+      - 'test_two_loop_thresholds_source_only_v20.py'
       - 'exact_hsigma_hermitian_family_closure_v20.py'
       - 'test_exact_hsigma_hermitian_family_closure_v20.py'
       - 'next_gen_triplet_hsigma_hermitian_family_gate_v20.py'
@@ -37,6 +41,8 @@ jobs:
       - name: Compile exact family modules
         run: >-
           python -m py_compile
+          two_loop_thresholds_v20.py
+          test_two_loop_thresholds_source_only_v20.py
           exact_hsigma_hermitian_family_closure_v20.py
           next_gen_triplet_hsigma_hermitian_family_gate_v20.py
           test_exact_hsigma_hermitian_family_closure_v20.py
@@ -69,11 +75,13 @@ jobs:
       - name: Run exact family tests
         run: >-
           python -m pytest -q
+          test_two_loop_thresholds_source_only_v20.py
           test_exact_hsigma_hermitian_family_closure_v20.py
           test_next_gen_triplet_hsigma_hermitian_family_gate_v20.py
 
       - name: Generate exact family reports
         run: |
+          python two_loop_thresholds_v20.py
           python exact_hsigma_hermitian_family_closure_v20.py
           python next_gen_triplet_hsigma_hermitian_family_gate_v20.py
 
@@ -82,8 +90,10 @@ jobs:
           python - <<'PY'
           import json
 
+          thresholds = json.load(open('two_loop_thresholds_v20.json'))
           exact = json.load(open('EXACT_HSIGMA_HERMITIAN_FAMILY_CLOSURE_V20.json'))
           gate = json.load(open('NEXT_GEN_TRIPLET_HSIGMA_HERMITIAN_FAMILY_GATE_V20.json'))
+          assert all(thresholds['regression_anchors'].values()), thresholds['regression_anchors']
           assert exact['n_failed'] == 0, exact['failures']
           assert gate['n_failed'] == 0, gate['failures']
           assert exact['flag']['all_HSigma_Hermitian_bilinear_quartics_complete'] is True
@@ -101,6 +111,7 @@ jobs:
         with:
           name: exact-hsigma-hermitian-family
           path: |
+            two_loop_thresholds_v20.json
             EXACT_HSIGMA_HERMITIAN_FAMILY_CLOSURE_V20.json
             EXACT_HSIGMA_HERMITIAN_FAMILY_CLOSURE_V20.md
             NEXT_GEN_TRIPLET_HSIGMA_HERMITIAN_FAMILY_GATE_V20.json
