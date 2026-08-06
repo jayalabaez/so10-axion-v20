@@ -1,0 +1,53 @@
+name: exact-phisigma-126bar-minus-projectors
+
+on:
+  push:
+    branches:
+      - agent/coupled-p-delta-backreaction-scan
+  pull_request:
+    paths:
+      - exact_phisigma_126bar_minus_projectors_v20.py
+      - test_exact_phisigma_126bar_minus_projectors_v20.py
+      - .github/workflows/exact-phisigma-126bar-minus-projectors.yml
+  workflow_dispatch:
+
+jobs:
+  exact-phisigma-126bar-minus-projectors:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt pytest
+      - name: Compile physical chirality gate
+        run: python -m py_compile exact_phisigma_126bar_minus_projectors_v20.py test_exact_phisigma_126bar_minus_projectors_v20.py
+      - name: Run projector and chirality tests
+        run: python -m pytest -q test_exact_phisigma_126bar_minus_projectors_v20.py
+      - name: Generate authoritative certificate
+        run: python exact_phisigma_126bar_minus_projectors_v20.py > /tmp/exact-phisigma-minus.log
+      - name: Assert physical chirality and fail-closed scope
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path('EXACT_PHISIGMA_126BAR_MINUS_PROJECTORS_V20.json').read_text())
+          assert report['n_failed'] == 0, report['failures']
+          assert report['source_correction']['physical_126bar_chirality'] == '-i'
+          assert report['source_correction']['coordinate_matrices_interchangeable'] is False
+          assert report['generic_reconstruction_audit']['six_channel_reconstruction_residual'] < 1e-11
+          assert report['delta_R_audit']['maximum_eigenvector_residual'] < 1e-11
+          assert report['flag']['coupled_210_126bar_local_vacuum_complete'] is False
+          assert report['flag']['whole_model_validated'] is False
+          assert report['flag']['empirical_discovery'] is False
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: exact-phisigma-126bar-minus-projectors
+          path: |
+            EXACT_PHISIGMA_126BAR_MINUS_PROJECTORS_V20.json
+            EXACT_PHISIGMA_126BAR_MINUS_PROJECTORS_V20.md

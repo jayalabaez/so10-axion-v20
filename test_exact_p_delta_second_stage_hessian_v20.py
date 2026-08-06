@@ -26,11 +26,13 @@ def test_bounded_tachyon_free_fixed_p_hessian():
 
 def test_fail_closed_full_model_scope():
     report = gate.build_report()
+    assert report["source_correction"]["physical_126bar_chirality"] == "-i"
+    assert report["source_correction"]["legacy_plus_i_mixed_export_used"] is False
     flags = report["flag"]
     assert flags["fixed_P_second_stage_stabilized"] is True
-    assert flags["full_simultaneous_vacuum_complete"] is False
-    assert flags["complete_multifield_Hessian"] is False
+    assert flags["complete_multifield_model"] is False
     assert flags["physical_threshold_spectrum_complete"] is False
     assert flags["exact_unique_proton_lifetime"] is False
     assert flags["whole_model_validated"] is False
+    assert flags["whole_model_excluded"] is False
     assert flags["empirical_discovery"] is False
