@@ -1,0 +1,49 @@
+name: g1-g8-execution-roadmap
+
+on:
+  push:
+    branches:
+      - agent/g1-g8-roadmap-ew-backreaction
+  pull_request:
+    paths:
+      - g1_g8_execution_roadmap_v20.py
+      - test_g1_g8_execution_roadmap_v20.py
+      - .github/workflows/g1-g8-execution-roadmap.yml
+  workflow_dispatch:
+
+jobs:
+  g1-g8-execution-roadmap:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install test dependency
+        run: python -m pip install --upgrade pip pytest
+      - name: Compile roadmap
+        run: python -m py_compile g1_g8_execution_roadmap_v20.py test_g1_g8_execution_roadmap_v20.py
+      - name: Test roadmap contracts
+        run: python -m pytest -q test_g1_g8_execution_roadmap_v20.py
+      - name: Generate roadmap artifacts
+        run: python g1_g8_execution_roadmap_v20.py --json G1_G8_EXECUTION_ROADMAP_V20.json > /tmp/g1-g8-roadmap.log
+      - name: Assert fail-closed roadmap
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path('G1_G8_EXECUTION_ROADMAP_V20.json').read_text())
+          assert report['n_failed'] == 0, report['failures']
+          assert report['gates']['G1']['status'] == 'OPEN'
+          assert report['gates']['G7']['status'] == 'OPEN'
+          assert all(row['status'] != 'CLOSED' for row in report['gates'].values())
+          assert report['dependencies']['G8'] == ['G3', 'G6', 'G7']
+          assert 'empirical discovery' in report['new_physics_policy']
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: g1-g8-execution-roadmap
+          path: |
+            G1_G8_EXECUTION_ROADMAP_V20.json
+            G1_G8_EXECUTION_ROADMAP_V20.md

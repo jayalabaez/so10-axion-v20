@@ -1,0 +1,54 @@
+name: exact-reduced-ew-backreaction
+
+on:
+  push:
+    branches:
+      - agent/g1-g8-roadmap-ew-backreaction
+  pull_request:
+    paths:
+      - exact_reduced_ew_backreaction_v20.py
+      - test_exact_reduced_ew_backreaction_v20.py
+      - scalar_vacuum_proton_decay_v20.py
+      - two_loop_thresholds_v20.py
+      - .github/workflows/exact-reduced-ew-backreaction.yml
+  workflow_dispatch:
+
+jobs:
+  exact-reduced-ew-backreaction:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: python -m pip install --upgrade pip numpy pytest
+      - name: Compile gate
+        run: python -m py_compile exact_reduced_ew_backreaction_v20.py test_exact_reduced_ew_backreaction_v20.py
+      - name: Run reduced backreaction tests
+        run: python -m pytest -q test_exact_reduced_ew_backreaction_v20.py
+      - name: Generate certificate
+        run: python exact_reduced_ew_backreaction_v20.py --json EXACT_REDUCED_EW_BACKREACTION_V20.json > /tmp/exact-reduced-ew-backreaction.log
+      - name: Assert closure and fail-closed scope
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path('EXACT_REDUCED_EW_BACKREACTION_V20.json').read_text())
+          assert report['n_failed'] == 0, report['failures']
+          assert report['generic_portal_scenario']['quartic_positive_definite'] is True
+          assert report['generic_portal_scenario']['radial_hessian_positive_by_congruence'] is True
+          assert report['generic_portal_scenario']['electroweak_hierarchy']['aggregate_abs_portal_over_h_self'] > 1.0e20
+          assert report['sequestered_scenario']['electroweak_hierarchy']['aggregate_abs_portal_over_h_self'] <= 10.0 * (1.0 + 1.0e-12)
+          assert report['flag']['UV_sequestering_or_hierarchy_mechanism_required'] is True
+          assert report['flag']['complete_tensor_backreaction'] is False
+          assert report['flag']['complete_global_vacuum'] is False
+          assert report['flag']['whole_model_validated'] is False
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: exact-reduced-ew-backreaction
+          path: |
+            EXACT_REDUCED_EW_BACKREACTION_V20.json
+            EXACT_REDUCED_EW_BACKREACTION_V20.md
