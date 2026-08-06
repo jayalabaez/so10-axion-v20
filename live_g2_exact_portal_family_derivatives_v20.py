@@ -9,16 +9,16 @@ The two authoritative G1 base families are
 In canonical complex coefficients their undressed invariants are
 
     I_- = Hdag_e Phi_p Sigma_A C[e,p,A],
-    I_+ = Hdag_e Phi_p Sigma_A^* C[e,p,A]^*,
+    I_+ = Hdag_e Phi_p Sigma_A^* Cdag[e,p,A],
 
-where C is the exact 10 x 210 x 126 contraction tensor constructed from the
-independent four-form basis and the kinetic-orthonormal physical -i Hodge
-126bar basis.  Since each invariant is trilinear, the complete gradient and
-Hessian contain only exact linear and cross-bilinear blocks.
+where C and Cdag are independently constructed from the physical -i 126bar
+basis and its explicitly conjugated +i basis.  The identity Cdag=conjugate(C)
+is then an executable orientation check rather than an assumption.
 
-Every live singlet dressing is then included by the same exact product rule as
-the first five derivative families.  This closes these two base-family
-adapters only; eleven of eighteen families and G2 remain open.
+Since each invariant is trilinear, the complete gradient and Hessian contain
+only exact linear and cross-bilinear blocks.  Every live singlet dressing is
+included by the exact product rule from the first five derivative families.
+This closes these two adapters only; eleven of eighteen families remain.
 """
 from __future__ import annotations
 
@@ -27,7 +27,7 @@ import dataclasses
 import json
 from functools import lru_cache
 from pathlib import Path
-from typing import Any, Mapping
+from typing import Any
 
 import numpy as np
 
@@ -49,14 +49,31 @@ SQRT2 = float(np.sqrt(2.0))
 INV_SQRT2 = 1.0 / SQRT2
 
 
-@lru_cache(maxsize=1)
-def portal_tensor() -> np.ndarray:
-    """Return C[e,p,A] for Hdag Phi Sigma in canonical bases."""
+def _jsonable(value: Any) -> Any:
+    if dataclasses.is_dataclass(value):
+        return _jsonable(dataclasses.asdict(value))
+    if isinstance(value, dict):
+        return {str(key): _jsonable(item) for key, item in value.items()}
+    if isinstance(value, (list, tuple)):
+        return [_jsonable(item) for item in value]
+    if isinstance(value, np.ndarray):
+        return value.tolist()
+    if isinstance(value, np.generic):
+        return value.item()
+    if isinstance(value, complex):
+        return {"re": float(value.real), "im": float(value.imag)}
+    return value
+
+
+def conjugate_form(form: direct.Form) -> direct.Form:
+    return {indices: np.conjugate(value) for indices, value in form.items()}
+
+
+def _build_tensor(sigma_states: tuple[direct.Form, ...]) -> np.ndarray:
     tensor = np.zeros(
         (chart.H_COMPLEX_DIM, chart.PHI_DIM, chart.SIGMA_COMPLEX_DIM),
         dtype=complex,
     )
-    sigma_states = chart.sigma_basis()
     for phi_index, indices in enumerate(chart.PHI_INDICES):
         phi = {indices: 1.0 + 0.0j}
         for sigma_index, sigma in enumerate(sigma_states):
@@ -66,6 +83,20 @@ def portal_tensor() -> np.ndarray:
                     (vector_index,), 0.0
                 )
     return tensor
+
+
+@lru_cache(maxsize=1)
+def portal_tensor() -> np.ndarray:
+    """C[e,p,A] in the physical -i 126bar basis."""
+    return _build_tensor(tuple(chart.sigma_basis()))
+
+
+@lru_cache(maxsize=1)
+def portal_tensor_dagger_direct() -> np.ndarray:
+    """Cdag[e,p,A] built independently in the conjugated +i basis."""
+    return _build_tensor(
+        tuple(conjugate_form(state) for state in chart.sigma_basis())
+    )
 
 
 def _complex_blocks(q: np.ndarray) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
@@ -87,7 +118,7 @@ def base_derivative(
     coefficient = portal_tensor()
     sigma_v_factor = 1j * INV_SQRT2
     if base_family == "Phi_Hdag_Sigmadag":
-        coefficient = np.conjugate(coefficient)
+        coefficient = portal_tensor_dagger_direct()
         sigma_coordinates = np.conjugate(sigma_coordinates)
         sigma_v_factor = -1j * INV_SQRT2
 
@@ -113,18 +144,14 @@ def base_derivative(
         "e,p,epa->a", hdag, phi, coefficient, optimize=True
     )
     gradient[chart.PHI_SLICE] = phi_gradient
-    gradient[chart.H_SLICE.start :: 2][: chart.H_COMPLEX_DIM] = (
-        INV_SQRT2 * vector_image
-    )
-    gradient[chart.H_SLICE.start + 1 :: 2][: chart.H_COMPLEX_DIM] = (
-        -1j * INV_SQRT2 * vector_image
-    )
-    gradient[chart.SIGMA_SLICE.start :: 2][: chart.SIGMA_COMPLEX_DIM] = (
-        INV_SQRT2 * sigma_gradient
-    )
-    gradient[chart.SIGMA_SLICE.start + 1 :: 2][: chart.SIGMA_COMPLEX_DIM] = (
-        sigma_v_factor * sigma_gradient
-    )
+    h_x = chart.H_SLICE.start + 2 * np.arange(chart.H_COMPLEX_DIM)
+    h_y = h_x + 1
+    sigma_u = chart.SIGMA_SLICE.start + 2 * np.arange(chart.SIGMA_COMPLEX_DIM)
+    sigma_v = sigma_u + 1
+    gradient[h_x] = INV_SQRT2 * vector_image
+    gradient[h_y] = -1j * INV_SQRT2 * vector_image
+    gradient[sigma_u] = INV_SQRT2 * sigma_gradient
+    gradient[sigma_v] = sigma_v_factor * sigma_gradient
 
     h_phi = np.einsum(
         "a,epa->ep", sigma_coordinates, coefficient, optimize=True
@@ -133,11 +160,6 @@ def base_derivative(
         "e,epa->ap", hdag, coefficient, optimize=True
     )
     h_sigma = np.einsum("p,epa->ea", phi, coefficient, optimize=True)
-
-    h_x = chart.H_SLICE.start + 2 * np.arange(chart.H_COMPLEX_DIM)
-    h_y = h_x + 1
-    sigma_u = chart.SIGMA_SLICE.start + 2 * np.arange(chart.SIGMA_COMPLEX_DIM)
-    sigma_v = sigma_u + 1
     phi_indices = np.arange(chart.PHI_SLICE.start, chart.PHI_SLICE.stop)
 
     def symmetric_block(rows: np.ndarray, columns: np.ndarray, block: np.ndarray) -> None:
@@ -276,8 +298,9 @@ def build_report() -> dict[str, Any]:
     }
     expected_counts = expected_family_counts()
     tensor = portal_tensor()
+    tensor_dagger = portal_tensor_dagger_direct()
     tensor_conjugation_residual = float(
-        np.max(np.abs(np.conjugate(tensor) - np.conjugate(tensor)))
+        np.max(np.abs(tensor_dagger - np.conjugate(tensor)))
     )
     tensor_nonzero = int(np.count_nonzero(np.abs(tensor) > 1.0e-14))
     support = base_support_audit(q)
@@ -302,8 +325,10 @@ def build_report() -> dict[str, Any]:
 
     checks = {
         "portal_tensor_shape_is_10x210x126": tensor.shape == (10, 210, 126),
+        "direct_Sigmadag_tensor_has_same_shape": tensor_dagger.shape == tensor.shape,
         "portal_tensor_is_nonzero": tensor_nonzero > 0,
-        "Sigmadag_tensor_is_exact_conjugate": tensor_conjugation_residual < 1.0e-15,
+        "Sigmadag_tensor_is_independently_exact_conjugate": tensor_conjugation_residual
+        < 1.0e-15,
         "authoritative_family_ids_exist": set(SELECTED_FAMILIES).issubset(
             {row["id"] for row in ledger.BASE_FAMILIES.values()}
         ),
@@ -366,7 +391,7 @@ def build_report() -> dict[str, Any]:
                 "shape": list(tensor.shape),
                 "nonzero_entries": tensor_nonzero,
                 "frobenius_norm": float(np.linalg.norm(tensor)),
-                "Sigmadag_conjugation_residual": tensor_conjugation_residual,
+                "direct_Sigmadag_conjugation_residual": tensor_conjugation_residual,
             },
             "base_support_audit": support,
             "maximum_base_support_residual": maximum_support_residual,
@@ -395,22 +420,6 @@ def build_report() -> dict[str, Any]:
             ),
         }
     )
-
-
-def _jsonable(value: Any) -> Any:
-    if dataclasses.is_dataclass(value):
-        return _jsonable(dataclasses.asdict(value))
-    if isinstance(value, dict):
-        return {str(key): _jsonable(item) for key, item in value.items()}
-    if isinstance(value, (list, tuple)):
-        return [_jsonable(item) for item in value]
-    if isinstance(value, np.ndarray):
-        return value.tolist()
-    if isinstance(value, np.generic):
-        return value.item()
-    if isinstance(value, complex):
-        return {"re": float(value.real), "im": float(value.imag)}
-    return value
 
 
 def write_report(report: dict[str, Any]) -> None:
