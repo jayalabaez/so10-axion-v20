@@ -39,7 +39,7 @@ def test_fail_closed():
     flags = gate.build_report()["flag"]
     assert flags["complete_operator_derived_H_mass_matrix"]
     assert flags["phi2_hdagh_channels_inserted"]
-    assert not flags["hsigma_45_full_vector_complete"]
+    assert flags["hsigma_45_full_vector_complete"]
     assert not flags["nonzero_electroweak_backreaction"]
     assert not flags["complete_multifield_model"]
     assert not flags["whole_model_validated"]

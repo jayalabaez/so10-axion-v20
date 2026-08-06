@@ -9,8 +9,10 @@ assembles the known closed families without inventing Clebsches:
 * 210^2 H^dag H channels 1,45,54 from ``exact_phi2_hdagh_channel_family_v20``
 * Hermitian H–Sigma singlet portal proportional to n_Sigma0
 
-The H–Sigma 45 full-vector lift remains optional (default coupling zero) and
-is recorded as open.  Self-quartics of H vanish at H=0 for the mass matrix.
+The H–Sigma 45 full-vector lift is supplied by
+``exact_hsigma_45_full_vector_mass_v20.delta_r_mass_matrix`` when
+``lambda_hsigma_45 != 0``; the default coupling remains zero for the baseline
+benchmark.  Self-quartics of H vanish at H=0 for the mass matrix.
 
 The 20-real interleaved block M_H enters the 482-real Schur gate through the
 Loewner condition
@@ -76,8 +78,13 @@ def complex_mass_matrix(
     phi45 = float(lambda_phih_45) * channels["45"]
     phi54 = float(lambda_phih_54) * channels["54"]
     hsigma1 = float(lambda_hsigma_1) * n_sigma * np.eye(H_COMPLEX, dtype=complex)
-    # Full-vector H–Σ 45 lift is not assembled here (default coupling 0).
-    hsigma45 = float(lambda_hsigma_45) * np.zeros((H_COMPLEX, H_COMPLEX), dtype=complex)
+    if abs(float(lambda_hsigma_45)) > 0.0:
+        # Lazy import avoids a circular dependency with the dedicated 45 gate.
+        import exact_hsigma_45_full_vector_mass_v20 as hsigma45_mass
+
+        hsigma45 = float(lambda_hsigma_45) * hsigma45_mass.delta_r_mass_matrix()
+    else:
+        hsigma45 = np.zeros((H_COMPLEX, H_COMPLEX), dtype=complex)
 
     matrix = soft + phi1 + phi45 + phi54 + hsigma1 + hsigma45
     matrix = 0.5 * (matrix + matrix.conj().T)
@@ -92,7 +99,7 @@ def complex_mass_matrix(
             "phi_45": phi45,
             "phi_54": phi54,
             "hsigma_1": hsigma1,
-            "hsigma_45_open_default_zero": hsigma45,
+            "hsigma_45": hsigma45,
         },
         "couplings": {
             "m_h_squared": m_h_squared,
@@ -282,7 +289,14 @@ def build_report() -> dict[str, Any]:
         "unstable_benchmark_has_tachyon": below_phys["negative_modes"] > 0
         or below_full["negative_modes"] > 0
         or bad_loewner["shifted_lambda_min"] < -1.0e-10,
-        "hsigma_45_not_falsely_closed": assembled["couplings"]["lambda_hsigma_45"] == 0.0,
+        "hsigma_45_endomorphism_available": float(
+            np.linalg.norm(
+                __import__(
+                    "exact_hsigma_45_full_vector_mass_v20"
+                ).delta_r_mass_matrix()
+            )
+        )
+        > 1.0,
         "catalogue_cubic_registered": bool(
             __import__(
                 "exact_phi_hdag_sigmabar_cubic_audit_v20"
@@ -314,7 +328,7 @@ def build_report() -> dict[str, Any]:
         "spectrum_unstable_physical": below_phys,
         "spectrum_unstable_full": below_full,
         "open_contributions": {
-            "hermitian_HSigma_45_full_vector_lift": True,
+            "hermitian_HSigma_45_full_vector_lift": False,
             "S_Phi17_portals_outside_482": True,
             "nonzero_electroweak_backreaction": True,
         },
@@ -322,7 +336,7 @@ def build_report() -> dict[str, Any]:
             "complete_operator_derived_H_mass_matrix": not bool(failures),
             "phi2_hdagh_channels_inserted": True,
             "hsigma_singlet_inserted": True,
-            "hsigma_45_full_vector_complete": False,
+            "hsigma_45_full_vector_complete": True,
             "isotropic_schur_limit_recovered": iso["isotropic_recovery_ok"],
             "nonzero_electroweak_backreaction": False,
             "complete_multifield_model": False,
@@ -330,14 +344,14 @@ def build_report() -> dict[str, Any]:
             "empirical_discovery": False,
         },
         "next_exact_target": (
-            "Lift the Hermitian H–Σ 45 channel to the full 10-vector, then solve "
-            "nonzero electroweak backreaction on the 210+126bar+10 system."
+            "Solve nonzero electroweak backreaction on the 210+126bar+10 system "
+            "with the complete operator-derived H mass block including H–Σ 45."
         ),
         "verdict": (
             "The operator-derived 10_H mass block on p+Δ_R is assembled from the "
-            "closed Φ²H†H family and the H–Σ singlet portal. The Loewner upgrade "
-            "of the μ_D Schur bound is verified. H–Σ 45 full-vector lift and "
-            "electroweak backreaction remain open."
+            "closed Φ²H†H family, the H–Σ singlet portal, and the exact Hermitian "
+            "H–Σ 45 full-vector endomorphism. The Loewner upgrade of the μ_D Schur "
+            "bound is verified. Electroweak backreaction remains open."
         ),
     }
 
