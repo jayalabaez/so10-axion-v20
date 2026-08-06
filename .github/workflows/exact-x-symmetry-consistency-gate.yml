@@ -39,10 +39,12 @@ jobs:
           assert report['n_failed'] == 0, report['failures']
           assert report['declared_symmetries']['u1x_gauged'] is False
           assert report['declared_symmetries']['x_declared_global'] is False
-          assert report['signed_filter_contract']['requires_exact_x_neutrality_by_default'] is True
+          assert report['signed_filter_contract']['requires_exact_x_neutrality_by_default'] is False
+          assert report['signed_filter_contract']['declared_option_C_no_continuous_X'] is True
           assert report['phase_sensitive_count'] > 0
           assert report['dimension17_candidate']['breaks_continuous_X_by_units'] == 289.0
           assert report['dimension17_candidate']['breaks_PQ'] is False
+          assert report['flag']['option_C_no_continuous_X_applied'] is True
           assert report['flag']['complete_multifield_model'] is False
           assert report['flag']['whole_model_validated'] is False
           PY
