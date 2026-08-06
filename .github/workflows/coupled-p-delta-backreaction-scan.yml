@@ -7,6 +7,7 @@ on:
   pull_request:
     paths:
       - coupled_p_delta_backreaction_scan_v20.py
+      - coupled_p_delta_rank_reduced_search_v20.py
       - .github/workflows/coupled-p-delta-backreaction-scan.yml
   workflow_dispatch:
 
@@ -24,35 +25,36 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
       - name: Compile coupled scan
-        run: python -m py_compile coupled_p_delta_backreaction_scan_v20.py
-      - name: Execute complete 462-real scan
+        run: python -m py_compile coupled_p_delta_backreaction_scan_v20.py coupled_p_delta_rank_reduced_search_v20.py
+      - name: Execute rank-reduced 462-real search
         id: scan
         continue-on-error: true
         run: |
-          python coupled_p_delta_backreaction_scan_v20.py > /tmp/coupled-p-delta.log
+          python coupled_p_delta_rank_reduced_search_v20.py > /tmp/coupled-p-delta.log
           echo "exit_code=$?" >> "$GITHUB_OUTPUT"
-      - name: Print scan report
+      - name: Print search report
         if: always()
         run: |
-          test -f COUPLED_P_DELTA_BACKREACTION_SCAN_V20.json && cat COUPLED_P_DELTA_BACKREACTION_SCAN_V20.json || cat /tmp/coupled-p-delta.log
+          test -f COUPLED_P_DELTA_RANK_REDUCED_SEARCH_V20.json && cat COUPLED_P_DELTA_RANK_REDUCED_SEARCH_V20.json || cat /tmp/coupled-p-delta.log
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: coupled-p-delta-backreaction-scan
           path: |
-            COUPLED_P_DELTA_BACKREACTION_SCAN_V20.json
-            COUPLED_P_DELTA_BACKREACTION_SCAN_V20.md
+            COUPLED_P_DELTA_RANK_REDUCED_SEARCH_V20.json
+            COUPLED_P_DELTA_RANK_REDUCED_SEARCH_V20.md
           if-no-files-found: warn
       - name: Assert coupled local vacuum or fail closed
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
-          path = Path('COUPLED_P_DELTA_BACKREACTION_SCAN_V20.json')
-          assert path.exists(), 'scan report missing'
+          path = Path('COUPLED_P_DELTA_RANK_REDUCED_SEARCH_V20.json')
+          assert path.exists(), 'search report missing'
           report = json.loads(path.read_text())
           assert report['n_failed'] == 0, report['failures']
-          scan = report['scan']
+          scan = report['search']
+          assert scan['stationarity_rank'] < 2
           assert scan['negative_modes'] == 0
           assert scan['zero_modes'] == 33
           assert scan['gauge_orbit_rank'] == 33
