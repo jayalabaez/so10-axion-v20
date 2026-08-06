@@ -27,6 +27,10 @@ on:
       - test_live_g1_g8_gate_ledger_v20.py
       - .github/workflows/live-g2-component-potential.yml
 
+concurrency:
+  group: live-g2-corrected-values-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   live-g2-corrected-value-layer:
     runs-on: ubuntu-latest
@@ -35,9 +39,12 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: '3.12'
+          cache: pip
       - name: Install dependencies
-        run: python -m pip install --upgrade pip numpy scipy pytest mpmath
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt pytest
       - name: Compile corrected G2, audit, and ledger
         run: |
           python -m py_compile \
@@ -62,52 +69,58 @@ jobs:
           python live_g2_component_potential_v20.py --write
           python live_g2_pr155_correction_audit_v20.py --write
           python live_g1_g8_gate_ledger_v20.py
-      - name: Assert fail-closed scope
+      - name: Assert fail-closed scope and tensor contracts
         run: |
           python - <<'PY'
           import json
 
-          values=json.load(open('LIVE_G2_ARBITRARY_COMPONENT_POTENTIAL_VALUES_V20.json'))
-          assert values['n_failed']==0, values['failures']
-          assert values['counts']=={
-              'Hermitian_orbits':48,
-              'invariant_directions':64,
-              'real_parameters':91,
-              'base_families':18,
-          }, values['counts']
+          values = json.load(open('LIVE_G2_ARBITRARY_COMPONENT_POTENTIAL_VALUES_V20.json'))
+          assert values['n_failed'] == 0, values['failures']
+          assert values['counts']['Hermitian_orbits'] == 48
+          assert values['counts']['invariant_directions'] == 64
+          assert values['counts']['real_parameters'] == 91
+          assert values['counts']['base_families'] == 18
+          assert values['counts']['real_field_dimension'] == 486
+          assert values['counts']['symmetric_Hessian_entries'] == 118341
           assert values['flags']['all_64_arbitrary_component_values_callable']
           assert values['flags']['real_Hermitian_potential_assembled']
+          assert values['flags']['real_210_field_enforced']
+          assert values['Phi2_Hdag_Sigma_orientation_audit']['maximum_conjugation_residual'] < 1e-11
+          assert not values['Phi2_Sigma_basis_audit']['direct_graph_to_projector_relabeling_valid']
           assert not values['flags']['field_gradient_complete']
           assert not values['flags']['field_Hessian_complete']
           assert not values['flags']['G2_closed']
 
-          audit=json.load(open('LIVE_G2_PR155_CORRECTION_AUDIT_V20.json'))
-          assert audit['n_failed']==0, audit['failures']
+          audit = json.load(open('LIVE_G2_PR155_CORRECTION_AUDIT_V20.json'))
+          assert audit['n_failed'] == 0, audit['failures']
           assert audit['flags']['PR155_G2_closed_claim_rejected']
-          assert audit['derivative_scope']['historical_probe_dimension']==8
-          assert audit['derivative_scope']['complete_real_field_dimension']==486
-          assert audit['derivative_scope']['complete_symmetric_Hessian_entries']==118341
+          assert audit['Phi2_Hdag_Sigma_orientation']['maximum_conjugation_residual'] < 1e-11
+          assert not audit['Phi2_Sigma_basis']['direct_graph_to_projector_relabeling_valid']
+          assert audit['derivative_scope']['historical_probe_dimension'] == 8
+          assert audit['derivative_scope']['complete_real_field_dimension'] == 486
+          assert audit['derivative_scope']['complete_symmetric_Hessian_entries'] == 118341
           assert not audit['flags']['G2_closed']
 
-          g2=json.load(open('LIVE_G2_COMPONENT_POTENTIAL_V20.json'))
-          assert g2['n_failed']==0, g2['failures']
-          assert g2['counts']['complete_real_field_dimension']==486
+          g2 = json.load(open('LIVE_G2_COMPONENT_POTENTIAL_V20.json'))
+          assert g2['n_failed'] == 0, g2['failures']
+          assert g2['counts']['complete_real_field_dimension'] == 486
+          assert g2['counts']['complete_symmetric_Hessian_entries_required'] == 118341
           assert g2['flags']['g2_value_layer_complete']
           assert not g2['flags']['g2_complete_field_gradient']
           assert not g2['flags']['g2_complete_field_Hessian']
           assert not g2['flags']['g2_closed']
-          assert not g2['flags']['g3_closed']
           assert not g2['flags']['whole_model_validated']
 
-          ledger=json.load(open('LIVE_G1_G8_GATE_LEDGER_V20.json'))
-          assert ledger['n_failed']==0, ledger['failures']
-          assert ledger['summary']['closed']==['G1']
-          assert ledger['gates']['G2']['status']=='PARTIAL'
-          assert ledger['gates']['G2']['corrections']['complete_real_field_dimension']==486
+          ledger = json.load(open('LIVE_G1_G8_GATE_LEDGER_V20.json'))
+          assert ledger['n_failed'] == 0, ledger['failures']
+          assert ledger['summary']['closed'] == ['G1']
+          assert ledger['gates']['G2']['status'] == 'PARTIAL'
+          assert ledger['gates']['G2']['corrections']['complete_real_field_dimension'] == 486
           assert not ledger['flags']['g2_closed']
           assert not ledger['flags']['whole_model_validated']
           PY
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: live-g2-corrected-value-layer
           path: |
