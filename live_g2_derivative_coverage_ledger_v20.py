@@ -13,10 +13,10 @@ directions, and 91 real potential parameters.  It fails closed on
 * inconsistent dense derivative shapes;
 * failed combined value/gradient/Hessian reconstruction.
 
-At this stage twelve base families have draft implementations of complete
-486-real gradients and 486x486 Hessians.  Six quartic families remain.  This
-ledger does not promote those implementations without execution and does not
-close G2, stationarity, the vacuum problem, or any downstream gate.
+At this stage all eighteen base families have draft implementations of complete
+486-real gradients and 486x486 Hessians.  This ledger still fails closed on
+assembly errors and does not close G2, stationarity, the vacuum problem, or any
+downstream gate.
 """
 from __future__ import annotations
 
@@ -38,6 +38,12 @@ import live_g2_exact_remaining_cubic_derivatives_v20 as cubic
 import live_g2_exact_h10_self_quartic_derivatives_v20 as h10
 import live_g2_exact_hsigma_hermitian_derivatives_v20 as hsigma
 import live_g2_exact_phi2_hdagh_derivatives_v20 as phi2h
+import live_g2_exact_phi_self_quartic_derivatives_v20 as phi_self
+import live_g2_exact_126bar_self_quartic_derivatives_v20 as sigma_self
+import live_g2_exact_hdag_sigma2_sigmadag_derivatives_v20 as hdag_sig2
+import live_g2_exact_hdag2_sigma2_derivatives_v20 as hdag2_sig2
+import live_g2_exact_phi2_sigma_sigmadag_derivatives_v20 as phi2_sigma
+import live_g2_exact_phi2_hdag_sigma_derivatives_v20 as phi2_hsigma
 
 ROOT = Path(__file__).resolve().parent
 OUT_JSON = ROOT / "LIVE_G2_DERIVATIVE_COVERAGE_LEDGER_V20.json"
@@ -52,16 +58,15 @@ ADAPTERS: tuple[tuple[str, tuple[str, ...], Adapter], ...] = (
     ("H10_self_quartics", (h10.BASE_FAMILY,), h10.all_direction_derivatives),
     ("H_Sigma_hermitian", (hsigma.BASE_FAMILY,), hsigma.all_direction_derivatives),
     ("Phi2_HdagH_channels", (phi2h.BASE_FAMILY,), phi2h.all_direction_derivatives),
+    ("Phi_self_quartics", (phi_self.BASE_FAMILY,), phi_self.all_direction_derivatives),
+    ("126bar_self_quartics", (sigma_self.BASE_FAMILY,), sigma_self.all_direction_derivatives),
+    ("Hdag_Sigma2_Sigmadag", (hdag_sig2.BASE_FAMILY,), hdag_sig2.all_direction_derivatives),
+    ("Hdag2_Sigma2", (hdag2_sig2.BASE_FAMILY,), hdag2_sig2.all_direction_derivatives),
+    ("Phi2_Sigma_Sigmadag", (phi2_sigma.BASE_FAMILY,), phi2_sigma.all_direction_derivatives),
+    ("Phi2_Hdag_Sigma", (phi2_hsigma.BASE_FAMILY,), phi2_hsigma.all_direction_derivatives),
 )
 
-EXPECTED_REMAINING_FAMILIES = (
-    "126bar_self_projectors",
-    "unique_Hdag_Sigma2_Sigmadag",
-    "unique_Hdag2_Sigma2",
-    "Phi2_Sigma_projectors",
-    "Phi2_Hdag_Sigma_210_1050",
-    "Phi_self_quartics",
-)
+EXPECTED_REMAINING_FAMILIES: tuple[str, ...] = ()
 
 
 def _jsonable(value: Any) -> Any:
@@ -268,10 +273,11 @@ def build_report() -> dict[str, Any]:
 
     checks = {
         "authoritative_G1_has_18_base_families": len(all_families) == 18,
-        "covered_family_count_is_12": len(covered) == 12,
+        "covered_family_count_is_18": len(covered) == 18,
         "covered_families_unique": len(set(covered)) == len(covered),
         "every_covered_family_has_exactly_one_owner": not ownership_duplicates,
         "every_covered_family_is_authoritative": set(covered).issubset(set(all_families)),
+        "every_authoritative_family_is_covered": set(covered) == set(all_families),
         "all_adapter_expected_counts_positive": all(
             row["all_expected_counts_positive"] for row in adapter_coverage.values()
         ),
@@ -300,12 +306,12 @@ def build_report() -> dict[str, Any]:
         "combined_value_matches_five_point_center": directional["value_residual"] < 1.0e-8,
         "combined_first_derivative_reconstructs": directional["first_residual"] < 5.0e-7,
         "combined_second_derivative_reconstructs": directional["second_residual"] < 5.0e-6,
-        "remaining_family_count_is_6": len(remaining_families) == 6,
+        "remaining_family_count_is_0": len(remaining_families) == 0,
         "remaining_family_set_matches_declared_frontier": set(remaining_families)
         == set(EXPECTED_REMAINING_FAMILIES),
-        "remaining_directions_nonzero": len(remaining_rows) > 0,
-        "remaining_parameters_nonzero": len(remaining_parameter_ids) > 0,
-        "complete_64_direction_derivatives_not_claimed": len(rows) < 64,
+        "remaining_directions_empty": len(remaining_rows) == 0,
+        "remaining_parameters_empty": len(remaining_parameter_ids) == 0,
+        "complete_64_direction_derivatives_assembled": len(rows) == 64,
         "G2_not_closed": True,
         "whole_model_not_validated": True,
     }
@@ -313,7 +319,7 @@ def build_report() -> dict[str, Any]:
     return _jsonable(
         {
             "status": (
-                "G2_DERIVATIVE_COVERAGE_12_OF_18_FAMILIES_ASSEMBLED"
+                "G2_DERIVATIVE_COVERAGE_18_OF_18_FAMILIES_ASSEMBLED"
                 if not failures
                 else "G2_DERIVATIVE_COVERAGE_LEDGER_FAILED"
             ),
@@ -360,11 +366,11 @@ def build_report() -> dict[str, Any]:
             },
             "combined_directional_reconstruction": directional,
             "flags": {
-                "twelve_full_coordinate_family_adapters_implemented": not failures,
+                "eighteen_full_coordinate_family_adapters_implemented": not failures,
                 "all_implemented_direction_gradients_assembled": not failures,
                 "all_implemented_direction_Hessians_assembled": not failures,
-                "all_64_direction_gradients_complete": False,
-                "all_64_direction_Hessians_complete": False,
+                "all_64_direction_gradients_complete": not failures,
+                "all_64_direction_Hessians_complete": not failures,
                 "G2_closed": False,
                 "G3_closed": False,
                 "G4_closed": False,
@@ -377,15 +383,13 @@ def build_report() -> dict[str, Any]:
                 "empirical_discovery": False,
             },
             "next_exact_target": (
-                "Implement and verify the six remaining quartic adapters: "
-                + ", ".join(remaining_families)
-                + "."
+                "Keep G2 fail-closed until hosted vacuum/stationarity work begins; "
+                "do not claim whole-model validation."
             ),
             "verdict": (
-                "The draft derivative chain covers twelve of eighteen authoritative "
-                "base families with full 486-real gradients and Hessians and one "
-                "combined fail-closed assembly. Six quartic families remain. Hosted "
-                "execution is still required before promotion, and G2 remains PARTIAL."
+                "All eighteen authoritative base families now have full 486-real "
+                "gradients and Hessians assembled in one fail-closed ledger. G2 "
+                "remains PARTIAL: stationarity, vacuum, and G3–G8 are still open."
             ),
         }
     )

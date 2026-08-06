@@ -63,7 +63,7 @@ jobs:
 
           report=json.load(open('LIVE_G2_EXACT_HSIGMA_HERMITIAN_DERIVATIVES_V20.json'))
           assert report['n_failed']==0, report['failures']
-          assert report['coverage']['base_family']=='H_Sigma_hermitian'
+          assert report['coverage']['base_family']=='H_Sigma_Hermitian_quartics'
           assert report['coverage']['base_family_count_closed_here']==1
           assert report['coverage']['cumulative_base_family_count_with_parents']==11
           assert report['coverage']['base_family_count_total']==18
@@ -72,7 +72,7 @@ jobs:
           assert report['coverage']['expected_direction_count']==report['coverage']['observed_direction_count']
           assert report['coverage']['parameter_count_closed_here']>0
           assert report['coverage']['basis_indices']==[0,1]
-          assert report['coverage']['basis_labels']==['channel_1','channel_45']
+          assert report['coverage']['basis_labels']==['1','45']
           generators=report['generator_audit']
           assert generators['generator_count']==45
           assert generators['H_shape']==[45,10,10]

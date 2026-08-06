@@ -22,7 +22,7 @@ def test_report_passes_without_closing_G2():
     report = mod.build_report()
     assert report["n_failed"] == 0, report["failures"]
     assert all(report["checks"].values())
-    assert report["coverage"]["base_family"] == "H_Sigma_hermitian"
+    assert report["coverage"]["base_family"] == "H_Sigma_Hermitian_quartics"
     assert report["coverage"]["base_family_count_closed_here"] == 1
     assert report["coverage"]["cumulative_base_family_count_with_parents"] == 11
     assert report["coverage"]["base_family_count_total"] == 18
@@ -31,7 +31,7 @@ def test_report_passes_without_closing_G2():
     assert report["coverage"]["expected_direction_count"] == report["coverage"]["observed_direction_count"]
     assert report["coverage"]["parameter_count_closed_here"] > 0
     assert report["coverage"]["basis_indices"] == [0, 1]
-    assert report["coverage"]["basis_labels"] == ["channel_1", "channel_45"]
+    assert report["coverage"]["basis_labels"] == ["1", "45"]
     assert report["flags"]["authoritative_H_Sigma_adapter_closed"]
     assert report["flags"]["all_64_direction_gradients_complete"] is False
     assert report["flags"]["all_64_direction_Hessians_complete"] is False
@@ -67,8 +67,8 @@ def test_selected_family_basis_and_live_values(state, analytic):
     assert {row.base_family for row in directions} == {mod.BASE_FAMILY}
     assert sorted({row.basis_index for row in directions}) == [0, 1]
     assert sorted({row.basis_label for row in directions}) == [
-        "channel_1",
-        "channel_45",
+        "1",
+        "45",
     ]
     expected = {row.direction_id: row.value for row in directions}
     assert {row.direction_id for row in analytic} == set(expected)

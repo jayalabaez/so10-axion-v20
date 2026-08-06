@@ -1,0 +1,36 @@
+name: live-g2-exact-hdag-sigma2-sigmadag-derivatives
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - live_g2_exact_hdag_sigma2_sigmadag_derivatives_v20.py
+      - live_g2_exact_unique_hsigma_chiral_quartic_derivatives_common_v20.py
+      - test_live_g2_exact_hdag_sigma2_sigmadag_derivatives_v20.py
+      - exact_unique_hsigma_chiral_quartics_v20.py
+      - .github/workflows/live-g2-exact-hdag-sigma2-sigmadag-derivatives.yml
+
+jobs:
+  exact-hdag-sigma2-sigmadag-derivatives:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: python -m pip install -r requirements.txt pytest
+      - run: python -m py_compile live_g2_exact_unique_hsigma_chiral_quartic_derivatives_common_v20.py live_g2_exact_hdag_sigma2_sigmadag_derivatives_v20.py test_live_g2_exact_hdag_sigma2_sigmadag_derivatives_v20.py
+      - run: python -m pytest -q test_live_g2_exact_hdag_sigma2_sigmadag_derivatives_v20.py
+      - run: python live_g2_exact_hdag_sigma2_sigmadag_derivatives_v20.py --write
+      - run: |
+          python - <<'PY'
+          import json
+          report = json.load(open("LIVE_G2_EXACT_HDAG_SIGMA2_SIGMADAG_DERIVATIVES_V20.json"))
+          assert report["n_failed"] == 0, report["failures"]
+          assert report["coverage"]["base_family"] == "Hdag_Sigma2_Sigmadag"
+          assert report["coverage"]["basis_indices"] == [0]
+          assert not report["flags"]["G2_closed"]
+          assert not report["flags"]["whole_model_validated"]
+          PY

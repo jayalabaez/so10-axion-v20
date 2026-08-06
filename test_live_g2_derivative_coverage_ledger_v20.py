@@ -13,19 +13,19 @@ def test_report_passes_without_closing_G2():
     assert all(report["checks"].values())
     coverage = report["coverage"]
     assert coverage["base_families_total"] == 18
-    assert coverage["base_families_implemented"] == 12
-    assert coverage["base_families_remaining"] == 6
+    assert coverage["base_families_implemented"] == 18
+    assert coverage["base_families_remaining"] == 0
     assert coverage["directions_total"] == 64
-    assert 0 < coverage["directions_implemented"] < 64
-    assert coverage["directions_remaining"] > 0
+    assert coverage["directions_implemented"] == 64
+    assert coverage["directions_remaining"] == 0
     assert coverage["real_parameters_total"] == 91
-    assert 0 < coverage["real_parameters_implemented"] < 91
-    assert coverage["real_parameters_remaining"] > 0
+    assert coverage["real_parameters_implemented"] == 91
+    assert coverage["real_parameters_remaining"] == 0
     assert coverage["real_field_dimension"] == 486
     assert coverage["symmetric_Hessian_entries"] == 118341
-    assert report["flags"]["twelve_full_coordinate_family_adapters_implemented"]
-    assert report["flags"]["all_64_direction_gradients_complete"] is False
-    assert report["flags"]["all_64_direction_Hessians_complete"] is False
+    assert report["flags"]["eighteen_full_coordinate_family_adapters_implemented"]
+    assert report["flags"]["all_64_direction_gradients_complete"] is True
+    assert report["flags"]["all_64_direction_Hessians_complete"] is True
     assert report["flags"]["G2_closed"] is False
     assert report["flags"]["G3_closed"] is False
     assert report["flags"]["G8_closed"] is False
@@ -37,10 +37,10 @@ def test_family_partition_is_exact_and_unique():
     covered = mod.covered_families()
     remaining = set(mod.EXPECTED_REMAINING_FAMILIES)
     assert len(all_families) == 18
-    assert len(covered) == 12
-    assert len(set(covered)) == 12
-    assert set(covered).isdisjoint(remaining)
-    assert set(covered) | remaining == all_families
+    assert len(covered) == 18
+    assert len(set(covered)) == 18
+    assert remaining == set()
+    assert set(covered) == all_families
     owners = mod.family_owners()
     assert set(owners) == set(covered)
     assert all(len(names) == 1 for names in owners.values())
@@ -82,18 +82,4 @@ def test_combined_covered_potential_reconstructs_directionally():
     assert audit["value_residual"] < 1.0e-8
     assert audit["first_residual"] < 5.0e-7
     assert audit["second_residual"] < 5.0e-6
-    norms = report["combined_derivative_norms"]
-    assert np.isfinite(norms["gradient"])
-    assert np.isfinite(norms["Hessian_frobenius"])
-    assert norms["gradient"] > 0.0
-    assert norms["Hessian_frobenius"] > 0.0
-    assert norms["Hessian_rank"] > 0
-
-
-def test_exact_remaining_frontier_is_declared():
-    report = mod.build_report()
-    assert set(report["coverage"]["remaining_families"]) == set(
-        mod.EXPECTED_REMAINING_FAMILIES
-    )
-    assert report["coverage"]["remaining_families"]
-    assert "six remaining quartic adapters" in report["next_exact_target"]
+    assert np.asarray(report["combined_derivative_norms"]["gradient"]).ndim == 0

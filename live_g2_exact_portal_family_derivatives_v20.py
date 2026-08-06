@@ -74,7 +74,7 @@ def _build_tensor(sigma_states: tuple[direct.Form, ...]) -> np.ndarray:
         (chart.H_COMPLEX_DIM, chart.PHI_DIM, chart.SIGMA_COMPLEX_DIM),
         dtype=complex,
     )
-    for phi_index, indices in enumerate(chart.PHI_INDICES):
+    for phi_index, indices in enumerate(chart.phi_indices()):
         phi = {indices: 1.0 + 0.0j}
         for sigma_index, sigma in enumerate(sigma_states):
             image = direct.contract(phi, sigma)

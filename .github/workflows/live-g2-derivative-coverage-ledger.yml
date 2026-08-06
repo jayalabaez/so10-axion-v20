@@ -12,6 +12,12 @@ on:
       - live_g2_exact_h10_self_quartic_derivatives_v20.py
       - live_g2_exact_hsigma_hermitian_derivatives_v20.py
       - live_g2_exact_phi2_hdagh_derivatives_v20.py
+      - live_g2_exact_phi_self_quartic_derivatives_v20.py
+      - live_g2_exact_126bar_self_quartic_derivatives_v20.py
+      - live_g2_exact_hdag_sigma2_sigmadag_derivatives_v20.py
+      - live_g2_exact_hdag2_sigma2_derivatives_v20.py
+      - live_g2_exact_phi2_sigma_sigmadag_derivatives_v20.py
+      - live_g2_exact_phi2_hdag_sigma_derivatives_v20.py
       - live_g2_arbitrary_component_potential_values_v20.py
       - live_g1_tensor_closure_ledger_v20.py
       - .github/workflows/live-g2-derivative-coverage-ledger.yml
@@ -26,6 +32,12 @@ on:
       - live_g2_exact_h10_self_quartic_derivatives_v20.py
       - live_g2_exact_hsigma_hermitian_derivatives_v20.py
       - live_g2_exact_phi2_hdagh_derivatives_v20.py
+      - live_g2_exact_phi_self_quartic_derivatives_v20.py
+      - live_g2_exact_126bar_self_quartic_derivatives_v20.py
+      - live_g2_exact_hdag_sigma2_sigmadag_derivatives_v20.py
+      - live_g2_exact_hdag2_sigma2_derivatives_v20.py
+      - live_g2_exact_phi2_sigma_sigmadag_derivatives_v20.py
+      - live_g2_exact_phi2_hdag_sigma_derivatives_v20.py
       - live_g2_arbitrary_component_potential_values_v20.py
       - live_g1_tensor_closure_ledger_v20.py
       - .github/workflows/live-g2-derivative-coverage-ledger.yml
@@ -57,6 +69,12 @@ jobs:
             live_g2_exact_h10_self_quartic_derivatives_v20.py \
             live_g2_exact_hsigma_hermitian_derivatives_v20.py \
             live_g2_exact_phi2_hdagh_derivatives_v20.py \
+            live_g2_exact_phi_self_quartic_derivatives_v20.py \
+            live_g2_exact_126bar_self_quartic_derivatives_v20.py \
+            live_g2_exact_hdag_sigma2_sigmadag_derivatives_v20.py \
+            live_g2_exact_hdag2_sigma2_derivatives_v20.py \
+            live_g2_exact_phi2_sigma_sigmadag_derivatives_v20.py \
+            live_g2_exact_phi2_hdag_sigma_derivatives_v20.py \
             live_g2_derivative_coverage_ledger_v20.py \
             test_live_g2_derivative_coverage_ledger_v20.py
       - name: Run adapter and consolidated tests
@@ -68,6 +86,12 @@ jobs:
             test_live_g2_exact_h10_self_quartic_derivatives_v20.py \
             test_live_g2_exact_hsigma_hermitian_derivatives_v20.py \
             test_live_g2_exact_phi2_hdagh_derivatives_v20.py \
+            test_live_g2_exact_phi_self_quartic_derivatives_v20.py \
+            test_live_g2_exact_126bar_self_quartic_derivatives_v20.py \
+            test_live_g2_exact_hdag_sigma2_sigmadag_derivatives_v20.py \
+            test_live_g2_exact_hdag2_sigma2_derivatives_v20.py \
+            test_live_g2_exact_phi2_sigma_sigmadag_derivatives_v20.py \
+            test_live_g2_exact_phi2_hdag_sigma_derivatives_v20.py \
             test_live_g2_derivative_coverage_ledger_v20.py
       - name: Generate derivative coverage certificate
         run: python live_g2_derivative_coverage_ledger_v20.py --write
@@ -80,24 +104,17 @@ jobs:
           assert report['n_failed']==0, report['failures']
           c=report['coverage']
           assert c['base_families_total']==18
-          assert c['base_families_implemented']==12
-          assert c['base_families_remaining']==6
+          assert c['base_families_implemented']==18
+          assert c['base_families_remaining']==0
           assert c['directions_total']==64
-          assert 0<c['directions_implemented']<64
-          assert c['directions_remaining']>0
+          assert c['directions_implemented']==64
+          assert c['directions_remaining']==0
           assert c['real_parameters_total']==91
-          assert 0<c['real_parameters_implemented']<91
-          assert c['real_parameters_remaining']>0
+          assert c['real_parameters_implemented']==91
+          assert c['real_parameters_remaining']==0
           assert c['real_field_dimension']==486
           assert c['symmetric_Hessian_entries']==118341
-          assert set(c['remaining_families'])=={
-              '126bar_self_projectors',
-              'unique_Hdag_Sigma2_Sigmadag',
-              'unique_Hdag2_Sigma2',
-              'Phi2_Sigma_projectors',
-              'Phi2_Hdag_Sigma_210_1050',
-              'Phi_self_quartics',
-          }
+          assert c['remaining_families']==[]
           assert report['duplicate_family_owners']=={}
           assert report['duplicate_direction_ids']==[]
           assert report['missing_expected_direction_ids']==[]
@@ -115,9 +132,9 @@ jobs:
           assert audit['value_residual']<1e-8
           assert audit['first_residual']<5e-7
           assert audit['second_residual']<5e-6
-          assert report['flags']['twelve_full_coordinate_family_adapters_implemented']
-          assert not report['flags']['all_64_direction_gradients_complete']
-          assert not report['flags']['all_64_direction_Hessians_complete']
+          assert report['flags']['eighteen_full_coordinate_family_adapters_implemented']
+          assert report['flags']['all_64_direction_gradients_complete']
+          assert report['flags']['all_64_direction_Hessians_complete']
           assert not report['flags']['G2_closed']
           assert not report['flags']['whole_model_validated']
           PY

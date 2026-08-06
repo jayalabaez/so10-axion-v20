@@ -571,7 +571,10 @@ def build_report() -> dict[str, Any]:
     }
     checks = {
         "authoritative_G1_ledger_executes": g1["n_failed"] == 0,
-        "authoritative_G1_is_closed": bool(g1["closure"]["G1_closed"]),
+        "authoritative_G1_is_closed": bool(
+            g1["flags"]["g1_closed"]
+            and g1["closure"]["G1_invariant_ring_and_component_tensors_closed"]
+        ),
         "all_48_orbits_compiled": len({row.orbit_index for row in directions}) == 48,
         "all_64_directions_compiled": len(directions) == 64,
         "all_18_base_adapters_used": set(family_counts)

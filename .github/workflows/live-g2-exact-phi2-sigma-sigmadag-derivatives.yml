@@ -1,0 +1,48 @@
+name: live-g2-exact-phi2-sigma-sigmadag-derivatives
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - live_g2_exact_phi2_sigma_sigmadag_derivatives_v20.py
+      - test_live_g2_exact_phi2_sigma_sigmadag_derivatives_v20.py
+      - exact_phisigma_126bar_minus_projectors_v20.py
+      - exact_phisigma_casimir_projectors_v20.py
+      - live_g2_exact_quadratic_family_derivatives_v20.py
+      - live_g2_canonical_486_field_chart_v20.py
+      - live_g2_arbitrary_component_potential_values_v20.py
+      - .github/workflows/live-g2-exact-phi2-sigma-sigmadag-derivatives.yml
+  push:
+    branches: [main]
+    paths:
+      - live_g2_exact_phi2_sigma_sigmadag_derivatives_v20.py
+      - test_live_g2_exact_phi2_sigma_sigmadag_derivatives_v20.py
+      - exact_phisigma_126bar_minus_projectors_v20.py
+      - exact_phisigma_casimir_projectors_v20.py
+      - live_g2_exact_quadratic_family_derivatives_v20.py
+      - live_g2_canonical_486_field_chart_v20.py
+      - live_g2_arbitrary_component_potential_values_v20.py
+      - .github/workflows/live-g2-exact-phi2-sigma-sigmadag-derivatives.yml
+
+jobs:
+  exact-phi2-sigma-sigmadag-derivatives:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: python -m pip install --upgrade pip && python -m pip install -r requirements.txt pytest
+      - run: python -m py_compile live_g2_exact_phi2_sigma_sigmadag_derivatives_v20.py test_live_g2_exact_phi2_sigma_sigmadag_derivatives_v20.py
+      - run: python -m pytest -q test_live_g2_exact_phi2_sigma_sigmadag_derivatives_v20.py
+      - run: python live_g2_exact_phi2_sigma_sigmadag_derivatives_v20.py --write
+      - run: python -c "import json; r=json.load(open('LIVE_G2_EXACT_PHI2_SIGMA_SIGMADAG_DERIVATIVES_V20.json')); assert r['n_failed']==0, r['failures']; assert r['coverage']['basis_labels']==['1','45','210','770','5940','8910']; assert not r['flags']['G2_closed']; assert not r['flags']['whole_model_validated']"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-g2-exact-phi2-sigma-sigmadag-derivatives
+          path: |
+            LIVE_G2_EXACT_PHI2_SIGMA_SIGMADAG_DERIVATIVES_V20.json
+            LIVE_G2_EXACT_PHI2_SIGMA_SIGMADAG_DERIVATIVES_V20.md

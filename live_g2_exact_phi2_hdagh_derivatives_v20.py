@@ -41,7 +41,7 @@ import live_g2_exact_quadratic_family_derivatives_v20 as quadratic
 ROOT = Path(__file__).resolve().parent
 OUT_JSON = ROOT / "LIVE_G2_EXACT_PHI2_HDAGH_DERIVATIVES_V20.json"
 OUT_MD = ROOT / "LIVE_G2_EXACT_PHI2_HDAGH_DERIVATIVES_V20.md"
-BASE_FAMILY = "Phi2_HdagH_channels"
+BASE_FAMILY = "Phi2_Hdag_H"
 BASIS_LABELS = ("1", "45", "54")
 THREE_INDICES = tuple(itertools.combinations(range(10), 3))
 ZERO_10 = np.zeros((10, 10), dtype=complex)
@@ -65,7 +65,7 @@ def _jsonable(value: Any) -> Any:
 
 @lru_cache(maxsize=1)
 def phi_basis_forms() -> tuple[direct.Form, ...]:
-    return tuple({indices: 1.0 + 0.0j} for indices in chart.PHI_INDICES)
+    return tuple({indices: 1.0 + 0.0j} for indices in chart.phi_indices())
 
 
 @lru_cache(maxsize=1)
@@ -87,13 +87,13 @@ def channel45_pair_matrices() -> dict[tuple[int, int], np.ndarray]:
     """B[p,q] with M45(Phi)=sum_pq Phi_p Phi_q B[p,q]."""
     output: dict[tuple[int, int], np.ndarray] = {}
     basis = phi_basis_forms()
-    index_sets = tuple(set(indices) for indices in chart.PHI_INDICES)
+    index_sets = tuple(set(indices) for indices in chart.phi_indices())
     for left in range(chart.PHI_DIM):
         for right in range(left + 1, chart.PHI_DIM):
             if index_sets[left].intersection(index_sets[right]):
                 continue
             two_form = direct.hodge_star(direct.wedge(basis[left], basis[right]))
-            matrix = 1j * source.two_form_value(two_form)
+            matrix = 1j * source._two_form_matrix(two_form)
             if np.max(np.abs(matrix), initial=0.0) > 1.0e-14:
                 output[(left, right)] = np.asarray(matrix, dtype=complex)
     return output

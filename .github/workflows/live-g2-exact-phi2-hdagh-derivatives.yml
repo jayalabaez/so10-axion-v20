@@ -63,7 +63,7 @@ jobs:
 
           report=json.load(open('LIVE_G2_EXACT_PHI2_HDAGH_DERIVATIVES_V20.json'))
           assert report['n_failed']==0, report['failures']
-          assert report['coverage']['base_family']=='Phi2_HdagH_channels'
+          assert report['coverage']['base_family']=='Phi2_Hdag_H'
           assert report['coverage']['base_family_count_closed_here']==1
           assert report['coverage']['cumulative_base_family_count_with_parents']==12
           assert report['coverage']['base_family_count_total']==18

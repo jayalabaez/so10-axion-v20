@@ -37,9 +37,23 @@ import live_g2_exact_quadratic_family_derivatives_v20 as quadratic
 ROOT = Path(__file__).resolve().parent
 OUT_JSON = ROOT / "LIVE_G2_EXACT_HSIGMA_HERMITIAN_DERIVATIVES_V20.json"
 OUT_MD = ROOT / "LIVE_G2_EXACT_HSIGMA_HERMITIAN_DERIVATIVES_V20.md"
-BASE_FAMILY = "H_Sigma_hermitian"
-BASIS_LABELS = ("channel_1", "channel_45")
-PAIRS = tuple(current45.PAIRS)
+BASE_FAMILY = "H_Sigma_Hermitian_quartics"
+BASIS_LABELS = ("1", "45")
+PAIRS = tuple(__import__("itertools").combinations(range(10), 2))
+
+
+def generator_matrix(a: int, b: int) -> np.ndarray:
+    """Complex 10x10 matrix of the SO(10) generator on the vector."""
+    matrix = np.zeros((10, 10), dtype=complex)
+    for source in range(10):
+        image = direct.generator_action(direct.one_form(source), a, b)
+        for target, coefficient in image.items():
+            matrix[target[0], source] = coefficient
+    return matrix
+
+
+def generator_action_form(form: direct.Form, a: int, b: int) -> direct.Form:
+    return direct.generator_action(form, a, b)
 
 
 def _jsonable(value: Any) -> Any:
@@ -65,7 +79,7 @@ def conjugate_form(form: direct.Form) -> direct.Form:
 @lru_cache(maxsize=1)
 def h_generator_matrices() -> np.ndarray:
     return np.asarray(
-        [current45.generator_matrix(*pair) for pair in PAIRS],
+        [generator_matrix(*pair) for pair in PAIRS],
         dtype=complex,
     )
 
@@ -79,7 +93,7 @@ def sigma_generator_matrices() -> np.ndarray:
     )
     for generator_index, pair in enumerate(PAIRS):
         for source_index, source_state in enumerate(basis):
-            image = current45.generator_action(source_state, *pair)
+            image = generator_action_form(source_state, *pair)
             matrices[generator_index, :, source_index] = np.asarray(
                 [
                     direct.sigma_kinetic_inner(target_state, image)
@@ -250,11 +264,11 @@ def direct_source_values(state: potential.FieldState) -> dict[str, complex]:
         state.sigma, kinetic_factor=0.5
     )
     return {
-        "channel_1": complex(
+        "1": complex(
             np.vdot(state.h, state.h)
             * direct.sigma_kinetic_inner(state.sigma, state.sigma)
         ),
-        "channel_45": complex(direct.tensor_inner(h_current, sigma_current)),
+        "45": complex(direct.tensor_inner(h_current, sigma_current)),
     }
 
 

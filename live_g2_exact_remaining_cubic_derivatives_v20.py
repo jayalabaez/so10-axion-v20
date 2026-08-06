@@ -70,7 +70,7 @@ def phi_two_form_basis() -> np.ndarray:
     return np.asarray(
         [
             phi_self.two_form_matrix({indices: 1.0 + 0.0j})
-            for indices in chart.PHI_INDICES
+            for indices in chart.phi_indices()
         ],
         dtype=float,
     )
@@ -112,7 +112,7 @@ def phi_sigma_operators() -> np.ndarray:
         (chart.PHI_DIM, chart.SIGMA_COMPLEX_DIM, chart.SIGMA_COMPLEX_DIM),
         dtype=complex,
     )
-    for phi_index, (a, b, c, d) in enumerate(chart.PHI_INDICES):
+    for phi_index, (a, b, c, d) in enumerate(chart.phi_indices()):
         first = table[a, b].conj() @ table[c, d].T
         second = table[a, c].conj() @ table[b, d].T
         third = table[a, d].conj() @ table[b, c].T

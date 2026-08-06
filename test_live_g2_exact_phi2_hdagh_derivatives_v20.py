@@ -22,7 +22,7 @@ def test_report_passes_without_closing_G2():
     report = mod.build_report()
     assert report["n_failed"] == 0, report["failures"]
     assert all(report["checks"].values())
-    assert report["coverage"]["base_family"] == "Phi2_HdagH_channels"
+    assert report["coverage"]["base_family"] == "Phi2_Hdag_H"
     assert report["coverage"]["base_family_count_closed_here"] == 1
     assert report["coverage"]["cumulative_base_family_count_with_parents"] == 12
     assert report["coverage"]["base_family_count_total"] == 18
