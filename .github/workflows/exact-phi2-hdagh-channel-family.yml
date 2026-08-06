@@ -9,6 +9,8 @@ on:
       - 'test_exact_h10_self_quartic_family_v20.py'
       - 'exact_phi_hdag_sigmabar_cubic_audit_v20.py'
       - 'test_exact_phi_hdag_sigmabar_cubic_audit_v20.py'
+      - 'nonsusy_z17_pq_potential_filter_v20.py'
+      - 'test_nonsusy_z17_pq_potential_filter_v20.py'
       - '.github/workflows/exact-phi2-hdagh-channel-family.yml'
 
 jobs:
@@ -31,7 +33,9 @@ jobs:
             exact_h10_self_quartic_family_v20.py \
             test_exact_h10_self_quartic_family_v20.py \
             exact_phi_hdag_sigmabar_cubic_audit_v20.py \
-            test_exact_phi_hdag_sigmabar_cubic_audit_v20.py; do
+            test_exact_phi_hdag_sigmabar_cubic_audit_v20.py \
+            nonsusy_z17_pq_potential_filter_v20.py \
+            test_nonsusy_z17_pq_potential_filter_v20.py; do
             if [ -f "$source" ]; then python -m py_compile "$source"; fi
           done
       - name: Run available exact-family tests
@@ -40,7 +44,8 @@ jobs:
           for test_file in \
             test_exact_phi2_hdagh_channel_family_v20.py \
             test_exact_h10_self_quartic_family_v20.py \
-            test_exact_phi_hdag_sigmabar_cubic_audit_v20.py; do
+            test_exact_phi_hdag_sigmabar_cubic_audit_v20.py \
+            test_nonsusy_z17_pq_potential_filter_v20.py; do
             if [ -f "$test_file" ]; then pytest -q "$test_file"; fi
           done
       - name: Generate available certificates
@@ -54,6 +59,9 @@ jobs:
           fi
           if [ -f exact_phi_hdag_sigmabar_cubic_audit_v20.py ]; then
             python exact_phi_hdag_sigmabar_cubic_audit_v20.py > /tmp/exact_phi_hdag_sigmabar_stdout.json
+          fi
+          if [ -f nonsusy_z17_pq_potential_filter_v20.py ]; then
+            python nonsusy_z17_pq_potential_filter_v20.py > /tmp/nonsusy_filter_stdout.json
           fi
       - name: Assert all available certificates
         run: |
@@ -82,12 +90,22 @@ jobs:
               report = json.loads(path.read_text())
               assert report['n_failed'] == 0, report['failures']
               assert report['flag']['operator_exists_and_is_declared_symmetry_allowed'] is True
-              assert report['flag']['operator_catalogue_currently_incomplete'] is True
+              historical = report['flag'].get('operator_catalogue_currently_incomplete', False)
+              corrected = report['flag'].get('operator_catalogue_corrected', False)
+              assert historical ^ corrected
               assert report['flag']['p_DeltaR_tadpole_from_operator'] is False
               assert report['flag']['p_DeltaR_mixed_Hessian_changed_for_nonzero_coefficient'] is True
               assert report['flag']['complete_mixed_invariant_ring'] is False
               assert report['flag']['whole_model_validated'] is False
               assert report['flag']['empirical_discovery'] is False
+
+          path = Path('NONSUSY_Z17_PQ_POTENTIAL_FILTER_V20.json')
+          if path.exists():
+              report = json.loads(path.read_text())
+              assert report['n_failed'] == 0, report['failures']
+              if report['flag'].get('mixed_dagger_cubic_retained'):
+                  assert report['flag']['mixed_dagger_cubic_requires_complete_hessian_reaudit'] is True
+                  assert '210_H 10_H_dag 126bar_H' in report['allowed_feeding_M_T']
           PY
       - uses: actions/upload-artifact@v4
         with:
@@ -100,3 +118,5 @@ jobs:
             EXACT_H10_SELF_QUARTIC_FAMILY_V20.md
             EXACT_PHI_HDAG_SIGMABAR_CUBIC_AUDIT_V20.json
             EXACT_PHI_HDAG_SIGMABAR_CUBIC_AUDIT_V20.md
+            NONSUSY_Z17_PQ_POTENTIAL_FILTER_V20.json
+            NONSUSY_Z17_PQ_POTENTIAL_FILTER_V20.md
