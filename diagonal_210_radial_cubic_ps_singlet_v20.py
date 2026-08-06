@@ -42,6 +42,7 @@ import scalar_vacuum_proton_decay_v20 as scalar_pd
 import open_210_channel_45_off_singlet_census_v20 as off45
 import open_210_channel_45_off_singlet_sm_quantum_numbers_v20 as off45qn
 import open_210_channel_54_off_singlet_census_v20 as off54mod
+import open_210_channel_54_off_singlet_sm_quantum_numbers_v20 as off54qn
 import so10_210_symmetric_45_source_projector_v20 as sym45
 import so10_210_to_45_projector_v20 as p45
 import so10_210_to_54_projector_v20 as p54
@@ -125,6 +126,7 @@ def build_report() -> dict[str, Any]:
     ch45off = off45.build_report()
     ch45qn = off45qn.build_report()
     ch54off = off54mod.build_report()
+    ch54qn = off54qn.build_report()
     ch45sym = sym45.build_report()
     seed54 = float(
         ch54["selected_vacuum"]["OPEN_210_CHANNEL_54_seed_GeV2"]
@@ -166,6 +168,20 @@ def build_report() -> dict[str, Any]:
                     "OPEN_210_CHANNEL_54_OFF_SINGLET_seed_GeV2"
                 ]
             ),
+        },
+        "OPEN_210_CHANNEL_54_OFF_SINGLET": {
+            "status": "PARTIAL_SM_QUANTUM_NUMBERS_READY",
+            "contribution_GeV2": float(
+                ch54off["diagnostic_seed"][
+                    "OPEN_210_CHANNEL_54_OFF_SINGLET_seed_GeV2"
+                ]
+            ),
+            "feeds": "diagnostic_channel_seed_not_added_to_isotropic_m2",
+            "scope": (
+                "vacuum⊗off-singlet (Φ⊗δΦ)_54 census + SM Cartan labels "
+                "(so6/so4/cross × Q); mode-by-mode CG coeffs OPEN"
+            ),
+            "sm_qn_buckets": ch54qn["quantum_numbers"]["bucket_counts"],
         },
         "OPEN_210_CHANNEL_45": {
             "status": "PARTIAL_ANTISYM_VANISHES__SYMMETRIC_SOURCE_REOPENED",
@@ -222,6 +238,7 @@ def build_report() -> dict[str, Any]:
         "channel_54_projector_green": ch54.get("n_failed", 1) == 0,
         "channel_54_seed_positive": seed54 > 0.0,
         "channel_54_off_singlet_census_green": ch54off.get("n_failed", 1) == 0,
+        "channel_54_off_singlet_sm_qn_green": ch54qn.get("n_failed", 1) == 0,
         "channel_45_projector_green": ch45.get("n_failed", 1) == 0,
         "channel_45_symmetric_source_green": ch45sym.get("n_failed", 1) == 0,
         "channel_45_off_singlet_census_green": ch45off.get("n_failed", 1) == 0,
@@ -250,11 +267,13 @@ def build_report() -> dict[str, Any]:
         "channel_54": {
             "status": ch54.get("status"),
             "off_singlet_census_status": ch54off.get("status"),
+            "sm_qn_status": ch54qn.get("status"),
             "seed_GeV2": seed54,
             "off_singlet_seed_GeV2": ch54off["diagnostic_seed"][
                 "OPEN_210_CHANNEL_54_OFF_SINGLET_seed_GeV2"
             ],
             "Q54_frobenius": ch54["selected_vacuum"]["Q54_frobenius"],
+            "bucket_counts": ch54qn["quantum_numbers"]["bucket_counts"],
         },
         "channel_45": {
             "status": ch45.get("status"),
@@ -281,6 +300,7 @@ def build_report() -> dict[str, Any]:
             "open_210_radial_ps_singlet_filled": not bool(failures),
             "open_210_cubic_included_in_reduced": not bool(failures),
             "open_210_channel_54_ps_singlet_seed": not bool(failures),
+            "open_210_channel_54_off_singlet_sm_qn": not bool(failures),
             "open_210_channel_45_same_field_vanishes": not bool(failures),
             "open_210_channel_45_symmetric_source_reopened": True,
             "open_210_channel_45_off_singlet_census": not bool(failures),

@@ -225,6 +225,15 @@ def build_partial_diagonals(
                 "mode-by-mode SM irrep CG coeffs remain OPEN"
             ),
         },
+        "OPEN_210_CHANNEL_54_OFF_SINGLET": {
+            "status": "PARTIAL_SM_QUANTUM_NUMBERS_READY",
+            "contribution_GeV2": 0.0,
+            "reason": (
+                "open_210_channel_54_off_singlet_sm_quantum_numbers_v20: "
+                "Cartan/sector labels on vacuum⊗δΦ (Φ⊗δΦ)_54 images; "
+                "mode-by-mode SM irrep CG coeffs remain OPEN"
+            ),
+        },
         "OPEN_210_CHANNEL_210": {
             "status": "PARTIAL_PS_SINGLET_TENSOR_MAP_READY",
             "contribution_GeV2": 0.0,

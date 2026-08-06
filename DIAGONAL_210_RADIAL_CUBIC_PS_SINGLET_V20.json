@@ -1,7 +1,7 @@
 {
   "status": "DIAGONAL_210_RADIAL_CUBIC_PS_SINGLET_FILLED__OFF_SINGLET_CG_OPEN",
   "overall_state": "BLOCKED",
-  "n_checks": 18,
+  "n_checks": 19,
   "n_failed": 0,
   "failures": [],
   "checks": {
@@ -14,6 +14,7 @@
     "channel_54_projector_green": true,
     "channel_54_seed_positive": true,
     "channel_54_off_singlet_census_green": true,
+    "channel_54_off_singlet_sm_qn_green": true,
     "channel_45_projector_green": true,
     "channel_45_symmetric_source_green": true,
     "channel_45_off_singlet_census_green": true,
@@ -56,14 +57,21 @@
   "channel_54": {
     "status": "SO10_210_TO_54_PROJECTOR_READY__OFF_SINGLET_FLUCTUATION_OPEN",
     "off_singlet_census_status": "OPEN_210_CHANNEL_54_OFF_SINGLET_CENSUS_READY__CG_OPEN",
+    "sm_qn_status": "OPEN_210_CHANNEL_54_OFF_SINGLET_SM_QN_READY__CG_OPEN",
     "seed_GeV2": 3.1786124116376866e+88,
     "off_singlet_seed_GeV2": 2.5009247430306313e+28,
-    "Q54_frobenius": 1.0899727299843325e+61
+    "Q54_frobenius": 1.0899727299843325e+61,
+    "bucket_counts": {
+      "mixed__Qcharged": 115,
+      "so4_weak__Qcharged": 3,
+      "so6_color__Qcharged": 28,
+      "so6_so4_cross__Qcharged": 61
+    }
   },
   "channel_45": {
     "status": "SO10_210_TO_45_SAME_FIELD_VANISHES__MIXED_OPEN",
     "same_field_vanishes_antisym": true,
-    "symmetric_source_status": "SOURCE_CORRECT_SYMMETRIC_210x210_TO_45_READY",
+    "symmetric_source_status": "SOURCE_NORMALIZED_SYMMETRIC_210x210_TO_45_READY",
     "symmetric_source_reopened": true
   },
   "channel_45_off_singlet": {
@@ -106,12 +114,24 @@
       "lam_tilde": 0.01,
       "off_singlet_seed_GeV2": 2.5009247430306313e+28
     },
+    "OPEN_210_CHANNEL_54_OFF_SINGLET": {
+      "status": "PARTIAL_SM_QUANTUM_NUMBERS_READY",
+      "contribution_GeV2": 2.5009247430306313e+28,
+      "feeds": "diagnostic_channel_seed_not_added_to_isotropic_m2",
+      "scope": "vacuum\u2297off-singlet (\u03a6\u2297\u03b4\u03a6)_54 census + SM Cartan labels (so6/so4/cross \u00d7 Q); mode-by-mode CG coeffs OPEN",
+      "sm_qn_buckets": {
+        "mixed__Qcharged": 115,
+        "so4_weak__Qcharged": 3,
+        "so6_color__Qcharged": 28,
+        "so6_so4_cross__Qcharged": 61
+      }
+    },
     "OPEN_210_CHANNEL_45": {
       "status": "PARTIAL_ANTISYM_VANISHES__SYMMETRIC_SOURCE_REOPENED",
       "contribution_GeV2": 0.0,
       "feeds": "antisymmetric_mixed_and_symmetric_quartic_dual_channel",
       "scope": "Antisym P_45 vanishes on same-field and span{p,a,\u03c9}; source Sym\u00b2\u219245 (gr-qc/9507053) is nonzero on generic/selected singlet vacuum \u2014 must enter the potential",
-      "symmetric_source_status": "SOURCE_CORRECT_SYMMETRIC_210x210_TO_45_READY",
+      "symmetric_source_status": "SOURCE_NORMALIZED_SYMMETRIC_210x210_TO_45_READY",
       "symmetric_source_nonzero": true
     },
     "OPEN_210_CHANNEL_45_OFF_SINGLET": {
@@ -145,6 +165,7 @@
     "open_210_radial_ps_singlet_filled": true,
     "open_210_cubic_included_in_reduced": true,
     "open_210_channel_54_ps_singlet_seed": true,
+    "open_210_channel_54_off_singlet_sm_qn": true,
     "open_210_channel_45_same_field_vanishes": true,
     "open_210_channel_45_symmetric_source_reopened": true,
     "open_210_channel_45_off_singlet_census": true,

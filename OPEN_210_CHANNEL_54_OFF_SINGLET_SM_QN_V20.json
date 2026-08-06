@@ -1,0 +1,85 @@
+{
+  "status": "OPEN_210_CHANNEL_54_OFF_SINGLET_SM_QN_READY__CG_OPEN",
+  "overall_state": "BLOCKED",
+  "n_checks": 9,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "off_singlet_frame_207": true,
+    "all_nonzero_modes_labeled": true,
+    "vacuum_self_54_nontrivial": true,
+    "buckets_nonempty": true,
+    "cartan_activities_finite": true,
+    "q_activity_span_recorded": true,
+    "cg_not_invented": true,
+    "full_sm_irrep_cg_not_claimed": true,
+    "whole_model_not_overclaimed": true
+  },
+  "conventions": {
+    "cartans": {
+      "H0": "i M_01",
+      "H1": "i M_23",
+      "H2": "i M_45",
+      "H3": "i M_67",
+      "H4": "i M_89"
+    },
+    "Q_em": "T3_L + T3_R = -i M_67",
+    "Q_neutral_tol": 0.15,
+    "dominant_sector_frac": 0.55,
+    "note": "Labels from End adjoint Cartan activity + so6/so4/cross L2 on Sym_0 images; not Young-tableau CG multiplicities."
+  },
+  "inventory_slot": {
+    "id": "OPEN_210_CHANNEL_54_OFF_SINGLET",
+    "status": "PARTIAL_SM_QUANTUM_NUMBERS_READY",
+    "mode_by_mode_cg": false
+  },
+  "selected_vacuum": {
+    "vevs_GeV": {
+      "p": 1983512959779626.5,
+      "a": 2975269439669439.5,
+      "omega": 4958782399449066.0
+    },
+    "phi_norm": 6113597532167986.0,
+    "self_54_frobenius": 1.0899727299843325e+61
+  },
+  "quantum_numbers": {
+    "n_modes_labeled": 207,
+    "n_Q_neutral": 0,
+    "n_Q_charged": 207,
+    "dominant_sector_counts": {
+      "mixed": 115,
+      "so6_so4_cross": 61,
+      "so6_color": 28,
+      "so4_weak": 3
+    },
+    "bucket_counts": {
+      "mixed__Qcharged": 115,
+      "so4_weak__Qcharged": 3,
+      "so6_color__Qcharged": 28,
+      "so6_so4_cross__Qcharged": 61
+    },
+    "mean_cartan_adjoint_activity": {
+      "H0": 0.5733500515510571,
+      "H1": 0.5740691290116195,
+      "H2": 0.5764763239431904,
+      "H3": 0.5840573656278746,
+      "H4": 0.5745139387883614,
+      "Q_em": 0.5840573656278746
+    },
+    "Q_em_activity_min": 0.2428490388279545,
+    "Q_em_activity_max": 0.831026674695421
+  },
+  "flags": {
+    "off_singlet_54_sm_qn_ready": true,
+    "off_singlet_54_mode_cg": false,
+    "cg_120_320_1050_4125_invented": false,
+    "whole_model_validated": false,
+    "whole_model_excluded": false
+  },
+  "remaining_blockers": {
+    "off_singlet_54_sm_irrep_cg_coeffs": true,
+    "missing_cg_120_320_1050_4125": true,
+    "full_nonsusy_vacuum_hessian": true
+  },
+  "verdict": "Off-singlet mixed-54 SM Cartan labels: 207/207 modes classified; Q-neutral=0, Q-charged=207; dominant sectors {'mixed': 115, 'so6_so4_cross': 61, 'so6_color': 28, 'so4_weak': 3}. Mode-by-mode CG coefficients remain OPEN. Theory remains BLOCKED."
+}

@@ -92,6 +92,7 @@ def build_report() -> dict[str, Any]:
                 "full_tensor_projected_potential_scaffold: READY-subspace BFB PARTIAL",
                 "open_210_channel_210_off_singlet_census: Ξ mixed census READY",
                 "open_126_54_locking_hermitian_fluctuation_census: indefinite ΣΣ (not PD Schur C)",
+                "open_210_channel_54_off_singlet_sm_quantum_numbers: Cartan labels READY (mode CG OPEN)",
                 "source_210_quartic_norm_identity: selected vacuum 45/1050 densities ready",
                 "pure-210 Eq.(2.6) CLOSED upstream (so10_210_source_quartic_basis_v20)",
                 "OPEN_210_CHANNEL_1050 blocker superseded as incomplete residual",
@@ -120,6 +121,7 @@ def build_report() -> dict[str, Any]:
                 "FULL_TENSOR_PROJECTED_POTENTIAL scaffold PARTIAL (READY-subspace BFB)",
                 "off-singlet 210 census READY via published Ξ self-map",
                 "OPEN_126_54_LOCKING Hermitian/real fluctuation census PARTIAL (indefinite ΣΣ)",
+                "off-singlet 54 SM Cartan QN READY (mode CG OPEN)",
             ],
             blockers=[
                 "full PS/SM Clebsch projection of every invariant (G2 CLOSED bar)",

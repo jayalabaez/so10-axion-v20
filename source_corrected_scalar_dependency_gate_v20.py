@@ -90,13 +90,17 @@ def build_report() -> dict[str, Any]:
         {
             "order": 1,
             "task": (
-                "Fill remaining READY/PARTIAL inventory with published "
-                "projectors only; transcribe 120/320/1050/4125 CG solely from "
-                "external published tables (do not invent). OPEN_126_54_LOCKING "
-                "ΣΣ census shows indefinite real Hessian — need other C channels"
+                "Off-singlet 45/54 Cartan SM QN READY; still need transcribed "
+                "120/320/1050/4125 CG from external published tables only "
+                "(do not invent), plus mode-by-mode SM-irrep CG. "
+                "OPEN_126_54_LOCKING ΣΣ census shows indefinite real Hessian — "
+                "need other C channels"
             ),
             "closes": "G1-G2 (partial)",
             "upstream_scaffold": "full_tensor_projected_potential_scaffold_v20",
+            "upstream_54_sm_qn": (
+                "open_210_channel_54_off_singlet_sm_quantum_numbers_v20"
+            ),
             "upstream_126_54_census": (
                 "open_126_54_locking_hermitian_fluctuation_census_v20"
             ),

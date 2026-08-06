@@ -40,6 +40,7 @@ import open_126_54_locking_hermitian_fluctuation_census_v20 as census12654
 import open_210_channel_210_off_singlet_census_v20 as census210
 import open_210_channel_45_off_singlet_census_v20 as census45
 import open_210_channel_54_off_singlet_census_v20 as census54
+import open_210_channel_54_off_singlet_sm_quantum_numbers_v20 as census54qn
 import promote_paw_split_reduced_amplitudes_v20 as paw
 import scoped_bfb_boundedness_gate_v20 as scoped_bfb
 import source_pure210_reduced_potential_insertion_v20 as insertion
@@ -108,6 +109,13 @@ def build_ready_operator_table() -> list[dict[str, Any]]:
             "source_module": "open_210_channel_54_off_singlet_census_v20",
             "source_fn": "build_report",
             "note": "Diagnostic seed; mode CG OPEN",
+        },
+        {
+            "id": "OFF_SINGLET_54_SM_QN",
+            "projection_status": "CENSUS_ONLY",
+            "source_module": "open_210_channel_54_off_singlet_sm_quantum_numbers_v20",
+            "source_fn": "build_report",
+            "note": "Cartan/sector labels on (Φ⊗δΦ)_54; mode CG OPEN",
         },
         {
             "id": "OFF_SINGLET_210_CENSUS",
@@ -232,6 +240,7 @@ def build_report() -> dict[str, Any]:
     ring_present = RING_JSON.is_file()
     c45 = census45.build_report()
     c54 = census54.build_report()
+    c54qn = census54qn.build_report()
     c210 = census210.build_report()
     c12654 = census12654.build_report()
     bfb = build_ready_subspace_bfb()
@@ -261,6 +270,7 @@ def build_report() -> dict[str, Any]:
         ),
         "off_singlet_45_census_ready": c45.get("n_failed", 1) == 0,
         "off_singlet_54_census_ready": c54.get("n_failed", 1) == 0,
+        "off_singlet_54_sm_qn_ready": c54qn.get("n_failed", 1) == 0,
         "off_singlet_210_census_ready": c210.get("n_failed", 1) == 0,
         "open_126_54_locking_hermitian_census_ready": c12654.get("n_failed", 1)
         == 0,
@@ -293,6 +303,10 @@ def build_report() -> dict[str, Any]:
             "54": {
                 "status": c54.get("status"),
                 "n_nonzero": c54.get("census", {}).get("n_nonzero_modes"),
+                "sm_qn_status": c54qn.get("status"),
+                "sm_qn_buckets": c54qn.get("quantum_numbers", {}).get(
+                    "bucket_counts"
+                ),
             },
             "210": {
                 "status": c210.get("status"),

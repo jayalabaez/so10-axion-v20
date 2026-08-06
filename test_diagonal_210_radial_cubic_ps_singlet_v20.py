@@ -24,20 +24,30 @@ class Diagonal210RadialCubicPsSingletTests(unittest.TestCase):
         self.assertIn("OPEN_210_CHANNEL_54", self.report["filled_slots"])
         self.assertIn("OPEN_210_CHANNEL_45", self.report["filled_slots"])
         self.assertIn("OPEN_210_CHANNEL_45_OFF_SINGLET", self.report["filled_slots"])
+        self.assertIn("OPEN_210_CHANNEL_54_OFF_SINGLET", self.report["filled_slots"])
         self.assertIn("OPEN_210_CHANNEL_210", self.report["filled_slots"])
         self.assertNotIn("OPEN_210_CHANNEL_54", self.report["still_open_slots"])
         self.assertNotIn("OPEN_210_CHANNEL_210", self.report["still_open_slots"])
         self.assertNotIn(
             "OPEN_210_CHANNEL_45_OFF_SINGLET", self.report["still_open_slots"]
         )
+        self.assertNotIn(
+            "OPEN_210_CHANNEL_54_OFF_SINGLET", self.report["still_open_slots"]
+        )
         self.assertGreater(self.report["channel_54"]["seed_GeV2"], 0.0)
         self.assertGreater(self.report["channel_210"]["seed_GeV2"], 0.0)
         self.assertGreater(self.report["channel_45_off_singlet"]["seed_GeV2"], 0.0)
         self.assertTrue(self.report["flags"]["open_210_channel_54_ps_singlet_seed"])
+        self.assertTrue(self.report["flags"]["open_210_channel_54_off_singlet_sm_qn"])
         self.assertTrue(self.report["flags"]["open_210_channel_45_same_field_vanishes"])
         self.assertTrue(self.report["flags"]["open_210_channel_45_symmetric_source_reopened"])
         self.assertTrue(self.report["flags"]["open_210_channel_45_off_singlet_census"])
         self.assertTrue(self.report["flags"]["open_210_channel_45_off_singlet_sm_qn"])
+        self.assertIn("bucket_counts", self.report["channel_54"])
+        self.assertEqual(
+            self.report["filled_slots"]["OPEN_210_CHANNEL_54_OFF_SINGLET"]["status"],
+            "PARTIAL_SM_QUANTUM_NUMBERS_READY",
+        )
         self.assertEqual(
             self.report["filled_slots"]["OPEN_210_CHANNEL_45"]["status"],
             "PARTIAL_ANTISYM_VANISHES__SYMMETRIC_SOURCE_REOPENED",
