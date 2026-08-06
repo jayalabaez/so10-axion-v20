@@ -9,6 +9,10 @@ on:
       - 'test_exact_h10_self_quartic_family_v20.py'
       - 'exact_phi_hdag_sigmabar_cubic_audit_v20.py'
       - 'test_exact_phi_hdag_sigmabar_cubic_audit_v20.py'
+      - 'exact_hsigma_holomorphic_charge_dressed_completion_v20.py'
+      - 'test_exact_hsigma_holomorphic_charge_dressed_completion_v20.py'
+      - 'nonsusy_z17_pq_hsigma_completion_v20.py'
+      - 'test_nonsusy_z17_pq_hsigma_completion_v20.py'
       - 'nonsusy_z17_pq_potential_filter_v20.py'
       - 'test_nonsusy_z17_pq_potential_filter_v20.py'
       - '.github/workflows/exact-phi2-hdagh-channel-family.yml'
@@ -16,7 +20,7 @@ on:
 jobs:
   exact-g1-small-families:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -34,6 +38,10 @@ jobs:
             test_exact_h10_self_quartic_family_v20.py \
             exact_phi_hdag_sigmabar_cubic_audit_v20.py \
             test_exact_phi_hdag_sigmabar_cubic_audit_v20.py \
+            exact_hsigma_holomorphic_charge_dressed_completion_v20.py \
+            test_exact_hsigma_holomorphic_charge_dressed_completion_v20.py \
+            nonsusy_z17_pq_hsigma_completion_v20.py \
+            test_nonsusy_z17_pq_hsigma_completion_v20.py \
             nonsusy_z17_pq_potential_filter_v20.py \
             test_nonsusy_z17_pq_potential_filter_v20.py; do
             if [ -f "$source" ]; then python -m py_compile "$source"; fi
@@ -45,6 +53,8 @@ jobs:
             test_exact_phi2_hdagh_channel_family_v20.py \
             test_exact_h10_self_quartic_family_v20.py \
             test_exact_phi_hdag_sigmabar_cubic_audit_v20.py \
+            test_exact_hsigma_holomorphic_charge_dressed_completion_v20.py \
+            test_nonsusy_z17_pq_hsigma_completion_v20.py \
             test_nonsusy_z17_pq_potential_filter_v20.py; do
             if [ -f "$test_file" ]; then pytest -q "$test_file"; fi
           done
@@ -59,6 +69,12 @@ jobs:
           fi
           if [ -f exact_phi_hdag_sigmabar_cubic_audit_v20.py ]; then
             python exact_phi_hdag_sigmabar_cubic_audit_v20.py > /tmp/exact_phi_hdag_sigmabar_stdout.json
+          fi
+          if [ -f exact_hsigma_holomorphic_charge_dressed_completion_v20.py ]; then
+            python exact_hsigma_holomorphic_charge_dressed_completion_v20.py --write > /tmp/exact_hsigma_holomorphic_stdout.json
+          fi
+          if [ -f nonsusy_z17_pq_hsigma_completion_v20.py ]; then
+            python nonsusy_z17_pq_hsigma_completion_v20.py --write > /tmp/nonsusy_hsigma_completion_stdout.json
           fi
           if [ -f nonsusy_z17_pq_potential_filter_v20.py ]; then
             python nonsusy_z17_pq_potential_filter_v20.py > /tmp/nonsusy_filter_stdout.json
@@ -99,6 +115,25 @@ jobs:
               assert report['flag']['whole_model_validated'] is False
               assert report['flag']['empirical_discovery'] is False
 
+          path = Path('EXACT_HSIGMA_HOLOMORPHIC_CHARGE_DRESSED_COMPLETION_V20.json')
+          if path.exists():
+              report = json.loads(path.read_text())
+              assert report['n_failed'] == 0, report['failures']
+              assert report['flags']['unique_Hdag2_Sigma2_54_family_closed'] is True
+              assert report['flags']['two_Phi17_dressed_cubic_companions_closed'] is True
+              assert report['flags']['selected_DeltaR_O54_mass_block_zero'] is True
+              assert report['flags']['muD_eff_replacement_required'] is True
+              assert report['flags']['complete_mixed_invariant_ring'] is False
+              assert report['flags']['whole_model_validated'] is False
+
+          path = Path('NONSUSY_Z17_PQ_HSIGMA_COMPLETION_V20.json')
+          if path.exists():
+              report = json.loads(path.read_text())
+              assert report['n_failed'] == 0, report['failures']
+              assert report['flags']['canonical_hsigma_completion_overlay_emitted'] is True
+              assert report['flags']['three_closed_families_registered'] is True
+              assert report['flags']['complete_mixed_invariant_ring'] is False
+
           path = Path('NONSUSY_Z17_PQ_POTENTIAL_FILTER_V20.json')
           if path.exists():
               report = json.loads(path.read_text())
@@ -118,5 +153,9 @@ jobs:
             EXACT_H10_SELF_QUARTIC_FAMILY_V20.md
             EXACT_PHI_HDAG_SIGMABAR_CUBIC_AUDIT_V20.json
             EXACT_PHI_HDAG_SIGMABAR_CUBIC_AUDIT_V20.md
+            EXACT_HSIGMA_HOLOMORPHIC_CHARGE_DRESSED_COMPLETION_V20.json
+            EXACT_HSIGMA_HOLOMORPHIC_CHARGE_DRESSED_COMPLETION_V20.md
+            NONSUSY_Z17_PQ_HSIGMA_COMPLETION_V20.json
+            NONSUSY_Z17_PQ_HSIGMA_COMPLETION_V20.md
             NONSUSY_Z17_PQ_POTENTIAL_FILTER_V20.json
             NONSUSY_Z17_PQ_POTENTIAL_FILTER_V20.md
