@@ -1,0 +1,68 @@
+name: full-tensor-projected-potential-scaffold
+
+on:
+  pull_request:
+    paths:
+      - 'full_tensor_projected_potential_scaffold_v20.py'
+      - 'test_full_tensor_projected_potential_scaffold_v20.py'
+      - 'open_210_channel_210_off_singlet_census_v20.py'
+      - 'test_open_210_channel_210_off_singlet_census_v20.py'
+      - 'promote_paw_split_reduced_amplitudes_v20.py'
+      - 'scoped_bfb_boundedness_gate_v20.py'
+      - '.github/workflows/full-tensor-projected-potential-scaffold.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'full_tensor_projected_potential_scaffold_v20.py'
+      - 'open_210_channel_210_off_singlet_census_v20.py'
+      - '.github/workflows/full-tensor-projected-potential-scaffold.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: full-tensor-scaffold-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  scaffold:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: python -m pip install --upgrade pip
+      - run: python -m pip install numpy scipy mpmath
+      - name: Off-singlet 210 census tests
+        run: python -m unittest -v test_open_210_channel_210_off_singlet_census_v20.py
+      - name: FULL_TENSOR scaffold tests
+        run: python -m unittest -v test_full_tensor_projected_potential_scaffold_v20.py
+      - name: Emit artifacts
+        run: |
+          python open_210_channel_210_off_singlet_census_v20.py --write
+          python full_tensor_projected_potential_scaffold_v20.py --write
+      - name: Assert honest scientific state
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('FULL_TENSOR_PROJECTED_POTENTIAL_V20.json'))
+          assert r['n_failed']==0 and r['overall_state']=='BLOCKED', r
+          assert r['flags']['full_tensor_scaffold_ready'], r
+          assert not r['flags']['full_g2_projection_closed'], r
+          assert r['flags']['ready_subspace_bfb_only'], r
+          assert r['ready_subspace_bfb']['ready_subspace_bfb_green'], r
+          assert not r['flags']['cg_120_320_1050_4125_invented'], r
+          assert not r['flags']['whole_model_validated'], r
+          c=json.load(open('OPEN_210_CHANNEL_210_OFF_SINGLET_CENSUS_V20.json'))
+          assert c['n_failed']==0 and c['census']['n_nonzero_modes']==207, c
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: full-tensor-projected-potential-scaffold
+          path: |
+            FULL_TENSOR_PROJECTED_POTENTIAL_V20.json
+            FULL_TENSOR_PROJECTED_POTENTIAL_V20.md
+            OPEN_210_CHANNEL_210_OFF_SINGLET_CENSUS_V20.json
+            OPEN_210_CHANNEL_210_OFF_SINGLET_CENSUS_V20.md

@@ -29,7 +29,7 @@ The pure-210 quartic basis and its p/a/omega restriction are now closed in a sou
 
 ## Required execution order
 
-1. Continue mixed G1 / READY-subspace BFB after (p,a,ω) promotion with published Δ/H10 linear CG; retire residual S/Φ17 isotropic P↔X only with published input — G1-G5 prerequisites (partial)
+1. Transcribe missing CG (120/320/1050/4125) and off-singlet mode-by-mode coeffs to close G2 beyond the READY-subspace FULL_TENSOR scaffold; keep S/Φ17 residual until published CG — G1-G2 (partial → toward CLOSED)
 2. Complete mixed 210+126bar+10+S invariant multiplicities and component CG maps — G1 and G2
 3. Rebuild full stationarity, BFB, competing extrema and gauge-projected Hessian — G3-G5 prerequisites
 4. Regenerate physical scalar/triplet thresholds and two-loop matching — G6-G7 prerequisites

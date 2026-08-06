@@ -90,11 +90,12 @@ def build_report() -> dict[str, Any]:
         {
             "order": 1,
             "task": (
-                "Continue mixed G1 / READY-subspace BFB after (p,a,ω) promotion "
-                "with published Δ/H10 linear CG; retire residual S/Φ17 isotropic "
-                "P↔X only with published input"
+                "Transcribe missing CG (120/320/1050/4125) and off-singlet "
+                "mode-by-mode coeffs to close G2 beyond the READY-subspace "
+                "FULL_TENSOR scaffold; keep S/Φ17 residual until published CG"
             ),
-            "closes": "G1-G5 prerequisites (partial)",
+            "closes": "G1-G2 (partial → toward CLOSED)",
+            "upstream_scaffold": "full_tensor_projected_potential_scaffold_v20",
             "upstream_promotion": "promote_paw_split_reduced_amplitudes_v20",
             "upstream_insertion": "source_pure210_reduced_potential_insertion_v20",
             "selected_vacuum_45_density": selected["selected_vacuum"][

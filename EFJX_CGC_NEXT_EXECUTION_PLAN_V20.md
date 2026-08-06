@@ -325,13 +325,14 @@ hEW (full stationarity / unique κ remain OPEN).
 
 ## Correct next goal
 
-**Immediate:** continue mixed G1 without invented 120/320/1050/4125 tables —
-full tensor-projected potential scaffold / READY-subspace BFB, and any
-published route to retire the residual isotropic S/Φ₁₇ P↔X cross. The
-`(p,a,ω)` promotion already wires source pure-210 `V₄` and replaces Δ/H₁₀
-crosses by published linear `eff_126`/`eff_10`
-(`promote_paw_split_reduced_amplitudes_v20`). Pure-210 identity is CLOSED;
-mixed G1 remains OPEN. Do **not** claim whole-model validation.
+**Immediate:** continue mixed G1 / full G2 projection only with transcribed CG
+(120/320/1050/4125 and off-singlet mode-by-mode coeffs). The
+`FULL_TENSOR_PROJECTED_POTENTIAL_V20` scaffold is PARTIAL with READY-subspace
+BFB green and off-singlet 45/54/210 censuses ready
+(`full_tensor_projected_potential_scaffold_v20`). Residual S/Φ₁₇ isotropic
+P↔X stays residual (no published linear CG in-repo). Do **not** invent CG
+and do **not** claim whole-model validation. Pure-210 identity is CLOSED;
+mixed G1 / G2 remain OPEN.
 
 Theory completion still requires transcribed CG for 120/320/1050/4125 and
 off-singlet mixed-45 **CG coefficients** (G1), mode-by-mode diagonals (G2),

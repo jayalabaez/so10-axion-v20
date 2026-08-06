@@ -47,12 +47,13 @@
   },
   "required_recomputations": [
     {
-      "closes": "G1-G5 prerequisites (partial)",
+      "closes": "G1-G2 (partial \u2192 toward CLOSED)",
       "order": 1,
       "selected_vacuum_45_density": 0.025426925765343136,
-      "task": "Continue mixed G1 / READY-subspace BFB after (p,a,\u03c9) promotion with published \u0394/H10 linear CG; retire residual S/\u03a617 isotropic P\u2194X only with published input",
+      "task": "Transcribe missing CG (120/320/1050/4125) and off-singlet mode-by-mode coeffs to close G2 beyond the READY-subspace FULL_TENSOR scaffold; keep S/\u03a617 residual until published CG",
       "upstream_insertion": "source_pure210_reduced_potential_insertion_v20",
-      "upstream_promotion": "promote_paw_split_reduced_amplitudes_v20"
+      "upstream_promotion": "promote_paw_split_reduced_amplitudes_v20",
+      "upstream_scaffold": "full_tensor_projected_potential_scaffold_v20"
     },
     {
       "closes": "G1 and G2",

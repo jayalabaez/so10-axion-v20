@@ -39,6 +39,8 @@
         "Sym\u00b2 residual after 1/45/54/210 includes 770+1050+1050bar+4125+8910+5940",
         "source_pure210_reduced_potential_insertion: patched \u039b BFB + \u03bb\u2084=0 Hessian PD (mpmath)",
         "promote_paw_split_reduced_amplitudes: P_210\u2192(p,a,\u03c9); \u0394/H10 linear CG; S/\u03a6 isotropic residual",
+        "full_tensor_projected_potential_scaffold: READY-subspace BFB PARTIAL",
+        "open_210_channel_210_off_singlet_census: \u039e mixed census READY",
         "source_210_quartic_norm_identity: selected vacuum 45/1050 densities ready",
         "pure-210 Eq.(2.6) CLOSED upstream (so10_210_source_quartic_basis_v20)",
         "OPEN_210_CHANNEL_1050 blocker superseded as incomplete residual",
@@ -49,7 +51,7 @@
         "published linear CG for residual S/\u03a617 P\u2194X cross (or drop)",
         "CG tensors 120 / 320 / 1050 / 4125 missing",
         "true Sym\u00b2 residual sectors 8910/5940/1050bar still OPEN",
-        "off-singlet-45 mode-by-mode SM irrep CG coefficients OPEN",
+        "off-singlet-45/54/210 mode-by-mode SM irrep CG coefficients OPEN",
         "full ring independence with CG OPEN",
         "downstream scalar ledger revalidation after source correction"
       ],
@@ -64,12 +66,15 @@
         "Schur 272 gate with partial isotropic/norm A/C",
         "Hodge C embedding + full (Re/Im H) portal lift",
         "210 PS-singlet m2 from reduced Hessian: DIAGONAL_210_RADIAL_CUBIC_PS_SINGLET_FILLED__OFF_SINGLET_CG_OPEN",
-        "210\u219254/45/210 maps + source Sym\u00b2\u219245 reopen (dependency gate)"
+        "210\u219254/45/210 maps + source Sym\u00b2\u219245 reopen (dependency gate)",
+        "FULL_TENSOR_PROJECTED_POTENTIAL scaffold PARTIAL (READY-subspace BFB)",
+        "off-singlet 210 census READY via published \u039e self-map"
       ],
       "blockers": [
-        "source-corrected quartic basis before claiming A/C closed",
+        "full PS/SM Clebsch projection of every invariant (G2 CLOSED bar)",
         "mode-by-mode CG for remaining open slots",
-        "FULL_TENSOR_PROJECTED_POTENTIAL_V20.json absent"
+        "missing CG 120 / 320 / 1050 / 4125",
+        "S/\u03a617 linear CG residual (isotropic only)"
       ],
       "closed": false
     },

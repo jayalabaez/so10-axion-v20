@@ -1,0 +1,196 @@
+{
+  "status": "FULL_TENSOR_PROJECTED_POTENTIAL_SCAFFOLD_PARTIAL__CG_OPEN",
+  "overall_state": "BLOCKED",
+  "n_checks": 14,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "ring_scaffold_present": true,
+    "no_invented_120_320_1050_4125": true,
+    "ready_ops_have_published_source": true,
+    "open_slots_marked_OPEN_AWAITING_CG": true,
+    "portal_T_Phi_referenced": true,
+    "pure210_v4_referenced": true,
+    "paw_delta_h10_linear_cg_referenced": true,
+    "s_phi17_residual_not_retired_without_cg": true,
+    "off_singlet_45_census_ready": true,
+    "off_singlet_54_census_ready": true,
+    "off_singlet_210_census_ready": true,
+    "ready_subspace_bfb_green": true,
+    "g2_not_closed": true,
+    "whole_model_not_overclaimed": true
+  },
+  "operators": [
+    {
+      "id": "PURE210_SOURCE_V4_PAW",
+      "projection_status": "READY_PROJECTED",
+      "source_module": "pure_210_ps_singlet_quartic_polynomials_v20",
+      "source_fn": "identity_reduced_potential",
+      "note": "Source-normalized Sym\u00b2\u219245/54/210/1050 on (p,a,\u03c9)"
+    },
+    {
+      "id": "REDUCED_P210_SOURCE_PATCH",
+      "projection_status": "READY_PROJECTED",
+      "source_module": "source_pure210_reduced_potential_insertion_v20",
+      "source_fn": "build_report",
+      "note": "Selected-ray \u03bb_P proxy into reduced \u039b"
+    },
+    {
+      "id": "PROMOTED_PAW_DELTA_H10_LINEAR_CG",
+      "projection_status": "READY_PROJECTED",
+      "source_module": "promote_paw_split_reduced_amplitudes_v20",
+      "source_fn": "hessian_promoted_lam4_0 / eff_210_linear",
+      "note": "P_210\u2192(p,a,\u03c9); \u0394/H10 use published eff_126/eff_10"
+    },
+    {
+      "id": "PROMOTED_S_PHI17_ISOTROPIC_RESIDUAL",
+      "projection_status": "ISOTROPIC_RESIDUAL",
+      "source_module": "promote_paw_split_reduced_amplitudes_v20",
+      "source_fn": "ISOTROPIC_RESIDUAL_NON210_IDX",
+      "note": "No published linear PS-singlet CG for S/\u03a617 in-repo"
+    },
+    {
+      "id": "PORTAL_LAMBDA4_VS_T_PHI",
+      "projection_status": "READY_PROJECTED",
+      "source_module": "direct_phi_h_sigmabar_portal_m2_block_v20",
+      "source_fn": "build_portal_matrix",
+      "note": "Scoped off-diagonal B = \u03bb4 vS T_\u03a6"
+    },
+    {
+      "id": "SCOPED_BFB_AGGREGATE",
+      "projection_status": "READY_PROJECTED",
+      "source_module": "scoped_bfb_boundedness_gate_v20",
+      "source_fn": "build_report",
+      "note": "Reduced PD/copositivity + Schur + PQ-extended skeleton"
+    },
+    {
+      "id": "OFF_SINGLET_45_CENSUS",
+      "projection_status": "CENSUS_ONLY",
+      "source_module": "open_210_channel_45_off_singlet_census_v20",
+      "source_fn": "build_report",
+      "note": "Diagnostic seed; mode CG OPEN"
+    },
+    {
+      "id": "OFF_SINGLET_54_CENSUS",
+      "projection_status": "CENSUS_ONLY",
+      "source_module": "open_210_channel_54_off_singlet_census_v20",
+      "source_fn": "build_report",
+      "note": "Diagnostic seed; mode CG OPEN"
+    },
+    {
+      "id": "OFF_SINGLET_210_CENSUS",
+      "projection_status": "CENSUS_ONLY",
+      "source_module": "open_210_channel_210_off_singlet_census_v20",
+      "source_fn": "build_report",
+      "note": "Published self-map \u039e; mode CG OPEN"
+    },
+    {
+      "id": "MISSING_CG_120",
+      "projection_status": "OPEN_AWAITING_CG",
+      "source_module": null,
+      "source_fn": null,
+      "note": "Do not invent"
+    },
+    {
+      "id": "MISSING_CG_320",
+      "projection_status": "OPEN_AWAITING_CG",
+      "source_module": null,
+      "source_fn": null,
+      "note": "Do not invent"
+    },
+    {
+      "id": "MISSING_CG_1050",
+      "projection_status": "OPEN_AWAITING_CG",
+      "source_module": null,
+      "source_fn": null,
+      "note": "Do not invent"
+    },
+    {
+      "id": "MISSING_CG_4125",
+      "projection_status": "OPEN_AWAITING_CG",
+      "source_module": null,
+      "source_fn": null,
+      "note": "Do not invent"
+    }
+  ],
+  "ready_subspace": [
+    "PURE210_SOURCE_V4_PAW",
+    "REDUCED_P210_SOURCE_PATCH",
+    "PROMOTED_PAW_DELTA_H10_LINEAR_CG",
+    "PORTAL_LAMBDA4_VS_T_PHI",
+    "SCOPED_BFB_AGGREGATE",
+    "OFF_SINGLET_45_CENSUS",
+    "OFF_SINGLET_54_CENSUS",
+    "OFF_SINGLET_210_CENSUS"
+  ],
+  "isotropic_residuals": [
+    "PROMOTED_S_PHI17_ISOTROPIC_RESIDUAL"
+  ],
+  "open_awaiting_cg": [
+    "MISSING_CG_120",
+    "MISSING_CG_320",
+    "MISSING_CG_1050",
+    "MISSING_CG_4125"
+  ],
+  "off_singlet_censuses": {
+    "45": {
+      "status": "OPEN_210_CHANNEL_45_OFF_SINGLET_CENSUS_READY__CG_OPEN",
+      "n_nonzero": 207
+    },
+    "54": {
+      "status": "OPEN_210_CHANNEL_54_OFF_SINGLET_CENSUS_READY__CG_OPEN",
+      "n_nonzero": 207
+    },
+    "210": {
+      "status": "OPEN_210_CHANNEL_210_OFF_SINGLET_CENSUS_READY__CG_OPEN",
+      "n_nonzero": 207,
+      "seed_GeV2": 1.7219143646273261e+28
+    }
+  },
+  "ready_subspace_bfb": {
+    "ready_subspace_bfb_green": true,
+    "full_invariant_ring_bfb": false,
+    "sectors": {
+      "source_pure210_insertion": {
+        "status": "SOURCE_PURE210_REDUCED_POTENTIAL_INSERTION_PARTIAL",
+        "n_failed": 0,
+        "lambda_P_source": 0.2638972700332822,
+        "hessian_pd": true
+      },
+      "promote_paw": {
+        "status": "PROMOTE_PAW_SPLIT_REDUCED_AMPLITUDES_PARTIAL",
+        "n_failed": 0,
+        "hessian_psd": true,
+        "linear_cg_Delta_H10": true,
+        "isotropic_residual_S_Phi17": true
+      },
+      "scoped_bfb": {
+        "status": "SCOPED_BFB_BOUNDEDNESS_GATE_PARTIAL__FULL_RING_OPEN",
+        "n_failed": 0,
+        "scoped_ready": true
+      },
+      "portal_T_Phi": {
+        "status": "DIRECT_PORTAL_M2_BLOCK_INSERTED__FULL_HESSIAN_STILL_OPEN",
+        "n_failed": 0
+      }
+    }
+  },
+  "flags": {
+    "full_tensor_scaffold_ready": true,
+    "full_g2_projection_closed": false,
+    "ready_subspace_bfb_only": true,
+    "isotropic_residual_S_Phi17_only": true,
+    "cg_120_320_1050_4125_invented": false,
+    "whole_model_validated": false,
+    "whole_model_excluded": false
+  },
+  "remaining_blockers": {
+    "published_linear_cg_for_S_Phi17_cross": true,
+    "missing_cg_120_320_1050_4125": true,
+    "off_singlet_mode_by_mode_cg": true,
+    "full_ring_independence_with_cg": true,
+    "full_nonsusy_vacuum_hessian": true,
+    "full_g2_ps_sm_clebsch_projection": true
+  },
+  "verdict": "FULL_TENSOR_PROJECTED_POTENTIAL scaffold PARTIAL: READY subspace (8 ops) BFB green via composed certificates; off-singlet 45/54/210 censuses ready; 120/320/1050/4125 and S/\u03a6\u2081\u2087 linear CG remain OPEN. G2 not closed. Theory remains BLOCKED."
+}
