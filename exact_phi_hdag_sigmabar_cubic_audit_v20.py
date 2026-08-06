@@ -163,7 +163,7 @@ def generic_fields() -> tuple[direct.Form, direct.Form, np.ndarray]:
             -0.3j,
             0.7,
             -0.4 + 0.6j,
-            0.1,
+            0.1 + 0.4j,
             0.5j,
             -0.8,
             0.3 + 0.2j,
