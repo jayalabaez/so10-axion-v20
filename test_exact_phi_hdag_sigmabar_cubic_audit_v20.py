@@ -51,4 +51,4 @@ def test_report_fail_closed():
     assert report["flag"]["empirical_discovery"] is False
 
 
-# The reusable trusted-base G1 workflow is registered on the moving base branch.
+# The reusable trusted-base G1 workflow is registered on main.
