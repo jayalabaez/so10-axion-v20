@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 import g1_exact_declared_symmetry_character_census_v20 as census
 
+# Trusted-base PR synchronization marker; assertions are unchanged.
+
 
 def test_fundamental_character_dimensions():
     assert census.character_dimension(census.vector_character()) == 10
