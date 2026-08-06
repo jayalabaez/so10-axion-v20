@@ -1,0 +1,78 @@
+name: g1-g8-gate-ledger
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "g1_g8_gate_ledger_v20.py"
+      - "test_g1_g8_gate_ledger_v20.py"
+      - "promote_210n_tensor_basis_uniqueness_v20.py"
+      - "mixed_rep_enlarged_floor_basis_v20.py"
+      - "direct_phi_h_sigmabar_portal_m2_block_v20.py"
+      - "nonsusy_reduced_hessian_v20.py"
+      - "gauge_fixing_goldstone_eating_v20.py"
+      - "mixed_rep_hilbert_bfb_completion_v20.py"
+      - "triplet_proxy_contamination_audit_v20.py"
+      - "nonsusy_charge_allowed_mt_v20.py"
+      - "yukawa_rge_2loop_v20.py"
+      - "proton_decay_falsification_gate_v20.py"
+      - ".github/workflows/g1-g8-gate-ledger.yml"
+  push:
+    branches: [main]
+    paths:
+      - "g1_g8_gate_ledger_v20.py"
+      - "test_g1_g8_gate_ledger_v20.py"
+      - "promote_210n_tensor_basis_uniqueness_v20.py"
+      - "mixed_rep_enlarged_floor_basis_v20.py"
+      - "direct_phi_h_sigmabar_portal_m2_block_v20.py"
+      - "nonsusy_reduced_hessian_v20.py"
+      - "gauge_fixing_goldstone_eating_v20.py"
+      - "mixed_rep_hilbert_bfb_completion_v20.py"
+      - "triplet_proxy_contamination_audit_v20.py"
+      - "nonsusy_charge_allowed_mt_v20.py"
+      - "yukawa_rge_2loop_v20.py"
+      - "proton_decay_falsification_gate_v20.py"
+      - ".github/workflows/g1-g8-gate-ledger.yml"
+
+concurrency:
+  group: g1-g8-gate-ledger-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  authoritative-gate-ledger:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile ledger
+        run: python -m py_compile g1_g8_gate_ledger_v20.py test_g1_g8_gate_ledger_v20.py
+      - name: Run ledger tests
+        run: python -m unittest -v test_g1_g8_gate_ledger_v20.py
+      - name: Generate authoritative ledger
+        run: python g1_g8_gate_ledger_v20.py
+      - name: Assert fail-closed feasibility scope
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('G1_G8_GATE_LEDGER_V20.json'))
+          assert r['n_failed']==0, r['failures']
+          assert r['overall_state']=='BLOCKED'
+          assert r['summary']['n_closed']==0
+          assert r['gates']['G1']['status']=='OPEN'
+          assert r['gates']['G7']['status']=='OPEN'
+          assert r['gates']['G4']['corrections']['exact_gauge_goldstones']==33
+          assert not r['gates']['G4']['corrections']['thirty_seven_physical_null_modes']
+          assert r['feasibility']['complete_closure_program_is_well_defined']
+          assert not r['feasibility']['all_gates_closable_from_current_repo_evidence']
+          assert not r['feasibility']['guarantee_model_passes_all_gates']
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: g1-g8-gate-ledger
+          path: |
+            G1_G8_GATE_LEDGER_V20.json
+            G1_G8_GATE_LEDGER_V20.md
