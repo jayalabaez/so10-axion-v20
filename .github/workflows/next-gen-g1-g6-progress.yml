@@ -1,0 +1,82 @@
+name: next-gen-g1-g6-progress
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "next_gen_g1_g6_progress_gate_v20.py"
+      - "test_next_gen_g1_g6_progress_gate_v20.py"
+      - "next_gen_triplet_10h_quartic_gate_v20.py"
+      - "next_gen_triplet_diagonal_baseline_gate_v20.py"
+      - "next_gen_triplet_quadratic_gate_v20.py"
+      - "next_gen_triplet_tensor_gate_v20.py"
+      - "g1_g8_gate_ledger_v20.py"
+      - ".github/workflows/next-gen-g1-g6-progress.yml"
+  push:
+    branches: [main]
+    paths:
+      - "next_gen_g1_g6_progress_gate_v20.py"
+      - "test_next_gen_g1_g6_progress_gate_v20.py"
+      - "next_gen_triplet_10h_quartic_gate_v20.py"
+      - "next_gen_triplet_diagonal_baseline_gate_v20.py"
+      - "next_gen_triplet_quadratic_gate_v20.py"
+      - "next_gen_triplet_tensor_gate_v20.py"
+      - "g1_g8_gate_ledger_v20.py"
+      - ".github/workflows/next-gen-g1-g6-progress.yml"
+
+concurrency:
+  group: next-gen-g1-g6-progress-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  consolidated-progress-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Compile progress gate
+        run: |
+          python -m py_compile \
+            next_gen_g1_g6_progress_gate_v20.py \
+            test_next_gen_g1_g6_progress_gate_v20.py
+      - name: Run progress gate tests
+        run: python -m unittest -v test_next_gen_g1_g6_progress_gate_v20.py
+      - name: Generate consolidated progress report
+        run: python next_gen_g1_g6_progress_gate_v20.py
+      - name: Assert exact progress and blocked scope
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('NEXT_GEN_G1_G6_PROGRESS_GATE_V20.json'))
+          assert r['n_failed']==0, r['failures']
+          assert r['overall_state']=='PARTIAL'
+          assert r['n_closed_subproblems']==17
+          assert all(r['closed_subproblems'].values())
+          assert r['gate_states']['G1']=='OPEN'
+          assert r['gate_states']['G2']=='PARTIAL'
+          assert r['gate_states']['G6']=='PARTIAL'
+          assert r['gate_states']['G7']=='OPEN'
+          assert r['gate_states']['G8']=='PARTIAL'
+          assert r['flag']['authoritative_next_gen_G1_G6_progress_gate']
+          assert r['flag']['all_recorded_exact_subproblems_closed']
+          assert not r['flag']['G1_closed']
+          assert not r['flag']['G6_closed']
+          assert not r['flag']['physical_triplet_spectrum_complete']
+          assert not r['flag']['exact_unique_proton_lifetime']
+          assert not r['flag']['whole_model_validated']
+          assert not r['flag']['whole_model_excluded']
+          assert not r['flag']['empirical_discovery']
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: next-gen-g1-g6-progress
+          path: |
+            NEXT_GEN_G1_G6_PROGRESS_GATE_V20.json
+            NEXT_GEN_G1_G6_PROGRESS_GATE_V20.md
