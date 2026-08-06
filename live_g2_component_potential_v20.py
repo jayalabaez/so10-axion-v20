@@ -1,28 +1,29 @@
 #!/usr/bin/env python3
 """Corrected public interface for the live G2 component-potential work.
 
-PR #155 correctly identified the 64 invariant directions and 91 real coupling
-parameters, but its implementation and closure claim were not valid:
+PR #155 identified the 64 invariant directions and 91 real coupling
+parameters, but its implementation and closure claim were invalid:
 
 * the H--126bar singlet quartic used ||Sigma|| instead of ||Sigma||^2;
 * the Phi^2 Hdag Sigma adapter mixed the physical -i 126bar basis with the +i
   projector orientation;
 * the Phi Sigma-dag Sigma cubic used the wrong conjugation order;
 * the finite-difference Sigma perturbation left the physical chiral subspace;
-* an eight-coordinate species probe is not the complete 464-real gradient or
-  Hessian required by the G2 roadmap.
+* an eight-coordinate species probe is not the complete 486-real gradient or
+  Hessian required by G2.
 
-The authoritative arbitrary-field value layer now lives in
-``live_g2_arbitrary_component_potential_values_v20``.  It compiles all 48
+The authoritative arbitrary-field value layer is
+``live_g2_arbitrary_component_potential_values_v20``. It compiles all 48
 Hermitian orbits, 64 normalized directions, and 91 real parameters with
-physical chirality enforcement and exact homogeneous scaling.  This module
-preserves a compact compatibility API while restoring the honest status:
+physical chirality enforcement and homogeneous-scaling checks.
 
-    G2 = PARTIAL.
+The scalar coordinate count is exactly
 
-The next closure condition is one canonical 464-real field chart
-(210 + 2*10 + 2*126 + 2 + 2) with the complete gradient and Hessian evaluated
-inside the physical -i 126bar subspace and tied to all 64 operator directions.
+    210 + 2*10 + 2*126 + 2 + 2 = 486 real coordinates,
+
+for real 210_H, complex 10_H, complex chiral 126bar_H, complex S, and complex
+Phi17. The symmetric Hessian therefore has 486*487/2 = 118341 independent
+entries. Until those complete derivatives exist, G2 remains PARTIAL.
 """
 from __future__ import annotations
 
@@ -46,7 +47,9 @@ def sample_fields(seed: int = 11) -> FieldConfiguration:
     return exact.deterministic_state(seed)
 
 
-def direction_catalog(fields: FieldConfiguration | None = None) -> tuple[dict[str, Any], ...]:
+def direction_catalog(
+    fields: FieldConfiguration | None = None,
+) -> tuple[dict[str, Any], ...]:
     state = sample_fields() if fields is None else fields
     return tuple(
         {
@@ -68,7 +71,9 @@ def direction_catalog(fields: FieldConfiguration | None = None) -> tuple[dict[st
     )
 
 
-def coupling_layout(fields: FieldConfiguration | None = None) -> tuple[dict[str, Any], ...]:
+def coupling_layout(
+    fields: FieldConfiguration | None = None,
+) -> tuple[dict[str, Any], ...]:
     state = sample_fields() if fields is None else fields
     directions = exact.evaluate_directions(state)
     return tuple(
@@ -88,7 +93,8 @@ def evaluate_directions(fields: FieldConfiguration) -> list[complex]:
 
 
 def _coefficient_mapping(
-    fields: FieldConfiguration, couplings: np.ndarray | Iterable[float]
+    fields: FieldConfiguration,
+    couplings: np.ndarray | Iterable[float],
 ) -> dict[str, float]:
     directions = exact.evaluate_directions(fields)
     parameters = exact.parameter_schema(directions)
@@ -104,7 +110,8 @@ def _coefficient_mapping(
 
 
 def potential_value(
-    fields: FieldConfiguration, couplings: np.ndarray | Iterable[float]
+    fields: FieldConfiguration,
+    couplings: np.ndarray | Iterable[float],
 ) -> float:
     directions = exact.evaluate_directions(fields)
     return exact.potential_value(
@@ -113,8 +120,12 @@ def potential_value(
 
 
 def complete_field_dimension() -> int:
-    # real 210 + complex 10 + complex chiral 126bar + complex S + complex Phi17
     return 210 + 20 + 252 + 2 + 2
+
+
+def complete_symmetric_hessian_entries() -> int:
+    dimension = complete_field_dimension()
+    return dimension * (dimension + 1) // 2
 
 
 def stratified_probe_coordinates(*_args: Any, **_kwargs: Any) -> list[dict[str, Any]]:
@@ -124,15 +135,15 @@ def stratified_probe_coordinates(*_args: Any, **_kwargs: Any) -> list[dict[str, 
 
 def finite_difference_gradient(*_args: Any, **_kwargs: Any) -> dict[str, Any]:
     raise RuntimeError(
-        "The historical eight-coordinate probe is not the complete 464-real "
-        "G2 gradient. Use the forthcoming canonical physical field chart."
+        "The historical eight-coordinate probe is not the complete 486-real "
+        "G2 gradient. Use the canonical physical field chart when implemented."
     )
 
 
 def finite_difference_hessian(*_args: Any, **_kwargs: Any) -> dict[str, Any]:
     raise RuntimeError(
-        "The historical eight-coordinate probe is not the complete 464-real "
-        "G2 Hessian. Use the forthcoming canonical physical field chart."
+        "The historical eight-coordinate probe is not the complete 486-real "
+        "G2 Hessian. Use the canonical physical field chart when implemented."
     )
 
 
@@ -141,11 +152,20 @@ def build_report() -> dict[str, Any]:
     checks = {
         "corrected_value_layer_executes": corrected["n_failed"] == 0,
         "all_48_orbits_compiled": corrected["counts"]["Hermitian_orbits"] == 48,
-        "all_64_directions_compiled": corrected["counts"]["invariant_directions"] == 64,
-        "all_91_real_parameters_compiled": corrected["counts"]["real_parameters"] == 91,
-        "all_18_base_families_compiled": corrected["counts"]["base_families"] == 18,
+        "all_64_directions_compiled": (
+            corrected["counts"]["invariant_directions"] == 64
+        ),
+        "all_91_real_parameters_compiled": (
+            corrected["counts"]["real_parameters"] == 91
+        ),
+        "all_18_base_families_compiled": (
+            corrected["counts"]["base_families"] == 18
+        ),
         "physical_sigma_chirality_enforced": True,
         "complete_field_dimension_is_486": complete_field_dimension() == 486,
+        "complete_symmetric_hessian_has_118341_entries": (
+            complete_symmetric_hessian_entries() == 118341
+        ),
         "historical_eight_coordinate_gradient_rejected": True,
         "historical_eight_coordinate_hessian_rejected": True,
         "G2_not_closed_without_complete_gradient_Hessian": True,
@@ -173,15 +193,25 @@ def build_report() -> dict[str, Any]:
             "complete_real_field_dimension": complete_field_dimension(),
             "complete_gradient_entries_required": complete_field_dimension(),
             "complete_symmetric_Hessian_entries_required": (
-                complete_field_dimension() * (complete_field_dimension() + 1) // 2
+                complete_symmetric_hessian_entries()
             ),
         },
         "corrections_to_PR155": {
-            "H_Sigma_singlet": "uses (HdagH)*(Sigma kinetic inner product)",
-            "Phi2_Hdag_Sigma": "uses the conjugate of the canonical +i H Sigma-dag projector orientation",
-            "Phi_SigmaDag_Sigma": "uses cubic_invariant(Phi,Sigma,Sigma), whose first Sigma is conjugated internally",
-            "Sigma_coordinates": "all arbitrary fields and future perturbations stay in the physical -i 126bar basis",
-            "derivative_scope": "eight species probes removed; complete 486-real chart required",
+            "H_Sigma_singlet": (
+                "uses (HdagH)*(Sigma kinetic inner product)"
+            ),
+            "Phi2_Hdag_Sigma": (
+                "uses the conjugate of the canonical +i H Sigma-dag projector orientation"
+            ),
+            "Phi_SigmaDag_Sigma": (
+                "uses cubic_invariant(Phi,Sigma,Sigma), whose first Sigma is conjugated internally"
+            ),
+            "Sigma_coordinates": (
+                "all arbitrary fields and future perturbations stay in the physical -i 126bar basis"
+            ),
+            "derivative_scope": (
+                "eight species probes removed; complete 486-real chart required"
+            ),
         },
         "value_layer": corrected,
         "flags": {
@@ -204,8 +234,7 @@ def build_report() -> dict[str, Any]:
         },
         "next_exact_target": (
             "Construct the canonical 486-real physical field vector and emit "
-            "the complete 91-parameter gradient and Hessian with direction "
-            "provenance."
+            "the complete 91-parameter gradient and Hessian with direction provenance."
         ),
         "verdict": (
             "The 64-direction arbitrary-field value and 91-parameter assembly "
@@ -228,6 +257,7 @@ def write_markdown(report: dict[str, Any]) -> str:
             f"- Directions: `{report['counts']['independent_invariant_directions']}`",
             f"- Real couplings: `{report['counts']['real_potential_parameters']}`",
             f"- Real field dimension: `{report['counts']['complete_real_field_dimension']}`",
+            f"- Symmetric Hessian entries: `{report['counts']['complete_symmetric_Hessian_entries_required']}`",
             f"- Next: {report['next_exact_target']}",
             "",
         ]
@@ -240,8 +270,11 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     report = build_report()
     if args.write:
-        OUT_JSON.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n")
-        OUT_MD.write_text(write_markdown(report))
+        OUT_JSON.write_text(
+            json.dumps(report, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
+        OUT_MD.write_text(write_markdown(report), encoding="utf-8")
     print(json.dumps(report, indent=2, sort_keys=True))
     return 0 if report["n_failed"] == 0 else 1
 
