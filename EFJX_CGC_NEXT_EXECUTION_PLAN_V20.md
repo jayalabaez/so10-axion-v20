@@ -331,6 +331,18 @@ Empirically all are Q-charged; most mixed/cross. Status
 action on four-forms. Empirically all Q-charged and cross-sector dominant.
 Status `PARTIAL_SM_QUANTUM_NUMBERS_READY`; mode CG OPEN.
 
+## Completed physics enhancement certificates (no invented CG)
+
+`off_singlet_qcharged_selection_rule_v20.py` — all 3×207 published-projector
+off-singlet images are Q-charged ⇒ no EM-neutral light-singlet seed.
+
+`schur_c_alternative_channels_certificate_v20.py` — defensible Schur C =
+soft ⊕ 210-norm ⊕ MIXED_126; `OPEN_126_54_LOCKING` retired as indefinite.
+
+`s_phi17_isotropic_residual_charge_gate_v20.py` —
+`KEEP_ISOTROPIC_AWAITING_PAPER_LINEAR_CG` (norm portals Z17/PQ allowed; do not
+drop; refined linear CG needs external tables).
+
 `technically_natural_hierarchy_soft_matching_v20.py` quantifies
 `hEW/M_I`, `|δm²|/M_I²`, and matched `M_{1/2}` vs `|κ|M_I` at physical
 hEW (full stationarity / unique κ remain OPEN).
@@ -339,10 +351,10 @@ hEW (full stationarity / unique κ remain OPEN).
 
 **Immediate:** G2 still needs transcribed CG for 120/320/1050/4125 (external
 published tables only — do **not** invent). Off-singlet 45/54/210 Cartan
-labels are READY; mode-by-mode SM-irrep CG coeffs remain OPEN. Without
-external CG tables, published-projector PARTIAL inventory for these
-channels is exhausted. `OPEN_126_54_LOCKING` ΣΣ Hessian is indefinite
-(not PD Schur C). S/Φ₁₇ isotropic residual stays. Pure-210 identity CLOSED;
+labels + Q-charged selection rule READY; Schur-C alternatives READY; S/Φ₁₇
+isotropic residual kept as charge-legal. Without external CG, highest-leverage
+READY physics is Casimir Sym² residual projectors, PAW free extrema, antisym
+45 off-singlet census, and Goldstone D-term masses. Pure-210 identity CLOSED;
 mixed G1/G2 OPEN. Do **not** claim whole-model validation.
 
 Theory completion still requires transcribed CG for 120/320/1050/4125 and

@@ -90,14 +90,23 @@ def build_report() -> dict[str, Any]:
         {
             "order": 1,
             "task": (
-                "Off-singlet 45/54/210 Cartan SM QN READY; still need "
-                "transcribed 120/320/1050/4125 CG from external published "
-                "tables only (do not invent), plus mode-by-mode SM-irrep CG. "
-                "OPEN_126_54_LOCKING ΣΣ census shows indefinite real Hessian — "
-                "need other C channels"
+                "Physics certificates READY (Q-charged rule, Schur-C "
+                "alternatives, S/Φ17 keep-isotropic). Still need transcribed "
+                "120/320/1050/4125 CG from external published tables only "
+                "(do not invent). Next READY physics: Casimir Sym² residual "
+                "projectors / PAW free extrema / Goldstone D-term masses"
             ),
             "closes": "G1-G2 (partial)",
             "upstream_scaffold": "full_tensor_projected_potential_scaffold_v20",
+            "upstream_schur_c_alts": (
+                "schur_c_alternative_channels_certificate_v20"
+            ),
+            "upstream_qcharged_rule": (
+                "off_singlet_qcharged_selection_rule_v20"
+            ),
+            "upstream_s_phi17_gate": (
+                "s_phi17_isotropic_residual_charge_gate_v20"
+            ),
             "upstream_210_sm_qn": (
                 "open_210_channel_210_off_singlet_sm_quantum_numbers_v20"
             ),

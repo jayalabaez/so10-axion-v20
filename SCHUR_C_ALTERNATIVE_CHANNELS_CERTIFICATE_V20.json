@@ -1,0 +1,73 @@
+{
+  "status": "SCHUR_C_ALTERNATIVE_CHANNELS_READY",
+  "overall_state": "BLOCKED",
+  "n_checks": 12,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "isotropic_inventory_green": true,
+    "mixed_126_green": true,
+    "locking_census_green": true,
+    "locking_not_claimed_pd_schur_c": true,
+    "locking_marked_indefinite": true,
+    "composed_A_positive": true,
+    "composed_C_positive": true,
+    "soft_C_positive": true,
+    "mixed_126_C_positive": true,
+    "defensible_C_excludes_54_locking": true,
+    "cg_not_invented": true,
+    "whole_model_not_overclaimed": true
+  },
+  "C_channels": {
+    "soft_Sigmabar": {
+      "feeds": "C",
+      "contribution_GeV2": 5.182419823351743e+23,
+      "status": "POSITIVE_DEFENSIBLE"
+    },
+    "OPEN_SIGMA_FROM_210_NORM": {
+      "feeds": "C",
+      "contribution_GeV2": 1.7802814568802147e+30,
+      "status": "POSITIVE_DEFENSIBLE"
+    },
+    "OPEN_MIXED_126": {
+      "feeds": "C",
+      "contribution_GeV2": 9.835809154034335e+29,
+      "status": "POSITIVE_DEFENSIBLE",
+      "eff_210_for_126_GeV": 9917564798898132.0,
+      "mixed126_status": "OPEN_MIXED_126_PS_SINGLET_PARTIAL_M2_FILLED__FULL_CG_OPEN"
+    },
+    "OPEN_126_54_LOCKING": {
+      "feeds": "C_candidate_retired",
+      "contribution_GeV2": 0.0,
+      "status": "INDEFINITE_NOT_PD_SCHUR_C",
+      "locking_census_status": "OPEN_126_54_LOCKING_HERMITIAN_FLUCTUATION_CENSUS_PARTIAL__CG_OPEN",
+      "n_negative_full_252": 252,
+      "locking_indefinite": true
+    }
+  },
+  "composed": {
+    "A_min_GeV2": 1.7802814568802147e+30,
+    "C_min_GeV2": 2.763862890525631e+30,
+    "defensible_C": [
+      "soft_Sigmabar",
+      "OPEN_SIGMA_FROM_210_NORM",
+      "OPEN_MIXED_126"
+    ],
+    "retired_from_C": [
+      "OPEN_126_54_LOCKING"
+    ]
+  },
+  "flags": {
+    "schur_c_alternatives_ready": true,
+    "open_126_54_locking_retired_as_c_seed": true,
+    "cg_120_320_1050_4125_invented": false,
+    "whole_model_validated": false,
+    "whole_model_excluded": false
+  },
+  "remaining_blockers": {
+    "full_component_C_with_mode_cg": true,
+    "missing_cg_120_320_1050_4125": true,
+    "full_nonsusy_vacuum_hessian": true
+  },
+  "verdict": "Schur C alternatives READY: soft \u2295 210-norm \u2295 MIXED_126 supply positive C (min=2.76386e+30 GeV\u00b2); OPEN_126_54_LOCKING retired as indefinite (252 negative eigenvalues on full 252). No 120/320/1050/4125 invented. Theory remains BLOCKED."
+}

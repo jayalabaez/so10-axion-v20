@@ -1,0 +1,58 @@
+{
+  "status": "S_PHI17_ISOTROPIC_RESIDUAL_CHARGE_GATE_READY",
+  "overall_state": "BLOCKED",
+  "n_checks": 9,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "paw_promotion_green": true,
+    "z17_filter_green": true,
+    "S_norm_portal_charge_allowed": true,
+    "Phi17_norm_portal_charge_allowed": true,
+    "isotropic_residual_still_present_in_paw": true,
+    "decision_keep_when_charge_allowed": true,
+    "linear_cg_not_invented": true,
+    "cg_120_320_1050_4125_not_invented": true,
+    "whole_model_not_overclaimed": true
+  },
+  "decision": "KEEP_ISOTROPIC_AWAITING_PAPER_LINEAR_CG",
+  "operators": {
+    "210_norm_S": {
+      "monomial": "210\u2020210 S\u2020S",
+      "charge_totals": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "charge_allowed": true
+    },
+    "210_norm_Phi17": {
+      "monomial": "210\u2020210 \u03a6\u2081\u2087\u2020\u03a6\u2081\u2087",
+      "charge_totals": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "charge_allowed": true
+    }
+  },
+  "paw_residual": {
+    "isotropic_residual_S_Phi17_only": true,
+    "published_linear_cg_blocker_open": true,
+    "convention": "historical \u039b_PX * (p^2+a^2+omega^2) * X^2"
+  },
+  "flags": {
+    "keep_isotropic_residual": true,
+    "drop_as_charge_forbidden": false,
+    "linear_cg_invented": false,
+    "cg_120_320_1050_4125_invented": false,
+    "whole_model_validated": false,
+    "whole_model_excluded": false
+  },
+  "remaining_blockers": {
+    "published_linear_cg_for_S_Phi17_cross": true,
+    "missing_cg_120_320_1050_4125": true,
+    "full_nonsusy_vacuum_hessian": true
+  },
+  "verdict": "S/\u03a6\u2081\u2087 isotropic residual gate: KEEP_ISOTROPIC_AWAITING_PAPER_LINEAR_CG. Norm portals charge-allowed (S=True, \u03a6\u2081\u2087=True); do not drop. Refined linear CG awaits published tables. Theory remains BLOCKED."
+}

@@ -1,0 +1,71 @@
+name: physics-enhancement-certificates
+
+on:
+  pull_request:
+    paths:
+      - off_singlet_qcharged_selection_rule_v20.py
+      - schur_c_alternative_channels_certificate_v20.py
+      - s_phi17_isotropic_residual_charge_gate_v20.py
+      - test_off_singlet_qcharged_selection_rule_v20.py
+      - test_schur_c_alternative_channels_certificate_v20.py
+      - test_s_phi17_isotropic_residual_charge_gate_v20.py
+      - .github/workflows/physics-enhancement-certificates.yml
+  workflow_dispatch:
+
+concurrency:
+  group: physics-enhancement-certificates-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  physics-enhancement-certificates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Execute certificates
+        run: |
+          python off_singlet_qcharged_selection_rule_v20.py --write
+          python schur_c_alternative_channels_certificate_v20.py --write
+          python s_phi17_isotropic_residual_charge_gate_v20.py --write
+      - name: Focused regression tests
+        run: |
+          python -m unittest -v \
+            test_off_singlet_qcharged_selection_rule_v20.py \
+            test_schur_c_alternative_channels_certificate_v20.py \
+            test_s_phi17_isotropic_residual_charge_gate_v20.py
+      - name: Assert honest scientific scope
+        run: |
+          python - <<'PY'
+          import json
+          q=json.load(open('OFF_SINGLET_QCHARGED_SELECTION_RULE_V20.json'))
+          assert q['status']=='OFF_SINGLET_QCHARGED_SELECTION_RULE_READY'
+          assert q['n_failed']==0 and q['overall_state']=='BLOCKED'
+          assert all(c['all_Q_charged'] for c in q['channels'])
+          s=json.load(open('SCHUR_C_ALTERNATIVE_CHANNELS_CERTIFICATE_V20.json'))
+          assert s['status']=='SCHUR_C_ALTERNATIVE_CHANNELS_READY'
+          assert s['flags']['open_126_54_locking_retired_as_c_seed']
+          assert s['composed']['C_min_GeV2']>0
+          p=json.load(open('S_PHI17_ISOTROPIC_RESIDUAL_CHARGE_GATE_V20.json'))
+          assert p['status']=='S_PHI17_ISOTROPIC_RESIDUAL_CHARGE_GATE_READY'
+          assert p['decision']=='KEEP_ISOTROPIC_AWAITING_PAPER_LINEAR_CG'
+          assert not p['flags']['linear_cg_invented']
+          assert not p['flags']['whole_model_validated']
+          PY
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: physics-enhancement-certificates
+          path: |
+            OFF_SINGLET_QCHARGED_SELECTION_RULE_V20.json
+            OFF_SINGLET_QCHARGED_SELECTION_RULE_V20.md
+            SCHUR_C_ALTERNATIVE_CHANNELS_CERTIFICATE_V20.json
+            SCHUR_C_ALTERNATIVE_CHANNELS_CERTIFICATE_V20.md
+            S_PHI17_ISOTROPIC_RESIDUAL_CHARGE_GATE_V20.json
+            S_PHI17_ISOTROPIC_RESIDUAL_CHARGE_GATE_V20.md

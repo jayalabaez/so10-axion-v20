@@ -94,6 +94,9 @@ def build_report() -> dict[str, Any]:
                 "open_126_54_locking_hermitian_fluctuation_census: indefinite ΣΣ (not PD Schur C)",
                 "open_210_channel_54_off_singlet_sm_quantum_numbers: Cartan labels READY (mode CG OPEN)",
                 "open_210_channel_210_off_singlet_sm_quantum_numbers: ∧⁴ Cartan labels READY (mode CG OPEN)",
+                "off_singlet_qcharged_selection_rule: no EM-neutral seed from 45/54/210 projectors",
+                "schur_c_alternative_channels: soft⊕210-norm⊕MIXED_126; 54-locking retired",
+                "s_phi17_isotropic_residual_charge_gate: KEEP_ISOTROPIC_AWAITING_PAPER",
                 "source_210_quartic_norm_identity: selected vacuum 45/1050 densities ready",
                 "pure-210 Eq.(2.6) CLOSED upstream (so10_210_source_quartic_basis_v20)",
                 "OPEN_210_CHANNEL_1050 blocker superseded as incomplete residual",
@@ -124,6 +127,8 @@ def build_report() -> dict[str, Any]:
                 "OPEN_126_54_LOCKING Hermitian/real fluctuation census PARTIAL (indefinite ΣΣ)",
                 "off-singlet 54 SM Cartan QN READY (mode CG OPEN)",
                 "off-singlet 210 SM Cartan QN READY (mode CG OPEN)",
+                "Schur-C alternatives READY (54-locking retired as C)",
+                "S/Φ17 residual KEEP_ISOTROPIC (charge-legal)",
             ],
             blockers=[
                 "full PS/SM Clebsch projection of every invariant (G2 CLOSED bar)",

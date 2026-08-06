@@ -1,0 +1,84 @@
+{
+  "status": "OFF_SINGLET_QCHARGED_SELECTION_RULE_READY",
+  "overall_state": "BLOCKED",
+  "n_checks": 6,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "upstream_sm_qn_green": true,
+    "all_three_channels_fully_Q_charged": true,
+    "no_Q_neutral_light_singlet_seed_from_published_projectors": true,
+    "cg_not_invented": true,
+    "mode_by_mode_sm_irrep_not_claimed": true,
+    "whole_model_not_overclaimed": true
+  },
+  "convention": {
+    "Q_em": "T3_L + T3_R = -i M_67",
+    "Q_neutral_tol": 0.15,
+    "note": "Selection rule from Cartan adjoint activity on published projector images; not Young-tableau CG."
+  },
+  "channels": [
+    {
+      "channel": "45",
+      "status": "OPEN_210_CHANNEL_45_OFF_SINGLET_SM_QN_READY__CG_OPEN",
+      "n_modes": 207,
+      "n_Q_neutral": 0,
+      "n_Q_charged": 207,
+      "Q_em_activity_min": 0.2264827845757252,
+      "Q_em_activity_max": 0.8948138896820146,
+      "bucket_counts": {
+        "mixed__Qcharged": 68,
+        "so6_color__Qcharged": 10,
+        "so6_so4_cross__Qcharged": 129
+      },
+      "all_Q_charged": true
+    },
+    {
+      "channel": "54",
+      "status": "OPEN_210_CHANNEL_54_OFF_SINGLET_SM_QN_READY__CG_OPEN",
+      "n_modes": 207,
+      "n_Q_neutral": 0,
+      "n_Q_charged": 207,
+      "Q_em_activity_min": 0.2428490388279545,
+      "Q_em_activity_max": 0.831026674695421,
+      "bucket_counts": {
+        "mixed__Qcharged": 115,
+        "so4_weak__Qcharged": 3,
+        "so6_color__Qcharged": 28,
+        "so6_so4_cross__Qcharged": 61
+      },
+      "all_Q_charged": true
+    },
+    {
+      "channel": "210",
+      "status": "OPEN_210_CHANNEL_210_OFF_SINGLET_SM_QN_READY__CG_OPEN",
+      "n_modes": 207,
+      "n_Q_neutral": 0,
+      "n_Q_charged": 207,
+      "Q_em_activity_min": 0.5921685967690652,
+      "Q_em_activity_max": 0.9083115188671467,
+      "bucket_counts": {
+        "so6_so4_cross__Qcharged": 207
+      },
+      "all_Q_charged": true
+    }
+  ],
+  "implications": {
+    "em_neutral_light_singlet_seed_from_45_54_210_off_singlet": false,
+    "may_feed_charged_sector_diagnostics_only": true,
+    "schur_A_C_light_singlet_hunt_unaffected_by_these_channels": true,
+    "mode_cg_still_required_for_charged_mass_diagonals": true
+  },
+  "flags": {
+    "selection_rule_ready": true,
+    "cg_120_320_1050_4125_invented": false,
+    "whole_model_validated": false,
+    "whole_model_excluded": false
+  },
+  "remaining_blockers": {
+    "off_singlet_mode_by_mode_sm_irrep_cg": true,
+    "missing_cg_120_320_1050_4125": true,
+    "full_nonsusy_vacuum_hessian": true
+  },
+  "verdict": "Off-singlet published-projector images (45/54/210): all 3\u00d7207 modes Q-charged; no EM-neutral light-singlet seed from these channels. Mode CG and 120/320/1050/4125 remain OPEN. Theory remains BLOCKED."
+}
