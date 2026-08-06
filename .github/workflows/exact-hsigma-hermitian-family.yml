@@ -43,17 +43,14 @@ jobs:
       - name: Print upstream portal diagnostics
         run: |
           python - <<'PY'
-          import json
           import next_gen_triplet_portal_norm_square_gate_v20 as upstream
 
           report = upstream.build_report()
-          print(json.dumps({
-              'status': report.get('status'),
-              'n_failed': report.get('n_failed'),
-              'failures': report.get('failures'),
-              'checks': report.get('checks'),
-              'upstream_status': report.get('upstream_status'),
-          }, indent=2))
+          print('UPSTREAM_STATUS=', repr(report.get('status')))
+          print('UPSTREAM_N_FAILED=', repr(report.get('n_failed')))
+          print('UPSTREAM_FAILURES=', repr(report.get('failures')))
+          print('UPSTREAM_CHECKS=', repr(report.get('checks')))
+          print('UPSTREAM_CHAIN=', repr(report.get('upstream_status')))
           PY
 
       - name: Run exact family tests
