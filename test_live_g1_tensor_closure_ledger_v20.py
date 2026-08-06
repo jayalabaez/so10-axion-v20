@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import g1_exact_declared_symmetry_character_census_v20 as census
 import live_g1_tensor_closure_ledger_v20 as ledger
 
 
@@ -21,6 +22,35 @@ def test_live_census_is_fully_covered():
     assert len(report['operator_orbits']) == 48
     assert sum(row['multiplicity'] for row in report['operator_orbits']) == 64
     assert sum(len(row['basis']) for row in report['operator_orbits']) == 64
+
+
+def test_every_canonical_conjugacy_orbit_maps_after_singlet_stripping():
+    """Guard the H/Hdag and 126bar/126bar-dag orientation boundary."""
+    orbits = census.orbits(census.census(False))
+    assert len(orbits) == 48
+    for orbit in orbits:
+        stripped_key = tuple(int(value) for value in orbit['orbit_key'][:5])
+        assert stripped_key in ledger.BASE_FAMILIES, {
+            'representative': orbit['representative'],
+            'members': orbit['members'],
+            'stripped_key': stripped_key,
+        }
+        assert (
+            ledger.BASE_FAMILIES[stripped_key]['multiplicity']
+            == orbit['so10_singlet_multiplicity']
+        )
+
+    # Explicitly lock the chiral orientations most vulnerable to accidental
+    # conjugation swaps when the full nine-field orbit key is canonicalized.
+    expected = {
+        (0, 0, 1, 2, 1): 'Hdag_Sigma2_Sigmadag',
+        (0, 0, 2, 2, 0): 'Hdag2_Sigma2',
+        (2, 0, 1, 1, 0): 'Phi2_Hdag_Sigma',
+        (1, 0, 1, 1, 0): 'Phi_Hdag_Sigma',
+        (1, 0, 1, 0, 1): 'Phi_Hdag_Sigmadag',
+    }
+    for key, family_id in expected.items():
+        assert ledger.BASE_FAMILIES[key]['id'] == family_id
 
 
 def test_sources_and_normalizations_are_complete():
