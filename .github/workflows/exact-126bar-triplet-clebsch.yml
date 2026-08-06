@@ -1,0 +1,71 @@
+name: exact-126bar-triplet-clebsch
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "exact_126bar_triplet_clebsch_v20.py"
+      - "test_exact_126bar_triplet_clebsch_v20.py"
+      - "direct_phi_h_sigmabar_tensor_v20.py"
+      - ".github/workflows/exact-126bar-triplet-clebsch.yml"
+  push:
+    branches: [main]
+    paths:
+      - "exact_126bar_triplet_clebsch_v20.py"
+      - "test_exact_126bar_triplet_clebsch_v20.py"
+      - "direct_phi_h_sigmabar_tensor_v20.py"
+      - ".github/workflows/exact-126bar-triplet-clebsch.yml"
+
+concurrency:
+  group: exact-126bar-triplet-clebsch-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  exact-five-form-triplet-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Compile exact tensor gate
+        run: |
+          python -m py_compile \
+            exact_126bar_triplet_clebsch_v20.py \
+            test_exact_126bar_triplet_clebsch_v20.py
+      - name: Run exact tensor tests
+        run: python -m unittest -v test_exact_126bar_triplet_clebsch_v20.py
+      - name: Generate exact branching and Clebsch report
+        run: python exact_126bar_triplet_clebsch_v20.py
+      - name: Assert physical scope and correction
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('EXACT_126BAR_TRIPLET_CLEBSCH_V20.json'))
+          assert r['n_failed']==0, r['failures']
+          assert r['overall_state']=='PARTIAL'
+          assert r['flag']['exact_126bar_weight_branching_derived']
+          assert r['flag']['canonical_triplet_kinetic_normalization_derived']
+          assert r['flag']['lambda4_triplet_portal_clebsches_derived']
+          assert r['flag']['published_magnitude_structure_independently_reproduced']
+          assert not r['flag']['legacy_symmetric_4x4_charge_sector_valid']
+          assert not r['flag']['full_diagonal_component_CG_complete']
+          assert not r['flag']['physical_triplet_spectrum_complete']
+          assert not r['flag']['exact_unique_proton_lifetime']
+          assert not r['flag']['whole_model_validated']
+          assert not r['flag']['whole_model_excluded']
+          sectors=r['corrected_nonsusy_charge_sectors']
+          assert len(sectors['Y_minus_1_over_3'])==2
+          assert len(sectors['Y_plus_1_over_3'])==3
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: exact-126bar-triplet-clebsch
+          path: |
+            EXACT_126BAR_TRIPLET_CLEBSCH_V20.json
+            EXACT_126BAR_TRIPLET_CLEBSCH_V20.md
