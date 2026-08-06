@@ -1,0 +1,99 @@
+name: next-gen-triplet-quadratic
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "exact_10h_squared_s_bterm_v20.py"
+      - "test_exact_10h_squared_s_bterm_v20.py"
+      - "next_gen_triplet_quadratic_gate_v20.py"
+      - "test_next_gen_triplet_quadratic_gate_v20.py"
+      - "next_gen_triplet_nambu_hessian_v20.py"
+      - "next_gen_triplet_tensor_gate_v20.py"
+      - "exact_126bar_triplet_clebsch_v20.py"
+      - "exact_210_126bar_cubic_clebsch_v20.py"
+      - ".github/workflows/next-gen-triplet-quadratic.yml"
+  push:
+    branches: [main]
+    paths:
+      - "exact_10h_squared_s_bterm_v20.py"
+      - "test_exact_10h_squared_s_bterm_v20.py"
+      - "next_gen_triplet_quadratic_gate_v20.py"
+      - "test_next_gen_triplet_quadratic_gate_v20.py"
+      - "next_gen_triplet_nambu_hessian_v20.py"
+      - "next_gen_triplet_tensor_gate_v20.py"
+      - "exact_126bar_triplet_clebsch_v20.py"
+      - "exact_210_126bar_cubic_clebsch_v20.py"
+      - ".github/workflows/next-gen-triplet-quadratic.yml"
+
+concurrency:
+  group: next-gen-triplet-quadratic-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  exact-quadratic-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Compile exact quadratic modules
+        run: |
+          python -m py_compile \
+            exact_10h_squared_s_bterm_v20.py \
+            test_exact_10h_squared_s_bterm_v20.py \
+            next_gen_triplet_quadratic_gate_v20.py \
+            test_next_gen_triplet_quadratic_gate_v20.py
+      - name: Run exact quadratic tests
+        run: |
+          python -m unittest -v \
+            test_exact_10h_squared_s_bterm_v20.py \
+            test_next_gen_triplet_quadratic_gate_v20.py
+      - name: Generate exact 10H squared S report
+        run: python exact_10h_squared_s_bterm_v20.py
+      - name: Generate authoritative quadratic report
+        run: python next_gen_triplet_quadratic_gate_v20.py
+      - name: Assert normalization and scope
+        run: |
+          python - <<'PY'
+          import json
+          hh=json.load(open('EXACT_10H_SQUARED_S_BTERM_V20.json'))
+          q=json.load(open('NEXT_GEN_TRIPLET_QUADRATIC_GATE_V20.json'))
+
+          assert hh['n_failed']==0, hh['failures']
+          assert hh['overall_state']=='CLOSED_SUBPROBLEM'
+          assert hh['flag']['exact_10h_squared_s_normalization_derived']
+          assert hh['flag']['exact_triplet_B_coefficient_derived']
+          assert hh['flag']['normalization_guess_removed']
+          assert hh['dimensional_contract']['kappa10']=='GeV'
+          assert hh['dimensional_contract']['B_entry']=='GeV^2'
+
+          assert q['n_failed']==0, q['failures']
+          assert q['overall_state']=='PARTIAL'
+          assert q['flag']['authoritative_next_gen_quadratic_subgate']
+          assert q['flag']['exact_10h_B_term_inserted']
+          assert q['flag']['exact_portal_and_cubic_blocks_inserted']
+          assert q['flag']['correct_5x5_Nambu_M2_used']
+          assert not q['flag']['free_10h_B_normalization_remaining']
+          assert not q['authoritative_input_contract']['free_b_hh_m2_parameter_exposed']
+          assert not q['flag']['complete_component_potential']
+          assert not q['flag']['physical_triplet_spectrum_complete']
+          assert not q['flag']['exact_unique_proton_lifetime']
+          assert not q['flag']['whole_model_validated']
+          assert not q['flag']['whole_model_excluded']
+          assert not q['flag']['empirical_discovery']
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: next-gen-triplet-quadratic
+          path: |
+            EXACT_10H_SQUARED_S_BTERM_V20.json
+            EXACT_10H_SQUARED_S_BTERM_V20.md
+            NEXT_GEN_TRIPLET_QUADRATIC_GATE_V20.json
+            NEXT_GEN_TRIPLET_QUADRATIC_GATE_V20.md
