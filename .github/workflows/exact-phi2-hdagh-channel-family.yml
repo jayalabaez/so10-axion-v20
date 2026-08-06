@@ -7,12 +7,14 @@ on:
       - 'test_exact_phi2_hdagh_channel_family_v20.py'
       - 'exact_h10_self_quartic_family_v20.py'
       - 'test_exact_h10_self_quartic_family_v20.py'
+      - 'exact_phi_hdag_sigmabar_cubic_audit_v20.py'
+      - 'test_exact_phi_hdag_sigmabar_cubic_audit_v20.py'
       - '.github/workflows/exact-phi2-hdagh-channel-family.yml'
 
 jobs:
   exact-g1-small-families:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -24,14 +26,17 @@ jobs:
         run: |
           python -m py_compile exact_phi2_hdagh_channel_family_v20.py test_exact_phi2_hdagh_channel_family_v20.py
           python -m py_compile exact_h10_self_quartic_family_v20.py test_exact_h10_self_quartic_family_v20.py
+          python -m py_compile exact_phi_hdag_sigmabar_cubic_audit_v20.py test_exact_phi_hdag_sigmabar_cubic_audit_v20.py
       - name: Run exact family tests
         run: |
           pytest -q test_exact_phi2_hdagh_channel_family_v20.py
           pytest -q test_exact_h10_self_quartic_family_v20.py
+          pytest -q test_exact_phi_hdag_sigmabar_cubic_audit_v20.py
       - name: Generate fresh certificates
         run: |
           python exact_phi2_hdagh_channel_family_v20.py > /tmp/exact_phi2_hdagh_stdout.json
           python exact_h10_self_quartic_family_v20.py > /tmp/exact_h10_self_quartic_stdout.json
+          python exact_phi_hdag_sigmabar_cubic_audit_v20.py > /tmp/exact_phi_hdag_sigmabar_stdout.json
       - name: Assert closure and fail-closed scope
         run: |
           python - <<'PY'
@@ -48,8 +53,16 @@ jobs:
           assert h10['flag']['h10_self_quartic_count_closed'] is True
           assert h10['flag']['h10_isolated_quartic_BFB_cone_closed'] is True
           assert h10['flag']['complete_mixed_invariant_ring'] is False
-          assert h10['flag']['whole_model_validated'] is False
-          assert h10['flag']['empirical_discovery'] is False
+
+          cubic = json.loads(Path('EXACT_PHI_HDAG_SIGMABAR_CUBIC_AUDIT_V20.json').read_text())
+          assert cubic['n_failed'] == 0, cubic['failures']
+          assert cubic['flag']['operator_exists_and_is_declared_symmetry_allowed'] is True
+          assert cubic['flag']['operator_catalogue_currently_incomplete'] is True
+          assert cubic['flag']['p_DeltaR_tadpole_from_operator'] is False
+          assert cubic['flag']['p_DeltaR_mixed_Hessian_changed_for_nonzero_coefficient'] is True
+          assert cubic['flag']['complete_mixed_invariant_ring'] is False
+          assert cubic['flag']['whole_model_validated'] is False
+          assert cubic['flag']['empirical_discovery'] is False
           PY
       - uses: actions/upload-artifact@v4
         with:
@@ -59,3 +72,5 @@ jobs:
             EXACT_PHI2_HDAGH_CHANNEL_FAMILY_V20.md
             EXACT_H10_SELF_QUARTIC_FAMILY_V20.json
             EXACT_H10_SELF_QUARTIC_FAMILY_V20.md
+            EXACT_PHI_HDAG_SIGMABAR_CUBIC_AUDIT_V20.json
+            EXACT_PHI_HDAG_SIGMABAR_CUBIC_AUDIT_V20.md
