@@ -176,8 +176,8 @@ def full_hessian_benchmark() -> dict[str, Any]:
     s_norm = 0.5 * (s_r.sq() + s_i.sq())
     phi_norm = 0.5 * (phi_r.sq() + phi_i.sq())
     mu = math.sqrt(2.0) * p["vH"] ** 2 / p["vS"]
-    f_re = y_re - mu * s_r / math.sqrt(2.0)
-    f_im = y_im + mu * s_i / math.sqrt(2.0)
+    f_re = y_re - (mu / math.sqrt(2.0)) * s_r
+    f_im = y_im + (mu / math.sqrt(2.0)) * s_i
 
     colour_lift = neutral.J.c(0.0, n)
     for i in range(10):
