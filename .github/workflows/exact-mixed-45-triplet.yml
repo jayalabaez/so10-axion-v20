@@ -1,0 +1,69 @@
+name: exact-mixed-45-triplet
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "exact_mixed_45_triplet_channel_v20.py"
+      - "test_exact_mixed_45_triplet_channel_v20.py"
+      - "exact_mixed_54_triplet_channel_v20.py"
+      - "exact_126bar_triplet_clebsch_v20.py"
+      - ".github/workflows/exact-mixed-45-triplet.yml"
+  push:
+    branches: [main]
+    paths:
+      - "exact_mixed_45_triplet_channel_v20.py"
+      - "test_exact_mixed_45_triplet_channel_v20.py"
+      - "exact_mixed_54_triplet_channel_v20.py"
+      - "exact_126bar_triplet_clebsch_v20.py"
+      - ".github/workflows/exact-mixed-45-triplet.yml"
+
+concurrency:
+  group: exact-mixed-45-triplet-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  exact-shared-45-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Compile exact 45 modules
+        run: |
+          python -m py_compile \
+            exact_mixed_45_triplet_channel_v20.py \
+            test_exact_mixed_45_triplet_channel_v20.py
+      - name: Run exact 45 tests
+        run: python -m unittest -v test_exact_mixed_45_triplet_channel_v20.py
+      - name: Generate exact 45 report
+        run: python exact_mixed_45_triplet_channel_v20.py
+      - name: Assert exact result and scope
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('EXACT_MIXED_45_TRIPLET_CHANNEL_V20.json'))
+          assert r['n_failed']==0, r['failures']
+          assert r['overall_state']=='CLOSED_SUBPROBLEM'
+          assert r['flag']['exact_shared_Hermitian_45_channel_closed']
+          assert r['flag']['PhiH_Hermitian_channel_family_complete']
+          assert r['flag']['PhiSigma_45_triplet_coefficients_derived']
+          assert r['H10_component_result']['210dag210_10dag10_Hermitian_family_complete']
+          assert not r['flag']['all_PhiSigma_anisotropic_channels_complete']
+          assert not r['flag']['physical_triplet_spectrum_complete']
+          assert not r['flag']['exact_unique_proton_lifetime']
+          assert not r['flag']['whole_model_validated']
+          assert not r['flag']['whole_model_excluded']
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: exact-mixed-45-triplet
+          path: |
+            EXACT_MIXED_45_TRIPLET_CHANNEL_V20.json
+            EXACT_MIXED_45_TRIPLET_CHANNEL_V20.md
