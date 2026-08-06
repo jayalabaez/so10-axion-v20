@@ -1,15 +1,16 @@
-name: exact-phi2-hdagh-channel-family
+name: exact-g1-small-families
 
 on:
   pull_request:
     paths:
       - 'exact_phi2_hdagh_channel_family_v20.py'
       - 'test_exact_phi2_hdagh_channel_family_v20.py'
-      - 'test_g1_g8_execution_roadmap_v20.py'
+      - 'exact_h10_self_quartic_family_v20.py'
+      - 'test_exact_h10_self_quartic_family_v20.py'
       - '.github/workflows/exact-phi2-hdagh-channel-family.yml'
 
 jobs:
-  exact-phi2-hdagh-channel-family:
+  exact-g1-small-families:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -19,28 +20,42 @@ jobs:
           python-version: '3.12'
       - name: Install dependencies
         run: python -m pip install --upgrade pip numpy mpmath pytest
-      - name: Compile gate
-        run: python -m py_compile exact_phi2_hdagh_channel_family_v20.py test_exact_phi2_hdagh_channel_family_v20.py
-      - name: Run exact channel tests
-        run: pytest -q test_exact_phi2_hdagh_channel_family_v20.py
-      - name: Generate fresh certificate
-        run: python exact_phi2_hdagh_channel_family_v20.py > /tmp/exact_phi2_hdagh_stdout.json
+      - name: Compile gates
+        run: |
+          python -m py_compile exact_phi2_hdagh_channel_family_v20.py test_exact_phi2_hdagh_channel_family_v20.py
+          python -m py_compile exact_h10_self_quartic_family_v20.py test_exact_h10_self_quartic_family_v20.py
+      - name: Run exact family tests
+        run: |
+          pytest -q test_exact_phi2_hdagh_channel_family_v20.py
+          pytest -q test_exact_h10_self_quartic_family_v20.py
+      - name: Generate fresh certificates
+        run: |
+          python exact_phi2_hdagh_channel_family_v20.py > /tmp/exact_phi2_hdagh_stdout.json
+          python exact_h10_self_quartic_family_v20.py > /tmp/exact_h10_self_quartic_stdout.json
       - name: Assert closure and fail-closed scope
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
-          report = json.loads(Path('EXACT_PHI2_HDAGH_CHANNEL_FAMILY_V20.json').read_text())
-          assert report['n_failed'] == 0, report['failures']
-          assert report['flag']['phi2_hdagh_channel_count_closed'] is True
-          assert report['flag']['all_three_all_component_tensor_maps_constructed'] is True
-          assert report['flag']['complete_mixed_invariant_ring'] is False
-          assert report['flag']['whole_model_validated'] is False
-          assert report['flag']['empirical_discovery'] is False
+
+          phi = json.loads(Path('EXACT_PHI2_HDAGH_CHANNEL_FAMILY_V20.json').read_text())
+          assert phi['n_failed'] == 0, phi['failures']
+          assert phi['flag']['phi2_hdagh_channel_count_closed'] is True
+          assert phi['flag']['complete_mixed_invariant_ring'] is False
+
+          h10 = json.loads(Path('EXACT_H10_SELF_QUARTIC_FAMILY_V20.json').read_text())
+          assert h10['n_failed'] == 0, h10['failures']
+          assert h10['flag']['h10_self_quartic_count_closed'] is True
+          assert h10['flag']['h10_isolated_quartic_BFB_cone_closed'] is True
+          assert h10['flag']['complete_mixed_invariant_ring'] is False
+          assert h10['flag']['whole_model_validated'] is False
+          assert h10['flag']['empirical_discovery'] is False
           PY
       - uses: actions/upload-artifact@v4
         with:
-          name: exact-phi2-hdagh-channel-family
+          name: exact-g1-small-families
           path: |
             EXACT_PHI2_HDAGH_CHANNEL_FAMILY_V20.json
             EXACT_PHI2_HDAGH_CHANNEL_FAMILY_V20.md
+            EXACT_H10_SELF_QUARTIC_FAMILY_V20.json
+            EXACT_H10_SELF_QUARTIC_FAMILY_V20.md
