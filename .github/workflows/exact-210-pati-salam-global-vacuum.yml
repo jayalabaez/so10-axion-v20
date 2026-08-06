@@ -1,0 +1,69 @@
+name: exact-210-pati-salam-global-vacuum
+
+on:
+  pull_request:
+    paths:
+      - 'exact_210_pati_salam_global_vacuum_v20.py'
+      - 'test_exact_210_pati_salam_global_vacuum_v20.py'
+      - '.github/workflows/exact-210-pati-salam-global-vacuum.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'exact_210_pati_salam_global_vacuum_v20.py'
+      - 'test_exact_210_pati_salam_global_vacuum_v20.py'
+      - '.github/workflows/exact-210-pati-salam-global-vacuum.yml'
+  workflow_dispatch:
+
+jobs:
+  exact-210-pati-salam-global-vacuum:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: python -m pip install --upgrade pip numpy scipy mpmath pytest
+
+      - name: Compile global-vacuum modules
+        run: >-
+          python -m py_compile
+          exact_210_pati_salam_global_vacuum_v20.py
+          test_exact_210_pati_salam_global_vacuum_v20.py
+
+      - name: Run bound, stabilizer and full-Hessian tests
+        run: >-
+          python -m pytest -q
+          test_exact_210_pati_salam_global_vacuum_v20.py
+
+      - name: Generate global-vacuum certificate
+        run: python exact_210_pati_salam_global_vacuum_v20.py
+
+      - name: Assert exact Pati-Salam vacuum and fail-closed scope
+        run: |
+          python - <<'PY'
+          import json
+
+          report = json.load(open('EXACT_210_PATI_SALAM_GLOBAL_VACUUM_V20.json'))
+          assert report['n_failed'] == 0, report['failures']
+          assert report['flag']['210_quartic_bounded_below'] is True
+          assert report['flag']['global_Pati_Salam_210_vacuum'] is True
+          assert report['flag']['physical_210_Hessian_complete_at_benchmark'] is True
+          assert report['flag']['complete_multi_field_potential'] is False
+          assert report['flag']['unique_full_vacuum'] is False
+          assert report['flag']['physical_full_model_Hessian_complete'] is False
+          assert report['flag']['full_physical_threshold_spectrum_complete'] is False
+          assert report['flag']['exact_unique_proton_lifetime'] is False
+          assert report['flag']['whole_model_validated'] is False
+          assert report['flag']['empirical_discovery'] is False
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: exact-210-pati-salam-global-vacuum
+          path: |
+            EXACT_210_PATI_SALAM_GLOBAL_VACUUM_V20.json
+            EXACT_210_PATI_SALAM_GLOBAL_VACUUM_V20.md
