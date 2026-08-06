@@ -6,8 +6,8 @@ on:
       - agent/coupled-p-delta-backreaction-scan
   pull_request:
     paths:
-      - coupled_p_delta_backreaction_scan_v20.py
-      - coupled_p_delta_canonical_search_v20.py
+      - exact_phisigma_126bar_minus_projectors_v20.py
+      - coupled_p_delta_physical_chirality_search_v20.py
       - .github/workflows/coupled-p-delta-backreaction-scan.yml
   workflow_dispatch:
 
@@ -24,37 +24,38 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
-      - name: Compile canonical coupled scan
-        run: python -m py_compile coupled_p_delta_backreaction_scan_v20.py coupled_p_delta_canonical_search_v20.py
-      - name: Execute canonical 462-real search
+      - name: Compile physical-chirality coupled scan
+        run: python -m py_compile exact_phisigma_126bar_minus_projectors_v20.py coupled_p_delta_physical_chirality_search_v20.py
+      - name: Execute physical-chirality 462-real search
         id: scan
         continue-on-error: true
         run: |
-          python coupled_p_delta_canonical_search_v20.py > /tmp/coupled-p-delta.log
+          python coupled_p_delta_physical_chirality_search_v20.py > /tmp/coupled-p-delta.log
           echo "exit_code=$?" >> "$GITHUB_OUTPUT"
       - name: Print search report
         if: always()
         run: |
-          test -f COUPLED_P_DELTA_CANONICAL_SEARCH_V20.json && cat COUPLED_P_DELTA_CANONICAL_SEARCH_V20.json || cat /tmp/coupled-p-delta.log
+          test -f COUPLED_P_DELTA_PHYSICAL_CHIRALITY_SEARCH_V20.json && cat COUPLED_P_DELTA_PHYSICAL_CHIRALITY_SEARCH_V20.json || cat /tmp/coupled-p-delta.log
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: coupled-p-delta-backreaction-scan
           path: |
-            COUPLED_P_DELTA_CANONICAL_SEARCH_V20.json
-            COUPLED_P_DELTA_CANONICAL_SEARCH_V20.md
+            COUPLED_P_DELTA_PHYSICAL_CHIRALITY_SEARCH_V20.json
+            COUPLED_P_DELTA_PHYSICAL_CHIRALITY_SEARCH_V20.md
           if-no-files-found: warn
       - name: Assert coupled local vacuum or fail closed
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
-          path = Path('COUPLED_P_DELTA_CANONICAL_SEARCH_V20.json')
+          path = Path('COUPLED_P_DELTA_PHYSICAL_CHIRALITY_SEARCH_V20.json')
           assert path.exists(), 'search report missing'
           report = json.loads(path.read_text())
           assert report['n_failed'] == 0, report['failures']
           scan = report['search']
-          assert report['canonical_conversion']['SigmaSigma_scale'] == 2.0
+          assert report['source_correction']['all_126bar_blocks_use_minus_i_basis'] is True
+          assert scan['Noether_H_times_orbit_residual'] < 1e-7
           assert scan['negative_modes'] == 0
           assert scan['zero_modes'] == 33
           assert scan['gauge_orbit_rank'] == 33
