@@ -45,7 +45,8 @@ jobs:
           assert benchmark['PS_to_SM_orbit_rank'] == 9
           assert benchmark['minimum_physical_eigenvalue'] > 0
           assert benchmark['boundedness_certificate']['strict_mixed_quartic_margin'] > 0
-          assert report['flag']['physical_126bar_chirality'] is True
+          assert report['source_correction']['physical_126bar_chirality'] == '-i'
+          assert report['source_correction']['legacy_plus_i_mixed_export_used'] is False
           assert report['flag']['fixed_P_second_stage_stabilized'] is True
           assert report['flag']['complete_multifield_model'] is False
           assert report['flag']['physical_threshold_spectrum_complete'] is False
