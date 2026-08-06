@@ -1,0 +1,111 @@
+{
+  "status": "PROMOTE_PAW_FREE_EXTREMA_PARTIAL",
+  "overall_state": "BLOCKED",
+  "n_checks": 10,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "paw_upstream_green": true,
+    "minimize_no_soft_ran": true,
+    "minimize_with_soft_ran": true,
+    "selected_potential_finite": true,
+    "with_soft_near_selected": true,
+    "promoted_hessian_psd_documented": true,
+    "hEW_fixed_physical": true,
+    "isotropic_S_Phi17_residual_kept": true,
+    "cg_not_invented": true,
+    "whole_model_not_overclaimed": true
+  },
+  "free_fields": [
+    "p_210",
+    "a_210",
+    "omega_210",
+    "DeltaR_126bar",
+    "S_PQ",
+    "Phi17_X"
+  ],
+  "fixed": {
+    "H10_EW": 174.0,
+    "lam4": 0.0
+  },
+  "selected_targets": {
+    "p_210": 1983512959779626.5,
+    "a_210": 2975269439669439.5,
+    "omega_210": 4958782399449066.0,
+    "DeltaR_126bar": 631385523052.4453,
+    "H10_EW": 174.0,
+    "S_PQ": 631385523052.4453,
+    "Phi17_X": 1e+17
+  },
+  "V_selected_GeV4": 3.7503829771764793e+67,
+  "soft_dm2_free_GeV2": {
+    "p_210": -2.108814111097908e+32,
+    "a_210": -2.093366047456146e+32,
+    "omega_210": -2.0989023629657436e+32,
+    "DeltaR_126bar": -0.0,
+    "S_PQ": -0.0,
+    "Phi17_X": -1.5000747521624152e+34
+  },
+  "free_minimize_no_soft": {
+    "success": true,
+    "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+    "nfev": 14,
+    "V_GeV4": 6.000612763796205e+64,
+    "x": {
+      "p_210": 396702591955925.3,
+      "a_210": 595053887933887.9,
+      "omega_210": 991756479889813.2,
+      "DeltaR_126bar": 631385523052.4453,
+      "S_PQ": 631385523052.4453,
+      "Phi17_X": 2e+16,
+      "H10_EW": 174.0
+    },
+    "rel_shift_from_selected": {
+      "p_210": -0.8,
+      "a_210": -0.7999999999999999,
+      "omega_210": -0.8,
+      "DeltaR_126bar": 0.0,
+      "S_PQ": 0.0,
+      "Phi17_X": -0.8
+    }
+  },
+  "free_minimize_with_soft": {
+    "success": true,
+    "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+    "nfev": 35,
+    "V_GeV4": -3.750382977230507e+67,
+    "x": {
+      "p_210": 1983512959779626.5,
+      "a_210": 2975269439669439.5,
+      "omega_210": 4958782399449066.0,
+      "DeltaR_126bar": 631385523052.4453,
+      "S_PQ": 631385523052.4453,
+      "Phi17_X": 9.99999997724797e+16,
+      "H10_EW": 174.0
+    },
+    "rel_shift_from_selected": {
+      "p_210": 0.0,
+      "a_210": 0.0,
+      "omega_210": 0.0,
+      "DeltaR_126bar": 0.0,
+      "S_PQ": 0.0,
+      "Phi17_X": -2.27520304e-09
+    }
+  },
+  "promoted_hessian_lam4_0_min_eig": -0.0003229190226382524,
+  "flags": {
+    "paw_free_extrema_ready": true,
+    "soft_anchors_selected_vacuum": true,
+    "isotropic_residual_S_Phi17_only": true,
+    "cg_120_320_1050_4125_invented": false,
+    "whole_model_validated": false,
+    "whole_model_excluded": false
+  },
+  "remaining_blockers": {
+    "published_linear_cg_for_S_Phi17_cross": true,
+    "full_ring_extrema": true,
+    "missing_cg_120_320_1050_4125": true,
+    "full_nonsusy_vacuum_hessian": true
+  },
+  "verdict": "Promoted (p,a,\u03c9) free extrema PARTIAL: \u03bb\u2084=0, hEW fixed; with-soft max |\u0394\u03c1/\u03c1|=2.275e-09; no-soft V=6.00061e+64, with-soft V=-3.75038e+67. S/\u03a6\u2081\u2087 isotropic residual kept. Theory remains BLOCKED."
+}

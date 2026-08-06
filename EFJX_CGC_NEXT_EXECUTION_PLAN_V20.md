@@ -343,6 +343,17 @@ soft ⊕ 210-norm ⊕ MIXED_126; `OPEN_126_54_LOCKING` retired as indefinite.
 `KEEP_ISOTROPIC_AWAITING_PAPER_LINEAR_CG` (norm portals Z17/PQ allowed; do not
 drop; refined linear CG needs external tables).
 
+## Completed Casimir residual ledger + PAW free extrema
+
+`so10_210_sym2_casimir_residual_projectors_v20.py` verifies C₂(210)=96
+(Slansky-calibrated combo generators), records residual Casimir blocks
+(5940/4125/8910 separable; 770⊕1050⊕1050̄ degenerate at C₂=144), and scores
+selected-vacuum known-channel + 1050-identity norms. No Young CG invented.
+
+`promote_paw_free_extrema_stationarity_v20.py` freely minimizes the promoted
+seven-amplitude potential at fixed hEW and λ₄=0; soft δm² anchors the
+selected vacuum (max |Δρ/ρ|≲10⁻⁹).
+
 `technically_natural_hierarchy_soft_matching_v20.py` quantifies
 `hEW/M_I`, `|δm²|/M_I²`, and matched `M_{1/2}` vs `|κ|M_I` at physical
 hEW (full stationarity / unique κ remain OPEN).
@@ -350,12 +361,11 @@ hEW (full stationarity / unique κ remain OPEN).
 ## Correct next goal
 
 **Immediate:** G2 still needs transcribed CG for 120/320/1050/4125 (external
-published tables only — do **not** invent). Off-singlet 45/54/210 Cartan
-labels + Q-charged selection rule READY; Schur-C alternatives READY; S/Φ₁₇
-isotropic residual kept as charge-legal. Without external CG, highest-leverage
-READY physics is Casimir Sym² residual projectors, PAW free extrema, antisym
-45 off-singlet census, and Goldstone D-term masses. Pure-210 identity CLOSED;
-mixed G1/G2 OPEN. Do **not** claim whole-model validation.
+published tables only — do **not** invent). Casimir residual ledger and PAW
+free extrema are READY. Next READY physics without invented CG: antisym 45
+off-singlet census, Goldstone D-term masses, READY-subset ring independence.
+Chirality to split 1050 vs 1050̄ still needs a published operator. Pure-210
+identity CLOSED; mixed G1/G2 OPEN. Do **not** claim whole-model validation.
 
 Theory completion still requires transcribed CG for 120/320/1050/4125 and
 off-singlet mixed-45 **CG coefficients** (G1), mode-by-mode diagonals (G2),

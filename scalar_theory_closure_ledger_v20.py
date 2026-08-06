@@ -97,6 +97,8 @@ def build_report() -> dict[str, Any]:
                 "off_singlet_qcharged_selection_rule: no EM-neutral seed from 45/54/210 projectors",
                 "schur_c_alternative_channels: soft⊕210-norm⊕MIXED_126; 54-locking retired",
                 "s_phi17_isotropic_residual_charge_gate: KEEP_ISOTROPIC_AWAITING_PAPER",
+                "so10_210_sym2_casimir_residual_projectors: C2 table READY; 770/1050 unsplit",
+                "promote_paw_free_extrema_stationarity: soft-anchored 7-amp min READY",
                 "source_210_quartic_norm_identity: selected vacuum 45/1050 densities ready",
                 "pure-210 Eq.(2.6) CLOSED upstream (so10_210_source_quartic_basis_v20)",
                 "OPEN_210_CHANNEL_1050 blocker superseded as incomplete residual",
@@ -129,6 +131,8 @@ def build_report() -> dict[str, Any]:
                 "off-singlet 210 SM Cartan QN READY (mode CG OPEN)",
                 "Schur-C alternatives READY (54-locking retired as C)",
                 "S/Φ17 residual KEEP_ISOTROPIC (charge-legal)",
+                "Casimir Sym² residual ledger PARTIAL (770/1050 degenerate)",
+                "PAW free extrema soft-anchored at selected vacuum",
             ],
             blockers=[
                 "full PS/SM Clebsch projection of every invariant (G2 CLOSED bar)",

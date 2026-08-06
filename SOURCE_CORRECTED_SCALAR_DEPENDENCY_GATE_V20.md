@@ -29,7 +29,7 @@ The pure-210 quartic basis and its p/a/omega restriction are now closed in a sou
 
 ## Required execution order
 
-1. Physics certificates READY (Q-charged rule, Schur-C alternatives, S/Φ17 keep-isotropic). Still need transcribed 120/320/1050/4125 CG from external published tables only (do not invent). Next READY physics: Casimir Sym² residual projectors / PAW free extrema / Goldstone D-term masses — G1-G2 (partial)
+1. Casimir Sym² residual ledger + PAW free extrema READY. Still need transcribed 120/320/1050/4125 CG from external published tables only (do not invent). Next READY: antisym 45 off-singlet census / Goldstone D-term masses / READY-subset ring independence — G1-G2 (partial)
 2. Complete mixed 210+126bar+10+S invariant multiplicities and component CG maps — G1 and G2
 3. Rebuild full stationarity, BFB, competing extrema and gauge-projected Hessian — G3-G5 prerequisites
 4. Regenerate physical scalar/triplet thresholds and two-loop matching — G6-G7 prerequisites

@@ -1,0 +1,61 @@
+name: casimir-paw-physics-next
+
+on:
+  pull_request:
+    paths:
+      - so10_210_sym2_casimir_residual_projectors_v20.py
+      - promote_paw_free_extrema_stationarity_v20.py
+      - test_so10_210_sym2_casimir_residual_projectors_v20.py
+      - test_promote_paw_free_extrema_stationarity_v20.py
+      - .github/workflows/casimir-paw-physics-next.yml
+  workflow_dispatch:
+
+concurrency:
+  group: casimir-paw-physics-next-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  casimir-paw-physics-next:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Execute certificates
+        run: |
+          python so10_210_sym2_casimir_residual_projectors_v20.py --write
+          python promote_paw_free_extrema_stationarity_v20.py --write
+      - name: Focused regression tests
+        run: |
+          python -m unittest -v \
+            test_so10_210_sym2_casimir_residual_projectors_v20.py \
+            test_promote_paw_free_extrema_stationarity_v20.py
+      - name: Assert honest scientific scope
+        run: |
+          python - <<'PY'
+          import json
+          c=json.load(open('SO10_210_SYM2_CASIMIR_RESIDUAL_PROJECTORS_V20.json'))
+          assert c['status'].startswith('CASIMIR_RESIDUAL_SPECTRAL_PARTIAL')
+          assert c['n_failed']==0 and c['overall_state']=='BLOCKED'
+          assert c['flags']['770_1050_1050bar_casimir_degenerate']
+          assert not c['flags']['closes_full_1050_mode_cg']
+          p=json.load(open('PROMOTE_PAW_FREE_EXTREMA_STATIONARITY_V20.json'))
+          assert p['status']=='PROMOTE_PAW_FREE_EXTREMA_PARTIAL'
+          assert p['flags']['soft_anchors_selected_vacuum']
+          assert not p['flags']['whole_model_validated']
+          PY
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: casimir-paw-physics-next
+          path: |
+            SO10_210_SYM2_CASIMIR_RESIDUAL_PROJECTORS_V20.json
+            SO10_210_SYM2_CASIMIR_RESIDUAL_PROJECTORS_V20.md
+            PROMOTE_PAW_FREE_EXTREMA_STATIONARITY_V20.json
+            PROMOTE_PAW_FREE_EXTREMA_STATIONARITY_V20.md

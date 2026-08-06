@@ -1,0 +1,151 @@
+{
+  "status": "CASIMIR_RESIDUAL_SPECTRAL_PARTIAL__770_1050_BLOCK_DEGENERATE",
+  "overall_state": "BLOCKED",
+  "n_checks": 17,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "audit_upstream_green": true,
+    "n_generators_45": true,
+    "c2_210_target_96": true,
+    "c2_210_eigenvalue_near_96": true,
+    "c2_raw_spectrum_flat": true,
+    "c2_calib_factor_positive": true,
+    "residual_c2_144_degenerate_770_1050": true,
+    "residual_c2_176_is_5940": true,
+    "residual_c2_192_is_4125": true,
+    "residual_c2_224_is_8910": true,
+    "selected_vacuum_phi_unit": true,
+    "known_channel_norms_finite": true,
+    "1050_identity_nonnegative": true,
+    "cg_120_320_1050_4125_not_invented": true,
+    "770_1050_not_split_by_casimir": true,
+    "full_sym2_eigenspaces_not_falsely_claimed": true,
+    "whole_model_not_overclaimed": true
+  },
+  "convention": {
+    "C2_formula": "C\u2082(R)=8\u00b7T(R)\u00b745/dim(R)",
+    "C2_210": 96.0,
+    "source": "Slansky Table 42 Dynkin indices; Esposito gr-qc/9507053 Eq.(2.4)",
+    "scope": "Generator C\u2082 on 210 + residual Casimir table + vacuum norms; no full 22155 eigenspace densification"
+  },
+  "c2_on_210": {
+    "target": 96.0,
+    "raw_eigenvalue": 24.0,
+    "raw_spread": 0.0,
+    "slansky_calibration_factor": 4.0,
+    "eig_min": 96.0,
+    "eig_max": 96.0,
+    "max_abs_error": 0.0,
+    "n_generators": 45
+  },
+  "casimir_table": {
+    "known": {
+      "1": 0.0,
+      "45": 64.0,
+      "54": 80.0,
+      "210": 96.0
+    },
+    "residual_by_irrep": {
+      "770": {
+        "T": 308.0,
+        "dimension": 770,
+        "C2": 144.0
+      },
+      "1050": {
+        "T": 420.0,
+        "dimension": 1050,
+        "C2": 144.0
+      },
+      "1050bar": {
+        "T": 420.0,
+        "dimension": 1050,
+        "C2": 144.0
+      },
+      "4125": {
+        "T": 2200.0,
+        "dimension": 4125,
+        "C2": 192.0
+      },
+      "5940": {
+        "T": 2904.0,
+        "dimension": 5940,
+        "C2": 176.0
+      },
+      "8910": {
+        "T": 5544.0,
+        "dimension": 8910,
+        "C2": 224.0
+      }
+    },
+    "residual_spectral_blocks": {
+      "144.0": {
+        "irreps": [
+          "770",
+          "1050",
+          "1050bar"
+        ],
+        "dimension": 2870
+      },
+      "176.0": {
+        "irreps": [
+          "5940"
+        ],
+        "dimension": 5940
+      },
+      "192.0": {
+        "irreps": [
+          "4125"
+        ],
+        "dimension": 4125
+      },
+      "224.0": {
+        "irreps": [
+          "8910"
+        ],
+        "dimension": 8910
+      }
+    }
+  },
+  "selected_vacuum": {
+    "vevs_GeV": {
+      "p": 1983512959779626.5,
+      "a": 2975269439669439.5,
+      "omega": 4958782399449066.0
+    },
+    "known_channel_norms": {
+      "||(\u03a6\u03a6)_45||^2": 0.02542692576534313,
+      "||(\u03a6\u03a6)_54||^2": 0.00013932858461944317,
+      "||(\u03a6\u03a6)_210||^2": 0.039642766846633065,
+      "||(\u03a6\u03a6)_1050||^2_identity": 0.0009046248963443526,
+      "||\u03a6||^4": 0.9999999999999998
+    },
+    "densities_over_phi4": {
+      "||(\u03a6\u03a6)_45||^2 / ||\u03a6||^4": 0.025426925765343136,
+      "||(\u03a6\u03a6)_54||^2 / ||\u03a6||^4": 0.0001393285846194432,
+      "||(\u03a6\u03a6)_210||^2 / ||\u03a6||^4": 0.03964276684663307,
+      "||(\u03a6\u03a6)_1050||^2 / ||\u03a6||^4": 0.0009046248963443528
+    },
+    "rayleigh_C2_Sym_on_Phi_otimes_Phi": 191.99999999999997,
+    "residual_beyond_known_plus_1050_identity": 0.9338863539070598,
+    "X_frobenius": 0.9999999999999999,
+    "C2_Sym_X_frobenius": 196.72298441813365
+  },
+  "flags": {
+    "casimir_4125_5940_8910_table_ready": true,
+    "770_1050_1050bar_casimir_degenerate": true,
+    "1050_vs_1050bar_unsplit": true,
+    "closes_full_1050_mode_cg": false,
+    "cg_120_320_1050_4125_invented": false,
+    "whole_model_validated": false,
+    "whole_model_excluded": false
+  },
+  "remaining_blockers": {
+    "chirality_operator_to_split_1050_1050bar": true,
+    "higher_invariant_to_split_770_from_1050_block": true,
+    "missing_cg_120_320_1050_4125": true,
+    "full_sym2_lanczos_multiplicity_audit": true,
+    "full_nonsusy_vacuum_hessian": true
+  },
+  "verdict": "Casimir residual ledger PARTIAL: C\u2082(210)=96 verified; residual blocks 5940/4125/8910 have distinct C\u2082 (176/192/224); 770\u22951050\u22951050\u0304 share C\u2082=144 (unsplit). Selected-vacuum known channels + 1050 identity recorded; Rayleigh(C\u2082_Sym on \u03a6\u2297\u03a6)=192. No CG invented. Theory remains BLOCKED."
+}
