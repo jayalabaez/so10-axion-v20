@@ -44,7 +44,7 @@ class SourcePure210ReducedInsertionTests(unittest.TestCase):
         )
         self.assertTrue(
             self.report["remaining_blockers"][
-                "replace_isotropic_P_cross_proxy_with_published_linear_cg"
+                "published_linear_cg_for_S_Phi17_cross"
             ]
         )
 

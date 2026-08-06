@@ -1,7 +1,7 @@
 {
   "status": "PROMOTE_PAW_SPLIT_REDUCED_AMPLITUDES_PARTIAL",
   "overall_state": "BLOCKED",
-  "n_checks": 13,
+  "n_checks": 15,
   "n_failed": 0,
   "failures": [],
   "checks": {
@@ -14,6 +14,8 @@
     "selected_singlet_hessian_psd": true,
     "promoted_hessian_lam4_0_psd_mpmath": true,
     "pure210_block_psd": true,
+    "linear_cg_Delta_H10_matched_at_vacuum": true,
+    "eff_10_formula_matches_hilbert": true,
     "ray_proxy_consistent_with_insertion": true,
     "historical_five_amplitude_not_mutated": true,
     "mixed_cg_not_invented": true,
@@ -51,13 +53,40 @@
   "conventions": {
     "phi_norm2_cartesian": "p^2+a^2+omega^2",
     "stack_split": "a+omega+p = M_GUT (0.3+0.5+0.2)",
-    "P_cross_proxy": "historical \u039b_{P X} * (p^2+a^2+omega^2) * X^2",
+    "P_cross_Delta_H10": "\u03bb_eff\u00b7eff_126/eff_10 matched to historical \u039b_PX\u2016\u03a6\u2016\u00b2 at vacuum",
+    "P_cross_S_Phi17_residual": "historical \u039b_PX * (p^2+a^2+omega^2) * X^2",
     "soft_convention": "interaction soft on non-210 only; pure-210 quartic not soft-rematched",
+    "cross_convention": "\u0394/H10: published linear eff_126/eff_10 matched to historical \u039b_PX\u2016\u03a6\u2016\u00b2; S/\u03a617: isotropic \u2016\u03a6\u2016\u00b2 residual",
     "not_equated": [
       "P_210 = M_GUT (coarse)",
       "\u2016\u03a6\u2016 = sqrt(p^2+a^2+omega^2)",
       "Aulakh kinetic p^2+3a^2+6omega^2"
     ]
+  },
+  "linear_cg_matching": {
+    "phi_norm2": 3.737607478533047e+31,
+    "eff": {
+      "eff_10": 5419058183589262.0,
+      "eff_126": 9917564798898132.0
+    },
+    "channels": {
+      "DeltaR_126bar": {
+        "historical_Lambda_PX": 0.025,
+        "eff_key": "eff_126",
+        "eff_GeV": 9917564798898132.0,
+        "lambda_eff_matched": 94216865589532.27,
+        "X2_coeff_historical": 9.344018696332619e+29,
+        "X2_coeff_linear": 9.344018696332619e+29
+      },
+      "H10_EW": {
+        "historical_Lambda_PX": 0.0,
+        "eff_key": "eff_10",
+        "eff_GeV": 5419058183589262.0,
+        "lambda_eff_matched": 0.0,
+        "X2_coeff_historical": 0.0,
+        "X2_coeff_linear": 0.0
+      }
+    }
   },
   "ray_consistency_vs_insertion": {
     "phi_norm2": 3.737607478533047e+31,
@@ -87,19 +116,20 @@
     "eigenvalues_mpmath": [
       -0.0003229190226382524,
       3.737611063730649e+29,
-      1.8688042568309752e+30,
-      2.0717847881956343e+32,
-      2.1669162372816874e+32,
-      2.296694237183319e+32,
+      1.8688042572949574e+30,
+      2.0717847879965402e+32,
+      2.166916237082305e+32,
+      2.2966942369791846e+32,
       1.5000788006852274e+34
     ],
     "min_eig_mpmath": -0.0003229190226382524,
     "positive_definite": false,
     "positive_semidefinite": true,
     "psd_floor": 1.5000788006852274e+16,
-    "float64_min_eig": -92129862310846.05,
+    "float64_min_eig": 270255587859840.44,
     "float64_false_tachyon_documented": false,
-    "soft_convention": "interaction soft on non-210 only; pure-210 quartic not soft-rematched"
+    "soft_convention": "interaction soft on non-210 only; pure-210 quartic not soft-rematched",
+    "cross_convention": "\u0394/H10: published linear eff_126/eff_10 matched to historical \u039b_PX\u2016\u03a6\u2016\u00b2; S/\u03a617: isotropic \u2016\u03a6\u2016\u00b2 residual"
   },
   "singlet_span": {
     "bfb": {
@@ -121,7 +151,9 @@
   "flags": {
     "paw_split_promoted_into_reduced_amplitudes": true,
     "pure210_source_potential_wired": true,
-    "isotropic_P_cross_proxy_only": true,
+    "linear_cg_px_cross_for_Delta_H10": true,
+    "isotropic_P_cross_proxy_only": false,
+    "isotropic_residual_S_Phi17_only": true,
     "mixed_field_cg_invented": false,
     "g1_closed": false,
     "whole_model_validated": false,
@@ -129,9 +161,9 @@
   },
   "remaining_blockers": {
     "uv_fix_pure210_couplings_g45_g210_g1050_lam": true,
-    "replace_isotropic_P_cross_proxy_with_published_linear_cg": true,
+    "published_linear_cg_for_S_Phi17_cross": true,
     "mixed_field_invariants_and_cg": true,
     "full_component_hessian": true
   },
-  "verdict": "Promoted reduced amplitudes replace P_210 by (p,a,\u03c9) with the source-normalized pure-210 quartic and an isotropic \u2016\u03a6\u2016\u00b2 proxy for historical P\u2194X crosses. \u03bb\u2084=0 seven-amplitude Hessian min eig (mpmath)=-0.000322919 (PSD). Mixed G1 CG remains OPEN. Theory remains BLOCKED."
+  "verdict": "Promoted reduced amplitudes replace P_210 by (p,a,\u03c9) with source pure-210 V\u2084; \u0394/H\u2081\u2080 P\u2194X crosses use published linear eff_126/eff_10 (vacuum-matched to historical \u039b_PX\u2016\u03a6\u2016\u00b2); S/\u03a6\u2081\u2087 keep an isotropic residual. \u03bb\u2084=0 seven-amplitude Hessian min eig (mpmath)=-0.000322919 (PSD). Mixed G1 CG remains OPEN. Theory remains BLOCKED."
 }

@@ -29,7 +29,13 @@ class PromotePawSplitReducedAmplitudesTests(unittest.TestCase):
             self.report["promoted_hessian_lam4_0"]["positive_semidefinite"]
         )
         self.assertTrue(self.report["ray_consistency_vs_insertion"]["consistent"])
-
+        self.assertTrue(self.report["flags"]["linear_cg_px_cross_for_Delta_H10"])
+        self.assertFalse(self.report["flags"]["isotropic_P_cross_proxy_only"])
+        self.assertTrue(self.report["flags"]["isotropic_residual_S_Phi17_only"])
+        self.assertTrue(self.report["checks"]["linear_cg_Delta_H10_matched_at_vacuum"])
+        self.assertTrue(
+            self.report["remaining_blockers"]["published_linear_cg_for_S_Phi17_cross"]
+        )
 
 if __name__ == "__main__":
     unittest.main()

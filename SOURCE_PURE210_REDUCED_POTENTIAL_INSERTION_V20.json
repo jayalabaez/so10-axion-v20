@@ -140,10 +140,10 @@
     "whole_model_excluded": false
   },
   "remaining_blockers": {
-    "replace_isotropic_P_cross_proxy_with_published_linear_cg": true,
     "uv_fix_pure210_couplings_g45_g210_g1050_lam": true,
+    "published_linear_cg_for_S_Phi17_cross": true,
     "mixed_field_invariants_and_cg": true,
     "full_component_hessian": true
   },
-  "verdict": "With diagnostic unit channel couplings, selected-vacuum source densities give \u03bb_eff=0.0659743 and patched \u03bb_P=0.263897 (historical \u03bb_P=0.55). Patched reduced \u039b is PD/co-positive; pure-210 singlet span BFB holds; selected-singlet Hessian is PSD. \u03bb\u2084=0 five-amplitude Hessian min eig (mpmath)=15285.3 (PD). Couplings remain diagnostic; (p,a,\u03c9) promotion is in promote_paw_split_reduced_amplitudes_v20; mixed G1 OPEN. Theory remains BLOCKED."
+  "verdict": "With diagnostic unit channel couplings, selected-vacuum source densities give \u03bb_eff=0.0659743 and patched \u03bb_P=0.263897 (historical \u03bb_P=0.55). Patched reduced \u039b is PD/co-positive; pure-210 singlet span BFB holds; selected-singlet Hessian is PSD. \u03bb\u2084=0 five-amplitude Hessian min eig (mpmath)=15285.3 (PD). Couplings remain diagnostic; (p,a,\u03c9) promotion with \u0394/H10 linear CG is in promote_paw_split_reduced_amplitudes_v20; mixed G1 OPEN. Theory remains BLOCKED."
 }

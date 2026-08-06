@@ -5,17 +5,23 @@ Replaces the single radial witness amplitude ``P_210`` by the Aulakh PS
 singlets ``(p,a,ω)`` and wires the source-normalized pure-210 quartic
 ``identity_reduced_potential`` into that block. Non-210 amplitudes
 ``(Δ,H₁₀,S,Φ₁₇)`` keep their historical reduced self/cross quartics.
-Any historical ``P_210↔X`` cross is rewritten with the isotropic proxy
 
-    ‖Φ‖² = p² + a² + ω²
+Historical ``P_210↔X`` crosses are rewritten with published linear CG
+weights where available (same combinations as
+``hilbert_mixed_8comp_hessian_v20.eff_210_linear``):
 
-(declared; not a full mixed CG expansion). The λ₄=0 survival slice is the
-primary Hessian certificate (portal terms vanish).
+* ``Δ`` ← ``eff_126 = (ω+a)+p``
+* ``H₁₀`` ← ``eff_10 = √3(ω−a)+p``
+
+Coupling strengths are matched to the historical ``Λ_{PX}‖Φ‖²`` coefficient
+at the selected vacuum. ``S`` / ``Φ₁₇`` retain an isotropic ``‖Φ‖²`` residual
+(no published linear PS-singlet CG in-repo). The λ₄=0 survival slice is the
+primary Hessian certificate.
 
 Honesty
 -------
 * Diagnostic pure-210 couplings only (same unit probe as the insertion module).
-* Isotropic ‖Φ‖² proxy for P↔X crosses — not invented 120/320/1050/4125 CG.
+* Linear CG for Δ/H₁₀ only — not invented 120/320/1050/4125 tensors.
 * Soft convention matches the reduced 5-amplitude gate: interaction soft on
   non-210 only; pure-210 quartic is *not* soft-rematched at the selected vacuum.
 * Mixed G1 / full component Hessian remain OPEN.
@@ -26,6 +32,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 from pathlib import Path
 from typing import Any
 
@@ -34,6 +41,7 @@ import numpy as np
 
 import component_lift_210_126_10_v20 as clift
 import direct_phi_h_sigmabar_td_crosscheck_v20 as td
+import hilbert_mixed_8comp_hessian_v20 as hilbert
 import nonsusy_reduced_hessian_v20 as reduced
 import pure_210_ps_singlet_quartic_polynomials_v20 as singlet
 import scalar_vacuum_proton_decay_v20 as scalar_pd
@@ -53,6 +61,8 @@ PROMOTED_FIELDS = (
     "Phi17_X",
 )
 NON210 = ("DeltaR_126bar", "H10_EW", "S_PQ", "Phi17_X")
+# NON210 indices that use published linear CG (Δ, H10); S/Φ stay isotropic.
+ISOTROPIC_RESIDUAL_NON210_IDX = (2, 3)
 
 
 def promoted_targets(anchor: dict[str, Any]) -> dict[str, float]:
@@ -89,6 +99,45 @@ def non210_quartic_blocks(
     return lam_non, lam_cross
 
 
+def matched_linear_cg_strengths(
+    *,
+    p: float,
+    a: float,
+    omega: float,
+    lam_cross: np.ndarray,
+) -> dict[str, Any]:
+    """Match historical Λ_PX‖Φ‖² to λ_eff·eff at the selected vacuum."""
+    phi_norm2 = p * p + a * a + omega * omega
+    ef = hilbert.eff_210_linear(a=a, omega=omega, p=p)
+    # NON210: 0=Δ→eff_126, 1=H→eff_10
+    mapping = {
+        0: ("eff_126", "DeltaR_126bar"),
+        1: ("eff_10", "H10_EW"),
+    }
+    out: dict[str, Any] = {
+        "phi_norm2": float(phi_norm2),
+        "eff": {k: float(ef[k]) for k in ("eff_10", "eff_126")},
+        "channels": {},
+    }
+    for j, (eff_key, field) in mapping.items():
+        lam_hist = float(lam_cross[j])
+        eff_val = float(ef[eff_key])
+        # V_hist = Λ ‖Φ‖² X² ; V_lin = λ_eff eff X². Match X² coeffs at vacuum.
+        if abs(eff_val) < 1e-30:
+            lam_eff = 0.0
+        else:
+            lam_eff = lam_hist * phi_norm2 / eff_val
+        out["channels"][field] = {
+            "historical_Lambda_PX": lam_hist,
+            "eff_key": eff_key,
+            "eff_GeV": eff_val,
+            "lambda_eff_matched": float(lam_eff),
+            "X2_coeff_historical": float(lam_hist * phi_norm2),
+            "X2_coeff_linear": float(lam_eff * eff_val),
+        }
+    return out
+
+
 def potential_promoted(
     x: np.ndarray,
     *,
@@ -96,8 +145,9 @@ def potential_promoted(
     lam_non: np.ndarray,
     lam_cross: np.ndarray,
     params: dict[str, float],
+    lam_eff_fixed: dict[str, float] | None = None,
 ) -> float:
-    """V₄(pure-210) + historical non-210 quartics + isotropic P↔X crosses + V_int (λ₄=0)."""
+    """V₄(pure-210) + non-210 quartics + linear-CG / isotropic crosses + V_int (λ₄=0)."""
     p, a, w, delta, higgs, singlet_s, phi = (float(v) for v in x)
     v210 = singlet.identity_reduced_potential(
         p,
@@ -110,10 +160,24 @@ def potential_promoted(
     )
     non = np.array([delta, higgs, singlet_s, phi], dtype=float)
     non_sq = non * non
-    # V = 1/2 Σ_{ij} Λ_ij φ_i² φ_j²  on the non-210 block
     v_non = 0.5 * float(non_sq @ lam_non @ non_sq)
+
+    if lam_eff_fixed is None:
+        matched = matched_linear_cg_strengths(
+            p=p, a=a, omega=w, lam_cross=lam_cross
+        )
+        lam_eff_fixed = {
+            field: ch["lambda_eff_matched"]
+            for field, ch in matched["channels"].items()
+        }
+    ef = hilbert.eff_210_linear(a=a, omega=w, p=p)
+    v_cross = 0.0
+    for j, eff_key in ((0, "eff_126"), (1, "eff_10")):
+        field = NON210[j]
+        v_cross += float(lam_eff_fixed[field]) * float(ef[eff_key]) * non_sq[j]
     phi_norm2 = p * p + a * a + w * w
-    v_cross = float(np.dot(lam_cross, non_sq) * phi_norm2)
+    for j in ISOTROPIC_RESIDUAL_NON210_IDX:
+        v_cross += float(lam_cross[j]) * phi_norm2 * non_sq[j]
 
     kappa = float(params["kappa"])
     m_i = float(params["m_i"])
@@ -123,7 +187,6 @@ def potential_promoted(
         * (float(params["lambda_abs"]) - abs(float(params["lambda_phase"])))
         / (m_gut * m_gut)
     )
-    # λ₄=0 survival interactions (κ + locking only)
     v_int = (
         -kappa * m_i * (higgs * higgs) * singlet_s
         + q * (delta * delta) * (higgs * higgs) * (singlet_s * singlet_s)
@@ -143,9 +206,8 @@ def hessian_promoted_lam4_0(
 
     Soft δm² are rebuilt from the *interaction* gradient only (κ / locking),
     matching ``nonsusy_reduced_hessian_v20.high_precision_hessian``. Pure-210
-    quartic gradients are *not* soft-rematched — the selected vacuum is not a
-    critical point of diagnostic ``V_pure210``, and rematching it invents a
-    tachyon. The (p,a,ω) block is the numerical Hessian of ``V_pure210``.
+    quartic gradients are *not* soft-rematched. Δ/H₁₀ crosses use published
+    linear CG; S/Φ keep an isotropic residual.
     """
     p = float(targets["p_210"])
     a = float(targets["a_210"])
@@ -156,12 +218,9 @@ def hessian_promoted_lam4_0(
     phi = float(targets["Phi17_X"])
     non = np.array([delta, higgs, singlet_s, phi], dtype=float)
 
-    # --- (p,a,ω) block from V_pure210 ---
     paw_hess = insertion.selected_vacuum_singlet_hessian(
         {"p": p, "a": a, "omega": w}, **couplings
     )
-    # Rebuild physical 3×3 via the same scaled FD used there is already done;
-    # recompute explicitly for the assembled matrix.
     scale3 = max(abs(p), abs(a), abs(w), 1.0)
     y0 = np.array([p, a, w], dtype=float) / scale3
     eps = 1e-4
@@ -192,7 +251,6 @@ def hessian_promoted_lam4_0(
                 ) / (4.0 * eps * eps)
     h3 = h3y / (scale3 * scale3)
 
-    # --- non-210 quartic + interaction soft (λ₄=0) ---
     kappa = float(params["kappa"])
     m_i = float(params["m_i"])
     m_gut = float(params["m_gut"])
@@ -201,8 +259,6 @@ def hessian_promoted_lam4_0(
         * (float(params["lambda_abs"]) - abs(float(params["lambda_phase"])))
         / (m_gut * m_gut)
     )
-    # Indices in NON210: 0=Δ, 1=H, 2=S, 3=Φ
-    # Interaction gradient on non-210 (λ₄=0); Φ has none.
     grad_non = np.array(
         [
             2.0 * q * delta * higgs**2 * singlet_s**2,
@@ -232,20 +288,41 @@ def hessian_promoted_lam4_0(
     h4[1, 2] += -2.0 * kappa * m_i * higgs + 4.0 * q * higgs * singlet_s * delta**2
     h4[2, 1] = h4[1, 2]
 
-    # --- isotropic P↔X cross: V ⊃ Σ_j Λ_{P j} (p²+a²+ω²) X_j² ---
-    phi_norm2 = p * p + a * a + w * w
-    paw = np.array([p, a, w], dtype=float)
+    matched = matched_linear_cg_strengths(
+        p=p, a=a, omega=w, lam_cross=lam_cross
+    )
+    ef = hilbert.eff_210_linear(a=a, omega=w, p=p)
+    # Derivative order in PROMOTED[:3] = (p, a, omega)
+    d_eff = {
+        "eff_10": np.array(
+            [ef["d_eff_10_dp"], ef["d_eff_10_da"], ef["d_eff_10_dw"]], dtype=float
+        ),
+        "eff_126": np.array(
+            [ef["d_eff_126_dp"], ef["d_eff_126_da"], ef["d_eff_126_dw"]],
+            dtype=float,
+        ),
+    }
+
     h_cross_210 = np.zeros((3, 3), dtype=float)
     h_cross_mix = np.zeros((3, 4), dtype=float)
     h_cross_non = np.zeros((4, 4), dtype=float)
-    for j in range(4):
+
+    for j, eff_key in ((0, "eff_126"), (1, "eff_10")):
+        field = NON210[j]
+        lam_eff = matched["channels"][field]["lambda_eff_matched"]
+        xj = float(non[j])
+        eff_val = float(ef[eff_key])
+        alpha = d_eff[eff_key]
+        h_cross_non[j, j] += 2.0 * lam_eff * eff_val
+        h_cross_mix[:, j] += 2.0 * lam_eff * alpha * xj
+
+    phi_norm2 = p * p + a * a + w * w
+    paw = np.array([p, a, w], dtype=float)
+    for j in ISOTROPIC_RESIDUAL_NON210_IDX:
         lam = float(lam_cross[j])
         xj = float(non[j])
-        # ∂²/∂paw_i∂paw_k from Λ (p²+a²+ω²) X²: 2 Λ X² δ_ik
         h_cross_210 += np.eye(3) * (2.0 * lam * xj * xj)
-        # ∂²/∂paw_i∂X_j = 4 Λ paw_i X_j
         h_cross_mix[:, j] += 4.0 * lam * paw * xj
-        # ∂²/∂X_j² += 2 Λ (p²+a²+ω²)
         h_cross_non[j, j] += 2.0 * lam * phi_norm2
 
     hess = np.zeros((7, 7), dtype=float)
@@ -266,6 +343,7 @@ def hessian_promoted_lam4_0(
         "delta_m2_non210_GeV2": [float(v) for v in dm2_non],
         "pure210_block_min_eig": float(paw_hess["min_eig"]),
         "pure210_block_psd": bool(paw_hess["positive_semidefinite"]),
+        "linear_cg_matching": matched,
         "hessian": hess.tolist(),
         "eigenvalues_mpmath": eigs,
         "min_eig_mpmath": float(eigs[0]),
@@ -278,6 +356,10 @@ def hessian_promoted_lam4_0(
         ),
         "soft_convention": (
             "interaction soft on non-210 only; pure-210 quartic not soft-rematched"
+        ),
+        "cross_convention": (
+            "Δ/H10: published linear eff_126/eff_10 matched to historical Λ_PX‖Φ‖²; "
+            "S/Φ17: isotropic ‖Φ‖² residual"
         ),
     }
 
@@ -295,8 +377,6 @@ def ray_consistency(
     rho2 = p * p + a * a + w * w
     v = singlet.identity_reduced_potential(p, a, w, **couplings)
     proxy = 0.25 * lambda_p_source * (rho2 * rho2)
-    # Densities on the unit ray give λ_eff ρ⁴; insertion identifies λ_P=4λ_eff with
-    # P~‖Φ‖, so V ≈ (λ_P/4) ρ⁴. Residual relative to that proxy:
     rel = abs(v - proxy) / max(abs(proxy), 1.0)
     return {
         "phi_norm2": rho2,
@@ -350,6 +430,12 @@ def build_report() -> dict[str, Any]:
         },
         **couplings,
     )
+    matched = hess["linear_cg_matching"]
+    match_ok = all(
+        abs(ch["X2_coeff_historical"] - ch["X2_coeff_linear"])
+        <= 1e-9 * max(1.0, abs(ch["X2_coeff_historical"]))
+        for ch in matched["channels"].values()
+    )
 
     checks = {
         "upstream_source_pure210_insertion_green": ins.get("n_failed", 1) == 0,
@@ -369,6 +455,16 @@ def build_report() -> dict[str, Any]:
         "selected_singlet_hessian_psd": singlet_hess["positive_semidefinite"],
         "promoted_hessian_lam4_0_psd_mpmath": hess["positive_semidefinite"],
         "pure210_block_psd": hess["pure210_block_psd"],
+        "linear_cg_Delta_H10_matched_at_vacuum": match_ok,
+        "eff_10_formula_matches_hilbert": abs(
+            matched["eff"]["eff_10"]
+            - (
+                math.sqrt(3.0)
+                * (targets["omega_210"] - targets["a_210"])
+                + targets["p_210"]
+            )
+        )
+        < 1e-9 * max(1.0, abs(matched["eff"]["eff_10"])),
         "ray_proxy_consistent_with_insertion": ray["consistent"],
         "historical_five_amplitude_not_mutated": abs(
             float(quartic5[0, 0]) - 0.55
@@ -397,14 +493,19 @@ def build_report() -> dict[str, Any]:
         "conventions": {
             "phi_norm2_cartesian": "p^2+a^2+omega^2",
             "stack_split": "a+omega+p = M_GUT (0.3+0.5+0.2)",
-            "P_cross_proxy": "historical Λ_{P X} * (p^2+a^2+omega^2) * X^2",
+            "P_cross_Delta_H10": (
+                "λ_eff·eff_126/eff_10 matched to historical Λ_PX‖Φ‖² at vacuum"
+            ),
+            "P_cross_S_Phi17_residual": "historical Λ_PX * (p^2+a^2+omega^2) * X^2",
             "soft_convention": hess["soft_convention"],
+            "cross_convention": hess["cross_convention"],
             "not_equated": [
                 "P_210 = M_GUT (coarse)",
                 "‖Φ‖ = sqrt(p^2+a^2+omega^2)",
                 "Aulakh kinetic p^2+3a^2+6omega^2",
             ],
         },
+        "linear_cg_matching": matched,
         "ray_consistency_vs_insertion": ray,
         "promoted_hessian_lam4_0": {
             "fields": list(PROMOTED_FIELDS),
@@ -420,6 +521,7 @@ def build_report() -> dict[str, Any]:
                 "float64_false_tachyon_documented"
             ],
             "soft_convention": hess["soft_convention"],
+            "cross_convention": hess["cross_convention"],
         },
         "singlet_span": {
             "bfb": singlet_bfb,
@@ -428,7 +530,9 @@ def build_report() -> dict[str, Any]:
         "flags": {
             "paw_split_promoted_into_reduced_amplitudes": not bool(failures),
             "pure210_source_potential_wired": True,
-            "isotropic_P_cross_proxy_only": True,
+            "linear_cg_px_cross_for_Delta_H10": True,
+            "isotropic_P_cross_proxy_only": False,
+            "isotropic_residual_S_Phi17_only": True,
             "mixed_field_cg_invented": False,
             "g1_closed": False,
             "whole_model_validated": False,
@@ -436,14 +540,15 @@ def build_report() -> dict[str, Any]:
         },
         "remaining_blockers": {
             "uv_fix_pure210_couplings_g45_g210_g1050_lam": True,
-            "replace_isotropic_P_cross_proxy_with_published_linear_cg": True,
+            "published_linear_cg_for_S_Phi17_cross": True,
             "mixed_field_invariants_and_cg": True,
             "full_component_hessian": True,
         },
         "verdict": (
-            "Promoted reduced amplitudes replace P_210 by (p,a,ω) with the "
-            "source-normalized pure-210 quartic and an isotropic ‖Φ‖² proxy for "
-            f"historical P↔X crosses. λ₄=0 seven-amplitude Hessian min eig "
+            "Promoted reduced amplitudes replace P_210 by (p,a,ω) with source "
+            "pure-210 V₄; Δ/H₁₀ P↔X crosses use published linear eff_126/eff_10 "
+            "(vacuum-matched to historical Λ_PX‖Φ‖²); S/Φ₁₇ keep an isotropic "
+            f"residual. λ₄=0 seven-amplitude Hessian min eig "
             f"(mpmath)={hess['min_eig_mpmath']:.6g} "
             f"({'PSD' if hess['positive_semidefinite'] else 'NOT PSD'}). "
             "Mixed G1 CG remains OPEN. Theory remains BLOCKED."
@@ -458,8 +563,9 @@ def write_report(report: dict[str, Any]) -> None:
         "# Promote (p,a,ω) split into reduced amplitudes — v20\n\n"
         f"**Status:** `{report['status']}`\n\n"
         f"- Fields: `{', '.join(report['promoted_fields'])}`\n"
+        f"- Cross: `{hess['cross_convention']}`\n"
         f"- λ₄=0 Hessian min eig (mpmath): `{hess['min_eig_mpmath']}`\n"
-        f"- PD: `{hess['positive_definite']}`\n\n"
+        f"- PSD: `{hess['positive_semidefinite']}`\n\n"
         + report["verdict"]
         + "\n",
         encoding="utf-8",

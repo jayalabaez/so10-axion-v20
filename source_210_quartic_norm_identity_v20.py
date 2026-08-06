@@ -141,7 +141,7 @@ def build_report(*, n_ps: int = 32, seed: int = 21026) -> dict[str, Any]:
             "whole_model_excluded": False,
         },
         "remaining_blockers": {
-            "replace_isotropic_P_cross_proxy_with_published_linear_cg": True,
+            "published_linear_cg_for_S_Phi17_cross": True,
             "missing_cg_120_320_1050_4125": True,
             "full_mixed_rep_invariant_ring_G1": True,
         },
@@ -149,10 +149,9 @@ def build_report(*, n_ps: int = 32, seed: int = 21026) -> dict[str, Any]:
             "On the selected (p,a,ω) vacuum the source-normalized pure-210 basis "
             f"gives ||45||²/||Φ||⁴={vac_dens['||(ΦΦ)_45||^2 / ||Φ||^4']:.6g} and "
             f"||1050||²/||Φ||⁴={vac_dens['||(ΦΦ)_1050||^2 / ||Φ||^4']:.6g}. "
-            "Densities are inserted into the reduced P_210 proxy by "
-            "source_pure210_reduced_potential_insertion_v20; (p,a,ω) promotion "
-            "is in promote_paw_split_reduced_amplitudes_v20. Mixed G1 remains OPEN. "
-            "Theory remains BLOCKED."
+            "Densities feed source_pure210_reduced_potential_insertion_v20 and "
+            "promote_paw_split_reduced_amplitudes_v20 (Δ/H10 linear CG). "
+            "Mixed G1 remains OPEN. Theory remains BLOCKED."
         ),
     }
 

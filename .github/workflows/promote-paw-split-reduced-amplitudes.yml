@@ -46,6 +46,9 @@ jobs:
           assert r['flags']['paw_split_promoted_into_reduced_amplitudes'], r
           assert len(r['promoted_fields'])==7 and 'P_210' not in r['promoted_fields'], r
           assert r['promoted_hessian_lam4_0']['positive_semidefinite'], r
+          assert r['flags']['linear_cg_px_cross_for_Delta_H10'], r
+          assert not r['flags']['isotropic_P_cross_proxy_only'], r
+          assert r['flags']['isotropic_residual_S_Phi17_only'], r
           assert not r['flags']['mixed_field_cg_invented'], r
           assert not r['flags']['whole_model_validated'], r
           assert not r['flags']['g1_closed'], r

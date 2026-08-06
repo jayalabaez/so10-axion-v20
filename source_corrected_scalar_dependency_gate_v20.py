@@ -90,10 +90,11 @@ def build_report() -> dict[str, Any]:
         {
             "order": 1,
             "task": (
-                "Replace isotropic ‖Φ‖² P↔X proxy with published linear CG "
-                "(eff_10/eff_126) after (p,a,ω) promotion; then mixed G1"
+                "Continue mixed G1 / READY-subspace BFB after (p,a,ω) promotion "
+                "with published Δ/H10 linear CG; retire residual S/Φ17 isotropic "
+                "P↔X only with published input"
             ),
-            "closes": "G3-G5 prerequisites (partial)",
+            "closes": "G1-G5 prerequisites (partial)",
             "upstream_promotion": "promote_paw_split_reduced_amplitudes_v20",
             "upstream_insertion": "source_pure210_reduced_potential_insertion_v20",
             "selected_vacuum_45_density": selected["selected_vacuum"][
