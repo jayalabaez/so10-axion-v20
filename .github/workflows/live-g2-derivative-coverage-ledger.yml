@@ -1,0 +1,130 @@
+name: live-g2-derivative-coverage-ledger
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - live_g2_derivative_coverage_ledger_v20.py
+      - test_live_g2_derivative_coverage_ledger_v20.py
+      - live_g2_exact_quadratic_family_derivatives_v20.py
+      - live_g2_exact_portal_family_derivatives_v20.py
+      - live_g2_exact_remaining_cubic_derivatives_v20.py
+      - live_g2_exact_h10_self_quartic_derivatives_v20.py
+      - live_g2_exact_hsigma_hermitian_derivatives_v20.py
+      - live_g2_exact_phi2_hdagh_derivatives_v20.py
+      - live_g2_arbitrary_component_potential_values_v20.py
+      - live_g1_tensor_closure_ledger_v20.py
+      - .github/workflows/live-g2-derivative-coverage-ledger.yml
+  push:
+    branches: [main]
+    paths:
+      - live_g2_derivative_coverage_ledger_v20.py
+      - test_live_g2_derivative_coverage_ledger_v20.py
+      - live_g2_exact_quadratic_family_derivatives_v20.py
+      - live_g2_exact_portal_family_derivatives_v20.py
+      - live_g2_exact_remaining_cubic_derivatives_v20.py
+      - live_g2_exact_h10_self_quartic_derivatives_v20.py
+      - live_g2_exact_hsigma_hermitian_derivatives_v20.py
+      - live_g2_exact_phi2_hdagh_derivatives_v20.py
+      - live_g2_arbitrary_component_potential_values_v20.py
+      - live_g1_tensor_closure_ledger_v20.py
+      - .github/workflows/live-g2-derivative-coverage-ledger.yml
+
+concurrency:
+  group: live-g2-derivative-ledger-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  consolidated-derivative-coverage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 420
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt pytest
+      - name: Compile full derivative chain
+        run: |
+          python -m py_compile \
+            live_g2_exact_quadratic_family_derivatives_v20.py \
+            live_g2_exact_portal_family_derivatives_v20.py \
+            live_g2_exact_remaining_cubic_derivatives_v20.py \
+            live_g2_exact_h10_self_quartic_derivatives_v20.py \
+            live_g2_exact_hsigma_hermitian_derivatives_v20.py \
+            live_g2_exact_phi2_hdagh_derivatives_v20.py \
+            live_g2_derivative_coverage_ledger_v20.py \
+            test_live_g2_derivative_coverage_ledger_v20.py
+      - name: Run adapter and consolidated tests
+        run: |
+          python -m pytest -q \
+            test_live_g2_exact_quadratic_family_derivatives_v20.py \
+            test_live_g2_exact_portal_family_derivatives_v20.py \
+            test_live_g2_exact_remaining_cubic_derivatives_v20.py \
+            test_live_g2_exact_h10_self_quartic_derivatives_v20.py \
+            test_live_g2_exact_hsigma_hermitian_derivatives_v20.py \
+            test_live_g2_exact_phi2_hdagh_derivatives_v20.py \
+            test_live_g2_derivative_coverage_ledger_v20.py
+      - name: Generate derivative coverage certificate
+        run: python live_g2_derivative_coverage_ledger_v20.py --write
+      - name: Assert exact partition and fail-closed boundary
+        run: |
+          python - <<'PY'
+          import json
+
+          report=json.load(open('LIVE_G2_DERIVATIVE_COVERAGE_LEDGER_V20.json'))
+          assert report['n_failed']==0, report['failures']
+          c=report['coverage']
+          assert c['base_families_total']==18
+          assert c['base_families_implemented']==12
+          assert c['base_families_remaining']==6
+          assert c['directions_total']==64
+          assert 0<c['directions_implemented']<64
+          assert c['directions_remaining']>0
+          assert c['real_parameters_total']==91
+          assert 0<c['real_parameters_implemented']<91
+          assert c['real_parameters_remaining']>0
+          assert c['real_field_dimension']==486
+          assert c['symmetric_Hessian_entries']==118341
+          assert set(c['remaining_families'])=={
+              '126bar_self_projectors',
+              'unique_Hdag_Sigma2_Sigmadag',
+              'unique_Hdag2_Sigma2',
+              'Phi2_Sigma_projectors',
+              'Phi2_Hdag_Sigma_210_1050',
+              'Phi_self_quartics',
+          }
+          assert report['duplicate_family_owners']=={}
+          assert report['duplicate_direction_ids']==[]
+          assert report['missing_expected_direction_ids']==[]
+          assert report['unexpected_direction_ids']==[]
+          assert report['duplicate_parameter_ids']==[]
+          assert report['missing_expected_parameter_ids']==[]
+          assert report['unexpected_parameter_ids']==[]
+          assert report['maximum_direction_value_residual']<1e-9
+          shape=report['dense_shape_audit']
+          assert shape['bad_gradient_shapes']==[]
+          assert shape['bad_Hessian_shapes']==[]
+          assert shape['nonfinite_directions']==[]
+          assert shape['maximum_Hessian_asymmetry']<1e-9
+          audit=report['combined_directional_reconstruction']
+          assert audit['value_residual']<1e-8
+          assert audit['first_residual']<5e-7
+          assert audit['second_residual']<5e-6
+          assert report['flags']['twelve_full_coordinate_family_adapters_implemented']
+          assert not report['flags']['all_64_direction_gradients_complete']
+          assert not report['flags']['all_64_direction_Hessians_complete']
+          assert not report['flags']['G2_closed']
+          assert not report['flags']['whole_model_validated']
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-g2-derivative-coverage-ledger
+          path: |
+            LIVE_G2_DERIVATIVE_COVERAGE_LEDGER_V20.json
+            LIVE_G2_DERIVATIVE_COVERAGE_LEDGER_V20.md
