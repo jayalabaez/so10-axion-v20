@@ -1,0 +1,50 @@
+name: exact-declared-so10-z17-s-phi17-potential
+
+on:
+  pull_request:
+    paths:
+      - exact_declared_so10_z17_s_phi17_potential_v20.py
+      - test_exact_declared_so10_z17_s_phi17_potential_v20.py
+      - .github/workflows/exact-declared-so10-z17-s-phi17-potential.yml
+  push:
+    branches: [main]
+    paths:
+      - exact_declared_so10_z17_s_phi17_potential_v20.py
+      - test_exact_declared_so10_z17_s_phi17_potential_v20.py
+      - .github/workflows/exact-declared-so10-z17-s-phi17-potential.yml
+
+jobs:
+  exact-declared-so10-z17-s-phi17-potential:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: python -m pip install --upgrade pip numpy pytest
+      - name: Compile gate
+        run: python -m py_compile exact_declared_so10_z17_s_phi17_potential_v20.py test_exact_declared_so10_z17_s_phi17_potential_v20.py
+      - name: Run exact basis and Hessian tests
+        run: pytest -q test_exact_declared_so10_z17_s_phi17_potential_v20.py
+      - name: Generate certificate
+        run: python exact_declared_so10_z17_s_phi17_potential_v20.py --json exact_declared_so10_z17_s_phi17_potential_v20.json
+      - name: Assert completion and fail-closed scope
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('exact_declared_so10_z17_s_phi17_potential_v20.json'))
+          assert r['n_failed']==0, r['failures']
+          assert r['counts']['allowed_complex_monomials_dimension_le_4']==21
+          assert r['counts']['independent_hermitian_real_operators']==13
+          assert r['constructive_benchmark']['zero_modes']==1
+          assert r['constructive_benchmark']['negative_modes']==0
+          assert r['constructive_benchmark']['phi_phase_lifted']
+          assert not r['flag']['natural_phi17_hierarchy_explained']
+          assert not r['flag']['complete_multifield_model']
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: exact-declared-so10-z17-s-phi17-potential
+          path: exact_declared_so10_z17_s_phi17_potential_v20.json
