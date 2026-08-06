@@ -1,0 +1,71 @@
+name: exact-hsigma-45-closed-formula
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "exact_hsigma_45_background_hessian_v20.py"
+      - "exact_hsigma_45_closed_formula_v20.py"
+      - "test_exact_hsigma_45_closed_formula_v20.py"
+      - ".github/workflows/exact-hsigma-45-closed-formula.yml"
+  push:
+    branches: [main]
+    paths:
+      - "exact_hsigma_45_background_hessian_v20.py"
+      - "exact_hsigma_45_closed_formula_v20.py"
+      - "test_exact_hsigma_45_closed_formula_v20.py"
+      - ".github/workflows/exact-hsigma-45-closed-formula.yml"
+
+concurrency:
+  group: exact-hsigma-45-closed-formula-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  exact-closed-formula-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Compile exact formula modules
+        run: |
+          python -m py_compile \
+            exact_hsigma_45_closed_formula_v20.py \
+            test_exact_hsigma_45_closed_formula_v20.py
+      - name: Run exact formula tests
+        run: python -m unittest -v test_exact_hsigma_45_closed_formula_v20.py
+      - name: Generate exact formula report
+        run: python exact_hsigma_45_closed_formula_v20.py
+      - name: Assert closed formula and fail-closed scope
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('EXACT_HSIGMA_45_CLOSED_FORMULA_V20.json'))
+          assert r['n_failed']==0, r['failures']
+          assert r['overall_state']=='CLOSED_SUBPROBLEM'
+          assert r['flag']['exact_HSigma45_closed_formula']
+          assert r['checks']['closed_formula_matches_exact_tensor_Hessian']
+          assert r['checks']['independent_of_neutral_EW_background']
+          assert r['exact_triplet_formula']['Delta_A_u']=='diag(-lambda_HSigma45 v_R^2, 0)'
+          assert r['exact_triplet_formula']['Delta_A_v']=='diag(+lambda_HSigma45 v_R^2, 0, 0)'
+          assert r['exact_triplet_formula']['Delta_B']=='zero 2x3 matrix'
+          assert not r['flag']['all_HSigma_invariants_complete']
+          assert not r['flag']['complete_component_potential']
+          assert not r['flag']['physical_triplet_spectrum_complete']
+          assert not r['flag']['exact_unique_proton_lifetime']
+          assert not r['flag']['whole_model_validated']
+          assert not r['flag']['whole_model_excluded']
+          assert not r['flag']['empirical_discovery']
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: exact-hsigma-45-closed-formula
+          path: |
+            EXACT_HSIGMA_45_CLOSED_FORMULA_V20.json
+            EXACT_HSIGMA_45_CLOSED_FORMULA_V20.md
