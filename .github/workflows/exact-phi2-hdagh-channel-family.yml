@@ -1,0 +1,51 @@
+name: exact-phi2-hdagh-channel-family
+
+on:
+  pull_request:
+    paths:
+      - 'exact_phi2_hdagh_channel_family_v20.py'
+      - 'test_exact_phi2_hdagh_channel_family_v20.py'
+      - '.github/workflows/exact-phi2-hdagh-channel-family.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'exact_phi2_hdagh_channel_family_v20.py'
+      - 'test_exact_phi2_hdagh_channel_family_v20.py'
+      - '.github/workflows/exact-phi2-hdagh-channel-family.yml'
+
+jobs:
+  exact-phi2-hdagh-channel-family:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: python -m pip install --upgrade pip numpy mpmath pytest
+      - name: Compile gate
+        run: python -m py_compile exact_phi2_hdagh_channel_family_v20.py test_exact_phi2_hdagh_channel_family_v20.py
+      - name: Run exact channel tests
+        run: pytest -q test_exact_phi2_hdagh_channel_family_v20.py
+      - name: Generate fresh certificate
+        run: python exact_phi2_hdagh_channel_family_v20.py > /tmp/exact_phi2_hdagh_stdout.json
+      - name: Assert closure and fail-closed scope
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path('EXACT_PHI2_HDAGH_CHANNEL_FAMILY_V20.json').read_text())
+          assert report['n_failed'] == 0, report['failures']
+          assert report['flag']['phi2_hdagh_channel_count_closed'] is True
+          assert report['flag']['all_three_all_component_tensor_maps_constructed'] is True
+          assert report['flag']['complete_mixed_invariant_ring'] is False
+          assert report['flag']['whole_model_validated'] is False
+          assert report['flag']['empirical_discovery'] is False
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: exact-phi2-hdagh-channel-family
+          path: |
+            EXACT_PHI2_HDAGH_CHANNEL_FAMILY_V20.json
+            EXACT_PHI2_HDAGH_CHANNEL_FAMILY_V20.md
