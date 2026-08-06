@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Regression tests for the joint H10 cross-coupling Schur envelope."""
+"""Regression tests for the canonical joint H10 Schur envelope."""
 from __future__ import annotations
 
 import numpy as np
@@ -11,9 +11,25 @@ def test_joint_report_passes_fail_closed():
     report = mod.build_report()
     assert report["n_failed"] == 0, report["failures"]
     assert all(report["checks"].values())
+    assert report["flags"]["canonical_H_coordinate_normalization_enforced"]
     assert report["flags"]["joint_necessary_and_sufficient_local_bound"]
     assert report["flags"]["complete_G2_component_potential"] is False
     assert report["flags"]["whole_model_validated"] is False
+
+
+def test_canonical_coordinate_maps_reconstruct_complex_bilinears():
+    audit = mod.coordinate_reconstruction_audit()
+    assert max(audit.values()) < 1.0e-12
+
+
+def test_legacy_raw_h_block_is_rescaled_to_canonical_h():
+    audit = mod.cubic_unit_reconstruction_audit()
+    assert audit["maximum_abs_residual"] < 1.0e-12
+    assert audit["reconstructed_rank"] == audit["authoritative_rank"]
+    assert abs(
+        audit["legacy_raw_H_to_canonical_H_factor"] - 1.0 / np.sqrt(2.0)
+    ) < 1.0e-15
+    assert abs(audit["legacy_schur_to_canonical_schur_factor"] - 0.5) < 1.0e-15
 
 
 def test_six_real_coefficient_basis_blocks_are_constructed():
@@ -22,12 +38,6 @@ def test_six_real_coefficient_basis_blocks_are_constructed():
     assert basis["physical"].shape[0] == 6
     assert [row["name"] for row in basis["rows"]] == list(mod.COEFFICIENT_NAMES)
     assert all(row["gauge_residual"] < 1.0e-9 for row in basis["rows"])
-
-
-def test_complex_cubic_unit_matches_authoritative_block():
-    audit = mod.cubic_unit_reconstruction_audit()
-    assert audit["maximum_abs_residual"] < 1.0e-12
-    assert audit["reconstructed_rank"] == audit["authoritative_rank"]
 
 
 def test_direct_combination_matches_six_basis_expansion():
@@ -68,5 +78,7 @@ def test_critical_mass_separates_stable_flat_and_tachyonic_regions():
     assert above["spectrum"]["full_zero_modes"] == 33
     assert abs(equality["loewner_minimum"]) < 1.0e-7
     assert equality["spectrum"]["physical_zero_modes"] >= 1
+    assert equality["spectrum"]["full_zero_modes"] >= 34
     assert below["loewner_minimum"] < 0.0
     assert below["spectrum"]["physical_negative_modes"] >= 1
+    assert below["spectrum"]["full_negative_modes"] >= 1

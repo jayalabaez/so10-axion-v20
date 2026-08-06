@@ -1,41 +1,42 @@
 #!/usr/bin/env python3
-"""Joint 482-real Schur envelope for all selected H10 cross blocks.
+"""Canonical-coordinate joint Schur envelope for selected H10 cross blocks.
 
-At H=0 on the verified p+Delta_R vacuum, three complex operator coefficients
-produce old-field--H mixed Hessian blocks:
+At H=0 on the verified p+Delta_R background, three complex coefficients create
+old-field--H mixed Hessian blocks:
 
-* mu_D multiplies Phi Hdag Sigmabar + h.c.;
-* eta_210 multiplies the canonical 210 channel of Phi^2 H Sigmabar-dag+h.c.;
-* eta_1050 multiplies the canonical 1050 channel of that family.
+* mu_D for Phi Hdag Sigmabar + h.c.;
+* eta_210 for the canonical 210 channel of Phi^2 H Sigmabar-dag + h.c.;
+* eta_1050 for the canonical 1050 channel of that family.
 
-The complete selected-vacuum H-only block is supplied by
-``exact_complete_h10_selected_vacuum_mass_block_v20`` and includes both the
-Hermitian endomorphism and the holomorphic H^2 S/Phi17 B block.
+The old 462-real Hessian stores complex 126bar fluctuations as raw interleaved
+(Re sigma, Im sigma) coordinates. The complete H-only block instead uses the
+canonical real convention H=(x+i y)/sqrt(2), because
 
-Let A be the positive 429-dimensional physical Hessian of the verified
-210+126bar vacuum and B(c) the 429x20 mixed block, linear in the six real
-coefficient components
+    V(Hdag M H) = (1/2) (x,y)^T M_real (x,y).
 
-  c=(Re mu_D, Im mu_D, Re eta_210, Im eta_210,
-     Re eta_1050, Im eta_1050).
+Therefore an old-field--H block previously written in raw H coordinates must be
+divided by sqrt(2) before it is combined with the canonical H-only Hessian.
+Equivalently,
 
-The enlarged 449-dimensional physical quotient is positive definite iff
+    2 Re(Hdag A q) = (x,y)^T [sqrt(2) R_Hdag(A)] q,
+    2 Re(H^T   A q) = (x,y)^T [sqrt(2) R_H(A)] q.
 
-  L(c) = M_H - B(c)^T A^{-1} B(c)  > 0.
+This module enforces that convention explicitly and audits it by reconstructing
+the original complex bilinears. On the 429-dimensional physical old-field
+quotient, positivity of the enlarged 449-dimensional physical Hessian is then
+necessary and sufficient iff
 
-This module constructs the six basis blocks and the operator-valued quadratic
-Gram tensor G_rs, so
+    M_H - B(c)^T A_phys^{-1} B(c) > 0,
 
-  B(c)^T A^{-1}B(c) = sum_rs c_r c_s G_rs.
+where c contains the six real components of (mu_D, eta_210, eta_1050).
 
-The condition is exact and necessary-and-sufficient for this selected H=0
-local Hessian. It is not the nonzero electroweak vacuum or complete G2
-potential.
+This is a selected H=0 local-stability theorem. It is not the complete G2
+component potential, the electroweak-backreacted vacuum, a global minimum, or a
+whole-model validation.
 """
 from __future__ import annotations
 
 import argparse
-import itertools
 import json
 from functools import lru_cache
 from pathlib import Path
@@ -56,6 +57,7 @@ OUT_MD = ROOT / "EXACT_JOINT_H10_CROSS_SCHUR_STABILITY_V20.md"
 OLD_DIM = coupled.TOTAL_DIM
 H_REAL = 20
 FULL_DIM = OLD_DIM + H_REAL
+SQRT2 = float(np.sqrt(2.0))
 COEFFICIENT_NAMES = (
     "Re_mu_D",
     "Im_mu_D",
@@ -80,38 +82,98 @@ def _jsonable(value: Any) -> Any:
     return value
 
 
+def _complex_from_canonical_h(real_coordinates: np.ndarray) -> np.ndarray:
+    values = np.asarray(real_coordinates, dtype=float).reshape(-1)
+    return (values[0::2] + 1j * values[1::2]) / SQRT2
+
+
+def _complex_from_raw_interleaved(real_coordinates: np.ndarray) -> np.ndarray:
+    values = np.asarray(real_coordinates, dtype=float).reshape(-1)
+    return values[0::2] + 1j * values[1::2]
+
+
 def _real_Hdag_map_from_real_phi(matrix: np.ndarray) -> np.ndarray:
-    """H-real x Phi-real Hessian for 2 Re(Hdag M phi)."""
+    """Canonical-H x real-Phi block for 2 Re(Hdag M phi)."""
     value = np.asarray(matrix, dtype=complex)
     output = np.empty((2 * value.shape[0], value.shape[1]), dtype=float)
-    output[0::2, :] = 2.0 * value.real
-    output[1::2, :] = 2.0 * value.imag
+    output[0::2, :] = SQRT2 * value.real
+    output[1::2, :] = SQRT2 * value.imag
     return output
 
 
 def _real_H_map_from_real_phi(matrix: np.ndarray) -> np.ndarray:
-    """H-real x Phi-real Hessian for 2 Re(H^T M phi)."""
+    """Canonical-H x real-Phi block for 2 Re(H^T M phi)."""
     value = np.asarray(matrix, dtype=complex)
     output = np.empty((2 * value.shape[0], value.shape[1]), dtype=float)
-    output[0::2, :] = 2.0 * value.real
-    output[1::2, :] = -2.0 * value.imag
+    output[0::2, :] = SQRT2 * value.real
+    output[1::2, :] = -SQRT2 * value.imag
     return output
 
 
+def _real_Hdag_map_from_raw_complex(matrix: np.ndarray) -> np.ndarray:
+    """Canonical-H x raw-complex block for 2 Re(Hdag M sigma)."""
+    return SQRT2 * mud.complex_map_real_interleaved(
+        np.asarray(matrix, dtype=complex)
+    )
+
+
+def coordinate_reconstruction_audit() -> dict[str, Any]:
+    """Reconstruct three representative complex bilinears exactly."""
+    matrix_real = np.asarray(
+        [
+            [0.3 + 0.4j, -0.2 + 0.1j, 0.7 - 0.5j],
+            [-0.6 + 0.2j, 0.9 + 0.3j, -0.1 - 0.8j],
+        ],
+        dtype=complex,
+    )
+    h_real = np.asarray([0.7, -0.2, 0.4, 0.9], dtype=float)
+    phi = np.asarray([0.5, -0.3, 0.8], dtype=float)
+    h = _complex_from_canonical_h(h_real)
+
+    hdag_direct = float(2.0 * np.real(np.vdot(h, matrix_real @ phi)))
+    hdag_reconstructed = float(
+        h_real @ _real_Hdag_map_from_real_phi(matrix_real) @ phi
+    )
+    h_direct = float(2.0 * np.real(np.dot(h, matrix_real @ phi)))
+    h_reconstructed = float(
+        h_real @ _real_H_map_from_real_phi(matrix_real) @ phi
+    )
+
+    matrix_complex = np.asarray(
+        [
+            [0.2 - 0.7j, 0.4 + 0.1j],
+            [-0.5 + 0.6j, 0.3 - 0.2j],
+        ],
+        dtype=complex,
+    )
+    sigma_real = np.asarray([0.6, -0.4, -0.2, 0.9], dtype=float)
+    sigma = _complex_from_raw_interleaved(sigma_real)
+    complex_direct = float(2.0 * np.real(np.vdot(h, matrix_complex @ sigma)))
+    complex_reconstructed = float(
+        h_real @ _real_Hdag_map_from_raw_complex(matrix_complex) @ sigma_real
+    )
+    return {
+        "hdag_real_phi_residual": abs(hdag_direct - hdag_reconstructed),
+        "h_real_phi_residual": abs(h_direct - h_reconstructed),
+        "hdag_raw_complex_residual": abs(
+            complex_direct - complex_reconstructed
+        ),
+    }
+
+
+@lru_cache(maxsize=1)
 def _quartic_complex_HPhi_blocks() -> dict[str, np.ndarray]:
     channels = projection.channels
     p, delta_dagger = projection.physical_background()
     sigma_vector = channels.five_to_vector(delta_dagger)
-    four_basis = tuple(
-        {indices: 1.0 + 0.0j} for indices in channels.C4
-    )
+    four_basis = tuple({indices: 1.0 + 0.0j} for indices in channels.C4)
     result: dict[str, np.ndarray] = {}
     for name, projector in projection.channel_projectors().items():
         matrix = np.empty((channels.N, len(channels.C4)), dtype=complex)
         for column, state in enumerate(four_basis):
-            variation = channels.phi2_bilinear(state, p, +1) + channels.phi2_bilinear(
-                p, state, +1
-            )
+            variation = channels.phi2_bilinear(
+                state, p, +1
+            ) + channels.phi2_bilinear(p, state, +1)
             matrix[:, column] = projection.h_coefficient_vector(
                 projector(variation), sigma_vector
             )
@@ -127,7 +189,7 @@ def _cubic_old_to_h(coefficient: complex) -> np.ndarray:
     value = complex(coefficient)
 
     h_sigma_complex = value * direct.contraction_matrix(p_form, sigma_basis)
-    h_sigma_real = 2.0 * mud.complex_map_real_interleaved(h_sigma_complex)
+    h_sigma_real = _real_Hdag_map_from_raw_complex(h_sigma_complex)
 
     h_phi_complex = value * np.column_stack(
         [
@@ -241,15 +303,16 @@ def gram_data() -> dict[str, Any]:
             )
             operators[left, right] = operator
             norm_matrix[left, right] = np.linalg.norm(operator)
-    symmetry_residual = float(
-        np.max(np.abs(operators - np.swapaxes(operators, 0, 1)))
-    )
     return {
         "operators": operators,
         "operator_frobenius_norms": norm_matrix,
         "coefficient_names": list(COEFFICIENT_NAMES),
-        "basis_physical_ranks": [row["physical_rank"] for row in basis_blocks()["rows"]],
-        "symmetry_residual": symmetry_residual,
+        "basis_physical_ranks": [
+            row["physical_rank"] for row in basis_blocks()["rows"]
+        ],
+        "symmetry_residual": float(
+            np.max(np.abs(operators - np.swapaxes(operators, 0, 1)))
+        ),
     }
 
 
@@ -258,9 +321,7 @@ def schur_from_coefficients(coefficients: np.ndarray) -> dict[str, Any]:
     block = linear_combination_from_basis(values)["physical"]
     old = mud.old_hessian_data()
     solved = np.linalg.solve(old["physical_hessian"], block)
-    direct_operator = 0.5 * (
-        block.T @ solved + (block.T @ solved).T
-    )
+    direct_operator = 0.5 * (block.T @ solved + (block.T @ solved).T)
     gram_operator = np.einsum(
         "r,s,rsij->ij",
         values,
@@ -374,16 +435,17 @@ def full_and_physical_spectra(
 
 
 def cubic_unit_reconstruction_audit() -> dict[str, Any]:
-    reconstructed = combined_old_to_h(
+    canonical = combined_old_to_h(
         mu_d=1.0, eta_210=0.0, eta_1050=0.0
     )
-    authoritative = mud.mixed_block_per_unit_mu()["old_to_h"]
+    legacy_raw_h = mud.mixed_block_per_unit_mu()["old_to_h"]
+    target = legacy_raw_h / SQRT2
     return {
-        "maximum_abs_residual": float(
-            np.max(np.abs(reconstructed - authoritative))
-        ),
-        "reconstructed_rank": int(np.linalg.matrix_rank(reconstructed, 1.0e-11)),
-        "authoritative_rank": int(np.linalg.matrix_rank(authoritative, 1.0e-11)),
+        "maximum_abs_residual": float(np.max(np.abs(canonical - target))),
+        "reconstructed_rank": int(np.linalg.matrix_rank(canonical, 1.0e-11)),
+        "authoritative_rank": int(np.linalg.matrix_rank(legacy_raw_h, 1.0e-11)),
+        "legacy_raw_H_to_canonical_H_factor": 1.0 / SQRT2,
+        "legacy_schur_to_canonical_schur_factor": 0.5,
     }
 
 
@@ -392,6 +454,7 @@ def build_report() -> dict[str, Any]:
     hmass_report = hmass.build_report()
     projection_report = projection.build_report()
     old = mud.old_hessian_data()
+    coordinate_audit = coordinate_reconstruction_audit()
     cubic_reconstruction = cubic_unit_reconstruction_audit()
     basis = basis_blocks()
     gram = gram_data()
@@ -401,20 +464,18 @@ def build_report() -> dict[str, Any]:
         "eta_210": 0.16 - 0.09j,
         "eta_1050": -0.11 + 0.07j,
     }
-    coefficients = coefficient_vector(**{
-        "mu_d": couplings["mu_D"],
-        "eta_210": couplings["eta_210"],
-        "eta_1050": couplings["eta_1050"],
-    })
+    coefficients = coefficient_vector(
+        mu_d=couplings["mu_D"],
+        eta_210=couplings["eta_210"],
+        eta_1050=couplings["eta_1050"],
+    )
     direct_combined = combined_old_to_h(
         mu_d=couplings["mu_D"],
         eta_210=couplings["eta_210"],
         eta_1050=couplings["eta_1050"],
     )
     basis_combined = linear_combination_from_basis(coefficients)["old"]
-    linearity_residual = float(
-        np.max(np.abs(direct_combined - basis_combined))
-    )
+    linearity_residual = float(np.max(np.abs(direct_combined - basis_combined)))
     gauge_residual = float(np.max(np.abs(direct_combined.T @ old["orbit"])))
 
     b_value = 0.31 - 0.22j
@@ -448,7 +509,10 @@ def build_report() -> dict[str, Any]:
         "selected_210_1050_projection_executes": projection_report["n_failed"] == 0,
         "old_physical_Hessian_positive": old["physical_eigenvalues"][0] > 1.0e-6,
         "old_gauge_rank_33": old["gauge_rank"] == 33,
-        "cubic_complex_realification_recovers_authoritative_unit_block": (
+        "canonical_coordinate_bilinears_reconstruct": max(
+            coordinate_audit.values()
+        ) < 1.0e-12,
+        "legacy_muD_block_rescaled_to_canonical_H": (
             cubic_reconstruction["maximum_abs_residual"] < 1.0e-12
         ),
         "all_six_basis_blocks_annihilate_gauge_orbit": all(
@@ -492,9 +556,9 @@ def build_report() -> dict[str, Any]:
     return _jsonable(
         {
             "status": (
-                "JOINT_H10_CROSS_SCHUR_ENVELOPE_CLOSED__EW_BACKREACTION_OPEN"
+                "CANONICAL_JOINT_H10_SCHUR_ENVELOPE_CLOSED__EW_BACKREACTION_OPEN"
                 if not failures
-                else "JOINT_H10_CROSS_SCHUR_ENVELOPE_FAILED"
+                else "CANONICAL_JOINT_H10_SCHUR_ENVELOPE_FAILED"
             ),
             "n_checks": len(checks),
             "n_failed": len(failures),
@@ -508,6 +572,13 @@ def build_report() -> dict[str, Any]:
                 "enlarged_physical": int(old["physical_hessian"].shape[0] + H_REAL),
                 "gauge_rank": old["gauge_rank"],
             },
+            "coordinate_convention": {
+                "old_126bar": "raw interleaved (Re sigma, Im sigma)",
+                "H10": "canonical H=(x+i y)/sqrt(2)",
+                "raw_H_block_to_canonical_H_factor": 1.0 / SQRT2,
+                "raw_H_schur_to_canonical_H_factor": 0.5,
+            },
+            "coordinate_reconstruction_audit": coordinate_audit,
             "coefficient_basis": {
                 "names": list(COEFFICIENT_NAMES),
                 "rows": basis["rows"],
@@ -528,12 +599,8 @@ def build_report() -> dict[str, Any]:
                 "gram_reconstruction_residual": schur[
                     "gram_reconstruction_residual"
                 ],
-                "theorem": (
-                    "M_H - B(c)^T A_phys^{-1} B(c) is positive definite"
-                ),
-                "quadratic_form": (
-                    "S(c)=sum_{r,s=1}^6 c_r c_s G_rs"
-                ),
+                "theorem": "M_H - B(c)^T A_phys^{-1} B(c) is positive definite",
+                "quadratic_form": "S(c)=sum_{r,s=1}^6 c_r c_s G_rs",
             },
             "critical_soft_mass_squared": critical,
             "benchmarks": {
@@ -555,6 +622,7 @@ def build_report() -> dict[str, Any]:
             },
             "flags": {
                 "complete_selected_H_only_mass_block_used": not failures,
+                "canonical_H_coordinate_normalization_enforced": not failures,
                 "complex_muD_block_inserted": not failures,
                 "complex_eta210_block_inserted": not failures,
                 "complex_eta1050_block_inserted": not failures,
@@ -569,18 +637,15 @@ def build_report() -> dict[str, Any]:
                 "empirical_discovery": False,
             },
             "next_exact_target": (
-                "Promote the remaining G1 families into one arbitrary-component "
-                "64-direction potential evaluator and generate its complete "
-                "gradient/Hessian (G2)."
+                "Promote all 64 normalized G1 directions into one arbitrary-component "
+                "potential evaluator and differentiate its complete gradient/Hessian."
             ),
             "verdict": (
-                "The selected H=0 482-real local Hessian now has an exact joint "
-                "Schur/Loewner envelope for the complex mu_D, eta_210, and "
-                "eta_1050 cross couplings, using the complete H-only quadratic "
-                "block. Above the bound the 449-dimensional physical quotient "
-                "is positive and the full Hessian has exactly 33 gauge zeros; "
-                "equality adds a flat mode and crossing the bound creates a "
-                "tachyon. Electroweak backreaction and full G2 remain open."
+                "The selected H=0 local Hessian now uses a coordinate-consistent "
+                "canonical H10 normalization. The earlier raw-H mixed blocks are "
+                "rescaled by 1/sqrt(2), so their Schur penalty is half the legacy "
+                "value. The six-real-direction joint Loewner theorem remains exact "
+                "for this selected vacuum; full G2 and electroweak backreaction remain open."
             ),
         }
     )
@@ -589,7 +654,7 @@ def build_report() -> dict[str, Any]:
 def write_report(report: dict[str, Any]) -> None:
     OUT_JSON.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     OUT_MD.write_text(
-        "# Joint H10 cross-coupling Schur stability envelope\n\n"
+        "# Canonical joint H10 cross-coupling Schur envelope\n\n"
         f"**Status:** `{report['status']}`\n\n"
         + report["verdict"]
         + "\n\n"
