@@ -8,6 +8,7 @@ on:
     paths:
       - exact_phisigma_126bar_minus_projectors_v20.py
       - coupled_p_delta_physical_chirality_search_v20.py
+      - test_coupled_p_delta_physical_chirality_search_v20.py
       - .github/workflows/coupled-p-delta-backreaction-scan.yml
   workflow_dispatch:
 
@@ -23,10 +24,12 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install -r requirements.txt
+          python -m pip install -r requirements.txt pytest
       - name: Compile physical-chirality coupled scan
-        run: python -m py_compile exact_phisigma_126bar_minus_projectors_v20.py coupled_p_delta_physical_chirality_search_v20.py
-      - name: Execute physical-chirality 462-real search
+        run: python -m py_compile exact_phisigma_126bar_minus_projectors_v20.py coupled_p_delta_physical_chirality_search_v20.py test_coupled_p_delta_physical_chirality_search_v20.py
+      - name: Run physical-chirality regression tests
+        run: python -m pytest -q test_coupled_p_delta_physical_chirality_search_v20.py
+      - name: Execute fresh physical-chirality 462-real search
         id: scan
         continue-on-error: true
         run: |
