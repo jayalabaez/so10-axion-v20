@@ -58,7 +58,13 @@ def test_45_is_inserted_once_and_does_not_change_B() -> None:
 
 def test_authoritative_integration_report_passes_without_overclaim() -> None:
     report = gate.build_report()
-    assert report["n_failed"] == 0, report["failures"]
+    upstream_report = gate.upstream.build_report()
+    assert report["n_failed"] == 0, {
+        "gate_failures": report["failures"],
+        "upstream_status": upstream_report.get("status"),
+        "upstream_failures": upstream_report.get("failures"),
+        "upstream_checks": upstream_report.get("checks"),
+    }
     assert report["flag"]["complete_HSigma_Hermitian_bilinear_family_inserted"] is True
     assert report["flag"]["all_HSigma_invariants_complete"] is False
     assert report["flag"]["complete_component_potential"] is False
