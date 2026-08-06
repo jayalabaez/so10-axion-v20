@@ -5,6 +5,7 @@ on:
   pull_request:
     paths:
       - "exact_10h_holomorphic_quartic_triplet_v20.py"
+      - "exact_10h_holomorphic_quartic_triplet_report_v20.py"
       - "test_exact_10h_holomorphic_quartic_triplet_v20.py"
       - "next_gen_triplet_10h_quartic_gate_v20.py"
       - "test_next_gen_triplet_10h_quartic_gate_v20.py"
@@ -15,6 +16,7 @@ on:
     branches: [main]
     paths:
       - "exact_10h_holomorphic_quartic_triplet_v20.py"
+      - "exact_10h_holomorphic_quartic_triplet_report_v20.py"
       - "test_exact_10h_holomorphic_quartic_triplet_v20.py"
       - "next_gen_triplet_10h_quartic_gate_v20.py"
       - "test_next_gen_triplet_10h_quartic_gate_v20.py"
@@ -42,6 +44,7 @@ jobs:
         run: |
           python -m py_compile \
             exact_10h_holomorphic_quartic_triplet_v20.py \
+            exact_10h_holomorphic_quartic_triplet_report_v20.py \
             test_exact_10h_holomorphic_quartic_triplet_v20.py \
             next_gen_triplet_10h_quartic_gate_v20.py \
             test_next_gen_triplet_10h_quartic_gate_v20.py
@@ -51,7 +54,7 @@ jobs:
             test_exact_10h_holomorphic_quartic_triplet_v20.py \
             test_next_gen_triplet_10h_quartic_gate_v20.py
       - name: Generate exact projection report
-        run: python exact_10h_holomorphic_quartic_triplet_v20.py
+        run: python exact_10h_holomorphic_quartic_triplet_report_v20.py
       - name: Generate authoritative insertion report
         run: python next_gen_triplet_10h_quartic_gate_v20.py
       - name: Assert exact insertion and scope
