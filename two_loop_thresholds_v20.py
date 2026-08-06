@@ -6,6 +6,11 @@ solver (M_I=6.314e11 GeV, M_GUT=9.918e15 GeV, alpha_GUT^{-1}=37.313).
 Two-loop corrections are then applied as controlled shifts, and Spin(10)
 is evolved continuously from the spectator-corrected coupling — never by
 resetting alpha_10(v_Phi)=1/40.
+
+The root solve is implemented locally so every source checkout can reproduce
+the gauge anchor with only the Python standard library.  Earlier versions
+silently required SciPy, causing downstream scalar gates to report a missing
+anchor in clean CI jobs that installed only NumPy.
 """
 
 from __future__ import annotations
@@ -13,8 +18,7 @@ from __future__ import annotations
 import json
 import math
 from pathlib import Path
-
-from scipy.optimize import brentq
+from typing import Callable
 
 
 PI = math.pi
@@ -28,6 +32,50 @@ B_PS = (-7.0 / 3.0, 2.0, 26.0 / 3.0)  # PS one-loop as in v17 engine
 # Approximate two-loop additive shifts to b (literature-sized, conservative)
 B_LOW_2LOOP = (0.35, -0.20, -0.45)
 B_PS_2LOOP = (-0.25, 0.15, 0.40)
+
+
+def bracketed_root(
+    function: Callable[[float], float],
+    left: float,
+    right: float,
+    *,
+    xtol: float = 1.0e-12,
+    max_iterations: int = 256,
+) -> float:
+    """Deterministic bracketed bisection for the one-dimensional RG match.
+
+    The matching residual is continuous and bracketed on the supplied interval.
+    Bisection is slower than SciPy's Brent implementation but negligible for
+    this single solve and avoids an optional runtime dependency.
+    """
+    a = float(left)
+    b = float(right)
+    fa = float(function(a))
+    fb = float(function(b))
+    if not math.isfinite(fa) or not math.isfinite(fb):
+        raise ValueError("root bracket endpoints must be finite")
+    if fa == 0.0:
+        return a
+    if fb == 0.0:
+        return b
+    if fa * fb > 0.0:
+        raise ValueError(
+            f"root is not bracketed: f({a})={fa}, f({b})={fb}"
+        )
+    for _ in range(max_iterations):
+        midpoint = 0.5 * (a + b)
+        fm = float(function(midpoint))
+        if not math.isfinite(fm):
+            raise ValueError("root function became non-finite")
+        if fm == 0.0 or abs(b - a) <= xtol:
+            return midpoint
+        if fa * fm < 0.0:
+            b, fb = midpoint, fm
+        else:
+            a, fa = midpoint, fm
+    raise RuntimeError(
+        f"bracketed root did not converge after {max_iterations} iterations"
+    )
 
 
 def chain(log_mi: float, dthr: float = 0.0, two_loop: bool = False):
@@ -49,7 +97,12 @@ def chain(log_mi: float, dthr: float = 0.0, two_loop: bool = False):
 
 
 def solve_unification(two_loop: bool = False) -> dict:
-    log_mi = brentq(lambda x: chain(x, two_loop=two_loop)[0], 4.0, 15.9, xtol=1e-12)
+    log_mi = bracketed_root(
+        lambda x: chain(x, two_loop=two_loop)[0],
+        4.0,
+        15.9,
+        xtol=1.0e-12,
+    )
     residual, mgut, iu, mi, ps_at_mi = chain(log_mi, two_loop=two_loop)
     ys = math.sqrt(2.0)
     ms = ys * mi / math.sqrt(2.0)
@@ -67,12 +120,9 @@ def solve_unification(two_loop: bool = False) -> dict:
     def run_inv(inv0: float, b: float, mu0: float, mu1: float) -> float:
         return inv0 - (b / (2.0 * PI)) * math.log(mu1 / mu0)
 
-    # From MGUT to vPhi with light content (heavies not yet active if vPhi>MGUT,
-    # but anomalons get mass at vPhi so they are in the spectrum below vPhi...
-    # Consistent treatment: use light beta below vPhi, heavy above.
-    inv_vphi_phys = run_inv(iu_spec, b_light, mgut, VPHI) if VPHI > mgut else run_inv(
-        iu_spec, b_light, mgut, VPHI
-    )
+    # From MGUT to vPhi with light content. Anomalons acquire mass at vPhi, so
+    # the heavy beta is used only above vPhi.
+    inv_vphi_phys = run_inv(iu_spec, b_light, mgut, VPHI)
     inv_mpl_phys = run_inv(inv_vphi_phys, b_heavy_phys, VPHI, MPL)
     inv_vphi_cons = run_inv(iu_spec, b_light, mgut, VPHI)
     inv_mpl_cons = run_inv(inv_vphi_cons, b_heavy_cons, VPHI, MPL)
