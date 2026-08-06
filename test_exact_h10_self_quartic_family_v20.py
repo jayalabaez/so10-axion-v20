@@ -51,3 +51,6 @@ def test_report_fail_closed():
     assert report["flag"]["complete_mixed_invariant_ring"] is False
     assert report["flag"]["whole_model_validated"] is False
     assert report["flag"]["empirical_discovery"] is False
+
+
+# This tracked update emits a normal synchronize event after the main ancestry merge.
