@@ -1,0 +1,87 @@
+name: live-g2-exact-phi-self-quartic-derivatives
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - exact_210_self_invariant_basis_v20.py
+      - exact_phisigma_casimir_projectors_v20.py
+      - live_g1_tensor_closure_ledger_v20.py
+      - live_g2_arbitrary_component_potential_values_v20.py
+      - live_g2_canonical_486_field_chart_v20.py
+      - live_g2_exact_quadratic_family_derivatives_v20.py
+      - live_g2_exact_phi_self_quartic_derivatives_v20.py
+      - test_live_g2_exact_phi_self_quartic_derivatives_v20.py
+      - .github/workflows/live-g2-exact-phi-self-quartic-derivatives.yml
+  push:
+    branches: [main]
+    paths:
+      - exact_210_self_invariant_basis_v20.py
+      - exact_phisigma_casimir_projectors_v20.py
+      - live_g1_tensor_closure_ledger_v20.py
+      - live_g2_arbitrary_component_potential_values_v20.py
+      - live_g2_canonical_486_field_chart_v20.py
+      - live_g2_exact_quadratic_family_derivatives_v20.py
+      - live_g2_exact_phi_self_quartic_derivatives_v20.py
+      - test_live_g2_exact_phi_self_quartic_derivatives_v20.py
+      - .github/workflows/live-g2-exact-phi-self-quartic-derivatives.yml
+
+concurrency:
+  group: live-g2-phi-self-quartics-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  exact-phi-self-quartic-derivatives:
+    runs-on: ubuntu-latest
+    timeout-minutes: 420
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt pytest
+      - name: Compile exact Phi quartic adapter
+        run: |
+          python -m py_compile \
+            live_g2_exact_phi_self_quartic_derivatives_v20.py \
+            test_live_g2_exact_phi_self_quartic_derivatives_v20.py
+      - name: Run exact Phi quartic derivative tests
+        run: python -m pytest -q test_live_g2_exact_phi_self_quartic_derivatives_v20.py
+      - name: Generate exact derivative certificate
+        run: python live_g2_exact_phi_self_quartic_derivatives_v20.py --write
+      - name: Assert fail-closed 13-of-18 boundary
+        run: |
+          python - <<'PY'
+          import json
+
+          report=json.load(open('LIVE_G2_EXACT_PHI_SELF_QUARTIC_DERIVATIVES_V20.json'))
+          assert report['n_failed']==0, report['failures']
+          c=report['coverage']
+          assert c['base_family']=='Phi_self_quartics'
+          assert c['expected_direction_count']>0
+          assert c['observed_direction_count']==c['expected_direction_count']
+          assert c['basis_indices']==[0,1,2,3]
+          assert c['basis_labels']==['J0','J2','J3','J4']
+          assert c['cumulative_base_family_count_with_parents']==13
+          assert c['remaining_base_families']==5
+          assert report['source_normalization_audit']['maximum_residual']<1e-8
+          assert report['J0_closed_form_audit']['Hessian_residual']<1e-8
+          assert report['maximum_Hessian_asymmetry']<1e-8
+          assert report['directional_reconstruction']['second_residual']<5e-5
+          assert report['flags']['authoritative_Phi_self_quartic_adapter_closed']
+          assert not report['flags']['all_64_direction_gradients_complete']
+          assert not report['flags']['all_64_direction_Hessians_complete']
+          assert not report['flags']['G2_closed']
+          assert not report['flags']['whole_model_validated']
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-g2-exact-phi-self-quartic-derivatives
+          path: |
+            LIVE_G2_EXACT_PHI_SELF_QUARTIC_DERIVATIVES_V20.json
+            LIVE_G2_EXACT_PHI_SELF_QUARTIC_DERIVATIVES_V20.md
