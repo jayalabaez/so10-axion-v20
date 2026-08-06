@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Regression tests for the first five exact G2 derivative adapters."""
+"""Regression tests for five authoritative nonzero G2 derivative adapters."""
 from __future__ import annotations
 
 import numpy as np
@@ -29,19 +29,38 @@ def test_full_report_passes_fail_closed():
     assert all(report["checks"].values())
     assert report["coverage"]["base_family_count_closed"] == 5
     assert report["coverage"]["base_family_count_total"] == 18
-    assert report["flags"]["five_of_eighteen_base_derivative_adapters_closed"]
+    assert report["coverage"]["direction_count_closed"] > 0
+    assert report["coverage"]["parameter_count_closed"] > 0
+    assert all(
+        count > 0
+        for count in report["coverage"]["expected_direction_counts"].values()
+    )
+    assert (
+        report["coverage"]["expected_direction_counts"]
+        == report["coverage"]["observed_direction_counts"]
+    )
+    assert report["flags"]["five_authoritative_nonzero_family_adapters_closed"]
     assert report["flags"]["all_64_direction_gradients_complete"] is False
     assert report["flags"]["all_64_direction_Hessians_complete"] is False
     assert report["flags"]["G2_closed"] is False
 
 
-def test_selected_families_match_live_direction_inventory(direction_rows):
+def test_selected_families_are_authoritative_and_nonzero(direction_rows):
+    assert set(mod.SELECTED_FAMILIES) == {
+        "singlet_polynomial",
+        "126bar_norm",
+        "Hdag_Hdag_pair",
+        "Hdag_H_norm",
+        "Phi_norm",
+    }
     assert {row.base_family for row in direction_rows} == set(mod.SELECTED_FAMILIES)
-    assert all(row.base_family in mod.SELECTED_FAMILIES for row in direction_rows)
+    for family in mod.SELECTED_FAMILIES:
+        assert any(row.base_family == family for row in direction_rows)
 
 
 def test_direction_values_match_authoritative_evaluator(direction_rows, analytic_rows):
     expected = {row.direction_id: row.value for row in direction_rows}
+    assert expected
     assert {row.direction_id for row in analytic_rows} == set(expected)
     assert max(
         abs(row.value - expected[row.direction_id]) for row in analytic_rows
@@ -49,6 +68,7 @@ def test_direction_values_match_authoritative_evaluator(direction_rows, analytic
 
 
 def test_all_dense_Hessians_are_symmetric_and_finite(analytic_rows):
+    assert analytic_rows
     for row in analytic_rows:
         assert row.gradient.shape == (486,)
         assert row.hessian.shape == (486, 486)
@@ -69,6 +89,7 @@ def test_self_conjugate_derivatives_are_real(analytic_rows):
 
 def test_parameter_derivatives_use_live_schema(state, analytic_rows):
     parameters = mod.parameter_derivatives(analytic_rows)
+    assert parameters
     live_ids = {
         row.parameter_id
         for row in mod.potential.parameter_schema(
@@ -88,10 +109,10 @@ def test_analytic_assembly_matches_five_point_reconstruction(state, analytic_row
     assert audit["second_residual"] < 1.0e-7
 
 
-def test_unknown_family_and_parameter_are_rejected(state, direction_rows, analytic_rows):
+def test_unknown_family_and_parameter_are_rejected(state, analytic_rows):
     q = mod.chart.pack(state)
     with pytest.raises(KeyError):
-        mod.base_derivative(q, "B99_not_live")
+        mod.base_derivative(q, "not_a_live_family")
     unsupported = next(
         row
         for row in mod.potential.evaluate_directions(state)
@@ -107,11 +128,12 @@ def test_unknown_family_and_parameter_are_rejected(state, direction_rows, analyt
 def test_base_quadratic_normalizations_are_canonical(state):
     q = mod.chart.pack(state)
     sigma_value, sigma_gradient, sigma_hessian = mod.base_derivative(
-        q, "B01_sigma_norm"
+        q, "126bar_norm"
     )
-    assert abs(sigma_value.real - 0.5 * np.dot(q[mod.chart.SIGMA_SLICE], q[mod.chart.SIGMA_SLICE])) < 1.0e-12
+    sigma_block = q[mod.chart.SIGMA_SLICE]
+    assert abs(sigma_value.real - 0.5 * np.dot(sigma_block, sigma_block)) < 1.0e-12
     assert np.max(
-        np.abs(sigma_gradient[mod.chart.SIGMA_SLICE].real - q[mod.chart.SIGMA_SLICE])
+        np.abs(sigma_gradient[mod.chart.SIGMA_SLICE].real - sigma_block)
     ) < 1.0e-12
     assert np.max(
         np.abs(
@@ -122,12 +144,11 @@ def test_base_quadratic_normalizations_are_canonical(state):
         )
     ) < 1.0e-12
 
-    phi_value, phi_gradient, phi_hessian = mod.base_derivative(
-        q, "B04_phi_norm"
-    )
-    assert abs(phi_value.real - np.dot(q[mod.chart.PHI_SLICE], q[mod.chart.PHI_SLICE])) < 1.0e-12
+    phi_value, phi_gradient, phi_hessian = mod.base_derivative(q, "Phi_norm")
+    phi_block = q[mod.chart.PHI_SLICE]
+    assert abs(phi_value.real - np.dot(phi_block, phi_block)) < 1.0e-12
     assert np.max(
-        np.abs(phi_gradient[mod.chart.PHI_SLICE].real - 2.0 * q[mod.chart.PHI_SLICE])
+        np.abs(phi_gradient[mod.chart.PHI_SLICE].real - 2.0 * phi_block)
     ) < 1.0e-12
     assert np.max(
         np.abs(
