@@ -157,11 +157,11 @@ def _inputs() -> tuple[dict[str, Any], dict[str, float], dict[str, Any]]:
         "phi17_abs_sq": 0.09,
     }
     residuals = {
-        "delta10_minus": 0.0,
-        "delta126_minus": 0.0,
-        "delta10_plus": 0.0,
-        "delta126_plus_t2bar": 0.0,
-        "delta126_plus_t4bar": 0.0,
+        "delta_T10_Ym13_m2": 0.0,
+        "delta_t2_Ym13_m2": 0.0,
+        "delta_T10bar_Yp13_m2": 0.0,
+        "delta_t2bar_Yp13_m2": 0.0,
+        "delta_t4bar_Yp13_m2": 0.0,
     }
     inputs = {
         "p": 0.9,
