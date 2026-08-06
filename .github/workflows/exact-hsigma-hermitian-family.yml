@@ -7,6 +7,7 @@ on:
       - 'test_exact_hsigma_hermitian_family_closure_v20.py'
       - 'next_gen_triplet_hsigma_hermitian_family_gate_v20.py'
       - 'test_next_gen_triplet_hsigma_hermitian_family_gate_v20.py'
+      - 'triplet_proxy_contamination_audit_v20.py'
       - '.github/workflows/exact-hsigma-hermitian-family.yml'
   push:
     branches: [main]
@@ -15,6 +16,7 @@ on:
       - 'test_exact_hsigma_hermitian_family_closure_v20.py'
       - 'next_gen_triplet_hsigma_hermitian_family_gate_v20.py'
       - 'test_next_gen_triplet_hsigma_hermitian_family_gate_v20.py'
+      - 'triplet_proxy_contamination_audit_v20.py'
       - '.github/workflows/exact-hsigma-hermitian-family.yml'
   workflow_dispatch:
 
@@ -40,17 +42,28 @@ jobs:
           test_exact_hsigma_hermitian_family_closure_v20.py
           test_next_gen_triplet_hsigma_hermitian_family_gate_v20.py
 
-      - name: Print upstream portal diagnostics
+      - name: Print signed-chain diagnostics
         run: |
           python - <<'PY'
-          import next_gen_triplet_portal_norm_square_gate_v20 as upstream
+          import nonsusy_z17_pq_potential_filter_v20 as signed_filter
+          import nonsusy_charge_allowed_mt_v20 as signed_mt2
+          import so10_kronecker_existence_mt_lock_v20 as signed_kron
+          import triplet_proxy_contamination_audit_v20 as contamination
+          import next_gen_triplet_portal_norm_square_gate_v20 as portal
 
-          report = upstream.build_report()
-          print('UPSTREAM_STATUS=', repr(report.get('status')))
-          print('UPSTREAM_N_FAILED=', repr(report.get('n_failed')))
-          print('UPSTREAM_FAILURES=', repr(report.get('failures')))
-          print('UPSTREAM_CHECKS=', repr(report.get('checks')))
-          print('UPSTREAM_CHAIN=', repr(report.get('upstream_status')))
+          for name, module in (
+              ('signed_filter', signed_filter),
+              ('signed_mt2', signed_mt2),
+              ('signed_kron', signed_kron),
+              ('contamination', contamination),
+              ('portal', portal),
+          ):
+              report = module.build_report()
+              print(f'{name.upper()}_STATUS=', repr(report.get('status')))
+              print(f'{name.upper()}_N_FAILED=', repr(report.get('n_failed')))
+              print(f'{name.upper()}_FAILURES=', repr(report.get('failures')))
+              print(f'{name.upper()}_FLAGS=', repr(report.get('flag')))
+              print(f'{name.upper()}_CHECKS=', repr(report.get('checks')))
           PY
 
       - name: Run exact family tests
