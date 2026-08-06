@@ -107,7 +107,7 @@ BASE_FAMILIES: dict[tuple[int, ...], dict[str, Any]] = {
         "normalization": "the exact arbitrary-component evaluator convention",
     },
     (0, 0, 0, 2, 2): {
-        "id": "126bar_self_quartics",
+        "id": "126bar_self_projectors",
         "multiplicity": 4,
         "basis": ["54", "1050bar", "2772bar", "4125"],
         "formula": "four pair-Casimir projectors on Sym^2(126bar)",
@@ -115,7 +115,7 @@ BASE_FAMILIES: dict[tuple[int, ...], dict[str, Any]] = {
         "normalization": "orthogonal projector norms in the canonical chiral basis",
     },
     (0, 0, 1, 2, 1): {
-        "id": "Hdag_Sigma2_Sigmadag",
+        "id": "unique_Hdag_Sigma2_Sigmadag",
         "multiplicity": 1,
         "basis": ["graph (0,1,0,2,3,2) on degrees (1,5,5,5)"],
         "formula": "explicit full-index delta contraction",
@@ -123,7 +123,7 @@ BASE_FAMILIES: dict[tuple[int, ...], dict[str, Any]] = {
         "normalization": "recorded einsum with no hidden coefficient",
     },
     (0, 0, 2, 2, 0): {
-        "id": "Hdag2_Sigma2",
+        "id": "unique_Hdag2_Sigma2",
         "multiplicity": 1,
         "basis": ["graph (0,0,1,1,0,4) on degrees (1,1,5,5)"],
         "formula": "explicit full-index delta contraction",
@@ -131,9 +131,9 @@ BASE_FAMILIES: dict[tuple[int, ...], dict[str, Any]] = {
         "normalization": "recorded einsum with no hidden coefficient",
     },
     (0, 1, 1, 1, 1): {
-        "id": "H_Sigma_Hermitian_quartics",
+        "id": "H_Sigma_hermitian",
         "multiplicity": 2,
-        "basis": ["1", "45"],
+        "basis": ["channel_1", "channel_45"],
         "formula": "common irreps of 10dagx10 and 126x126bar",
         "sources": ["exact_hsigma_hermitian_family_closure_v20.py"],
         "normalization": "singlet norm plus canonical adjoint-current contraction",
@@ -141,13 +141,13 @@ BASE_FAMILIES: dict[tuple[int, ...], dict[str, Any]] = {
     (0, 2, 2, 0, 0): {
         "id": "H_self_quartics",
         "multiplicity": 2,
-        "basis": ["1", "54"],
+        "basis": ["I_1", "I_54"],
         "formula": "Sym^2(10)=1+54",
         "sources": ["exact_h10_self_quartic_family_v20.py"],
         "normalization": "I1=|H.H|^2/10 and I54=(HdagH)^2-I1",
     },
     (2, 0, 0, 1, 1): {
-        "id": "Phi2_Sigma_Sigmadag",
+        "id": "Phi2_Sigma_projectors",
         "multiplicity": 6,
         "basis": ["1", "45", "210", "770", "5940", "8910"],
         "formula": "complete six Cartesian contractions / pure-irrep projectors",
@@ -158,7 +158,7 @@ BASE_FAMILIES: dict[tuple[int, ...], dict[str, Any]] = {
         "normalization": "explicit graph basis and canonical pair-Casimir projector basis",
     },
     (2, 0, 1, 1, 0): {
-        "id": "Phi2_Hdag_Sigma",
+        "id": "Phi2_Hdag_Sigma_210_1050",
         "multiplicity": 2,
         "basis": ["210", "1050"],
         "formula": "10x126=210+1050 with P210=JJdag/3",
@@ -166,7 +166,7 @@ BASE_FAMILIES: dict[tuple[int, ...], dict[str, Any]] = {
         "normalization": "J(A)_a=P_+(e_a wedge A), JdagJ=3I",
     },
     (2, 1, 1, 0, 0): {
-        "id": "Phi2_Hdag_H",
+        "id": "Phi2_HdagH_channels",
         "multiplicity": 3,
         "basis": ["1", "45", "54"],
         "formula": "common channels of Sym^2(210) and 10dagx10",
