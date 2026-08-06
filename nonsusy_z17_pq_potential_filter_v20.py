@@ -39,6 +39,10 @@ SOURCES = {
     "charges": "axion_so10_theory_v20.tex canonical PQ/X/Z17 assignment",
     "declared_contract": "SO(10) gauge + Z17 + PQ scalar selection; continuous X absent",
     "vector_product": "10 tensor 10 = 1 + 45 + 54; no 210",
+    "mixed_dagger_cubic": (
+        "exact_phi_hdag_sigmabar_cubic_audit_v20: "
+        "10 tensor 126bar = 210 + 1050bar"
+    ),
     "scope": "existence and declared-charge filtering; tensor multiplicities may remain open",
 }
 
@@ -111,6 +115,14 @@ def operator_catalogue(*, require_x: bool = False) -> list[dict[str, Any]]:
         ("210_H^3", {"210_H": 3}, 3, True, False, "unique cubic now derived elsewhere"),
         ("210_H 10_H^dag 10_H", {"210_H": 1, "10_H_dag": 1, "10_H": 1}, 3, False, True, "FORBIDDEN: 10 tensor 10 contains no 210"),
         ("210_H 126bar_H^dag 126bar_H", {"210_H": 1, "126bar_H_dag": 1, "126bar_H": 1}, 3, True, True, "exact cubic channel derived elsewhere"),
+        (
+            "210_H 10_H_dag 126bar_H",
+            {"210_H": 1, "10_H_dag": 1, "126bar_H": 1},
+            3,
+            True,
+            True,
+            "unique declared-symmetry mixed-dagger cubic; exact direct tensor audit; include h.c.",
+        ),
         ("bare_10_H^2", {"10_H": 2}, 2, True, True, "SO(10)-allowed but PQ-forbidden"),
         ("10_H^2 S", {"10_H": 2, "S": 1}, 3, True, True, "PQ-safe within-10 mixing"),
         ("bare_126bar_H^2", {"126bar_H": 2}, 2, False, True, "no singlet in (126bar)^2"),
@@ -124,7 +136,7 @@ def operator_catalogue(*, require_x: bool = False) -> list[dict[str, Any]]:
         ("(10_H^dag 10_H)^2", {"10_H_dag": 2, "10_H": 2}, 4, True, True, "two vector quartics: norm square and |H.H|^2"),
         ("(126bar_H^dag 126bar_H)^2", {"126bar_H_dag": 2, "126bar_H": 2}, 4, True, True, "four exact self-quartics derived elsewhere"),
         ("10_H^dag 10_H 126bar_H^dag 126bar_H", {"10_H_dag": 1, "10_H": 1, "126bar_H_dag": 1, "126bar_H": 1}, 4, True, True, "singlet and 45 Hermitian channels"),
-        ("210_H^dag 210_H 10_H^dag 10_H", {"210_H_dag": 1, "210_H": 1, "10_H_dag": 1, "10_H": 1}, 4, True, True, "quartic replacement for forbidden linear-210 cubic"),
+        ("210_H^dag 210_H 10_H^dag 10_H", {"210_H_dag": 1, "210_H": 1, "10_H_dag": 1, "10_H": 1}, 4, True, True, "three exact 1/45/54 channels"),
         ("210_H^dag 210_H 126bar_H^dag 126bar_H", {"210_H_dag": 1, "210_H": 1, "126bar_H_dag": 1, "126bar_H": 1}, 4, True, True, "six pure-irrep channels derived elsewhere"),
         ("|S|^2 |10_H|^2", {"S_dag": 1, "S": 1, "10_H_dag": 1, "10_H": 1}, 4, True, True, "norm portal"),
         ("|S|^2 |126bar_H|^2", {"S_dag": 1, "S": 1, "126bar_H_dag": 1, "126bar_H": 1}, 4, True, True, "norm portal"),
@@ -154,6 +166,13 @@ def pq_consequences_for_triplet_mixing(ops: list[dict[str, Any]]) -> dict[str, A
         "bare_10_squared": {"charge_allowed": by_name["bare_10_H^2"]["charge_allowed"]["all"], "status": by_name["bare_10_H^2"]["status"]},
         "10_squared_S": {"charge_allowed": by_name["10_H^2 S"]["charge_allowed"]["all"], "status": by_name["10_H^2 S"]["status"]},
         "forbidden_210_10dag10": {"status": by_name["210_H 10_H^dag 10_H"]["status"], "implication": "no triplet diagonal mass linear in the 210 VEV from this cubic"},
+        "mixed_dagger_cubic": {
+            "status": by_name["210_H 10_H_dag 126bar_H"]["status"],
+            "implication": (
+                "adds H--126bar and H--210 mixed Hessian blocks; complete "
+                "vacuum/spectrum requires explicit coefficient and re-diagonalization"
+            ),
+        },
         "phi17_extensions": {"Hnorm_Phi17": by_name["10_H^dag 10_H Phi17"]["status"], "H2_S_Phi17": by_name["10_H^2 S Phi17"]["status"]},
         "susy_cal_T_translation": {"identified_with_nonsusy_v20": False, "note": "SUSY superpotential mass matrices are not the non-SUSY Hessian"},
     }
@@ -175,11 +194,12 @@ def charge_allowed_reduced_potential(anchor: dict[str, float]) -> dict[str, Any]
             "continuous_x_filter_applied": False,
             "radial_global_minimum_preserved": True,
             "forbidden_210_10dag10_removed": True,
+            "mixed_dagger_cubic_not_in_reduced_radial_witness": True,
             "full_component_tensors_normalized": False,
             "complete_so10_scalar_potential": False,
             "phase_hessian_complete": False,
         },
-        "verdict": "Reduced witness survives under the declared no-X contract; full tensor minimization remains open.",
+        "verdict": "Reduced witness survives under the declared no-X contract; full tensor minimization including the mixed-dagger cubic remains open.",
     }
 
 
@@ -197,7 +217,7 @@ def build_report() -> dict[str, Any]:
     literature = lit_cg.build_report()
 
     checks = {
-        "catalogue_nonempty": len(operators) >= 38,
+        "catalogue_nonempty": len(operators) >= 39,
         "bare_10_squared_pq_forbidden": by_name["bare_10_H^2"]["status"] == "CHARGE_FORBIDDEN",
         "10_squared_S_allowed": by_name["10_H^2 S"]["status"] == "ALLOWED",
         "locking_operator_charge_allowed": by_name["126bar_H^2 10_H^2 S^2"]["charge_allowed"]["all"],
@@ -206,6 +226,9 @@ def build_report() -> dict[str, Any]:
         "H2S_Phi17_allowed_without_X": by_name["10_H^2 S Phi17"]["status"] == "ALLOWED",
         "forbidden_210_10dag10": by_name["210_H 10_H^dag 10_H"]["status"] == "SO10_FORBIDDEN",
         "forbidden_cubic_not_feeding_MT": "210_H 10_H^dag 10_H" not in [row["name"] for row in feed_mt],
+        "mixed_dagger_cubic_allowed": by_name["210_H 10_H_dag 126bar_H"]["status"] == "ALLOWED",
+        "mixed_dagger_cubic_historical_X_allowed": historical_by_name["210_H 10_H_dag 126bar_H"]["status"] == "ALLOWED",
+        "mixed_dagger_cubic_feeds_MT": "210_H 10_H_dag 126bar_H" in [row["name"] for row in feed_mt],
         "quartic_2102_10dag10_allowed": by_name["210_H^dag 210_H 10_H^dag 10_H"]["status"] == "ALLOWED",
         "radial_potential_built": potential.get("flag", {}).get("radial_global_minimum_preserved", False),
         "literature_cg_not_identified_with_nonsusy_potential": not literature.get("flag", {}).get("identified_with_v20_nonsusy_potential", True),
@@ -220,7 +243,11 @@ def build_report() -> dict[str, Any]:
         "charges": CHARGES,
         "n_operators": len(operators), "n_allowed_or_so10_open": len(allowed), "n_charge_forbidden": len(forbidden_charge), "n_so10_forbidden": len(forbidden_so10), "n_allowed_feeding_M_T": len(feed_mt),
         "operators": operators, "allowed_feeding_M_T": [row["name"] for row in feed_mt], "forbidden_names": [row["name"] for row in forbidden_charge + forbidden_so10],
-        "historical_continuous_X_comparison": {"Phi17^3_status": historical_by_name["Phi17^3"]["status"], "not_the_declared_model": True},
+        "historical_continuous_X_comparison": {
+            "Phi17^3_status": historical_by_name["Phi17^3"]["status"],
+            "mixed_dagger_cubic_status": historical_by_name["210_H 10_H_dag 126bar_H"]["status"],
+            "not_the_declared_model": True,
+        },
         "pq_triplet_consequences": pq_consequences_for_triplet_mixing(operators),
         "charge_allowed_reduced_potential": potential,
         "upstream_literature_cg_status": literature.get("status"),
@@ -229,10 +256,18 @@ def build_report() -> dict[str, Any]:
             "z17_pq_filter_applied": True, "z17_pq_x_filter_applied": False, "continuous_x_filter_applied": False,
             "bare_10_squared_forbidden": True, "ten2_S_allowed": True, "locking_operator_charge_allowed": True,
             "phi17_low_dimension_terms_retained": True, "forbidden_210_10dag10_removed": True,
+            "mixed_dagger_cubic_retained": True,
+            "mixed_dagger_cubic_requires_complete_hessian_reaudit": True,
             "quartic_2102_10dag10_retained": True, "charge_allowed_reduced_potential_built": True,
             "invented_unpublished_cg_tensors": False, "complete_so10_scalar_potential": False, "whole_model_excluded": False,
         },
-        "verdict": "The signed filter now follows the declared SO(10)+Z17+PQ contract. Continuous X is metadata only, so low-dimensional Phi17 terms and their H10 portals are retained. The SO(10)-forbidden 210·10dag·10 cubic remains excluded.",
+        "verdict": (
+            "The signed filter follows the declared SO(10)+Z17+PQ contract. "
+            "Continuous X is metadata only, so low-dimensional Phi17 terms and "
+            "their H10 portals are retained. The SO(10)-forbidden 210·10dag·10 "
+            "cubic is excluded, while the distinct allowed 210·Hdag·126bar cubic "
+            "is now retained and forces a complete mixed-Hessian re-audit."
+        ),
     }
 
 
