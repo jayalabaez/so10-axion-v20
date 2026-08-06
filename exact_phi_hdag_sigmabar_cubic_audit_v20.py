@@ -1,29 +1,23 @@
 #!/usr/bin/env python3
-"""Exact audit of the declared-symmetry cubic Phi H^dag Sigmabar + h.c.
+"""Registered declared-symmetry Phi H^dag Sigmabar cubic certificate.
 
-The live non-SUSY model assigns
-
-    PQ(H^dag)=+2,   PQ(Sigmabar)=-2,
-    Z17(H^dag)=2,  Z17(Sigmabar)=15,
-
-while Phi(210) is neutral.  Therefore
+The renormalizable interaction
 
     mu_D H_e^* Phi_abcd Sigmabar_abcde / 4! + h.c.
 
-is neutral under the declared PQ/Z17 contract and also under the historical
-continuous-X bookkeeping.  SO(10) invariance follows from the exact direct map
-210 x 126bar -> 10 already implemented in the repository.
+is neutral under the live PQ/Z17 contract and also under the historical X
+bookkeeping.  The exact representation identity
 
-This module proves the representation identity
+    10 x 126bar = 210 + 1050bar
 
-    10 x 126bar = 210 + 1050bar,
+contains one 210, and the repository's direct equivariant tensor map supplies
+the unique contraction.  The operator is now registered in the authoritative
+operator catalogue.
 
-constructs the cubic, verifies infinitesimal SO(10) invariance, checks that it
-is absent from the current catalogue, and quantifies its effect on the
-p + Delta_R background.  The tadpole vanishes on that SM-preserving background,
-but nonzero H--126bar and H--210 mixed Hessian blocks remain.  Existing vacuum
-certificates are therefore conditional on this cubic coefficient being zero
-until the complete Hessian is re-solved.
+On the SM-preserving p + Delta_R background its H tadpole vanishes, but it
+adds nonzero H--126bar and H--210 mixed Hessian blocks.  Therefore catalogue
+completion does not complete the potential or vacuum: the full component
+Hessian must be re-solved with an explicit mu_D coefficient.
 """
 from __future__ import annotations
 
@@ -76,13 +70,15 @@ def charge_audit() -> dict[str, Any]:
     totals = operator_filter._total_charge(COUNTS)
     declared = operator_filter._allowed(totals, require_x=False)
     historical_x = operator_filter._allowed(totals, require_x=True)
-    catalogue_names = {row["name"] for row in operator_filter.operator_catalogue()}
+    catalogue = {row["name"]: row for row in operator_filter.operator_catalogue()}
+    entry = catalogue.get(OPERATOR_NAME)
     return {
         "counts": COUNTS,
         "totals": totals,
         "declared_contract": declared,
         "historical_X_comparison": historical_x,
-        "present_in_current_catalogue": OPERATOR_NAME in catalogue_names,
+        "present_in_current_catalogue": entry is not None,
+        "catalogue_entry": entry,
         "canonical_dimension": 3,
         "coefficient_mass_dimension": 1,
     }
@@ -98,7 +94,7 @@ def representation_audit() -> dict[str, Any]:
         tuple(mp.mpf(x) for x in ("0.11", "-0.07", "0.05", "0.09", "-0.03")),
         tuple(mp.mpf(x) for x in ("-0.06", "0.08", "0.13", "-0.04", "0.02")),
     )
-    rows = []
+    rows: list[dict[str, float]] = []
     maximum = mp.mpf("0")
     for point in points:
         product = census.weyl_character(vector, point) * census.weyl_character(
@@ -178,7 +174,9 @@ def generic_fields() -> tuple[direct.Form, direct.Form, np.ndarray]:
 
 def contract_vector(phi: direct.Form, sigma: direct.Form) -> np.ndarray:
     form = direct.contract(phi, sigma)
-    return np.asarray([form.get((index,), 0.0) for index in range(10)], dtype=complex)
+    return np.asarray(
+        [form.get((index,), 0.0) for index in range(10)], dtype=complex
+    )
 
 
 def cubic(phi: direct.Form, sigma: direct.Form, h: np.ndarray) -> complex:
@@ -193,16 +191,19 @@ def holomorphic_lambda4_structure(
 
 def invariance_audit() -> dict[str, Any]:
     phi, sigma, h = generic_fields()
+    contraction = contract_vector(phi, sigma)
     value = cubic(phi, sigma, h)
-    rows = {}
+    rows: dict[str, Any] = {}
     maximum = 0.0
     for a, b in ((0, 1), (1, 7), (4, 9), (6, 8)):
         generator = vector_generator_matrix(a, b)
         delta_h = generator @ h
         delta_phi = direct.generator_action(phi, a, b)
         delta_sigma = direct.generator_action(sigma, a, b)
-        delta_c = contract_vector(delta_phi, sigma) + contract_vector(phi, delta_sigma)
-        derivative = np.vdot(delta_h, contract_vector(phi, sigma)) + np.vdot(h, delta_c)
+        delta_c = contract_vector(delta_phi, sigma) + contract_vector(
+            phi, delta_sigma
+        )
+        derivative = np.vdot(delta_h, contraction) + np.vdot(h, delta_c)
         residual = float(abs(derivative))
         maximum = max(maximum, residual)
         rows[f"{a}{b}"] = {
@@ -223,7 +224,10 @@ def invariance_audit() -> dict[str, Any]:
 
 
 def four_form_basis() -> list[direct.Form]:
-    return [{indices: 1.0 + 0.0j} for indices in itertools.combinations(range(10), 4)]
+    return [
+        {indices: 1.0 + 0.0j}
+        for indices in itertools.combinations(range(10), 4)
+    ]
 
 
 def background_impact() -> dict[str, Any]:
@@ -243,10 +247,7 @@ def background_impact() -> dict[str, Any]:
     tolerance = 1.0e-12
     return {
         "singlet_background_contractions": {
-            name: {
-                "components": vector,
-                "norm": float(np.linalg.norm(vector)),
-            }
+            name: {"components": vector, "norm": float(np.linalg.norm(vector))}
             for name, vector in contractions.items()
         },
         "p_plus_DeltaR_H_tadpole_norm_per_unit_coefficient": float(
@@ -267,8 +268,7 @@ def background_impact() -> dict[str, Any]:
         "interpretation": (
             "The SM-preserving p+Delta_R background has no H tadpole from this "
             "cubic, but its second derivatives generate nonzero H--Sigmabar and "
-            "H--Phi mixing blocks. Any complete Hessian that omitted the operator "
-            "is conditional on its coefficient being zero."
+            "H--Phi mixing blocks. The complete Hessian must include mu_D."
         ),
     }
 
@@ -278,15 +278,20 @@ def build_report() -> dict[str, Any]:
     representation = representation_audit()
     invariance = invariance_audit()
     impact = background_impact()
+    entry = charge.get("catalogue_entry") or {}
     checks = {
         "declared_PQ_neutral": charge["totals"]["PQ"] == 0,
         "declared_Z17_neutral": charge["totals"]["Z17"] == 0,
         "historical_X_neutral_too": charge["totals"]["X"] == 0,
         "declared_filter_allows": charge["declared_contract"]["all"],
         "historical_X_filter_allows": charge["historical_X_comparison"]["all"],
-        "operator_missing_from_catalogue_detected": not charge[
+        "operator_registered_in_catalogue": charge[
             "present_in_current_catalogue"
         ],
+        "catalogue_status_allowed": entry.get("status") == "ALLOWED",
+        "catalogue_marks_triplet_mass_impact": bool(
+            entry.get("feeds_triplet_mass")
+        ),
         "dimension_identity_exact": representation["dimension_identity"],
         "weyl_character_identity": representation["maximum_character_residual"]
         < 1.0e-40,
@@ -307,20 +312,20 @@ def build_report() -> dict[str, Any]:
             "H_Sigmabar_mixed_block_at_p"
         ]["rank"]
         > 0,
-        "H_Phi_mixed_block_nonzero": impact["H_Phi_mixed_block_at_DeltaR"][
-            "rank"
-        ]
+        "H_Phi_mixed_block_nonzero": impact[
+            "H_Phi_mixed_block_at_DeltaR"
+        ]["rank"]
         > 0,
         "complete_potential_not_claimed": True,
-        "previous_full_Hessian_requires_reaudit": True,
+        "complete_Hessian_requires_reaudit": True,
         "whole_model_validation_not_claimed": True,
     }
     failures = [name for name, passed in checks.items() if not passed]
     report = {
         "status": (
-            "MISSING_DECLARED_SYMMETRY_CUBIC_PROVED__CATALOGUE_AND_HESSIAN_REAUDIT_REQUIRED"
+            "DECLARED_SYMMETRY_CUBIC_REGISTERED__COMPLETE_HESSIAN_REAUDIT_REQUIRED"
             if not failures
-            else "PHI_HDAG_SIGMABAR_CUBIC_AUDIT_FAILED"
+            else "PHI_HDAG_SIGMABAR_CUBIC_REGISTRATION_FAILED"
         ),
         "n_checks": len(checks),
         "n_failed": len(failures),
@@ -328,9 +333,7 @@ def build_report() -> dict[str, Any]:
         "checks": checks,
         "operator": {
             "name": OPERATOR_NAME,
-            "formula": (
-                "mu_D H_e^* Phi_abcd Sigmabar_abcde/4! + h.c."
-            ),
+            "formula": "mu_D H_e^* Phi_abcd Sigmabar_abcde/4! + h.c.",
             "canonical_dimension": 3,
             "coefficient_mass_dimension": 1,
         },
@@ -340,9 +343,11 @@ def build_report() -> dict[str, Any]:
         "p_DeltaR_background_impact": impact,
         "flag": {
             "operator_exists_and_is_declared_symmetry_allowed": not failures,
-            "operator_catalogue_currently_incomplete": not failures,
+            "operator_catalogue_currently_incomplete": False,
+            "operator_catalogue_corrected": not failures,
             "p_DeltaR_tadpole_from_operator": False,
             "p_DeltaR_mixed_Hessian_changed_for_nonzero_coefficient": not failures,
+            "complete_hessian_reaudit_required": True,
             "prior_fixed_background_and_coupled_vacua_unconditional": False,
             "complete_mixed_invariant_ring": False,
             "complete_component_potential": False,
@@ -350,12 +355,11 @@ def build_report() -> dict[str, Any]:
             "empirical_discovery": False,
         },
         "verdict": (
-            "The declared symmetries require an allowed, unique renormalizable "
-            "Phi H^dag Sigmabar cubic that is absent from the current catalogue. "
-            "It creates no H tadpole on the SM-preserving p+Delta_R background, "
-            "but it adds nonzero mixed Hessian blocks. Existing vacuum/spectrum "
-            "certificates remain exact for their stated truncated potentials and "
-            "must be re-solved before being promoted to the complete model."
+            "The allowed unique Phi H^dag Sigmabar cubic is now registered in "
+            "the authoritative operator catalogue. It creates no H tadpole on "
+            "the SM-preserving p+Delta_R background, but it adds nonzero mixed "
+            "Hessian blocks. The next required gate is the complete mu_D-dependent "
+            "vacuum and Hessian re-solve."
         ),
     }
     return _jsonable(report)
@@ -364,19 +368,15 @@ def build_report() -> dict[str, Any]:
 def write_markdown(report: dict[str, Any]) -> str:
     return "\n".join(
         [
-            "# Missing Phi Hdag Sigmabar cubic audit — v20",
+            "# Registered Phi Hdag Sigmabar cubic — v20",
             "",
             f"**Status:** `{report['status']}`",
             "",
             report["verdict"],
             "",
-            "## Operator",
-            "",
             "`mu_D H_e^* Phi_abcd Sigmabar_abcde/4! + h.c.`",
             "",
-            "It is PQ-, Z17-, and historical-X neutral.",
-            "",
-            "The p+Delta_R tadpole vanishes, but both mixed Hessian blocks are nonzero.",
+            "The catalogue is corrected; the complete Hessian re-audit remains open.",
             "",
         ]
     )
