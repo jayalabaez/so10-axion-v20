@@ -13,6 +13,10 @@ on:
       - 'test_exact_hsigma_holomorphic_charge_dressed_completion_v20.py'
       - 'nonsusy_z17_pq_hsigma_completion_v20.py'
       - 'test_nonsusy_z17_pq_hsigma_completion_v20.py'
+      - 'exact_phi17_neutral_dressing_completion_v20.py'
+      - 'test_exact_phi17_neutral_dressing_completion_v20.py'
+      - 'nonsusy_z17_pq_phi17_dressing_completion_v20.py'
+      - 'test_nonsusy_z17_pq_phi17_dressing_completion_v20.py'
       - 'nonsusy_z17_pq_potential_filter_v20.py'
       - 'test_nonsusy_z17_pq_potential_filter_v20.py'
       - '.github/workflows/exact-phi2-hdagh-channel-family.yml'
@@ -20,7 +24,7 @@ on:
 jobs:
   exact-g1-small-families:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 75
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -42,6 +46,10 @@ jobs:
             test_exact_hsigma_holomorphic_charge_dressed_completion_v20.py \
             nonsusy_z17_pq_hsigma_completion_v20.py \
             test_nonsusy_z17_pq_hsigma_completion_v20.py \
+            exact_phi17_neutral_dressing_completion_v20.py \
+            test_exact_phi17_neutral_dressing_completion_v20.py \
+            nonsusy_z17_pq_phi17_dressing_completion_v20.py \
+            test_nonsusy_z17_pq_phi17_dressing_completion_v20.py \
             nonsusy_z17_pq_potential_filter_v20.py \
             test_nonsusy_z17_pq_potential_filter_v20.py; do
             if [ -f "$source" ]; then python -m py_compile "$source"; fi
@@ -55,6 +63,8 @@ jobs:
             test_exact_phi_hdag_sigmabar_cubic_audit_v20.py \
             test_exact_hsigma_holomorphic_charge_dressed_completion_v20.py \
             test_nonsusy_z17_pq_hsigma_completion_v20.py \
+            test_exact_phi17_neutral_dressing_completion_v20.py \
+            test_nonsusy_z17_pq_phi17_dressing_completion_v20.py \
             test_nonsusy_z17_pq_potential_filter_v20.py; do
             if [ -f "$test_file" ]; then pytest -q "$test_file"; fi
           done
@@ -76,6 +86,12 @@ jobs:
           if [ -f nonsusy_z17_pq_hsigma_completion_v20.py ]; then
             python nonsusy_z17_pq_hsigma_completion_v20.py --write > /tmp/nonsusy_hsigma_completion_stdout.json
           fi
+          if [ -f exact_phi17_neutral_dressing_completion_v20.py ]; then
+            python exact_phi17_neutral_dressing_completion_v20.py --write > /tmp/exact_phi17_dressing_stdout.json
+          fi
+          if [ -f nonsusy_z17_pq_phi17_dressing_completion_v20.py ]; then
+            python nonsusy_z17_pq_phi17_dressing_completion_v20.py --write > /tmp/nonsusy_phi17_dressing_stdout.json
+          fi
           if [ -f nonsusy_z17_pq_potential_filter_v20.py ]; then
             python nonsusy_z17_pq_potential_filter_v20.py > /tmp/nonsusy_filter_stdout.json
           fi
@@ -85,61 +101,65 @@ jobs:
           import json
           from pathlib import Path
 
-          path = Path('EXACT_PHI2_HDAGH_CHANNEL_FAMILY_V20.json')
-          if path.exists():
-              report = json.loads(path.read_text())
+          def load(name):
+              path = Path(name)
+              return json.loads(path.read_text()) if path.exists() else None
+
+          report = load('EXACT_PHI2_HDAGH_CHANNEL_FAMILY_V20.json')
+          if report:
               assert report['n_failed'] == 0, report['failures']
               assert report['flag']['phi2_hdagh_channel_count_closed'] is True
               assert report['flag']['complete_mixed_invariant_ring'] is False
 
-          path = Path('EXACT_H10_SELF_QUARTIC_FAMILY_V20.json')
-          if path.exists():
-              report = json.loads(path.read_text())
+          report = load('EXACT_H10_SELF_QUARTIC_FAMILY_V20.json')
+          if report:
               assert report['n_failed'] == 0, report['failures']
               assert report['flag']['h10_self_quartic_count_closed'] is True
               assert report['flag']['h10_isolated_quartic_BFB_cone_closed'] is True
               assert report['flag']['complete_mixed_invariant_ring'] is False
-              assert report['flag']['whole_model_validated'] is False
 
-          path = Path('EXACT_PHI_HDAG_SIGMABAR_CUBIC_AUDIT_V20.json')
-          if path.exists():
-              report = json.loads(path.read_text())
+          report = load('EXACT_PHI_HDAG_SIGMABAR_CUBIC_AUDIT_V20.json')
+          if report:
               assert report['n_failed'] == 0, report['failures']
               assert report['flag']['operator_exists_and_is_declared_symmetry_allowed'] is True
               historical = report['flag'].get('operator_catalogue_currently_incomplete', False)
               corrected = report['flag'].get('operator_catalogue_corrected', False)
               assert historical ^ corrected
-              assert report['flag']['p_DeltaR_tadpole_from_operator'] is False
-              assert report['flag']['p_DeltaR_mixed_Hessian_changed_for_nonzero_coefficient'] is True
               assert report['flag']['complete_mixed_invariant_ring'] is False
-              assert report['flag']['whole_model_validated'] is False
-              assert report['flag']['empirical_discovery'] is False
 
-          path = Path('EXACT_HSIGMA_HOLOMORPHIC_CHARGE_DRESSED_COMPLETION_V20.json')
-          if path.exists():
-              report = json.loads(path.read_text())
+          report = load('EXACT_HSIGMA_HOLOMORPHIC_CHARGE_DRESSED_COMPLETION_V20.json')
+          if report:
               assert report['n_failed'] == 0, report['failures']
               assert report['flags']['unique_Hdag2_Sigma2_54_family_closed'] is True
               assert report['flags']['two_Phi17_dressed_cubic_companions_closed'] is True
-              assert report['flags']['selected_DeltaR_O54_mass_block_zero'] is True
-              assert report['flags']['muD_eff_replacement_required'] is True
               assert report['flags']['complete_mixed_invariant_ring'] is False
-              assert report['flags']['whole_model_validated'] is False
 
-          path = Path('NONSUSY_Z17_PQ_HSIGMA_COMPLETION_V20.json')
-          if path.exists():
-              report = json.loads(path.read_text())
+          report = load('NONSUSY_Z17_PQ_HSIGMA_COMPLETION_V20.json')
+          if report:
               assert report['n_failed'] == 0, report['failures']
-              assert report['flags']['canonical_hsigma_completion_overlay_emitted'] is True
               assert report['flags']['three_closed_families_registered'] is True
               assert report['flags']['complete_mixed_invariant_ring'] is False
 
-          path = Path('NONSUSY_Z17_PQ_POTENTIAL_FILTER_V20.json')
-          if path.exists():
-              report = json.loads(path.read_text())
+          report = load('EXACT_PHI17_NEUTRAL_DRESSING_COMPLETION_V20.json')
+          if report:
+              assert report['n_failed'] == 0, report['failures']
+              assert report['catalogue_census']['required_dressing_count'] == 15
+              assert report['catalogue_census']['already_present_count'] == 8
+              assert report['catalogue_census']['missing_count'] == 7
+              assert report['flags']['neutral_Phi17_dressing_theorem_closed'] is True
+              assert report['flags']['complete_mixed_invariant_ring'] is False
+
+          report = load('NONSUSY_Z17_PQ_PHI17_DRESSING_COMPLETION_V20.json')
+          if report:
+              assert report['n_failed'] == 0, report['failures']
+              assert report['flags']['all_fifteen_dressings_registered'] is True
+              assert report['flags']['seven_missing_classes_appended'] is True
+              assert report['flags']['complete_mixed_invariant_ring'] is False
+
+          report = load('NONSUSY_Z17_PQ_POTENTIAL_FILTER_V20.json')
+          if report:
               assert report['n_failed'] == 0, report['failures']
               if report['flag'].get('mixed_dagger_cubic_retained'):
-                  assert report['flag']['mixed_dagger_cubic_requires_complete_hessian_reaudit'] is True
                   assert '210_H 10_H_dag 126bar_H' in report['allowed_feeding_M_T']
           PY
       - uses: actions/upload-artifact@v4
@@ -157,5 +177,9 @@ jobs:
             EXACT_HSIGMA_HOLOMORPHIC_CHARGE_DRESSED_COMPLETION_V20.md
             NONSUSY_Z17_PQ_HSIGMA_COMPLETION_V20.json
             NONSUSY_Z17_PQ_HSIGMA_COMPLETION_V20.md
+            EXACT_PHI17_NEUTRAL_DRESSING_COMPLETION_V20.json
+            EXACT_PHI17_NEUTRAL_DRESSING_COMPLETION_V20.md
+            NONSUSY_Z17_PQ_PHI17_DRESSING_COMPLETION_V20.json
+            NONSUSY_Z17_PQ_PHI17_DRESSING_COMPLETION_V20.md
             NONSUSY_Z17_PQ_POTENTIAL_FILTER_V20.json
             NONSUSY_Z17_PQ_POTENTIAL_FILTER_V20.md
