@@ -75,3 +75,7 @@ def test_exact_phi2_hdagh_family_is_a_subgate_only():
     assert report["flag"]["phi2_hdagh_channel_count_closed"] is True
     assert report["flag"]["complete_mixed_invariant_ring"] is False
     assert report["flag"]["whole_model_validated"] is False
+
+
+# This tracked-file update intentionally forces a fresh pull-request workflow
+# synchronize event after GitHub failed to schedule the newly introduced gate.
