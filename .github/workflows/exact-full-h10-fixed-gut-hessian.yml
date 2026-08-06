@@ -1,0 +1,51 @@
+name: exact-full-h10-fixed-gut-hessian
+on:
+  pull_request:
+    paths:
+      - exact_full_h10_fixed_gut_hessian_v20.py
+      - test_exact_full_h10_fixed_gut_hessian_v20.py
+      - exact_neutral_h10_s_phi17_hessian_v20.py
+      - direct_phi_h_sigmabar_tensor_v20.py
+      - .github/workflows/exact-full-h10-fixed-gut-hessian.yml
+  push:
+    branches: [main]
+    paths:
+      - exact_full_h10_fixed_gut_hessian_v20.py
+      - test_exact_full_h10_fixed_gut_hessian_v20.py
+      - exact_neutral_h10_s_phi17_hessian_v20.py
+      - direct_phi_h_sigmabar_tensor_v20.py
+      - .github/workflows/exact-full-h10-fixed-gut-hessian.yml
+jobs:
+  exact-full-h10-fixed-gut-hessian:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Install dependencies
+        run: python -m pip install --upgrade pip numpy pytest
+      - name: Compile gate
+        run: python -m py_compile exact_full_h10_fixed_gut_hessian_v20.py test_exact_full_h10_fixed_gut_hessian_v20.py
+      - name: Run exact projector and Hessian tests
+        run: pytest -q test_exact_full_h10_fixed_gut_hessian_v20.py
+      - name: Generate certificate
+        run: python exact_full_h10_fixed_gut_hessian_v20.py --json exact_full_h10_fixed_gut_hessian_v20.json
+      - name: Assert closure and fail-closed scope
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('exact_full_h10_fixed_gut_hessian_v20.json'))
+          assert r['n_failed']==0, r['failures']
+          assert r['p_background_channels']['colour_projector_rank']==6
+          assert r['benchmark']['zero_modes']==4
+          assert r['benchmark']['negative_modes']==0
+          assert r['benchmark']['gauge_quotient']['zero_modes']==1
+          assert r['benchmark']['gauge_quotient']['negative_modes']==0
+          assert not r['flag']['simultaneous_210_126bar_10_S_Phi17_stationarity']
+          assert not r['flag']['full_backreacted_multifield_hessian']
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: exact-full-h10-fixed-gut-hessian
+          path: exact_full_h10_fixed_gut_hessian_v20.json
