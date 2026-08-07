@@ -31,11 +31,15 @@ OUT_MD = ROOT / "LIVE_G2_PR155_CORRECTION_AUDIT_V20.md"
 
 
 def _json_default(value: Any) -> Any:
-    """Normalize NumPy scalars emitted by executable tensor checks."""
-    if isinstance(value, np.generic):
-        return value.item()
+    """Normalize NumPy scalars/arrays and complex values for JSON output."""
     if isinstance(value, np.ndarray):
+        # Leave nested conversion to json; complex leaves re-enter this hook.
         return value.tolist()
+    if isinstance(value, np.generic):
+        item = value.item()
+        if isinstance(item, complex):
+            return {"re": float(item.real), "im": float(item.imag)}
+        return item
     if isinstance(value, complex):
         return {"re": float(value.real), "im": float(value.imag)}
     raise TypeError(f"Object of type {type(value).__name__} is not JSON serializable")

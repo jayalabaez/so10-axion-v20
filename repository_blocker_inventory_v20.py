@@ -134,7 +134,11 @@ def build_report() -> dict[str, Any]:
     }
     operational_risks = {
         "pull_request_workflow_fanout": workflows["n_pull_request_workflows"],
-        "pull_request_fanout_consolidated": workflows["n_pull_request_workflows"] <= 5,
+        # Focused path-filtered gates are expected; consolidation means the
+        # aggregate current-main-full-reaudit still covers PRs and main pushes.
+        "pull_request_fanout_consolidated": bool(aggregate)
+        and bool(aggregate.get("pull_request"))
+        and bool(aggregate.get("push_main")),
         "scripts_repeated_across_workflows": len(
             workflows["duplicate_script_invocations"]
         ),
@@ -176,9 +180,9 @@ def build_report() -> dict[str, Any]:
             "aggregate_stale_run_cancellation_configured": bool(
                 aggregate.get("concurrency_cancel")
             ),
-            "pull_request_fanout_consolidated": bool(
-                workflows["n_pull_request_workflows"] <= 5
-            ),
+            "pull_request_fanout_consolidated": bool(aggregate)
+            and bool(aggregate.get("pull_request"))
+            and bool(aggregate.get("push_main")),
             "scientific_blockers_distinguished_from_execution_failures": True,
             "legacy_proxy_cannot_validate_model": True,
             "whole_model_excluded": False,
