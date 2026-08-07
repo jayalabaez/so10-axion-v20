@@ -13,7 +13,9 @@ on:
       - requirements.txt
       - .github/workflows/g3-full-stationarity-feasibility.yml
   push:
-    branches: [main]
+    branches:
+      - main
+      - agent/g3-full-stationarity
     paths:
       - g3_full_stationarity_feasibility_v20.py
       - test_g3_full_stationarity_feasibility_v20.py
@@ -93,5 +95,3 @@ jobs:
           path: |
             G3_FULL_STATIONARITY_FEASIBILITY_V20.json
             G3_FULL_STATIONARITY_FEASIBILITY_V20.md
-
-# PR synchronization trigger for the first exact G3 audit.
