@@ -24,14 +24,16 @@ OUT_JSON = ROOT / "EXACT_FULL_H10_FIXED_GUT_HESSIAN_V20.json"
 
 
 def _jsonable(value: Any) -> Any:
-    if isinstance(value, np.generic):
-        return value.item()
-    if isinstance(value, np.ndarray):
-        return value.tolist()
     if isinstance(value, dict):
-        return {key: _jsonable(item) for key, item in value.items()}
+        return {str(key): _jsonable(item) for key, item in value.items()}
     if isinstance(value, (list, tuple)):
         return [_jsonable(item) for item in value]
+    if isinstance(value, np.ndarray):
+        return _jsonable(value.tolist())
+    if isinstance(value, np.generic):
+        return _jsonable(value.item())
+    if isinstance(value, complex):
+        return {'re': float(value.real), 'im': float(value.imag)}
     return value
 
 
