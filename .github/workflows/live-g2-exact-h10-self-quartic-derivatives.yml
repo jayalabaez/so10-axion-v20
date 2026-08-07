@@ -81,8 +81,8 @@ jobs:
           assert report['directional_reconstruction']['first_residual']<1e-8
           assert report['directional_reconstruction']['second_residual']<1e-7
           assert report['flags']['authoritative_H_self_quartic_adapter_closed']
-          assert report['flags']['I1_gradient_Hessian_exact']
-          assert report['flags']['I54_gradient_Hessian_exact']
+          assert report['flags']['I1_projector_gradient_Hessian_exact']
+          assert report['flags']['I54_projector_gradient_Hessian_exact']
           assert report['flags']['cumulative_ten_of_eighteen_base_adapters_closed']
           assert not report['flags']['all_64_direction_gradients_complete']
           assert not report['flags']['all_64_direction_Hessians_complete']

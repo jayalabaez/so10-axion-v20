@@ -68,30 +68,43 @@ jobs:
             test_nonsusy_z17_pq_potential_filter_v20.py; do
             if [ -f "$test_file" ]; then pytest -q "$test_file"; fi
           done
-      - name: Generate available certificates
+      - name: Generate Phi2-HdagH certificate
         run: |
-          set -euo pipefail
           if [ -f exact_phi2_hdagh_channel_family_v20.py ]; then
             python exact_phi2_hdagh_channel_family_v20.py > /tmp/exact_phi2_hdagh_stdout.json
           fi
+      - name: Generate H10 self-quartic certificate
+        run: |
           if [ -f exact_h10_self_quartic_family_v20.py ]; then
             python exact_h10_self_quartic_family_v20.py > /tmp/exact_h10_self_quartic_stdout.json
           fi
+      - name: Generate Phi-Hdag-Sigmabar cubic certificate
+        run: |
           if [ -f exact_phi_hdag_sigmabar_cubic_audit_v20.py ]; then
             python exact_phi_hdag_sigmabar_cubic_audit_v20.py > /tmp/exact_phi_hdag_sigmabar_stdout.json
           fi
+      - name: Generate H-Sigma holomorphic completion certificate
+        run: |
           if [ -f exact_hsigma_holomorphic_charge_dressed_completion_v20.py ]; then
             python exact_hsigma_holomorphic_charge_dressed_completion_v20.py --write > /tmp/exact_hsigma_holomorphic_stdout.json
           fi
+      - name: Generate non-SUSY H-Sigma completion certificate
+        run: |
           if [ -f nonsusy_z17_pq_hsigma_completion_v20.py ]; then
             python nonsusy_z17_pq_hsigma_completion_v20.py --write > /tmp/nonsusy_hsigma_completion_stdout.json
           fi
+      - name: Generate Phi17 neutral dressing certificate
+        run: |
           if [ -f exact_phi17_neutral_dressing_completion_v20.py ]; then
             python exact_phi17_neutral_dressing_completion_v20.py --write > /tmp/exact_phi17_dressing_stdout.json
           fi
+      - name: Generate non-SUSY Phi17 dressing certificate
+        run: |
           if [ -f nonsusy_z17_pq_phi17_dressing_completion_v20.py ]; then
             python nonsusy_z17_pq_phi17_dressing_completion_v20.py --write > /tmp/nonsusy_phi17_dressing_stdout.json
           fi
+      - name: Generate potential-filter certificate
+        run: |
           if [ -f nonsusy_z17_pq_potential_filter_v20.py ]; then
             python nonsusy_z17_pq_potential_filter_v20.py > /tmp/nonsusy_filter_stdout.json
           fi

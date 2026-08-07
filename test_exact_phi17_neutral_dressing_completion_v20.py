@@ -38,4 +38,5 @@ def test_effective_map_contains_all_promoted_core_coefficients():
     assert "etaPhiSigma" in mapping["muPhiSigma_eff"]
     assert "etaH2S_minus*z^*" in mapping["kappaH2S_eff"]
     assert "etaD_minus*z^*" in mapping["muD_eff_existing_family"]
-    assert "cross" in mapping["cross_hessian_rule"].lower()
+    rule = mapping["cross_hessian_rule"].lower()
+    assert ("cross" in rule or "mixed" in rule) and "block" in rule

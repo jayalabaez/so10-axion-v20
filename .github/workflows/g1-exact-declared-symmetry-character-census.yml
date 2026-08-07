@@ -69,37 +69,46 @@ jobs:
         run: |
           python - <<'PY'
           import json
+          from pathlib import Path
 
-          d=json.load(open('G1_EXACT_DECLARED_SYMMETRY_CHARACTER_CENSUS_V20.json'))
-          assert d['n_failed']==0 and d['overall_state']=='BLOCKED', d
-          assert d['counts']['charge_and_so10_allowed_multidegrees']==74, d
-          assert d['counts']['total_potential_orbit_multiplicity']==64, d
-          assert d['anchors']['P2_H_126dag']==2, d
-          assert not d['closure']['explicit_component_tensor_basis_closed'], d
-          assert not d['flags']['g1_closed'], d
+          def load(name):
+              path = Path(name)
+              assert path.is_file(), f'missing certificate {name}'
+              data = json.loads(path.read_text(encoding='utf-8'))
+              print(f'{name}: status={data.get("status")} n_failed={data.get("n_failed")} overall={data.get("overall_state")}')
+              return data
 
-          d=json.load(open('EXACT_PHI17_NEUTRAL_DRESSING_COMPLETION_V20.json'))
-          assert d['n_failed']==0, d
-          assert d['catalogue_census']['required_dressing_count']==15, d
-          assert d['catalogue_census']['missing_count']==7, d
+          d = load('G1_EXACT_DECLARED_SYMMETRY_CHARACTER_CENSUS_V20.json')
+          assert d['n_failed'] == 0 and d['overall_state'] == 'BLOCKED', d['failures']
+          assert d['counts']['charge_and_so10_allowed_multidegrees'] == 74, d['counts']
+          assert d['counts']['total_potential_orbit_multiplicity'] == 64, d['counts']
+          assert d['anchors']['P2_H_126dag'] == 2, d['anchors']
+          assert not d['closure']['explicit_component_tensor_basis_closed'], d['closure']
+          assert not d['flags']['g1_closed'], d['flags']
 
-          d=json.load(open('EXACT_PHI17_DRESSING_CHARACTER_CROSSCHECK_V20.json'))
-          assert d['n_failed']==0, d
-          assert d['flags']['all_seven_multiplicity_one'], d
+          d = load('EXACT_PHI17_NEUTRAL_DRESSING_COMPLETION_V20.json')
+          assert d['n_failed'] == 0, d['failures']
+          assert d['catalogue_census']['required_dressing_count'] == 15, d['catalogue_census']
+          assert d['catalogue_census']['missing_count'] == 7, d['catalogue_census']
 
-          d=json.load(open('EXACT_PHI2_H_126DAG_210_1050_CHANNELS_V20.json'))
-          assert d['n_failed']==0, d
-          assert d['closure']['multiplicity_two_tensor_family_closed'], d
-          assert not d['closure']['G1_closed'], d
+          d = load('EXACT_PHI17_DRESSING_CHARACTER_CROSSCHECK_V20.json')
+          assert d['n_failed'] == 0, d['failures']
+          assert d['flags']['all_seven_multiplicity_one'], d['flags']
 
-          d=json.load(open('EXACT_PHI2_H126DAG_SELECTED_VACUUM_PROJECTION_V20.json'))
-          assert d['n_failed']==0, d
-          assert d['flags']['canonical_210_1050_projectors_reused'], d
-          assert d['flags']['selected_H_zero_stationarity_preserved'], d
-          assert d['channels']['210']['H_210_block']['rank']==3, d
-          assert d['channels']['1050']['H_210_block']['rank']==7, d
-          assert not d['flags']['full_multifield_hessian'], d
-          assert not d['flags']['whole_model_validated'], d
+          d = load('EXACT_PHI2_H_126DAG_210_1050_CHANNELS_V20.json')
+          assert d['n_failed'] == 0, d['failures']
+          assert d['closure']['multiplicity_two_tensor_family_closed'], d['closure']
+          assert not d['closure']['G1_closed'], d['closure']
+
+          d = load('EXACT_PHI2_H126DAG_SELECTED_VACUUM_PROJECTION_V20.json')
+          assert d['n_failed'] == 0, d['failures']
+          assert d['flags']['canonical_210_1050_projectors_reused'], d['flags']
+          assert d['flags']['selected_H_zero_stationarity_preserved'], d['flags']
+          assert d['channels']['210']['H_210_block']['rank'] == 3, d['channels']['210']
+          assert d['channels']['1050']['H_210_block']['rank'] == 7, d['channels']['1050']
+          assert not d['flags']['full_multifield_hessian'], d['flags']
+          assert not d['flags']['whole_model_validated'], d['flags']
+          print('g1-exact-declared-census assertions passed')
           PY
       - uses: actions/upload-artifact@v4
         if: always()

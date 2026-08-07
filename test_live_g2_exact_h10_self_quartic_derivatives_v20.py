@@ -65,18 +65,30 @@ def test_base_formulas_match_authoritative_values(state):
 
 
 def test_I1_and_I54_canonical_normalizations(state):
-    q_h = mod.chart.pack(state)[mod.chart.H_SLICE]
+    q = mod.chart.pack(state)
+    q_h = q[mod.chart.H_SLICE]
     norm = 0.5 * np.dot(q_h, q_h)
-    i1_value, i1_gradient, i1_hessian = mod.base_derivative(
-        mod.chart.pack(state), 0
+    pair, pair_gradient, pair_hessian = mod.h_squared_jet(q_h)
+    pair_modulus_value = abs(pair) ** 2
+    pair_modulus_gradient = 2.0 * np.real(
+        np.conjugate(pair) * pair_gradient
     )
-    assert abs(i1_value.real - norm**2) < 1.0e-12
+    pair_modulus_hessian = 2.0 * np.real(
+        np.conjugate(pair) * pair_hessian
+        + np.outer(np.conjugate(pair_gradient), pair_gradient)
+    )
+
+    i1_value, i1_gradient, i1_hessian = mod.base_derivative(q, 0)
+    expected_i1_value = pair_modulus_value / 10.0
+    expected_i1_gradient = pair_modulus_gradient / 10.0
+    expected_i1_hessian = pair_modulus_hessian / 10.0
+    assert abs(i1_value.real - expected_i1_value) < 1.0e-12
     assert np.max(
-        np.abs(i1_gradient[mod.chart.H_SLICE].real - 2.0 * norm * q_h)
+        np.abs(
+            i1_gradient[mod.chart.H_SLICE].real
+            - expected_i1_gradient
+        )
     ) < 1.0e-12
-    expected_i1_hessian = 2.0 * np.outer(q_h, q_h) + 2.0 * norm * np.eye(
-        mod.chart.H_REAL_DIM
-    )
     assert np.max(
         np.abs(
             i1_hessian[mod.chart.H_SLICE, mod.chart.H_SLICE].real
@@ -84,9 +96,25 @@ def test_I1_and_I54_canonical_normalizations(state):
         )
     ) < 1.0e-12
 
-    pair, _, _ = mod.h_squared_jet(q_h)
-    i54_value, _, _ = mod.base_derivative(mod.chart.pack(state), 1)
-    assert abs(i54_value.real - abs(pair) ** 2) < 1.0e-12
+    norm_squared_gradient = 2.0 * norm * q_h
+    norm_squared_hessian = 2.0 * np.outer(q_h, q_h) + 2.0 * norm * np.eye(
+        mod.chart.H_REAL_DIM
+    )
+    i54_value, i54_gradient, i54_hessian = mod.base_derivative(q, 1)
+    assert abs(i54_value.real - (norm**2 - expected_i1_value)) < 1.0e-12
+    assert np.max(
+        np.abs(
+            i54_gradient[mod.chart.H_SLICE].real
+            - (norm_squared_gradient - expected_i1_gradient)
+        )
+    ) < 1.0e-12
+    assert np.max(
+        np.abs(
+            i54_hessian[mod.chart.H_SLICE, mod.chart.H_SLICE].real
+            - (norm_squared_hessian - expected_i1_hessian)
+        )
+    ) < 1.0e-12
+    assert abs(i1_value.real + i54_value.real - norm**2) < 1.0e-12
 
 
 def test_all_dressed_values_and_dense_support(state, analytic):

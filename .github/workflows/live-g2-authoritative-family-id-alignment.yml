@@ -1,0 +1,68 @@
+name: live-g2-authoritative-family-id-alignment
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - live_g1_tensor_closure_ledger_v20.py
+      - live_g2_derivative_coverage_ledger_v20.py
+      - live_g2_exact_h10_self_quartic_derivatives_v20.py
+      - live_g2_exact_hsigma_hermitian_derivatives_v20.py
+      - live_g2_exact_phi2_hdagh_derivatives_v20.py
+      - test_live_g2_authoritative_family_id_alignment_v20.py
+      - .github/workflows/live-g2-authoritative-family-id-alignment.yml
+  push:
+    branches: [main]
+    paths:
+      - live_g1_tensor_closure_ledger_v20.py
+      - live_g2_derivative_coverage_ledger_v20.py
+      - live_g2_exact_h10_self_quartic_derivatives_v20.py
+      - live_g2_exact_hsigma_hermitian_derivatives_v20.py
+      - live_g2_exact_phi2_hdagh_derivatives_v20.py
+      - test_live_g2_authoritative_family_id_alignment_v20.py
+      - .github/workflows/live-g2-authoritative-family-id-alignment.yml
+
+concurrency:
+  group: live-g2-family-id-alignment-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  authoritative-family-id-alignment:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt pytest
+      - name: Compile ID-alignment stack
+        run: |
+          python -m py_compile \
+            live_g1_tensor_closure_ledger_v20.py \
+            live_g2_derivative_coverage_ledger_v20.py \
+            live_g2_exact_h10_self_quartic_derivatives_v20.py \
+            live_g2_exact_hsigma_hermitian_derivatives_v20.py \
+            live_g2_exact_phi2_hdagh_derivatives_v20.py \
+            test_live_g2_authoritative_family_id_alignment_v20.py
+      - name: Run fail-closed ID alignment tests
+        run: python -m pytest -q test_live_g2_authoritative_family_id_alignment_v20.py
+      - name: Assert G1 and G2 partition imports
+        run: |
+          python - <<'PY'
+          import live_g1_tensor_closure_ledger_v20 as g1
+          import live_g2_derivative_coverage_ledger_v20 as coverage
+
+          ids={row['id'] for row in g1.BASE_FAMILIES.values()}
+          covered=set(coverage.covered_families())
+          remaining=set(coverage.EXPECTED_REMAINING_FAMILIES)
+          assert len(ids)==18
+          assert len(covered)==12
+          assert len(remaining)==6
+          assert covered.isdisjoint(remaining)
+          assert covered | remaining == ids
+          PY

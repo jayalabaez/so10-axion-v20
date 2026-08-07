@@ -30,6 +30,21 @@ OUT_JSON = ROOT / "LIVE_G2_PR155_CORRECTION_AUDIT_V20.json"
 OUT_MD = ROOT / "LIVE_G2_PR155_CORRECTION_AUDIT_V20.md"
 
 
+def _json_default(value: Any) -> Any:
+    """Normalize NumPy scalars/arrays and complex values for JSON output."""
+    if isinstance(value, np.ndarray):
+        # Leave nested conversion to json; complex leaves re-enter this hook.
+        return value.tolist()
+    if isinstance(value, np.generic):
+        item = value.item()
+        if isinstance(item, complex):
+            return {"re": float(item.real), "im": float(item.imag)}
+        return item
+    if isinstance(value, complex):
+        return {"re": float(value.real), "im": float(value.imag)}
+    raise TypeError(f"Object of type {type(value).__name__} is not JSON serializable")
+
+
 def build_report() -> dict[str, Any]:
     state = corrected.deterministic_state(155)
 
@@ -170,10 +185,9 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--write", action="store_true")
     args = parser.parse_args(argv)
     report = build_report()
+    payload = json.dumps(report, indent=2, default=_json_default)
     if args.write:
-        OUT_JSON.write_text(
-            json.dumps(report, indent=2) + "\n", encoding="utf-8"
-        )
+        OUT_JSON.write_text(payload + "\n", encoding="utf-8")
         OUT_MD.write_text(
             "# PR #155 G2 correction audit\n\n"
             f"**Status:** `{report['status']}`\n\n"
@@ -181,7 +195,7 @@ def main(argv: list[str] | None = None) -> int:
             + "\n",
             encoding="utf-8",
         )
-    print(json.dumps(report, indent=2))
+    print(payload)
     return 0 if report["n_failed"] == 0 else 1
 
 
