@@ -2,8 +2,8 @@
 """Consolidated next-generation G1/G6 progress gate for SO(10) axion v20.
 
 This certificate aggregates exact triplet calculations completed after the
-original fail-closed G1-G8 ledger. It does not change the top-level gate
-states: G1 remains OPEN and G6 remains PARTIAL. It records which component
+original fail-closed G1-G8 ledger. The authoritative ledger now closes the G1
+invariant census while G6 remains PARTIAL. This report records which component
 subproblems are exact, removes tensor channels proved to vanish, and prevents
 legacy proxy matrices from re-entering the physical threshold path.
 """
@@ -179,7 +179,7 @@ def build_report() -> dict[str, Any]:
         "PhiH_Hermitian_family_complete": reports["gate45"]["flag"][
             "PhiH_Hermitian_channel_family_complete"
         ],
-        "G1_still_open": top["gates"]["G1"]["status"] == "OPEN",
+        "G1_closed": top["gates"]["G1"]["status"] == "CLOSED",
         "G6_still_partial": top["gates"]["G6"]["status"] == "PARTIAL",
         "G8_still_partial": top["gates"]["G8"]["status"] == "PARTIAL",
         "physical_spectrum_still_open": not reports["gate45"]["flag"][
@@ -274,7 +274,7 @@ def build_report() -> dict[str, Any]:
             "shared_Hermitian_54_channel_closed": not failures,
             "shared_Hermitian_45_channel_closed": not failures,
             "PhiH_Hermitian_channel_family_complete": not failures,
-            "G1_closed": False,
+            "G1_closed": top["gates"]["G1"]["status"] == "CLOSED",
             "G6_closed": False,
             "physical_triplet_spectrum_complete": False,
             "exact_unique_proton_lifetime": False,
@@ -286,9 +286,10 @@ def build_report() -> dict[str, Any]:
             "Twenty-six triplet tensor/quadratic subproblems are now exact. The "
             "Hermitian Phi-H family is complete in channels 1+45+54; the 45 "
             "currents for t2, t2bar, and t4bar are also inserted, while the "
-            "Hermitian 126bar 54 is proved absent. G1 and G6 remain unclosed "
-            "because higher Phi-Sigma irreps, mixed-background channels, 210 "
-            "component mixing, and the unique full vacuum are still missing."
+            "Hermitian 126bar 54 is proved absent. The complete invariant "
+            "census closes G1 independently; G6 remains unclosed because "
+            "higher Phi-Sigma projections, mixed-background channels, 210 "
+            "component mixing, and the unique physical spectrum are missing."
         ),
     }
 

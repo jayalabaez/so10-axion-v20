@@ -26,8 +26,8 @@ class G1G8GateLedgerTests(unittest.TestCase):
 
     def test_fail_closed_statuses(self):
         expected = {
-            "G1": mod.STATUS_OPEN,
-            "G2": mod.STATUS_PARTIAL,
+            "G1": mod.STATUS_CLOSED,
+            "G2": mod.STATUS_CLOSED,
             "G3": mod.STATUS_PARTIAL,
             "G4": mod.STATUS_PARTIAL,
             "G5": mod.STATUS_PARTIAL,
@@ -39,20 +39,56 @@ class G1G8GateLedgerTests(unittest.TestCase):
             name: row["status"] for name, row in self.report["gates"].items()
         }
         self.assertEqual(observed, expected)
-        self.assertEqual(self.report["summary"]["n_closed"], 0)
+        self.assertEqual(set(self.report["summary"]["closed"]), {"G1", "G2"})
+        self.assertEqual(self.report["summary"]["n_closed"], 2)
 
-    def test_g1_count_correction(self):
+    def test_g1_live_ring_correction(self):
         correction = self.report["gates"]["G1"]["corrections"]
-        self.assertFalse(correction["claimed_44_coefficient_census_is_authoritative_closure"])
-        self.assertEqual(correction["current_authoritative_signed_guaranteed_floor"], 34)
-        self.assertFalse(correction["floor_is_complete_ring"])
+        self.assertFalse(correction["historical_signed_floor34_is_complete_ring"])
+        self.assertFalse(correction["historical_44_coefficient_census_is_current_live_ring"])
+        self.assertEqual(correction["live_hermitian_conjugacy_orbits"], 48)
+        self.assertEqual(correction["live_independent_invariant_directions"], 64)
+        self.assertEqual(correction["live_real_potential_parameters"], 91)
+        self.assertEqual(correction["live_base_tensor_families"], 18)
+        self.assertTrue(correction["live_ring_closed"])
 
-    def test_g4_null_mode_correction(self):
+    def test_g2_complete_derivative_assembly(self):
+        correction = self.report["gates"]["G2"]["corrections"]
+        self.assertEqual(correction["base_families"], 18)
+        self.assertEqual(correction["invariant_directions"], 64)
+        self.assertEqual(correction["real_parameters"], 91)
+        self.assertEqual(correction["real_field_dimension"], 486)
+        self.assertTrue(correction["G2_closed"])
+
+    def test_g3_first_order_scope_is_honest(self):
+        gate = self.report["gates"]["G3"]
+        self.assertEqual(gate["status"], mod.STATUS_PARTIAL)
+        self.assertIn(
+            "find a tachyon-free stationary member; the current witness and bounded search remain nonpositive",
+            gate["open_scope"],
+        )
+        self.assertFalse(
+            gate["corrections"]["first_order_feasibility_is_global_vacuum_proof"]
+        )
+        self.assertEqual(
+            gate["corrections"]["anchored_witness_physical_negative_modes"], 46
+        )
+        self.assertEqual(
+            gate["corrections"]["massive_physical_quotient_dimension"], 449
+        )
+        self.assertFalse(gate["corrections"]["local_saddle_is_global_vacuum"])
+
+    def test_g4_stage_resolved_null_mode_correction(self):
         correction = self.report["gates"]["G4"]["corrections"]
-        self.assertEqual(correction["exact_gauge_goldstones"], 33)
+        self.assertEqual(correction["pre_EW_SO10_to_SM_goldstones"], 33)
+        self.assertEqual(correction["physical_EW_SO10_to_U1em_goldstones"], 36)
         self.assertEqual(correction["preprojection_phase_spectator_zeros"], 4)
         self.assertEqual(correction["bookkeeping_sum_33_plus_4"], 37)
         self.assertFalse(correction["thirty_seven_physical_null_modes"])
+        self.assertIn(
+            "full 486x486 witness Hessian projected to the 449-dimensional massive quotient",
+            self.report["gates"]["G4"]["closed_scope"],
+        )
 
     def test_g6_rejects_legacy_scalar_thresholds(self):
         correction = self.report["gates"]["G6"]["corrections"]

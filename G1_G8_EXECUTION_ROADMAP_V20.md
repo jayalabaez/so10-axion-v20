@@ -1,92 +1,91 @@
 # SO(10) axion v20 — executable G1–G8 roadmap
 
-**Authoritative claim boundary:** this is a candidate-theory closure program. A novel calculation is not an empirical discovery, and no new-particle claim is permitted without independent review and experimental evidence.
+**Status:** `G1_G8_EXECUTION_ROADMAP_READY__G1_G2_CLOSED__G3_PARTIAL`
+
+G1 and G2 are closed and the exact G3 witness is a physical saddle. The remaining program is dependency ordered; G3 cannot close until a tachyon-free stationary member survives BFB and competing-extrema tests.
 
 ## Critical path
 
 `G1 → G2 → G3/G4/G5 → G6 → G7 → G8`
 
-No downstream gate may be called closed while a dependency remains incomplete. A mathematically correct terminal result may be `THEORY_FAIL`.
+## Gate ledger
 
-## Current gate ledger
+| Gate | Status | Immediate blocker | Issue |
+|---|---:|---|---:|
+| G1 | CLOSED | none | #176 |
+| G2 | CLOSED | none | #176 |
+| G3 | PARTIAL | find a tachyon-free stationary member, then prove BFB and global preference | #178 |
+| G4 | PARTIAL | positive quotient spectrum at a surviving G3 member | #178 |
+| G5 | PARTIAL | copositivity/stratified BFB proof for the complete G2 tensor potential | #86 |
+| G6 | PARTIAL | complete positive gauge-quotiented scalar spectrum with SM irreps and mixing | #106 |
+| G7 | OPEN | complete source-validated SO(10)+210 two-loop beta system and independent reproduction | #126 |
+| G8 | PARTIAL | unique G3 vacuum, G6 spectrum, G7 running, mass-basis flavour/Wilson tensors, phases, and uncertainties | #106 |
 
-| Gate | Status | Completed subtheorems | Terminal blocker | Tracking |
-|---|---:|---|---|---:|
-| G1 | OPEN | Pure-210 sector; direct `Phi-H-Sigmabar` tensor; selected exact 1/45/54 channels; triplet ledgers | Complete mixed Molien/Haar ring, multiplicities, syzygies, and canonical normalizations | #127 |
-| G2 | PARTIAL | Direct `lambda4` block; neutral `H10+S+Phi17`; fixed-background full `H10` potential | Project every normalized G1 invariant into one canonical non-SUSY component potential | #128 |
-| G3 | PARTIAL | Reduced radial global minimum; neutral and fixed-background H10 stationarity; reduced EW backreaction retuning | Simultaneous all-component stationarity and competing-extrema proof | #86, #125 |
-| G4 | PARTIAL | 33 SO(10)→SM gauge directions; three electroweak Goldstones; reduced quotient Hessians | One combined normalized SO(10)→U(1)EM tangent basis and full component Hessian | #86 |
-| G5 | PARTIAL | Pure/reduced BFB; neutral and fixed-background H10 BFB; five-field radial EW-portal BFB | Stratified/copotivity proof for the complete G2 potential | #86 |
-| G6 | PARTIAL | Selected triplet Clebsches and Nambu blocks; signed diagnostics; fixed-background H10 spectrum | Complete positive physical scalar spectrum with SM irreps, mixing, and uncertainties | #106 |
-| G7 | OPEN | Verified one-loop chain and calibrated diagnostic two-loop proxy | Source-validated SO(10)+210 two-loop system, complete G6 matching, and independent reproduction | #126 |
-| G8 | PARTIAL | Fail-closed gauge envelope; scalar stress tests; conditional interference diagnostics | Unique G3 vacuum, G6 spectrum, G7 running, mass-basis flavour/Wilson tensors, phases, and uncertainties | #106 |
+## Execution tasks
 
-## Execution waves
+### W1-G1-MOLIEN — `COMPLETED`
 
-### Wave 1 — Close G1
+- Gates: `G1`
+- Issue: `#176`
+- Deliverable: complete mixed Hilbert/Molien series and independent tensor representatives
+- Acceptance: multiplicities, independence, syzygies, conjugation, and normalizations are machine verified
 
-1. Compute the complete charge-filtered mixed Molien/Haar or equivalent Hilbert series.
-2. Prove multiplicities, algebraic independence, conjugation structure, and syzygies.
-3. Construct canonical tensor representatives and kinetic normalizations.
-4. Reproduce the count with an independent implementation.
+### W2-G2-PROJECTION — `COMPLETED`
 
-**Acceptance:** no guessed multiplicity or Clebsch; every G2 coefficient has a normalized machine-checkable G1 witness.
+- Gates: `G2`
+- Issue: `#176`
+- Deliverable: single canonical component potential and operator-provenance graph
+- Acceptance: every component entry traces to one normalized G1 invariant with correct dimension and charge
 
-### Wave 2 — Close G2
+### W3-G3G5-EW-BACKREACTION — `EXECUTED_IN_THIS_CHANGE`
 
-1. Define one canonical PS/SM component basis.
-2. Project every G1 invariant into the component potential.
-3. Generate symbolic gradients, Hessian blocks, and operator-provenance maps.
-4. Test dimensions, Hermiticity, rephasings, permutations, and forbidden zeros.
+- Gates: `G3, G5`
+- Issue: `#125`
+- Deliverable: all reduced h^2 r_i^2 portals, mass retuning, radial stationarity/BFB, and tuning bounds
+- Acceptance: positive quartic form and Hessian, exact target stationarity, fail-closed full-tensor flags
 
-**Acceptance:** every component matrix entry traces to one allowed normalized invariant.
+### W3-G3-FULL-STATIONARITY — `EXECUTED__STATIONARY_SADDLE`
 
-### Wave 3 — Close G3/G4/G5
+- Gates: `G3`
+- Issue: `#178`
+- Deliverable: all-component stationarity, physical Hessian classification, and stable-family search
+- Acceptance: a tachyon-free stationary member is below every enumerated boundary and symmetry-enhanced extremum
 
-1. Solve all amplitude and phase stationarity equations.
-2. Enumerate boundary, symmetry-enhanced, and competing extrema.
-3. Build the combined SO(10)→U(1)EM gauge tangent basis and quotient the Hessian.
-4. Require no non-axion physical zero or negative modes.
-5. Prove BFB on every large-field stratum of the complete potential.
+### W3-G4-FULL-QUOTIENT — `EXECUTED__QUOTIENT_SADDLE`
 
-**Acceptance:** target vacuum is stationary, globally preferred, gauge-quotiented, and bounded.
+- Gates: `G4`
+- Issue: `#178`
+- Deliverable: normalized combined SO(10) to U(1)_EM gauge tangent basis and quotient Hessian
+- Acceptance: exact gauge-null count and no non-axion zero or negative physical modes
 
-### Wave 4 — Close G6
+### W3-G5-FULL-BFB — `READY_ON_CLOSED_G1_G2`
 
-1. Diagonalize the complete non-SUSY component Hessian.
-2. Emit each SM-irrep eigenmass, multiplicity, mixing, uncertainty, and provenance.
-3. Reject tachyonic or singular points before threshold/proton calculations.
+- Gates: `G5`
+- Issue: `#86`
+- Deliverable: large-field-stratum BFB/copotivity certificate for the complete potential
+- Acceptance: every asymptotic field direction is covered without random-scan substitution
 
-**Acceptance:** complete positive physical spectrum with no SUSY-fermion/gaugino contamination.
+### W4-G6-SPECTRUM — `BLOCKED_ON_G3_G4_G5`
 
-### Wave 5 — Close G7
+- Gates: `G6`
+- Issue: `#106`
+- Deliverable: all physical scalar eigenmasses, SM irreps, multiplicities, mixings, and uncertainties
+- Acceptance: positive spectrum, complete provenance, basis invariance, and no SUSY matrix contamination
 
-1. Derive or ingest the complete two-loop gauge/Yukawa beta functions for the actual field content.
-2. Match every G6 component at its eigenmass and run VEVs/Yukawa matrices.
-3. Record scheme conversions and uncertainties.
-4. Reproduce with an independent symbolic or numerical implementation.
+### W5-G7-TWO-LOOP — `BLOCKED_ON_G6_AND_EXTERNAL_VALIDATION`
 
-**Acceptance:** two independent calculations agree within declared tolerances.
+- Gates: `G7`
+- Issue: `#126`
+- Deliverable: complete two-loop betas, component matching, running VEVs, and two implementations
+- Acceptance: independent calculations agree within declared tolerances
 
-### Wave 6 — Close G8
+### W6-G8-PROTON — `BLOCKED_ON_G3_G6_G7`
 
-1. Rotate gauge and scalar interactions into the physical mass basis.
-2. Compute channel Wilson coefficients, running, hadronic matching, phases, and interference.
-3. Propagate CG, threshold, flavour, RGE, and hadronic uncertainties.
-4. Compare all channels with current limits without converting a conditional failure into whole-model exclusion.
+- Gates: `G8`
+- Issue: `#106`
+- Deliverable: mass-basis Wilson coefficients, running, hadronic matching, phases, interference, and uncertainties
+- Acceptance: one uniquely selected vacuum produces the reported lifetime distribution
 
-**Acceptance:** one uniquely selected physical vacuum produces the reported lifetime distribution.
+## Scientific claim boundary
 
-## Executed in PR #129
-
-The reduced radial fields `(P_210, Delta_R, S, Phi17, h_EW)` now include all four nonzero `h^2 r_i^2` portals. The implementation:
-
-- reconstructs the equivalent unshifted quadratic mass parameters;
-- verifies target stationarity;
-- proves radial BFB and Hessian positivity using `H=2 diag(v) B diag(v)`;
-- quantifies the enormous Higgs-sector cancellation from generic portals;
-- derives portal bounds for a tuning budget of ten;
-- verifies a sequestered benchmark;
-- keeps complete tensor backreaction, global vacuum, whole-model validation, and discovery flags false.
-
-This closes a reduced G3/G5 subgate only. It also shows that mathematical existence does not solve the electroweak hierarchy problem: a UV sequestering or hierarchy mechanism is still required.
+A mathematically consistent candidate, a novel calculation, and an empirical discovery are distinct. No discovery claim is permitted without independent review and experimental evidence.

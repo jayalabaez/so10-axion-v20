@@ -24,6 +24,31 @@ STATUS_BLOCKED = "BLOCKED"
 # focused CI; this ledger verifies that downstream closure flags cannot drift
 # silently back to True.
 SOURCE_CONTRACTS: dict[str, tuple[str, ...]] = {
+    "live_g1_tensor_closure_ledger_v20.py": (
+        '"g1_closed": g1_closed',
+        '"explicit_tensor_basis_all_64_directions_closed": g1_closed',
+        '"real_potential_parameters": 91',
+    ),
+    "live_g2_derivative_coverage_ledger_v20.py": (
+        '"G2_closed": not failures',
+        '"all_64_direction_gradients_complete": not failures',
+        '"all_91_real_parameter_derivatives_complete": not failures',
+    ),
+    "g3_full_stationarity_feasibility_v20.py": (
+        '"physical_EW_goldstones_36": not failures',
+        '"G3_closed": False',
+        '"stationary_witness_relative_residual"',
+    ),
+    "g3_full_hessian_classification_v20.py": (
+        '"full_486x486_stationary_Hessian_assembled": not execution_failures',
+        '"strict_local_physical_minimum": locally_positive',
+        '"G3_closed": False',
+    ),
+    "g3_stationary_stability_search_v20.py": (
+        '"full_stationarity_affine_family_constructed": not execution_failures',
+        '"strict_local_physical_minimum_found": locally_positive',
+        '"G3_closed": False',
+    ),
     "promote_210n_tensor_basis_uniqueness_v20.py": (
         '"unique_from_full_pure_210n_tensor_basis": True',
         '"mixed_rep_full_hilbert_series": False',
@@ -148,82 +173,103 @@ def _gates() -> dict[str, dict[str, Any]]:
     return {
         "G1": {
             "title": "Invariant ring and component Clebsch tensors",
-            "status": STATUS_OPEN,
+            "status": STATUS_CLOSED,
             "closed_scope": [
-                "pure-210 Hilbert sector H2=1,H3=2,H4=4",
-                "direct Phi-H-Sigmabar tensor",
-                "signed guaranteed mixed-invariant floor 34",
+                "exact live SO(10)+PQ+Z17 renormalizable tensor ring",
+                "48 Hermitian-conjugacy orbits",
+                "64 independent normalized invariant directions",
+                "91 real potential parameters across 18 base tensor families",
             ],
-            "open_scope": [
-                "complete mixed Molien/Haar ring",
-                "all multiplicities, independence witnesses, and component normalizations",
-            ],
+            "open_scope": [],
             "corrections": {
-                "claimed_44_coefficient_census_is_authoritative_closure": False,
-                "current_authoritative_signed_guaranteed_floor": 34,
-                "floor_is_complete_ring": False,
+                "historical_signed_floor34_is_complete_ring": False,
+                "historical_44_coefficient_census_is_current_live_ring": False,
+                "live_hermitian_conjugacy_orbits": 48,
+                "live_independent_invariant_directions": 64,
+                "live_real_potential_parameters": 91,
+                "live_base_tensor_families": 18,
+                "live_ring_closed": True,
             },
             "closure_route_defined": True,
-            "current_runner_can_close_without_new_tensor_derivation": False,
+            "closed_on_current_main": True,
         },
         "G2": {
             "title": "Fully projected non-SUSY component potential",
-            "status": STATUS_PARTIAL,
+            "status": STATUS_CLOSED,
             "closed_scope": [
-                "direct lambda4 portal M2 block",
-                "selected exact projectors and reduced projections",
+                "all 18 authoritative base families projected on the canonical chart",
+                "all 64 invariant directions and all 91 real coefficients assembled",
+                "exact 486-real gradient and symmetric 486x486 Hessian",
+                "value, first-derivative, and second-derivative reconstruction",
             ],
-            "open_scope": [
-                "project every G1 invariant into one canonical component potential",
-            ],
+            "open_scope": [],
+            "corrections": {
+                "base_families": 18,
+                "invariant_directions": 64,
+                "real_parameters": 91,
+                "real_field_dimension": 486,
+                "G2_closed": True,
+            },
             "closure_route_defined": True,
-            "current_runner_can_close_without_G1": False,
+            "closed_on_current_main": True,
         },
         "G3": {
             "title": "Stationarity and global vacuum",
             "status": STATUS_PARTIAL,
             "closed_scope": [
-                "interior reduced soft-shift selections",
-                "physical-hEW reduced lambda4=0 survival benchmark",
+                "full 486x91 first-order stationarity system at the physical hierarchy candidate",
+                "perturbative anchored coefficient witness satisfying all 486 gradient equations",
+                "exact normalized gauge Ward audit",
+                "stage-resolved gauge-orbit ranks 33 before EW and 36 at hEW=174 GeV",
+                "exact dense 486x486 Hessian assembled for the anchored witness",
+                "36 gauge plus one independent PQ direction removed, leaving 449 physical modes",
+                "anchored witness classified as a saddle with 46 negative and zero accidental-flat modes",
+                "77-dimensional perturbative stationary family subjected to a fail-closed spectral cutting-plane search",
             ],
             "open_scope": [
-                "unconstrained all-component stationarity and global competing-extrema proof",
+                "find a tachyon-free stationary member; the current witness and bounded search remain nonpositive",
+                "complete boundedness certificate",
+                "global classification of boundary, symmetry-enhanced, and competing extrema",
             ],
             "corrections": {
                 "interior_soft_shift_minimum_is_free_global_extremum": False,
                 "proton_mediator_tie_break_is_vacuum_equation": False,
+                "first_order_feasibility_is_global_vacuum_proof": False,
+                "pre_EW_goldstones": 33,
+                "physical_EW_goldstones": 36,
+                "anchored_witness_physical_negative_modes": 46,
+                "anchored_witness_unintended_zero_modes": 0,
+                "massive_physical_quotient_dimension": 449,
+                "local_saddle_is_global_vacuum": False,
             },
             "closure_route_defined": True,
-            "current_runner_can_close_without_G2": False,
+            "current_runner_can_close_without_new_stable_witness_BFB_and_global_search": False,
         },
         "G4": {
             "title": "Gauge quotient, axion directions, and physical Hessian",
             "status": STATUS_PARTIAL,
             "closed_scope": [
-                "exact broken-generator and generic Goldstone orbit count 33",
-                "reduced physical-hEW lambda4=0 Hessian positive definite",
+                "exact pre-EW SO(10) to SM orbit rank 33",
+                "exact physical-EW rank increment 3 and total orbit rank 36",
+                "normalized physical PQ direction separated from the gauge orbit",
+                "full 486x486 witness Hessian projected to the 449-dimensional massive quotient",
                 "reduced phase Hessian projected to unitary gauge",
             ],
             "open_scope": [
-                "full gauge-projected non-SUSY component Hessian",
-                "root-by-root normalized Goldstone basis",
-                "all non-Goldstone physical eigenvalues",
+                "positive quotient Hessian at a surviving stationary member",
+                "all positive non-Goldstone non-axion masses at that surviving member",
             ],
             "corrections": {
-                "exact_gauge_goldstones": 33,
+                "pre_EW_SO10_to_SM_goldstones": 33,
+                "physical_EW_SO10_to_U1em_goldstones": 36,
                 "preprojection_phase_spectator_zeros": 4,
                 "bookkeeping_sum_33_plus_4": 37,
                 "thirty_seven_physical_null_modes": False,
                 "spectator_zeros_are_removed_before_physical_spectrum": True,
-                "so10_to_sm_count_is_not_so10_to_uem_with_hew": True,
-                "note_33_vs_36": (
-                    "33 counts broken SO(10)→SM generators on this ledger. "
-                    "A separate SO(10)→U(1)_EM + h_EW count of 36 is a different "
-                    "breaking stage and must not be added into 37 physical null modes."
-                ),
+                "tiny_EW_tangents_must_not_be_sparsified": True,
             },
             "closure_route_defined": True,
-            "current_runner_can_close_without_G2_and_G3": False,
+            "current_runner_can_close_without_G3_local_hessian": False,
         },
         "G5": {
             "title": "Boundedness from below",
@@ -232,9 +278,9 @@ def _gates() -> dict[str, dict[str, Any]]:
                 "pure/reduced BFB certificates",
                 "locking modulus companion",
             ],
-            "open_scope": ["global mixed-field BFB of the complete G2 potential"],
+            "open_scope": ["global mixed-field BFB of the complete closed G2 potential"],
             "closure_route_defined": True,
-            "current_runner_can_close_without_G1_and_G2": False,
+            "current_runner_can_close_without_full_copositivity_or_stratum_certificate": False,
         },
         "G6": {
             "title": "Physical threshold spectrum",
@@ -246,7 +292,7 @@ def _gates() -> dict[str, dict[str, Any]]:
                 "published Aulakh PS light-triplet branching census (t1/t2/t4; t3 absent; t5 heavy)",
             ],
             "open_scope": [
-                "kinetic normalizations and nonsusy component Clebsches for M_T^2",
+                "kinetic normalizations and nonsusy component Clebsches for the complete M_T^2",
                 "complete positive physical scalar spectrum with SM irreps and uncertainties",
             ],
             "corrections": {
@@ -307,12 +353,17 @@ def build_report() -> dict[str, Any]:
         "source_contracts_current": source_audit["n_failed"] == 0,
         "dependency_graph_acyclic": _acyclic_dependencies(),
         "all_eight_gates_present": set(gates) == {f"G{i}" for i in range(1, 9)},
-        "no_false_closed_gate": not closed,
-        "g1_signed_floor_not_called_complete": not gates["G1"]["corrections"]["floor_is_complete_ring"],
-        "g4_uses_33_gauge_goldstones": gates["G4"]["corrections"]["exact_gauge_goldstones"] == 33,
-        "g6_legacy_scalar_thresholds_rejected": not gates["G6"]["corrections"]["legacy_locked_triplet_threshold_chain_is_physical"],
-        "g7_two_loop_remains_open": gates["G7"]["status"] == STATUS_OPEN,
-        "g8_no_unique_lifetime": not gates["G8"]["corrections"]["exact_unique_proton_lifetime_derived"],
+        "closed_gate_set_is_exactly_G1_G2": set(closed) == {"G1", "G2"},
+        "G1_live_ring_closed": gates["G1"]["corrections"]["live_ring_closed"],
+        "G2_complete_486_derivative_assembly_closed": gates["G2"]["corrections"]["G2_closed"],
+        "G3_first_order_not_promoted_to_global_vacuum": not gates["G3"]["corrections"]["first_order_feasibility_is_global_vacuum_proof"],
+        "G4_distinguishes_33_preEW_from_36_physicalEW": (
+            gates["G4"]["corrections"]["pre_EW_SO10_to_SM_goldstones"] == 33
+            and gates["G4"]["corrections"]["physical_EW_SO10_to_U1em_goldstones"] == 36
+        ),
+        "G6_legacy_scalar_thresholds_rejected": not gates["G6"]["corrections"]["legacy_locked_triplet_threshold_chain_is_physical"],
+        "G7_two_loop_remains_open": gates["G7"]["status"] == STATUS_OPEN,
+        "G8_no_unique_lifetime": not gates["G8"]["corrections"]["exact_unique_proton_lifetime_derived"],
         "calculation_route_defined_for_every_gate": all(row["closure_route_defined"] for row in gates.values()),
     }
     failures = list(source_audit["failures"]) + [name for name, ok in checks.items() if not ok]
@@ -341,9 +392,9 @@ def build_report() -> dict[str, Any]:
             "n_blocked": len(blocked),
         },
         "closure_waves": [
-            {"wave": 1, "gates": ["G1"], "deliverable": "Complete signed mixed invariant ring and normalized tensor basis."},
-            {"wave": 2, "gates": ["G2"], "deliverable": "Project every invariant into one canonical non-SUSY component potential."},
-            {"wave": 3, "gates": ["G3", "G4", "G5"], "deliverable": "Solve global vacuum, quotient Hessian, and global BFB in parallel."},
+            {"wave": 1, "gates": ["G1"], "deliverable": "CLOSED: complete live invariant ring and normalized tensor basis."},
+            {"wave": 2, "gates": ["G2"], "deliverable": "CLOSED: complete canonical potential derivatives on 486 real fields."},
+            {"wave": 3, "gates": ["G3", "G4", "G5"], "deliverable": "NEXT: solve quotient Hessian, global vacuum, and complete BFB."},
             {"wave": 4, "gates": ["G6"], "deliverable": "Emit the complete physical threshold spectrum and uncertainties."},
             {"wave": 5, "gates": ["G7"], "deliverable": "Run independently validated two-loop RG and component matching."},
             {"wave": 6, "gates": ["G8"], "deliverable": "Compute unique lifetimes or falsify the selected model point."},
@@ -364,10 +415,13 @@ def build_report() -> dict[str, Any]:
             ],
         },
         "verdict": (
-            "The complete G1–G8 program is defined and attemptable, but current "
-            "evidence closes no gate at full-model scope. G1→G2 is the root; "
-            "G3/G4/G5 determine G6, which unlocks G7 and finally G8. Finishing "
-            "may validate a point or falsify it; survival is not guaranteed."
+            "G1 and G2 are closed on current main: the live 64-direction, 91-real-"
+            "parameter invariant ring is projected into exact 486-real gradients "
+            "and Hessians. G3 has advanced to full first-order stationarity and the "
+            "correct 33/36 stage-resolved gauge count, but local quotient-Hessian "
+            "positivity, complete BFB, and global competing extrema remain open. "
+            "Those results determine G4/G5 and then unlock G6→G7→G8. Completion "
+            "may validate or falsify the candidate; survival is not guaranteed."
         ),
     }
 

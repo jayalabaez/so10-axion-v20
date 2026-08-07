@@ -98,10 +98,13 @@ jobs:
           ref=json.load(open('PUBLICATION_REFEREE_GATE_V20.json'))
           assert ledger['n_failed']==0, ledger['failures']
           assert ledger['overall_state']=='BLOCKED'
-          assert ledger['summary']['n_closed']==0
-          assert ledger['gates']['G1']['status']=='OPEN'
+          assert ledger['summary']['closed']==['G1','G2']
+          assert ledger['summary']['n_closed']==2
+          assert ledger['gates']['G1']['status']=='CLOSED'
+          assert ledger['gates']['G2']['status']=='CLOSED'
           assert ledger['gates']['G7']['status']=='OPEN'
-          assert ledger['gates']['G4']['corrections']['exact_gauge_goldstones']==33
+          assert ledger['gates']['G4']['corrections']['pre_EW_SO10_to_SM_goldstones']==33
+          assert ledger['gates']['G4']['corrections']['physical_EW_SO10_to_U1em_goldstones']==36
           assert not ledger['gates']['G4']['corrections']['thirty_seven_physical_null_modes']
           assert ledger['feasibility']['complete_closure_program_is_well_defined']
           assert not ledger['feasibility']['all_gates_closable_from_current_repo_evidence']

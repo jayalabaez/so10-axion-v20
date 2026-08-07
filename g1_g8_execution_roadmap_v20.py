@@ -30,49 +30,51 @@ DEPENDENCIES = {
 GATES: dict[str, dict[str, Any]] = {
     "G1": {
         "title": "Invariant ring and canonical component Clebsches",
-        "status": "OPEN",
+        "status": "CLOSED",
         "completed_subtheorems": [
-            "pure-210 invariant sector",
-            "direct Phi-H-Sigmabar tensor map",
-            "exact selected 1/45/54 mixed channels",
-            "triplet component and branching ledgers",
+            "exact 18-family tensor invariant census",
+            "64 independent invariant directions",
+            "91 real potential parameters",
+            "canonical normalization and provenance ledger",
         ],
-        "terminal_blocker": "complete mixed Molien/Haar ring, multiplicities, syzygies, and canonical tensor normalization",
-        "primary_issue": 127,
+        "terminal_blocker": "none",
+        "primary_issue": 176,
     },
     "G2": {
         "title": "Fully projected non-SUSY component potential",
-        "status": "PARTIAL",
+        "status": "CLOSED",
         "completed_subtheorems": [
-            "direct lambda4 portal block",
-            "neutral H10/S/Phi17 potential",
-            "fixed-background all-component H10 potential",
+            "canonical 486-real-coordinate component chart",
+            "exact potential and all 486 gradient components",
+            "exact dense 486x486 Hessian from all 18 families",
+            "18 family adapters and derivative-coverage ledger",
         ],
-        "terminal_blocker": "projection of every normalized G1 invariant into one canonical component potential",
-        "primary_issue": 128,
+        "terminal_blocker": "none",
+        "primary_issue": 176,
     },
     "G3": {
         "title": "Stationarity and global vacuum",
         "status": "PARTIAL",
         "completed_subtheorems": [
-            "reduced radial global-minimum witness",
-            "neutral H10/S/Phi17 stationary vacuum",
-            "fixed-GUT all-component H10 stationary vacuum",
-            "reduced electroweak backreaction mass retuning",
+            "all 486 tadpoles solved in the physical hierarchy",
+            "exact 486x486 stationary Hessian assembled",
+            "449-dimensional physical quotient classified",
+            "77-dimensional stationary coupling family searched fail-closed",
         ],
-        "terminal_blocker": "simultaneous all-component stationarity and competing-extrema proof",
-        "primary_issue": 86,
+        "terminal_blocker": "find a tachyon-free stationary member, then prove BFB and global preference",
+        "primary_issue": 178,
     },
     "G4": {
         "title": "Gauge quotient, axion directions, and physical Hessian",
         "status": "PARTIAL",
         "completed_subtheorems": [
-            "33 broken generators for SO(10) to SM stage",
-            "three electroweak Goldstones in the H10 fixed-background gate",
-            "neutral and full-H10 gauge-quotiented positive Hessians",
+            "33 pre-electroweak gauge directions",
+            "three independent electroweak Goldstones",
+            "independent global PQ axion direction",
+            "full 36+1 quotient of the exact witness Hessian",
         ],
-        "terminal_blocker": "one combined normalized SO(10) to U(1)_EM tangent basis and full component Hessian",
-        "primary_issue": 86,
+        "terminal_blocker": "positive quotient spectrum at a surviving G3 member",
+        "primary_issue": 178,
     },
     "G5": {
         "title": "Boundedness from below",
@@ -126,8 +128,8 @@ TASKS = [
         "id": "W1-G1-MOLIEN",
         "wave": 1,
         "gates": ["G1"],
-        "status": "BLOCKED_NEW_DERIVATION",
-        "issue": 127,
+        "status": "COMPLETED",
+        "issue": 176,
         "deliverable": "complete mixed Hilbert/Molien series and independent tensor representatives",
         "acceptance": "multiplicities, independence, syzygies, conjugation, and normalizations are machine verified",
     },
@@ -135,8 +137,8 @@ TASKS = [
         "id": "W2-G2-PROJECTION",
         "wave": 2,
         "gates": ["G2"],
-        "status": "BLOCKED_ON_G1",
-        "issue": 128,
+        "status": "COMPLETED",
+        "issue": 176,
         "deliverable": "single canonical component potential and operator-provenance graph",
         "acceptance": "every component entry traces to one normalized G1 invariant with correct dimension and charge",
     },
@@ -153,17 +155,17 @@ TASKS = [
         "id": "W3-G3-FULL-STATIONARITY",
         "wave": 3,
         "gates": ["G3"],
-        "status": "BLOCKED_ON_G2",
-        "issue": 86,
-        "deliverable": "all-component amplitude and phase solutions plus competing extrema",
-        "acceptance": "target is stationary and below every enumerated boundary and symmetry-enhanced extremum",
+        "status": "EXECUTED__STATIONARY_SADDLE",
+        "issue": 178,
+        "deliverable": "all-component stationarity, physical Hessian classification, and stable-family search",
+        "acceptance": "a tachyon-free stationary member is below every enumerated boundary and symmetry-enhanced extremum",
     },
     {
         "id": "W3-G4-FULL-QUOTIENT",
         "wave": 3,
         "gates": ["G4"],
-        "status": "BLOCKED_ON_G2_G3",
-        "issue": 86,
+        "status": "EXECUTED__QUOTIENT_SADDLE",
+        "issue": 178,
         "deliverable": "normalized combined SO(10) to U(1)_EM gauge tangent basis and quotient Hessian",
         "acceptance": "exact gauge-null count and no non-axion zero or negative physical modes",
     },
@@ -171,7 +173,7 @@ TASKS = [
         "id": "W3-G5-FULL-BFB",
         "wave": 3,
         "gates": ["G5"],
-        "status": "BLOCKED_ON_G1_G2",
+        "status": "READY_ON_CLOSED_G1_G2",
         "issue": 86,
         "deliverable": "large-field-stratum BFB/copotivity certificate for the complete potential",
         "acceptance": "every asymptotic field direction is covered without random-scan substitution",
@@ -206,6 +208,11 @@ TASKS = [
 ]
 
 MILESTONES = [
+    {
+        "pr": 176,
+        "merge_commit": "71ab6d970b7730255bb0ac1f10610b95ac881b46",
+        "result": "G1/G2 closure: 18 families, 64 directions, 91 parameters, and exact 486x486 Hessian",
+    },
     {
         "pr": 123,
         "merge_commit": "53b498e55fc8d7ef668e5d8d9cf355094f736888",
@@ -248,12 +255,14 @@ def build_report() -> dict[str, Any]:
         "task_ids_unique": len(task_ids) == len(set(task_ids)),
         "every_gate_has_execution_task": gates_with_tasks == set(GATES),
         "every_task_has_acceptance": all(bool(task["acceptance"]) for task in TASKS),
-        "no_false_closed_gate": all(row["status"] != "CLOSED" for row in GATES.values()),
+        "exact_closed_prefix": [
+            name for name, row in GATES.items() if row["status"] == "CLOSED"
+        ] == ["G1", "G2"],
         "G7_blocked_on_G6": DEPENDENCIES["G7"] == ["G6"],
         "G8_dependencies_complete": DEPENDENCIES["G8"] == ["G3", "G6", "G7"],
-        "reduced_backreaction_executed_not_full_G3": any(
-            task["id"] == "W3-G3G5-EW-BACKREACTION"
-            and task["status"] == "EXECUTED_IN_THIS_CHANGE"
+        "full_G3_audited_fail_closed": any(
+            task["id"] == "W3-G3-FULL-STATIONARITY"
+            and task["status"] == "EXECUTED__STATIONARY_SADDLE"
             for task in TASKS
         )
         and GATES["G3"]["status"] == "PARTIAL",
@@ -262,7 +271,7 @@ def build_report() -> dict[str, Any]:
     failures = [name for name, passed in checks.items() if not passed]
     return {
         "status": (
-            "G1_G8_EXECUTION_ROADMAP_READY__PHYSICS_GATES_REMAIN_OPEN"
+            "G1_G8_EXECUTION_ROADMAP_READY__G1_G2_CLOSED__G3_PARTIAL"
             if not failures
             else "G1_G8_EXECUTION_ROADMAP_FAILED"
         ),
@@ -280,8 +289,9 @@ def build_report() -> dict[str, Any]:
         ),
         "checks": checks,
         "verdict": (
-            "The full program is executable as a dependency-ordered research project, but it cannot be honestly "
-            "finished by skipping G1/G2 or by promoting reduced/fixed-background theorems into a full-model PASS."
+            "G1 and G2 are closed and the exact G3 witness is a physical saddle. The remaining program is "
+            "dependency ordered; G3 cannot close until a tachyon-free stationary member survives BFB and "
+            "competing-extrema tests."
         ),
     }
 

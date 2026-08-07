@@ -36,7 +36,9 @@ class AuthoritativeFullModelGateTests(unittest.TestCase):
 
     def test_root_and_downstream_blockers_present(self):
         blockers = set(self.report["blockers"])
-        self.assertIn("G1_NOT_CLOSED", blockers)
+        self.assertNotIn("G1_NOT_CLOSED", blockers)
+        self.assertNotIn("G2_NOT_CLOSED", blockers)
+        self.assertIn("G3_NOT_CLOSED", blockers)
         self.assertIn("G7_NOT_CLOSED", blockers)
         self.assertIn("G8_NOT_CLOSED", blockers)
         self.assertTrue(any(item.startswith("PROTON_READINESS_") for item in blockers))

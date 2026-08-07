@@ -299,9 +299,13 @@ def gauge_tangent(
         raise ValueError("generator requires 0 <= first < second < 10")
     value = state.validated()
     delta_phi = direct.generator_action(value.phi, first, second)
-    delta_h = _form_vector(
-        direct.generator_action(_vector_form(value.h), first, second)
-    )
+    # For the vector representation the generator action is exact and
+    # elementary: (T_ab H)_a=H_b and (T_ab H)_b=-H_a.  Do not route this
+    # through direct.add_forms(), whose generic 1e-13 sparsification threshold
+    # erases the physical h_EW/M_GUT ~ 1e-14 tangent directions.
+    delta_h = np.zeros(H_COMPLEX_DIM, dtype=complex)
+    delta_h[first] = value.h[second]
+    delta_h[second] = -value.h[first]
     delta_sigma = direct.generator_action(value.sigma, first, second)
     variation = potential.FieldState(
         phi=delta_phi,

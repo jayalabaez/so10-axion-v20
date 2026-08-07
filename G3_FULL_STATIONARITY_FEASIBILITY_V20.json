@@ -1,0 +1,326 @@
+{
+  "status": "G3_FIRST_ORDER_PHYSICAL_EW_STATIONARITY_FEASIBLE__LOCAL_GLOBAL_OPEN",
+  "overall_state": "PARTIAL",
+  "n_checks": 18,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "G1_closed": true,
+    "G2_18_family_partition_present": true,
+    "all_64_directions_present": true,
+    "all_91_real_parameters_present": true,
+    "all_parameter_gradients_are_486_real_finite": true,
+    "pre_EW_gauge_orbit_rank_is_33": true,
+    "physical_EW_gauge_orbit_rank_is_36": true,
+    "physical_EW_raw_absolute_rank_exposes_hierarchy_conditioning": true,
+    "stationarity_matrix_has_nontrivial_nullspace": true,
+    "stationary_witness_reconstructs_gradient_zero": true,
+    "five_positive_self_quartic_anchors_retained": true,
+    "anchored_stationary_witness_is_perturbative_at_first_order": true,
+    "anchored_stationary_witness_has_broad_support": true,
+    "gauge_Ward_identities_hold": true,
+    "requested_full_fast_gradient_crosscheck_executed": true,
+    "requested_fast_gradients_match_exact_G2_adapters": true,
+    "G3_not_overclaimed_closed": true,
+    "whole_model_not_validated": true
+  },
+  "candidate": {
+    "normalization_scale_GeV": 9917564798898606.0,
+    "M_GUT_GeV": 9917564798898606.0,
+    "M_I_GeV": 631385523052.8793,
+    "Phi210_direction": "canonical p Pati-Salam singlet",
+    "Phi210_p_over_MGUT": 1.0,
+    "DeltaR_over_MGUT": 6.366336251445493e-05,
+    "S_over_MGUT": 6.366336251445493e-05,
+    "hEW_over_MGUT": 1.7544629506158965e-14,
+    "Phi17_over_MGUT": 10.083120405838487,
+    "H10_EW_component_index": 6
+  },
+  "coverage": {
+    "base_families": 18,
+    "directions": 64,
+    "real_parameters": 91,
+    "real_field_dimension": 486
+  },
+  "gauge_orbits": {
+    "pre_EW_SO10_to_SM": {
+      "matrix_shape": [
+        486,
+        45
+      ],
+      "raw_absolute_rank_at_1e-10": 33,
+      "column_normalized_rank": 33,
+      "smallest_nonzero_column_norm": 6.366336251445493e-05,
+      "largest_column_norm": 1.0000000020265118,
+      "hierarchy_condition_ratio": 15707.62150364677
+    },
+    "physical_EW_SO10_to_U1em": {
+      "matrix_shape": [
+        486,
+        45
+      ],
+      "raw_absolute_rank_at_1e-10": 33,
+      "pre_EW_rank": 33,
+      "EW_increment_rank_after_preEW_projection": 3,
+      "stage_resolved_total_rank": 36,
+      "pre_EW_unbroken_generator_dimension": 12,
+      "EW_restricted_matrix_shape": [
+        486,
+        12
+      ],
+      "increment_smallest_nonzero_column_norm": 1.7544629506158968e-14,
+      "increment_largest_column_norm": 2.4811852994421186e-14,
+      "note": "The raw GUT-normalized SVD sees rank 33 because the three EW directions are suppressed by hEW/MGUT. Stage projection exposes the exact rank increment 3, giving 36 broken generators."
+    }
+  },
+  "stationarity": {
+    "matrix_shape": [
+      486,
+      91
+    ],
+    "rank": 14,
+    "total_parameter_nullity": 77,
+    "active_parameter_count": 84,
+    "active_parameter_nullity": 70,
+    "zero_gradient_parameter_count": 7,
+    "active_coordinate_row_count": 40,
+    "largest_normalized_singular_value": 3.8729833462074152,
+    "smallest_singular_value": 0.0,
+    "rank_threshold": 3.8729833462074154e-10,
+    "stationarity_anchor_parameter_ids": [
+      "lambda::O20_B01_singlet_polynomial",
+      "lambda::O23_B01_singlet_polynomial",
+      "lambda::O27_B04_126bar_self_projectors",
+      "lambda::O36_B02_H_self_quartics",
+      "lambda::O48_B01_Phi_self_quartics"
+    ],
+    "stationarity_anchor_target_value": 1.0,
+    "stationarity_anchor_max_abs_residual": 0.0,
+    "free_least_squares_rank": 7,
+    "stationary_witness_relative_residual": 1.2679908541592417e-17,
+    "stationary_witness_nonzero_coefficients": 24,
+    "stationary_witness_max_abs_coefficient": 1.0,
+    "stationary_witness_all_coefficients_within_4pi": true,
+    "stationary_witness_top_coefficients": {
+      "lambda::O20_B01_singlet_polynomial": 1.0,
+      "lambda::O23_B01_singlet_polynomial": 1.0,
+      "lambda::O27_B04_126bar_self_projectors": 1.0,
+      "lambda::O36_B02_H_self_quartics": 1.0,
+      "lambda::O48_B01_Phi_self_quartics": 1.0,
+      "re::O18_B01_singlet_polynomial": -0.248616939383717,
+      "re::O19_B01_singlet_polynomial": -0.248616939383717,
+      "re::O08_B01_singlet_polynomial": -0.018492559548313952,
+      "re::O09_B01_singlet_polynomial": -0.018492559548313952,
+      "re::O41_B01_Phi_norm": -0.001229448528501234,
+      "re::O02_B01_singlet_polynomial": -0.0012226743841192984,
+      "lambda::O42_B01_Phi_norm": -0.000614724264250617,
+      "lambda::O03_B01_singlet_polynomial": -0.0006113371920596492,
+      "lambda::O48_B04_Phi_self_quartics": -0.00023666688757787213,
+      "re::O16_B01_Phi_norm": -6.130159232093233e-05,
+      "re::O01_B01_singlet_polynomial": -6.062976216228292e-05,
+      "lambda::O48_B03_Phi_self_quartics": -1.2792804733939034e-05,
+      "lambda::O48_B02_Phi_self_quartics": -1.5991005917423793e-06,
+      "lambda::O07_B01_Phi_norm": -3.331459566129957e-08,
+      "re::O21_B01_singlet_polynomial": -3.166114728734828e-11
+    },
+    "gauge_orbit_raw_column_rank_at_physical_EW": 36,
+    "gauge_orbit_stage_resolved_rank_at_physical_EW": 36,
+    "maximum_normalized_gauge_Ward_residual": 1.0666053971474106e-17
+  },
+  "fast_gradient_crosscheck": {
+    "executed": true,
+    "direction_count": 18,
+    "maximum_value_residual": 0.0,
+    "maximum_gradient_abs_residual": 7.573064690121713e-29,
+    "gradient_crosscheck_atol": 1e-27,
+    "gradient_crosscheck_rtol": 2e-08,
+    "maximum_gradient_raw_relative_residual": 46.50000000000001,
+    "maximum_gradient_tolerance_ratio": 0.017827976286146137,
+    "all_gradients_within_mixed_tolerance": true,
+    "per_direction": {
+      "O27_B01_126bar_self_projectors": {
+        "base_family": "126bar_self_projectors",
+        "value_residual": 0.0,
+        "gradient_max_abs_residual": 2.7329699920624898e-30,
+        "gradient_raw_relative_residual": 46.50000000000001,
+        "gradient_mixed_tolerance": 1.000000000053484e-27,
+        "gradient_tolerance_ratio": 0.0027329699919163195,
+        "gradient_within_mixed_tolerance": true
+      },
+      "O27_B02_126bar_self_projectors": {
+        "base_family": "126bar_self_projectors",
+        "value_residual": 0.0,
+        "gradient_max_abs_residual": 1.782797629230728e-29,
+        "gradient_raw_relative_residual": 32.49999999999999,
+        "gradient_mixed_tolerance": 1.0000000003455885e-27,
+        "gradient_tolerance_ratio": 0.017827976286146137,
+        "gradient_within_mixed_tolerance": true
+      },
+      "O27_B03_126bar_self_projectors": {
+        "base_family": "126bar_self_projectors",
+        "value_residual": 0.0,
+        "gradient_max_abs_residual": 7.573064690121713e-29,
+        "gradient_raw_relative_residual": 4.4024477115168294e-16,
+        "gradient_mixed_tolerance": 3.440389250522786e-21,
+        "gradient_tolerance_ratio": 2.201223215940157e-08,
+        "gradient_within_mixed_tolerance": true
+      },
+      "O27_B04_126bar_self_projectors": {
+        "base_family": "126bar_self_projectors",
+        "value_residual": 0.0,
+        "gradient_max_abs_residual": 5.048709793414476e-29,
+        "gradient_raw_relative_residual": 5.869930282022431e-16,
+        "gradient_mixed_tolerance": 1.7201951252613955e-21,
+        "gradient_tolerance_ratio": 2.9349634348296908e-08,
+        "gradient_within_mixed_tolerance": true
+      },
+      "O28_B01_unique_Hdag_Sigma2_Sigmadag": {
+        "base_family": "unique_Hdag_Sigma2_Sigmadag",
+        "value_residual": 0.0,
+        "gradient_max_abs_residual": 0.0,
+        "gradient_raw_relative_residual": 0.0,
+        "gradient_mixed_tolerance": 1.0965405077329256e-27,
+        "gradient_tolerance_ratio": 0.0,
+        "gradient_within_mixed_tolerance": true
+      },
+      "O31_B01_unique_Hdag2_Sigma2": {
+        "base_family": "unique_Hdag2_Sigma2",
+        "value_residual": 0.0,
+        "gradient_max_abs_residual": 0.0,
+        "gradient_raw_relative_residual": 0.0,
+        "gradient_mixed_tolerance": 1.0000000000047032e-27,
+        "gradient_tolerance_ratio": 0.0,
+        "gradient_within_mixed_tolerance": true
+      },
+      "O44_B01_Phi2_Sigma_projectors": {
+        "base_family": "Phi2_Sigma_projectors",
+        "value_residual": 0.0,
+        "gradient_max_abs_residual": 0.0,
+        "gradient_raw_relative_residual": 0.0,
+        "gradient_mixed_tolerance": 3.0315886911646234e-14,
+        "gradient_tolerance_ratio": 0.0,
+        "gradient_within_mixed_tolerance": true
+      },
+      "O44_B02_Phi2_Sigma_projectors": {
+        "base_family": "Phi2_Sigma_projectors",
+        "value_residual": 0.0,
+        "gradient_max_abs_residual": 0.0,
+        "gradient_raw_relative_residual": 0.0,
+        "gradient_mixed_tolerance": 4.632027117168044e-18,
+        "gradient_tolerance_ratio": 0.0,
+        "gradient_within_mixed_tolerance": true
+      },
+      "O44_B03_Phi2_Sigma_projectors": {
+        "base_family": "Phi2_Sigma_projectors",
+        "value_residual": 0.0,
+        "gradient_max_abs_residual": 0.0,
+        "gradient_raw_relative_residual": 0.0,
+        "gradient_mixed_tolerance": 1.0047107953741561e-26,
+        "gradient_tolerance_ratio": 0.0,
+        "gradient_within_mixed_tolerance": true
+      },
+      "O44_B04_Phi2_Sigma_projectors": {
+        "base_family": "Phi2_Sigma_projectors",
+        "value_residual": 0.0,
+        "gradient_max_abs_residual": 0.0,
+        "gradient_raw_relative_residual": 0.0,
+        "gradient_mixed_tolerance": 8.488448335262535e-14,
+        "gradient_tolerance_ratio": 0.0,
+        "gradient_within_mixed_tolerance": true
+      },
+      "O44_B05_Phi2_Sigma_projectors": {
+        "base_family": "Phi2_Sigma_projectors",
+        "value_residual": 0.0,
+        "gradient_max_abs_residual": 0.0,
+        "gradient_raw_relative_residual": 0.0,
+        "gradient_mixed_tolerance": 1.5440090388226244e-17,
+        "gradient_tolerance_ratio": 0.0,
+        "gradient_within_mixed_tolerance": true
+      },
+      "O44_B06_Phi2_Sigma_projectors": {
+        "base_family": "Phi2_Sigma_projectors",
+        "value_residual": 0.0,
+        "gradient_max_abs_residual": 0.0,
+        "gradient_raw_relative_residual": 0.0,
+        "gradient_mixed_tolerance": 5.456859644096089e-14,
+        "gradient_tolerance_ratio": 0.0,
+        "gradient_within_mixed_tolerance": true
+      },
+      "O45_B01_Phi2_Hdag_Sigma_210_1050": {
+        "base_family": "Phi2_Hdag_Sigma_210_1050",
+        "value_residual": 0.0,
+        "gradient_max_abs_residual": 0.0,
+        "gradient_raw_relative_residual": 0.0,
+        "gradient_mixed_tolerance": 1e-27,
+        "gradient_tolerance_ratio": 0.0,
+        "gradient_within_mixed_tolerance": true
+      },
+      "O45_B02_Phi2_Hdag_Sigma_210_1050": {
+        "base_family": "Phi2_Hdag_Sigma_210_1050",
+        "value_residual": 0.0,
+        "gradient_max_abs_residual": 0.0,
+        "gradient_raw_relative_residual": 0.0,
+        "gradient_mixed_tolerance": 1.6796059918392002e-26,
+        "gradient_tolerance_ratio": 0.0,
+        "gradient_within_mixed_tolerance": true
+      },
+      "O48_B01_Phi_self_quartics": {
+        "base_family": "Phi_self_quartics",
+        "value_residual": 0.0,
+        "gradient_max_abs_residual": 0.0,
+        "gradient_raw_relative_residual": 0.0,
+        "gradient_mixed_tolerance": 8e-08,
+        "gradient_tolerance_ratio": 0.0,
+        "gradient_within_mixed_tolerance": true
+      },
+      "O48_B02_Phi_self_quartics": {
+        "base_family": "Phi_self_quartics",
+        "value_residual": 0.0,
+        "gradient_max_abs_residual": 0.0,
+        "gradient_raw_relative_residual": 0.0,
+        "gradient_mixed_tolerance": 1.9200000000000003e-06,
+        "gradient_tolerance_ratio": 0.0,
+        "gradient_within_mixed_tolerance": true
+      },
+      "O48_B03_Phi_self_quartics": {
+        "base_family": "Phi_self_quartics",
+        "value_residual": 0.0,
+        "gradient_max_abs_residual": 0.0,
+        "gradient_raw_relative_residual": 0.0,
+        "gradient_mixed_tolerance": 1.5360000000000002e-05,
+        "gradient_tolerance_ratio": 0.0,
+        "gradient_within_mixed_tolerance": true
+      },
+      "O48_B04_Phi_self_quartics": {
+        "base_family": "Phi_self_quartics",
+        "value_residual": 0.0,
+        "gradient_max_abs_residual": 0.0,
+        "gradient_raw_relative_residual": 0.0,
+        "gradient_mixed_tolerance": 0.00028416,
+        "gradient_tolerance_ratio": 0.0,
+        "gradient_within_mixed_tolerance": true
+      }
+    }
+  },
+  "flags": {
+    "G1_closed": true,
+    "G2_closed": true,
+    "full_486_coordinate_first_order_stationarity_executed": true,
+    "physical_EW_stationary_coefficient_family_exists": true,
+    "full_fast_gradient_crosscheck_executed": true,
+    "fast_gradients_match_exact_G2_adapters": true,
+    "pre_EW_goldstones_33": true,
+    "physical_EW_goldstones_36": true,
+    "gauge_quotiented_full_Hessian_positive": false,
+    "global_competing_extrema_exhausted": false,
+    "complete_potential_BFB": false,
+    "G3_closed": false,
+    "G4_closed": false,
+    "G5_closed": false,
+    "whole_model_validated": false,
+    "whole_model_excluded": false,
+    "empirical_discovery": false
+  },
+  "next_exact_target": "Use the same 91-parameter Hessian basis to solve the physical-EW stationarity constraints together with the 36-direction gauge quotient, then certify positivity or produce a dual no-go certificate before enumerating competing extrema.",
+  "verdict": "The closed G2 potential admits a nontrivial family of coefficient vectors satisfying all 486 first-order stationarity equations at the declared physical hierarchy candidate. Gauge invariance is verified, and the quotient count is 33 before EW breaking but 36 at h=174 GeV. This advances G3 but does not close it: local physical Hessian positivity, boundedness, and global competing-extrema classification remain required."
+}

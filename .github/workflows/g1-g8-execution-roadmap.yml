@@ -35,9 +35,10 @@ jobs:
           from pathlib import Path
           report = json.loads(Path('G1_G8_EXECUTION_ROADMAP_V20.json').read_text())
           assert report['n_failed'] == 0, report['failures']
-          assert report['gates']['G1']['status'] == 'OPEN'
+          assert report['gates']['G1']['status'] == 'CLOSED'
+          assert report['gates']['G2']['status'] == 'CLOSED'
           assert report['gates']['G7']['status'] == 'OPEN'
-          assert all(row['status'] != 'CLOSED' for row in report['gates'].values())
+          assert [name for name, row in report['gates'].items() if row['status'] == 'CLOSED'] == ['G1', 'G2']
           assert report['dependencies']['G8'] == ['G3', 'G6', 'G7']
           assert 'empirical discovery' in report['new_physics_policy']
           PY
