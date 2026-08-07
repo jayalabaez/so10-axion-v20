@@ -32,18 +32,12 @@ jobs:
           python -m py_compile \
             live_g2_derivative_coverage_ledger_v20.py \
             test_live_g2_derivative_coverage_ledger_v20.py
-      - name: Remove temporary patch and snapshot infrastructure
-        run: |
-          git rm scripts/apply_g2_ledger_closure.py
-          git rm .github/workflows/apply-g2-ledger-closure.yml
-          git rm -f .github/workflows/g2-current-source-snapshot.yml
-      - name: Commit integrated G2 closure gate
+      - name: Commit scientific ledger integration
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add \
             live_g2_derivative_coverage_ledger_v20.py \
-            test_live_g2_derivative_coverage_ledger_v20.py \
-            .github/workflows/live-g2-derivative-coverage-ledger.yml
+            test_live_g2_derivative_coverage_ledger_v20.py
           git commit -m "Integrate all 18 exact G2 derivative families"
           git push origin HEAD:${GITHUB_REF_NAME}
