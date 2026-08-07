@@ -54,14 +54,14 @@ jobs:
           assert r['overall_state']=='PARTIAL'
           assert r['n_closed_subproblems']==30
           assert all(r['closed_subproblems'].values())
-          assert r['gate_states']['G1']=='OPEN'
+          assert r['gate_states']['G1']=='CLOSED'
           assert r['gate_states']['G6']=='PARTIAL'
           assert r['flag']['authoritative_next_gen_G1_G6_progress_30_gate']
           assert r['flag']['all_recorded_exact_subproblems_closed']
           assert r['flag']['exact_portal_norm_square_channel_closed']
           assert r['flag']['exact_quartic_t2bar_t4bar_mixing_inserted']
           assert r['authoritative_triplet_structure']['exact_portal_norm_square']['positive_sector_rank']==1
-          assert not r['flag']['G1_closed']
+          assert r['flag']['G1_closed']
           assert not r['flag']['G6_closed']
           assert not r['flag']['physical_triplet_spectrum_complete']
           assert not r['flag']['exact_unique_proton_lifetime']

@@ -8,7 +8,7 @@ import g1_g8_execution_roadmap_v20 as mod
 def test_roadmap_contract():
     report = mod.build_report()
     assert report["status"] == (
-        "G1_G8_EXECUTION_ROADMAP_READY__PHYSICS_GATES_REMAIN_OPEN"
+        "G1_G8_EXECUTION_ROADMAP_READY__G1_G2_CLOSED__G3_PARTIAL"
     )
     assert report["n_failed"] == 0, report["failures"]
     assert all(report["checks"].values())
@@ -29,12 +29,16 @@ def test_dependency_graph_and_critical_path():
     assert report["dependencies"]["G8"] == ["G3", "G6", "G7"]
 
 
-def test_all_gates_remain_fail_closed():
+def test_closed_prefix_and_remaining_gates_stay_fail_closed():
     gates = mod.build_report()["gates"]
     assert set(gates) == {f"G{i}" for i in range(1, 9)}
-    assert gates["G1"]["status"] == "OPEN"
+    assert gates["G1"]["status"] == "CLOSED"
+    assert gates["G2"]["status"] == "CLOSED"
     assert gates["G7"]["status"] == "OPEN"
-    assert all(row["status"] != "CLOSED" for row in gates.values())
+    assert [name for name, row in gates.items() if row["status"] == "CLOSED"] == [
+        "G1",
+        "G2",
+    ]
     assert gates["G3"]["status"] == "PARTIAL"
     assert gates["G5"]["status"] == "PARTIAL"
 
