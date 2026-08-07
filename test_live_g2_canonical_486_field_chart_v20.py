@@ -102,3 +102,17 @@ def test_complex_phi_is_rejected():
 def test_wrong_coordinate_length_is_rejected():
     with pytest.raises(ValueError):
         mod.unpack(np.zeros(485))
+
+
+def test_tiny_physical_ew_vector_gauge_tangent_is_not_sparsified():
+    eps = 2.0e-14
+    h = np.zeros(mod.H_COMPLEX_DIM, dtype=complex)
+    h[6] = eps
+    state = mod.potential.FieldState(
+        phi={}, h=h, sigma={}, s=0.0j, x=0.0j
+    ).validated()
+    tangent = mod.gauge_tangent(state, 6, 7)
+    h_block = tangent[mod.H_SLICE]
+    # T_67 sends H_6 to -H_7. Canonical real coordinates carry sqrt(2).
+    assert h_block[2 * 7] == pytest.approx(-mod.SQRT2 * eps, rel=0.0, abs=1.0e-30)
+    assert np.linalg.norm(h_block) > 0.0
