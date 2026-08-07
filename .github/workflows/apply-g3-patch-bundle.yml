@@ -5,7 +5,14 @@ on:
     branches: [agent/g3-full-stationarity]
     paths:
       - .github/workflows/apply-g3-patch-bundle.yml
-      - g3_patch_bundle.tar.gz.b64
+      - g3_patch_bundle.part00
+      - g3_patch_bundle.part01
+      - g3_patch_bundle.part02
+      - g3_patch_bundle.part03
+      - g3_patch_bundle.part04
+      - g3_patch_bundle.part05
+      - g3_patch_bundle.part06
+      - g3_patch_bundle.part07
   workflow_dispatch:
 
 permissions:
@@ -19,10 +26,23 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: agent/g3-full-stationarity
+      - name: Reconstruct and verify bundled patch
+        run: |
+          cat g3_patch_bundle.part0* > g3_patch_bundle.reconstructed.b64
+          test "$(wc -c < g3_patch_bundle.reconstructed.b64)" = "30376"
+          echo "c2648bff52c1b21700596d853cee80b57c0d2d58af032fb5e62ba28f4f4d364d  g3_patch_bundle.reconstructed.b64" | sha256sum -c -
+          base64 -d g3_patch_bundle.reconstructed.b64 > g3_patch_bundle.tar.gz
+          echo "2bb2cd7eae5471f3e13b473c6808f25efd15ff5103038748ad562ed6e4ec0330  g3_patch_bundle.tar.gz" | sha256sum -c -
+          tar -tzf g3_patch_bundle.tar.gz
       - name: Apply bundled patch
         run: |
-          base64 -d g3_patch_bundle.tar.gz.b64 | tar -xzf -
-          rm -f g3_patch_bundle.tar.gz.b64 .github/workflows/apply-g3-patch-bundle.yml
+          tar -xzf g3_patch_bundle.tar.gz
+          rm -f \
+            g3_patch_bundle.tar.gz.b64 \
+            g3_patch_bundle.reconstructed.b64 \
+            g3_patch_bundle.tar.gz \
+            g3_patch_bundle.part0* \
+            .github/workflows/apply-g3-patch-bundle.yml
       - name: Commit patch
         run: |
           git config user.name "github-actions[bot]"
