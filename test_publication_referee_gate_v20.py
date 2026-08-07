@@ -18,9 +18,10 @@ class PublicationRefereeTests(unittest.TestCase):
 
     def test_gate_counts(self):
         totals = self.report["authoritative_totals"]
-        self.assertEqual(totals["n_closed"], 0)
-        self.assertEqual(totals["n_partial"], 6)
-        self.assertEqual(totals["n_open"], 2)
+        self.assertEqual(totals["closed"], ["G1", "G2"])
+        self.assertEqual(totals["n_closed"], 2)
+        self.assertEqual(totals["n_partial"], 5)
+        self.assertEqual(totals["n_open"], 1)
 
     def test_tprime_and_cg_honesty(self):
         self.assertEqual(

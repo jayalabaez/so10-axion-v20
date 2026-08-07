@@ -6,6 +6,10 @@ on:
     paths:
       - g3_full_stationarity_feasibility_v20.py
       - test_g3_full_stationarity_feasibility_v20.py
+      - g3_full_hessian_classification_v20.py
+      - test_g3_full_hessian_classification_v20.py
+      - g3_stationary_stability_search_v20.py
+      - test_g3_stationary_stability_search_v20.py
       - live_g2_canonical_486_field_chart_v20.py
       - test_live_g2_canonical_486_field_chart_v20.py
       - live_g2_derivative_coverage_ledger_v20.py
@@ -19,6 +23,10 @@ on:
     paths:
       - g3_full_stationarity_feasibility_v20.py
       - test_g3_full_stationarity_feasibility_v20.py
+      - g3_full_hessian_classification_v20.py
+      - test_g3_full_hessian_classification_v20.py
+      - g3_stationary_stability_search_v20.py
+      - test_g3_stationary_stability_search_v20.py
       - live_g2_canonical_486_field_chart_v20.py
       - test_live_g2_canonical_486_field_chart_v20.py
       - live_g2_derivative_coverage_ledger_v20.py
@@ -56,14 +64,26 @@ jobs:
           python -m py_compile \
             g3_full_stationarity_feasibility_v20.py \
             test_g3_full_stationarity_feasibility_v20.py \
+            g3_full_hessian_classification_v20.py \
+            test_g3_full_hessian_classification_v20.py \
+            g3_stationary_stability_search_v20.py \
+            test_g3_stationary_stability_search_v20.py \
             live_g2_canonical_486_field_chart_v20.py \
             test_live_g2_canonical_486_field_chart_v20.py
       - name: Run canonical chart regressions
         run: python -m pytest -q test_live_g2_canonical_486_field_chart_v20.py
       - name: Generate exact first-order G3 certificate
         run: python g3_full_stationarity_feasibility_v20.py --full-crosscheck --write
+      - name: Assemble and quotient the exact stationary Hessian
+        run: python g3_full_hessian_classification_v20.py --write
+      - name: Search the full stationary family for local stability
+        run: python g3_stationary_stability_search_v20.py --max-iterations 80 --target-margin 0 --write
       - name: Run focused G3 tests
-        run: python -m unittest -v test_g3_full_stationarity_feasibility_v20.py
+        run: |
+          python -m pytest -q \
+            test_g3_full_stationarity_feasibility_v20.py \
+            test_g3_full_hessian_classification_v20.py \
+            test_g3_stationary_stability_search_v20.py
       - name: Assert fail-closed G3 boundary
         run: |
           python - <<'PY'
@@ -84,9 +104,31 @@ jobs:
           assert r['gauge_orbits']['physical_EW_SO10_to_U1em']['EW_increment_rank_after_preEW_projection']==3
           assert r['gauge_orbits']['physical_EW_SO10_to_U1em']['stage_resolved_total_rank']==36
           assert r['fast_gradient_crosscheck']['executed']
-          assert r['fast_gradient_crosscheck']['maximum_gradient_relative_residual']<2e-8
+          assert r['fast_gradient_crosscheck']['all_gradients_within_mixed_tolerance']
+          assert r['fast_gradient_crosscheck']['maximum_gradient_tolerance_ratio']<1.0
           assert not r['flags']['G3_closed']
           assert not r['flags']['whole_model_validated']
+
+          h=json.load(open('G3_FULL_HESSIAN_CLASSIFICATION_V20.json'))
+          assert h['overall_state']=='PARTIAL'
+          assert h['coverage']==r['coverage']
+          assert h['physical_Hessian']['full_shape']==[486,486]
+          assert h['physical_Hessian']['gauge_dimension']==36
+          assert h['physical_Hessian']['axion_dimension']==1
+          assert h['physical_Hessian']['massive_physical_dimension']==449
+          assert h['flags']['full_486x486_stationary_Hessian_assembled']
+          assert h['flags']['all_36_gauge_directions_quotiented']
+          assert not h['flags']['G3_closed']
+
+          s=json.load(open('G3_STATIONARY_STABILITY_SEARCH_V20.json'))
+          assert s['overall_state']=='PARTIAL'
+          assert s['coverage']['directions']==64
+          assert s['coverage']['real_parameters']==91
+          assert s['coverage']['massive_physical_dimension']==449
+          assert s['search']['target_margin']==0.0
+          assert s['checks']['all_486_tadpoles_remain_zero']
+          assert s['checks']['all_couplings_perturbative']
+          assert not s['flags']['G3_closed']
           PY
       - uses: actions/upload-artifact@v4
         if: always()
@@ -95,3 +137,7 @@ jobs:
           path: |
             G3_FULL_STATIONARITY_FEASIBILITY_V20.json
             G3_FULL_STATIONARITY_FEASIBILITY_V20.md
+            G3_FULL_HESSIAN_CLASSIFICATION_V20.json
+            G3_FULL_HESSIAN_CLASSIFICATION_V20.md
+            G3_STATIONARY_STABILITY_SEARCH_V20.json
+            G3_STATIONARY_STABILITY_SEARCH_V20.md

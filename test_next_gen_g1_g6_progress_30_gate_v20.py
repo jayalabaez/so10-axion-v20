@@ -26,12 +26,12 @@ class NextGenG1G6Progress30GateTests(unittest.TestCase):
 
     def test_top_level_scope(self) -> None:
         states = self.report["gate_states"]
-        self.assertEqual(states["G1"], "OPEN")
+        self.assertEqual(states["G1"], "CLOSED")
         self.assertEqual(states["G6"], "PARTIAL")
         flags = self.report["flag"]
         self.assertTrue(flags["authoritative_next_gen_G1_G6_progress_30_gate"])
         self.assertTrue(flags["exact_quartic_t2bar_t4bar_mixing_inserted"])
-        self.assertFalse(flags["G1_closed"])
+        self.assertTrue(flags["G1_closed"])
         self.assertFalse(flags["G6_closed"])
         self.assertFalse(flags["physical_triplet_spectrum_complete"])
         self.assertFalse(flags["exact_unique_proton_lifetime"])

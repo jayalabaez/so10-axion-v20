@@ -64,12 +64,19 @@ class G1G8GateLedgerTests(unittest.TestCase):
         gate = self.report["gates"]["G3"]
         self.assertEqual(gate["status"], mod.STATUS_PARTIAL)
         self.assertIn(
-            "positive physical Hessian after quotienting all 36 gauge directions",
+            "find a tachyon-free stationary member; the current witness and bounded search remain nonpositive",
             gate["open_scope"],
         )
         self.assertFalse(
             gate["corrections"]["first_order_feasibility_is_global_vacuum_proof"]
         )
+        self.assertEqual(
+            gate["corrections"]["anchored_witness_physical_negative_modes"], 46
+        )
+        self.assertEqual(
+            gate["corrections"]["massive_physical_quotient_dimension"], 449
+        )
+        self.assertFalse(gate["corrections"]["local_saddle_is_global_vacuum"])
 
     def test_g4_stage_resolved_null_mode_correction(self):
         correction = self.report["gates"]["G4"]["corrections"]
@@ -78,6 +85,10 @@ class G1G8GateLedgerTests(unittest.TestCase):
         self.assertEqual(correction["preprojection_phase_spectator_zeros"], 4)
         self.assertEqual(correction["bookkeeping_sum_33_plus_4"], 37)
         self.assertFalse(correction["thirty_seven_physical_null_modes"])
+        self.assertIn(
+            "full 486x486 witness Hessian projected to the 449-dimensional massive quotient",
+            self.report["gates"]["G4"]["closed_scope"],
+        )
 
     def test_g6_rejects_legacy_scalar_thresholds(self):
         correction = self.report["gates"]["G6"]["corrections"]

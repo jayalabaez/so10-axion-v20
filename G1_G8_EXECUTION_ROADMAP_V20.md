@@ -12,10 +12,10 @@ No downstream gate may be called closed while a dependency remains incomplete. A
 
 | Gate | Status | Completed subtheorems | Terminal blocker | Tracking |
 |---|---:|---|---|---:|
-| G1 | OPEN | Pure-210 sector; direct `Phi-H-Sigmabar` tensor; selected exact 1/45/54 channels; triplet ledgers | Complete mixed Molien/Haar ring, multiplicities, syzygies, and canonical normalizations | #127 |
-| G2 | PARTIAL | Direct `lambda4` block; neutral `H10+S+Phi17`; fixed-background full `H10` potential | Project every normalized G1 invariant into one canonical non-SUSY component potential | #128 |
-| G3 | PARTIAL | Reduced radial global minimum; neutral and fixed-background H10 stationarity; reduced EW backreaction retuning | Simultaneous all-component stationarity and competing-extrema proof | #86, #125 |
-| G4 | PARTIAL | 33 SO(10)→SM gauge directions; three electroweak Goldstones; reduced quotient Hessians | One combined normalized SO(10)→U(1)EM tangent basis and full component Hessian | #86 |
+| G1 | CLOSED | Exact 18-family tensor ring; 64 invariant directions; 91 real parameters | None | #176 |
+| G2 | CLOSED | Exact potential, gradient, and 486x486 Hessian on the canonical chart | None | #176 |
+| G3 | PARTIAL | Full 486x91 stationarity; exact 486x486 witness Hessian; 449-mode quotient; saddle/no-witness search | Find a tachyon-free stationary member, then prove BFB and global preference | #178 |
+| G4 | PARTIAL | Combined 36-direction SO(10)→U(1)EM basis; independent PQ axion; full witness quotient | Positive quotient spectrum at a surviving G3 member | #178 |
 | G5 | PARTIAL | Pure/reduced BFB; neutral and fixed-background H10 BFB; five-field radial EW-portal BFB | Stratified/copotivity proof for the complete G2 potential | #86 |
 | G6 | PARTIAL | Selected triplet Clebsches and Nambu blocks; signed diagnostics; fixed-background H10 spectrum | Complete positive physical scalar spectrum with SM irreps, mixing, and uncertainties | #106 |
 | G7 | OPEN | Verified one-loop chain and calibrated diagnostic two-loop proxy | Source-validated SO(10)+210 two-loop system, complete G6 matching, and independent reproduction | #126 |

@@ -70,6 +70,19 @@ STATIONARITY_ANCHOR_PARAMETER_IDS = (
     "lambda::O48_B01_Phi_self_quartics",        # Phi210 norm-squared quartic
 )
 
+# The physical hierarchy drives a few exact gradients below 1e-30.  A raw
+# relative residual is undefined as a useful accuracy measure there: two
+# double-precision implementations can differ by roundoff while both are
+# absolutely zero for every physical purpose.  The independent fast/exact
+# comparison therefore uses the standard mixed tolerance
+#
+#     |fast-exact| <= atol + rtol max(|fast|, |exact|).
+#
+# The absolute floor remains many orders of magnitude below any retained
+# GUT-normalized derivative in the stationarity solve.
+GRADIENT_CROSSCHECK_ATOL = 1.0e-27
+GRADIENT_CROSSCHECK_RTOL = 2.0e-8
+
 
 @dataclasses.dataclass(frozen=True)
 class ParameterGradient:
@@ -524,6 +537,7 @@ def stationarity_analysis(
     active_nullity = normalized.shape[1] - rank
     total_nullity = len(parameters) - rank
 
+    coefficient = stationary_coefficient_vector(parameters)
     by_id = {row.parameter_id: index for index, row in enumerate(parameters)}
     missing_anchors = [
         parameter_id
@@ -541,13 +555,7 @@ def stationarity_analysis(
         [index for index in range(len(parameters)) if index not in anchor_set],
         dtype=int,
     )
-    coefficient = np.zeros(len(parameters), dtype=float)
-    coefficient[anchor_indices] = 1.0
-    target = -(A[:, anchor_indices] @ np.ones(len(anchor_indices)))
-    free_solution, _residuals, free_rank, _free_singular = np.linalg.lstsq(
-        A[:, free_indices], target, rcond=1.0e-12
-    )
-    coefficient[free_indices] = free_solution
+    free_rank = np.linalg.matrix_rank(A[:, free_indices], tol=1.0e-12)
 
     residual = A @ coefficient
     relative_residual = float(
@@ -601,6 +609,37 @@ def stationarity_analysis(
     }
 
 
+def stationary_coefficient_vector(
+    parameters: tuple[ParameterGradient, ...],
+) -> np.ndarray:
+    """Return the anchored perturbative solution of all 486 tadpole equations."""
+    A = np.column_stack([row.gradient for row in parameters])
+    by_id = {row.parameter_id: index for index, row in enumerate(parameters)}
+    missing = [
+        parameter_id
+        for parameter_id in STATIONARITY_ANCHOR_PARAMETER_IDS
+        if parameter_id not in by_id
+    ]
+    if missing:
+        raise KeyError(f"stationarity anchors absent from G2 schema: {missing}")
+    anchor_indices = np.asarray(
+        [by_id[parameter_id] for parameter_id in STATIONARITY_ANCHOR_PARAMETER_IDS],
+        dtype=int,
+    )
+    anchor_set = set(int(index) for index in anchor_indices)
+    free_indices = np.asarray(
+        [index for index in range(len(parameters)) if index not in anchor_set],
+        dtype=int,
+    )
+    coefficient = np.zeros(len(parameters), dtype=float)
+    coefficient[anchor_indices] = 1.0
+    target = -(A[:, anchor_indices] @ np.ones(len(anchor_indices)))
+    coefficient[free_indices] = np.linalg.lstsq(
+        A[:, free_indices], target, rcond=1.0e-12
+    )[0]
+    return coefficient
+
+
 def fast_gradient_crosscheck(
     state: potential.FieldState,
 ) -> dict[str, Any]:
@@ -610,7 +649,9 @@ def fast_gradient_crosscheck(
     rows: dict[str, Any] = {}
     max_value = 0.0
     max_gradient = 0.0
-    max_relative = 0.0
+    max_raw_relative = 0.0
+    max_tolerance_ratio = 0.0
+    all_within_tolerance = True
     count = 0
     for direction in direction_metadata():
         if direction.base_family not in FAST_FAMILIES:
@@ -620,24 +661,40 @@ def fast_gradient_crosscheck(
         exact = module.direction_derivative(q, direction)
         value_residual = float(abs(fast_value - exact.value))
         gradient_residual = float(np.max(np.abs(fast_gradient - exact.gradient)))
-        denominator = max(float(np.max(np.abs(exact.gradient))), 1.0e-300)
-        relative = gradient_residual / denominator
+        exact_scale = float(np.max(np.abs(exact.gradient), initial=0.0))
+        fast_scale = float(np.max(np.abs(fast_gradient), initial=0.0))
+        raw_relative = gradient_residual / max(exact_scale, 1.0e-300)
+        mixed_tolerance = (
+            GRADIENT_CROSSCHECK_ATOL
+            + GRADIENT_CROSSCHECK_RTOL * max(exact_scale, fast_scale)
+        )
+        tolerance_ratio = gradient_residual / mixed_tolerance
+        within_tolerance = tolerance_ratio <= 1.0
         rows[direction.direction_id] = {
             "base_family": direction.base_family,
             "value_residual": value_residual,
             "gradient_max_abs_residual": gradient_residual,
-            "gradient_relative_residual": relative,
+            "gradient_raw_relative_residual": raw_relative,
+            "gradient_mixed_tolerance": mixed_tolerance,
+            "gradient_tolerance_ratio": tolerance_ratio,
+            "gradient_within_mixed_tolerance": within_tolerance,
         }
         max_value = max(max_value, value_residual)
         max_gradient = max(max_gradient, gradient_residual)
-        max_relative = max(max_relative, relative)
+        max_raw_relative = max(max_raw_relative, raw_relative)
+        max_tolerance_ratio = max(max_tolerance_ratio, tolerance_ratio)
+        all_within_tolerance = all_within_tolerance and within_tolerance
         count += 1
     return {
         "executed": True,
         "direction_count": count,
         "maximum_value_residual": max_value,
         "maximum_gradient_abs_residual": max_gradient,
-        "maximum_gradient_relative_residual": max_relative,
+        "gradient_crosscheck_atol": GRADIENT_CROSSCHECK_ATOL,
+        "gradient_crosscheck_rtol": GRADIENT_CROSSCHECK_RTOL,
+        "maximum_gradient_raw_relative_residual": max_raw_relative,
+        "maximum_gradient_tolerance_ratio": max_tolerance_ratio,
+        "all_gradients_within_mixed_tolerance": all_within_tolerance,
         "per_direction": rows,
     }
 
@@ -656,7 +713,9 @@ def build_report(*, full_crosscheck: bool = False) -> dict[str, Any]:
             "direction_count": 0,
             "maximum_value_residual": None,
             "maximum_gradient_abs_residual": None,
-            "maximum_gradient_relative_residual": None,
+            "maximum_gradient_raw_relative_residual": None,
+            "maximum_gradient_tolerance_ratio": None,
+            "all_gradients_within_mixed_tolerance": None,
             "per_direction": {},
         }
     )
@@ -690,7 +749,7 @@ def build_report(*, full_crosscheck: bool = False) -> dict[str, Any]:
             not full_crosscheck
             or (
                 bool(crosscheck["executed"])
-                and float(crosscheck["maximum_gradient_relative_residual"]) < 2.0e-8
+                and bool(crosscheck["all_gradients_within_mixed_tolerance"])
             )
         ),
         "G3_not_overclaimed_closed": True,
@@ -740,7 +799,7 @@ def build_report(*, full_crosscheck: bool = False) -> dict[str, Any]:
                 "full_fast_gradient_crosscheck_executed": bool(crosscheck["executed"]),
                 "fast_gradients_match_exact_G2_adapters": (
                     bool(crosscheck["executed"])
-                    and float(crosscheck["maximum_gradient_relative_residual"]) < 2.0e-8
+                    and bool(crosscheck["all_gradients_within_mixed_tolerance"])
                 ),
                 "pre_EW_goldstones_33": not failures,
                 "physical_EW_goldstones_36": not failures,

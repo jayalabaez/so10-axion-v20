@@ -19,8 +19,8 @@ class NextGenG1G6ProgressGateTests(unittest.TestCase):
 
     def test_top_level_gates_remain_honest(self) -> None:
         states = self.report["gate_states"]
-        self.assertEqual(states["G1"], "OPEN")
-        self.assertEqual(states["G2"], "PARTIAL")
+        self.assertEqual(states["G1"], "CLOSED")
+        self.assertEqual(states["G2"], "CLOSED")
         self.assertEqual(states["G6"], "PARTIAL")
         self.assertEqual(states["G7"], "OPEN")
         self.assertEqual(states["G8"], "PARTIAL")
@@ -63,7 +63,7 @@ class NextGenG1G6ProgressGateTests(unittest.TestCase):
         self.assertTrue(flags["shared_Hermitian_54_channel_closed"])
         self.assertTrue(flags["shared_Hermitian_45_channel_closed"])
         self.assertTrue(flags["PhiH_Hermitian_channel_family_complete"])
-        self.assertFalse(flags["G1_closed"])
+        self.assertTrue(flags["G1_closed"])
         self.assertFalse(flags["G6_closed"])
         self.assertFalse(flags["physical_triplet_spectrum_complete"])
         self.assertFalse(flags["exact_unique_proton_lifetime"])

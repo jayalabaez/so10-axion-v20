@@ -32,6 +32,20 @@ the model.
 - Every `16` component has a nonzero `10_H` Clifford channel
 - Charge-based absence of vector-neutral PQ closure through `P=7`
 - Finite repeated-pole kernel for the displayed `P=8` graph
+- G1 is closed at 18 tensor families / 64 invariant directions / 91 real parameters
+- G2 is closed on the canonical 486-real chart, including the exact dense Hessian
+
+## Current G3 result (fail-closed)
+
+The physical hierarchy candidate satisfies all 486 first-order stationarity
+equations and has the correct stage-resolved gauge rank `33+3=36`. The exact
+486x486 Hessian has also been assembled and projected: removing 36 gauge
+directions and the independent PQ axion leaves 449 massive physical modes.
+The anchored stationary witness is a saddle with 46 negative modes and no
+additional zero modes. A perturbative cutting-plane search over the
+77-dimensional stationary coupling family has not produced a positive
+semidefinite witness. Therefore G3 remains **PARTIAL**; no global-vacuum,
+boundedness, whole-model-validation, or exclusion claim is made.
 
 ## What is already soft-falsified (honest labelling)
 

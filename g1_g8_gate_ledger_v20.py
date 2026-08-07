@@ -39,6 +39,16 @@ SOURCE_CONTRACTS: dict[str, tuple[str, ...]] = {
         '"G3_closed": False',
         '"stationary_witness_relative_residual"',
     ),
+    "g3_full_hessian_classification_v20.py": (
+        '"full_486x486_stationary_Hessian_assembled": not execution_failures',
+        '"strict_local_physical_minimum": locally_positive',
+        '"G3_closed": False',
+    ),
+    "g3_stationary_stability_search_v20.py": (
+        '"full_stationarity_affine_family_constructed": not execution_failures',
+        '"strict_local_physical_minimum_found": locally_positive',
+        '"G3_closed": False',
+    ),
     "promote_210n_tensor_basis_uniqueness_v20.py": (
         '"unique_from_full_pure_210n_tensor_basis": True',
         '"mixed_rep_full_hilbert_series": False',
@@ -211,9 +221,13 @@ def _gates() -> dict[str, dict[str, Any]]:
                 "perturbative anchored coefficient witness satisfying all 486 gradient equations",
                 "exact normalized gauge Ward audit",
                 "stage-resolved gauge-orbit ranks 33 before EW and 36 at hEW=174 GeV",
+                "exact dense 486x486 Hessian assembled for the anchored witness",
+                "36 gauge plus one independent PQ direction removed, leaving 449 physical modes",
+                "anchored witness classified as a saddle with 46 negative and zero accidental-flat modes",
+                "77-dimensional perturbative stationary family subjected to a fail-closed spectral cutting-plane search",
             ],
             "open_scope": [
-                "positive physical Hessian after quotienting all 36 gauge directions",
+                "find a tachyon-free stationary member; the current witness and bounded search remain nonpositive",
                 "complete boundedness certificate",
                 "global classification of boundary, symmetry-enhanced, and competing extrema",
             ],
@@ -223,9 +237,13 @@ def _gates() -> dict[str, dict[str, Any]]:
                 "first_order_feasibility_is_global_vacuum_proof": False,
                 "pre_EW_goldstones": 33,
                 "physical_EW_goldstones": 36,
+                "anchored_witness_physical_negative_modes": 46,
+                "anchored_witness_unintended_zero_modes": 0,
+                "massive_physical_quotient_dimension": 449,
+                "local_saddle_is_global_vacuum": False,
             },
             "closure_route_defined": True,
-            "current_runner_can_close_without_local_hessian_and_global_search": False,
+            "current_runner_can_close_without_new_stable_witness_BFB_and_global_search": False,
         },
         "G4": {
             "title": "Gauge quotient, axion directions, and physical Hessian",
@@ -233,12 +251,13 @@ def _gates() -> dict[str, dict[str, Any]]:
             "closed_scope": [
                 "exact pre-EW SO(10) to SM orbit rank 33",
                 "exact physical-EW rank increment 3 and total orbit rank 36",
+                "normalized physical PQ direction separated from the gauge orbit",
+                "full 486x486 witness Hessian projected to the 449-dimensional massive quotient",
                 "reduced phase Hessian projected to unitary gauge",
             ],
             "open_scope": [
-                "full 36-direction gauge-projected non-SUSY component Hessian",
-                "normalized physical axion/null-space classification",
-                "all non-Goldstone non-axion physical eigenvalues",
+                "positive quotient Hessian at a surviving stationary member",
+                "all positive non-Goldstone non-axion masses at that surviving member",
             ],
             "corrections": {
                 "pre_EW_SO10_to_SM_goldstones": 33,

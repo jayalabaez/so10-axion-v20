@@ -68,7 +68,11 @@ class G3FullStationarityFeasibilityTests(unittest.TestCase):
         crosscheck = self.report["fast_gradient_crosscheck"]
         self.assertTrue(crosscheck["executed"] )
         self.assertGreater(crosscheck["direction_count"], 0)
-        self.assertLess(crosscheck["maximum_gradient_relative_residual"], 2.0e-8)
+        self.assertTrue(crosscheck["all_gradients_within_mixed_tolerance"])
+        self.assertLess(crosscheck["maximum_gradient_tolerance_ratio"], 1.0)
+        # The raw relative ratio is intentionally retained as a diagnostic for
+        # gradients whose exact norm is below the mixed absolute tolerance.
+        self.assertGreaterEqual(crosscheck["maximum_gradient_raw_relative_residual"], 0.0)
         self.assertTrue(self.report["flags"]["full_fast_gradient_crosscheck_executed"] )
         self.assertTrue(self.report["flags"]["fast_gradients_match_exact_G2_adapters"] )
 

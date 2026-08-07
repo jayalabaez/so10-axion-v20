@@ -2,8 +2,8 @@
 """Consolidated 30-subproblem extension of the v20 G1/G6 progress gate.
 
 This layer preserves the authoritative 26-subproblem certificate and adds the
-exact portal norm-square contraction and its Nambu insertion. G1 remains OPEN
-and G6 remains PARTIAL.
+exact portal norm-square contraction and its Nambu insertion. The complete
+invariant census closes G1 while G6 remains PARTIAL.
 """
 from __future__ import annotations
 
@@ -79,7 +79,7 @@ def build_report() -> dict[str, Any]:
             "positive_sector_rank"
         ]
         == 1,
-        "G1_still_open": base["gate_states"]["G1"] == "OPEN",
+        "G1_closed": base["gate_states"]["G1"] == "CLOSED",
         "G6_still_partial": base["gate_states"]["G6"] == "PARTIAL",
         "physical_spectrum_still_open": not inserted["flag"][
             "physical_triplet_spectrum_complete"
@@ -124,7 +124,7 @@ def build_report() -> dict[str, Any]:
             "all_recorded_exact_subproblems_closed": not failures,
             "exact_portal_norm_square_channel_closed": not failures,
             "exact_quartic_t2bar_t4bar_mixing_inserted": not failures,
-            "G1_closed": False,
+            "G1_closed": base["gate_states"]["G1"] == "CLOSED",
             "G6_closed": False,
             "physical_triplet_spectrum_complete": False,
             "exact_unique_proton_lifetime": False,
@@ -137,7 +137,8 @@ def build_report() -> dict[str, Any]:
             "Hermitian Phi-H family 1+45+54 is complete, the Hermitian 126bar "
             "54 is absent, the 126bar 45 currents are exact, and the first "
             "higher Phi-Sigma contraction fixes a positive-semidefinite rank-one "
-            "t2bar/t4bar quartic block. G1 and G6 remain unclosed."
+            "t2bar/t4bar quartic block. The invariant census closes G1; G6 "
+            "remains unclosed pending the physical triplet spectrum."
         ),
     }
 

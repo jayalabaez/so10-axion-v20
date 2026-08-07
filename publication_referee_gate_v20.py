@@ -34,8 +34,10 @@ def build_report() -> dict[str, Any]:
         "branching_census_green": bran.get("n_failed", 1) == 0,
         "overall_blocked": led.get("overall_state") == "BLOCKED"
         and full.get("overall_state") == "BLOCKED",
-        "zero_full_model_gates_closed": led.get("summary", {}).get("n_closed") == 0,
-        "g1_open": led["gates"]["G1"]["status"] == "OPEN",
+        "g1_g2_closed": (
+            led.get("summary", {}).get("closed") == ["G1", "G2"]
+            and led.get("summary", {}).get("n_closed") == 2
+        ),
         "g7_open": led["gates"]["G7"]["status"] == "OPEN",
         "g8_partial_no_unique_lifetime": (
             led["gates"]["G8"]["status"] == "PARTIAL"
@@ -110,7 +112,8 @@ def build_report() -> dict[str, Any]:
             "ready_for_honest_submission_as_blocked_program": not bool(failures),
         },
         "verdict": (
-            "Referee package ready: 0/8 full-model gates closed, theory BLOCKED, "
+            "Referee package ready: 2/8 full-model gates closed (G1 and G2), "
+            "theory BLOCKED, "
             "Issue #106 PS branching census PARTIAL with T' locked and CG/norm OPEN. "
             "This repository defines an executable closure program; it does not "
             "claim the model is proven."
