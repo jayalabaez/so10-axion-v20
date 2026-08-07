@@ -1,0 +1,86 @@
+name: g3-full-stationarity-feasibility
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - g3_full_stationarity_feasibility_v20.py
+      - test_g3_full_stationarity_feasibility_v20.py
+      - live_g2_derivative_coverage_ledger_v20.py
+      - live_g2_exact_sigma_self_quartic_derivatives_v20.py
+      - live_g2_exact_final_mixed_quartic_derivatives_v20.py
+      - .github/workflows/g3-full-stationarity-feasibility.yml
+  push:
+    branches: [main]
+    paths:
+      - g3_full_stationarity_feasibility_v20.py
+      - test_g3_full_stationarity_feasibility_v20.py
+      - live_g2_derivative_coverage_ledger_v20.py
+      - live_g2_exact_sigma_self_quartic_derivatives_v20.py
+      - live_g2_exact_final_mixed_quartic_derivatives_v20.py
+      - .github/workflows/g3-full-stationarity-feasibility.yml
+
+concurrency:
+  group: g3-full-stationarity-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  first-order-stationarity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      PYTHONHASHSEED: "0"
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      NUMEXPR_NUM_THREADS: "1"
+      PYTEST_DISABLE_PLUGIN_AUTOLOAD: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt pytest
+      - name: Compile G3 feasibility gate
+        run: |
+          python -m py_compile \
+            g3_full_stationarity_feasibility_v20.py \
+            test_g3_full_stationarity_feasibility_v20.py
+      - name: Run G3 stationarity tests
+        run: python -m pytest -q test_g3_full_stationarity_feasibility_v20.py
+      - name: Generate G3 certificate
+        run: python g3_full_stationarity_feasibility_v20.py --write
+      - name: Assert honest first-order boundary
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('G3_FULL_STATIONARITY_FEASIBILITY_V20.json'))
+          assert r['n_failed']==0, r['failures']
+          assert r['flags']['G1_closed'] and r['flags']['G2_closed']
+          assert r['flags']['G3_first_order_feasibility_executed']
+          assert not r['flags']['G3_closed']
+          assert not r['flags']['whole_model_validated']
+          m=r['stationarity_matrix']
+          assert m['shape']==[486,91]
+          assert m['independent_constraint_rank']==7
+          assert m['total_coupling_nullity']==84
+          assert m['stationary_gradient_relative_residual']<1e-10
+          assert r['gauge_invariance']['orbit_rank']==33
+          assert r['gauge_invariance']['maximum_Ward_residual']<1e-10
+          assert r['fast_gradient_audit']['relative_residual']<2e-8
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: g3-full-stationarity-feasibility
+          path: |
+            G3_FULL_STATIONARITY_FEASIBILITY_V20.json
+            G3_FULL_STATIONARITY_FEASIBILITY_V20.md
+          if-no-files-found: error
