@@ -34,16 +34,16 @@ jobs:
           base64 -d g3_patch_bundle.reconstructed.b64 > g3_patch_bundle.tar.gz
           echo "2bb2cd7eae5471f3e13b473c6808f25efd15ff5103038748ad562ed6e4ec0330  g3_patch_bundle.tar.gz" | sha256sum -c -
           tar -tzf g3_patch_bundle.tar.gz
-      - name: Apply bundled patch
+      - name: Apply non-workflow patch files
         run: |
           tar -xzf g3_patch_bundle.tar.gz
+          rm -f .github/workflows/g3-full-stationarity-feasibility.yml
           rm -f \
             g3_patch_bundle.tar.gz.b64 \
             g3_patch_bundle.reconstructed.b64 \
             g3_patch_bundle.tar.gz \
-            g3_patch_bundle.part0* \
-            .github/workflows/apply-g3-patch-bundle.yml
-      - name: Commit patch
+            g3_patch_bundle.part0*
+      - name: Commit non-workflow patch
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
