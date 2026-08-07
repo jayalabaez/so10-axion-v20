@@ -63,15 +63,26 @@ def vector_generator_matrix(a: int, b: int) -> np.ndarray:
 
 def _two_form_matrix(form: direct.Form) -> np.ndarray:
     matrix = np.zeros((10, 10), dtype=float)
-    for (i, j), coefficient in form.items():
-        if len((i, j)) != 2:
+    for indices, coefficient in form.items():
+        if len(indices) != 2:
             raise AssertionError("expected a two-form")
+        i, j = indices
         if abs(coefficient.imag) > 1.0e-12:
             raise AssertionError("real 210 produced complex 45 channel")
         value = float(coefficient.real)
         matrix[i, j] = value
         matrix[j, i] = -value
     return matrix
+
+
+def two_form_value(form: direct.Form) -> np.ndarray:
+    """Public exact two-form-to-vector-generator matrix map.
+
+    The derivative compiler uses this same canonical conversion when
+    linearizing the 45 channel.  Keeping one implementation prevents a hidden
+    sign or ordering drift between the source invariant and its Hessian.
+    """
+    return _two_form_matrix(form)
 
 
 def channel_operators(phi: direct.Form) -> dict[str, np.ndarray]:
@@ -85,7 +96,7 @@ def channel_operators(phi: direct.Form) -> dict[str, np.ndarray]:
             )
     q54 = 0.5 * (contraction + contraction.T) - (2.0 / 5.0) * norm2 * np.eye(10)
     dual_two_form = direct.hodge_star(direct.wedge(phi, phi))
-    a45 = _two_form_matrix(dual_two_form)
+    a45 = two_form_value(dual_two_form)
     return {
         "1": norm2 * np.eye(10, dtype=complex),
         "45": 1j * a45,
