@@ -9,6 +9,10 @@ on:
       - live_g2_exact_h10_self_quartic_derivatives_v20.py
       - live_g2_exact_hsigma_hermitian_derivatives_v20.py
       - live_g2_exact_phi2_hdagh_derivatives_v20.py
+      - live_g2_exact_phi_self_quartic_derivatives_v20.py
+      - live_g2_exact_sigma_self_quartic_derivatives_v20.py
+      - live_g2_exact_unique_hsigma_chiral_derivatives_v20.py
+      - live_g2_exact_final_mixed_quartic_derivatives_v20.py
       - test_live_g2_authoritative_family_id_alignment_v20.py
       - .github/workflows/live-g2-authoritative-family-id-alignment.yml
   push:
@@ -19,6 +23,10 @@ on:
       - live_g2_exact_h10_self_quartic_derivatives_v20.py
       - live_g2_exact_hsigma_hermitian_derivatives_v20.py
       - live_g2_exact_phi2_hdagh_derivatives_v20.py
+      - live_g2_exact_phi_self_quartic_derivatives_v20.py
+      - live_g2_exact_sigma_self_quartic_derivatives_v20.py
+      - live_g2_exact_unique_hsigma_chiral_derivatives_v20.py
+      - live_g2_exact_final_mixed_quartic_derivatives_v20.py
       - test_live_g2_authoritative_family_id_alignment_v20.py
       - .github/workflows/live-g2-authoritative-family-id-alignment.yml
 
@@ -48,21 +56,28 @@ jobs:
             live_g2_exact_h10_self_quartic_derivatives_v20.py \
             live_g2_exact_hsigma_hermitian_derivatives_v20.py \
             live_g2_exact_phi2_hdagh_derivatives_v20.py \
+            live_g2_exact_phi_self_quartic_derivatives_v20.py \
+            live_g2_exact_sigma_self_quartic_derivatives_v20.py \
+            live_g2_exact_unique_hsigma_chiral_derivatives_v20.py \
+            live_g2_exact_final_mixed_quartic_derivatives_v20.py \
             test_live_g2_authoritative_family_id_alignment_v20.py
       - name: Run fail-closed ID alignment tests
         run: python -m pytest -q test_live_g2_authoritative_family_id_alignment_v20.py
-      - name: Assert G1 and G2 partition imports
+      - name: Assert complete G1 and G2 family partition
         run: |
           python - <<'PY'
           import live_g1_tensor_closure_ledger_v20 as g1
           import live_g2_derivative_coverage_ledger_v20 as coverage
 
           ids={row['id'] for row in g1.BASE_FAMILIES.values()}
-          covered=set(coverage.covered_families())
+          covered=coverage.covered_families()
           remaining=set(coverage.EXPECTED_REMAINING_FAMILIES)
+          owners=coverage.family_owners()
           assert len(ids)==18
-          assert len(covered)==12
-          assert len(remaining)==6
-          assert covered.isdisjoint(remaining)
-          assert covered | remaining == ids
+          assert len(covered)==18
+          assert len(set(covered))==18
+          assert remaining==set()
+          assert set(covered)==ids
+          assert set(owners)==ids
+          assert all(len(names)==1 for names in owners.values())
           PY

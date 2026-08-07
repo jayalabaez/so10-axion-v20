@@ -1,0 +1,83 @@
+name: live-g2-exact-unique-hsigma-chiral-derivatives
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - exact_unique_hsigma_chiral_quartics_v20.py
+      - exact_phi2_126dag126_six_contractions_v20.py
+      - live_g1_tensor_closure_ledger_v20.py
+      - live_g2_arbitrary_component_potential_values_v20.py
+      - live_g2_canonical_486_field_chart_v20.py
+      - live_g2_exact_quadratic_family_derivatives_v20.py
+      - live_g2_exact_unique_hsigma_chiral_derivatives_v20.py
+      - test_live_g2_exact_unique_hsigma_chiral_derivatives_v20.py
+      - .github/workflows/live-g2-exact-unique-hsigma-chiral-derivatives.yml
+  push:
+    branches: [main]
+    paths:
+      - exact_unique_hsigma_chiral_quartics_v20.py
+      - exact_phi2_126dag126_six_contractions_v20.py
+      - live_g1_tensor_closure_ledger_v20.py
+      - live_g2_arbitrary_component_potential_values_v20.py
+      - live_g2_canonical_486_field_chart_v20.py
+      - live_g2_exact_quadratic_family_derivatives_v20.py
+      - live_g2_exact_unique_hsigma_chiral_derivatives_v20.py
+      - test_live_g2_exact_unique_hsigma_chiral_derivatives_v20.py
+      - .github/workflows/live-g2-exact-unique-hsigma-chiral-derivatives.yml
+
+concurrency:
+  group: live-g2-unique-hsigma-chiral-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  exact-unique-hsigma-chiral-derivatives:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt pytest
+      - name: Compile exact chiral adapters
+        run: |
+          python -m py_compile \
+            live_g2_exact_unique_hsigma_chiral_derivatives_v20.py \
+            test_live_g2_exact_unique_hsigma_chiral_derivatives_v20.py
+      - name: Run exact chiral derivative tests
+        run: python -m pytest -q test_live_g2_exact_unique_hsigma_chiral_derivatives_v20.py
+      - name: Generate exact derivative certificate
+        run: python live_g2_exact_unique_hsigma_chiral_derivatives_v20.py --write
+      - name: Assert fail-closed 16-of-18 boundary
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('LIVE_G2_EXACT_UNIQUE_HSIGMA_CHIRAL_DERIVATIVES_V20.json'))
+          assert r['n_failed']==0, r['failures']
+          c=r['coverage']
+          assert set(c['base_families_closed_here'])=={
+              'unique_Hdag_Sigma2_Sigmadag','unique_Hdag2_Sigma2'
+          }
+          assert c['expected_direction_counts']==c['observed_direction_counts']
+          assert c['parameter_count_closed_here']==4
+          assert c['cumulative_base_family_count_with_parents']==16
+          assert c['remaining_base_families']==2
+          assert r['targeted_value_layer_audit']['maximum_residual']<1e-10
+          assert r['maximum_Hessian_asymmetry']<1e-10
+          assert r['directional_reconstruction']['second_residual']<1e-8
+          assert r['flags']['both_unique_chiral_HSigma_adapters_closed']
+          assert not r['flags']['G2_closed']
+          assert not r['flags']['whole_model_validated']
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-g2-exact-unique-hsigma-chiral-derivatives
+          path: |
+            LIVE_G2_EXACT_UNIQUE_HSIGMA_CHIRAL_DERIVATIVES_V20.json
+            LIVE_G2_EXACT_UNIQUE_HSIGMA_CHIRAL_DERIVATIVES_V20.md

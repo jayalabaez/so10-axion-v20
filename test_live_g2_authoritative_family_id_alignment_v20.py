@@ -61,14 +61,17 @@ def test_implemented_adapter_constants_match_authoritative_ledger():
     assert list(phi2h.BASIS_LABELS) == g1.BASE_FAMILIES[(2, 1, 1, 0, 0)]["basis"]
 
 
-def test_coverage_partition_uses_only_authoritative_ids():
+def test_coverage_partition_uses_all_authoritative_ids_exactly_once():
     authoritative = {row["id"] for row in g1.BASE_FAMILIES.values()}
-    covered = set(coverage.covered_families())
+    covered = coverage.covered_families()
     remaining = set(coverage.EXPECTED_REMAINING_FAMILIES)
-    assert len(covered) == 12
-    assert len(remaining) == 6
-    assert covered.isdisjoint(remaining)
-    assert covered | remaining == authoritative
+    assert len(covered) == 18
+    assert len(set(covered)) == 18
+    assert remaining == set()
+    assert set(covered) == authoritative
+    owners = coverage.family_owners()
+    assert set(owners) == authoritative
+    assert all(len(names) == 1 for names in owners.values())
 
 
 def test_renamed_ids_do_not_coexist_with_stale_aliases():
