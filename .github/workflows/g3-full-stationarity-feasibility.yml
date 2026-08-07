@@ -1,0 +1,95 @@
+name: g3-full-stationarity-feasibility
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - g3_full_stationarity_feasibility_v20.py
+      - test_g3_full_stationarity_feasibility_v20.py
+      - live_g2_canonical_486_field_chart_v20.py
+      - test_live_g2_canonical_486_field_chart_v20.py
+      - live_g2_derivative_coverage_ledger_v20.py
+      - live_g1_tensor_closure_ledger_v20.py
+      - requirements.txt
+      - .github/workflows/g3-full-stationarity-feasibility.yml
+  push:
+    branches: [main]
+    paths:
+      - g3_full_stationarity_feasibility_v20.py
+      - test_g3_full_stationarity_feasibility_v20.py
+      - live_g2_canonical_486_field_chart_v20.py
+      - test_live_g2_canonical_486_field_chart_v20.py
+      - live_g2_derivative_coverage_ledger_v20.py
+      - live_g1_tensor_closure_ledger_v20.py
+      - requirements.txt
+      - .github/workflows/g3-full-stationarity-feasibility.yml
+
+concurrency:
+  group: g3-stationarity-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  full-coordinate-stationarity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 420
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      NUMEXPR_NUM_THREADS: "1"
+      PYTHONHASHSEED: "0"
+      G3_REQUIRE_FULL_CROSSCHECK: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+      - name: Compile G3 and gauge-chart repair
+        run: |
+          python -m py_compile \
+            g3_full_stationarity_feasibility_v20.py \
+            test_g3_full_stationarity_feasibility_v20.py \
+            live_g2_canonical_486_field_chart_v20.py \
+            test_live_g2_canonical_486_field_chart_v20.py
+      - name: Run canonical chart regressions
+        run: python -m pytest -q test_live_g2_canonical_486_field_chart_v20.py
+      - name: Generate exact first-order G3 certificate
+        run: python g3_full_stationarity_feasibility_v20.py --full-crosscheck --write
+      - name: Run focused G3 tests
+        run: python -m unittest -v test_g3_full_stationarity_feasibility_v20.py
+      - name: Assert fail-closed G3 boundary
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('G3_FULL_STATIONARITY_FEASIBILITY_V20.json'))
+          assert r['n_failed']==0, r['failures']
+          assert r['overall_state']=='PARTIAL'
+          assert r['coverage']=={
+              'base_families':18,
+              'directions':64,
+              'real_parameters':91,
+              'real_field_dimension':486,
+          }
+          assert r['stationarity']['matrix_shape']==[486,91]
+          assert r['stationarity']['stationary_witness_relative_residual']<1e-10
+          assert r['stationarity']['stationary_witness_all_coefficients_within_4pi']
+          assert r['gauge_orbits']['pre_EW_SO10_to_SM']['column_normalized_rank']==33
+          assert r['gauge_orbits']['physical_EW_SO10_to_U1em']['EW_increment_rank_after_preEW_projection']==3
+          assert r['gauge_orbits']['physical_EW_SO10_to_U1em']['stage_resolved_total_rank']==36
+          assert r['fast_gradient_crosscheck']['executed']
+          assert r['fast_gradient_crosscheck']['maximum_gradient_relative_residual']<2e-8
+          assert not r['flags']['G3_closed']
+          assert not r['flags']['whole_model_validated']
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: g3-full-stationarity-feasibility
+          path: |
+            G3_FULL_STATIONARITY_FEASIBILITY_V20.json
+            G3_FULL_STATIONARITY_FEASIBILITY_V20.md
