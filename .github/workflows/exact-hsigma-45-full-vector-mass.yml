@@ -35,7 +35,24 @@ jobs:
             exact_hsigma_45_full_vector_mass_v20.py \
             test_exact_hsigma_45_full_vector_mass_v20.py
       - name: Run full-vector H–Σ 45 mass tests
-        run: python -m pytest -q test_exact_hsigma_45_full_vector_mass_v20.py
+        id: pytest
+        shell: bash
+        run: |
+          set +e
+          python -m pytest -vv --tb=long test_exact_hsigma_45_full_vector_mass_v20.py > pytest-hsigma45.log 2>&1
+          status=$?
+          cat pytest-hsigma45.log
+          echo "status=$status" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Upload pytest diagnostic
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: exact-hsigma-45-pytest-diagnostic
+          path: pytest-hsigma45.log
+          if-no-files-found: error
+      - name: Enforce pytest result
+        run: test "${{ steps.pytest.outputs.status }}" -eq 0
       - name: Generate certificate
         run: python exact_hsigma_45_full_vector_mass_v20.py
       - name: Assert fail-closed scope
