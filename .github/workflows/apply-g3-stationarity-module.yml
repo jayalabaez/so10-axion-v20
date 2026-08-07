@@ -1,0 +1,33 @@
+name: apply-g3-stationarity-module
+
+on:
+  push:
+    branches: [agent/g3-full-stationarity-feasibility]
+    paths:
+      - scripts/apply_g3_stationarity_module.py
+      - .github/workflows/apply-g3-stationarity-module.yml
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install reviewed G3 module
+        run: python scripts/apply_g3_stationarity_module.py
+      - name: Compile generated module
+        run: python -m py_compile g3_full_stationarity_feasibility_v20.py
+      - name: Commit generated module
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add g3_full_stationarity_feasibility_v20.py
+          git commit -m "Add exact G3 stationarity feasibility gate"
+          git push origin HEAD:${GITHUB_REF_NAME}
