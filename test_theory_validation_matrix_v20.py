@@ -654,6 +654,49 @@ def minimal_tree(
     )
     write_json(
         root,
+        "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_V20.json",
+        {
+            "status": "EXACT_RANK1_SU3_DANGEROUS_SLICE_BOUND_CERTIFIED",
+            "overall_state": "CLOSED_RANK1_SU3_SLICE__ARBITRARY_RANK1_PHI_OPEN",
+            "model_contract_id": matrix.MODEL_CONTRACT_ID,
+            "n_failed": 0,
+            "failed_checks": [],
+            "checks": {
+                "rank1_live_residual_source_exact": True,
+                "explicit_endpoint_current_and_self_projectors_exactly": True,
+                "slice_basis_Gram_exact": True,
+                "rank1_common_affine_kernel_rank160_nullity50_exact": True,
+                "angular_projector_Gram_symmetric_exact": True,
+                "angular_projector_int64_overflow_preflight_exact": True,
+                "anchor_polynomial_reconstructed_exactly": True,
+                "rational_SOS_polynomial_identity_exact": True,
+                "rational_SOS_Gram_positive_definite_exact": True,
+                "anchor_at_least_3_over_200_exact": True,
+                "radial_patch_global_minimum_1_over_5000_exact": True,
+                "attaining_slice_witness_evaluated_from_live_arrays_exact": True,
+                "arbitrary_rank1_Phi_proved": False,
+                "arbitrary_Sigma35_proved": False,
+                "G3_closed": False,
+            },
+            "scope": {
+                "H_fixed_to_h_minus": True,
+                "Sigma_fixed_to_normalized_explicit_decomposable_pure_spinor": True,
+                "Phi_restricted_to_four_real_SU3_fixed_variables": True,
+                "Phi_slice_real_dimension": 4,
+                "full_SU3_fixed_space_real_dimension": 16,
+                "full_SU3_fixed_space_proved": False,
+                "u_v_arbitrary_nonnegative": True,
+                "arbitrary_real_Phi": False,
+                "arbitrary_max_negative_Sigma": False,
+                "G3_closed": False,
+                "whole_model_excluded": False,
+            },
+            "SOS": {"strict_anchor_lower_bound": "3/200"},
+            "radial_patch": {"restricted_global_minimum": "1/5000"},
+        },
+    )
+    write_json(
+        root,
         "EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json",
         {
             "status": "ALTERNATIVE_GLOBAL_SOS_AUDIT_COMPLETE__NO_CERTIFIED_REPLACEMENT",
@@ -808,6 +851,29 @@ def minimal_tree(
 
 
 class TheoryValidationMatrixTests(unittest.TestCase):
+    def test_rank1_slice_rejects_wrong_fixed_H_orientation(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            minimal_tree(root)
+            artifact = root / (
+                "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_"
+                "RANK1_SU3_SLICE_V20.json"
+            )
+            forged = json.loads(artifact.read_text(encoding="utf-8"))
+            forged["scope"]["H_fixed_to_h_minus"] = False
+            write_json(root, artifact.name, forged)
+            report = matrix.build_report(root)
+            vacuum = next(
+                gate
+                for gate in report["gates"]
+                if gate["name"] == "full_scalar_potential_vacuum_and_spectrum"
+            )
+            self.assertFalse(
+                vacuum["evidence"][
+                    "gauged_G3_SU5_max_negative_rank1_SU3_four_dimensional_slice_closed"
+                ]
+            )
+
     def test_conditional_candidate_is_not_full_validation(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -1098,6 +1164,11 @@ class TheoryValidationMatrixTests(unittest.TestCase):
             )
             self.assertTrue(
                 vacuum["evidence"][
+                    "gauged_G3_SU5_max_negative_rank1_SU3_slice_artifact_present"
+                ]
+            )
+            self.assertTrue(
+                vacuum["evidence"][
                     "gauged_G3_SU5_max_negative_all_zero_residual_route_excluded"
                 ]
             )
@@ -1117,6 +1188,39 @@ class TheoryValidationMatrixTests(unittest.TestCase):
                     "gauged_G3_SU5_max_negative_pure_Delta_full_residual_minimum"
                 ],
                 "1/5000",
+            )
+            self.assertTrue(
+                vacuum["evidence"][
+                    "gauged_G3_SU5_max_negative_rank1_SU3_four_dimensional_slice_closed"
+                ]
+            )
+            self.assertEqual(
+                vacuum["evidence"][
+                    "gauged_G3_SU5_max_negative_rank1_SU3_slice_dimension"
+                ],
+                4,
+            )
+            self.assertEqual(
+                vacuum["evidence"][
+                    "gauged_G3_SU5_max_negative_rank1_SU3_ambient_dimension"
+                ],
+                16,
+            )
+            self.assertEqual(
+                vacuum["evidence"][
+                    "gauged_G3_SU5_max_negative_rank1_SU3_slice_minimum"
+                ],
+                "1/5000",
+            )
+            self.assertTrue(
+                vacuum["evidence"][
+                    "gauged_G3_SU5_max_negative_arbitrary_rank1_Phi_open"
+                ]
+            )
+            self.assertTrue(
+                vacuum["evidence"][
+                    "gauged_G3_SU5_max_negative_arbitrary_Sigma_orientation_open"
+                ]
             )
             self.assertFalse(
                 vacuum["evidence"][
@@ -1425,6 +1529,32 @@ class TheoryValidationMatrixTests(unittest.TestCase):
             self.assertFalse(
                 vacuum["evidence"][
                     "gauged_G3_SU5_Phi_orbit_literal_refuted_signed_open"
+                ]
+            )
+            self.assertFalse(
+                vacuum["evidence"]["gauged_G3_frontier_honestly_fail_closed"]
+            )
+
+    def test_rank1_slice_cannot_overclaim_arbitrary_phi_sigma_or_g3(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            minimal_tree(root, contract_consistent=True)
+            path = (
+                root
+                / "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_V20.json"
+            )
+            forged = json.loads(path.read_text(encoding="utf-8"))
+            forged["checks"]["arbitrary_Sigma35_proved"] = True
+            path.write_text(json.dumps(forged), encoding="utf-8")
+            report = matrix.build_report(root)
+            vacuum = next(
+                gate
+                for gate in report["gates"]
+                if gate["name"] == "full_scalar_potential_vacuum_and_spectrum"
+            )
+            self.assertFalse(
+                vacuum["evidence"][
+                    "gauged_G3_SU5_max_negative_rank1_SU3_four_dimensional_slice_closed"
                 ]
             )
             self.assertFalse(

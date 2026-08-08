@@ -39,11 +39,17 @@ def test_current_gate_is_open_not_failed_or_overclaimed():
     assert report["artifact_integrity"][
         "max_negative_full_residual_pure_Delta_audit_executes_fail_closed"
     ] is True
+    assert report["artifact_integrity"][
+        "max_negative_rank1_SU3_four_dimensional_slice_audit_executes_fail_closed"
+    ] is True
     assert report["science_criteria"][
         "max_negative_all_zero_residual_route_excluded_exactly"
     ] is True
     assert report["science_criteria"][
         "max_negative_pure_Delta_full_residual_gap_excluded_exactly"
+    ] is True
+    assert report["science_criteria"][
+        "rank1_SU3_four_dimensional_slice_gap_certified_without_closing_G3"
     ] is True
     assert report["science_criteria"][
         "signed_Phi_orbits_locally_isolated_exactly"
@@ -79,6 +85,10 @@ def test_current_gate_is_open_not_failed_or_overclaimed():
     assert report["diagnostic_only"][
         "max_negative_pure_Delta_full_residual_minimum"
     ] == "1/5000"
+    assert report["diagnostic_only"]["rank1_SU3_Phi_slice_real_dimension"] == 4
+    assert report["diagnostic_only"]["rank1_SU3_ambient_real_dimension"] == 16
+    assert report["diagnostic_only"]["rank1_SU3_slice_minimum"] == "1/5000"
+    assert report["diagnostic_only"]["arbitrary_rank1_Phi_open"] is True
     assert report["diagnostic_only"][
         "arbitrary_non_pure_Delta_Sigma_orientations_open"
     ] is True
@@ -88,6 +98,20 @@ def test_current_gate_is_open_not_failed_or_overclaimed():
     assert report["science_criteria"][
         "beta_global_gap_and_unique_equality_exact"
     ] is False
+
+
+def test_rank1_slice_rejects_wrong_fixed_H_orientation():
+    forged = copy.deepcopy(mod._load(mod.MAX_NEGATIVE_RANK1_SU3_SLICE_JSON))
+    forged["scope"]["H_fixed_to_h_minus"] = False
+    report = mod.build_report(max_negative_rank1_su3_slice_report=forged)
+    assert report["artifact_integrity"][
+        "max_negative_rank1_SU3_four_dimensional_slice_audit_executes_fail_closed"
+    ] is False
+    assert report["science_criteria"][
+        "rank1_SU3_four_dimensional_slice_gap_certified_without_closing_G3"
+    ] is False
+    assert report["overall_state"] == "EXECUTION_FAIL"
+    assert report["classification"]["G3_closed"] is False
 
 
 def test_decisive_theorem_is_full_field_global_and_orbit_exact():
@@ -176,3 +200,14 @@ def test_exact_lower_witness_rejects_candidate_not_whole_theory():
     assert report["classification"]["candidate_exactly_rejected"] is True
     assert report["classification"]["whole_model_excluded"] is False
     assert report["classification"]["theory_still_viable"] is True
+
+
+def test_rank1_slice_false_flags_are_fail_closed():
+    forged = copy.deepcopy(mod._load(mod.MAX_NEGATIVE_RANK1_SU3_SLICE_JSON))
+    forged["checks"]["arbitrary_Sigma35_proved"] = True
+    report = mod.build_report(max_negative_rank1_su3_slice_report=forged)
+    assert report["overall_state"] == "EXECUTION_FAIL"
+    assert report["artifact_integrity"][
+        "max_negative_rank1_SU3_four_dimensional_slice_audit_executes_fail_closed"
+    ] is False
+    assert report["classification"]["G3_closed"] is False

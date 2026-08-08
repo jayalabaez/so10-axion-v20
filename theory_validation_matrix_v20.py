@@ -34,6 +34,7 @@ from audit_v20_errors import build_audit
 import exact_x_symmetry_consistency_gate_v20 as exact_x_gate
 
 ROOT = Path(__file__).resolve().parent
+MODEL_CONTRACT_ID = "gauged_u1x_phi17_v20"
 
 ARTIFACTS = {
     "engine": "so10_axion_v20_verdict.json",
@@ -80,6 +81,7 @@ ARTIFACTS = {
     "gauged_g3_su5_fixed_f_offkernel": "EXACT_GAUGED_U1X_G3_SU5_FIXED_F_OFFKERNEL_BOUND_V20.json",
     "gauged_g3_su5_max_negative_zero_residual": "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_ZERO_RESIDUAL_BOUND_V20.json",
     "gauged_g3_su5_max_negative_full_residual": "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_FULL_RESIDUAL_BOUND_V20.json",
+    "gauged_g3_su5_max_negative_rank1_su3_slice": "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_V20.json",
     "gauged_g3_alternative_global_sos": "EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json",
     "final_g3": "FINAL_G3_ACCEPTANCE_GATE_V20.json",
     "authoritative": "AUTHORITATIVE_FULL_MODEL_GATE_V20.json",
@@ -351,7 +353,7 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
         default={},
     )
     g2_scoped_complete = bool(
-        g2_audit.get("model_contract_id") == "gauged_u1x_phi17_v20"
+        g2_audit.get("model_contract_id") == MODEL_CONTRACT_ID
         and g2_audit.get("n_failed") == 0
         and _dig(
             g2_audit,
@@ -462,12 +464,17 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
     )
     max_negative_full_scope = max_negative_full_bound.get("scope", {})
     max_negative_full_checks = max_negative_full_bound.get("checks", {})
+    rank1_su3_bound = reports.get(
+        "gauged_g3_su5_max_negative_rank1_su3_slice", {}
+    )
+    rank1_su3_scope = rank1_su3_bound.get("scope", {})
+    rank1_su3_checks = rank1_su3_bound.get("checks", {})
     alternative_sos = reports.get("gauged_g3_alternative_global_sos", {})
     alternative_sos_flags = alternative_sos.get("flags", {})
     final_g3 = reports.get("final_g3", {})
     final_g3_classification = final_g3.get("classification", {})
     corrected_common_kernel_honestly_bound = bool(
-        common.get("model_contract_id") == "gauged_u1x_phi17_v20"
+        common.get("model_contract_id") == MODEL_CONTRACT_ID
         and common.get("n_failed") == 0
         and common.get("overall_state") == "OPEN"
         and common_flags.get("legacy_common_kernel_dimension_135_invalidated")
@@ -497,7 +504,7 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
         sos_bfb.get("status")
         == "EXACT_COMPLETE_POTENTIAL_BFB_AND_SELECTED_STATIONARITY_CERTIFIED"
         and sos_bfb.get("overall_state") == "CLOSED_SUBPROBLEM"
-        and sos_bfb.get("model_contract_id") == "gauged_u1x_phi17_v20"
+        and sos_bfb.get("model_contract_id") == MODEL_CONTRACT_ID
         and sos_bfb.get("n_failed") == 0
         and sos_bfb_flags.get(
             "complete_27_parameter_SOS_identity_exactly_source_bound"
@@ -540,7 +547,7 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
         sos.get("status")
         == "EXACT_BFB_STATIONARY_STRICT_LOCAL_MINIMUM__GLOBAL_COUNTEREXAMPLE"
         and sos.get("overall_state") == "OPEN"
-        and sos.get("model_contract_id") == "gauged_u1x_phi17_v20"
+        and sos.get("model_contract_id") == MODEL_CONTRACT_ID
         and sos.get("n_failed") == 0
         and sos_coefficients.get("nonzero_count") == 27
         and sos_coefficients.get("maximum_absolute_coefficient") == 9.125
@@ -679,7 +686,7 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
     su5_hsx_exact_hessian_audit_fail_closed = bool(
         su5_hsx_exact_hessian
         and su5_hsx_exact_hessian.get("model_contract_id")
-        == "gauged_u1x_phi17_v20"
+        == MODEL_CONTRACT_ID
         and su5_hsx_exact_hessian.get("n_failed", 0) == 0
         and (hsx_exact_hessian_closed or hsx_exact_hessian_open)
     )
@@ -853,7 +860,7 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
         and max_negative_bound.get("overall_state")
         == "CLOSED_PURE_DELTA_MAX_NEGATIVE_MIXED_ZERO_STRATUM__ARBITRARY_PHI_OPEN"
         and max_negative_bound.get("model_contract_id")
-        == "gauged_u1x_phi17_v20"
+        == MODEL_CONTRACT_ID
         and max_negative_checks.get("exact_rank_168_nullity_42") is True
         and max_negative_checks.get("kernel_splits_35_plus_7_exactly") is True
         and max_negative_checks.get("live_HSX_and_PD_coefficients_bound_exactly")
@@ -902,7 +909,7 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
         and max_negative_full_bound.get("overall_state")
         == "CLOSED_MAX_NEGATIVE_PURE_DELTA_ARBITRARY_PHI_SUBPROBLEM"
         and max_negative_full_bound.get("model_contract_id")
-        == "gauged_u1x_phi17_v20"
+        == MODEL_CONTRACT_ID
         and max_negative_full_scope.get("Sigma_on_pure_Delta_orbit") is True
         and max_negative_full_scope.get("Phi_arbitrary_real_210") is True
         and max_negative_full_scope.get("nonzero_Phi_Sigma_residuals_covered")
@@ -930,6 +937,55 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
                 "G3_not_overclaimed",
             )
         )
+    )
+    su5_max_negative_rank1_su3_four_dimensional_slice_closed = bool(
+        rank1_su3_bound.get("n_failed") == 0
+        and rank1_su3_bound.get("failed_checks") == []
+        and rank1_su3_bound.get("status")
+        == "EXACT_RANK1_SU3_DANGEROUS_SLICE_BOUND_CERTIFIED"
+        and rank1_su3_bound.get("overall_state")
+        == "CLOSED_RANK1_SU3_SLICE__ARBITRARY_RANK1_PHI_OPEN"
+        and rank1_su3_bound.get("model_contract_id") == MODEL_CONTRACT_ID
+        and rank1_su3_scope.get("H_fixed_to_h_minus") is True
+        and rank1_su3_scope.get(
+            "Sigma_fixed_to_normalized_explicit_decomposable_pure_spinor"
+        )
+        is True
+        and rank1_su3_scope.get(
+            "Phi_restricted_to_four_real_SU3_fixed_variables"
+        )
+        is True
+        and rank1_su3_scope.get("Phi_slice_real_dimension") == 4
+        and rank1_su3_scope.get("full_SU3_fixed_space_real_dimension") == 16
+        and rank1_su3_scope.get("full_SU3_fixed_space_proved") is False
+        and rank1_su3_scope.get("u_v_arbitrary_nonnegative") is True
+        and rank1_su3_scope.get("arbitrary_real_Phi") is False
+        and rank1_su3_scope.get("arbitrary_max_negative_Sigma") is False
+        and rank1_su3_scope.get("G3_closed") is False
+        and rank1_su3_scope.get("whole_model_excluded") is False
+        and all(
+            rank1_su3_checks.get(name) is True
+            for name in (
+                "rank1_live_residual_source_exact",
+                "explicit_endpoint_current_and_self_projectors_exactly",
+                "slice_basis_Gram_exact",
+                "rank1_common_affine_kernel_rank160_nullity50_exact",
+                "angular_projector_Gram_symmetric_exact",
+                "angular_projector_int64_overflow_preflight_exact",
+                "anchor_polynomial_reconstructed_exactly",
+                "rational_SOS_polynomial_identity_exact",
+                "rational_SOS_Gram_positive_definite_exact",
+                "anchor_at_least_3_over_200_exact",
+                "radial_patch_global_minimum_1_over_5000_exact",
+                "attaining_slice_witness_evaluated_from_live_arrays_exact",
+            )
+        )
+        and rank1_su3_checks.get("arbitrary_rank1_Phi_proved") is False
+        and rank1_su3_checks.get("arbitrary_Sigma35_proved") is False
+        and rank1_su3_checks.get("G3_closed") is False
+        and _dig(rank1_su3_bound, "SOS", "strict_anchor_lower_bound") == "3/200"
+        and _dig(rank1_su3_bound, "radial_patch", "restricted_global_minimum")
+        == "1/5000"
     )
     alternative_global_sos_honestly_open = bool(
         alternative_sos.get("n_failed") == 0
@@ -986,11 +1042,12 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
         and su5_fixed_f_full_gap_closed
         and su5_max_negative_all_zero_route_excluded
         and su5_max_negative_full_residual_pure_delta_closed
+        and su5_max_negative_rank1_su3_four_dimensional_slice_closed
         and alternative_global_sos_honestly_open
         and final_g3_honestly_open
     )
     gauged_g3_contract_bound = bool(
-        gauged.get("model_contract_id") == "gauged_u1x_phi17_v20"
+        gauged.get("model_contract_id") == MODEL_CONTRACT_ID
         and gauged.get("authoritative_for_manuscript_G3_formulation") is True
         and gauged.get("n_failed") == 0
         and gauged_coverage.get("invariant_directions") == 44
@@ -1088,6 +1145,10 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
             "the exact full Hessian has rank/nullity 448/38 and is positive on the "
             "quotient. The maximally negative pure-Delta sector is excluded for "
             "arbitrary real Phi with all residuals retained and sharp gap 1/5000. "
+            "At fixed H=h_- and one explicit rank-one Sigma endpoint, an exact "
+            "Gram/LDL certificate also "
+            "proves that gap on only a four-real-dimensional Phi sub-slice of the "
+            "16-dimensional SU(3)-fixed space. "
             "G3 remains open only on uniform coercivity for arbitrary non-pure-Delta "
             "Sigma orientations. "
             "The old no-X 64/91 result remains historical."
@@ -1181,6 +1242,9 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
             ),
             "gauged_G3_SU5_max_negative_full_residual_artifact_present": bool(
                 max_negative_full_bound
+            ),
+            "gauged_G3_SU5_max_negative_rank1_SU3_slice_artifact_present": bool(
+                rank1_su3_bound
             ),
             "gauged_G3_alternative_global_SOS_artifact_present": bool(
                 alternative_sos
@@ -1311,6 +1375,26 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
             ),
             "gauged_G3_SU5_max_negative_pure_Delta_full_residual_minimum": (
                 max_negative_full_scope.get("restricted_gap_global_minimum")
+            ),
+            "gauged_G3_SU5_max_negative_rank1_SU3_four_dimensional_slice_closed": (
+                su5_max_negative_rank1_su3_four_dimensional_slice_closed
+            ),
+            "gauged_G3_SU5_max_negative_rank1_SU3_slice_dimension": (
+                rank1_su3_scope.get("Phi_slice_real_dimension")
+            ),
+            "gauged_G3_SU5_max_negative_rank1_SU3_ambient_dimension": (
+                rank1_su3_scope.get("full_SU3_fixed_space_real_dimension")
+            ),
+            "gauged_G3_SU5_max_negative_rank1_SU3_slice_minimum": _dig(
+                rank1_su3_bound,
+                "radial_patch",
+                "restricted_global_minimum",
+            ),
+            "gauged_G3_SU5_max_negative_arbitrary_rank1_Phi_open": not bool(
+                rank1_su3_checks.get("arbitrary_rank1_Phi_proved")
+            ),
+            "gauged_G3_SU5_max_negative_arbitrary_Sigma_orientation_open": not bool(
+                rank1_su3_scope.get("arbitrary_max_negative_Sigma")
             ),
             "gauged_G3_SU5_arbitrary_Phi_nonzero_residual_cancellations_open": (
                 not bool(
@@ -1689,6 +1773,7 @@ def _reproducibility_gate(
             "EXACT_GAUGED_U1X_G3_SU5_FIXED_F_OFFKERNEL_BOUND_V20.json",
             "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_ZERO_RESIDUAL_BOUND_V20.json",
             "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_FULL_RESIDUAL_BOUND_V20.json",
+            "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_V20.json",
             "EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json",
             "FINAL_G3_ACCEPTANCE_GATE_V20.json",
         )

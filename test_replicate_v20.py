@@ -76,3 +76,27 @@ def test_max_negative_full_residual_certificate_precedes_all_downstream_gates() 
         "theory_validation_matrix_v20.py",
     ):
         assert certificate_index < source.index(consumer)
+
+
+def test_rank1_su3_slice_certificate_is_scoped_generated_and_tested() -> None:
+    source = replicate.Path(replicate.__file__).read_text(encoding="utf-8")
+    full_residual = (
+        "exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py"
+    )
+    certificate = (
+        "exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py"
+    )
+    test = (
+        "test_exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py"
+    )
+    assert certificate in source
+    assert test in source
+    certificate_index = source.index(certificate)
+    assert source.index(full_residual) < certificate_index
+    for consumer in (
+        "g1_g8_gate_ledger_v20.py",
+        "final_g3_acceptance_gate_v20.py",
+        "g1_g8_execution_roadmap_v20.py",
+        "theory_validation_matrix_v20.py",
+    ):
+        assert certificate_index < source.index(consumer)

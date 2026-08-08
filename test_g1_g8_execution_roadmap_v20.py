@@ -186,6 +186,14 @@ def test_constructive_g3_frontier_is_actionable_but_not_promoted():
     )
     assert frontier["SU5_max_negative_pure_Delta_full_residual_gap_closed"] is True
     assert frontier["SU5_max_negative_pure_Delta_full_residual_minimum"] == "1/5000"
+    assert frontier[
+        "SU5_max_negative_rank1_SU3_four_dimensional_slice_closed"
+    ] is True
+    assert frontier["SU5_max_negative_rank1_SU3_slice_dimension"] == 4
+    assert frontier["SU5_max_negative_rank1_SU3_ambient_dimension"] == 16
+    assert frontier["SU5_max_negative_rank1_SU3_slice_minimum"] == "1/5000"
+    assert frontier["SU5_max_negative_arbitrary_rank1_Phi_open"] is True
+    assert frontier["SU5_max_negative_arbitrary_Sigma_orientation_open"] is True
     assert frontier["SU5_arbitrary_Phi_nonzero_residual_cancellations_open"] is False
     assert (
         frontier["SU5_arbitrary_non_pure_Delta_Sigma_uniform_coercivity_open"]
@@ -215,6 +223,8 @@ def test_constructive_g3_frontier_is_actionable_but_not_promoted():
         task for task in report["tasks"] if task["id"] == "W3-G3-FULL-STATIONARITY"
     )
     assert "SU(5)+Delta" in g3_task["deliverable"]
+    assert "four-real-dimensional Phi sub-slice" in g3_task["deliverable"]
+    assert "16-dimensional SU(3)-fixed space" in g3_task["deliverable"]
     assert "486-field" in g3_task["acceptance"]
 
 

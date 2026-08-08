@@ -48,6 +48,10 @@ MAX_NEGATIVE_FULL_RESIDUAL_JSON = (
     ROOT
     / "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_FULL_RESIDUAL_BOUND_V20.json"
 )
+MAX_NEGATIVE_RANK1_SU3_SLICE_JSON = (
+    ROOT
+    / "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_V20.json"
+)
 
 MODEL_CONTRACT_ID = ledger.AUTHORITATIVE_CONTRACT_ID
 FINAL_THEOREM = (
@@ -86,6 +90,7 @@ def build_report(
     fixed_f_offkernel_report: dict[str, Any] | None = None,
     max_negative_zero_residual_report: dict[str, Any] | None = None,
     max_negative_full_residual_report: dict[str, Any] | None = None,
+    max_negative_rank1_su3_slice_report: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     ledger_report = ledger.build_report() if ledger_report is None else ledger_report
     hsx_report = _load(HSX_JSON) if hsx_report is None else hsx_report
@@ -126,6 +131,11 @@ def build_report(
         if max_negative_full_residual_report is None
         else max_negative_full_residual_report
     )
+    max_negative_rank1_su3_slice_report = (
+        _load(MAX_NEGATIVE_RANK1_SU3_SLICE_JSON)
+        if max_negative_rank1_su3_slice_report is None
+        else max_negative_rank1_su3_slice_report
+    )
 
     frontier = ledger_report.get("gauged_u1x_g3_constructive_frontier", {})
     gates = ledger_report.get("gates", {})
@@ -149,6 +159,8 @@ def build_report(
     max_negative_checks = max_negative_zero_residual_report.get("checks", {})
     max_negative_full_scope = max_negative_full_residual_report.get("scope", {})
     max_negative_full_checks = max_negative_full_residual_report.get("checks", {})
+    rank1_su3_scope = max_negative_rank1_su3_slice_report.get("scope", {})
+    rank1_su3_checks = max_negative_rank1_su3_slice_report.get("checks", {})
 
     artifact_integrity = {
         "ledger_executes": ledger_report.get("n_failed") == 0,
@@ -314,6 +326,65 @@ def build_report(
                 )
             )
         ),
+        "max_negative_rank1_SU3_four_dimensional_slice_audit_executes_fail_closed": bool(
+            max_negative_rank1_su3_slice_report.get("n_failed") == 0
+            and max_negative_rank1_su3_slice_report.get("failed_checks") == []
+            and max_negative_rank1_su3_slice_report.get("status")
+            == "EXACT_RANK1_SU3_DANGEROUS_SLICE_BOUND_CERTIFIED"
+            and max_negative_rank1_su3_slice_report.get("overall_state")
+            == "CLOSED_RANK1_SU3_SLICE__ARBITRARY_RANK1_PHI_OPEN"
+            and max_negative_rank1_su3_slice_report.get("model_contract_id")
+            == MODEL_CONTRACT_ID
+            and rank1_su3_scope.get("H_fixed_to_h_minus") is True
+            and rank1_su3_scope.get(
+                "Sigma_fixed_to_normalized_explicit_decomposable_pure_spinor"
+            )
+            is True
+            and rank1_su3_scope.get(
+                "Phi_restricted_to_four_real_SU3_fixed_variables"
+            )
+            is True
+            and rank1_su3_scope.get("Phi_slice_real_dimension") == 4
+            and rank1_su3_scope.get("full_SU3_fixed_space_real_dimension") == 16
+            and rank1_su3_scope.get("full_SU3_fixed_space_proved") is False
+            and rank1_su3_scope.get("u_v_arbitrary_nonnegative") is True
+            and rank1_su3_scope.get("arbitrary_real_Phi") is False
+            and rank1_su3_scope.get("arbitrary_max_negative_Sigma") is False
+            and rank1_su3_scope.get("G3_closed") is False
+            and rank1_su3_scope.get("whole_model_excluded") is False
+            and all(
+                rank1_su3_checks.get(name) is True
+                for name in (
+                    "rank1_live_residual_source_exact",
+                    "explicit_endpoint_current_and_self_projectors_exactly",
+                    "slice_basis_Gram_exact",
+                    "rank1_common_affine_kernel_rank160_nullity50_exact",
+                    "angular_projector_Gram_symmetric_exact",
+                    "angular_projector_int64_overflow_preflight_exact",
+                    "anchor_polynomial_reconstructed_exactly",
+                    "rational_SOS_polynomial_identity_exact",
+                    "rational_SOS_Gram_positive_definite_exact",
+                    "anchor_at_least_3_over_200_exact",
+                    "radial_patch_global_minimum_1_over_5000_exact",
+                    "attaining_slice_witness_evaluated_from_live_arrays_exact",
+                )
+            )
+            and rank1_su3_checks.get("arbitrary_rank1_Phi_proved") is False
+            and rank1_su3_checks.get("arbitrary_Sigma35_proved") is False
+            and rank1_su3_checks.get("G3_closed") is False
+            and _dig(
+                max_negative_rank1_su3_slice_report,
+                "SOS",
+                "strict_anchor_lower_bound",
+            )
+            == "3/200"
+            and _dig(
+                max_negative_rank1_su3_slice_report,
+                "radial_patch",
+                "restricted_global_minimum",
+            )
+            == "1/5000"
+        ),
         "alternative_global_SOS_audit_executes_fail_closed": bool(
             alternative_sos_report.get("n_failed") == 0
             and alternative_sos_report.get("status")
@@ -350,6 +421,7 @@ def build_report(
                 fixed_f_offkernel_report,
                 max_negative_zero_residual_report,
                 max_negative_full_residual_report,
+                max_negative_rank1_su3_slice_report,
             )
         ),
         "numerical_Hessian_not_promoted_to_proof": (
@@ -364,6 +436,7 @@ def build_report(
             and fixed_f_scope.get("G3_closed") is False
             and max_negative_scope.get("G3_closed") is False
             and max_negative_full_scope.get("G3_closed") is False
+            and rank1_su3_scope.get("G3_closed") is False
         ),
     }
 
@@ -507,6 +580,33 @@ def build_report(
             )
             is True
         ),
+        "rank1_SU3_four_dimensional_slice_gap_certified_without_closing_G3": bool(
+            rank1_su3_scope.get("H_fixed_to_h_minus") is True
+            and rank1_su3_scope.get(
+                "Phi_restricted_to_four_real_SU3_fixed_variables"
+            )
+            is True
+            and rank1_su3_scope.get("Phi_slice_real_dimension") == 4
+            and rank1_su3_scope.get("full_SU3_fixed_space_real_dimension") == 16
+            and rank1_su3_scope.get("full_SU3_fixed_space_proved") is False
+            and rank1_su3_scope.get("u_v_arbitrary_nonnegative") is True
+            and rank1_su3_scope.get("arbitrary_real_Phi") is False
+            and rank1_su3_scope.get("arbitrary_max_negative_Sigma") is False
+            and rank1_su3_scope.get("G3_closed") is False
+            and rank1_su3_checks.get("arbitrary_rank1_Phi_proved") is False
+            and rank1_su3_checks.get("arbitrary_Sigma35_proved") is False
+            and rank1_su3_checks.get("G3_closed") is False
+            and rank1_su3_checks.get(
+                "radial_patch_global_minimum_1_over_5000_exact"
+            )
+            is True
+            and _dig(
+                max_negative_rank1_su3_slice_report,
+                "radial_patch",
+                "restricted_global_minimum",
+            )
+            == "1/5000"
+        ),
         "signed_Phi_orbits_locally_isolated_exactly": bool(
             local_scope.get("plus_F_local_component_classified") is True
             and local_scope.get("minus_F_local_component_classified") is True
@@ -595,6 +695,10 @@ def build_report(
             (FIXED_F_OFFKERNEL_JSON, fixed_f_offkernel_report),
             (MAX_NEGATIVE_ZERO_RESIDUAL_JSON, max_negative_zero_residual_report),
             (MAX_NEGATIVE_FULL_RESIDUAL_JSON, max_negative_full_residual_report),
+            (
+                MAX_NEGATIVE_RANK1_SU3_SLICE_JSON,
+                max_negative_rank1_su3_slice_report,
+            ),
         )
         if not report
     ]
@@ -668,6 +772,20 @@ def build_report(
             "max_negative_pure_Delta_full_residual_minimum": (
                 max_negative_full_scope.get("restricted_gap_global_minimum")
             ),
+            "rank1_SU3_Phi_slice_real_dimension": rank1_su3_scope.get(
+                "Phi_slice_real_dimension"
+            ),
+            "rank1_SU3_ambient_real_dimension": rank1_su3_scope.get(
+                "full_SU3_fixed_space_real_dimension"
+            ),
+            "rank1_SU3_slice_minimum": _dig(
+                max_negative_rank1_su3_slice_report,
+                "radial_patch",
+                "restricted_global_minimum",
+            ),
+            "arbitrary_rank1_Phi_open": not bool(
+                rank1_su3_checks.get("arbitrary_rank1_Phi_proved")
+            ),
             "arbitrary_non_pure_Delta_Sigma_orientations_open": not bool(
                 max_negative_full_scope.get("arbitrary_Sigma_orientation_proved")
             ),
@@ -708,7 +826,11 @@ def build_report(
             "stratum for arbitrary H and Sigma. The complete maximally-negative "
             "pure-Delta sector is now also excluded for arbitrary real Phi and "
             "all nonzero residuals, with sharp gap 1/5000; no exact lower witness "
-            "is known. PASS still requires a uniform coercive beta gap for "
+            "is known. At fixed H=h_- and one explicit rank-one Sigma endpoint, "
+            "an exact certificate "
+            "also proves the 1/5000 gap on only a four-real-dimensional Phi "
+            "sub-slice of the 16-dimensional SU(3)-fixed space. PASS still "
+            "requires a uniform coercive beta gap for "
             "arbitrary non-pure-Delta Sigma orientations, plus the external authoritative "
             "model execution."
         ),

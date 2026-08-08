@@ -18,10 +18,13 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             "exact_gauged_u1x_g3_su5_max_negative_sigma35_orbits_v20.py",
             paths,
         )
-        self.assertNotIn(
+        for required in (
             "exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py",
-            paths,
-        )
+            "test_exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py",
+            "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_V20.json",
+            "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_V20.md",
+        ):
+            self.assertIn(required, paths)
         for relative in paths:
             with self.subTest(relative=relative):
                 path = Path(relative)
@@ -50,6 +53,19 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             lines = (root / "SHA256SUMS").read_text(encoding="utf-8").splitlines()
             self.assertEqual(lines, expected)
             self.assertNotIn("\\", "\n".join(lines))
+
+    def test_rank1_release_predicate_requires_all_false_scope_flags(self):
+        source = Path(release.__file__).read_text(encoding="utf-8")
+        start = source.index("rank1_scope =")
+        end = source.index("alternative_flags =", start)
+        predicate = source[start:end]
+        for required in (
+            'rank1_scope["H_fixed_to_h_minus"] is True',
+            'rank1_checks["arbitrary_rank1_Phi_proved"] is False',
+            'rank1_checks["arbitrary_Sigma35_proved"] is False',
+            'rank1_checks["G3_closed"] is False',
+        ):
+            self.assertIn(required, predicate)
 
     def test_checksums_reject_files_outside_repository(self):
         with tempfile.TemporaryDirectory() as directory:
