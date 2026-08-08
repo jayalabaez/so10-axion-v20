@@ -112,6 +112,12 @@ class G1G8GateLedgerTests(unittest.TestCase):
         rank1_su3_bound = reports[
             "gauged_G3_SU5_max_negative_rank1_SU3_four_dimensional_slice_bound"
         ]
+        rank1_su4_stabilizer = reports[
+            "gauged_G3_rank1_SU4_stabilizer_infrastructure"
+        ]
+        rank1_su4_intertwiners = reports[
+            "gauged_G3_rank1_SU4_Phi210_intertwiner_infrastructure"
+        ]
         alternative_sos = reports["gauged_G3_alternative_global_SOS_audit"]
         self.assertEqual(x_report["n_failed"], 0)
         self.assertFalse(x_report["contract_consistent"])
@@ -173,6 +179,20 @@ class G1G8GateLedgerTests(unittest.TestCase):
         self.assertFalse(rank1_su3_bound["checks"]["arbitrary_rank1_Phi_proved"])
         self.assertFalse(rank1_su3_bound["checks"]["arbitrary_Sigma35_proved"])
         self.assertFalse(rank1_su3_bound["checks"]["G3_closed"])
+        self.assertEqual(rank1_su4_stabilizer["n_failed"], 0)
+        self.assertTrue(rank1_su4_stabilizer["scope"]["infrastructure_only"])
+        self.assertFalse(rank1_su4_stabilizer["scope"]["G3_closed"])
+        self.assertEqual(rank1_su4_intertwiners["n_failed"], 0)
+        self.assertEqual(
+            rank1_su4_intertwiners["carriers"][
+                "Sym2_Phi210_SU4_singlet_dimension"
+            ],
+            45,
+        )
+        self.assertFalse(
+            rank1_su4_intertwiners["scope"]["Schur_SOS_SDP_constructed"]
+        )
+        self.assertFalse(rank1_su4_intertwiners["scope"]["G3_closed"])
         self.assertEqual(alternative_sos["n_failed"], 0)
 
     def test_constructive_g3_frontier_is_present_but_fail_closed(self):
@@ -283,6 +303,15 @@ class G1G8GateLedgerTests(unittest.TestCase):
         self.assertTrue(
             frontier["SU5_max_negative_arbitrary_Sigma_orientation_open"]
         )
+        self.assertTrue(frontier["rank1_SU4_stabilizer_infrastructure_exact"])
+        self.assertEqual(frontier["rank1_SU4_joint_stabilizer_dimension"], 15)
+        self.assertTrue(
+            frontier["rank1_SU4_Phi210_intertwiner_infrastructure_exact"]
+        )
+        self.assertEqual(frontier["rank1_SU4_Phi210_carrier_count"], 25)
+        self.assertEqual(frontier["rank1_SU4_Sym2_invariant_dimension"], 45)
+        self.assertTrue(frontier["rank1_SU4_Schur_SOS_SDP_open"])
+        self.assertTrue(frontier["rank1_SU4_arbitrary_Phi_bound_open"])
         self.assertFalse(
             frontier["SU5_arbitrary_Phi_nonzero_residual_cancellations_open"]
         )
@@ -321,6 +350,11 @@ class G1G8GateLedgerTests(unittest.TestCase):
         self.assertTrue(
             self.report["checks"][
                 "gauged_G3_rank1_SU3_four_dimensional_slice_is_exact_and_fail_closed"
+            ]
+        )
+        self.assertTrue(
+            self.report["checks"][
+                "gauged_G3_rank1_SU4_infrastructure_is_exact_and_fail_closed"
             ]
         )
         self.assertEqual(self.report["gates"]["G3"]["status"], mod.STATUS_BLOCKED)
@@ -540,6 +574,158 @@ class G1G8GateLedgerTests(unittest.TestCase):
         self.assertIn(
             "gauged_G3_rank1_SU3_four_dimensional_slice_is_exact_and_fail_closed",
             report["audit_failures"],
+        )
+
+    def test_rank1_su4_infrastructure_mutations_fail_closed(self):
+        inputs = self.report["model_contract_reports"]
+        stabilizer = inputs["gauged_G3_rank1_SU4_stabilizer_infrastructure"]
+        intertwiners = inputs[
+            "gauged_G3_rank1_SU4_Phi210_intertwiner_infrastructure"
+        ]
+        mutations = []
+
+        forged_stabilizer = copy.deepcopy(stabilizer)
+        forged_stabilizer["scope"]["G3_closed"] = True
+        mutations.append((forged_stabilizer, copy.deepcopy(intertwiners)))
+
+        forged_intertwiners = copy.deepcopy(intertwiners)
+        forged_intertwiners["scope"]["Schur_SOS_SDP_constructed"] = True
+        mutations.append((copy.deepcopy(stabilizer), forged_intertwiners))
+
+        forged_intertwiners = copy.deepcopy(intertwiners)
+        forged_intertwiners["companion_stabilizer_provenance"][
+            "all_required_provenance_exact"
+        ] = False
+        mutations.append((copy.deepcopy(stabilizer), forged_intertwiners))
+
+        forged_intertwiners = copy.deepcopy(intertwiners)
+        forged_intertwiners["intertwiner"]["intertwining_count"] = 14
+        mutations.append((copy.deepcopy(stabilizer), forged_intertwiners))
+
+        for forged_stabilizer, forged_intertwiners in mutations:
+            with self.subTest(
+                stabilizer_G3=forged_stabilizer["scope"]["G3_closed"],
+                sdp=forged_intertwiners["scope"]["Schur_SOS_SDP_constructed"],
+                provenance=forged_intertwiners[
+                    "companion_stabilizer_provenance"
+                ]["all_required_provenance_exact"],
+                count=forged_intertwiners["intertwiner"]["intertwining_count"],
+            ):
+                report = mod._build_report_from_inputs(
+                    x_report=inputs["exact_X"],
+                    g1_report=inputs["gauged_G1_character_census"],
+                    g2_report=inputs["gauged_G2_derivative_audit"],
+                    filter_report=inputs["gauged_scalar_filter"],
+                    g3_rank1_su4_stabilizer_report=forged_stabilizer,
+                    g3_rank1_su4_phi210_intertwiners_report=forged_intertwiners,
+                )
+                frontier = report["gauged_u1x_g3_constructive_frontier"]
+                self.assertEqual(report["overall_state"], "EXECUTION_FAIL")
+                self.assertFalse(frontier["integrity_pass"])
+                self.assertFalse(
+                    frontier[
+                        "rank1_SU4_Phi210_intertwiner_infrastructure_exact"
+                    ]
+                )
+                self.assertIn(
+                    "gauged_G3_rank1_SU4_infrastructure_is_exact_and_fail_closed",
+                    report["audit_failures"],
+                )
+
+    def test_rank1_su4_predicates_reject_schema_and_stale_aggregates(self):
+        inputs = self.report["model_contract_reports"]
+        stabilizer = inputs["gauged_G3_rank1_SU4_stabilizer_infrastructure"]
+        intertwiners = inputs[
+            "gauged_G3_rank1_SU4_Phi210_intertwiner_infrastructure"
+        ]
+
+        stabilizer_mutations = (
+            lambda value: value["checks"].__setitem__(
+                "unexpected_new_critical_check", False
+            ),
+            lambda value: value["joint_stabilizer_tangent"].__setitem__(
+                "displayed_kernel_residual_max_abs", 1
+            ),
+            lambda value: value["joint_stabilizer_tangent"].__setitem__(
+                "joint_tangent_rank_mod_prime", 29
+            ),
+            lambda value: value["Phi210_action"].__setitem__(
+                "skew_transpose_max_abs_residual", 1
+            ),
+            lambda value: value["Lie_algebra"].__setitem__(
+                "Jacobi_max_abs_residual", 1
+            ),
+            lambda value: value["generator_basis"].__setitem__(
+                "coefficient_rank_mod_prime", 14
+            ),
+            lambda value: value["generator_basis"].__setitem__("prime", 4),
+            lambda value: value["joint_stabilizer_tangent"].__setitem__(
+                "prime", 4
+            ),
+            lambda value: value["Phi210_action"].__setitem__("prime", 4),
+            lambda value: value["generator_basis"]["ordered_labels"].__setitem__(
+                0, "WRONG"
+            ),
+            lambda value: value["Phi210_action"]["ordered_labels"].__setitem__(
+                0, "WRONG"
+            ),
+        )
+        for mutate in stabilizer_mutations:
+            forged = copy.deepcopy(stabilizer)
+            mutate(forged)
+            self.assertFalse(
+                mod._rank1_su4_stabilizer_infrastructure_exact(forged),
+                mutate.__code__.co_firstlineno,
+            )
+
+        intertwiner_mutations = (
+            lambda value: value["checks"].__setitem__(
+                "unexpected_new_critical_check", False
+            ),
+            lambda value: value["companion_stabilizer_provenance"].__setitem__(
+                "module", "quarantined_or_wrong.py"
+            ),
+            lambda value: value["integral_C8"].__setitem__(
+                "minimal_polynomial_annihilates_exact", False
+            ),
+            lambda value: value["integral_C8"].__setitem__(
+                "modular_nullities_sum", 0
+            ),
+            lambda value: value["integral_C8"].__setitem__("modular_prime", 4),
+            lambda value: value["carriers"].__setitem__(
+                "all_carrier_dimensions_eigenvalues_characters_exact", False
+            ),
+            lambda value: value["carriers"].__setitem__(
+                "future_Schur_SDP_multiplicity_matrix_dimension", 45
+            ),
+            lambda value: value["intertwiner"]["intertwinings"][0].__setitem__(
+                "generator", "WRONG"
+            ),
+        )
+        for mutate in intertwiner_mutations:
+            forged = copy.deepcopy(intertwiners)
+            mutate(forged)
+            self.assertFalse(
+                mod._rank1_su4_phi210_intertwiners_exact(forged, stabilizer),
+                mutate.__code__.co_firstlineno,
+            )
+
+        forged_stabilizer = copy.deepcopy(stabilizer)
+        forged_intertwiners = copy.deepcopy(intertwiners)
+        forged_stabilizer["joint_stabilizer_tangent"]["fixed_endpoint"][
+            "H"
+        ] = "wrong_H"
+        forged_intertwiners["companion_stabilizer_provenance"]["fixed_endpoint"][
+            "H"
+        ] = "wrong_H"
+        self.assertFalse(
+            mod._rank1_su4_stabilizer_infrastructure_exact(forged_stabilizer)
+        )
+        self.assertFalse(
+            mod._rank1_su4_phi210_intertwiners_exact(
+                forged_intertwiners,
+                forged_stabilizer,
+            )
         )
 
 

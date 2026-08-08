@@ -42,6 +42,12 @@ def test_current_gate_is_open_not_failed_or_overclaimed():
     assert report["artifact_integrity"][
         "max_negative_rank1_SU3_four_dimensional_slice_audit_executes_fail_closed"
     ] is True
+    assert report["artifact_integrity"][
+        "rank1_SU4_stabilizer_infrastructure_executes_fail_closed"
+    ] is True
+    assert report["artifact_integrity"][
+        "rank1_SU4_Phi210_intertwiner_infrastructure_executes_fail_closed"
+    ] is True
     assert report["science_criteria"][
         "max_negative_all_zero_residual_route_excluded_exactly"
     ] is True
@@ -50,6 +56,9 @@ def test_current_gate_is_open_not_failed_or_overclaimed():
     ] is True
     assert report["science_criteria"][
         "rank1_SU3_four_dimensional_slice_gap_certified_without_closing_G3"
+    ] is True
+    assert report["science_criteria"][
+        "rank1_SU4_representation_infrastructure_ready_without_closing_G3"
     ] is True
     assert report["science_criteria"][
         "signed_Phi_orbits_locally_isolated_exactly"
@@ -89,6 +98,10 @@ def test_current_gate_is_open_not_failed_or_overclaimed():
     assert report["diagnostic_only"]["rank1_SU3_ambient_real_dimension"] == 16
     assert report["diagnostic_only"]["rank1_SU3_slice_minimum"] == "1/5000"
     assert report["diagnostic_only"]["arbitrary_rank1_Phi_open"] is True
+    assert report["diagnostic_only"]["rank1_SU4_joint_stabilizer_dimension"] == 15
+    assert report["diagnostic_only"]["rank1_SU4_Phi210_carrier_count"] == 25
+    assert report["diagnostic_only"]["rank1_SU4_Sym2_invariant_dimension"] == 45
+    assert report["diagnostic_only"]["rank1_SU4_Schur_SOS_SDP_constructed"] is False
     assert report["diagnostic_only"][
         "arbitrary_non_pure_Delta_Sigma_orientations_open"
     ] is True
@@ -211,3 +224,38 @@ def test_rank1_slice_false_flags_are_fail_closed():
         "max_negative_rank1_SU3_four_dimensional_slice_audit_executes_fail_closed"
     ] is False
     assert report["classification"]["G3_closed"] is False
+
+
+def test_rank1_su4_infrastructure_mutations_are_fail_closed():
+    stabilizer = mod._load(mod.RANK1_SU4_STABILIZER_JSON)
+    intertwiners = mod._load(mod.RANK1_SU4_PHI210_INTERTWINERS_JSON)
+    mutations = []
+
+    forged_stabilizer = copy.deepcopy(stabilizer)
+    forged_stabilizer["scope"]["arbitrary_rank1_Phi_bound_proved"] = True
+    mutations.append((forged_stabilizer, copy.deepcopy(intertwiners)))
+
+    forged_intertwiners = copy.deepcopy(intertwiners)
+    forged_intertwiners["scope"]["G3_closed"] = True
+    mutations.append((copy.deepcopy(stabilizer), forged_intertwiners))
+
+    forged_intertwiners = copy.deepcopy(intertwiners)
+    forged_intertwiners["intertwiner"]["exterior_basis_shape"] = [0, 0]
+    mutations.append((copy.deepcopy(stabilizer), forged_intertwiners))
+
+    forged_intertwiners = copy.deepcopy(intertwiners)
+    forged_intertwiners["companion_stabilizer_provenance"][
+        "all_required_provenance_exact"
+    ] = False
+    mutations.append((copy.deepcopy(stabilizer), forged_intertwiners))
+
+    for forged_stabilizer, forged_intertwiners in mutations:
+        report = mod.build_report(
+            rank1_su4_stabilizer_report=forged_stabilizer,
+            rank1_su4_phi210_intertwiners_report=forged_intertwiners,
+        )
+        assert report["overall_state"] == "EXECUTION_FAIL"
+        assert report["classification"]["G3_closed"] is False
+        assert report["artifact_integrity"][
+            "rank1_SU4_Phi210_intertwiner_infrastructure_executes_fail_closed"
+        ] is False

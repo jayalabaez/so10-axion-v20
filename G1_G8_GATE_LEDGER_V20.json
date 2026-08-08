@@ -28,6 +28,7 @@
     "gauged_G3_failed_branches_and_SU5_PD_frontier_exactly_classified": true,
     "gauged_G3_local_minimum_and_global_counterexample_certified": true,
     "gauged_G3_rank1_SU3_four_dimensional_slice_is_exact_and_fail_closed": true,
+    "gauged_G3_rank1_SU4_infrastructure_is_exact_and_fail_closed": true,
     "gauged_G3_required_constructive_artifacts_present": true,
     "gauged_scalar_filter_enforces_X": true,
     "gauged_scalar_filter_executes": true,
@@ -66,7 +67,7 @@
       "wave": 2
     },
     {
-      "deliverable": "Promote the source-bound BFB, exact selected stationarity, and strict-local-minimum certificate after contract repair, while retaining the exact counterexample that rejects globality. To close G3, prove uniform coercivity for arbitrary non-pure-Delta Sigma orientations on the surviving SU(5)+Delta chiral-H branch. Its full 486-real Hessian is now exactly PSD with rank/nullity 448/38 and symmetry kernel exactly 38; the complete maximally-negative pure-Delta sector is already excluded for arbitrary real Phi and nonzero residuals with sharp gap 1/5000. At one explicit decomposable rank-one endpoint, a separate exact certificate closes only a four-real-dimensional Phi sub-slice of the 16-dimensional SU(3)-fixed space, also with minimum 1/5000.",
+      "deliverable": "Promote the source-bound BFB, exact selected stationarity, and strict-local-minimum certificate after contract repair, while retaining the exact counterexample that rejects globality. To close G3, prove uniform coercivity for arbitrary non-pure-Delta Sigma orientations on the surviving SU(5)+Delta chiral-H branch. Its full 486-real Hessian is now exactly PSD with rank/nullity 448/38 and symmetry kernel exactly 38; the complete maximally-negative pure-Delta sector is already excluded for arbitrary real Phi and nonzero residuals with sharp gap 1/5000. At one explicit decomposable rank-one endpoint, a separate exact certificate closes only a four-real-dimensional Phi sub-slice of the 16-dimensional SU(3)-fixed space, also with minimum 1/5000. Its exact SU(4) stabilizer and 25-carrier, 45-invariant Phi210 census are now available for the still-open Schur/SOS SDP.",
       "gates": [
         "G3",
         "G4",
@@ -303,7 +304,9 @@
           "exact_A_square_recoupling": true,
           "exact_SOS_BFB_stationarity": true,
           "fixed_P_kernel_no_go": true,
-          "lower_replacement_orbit": true
+          "lower_replacement_orbit": true,
+          "rank1_SU4_Phi210_intertwiner_infrastructure": true,
+          "rank1_SU4_stabilizer_infrastructure": true
         },
         "candidate_J0": "-21/200",
         "candidate_maximum_absolute_coefficient": 9.125,
@@ -327,6 +330,13 @@
         "model_contract_id": "gauged_u1x_phi17_v20",
         "nonvanishing_residual_global_SOS_replacements_excluded": false,
         "overall_state": "OPEN",
+        "rank1_SU4_Phi210_carrier_count": 25,
+        "rank1_SU4_Phi210_intertwiner_infrastructure_exact": true,
+        "rank1_SU4_Schur_SOS_SDP_open": true,
+        "rank1_SU4_Sym2_invariant_dimension": 45,
+        "rank1_SU4_arbitrary_Phi_bound_open": true,
+        "rank1_SU4_joint_stabilizer_dimension": 15,
+        "rank1_SU4_stabilizer_infrastructure_exact": true,
         "remaining_exact_step": "Classify and compare all competing stationary symmetry orbits, or derive a sharper global lower bound saturated by this candidate.",
         "selected_global_minimum_disproved": true,
         "selected_vacuum_stationarity_exactly_certified": true,
@@ -459,7 +469,9 @@
           "exact_A_square_recoupling": true,
           "exact_SOS_BFB_stationarity": true,
           "fixed_P_kernel_no_go": true,
-          "lower_replacement_orbit": true
+          "lower_replacement_orbit": true,
+          "rank1_SU4_Phi210_intertwiner_infrastructure": true,
+          "rank1_SU4_stabilizer_infrastructure": true
         },
         "candidate_J0": "-21/200",
         "candidate_maximum_absolute_coefficient": 9.125,
@@ -483,6 +495,13 @@
         "model_contract_id": "gauged_u1x_phi17_v20",
         "nonvanishing_residual_global_SOS_replacements_excluded": false,
         "overall_state": "OPEN",
+        "rank1_SU4_Phi210_carrier_count": 25,
+        "rank1_SU4_Phi210_intertwiner_infrastructure_exact": true,
+        "rank1_SU4_Schur_SOS_SDP_open": true,
+        "rank1_SU4_Sym2_invariant_dimension": 45,
+        "rank1_SU4_arbitrary_Phi_bound_open": true,
+        "rank1_SU4_joint_stabilizer_dimension": 15,
+        "rank1_SU4_stabilizer_infrastructure_exact": true,
         "remaining_exact_step": "Classify and compare all competing stationary symmetry orbits, or derive a sharper global lower bound saturated by this candidate.",
         "selected_global_minimum_disproved": true,
         "selected_vacuum_stationarity_exactly_certified": true,
@@ -654,7 +673,9 @@
       "exact_A_square_recoupling": true,
       "exact_SOS_BFB_stationarity": true,
       "fixed_P_kernel_no_go": true,
-      "lower_replacement_orbit": true
+      "lower_replacement_orbit": true,
+      "rank1_SU4_Phi210_intertwiner_infrastructure": true,
+      "rank1_SU4_stabilizer_infrastructure": true
     },
     "candidate_J0": "-21/200",
     "candidate_maximum_absolute_coefficient": 9.125,
@@ -678,6 +699,13 @@
     "model_contract_id": "gauged_u1x_phi17_v20",
     "nonvanishing_residual_global_SOS_replacements_excluded": false,
     "overall_state": "OPEN",
+    "rank1_SU4_Phi210_carrier_count": 25,
+    "rank1_SU4_Phi210_intertwiner_infrastructure_exact": true,
+    "rank1_SU4_Schur_SOS_SDP_open": true,
+    "rank1_SU4_Sym2_invariant_dimension": 45,
+    "rank1_SU4_arbitrary_Phi_bound_open": true,
+    "rank1_SU4_joint_stabilizer_dimension": 15,
+    "rank1_SU4_stabilizer_infrastructure_exact": true,
     "remaining_exact_step": "Classify and compare all competing stationary symmetry orbits, or derive a sharper global lower bound saturated by this candidate.",
     "selected_global_minimum_disproved": true,
     "selected_vacuum_stationarity_exactly_certified": true,
@@ -8456,10 +8484,10 @@
         "row_count": 51
       },
       "performance": {
-        "exact_dense_derivative_evaluation_seconds": 56.53770620000432,
-        "exact_value_evaluation_seconds": 8.548388700000942,
+        "exact_dense_derivative_evaluation_seconds": 54.360217900015414,
+        "exact_value_evaluation_seconds": 8.5780597999983,
         "heavy_generation_required": true,
-        "total_seconds": 81.06122199998936
+        "total_seconds": 79.0312266999972
       },
       "physical_hierarchy_state": {
         "M_GUT_GeV": 9917564798898606.0,
@@ -195058,6 +195086,1968 @@
       "overall_state": "LOWER_STATIONARY_ORBIT_FOUND__GLOBAL_MINIMUM_OPEN",
       "status": "EXACT_REPLACEMENT_STATIONARY_ORBIT__NUMERIC_STRICT_LOCAL_MINIMUM__GLOBAL_OPEN"
     },
+    "gauged_G3_rank1_SU4_Phi210_intertwiner_infrastructure": {
+      "carriers": {
+        "SU4_invariant_quadratic_multiplicity_sector_dimension": 45,
+        "Sym2_Phi210_SU4_singlet_dimension": 45,
+        "all_15_generators_preserve_natural_blocks_exact": true,
+        "all_carrier_dimensions_eigenvalues_characters_exact": true,
+        "carrier_count": 25,
+        "carriers": [
+          {
+            "C8_eigen_equation_exact": true,
+            "C8_eigenvalue": 0,
+            "SSYT_character_exact": true,
+            "basis_maximum_absolute_entry": 1,
+            "basis_sha256": "0b0168336eb28ea7386de9af13d038e9b0a7372ae4e13e8f0fc2a0f59fa90b43",
+            "exact_modular_rank": 1,
+            "expected_dimension": 1,
+            "irrep": "1",
+            "n_distinct_weights": 1,
+            "name": "none__b0_c4__1",
+            "natural_block": [
+              [],
+              0,
+              4
+            ],
+            "natural_block_dimension": 1
+          },
+          {
+            "C8_eigen_equation_exact": true,
+            "C8_eigenvalue": 36,
+            "SSYT_character_exact": true,
+            "basis_maximum_absolute_entry": 16,
+            "basis_sha256": "a44bb658931bc08c0da65afa42e909034090357d9e85454dcf7f8f1f059b8855",
+            "exact_modular_rank": 10,
+            "expected_dimension": 10,
+            "irrep": "10",
+            "n_distinct_weights": 10,
+            "name": "none__b1_c3__10",
+            "natural_block": [
+              [],
+              1,
+              3
+            ],
+            "natural_block_dimension": 16
+          },
+          {
+            "C8_eigen_equation_exact": true,
+            "C8_eigenvalue": 20,
+            "SSYT_character_exact": true,
+            "basis_maximum_absolute_entry": 8,
+            "basis_sha256": "ac89f1a090e75cef190308bfd2422103194f0700d37e4f8e2a3a4dc4a7a0b818",
+            "exact_modular_rank": 6,
+            "expected_dimension": 6,
+            "irrep": "6",
+            "n_distinct_weights": 6,
+            "name": "none__b1_c3__6",
+            "natural_block": [
+              [],
+              1,
+              3
+            ],
+            "natural_block_dimension": 16
+          },
+          {
+            "C8_eigen_equation_exact": true,
+            "C8_eigenvalue": 0,
+            "SSYT_character_exact": true,
+            "basis_maximum_absolute_entry": 256,
+            "basis_sha256": "53f206f24844dcc17c4012d0fabb3c5ab9ce653665d77e6ee3296ce6cb0a9807",
+            "exact_modular_rank": 1,
+            "expected_dimension": 1,
+            "irrep": "1",
+            "n_distinct_weights": 1,
+            "name": "none__b2_c2__1",
+            "natural_block": [
+              [],
+              2,
+              2
+            ],
+            "natural_block_dimension": 36
+          },
+          {
+            "C8_eigen_equation_exact": true,
+            "C8_eigenvalue": 32,
+            "SSYT_character_exact": true,
+            "basis_maximum_absolute_entry": 256,
+            "basis_sha256": "b534d27e5cf4526ce1875e5777e1837c392f56d7db871024e1d0cc57883ec997",
+            "exact_modular_rank": 15,
+            "expected_dimension": 15,
+            "irrep": "15",
+            "n_distinct_weights": 13,
+            "name": "none__b2_c2__15",
+            "natural_block": [
+              [],
+              2,
+              2
+            ],
+            "natural_block_dimension": 36
+          },
+          {
+            "C8_eigen_equation_exact": true,
+            "C8_eigenvalue": 48,
+            "SSYT_character_exact": true,
+            "basis_maximum_absolute_entry": 768,
+            "basis_sha256": "cae1f95d22338d7177ef9e77a54a99a77a1d1e7fa58868efdcd5a9cee2d65e86",
+            "exact_modular_rank": 20,
+            "expected_dimension": 20,
+            "irrep": "20prime",
+            "n_distinct_weights": 19,
+            "name": "none__b2_c2__20prime",
+            "natural_block": [
+              [],
+              2,
+              2
+            ],
+            "natural_block_dimension": 36
+          },
+          {
+            "C8_eigen_equation_exact": true,
+            "C8_eigenvalue": 36,
+            "SSYT_character_exact": true,
+            "basis_maximum_absolute_entry": 16,
+            "basis_sha256": "5c59c1c015fb42d5556945a426e92ee08f9ea75c8f1a48eea81133a0f3df3d67",
+            "exact_modular_rank": 10,
+            "expected_dimension": 10,
+            "irrep": "10bar",
+            "n_distinct_weights": 10,
+            "name": "none__b3_c1__10bar",
+            "natural_block": [
+              [],
+              3,
+              1
+            ],
+            "natural_block_dimension": 16
+          },
+          {
+            "C8_eigen_equation_exact": true,
+            "C8_eigenvalue": 20,
+            "SSYT_character_exact": true,
+            "basis_maximum_absolute_entry": 8,
+            "basis_sha256": "b2fcab0861d77b419f1a5d790781cb787f41cc30a8447562068f424a55854fc4",
+            "exact_modular_rank": 6,
+            "expected_dimension": 6,
+            "irrep": "6",
+            "n_distinct_weights": 6,
+            "name": "none__b3_c1__6",
+            "natural_block": [
+              [],
+              3,
+              1
+            ],
+            "natural_block_dimension": 16
+          },
+          {
+            "C8_eigen_equation_exact": true,
+            "C8_eigenvalue": 0,
+            "SSYT_character_exact": true,
+            "basis_maximum_absolute_entry": 1,
+            "basis_sha256": "d56858e2f9f2c3e754225e2bcefdc981db575ddf6fdc551b2e1fb825edd8c7d9",
+            "exact_modular_rank": 1,
+            "expected_dimension": 1,
+            "irrep": "1",
+            "n_distinct_weights": 1,
+            "name": "none__b4_c0__1",
+            "natural_block": [
+              [],
+              4,
+              0
+            ],
+            "natural_block_dimension": 1
+          },
+          {
+            "C8_eigen_equation_exact": true,
+            "C8_eigenvalue": 15,
+            "SSYT_character_exact": true,
+            "basis_maximum_absolute_entry": 1,
+            "basis_sha256": "458b444aafdcfba519bc779adb67b954cf3eb80e97150ee93edd5b7239e58d8a",
+            "exact_modular_rank": 4,
+            "expected_dimension": 4,
+            "irrep": "4",
+            "n_distinct_weights": 4,
+            "name": "z0__b0_c3__4",
+            "natural_block": [
+              [
+                0
+              ],
+              0,
+              3
+            ],
+            "natural_block_dimension": 4
+          },
+          {
+            "C8_eigen_equation_exact": true,
+            "C8_eigenvalue": 15,
+            "SSYT_character_exact": true,
+            "basis_maximum_absolute_entry": 8,
+            "basis_sha256": "037238a73469b0588fdb7aa0a65cf39c25d9c388857e1e5dd8d19453a3e386a2",
+            "exact_modular_rank": 4,
+            "expected_dimension": 4,
+            "irrep": "4bar",
+            "n_distinct_weights": 4,
+            "name": "z0__b1_c2__4bar",
+            "natural_block": [
+              [
+                0
+              ],
+              1,
+              2
+            ],
+            "natural_block_dimension": 24
+          },
+          {
+            "C8_eigen_equation_exact": true,
+            "C8_eigenvalue": 39,
+            "SSYT_character_exact": true,
+            "basis_maximum_absolute_entry": 24,
+            "basis_sha256": "037ccd04592997e75267775be06e12fbacde12292967f632b81535b1a711adac",
+            "exact_modular_rank": 20,
+            "expected_dimension": 20,
+            "irrep": "20",
+            "n_distinct_weights": 16,
+            "name": "z0__b1_c2__20",
+            "natural_block": [
+              [
+                0
+              ],
+              1,
+              2
+            ],
+            "natural_block_dimension": 24
+          },
+          {
+            "C8_eigen_equation_exact": true,
+            "C8_eigenvalue": 15,
+            "SSYT_character_exact": true,
+            "basis_maximum_absolute_entry": 8,
+            "basis_sha256": "63dad3e9475649f4fd6908ff4e624366bfd6c90f274ffbed2175aef1aeac4c43",
+            "exact_modular_rank": 4,
+            "expected_dimension": 4,
+            "irrep": "4",
+            "n_distinct_weights": 4,
+            "name": "z0__b2_c1__4",
+            "natural_block": [
+              [
+                0
+              ],
+              2,
+              1
+            ],
+            "natural_block_dimension": 24
+          },
+          {
+            "C8_eigen_equation_exact": true,
+            "C8_eigenvalue": 39,
+            "SSYT_character_exact": true,
+            "basis_maximum_absolute_entry": 24,
+            "basis_sha256": "c09329971a44a65d1e178b9a69ceb23efe46b67495a48af4cd6b7324bc15bebb",
+            "exact_modular_rank": 20,
+            "expected_dimension": 20,
+            "irrep": "20bar",
+            "n_distinct_weights": 16,
+            "name": "z0__b2_c1__20bar",
+            "natural_block": [
+              [
+                0
+              ],
+              2,
+              1
+            ],
+            "natural_block_dimension": 24
+          },
+          {
+            "C8_eigen_equation_exact": true,
+            "C8_eigenvalue": 15,
+            "SSYT_character_exact": true,
+            "basis_maximum_absolute_entry": 1,
+            "basis_sha256": "582931a9274d4758fe0fb6e8a8a1d6e8cb1016a2f3a4757d451c82d5cb347900",
+            "exact_modular_rank": 4,
+            "expected_dimension": 4,
+            "irrep": "4bar",
+            "n_distinct_weights": 4,
+            "name": "z0__b3_c0__4bar",
+            "natural_block": [
+              [
+                0
+              ],
+              3,
+              0
+            ],
+            "natural_block_dimension": 4
+          },
+          {
+            "C8_eigen_equation_exact": true,
+            "C8_eigenvalue": 15,
+            "SSYT_character_exact": true,
+            "basis_maximum_absolute_entry": 1,
+            "basis_sha256": "8c72f51a813d82351e6e6c1bc9e48220edec871a9e898b6bd9c2f4c5989f43a1",
+            "exact_modular_rank": 4,
+            "expected_dimension": 4,
+            "irrep": "4",
+            "n_distinct_weights": 4,
+            "name": "z0bar__b0_c3__4",
+            "natural_block": [
+              [
+                1
+              ],
+              0,
+              3
+            ],
+            "natural_block_dimension": 4
+          },
+          {
+            "C8_eigen_equation_exact": true,
+            "C8_eigenvalue": 15,
+            "SSYT_character_exact": true,
+            "basis_maximum_absolute_entry": 8,
+            "basis_sha256": "5c50a483ac36b6b54f64d6e3174cd6d138b2e23e8ed32a3b12c804779289ca16",
+            "exact_modular_rank": 4,
+            "expected_dimension": 4,
+            "irrep": "4bar",
+            "n_distinct_weights": 4,
+            "name": "z0bar__b1_c2__4bar",
+            "natural_block": [
+              [
+                1
+              ],
+              1,
+              2
+            ],
+            "natural_block_dimension": 24
+          },
+          {
+            "C8_eigen_equation_exact": true,
+            "C8_eigenvalue": 39,
+            "SSYT_character_exact": true,
+            "basis_maximum_absolute_entry": 24,
+            "basis_sha256": "a33939674a7558845f9436f617aa4f5d2b13018a6cdb22deab45c859791dcaac",
+            "exact_modular_rank": 20,
+            "expected_dimension": 20,
+            "irrep": "20",
+            "n_distinct_weights": 16,
+            "name": "z0bar__b1_c2__20",
+            "natural_block": [
+              [
+                1
+              ],
+              1,
+              2
+            ],
+            "natural_block_dimension": 24
+          },
+          {
+            "C8_eigen_equation_exact": true,
+            "C8_eigenvalue": 15,
+            "SSYT_character_exact": true,
+            "basis_maximum_absolute_entry": 8,
+            "basis_sha256": "9802451adb9e28b317138d61ccaa6ab34cdffe68e3ffcb432b27f93626b4a947",
+            "exact_modular_rank": 4,
+            "expected_dimension": 4,
+            "irrep": "4",
+            "n_distinct_weights": 4,
+            "name": "z0bar__b2_c1__4",
+            "natural_block": [
+              [
+                1
+              ],
+              2,
+              1
+            ],
+            "natural_block_dimension": 24
+          },
+          {
+            "C8_eigen_equation_exact": true,
+            "C8_eigenvalue": 39,
+            "SSYT_character_exact": true,
+            "basis_maximum_absolute_entry": 24,
+            "basis_sha256": "3cc6d7ab0ac8f91632c4c3d04823af8467959f4953d58cc725fa51429efca0bd",
+            "exact_modular_rank": 20,
+            "expected_dimension": 20,
+            "irrep": "20bar",
+            "n_distinct_weights": 16,
+            "name": "z0bar__b2_c1__20bar",
+            "natural_block": [
+              [
+                1
+              ],
+              2,
+              1
+            ],
+            "natural_block_dimension": 24
+          },
+          {
+            "C8_eigen_equation_exact": true,
+            "C8_eigenvalue": 15,
+            "SSYT_character_exact": true,
+            "basis_maximum_absolute_entry": 1,
+            "basis_sha256": "5e70677226b58b4c79727de60500b0bce64668d2dc69de830a4a091bf068ceb4",
+            "exact_modular_rank": 4,
+            "expected_dimension": 4,
+            "irrep": "4bar",
+            "n_distinct_weights": 4,
+            "name": "z0bar__b3_c0__4bar",
+            "natural_block": [
+              [
+                1
+              ],
+              3,
+              0
+            ],
+            "natural_block_dimension": 4
+          },
+          {
+            "C8_eigen_equation_exact": true,
+            "C8_eigenvalue": 20,
+            "SSYT_character_exact": true,
+            "basis_maximum_absolute_entry": 1,
+            "basis_sha256": "d222f5684a1b3f9678855d59b61b0064cfe8676167692659f6869a32c340cdfa",
+            "exact_modular_rank": 6,
+            "expected_dimension": 6,
+            "irrep": "6",
+            "n_distinct_weights": 6,
+            "name": "z0_z0bar__b0_c2__6",
+            "natural_block": [
+              [
+                0,
+                1
+              ],
+              0,
+              2
+            ],
+            "natural_block_dimension": 6
+          },
+          {
+            "C8_eigen_equation_exact": true,
+            "C8_eigenvalue": 0,
+            "SSYT_character_exact": true,
+            "basis_maximum_absolute_entry": 8,
+            "basis_sha256": "0750502f26ae6ce9d7698d7eb967c47580833d595f2dc5b91e3a550edcbc7e71",
+            "exact_modular_rank": 1,
+            "expected_dimension": 1,
+            "irrep": "1",
+            "n_distinct_weights": 1,
+            "name": "z0_z0bar__b1_c1__1",
+            "natural_block": [
+              [
+                0,
+                1
+              ],
+              1,
+              1
+            ],
+            "natural_block_dimension": 16
+          },
+          {
+            "C8_eigen_equation_exact": true,
+            "C8_eigenvalue": 32,
+            "SSYT_character_exact": true,
+            "basis_maximum_absolute_entry": 32,
+            "basis_sha256": "fe0a1c8967f4e41940ba5e3cf551810e4f95192c191fda20c912085097cc4d66",
+            "exact_modular_rank": 15,
+            "expected_dimension": 15,
+            "irrep": "15",
+            "n_distinct_weights": 13,
+            "name": "z0_z0bar__b1_c1__15",
+            "natural_block": [
+              [
+                0,
+                1
+              ],
+              1,
+              1
+            ],
+            "natural_block_dimension": 16
+          },
+          {
+            "C8_eigen_equation_exact": true,
+            "C8_eigenvalue": 20,
+            "SSYT_character_exact": true,
+            "basis_maximum_absolute_entry": 1,
+            "basis_sha256": "7fbf743193b066f9c0a7bf5389ad3dd829f2079083abfaf526f444ec726ae73f",
+            "exact_modular_rank": 6,
+            "expected_dimension": 6,
+            "irrep": "6",
+            "n_distinct_weights": 6,
+            "name": "z0_z0bar__b2_c0__6",
+            "natural_block": [
+              [
+                0,
+                1
+              ],
+              2,
+              0
+            ],
+            "natural_block_dimension": 6
+          }
+        ],
+        "complex_conjugate_pairings": 21,
+        "concatenated_carrier_rank_mod_prime": 210,
+        "concatenated_carrier_sha256": "01ffd2a59f0e634819aa3c734c357ee91ca0041e10a90f3830e2d889ffc3e1a7",
+        "concatenated_carrier_shape": [
+          210,
+          210
+        ],
+        "exact_carrier_rank_argument": "Each denominator-free C8 filter acts inside one invariant, multiplicity-free exterior block.  Its weightwise modular ranks equal the corresponding irreducible SSYT character; the 25 filtered images concatenate to modular rank 210.",
+        "expected_irrep_multiplicities": {
+          "1": 4,
+          "10": 1,
+          "10bar": 1,
+          "15": 2,
+          "20": 2,
+          "20bar": 2,
+          "20prime": 1,
+          "4": 4,
+          "4bar": 4,
+          "6": 4
+        },
+        "natural_exterior_block_count": 16,
+        "natural_exterior_block_dimensions": [
+          1,
+          1,
+          4,
+          4,
+          4,
+          4,
+          6,
+          6,
+          16,
+          16,
+          16,
+          24,
+          24,
+          24,
+          24,
+          36
+        ],
+        "observed_irrep_multiplicities": {
+          "1": 4,
+          "10": 1,
+          "10bar": 1,
+          "15": 2,
+          "20": 2,
+          "20bar": 2,
+          "20prime": 1,
+          "4": 4,
+          "4bar": 4,
+          "6": 4
+        },
+        "proof_grade": true,
+        "real_representation_decomposition": "4*1_R + 4*6_R + 2*15_R + 20prime_R + 4*(4_C)_R + (10_C)_R + 2*(20_C)_R",
+        "symmetric_self_conjugate_pairings": 24
+      },
+      "character_branching": {
+        "Phi210_branching": "4*1 + 4*4 + 4*4bar + 4*6 + 2*15 + 10 + 10bar + 2*20 + 2*20bar + 20prime",
+        "SSYT_character_identity_exact": true,
+        "SSYT_irreps": [
+          {
+            "C8_eigenvalue": 0,
+            "SSYT_dimension": 1,
+            "dynkin_labels": [
+              0,
+              0,
+              0
+            ],
+            "expected_dimension": 1,
+            "irrep": "1",
+            "multiplicity": 4,
+            "n_distinct_weights": 1,
+            "partition": []
+          },
+          {
+            "C8_eigenvalue": 15,
+            "SSYT_dimension": 4,
+            "dynkin_labels": [
+              1,
+              0,
+              0
+            ],
+            "expected_dimension": 4,
+            "irrep": "4",
+            "multiplicity": 4,
+            "n_distinct_weights": 4,
+            "partition": [
+              1
+            ]
+          },
+          {
+            "C8_eigenvalue": 15,
+            "SSYT_dimension": 4,
+            "dynkin_labels": [
+              0,
+              0,
+              1
+            ],
+            "expected_dimension": 4,
+            "irrep": "4bar",
+            "multiplicity": 4,
+            "n_distinct_weights": 4,
+            "partition": [
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "C8_eigenvalue": 20,
+            "SSYT_dimension": 6,
+            "dynkin_labels": [
+              0,
+              1,
+              0
+            ],
+            "expected_dimension": 6,
+            "irrep": "6",
+            "multiplicity": 4,
+            "n_distinct_weights": 6,
+            "partition": [
+              1,
+              1
+            ]
+          },
+          {
+            "C8_eigenvalue": 32,
+            "SSYT_dimension": 15,
+            "dynkin_labels": [
+              1,
+              0,
+              1
+            ],
+            "expected_dimension": 15,
+            "irrep": "15",
+            "multiplicity": 2,
+            "n_distinct_weights": 13,
+            "partition": [
+              2,
+              1,
+              1
+            ]
+          },
+          {
+            "C8_eigenvalue": 36,
+            "SSYT_dimension": 10,
+            "dynkin_labels": [
+              2,
+              0,
+              0
+            ],
+            "expected_dimension": 10,
+            "irrep": "10",
+            "multiplicity": 1,
+            "n_distinct_weights": 10,
+            "partition": [
+              2
+            ]
+          },
+          {
+            "C8_eigenvalue": 36,
+            "SSYT_dimension": 10,
+            "dynkin_labels": [
+              0,
+              0,
+              2
+            ],
+            "expected_dimension": 10,
+            "irrep": "10bar",
+            "multiplicity": 1,
+            "n_distinct_weights": 10,
+            "partition": [
+              2,
+              2,
+              2
+            ]
+          },
+          {
+            "C8_eigenvalue": 39,
+            "SSYT_dimension": 20,
+            "dynkin_labels": [
+              1,
+              1,
+              0
+            ],
+            "expected_dimension": 20,
+            "irrep": "20",
+            "multiplicity": 2,
+            "n_distinct_weights": 16,
+            "partition": [
+              2,
+              1
+            ]
+          },
+          {
+            "C8_eigenvalue": 39,
+            "SSYT_dimension": 20,
+            "dynkin_labels": [
+              0,
+              1,
+              1
+            ],
+            "expected_dimension": 20,
+            "irrep": "20bar",
+            "multiplicity": 2,
+            "n_distinct_weights": 16,
+            "partition": [
+              2,
+              2,
+              1
+            ]
+          },
+          {
+            "C8_eigenvalue": 48,
+            "SSYT_dimension": 20,
+            "dynkin_labels": [
+              0,
+              2,
+              0
+            ],
+            "expected_dimension": 20,
+            "irrep": "20prime",
+            "multiplicity": 1,
+            "n_distinct_weights": 19,
+            "partition": [
+              2,
+              2
+            ]
+          }
+        ],
+        "SSYT_reconstructed_dimension": 210,
+        "all_SSYT_dimensions_exact": true,
+        "branching_multiplicities": {
+          "1": 4,
+          "10": 1,
+          "10bar": 1,
+          "15": 2,
+          "20": 2,
+          "20bar": 2,
+          "20prime": 1,
+          "4": 4,
+          "4bar": 4,
+          "6": 4
+        },
+        "exterior_dimension": 210,
+        "exterior_distinct_weight_count": 65,
+        "exterior_weight_multiplicity_histogram": {
+          "1": 14,
+          "12": 1,
+          "2": 24,
+          "3": 12,
+          "6": 6,
+          "8": 8
+        },
+        "exterior_zero_weight_multiplicity": 12,
+        "proof_grade": true,
+        "vector_branching": "10_C = 1 + 1 + 4 + 4bar"
+      },
+      "checks": {
+        "Cartan_weights_exact": true,
+        "G3_closed": false,
+        "Gaussian_exterior_basis_Bdagger_B_equals_16I_exact": true,
+        "SSYT_character_branching_exact": true,
+        "SU4_Schur_SDP_constructed": false,
+        "Sym2_invariant_multiplicity_is_45_exact": true,
+        "all_15_live_SU4_intertwinings_exact": true,
+        "arbitrary_Phi_bound_proved": false,
+        "companion_Phi210_action_provenance_exact": true,
+        "companion_embedded_certificates_match_live_inputs": true,
+        "companion_h_minus_q_over_4_tangent_provenance_exact": true,
+        "companion_model_contract_matches_exactly": true,
+        "companion_stabilizer_report_green_and_endpoint_scoped": true,
+        "deterministic_25_carrier_decomposition_complete": true,
+        "integral_C8_spectrum_and_minimal_polynomial_exact": true
+      },
+      "companion_stabilizer_provenance": {
+        "Phi210_action_proof_grade": true,
+        "all_required_provenance_exact": true,
+        "fixed_endpoint": {
+          "H": "h_-=(e0-i e1)/sqrt(2)",
+          "H_numerator_norm_squared": 2,
+          "Sigma": "q/4",
+          "endpoint_binding_exact": true,
+          "integer_tangent_numerators": "e0-i e1 for H and q for Sigma; independent nonzero block rescalings preserve the common tangent kernel",
+          "q": "q=(e0+i e1)(e2+i e3)(e4+i e5)(e6+i e7)(e8+i e9)",
+          "q_coordinate_norm_squared": 16
+        },
+        "model_contract_id": "gauged_u1x_phi17_v20",
+        "module": "exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py",
+        "n_failed": 0,
+        "overall_state": "STABILIZER_INFRASTRUCTURE_CLOSED__ARBITRARY_PHI_SDP_OPEN",
+        "status": "EXACT_RANK1_SU4_STABILIZER_INFRASTRUCTURE_CERTIFIED",
+        "tangent_proof_grade": true
+      },
+      "failures": [],
+      "integral_C8": {
+        "annihilator_intermediate_maxima": [
+          48,
+          1584,
+          44352,
+          709632,
+          8515584,
+          76640256,
+          0
+        ],
+        "canonical_Phi210_matrix_sha256": "ae681d35d1a41a5a46f7cb4e743503e86cbad3c87458897559889c2054f9582f",
+        "canonical_Phi210_nonzero_entry_count": 750,
+        "canonical_Phi210_symmetric_exact": true,
+        "canonical_to_exterior_C8_intertwining_exact": true,
+        "commutes_with_all_15_generators_exact": true,
+        "construction": "-2*sum_(12 roots) G^2 - sum_ij (4*A3_inverse)_ij H_i H_j",
+        "exact_spectrum_argument": "The split square-free integer annihilator decomposes Q^210 into the seven rational eigenspaces.  Reduction modulo the recorded prime gives upper bounds on their rational nullities; those seven bounds sum to 210, so every bound is attained exactly.",
+        "expected_spectrum_multiplicities": {
+          "0": 4,
+          "15": 32,
+          "20": 24,
+          "32": 30,
+          "36": 20,
+          "39": 80,
+          "48": 20
+        },
+        "exterior_basis_nonzero_entry_count": 388,
+        "exterior_matrix_sha256": "396a875c78335eb891a07ad97a665cef36b9eea67fc88592364376fdf0ea79dd",
+        "imaginary_part_zero_exact": true,
+        "int64_arithmetic_safe": true,
+        "integral": true,
+        "maximum_absolute_entry": 48,
+        "minimal_polynomial_annihilates_exact": true,
+        "minimal_polynomial_coefficients_ascending": [
+          0,
+          646963200,
+          -143735040,
+          12801744,
+          -586920,
+          14665,
+          -190,
+          1
+        ],
+        "minimal_polynomial_exact": true,
+        "minimal_polynomial_roots": [
+          0,
+          15,
+          20,
+          32,
+          36,
+          39,
+          48
+        ],
+        "modular_eigenspace_nullities": {
+          "0": 4,
+          "15": 32,
+          "20": 24,
+          "32": 30,
+          "36": 20,
+          "39": 80,
+          "48": 20
+        },
+        "modular_nullities_sum": 210,
+        "modular_prime": 1000003,
+        "normalization": "C8 = 8 times the standard SU(4) quadratic Casimir",
+        "proof_grade": true,
+        "shape": [
+          210,
+          210
+        ],
+        "spectrum_exact_over_Q": true,
+        "symmetric_exact": true
+      },
+      "intertwiner": {
+        "Cartan_convention": "H_k acts as i times the recorded Dynkin-weight coordinate",
+        "Cartan_weight_diagonalization_exact": true,
+        "all_15_intertwinings_exact": true,
+        "exterior_basis_Bdagger_B_equals_16I_exact": true,
+        "exterior_basis_imaginary_nnz": 880,
+        "exterior_basis_real_nnz": 890,
+        "exterior_basis_sha256": "36cb9607b45fc4fc6520f56c5aa49a13380187ff6e6f2d66eb389e70b1dfdda9",
+        "exterior_basis_shape": [
+          210,
+          210
+        ],
+        "intertwining_convention": "G_Phi B = B G_Lambda4",
+        "intertwining_count": 15,
+        "intertwinings": [
+          {
+            "exact": true,
+            "generator": "H1",
+            "imaginary_residual_max_abs": 0,
+            "real_residual_max_abs": 0
+          },
+          {
+            "exact": true,
+            "generator": "H2",
+            "imaginary_residual_max_abs": 0,
+            "real_residual_max_abs": 0
+          },
+          {
+            "exact": true,
+            "generator": "H3",
+            "imaginary_residual_max_abs": 0,
+            "real_residual_max_abs": 0
+          },
+          {
+            "exact": true,
+            "generator": "X12",
+            "imaginary_residual_max_abs": 0,
+            "real_residual_max_abs": 0
+          },
+          {
+            "exact": true,
+            "generator": "Y12",
+            "imaginary_residual_max_abs": 0,
+            "real_residual_max_abs": 0
+          },
+          {
+            "exact": true,
+            "generator": "X13",
+            "imaginary_residual_max_abs": 0,
+            "real_residual_max_abs": 0
+          },
+          {
+            "exact": true,
+            "generator": "Y13",
+            "imaginary_residual_max_abs": 0,
+            "real_residual_max_abs": 0
+          },
+          {
+            "exact": true,
+            "generator": "X14",
+            "imaginary_residual_max_abs": 0,
+            "real_residual_max_abs": 0
+          },
+          {
+            "exact": true,
+            "generator": "Y14",
+            "imaginary_residual_max_abs": 0,
+            "real_residual_max_abs": 0
+          },
+          {
+            "exact": true,
+            "generator": "X23",
+            "imaginary_residual_max_abs": 0,
+            "real_residual_max_abs": 0
+          },
+          {
+            "exact": true,
+            "generator": "Y23",
+            "imaginary_residual_max_abs": 0,
+            "real_residual_max_abs": 0
+          },
+          {
+            "exact": true,
+            "generator": "X24",
+            "imaginary_residual_max_abs": 0,
+            "real_residual_max_abs": 0
+          },
+          {
+            "exact": true,
+            "generator": "Y24",
+            "imaginary_residual_max_abs": 0,
+            "real_residual_max_abs": 0
+          },
+          {
+            "exact": true,
+            "generator": "X34",
+            "imaginary_residual_max_abs": 0,
+            "real_residual_max_abs": 0
+          },
+          {
+            "exact": true,
+            "generator": "Y34",
+            "imaginary_residual_max_abs": 0,
+            "real_residual_max_abs": 0
+          }
+        ],
+        "n_distinct_Cartan_weights": 65,
+        "one_form_Gram_imaginary_zero_exact": true,
+        "one_form_Gram_real_exact": true,
+        "one_form_branching": "1 + 1 + 4 + 4bar",
+        "one_form_definitions": "z0=e0+i e1, z0bar=e0-i e1, zj=e_(2j)+i e_(2j+1), zjbar=conjugate(zj), j=1..4",
+        "one_form_labels": [
+          "z0",
+          "z0bar",
+          "z1",
+          "z2",
+          "z3",
+          "z4",
+          "z1bar",
+          "z2bar",
+          "z3bar",
+          "z4bar"
+        ],
+        "proof_grade": true,
+        "zero_weight_multiplicity": 12
+      },
+      "model_contract_id": "gauged_u1x_phi17_v20",
+      "n_checks": 15,
+      "n_failed": 0,
+      "next_exact_target": "Construct the full augmented SU(4)-equivariant degree-2 Schur/SOS SDP with every real/Hermitian isotypic block and all homogenizing cross terms; the certified 45-dimensional quadratic invariant sector is only one input. Then rationalize any feasible certificate and verify every block by exact LDL.",
+      "overall_state": "SU4_SCHUR_INFRASTRUCTURE_CLOSED__SDP_AND_G3_OPEN",
+      "scope": {
+        "G3_closed": false,
+        "H_fixed_to_h_minus": true,
+        "Phi210_complexified_representation_resolved": true,
+        "SU4_invariant_quadratic_form_basis_constructed": false,
+        "Schur_SOS_SDP_constructed": false,
+        "Sigma_fixed_to_q_over_4": true,
+        "Sym2_SU4_invariant_dimension_45_proved": true,
+        "arbitrary_rank1_Phi_proved": false,
+        "arbitrary_real_Phi_lower_bound_proved": false,
+        "companion_stabilizer_provenance_exact": true,
+        "deterministic_irreducible_carriers_complete": true,
+        "rank1_endpoint_SU4_stabilizer_used": true,
+        "whole_model_excluded": false
+      },
+      "status": "EXACT_RANK1_SU4_PHI210_INTERTWINER_INFRASTRUCTURE_CERTIFIED",
+      "verdict": "The exact rank-one SU(4) representation infrastructure is complete: B dagger B=16I, all fifteen live intertwinings, the SSYT branching, integral C8 spectrum/minimal polynomial, and twenty-five carriers of total rank 210 are certified.  This proves the 45-dimensional symmetric multiplicity census only; the SDP, an arbitrary-Phi bound, and G3 remain open."
+    },
+    "gauged_G3_rank1_SU4_stabilizer_infrastructure": {
+      "Lie_algebra": {
+        "Cartan_commutator_max_abs": 0,
+        "Jacobi_max_abs_residual": 0,
+        "Lie_algebra_dimension": 15,
+        "antisymmetry_max_abs_residual": 0,
+        "basis_labels": [
+          "H1",
+          "H2",
+          "H3",
+          "X12",
+          "Y12",
+          "X13",
+          "Y13",
+          "X14",
+          "Y14",
+          "X23",
+          "Y23",
+          "X24",
+          "Y24",
+          "X34",
+          "Y34"
+        ],
+        "coefficient_commutator_reconstruction_max_abs": 0,
+        "coordinate_block_unimodular": true,
+        "coordinate_pivot_labels": [
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            2,
+            5
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            2,
+            7
+          ],
+          [
+            2,
+            8
+          ],
+          [
+            2,
+            9
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            4,
+            7
+          ],
+          [
+            4,
+            8
+          ],
+          [
+            4,
+            9
+          ],
+          [
+            6,
+            7
+          ],
+          [
+            6,
+            8
+          ],
+          [
+            6,
+            9
+          ]
+        ],
+        "maximum_abs_structure_constant": 2,
+        "nonzero_structure_constant_count": 88,
+        "nonzero_structure_constants_for_left_less_than_right": [
+          {
+            "coefficient": 2,
+            "left": "H1",
+            "output": "Y12",
+            "right": "X12"
+          },
+          {
+            "coefficient": -2,
+            "left": "H1",
+            "output": "X12",
+            "right": "Y12"
+          },
+          {
+            "coefficient": 1,
+            "left": "H1",
+            "output": "Y13",
+            "right": "X13"
+          },
+          {
+            "coefficient": -1,
+            "left": "H1",
+            "output": "X13",
+            "right": "Y13"
+          },
+          {
+            "coefficient": 1,
+            "left": "H1",
+            "output": "Y14",
+            "right": "X14"
+          },
+          {
+            "coefficient": -1,
+            "left": "H1",
+            "output": "X14",
+            "right": "Y14"
+          },
+          {
+            "coefficient": -1,
+            "left": "H1",
+            "output": "Y23",
+            "right": "X23"
+          },
+          {
+            "coefficient": 1,
+            "left": "H1",
+            "output": "X23",
+            "right": "Y23"
+          },
+          {
+            "coefficient": -1,
+            "left": "H1",
+            "output": "Y24",
+            "right": "X24"
+          },
+          {
+            "coefficient": 1,
+            "left": "H1",
+            "output": "X24",
+            "right": "Y24"
+          },
+          {
+            "coefficient": -1,
+            "left": "H2",
+            "output": "Y12",
+            "right": "X12"
+          },
+          {
+            "coefficient": 1,
+            "left": "H2",
+            "output": "X12",
+            "right": "Y12"
+          },
+          {
+            "coefficient": 1,
+            "left": "H2",
+            "output": "Y13",
+            "right": "X13"
+          },
+          {
+            "coefficient": -1,
+            "left": "H2",
+            "output": "X13",
+            "right": "Y13"
+          },
+          {
+            "coefficient": 2,
+            "left": "H2",
+            "output": "Y23",
+            "right": "X23"
+          },
+          {
+            "coefficient": -2,
+            "left": "H2",
+            "output": "X23",
+            "right": "Y23"
+          },
+          {
+            "coefficient": 1,
+            "left": "H2",
+            "output": "Y24",
+            "right": "X24"
+          },
+          {
+            "coefficient": -1,
+            "left": "H2",
+            "output": "X24",
+            "right": "Y24"
+          },
+          {
+            "coefficient": -1,
+            "left": "H2",
+            "output": "Y34",
+            "right": "X34"
+          },
+          {
+            "coefficient": 1,
+            "left": "H2",
+            "output": "X34",
+            "right": "Y34"
+          },
+          {
+            "coefficient": -1,
+            "left": "H3",
+            "output": "Y13",
+            "right": "X13"
+          },
+          {
+            "coefficient": 1,
+            "left": "H3",
+            "output": "X13",
+            "right": "Y13"
+          },
+          {
+            "coefficient": 1,
+            "left": "H3",
+            "output": "Y14",
+            "right": "X14"
+          },
+          {
+            "coefficient": -1,
+            "left": "H3",
+            "output": "X14",
+            "right": "Y14"
+          },
+          {
+            "coefficient": -1,
+            "left": "H3",
+            "output": "Y23",
+            "right": "X23"
+          },
+          {
+            "coefficient": 1,
+            "left": "H3",
+            "output": "X23",
+            "right": "Y23"
+          },
+          {
+            "coefficient": 1,
+            "left": "H3",
+            "output": "Y24",
+            "right": "X24"
+          },
+          {
+            "coefficient": -1,
+            "left": "H3",
+            "output": "X24",
+            "right": "Y24"
+          },
+          {
+            "coefficient": 2,
+            "left": "H3",
+            "output": "Y34",
+            "right": "X34"
+          },
+          {
+            "coefficient": -2,
+            "left": "H3",
+            "output": "X34",
+            "right": "Y34"
+          },
+          {
+            "coefficient": 2,
+            "left": "X12",
+            "output": "H1",
+            "right": "Y12"
+          },
+          {
+            "coefficient": -1,
+            "left": "X12",
+            "output": "X23",
+            "right": "X13"
+          },
+          {
+            "coefficient": -1,
+            "left": "X12",
+            "output": "Y23",
+            "right": "Y13"
+          },
+          {
+            "coefficient": -1,
+            "left": "X12",
+            "output": "X24",
+            "right": "X14"
+          },
+          {
+            "coefficient": -1,
+            "left": "X12",
+            "output": "Y24",
+            "right": "Y14"
+          },
+          {
+            "coefficient": 1,
+            "left": "X12",
+            "output": "X13",
+            "right": "X23"
+          },
+          {
+            "coefficient": 1,
+            "left": "X12",
+            "output": "Y13",
+            "right": "Y23"
+          },
+          {
+            "coefficient": 1,
+            "left": "X12",
+            "output": "X14",
+            "right": "X24"
+          },
+          {
+            "coefficient": 1,
+            "left": "X12",
+            "output": "Y14",
+            "right": "Y24"
+          },
+          {
+            "coefficient": 1,
+            "left": "Y12",
+            "output": "Y23",
+            "right": "X13"
+          },
+          {
+            "coefficient": -1,
+            "left": "Y12",
+            "output": "X23",
+            "right": "Y13"
+          },
+          {
+            "coefficient": 1,
+            "left": "Y12",
+            "output": "Y24",
+            "right": "X14"
+          },
+          {
+            "coefficient": -1,
+            "left": "Y12",
+            "output": "X24",
+            "right": "Y14"
+          },
+          {
+            "coefficient": 1,
+            "left": "Y12",
+            "output": "Y13",
+            "right": "X23"
+          },
+          {
+            "coefficient": -1,
+            "left": "Y12",
+            "output": "X13",
+            "right": "Y23"
+          },
+          {
+            "coefficient": 1,
+            "left": "Y12",
+            "output": "Y14",
+            "right": "X24"
+          },
+          {
+            "coefficient": -1,
+            "left": "Y12",
+            "output": "X14",
+            "right": "Y24"
+          },
+          {
+            "coefficient": 2,
+            "left": "X13",
+            "output": "H1",
+            "right": "Y13"
+          },
+          {
+            "coefficient": 2,
+            "left": "X13",
+            "output": "H2",
+            "right": "Y13"
+          },
+          {
+            "coefficient": -1,
+            "left": "X13",
+            "output": "X34",
+            "right": "X14"
+          },
+          {
+            "coefficient": -1,
+            "left": "X13",
+            "output": "Y34",
+            "right": "Y14"
+          },
+          {
+            "coefficient": -1,
+            "left": "X13",
+            "output": "X12",
+            "right": "X23"
+          },
+          {
+            "coefficient": 1,
+            "left": "X13",
+            "output": "Y12",
+            "right": "Y23"
+          },
+          {
+            "coefficient": 1,
+            "left": "X13",
+            "output": "X14",
+            "right": "X34"
+          },
+          {
+            "coefficient": 1,
+            "left": "X13",
+            "output": "Y14",
+            "right": "Y34"
+          },
+          {
+            "coefficient": 1,
+            "left": "Y13",
+            "output": "Y34",
+            "right": "X14"
+          },
+          {
+            "coefficient": -1,
+            "left": "Y13",
+            "output": "X34",
+            "right": "Y14"
+          },
+          {
+            "coefficient": -1,
+            "left": "Y13",
+            "output": "Y12",
+            "right": "X23"
+          },
+          {
+            "coefficient": -1,
+            "left": "Y13",
+            "output": "X12",
+            "right": "Y23"
+          },
+          {
+            "coefficient": 1,
+            "left": "Y13",
+            "output": "Y14",
+            "right": "X34"
+          },
+          {
+            "coefficient": -1,
+            "left": "Y13",
+            "output": "X14",
+            "right": "Y34"
+          },
+          {
+            "coefficient": 2,
+            "left": "X14",
+            "output": "H1",
+            "right": "Y14"
+          },
+          {
+            "coefficient": 2,
+            "left": "X14",
+            "output": "H2",
+            "right": "Y14"
+          },
+          {
+            "coefficient": 2,
+            "left": "X14",
+            "output": "H3",
+            "right": "Y14"
+          },
+          {
+            "coefficient": -1,
+            "left": "X14",
+            "output": "X12",
+            "right": "X24"
+          },
+          {
+            "coefficient": 1,
+            "left": "X14",
+            "output": "Y12",
+            "right": "Y24"
+          },
+          {
+            "coefficient": -1,
+            "left": "X14",
+            "output": "X13",
+            "right": "X34"
+          },
+          {
+            "coefficient": 1,
+            "left": "X14",
+            "output": "Y13",
+            "right": "Y34"
+          },
+          {
+            "coefficient": -1,
+            "left": "Y14",
+            "output": "Y12",
+            "right": "X24"
+          },
+          {
+            "coefficient": -1,
+            "left": "Y14",
+            "output": "X12",
+            "right": "Y24"
+          },
+          {
+            "coefficient": -1,
+            "left": "Y14",
+            "output": "Y13",
+            "right": "X34"
+          },
+          {
+            "coefficient": -1,
+            "left": "Y14",
+            "output": "X13",
+            "right": "Y34"
+          },
+          {
+            "coefficient": 2,
+            "left": "X23",
+            "output": "H2",
+            "right": "Y23"
+          },
+          {
+            "coefficient": -1,
+            "left": "X23",
+            "output": "X34",
+            "right": "X24"
+          },
+          {
+            "coefficient": -1,
+            "left": "X23",
+            "output": "Y34",
+            "right": "Y24"
+          },
+          {
+            "coefficient": 1,
+            "left": "X23",
+            "output": "X24",
+            "right": "X34"
+          },
+          {
+            "coefficient": 1,
+            "left": "X23",
+            "output": "Y24",
+            "right": "Y34"
+          },
+          {
+            "coefficient": 1,
+            "left": "Y23",
+            "output": "Y34",
+            "right": "X24"
+          },
+          {
+            "coefficient": -1,
+            "left": "Y23",
+            "output": "X34",
+            "right": "Y24"
+          },
+          {
+            "coefficient": 1,
+            "left": "Y23",
+            "output": "Y24",
+            "right": "X34"
+          },
+          {
+            "coefficient": -1,
+            "left": "Y23",
+            "output": "X24",
+            "right": "Y34"
+          },
+          {
+            "coefficient": 2,
+            "left": "X24",
+            "output": "H2",
+            "right": "Y24"
+          },
+          {
+            "coefficient": 2,
+            "left": "X24",
+            "output": "H3",
+            "right": "Y24"
+          },
+          {
+            "coefficient": -1,
+            "left": "X24",
+            "output": "X23",
+            "right": "X34"
+          },
+          {
+            "coefficient": 1,
+            "left": "X24",
+            "output": "Y23",
+            "right": "Y34"
+          },
+          {
+            "coefficient": -1,
+            "left": "Y24",
+            "output": "Y23",
+            "right": "X34"
+          },
+          {
+            "coefficient": -1,
+            "left": "Y24",
+            "output": "X23",
+            "right": "Y34"
+          },
+          {
+            "coefficient": 2,
+            "left": "X34",
+            "output": "H3",
+            "right": "Y34"
+          }
+        ],
+        "nonzero_unordered_bracket_count": 84,
+        "proof_grade": true,
+        "structure_constants_integral": true,
+        "vector_commutator_reconstruction_max_abs": 0
+      },
+      "Phi210_action": {
+        "Lie_commutator_reconstruction_max_abs": 0,
+        "action_count": 15,
+        "action_shapes": [
+          [
+            210,
+            210
+          ]
+        ],
+        "all_action_dtypes_integral": true,
+        "flattened_action_rank_mod_prime": 15,
+        "maximum_abs_action_entry": 1,
+        "ordered_labels": [
+          "H1",
+          "H2",
+          "H3",
+          "X12",
+          "Y12",
+          "X13",
+          "Y13",
+          "X14",
+          "Y14",
+          "X23",
+          "Y23",
+          "X24",
+          "Y24",
+          "X34",
+          "Y34"
+        ],
+        "prime": 1000003,
+        "proof_grade": true,
+        "representation": "real Lambda^4(R^10) = Phi210",
+        "skew_transpose_max_abs_residual": 0,
+        "source_binding": "direct_phi_h_sigmabar_tensor_v20 generator_action through the tracked exact Phi210 generator source",
+        "total_nonzero_entries": 3360
+      },
+      "checks": {
+        "Phi210_actions_integral_skew_faithful_and_Lie_exact": true,
+        "explicit_fifteen_dimensional_kernel_upper_bound_exact": true,
+        "fifteen_correct_shifted_SU4_generators_exact": true,
+        "fixed_h_minus_q_over_4_endpoint_bound_exact": true,
+        "integral_SU4_Lie_structure_constants_close_exactly": true,
+        "joint_stabilizer_kernel_exhausted_exactly_by_SU4": true,
+        "joint_tangent_rank_30_modular_lower_bound_exact": true,
+        "old_offset_zero_SU4_embedding_rejected_by_h_minus_exactly": true
+      },
+      "failed_checks": [],
+      "generator_basis": {
+        "Cartan_generator_count": 3,
+        "all_coefficients_are_signed_units": true,
+        "all_support_is_in_indices_2_through_9": true,
+        "coefficient_matrix_shape": [
+          45,
+          15
+        ],
+        "coefficient_rank_mod_prime": 15,
+        "complex_planes": [
+          [
+            2,
+            3
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            6,
+            7
+          ],
+          [
+            8,
+            9
+          ]
+        ],
+        "definitions": [
+          {
+            "definition": "1 G_23 + -1 G_45",
+            "kind": "Cartan_difference",
+            "label": "H1",
+            "so10_coefficients": {
+              "G_23": 1,
+              "G_45": -1
+            }
+          },
+          {
+            "definition": "1 G_45 + -1 G_67",
+            "kind": "Cartan_difference",
+            "label": "H2",
+            "so10_coefficients": {
+              "G_45": 1,
+              "G_67": -1
+            }
+          },
+          {
+            "definition": "1 G_67 + -1 G_89",
+            "kind": "Cartan_difference",
+            "label": "H3",
+            "so10_coefficients": {
+              "G_67": 1,
+              "G_89": -1
+            }
+          },
+          {
+            "definition": "1 G_24 + +1 G_35",
+            "kind": "complex_linear_real",
+            "label": "X12",
+            "so10_coefficients": {
+              "G_24": 1,
+              "G_35": 1
+            }
+          },
+          {
+            "definition": "1 G_25 + -1 G_34",
+            "kind": "complex_linear_imaginary",
+            "label": "Y12",
+            "so10_coefficients": {
+              "G_25": 1,
+              "G_34": -1
+            }
+          },
+          {
+            "definition": "1 G_26 + +1 G_37",
+            "kind": "complex_linear_real",
+            "label": "X13",
+            "so10_coefficients": {
+              "G_26": 1,
+              "G_37": 1
+            }
+          },
+          {
+            "definition": "1 G_27 + -1 G_36",
+            "kind": "complex_linear_imaginary",
+            "label": "Y13",
+            "so10_coefficients": {
+              "G_27": 1,
+              "G_36": -1
+            }
+          },
+          {
+            "definition": "1 G_28 + +1 G_39",
+            "kind": "complex_linear_real",
+            "label": "X14",
+            "so10_coefficients": {
+              "G_28": 1,
+              "G_39": 1
+            }
+          },
+          {
+            "definition": "1 G_29 + -1 G_38",
+            "kind": "complex_linear_imaginary",
+            "label": "Y14",
+            "so10_coefficients": {
+              "G_29": 1,
+              "G_38": -1
+            }
+          },
+          {
+            "definition": "1 G_46 + +1 G_57",
+            "kind": "complex_linear_real",
+            "label": "X23",
+            "so10_coefficients": {
+              "G_46": 1,
+              "G_57": 1
+            }
+          },
+          {
+            "definition": "1 G_47 + -1 G_56",
+            "kind": "complex_linear_imaginary",
+            "label": "Y23",
+            "so10_coefficients": {
+              "G_47": 1,
+              "G_56": -1
+            }
+          },
+          {
+            "definition": "1 G_48 + +1 G_59",
+            "kind": "complex_linear_real",
+            "label": "X24",
+            "so10_coefficients": {
+              "G_48": 1,
+              "G_59": 1
+            }
+          },
+          {
+            "definition": "1 G_49 + -1 G_58",
+            "kind": "complex_linear_imaginary",
+            "label": "Y24",
+            "so10_coefficients": {
+              "G_49": 1,
+              "G_58": -1
+            }
+          },
+          {
+            "definition": "1 G_68 + +1 G_79",
+            "kind": "complex_linear_real",
+            "label": "X34",
+            "so10_coefficients": {
+              "G_68": 1,
+              "G_79": 1
+            }
+          },
+          {
+            "definition": "1 G_69 + -1 G_78",
+            "kind": "complex_linear_imaginary",
+            "label": "Y34",
+            "so10_coefficients": {
+              "G_69": 1,
+              "G_78": -1
+            }
+          }
+        ],
+        "generator_count": 15,
+        "offdiagonal_generator_count": 12,
+        "ordered_labels": [
+          "H1",
+          "H2",
+          "H3",
+          "X12",
+          "Y12",
+          "X13",
+          "Y13",
+          "X14",
+          "Y14",
+          "X23",
+          "Y23",
+          "X24",
+          "Y24",
+          "X34",
+          "Y34"
+        ],
+        "prime": 1000003,
+        "proof_grade": true
+      },
+      "joint_stabilizer_tangent": {
+        "displayed_kernel_rank_mod_prime": 15,
+        "displayed_kernel_residual_max_abs": 0,
+        "displayed_kernel_shape": [
+          45,
+          15
+        ],
+        "exact_tangent_nullity": 15,
+        "exact_tangent_rank_over_Q_R": 30,
+        "explicit_kernel_is_complete": true,
+        "fixed_endpoint": {
+          "H": "h_-=(e0-i e1)/sqrt(2)",
+          "H_numerator_norm_squared": 2,
+          "Sigma": "q/4",
+          "endpoint_binding_exact": true,
+          "integer_tangent_numerators": "e0-i e1 for H and q for Sigma; independent nonzero block rescalings preserve the common tangent kernel",
+          "q": "q=(e0+i e1)(e2+i e3)(e4+i e5)(e6+i e7)(e8+i e9)",
+          "q_coordinate_norm_squared": 16
+        },
+        "joint_tangent_coordinate_order": "Re(H)[10], Im(H)[10], Re(Sigma)[126], Im(Sigma)[126]",
+        "joint_tangent_max_abs_entry": 1,
+        "joint_tangent_rank_mod_prime": 30,
+        "joint_tangent_shape": [
+          272,
+          45
+        ],
+        "kernel_exhaustion_identity": "ker[d(SO10.(h_-,q/4))] = span_Z{H1,H2,H3,Xij,Yij} tensor R",
+        "kernel_upper_bound_on_tangent_rank": 30,
+        "prime": 1000003,
+        "proof_grade": true,
+        "rank_lower_bound_over_Q_R": 30,
+        "source_actions": {
+          "H_action_shape": [
+            45,
+            10,
+            10
+          ],
+          "H_generators_integral_real_skew": true,
+          "SO10_generator_count": 45,
+          "Sigma_action_shape": [
+            45,
+            126,
+            126
+          ],
+          "Sigma_generators_Gaussian_integral_antihermitian": true,
+          "ordered_generator_labels_match_exactly": true
+        },
+        "wrong_offset_zero_SU4_negative_control": {
+          "H_tangent_residual_max_abs": 1,
+          "Sigma_tangent_residual_max_abs": 0,
+          "complex_planes": [
+            [
+              0,
+              1
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              4,
+              5
+            ],
+            [
+              6,
+              7
+            ]
+          ],
+          "does_not_stabilize_fixed_h_minus": true,
+          "joint_tangent_residual_max_abs": 1,
+          "wrong_embedding_rejected_exactly": true
+        }
+      },
+      "model_contract_id": "gauged_u1x_phi17_v20",
+      "n_checks": 8,
+      "n_failed": 0,
+      "next_exact_target": "Construct the full SU(4)-equivariant multiplicity/intertwiner decomposition of the arbitrary-Phi rank-one anchor, then solve and rationalize its Schur/SOS SDP.",
+      "overall_state": "STABILIZER_INFRASTRUCTURE_CLOSED__ARBITRARY_PHI_SDP_OPEN",
+      "scope": {
+        "G3_closed": false,
+        "H_fixed_to_h_minus": true,
+        "Sigma_fixed_to_normalized_explicit_decomposable_pure_spinor_q_over_4": true,
+        "arbitrary_Phi_Schur_SOS_SDP_constructed": false,
+        "arbitrary_Phi_Schur_SOS_SDP_feasible": false,
+        "arbitrary_max_negative_Sigma_proved": false,
+        "arbitrary_rank1_Phi_bound_proved": false,
+        "common_continuous_stabilizer_identified_as_SU4": true,
+        "exact_Phi210_SU4_action_available_for_next_stage": true,
+        "infrastructure_only": true,
+        "whole_model_excluded": false
+      },
+      "status": "EXACT_RANK1_SU4_STABILIZER_INFRASTRUCTURE_CERTIFIED",
+      "verdict": "The exact common continuous stabilizer Lie algebra of fixed h_- and the explicit q/4 rank-one endpoint is the displayed su(4), with integral Lie structure and exact skew actions on Phi210. This certifies only the representation infrastructure; no arbitrary-Phi SDP or G3 closure is claimed."
+    },
     "gauged_scalar_filter": {
       "allowed_feeding_M_T": [
         "10_H^dag 10_H",
@@ -196266,7 +198256,7 @@
       "verdict": "The signed filter follows the manuscript's declared SO(10) x U(1)_X gauge symmetry and accidental PQ symmetry. Exact X neutrality removes low-dimensional Phi17 terms and their H10 portals. The SO(10)-forbidden 210\u00b710dag\u00b710 cubic is excluded, while the distinct allowed 210\u00b7Hdag\u00b7126bar cubic is now retained and forces a complete mixed-Hessian re-audit."
     }
   },
-  "n_checks": 38,
+  "n_checks": 39,
   "n_failed": 0,
   "overall_state": "BLOCKED",
   "scientific_blockers": [
@@ -196294,5 +198284,5 @@
     "open": [],
     "partial": []
   },
-  "verdict": "The ledger audit succeeds, but all G1-G8 gates are BLOCKED. The gauged-U(1)_X SARAH input, charge catalogues, Lagrangian registration, and hash-bound validation bundle are now statically consistent; Wave 0 still requires a real external SARAH execution attestation. The gauged G1 scalar census and G2 dense derivative theorem are already recertified as 44 directions, 51 parameters, and 486 fields. Three structural gradient columns vanish exactly; matching exact lower- and upper-rank certificates prove stationarity rank/nullity 13/38. They await contract promotion rather than recalculation. A perturbative 27-of-51 SOS candidate with J0=-21/200 is explicit. Exact source-bound SOS identities prove complete-potential BFB and stationarity. Direct Gaussian-integer/Fraction/Q(sqrt(2)) assembly gives P+Delta rank/nullity 429/33, and the exact extension leaves only 38 symmetry tangents, proving a strict local minimum on all 448 transverse directions. An exact symmetry-inequivalent field configuration is lower by 25*r^4/19008, so this selected global vacuum and candidate are rejected. The fixed-P branch is exactly excluded, and the lower stationary replacement has the wrong gauge symmetry. A new SU(5)+Delta Phi/Sigma branch has an exact global SOS minimum, the correct SM stabilizer, and exact quotient rank/nullity 429/33. Its chiral-H full-field extension is exactly BFB, stationary and symmetry-correct. The source-bound 486-real Hessian is exactly PSD with rank/nullity 448/38, and its kernel is exactly the 38 symmetry tangents. The literal one-orbit Phi lemma is refuted by -F; the complete maximally-negative pure-Delta sector is excluded for arbitrary real Phi and all nonzero residuals with sharp gap 1/5000. At one fixed H=h_- and one explicit rank-one Sigma endpoint, an exact Gram/LDL certificate also proves the 1/5000 gap on only a four-real-dimensional Phi sub-slice of the 16-dimensional SU(3)-fixed space. Uniform coercivity for arbitrary non-pure-Delta Sigma orientations remains open. The historical 64/91 derivative theorem, 449-dimensional quotient, 46-mode saddle, and 80-iteration no-PSD search are preserved as Option-C subtheorems and neither validate nor exclude the gauged model."
+  "verdict": "The ledger audit succeeds, but all G1-G8 gates are BLOCKED. The gauged-U(1)_X SARAH input, charge catalogues, Lagrangian registration, and hash-bound validation bundle are now statically consistent; Wave 0 still requires a real external SARAH execution attestation. The gauged G1 scalar census and G2 dense derivative theorem are already recertified as 44 directions, 51 parameters, and 486 fields. Three structural gradient columns vanish exactly; matching exact lower- and upper-rank certificates prove stationarity rank/nullity 13/38. They await contract promotion rather than recalculation. A perturbative 27-of-51 SOS candidate with J0=-21/200 is explicit. Exact source-bound SOS identities prove complete-potential BFB and stationarity. Direct Gaussian-integer/Fraction/Q(sqrt(2)) assembly gives P+Delta rank/nullity 429/33, and the exact extension leaves only 38 symmetry tangents, proving a strict local minimum on all 448 transverse directions. An exact symmetry-inequivalent field configuration is lower by 25*r^4/19008, so this selected global vacuum and candidate are rejected. The fixed-P branch is exactly excluded, and the lower stationary replacement has the wrong gauge symmetry. A new SU(5)+Delta Phi/Sigma branch has an exact global SOS minimum, the correct SM stabilizer, and exact quotient rank/nullity 429/33. Its chiral-H full-field extension is exactly BFB, stationary and symmetry-correct. The source-bound 486-real Hessian is exactly PSD with rank/nullity 448/38, and its kernel is exactly the 38 symmetry tangents. The literal one-orbit Phi lemma is refuted by -F; the complete maximally-negative pure-Delta sector is excluded for arbitrary real Phi and all nonzero residuals with sharp gap 1/5000. At one fixed H=h_- and one explicit rank-one Sigma endpoint, an exact Gram/LDL certificate also proves the 1/5000 gap on only a four-real-dimensional Phi sub-slice of the 16-dimensional SU(3)-fixed space. Its exact SU(4) stabilizer and 25-carrier, 45-invariant Phi210 census are certified only as input to the still-open Schur/SOS SDP. Uniform coercivity for arbitrary non-pure-Delta Sigma orientations remains open. The historical 64/91 derivative theorem, 449-dimensional quotient, 46-mode saddle, and 80-iteration no-PSD search are preserved as Option-C subtheorems and neither validate nor exclude the gauged model."
 }

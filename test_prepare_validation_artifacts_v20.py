@@ -53,6 +53,10 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
             "exact_gauged_u1x_g3_su5_max_negative_zero_residual_bound_v20.py --write",
             "exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py --write",
             "exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py --write",
+            "exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py --write",
+            "exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py --write",
+            "test_exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py",
+            "test_exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py",
             (
                 "gauged_u1x_g3_sos_candidate_v20.py "
                 "--recompute-heavy --write"
@@ -181,6 +185,17 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
             if "exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py"
             in display
         )
+        rank1_su4_stabilizer_index = next(
+            i
+            for i, display in enumerate(displays)
+            if "exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py" in display
+        )
+        rank1_su4_intertwiners_index = next(
+            i
+            for i, display in enumerate(displays)
+            if "exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py"
+            in display
+        )
         global_gap_index = next(
             i
             for i, display in enumerate(displays)
@@ -231,6 +246,12 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
             max_negative_rank1_su3_slice_index,
         )
         self.assertLess(max_negative_rank1_su3_slice_index, global_gap_index)
+        self.assertLess(
+            max_negative_rank1_su3_slice_index,
+            rank1_su4_stabilizer_index,
+        )
+        self.assertLess(rank1_su4_stabilizer_index, rank1_su4_intertwiners_index)
+        self.assertLess(rank1_su4_intertwiners_index, global_gap_index)
         self.assertLess(fixed_f_offkernel_index, global_gap_index)
         self.assertLess(a_square_index, sos_candidate_index)
         self.assertLess(sos_candidate_index, g3_index)

@@ -695,6 +695,15 @@ def minimal_tree(
             "radial_patch": {"restricted_global_minimum": "1/5000"},
         },
     )
+    for filename in (
+        "EXACT_GAUGED_U1X_G3_RANK1_SU4_STABILIZER_V20.json",
+        "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_INTERTWINERS_V20.json",
+    ):
+        write_json(
+            root,
+            filename,
+            json.loads((matrix.ROOT / filename).read_text(encoding="utf-8")),
+        )
     write_json(
         root,
         "EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json",
@@ -873,6 +882,86 @@ class TheoryValidationMatrixTests(unittest.TestCase):
                     "gauged_G3_SU5_max_negative_rank1_SU3_four_dimensional_slice_closed"
                 ]
             )
+
+    def test_rank1_su4_infrastructure_is_exact_but_does_not_close_g3(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            minimal_tree(root, contract_consistent=True)
+            report = matrix.build_report(root)
+            vacuum = next(
+                gate
+                for gate in report["gates"]
+                if gate["name"] == "full_scalar_potential_vacuum_and_spectrum"
+            )
+            evidence = vacuum["evidence"]
+            self.assertTrue(
+                evidence["gauged_G3_rank1_SU4_stabilizer_infrastructure_exact"]
+            )
+            self.assertEqual(
+                evidence["gauged_G3_rank1_SU4_joint_stabilizer_dimension"], 15
+            )
+            self.assertTrue(
+                evidence[
+                    "gauged_G3_rank1_SU4_Phi210_intertwiner_infrastructure_exact"
+                ]
+            )
+            self.assertEqual(
+                evidence["gauged_G3_rank1_SU4_Phi210_carrier_count"], 25
+            )
+            self.assertEqual(
+                evidence["gauged_G3_rank1_SU4_Sym2_invariant_dimension"], 45
+            )
+            self.assertTrue(evidence["gauged_G3_rank1_SU4_Schur_SOS_SDP_open"])
+            self.assertTrue(
+                evidence["gauged_G3_rank1_SU4_arbitrary_Phi_bound_open"]
+            )
+
+    def test_rank1_su4_infrastructure_mutations_fail_closed(self):
+        mutations = (
+            (
+                "EXACT_GAUGED_U1X_G3_RANK1_SU4_STABILIZER_V20.json",
+                lambda value: value["scope"].__setitem__("G3_closed", True),
+            ),
+            (
+                "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_INTERTWINERS_V20.json",
+                lambda value: value["scope"].__setitem__(
+                    "Schur_SOS_SDP_constructed", True
+                ),
+            ),
+            (
+                "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_INTERTWINERS_V20.json",
+                lambda value: value["companion_stabilizer_provenance"].__setitem__(
+                    "all_required_provenance_exact", False
+                ),
+            ),
+            (
+                "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_INTERTWINERS_V20.json",
+                lambda value: value["intertwiner"].__setitem__(
+                    "intertwining_count", 14
+                ),
+            ),
+        )
+        for filename, mutate in mutations:
+            with self.subTest(filename=filename, mutation=mutate.__code__.co_firstlineno):
+                with tempfile.TemporaryDirectory() as tmp:
+                    root = Path(tmp)
+                    minimal_tree(root, contract_consistent=True)
+                    path = root / filename
+                    forged = json.loads(path.read_text(encoding="utf-8"))
+                    mutate(forged)
+                    write_json(root, filename, forged)
+                    report = matrix.build_report(root)
+                    vacuum = next(
+                        gate
+                        for gate in report["gates"]
+                        if gate["name"]
+                        == "full_scalar_potential_vacuum_and_spectrum"
+                    )
+                    self.assertFalse(
+                        vacuum["evidence"][
+                            "gauged_G3_frontier_honestly_fail_closed"
+                        ]
+                    )
 
     def test_conditional_candidate_is_not_full_validation(self):
         with tempfile.TemporaryDirectory() as tmp:

@@ -178,6 +178,16 @@ FULL_COMMANDS: tuple[tuple[str, ...], ...] = (
     ),
     (
         sys.executable,
+        "exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py",
+        "--write",
+    ),
+    (
+        sys.executable,
+        "exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py",
+        "--write",
+    ),
+    (
+        sys.executable,
         "exact_gauged_u1x_g3_su5_chiral_global_gap_reduction_v20.py",
         "--write",
     ),
@@ -236,6 +246,8 @@ FULL_COMMANDS: tuple[tuple[str, ...], ...] = (
         "test_exact_gauged_u1x_g3_su5_max_negative_zero_residual_bound_v20.py",
         "test_exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py",
         "test_exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py",
+        "test_exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py",
+        "test_exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py",
         "test_exact_gauged_u1x_g3_su5_chiral_global_gap_reduction_v20.py",
         "test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py",
         "test_final_g3_acceptance_gate_v20.py",

@@ -73,6 +73,30 @@ G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_JSON = (
     ROOT
     / "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_V20.json"
 )
+G3_RANK1_SU4_STABILIZER_JSON = (
+    ROOT / "EXACT_GAUGED_U1X_G3_RANK1_SU4_STABILIZER_V20.json"
+)
+G3_RANK1_SU4_PHI210_INTERTWINERS_JSON = (
+    ROOT / "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_INTERTWINERS_V20.json"
+)
+RANK1_SU4_ORDERED_LABELS = (
+    "H1",
+    "H2",
+    "H3",
+    "X12",
+    "Y12",
+    "X13",
+    "Y13",
+    "X14",
+    "Y14",
+    "X23",
+    "Y23",
+    "X24",
+    "Y24",
+    "X34",
+    "Y34",
+)
+RANK1_SU4_MODULAR_PRIME = 1_000_003
 
 STATUS_CLOSED = "CLOSED"
 STATUS_PARTIAL = "PARTIAL"
@@ -229,6 +253,341 @@ def _load_json_artifact(path: Path) -> dict[str, Any]:
     return value if isinstance(value, dict) else {}
 
 
+def _rank1_su4_stabilizer_infrastructure_exact(report: dict[str, Any]) -> bool:
+    """Validate the fixed-endpoint SU(4) stabilizer without promoting G3."""
+    checks = report.get("checks", {})
+    scope = report.get("scope", {})
+    tangent = report.get("joint_stabilizer_tangent", {})
+    endpoint = tangent.get("fixed_endpoint", {})
+    source_actions = tangent.get("source_actions", {})
+    phi210 = report.get("Phi210_action", {})
+    required_checks = (
+        "fifteen_correct_shifted_SU4_generators_exact",
+        "fixed_h_minus_q_over_4_endpoint_bound_exact",
+        "joint_tangent_rank_30_modular_lower_bound_exact",
+        "explicit_fifteen_dimensional_kernel_upper_bound_exact",
+        "joint_stabilizer_kernel_exhausted_exactly_by_SU4",
+        "old_offset_zero_SU4_embedding_rejected_by_h_minus_exactly",
+        "integral_SU4_Lie_structure_constants_close_exactly",
+        "Phi210_actions_integral_skew_faithful_and_Lie_exact",
+    )
+    required_scope_keys = {
+        "G3_closed",
+        "H_fixed_to_h_minus",
+        "Sigma_fixed_to_normalized_explicit_decomposable_pure_spinor_q_over_4",
+        "arbitrary_Phi_Schur_SOS_SDP_constructed",
+        "arbitrary_Phi_Schur_SOS_SDP_feasible",
+        "arbitrary_max_negative_Sigma_proved",
+        "arbitrary_rank1_Phi_bound_proved",
+        "common_continuous_stabilizer_identified_as_SU4",
+        "exact_Phi210_SU4_action_available_for_next_stage",
+        "infrastructure_only",
+        "whole_model_excluded",
+    }
+    required_endpoint_keys = {
+        "H",
+        "H_numerator_norm_squared",
+        "Sigma",
+        "endpoint_binding_exact",
+        "integer_tangent_numerators",
+        "q",
+        "q_coordinate_norm_squared",
+    }
+    generator_basis = report.get("generator_basis", {})
+    lie_algebra = report.get("Lie_algebra", {})
+    wrong_offset = tangent.get("wrong_offset_zero_SU4_negative_control", {})
+    return bool(
+        report.get("n_checks") == len(required_checks)
+        and report.get("n_failed") == 0
+        and report.get("failed_checks") == []
+        and report.get("status")
+        == "EXACT_RANK1_SU4_STABILIZER_INFRASTRUCTURE_CERTIFIED"
+        and report.get("overall_state")
+        == "STABILIZER_INFRASTRUCTURE_CLOSED__ARBITRARY_PHI_SDP_OPEN"
+        and report.get("model_contract_id") == AUTHORITATIVE_CONTRACT_ID
+        and set(checks) == set(required_checks)
+        and set(scope) == required_scope_keys
+        and set(endpoint) == required_endpoint_keys
+        and all(checks.get(name) is True for name in required_checks)
+        and scope.get("H_fixed_to_h_minus") is True
+        and scope.get(
+            "Sigma_fixed_to_normalized_explicit_decomposable_pure_spinor_q_over_4"
+        )
+        is True
+        and scope.get("common_continuous_stabilizer_identified_as_SU4") is True
+        and scope.get("exact_Phi210_SU4_action_available_for_next_stage") is True
+        and scope.get("infrastructure_only") is True
+        and scope.get("arbitrary_Phi_Schur_SOS_SDP_constructed") is False
+        and scope.get("arbitrary_Phi_Schur_SOS_SDP_feasible") is False
+        and scope.get("arbitrary_rank1_Phi_bound_proved") is False
+        and scope.get("arbitrary_max_negative_Sigma_proved") is False
+        and scope.get("G3_closed") is False
+        and scope.get("whole_model_excluded") is False
+        and tangent.get("proof_grade") is True
+        and tangent.get("prime") == RANK1_SU4_MODULAR_PRIME
+        and tangent.get("displayed_kernel_rank_mod_prime") == 15
+        and tangent.get("displayed_kernel_residual_max_abs") == 0
+        and tangent.get("exact_tangent_rank_over_Q_R") == 30
+        and tangent.get("exact_tangent_nullity") == 15
+        and tangent.get("displayed_kernel_shape") == [45, 15]
+        and tangent.get("explicit_kernel_is_complete") is True
+        and tangent.get("joint_tangent_rank_mod_prime") == 30
+        and tangent.get("joint_tangent_shape") == [272, 45]
+        and tangent.get("rank_lower_bound_over_Q_R") == 30
+        and tangent.get("kernel_upper_bound_on_tangent_rank") == 30
+        and endpoint.get("endpoint_binding_exact") is True
+        and endpoint.get("H") == "h_-=(e0-i e1)/sqrt(2)"
+        and endpoint.get("Sigma") == "q/4"
+        and endpoint.get("q")
+        == "q=(e0+i e1)(e2+i e3)(e4+i e5)(e6+i e7)(e8+i e9)"
+        and endpoint.get("H_numerator_norm_squared") == 2
+        and endpoint.get("q_coordinate_norm_squared") == 16
+        and source_actions.get("SO10_generator_count") == 45
+        and source_actions.get("H_action_shape") == [45, 10, 10]
+        and source_actions.get("Sigma_action_shape") == [45, 126, 126]
+        and source_actions.get("ordered_generator_labels_match_exactly") is True
+        and source_actions.get("H_generators_integral_real_skew") is True
+        and source_actions.get(
+            "Sigma_generators_Gaussian_integral_antihermitian"
+        )
+        is True
+        and wrong_offset.get("H_tangent_residual_max_abs") == 1
+        and wrong_offset.get("Sigma_tangent_residual_max_abs") == 0
+        and wrong_offset.get("joint_tangent_residual_max_abs") == 1
+        and wrong_offset.get("does_not_stabilize_fixed_h_minus") is True
+        and wrong_offset.get("wrong_embedding_rejected_exactly") is True
+        and phi210.get("proof_grade") is True
+        and phi210.get("prime") == RANK1_SU4_MODULAR_PRIME
+        and phi210.get("representation") == "real Lambda^4(R^10) = Phi210"
+        and phi210.get("action_count") == 15
+        and phi210.get("action_shapes") == [[210, 210]]
+        and phi210.get("ordered_labels") == list(RANK1_SU4_ORDERED_LABELS)
+        and phi210.get("all_action_dtypes_integral") is True
+        and phi210.get("maximum_abs_action_entry") == 1
+        and phi210.get("flattened_action_rank_mod_prime") == 15
+        and phi210.get("skew_transpose_max_abs_residual") == 0
+        and phi210.get("Lie_commutator_reconstruction_max_abs") == 0
+        and bool(phi210.get("source_binding"))
+        and generator_basis.get("proof_grade") is True
+        and generator_basis.get("prime") == RANK1_SU4_MODULAR_PRIME
+        and generator_basis.get("generator_count") == 15
+        and generator_basis.get("Cartan_generator_count") == 3
+        and generator_basis.get("offdiagonal_generator_count") == 12
+        and generator_basis.get("complex_planes")
+        == [[2, 3], [4, 5], [6, 7], [8, 9]]
+        and generator_basis.get("coefficient_matrix_shape") == [45, 15]
+        and generator_basis.get("coefficient_rank_mod_prime") == 15
+        and generator_basis.get("ordered_labels") == list(RANK1_SU4_ORDERED_LABELS)
+        and generator_basis.get("all_coefficients_are_signed_units") is True
+        and generator_basis.get("all_support_is_in_indices_2_through_9") is True
+        and lie_algebra.get("proof_grade") is True
+        and lie_algebra.get("Lie_algebra_dimension") == 15
+        and lie_algebra.get("basis_labels") == list(RANK1_SU4_ORDERED_LABELS)
+        and lie_algebra.get("Cartan_commutator_max_abs") == 0
+        and lie_algebra.get("Jacobi_max_abs_residual") == 0
+        and lie_algebra.get("antisymmetry_max_abs_residual") == 0
+        and lie_algebra.get("coefficient_commutator_reconstruction_max_abs") == 0
+        and lie_algebra.get("vector_commutator_reconstruction_max_abs") == 0
+        and lie_algebra.get("maximum_abs_structure_constant") == 2
+        and lie_algebra.get("coordinate_block_unimodular") is True
+        and lie_algebra.get("structure_constants_integral") is True
+    )
+
+
+def _rank1_su4_phi210_intertwiners_exact(
+    report: dict[str, Any], stabilizer_report: dict[str, Any]
+) -> bool:
+    """Validate the 210 intertwiner census and every open-scope guard."""
+    checks = report.get("checks", {})
+    scope = report.get("scope", {})
+    provenance = report.get("companion_stabilizer_provenance", {})
+    intertwiner = report.get("intertwiner", {})
+    rows = intertwiner.get("intertwinings", [])
+    carriers = report.get("carriers", {})
+    carrier_rows = carriers.get("carriers", [])
+    character = report.get("character_branching", {})
+    integral_c8 = report.get("integral_C8", {})
+    companion_tangent = stabilizer_report.get("joint_stabilizer_tangent", {})
+    companion_phi210 = stabilizer_report.get("Phi210_action", {})
+    required_true_checks = (
+        "Gaussian_exterior_basis_Bdagger_B_equals_16I_exact",
+        "all_15_live_SU4_intertwinings_exact",
+        "Cartan_weights_exact",
+        "SSYT_character_branching_exact",
+        "integral_C8_spectrum_and_minimal_polynomial_exact",
+        "deterministic_25_carrier_decomposition_complete",
+        "Sym2_invariant_multiplicity_is_45_exact",
+        "companion_model_contract_matches_exactly",
+        "companion_stabilizer_report_green_and_endpoint_scoped",
+        "companion_h_minus_q_over_4_tangent_provenance_exact",
+        "companion_Phi210_action_provenance_exact",
+        "companion_embedded_certificates_match_live_inputs",
+    )
+    required_false_checks = {
+        "SU4_Schur_SDP_constructed",
+        "arbitrary_Phi_bound_proved",
+        "G3_closed",
+    }
+    required_scope_keys = {
+        "G3_closed",
+        "H_fixed_to_h_minus",
+        "Phi210_complexified_representation_resolved",
+        "SU4_invariant_quadratic_form_basis_constructed",
+        "Schur_SOS_SDP_constructed",
+        "Sigma_fixed_to_q_over_4",
+        "Sym2_SU4_invariant_dimension_45_proved",
+        "arbitrary_rank1_Phi_proved",
+        "arbitrary_real_Phi_lower_bound_proved",
+        "companion_stabilizer_provenance_exact",
+        "deterministic_irreducible_carriers_complete",
+        "rank1_endpoint_SU4_stabilizer_used",
+        "whole_model_excluded",
+    }
+    required_provenance_keys = {
+        "Phi210_action_proof_grade",
+        "all_required_provenance_exact",
+        "fixed_endpoint",
+        "model_contract_id",
+        "module",
+        "n_failed",
+        "overall_state",
+        "status",
+        "tangent_proof_grade",
+    }
+    return bool(
+        _rank1_su4_stabilizer_infrastructure_exact(stabilizer_report)
+        and report.get("n_checks") == 15
+        and report.get("n_failed") == 0
+        and report.get("failures") == []
+        and report.get("status")
+        == "EXACT_RANK1_SU4_PHI210_INTERTWINER_INFRASTRUCTURE_CERTIFIED"
+        and report.get("overall_state")
+        == "SU4_SCHUR_INFRASTRUCTURE_CLOSED__SDP_AND_G3_OPEN"
+        and report.get("model_contract_id") == AUTHORITATIVE_CONTRACT_ID
+        and set(checks) == set(required_true_checks) | required_false_checks
+        and set(scope) == required_scope_keys
+        and set(provenance) == required_provenance_keys
+        and all(checks.get(name) is True for name in required_true_checks)
+        and checks.get("SU4_Schur_SDP_constructed") is False
+        and checks.get("arbitrary_Phi_bound_proved") is False
+        and checks.get("G3_closed") is False
+        and scope.get("H_fixed_to_h_minus") is True
+        and scope.get("Sigma_fixed_to_q_over_4") is True
+        and scope.get("rank1_endpoint_SU4_stabilizer_used") is True
+        and scope.get("companion_stabilizer_provenance_exact") is True
+        and scope.get("Phi210_complexified_representation_resolved") is True
+        and scope.get("deterministic_irreducible_carriers_complete") is True
+        and scope.get("Sym2_SU4_invariant_dimension_45_proved") is True
+        and scope.get("SU4_invariant_quadratic_form_basis_constructed") is False
+        and scope.get("Schur_SOS_SDP_constructed") is False
+        and scope.get("arbitrary_real_Phi_lower_bound_proved") is False
+        and scope.get("arbitrary_rank1_Phi_proved") is False
+        and scope.get("G3_closed") is False
+        and scope.get("whole_model_excluded") is False
+        and provenance.get("all_required_provenance_exact") is True
+        and provenance.get("module")
+        == "exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py"
+        and provenance.get("model_contract_id")
+        == stabilizer_report.get("model_contract_id")
+        and provenance.get("n_failed") == stabilizer_report.get("n_failed")
+        and provenance.get("status") == stabilizer_report.get("status")
+        and provenance.get("overall_state")
+        == stabilizer_report.get("overall_state")
+        and provenance.get("fixed_endpoint")
+        == companion_tangent.get("fixed_endpoint")
+        and provenance.get("tangent_proof_grade")
+        == companion_tangent.get("proof_grade")
+        and provenance.get("Phi210_action_proof_grade")
+        == companion_phi210.get("proof_grade")
+        and intertwiner.get("proof_grade") is True
+        and intertwiner.get("exterior_basis_shape") == [210, 210]
+        and intertwiner.get("exterior_basis_Bdagger_B_equals_16I_exact") is True
+        and intertwiner.get("one_form_Gram_real_exact") is True
+        and intertwiner.get("one_form_Gram_imaginary_zero_exact") is True
+        and intertwiner.get("Cartan_weight_diagonalization_exact") is True
+        and intertwiner.get("n_distinct_Cartan_weights") == 65
+        and intertwiner.get("zero_weight_multiplicity") == 12
+        and intertwiner.get("intertwining_count") == 15
+        and intertwiner.get("all_15_intertwinings_exact") is True
+        and isinstance(rows, list)
+        and len(rows) == 15
+        and all(
+            row.get("exact") is True
+            and row.get("real_residual_max_abs") == 0
+            and row.get("imaginary_residual_max_abs") == 0
+            for row in rows
+            if isinstance(row, dict)
+        )
+        and all(isinstance(row, dict) for row in rows)
+        and [row.get("generator") for row in rows]
+        == list(RANK1_SU4_ORDERED_LABELS)
+        and character.get("proof_grade") is True
+        and character.get("exterior_dimension") == 210
+        and character.get("SSYT_reconstructed_dimension") == 210
+        and character.get("all_SSYT_dimensions_exact") is True
+        and character.get("SSYT_character_identity_exact") is True
+        and integral_c8.get("proof_grade") is True
+        and integral_c8.get("shape") == [210, 210]
+        and integral_c8.get("integral") is True
+        and integral_c8.get("symmetric_exact") is True
+        and integral_c8.get("commutes_with_all_15_generators_exact") is True
+        and integral_c8.get("spectrum_exact_over_Q") is True
+        and integral_c8.get("minimal_polynomial_exact") is True
+        and integral_c8.get("minimal_polynomial_annihilates_exact") is True
+        and integral_c8.get("modular_prime") == RANK1_SU4_MODULAR_PRIME
+        and integral_c8.get("minimal_polynomial_roots")
+        == [0, 15, 20, 32, 36, 39, 48]
+        and integral_c8.get("annihilator_intermediate_maxima")[-1:] == [0]
+        and integral_c8.get("modular_nullities_sum") == 210
+        and integral_c8.get("modular_eigenspace_nullities")
+        == {
+            "0": 4,
+            "15": 32,
+            "20": 24,
+            "32": 30,
+            "36": 20,
+            "39": 80,
+            "48": 20,
+        }
+        and integral_c8.get("expected_spectrum_multiplicities")
+        == {
+            "0": 4,
+            "15": 32,
+            "20": 24,
+            "32": 30,
+            "36": 20,
+            "39": 80,
+            "48": 20,
+        }
+        and integral_c8.get("canonical_Phi210_symmetric_exact") is True
+        and integral_c8.get("canonical_to_exterior_C8_intertwining_exact") is True
+        and integral_c8.get("imaginary_part_zero_exact") is True
+        and integral_c8.get("int64_arithmetic_safe") is True
+        and carriers.get("proof_grade") is True
+        and carriers.get("carrier_count") == 25
+        and carriers.get("concatenated_carrier_shape") == [210, 210]
+        and carriers.get("concatenated_carrier_rank_mod_prime") == 210
+        and carriers.get("Sym2_Phi210_SU4_singlet_dimension") == 45
+        and carriers.get("SU4_invariant_quadratic_multiplicity_sector_dimension")
+        == 45
+        and "future_Schur_SDP_multiplicity_matrix_dimension" not in carriers
+        and carriers.get("natural_exterior_block_count") == 16
+        and isinstance(carrier_rows, list)
+        and len(carrier_rows) == 25
+        and all(
+            isinstance(row, dict)
+            and row.get("C8_eigen_equation_exact") is True
+            and row.get("SSYT_character_exact") is True
+            and row.get("exact_modular_rank") == row.get("expected_dimension")
+            for row in carrier_rows
+        )
+        and carriers.get("all_15_generators_preserve_natural_blocks_exact")
+        is True
+        and carriers.get("all_carrier_dimensions_eigenvalues_characters_exact")
+        is True
+    )
+
+
 def _gauged_u1x_g3_frontier(
     sos_report: dict[str, Any],
     pd_report: dict[str, Any],
@@ -248,6 +607,8 @@ def _gauged_u1x_g3_frontier(
     su5_max_negative_zero_residual_report: dict[str, Any],
     su5_max_negative_full_residual_report: dict[str, Any],
     su5_max_negative_rank1_su3_slice_report: dict[str, Any],
+    rank1_su4_stabilizer_report: dict[str, Any],
+    rank1_su4_phi210_intertwiners_report: dict[str, Any],
     alternative_global_sos_report: dict[str, Any],
 ) -> dict[str, Any]:
     """Bind rejected branches and the surviving SU(5)+Delta G3 frontier."""
@@ -309,6 +670,14 @@ def _gauged_u1x_g3_frontier(
     )
     rank1_su3_scope = su5_max_negative_rank1_su3_slice_report.get("scope", {})
     rank1_su3_checks = su5_max_negative_rank1_su3_slice_report.get("checks", {})
+    rank1_su4_stabilizer_scope = rank1_su4_stabilizer_report.get("scope", {})
+    rank1_su4_stabilizer_checks = rank1_su4_stabilizer_report.get("checks", {})
+    rank1_su4_intertwiner_scope = rank1_su4_phi210_intertwiners_report.get(
+        "scope", {}
+    )
+    rank1_su4_intertwiner_checks = rank1_su4_phi210_intertwiners_report.get(
+        "checks", {}
+    )
     alternative_flags = alternative_global_sos_report.get("flags", {})
 
     artifacts_present = {
@@ -339,6 +708,10 @@ def _gauged_u1x_g3_frontier(
         ),
         "SU5_max_negative_rank1_SU3_four_dimensional_slice_bound": bool(
             su5_max_negative_rank1_su3_slice_report
+        ),
+        "rank1_SU4_stabilizer_infrastructure": bool(rank1_su4_stabilizer_report),
+        "rank1_SU4_Phi210_intertwiner_infrastructure": bool(
+            rank1_su4_phi210_intertwiners_report
         ),
         "alternative_global_SOS_audit": bool(alternative_global_sos_report),
     }
@@ -850,6 +1223,15 @@ def _gauged_u1x_g3_frontier(
         )
         == "1/5000"
     )
+    rank1_su4_stabilizer_infrastructure_exact = (
+        _rank1_su4_stabilizer_infrastructure_exact(rank1_su4_stabilizer_report)
+    )
+    rank1_su4_phi210_intertwiners_exact = (
+        _rank1_su4_phi210_intertwiners_exact(
+            rank1_su4_phi210_intertwiners_report,
+            rank1_su4_stabilizer_report,
+        )
+    )
     alternative_global_sos_honestly_open = bool(
         alternative_global_sos_report.get("n_failed") == 0
         and alternative_global_sos_report.get("status")
@@ -899,6 +1281,8 @@ def _gauged_u1x_g3_frontier(
         and su5_max_negative_all_zero_route_excluded
         and su5_max_negative_full_residual_pure_delta_closed
         and su5_max_negative_rank1_su3_slice_closed
+        and rank1_su4_stabilizer_infrastructure_exact
+        and rank1_su4_phi210_intertwiners_exact
         and alternative_global_sos_honestly_open
     )
     return {
@@ -1054,6 +1438,33 @@ def _gauged_u1x_g3_frontier(
         ),
         "SU5_max_negative_arbitrary_rank1_Phi_open": not bool(
             rank1_su3_checks.get("arbitrary_rank1_Phi_proved")
+        ),
+        "rank1_SU4_stabilizer_infrastructure_exact": (
+            rank1_su4_stabilizer_infrastructure_exact
+        ),
+        "rank1_SU4_joint_stabilizer_dimension": (
+            rank1_su4_stabilizer_report.get("joint_stabilizer_tangent", {}).get(
+                "exact_tangent_nullity"
+            )
+        ),
+        "rank1_SU4_Phi210_intertwiner_infrastructure_exact": (
+            rank1_su4_phi210_intertwiners_exact
+        ),
+        "rank1_SU4_Phi210_carrier_count": (
+            rank1_su4_phi210_intertwiners_report.get("carriers", {}).get(
+                "carrier_count"
+            )
+        ),
+        "rank1_SU4_Sym2_invariant_dimension": (
+            rank1_su4_phi210_intertwiners_report.get("carriers", {}).get(
+                "Sym2_Phi210_SU4_singlet_dimension"
+            )
+        ),
+        "rank1_SU4_Schur_SOS_SDP_open": not bool(
+            rank1_su4_intertwiner_scope.get("Schur_SOS_SDP_constructed")
+        ),
+        "rank1_SU4_arbitrary_Phi_bound_open": not bool(
+            rank1_su4_intertwiner_scope.get("arbitrary_rank1_Phi_proved")
         ),
         "SU5_max_negative_arbitrary_Sigma_orientation_open": not bool(
             rank1_su3_scope.get("arbitrary_max_negative_Sigma")
@@ -1348,6 +1759,8 @@ def _build_report_from_inputs(
     g3_su5_max_negative_zero_residual_report: dict[str, Any] | None = None,
     g3_su5_max_negative_full_residual_report: dict[str, Any] | None = None,
     g3_su5_max_negative_rank1_su3_slice_report: dict[str, Any] | None = None,
+    g3_rank1_su4_stabilizer_report: dict[str, Any] | None = None,
+    g3_rank1_su4_phi210_intertwiners_report: dict[str, Any] | None = None,
     g3_alternative_global_sos_report: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Build a ledger from fresh reports, including repaired-contract states."""
@@ -1413,6 +1826,14 @@ def _build_report_from_inputs(
         g3_su5_max_negative_rank1_su3_slice_report = _load_json_artifact(
             G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_JSON
         )
+    if g3_rank1_su4_stabilizer_report is None:
+        g3_rank1_su4_stabilizer_report = _load_json_artifact(
+            G3_RANK1_SU4_STABILIZER_JSON
+        )
+    if g3_rank1_su4_phi210_intertwiners_report is None:
+        g3_rank1_su4_phi210_intertwiners_report = _load_json_artifact(
+            G3_RANK1_SU4_PHI210_INTERTWINERS_JSON
+        )
     if g3_alternative_global_sos_report is None:
         g3_alternative_global_sos_report = _load_json_artifact(
             G3_ALTERNATIVE_GLOBAL_SOS_JSON
@@ -1436,6 +1857,8 @@ def _build_report_from_inputs(
         g3_su5_max_negative_zero_residual_report,
         g3_su5_max_negative_full_residual_report,
         g3_su5_max_negative_rank1_su3_slice_report,
+        g3_rank1_su4_stabilizer_report,
+        g3_rank1_su4_phi210_intertwiners_report,
         g3_alternative_global_sos_report,
     )
     gates = _build_gates(
@@ -1673,6 +2096,20 @@ def _build_report_from_inputs(
             is True
             and g3_frontier["G3_closed"] is False
         ),
+        "gauged_G3_rank1_SU4_infrastructure_is_exact_and_fail_closed": (
+            g3_frontier["rank1_SU4_stabilizer_infrastructure_exact"] is True
+            and g3_frontier["rank1_SU4_joint_stabilizer_dimension"] == 15
+            and g3_frontier[
+                "rank1_SU4_Phi210_intertwiner_infrastructure_exact"
+            ]
+            is True
+            and g3_frontier["rank1_SU4_Phi210_carrier_count"] == 25
+            and g3_frontier["rank1_SU4_Sym2_invariant_dimension"] == 45
+            and g3_frontier["rank1_SU4_Schur_SOS_SDP_open"] is True
+            and g3_frontier["rank1_SU4_arbitrary_Phi_bound_open"] is True
+            and g3_frontier["G3_closed"] is False
+            and g3_frontier["whole_model_excluded"] is False
+        ),
         "gauged_G3_alternative_global_SOS_routes_are_honestly_audited": (
             g3_frontier["alternative_global_SOS_audit_honestly_open"] is True
             and g3_frontier[
@@ -1811,7 +2248,9 @@ def _build_report_from_inputs(
                 "sharp gap 1/5000. At one explicit decomposable rank-one "
                 "endpoint, a separate exact certificate closes only a "
                 "four-real-dimensional Phi sub-slice of the 16-dimensional "
-                "SU(3)-fixed space, also with minimum 1/5000."
+                "SU(3)-fixed space, also with minimum 1/5000. Its exact SU(4) "
+                "stabilizer and 25-carrier, 45-invariant Phi210 census are now "
+                "available for the still-open Schur/SOS SDP."
             ),
         },
         {"wave": 4, "gates": ["G6"], "status": "BLOCKED_ON_G3_G4_G5"},
@@ -1837,7 +2276,9 @@ def _build_report_from_inputs(
         "gap 1/5000. At fixed H=h_-, one explicit rank-one Sigma endpoint also "
         "has an exact 1/5000 "
         "gap on a four-real-dimensional Phi sub-slice only; the ambient "
-        "16-dimensional SU(3)-fixed space and arbitrary Phi remain open. Only "
+        "16-dimensional SU(3)-fixed space and arbitrary Phi remain open. The "
+        "exact SU(4) stabilizer and 25-carrier, 45-invariant Phi210 census are "
+        "infrastructure only; the Schur/SOS SDP remains open. Only "
         "arbitrary non-pure-Delta Sigma coercivity remains open. "
         "G5 is CLOSED; G4 and G6-G8 remain "
         "dependency-blocked. Historical "
@@ -1871,7 +2312,9 @@ def _build_report_from_inputs(
         "fixed H=h_- and one explicit rank-one Sigma endpoint, an exact "
         "Gram/LDL certificate also proves "
         "the 1/5000 gap on only a four-real-dimensional Phi sub-slice of the "
-        "16-dimensional SU(3)-fixed space. Uniform "
+        "16-dimensional SU(3)-fixed space. Its exact SU(4) stabilizer and "
+        "25-carrier, 45-invariant Phi210 census are certified only as input to "
+        "the still-open Schur/SOS SDP. Uniform "
         "coercivity for arbitrary non-pure-Delta Sigma orientations remains open. The "
         "historical 64/91 "
         "derivative theorem, 449-dimensional "
@@ -1930,6 +2373,12 @@ def _build_report_from_inputs(
             ),
             "gauged_G3_SU5_max_negative_rank1_SU3_four_dimensional_slice_bound": (
                 g3_su5_max_negative_rank1_su3_slice_report
+            ),
+            "gauged_G3_rank1_SU4_stabilizer_infrastructure": (
+                g3_rank1_su4_stabilizer_report
+            ),
+            "gauged_G3_rank1_SU4_Phi210_intertwiner_infrastructure": (
+                g3_rank1_su4_phi210_intertwiners_report
             ),
             "gauged_G3_alternative_global_SOS_audit": (
                 g3_alternative_global_sos_report
@@ -2010,6 +2459,12 @@ def build_report() -> dict[str, Any]:
         ),
         g3_su5_max_negative_rank1_su3_slice_report=_load_json_artifact(
             G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_JSON
+        ),
+        g3_rank1_su4_stabilizer_report=_load_json_artifact(
+            G3_RANK1_SU4_STABILIZER_JSON
+        ),
+        g3_rank1_su4_phi210_intertwiners_report=_load_json_artifact(
+            G3_RANK1_SU4_PHI210_INTERTWINERS_JSON
         ),
         g3_alternative_global_sos_report=_load_json_artifact(
             G3_ALTERNATIVE_GLOBAL_SOS_JSON

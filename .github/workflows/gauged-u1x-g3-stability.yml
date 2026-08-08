@@ -44,6 +44,10 @@ on:
       - "test_exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py"
       - "exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py"
       - "test_exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py"
+      - "exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py"
+      - "test_exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py"
+      - "exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py"
+      - "test_exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py"
       - "exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py"
       - "test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py"
       - "final_g3_acceptance_gate_v20.py"
@@ -103,6 +107,10 @@ on:
       - "test_exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py"
       - "exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py"
       - "test_exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py"
+      - "exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py"
+      - "test_exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py"
+      - "exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py"
+      - "test_exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py"
       - "exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py"
       - "test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py"
       - "final_g3_acceptance_gate_v20.py"
@@ -167,6 +175,8 @@ jobs:
             exact_gauged_u1x_g3_su5_max_negative_zero_residual_bound_v20.py \
             exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py \
             exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py \
+            exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py \
+            exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py \
             exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py \
             final_g3_acceptance_gate_v20.py \
             gauged_u1x_g3_sos_candidate_v20.py \
@@ -194,6 +204,8 @@ jobs:
             test_exact_gauged_u1x_g3_su5_max_negative_zero_residual_bound_v20.py \
             test_exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py \
             test_exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py \
+            test_exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py \
+            test_exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py \
             test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py \
             test_final_g3_acceptance_gate_v20.py \
             test_gauged_u1x_g3_sos_candidate_v20.py \
@@ -223,6 +235,8 @@ jobs:
           python exact_gauged_u1x_g3_su5_max_negative_zero_residual_bound_v20.py --write
           python exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py --write
           python exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py --write
+          python exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py --write
+          python exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py --write
           python exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py --write
           python final_g3_acceptance_gate_v20.py --write
           python gauged_u1x_g3_sos_candidate_v20.py --recompute-heavy --write
@@ -253,6 +267,8 @@ jobs:
             test_exact_gauged_u1x_g3_su5_max_negative_zero_residual_bound_v20.py \
             test_exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py \
             test_exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py \
+            test_exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py \
+            test_exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py \
             test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py \
             test_final_g3_acceptance_gate_v20.py \
             test_gauged_u1x_g3_sos_candidate_v20.py \
@@ -263,6 +279,7 @@ jobs:
           python - <<'PY'
           import json
           from pathlib import Path
+          import g1_g8_gate_ledger_v20 as gate_ledger
 
           report = json.loads(
               Path("GAUGED_U1X_G3_STABILITY_V20.json").read_text()
@@ -323,6 +340,12 @@ jobs:
           )
           rank1_su3 = json.loads(
               Path("EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_V20.json").read_text()
+          )
+          rank1_su4_stabilizer = json.loads(
+              Path("EXACT_GAUGED_U1X_G3_RANK1_SU4_STABILIZER_V20.json").read_text()
+          )
+          rank1_su4_intertwiners = json.loads(
+              Path("EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_INTERTWINERS_V20.json").read_text()
           )
           alternative_sos = json.loads(
               Path("EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json").read_text()
@@ -517,6 +540,12 @@ jobs:
           assert rank1_su3["checks"]["G3_closed"] is False
           assert rank1_su3["SOS"]["strict_anchor_lower_bound"] == "3/200"
           assert rank1_su3["radial_patch"]["restricted_global_minimum"] == "1/5000"
+          assert gate_ledger._rank1_su4_stabilizer_infrastructure_exact(rank1_su4_stabilizer)
+          assert gate_ledger._rank1_su4_phi210_intertwiners_exact(rank1_su4_intertwiners, rank1_su4_stabilizer)
+          assert rank1_su4_intertwiners["scope"]["Schur_SOS_SDP_constructed"] is False
+          assert rank1_su4_intertwiners["scope"]["arbitrary_rank1_Phi_proved"] is False
+          assert rank1_su4_intertwiners["scope"]["G3_closed"] is False
+          assert rank1_su4_intertwiners["scope"]["whole_model_excluded"] is False
 
           assert alternative_sos["n_failed"] == 0, alternative_sos["failures"]
           assert alternative_sos["overall_state"] == "G3_GLOBAL_ALTERNATIVE_OPEN"
@@ -680,6 +709,10 @@ jobs:
             EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_FULL_RESIDUAL_BOUND_V20.md
             EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_V20.json
             EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_V20.md
+            EXACT_GAUGED_U1X_G3_RANK1_SU4_STABILIZER_V20.json
+            EXACT_GAUGED_U1X_G3_RANK1_SU4_STABILIZER_V20.md
+            EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_INTERTWINERS_V20.json
+            EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_INTERTWINERS_V20.md
             EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json
             EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.md
             FINAL_G3_ACCEPTANCE_GATE_V20.json

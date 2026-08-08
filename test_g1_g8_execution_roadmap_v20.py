@@ -194,6 +194,13 @@ def test_constructive_g3_frontier_is_actionable_but_not_promoted():
     assert frontier["SU5_max_negative_rank1_SU3_slice_minimum"] == "1/5000"
     assert frontier["SU5_max_negative_arbitrary_rank1_Phi_open"] is True
     assert frontier["SU5_max_negative_arbitrary_Sigma_orientation_open"] is True
+    assert frontier["rank1_SU4_stabilizer_infrastructure_exact"] is True
+    assert frontier["rank1_SU4_joint_stabilizer_dimension"] == 15
+    assert frontier["rank1_SU4_Phi210_intertwiner_infrastructure_exact"] is True
+    assert frontier["rank1_SU4_Phi210_carrier_count"] == 25
+    assert frontier["rank1_SU4_Sym2_invariant_dimension"] == 45
+    assert frontier["rank1_SU4_Schur_SOS_SDP_open"] is True
+    assert frontier["rank1_SU4_arbitrary_Phi_bound_open"] is True
     assert frontier["SU5_arbitrary_Phi_nonzero_residual_cancellations_open"] is False
     assert (
         frontier["SU5_arbitrary_non_pure_Delta_Sigma_uniform_coercivity_open"]
@@ -225,6 +232,10 @@ def test_constructive_g3_frontier_is_actionable_but_not_promoted():
     assert "SU(5)+Delta" in g3_task["deliverable"]
     assert "four-real-dimensional Phi sub-slice" in g3_task["deliverable"]
     assert "16-dimensional SU(3)-fixed space" in g3_task["deliverable"]
+    assert "exact SU(4) stabilizer" in g3_task["deliverable"]
+    assert "full augmented SU(4)-equivariant degree-2 Schur/SOS SDP" in (
+        g3_task["deliverable"]
+    )
     assert "486-field" in g3_task["acceptance"]
 
 

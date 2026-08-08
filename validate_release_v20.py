@@ -12,6 +12,8 @@ import subprocess
 import sys
 import unittest
 
+import g1_g8_gate_ledger_v20 as gate_ledger
+
 
 ROOT = Path(__file__).resolve().parent
 MODEL_CONTRACT_ID = "gauged_u1x_phi17_v20"
@@ -34,6 +36,10 @@ FINAL_THEOREM_CORE_PATHS: tuple[str, ...] = (
     "EXACT_X_SYMMETRY_CONSISTENCY_GATE_V20.md",
     "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_V20.json",
     "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_V20.md",
+    "EXACT_GAUGED_U1X_G3_RANK1_SU4_STABILIZER_V20.json",
+    "EXACT_GAUGED_U1X_G3_RANK1_SU4_STABILIZER_V20.md",
+    "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_INTERTWINERS_V20.json",
+    "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_INTERTWINERS_V20.md",
     "G1_EXACT_DECLARED_SYMMETRY_CHARACTER_CENSUS_V20.json",
     "G1_EXACT_DECLARED_SYMMETRY_CHARACTER_CENSUS_V20.md",
     "G1_G8_EXECUTION_ROADMAP_V20.md",
@@ -48,11 +54,15 @@ FINAL_THEOREM_CORE_PATHS: tuple[str, ...] = (
     "VALIDATION_EXECUTION_V20_VERDICT.json",
     "g1_exact_declared_symmetry_character_census_v20.py",
     "exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py",
+    "exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py",
+    "exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py",
     "prepare_validation_artifacts_v20.py",
     "replicate.py",
     "test_authoritative_full_model_gate_v20.py",
     "test_exact_x_symmetry_consistency_gate_v20.py",
     "test_exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py",
+    "test_exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py",
+    "test_exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py",
     "test_g1_exact_declared_symmetry_character_census_v20.py",
     "test_g1_g8_execution_roadmap_v20.py",
     "test_g1_g8_gate_ledger_v20.py",
@@ -81,6 +91,21 @@ def run(command: list[str]) -> None:
 def require(condition: bool, message: str) -> None:
     if not condition:
         raise RuntimeError(message)
+
+
+def rank1_su4_release_predicates(
+    stabilizer_report: dict,
+    intertwiners_report: dict,
+) -> tuple[bool, bool]:
+    """Return exact, fail-closed infrastructure predicates for the release."""
+    stabilizer_exact = gate_ledger._rank1_su4_stabilizer_infrastructure_exact(
+        stabilizer_report
+    )
+    intertwiners_exact = gate_ledger._rank1_su4_phi210_intertwiners_exact(
+        intertwiners_report,
+        stabilizer_report,
+    )
+    return stabilizer_exact, intertwiners_exact
 
 
 def write_checksums(files: list[Path], *, root: Path | None = None) -> None:
@@ -308,6 +333,20 @@ def main() -> int:
     run(
         [
             sys.executable,
+            "exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py",
+            "--write",
+        ]
+    )
+    run(
+        [
+            sys.executable,
+            "exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py",
+            "--write",
+        ]
+    )
+    run(
+        [
+            sys.executable,
             "exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py",
             "--write",
         ]
@@ -446,6 +485,17 @@ def main() -> int:
         (
             ROOT
             / "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_V20.json"
+        ).read_text()
+    )
+    exact_rank1_su4_stabilizer = json.loads(
+        (
+            ROOT / "EXACT_GAUGED_U1X_G3_RANK1_SU4_STABILIZER_V20.json"
+        ).read_text()
+    )
+    exact_rank1_su4_phi210_intertwiners = json.loads(
+        (
+            ROOT
+            / "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_INTERTWINERS_V20.json"
         ).read_text()
     )
     exact_alternative_sos = json.loads(
@@ -1054,6 +1104,24 @@ def main() -> int:
         == "1/5000",
         "rank-one SU(3) four-dimensional slice certificate failed or overclaimed G3",
     )
+    (
+        rank1_su4_stabilizer_exact,
+        rank1_su4_phi210_intertwiners_exact,
+    ) = rank1_su4_release_predicates(
+        exact_rank1_su4_stabilizer,
+        exact_rank1_su4_phi210_intertwiners,
+    )
+    require(
+        rank1_su4_stabilizer_exact,
+        "rank-one SU(4) stabilizer infrastructure drifted or overclaimed scope",
+    )
+    require(
+        rank1_su4_phi210_intertwiners_exact,
+        (
+            "rank-one SU(4) Phi210 intertwiner infrastructure drifted, lost "
+            "provenance, or overclaimed scope"
+        ),
+    )
     alternative_flags = exact_alternative_sos["flags"]
     require(
         exact_alternative_sos["n_failed"] == 0
@@ -1290,6 +1358,8 @@ def main() -> int:
             "test_exact_gauged_u1x_g3_su5_max_negative_zero_residual_bound_v20.py",
             "test_exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py",
             "test_exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py",
+            "test_exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py",
+            "test_exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py",
             "test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py",
             "test_final_g3_acceptance_gate_v20.py",
             "test_gauged_u1x_g3_sos_candidate_v20.py",
