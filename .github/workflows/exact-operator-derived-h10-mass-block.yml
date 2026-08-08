@@ -77,7 +77,11 @@ jobs:
 
           r=json.load(open('EXACT_COMPLETE_H10_SELECTED_VACUUM_MASS_BLOCK_V20.json'))
           assert r['n_failed']==0, r['failures']
-          assert r['flags']['complete_selected_vacuum_H_only_quadratic_block']
+          assert r['model_contract_id']=='historical_option_c_no_x_v20'
+          assert r['authoritative_for_manuscript'] is False
+          assert r['model_wide_no_go_certified'] is False
+          assert r['flags']['historical_option_c_H_only_quadratic_block_reproduced']
+          assert not r['flags']['phi17_dressings_allowed_by_manuscript_u1x']
           assert r['stable_benchmark']['negative_modes']==0
           assert r['unstable_benchmark']['negative_modes']>0
           assert not r['flags']['complete_482_real_Hessian']
@@ -85,8 +89,11 @@ jobs:
 
           r=json.load(open('EXACT_JOINT_H10_CROSS_SCHUR_STABILITY_V20.json'))
           assert r['n_failed']==0, r['failures']
-          assert r['flags']['six_real_coefficient_operator_gram_derived']
-          assert r['flags']['joint_necessary_and_sufficient_local_bound']
+          assert r['model_contract_id']=='historical_option_c_no_x_v20'
+          assert r['authoritative_for_manuscript'] is False
+          assert r['model_wide_no_go_certified'] is False
+          assert r['flags']['historical_six_real_coefficient_operator_gram_derived']
+          assert r['flags']['historical_option_c_joint_local_bound_reproduced']
           assert r['benchmarks']['above']['spectrum']['full_zero_modes']==33
           assert r['benchmarks']['above']['spectrum']['full_negative_modes']==0
           assert r['benchmarks']['below']['spectrum']['physical_negative_modes']>=1

@@ -144,7 +144,7 @@ jobs:
           pm=json.load(open('DIRECT_PHI_H_SIGMABAR_PORTAL_M2_BLOCK_V20.json'))
           e=json.load(open('EFJX_CGC_PHYSICAL_NORMALIZATION_GATE_V20.json'))
           mc=json.load(open('MIXED_210_126_10_CW_V20_VERDICT.json'))
-          gc=json.load(open('G_SINGLET_6x6_CW_V20_VERDICT.json'))
+          gscw=json.load(open('G_SINGLET_6x6_CW_V20_VERDICT.json'))
           m=json.load(open('MIXED_210_126_10_HILBERT_HESSIAN_V20.json'))
           c=json.load(open('CAL_G_SOFT_MODE_CLASSIFICATION_V20.json'))
           o=json.load(open('CAL_G_PORTAL_DECISION_V20.json'))
@@ -205,7 +205,7 @@ jobs:
           assert e['flags']['efjx_cgc_route_invalidated'], e
           assert not e['flags']['physical_CGC_normalization_derived'], e
           assert mc['flag']['scalar_CW_contribution_withdrawn'] and not mc['flag']['mixed_210_126_10_in_cw'], mc
-          assert gc['flag']['scalar_CW_contribution_withdrawn'] and gc['g_singlet_cw']['n_entries']==0, gc
+          assert gscw['flag']['scalar_CW_contribution_withdrawn'] and gscw['g_singlet_cw']['n_entries']==0, gscw
           assert m['flag']['imported_susy_hessian_withdrawn'] and not m['flag']['mixed_210_126_10_complete'], m
           assert c['flag']['cal_G_susy_gaugino_diagnostic_only'] and not c['flag']['cal_G_soft_mode_classified'], c
           assert o['flag']['cal_G_susy_gaugino_target_withdrawn'] and not o['flag']['cal_G_portal_decision_resolved'], o
@@ -296,8 +296,8 @@ jobs:
           assert su5ff['n_failed']==0 and su5ff['status']=='EXACT_FIXED_F_FULL_OFFKERNEL_BETA_GAP_CERTIFIED', su5ff
           assert su5ff['scope']['global_gap_nonnegative_on_full_fixed_F_stratum'], su5ff
           assert su5ff['checks']['full_fixed_F_equality_orbit_exact'], su5ff
-          assert su5ff['flags']['equality_is_selected_SU5_flag_orbit'], su5ff
-          assert not su5ff['flags']['arbitrary_Phi_proved'], su5ff
+          assert su5ff['scope']['equality_is_selected_SU5_flag_orbit'], su5ff
+          assert not su5ff['scope']['arbitrary_Phi_proved'], su5ff
           assert max_negative['n_failed']==0, max_negative['failures']
           assert max_negative['status']=='EXACT_PURE_DELTA_MAX_NEGATIVE_MIXED_ZERO_ROUTE_EXCLUDED', max_negative
           assert max_negative['overall_state']=='CLOSED_PURE_DELTA_MAX_NEGATIVE_MIXED_ZERO_STRATUM__ARBITRARY_PHI_OPEN', max_negative
@@ -529,7 +529,7 @@ jobs:
           pm=json.load(open('DIRECT_PHI_H_SIGMABAR_PORTAL_M2_BLOCK_V20.json'))
           e=json.load(open('EFJX_CGC_PHYSICAL_NORMALIZATION_GATE_V20.json'))
           mc=json.load(open('MIXED_210_126_10_CW_V20_VERDICT.json'))
-          gc=json.load(open('G_SINGLET_6x6_CW_V20_VERDICT.json'))
+          gscw=json.load(open('G_SINGLET_6x6_CW_V20_VERDICT.json'))
           m=json.load(open('MIXED_210_126_10_HILBERT_HESSIAN_V20.json'))
           c=json.load(open('CAL_G_SOFT_MODE_CLASSIFICATION_V20.json'))
           o=json.load(open('CAL_G_PORTAL_DECISION_V20.json'))
@@ -563,7 +563,7 @@ jobs:
           assert e['flags']['efjx_cgc_route_invalidated'], e
           assert not e['flags']['exact_EFJX_gamma_response_known'], e
           assert mc['flag']['scalar_CW_contribution_withdrawn'], mc
-          assert gc['flag']['scalar_CW_contribution_withdrawn'], gc
+          assert gscw['flag']['scalar_CW_contribution_withdrawn'], gscw
           assert m['flag']['imported_susy_hessian_withdrawn'], m
           assert c['flag']['cal_G_susy_gaugino_diagnostic_only'], c
           assert o['flag']['cal_G_susy_gaugino_target_withdrawn'], o

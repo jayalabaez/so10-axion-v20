@@ -219,8 +219,8 @@ jobs:
           assert sff['n_failed']==0 and sff['status']=='EXACT_FIXED_F_FULL_OFFKERNEL_BETA_GAP_CERTIFIED'
           assert sff['scope']['global_gap_nonnegative_on_full_fixed_F_stratum']
           assert sff['checks']['full_fixed_F_equality_orbit_exact']
-          assert sff['flags']['equality_is_selected_SU5_flag_orbit']
-          assert not sff['flags']['arbitrary_Phi_proved']
+          assert sff['scope']['equality_is_selected_SU5_flag_orbit']
+          assert not sff['scope']['arbitrary_Phi_proved']
           assert max_negative['n_failed']==0, max_negative['failures']
           assert max_negative['status']=='EXACT_PURE_DELTA_MAX_NEGATIVE_MIXED_ZERO_ROUTE_EXCLUDED'
           assert max_negative['overall_state']=='CLOSED_PURE_DELTA_MAX_NEGATIVE_MIXED_ZERO_STRATUM__ARBITRARY_PHI_OPEN'
