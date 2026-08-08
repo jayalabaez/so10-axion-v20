@@ -42,6 +42,8 @@ on:
       - "test_exact_gauged_u1x_g3_su5_max_negative_zero_residual_bound_v20.py"
       - "exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py"
       - "test_exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py"
+      - "exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py"
+      - "test_exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py"
       - "exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py"
       - "test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py"
       - "final_g3_acceptance_gate_v20.py"
@@ -99,6 +101,8 @@ on:
       - "test_exact_gauged_u1x_g3_su5_max_negative_zero_residual_bound_v20.py"
       - "exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py"
       - "test_exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py"
+      - "exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py"
+      - "test_exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py"
       - "exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py"
       - "test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py"
       - "final_g3_acceptance_gate_v20.py"
@@ -162,6 +166,7 @@ jobs:
             exact_gauged_u1x_g3_su5_fixed_f_offkernel_bound_v20.py \
             exact_gauged_u1x_g3_su5_max_negative_zero_residual_bound_v20.py \
             exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py \
+            exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py \
             exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py \
             final_g3_acceptance_gate_v20.py \
             gauged_u1x_g3_sos_candidate_v20.py \
@@ -188,6 +193,7 @@ jobs:
             test_exact_gauged_u1x_g3_su5_fixed_f_offkernel_bound_v20.py \
             test_exact_gauged_u1x_g3_su5_max_negative_zero_residual_bound_v20.py \
             test_exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py \
+            test_exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py \
             test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py \
             test_final_g3_acceptance_gate_v20.py \
             test_gauged_u1x_g3_sos_candidate_v20.py \
@@ -216,6 +222,7 @@ jobs:
           python exact_gauged_u1x_g3_su5_fixed_f_offkernel_bound_v20.py --write
           python exact_gauged_u1x_g3_su5_max_negative_zero_residual_bound_v20.py --write
           python exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py --write
+          python exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py --write
           python exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py --write
           python final_g3_acceptance_gate_v20.py --write
           python gauged_u1x_g3_sos_candidate_v20.py --recompute-heavy --write
@@ -245,6 +252,7 @@ jobs:
             test_exact_gauged_u1x_g3_su5_fixed_f_offkernel_bound_v20.py \
             test_exact_gauged_u1x_g3_su5_max_negative_zero_residual_bound_v20.py \
             test_exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py \
+            test_exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py \
             test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py \
             test_final_g3_acceptance_gate_v20.py \
             test_gauged_u1x_g3_sos_candidate_v20.py \
@@ -312,6 +320,9 @@ jobs:
           )
           max_negative_full = json.loads(
               Path("EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_FULL_RESIDUAL_BOUND_V20.json").read_text()
+          )
+          rank1_su3 = json.loads(
+              Path("EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_V20.json").read_text()
           )
           alternative_sos = json.loads(
               Path("EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json").read_text()
@@ -488,6 +499,25 @@ jobs:
           assert max_negative_full["scope"]["arbitrary_Sigma_orientation_proved"] is False
           assert max_negative_full["scope"]["G3_closed"] is False
 
+          assert rank1_su3["n_failed"] == 0 and rank1_su3["failed_checks"] == []
+          assert rank1_su3["status"] == "EXACT_RANK1_SU3_DANGEROUS_SLICE_BOUND_CERTIFIED"
+          assert rank1_su3["overall_state"] == "CLOSED_RANK1_SU3_SLICE__ARBITRARY_RANK1_PHI_OPEN"
+          assert rank1_su3["model_contract_id"] == "gauged_u1x_phi17_v20"
+          assert rank1_su3["scope"]["H_fixed_to_h_minus"] is True
+          assert rank1_su3["scope"]["Phi_restricted_to_four_real_SU3_fixed_variables"] is True
+          assert rank1_su3["scope"]["Phi_slice_real_dimension"] == 4
+          assert rank1_su3["scope"]["full_SU3_fixed_space_real_dimension"] == 16
+          assert rank1_su3["scope"]["full_SU3_fixed_space_proved"] is False
+          assert rank1_su3["scope"]["arbitrary_real_Phi"] is False
+          assert rank1_su3["scope"]["arbitrary_max_negative_Sigma"] is False
+          assert rank1_su3["scope"]["G3_closed"] is False
+          assert rank1_su3["scope"]["whole_model_excluded"] is False
+          assert rank1_su3["checks"]["arbitrary_rank1_Phi_proved"] is False
+          assert rank1_su3["checks"]["arbitrary_Sigma35_proved"] is False
+          assert rank1_su3["checks"]["G3_closed"] is False
+          assert rank1_su3["SOS"]["strict_anchor_lower_bound"] == "3/200"
+          assert rank1_su3["radial_patch"]["restricted_global_minimum"] == "1/5000"
+
           assert alternative_sos["n_failed"] == 0, alternative_sos["failures"]
           assert alternative_sos["overall_state"] == "G3_GLOBAL_ALTERNATIVE_OPEN"
           assert alternative_sos["flags"]["all_vanishing_45_current_Gram_completion_excluded"] is True
@@ -648,6 +678,8 @@ jobs:
             EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_ZERO_RESIDUAL_BOUND_V20.md
             EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_FULL_RESIDUAL_BOUND_V20.json
             EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_FULL_RESIDUAL_BOUND_V20.md
+            EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_V20.json
+            EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_V20.md
             EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json
             EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.md
             FINAL_G3_ACCEPTANCE_GATE_V20.json

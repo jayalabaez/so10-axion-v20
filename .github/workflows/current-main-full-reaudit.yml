@@ -76,6 +76,7 @@ jobs:
           python exact_gauged_u1x_g3_su5_fixed_f_offkernel_bound_v20.py --write
           python exact_gauged_u1x_g3_su5_max_negative_zero_residual_bound_v20.py --write
           python exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py --write
+          python exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py --write
           python exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py --write
           python gauged_u1x_g3_sos_candidate_v20.py --recompute-heavy --write
           python gauged_u1x_g3_stability_v20.py --write
@@ -129,6 +130,7 @@ jobs:
             test_exact_gauged_u1x_g3_su5_fixed_f_offkernel_bound_v20.py \
             test_exact_gauged_u1x_g3_su5_max_negative_zero_residual_bound_v20.py \
             test_exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py \
+            test_exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py \
             test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py \
             test_final_g3_acceptance_gate_v20.py \
             test_gauged_u1x_g3_sos_candidate_v20.py \
@@ -173,6 +175,7 @@ jobs:
           su5ff=json.load(open('EXACT_GAUGED_U1X_G3_SU5_FIXED_F_OFFKERNEL_BOUND_V20.json'))
           max_negative=json.load(open('EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_ZERO_RESIDUAL_BOUND_V20.json'))
           max_negative_full=json.load(open('EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_FULL_RESIDUAL_BOUND_V20.json'))
+          rank1_su3=json.load(open('EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_V20.json'))
           altsos=json.load(open('EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json'))
           fg=json.load(open('FINAL_G3_ACCEPTANCE_GATE_V20.json'))
           sc=json.load(open('GAUGED_U1X_G3_SOS_CANDIDATE_V20.json'))
@@ -321,6 +324,24 @@ jobs:
           assert max_negative_full['scope']['restricted_gap_global_minimum']=='1/5000', max_negative_full
           assert max_negative_full['scope']['arbitrary_Sigma_orientation_proved'] is False, max_negative_full
           assert max_negative_full['scope']['G3_closed'] is False, max_negative_full
+          assert rank1_su3['n_failed']==0 and rank1_su3['failed_checks']==[], rank1_su3
+          assert rank1_su3['status']=='EXACT_RANK1_SU3_DANGEROUS_SLICE_BOUND_CERTIFIED', rank1_su3
+          assert rank1_su3['overall_state']=='CLOSED_RANK1_SU3_SLICE__ARBITRARY_RANK1_PHI_OPEN', rank1_su3
+          assert rank1_su3['model_contract_id']=='gauged_u1x_phi17_v20', rank1_su3
+          assert rank1_su3['scope']['H_fixed_to_h_minus'] is True, rank1_su3
+          assert rank1_su3['scope']['Phi_restricted_to_four_real_SU3_fixed_variables'] is True, rank1_su3
+          assert rank1_su3['scope']['Phi_slice_real_dimension']==4, rank1_su3
+          assert rank1_su3['scope']['full_SU3_fixed_space_real_dimension']==16, rank1_su3
+          assert rank1_su3['scope']['full_SU3_fixed_space_proved'] is False, rank1_su3
+          assert rank1_su3['scope']['arbitrary_real_Phi'] is False, rank1_su3
+          assert rank1_su3['scope']['arbitrary_max_negative_Sigma'] is False, rank1_su3
+          assert rank1_su3['scope']['G3_closed'] is False, rank1_su3
+          assert rank1_su3['scope']['whole_model_excluded'] is False, rank1_su3
+          assert rank1_su3['checks']['arbitrary_rank1_Phi_proved'] is False, rank1_su3
+          assert rank1_su3['checks']['arbitrary_Sigma35_proved'] is False, rank1_su3
+          assert rank1_su3['checks']['G3_closed'] is False, rank1_su3
+          assert rank1_su3['SOS']['strict_anchor_lower_bound']=='3/200', rank1_su3
+          assert rank1_su3['radial_patch']['restricted_global_minimum']=='1/5000', rank1_su3
           assert altsos['n_failed']==0 and altsos['overall_state']=='G3_GLOBAL_ALTERNATIVE_OPEN', altsos
           assert altsos['flags']['all_vanishing_45_current_Gram_completion_excluded'], altsos
           assert altsos['flags']['all_vanishing_affine_SOS_completion_excluded'], altsos
@@ -450,6 +471,8 @@ jobs:
             EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_ZERO_RESIDUAL_BOUND_V20.md
             EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_FULL_RESIDUAL_BOUND_V20.json
             EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_FULL_RESIDUAL_BOUND_V20.md
+            EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_V20.json
+            EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_V20.md
             EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json
             EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.md
             FINAL_G3_ACCEPTANCE_GATE_V20.json
@@ -515,6 +538,7 @@ jobs:
           python repository_blocker_inventory_v20.py
       - run: python exact_gauged_u1x_g3_su5_max_negative_zero_residual_bound_v20.py --write
       - run: python exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py --write
+      - run: python exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py --write
       - run: python replicate.py
       - run: python validate_release_v20.py
       - run: python falsify_v20.py
@@ -549,6 +573,7 @@ jobs:
           gc=json.load(open('EXACT_GAUGED_U1X_G3_GLOBAL_COUNTEREXAMPLE_V20.json'))
           max_negative=json.load(open('EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_ZERO_RESIDUAL_BOUND_V20.json'))
           max_negative_full=json.load(open('EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_FULL_RESIDUAL_BOUND_V20.json'))
+          rank1_su3=json.load(open('EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_V20.json'))
           sc=json.load(open('GAUGED_U1X_G3_SOS_CANDIDATE_V20.json'))
           g3=json.load(open('GAUGED_U1X_G3_STABILITY_V20.json'))
           ck=json.load(open('GAUGED_U1X_G3_CORRECTED_COMMON_KERNEL_V20.json'))
@@ -635,6 +660,24 @@ jobs:
           assert max_negative_full['scope']['restricted_gap_global_minimum']=='1/5000', max_negative_full
           assert max_negative_full['scope']['arbitrary_Sigma_orientation_proved'] is False, max_negative_full
           assert max_negative_full['scope']['G3_closed'] is False, max_negative_full
+          assert rank1_su3['n_failed']==0 and rank1_su3['failed_checks']==[], rank1_su3
+          assert rank1_su3['status']=='EXACT_RANK1_SU3_DANGEROUS_SLICE_BOUND_CERTIFIED', rank1_su3
+          assert rank1_su3['overall_state']=='CLOSED_RANK1_SU3_SLICE__ARBITRARY_RANK1_PHI_OPEN', rank1_su3
+          assert rank1_su3['model_contract_id']=='gauged_u1x_phi17_v20', rank1_su3
+          assert rank1_su3['scope']['H_fixed_to_h_minus'] is True, rank1_su3
+          assert rank1_su3['scope']['Phi_restricted_to_four_real_SU3_fixed_variables'] is True, rank1_su3
+          assert rank1_su3['scope']['Phi_slice_real_dimension']==4, rank1_su3
+          assert rank1_su3['scope']['full_SU3_fixed_space_real_dimension']==16, rank1_su3
+          assert rank1_su3['scope']['full_SU3_fixed_space_proved'] is False, rank1_su3
+          assert rank1_su3['scope']['arbitrary_real_Phi'] is False, rank1_su3
+          assert rank1_su3['scope']['arbitrary_max_negative_Sigma'] is False, rank1_su3
+          assert rank1_su3['scope']['G3_closed'] is False, rank1_su3
+          assert rank1_su3['scope']['whole_model_excluded'] is False, rank1_su3
+          assert rank1_su3['checks']['arbitrary_rank1_Phi_proved'] is False, rank1_su3
+          assert rank1_su3['checks']['arbitrary_Sigma35_proved'] is False, rank1_su3
+          assert rank1_su3['checks']['G3_closed'] is False, rank1_su3
+          assert rank1_su3['SOS']['strict_anchor_lower_bound']=='3/200', rank1_su3
+          assert rank1_su3['radial_patch']['restricted_global_minimum']=='1/5000', rank1_su3
           assert sc['n_failed']==0 and sc['coefficient_vector']['nonzero_count']==27, sc
           assert sc['coefficient_vector']['maximum_absolute_coefficient']==73/8, sc
           assert sc['coefficient_vector']['symbolic_nonzero']['lambda::O48_B01_Phi_self_quartics']=='-21/200', sc
@@ -740,6 +783,8 @@ jobs:
             EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_ZERO_RESIDUAL_BOUND_V20.md
             EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_FULL_RESIDUAL_BOUND_V20.json
             EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_FULL_RESIDUAL_BOUND_V20.md
+            EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_V20.json
+            EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_V20.md
             GAUGED_U1X_G3_SOS_CANDIDATE_V20.json
             GAUGED_U1X_G3_SOS_CANDIDATE_V20.md
             GAUGED_U1X_G3_STABILITY_V20.json

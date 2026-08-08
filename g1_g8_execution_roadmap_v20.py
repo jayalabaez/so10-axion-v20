@@ -61,12 +61,16 @@ TASKS: list[dict[str, Any]] = [
         "id": "W3-G3-FULL-STATIONARITY",
         "wave": 3,
         "gates": ["G3"],
-        "status": "SU5_DELTA_CHIRAL_H_EXACT_LOCAL_MINIMUM__PURE_DELTA_FULL_RESIDUAL_GAP_CLOSED__ARBITRARY_SIGMA_COERCIVITY_OPEN__BLOCKED_ON_G2_PROMOTION",
+        "status": "SU5_DELTA_CHIRAL_H_EXACT_LOCAL_MINIMUM__PURE_DELTA_FULL_RESIDUAL_GAP_CLOSED__RANK1_SU3_FOUR_DIMENSIONAL_SLICE_CLOSED__ARBITRARY_SIGMA_COERCIVITY_OPEN__BLOCKED_ON_G2_PROMOTION",
         "issue": 178,
         "deliverable": (
             "prove a uniform coercive global gap for arbitrary non-pure-Delta "
             "Sigma orientations of the SU(5)+Delta chiral-H candidate; its exact "
-            "448/38 Hessian and complete pure-Delta maximal-negative sector are complete"
+            "448/38 Hessian and complete pure-Delta maximal-negative sector are "
+            "complete, while fixed H=h_- and one explicit rank-one Sigma "
+            "endpoint are certified only "
+            "on a four-real-dimensional Phi sub-slice of the 16-dimensional "
+            "SU(3)-fixed space"
         ),
         "acceptance": (
             "the full 486-field candidate is globally minimal with all equality "
@@ -333,6 +337,19 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
             ]
             == "1/5000"
             and g3_frontier[
+                "SU5_max_negative_rank1_SU3_four_dimensional_slice_closed"
+            ]
+            is True
+            and g3_frontier["SU5_max_negative_rank1_SU3_slice_dimension"] == 4
+            and g3_frontier["SU5_max_negative_rank1_SU3_ambient_dimension"] == 16
+            and g3_frontier["SU5_max_negative_rank1_SU3_slice_minimum"]
+            == "1/5000"
+            and g3_frontier["SU5_max_negative_arbitrary_rank1_Phi_open"] is True
+            and g3_frontier[
+                "SU5_max_negative_arbitrary_Sigma_orientation_open"
+            ]
+            is True
+            and g3_frontier[
                 "SU5_arbitrary_Phi_nonzero_residual_cancellations_open"
             ]
             is False
@@ -408,7 +425,9 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
         "rank/nullity 429/33. Its chiral-H full Hessian is exactly PSD with "
         "rank/nullity 448/38 and kernel precisely the symmetry orbit. The complete "
         "maximally-negative pure-Delta sector is excluded for arbitrary real Phi "
-        "and all nonzero residuals with sharp gap 1/5000. Uniform coercivity for "
+        "and all nonzero residuals with sharp gap 1/5000. One explicit rank-one "
+        "endpoint also has an exact 1/5000 gap on only a four-real-dimensional "
+        "Phi sub-slice of the 16-dimensional SU(3)-fixed space. Uniform coercivity for "
         "arbitrary non-pure-Delta Sigma orientations remains open. G5 is "
         "CLOSED. G4 and "
         "G6-G8 remain dependency-blocked; the "
@@ -434,7 +453,9 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
         "BFB and symmetry-correct. Its source-bound 486-real Hessian is exactly "
         "PSD with rank/nullity 448/38 and kernel exactly the 38 symmetry tangents. "
         "The complete maximally-negative pure-Delta sector is excluded for arbitrary "
-        "real Phi and all nonzero residuals with sharp gap 1/5000. Uniform coercivity "
+        "real Phi and all nonzero residuals with sharp gap 1/5000. One explicit "
+        "fixed-H rank-one Sigma endpoint also has an exact 1/5000 gap on only a four-real-dimensional "
+        "Phi sub-slice of the 16-dimensional SU(3)-fixed space. Uniform coercivity "
         "for arbitrary non-pure-Delta Sigma orientations is the precise G3 blocker. The historical "
         "64/91 calculation "
         "and 449-dimensional saddle/search remain scoped to option C."

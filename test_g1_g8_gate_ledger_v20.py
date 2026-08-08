@@ -51,6 +51,31 @@ class G1G8GateLedgerTests(unittest.TestCase):
             self.report["scientific_blockers"],
         )
 
+    def test_rank1_slice_rejects_wrong_fixed_H_orientation(self):
+        forged = copy.deepcopy(
+            mod._load_json_artifact(mod.G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_JSON)
+        )
+        forged["scope"]["H_fixed_to_h_minus"] = False
+        report = mod._build_report_from_inputs(
+            x_report=mod.exact_x.build_report(),
+            g1_report=mod.gauged_g1.build_report(),
+            g2_report=mod._load_or_build_gauged_g2_report(),
+            filter_report=mod.gauged_filter.build_report(),
+            g3_su5_max_negative_rank1_su3_slice_report=forged,
+        )
+        frontier = report["gauged_u1x_g3_constructive_frontier"]
+        self.assertFalse(
+            frontier[
+                "SU5_max_negative_rank1_SU3_four_dimensional_slice_closed"
+            ]
+        )
+        self.assertFalse(frontier["integrity_pass"])
+        self.assertFalse(
+            report["checks"][
+                "gauged_G3_rank1_SU3_four_dimensional_slice_is_exact_and_fail_closed"
+            ]
+        )
+
     def test_fresh_contract_reports_are_integrated(self):
         reports = self.report["model_contract_reports"]
         x_report = reports["exact_X"]
@@ -83,6 +108,9 @@ class G1G8GateLedgerTests(unittest.TestCase):
         ]
         max_negative_full_bound = reports[
             "gauged_G3_SU5_max_negative_full_residual_pure_Delta_bound"
+        ]
+        rank1_su3_bound = reports[
+            "gauged_G3_SU5_max_negative_rank1_SU3_four_dimensional_slice_bound"
         ]
         alternative_sos = reports["gauged_G3_alternative_global_SOS_audit"]
         self.assertEqual(x_report["n_failed"], 0)
@@ -128,6 +156,23 @@ class G1G8GateLedgerTests(unittest.TestCase):
             max_negative_full_bound["scope"]["restricted_gap_global_minimum"],
             "1/5000",
         )
+        self.assertEqual(rank1_su3_bound["n_failed"], 0)
+        self.assertEqual(
+            rank1_su3_bound["model_contract_id"], mod.AUTHORITATIVE_CONTRACT_ID
+        )
+        self.assertTrue(rank1_su3_bound["scope"]["H_fixed_to_h_minus"])
+        self.assertEqual(rank1_su3_bound["scope"]["Phi_slice_real_dimension"], 4)
+        self.assertEqual(
+            rank1_su3_bound["scope"]["full_SU3_fixed_space_real_dimension"],
+            16,
+        )
+        self.assertEqual(
+            rank1_su3_bound["radial_patch"]["restricted_global_minimum"],
+            "1/5000",
+        )
+        self.assertFalse(rank1_su3_bound["checks"]["arbitrary_rank1_Phi_proved"])
+        self.assertFalse(rank1_su3_bound["checks"]["arbitrary_Sigma35_proved"])
+        self.assertFalse(rank1_su3_bound["checks"]["G3_closed"])
         self.assertEqual(alternative_sos["n_failed"], 0)
 
     def test_constructive_g3_frontier_is_present_but_fail_closed(self):
@@ -220,6 +265,24 @@ class G1G8GateLedgerTests(unittest.TestCase):
             frontier["SU5_max_negative_pure_Delta_full_residual_minimum"],
             "1/5000",
         )
+        self.assertTrue(
+            frontier[
+                "SU5_max_negative_rank1_SU3_four_dimensional_slice_closed"
+            ]
+        )
+        self.assertEqual(
+            frontier["SU5_max_negative_rank1_SU3_slice_dimension"], 4
+        )
+        self.assertEqual(
+            frontier["SU5_max_negative_rank1_SU3_ambient_dimension"], 16
+        )
+        self.assertEqual(
+            frontier["SU5_max_negative_rank1_SU3_slice_minimum"], "1/5000"
+        )
+        self.assertTrue(frontier["SU5_max_negative_arbitrary_rank1_Phi_open"])
+        self.assertTrue(
+            frontier["SU5_max_negative_arbitrary_Sigma_orientation_open"]
+        )
         self.assertFalse(
             frontier["SU5_arbitrary_Phi_nonzero_residual_cancellations_open"]
         )
@@ -255,6 +318,11 @@ class G1G8GateLedgerTests(unittest.TestCase):
         self.assertFalse(frontier["G3_closed"])
         self.assertFalse(frontier["whole_model_validated"])
         self.assertFalse(frontier["whole_model_excluded"])
+        self.assertTrue(
+            self.report["checks"][
+                "gauged_G3_rank1_SU3_four_dimensional_slice_is_exact_and_fail_closed"
+            ]
+        )
         self.assertEqual(self.report["gates"]["G3"]["status"], mod.STATUS_BLOCKED)
         self.assertEqual(
             self.report["gates"]["G3"]["constructive_frontier_evidence"],
@@ -445,6 +513,32 @@ class G1G8GateLedgerTests(unittest.TestCase):
         )
         self.assertIn(
             "gauged_G3_direct_exact_PD_rank_is_honestly_scoped",
+            report["audit_failures"],
+        )
+
+    def test_rank1_slice_cannot_overclaim_arbitrary_sigma_or_g3(self):
+        inputs = self.report["model_contract_reports"]
+        forged = copy.deepcopy(
+            inputs[
+                "gauged_G3_SU5_max_negative_rank1_SU3_four_dimensional_slice_bound"
+            ]
+        )
+        forged["checks"]["arbitrary_Sigma35_proved"] = True
+        report = mod._build_report_from_inputs(
+            x_report=inputs["exact_X"],
+            g1_report=inputs["gauged_G1_character_census"],
+            g2_report=inputs["gauged_G2_derivative_audit"],
+            filter_report=inputs["gauged_scalar_filter"],
+            g3_su5_max_negative_rank1_su3_slice_report=forged,
+        )
+        self.assertEqual(report["overall_state"], "EXECUTION_FAIL")
+        self.assertFalse(
+            report["gauged_u1x_g3_constructive_frontier"][
+                "SU5_max_negative_rank1_SU3_four_dimensional_slice_closed"
+            ]
+        )
+        self.assertIn(
+            "gauged_G3_rank1_SU3_four_dimensional_slice_is_exact_and_fail_closed",
             report["audit_failures"],
         )
 

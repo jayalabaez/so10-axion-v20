@@ -14,6 +14,7 @@ import unittest
 
 
 ROOT = Path(__file__).resolve().parent
+MODEL_CONTRACT_ID = "gauged_u1x_phi17_v20"
 V17_ENGINE = ROOT / "so10_axion_v17_engine.py"
 V19_ENGINE = ROOT / "so10_axion_v19_engine.py"
 V20_ENGINE = ROOT / "so10_axion_v20_engine.py"
@@ -31,6 +32,8 @@ FINAL_THEOREM_CORE_PATHS: tuple[str, ...] = (
     ".gitattributes",
     "AUTHORITATIVE_FULL_MODEL_GATE_V20.md",
     "EXACT_X_SYMMETRY_CONSISTENCY_GATE_V20.md",
+    "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_V20.json",
+    "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_V20.md",
     "G1_EXACT_DECLARED_SYMMETRY_CHARACTER_CENSUS_V20.json",
     "G1_EXACT_DECLARED_SYMMETRY_CHARACTER_CENSUS_V20.md",
     "G1_G8_EXECUTION_ROADMAP_V20.md",
@@ -44,10 +47,12 @@ FINAL_THEOREM_CORE_PATHS: tuple[str, ...] = (
     "VALIDATION_EXECUTION_V20.md",
     "VALIDATION_EXECUTION_V20_VERDICT.json",
     "g1_exact_declared_symmetry_character_census_v20.py",
+    "exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py",
     "prepare_validation_artifacts_v20.py",
     "replicate.py",
     "test_authoritative_full_model_gate_v20.py",
     "test_exact_x_symmetry_consistency_gate_v20.py",
+    "test_exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py",
     "test_g1_exact_declared_symmetry_character_census_v20.py",
     "test_g1_g8_execution_roadmap_v20.py",
     "test_g1_g8_gate_ledger_v20.py",
@@ -296,6 +301,13 @@ def main() -> int:
     run(
         [
             sys.executable,
+            "exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py",
+            "--write",
+        ]
+    )
+    run(
+        [
+            sys.executable,
             "exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py",
             "--write",
         ]
@@ -430,6 +442,12 @@ def main() -> int:
             / "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_FULL_RESIDUAL_BOUND_V20.json"
         ).read_text()
     )
+    exact_max_negative_rank1_su3_slice = json.loads(
+        (
+            ROOT
+            / "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_V20.json"
+        ).read_text()
+    )
     exact_alternative_sos = json.loads(
         (
             ROOT / "EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json"
@@ -560,7 +578,7 @@ def main() -> int:
         "gauged U(1)_X G2 rank-evidence scope changed",
     )
     require(
-        exact_quotient["model_contract_id"] == "gauged_u1x_phi17_v20"
+        exact_quotient["model_contract_id"] == MODEL_CONTRACT_ID
         and exact_quotient["certified"] is True
         and exact_quotient["exact_certificate"]["certified"] is True
         and exact_quotient["live_compiler_binding"]["compiler_binding_passes"]
@@ -590,7 +608,7 @@ def main() -> int:
         and exact_sos["status"]
         == "EXACT_COMPLETE_POTENTIAL_BFB_AND_SELECTED_STATIONARITY_CERTIFIED"
         and exact_sos["overall_state"] == "CLOSED_SUBPROBLEM"
-        and exact_sos["model_contract_id"] == "gauged_u1x_phi17_v20"
+        and exact_sos["model_contract_id"] == MODEL_CONTRACT_ID
         and exact_sos["coefficient_binding"]["nonzero_parameter_count"] == 27
         and exact_sos["boundedness"]["source_binding_exact"] is True
         and exact_sos["stationarity"]["source_binding_exact"] is True
@@ -767,7 +785,7 @@ def main() -> int:
         and exact_hessian_flags["proof_grade"] is False
     )
     require(
-        exact_su5_hsx_hessian["model_contract_id"] == "gauged_u1x_phi17_v20"
+        exact_su5_hsx_hessian["model_contract_id"] == MODEL_CONTRACT_ID
         and exact_su5_hsx_hessian.get("n_failed", 0) == 0
         and exact_su5_hsx_hessian["G3_closed"] is False
         and (exact_hessian_closed or exact_hessian_open),
@@ -916,7 +934,7 @@ def main() -> int:
         and exact_max_negative_bound["overall_state"]
         == "CLOSED_PURE_DELTA_MAX_NEGATIVE_MIXED_ZERO_STRATUM__ARBITRARY_PHI_OPEN"
         and exact_max_negative_bound["model_contract_id"]
-        == "gauged_u1x_phi17_v20"
+        == MODEL_CONTRACT_ID
         and max_negative_checks["exact_rank_168_nullity_42"] is True
         and max_negative_checks["kernel_splits_35_plus_7_exactly"] is True
         and max_negative_checks["live_HSX_and_PD_coefficients_bound_exactly"]
@@ -967,7 +985,7 @@ def main() -> int:
         and exact_max_negative_full_bound["overall_state"]
         == "CLOSED_MAX_NEGATIVE_PURE_DELTA_ARBITRARY_PHI_SUBPROBLEM"
         and exact_max_negative_full_bound["model_contract_id"]
-        == "gauged_u1x_phi17_v20"
+        == MODEL_CONTRACT_ID
         and max_negative_full_scope["Sigma_on_pure_Delta_orbit"] is True
         and max_negative_full_scope["Phi_arbitrary_real_210"] is True
         and max_negative_full_scope["nonzero_Phi_Sigma_residuals_covered"]
@@ -981,6 +999,60 @@ def main() -> int:
         and max_negative_full_scope["G3_closed"] is False
         and all(max_negative_full_checks.values()),
         "max-negative full-residual pure-Delta certificate failed or over-promoted G3",
+    )
+    rank1_scope = exact_max_negative_rank1_su3_slice["scope"]
+    rank1_checks = exact_max_negative_rank1_su3_slice["checks"]
+    rank1_required_checks = (
+        "rank1_live_residual_source_exact",
+        "explicit_endpoint_current_and_self_projectors_exactly",
+        "slice_basis_Gram_exact",
+        "rank1_common_affine_kernel_rank160_nullity50_exact",
+        "angular_projector_Gram_symmetric_exact",
+        "angular_projector_int64_overflow_preflight_exact",
+        "anchor_polynomial_reconstructed_exactly",
+        "rational_SOS_polynomial_identity_exact",
+        "rational_SOS_Gram_positive_definite_exact",
+        "anchor_at_least_3_over_200_exact",
+        "radial_patch_global_minimum_1_over_5000_exact",
+        "attaining_slice_witness_evaluated_from_live_arrays_exact",
+    )
+    require(
+        exact_max_negative_rank1_su3_slice["n_failed"] == 0
+        and exact_max_negative_rank1_su3_slice["failed_checks"] == []
+        and exact_max_negative_rank1_su3_slice["status"]
+        == "EXACT_RANK1_SU3_DANGEROUS_SLICE_BOUND_CERTIFIED"
+        and exact_max_negative_rank1_su3_slice["overall_state"]
+        == "CLOSED_RANK1_SU3_SLICE__ARBITRARY_RANK1_PHI_OPEN"
+        and exact_max_negative_rank1_su3_slice["model_contract_id"]
+        == MODEL_CONTRACT_ID
+        and rank1_scope["H_fixed_to_h_minus"] is True
+        and rank1_scope[
+            "Sigma_fixed_to_normalized_explicit_decomposable_pure_spinor"
+        ]
+        is True
+        and rank1_scope["Phi_restricted_to_four_real_SU3_fixed_variables"]
+        is True
+        and rank1_scope["Phi_slice_real_dimension"] == 4
+        and rank1_scope["full_SU3_fixed_space_real_dimension"] == 16
+        and rank1_scope["full_SU3_fixed_space_proved"] is False
+        and rank1_scope["u_v_arbitrary_nonnegative"] is True
+        and rank1_scope["arbitrary_real_Phi"] is False
+        and rank1_scope["arbitrary_max_negative_Sigma"] is False
+        and rank1_scope["G3_closed"] is False
+        and rank1_scope["whole_model_excluded"] is False
+        and all(rank1_checks[name] is True for name in rank1_required_checks)
+        and rank1_checks["arbitrary_rank1_Phi_proved"] is False
+        and rank1_checks["arbitrary_Sigma35_proved"] is False
+        and rank1_checks["G3_closed"] is False
+        and exact_max_negative_rank1_su3_slice["SOS"][
+            "strict_anchor_lower_bound"
+        ]
+        == "3/200"
+        and exact_max_negative_rank1_su3_slice["radial_patch"][
+            "restricted_global_minimum"
+        ]
+        == "1/5000",
+        "rank-one SU(3) four-dimensional slice certificate failed or overclaimed G3",
     )
     alternative_flags = exact_alternative_sos["flags"]
     require(
@@ -1217,6 +1289,7 @@ def main() -> int:
             "test_exact_gauged_u1x_g3_su5_fixed_f_offkernel_bound_v20.py",
             "test_exact_gauged_u1x_g3_su5_max_negative_zero_residual_bound_v20.py",
             "test_exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py",
+            "test_exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py",
             "test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py",
             "test_final_g3_acceptance_gate_v20.py",
             "test_gauged_u1x_g3_sos_candidate_v20.py",
@@ -1443,7 +1516,7 @@ def main() -> int:
     write_checksums(core)
     print(
         f"RELEASE GATE PASS: v17 65/65; v19 59/59; v20 42/42; "
-        f"tests {n_tests}/{n_tests}; clean 13-page PDF; scientific state BLOCKED"
+        f"tests {n_tests}/{n_tests}; clean 14-page PDF; scientific state BLOCKED"
     )
     return 0
 

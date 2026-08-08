@@ -103,6 +103,13 @@ the model.
   piecewise radial bounds prove the sharp restricted gap `1/5000`, saturated at
   `u=1,v=0`. Thus this entire pure-`Delta_R` sector is closed; extension to
   arbitrary non-pure-`Delta_R` Sigma orientations remains open
+- At fixed `H=h_-` and one explicit normalized decomposable rank-one Sigma
+  endpoint, a separate exact source-bound Gram/LDL certificate proves the same
+  `1/5000` gap for all nonnegative radial variables on a four-real-dimensional
+  `Phi` sub-slice of the 16-dimensional `SU(3)`-fixed space. Its strict angular
+  anchor is `3/200`.
+  This does not cover arbitrary `Phi` at that rank-one Sigma endpoint, the
+  ambient 16-dimensional fixed space, arbitrary Sigma orientations, or G3
 - The former 64-direction / 91-parameter G1-G2 calculation is retained as a
   reproducible historical no-`X` subtheorem, not as validation of the manuscript
 
@@ -178,7 +185,12 @@ branch has an exact Phi/Sigma global SOS certificate and a chiral-H full-field
   negative-current pure-`Delta_R` sector is excluded for arbitrary real `Phi`,
   including all nonzero shifted Phi-Sigma and chiral Phi-H residuals. The exact
   4125-projector source bound, rational Schur certificate, and radial quadrant
-  completion give the sharp restricted minimum `1/5000`. `G3_closed` remains
+  completion give the sharp restricted minimum `1/5000`. At fixed `H=h_-`
+  and one explicit decomposable rank-one Sigma endpoint, an independent exact
+  Gram/LDL certificate proves the same minimum only on a four-real-dimensional
+  `Phi` sub-slice of the 16-dimensional `SU(3)`-fixed space; it does not
+  establish a bound for arbitrary `Phi` at that endpoint or on the ambient space.
+  `G3_closed` remains
   false only because the same uniform coercive control has not yet been proved
   for arbitrary non-pure-`Delta_R` Sigma orientations. Run
   `python final_g3_acceptance_gate_v20.py --write` for the
@@ -295,6 +307,10 @@ $g_{a\gamma\gamma}\sim2.3\times10^{-14}\,{\rm GeV}^{-1}$ by MADMAX / ALPHA / ORG
 > `SU(3)`-fixed slice contains no extra branch, and the full fixed-`F` gap is
 > exact. The full-residual, maximally negative-current pure-`Delta_R` sector is
 > also excluded for arbitrary real `Phi`, with sharp restricted gap `1/5000`.
+> At fixed `H=h_-`, one explicit rank-one Sigma endpoint separately has the
+> same exact gap on only a four-real-dimensional `Phi` sub-slice of the
+> 16-dimensional `SU(3)`-fixed space; arbitrary `Phi` at that rank-one Sigma
+> endpoint and arbitrary Sigma orientations remain open.
 > G3 remains open because a uniform coercive bound for arbitrary non-pure-
 > `Delta_R` Sigma orientations has not yet been proved. The complete theory is
 > neither validated nor discarded.
