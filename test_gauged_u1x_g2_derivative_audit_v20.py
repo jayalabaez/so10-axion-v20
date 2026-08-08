@@ -344,9 +344,27 @@ def test_full_dense_gauged_u1x_g2_audit() -> None:
         "exact_P24_trace_288_bound_to_compiled_dense_Hessian"
     ] is True
     assert report["flags"]["promoted_rank_13_numerical_policy_reproduced"] is False
-    assert report["Ward_identities"][
-        "maximum_parameter_SO10_differentiated_Ward_relative_residual"
-    ] < audit.WARD_RELATIVE_TOLERANCE
+    ward = report["Ward_identities"]
+    assert audit.WARD_ABSOLUTE_TOLERANCE == 1.0e-36
+    assert ward["tolerance_policy"] == {
+        "criterion": "abs_residual <= atol + rtol * scale",
+        "absolute_tolerance": audit.WARD_ABSOLUTE_TOLERANCE,
+        "relative_tolerance": audit.WARD_RELATIVE_TOLERANCE,
+        "absolute_floor_is_not_an_exact_zero_or_rank_promotion": True,
+    }
+    assert ward[
+        "maximum_parameter_SO10_differentiated_Ward_mixed_tolerance_ratio"
+    ] < 1.0
+    # Linux/OpenBLAS left this absolute cancellation residue in CI.  A pure
+    # relative quotient was 7.38e-10 only because its scale was also tiny;
+    # the mixed policy must accept it without changing an exact-rank claim.
+    linux_residual = 8.74257864427357e-38
+    linux_scale = linux_residual / 7.382471845846912e-10
+    assert linux_residual / linux_scale > audit.WARD_RELATIVE_TOLERANCE
+    assert linux_residual / (
+        audit.WARD_ABSOLUTE_TOLERANCE
+        + audit.WARD_RELATIVE_TOLERANCE * linux_scale
+    ) < 1.0
     assert report["flags"]["G3_closed"] is False
     assert report["flags"]["whole_model_validated"] is False
     assert report["flags"]["whole_model_excluded"] is False

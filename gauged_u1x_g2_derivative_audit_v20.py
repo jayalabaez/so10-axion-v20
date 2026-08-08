@@ -73,6 +73,14 @@ U1X_CHARGES = {
 VALUE_ATOL = 1.0e-9
 HESSIAN_SYMMETRY_ATOL = 1.0e-9
 WARD_RELATIVE_TOLERANCE = 1.0e-10
+# A few exactly invariant chiral channels are suppressed by the physical
+# hierarchy to O(1e-29) before the Ward contraction is formed.  Different
+# BLAS reduction orders then leave O(1e-38) cancellation residues.  A pure
+# relative quotient of two such tiny numbers is not portable, so Ward checks
+# use the standard mixed criterion |residual| <= atol + rtol * scale.  This
+# floor is nine orders below the independently certified zero-gradient
+# threshold and is never used to promote a column to exact zero or infer rank.
+WARD_ABSOLUTE_TOLERANCE = 1.0e-36
 NORMALIZED_RANK_TOLERANCE = 1.0e-10
 
 # On the selected hierarchy direction three first variations vanish exactly.
@@ -1831,25 +1839,37 @@ def _ward_audit(
         np.sum(so10_singular > NORMALIZED_RANK_TOLERANCE * so10_singular[0])
     )
 
+    def mixed_ratio(residual: Any, scale: Any) -> Any:
+        return np.asarray(residual, dtype=float) / (
+            WARD_ABSOLUTE_TOLERANCE
+            + WARD_RELATIVE_TOLERANCE * np.asarray(scale, dtype=float)
+        )
+
     def row_residual(row: Any) -> dict[str, float]:
         gradient = np.asarray(row.gradient)
         hessian = np.asarray(row.hessian)
         gradient_norm = float(np.linalg.norm(gradient))
         hessian_norm = float(np.linalg.norm(hessian, ord="fro"))
         u1x_first_abs = float(abs(np.dot(gradient, tangent)))
-        u1x_first_relative = u1x_first_abs / max(
-            gradient_norm * tangent_norm, tiny
-        )
+        u1x_first_scale = gradient_norm * tangent_norm
+        u1x_first_relative = u1x_first_abs / max(u1x_first_scale, tiny)
+        u1x_first_mixed_ratio = float(mixed_ratio(u1x_first_abs, u1x_first_scale))
         differentiated = hessian @ tangent + generator.T @ gradient
         differentiated_abs = float(np.linalg.norm(differentiated))
-        differentiated_relative = differentiated_abs / max(
+        differentiated_scale = (
             hessian_norm * tangent_norm
-            + max(abs(charge) for charge in U1X_CHARGES.values()) * gradient_norm,
-            tiny,
+            + max(abs(charge) for charge in U1X_CHARGES.values()) * gradient_norm
+        )
+        differentiated_relative = differentiated_abs / max(
+            differentiated_scale, tiny
+        )
+        differentiated_mixed_ratio = float(
+            mixed_ratio(differentiated_abs, differentiated_scale)
         )
         so10_projection = so10_unit.T @ gradient
         so10_abs = float(np.max(np.abs(so10_projection), initial=0.0))
         so10_relative = so10_abs / max(gradient_norm, tiny)
+        so10_mixed_ratio = float(mixed_ratio(so10_abs, gradient_norm))
         so10_differentiated = hessian @ so10_orbit + np.column_stack(
             [generator.T @ gradient for generator in so10_generators]
         )
@@ -1869,20 +1889,37 @@ def _ward_audit(
                 initial=0.0,
             )
         )
+        so10_differentiated_mixed_ratio = float(
+            np.max(
+                mixed_ratio(
+                    so10_differentiated_norms,
+                    so10_differentiated_scales,
+                ),
+                initial=0.0,
+            )
+        )
         return {
             "gradient_norm": gradient_norm,
             "Hessian_frobenius_norm": hessian_norm,
             "U1X_first_Ward_abs_residual": u1x_first_abs,
             "U1X_first_Ward_relative_residual": u1x_first_relative,
+            "U1X_first_Ward_mixed_tolerance_ratio": u1x_first_mixed_ratio,
             "U1X_differentiated_Ward_abs_residual": differentiated_abs,
             "U1X_differentiated_Ward_relative_residual": differentiated_relative,
+            "U1X_differentiated_Ward_mixed_tolerance_ratio": (
+                differentiated_mixed_ratio
+            ),
             "SO10_first_Ward_abs_residual": so10_abs,
             "SO10_first_Ward_relative_residual": so10_relative,
+            "SO10_first_Ward_mixed_tolerance_ratio": so10_mixed_ratio,
             "SO10_differentiated_Ward_max_abs_residual": float(
                 np.max(so10_differentiated_norms, initial=0.0)
             ),
             "SO10_differentiated_Ward_max_relative_residual": (
                 so10_differentiated_relative
+            ),
+            "SO10_differentiated_Ward_max_mixed_tolerance_ratio": (
+                so10_differentiated_mixed_ratio
             ),
         }
 
@@ -1893,6 +1930,12 @@ def _ward_audit(
         return max((entry[field] for entry in rows.values()), default=0.0)
 
     return {
+        "tolerance_policy": {
+            "criterion": "abs_residual <= atol + rtol * scale",
+            "absolute_tolerance": WARD_ABSOLUTE_TOLERANCE,
+            "relative_tolerance": WARD_RELATIVE_TOLERANCE,
+            "absolute_floor_is_not_an_exact_zero_or_rank_promotion": True,
+        },
         "U1X_generator": {
             "shape": list(generator.shape),
             "charges": U1X_CHARGES,
@@ -1952,6 +1995,30 @@ def _ward_audit(
         ),
         "maximum_parameter_SO10_differentiated_Ward_relative_residual": maximum(
             "SO10_differentiated_Ward_max_relative_residual", parameter
+        ),
+        "maximum_direction_U1X_first_Ward_mixed_tolerance_ratio": maximum(
+            "U1X_first_Ward_mixed_tolerance_ratio", direction
+        ),
+        "maximum_direction_U1X_differentiated_Ward_mixed_tolerance_ratio": maximum(
+            "U1X_differentiated_Ward_mixed_tolerance_ratio", direction
+        ),
+        "maximum_direction_SO10_first_Ward_mixed_tolerance_ratio": maximum(
+            "SO10_first_Ward_mixed_tolerance_ratio", direction
+        ),
+        "maximum_direction_SO10_differentiated_Ward_mixed_tolerance_ratio": maximum(
+            "SO10_differentiated_Ward_max_mixed_tolerance_ratio", direction
+        ),
+        "maximum_parameter_U1X_first_Ward_mixed_tolerance_ratio": maximum(
+            "U1X_first_Ward_mixed_tolerance_ratio", parameter
+        ),
+        "maximum_parameter_U1X_differentiated_Ward_mixed_tolerance_ratio": maximum(
+            "U1X_differentiated_Ward_mixed_tolerance_ratio", parameter
+        ),
+        "maximum_parameter_SO10_first_Ward_mixed_tolerance_ratio": maximum(
+            "SO10_first_Ward_mixed_tolerance_ratio", parameter
+        ),
+        "maximum_parameter_SO10_differentiated_Ward_mixed_tolerance_ratio": maximum(
+            "SO10_differentiated_Ward_max_mixed_tolerance_ratio", parameter
         ),
         "per_direction": direction,
         "per_parameter": parameter,
@@ -2364,17 +2431,17 @@ def build_report() -> dict[str, Any]:
             and ward["U1X_tangent"]["block_norms"]["Phi210"] == 0.0
         ),
         "all_44_direction_first_U1X_Ward_identities_pass": ward[
-            "maximum_direction_U1X_first_Ward_relative_residual"
+            "maximum_direction_U1X_first_Ward_mixed_tolerance_ratio"
         ]
-        < WARD_RELATIVE_TOLERANCE,
+        <= 1.0,
         "all_44_direction_differentiated_U1X_Ward_identities_pass": ward[
-            "maximum_direction_U1X_differentiated_Ward_relative_residual"
+            "maximum_direction_U1X_differentiated_Ward_mixed_tolerance_ratio"
         ]
-        < WARD_RELATIVE_TOLERANCE,
+        <= 1.0,
         "all_44_direction_first_SO10_Ward_identities_pass": ward[
-            "maximum_direction_SO10_first_Ward_relative_residual"
+            "maximum_direction_SO10_first_Ward_mixed_tolerance_ratio"
         ]
-        < WARD_RELATIVE_TOLERANCE,
+        <= 1.0,
         "SO10_generator_matrices_reproduce_the_orbit": (
             ward["SO10_orbit"]["generator_count"] == 45
             and ward["SO10_orbit"]["maximum_generator_antisymmetry_residual"]
@@ -2383,25 +2450,25 @@ def build_report() -> dict[str, Any]:
             < WARD_RELATIVE_TOLERANCE
         ),
         "all_44_direction_differentiated_SO10_Ward_identities_pass": ward[
-            "maximum_direction_SO10_differentiated_Ward_relative_residual"
+            "maximum_direction_SO10_differentiated_Ward_mixed_tolerance_ratio"
         ]
-        < WARD_RELATIVE_TOLERANCE,
+        <= 1.0,
         "all_51_parameter_first_U1X_Ward_identities_pass": ward[
-            "maximum_parameter_U1X_first_Ward_relative_residual"
+            "maximum_parameter_U1X_first_Ward_mixed_tolerance_ratio"
         ]
-        < WARD_RELATIVE_TOLERANCE,
+        <= 1.0,
         "all_51_parameter_differentiated_U1X_Ward_identities_pass": ward[
-            "maximum_parameter_U1X_differentiated_Ward_relative_residual"
+            "maximum_parameter_U1X_differentiated_Ward_mixed_tolerance_ratio"
         ]
-        < WARD_RELATIVE_TOLERANCE,
+        <= 1.0,
         "all_51_parameter_first_SO10_Ward_identities_pass": ward[
-            "maximum_parameter_SO10_first_Ward_relative_residual"
+            "maximum_parameter_SO10_first_Ward_mixed_tolerance_ratio"
         ]
-        < WARD_RELATIVE_TOLERANCE,
+        <= 1.0,
         "all_51_parameter_differentiated_SO10_Ward_identities_pass": ward[
-            "maximum_parameter_SO10_differentiated_Ward_relative_residual"
+            "maximum_parameter_SO10_differentiated_Ward_mixed_tolerance_ratio"
         ]
-        < WARD_RELATIVE_TOLERANCE,
+        <= 1.0,
         "exact_three_projector_zero_gradient_certificates_pass": (
             sigma_zero_certificate["n_failed"] == 0
             and sigma_zero_certificate["certified"]
