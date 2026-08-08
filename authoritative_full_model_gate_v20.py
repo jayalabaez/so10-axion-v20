@@ -14,6 +14,7 @@ from pathlib import Path
 from typing import Any
 
 import g1_g8_gate_ledger_v20 as gate_ledger
+import exact_x_symmetry_consistency_gate_v20 as x_contract_gate
 import proton_decay_falsification_gate_v20 as proton_gate
 
 ROOT = Path(__file__).resolve().parent
@@ -49,11 +50,17 @@ def _legacy_snapshot() -> dict[str, Any]:
 
 
 def build_report() -> dict[str, Any]:
+    contract = x_contract_gate.build_report()
     ledger = gate_ledger.build_report()
     proton = proton_gate.build_report()
     legacy = _legacy_snapshot()
 
     execution_failures: list[str] = []
+    if contract.get("n_failed", 1):
+        execution_failures.extend(
+            f"X contract audit: {item}"
+            for item in contract.get("failures", ["failed"])
+        )
     if ledger.get("n_failed", 1):
         execution_failures.extend(
             f"G1-G8 ledger: {item}" for item in ledger.get("failures", ["failed"])
@@ -86,6 +93,15 @@ def build_report() -> dict[str, Any]:
             "whole_model_excluded_by_proton_decay", False
         )
     )
+    declared_contract_consistent = bool(
+        contract.get("contract_consistent", False)
+    )
+    contract_evidence_complete = gate_ledger._root_contract_evidence_complete(
+        contract
+    )
+    contract_consistent = bool(
+        declared_contract_consistent and contract_evidence_complete
+    )
 
     hard_theory_failures: list[str] = []
     # Conditional benchmark failures are deliberately not promoted here.
@@ -93,6 +109,7 @@ def build_report() -> dict[str, Any]:
     full_model_validated = (
         not execution_failures
         and not hard_theory_failures
+        and contract_consistent
         and all_gates_closed
         and exact_proton
     )
@@ -108,9 +125,25 @@ def build_report() -> dict[str, Any]:
         overall_state = "BLOCKED"
 
     blockers = [f"{gate}_NOT_CLOSED" for gate in gates_not_closed]
+    if not contract_consistent:
+        blockers.extend(
+            contract.get(
+                "scientific_blockers",
+                [x_contract_gate.EXTERNAL_EXECUTION_BLOCKER],
+            )
+        )
     blockers.extend(f"PROTON_READINESS_{name}" for name in readiness_open)
 
     checks = {
+        "x_contract_audit_executes": contract.get("n_failed") == 0,
+        "consistent_contract_has_tool_native_bound_evidence": bool(
+            not declared_contract_consistent or contract_evidence_complete
+        ),
+        "contract_state_respected_by_validation": contract_consistent
+        or not full_model_validated,
+        "contract_and_ledger_agree": (
+            ledger.get("contract_consistent") is contract_consistent
+        ),
         "ledger_executes": ledger.get("n_failed") == 0,
         "proton_gate_executes": proton.get("n_failed") == 0,
         "legacy_ultimate_not_authoritative": not legacy.get(
@@ -128,6 +161,23 @@ def build_report() -> dict[str, Any]:
         overall_state = "EXECUTION_FAIL"
         full_model_validated = False
 
+    verdict = (
+        "The repository remains BLOCKED at full-model scope. The repaired gauged "
+        "U(1)_X contract promotes G1 and G2, but G3-G8 and the unique proton-lifetime "
+        "derivation are not closed. Historical Option-C calculations remain context "
+        "only and cannot validate or exclude the gauged model."
+        if contract_consistent
+        else "The repository remains BLOCKED at full-model scope. The manuscript's "
+        "gauged U(1)_X contract is implemented by a statically consistent, "
+        "tool-native SARAH input and hash-bound validation bundle, but it has no "
+        "valid v2 manifest/log-bound external execution attestation, "
+        "so no downstream Option-C calculation is authoritative. The historical "
+        "ultimate-gate internal-candidate approval is retained only as context; "
+        "it cannot validate the model. Full approval requires every G1-G8 gate "
+        "to close and the proton lifetime to be derived from the same physical "
+        "vacuum and spectrum."
+    )
+
     return {
         "status": "AUTHORITATIVE_FULL_MODEL_GATE_EXECUTED",
         "overall_state": overall_state,
@@ -137,6 +187,15 @@ def build_report() -> dict[str, Any]:
         "checks": checks,
         "hard_theory_failures": hard_theory_failures,
         "blockers": sorted(set(blockers)),
+        "model_contract_id": "gauged_u1x_phi17_v20",
+        "model_contract": {
+            "declared_consistent": declared_contract_consistent,
+            "tool_native_bound_evidence_complete": contract_evidence_complete,
+            "consistent": contract_consistent,
+            "status": contract.get("status"),
+            "overall_state": contract.get("overall_state"),
+            "conflicts": contract.get("contract_conflicts", []),
+        },
         "g1_g8_summary": ledger.get("summary"),
         "g1_g8_status": ledger.get("status"),
         "proton_status": proton.get("status"),
@@ -144,6 +203,10 @@ def build_report() -> dict[str, Any]:
         "legacy_ultimate_gate": legacy,
         "classification": {
             "all_g1_g8_closed": all_gates_closed,
+            "authoritative_model_contract_consistent": contract_consistent,
+            "tool_native_bound_model_evidence_complete": (
+                contract_evidence_complete
+            ),
             "exact_unique_proton_lifetime": exact_proton,
             "proton_decay_observed": proton_observed,
             "whole_model_validated": full_model_validated,
@@ -155,16 +218,14 @@ def build_report() -> dict[str, Any]:
             "legacy_ultimate_gate_authoritative": False,
             "internal_candidate_approval_is_not_full_model_validation": True,
             "conditional_benchmarks_are_not_discovery": True,
+            "authoritative_model_contract_consistent": contract_consistent,
+            "tool_native_bound_model_evidence_complete": (
+                contract_evidence_complete
+            ),
             "whole_model_validated": full_model_validated,
             "whole_model_excluded": whole_model_excluded,
         },
-        "verdict": (
-            "The repository remains BLOCKED at full-model scope. The historical "
-            "ultimate-gate internal-candidate approval is retained only as context; "
-            "it cannot validate the model. Full approval requires every G1–G8 gate "
-            "to close and the proton lifetime to be derived from the same physical "
-            "vacuum and spectrum."
-        ),
+        "verdict": verdict,
     }
 
 

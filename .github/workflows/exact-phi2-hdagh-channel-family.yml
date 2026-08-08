@@ -143,14 +143,21 @@ jobs:
           report = load('EXACT_HSIGMA_HOLOMORPHIC_CHARGE_DRESSED_COMPLETION_V20.json')
           if report:
               assert report['n_failed'] == 0, report['failures']
-              assert report['flags']['unique_Hdag2_Sigma2_54_family_closed'] is True
-              assert report['flags']['two_Phi17_dressed_cubic_companions_closed'] is True
+              assert report['model_contract_id'] == 'historical_option_c_no_x_v20'
+              assert report['authoritative_for_manuscript'] is False
+              assert report['flags']['historical_option_c_calculation_reproduced'] is True
+              assert report['flags']['u1x_neutral_O54_tensor_result_reusable'] is True
+              assert report['flags']['phi17_dressed_companions_allowed_by_manuscript_u1x'] is False
               assert report['flags']['complete_mixed_invariant_ring'] is False
 
           report = load('NONSUSY_Z17_PQ_HSIGMA_COMPLETION_V20.json')
           if report:
               assert report['n_failed'] == 0, report['failures']
-              assert report['flags']['three_closed_families_registered'] is True
+              assert report['model_contract_id'] == 'historical_option_c_no_x_v20'
+              assert report['authoritative_for_manuscript'] is False
+              assert report['flags']['historical_option_c_hsigma_overlay_reproduced'] is True
+              assert report['flags']['historical_three_families_registered'] is True
+              assert report['flags']['phi17_dressed_families_allowed_by_manuscript_u1x'] is False
               assert report['flags']['complete_mixed_invariant_ring'] is False
 
           report = load('EXACT_PHI17_NEUTRAL_DRESSING_COMPLETION_V20.json')
@@ -159,14 +166,22 @@ jobs:
               assert report['catalogue_census']['required_dressing_count'] == 15
               assert report['catalogue_census']['already_present_count'] == 8
               assert report['catalogue_census']['missing_count'] == 7
-              assert report['flags']['neutral_Phi17_dressing_theorem_closed'] is True
+              assert report['model_contract_id'] == 'historical_option_c_no_x_v20'
+              assert report['authoritative_for_manuscript'] is False
+              assert report['flags']['historical_option_c_dressing_inventory_reproduced'] is True
+              assert report['flags']['historical_seven_missing_classes_enumerated'] is True
+              assert report['flags']['phi17_dressings_allowed_by_manuscript_u1x'] is False
               assert report['flags']['complete_mixed_invariant_ring'] is False
 
           report = load('NONSUSY_Z17_PQ_PHI17_DRESSING_COMPLETION_V20.json')
           if report:
               assert report['n_failed'] == 0, report['failures']
-              assert report['flags']['all_fifteen_dressings_registered'] is True
-              assert report['flags']['seven_missing_classes_appended'] is True
+              assert report['model_contract_id'] == 'historical_option_c_no_x_v20'
+              assert report['authoritative_for_manuscript'] is False
+              assert report['flags']['historical_option_c_Phi17_overlay_reproduced'] is True
+              assert report['flags']['historical_all_fifteen_dressings_registered'] is True
+              assert report['flags']['historical_seven_missing_classes_appended'] is True
+              assert report['flags']['phi17_dressings_allowed_by_manuscript_u1x'] is False
               assert report['flags']['complete_mixed_invariant_ring'] is False
 
           report = load('NONSUSY_Z17_PQ_POTENTIAL_FILTER_V20.json')

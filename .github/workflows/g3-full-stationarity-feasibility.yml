@@ -91,6 +91,9 @@ jobs:
           r=json.load(open('G3_FULL_STATIONARITY_FEASIBILITY_V20.json'))
           assert r['n_failed']==0, r['failures']
           assert r['overall_state']=='PARTIAL'
+          assert r['model_contract_id']=='historical_option_c_no_x_v20'
+          assert r['authoritative_for_manuscript'] is False
+          assert r['model_wide_no_go_certified'] is False
           assert r['coverage']=={
               'base_families':18,
               'directions':64,
@@ -111,6 +114,9 @@ jobs:
 
           h=json.load(open('G3_FULL_HESSIAN_CLASSIFICATION_V20.json'))
           assert h['overall_state']=='PARTIAL'
+          assert h['model_contract_id']=='historical_option_c_no_x_v20'
+          assert h['authoritative_for_manuscript'] is False
+          assert h['model_wide_no_go_certified'] is False
           assert h['coverage']==r['coverage']
           assert h['physical_Hessian']['full_shape']==[486,486]
           assert h['physical_Hessian']['gauge_dimension']==36
@@ -122,6 +128,9 @@ jobs:
 
           s=json.load(open('G3_STATIONARY_STABILITY_SEARCH_V20.json'))
           assert s['overall_state']=='PARTIAL'
+          assert s['model_contract_id']=='historical_option_c_no_x_v20'
+          assert s['authoritative_for_manuscript'] is False
+          assert s['model_wide_no_go_certified'] is False
           assert s['coverage']['directions']==64
           assert s['coverage']['real_parameters']==91
           assert s['coverage']['massive_physical_dimension']==449

@@ -1,0 +1,313 @@
+{
+  "status": "EXACT_FIXED_F_FULL_OFFKERNEL_BETA_GAP_CERTIFIED",
+  "overall_state": "CLOSED_FIXED_F_GLOBAL_SUBPROBLEM",
+  "model_contract_id": "gauged_u1x_phi17_v20",
+  "n_checks": 10,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "mixed_offkernel_gap_at_least_6_over_5_exact": true,
+    "pure_hplus_current_error_bound_exact": true,
+    "kernel_chirality_cross_zero_exact": true,
+    "210_projector_current_bound_available": true,
+    "cross_block_bound_exact": true,
+    "rational_inside_outside_patch_positive": true,
+    "full_fixed_F_mixed_kernel_already_classified": true,
+    "full_fixed_F_equality_orbit_exact": true,
+    "arbitrary_Phi_globality_not_overclaimed": true,
+    "G3_not_overclaimed": true
+  },
+  "exact_mixed_gap": {
+    "raw_identity": "Graw=Araw^dag Araw",
+    "normalized_identity": "R_F=(1/10) Sigma^dag Graw Sigma",
+    "raw_spectral_roots": [
+      0,
+      12,
+      16,
+      64,
+      144
+    ],
+    "normalized_positive_spectral_gap_lower_bound": "6/5",
+    "kernel_complex_dimension": 10,
+    "exact_kernel_rank_certificate": 116,
+    "Hermitian_exact": true,
+    "positive_semidefinite_by_Gram_construction": true,
+    "polynomial_certificate": {
+      "dimension": 126,
+      "roots": [
+        0,
+        12,
+        16,
+        64,
+        144
+      ],
+      "roots_distinct_and_nonnegative": true,
+      "factor_infinity_norm_bounds": [
+        304,
+        292,
+        288,
+        240,
+        240
+      ],
+      "integer_coefficient_abs_bound": 1472554598400,
+      "CRT_primes": [
+        1000003,
+        1000033,
+        1000037,
+        1000039,
+        1000081
+      ],
+      "all_primes_verified": true,
+      "CRT_modulus_product": 1000193013350405994960100571417,
+      "CRT_modulus_exceeds_twice_bound": true,
+      "modular_residuals": {
+        "1000003": {
+          "real_max_abs_residue": 0,
+          "imaginary_max_abs_residue": 0
+        },
+        "1000033": {
+          "real_max_abs_residue": 0,
+          "imaginary_max_abs_residue": 0
+        },
+        "1000037": {
+          "real_max_abs_residue": 0,
+          "imaginary_max_abs_residue": 0
+        },
+        "1000039": {
+          "real_max_abs_residue": 0,
+          "imaginary_max_abs_residue": 0
+        },
+        "1000081": {
+          "real_max_abs_residue": 0,
+          "imaginary_max_abs_residue": 0
+        }
+      },
+      "all_modular_residuals_zero": true,
+      "exact_matrix_polynomial_annihilation": true
+    },
+    "offkernel_error_bound": "||e||^2 <= (5/6) R_F(Sigma)",
+    "proof_grade": true
+  },
+  "exact_hplus_current_error_bound": {
+    "representative": "unit h_+=(e0+i e1)/sqrt(2)",
+    "scaled_matrix": "X=16[J45(h_+,.)+(5/8)R_F(.)]",
+    "Hermitian_Gaussian_integer_matrix": true,
+    "current_scaled_integrality_residual": 0.0,
+    "annihilating_polynomial_roots": [
+      0,
+      12,
+      16,
+      28,
+      32,
+      48,
+      64,
+      80,
+      128,
+      144,
+      160
+    ],
+    "polynomial_certificate": {
+      "dimension": 126,
+      "roots": [
+        0,
+        12,
+        16,
+        28,
+        32,
+        48,
+        64,
+        80,
+        128,
+        144,
+        160
+      ],
+      "roots_distinct_and_nonnegative": true,
+      "factor_infinity_norm_bounds": [
+        320,
+        308,
+        304,
+        292,
+        288,
+        272,
+        256,
+        240,
+        240,
+        256,
+        272
+      ],
+      "integer_coefficient_abs_bound": 703703708497019085520896000,
+      "CRT_primes": [
+        1000003,
+        1000033,
+        1000037,
+        1000039,
+        1000081
+      ],
+      "all_primes_verified": true,
+      "CRT_modulus_product": 1000193013350405994960100571417,
+      "CRT_modulus_exceeds_twice_bound": true,
+      "modular_residuals": {
+        "1000003": {
+          "real_max_abs_residue": 0,
+          "imaginary_max_abs_residue": 0
+        },
+        "1000033": {
+          "real_max_abs_residue": 0,
+          "imaginary_max_abs_residue": 0
+        },
+        "1000037": {
+          "real_max_abs_residue": 0,
+          "imaginary_max_abs_residue": 0
+        },
+        "1000039": {
+          "real_max_abs_residue": 0,
+          "imaginary_max_abs_residue": 0
+        },
+        "1000081": {
+          "real_max_abs_residue": 0,
+          "imaginary_max_abs_residue": 0
+        }
+      },
+      "all_modular_residuals_zero": true,
+      "exact_matrix_polynomial_annihilation": true
+    },
+    "spectral_consequence": "X>=0 because X is Hermitian and every polynomial root is nonnegative",
+    "SU5_covariance_extension": "F is SU(5)-invariant and SU(5) is transitive on the unit sphere of h_+ in C^5",
+    "uniform_inequality": "J45(h_plus,Sigma)+(5/8)||h_plus||^2 R_F(Sigma)>=0",
+    "constant_5_over_8_certified": true,
+    "proof_grade": true
+  },
+  "exact_cross_block_bound": {
+    "decomposition": "Sigma=k+e, k in ker(R_F), e perpendicular to ker(R_F)",
+    "kernel_cross_block_zero_exact": true,
+    "projector_identity_source_exact": true,
+    "projector_consequences": [
+      "I45(H,Sigma)>=-N_H*N_Sigma from the exact P210 identity",
+      "I45(conj(H),Sigma)=-I45(H,Sigma) because the H generators are real skew",
+      "therefore |I45(H,Sigma)|<=N_H*N_Sigma",
+      "operator-valued polarization gives ||J_cross(k,e)||<=2||k||||e||",
+      "||J(e)||<=||e||^2"
+    ],
+    "completion_of_square_identity": "5*b^2*(a^2+b^2)-(2*a*b+b^2)^2=b^2*(a-2*b)^2",
+    "pre_gap_bound": "2ab+b^2 <= sqrt(5)*b*sqrt(a^2+b^2)",
+    "mixed_gap_substitution": "b^2<=(5/6)R_F",
+    "final_bound": "||P_+ J(Sigma) P_-|| <= (5/sqrt(6))*sqrt(R_F*N_Sigma)",
+    "Young_inequality": "2*beta*C*sqrt(u_plus*R_F*u_minus*v) <= epsilon*u_minus+(C^2/epsilon)*beta^2*u_plus*R_F*v",
+    "C_squared": "25/6",
+    "proof_grade": true
+  },
+  "exact_cross_and_scalar_patch": {
+    "parameters": {
+      "t": "1/8",
+      "r": "1/5",
+      "beta": "1/20",
+      "inside_box_u_max": "11/10",
+      "inside_box_v_max": "1/2",
+      "Young_epsilon": "3/5"
+    },
+    "cross_block_bound": "||P_+ J(Sigma) P_-|| <= (5/sqrt(6))*sqrt(R_F*N_Sigma)",
+    "cross_block_derivation": [
+      "write Sigma=k+e with k in ker R_F and e perpendicular",
+      "the exact kernel chirality-cross current is zero",
+      "the exact Fierz identity and H conjugation give |I45|<=N_H*N_Sigma",
+      "polarization gives ||J_cross(k,e)||<=2||k||||e|| and ||J(e)||<=||e||^2",
+      "2ab+b^2<=sqrt(5)b sqrt(a^2+b^2)",
+      "||e||^2<=(5/6)R_F gives the constant 5/sqrt(6)"
+    ],
+    "inside_box": {
+      "mixed_residual_coefficient_margin": "467/5760",
+      "h_minus_coefficient_margin": "23/40",
+      "derivation": "Q_F+beta I45 >= -[(5/8)beta+(125/18)beta^2 v]u_plus R_F"
+    },
+    "outside_box": {
+      "radial_lower_bound": "(u-1)^2+t(v-r^2)^2-beta*u*v",
+      "u_at_least_11_over_10_boundary_margin": "7/4000",
+      "u_halfspace_derivative_margin": "187/1000",
+      "v_at_least_1_over_2_boundary_margin": "207/160000",
+      "v_halfspace_derivative_margin": "103/1600"
+    },
+    "general_admissibility_conditions": [
+      "beta < 2 sqrt(t)",
+      "beta*V <= 6/5-epsilon",
+      "t > U[(5/8)beta+(25/(6 epsilon))beta^2 V]",
+      "the minimized radial quadratic is positive and increasing at u=U",
+      "the minimized radial quadratic is positive and increasing at v=V"
+    ],
+    "proof_grade": true
+  },
+  "exact_fixed_F_equality_classification": {
+    "exact_polynomial_source_checks": {
+      "mixed_kernel_is_exact_complex_ten": true,
+      "Sigma_self_zero_is_exact_Plucker_variety": true,
+      "kernel_current_is_exact_wedge_norm": true,
+      "S_and_Phi17_phase_charge_minor_is_nonzero": true
+    },
+    "forced_equalities_from_strict_scalar_margins": [
+      "R_F(Sigma)=0",
+      "h_minus=0",
+      "N_H=1",
+      "N_Sigma=1/25",
+      "|S|=1/5",
+      "|Phi17|=1"
+    ],
+    "Sigma_zero_locus": "I54(Sigma(t))=0; I1050bar(Sigma(t))=(256/9) sum_{A=1}^5 |Pf_A(t)|^2",
+    "standard_exterior_algebra_lemma_invoked": "For a 5x5 complex skew matrix, all five principal 4x4 Pfaffians vanish iff its rank is at most two; every nonzero rank-two skew matrix is a decomposable two-form.",
+    "exterior_algebra_step": "For nonzero decomposable z=v wedge w, h wedge z=0 iff h belongs to span_C{v,w}.",
+    "constructive_SU5_transitivity_certificate": {
+      "assumptions": "z is a normalized nonzero decomposable two-form, h is a unit vector, and h wedge z=0",
+      "construction": [
+        "The wedge condition puts h in the two-plane of z.",
+        "Choose unit q perpendicular to h in that plane; write z=lambda*h wedge q.",
+        "Normalization gives |lambda|=1, so absorb lambda into q.",
+        "Extend (h,q) to a unitary frame Q and set U0=Q^dagger.",
+        "If det(U0)=delta, set D=diag(1,1,delta^-1,1,1) and U=D U0.",
+        "D fixes the canonical incident flag, U is unitary, and det(U)=1."
+      ],
+      "unit_wedge_norm_identity": "||h wedge q||^2=det(Gram(h,q))=1",
+      "unitarity_identity": "U^dagger U=U0^dagger D^dagger D U0=I",
+      "determinant_correction_exponents": [
+        0,
+        0,
+        -1,
+        0,
+        0
+      ],
+      "determinant_final_phase_exponent": 0,
+      "machine_checks": {
+        "orthogonal_complement_is_nonempty": true,
+        "determinant_correction_fixes_target_plane": true,
+        "determinant_phase_cancels_exactly": true,
+        "correction_is_on_orthogonal_complement": true
+      },
+      "analytic_conclusion": "SU(5) acts transitively on normalized incident pairs (z,h), including both complex phases.",
+      "proof_grade": true
+    },
+    "S_Phi17_phase_charge_matrix": [
+      [
+        4,
+        17
+      ],
+      [
+        4,
+        0
+      ]
+    ],
+    "S_Phi17_phase_charge_determinant": -68,
+    "phase_consequence": "The nonzero charge minor makes the U(1)_X x PQ torus action surjective on the two spectator phases.",
+    "equality_is_one_SO10_x_U1X_x_PQ_orbit": true,
+    "proof_grade": true
+  },
+  "scope": {
+    "Phi_fixed_to_F": true,
+    "H_arbitrary": true,
+    "Sigma_arbitrary": true,
+    "S_and_Phi17_spectator_squares_arbitrary": true,
+    "beta_equals_1_over_20": true,
+    "global_gap_nonnegative_on_full_fixed_F_stratum": true,
+    "equality_is_selected_SU5_flag_orbit": true,
+    "arbitrary_Phi_proved": false,
+    "G3_closed": false
+  },
+  "next_required_test": "Extend the error bound uniformly away from the signed Phi equality strata, or find a lower witness with Phi outside the +F orbit.",
+  "verdict": "At Phi=F the beta=1/20 gap is now globally nonnegative for every H and Sigma, including all directions outside the exact mixed kernel. The remaining global blocker is solely the arbitrary-Phi off-stratum inequality; this certificate does not promote G3 by itself."
+}

@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Complete neutral-Phi17 dressings of proved SO(10) cores through dimension 4.
+"""Reproduce historical no-X Phi17 dressings through dimension 4.
 
-Phi17 is an SO(10) singlet with PQ=Z17=0 in the live declared contract.
-Renormalizability therefore gives a finite dressing theorem:
+This module belongs to the superseded ``historical_option_c_no_x_v20``
+counterfactual.  There Phi17 was treated as neutral under all enforced
+symmetries, giving the finite dressing inventory:
 
 * a Hermitian quadratic core Q has Q*Phi17+h.c., Q*Phi17^2+h.c.,
   and Q*|Phi17|^2;
@@ -16,8 +17,10 @@ needed: every missing class inherits the normalized multiplicity-one core.
 After <Phi17>=z they promote existing masses and cubic coefficients and, in
 general, create heavy--Phi17 cross-Hessian blocks.
 
-This closes only this finite G1 family. The full mixed invariant ring, full
-component potential, vacuum, and whole-model validation remain open.
+In the manuscript Phi17 has gauged X=17.  The holomorphic dressings enumerated
+here are therefore gauge-forbidden.  The inventory and coefficient maps are
+retained only to reproduce the historical no-X calculation; they do not close
+the live G1 basis or support a model-wide conclusion.
 """
 from __future__ import annotations
 
@@ -32,6 +35,7 @@ import nonsusy_z17_pq_potential_filter_v20 as charge_filter
 ROOT = Path(__file__).resolve().parent
 OUT_JSON = ROOT / "EXACT_PHI17_NEUTRAL_DRESSING_COMPLETION_V20.json"
 OUT_MD = ROOT / "EXACT_PHI17_NEUTRAL_DRESSING_COMPLETION_V20.md"
+MODEL_CONTRACT_ID = "historical_option_c_no_x_v20"
 
 PHI_NORM_P = "210_H^dag 210_H Phi17"
 PHI_NORM_P2 = "210_H^dag 210_H Phi17^2"
@@ -155,8 +159,10 @@ def charge_audit() -> dict[str, Any]:
         rows[row["name"]] = {
             **row,
             "charge_totals": totals,
-            "declared_allowed": charge_filter._allowed(totals, require_x=False),
-            "historical_X_comparison": charge_filter._allowed(
+            "option_c_no_x_allowed": charge_filter._allowed(
+                totals, require_x=False
+            ),
+            "gauged_u1x_manuscript_allowed": charge_filter._allowed(
                 totals, require_x=True
             ),
             "so10_reason": (
@@ -167,6 +173,7 @@ def charge_audit() -> dict[str, Any]:
 
 
 def catalogue_census() -> dict[str, Any]:
+    """Census the historical no-X overlay, never the live gauged catalogue."""
     current = current_catalogue.operator_catalogue(require_x=False)
     current_names = {row["name"] for row in current}
     required = required_dressing_names()
@@ -241,8 +248,12 @@ def build_report() -> dict[str, Any]:
             census["already_present_count"] == 8
         ),
         "exactly_seven_missing_classes": census["missing_exactly_seven"],
-        "all_missing_classes_declared_allowed": all(
-            row["declared_allowed"]["all"] for row in charges.values()
+        "all_missing_classes_option_c_no_x_allowed": all(
+            row["option_c_no_x_allowed"]["all"] for row in charges.values()
+        ),
+        "all_missing_classes_forbidden_by_manuscript_u1x": all(
+            not row["gauged_u1x_manuscript_allowed"]["all"]
+            for row in charges.values()
         ),
         "all_missing_classes_SO10_inherit_core": True,
         "all_seven_independent_by_multidegree": independence[
@@ -266,10 +277,13 @@ def build_report() -> dict[str, Any]:
     }
     failures = [name for name, passed in checks.items() if not passed]
     return {
+        "model_contract_id": MODEL_CONTRACT_ID,
+        "authoritative_for_manuscript": False,
+        "model_wide_no_go_certified": False,
         "status": (
-            "NEUTRAL_PHI17_DRESSING_FAMILY_CLOSED__FULL_RING_OPEN"
+            "HISTORICAL_OPTION_C_PHI17_DRESSINGS_REPRODUCED__NONAUTHORITATIVE"
             if not failures
-            else "NEUTRAL_PHI17_DRESSING_COMPLETION_FAILED"
+            else "HISTORICAL_OPTION_C_PHI17_DRESSING_REPRODUCTION_FAILED"
         ),
         "n_checks": len(checks),
         "n_failed": len(failures),
@@ -286,11 +300,14 @@ def build_report() -> dict[str, Any]:
         "effective_coefficient_map": coefficient_map,
         "additions": list(ADDITIONS),
         "flags": {
-            "neutral_Phi17_dressing_theorem_closed": not failures,
-            "seven_missing_classes_proved": not failures,
-            "no_new_SO10_Clebsches_required": not failures,
-            "effective_heavy_coefficients_promoted": not failures,
-            "heavy_Phi17_cross_blocks_required": not failures,
+            "historical_option_c_dressing_inventory_reproduced": not failures,
+            "historical_seven_missing_classes_enumerated": not failures,
+            "historical_no_new_SO10_Clebsches_required": not failures,
+            "historical_effective_heavy_coefficients_promoted": not failures,
+            "historical_heavy_Phi17_cross_blocks_derived": not failures,
+            "phi17_dressings_allowed_by_manuscript_u1x": False,
+            "authoritative_for_manuscript": False,
+            "model_wide_no_go_certified": False,
             "complete_mixed_invariant_ring": False,
             "complete_component_potential": False,
             "full_multifield_vacuum": False,
@@ -298,11 +315,12 @@ def build_report() -> dict[str, Any]:
             "empirical_discovery": False,
         },
         "verdict": (
-            "All 15 renormalizable Phi17 dressings of the proved quadratic "
-            "and cubic non-singlet cores are enumerated. Eight were already "
-            "present and exactly seven were missing. They use no new "
-            "Clebsches and promote existing coefficients after Phi17 condenses. "
-            "Full G1 remains open for other tensor families."
+            "The historical Option-C/no-X inventory contains 15 Phi17 "
+            "dressings, with eight previously present and seven added here. "
+            "Their SO(10) multiplicities and coefficient maps are reproducible, "
+            "but the holomorphic Phi17 dressings are forbidden by the "
+            "manuscript's gauged U(1)_X. This is not a live G1 closure and "
+            "neither validates nor excludes the gauged theory."
         ),
     }
 
@@ -310,7 +328,7 @@ def build_report() -> dict[str, Any]:
 def write_report(report: dict[str, Any]) -> None:
     OUT_JSON.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     OUT_MD.write_text(
-        "# Exact neutral-Phi17 dressing completion\n\n"
+        "# Historical Option-C Phi17 dressing calculation\n\n"
         f"**Status:** `{report['status']}`\n\n"
         + report["verdict"]
         + "\n",

@@ -121,7 +121,7 @@ def component_ledger() -> list[dict[str, Any]]:
 
 
 def build_report() -> dict[str, Any]:
-    ops = signed_filter.operator_catalogue()
+    ops = signed_filter.operator_catalogue(require_x=True)
     by_name = {row["name"]: row for row in ops}
     allowed_mt = {
         name: row

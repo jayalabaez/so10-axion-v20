@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Complete selected-vacuum 20-real 10_H mass block.
+"""Historical Option-C selected-vacuum 20-real 10_H mass block.
 
 The earlier operator-derived gate assembled only Hermitian Hdag H endomorphisms.
-The live G1 basis also contains the holomorphic family
+The superseded no-X G1 basis also contained the holomorphic family
 
     V contains (1/2) b_eff H_i H_i + h.c.
 
@@ -12,8 +12,10 @@ with
             + eta_plus <S><Phi17>
             + eta_minus <S><Phi17>* .
 
-The 1/2 convention is inherited from the exact 10_H^2 S normalization; the
-Phi17-dressed operators use the same normalized core.  In canonical real
+The 1/2 convention is inherited from the exact 10_H^2 S normalization. In the
+historical calculation, Phi17-dressed operators used the same normalized core.
+Those dressings are forbidden in the manuscript because Phi17 has gauged
+X=17. In canonical real
 coordinates H_i=(x_i+i y_i)/sqrt(2), the holomorphic Hessian is ten repeated
 blocks
 
@@ -27,8 +29,9 @@ The unique Hdag^2 Sigmabar^2 54 quartic contributes no H mass on Delta_R
 because P54(Delta_R,Delta_R)=0.  H self-quartics start at fourth order and also
 do not contribute at H=0.
 
-This closes the selected-vacuum H-only block, not the full 482-real Hessian,
-nonzero electroweak backreaction, or the complete component potential.
+The matrix algebra remains a reproducible Option-C benchmark, but it does not
+close the gauged model's H-only block, the corrected 486-real Hessian, nonzero
+electroweak backreaction, or the complete component potential.
 """
 from __future__ import annotations
 
@@ -48,6 +51,7 @@ OUT_JSON = ROOT / "EXACT_COMPLETE_H10_SELECTED_VACUUM_MASS_BLOCK_V20.json"
 OUT_MD = ROOT / "EXACT_COMPLETE_H10_SELECTED_VACUUM_MASS_BLOCK_V20.md"
 H_COMPLEX = 10
 H_REAL = 20
+MODEL_CONTRACT_ID = "historical_option_c_no_x_v20"
 
 
 def _jsonable(value: Any) -> Any:
@@ -252,10 +256,13 @@ def build_report() -> dict[str, Any]:
     failures = [name for name, passed in checks.items() if not passed]
     return _jsonable(
         {
+            "model_contract_id": MODEL_CONTRACT_ID,
+            "authoritative_for_manuscript": False,
+            "model_wide_no_go_certified": False,
             "status": (
-                "COMPLETE_SELECTED_VACUUM_H10_MASS_BLOCK_CLOSED"
+                "HISTORICAL_OPTION_C_H10_MASS_BLOCK_REPRODUCED__NONAUTHORITATIVE"
                 if not failures
-                else "COMPLETE_SELECTED_VACUUM_H10_MASS_BLOCK_FAILED"
+                else "HISTORICAL_OPTION_C_H10_MASS_BLOCK_REPRODUCTION_FAILED"
             ),
             "n_checks": len(checks),
             "n_failed": len(failures),
@@ -286,17 +293,20 @@ def build_report() -> dict[str, Any]:
                     "HdagH SigmadagSigma channels 1,45",
                 ],
                 "holomorphic": [
-                    "H^2 S and both neutral-Phi17 dressings",
+                    "H^2 S plus both historical no-X Phi17 dressings",
                     "Hdag^2 Sigma^2 54 (exactly zero on Delta_R^2)",
                 ],
                 "zero_at_H0": ["two H self-quartics"],
             },
             "flags": {
-                "selected_vacuum_Hermitian_H_block_included": not failures,
-                "selected_vacuum_holomorphic_B_block_included": not failures,
-                "neutral_Phi17_dressings_in_b_eff": not failures,
-                "selected_DeltaR_54_zero_respected": not failures,
-                "complete_selected_vacuum_H_only_quadratic_block": not failures,
+                "historical_option_c_Hermitian_H_block_reproduced": not failures,
+                "historical_option_c_holomorphic_B_block_reproduced": not failures,
+                "historical_no_x_Phi17_dressings_in_b_eff": not failures,
+                "phi17_dressings_allowed_by_manuscript_u1x": False,
+                "historical_selected_DeltaR_54_zero_respected": not failures,
+                "historical_option_c_H_only_quadratic_block_reproduced": not failures,
+                "authoritative_for_manuscript": False,
+                "model_wide_no_go_certified": False,
                 "complete_482_real_Hessian": False,
                 "nonzero_electroweak_backreaction": False,
                 "complete_G2_component_potential": False,
@@ -304,14 +314,15 @@ def build_report() -> dict[str, Any]:
                 "empirical_discovery": False,
             },
             "next_exact_target": (
-                "Use this complete H-only block in the joint cubic+210+1050 "
-                "482-real Schur/Loewner stability envelope."
+                "Do not promote this no-X block into the live chain; rebuild the "
+                "H10 sector from the gauged-U(1)_X 44-direction contract."
             ),
             "verdict": (
-                "The selected-vacuum 20-real H10 quadratic Hessian now includes "
-                "both the operator-derived Hermitian endomorphism and the exact "
-                "holomorphic H^2S/Phi17 B block. This closes the H-only block; "
-                "mixed old-field/H blocks and electroweak backreaction remain."
+                "This reproduces the historical Option-C 20-real H10 Hessian, "
+                "including its no-X Phi17-dressed contribution to b_eff. Those "
+                "dressings are gauge-forbidden in the manuscript, so the result "
+                "is non-authoritative and does not close or exclude the gauged "
+                "theory. The pure matrix identities remain valid benchmarks."
             ),
         }
     )
@@ -320,7 +331,7 @@ def build_report() -> dict[str, Any]:
 def write_report(report: dict[str, Any]) -> None:
     OUT_JSON.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     OUT_MD.write_text(
-        "# Complete selected-vacuum 10_H mass block\n\n"
+        "# Historical Option-C selected-vacuum 10_H mass block\n\n"
         f"**Status:** `{report['status']}`\n\n"
         + report["verdict"]
         + "\n\n"

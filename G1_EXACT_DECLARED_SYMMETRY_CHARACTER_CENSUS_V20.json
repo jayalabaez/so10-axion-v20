@@ -1,0 +1,2667 @@
+{
+  "anchors": {
+    "H2_Hdag2": 2,
+    "H_Hdag_126bar_126": 2,
+    "P2_126bar_126": 6,
+    "P2_H_126dag": 2,
+    "P2_H_Hdag": 3,
+    "Sym2_10": 1,
+    "Sym2_126_pair": 4,
+    "Sym2_210": 1,
+    "Sym3_210": 1,
+    "Sym4_10": 1,
+    "Sym4_210": 4
+  },
+  "character_dimensions": {
+    "rep126": 126,
+    "rep126bar": 126,
+    "rep210": 210,
+    "spinor": 16,
+    "vector": 10
+  },
+  "checks": {
+    "H_S_Phi17_crosscheck": true,
+    "anchors": true,
+    "conjugacy": true,
+    "dimensions": true,
+    "gauged_counts": true,
+    "gauged_degree_counts": true,
+    "gauged_is_subset": true,
+    "live_PQ_X_Z17_neutral": true,
+    "live_has_no_X_charged_rows": true,
+    "no_whole_model_claim": true,
+    "option_c_counts": true,
+    "singlet_crosscheck": true,
+    "weyl_order": true
+  },
+  "closure": {
+    "declared_symmetry_charge_multidegrees_degree_le_4_closed": true,
+    "explicit_component_tensor_subset_integration_closed": false,
+    "full_component_potential_G2_closed": false,
+    "gauged_u1x_44_direction_subcensus_closed": true,
+    "so10_singlet_multiplicities_degree_le_4_closed": true
+  },
+  "counts": {
+    "charge_and_so10_allowed_multidegrees": 34,
+    "complex_invariant_multiplicity_by_degree": {
+      "1": 0,
+      "2": 5,
+      "3": 6,
+      "4": 40
+    },
+    "hermitian_conjugacy_orbits": 28,
+    "potential_orbit_multiplicity_by_degree": {
+      "1": 0,
+      "2": 5,
+      "3": 4,
+      "4": 35
+    },
+    "total_complex_invariant_multiplicity": 51,
+    "total_potential_orbit_multiplicity": 44,
+    "total_real_potential_parameters": 51
+  },
+  "cross_checks": {
+    "H10_S_Phi17": {
+      "complex_invariant_multiplicity": 12,
+      "conjugacy_orbits": 10,
+      "multidegrees": 11,
+      "potential_orbit_multiplicity": 11,
+      "real_parameters": 12
+    },
+    "singlet_only": {
+      "complex_invariant_multiplicity": 5,
+      "conjugacy_orbits": 5,
+      "multidegrees": 5,
+      "potential_orbit_multiplicity": 5,
+      "real_parameters": 5
+    }
+  },
+  "failures": [],
+  "flags": {
+    "empirical_discovery": false,
+    "g1_closed": false,
+    "g1_explicit_tensor_subset_reaudit_open": true,
+    "renormalizable_G1_multiplicity_census_closed": true,
+    "whole_model_excluded": false,
+    "whole_model_validated": false
+  },
+  "historical_option_c_no_x_comparison": {
+    "counts": {
+      "charge_and_so10_allowed_multidegrees": 74,
+      "complex_invariant_multiplicity_by_degree": {
+        "1": 2,
+        "2": 7,
+        "3": 18,
+        "4": 64
+      },
+      "hermitian_conjugacy_orbits": 48,
+      "potential_orbit_multiplicity_by_degree": {
+        "1": 1,
+        "2": 6,
+        "3": 10,
+        "4": 47
+      },
+      "total_complex_invariant_multiplicity": 91,
+      "total_potential_orbit_multiplicity": 64,
+      "total_real_potential_parameters": 91
+    },
+    "interpretation": "The 64-direction/91-parameter result omits the manuscript gauge selection rule and is not authoritative.",
+    "model_contract_id": "historical_option_c_no_x_v20"
+  },
+  "live_symmetry_contract": {
+    "accidental_global": [
+      "PQ"
+    ],
+    "continuous_X": true,
+    "gauge": [
+      "SO(10)",
+      "U(1)_X"
+    ],
+    "residual": [
+      "Z17"
+    ]
+  },
+  "model_contract_id": "gauged_u1x_phi17_v20",
+  "multidegrees": [
+    {
+      "character_dimension": 1,
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "conjugacy_orbit_key": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "conjugate_count_tuple": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "conjugate_monomial": "Phi17 Phi17^dag",
+      "count_tuple": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "counts": {
+        "D": 0,
+        "Db": 0,
+        "H": 0,
+        "Hb": 0,
+        "P": 0,
+        "S": 0,
+        "Sb": 0,
+        "X": 1,
+        "Xb": 1
+      },
+      "degree": 2,
+      "monomial": "Phi17 Phi17^dag",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "character_dimension": 1,
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "conjugacy_orbit_key": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "conjugate_count_tuple": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "conjugate_monomial": "S S^dag",
+      "count_tuple": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "counts": {
+        "D": 0,
+        "Db": 0,
+        "H": 0,
+        "Hb": 0,
+        "P": 0,
+        "S": 1,
+        "Sb": 1,
+        "X": 0,
+        "Xb": 0
+      },
+      "degree": 2,
+      "monomial": "S S^dag",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "character_dimension": 15876,
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "conjugacy_orbit_key": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "conjugate_count_tuple": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "conjugate_monomial": "126bar_H 126bar_H^dag",
+      "count_tuple": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "counts": {
+        "D": 1,
+        "Db": 1,
+        "H": 0,
+        "Hb": 0,
+        "P": 0,
+        "S": 0,
+        "Sb": 0,
+        "X": 0,
+        "Xb": 0
+      },
+      "degree": 2,
+      "monomial": "126bar_H 126bar_H^dag",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "character_dimension": 100,
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "conjugacy_orbit_key": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "conjugate_count_tuple": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "conjugate_monomial": "10_H 10_H^dag",
+      "count_tuple": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "counts": {
+        "D": 0,
+        "Db": 0,
+        "H": 1,
+        "Hb": 1,
+        "P": 0,
+        "S": 0,
+        "Sb": 0,
+        "X": 0,
+        "Xb": 0
+      },
+      "degree": 2,
+      "monomial": "10_H 10_H^dag",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "character_dimension": 22155,
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "conjugacy_orbit_key": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "conjugate_count_tuple": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "conjugate_monomial": "210_H^2",
+      "count_tuple": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "counts": {
+        "D": 0,
+        "Db": 0,
+        "H": 0,
+        "Hb": 0,
+        "P": 2,
+        "S": 0,
+        "Sb": 0,
+        "X": 0,
+        "Xb": 0
+      },
+      "degree": 2,
+      "monomial": "210_H^2",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "character_dimension": 55,
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "conjugacy_orbit_key": [
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "conjugate_count_tuple": [
+        0,
+        2,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "conjugate_monomial": "10_H^2 S",
+      "count_tuple": [
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "counts": {
+        "D": 0,
+        "Db": 0,
+        "H": 0,
+        "Hb": 2,
+        "P": 0,
+        "S": 0,
+        "Sb": 1,
+        "X": 0,
+        "Xb": 0
+      },
+      "degree": 3,
+      "monomial": "10_H^dag^2 S^dag",
+      "self_conjugate": false,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "character_dimension": 55,
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "conjugacy_orbit_key": [
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "conjugate_count_tuple": [
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "conjugate_monomial": "10_H^dag^2 S^dag",
+      "count_tuple": [
+        0,
+        2,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "counts": {
+        "D": 0,
+        "Db": 0,
+        "H": 2,
+        "Hb": 0,
+        "P": 0,
+        "S": 1,
+        "Sb": 0,
+        "X": 0,
+        "Xb": 0
+      },
+      "degree": 3,
+      "monomial": "10_H^2 S",
+      "self_conjugate": false,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "character_dimension": 3333960,
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "conjugacy_orbit_key": [
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "conjugate_count_tuple": [
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "conjugate_monomial": "210_H 126bar_H 126bar_H^dag",
+      "count_tuple": [
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "counts": {
+        "D": 1,
+        "Db": 1,
+        "H": 0,
+        "Hb": 0,
+        "P": 1,
+        "S": 0,
+        "Sb": 0,
+        "X": 0,
+        "Xb": 0
+      },
+      "degree": 3,
+      "monomial": "210_H 126bar_H 126bar_H^dag",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "character_dimension": 264600,
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "conjugacy_orbit_key": [
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "conjugate_count_tuple": [
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "conjugate_monomial": "210_H 10_H 126bar_H^dag",
+      "count_tuple": [
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "counts": {
+        "D": 1,
+        "Db": 0,
+        "H": 0,
+        "Hb": 1,
+        "P": 1,
+        "S": 0,
+        "Sb": 0,
+        "X": 0,
+        "Xb": 0
+      },
+      "degree": 3,
+      "monomial": "210_H 10_H^dag 126bar_H",
+      "self_conjugate": false,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "character_dimension": 264600,
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "conjugacy_orbit_key": [
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "conjugate_count_tuple": [
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "conjugate_monomial": "210_H 10_H^dag 126bar_H",
+      "count_tuple": [
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "counts": {
+        "D": 0,
+        "Db": 1,
+        "H": 1,
+        "Hb": 0,
+        "P": 1,
+        "S": 0,
+        "Sb": 0,
+        "X": 0,
+        "Xb": 0
+      },
+      "degree": 3,
+      "monomial": "210_H 10_H 126bar_H^dag",
+      "self_conjugate": false,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "character_dimension": 1565620,
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "conjugacy_orbit_key": [
+        3,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "conjugate_count_tuple": [
+        3,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "conjugate_monomial": "210_H^3",
+      "count_tuple": [
+        3,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "counts": {
+        "D": 0,
+        "Db": 0,
+        "H": 0,
+        "Hb": 0,
+        "P": 3,
+        "S": 0,
+        "Sb": 0,
+        "X": 0,
+        "Xb": 0
+      },
+      "degree": 3,
+      "monomial": "210_H^3",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "character_dimension": 1,
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "conjugacy_orbit_key": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2
+      ],
+      "conjugate_count_tuple": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2
+      ],
+      "conjugate_monomial": "Phi17^2 Phi17^dag^2",
+      "count_tuple": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2
+      ],
+      "counts": {
+        "D": 0,
+        "Db": 0,
+        "H": 0,
+        "Hb": 0,
+        "P": 0,
+        "S": 0,
+        "Sb": 0,
+        "X": 2,
+        "Xb": 2
+      },
+      "degree": 4,
+      "monomial": "Phi17^2 Phi17^dag^2",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "character_dimension": 1,
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "conjugacy_orbit_key": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "conjugate_count_tuple": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "conjugate_monomial": "S S^dag Phi17 Phi17^dag",
+      "count_tuple": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "counts": {
+        "D": 0,
+        "Db": 0,
+        "H": 0,
+        "Hb": 0,
+        "P": 0,
+        "S": 1,
+        "Sb": 1,
+        "X": 1,
+        "Xb": 1
+      },
+      "degree": 4,
+      "monomial": "S S^dag Phi17 Phi17^dag",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "character_dimension": 1,
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "conjugacy_orbit_key": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        0
+      ],
+      "conjugate_count_tuple": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        0
+      ],
+      "conjugate_monomial": "S^2 S^dag^2",
+      "count_tuple": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        0
+      ],
+      "counts": {
+        "D": 0,
+        "Db": 0,
+        "H": 0,
+        "Hb": 0,
+        "P": 0,
+        "S": 2,
+        "Sb": 2,
+        "X": 0,
+        "Xb": 0
+      },
+      "degree": 4,
+      "monomial": "S^2 S^dag^2",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "character_dimension": 15876,
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "conjugacy_orbit_key": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1
+      ],
+      "conjugate_count_tuple": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1
+      ],
+      "conjugate_monomial": "126bar_H 126bar_H^dag Phi17 Phi17^dag",
+      "count_tuple": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1
+      ],
+      "counts": {
+        "D": 1,
+        "Db": 1,
+        "H": 0,
+        "Hb": 0,
+        "P": 0,
+        "S": 0,
+        "Sb": 0,
+        "X": 1,
+        "Xb": 1
+      },
+      "degree": 4,
+      "monomial": "126bar_H 126bar_H^dag Phi17 Phi17^dag",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "character_dimension": 15876,
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "conjugacy_orbit_key": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "conjugate_count_tuple": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "conjugate_monomial": "126bar_H 126bar_H^dag S S^dag",
+      "count_tuple": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "counts": {
+        "D": 1,
+        "Db": 1,
+        "H": 0,
+        "Hb": 0,
+        "P": 0,
+        "S": 1,
+        "Sb": 1,
+        "X": 0,
+        "Xb": 0
+      },
+      "degree": 4,
+      "monomial": "126bar_H 126bar_H^dag S S^dag",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "character_dimension": 64016001,
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "conjugacy_orbit_key": [
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      "conjugate_count_tuple": [
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      "conjugate_monomial": "126bar_H^2 126bar_H^dag^2",
+      "count_tuple": [
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      "counts": {
+        "D": 2,
+        "Db": 2,
+        "H": 0,
+        "Hb": 0,
+        "P": 0,
+        "S": 0,
+        "Sb": 0,
+        "X": 0,
+        "Xb": 0
+      },
+      "degree": 4,
+      "monomial": "126bar_H^2 126bar_H^dag^2",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 4
+    },
+    {
+      "character_dimension": 10081260,
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "conjugacy_orbit_key": [
+        0,
+        0,
+        1,
+        2,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "conjugate_count_tuple": [
+        0,
+        1,
+        0,
+        1,
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      "conjugate_monomial": "10_H 126bar_H 126bar_H^dag^2",
+      "count_tuple": [
+        0,
+        0,
+        1,
+        2,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "counts": {
+        "D": 2,
+        "Db": 1,
+        "H": 0,
+        "Hb": 1,
+        "P": 0,
+        "S": 0,
+        "Sb": 0,
+        "X": 0,
+        "Xb": 0
+      },
+      "degree": 4,
+      "monomial": "10_H^dag 126bar_H^2 126bar_H^dag",
+      "self_conjugate": false,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "character_dimension": 440055,
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "conjugacy_orbit_key": [
+        0,
+        0,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "conjugate_count_tuple": [
+        0,
+        2,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      "conjugate_monomial": "10_H^2 126bar_H^dag^2",
+      "count_tuple": [
+        0,
+        0,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "counts": {
+        "D": 2,
+        "Db": 0,
+        "H": 0,
+        "Hb": 2,
+        "P": 0,
+        "S": 0,
+        "Sb": 0,
+        "X": 0,
+        "Xb": 0
+      },
+      "degree": 4,
+      "monomial": "10_H^dag^2 126bar_H^2",
+      "self_conjugate": false,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "character_dimension": 10081260,
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "conjugacy_orbit_key": [
+        0,
+        0,
+        1,
+        2,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "conjugate_count_tuple": [
+        0,
+        0,
+        1,
+        2,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "conjugate_monomial": "10_H^dag 126bar_H^2 126bar_H^dag",
+      "count_tuple": [
+        0,
+        1,
+        0,
+        1,
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      "counts": {
+        "D": 1,
+        "Db": 2,
+        "H": 1,
+        "Hb": 0,
+        "P": 0,
+        "S": 0,
+        "Sb": 0,
+        "X": 0,
+        "Xb": 0
+      },
+      "degree": 4,
+      "monomial": "10_H 126bar_H 126bar_H^dag^2",
+      "self_conjugate": false,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "character_dimension": 100,
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "conjugacy_orbit_key": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "conjugate_count_tuple": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "conjugate_monomial": "10_H 10_H^dag Phi17 Phi17^dag",
+      "count_tuple": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "counts": {
+        "D": 0,
+        "Db": 0,
+        "H": 1,
+        "Hb": 1,
+        "P": 0,
+        "S": 0,
+        "Sb": 0,
+        "X": 1,
+        "Xb": 1
+      },
+      "degree": 4,
+      "monomial": "10_H 10_H^dag Phi17 Phi17^dag",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "character_dimension": 100,
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "conjugacy_orbit_key": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "conjugate_count_tuple": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "conjugate_monomial": "10_H 10_H^dag S S^dag",
+      "count_tuple": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "counts": {
+        "D": 0,
+        "Db": 0,
+        "H": 1,
+        "Hb": 1,
+        "P": 0,
+        "S": 1,
+        "Sb": 1,
+        "X": 0,
+        "Xb": 0
+      },
+      "degree": 4,
+      "monomial": "10_H 10_H^dag S S^dag",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "character_dimension": 1587600,
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "conjugacy_orbit_key": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "conjugate_count_tuple": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "conjugate_monomial": "10_H 10_H^dag 126bar_H 126bar_H^dag",
+      "count_tuple": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "counts": {
+        "D": 1,
+        "Db": 1,
+        "H": 1,
+        "Hb": 1,
+        "P": 0,
+        "S": 0,
+        "Sb": 0,
+        "X": 0,
+        "Xb": 0
+      },
+      "degree": 4,
+      "monomial": "10_H 10_H^dag 126bar_H 126bar_H^dag",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 2
+    },
+    {
+      "character_dimension": 440055,
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "conjugacy_orbit_key": [
+        0,
+        0,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "conjugate_count_tuple": [
+        0,
+        0,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "conjugate_monomial": "10_H^dag^2 126bar_H^2",
+      "count_tuple": [
+        0,
+        2,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      "counts": {
+        "D": 0,
+        "Db": 2,
+        "H": 2,
+        "Hb": 0,
+        "P": 0,
+        "S": 0,
+        "Sb": 0,
+        "X": 0,
+        "Xb": 0
+      },
+      "degree": 4,
+      "monomial": "10_H^2 126bar_H^dag^2",
+      "self_conjugate": false,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "character_dimension": 3025,
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "conjugacy_orbit_key": [
+        0,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "conjugate_count_tuple": [
+        0,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "conjugate_monomial": "10_H^2 10_H^dag^2",
+      "count_tuple": [
+        0,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "counts": {
+        "D": 0,
+        "Db": 0,
+        "H": 2,
+        "Hb": 2,
+        "P": 0,
+        "S": 0,
+        "Sb": 0,
+        "X": 0,
+        "Xb": 0
+      },
+      "degree": 4,
+      "monomial": "10_H^2 10_H^dag^2",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 2
+    },
+    {
+      "character_dimension": 264600,
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "conjugacy_orbit_key": [
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "conjugate_count_tuple": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "conjugate_monomial": "210_H 10_H 126bar_H S",
+      "count_tuple": [
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "counts": {
+        "D": 0,
+        "Db": 1,
+        "H": 0,
+        "Hb": 1,
+        "P": 1,
+        "S": 0,
+        "Sb": 1,
+        "X": 0,
+        "Xb": 0
+      },
+      "degree": 4,
+      "monomial": "210_H 10_H^dag 126bar_H^dag S^dag",
+      "self_conjugate": false,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "character_dimension": 264600,
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "conjugacy_orbit_key": [
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "conjugate_count_tuple": [
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "conjugate_monomial": "210_H 10_H^dag 126bar_H^dag S^dag",
+      "count_tuple": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "counts": {
+        "D": 1,
+        "Db": 0,
+        "H": 1,
+        "Hb": 0,
+        "P": 1,
+        "S": 1,
+        "Sb": 0,
+        "X": 0,
+        "Xb": 0
+      },
+      "degree": 4,
+      "monomial": "210_H 10_H 126bar_H S",
+      "self_conjugate": false,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "character_dimension": 22155,
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "conjugacy_orbit_key": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "conjugate_count_tuple": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "conjugate_monomial": "210_H^2 Phi17 Phi17^dag",
+      "count_tuple": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "counts": {
+        "D": 0,
+        "Db": 0,
+        "H": 0,
+        "Hb": 0,
+        "P": 2,
+        "S": 0,
+        "Sb": 0,
+        "X": 1,
+        "Xb": 1
+      },
+      "degree": 4,
+      "monomial": "210_H^2 Phi17 Phi17^dag",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "character_dimension": 22155,
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "conjugacy_orbit_key": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "conjugate_count_tuple": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "conjugate_monomial": "210_H^2 S S^dag",
+      "count_tuple": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "counts": {
+        "D": 0,
+        "Db": 0,
+        "H": 0,
+        "Hb": 0,
+        "P": 2,
+        "S": 1,
+        "Sb": 1,
+        "X": 0,
+        "Xb": 0
+      },
+      "degree": 4,
+      "monomial": "210_H^2 S S^dag",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "character_dimension": 351732780,
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "conjugacy_orbit_key": [
+        2,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "conjugate_count_tuple": [
+        2,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "conjugate_monomial": "210_H^2 126bar_H 126bar_H^dag",
+      "count_tuple": [
+        2,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "counts": {
+        "D": 1,
+        "Db": 1,
+        "H": 0,
+        "Hb": 0,
+        "P": 2,
+        "S": 0,
+        "Sb": 0,
+        "X": 0,
+        "Xb": 0
+      },
+      "degree": 4,
+      "monomial": "210_H^2 126bar_H 126bar_H^dag",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 6
+    },
+    {
+      "character_dimension": 27915300,
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "conjugacy_orbit_key": [
+        2,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "conjugate_count_tuple": [
+        2,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "conjugate_monomial": "210_H^2 10_H 126bar_H^dag",
+      "count_tuple": [
+        2,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "counts": {
+        "D": 1,
+        "Db": 0,
+        "H": 0,
+        "Hb": 1,
+        "P": 2,
+        "S": 0,
+        "Sb": 0,
+        "X": 0,
+        "Xb": 0
+      },
+      "degree": 4,
+      "monomial": "210_H^2 10_H^dag 126bar_H",
+      "self_conjugate": false,
+      "so10_singlet_multiplicity": 2
+    },
+    {
+      "character_dimension": 27915300,
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "conjugacy_orbit_key": [
+        2,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "conjugate_count_tuple": [
+        2,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "conjugate_monomial": "210_H^2 10_H^dag 126bar_H",
+      "count_tuple": [
+        2,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "counts": {
+        "D": 0,
+        "Db": 1,
+        "H": 1,
+        "Hb": 0,
+        "P": 2,
+        "S": 0,
+        "Sb": 0,
+        "X": 0,
+        "Xb": 0
+      },
+      "degree": 4,
+      "monomial": "210_H^2 10_H 126bar_H^dag",
+      "self_conjugate": false,
+      "so10_singlet_multiplicity": 2
+    },
+    {
+      "character_dimension": 2215500,
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "conjugacy_orbit_key": [
+        2,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "conjugate_count_tuple": [
+        2,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "conjugate_monomial": "210_H^2 10_H 10_H^dag",
+      "count_tuple": [
+        2,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "counts": {
+        "D": 0,
+        "Db": 0,
+        "H": 1,
+        "Hb": 1,
+        "P": 2,
+        "S": 0,
+        "Sb": 0,
+        "X": 0,
+        "Xb": 0
+      },
+      "degree": 4,
+      "monomial": "210_H^2 10_H 10_H^dag",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 3
+    },
+    {
+      "character_dimension": 83369265,
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "conjugacy_orbit_key": [
+        4,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "conjugate_count_tuple": [
+        4,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "conjugate_monomial": "210_H^4",
+      "count_tuple": [
+        4,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "counts": {
+        "D": 0,
+        "Db": 0,
+        "H": 0,
+        "Hb": 0,
+        "P": 4,
+        "S": 0,
+        "Sb": 0,
+        "X": 0,
+        "Xb": 0
+      },
+      "degree": 4,
+      "monomial": "210_H^4",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 4
+    }
+  ],
+  "n_checks": 13,
+  "n_failed": 0,
+  "next_exact_target": "Re-audit the normalized 44-direction subset of the existing tensor compiler under the gauged U(1)_X contract.",
+  "overall_state": "PARTIAL",
+  "potential_orbits": [
+    {
+      "degree": 2,
+      "members": [
+        "Phi17 Phi17^dag"
+      ],
+      "orbit_key": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "real_parameter_count": 1,
+      "representative": "Phi17 Phi17^dag",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "degree": 2,
+      "members": [
+        "S S^dag"
+      ],
+      "orbit_key": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "real_parameter_count": 1,
+      "representative": "S S^dag",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "degree": 2,
+      "members": [
+        "126bar_H 126bar_H^dag"
+      ],
+      "orbit_key": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "real_parameter_count": 1,
+      "representative": "126bar_H 126bar_H^dag",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "degree": 2,
+      "members": [
+        "10_H 10_H^dag"
+      ],
+      "orbit_key": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "real_parameter_count": 1,
+      "representative": "10_H 10_H^dag",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "degree": 2,
+      "members": [
+        "210_H^2"
+      ],
+      "orbit_key": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "real_parameter_count": 1,
+      "representative": "210_H^2",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "degree": 3,
+      "members": [
+        "10_H^dag^2 S^dag",
+        "10_H^2 S"
+      ],
+      "orbit_key": [
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "real_parameter_count": 2,
+      "representative": "10_H^dag^2 S^dag",
+      "self_conjugate": false,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "degree": 3,
+      "members": [
+        "210_H 126bar_H 126bar_H^dag"
+      ],
+      "orbit_key": [
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "real_parameter_count": 1,
+      "representative": "210_H 126bar_H 126bar_H^dag",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "degree": 3,
+      "members": [
+        "210_H 10_H^dag 126bar_H",
+        "210_H 10_H 126bar_H^dag"
+      ],
+      "orbit_key": [
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "real_parameter_count": 2,
+      "representative": "210_H 10_H^dag 126bar_H",
+      "self_conjugate": false,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "degree": 3,
+      "members": [
+        "210_H^3"
+      ],
+      "orbit_key": [
+        3,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "real_parameter_count": 1,
+      "representative": "210_H^3",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "degree": 4,
+      "members": [
+        "Phi17^2 Phi17^dag^2"
+      ],
+      "orbit_key": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2
+      ],
+      "real_parameter_count": 1,
+      "representative": "Phi17^2 Phi17^dag^2",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "degree": 4,
+      "members": [
+        "S S^dag Phi17 Phi17^dag"
+      ],
+      "orbit_key": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "real_parameter_count": 1,
+      "representative": "S S^dag Phi17 Phi17^dag",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "degree": 4,
+      "members": [
+        "S^2 S^dag^2"
+      ],
+      "orbit_key": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        0
+      ],
+      "real_parameter_count": 1,
+      "representative": "S^2 S^dag^2",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "degree": 4,
+      "members": [
+        "126bar_H 126bar_H^dag Phi17 Phi17^dag"
+      ],
+      "orbit_key": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1
+      ],
+      "real_parameter_count": 1,
+      "representative": "126bar_H 126bar_H^dag Phi17 Phi17^dag",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "degree": 4,
+      "members": [
+        "126bar_H 126bar_H^dag S S^dag"
+      ],
+      "orbit_key": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "real_parameter_count": 1,
+      "representative": "126bar_H 126bar_H^dag S S^dag",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "degree": 4,
+      "members": [
+        "126bar_H^2 126bar_H^dag^2"
+      ],
+      "orbit_key": [
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      "real_parameter_count": 4,
+      "representative": "126bar_H^2 126bar_H^dag^2",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 4
+    },
+    {
+      "degree": 4,
+      "members": [
+        "10_H^dag 126bar_H^2 126bar_H^dag",
+        "10_H 126bar_H 126bar_H^dag^2"
+      ],
+      "orbit_key": [
+        0,
+        0,
+        1,
+        2,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "real_parameter_count": 2,
+      "representative": "10_H^dag 126bar_H^2 126bar_H^dag",
+      "self_conjugate": false,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "degree": 4,
+      "members": [
+        "10_H^dag^2 126bar_H^2",
+        "10_H^2 126bar_H^dag^2"
+      ],
+      "orbit_key": [
+        0,
+        0,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "real_parameter_count": 2,
+      "representative": "10_H^dag^2 126bar_H^2",
+      "self_conjugate": false,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "degree": 4,
+      "members": [
+        "10_H 10_H^dag Phi17 Phi17^dag"
+      ],
+      "orbit_key": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "real_parameter_count": 1,
+      "representative": "10_H 10_H^dag Phi17 Phi17^dag",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "degree": 4,
+      "members": [
+        "10_H 10_H^dag S S^dag"
+      ],
+      "orbit_key": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "real_parameter_count": 1,
+      "representative": "10_H 10_H^dag S S^dag",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "degree": 4,
+      "members": [
+        "10_H 10_H^dag 126bar_H 126bar_H^dag"
+      ],
+      "orbit_key": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "real_parameter_count": 2,
+      "representative": "10_H 10_H^dag 126bar_H 126bar_H^dag",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 2
+    },
+    {
+      "degree": 4,
+      "members": [
+        "10_H^2 10_H^dag^2"
+      ],
+      "orbit_key": [
+        0,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "real_parameter_count": 2,
+      "representative": "10_H^2 10_H^dag^2",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 2
+    },
+    {
+      "degree": 4,
+      "members": [
+        "210_H 10_H^dag 126bar_H^dag S^dag",
+        "210_H 10_H 126bar_H S"
+      ],
+      "orbit_key": [
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "real_parameter_count": 2,
+      "representative": "210_H 10_H^dag 126bar_H^dag S^dag",
+      "self_conjugate": false,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "degree": 4,
+      "members": [
+        "210_H^2 Phi17 Phi17^dag"
+      ],
+      "orbit_key": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "real_parameter_count": 1,
+      "representative": "210_H^2 Phi17 Phi17^dag",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "degree": 4,
+      "members": [
+        "210_H^2 S S^dag"
+      ],
+      "orbit_key": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "real_parameter_count": 1,
+      "representative": "210_H^2 S S^dag",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 1
+    },
+    {
+      "degree": 4,
+      "members": [
+        "210_H^2 126bar_H 126bar_H^dag"
+      ],
+      "orbit_key": [
+        2,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "real_parameter_count": 6,
+      "representative": "210_H^2 126bar_H 126bar_H^dag",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 6
+    },
+    {
+      "degree": 4,
+      "members": [
+        "210_H^2 10_H^dag 126bar_H",
+        "210_H^2 10_H 126bar_H^dag"
+      ],
+      "orbit_key": [
+        2,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "real_parameter_count": 4,
+      "representative": "210_H^2 10_H^dag 126bar_H",
+      "self_conjugate": false,
+      "so10_singlet_multiplicity": 2
+    },
+    {
+      "degree": 4,
+      "members": [
+        "210_H^2 10_H 10_H^dag"
+      ],
+      "orbit_key": [
+        2,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "real_parameter_count": 3,
+      "representative": "210_H^2 10_H 10_H^dag",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 3
+    },
+    {
+      "degree": 4,
+      "members": [
+        "210_H^4"
+      ],
+      "orbit_key": [
+        4,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "real_parameter_count": 4,
+      "representative": "210_H^4",
+      "self_conjugate": true,
+      "so10_singlet_multiplicity": 4
+    }
+  ],
+  "status": "EXACT_GAUGED_U1X_RENORMALIZABLE_MULTIPLICITY_CENSUS_COMPLETE__COMPILER_REAUDIT_OPEN",
+  "verdict": "The manuscript-authoritative SO(10) x U(1)_X theory has 34 multidegrees, 28 conjugacy orbits, 44 invariant directions, and 51 real parameters. The no-X 64/91 result is retained only as a historical counterfactual; tensor/compiler integration remains open."
+}

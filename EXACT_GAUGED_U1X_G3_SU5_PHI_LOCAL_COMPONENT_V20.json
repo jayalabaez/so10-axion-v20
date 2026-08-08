@@ -1,0 +1,86 @@
+{
+  "SU4_fixed_space": {
+    "I4125_identity": "80*(a^2-b^2-c^2)^2/21",
+    "I54_identity": "(3*a^2-3*b^2+4*c^2)^2/35",
+    "common_real_zero_locus": "c=0 and a^2=b^2",
+    "displayed_basis_is_complete_fixed_space": true,
+    "displayed_basis_rank": 4,
+    "displayed_fixed_basis": "A, B, Re(dz1 dz2 dz3 dz4), Im(dz1 dz2 dz3 dz4)",
+    "exact_fixed_space_dimension": 4,
+    "generator_times_displayed_basis_max_abs": 0,
+    "integral_su4_generator_count": 15,
+    "phase_fixed_slice": "Phi=a*A+b*B+c*Re(dz1 dz2 dz3 dz4)",
+    "source_binding_exact": true,
+    "stacked_action_plus_basis_row_rank": 210,
+    "stacked_action_rank_mod_prime": 206,
+    "stacked_action_shape": [
+      3150,
+      210
+    ]
+  },
+  "checks": {
+    "SU4_fixed_space_is_exactly_four_dimensional": true,
+    "distant_components_not_overclaimed": true,
+    "global_G3_not_overclaimed": true,
+    "kernel_is_orbit_plus_radial_plus_C5": true,
+    "linearized_4125_rank_is_exactly_179": true,
+    "local_signed_orbit_components_closed": true,
+    "phase_fixed_SU4_slice_is_exactly_classified": true,
+    "unit_normal_slice_has_only_C5_kernel": true
+  },
+  "failures": [],
+  "linearized_kernel": {
+    "Gram_times_exhibited_kernel_max_abs": 0,
+    "SO10_orbit_tangent_rank": 20,
+    "combined_exhibited_kernel_rank": 31,
+    "exact_linearized_nullity": 31,
+    "exact_linearized_rank_over_Q_R": 179,
+    "holomorphic_basis_Gram_is_8_identity": true,
+    "holomorphic_four_form_real_rank": 10,
+    "kernel_decomposition": "T_F(SO(10).F)[20] direct_sum R*F[1] direct_sum Re(Lambda^(4,0) C^5)[10]",
+    "kernel_decomposition_exact": true,
+    "linearized_Gram_denominator": 3096576,
+    "linearized_Gram_rank_mod_prime": 179,
+    "linearized_Gram_shape": [
+      210,
+      210
+    ],
+    "massive_slice_dimension": 179,
+    "orbit_holomorphic_inner_product_max_abs": 0,
+    "prime": 1000003,
+    "radial_holomorphic_inner_product_max_abs": 0,
+    "radial_orbit_inner_product_max_abs": 0,
+    "radial_rank": 1,
+    "remaining_slice_kernel_dimension": 10,
+    "residual_map": "Phi -> Pi4125(Phi tensor Phi)",
+    "source_binding_exact": true,
+    "unit_sphere_SO10_normal_slice_dimension": 189
+  },
+  "local_component_argument": {
+    "applies_at_minus_F": "The residuals are quadratic, so the same derivative-rank and slice argument applies separately at -F.",
+    "step_1_slice": "The compact SO(10) slice theorem puts every sufficiently nearby orbit into the orthogonal normal slice at F.",
+    "step_2_IFT": "On the unit normal slice d(Pi4125) has rank 179, so 179 independent residual coordinates solve the 179 massive variables uniquely as an analytic graph over the real C^5 kernel.",
+    "step_3_equivariance": "Uniqueness and U(5)-invariance make the graph U(5)-equivariant.",
+    "step_4_transitivity": "SU(5) acts transitively on the unit sphere in C^5; a nonzero kernel coordinate is rotated, with phase fixed, to c*Re(dz1...dz4).",
+    "step_5_fixed_slice": "Its SU(4) stabilizer fixes the graph point.  The exact fixed-space calculation puts it in the phase-fixed A,B,C slice.",
+    "step_6_obstruction": "The two exact projector identities imply c=0, contradicting a nonzero C^5 coordinate.  Unit norm then leaves only F locally.",
+    "theorem": "There are neighborhoods U_plus and U_minus on the unit sphere whose common projector-zero sets are exactly U_plus intersect SO(10).F and U_minus intersect SO(10).(-F).",
+    "theorem_scope": "qualitative local neighborhoods; no explicit radius"
+  },
+  "n_checks": 8,
+  "n_failed": 0,
+  "overall_state": "LOCAL_COMPONENT_THEOREM_CLOSED",
+  "scope": {
+    "G3_closed": false,
+    "PD_global_equality_orbit_classification_complete": false,
+    "corrected_signed_global_orbit_theorem_proved": false,
+    "disconnected_distant_components_excluded": false,
+    "explicit_neighborhood_radius_available": false,
+    "minus_F_local_component_classified": true,
+    "plus_F_local_component_classified": true,
+    "signed_orbit_locally_isolated": true,
+    "whole_model_excluded": false
+  },
+  "status": "EXACT_LOCAL_COMPONENT_THEOREM_CLOSED__DISTANT_COMPONENTS_OPEN",
+  "verdict": "The signed Kahler-square orbits are exact isolated local components of the normalized Phi projector-zero locus.  No infinitesimal or nonlinear branch can emanate from either orbit.  A disconnected component far from both signed orbits is not excluded, so the global Phi lemma and G3 remain open."
+}

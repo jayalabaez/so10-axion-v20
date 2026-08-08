@@ -1,70 +1,79 @@
-(* =====================================================================
-   SARAH model-file scaffold: SO(10)×Z17 axion candidate v20
-   =====================================================================
-   Purpose: complete field-content + charge ledger for a *live* SARAH run
-   of the renormalizable 210^n + mixed 126/10/S sector.
+(* ==================================================================== *)
+(* Native non-supersymmetric SARAH 4 input: SO(10) x U(1)_X, residual  *)
+(* Z_17, and the complete anomaly-cancelling v20 matter catalogue.      *)
+(*                                                                      *)
+(* This file establishes the gauge, matter, charge, kinetic, and        *)
+(* representative renormalizable-interaction contract.  The independent *)
+(* Clebsch contractions of the full 210/126bar/10 scalar potential are  *)
+(* evaluated by the repository tensor backend; a single SARAH Dot       *)
+(* contraction must not be interpreted as that multi-invariant basis.   *)
+(* ==================================================================== *)
 
-   This repository does NOT claim a live Mathematica/SARAH execution unless
-   an external probe finds `math`/`wolframscript` + SARAH and returns a dump.
-   Coefficients used elsewhere still come from published MV/Dynkin formulas.
+Model`Name = "SO10Z17AxionV20";
+Model`NameLaTeX = "SO(10) x U(1)_X axion candidate v20";
+Model`Authors = "SO10 axion v20 collaboration";
+Model`Date = "2026-08-07";
 
-   Charges (v20 lock):
-     10_H, 126bar_H : PQ = -2
-     210_H          : PQ = 0
-     S              : PQ = +4
-     Phi17          : (X, PQ) = (17, 0)
-   Forbidden: bare 10_H^2 (PQ); 10·126·S (SO(10) invariant absent at dim-3
-   without 210). Legal dim-4 mix: 210·10·126·S.
-   ===================================================================== *)
+NameOfStates = {GaugeES};
 
-NameOfModel = "SO10Z17AxionV20";
-GlobalSymmetry = {Z[17]};
+(* Gauge groups.  The fifth entry follows SARAH's adjoint-index-expansion
+   convention; neither factor needs explicit adjoint components here. *)
+Gauge[[1]] = {G10, SO[10], SOGUT, g10, False};
+Gauge[[2]] = {GX, U[1], X, gX, False};
 
-(* --- Gauge --- *)
-Gauge[[1]] = {G10, SO, 10, globalU1Charges -> {0}};
+(* The gauged field Phi17 leaves this exact residual subgroup after its VEV. *)
+Global[[1]] = {Z[17], Z17};
 
-(* --- Scalars --- *)
-(* Real 210 adjoint-like SO(10) tensor; PQ=0 *)
-ScalarFields[[1]] = {
-  Phi210, {210}, SO10Real, {0 (*PQ*), 0 (*X*)}
-};
-(* Complex 126bar, PQ=-2 *)
-ScalarFields[[2]] = {
-  Delta126bar, {126}, Complex, {-2, 0}
-};
-(* Complex 10, PQ=-2 *)
-ScalarFields[[3]] = {
-  H10, {10}, Complex, {-2, 0}
-};
-(* Complex SO(10) singlet S, PQ=+4 *)
-ScalarFields[[4]] = {
-  S, {1}, Complex, {4, 0}
-};
-(* Complex U(1)_X breaking singlet Phi17, X=17, PQ=0 *)
-ScalarFields[[5]] = {
-  Phi17, {1}, Complex, {0, 17}
-};
+(* Native order: {multiplet, generations, components, SO(10), X, Z17}. *)
+ScalarFields[[1]] = {Phi210,       1, phi210,      210,    0,  0};
+ScalarFields[[2]] = {Delta126bar,  1, delta126bar, -126,  -2, 15};
+ScalarFields[[3]] = {H10,          1, h10,           10,  -2, 15};
+ScalarFields[[4]] = {S,            1, singletS,        1,   4,  4};
+ScalarFields[[5]] = {Phi17,        1, phi17,           1,  17,  0};
 
-(* --- Fermions --- *)
-(* Three light 16 + decay-safe heavy 16 pairs entered via matter content *)
-FermionFields[[1]] = {Psi16, {16}, 3 (*generations*), {0, 0}};
+(* The 210 is a real SO(10) representation. *)
+RealScalars = {phi210};
 
-(* --- Superpotential / scalar potential operators (nonsusy: listed as V) ---
-   SARAH nonsusy: encode as Potential terms with charge-allowed monomials.
-   Pure 210^n: Hilbert H2=1, H3=2, H4=4 (see hilbert_210n_residual_certificate).
-   Mixed: kappa * H10^2 S ; lam4 * Phi210 H10 Delta126bar S ;
-          lambda_lock * Delta126bar^2 H10^2 S^2 / M_* ^2 (dim-6 locking).
-*)
+(* Three light F families, P and R, five s/b spectator pairs, and Q sector. *)
+FermionFields[[1]] = {F,      3, f16,      16,   1,  1};
+FermionFields[[2]] = {P,      1, p16,      16,   1,  1};
+FermionFields[[3]] = {R,      1, r16,      16,   1,  1};
+FermionFields[[4]] = {SpecS,  5, s16,      16,   2,  2};
+FermionFields[[5]] = {SpecB,  5, b16bar,  -16,  -6, 11};
+FermionFields[[6]] = {Q,      1, q16,      16,  14, 14};
+FermionFields[[7]] = {Pbar,   1, pbar16,  -16,  16, 16};
+FermionFields[[8]] = {Qbar,   1, qbar16,  -16,   3,  3};
+FermionFields[[9]] = {Rbar,   1, rbar16,  -16, -18, 16};
 
-DEFINITION[EWSB][VEVs] = {
-  {Phi210, 0, v210},   (* PS/GUT direction; detailed CG external *)
-  {Delta126bar, 0, v126},
-  {H10, 0, v10},
-  {S, 0, vS},
-  {Phi17, 0, vPhi}
+DEFINITION[GaugeES][LagrangianInput] = {
+  {LagHC,   {AddHC -> True}},
+  {LagNoHC, {AddHC -> False}}
 };
 
-(* Boundary conditions / soft terms: M_1/2 from stationarity matching upstream *)
-SoftGauginoMass[G10] = M12;
+(* Charge-neutral Yukawa, vectorlike-mass, mixing, and scalar interactions. *)
+LagHC = -(
+    Y10 F.F.H10
+  + Y126 F.F.Delta126bar
+  + yP conj[Phi17].P.Pbar
+  + yQ conj[Phi17].Q.Qbar
+  + yR Phi17.R.Rbar
+  + ys S.SpecS.SpecB
+  + lambdaP P.F.H10
+  + lambdaR R.F.H10
+  + lambdaQB conj[S].Qbar.F
+  + lambdaQR S.Q.Rbar
+  + kappaH H10.H10.S
+);
 
-(* End of scaffold — live SARAH must expand CG for 210^n and emit β dump. *)
+(* Hermitian mass and singlet-quartic sector.  Covariant kinetic terms are
+   generated by SARAH from the native gauge and matter declarations above. *)
+LagNoHC = -(
+    m210Sq/2 Phi210.Phi210
+  + m126Sq conj[Delta126bar].Delta126bar
+  + m10Sq conj[H10].H10
+  + mSSq conj[S].S
+  + m17Sq conj[Phi17].Phi17
+  + lambdaS/2 conj[S].S.conj[S].S
+  + lambda17/2 conj[Phi17].Phi17.conj[Phi17].Phi17
+  + lambdaS17 conj[S].S.conj[Phi17].Phi17
+);

@@ -9,6 +9,11 @@ def test_exact_report_passes_fail_closed():
     report = mod.build_report()
     assert report["n_failed"] == 0, report["failures"]
     assert all(report["checks"].values())
+    assert report["model_contract_id"] == "historical_option_c_no_x_v20"
+    assert report["authoritative_for_manuscript"] is False
+    assert report["model_wide_no_go_certified"] is False
+    assert "NONAUTHORITATIVE" in report["status"]
+    assert report["flags"]["phi17_dressings_allowed_by_manuscript_u1x"] is False
     assert report["flags"]["complete_mixed_invariant_ring"] is False
     assert report["flags"]["whole_model_validated"] is False
 
@@ -22,10 +27,14 @@ def test_fifteen_equal_eight_plus_seven():
     assert set(census["missing"]) == {row["name"] for row in mod.ADDITIONS}
 
 
-def test_all_seven_are_declared_allowed_and_independent():
+def test_all_seven_are_option_c_allowed_but_manuscript_forbidden():
     charges = mod.charge_audit()
     independence = mod.independence_audit()
-    assert all(row["declared_allowed"]["all"] for row in charges.values())
+    assert all(row["option_c_no_x_allowed"]["all"] for row in charges.values())
+    assert all(
+        not row["gauged_u1x_manuscript_allowed"]["all"]
+        for row in charges.values()
+    )
     assert all(row["multiplicity"] == 1 for row in mod.ADDITIONS)
     assert independence["all_seven_have_distinct_field_multi_degree"] is True
 

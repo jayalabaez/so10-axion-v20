@@ -1,0 +1,359 @@
+{
+  "status": "PASS",
+  "overall_state": "BLOCKED",
+  "classification": "MODEL_CONTRACT_INCONSISTENT__AUTHORITATIVE_GATES_REOPENED",
+  "decision": "WITHHOLD_APPROVAL",
+  "full_theory_validated": false,
+  "empirical_discovery": false,
+  "current_tree_unit_tests_discovered": 886,
+  "n_gates": 11,
+  "n_failed_gates": 0,
+  "failed_gates": [],
+  "n_blocked_gates": 2,
+  "blocked_gates": [
+    "authoritative_model_contract",
+    "full_scalar_potential_vacuum_and_spectrum"
+  ],
+  "mandatory_nonpass_gates": [
+    "authoritative_model_contract",
+    "complete_operator_basis_and_PQ_quality",
+    "full_scalar_potential_vacuum_and_spectrum",
+    "two_loop_RGE_unification_and_thresholds",
+    "global_quark_lepton_neutrino_fit",
+    "UV_portal_selection_and_FCNC",
+    "proton_decay",
+    "axion_cosmology",
+    "direct_37GHz_experiment",
+    "reproducibility_and_CI"
+  ],
+  "overclaim_errors": [],
+  "overclaim_warnings": [
+    "vacuum status says alignment is solved under named axioms; the full scalar landscape remains open",
+    "RGE status says the diagnostic piecewise chain is complete; full two-loop SO(10)+210 closure remains open"
+  ],
+  "missing_artifacts": [
+    "CURRENT_UNIT_TEST_ATTESTATION.json"
+  ],
+  "gates": [
+    {
+      "name": "authoritative_model_contract",
+      "state": "BLOCKED",
+      "summary": "The manuscript gauges U(1)_X. The scalar census and every tool-native executable model must implement that same contract, with manifest/log-bound external evidence, before any G1-G8 result can validate the manuscript.",
+      "evidence": {
+        "audit_present": true,
+        "audit_executes": true,
+        "desired_contract_present": true,
+        "desired_contract_executes": true,
+        "contract_consistent": false,
+        "implementation_matches_manuscript": true,
+        "tool_native_bound_external_evidence": false,
+        "model_syntax_class": "sarah_native",
+        "conflicts": [
+          "executable_scaffold_lacks_current_sha256_bound_external_tool_validation",
+          "external_attestation_lacks_hash_bound_manifest_or_process_log"
+        ],
+        "blockers": [
+          "AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED"
+        ]
+      },
+      "kill_condition": "The implemented symmetry contract differs from the theory being claimed.",
+      "green_condition": "The TeX definition, tool-native gauge sector, exact-X scalar census, and derivative/quotient calculations carry one matching contract ID, and v2 evidence binds the model, manifest, driver, and process log.",
+      "mandatory_for_full_validation": true
+    },
+    {
+      "name": "mathematical_and_software_core",
+      "state": "PASS",
+      "summary": "Anomalies, group/Lorentz certificates, core numerical anchors, and adversarial checks are the minimum internal-consistency gate.",
+      "evidence": {
+        "engine_42_of_42": true,
+        "independent_audit_pass": true,
+        "adversarial_zero_hard_failures": true,
+        "extensive_53_of_53": true
+      },
+      "kill_condition": "Any anomaly, nonzero-forced contraction, arithmetic, or reproducibility failure.",
+      "green_condition": "Independent implementations reproduce every frozen core result with zero hard failures.",
+      "mandatory_for_full_validation": true
+    },
+    {
+      "name": "complete_operator_basis_and_PQ_quality",
+      "state": "OPEN",
+      "summary": "The anomaly/PQ-quality core survives, but the independent audit finds additional charge-allowed monomials and the displayed P=8 number remains a unit-coefficient kernel rather than a summed amplitude.",
+      "evidence": {
+        "independent_audit_available": true,
+        "manuscript_portal_list_incomplete": true,
+        "soft_falsifications": [
+          "correct inequality is Gamma <= massless benchmark",
+          "manuscript portal list is incomplete",
+          "v20 'perturbative to M_Pl with alpha=1/40' claim fails under single RG trajectory"
+        ]
+      },
+      "kill_condition": "An omitted lower-dimensional gauge/Lorentz invariant gives |Delta theta| >= 1e-10 for physically reasonable coefficients.",
+      "green_condition": "An independent Hilbert-series/exhaustive basis proves completeness and the summed Wilson/Clebsch/flavour/RG amplitude remains safe.",
+      "mandatory_for_full_validation": true
+    },
+    {
+      "name": "full_scalar_potential_vacuum_and_spectrum",
+      "state": "BLOCKED",
+      "summary": "The gauged 44-direction/51-parameter derivatives on 486 real fields are recertified. Three structural gradient columns vanish exactly, and exact lower- and upper-rank certificates prove stationarity rank/nullity 13/38. The gauged SO(10)xU(1)_X orbit has exact rank 37, so its gauge quotient is 449-dimensional and includes the axion; removing the independent global-PQ direction gives the exactly 448-dimensional massive/transverse Hessian space. A sparse 27-of-51 candidate with J0=-21/200 has a complete source-bound sum-of-squares decomposition: the potential is exactly BFB and the selected vacuum is exactly stationary. Direct tensor assembly gives P+Delta rank/nullity 429/33, while the exact extension Jacobian leaves only 38 symmetry tangents and proves positivity in all 448 transverse directions. The selected orbit is therefore a strict local minimum. An exact symmetry-inequivalent 126bar field configuration is lower by 25*r^4/19008, and the fixed-P branch obeys the exact gap/curvature identity gap=-m_transverse^2/8; that branch is therefore excluded. The lower replacement has the wrong stabilizer. A new SU(5)-singlet Phi+Delta branch is an exact global minimum in the Phi/Sigma subsystem, has the SM stabilizer, and has exact Hessian rank/nullity 429/33 with a strictly positive local quotient. Its chiral-H extension is exactly stationary, symmetry-correct and BFB; the exact full Hessian has rank/nullity 448/38 and is positive on the quotient. The maximally negative pure-Delta sector is excluded for arbitrary real Phi with all residuals retained and sharp gap 1/5000. G3 remains open only on uniform coercivity for arbitrary non-pure-Delta Sigma orientations. The old no-X 64/91 result remains historical.",
+      "evidence": {
+        "model_contract_state": "BLOCKED",
+        "authoritative_G1_closed": false,
+        "authoritative_G2_closed": false,
+        "gauged_G1_scoped_calculation_complete": true,
+        "gauged_G2_scoped_calculation_complete": true,
+        "gauged_G2_direction_parameter_field_counts": [
+          44,
+          51,
+          486
+        ],
+        "gauged_G2_promoted_stationarity_rank_nullity": [
+          13,
+          38
+        ],
+        "gauged_G2_exact_projector_zero_corrected_normalized_SVD_rank_13": true,
+        "gauged_G2_stationarity_rank_13_exactly_certified": true,
+        "gauged_G2_stationarity_nullity_38_exactly_certified": true,
+        "gauged_G2_stationarity_rank_upper_bound_13_exactly_certified": true,
+        "gauged_G3_artifact_present": true,
+        "gauged_G3_corrected_common_kernel_artifact_present": true,
+        "gauged_G3_corrected_common_kernel_honestly_bound": true,
+        "gauged_G3_corrected_common_kernel_rank_nullity_numerical": [
+          448,
+          0
+        ],
+        "gauged_G3_corrected_common_kernel_proof_grade": false,
+        "gauged_G3_SOS_candidate_artifact_present": true,
+        "gauged_G3_PD_rank_artifact_present": true,
+        "gauged_G3_A_square_artifact_present": true,
+        "gauged_G3_SOS_BFB_artifact_present": true,
+        "gauged_G3_fixed_P_kernel_bound_artifact_present": true,
+        "gauged_G3_lower_replacement_artifact_present": true,
+        "gauged_G3_SU5_Delta_PD_artifact_present": true,
+        "gauged_G3_SU5_Delta_HSX_artifact_present": true,
+        "gauged_G3_SU5_Delta_HSX_exact_Hessian_artifact_present": true,
+        "gauged_G3_SU5_equality_artifact_present": true,
+        "gauged_G3_SU5_Phi_orbit_audit_artifact_present": true,
+        "gauged_G3_SU5_Phi_local_component_artifact_present": true,
+        "gauged_G3_SU5_Phi_SU3_slice_artifact_present": true,
+        "gauged_G3_SU5_global_gap_artifact_present": true,
+        "gauged_G3_SU5_fixed_F_offkernel_artifact_present": true,
+        "gauged_G3_SU5_max_negative_zero_residual_artifact_present": true,
+        "gauged_G3_SU5_max_negative_full_residual_artifact_present": true,
+        "gauged_G3_alternative_global_SOS_artifact_present": true,
+        "final_G3_acceptance_gate_artifact_present": true,
+        "gauged_G3_SOS_candidate_exact_local_and_globally_fail_closed": true,
+        "gauged_G3_SOS_candidate_honestly_scoped": true,
+        "gauged_G3_A_square_recoupling_exactly_source_bound": true,
+        "gauged_G3_SOS_BFB_stationarity_exactly_source_bound": true,
+        "gauged_G3_PD_rank_direct_exact_and_fail_closed": true,
+        "gauged_G3_constructive_candidate_nonzero_of_51": [
+          27,
+          51
+        ],
+        "gauged_G3_constructive_candidate_max_abs_coefficient": 9.125,
+        "gauged_G3_constructive_candidate_J0": "-21/200",
+        "gauged_G3_exact_PD_rank_nullity": [
+          429,
+          33
+        ],
+        "gauged_G3_exact_full_Hessian_rank": 448,
+        "gauged_G3_direct_PD_source_binding": true,
+        "gauged_G3_frontier_honestly_fail_closed": true,
+        "gauged_G3_fixed_P_branch_exactly_excluded": true,
+        "gauged_G3_lower_replacement_rejected_for_wrong_symmetry": true,
+        "gauged_G3_SU5_Delta_PD_exact_global_frontier": true,
+        "gauged_G3_SU5_Delta_PD_exact_Hessian_rank_nullity": [
+          429,
+          33
+        ],
+        "gauged_G3_SU5_Delta_PD_full_486_extension_open": true,
+        "gauged_G3_SU5_Delta_PD_global_orbit_uniqueness_open": true,
+        "gauged_G3_SU5_Delta_HSX_honest_frontier": true,
+        "gauged_G3_SU5_Delta_HSX_exact_symmetry_ranks": [
+          36,
+          37,
+          38
+        ],
+        "gauged_G3_SU5_Delta_HSX_full_quartic_BFB_exact": true,
+        "gauged_G3_SU5_Delta_HSX_transverse_dimension": 448,
+        "gauged_G3_SU5_Delta_HSX_full_Hessian_proof_grade": false,
+        "gauged_G3_SU5_Delta_HSX_exact_Hessian_audit_fail_closed": true,
+        "gauged_G3_SU5_Delta_HSX_exact_Hessian_certified": true,
+        "gauged_G3_SU5_Delta_HSX_exact_Hessian_status": "EXACT_FULL_HESSIAN_RANK_448_NULLITY_38_CERTIFIED",
+        "gauged_G3_SU5_equality_honestly_reduced": true,
+        "gauged_G3_SU5_Phi_orbit_literal_refuted_signed_open": true,
+        "gauged_G3_SU5_signed_Phi_local_components_exactly_closed": true,
+        "gauged_G3_SU5_distant_Phi_components_excluded": false,
+        "gauged_G3_SU5_Phi_SU3_fixed_slice_exactly_closed": true,
+        "gauged_G3_SU5_global_Phi_orbit_lemma_open": true,
+        "gauged_G3_SU5_chiral_global_gap_honestly_reduced": true,
+        "gauged_G3_SU5_fixed_F_full_gap_exactly_closed": true,
+        "gauged_G3_SU5_arbitrary_Phi_offstratum_gap_open": true,
+        "gauged_G3_SU5_max_negative_all_zero_residual_route_excluded": true,
+        "gauged_G3_SU5_max_negative_all_zero_residual_strict_margin": "7859/140295000",
+        "gauged_G3_SU5_max_negative_pure_Delta_full_residual_gap_closed": true,
+        "gauged_G3_SU5_max_negative_pure_Delta_full_residual_minimum": "1/5000",
+        "gauged_G3_SU5_arbitrary_Phi_nonzero_residual_cancellations_open": false,
+        "gauged_G3_SU5_arbitrary_Phi_uniform_coercivity_open": true,
+        "gauged_G3_SU5_arbitrary_non_pure_Delta_Sigma_coercivity_open": true,
+        "gauged_G3_alternative_global_SOS_honestly_open": true,
+        "gauged_G3_all_vanishing_global_SOS_routes_excluded": true,
+        "gauged_G3_SU5_beta_1_over_20_global_certified": false,
+        "gauged_G3_final_acceptance_test_passes": false,
+        "final_G3_acceptance_gate_honestly_open": true,
+        "gauged_G3_contract_and_coverage_bound": true,
+        "gauged_G3_direction_parameter_field_quotient_counts": [
+          44,
+          51,
+          486,
+          449,
+          448
+        ],
+        "gauged_G3_gauge_quotient_dimension_449_certified": true,
+        "gauged_G3_massive_transverse_dimension_448_certified": true,
+        "gauged_G3_legacy_physical_quotient_448_alias_present": true,
+        "gauged_G3_stationarity_rank_13_exactly_certified": true,
+        "gauged_model_wide_no_go_certified": false,
+        "gauged_strict_local_physical_minimum": true,
+        "gauged_complete_BFB": true,
+        "gauged_global_comparison_complete": false,
+        "historical_option_c_stationarity_authoritative": false,
+        "historical_option_c_hessian_authoritative": false,
+        "historical_option_c_search_authoritative": false
+      },
+      "kill_condition": "A proof-grade no-go shows no BFB stationary vacuum in the complete gauged scalar theory realizes the required breaking chain.",
+      "green_condition": "Complete minimization, Hessian/tachyon tests, Goldstone counting, global-or-metastable vacuum comparison, and physical scalar thresholds pass.",
+      "mandatory_for_full_validation": true
+    },
+    {
+      "name": "two_loop_RGE_unification_and_thresholds",
+      "state": "CONDITIONAL",
+      "summary": "A diagnostic one-loop Pati-Salam/2HDM chain with the -3 lepton Clebsch is integrated. Published SO(10)+210 two-loop tensor contractions, running VEVs, and component thresholds remain open.",
+      "evidence": {
+        "piecewise_chain_integrated": true,
+        "clebsch_matching": true,
+        "published_210_tensor_contractions": false,
+        "two_loop_so10_complete": false,
+        "component_threshold_matching_complete": false
+      },
+      "kill_condition": "Every physically allowed threshold spectrum becomes nonperturbative, fails unification, destabilizes the vacuum, or destroys the flavour fit.",
+      "green_condition": "Reference-validated two-loop beta functions and component matching yield a perturbative, unified, vacuum-consistent common-scale solution.",
+      "mandatory_for_full_validation": true
+    },
+    {
+      "name": "global_quark_lepton_neutrino_fit",
+      "state": "CONDITIONAL",
+      "summary": "A viable low-scale proxy witness exists, including CKM and PMNS observables, but it is not yet a full common-scale fit coupled to the completed threshold/RGE system.",
+      "evidence": {
+        "viable_proxy_point": true,
+        "best_chi2": 4.954642447825638,
+        "best_chi2_finite": true,
+        "common_scale_RG_inputs_applied": false,
+        "two_loop_thresholds_coupled": false
+      },
+      "kill_condition": "No acceptable simultaneous quark, charged-lepton, neutrino, CKM and PMNS fit exists.",
+      "green_condition": "A frozen common-scale fit predicts held-out observables and remains stable under complete two-loop running and threshold uncertainties.",
+      "mandatory_for_full_validation": true
+    },
+    {
+      "name": "UV_portal_selection_and_FCNC",
+      "state": "CONDITIONAL",
+      "summary": "NA62 excludes most sampled fixed-norm orientations but exact survivors exist. The result is a geometric orientation measure, not a UV probability; the UV theory has not selected one portal point.",
+      "evidence": {
+        "n_total_orientations": 16384,
+        "n_NA62_excluded": 16286,
+        "n_NA62_surviving": 98,
+        "mixed_excluded_and_surviving": true,
+        "full_UV_portal_posterior": false,
+        "geometric_fraction_is_probability": false
+      },
+      "kill_condition": "The uniquely UV-derived portal point violates NA62, TWIST, meson mixing, or another channel-level limit.",
+      "green_condition": "The UV Lagrangian fixes all portal magnitudes/phases and the resulting joint FCNC likelihood passes with component-specific currents.",
+      "mandatory_for_full_validation": true
+    },
+    {
+      "name": "proton_decay",
+      "state": "OPEN",
+      "summary": "No complete proton-decay artifact is currently present.",
+      "evidence": {
+        "artifact_present": false,
+        "gauge_boson_exchange_computed": false,
+        "scalar_exchange_computed": false,
+        "channel_ratios_computed": false
+      },
+      "kill_condition": "An unavoidable predicted proton lifetime is below a current experimental bound.",
+      "green_condition": "Gauge and scalar operators, flavour rotations, RG running and lattice matrix elements predict allowed lifetimes and frozen channel ratios.",
+      "mandatory_for_full_validation": true
+    },
+    {
+      "name": "axion_cosmology",
+      "state": "CONDITIONAL",
+      "summary": "Relic-density, BBN and string estimates exist, but the PQ history, reheating, entropy production, isocurvature and all-DM fraction are not jointly fixed by one UV cosmology.",
+      "evidence": {
+        "next_physics_artifact_present": true,
+        "reported_status": "PASS"
+      },
+      "kill_condition": "Every allowed thermal history violates relic abundance, isocurvature, BBN, domain-wall, or late-decay constraints.",
+      "green_condition": "A frozen pre- or post-inflation history yields the observed abundance and passes isocurvature, strings/domain walls, BBN and reheating tests.",
+      "mandatory_for_full_validation": true
+    },
+    {
+      "name": "direct_37GHz_experiment",
+      "state": "OPEN",
+      "summary": "Public-limit comparison and software injection recovery are not a real axion observation. A blind magnet-on/off, retuned, repeated 36.6-37.6 GHz search remains required.",
+      "evidence": {
+        "comparison_artifact_present": true,
+        "real_detection": false,
+        "benchmark_excluded": false
+      },
+      "kill_condition": "A calibrated null reaches g_agamma <= 2.3e-14 GeV^-1 across the benchmark window under the stated local all-DM halo assumption.",
+      "green_condition": "Independent apparatus reproduce a signal with the predicted mass, linewidth, B^2 scaling, retuning behavior and temporal Doppler pattern.",
+      "mandatory_for_full_validation": true
+    },
+    {
+      "name": "reproducibility_and_CI",
+      "state": "OPEN",
+      "summary": "This gate requires a current-tree unit-test attestation plus the independent, adversarial and extensive artifacts from the same run.",
+      "evidence": {
+        "unit_test_attestation_present": false,
+        "unit_tests_passed": false,
+        "tests_discovered": null,
+        "current_tree_tests_discovered": 886,
+        "test_count_matches_current_tree": false,
+        "attested_commit": null,
+        "current_commit": "",
+        "required_missing": []
+      },
+      "kill_condition": "The current merged tree cannot reproduce its advertised checks.",
+      "green_condition": "A clean environment executes all tests and gates on the exact commit, with scoped attestation and archived machine-readable artifacts.",
+      "mandatory_for_full_validation": true
+    }
+  ],
+  "kill_tests": {
+    "authoritative_model_contract": "The implemented symmetry contract differs from the theory being claimed.",
+    "mathematical_and_software_core": "Any anomaly, nonzero-forced contraction, arithmetic, or reproducibility failure.",
+    "complete_operator_basis_and_PQ_quality": "An omitted lower-dimensional gauge/Lorentz invariant gives |Delta theta| >= 1e-10 for physically reasonable coefficients.",
+    "full_scalar_potential_vacuum_and_spectrum": "A proof-grade no-go shows no BFB stationary vacuum in the complete gauged scalar theory realizes the required breaking chain.",
+    "two_loop_RGE_unification_and_thresholds": "Every physically allowed threshold spectrum becomes nonperturbative, fails unification, destabilizes the vacuum, or destroys the flavour fit.",
+    "global_quark_lepton_neutrino_fit": "No acceptable simultaneous quark, charged-lepton, neutrino, CKM and PMNS fit exists.",
+    "UV_portal_selection_and_FCNC": "The uniquely UV-derived portal point violates NA62, TWIST, meson mixing, or another channel-level limit.",
+    "proton_decay": "An unavoidable predicted proton lifetime is below a current experimental bound.",
+    "axion_cosmology": "Every allowed thermal history violates relic abundance, isocurvature, BBN, domain-wall, or late-decay constraints.",
+    "direct_37GHz_experiment": "A calibrated null reaches g_agamma <= 2.3e-14 GeV^-1 across the benchmark window under the stated local all-DM halo assumption.",
+    "reproducibility_and_CI": "The current merged tree cannot reproduce its advertised checks."
+  },
+  "green_requirements": {
+    "authoritative_model_contract": "The TeX definition, tool-native gauge sector, exact-X scalar census, and derivative/quotient calculations carry one matching contract ID, and v2 evidence binds the model, manifest, driver, and process log.",
+    "mathematical_and_software_core": "Independent implementations reproduce every frozen core result with zero hard failures.",
+    "complete_operator_basis_and_PQ_quality": "An independent Hilbert-series/exhaustive basis proves completeness and the summed Wilson/Clebsch/flavour/RG amplitude remains safe.",
+    "full_scalar_potential_vacuum_and_spectrum": "Complete minimization, Hessian/tachyon tests, Goldstone counting, global-or-metastable vacuum comparison, and physical scalar thresholds pass.",
+    "two_loop_RGE_unification_and_thresholds": "Reference-validated two-loop beta functions and component matching yield a perturbative, unified, vacuum-consistent common-scale solution.",
+    "global_quark_lepton_neutrino_fit": "A frozen common-scale fit predicts held-out observables and remains stable under complete two-loop running and threshold uncertainties.",
+    "UV_portal_selection_and_FCNC": "The UV Lagrangian fixes all portal magnitudes/phases and the resulting joint FCNC likelihood passes with component-specific currents.",
+    "proton_decay": "Gauge and scalar operators, flavour rotations, RG running and lattice matrix elements predict allowed lifetimes and frozen channel ratios.",
+    "axion_cosmology": "A frozen pre- or post-inflation history yields the observed abundance and passes isocurvature, strings/domain walls, BBN and reheating tests.",
+    "direct_37GHz_experiment": "Independent apparatus reproduce a signal with the predicted mass, linewidth, B^2 scaling, retuning behavior and temporal Doppler pattern.",
+    "reproducibility_and_CI": "A clean environment executes all tests and gates on the exact commit, with scoped attestation and archived machine-readable artifacts."
+  },
+  "verdict": "The present repository cannot approve a manuscript candidate while the statically consistent gauged-U(1)_X SARAH model lacks v2 bound external execution evidence. The historical no-X calculations remain reproducible subtheorems, not validation. Full validity requires a matching contract, the complete operator basis, scalar vacuum and spectrum, reference-derived two-loop thresholds, a common-scale flavour fit, UV-selected portal currents, proton decay, a fixed cosmology, and real independent 37 GHz data."
+}

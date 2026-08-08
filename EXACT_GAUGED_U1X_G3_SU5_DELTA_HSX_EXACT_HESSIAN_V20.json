@@ -1,0 +1,757 @@
+{
+  "status": "EXACT_FULL_HESSIAN_RANK_448_NULLITY_38_CERTIFIED",
+  "overall_state": "CLOSED_FULL_LOCAL_HESSIAN_SUBPROBLEM",
+  "model_contract_id": "gauged_u1x_phi17_v20",
+  "n_checks": 9,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "source_lattice_derived_exactly": true,
+    "float_compiler_inside_fixed_lattice_margin": true,
+    "symmetry_tangent_rank_is_38_exact": true,
+    "integer_Hessian_annihilates_all_symmetry_tangents": true,
+    "exact_block_LDL_is_PSD": true,
+    "exact_rank_is_448": true,
+    "exact_nullity_is_38": true,
+    "kernel_is_exactly_the_symmetry_orbit": true,
+    "G3_not_closed_by_local_Hessian_alone": true
+  },
+  "flags": {
+    "exact_rank_448": true,
+    "exact_nullity_38": true,
+    "exact_PSD": true,
+    "strict_quotient": true,
+    "strict_quotient_positive": true,
+    "kernel_equals_38_symmetry_tangents": true,
+    "proof_grade": true,
+    "source_binding": true,
+    "source_binding_exact": true
+  },
+  "exact_certificate": {
+    "coordinate_congruence": "qPhi=x/sqrt(10), qH=u, qSigma=y/10, qS=(sqrt(2)/5)s, qPhi17=sqrt(2)z",
+    "source_lattice_derivation": {
+      "derivation": "exact Fraction channel algebra after qPhi=x/sqrt(10), qSigma=y/10, qS=sqrt(2)s/5, qPhi17=sqrt(2)z",
+      "prime_factorization": {
+        "2": 7,
+        "3": 2,
+        "5": 5,
+        "7": 1
+      },
+      "factor_product": 25200000,
+      "factor_product_matches_declared_denominator": true,
+      "factor_origins": {
+        "2^7": "canonical complex realification and reduced projector weights",
+        "3^2": "reduced Casimir projector polynomial coefficients",
+        "5^5": "r=1/5 hierarchy plus candidate coefficient denominators",
+        "7": "reduced 210/126bar Casimir projector polynomial coefficients"
+      },
+      "F0_integer_support_size": 10,
+      "F0_integer_vector": true,
+      "Delta_Gaussian_integer_norm_squared": 8,
+      "selected_symbolic_parameter_count": 28,
+      "all_selected_parameters_in_exact_X_contract": true,
+      "derived_before_float_crosscheck": true,
+      "source_binding_exact": true
+    },
+    "lattice": {
+      "denominator": 25200000,
+      "lattice_origin": "exact_source_lattice_derivation_certificate",
+      "float_compiler_crosscheck_maximum_scaled_residual": 3.779423423111439e-07,
+      "float_compiler_crosscheck_half_lattice_margin": 0.4999996220576577,
+      "numerator_symmetric": true,
+      "maximum_abs_numerator": 115920000,
+      "nonzero_upper_triangle_entries": 3709
+    },
+    "symmetry_tangents": {
+      "shape": [
+        486,
+        47
+      ],
+      "integer_lattice_residual": 0.0,
+      "exact_rank": 38,
+      "pivot_row_count": 38,
+      "pivot_column_count": 38,
+      "source_binding": true
+    },
+    "integer_Hessian_times_symmetry_tangent_max_abs": 0,
+    "support_component_count": 39,
+    "support_component_sizes": [
+      24,
+      24,
+      16,
+      16,
+      16,
+      16,
+      16,
+      16,
+      16,
+      16,
+      16,
+      16,
+      16,
+      16,
+      14,
+      14,
+      14,
+      14,
+      14,
+      14,
+      14,
+      14,
+      14,
+      14,
+      12,
+      12,
+      12,
+      12,
+      12,
+      12,
+      10,
+      8,
+      8,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1
+    ],
+    "exact_component_LDL": [
+      {
+        "dimension": 24,
+        "positive_pivots": 22,
+        "zero_pivots": 2,
+        "negative_witnesses": 0,
+        "zero_diagonal_with_nonzero_offdiagonal_witnesses": 0,
+        "PSD": true,
+        "rank": 22,
+        "maximum_intermediate_numerator_bits": 96,
+        "maximum_intermediate_denominator_bits": 78
+      },
+      {
+        "dimension": 24,
+        "positive_pivots": 22,
+        "zero_pivots": 2,
+        "negative_witnesses": 0,
+        "zero_diagonal_with_nonzero_offdiagonal_witnesses": 0,
+        "PSD": true,
+        "rank": 22,
+        "maximum_intermediate_numerator_bits": 93,
+        "maximum_intermediate_denominator_bits": 75
+      },
+      {
+        "dimension": 16,
+        "positive_pivots": 14,
+        "zero_pivots": 2,
+        "negative_witnesses": 0,
+        "zero_diagonal_with_nonzero_offdiagonal_witnesses": 0,
+        "PSD": true,
+        "rank": 14,
+        "maximum_intermediate_numerator_bits": 62,
+        "maximum_intermediate_denominator_bits": 45
+      },
+      {
+        "dimension": 16,
+        "positive_pivots": 14,
+        "zero_pivots": 2,
+        "negative_witnesses": 0,
+        "zero_diagonal_with_nonzero_offdiagonal_witnesses": 0,
+        "PSD": true,
+        "rank": 14,
+        "maximum_intermediate_numerator_bits": 62,
+        "maximum_intermediate_denominator_bits": 45
+      },
+      {
+        "dimension": 16,
+        "positive_pivots": 14,
+        "zero_pivots": 2,
+        "negative_witnesses": 0,
+        "zero_diagonal_with_nonzero_offdiagonal_witnesses": 0,
+        "PSD": true,
+        "rank": 14,
+        "maximum_intermediate_numerator_bits": 60,
+        "maximum_intermediate_denominator_bits": 43
+      },
+      {
+        "dimension": 16,
+        "positive_pivots": 14,
+        "zero_pivots": 2,
+        "negative_witnesses": 0,
+        "zero_diagonal_with_nonzero_offdiagonal_witnesses": 0,
+        "PSD": true,
+        "rank": 14,
+        "maximum_intermediate_numerator_bits": 60,
+        "maximum_intermediate_denominator_bits": 43
+      },
+      {
+        "dimension": 16,
+        "positive_pivots": 14,
+        "zero_pivots": 2,
+        "negative_witnesses": 0,
+        "zero_diagonal_with_nonzero_offdiagonal_witnesses": 0,
+        "PSD": true,
+        "rank": 14,
+        "maximum_intermediate_numerator_bits": 62,
+        "maximum_intermediate_denominator_bits": 45
+      },
+      {
+        "dimension": 16,
+        "positive_pivots": 14,
+        "zero_pivots": 2,
+        "negative_witnesses": 0,
+        "zero_diagonal_with_nonzero_offdiagonal_witnesses": 0,
+        "PSD": true,
+        "rank": 14,
+        "maximum_intermediate_numerator_bits": 62,
+        "maximum_intermediate_denominator_bits": 45
+      },
+      {
+        "dimension": 16,
+        "positive_pivots": 16,
+        "zero_pivots": 0,
+        "negative_witnesses": 0,
+        "zero_diagonal_with_nonzero_offdiagonal_witnesses": 0,
+        "PSD": true,
+        "rank": 16,
+        "maximum_intermediate_numerator_bits": 77,
+        "maximum_intermediate_denominator_bits": 61
+      },
+      {
+        "dimension": 16,
+        "positive_pivots": 16,
+        "zero_pivots": 0,
+        "negative_witnesses": 0,
+        "zero_diagonal_with_nonzero_offdiagonal_witnesses": 0,
+        "PSD": true,
+        "rank": 16,
+        "maximum_intermediate_numerator_bits": 77,
+        "maximum_intermediate_denominator_bits": 61
+      },
+      {
+        "dimension": 16,
+        "positive_pivots": 16,
+        "zero_pivots": 0,
+        "negative_witnesses": 0,
+        "zero_diagonal_with_nonzero_offdiagonal_witnesses": 0,
+        "PSD": true,
+        "rank": 16,
+        "maximum_intermediate_numerator_bits": 77,
+        "maximum_intermediate_denominator_bits": 61
+      },
+      {
+        "dimension": 16,
+        "positive_pivots": 16,
+        "zero_pivots": 0,
+        "negative_witnesses": 0,
+        "zero_diagonal_with_nonzero_offdiagonal_witnesses": 0,
+        "PSD": true,
+        "rank": 16,
+        "maximum_intermediate_numerator_bits": 77,
+        "maximum_intermediate_denominator_bits": 61
+      },
+      {
+        "dimension": 16,
+        "positive_pivots": 16,
+        "zero_pivots": 0,
+        "negative_witnesses": 0,
+        "zero_diagonal_with_nonzero_offdiagonal_witnesses": 0,
+        "PSD": true,
+        "rank": 16,
+        "maximum_intermediate_numerator_bits": 77,
+        "maximum_intermediate_denominator_bits": 61
+      },
+      {
+        "dimension": 16,
+        "positive_pivots": 16,
+        "zero_pivots": 0,
+        "negative_witnesses": 0,
+        "zero_diagonal_with_nonzero_offdiagonal_witnesses": 0,
+        "PSD": true,
+        "rank": 16,
+        "maximum_intermediate_numerator_bits": 77,
+        "maximum_intermediate_denominator_bits": 61
+      },
+      {
+        "dimension": 14,
+        "positive_pivots": 12,
+        "zero_pivots": 2,
+        "negative_witnesses": 0,
+        "zero_diagonal_with_nonzero_offdiagonal_witnesses": 0,
+        "PSD": true,
+        "rank": 12,
+        "maximum_intermediate_numerator_bits": 62,
+        "maximum_intermediate_denominator_bits": 45
+      },
+      {
+        "dimension": 14,
+        "positive_pivots": 12,
+        "zero_pivots": 2,
+        "negative_witnesses": 0,
+        "zero_diagonal_with_nonzero_offdiagonal_witnesses": 0,
+        "PSD": true,
+        "rank": 12,
+        "maximum_intermediate_numerator_bits": 62,
+        "maximum_intermediate_denominator_bits": 45
+      },
+      {
+        "dimension": 14,
+        "positive_pivots": 12,
+        "zero_pivots": 2,
+        "negative_witnesses": 0,
+        "zero_diagonal_with_nonzero_offdiagonal_witnesses": 0,
+        "PSD": true,
+        "rank": 12,
+        "maximum_intermediate_numerator_bits": 60,
+        "maximum_intermediate_denominator_bits": 43
+      },
+      {
+        "dimension": 14,
+        "positive_pivots": 12,
+        "zero_pivots": 2,
+        "negative_witnesses": 0,
+        "zero_diagonal_with_nonzero_offdiagonal_witnesses": 0,
+        "PSD": true,
+        "rank": 12,
+        "maximum_intermediate_numerator_bits": 60,
+        "maximum_intermediate_denominator_bits": 43
+      },
+      {
+        "dimension": 14,
+        "positive_pivots": 12,
+        "zero_pivots": 2,
+        "negative_witnesses": 0,
+        "zero_diagonal_with_nonzero_offdiagonal_witnesses": 0,
+        "PSD": true,
+        "rank": 12,
+        "maximum_intermediate_numerator_bits": 62,
+        "maximum_intermediate_denominator_bits": 45
+      },
+      {
+        "dimension": 14,
+        "positive_pivots": 12,
+        "zero_pivots": 2,
+        "negative_witnesses": 0,
+        "zero_diagonal_with_nonzero_offdiagonal_witnesses": 0,
+        "PSD": true,
+        "rank": 12,
+        "maximum_intermediate_numerator_bits": 62,
+        "maximum_intermediate_denominator_bits": 45
+      },
+      {
+        "dimension": 14,
+        "positive_pivots": 14,
+        "zero_pivots": 0,
+        "negative_witnesses": 0,
+        "zero_diagonal_with_nonzero_offdiagonal_witnesses": 0,
+        "PSD": true,
+        "rank": 14,
+        "maximum_intermediate_numerator_bits": 63,
+        "maximum_intermediate_denominator_bits": 46
+      },
+      {
+        "dimension": 14,
+        "positive_pivots": 14,
+        "zero_pivots": 0,
+        "negative_witnesses": 0,
+        "zero_diagonal_with_nonzero_offdiagonal_witnesses": 0,
+        "PSD": true,
+        "rank": 14,
+        "maximum_intermediate_numerator_bits": 63,
+        "maximum_intermediate_denominator_bits": 46
+      },
+      {
+        "dimension": 14,
+        "positive_pivots": 14,
+        "zero_pivots": 0,
+        "negative_witnesses": 0,
+        "zero_diagonal_with_nonzero_offdiagonal_witnesses": 0,
+        "PSD": true,
+        "rank": 14,
+        "maximum_intermediate_numerator_bits": 62,
+        "maximum_intermediate_denominator_bits": 41
+      },
+      {
+        "dimension": 14,
+        "positive_pivots": 14,
+        "zero_pivots": 0,
+        "negative_witnesses": 0,
+        "zero_diagonal_with_nonzero_offdiagonal_witnesses": 0,
+        "PSD": true,
+        "rank": 14,
+        "maximum_intermediate_numerator_bits": 62,
+        "maximum_intermediate_denominator_bits": 41
+      },
+      {
+        "dimension": 12,
+        "positive_pivots": 11,
+        "zero_pivots": 1,
+        "negative_witnesses": 0,
+        "zero_diagonal_with_nonzero_offdiagonal_witnesses": 0,
+        "PSD": true,
+        "rank": 11,
+        "maximum_intermediate_numerator_bits": 50,
+        "maximum_intermediate_denominator_bits": 29
+      },
+      {
+        "dimension": 12,
+        "positive_pivots": 11,
+        "zero_pivots": 1,
+        "negative_witnesses": 0,
+        "zero_diagonal_with_nonzero_offdiagonal_witnesses": 0,
+        "PSD": true,
+        "rank": 11,
+        "maximum_intermediate_numerator_bits": 50,
+        "maximum_intermediate_denominator_bits": 29
+      },
+      {
+        "dimension": 12,
+        "positive_pivots": 11,
+        "zero_pivots": 1,
+        "negative_witnesses": 0,
+        "zero_diagonal_with_nonzero_offdiagonal_witnesses": 0,
+        "PSD": true,
+        "rank": 11,
+        "maximum_intermediate_numerator_bits": 50,
+        "maximum_intermediate_denominator_bits": 29
+      },
+      {
+        "dimension": 12,
+        "positive_pivots": 11,
+        "zero_pivots": 1,
+        "negative_witnesses": 0,
+        "zero_diagonal_with_nonzero_offdiagonal_witnesses": 0,
+        "PSD": true,
+        "rank": 11,
+        "maximum_intermediate_numerator_bits": 50,
+        "maximum_intermediate_denominator_bits": 29
+      },
+      {
+        "dimension": 12,
+        "positive_pivots": 11,
+        "zero_pivots": 1,
+        "negative_witnesses": 0,
+        "zero_diagonal_with_nonzero_offdiagonal_witnesses": 0,
+        "PSD": true,
+        "rank": 11,
+        "maximum_intermediate_numerator_bits": 50,
+        "maximum_intermediate_denominator_bits": 29
+      },
+      {
+        "dimension": 12,
+        "positive_pivots": 11,
+        "zero_pivots": 1,
+        "negative_witnesses": 0,
+        "zero_diagonal_with_nonzero_offdiagonal_witnesses": 0,
+        "PSD": true,
+        "rank": 11,
+        "maximum_intermediate_numerator_bits": 50,
+        "maximum_intermediate_denominator_bits": 29
+      },
+      {
+        "dimension": 10,
+        "positive_pivots": 10,
+        "zero_pivots": 0,
+        "negative_witnesses": 0,
+        "zero_diagonal_with_nonzero_offdiagonal_witnesses": 0,
+        "PSD": true,
+        "rank": 10,
+        "maximum_intermediate_numerator_bits": 64,
+        "maximum_intermediate_denominator_bits": 42
+      },
+      {
+        "dimension": 8,
+        "positive_pivots": 8,
+        "zero_pivots": 0,
+        "negative_witnesses": 0,
+        "zero_diagonal_with_nonzero_offdiagonal_witnesses": 0,
+        "PSD": true,
+        "rank": 8,
+        "maximum_intermediate_numerator_bits": 65,
+        "maximum_intermediate_denominator_bits": 47
+      },
+      {
+        "dimension": 8,
+        "positive_pivots": 7,
+        "zero_pivots": 1,
+        "negative_witnesses": 0,
+        "zero_diagonal_with_nonzero_offdiagonal_witnesses": 0,
+        "PSD": true,
+        "rank": 7,
+        "maximum_intermediate_numerator_bits": 51,
+        "maximum_intermediate_denominator_bits": 33
+      },
+      {
+        "dimension": 2,
+        "positive_pivots": 2,
+        "zero_pivots": 0,
+        "negative_witnesses": 0,
+        "zero_diagonal_with_nonzero_offdiagonal_witnesses": 0,
+        "PSD": true,
+        "rank": 2,
+        "maximum_intermediate_numerator_bits": 32,
+        "maximum_intermediate_denominator_bits": 5
+      },
+      {
+        "dimension": 2,
+        "positive_pivots": 1,
+        "zero_pivots": 1,
+        "negative_witnesses": 0,
+        "zero_diagonal_with_nonzero_offdiagonal_witnesses": 0,
+        "PSD": true,
+        "rank": 1,
+        "maximum_intermediate_numerator_bits": 0,
+        "maximum_intermediate_denominator_bits": 1
+      },
+      {
+        "dimension": 1,
+        "positive_pivots": 1,
+        "zero_pivots": 0,
+        "negative_witnesses": 0,
+        "zero_diagonal_with_nonzero_offdiagonal_witnesses": 0,
+        "PSD": true,
+        "rank": 1,
+        "maximum_intermediate_numerator_bits": 0,
+        "maximum_intermediate_denominator_bits": 0
+      },
+      {
+        "dimension": 1,
+        "positive_pivots": 0,
+        "zero_pivots": 1,
+        "negative_witnesses": 0,
+        "zero_diagonal_with_nonzero_offdiagonal_witnesses": 0,
+        "PSD": true,
+        "rank": 0,
+        "maximum_intermediate_numerator_bits": 0,
+        "maximum_intermediate_denominator_bits": 0
+      },
+      {
+        "dimension": 1,
+        "positive_pivots": 1,
+        "zero_pivots": 0,
+        "negative_witnesses": 0,
+        "zero_diagonal_with_nonzero_offdiagonal_witnesses": 0,
+        "PSD": true,
+        "rank": 1,
+        "maximum_intermediate_numerator_bits": 0,
+        "maximum_intermediate_denominator_bits": 0
+      },
+      {
+        "dimension": 1,
+        "positive_pivots": 0,
+        "zero_pivots": 1,
+        "negative_witnesses": 0,
+        "zero_diagonal_with_nonzero_offdiagonal_witnesses": 0,
+        "PSD": true,
+        "rank": 0,
+        "maximum_intermediate_numerator_bits": 0,
+        "maximum_intermediate_denominator_bits": 0
+      }
+    ],
+    "exact_positive_pivots": 448,
+    "exact_zero_pivots": 38,
+    "exact_negative_witnesses": 0,
+    "exact_PSD": true,
+    "exact_rank": 448,
+    "exact_nullity": 38,
+    "exact_rank_448": true,
+    "exact_nullity_38": true,
+    "all_zero_modes_are_symmetry_tangents": true,
+    "kernel_equals_38_symmetry_tangents": true,
+    "strictly_positive_on_symmetry_quotient": true,
+    "strict_quotient_positive": true,
+    "source_binding": true,
+    "source_binding_exact": true,
+    "proof_grade": true
+  },
+  "diagnostic": {
+    "compiler": {
+      "direction_rows": 44,
+      "parameter_rows": 51,
+      "selected_nonzero_parameters": 28,
+      "missing_selected_parameters": []
+    },
+    "gradient_max_abs": 1.1515094433534045e-13,
+    "raw_Hessian_symmetry_residual": 4.336808689942018e-19,
+    "support_component_sizes": [
+      24,
+      24,
+      16,
+      16,
+      16,
+      16,
+      16,
+      16,
+      16,
+      16,
+      16,
+      16,
+      16,
+      16,
+      14,
+      14,
+      14,
+      14,
+      14,
+      14,
+      14,
+      14,
+      14,
+      14,
+      12,
+      12,
+      12,
+      12,
+      12,
+      12,
+      10,
+      8,
+      8,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1
+    ],
+    "support_component_count": 39,
+    "numerical_inertia": {
+      "negative_below_minus_1e_minus_10": 0,
+      "zero_at_1e_minus_10": 38,
+      "positive_above_1e_minus_10": 448,
+      "minimum": -2.1521391654928417e-15,
+      "smallest_positive": 0.00020000000001012331,
+      "maximum": 5.2000000000000215
+    },
+    "rational_reconstruction_diagnostic": {
+      "active_upper_triangle_entries": 3709,
+      "maximum_abs_residual": 1.0970391262077328e-14,
+      "distinct_denominators": 112,
+      "most_common_denominators": [
+        [
+          1000,
+          832
+        ],
+        [
+          2000,
+          720
+        ],
+        [
+          8000,
+          192
+        ],
+        [
+          900,
+          144
+        ],
+        [
+          4000,
+          132
+        ],
+        [
+          800,
+          108
+        ],
+        [
+          10,
+          96
+        ],
+        [
+          1500,
+          84
+        ],
+        [
+          750,
+          79
+        ],
+        [
+          225,
+          72
+        ],
+        [
+          4500,
+          72
+        ],
+        [
+          180000,
+          72
+        ],
+        [
+          2250,
+          63
+        ],
+        [
+          450,
+          48
+        ],
+        [
+          72000,
+          48
+        ],
+        [
+          986567857,
+          48
+        ],
+        [
+          250,
+          48
+        ],
+        [
+          350154914,
+          48
+        ],
+        [
+          375,
+          45
+        ],
+        [
+          500,
+          36
+        ],
+        [
+          100,
+          36
+        ],
+        [
+          7500,
+          36
+        ],
+        [
+          24000,
+          32
+        ],
+        [
+          60000,
+          32
+        ],
+        [
+          1125,
+          24
+        ],
+        [
+          2400,
+          24
+        ],
+        [
+          7200,
+          24
+        ],
+        [
+          5,
+          24
+        ],
+        [
+          90000,
+          24
+        ],
+        [
+          990335714,
+          24
+        ]
+      ],
+      "maximum_denominator": 999960599,
+      "reconstruction_is_not_source_binding": true
+    }
+  },
+  "remaining_scope": "No local-Hessian blocker remains.  G3 still requires the separate full global-gap/equality-orbit proof; exact local positivity does not promote a merely local stationary point to the global vacuum.",
+  "G3_closed": false
+}

@@ -3,8 +3,8 @@
 **Status:** PASS
 
 - Line: **37.1161 GHz** (m_a = 153.50 µeV)
-- Catalog: `C:\Users\jayal\Downloads\So10Theory2\So10Theory\outputs\gravitas_omniscan_v14\v14_vetted_gold.csv`
-- Targets built: 21 (NS-regime soft: 0)
+- Catalog: `synthetic_demo`
+- Targets built: 2 (NS-regime soft: 2)
 - Single-object reach (schematic) at v20 g: 0.0070 kpc
 
 ## Smoking gun

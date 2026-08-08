@@ -2,10 +2,12 @@
 """Consolidated next-generation G1/G6 progress gate for SO(10) axion v20.
 
 This certificate aggregates exact triplet calculations completed after the
-original fail-closed G1-G8 ledger. The authoritative ledger now closes the G1
-invariant census while G6 remains PARTIAL. This report records which component
-subproblems are exact, removes tensor channels proved to vanish, and prevents
-legacy proxy matrices from re-entering the physical threshold path.
+original fail-closed G1-G8 ledger. It distinguishes completed scoped tensor
+subproblems from authoritative gate closure: under the current executable
+gauged-U(1)_X contract mismatch, G1-G8 remain BLOCKED. This report records
+which component subproblems are exact, removes tensor channels proved to
+vanish, and prevents legacy proxy matrices from re-entering the physical
+threshold path.
 """
 from __future__ import annotations
 
@@ -161,9 +163,14 @@ def build_report() -> dict[str, Any]:
     }
 
     top = reports["ledger"]
+    contract_consistent = bool(top["contract_consistent"])
+    gauged_scoped = top["gauged_u1x_scalar_subtheorems"]
+    historical = top["historical_option_c_subtheorems"]
+    exact_subproblems_complete = all(closed_subproblems.values())
+    expected_g1_state = "CLOSED" if contract_consistent else "BLOCKED"
     checks = {
         "all_upstreams_execute": not execution_failures,
-        "all_recorded_subproblems_closed": all(closed_subproblems.values()),
+        "all_recorded_scoped_subproblems_closed": exact_subproblems_complete,
         "exact_54_inserted": reports["gate54"]["flag"][
             "exact_PhiH_54_triplet_shift_inserted"
         ],
@@ -179,9 +186,27 @@ def build_report() -> dict[str, Any]:
         "PhiH_Hermitian_family_complete": reports["gate45"]["flag"][
             "PhiH_Hermitian_channel_family_complete"
         ],
-        "G1_closed": top["gates"]["G1"]["status"] == "CLOSED",
-        "G6_still_partial": top["gates"]["G6"]["status"] == "PARTIAL",
-        "G8_still_partial": top["gates"]["G8"]["status"] == "PARTIAL",
+        "authoritative_G1_state_matches_contract": (
+            top["gates"]["G1"]["status"] == expected_g1_state
+        ),
+        "authoritative_G6_not_closed": top["gates"]["G6"]["status"]
+        != "CLOSED",
+        "authoritative_G8_not_closed": top["gates"]["G8"]["status"]
+        != "CLOSED",
+        "exact_X_G1_scoped_subtheorem_complete": (
+            top["gates"]["G1"]["scoped_calculation_complete"] is True
+            and gauged_scoped["G1"]["invariant_directions"] == 44
+            and gauged_scoped["G1"]["real_potential_parameters"] == 51
+        ),
+        "exact_X_G2_scoped_subtheorem_complete": (
+            top["gates"]["G2"]["scoped_calculation_complete"] is True
+            and gauged_scoped["G2"]["real_field_dimension"] == 486
+        ),
+        "historical_option_C_remains_non_authoritative": (
+            historical["authoritative_for_gauged_model"] is False
+            and historical["G1"]["invariant_directions"] == 64
+            and historical["G1"]["real_potential_parameters"] == 91
+        ),
         "physical_spectrum_still_open": not reports["gate45"]["flag"][
             "physical_triplet_spectrum_complete"
         ],
@@ -206,7 +231,10 @@ def build_report() -> dict[str, Any]:
             if not failures
             else "NEXT_GEN_G1_G6_PROGRESS_GATE_FAILED"
         ),
-        "overall_state": "PARTIAL" if not failures else "EXECUTION_FAIL",
+        "overall_state": top["overall_state"] if not failures else "EXECUTION_FAIL",
+        "model_contract_id": top["model_contract_id"],
+        "contract_consistent": contract_consistent,
+        "scientific_blockers": top["scientific_blockers"],
         "n_checks": len(checks),
         "n_failed": len(failures),
         "failures": failures,
@@ -222,6 +250,47 @@ def build_report() -> dict[str, Any]:
         "n_closed_subproblems": sum(bool(value) for value in closed_subproblems.values()),
         "remaining_blockers": remaining_blockers,
         "n_remaining_blockers": sum(bool(value) for value in remaining_blockers.values()),
+        "scoped_subtheorems": {
+            "exact_X_G1": {
+                "completed": top["gates"]["G1"]["scoped_calculation_complete"],
+                "authoritative_gate_status": top["gates"]["G1"]["status"],
+                "invariant_directions": gauged_scoped["G1"]["invariant_directions"],
+                "real_potential_parameters": gauged_scoped["G1"][
+                    "real_potential_parameters"
+                ],
+            },
+            "exact_X_G2": {
+                "completed": top["gates"]["G2"]["scoped_calculation_complete"],
+                "authoritative_gate_status": top["gates"]["G2"]["status"],
+                "real_field_dimension": gauged_scoped["G2"]["real_field_dimension"],
+                "promoted_stationarity_rank": gauged_scoped["G2"][
+                    "promoted_stationarity_rank"
+                ],
+                "promoted_stationarity_nullity": gauged_scoped["G2"][
+                    "promoted_stationarity_nullity"
+                ],
+            },
+            "historical_option_C": {
+                "model_contract_id": historical["model_contract_id"],
+                "authoritative_for_gauged_model": historical[
+                    "authoritative_for_gauged_model"
+                ],
+                "invariant_directions": historical["G1"]["invariant_directions"],
+                "real_potential_parameters": historical["G1"][
+                    "real_potential_parameters"
+                ],
+                "physical_quotient_dimension": historical["G3"][
+                    "massive_physical_quotient_dimension"
+                ],
+            },
+            "triplet_G6_diagnostics": {
+                "completed_exact_subproblem_count": sum(
+                    bool(value) for value in closed_subproblems.values()
+                ),
+                "authoritative_gate_status": top["gates"]["G6"]["status"],
+                "authoritative_for_physical_spectrum": False,
+            },
+        },
         "authoritative_triplet_structure": {
             "independent_fields": {
                 "Y_minus_1_over_3": ["T10", "t2"],
@@ -270,10 +339,16 @@ def build_report() -> dict[str, Any]:
         ),
         "flag": {
             "authoritative_next_gen_G1_G6_progress_gate": True,
-            "all_recorded_exact_subproblems_closed": not failures,
-            "shared_Hermitian_54_channel_closed": not failures,
-            "shared_Hermitian_45_channel_closed": not failures,
-            "PhiH_Hermitian_channel_family_complete": not failures,
+            "all_recorded_exact_subproblems_closed": exact_subproblems_complete,
+            "shared_Hermitian_54_channel_closed": exact_subproblems_complete,
+            "shared_Hermitian_45_channel_closed": exact_subproblems_complete,
+            "PhiH_Hermitian_channel_family_complete": exact_subproblems_complete,
+            "exact_X_G1_G2_scoped_subtheorems_complete": (
+                top["gates"]["G1"]["scoped_calculation_complete"]
+                and top["gates"]["G2"]["scoped_calculation_complete"]
+            ),
+            "historical_option_C_authoritative": False,
+            "G6_diagnostics_are_scoped_not_gate_closure": True,
             "G1_closed": top["gates"]["G1"]["status"] == "CLOSED",
             "G6_closed": False,
             "physical_triplet_spectrum_complete": False,
@@ -283,11 +358,12 @@ def build_report() -> dict[str, Any]:
             "empirical_discovery": False,
         },
         "verdict": (
-            "Twenty-six triplet tensor/quadratic subproblems are now exact. The "
+            "Twenty-six scoped triplet tensor/quadratic subproblems are exact. The "
             "Hermitian Phi-H family is complete in channels 1+45+54; the 45 "
             "currents for t2, t2bar, and t4bar are also inserted, while the "
-            "Hermitian 126bar 54 is proved absent. The complete invariant "
-            "census closes G1 independently; G6 remains unclosed because "
+            "Hermitian 126bar 54 is proved absent. Exact-X G1/G2 are completed "
+            "scoped subtheorems, while the current contract mismatch keeps the "
+            "authoritative G1-G8 chain BLOCKED. G6 remains unclosed because "
             "higher Phi-Sigma projections, mixed-background channels, 210 "
             "component mixing, and the unique physical spectrum are missing."
         ),

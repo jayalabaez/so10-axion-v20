@@ -195,10 +195,13 @@ def pair_moments(phi: direct.Form, maximum_degree: int = 7) -> tuple[float, ...]
     vector = phi_vector(phi)
     pair = np.outer(vector, vector)
     powers = projectors.casimir_powers(pair)
-    return tuple(
-        float(np.sum(pair * powers[degree]))
+    moments = tuple(
+        complex(np.sum(pair * powers[degree]))
         for degree in range(maximum_degree + 1)
     )
+    if any(abs(value.imag) > 1.0e-12 for value in moments):
+        raise ValueError("real 210 pair moment acquired a complex component")
+    return tuple(float(value.real) for value in moments)
 
 
 def quartic_invariants(phi: direct.Form) -> dict[str, float]:

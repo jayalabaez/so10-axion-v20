@@ -2,8 +2,9 @@
 """Consolidated 30-subproblem extension of the v20 G1/G6 progress gate.
 
 This layer preserves the authoritative 26-subproblem certificate and adds the
-exact portal norm-square contraction and its Nambu insertion. The complete
-invariant census closes G1 while G6 remains PARTIAL.
+exact portal norm-square contraction and its Nambu insertion. These are scoped
+component results: the current gauged-U(1)_X scaffold mismatch keeps the
+authoritative G1-G8 chain BLOCKED.
 """
 from __future__ import annotations
 
@@ -66,11 +67,17 @@ def build_report() -> dict[str, Any]:
     blockers = dict(base["remaining_blockers"])
     blockers.pop("higher_210dag210_126bardag126bar_tensor_Clebsches", None)
     blockers["other_independent_PhiSigma_irrep_contractions"] = True
+    exact_subproblems_complete = len(closed) == 30 and all(closed.values())
+    contract_consistent = bool(base["contract_consistent"])
+    expected_g1_state = "CLOSED" if contract_consistent else "BLOCKED"
 
     checks = {
         "all_upstreams_execute": not execution_failures,
-        "base_26_closed": base["n_closed_subproblems"] == 26,
-        "all_30_recorded_subproblems_closed": len(closed) == 30 and all(closed.values()),
+        "base_26_scoped_subproblems_closed": (
+            base["n_closed_subproblems"] == 26
+            and base["flag"]["all_recorded_exact_subproblems_closed"]
+        ),
+        "all_30_recorded_scoped_subproblems_closed": exact_subproblems_complete,
         "exact_contract_closed": exact["flag"]["exact_portal_norm_square_channel_closed"],
         "quartic_mixing_inserted": inserted["flag"][
             "exact_quartic_t2bar_t4bar_mixing_inserted"
@@ -79,8 +86,16 @@ def build_report() -> dict[str, Any]:
             "positive_sector_rank"
         ]
         == 1,
-        "G1_closed": base["gate_states"]["G1"] == "CLOSED",
-        "G6_still_partial": base["gate_states"]["G6"] == "PARTIAL",
+        "authoritative_G1_state_matches_contract": (
+            base["gate_states"]["G1"] == expected_g1_state
+        ),
+        "authoritative_G6_not_closed": base["gate_states"]["G6"] != "CLOSED",
+        "exact_X_G1_G2_scoped_subtheorems_complete": base["flag"][
+            "exact_X_G1_G2_scoped_subtheorems_complete"
+        ],
+        "historical_option_C_remains_non_authoritative": not base["flag"][
+            "historical_option_C_authoritative"
+        ],
         "physical_spectrum_still_open": not inserted["flag"][
             "physical_triplet_spectrum_complete"
         ],
@@ -98,7 +113,10 @@ def build_report() -> dict[str, Any]:
             if not failures
             else "NEXT_GEN_G1_G6_PROGRESS_30_GATE_FAILED"
         ),
-        "overall_state": "PARTIAL" if not failures else "EXECUTION_FAIL",
+        "overall_state": base["overall_state"] if not failures else "EXECUTION_FAIL",
+        "model_contract_id": base["model_contract_id"],
+        "contract_consistent": contract_consistent,
+        "scientific_blockers": base["scientific_blockers"],
         "n_checks": len(checks),
         "n_failed": len(failures),
         "failures": failures,
@@ -108,6 +126,14 @@ def build_report() -> dict[str, Any]:
         "n_closed_subproblems": len(closed),
         "remaining_blockers": blockers,
         "n_remaining_blockers": sum(bool(value) for value in blockers.values()),
+        "scoped_subtheorems": {
+            **copy.deepcopy(base["scoped_subtheorems"]),
+            "triplet_G6_diagnostics": {
+                "completed_exact_subproblem_count": len(closed),
+                "authoritative_gate_status": base["gate_states"]["G6"],
+                "authoritative_for_physical_spectrum": False,
+            },
+        },
         "authoritative_triplet_structure": structure,
         "upstream_status": {
             "base26": base["status"],
@@ -121,9 +147,20 @@ def build_report() -> dict[str, Any]:
         ),
         "flag": {
             "authoritative_next_gen_G1_G6_progress_30_gate": True,
-            "all_recorded_exact_subproblems_closed": not failures,
-            "exact_portal_norm_square_channel_closed": not failures,
-            "exact_quartic_t2bar_t4bar_mixing_inserted": not failures,
+            "all_recorded_exact_subproblems_closed": exact_subproblems_complete,
+            "exact_portal_norm_square_channel_closed": bool(
+                exact_subproblems_complete
+                and exact["flag"]["exact_portal_norm_square_channel_closed"]
+            ),
+            "exact_quartic_t2bar_t4bar_mixing_inserted": bool(
+                exact_subproblems_complete
+                and inserted["flag"]["exact_quartic_t2bar_t4bar_mixing_inserted"]
+            ),
+            "exact_X_G1_G2_scoped_subtheorems_complete": base["flag"][
+                "exact_X_G1_G2_scoped_subtheorems_complete"
+            ],
+            "historical_option_C_authoritative": False,
+            "G6_diagnostics_are_scoped_not_gate_closure": True,
             "G1_closed": base["gate_states"]["G1"] == "CLOSED",
             "G6_closed": False,
             "physical_triplet_spectrum_complete": False,
@@ -133,12 +170,13 @@ def build_report() -> dict[str, Any]:
             "empirical_discovery": False,
         },
         "verdict": (
-            "Thirty triplet tensor/quadratic subproblems are now exact. The "
+            "Thirty scoped triplet tensor/quadratic subproblems are exact. The "
             "Hermitian Phi-H family 1+45+54 is complete, the Hermitian 126bar "
             "54 is absent, the 126bar 45 currents are exact, and the first "
             "higher Phi-Sigma contraction fixes a positive-semidefinite rank-one "
-            "t2bar/t4bar quartic block. The invariant census closes G1; G6 "
-            "remains unclosed pending the physical triplet spectrum."
+            "t2bar/t4bar quartic block. Exact-X G1/G2 are completed scoped "
+            "subtheorems, while the current contract mismatch keeps authoritative "
+            "G1-G8 BLOCKED. G6 remains unclosed pending the physical spectrum."
         ),
     }
 

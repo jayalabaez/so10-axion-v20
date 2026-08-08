@@ -9,6 +9,12 @@ import numpy as np
 import g3_full_hessian_classification_v20 as gate
 
 
+def test_historical_option_c_scope_is_explicit():
+    assert gate.MODEL_CONTRACT_ID == "historical_option_c_no_x_v20"
+    assert gate.AUTHORITATIVE_FOR_MANUSCRIPT is False
+    assert gate.MODEL_WIDE_NO_GO_CERTIFIED is False
+
+
 def test_stage_resolved_gauge_and_pq_quotient_dimensions():
     quotient = gate.physical_quotient_basis()
     assert quotient["gauge"]["pre_rank"] == 33

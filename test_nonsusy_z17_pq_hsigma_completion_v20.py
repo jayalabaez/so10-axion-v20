@@ -4,12 +4,20 @@ from __future__ import annotations
 
 import exact_hsigma_holomorphic_charge_dressed_completion_v20 as closure
 import nonsusy_z17_pq_hsigma_completion_v20 as mod
+import pytest
 
 
 def test_completion_report_passes():
     report = mod.build_report()
     assert report["n_failed"] == 0, report["failures"]
     assert all(report["checks"].values())
+    assert report["model_contract_id"] == "historical_option_c_no_x_v20"
+    assert report["authoritative_for_manuscript"] is False
+    assert report["model_wide_no_go_certified"] is False
+    assert "NONAUTHORITATIVE" in report["status"]
+    assert report["flags"][
+        "phi17_dressed_families_allowed_by_manuscript_u1x"
+    ] is False
     assert report["flags"]["complete_mixed_invariant_ring"] is False
     assert report["flags"]["whole_model_validated"] is False
 
@@ -25,8 +33,13 @@ def test_completed_catalogue_contains_each_operator_once():
         assert row["feeds_triplet_mass"] is True
 
 
-def test_historical_X_comparison_is_explicit():
+def test_manuscript_u1x_comparison_is_explicit():
     rows = {row["name"]: row for row in mod.operator_catalogue(require_x=True)}
     assert rows[closure.O54]["status"] == "ALLOWED"
     assert rows[closure.OPLUS]["status"] == "CHARGE_FORBIDDEN"
     assert rows[closure.OMINUS]["status"] == "CHARGE_FORBIDDEN"
+
+
+def test_catalogue_requires_explicit_x_policy():
+    with pytest.raises(TypeError):
+        mod.operator_catalogue()

@@ -1,6 +1,9 @@
 {
   "status": "G3_STATIONARY_STABILITY_SEARCH_NO_LOCAL_WITNESS",
   "overall_state": "PARTIAL",
+  "model_contract_id": "historical_option_c_no_x_v20",
+  "authoritative_for_manuscript": false,
+  "model_wide_no_go_certified": false,
   "n_checks": 11,
   "n_failed": 1,
   "failures": [
@@ -826,18 +829,18 @@
   },
   "performance": {
     "adapter_seconds": {
-      "quadratic_families": 0.6186854999978095,
-      "portal_families": 0.45430669999768725,
-      "remaining_cubic_families": 0.5737267000004067,
-      "H10_self_quartics": 0.40071699999680277,
-      "H_Sigma_hermitian": 0.38829180000175256,
-      "Phi2_HdagH_channels": 0.4464137000031769,
-      "Phi_self_quartics": 12.622189499998058,
-      "Sigma_self_quartics": 25.94885890000296,
-      "unique_HSigma_chiral": 3.578269799996633,
-      "final_mixed_quartics": 9.051622300001327
+      "quadratic_families": 0.635487200008356,
+      "portal_families": 0.48193670000182465,
+      "remaining_cubic_families": 0.5177773000032175,
+      "H10_self_quartics": 0.4005795999983093,
+      "H_Sigma_hermitian": 0.4060973000014201,
+      "Phi2_HdagH_channels": 0.4389244000049075,
+      "Phi_self_quartics": 14.299818900006358,
+      "Sigma_self_quartics": 24.777003900002455,
+      "unique_HSigma_chiral": 3.358089800007292,
+      "final_mixed_quartics": 9.303167199992458
     },
-    "wall_seconds": 100.0457224999991
+    "wall_seconds": 97.58364280000387
   },
   "flags": {
     "G1_closed": true,
@@ -846,6 +849,7 @@
     "strict_local_physical_minimum_found": false,
     "complete_potential_BFB": false,
     "global_competing_extrema_exhausted": false,
+    "model_wide_no_go_certified": false,
     "G3_closed": false,
     "whole_model_validated": false,
     "whole_model_excluded": false,

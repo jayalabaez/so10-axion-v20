@@ -1,0 +1,959 @@
+{
+  "status": "PASS",
+  "n_commands_requested": 79,
+  "n_commands_executed": 79,
+  "n_failed": 0,
+  "failures": [],
+  "commands": [
+    {
+      "index": 1,
+      "command": [
+        "python",
+        "audit_v20_errors.py"
+      ],
+      "display": "python audit_v20_errors.py",
+      "returncode": 0,
+      "elapsed_seconds": 0.03199999999196734,
+      "passed": true
+    },
+    {
+      "index": 2,
+      "command": [
+        "python",
+        "so10_axion_v20_engine.py",
+        "--output",
+        "so10_axion_v20_verdict.json"
+      ],
+      "display": "python so10_axion_v20_engine.py --output so10_axion_v20_verdict.json",
+      "returncode": 0,
+      "elapsed_seconds": 0.25,
+      "passed": true
+    },
+    {
+      "index": 3,
+      "command": [
+        "python",
+        "portal_full_complex_orientation_sphere_v20.py"
+      ],
+      "display": "python portal_full_complex_orientation_sphere_v20.py",
+      "returncode": 0,
+      "elapsed_seconds": 4.093000000008033,
+      "passed": true
+    },
+    {
+      "index": 4,
+      "command": [
+        "python",
+        "falsify_v20.py"
+      ],
+      "display": "python falsify_v20.py",
+      "returncode": 0,
+      "elapsed_seconds": 0.5469999999913853,
+      "passed": true
+    },
+    {
+      "index": 5,
+      "command": [
+        "python",
+        "run_v20_referee_next.py"
+      ],
+      "display": "python run_v20_referee_next.py",
+      "returncode": 0,
+      "elapsed_seconds": 0.14100000000325963,
+      "passed": true
+    },
+    {
+      "index": 6,
+      "command": [
+        "python",
+        "extensive_confirm_falsify_v20.py"
+      ],
+      "display": "python extensive_confirm_falsify_v20.py",
+      "returncode": 0,
+      "elapsed_seconds": 176.39100000000326,
+      "passed": true
+    },
+    {
+      "index": 7,
+      "command": [
+        "python",
+        "verify_tan_beta_profile_semantics.py"
+      ],
+      "display": "python verify_tan_beta_profile_semantics.py",
+      "returncode": 0,
+      "elapsed_seconds": 0.5149999999994179,
+      "passed": true
+    },
+    {
+      "index": 8,
+      "command": [
+        "python",
+        "next_physics_analysis_v20.py"
+      ],
+      "display": "python next_physics_analysis_v20.py",
+      "returncode": 0,
+      "elapsed_seconds": 50.14100000000326,
+      "passed": true
+    },
+    {
+      "index": 9,
+      "command": [
+        "python",
+        "literature_sweep_150uev_v20.py"
+      ],
+      "display": "python literature_sweep_150uev_v20.py",
+      "returncode": 0,
+      "elapsed_seconds": 0.046999999991385266,
+      "passed": true
+    },
+    {
+      "index": 10,
+      "command": [
+        "python",
+        "home_public_37ghz_search_v20.py"
+      ],
+      "display": "python home_public_37ghz_search_v20.py",
+      "returncode": 0,
+      "elapsed_seconds": 0.031000000002677552,
+      "passed": true
+    },
+    {
+      "index": 11,
+      "command": [
+        "python",
+        "gravitas_axion_v20_37ghz.py"
+      ],
+      "display": "python gravitas_axion_v20_37ghz.py",
+      "returncode": 0,
+      "elapsed_seconds": 0.04700000000593718,
+      "passed": true
+    },
+    {
+      "index": 12,
+      "command": [
+        "python",
+        "public_data_indirect_audit_v20.py"
+      ],
+      "display": "python public_data_indirect_audit_v20.py",
+      "returncode": 0,
+      "elapsed_seconds": 0.17199999999138527,
+      "passed": true
+    },
+    {
+      "index": 13,
+      "command": [
+        "python",
+        "full_fermion_matching_v20.py"
+      ],
+      "display": "python full_fermion_matching_v20.py",
+      "returncode": 0,
+      "elapsed_seconds": 0.17200000000593718,
+      "passed": true
+    },
+    {
+      "index": 14,
+      "command": [
+        "python",
+        "tan_beta_profile_v20.py"
+      ],
+      "display": "python tan_beta_profile_v20.py",
+      "returncode": 0,
+      "elapsed_seconds": 136.10899999999674,
+      "passed": true
+    },
+    {
+      "index": 15,
+      "command": [
+        "python",
+        "reanalysis_portal_beta_v20.py"
+      ],
+      "display": "python reanalysis_portal_beta_v20.py",
+      "returncode": 0,
+      "elapsed_seconds": 0.17199999999138527,
+      "passed": true
+    },
+    {
+      "index": 16,
+      "command": [
+        "python",
+        "portal_tensors_abcd_v20.py"
+      ],
+      "display": "python portal_tensors_abcd_v20.py",
+      "returncode": 0,
+      "elapsed_seconds": 0.1090000000258442,
+      "passed": true
+    },
+    {
+      "index": 17,
+      "command": [
+        "python",
+        "physical_cf_matching_v20.py"
+      ],
+      "display": "python physical_cf_matching_v20.py",
+      "returncode": 0,
+      "elapsed_seconds": 0.5159999999741558,
+      "passed": true
+    },
+    {
+      "index": 18,
+      "command": [
+        "python",
+        "global_flavour_fit_v20.py"
+      ],
+      "display": "python global_flavour_fit_v20.py",
+      "returncode": 0,
+      "elapsed_seconds": 109.40600000001723,
+      "passed": true
+    },
+    {
+      "index": 19,
+      "command": [
+        "python",
+        "cmb_public_data_pipeline_v20.py"
+      ],
+      "display": "python cmb_public_data_pipeline_v20.py",
+      "returncode": 0,
+      "elapsed_seconds": 0.07800000000861473,
+      "passed": true
+    },
+    {
+      "index": 20,
+      "command": [
+        "python",
+        "empirical_roadmap_lock_v20.py"
+      ],
+      "display": "python empirical_roadmap_lock_v20.py",
+      "returncode": 0,
+      "elapsed_seconds": 0.15599999998812564,
+      "passed": true
+    },
+    {
+      "index": 21,
+      "command": [
+        "python",
+        "next_phenomenology_lock_v20.py"
+      ],
+      "display": "python next_phenomenology_lock_v20.py",
+      "returncode": 0,
+      "elapsed_seconds": 0.5,
+      "passed": true
+    },
+    {
+      "index": 22,
+      "command": [
+        "python",
+        "push_phenomenology_limits_v20.py"
+      ],
+      "display": "python push_phenomenology_limits_v20.py",
+      "returncode": 0,
+      "elapsed_seconds": 0.5469999999913853,
+      "passed": true
+    },
+    {
+      "index": 23,
+      "command": [
+        "python",
+        "common_scale_so10_yukawa_v20.py"
+      ],
+      "display": "python common_scale_so10_yukawa_v20.py",
+      "returncode": 0,
+      "elapsed_seconds": 0.5160000000032596,
+      "passed": true
+    },
+    {
+      "index": 24,
+      "command": [
+        "python",
+        "two_loop_so10_210_yukawa_v20.py"
+      ],
+      "display": "python two_loop_so10_210_yukawa_v20.py",
+      "returncode": 0,
+      "elapsed_seconds": 0.5,
+      "passed": true
+    },
+    {
+      "index": 25,
+      "command": [
+        "python",
+        "channel_fcnc_rates_v20.py"
+      ],
+      "display": "python channel_fcnc_rates_v20.py",
+      "returncode": 0,
+      "elapsed_seconds": 0.5160000000032596,
+      "passed": true
+    },
+    {
+      "index": 26,
+      "command": [
+        "python",
+        "na62_pointwise_limit_v20.py"
+      ],
+      "display": "python na62_pointwise_limit_v20.py",
+      "returncode": 0,
+      "elapsed_seconds": 0.48399999999674037,
+      "passed": true
+    },
+    {
+      "index": 27,
+      "command": [
+        "python",
+        "twist_massless_limit_v20.py"
+      ],
+      "display": "python twist_massless_limit_v20.py",
+      "returncode": 0,
+      "elapsed_seconds": 0.5,
+      "passed": true
+    },
+    {
+      "index": 28,
+      "command": [
+        "python",
+        "portal_constraint_ray_v20.py"
+      ],
+      "display": "python portal_constraint_ray_v20.py",
+      "returncode": 0,
+      "elapsed_seconds": 0.625,
+      "passed": true
+    },
+    {
+      "index": 29,
+      "command": [
+        "python",
+        "portal_boundary_heavy_spectrum_v20.py"
+      ],
+      "display": "python portal_boundary_heavy_spectrum_v20.py",
+      "returncode": 0,
+      "elapsed_seconds": 0.625,
+      "passed": true
+    },
+    {
+      "index": 30,
+      "command": [
+        "python",
+        "portal_family_orientation_map_v20.py"
+      ],
+      "display": "python portal_family_orientation_map_v20.py",
+      "returncode": 0,
+      "elapsed_seconds": 1.625,
+      "passed": true
+    },
+    {
+      "index": 31,
+      "command": [
+        "python",
+        "portal_full_complex_orientation_sphere_v20.py"
+      ],
+      "display": "python portal_full_complex_orientation_sphere_v20.py",
+      "returncode": 0,
+      "elapsed_seconds": 4.25,
+      "passed": true
+    },
+    {
+      "index": 32,
+      "command": [
+        "python",
+        "theory_certification_math_v20.py"
+      ],
+      "display": "python theory_certification_math_v20.py",
+      "returncode": 0,
+      "elapsed_seconds": 0.125,
+      "passed": true
+    },
+    {
+      "index": 33,
+      "command": [
+        "python",
+        "pati_salam_yukawa_matching_v20.py"
+      ],
+      "display": "python pati_salam_yukawa_matching_v20.py",
+      "returncode": 0,
+      "elapsed_seconds": 0.5160000000032596,
+      "passed": true
+    },
+    {
+      "index": 34,
+      "command": [
+        "python",
+        "portal_yukawa_posterior_v20.py"
+      ],
+      "display": "python portal_yukawa_posterior_v20.py",
+      "returncode": 0,
+      "elapsed_seconds": 0.875,
+      "passed": true
+    },
+    {
+      "index": 35,
+      "command": [
+        "python",
+        "haloscope_37ghz_limit_compare_v20.py"
+      ],
+      "display": "python haloscope_37ghz_limit_compare_v20.py",
+      "returncode": 0,
+      "elapsed_seconds": 0.10899999999674037,
+      "passed": true
+    },
+    {
+      "index": 36,
+      "command": [
+        "python",
+        "uv_vacuum_alignment_v20.py"
+      ],
+      "display": "python uv_vacuum_alignment_v20.py",
+      "returncode": 0,
+      "elapsed_seconds": 0.125,
+      "passed": true
+    },
+    {
+      "index": 37,
+      "command": [
+        "python",
+        "yukawa_rge_2loop_v20.py"
+      ],
+      "display": "python yukawa_rge_2loop_v20.py",
+      "returncode": 0,
+      "elapsed_seconds": 0.5160000000032596,
+      "passed": true
+    },
+    {
+      "index": 38,
+      "command": [
+        "python",
+        "fcnc_exact_likelihood_v20.py"
+      ],
+      "display": "python fcnc_exact_likelihood_v20.py",
+      "returncode": 0,
+      "elapsed_seconds": 0.5,
+      "passed": true
+    },
+    {
+      "index": 39,
+      "command": [
+        "python",
+        "strict_rg_audit_v20.py"
+      ],
+      "display": "python strict_rg_audit_v20.py",
+      "returncode": 0,
+      "elapsed_seconds": 0.07800000000861473,
+      "passed": true
+    },
+    {
+      "index": 40,
+      "command": [
+        "python",
+        "close_open_gaps_v20.py"
+      ],
+      "display": "python close_open_gaps_v20.py",
+      "returncode": 0,
+      "elapsed_seconds": 0.5,
+      "passed": true
+    },
+    {
+      "index": 41,
+      "command": [
+        "python",
+        "integrate_full_complex_orientation_v20.py"
+      ],
+      "display": "python integrate_full_complex_orientation_v20.py",
+      "returncode": 0,
+      "elapsed_seconds": 0.046999999991385266,
+      "passed": true
+    },
+    {
+      "index": 42,
+      "command": [
+        "python",
+        "exact_x_symmetry_consistency_gate_v20.py"
+      ],
+      "display": "python exact_x_symmetry_consistency_gate_v20.py",
+      "returncode": 0,
+      "elapsed_seconds": 0.062000000005355105,
+      "passed": true
+    },
+    {
+      "index": 43,
+      "command": [
+        "python",
+        "sarah_pyrate_210n_model_file_v20.py"
+      ],
+      "display": "python sarah_pyrate_210n_model_file_v20.py",
+      "returncode": 0,
+      "elapsed_seconds": 0.5629999999946449,
+      "passed": true
+    },
+    {
+      "index": 44,
+      "command": [
+        "python",
+        "gauged_u1x_scalar_contract_v20.py",
+        "--write"
+      ],
+      "display": "python gauged_u1x_scalar_contract_v20.py --write",
+      "returncode": 0,
+      "elapsed_seconds": 7.85899999999674,
+      "passed": true
+    },
+    {
+      "index": 45,
+      "command": [
+        "python",
+        "g1_exact_declared_symmetry_character_census_v20.py",
+        "--write"
+      ],
+      "display": "python g1_exact_declared_symmetry_character_census_v20.py --write",
+      "returncode": 0,
+      "elapsed_seconds": 7.328000000008615,
+      "passed": true
+    },
+    {
+      "index": 46,
+      "command": [
+        "python",
+        "exact_gauged_u1x_stationarity_rank_certificate_v20.py",
+        "--write"
+      ],
+      "display": "python exact_gauged_u1x_stationarity_rank_certificate_v20.py --write",
+      "returncode": 0,
+      "elapsed_seconds": 7.89100000000326,
+      "passed": true
+    },
+    {
+      "index": 47,
+      "command": [
+        "python",
+        "gauged_u1x_g2_derivative_audit_v20.py",
+        "--write"
+      ],
+      "display": "python gauged_u1x_g2_derivative_audit_v20.py --write",
+      "returncode": 0,
+      "elapsed_seconds": 76.46799999999348,
+      "passed": true
+    },
+    {
+      "index": 48,
+      "command": [
+        "python",
+        "exact_gauged_u1x_physical_quotient_v20.py",
+        "--write"
+      ],
+      "display": "python exact_gauged_u1x_physical_quotient_v20.py --write",
+      "returncode": 0,
+      "elapsed_seconds": 0.6410000000032596,
+      "passed": true
+    },
+    {
+      "index": 49,
+      "command": [
+        "python",
+        "exact_gauged_u1x_g3_pd_rank_certificate_v20.py",
+        "--recompute-heavy",
+        "--write"
+      ],
+      "display": "python exact_gauged_u1x_g3_pd_rank_certificate_v20.py --recompute-heavy --write",
+      "returncode": 0,
+      "elapsed_seconds": 10.453000000008615,
+      "passed": true
+    },
+    {
+      "index": 50,
+      "command": [
+        "python",
+        "exact_gauged_u1x_g3_a_square_recoupling_v20.py",
+        "--recompute",
+        "--write"
+      ],
+      "display": "python exact_gauged_u1x_g3_a_square_recoupling_v20.py --recompute --write",
+      "returncode": 0,
+      "elapsed_seconds": 7.296999999991385,
+      "passed": true
+    },
+    {
+      "index": 51,
+      "command": [
+        "python",
+        "exact_gauged_u1x_g3_sos_bfb_stationarity_v20.py",
+        "--recompute",
+        "--write"
+      ],
+      "display": "python exact_gauged_u1x_g3_sos_bfb_stationarity_v20.py --recompute --write",
+      "returncode": 0,
+      "elapsed_seconds": 19.421999999991385,
+      "passed": true
+    },
+    {
+      "index": 52,
+      "command": [
+        "python",
+        "exact_gauged_u1x_g3_global_counterexample_v20.py",
+        "--write"
+      ],
+      "display": "python exact_gauged_u1x_g3_global_counterexample_v20.py --write",
+      "returncode": 0,
+      "elapsed_seconds": 12.10899999999674,
+      "passed": true
+    },
+    {
+      "index": 53,
+      "command": [
+        "python",
+        "exact_gauged_u1x_g3_kernel_quartic_bound_v20.py",
+        "--write"
+      ],
+      "display": "python exact_gauged_u1x_g3_kernel_quartic_bound_v20.py --write",
+      "returncode": 0,
+      "elapsed_seconds": 17.812999999994645,
+      "passed": true
+    },
+    {
+      "index": 54,
+      "command": [
+        "python",
+        "exact_gauged_u1x_g3_replacement_stationary_orbit_v20.py",
+        "--write"
+      ],
+      "display": "python exact_gauged_u1x_g3_replacement_stationary_orbit_v20.py --write",
+      "returncode": 0,
+      "elapsed_seconds": 43.53100000001723,
+      "passed": true
+    },
+    {
+      "index": 55,
+      "command": [
+        "python",
+        "exact_gauged_u1x_g3_su5_delta_pd_sos_v20.py",
+        "--write"
+      ],
+      "display": "python exact_gauged_u1x_g3_su5_delta_pd_sos_v20.py --write",
+      "returncode": 0,
+      "elapsed_seconds": 19.437999999994645,
+      "passed": true
+    },
+    {
+      "index": 56,
+      "command": [
+        "python",
+        "exact_gauged_u1x_g3_su5_delta_hsx_extension_v20.py",
+        "--write"
+      ],
+      "display": "python exact_gauged_u1x_g3_su5_delta_hsx_extension_v20.py --write",
+      "returncode": 0,
+      "elapsed_seconds": 24.328000000008615,
+      "passed": true
+    },
+    {
+      "index": 57,
+      "command": [
+        "python",
+        "exact_gauged_u1x_g3_su5_delta_hsx_exact_hessian_v20.py",
+        "--write"
+      ],
+      "display": "python exact_gauged_u1x_g3_su5_delta_hsx_exact_hessian_v20.py --write",
+      "returncode": 0,
+      "elapsed_seconds": 73.98399999999674,
+      "passed": true
+    },
+    {
+      "index": 58,
+      "command": [
+        "python",
+        "exact_gauged_u1x_g3_su5_phi_orbit_lemma_v20.py",
+        "--write"
+      ],
+      "display": "python exact_gauged_u1x_g3_su5_phi_orbit_lemma_v20.py --write",
+      "returncode": 0,
+      "elapsed_seconds": 0.6879999999946449,
+      "passed": true
+    },
+    {
+      "index": 59,
+      "command": [
+        "python",
+        "exact_gauged_u1x_g3_su5_phi_local_component_v20.py",
+        "--write"
+      ],
+      "display": "python exact_gauged_u1x_g3_su5_phi_local_component_v20.py --write",
+      "returncode": 0,
+      "elapsed_seconds": 0.6400000000139698,
+      "passed": true
+    },
+    {
+      "index": 60,
+      "command": [
+        "python",
+        "exact_gauged_u1x_g3_su5_phi_su3_slice_v20.py",
+        "--write"
+      ],
+      "display": "python exact_gauged_u1x_g3_su5_phi_su3_slice_v20.py --write",
+      "returncode": 0,
+      "elapsed_seconds": 2.702999999979511,
+      "passed": true
+    },
+    {
+      "index": 61,
+      "command": [
+        "python",
+        "exact_gauged_u1x_g3_su5_equality_orbit_v20.py",
+        "--write"
+      ],
+      "display": "python exact_gauged_u1x_g3_su5_equality_orbit_v20.py --write",
+      "returncode": 0,
+      "elapsed_seconds": 14.75,
+      "passed": true
+    },
+    {
+      "index": 62,
+      "command": [
+        "python",
+        "exact_gauged_u1x_g3_su5_fixed_f_offkernel_bound_v20.py",
+        "--write"
+      ],
+      "display": "python exact_gauged_u1x_g3_su5_fixed_f_offkernel_bound_v20.py --write",
+      "returncode": 0,
+      "elapsed_seconds": 14.969000000011874,
+      "passed": true
+    },
+    {
+      "index": 63,
+      "command": [
+        "python",
+        "exact_gauged_u1x_g3_su5_max_negative_zero_residual_bound_v20.py",
+        "--write"
+      ],
+      "display": "python exact_gauged_u1x_g3_su5_max_negative_zero_residual_bound_v20.py --write",
+      "returncode": 0,
+      "elapsed_seconds": 25.01600000000326,
+      "passed": true
+    },
+    {
+      "index": 64,
+      "command": [
+        "python",
+        "exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py",
+        "--write"
+      ],
+      "display": "python exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py --write",
+      "returncode": 0,
+      "elapsed_seconds": 24.09299999999348,
+      "passed": true
+    },
+    {
+      "index": 65,
+      "command": [
+        "python",
+        "exact_gauged_u1x_g3_su5_chiral_global_gap_reduction_v20.py",
+        "--write"
+      ],
+      "display": "python exact_gauged_u1x_g3_su5_chiral_global_gap_reduction_v20.py --write",
+      "returncode": 0,
+      "elapsed_seconds": 27.796999999991385,
+      "passed": true
+    },
+    {
+      "index": 66,
+      "command": [
+        "python",
+        "exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py",
+        "--write"
+      ],
+      "display": "python exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py --write",
+      "returncode": 0,
+      "elapsed_seconds": 22.90700000000652,
+      "passed": true
+    },
+    {
+      "index": 67,
+      "command": [
+        "python",
+        "gauged_u1x_g3_sos_candidate_v20.py",
+        "--recompute-heavy",
+        "--write"
+      ],
+      "display": "python gauged_u1x_g3_sos_candidate_v20.py --recompute-heavy --write",
+      "returncode": 0,
+      "elapsed_seconds": 69.82800000000861,
+      "passed": true
+    },
+    {
+      "index": 68,
+      "command": [
+        "python",
+        "gauged_u1x_g3_stability_v20.py",
+        "--write"
+      ],
+      "display": "python gauged_u1x_g3_stability_v20.py --write",
+      "returncode": 0,
+      "elapsed_seconds": 25.60899999999674,
+      "passed": true
+    },
+    {
+      "index": 69,
+      "command": [
+        "python",
+        "gauged_u1x_g3_corrected_common_kernel_v20.py",
+        "--recompute-heavy",
+        "--write"
+      ],
+      "display": "python gauged_u1x_g3_corrected_common_kernel_v20.py --recompute-heavy --write",
+      "returncode": 0,
+      "elapsed_seconds": 73.0,
+      "passed": true
+    },
+    {
+      "index": 70,
+      "command": [
+        "python",
+        "g1_g8_gate_ledger_v20.py",
+        "--write"
+      ],
+      "display": "python g1_g8_gate_ledger_v20.py --write",
+      "returncode": 0,
+      "elapsed_seconds": 8.01600000000326,
+      "passed": true
+    },
+    {
+      "index": 71,
+      "command": [
+        "python",
+        "final_g3_acceptance_gate_v20.py",
+        "--write"
+      ],
+      "display": "python final_g3_acceptance_gate_v20.py --write",
+      "returncode": 0,
+      "elapsed_seconds": 7.842999999993481,
+      "passed": true
+    },
+    {
+      "index": 72,
+      "command": [
+        "python",
+        "g1_g8_execution_roadmap_v20.py",
+        "--write"
+      ],
+      "display": "python g1_g8_execution_roadmap_v20.py --write",
+      "returncode": 0,
+      "elapsed_seconds": 8.921999999991385,
+      "passed": true
+    },
+    {
+      "index": 73,
+      "command": [
+        "python",
+        "authoritative_full_model_gate_v20.py"
+      ],
+      "display": "python authoritative_full_model_gate_v20.py",
+      "returncode": 0,
+      "elapsed_seconds": 14.40700000000652,
+      "passed": true
+    },
+    {
+      "index": 74,
+      "command": [
+        "python",
+        "theory_validation_matrix_v20.py",
+        "--expect-blocked"
+      ],
+      "display": "python theory_validation_matrix_v20.py --expect-blocked",
+      "returncode": 0,
+      "elapsed_seconds": 1.2809999999881256,
+      "passed": true
+    },
+    {
+      "index": 75,
+      "command": [
+        "python",
+        "theory_confirmation_verdict_v20.py",
+        "--expect-blocked"
+      ],
+      "display": "python theory_confirmation_verdict_v20.py --expect-blocked",
+      "returncode": 0,
+      "elapsed_seconds": 15.062000000005355,
+      "passed": true
+    },
+    {
+      "index": 76,
+      "command": [
+        "python",
+        "ultimate_theory_gate_v20.py",
+        "--expect-blocked"
+      ],
+      "display": "python ultimate_theory_gate_v20.py --expect-blocked",
+      "returncode": 0,
+      "elapsed_seconds": 15.89100000000326,
+      "passed": true
+    },
+    {
+      "index": 77,
+      "command": [
+        "python",
+        "ultimate_theory_gate_v20.py",
+        "--expect-blocked",
+        "--no-write"
+      ],
+      "display": "python ultimate_theory_gate_v20.py --expect-blocked --no-write",
+      "returncode": 0,
+      "elapsed_seconds": 15.171999999991385,
+      "passed": true
+    },
+    {
+      "index": 78,
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-v"
+      ],
+      "display": "python -m unittest discover -v",
+      "returncode": 0,
+      "elapsed_seconds": 979.515000000014,
+      "passed": true
+    },
+    {
+      "index": 79,
+      "command": [
+        "python",
+        "-m",
+        "pytest",
+        "-q",
+        "test_exact_x_symmetry_consistency_gate_v20.py",
+        "test_g1_exact_declared_symmetry_character_census_v20.py",
+        "test_gauged_u1x_scalar_contract_v20.py",
+        "test_gauged_u1x_g2_derivative_audit_v20.py",
+        "test_exact_gauged_u1x_stationarity_rank_certificate_v20.py",
+        "test_exact_gauged_u1x_physical_quotient_v20.py",
+        "test_exact_gauged_u1x_g3_pd_rank_certificate_v20.py",
+        "test_exact_gauged_u1x_g3_a_square_recoupling_v20.py",
+        "test_exact_gauged_u1x_g3_sos_bfb_stationarity_v20.py",
+        "test_exact_gauged_u1x_g3_global_counterexample_v20.py",
+        "test_exact_gauged_u1x_g3_kernel_quartic_bound_v20.py",
+        "test_exact_gauged_u1x_g3_replacement_stationary_orbit_v20.py",
+        "test_exact_gauged_u1x_g3_su5_delta_pd_sos_v20.py",
+        "test_exact_gauged_u1x_g3_su5_delta_hsx_extension_v20.py",
+        "test_exact_gauged_u1x_g3_su5_delta_hsx_exact_hessian_v20.py",
+        "test_exact_gauged_u1x_g3_su5_phi_orbit_lemma_v20.py",
+        "test_exact_gauged_u1x_g3_su5_phi_local_component_v20.py",
+        "test_exact_gauged_u1x_g3_su5_phi_su3_slice_v20.py",
+        "test_exact_gauged_u1x_g3_su5_equality_orbit_v20.py",
+        "test_exact_gauged_u1x_g3_su5_fixed_f_offkernel_bound_v20.py",
+        "test_exact_gauged_u1x_g3_su5_max_negative_zero_residual_bound_v20.py",
+        "test_exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py",
+        "test_exact_gauged_u1x_g3_su5_chiral_global_gap_reduction_v20.py",
+        "test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py",
+        "test_final_g3_acceptance_gate_v20.py",
+        "test_gauged_u1x_g3_sos_candidate_v20.py",
+        "test_gauged_u1x_g3_stability_v20.py",
+        "test_gauged_u1x_g3_corrected_common_kernel_v20.py",
+        "test_g1_g8_gate_ledger_v20.py",
+        "test_g1_g8_execution_roadmap_v20.py",
+        "test_theory_validation_matrix_v20.py",
+        "test_replicate_v20.py"
+      ],
+      "display": "python -m pytest -q test_exact_x_symmetry_consistency_gate_v20.py test_g1_exact_declared_symmetry_character_census_v20.py test_gauged_u1x_scalar_contract_v20.py test_gauged_u1x_g2_derivative_audit_v20.py test_exact_gauged_u1x_stationarity_rank_certificate_v20.py test_exact_gauged_u1x_physical_quotient_v20.py test_exact_gauged_u1x_g3_pd_rank_certificate_v20.py test_exact_gauged_u1x_g3_a_square_recoupling_v20.py test_exact_gauged_u1x_g3_sos_bfb_stationarity_v20.py test_exact_gauged_u1x_g3_global_counterexample_v20.py test_exact_gauged_u1x_g3_kernel_quartic_bound_v20.py test_exact_gauged_u1x_g3_replacement_stationary_orbit_v20.py test_exact_gauged_u1x_g3_su5_delta_pd_sos_v20.py test_exact_gauged_u1x_g3_su5_delta_hsx_extension_v20.py test_exact_gauged_u1x_g3_su5_delta_hsx_exact_hessian_v20.py test_exact_gauged_u1x_g3_su5_phi_orbit_lemma_v20.py test_exact_gauged_u1x_g3_su5_phi_local_component_v20.py test_exact_gauged_u1x_g3_su5_phi_su3_slice_v20.py test_exact_gauged_u1x_g3_su5_equality_orbit_v20.py test_exact_gauged_u1x_g3_su5_fixed_f_offkernel_bound_v20.py test_exact_gauged_u1x_g3_su5_max_negative_zero_residual_bound_v20.py test_exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py test_exact_gauged_u1x_g3_su5_chiral_global_gap_reduction_v20.py test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py test_final_g3_acceptance_gate_v20.py test_gauged_u1x_g3_sos_candidate_v20.py test_gauged_u1x_g3_stability_v20.py test_gauged_u1x_g3_corrected_common_kernel_v20.py test_g1_g8_gate_ledger_v20.py test_g1_g8_execution_roadmap_v20.py test_theory_validation_matrix_v20.py test_replicate_v20.py",
+      "returncode": 0,
+      "elapsed_seconds": 141.73499999998603,
+      "passed": true
+    }
+  ],
+  "mode": "FULL",
+  "commit_sha": "",
+  "workflow_run_id": ""
+}

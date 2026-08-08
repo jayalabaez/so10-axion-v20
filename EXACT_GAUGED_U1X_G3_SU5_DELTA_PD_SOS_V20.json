@@ -1,0 +1,299 @@
+{
+  "SOS_decomposition": {
+    "bounded_below_for_all_fields": true,
+    "formula": "(Nphi-1)^2-1+I54phi+I4125phi+(1/8)[||(Mphi-8/sqrt(10))Sigma||^2+||Cphi Sigma||^2+(Nsigma-r^2)^2-r^4+I54sigma+I1050barsigma]",
+    "global_minimum_exists": true,
+    "global_minimum_value": "-1-r^4/8",
+    "global_orbit_uniqueness": false,
+    "nonnegative_residuals": [
+      "(Nphi-1)^2",
+      "I54(Phi)",
+      "I4125(Phi)",
+      "(1/8)||(M(Phi)-8/sqrt(10))Sigma||^2",
+      "(1/8)||C_Phi Sigma||^2",
+      "(1/8)(Nsigma-r^2)^2",
+      "(1/8)I54(Sigma)",
+      "(1/8)I1050bar(Sigma)"
+    ],
+    "target_saturates_every_residual": true
+  },
+  "checks": {
+    "Delta_SOS_residuals_vanish": true,
+    "Delta_weighted_quartic_is_norm_square": true,
+    "F0_has_integral_ten_component_support": true,
+    "G3_not_overclaimed": true,
+    "PD_equality_set_locally_one_SO10_orbit": true,
+    "PD_quotient_Hessian_strictly_positive": true,
+    "Phi_J_expansion_exact": true,
+    "Phi_SOS_residuals_vanish": true,
+    "Phi_projectors_complete": true,
+    "Phi_projectors_match_exact_record": true,
+    "SO10_orbit_rank_is_33_exactly": true,
+    "SO10_stabilizer_dimension_is_SM_12": true,
+    "all_candidate_parameters_belong_to_exact_X_contract": true,
+    "all_dimensionless_couplings_below_4pi": true,
+    "candidate_uses_17_parameters": true,
+    "exact_PD_Hessian_nullity_is_gauge_33": true,
+    "exact_PD_Hessian_rank_is_429": true,
+    "full_486_Hessian_not_overclaimed": true,
+    "global_equality_classification_not_overclaimed": true,
+    "global_lower_bound_exact": true,
+    "maximum_coupling_is_73_over_8": true,
+    "mixed_C_square_vanishes_exactly": true,
+    "mixed_shift_square_vanishes_exactly": true,
+    "target_saturates_global_lower_bound_exactly": true,
+    "target_stationary_from_zero_residuals": true
+  },
+  "coefficient_map": {
+    "maximum_absolute_physical_coefficient": 9.125,
+    "missing_from_exact_X_contract": [],
+    "nonzero_count": 17,
+    "physical_numerical": {
+      "lambda::O05_B01_126bar_norm": 0.7999999989867441,
+      "lambda::O07_B01_Phi_norm": -2.0,
+      "lambda::O14_B01_Phi_Sigma_Sigmadag_cubic": -0.6324555320336759,
+      "lambda::O27_B01_126bar_self_projectors": 0.25,
+      "lambda::O27_B02_126bar_self_projectors": 0.25,
+      "lambda::O27_B03_126bar_self_projectors": 0.125,
+      "lambda::O27_B04_126bar_self_projectors": 0.125,
+      "lambda::O44_B01_Phi2_Sigma_projectors": 5.125,
+      "lambda::O44_B02_Phi2_Sigma_projectors": 9.125,
+      "lambda::O44_B03_Phi2_Sigma_projectors": 3.625,
+      "lambda::O44_B04_Phi2_Sigma_projectors": -0.875,
+      "lambda::O44_B05_Phi2_Sigma_projectors": -1.375,
+      "lambda::O44_B06_Phi2_Sigma_projectors": 1.625,
+      "lambda::O48_B01_Phi_self_quartics": 2.825,
+      "lambda::O48_B02_Phi_self_quartics": -0.10746527777777778,
+      "lambda::O48_B03_Phi_self_quartics": 0.024479166666666666,
+      "lambda::O48_B04_Phi_self_quartics": -0.0009982638888888888
+    },
+    "physical_r": 6.366336251445493e-05,
+    "symbolic": {
+      "lambda::O05_B01_126bar_norm": "4/5-r^2/4",
+      "lambda::O07_B01_Phi_norm": "-2",
+      "lambda::O14_B01_Phi_Sigma_Sigmadag_cubic": "-sqrt(10)/5",
+      "lambda::O27_B01_126bar_self_projectors": "1/4",
+      "lambda::O27_B02_126bar_self_projectors": "1/4",
+      "lambda::O27_B03_126bar_self_projectors": "1/8",
+      "lambda::O27_B04_126bar_self_projectors": "1/8",
+      "lambda::O44_B01_Phi2_Sigma_projectors": "41/8",
+      "lambda::O44_B02_Phi2_Sigma_projectors": "73/8",
+      "lambda::O44_B03_Phi2_Sigma_projectors": "29/8",
+      "lambda::O44_B04_Phi2_Sigma_projectors": "-7/8",
+      "lambda::O44_B05_Phi2_Sigma_projectors": "-11/8",
+      "lambda::O44_B06_Phi2_Sigma_projectors": "13/8",
+      "lambda::O48_B01_Phi_self_quartics": "113/40",
+      "lambda::O48_B02_Phi_self_quartics": "-619/5760",
+      "lambda::O48_B03_Phi_self_quartics": "47/1920",
+      "lambda::O48_B04_Phi_self_quartics": "-23/23040"
+    }
+  },
+  "exact_PD_Hessian_rank_certificate": {
+    "Phi_Gram": {
+      "PSD_by_construction": true,
+      "maximum_abs_numerator": 18284544,
+      "projector_polynomial_denominator": 2211840,
+      "projector_polynomial_numerators": [
+        2211840,
+        -1999872,
+        414336,
+        65728,
+        -31448,
+        3716,
+        -178,
+        3
+      ],
+      "residuals": [
+        "N_x-10",
+        "Pi54(x tensor x)",
+        "Pi4125(x tensor x)"
+      ]
+    },
+    "Sigma_Gram": {
+      "PSD_by_construction": true,
+      "maximum_abs_numerator": 58368,
+      "projector_polynomial_denominator": 10080,
+      "projector_polynomial_numerators": [
+        -1155,
+        989,
+        179,
+        -13
+      ],
+      "residuals": [
+        "N_y-8",
+        "Pi54(y tensor y)",
+        "Pi1050bar(y tensor y)"
+      ]
+    },
+    "all_zero_modes_are_SO10_orbit_tangents": true,
+    "coordinate_congruence": "x=sqrt(10)Phi, y=sqrt(8)Sigma/r; invertible for every r>0",
+    "dimension": 462,
+    "exact_Hessian_nullity": 33,
+    "exact_Hessian_rank": 429,
+    "exact_gauge_kernel": true,
+    "exact_gauge_tangent_rank": 33,
+    "gauge_kernel_component_max_abs_residual": {
+      "Phi": 0,
+      "Sigma": 0,
+      "mixed": 0
+    },
+    "global_equality_orbit_classification_complete": false,
+    "local_equality_set_is_single_SO10_orbit": true,
+    "mixed_Jacobian": {
+      "integral_source_binding": true,
+      "maximum_abs_entry": 8,
+      "residuals": [
+        "(M(x)-8)y",
+        "C(x,y)"
+      ],
+      "shape": [
+        272,
+        462
+      ]
+    },
+    "modular_certificate": {
+      "inference": "rank_Q >= rank_Fp because all denominators are nonzero mod p",
+      "prime": 1000003,
+      "prime_verified_by_trial_division": true,
+      "rank_over_Fp": 429
+    },
+    "physical_sigma_weight": "1/8",
+    "positive_Gram_decomposition": true,
+    "proof_grade": true,
+    "rational_rank_upper_bound_from_kernel": 429,
+    "strictly_positive_on_SO10_quotient": true
+  },
+  "exact_Phi_certificate": {
+    "I4125_exactly_zero": true,
+    "I54_exactly_zero": true,
+    "J_values_raw": {
+      "J0": "100",
+      "J2": "2880",
+      "J3": "23040",
+      "J4": "437760"
+    },
+    "SOS_J_coefficients": {
+      "J0": "113/40",
+      "J2": "-619/5760",
+      "J3": "47/1920",
+      "J4": "-23/23040"
+    },
+    "SOS_J_coefficients_match_record": true,
+    "canonical_P_A_W_ratio": "1:sqrt(3):sqrt(6)",
+    "definition": "F=F0/sqrt(10), F0=P+sqrt(3)A+sqrt(6)W",
+    "integer_pair_moments_degree_0_to_7": [
+      100,
+      0,
+      2880,
+      23040,
+      437760,
+      7511040,
+      146810880,
+      3019714560
+    ],
+    "literature_ratio": "p:a:omega=1:1:1",
+    "normalized_projector_values": {
+      "1": "1/210",
+      "210": "1/25",
+      "4125": "0",
+      "45": "9/350",
+      "54": "0",
+      "5940": "48/175",
+      "770_plus_1050_plus_1050bar": "8/75",
+      "8910": "96/175"
+    },
+    "raw_norm_squared": 10,
+    "raw_projector_sum": "100",
+    "raw_projector_values": {
+      "1": "10/21",
+      "210": "4",
+      "4125": "0",
+      "45": "18/7",
+      "54": "0",
+      "5940": "192/7",
+      "770_plus_1050_plus_1050bar": "32/3",
+      "8910": "384/7"
+    },
+    "raw_support": {
+      "(0, 1, 2, 3)": 1,
+      "(0, 1, 4, 5)": 1,
+      "(0, 1, 6, 7)": 1,
+      "(0, 1, 8, 9)": 1,
+      "(2, 3, 4, 5)": 1,
+      "(2, 3, 6, 7)": 1,
+      "(2, 3, 8, 9)": 1,
+      "(4, 5, 6, 7)": 1,
+      "(4, 5, 8, 9)": 1,
+      "(6, 7, 8, 9)": 1
+    },
+    "source_binding_exact": true
+  },
+  "exact_Sigma_certificate": {
+    "Delta_projector_fractions": {
+      "1050bar": "0",
+      "2772bar": "2/3",
+      "4125": "1/3",
+      "54": "0"
+    },
+    "I1050bar_exactly_zero": true,
+    "I54_exactly_zero": true,
+    "identity": "N_Sigma^2+I54+I1050bar = 2 I54+2 I1050bar+I2772bar+I4125",
+    "self_weights": {
+      "1050bar": "2",
+      "2772bar": "1",
+      "4125": "1",
+      "54": "2"
+    },
+    "source_binding_exact": true,
+    "weighted_quartic_at_Delta": "1"
+  },
+  "exact_mixed_zero_certificate": {
+    "C_residual_max_abs": 0,
+    "M_eigen_residual_max_abs": 0,
+    "M_eigenvalue_normalized": "8/sqrt(10)",
+    "M_eigenvalue_raw": 8,
+    "normalized_identity": "M(F)Delta=(8/sqrt(10))Delta and C_F Delta=0",
+    "raw_delta_norm_squared": 8,
+    "raw_identity": "M(F0)d0=8 d0 and C_F0 d0=0",
+    "source_binding_exact": true
+  },
+  "exact_stabilizer_certificate": {
+    "SM_dimension": 12,
+    "exact_rational_rank": 33,
+    "exact_stabilizer_dimension": 12,
+    "expected_unbroken_algebra": "su(3)_C + su(2)_L + u(1)_Y",
+    "generator_count": 45,
+    "group": "SO(10)",
+    "integer_tangent_shape": [
+      462,
+      45
+    ],
+    "source_binding_exact": true
+  },
+  "failures": [],
+  "model_contract_id": "gauged_u1x_phi17_v20",
+  "n_checks": 25,
+  "n_failed": 0,
+  "overall_state": "CLOSED_PD_SUBPROBLEM",
+  "scope": {
+    "G3_closed": false,
+    "Phi_Sigma_Hessian_rank_429_nullity_33_exact": true,
+    "Phi_Sigma_equality_set_locally_one_orbit": true,
+    "Phi_Sigma_global_minimum_exact": true,
+    "Phi_Sigma_quotient_strictly_positive_exact": true,
+    "Phi_Sigma_stationarity_exact": true,
+    "SO10_to_SM_stabilizer_dimension_exact": true,
+    "full_448_or_replacement_quotient_Hessian_exact": false,
+    "full_486_field_stationarity": false,
+    "global_orbit_uniqueness": false,
+    "whole_model_excluded": false
+  },
+  "status": "EXACT_SU5_DELTA_PD_GLOBAL_SOS_CANDIDATE_CERTIFIED",
+  "vacuum": {
+    "Phi": "F0/sqrt(10)",
+    "Sigma": "r Delta_R",
+    "formal_assumption": "r>0",
+    "unbroken_SO10_stabilizer": "SU(3)_C x SU(2)_L x U(1)_Y"
+  },
+  "verdict": "The P-specific Delta no-go is evaded by an exact SU(5)-singlet 210 plus Delta_R configuration.  A 17-parameter, perturbative Phi/Sigma potential is an explicit global sum of squares and the target has the exact 12-dimensional SM stabilizer.  Its exact PD Hessian has rank 429 and only the 33 gauge-orbit zero modes, so the equality set is locally one SO(10) orbit.  Other disconnected global equality orbits are not classified.  The H/S/Phi17 extension and exact full physical Hessian remain to be certified before G3 can close."
+}

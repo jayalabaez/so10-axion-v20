@@ -41,10 +41,16 @@ def test_exact_stability_transition():
 def test_report_fail_closed():
     report = gate.build_report()
     assert report["n_failed"] == 0, report["failures"]
+    assert report["model_contract_id"] == "historical_option_c_no_x_v20"
+    assert report["authoritative_for_manuscript"] is False
+    assert report["overall_state"] == "HISTORICAL"
     assert report["dimensions"]["enlarged_real_Hessian"] == 482
     assert report["dimensions"]["enlarged_physical_quotient"] == 449
     assert report["flag"]["muD_cross_block_inserted"] is True
-    assert report["flag"]["exact_effective_H_mass_stability_bound"] is True
+    assert report["flag"]["historical_option_c_only"] is True
+    assert report["flag"]["authoritative_manuscript_G3_result"] is False
+    assert report["flag"]["exact_effective_H_mass_stability_bound"] is False
+    assert report["flag"]["numerical_effective_H_mass_stability_envelope"] is True
     assert report["flag"]["gauge_goldstones_preserved_above_bound"] is True
     assert report["flag"]["tachyon_below_bound_exhibited"] is True
     assert report["flag"]["complete_operator_derived_H_mass_matrix"] is False

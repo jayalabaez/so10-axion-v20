@@ -63,16 +63,17 @@ jobs:
           import json
           r=json.load(open('NEXT_GEN_G1_G6_PROGRESS_GATE_V20.json'))
           assert r['n_failed']==0, r['failures']
-          assert r['overall_state']=='PARTIAL'
+          assert r['model_contract_id']=='gauged_u1x_phi17_v20'
+          assert r['overall_state']=='BLOCKED'
+          assert not r['contract_consistent']
           assert r['n_closed_subproblems']==26
           assert all(r['closed_subproblems'].values())
-          assert r['gate_states']['G1']=='CLOSED'
-          assert r['gate_states']['G2']=='CLOSED'
-          assert r['gate_states']['G6']=='PARTIAL'
-          assert r['gate_states']['G7']=='OPEN'
-          assert r['gate_states']['G8']=='PARTIAL'
+          assert all(r['gate_states'][g]=='BLOCKED' for g in ('G1','G2','G6','G7','G8'))
           assert r['flag']['authoritative_next_gen_G1_G6_progress_gate']
           assert r['flag']['all_recorded_exact_subproblems_closed']
+          assert r['flag']['exact_X_G1_G2_scoped_subtheorems_complete']
+          assert not r['flag']['historical_option_C_authoritative']
+          assert r['flag']['G6_diagnostics_are_scoped_not_gate_closure']
           assert r['flag']['shared_Hermitian_54_channel_closed']
           assert r['flag']['shared_Hermitian_45_channel_closed']
           assert r['flag']['PhiH_Hermitian_channel_family_complete']
@@ -87,7 +88,7 @@ jobs:
           assert structure['exact_Hermitian_45']['t2_shift']=='+lambda_PhiSigma_45 k_color'
           assert structure['exact_Hermitian_45']['t2bar_shift']=='-lambda_PhiSigma_45 k_color'
           assert structure['exact_Hermitian_45']['t4bar_shift']=='-lambda_PhiSigma_45 k_color'
-          assert r['flag']['G1_closed']
+          assert not r['flag']['G1_closed']
           assert not r['flag']['G6_closed']
           assert not r['flag']['physical_triplet_spectrum_complete']
           assert not r['flag']['exact_unique_proton_lifetime']

@@ -1,0 +1,487 @@
+{
+  "status": "EXACT_REAL_H_NO_GO__CHIRAL_H_STRICT_LOCAL_CANDIDATE__GLOBAL_GAP_OPEN",
+  "overall_state": "G3_PROMISING_CANDIDATE_NOT_CLOSED",
+  "n_checks": 18,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "PD_source_certificate_available": true,
+    "real_H_obstruction_exact": true,
+    "real_H_strict_minimum_impossible": true,
+    "chiral_Phi_H_square_exact": true,
+    "beta_free_all_vanishing_affine_SOS_route_excluded": true,
+    "complete_51_parameter_contract": true,
+    "candidate_parameters_inside_contract": true,
+    "candidate_has_28_nonzero_parameters": true,
+    "coefficient_bound_4pi": true,
+    "exact_symmetry_rank_38": true,
+    "quartic_BFB_bound": true,
+    "fixed_PD_equal_norm_H_test": true,
+    "fixed_F_full_mixed_kernel_global_gap": true,
+    "negative_F_has_no_mixed_zero_kernel": true,
+    "live_full_gradient_zero": true,
+    "live_448_quotient_positive": true,
+    "global_minimum_not_overclaimed": true,
+    "G3_not_overclaimed": true
+  },
+  "model_contract_id": "gauged_u1x_phi17_v20",
+  "selected_scales": {
+    "r": "1/5",
+    "x": "1",
+    "N_H": "1"
+  },
+  "real_H_obstruction": {
+    "scope": "all exact-X H-dependent families O06,O12,O15,O28,O31,O35,O36,O38,O45,O46 at Phi=F,Sigma=r Delta,H=e6,S real",
+    "old_Phi_H_alignment_value": "3/5",
+    "old_Phi_H_alignment_fails_zero_locus": true,
+    "O46_at_F": {
+      "channel_1": "identity",
+      "channel_45": "maps e6 to -(3/5)i e7",
+      "channel_54": "zero",
+      "stationarity_forces_lambda_46_45_zero": true
+    },
+    "linear_and_chiral_portal_zero_jets": {
+      "residuals": {
+        "O15_H_source": 0.0,
+        "O38_H_source": 0.0,
+        "O28_H_source": 0.0,
+        "O31_HH_source": 1.942890293094024e-16,
+        "O45_210_H_source": 0.0,
+        "O45_1050_H_source": 0.0
+      },
+      "maximum_abs_residual": 1.942890293094024e-16,
+      "linear_H_families_have_zero_H_source": true,
+      "O31_has_zero_HH_jet": true,
+      "source_binding": "canonical F support and physical -i-Hodge Delta tensor",
+      "source_binding_exact": true
+    },
+    "O35_45_H_gradient_max_abs": 0.0,
+    "O35_45_real_Hessian_spectrum": [
+      -1.0,
+      -1.0,
+      -1.0,
+      -1.0,
+      -1.0,
+      -1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "O35_45_signature": {
+      "negative": 6,
+      "zero": 8,
+      "positive": 6
+    },
+    "general_colour_block": "[[0,+/-c],[+/-c,m]], c=lambda_35_45*r^2",
+    "general_colour_characteristic_polynomial": "lambda^2-m*lambda-c^2",
+    "general_colour_eigenvalues": "(m +/- sqrt(m^2+4c^2))/2, each x6",
+    "block_determinant": "-c^2",
+    "role_of_O06_O12_O36_O35_1_O46_1": "they determine m and the radial equation; radial stationarity makes the real-colour diagonal exactly zero, so no finite m changes det=-c^2",
+    "lambda_35_45_nonzero": "at least six transverse tachyonic directions",
+    "lambda_35_45_zero": "six non-gauge real-colour flat directions",
+    "strict_transverse_minimum_with_real_H_possible": false,
+    "source_binding_exact": true
+  },
+  "chiral_H_candidate": {
+    "H": "(e6+i e7)/sqrt(2)",
+    "H_norm_squared": "1",
+    "H_dot_H": "0",
+    "Phi_H_alignment": {
+      "old_square_identity": "(3/5)O46_1-O46_54=||H wedge Phi||^2",
+      "old_square_at_F": "(3/5)N_H",
+      "old_square_at_F_H_equals_e6": "3/5",
+      "old_square_vanishes_at_real_H": false,
+      "F_channel_1_identity_residual": 1.1102230246251565e-16,
+      "F_channel_54_zero_residual": 5.551115123125783e-17,
+      "F_channel_45_expected_residual": 0.0,
+      "chiral_square_identity": "(3/5)O46_1+O46_45-O46_54=2||P_chi(H wedge Phi)||^2",
+      "deterministic_all_component_identity_residual": 0.0,
+      "F_chiral_operator_eigenvalues": [
+        -1.1102230246251565e-16,
+        -1.1102230246251565e-16,
+        -1.1102230246251565e-16,
+        -1.1102230246251565e-16,
+        -1.1102230246251565e-16,
+        1.1999999999999997,
+        1.1999999999999997,
+        1.1999999999999997,
+        1.1999999999999997,
+        1.1999999999999997
+      ],
+      "F_chiral_operator_rank": 5,
+      "F_chiral_operator_Hchi_residual": 7.850462293418876e-17,
+      "F_45_maps_real_e6_to_orthogonal_i_e7": 0.6,
+      "source_binding_exact": true
+    },
+    "H_Sigma_lift": {
+      "parameter": "O35_B02",
+      "beta": "1/20"
+    },
+    "exact_orbit": {
+      "method": "exact integer row echelon after invertible block-row scaling",
+      "integer_lattice_residual": 0.0,
+      "SO10_rank": 36,
+      "SO10_plus_U1X_rank": 37,
+      "SO10_plus_U1X_plus_PQ_rank": 38,
+      "full_symmetry_nullity": 9,
+      "physical_quotient_dimension": 448,
+      "pivot_column_counts": [
+        36,
+        37,
+        38
+      ],
+      "source_binding_exact": true
+    },
+    "fixed_PD_equal_norm_orientation_test": {
+      "scope": "Phi=F, Sigma=r Delta, N_H=1",
+      "Hermitian_alignment_plus_current_spectrum": {
+        "desired_EW_chirality": {
+          "eigenvalue": "0",
+          "complex_multiplicity": 2
+        },
+        "opposite_EW_chirality": {
+          "eigenvalue": "6/5",
+          "complex_multiplicity": 2
+        },
+        "desired_colour_chirality": {
+          "eigenvalue": "1/500",
+          "complex_multiplicity": 3
+        },
+        "opposite_colour_chirality": {
+          "eigenvalue": "599/500",
+          "complex_multiplicity": 3
+        }
+      },
+      "smallest_positive_eigenvalue": "1/500",
+      "all_nonnegative": true,
+      "equality_subspace": "desired electroweak chirality C^2",
+      "H_holomorphic_square": "|H.H|^2 vanishes on that isotropic C^2",
+      "normalized_equality_set_is_EW_gauge_orbit": true,
+      "lower_equal_norm_H_orientation_found": false,
+      "source_binding_exact": true
+    },
+    "fixed_F_full_mixed_kernel_global_certificate": {
+      "scope": "Phi=F and arbitrary Sigma in ker(M(F)-8/sqrt(10)) intersect ker(C_F)",
+      "mixed_kernel_complex_dimension": 10,
+      "expected_SU5_representation": "10=Lambda^2(C^5)",
+      "SU5_current_identities": {
+        "desired_chirality": "J45(h_plus,z)=||h_plus wedge z||^2>=0",
+        "opposite_chirality": "J45(h_minus,z)>=-N_z||h_minus||^2",
+        "cross_chirality": "0"
+      },
+      "Phi_H_square_on_F": "Q_chi=(6/5)||h_minus||^2",
+      "source_audit": {
+        "positive_F_rank_mod_5": 116,
+        "positive_F_explicit_kernel_annihilation_exact": true,
+        "positive_F_explicit_kernel_gram_is_8I_exact": true,
+        "negative_F_rank_mod_5": 126,
+        "negative_F_mixed_kernel_complex_dimension": 0,
+        "negative_F_smallest_singular_value_diagnostic": 3.999999999999996,
+        "desired_chirality_wedge_coefficient_identity_exact": true,
+        "chirality_cross_coefficient_tensor_zero_exact": true,
+        "Phi_H_chiral_projector_source_residual": 1.1102230246251565e-16,
+        "opposite_chirality_bound_from_210_projector": true
+      },
+      "scalar_reduction": {
+        "v_below_24": "Q_chi+beta J45 >= (6/5-beta v)||h_minus||^2 >=0",
+        "v_at_least_24": "G >= (1/8)(v-1/25)^2 + (u-1)^2 + (6/5-v/20)u",
+        "minimized_large_v_function": "f(v)=(1/8)(v-1/25)^2+L-L^2/4, L=6/5-v/20",
+        "large_v_boundary": "24",
+        "f_at_boundary": "358801/5000",
+        "fprime_at_boundary": "297/50",
+        "fprime_formula": "(199/800)v-3/100 >0 for v>=24"
+      },
+      "global_gap_nonnegative_on_entire_fixed_F_mixed_kernel": true,
+      "equality_conditions": "v=1/25, N_H=1, h_minus=0, z decomposable, and h_plus lies in the two-plane of z",
+      "equality_is_one_SU5_orbit": true,
+      "negative_F_mixed_zero_equality_branch_excluded": true,
+      "lower_witness_on_this_full_kernel": false,
+      "proof_grade": true
+    },
+    "beta_free_affine_SOS_replacement_audit": {
+      "status": "EXACT_NO_GO_FOR_ALL_VANISHING_RENORMALIZABLE_AFFINE_SOS_REPLACEMENT",
+      "exact_X_portals": {
+        "O12_HH_vs_S": {
+          "counts": {
+            "P": 0,
+            "H": 0,
+            "Hb": 2,
+            "D": 0,
+            "Db": 0,
+            "S": 0,
+            "Sb": 1,
+            "X": 0,
+            "Xb": 0
+          },
+          "charges": {
+            "PQ": 0,
+            "X": 0,
+            "Z17": 0
+          }
+        },
+        "O15_PhiH_vs_Sigma": {
+          "counts": {
+            "P": 1,
+            "H": 0,
+            "Hb": 1,
+            "D": 1,
+            "Db": 0,
+            "S": 0,
+            "Sb": 0,
+            "X": 0,
+            "Xb": 0
+          },
+          "charges": {
+            "PQ": 0,
+            "X": 0,
+            "Z17": 0
+          }
+        },
+        "O38_PhiH_vs_S_Sigmadag": {
+          "counts": {
+            "P": 1,
+            "H": 0,
+            "Hb": 1,
+            "D": 0,
+            "Db": 1,
+            "S": 0,
+            "Sb": 1,
+            "X": 0,
+            "Xb": 0
+          },
+          "charges": {
+            "PQ": 0,
+            "X": 0,
+            "Z17": 0
+          }
+        }
+      },
+      "all_portal_parameters_in_51_parameter_contract": true,
+      "O12_scalar_obstruction": {
+        "target_H_dot_H": {
+          "re": 0.0,
+          "im": 0.0
+        },
+        "target_S": "1/5",
+        "consequence": "H.H-c S*=0 forces c=0",
+        "H_dot_H_identically_zero_on_chiral_C5": true,
+        "therefore_cannot_lift_six_chiral_colour_flats": true
+      },
+      "O15_O38_126_residual_obstruction": {
+        "Phi_contract_Delta_norm": 0.0,
+        "Phi_contract_Deltadag_norm": 0.0,
+        "H_wedge_Phi_norm_squared": 0.6,
+        "Delta_norm_squared": 1.9999999999999998,
+        "inner_HwedgePhi_Delta": {
+          "re": 0.0,
+          "im": 0.0
+        },
+        "inner_HwedgePhi_Deltadag": {
+          "re": 0.0,
+          "im": 0.0
+        },
+        "consequence": "L(F,Hchi) is orthogonal to Delta and Deltadag; equality to a nonzero scalar multiple is impossible"
+      },
+      "O45_210_1050_residual_obstruction": {
+        "Phi2_210_norm_squared": 4.799999999999999,
+        "Phi2_1050_norm_squared": 9.244463733058732e-32,
+        "HDelta_210_norm_squared": 0.33333333333333326,
+        "HDelta_1050_norm_squared": 1.6666666666666656,
+        "channel_210_inner": {
+          "re": 0.0,
+          "im": 0.0
+        },
+        "channel_1050_inner": {
+          "re": 0.0,
+          "im": 0.0
+        },
+        "expected_exact_norms": {
+          "Phi2": {
+            "210": "24/5",
+            "1050": "0"
+          },
+          "Hchi_tensor_Delta": {
+            "210": "1/3",
+            "1050": "5/3"
+          }
+        },
+        "maximum_source_target_residual": 1.1102230246251565e-15,
+        "consequence": "the 210 vectors are nonzero and orthogonal, while the Phi2 1050 side is zero and the Hchi-Delta side is nonzero"
+      },
+      "targeted_G2_gradient_audit": {
+        "evidence_kind": "targeted_live_G2_exact_X_parameter_gradient_rows_float64",
+        "parameter_order": [
+          "re::O12_B01_Hdag_Hdag_pair",
+          "im::O12_B01_Hdag_Hdag_pair",
+          "re::O15_B01_Phi_Hdag_Sigma",
+          "im::O15_B01_Phi_Hdag_Sigma",
+          "re::O38_B01_Phi_Hdag_Sigmadag",
+          "im::O38_B01_Phi_Hdag_Sigmadag"
+        ],
+        "gradient_gram_exact_target_diagonal": [
+          "8/25",
+          "8/25",
+          "62/25",
+          "62/25",
+          "2/625",
+          "2/625"
+        ],
+        "maximum_off_diagonal_abs": 0.0,
+        "maximum_diagonal_target_residual": 8.881784197001252e-16,
+        "gradient_column_rank": 6,
+        "stationarity_preserving_portal_only_nullity": 0
+      },
+      "all_vanishing_positive_affine_SOS_can_replace_beta": false,
+      "nonvanishing_residual_gradient_cancellation_construction_excluded": false,
+      "proof_grade": true
+    }
+  },
+  "coefficient_map": {
+    "nonzero_count": 28,
+    "symbolic": {
+      "lambda::O07_B01_Phi_norm": "-2",
+      "lambda::O05_B01_126bar_norm": "4/5-r^2/4",
+      "lambda::O14_B01_Phi_Sigma_Sigmadag_cubic": "-sqrt(10)/5",
+      "lambda::O48_B01_Phi_self_quartics": "113/40",
+      "lambda::O48_B02_Phi_self_quartics": "-619/5760",
+      "lambda::O48_B03_Phi_self_quartics": "47/1920",
+      "lambda::O48_B04_Phi_self_quartics": "-23/23040",
+      "lambda::O27_B01_126bar_self_projectors": "1/4",
+      "lambda::O27_B02_126bar_self_projectors": "1/4",
+      "lambda::O27_B03_126bar_self_projectors": "1/8",
+      "lambda::O27_B04_126bar_self_projectors": "1/8",
+      "lambda::O44_B01_Phi2_Sigma_projectors": "41/8",
+      "lambda::O44_B02_Phi2_Sigma_projectors": "73/8",
+      "lambda::O44_B03_Phi2_Sigma_projectors": "29/8",
+      "lambda::O44_B04_Phi2_Sigma_projectors": "-7/8",
+      "lambda::O44_B05_Phi2_Sigma_projectors": "-11/8",
+      "lambda::O44_B06_Phi2_Sigma_projectors": "13/8",
+      "lambda::O06_B01_Hdag_H_norm": "-2",
+      "lambda::O36_B01_H_self_quartics": "11",
+      "lambda::O36_B02_H_self_quartics": "1",
+      "lambda::O04_B01_singlet_polynomial": "-2/25",
+      "lambda::O23_B01_singlet_polynomial": "1",
+      "lambda::O03_B01_singlet_polynomial": "-1/16",
+      "lambda::O20_B01_singlet_polynomial": "1/32",
+      "lambda::O46_B01_Phi2_HdagH_channels": "3/5",
+      "lambda::O46_B02_Phi2_HdagH_channels": "1",
+      "lambda::O46_B03_Phi2_HdagH_channels": "-1",
+      "lambda::O35_B02_H_Sigma_hermitian": "1/20"
+    },
+    "numerical": {
+      "lambda::O07_B01_Phi_norm": -2.0,
+      "lambda::O05_B01_126bar_norm": 0.79,
+      "lambda::O14_B01_Phi_Sigma_Sigmadag_cubic": -0.6324555320336759,
+      "lambda::O48_B01_Phi_self_quartics": 2.825,
+      "lambda::O48_B02_Phi_self_quartics": -0.10746527777777778,
+      "lambda::O48_B03_Phi_self_quartics": 0.024479166666666666,
+      "lambda::O48_B04_Phi_self_quartics": -0.0009982638888888888,
+      "lambda::O27_B01_126bar_self_projectors": 0.25,
+      "lambda::O27_B02_126bar_self_projectors": 0.25,
+      "lambda::O27_B03_126bar_self_projectors": 0.125,
+      "lambda::O27_B04_126bar_self_projectors": 0.125,
+      "lambda::O44_B01_Phi2_Sigma_projectors": 5.125,
+      "lambda::O44_B02_Phi2_Sigma_projectors": 9.125,
+      "lambda::O44_B03_Phi2_Sigma_projectors": 3.625,
+      "lambda::O44_B04_Phi2_Sigma_projectors": -0.875,
+      "lambda::O44_B05_Phi2_Sigma_projectors": -1.375,
+      "lambda::O44_B06_Phi2_Sigma_projectors": 1.625,
+      "lambda::O06_B01_Hdag_H_norm": -2.0,
+      "lambda::O36_B01_H_self_quartics": 11.0,
+      "lambda::O36_B02_H_self_quartics": 1.0,
+      "lambda::O04_B01_singlet_polynomial": -0.08,
+      "lambda::O23_B01_singlet_polynomial": 1.0,
+      "lambda::O03_B01_singlet_polynomial": -0.0625,
+      "lambda::O20_B01_singlet_polynomial": 0.03125,
+      "lambda::O46_B01_Phi2_HdagH_channels": 0.6,
+      "lambda::O46_B02_Phi2_HdagH_channels": 1.0,
+      "lambda::O46_B03_Phi2_HdagH_channels": -1.0,
+      "lambda::O35_B02_H_Sigma_hermitian": 0.05
+    },
+    "maximum_absolute_coefficient": 11.0,
+    "four_pi": 12.566370614359172
+  },
+  "BFB_certificate": {
+    "exact_projector_identity": "||P210(H tensor Sigmadag)||^2=(I1+I45)/3",
+    "deterministic_source_residual": 5.4569682106375694e-12,
+    "exact_coefficient_certificate": {
+      "identity": "3 L_z^dag P210 L_z = N_Sigma I_10 + J_z",
+      "coefficient_tensor_shape": [
+        126,
+        126,
+        10,
+        10
+      ],
+      "cleared_denominator": 4,
+      "Gaussian_lattice_residual": 0.0,
+      "twice_injection_Gram_is_12I_exact": true,
+      "raw_Sigma_basis_Gram_is_2I_exact": true,
+      "H_generators_are_real_skew_exact": true,
+      "Sigma_generators_are_antihermitian_exact": true,
+      "integer_coefficient_identity_max_abs_residual": 0,
+      "all_126_squared_by_10_squared_coefficients_exact": true,
+      "source_binding_exact": true
+    },
+    "consequence": "I45 >= -I1 = -(Hdag H) N_Sigma",
+    "radial_quartic_bound": "N_H^2+(1/8)N_Sigma^2+beta I45 >= N_H^2+(1/8)N_Sigma^2-beta N_H N_Sigma",
+    "beta": "1/20",
+    "two_sqrt_t_minus_beta": 0.6571067811865475,
+    "beta_squared_less_than_4t_exact": true,
+    "homogeneous_quartic_BFB_certified": true,
+    "finite_field_global_gap_certified": false,
+    "source_binding_exact": true
+  },
+  "live_full_gradient_and_quotient_Hessian": {
+    "evidence_kind": "live_486_field_exact_X_compiler_float64",
+    "recomputed_in_this_invocation": false,
+    "proof_grade": false,
+    "r": 0.2,
+    "x": 1.0,
+    "beta": 0.05,
+    "full_gradient_max_abs_residual": 1.1515094433534045e-13,
+    "full_gradient_norm_upper_record": 3.0158829916758474e-13,
+    "numerical_symmetry_orbit_rank": 38,
+    "transverse_dimension": 448,
+    "stationary_Hessian_symmetry_max_abs_residual": 5.03220200501134e-13,
+    "minimum_transverse_eigenvalue": 0.004844587743069171,
+    "maximum_transverse_eigenvalue": 8.065581903137401,
+    "negative_transverse_eigenvalues_below_minus_1e_minus_9": 0,
+    "zero_transverse_eigenvalues_at_1e_minus_9": 0,
+    "strict_local_minimum_high_confidence_numeric": true,
+    "strict_local_minimum_proof_grade": false
+  },
+  "global_status": {
+    "PD_global_SOS_exact": true,
+    "full_homogeneous_quartic_BFB_exact": true,
+    "fixed_PD_equal_norm_H_orientation_exact": true,
+    "positive_F_full_mixed_kernel_gap_exact": true,
+    "negative_F_mixed_zero_kernel_dimension": 0,
+    "all_vanishing_affine_SOS_beta_replacement_excluded": true,
+    "beta_deformed_finite_field_global_gap_exact": false,
+    "global_equality_orbits_classified": false,
+    "G3_closed": false
+  },
+  "flag": {
+    "real_H_e6_extension_exactly_excluded": true,
+    "chiral_H_exact_stationary_candidate_constructed": true,
+    "full_486_gradient_zero_live": true,
+    "strict_448_quotient_local_minimum_high_confidence_numeric": true,
+    "full_quartic_BFB_certified": true,
+    "full_global_minimum_certified": false,
+    "G3_closed": false,
+    "whole_model_excluded": false
+  },
+  "next_required_test": "The fixed-F off-kernel and exact-Hessian companion certificates remove those two former blockers.  Prove the remaining uniform coercivity inequality when Phi lies outside the signed F equality strata, then classify its global equality set; otherwise exhibit a lower arbitrary-Phi witness.",
+  "verdict": "The real H=e6 extension is exactly impossible, but this is not a no-go for G3: the chiral neutral H=(e6+i e7)/sqrt(2) gives an exact stationary, BFB, coefficient-safe candidate whose complete live 448-dimensional quotient Hessian is strictly positive, and the companion source-bound certificate upgrades it to exact rank 448, nullity 38 and PSD.  The companion fixed-F off-kernel certificate also extends the exact +F result beyond its mixed kernel; -F has no mixed-zero Sigma branch.  A clean all-vanishing affine-SOS replacement for beta is exactly excluded.  Only uniform arbitrary-Phi coercivity and its equality classification remain before G3 can close."
+}

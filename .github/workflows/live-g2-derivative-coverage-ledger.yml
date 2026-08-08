@@ -87,6 +87,8 @@ jobs:
 
           report=json.load(open('LIVE_G2_DERIVATIVE_COVERAGE_LEDGER_V20.json'))
           assert report['n_failed']==0, report['failures']
+          assert report['model_contract_id']=='historical_option_c_no_x_v20'
+          assert report['authoritative_for_manuscript'] is False
           assert report['overall_state']=='CLOSED'
           c=report['coverage']
           assert c['base_families_total']==18
@@ -124,6 +126,7 @@ jobs:
           assert flags['all_64_direction_Hessians_complete']
           assert flags['all_91_real_parameter_derivatives_complete']
           assert flags['G2_closed']
+          assert not flags['authoritative_manuscript_G2_closed']
           assert not flags['G3_closed']
           assert not flags['whole_model_validated']
           PY

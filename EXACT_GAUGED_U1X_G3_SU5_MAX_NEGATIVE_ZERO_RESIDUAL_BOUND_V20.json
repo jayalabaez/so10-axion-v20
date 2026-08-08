@@ -1,0 +1,192 @@
+{
+  "checks": {
+    "G3_not_overclaimed": true,
+    "N_and_C00_C11_contraction_identities_computed_exactly": true,
+    "Phi_radial_plus_I54_lower_bound_1_over_141": true,
+    "arbitrary_Phi_nonzero_residual_cancellations_not_overclaimed": true,
+    "exact_rank_168_nullity_42": true,
+    "kernel_splits_35_plus_7_exactly": true,
+    "live_HSX_and_PD_coefficients_bound_exactly": true,
+    "live_integral_affine_source_bound": true,
+    "maximal_negative_current_saturated_exactly": true,
+    "particular_solution_projectors_exact": true,
+    "strict_positive_stratum_margin_exact": true,
+    "u_zero_and_v_zero_radial_boundaries_closed_exactly": true,
+    "worst_radial_current_minimum_exact": true
+  },
+  "exact_Phi_coercive_bound": {
+    "D00_equals_D11": "12/5-2*s+3*q",
+    "I4125_unused_and_nonnegative": true,
+    "I54_diagonal_lower_bound_coefficient": "1/560",
+    "I54_exact_sample_basis_determinant": -78611742720,
+    "I54_sample_identity_max_abs_residual": "0",
+    "I54_source_binding_exact": true,
+    "I54_source_identity": "I54(Phi)=||5*C-2*N*identity_10||^2/1400, C_ij=sum_(a<b<c) Phi_iabc Phi_jabc, N=||Phi||^2",
+    "exact_completion_of_squares": "(141/140)*(s-146/705+(277/282)q)^2+(5q+2)^2/564",
+    "first_lower_bound": "(N_Phi-1)^2+I54 >= (s+q-1/5)^2+(12/5-2s+3q)^2/560",
+    "lower_bound": "1/141",
+    "lower_bound_derivation": "q>=0 implies (5q+2)^2/564>=4/564=1/141",
+    "polynomial_identity_exact": true,
+    "proof_grade": true,
+    "q_nonnegative": true,
+    "trace_5C_minus_2N_identity_residual": 0,
+    "trace_C_equals_4N_combinatorial_identity": true,
+    "traceless_diagonal_Cauchy_bound": "||5C-2N*identity||^2 >= (5/2)*(12/5-2s+3q)^2",
+    "traceless_diagonal_Cauchy_coefficient": "5/2"
+  },
+  "exact_affine_source": {
+    "chiral_cleared_denominator": 2,
+    "chiral_integrality_residual": 0.0,
+    "matrix_nonzero_entries": 1384,
+    "matrix_shape": [
+      776,
+      210
+    ],
+    "particular_solution_residual_max_abs": 0
+  },
+  "exact_current_and_radial_bound": {
+    "Sigma_I1050bar": "0",
+    "Sigma_I54": "0",
+    "Sigma_self_residuals_zero": true,
+    "current_lower_bound_saturated": true,
+    "global_minimizer": {
+      "u": "1001/995",
+      "v": "48/199"
+    },
+    "global_minimum": "-7001/995000",
+    "gradient_at_minimizer": {
+      "du": "0",
+      "dv": "0"
+    },
+    "normalized_affine_stratum_domain": "u>0 and v>0",
+    "normalized_current": "-1",
+    "proof_grade": true,
+    "quadratic_form_determinant": "199/1600",
+    "quadratic_form_positive_definite": true,
+    "radial_boundaries": {
+      "closed_without_normalized_affine_constraints": true,
+      "derivation": "u=0: (u-1)^2>=1 after minimizing v at R2; v=0: T(v-R2)^2>=T*R2^2=1/5000 after minimizing u at 1; the current vanishes and all omitted SOS terms are nonnegative",
+      "u_equals_zero_lower_bound": "1",
+      "v_equals_zero_lower_bound": "1/5000"
+    },
+    "radial_current_polynomial": "(u-1)^2+(1/8)(v-1/25)^2-(1/20)uv",
+    "radial_parameterization": "H=sqrt(u) h_minus, Sigma=sqrt(v) Delta_R, u=N_H, v=N_Sigma",
+    "raw_H_holomorphic_square": "0",
+    "raw_H_norm_squared": 2,
+    "raw_Sigma_norm_squared": 8,
+    "raw_current": -16,
+    "raw_current_imaginary_abs": 0.0,
+    "representatives": {
+      "H_unit": "(e0-i*e1)/sqrt(2)",
+      "Sigma_unit": "Delta_R=(raw Delta)/sqrt(8)"
+    }
+  },
+  "exact_kernel_decomposition": {
+    "K0_no_01_indices_dimension": 35,
+    "K2_both_01_indices_dimension": 7,
+    "basis_residual_max_abs": 0,
+    "central_contraction_identities_computed_exactly": true,
+    "central_contraction_identity_residuals": {
+      "C00_K0_gram_max_abs": 0,
+      "C00_K2_minus_norm_gram_max_abs": 0,
+      "C00_z0_dot_K2_max_abs": 0,
+      "C00_z0_minus_8": 0,
+      "C11_K0_gram_max_abs": 0,
+      "C11_K2_minus_norm_gram_max_abs": 0,
+      "C11_z0_dot_K2_max_abs": 0,
+      "C11_z0_minus_8": 0,
+      "N_K0_dot_K2_max_abs": 0,
+      "N_z0_dot_K0_max_abs": 0,
+      "N_z0_dot_K2_max_abs": 0,
+      "N_z0_norm_squared_minus_8": 0
+    },
+    "decomposition": "z=z0+k0+k2, z0=2(e0123+e0145), dim(K0,K2)=(35,7), K0 has no 0/1 indices, K2 has both",
+    "exact_nullity": 42,
+    "exact_rank": 168,
+    "integer_nullspace_basis_shape": [
+      210,
+      42
+    ],
+    "invalid_mixed_support_basis_columns": [],
+    "kernel_basis_has_no_one_01_index_entries": true,
+    "maximum_basis_denominator": 1,
+    "maximum_basis_numerator_abs": 1,
+    "physical_contraction_identity": "C00=C11=4/5+q",
+    "physical_identity_normalization": "Phi=z/sqrt(10), s=||k0||^2/10, q=||k2||^2/10",
+    "physical_norm_identity": "N_Phi=4/5+s+q",
+    "proof_grade": true,
+    "z0_dot_full_kernel_max_abs": 0
+  },
+  "exact_particular_Phi": {
+    "I4125_Phi": "8/45",
+    "I54_Phi": "2/125",
+    "N_Phi": "4/5",
+    "complete_Phi_SOS_gap_at_particular_solution": "263/1125",
+    "expected_complete_Phi_gap": "263/1125",
+    "raw_z_norm_squared": 8,
+    "source_binding_exact": true,
+    "z_equals_sqrt10_Phi": "2*(e0123+e0145)"
+  },
+  "exact_stratum_gap": {
+    "Phi_angular_lower_bound": "1/141",
+    "derivation": "1/141-7001/995000=7859/140295000",
+    "radial_current_global_minimum": "-7001/995000",
+    "strict_margin": "7859/140295000",
+    "strict_margin_expected": "7859/140295000"
+  },
+  "failures": [],
+  "live_HSX_PD_coefficient_binding": {
+    "PD_raw_F_norm_squared": 10,
+    "PD_raw_mixed_M_eigenvalue": 8,
+    "PD_sigma_scale": "1/8",
+    "PD_source_reports": {
+      "HSX_n_failed": 0,
+      "HSX_status": "EXACT_REAL_H_NO_GO__CHIRAL_H_STRICT_LOCAL_CANDIDATE__GLOBAL_GAP_OPEN",
+      "PD_n_failed": 0,
+      "PD_status": "EXACT_SU5_DELTA_PD_GLOBAL_SOS_CANDIDATE_CERTIFIED"
+    },
+    "chiral_affine_row_norm_factor": "1/40",
+    "chiral_affine_rows_identity": "Q_chi=2||P_chi(H wedge Phi)||^2=||A_chi z||^2/40, H=h_raw/sqrt(2), Phi=z/sqrt(10), A_chi z=2P_chi(h_raw wedge z)",
+    "live_H_norm_coefficient": "-2",
+    "live_H_self_coefficients_O36_B01_B02": [
+      "11",
+      "1"
+    ],
+    "live_beta_coefficient": "1/20",
+    "live_chiral_all_component_identity_residual": 0.0,
+    "live_chiral_coefficients_O46_B01_B02_B03": [
+      "3/5",
+      "1",
+      "-1"
+    ],
+    "live_chiral_square_identity": "(3/5)O46_1+O46_45-O46_54=2||P_chi(H wedge Phi)||^2",
+    "live_selected_sigma_norm_squared": "1/25",
+    "live_symbolic_sigma_quartic_coefficients": {
+      "O27_B03": "1/8",
+      "O27_B04": "1/8"
+    },
+    "proof_grade": true
+  },
+  "model_contract_id": "gauged_u1x_phi17_v20",
+  "n_checks": 13,
+  "n_failed": 0,
+  "next_required_test": "Control cancellations where at least one shifted Phi-Sigma or chiral Phi-H residual is nonzero, uniformly for arbitrary Phi.",
+  "overall_state": "CLOSED_PURE_DELTA_MAX_NEGATIVE_MIXED_ZERO_STRATUM__ARBITRARY_PHI_OPEN",
+  "scope": {
+    "G3_closed": false,
+    "H_current_saturates_I45_equals_minus_NH_NSigma": true,
+    "Phi_Sigma_C_residual_zero": true,
+    "Phi_Sigma_shifted_M_residual_zero": true,
+    "Sigma_on_pure_Delta_orbit": true,
+    "arbitrary_Phi_global_gap_proved": false,
+    "chiral_Phi_H_residual_zero": true,
+    "nonzero_residual_cancellations_excluded": false,
+    "normalized_affine_stratum_requires_u_gt_0_v_gt_0": true,
+    "pure_Delta_mixed_and_chiral_zero_stratum": true,
+    "strongest_all_zero_max_negative_route_excluded": true,
+    "strongest_pure_Delta_mixed_zero_max_negative_route_excluded": true,
+    "u_zero_and_v_zero_boundaries_closed_separately": true
+  },
+  "status": "EXACT_PURE_DELTA_MAX_NEGATIVE_MIXED_ZERO_ROUTE_EXCLUDED",
+  "verdict": "The exact pure-Delta maximal-negative-current route cannot lower the candidate when all mixed and chiral Phi-H residuals vanish: its gap is at least 7859/140295000.  This removes the strongest mixed-zero cancellation mechanism (with u=0 and v=0 boundaries closed separately), but it does not control arbitrary-Phi configurations with nonzero residual cancellations, so G3 remains open."
+}

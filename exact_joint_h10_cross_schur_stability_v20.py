@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Canonical-coordinate joint Schur envelope for selected H10 cross blocks.
+"""Historical Option-C joint Schur envelope for selected H10 cross blocks.
 
 At H=0 on the verified p+Delta_R background, three complex coefficients create
 old-field--H mixed Hessian blocks:
@@ -22,17 +22,22 @@ Equivalently,
     2 Re(H^T   A q) = (x,y)^T [sqrt(2) R_H(A)] q.
 
 This module enforces that convention explicitly and audits it by reconstructing
-the original complex bilinears. On the 429-dimensional physical old-field
-quotient, positivity of the enlarged 449-dimensional physical Hessian is then
-necessary and sufficient iff
+the original complex bilinears. Within the superseded no-X, 482-real setup, on
+the 429-dimensional physical old-field quotient, positivity of the enlarged
+449-dimensional physical Hessian is necessary and sufficient iff
 
     M_H - B(c)^T A_phys^{-1} B(c) > 0,
 
 where c contains the six real components of (mu_D, eta_210, eta_1050).
 
-This is a selected H=0 local-stability theorem. It is not the complete G2
-component potential, the electroweak-backreacted vacuum, a global minimum, or a
-whole-model validation.
+This is only a selected H=0 local-stability theorem for the historical
+``historical_option_c_no_x_v20`` contract. The manuscript gauges U(1)_X,
+forbids some Phi17-dressed inputs used upstream, and requires a corrected
+486-real treatment with a different 449-dimensional gauge quotient including
+the axion and a 448-dimensional massive/transverse Hessian space. Thus this
+result is not authoritative G3
+evidence, a model-wide no-go, an electroweak-backreacted vacuum, or a global
+minimum.
 """
 from __future__ import annotations
 
@@ -66,6 +71,7 @@ COEFFICIENT_NAMES = (
     "Re_eta_1050",
     "Im_eta_1050",
 )
+MODEL_CONTRACT_ID = "historical_option_c_no_x_v20"
 
 
 def _jsonable(value: Any) -> Any:
@@ -443,7 +449,7 @@ def cubic_unit_reconstruction_audit() -> dict[str, Any]:
     return {
         "maximum_abs_residual": float(np.max(np.abs(canonical - target))),
         "reconstructed_rank": int(np.linalg.matrix_rank(canonical, 1.0e-11)),
-        "authoritative_rank": int(np.linalg.matrix_rank(legacy_raw_h, 1.0e-11)),
+        "legacy_raw_rank": int(np.linalg.matrix_rank(legacy_raw_h, 1.0e-11)),
         "legacy_raw_H_to_canonical_H_factor": 1.0 / SQRT2,
         "legacy_schur_to_canonical_schur_factor": 0.5,
     }
@@ -555,10 +561,13 @@ def build_report() -> dict[str, Any]:
     failures = [name for name, passed in checks.items() if not passed]
     return _jsonable(
         {
+            "model_contract_id": MODEL_CONTRACT_ID,
+            "authoritative_for_manuscript": False,
+            "model_wide_no_go_certified": False,
             "status": (
-                "CANONICAL_JOINT_H10_SCHUR_ENVELOPE_CLOSED__EW_BACKREACTION_OPEN"
+                "HISTORICAL_OPTION_C_JOINT_H10_SCHUR_REPRODUCED__NONAUTHORITATIVE"
                 if not failures
-                else "CANONICAL_JOINT_H10_SCHUR_ENVELOPE_FAILED"
+                else "HISTORICAL_OPTION_C_JOINT_H10_SCHUR_REPRODUCTION_FAILED"
             ),
             "n_checks": len(checks),
             "n_failed": len(failures),
@@ -599,7 +608,10 @@ def build_report() -> dict[str, Any]:
                 "gram_reconstruction_residual": schur[
                     "gram_reconstruction_residual"
                 ],
-                "theorem": "M_H - B(c)^T A_phys^{-1} B(c) is positive definite",
+                "theorem": (
+                    "Within the historical Option-C block, M_H - "
+                    "B(c)^T A_phys^{-1} B(c) is positive definite"
+                ),
                 "quadratic_form": "S(c)=sum_{r,s=1}^6 c_r c_s G_rs",
             },
             "critical_soft_mass_squared": critical,
@@ -621,15 +633,17 @@ def build_report() -> dict[str, Any]:
                 },
             },
             "flags": {
-                "complete_selected_H_only_mass_block_used": not failures,
-                "canonical_H_coordinate_normalization_enforced": not failures,
-                "complex_muD_block_inserted": not failures,
-                "complex_eta210_block_inserted": not failures,
-                "complex_eta1050_block_inserted": not failures,
-                "six_real_coefficient_operator_gram_derived": not failures,
-                "joint_necessary_and_sufficient_local_bound": not failures,
-                "33_gauge_goldstones_preserved_above_bound": not failures,
-                "tachyon_below_bound_exhibited": not failures,
+                "historical_option_c_H_mass_block_used": not failures,
+                "historical_canonical_H_coordinate_normalization_reproduced": not failures,
+                "historical_complex_muD_block_inserted": not failures,
+                "historical_complex_eta210_block_inserted": not failures,
+                "historical_complex_eta1050_block_inserted": not failures,
+                "historical_six_real_coefficient_operator_gram_derived": not failures,
+                "historical_option_c_joint_local_bound_reproduced": not failures,
+                "historical_33_gauge_goldstones_preserved_above_bound": not failures,
+                "historical_tachyon_below_bound_exhibited": not failures,
+                "authoritative_for_manuscript": False,
+                "model_wide_no_go_certified": False,
                 "complete_G2_component_potential": False,
                 "nonzero_electroweak_backreaction": False,
                 "global_vacuum": False,
@@ -637,15 +651,16 @@ def build_report() -> dict[str, Any]:
                 "empirical_discovery": False,
             },
             "next_exact_target": (
-                "Promote all 64 normalized G1 directions into one arbitrary-component "
-                "potential evaluator and differentiate its complete gradient/Hessian."
+                "Do not promote the historical 64-direction basis; use the gauged "
+                "U(1)_X 44-direction/51-parameter contract and 486-real Hessian."
             ),
             "verdict": (
-                "The selected H=0 local Hessian now uses a coordinate-consistent "
-                "canonical H10 normalization. The earlier raw-H mixed blocks are "
-                "rescaled by 1/sqrt(2), so their Schur penalty is half the legacy "
-                "value. The six-real-direction joint Loewner theorem remains exact "
-                "for this selected vacuum; full G2 and electroweak backreaction remain open."
+                "The coordinate and Schur identities reproduce the historical "
+                "Option-C selected H=0 calculation, including the 1/sqrt(2) "
+                "canonical-H rescaling. Its 449-dimensional quotient and upstream "
+                "no-X inputs do not match the manuscript's gauged model. This is "
+                "not authoritative G3 evidence and neither validates nor excludes "
+                "the theory."
             ),
         }
     )
@@ -654,7 +669,7 @@ def build_report() -> dict[str, Any]:
 def write_report(report: dict[str, Any]) -> None:
     OUT_JSON.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     OUT_MD.write_text(
-        "# Canonical joint H10 cross-coupling Schur envelope\n\n"
+        "# Historical Option-C joint H10 cross-coupling Schur envelope\n\n"
         f"**Status:** `{report['status']}`\n\n"
         + report["verdict"]
         + "\n\n"

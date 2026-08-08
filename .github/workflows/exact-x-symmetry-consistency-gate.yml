@@ -3,12 +3,22 @@ name: exact-x-symmetry-consistency-gate
 on:
   push:
     branches:
-      - agent/x-symmetry-consistency-gate
+      - main
   pull_request:
     paths:
       - exact_x_symmetry_consistency_gate_v20.py
       - test_exact_x_symmetry_consistency_gate_v20.py
+      - axion_so10_theory_v20.tex
+      - gauged_u1x_scalar_contract_v20.py
+      - test_gauged_u1x_scalar_contract_v20.py
+      - g1_exact_declared_symmetry_character_census_v20.py
+      - live_g1_tensor_closure_ledger_v20.py
+      - live_g2_derivative_coverage_ledger_v20.py
       - models/SO10Z17AxionV20.m
+      - models/EXACT_X_EXTERNAL_INPUT_MANIFEST_V20.json
+      - tools/validate-exact-x-model.wls
+      - run_exact_x_sarah_validation_v20.py
+      - models/EXACT_X_EXTERNAL_MODEL_VALIDATION_V20.json
       - nonsusy_z17_pq_potential_filter_v20.py
       - .github/workflows/exact-x-symmetry-consistency-gate.yml
   workflow_dispatch:
@@ -22,31 +32,80 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Install test dependency
-        run: python -m pip install pytest
-      - name: Compile gate
-        run: python -m py_compile exact_x_symmetry_consistency_gate_v20.py test_exact_x_symmetry_consistency_gate_v20.py
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt pytest
+      - name: Compile gates
+        run: |
+          python -m py_compile \
+            exact_x_symmetry_consistency_gate_v20.py \
+            gauged_u1x_scalar_contract_v20.py \
+            test_exact_x_symmetry_consistency_gate_v20.py \
+            test_gauged_u1x_scalar_contract_v20.py
       - name: Run symmetry-contract tests
-        run: python -m pytest -q test_exact_x_symmetry_consistency_gate_v20.py
-      - name: Generate certificate
-        run: python exact_x_symmetry_consistency_gate_v20.py > /tmp/exact-x-symmetry.log
-      - name: Assert mismatch and fail-closed scope
+        run: |
+          python -m pytest -q \
+            test_exact_x_symmetry_consistency_gate_v20.py \
+            test_gauged_u1x_scalar_contract_v20.py
+      - name: Generate certificates
+        run: |
+          python exact_x_symmetry_consistency_gate_v20.py > /tmp/exact-x-symmetry.log
+          python gauged_u1x_scalar_contract_v20.py --write > /tmp/gauged-u1x-scalar.log
+      - name: Assert native static contract and external-execution boundary
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
           report = json.loads(Path('EXACT_X_SYMMETRY_CONSISTENCY_GATE_V20.json').read_text())
           assert report['n_failed'] == 0, report['failures']
-          assert report['declared_symmetries']['u1x_gauged'] is False
-          assert report['declared_symmetries']['x_declared_global'] is False
-          assert report['signed_filter_contract']['requires_exact_x_neutrality_by_default'] is False
-          assert report['signed_filter_contract']['declared_option_C_no_continuous_X'] is True
+          assert report['overall_state'] == 'BLOCKED'
+          assert report['contract_consistent'] is False
+          assert report['static_contract_consistent'] is True
+          assert report['blocker'] == 'AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED'
+          assert report['authoritative_manuscript_contract']['gauges_primitive_U1X'] is True
+          assert report['authoritative_manuscript_contract']['scalar_charge_contract_matches_expected'] is True
+          assert report['declared_symmetries']['u1x_gauged'] is True
+          assert report['declared_symmetries']['model_syntax_class'] == 'sarah_native'
+          assert report['declared_symmetries']['legacy_pseudo_sarah_grammar'] is False
+          assert report['declared_symmetries']['tool_native_sarah_syntax'] is True
+          assert report['declared_symmetries']['scalar_charges_match_manuscript'] is True
+          assert report['declared_symmetries']['fermion_catalogue_exact'] is True
+          assert report['declared_symmetries']['lagrangian']['real_LagHC_present'] is True
+          assert report['declared_symmetries']['lagrangian']['real_LagNoHC_present'] is True
+          assert report['declared_symmetries']['soft_gaugino_absent_in_nonsusy_model'] is True
+          assert report['declared_symmetries']['statically_executable_model_contract'] is True
+          assert report['declared_symmetries']['lagrangian']['registered_in_GaugeES_LagrangianInput'] is True
+          assert report['external_model_validation']['present'] is False
+          assert report['external_model_validation']['valid'] is False
+          assert report['external_model_validation']['schema'] is None
+          assert report['external_model_validation']['checks']['captured_process_log_is_hash_bound'] is False
+          assert report['flag']['externally_executed_model_contract'] is False
+          assert report['flag']['tool_native_sarah_syntax'] is True
+          assert report['flag']['legacy_pseudo_sarah_grammar'] is False
+          assert report['repository_external_input_manifest']['valid'] is True
+          assert report['signed_filter_contract']['requires_exact_x_neutrality_by_default'] is True
+          assert report['signed_filter_contract']['declared_option_C_no_continuous_X'] is False
           assert report['phase_sensitive_count'] > 0
+          assert report['phase_sensitive_gauge_forbidden_count'] == report['phase_sensitive_count']
           assert report['dimension17_candidate']['breaks_continuous_X_by_units'] == 289.0
+          assert report['dimension17_candidate']['authoritative_U1X_gauge_invariant'] is False
           assert report['dimension17_candidate']['breaks_PQ'] is False
-          assert report['flag']['option_C_no_continuous_X_applied'] is True
+          assert report['flag']['option_C_no_continuous_X_rejected'] is True
           assert report['flag']['complete_multifield_model'] is False
           assert report['flag']['whole_model_validated'] is False
+
+          scalar = json.loads(Path('GAUGED_U1X_SCALAR_CONTRACT_V20.json').read_text())
+          assert scalar['n_failed'] == 0, scalar['failures']
+          assert scalar['overall_state'] == 'PARTIAL'
+          assert scalar['implementation_matches_manuscript'] is True
+          assert len(scalar['gauged_orbit_multiplicity_audit']) == 28
+          assert len(scalar['historical_option_c_orbit_multiplicity_audit']) == 48
+          assert all(
+              row['D5_singlet_multiplicity']
+              == row['base_declared_multiplicity']
+              == row['basis_length']
+              for row in scalar['gauged_orbit_multiplicity_audit']
+              + scalar['historical_option_c_orbit_multiplicity_audit']
+          )
           PY
       - uses: actions/upload-artifact@v4
         with:
@@ -54,3 +113,5 @@ jobs:
           path: |
             EXACT_X_SYMMETRY_CONSISTENCY_GATE_V20.json
             EXACT_X_SYMMETRY_CONSISTENCY_GATE_V20.md
+            GAUGED_U1X_SCALAR_CONTRACT_V20.json
+            GAUGED_U1X_SCALAR_CONTRACT_V20.md

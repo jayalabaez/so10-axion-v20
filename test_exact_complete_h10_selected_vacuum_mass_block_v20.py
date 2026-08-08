@@ -11,7 +11,14 @@ def test_complete_report_passes_fail_closed():
     report = mod.build_report()
     assert report["n_failed"] == 0, report["failures"]
     assert all(report["checks"].values())
-    assert report["flags"]["complete_selected_vacuum_H_only_quadratic_block"]
+    assert report["model_contract_id"] == "historical_option_c_no_x_v20"
+    assert report["authoritative_for_manuscript"] is False
+    assert report["model_wide_no_go_certified"] is False
+    assert "NONAUTHORITATIVE" in report["status"]
+    assert report["flags"][
+        "historical_option_c_H_only_quadratic_block_reproduced"
+    ]
+    assert report["flags"]["phi17_dressings_allowed_by_manuscript_u1x"] is False
     assert report["flags"]["complete_482_real_Hessian"] is False
     assert report["flags"]["whole_model_validated"] is False
 

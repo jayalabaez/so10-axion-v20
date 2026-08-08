@@ -1,0 +1,137 @@
+name: gauged-u1x-g2-derivative-audit
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "gauged_u1x_g2_derivative_audit_v20.py"
+      - "test_gauged_u1x_g2_derivative_audit_v20.py"
+      - "exact_gauged_u1x_stationarity_rank_certificate_v20.py"
+      - "test_exact_gauged_u1x_stationarity_rank_certificate_v20.py"
+      - "gauged_u1x_scalar_contract_v20.py"
+      - "g1_exact_declared_symmetry_character_census_v20.py"
+      - "g1_g8_gate_ledger_v20.py"
+      - "g1_g8_execution_roadmap_v20.py"
+      - "theory_validation_matrix_v20.py"
+      - "live_g2_*.py"
+      - ".github/workflows/gauged-u1x-g2-derivative-audit.yml"
+  push:
+    branches: [main]
+    paths:
+      - "gauged_u1x_g2_derivative_audit_v20.py"
+      - "test_gauged_u1x_g2_derivative_audit_v20.py"
+      - "exact_gauged_u1x_stationarity_rank_certificate_v20.py"
+      - "test_exact_gauged_u1x_stationarity_rank_certificate_v20.py"
+      - "gauged_u1x_scalar_contract_v20.py"
+      - "g1_exact_declared_symmetry_character_census_v20.py"
+      - "g1_g8_gate_ledger_v20.py"
+      - "g1_g8_execution_roadmap_v20.py"
+      - "theory_validation_matrix_v20.py"
+      - "live_g2_*.py"
+      - ".github/workflows/gauged-u1x-g2-derivative-audit.yml"
+
+concurrency:
+  group: gauged-u1x-g2-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  dense-derivative-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      NUMEXPR_NUM_THREADS: "1"
+      RUN_GAUGED_U1X_G2_HEAVY: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Compile audit and integration gates
+        run: |
+          python -m py_compile \
+            exact_gauged_u1x_stationarity_rank_certificate_v20.py \
+            gauged_u1x_g2_derivative_audit_v20.py \
+            test_exact_gauged_u1x_stationarity_rank_certificate_v20.py \
+            test_gauged_u1x_g2_derivative_audit_v20.py \
+            g1_g8_gate_ledger_v20.py \
+            g1_g8_execution_roadmap_v20.py \
+            theory_validation_matrix_v20.py
+      - name: Generate once and run focused tests in the same process
+        run: |
+          python exact_gauged_u1x_stationarity_rank_certificate_v20.py --write
+          python - <<'PY'
+          import pytest
+          import gauged_u1x_g2_derivative_audit_v20 as audit
+
+          report = audit.build_report()
+          audit.write_report(report)
+          raise SystemExit(pytest.main([
+              "-q",
+              "test_gauged_u1x_g2_derivative_audit_v20.py",
+              "test_exact_gauged_u1x_stationarity_rank_certificate_v20.py",
+              "test_g1_g8_gate_ledger_v20.py",
+              "test_g1_g8_execution_roadmap_v20.py",
+              "test_theory_validation_matrix_v20.py",
+          ]))
+          PY
+      - name: Assert scoped closure without whole-model promotion
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          report = json.loads(
+              Path("GAUGED_U1X_G2_DERIVATIVE_AUDIT_V20.json").read_text()
+          )
+          assert report["n_failed"] == 0, report["failures"]
+          assert report["counts"]["invariant_directions"] == 44
+          assert report["counts"]["real_parameters"] == 51
+          assert report["counts"]["real_field_dimension"] == 486
+          stationary = report["stationary_Hessian_bridge"]
+          assert stationary["promoted_stationarity_matrix"]["rank"] == 13
+          assert stationary["promoted_stationarity_matrix"]["nullity"] == 38
+          assert report["flags"]["G2_gauged_u1x_derivatives_certified"] is True
+          assert report["flags"]["exact_Delta_R_projector_zero_certificate"] is True
+          assert report["flags"][
+              "exact_three_structural_zero_gradient_certificates"
+          ] is True
+          assert report["flags"][
+              "exact_projector_zero_corrected_normalized_SVD_rank_13"
+          ] is True
+          assert report["flags"]["stationarity_rank_13_exactly_certified"] is True
+          assert report["flags"]["stationarity_nullity_38_exactly_certified"] is True
+          assert report["flags"][
+              "stationarity_rank_lower_bound_13_exactly_certified"
+          ] is True
+          assert report["flags"][
+              "stationarity_rank_upper_bound_13_exactly_certified"
+          ] is True
+          assert report["flags"][
+              "stationarity_rank_upper_bound_13_only_numerical"
+          ] is False
+          assert report["flags"]["exact_stationary_witness_regression_passes"] is True
+          assert stationary["analytic_zero_promotion"]["parameter_ids"] == [
+              "lambda::O27_B01_126bar_self_projectors",
+              "lambda::O27_B02_126bar_self_projectors",
+              "lambda::O44_B03_Phi2_Sigma_projectors",
+          ]
+          assert stationary["exact_stationary_witness_certificate"]["P24_trace"] == 288
+          assert report["flags"]["G3_closed"] is False
+          assert report["flags"]["whole_model_validated"] is False
+          assert report["flags"]["whole_model_excluded"] is False
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: gauged-u1x-g2-derivative-audit
+          path: |
+            GAUGED_U1X_G2_DERIVATIVE_AUDIT_V20.json
+            GAUGED_U1X_G2_DERIVATIVE_AUDIT_V20.md
+            EXACT_GAUGED_U1X_STATIONARITY_RANK_CERTIFICATE_V20.json
+            EXACT_GAUGED_U1X_STATIONARITY_RANK_CERTIFICATE_V20.md

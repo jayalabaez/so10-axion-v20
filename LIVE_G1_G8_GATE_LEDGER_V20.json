@@ -1,0 +1,326 @@
+{
+  "authoritative_for_manuscript": false,
+  "checks": {
+    "G1_has_64_explicit_directions": true,
+    "G2_requires_complete_derivative_layer": true,
+    "G2_value_and_chart_layers_closed": true,
+    "all_eight_gates_present": true,
+    "canonical_486_chart_executes": true,
+    "corrected_G2_value_layer_executes": true,
+    "current_contract_ledger_executes_as_metadata_template": true,
+    "historical_G1_is_closed": true,
+    "historical_G2_is_partial": true,
+    "historical_G7_remains_open": true,
+    "live_G1_ledger_executes": true,
+    "no_downstream_gate_promoted": true,
+    "only_G1_is_closed": true,
+    "whole_model_not_overclaimed": true
+  },
+  "closure_waves": [
+    {
+      "deliverable": "Live invariant multiplicities, tensors, and normalizations.",
+      "gates": [
+        "G1"
+      ],
+      "status": "COMPLETE",
+      "wave": 1
+    },
+    {
+      "completed": [
+        "64-direction arbitrary-field value layer",
+        "91-real-parameter assembly",
+        "canonical 486-real physical chart"
+      ],
+      "deliverable": "Complete analytic gradient and Hessian on the canonical chart.",
+      "gates": [
+        "G2"
+      ],
+      "status": "ACTIVE_PARTIAL",
+      "wave": 2
+    },
+    {
+      "deliverable": "Global vacuum, gauge quotient Hessian, and global BFB.",
+      "gates": [
+        "G3",
+        "G4",
+        "G5"
+      ],
+      "status": "BLOCKED_BY_G2",
+      "wave": 3
+    },
+    {
+      "deliverable": "Complete physical threshold spectrum.",
+      "gates": [
+        "G6"
+      ],
+      "status": "BLOCKED_BY_G3_G4_G5",
+      "wave": 4
+    },
+    {
+      "deliverable": "Validated two-loop running and matching.",
+      "gates": [
+        "G7"
+      ],
+      "status": "BLOCKED_BY_G6",
+      "wave": 5
+    },
+    {
+      "deliverable": "Unique proton-decay prediction or falsification.",
+      "gates": [
+        "G8"
+      ],
+      "status": "BLOCKED_BY_G3_G6_G7",
+      "wave": 6
+    }
+  ],
+  "dependencies": {
+    "G1": [
+      "MODEL_CONTRACT"
+    ],
+    "G2": [
+      "G1"
+    ],
+    "G3": [
+      "G2"
+    ],
+    "G4": [
+      "G2",
+      "G3"
+    ],
+    "G5": [
+      "G1",
+      "G2"
+    ],
+    "G6": [
+      "G3",
+      "G4",
+      "G5"
+    ],
+    "G7": [
+      "G6"
+    ],
+    "G8": [
+      "G3",
+      "G6",
+      "G7"
+    ],
+    "MODEL_CONTRACT": []
+  },
+  "failures": [],
+  "flags": {
+    "all_g1_g8_closed": false,
+    "authoritative_manuscript_g1_closed": false,
+    "authoritative_manuscript_g2_closed": false,
+    "empirical_discovery": false,
+    "g1_closed": false,
+    "g2_canonical_field_chart_complete": false,
+    "g2_closed": false,
+    "g2_complete_Hessian": false,
+    "g2_complete_gradient": false,
+    "g2_value_layer_complete": false,
+    "historical_option_c_g1_closed": true,
+    "historical_option_c_g2_canonical_field_chart_complete": true,
+    "historical_option_c_g2_value_layer_complete": true,
+    "whole_model_excluded": false,
+    "whole_model_validated": false
+  },
+  "gates": {
+    "G1": {
+      "closed_scope": [
+        "live SO(10)+PQ+Z17 degree<=4 character census",
+        "74 allowed field multidegrees and 48 Hermitian-conjugacy orbits",
+        "64 independent invariant coefficients / 91 real potential parameters",
+        "explicit Cartesian tensor basis and normalization for all 64 directions"
+      ],
+      "closure_route_defined": true,
+      "closure_source": "live_g1_tensor_closure_ledger_v20.py",
+      "corrections": {
+        "all_live_tensor_directions_explicit": true,
+        "historical_continuous_X_subcensus_is_live_ring": false,
+        "live_independent_invariant_coefficients": 64,
+        "live_real_potential_parameters": 91
+      },
+      "current_runner_can_close_without_new_tensor_derivation": true,
+      "open_scope": [],
+      "status": "CLOSED",
+      "title": "Invariant ring and component Clebsch tensors"
+    },
+    "G2": {
+      "closed_scope": [
+        "all 48 Hermitian orbits compiled",
+        "all 64 normalized invariant values callable on arbitrary fields",
+        "91-real-parameter Hermitian coefficient assembly and Jacobian",
+        "physical -i 126bar chirality enforced",
+        "homogeneous degree scaling checked for every direction",
+        "canonical 486-real physical field chart",
+        "exact pack/unpack with identity kinetic metric",
+        "SO(10) generator tangent map on the complete chart"
+      ],
+      "closure_route_defined": true,
+      "closure_source": "live_g2_component_potential_v20.py + live_g2_canonical_486_field_chart_v20.py",
+      "corrections": {
+        "PR155_eight_coordinate_probe_is_complete_Hessian": false,
+        "PR155_eight_coordinate_probe_is_complete_gradient": false,
+        "canonical_field_chart_closed": true,
+        "complete_real_field_dimension": 486,
+        "complete_symmetric_Hessian_entries": 118341,
+        "live_assembled_directions": 64,
+        "live_real_couplings": 91
+      },
+      "current_runner_can_close_without_G1": false,
+      "open_scope": [
+        "complete 486-entry field gradient for all 91 parameters",
+        "complete symmetric 486x486 field Hessian with operator provenance",
+        "independent covariance and finite-difference reconstruction of all derivative families"
+      ],
+      "status": "PARTIAL",
+      "title": "Fully projected non-SUSY component potential"
+    },
+    "G3": {
+      "authoritative_for_manuscript": false,
+      "closure_route_defined": true,
+      "dependencies": [
+        "G2"
+      ],
+      "historical_option_c_evidence_retained": true,
+      "model_contract_id": "historical_option_c_no_x_v20",
+      "open_scope": [
+        "re-solve stationarity for the authoritative 51-parameter potential",
+        "classify local stability, BFB, and competing extrema anew"
+      ],
+      "status": "PARTIAL",
+      "title": "Stationarity and global vacuum",
+      "unsatisfied_dependencies": [
+        "G2"
+      ]
+    },
+    "G4": {
+      "authoritative_for_manuscript": false,
+      "closure_route_defined": true,
+      "dependencies": [
+        "G2",
+        "G3"
+      ],
+      "historical_option_c_evidence_retained": true,
+      "model_contract_id": "historical_option_c_no_x_v20",
+      "open_scope": [
+        "include the broken U(1)_X gauge tangent and eaten Phi17 phase",
+        "rebuild the physical quotient at an authoritative G3 witness"
+      ],
+      "status": "PARTIAL",
+      "title": "Gauge quotient, axion directions, and physical Hessian",
+      "unsatisfied_dependencies": [
+        "G2",
+        "G3"
+      ]
+    },
+    "G5": {
+      "authoritative_for_manuscript": false,
+      "closure_route_defined": true,
+      "dependencies": [
+        "G1",
+        "G2"
+      ],
+      "historical_option_c_evidence_retained": false,
+      "model_contract_id": "historical_option_c_no_x_v20",
+      "open_scope": [
+        "prove BFB for the recertified gauged-U(1)_X potential"
+      ],
+      "status": "PARTIAL",
+      "title": "Boundedness from below",
+      "unsatisfied_dependencies": [
+        "G1",
+        "G2"
+      ]
+    },
+    "G6": {
+      "authoritative_for_manuscript": false,
+      "closure_route_defined": true,
+      "dependencies": [
+        "G3",
+        "G4",
+        "G5"
+      ],
+      "historical_option_c_evidence_retained": false,
+      "model_contract_id": "historical_option_c_no_x_v20",
+      "open_scope": [
+        "await authoritative G3/G4/G5 and emit the complete positive spectrum"
+      ],
+      "status": "PARTIAL",
+      "title": "Physical threshold spectrum",
+      "unsatisfied_dependencies": [
+        "G3",
+        "G4",
+        "G5"
+      ]
+    },
+    "G7": {
+      "authoritative_for_manuscript": false,
+      "closure_route_defined": true,
+      "dependencies": [
+        "G6"
+      ],
+      "historical_option_c_evidence_retained": false,
+      "model_contract_id": "historical_option_c_no_x_v20",
+      "open_scope": [
+        "await G6 and independently validate the full beta system"
+      ],
+      "status": "OPEN",
+      "title": "Validated two-loop RGE and threshold matching",
+      "unsatisfied_dependencies": [
+        "G6"
+      ]
+    },
+    "G8": {
+      "authoritative_for_manuscript": false,
+      "closure_route_defined": true,
+      "dependencies": [
+        "G3",
+        "G6",
+        "G7"
+      ],
+      "historical_option_c_evidence_retained": false,
+      "model_contract_id": "historical_option_c_no_x_v20",
+      "open_scope": [
+        "await authoritative G3/G6/G7 before any unique lifetime claim"
+      ],
+      "status": "PARTIAL",
+      "title": "Proton-decay prediction and falsification",
+      "unsatisfied_dependencies": [
+        "G3",
+        "G6",
+        "G7"
+      ]
+    }
+  },
+  "model_contract_id": "historical_option_c_no_x_v20",
+  "n_checks": 14,
+  "n_failed": 0,
+  "next_exact_target": "Use gauged_u1x_scalar_contract_v20.py and the 44/51 derivative audit for the manuscript-authoritative theory.",
+  "overall_state": "HISTORICAL",
+  "source_template_ledger_status": "G1_G8_LEDGER_AUDIT_COMPLETE__MODEL_CONTRACT_BLOCKED__GAUGED_G1_G2_SCOPED_RECERTIFIED",
+  "status": "HISTORICAL_OPTION_C_G1_CLOSED__G2_VALUE_AND_CHART_PARTIAL__NONAUTHORITATIVE",
+  "summary": {
+    "blocked": [],
+    "closed": [
+      "G1"
+    ],
+    "n_blocked": 0,
+    "n_closed": 1,
+    "n_open": 1,
+    "n_partial": 6,
+    "open": [
+      "G7"
+    ],
+    "partial": [
+      "G2",
+      "G3",
+      "G4",
+      "G5",
+      "G6",
+      "G8"
+    ]
+  },
+  "supersedes_for_current_status": false,
+  "verdict": "This ledger reproduces historical Option-C/no-X bookkeeping only. Its 64/91 G1 closure and partial G2 layers are not gates of the gauged-U(1)_X manuscript and do not supersede the current ledger."
+}

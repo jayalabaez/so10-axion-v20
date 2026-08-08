@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Regression tests for the hardened all-64 G2 value compiler."""
+"""Regression tests for the historical Option-C/no-X all-64 value compiler."""
 from __future__ import annotations
 
 import numpy as np
@@ -22,14 +22,28 @@ def test_full_report_passes_fail_closed():
     report = mod.build_report()
     assert report["n_failed"] == 0, report["failures"]
     assert all(report["checks"].values())
+    assert mod.MODEL_CONTRACT_ID == "historical_option_c_no_x_v20"
+    assert mod.AUTHORITATIVE_FOR_MANUSCRIPT is False
+    assert report["model_contract_id"] == mod.MODEL_CONTRACT_ID
+    assert report["authoritative_for_manuscript"] is False
+    assert report["overall_state"] == "HISTORICAL"
+    assert report["supersedes_for_current_status"] is False
     assert report["flags"]["all_64_arbitrary_component_values_callable"]
     assert report["flags"]["real_Hermitian_potential_assembled"]
     assert report["flags"]["real_210_field_enforced"]
+    assert report["flags"]["historical_option_c_g1_closed"]
+    assert report["flags"]["historical_option_c_g2_value_layer_complete"]
+    assert report["flags"]["historical_option_c_g2_closed_by_this_module"] is False
+    assert report["flags"]["authoritative_manuscript_g1_closed"] is False
+    assert report["flags"]["authoritative_manuscript_g2_value_layer_complete"] is False
+    assert report["flags"]["authoritative_manuscript_g2_closed"] is False
+    assert report["flags"]["g1_closed"] is False
+    assert report["flags"]["g2_value_layer_complete"] is False
     assert report["flags"]["field_gradient_complete"] is False
     assert report["flags"]["field_Hessian_complete"] is False
     assert report["flags"]["G2_closed"] is False
     assert report["flags"]["whole_model_validated"] is False
-    assert "486-real" in report["next_exact_target"]
+    assert "44-direction/51-real-parameter" in report["next_exact_target"]
 
 
 def test_exact_counts_and_unique_ids(directions):

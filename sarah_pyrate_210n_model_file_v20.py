@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
-r"""SARAH/PyR@TE 210ⁿ model-file scaffold + live-run probe (v20).
+r"""Classify the native SARAH input and historical PyR@TE scaffold (v20).
 
 Next step after ``tau_p_uv_vacuum_selection_v20``:
 
-1. Author machine-readable **SARAH** (``.m``) and **PyR@TE** (``.yaml``)
-   model-file scaffolds for the complete v20 SO(10)×Z₁₇ field content,
-   including the renormalizable ``210^n`` sector and charge-allowed mixed
-   operators.
+1. Inventory the native SARAH ``.m`` input and historical ``.yaml`` metadata
+   scaffold without inferring an external run.
 2. Cross-check the authored Dynkin/charge ledger against
    ``sarah_pyrate_so10_210_betas_v20`` and the PQ/X locks.
 3. Probe the environment for a live ``math`` / ``wolframscript`` + SARAH or
@@ -14,9 +12,10 @@ Next step after ``tau_p_uv_vacuum_selection_v20``:
 
 Honesty
 -------
-* Authoring a model file is not a live SARAH/PyR@TE dump of β functions.
-* ``live_sarah_or_pyrate_executable_run`` stays False unless a real dump is
-  produced in-process.
+* Token presence is not evidence of tool-native SARAH/PyR@TE syntax.
+* ``live_sarah_or_pyrate_executable_run`` stays False unless the exact-X v2
+  attestation binds the native model type, exact input manifest, validation
+  driver, and captured process log.
 * Exact X/Y masses from the full component vacuum remain OPEN.
 """
 
@@ -32,19 +31,19 @@ from typing import Any
 
 import sarah_pyrate_so10_210_betas_v20 as sarah
 import tau_p_uv_vacuum_selection_v20 as taup
+import exact_x_symmetry_consistency_gate_v20 as exact_x
 
 ROOT = Path(__file__).resolve().parent
 MODELS = ROOT / "models"
 SARAH_MODEL = MODELS / "SO10Z17AxionV20.m"
 PYRATE_MODEL = MODELS / "SO10Z17AxionV20_pyrate.yaml"
 
-# v20 charge locks (must appear in authored files).
+# Authoritative manuscript charge locks.  The historical scaffolds are
+# deliberately compared against these values rather than their old Option-C
+# metadata.
 CHARGE_LOCKS = {
-    "H10": {"PQ": -2, "X": 0},
-    "Delta126bar": {"PQ": -2, "X": 0},
-    "Phi210": {"PQ": 0, "X": 0},
-    "S": {"PQ": 4, "X": 0},
-    "Phi17": {"PQ": 0, "X": 17},
+    name: {"PQ": charges[0], "X": charges[1]}
+    for name, charges in exact_x.EXPECTED_SCALAR_CHARGES.items()
 }
 
 REQUIRED_OPERATORS = ("kappa", "lam4", "lambda_lock")
@@ -136,6 +135,8 @@ def validate_pyrate_yaml(text: str) -> dict[str, Any]:
     n_scalars = len(re.findall(r"- name: (?:Phi210|Delta126bar|H10|S|Phi17)\b", text))
     return {
         "parsed": True,
+        "model_syntax_class": "legacy_pyrate_metadata_scaffold",
+        "tool_native_pyrate_schema": False,
         "name": "SO10Z17AxionV20" if "SO10Z17AxionV20" in text else None,
         "dynkin_match_upstream": dynkin_match,
         "dynkin_T": dynkin,
@@ -148,7 +149,7 @@ def validate_pyrate_yaml(text: str) -> dict[str, Any]:
 
 
 def validate_sarah_m(text: str) -> dict[str, Any]:
-    checks = {
+    inventory_checks = {
         "has_model_name": "SO10Z17AxionV20" in text,
         "has_so10_gauge": bool(re.search(r"Gauge\[\[1\]\].*SO.*10", text)),
         "has_210": "210" in text and "Phi210" in text,
@@ -161,10 +162,35 @@ def validate_sarah_m(text: str) -> dict[str, Any]:
         "forbids_bare_10_sq_noted": "10_H^2" in text or "bare" in text.lower(),
         "hilbert_210n_noted": "Hilbert" in text or "H2=1" in text,
     }
+    parsed = exact_x.declared_symmetries(text)
+    semantic = parsed["semantic_requirements"]
     return {
         "n_bytes": len(text.encode("utf-8")),
-        "checks": checks,
-        "all_structure_ok": all(checks.values()),
+        "checks": inventory_checks,
+        "legacy_inventory_markers_present": all(inventory_checks.values()),
+        "native_inventory_requirements_present": all(semantic.values()),
+        "model_syntax_class": parsed["model_syntax_class"],
+        "legacy_pseudo_sarah_grammar": parsed[
+            "legacy_pseudo_sarah_grammar"
+        ],
+        "tool_native_sarah_syntax": parsed["tool_native_sarah_syntax"],
+        "statically_executable_model_contract": parsed[
+            "statically_executable_model_contract"
+        ],
+        "lagrangian_registered_in_GaugeES_LagrangianInput": parsed[
+            "lagrangian"
+        ]["registered_in_GaugeES_LagrangianInput"],
+        "scalar_charges_match_manuscript": parsed[
+            "scalar_charges_match_manuscript"
+        ],
+        "fermion_catalogue_exact": parsed["fermion_catalogue_exact"],
+        "gauge_catalogue_exact": parsed["gauge_catalogue_exact"],
+        "global_symmetry_catalogue_exact": parsed[
+            "global_symmetry_catalogue_exact"
+        ],
+        # Backwards-readable key: it now means actual native structure, not
+        # merely that expected words appeared in the file.
+        "all_structure_ok": parsed["tool_native_sarah_syntax"],
     }
 
 
@@ -183,53 +209,116 @@ def build_report() -> dict[str, Any]:
     pyrate_v = validate_pyrate_yaml(pyrate_text)
     probe = probe_live_tools()
 
+    external_artifact: object = None
+    external_load_error: str | None = None
+    if exact_x.EXTERNAL_VALIDATION.is_file():
+        try:
+            external_artifact = json.loads(
+                exact_x.EXTERNAL_VALIDATION.read_text(encoding="utf-8")
+            )
+        except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+            external_load_error = f"{type(exc).__name__}: {exc}"
+    external_validation = exact_x.validate_external_model_artifact(
+        sarah_text.encode("utf-8"), external_artifact
+    )
+    external_validation["load_error"] = external_load_error
+
     # Upstream τ_p certificate continuity (light: only require module import path)
     tau_ok = hasattr(taup, "assemble_uv_selected_vacuum")
 
     # Live run: only True if we actually executed — we never do without tools.
-    live_executed = False
-    live_dump = None
-    if probe["live_run_possible"]:
-        # Still do not invent a dump; require an external artifact path.
-        dump_path = ROOT / "models" / "LIVE_BETA_DUMP.json"
-        if dump_path.is_file():
-            live_executed = True
-            live_dump = str(dump_path)
-        else:
-            probe["block_reason"] = (
-                "Live tools appear present but no LIVE_BETA_DUMP.json artifact; "
-                "refusing to claim a live run."
-            )
+    # A generic reduced-sector beta dump is not evidence that this exact model
+    # parsed or initialized.  Only the v2 exact-X attestation can set this flag.
+    live_executed = bool(external_validation["valid"])
+    live_dump = (
+        str(exact_x.EXTERNAL_VALIDATION.relative_to(ROOT)).replace("\\", "/")
+        if live_executed
+        else None
+    )
+    if not live_executed:
+        probe["block_reason"] = (
+            "No valid v2 attestation binds tool-native input, exact model bytes, "
+            "the canonical input manifest, validation driver, and process log."
+        )
 
     checks = {
         "sarah_file_present": SARAH_MODEL.is_file(),
         "pyrate_file_present": PYRATE_MODEL.is_file(),
-        "sarah_structure_ok": sarah_v["all_structure_ok"],
+        "sarah_syntax_was_classified": sarah_v["model_syntax_class"]
+        in {
+            "sarah_native",
+            "legacy_pseudo_sarah_metadata",
+            "mixed_or_unrecognized",
+        },
+        "legacy_sarah_tokens_not_promoted_to_native_syntax": bool(
+            not sarah_v["legacy_pseudo_sarah_grammar"]
+            or not sarah_v["tool_native_sarah_syntax"]
+        ),
+        "native_sarah_static_contract_classified": bool(
+            not sarah_v["tool_native_sarah_syntax"]
+            or (
+                sarah_v["native_inventory_requirements_present"]
+                and sarah_v["statically_executable_model_contract"]
+                and sarah_v["scalar_charges_match_manuscript"]
+            )
+        ),
+        "pyrate_syntax_was_classified": isinstance(
+            pyrate_v["tool_native_pyrate_schema"], bool
+        ),
         "pyrate_dynkin_match": pyrate_v["dynkin_match_upstream"],
-        "pyrate_charges_match": pyrate_v["charges_match_locks"],
         "pyrate_operators_present": pyrate_v["required_operators_present"],
-        "live_not_overclaimed": (not live_executed) or bool(live_dump),
+        "authoritative_charge_match_was_classified": isinstance(
+            pyrate_v["charges_match_locks"], bool
+        ),
+        "external_v2_attestation_was_classified": isinstance(
+            external_validation["valid"], bool
+        ),
+        "generic_beta_dump_does_not_claim_full_model_execution": (
+            not live_executed or external_validation["valid"]
+        ),
         "tau_p_module_available": tau_ok,
         "unique_tau_p_not_claimed": True,
         "whole_model_not_declared_dead": True,
     }
     failures = [n for n, ok in checks.items() if not ok]
+    native_contract_static = bool(
+        sarah_v["tool_native_sarah_syntax"]
+        and sarah_v["native_inventory_requirements_present"]
+        and sarah_v["statically_executable_model_contract"]
+        and sarah_v["scalar_charges_match_manuscript"]
+        and sarah_v["fermion_catalogue_exact"]
+        and sarah_v["gauge_catalogue_exact"]
+        and sarah_v["global_symmetry_catalogue_exact"]
+    )
+    native_contract_ready = bool(
+        native_contract_static
+        and external_validation["valid"]
+    )
+    scientific_blockers: list[str] = []
+    if not sarah_v["tool_native_sarah_syntax"]:
+        scientific_blockers.append("SARAH_MODEL_NOT_TOOL_NATIVE")
+    if not external_validation["valid"]:
+        scientific_blockers.append(exact_x.EXTERNAL_EXECUTION_BLOCKER)
 
     status = (
-        "SARAH_PYRATE_MODEL_FILE_AUTHORED__LIVE_RUN_BLOCKED"
-        if not failures and not live_executed
-        else (
-            "SARAH_PYRATE_LIVE_RUN_EXECUTED"
-            if not failures and live_executed
-            else "SARAH_PYRATE_MODEL_FILE_FAILED"
-        )
+        "SARAH_PYRATE_SCAFFOLD_AUDIT_EXECUTION_FAILED"
+        if failures
+        else "SARAH_NATIVE_MODEL_EXTERNALLY_VALIDATED"
+        if native_contract_ready
+        else "SARAH_NATIVE_STATIC_CONTRACT__EXTERNAL_VALIDATION_BLOCKED"
+        if native_contract_static
+        else "SARAH_PYRATE_MODEL_CONTRACT_CLASSIFIED__VALIDATION_BLOCKED"
     )
 
     return {
         "status": status,
+        "overall_state": (
+            "EXECUTION_FAIL" if failures else "PASS" if native_contract_ready else "BLOCKED"
+        ),
         "n_checks": len(checks),
         "n_failed": len(failures),
         "failures": failures,
+        "scientific_blockers": scientific_blockers,
         "sources": SOURCES,
         "files": {
             "sarah": SOURCES["sarah_model"],
@@ -237,7 +326,11 @@ def build_report() -> dict[str, Any]:
             "sarah_bytes": sarah_v["n_bytes"],
             "pyrate_bytes": len(pyrate_text.encode("utf-8")),
         },
-        "validation": {"sarah": sarah_v, "pyrate": pyrate_v},
+        "validation": {
+            "sarah": sarah_v,
+            "pyrate": pyrate_v,
+            "external_model_execution": external_validation,
+        },
         "live_probe": {**probe, "live_run_executed": live_executed, "dump": live_dump},
         "next_exact_calculation": [
             "Derive exact X/Y masses from the full component vacuum",
@@ -245,25 +338,34 @@ def build_report() -> dict[str, Any]:
             "Execute a live SARAH/PyR@TE dump when Mathematica+SARAH or pyrate is available",
         ],
         "flag": {
+            # Backwards-readable: files were authored, but this is not an
+            # executability or scientific-validity flag.
             "sarah_pyrate_model_file_authored": True,
+            "sarah_metadata_scaffold_present": True,
+            "pyrate_metadata_scaffold_present": True,
+            "sarah_model_tool_native": sarah_v["tool_native_sarah_syntax"],
+            "sarah_static_contract_consistent": native_contract_static,
+            "pyrate_model_tool_native": pyrate_v[
+                "tool_native_pyrate_schema"
+            ],
             "pyrate_yaml_dynkin_matches_upstream": pyrate_v["dynkin_match_upstream"],
-            "charge_locks_encoded": pyrate_v["charges_match_locks"],
+            "charge_locks_encoded": sarah_v[
+                "scalar_charges_match_manuscript"
+            ],
+            "external_validation_v2_valid": external_validation["valid"],
             "live_sarah_or_pyrate_executable_run": bool(live_executed),
+            "live_run_blocked_without_bound_attestation": not live_executed,
             "live_run_blocked_without_tools_or_dump": not live_executed,
             "exact_unique_proton_lifetime": False,
             "whole_model_excluded": False,
         },
         "verdict": (
-            f"Authored SARAH+PyR@TE model-file scaffolds for SO(10)×Z₁₇ "
-            f"(210/126/10/S/Φ₁₇; Dynkin match={pyrate_v['dynkin_match_upstream']}; "
-            f"charges match={pyrate_v['charges_match_locks']}). "
-            f"Live run executed={live_executed}"
-            + (
-                f" ({probe['block_reason']})"
-                if not live_executed and probe.get("block_reason")
-                else "."
-            )
-            + " Exact X/Y masses and unique τ_p remain OPEN."
+            "The .m file is now a statically consistent native SARAH input for "
+            "the authoritative gauged-U(1)_X catalogue. The historical PyR@TE "
+            f"metadata remains non-authoritative (Dynkin match={pyrate_v['dynkin_match_upstream']}). "
+            f"Bound external SARAH execution={live_executed}; a generic beta dump "
+            "cannot replace that attestation. Exact X/Y masses and the unique "
+            "proton lifetime remain open."
         ),
     }
 
@@ -271,14 +373,18 @@ def build_report() -> dict[str, Any]:
 def write_markdown(report: dict[str, Any]) -> str:
     probe = report["live_probe"]
     lines = [
-        "# SARAH/PyR@TE 210ⁿ model-file scaffold — v20",
+        "# SARAH/PyR@TE scaffold classification - v20",
         "",
         f"**Status:** `{report['status']}`",
+        f"**Overall state:** `{report['overall_state']}`",
         "",
         report["verdict"],
         "",
         f"- SARAH: `{report['files']['sarah']}` ({report['files']['sarah_bytes']} bytes)",
         f"- PyR@TE: `{report['files']['pyrate']}` ({report['files']['pyrate_bytes']} bytes)",
+        f"- SARAH tool-native syntax: {report['flag']['sarah_model_tool_native']}",
+        f"- PyR@TE tool-native schema: {report['flag']['pyrate_model_tool_native']}",
+        f"- Bound v2 external validation: {report['flag']['external_validation_v2_valid']}",
         f"- Live tools on PATH: {list(probe['executables_on_PATH'].keys()) or 'none'}",
         f"- Live run executed: {probe['live_run_executed']}",
         "",

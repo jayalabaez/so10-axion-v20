@@ -9,6 +9,7 @@ forecast).  Exits nonzero on any failure.
 from __future__ import annotations
 
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -20,7 +21,15 @@ GOLDEN = ROOT / "golden" / "expected_anchors_v20.json"
 
 def run(cmd: list[str]) -> None:
     print("+", " ".join(cmd), flush=True)
-    subprocess.run(cmd, cwd=ROOT, check=True)
+    environment = os.environ.copy()
+    for name in (
+        "OPENBLAS_NUM_THREADS",
+        "OMP_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "NUMEXPR_NUM_THREADS",
+    ):
+        environment[name] = "1"
+    subprocess.run(cmd, cwd=ROOT, check=True, env=environment)
 
 
 def check_golden_anchors() -> None:
@@ -45,13 +54,213 @@ def check_golden_anchors() -> None:
     print("[PASS] golden anomaly / minimality anchors", flush=True)
 
 
+def check_current_root_contract() -> None:
+    report = json.loads(
+        (ROOT / "EXACT_X_SYMMETRY_CONSISTENCY_GATE_V20.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    scaffold = report["executable_scaffold_contract"]
+    external = report["external_model_validation"]
+    repository_manifest = report["repository_external_input_manifest"]
+    assert report["n_failed"] == 0 and report["overall_state"] == "BLOCKED"
+    assert report["static_contract_consistent"] is True
+    assert report["contract_consistent"] is False
+    assert (
+        report["blocker"]
+        == "AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED"
+    )
+    assert scaffold["model_syntax_class"] == "sarah_native"
+    assert scaffold["legacy_pseudo_sarah_grammar"] is False
+    assert scaffold["tool_native_sarah_syntax"] is True
+    assert scaffold["statically_executable_model_contract"] is True
+    assert repository_manifest["valid"] is True
+    assert external["valid"] is False
+    assert external["checks"]["external_process_was_executed"] is False
+    assert external["checks"]["captured_process_log_is_hash_bound"] is False
+    print(
+        "[PASS] root contract is statically native and honestly BLOCKED only on "
+        "missing bound external SARAH evidence",
+        flush=True,
+    )
+
+
 def main() -> int:
     print("=== v20 pristine replication ===", flush=True)
     check_golden_anchors()
     run([sys.executable, "-m", "pip", "install", "-r", "requirements.txt"])
     run([sys.executable, "audit_v20_errors.py"])
     run([sys.executable, "so10_axion_v20_engine.py", "--output", "so10_axion_v20_verdict.json"])
-    run([sys.executable, "-m", "unittest", "discover", "-v"])
+    run([sys.executable, "exact_x_symmetry_consistency_gate_v20.py"])
+    check_current_root_contract()
+    run([sys.executable, "sarah_pyrate_210n_model_file_v20.py"])
+    run([sys.executable, "gauged_u1x_scalar_contract_v20.py", "--write"])
+    run([sys.executable, "g1_exact_declared_symmetry_character_census_v20.py", "--write"])
+    run(
+        [
+            sys.executable,
+            "exact_gauged_u1x_stationarity_rank_certificate_v20.py",
+            "--write",
+        ]
+    )
+    run([sys.executable, "gauged_u1x_g2_derivative_audit_v20.py", "--write"])
+    run(
+        [
+            sys.executable,
+            "exact_gauged_u1x_physical_quotient_v20.py",
+            "--write",
+        ]
+    )
+    run(
+        [
+            sys.executable,
+            "exact_gauged_u1x_g3_pd_rank_certificate_v20.py",
+            "--recompute-heavy",
+            "--write",
+        ]
+    )
+    run(
+        [
+            sys.executable,
+            "exact_gauged_u1x_g3_a_square_recoupling_v20.py",
+            "--recompute",
+            "--write",
+        ]
+    )
+    run(
+        [
+            sys.executable,
+            "exact_gauged_u1x_g3_sos_bfb_stationarity_v20.py",
+            "--recompute",
+            "--write",
+        ]
+    )
+    run(
+        [
+            sys.executable,
+            "exact_gauged_u1x_g3_global_counterexample_v20.py",
+            "--write",
+        ]
+    )
+    run(
+        [
+            sys.executable,
+            "exact_gauged_u1x_g3_kernel_quartic_bound_v20.py",
+            "--write",
+        ]
+    )
+    run(
+        [
+            sys.executable,
+            "exact_gauged_u1x_g3_replacement_stationary_orbit_v20.py",
+            "--write",
+        ]
+    )
+    run(
+        [
+            sys.executable,
+            "exact_gauged_u1x_g3_su5_delta_pd_sos_v20.py",
+            "--write",
+        ]
+    )
+    run(
+        [
+            sys.executable,
+            "exact_gauged_u1x_g3_su5_delta_hsx_extension_v20.py",
+            "--write",
+        ]
+    )
+    run(
+        [
+            sys.executable,
+            "exact_gauged_u1x_g3_su5_delta_hsx_exact_hessian_v20.py",
+            "--write",
+        ]
+    )
+    run(
+        [
+            sys.executable,
+            "exact_gauged_u1x_g3_su5_phi_orbit_lemma_v20.py",
+            "--write",
+        ]
+    )
+    run(
+        [
+            sys.executable,
+            "exact_gauged_u1x_g3_su5_phi_local_component_v20.py",
+            "--write",
+        ]
+    )
+    run(
+        [
+            sys.executable,
+            "exact_gauged_u1x_g3_su5_phi_su3_slice_v20.py",
+            "--write",
+        ]
+    )
+    run(
+        [
+            sys.executable,
+            "exact_gauged_u1x_g3_su5_equality_orbit_v20.py",
+            "--write",
+        ]
+    )
+    run(
+        [
+            sys.executable,
+            "exact_gauged_u1x_g3_su5_fixed_f_offkernel_bound_v20.py",
+            "--write",
+        ]
+    )
+    run(
+        [
+            sys.executable,
+            "exact_gauged_u1x_g3_su5_max_negative_zero_residual_bound_v20.py",
+            "--write",
+        ]
+    )
+    run(
+        [
+            sys.executable,
+            "exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py",
+            "--write",
+        ]
+    )
+    run(
+        [
+            sys.executable,
+            "exact_gauged_u1x_g3_su5_chiral_global_gap_reduction_v20.py",
+            "--write",
+        ]
+    )
+    run(
+        [
+            sys.executable,
+            "exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py",
+            "--write",
+        ]
+    )
+    run(
+        [
+            sys.executable,
+            "gauged_u1x_g3_sos_candidate_v20.py",
+            "--recompute-heavy",
+            "--write",
+        ]
+    )
+    run([sys.executable, "gauged_u1x_g3_stability_v20.py", "--write"])
+    run(
+        [
+            sys.executable,
+            "gauged_u1x_g3_corrected_common_kernel_v20.py",
+            "--recompute-heavy",
+            "--write",
+        ]
+    )
+    run([sys.executable, "g1_g8_gate_ledger_v20.py", "--write"])
+    run([sys.executable, "final_g3_acceptance_gate_v20.py", "--write"])
+    run([sys.executable, "g1_g8_execution_roadmap_v20.py", "--write"])
+    run([sys.executable, "authoritative_full_model_gate_v20.py"])
     run([sys.executable, "falsify_v20.py"])
     run([sys.executable, "run_v20_external_next_steps.py"])
     run([sys.executable, "run_v20_referee_next.py"])
@@ -72,10 +281,53 @@ def main() -> int:
     run([sys.executable, "empirical_roadmap_lock_v20.py"])
     run([sys.executable, "next_phenomenology_lock_v20.py"])
     run([sys.executable, "close_open_gaps_v20.py"])
-    print("=== REPLICATION PASS ===", flush=True)
+    run([sys.executable, "theory_validation_matrix_v20.py", "--expect-blocked"])
+    run([sys.executable, "theory_confirmation_verdict_v20.py", "--expect-blocked"])
+    run([sys.executable, "ultimate_theory_gate_v20.py", "--expect-blocked"])
+    run([sys.executable, "-m", "unittest", "discover", "-v"])
+    run(
+        [
+            sys.executable,
+            "-m",
+            "pytest",
+            "-q",
+            "test_exact_x_symmetry_consistency_gate_v20.py",
+            "test_g1_exact_declared_symmetry_character_census_v20.py",
+            "test_gauged_u1x_scalar_contract_v20.py",
+            "test_gauged_u1x_g2_derivative_audit_v20.py",
+            "test_exact_gauged_u1x_stationarity_rank_certificate_v20.py",
+            "test_exact_gauged_u1x_physical_quotient_v20.py",
+            "test_exact_gauged_u1x_g3_pd_rank_certificate_v20.py",
+            "test_exact_gauged_u1x_g3_a_square_recoupling_v20.py",
+            "test_exact_gauged_u1x_g3_sos_bfb_stationarity_v20.py",
+            "test_exact_gauged_u1x_g3_global_counterexample_v20.py",
+            "test_exact_gauged_u1x_g3_kernel_quartic_bound_v20.py",
+            "test_exact_gauged_u1x_g3_replacement_stationary_orbit_v20.py",
+            "test_exact_gauged_u1x_g3_su5_delta_pd_sos_v20.py",
+            "test_exact_gauged_u1x_g3_su5_delta_hsx_extension_v20.py",
+            "test_exact_gauged_u1x_g3_su5_delta_hsx_exact_hessian_v20.py",
+            "test_exact_gauged_u1x_g3_su5_phi_orbit_lemma_v20.py",
+            "test_exact_gauged_u1x_g3_su5_phi_local_component_v20.py",
+            "test_exact_gauged_u1x_g3_su5_phi_su3_slice_v20.py",
+            "test_exact_gauged_u1x_g3_su5_equality_orbit_v20.py",
+            "test_exact_gauged_u1x_g3_su5_fixed_f_offkernel_bound_v20.py",
+            "test_exact_gauged_u1x_g3_su5_max_negative_zero_residual_bound_v20.py",
+            "test_exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py",
+            "test_exact_gauged_u1x_g3_su5_chiral_global_gap_reduction_v20.py",
+            "test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py",
+            "test_final_g3_acceptance_gate_v20.py",
+            "test_gauged_u1x_g3_sos_candidate_v20.py",
+            "test_gauged_u1x_g3_stability_v20.py",
+            "test_gauged_u1x_g3_corrected_common_kernel_v20.py",
+            "test_g1_g8_gate_ledger_v20.py",
+            "test_g1_g8_execution_roadmap_v20.py",
+            "test_theory_validation_matrix_v20.py",
+        ]
+    )
+    print("=== REPLICATION PASS (SCIENTIFIC STATE: BLOCKED) ===", flush=True)
     print(
-        "Remember: passing tests means internal consistency of the candidate "
-        "model, not experimental discovery of dark matter.",
+        "Passing replication means the fail-closed snapshot is reproducible. "
+        "It does not validate the manuscript model or claim a discovery.",
         flush=True,
     )
     return 0

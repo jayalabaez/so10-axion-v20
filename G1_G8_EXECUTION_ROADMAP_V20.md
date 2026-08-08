@@ -1,91 +1,79 @@
-# SO(10) axion v20 — executable G1–G8 roadmap
+# SO(10) axion v20 - contract-aware G1-G8 roadmap
 
-**Status:** `G1_G8_EXECUTION_ROADMAP_READY__G1_G2_CLOSED__G3_PARTIAL`
+**Status:** `G1_G8_EXECUTION_ROADMAP_READY__WAVE0_MODEL_CONTRACT_BLOCKED`
+**Overall state:** `BLOCKED`
 
-G1 and G2 are closed and the exact G3 witness is a physical saddle. The remaining program is dependency ordered; G3 cannot close until a tachyon-free stationary member survives BFB and competing-extrema tests.
+Wave 0 MODEL_CONTRACT is the first critical-path task. All G1-G8 gates are BLOCKED and none is closed. The gauged scalar G1/G2 calculations are complete scoped subtheorems at 44/51/486. Three structural gradient columns vanish exactly; a compiler-bound nonzero 13x13 minor and exact full-row factorization prove stationarity rank/nullity 13/38, with SVD retained only as a diagnostic. These results await contract promotion, not recalculation. G3 now has a 27-of-51 perturbative SOS candidate with J0=-21/200. Exact source-bound SOS identities prove stationarity and complete BFB. Direct exact arithmetic gives P+Delta rank/nullity 429/33 and proves positivity on all 448 transverse Hessian directions, so the selected orbit is a strict local minimum. A source-bound field counterexample is lower by 25*r^4/19008 and rejects it as the global vacuum. The fixed-P branch is exactly excluded and the lower replacement has the wrong gauge symmetry. The SU(5)+Delta Phi/Sigma branch is an exact global SOS minimum with the correct SM stabilizer and rank/nullity 429/33. A chiral-H extension is exactly stationary, BFB and symmetry-correct. Its source-bound 486-real Hessian is exactly PSD with rank/nullity 448/38 and kernel exactly the 38 symmetry tangents. The complete maximally-negative pure-Delta sector is excluded for arbitrary real Phi and all nonzero residuals with sharp gap 1/5000. Uniform coercivity for arbitrary non-pure-Delta Sigma orientations is the precise G3 blocker. The historical 64/91 calculation and 449-dimensional saddle/search remain scoped to option C.
 
 ## Critical path
 
-`G1 → G2 → G3/G4/G5 → G6 → G7 → G8`
+`MODEL_CONTRACT -> G1 -> G2 -> G3/G4/G5 -> G6 -> G7 -> G8`
 
 ## Gate ledger
 
-| Gate | Status | Immediate blocker | Issue |
-|---|---:|---|---:|
-| G1 | CLOSED | none | #176 |
-| G2 | CLOSED | none | #176 |
-| G3 | PARTIAL | find a tachyon-free stationary member, then prove BFB and global preference | #178 |
-| G4 | PARTIAL | positive quotient spectrum at a surviving G3 member | #178 |
-| G5 | PARTIAL | copositivity/stratified BFB proof for the complete G2 tensor potential | #86 |
-| G6 | PARTIAL | complete positive gauge-quotiented scalar spectrum with SM irreps and mixing | #106 |
-| G7 | OPEN | complete source-validated SO(10)+210 two-loop beta system and independent reproduction | #126 |
-| G8 | PARTIAL | unique G3 vacuum, G6 spectrum, G7 running, mass-basis flavour/Wilson tensors, phases, and uncertainties | #106 |
+| Gate | Status | Immediate work |
+|---|---:|---|
+| G1 | BLOCKED | bind the recertified 44-direction/51-parameter scalar census to the repaired executable gauge scaffold |
+| G2 | BLOCKED | promote the completed 44/51/486 dense derivative and Ward-identity audit after the executable contract is repaired |
+| G3 | BLOCKED | classify every competing stationary symmetry orbit and compare exact potential values |
+| G4 | BLOCKED | carry the exact rank-37 gauge quotient (449, axion included) and rank-38 massive/transverse quotient (448) to an accepted G3 witness, recomputing if its stabilizer changes |
+| G5 | BLOCKED | promote the completed source-bound SOS/BFB certificate after repairing the executable model contract |
+| G6 | BLOCKED | await authoritative G3/G4/G5 and emit the complete positive spectrum |
+| G7 | BLOCKED | await G6 and independently validate the full beta system |
+| G8 | BLOCKED | await authoritative G3/G6/G7 before any unique lifetime claim |
 
 ## Execution tasks
 
-### W1-G1-MOLIEN — `COMPLETED`
+### W0-MODEL-CONTRACT - `BLOCKED__EXTERNAL_SARAH_EXECUTION_ATTESTATION_MISSING`
 
-- Gates: `G1`
-- Issue: `#176`
-- Deliverable: complete mixed Hilbert/Molien series and independent tensor representatives
-- Acceptance: multiplicities, independence, syzygies, conjugation, and normalizations are machine verified
+- Wave: `0`
+- Deliverable: execute the shipped hash-bound Wolfram driver with a real SARAH installation and retain its v2 process attestation
+- Acceptance: a fresh exact-X audit reports contract_consistent=True, native Gauge/Global/matter/LagrangianInput syntax, and v2 external evidence bound to the exact model, manifest, validation driver, and process log
 
-### W2-G2-PROJECTION — `COMPLETED`
+### W1-G1-GAUGED-RECERTIFICATION - `SCOPED_CALCULATION_COMPLETE__BLOCKED_ON_MODEL_CONTRACT_PROMOTION`
 
-- Gates: `G2`
-- Issue: `#176`
-- Deliverable: single canonical component potential and operator-provenance graph
-- Acceptance: every component entry traces to one normalized G1 invariant with correct dimension and charge
+- Wave: `1`
+- Deliverable: promote the recertified 28-orbit, 44-direction, 51-parameter scalar census after external model execution
+- Acceptance: the complete scoped census remains green and carries the repaired executable contract ID
 
-### W3-G3G5-EW-BACKREACTION — `EXECUTED_IN_THIS_CHANGE`
+### W2-G2-GAUGED-PROJECTION - `SCOPED_CALCULATION_COMPLETE__BLOCKED_ON_MODEL_CONTRACT_PROMOTION`
 
-- Gates: `G3, G5`
-- Issue: `#125`
-- Deliverable: all reduced h^2 r_i^2 portals, mass retuning, radial stationarity/BFB, and tuning bounds
-- Acceptance: positive quartic form and Hessian, exact target stationarity, fail-closed full-tensor flags
+- Wave: `2`
+- Deliverable: promote the completed 44/51/486 component potential, gradient, Hessian, and Ward audit after external model execution
+- Acceptance: all SO(10)xU(1)_X Ward identities stay green; all three exact structural-zero columns, the compiler-bound nonzero 13x13 minor, and the exact full-row factorization continue to prove rank/nullity 13/38; SVD remains diagnostic only
 
-### W3-G3-FULL-STATIONARITY — `EXECUTED__STATIONARY_SADDLE`
+### W3-G3-FULL-STATIONARITY - `SU5_DELTA_CHIRAL_H_EXACT_LOCAL_MINIMUM__PURE_DELTA_FULL_RESIDUAL_GAP_CLOSED__ARBITRARY_SIGMA_COERCIVITY_OPEN__BLOCKED_ON_G2_PROMOTION`
 
-- Gates: `G3`
-- Issue: `#178`
-- Deliverable: all-component stationarity, physical Hessian classification, and stable-family search
-- Acceptance: a tachyon-free stationary member is below every enumerated boundary and symmetry-enhanced extremum
+- Wave: `3`
+- Deliverable: prove a uniform coercive global gap for arbitrary non-pure-Delta Sigma orientations of the SU(5)+Delta chiral-H candidate; its exact 448/38 Hessian and complete pure-Delta maximal-negative sector are complete
+- Acceptance: the full 486-field candidate is globally minimal with all equality orbits classified, or an exact lower witness rejects it
 
-### W3-G4-FULL-QUOTIENT — `EXECUTED__QUOTIENT_SADDLE`
+### W3-G4-FULL-GAUGE-QUOTIENT - `EXACT_QUOTIENT_GEOMETRY_COMPLETE__HESSIAN_CLASSIFICATION_BLOCKED_ON_G3`
 
-- Gates: `G4`
-- Issue: `#178`
-- Deliverable: normalized combined SO(10) to U(1)_EM gauge tangent basis and quotient Hessian
-- Acceptance: exact gauge-null count and no non-axion zero or negative physical modes
+- Wave: `3`
+- Deliverable: retain the exact SO(10)xU(1)_X rank-37 gauge quotient (449, axion included) and rank-38 massive/transverse quotient (448) while G3 classifies the Hessian
+- Acceptance: exact gauge/global-symmetry ranks remain compiler-bound and the completed G3 Hessian has no unexplained zero or negative modes
 
-### W3-G5-FULL-BFB — `READY_ON_CLOSED_G1_G2`
+### W3-G5-FULL-BFB - `SCOPED_BFB_CERTIFICATE_COMPLETE__BLOCKED_ON_MODEL_CONTRACT_PROMOTION`
 
-- Gates: `G5`
-- Issue: `#86`
-- Deliverable: large-field-stratum BFB/copotivity certificate for the complete potential
-- Acceptance: every asymptotic field direction is covered without random-scan substitution
+- Wave: `3`
+- Deliverable: promote the completed source-bound SOS/BFB certificate after the external model execution gate
+- Acceptance: the exact 27-parameter SOS identity remains source-bound and covers every asymptotic field direction
 
-### W4-G6-SPECTRUM — `BLOCKED_ON_G3_G4_G5`
+### W4-G6-SPECTRUM - `BLOCKED_ON_G3_G4_G5`
 
-- Gates: `G6`
-- Issue: `#106`
-- Deliverable: all physical scalar eigenmasses, SM irreps, multiplicities, mixings, and uncertainties
-- Acceptance: positive spectrum, complete provenance, basis invariance, and no SUSY matrix contamination
+- Wave: `4`
+- Deliverable: complete positive physical scalar spectrum with SM provenance
+- Acceptance: all eigenmasses, irreps, mixings, and uncertainties are complete
 
-### W5-G7-TWO-LOOP — `BLOCKED_ON_G6_AND_EXTERNAL_VALIDATION`
+### W5-G7-TWO-LOOP - `BLOCKED_ON_G6_AND_EXTERNAL_VALIDATION`
 
-- Gates: `G7`
-- Issue: `#126`
-- Deliverable: complete two-loop betas, component matching, running VEVs, and two implementations
-- Acceptance: independent calculations agree within declared tolerances
+- Wave: `5`
+- Deliverable: complete two-loop running and component threshold matching
+- Acceptance: two independent implementations agree within declared tolerances
 
-### W6-G8-PROTON — `BLOCKED_ON_G3_G6_G7`
+### W6-G8-PROTON - `BLOCKED_ON_G3_G6_G7`
 
-- Gates: `G8`
-- Issue: `#106`
-- Deliverable: mass-basis Wilson coefficients, running, hadronic matching, phases, interference, and uncertainties
-- Acceptance: one uniquely selected vacuum produces the reported lifetime distribution
-
-## Scientific claim boundary
-
-A mathematically consistent candidate, a novel calculation, and an empirical discovery are distinct. No discovery claim is permitted without independent review and experimental evidence.
+- Wave: `6`
+- Deliverable: unique mass-basis proton-decay distribution or a scoped falsification
+- Acceptance: one authoritative vacuum fixes all Wilson, running, phase, and uncertainty inputs

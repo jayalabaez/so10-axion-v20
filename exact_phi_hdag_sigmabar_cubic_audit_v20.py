@@ -70,7 +70,10 @@ def charge_audit() -> dict[str, Any]:
     totals = operator_filter._total_charge(COUNTS)
     declared = operator_filter._allowed(totals, require_x=False)
     historical_x = operator_filter._allowed(totals, require_x=True)
-    catalogue = {row["name"]: row for row in operator_filter.operator_catalogue()}
+    catalogue = {
+        row["name"]: row
+        for row in operator_filter.operator_catalogue(require_x=True)
+    }
     entry = catalogue.get(OPERATOR_NAME)
     return {
         "counts": COUNTS,

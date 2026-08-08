@@ -1,9 +1,13 @@
 #!/usr/bin/env python3
-"""Compile all 64 live scalar invariants on arbitrary physical fields.
+"""Compile the 64 historical Option-C/no-X scalar invariants on arbitrary fields.
 
-The live SO(10)+PQ+Z17 ring contains 48 Hermitian-conjugacy orbits, 64
-normalized invariant directions, and 91 real potential parameters through
-degree four. This module evaluates every direction on one common field state
+Despite the legacy ``live_`` filename, this module is not authoritative for
+the manuscript, which gauges U(1)_X. It preserves the
+``historical_option_c_no_x_v20`` counterfactual whose SO(10)+PQ+Z17 ring does
+not enforce continuous X. That ring contains 48 Hermitian-conjugacy orbits,
+64 normalized invariant directions, and 91 real potential parameters through
+degree four. This module evaluates every historical direction on one common
+field state
 
     (Phi_210, H_10, Sigma_126bar, S, Phi17),
 
@@ -18,10 +22,11 @@ Physical contracts are enforced at the boundary:
 * Sigma_126bar is a complex five-form in the physical -i Hodge eigenspace;
 * S and Phi17 are complex singlets.
 
-The scalar chart has exactly 210+20+252+2+2 = 486 real coordinates. This module
-closes only arbitrary-field values and coefficient assembly. The complete
-486-entry field gradient, 486x486 Hessian, vacuum, BFB theorem, thresholds,
-running, and proton decay remain open.
+The scalar chart has exactly 210+20+252+2+2 = 486 real coordinates. This
+module closes only the historical Option-C arbitrary-field value and
+coefficient-assembly layer. It does not close either G1 or G2 for the gauged
+U(1)_X manuscript theory; those authoritative gates use the 44-direction,
+51-real-parameter exact-X contract.
 """
 from __future__ import annotations
 
@@ -51,6 +56,8 @@ import live_g1_tensor_closure_ledger_v20 as ledger
 ROOT = Path(__file__).resolve().parent
 OUT_JSON = ROOT / "LIVE_G2_ARBITRARY_COMPONENT_POTENTIAL_VALUES_V20.json"
 OUT_MD = ROOT / "LIVE_G2_ARBITRARY_COMPONENT_POTENTIAL_VALUES_V20.md"
+MODEL_CONTRACT_ID = "historical_option_c_no_x_v20"
+AUTHORITATIVE_FOR_MANUSCRIPT = False
 
 FIELD_ORDER = census.FIELD_ORDER
 NON_SINGLET_ORDER = ("P", "H", "Hb", "D", "Db")
@@ -570,8 +577,8 @@ def build_report() -> dict[str, Any]:
         for row in ledger.BASE_FAMILIES.values()
     }
     checks = {
-        "authoritative_G1_ledger_executes": g1["n_failed"] == 0,
-        "authoritative_G1_is_closed": bool(g1["closure"]["G1_closed"]),
+        "historical_option_c_G1_ledger_executes": g1["n_failed"] == 0,
+        "historical_option_c_G1_is_closed": bool(g1["closure"]["G1_closed"]),
         "all_48_orbits_compiled": len({row.orbit_index for row in directions}) == 48,
         "all_64_directions_compiled": len(directions) == 64,
         "all_18_base_adapters_used": set(family_counts)
@@ -605,15 +612,24 @@ def build_report() -> dict[str, Any]:
     return _jsonable(
         {
             "status": (
-                "LIVE_G2_ARBITRARY_COMPONENT_POTENTIAL_VALUES_ASSEMBLED"
+                "HISTORICAL_OPTION_C_NO_X_G2_ARBITRARY_COMPONENT_VALUES_ASSEMBLED"
                 if not failures
-                else "LIVE_G2_ARBITRARY_COMPONENT_POTENTIAL_VALUES_FAILED"
+                else "HISTORICAL_OPTION_C_NO_X_G2_COMPONENT_VALUES_FAILED"
             ),
-            "overall_state": "PARTIAL",
+            "overall_state": "HISTORICAL" if not failures else "EXECUTION_FAIL",
+            "model_contract_id": MODEL_CONTRACT_ID,
+            "authoritative_for_manuscript": AUTHORITATIVE_FOR_MANUSCRIPT,
+            "supersedes_for_current_status": False,
             "n_checks": len(checks),
             "n_failed": len(failures),
             "failures": failures,
             "checks": checks,
+            "historical_contract": {
+                "gauge": ["SO(10)"],
+                "accidental_global": ["PQ"],
+                "residual": ["Z17"],
+                "continuous_X_enforced": False,
+            },
             "counts": {
                 "Hermitian_orbits": 48,
                 "invariant_directions": len(directions),
@@ -647,6 +663,16 @@ def build_report() -> dict[str, Any]:
                 "real_Hermitian_potential_assembled": not failures,
                 "coefficient_Jacobian_exact": not failures,
                 "real_210_field_enforced": not failures,
+                "historical_option_c_g1_closed": bool(
+                    g1["closure"]["G1_closed"]
+                ),
+                "historical_option_c_g2_value_layer_complete": not failures,
+                "historical_option_c_g2_closed_by_this_module": False,
+                "authoritative_manuscript_g1_closed": False,
+                "authoritative_manuscript_g2_value_layer_complete": False,
+                "authoritative_manuscript_g2_closed": False,
+                "g1_closed": False,
+                "g2_value_layer_complete": False,
                 "field_gradient_complete": False,
                 "field_Hessian_complete": False,
                 "G2_closed": False,
@@ -655,16 +681,17 @@ def build_report() -> dict[str, Any]:
                 "empirical_discovery": False,
             },
             "next_exact_target": (
-                "Introduce one canonical 486-real field-coordinate vector and "
-                "differentiate this 91-parameter potential to emit the complete "
-                "gradient and Hessian with operator provenance."
+                "Use gauged_u1x_scalar_contract_v20.py and "
+                "gauged_u1x_g2_derivative_audit_v20.py for the manuscript's "
+                "44-direction/51-real-parameter exact-X calculation."
             ),
             "verdict": (
-                "All 64 normalized G1 directions evaluate on arbitrary physical "
-                "fields and assemble into a real 91-parameter Hermitian potential. "
+                "Under the historical Option-C/no-X contract, all 64 normalized "
+                "directions evaluate on arbitrary physical fields and assemble "
+                "into a real 91-parameter Hermitian potential. "
                 "The real-210, chiral-126bar, projector-basis, and fragile conjugate "
-                "orientation contracts are explicit. G2 remains PARTIAL until the "
-                "complete 486-real gradient and Hessian are constructed."
+                "orientation contracts are explicit. This value-layer result is "
+                "not authoritative for manuscript G1 or G2."
             ),
         }
     )
@@ -673,8 +700,10 @@ def build_report() -> dict[str, Any]:
 def write_report(report: dict[str, Any]) -> None:
     OUT_JSON.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     OUT_MD.write_text(
-        "# Live G2 arbitrary-component potential values\n\n"
+        "# Historical Option-C/no-X G2 arbitrary-component values\n\n"
         f"**Status:** `{report['status']}`\n\n"
+        f"**Model contract:** `{report['model_contract_id']}`\n\n"
+        f"**Authoritative for manuscript:** `{report['authoritative_for_manuscript']}`\n\n"
         + report["verdict"]
         + "\n\n"
         + f"**Next:** {report['next_exact_target']}\n",

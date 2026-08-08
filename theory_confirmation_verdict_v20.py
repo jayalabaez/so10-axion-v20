@@ -1,8 +1,16 @@
 #!/usr/bin/env python3
-"""Generate the honest, scoped v20 theory confirmation verdict."""
+"""Fail-closed theory-confirmation verdict for SO(10) axion v20.
+
+The authoritative manuscript gauges ``U(1)_X``.  This verdict is assembled
+from fresh builders, rather than from the older release JSON stack, so stale
+Option-C results cannot approve the manuscript model.  A scientifically
+blocked report is still a successful audit: the default command exits zero,
+while explicit approval requirements fail nonzero.
+"""
 
 from __future__ import annotations
 
+import argparse
 import json
 import os
 import re
@@ -11,7 +19,20 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+import authoritative_full_model_gate_v20 as authoritative_gate
+import exact_x_symmetry_consistency_gate_v20 as exact_x_gate
+import g1_g8_gate_ledger_v20 as gate_ledger
+import gauged_u1x_scalar_contract_v20 as gauged_contract
+import theory_validation_matrix_v20 as validation_matrix
+
 ROOT = Path(__file__).resolve().parent
+OUT_JSON = ROOT / "THEORY_CONFIRMATION_VERDICT.json"
+OUT_MD = ROOT / "THEORY_CONFIRMATION_VERDICT.md"
+
+MODEL_CONTRACT_BLOCKED = (
+    "MODEL_CONTRACT_INCONSISTENT__AUTHORITATIVE_GATES_REOPENED"
+)
+WITHHOLD_APPROVAL = "WITHHOLD_APPROVAL"
 
 HISTORICAL_CI = {
     "commit_sha": "ba2c66364cd68d733a2dff51416f28d92100eff5",
@@ -23,13 +44,14 @@ HISTORICAL_CI = {
     ),
     "conclusion": "success",
     "unit_tests": "Ran 154 tests in 69.690s - OK",
-    "v20_engine": "VERDICT=PASS CHECKS=42/42",
-    "extensive_confirm_falsify": "PASS 53/53",
 }
 
-
-def _read(name: str) -> dict[str, Any]:
-    return json.loads(ROOT.joinpath(name).read_text(encoding="utf-8"))
+REQUIRED_SOURCES = (
+    "x_contract",
+    "gauged_contract",
+    "g1_g8",
+    "authoritative",
+)
 
 
 def _historical_count() -> int | None:
@@ -38,6 +60,7 @@ def _historical_count() -> int | None:
 
 
 def ci_attestation(current_tests: int) -> dict[str, Any]:
+    """Scope software evidence without turning it into scientific approval."""
     if os.environ.get("GITHUB_ACTIONS") == "true":
         server = os.environ.get("GITHUB_SERVER_URL", "https://github.com")
         repository = os.environ.get(
@@ -47,227 +70,292 @@ def ci_attestation(current_tests: int) -> dict[str, Any]:
         return {
             "scope": "CURRENT_CI_RUN",
             "commit_sha": os.environ.get("GITHUB_SHA", ""),
-            "workflow": os.environ.get(
-                "GITHUB_WORKFLOW", "replicate-and-falsify"
-            ),
+            "workflow": os.environ.get("GITHUB_WORKFLOW", ""),
             "run_id": int(run_id) if run_id.isdigit() else run_id,
             "run_url": (
                 f"{server}/{repository}/actions/runs/{run_id}" if run_id else ""
             ),
-            "conclusion": "current job reached final verdict stage",
-            "unit_tests": f"Ran {current_tests} tests in this current workflow job - OK",
-            "v20_engine": "VERDICT=PASS CHECKS=42/42",
-            "extensive_confirm_falsify": "PASS 53/53",
+            "unit_tests": f"{current_tests} tests discovered in the current tree",
             "current_tree_test_count": current_tests,
             "current_tree_covered": True,
+            "scientific_approval_implied": False,
         }
 
-    result = dict(HISTORICAL_CI)
-    result.update(
+    attestation = dict(HISTORICAL_CI)
+    attestation.update(
         {
             "scope": "HISTORICAL_ONLY",
             "current_tree_test_count": current_tests,
             "current_tree_covered": False,
+            "scientific_approval_implied": False,
             "note": (
-                "This stored run covers only its named commit. A newer tree "
-                "must be certified by its own live workflow."
+                "This run covers only its named historical commit and cannot "
+                "approve the current gauged-U(1)_X model."
             ),
         }
     )
-    return result
+    return attestation
+
+
+def fresh_source_reports() -> dict[str, dict[str, Any]]:
+    """Build every authoritative prerequisite without reading verdict JSON."""
+    return {
+        "x_contract": exact_x_gate.build_report(),
+        "gauged_contract": gauged_contract.build_report(),
+        "g1_g8": gate_ledger.build_report(),
+        "authoritative": authoritative_gate.build_report(),
+    }
+
+
+def _source_snapshot(report: dict[str, Any]) -> dict[str, Any]:
+    snapshot = {
+        key: report.get(key)
+        for key in (
+            "status",
+            "overall_state",
+            "model_contract_id",
+            "contract_consistent",
+            "implementation_matches_manuscript",
+            "n_checks",
+            "n_failed",
+        )
+        if key in report
+    }
+    if "classification" in report:
+        snapshot["classification"] = report["classification"]
+    scaffold = report.get("executable_scaffold_contract")
+    if isinstance(scaffold, dict):
+        snapshot["model_syntax_class"] = scaffold.get("model_syntax_class")
+        snapshot["tool_native_sarah_syntax"] = scaffold.get(
+            "tool_native_sarah_syntax"
+        )
+    external = report.get("external_model_validation")
+    if isinstance(external, dict):
+        snapshot["external_validation_schema"] = external.get("schema")
+        snapshot["external_validation_valid"] = external.get("valid")
+    return snapshot
+
+
+def _execution_errors(
+    reports: dict[str, dict[str, Any]],
+    preload_errors: list[str] | None,
+) -> list[str]:
+    errors = list(preload_errors or [])
+    for name in REQUIRED_SOURCES:
+        report = reports.get(name)
+        if not isinstance(report, dict):
+            errors.append(f"required fresh report missing: {name}")
+            continue
+        failed = report.get("n_failed")
+        if failed != 0:
+            details = report.get("failures") or report.get("audit_failures") or []
+            errors.append(
+                f"{name} audit did not pass (n_failed={failed!r}, "
+                f"failures={details!r})"
+            )
+    return errors
+
+
+def evaluate_reports(
+    reports: dict[str, dict[str, Any]],
+    *,
+    current_test_count: int | None = None,
+    attestation: dict[str, Any] | None = None,
+    preload_errors: list[str] | None = None,
+) -> dict[str, Any]:
+    """Evaluate fresh contract reports while separating BLOCKED from failure."""
+    errors = _execution_errors(reports, preload_errors)
+    x_report = reports.get("x_contract", {})
+    gauged_report = reports.get("gauged_contract", {})
+    ledger = reports.get("g1_g8", {})
+    authoritative = reports.get("authoritative", {})
+
+    matrix_contract_gate = validation_matrix._model_contract_gate(
+        {
+            "x_contract": x_report,
+            "gauged_contract": gauged_report,
+        }
+    )
+    contract_ready = bool(
+        not errors
+        and matrix_contract_gate.get("state") == "PASS"
+        and x_report.get("contract_consistent") is True
+        and gauged_report.get("implementation_matches_manuscript") is True
+    )
+
+    gates = ledger.get("gates", {}) if isinstance(ledger, dict) else {}
+    first_three_closed = all(
+        isinstance(gates.get(name), dict)
+        and gates[name].get("status") == gate_ledger.STATUS_CLOSED
+        for name in ("G1", "G2", "G3")
+    )
+    all_eight_closed = all(
+        isinstance(gates.get(name), dict)
+        and gates[name].get("status") == gate_ledger.STATUS_CLOSED
+        for name in (f"G{index}" for index in range(1, 9))
+    )
+
+    authoritative_classification = authoritative.get("classification", {})
+    if not isinstance(authoritative_classification, dict):
+        errors.append("authoritative classification is not a JSON object")
+        authoritative_classification = {}
+
+    internal_candidate = bool(contract_ready and first_three_closed and not errors)
+    # Old aligned benchmarks were calculated under the superseded no-X
+    # contract.  They remain evidence, but not an approvable current benchmark.
+    conditional_benchmark = False
+    full_phenomenology = bool(
+        contract_ready
+        and all_eight_closed
+        and authoritative_classification.get("whole_model_validated") is True
+        and not errors
+    )
+    empirical_realization = bool(
+        full_phenomenology
+        and authoritative_classification.get("empirical_discovery") is True
+    )
+    whole_model_excluded = bool(
+        contract_ready
+        and authoritative_classification.get("whole_model_excluded") is True
+        and not errors
+    )
+
+    if errors:
+        overall_state = "EXECUTION_FAIL"
+        classification = "THEORY_CONFIRMATION_AUDIT_EXECUTION_FAILED"
+        decision = WITHHOLD_APPROVAL
+        status = "THEORY_CONFIRMATION_AUDIT_EXECUTION_FAILED"
+    elif not contract_ready:
+        overall_state = "BLOCKED"
+        classification = MODEL_CONTRACT_BLOCKED
+        decision = WITHHOLD_APPROVAL
+        status = "THEORY_CONFIRMATION_AUDIT_COMPLETE__MODEL_CONTRACT_BLOCKED"
+    elif whole_model_excluded:
+        overall_state = "FAIL"
+        classification = "AUTHORITATIVE_MODEL_EXCLUDED"
+        decision = "REJECT"
+        status = "THEORY_CONFIRMATION_COMPLETE__MODEL_EXCLUDED"
+    elif full_phenomenology:
+        overall_state = "PASS"
+        classification = "FULL_PHENOMENOLOGY_VALIDATED__NO_DISCOVERY_IMPLIED"
+        decision = "VALIDATE_FULL_PHENOMENOLOGY"
+        status = "THEORY_CONFIRMATION_COMPLETE__FULL_PHENOMENOLOGY_VALIDATED"
+    else:
+        overall_state = "OPEN"
+        classification = "AUTHORITATIVE_GATES_OPEN"
+        decision = WITHHOLD_APPROVAL
+        status = "THEORY_CONFIRMATION_AUDIT_COMPLETE__GATES_OPEN"
+
+    scientific_blockers: list[str] = []
+    for source in (x_report, ledger, authoritative):
+        for key in ("scientific_blockers", "blockers"):
+            values = source.get(key, []) if isinstance(source, dict) else []
+            if isinstance(values, list):
+                scientific_blockers.extend(str(value) for value in values)
+    mismatches = gauged_report.get("implementation_mismatches", [])
+    if isinstance(mismatches, list):
+        scientific_blockers.extend(str(value) for value in mismatches)
+    scientific_blockers = sorted(set(scientific_blockers))
+
+    current_tests = current_test_count if current_test_count is not None else 0
+    historical = ledger.get("historical_option_c_subtheorems", {})
+    return {
+        "title": "SO(10) x Z17 axion candidate v20 - confirmation verdict",
+        "generated_utc": datetime.now(timezone.utc).isoformat(),
+        "status": status,
+        "overall_state": overall_state,
+        "classification": classification,
+        "decision": decision,
+        "verdict_code": classification,
+        "integrity_pass": not errors,
+        "n_failed": len(errors),
+        "failures": errors,
+        "audit_failures": errors,
+        "model_contract_id": gauged_report.get(
+            "model_contract_id", "gauged_u1x_phi17_v20"
+        ),
+        "model_contract_ready": contract_ready,
+        "validation_matrix_contract_gate": matrix_contract_gate,
+        "approval": {
+            "internal_candidate": internal_candidate,
+            "conditional_benchmark": conditional_benchmark,
+            "full_phenomenology": full_phenomenology,
+            "empirical_realization": empirical_realization,
+            "whole_model_excluded": whole_model_excluded,
+            "full_approval_blockers": scientific_blockers,
+        },
+        "internal_candidate_approved": internal_candidate,
+        "conditional_benchmark_approved": conditional_benchmark,
+        "full_phenomenology_approved": full_phenomenology,
+        "empirical_realization_approved": empirical_realization,
+        "whole_model_excluded": whole_model_excluded,
+        "full_theory_validated": full_phenomenology,
+        "current_tree_unit_tests": current_tests,
+        "ci_attestation": attestation or ci_attestation(current_tests),
+        "source_reports": {
+            name: _source_snapshot(report)
+            for name, report in reports.items()
+            if isinstance(report, dict)
+        },
+        "authoritative_gate_classification": authoritative_classification,
+        "scientific_blockers": scientific_blockers,
+        "historical_option_c_subtheorems": historical,
+        "scope": {
+            "authoritative_current_model": "gauged_u1x_phi17_v20",
+            "historical_option_c_is_authoritative": False,
+            "historical_results_may_close_current_gates": False,
+            "software_pass_implies_scientific_approval": False,
+        },
+        "tiers": {
+            "INTERNAL_CANDIDATE": "WITHHELD",
+            "CONDITIONAL_BENCHMARK": "WITHHELD",
+            "FULL_PHENOMENOLOGY": "WITHHELD",
+            "EMPIRICAL_REALIZATION": "NOT_ESTABLISHED",
+            "WHOLE_MODEL_EXCLUSION": "NOT_ESTABLISHED",
+        },
+        "correct_public_claim": (
+            "The repository has a statically consistent tool-native SARAH input "
+            "for the authoritative gauged-U(1)_X scalar contract, but lacks a "
+            "v2 manifest/log-bound external SARAH execution attestation. G1-G8 "
+            "approval is withheld. Historical Option-C "
+            "calculations are scoped subtheorems and neither validate nor exclude "
+            "the gauged model."
+        ),
+        "incorrect_claim_do_not_use": (
+            "G1, G2, or G3 is closed for the manuscript model; the current "
+            "repository validates the full theory; or the historical saddle "
+            "excludes the gauged-U(1)_X model."
+        ),
+        "verdict": (
+            "WITHHOLD APPROVAL. The audit itself succeeds, but the manuscript's "
+            "gauged U(1)_X model still lacks a real external SARAH execution. "
+            "Bind an actual v2 external run and recertify "
+            "G1-G3 on the 44-direction, 51-real-parameter potential before any "
+            "internal, full, empirical, or exclusion claim."
+        ),
+    }
 
 
 def build_verdict() -> dict[str, Any]:
     current_tests = unittest.defaultTestLoader.discover(str(ROOT)).countTestCases()
-    extensive = _read("EXTENSIVE_CONFIRM_FALSIFY_VERDICT.json")
-    next_physics = _read("NEXT_PHYSICS_ANALYSIS_VERDICT.json")
-    global_flavour = _read("GLOBAL_FLAVOUR_FIT_V20_VERDICT.json")
-    gaps = _read("OPEN_GAPS_CLOSURE_V20_VERDICT.json")
-    attestation = ci_attestation(current_tests)
-
-    cf = gaps["conditional_cf_region"]
-    fcnc = gaps["fcnc_analysis"]
-    rg = gaps["yukawa_rg_analysis"]
-
-    conditional_benchmark = (
-        gaps.get("n_failed") == 0
-        and cf["flag"]["conditional_region_Cf"]
-        and not cf["flag"]["conditional_unique_Cf"]
-        and fcnc["flag"]["actual_finite_model_fcnc_suppressed"]
-        and rg["flag"]["effective_power_law_proxy_applied"]
+    return evaluate_reports(
+        fresh_source_reports(),
+        current_test_count=current_tests,
+        attestation=ci_attestation(current_tests),
     )
-    unique_full_cf = bool(cf["flag"]["unconditional_unique_Cf"])
-    finite_fcnc_closed = bool(
-        fcnc["flag"]["actual_finite_model_fcnc_absence_proved"]
-    )
-    matrix_rg_closed = bool(
-        rg["flag"]["actual_one_loop_matrix_beta_system_solved"]
-    )
-    two_loop_closed = bool(rg["flag"]["two_loop_so10_complete"])
-    natural_viable = bool(global_flavour.get("any_viable"))
-
-    full_phenomenology = (
-        conditional_benchmark
-        and unique_full_cf
-        and finite_fcnc_closed
-        and matrix_rg_closed
-        and two_loop_closed
-        and natural_viable
-    )
-    verdict_code = (
-        "FULL_PHENOMENOLOGY_APPROVED"
-        if full_phenomenology
-        else "CORE_INTERNAL_CHECKS_PASS__PHENOMENOLOGY_OPEN"
-    )
-
-    historical_count = _historical_count()
-    if attestation["scope"] == "CURRENT_CI_RUN":
-        test_evidence = (
-            f"{current_tests} unit tests PASS in this current GitHub Actions run"
-        )
-        test_cascade = f"PASS {current_tests}/{current_tests} in current CI"
-    else:
-        test_evidence = (
-            f"{current_tests} tests discovered in the current tree; the stored "
-            f"historical CI run covers {historical_count} tests on "
-            f"{HISTORICAL_CI['commit_sha'][:7]}, not this tree"
-        )
-        test_cascade = (
-            f"current tree not CI-attested here; historical run covers "
-            f"{historical_count} tests on {HISTORICAL_CI['commit_sha'][:7]}"
-        )
-
-    blockers = [
-        label
-        for label, closed in (
-            ("UV-fixed unique full-v20 C_e,C_p,C_n", unique_full_cf),
-            ("finite-model tree-level FCNC closure", finite_fcnc_closed),
-            ("matrix-valued Yukawa RGE solution", matrix_rg_closed),
-            ("two-loop SO(10)/threshold closure", two_loop_closed),
-        )
-        if not closed
-    ]
-    remaining = ", ".join(blockers) if blockers else "none"
-    short = (
-        "The anomaly/operator core survives the in-repository attacks, a "
-        "conditional aligned benchmark is numerically safe, natural-scale "
-        "flavour proxy points exist, and the 37 GHz photon target remains "
-        "experimentally open. "
-    )
-    if two_loop_closed and matrix_rg_closed:
-        short += (
-            "One-loop matrix and two-loop SO(10)+210 Yukawa/threshold layers "
-            "are solved, but full phenomenological approval remains blocked by: "
-            f"{remaining}."
-        )
-    elif matrix_rg_closed:
-        short += (
-            "A broken-phase one-loop matrix Yukawa RGE has been solved, but "
-            "full phenomenological approval remains blocked by: "
-            f"{remaining}."
-        )
-    else:
-        short += (
-            "The full phenomenological theory is not approved: unique full "
-            "C_e,C_p,C_n, finite-model FCNC closure, and explicit matrix "
-            "Yukawa RG/two-loop threshold evolution remain open."
-        )
-
-    return {
-        "title": "SO(10)×Z17 axion candidate v20 — confirmation verdict",
-        "generated_utc": datetime.now(timezone.utc).isoformat(),
-        "question_asked": "Execute the ultimate approval/falsification analysis",
-        "short_answer": short,
-        "ci_attestation": attestation,
-        "approval": {
-            "internal_candidate": True,
-            "conditional_benchmark": conditional_benchmark,
-            "full_phenomenology": full_phenomenology,
-            "empirical_realization": False,
-            "full_approval_blockers": blockers,
-        },
-        "tiers": {
-            "PROVED_mathematical_internal": {
-                "status": "YES",
-                "evidence": [
-                    "v20 engine 42/42 PASS",
-                    (
-                        "extensive confirm/falsify "
-                        f"{extensive['n_extensive_checks'] - extensive['n_failed']}/"
-                        f"{extensive['n_extensive_checks']} PASS"
-                    ),
-                    test_evidence,
-                    "continuous anomaly cancellation",
-                    "minimal three-pair completion in the stated ansatz",
-                    "explicit nonzero P=8 group/Lorentz certificate",
-                ],
-            },
-            "CONDITIONAL_PHENOMENOLOGY": {
-                "status": "APPROVED_AS_BENCHMARK_ONLY",
-                "evidence": [
-                    "hierarchical universal portals suppress current distortion",
-                    "multiple viable tan(beta) values define a region, not a unique prediction",
-                    "aligned central stellar/SN examples pass the displayed limits",
-                    "software injection recovery works but is not data",
-                ],
-            },
-            "FULL_PHENOMENOLOGY": {
-                "status": "REJECTED_PENDING_CLOSURE",
-                "missing": blockers,
-            },
-            "EXPERIMENTAL_REALIZATION": {
-                "status": "OPEN",
-                "missing": [
-                    "real 36.6-37.6 GHz conversion data",
-                    "independent human diagrammatic review",
-                    "proof that local dark matter is this axion",
-                ],
-            },
-        },
-        "cascade_results": {
-            "v20_engine": "PASS 42/42",
-            "falsification": "PASS 0 hard failures",
-            "extensive_confirm_falsify": (
-                f"{extensive['status']} "
-                f"{extensive['n_extensive_checks'] - extensive['n_failed']}/"
-                f"{extensive['n_extensive_checks']}"
-            ),
-            "unit_tests": test_cascade,
-            "next_physics": (
-                f"{next_physics['status']} "
-                f"{next_physics['n_checks'] - next_physics['n_failed']}/"
-                f"{next_physics['n_checks']}"
-            ),
-            "open_gap_audit": gaps["status"],
-            "global_flavour_proxy": (
-                "natural-scale viable witnesses exist; unique tan(beta) not established"
-            ),
-            "ultimate_gate": "executed after this verdict in CI",
-        },
-        "correct_public_claim": (
-            "We have an internally consistent SO(10)×Z17 axion candidate and "
-            "an explicitly conditional aligned benchmark that survives current "
-            "in-repository tests. Full fermion matching, FCNC safety, and "
-            "common-scale RG closure remain open; this is not a discovery."
-        ),
-        "incorrect_claim_do_not_use": (
-            "We derived unique full-v20 C_e,C_p,C_n, completed the SO(10) "
-            "Yukawa RGE fit, proved all FCNCs vanish, or detected dark matter."
-        ),
-        "verdict_code": verdict_code,
-    }
 
 
 def write_markdown(verdict: dict[str, Any]) -> str:
     approval = verdict["approval"]
     lines = [
-        "# Theory confirmation verdict — v20",
+        "# Theory confirmation verdict - v20",
         "",
-        f"**Generated (UTC):** {verdict['generated_utc']}",
+        f"**Status:** `{verdict['status']}`",
+        f"**Overall state:** `{verdict['overall_state']}`",
+        f"**Classification:** `{verdict['classification']}`",
+        f"**Decision:** `{verdict['decision']}`",
         "",
-        verdict["short_answer"],
-        "",
-        f"**Verdict code:** `{verdict['verdict_code']}`",
+        verdict["verdict"],
         "",
         "## Approval levels",
         "",
@@ -275,49 +363,86 @@ def write_markdown(verdict: dict[str, Any]) -> str:
         f"- Conditional benchmark: **{approval['conditional_benchmark']}**",
         f"- Full phenomenology: **{approval['full_phenomenology']}**",
         f"- Empirical realization: **{approval['empirical_realization']}**",
+        f"- Whole-model exclusion: **{approval['whole_model_excluded']}**",
         "",
-        "## Full-approval blockers",
+        "## Scientific blockers",
         "",
-        *[f"- {item}" for item in approval["full_approval_blockers"]],
+    ]
+    blockers = verdict.get("scientific_blockers") or []
+    lines.extend(f"- `{item}`" for item in blockers)
+    if not blockers:
+        lines.append("- None")
+    lines += [
         "",
-        "## CI attestation",
+        "## Historical scope",
         "",
-        f"- scope: `{verdict['ci_attestation']['scope']}`",
-        f"- commit: `{verdict['ci_attestation'].get('commit_sha', '')}`",
-        f"- unit tests: {verdict['ci_attestation'].get('unit_tests', '')}",
-        f"- run: {verdict['ci_attestation'].get('run_url', '')}",
+        "The preserved Option-C G1-G3 calculations are non-authoritative",
+        "subtheorems of the superseded no-X potential.",
         "",
         "## Correct public claim",
         "",
         f"> {verdict['correct_public_claim']}",
         "",
-        "## Do not claim",
-        "",
-        f"> {verdict['incorrect_claim_do_not_use']}",
-        "",
     ]
     return "\n".join(lines)
 
 
-def main() -> int:
+def exit_code(
+    verdict: dict[str, Any],
+    *,
+    require_internal_approval: bool = False,
+    require_full_approval: bool = False,
+    expect_blocked: bool = False,
+) -> int:
+    if verdict.get("n_failed", 1) != 0:
+        return 1
+    if require_internal_approval and not verdict.get(
+        "internal_candidate_approved", False
+    ):
+        return 2
+    if require_full_approval and not verdict.get(
+        "full_phenomenology_approved", False
+    ):
+        return 3
+    if expect_blocked and verdict.get("overall_state") != "BLOCKED":
+        return 4
+    return 0
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--require-internal-approval", action="store_true")
+    parser.add_argument("--require-full-approval", action="store_true")
+    parser.add_argument("--expect-blocked", action="store_true")
+    parser.add_argument("--no-write", action="store_true")
+    args = parser.parse_args(argv)
+
     verdict = build_verdict()
-    ROOT.joinpath("THEORY_CONFIRMATION_VERDICT.json").write_text(
-        json.dumps(verdict, indent=2) + "\n", encoding="utf-8"
-    )
-    ROOT.joinpath("THEORY_CONFIRMATION_VERDICT.md").write_text(
-        write_markdown(verdict), encoding="utf-8"
-    )
+    if not args.no_write:
+        OUT_JSON.write_text(
+            json.dumps(verdict, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
+        OUT_MD.write_text(write_markdown(verdict), encoding="utf-8")
     print(
         json.dumps(
             {
-                "verdict_code": verdict["verdict_code"],
+                "status": verdict["status"],
+                "overall_state": verdict["overall_state"],
+                "classification": verdict["classification"],
+                "decision": verdict["decision"],
                 "approval": verdict["approval"],
-                "ci_attestation": verdict["ci_attestation"],
+                "n_failed": verdict["n_failed"],
             },
             indent=2,
         )
     )
-    return 0
+    return exit_code(
+        verdict,
+        require_internal_approval=args.require_internal_approval,
+        require_full_approval=args.require_full_approval,
+        expect_blocked=args.expect_blocked,
+    )
 
 
 if __name__ == "__main__":

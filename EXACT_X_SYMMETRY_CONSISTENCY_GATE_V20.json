@@ -1,21 +1,11 @@
 {
-  "checks": {
-    "declared_theory_allows_phase_sensitive_dim_le4_terms": true,
-    "declared_theory_allows_phi_powers_1_to_4": true,
-    "dimension17_term_explicitly_breaks_x_not_pq": true,
-    "option_C_encoded_in_filter_default": true,
-    "phi17_is_z17_neutral": true,
-    "signed_filter_does_not_require_undeclared_x": true,
-    "so10_is_declared_gauge_symmetry": true,
-    "symmetry_contract_mismatch_resolved": true,
-    "u1x_is_not_declared_gauged": true,
-    "x_is_not_declared_global": true,
-    "z17_is_declared_global_symmetry": true
-  },
-  "declared_dim_le4_phi17_monomials": [
+  "audit_failures": [],
+  "authoritative_dim_le4_phi17_monomials": [
     {
+      "SO10xZ17_allowed": true,
+      "authoritative_U1X_gauge_invariant": false,
+      "authoritative_status": "GAUGE_FORBIDDEN",
       "continuous_X_charge": -17,
-      "declared_SO10xZ17_allowed": true,
       "dimension": 1,
       "label": "Phi17^0 Phi17dag^1",
       "phase_sensitive": true,
@@ -25,8 +15,10 @@
       }
     },
     {
+      "SO10xZ17_allowed": true,
+      "authoritative_U1X_gauge_invariant": false,
+      "authoritative_status": "GAUGE_FORBIDDEN",
       "continuous_X_charge": 17,
-      "declared_SO10xZ17_allowed": true,
       "dimension": 1,
       "label": "Phi17^1 Phi17dag^0",
       "phase_sensitive": true,
@@ -36,8 +28,10 @@
       }
     },
     {
+      "SO10xZ17_allowed": true,
+      "authoritative_U1X_gauge_invariant": false,
+      "authoritative_status": "GAUGE_FORBIDDEN",
       "continuous_X_charge": -34,
-      "declared_SO10xZ17_allowed": true,
       "dimension": 2,
       "label": "Phi17^0 Phi17dag^2",
       "phase_sensitive": true,
@@ -47,8 +41,10 @@
       }
     },
     {
+      "SO10xZ17_allowed": true,
+      "authoritative_U1X_gauge_invariant": true,
+      "authoritative_status": "GAUGE_ALLOWED",
       "continuous_X_charge": 0,
-      "declared_SO10xZ17_allowed": true,
       "dimension": 2,
       "label": "Phi17^1 Phi17dag^1",
       "phase_sensitive": false,
@@ -58,8 +54,10 @@
       }
     },
     {
+      "SO10xZ17_allowed": true,
+      "authoritative_U1X_gauge_invariant": false,
+      "authoritative_status": "GAUGE_FORBIDDEN",
       "continuous_X_charge": 34,
-      "declared_SO10xZ17_allowed": true,
       "dimension": 2,
       "label": "Phi17^2 Phi17dag^0",
       "phase_sensitive": true,
@@ -69,8 +67,10 @@
       }
     },
     {
+      "SO10xZ17_allowed": true,
+      "authoritative_U1X_gauge_invariant": false,
+      "authoritative_status": "GAUGE_FORBIDDEN",
       "continuous_X_charge": -51,
-      "declared_SO10xZ17_allowed": true,
       "dimension": 3,
       "label": "Phi17^0 Phi17dag^3",
       "phase_sensitive": true,
@@ -80,8 +80,10 @@
       }
     },
     {
+      "SO10xZ17_allowed": true,
+      "authoritative_U1X_gauge_invariant": false,
+      "authoritative_status": "GAUGE_FORBIDDEN",
       "continuous_X_charge": -17,
-      "declared_SO10xZ17_allowed": true,
       "dimension": 3,
       "label": "Phi17^1 Phi17dag^2",
       "phase_sensitive": true,
@@ -91,8 +93,10 @@
       }
     },
     {
+      "SO10xZ17_allowed": true,
+      "authoritative_U1X_gauge_invariant": false,
+      "authoritative_status": "GAUGE_FORBIDDEN",
       "continuous_X_charge": 17,
-      "declared_SO10xZ17_allowed": true,
       "dimension": 3,
       "label": "Phi17^2 Phi17dag^1",
       "phase_sensitive": true,
@@ -102,8 +106,10 @@
       }
     },
     {
+      "SO10xZ17_allowed": true,
+      "authoritative_U1X_gauge_invariant": false,
+      "authoritative_status": "GAUGE_FORBIDDEN",
       "continuous_X_charge": 51,
-      "declared_SO10xZ17_allowed": true,
       "dimension": 3,
       "label": "Phi17^3 Phi17dag^0",
       "phase_sensitive": true,
@@ -113,8 +119,10 @@
       }
     },
     {
+      "SO10xZ17_allowed": true,
+      "authoritative_U1X_gauge_invariant": false,
+      "authoritative_status": "GAUGE_FORBIDDEN",
       "continuous_X_charge": -68,
-      "declared_SO10xZ17_allowed": true,
       "dimension": 4,
       "label": "Phi17^0 Phi17dag^4",
       "phase_sensitive": true,
@@ -124,8 +132,10 @@
       }
     },
     {
+      "SO10xZ17_allowed": true,
+      "authoritative_U1X_gauge_invariant": false,
+      "authoritative_status": "GAUGE_FORBIDDEN",
       "continuous_X_charge": -34,
-      "declared_SO10xZ17_allowed": true,
       "dimension": 4,
       "label": "Phi17^1 Phi17dag^3",
       "phase_sensitive": true,
@@ -135,8 +145,10 @@
       }
     },
     {
+      "SO10xZ17_allowed": true,
+      "authoritative_U1X_gauge_invariant": true,
+      "authoritative_status": "GAUGE_ALLOWED",
       "continuous_X_charge": 0,
-      "declared_SO10xZ17_allowed": true,
       "dimension": 4,
       "label": "Phi17^2 Phi17dag^2",
       "phase_sensitive": false,
@@ -146,8 +158,10 @@
       }
     },
     {
+      "SO10xZ17_allowed": true,
+      "authoritative_U1X_gauge_invariant": false,
+      "authoritative_status": "GAUGE_FORBIDDEN",
       "continuous_X_charge": 34,
-      "declared_SO10xZ17_allowed": true,
       "dimension": 4,
       "label": "Phi17^3 Phi17dag^1",
       "phase_sensitive": true,
@@ -157,8 +171,283 @@
       }
     },
     {
+      "SO10xZ17_allowed": true,
+      "authoritative_U1X_gauge_invariant": false,
+      "authoritative_status": "GAUGE_FORBIDDEN",
       "continuous_X_charge": 68,
-      "declared_SO10xZ17_allowed": true,
+      "dimension": 4,
+      "label": "Phi17^4 Phi17dag^0",
+      "phase_sensitive": true,
+      "powers": {
+        "Phi17": 4,
+        "Phi17dag": 0
+      }
+    }
+  ],
+  "authoritative_manuscript_contract": {
+    "authoritative_for_scientific_contract": true,
+    "charge_tuple_parsed": true,
+    "declares_exact_U1X_renormalizable_catalogue": true,
+    "gauges_primitive_U1X": true,
+    "phi17_PQ": 0,
+    "phi17_X": 17,
+    "pq_scalar_charges": {
+      "Delta126bar": -2,
+      "H10": -2,
+      "Phi210": 0,
+      "S": 4
+    },
+    "scalar_charge_contract_matches_expected": true,
+    "scalar_final_charge_contract": {
+      "Delta126bar": [
+        -2,
+        -2
+      ],
+      "H10": [
+        -2,
+        -2
+      ],
+      "Phi17": [
+        0,
+        17
+      ],
+      "Phi210": [
+        0,
+        0
+      ],
+      "S": [
+        4,
+        4
+      ]
+    },
+    "source": "axion_so10_theory_v20.tex",
+    "x_charge_tuple_labels": [
+      "F",
+      "s",
+      "b",
+      "S",
+      "H10",
+      "Delta126bar",
+      "Phi210"
+    ],
+    "x_charge_tuple_values": [
+      1,
+      2,
+      -6,
+      4,
+      -2,
+      -2,
+      0
+    ]
+  },
+  "blocker": "AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED",
+  "checks": {
+    "all_dim_le4_phase_sensitive_phi17_terms_gauge_forbidden": true,
+    "ambiguous_non_u1_gauge_row_named_x_is_rejected": true,
+    "authoritative_contract_comparison_completed": true,
+    "authoritative_manuscript_parsed": true,
+    "commented_fake_u1x_row_is_ignored": true,
+    "external_execution_attestation_was_classified": true,
+    "external_manifest_and_log_evidence_were_classified": true,
+    "filter_X_policy_parsed": true,
+    "filter_phi17_X17_parsed": true,
+    "legacy_pseudo_sarah_is_not_treated_as_executable": true,
+    "manuscript_assigns_phi17_PQ0": true,
+    "manuscript_assigns_phi17_X17": true,
+    "manuscript_full_X_charge_tuple_parsed": true,
+    "manuscript_requires_exact_U1X_catalogue": true,
+    "manuscript_scalar_charge_contract_parsed_exactly": true,
+    "phi17_to_17_is_not_U1X_gauge_invariant": true,
+    "scaffold_SO10_and_Z17_parsed": true,
+    "scaffold_fermion_catalogue_was_classified": true,
+    "scaffold_gauge_contract_was_parsed": true,
+    "scaffold_lagrangian_input_registration_was_classified": true,
+    "scaffold_lagrangian_was_classified": true,
+    "scaffold_model_syntax_was_classified": true,
+    "scaffold_role_was_parsed": true,
+    "scaffold_scalar_contract_was_parsed": true,
+    "scaffold_static_executability_was_classified": true
+  },
+  "contract_conflicts": [
+    "executable_scaffold_lacks_current_sha256_bound_external_tool_validation",
+    "external_attestation_lacks_hash_bound_manifest_or_process_log"
+  ],
+  "contract_consistent": false,
+  "declared_dim_le4_phi17_monomials": [
+    {
+      "SO10xZ17_allowed": true,
+      "authoritative_U1X_gauge_invariant": false,
+      "authoritative_status": "GAUGE_FORBIDDEN",
+      "continuous_X_charge": -17,
+      "dimension": 1,
+      "label": "Phi17^0 Phi17dag^1",
+      "phase_sensitive": true,
+      "powers": {
+        "Phi17": 0,
+        "Phi17dag": 1
+      }
+    },
+    {
+      "SO10xZ17_allowed": true,
+      "authoritative_U1X_gauge_invariant": false,
+      "authoritative_status": "GAUGE_FORBIDDEN",
+      "continuous_X_charge": 17,
+      "dimension": 1,
+      "label": "Phi17^1 Phi17dag^0",
+      "phase_sensitive": true,
+      "powers": {
+        "Phi17": 1,
+        "Phi17dag": 0
+      }
+    },
+    {
+      "SO10xZ17_allowed": true,
+      "authoritative_U1X_gauge_invariant": false,
+      "authoritative_status": "GAUGE_FORBIDDEN",
+      "continuous_X_charge": -34,
+      "dimension": 2,
+      "label": "Phi17^0 Phi17dag^2",
+      "phase_sensitive": true,
+      "powers": {
+        "Phi17": 0,
+        "Phi17dag": 2
+      }
+    },
+    {
+      "SO10xZ17_allowed": true,
+      "authoritative_U1X_gauge_invariant": true,
+      "authoritative_status": "GAUGE_ALLOWED",
+      "continuous_X_charge": 0,
+      "dimension": 2,
+      "label": "Phi17^1 Phi17dag^1",
+      "phase_sensitive": false,
+      "powers": {
+        "Phi17": 1,
+        "Phi17dag": 1
+      }
+    },
+    {
+      "SO10xZ17_allowed": true,
+      "authoritative_U1X_gauge_invariant": false,
+      "authoritative_status": "GAUGE_FORBIDDEN",
+      "continuous_X_charge": 34,
+      "dimension": 2,
+      "label": "Phi17^2 Phi17dag^0",
+      "phase_sensitive": true,
+      "powers": {
+        "Phi17": 2,
+        "Phi17dag": 0
+      }
+    },
+    {
+      "SO10xZ17_allowed": true,
+      "authoritative_U1X_gauge_invariant": false,
+      "authoritative_status": "GAUGE_FORBIDDEN",
+      "continuous_X_charge": -51,
+      "dimension": 3,
+      "label": "Phi17^0 Phi17dag^3",
+      "phase_sensitive": true,
+      "powers": {
+        "Phi17": 0,
+        "Phi17dag": 3
+      }
+    },
+    {
+      "SO10xZ17_allowed": true,
+      "authoritative_U1X_gauge_invariant": false,
+      "authoritative_status": "GAUGE_FORBIDDEN",
+      "continuous_X_charge": -17,
+      "dimension": 3,
+      "label": "Phi17^1 Phi17dag^2",
+      "phase_sensitive": true,
+      "powers": {
+        "Phi17": 1,
+        "Phi17dag": 2
+      }
+    },
+    {
+      "SO10xZ17_allowed": true,
+      "authoritative_U1X_gauge_invariant": false,
+      "authoritative_status": "GAUGE_FORBIDDEN",
+      "continuous_X_charge": 17,
+      "dimension": 3,
+      "label": "Phi17^2 Phi17dag^1",
+      "phase_sensitive": true,
+      "powers": {
+        "Phi17": 2,
+        "Phi17dag": 1
+      }
+    },
+    {
+      "SO10xZ17_allowed": true,
+      "authoritative_U1X_gauge_invariant": false,
+      "authoritative_status": "GAUGE_FORBIDDEN",
+      "continuous_X_charge": 51,
+      "dimension": 3,
+      "label": "Phi17^3 Phi17dag^0",
+      "phase_sensitive": true,
+      "powers": {
+        "Phi17": 3,
+        "Phi17dag": 0
+      }
+    },
+    {
+      "SO10xZ17_allowed": true,
+      "authoritative_U1X_gauge_invariant": false,
+      "authoritative_status": "GAUGE_FORBIDDEN",
+      "continuous_X_charge": -68,
+      "dimension": 4,
+      "label": "Phi17^0 Phi17dag^4",
+      "phase_sensitive": true,
+      "powers": {
+        "Phi17": 0,
+        "Phi17dag": 4
+      }
+    },
+    {
+      "SO10xZ17_allowed": true,
+      "authoritative_U1X_gauge_invariant": false,
+      "authoritative_status": "GAUGE_FORBIDDEN",
+      "continuous_X_charge": -34,
+      "dimension": 4,
+      "label": "Phi17^1 Phi17dag^3",
+      "phase_sensitive": true,
+      "powers": {
+        "Phi17": 1,
+        "Phi17dag": 3
+      }
+    },
+    {
+      "SO10xZ17_allowed": true,
+      "authoritative_U1X_gauge_invariant": true,
+      "authoritative_status": "GAUGE_ALLOWED",
+      "continuous_X_charge": 0,
+      "dimension": 4,
+      "label": "Phi17^2 Phi17dag^2",
+      "phase_sensitive": false,
+      "powers": {
+        "Phi17": 2,
+        "Phi17dag": 2
+      }
+    },
+    {
+      "SO10xZ17_allowed": true,
+      "authoritative_U1X_gauge_invariant": false,
+      "authoritative_status": "GAUGE_FORBIDDEN",
+      "continuous_X_charge": 34,
+      "dimension": 4,
+      "label": "Phi17^3 Phi17dag^1",
+      "phase_sensitive": true,
+      "powers": {
+        "Phi17": 3,
+        "Phi17dag": 1
+      }
+    },
+    {
+      "SO10xZ17_allowed": true,
+      "authoritative_U1X_gauge_invariant": false,
+      "authoritative_status": "GAUGE_FORBIDDEN",
+      "continuous_X_charge": 68,
       "dimension": 4,
       "label": "Phi17^4 Phi17dag^0",
       "phase_sensitive": true,
@@ -169,67 +458,1401 @@
     }
   ],
   "declared_symmetries": {
+    "authoritative_for_scientific_contract": false,
+    "comments_assign_phi17_X17": false,
+    "duplicate_fermion_fields": [],
+    "duplicate_scalar_fields": [],
+    "expected_scalar_charges_PQ_X": {
+      "Delta126bar": [
+        -2,
+        -2
+      ],
+      "H10": [
+        -2,
+        -2
+      ],
+      "Phi17": [
+        0,
+        17
+      ],
+      "Phi210": [
+        0,
+        0
+      ],
+      "S": [
+        4,
+        4
+      ]
+    },
+    "explicitly_incomplete_scaffold": false,
+    "fermion_catalogue_exact": true,
+    "fermion_catalogue_requirements": [
+      {
+        "charges_PQ_X": [
+          1,
+          1
+        ],
+        "observed_multiplicity": 5,
+        "representation": "16",
+        "required_multiplicity": 5,
+        "roles": "three F families plus P and R",
+        "satisfied": true
+      },
+      {
+        "charges_PQ_X": [
+          2,
+          2
+        ],
+        "observed_multiplicity": 5,
+        "representation": "16",
+        "required_multiplicity": 5,
+        "roles": "five spectator s fields",
+        "satisfied": true
+      },
+      {
+        "charges_PQ_X": [
+          -6,
+          -6
+        ],
+        "observed_multiplicity": 5,
+        "representation": "-16",
+        "required_multiplicity": 5,
+        "roles": "five spectator b fields",
+        "satisfied": true
+      },
+      {
+        "charges_PQ_X": [
+          -3,
+          14
+        ],
+        "observed_multiplicity": 1,
+        "representation": "16",
+        "required_multiplicity": 1,
+        "roles": "Q",
+        "satisfied": true
+      },
+      {
+        "charges_PQ_X": [
+          -1,
+          16
+        ],
+        "observed_multiplicity": 1,
+        "representation": "-16",
+        "required_multiplicity": 1,
+        "roles": "Pbar",
+        "satisfied": true
+      },
+      {
+        "charges_PQ_X": [
+          3,
+          3
+        ],
+        "observed_multiplicity": 1,
+        "representation": "-16",
+        "required_multiplicity": 1,
+        "roles": "Qbar",
+        "satisfied": true
+      },
+      {
+        "charges_PQ_X": [
+          -1,
+          -18
+        ],
+        "observed_multiplicity": 1,
+        "representation": "-16",
+        "required_multiplicity": 1,
+        "roles": "Rbar",
+        "satisfied": true
+      }
+    ],
+    "fermion_catalogue_sufficient": true,
+    "fermion_residual_Z17_matches_X_mod_17": true,
+    "fermion_rows": [
+      {
+        "PQ_charge_source": "authoritative_accidental_PQ_contract",
+        "X_charge": 1,
+        "Z17_charge": 1,
+        "component": "f16",
+        "field": "F",
+        "final_charge_pair": [
+          1,
+          1
+        ],
+        "final_charge_pair_order": [
+          "PQ",
+          "X"
+        ],
+        "index": 1,
+        "multiplicity": 3,
+        "raw_representation": "16",
+        "representation": "16",
+        "residual_Z17_matches_X_mod_17": true,
+        "structurally_valid": true,
+        "syntax": "sarah_native"
+      },
+      {
+        "PQ_charge_source": "authoritative_accidental_PQ_contract",
+        "X_charge": 1,
+        "Z17_charge": 1,
+        "component": "p16",
+        "field": "P",
+        "final_charge_pair": [
+          1,
+          1
+        ],
+        "final_charge_pair_order": [
+          "PQ",
+          "X"
+        ],
+        "index": 2,
+        "multiplicity": 1,
+        "raw_representation": "16",
+        "representation": "16",
+        "residual_Z17_matches_X_mod_17": true,
+        "structurally_valid": true,
+        "syntax": "sarah_native"
+      },
+      {
+        "PQ_charge_source": "authoritative_accidental_PQ_contract",
+        "X_charge": 1,
+        "Z17_charge": 1,
+        "component": "r16",
+        "field": "R",
+        "final_charge_pair": [
+          1,
+          1
+        ],
+        "final_charge_pair_order": [
+          "PQ",
+          "X"
+        ],
+        "index": 3,
+        "multiplicity": 1,
+        "raw_representation": "16",
+        "representation": "16",
+        "residual_Z17_matches_X_mod_17": true,
+        "structurally_valid": true,
+        "syntax": "sarah_native"
+      },
+      {
+        "PQ_charge_source": "authoritative_accidental_PQ_contract",
+        "X_charge": 2,
+        "Z17_charge": 2,
+        "component": "s16",
+        "field": "SpecS",
+        "final_charge_pair": [
+          2,
+          2
+        ],
+        "final_charge_pair_order": [
+          "PQ",
+          "X"
+        ],
+        "index": 4,
+        "multiplicity": 5,
+        "raw_representation": "16",
+        "representation": "16",
+        "residual_Z17_matches_X_mod_17": true,
+        "structurally_valid": true,
+        "syntax": "sarah_native"
+      },
+      {
+        "PQ_charge_source": "authoritative_accidental_PQ_contract",
+        "X_charge": -6,
+        "Z17_charge": 11,
+        "component": "b16bar",
+        "field": "SpecB",
+        "final_charge_pair": [
+          -6,
+          -6
+        ],
+        "final_charge_pair_order": [
+          "PQ",
+          "X"
+        ],
+        "index": 5,
+        "multiplicity": 5,
+        "raw_representation": "-16",
+        "representation": "-16",
+        "residual_Z17_matches_X_mod_17": true,
+        "structurally_valid": true,
+        "syntax": "sarah_native"
+      },
+      {
+        "PQ_charge_source": "authoritative_accidental_PQ_contract",
+        "X_charge": 14,
+        "Z17_charge": 14,
+        "component": "q16",
+        "field": "Q",
+        "final_charge_pair": [
+          -3,
+          14
+        ],
+        "final_charge_pair_order": [
+          "PQ",
+          "X"
+        ],
+        "index": 6,
+        "multiplicity": 1,
+        "raw_representation": "16",
+        "representation": "16",
+        "residual_Z17_matches_X_mod_17": true,
+        "structurally_valid": true,
+        "syntax": "sarah_native"
+      },
+      {
+        "PQ_charge_source": "authoritative_accidental_PQ_contract",
+        "X_charge": 16,
+        "Z17_charge": 16,
+        "component": "pbar16",
+        "field": "Pbar",
+        "final_charge_pair": [
+          -1,
+          16
+        ],
+        "final_charge_pair_order": [
+          "PQ",
+          "X"
+        ],
+        "index": 7,
+        "multiplicity": 1,
+        "raw_representation": "-16",
+        "representation": "-16",
+        "residual_Z17_matches_X_mod_17": true,
+        "structurally_valid": true,
+        "syntax": "sarah_native"
+      },
+      {
+        "PQ_charge_source": "authoritative_accidental_PQ_contract",
+        "X_charge": 3,
+        "Z17_charge": 3,
+        "component": "qbar16",
+        "field": "Qbar",
+        "final_charge_pair": [
+          3,
+          3
+        ],
+        "final_charge_pair_order": [
+          "PQ",
+          "X"
+        ],
+        "index": 8,
+        "multiplicity": 1,
+        "raw_representation": "-16",
+        "representation": "-16",
+        "residual_Z17_matches_X_mod_17": true,
+        "structurally_valid": true,
+        "syntax": "sarah_native"
+      },
+      {
+        "PQ_charge_source": "authoritative_accidental_PQ_contract",
+        "X_charge": -18,
+        "Z17_charge": 16,
+        "component": "rbar16",
+        "field": "Rbar",
+        "final_charge_pair": [
+          -1,
+          -18
+        ],
+        "final_charge_pair_order": [
+          "PQ",
+          "X"
+        ],
+        "index": 9,
+        "multiplicity": 1,
+        "raw_representation": "-16",
+        "representation": "-16",
+        "residual_Z17_matches_X_mod_17": true,
+        "structurally_valid": true,
+        "syntax": "sarah_native"
+      }
+    ],
+    "gauge_catalogue_exact": true,
     "gauge_rows": [
-      "G10, SO, 10, globalU1Charges -> {0}"
+      "{G10, SO[10], SOGUT, g10, False}",
+      "{GX, U[1], X, gX, False}"
     ],
     "global_rows": [
       "Z[17]"
     ],
+    "global_symmetry_catalogue_exact": true,
+    "lagrangian": {
+      "GaugeES_LagrangianInput_assignments": [
+        "{\n  {LagHC,   {AddHC -> True}},\n  {LagNoHC, {AddHC -> False}}\n}"
+      ],
+      "GaugeES_LagrangianInput_entries": [
+        {
+          "AddHC": true,
+          "name": "LagHC",
+          "raw": "{LagHC,   {AddHC -> True}}"
+        },
+        {
+          "AddHC": false,
+          "name": "LagNoHC",
+          "raw": "{LagNoHC, {AddHC -> False}}"
+        }
+      ],
+      "LagHC_assignments": [
+        "-(\n    Y10 F.F.H10\n  + Y126 F.F.Delta126bar\n  + yP conj[Phi17].P.Pbar\n  + yQ conj[Phi17].Q.Qbar\n  + yR Phi17.R.Rbar\n  + ys S.SpecS.SpecB\n  + lambdaP P.F.H10\n  + lambdaR R.F.H10\n  + lambdaQB conj[S].Qbar.F\n  + lambdaQR S.Q.Rbar\n  + kappaH H10.H10.S\n)"
+      ],
+      "LagNoHC_assignments": [
+        "-(\n    m210Sq/2 Phi210.Phi210\n  + m126Sq conj[Delta126bar].Delta126bar\n  + m10Sq conj[H10].H10\n  + mSSq conj[S].S\n  + m17Sq conj[Phi17].Phi17\n  + lambdaS/2 conj[S].S.conj[S].S\n  + lambda17/2 conj[Phi17].Phi17.conj[Phi17].Phi17\n  + lambdaS17 conj[S].S.conj[Phi17].Phi17\n)"
+      ],
+      "assignment_counts_exact": true,
+      "real_LagHC_present": true,
+      "real_LagNoHC_present": true,
+      "registered_in_GaugeES_LagrangianInput": true
+    },
+    "legacy_GlobalSymmetry_assignments": [],
+    "legacy_pseudo_sarah_grammar": false,
+    "model_syntax_class": "sarah_native",
+    "native_global_symmetry_catalogue_exact": true,
+    "observed_scalar_charges_PQ_X": {
+      "Delta126bar": [
+        -2,
+        -2
+      ],
+      "H10": [
+        -2,
+        -2
+      ],
+      "Phi17": [
+        0,
+        17
+      ],
+      "Phi210": [
+        0,
+        0
+      ],
+      "S": [
+        4,
+        4
+      ]
+    },
+    "placeholder_evidence": [],
+    "scalar_catalogue_exact": true,
+    "scalar_charges_match_manuscript": true,
+    "scalar_representations_match": true,
+    "scalar_residual_Z17_matches_X_mod_17": true,
+    "scalar_rows": [
+      {
+        "PQ_charge_source": "authoritative_accidental_PQ_contract",
+        "X_charge": 0,
+        "Z17_charge": 0,
+        "canonical_field": "Phi210",
+        "component": "phi210",
+        "field": "Phi210",
+        "final_charge_pair": [
+          0,
+          0
+        ],
+        "final_charge_pair_order": [
+          "PQ",
+          "X"
+        ],
+        "index": 1,
+        "multiplicity": 1,
+        "raw_representation": "210",
+        "representation": "210",
+        "residual_Z17_matches_X_mod_17": true,
+        "structurally_valid": true,
+        "syntax": "sarah_native"
+      },
+      {
+        "PQ_charge_source": "authoritative_accidental_PQ_contract",
+        "X_charge": -2,
+        "Z17_charge": 15,
+        "canonical_field": "Delta126bar",
+        "component": "delta126bar",
+        "field": "Delta126bar",
+        "final_charge_pair": [
+          -2,
+          -2
+        ],
+        "final_charge_pair_order": [
+          "PQ",
+          "X"
+        ],
+        "index": 2,
+        "multiplicity": 1,
+        "raw_representation": "-126",
+        "representation": "126",
+        "residual_Z17_matches_X_mod_17": true,
+        "structurally_valid": true,
+        "syntax": "sarah_native"
+      },
+      {
+        "PQ_charge_source": "authoritative_accidental_PQ_contract",
+        "X_charge": -2,
+        "Z17_charge": 15,
+        "canonical_field": "H10",
+        "component": "h10",
+        "field": "H10",
+        "final_charge_pair": [
+          -2,
+          -2
+        ],
+        "final_charge_pair_order": [
+          "PQ",
+          "X"
+        ],
+        "index": 3,
+        "multiplicity": 1,
+        "raw_representation": "10",
+        "representation": "10",
+        "residual_Z17_matches_X_mod_17": true,
+        "structurally_valid": true,
+        "syntax": "sarah_native"
+      },
+      {
+        "PQ_charge_source": "authoritative_accidental_PQ_contract",
+        "X_charge": 4,
+        "Z17_charge": 4,
+        "canonical_field": "S",
+        "component": "singletS",
+        "field": "S",
+        "final_charge_pair": [
+          4,
+          4
+        ],
+        "final_charge_pair_order": [
+          "PQ",
+          "X"
+        ],
+        "index": 4,
+        "multiplicity": 1,
+        "raw_representation": "1",
+        "representation": "1",
+        "residual_Z17_matches_X_mod_17": true,
+        "structurally_valid": true,
+        "syntax": "sarah_native"
+      },
+      {
+        "PQ_charge_source": "authoritative_accidental_PQ_contract",
+        "X_charge": 17,
+        "Z17_charge": 0,
+        "canonical_field": "Phi17",
+        "component": "phi17",
+        "field": "Phi17",
+        "final_charge_pair": [
+          0,
+          17
+        ],
+        "final_charge_pair_order": [
+          "PQ",
+          "X"
+        ],
+        "index": 5,
+        "multiplicity": 1,
+        "raw_representation": "1",
+        "representation": "1",
+        "residual_Z17_matches_X_mod_17": true,
+        "structurally_valid": true,
+        "syntax": "sarah_native"
+      }
+    ],
+    "semantic_requirements": {
+      "assignment_indices_unique": true,
+      "assignment_parse_complete": true,
+      "exact_gauge_catalogue": true,
+      "exact_global_symmetry_catalogue": true,
+      "exact_scalar_catalogue": true,
+      "exactly_one_LagHC_and_LagNoHC_assignment": true,
+      "fermion_catalogue_exact": true,
+      "lagrangian_registered_in_GaugeES_LagrangianInput": true,
+      "placeholder_free": true,
+      "real_LagHC_present": true,
+      "real_LagNoHC_present": true,
+      "scalar_charges_match_manuscript": true,
+      "scalar_representations_match": true,
+      "soft_gaugino_absent_in_nonsusy_model": true,
+      "tool_native_sarah_syntax": true
+    },
     "so10_gauged": true,
-    "u1x_gauged": false,
+    "soft_gaugino_absent_in_nonsusy_model": true,
+    "soft_gaugino_mass_present": false,
+    "source": "models\\SO10Z17AxionV20.m",
+    "static_inventory_matches_contract": true,
+    "statically_executable_model_contract": true,
+    "structured_gauge_rows": [
+      {
+        "group_name": "SOGUT",
+        "group_symbol": "G10",
+        "group_type": "SO[10]",
+        "index": 1,
+        "is_legacy_so10": false,
+        "is_named_X": false,
+        "is_native_so10": true,
+        "is_so10": true,
+        "is_u1": false,
+        "is_u1x": false,
+        "raw_rhs": "{G10, SO[10], SOGUT, g10, False}",
+        "structurally_valid": true,
+        "syntax": "sarah_native",
+        "tool_native_structurally_valid": true
+      },
+      {
+        "group_name": "X",
+        "group_symbol": "GX",
+        "group_type": "U[1]",
+        "index": 2,
+        "is_legacy_so10": false,
+        "is_named_X": true,
+        "is_native_so10": false,
+        "is_so10": false,
+        "is_u1": true,
+        "is_u1x": true,
+        "raw_rhs": "{GX, U[1], X, gX, False}",
+        "structurally_valid": true,
+        "syntax": "sarah_native",
+        "tool_native_structurally_valid": true
+      }
+    ],
+    "structured_global_rows": [
+      {
+        "index": 1,
+        "is_z17": true,
+        "kind": "Z[17]",
+        "name": "Z17",
+        "raw_rhs": "{Z[17], Z17}",
+        "structurally_valid": true
+      }
+    ],
+    "tool_native_sarah_syntax": true,
+    "u1x_gauge_row_count": 1,
+    "u1x_gauged": true,
+    "unexpected_fermion_sectors": [],
+    "unrecognized_scalar_fields": [],
     "x_declared_global": false,
     "z17_declared_global": true
   },
   "dimension17_candidate": {
     "abs_kappa": 1.0,
+    "authoritative_U1X_gauge_invariant": false,
+    "authoritative_status": "GAUGE_FORBIDDEN",
     "breaks_PQ": false,
     "breaks_continuous_X_by_units": 289.0,
+    "continuous_X_charge": 289,
     "cutoff_GeV": 2.435e+18,
     "direct_theta_bar_shift_from_PQ_charge": 0.0,
+    "operator": "Phi17^17 + h.c.",
     "phi17_angular_mass2_GeV2": 1.508989865813613e+16,
+    "phi17_angular_mass2_GeV2_if_inserted": 1.508989865813613e+16,
     "phi17_angular_mass_GeV": 122840948.6211179,
+    "phi17_angular_mass_GeV_if_inserted": 122840948.6211179,
     "potential_amplitude_GeV4": 5.221418220808349e+47,
+    "potential_amplitude_GeV4_if_inserted": 5.221418220808349e+47,
     "v_phi_GeV": 1e+17
+  },
+  "executable_scaffold_contract": {
+    "authoritative_for_scientific_contract": false,
+    "comments_assign_phi17_X17": false,
+    "duplicate_fermion_fields": [],
+    "duplicate_scalar_fields": [],
+    "expected_scalar_charges_PQ_X": {
+      "Delta126bar": [
+        -2,
+        -2
+      ],
+      "H10": [
+        -2,
+        -2
+      ],
+      "Phi17": [
+        0,
+        17
+      ],
+      "Phi210": [
+        0,
+        0
+      ],
+      "S": [
+        4,
+        4
+      ]
+    },
+    "explicitly_incomplete_scaffold": false,
+    "fermion_catalogue_exact": true,
+    "fermion_catalogue_requirements": [
+      {
+        "charges_PQ_X": [
+          1,
+          1
+        ],
+        "observed_multiplicity": 5,
+        "representation": "16",
+        "required_multiplicity": 5,
+        "roles": "three F families plus P and R",
+        "satisfied": true
+      },
+      {
+        "charges_PQ_X": [
+          2,
+          2
+        ],
+        "observed_multiplicity": 5,
+        "representation": "16",
+        "required_multiplicity": 5,
+        "roles": "five spectator s fields",
+        "satisfied": true
+      },
+      {
+        "charges_PQ_X": [
+          -6,
+          -6
+        ],
+        "observed_multiplicity": 5,
+        "representation": "-16",
+        "required_multiplicity": 5,
+        "roles": "five spectator b fields",
+        "satisfied": true
+      },
+      {
+        "charges_PQ_X": [
+          -3,
+          14
+        ],
+        "observed_multiplicity": 1,
+        "representation": "16",
+        "required_multiplicity": 1,
+        "roles": "Q",
+        "satisfied": true
+      },
+      {
+        "charges_PQ_X": [
+          -1,
+          16
+        ],
+        "observed_multiplicity": 1,
+        "representation": "-16",
+        "required_multiplicity": 1,
+        "roles": "Pbar",
+        "satisfied": true
+      },
+      {
+        "charges_PQ_X": [
+          3,
+          3
+        ],
+        "observed_multiplicity": 1,
+        "representation": "-16",
+        "required_multiplicity": 1,
+        "roles": "Qbar",
+        "satisfied": true
+      },
+      {
+        "charges_PQ_X": [
+          -1,
+          -18
+        ],
+        "observed_multiplicity": 1,
+        "representation": "-16",
+        "required_multiplicity": 1,
+        "roles": "Rbar",
+        "satisfied": true
+      }
+    ],
+    "fermion_catalogue_sufficient": true,
+    "fermion_residual_Z17_matches_X_mod_17": true,
+    "fermion_rows": [
+      {
+        "PQ_charge_source": "authoritative_accidental_PQ_contract",
+        "X_charge": 1,
+        "Z17_charge": 1,
+        "component": "f16",
+        "field": "F",
+        "final_charge_pair": [
+          1,
+          1
+        ],
+        "final_charge_pair_order": [
+          "PQ",
+          "X"
+        ],
+        "index": 1,
+        "multiplicity": 3,
+        "raw_representation": "16",
+        "representation": "16",
+        "residual_Z17_matches_X_mod_17": true,
+        "structurally_valid": true,
+        "syntax": "sarah_native"
+      },
+      {
+        "PQ_charge_source": "authoritative_accidental_PQ_contract",
+        "X_charge": 1,
+        "Z17_charge": 1,
+        "component": "p16",
+        "field": "P",
+        "final_charge_pair": [
+          1,
+          1
+        ],
+        "final_charge_pair_order": [
+          "PQ",
+          "X"
+        ],
+        "index": 2,
+        "multiplicity": 1,
+        "raw_representation": "16",
+        "representation": "16",
+        "residual_Z17_matches_X_mod_17": true,
+        "structurally_valid": true,
+        "syntax": "sarah_native"
+      },
+      {
+        "PQ_charge_source": "authoritative_accidental_PQ_contract",
+        "X_charge": 1,
+        "Z17_charge": 1,
+        "component": "r16",
+        "field": "R",
+        "final_charge_pair": [
+          1,
+          1
+        ],
+        "final_charge_pair_order": [
+          "PQ",
+          "X"
+        ],
+        "index": 3,
+        "multiplicity": 1,
+        "raw_representation": "16",
+        "representation": "16",
+        "residual_Z17_matches_X_mod_17": true,
+        "structurally_valid": true,
+        "syntax": "sarah_native"
+      },
+      {
+        "PQ_charge_source": "authoritative_accidental_PQ_contract",
+        "X_charge": 2,
+        "Z17_charge": 2,
+        "component": "s16",
+        "field": "SpecS",
+        "final_charge_pair": [
+          2,
+          2
+        ],
+        "final_charge_pair_order": [
+          "PQ",
+          "X"
+        ],
+        "index": 4,
+        "multiplicity": 5,
+        "raw_representation": "16",
+        "representation": "16",
+        "residual_Z17_matches_X_mod_17": true,
+        "structurally_valid": true,
+        "syntax": "sarah_native"
+      },
+      {
+        "PQ_charge_source": "authoritative_accidental_PQ_contract",
+        "X_charge": -6,
+        "Z17_charge": 11,
+        "component": "b16bar",
+        "field": "SpecB",
+        "final_charge_pair": [
+          -6,
+          -6
+        ],
+        "final_charge_pair_order": [
+          "PQ",
+          "X"
+        ],
+        "index": 5,
+        "multiplicity": 5,
+        "raw_representation": "-16",
+        "representation": "-16",
+        "residual_Z17_matches_X_mod_17": true,
+        "structurally_valid": true,
+        "syntax": "sarah_native"
+      },
+      {
+        "PQ_charge_source": "authoritative_accidental_PQ_contract",
+        "X_charge": 14,
+        "Z17_charge": 14,
+        "component": "q16",
+        "field": "Q",
+        "final_charge_pair": [
+          -3,
+          14
+        ],
+        "final_charge_pair_order": [
+          "PQ",
+          "X"
+        ],
+        "index": 6,
+        "multiplicity": 1,
+        "raw_representation": "16",
+        "representation": "16",
+        "residual_Z17_matches_X_mod_17": true,
+        "structurally_valid": true,
+        "syntax": "sarah_native"
+      },
+      {
+        "PQ_charge_source": "authoritative_accidental_PQ_contract",
+        "X_charge": 16,
+        "Z17_charge": 16,
+        "component": "pbar16",
+        "field": "Pbar",
+        "final_charge_pair": [
+          -1,
+          16
+        ],
+        "final_charge_pair_order": [
+          "PQ",
+          "X"
+        ],
+        "index": 7,
+        "multiplicity": 1,
+        "raw_representation": "-16",
+        "representation": "-16",
+        "residual_Z17_matches_X_mod_17": true,
+        "structurally_valid": true,
+        "syntax": "sarah_native"
+      },
+      {
+        "PQ_charge_source": "authoritative_accidental_PQ_contract",
+        "X_charge": 3,
+        "Z17_charge": 3,
+        "component": "qbar16",
+        "field": "Qbar",
+        "final_charge_pair": [
+          3,
+          3
+        ],
+        "final_charge_pair_order": [
+          "PQ",
+          "X"
+        ],
+        "index": 8,
+        "multiplicity": 1,
+        "raw_representation": "-16",
+        "representation": "-16",
+        "residual_Z17_matches_X_mod_17": true,
+        "structurally_valid": true,
+        "syntax": "sarah_native"
+      },
+      {
+        "PQ_charge_source": "authoritative_accidental_PQ_contract",
+        "X_charge": -18,
+        "Z17_charge": 16,
+        "component": "rbar16",
+        "field": "Rbar",
+        "final_charge_pair": [
+          -1,
+          -18
+        ],
+        "final_charge_pair_order": [
+          "PQ",
+          "X"
+        ],
+        "index": 9,
+        "multiplicity": 1,
+        "raw_representation": "-16",
+        "representation": "-16",
+        "residual_Z17_matches_X_mod_17": true,
+        "structurally_valid": true,
+        "syntax": "sarah_native"
+      }
+    ],
+    "gauge_catalogue_exact": true,
+    "gauge_rows": [
+      "{G10, SO[10], SOGUT, g10, False}",
+      "{GX, U[1], X, gX, False}"
+    ],
+    "global_rows": [
+      "Z[17]"
+    ],
+    "global_symmetry_catalogue_exact": true,
+    "lagrangian": {
+      "GaugeES_LagrangianInput_assignments": [
+        "{\n  {LagHC,   {AddHC -> True}},\n  {LagNoHC, {AddHC -> False}}\n}"
+      ],
+      "GaugeES_LagrangianInput_entries": [
+        {
+          "AddHC": true,
+          "name": "LagHC",
+          "raw": "{LagHC,   {AddHC -> True}}"
+        },
+        {
+          "AddHC": false,
+          "name": "LagNoHC",
+          "raw": "{LagNoHC, {AddHC -> False}}"
+        }
+      ],
+      "LagHC_assignments": [
+        "-(\n    Y10 F.F.H10\n  + Y126 F.F.Delta126bar\n  + yP conj[Phi17].P.Pbar\n  + yQ conj[Phi17].Q.Qbar\n  + yR Phi17.R.Rbar\n  + ys S.SpecS.SpecB\n  + lambdaP P.F.H10\n  + lambdaR R.F.H10\n  + lambdaQB conj[S].Qbar.F\n  + lambdaQR S.Q.Rbar\n  + kappaH H10.H10.S\n)"
+      ],
+      "LagNoHC_assignments": [
+        "-(\n    m210Sq/2 Phi210.Phi210\n  + m126Sq conj[Delta126bar].Delta126bar\n  + m10Sq conj[H10].H10\n  + mSSq conj[S].S\n  + m17Sq conj[Phi17].Phi17\n  + lambdaS/2 conj[S].S.conj[S].S\n  + lambda17/2 conj[Phi17].Phi17.conj[Phi17].Phi17\n  + lambdaS17 conj[S].S.conj[Phi17].Phi17\n)"
+      ],
+      "assignment_counts_exact": true,
+      "real_LagHC_present": true,
+      "real_LagNoHC_present": true,
+      "registered_in_GaugeES_LagrangianInput": true
+    },
+    "legacy_GlobalSymmetry_assignments": [],
+    "legacy_pseudo_sarah_grammar": false,
+    "model_syntax_class": "sarah_native",
+    "native_global_symmetry_catalogue_exact": true,
+    "observed_scalar_charges_PQ_X": {
+      "Delta126bar": [
+        -2,
+        -2
+      ],
+      "H10": [
+        -2,
+        -2
+      ],
+      "Phi17": [
+        0,
+        17
+      ],
+      "Phi210": [
+        0,
+        0
+      ],
+      "S": [
+        4,
+        4
+      ]
+    },
+    "placeholder_evidence": [],
+    "scalar_catalogue_exact": true,
+    "scalar_charges_match_manuscript": true,
+    "scalar_representations_match": true,
+    "scalar_residual_Z17_matches_X_mod_17": true,
+    "scalar_rows": [
+      {
+        "PQ_charge_source": "authoritative_accidental_PQ_contract",
+        "X_charge": 0,
+        "Z17_charge": 0,
+        "canonical_field": "Phi210",
+        "component": "phi210",
+        "field": "Phi210",
+        "final_charge_pair": [
+          0,
+          0
+        ],
+        "final_charge_pair_order": [
+          "PQ",
+          "X"
+        ],
+        "index": 1,
+        "multiplicity": 1,
+        "raw_representation": "210",
+        "representation": "210",
+        "residual_Z17_matches_X_mod_17": true,
+        "structurally_valid": true,
+        "syntax": "sarah_native"
+      },
+      {
+        "PQ_charge_source": "authoritative_accidental_PQ_contract",
+        "X_charge": -2,
+        "Z17_charge": 15,
+        "canonical_field": "Delta126bar",
+        "component": "delta126bar",
+        "field": "Delta126bar",
+        "final_charge_pair": [
+          -2,
+          -2
+        ],
+        "final_charge_pair_order": [
+          "PQ",
+          "X"
+        ],
+        "index": 2,
+        "multiplicity": 1,
+        "raw_representation": "-126",
+        "representation": "126",
+        "residual_Z17_matches_X_mod_17": true,
+        "structurally_valid": true,
+        "syntax": "sarah_native"
+      },
+      {
+        "PQ_charge_source": "authoritative_accidental_PQ_contract",
+        "X_charge": -2,
+        "Z17_charge": 15,
+        "canonical_field": "H10",
+        "component": "h10",
+        "field": "H10",
+        "final_charge_pair": [
+          -2,
+          -2
+        ],
+        "final_charge_pair_order": [
+          "PQ",
+          "X"
+        ],
+        "index": 3,
+        "multiplicity": 1,
+        "raw_representation": "10",
+        "representation": "10",
+        "residual_Z17_matches_X_mod_17": true,
+        "structurally_valid": true,
+        "syntax": "sarah_native"
+      },
+      {
+        "PQ_charge_source": "authoritative_accidental_PQ_contract",
+        "X_charge": 4,
+        "Z17_charge": 4,
+        "canonical_field": "S",
+        "component": "singletS",
+        "field": "S",
+        "final_charge_pair": [
+          4,
+          4
+        ],
+        "final_charge_pair_order": [
+          "PQ",
+          "X"
+        ],
+        "index": 4,
+        "multiplicity": 1,
+        "raw_representation": "1",
+        "representation": "1",
+        "residual_Z17_matches_X_mod_17": true,
+        "structurally_valid": true,
+        "syntax": "sarah_native"
+      },
+      {
+        "PQ_charge_source": "authoritative_accidental_PQ_contract",
+        "X_charge": 17,
+        "Z17_charge": 0,
+        "canonical_field": "Phi17",
+        "component": "phi17",
+        "field": "Phi17",
+        "final_charge_pair": [
+          0,
+          17
+        ],
+        "final_charge_pair_order": [
+          "PQ",
+          "X"
+        ],
+        "index": 5,
+        "multiplicity": 1,
+        "raw_representation": "1",
+        "representation": "1",
+        "residual_Z17_matches_X_mod_17": true,
+        "structurally_valid": true,
+        "syntax": "sarah_native"
+      }
+    ],
+    "semantic_requirements": {
+      "assignment_indices_unique": true,
+      "assignment_parse_complete": true,
+      "exact_gauge_catalogue": true,
+      "exact_global_symmetry_catalogue": true,
+      "exact_scalar_catalogue": true,
+      "exactly_one_LagHC_and_LagNoHC_assignment": true,
+      "fermion_catalogue_exact": true,
+      "lagrangian_registered_in_GaugeES_LagrangianInput": true,
+      "placeholder_free": true,
+      "real_LagHC_present": true,
+      "real_LagNoHC_present": true,
+      "scalar_charges_match_manuscript": true,
+      "scalar_representations_match": true,
+      "soft_gaugino_absent_in_nonsusy_model": true,
+      "tool_native_sarah_syntax": true
+    },
+    "so10_gauged": true,
+    "soft_gaugino_absent_in_nonsusy_model": true,
+    "soft_gaugino_mass_present": false,
+    "source": "models\\SO10Z17AxionV20.m",
+    "static_inventory_matches_contract": true,
+    "statically_executable_model_contract": true,
+    "structured_gauge_rows": [
+      {
+        "group_name": "SOGUT",
+        "group_symbol": "G10",
+        "group_type": "SO[10]",
+        "index": 1,
+        "is_legacy_so10": false,
+        "is_named_X": false,
+        "is_native_so10": true,
+        "is_so10": true,
+        "is_u1": false,
+        "is_u1x": false,
+        "raw_rhs": "{G10, SO[10], SOGUT, g10, False}",
+        "structurally_valid": true,
+        "syntax": "sarah_native",
+        "tool_native_structurally_valid": true
+      },
+      {
+        "group_name": "X",
+        "group_symbol": "GX",
+        "group_type": "U[1]",
+        "index": 2,
+        "is_legacy_so10": false,
+        "is_named_X": true,
+        "is_native_so10": false,
+        "is_so10": false,
+        "is_u1": true,
+        "is_u1x": true,
+        "raw_rhs": "{GX, U[1], X, gX, False}",
+        "structurally_valid": true,
+        "syntax": "sarah_native",
+        "tool_native_structurally_valid": true
+      }
+    ],
+    "structured_global_rows": [
+      {
+        "index": 1,
+        "is_z17": true,
+        "kind": "Z[17]",
+        "name": "Z17",
+        "raw_rhs": "{Z[17], Z17}",
+        "structurally_valid": true
+      }
+    ],
+    "tool_native_sarah_syntax": true,
+    "u1x_gauge_row_count": 1,
+    "u1x_gauged": true,
+    "unexpected_fermion_sectors": [],
+    "unrecognized_scalar_fields": [],
+    "x_declared_global": false,
+    "z17_declared_global": true
+  },
+  "external_model_validation": {
+    "attested_model_format": null,
+    "attested_model_path": null,
+    "attested_model_sha256": null,
+    "attested_model_size_bytes": null,
+    "checks": {
+      "anomaly_check_succeeded": false,
+      "artifact_is_structured_json_object": false,
+      "captured_process_log_has_all_required_pass_markers": false,
+      "captured_process_log_is_hash_bound": false,
+      "external_process_command_matches_tool": false,
+      "external_process_command_recorded": false,
+      "external_process_exit_code_zero": false,
+      "external_process_was_executed": false,
+      "external_tool_version_recorded": false,
+      "gauge_invariance_check_succeeded": false,
+      "gauge_invariance_check_was_not_disabled": true,
+      "generated_at_is_not_in_future": false,
+      "generated_at_is_timezone_aware": false,
+      "input_manifest_entries_are_structured": false,
+      "input_manifest_has_exact_required_files": false,
+      "input_manifest_paths_are_unique": true,
+      "input_manifest_schema_is_supported": false,
+      "input_manifest_sha256_matches_entries": false,
+      "lagrangian_construction_succeeded": false,
+      "model_initialization_succeeded": false,
+      "model_parse_succeeded": false,
+      "model_path_is_exact_repository_model": false,
+      "model_sha256_matches_exact_bytes": false,
+      "model_size_matches_exact_bytes": false,
+      "primary_model_is_bound_in_input_manifest": false,
+      "process_log_identifies_attested_tool_version": false,
+      "schema_is_supported": false,
+      "supported_external_tool_identified": false,
+      "tool_native_model_format_matches_path": false,
+      "validation_driver_is_bound_to_command": false,
+      "validation_driver_matches_repository_bytes": false
+    },
+    "expected_model_path": "models/SO10Z17AxionV20.m",
+    "expected_model_sha256": "3c3536c166ba7fca06ffedd0f244f76cc9b6db4840822a727f7a2f8e8bf1d1cd",
+    "expected_model_size_bytes": 3241,
+    "expected_validation_driver_path": "tools/validate-exact-x-model.wls",
+    "expected_validation_driver_sha256": "a2fc2771c8d80e3ea36d9e40fa2b3ae68f10a4ac0ea3dccbdcf39c99bb13b37b",
+    "expected_validation_driver_size_bytes": 5259,
+    "failures": [
+      "artifact_is_structured_json_object",
+      "schema_is_supported",
+      "model_path_is_exact_repository_model",
+      "model_sha256_matches_exact_bytes",
+      "model_size_matches_exact_bytes",
+      "tool_native_model_format_matches_path",
+      "supported_external_tool_identified",
+      "external_tool_version_recorded",
+      "external_process_was_executed",
+      "external_process_command_recorded",
+      "external_process_command_matches_tool",
+      "external_process_exit_code_zero",
+      "input_manifest_schema_is_supported",
+      "input_manifest_entries_are_structured",
+      "input_manifest_has_exact_required_files",
+      "input_manifest_sha256_matches_entries",
+      "primary_model_is_bound_in_input_manifest",
+      "validation_driver_matches_repository_bytes",
+      "validation_driver_is_bound_to_command",
+      "captured_process_log_is_hash_bound",
+      "process_log_identifies_attested_tool_version",
+      "captured_process_log_has_all_required_pass_markers",
+      "generated_at_is_timezone_aware",
+      "generated_at_is_not_in_future",
+      "model_parse_succeeded",
+      "model_initialization_succeeded",
+      "lagrangian_construction_succeeded",
+      "gauge_invariance_check_succeeded",
+      "anomaly_check_succeeded"
+    ],
+    "fresh_for_exact_model_bytes": false,
+    "generated_at_utc": null,
+    "input_manifest": {
+      "files": [],
+      "schema": null,
+      "sha256": null
+    },
+    "load_error": null,
+    "note": "Freshness is content-addressed: the exact tool-native model, the canonical input manifest, validation driver, and captured process log are hash-bound. Reduced-sector LIVE_BETA_DUMP artifacts and unbound success booleans are not accepted.",
+    "present": false,
+    "process_log": {
+      "attested_tool_marker": null,
+      "encoding": null,
+      "required_marker_presence": {
+        "anomaly_check_succeeded": false,
+        "gauge_invariance_check_succeeded": false,
+        "lagrangian_construction_succeeded": false,
+        "model_initialization_succeeded": false,
+        "model_parse_succeeded": false
+      },
+      "sha256": null,
+      "size_bytes": null
+    },
+    "required_external_checks": [
+      "model_parse_succeeded",
+      "model_initialization_succeeded",
+      "lagrangian_construction_succeeded",
+      "gauge_invariance_check_succeeded",
+      "anomaly_check_succeeded"
+    ],
+    "schema": null,
+    "source": "models/EXACT_X_EXTERNAL_MODEL_VALIDATION_V20.json",
+    "tool_name": null,
+    "tool_version": null,
+    "valid": false
   },
   "failures": [],
   "flag": {
+    "audit_executed_honestly": true,
+    "authoritative_gauged_U1X_contract": true,
     "complete_multifield_model": false,
+    "contract_consistent": false,
+    "dim_le4_phase_sensitive_phi17_terms_gauge_forbidden": true,
     "dimension17_operator_directly_breaks_pq": false,
     "dimension17_operator_is_x_invariant": false,
     "empirical_discovery": false,
-    "option_C_no_continuous_X_applied": true,
+    "external_validation_bound_to_exact_model_sha256": false,
+    "external_validation_input_manifest_bound": false,
+    "external_validation_process_log_hash_bound": false,
+    "externally_executed_model_contract": false,
+    "fermion_catalogue_complete": true,
+    "lagrangian_registered_in_GaugeES_LagrangianInput": true,
+    "legacy_pseudo_sarah_grammar": false,
+    "model_syntax_class": "sarah_native",
+    "option_C_no_continuous_X_applied": false,
+    "option_C_no_continuous_X_rejected": true,
     "phi17_phase_eaten": false,
+    "real_nonsusy_lagrangian_present": true,
+    "scalar_charge_contract_complete": true,
+    "static_contract_consistent": true,
+    "statically_executable_model_contract": true,
+    "structured_u1x_gauge_row_present": true,
+    "tool_native_sarah_syntax": true,
+    "whole_model_excluded": false,
     "whole_model_validated": false,
     "x_selection_rule_consistently_declared": true
   },
-  "n_checks": 11,
+  "n_checks": 25,
   "n_failed": 0,
+  "overall_state": "BLOCKED",
   "phase_sensitive_count": 12,
-  "required_resolution": {
-    "option_A_gauge_U1X": [
-      "declare U(1)_X in the gauge group",
-      "supply anomaly-cancelling fermion content",
-      "add covariant derivatives and gauge coupling",
-      "prove the Phi17 phase is the eaten Goldstone"
-    ],
-    "option_B_exact_global_U1X": [
-      "declare U(1)_X as an exact global symmetry",
-      "accept a physical Goldstone after spontaneous breaking unless explicit breaking is added",
-      "treat Phi17^17 as an explicit-X-breaking UV operator, not an X-invariant term"
-    ],
-    "option_C_no_continuous_X": [
-      "remove require_x=True from operator filters",
-      "include all SO(10)xZ17-allowed relevant and marginal Phi17 operators",
-      "re-solve the hierarchy and phase vacuum"
-    ],
-    "selected": "option_C_no_continuous_X"
+  "phase_sensitive_gauge_forbidden_count": 12,
+  "repository_external_input_manifest": {
+    "applicable_to_repository_inputs": true,
+    "checks": {
+      "artifact_is_structured_json_object": true,
+      "files_match_exact_repository_inputs": true,
+      "manifest_sha256_matches_exact_entries": true,
+      "schema_is_supported": true
+    },
+    "driver_load_error": null,
+    "expected": {
+      "files": [
+        {
+          "format": "sarah-mathematica",
+          "path": "models/SO10Z17AxionV20.m",
+          "role": "primary_model",
+          "sha256": "3c3536c166ba7fca06ffedd0f244f76cc9b6db4840822a727f7a2f8e8bf1d1cd",
+          "size_bytes": 3241
+        },
+        {
+          "format": "wolfram-language",
+          "path": "tools/validate-exact-x-model.wls",
+          "role": "validation_driver",
+          "sha256": "a2fc2771c8d80e3ea36d9e40fa2b3ae68f10a4ac0ea3dccbdcf39c99bb13b37b",
+          "size_bytes": 5259
+        }
+      ],
+      "schema": "so10-exact-x-input-manifest-v1",
+      "sha256": "ea71fd43c02ccbf6095690270ee6178bf67c1cda7492b696634c9d4fb83b1ff7"
+    },
+    "failures": [],
+    "load_error": null,
+    "present": true,
+    "role": "Pre-execution content manifest only; it is not an external SARAH execution attestation.",
+    "source": "models/EXACT_X_EXTERNAL_INPUT_MANIFEST_V20.json",
+    "valid": true
   },
+  "required_resolution": {
+    "external_SARAH_execution": {
+      "attestation_destination": "models/EXACT_X_EXTERNAL_MODEL_VALIDATION_V20.json",
+      "claim_boundary": "Only a real zero-exit SARAH process with all five PASS markers may create the external attestation.",
+      "driver": "tools/validate-exact-x-model.wls",
+      "input_manifest": "models/EXACT_X_EXTERNAL_INPUT_MANIFEST_V20.json",
+      "required": true
+    },
+    "option_A_gauge_U1X": {
+      "accepted": true,
+      "requirements": [
+        "replace the legacy pseudo-SARAH metadata grammar with indexed, tool-native SARAH Gauge/Global/matter syntax",
+        "declare a native SO[10] row and a U[1] gauge row named X",
+        "encode the exact manuscript X charges and residual Z17 charges in native matter rows",
+        "retain the complete anomaly-cancelling fermion content",
+        "add covariant derivatives and the U(1)_X gauge coupling",
+        "supply substantive LagHC and LagNoHC definitions",
+        "register LagHC and LagNoHC under DEFINITION[GaugeES][LagrangianInput]",
+        "remove SoftGauginoMass from the nonsupersymmetric model",
+        "remove scaffold and external-Clebsch placeholders",
+        "produce a fresh external SARAH/PyR@TE parse, model-load, Lagrangian, gauge-invariance, and anomaly-check attestation bound to the tool-native model format, exact model-file SHA-256, canonical input manifest, validation driver, and hash-bound process log",
+        "enforce exact X neutrality in the scalar-potential census",
+        "prove and quotient the Phi17 phase as the eaten Goldstone"
+      ]
+    },
+    "option_B_exact_global_U1X": {
+      "accepted": false,
+      "reason": "does not match the manuscript's gauged primitive U(1)_X"
+    },
+    "option_C_no_continuous_X": {
+      "accepted": false,
+      "reason": "contradicts the authoritative gauged-U(1)_X manuscript and treats an incomplete executable scaffold as the theory definition",
+      "rejected": true
+    },
+    "selected": "external_SARAH_execution"
+  },
+  "scientific_blockers": [
+    "AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED"
+  ],
   "signed_filter_contract": {
-    "declared_option_C_no_continuous_X": true,
+    "declared_option_C_no_continuous_X": false,
+    "encodes_option_C_no_continuous_X": false,
+    "evidence": {
+      "allowed_helper_default_false": false,
+      "allowed_helper_default_true": false,
+      "entry_default_false": false,
+      "entry_default_true": false,
+      "live_catalogue_calls_require_x_false": false,
+      "live_catalogue_calls_require_x_true": true
+    },
     "phi17_X": 17,
     "phi17_Z17": 0,
-    "requires_exact_x_neutrality_by_default": false
+    "policy": "REQUIRE_X",
+    "requires_exact_x_neutrality_by_default": true,
+    "source": "nonsusy_z17_pq_potential_filter_v20.py"
   },
-  "status": "DECLARED_SO10_Z17_OPTION_C_APPLIED__FULL_MODEL_BLOCKED",
-  "verdict": "Option C is applied: the signed filter matches the declared SO(10)\u00d7Z17 contract and no longer requires undeclared continuous X. Low-dimensional phase-sensitive Phi17 operators are allowed. The dimension-17 term remains explicit X breaking and does not directly violate PQ. The full multifield model remains open."
+  "static_contract_consistent": true,
+  "status": "AUTHORITATIVE_GAUGED_U1X_CONTRACT_AUDIT_COMPLETE__BLOCKED",
+  "verdict": "The authoritative manuscript, native non-supersymmetric SARAH model, exact charge catalogues, residual Z17 assignments, GaugeES Lagrangian registration, scalar filter, and hash-bound input bundle are statically consistent. The sole remaining contract blocker is a real external SARAH execution of the shipped driver; no local Mathematica/SARAH installation was available and no execution attestation is inferred or fabricated. This static result alone does not validate G1-G8."
 }

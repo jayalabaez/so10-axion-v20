@@ -23,24 +23,43 @@
   },
   "direct_tensor_result": {
     "status": "DIRECT_NONSUSY_PHI_H_SIGMABAR_TENSOR_MAP_EXECUTED",
-    "map_shape": [10, 126],
+    "map_shape": [
+      10,
+      126
+    ],
     "analytic_spectrum": {
       "color_triplet_branch_plus": {
         "multiplicity": 3,
-        "formula_squared": "(P+A/sqrt(3))^2+4*W^2/3"
+        "singular_value": 0.9306600834320407,
+        "formula_squared": "(p+a/sqrt(3))^2+4*omega^2/3"
       },
       "color_triplet_branch_minus": {
         "multiplicity": 3,
-        "formula_squared": "(P-A/sqrt(3))^2"
+        "singular_value": 0.8711324865405188,
+        "formula_squared": "(p-a/sqrt(3))^2"
       },
       "electroweak_doublet_branch_plus": {
         "multiplicity": 2,
-        "formula_squared": "(A+W/sqrt(2))^2"
+        "singular_value": 0.08535533905932738,
+        "formula_squared": "(a+omega/sqrt(2))^2"
       },
       "electroweak_doublet_branch_minus": {
         "multiplicity": 2,
-        "formula_squared": "(A-W/sqrt(2))^2"
-      }
+        "singular_value": 0.014644660940672627,
+        "formula_squared": "(a-omega/sqrt(2))^2"
+      },
+      "expanded_descending": [
+        0.9306600834320407,
+        0.9306600834320407,
+        0.9306600834320407,
+        0.8711324865405188,
+        0.8711324865405188,
+        0.8711324865405188,
+        0.08535533905932738,
+        0.08535533905932738,
+        0.014644660940672627,
+        0.014644660940672627
+      ]
     },
     "equivariance_max_abs_residual": 0.0
   },

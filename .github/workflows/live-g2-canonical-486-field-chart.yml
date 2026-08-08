@@ -73,11 +73,19 @@ jobs:
 
           ledger=json.load(open('LIVE_G1_G8_GATE_LEDGER_V20.json'))
           assert ledger['n_failed']==0, ledger['failures']
+          assert ledger['model_contract_id']=='historical_option_c_no_x_v20'
+          assert ledger['authoritative_for_manuscript'] is False
+          assert ledger['supersedes_for_current_status'] is False
           assert ledger['summary']['closed']==['G1']
           assert ledger['gates']['G2']['status']=='PARTIAL'
           assert ledger['gates']['G2']['corrections']['canonical_field_chart_closed']
           assert len(ledger['gates']['G2']['open_scope'])==3
-          assert ledger['flags']['g2_canonical_field_chart_complete']
+          assert ledger['flags']['historical_option_c_g2_canonical_field_chart_complete']
+          assert not ledger['flags']['authoritative_manuscript_g1_closed']
+          assert not ledger['flags']['authoritative_manuscript_g2_closed']
+          assert not ledger['flags']['g1_closed']
+          assert not ledger['flags']['g2_value_layer_complete']
+          assert not ledger['flags']['g2_canonical_field_chart_complete']
           assert not ledger['flags']['g2_complete_gradient']
           assert not ledger['flags']['g2_complete_Hessian']
           assert not ledger['flags']['g2_closed']

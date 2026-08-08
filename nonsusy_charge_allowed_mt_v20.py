@@ -43,7 +43,7 @@ SOURCES = {
 
 
 def allowed_mt_operator_ledger() -> dict[str, Any]:
-    operators = z17.operator_catalogue()
+    operators = z17.operator_catalogue(require_x=True)
     allowed = [
         row
         for row in operators

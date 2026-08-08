@@ -65,7 +65,7 @@ def _completed_basis(base: dict[str, Any], operator_entry: dict[str, Any]) -> di
 def build_report() -> dict[str, Any]:
     base = upstream.build_report()
     totals = z17._total_charge(COUNTS)
-    allowed = z17._allowed(totals)
+    allowed = z17._allowed(totals, require_x=True)
     operator_entry = {
         "name": OPERATOR,
         "multiplicity": 1,

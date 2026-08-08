@@ -1,6 +1,9 @@
 {
   "status": "G3_FIRST_ORDER_PHYSICAL_EW_STATIONARITY_FEASIBLE__LOCAL_GLOBAL_OPEN",
   "overall_state": "PARTIAL",
+  "model_contract_id": "historical_option_c_no_x_v20",
+  "authoritative_for_manuscript": false,
+  "model_wide_no_go_certified": false,
   "n_checks": 18,
   "n_failed": 0,
   "failures": [],
@@ -128,192 +131,28 @@
     "maximum_normalized_gauge_Ward_residual": 1.0666053971474106e-17
   },
   "fast_gradient_crosscheck": {
-    "executed": true,
-    "direction_count": 18,
-    "maximum_value_residual": 0.0,
-    "maximum_gradient_abs_residual": 7.573064690121713e-29,
-    "gradient_crosscheck_atol": 1e-27,
-    "gradient_crosscheck_rtol": 2e-08,
-    "maximum_gradient_raw_relative_residual": 46.50000000000001,
-    "maximum_gradient_tolerance_ratio": 0.017827976286146137,
-    "all_gradients_within_mixed_tolerance": true,
-    "per_direction": {
-      "O27_B01_126bar_self_projectors": {
-        "base_family": "126bar_self_projectors",
-        "value_residual": 0.0,
-        "gradient_max_abs_residual": 2.7329699920624898e-30,
-        "gradient_raw_relative_residual": 46.50000000000001,
-        "gradient_mixed_tolerance": 1.000000000053484e-27,
-        "gradient_tolerance_ratio": 0.0027329699919163195,
-        "gradient_within_mixed_tolerance": true
-      },
-      "O27_B02_126bar_self_projectors": {
-        "base_family": "126bar_self_projectors",
-        "value_residual": 0.0,
-        "gradient_max_abs_residual": 1.782797629230728e-29,
-        "gradient_raw_relative_residual": 32.49999999999999,
-        "gradient_mixed_tolerance": 1.0000000003455885e-27,
-        "gradient_tolerance_ratio": 0.017827976286146137,
-        "gradient_within_mixed_tolerance": true
-      },
-      "O27_B03_126bar_self_projectors": {
-        "base_family": "126bar_self_projectors",
-        "value_residual": 0.0,
-        "gradient_max_abs_residual": 7.573064690121713e-29,
-        "gradient_raw_relative_residual": 4.4024477115168294e-16,
-        "gradient_mixed_tolerance": 3.440389250522786e-21,
-        "gradient_tolerance_ratio": 2.201223215940157e-08,
-        "gradient_within_mixed_tolerance": true
-      },
-      "O27_B04_126bar_self_projectors": {
-        "base_family": "126bar_self_projectors",
-        "value_residual": 0.0,
-        "gradient_max_abs_residual": 5.048709793414476e-29,
-        "gradient_raw_relative_residual": 5.869930282022431e-16,
-        "gradient_mixed_tolerance": 1.7201951252613955e-21,
-        "gradient_tolerance_ratio": 2.9349634348296908e-08,
-        "gradient_within_mixed_tolerance": true
-      },
-      "O28_B01_unique_Hdag_Sigma2_Sigmadag": {
-        "base_family": "unique_Hdag_Sigma2_Sigmadag",
-        "value_residual": 0.0,
-        "gradient_max_abs_residual": 0.0,
-        "gradient_raw_relative_residual": 0.0,
-        "gradient_mixed_tolerance": 1.0965405077329256e-27,
-        "gradient_tolerance_ratio": 0.0,
-        "gradient_within_mixed_tolerance": true
-      },
-      "O31_B01_unique_Hdag2_Sigma2": {
-        "base_family": "unique_Hdag2_Sigma2",
-        "value_residual": 0.0,
-        "gradient_max_abs_residual": 0.0,
-        "gradient_raw_relative_residual": 0.0,
-        "gradient_mixed_tolerance": 1.0000000000047032e-27,
-        "gradient_tolerance_ratio": 0.0,
-        "gradient_within_mixed_tolerance": true
-      },
-      "O44_B01_Phi2_Sigma_projectors": {
-        "base_family": "Phi2_Sigma_projectors",
-        "value_residual": 0.0,
-        "gradient_max_abs_residual": 0.0,
-        "gradient_raw_relative_residual": 0.0,
-        "gradient_mixed_tolerance": 3.0315886911646234e-14,
-        "gradient_tolerance_ratio": 0.0,
-        "gradient_within_mixed_tolerance": true
-      },
-      "O44_B02_Phi2_Sigma_projectors": {
-        "base_family": "Phi2_Sigma_projectors",
-        "value_residual": 0.0,
-        "gradient_max_abs_residual": 0.0,
-        "gradient_raw_relative_residual": 0.0,
-        "gradient_mixed_tolerance": 4.632027117168044e-18,
-        "gradient_tolerance_ratio": 0.0,
-        "gradient_within_mixed_tolerance": true
-      },
-      "O44_B03_Phi2_Sigma_projectors": {
-        "base_family": "Phi2_Sigma_projectors",
-        "value_residual": 0.0,
-        "gradient_max_abs_residual": 0.0,
-        "gradient_raw_relative_residual": 0.0,
-        "gradient_mixed_tolerance": 1.0047107953741561e-26,
-        "gradient_tolerance_ratio": 0.0,
-        "gradient_within_mixed_tolerance": true
-      },
-      "O44_B04_Phi2_Sigma_projectors": {
-        "base_family": "Phi2_Sigma_projectors",
-        "value_residual": 0.0,
-        "gradient_max_abs_residual": 0.0,
-        "gradient_raw_relative_residual": 0.0,
-        "gradient_mixed_tolerance": 8.488448335262535e-14,
-        "gradient_tolerance_ratio": 0.0,
-        "gradient_within_mixed_tolerance": true
-      },
-      "O44_B05_Phi2_Sigma_projectors": {
-        "base_family": "Phi2_Sigma_projectors",
-        "value_residual": 0.0,
-        "gradient_max_abs_residual": 0.0,
-        "gradient_raw_relative_residual": 0.0,
-        "gradient_mixed_tolerance": 1.5440090388226244e-17,
-        "gradient_tolerance_ratio": 0.0,
-        "gradient_within_mixed_tolerance": true
-      },
-      "O44_B06_Phi2_Sigma_projectors": {
-        "base_family": "Phi2_Sigma_projectors",
-        "value_residual": 0.0,
-        "gradient_max_abs_residual": 0.0,
-        "gradient_raw_relative_residual": 0.0,
-        "gradient_mixed_tolerance": 5.456859644096089e-14,
-        "gradient_tolerance_ratio": 0.0,
-        "gradient_within_mixed_tolerance": true
-      },
-      "O45_B01_Phi2_Hdag_Sigma_210_1050": {
-        "base_family": "Phi2_Hdag_Sigma_210_1050",
-        "value_residual": 0.0,
-        "gradient_max_abs_residual": 0.0,
-        "gradient_raw_relative_residual": 0.0,
-        "gradient_mixed_tolerance": 1e-27,
-        "gradient_tolerance_ratio": 0.0,
-        "gradient_within_mixed_tolerance": true
-      },
-      "O45_B02_Phi2_Hdag_Sigma_210_1050": {
-        "base_family": "Phi2_Hdag_Sigma_210_1050",
-        "value_residual": 0.0,
-        "gradient_max_abs_residual": 0.0,
-        "gradient_raw_relative_residual": 0.0,
-        "gradient_mixed_tolerance": 1.6796059918392002e-26,
-        "gradient_tolerance_ratio": 0.0,
-        "gradient_within_mixed_tolerance": true
-      },
-      "O48_B01_Phi_self_quartics": {
-        "base_family": "Phi_self_quartics",
-        "value_residual": 0.0,
-        "gradient_max_abs_residual": 0.0,
-        "gradient_raw_relative_residual": 0.0,
-        "gradient_mixed_tolerance": 8e-08,
-        "gradient_tolerance_ratio": 0.0,
-        "gradient_within_mixed_tolerance": true
-      },
-      "O48_B02_Phi_self_quartics": {
-        "base_family": "Phi_self_quartics",
-        "value_residual": 0.0,
-        "gradient_max_abs_residual": 0.0,
-        "gradient_raw_relative_residual": 0.0,
-        "gradient_mixed_tolerance": 1.9200000000000003e-06,
-        "gradient_tolerance_ratio": 0.0,
-        "gradient_within_mixed_tolerance": true
-      },
-      "O48_B03_Phi_self_quartics": {
-        "base_family": "Phi_self_quartics",
-        "value_residual": 0.0,
-        "gradient_max_abs_residual": 0.0,
-        "gradient_raw_relative_residual": 0.0,
-        "gradient_mixed_tolerance": 1.5360000000000002e-05,
-        "gradient_tolerance_ratio": 0.0,
-        "gradient_within_mixed_tolerance": true
-      },
-      "O48_B04_Phi_self_quartics": {
-        "base_family": "Phi_self_quartics",
-        "value_residual": 0.0,
-        "gradient_max_abs_residual": 0.0,
-        "gradient_raw_relative_residual": 0.0,
-        "gradient_mixed_tolerance": 0.00028416,
-        "gradient_tolerance_ratio": 0.0,
-        "gradient_within_mixed_tolerance": true
-      }
-    }
+    "executed": false,
+    "direction_count": 0,
+    "maximum_value_residual": null,
+    "maximum_gradient_abs_residual": null,
+    "maximum_gradient_raw_relative_residual": null,
+    "maximum_gradient_tolerance_ratio": null,
+    "all_gradients_within_mixed_tolerance": null,
+    "per_direction": {}
   },
   "flags": {
     "G1_closed": true,
     "G2_closed": true,
     "full_486_coordinate_first_order_stationarity_executed": true,
     "physical_EW_stationary_coefficient_family_exists": true,
-    "full_fast_gradient_crosscheck_executed": true,
-    "fast_gradients_match_exact_G2_adapters": true,
+    "full_fast_gradient_crosscheck_executed": false,
+    "fast_gradients_match_exact_G2_adapters": false,
     "pre_EW_goldstones_33": true,
     "physical_EW_goldstones_36": true,
     "gauge_quotiented_full_Hessian_positive": false,
     "global_competing_extrema_exhausted": false,
     "complete_potential_BFB": false,
+    "model_wide_no_go_certified": false,
     "G3_closed": false,
     "G4_closed": false,
     "G5_closed": false,

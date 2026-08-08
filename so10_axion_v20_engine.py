@@ -147,7 +147,7 @@ def build_verdict(inject_failure: bool = False) -> tuple[dict, Checks]:
         0.0477 < running["maximum_gX_for_landau_pole_above_cutoff"] < 0.0478,
     )
     checks.check(
-        "conservative Spin(10) running remains perturbative to MPl",
+        "legacy alpha10=1/40 reset diagnostic remains internally reproduced",
         running["example_Spin10_landau_pole_GeV"] > MPL,
     )
     continuous = running["continuous_from_spectator_corrected_alpha_GUT"]

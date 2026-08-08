@@ -34,14 +34,20 @@ def build_report() -> dict[str, Any]:
         "branching_census_green": bran.get("n_failed", 1) == 0,
         "overall_blocked": led.get("overall_state") == "BLOCKED"
         and full.get("overall_state") == "BLOCKED",
-        "g1_g2_closed": (
-            led.get("summary", {}).get("closed") == ["G1", "G2"]
-            and led.get("summary", {}).get("n_closed") == 2
+        "authoritative_closed_set_empty": (
+            led.get("summary", {}).get("closed") == []
+            and led.get("summary", {}).get("n_closed") == 0
         ),
-        "g7_open": led["gates"]["G7"]["status"] == "OPEN",
-        "g8_partial_no_unique_lifetime": (
-            led["gates"]["G8"]["status"] == "PARTIAL"
-            and not led["gates"]["G8"]["corrections"]["exact_unique_proton_lifetime_derived"]
+        "all_authoritative_gates_blocked": all(
+            row["status"] == "BLOCKED" for row in led["gates"].values()
+        ),
+        "historical_option_c_results_scoped": (
+            led["historical_option_c_subtheorems"]["G1"]["invariant_directions"]
+            == 64
+            and led["historical_option_c_subtheorems"]["G3"][
+                "massive_physical_quotient_dimension"
+            ]
+            == 449
         ),
         "no_whole_model_validated": not bool(
             full.get("classification", {}).get("whole_model_validated")
@@ -50,7 +56,7 @@ def build_report() -> dict[str, Any]:
             full.get("classification", {}).get("whole_model_excluded")
         ),
         "no_guarantee_model_passes": not bool(
-            led.get("feasibility", {}).get("guarantee_model_passes_all_gates")
+            led.get("feasibility", {}).get("guarantee_model_survives_recertification")
         ),
         "tprime_promoted": bool(bran.get("flag", {}).get("tprime_126_promoted_into_census")),
         "cg_still_open": not bool(
@@ -62,7 +68,7 @@ def build_report() -> dict[str, Any]:
     gate_table = {
         name: {
             "status": row["status"],
-            "closed_scope": row.get("closed_scope", []),
+            "closed_scope": row.get("authoritative_closed_scope", []),
             "open_scope": row.get("open_scope", []),
         }
         for name, row in led["gates"].items()
@@ -112,8 +118,8 @@ def build_report() -> dict[str, Any]:
             "ready_for_honest_submission_as_blocked_program": not bool(failures),
         },
         "verdict": (
-            "Referee package ready: 2/8 full-model gates closed (G1 and G2), "
-            "theory BLOCKED, "
+            "Referee package ready: 0/8 authoritative gates closed because the "
+            "gauged-U(1)_X executable contract is inconsistent; theory BLOCKED, "
             "Issue #106 PS branching census PARTIAL with T' locked and CG/norm OPEN. "
             "This repository defines an executable closure program; it does not "
             "claim the model is proven."

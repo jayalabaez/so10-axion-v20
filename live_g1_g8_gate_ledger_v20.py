@@ -1,16 +1,18 @@
 #!/usr/bin/env python3
-"""Live G1-G8 ledger after closing the canonical 486-real G2 field chart.
+"""Historical Option-C/no-X G1-G8 snapshot on the 486-real field chart.
 
-G1 is closed.  G2 has two completed layers:
+Within this superseded counterfactual contract, G1 was marked closed and G2
+had two completed layers:
 
 1. all 48 Hermitian orbits / 64 invariant directions / 91 real parameters
    evaluate on arbitrary physical fields;
 2. one exact 486-real physical coordinate chart with identity kinetic metric,
    physical -i 126bar chirality, and SO(10) tangent vectors.
 
-G2 remains PARTIAL until every invariant direction is differentiated to give
-the complete 486-entry gradient and symmetric 486x486 Hessian with independent
-reconstruction tests.  All downstream gates remain fail-closed.
+The manuscript instead gauges U(1)_X and uses the exact-X-neutral 44-direction,
+51-parameter contract.  Consequently this module is retained only to reproduce
+the old 64/91 ledger; it neither supersedes the current status nor closes the
+manuscript's G1 or G2.
 """
 from __future__ import annotations
 
@@ -28,6 +30,8 @@ import live_g2_canonical_486_field_chart_v20 as chart
 ROOT = Path(__file__).resolve().parent
 OUT_JSON = ROOT / "LIVE_G1_G8_GATE_LEDGER_V20.json"
 OUT_MD = ROOT / "LIVE_G1_G8_GATE_LEDGER_V20.md"
+MODEL_CONTRACT_ID = "historical_option_c_no_x_v20"
+AUTHORITATIVE_FOR_MANUSCRIPT = False
 
 
 def build_report() -> dict[str, Any]:
@@ -36,6 +40,24 @@ def build_report() -> dict[str, Any]:
     g2_report = g2.build_report()
     chart_report = chart.build_report()
     gates = copy.deepcopy(historical_report["gates"])
+    historical_statuses = {
+        "G1": historical.STATUS_CLOSED,
+        "G2": historical.STATUS_PARTIAL,
+        "G3": historical.STATUS_PARTIAL,
+        "G4": historical.STATUS_PARTIAL,
+        "G5": historical.STATUS_PARTIAL,
+        "G6": historical.STATUS_PARTIAL,
+        "G7": historical.STATUS_OPEN,
+        "G8": historical.STATUS_PARTIAL,
+    }
+    for name, row in gates.items():
+        row["status"] = historical_statuses[name]
+        row["model_contract_id"] = MODEL_CONTRACT_ID
+        row["authoritative_for_manuscript"] = False
+        row.pop("authoritative_model_contract_id", None)
+        row.pop("authoritative_closed_scope", None)
+        row.pop("closed_on_current_authoritative_contract", None)
+        row.pop("blocking_root", None)
 
     gates["G1"] = {
         "title": "Invariant ring and component Clebsch tensors",
@@ -99,19 +121,19 @@ def build_report() -> dict[str, Any]:
     blocked = [name for name, status in statuses.items() if status == historical.STATUS_BLOCKED]
 
     checks = {
-        "historical_downstream_ledger_executes": historical_report.get("n_failed", 1) == 0,
+        "current_contract_ledger_executes_as_metadata_template": historical_report.get("n_failed", 1) == 0,
         "live_G1_ledger_executes": g1_report.get("n_failed", 1) == 0,
-        "corrected_G2_value_layer_executes": g2_report.get("n_failed", 1) == 0,
+        "historical_G2_value_layer_executes": g2_report.get("n_failed", 1) == 0,
         "canonical_486_chart_executes": chart_report.get("n_failed", 1) == 0,
         "all_eight_gates_present": set(gates) == {f"G{i}" for i in range(1, 9)},
-        "G1_is_closed": gates["G1"]["status"] == historical.STATUS_CLOSED,
-        "G2_is_partial": gates["G2"]["status"] == historical.STATUS_PARTIAL,
+        "historical_G1_is_closed": gates["G1"]["status"] == historical.STATUS_CLOSED,
+        "historical_G2_is_partial": gates["G2"]["status"] == historical.STATUS_PARTIAL,
         "G1_has_64_explicit_directions": (
             gates["G1"]["corrections"]["live_independent_invariant_coefficients"] == 64
             and gates["G1"]["corrections"]["all_live_tensor_directions_explicit"]
         ),
         "G2_value_and_chart_layers_closed": (
-            g2_report["flags"]["g2_value_layer_complete"]
+            g2_report["flags"]["historical_option_c_g2_value_layer_complete"]
             and chart_report["flags"]["canonical_486_real_chart_closed"]
             and gates["G2"]["corrections"]["canonical_field_chart_closed"]
         ),
@@ -120,7 +142,7 @@ def build_report() -> dict[str, Any]:
             and gates["G2"]["corrections"]["complete_symmetric_Hessian_entries"] == 118341
             and len(gates["G2"]["open_scope"]) == 3
         ),
-        "G7_remains_open": gates["G7"]["status"] == historical.STATUS_OPEN,
+        "historical_G7_remains_open": gates["G7"]["status"] == historical.STATUS_OPEN,
         "only_G1_is_closed": closed == ["G1"],
         "no_downstream_gate_promoted": all(
             gates[name]["status"] != historical.STATUS_CLOSED
@@ -131,18 +153,20 @@ def build_report() -> dict[str, Any]:
     checks = {name: bool(value) for name, value in checks.items()}
     failures = [name for name, passed in checks.items() if not passed]
     return {
+        "model_contract_id": MODEL_CONTRACT_ID,
+        "authoritative_for_manuscript": AUTHORITATIVE_FOR_MANUSCRIPT,
         "status": (
-            "G1_CLOSED__G2_VALUE_AND_486_CHART_CLOSED__DERIVATIVES_OPEN"
+            "HISTORICAL_OPTION_C_G1_CLOSED__G2_VALUE_AND_CHART_PARTIAL__NONAUTHORITATIVE"
             if not failures
             else "LIVE_G1_G8_LEDGER_INTEGRITY_FAILED"
         ),
-        "overall_state": "BLOCKED" if not failures else "EXECUTION_FAIL",
+        "overall_state": "HISTORICAL" if not failures else "EXECUTION_FAIL",
         "n_checks": len(checks),
         "n_failed": len(failures),
         "failures": failures,
         "checks": checks,
-        "supersedes_for_current_status": "g1_g8_gate_ledger_v20.py",
-        "historical_ledger_status": historical_report["status"],
+        "supersedes_for_current_status": False,
+        "source_template_ledger_status": historical_report["status"],
         "dependencies": historical.DEPENDENCIES,
         "gates": gates,
         "summary": {
@@ -199,9 +223,14 @@ def build_report() -> dict[str, Any]:
             },
         ],
         "flags": {
-            "g1_closed": not failures,
-            "g2_value_layer_complete": not failures,
-            "g2_canonical_field_chart_complete": not failures,
+            "historical_option_c_g1_closed": not failures,
+            "historical_option_c_g2_value_layer_complete": not failures,
+            "historical_option_c_g2_canonical_field_chart_complete": not failures,
+            "authoritative_manuscript_g1_closed": False,
+            "authoritative_manuscript_g2_closed": False,
+            "g1_closed": False,
+            "g2_value_layer_complete": False,
+            "g2_canonical_field_chart_complete": False,
             "g2_complete_gradient": False,
             "g2_complete_Hessian": False,
             "g2_closed": False,
@@ -211,13 +240,13 @@ def build_report() -> dict[str, Any]:
             "empirical_discovery": False,
         },
         "next_exact_target": (
-            "G2: differentiate the 18 base tensor families on the canonical "
-            "486-real chart, then compile all 64 dressed gradients and Hessians."
+            "Use gauged_u1x_scalar_contract_v20.py and the 44/51 derivative "
+            "audit for the manuscript-authoritative theory."
         ),
         "verdict": (
-            "Only G1 is closed. G2 now has a corrected arbitrary-field value "
-            "layer and one exact 486-real physical chart, but remains PARTIAL "
-            "until the complete analytic gradient and Hessian are constructed."
+            "This ledger reproduces historical Option-C/no-X bookkeeping only. "
+            "Its 64/91 G1 closure and partial G2 layers are not gates of the "
+            "gauged-U(1)_X manuscript and do not supersede the current ledger."
         ),
     }
 

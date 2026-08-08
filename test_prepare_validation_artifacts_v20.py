@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import json
 import sys
 import unittest
+from unittest.mock import patch
 
 import prepare_validation_artifacts_v20 as prepare
 
@@ -23,14 +25,208 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
             "uv_vacuum_alignment_v20.py",
             "yukawa_rge_2loop_v20.py",
             "fcnc_exact_likelihood_v20.py",
-            "theory_validation_matrix_v20.py --expect-conditional",
-            "ultimate_theory_gate_v20.py --expect-full-block --no-write",
+            "exact_x_symmetry_consistency_gate_v20.py",
+            "sarah_pyrate_210n_model_file_v20.py",
+            "gauged_u1x_scalar_contract_v20.py --write",
+            "g1_exact_declared_symmetry_character_census_v20.py --write",
+            "exact_gauged_u1x_stationarity_rank_certificate_v20.py --write",
+            "gauged_u1x_g2_derivative_audit_v20.py --write",
+            "exact_gauged_u1x_physical_quotient_v20.py --write",
+            (
+                "exact_gauged_u1x_g3_pd_rank_certificate_v20.py "
+                "--recompute-heavy --write"
+            ),
+            (
+                "exact_gauged_u1x_g3_a_square_recoupling_v20.py "
+                "--recompute --write"
+            ),
+            (
+                "exact_gauged_u1x_g3_sos_bfb_stationarity_v20.py "
+                "--recompute --write"
+            ),
+            "exact_gauged_u1x_g3_global_counterexample_v20.py --write",
+            "exact_gauged_u1x_g3_su5_delta_hsx_exact_hessian_v20.py --write",
+            "exact_gauged_u1x_g3_su5_phi_orbit_lemma_v20.py --write",
+            "exact_gauged_u1x_g3_su5_phi_local_component_v20.py --write",
+            "exact_gauged_u1x_g3_su5_phi_su3_slice_v20.py --write",
+            "exact_gauged_u1x_g3_su5_fixed_f_offkernel_bound_v20.py --write",
+            "exact_gauged_u1x_g3_su5_max_negative_zero_residual_bound_v20.py --write",
+            "exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py --write",
+            (
+                "gauged_u1x_g3_sos_candidate_v20.py "
+                "--recompute-heavy --write"
+            ),
+            "gauged_u1x_g3_stability_v20.py --write",
+            (
+                "gauged_u1x_g3_corrected_common_kernel_v20.py "
+                "--recompute-heavy --write"
+            ),
+            "g1_g8_gate_ledger_v20.py --write",
+            "g1_g8_execution_roadmap_v20.py --write",
+            "authoritative_full_model_gate_v20.py",
+            "theory_validation_matrix_v20.py --expect-blocked",
+            "ultimate_theory_gate_v20.py --expect-blocked --no-write",
         )
         for token in required:
             self.assertTrue(
                 any(token in display for display in displays),
                 msg=f"missing command token: {token}",
             )
+
+    def test_full_inventory_uses_current_fail_closed_contract(self):
+        displays = [prepare._display(command) for command in prepare.FULL_COMMANDS]
+        joined = "\n".join(displays)
+        self.assertNotIn("--expect-conditional", joined)
+        self.assertNotIn("--expect-full-block", joined)
+
+        g2_index = next(
+            i
+            for i, display in enumerate(displays)
+            if "gauged_u1x_g2_derivative_audit_v20.py --write" in display
+        )
+        rank_index = next(
+            i
+            for i, display in enumerate(displays)
+            if "exact_gauged_u1x_stationarity_rank_certificate_v20.py --write"
+            in display
+        )
+        quotient_index = next(
+            i
+            for i, display in enumerate(displays)
+            if "exact_gauged_u1x_physical_quotient_v20.py --write" in display
+        )
+        g3_index = next(
+            i
+            for i, display in enumerate(displays)
+            if "gauged_u1x_g3_stability_v20.py --write" in display
+        )
+        pd_certificate_index = next(
+            i
+            for i, display in enumerate(displays)
+            if "exact_gauged_u1x_g3_pd_rank_certificate_v20.py" in display
+        )
+        sos_candidate_index = next(
+            i
+            for i, display in enumerate(displays)
+            if "gauged_u1x_g3_sos_candidate_v20.py" in display
+        )
+        a_square_index = next(
+            i
+            for i, display in enumerate(displays)
+            if "exact_gauged_u1x_g3_a_square_recoupling_v20.py" in display
+        )
+        exact_sos_index = next(
+            i
+            for i, display in enumerate(displays)
+            if "exact_gauged_u1x_g3_sos_bfb_stationarity_v20.py" in display
+        )
+        global_counterexample_index = next(
+            i
+            for i, display in enumerate(displays)
+            if "exact_gauged_u1x_g3_global_counterexample_v20.py" in display
+        )
+        phi_orbit_index = next(
+            i
+            for i, display in enumerate(displays)
+            if "exact_gauged_u1x_g3_su5_phi_orbit_lemma_v20.py" in display
+        )
+        phi_local_index = next(
+            i
+            for i, display in enumerate(displays)
+            if "exact_gauged_u1x_g3_su5_phi_local_component_v20.py" in display
+        )
+        phi_su3_index = next(
+            i
+            for i, display in enumerate(displays)
+            if "exact_gauged_u1x_g3_su5_phi_su3_slice_v20.py" in display
+        )
+        exact_hsx_hessian_index = next(
+            i
+            for i, display in enumerate(displays)
+            if "exact_gauged_u1x_g3_su5_delta_hsx_exact_hessian_v20.py"
+            in display
+        )
+        hsx_extension_index = next(
+            i
+            for i, display in enumerate(displays)
+            if "exact_gauged_u1x_g3_su5_delta_hsx_extension_v20.py" in display
+        )
+        equality_index = next(
+            i
+            for i, display in enumerate(displays)
+            if "exact_gauged_u1x_g3_su5_equality_orbit_v20.py" in display
+        )
+        fixed_f_offkernel_index = next(
+            i
+            for i, display in enumerate(displays)
+            if "exact_gauged_u1x_g3_su5_fixed_f_offkernel_bound_v20.py"
+            in display
+        )
+        max_negative_zero_residual_index = next(
+            i
+            for i, display in enumerate(displays)
+            if "exact_gauged_u1x_g3_su5_max_negative_zero_residual_bound_v20.py"
+            in display
+        )
+        max_negative_full_residual_index = next(
+            i
+            for i, display in enumerate(displays)
+            if "exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py"
+            in display
+        )
+        global_gap_index = next(
+            i
+            for i, display in enumerate(displays)
+            if "exact_gauged_u1x_g3_su5_chiral_global_gap_reduction_v20.py"
+            in display
+        )
+        corrected_g3_index = next(
+            i
+            for i, display in enumerate(displays)
+            if "gauged_u1x_g3_corrected_common_kernel_v20.py" in display
+        )
+        matrix_index = next(
+            i
+            for i, display in enumerate(displays)
+            if "theory_validation_matrix_v20.py --expect-blocked" in display
+        )
+        ultimate_index = next(
+            i
+            for i, display in enumerate(displays)
+            if "ultimate_theory_gate_v20.py --expect-blocked --no-write" in display
+        )
+        unittest_index = next(
+            i
+            for i, display in enumerate(displays)
+            if "unittest discover -v" in display
+        )
+        self.assertLess(rank_index, g2_index)
+        self.assertLess(g2_index, g3_index)
+        self.assertLess(g2_index, quotient_index)
+        self.assertLess(quotient_index, pd_certificate_index)
+        self.assertLess(pd_certificate_index, a_square_index)
+        self.assertLess(a_square_index, exact_sos_index)
+        self.assertLess(exact_sos_index, global_counterexample_index)
+        self.assertLess(global_counterexample_index, sos_candidate_index)
+        self.assertLess(hsx_extension_index, exact_hsx_hessian_index)
+        self.assertLess(phi_orbit_index, equality_index)
+        self.assertLess(phi_orbit_index, phi_local_index)
+        self.assertLess(phi_local_index, equality_index)
+        self.assertLess(phi_local_index, phi_su3_index)
+        self.assertLess(phi_su3_index, equality_index)
+        self.assertLess(equality_index, fixed_f_offkernel_index)
+        self.assertLess(fixed_f_offkernel_index, max_negative_zero_residual_index)
+        self.assertLess(
+            max_negative_zero_residual_index, max_negative_full_residual_index
+        )
+        self.assertLess(max_negative_full_residual_index, global_gap_index)
+        self.assertLess(fixed_f_offkernel_index, global_gap_index)
+        self.assertLess(a_square_index, sos_candidate_index)
+        self.assertLess(sos_candidate_index, g3_index)
+        self.assertLess(g3_index, corrected_g3_index)
+        self.assertLess(corrected_g3_index, matrix_index)
+        self.assertLess(matrix_index, ultimate_index)
+        self.assertLess(ultimate_index, unittest_index)
 
     def test_command_runner_records_failure_and_continues(self):
         commands = (
@@ -51,6 +247,19 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
         report = prepare.run_commands(commands, continue_after_failure=False)
         self.assertEqual(report["status"], "FAIL")
         self.assertEqual(report["n_commands_executed"], 1)
+
+    def test_command_ledger_uses_portable_python_name(self):
+        commands = ((sys.executable, "-c", "raise SystemExit(0)"),)
+        with patch.object(prepare.subprocess, "run") as runner:
+            runner.return_value.returncode = 0
+            report = prepare.run_commands(commands, continue_after_failure=False)
+        row = report["commands"][0]
+
+        self.assertEqual(runner.call_args.args[0], commands[0])
+        self.assertEqual(row["command"], ["python", "-c", "raise SystemExit(0)"])
+        self.assertEqual(row["display"], "python -c raise SystemExit(0)")
+        serialized_executable = sys.executable.replace("\\", "\\\\")
+        self.assertNotIn(serialized_executable, json.dumps(report))
 
 
 if __name__ == "__main__":

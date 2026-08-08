@@ -1,36 +1,47 @@
-# Theory confirmation verdict — v20
+# Theory confirmation verdict - v20
 
-**Generated (UTC):** 2026-08-03T21:24:57.707155+00:00
+**Status:** `THEORY_CONFIRMATION_AUDIT_COMPLETE__MODEL_CONTRACT_BLOCKED`
+**Overall state:** `BLOCKED`
+**Classification:** `MODEL_CONTRACT_INCONSISTENT__AUTHORITATIVE_GATES_REOPENED`
+**Decision:** `WITHHOLD_APPROVAL`
 
-The anomaly/operator core survives the in-repository attacks, a conditional aligned benchmark is numerically safe, natural-scale flavour proxy points exist, and the 37 GHz photon target remains experimentally open. The full phenomenological theory is not approved: unique full C_e,C_p,C_n, finite-model FCNC closure, and explicit matrix Yukawa RG/two-loop threshold evolution remain open.
-
-**Verdict code:** `CORE_INTERNAL_CHECKS_PASS__PHENOMENOLOGY_OPEN`
+WITHHOLD APPROVAL. The audit itself succeeds, but the manuscript's gauged U(1)_X model still lacks a real external SARAH execution. Bind an actual v2 external run and recertify G1-G3 on the 44-direction, 51-real-parameter potential before any internal, full, empirical, or exclusion claim.
 
 ## Approval levels
 
-- Internal candidate: **True**
-- Conditional benchmark: **True**
+- Internal candidate: **False**
+- Conditional benchmark: **False**
 - Full phenomenology: **False**
 - Empirical realization: **False**
+- Whole-model exclusion: **False**
 
-## Full-approval blockers
+## Scientific blockers
 
-- UV-fixed unique full-v20 C_e,C_p,C_n
-- finite-model tree-level FCNC closure
-- matrix-valued Yukawa RGE solution
-- two-loop SO(10)/threshold closure
+- `AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED`
+- `G1_NOT_CLOSED`
+- `G2_NOT_CLOSED`
+- `G3_ARBITRARY_NON_PURE_DELTA_SIGMA_UNIFORM_COERCIVITY_OPEN`
+- `G3_NOT_CLOSED`
+- `G4_NOT_CLOSED`
+- `G5_NOT_CLOSED`
+- `G6_NOT_CLOSED`
+- `G7_NOT_CLOSED`
+- `G8_NOT_CLOSED`
+- `GAUGED_U1X_G3_G8_CLOSURE_REQUIRED`
+- `PROTON_READINESS_complete_mass_basis_gauge_flavour_wilson_coefficients`
+- `PROTON_READINESS_complete_scalar_triplet_masses_mixings_and_yukawas`
+- `PROTON_READINESS_full_component_vacuum_and_competing_extrema`
+- `PROTON_READINESS_physical_phases_and_interference`
+- `PROTON_READINESS_uncertainties_propagated`
+- `PROTON_READINESS_unique_physical_XY_masses`
+- `PROTON_READINESS_unique_vev_ratios_from_full_potential`
+- `PROTON_READINESS_validated_two_loop_component_threshold_matching`
 
-## CI attestation
+## Historical scope
 
-- scope: `HISTORICAL_ONLY`
-- commit: `ba2c66364cd68d733a2dff51416f28d92100eff5`
-- unit tests: Ran 154 tests in 69.690s - OK
-- run: https://github.com/jayalabaez/so10-axion-v20/actions/runs/30790747879
+The preserved Option-C G1-G3 calculations are non-authoritative
+subtheorems of the superseded no-X potential.
 
 ## Correct public claim
 
-> We have an internally consistent SO(10)×Z17 axion candidate and an explicitly conditional aligned benchmark that survives current in-repository tests. Full fermion matching, FCNC safety, and common-scale RG closure remain open; this is not a discovery.
-
-## Do not claim
-
-> We derived unique full-v20 C_e,C_p,C_n, completed the SO(10) Yukawa RGE fit, proved all FCNCs vanish, or detected dark matter.
+> The repository has a statically consistent tool-native SARAH input for the authoritative gauged-U(1)_X scalar contract, but lacks a v2 manifest/log-bound external SARAH execution attestation. G1-G8 approval is withheld. Historical Option-C calculations are scoped subtheorems and neither validate nor exclude the gauged model.

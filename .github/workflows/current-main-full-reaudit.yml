@@ -53,6 +53,38 @@ jobs:
           python final_scalar_theory_gate_v20.py
           python irreducible_gap_closure_contract_v20.py
           python repository_blocker_inventory_v20.py
+          python exact_x_symmetry_consistency_gate_v20.py
+          python gauged_u1x_scalar_contract_v20.py --write
+          python g1_exact_declared_symmetry_character_census_v20.py --write
+          python exact_gauged_u1x_stationarity_rank_certificate_v20.py --write
+          python gauged_u1x_g2_derivative_audit_v20.py --write
+          python exact_gauged_u1x_physical_quotient_v20.py --write
+          python exact_gauged_u1x_g3_pd_rank_certificate_v20.py --recompute-heavy --write
+          python exact_gauged_u1x_g3_a_square_recoupling_v20.py --recompute --write
+          python exact_gauged_u1x_g3_sos_bfb_stationarity_v20.py --recompute --write
+          python exact_gauged_u1x_g3_global_counterexample_v20.py --write
+          python exact_gauged_u1x_g3_kernel_quartic_bound_v20.py --write
+          python exact_gauged_u1x_g3_replacement_stationary_orbit_v20.py --write
+          python exact_gauged_u1x_g3_su5_delta_pd_sos_v20.py --write
+          python exact_gauged_u1x_g3_su5_delta_hsx_extension_v20.py --write
+          python exact_gauged_u1x_g3_su5_delta_hsx_exact_hessian_v20.py --write
+          python exact_gauged_u1x_g3_su5_phi_orbit_lemma_v20.py --write
+          python exact_gauged_u1x_g3_su5_phi_local_component_v20.py --write
+          python exact_gauged_u1x_g3_su5_phi_su3_slice_v20.py --write
+          python exact_gauged_u1x_g3_su5_equality_orbit_v20.py --write
+          python exact_gauged_u1x_g3_su5_chiral_global_gap_reduction_v20.py --write
+          python exact_gauged_u1x_g3_su5_fixed_f_offkernel_bound_v20.py --write
+          python exact_gauged_u1x_g3_su5_max_negative_zero_residual_bound_v20.py --write
+          python exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py --write
+          python exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py --write
+          python gauged_u1x_g3_sos_candidate_v20.py --recompute-heavy --write
+          python gauged_u1x_g3_stability_v20.py --write
+          python gauged_u1x_g3_corrected_common_kernel_v20.py --recompute-heavy --write
+          python g1_g8_gate_ledger_v20.py --write
+          python final_g3_acceptance_gate_v20.py --write
+          python g1_g8_execution_roadmap_v20.py --write
+          python authoritative_full_model_gate_v20.py
+          python theory_validation_matrix_v20.py --expect-blocked
       - name: Focused tests
         run: |
           python -m unittest -v \
@@ -75,6 +107,34 @@ jobs:
             test_final_scalar_theory_gate_v20.py \
             test_irreducible_gap_closure_contract_v20.py \
             test_repository_blocker_inventory_v20.py
+          python -m pytest -q \
+            test_gauged_u1x_scalar_contract_v20.py \
+            test_gauged_u1x_g2_derivative_audit_v20.py \
+            test_exact_gauged_u1x_stationarity_rank_certificate_v20.py \
+            test_exact_gauged_u1x_physical_quotient_v20.py \
+            test_exact_gauged_u1x_g3_pd_rank_certificate_v20.py \
+            test_exact_gauged_u1x_g3_a_square_recoupling_v20.py \
+            test_exact_gauged_u1x_g3_sos_bfb_stationarity_v20.py \
+            test_exact_gauged_u1x_g3_global_counterexample_v20.py \
+            test_exact_gauged_u1x_g3_kernel_quartic_bound_v20.py \
+            test_exact_gauged_u1x_g3_replacement_stationary_orbit_v20.py \
+            test_exact_gauged_u1x_g3_su5_delta_pd_sos_v20.py \
+            test_exact_gauged_u1x_g3_su5_delta_hsx_extension_v20.py \
+            test_exact_gauged_u1x_g3_su5_delta_hsx_exact_hessian_v20.py \
+            test_exact_gauged_u1x_g3_su5_phi_orbit_lemma_v20.py \
+            test_exact_gauged_u1x_g3_su5_phi_local_component_v20.py \
+            test_exact_gauged_u1x_g3_su5_phi_su3_slice_v20.py \
+            test_exact_gauged_u1x_g3_su5_equality_orbit_v20.py \
+            test_exact_gauged_u1x_g3_su5_chiral_global_gap_reduction_v20.py \
+            test_exact_gauged_u1x_g3_su5_fixed_f_offkernel_bound_v20.py \
+            test_exact_gauged_u1x_g3_su5_max_negative_zero_residual_bound_v20.py \
+            test_exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py \
+            test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py \
+            test_final_g3_acceptance_gate_v20.py \
+            test_gauged_u1x_g3_sos_candidate_v20.py \
+            test_gauged_u1x_g3_stability_v20.py \
+            test_gauged_u1x_g3_corrected_common_kernel_v20.py
+          python -m pytest -q test_replicate_v20.py
       - name: Assert honest correction
         run: |
           python - <<'PY'
@@ -84,7 +144,7 @@ jobs:
           pm=json.load(open('DIRECT_PHI_H_SIGMABAR_PORTAL_M2_BLOCK_V20.json'))
           e=json.load(open('EFJX_CGC_PHYSICAL_NORMALIZATION_GATE_V20.json'))
           mc=json.load(open('MIXED_210_126_10_CW_V20_VERDICT.json'))
-          gc=json.load(open('G_SINGLET_6x6_CW_V20_VERDICT.json'))
+          gscw=json.load(open('G_SINGLET_6x6_CW_V20_VERDICT.json'))
           m=json.load(open('MIXED_210_126_10_HILBERT_HESSIAN_V20.json'))
           c=json.load(open('CAL_G_SOFT_MODE_CLASSIFICATION_V20.json'))
           o=json.load(open('CAL_G_PORTAL_DECISION_V20.json'))
@@ -96,6 +156,31 @@ jobs:
           z=json.load(open('FINAL_SCALAR_THEORY_GATE_V20.json'))
           k=json.load(open('IRREDUCIBLE_GAP_CLOSURE_CONTRACT_V20.json'))
           r=json.load(open('REPOSITORY_BLOCKER_INVENTORY_V20.json'))
+          xc=json.load(open('EXACT_X_SYMMETRY_CONSISTENCY_GATE_V20.json'))
+          er=json.load(open('EXACT_GAUGED_U1X_STATIONARITY_RANK_CERTIFICATE_V20.json'))
+          eq=json.load(open('EXACT_GAUGED_U1X_PHYSICAL_QUOTIENT_V20.json'))
+          pd=json.load(open('EXACT_GAUGED_U1X_G3_PD_RANK_CERTIFICATE_V20.json'))
+          ar=json.load(open('EXACT_GAUGED_U1X_G3_A_SQUARE_RECOUPLING_V20.json'))
+          es=json.load(open('EXACT_GAUGED_U1X_G3_SOS_BFB_STATIONARITY_V20.json'))
+          gc=json.load(open('EXACT_GAUGED_U1X_G3_GLOBAL_COUNTEREXAMPLE_V20.json'))
+          su5h=json.load(open('EXACT_GAUGED_U1X_G3_SU5_DELTA_HSX_EXTENSION_V20.json'))
+          su5hx=json.load(open('EXACT_GAUGED_U1X_G3_SU5_DELTA_HSX_EXACT_HESSIAN_V20.json'))
+          su5p=json.load(open('EXACT_GAUGED_U1X_G3_SU5_PHI_ORBIT_LEMMA_V20.json'))
+          su5pl=json.load(open('EXACT_GAUGED_U1X_G3_SU5_PHI_LOCAL_COMPONENT_V20.json'))
+          su5su3=json.load(open('EXACT_GAUGED_U1X_G3_SU5_PHI_SU3_SLICE_V20.json'))
+          su5e=json.load(open('EXACT_GAUGED_U1X_G3_SU5_EQUALITY_ORBIT_V20.json'))
+          su5g=json.load(open('EXACT_GAUGED_U1X_G3_SU5_CHIRAL_GLOBAL_GAP_REDUCTION_V20.json'))
+          su5ff=json.load(open('EXACT_GAUGED_U1X_G3_SU5_FIXED_F_OFFKERNEL_BOUND_V20.json'))
+          max_negative=json.load(open('EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_ZERO_RESIDUAL_BOUND_V20.json'))
+          max_negative_full=json.load(open('EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_FULL_RESIDUAL_BOUND_V20.json'))
+          altsos=json.load(open('EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json'))
+          fg=json.load(open('FINAL_G3_ACCEPTANCE_GATE_V20.json'))
+          sc=json.load(open('GAUGED_U1X_G3_SOS_CANDIDATE_V20.json'))
+          g3=json.load(open('GAUGED_U1X_G3_STABILITY_V20.json'))
+          ck=json.load(open('GAUGED_U1X_G3_CORRECTED_COMMON_KERNEL_V20.json'))
+          gl=json.load(open('G1_G8_GATE_LEDGER_V20.json'))
+          fm=json.load(open('AUTHORITATIVE_FULL_MODEL_GATE_V20.json'))
+          vm=json.load(open('THEORY_VALIDATION_MATRIX_V20_VERDICT.json'))
           assert d['n_failed']==0 and d['overall_state']=='BLOCKED', d
           assert d['representation']['tensor_map_shape']==[10,126], d
           assert d['singlet_basis']['generic_orbit_rank']==33, d
@@ -120,7 +205,7 @@ jobs:
           assert e['flags']['efjx_cgc_route_invalidated'], e
           assert not e['flags']['physical_CGC_normalization_derived'], e
           assert mc['flag']['scalar_CW_contribution_withdrawn'] and not mc['flag']['mixed_210_126_10_in_cw'], mc
-          assert gc['flag']['scalar_CW_contribution_withdrawn'] and gc['g_singlet_cw']['n_entries']==0, gc
+          assert gscw['flag']['scalar_CW_contribution_withdrawn'] and gscw['g_singlet_cw']['n_entries']==0, gscw
           assert m['flag']['imported_susy_hessian_withdrawn'] and not m['flag']['mixed_210_126_10_complete'], m
           assert c['flag']['cal_G_susy_gaugino_diagnostic_only'] and not c['flag']['cal_G_soft_mode_classified'], c
           assert o['flag']['cal_G_susy_gaugino_target_withdrawn'] and not o['flag']['cal_G_portal_decision_resolved'], o
@@ -144,6 +229,165 @@ jobs:
           assert k['overall_state']=='BLOCKED' and k['n_open']==8, k
           assert not e['flags']['whole_model_validated'], e
           assert not e['flags']['whole_model_excluded'], e
+          assert xc['n_failed']==0 and not xc['contract_consistent'], xc
+          assert xc['static_contract_consistent'] is True, xc
+          assert xc['blocker']=='AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED', xc
+          assert xc['executable_scaffold_contract']['model_syntax_class']=='sarah_native', xc
+          assert xc['executable_scaffold_contract']['tool_native_sarah_syntax'], xc
+          assert not xc['external_model_validation']['valid'], xc
+          assert not xc['external_model_validation']['checks']['captured_process_log_is_hash_bound'], xc
+          assert xc['repository_external_input_manifest']['valid'], xc
+          assert er['certified'] and er['rank']==13 and er['nullity']==38, er
+          assert eq['certified'] and eq['live_compiler_binding']['compiler_binding_passes'], eq
+          assert eq['gauge_quotient_dimension_including_axion']==449, eq
+          assert eq['massive_transverse_quotient_dimension']==448, eq
+          assert pd['n_failed']==0, pd
+          assert pd['status']=='DIRECT_EXACT_TRANSVERSE_HESSIAN_PASS__SOS_AND_GLOBAL_EXTREMA_EXTERNAL', pd
+          assert pd['direct_exact_ranks']['H_Phi_plus_K']=={'rank':429,'nullity':33,'PSD':True}, pd
+          assert pd['exact_full_kernel_argument']['exact_full_Hessian_rank']==448, pd
+          assert pd['exact_full_kernel_argument']['remaining_kernel_dimension']==38, pd
+          assert pd['exact_full_kernel_argument']['source_binding_exact'], pd
+          assert pd['flags']['direct_exact_source_binding'], pd
+          assert pd['flags']['proof_grade_P_plus_Delta_PSD'], pd
+          assert pd['flags']['proof_grade_full_rank_448'], pd
+          assert pd['flags']['strict_transverse_Hessian_positive_certified'], pd
+          assert not pd['flags']['global_minimum_certified'], pd
+          assert not pd['flags']['G3_closed'], pd
+          assert ar['n_failed']==0 and ar['certificate']['source_binding_exact'], ar
+          assert ar['certificate']['unique_weights']==['40','72','28','-8','-12','12'], ar
+          assert ar['flags']['A_square_recoupling_exactly_source_bound'], ar
+          assert not ar['flags']['G3_closed'], ar
+          assert es['n_failed']==0 and es['status']=='EXACT_COMPLETE_POTENTIAL_BFB_AND_SELECTED_STATIONARITY_CERTIFIED', es
+          assert es['boundedness']['source_binding_exact'], es
+          assert es['stationarity']['source_binding_exact'], es
+          assert es['flags']['complete_potential_BFB_exactly_certified'], es
+          assert es['flags']['selected_vacuum_stationarity_exactly_certified'], es
+          assert not es['flags']['selected_vacuum_global_minimum_certified'], es
+          assert not es['flags']['selected_vacuum_unique_modulo_symmetry'], es
+          assert not es['flags']['G3_closed'], es
+          assert gc['n_failed']==0 and gc['flags']['lower_energy_field_witness_exactly_certified'], gc
+          assert gc['flags']['selected_vacuum_global_minimum_disproved'], gc
+          assert not gc['flags']['G3_closed'] and not gc['flags']['whole_model_excluded'], gc
+          assert su5h['n_failed']==0 and su5h['flag']['chiral_H_exact_stationary_candidate_constructed'], su5h
+          assert su5h['flag']['full_quartic_BFB_certified'] and not su5h['flag']['full_global_minimum_certified'], su5h
+          assert su5h['chiral_H_candidate']['exact_orbit']['SO10_plus_U1X_plus_PQ_rank']==38, su5h
+          assert su5h['live_full_gradient_and_quotient_Hessian']['transverse_dimension']==448, su5h
+          assert not su5h['live_full_gradient_and_quotient_Hessian']['proof_grade'], su5h
+          assert su5hx['status']=='EXACT_FULL_HESSIAN_RANK_448_NULLITY_38_CERTIFIED', su5hx
+          assert su5hx['overall_state']=='CLOSED_FULL_LOCAL_HESSIAN_SUBPROBLEM', su5hx
+          assert all(su5hx['flags'][name] for name in ('exact_rank_448','exact_nullity_38','exact_PSD','strict_quotient','proof_grade','source_binding')), su5hx
+          assert not su5hx['G3_closed'], su5hx
+          assert su5p['n_failed']==0 and su5p['status']=='LITERAL_SINGLE_ORBIT_LEMMA_REFUTED__SIGNED_GLOBAL_LEMMA_OPEN', su5p
+          assert su5p['scope']['literal_plus_orbit_only_statement_refuted'], su5p
+          assert not su5p['scope']['corrected_signed_two_orbit_theorem_proved'], su5p
+          assert not su5p['scope']['G3_closed'], su5p
+          assert su5pl['n_failed']==0 and su5pl['status']=='EXACT_LOCAL_COMPONENT_THEOREM_CLOSED__DISTANT_COMPONENTS_OPEN', su5pl
+          assert su5pl['scope']['signed_orbit_locally_isolated'], su5pl
+          assert not su5pl['scope']['disconnected_distant_components_excluded'], su5pl
+          assert not su5pl['scope']['G3_closed'], su5pl
+          assert su5su3['n_failed']==0 and su5su3['status']=='EXACT_COMPLETE_SU3_FIXED_SLICE_CLASSIFIED__GENERIC_GLOBAL_OPEN', su5su3
+          assert su5su3['scope']['complete_16_real_dimensional_SU3_fixed_space_classified'], su5su3
+          assert su5su3['scope']['all_nonzero_slice_solutions_are_signed_Kahler_squares'], su5su3
+          assert not su5su3['scope']['corrected_signed_global_orbit_theorem_proved'], su5su3
+          assert su5e['n_failed']==0 and not su5e['remaining_global_lemma']['proved'], su5e
+          assert not su5e['scope']['global_equality_orbit_classification_complete'], su5e
+          assert su5g['n_failed']==0 and not su5g['flags']['lower_witness_found'], su5g
+          assert not su5g['flags']['beta_1_over_20_global_minimum_certified'], su5g
+          assert su5ff['n_failed']==0 and su5ff['status']=='EXACT_FIXED_F_FULL_OFFKERNEL_BETA_GAP_CERTIFIED', su5ff
+          assert su5ff['scope']['global_gap_nonnegative_on_full_fixed_F_stratum'], su5ff
+          assert su5ff['checks']['full_fixed_F_equality_orbit_exact'], su5ff
+          assert su5ff['scope']['equality_is_selected_SU5_flag_orbit'], su5ff
+          assert not su5ff['scope']['arbitrary_Phi_proved'], su5ff
+          assert max_negative['n_failed']==0, max_negative['failures']
+          assert max_negative['status']=='EXACT_PURE_DELTA_MAX_NEGATIVE_MIXED_ZERO_ROUTE_EXCLUDED', max_negative
+          assert max_negative['overall_state']=='CLOSED_PURE_DELTA_MAX_NEGATIVE_MIXED_ZERO_STRATUM__ARBITRARY_PHI_OPEN', max_negative
+          assert max_negative['model_contract_id']=='gauged_u1x_phi17_v20', max_negative
+          assert max_negative['scope']['strongest_all_zero_max_negative_route_excluded'] is True, max_negative
+          assert max_negative['scope']['strongest_pure_Delta_mixed_zero_max_negative_route_excluded'] is True, max_negative
+          assert max_negative['scope']['normalized_affine_stratum_requires_u_gt_0_v_gt_0'] is True, max_negative
+          assert max_negative['scope']['u_zero_and_v_zero_boundaries_closed_separately'] is True, max_negative
+          assert max_negative['checks']['live_HSX_and_PD_coefficients_bound_exactly'] is True, max_negative
+          assert max_negative['checks']['N_and_C00_C11_contraction_identities_computed_exactly'] is True, max_negative
+          assert max_negative['checks']['u_zero_and_v_zero_radial_boundaries_closed_exactly'] is True, max_negative
+          assert max_negative['scope']['nonzero_residual_cancellations_excluded'] is False, max_negative
+          assert max_negative['scope']['arbitrary_Phi_global_gap_proved'] is False, max_negative
+          assert max_negative['scope']['G3_closed'] is False, max_negative
+          assert max_negative_full['n_failed']==0, max_negative_full['failures']
+          assert max_negative_full['status']=='EXACT_MAX_NEGATIVE_FULL_RESIDUAL_PURE_DELTA_BOUND_CERTIFIED', max_negative_full
+          assert max_negative_full['overall_state']=='CLOSED_MAX_NEGATIVE_PURE_DELTA_ARBITRARY_PHI_SUBPROBLEM', max_negative_full
+          assert max_negative_full['scope']['Phi_arbitrary_real_210'] is True, max_negative_full
+          assert max_negative_full['scope']['nonzero_Phi_Sigma_residuals_covered'] is True, max_negative_full
+          assert max_negative_full['scope']['nonzero_chiral_Phi_H_residual_covered'] is True, max_negative_full
+          assert max_negative_full['scope']['restricted_gap_global_minimum']=='1/5000', max_negative_full
+          assert max_negative_full['scope']['arbitrary_Sigma_orientation_proved'] is False, max_negative_full
+          assert max_negative_full['scope']['G3_closed'] is False, max_negative_full
+          assert altsos['n_failed']==0 and altsos['overall_state']=='G3_GLOBAL_ALTERNATIVE_OPEN', altsos
+          assert altsos['flags']['all_vanishing_45_current_Gram_completion_excluded'], altsos
+          assert altsos['flags']['all_vanishing_affine_SOS_completion_excluded'], altsos
+          assert not altsos['flags']['nonvanishing_residual_gradient_cancellation_excluded'], altsos
+          assert not altsos['flags']['G3_closed'], altsos
+          assert fg['n_failed']==0 and fg['overall_state']=='OPEN', fg
+          assert not fg['classification']['G3_closed'] and fg['classification']['theory_still_viable'], fg
+          assert sc['n_failed']==0 and sc['coefficient_vector']['nonzero_count']==27, sc
+          assert sc['coefficient_vector']['maximum_absolute_coefficient']==73/8, sc
+          assert sc['coefficient_vector']['symbolic_nonzero']['lambda::O48_B01_Phi_self_quartics']=='-21/200', sc
+          assert not sc['flags']['positive_J0_normalization_is_without_loss_of_generality'], sc
+          assert sc['flags']['A_square_recoupling_exactly_source_bound'], sc
+          assert sc['flags']['complete_potential_BFB_exactly_certified'], sc
+          assert sc['flags']['selected_vacuum_stationarity_exactly_compiler_certified'], sc
+          assert not sc['flags']['P_plus_Delta_Qsqrt2_component_LDL_conditional'], sc
+          assert not sc['flags']['full_448_kernel_count_conditional'], sc
+          assert sc['flags']['P_plus_Delta_source_binding_exactly_certified'], sc
+          assert sc['flags']['full_448_kernel_count_exact'], sc
+          assert sc['flags']['full_448_PSD_feasibility_certified'], sc
+          assert sc['flags']['strict_local_minimum_certified'], sc
+          assert not sc['flags']['selected_vacuum_global_minimum_certified'], sc
+          assert sc['flags']['selected_vacuum_global_minimum_disproved'], sc
+          assert sc['flags']['exact_lower_energy_field_witness_certified'], sc
+          assert sc['flags']['constructive_candidate_rejected_for_G3'], sc
+          assert not sc['flags']['selected_vacuum_unique_modulo_symmetry'], sc
+          assert not sc['flags']['G3_closed'], sc
+          assert g3['n_failed']==0 and g3['status']=='G3_SELECTED_VACUUM_REJECTED_BY_EXACT_GLOBAL_COUNTEREXAMPLE', g3
+          assert g3['overall_state']=='OPEN', g3
+          assert g3['coverage']['invariant_directions']==44, g3
+          assert g3['coverage']['real_parameters']==51, g3
+          assert g3['coverage']['real_field_dimension']==486, g3
+          assert g3['coverage']['gauge_quotient_dimension_including_axion']==449, g3
+          assert g3['coverage']['massive_transverse_quotient_dimension']==448, g3
+          assert g3['coverage']['physical_quotient_dimension']==448, g3
+          assert g3['flags']['exact_gauge_orbit_rank_37_certified'], g3
+          assert g3['flags']['gauge_quotient_dimension_449_including_axion_certified'], g3
+          assert g3['flags']['exact_full_symmetry_orbit_rank_38_certified'], g3
+          assert g3['flags']['massive_transverse_quotient_dimension_448_certified'], g3
+          assert g3['flags']['physical_quotient_dimension_448_certified'], g3
+          assert g3['flags']['legacy_stationary_family_numerics_invalidated'], g3
+          assert g3['flags']['stationarity_rank_lower_bound_13_exactly_certified'], g3
+          assert not g3['flags']['stationarity_rank_upper_bound_13_only_numerical'], g3
+          assert g3['flags']['exact_P24_structural_certificate'], g3
+          assert g3['flags']['exact_stationary_witness_trace_288'], g3
+          assert g3['flags']['stationarity_rank_13_exactly_certified'], g3
+          assert g3['flags']['constructive_sparse_27_parameter_candidate_found'], g3
+          assert g3['flags']['constructive_A_square_recoupling_exactly_source_bound'], g3
+          assert g3['flags']['historical_positive_J0_normalization_invalidated'], g3
+          assert not g3['flags']['constructive_candidate_conditional_rank448_evidence'], g3
+          assert g3['flags']['constructive_candidate_exact_rank448_certificate'], g3
+          assert g3['flags']['constructive_candidate_direct_exact_source_binding'], g3
+          assert g3['flags']['G3_fixed_vacuum_strict_minimum_certified'], g3
+          assert g3['flags']['G3_selected_vacuum_global_no_go_certified'], g3
+          assert g3['flags']['exact_lower_energy_field_witness_certified'], g3
+          assert g3['flags']['constructive_candidate_rejected_for_G3'], g3
+          assert g3['flags']['G3_fixed_vacuum_PSD_feasible_certified'], g3
+          assert g3['flags']['complete_potential_BFB'], g3
+          assert not g3['flags']['global_competing_extrema_exhausted'], g3
+          assert not g3['flags']['G3_closed'], g3
+          assert ck['n_failed']==0 and ck['overall_state']=='OPEN', ck
+          assert ck['flags']['legacy_common_kernel_dimension_135_invalidated'], ck
+          assert ck['flags']['exact_H6_radial_flat_direction_refuted'], ck
+          assert ck['corrected_common_kernel_diagnostic']['corrected_common_kernel']['rank']==448, ck
+          assert ck['corrected_common_kernel_diagnostic']['corrected_common_kernel']['nullity']==0, ck
+          assert gl['summary']['closed']==[] and gl['summary']['n_blocked']==8, gl
+          assert not fm['classification']['whole_model_validated'], fm
+          assert vm['overall_state']=='BLOCKED' and not vm['full_theory_validated'], vm
           PY
       - uses: actions/upload-artifact@v4
         if: always()
@@ -172,6 +416,50 @@ jobs:
             FINAL_SCALAR_THEORY_GATE_V20.json
             IRREDUCIBLE_GAP_CLOSURE_CONTRACT_V20.json
             REPOSITORY_BLOCKER_INVENTORY_V20.json
+            GAUGED_U1X_G2_DERIVATIVE_AUDIT_V20.json
+            GAUGED_U1X_G2_DERIVATIVE_AUDIT_V20.md
+            EXACT_GAUGED_U1X_STATIONARITY_RANK_CERTIFICATE_V20.json
+            EXACT_GAUGED_U1X_STATIONARITY_RANK_CERTIFICATE_V20.md
+            EXACT_GAUGED_U1X_PHYSICAL_QUOTIENT_V20.json
+            EXACT_GAUGED_U1X_PHYSICAL_QUOTIENT_V20.md
+            EXACT_GAUGED_U1X_G3_PD_RANK_CERTIFICATE_V20.json
+            EXACT_GAUGED_U1X_G3_PD_RANK_CERTIFICATE_V20.md
+            EXACT_GAUGED_U1X_G3_A_SQUARE_RECOUPLING_V20.json
+            EXACT_GAUGED_U1X_G3_A_SQUARE_RECOUPLING_V20.md
+            EXACT_GAUGED_U1X_G3_SOS_BFB_STATIONARITY_V20.json
+            EXACT_GAUGED_U1X_G3_SOS_BFB_STATIONARITY_V20.md
+            EXACT_GAUGED_U1X_G3_GLOBAL_COUNTEREXAMPLE_V20.json
+            EXACT_GAUGED_U1X_G3_GLOBAL_COUNTEREXAMPLE_V20.md
+            EXACT_GAUGED_U1X_G3_SU5_DELTA_HSX_EXTENSION_V20.json
+            EXACT_GAUGED_U1X_G3_SU5_DELTA_HSX_EXTENSION_V20.md
+            EXACT_GAUGED_U1X_G3_SU5_DELTA_HSX_EXACT_HESSIAN_V20.json
+            EXACT_GAUGED_U1X_G3_SU5_DELTA_HSX_EXACT_HESSIAN_V20.md
+            EXACT_GAUGED_U1X_G3_SU5_PHI_ORBIT_LEMMA_V20.json
+            EXACT_GAUGED_U1X_G3_SU5_PHI_ORBIT_LEMMA_V20.md
+            EXACT_GAUGED_U1X_G3_SU5_PHI_LOCAL_COMPONENT_V20.json
+            EXACT_GAUGED_U1X_G3_SU5_PHI_LOCAL_COMPONENT_V20.md
+            EXACT_GAUGED_U1X_G3_SU5_PHI_SU3_SLICE_V20.json
+            EXACT_GAUGED_U1X_G3_SU5_PHI_SU3_SLICE_V20.md
+            EXACT_GAUGED_U1X_G3_SU5_EQUALITY_ORBIT_V20.json
+            EXACT_GAUGED_U1X_G3_SU5_EQUALITY_ORBIT_V20.md
+            EXACT_GAUGED_U1X_G3_SU5_CHIRAL_GLOBAL_GAP_REDUCTION_V20.json
+            EXACT_GAUGED_U1X_G3_SU5_CHIRAL_GLOBAL_GAP_REDUCTION_V20.md
+            EXACT_GAUGED_U1X_G3_SU5_FIXED_F_OFFKERNEL_BOUND_V20.json
+            EXACT_GAUGED_U1X_G3_SU5_FIXED_F_OFFKERNEL_BOUND_V20.md
+            EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_ZERO_RESIDUAL_BOUND_V20.json
+            EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_ZERO_RESIDUAL_BOUND_V20.md
+            EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_FULL_RESIDUAL_BOUND_V20.json
+            EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_FULL_RESIDUAL_BOUND_V20.md
+            EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json
+            EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.md
+            FINAL_G3_ACCEPTANCE_GATE_V20.json
+            FINAL_G3_ACCEPTANCE_GATE_V20.md
+            GAUGED_U1X_G3_SOS_CANDIDATE_V20.json
+            GAUGED_U1X_G3_SOS_CANDIDATE_V20.md
+            GAUGED_U1X_G3_STABILITY_V20.json
+            GAUGED_U1X_G3_STABILITY_V20.md
+            GAUGED_U1X_G3_CORRECTED_COMMON_KERNEL_V20.json
+            GAUGED_U1X_G3_CORRECTED_COMMON_KERNEL_V20.md
 
   full-reaudit:
     if: github.event_name != 'pull_request'
@@ -225,6 +513,8 @@ jobs:
           python final_scalar_theory_gate_v20.py
           python irreducible_gap_closure_contract_v20.py
           python repository_blocker_inventory_v20.py
+      - run: python exact_gauged_u1x_g3_su5_max_negative_zero_residual_bound_v20.py --write
+      - run: python exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py --write
       - run: python replicate.py
       - run: python validate_release_v20.py
       - run: python falsify_v20.py
@@ -239,7 +529,7 @@ jobs:
           pm=json.load(open('DIRECT_PHI_H_SIGMABAR_PORTAL_M2_BLOCK_V20.json'))
           e=json.load(open('EFJX_CGC_PHYSICAL_NORMALIZATION_GATE_V20.json'))
           mc=json.load(open('MIXED_210_126_10_CW_V20_VERDICT.json'))
-          gc=json.load(open('G_SINGLET_6x6_CW_V20_VERDICT.json'))
+          gscw=json.load(open('G_SINGLET_6x6_CW_V20_VERDICT.json'))
           m=json.load(open('MIXED_210_126_10_HILBERT_HESSIAN_V20.json'))
           c=json.load(open('CAL_G_SOFT_MODE_CLASSIFICATION_V20.json'))
           o=json.load(open('CAL_G_PORTAL_DECISION_V20.json'))
@@ -251,6 +541,17 @@ jobs:
           z=json.load(open('FINAL_SCALAR_THEORY_GATE_V20.json'))
           k=json.load(open('IRREDUCIBLE_GAP_CLOSURE_CONTRACT_V20.json'))
           r=json.load(open('REPOSITORY_BLOCKER_INVENTORY_V20.json'))
+          er=json.load(open('EXACT_GAUGED_U1X_STATIONARITY_RANK_CERTIFICATE_V20.json'))
+          eq=json.load(open('EXACT_GAUGED_U1X_PHYSICAL_QUOTIENT_V20.json'))
+          pd=json.load(open('EXACT_GAUGED_U1X_G3_PD_RANK_CERTIFICATE_V20.json'))
+          ar=json.load(open('EXACT_GAUGED_U1X_G3_A_SQUARE_RECOUPLING_V20.json'))
+          es=json.load(open('EXACT_GAUGED_U1X_G3_SOS_BFB_STATIONARITY_V20.json'))
+          gc=json.load(open('EXACT_GAUGED_U1X_G3_GLOBAL_COUNTEREXAMPLE_V20.json'))
+          max_negative=json.load(open('EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_ZERO_RESIDUAL_BOUND_V20.json'))
+          max_negative_full=json.load(open('EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_FULL_RESIDUAL_BOUND_V20.json'))
+          sc=json.load(open('GAUGED_U1X_G3_SOS_CANDIDATE_V20.json'))
+          g3=json.load(open('GAUGED_U1X_G3_STABILITY_V20.json'))
+          ck=json.load(open('GAUGED_U1X_G3_CORRECTED_COMMON_KERNEL_V20.json'))
           assert d['n_failed']==0 and d['representation']['tensor_map_shape']==[10,126], d
           assert d['flags']['canonical_126_kinetic_basis_constructed'], d
           assert d['flags']['closed_analytic_portal_spectrum_derived'], d
@@ -262,7 +563,7 @@ jobs:
           assert e['flags']['efjx_cgc_route_invalidated'], e
           assert not e['flags']['exact_EFJX_gamma_response_known'], e
           assert mc['flag']['scalar_CW_contribution_withdrawn'], mc
-          assert gc['flag']['scalar_CW_contribution_withdrawn'], gc
+          assert gscw['flag']['scalar_CW_contribution_withdrawn'], gscw
           assert m['flag']['imported_susy_hessian_withdrawn'], m
           assert c['flag']['cal_G_susy_gaugino_diagnostic_only'], c
           assert o['flag']['cal_G_susy_gaugino_target_withdrawn'], o
@@ -280,6 +581,117 @@ jobs:
           assert z['overall_state']=='BLOCKED', z
           assert k['overall_state']=='BLOCKED' and k['n_open']==8, k
           assert r['overall_state']=='BLOCKED', r
+          assert er['certified'] and er['rank']==13 and er['nullity']==38, er
+          assert eq['certified'] and eq['live_compiler_binding']['compiler_binding_passes'], eq
+          assert eq['gauge_quotient_dimension_including_axion']==449, eq
+          assert eq['massive_transverse_quotient_dimension']==448, eq
+          assert pd['n_failed']==0, pd
+          assert pd['status']=='DIRECT_EXACT_TRANSVERSE_HESSIAN_PASS__SOS_AND_GLOBAL_EXTREMA_EXTERNAL', pd
+          assert pd['direct_exact_ranks']['H_Phi_plus_K']=={'rank':429,'nullity':33,'PSD':True}, pd
+          assert pd['exact_full_kernel_argument']['exact_full_Hessian_rank']==448, pd
+          assert pd['exact_full_kernel_argument']['remaining_kernel_dimension']==38, pd
+          assert pd['exact_full_kernel_argument']['source_binding_exact'], pd
+          assert pd['flags']['direct_exact_source_binding'], pd
+          assert pd['flags']['proof_grade_P_plus_Delta_PSD'], pd
+          assert pd['flags']['proof_grade_full_rank_448'], pd
+          assert pd['flags']['strict_transverse_Hessian_positive_certified'], pd
+          assert not pd['flags']['global_minimum_certified'], pd
+          assert not pd['flags']['G3_closed'], pd
+          assert ar['n_failed']==0 and ar['certificate']['source_binding_exact'], ar
+          assert ar['certificate']['unique_weights']==['40','72','28','-8','-12','12'], ar
+          assert ar['flags']['A_square_recoupling_exactly_source_bound'], ar
+          assert not ar['flags']['G3_closed'], ar
+          assert es['n_failed']==0 and es['status']=='EXACT_COMPLETE_POTENTIAL_BFB_AND_SELECTED_STATIONARITY_CERTIFIED', es
+          assert es['boundedness']['source_binding_exact'], es
+          assert es['stationarity']['source_binding_exact'], es
+          assert es['flags']['complete_potential_BFB_exactly_certified'], es
+          assert es['flags']['selected_vacuum_stationarity_exactly_certified'], es
+          assert not es['flags']['selected_vacuum_global_minimum_certified'], es
+          assert not es['flags']['selected_vacuum_unique_modulo_symmetry'], es
+          assert not es['flags']['G3_closed'], es
+          assert gc['n_failed']==0 and gc['flags']['lower_energy_field_witness_exactly_certified'], gc
+          assert gc['flags']['selected_vacuum_global_minimum_disproved'], gc
+          assert not gc['flags']['G3_closed'] and not gc['flags']['whole_model_excluded'], gc
+          assert max_negative['n_failed']==0, max_negative['failures']
+          assert max_negative['status']=='EXACT_PURE_DELTA_MAX_NEGATIVE_MIXED_ZERO_ROUTE_EXCLUDED', max_negative
+          assert max_negative['overall_state']=='CLOSED_PURE_DELTA_MAX_NEGATIVE_MIXED_ZERO_STRATUM__ARBITRARY_PHI_OPEN', max_negative
+          assert max_negative['model_contract_id']=='gauged_u1x_phi17_v20', max_negative
+          assert max_negative['scope']['strongest_all_zero_max_negative_route_excluded'] is True, max_negative
+          assert max_negative['scope']['strongest_pure_Delta_mixed_zero_max_negative_route_excluded'] is True, max_negative
+          assert max_negative['scope']['normalized_affine_stratum_requires_u_gt_0_v_gt_0'] is True, max_negative
+          assert max_negative['scope']['u_zero_and_v_zero_boundaries_closed_separately'] is True, max_negative
+          assert max_negative['checks']['live_HSX_and_PD_coefficients_bound_exactly'] is True, max_negative
+          assert max_negative['checks']['N_and_C00_C11_contraction_identities_computed_exactly'] is True, max_negative
+          assert max_negative['checks']['u_zero_and_v_zero_radial_boundaries_closed_exactly'] is True, max_negative
+          assert max_negative['scope']['nonzero_residual_cancellations_excluded'] is False, max_negative
+          assert max_negative['scope']['arbitrary_Phi_global_gap_proved'] is False, max_negative
+          assert max_negative['scope']['G3_closed'] is False, max_negative
+          assert max_negative_full['n_failed']==0, max_negative_full['failures']
+          assert max_negative_full['status']=='EXACT_MAX_NEGATIVE_FULL_RESIDUAL_PURE_DELTA_BOUND_CERTIFIED', max_negative_full
+          assert max_negative_full['overall_state']=='CLOSED_MAX_NEGATIVE_PURE_DELTA_ARBITRARY_PHI_SUBPROBLEM', max_negative_full
+          assert max_negative_full['scope']['Phi_arbitrary_real_210'] is True, max_negative_full
+          assert max_negative_full['scope']['nonzero_Phi_Sigma_residuals_covered'] is True, max_negative_full
+          assert max_negative_full['scope']['nonzero_chiral_Phi_H_residual_covered'] is True, max_negative_full
+          assert max_negative_full['scope']['restricted_gap_global_minimum']=='1/5000', max_negative_full
+          assert max_negative_full['scope']['arbitrary_Sigma_orientation_proved'] is False, max_negative_full
+          assert max_negative_full['scope']['G3_closed'] is False, max_negative_full
+          assert sc['n_failed']==0 and sc['coefficient_vector']['nonzero_count']==27, sc
+          assert sc['coefficient_vector']['maximum_absolute_coefficient']==73/8, sc
+          assert sc['coefficient_vector']['symbolic_nonzero']['lambda::O48_B01_Phi_self_quartics']=='-21/200', sc
+          assert not sc['flags']['positive_J0_normalization_is_without_loss_of_generality'], sc
+          assert sc['flags']['A_square_recoupling_exactly_source_bound'], sc
+          assert sc['flags']['complete_potential_BFB_exactly_certified'], sc
+          assert sc['flags']['selected_vacuum_stationarity_exactly_compiler_certified'], sc
+          assert not sc['flags']['P_plus_Delta_Qsqrt2_component_LDL_conditional'], sc
+          assert not sc['flags']['full_448_kernel_count_conditional'], sc
+          assert sc['flags']['P_plus_Delta_source_binding_exactly_certified'], sc
+          assert sc['flags']['full_448_kernel_count_exact'], sc
+          assert sc['flags']['full_448_PSD_feasibility_certified'], sc
+          assert sc['flags']['strict_local_minimum_certified'], sc
+          assert not sc['flags']['selected_vacuum_global_minimum_certified'], sc
+          assert sc['flags']['selected_vacuum_global_minimum_disproved'], sc
+          assert sc['flags']['exact_lower_energy_field_witness_certified'], sc
+          assert sc['flags']['constructive_candidate_rejected_for_G3'], sc
+          assert not sc['flags']['selected_vacuum_unique_modulo_symmetry'], sc
+          assert not sc['flags']['G3_closed'], sc
+          assert g3['n_failed']==0 and g3['status']=='G3_SELECTED_VACUUM_REJECTED_BY_EXACT_GLOBAL_COUNTEREXAMPLE', g3
+          assert g3['overall_state']=='OPEN', g3
+          assert g3['coverage']['invariant_directions']==44, g3
+          assert g3['coverage']['real_parameters']==51, g3
+          assert g3['coverage']['real_field_dimension']==486, g3
+          assert g3['coverage']['gauge_quotient_dimension_including_axion']==449, g3
+          assert g3['coverage']['massive_transverse_quotient_dimension']==448, g3
+          assert g3['coverage']['physical_quotient_dimension']==448, g3
+          assert g3['flags']['exact_gauge_orbit_rank_37_certified'], g3
+          assert g3['flags']['gauge_quotient_dimension_449_including_axion_certified'], g3
+          assert g3['flags']['exact_full_symmetry_orbit_rank_38_certified'], g3
+          assert g3['flags']['massive_transverse_quotient_dimension_448_certified'], g3
+          assert g3['flags']['physical_quotient_dimension_448_certified'], g3
+          assert g3['flags']['legacy_stationary_family_numerics_invalidated'], g3
+          assert g3['flags']['stationarity_rank_lower_bound_13_exactly_certified'], g3
+          assert not g3['flags']['stationarity_rank_upper_bound_13_only_numerical'], g3
+          assert g3['flags']['exact_P24_structural_certificate'], g3
+          assert g3['flags']['exact_stationary_witness_trace_288'], g3
+          assert g3['flags']['stationarity_rank_13_exactly_certified'], g3
+          assert g3['flags']['constructive_sparse_27_parameter_candidate_found'], g3
+          assert g3['flags']['constructive_A_square_recoupling_exactly_source_bound'], g3
+          assert g3['flags']['historical_positive_J0_normalization_invalidated'], g3
+          assert not g3['flags']['constructive_candidate_conditional_rank448_evidence'], g3
+          assert g3['flags']['constructive_candidate_exact_rank448_certificate'], g3
+          assert g3['flags']['constructive_candidate_direct_exact_source_binding'], g3
+          assert g3['flags']['G3_fixed_vacuum_strict_minimum_certified'], g3
+          assert g3['flags']['G3_selected_vacuum_global_no_go_certified'], g3
+          assert g3['flags']['exact_lower_energy_field_witness_certified'], g3
+          assert g3['flags']['constructive_candidate_rejected_for_G3'], g3
+          assert g3['flags']['G3_fixed_vacuum_PSD_feasible_certified'], g3
+          assert g3['flags']['complete_potential_BFB'], g3
+          assert not g3['flags']['global_competing_extrema_exhausted'], g3
+          assert not g3['flags']['G3_closed'], g3
+          assert ck['n_failed']==0 and ck['overall_state']=='OPEN', ck
+          assert ck['flags']['legacy_common_kernel_dimension_135_invalidated'], ck
+          assert ck['flags']['exact_H6_radial_flat_direction_refuted'], ck
+          assert ck['corrected_common_kernel_diagnostic']['corrected_common_kernel']['rank']==448, ck
+          assert ck['corrected_common_kernel_diagnostic']['corrected_common_kernel']['nullity']==0, ck
           assert not z['flags']['whole_model_validated'], z
           assert not z['flags']['whole_model_excluded'], z
           PY
@@ -310,3 +722,27 @@ jobs:
             FINAL_SCALAR_THEORY_GATE_V20.json
             IRREDUCIBLE_GAP_CLOSURE_CONTRACT_V20.json
             REPOSITORY_BLOCKER_INVENTORY_V20.json
+            GAUGED_U1X_G2_DERIVATIVE_AUDIT_V20.json
+            GAUGED_U1X_G2_DERIVATIVE_AUDIT_V20.md
+            EXACT_GAUGED_U1X_STATIONARITY_RANK_CERTIFICATE_V20.json
+            EXACT_GAUGED_U1X_STATIONARITY_RANK_CERTIFICATE_V20.md
+            EXACT_GAUGED_U1X_PHYSICAL_QUOTIENT_V20.json
+            EXACT_GAUGED_U1X_PHYSICAL_QUOTIENT_V20.md
+            EXACT_GAUGED_U1X_G3_PD_RANK_CERTIFICATE_V20.json
+            EXACT_GAUGED_U1X_G3_PD_RANK_CERTIFICATE_V20.md
+            EXACT_GAUGED_U1X_G3_A_SQUARE_RECOUPLING_V20.json
+            EXACT_GAUGED_U1X_G3_A_SQUARE_RECOUPLING_V20.md
+            EXACT_GAUGED_U1X_G3_SOS_BFB_STATIONARITY_V20.json
+            EXACT_GAUGED_U1X_G3_SOS_BFB_STATIONARITY_V20.md
+            EXACT_GAUGED_U1X_G3_GLOBAL_COUNTEREXAMPLE_V20.json
+            EXACT_GAUGED_U1X_G3_GLOBAL_COUNTEREXAMPLE_V20.md
+            EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_ZERO_RESIDUAL_BOUND_V20.json
+            EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_ZERO_RESIDUAL_BOUND_V20.md
+            EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_FULL_RESIDUAL_BOUND_V20.json
+            EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_FULL_RESIDUAL_BOUND_V20.md
+            GAUGED_U1X_G3_SOS_CANDIDATE_V20.json
+            GAUGED_U1X_G3_SOS_CANDIDATE_V20.md
+            GAUGED_U1X_G3_STABILITY_V20.json
+            GAUGED_U1X_G3_STABILITY_V20.md
+            GAUGED_U1X_G3_CORRECTED_COMMON_KERNEL_V20.json
+            GAUGED_U1X_G3_CORRECTED_COMMON_KERNEL_V20.md

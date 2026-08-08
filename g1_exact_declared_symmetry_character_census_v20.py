@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
-"""Exact degree<=4 SO(10)+PQ+Z17 scalar multiplicity census.
+"""Exact degree<=4 scalar census for the manuscript's gauged U(1)_X model.
 
-Continuous X is historical metadata, not a live selection rule. The exact D5
-character calculation closes multiplicities only; explicit normalized tensors
-remain open.
+Every unbroken-phase polynomial must be neutral under SO(10) x U(1)_X and
+the accidental PQ symmetry.  The residual Z17 check is retained explicitly.
+The former no-X Option-C census remains available only as a counterfactual.
+The exact D5 character calculation closes multiplicities only; integration
+with the normalized tensor/derivative compiler is audited by later gates.
 """
 from __future__ import annotations
 import argparse,itertools,json
@@ -101,14 +103,14 @@ def charge(c):
         for i in range(3): q[i]+=n*Q[k][i]
     q[2]%=17
     return dict(PQ=q[0],X=q[1],Z17=q[2])
-def neutral(c,require_x=False):
+def neutral(c,require_x):
     q=charge(c); return q['PQ']==0 and q['Z17']==0 and (not require_x or q['X']==0)
 def conj(c):
     d=dict(zip(FIELDS,c)); return tuple(d[CONJ[k]] for k in FIELDS)
 def label(c):
     return ' '.join(LABEL[k] if n==1 else f'{LABEL[k]}^{n}' for k,n in zip(FIELDS,c) if n) or '1'
 @lru_cache(None)
-def census(require_x=False):
+def census(require_x):
     rows=[]
     for degree in range(1,5):
         for c in comps(degree,len(FIELDS)):
@@ -151,29 +153,29 @@ symmetric_rep_character=symrep
 charge_neutral=neutral
 find_multiplicity=find
 def build_report():
-    live=census(False); old=census(True); lc=counts(live); oc=counts(old); oo=orbits(live)
+    live=census(True); option_c=census(False); lc=counts(live); cc=counts(option_c); oo=orbits(live)
     anchors=dict(Sym2_10=singlet(symrep('H',2)),Sym4_10=singlet(symrep('H',4)),Sym2_210=singlet(symrep('P',2)),Sym3_210=singlet(symrep('P',3)),Sym4_210=singlet(symrep('P',4)),Sym2_126_pair=find(live,D=2,Db=2),P2_H_126dag=find(live,P=2,H=1,Db=1),P2_126bar_126=find(live,P=2,D=1,Db=1),P2_H_Hdag=find(live,P=2,H=1,Hb=1),H_Hdag_126bar_126=find(live,H=1,Hb=1,D=1,Db=1),H2_Hdag2=find(live,H=2,Hb=2))
     sing=sector(live,('P','H','Hb','D','Db')); hsx=sector(live,('P','D','Db'))
-    lookup={tuple(r['count_tuple']):r['so10_singlet_multiplicity'] for r in live}
+    lookup={tuple(r['count_tuple']):r['so10_singlet_multiplicity'] for r in option_c}
     checks=dict(
       dimensions=(cdim(vector()),cdim(spinor()),cdim(r126()),cdim(r126b()),cdim(r210()))==(10,16,126,126,210),
       weyl_order=sum(abs(v) for v in offsets().values())==1920,
       anchors=anchors==dict(Sym2_10=1,Sym4_10=1,Sym2_210=1,Sym3_210=1,Sym4_210=4,Sym2_126_pair=4,P2_H_126dag=2,P2_126bar_126=6,P2_H_Hdag=3,H_Hdag_126bar_126=2,H2_Hdag2=2),
-      live_counts=(lc['charge_and_so10_allowed_multidegrees'],lc['hermitian_conjugacy_orbits'],lc['total_complex_invariant_multiplicity'],lc['total_potential_orbit_multiplicity'],lc['total_real_potential_parameters'])==(74,48,91,64,91),
-      live_degree_counts=lc['complex_invariant_multiplicity_by_degree']=={1:2,2:7,3:18,4:64} and lc['potential_orbit_multiplicity_by_degree']=={1:1,2:6,3:10,4:47},
-      old_X_counts=(oc['charge_and_so10_allowed_multidegrees'],oc['hermitian_conjugacy_orbits'],oc['total_complex_invariant_multiplicity'],oc['total_potential_orbit_multiplicity'],oc['total_real_potential_parameters'])==(34,28,51,44,51),
-      old_is_subset=all(lookup.get(tuple(r['count_tuple']))==r['so10_singlet_multiplicity'] for r in old),
-      singlet_crosscheck=sing==dict(multidegrees=21,conjugacy_orbits=13,complex_invariant_multiplicity=21,potential_orbit_multiplicity=13,real_parameters=21),
-      H_S_Phi17_crosscheck=hsx==dict(multidegrees=35,conjugacy_orbits=22,complex_invariant_multiplicity=36,potential_orbit_multiplicity=23,real_parameters=36),
-      live_PQ_Z17_neutral=all(r['charge']['PQ']==r['charge']['Z17']==0 for r in live),
-      live_has_X_charged_rows=any(r['charge']['X']!=0 for r in live),
+      gauged_counts=(lc['charge_and_so10_allowed_multidegrees'],lc['hermitian_conjugacy_orbits'],lc['total_complex_invariant_multiplicity'],lc['total_potential_orbit_multiplicity'],lc['total_real_potential_parameters'])==(34,28,51,44,51),
+      gauged_degree_counts=lc['complex_invariant_multiplicity_by_degree']=={1:0,2:5,3:6,4:40} and lc['potential_orbit_multiplicity_by_degree']=={1:0,2:5,3:4,4:35},
+      option_c_counts=(cc['charge_and_so10_allowed_multidegrees'],cc['hermitian_conjugacy_orbits'],cc['total_complex_invariant_multiplicity'],cc['total_potential_orbit_multiplicity'],cc['total_real_potential_parameters'])==(74,48,91,64,91),
+      gauged_is_subset=all(lookup.get(tuple(r['count_tuple']))==r['so10_singlet_multiplicity'] for r in live),
+      singlet_crosscheck=sing==dict(multidegrees=5,conjugacy_orbits=5,complex_invariant_multiplicity=5,potential_orbit_multiplicity=5,real_parameters=5),
+      H_S_Phi17_crosscheck=hsx==dict(multidegrees=11,conjugacy_orbits=10,complex_invariant_multiplicity=12,potential_orbit_multiplicity=11,real_parameters=12),
+      live_PQ_X_Z17_neutral=all(r['charge']['PQ']==r['charge']['X']==r['charge']['Z17']==0 for r in live),
+      live_has_no_X_charged_rows=not any(r['charge']['X']!=0 for r in live),
       conjugacy=all(len({r['so10_singlet_multiplicity'] for r in live if r['conjugacy_orbit_key']==o['orbit_key']})==1 for o in oo),
       no_whole_model_claim=True)
     fail=[k for k,v in checks.items() if not v]
-    return dict(status='EXACT_DECLARED_SYMMETRY_RENORMALIZABLE_MULTIPLICITY_CENSUS_COMPLETE__TENSOR_BASIS_OPEN' if not fail else 'EXACT_DECLARED_SYMMETRY_CHARACTER_CENSUS_FAILED',overall_state='BLOCKED',n_checks=len(checks),n_failed=len(fail),failures=fail,checks=checks,live_symmetry_contract=dict(SO10=True,PQ=True,Z17=True,continuous_X=False),character_dimensions=dict(vector=10,spinor=16,rep126=126,rep126bar=126,rep210=210),anchors=anchors,counts=lc,historical_continuous_X_comparison=dict(counts=oc,interpretation='The exact old 44-coefficient result requires the superseded continuous-X filter.'),cross_checks=dict(singlet_only=sing,H10_S_Phi17=hsx),multidegrees=list(live),potential_orbits=oo,closure=dict(declared_symmetry_charge_multidegrees_degree_le_4_closed=not fail,so10_singlet_multiplicities_degree_le_4_closed=not fail,historical_X_filtered_44_superseded=not fail,explicit_component_tensor_basis_closed=False,full_tensor_normalizations_closed=False,full_component_potential_G2_closed=False),flags=dict(renormalizable_G1_multiplicity_census_closed=not fail,g1_explicit_tensor_basis_still_open=True,g1_closed=False,whole_model_validated=False,whole_model_excluded=False,empirical_discovery=False),next_exact_target='Construct and normalize the multiplicity-two 210_H^2 10_H 126bar_H^dag tensor family.',verdict='Live SO(10)+PQ+Z17 gives 74 multidegrees, 48 conjugacy orbits, 64 invariant coefficients, and 91 real parameters. The old 44-count is a historical-X subcensus. G1 remains open at explicit tensor construction and normalization.')
+    return dict(model_contract_id='gauged_u1x_phi17_v20',status='EXACT_GAUGED_U1X_RENORMALIZABLE_MULTIPLICITY_CENSUS_COMPLETE__COMPILER_REAUDIT_OPEN' if not fail else 'EXACT_DECLARED_SYMMETRY_CHARACTER_CENSUS_FAILED',overall_state='PARTIAL' if not fail else 'EXECUTION_FAIL',n_checks=len(checks),n_failed=len(fail),failures=fail,checks=checks,live_symmetry_contract=dict(gauge=['SO(10)','U(1)_X'],accidental_global=['PQ'],residual=['Z17'],continuous_X=True),character_dimensions=dict(vector=10,spinor=16,rep126=126,rep126bar=126,rep210=210),anchors=anchors,counts=lc,historical_option_c_no_x_comparison=dict(model_contract_id='historical_option_c_no_x_v20',counts=cc,interpretation='The 64-direction/91-parameter result omits the manuscript gauge selection rule and is not authoritative.'),cross_checks=dict(singlet_only=sing,H10_S_Phi17=hsx),multidegrees=list(live),potential_orbits=oo,closure=dict(declared_symmetry_charge_multidegrees_degree_le_4_closed=not fail,so10_singlet_multiplicities_degree_le_4_closed=not fail,gauged_u1x_44_direction_subcensus_closed=not fail,explicit_component_tensor_subset_integration_closed=False,full_component_potential_G2_closed=False),flags=dict(renormalizable_G1_multiplicity_census_closed=not fail,g1_explicit_tensor_subset_reaudit_open=True,g1_closed=False,whole_model_validated=False,whole_model_excluded=False,empirical_discovery=False),next_exact_target='Re-audit the normalized 44-direction subset of the existing tensor compiler under the gauged U(1)_X contract.',verdict='The manuscript-authoritative SO(10) x U(1)_X theory has 34 multidegrees, 28 conjugacy orbits, 44 invariant directions, and 51 real parameters. The no-X 64/91 result is retained only as a historical counterfactual; tensor/compiler integration remains open.')
 def write(r):
     OUT.write_text(json.dumps(r,indent=2,sort_keys=True)+'\n')
-    OUT_MD.write_text(f"# Exact live G1 character census\n\n**Status:** `{r['status']}`\n\n{r['verdict']}\n\n**Next:** {r['next_exact_target']}\n")
+    OUT_MD.write_text(f"# Exact gauged U(1)_X G1 character census\n\n**Status:** `{r['status']}`\n\n{r['verdict']}\n\n**Next:** {r['next_exact_target']}\n")
 def main(argv=None):
     p=argparse.ArgumentParser(); p.add_argument('--write',action='store_true'); a=p.parse_args(argv); r=build_report()
     if a.write: write(r)
