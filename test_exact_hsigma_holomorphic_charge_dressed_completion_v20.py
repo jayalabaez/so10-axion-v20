@@ -11,6 +11,14 @@ def test_complete_report_passes_fail_closed():
     report = mod.build_report()
     assert report["n_failed"] == 0, report["failures"]
     assert all(report["checks"].values())
+    assert report["model_contract_id"] == "historical_option_c_no_x_v20"
+    assert report["authoritative_for_manuscript"] is False
+    assert report["model_wide_no_go_certified"] is False
+    assert "NONAUTHORITATIVE" in report["status"]
+    assert report["flags"]["u1x_neutral_O54_tensor_result_reusable"]
+    assert report["flags"][
+        "phi17_dressed_companions_allowed_by_manuscript_u1x"
+    ] is False
     assert report["flags"]["complete_mixed_invariant_ring"] is False
     assert report["flags"]["whole_model_validated"] is False
     assert report["flags"]["empirical_discovery"] is False
@@ -20,10 +28,10 @@ def test_charge_and_multiplicity_census():
     charges = mod.charge_audit()
     reps = mod.representation_audit()
     assert set(charges) == {mod.O54, mod.OPLUS, mod.OMINUS}
-    assert all(row["declared_allowed"]["all"] for row in charges.values())
-    assert charges[mod.O54]["historical_X_comparison"]["all"] is True
-    assert charges[mod.OPLUS]["historical_X_comparison"]["all"] is False
-    assert charges[mod.OMINUS]["historical_X_comparison"]["all"] is False
+    assert all(row["option_c_no_x_allowed"]["all"] for row in charges.values())
+    assert charges[mod.O54]["gauged_u1x_manuscript_allowed"]["all"] is True
+    assert charges[mod.OPLUS]["gauged_u1x_manuscript_allowed"]["all"] is False
+    assert charges[mod.OMINUS]["gauged_u1x_manuscript_allowed"]["all"] is False
     assert reps["common_channels"] == {"54": 1}
     assert reps["charge_dressed_210_multiplicity"] == 1
 

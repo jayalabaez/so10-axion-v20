@@ -46,7 +46,7 @@ No public-data channel in this matrix *proves* the theory. They leave the photon
 - BH SR: Stellar-mass BH clouds are NOT in the v20 window; the cloud mass sits at asteroid-scale PBHs. Public stellar-BH catalogs therefore do not probe this mass. PBH microlensing is the relevant public path.
 - Plasma: Resonance at 37 GHz needs n_e ~ 1.71e+13 cm^-3 — far above warm ISM/HII. Not a galactic-propagation smoking gun for v20.
 - CMB: CMB maps cannot perform the v20 37 GHz DM line search
-- GRAVITAS targets: 21 (reach~0.0070 kpc)
+- GRAVITAS targets: 2 (reach~0.0070 kpc)
 
 ## Home-PC priority queue
 

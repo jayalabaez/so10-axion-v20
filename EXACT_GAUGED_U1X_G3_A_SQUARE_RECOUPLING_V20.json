@@ -1,0 +1,131 @@
+{
+  "status": "EXACT_A_SQUARE_RECOUPLING_CERTIFIED",
+  "overall_state": "CLOSED_SUBPROBLEM",
+  "n_checks": 8,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "exact_Bose_channel_count_is_six": true,
+    "six_witness_evaluation_matrix_is_nonsingular": true,
+    "recorded_exact_determinant_matches": true,
+    "unique_exact_weights_match_A_square_identity": true,
+    "all_exact_witness_residuals_vanish": true,
+    "recomputed_sources_match_recorded_witness": true,
+    "upstream_exact_census_passes": true,
+    "G3_not_closed_by_recoupling_alone": true
+  },
+  "certificate": {
+    "source_arithmetic": "Z[i] tensors plus Fraction Casimir polynomials",
+    "invariant_space_dimension": 6,
+    "multiplicity_one_channels": [
+      "1",
+      "45",
+      "210",
+      "770",
+      "5940",
+      "8910"
+    ],
+    "witness_seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "witness_matrix": [
+      [
+        "25384/21",
+        "-124/35",
+        "-116/3",
+        "-1051/15",
+        "-2902/21",
+        "5849/105"
+      ],
+      [
+        "7772/7",
+        "-4/5",
+        "1324/15",
+        "-2692/15",
+        "-2939/15",
+        "19178/105"
+      ],
+      [
+        "1180",
+        "132/35",
+        "-356/5",
+        "-251/5",
+        "41086/105",
+        "1123/3"
+      ],
+      [
+        "6985/7",
+        "516/35",
+        "-332/5",
+        "-118",
+        "-6728/105",
+        "-2533/105"
+      ],
+      [
+        "1275",
+        "64/35",
+        "-368/15",
+        "737/15",
+        "4612/35",
+        "2334/5"
+      ],
+      [
+        "7830/7",
+        "-64/35",
+        "312/5",
+        "919/5",
+        "-48997/105",
+        "47008/105"
+      ]
+    ],
+    "A_squared_targets": [
+      49900,
+      52804,
+      45676,
+      40540,
+      54072,
+      55860
+    ],
+    "witness_determinant": "-232879691451546176/23625",
+    "unique_weights": [
+      "40",
+      "72",
+      "28",
+      "-8",
+      "-12",
+      "12"
+    ],
+    "identity_residuals": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    "source_binding_exact": true,
+    "proof_grade": true,
+    "recomputed": true,
+    "source_tensor_counts": {
+      "generator_nonzero_entries": 5040,
+      "C_Gaussian_nonzero_entries": 1260,
+      "M_Gaussian_nonzero_entries": 12600
+    },
+    "maximum_abs_casimir_power_entry": 3383316288,
+    "maximum_int64_sum_bound": 1767571623014400
+  },
+  "identity": "||M(Phi)Sigma||^2=40 I1+72 I45+28 I210-8 I770-12 I5940+12 I8910",
+  "flags": {
+    "A_square_recoupling_exactly_source_bound": true,
+    "complete_potential_BFB_exactly_certified": false,
+    "full_Hessian_exactly_source_bound": false,
+    "strict_local_minimum_certified": false,
+    "G3_closed": false
+  },
+  "remaining_scope": "The full P+Delta Hessian still needs direct exact-source assembly; this finite invariant identity alone does not certify rank 448."
+}

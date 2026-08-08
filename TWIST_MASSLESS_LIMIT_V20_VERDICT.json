@@ -1,0 +1,114 @@
+{
+  "status": "TWIST_MASSLESS_BENCHMARK_LIMITS_APPLIED__BOTH_SCENARIOS_SURVIVE",
+  "n_checks": 7,
+  "n_failed": 0,
+  "failures": [],
+  "source": {
+    "experiment": "TWIST",
+    "publication_title": "Search for two-body muon decay signals",
+    "arxiv": "1409.0638",
+    "doi": "10.1103/PhysRevD.91.052020",
+    "table": "Table II",
+    "confidence_level": 0.9,
+    "mass_hypothesis": "massless X0 endpoint",
+    "canonical_payload_sha256": "7e9719b0254180164a15e33aa79871b0e3730973fd44b58935675cf72909c826",
+    "scope": "Published 90% CL massless-X benchmark limits for A=-1,0,+1. They do not constitute a continuous arbitrary-A likelihood."
+  },
+  "target": {
+    "axion_mass_GeV": 1.535e-13,
+    "mass_over_muon_mass": 1.4527953820376502e-12,
+    "endpoint_massless_approximation": true
+  },
+  "hierarchical_universal_benchmark": {
+    "predicted_branching_ratio": 2.834977738345154e-32,
+    "benchmark_results": [
+      {
+        "asymmetry_A": -1.0,
+        "observed_br_upper_limit_90cl": 5.8e-05,
+        "published_ppm": 58.0,
+        "prediction_over_limit": 4.887892652319231e-28,
+        "survives_benchmark_limit": true,
+        "safety_factor_limit_over_prediction": 2.0458714442624168e+27
+      },
+      {
+        "asymmetry_A": 0.0,
+        "observed_br_upper_limit_90cl": 2.1e-05,
+        "published_ppm": 21.0,
+        "prediction_over_limit": 1.349989399211978e-27,
+        "survives_benchmark_limit": true,
+        "safety_factor_limit_over_prediction": 7.407465574053578e+26
+      },
+      {
+        "asymmetry_A": 1.0,
+        "observed_br_upper_limit_90cl": 1e-05,
+        "published_ppm": 10.0,
+        "prediction_over_limit": 2.8349777383451535e-27,
+        "survives_benchmark_limit": true,
+        "safety_factor_limit_over_prediction": 3.527364559073133e+26
+      }
+    ],
+    "survives_all_three_published_hypotheses": true,
+    "strongest_published_benchmark": {
+      "asymmetry_A": 1.0,
+      "observed_br_upper_limit_90cl": 1e-05,
+      "published_ppm": 10.0,
+      "prediction_over_limit": 2.8349777383451535e-27,
+      "survives_benchmark_limit": true,
+      "safety_factor_limit_over_prediction": 3.527364559073133e+26
+    }
+  },
+  "generation_dependent_counterexample": {
+    "predicted_branching_ratio": 1.9517061772610018e-07,
+    "benchmark_results": [
+      {
+        "asymmetry_A": -1.0,
+        "observed_br_upper_limit_90cl": 5.8e-05,
+        "published_ppm": 58.0,
+        "prediction_over_limit": 0.003365010650450003,
+        "survives_benchmark_limit": true,
+        "safety_factor_limit_over_prediction": 297.1758796264939
+      },
+      {
+        "asymmetry_A": 0.0,
+        "observed_br_upper_limit_90cl": 2.1e-05,
+        "published_ppm": 21.0,
+        "prediction_over_limit": 0.009293838939338104,
+        "survives_benchmark_limit": true,
+        "safety_factor_limit_over_prediction": 107.59816331304089
+      },
+      {
+        "asymmetry_A": 1.0,
+        "observed_br_upper_limit_90cl": 1e-05,
+        "published_ppm": 10.0,
+        "prediction_over_limit": 0.019517061772610016,
+        "survives_benchmark_limit": true,
+        "safety_factor_limit_over_prediction": 51.23722062525757
+      }
+    ],
+    "survives_all_three_published_hypotheses": true,
+    "strongest_published_benchmark": {
+      "asymmetry_A": 1.0,
+      "observed_br_upper_limit_90cl": 1e-05,
+      "published_ppm": 10.0,
+      "prediction_over_limit": 0.019517061772610016,
+      "survives_benchmark_limit": true,
+      "safety_factor_limit_over_prediction": 51.23722062525757
+    }
+  },
+  "flag": {
+    "three_published_asymmetry_limits_ingested": true,
+    "offline_provenance_hash_verified": true,
+    "hierarchical_survives_all_three_TWIST_benchmarks": true,
+    "generation_dependent_survives_all_three_TWIST_benchmarks": true,
+    "continuous_arbitrary_A_likelihood_implemented": false,
+    "TWIST_asymmetry_predicted_from_uv_currents": false,
+    "full_muon_channel_likelihood_implemented": false,
+    "whole_v20_model_excluded": false
+  },
+  "interpretation": "The hierarchical benchmark is negligible. The generation-dependent portal point predicts BR(mu->ea)=1.951706e-07 and remains below the strongest published TWIST massless benchmark limit 1.000000e-05 by a safety factor 51.237. It therefore survives the three published A=-1,0,+1 hypotheses. No arbitrary-A or full angular-likelihood statement is made.",
+  "remaining_for_full_muon_likelihood": [
+    "derive the TWIST asymmetry A from the component-specific chiral currents",
+    "obtain or reconstruct the continuous mass/asymmetry likelihood",
+    "propagate the complete portal-Yukawa posterior"
+  ]
+}

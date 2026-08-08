@@ -1,0 +1,173 @@
+{
+  "status": "CHANNEL_LEVEL_FCNC_RATES_IMPLEMENTED__UV_COMPONENT_MATCHING_AND_POINTWISE_LIKELIHOODS_OPEN",
+  "n_checks": 6,
+  "n_failed": 0,
+  "failures": [],
+  "conventions": {
+    "interaction": "(partial a/f_a)(fbar_L K_L gamma f_L + fbar_R K_R gamma f_R)",
+    "mu_rate_reference": "arXiv:1908.00008, Eqs. (2),(3),(5)",
+    "kaon_rate_reference": "arXiv:1901.02031, Eqs. (5)-(7) and K->pi a rate",
+    "form_factor_reference": "arXiv:1312.1228",
+    "mu_limit_reference": "TWIST arXiv:1409.0638",
+    "kaon_limit_reference": "NA62 arXiv:2507.17286"
+  },
+  "flavour_basis_source": {
+    "tan_beta": 40.573104969427675,
+    "v_r_GeV": 100000000000000.0,
+    "chi2": 0.020204598891095278,
+    "natural_scale_viable": true
+  },
+  "aligned_limit": {
+    "scenario": "aligned_limit",
+    "family_current": {
+      "scalar_departure": 4.788725067702601e-16,
+      "exactly_scalar_to_1e_14": true
+    },
+    "mass_basis_couplings": {
+      "K_eL_e_mu": {
+        "real": -1.7119831293089393e-16,
+        "imag": 9.336559953469588e-16
+      },
+      "K_eR_e_mu": {
+        "real": -1.7119831293089393e-16,
+        "imag": -9.336559953469588e-16
+      },
+      "K_dL_d_s": {
+        "real": -2.017516518041871e-16,
+        "imag": -2.9279784391674224e-40
+      },
+      "K_dR_d_s": {
+        "real": -2.017516518041871e-16,
+        "imag": -2.9279784391674224e-40
+      },
+      "common_16_family_current_assumed": true,
+      "component_specific_threshold_current_derived": false
+    },
+    "mu_to_e_a": {
+      "partial_width_GeV": 1.5326947516006837e-56,
+      "branching_ratio": 5.115831406641371e-38,
+      "massless_e_limit_width_GeV": 1.5328023063020954e-56,
+      "relative_exact_vs_massless_e": 7.016867143890831e-05,
+      "twist_conservative_limit": 5.8e-05,
+      "below_conservative_twist_limit": true,
+      "pointwise_angular_likelihood_implemented": false
+    },
+    "K_to_pi_a": {
+      "partial_width_GeV": 5.180458477700052e-56,
+      "branching_ratio": 9.743681390411193e-40,
+      "f0_at_zero": 0.9704,
+      "f0_uncertainty": 0.0032,
+      "na62_conservative_reference_scale": 1e-10,
+      "below_conservative_na62_scale": true,
+      "pointwise_na62_likelihood_implemented": false
+    }
+  },
+  "hierarchical_benchmark": {
+    "scenario": "hierarchical_universal",
+    "family_current": {
+      "scalar_departure": 1.5623331005420602e-11,
+      "exactly_scalar_to_1e_14": false
+    },
+    "mass_basis_couplings": {
+      "K_eL_e_mu": {
+        "real": -4.297496937247294e-13,
+        "imag": 5.609133231521532e-13
+      },
+      "K_eR_e_mu": {
+        "real": -4.297496937247294e-13,
+        "imag": -5.609133231521532e-13
+      },
+      "K_dL_d_s": {
+        "real": -6.3780168182425375e-12,
+        "imag": -1.125366109822226e-28
+      },
+      "K_dR_d_s": {
+        "real": -6.3780168182425375e-12,
+        "imag": -1.125366109822226e-28
+      },
+      "common_16_family_current_assumed": true,
+      "component_specific_threshold_current_derived": false
+    },
+    "mu_to_e_a": {
+      "partial_width_GeV": 8.4935470993542e-51,
+      "branching_ratio": 2.834977738345154e-32,
+      "massless_e_limit_width_GeV": 8.494143122092091e-51,
+      "relative_exact_vs_massless_e": 7.016867143913366e-05,
+      "twist_conservative_limit": 5.8e-05,
+      "below_conservative_twist_limit": true,
+      "pointwise_angular_likelihood_implemented": false
+    },
+    "K_to_pi_a": {
+      "partial_width_GeV": 5.177323700119386e-47,
+      "branching_ratio": 9.737785334278848e-31,
+      "f0_at_zero": 0.9704,
+      "f0_uncertainty": 0.0032,
+      "na62_conservative_reference_scale": 1e-10,
+      "below_conservative_na62_scale": true,
+      "pointwise_na62_likelihood_implemented": false
+    }
+  },
+  "generation_dependent_counterexample": {
+    "scenario": "generation_dependent_counterexample",
+    "family_current": {
+      "scalar_departure": 3.1860726740981926,
+      "exactly_scalar_to_1e_14": false
+    },
+    "mass_basis_couplings": {
+      "K_eL_e_mu": {
+        "real": -1.127794166201914,
+        "imag": 1.4715671072653476
+      },
+      "K_eR_e_mu": {
+        "real": -1.127794166201914,
+        "imag": -1.4715671072653476
+      },
+      "K_dL_d_s": {
+        "real": 0.03904846525386177,
+        "imag": -9.718356676709761e-19
+      },
+      "K_dR_d_s": {
+        "real": 0.03904846525386177,
+        "imag": -9.718356676709761e-19
+      },
+      "common_16_family_current_assumed": true,
+      "component_specific_threshold_current_derived": false
+    },
+    "mu_to_e_a": {
+      "partial_width_GeV": 5.847279897987207e-26,
+      "branching_ratio": 1.9517061772610018e-07,
+      "massless_e_limit_width_GeV": 5.847690222641117e-26,
+      "relative_exact_vs_massless_e": 7.016867143896089e-05,
+      "twist_conservative_limit": 5.8e-05,
+      "below_conservative_twist_limit": true,
+      "pointwise_angular_likelihood_implemented": false
+    },
+    "K_to_pi_a": {
+      "partial_width_GeV": 1.9406264094625426e-27,
+      "branching_ratio": 3.65003319938114e-11,
+      "f0_at_zero": 0.9704,
+      "f0_uncertainty": 0.0032,
+      "na62_conservative_reference_scale": 1e-10,
+      "below_conservative_na62_scale": true,
+      "pointwise_na62_likelihood_implemented": false
+    }
+  },
+  "flag": {
+    "channel_level_amplitudes_implemented": true,
+    "channel_level_branching_ratios_implemented": true,
+    "left_right_mass_basis_rotations_implemented": true,
+    "common_16_family_current_assumption": true,
+    "component_specific_uv_chiral_currents_derived": false,
+    "pointwise_experimental_likelihoods_implemented": false,
+    "finite_model_fcnc_absence_proved": false,
+    "unconditional_model_exclusion_claimed": false
+  },
+  "remaining_for_closure": [
+    "derive component-specific left/right PQ currents after all thresholds",
+    "propagate the complete portal-Yukawa posterior rather than two examples",
+    "ingest the pointwise TWIST angular-asymmetry likelihood",
+    "ingest the pointwise NA62 K+->pi+X limit curve and correlations",
+    "include form-factor covariance and matching-scale uncertainty"
+  ],
+  "verdict": "The repository now computes explicit mu->e a and K->pi a partial widths and branching ratios from left/right mass-basis matrices. The hierarchical benchmark is conditionally testable, while a generation-dependent portal can be much more constrained. Full finite-model FCNC closure remains open because component-specific UV currents and pointwise experimental likelihoods are not fixed."
+}

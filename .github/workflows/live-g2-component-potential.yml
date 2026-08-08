@@ -1,4 +1,4 @@
-name: live-g2-corrected-value-layer
+name: historical-option-c-no-x-g2-value-layer
 
 on:
   workflow_dispatch:
@@ -28,11 +28,11 @@ on:
       - .github/workflows/live-g2-component-potential.yml
 
 concurrency:
-  group: live-g2-corrected-values-${{ github.event.pull_request.number || github.ref }}
+  group: historical-option-c-g2-values-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:
-  live-g2-corrected-value-layer:
+  historical-option-c-g2-value-layer:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -45,7 +45,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt pytest
-      - name: Compile corrected G2, audit, and ledger
+      - name: Compile historical Option-C G2, audit, and ledger
         run: |
           python -m py_compile \
             live_g2_arbitrary_component_potential_values_v20.py \
@@ -56,14 +56,14 @@ jobs:
             test_live_g2_pr155_correction_audit_v20.py \
             live_g1_g8_gate_ledger_v20.py \
             test_live_g1_g8_gate_ledger_v20.py
-      - name: Run corrected value-layer, audit, and ledger tests
+      - name: Run historical value-layer, audit, and ledger tests
         run: |
           python -m pytest -q \
             test_live_g2_arbitrary_component_potential_values_v20.py \
             test_live_g2_component_potential_v20.py \
             test_live_g2_pr155_correction_audit_v20.py \
             test_live_g1_g8_gate_ledger_v20.py
-      - name: Generate corrected certificates
+      - name: Generate historical Option-C certificates
         run: |
           python live_g2_arbitrary_component_potential_values_v20.py --write
           python live_g2_component_potential_v20.py --write
@@ -76,6 +76,10 @@ jobs:
 
           values = json.load(open('LIVE_G2_ARBITRARY_COMPONENT_POTENTIAL_VALUES_V20.json'))
           assert values['n_failed'] == 0, values['failures']
+          assert values['model_contract_id'] == 'historical_option_c_no_x_v20'
+          assert values['authoritative_for_manuscript'] is False
+          assert values['overall_state'] == 'HISTORICAL'
+          assert values['supersedes_for_current_status'] is False
           assert values['counts']['Hermitian_orbits'] == 48
           assert values['counts']['invariant_directions'] == 64
           assert values['counts']['real_parameters'] == 91
@@ -85,6 +89,13 @@ jobs:
           assert values['flags']['all_64_arbitrary_component_values_callable']
           assert values['flags']['real_Hermitian_potential_assembled']
           assert values['flags']['real_210_field_enforced']
+          assert values['flags']['historical_option_c_g1_closed']
+          assert values['flags']['historical_option_c_g2_value_layer_complete']
+          assert not values['flags']['authoritative_manuscript_g1_closed']
+          assert not values['flags']['authoritative_manuscript_g2_value_layer_complete']
+          assert not values['flags']['authoritative_manuscript_g2_closed']
+          assert not values['flags']['g1_closed']
+          assert not values['flags']['g2_value_layer_complete']
           assert values['Phi2_Hdag_Sigma_orientation_audit']['maximum_conjugation_residual'] < 1e-11
           assert not values['Phi2_Sigma_basis_audit']['direct_graph_to_projector_relabeling_valid']
           assert not values['flags']['field_gradient_complete']
@@ -103,9 +114,19 @@ jobs:
 
           g2 = json.load(open('LIVE_G2_COMPONENT_POTENTIAL_V20.json'))
           assert g2['n_failed'] == 0, g2['failures']
+          assert g2['model_contract_id'] == 'historical_option_c_no_x_v20'
+          assert g2['authoritative_for_manuscript'] is False
+          assert g2['overall_state'] == 'HISTORICAL'
+          assert g2['supersedes_for_current_status'] is False
           assert g2['counts']['complete_real_field_dimension'] == 486
           assert g2['counts']['complete_symmetric_Hessian_entries_required'] == 118341
-          assert g2['flags']['g2_value_layer_complete']
+          assert g2['flags']['historical_option_c_g1_closed']
+          assert g2['flags']['historical_option_c_g2_value_layer_complete']
+          assert not g2['flags']['authoritative_manuscript_g1_closed']
+          assert not g2['flags']['authoritative_manuscript_g2_value_layer_complete']
+          assert not g2['flags']['authoritative_manuscript_g2_closed']
+          assert not g2['flags']['g1_closed']
+          assert not g2['flags']['g2_value_layer_complete']
           assert not g2['flags']['g2_complete_field_gradient']
           assert not g2['flags']['g2_complete_field_Hessian']
           assert not g2['flags']['g2_closed']
@@ -113,16 +134,23 @@ jobs:
 
           ledger = json.load(open('LIVE_G1_G8_GATE_LEDGER_V20.json'))
           assert ledger['n_failed'] == 0, ledger['failures']
+          assert ledger['model_contract_id'] == 'historical_option_c_no_x_v20'
+          assert ledger['authoritative_for_manuscript'] is False
+          assert ledger['overall_state'] == 'HISTORICAL'
           assert ledger['summary']['closed'] == ['G1']
           assert ledger['gates']['G2']['status'] == 'PARTIAL'
           assert ledger['gates']['G2']['corrections']['complete_real_field_dimension'] == 486
+          assert ledger['flags']['historical_option_c_g1_closed']
+          assert ledger['flags']['historical_option_c_g2_value_layer_complete']
+          assert not ledger['flags']['authoritative_manuscript_g1_closed']
+          assert not ledger['flags']['authoritative_manuscript_g2_closed']
           assert not ledger['flags']['g2_closed']
           assert not ledger['flags']['whole_model_validated']
           PY
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: live-g2-corrected-value-layer
+          name: historical-option-c-no-x-g2-value-layer
           path: |
             LIVE_G2_ARBITRARY_COMPONENT_POTENTIAL_VALUES_V20.json
             LIVE_G2_ARBITRARY_COMPONENT_POTENTIAL_VALUES_V20.md

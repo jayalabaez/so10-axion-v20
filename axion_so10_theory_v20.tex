@@ -86,9 +86,11 @@ the largest explicitly computed unit-coefficient term,
 $2|A|/\chi=4.60\times10^{-43}$. A normalized decay portal as small as
 $3.1\times10^{-20}$ gives a lifetime below one second; every 16 component
 has a nonzero $10_H$ channel in the explicit Clifford representation.
-The construction is an anomaly-free field theory to the reduced Planck
-cutoff, not a string completion; flavour/Clebsch fits, hierarchy
-stabilization and the string network remain open. Three fail-closed
+The construction is anomaly-free as an effective field theory, not a string
+completion. Perturbativity to the reduced Planck scale is not established:
+the present one-loop Spin(10) envelope reaches a Landau pole below that scale.
+Flavour/Clebsch fits, hierarchy stabilization, the full scalar vacuum and the
+string network remain open. Three fail-closed
 engines perform 65, 59 and 42 checks; the release adds independent charge,
 decay and loop-quadrature tests.
 \end{abstract}
@@ -96,9 +98,12 @@ decay and loop-quadrature tests.
 \section{Model and conventions}
 Fields and PQ charges: $16_F$ ($+1$, three generations), $10_H$ ($-2$),
 $\overline{126}_H$ ($-2$), $210_H$ (0), $S$ ($+4$) \cite{ERT}; the axion
-is dominantly $\arg S$, phase-locked by
-$\overline{126}_H^2 10_H^2 S^2$. We gauge $\Zs := \mathrm{U(1)}_{\rm PQ}
-\bmod 17$. Spectators: $k$ identical $16_s\oplus\overline{16}_s$ pairs
+is intended to be dominantly $\arg S$. The previously proposed 54-channel
+$\overline{126}_H^2 10_H^2 S^2$ locking term vanishes on the selected
+$\Delta_R^2$ projection, so the complete phase Hessian remains open. At low
+energy we impose $\Zs := \mathrm{U(1)}_{\rm PQ}\bmod 17$; Section~\ref{sec:uv}
+realizes it as the remnant of a primitive gauged $U(1)_X$. Spectators: $k$
+identical $16_s\oplus\overline{16}_s$ pairs
 with $\Zs$ charges $(a,b)$, masses from $S\,16_s\overline{16}_s$, i.e.\
 thresholds $M_s = y_s v_S/\sqrt2$. Discrete-gauge protection of axions
 has a long history \cite{BGW,DPT,DiLuzio,BDM}; the specific result
@@ -542,8 +547,9 @@ flavour fit is still required for precision widths.
 Finally, the portal
 $|\Phi|^2|S|^2$ must be small enough to preserve $v_\Phi\gg v_S$.
 These are explicit perturbativity and hierarchy assumptions, so this is a
-field-theory completion to the Planck cutoff rather than an ultimate
-quantum-gravity construction.
+field-theory EFT valid only below its first strong-coupling or UV-completion
+threshold. The present running does not establish a weakly coupled completion
+to the Planck cutoff, let alone an ultimate quantum-gravity construction.
 
 \section{Heavy-threshold closure and full loop kernels}
 \label{sec:matching}
@@ -778,7 +784,8 @@ results within the established discrete-gauge axion literature
 \cite{BGW,DPT,DiLuzio,BDM}, not a derivation of the full ERT parameter
 point from one scale and not experimental evidence for an axion.
 
-The continuous embedding passes its stated tests: all local anomalies
+The analytic charge ledger for the continuous embedding passes its stated
+internal tests: all local anomalies
 vanish, renormalizable PQ remains accidental, the axion survives the gauge
 projection, and the explicitly evaluated unit-coefficient quality terms
 are far below the neutron-EDM requirement. Every anomalon pair now has a
@@ -790,6 +797,135 @@ orders below the direct dimension-21 scalar term, which dominates the
 calculated terms. Unknown Wilson/flavour/Yukawa tensors remain parameters,
 so ``full amplitude'' here means the complete finite momentum kernel and
 mass dependence for the stated graph, not a coefficient-free prediction.
+It is not an external implementation certificate. The repository model file
+now uses native non-supersymmetric SARAH syntax, includes the manuscript's
+gauged $U(1)_X$, and passes static catalogue, charge, Lagrangian, filter, and
+hash-bound input-manifest checks. A Mathematica/SARAH process-log attestation
+is not available in the present environment, so the authoritative whole-model
+gate remains blocked. This also does not mean
+a completed scalar-vacuum proof. The exact-$X$
+renormalizable scalar
+census contains 44 tensor directions and 51 real parameters. Its dense
+derivative audit passes. An exact Gaussian-integer projector identity proves
+that the selected-vacuum 54 and $\overline{1050}$ projector-gradient columns
+vanish, and a separate exact integer/rational calculation proves the mixed
+$\Phi$--$\overline{126}$ 210 column also vanishes. An exact nonzero
+$13\times13$ compiler-bound minor and an exact full-row factorization prove
+stationarity rank 13 and nullity 38. Normalized floating-point SVD agrees but is
+used only as a diagnostic; an exact 38-vector parameter-nullspace basis is not
+yet part of the G3 solver contract. Independently, an exact Gaussian-integer
+tangent certificate proves that the broken SO(10) plus gauged $U(1)_X$ orbit
+has rank 37. Its gauge quotient is therefore 449-dimensional and includes the
+physical axion. The independent global-PQ tangent raises the full symmetry
+orbit rank to 38; quotienting that flat orbit for Hessian positivity leaves a
+448-dimensional massive/transverse space. PQ is not gauge-eaten. The neutral
+$\Phi_{210}$
+projector $P_{24}$ is exactly symmetric, idempotent, and rank 24. An exact
+normalized stationary witness with coefficients $(10,1,-1/4)$ has vanishing
+dense gradient and $\operatorname{tr}(P_{24}H)=288$. The former normalized-SVD
+stationary constraints reject this witness, so the associated finite-cut,
+common-kernel, block-SDP, and negative-trace-LP results are invalidated. The
+physical $H_6$ radial coordinate is also not an exact flat: writing its
+canonical real coordinate as $t=\sqrt2 h$, the exact stationary combination
+$c_{O06}=-t^2$, $c_{O36,1}=10$ has vanishing first derivative and curvature
+$2t^2=4h^2>0$. Adding the independent normalized $P_{24}$ witness preserves
+this result and the coupling bound.
+
+Using the corrected 11-plus-2 stationary constraints directly on the raw
+orthonormal 448-dimensional massive/transverse quotient, an opt-in float64
+recomputation gives common-Gram rank 448 and nullity zero. The former apparent
+135-dimensional common flat subspace is reproduced only after a
+reference-derived diagonal congruence with condition ratio approximately
+$1.20\times10^8$ and is invalidated as a conditioning artifact. This numerical
+full-rank result is not a Hessian-positivity certificate.
+
+The corrected search nevertheless produces a new constructive frontier. A
+sparse exact-$X$ coefficient vector uses 27 of the 51 real parameters, obeys
+$\lVert c\rVert_\infty=73/8<4\pi$, and has $J_0=-21/200$. It is therefore
+outside the former $J_0=+1$ slice, showing that this anchor was not without
+loss of generality. The vector has a manifest sum-of-squares structure. In
+particular, a direct Gaussian-integer tensor calculation together with exact
+rational Casimir projectors proves the six-channel recoupling
+\begin{equation}
+ \lVert \mathcal M(\Phi)\Sigma\rVert^2 =
+ 40 I_1+72 I_{45}+28 I_{210}-8 I_{770}-12 I_{5940}+12 I_{8910}.
+\end{equation}
+A nonsingular rational six-witness evaluation fixes these coefficients
+uniquely. A separate source-bound expansion of all 27 nonzero couplings proves
+that the complete potential is a sum of nonnegative squares. It also proves
+exact stationarity of the selected vacuum, including all 252 real
+$\overline{126}$ coordinates. Thus boundedness below and selected-vacuum
+stationarity are exact statements, not numerical scans.
+
+For the $\Phi_{210}+\Delta_R$ Hessian, direct Gaussian-integer and rational
+tensor contraction followed by exact $\mathbb Q(\sqrt{2})$ component
+arithmetic gives $\operatorname{rank}K=278$,
+$\operatorname{rank}H_\Phi=186$, and
+$\operatorname{rank}(H_\Phi+K)=429$ with nullity 33. The proof assembles every
+entry from integer/Gaussian-integer tensors and exact projector fractions; the
+float64 live-source comparison is only a regression check. The exact
+$P+\Delta_R$ gauge-orbit matrix has rank 33. After quotienting that kernel, an
+explicit $26\times24$ integer Jacobian for the nonnegative $H/S/\Phi_{17}$
+constraints has exact rank 19. The five remaining added directions combine
+with the 33 core gauge tangents to give precisely the 38 SO(10), gauged-
+$U(1)_X$, and global-PQ symmetry tangents. Hence the full Hessian has rank 448
+and is positive on all transverse directions.
+
+Combining exact stationarity, complete-potential BFB, and transverse Hessian
+positivity proves that the selected symmetry orbit is a strict local minimum.
+The final exact global-gap test also gives a decisive negative result for
+globality.  In canonical $overline{126}$ coordinates there is a Gaussian-
+integer field direction with normalized projector fractions
+$(I_{54},I_{1050},I_{2772},I_{4125})=(0,0,1/2,1/2)$.  It annihilates both mixed
+squares at $P$ and, after choosing $N_\Sigma=(100/99)r^2$, has energy below the selected orbit by
+$25r^4/19008>0$.  The selected orbit is therefore not the global vacuum and
+the present 27-parameter candidate is rejected for G3.  G3 closure remains
+false, but this does not exclude the theory: the fixed-$P$ branch obeys the
+exact gap--curvature relation $Delta V=-m_perp^2/8$, and its lower replacement
+has the wrong stabilizer. A distinct $p:a:\omega=1:1:1$ SU(5)-singlet branch
+has an explicit global $Phi+\Sigma$ SOS, the SM stabilizer, and exact
+rank/nullity $429/33$.  With the neutral chiral vector
+$H=(e_6+i e_7)/\sqrt2$, its 28-parameter full-field extension is exactly
+stationary and BFB, has symmetry ranks $36/37/38$, and has a live positive
+448-dimensional quotient with minimum eigenvalue $0.00484459$.  A separate
+source-bound rational-lattice calculation and exact block LDL certificate now
+prove full Hessian rank/nullity $448/38$, positive semidefiniteness, and that
+the kernel is exactly the 38-dimensional symmetry orbit.  The literal
+single-orbit four-form lemma is false: $F$ and $-F$ obey both projector
+equations but are separated by the cubic invariant
+$\operatorname{Tr}(A_\Phi^3)=\pm60$.  Exact mixed rank $252/252$ excludes the
+coupled $-F$ equality branch.  The fail-closed final G3 test still requires a
+global argument beyond the already certified strata.  An exact
+implicit-function and equivariance argument proves that
+both signed orbits are isolated local components of the full projector-zero
+set.  The complete 16-real-dimensional SU(3)-fixed subspace is also classified
+exactly and contains no additional orbit.  At fixed $\Phi=F$, a separate exact
+off-kernel estimate proves the full $\beta=1/20$ gap for arbitrary $H$ and
+  $\Sigma$, with equality only on the selected SU(5) flag orbit.  The strongest
+  all-zero-residual route can also be removed exactly.  On the pure-$\Delta_R$,
+  maximally negative-current stratum the live integral affine system has
+  rank/nullity $168/42$ and its integer kernel splits as $35+7$.  Exact square
+  completion gives a $\Phi$ radial-plus-$I_{54}$ lower bound $1/141$ and a worst
+  radial/current value $-7001/995000$, hence the strict positive margin
+\begin{equation}
+ \frac{1}{141}-\frac{7001}{995000}
+ =\frac{7859}{140295000}>0.
+\end{equation}
+This zero-residual result is strengthened by an exact source-bound certificate
+that retains all shifted $\Phi$--$\Sigma$ and chiral $\Phi$--$H$ residuals and
+covers every real $\Phi$ and all nonnegative radial variables on the same
+maximally negative pure-$\Delta_R$ sector.  A single exact 4125-projector
+covariant, a rational Schur-complement bound, and a three-region radial
+completion prove the sharp restricted gap
+\begin{equation}
+ \Delta V_{\mathrm{pure}\text{-}\Delta_R}\geq \frac{1}{5000},
+\end{equation}
+with equality at $u=1$, $v=0$ for a signed K\"ahler-square representative.
+Consequently G3 remains open only because this uniform coercive estimate has
+not yet been extended to arbitrary non-pure-$\Delta_R$ $\Sigma$ orientations. The
+historical finite-cut and SDP solvers remain non-certifying and are not used in
+the local-minimum proof. Therefore this work neither validates nor excludes
+the complete model.
 
 The v16--v20 audit also records negative results: the v15 dimension-9
 one-insertion potential and its $\mathbb Z_3$ cure were incorrect, and the
@@ -801,7 +937,7 @@ flavour fits, RG evolution of the Wilson tensors, a radiatively stable
 $v_\Phi/v_S$ hierarchy, a thermal-restoration calculation, an ultimate
 quantum-gravity origin, and the nonstandard string-network calculation.
 The release retains the v17 65-check and v19 59-check regression engines
-and adds a v20 40-check engine with a controlled nonzero-exit path and
+and adds a v20 42-check engine with a controlled nonzero-exit path and
 machine-readable verdict.
 
 \appendix

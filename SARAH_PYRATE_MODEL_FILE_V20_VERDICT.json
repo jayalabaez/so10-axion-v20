@@ -1,0 +1,280 @@
+{
+  "status": "SARAH_NATIVE_STATIC_CONTRACT__EXTERNAL_VALIDATION_BLOCKED",
+  "overall_state": "BLOCKED",
+  "n_checks": 14,
+  "n_failed": 0,
+  "failures": [],
+  "scientific_blockers": [
+    "AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED"
+  ],
+  "sources": {
+    "sarah_model": "models/SO10Z17AxionV20.m",
+    "pyrate_model": "models/SO10Z17AxionV20_pyrate.yaml",
+    "dynkin": "sarah_pyrate_so10_210_betas_v20.T_SO10",
+    "upstream_tau": "tau_p_uv_vacuum_selection_v20"
+  },
+  "files": {
+    "sarah": "models/SO10Z17AxionV20.m",
+    "pyrate": "models/SO10Z17AxionV20_pyrate.yaml",
+    "sarah_bytes": 3241,
+    "pyrate_bytes": 1915
+  },
+  "validation": {
+    "sarah": {
+      "n_bytes": 3241,
+      "checks": {
+        "has_model_name": true,
+        "has_so10_gauge": true,
+        "has_210": true,
+        "has_126": true,
+        "has_10": true,
+        "has_S": true,
+        "has_Phi17": true,
+        "mentions_kappa": true,
+        "mentions_lam4": false,
+        "forbids_bare_10_sq_noted": false,
+        "hilbert_210n_noted": false
+      },
+      "legacy_inventory_markers_present": false,
+      "native_inventory_requirements_present": true,
+      "model_syntax_class": "sarah_native",
+      "legacy_pseudo_sarah_grammar": false,
+      "tool_native_sarah_syntax": true,
+      "statically_executable_model_contract": true,
+      "lagrangian_registered_in_GaugeES_LagrangianInput": true,
+      "scalar_charges_match_manuscript": true,
+      "fermion_catalogue_exact": true,
+      "gauge_catalogue_exact": true,
+      "global_symmetry_catalogue_exact": true,
+      "all_structure_ok": true
+    },
+    "pyrate": {
+      "parsed": true,
+      "model_syntax_class": "legacy_pyrate_metadata_scaffold",
+      "tool_native_pyrate_schema": false,
+      "name": "SO10Z17AxionV20",
+      "dynkin_match_upstream": true,
+      "dynkin_T": {
+        "1": 0.0,
+        "10": 1.0,
+        "16": 2.0,
+        "45": 8.0,
+        "54": 12.0,
+        "120": 28.0,
+        "126": 35.0,
+        "210": 56.0
+      },
+      "charges": [
+        {
+          "field": "Phi210",
+          "expected": {
+            "PQ": 0,
+            "X": 0
+          },
+          "got": {
+            "PQ": 0,
+            "X": 0
+          },
+          "ok": true
+        },
+        {
+          "field": "Delta126bar",
+          "expected": {
+            "PQ": -2,
+            "X": -2
+          },
+          "got": {
+            "PQ": -2,
+            "X": 0
+          },
+          "ok": false
+        },
+        {
+          "field": "H10",
+          "expected": {
+            "PQ": -2,
+            "X": -2
+          },
+          "got": {
+            "PQ": -2,
+            "X": 0
+          },
+          "ok": false
+        },
+        {
+          "field": "S",
+          "expected": {
+            "PQ": 4,
+            "X": 4
+          },
+          "got": {
+            "PQ": 4,
+            "X": 0
+          },
+          "ok": false
+        },
+        {
+          "field": "Phi17",
+          "expected": {
+            "PQ": 0,
+            "X": 17
+          },
+          "got": {
+            "PQ": 0,
+            "X": 17
+          },
+          "ok": true
+        }
+      ],
+      "charges_match_locks": false,
+      "required_operators_present": true,
+      "operators_found": [
+        "kappa",
+        "lam4",
+        "lambda_lock"
+      ],
+      "n_scalars_named": 5
+    },
+    "external_model_execution": {
+      "source": "models/EXACT_X_EXTERNAL_MODEL_VALIDATION_V20.json",
+      "present": false,
+      "schema": null,
+      "tool_name": null,
+      "tool_version": null,
+      "attested_model_format": null,
+      "generated_at_utc": null,
+      "expected_model_path": "models/SO10Z17AxionV20.m",
+      "attested_model_path": null,
+      "expected_model_sha256": "3c3536c166ba7fca06ffedd0f244f76cc9b6db4840822a727f7a2f8e8bf1d1cd",
+      "attested_model_sha256": null,
+      "expected_model_size_bytes": 3241,
+      "attested_model_size_bytes": null,
+      "expected_validation_driver_path": "tools/validate-exact-x-model.wls",
+      "expected_validation_driver_sha256": "a2fc2771c8d80e3ea36d9e40fa2b3ae68f10a4ac0ea3dccbdcf39c99bb13b37b",
+      "expected_validation_driver_size_bytes": 5259,
+      "fresh_for_exact_model_bytes": false,
+      "required_external_checks": [
+        "model_parse_succeeded",
+        "model_initialization_succeeded",
+        "lagrangian_construction_succeeded",
+        "gauge_invariance_check_succeeded",
+        "anomaly_check_succeeded"
+      ],
+      "input_manifest": {
+        "schema": null,
+        "sha256": null,
+        "files": []
+      },
+      "process_log": {
+        "sha256": null,
+        "size_bytes": null,
+        "encoding": null,
+        "attested_tool_marker": null,
+        "required_marker_presence": {
+          "model_parse_succeeded": false,
+          "model_initialization_succeeded": false,
+          "lagrangian_construction_succeeded": false,
+          "gauge_invariance_check_succeeded": false,
+          "anomaly_check_succeeded": false
+        }
+      },
+      "checks": {
+        "artifact_is_structured_json_object": false,
+        "schema_is_supported": false,
+        "model_path_is_exact_repository_model": false,
+        "model_sha256_matches_exact_bytes": false,
+        "model_size_matches_exact_bytes": false,
+        "tool_native_model_format_matches_path": false,
+        "supported_external_tool_identified": false,
+        "external_tool_version_recorded": false,
+        "external_process_was_executed": false,
+        "external_process_command_recorded": false,
+        "external_process_command_matches_tool": false,
+        "gauge_invariance_check_was_not_disabled": true,
+        "external_process_exit_code_zero": false,
+        "input_manifest_schema_is_supported": false,
+        "input_manifest_entries_are_structured": false,
+        "input_manifest_paths_are_unique": true,
+        "input_manifest_has_exact_required_files": false,
+        "input_manifest_sha256_matches_entries": false,
+        "primary_model_is_bound_in_input_manifest": false,
+        "validation_driver_matches_repository_bytes": false,
+        "validation_driver_is_bound_to_command": false,
+        "captured_process_log_is_hash_bound": false,
+        "process_log_identifies_attested_tool_version": false,
+        "captured_process_log_has_all_required_pass_markers": false,
+        "generated_at_is_timezone_aware": false,
+        "generated_at_is_not_in_future": false,
+        "model_parse_succeeded": false,
+        "model_initialization_succeeded": false,
+        "lagrangian_construction_succeeded": false,
+        "gauge_invariance_check_succeeded": false,
+        "anomaly_check_succeeded": false
+      },
+      "failures": [
+        "artifact_is_structured_json_object",
+        "schema_is_supported",
+        "model_path_is_exact_repository_model",
+        "model_sha256_matches_exact_bytes",
+        "model_size_matches_exact_bytes",
+        "tool_native_model_format_matches_path",
+        "supported_external_tool_identified",
+        "external_tool_version_recorded",
+        "external_process_was_executed",
+        "external_process_command_recorded",
+        "external_process_command_matches_tool",
+        "external_process_exit_code_zero",
+        "input_manifest_schema_is_supported",
+        "input_manifest_entries_are_structured",
+        "input_manifest_has_exact_required_files",
+        "input_manifest_sha256_matches_entries",
+        "primary_model_is_bound_in_input_manifest",
+        "validation_driver_matches_repository_bytes",
+        "validation_driver_is_bound_to_command",
+        "captured_process_log_is_hash_bound",
+        "process_log_identifies_attested_tool_version",
+        "captured_process_log_has_all_required_pass_markers",
+        "generated_at_is_timezone_aware",
+        "generated_at_is_not_in_future",
+        "model_parse_succeeded",
+        "model_initialization_succeeded",
+        "lagrangian_construction_succeeded",
+        "gauge_invariance_check_succeeded",
+        "anomaly_check_succeeded"
+      ],
+      "valid": false,
+      "note": "Freshness is content-addressed: the exact tool-native model, the canonical input manifest, validation driver, and captured process log are hash-bound. Reduced-sector LIVE_BETA_DUMP artifacts and unbound success booleans are not accepted.",
+      "load_error": null
+    }
+  },
+  "live_probe": {
+    "executables_on_PATH": {},
+    "SARAH_DIR": null,
+    "live_run_possible": false,
+    "live_run_executed": false,
+    "block_reason": "No valid v2 attestation binds tool-native input, exact model bytes, the canonical input manifest, validation driver, and process log.",
+    "dump": null
+  },
+  "next_exact_calculation": [
+    "Derive exact X/Y masses from the full component vacuum",
+    "Close inter-representation 10\u2013126 colour-triplet mixing",
+    "Execute a live SARAH/PyR@TE dump when Mathematica+SARAH or pyrate is available"
+  ],
+  "flag": {
+    "sarah_pyrate_model_file_authored": true,
+    "sarah_metadata_scaffold_present": true,
+    "pyrate_metadata_scaffold_present": true,
+    "sarah_model_tool_native": true,
+    "sarah_static_contract_consistent": true,
+    "pyrate_model_tool_native": false,
+    "pyrate_yaml_dynkin_matches_upstream": true,
+    "charge_locks_encoded": true,
+    "external_validation_v2_valid": false,
+    "live_sarah_or_pyrate_executable_run": false,
+    "live_run_blocked_without_bound_attestation": true,
+    "live_run_blocked_without_tools_or_dump": true,
+    "exact_unique_proton_lifetime": false,
+    "whole_model_excluded": false
+  },
+  "verdict": "The .m file is now a statically consistent native SARAH input for the authoritative gauged-U(1)_X catalogue. The historical PyR@TE metadata remains non-authoritative (Dynkin match=True). Bound external SARAH execution=False; a generic beta dump cannot replace that attestation. Exact X/Y masses and the unique proton lifetime remain open."
+}

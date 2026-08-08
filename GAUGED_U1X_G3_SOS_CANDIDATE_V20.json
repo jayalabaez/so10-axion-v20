@@ -1,0 +1,3995 @@
+{
+  "status": "EXACT_BFB_STATIONARY_STRICT_LOCAL_MINIMUM__GLOBAL_COUNTEREXAMPLE",
+  "overall_state": "OPEN",
+  "model_contract_id": "gauged_u1x_phi17_v20",
+  "n_checks": 16,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "exact_X_parameter_vector_has_length_51": true,
+    "candidate_has_27_nonzero_real_parameters": true,
+    "every_symbolic_nonzero_parameter_is_in_exact_X_contract": true,
+    "candidate_is_strictly_inside_4pi_box": true,
+    "candidate_J0_is_negative_21_over_200": true,
+    "historical_positive_J0_anchor_excludes_candidate": true,
+    "exact_A_square_recoupling_is_source_bound": true,
+    "complete_SOS_BFB_stationarity_certificate_passes": true,
+    "exact_symmetry_rank_is_38": true,
+    "exact_massive_transverse_dimension_is_448": true,
+    "direct_exact_PD_rank_certificate_is_internally_consistent": true,
+    "direct_exact_PD_Qsqrt2_LDL_has_rank_429_nullity_33": true,
+    "direct_exact_full_kernel_count_has_rank_448": true,
+    "direct_exact_Hessian_source_binding_passes": true,
+    "exact_global_counterexample_rejects_selected_vacuum": true,
+    "G3_remains_fail_closed_after_candidate_rejection": true
+  },
+  "hierarchy_scales": {
+    "h": 1.7544629506158965e-14,
+    "r": 6.366336251445493e-05,
+    "x": 10.083120405838487,
+    "alpha": 4.835026180693705e-24
+  },
+  "coefficient_vector": {
+    "basis": "authoritative exact-X 51-real-parameter order",
+    "symbolic_nonzero": {
+      "lambda::O07_B01_Phi_norm": "-2",
+      "lambda::O48_B01_Phi_self_quartics": "-21/200",
+      "lambda::O48_B02_Phi_self_quartics": "2467/28800",
+      "lambda::O48_B03_Phi_self_quartics": "-77/3200",
+      "lambda::O48_B04_Phi_self_quartics": "119/115200",
+      "lambda::O05_B01_126bar_norm": "(1/8)*(4-(25/12)*r^2)",
+      "lambda::O14_B01_Phi_Sigma_Sigmadag_cubic": "-1/2",
+      "lambda::O27_B01_126bar_self_projectors": "1/4",
+      "lambda::O27_B02_126bar_self_projectors": "1/4",
+      "lambda::O27_B03_126bar_self_projectors": "17/128",
+      "lambda::O27_B04_126bar_self_projectors": "1/8",
+      "lambda::O44_B01_Phi2_Sigma_projectors": "41/8",
+      "lambda::O44_B02_Phi2_Sigma_projectors": "73/8",
+      "lambda::O44_B03_Phi2_Sigma_projectors": "29/8",
+      "lambda::O44_B04_Phi2_Sigma_projectors": "-7/8",
+      "lambda::O44_B05_Phi2_Sigma_projectors": "-11/8",
+      "lambda::O44_B06_Phi2_Sigma_projectors": "13/8",
+      "lambda::O06_B01_Hdag_H_norm": "-2*h^2",
+      "re::O12_B01_Hdag_Hdag_pair": "-h^2/r",
+      "lambda::O04_B01_singlet_polynomial": "h^4/r^2-2*r^2",
+      "lambda::O23_B01_singlet_polynomial": "1",
+      "lambda::O36_B01_H_self_quartics": "2",
+      "lambda::O36_B02_H_self_quartics": "2",
+      "lambda::O46_B01_Phi2_HdagH_channels": "3/5",
+      "lambda::O46_B03_Phi2_HdagH_channels": "-1",
+      "lambda::O03_B01_singlet_polynomial": "-x^2/16",
+      "lambda::O20_B01_singlet_polynomial": "1/32"
+    },
+    "evaluated_all_51": {
+      "lambda::O03_B01_singlet_polynomial": -6.354332319914781,
+      "lambda::O04_B01_singlet_polynomial": -8.10604745329381e-09,
+      "lambda::O05_B01_126bar_norm": 0.49999999894452507,
+      "lambda::O06_B01_Hdag_H_norm": -6.1562804901676755e-28,
+      "lambda::O07_B01_Phi_norm": -2.0,
+      "re::O12_B01_Hdag_Hdag_pair": -4.835026180693705e-24,
+      "im::O12_B01_Hdag_Hdag_pair": 0.0,
+      "lambda::O14_B01_Phi_Sigma_Sigmadag_cubic": -0.5,
+      "re::O15_B01_Phi_Hdag_Sigma": 0.0,
+      "im::O15_B01_Phi_Hdag_Sigma": 0.0,
+      "lambda::O17_B01_Phi_cubic": 0.0,
+      "lambda::O20_B01_singlet_polynomial": 0.03125,
+      "lambda::O22_B01_singlet_polynomial": 0.0,
+      "lambda::O23_B01_singlet_polynomial": 1.0,
+      "lambda::O25_B01_126bar_norm": 0.0,
+      "lambda::O26_B01_126bar_norm": 0.0,
+      "lambda::O27_B01_126bar_self_projectors": 0.25,
+      "lambda::O27_B02_126bar_self_projectors": 0.25,
+      "lambda::O27_B03_126bar_self_projectors": 0.1328125,
+      "lambda::O27_B04_126bar_self_projectors": 0.125,
+      "re::O28_B01_unique_Hdag_Sigma2_Sigmadag": 0.0,
+      "im::O28_B01_unique_Hdag_Sigma2_Sigmadag": 0.0,
+      "re::O31_B01_unique_Hdag2_Sigma2": 0.0,
+      "im::O31_B01_unique_Hdag2_Sigma2": 0.0,
+      "lambda::O33_B01_Hdag_H_norm": 0.0,
+      "lambda::O34_B01_Hdag_H_norm": 0.0,
+      "lambda::O35_B01_H_Sigma_hermitian": 0.0,
+      "lambda::O35_B02_H_Sigma_hermitian": 0.0,
+      "lambda::O36_B01_H_self_quartics": 2.0,
+      "lambda::O36_B02_H_self_quartics": 2.0,
+      "re::O38_B01_Phi_Hdag_Sigmadag": 0.0,
+      "im::O38_B01_Phi_Hdag_Sigmadag": 0.0,
+      "lambda::O42_B01_Phi_norm": 0.0,
+      "lambda::O43_B01_Phi_norm": 0.0,
+      "lambda::O44_B01_Phi2_Sigma_projectors": 5.125,
+      "lambda::O44_B02_Phi2_Sigma_projectors": 9.125,
+      "lambda::O44_B03_Phi2_Sigma_projectors": 3.625,
+      "lambda::O44_B04_Phi2_Sigma_projectors": -0.875,
+      "lambda::O44_B05_Phi2_Sigma_projectors": -1.375,
+      "lambda::O44_B06_Phi2_Sigma_projectors": 1.625,
+      "re::O45_B01_Phi2_Hdag_Sigma_210_1050": 0.0,
+      "im::O45_B01_Phi2_Hdag_Sigma_210_1050": 0.0,
+      "re::O45_B02_Phi2_Hdag_Sigma_210_1050": 0.0,
+      "im::O45_B02_Phi2_Hdag_Sigma_210_1050": 0.0,
+      "lambda::O46_B01_Phi2_HdagH_channels": 0.6,
+      "lambda::O46_B02_Phi2_HdagH_channels": 0.0,
+      "lambda::O46_B03_Phi2_HdagH_channels": -1.0,
+      "lambda::O48_B01_Phi_self_quartics": -0.105,
+      "lambda::O48_B02_Phi_self_quartics": 0.08565972222222222,
+      "lambda::O48_B03_Phi_self_quartics": -0.0240625,
+      "lambda::O48_B04_Phi_self_quartics": 0.001032986111111111
+    },
+    "nonzero_count": 27,
+    "maximum_absolute_coefficient": 9.125
+  },
+  "boundedness_decomposition": {
+    "Phi210": {
+      "identity": "V_Phi=-2 I2+Q; Q=J0+I45+I210+I5940>=I2^2",
+      "exact_J_coefficients": {
+        "lambda::O48_B01_Phi_self_quartics": "-21/200",
+        "lambda::O48_B02_Phi_self_quartics": "2467/28800",
+        "lambda::O48_B03_Phi_self_quartics": "-77/3200",
+        "lambda::O48_B04_Phi_self_quartics": "119/115200"
+      },
+      "global_lower_bound": "V_Phi>=-1",
+      "source_exact_certificate": "exact_210_pati_salam_global_vacuum_v20.py"
+    },
+    "Sigma126bar": {
+      "overall_scale": "1/8",
+      "self_projector_weights_54_1050bar_2772bar_4125": [
+        "2",
+        "2",
+        "17/16",
+        "1"
+      ],
+      "self_projector_completeness": "I54+I1050bar+I2772bar+I4125=N_Sigma^2",
+      "C_square_recoupling_1_45_210_770_5940_8910": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "A_square_recoupling_1_45_210_770_5940_8910": [
+        40,
+        72,
+        28,
+        -8,
+        -12,
+        12
+      ],
+      "A_shift_square": "||(A_Phi-2)Sigma||^2=||A_Phi Sigma||^2-4 O14+4 N_Sigma",
+      "radial_mass_term": "-(25/12) r^2 N_Sigma",
+      "selected_Delta_projector_fractions": {
+        "54": "0",
+        "1050bar": "0",
+        "2772bar": "2/3",
+        "4125": "1/3"
+      },
+      "selected_radial_stationarity_identity": "2*(17/16)*(2/3)+2*1*(1/3)-25/12=0",
+      "full_252_coordinate_stationarity_certificate": "exact_gauged_u1x_g3_sos_bfb_stationarity_v20.py",
+      "conditional_lower_bound": "V_Sigma>=-(625/576) r^4 before the 1/8 scale",
+      "exact_symbolic_A_square_recoupling_certificate_available": true,
+      "exact_A_square_recoupling_certificate": "exact_gauged_u1x_g3_a_square_recoupling_v20.py"
+    },
+    "H10_S_Phi17": {
+      "sum_of_nonnegative_terms": [
+        "(Hdag H-h^2)^2",
+        "(Hdag H)^2-|H.H|^2",
+        "|H.H-(h^2/r)S*|^2",
+        "(|S|^2-r^2)^2",
+        "(1/32)(|Phi17|^2-x^2)^2",
+        "Hdag (||Phi||^2 I-C(Phi)) H"
+      ],
+      "colour_projector_identity_at_P": "||P||^2 I-C(P)=diag(1_6,0_4)",
+      "Phi17_phase_note": "its phase is the U(1)_X-minus-PQ symmetry direction, not an extra physical mode"
+    },
+    "conditional_global_lower_bound": -324.02031385530853,
+    "proof_scope": "The complete 27-nonzero/51-parameter polynomial identity, global lower bound, and selected-vacuum gradient are exactly source-bound. Global uniqueness and direct exact physical-Hessian positivity are separate open claims."
+  },
+  "symmetry_quotient": {
+    "SO10_broken_rank": 36,
+    "SO10_plus_U1X_rank": 37,
+    "SO10_plus_U1X_plus_global_PQ_rank": 38,
+    "massive_transverse_dimension": 448,
+    "removed_tangents": [
+      "36 broken SO(10) orbit directions",
+      "1 gauged U(1)_X direction",
+      "1 independent global-PQ direction"
+    ]
+  },
+  "exact_rank_certificate": {
+    "status": "DIRECT_EXACT_TRANSVERSE_HESSIAN_PASS__SOS_AND_GLOBAL_EXTREMA_EXTERNAL",
+    "overall_state": "OPEN",
+    "n_checks": 12,
+    "n_failed": 0,
+    "failures": [],
+    "checks": {
+      "candidate_contains_A_shift_and_C_squares": true,
+      "recorded_component_dimensions_sum_to_462": true,
+      "restricted_kernel_spectrum_multiplicity_sum_is_276": true,
+      "direct_K_is_PSD_rank_278": true,
+      "direct_H_Phi_is_PSD_rank_186": true,
+      "direct_PD_is_PSD_rank_429": true,
+      "direct_source_binding": true,
+      "exact_PD_gauge_orbit_rank_is_33": true,
+      "extension_rank_count_is_explicitly_19": true,
+      "exact_full_rank_is_448": true,
+      "stationarity_and_BFB_are_not_inferred_here": true,
+      "global_extrema_gap_is_explicit": true
+    },
+    "direct_P_plus_Delta_certificate": {
+      "evidence_kind": "direct_Gaussian_integer_Fraction_Qsqrt2_source_assembly",
+      "source_binding_exact": true,
+      "proof_grade": true,
+      "hierarchy_congruence": "D=diag(I210,r I252): D^T H_PD D = H_Phi + t*r^2*K, t=1/8",
+      "mixed_content": {
+        "A_shift_weights": [
+          40,
+          72,
+          28,
+          -8,
+          -12,
+          12
+        ],
+        "C_square_weights": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "total_weights": [
+          41,
+          73,
+          29,
+          -7,
+          -11,
+          13
+        ],
+        "cubic_weight": -4,
+        "self_weights_54_1050bar_2772bar_4125": [
+          "2",
+          "2",
+          "17/16",
+          "1"
+        ]
+      },
+      "component_decomposition": {
+        "component_count": 89,
+        "component_size_counts": {
+          "1": 6,
+          "2": 6,
+          "4": 31,
+          "6": 8,
+          "7": 32,
+          "8": 6
+        },
+        "maximum_component_size": 8
+      },
+      "direct_exact_ranks": {
+        "K": {
+          "rank": 278,
+          "nullity": 184,
+          "PSD": true
+        },
+        "H_Phi": {
+          "rank": 186,
+          "nullity": 276,
+          "PSD": true
+        },
+        "H_Phi_plus_K": {
+          "rank": 429,
+          "nullity": 33,
+          "PSD": true
+        }
+      },
+      "K_restricted_to_kernel_H_Phi_spectrum": [
+        {
+          "eigenvalue": "0",
+          "multiplicity": 33
+        },
+        {
+          "eigenvalue": "1/12",
+          "multiplicity": 2
+        },
+        {
+          "eigenvalue": "143/504",
+          "multiplicity": 12
+        },
+        {
+          "eigenvalue": "7/18",
+          "multiplicity": 24
+        },
+        {
+          "eigenvalue": "31/72",
+          "multiplicity": 12
+        },
+        {
+          "eigenvalue": "25/6",
+          "multiplicity": 1
+        },
+        {
+          "eigenvalue": "1177/144",
+          "multiplicity": 64
+        },
+        {
+          "eigenvalue": "307/36",
+          "multiplicity": 8
+        },
+        {
+          "eigenvalue": "2155/252",
+          "multiplicity": 24
+        },
+        {
+          "eigenvalue": "367/36",
+          "multiplicity": 6
+        },
+        {
+          "eigenvalue": "187/18",
+          "multiplicity": 6
+        },
+        {
+          "eigenvalue": "12",
+          "multiplicity": 24
+        },
+        {
+          "eigenvalue": "767/24",
+          "multiplicity": 36
+        },
+        {
+          "eigenvalue": "583/18",
+          "multiplicity": 18
+        },
+        {
+          "eigenvalue": "229/7",
+          "multiplicity": 6
+        }
+      ],
+      "exact_source": {
+        "field": "Q(sqrt(2))",
+        "reduced_denominators": {
+          "K": 4032,
+          "H_Phi": 90,
+          "H_Phi_plus_K": 20160
+        },
+        "Delta_R_coordinates": "(sqrt(2)/4)*d with d Gaussian-integral",
+        "entrywise_binding": "integer/Gaussian-integer tensor contractions plus exact Fraction projector polynomials",
+        "floating_point_reconstruction_used": false,
+        "nonproof_live_source_regression": {
+          "K_max_abs_residual": 1.0402345651527867e-11,
+          "H_Phi_max_abs_residual": 7.105427357601002e-15,
+          "H_Phi_plus_K_max_abs_residual": 1.0402345651527867e-11,
+          "tolerance": 2e-11,
+          "pass": true,
+          "role": "entrywise regression only; exact proof is independent"
+        }
+      }
+    },
+    "direct_exact_ranks": {
+      "K": {
+        "rank": 278,
+        "nullity": 184,
+        "PSD": true
+      },
+      "H_Phi": {
+        "rank": 186,
+        "nullity": 276,
+        "PSD": true
+      },
+      "H_Phi_plus_K": {
+        "rank": 429,
+        "nullity": 33,
+        "PSD": true
+      }
+    },
+    "exact_full_kernel_argument": {
+      "exact_P_plus_Delta_kernel_dimension": 33,
+      "exact_P_plus_Delta_gauge_orbit": {
+        "generator_count": 45,
+        "exact_orbit_rank": 33,
+        "exact_stabilizer_dimension": 12,
+        "coordinate_row_scaling": "the Sigma rows are multiplied by 4/sqrt(2), an invertible scaling, leaving a purely integral orbit matrix",
+        "Gram_maximum_abs_entry": 8,
+        "int64_overflow_preflight": {
+          "generator_action_absolute_bound": 252,
+          "orbit_Gram_absolute_bound": 462,
+          "int64_limit": 9223372036854775807
+        },
+        "source_binding_exact": true
+      },
+      "kernel_after_adjoining_free_H_S_Phi17_coordinates": 57,
+      "independent_nonnegative_H_S_Phi17_rank_contributions": {
+        "Phi_H_colour_projector_covariant_constraints": 12,
+        "imaginary_transverse_weak_H_constraints": 3,
+        "H_radial_constraint": 1,
+        "S_radial_constraint": 1,
+        "Phi17_radial_constraint": 1,
+        "H_S_phase_lock_constraint": 1
+      },
+      "added_exact_rank": 19,
+      "explicit_quotient_constraint_Jacobian": {
+        "shape": [
+          26,
+          24
+        ],
+        "exact_rational_rank": 19,
+        "row_labels": [
+          "d_H_wedge_P_source_row_0",
+          "d_H_wedge_P_source_row_1",
+          "d_H_wedge_P_source_row_2",
+          "d_H_wedge_P_source_row_3",
+          "d_H_wedge_P_source_row_4",
+          "d_H_wedge_P_source_row_5",
+          "d_H_wedge_P_source_row_6",
+          "d_H_wedge_P_source_row_7",
+          "d_H_wedge_P_source_row_8",
+          "d_H_wedge_P_source_row_9",
+          "d_H_wedge_P_source_row_10",
+          "d_H_wedge_P_source_row_11",
+          "d_complex_H_Gram_g_0_6",
+          "d_complex_H_Gram_g_1_6",
+          "d_complex_H_Gram_g_2_6",
+          "d_complex_H_Gram_g_3_6",
+          "d_complex_H_Gram_g_4_6",
+          "d_complex_H_Gram_g_5_6",
+          "d_complex_H_Gram_g_6_7",
+          "d_complex_H_Gram_g_6_8",
+          "d_complex_H_Gram_g_6_9",
+          "d_H_radial_residual",
+          "d_S_radial_residual",
+          "d_X_radial_residual",
+          "d_Re_HH_minus_alpha_Sstar",
+          "d_Im_HH_minus_alpha_Sstar"
+        ],
+        "coordinate_labels": [
+          "ReH0",
+          "ReH1",
+          "ReH2",
+          "ReH3",
+          "ReH4",
+          "ReH5",
+          "ReH6",
+          "ReH7",
+          "ReH8",
+          "ReH9",
+          "ImH0",
+          "ImH1",
+          "ImH2",
+          "ImH3",
+          "ImH4",
+          "ImH5",
+          "ImH6",
+          "ImH7",
+          "ImH8",
+          "ImH9",
+          "ReS",
+          "ImS",
+          "ReX",
+          "ImX"
+        ],
+        "integer_rows": [
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        ],
+        "incremental_exact_ranks": {
+          "H_wedge_Phi_rows": 12,
+          "plus_complex_H_Gram_rows": 15,
+          "plus_three_radial_rows": 18,
+          "plus_two_H_S_phase_lock_rows": 19
+        },
+        "expected_incremental_exact_ranks": {
+          "H_wedge_Phi_rows": 12,
+          "plus_complex_H_Gram_rows": 15,
+          "plus_three_radial_rows": 18,
+          "plus_two_H_S_phase_lock_rows": 19
+        }
+      },
+      "remaining_kernel_dimension": 38,
+      "symmetry_tangent_rank": {
+        "SO10_at_full_vacuum": 36,
+        "SO10_plus_U1X": 37,
+        "SO10_plus_U1X_plus_global_PQ": 38
+      },
+      "exact_full_symmetry_source": {
+        "module": "exact_gauged_u1x_physical_quotient_v20",
+        "certified": true,
+        "live_compiler_binding_passes": true,
+        "massive_transverse_quotient_dimension": 448
+      },
+      "exact_full_Hessian_rank": 448,
+      "exact_massive_transverse_rank": 448,
+      "logic": "Exact PSD gives a 33-dimensional P+Delta kernel and the exact integral gauge-orbit matrix has rank 33, so that kernel is exactly the gauge orbit. Gauge covariance removes it before applying the explicit rank-19 quotient Jacobian. The five surviving new-field directions are three additional SO(10) gauge tangents plus U(1)_X and PQ tangents, yielding precisely 38 full symmetry zero modes.",
+      "source_identities": [
+        "H^dag(||Phi||^2 I-C(Phi))H = ||H wedge Phi||^2",
+        "(H^dag H)^2-|H.H|^2 is the complex-vector Gram determinant",
+        "radial terms are literal norm squares",
+        "|H.H-alpha S*|^2 supplies one independent relative-phase row"
+      ],
+      "source_binding_exact": true,
+      "proof_grade": true
+    },
+    "stationarity_and_BFB_scope": {
+      "status": "DELEGATED_TO_SOURCE_BOUND_SOS_CANDIDATE_CERTIFICATE",
+      "exact_stationarity_certified_here": false,
+      "global_BFB_certified_here": false,
+      "global_minimum_certified": false,
+      "global_uniqueness_certified": false,
+      "reason_global_extrema_remain_open": "competing stationary orbits have not been exhaustively classified and compared",
+      "source_binding_exact": false,
+      "consumed_by_local_rank_proof": false
+    },
+    "flags": {
+      "conditional_exact_LDL_on_reconstructed_matrix": false,
+      "direct_exact_source_binding": true,
+      "proof_grade_P_plus_Delta_PSD": true,
+      "proof_grade_full_rank_448": true,
+      "strict_transverse_Hessian_positive_certified": true,
+      "exact_stationarity_certified_here": false,
+      "global_BFB_certified_here": false,
+      "strict_local_minimum_certified_here": false,
+      "global_minimum_certified": false,
+      "global_uniqueness_certified": false,
+      "G3_closed": false,
+      "whole_model_validated": false,
+      "whole_model_excluded": false
+    },
+    "G3_scope_conclusion": "This module certifies a positive full Hessian on all 448 transverse directions, with exactly the 38 symmetry zero modes. Exact stationarity and BFB are owned by the separate source-bound SOS certificate. Global competing-extrema comparison remains open.",
+    "next_exact_step": "Classify and compare all competing stationary symmetry orbits, or derive a sharper global lower bound saturated by this candidate."
+  },
+  "conditional_exact_rank_certificate": {
+    "status": "DIRECT_EXACT_TRANSVERSE_HESSIAN_PASS__SOS_AND_GLOBAL_EXTREMA_EXTERNAL",
+    "overall_state": "OPEN",
+    "n_checks": 12,
+    "n_failed": 0,
+    "failures": [],
+    "checks": {
+      "candidate_contains_A_shift_and_C_squares": true,
+      "recorded_component_dimensions_sum_to_462": true,
+      "restricted_kernel_spectrum_multiplicity_sum_is_276": true,
+      "direct_K_is_PSD_rank_278": true,
+      "direct_H_Phi_is_PSD_rank_186": true,
+      "direct_PD_is_PSD_rank_429": true,
+      "direct_source_binding": true,
+      "exact_PD_gauge_orbit_rank_is_33": true,
+      "extension_rank_count_is_explicitly_19": true,
+      "exact_full_rank_is_448": true,
+      "stationarity_and_BFB_are_not_inferred_here": true,
+      "global_extrema_gap_is_explicit": true
+    },
+    "direct_P_plus_Delta_certificate": {
+      "evidence_kind": "direct_Gaussian_integer_Fraction_Qsqrt2_source_assembly",
+      "source_binding_exact": true,
+      "proof_grade": true,
+      "hierarchy_congruence": "D=diag(I210,r I252): D^T H_PD D = H_Phi + t*r^2*K, t=1/8",
+      "mixed_content": {
+        "A_shift_weights": [
+          40,
+          72,
+          28,
+          -8,
+          -12,
+          12
+        ],
+        "C_square_weights": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "total_weights": [
+          41,
+          73,
+          29,
+          -7,
+          -11,
+          13
+        ],
+        "cubic_weight": -4,
+        "self_weights_54_1050bar_2772bar_4125": [
+          "2",
+          "2",
+          "17/16",
+          "1"
+        ]
+      },
+      "component_decomposition": {
+        "component_count": 89,
+        "component_size_counts": {
+          "1": 6,
+          "2": 6,
+          "4": 31,
+          "6": 8,
+          "7": 32,
+          "8": 6
+        },
+        "maximum_component_size": 8
+      },
+      "direct_exact_ranks": {
+        "K": {
+          "rank": 278,
+          "nullity": 184,
+          "PSD": true
+        },
+        "H_Phi": {
+          "rank": 186,
+          "nullity": 276,
+          "PSD": true
+        },
+        "H_Phi_plus_K": {
+          "rank": 429,
+          "nullity": 33,
+          "PSD": true
+        }
+      },
+      "K_restricted_to_kernel_H_Phi_spectrum": [
+        {
+          "eigenvalue": "0",
+          "multiplicity": 33
+        },
+        {
+          "eigenvalue": "1/12",
+          "multiplicity": 2
+        },
+        {
+          "eigenvalue": "143/504",
+          "multiplicity": 12
+        },
+        {
+          "eigenvalue": "7/18",
+          "multiplicity": 24
+        },
+        {
+          "eigenvalue": "31/72",
+          "multiplicity": 12
+        },
+        {
+          "eigenvalue": "25/6",
+          "multiplicity": 1
+        },
+        {
+          "eigenvalue": "1177/144",
+          "multiplicity": 64
+        },
+        {
+          "eigenvalue": "307/36",
+          "multiplicity": 8
+        },
+        {
+          "eigenvalue": "2155/252",
+          "multiplicity": 24
+        },
+        {
+          "eigenvalue": "367/36",
+          "multiplicity": 6
+        },
+        {
+          "eigenvalue": "187/18",
+          "multiplicity": 6
+        },
+        {
+          "eigenvalue": "12",
+          "multiplicity": 24
+        },
+        {
+          "eigenvalue": "767/24",
+          "multiplicity": 36
+        },
+        {
+          "eigenvalue": "583/18",
+          "multiplicity": 18
+        },
+        {
+          "eigenvalue": "229/7",
+          "multiplicity": 6
+        }
+      ],
+      "exact_source": {
+        "field": "Q(sqrt(2))",
+        "reduced_denominators": {
+          "K": 4032,
+          "H_Phi": 90,
+          "H_Phi_plus_K": 20160
+        },
+        "Delta_R_coordinates": "(sqrt(2)/4)*d with d Gaussian-integral",
+        "entrywise_binding": "integer/Gaussian-integer tensor contractions plus exact Fraction projector polynomials",
+        "floating_point_reconstruction_used": false,
+        "nonproof_live_source_regression": {
+          "K_max_abs_residual": 1.0402345651527867e-11,
+          "H_Phi_max_abs_residual": 7.105427357601002e-15,
+          "H_Phi_plus_K_max_abs_residual": 1.0402345651527867e-11,
+          "tolerance": 2e-11,
+          "pass": true,
+          "role": "entrywise regression only; exact proof is independent"
+        }
+      }
+    },
+    "direct_exact_ranks": {
+      "K": {
+        "rank": 278,
+        "nullity": 184,
+        "PSD": true
+      },
+      "H_Phi": {
+        "rank": 186,
+        "nullity": 276,
+        "PSD": true
+      },
+      "H_Phi_plus_K": {
+        "rank": 429,
+        "nullity": 33,
+        "PSD": true
+      }
+    },
+    "exact_full_kernel_argument": {
+      "exact_P_plus_Delta_kernel_dimension": 33,
+      "exact_P_plus_Delta_gauge_orbit": {
+        "generator_count": 45,
+        "exact_orbit_rank": 33,
+        "exact_stabilizer_dimension": 12,
+        "coordinate_row_scaling": "the Sigma rows are multiplied by 4/sqrt(2), an invertible scaling, leaving a purely integral orbit matrix",
+        "Gram_maximum_abs_entry": 8,
+        "int64_overflow_preflight": {
+          "generator_action_absolute_bound": 252,
+          "orbit_Gram_absolute_bound": 462,
+          "int64_limit": 9223372036854775807
+        },
+        "source_binding_exact": true
+      },
+      "kernel_after_adjoining_free_H_S_Phi17_coordinates": 57,
+      "independent_nonnegative_H_S_Phi17_rank_contributions": {
+        "Phi_H_colour_projector_covariant_constraints": 12,
+        "imaginary_transverse_weak_H_constraints": 3,
+        "H_radial_constraint": 1,
+        "S_radial_constraint": 1,
+        "Phi17_radial_constraint": 1,
+        "H_S_phase_lock_constraint": 1
+      },
+      "added_exact_rank": 19,
+      "explicit_quotient_constraint_Jacobian": {
+        "shape": [
+          26,
+          24
+        ],
+        "exact_rational_rank": 19,
+        "row_labels": [
+          "d_H_wedge_P_source_row_0",
+          "d_H_wedge_P_source_row_1",
+          "d_H_wedge_P_source_row_2",
+          "d_H_wedge_P_source_row_3",
+          "d_H_wedge_P_source_row_4",
+          "d_H_wedge_P_source_row_5",
+          "d_H_wedge_P_source_row_6",
+          "d_H_wedge_P_source_row_7",
+          "d_H_wedge_P_source_row_8",
+          "d_H_wedge_P_source_row_9",
+          "d_H_wedge_P_source_row_10",
+          "d_H_wedge_P_source_row_11",
+          "d_complex_H_Gram_g_0_6",
+          "d_complex_H_Gram_g_1_6",
+          "d_complex_H_Gram_g_2_6",
+          "d_complex_H_Gram_g_3_6",
+          "d_complex_H_Gram_g_4_6",
+          "d_complex_H_Gram_g_5_6",
+          "d_complex_H_Gram_g_6_7",
+          "d_complex_H_Gram_g_6_8",
+          "d_complex_H_Gram_g_6_9",
+          "d_H_radial_residual",
+          "d_S_radial_residual",
+          "d_X_radial_residual",
+          "d_Re_HH_minus_alpha_Sstar",
+          "d_Im_HH_minus_alpha_Sstar"
+        ],
+        "coordinate_labels": [
+          "ReH0",
+          "ReH1",
+          "ReH2",
+          "ReH3",
+          "ReH4",
+          "ReH5",
+          "ReH6",
+          "ReH7",
+          "ReH8",
+          "ReH9",
+          "ImH0",
+          "ImH1",
+          "ImH2",
+          "ImH3",
+          "ImH4",
+          "ImH5",
+          "ImH6",
+          "ImH7",
+          "ImH8",
+          "ImH9",
+          "ReS",
+          "ImS",
+          "ReX",
+          "ImX"
+        ],
+        "integer_rows": [
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        ],
+        "incremental_exact_ranks": {
+          "H_wedge_Phi_rows": 12,
+          "plus_complex_H_Gram_rows": 15,
+          "plus_three_radial_rows": 18,
+          "plus_two_H_S_phase_lock_rows": 19
+        },
+        "expected_incremental_exact_ranks": {
+          "H_wedge_Phi_rows": 12,
+          "plus_complex_H_Gram_rows": 15,
+          "plus_three_radial_rows": 18,
+          "plus_two_H_S_phase_lock_rows": 19
+        }
+      },
+      "remaining_kernel_dimension": 38,
+      "symmetry_tangent_rank": {
+        "SO10_at_full_vacuum": 36,
+        "SO10_plus_U1X": 37,
+        "SO10_plus_U1X_plus_global_PQ": 38
+      },
+      "exact_full_symmetry_source": {
+        "module": "exact_gauged_u1x_physical_quotient_v20",
+        "certified": true,
+        "live_compiler_binding_passes": true,
+        "massive_transverse_quotient_dimension": 448
+      },
+      "exact_full_Hessian_rank": 448,
+      "exact_massive_transverse_rank": 448,
+      "logic": "Exact PSD gives a 33-dimensional P+Delta kernel and the exact integral gauge-orbit matrix has rank 33, so that kernel is exactly the gauge orbit. Gauge covariance removes it before applying the explicit rank-19 quotient Jacobian. The five surviving new-field directions are three additional SO(10) gauge tangents plus U(1)_X and PQ tangents, yielding precisely 38 full symmetry zero modes.",
+      "source_identities": [
+        "H^dag(||Phi||^2 I-C(Phi))H = ||H wedge Phi||^2",
+        "(H^dag H)^2-|H.H|^2 is the complex-vector Gram determinant",
+        "radial terms are literal norm squares",
+        "|H.H-alpha S*|^2 supplies one independent relative-phase row"
+      ],
+      "source_binding_exact": true,
+      "proof_grade": true
+    },
+    "stationarity_and_BFB_scope": {
+      "status": "DELEGATED_TO_SOURCE_BOUND_SOS_CANDIDATE_CERTIFICATE",
+      "exact_stationarity_certified_here": false,
+      "global_BFB_certified_here": false,
+      "global_minimum_certified": false,
+      "global_uniqueness_certified": false,
+      "reason_global_extrema_remain_open": "competing stationary orbits have not been exhaustively classified and compared",
+      "source_binding_exact": false,
+      "consumed_by_local_rank_proof": false
+    },
+    "flags": {
+      "conditional_exact_LDL_on_reconstructed_matrix": false,
+      "direct_exact_source_binding": true,
+      "proof_grade_P_plus_Delta_PSD": true,
+      "proof_grade_full_rank_448": true,
+      "strict_transverse_Hessian_positive_certified": true,
+      "exact_stationarity_certified_here": false,
+      "global_BFB_certified_here": false,
+      "strict_local_minimum_certified_here": false,
+      "global_minimum_certified": false,
+      "global_uniqueness_certified": false,
+      "G3_closed": false,
+      "whole_model_validated": false,
+      "whole_model_excluded": false
+    },
+    "G3_scope_conclusion": "This module certifies a positive full Hessian on all 448 transverse directions, with exactly the 38 symmetry zero modes. Exact stationarity and BFB are owned by the separate source-bound SOS certificate. Global competing-extrema comparison remains open.",
+    "next_exact_step": "Classify and compare all competing stationary symmetry orbits, or derive a sharper global lower bound saturated by this candidate."
+  },
+  "exact_A_square_recoupling_certificate": {
+    "status": "EXACT_A_SQUARE_RECOUPLING_CERTIFIED",
+    "overall_state": "CLOSED_SUBPROBLEM",
+    "n_checks": 8,
+    "n_failed": 0,
+    "failures": [],
+    "checks": {
+      "exact_Bose_channel_count_is_six": true,
+      "six_witness_evaluation_matrix_is_nonsingular": true,
+      "recorded_exact_determinant_matches": true,
+      "unique_exact_weights_match_A_square_identity": true,
+      "all_exact_witness_residuals_vanish": true,
+      "recomputed_sources_match_recorded_witness": true,
+      "upstream_exact_census_passes": true,
+      "G3_not_closed_by_recoupling_alone": true
+    },
+    "certificate": {
+      "source_arithmetic": "Z[i] tensors plus Fraction Casimir polynomials",
+      "invariant_space_dimension": 6,
+      "multiplicity_one_channels": [
+        "1",
+        "45",
+        "210",
+        "770",
+        "5940",
+        "8910"
+      ],
+      "witness_seeds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "witness_matrix": [
+        [
+          "25384/21",
+          "-124/35",
+          "-116/3",
+          "-1051/15",
+          "-2902/21",
+          "5849/105"
+        ],
+        [
+          "7772/7",
+          "-4/5",
+          "1324/15",
+          "-2692/15",
+          "-2939/15",
+          "19178/105"
+        ],
+        [
+          "1180",
+          "132/35",
+          "-356/5",
+          "-251/5",
+          "41086/105",
+          "1123/3"
+        ],
+        [
+          "6985/7",
+          "516/35",
+          "-332/5",
+          "-118",
+          "-6728/105",
+          "-2533/105"
+        ],
+        [
+          "1275",
+          "64/35",
+          "-368/15",
+          "737/15",
+          "4612/35",
+          "2334/5"
+        ],
+        [
+          "7830/7",
+          "-64/35",
+          "312/5",
+          "919/5",
+          "-48997/105",
+          "47008/105"
+        ]
+      ],
+      "A_squared_targets": [
+        49900,
+        52804,
+        45676,
+        40540,
+        54072,
+        55860
+      ],
+      "witness_determinant": "-232879691451546176/23625",
+      "unique_weights": [
+        "40",
+        "72",
+        "28",
+        "-8",
+        "-12",
+        "12"
+      ],
+      "identity_residuals": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "source_binding_exact": true,
+      "proof_grade": true
+    },
+    "identity": "||M(Phi)Sigma||^2=40 I1+72 I45+28 I210-8 I770-12 I5940+12 I8910",
+    "flags": {
+      "A_square_recoupling_exactly_source_bound": true,
+      "complete_potential_BFB_exactly_certified": false,
+      "full_Hessian_exactly_source_bound": false,
+      "strict_local_minimum_certified": false,
+      "G3_closed": false
+    },
+    "remaining_scope": "The full P+Delta Hessian still needs direct exact-source assembly; this finite invariant identity alone does not certify rank 448."
+  },
+  "exact_SOS_BFB_stationarity_certificate": {
+    "status": "EXACT_COMPLETE_POTENTIAL_BFB_AND_SELECTED_STATIONARITY_CERTIFIED",
+    "overall_state": "CLOSED_SUBPROBLEM",
+    "model_contract_id": "gauged_u1x_phi17_v20",
+    "recomputed_direct_sources": false,
+    "n_checks": 18,
+    "n_failed": 0,
+    "failures": [],
+    "checks": {
+      "exact_X_27_parameter_SOS_expansion_matches": true,
+      "exact_210_global_bound_source_bound": true,
+      "exact_210_selected_P_stationary": true,
+      "A_square_recoupling_exactly_source_bound": true,
+      "C_square_recoupling_exactly_source_bound": true,
+      "A_shift_square_exactly_source_bound": true,
+      "A_shift_and_C_squares_vanish_at_P_Delta": true,
+      "126_projectors_complete_and_nonnegative": true,
+      "126_self_weights_dominate_norm_square": true,
+      "Delta_projector_fractions_exact": true,
+      "Delta_full_252_coordinate_stationarity_exact": true,
+      "Phi_H_term_is_exact_global_wedge_square": true,
+      "Phi_H_square_vanishes_at_selected_P_H": true,
+      "elementary_H_S_Phi17_squares_exactly_expanded": true,
+      "all_selected_elementary_squares_vanish": true,
+      "global_uniqueness_not_claimed": true,
+      "full_Hessian_rank_not_claimed_here": true,
+      "G3_not_closed_by_BFB_and_stationarity_alone": true
+    },
+    "coefficient_binding": {
+      "nonzero_parameter_count": 27,
+      "exact_laurent_coefficient_map": {
+        "lambda::O07_B01_Phi_norm": [
+          {
+            "coefficient": "-2",
+            "powers": {
+              "h": 0,
+              "r": 0,
+              "x": 0
+            }
+          }
+        ],
+        "lambda::O48_B01_Phi_self_quartics": [
+          {
+            "coefficient": "-21/200",
+            "powers": {
+              "h": 0,
+              "r": 0,
+              "x": 0
+            }
+          }
+        ],
+        "lambda::O48_B02_Phi_self_quartics": [
+          {
+            "coefficient": "2467/28800",
+            "powers": {
+              "h": 0,
+              "r": 0,
+              "x": 0
+            }
+          }
+        ],
+        "lambda::O48_B03_Phi_self_quartics": [
+          {
+            "coefficient": "-77/3200",
+            "powers": {
+              "h": 0,
+              "r": 0,
+              "x": 0
+            }
+          }
+        ],
+        "lambda::O48_B04_Phi_self_quartics": [
+          {
+            "coefficient": "119/115200",
+            "powers": {
+              "h": 0,
+              "r": 0,
+              "x": 0
+            }
+          }
+        ],
+        "lambda::O44_B01_Phi2_Sigma_projectors": [
+          {
+            "coefficient": "41/8",
+            "powers": {
+              "h": 0,
+              "r": 0,
+              "x": 0
+            }
+          }
+        ],
+        "lambda::O44_B02_Phi2_Sigma_projectors": [
+          {
+            "coefficient": "73/8",
+            "powers": {
+              "h": 0,
+              "r": 0,
+              "x": 0
+            }
+          }
+        ],
+        "lambda::O44_B03_Phi2_Sigma_projectors": [
+          {
+            "coefficient": "29/8",
+            "powers": {
+              "h": 0,
+              "r": 0,
+              "x": 0
+            }
+          }
+        ],
+        "lambda::O44_B04_Phi2_Sigma_projectors": [
+          {
+            "coefficient": "-7/8",
+            "powers": {
+              "h": 0,
+              "r": 0,
+              "x": 0
+            }
+          }
+        ],
+        "lambda::O44_B05_Phi2_Sigma_projectors": [
+          {
+            "coefficient": "-11/8",
+            "powers": {
+              "h": 0,
+              "r": 0,
+              "x": 0
+            }
+          }
+        ],
+        "lambda::O44_B06_Phi2_Sigma_projectors": [
+          {
+            "coefficient": "13/8",
+            "powers": {
+              "h": 0,
+              "r": 0,
+              "x": 0
+            }
+          }
+        ],
+        "lambda::O14_B01_Phi_Sigma_Sigmadag_cubic": [
+          {
+            "coefficient": "-1/2",
+            "powers": {
+              "h": 0,
+              "r": 0,
+              "x": 0
+            }
+          }
+        ],
+        "lambda::O05_B01_126bar_norm": [
+          {
+            "coefficient": "1/2",
+            "powers": {
+              "h": 0,
+              "r": 0,
+              "x": 0
+            }
+          },
+          {
+            "coefficient": "-25/96",
+            "powers": {
+              "h": 0,
+              "r": 2,
+              "x": 0
+            }
+          }
+        ],
+        "lambda::O27_B01_126bar_self_projectors": [
+          {
+            "coefficient": "1/4",
+            "powers": {
+              "h": 0,
+              "r": 0,
+              "x": 0
+            }
+          }
+        ],
+        "lambda::O27_B02_126bar_self_projectors": [
+          {
+            "coefficient": "1/4",
+            "powers": {
+              "h": 0,
+              "r": 0,
+              "x": 0
+            }
+          }
+        ],
+        "lambda::O27_B03_126bar_self_projectors": [
+          {
+            "coefficient": "17/128",
+            "powers": {
+              "h": 0,
+              "r": 0,
+              "x": 0
+            }
+          }
+        ],
+        "lambda::O27_B04_126bar_self_projectors": [
+          {
+            "coefficient": "1/8",
+            "powers": {
+              "h": 0,
+              "r": 0,
+              "x": 0
+            }
+          }
+        ],
+        "lambda::O06_B01_Hdag_H_norm": [
+          {
+            "coefficient": "-2",
+            "powers": {
+              "h": 2,
+              "r": 0,
+              "x": 0
+            }
+          }
+        ],
+        "re::O12_B01_Hdag_Hdag_pair": [
+          {
+            "coefficient": "-1",
+            "powers": {
+              "h": 2,
+              "r": -1,
+              "x": 0
+            }
+          }
+        ],
+        "lambda::O04_B01_singlet_polynomial": [
+          {
+            "coefficient": "-2",
+            "powers": {
+              "h": 0,
+              "r": 2,
+              "x": 0
+            }
+          },
+          {
+            "coefficient": "1",
+            "powers": {
+              "h": 4,
+              "r": -2,
+              "x": 0
+            }
+          }
+        ],
+        "lambda::O23_B01_singlet_polynomial": [
+          {
+            "coefficient": "1",
+            "powers": {
+              "h": 0,
+              "r": 0,
+              "x": 0
+            }
+          }
+        ],
+        "lambda::O36_B01_H_self_quartics": [
+          {
+            "coefficient": "2",
+            "powers": {
+              "h": 0,
+              "r": 0,
+              "x": 0
+            }
+          }
+        ],
+        "lambda::O36_B02_H_self_quartics": [
+          {
+            "coefficient": "2",
+            "powers": {
+              "h": 0,
+              "r": 0,
+              "x": 0
+            }
+          }
+        ],
+        "lambda::O46_B01_Phi2_HdagH_channels": [
+          {
+            "coefficient": "3/5",
+            "powers": {
+              "h": 0,
+              "r": 0,
+              "x": 0
+            }
+          }
+        ],
+        "lambda::O46_B03_Phi2_HdagH_channels": [
+          {
+            "coefficient": "-1",
+            "powers": {
+              "h": 0,
+              "r": 0,
+              "x": 0
+            }
+          }
+        ],
+        "lambda::O03_B01_singlet_polynomial": [
+          {
+            "coefficient": "-1/16",
+            "powers": {
+              "h": 0,
+              "r": 0,
+              "x": 2
+            }
+          }
+        ],
+        "lambda::O20_B01_singlet_polynomial": [
+          {
+            "coefficient": "1/32",
+            "powers": {
+              "h": 0,
+              "r": 0,
+              "x": 0
+            }
+          }
+        ]
+      },
+      "all_other_exact_X_parameters": "zero"
+    },
+    "exact_210": {
+      "J_basis_couplings": {
+        "J0": "-21/200",
+        "J2": "2467/28800",
+        "J3": "-77/3200",
+        "J4": "119/115200"
+      },
+      "couplings_match_candidate": true,
+      "spectral_weights_all_at_least_one": true,
+      "P_spectral_values": {
+        "1": "1/210",
+        "45": "0",
+        "54": "3/70",
+        "210": "0",
+        "770_plus_1050_plus_1050bar": "1/6",
+        "4125": "5/14",
+        "5940": "0",
+        "8910": "3/7"
+      },
+      "P_has_unit_norm": true,
+      "positive_extra_channels_zero_at_P": true,
+      "global_bound": "V_Phi>=(I2-1)^2-1",
+      "P_stationary_from_vanishing_square_gradients": true,
+      "source_binding_exact": true
+    },
+    "exact_mixed_squares": {
+      "invariant_space_dimension": 6,
+      "all_common_channels_multiplicity_one": true,
+      "witness_determinant": "-232879691451546176/23625",
+      "C_square_targets": [
+        1014,
+        1005,
+        1828,
+        740,
+        1900,
+        1344
+      ],
+      "C_square_unique_weights": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "C_square_identity_residuals": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "A_square_report": {
+        "status": "EXACT_A_SQUARE_RECOUPLING_CERTIFIED",
+        "overall_state": "CLOSED_SUBPROBLEM",
+        "n_checks": 8,
+        "n_failed": 0,
+        "failures": [],
+        "checks": {
+          "exact_Bose_channel_count_is_six": true,
+          "six_witness_evaluation_matrix_is_nonsingular": true,
+          "recorded_exact_determinant_matches": true,
+          "unique_exact_weights_match_A_square_identity": true,
+          "all_exact_witness_residuals_vanish": true,
+          "recomputed_sources_match_recorded_witness": true,
+          "upstream_exact_census_passes": true,
+          "G3_not_closed_by_recoupling_alone": true
+        },
+        "certificate": {
+          "source_arithmetic": "Z[i] tensors plus Fraction Casimir polynomials",
+          "invariant_space_dimension": 6,
+          "multiplicity_one_channels": [
+            "1",
+            "45",
+            "210",
+            "770",
+            "5940",
+            "8910"
+          ],
+          "witness_seeds": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "witness_matrix": [
+            [
+              "25384/21",
+              "-124/35",
+              "-116/3",
+              "-1051/15",
+              "-2902/21",
+              "5849/105"
+            ],
+            [
+              "7772/7",
+              "-4/5",
+              "1324/15",
+              "-2692/15",
+              "-2939/15",
+              "19178/105"
+            ],
+            [
+              "1180",
+              "132/35",
+              "-356/5",
+              "-251/5",
+              "41086/105",
+              "1123/3"
+            ],
+            [
+              "6985/7",
+              "516/35",
+              "-332/5",
+              "-118",
+              "-6728/105",
+              "-2533/105"
+            ],
+            [
+              "1275",
+              "64/35",
+              "-368/15",
+              "737/15",
+              "4612/35",
+              "2334/5"
+            ],
+            [
+              "7830/7",
+              "-64/35",
+              "312/5",
+              "919/5",
+              "-48997/105",
+              "47008/105"
+            ]
+          ],
+          "A_squared_targets": [
+            49900,
+            52804,
+            45676,
+            40540,
+            54072,
+            55860
+          ],
+          "witness_determinant": "-232879691451546176/23625",
+          "unique_weights": [
+            "40",
+            "72",
+            "28",
+            "-8",
+            "-12",
+            "12"
+          ],
+          "identity_residuals": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "source_binding_exact": true,
+          "proof_grade": true
+        },
+        "identity": "||M(Phi)Sigma||^2=40 I1+72 I45+28 I210-8 I770-12 I5940+12 I8910",
+        "flags": {
+          "A_square_recoupling_exactly_source_bound": true,
+          "complete_potential_BFB_exactly_certified": false,
+          "full_Hessian_exactly_source_bound": false,
+          "strict_local_minimum_certified": false,
+          "G3_closed": false
+        },
+        "remaining_scope": "The full P+Delta Hessian still needs direct exact-source assembly; this finite invariant identity alone does not certify rank 448."
+      },
+      "cubic_operator_exactly_hermitian": true,
+      "C_at_P_Delta_raw_max_abs": 0,
+      "M_P_Delta_minus_2_Delta_max_abs": 0,
+      "source_binding_exact": true
+    },
+    "exact_126bar_self_and_stationarity": {
+      "projector_polynomial_sum": [
+        "1",
+        "0",
+        "0",
+        "0"
+      ],
+      "generators_exactly_antihermitian": true,
+      "delta_projector_fractions": {
+        "54": "0",
+        "1050bar": "0",
+        "4125": "1/3",
+        "2772bar": "2/3"
+      },
+      "weighted_quartic_at_delta": "25/24",
+      "stationarity_gradient_residual_real": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "stationarity_gradient_residual_imaginary": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "maximum_stationarity_gradient_residual": "0",
+      "source_binding_exact": true
+    },
+    "exact_Phi_H_wedge_square": {
+      "identity": "Hdag(||Phi||^2 I-C(Phi))H=||H wedge Phi||^2",
+      "integer_wedge_nonzero_entries": 1260,
+      "integer_interior_nonzero_entries": 840,
+      "all_polarized_coefficient_residual": 0,
+      "candidate_channel_combination": "(3/5) I_1-I_54",
+      "P_operator_equals_diag_1x6_0x4": true,
+      "selected_H_index_6_value": 0,
+      "source_basis_labels": [
+        "1",
+        "45",
+        "54"
+      ],
+      "source_binding_exact": true
+    },
+    "exact_elementary_H_S_Phi17": {
+      "expanded_coefficients_equal_declared_27": true,
+      "nonzero_parameter_count": 27,
+      "all_parameters_in_exact_X_contract": true,
+      "exact_X_parameter_count": 51,
+      "H_self_source_basis": [
+        "I_1",
+        "I_54"
+      ],
+      "H_self_sum_identity": "2 I_1+2 I_54=2(Hdag H)^2",
+      "O12_parameter_convention": "re::O12 multiplies 2 Re[(Hdag.Hdag) Sdag]",
+      "H_S_identity": "(N_H-h^2)^2+(N_H^2-|H.H|^2)+|H.H-(h^2/r)S*|^2+(|S|^2-r^2)^2",
+      "Phi17_identity": "(1/32)(|Phi17|^2-x^2)^2",
+      "selected_square_values": {
+        "N_H_minus_h2": "0",
+        "N_H2_minus_abs_HH2": "0",
+        "HH_minus_alpha_Sstar": "0",
+        "S_norm_minus_r2": "0",
+        "Phi17_norm_minus_x2": "0",
+        "H_wedge_P": "0"
+      },
+      "formal_scale_field": "Q(h,r,x,1/r), h>0, r>0, x>0",
+      "source_binding_exact": true
+    },
+    "boundedness": {
+      "self_projector_inequality": "2 I54+2 I1050bar+(17/16) I2772bar+I4125 >= N_Sigma^2",
+      "radial_completion": "N_Sigma^2-(25/12)r^2 N_Sigma >= -(625/576)r^4",
+      "global_lower_bound": "V>=-1-h^4-r^4-x^4/32-(1/8)(625/576)r^4",
+      "source_binding_exact": true
+    },
+    "stationarity": {
+      "selected_vacuum": "Phi=P, Sigma=r Delta_R, H=h e6, S=r, Phi17=x",
+      "formal_scale_field": "Q(h,r,x,1/r), h>0, r>0, x>0",
+      "all_square_gradients_zero": true,
+      "Sigma_non_square_gradient_cancelled_in_all_252_real_coordinates": true,
+      "source_binding_exact": true
+    },
+    "flags": {
+      "complete_27_parameter_SOS_identity_exactly_source_bound": true,
+      "complete_potential_BFB_exactly_certified": true,
+      "selected_vacuum_stationarity_exactly_certified": true,
+      "selected_vacuum_global_minimum_certified": false,
+      "selected_vacuum_unique_modulo_symmetry": false,
+      "full_Hessian_exactly_source_bound": false,
+      "strict_local_minimum_certified": false,
+      "G3_closed": false,
+      "whole_model_validated": false,
+      "whole_model_excluded": false
+    },
+    "remaining_scope": "The independent direct exact Hessian/rank certificate must establish strict positivity on the 448-dimensional physical quotient before G3 can close. Global uniqueness is not established."
+  },
+  "exact_global_counterexample_certificate": {
+    "status": "EXACT_GAUGED_U1X_G3_GLOBAL_COUNTEREXAMPLE_CERTIFIED",
+    "overall_state": "SELECTED_GLOBAL_MINIMUM_CLAIM_FALSIFIED",
+    "model_contract_id": "gauged_u1x_phi17_v20",
+    "proof_scope": "Exact counterexample to global minimality of the current 27-parameter constructive G3 candidate for every r>0",
+    "arithmetic": "Gaussian integers plus fractions.Fraction; no float proof step",
+    "n_checks": 19,
+    "n_failed": 0,
+    "failures": [],
+    "checks": {
+      "model_contract_matches_exact_X_candidate": true,
+      "complete_27_parameter_candidate_map_source_bound": true,
+      "all_nonzero_Sigma_parameters_match_exact_record": true,
+      "hard_Sigma_coefficients_match_candidate": true,
+      "canonical_minus_i_Hodge_basis_support_exact": true,
+      "witness_norm_squared_is_eight": true,
+      "P_is_exact_canonical_e6789": true,
+      "C_P_z_vanishes_exactly": true,
+      "A_P_minus_2_z_vanishes_exactly": true,
+      "126_pair_Casimir_source_eigenvalues_exact": true,
+      "126_projectors_are_complete_orthogonal_and_exact": true,
+      "raw_projector_values_match_exact_witness": true,
+      "normalized_projector_fractions_are_0_0_half_half": true,
+      "witness_weighted_quartic_is_33_over_32": true,
+      "witness_weight_is_strictly_below_Delta_R": true,
+      "optimal_competitor_norm_is_100_over_99_r2": true,
+      "hard_Sigma_energies_match_exact_values": true,
+      "strict_full_candidate_energy_lowering_is_25_over_19008_r4": true,
+      "same_norm_direction_already_lowers_energy": true
+    },
+    "canonical_witness": {
+      "coordinate_convention": "zero-based coefficients in live_g2_canonical_486_field_chart_v20.sigma_basis(), the physical -i-Hodge 126bar basis",
+      "nonzero_coordinates": [
+        {
+          "index": 75,
+          "real": 1,
+          "imaginary": 0
+        },
+        {
+          "index": 77,
+          "real": 0,
+          "imaginary": -1
+        },
+        {
+          "index": 78,
+          "real": 0,
+          "imaginary": -1
+        },
+        {
+          "index": 80,
+          "real": 1,
+          "imaginary": 0
+        },
+        {
+          "index": 111,
+          "real": -1,
+          "imaginary": 0
+        },
+        {
+          "index": 113,
+          "real": 0,
+          "imaginary": 1
+        },
+        {
+          "index": 114,
+          "real": 0,
+          "imaginary": 1
+        },
+        {
+          "index": 116,
+          "real": -1,
+          "imaginary": 0
+        }
+      ],
+      "canonical_basis_support": {
+        "75": [
+          [
+            [
+              0,
+              2,
+              4,
+              6,
+              7
+            ],
+            1,
+            0
+          ],
+          [
+            [
+              1,
+              3,
+              5,
+              8,
+              9
+            ],
+            0,
+            -1
+          ]
+        ],
+        "77": [
+          [
+            [
+              0,
+              2,
+              4,
+              6,
+              9
+            ],
+            1,
+            0
+          ],
+          [
+            [
+              1,
+              3,
+              5,
+              7,
+              8
+            ],
+            0,
+            -1
+          ]
+        ],
+        "78": [
+          [
+            [
+              0,
+              2,
+              4,
+              7,
+              8
+            ],
+            1,
+            0
+          ],
+          [
+            [
+              1,
+              3,
+              5,
+              6,
+              9
+            ],
+            0,
+            -1
+          ]
+        ],
+        "80": [
+          [
+            [
+              0,
+              2,
+              4,
+              8,
+              9
+            ],
+            1,
+            0
+          ],
+          [
+            [
+              1,
+              3,
+              5,
+              6,
+              7
+            ],
+            0,
+            -1
+          ]
+        ],
+        "111": [
+          [
+            [
+              0,
+              4,
+              5,
+              6,
+              7
+            ],
+            1,
+            0
+          ],
+          [
+            [
+              1,
+              2,
+              3,
+              8,
+              9
+            ],
+            0,
+            1
+          ]
+        ],
+        "113": [
+          [
+            [
+              0,
+              4,
+              5,
+              6,
+              9
+            ],
+            1,
+            0
+          ],
+          [
+            [
+              1,
+              2,
+              3,
+              7,
+              8
+            ],
+            0,
+            1
+          ]
+        ],
+        "114": [
+          [
+            [
+              0,
+              4,
+              5,
+              7,
+              8
+            ],
+            1,
+            0
+          ],
+          [
+            [
+              1,
+              2,
+              3,
+              6,
+              9
+            ],
+            0,
+            1
+          ]
+        ],
+        "116": [
+          [
+            [
+              0,
+              4,
+              5,
+              8,
+              9
+            ],
+            1,
+            0
+          ],
+          [
+            [
+              1,
+              2,
+              3,
+              6,
+              7
+            ],
+            0,
+            1
+          ]
+        ]
+      },
+      "canonical_basis_support_matches_record": true,
+      "raw_norm_squared": 8,
+      "form_kinetic_norm_squared": 8,
+      "form_kinetic_inner_imaginary": 0,
+      "minus_i_hodge_residual_support": [],
+      "physical_minus_i_hodge_chirality_exact": true,
+      "normalized_unit_vector": "u=z/sqrt(8)",
+      "real_coordinates": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "imaginary_coordinates": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "source_binding_exact": true
+    },
+    "exact_mixed_kernel": {
+      "P_definition": "P=e_[6,7,8,9] in the canonical real 210 chart",
+      "P_support": [
+        [
+          209,
+          [
+            6,
+            7,
+            8,
+            9
+          ],
+          1
+        ]
+      ],
+      "P_norm_squared": 1,
+      "A_operator_convention": "A_P=M(P), from the live cubic source tensor",
+      "C_output_complex_dimension": 10,
+      "C_P_z_nonzero_residuals": [],
+      "C_P_z_norm_squared": 0,
+      "A_P_minus_2_z_nonzero_residuals": [],
+      "A_P_minus_2_z_norm_squared": 0,
+      "cubic_source_tensor_exactly_hermitian": true,
+      "contraction_tensor_shape": [
+        10,
+        210,
+        126
+      ],
+      "cubic_operator_tensor_shape": [
+        210,
+        126,
+        126
+      ],
+      "source_binding_exact": true
+    },
+    "exact_126bar_projectors": {
+      "pair_convention": "holomorphic z tensor z (not z tensor conjugate(z))",
+      "source_pair_Casimir_eigenvalues": {
+        "54": "15",
+        "1050bar": "7",
+        "2772bar": "-5",
+        "4125": "1"
+      },
+      "projector_polynomials": {
+        "54": [
+          "1/64",
+          "-33/2240",
+          "-3/2240",
+          "1/2240"
+        ],
+        "1050bar": [
+          "-25/192",
+          "65/576",
+          "11/576",
+          "-1/576"
+        ],
+        "2772bar": [
+          "7/96",
+          "-127/1440",
+          "23/1440",
+          "-1/1440"
+        ],
+        "4125": [
+          "25/24",
+          "-5/504",
+          "-17/504",
+          "1/504"
+        ]
+      },
+      "projector_polynomial_sum": [
+        "1",
+        "0",
+        "0",
+        "0"
+      ],
+      "raw_projector_values_for_z": {
+        "54": "0",
+        "1050bar": "0",
+        "2772bar": "32",
+        "4125": "32"
+      },
+      "normalized_projector_fractions_for_u": {
+        "54": "0",
+        "1050bar": "0",
+        "2772bar": "1/2",
+        "4125": "1/2"
+      },
+      "normalized_fraction_sum": "1",
+      "projected_pair_reconstruction_max_abs_residual": 0,
+      "projected_pair_orthogonality_inner_products": {
+        "54__1050bar": "0",
+        "54__2772bar": "0",
+        "54__4125": "0",
+        "1050bar__2772bar": "0",
+        "1050bar__4125": "0",
+        "2772bar__4125": "0"
+      },
+      "projector_eigen_equation_max_abs_residuals": {
+        "54": 0,
+        "1050bar": 0,
+        "2772bar": 0,
+        "4125": 0
+      },
+      "weighted_quartic_formula": "W=2 I54+2 I1050bar+(17/16) I2772bar+I4125",
+      "weighted_quartic_at_u": "33/32",
+      "weighted_quartic_at_Delta_R": "25/24",
+      "strict_weight_improvement": "1/96",
+      "generators_exactly_antihermitian": true,
+      "casimir_int64_growth_factor": 45,
+      "source_binding_exact": true
+    },
+    "exact_candidate_source_binding": {
+      "model_contract_id": "gauged_u1x_phi17_v20",
+      "nonzero_parameter_count": 27,
+      "expanded_map_equals_declared_map": true,
+      "all_other_exact_X_parameters": "zero by the complete source map",
+      "nonzero_Sigma_parameter_count": 12,
+      "nonzero_Sigma_parameters": {
+        "lambda::O44_B01_Phi2_Sigma_projectors": {
+          "(0, 0, 0)": "41/8"
+        },
+        "lambda::O44_B02_Phi2_Sigma_projectors": {
+          "(0, 0, 0)": "73/8"
+        },
+        "lambda::O44_B03_Phi2_Sigma_projectors": {
+          "(0, 0, 0)": "29/8"
+        },
+        "lambda::O44_B04_Phi2_Sigma_projectors": {
+          "(0, 0, 0)": "-7/8"
+        },
+        "lambda::O44_B05_Phi2_Sigma_projectors": {
+          "(0, 0, 0)": "-11/8"
+        },
+        "lambda::O44_B06_Phi2_Sigma_projectors": {
+          "(0, 0, 0)": "13/8"
+        },
+        "lambda::O14_B01_Phi_Sigma_Sigmadag_cubic": {
+          "(0, 0, 0)": "-1/2"
+        },
+        "lambda::O05_B01_126bar_norm": {
+          "(0, 0, 0)": "1/2",
+          "(0, 2, 0)": "-25/96"
+        },
+        "lambda::O27_B01_126bar_self_projectors": {
+          "(0, 0, 0)": "1/4"
+        },
+        "lambda::O27_B02_126bar_self_projectors": {
+          "(0, 0, 0)": "1/4"
+        },
+        "lambda::O27_B03_126bar_self_projectors": {
+          "(0, 0, 0)": "17/128"
+        },
+        "lambda::O27_B04_126bar_self_projectors": {
+          "(0, 0, 0)": "1/8"
+        }
+      },
+      "nonzero_Sigma_parameters_match_record": true,
+      "Sigma_scale": "1/8",
+      "Sigma_radial_coefficient": "25/12",
+      "Sigma_self_weights": {
+        "54": "2",
+        "1050bar": "2",
+        "2772bar": "17/16",
+        "4125": "1"
+      },
+      "Delta_R_projector_fractions": {
+        "54": "0",
+        "1050bar": "0",
+        "2772bar": "2/3",
+        "4125": "1/3"
+      },
+      "Delta_R_weighted_quartic": "25/24",
+      "hard_Sigma_sector": "(1/8)[||(M(Phi)-2)Sigma||^2+||C_Phi Sigma||^2+W(Sigma)-(25/12)r^2||Sigma||^2]",
+      "source_binding_exact": true
+    },
+    "exact_energy_comparison": {
+      "formal_scale_assumption": "r>0",
+      "unit_direction": "u=z/sqrt(8)",
+      "competitor_field": "Phi=P, Sigma=(5r/(3 sqrt(22))) z, H=h e6, S=r, Phi17=x",
+      "all_non_Sigma_fields": "identical to the selected stationary vacuum",
+      "hard_ray_polynomial": "E_hard(n)/r^4=(1/8)[(33/32)(n/r^2)^2-(25/12)(n/r^2)]",
+      "positive_ray_quartic_coefficient": "33/32",
+      "optimal_Sigma_norm_squared_over_r_squared": "100/99",
+      "optimality_first_derivative_residual": "0",
+      "optimality_second_derivative": "33/16",
+      "competitor_hard_Sigma_energy_over_r4": "-625/4752",
+      "selected_hard_Sigma_energy_over_r4": "-25/192",
+      "selected_minus_competitor_energy_over_r4": "25/19008",
+      "strict_improvement_for_r_positive": true,
+      "same_norm_competitor_hard_energy_over_r4": "-101/768",
+      "same_norm_selected_minus_competitor_energy_over_r4": "1/768",
+      "full_potential_difference": "V_selected-V_competitor=(25/19008)r^4; every other exact candidate term is unchanged",
+      "actual_global_minimum_location": "not established",
+      "source_binding_exact": true
+    },
+    "flags": {
+      "exact_global_counterexample_source_bound": true,
+      "lower_energy_field_witness_exactly_certified": true,
+      "selected_vacuum_global_minimum_disproved": true,
+      "selected_vacuum_unique_global_minimum_modulo_symmetry_disproved": true,
+      "selected_vacuum_strict_local_minimum_remains_valid": true,
+      "strict_local_minimum_recomputed_here": false,
+      "actual_global_minimum_classified": false,
+      "G3_selected_global_claim_falsified": true,
+      "G3_closed": false,
+      "whole_model_validated": false,
+      "whole_model_excluded": false,
+      "whole_theory_excluded": false
+    },
+    "interpretation": "A strict local minimum may have a lower disconnected competitor. This exact witness invalidates only the selected vacuum's global-minimum and global-uniqueness claims. It neither locates the true global minimum nor excludes the full model or theory."
+  },
+  "numerical_diagnostic": {
+    "evidence_kind": "live_compiler_float64_candidate_recomputation",
+    "recomputed_in_this_invocation": true,
+    "proof_grade": false,
+    "dense_Hessians_assembled": true,
+    "parameter_rows_assembled": 28,
+    "nonzero_parameter_count": 27,
+    "potential_value": -324.0203138553086,
+    "compiler_gradient_max_abs_residual": 1.7763568394002505e-15,
+    "compiler_gradient_norm": 1.77636496747972e-15,
+    "stationary_Hessian_symmetry_max_abs_residual": 1.2089974215218702e-06,
+    "P_plus_Delta": {
+      "gauge_rank": 33,
+      "quotient_dimension": 429,
+      "minimum_eigenvalue": 4.2156248652482076e-11,
+      "negative_eigenvalues_below_minus_1e_minus_12": 0,
+      "zero_eigenvalues_at_1e_minus_12": 0
+    },
+    "full_massive_transverse": {
+      "dimension": 448,
+      "minimum_raw_eigenvalue": -8.4576359253896e-16,
+      "maximum_raw_eigenvalue": 12.70866463982956,
+      "negative_eigenvalues_below_zero": 2,
+      "negative_eigenvalues_below_minus_1e_minus_12": 0,
+      "strict_local_minimum_certified": false,
+      "PSD_feasibility_certified": false
+    },
+    "candidate_square_values_at_selected_vacuum": {
+      "C_square": -2.591895931882395e-22,
+      "A_squared": 1.6212094906585945e-08,
+      "A_shift_square": -1.674213559807328e-21
+    },
+    "limitations": [
+      "float64 cannot resolve the electroweak hierarchy across the raw 448-space spectrum",
+      "this numerical diagnostic is secondary to the separate direct exact rank certificate",
+      "an independent exact lower-energy field witness rejects this candidate globally"
+    ]
+  },
+  "flags": {
+    "exact_sparse_51_parameter_candidate_constructed": true,
+    "candidate_inside_4pi_box": true,
+    "positive_J0_normalization_is_without_loss_of_generality": false,
+    "manifest_BFB_decomposition_candidate_constructed": true,
+    "A_square_recoupling_exactly_source_bound": true,
+    "complete_potential_BFB_exactly_certified": true,
+    "selected_vacuum_stationarity_exactly_compiler_certified": true,
+    "selected_vacuum_global_minimum_certified": false,
+    "selected_vacuum_global_minimum_disproved": true,
+    "selected_vacuum_unique_modulo_symmetry": false,
+    "exact_lower_energy_field_witness_certified": true,
+    "constructive_candidate_rejected_for_G3": true,
+    "selected_vacuum_stationarity_numerically_recomputed": true,
+    "P_plus_Delta_local_positivity_numerical_only": false,
+    "P_plus_Delta_Qsqrt2_component_LDL_conditional": false,
+    "full_448_kernel_count_conditional": false,
+    "P_plus_Delta_source_binding_exactly_certified": true,
+    "full_448_kernel_count_exact": true,
+    "full_448_PSD_feasibility_certified": true,
+    "strict_local_minimum_certified": true,
+    "G3_closed": false,
+    "whole_model_validated": false,
+    "whole_model_excluded": false
+  },
+  "verdict": "A perturbative sparse candidate with a manifest sum-of-squares structure has been found outside the old J0=+1 search slice. Its complete potential is exactly bounded below and the selected vacuum is exactly stationary. Direct Gaussian-integer/Fraction assembly and exact Q(sqrt(2)) LDL certify a rank-429/nullity-33 P+Delta core; the exact H/S/Phi17 constraint Jacobian leaves only the 38 symmetry tangents, so all 448 transverse Hessian directions are positive and the selected orbit is a strict local minimum. The final exact global-gap test constructs a symmetry-inequivalent 126bar field configuration with energy lower by 25*r^4/19008. The selected orbit is therefore not global, this candidate is rejected for G3, and the broader model is not thereby excluded."
+}

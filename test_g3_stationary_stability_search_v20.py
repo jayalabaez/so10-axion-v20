@@ -9,6 +9,12 @@ import numpy as np
 import g3_stationary_stability_search_v20 as gate
 
 
+def test_historical_option_c_scope_is_explicit():
+    assert gate.MODEL_CONTRACT_ID == "historical_option_c_no_x_v20"
+    assert gate.AUTHORITATIVE_FOR_MANUSCRIPT is False
+    assert gate.MODEL_WIDE_NO_GO_CERTIFIED is False
+
+
 def test_rayleigh_cut_coefficients_reconstruct_linear_matrix_family():
     basis = np.asarray(
         [np.diag([1.0, 0.0]), np.diag([0.0, 2.0])], dtype=float

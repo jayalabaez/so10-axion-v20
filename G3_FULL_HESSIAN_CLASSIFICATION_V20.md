@@ -1,7 +1,11 @@
 # G3 full Hessian classification — v20
 
 **Status:** `G3_FULL_HESSIAN_PHYSICAL_SADDLE__GLOBAL_BFB_OPEN`
+
 **Local classification:** `PHYSICAL_SADDLE`
+
+**Contract:** `historical_option_c_no_x_v20`
+**Authoritative for the gauged-U(1)_X manuscript:** `False`
 
 - full Hessian: `486 x 486`;
 - gauge directions removed: `36`;

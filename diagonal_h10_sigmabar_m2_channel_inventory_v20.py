@@ -66,7 +66,7 @@ SOURCES = {
 
 def _charge_status(counts: dict[str, int]) -> dict[str, Any]:
     totals = z17._total_charge(counts)
-    allowed = z17._allowed(totals)
+    allowed = z17._allowed(totals, require_x=True)
     if not allowed["all"]:
         status = "CHARGE_FORBIDDEN"
     else:

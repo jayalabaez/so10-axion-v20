@@ -1,0 +1,151 @@
+{
+  "status": "GLOBAL_GAP_REDUCED_TO_PD_EQUALITY_CLASSIFICATION",
+  "overall_state": "FINAL_G3_TEST_OPEN",
+  "model_contract_id": "gauged_u1x_phi17_v20",
+  "n_checks": 9,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "sigma_zero_exact_gap_is_1_over_5000": true,
+    "fixed_PD_H_orientation_has_no_lower_direction": true,
+    "quartic_BFB_is_not_confused_with_globality": true,
+    "PD_global_equality_classification_is_fail_closed": true,
+    "fixed_F_Pluecker_reduction_is_exact": true,
+    "fixed_F_full_offkernel_beta_gap_is_exact": true,
+    "diagonal_Phi_slice_is_exact": true,
+    "exact_full_Hessian_is_closed": true,
+    "G3_is_not_promoted_without_the_final_gap": true
+  },
+  "candidate": {
+    "Phi": "F0/sqrt(10)",
+    "Sigma": "Delta_R/5",
+    "H": "(e6+i e7)/sqrt(2)",
+    "S": "1/5",
+    "Phi17": "1",
+    "beta_O35_45": "1/20"
+  },
+  "exact_dangerous_strata": {
+    "Sigma_equals_zero": {
+      "gap_above_selected_orbit": "1/5000",
+      "decimal_gap": 0.0002,
+      "derivation": "t*(0-r^2)^2=(1/8)*(1/5)^4",
+      "strictly_above_target": true,
+      "importance": "this is the nearest known boundary stratum and fixes the scale required in any uniform beta bound"
+    },
+    "fixed_F_Delta_equal_norm_H": {
+      "scope": "Phi=F, Sigma=r Delta, N_H=1",
+      "Hermitian_alignment_plus_current_spectrum": {
+        "desired_EW_chirality": {
+          "eigenvalue": "0",
+          "complex_multiplicity": 2
+        },
+        "opposite_EW_chirality": {
+          "eigenvalue": "6/5",
+          "complex_multiplicity": 2
+        },
+        "desired_colour_chirality": {
+          "eigenvalue": "1/500",
+          "complex_multiplicity": 3
+        },
+        "opposite_colour_chirality": {
+          "eigenvalue": "599/500",
+          "complex_multiplicity": 3
+        }
+      },
+      "smallest_positive_eigenvalue": "1/500",
+      "all_nonnegative": true,
+      "equality_subspace": "desired electroweak chirality C^2",
+      "H_holomorphic_square": "|H.H|^2 vanishes on that isotropic C^2",
+      "normalized_equality_set_is_EW_gauge_orbit": true,
+      "lower_equal_norm_H_orientation_found": false,
+      "source_binding_exact": true
+    },
+    "two_singlet_representatives": {
+      "normalized_ratios": [
+        "(1,sqrt(3),+sqrt(6))/sqrt(10)",
+        "(1,sqrt(3),-sqrt(6))/sqrt(10)"
+      ],
+      "both_require_equality_orbit_classification": true
+    },
+    "known_lower_field_witness": false,
+    "random_or_floating_search_counts_as_proof": false
+  },
+  "small_beta_global_reduction": {
+    "theorem": "compact Morse-Bott small-parameter stability of a nonnegative coercive polynomial under beta*I45",
+    "hypotheses": {
+      "V0_is_an_explicit_nonnegative_sum_of_squares": true,
+      "V0_is_coercive_and_its_equality_set_is_compact": true,
+      "selected_flag_has_zero_current_and_zero_full_gradient": true,
+      "selected_flag_has_positive_448_quotient_Hessian_numerically": true,
+      "homogeneous_quartic_remains_BFB_exactly": true,
+      "fixed_F_Sigma_equalities_are_one_Pluecker_orbit": true,
+      "fixed_F_full_offkernel_beta_1_over_20_gap_is_exact": true,
+      "pair_plane_diagonal_Phi_equalities_are_one_physical_orbit": true,
+      "signed_Phi_orbits_are_exactly_isolated_local_components": true,
+      "all_PD_global_equality_components_are_classified": false,
+      "current_is_nonnegative_on_every_PD_equality_component": false,
+      "every_zero_of_current_on_the_PD_equality_set_is_the_selected_flag_orbit": false,
+      "exact_full_486_Hessian_kernel_equals_the_38_symmetry_tangents": true
+    },
+    "theorem_ready": false,
+    "conclusion_if_ready": "there exists beta_star>0 such that every 0<beta<beta_star preserves the global lower bound and selects the chiral SM flag",
+    "beta_equals_1_over_20_covered_by_theorem": false,
+    "upstream_global_status": {
+      "PD_global_SOS_exact": true,
+      "full_homogeneous_quartic_BFB_exact": true,
+      "fixed_PD_equal_norm_H_orientation_exact": true,
+      "positive_F_full_mixed_kernel_gap_exact": true,
+      "negative_F_mixed_zero_kernel_dimension": 0,
+      "all_vanishing_affine_SOS_beta_replacement_excluded": true,
+      "beta_deformed_finite_field_global_gap_exact": false,
+      "global_equality_orbits_classified": false,
+      "G3_closed": false
+    },
+    "exact_local_Hessian_status": "EXACT_FULL_HESSIAN_RANK_448_NULLITY_38_CERTIFIED",
+    "fixed_F_global_status": "EXACT_FIXED_F_FULL_OFFKERNEL_BETA_GAP_CERTIFIED",
+    "exact_equality_reduction": {
+      "fixed_F_mixed_kernel": "complex 10",
+      "Sigma_1050bar_zero_condition": "(256/9) times the sum of five squared Pluecker Pfaffians",
+      "fixed_F_normalized_Sigma_zero_set": "one U(5) orbit",
+      "fixed_F_arbitrary_H_Sigma_beta_gap": "exactly nonnegative",
+      "fixed_F_gap_equality_set": "one determinant-corrected SU(5) flag orbit",
+      "pair_plane_diagonal_Phi_zero_set": "F+ and F-, one physical orbit",
+      "signed_Phi_orbits_locally_isolated": true,
+      "distant_disconnected_Phi_components_excluded": false,
+      "remaining_lemma": {
+        "statement": "Every real unit four-form Phi with Pi54(Phi tensor Phi)=0 and Pi4125(Phi tensor Phi)=0 belongs to SO(10).F or SO(10).(-F).",
+        "proved": false,
+        "literal_single_orbit_version_refuted": true,
+        "corrected_signed_two_orbit_version": true,
+        "source_bound_certificate_available": false,
+        "source_bound_partial_certificate_available": true,
+        "signed_orbits_locally_isolated_exactly": true,
+        "complete_SU3_fixed_slice_classified_exactly": true,
+        "SU3_fixed_slice_real_dimension": 16,
+        "SU3_fixed_slice_nondiagonal_directions_excluded": 8,
+        "distant_disconnected_components_excluded": false,
+        "why_required": "It is the missing step needed to put an arbitrary projector zero into a signed canonical orbit.  The -F orbit is then excluded by exact mixed invertibility, while the +F orbit is handled by the exact Plucker classification.",
+        "numerical_search_is_not_a_substitute": true
+      }
+    }
+  },
+  "final_acceptance_test": {
+    "required_statement": "For every 486-real field q, V_beta(q)-V_beta(q0)>=0; equality holds only on the SO(10)xU(1)_XxPQ orbit of q0.",
+    "required_evidence": [
+      "classify every equality component of the beta=0 PD SOS",
+      "prove I45(H,Sigma)>=0 on each full-SOS equality component",
+      "prove all zeros of that restriction are the selected chiral flag orbit",
+      "supply an explicit beta interval containing beta=1/20, or lower beta to a certified interval"
+    ],
+    "currently_passes": false
+  },
+  "flags": {
+    "lower_witness_found": false,
+    "conditional_small_positive_beta_route_exists": true,
+    "beta_1_over_20_global_minimum_certified": false,
+    "global_equality_orbits_classified": false,
+    "G3_closed": false,
+    "whole_model_excluded": false
+  },
+  "verdict": "The chiral-H candidate has survived the exact Sigma=0 and fixed-PD orientation tests, and no lower witness is known. The final global question is reduced to the unproved global equality classification of the PD SOS and a uniform bound away from the signed Phi strata. The complete Phi=F stratum is now certified at beta=1/20 for arbitrary H and Sigma, but that subtheorem does not by itself close G3."
+}

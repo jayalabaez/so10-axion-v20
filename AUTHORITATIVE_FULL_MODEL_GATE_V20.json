@@ -1,0 +1,116 @@
+{
+  "status": "AUTHORITATIVE_FULL_MODEL_GATE_EXECUTED",
+  "overall_state": "BLOCKED",
+  "n_checks": 10,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "x_contract_audit_executes": true,
+    "consistent_contract_has_tool_native_bound_evidence": true,
+    "contract_state_respected_by_validation": true,
+    "contract_and_ledger_agree": true,
+    "ledger_executes": true,
+    "proton_gate_executes": true,
+    "legacy_ultimate_not_authoritative": true,
+    "internal_candidate_not_promoted_to_full_validation": true,
+    "conditional_proton_points_not_promoted_to_model_exclusion": true,
+    "no_discovery_claim": true
+  },
+  "hard_theory_failures": [],
+  "blockers": [
+    "AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED",
+    "G1_NOT_CLOSED",
+    "G2_NOT_CLOSED",
+    "G3_NOT_CLOSED",
+    "G4_NOT_CLOSED",
+    "G5_NOT_CLOSED",
+    "G6_NOT_CLOSED",
+    "G7_NOT_CLOSED",
+    "G8_NOT_CLOSED",
+    "PROTON_READINESS_complete_mass_basis_gauge_flavour_wilson_coefficients",
+    "PROTON_READINESS_complete_scalar_triplet_masses_mixings_and_yukawas",
+    "PROTON_READINESS_full_component_vacuum_and_competing_extrema",
+    "PROTON_READINESS_physical_phases_and_interference",
+    "PROTON_READINESS_uncertainties_propagated",
+    "PROTON_READINESS_unique_physical_XY_masses",
+    "PROTON_READINESS_unique_vev_ratios_from_full_potential",
+    "PROTON_READINESS_validated_two_loop_component_threshold_matching"
+  ],
+  "model_contract_id": "gauged_u1x_phi17_v20",
+  "model_contract": {
+    "declared_consistent": false,
+    "tool_native_bound_evidence_complete": false,
+    "consistent": false,
+    "status": "AUTHORITATIVE_GAUGED_U1X_CONTRACT_AUDIT_COMPLETE__BLOCKED",
+    "overall_state": "BLOCKED",
+    "conflicts": [
+      "executable_scaffold_lacks_current_sha256_bound_external_tool_validation",
+      "external_attestation_lacks_hash_bound_manifest_or_process_log"
+    ]
+  },
+  "g1_g8_summary": {
+    "closed": [],
+    "partial": [],
+    "open": [],
+    "blocked": [
+      "G1",
+      "G2",
+      "G3",
+      "G4",
+      "G5",
+      "G6",
+      "G7",
+      "G8"
+    ],
+    "n_closed": 0,
+    "n_partial": 0,
+    "n_open": 0,
+    "n_blocked": 8
+  },
+  "g1_g8_status": "G1_G8_LEDGER_AUDIT_COMPLETE__MODEL_CONTRACT_BLOCKED__GAUGED_G1_G2_SCOPED_RECERTIFIED",
+  "proton_status": "PROTON_DECAY_FALSIFICATION_GATE_PASS__NO_UNIQUE_MODEL_PREDICTION",
+  "proton_classification": {
+    "proton_decay_observed": false,
+    "conditional_points_below_limit": [
+      "two_loop_calibrated_proxy",
+      "selected_vev_xy_mass"
+    ],
+    "conditional_points_above_limit": [
+      "one_loop_unification_anchor"
+    ],
+    "exact_unique_proton_lifetime_derived": false,
+    "whole_model_excluded_by_proton_decay": false,
+    "authoritative_answer": "NO_PROTON_DECAY_DISCOVERY__CONDITIONAL_BENCHMARKS_ONLY__FULL_MODEL_VERDICT_OPEN"
+  },
+  "legacy_ultimate_gate": {
+    "available": true,
+    "status": "ULTIMATE_GATE_AUDIT_COMPLETE__MODEL_CONTRACT_BLOCKED",
+    "decision": "WITHHOLD_APPROVAL",
+    "internal_candidate_approved": false,
+    "full_phenomenology_approved": false,
+    "empirical_realization_approved": false,
+    "authoritative_for_full_model": false,
+    "reason": "The historical gate does not consume the corrected G1\u2013G8 dependency ledger, signed scalar-spectrum invalidation, or PR #105 proton gate."
+  },
+  "classification": {
+    "all_g1_g8_closed": false,
+    "authoritative_model_contract_consistent": false,
+    "tool_native_bound_model_evidence_complete": false,
+    "exact_unique_proton_lifetime": false,
+    "proton_decay_observed": false,
+    "whole_model_validated": false,
+    "whole_model_excluded": false,
+    "empirical_discovery": false
+  },
+  "flag": {
+    "authoritative_full_model_gate": true,
+    "legacy_ultimate_gate_authoritative": false,
+    "internal_candidate_approval_is_not_full_model_validation": true,
+    "conditional_benchmarks_are_not_discovery": true,
+    "authoritative_model_contract_consistent": false,
+    "tool_native_bound_model_evidence_complete": false,
+    "whole_model_validated": false,
+    "whole_model_excluded": false
+  },
+  "verdict": "The repository remains BLOCKED at full-model scope. The manuscript's gauged U(1)_X contract is implemented by a statically consistent, tool-native SARAH input and hash-bound validation bundle, but it has no valid v2 manifest/log-bound external execution attestation, so no downstream Option-C calculation is authoritative. The historical ultimate-gate internal-candidate approval is retained only as context; it cannot validate the model. Full approval requires every G1-G8 gate to close and the proton lifetime to be derived from the same physical vacuum and spectrum."
+}

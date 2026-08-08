@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Close the remaining renormalizable H10--126bar holomorphic families.
+"""Reproduce historical no-X H10--126bar holomorphic-family calculations.
 
-Under the live SO(10) x Z17/PQ contract (continuous X is not imposed), three
-previously omitted Hermitian operator classes are allowed through dimension 4:
+Under the superseded Option-C SO(10) x Z17/PQ counterfactual, which omits the
+manuscript's gauged U(1)_X, three operator classes were treated as allowed:
 
   O54 = [Hdag Hdag]_54 : [Sigmabar Sigmabar]_54 + h.c.
   O+  = Phi Hdag Sigmabar Phi17 + h.c.
@@ -13,15 +13,18 @@ Sym^2(126bar)=54+1050bar+2772bar+4125 share only one 54.  The charge-dressed
 quartics inherit the unique 210 contraction already proved for the cubic
 Phi Hdag Sigmabar.
 
+Only O54 is U(1)_X neutral.  O+ and O- contain X-charged Phi17 dressings and
+are forbidden in the manuscript's gauged model, so the combined family is not
+a live G1 closure.  The tensor and selected-vacuum calculations are retained
+as reproducible historical/counterfactual results.
+
 On the canonical Delta_R background, P54(Delta_R,Delta_R)=0, so O54 gives no
 H10 holomorphic mass block there.  If Phi17 has a VEV, O+ and O- combine with
 the cubic coefficient into mu_D_eff = mu_D + eta_plus phi17
 + eta_minus phi17*, while introducing no H--Phi17 block because the
 p+Delta_R H tadpole contraction vanishes.
 
-This closes these finite G1 families only.  The full mixed invariant ring,
-full component potential, electroweak backreaction, and whole-model validation
-remain open.
+Nothing in this module closes or excludes the manuscript theory.
 """
 from __future__ import annotations
 
@@ -41,6 +44,7 @@ import so10_126_to_54_projector_v20 as sigma54
 ROOT = Path(__file__).resolve().parent
 OUT_JSON = ROOT / "EXACT_HSIGMA_HOLOMORPHIC_CHARGE_DRESSED_COMPLETION_V20.json"
 OUT_MD = ROOT / "EXACT_HSIGMA_HOLOMORPHIC_CHARGE_DRESSED_COMPLETION_V20.md"
+MODEL_CONTRACT_ID = "historical_option_c_no_x_v20"
 
 O54 = "10_H_dag^2 126bar_H^2 :: 54"
 OPLUS = "210_H 10_H_dag 126bar_H Phi17"
@@ -136,10 +140,10 @@ def charge_audit() -> dict[str, Any]:
         rows[addition["name"]] = {
             **addition,
             "charge_totals": totals,
-            "declared_allowed": operator_filter._allowed(
+            "option_c_no_x_allowed": operator_filter._allowed(
                 totals, require_x=False
             ),
-            "historical_X_comparison": operator_filter._allowed(
+            "gauged_u1x_manuscript_allowed": operator_filter._allowed(
                 totals, require_x=True
             ),
         }
@@ -239,6 +243,7 @@ def selected_vacuum_audit() -> dict[str, Any]:
 
 
 def completed_catalogue_overlay() -> dict[str, Any]:
+    """Return the historical Option-C overlay; it is not a live catalogue."""
     base = operator_filter.operator_catalogue(require_x=False)
     names = {row["name"] for row in base}
     appended = []
@@ -265,12 +270,12 @@ def build_report() -> dict[str, Any]:
 
     checks = {
         "three_omitted_classes_identified": overlay["all_three_were_missing"],
-        "all_declared_charge_allowed": all(
-            row["declared_allowed"]["all"] for row in charges.values()
+        "all_option_c_no_x_charge_allowed": all(
+            row["option_c_no_x_allowed"]["all"] for row in charges.values()
         ),
-        "Phi17_dressed_terms_fail_superseded_X_only": (
-            not charges[OPLUS]["historical_X_comparison"]["all"]
-            and not charges[OMINUS]["historical_X_comparison"]["all"]
+        "Phi17_dressed_terms_forbidden_by_manuscript_u1x": (
+            not charges[OPLUS]["gauged_u1x_manuscript_allowed"]["all"]
+            and not charges[OMINUS]["gauged_u1x_manuscript_allowed"]["all"]
         ),
         "unique_holomorphic_54_channel": (
             reps["common_channels"] == {"54": 1}
@@ -304,10 +309,13 @@ def build_report() -> dict[str, Any]:
     failures = [name for name, passed in checks.items() if not passed]
     return _jsonable(
         {
+            "model_contract_id": MODEL_CONTRACT_ID,
+            "authoritative_for_manuscript": False,
+            "model_wide_no_go_certified": False,
             "status": (
-                "HSIGMA_HOLOMORPHIC_AND_CHARGE_DRESSED_FAMILIES_CLOSED"
+                "HISTORICAL_OPTION_C_HSIGMA_CALCULATION_REPRODUCED__NONAUTHORITATIVE"
                 if not failures
-                else "HSIGMA_HOLOMORPHIC_CHARGE_DRESSED_GATE_FAILED"
+                else "HISTORICAL_OPTION_C_HSIGMA_REPRODUCTION_FAILED"
             ),
             "n_checks": len(checks),
             "n_failed": len(failures),
@@ -319,10 +327,13 @@ def build_report() -> dict[str, Any]:
             "selected_vacuum_audit": vacuum,
             "catalogue_overlay": overlay,
             "flags": {
-                "unique_Hdag2_Sigma2_54_family_closed": not failures,
-                "two_Phi17_dressed_cubic_companions_closed": not failures,
-                "selected_DeltaR_O54_mass_block_zero": not failures,
-                "muD_eff_replacement_required": not failures,
+                "historical_option_c_calculation_reproduced": not failures,
+                "u1x_neutral_O54_tensor_result_reusable": not failures,
+                "phi17_dressed_companions_allowed_by_manuscript_u1x": False,
+                "historical_selected_DeltaR_O54_mass_block_zero": not failures,
+                "historical_muD_eff_replacement_derived": not failures,
+                "authoritative_for_manuscript": False,
+                "model_wide_no_go_certified": False,
                 "complete_mixed_invariant_ring": False,
                 "complete_component_potential": False,
                 "nonzero_electroweak_backreaction_solved": False,
@@ -330,12 +341,12 @@ def build_report() -> dict[str, Any]:
                 "empirical_discovery": False,
             },
             "verdict": (
-                "The remaining renormalizable H10--126bar holomorphic sector "
-                "contains one unique 54 quartic and two Phi17-dressed copies "
-                "of the unique Phi Hdag Sigmabar contraction. The 54 quartic "
-                "is generically nonzero but vanishes on Delta_R^2. The "
-                "dressed terms replace mu_D by mu_D_eff after Phi17 condenses. "
-                "These finite families are closed; full G1 remains open."
+                "This reproduces the historical Option-C result: the unique "
+                "U(1)_X-neutral 54 quartic is generically nonzero and vanishes "
+                "on Delta_R^2, while the two no-X Phi17 dressings generate the "
+                "displayed mu_D_eff. Those dressings are gauge-forbidden in the "
+                "manuscript, so this report is not a live G1 closure and neither "
+                "validates nor excludes the gauged theory."
             ),
         }
     )
@@ -344,7 +355,7 @@ def build_report() -> dict[str, Any]:
 def write_report(report: dict[str, Any]) -> None:
     OUT_JSON.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     OUT_MD.write_text(
-        "# Exact H10–126bar holomorphic and charge-dressed completion\n\n"
+        "# Historical Option-C H10–126bar calculation\n\n"
         f"**Status:** `{report['status']}`\n\n"
         + report["verdict"]
         + "\n",

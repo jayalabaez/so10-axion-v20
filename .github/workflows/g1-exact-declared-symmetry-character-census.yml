@@ -79,11 +79,14 @@ jobs:
               return data
 
           d = load('G1_EXACT_DECLARED_SYMMETRY_CHARACTER_CENSUS_V20.json')
-          assert d['n_failed'] == 0 and d['overall_state'] == 'BLOCKED', d['failures']
-          assert d['counts']['charge_and_so10_allowed_multidegrees'] == 74, d['counts']
-          assert d['counts']['total_potential_orbit_multiplicity'] == 64, d['counts']
+          assert d['n_failed'] == 0 and d['overall_state'] == 'PARTIAL', d['failures']
+          assert d['model_contract_id'] == 'gauged_u1x_phi17_v20'
+          assert d['counts']['charge_and_so10_allowed_multidegrees'] == 34, d['counts']
+          assert d['counts']['hermitian_conjugacy_orbits'] == 28, d['counts']
+          assert d['counts']['total_potential_orbit_multiplicity'] == 44, d['counts']
+          assert d['counts']['total_real_potential_parameters'] == 51, d['counts']
           assert d['anchors']['P2_H_126dag'] == 2, d['anchors']
-          assert not d['closure']['explicit_component_tensor_basis_closed'], d['closure']
+          assert not d['closure']['explicit_component_tensor_subset_integration_closed'], d['closure']
           assert not d['flags']['g1_closed'], d['flags']
 
           d = load('EXACT_PHI17_NEUTRAL_DRESSING_COMPLETION_V20.json')
@@ -93,6 +96,8 @@ jobs:
 
           d = load('EXACT_PHI17_DRESSING_CHARACTER_CROSSCHECK_V20.json')
           assert d['n_failed'] == 0, d['failures']
+          assert d['model_contract_id'] == 'historical_option_c_no_x_v20'
+          assert d['authoritative_for_manuscript'] is False
           assert d['flags']['all_seven_multiplicity_one'], d['flags']
 
           d = load('EXACT_PHI2_H_126DAG_210_1050_CHANNELS_V20.json')

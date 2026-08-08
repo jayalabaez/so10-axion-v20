@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
-"""Authoritative live G1 tensor-basis closure ledger.
+"""Historical Option-C/no-X G1 tensor-basis closure ledger.
 
-The live symmetry contract is SO(10)+PQ+Z17 with no continuous-X filter.  The
+Despite the legacy ``live_`` filename, this module is not authoritative for
+the manuscript, which gauges U(1)_X.  Its contract is the preserved
+``historical_option_c_no_x_v20`` counterfactual.
+
+Under that historical SO(10)+PQ+Z17 contract with no continuous-X filter, the
 exact D5 census contains 48 Hermitian-conjugacy orbits and 64 independent
 invariant coefficients through canonical degree four.
 
@@ -10,12 +14,13 @@ families.  This module maps all eighteen bases to explicit Cartesian formulas
 or exact arbitrary-component projector modules, verifies the multiplicities,
 and fixes a normalization convention for every direction.
 
-G1 closure here means:
+Historical G1 closure here means:
 * exact live degree<=4 charge and singlet multiplicities;
 * an explicit independent tensor basis for every one of the 64 directions;
 * a stated coefficient normalization for each basis.
 
-It does not mean the 64 operators have been assembled into one component
+It does not validate the gauged manuscript theory, and it does not mean the 64
+operators have been assembled into one component
 potential, minimized simultaneously, or propagated through G2-G8.
 """
 from __future__ import annotations
@@ -31,6 +36,8 @@ import exact_unique_hsigma_chiral_quartics_v20 as unique
 ROOT = Path(__file__).resolve().parent
 OUT_JSON = ROOT / "LIVE_G1_TENSOR_CLOSURE_LEDGER_V20.json"
 OUT_MD = ROOT / "LIVE_G1_TENSOR_CLOSURE_LEDGER_V20.md"
+MODEL_CONTRACT_ID = "historical_option_c_no_x_v20"
+AUTHORITATIVE_FOR_MANUSCRIPT = False
 
 # Keys are counts in (P,H,Hdag,D,Ddag), with singlet fields stripped.
 BASE_FAMILIES: dict[tuple[int, ...], dict[str, Any]] = {
@@ -277,16 +284,23 @@ def build_report() -> dict[str, Any]:
 
     return {
         "status": (
-            "LIVE_G1_RENORMALIZABLE_TENSOR_RING_CLOSED"
+            "HISTORICAL_OPTION_C_NO_X_G1_TENSOR_RING_CLOSED"
             if g1_closed
-            else "LIVE_G1_TENSOR_CLOSURE_LEDGER_FAILED"
+            else "HISTORICAL_OPTION_C_NO_X_G1_TENSOR_LEDGER_FAILED"
         ),
         "overall_state": "BLOCKED",
+        "model_contract_id": MODEL_CONTRACT_ID,
+        "authoritative_for_manuscript": AUTHORITATIVE_FOR_MANUSCRIPT,
         "n_checks": len(checks),
         "n_failed": len(failures),
         "failures": failures,
         "checks": checks,
-        "live_contract": census_report.get("live_symmetry_contract"),
+        "historical_contract": {
+            "gauge": ["SO(10)"],
+            "accidental_global": ["PQ"],
+            "residual": ["Z17"],
+            "continuous_X_enforced": False,
+        },
         "counts": {
             "charge_and_so10_allowed_multidegrees": 74,
             "hermitian_conjugacy_orbits": len(orbits),
@@ -321,6 +335,8 @@ def build_report() -> dict[str, Any]:
         },
         "flags": {
             "g1_closed": g1_closed,
+            "historical_option_c_G1_closed": g1_closed,
+            "authoritative_manuscript_G1_closed": False,
             "g2_closed": False,
             "all_g1_g8_closed": False,
             "whole_model_validated": False,
@@ -328,15 +344,17 @@ def build_report() -> dict[str, Any]:
             "empirical_discovery": False,
         },
         "next_exact_target": (
-            "G2: assemble all 64 normalized invariant directions into one "
-            "arbitrary-component non-SUSY potential and differentiate it into the "
-            "complete stationarity equations and Hessian."
+            "No live-theory promotion: use gauged_u1x_scalar_contract_v20 and "
+            "gauged_u1x_g2_derivative_audit_v20 for the manuscript's exact-X "
+            "44-direction/51-parameter calculation."
         ),
         "verdict": (
-            "The live SO(10)+PQ+Z17 renormalizable scalar invariant ring now has "
+            "Under the historical no-X SO(10)+PQ+Z17 counterfactual, the "
+            "renormalizable scalar invariant ring has "
             "an explicit normalized Cartesian tensor basis for all 64 independent "
-            "coefficient directions. G1 is closed. The theory remains blocked at G2 "
-            "and every downstream gate."
+            "coefficient directions. That scoped G1 subtheorem is closed, but it is "
+            "not authoritative for the gauged-U(1)_X manuscript and supplies no "
+            "whole-model conclusion."
         ),
     }
 
@@ -344,8 +362,10 @@ def build_report() -> dict[str, Any]:
 def write_report(report: dict[str, Any]) -> None:
     OUT_JSON.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n")
     OUT_MD.write_text(
-        "# Live G1 tensor closure ledger — v20\n\n"
+        "# Historical Option-C/no-X G1 tensor closure ledger — v20\n\n"
         f"**Status:** `{report['status']}`\n\n"
+        f"**Contract:** `{report['model_contract_id']}`\n\n"
+        "**Authoritative for the gauged-U(1)_X manuscript:** `False`\n\n"
         + report["verdict"]
         + "\n\n"
         + f"**Next:** {report['next_exact_target']}\n"

@@ -1,7 +1,13 @@
 #!/usr/bin/env python3
-"""Search the exact G3 stationarity family for a tachyon-free local witness.
+"""Historical no-X search for a tachyon-free local witness.
 
-The first G3 gate leaves a large affine family of couplings satisfying all 486
+This module belongs to ``historical_option_c_no_x_v20`` and is not G3 evidence
+for the manuscript's gauged-U(1)_X model.  The 80-iteration result and its
+449-dimensional quotient cannot validate or exclude the corrected 44/51/448
+problem.
+
+Within the historical contract, the first G3 calculation leaves a large affine
+family of couplings satisfying all 486
 tadpole equations.  Its original least-squares member is a physical saddle.
 This module builds the 91 exact parameter Hessians and performs a cutting-plane
 semidefinite search inside the anchored stationarity family:
@@ -36,6 +42,9 @@ import live_g2_derivative_coverage_ledger_v20 as g2
 ROOT = Path(__file__).resolve().parent
 OUT_JSON = ROOT / "G3_STATIONARY_STABILITY_SEARCH_V20.json"
 OUT_MD = ROOT / "G3_STATIONARY_STABILITY_SEARCH_V20.md"
+MODEL_CONTRACT_ID = "historical_option_c_no_x_v20"
+AUTHORITATIVE_FOR_MANUSCRIPT = False
+MODEL_WIDE_NO_GO_CERTIFIED = False
 COUPLING_BOUND = float(4.0 * np.pi)
 POSITIVE_ANCHOR_FLOOR = 1.0e-3
 EFFECTIVE_STATIONARITY_RANK = 14
@@ -142,12 +151,13 @@ def stationarity_affine_family(
     _u, singular, vh = np.linalg.svd(normalized, full_matrices=False)
     threshold = 1.0e-10 * singular[0]
     raw_stationarity_rank = int(np.sum(singular > threshold))
-    # Two projector gradients vanish analytically on the Delta_R ray and are
-    # represented only by ~1e-30 floating roundoff in the dense adapters.  If
+    # Three structural gradients vanish analytically on the selected ray: the
+    # two Delta_R self-projector channels and the mixed Phi-Sigma 210 channel.
+    # They are represented only by floating roundoff in the dense adapters. If
     # those columns are independently normalized, that roundoff creates a
-    # spurious fifteenth singular direction.  The promoted analytic gradients,
-    # mixed-tolerance crosscheck, and exact absolute tadpole recheck fix the
-    # effective physical rank at 14.
+    # spurious singular direction. This historical 91-parameter calculation
+    # retains its separately audited effective-rank clamp; it must not be used
+    # for the exact rank-13 gauged-U(1)_X theorem.
     stationarity_rank = min(raw_stationarity_rank, EFFECTIVE_STATIONARITY_RANK)
     stationarity_rows = np.zeros((stationarity_rank, A.shape[1]), dtype=float)
     stationarity_rows[:, active] = (
@@ -506,6 +516,9 @@ def build_report(
                 )
             ),
             "overall_state": "PARTIAL" if not execution_failures else "EXECUTION_FAIL",
+            "model_contract_id": MODEL_CONTRACT_ID,
+            "authoritative_for_manuscript": AUTHORITATIVE_FOR_MANUSCRIPT,
+            "model_wide_no_go_certified": MODEL_WIDE_NO_GO_CERTIFIED,
             "n_checks": len(checks),
             "n_failed": len(failures),
             "failures": failures,
@@ -555,6 +568,7 @@ def build_report(
                 "strict_local_physical_minimum_found": locally_positive,
                 "complete_potential_BFB": False,
                 "global_competing_extrema_exhausted": False,
+                "model_wide_no_go_certified": MODEL_WIDE_NO_GO_CERTIFIED,
                 "G3_closed": False,
                 "whole_model_validated": False,
                 "whole_model_excluded": False,
@@ -577,6 +591,8 @@ def write_report(report: dict[str, Any]) -> None:
     OUT_MD.write_text(
         "# G3 stationary stability search — v20\n\n"
         f"**Status:** `{report['status']}`\n\n"
+        f"**Contract:** `{report['model_contract_id']}`\n\n"
+        "**Authoritative for the gauged-U(1)_X manuscript:** `False`\n\n"
         f"- affine stationarity dimension: `{report['stationarity_family']['affine_dimension']}`;\n"
         f"- search termination: `{report['search']['termination']}`;\n"
         f"- best minimum physical eigenvalue: `{best['minimum_eigenvalue']}`;\n"

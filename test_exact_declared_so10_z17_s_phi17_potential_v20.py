@@ -9,6 +9,10 @@ import exact_declared_so10_z17_s_phi17_potential_v20 as gate
 def test_complete_counts() -> None:
     report = gate.build_report()
     assert report["n_failed"] == 0, report["failures"]
+    assert report["model_contract_id"] == "historical_option_c_no_x_v20"
+    assert report["authoritative_for_manuscript"] is False
+    assert report["model_wide_no_go_certified"] is False
+    assert "NONAUTHORITATIVE" in report["status"]
     assert report["counts"]["allowed_complex_monomials_dimension_le_4"] == 21
     assert report["counts"]["independent_hermitian_real_operators"] == 13
 
@@ -44,9 +48,12 @@ def test_benchmark_hessian() -> None:
 def test_fail_closed_scope() -> None:
     report = gate.build_report()
     flags = report["flag"]
-    assert flags["declared_symmetry_singlet_basis_complete"]
-    assert flags["phi17_phase_obstruction_removed_without_X"]
-    assert flags["intended_PQ_zero_preserved"]
+    assert flags["historical_option_c_singlet_basis_reproduced"]
+    assert flags["historical_no_x_phi17_phase_lifter_constructed"]
+    assert flags["historical_no_x_PQ_zero_preserved"]
+    assert flags["phi17_phase_lifter_allowed_by_manuscript_u1x"] is False
+    assert flags["authoritative_for_manuscript"] is False
+    assert flags["model_wide_no_go_certified"] is False
     assert not flags["natural_phi17_hierarchy_explained"]
     assert not flags["complete_10H_S_Phi17_component_hessian"]
     assert not flags["complete_multifield_model"]

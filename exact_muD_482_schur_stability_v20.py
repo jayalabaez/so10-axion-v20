@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Exact mu_D stability envelope for the 482-real GUT Hessian.
+"""Historical Option-C/no-X mu_D envelope for the 482-real GUT Hessian.
 
 The registered cubic
 
@@ -23,8 +23,10 @@ and sufficient condition
     m_H,eff^2 > |mu_D|^2 lambda_max(B^T A^{-1} B).
 
 All quantities use the repository's normalized v_Phi=1 conventions.  This is
-an exact conditional stability envelope, not the complete operator-derived
-10_H mass matrix or electroweak vacuum.
+a conditional numerical stability envelope, not an exact proof, the complete
+operator-derived 10_H mass matrix, or the electroweak vacuum.  Its
+449-dimensional quotient predates the manuscript-authoritative gauged-U(1)_X
+contract and is retained only as historical Option-C evidence.
 """
 from __future__ import annotations
 
@@ -47,6 +49,8 @@ OLD_DIM = coupled.TOTAL_DIM
 H_COMPLEX_DIM = 10
 H_REAL_DIM = 20
 TOTAL_DIM = OLD_DIM + H_REAL_DIM
+MODEL_CONTRACT_ID = "historical_option_c_no_x_v20"
+AUTHORITATIVE_FOR_MANUSCRIPT = False
 
 
 def _jsonable(value: Any) -> Any:
@@ -284,8 +288,11 @@ def build_report() -> dict[str, Any]:
     }
     failures = [name for name, passed in checks.items() if not passed]
     report = {
+        "model_contract_id": MODEL_CONTRACT_ID,
+        "authoritative_for_manuscript": AUTHORITATIVE_FOR_MANUSCRIPT,
+        "overall_state": "HISTORICAL" if not failures else "EXECUTION_FAIL",
         "status": (
-            "MUD_482_REAL_SCHUR_STABILITY_BOUND_CLOSED__FULL_H_BLOCK_OPEN"
+            "HISTORICAL_OPTION_C_MUD_482_SCHUR_ENVELOPE_REPRODUCED__NONAUTHORITATIVE"
             if not failures
             else "MUD_482_REAL_SCHUR_STABILITY_GATE_FAILED"
         ),
@@ -330,8 +337,11 @@ def build_report() -> dict[str, Any]:
             "below_bound": below,
         },
         "flag": {
+            "historical_option_c_only": True,
+            "authoritative_manuscript_G3_result": False,
             "muD_cross_block_inserted": not failures,
-            "exact_effective_H_mass_stability_bound": not failures,
+            "exact_effective_H_mass_stability_bound": False,
+            "numerical_effective_H_mass_stability_envelope": not failures,
             "gauge_goldstones_preserved_above_bound": not failures,
             "tachyon_below_bound_exhibited": not failures,
             "complete_operator_derived_H_mass_matrix": False,
@@ -341,10 +351,11 @@ def build_report() -> dict[str, Any]:
             "empirical_discovery": False,
         },
         "verdict": (
-            "The registered mu_D cubic is compatible with the p+Delta_R vacuum "
-            "only when the effective H-only mass block satisfies the exact Schur "
-            "bound. This closes a conditional 482-real local-stability envelope; "
-            "the complete operator-derived H block and electroweak vacuum remain open."
+            "In the historical Option-C/no-X calculation, the registered mu_D "
+            "cubic satisfies the reported numerical Schur envelope. This does "
+            "not certify the gauged-U(1)_X manuscript's 449-dimensional gauge "
+            "quotient or 448-dimensional massive/transverse G3 problem; the "
+            "complete H block and electroweak vacuum remain open."
         ),
     }
     return _jsonable(report)
@@ -360,7 +371,7 @@ def write_markdown(report: dict[str, Any]) -> str:
             "",
             report["verdict"],
             "",
-            "## Exact conditional bound",
+            "## Historical numerical conditional envelope",
             "",
             "`m_H,eff^2 > |mu_D|^2 lambda_max(B^T A_phys^{-1} B)`",
             "",

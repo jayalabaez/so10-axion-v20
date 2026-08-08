@@ -35,7 +35,6 @@ FULL_COMMANDS: tuple[tuple[str, ...], ...] = (
     (sys.executable, "audit_v20_errors.py"),
     (sys.executable, "so10_axion_v20_engine.py", "--output", "so10_axion_v20_verdict.json"),
     *PRE_UNIT_COMMANDS,
-    (sys.executable, "-m", "unittest", "discover", "-v"),
     (sys.executable, "falsify_v20.py"),
     (sys.executable, "run_v20_referee_next.py"),
     (sys.executable, "extensive_confirm_falsify_v20.py"),
@@ -74,15 +73,185 @@ FULL_COMMANDS: tuple[tuple[str, ...], ...] = (
     (sys.executable, "strict_rg_audit_v20.py"),
     (sys.executable, "close_open_gaps_v20.py"),
     (sys.executable, "integrate_full_complex_orientation_v20.py"),
-    (sys.executable, "theory_confirmation_verdict_v20.py"),
-    (sys.executable, "theory_validation_matrix_v20.py", "--expect-conditional"),
-    (sys.executable, "ultimate_theory_gate_v20.py"),
-    (sys.executable, "ultimate_theory_gate_v20.py", "--expect-full-block", "--no-write"),
+    (sys.executable, "exact_x_symmetry_consistency_gate_v20.py"),
+    (sys.executable, "sarah_pyrate_210n_model_file_v20.py"),
+    (sys.executable, "gauged_u1x_scalar_contract_v20.py", "--write"),
+    (sys.executable, "g1_exact_declared_symmetry_character_census_v20.py", "--write"),
+    (
+        sys.executable,
+        "exact_gauged_u1x_stationarity_rank_certificate_v20.py",
+        "--write",
+    ),
+    (sys.executable, "gauged_u1x_g2_derivative_audit_v20.py", "--write"),
+    (
+        sys.executable,
+        "exact_gauged_u1x_physical_quotient_v20.py",
+        "--write",
+    ),
+    (
+        sys.executable,
+        "exact_gauged_u1x_g3_pd_rank_certificate_v20.py",
+        "--recompute-heavy",
+        "--write",
+    ),
+    (
+        sys.executable,
+        "exact_gauged_u1x_g3_a_square_recoupling_v20.py",
+        "--recompute",
+        "--write",
+    ),
+    (
+        sys.executable,
+        "exact_gauged_u1x_g3_sos_bfb_stationarity_v20.py",
+        "--recompute",
+        "--write",
+    ),
+    (
+        sys.executable,
+        "exact_gauged_u1x_g3_global_counterexample_v20.py",
+        "--write",
+    ),
+    (
+        sys.executable,
+        "exact_gauged_u1x_g3_kernel_quartic_bound_v20.py",
+        "--write",
+    ),
+    (
+        sys.executable,
+        "exact_gauged_u1x_g3_replacement_stationary_orbit_v20.py",
+        "--write",
+    ),
+    (
+        sys.executable,
+        "exact_gauged_u1x_g3_su5_delta_pd_sos_v20.py",
+        "--write",
+    ),
+    (
+        sys.executable,
+        "exact_gauged_u1x_g3_su5_delta_hsx_extension_v20.py",
+        "--write",
+    ),
+    (
+        sys.executable,
+        "exact_gauged_u1x_g3_su5_delta_hsx_exact_hessian_v20.py",
+        "--write",
+    ),
+    (
+        sys.executable,
+        "exact_gauged_u1x_g3_su5_phi_orbit_lemma_v20.py",
+        "--write",
+    ),
+    (
+        sys.executable,
+        "exact_gauged_u1x_g3_su5_phi_local_component_v20.py",
+        "--write",
+    ),
+    (
+        sys.executable,
+        "exact_gauged_u1x_g3_su5_phi_su3_slice_v20.py",
+        "--write",
+    ),
+    (
+        sys.executable,
+        "exact_gauged_u1x_g3_su5_equality_orbit_v20.py",
+        "--write",
+    ),
+    (
+        sys.executable,
+        "exact_gauged_u1x_g3_su5_fixed_f_offkernel_bound_v20.py",
+        "--write",
+    ),
+    (
+        sys.executable,
+        "exact_gauged_u1x_g3_su5_max_negative_zero_residual_bound_v20.py",
+        "--write",
+    ),
+    (
+        sys.executable,
+        "exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py",
+        "--write",
+    ),
+    (
+        sys.executable,
+        "exact_gauged_u1x_g3_su5_chiral_global_gap_reduction_v20.py",
+        "--write",
+    ),
+    (
+        sys.executable,
+        "exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py",
+        "--write",
+    ),
+    (
+        sys.executable,
+        "gauged_u1x_g3_sos_candidate_v20.py",
+        "--recompute-heavy",
+        "--write",
+    ),
+    (sys.executable, "gauged_u1x_g3_stability_v20.py", "--write"),
+    (
+        sys.executable,
+        "gauged_u1x_g3_corrected_common_kernel_v20.py",
+        "--recompute-heavy",
+        "--write",
+    ),
+    (sys.executable, "g1_g8_gate_ledger_v20.py", "--write"),
+    (sys.executable, "final_g3_acceptance_gate_v20.py", "--write"),
+    (sys.executable, "g1_g8_execution_roadmap_v20.py", "--write"),
+    (sys.executable, "authoritative_full_model_gate_v20.py"),
+    (sys.executable, "theory_validation_matrix_v20.py", "--expect-blocked"),
+    (sys.executable, "theory_confirmation_verdict_v20.py", "--expect-blocked"),
+    (sys.executable, "ultimate_theory_gate_v20.py", "--expect-blocked"),
+    (sys.executable, "ultimate_theory_gate_v20.py", "--expect-blocked", "--no-write"),
+    (sys.executable, "-m", "unittest", "discover", "-v"),
+    (
+        sys.executable,
+        "-m",
+        "pytest",
+        "-q",
+        "test_exact_x_symmetry_consistency_gate_v20.py",
+        "test_g1_exact_declared_symmetry_character_census_v20.py",
+        "test_gauged_u1x_scalar_contract_v20.py",
+        "test_gauged_u1x_g2_derivative_audit_v20.py",
+        "test_exact_gauged_u1x_stationarity_rank_certificate_v20.py",
+        "test_exact_gauged_u1x_physical_quotient_v20.py",
+        "test_exact_gauged_u1x_g3_pd_rank_certificate_v20.py",
+        "test_exact_gauged_u1x_g3_a_square_recoupling_v20.py",
+        "test_exact_gauged_u1x_g3_sos_bfb_stationarity_v20.py",
+        "test_exact_gauged_u1x_g3_global_counterexample_v20.py",
+        "test_exact_gauged_u1x_g3_kernel_quartic_bound_v20.py",
+        "test_exact_gauged_u1x_g3_replacement_stationary_orbit_v20.py",
+        "test_exact_gauged_u1x_g3_su5_delta_pd_sos_v20.py",
+        "test_exact_gauged_u1x_g3_su5_delta_hsx_extension_v20.py",
+        "test_exact_gauged_u1x_g3_su5_delta_hsx_exact_hessian_v20.py",
+        "test_exact_gauged_u1x_g3_su5_phi_orbit_lemma_v20.py",
+        "test_exact_gauged_u1x_g3_su5_phi_local_component_v20.py",
+        "test_exact_gauged_u1x_g3_su5_phi_su3_slice_v20.py",
+        "test_exact_gauged_u1x_g3_su5_equality_orbit_v20.py",
+        "test_exact_gauged_u1x_g3_su5_fixed_f_offkernel_bound_v20.py",
+        "test_exact_gauged_u1x_g3_su5_max_negative_zero_residual_bound_v20.py",
+        "test_exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py",
+        "test_exact_gauged_u1x_g3_su5_chiral_global_gap_reduction_v20.py",
+        "test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py",
+        "test_final_g3_acceptance_gate_v20.py",
+        "test_gauged_u1x_g3_sos_candidate_v20.py",
+        "test_gauged_u1x_g3_stability_v20.py",
+        "test_gauged_u1x_g3_corrected_common_kernel_v20.py",
+        "test_g1_g8_gate_ledger_v20.py",
+        "test_g1_g8_execution_roadmap_v20.py",
+        "test_theory_validation_matrix_v20.py",
+        "test_replicate_v20.py",
+    ),
 )
 
 
+def _portable_command(command: tuple[str, ...]) -> tuple[str, ...]:
+    if command and command[0] == sys.executable:
+        return ("python", *command[1:])
+    return command
+
+
 def _display(command: tuple[str, ...]) -> str:
-    return " ".join(command)
+    return " ".join(_portable_command(command))
 
 
 def run_commands(
@@ -93,16 +262,24 @@ def run_commands(
     rows: list[dict[str, Any]] = []
     for index, command in enumerate(commands, start=1):
         started = time.monotonic()
+        environment = os.environ.copy()
+        for name in (
+            "OPENBLAS_NUM_THREADS",
+            "OMP_NUM_THREADS",
+            "MKL_NUM_THREADS",
+            "NUMEXPR_NUM_THREADS",
+        ):
+            environment[name] = "1"
         completed = subprocess.run(
             command,
             cwd=ROOT,
             check=False,
-            env=os.environ.copy(),
+            env=environment,
         )
         elapsed = time.monotonic() - started
         row = {
             "index": index,
-            "command": list(command),
+            "command": list(_portable_command(command)),
             "display": _display(command),
             "returncode": int(completed.returncode),
             "elapsed_seconds": float(elapsed),

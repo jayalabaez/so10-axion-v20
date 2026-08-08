@@ -1,7 +1,15 @@
 #!/usr/bin/env python3
-"""Exact local G3 Hessian and symmetry-quotient classification.
+"""Historical no-X local Hessian and symmetry-quotient classification.
 
-This is the second G3 layer after the 486x91 stationarity-feasibility gate.
+This module belongs to ``historical_option_c_no_x_v20`` and is not G3 evidence
+for the manuscript's gauged-U(1)_X model. Its historical 449-dimensional
+quotient removes SO(10) plus global PQ but omits the gauged U(1)_X tangent.
+The gauged theory instead has a different 449-dimensional gauge quotient that
+includes the axion and a 448-dimensional massive/transverse Hessian space
+after the independent global-PQ tangent is also removed.
+
+Within the historical contract, this was the second G3 layer after the 486x91
+stationarity-feasibility calculation.
 It reuses every exact G2 derivative adapter at the same physical hierarchy
 candidate, assembles the stationary witness's dense 486x486 Hessian, removes
 the 36 stage-resolved SO(10)->U(1)_EM gauge tangents, removes the independent
@@ -30,6 +38,9 @@ import live_g2_derivative_coverage_ledger_v20 as g2
 ROOT = Path(__file__).resolve().parent
 OUT_JSON = ROOT / "G3_FULL_HESSIAN_CLASSIFICATION_V20.json"
 OUT_MD = ROOT / "G3_FULL_HESSIAN_CLASSIFICATION_V20.md"
+MODEL_CONTRACT_ID = "historical_option_c_no_x_v20"
+AUTHORITATIVE_FOR_MANUSCRIPT = False
+MODEL_WIDE_NO_GO_CERTIFIED = False
 
 PQ_CHARGES = {
     "Phi210": 0.0,
@@ -422,6 +433,9 @@ def build_report() -> dict[str, Any]:
                 else "G3_FULL_HESSIAN_EXECUTION_FAILED"
             ),
             "overall_state": "PARTIAL" if not execution_failures else "EXECUTION_FAIL",
+            "model_contract_id": MODEL_CONTRACT_ID,
+            "authoritative_for_manuscript": AUTHORITATIVE_FOR_MANUSCRIPT,
+            "model_wide_no_go_certified": MODEL_WIDE_NO_GO_CERTIFIED,
             "local_classification": local_state,
             "n_checks": len(checks),
             "n_failed": len(failures),
@@ -477,6 +491,7 @@ def build_report() -> dict[str, Any]:
                 "strict_local_physical_minimum": locally_positive,
                 "complete_potential_BFB": False,
                 "global_competing_extrema_exhausted": False,
+                "model_wide_no_go_certified": MODEL_WIDE_NO_GO_CERTIFIED,
                 "G3_closed": False,
                 "whole_model_validated": False,
                 "whole_model_excluded": False,
@@ -504,8 +519,10 @@ def write_report(report: dict[str, Any]) -> None:
     hessian = report["physical_Hessian"]
     OUT_MD.write_text(
         "# G3 full Hessian classification — v20\n\n"
-        f"**Status:** `{report['status']}`  \n"
+        f"**Status:** `{report['status']}`\n\n"
         f"**Local classification:** `{report['local_classification']}`\n\n"
+        f"**Contract:** `{report['model_contract_id']}`\n\n"
+        "**Authoritative for the gauged-U(1)_X manuscript:** `False`\n\n"
         f"- full Hessian: `{hessian['full_shape'][0]} x {hessian['full_shape'][1]}`;\n"
         f"- gauge directions removed: `{hessian['gauge_dimension']}`;\n"
         f"- PQ directions removed: `{hessian['axion_dimension']}`;\n"

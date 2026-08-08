@@ -31,14 +31,27 @@ def test_potential_value_uses_91_real_couplings():
         gate.potential_value(fields, couplings[:-1])
 
 
-def test_corrected_report_is_partial_not_closed():
+def test_historical_value_layer_is_scoped_and_not_authoritative():
     report = gate.build_report()
     assert report["n_failed"] == 0, report["failures"]
     assert all(report["checks"].values())
+    assert gate.MODEL_CONTRACT_ID == "historical_option_c_no_x_v20"
+    assert gate.AUTHORITATIVE_FOR_MANUSCRIPT is False
+    assert report["model_contract_id"] == gate.MODEL_CONTRACT_ID
+    assert report["authoritative_for_manuscript"] is False
+    assert report["overall_state"] == "HISTORICAL"
+    assert report["supersedes_for_current_status"] is False
     assert report["counts"]["independent_invariant_directions"] == 64
     assert report["counts"]["real_potential_parameters"] == 91
     assert report["counts"]["complete_real_field_dimension"] == 486
-    assert report["flags"]["g2_value_layer_complete"]
+    assert report["flags"]["historical_option_c_g1_closed"]
+    assert report["flags"]["historical_option_c_g2_value_layer_complete"]
+    assert report["flags"]["historical_option_c_g2_closed_by_this_module"] is False
+    assert report["flags"]["authoritative_manuscript_g1_closed"] is False
+    assert report["flags"]["authoritative_manuscript_g2_value_layer_complete"] is False
+    assert report["flags"]["authoritative_manuscript_g2_closed"] is False
+    assert report["flags"]["g1_closed"] is False
+    assert report["flags"]["g2_value_layer_complete"] is False
     assert report["flags"]["g2_complete_field_gradient"] is False
     assert report["flags"]["g2_complete_field_Hessian"] is False
     assert report["flags"]["g2_closed"] is False

@@ -7,9 +7,16 @@ import numpy as np
 import live_g2_derivative_coverage_ledger_v20 as mod
 
 
+def test_historical_option_c_scope_is_explicit():
+    assert mod.MODEL_CONTRACT_ID == "historical_option_c_no_x_v20"
+    assert mod.AUTHORITATIVE_FOR_MANUSCRIPT is False
+
+
 def test_report_closes_G2_without_closing_downstream_gates():
     report = mod.build_report()
     assert report["n_failed"] == 0, report["failures"]
+    assert report["model_contract_id"] == mod.MODEL_CONTRACT_ID
+    assert report["authoritative_for_manuscript"] is False
     assert all(report["checks"].values())
     coverage = report["coverage"]
     assert coverage["base_families_total"] == 18
@@ -27,6 +34,8 @@ def test_report_closes_G2_without_closing_downstream_gates():
     assert report["flags"]["all_64_direction_gradients_complete"] is True
     assert report["flags"]["all_64_direction_Hessians_complete"] is True
     assert report["flags"]["G2_closed"] is True
+    assert report["flags"]["historical_option_c_G2_closed"] is True
+    assert report["flags"]["authoritative_manuscript_G2_closed"] is False
     assert report["flags"]["G3_closed"] is False
     assert report["flags"]["G8_closed"] is False
     assert report["flags"]["whole_model_validated"] is False
@@ -96,4 +105,4 @@ def test_no_remaining_G2_frontier_and_G3_is_next():
     assert mod.EXPECTED_REMAINING_FAMILIES == ()
     assert report["coverage"]["directions_remaining"] == 0
     assert report["coverage"]["real_parameters_remaining"] == 0
-    assert "Proceed to G3" in report["next_exact_target"]
+    assert "gauged_u1x_g3_stability_v20" in report["next_exact_target"]

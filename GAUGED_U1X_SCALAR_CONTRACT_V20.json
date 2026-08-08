@@ -1,0 +1,4191 @@
+{
+  "model_contract_id": "gauged_u1x_phi17_v20",
+  "historical_counterfactual_contract_id": "historical_option_c_no_x_v20",
+  "status": "GAUGED_U1X_SCALAR_CONTRACT_IDENTIFIED__G2_G3_REAUDIT_OPEN",
+  "overall_state": "PARTIAL",
+  "n_checks": 22,
+  "n_failed": 0,
+  "failures": [],
+  "implementation_matches_manuscript": true,
+  "implementation_mismatches": [],
+  "checks": {
+    "manuscript_is_explicitly_gauged_u1x": true,
+    "manuscript_phi17_has_x17": true,
+    "manuscript_full_X_charge_tuple_is_parsed": true,
+    "manuscript_scalar_charge_tuple_matches_contract": true,
+    "manuscript_continuous_origin_is_anomaly_free": true,
+    "scaffold_role_is_classified": true,
+    "scaffold_syntax_class_is_explicit": true,
+    "legacy_pseudo_sarah_is_not_tool_native": true,
+    "operator_filter_requires_explicit_x_contract": true,
+    "gauged_multidegree_count_is_34": true,
+    "gauged_conjugacy_orbit_count_is_28": true,
+    "every_gauged_orbit_D5_base_and_basis_multiplicity_agree": true,
+    "every_historical_orbit_D5_base_and_basis_multiplicity_agree": true,
+    "gauged_direction_count_is_44": true,
+    "gauged_real_parameter_count_is_51": true,
+    "all_18_tensor_families_survive": true,
+    "every_gauged_direction_is_exactly_x_neutral": true,
+    "exactly_20_x_charged_directions_excluded": true,
+    "exactly_40_real_parameters_excluded": true,
+    "gauged_schema_is_subset_of_64_91_compiler": true,
+    "every_tensor_family_has_one_g2_adapter": true,
+    "all_tensor_sources_present": true
+  },
+  "authoritative_contract": {
+    "gauge": [
+      "SO(10)",
+      "U(1)_X"
+    ],
+    "accidental_global": [
+      "U(1)_PQ"
+    ],
+    "residual_after_phi17": "Z17",
+    "require_exact_x_neutrality": true,
+    "phi17_X_charge": 17
+  },
+  "manuscript_and_scaffold": {
+    "manuscript_gauges_u1x": true,
+    "manuscript_phi17_charge_is_17": true,
+    "manuscript_claims_anomaly_free_continuous_origin": true,
+    "manuscript_X_charge_tuple_parsed": true,
+    "manuscript_X_charge_tuple_labels": [
+      "F",
+      "s",
+      "b",
+      "S",
+      "H10",
+      "Delta126bar",
+      "Phi210"
+    ],
+    "manuscript_X_charge_tuple_values": [
+      1,
+      2,
+      -6,
+      4,
+      -2,
+      -2,
+      0
+    ],
+    "manuscript_scalar_charges_PQ_X": {
+      "Phi210": [
+        0,
+        0
+      ],
+      "Delta126bar": [
+        -2,
+        -2
+      ],
+      "H10": [
+        -2,
+        -2
+      ],
+      "S": [
+        4,
+        4
+      ],
+      "Phi17": [
+        0,
+        17
+      ]
+    },
+    "manuscript_scalar_charge_contract_matches_expected": true,
+    "scaffold_declares_u1x": true,
+    "scaffold_self_identifies_as_scaffold": false,
+    "scaffold_model_syntax_class": "sarah_native",
+    "scaffold_tool_native_sarah_syntax": true,
+    "scaffold_legacy_pseudo_sarah_grammar": false,
+    "scaffold_gauge_rows": [
+      {
+        "index": 1,
+        "raw_rhs": "{G10, SO[10], SOGUT, g10, False}",
+        "group_symbol": "G10",
+        "group_type": "SO[10]",
+        "group_name": "SOGUT",
+        "is_so10": true,
+        "is_native_so10": true,
+        "is_legacy_so10": false,
+        "is_u1": false,
+        "is_named_X": false,
+        "is_u1x": false,
+        "syntax": "sarah_native",
+        "structurally_valid": true,
+        "tool_native_structurally_valid": true
+      },
+      {
+        "index": 2,
+        "raw_rhs": "{GX, U[1], X, gX, False}",
+        "group_symbol": "GX",
+        "group_type": "U[1]",
+        "group_name": "X",
+        "is_so10": false,
+        "is_native_so10": false,
+        "is_legacy_so10": false,
+        "is_u1": true,
+        "is_named_X": true,
+        "is_u1x": true,
+        "syntax": "sarah_native",
+        "structurally_valid": true,
+        "tool_native_structurally_valid": true
+      }
+    ],
+    "scaffold_scalar_charges_PQ_X": {
+      "Phi210": [
+        0,
+        0
+      ],
+      "Delta126bar": [
+        -2,
+        -2
+      ],
+      "H10": [
+        -2,
+        -2
+      ],
+      "S": [
+        4,
+        4
+      ],
+      "Phi17": [
+        0,
+        17
+      ]
+    },
+    "scaffold_scalar_charges_match_manuscript": true,
+    "scaffold_fermion_catalogue_exact": true,
+    "scaffold_real_LagHC_present": true,
+    "scaffold_real_LagNoHC_present": true,
+    "scaffold_soft_gaugino_absent": true,
+    "scaffold_placeholder_free": true,
+    "scaffold_lagrangian_registered_in_GaugeES_LagrangianInput": true,
+    "scaffold_statically_executable_contract": true,
+    "scaffold_semantic_requirements": {
+      "tool_native_sarah_syntax": true,
+      "exact_gauge_catalogue": true,
+      "exact_global_symmetry_catalogue": true,
+      "exact_scalar_catalogue": true,
+      "scalar_charges_match_manuscript": true,
+      "scalar_representations_match": true,
+      "fermion_catalogue_exact": true,
+      "real_LagHC_present": true,
+      "real_LagNoHC_present": true,
+      "exactly_one_LagHC_and_LagNoHC_assignment": true,
+      "lagrangian_registered_in_GaugeES_LagrangianInput": true,
+      "soft_gaugino_absent_in_nonsusy_model": true,
+      "placeholder_free": true,
+      "assignment_indices_unique": true,
+      "assignment_parse_complete": true
+    },
+    "contract_source": "axion_so10_theory_v20.tex",
+    "scaffold_role": "statically consistent tool-native SARAH input; external SARAH execution is a separate fail-closed requirement"
+  },
+  "counts": {
+    "multidegrees": 34,
+    "hermitian_conjugacy_orbits": 28,
+    "invariant_directions": 44,
+    "real_parameters": 51,
+    "base_tensor_families": 18,
+    "real_field_dimension_before_gauge_quotient": 486,
+    "so10_broken_directions_at_physical_ew": 36,
+    "u1x_eaten_direction": 1,
+    "physical_pq_axion_direction": 1,
+    "expected_massive_physical_quotient_dimension": 448
+  },
+  "gauged_directions": [
+    {
+      "direction_id": "O03_B01_singlet_polynomial",
+      "orbit_index_in_64_direction_superset": 2,
+      "representative": "Phi17 Phi17^dag",
+      "self_conjugate": true,
+      "base_family": "singlet_polynomial",
+      "base_key": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "basis_index": 0,
+      "basis_label": "the recorded scalar monomial itself",
+      "normalization": "unit monomial coefficient in canonical scalar fields",
+      "source_modules": [
+        "live_g1_tensor_closure_ledger_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "lambda::O03_B01_singlet_polynomial"
+      ]
+    },
+    {
+      "direction_id": "O04_B01_singlet_polynomial",
+      "orbit_index_in_64_direction_superset": 3,
+      "representative": "S S^dag",
+      "self_conjugate": true,
+      "base_family": "singlet_polynomial",
+      "base_key": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "basis_index": 0,
+      "basis_label": "the recorded scalar monomial itself",
+      "normalization": "unit monomial coefficient in canonical scalar fields",
+      "source_modules": [
+        "live_g1_tensor_closure_ledger_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "lambda::O04_B01_singlet_polynomial"
+      ]
+    },
+    {
+      "direction_id": "O05_B01_126bar_norm",
+      "orbit_index_in_64_direction_superset": 4,
+      "representative": "126bar_H 126bar_H^dag",
+      "self_conjugate": true,
+      "base_family": "126bar_norm",
+      "base_key": [
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "basis_index": 0,
+      "basis_label": "(1/2) Sigma^dag_{abcde} Sigma_{abcde}",
+      "normalization": "K_126=(1/(2*5!)) Sigma^* Sigma",
+      "source_modules": [
+        "direct_phi_h_sigmabar_tensor_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "lambda::O05_B01_126bar_norm"
+      ]
+    },
+    {
+      "direction_id": "O06_B01_Hdag_H_norm",
+      "orbit_index_in_64_direction_superset": 5,
+      "representative": "10_H 10_H^dag",
+      "self_conjugate": true,
+      "base_family": "Hdag_H_norm",
+      "base_key": [
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "basis_index": 0,
+      "basis_label": "Hdag_i H_i",
+      "normalization": "unit delta_ij contraction",
+      "source_modules": [
+        "exact_h10_self_quartic_family_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "lambda::O06_B01_Hdag_H_norm"
+      ]
+    },
+    {
+      "direction_id": "O07_B01_Phi_norm",
+      "orbit_index_in_64_direction_superset": 6,
+      "representative": "210_H^2",
+      "self_conjugate": true,
+      "base_family": "Phi_norm",
+      "base_key": [
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      "basis_index": 0,
+      "basis_label": "(1/4!) Phi_{abcd} Phi_{abcd}",
+      "normalization": "K_210=(1/4!) Phi Phi",
+      "source_modules": [
+        "exact_210_self_invariant_basis_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "lambda::O07_B01_Phi_norm"
+      ]
+    },
+    {
+      "direction_id": "O12_B01_Hdag_Hdag_pair",
+      "orbit_index_in_64_direction_superset": 11,
+      "representative": "10_H^dag^2 S^dag",
+      "self_conjugate": false,
+      "base_family": "Hdag_Hdag_pair",
+      "base_key": [
+        0,
+        0,
+        2,
+        0,
+        0
+      ],
+      "basis_index": 0,
+      "basis_label": "Hdag_i Hdag_i",
+      "normalization": "unit delta_ij contraction",
+      "source_modules": [
+        "exact_h10_self_quartic_family_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "re::O12_B01_Hdag_Hdag_pair",
+        "im::O12_B01_Hdag_Hdag_pair"
+      ]
+    },
+    {
+      "direction_id": "O14_B01_Phi_Sigma_Sigmadag_cubic",
+      "orbit_index_in_64_direction_superset": 13,
+      "representative": "210_H 126bar_H 126bar_H^dag",
+      "self_conjugate": true,
+      "base_family": "Phi_Sigma_Sigmadag_cubic",
+      "base_key": [
+        1,
+        0,
+        0,
+        1,
+        1
+      ],
+      "basis_index": 0,
+      "basis_label": "Phi_{abcd} Sigmadag_{abefg} Sigma_{cdefg}",
+      "normalization": "recorded full-index contraction; coupling absorbs no hidden factor",
+      "source_modules": [
+        "exact_p_delta_second_stage_hessian_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "lambda::O14_B01_Phi_Sigma_Sigmadag_cubic"
+      ]
+    },
+    {
+      "direction_id": "O15_B01_Phi_Hdag_Sigma",
+      "orbit_index_in_64_direction_superset": 14,
+      "representative": "210_H 10_H^dag 126bar_H",
+      "self_conjugate": false,
+      "base_family": "Phi_Hdag_Sigma",
+      "base_key": [
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "basis_index": 0,
+      "basis_label": "Hdag_e Phi_{abcd} Sigma_{abcde}",
+      "normalization": "factorial-reduced direct contraction in canonical kinetic bases",
+      "source_modules": [
+        "exact_phi_hdag_sigmabar_cubic_audit_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "re::O15_B01_Phi_Hdag_Sigma",
+        "im::O15_B01_Phi_Hdag_Sigma"
+      ]
+    },
+    {
+      "direction_id": "O17_B01_Phi_cubic",
+      "orbit_index_in_64_direction_superset": 16,
+      "representative": "210_H^3",
+      "self_conjugate": true,
+      "base_family": "Phi_cubic",
+      "base_key": [
+        3,
+        0,
+        0,
+        0,
+        0
+      ],
+      "basis_index": 0,
+      "basis_label": "Tr(A_Phi^3)",
+      "normalization": "the exact arbitrary-component evaluator convention",
+      "source_modules": [
+        "exact_210_self_invariant_basis_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "lambda::O17_B01_Phi_cubic"
+      ]
+    },
+    {
+      "direction_id": "O20_B01_singlet_polynomial",
+      "orbit_index_in_64_direction_superset": 19,
+      "representative": "Phi17^2 Phi17^dag^2",
+      "self_conjugate": true,
+      "base_family": "singlet_polynomial",
+      "base_key": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "basis_index": 0,
+      "basis_label": "the recorded scalar monomial itself",
+      "normalization": "unit monomial coefficient in canonical scalar fields",
+      "source_modules": [
+        "live_g1_tensor_closure_ledger_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "lambda::O20_B01_singlet_polynomial"
+      ]
+    },
+    {
+      "direction_id": "O22_B01_singlet_polynomial",
+      "orbit_index_in_64_direction_superset": 21,
+      "representative": "S S^dag Phi17 Phi17^dag",
+      "self_conjugate": true,
+      "base_family": "singlet_polynomial",
+      "base_key": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "basis_index": 0,
+      "basis_label": "the recorded scalar monomial itself",
+      "normalization": "unit monomial coefficient in canonical scalar fields",
+      "source_modules": [
+        "live_g1_tensor_closure_ledger_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "lambda::O22_B01_singlet_polynomial"
+      ]
+    },
+    {
+      "direction_id": "O23_B01_singlet_polynomial",
+      "orbit_index_in_64_direction_superset": 22,
+      "representative": "S^2 S^dag^2",
+      "self_conjugate": true,
+      "base_family": "singlet_polynomial",
+      "base_key": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "basis_index": 0,
+      "basis_label": "the recorded scalar monomial itself",
+      "normalization": "unit monomial coefficient in canonical scalar fields",
+      "source_modules": [
+        "live_g1_tensor_closure_ledger_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "lambda::O23_B01_singlet_polynomial"
+      ]
+    },
+    {
+      "direction_id": "O25_B01_126bar_norm",
+      "orbit_index_in_64_direction_superset": 24,
+      "representative": "126bar_H 126bar_H^dag Phi17 Phi17^dag",
+      "self_conjugate": true,
+      "base_family": "126bar_norm",
+      "base_key": [
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "basis_index": 0,
+      "basis_label": "(1/2) Sigma^dag_{abcde} Sigma_{abcde}",
+      "normalization": "K_126=(1/(2*5!)) Sigma^* Sigma",
+      "source_modules": [
+        "direct_phi_h_sigmabar_tensor_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "lambda::O25_B01_126bar_norm"
+      ]
+    },
+    {
+      "direction_id": "O26_B01_126bar_norm",
+      "orbit_index_in_64_direction_superset": 25,
+      "representative": "126bar_H 126bar_H^dag S S^dag",
+      "self_conjugate": true,
+      "base_family": "126bar_norm",
+      "base_key": [
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "basis_index": 0,
+      "basis_label": "(1/2) Sigma^dag_{abcde} Sigma_{abcde}",
+      "normalization": "K_126=(1/(2*5!)) Sigma^* Sigma",
+      "source_modules": [
+        "direct_phi_h_sigmabar_tensor_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "lambda::O26_B01_126bar_norm"
+      ]
+    },
+    {
+      "direction_id": "O27_B01_126bar_self_projectors",
+      "orbit_index_in_64_direction_superset": 26,
+      "representative": "126bar_H^2 126bar_H^dag^2",
+      "self_conjugate": true,
+      "base_family": "126bar_self_projectors",
+      "base_key": [
+        0,
+        0,
+        0,
+        2,
+        2
+      ],
+      "basis_index": 0,
+      "basis_label": "54",
+      "normalization": "orthogonal projector norms in the canonical chiral basis",
+      "source_modules": [
+        "exact_126bar_self_quartic_basis_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "lambda::O27_B01_126bar_self_projectors"
+      ]
+    },
+    {
+      "direction_id": "O27_B02_126bar_self_projectors",
+      "orbit_index_in_64_direction_superset": 26,
+      "representative": "126bar_H^2 126bar_H^dag^2",
+      "self_conjugate": true,
+      "base_family": "126bar_self_projectors",
+      "base_key": [
+        0,
+        0,
+        0,
+        2,
+        2
+      ],
+      "basis_index": 1,
+      "basis_label": "1050bar",
+      "normalization": "orthogonal projector norms in the canonical chiral basis",
+      "source_modules": [
+        "exact_126bar_self_quartic_basis_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "lambda::O27_B02_126bar_self_projectors"
+      ]
+    },
+    {
+      "direction_id": "O27_B03_126bar_self_projectors",
+      "orbit_index_in_64_direction_superset": 26,
+      "representative": "126bar_H^2 126bar_H^dag^2",
+      "self_conjugate": true,
+      "base_family": "126bar_self_projectors",
+      "base_key": [
+        0,
+        0,
+        0,
+        2,
+        2
+      ],
+      "basis_index": 2,
+      "basis_label": "2772bar",
+      "normalization": "orthogonal projector norms in the canonical chiral basis",
+      "source_modules": [
+        "exact_126bar_self_quartic_basis_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "lambda::O27_B03_126bar_self_projectors"
+      ]
+    },
+    {
+      "direction_id": "O27_B04_126bar_self_projectors",
+      "orbit_index_in_64_direction_superset": 26,
+      "representative": "126bar_H^2 126bar_H^dag^2",
+      "self_conjugate": true,
+      "base_family": "126bar_self_projectors",
+      "base_key": [
+        0,
+        0,
+        0,
+        2,
+        2
+      ],
+      "basis_index": 3,
+      "basis_label": "4125",
+      "normalization": "orthogonal projector norms in the canonical chiral basis",
+      "source_modules": [
+        "exact_126bar_self_quartic_basis_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "lambda::O27_B04_126bar_self_projectors"
+      ]
+    },
+    {
+      "direction_id": "O28_B01_unique_Hdag_Sigma2_Sigmadag",
+      "orbit_index_in_64_direction_superset": 27,
+      "representative": "10_H^dag 126bar_H^2 126bar_H^dag",
+      "self_conjugate": false,
+      "base_family": "unique_Hdag_Sigma2_Sigmadag",
+      "base_key": [
+        0,
+        0,
+        1,
+        2,
+        1
+      ],
+      "basis_index": 0,
+      "basis_label": "graph (0,1,0,2,3,2) on degrees (1,5,5,5)",
+      "normalization": "recorded einsum with no hidden coefficient",
+      "source_modules": [
+        "exact_unique_hsigma_chiral_quartics_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "re::O28_B01_unique_Hdag_Sigma2_Sigmadag",
+        "im::O28_B01_unique_Hdag_Sigma2_Sigmadag"
+      ]
+    },
+    {
+      "direction_id": "O31_B01_unique_Hdag2_Sigma2",
+      "orbit_index_in_64_direction_superset": 30,
+      "representative": "10_H^dag^2 126bar_H^2",
+      "self_conjugate": false,
+      "base_family": "unique_Hdag2_Sigma2",
+      "base_key": [
+        0,
+        0,
+        2,
+        2,
+        0
+      ],
+      "basis_index": 0,
+      "basis_label": "graph (0,0,1,1,0,4) on degrees (1,1,5,5)",
+      "normalization": "recorded einsum with no hidden coefficient",
+      "source_modules": [
+        "exact_unique_hsigma_chiral_quartics_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "re::O31_B01_unique_Hdag2_Sigma2",
+        "im::O31_B01_unique_Hdag2_Sigma2"
+      ]
+    },
+    {
+      "direction_id": "O33_B01_Hdag_H_norm",
+      "orbit_index_in_64_direction_superset": 32,
+      "representative": "10_H 10_H^dag Phi17 Phi17^dag",
+      "self_conjugate": true,
+      "base_family": "Hdag_H_norm",
+      "base_key": [
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "basis_index": 0,
+      "basis_label": "Hdag_i H_i",
+      "normalization": "unit delta_ij contraction",
+      "source_modules": [
+        "exact_h10_self_quartic_family_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "lambda::O33_B01_Hdag_H_norm"
+      ]
+    },
+    {
+      "direction_id": "O34_B01_Hdag_H_norm",
+      "orbit_index_in_64_direction_superset": 33,
+      "representative": "10_H 10_H^dag S S^dag",
+      "self_conjugate": true,
+      "base_family": "Hdag_H_norm",
+      "base_key": [
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "basis_index": 0,
+      "basis_label": "Hdag_i H_i",
+      "normalization": "unit delta_ij contraction",
+      "source_modules": [
+        "exact_h10_self_quartic_family_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "lambda::O34_B01_Hdag_H_norm"
+      ]
+    },
+    {
+      "direction_id": "O35_B01_H_Sigma_hermitian",
+      "orbit_index_in_64_direction_superset": 34,
+      "representative": "10_H 10_H^dag 126bar_H 126bar_H^dag",
+      "self_conjugate": true,
+      "base_family": "H_Sigma_hermitian",
+      "base_key": [
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "basis_index": 0,
+      "basis_label": "channel_1",
+      "normalization": "singlet norm plus canonical adjoint-current contraction",
+      "source_modules": [
+        "exact_hsigma_hermitian_family_closure_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "lambda::O35_B01_H_Sigma_hermitian"
+      ]
+    },
+    {
+      "direction_id": "O35_B02_H_Sigma_hermitian",
+      "orbit_index_in_64_direction_superset": 34,
+      "representative": "10_H 10_H^dag 126bar_H 126bar_H^dag",
+      "self_conjugate": true,
+      "base_family": "H_Sigma_hermitian",
+      "base_key": [
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "basis_index": 1,
+      "basis_label": "channel_45",
+      "normalization": "singlet norm plus canonical adjoint-current contraction",
+      "source_modules": [
+        "exact_hsigma_hermitian_family_closure_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "lambda::O35_B02_H_Sigma_hermitian"
+      ]
+    },
+    {
+      "direction_id": "O36_B01_H_self_quartics",
+      "orbit_index_in_64_direction_superset": 35,
+      "representative": "10_H^2 10_H^dag^2",
+      "self_conjugate": true,
+      "base_family": "H_self_quartics",
+      "base_key": [
+        0,
+        2,
+        2,
+        0,
+        0
+      ],
+      "basis_index": 0,
+      "basis_label": "I_1",
+      "normalization": "I1=|H.H|^2/10 and I54=(HdagH)^2-I1",
+      "source_modules": [
+        "exact_h10_self_quartic_family_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "lambda::O36_B01_H_self_quartics"
+      ]
+    },
+    {
+      "direction_id": "O36_B02_H_self_quartics",
+      "orbit_index_in_64_direction_superset": 35,
+      "representative": "10_H^2 10_H^dag^2",
+      "self_conjugate": true,
+      "base_family": "H_self_quartics",
+      "base_key": [
+        0,
+        2,
+        2,
+        0,
+        0
+      ],
+      "basis_index": 1,
+      "basis_label": "I_54",
+      "normalization": "I1=|H.H|^2/10 and I54=(HdagH)^2-I1",
+      "source_modules": [
+        "exact_h10_self_quartic_family_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "lambda::O36_B02_H_self_quartics"
+      ]
+    },
+    {
+      "direction_id": "O38_B01_Phi_Hdag_Sigmadag",
+      "orbit_index_in_64_direction_superset": 37,
+      "representative": "210_H 10_H^dag 126bar_H^dag S^dag",
+      "self_conjugate": false,
+      "base_family": "Phi_Hdag_Sigmadag",
+      "base_key": [
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "basis_index": 0,
+      "basis_label": "Hdag_e Phi_{abcd} Sigmadag_{abcde}",
+      "normalization": "factorial-reduced direct contraction in canonical kinetic bases",
+      "source_modules": [
+        "direct_phi_h_sigmabar_tensor_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "re::O38_B01_Phi_Hdag_Sigmadag",
+        "im::O38_B01_Phi_Hdag_Sigmadag"
+      ]
+    },
+    {
+      "direction_id": "O42_B01_Phi_norm",
+      "orbit_index_in_64_direction_superset": 41,
+      "representative": "210_H^2 Phi17 Phi17^dag",
+      "self_conjugate": true,
+      "base_family": "Phi_norm",
+      "base_key": [
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      "basis_index": 0,
+      "basis_label": "(1/4!) Phi_{abcd} Phi_{abcd}",
+      "normalization": "K_210=(1/4!) Phi Phi",
+      "source_modules": [
+        "exact_210_self_invariant_basis_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "lambda::O42_B01_Phi_norm"
+      ]
+    },
+    {
+      "direction_id": "O43_B01_Phi_norm",
+      "orbit_index_in_64_direction_superset": 42,
+      "representative": "210_H^2 S S^dag",
+      "self_conjugate": true,
+      "base_family": "Phi_norm",
+      "base_key": [
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      "basis_index": 0,
+      "basis_label": "(1/4!) Phi_{abcd} Phi_{abcd}",
+      "normalization": "K_210=(1/4!) Phi Phi",
+      "source_modules": [
+        "exact_210_self_invariant_basis_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "lambda::O43_B01_Phi_norm"
+      ]
+    },
+    {
+      "direction_id": "O44_B01_Phi2_Sigma_projectors",
+      "orbit_index_in_64_direction_superset": 43,
+      "representative": "210_H^2 126bar_H 126bar_H^dag",
+      "self_conjugate": true,
+      "base_family": "Phi2_Sigma_projectors",
+      "base_key": [
+        2,
+        0,
+        0,
+        1,
+        1
+      ],
+      "basis_index": 0,
+      "basis_label": "1",
+      "normalization": "explicit graph basis and canonical pair-Casimir projector basis",
+      "source_modules": [
+        "exact_phi2_126dag126_six_contractions_v20.py",
+        "exact_phisigma_126bar_minus_projectors_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "lambda::O44_B01_Phi2_Sigma_projectors"
+      ]
+    },
+    {
+      "direction_id": "O44_B02_Phi2_Sigma_projectors",
+      "orbit_index_in_64_direction_superset": 43,
+      "representative": "210_H^2 126bar_H 126bar_H^dag",
+      "self_conjugate": true,
+      "base_family": "Phi2_Sigma_projectors",
+      "base_key": [
+        2,
+        0,
+        0,
+        1,
+        1
+      ],
+      "basis_index": 1,
+      "basis_label": "45",
+      "normalization": "explicit graph basis and canonical pair-Casimir projector basis",
+      "source_modules": [
+        "exact_phi2_126dag126_six_contractions_v20.py",
+        "exact_phisigma_126bar_minus_projectors_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "lambda::O44_B02_Phi2_Sigma_projectors"
+      ]
+    },
+    {
+      "direction_id": "O44_B03_Phi2_Sigma_projectors",
+      "orbit_index_in_64_direction_superset": 43,
+      "representative": "210_H^2 126bar_H 126bar_H^dag",
+      "self_conjugate": true,
+      "base_family": "Phi2_Sigma_projectors",
+      "base_key": [
+        2,
+        0,
+        0,
+        1,
+        1
+      ],
+      "basis_index": 2,
+      "basis_label": "210",
+      "normalization": "explicit graph basis and canonical pair-Casimir projector basis",
+      "source_modules": [
+        "exact_phi2_126dag126_six_contractions_v20.py",
+        "exact_phisigma_126bar_minus_projectors_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "lambda::O44_B03_Phi2_Sigma_projectors"
+      ]
+    },
+    {
+      "direction_id": "O44_B04_Phi2_Sigma_projectors",
+      "orbit_index_in_64_direction_superset": 43,
+      "representative": "210_H^2 126bar_H 126bar_H^dag",
+      "self_conjugate": true,
+      "base_family": "Phi2_Sigma_projectors",
+      "base_key": [
+        2,
+        0,
+        0,
+        1,
+        1
+      ],
+      "basis_index": 3,
+      "basis_label": "770",
+      "normalization": "explicit graph basis and canonical pair-Casimir projector basis",
+      "source_modules": [
+        "exact_phi2_126dag126_six_contractions_v20.py",
+        "exact_phisigma_126bar_minus_projectors_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "lambda::O44_B04_Phi2_Sigma_projectors"
+      ]
+    },
+    {
+      "direction_id": "O44_B05_Phi2_Sigma_projectors",
+      "orbit_index_in_64_direction_superset": 43,
+      "representative": "210_H^2 126bar_H 126bar_H^dag",
+      "self_conjugate": true,
+      "base_family": "Phi2_Sigma_projectors",
+      "base_key": [
+        2,
+        0,
+        0,
+        1,
+        1
+      ],
+      "basis_index": 4,
+      "basis_label": "5940",
+      "normalization": "explicit graph basis and canonical pair-Casimir projector basis",
+      "source_modules": [
+        "exact_phi2_126dag126_six_contractions_v20.py",
+        "exact_phisigma_126bar_minus_projectors_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "lambda::O44_B05_Phi2_Sigma_projectors"
+      ]
+    },
+    {
+      "direction_id": "O44_B06_Phi2_Sigma_projectors",
+      "orbit_index_in_64_direction_superset": 43,
+      "representative": "210_H^2 126bar_H 126bar_H^dag",
+      "self_conjugate": true,
+      "base_family": "Phi2_Sigma_projectors",
+      "base_key": [
+        2,
+        0,
+        0,
+        1,
+        1
+      ],
+      "basis_index": 5,
+      "basis_label": "8910",
+      "normalization": "explicit graph basis and canonical pair-Casimir projector basis",
+      "source_modules": [
+        "exact_phi2_126dag126_six_contractions_v20.py",
+        "exact_phisigma_126bar_minus_projectors_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "lambda::O44_B06_Phi2_Sigma_projectors"
+      ]
+    },
+    {
+      "direction_id": "O45_B01_Phi2_Hdag_Sigma_210_1050",
+      "orbit_index_in_64_direction_superset": 44,
+      "representative": "210_H^2 10_H^dag 126bar_H",
+      "self_conjugate": false,
+      "base_family": "Phi2_Hdag_Sigma_210_1050",
+      "base_key": [
+        2,
+        0,
+        1,
+        1,
+        0
+      ],
+      "basis_index": 0,
+      "basis_label": "210",
+      "normalization": "J(A)_a=P_+(e_a wedge A), JdagJ=3I",
+      "source_modules": [
+        "exact_phi2_h_126dag_210_1050_channels_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "re::O45_B01_Phi2_Hdag_Sigma_210_1050",
+        "im::O45_B01_Phi2_Hdag_Sigma_210_1050"
+      ]
+    },
+    {
+      "direction_id": "O45_B02_Phi2_Hdag_Sigma_210_1050",
+      "orbit_index_in_64_direction_superset": 44,
+      "representative": "210_H^2 10_H^dag 126bar_H",
+      "self_conjugate": false,
+      "base_family": "Phi2_Hdag_Sigma_210_1050",
+      "base_key": [
+        2,
+        0,
+        1,
+        1,
+        0
+      ],
+      "basis_index": 1,
+      "basis_label": "1050",
+      "normalization": "J(A)_a=P_+(e_a wedge A), JdagJ=3I",
+      "source_modules": [
+        "exact_phi2_h_126dag_210_1050_channels_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "re::O45_B02_Phi2_Hdag_Sigma_210_1050",
+        "im::O45_B02_Phi2_Hdag_Sigma_210_1050"
+      ]
+    },
+    {
+      "direction_id": "O46_B01_Phi2_HdagH_channels",
+      "orbit_index_in_64_direction_superset": 45,
+      "representative": "210_H^2 10_H 10_H^dag",
+      "self_conjugate": true,
+      "base_family": "Phi2_HdagH_channels",
+      "base_key": [
+        2,
+        1,
+        1,
+        0,
+        0
+      ],
+      "basis_index": 0,
+      "basis_label": "1",
+      "normalization": "canonical M1, M45=iA, and traceless M54 operators",
+      "source_modules": [
+        "exact_phi2_hdagh_channel_family_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "lambda::O46_B01_Phi2_HdagH_channels"
+      ]
+    },
+    {
+      "direction_id": "O46_B02_Phi2_HdagH_channels",
+      "orbit_index_in_64_direction_superset": 45,
+      "representative": "210_H^2 10_H 10_H^dag",
+      "self_conjugate": true,
+      "base_family": "Phi2_HdagH_channels",
+      "base_key": [
+        2,
+        1,
+        1,
+        0,
+        0
+      ],
+      "basis_index": 1,
+      "basis_label": "45",
+      "normalization": "canonical M1, M45=iA, and traceless M54 operators",
+      "source_modules": [
+        "exact_phi2_hdagh_channel_family_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "lambda::O46_B02_Phi2_HdagH_channels"
+      ]
+    },
+    {
+      "direction_id": "O46_B03_Phi2_HdagH_channels",
+      "orbit_index_in_64_direction_superset": 45,
+      "representative": "210_H^2 10_H 10_H^dag",
+      "self_conjugate": true,
+      "base_family": "Phi2_HdagH_channels",
+      "base_key": [
+        2,
+        1,
+        1,
+        0,
+        0
+      ],
+      "basis_index": 2,
+      "basis_label": "54",
+      "normalization": "canonical M1, M45=iA, and traceless M54 operators",
+      "source_modules": [
+        "exact_phi2_hdagh_channel_family_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "lambda::O46_B03_Phi2_HdagH_channels"
+      ]
+    },
+    {
+      "direction_id": "O48_B01_Phi_self_quartics",
+      "orbit_index_in_64_direction_superset": 47,
+      "representative": "210_H^4",
+      "self_conjugate": true,
+      "base_family": "Phi_self_quartics",
+      "base_key": [
+        4,
+        0,
+        0,
+        0,
+        0
+      ],
+      "basis_index": 0,
+      "basis_label": "J0",
+      "normalization": "exact arbitrary-component evaluator convention",
+      "source_modules": [
+        "exact_210_self_invariant_basis_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "lambda::O48_B01_Phi_self_quartics"
+      ]
+    },
+    {
+      "direction_id": "O48_B02_Phi_self_quartics",
+      "orbit_index_in_64_direction_superset": 47,
+      "representative": "210_H^4",
+      "self_conjugate": true,
+      "base_family": "Phi_self_quartics",
+      "base_key": [
+        4,
+        0,
+        0,
+        0,
+        0
+      ],
+      "basis_index": 1,
+      "basis_label": "J2",
+      "normalization": "exact arbitrary-component evaluator convention",
+      "source_modules": [
+        "exact_210_self_invariant_basis_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "lambda::O48_B02_Phi_self_quartics"
+      ]
+    },
+    {
+      "direction_id": "O48_B03_Phi_self_quartics",
+      "orbit_index_in_64_direction_superset": 47,
+      "representative": "210_H^4",
+      "self_conjugate": true,
+      "base_family": "Phi_self_quartics",
+      "base_key": [
+        4,
+        0,
+        0,
+        0,
+        0
+      ],
+      "basis_index": 2,
+      "basis_label": "J3",
+      "normalization": "exact arbitrary-component evaluator convention",
+      "source_modules": [
+        "exact_210_self_invariant_basis_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "lambda::O48_B03_Phi_self_quartics"
+      ]
+    },
+    {
+      "direction_id": "O48_B04_Phi_self_quartics",
+      "orbit_index_in_64_direction_superset": 47,
+      "representative": "210_H^4",
+      "self_conjugate": true,
+      "base_family": "Phi_self_quartics",
+      "base_key": [
+        4,
+        0,
+        0,
+        0,
+        0
+      ],
+      "basis_index": 3,
+      "basis_label": "J4",
+      "normalization": "exact arbitrary-component evaluator convention",
+      "source_modules": [
+        "exact_210_self_invariant_basis_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 0,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "lambda::O48_B04_Phi_self_quartics"
+      ]
+    }
+  ],
+  "gauged_orbit_multiplicity_audit": [
+    {
+      "contract": "gauged_u1x_phi17_v20",
+      "representative": "Phi17 Phi17^dag",
+      "orbit_key": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "base_key": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_family": "singlet_polynomial",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "gauged_u1x_phi17_v20",
+      "representative": "S S^dag",
+      "orbit_key": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "base_key": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_family": "singlet_polynomial",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "gauged_u1x_phi17_v20",
+      "representative": "126bar_H 126bar_H^dag",
+      "orbit_key": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_key": [
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "base_family": "126bar_norm",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "gauged_u1x_phi17_v20",
+      "representative": "10_H 10_H^dag",
+      "orbit_key": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_key": [
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "base_family": "Hdag_H_norm",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "gauged_u1x_phi17_v20",
+      "representative": "210_H^2",
+      "orbit_key": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_key": [
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_family": "Phi_norm",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "gauged_u1x_phi17_v20",
+      "representative": "10_H^dag^2 S^dag",
+      "orbit_key": [
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "base_key": [
+        0,
+        0,
+        2,
+        0,
+        0
+      ],
+      "base_family": "Hdag_Hdag_pair",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "gauged_u1x_phi17_v20",
+      "representative": "210_H 126bar_H 126bar_H^dag",
+      "orbit_key": [
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_key": [
+        1,
+        0,
+        0,
+        1,
+        1
+      ],
+      "base_family": "Phi_Sigma_Sigmadag_cubic",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "gauged_u1x_phi17_v20",
+      "representative": "210_H 10_H^dag 126bar_H",
+      "orbit_key": [
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_key": [
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "base_family": "Phi_Hdag_Sigma",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "gauged_u1x_phi17_v20",
+      "representative": "210_H^3",
+      "orbit_key": [
+        3,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_key": [
+        3,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_family": "Phi_cubic",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "gauged_u1x_phi17_v20",
+      "representative": "Phi17^2 Phi17^dag^2",
+      "orbit_key": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2
+      ],
+      "base_key": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_family": "singlet_polynomial",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "gauged_u1x_phi17_v20",
+      "representative": "S S^dag Phi17 Phi17^dag",
+      "orbit_key": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "base_key": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_family": "singlet_polynomial",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "gauged_u1x_phi17_v20",
+      "representative": "S^2 S^dag^2",
+      "orbit_key": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        0
+      ],
+      "base_key": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_family": "singlet_polynomial",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "gauged_u1x_phi17_v20",
+      "representative": "126bar_H 126bar_H^dag Phi17 Phi17^dag",
+      "orbit_key": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1
+      ],
+      "base_key": [
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "base_family": "126bar_norm",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "gauged_u1x_phi17_v20",
+      "representative": "126bar_H 126bar_H^dag S S^dag",
+      "orbit_key": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "base_key": [
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "base_family": "126bar_norm",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "gauged_u1x_phi17_v20",
+      "representative": "126bar_H^2 126bar_H^dag^2",
+      "orbit_key": [
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_key": [
+        0,
+        0,
+        0,
+        2,
+        2
+      ],
+      "base_family": "126bar_self_projectors",
+      "D5_singlet_multiplicity": 4,
+      "base_declared_multiplicity": 4,
+      "basis_length": 4,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "gauged_u1x_phi17_v20",
+      "representative": "10_H^dag 126bar_H^2 126bar_H^dag",
+      "orbit_key": [
+        0,
+        0,
+        1,
+        2,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_key": [
+        0,
+        0,
+        1,
+        2,
+        1
+      ],
+      "base_family": "unique_Hdag_Sigma2_Sigmadag",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "gauged_u1x_phi17_v20",
+      "representative": "10_H^dag^2 126bar_H^2",
+      "orbit_key": [
+        0,
+        0,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_key": [
+        0,
+        0,
+        2,
+        2,
+        0
+      ],
+      "base_family": "unique_Hdag2_Sigma2",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "gauged_u1x_phi17_v20",
+      "representative": "10_H 10_H^dag Phi17 Phi17^dag",
+      "orbit_key": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "base_key": [
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "base_family": "Hdag_H_norm",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "gauged_u1x_phi17_v20",
+      "representative": "10_H 10_H^dag S S^dag",
+      "orbit_key": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "base_key": [
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "base_family": "Hdag_H_norm",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "gauged_u1x_phi17_v20",
+      "representative": "10_H 10_H^dag 126bar_H 126bar_H^dag",
+      "orbit_key": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_key": [
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "base_family": "H_Sigma_hermitian",
+      "D5_singlet_multiplicity": 2,
+      "base_declared_multiplicity": 2,
+      "basis_length": 2,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "gauged_u1x_phi17_v20",
+      "representative": "10_H^2 10_H^dag^2",
+      "orbit_key": [
+        0,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_key": [
+        0,
+        2,
+        2,
+        0,
+        0
+      ],
+      "base_family": "H_self_quartics",
+      "D5_singlet_multiplicity": 2,
+      "base_declared_multiplicity": 2,
+      "basis_length": 2,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "gauged_u1x_phi17_v20",
+      "representative": "210_H 10_H^dag 126bar_H^dag S^dag",
+      "orbit_key": [
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "base_key": [
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "base_family": "Phi_Hdag_Sigmadag",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "gauged_u1x_phi17_v20",
+      "representative": "210_H^2 Phi17 Phi17^dag",
+      "orbit_key": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "base_key": [
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_family": "Phi_norm",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "gauged_u1x_phi17_v20",
+      "representative": "210_H^2 S S^dag",
+      "orbit_key": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "base_key": [
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_family": "Phi_norm",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "gauged_u1x_phi17_v20",
+      "representative": "210_H^2 126bar_H 126bar_H^dag",
+      "orbit_key": [
+        2,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_key": [
+        2,
+        0,
+        0,
+        1,
+        1
+      ],
+      "base_family": "Phi2_Sigma_projectors",
+      "D5_singlet_multiplicity": 6,
+      "base_declared_multiplicity": 6,
+      "basis_length": 6,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "gauged_u1x_phi17_v20",
+      "representative": "210_H^2 10_H^dag 126bar_H",
+      "orbit_key": [
+        2,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_key": [
+        2,
+        0,
+        1,
+        1,
+        0
+      ],
+      "base_family": "Phi2_Hdag_Sigma_210_1050",
+      "D5_singlet_multiplicity": 2,
+      "base_declared_multiplicity": 2,
+      "basis_length": 2,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "gauged_u1x_phi17_v20",
+      "representative": "210_H^2 10_H 10_H^dag",
+      "orbit_key": [
+        2,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_key": [
+        2,
+        1,
+        1,
+        0,
+        0
+      ],
+      "base_family": "Phi2_HdagH_channels",
+      "D5_singlet_multiplicity": 3,
+      "base_declared_multiplicity": 3,
+      "basis_length": 3,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "gauged_u1x_phi17_v20",
+      "representative": "210_H^4",
+      "orbit_key": [
+        4,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_key": [
+        4,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_family": "Phi_self_quartics",
+      "D5_singlet_multiplicity": 4,
+      "base_declared_multiplicity": 4,
+      "basis_length": 4,
+      "multiplicities_equal": true
+    }
+  ],
+  "historical_option_c_orbit_multiplicity_audit": [
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "Phi17^dag",
+      "orbit_key": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "base_key": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_family": "singlet_polynomial",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "Phi17^dag^2",
+      "orbit_key": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2
+      ],
+      "base_key": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_family": "singlet_polynomial",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "Phi17 Phi17^dag",
+      "orbit_key": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "base_key": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_family": "singlet_polynomial",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "S S^dag",
+      "orbit_key": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "base_key": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_family": "singlet_polynomial",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "126bar_H 126bar_H^dag",
+      "orbit_key": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_key": [
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "base_family": "126bar_norm",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "10_H 10_H^dag",
+      "orbit_key": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_key": [
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "base_family": "Hdag_H_norm",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "210_H^2",
+      "orbit_key": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_key": [
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_family": "Phi_norm",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "Phi17^dag^3",
+      "orbit_key": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        3
+      ],
+      "base_key": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_family": "singlet_polynomial",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "Phi17 Phi17^dag^2",
+      "orbit_key": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        2
+      ],
+      "base_key": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_family": "singlet_polynomial",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "S S^dag Phi17^dag",
+      "orbit_key": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "base_key": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_family": "singlet_polynomial",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "126bar_H 126bar_H^dag Phi17^dag",
+      "orbit_key": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "base_key": [
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "base_family": "126bar_norm",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "10_H^dag^2 S^dag",
+      "orbit_key": [
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "base_key": [
+        0,
+        0,
+        2,
+        0,
+        0
+      ],
+      "base_family": "Hdag_Hdag_pair",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "10_H 10_H^dag Phi17^dag",
+      "orbit_key": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "base_key": [
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "base_family": "Hdag_H_norm",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "210_H 126bar_H 126bar_H^dag",
+      "orbit_key": [
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_key": [
+        1,
+        0,
+        0,
+        1,
+        1
+      ],
+      "base_family": "Phi_Sigma_Sigmadag_cubic",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "210_H 10_H^dag 126bar_H",
+      "orbit_key": [
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_key": [
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "base_family": "Phi_Hdag_Sigma",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "210_H^2 Phi17^dag",
+      "orbit_key": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "base_key": [
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_family": "Phi_norm",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "210_H^3",
+      "orbit_key": [
+        3,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_key": [
+        3,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_family": "Phi_cubic",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "Phi17^dag^4",
+      "orbit_key": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        4
+      ],
+      "base_key": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_family": "singlet_polynomial",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "Phi17 Phi17^dag^3",
+      "orbit_key": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        3
+      ],
+      "base_key": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_family": "singlet_polynomial",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "Phi17^2 Phi17^dag^2",
+      "orbit_key": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2
+      ],
+      "base_key": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_family": "singlet_polynomial",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "S S^dag Phi17^dag^2",
+      "orbit_key": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        2
+      ],
+      "base_key": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_family": "singlet_polynomial",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "S S^dag Phi17 Phi17^dag",
+      "orbit_key": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "base_key": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_family": "singlet_polynomial",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "S^2 S^dag^2",
+      "orbit_key": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        0
+      ],
+      "base_key": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_family": "singlet_polynomial",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "126bar_H 126bar_H^dag Phi17^dag^2",
+      "orbit_key": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        2
+      ],
+      "base_key": [
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "base_family": "126bar_norm",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "126bar_H 126bar_H^dag Phi17 Phi17^dag",
+      "orbit_key": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1
+      ],
+      "base_key": [
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "base_family": "126bar_norm",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "126bar_H 126bar_H^dag S S^dag",
+      "orbit_key": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "base_key": [
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "base_family": "126bar_norm",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "126bar_H^2 126bar_H^dag^2",
+      "orbit_key": [
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_key": [
+        0,
+        0,
+        0,
+        2,
+        2
+      ],
+      "base_family": "126bar_self_projectors",
+      "D5_singlet_multiplicity": 4,
+      "base_declared_multiplicity": 4,
+      "basis_length": 4,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "10_H^dag 126bar_H^2 126bar_H^dag",
+      "orbit_key": [
+        0,
+        0,
+        1,
+        2,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_key": [
+        0,
+        0,
+        1,
+        2,
+        1
+      ],
+      "base_family": "unique_Hdag_Sigma2_Sigmadag",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "10_H^dag^2 S^dag Phi17^dag",
+      "orbit_key": [
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1
+      ],
+      "base_key": [
+        0,
+        0,
+        2,
+        0,
+        0
+      ],
+      "base_family": "Hdag_Hdag_pair",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "10_H^dag^2 S^dag Phi17",
+      "orbit_key": [
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "base_key": [
+        0,
+        0,
+        2,
+        0,
+        0
+      ],
+      "base_family": "Hdag_Hdag_pair",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "10_H^dag^2 126bar_H^2",
+      "orbit_key": [
+        0,
+        0,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_key": [
+        0,
+        0,
+        2,
+        2,
+        0
+      ],
+      "base_family": "unique_Hdag2_Sigma2",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "10_H 10_H^dag Phi17^dag^2",
+      "orbit_key": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2
+      ],
+      "base_key": [
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "base_family": "Hdag_H_norm",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "10_H 10_H^dag Phi17 Phi17^dag",
+      "orbit_key": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "base_key": [
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "base_family": "Hdag_H_norm",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "10_H 10_H^dag S S^dag",
+      "orbit_key": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "base_key": [
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "base_family": "Hdag_H_norm",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "10_H 10_H^dag 126bar_H 126bar_H^dag",
+      "orbit_key": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_key": [
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "base_family": "H_Sigma_hermitian",
+      "D5_singlet_multiplicity": 2,
+      "base_declared_multiplicity": 2,
+      "basis_length": 2,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "10_H^2 10_H^dag^2",
+      "orbit_key": [
+        0,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_key": [
+        0,
+        2,
+        2,
+        0,
+        0
+      ],
+      "base_family": "H_self_quartics",
+      "D5_singlet_multiplicity": 2,
+      "base_declared_multiplicity": 2,
+      "basis_length": 2,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "210_H 126bar_H 126bar_H^dag Phi17^dag",
+      "orbit_key": [
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "base_key": [
+        1,
+        0,
+        0,
+        1,
+        1
+      ],
+      "base_family": "Phi_Sigma_Sigmadag_cubic",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "210_H 10_H^dag 126bar_H^dag S^dag",
+      "orbit_key": [
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "base_key": [
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "base_family": "Phi_Hdag_Sigmadag",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "210_H 10_H^dag 126bar_H Phi17^dag",
+      "orbit_key": [
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "base_key": [
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "base_family": "Phi_Hdag_Sigma",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "210_H 10_H^dag 126bar_H Phi17",
+      "orbit_key": [
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "base_key": [
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "base_family": "Phi_Hdag_Sigma",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "210_H^2 Phi17^dag^2",
+      "orbit_key": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2
+      ],
+      "base_key": [
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_family": "Phi_norm",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "210_H^2 Phi17 Phi17^dag",
+      "orbit_key": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "base_key": [
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_family": "Phi_norm",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "210_H^2 S S^dag",
+      "orbit_key": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "base_key": [
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_family": "Phi_norm",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "210_H^2 126bar_H 126bar_H^dag",
+      "orbit_key": [
+        2,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_key": [
+        2,
+        0,
+        0,
+        1,
+        1
+      ],
+      "base_family": "Phi2_Sigma_projectors",
+      "D5_singlet_multiplicity": 6,
+      "base_declared_multiplicity": 6,
+      "basis_length": 6,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "210_H^2 10_H^dag 126bar_H",
+      "orbit_key": [
+        2,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_key": [
+        2,
+        0,
+        1,
+        1,
+        0
+      ],
+      "base_family": "Phi2_Hdag_Sigma_210_1050",
+      "D5_singlet_multiplicity": 2,
+      "base_declared_multiplicity": 2,
+      "basis_length": 2,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "210_H^2 10_H 10_H^dag",
+      "orbit_key": [
+        2,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_key": [
+        2,
+        1,
+        1,
+        0,
+        0
+      ],
+      "base_family": "Phi2_HdagH_channels",
+      "D5_singlet_multiplicity": 3,
+      "base_declared_multiplicity": 3,
+      "basis_length": 3,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "210_H^3 Phi17^dag",
+      "orbit_key": [
+        3,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "base_key": [
+        3,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_family": "Phi_cubic",
+      "D5_singlet_multiplicity": 1,
+      "base_declared_multiplicity": 1,
+      "basis_length": 1,
+      "multiplicities_equal": true
+    },
+    {
+      "contract": "historical_option_c_no_x_v20",
+      "representative": "210_H^4",
+      "orbit_key": [
+        4,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_key": [
+        4,
+        0,
+        0,
+        0,
+        0
+      ],
+      "base_family": "Phi_self_quartics",
+      "D5_singlet_multiplicity": 4,
+      "base_declared_multiplicity": 4,
+      "basis_length": 4,
+      "multiplicities_equal": true
+    }
+  ],
+  "gauged_parameter_ids": [
+    "lambda::O03_B01_singlet_polynomial",
+    "lambda::O04_B01_singlet_polynomial",
+    "lambda::O05_B01_126bar_norm",
+    "lambda::O06_B01_Hdag_H_norm",
+    "lambda::O07_B01_Phi_norm",
+    "re::O12_B01_Hdag_Hdag_pair",
+    "im::O12_B01_Hdag_Hdag_pair",
+    "lambda::O14_B01_Phi_Sigma_Sigmadag_cubic",
+    "re::O15_B01_Phi_Hdag_Sigma",
+    "im::O15_B01_Phi_Hdag_Sigma",
+    "lambda::O17_B01_Phi_cubic",
+    "lambda::O20_B01_singlet_polynomial",
+    "lambda::O22_B01_singlet_polynomial",
+    "lambda::O23_B01_singlet_polynomial",
+    "lambda::O25_B01_126bar_norm",
+    "lambda::O26_B01_126bar_norm",
+    "lambda::O27_B01_126bar_self_projectors",
+    "lambda::O27_B02_126bar_self_projectors",
+    "lambda::O27_B03_126bar_self_projectors",
+    "lambda::O27_B04_126bar_self_projectors",
+    "re::O28_B01_unique_Hdag_Sigma2_Sigmadag",
+    "im::O28_B01_unique_Hdag_Sigma2_Sigmadag",
+    "re::O31_B01_unique_Hdag2_Sigma2",
+    "im::O31_B01_unique_Hdag2_Sigma2",
+    "lambda::O33_B01_Hdag_H_norm",
+    "lambda::O34_B01_Hdag_H_norm",
+    "lambda::O35_B01_H_Sigma_hermitian",
+    "lambda::O35_B02_H_Sigma_hermitian",
+    "lambda::O36_B01_H_self_quartics",
+    "lambda::O36_B02_H_self_quartics",
+    "re::O38_B01_Phi_Hdag_Sigmadag",
+    "im::O38_B01_Phi_Hdag_Sigmadag",
+    "lambda::O42_B01_Phi_norm",
+    "lambda::O43_B01_Phi_norm",
+    "lambda::O44_B01_Phi2_Sigma_projectors",
+    "lambda::O44_B02_Phi2_Sigma_projectors",
+    "lambda::O44_B03_Phi2_Sigma_projectors",
+    "lambda::O44_B04_Phi2_Sigma_projectors",
+    "lambda::O44_B05_Phi2_Sigma_projectors",
+    "lambda::O44_B06_Phi2_Sigma_projectors",
+    "re::O45_B01_Phi2_Hdag_Sigma_210_1050",
+    "im::O45_B01_Phi2_Hdag_Sigma_210_1050",
+    "re::O45_B02_Phi2_Hdag_Sigma_210_1050",
+    "im::O45_B02_Phi2_Hdag_Sigma_210_1050",
+    "lambda::O46_B01_Phi2_HdagH_channels",
+    "lambda::O46_B02_Phi2_HdagH_channels",
+    "lambda::O46_B03_Phi2_HdagH_channels",
+    "lambda::O48_B01_Phi_self_quartics",
+    "lambda::O48_B02_Phi_self_quartics",
+    "lambda::O48_B03_Phi_self_quartics",
+    "lambda::O48_B04_Phi_self_quartics"
+  ],
+  "excluded_option_c_directions": [
+    {
+      "direction_id": "O01_B01_singlet_polynomial",
+      "orbit_index_in_64_direction_superset": 0,
+      "representative": "Phi17^dag",
+      "self_conjugate": false,
+      "base_family": "singlet_polynomial",
+      "base_key": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "basis_index": 0,
+      "basis_label": "the recorded scalar monomial itself",
+      "normalization": "unit monomial coefficient in canonical scalar fields",
+      "source_modules": [
+        "live_g1_tensor_closure_ledger_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": -17,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "re::O01_B01_singlet_polynomial",
+        "im::O01_B01_singlet_polynomial"
+      ]
+    },
+    {
+      "direction_id": "O02_B01_singlet_polynomial",
+      "orbit_index_in_64_direction_superset": 1,
+      "representative": "Phi17^dag^2",
+      "self_conjugate": false,
+      "base_family": "singlet_polynomial",
+      "base_key": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "basis_index": 0,
+      "basis_label": "the recorded scalar monomial itself",
+      "normalization": "unit monomial coefficient in canonical scalar fields",
+      "source_modules": [
+        "live_g1_tensor_closure_ledger_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": -34,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "re::O02_B01_singlet_polynomial",
+        "im::O02_B01_singlet_polynomial"
+      ]
+    },
+    {
+      "direction_id": "O08_B01_singlet_polynomial",
+      "orbit_index_in_64_direction_superset": 7,
+      "representative": "Phi17^dag^3",
+      "self_conjugate": false,
+      "base_family": "singlet_polynomial",
+      "base_key": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "basis_index": 0,
+      "basis_label": "the recorded scalar monomial itself",
+      "normalization": "unit monomial coefficient in canonical scalar fields",
+      "source_modules": [
+        "live_g1_tensor_closure_ledger_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": -51,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "re::O08_B01_singlet_polynomial",
+        "im::O08_B01_singlet_polynomial"
+      ]
+    },
+    {
+      "direction_id": "O09_B01_singlet_polynomial",
+      "orbit_index_in_64_direction_superset": 8,
+      "representative": "Phi17 Phi17^dag^2",
+      "self_conjugate": false,
+      "base_family": "singlet_polynomial",
+      "base_key": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "basis_index": 0,
+      "basis_label": "the recorded scalar monomial itself",
+      "normalization": "unit monomial coefficient in canonical scalar fields",
+      "source_modules": [
+        "live_g1_tensor_closure_ledger_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": -17,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "re::O09_B01_singlet_polynomial",
+        "im::O09_B01_singlet_polynomial"
+      ]
+    },
+    {
+      "direction_id": "O10_B01_singlet_polynomial",
+      "orbit_index_in_64_direction_superset": 9,
+      "representative": "S S^dag Phi17^dag",
+      "self_conjugate": false,
+      "base_family": "singlet_polynomial",
+      "base_key": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "basis_index": 0,
+      "basis_label": "the recorded scalar monomial itself",
+      "normalization": "unit monomial coefficient in canonical scalar fields",
+      "source_modules": [
+        "live_g1_tensor_closure_ledger_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": -17,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "re::O10_B01_singlet_polynomial",
+        "im::O10_B01_singlet_polynomial"
+      ]
+    },
+    {
+      "direction_id": "O11_B01_126bar_norm",
+      "orbit_index_in_64_direction_superset": 10,
+      "representative": "126bar_H 126bar_H^dag Phi17^dag",
+      "self_conjugate": false,
+      "base_family": "126bar_norm",
+      "base_key": [
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "basis_index": 0,
+      "basis_label": "(1/2) Sigma^dag_{abcde} Sigma_{abcde}",
+      "normalization": "K_126=(1/(2*5!)) Sigma^* Sigma",
+      "source_modules": [
+        "direct_phi_h_sigmabar_tensor_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": -17,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "re::O11_B01_126bar_norm",
+        "im::O11_B01_126bar_norm"
+      ]
+    },
+    {
+      "direction_id": "O13_B01_Hdag_H_norm",
+      "orbit_index_in_64_direction_superset": 12,
+      "representative": "10_H 10_H^dag Phi17^dag",
+      "self_conjugate": false,
+      "base_family": "Hdag_H_norm",
+      "base_key": [
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "basis_index": 0,
+      "basis_label": "Hdag_i H_i",
+      "normalization": "unit delta_ij contraction",
+      "source_modules": [
+        "exact_h10_self_quartic_family_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": -17,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "re::O13_B01_Hdag_H_norm",
+        "im::O13_B01_Hdag_H_norm"
+      ]
+    },
+    {
+      "direction_id": "O16_B01_Phi_norm",
+      "orbit_index_in_64_direction_superset": 15,
+      "representative": "210_H^2 Phi17^dag",
+      "self_conjugate": false,
+      "base_family": "Phi_norm",
+      "base_key": [
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      "basis_index": 0,
+      "basis_label": "(1/4!) Phi_{abcd} Phi_{abcd}",
+      "normalization": "K_210=(1/4!) Phi Phi",
+      "source_modules": [
+        "exact_210_self_invariant_basis_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": -17,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "re::O16_B01_Phi_norm",
+        "im::O16_B01_Phi_norm"
+      ]
+    },
+    {
+      "direction_id": "O18_B01_singlet_polynomial",
+      "orbit_index_in_64_direction_superset": 17,
+      "representative": "Phi17^dag^4",
+      "self_conjugate": false,
+      "base_family": "singlet_polynomial",
+      "base_key": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "basis_index": 0,
+      "basis_label": "the recorded scalar monomial itself",
+      "normalization": "unit monomial coefficient in canonical scalar fields",
+      "source_modules": [
+        "live_g1_tensor_closure_ledger_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": -68,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "re::O18_B01_singlet_polynomial",
+        "im::O18_B01_singlet_polynomial"
+      ]
+    },
+    {
+      "direction_id": "O19_B01_singlet_polynomial",
+      "orbit_index_in_64_direction_superset": 18,
+      "representative": "Phi17 Phi17^dag^3",
+      "self_conjugate": false,
+      "base_family": "singlet_polynomial",
+      "base_key": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "basis_index": 0,
+      "basis_label": "the recorded scalar monomial itself",
+      "normalization": "unit monomial coefficient in canonical scalar fields",
+      "source_modules": [
+        "live_g1_tensor_closure_ledger_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": -34,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "re::O19_B01_singlet_polynomial",
+        "im::O19_B01_singlet_polynomial"
+      ]
+    },
+    {
+      "direction_id": "O21_B01_singlet_polynomial",
+      "orbit_index_in_64_direction_superset": 20,
+      "representative": "S S^dag Phi17^dag^2",
+      "self_conjugate": false,
+      "base_family": "singlet_polynomial",
+      "base_key": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "basis_index": 0,
+      "basis_label": "the recorded scalar monomial itself",
+      "normalization": "unit monomial coefficient in canonical scalar fields",
+      "source_modules": [
+        "live_g1_tensor_closure_ledger_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": -34,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "re::O21_B01_singlet_polynomial",
+        "im::O21_B01_singlet_polynomial"
+      ]
+    },
+    {
+      "direction_id": "O24_B01_126bar_norm",
+      "orbit_index_in_64_direction_superset": 23,
+      "representative": "126bar_H 126bar_H^dag Phi17^dag^2",
+      "self_conjugate": false,
+      "base_family": "126bar_norm",
+      "base_key": [
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "basis_index": 0,
+      "basis_label": "(1/2) Sigma^dag_{abcde} Sigma_{abcde}",
+      "normalization": "K_126=(1/(2*5!)) Sigma^* Sigma",
+      "source_modules": [
+        "direct_phi_h_sigmabar_tensor_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": -34,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "re::O24_B01_126bar_norm",
+        "im::O24_B01_126bar_norm"
+      ]
+    },
+    {
+      "direction_id": "O29_B01_Hdag_Hdag_pair",
+      "orbit_index_in_64_direction_superset": 28,
+      "representative": "10_H^dag^2 S^dag Phi17^dag",
+      "self_conjugate": false,
+      "base_family": "Hdag_Hdag_pair",
+      "base_key": [
+        0,
+        0,
+        2,
+        0,
+        0
+      ],
+      "basis_index": 0,
+      "basis_label": "Hdag_i Hdag_i",
+      "normalization": "unit delta_ij contraction",
+      "source_modules": [
+        "exact_h10_self_quartic_family_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": -17,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "re::O29_B01_Hdag_Hdag_pair",
+        "im::O29_B01_Hdag_Hdag_pair"
+      ]
+    },
+    {
+      "direction_id": "O30_B01_Hdag_Hdag_pair",
+      "orbit_index_in_64_direction_superset": 29,
+      "representative": "10_H^dag^2 S^dag Phi17",
+      "self_conjugate": false,
+      "base_family": "Hdag_Hdag_pair",
+      "base_key": [
+        0,
+        0,
+        2,
+        0,
+        0
+      ],
+      "basis_index": 0,
+      "basis_label": "Hdag_i Hdag_i",
+      "normalization": "unit delta_ij contraction",
+      "source_modules": [
+        "exact_h10_self_quartic_family_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 17,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "re::O30_B01_Hdag_Hdag_pair",
+        "im::O30_B01_Hdag_Hdag_pair"
+      ]
+    },
+    {
+      "direction_id": "O32_B01_Hdag_H_norm",
+      "orbit_index_in_64_direction_superset": 31,
+      "representative": "10_H 10_H^dag Phi17^dag^2",
+      "self_conjugate": false,
+      "base_family": "Hdag_H_norm",
+      "base_key": [
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "basis_index": 0,
+      "basis_label": "Hdag_i H_i",
+      "normalization": "unit delta_ij contraction",
+      "source_modules": [
+        "exact_h10_self_quartic_family_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": -34,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "re::O32_B01_Hdag_H_norm",
+        "im::O32_B01_Hdag_H_norm"
+      ]
+    },
+    {
+      "direction_id": "O37_B01_Phi_Sigma_Sigmadag_cubic",
+      "orbit_index_in_64_direction_superset": 36,
+      "representative": "210_H 126bar_H 126bar_H^dag Phi17^dag",
+      "self_conjugate": false,
+      "base_family": "Phi_Sigma_Sigmadag_cubic",
+      "base_key": [
+        1,
+        0,
+        0,
+        1,
+        1
+      ],
+      "basis_index": 0,
+      "basis_label": "Phi_{abcd} Sigmadag_{abefg} Sigma_{cdefg}",
+      "normalization": "recorded full-index contraction; coupling absorbs no hidden factor",
+      "source_modules": [
+        "exact_p_delta_second_stage_hessian_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": -17,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "re::O37_B01_Phi_Sigma_Sigmadag_cubic",
+        "im::O37_B01_Phi_Sigma_Sigmadag_cubic"
+      ]
+    },
+    {
+      "direction_id": "O39_B01_Phi_Hdag_Sigma",
+      "orbit_index_in_64_direction_superset": 38,
+      "representative": "210_H 10_H^dag 126bar_H Phi17^dag",
+      "self_conjugate": false,
+      "base_family": "Phi_Hdag_Sigma",
+      "base_key": [
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "basis_index": 0,
+      "basis_label": "Hdag_e Phi_{abcd} Sigma_{abcde}",
+      "normalization": "factorial-reduced direct contraction in canonical kinetic bases",
+      "source_modules": [
+        "exact_phi_hdag_sigmabar_cubic_audit_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": -17,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "re::O39_B01_Phi_Hdag_Sigma",
+        "im::O39_B01_Phi_Hdag_Sigma"
+      ]
+    },
+    {
+      "direction_id": "O40_B01_Phi_Hdag_Sigma",
+      "orbit_index_in_64_direction_superset": 39,
+      "representative": "210_H 10_H^dag 126bar_H Phi17",
+      "self_conjugate": false,
+      "base_family": "Phi_Hdag_Sigma",
+      "base_key": [
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "basis_index": 0,
+      "basis_label": "Hdag_e Phi_{abcd} Sigma_{abcde}",
+      "normalization": "factorial-reduced direct contraction in canonical kinetic bases",
+      "source_modules": [
+        "exact_phi_hdag_sigmabar_cubic_audit_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": 17,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "re::O40_B01_Phi_Hdag_Sigma",
+        "im::O40_B01_Phi_Hdag_Sigma"
+      ]
+    },
+    {
+      "direction_id": "O41_B01_Phi_norm",
+      "orbit_index_in_64_direction_superset": 40,
+      "representative": "210_H^2 Phi17^dag^2",
+      "self_conjugate": false,
+      "base_family": "Phi_norm",
+      "base_key": [
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      "basis_index": 0,
+      "basis_label": "(1/4!) Phi_{abcd} Phi_{abcd}",
+      "normalization": "K_210=(1/4!) Phi Phi",
+      "source_modules": [
+        "exact_210_self_invariant_basis_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": -34,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "re::O41_B01_Phi_norm",
+        "im::O41_B01_Phi_norm"
+      ]
+    },
+    {
+      "direction_id": "O47_B01_Phi_cubic",
+      "orbit_index_in_64_direction_superset": 46,
+      "representative": "210_H^3 Phi17^dag",
+      "self_conjugate": false,
+      "base_family": "Phi_cubic",
+      "base_key": [
+        3,
+        0,
+        0,
+        0,
+        0
+      ],
+      "basis_index": 0,
+      "basis_label": "Tr(A_Phi^3)",
+      "normalization": "the exact arbitrary-component evaluator convention",
+      "source_modules": [
+        "exact_210_self_invariant_basis_v20.py"
+      ],
+      "charge": {
+        "PQ": 0,
+        "X": -17,
+        "Z17": 0
+      },
+      "parameter_ids": [
+        "re::O47_B01_Phi_cubic",
+        "im::O47_B01_Phi_cubic"
+      ]
+    }
+  ],
+  "excluded_option_c_parameter_ids": [
+    "re::O01_B01_singlet_polynomial",
+    "im::O01_B01_singlet_polynomial",
+    "re::O02_B01_singlet_polynomial",
+    "im::O02_B01_singlet_polynomial",
+    "re::O08_B01_singlet_polynomial",
+    "im::O08_B01_singlet_polynomial",
+    "re::O09_B01_singlet_polynomial",
+    "im::O09_B01_singlet_polynomial",
+    "re::O10_B01_singlet_polynomial",
+    "im::O10_B01_singlet_polynomial",
+    "re::O11_B01_126bar_norm",
+    "im::O11_B01_126bar_norm",
+    "re::O13_B01_Hdag_H_norm",
+    "im::O13_B01_Hdag_H_norm",
+    "re::O16_B01_Phi_norm",
+    "im::O16_B01_Phi_norm",
+    "re::O18_B01_singlet_polynomial",
+    "im::O18_B01_singlet_polynomial",
+    "re::O19_B01_singlet_polynomial",
+    "im::O19_B01_singlet_polynomial",
+    "re::O21_B01_singlet_polynomial",
+    "im::O21_B01_singlet_polynomial",
+    "re::O24_B01_126bar_norm",
+    "im::O24_B01_126bar_norm",
+    "re::O29_B01_Hdag_Hdag_pair",
+    "im::O29_B01_Hdag_Hdag_pair",
+    "re::O30_B01_Hdag_Hdag_pair",
+    "im::O30_B01_Hdag_Hdag_pair",
+    "re::O32_B01_Hdag_H_norm",
+    "im::O32_B01_Hdag_H_norm",
+    "re::O37_B01_Phi_Sigma_Sigmadag_cubic",
+    "im::O37_B01_Phi_Sigma_Sigmadag_cubic",
+    "re::O39_B01_Phi_Hdag_Sigma",
+    "im::O39_B01_Phi_Hdag_Sigma",
+    "re::O40_B01_Phi_Hdag_Sigma",
+    "im::O40_B01_Phi_Hdag_Sigma",
+    "re::O41_B01_Phi_norm",
+    "im::O41_B01_Phi_norm",
+    "re::O47_B01_Phi_cubic",
+    "im::O47_B01_Phi_cubic"
+  ],
+  "missing_source_modules": [],
+  "flags": {
+    "current_model_is_legacy_pseudo_sarah": false,
+    "current_model_is_tool_native_sarah": true,
+    "option_c_no_continuous_x_rejected": true,
+    "G1_gauged_u1x_subcensus_closed": true,
+    "G2_gauged_u1x_derivative_subset_identified": true,
+    "G2_gauged_u1x_derivatives_certified": false,
+    "G2_dense_subset_reaudit_required_in_G3": true,
+    "joint_so10_u1x_rank_37_certified": false,
+    "massive_quotient_dimension_448_certified": false,
+    "legacy_64_91_compiler_is_authoritative_theory": false,
+    "current_fixed_vacuum_validated": false,
+    "whole_model_validated": false,
+    "whole_model_excluded": false
+  },
+  "verdict": "The manuscript's scalar theory is the exact-X-neutral 44-direction, 51-real-parameter subset of the existing tensor compiler. The 20 additional no-X directions are gauge forbidden and cannot be used to establish stationarity or stability. G3 must include the eaten U(1)_X phase and a separate physical PQ axion."
+}

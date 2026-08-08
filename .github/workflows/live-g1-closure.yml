@@ -1,4 +1,4 @@
-name: live-g1-g2-potential-values
+name: historical-option-c-no-x-g1-g2-values
 
 on:
   pull_request:
@@ -33,11 +33,11 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: live-g1-g2-values-${{ github.event.pull_request.number || github.ref }}
+  group: historical-option-c-g1-g2-values-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:
-  verify-live-g1-g2-values:
+  verify-historical-option-c-g1-g2-values:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -84,6 +84,8 @@ jobs:
 
           r = g1.build_report()
           assert r['n_failed'] == 0, r
+          assert r['model_contract_id']=='historical_option_c_no_x_v20'
+          assert r['authoritative_for_manuscript'] is False
           assert len(r['operator_orbits']) == 48
           assert sum(row['multiplicity'] for row in r['operator_orbits']) == 64
           assert not r['missing_base_keys']
@@ -91,13 +93,24 @@ jobs:
 
           q = gates.build_report()
           assert q['n_failed'] == 0, q
+          assert q['model_contract_id']=='historical_option_c_no_x_v20'
+          assert q['authoritative_for_manuscript'] is False
+          assert q['overall_state']=='HISTORICAL'
+          assert q['supersedes_for_current_status'] is False
           assert q['summary']['closed'] == ['G1']
           assert q['gates']['G1']['status'] == 'CLOSED'
           assert q['gates']['G2']['status'] == 'PARTIAL'
+          assert q['flags']['historical_option_c_g1_closed']
+          assert not q['flags']['authoritative_manuscript_g1_closed']
+          assert not q['flags']['g1_closed']
           assert not q['flags']['whole_model_validated']
 
           d = json.load(open('LIVE_G2_ARBITRARY_COMPONENT_POTENTIAL_VALUES_V20.json'))
           assert d['n_failed'] == 0, d['failures']
+          assert d['model_contract_id']=='historical_option_c_no_x_v20'
+          assert d['authoritative_for_manuscript'] is False
+          assert d['overall_state']=='HISTORICAL'
+          assert d['supersedes_for_current_status'] is False
           assert d['counts']['Hermitian_orbits'] == 48
           assert d['counts']['invariant_directions'] == 64
           assert d['counts']['real_parameters'] == 91
@@ -105,6 +118,13 @@ jobs:
           assert d['counts']['real_field_dimension'] == 486
           assert d['counts']['symmetric_Hessian_entries'] == 118341
           assert d['flags']['real_210_field_enforced']
+          assert d['flags']['historical_option_c_g1_closed']
+          assert d['flags']['historical_option_c_g2_value_layer_complete']
+          assert not d['flags']['authoritative_manuscript_g1_closed']
+          assert not d['flags']['authoritative_manuscript_g2_value_layer_complete']
+          assert not d['flags']['authoritative_manuscript_g2_closed']
+          assert not d['flags']['g1_closed']
+          assert not d['flags']['g2_value_layer_complete']
           assert d['Phi2_Hdag_Sigma_orientation_audit']['maximum_conjugation_residual'] < 1e-11
           assert not d['Phi2_Sigma_basis_audit']['direct_graph_to_projector_relabeling_valid']
           assert d['scaling_audit']['maximum_relative_residual'] < 1e-8

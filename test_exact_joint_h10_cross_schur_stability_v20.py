@@ -11,8 +11,14 @@ def test_joint_report_passes_fail_closed():
     report = mod.build_report()
     assert report["n_failed"] == 0, report["failures"]
     assert all(report["checks"].values())
-    assert report["flags"]["canonical_H_coordinate_normalization_enforced"]
-    assert report["flags"]["joint_necessary_and_sufficient_local_bound"]
+    assert report["model_contract_id"] == "historical_option_c_no_x_v20"
+    assert report["authoritative_for_manuscript"] is False
+    assert report["model_wide_no_go_certified"] is False
+    assert "NONAUTHORITATIVE" in report["status"]
+    assert report["flags"][
+        "historical_canonical_H_coordinate_normalization_reproduced"
+    ]
+    assert report["flags"]["historical_option_c_joint_local_bound_reproduced"]
     assert report["flags"]["complete_G2_component_potential"] is False
     assert report["flags"]["whole_model_validated"] is False
 
@@ -25,7 +31,7 @@ def test_canonical_coordinate_maps_reconstruct_complex_bilinears():
 def test_legacy_raw_h_block_is_rescaled_to_canonical_h():
     audit = mod.cubic_unit_reconstruction_audit()
     assert audit["maximum_abs_residual"] < 1.0e-12
-    assert audit["reconstructed_rank"] == audit["authoritative_rank"]
+    assert audit["reconstructed_rank"] == audit["legacy_raw_rank"]
     assert abs(
         audit["legacy_raw_H_to_canonical_H_factor"] - 1.0 / np.sqrt(2.0)
     ) < 1.0e-15

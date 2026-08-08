@@ -1,28 +1,220 @@
 {
-  "status": "ULTIMATE_GATE_PASS__INTERNAL_CANDIDATE_AND_CONDITIONAL_BENCHMARK_APPROVED__FULL_PHENOMENOLOGY_BLOCKED",
-  "decision": "APPROVE_CONDITIONAL_CANDIDATE_ONLY",
-  "current_tree_unit_tests": 286,
-  "integrity_pass": true,
-  "internal_candidate_approved": true,
-  "conditional_benchmark_approved": true,
-  "full_phenomenology_approved": false,
-  "empirical_realization_approved": false,
-  "core_checks": {
-    "engine_42_of_42": true,
-    "falsification_zero_hard_failures": true,
-    "extensive_53_of_53": true,
-    "fixed_scale_failure_is_reported": true,
-    "photon_window_not_currently_excluded": true
+  "approval": {
+    "conditional_benchmark": false,
+    "empirical_realization": false,
+    "full_approval_blockers": [
+      "AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED",
+      "G1_NOT_CLOSED",
+      "G2_NOT_CLOSED",
+      "G3_ARBITRARY_NON_PURE_DELTA_SIGMA_UNIFORM_COERCIVITY_OPEN",
+      "G3_NOT_CLOSED",
+      "G4_NOT_CLOSED",
+      "G5_NOT_CLOSED",
+      "G6_NOT_CLOSED",
+      "G7_NOT_CLOSED",
+      "G8_NOT_CLOSED",
+      "GAUGED_U1X_G3_G8_CLOSURE_REQUIRED",
+      "PROTON_READINESS_complete_mass_basis_gauge_flavour_wilson_coefficients",
+      "PROTON_READINESS_complete_scalar_triplet_masses_mixings_and_yukawas",
+      "PROTON_READINESS_full_component_vacuum_and_competing_extrema",
+      "PROTON_READINESS_physical_phases_and_interference",
+      "PROTON_READINESS_uncertainties_propagated",
+      "PROTON_READINESS_unique_physical_XY_masses",
+      "PROTON_READINESS_unique_vev_ratios_from_full_potential",
+      "PROTON_READINESS_validated_two_loop_component_threshold_matching"
+    ],
+    "full_phenomenology": false,
+    "internal_candidate": false,
+    "whole_model_excluded": false
   },
-  "natural_scale_flavour_viable": true,
-  "best_global_flavour_chi2": 4.954642447825638,
+  "authoritative_gate_classification": {
+    "all_g1_g8_closed": false,
+    "authoritative_model_contract_consistent": false,
+    "empirical_discovery": false,
+    "exact_unique_proton_lifetime": false,
+    "proton_decay_observed": false,
+    "tool_native_bound_model_evidence_complete": false,
+    "whole_model_excluded": false,
+    "whole_model_validated": false
+  },
+  "classification": "MODEL_CONTRACT_INCONSISTENT__AUTHORITATIVE_GATES_REOPENED",
+  "conditional_benchmark_approved": false,
+  "current_tree_unit_tests": 886,
+  "decision": "WITHHOLD_APPROVAL",
+  "empirical_realization_approved": false,
   "errors": [],
-  "warnings": [],
+  "failures": [],
   "full_approval_blockers": [
-    "UV-fixed unique full-v20 C_e,C_p,C_n",
-    "finite-model tree-level FCNC closure",
-    "explicit matrix-valued Yukawa RG system",
-    "two-loop SO(10)/threshold closure"
+    "AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED",
+    "G1_NOT_CLOSED",
+    "G2_NOT_CLOSED",
+    "G3_ARBITRARY_NON_PURE_DELTA_SIGMA_UNIFORM_COERCIVITY_OPEN",
+    "G3_NOT_CLOSED",
+    "G4_NOT_CLOSED",
+    "G5_NOT_CLOSED",
+    "G6_NOT_CLOSED",
+    "G7_NOT_CLOSED",
+    "G8_NOT_CLOSED",
+    "GAUGED_U1X_G3_G8_CLOSURE_REQUIRED",
+    "PROTON_READINESS_complete_mass_basis_gauge_flavour_wilson_coefficients",
+    "PROTON_READINESS_complete_scalar_triplet_masses_mixings_and_yukawas",
+    "PROTON_READINESS_full_component_vacuum_and_competing_extrema",
+    "PROTON_READINESS_physical_phases_and_interference",
+    "PROTON_READINESS_uncertainties_propagated",
+    "PROTON_READINESS_unique_physical_XY_masses",
+    "PROTON_READINESS_unique_vev_ratios_from_full_potential",
+    "PROTON_READINESS_validated_two_loop_component_threshold_matching"
   ],
-  "verdict": "Approve only the internally consistent candidate and its explicitly conditional aligned benchmark. Reject full phenomenological approval and any discovery claim until every blocker is closed."
+  "full_phenomenology_approved": false,
+  "full_theory_validated": false,
+  "historical_option_c_subtheorems": {
+    "G1": {
+      "base_tensor_families": 18,
+      "invariant_directions": 64,
+      "real_potential_parameters": 91,
+      "scoped_status": "CLOSED_UNDER_HISTORICAL_OPTION_C"
+    },
+    "G2": {
+      "dense_Hessian_shape": [
+        486,
+        486
+      ],
+      "gradient_entries": 486,
+      "real_field_dimension": 486,
+      "scoped_status": "CLOSED_UNDER_HISTORICAL_OPTION_C",
+      "symmetric_Hessian_entries": 118341
+    },
+    "G3": {
+      "anchored_witness_negative_modes": 46,
+      "anchored_witness_positive_modes": 403,
+      "anchored_witness_zero_modes": 0,
+      "best_minimum_equilibrated_eigenvalue": -0.025502339625368114,
+      "massive_physical_quotient_dimension": 449,
+      "scoped_status": "PHYSICAL_SADDLE_UNDER_HISTORICAL_OPTION_C",
+      "stability_search_iterations": 80,
+      "stationary_affine_dimension": 77,
+      "stationary_tadpoles": 486,
+      "strict_local_minimum_found": false,
+      "whole_gauged_model_excluded": false
+    },
+    "authoritative_for_gauged_model": false,
+    "model_contract_id": "historical_option_c_no_x_v20",
+    "scope_warning": "These results are conditional theorems of the historical no-X potential and cannot close the manuscript's gauged-U(1)_X gates.",
+    "source_contract_ids": {
+      "G1": "historical_option_c_no_x_v20",
+      "G2": "historical_option_c_no_x_v20",
+      "G3_hessian": "historical_option_c_no_x_v20",
+      "G3_search": "historical_option_c_no_x_v20"
+    }
+  },
+  "integrity_pass": true,
+  "internal_candidate_approved": false,
+  "model_contract_id": "gauged_u1x_phi17_v20",
+  "model_contract_ready": false,
+  "n_failed": 0,
+  "overall_state": "BLOCKED",
+  "scientific_blockers": [
+    "AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED",
+    "G1_NOT_CLOSED",
+    "G2_NOT_CLOSED",
+    "G3_ARBITRARY_NON_PURE_DELTA_SIGMA_UNIFORM_COERCIVITY_OPEN",
+    "G3_NOT_CLOSED",
+    "G4_NOT_CLOSED",
+    "G5_NOT_CLOSED",
+    "G6_NOT_CLOSED",
+    "G7_NOT_CLOSED",
+    "G8_NOT_CLOSED",
+    "GAUGED_U1X_G3_G8_CLOSURE_REQUIRED",
+    "PROTON_READINESS_complete_mass_basis_gauge_flavour_wilson_coefficients",
+    "PROTON_READINESS_complete_scalar_triplet_masses_mixings_and_yukawas",
+    "PROTON_READINESS_full_component_vacuum_and_competing_extrema",
+    "PROTON_READINESS_physical_phases_and_interference",
+    "PROTON_READINESS_uncertainties_propagated",
+    "PROTON_READINESS_unique_physical_XY_masses",
+    "PROTON_READINESS_unique_vev_ratios_from_full_potential",
+    "PROTON_READINESS_validated_two_loop_component_threshold_matching"
+  ],
+  "scope": {
+    "authoritative_current_model": "gauged_u1x_phi17_v20",
+    "historical_option_c_is_authoritative": false,
+    "historical_results_may_close_current_gates": false,
+    "software_pass_implies_scientific_approval": false
+  },
+  "source_reports": {
+    "authoritative": {
+      "classification": {
+        "all_g1_g8_closed": false,
+        "authoritative_model_contract_consistent": false,
+        "empirical_discovery": false,
+        "exact_unique_proton_lifetime": false,
+        "proton_decay_observed": false,
+        "tool_native_bound_model_evidence_complete": false,
+        "whole_model_excluded": false,
+        "whole_model_validated": false
+      },
+      "model_contract_id": "gauged_u1x_phi17_v20",
+      "n_checks": 10,
+      "n_failed": 0,
+      "overall_state": "BLOCKED",
+      "status": "AUTHORITATIVE_FULL_MODEL_GATE_EXECUTED"
+    },
+    "g1_g8": {
+      "contract_consistent": false,
+      "model_contract_id": "gauged_u1x_phi17_v20",
+      "n_checks": 37,
+      "n_failed": 0,
+      "overall_state": "BLOCKED",
+      "status": "G1_G8_LEDGER_AUDIT_COMPLETE__MODEL_CONTRACT_BLOCKED__GAUGED_G1_G2_SCOPED_RECERTIFIED"
+    },
+    "gauged_contract": {
+      "implementation_matches_manuscript": true,
+      "model_contract_id": "gauged_u1x_phi17_v20",
+      "n_checks": 22,
+      "n_failed": 0,
+      "overall_state": "PARTIAL",
+      "status": "GAUGED_U1X_SCALAR_CONTRACT_IDENTIFIED__G2_G3_REAUDIT_OPEN"
+    },
+    "x_contract": {
+      "contract_consistent": false,
+      "external_validation_schema": null,
+      "external_validation_valid": false,
+      "model_syntax_class": "sarah_native",
+      "n_checks": 25,
+      "n_failed": 0,
+      "overall_state": "BLOCKED",
+      "status": "AUTHORITATIVE_GAUGED_U1X_CONTRACT_AUDIT_COMPLETE__BLOCKED",
+      "tool_native_sarah_syntax": true
+    }
+  },
+  "status": "ULTIMATE_GATE_AUDIT_COMPLETE__MODEL_CONTRACT_BLOCKED",
+  "validation_matrix_contract_gate": {
+    "evidence": {
+      "audit_executes": true,
+      "audit_present": true,
+      "blockers": [
+        "AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED"
+      ],
+      "conflicts": [
+        "executable_scaffold_lacks_current_sha256_bound_external_tool_validation",
+        "external_attestation_lacks_hash_bound_manifest_or_process_log"
+      ],
+      "contract_consistent": false,
+      "desired_contract_executes": true,
+      "desired_contract_present": true,
+      "implementation_matches_manuscript": true,
+      "model_syntax_class": "sarah_native",
+      "tool_native_bound_external_evidence": false
+    },
+    "green_condition": "The TeX definition, tool-native gauge sector, exact-X scalar census, and derivative/quotient calculations carry one matching contract ID, and v2 evidence binds the model, manifest, driver, and process log.",
+    "kill_condition": "The implemented symmetry contract differs from the theory being claimed.",
+    "mandatory_for_full_validation": true,
+    "name": "authoritative_model_contract",
+    "state": "BLOCKED",
+    "summary": "The manuscript gauges U(1)_X. The scalar census and every tool-native executable model must implement that same contract, with manifest/log-bound external evidence, before any G1-G8 result can validate the manuscript."
+  },
+  "verdict": "WITHHOLD APPROVAL. The audit has no execution failure, but the statically consistent, tool-native gauged-U(1)_X model has no v2 manifest/log-bound external SARAH execution evidence. No internal-candidate, conditional-benchmark, full-phenomenology, empirical-realization, or whole-model-exclusion claim is approved.",
+  "warnings": [
+    "Historical Option-C results are preserved as non-authoritative subtheorems only."
+  ],
+  "whole_model_excluded": false
 }

@@ -1,0 +1,196 @@
+{
+  "SU4_invariant_slice": {
+    "I4125_Gram_denominator": 3096576,
+    "I4125_Gram_numerator": [
+      [
+        11796480,
+        0,
+        0,
+        -11796480,
+        0,
+        -11796480
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        -11796480,
+        0,
+        0,
+        11796480,
+        0,
+        11796480
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        -11796480,
+        0,
+        0,
+        11796480,
+        0,
+        11796480
+      ]
+    ],
+    "I4125_identity": "80*(a^2-b^2-c^2)^2/21",
+    "I4125_matrix_identity_max_abs_residual": 0,
+    "I54_Gram_denominator": 967680,
+    "I54_Gram_numerator": [
+      [
+        248832,
+        0,
+        0,
+        -248832,
+        0,
+        331776
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        -248832,
+        0,
+        0,
+        248832,
+        0,
+        -331776
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        331776,
+        0,
+        0,
+        -331776,
+        0,
+        442368
+      ]
+    ],
+    "I54_identity": "(3*a^2-3*b^2+4*c^2)^2/35",
+    "I54_matrix_identity_max_abs_residual": 0,
+    "basis": {
+      "A": "sum_(1<=i<j<=4) omega_i wedge omega_j",
+      "B": "sum_(1<=i<=4) omega_i wedge omega_5",
+      "C": "Re(dz_1 wedge dz_2 wedge dz_3 wedge dz_4)"
+    },
+    "basis_support_sizes": [
+      6,
+      4,
+      8
+    ],
+    "common_real_zero_locus": "c=0 and a^2=b^2",
+    "complete_SU4_invariant_slice_classified": true,
+    "complex_five_direction_obstructed": true,
+    "pair_monomials": [
+      "a2",
+      "a_b",
+      "a_c",
+      "b2",
+      "b_c",
+      "c2"
+    ],
+    "real_zero_derivation": "r54-3*r4125=7*c^2, hence c=0; then r4125=0 gives a^2=b^2",
+    "slice": "Phi=a*A+b*B+c*C",
+    "source_binding_exact": true
+  },
+  "checks": {
+    "F_and_minus_F_are_unit_after_normalization": true,
+    "F_and_minus_F_obey_both_projector_equations": true,
+    "G3_not_overclaimed": true,
+    "SU4_slice_I4125_identity_is_exact": true,
+    "SU4_slice_I54_identity_is_exact": true,
+    "SU4_slice_common_real_zeros_are_signed_Kahler_squares": true,
+    "corrected_signed_global_lemma_not_overclaimed": true,
+    "linearization_has_ten_nonorbit_directions": true,
+    "literal_single_orbit_lemma_is_refuted": true,
+    "opposite_cubic_invariants_are_exact": true
+  },
+  "corrected_global_lemma": {
+    "counterexample_found": false,
+    "proved": false,
+    "remaining_scope": "arbitrary real four-forms outside the SU(4)-invariant slice",
+    "statement": "Every nonzero real Phi with Pi54(Phi tensor Phi)=0 and Pi4125(Phi tensor Phi)=0 lies in SO(10).F or SO(10).(-F)."
+  },
+  "failures": [],
+  "linearized_warning": {
+    "SO10_orbit_tangent_rank": 20,
+    "SU5_type_of_excess": "5+5bar (ten real dimensions)",
+    "excess_linearized_nullity": 10,
+    "interpretation": "The quadrics are singular along the Kahler-square orbit; a Jacobian-rank argument alone cannot prove the global lemma.",
+    "linearized_nullity": 30,
+    "source_binding_exact": true,
+    "unit_norm_plus_projector_linearized_rank": 180
+  },
+  "n_checks": 10,
+  "n_failed": 0,
+  "opposite_orbit_counterexample": {
+    "I4125_raw_both": "0",
+    "I54_raw_both": "0",
+    "cubic_invariant_definition": "I3(Phi)=Tr(A_Phi^3)",
+    "invariance_argument": "For Q in O(10), A_(Q.Phi)=(Lambda^2 Q) A_Phi (Lambda^2 Q)^T, so Tr(A_Phi^3) is invariant.",
+    "literal_single_orbit_lemma_refuted": true,
+    "normalized_cubic_minus": "-6/sqrt(10)",
+    "normalized_cubic_plus": "6/sqrt(10)",
+    "not_O10_conjugate": true,
+    "not_SO10_conjugate": true,
+    "raw_cubic_minus": -60,
+    "raw_cubic_plus": 60,
+    "raw_norm_squared_both": 10,
+    "representatives": {
+      "minus": "-F=-F0/sqrt(10)",
+      "plus": "F=F0/sqrt(10)"
+    },
+    "source_binding_exact": true
+  },
+  "overall_state": "SHARP_COUNTEREXAMPLE_AND_REDUCTION",
+  "scope": {
+    "G3_closed": false,
+    "PD_global_equality_orbit_classification_complete": false,
+    "all_arbitrary_real_four_forms_classified": false,
+    "complete_SU4_invariant_slice_classified": true,
+    "corrected_signed_two_orbit_theorem_proved": false,
+    "literal_plus_orbit_only_statement_refuted": true,
+    "ten_excess_tangent_directions_obstructed_on_natural_slice": true,
+    "whole_model_excluded": false
+  },
+  "status": "LITERAL_SINGLE_ORBIT_LEMMA_REFUTED__SIGNED_GLOBAL_LEMMA_OPEN",
+  "verdict": "The one-orbit Phi lemma is false as written: -F is an exact second SO(10) orbit, distinguished from F by the cubic invariant. After correcting the target to the signed union of two orbits, the natural SU(4)-invariant slice is completely classified and contains no further branch; its complex-five direction is exactly obstructed. The arbitrary-four-form signed theorem remains open and cannot be replaced by the rank calculation."
+}

@@ -1,7 +1,14 @@
 #!/usr/bin/env python3
-"""Full-coordinate first-order G3 stationarity feasibility on the closed G2 potential.
+"""Historical no-X first-order stationarity calculation.
 
-This module is the first exact G3 layer after the 18-family G2 closure.  It
+This module belongs to ``historical_option_c_no_x_v20`` and is not G3 evidence
+for the manuscript's gauged-U(1)_X model.  It is retained to reproduce the old
+64-direction/91-parameter calculation and must not be promoted into the
+corrected gauged 44/51/486 analysis, whose gauge quotient is 449-dimensional
+and whose massive/transverse Hessian space is 448-dimensional.
+
+Within that historical contract, this was the first exact G3 layer after the
+18-family G2 calculation.  It
 constructs the physical hierarchy candidate on the canonical 486-real chart,
 assembles the gradient of every one of the 91 real potential parameters, and
 solves
@@ -50,6 +57,9 @@ import scalar_vacuum_proton_decay_v20 as scalar_pd
 ROOT = Path(__file__).resolve().parent
 OUT_JSON = ROOT / "G3_FULL_STATIONARITY_FEASIBILITY_V20.json"
 OUT_MD = ROOT / "G3_FULL_STATIONARITY_FEASIBILITY_V20.md"
+MODEL_CONTRACT_ID = "historical_option_c_no_x_v20"
+AUTHORITATIVE_FOR_MANUSCRIPT = False
+MODEL_WIDE_NO_GO_CERTIFIED = False
 
 FAST_FAMILIES = {
     phi_self.BASE_FAMILY,
@@ -766,6 +776,9 @@ def build_report(*, full_crosscheck: bool = False) -> dict[str, Any]:
                 else "G3_FIRST_ORDER_STATIONARITY_EXECUTION_FAILED"
             ),
             "overall_state": "PARTIAL" if not failures else "EXECUTION_FAIL",
+            "model_contract_id": MODEL_CONTRACT_ID,
+            "authoritative_for_manuscript": AUTHORITATIVE_FOR_MANUSCRIPT,
+            "model_wide_no_go_certified": MODEL_WIDE_NO_GO_CERTIFIED,
             "n_checks": len(checks),
             "n_failed": len(failures),
             "failures": failures,
@@ -806,6 +819,7 @@ def build_report(*, full_crosscheck: bool = False) -> dict[str, Any]:
                 "gauge_quotiented_full_Hessian_positive": False,
                 "global_competing_extrema_exhausted": False,
                 "complete_potential_BFB": False,
+                "model_wide_no_go_certified": MODEL_WIDE_NO_GO_CERTIFIED,
                 "G3_closed": False,
                 "G4_closed": False,
                 "G5_closed": False,
@@ -838,8 +852,10 @@ def write_report(report: dict[str, Any]) -> None:
     gauge = report["gauge_orbits"]
     OUT_MD.write_text(
         "# G3 full-coordinate stationarity feasibility — v20\n\n"
-        f"**Status:** `{report['status']}`  \n"
+        f"**Status:** `{report['status']}`\n\n"
         f"**State:** `{report['overall_state']}`\n\n"
+        f"**Contract:** `{report['model_contract_id']}`\n\n"
+        "**Authoritative for the gauged-U(1)_X manuscript:** `False`\n\n"
         "## Executed result\n\n"
         f"- stationarity matrix: `{stationarity['matrix_shape'][0]} x {stationarity['matrix_shape'][1]}`;\n"
         f"- rank: `{stationarity['rank']}`; total coefficient nullity: `{stationarity['total_parameter_nullity']}`;\n"

@@ -1,23 +1,29 @@
 #!/usr/bin/env python3
-"""Authoritative coverage ledger for exact full-coordinate G2 derivatives.
+"""Historical Option-C/no-X coverage ledger for dense G2 derivatives.
 
-This module consolidates the stacked exact derivative adapters and compares
-them against the live G1 catalogue of 18 base families, 64 invariant
+Despite the legacy ``live_`` filename, this module is not authoritative for
+the manuscript, which gauges U(1)_X.  It reproduces the 64-direction/91-real-
+parameter ``historical_option_c_no_x_v20`` counterfactual.  The corrected
+44/51 gauged subset is audited by ``gauged_u1x_g2_derivative_audit_v20``.
+
+Within the historical contract, this module consolidates the stacked exact
+derivative adapters and compares
+them against the historical G1 catalogue of 18 base families, 64 invariant
 directions, and 91 real potential parameters.  It fails closed on
 
 * duplicate family ownership;
 * duplicate or missing direction IDs;
 * vacuous zero-direction adapters;
-* disagreement with authoritative G1 multiplicities;
+* disagreement with the historical G1 multiplicities;
 * parameter IDs outside the live 91-real schema;
 * inconsistent dense derivative shapes;
 * failed combined value/gradient/Hessian reconstruction.
 
-All eighteen authoritative base families now have exact full-coordinate
+All eighteen historical base families have exact full-coordinate
 486-real gradients and 486x486 Hessians.  This ledger closes the G2 derivative
 assembly only after checking the exact 18-family, 64-direction, 91-parameter
-partition and a combined directional reconstruction.  It does not close
-stationarity, the vacuum problem, or any downstream gate.
+partition and a combined directional reconstruction.  It does not close the
+manuscript's G2, stationarity, the vacuum problem, or any downstream gate.
 """
 from __future__ import annotations
 
@@ -47,6 +53,8 @@ import live_g2_exact_final_mixed_quartic_derivatives_v20 as final_mixed
 ROOT = Path(__file__).resolve().parent
 OUT_JSON = ROOT / "LIVE_G2_DERIVATIVE_COVERAGE_LEDGER_V20.json"
 OUT_MD = ROOT / "LIVE_G2_DERIVATIVE_COVERAGE_LEDGER_V20.md"
+MODEL_CONTRACT_ID = "historical_option_c_no_x_v20"
+AUTHORITATIVE_FOR_MANUSCRIPT = False
 
 Adapter = Callable[[potential.FieldState], tuple[quadratic.DirectionDerivative, ...]]
 
@@ -318,11 +326,13 @@ def build_report() -> dict[str, Any]:
     return _jsonable(
         {
             "status": (
-                "G2_DERIVATIVE_COVERAGE_18_OF_18_FAMILIES_CLOSED"
+                "HISTORICAL_OPTION_C_NO_X_G2_18_OF_18_FAMILIES_CLOSED"
                 if not failures
-                else "G2_DERIVATIVE_COVERAGE_LEDGER_FAILED"
+                else "HISTORICAL_OPTION_C_NO_X_G2_LEDGER_FAILED"
             ),
             "overall_state": "CLOSED" if not failures else "EXECUTION_FAIL",
+            "model_contract_id": MODEL_CONTRACT_ID,
+            "authoritative_for_manuscript": AUTHORITATIVE_FOR_MANUSCRIPT,
             "n_checks": len(checks),
             "n_failed": len(failures),
             "failures": failures,
@@ -372,6 +382,8 @@ def build_report() -> dict[str, Any]:
                 "all_64_direction_Hessians_complete": not failures,
                 "all_91_real_parameter_derivatives_complete": not failures,
                 "G2_closed": not failures,
+                "historical_option_c_G2_closed": not failures,
+                "authoritative_manuscript_G2_closed": False,
                 "G3_closed": False,
                 "G4_closed": False,
                 "G5_closed": False,
@@ -383,15 +395,18 @@ def build_report() -> dict[str, Any]:
                 "empirical_discovery": False,
             },
             "next_exact_target": (
-                "Proceed to G3: solve the full stationarity system and classify all "
-                "competing extrema using the closed 486-real G2 potential derivatives."
+                "No live-theory promotion: use gauged_u1x_g2_derivative_audit_v20 "
+                "and gauged_u1x_g3_stability_v20 for the manuscript's corrected "
+                "44/51/486 problem, with exact gauge quotient 449 (axion "
+                "included) and massive/transverse Hessian space 448."
             ),
             "verdict": (
-                "All eighteen authoritative G2 base families, all 64 invariant "
+                "Under the historical no-X contract, all eighteen G2 base families, "
+                "all 64 invariant "
                 "directions, and all 91 real parameters are assembled into one exact "
                 "486-real gradient and symmetric 486x486 Hessian with no ownership, "
-                "direction, or parameter gaps. G2 is closed; stationarity, vacuum "
-                "selection, and G3-G8 remain open."
+                "direction, or parameter gaps. That scoped G2 subtheorem is closed, "
+                "but it is not authoritative for the gauged-U(1)_X manuscript."
             ),
         }
     )
@@ -400,8 +415,10 @@ def build_report() -> dict[str, Any]:
 def write_report(report: dict[str, Any]) -> None:
     OUT_JSON.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     OUT_MD.write_text(
-        "# Live G2 derivative coverage ledger\n\n"
+        "# Historical Option-C/no-X G2 derivative coverage ledger\n\n"
         f"**Status:** `{report['status']}`\n\n"
+        f"**Contract:** `{report['model_contract_id']}`\n\n"
+        "**Authoritative for the gauged-U(1)_X manuscript:** `False`\n\n"
         + report["verdict"]
         + "\n\n"
         + "## Remaining families\n\n"

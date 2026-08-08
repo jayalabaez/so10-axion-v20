@@ -1,20 +1,20 @@
 #!/usr/bin/env python3
-"""Exact renormalizable S/Phi17 potential under the *declared* symmetries.
+"""Historical Option-C S/Phi17 potential with gauged U(1)_X omitted.
 
-The live model declares SO(10) gauge symmetry and a global Z17, but no
-continuous U(1)_X.  This module therefore enumerates the complete singlet-only
-canonical-dimension <= 4 monomial basis using only the declared PQ bookkeeping
-for S and the declared Z17 charges:
+This module reproduces the superseded ``historical_option_c_no_x_v20``
+counterfactual.  It enumerates the singlet-only canonical-dimension <= 4
+monomial basis using PQ bookkeeping and Z17 charges, but deliberately does not
+enforce the manuscript's gauged U(1)_X:
 
     S:      PQ=+4, Z17=4
     S^dag:  PQ=-4, Z17=13
     Phi17:  PQ=0,  Z17=0
 
-Phi17 is an SO(10) singlet.  Continuous X is deliberately not imposed.
-The resulting Hermitian operator basis is complete for the S/Phi17
-renormalizable subsector.  A constructive bounded benchmark demonstrates that
-Phi17's phase can be lifted while the single expected PQ angular zero remains.
-This is not the complete 210+126bar+10+S+Phi17 potential.
+Phi17 is an SO(10) singlet but has X=17 in the manuscript.  Consequently the
+phase-sensitive Phi17 terms constructed here are gauge-forbidden and cannot
+close the live model.  The numerical benchmark remains a reproducibility test
+of the historical no-X calculation only; it is neither manuscript-authoritative
+nor a complete 210+126bar+10+S+Phi17 potential.
 """
 from __future__ import annotations
 
@@ -30,6 +30,7 @@ ROOT = Path(__file__).resolve().parent
 FIELDS = ("S", "S_dag", "Phi17", "Phi17_dag")
 PQ = np.array([4, -4, 0, 0], dtype=int)
 Z17 = np.array([4, 13, 0, 0], dtype=int)
+MODEL_CONTRACT_ID = "historical_option_c_no_x_v20"
 
 
 def monomial_label(exponents: tuple[int, int, int, int]) -> str:
@@ -48,6 +49,10 @@ def conjugate(exponents: tuple[int, int, int, int]) -> tuple[int, int, int, int]
 
 
 def declared_allowed_monomials(max_dimension: int = 4) -> list[dict[str, Any]]:
+    """Return monomials allowed only in the historical no-X counterfactual.
+
+    The public name is retained for compatibility with archived calculations.
+    """
     rows: list[dict[str, Any]] = []
     for exponents in product(range(max_dimension + 1), repeat=4):
         degree = sum(exponents)
@@ -166,8 +171,9 @@ def benchmark() -> dict[str, Any]:
         "phi_phase_lifted": bool(hessian[3, 3] > 0.0),
         "interpretation": (
             "Exactly one angular zero remains, the intended PQ direction of S. "
-            "The Phi17 angular mode is lifted by a declared-symmetry-allowed "
-            "quadratic phase term."
+            "The Phi17 angular mode is lifted only in the historical no-X "
+            "counterfactual; that quadratic phase term is forbidden by the "
+            "manuscript's gauged U(1)_X."
         ),
     }
 
@@ -183,11 +189,11 @@ def build_report() -> dict[str, Any]:
         and row["phi_phase_sensitive"]
     ]
     checks = {
-        "complete_monomial_count_21": len(monomials) == 21,
-        "hermitian_real_basis_dimension_13": len(basis) == 13,
-        "phase_sensitive_operators_exist_below_dimension17": bool(low_dim_pure_phi)
+        "historical_no_x_monomial_count_21": len(monomials) == 21,
+        "historical_no_x_hermitian_real_basis_dimension_13": len(basis) == 13,
+        "historical_no_x_phase_sensitive_operators_below_dimension17": bool(low_dim_pure_phi)
         and min(row["dimension"] for row in low_dim_pure_phi) == 1,
-        "quadratic_phi_phase_lifter_present": any(
+        "historical_no_x_quadratic_phi_phase_lifter_present": any(
             row["dimension"] == 2
             and row["exponents"] in ([0, 0, 2, 0], [0, 0, 0, 2])
             for row in monomials
@@ -201,18 +207,22 @@ def build_report() -> dict[str, Any]:
     }
     failures = [name for name, ok in checks.items() if not ok]
     return {
+        "model_contract_id": MODEL_CONTRACT_ID,
+        "authoritative_for_manuscript": False,
+        "model_wide_no_go_certified": False,
         "status": (
-            "DECLARED_SO10_Z17_S_PHI17_RENORMALIZABLE_SECTOR_CLOSED"
+            "HISTORICAL_OPTION_C_NO_X_S_PHI17_REPRODUCED__NONAUTHORITATIVE"
             if not failures
-            else "DECLARED_SO10_Z17_S_PHI17_GATE_FAILED"
+            else "HISTORICAL_OPTION_C_NO_X_S_PHI17_REPRODUCTION_FAILED"
         ),
         "n_checks": len(checks),
         "n_failed": len(failures),
         "failures": failures,
-        "declared_symmetry_contract": {
+        "counterfactual_symmetry_contract": {
             "gauge": ["SO(10)"],
             "global": ["Z17", "PQ_as_scalar_selection_rule"],
             "continuous_X_imposed": False,
+            "manuscript_gauged_u1x_omitted": True,
         },
         "counts": {
             "allowed_complex_monomials_dimension_le_4": len(monomials),
@@ -224,19 +234,22 @@ def build_report() -> dict[str, Any]:
         "constructive_benchmark": point,
         "checks": checks,
         "flag": {
-            "declared_symmetry_singlet_basis_complete": not failures,
-            "phi17_phase_obstruction_removed_without_X": not failures,
-            "intended_PQ_zero_preserved": point["zero_modes"] == 1,
+            "historical_option_c_singlet_basis_reproduced": not failures,
+            "historical_no_x_phi17_phase_lifter_constructed": not failures,
+            "historical_no_x_PQ_zero_preserved": point["zero_modes"] == 1,
+            "phi17_phase_lifter_allowed_by_manuscript_u1x": False,
+            "authoritative_for_manuscript": False,
+            "model_wide_no_go_certified": False,
             "natural_phi17_hierarchy_explained": False,
             "complete_10H_S_Phi17_component_hessian": False,
             "complete_multifield_model": False,
         },
         "verdict": (
-            "Removing undeclared continuous X closes the renormalizable S/Phi17 "
-            "operator basis and permits a bounded vacuum with Phi17's phase lifted. "
-            "However, the 1e17-GeV Phi17 hierarchy is no longer symmetry-protected; "
-            "its small lower-dimensional coefficients are independent tunings until "
-            "a UV mechanism is supplied."
+            "This reproduces the historical Option-C calculation obtained by "
+            "omitting U(1)_X. Its phase-sensitive Phi17 operators, including the "
+            "quadratic phase lifter, are forbidden because Phi17 has X=17 in the "
+            "manuscript. The benchmark is therefore non-authoritative and neither "
+            "closes nor excludes the gauged theory."
         ),
     }
 

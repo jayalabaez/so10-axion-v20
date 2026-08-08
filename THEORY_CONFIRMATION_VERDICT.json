@@ -1,84 +1,221 @@
 {
-  "title": "SO(10)\u00d7Z17 axion candidate v20 \u2014 confirmation verdict",
-  "generated_utc": "2026-08-03T21:24:57.707155+00:00",
-  "question_asked": "Execute the ultimate approval/falsification analysis",
-  "short_answer": "The anomaly/operator core survives the in-repository attacks, a conditional aligned benchmark is numerically safe, natural-scale flavour proxy points exist, and the 37 GHz photon target remains experimentally open. The full phenomenological theory is not approved: unique full C_e,C_p,C_n, finite-model FCNC closure, and explicit matrix Yukawa RG/two-loop threshold evolution remain open.",
-  "ci_attestation": {
-    "commit_sha": "ba2c66364cd68d733a2dff51416f28d92100eff5",
-    "workflow": "replicate-and-falsify",
-    "run_id": 30790747879,
-    "run_url": "https://github.com/jayalabaez/so10-axion-v20/actions/runs/30790747879",
-    "conclusion": "success",
-    "unit_tests": "Ran 154 tests in 69.690s - OK",
-    "v20_engine": "VERDICT=PASS CHECKS=42/42",
-    "extensive_confirm_falsify": "PASS 53/53",
-    "scope": "HISTORICAL_ONLY",
-    "current_tree_test_count": 286,
-    "current_tree_covered": false,
-    "note": "This stored run covers only its named commit. A newer tree must be certified by its own live workflow."
-  },
   "approval": {
-    "internal_candidate": true,
-    "conditional_benchmark": true,
-    "full_phenomenology": false,
+    "conditional_benchmark": false,
     "empirical_realization": false,
     "full_approval_blockers": [
-      "UV-fixed unique full-v20 C_e,C_p,C_n",
-      "finite-model tree-level FCNC closure",
-      "matrix-valued Yukawa RGE solution",
-      "two-loop SO(10)/threshold closure"
-    ]
+      "AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED",
+      "G1_NOT_CLOSED",
+      "G2_NOT_CLOSED",
+      "G3_ARBITRARY_NON_PURE_DELTA_SIGMA_UNIFORM_COERCIVITY_OPEN",
+      "G3_NOT_CLOSED",
+      "G4_NOT_CLOSED",
+      "G5_NOT_CLOSED",
+      "G6_NOT_CLOSED",
+      "G7_NOT_CLOSED",
+      "G8_NOT_CLOSED",
+      "GAUGED_U1X_G3_G8_CLOSURE_REQUIRED",
+      "PROTON_READINESS_complete_mass_basis_gauge_flavour_wilson_coefficients",
+      "PROTON_READINESS_complete_scalar_triplet_masses_mixings_and_yukawas",
+      "PROTON_READINESS_full_component_vacuum_and_competing_extrema",
+      "PROTON_READINESS_physical_phases_and_interference",
+      "PROTON_READINESS_uncertainties_propagated",
+      "PROTON_READINESS_unique_physical_XY_masses",
+      "PROTON_READINESS_unique_vev_ratios_from_full_potential",
+      "PROTON_READINESS_validated_two_loop_component_threshold_matching"
+    ],
+    "full_phenomenology": false,
+    "internal_candidate": false,
+    "whole_model_excluded": false
   },
-  "tiers": {
-    "PROVED_mathematical_internal": {
-      "status": "YES",
-      "evidence": [
-        "v20 engine 42/42 PASS",
-        "extensive confirm/falsify 53/53 PASS",
-        "286 tests discovered in the current tree; the stored historical CI run covers 154 tests on ba2c663, not this tree",
-        "continuous anomaly cancellation",
-        "minimal three-pair completion in the stated ansatz",
-        "explicit nonzero P=8 group/Lorentz certificate"
-      ]
+  "audit_failures": [],
+  "authoritative_gate_classification": {
+    "all_g1_g8_closed": false,
+    "authoritative_model_contract_consistent": false,
+    "empirical_discovery": false,
+    "exact_unique_proton_lifetime": false,
+    "proton_decay_observed": false,
+    "tool_native_bound_model_evidence_complete": false,
+    "whole_model_excluded": false,
+    "whole_model_validated": false
+  },
+  "ci_attestation": {
+    "commit_sha": "ba2c66364cd68d733a2dff51416f28d92100eff5",
+    "conclusion": "success",
+    "current_tree_covered": false,
+    "current_tree_test_count": 886,
+    "note": "This run covers only its named historical commit and cannot approve the current gauged-U(1)_X model.",
+    "run_id": 30790747879,
+    "run_url": "https://github.com/jayalabaez/so10-axion-v20/actions/runs/30790747879",
+    "scientific_approval_implied": false,
+    "scope": "HISTORICAL_ONLY",
+    "unit_tests": "Ran 154 tests in 69.690s - OK",
+    "workflow": "replicate-and-falsify"
+  },
+  "classification": "MODEL_CONTRACT_INCONSISTENT__AUTHORITATIVE_GATES_REOPENED",
+  "conditional_benchmark_approved": false,
+  "correct_public_claim": "The repository has a statically consistent tool-native SARAH input for the authoritative gauged-U(1)_X scalar contract, but lacks a v2 manifest/log-bound external SARAH execution attestation. G1-G8 approval is withheld. Historical Option-C calculations are scoped subtheorems and neither validate nor exclude the gauged model.",
+  "current_tree_unit_tests": 886,
+  "decision": "WITHHOLD_APPROVAL",
+  "empirical_realization_approved": false,
+  "failures": [],
+  "full_phenomenology_approved": false,
+  "full_theory_validated": false,
+  "generated_utc": "2026-08-08T03:37:05.974837+00:00",
+  "historical_option_c_subtheorems": {
+    "G1": {
+      "base_tensor_families": 18,
+      "invariant_directions": 64,
+      "real_potential_parameters": 91,
+      "scoped_status": "CLOSED_UNDER_HISTORICAL_OPTION_C"
     },
-    "CONDITIONAL_PHENOMENOLOGY": {
-      "status": "APPROVED_AS_BENCHMARK_ONLY",
-      "evidence": [
-        "hierarchical universal portals suppress current distortion",
-        "multiple viable tan(beta) values define a region, not a unique prediction",
-        "aligned central stellar/SN examples pass the displayed limits",
-        "software injection recovery works but is not data"
-      ]
+    "G2": {
+      "dense_Hessian_shape": [
+        486,
+        486
+      ],
+      "gradient_entries": 486,
+      "real_field_dimension": 486,
+      "scoped_status": "CLOSED_UNDER_HISTORICAL_OPTION_C",
+      "symmetric_Hessian_entries": 118341
     },
-    "FULL_PHENOMENOLOGY": {
-      "status": "REJECTED_PENDING_CLOSURE",
-      "missing": [
-        "UV-fixed unique full-v20 C_e,C_p,C_n",
-        "finite-model tree-level FCNC closure",
-        "matrix-valued Yukawa RGE solution",
-        "two-loop SO(10)/threshold closure"
-      ]
+    "G3": {
+      "anchored_witness_negative_modes": 46,
+      "anchored_witness_positive_modes": 403,
+      "anchored_witness_zero_modes": 0,
+      "best_minimum_equilibrated_eigenvalue": -0.025502339625368114,
+      "massive_physical_quotient_dimension": 449,
+      "scoped_status": "PHYSICAL_SADDLE_UNDER_HISTORICAL_OPTION_C",
+      "stability_search_iterations": 80,
+      "stationary_affine_dimension": 77,
+      "stationary_tadpoles": 486,
+      "strict_local_minimum_found": false,
+      "whole_gauged_model_excluded": false
     },
-    "EXPERIMENTAL_REALIZATION": {
-      "status": "OPEN",
-      "missing": [
-        "real 36.6-37.6 GHz conversion data",
-        "independent human diagrammatic review",
-        "proof that local dark matter is this axion"
-      ]
+    "authoritative_for_gauged_model": false,
+    "model_contract_id": "historical_option_c_no_x_v20",
+    "scope_warning": "These results are conditional theorems of the historical no-X potential and cannot close the manuscript's gauged-U(1)_X gates.",
+    "source_contract_ids": {
+      "G1": "historical_option_c_no_x_v20",
+      "G2": "historical_option_c_no_x_v20",
+      "G3_hessian": "historical_option_c_no_x_v20",
+      "G3_search": "historical_option_c_no_x_v20"
     }
   },
-  "cascade_results": {
-    "v20_engine": "PASS 42/42",
-    "falsification": "PASS 0 hard failures",
-    "extensive_confirm_falsify": "PASS 53/53",
-    "unit_tests": "current tree not CI-attested here; historical run covers 154 tests on ba2c663",
-    "next_physics": "PASS 10/10",
-    "open_gap_audit": "OPEN_GAPS_AUDITED__NO_UNCONDITIONAL_FULL_CLOSURE",
-    "global_flavour_proxy": "natural-scale viable witnesses exist; unique tan(beta) not established",
-    "ultimate_gate": "executed after this verdict in CI"
+  "incorrect_claim_do_not_use": "G1, G2, or G3 is closed for the manuscript model; the current repository validates the full theory; or the historical saddle excludes the gauged-U(1)_X model.",
+  "integrity_pass": true,
+  "internal_candidate_approved": false,
+  "model_contract_id": "gauged_u1x_phi17_v20",
+  "model_contract_ready": false,
+  "n_failed": 0,
+  "overall_state": "BLOCKED",
+  "scientific_blockers": [
+    "AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED",
+    "G1_NOT_CLOSED",
+    "G2_NOT_CLOSED",
+    "G3_ARBITRARY_NON_PURE_DELTA_SIGMA_UNIFORM_COERCIVITY_OPEN",
+    "G3_NOT_CLOSED",
+    "G4_NOT_CLOSED",
+    "G5_NOT_CLOSED",
+    "G6_NOT_CLOSED",
+    "G7_NOT_CLOSED",
+    "G8_NOT_CLOSED",
+    "GAUGED_U1X_G3_G8_CLOSURE_REQUIRED",
+    "PROTON_READINESS_complete_mass_basis_gauge_flavour_wilson_coefficients",
+    "PROTON_READINESS_complete_scalar_triplet_masses_mixings_and_yukawas",
+    "PROTON_READINESS_full_component_vacuum_and_competing_extrema",
+    "PROTON_READINESS_physical_phases_and_interference",
+    "PROTON_READINESS_uncertainties_propagated",
+    "PROTON_READINESS_unique_physical_XY_masses",
+    "PROTON_READINESS_unique_vev_ratios_from_full_potential",
+    "PROTON_READINESS_validated_two_loop_component_threshold_matching"
+  ],
+  "scope": {
+    "authoritative_current_model": "gauged_u1x_phi17_v20",
+    "historical_option_c_is_authoritative": false,
+    "historical_results_may_close_current_gates": false,
+    "software_pass_implies_scientific_approval": false
   },
-  "correct_public_claim": "We have an internally consistent SO(10)\u00d7Z17 axion candidate and an explicitly conditional aligned benchmark that survives current in-repository tests. Full fermion matching, FCNC safety, and common-scale RG closure remain open; this is not a discovery.",
-  "incorrect_claim_do_not_use": "We derived unique full-v20 C_e,C_p,C_n, completed the SO(10) Yukawa RGE fit, proved all FCNCs vanish, or detected dark matter.",
-  "verdict_code": "CORE_INTERNAL_CHECKS_PASS__PHENOMENOLOGY_OPEN"
+  "source_reports": {
+    "authoritative": {
+      "classification": {
+        "all_g1_g8_closed": false,
+        "authoritative_model_contract_consistent": false,
+        "empirical_discovery": false,
+        "exact_unique_proton_lifetime": false,
+        "proton_decay_observed": false,
+        "tool_native_bound_model_evidence_complete": false,
+        "whole_model_excluded": false,
+        "whole_model_validated": false
+      },
+      "model_contract_id": "gauged_u1x_phi17_v20",
+      "n_checks": 10,
+      "n_failed": 0,
+      "overall_state": "BLOCKED",
+      "status": "AUTHORITATIVE_FULL_MODEL_GATE_EXECUTED"
+    },
+    "g1_g8": {
+      "contract_consistent": false,
+      "model_contract_id": "gauged_u1x_phi17_v20",
+      "n_checks": 37,
+      "n_failed": 0,
+      "overall_state": "BLOCKED",
+      "status": "G1_G8_LEDGER_AUDIT_COMPLETE__MODEL_CONTRACT_BLOCKED__GAUGED_G1_G2_SCOPED_RECERTIFIED"
+    },
+    "gauged_contract": {
+      "implementation_matches_manuscript": true,
+      "model_contract_id": "gauged_u1x_phi17_v20",
+      "n_checks": 22,
+      "n_failed": 0,
+      "overall_state": "PARTIAL",
+      "status": "GAUGED_U1X_SCALAR_CONTRACT_IDENTIFIED__G2_G3_REAUDIT_OPEN"
+    },
+    "x_contract": {
+      "contract_consistent": false,
+      "external_validation_schema": null,
+      "external_validation_valid": false,
+      "model_syntax_class": "sarah_native",
+      "n_checks": 25,
+      "n_failed": 0,
+      "overall_state": "BLOCKED",
+      "status": "AUTHORITATIVE_GAUGED_U1X_CONTRACT_AUDIT_COMPLETE__BLOCKED",
+      "tool_native_sarah_syntax": true
+    }
+  },
+  "status": "THEORY_CONFIRMATION_AUDIT_COMPLETE__MODEL_CONTRACT_BLOCKED",
+  "tiers": {
+    "CONDITIONAL_BENCHMARK": "WITHHELD",
+    "EMPIRICAL_REALIZATION": "NOT_ESTABLISHED",
+    "FULL_PHENOMENOLOGY": "WITHHELD",
+    "INTERNAL_CANDIDATE": "WITHHELD",
+    "WHOLE_MODEL_EXCLUSION": "NOT_ESTABLISHED"
+  },
+  "title": "SO(10) x Z17 axion candidate v20 - confirmation verdict",
+  "validation_matrix_contract_gate": {
+    "evidence": {
+      "audit_executes": true,
+      "audit_present": true,
+      "blockers": [
+        "AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED"
+      ],
+      "conflicts": [
+        "executable_scaffold_lacks_current_sha256_bound_external_tool_validation",
+        "external_attestation_lacks_hash_bound_manifest_or_process_log"
+      ],
+      "contract_consistent": false,
+      "desired_contract_executes": true,
+      "desired_contract_present": true,
+      "implementation_matches_manuscript": true,
+      "model_syntax_class": "sarah_native",
+      "tool_native_bound_external_evidence": false
+    },
+    "green_condition": "The TeX definition, tool-native gauge sector, exact-X scalar census, and derivative/quotient calculations carry one matching contract ID, and v2 evidence binds the model, manifest, driver, and process log.",
+    "kill_condition": "The implemented symmetry contract differs from the theory being claimed.",
+    "mandatory_for_full_validation": true,
+    "name": "authoritative_model_contract",
+    "state": "BLOCKED",
+    "summary": "The manuscript gauges U(1)_X. The scalar census and every tool-native executable model must implement that same contract, with manifest/log-bound external evidence, before any G1-G8 result can validate the manuscript."
+  },
+  "verdict": "WITHHOLD APPROVAL. The audit itself succeeds, but the manuscript's gauged U(1)_X model still lacks a real external SARAH execution. Bind an actual v2 external run and recertify G1-G3 on the 44-direction, 51-real-parameter potential before any internal, full, empirical, or exclusion claim.",
+  "verdict_code": "MODEL_CONTRACT_INCONSISTENT__AUTHORITATIVE_GATES_REOPENED",
+  "whole_model_excluded": false
 }

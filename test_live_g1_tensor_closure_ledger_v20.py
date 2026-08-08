@@ -2,6 +2,11 @@
 import live_g1_tensor_closure_ledger_v20 as ledger
 
 
+def test_historical_option_c_scope_is_explicit():
+    assert ledger.MODEL_CONTRACT_ID == "historical_option_c_no_x_v20"
+    assert ledger.AUTHORITATIVE_FOR_MANUSCRIPT is False
+
+
 def test_all_eighteen_base_families_are_present():
     assert len(ledger.BASE_FAMILIES) == 18
     # Base families are reused by singlet dressings; their undressed
@@ -14,6 +19,8 @@ def test_all_eighteen_base_families_are_present():
 def test_live_census_is_fully_covered():
     report = ledger.build_report()
     assert report['n_failed'] == 0, report
+    assert report['model_contract_id'] == ledger.MODEL_CONTRACT_ID
+    assert report['authoritative_for_manuscript'] is False
     assert report['counts']['charge_and_so10_allowed_multidegrees'] == 74
     assert report['counts']['hermitian_conjugacy_orbits'] == 48
     assert report['counts']['independent_invariant_coefficients'] == 64
@@ -37,7 +44,9 @@ def test_sources_and_normalizations_are_complete():
 
 def test_g1_closes_without_overclaiming_downstream_gates():
     report = ledger.build_report()
-    assert report['status'] == 'LIVE_G1_RENORMALIZABLE_TENSOR_RING_CLOSED'
+    assert report['status'] == 'HISTORICAL_OPTION_C_NO_X_G1_TENSOR_RING_CLOSED'
+    assert report['flags']['historical_option_c_G1_closed']
+    assert not report['flags']['authoritative_manuscript_G1_closed']
     assert report['closure']['G1_invariant_ring_and_component_tensors_closed']
     assert report['closure']['explicit_tensor_basis_all_64_directions_closed']
     assert report['closure']['normalization_all_64_directions_specified']

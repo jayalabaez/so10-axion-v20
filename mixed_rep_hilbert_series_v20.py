@@ -55,7 +55,9 @@ FORBIDDEN_EXPLICIT = [
 
 
 def build_filtered_basis() -> dict[str, Any]:
-    canonical_ops = {row["name"]: row for row in z17.operator_catalogue()}
+    canonical_ops = {
+        row["name"]: row for row in z17.operator_catalogue(require_x=True)
+    }
     included: list[dict[str, Any]] = []
     for name, meta in MULTIPLICITY.items():
         canonical = canonical_ops.get(name)

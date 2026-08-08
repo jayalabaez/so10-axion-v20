@@ -31,6 +31,7 @@ from pathlib import Path
 from typing import Any
 
 from audit_v20_errors import build_audit
+import exact_x_symmetry_consistency_gate_v20 as exact_x_gate
 
 ROOT = Path(__file__).resolve().parent
 
@@ -53,10 +54,49 @@ ARTIFACTS = {
     "cert_math": "THEORY_CERTIFICATION_MATH_V20_VERDICT.json",
     "pati_salam": "PATI_SALAM_YUKAWA_MATCHING_V20_VERDICT.json",
     "unit_attestation": "CURRENT_UNIT_TEST_ATTESTATION.json",
-    "ultimate": "ULTIMATE_THEORY_GATE_V20_VERDICT.json",
+    "x_contract": "EXACT_X_SYMMETRY_CONSISTENCY_GATE_V20.json",
+    "gauged_contract": "GAUGED_U1X_SCALAR_CONTRACT_V20.json",
+    "gauged_g2": "GAUGED_U1X_G2_DERIVATIVE_AUDIT_V20.json",
+    "g1_g8": "G1_G8_GATE_LEDGER_V20.json",
+    "g3_stationarity": "G3_FULL_STATIONARITY_FEASIBILITY_V20.json",
+    "g3_hessian": "G3_FULL_HESSIAN_CLASSIFICATION_V20.json",
+    "g3_search": "G3_STATIONARY_STABILITY_SEARCH_V20.json",
+    "gauged_g3": "GAUGED_U1X_G3_STABILITY_V20.json",
+    "gauged_g3_common_kernel": "GAUGED_U1X_G3_CORRECTED_COMMON_KERNEL_V20.json",
+    "gauged_g3_sos_candidate": "GAUGED_U1X_G3_SOS_CANDIDATE_V20.json",
+    "gauged_g3_pd_rank": "EXACT_GAUGED_U1X_G3_PD_RANK_CERTIFICATE_V20.json",
+    "gauged_g3_a_square": "EXACT_GAUGED_U1X_G3_A_SQUARE_RECOUPLING_V20.json",
+    "gauged_g3_sos_bfb": "EXACT_GAUGED_U1X_G3_SOS_BFB_STATIONARITY_V20.json",
+    "gauged_g3_kernel_bound": "EXACT_GAUGED_U1X_G3_KERNEL_QUARTIC_BOUND_V20.json",
+    "gauged_g3_replacement": "EXACT_GAUGED_U1X_G3_REPLACEMENT_STATIONARY_ORBIT_V20.json",
+    "gauged_g3_su5_pd": "EXACT_GAUGED_U1X_G3_SU5_DELTA_PD_SOS_V20.json",
+    "gauged_g3_su5_hsx": "EXACT_GAUGED_U1X_G3_SU5_DELTA_HSX_EXTENSION_V20.json",
+    "gauged_g3_su5_hsx_exact_hessian": "EXACT_GAUGED_U1X_G3_SU5_DELTA_HSX_EXACT_HESSIAN_V20.json",
+    "gauged_g3_su5_equality": "EXACT_GAUGED_U1X_G3_SU5_EQUALITY_ORBIT_V20.json",
+    "gauged_g3_su5_phi_orbit": "EXACT_GAUGED_U1X_G3_SU5_PHI_ORBIT_LEMMA_V20.json",
+    "gauged_g3_su5_phi_local_component": "EXACT_GAUGED_U1X_G3_SU5_PHI_LOCAL_COMPONENT_V20.json",
+    "gauged_g3_su5_phi_su3_slice": "EXACT_GAUGED_U1X_G3_SU5_PHI_SU3_SLICE_V20.json",
+    "gauged_g3_su5_gap": "EXACT_GAUGED_U1X_G3_SU5_CHIRAL_GLOBAL_GAP_REDUCTION_V20.json",
+    "gauged_g3_su5_fixed_f_offkernel": "EXACT_GAUGED_U1X_G3_SU5_FIXED_F_OFFKERNEL_BOUND_V20.json",
+    "gauged_g3_su5_max_negative_zero_residual": "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_ZERO_RESIDUAL_BOUND_V20.json",
+    "gauged_g3_su5_max_negative_full_residual": "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_FULL_RESIDUAL_BOUND_V20.json",
+    "gauged_g3_alternative_global_sos": "EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json",
+    "final_g3": "FINAL_G3_ACCEPTANCE_GATE_V20.json",
+    "authoritative": "AUTHORITATIVE_FULL_MODEL_GATE_V20.json",
 }
 
-VALID_STATES = {"PASS", "CONDITIONAL", "OPEN", "FAIL"}
+VALID_STATES = {"PASS", "CONDITIONAL", "OPEN", "BLOCKED", "FAIL"}
+
+
+def _overall_state(integrity_pass: bool, gates: list[dict[str, Any]]) -> str:
+    """Summarize gate state without promoting unresolved work to PASS."""
+    if not integrity_pass:
+        return "FAIL"
+    states = {str(gate.get("state")) for gate in gates}
+    for state in ("BLOCKED", "OPEN", "CONDITIONAL"):
+        if state in states:
+            return state
+    return "PASS"
 
 
 def _dig(value: Any, *path: str, default: Any = None) -> Any:
@@ -174,6 +214,93 @@ def _core_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
     )
 
 
+def _tool_native_bound_root_contract(audit: dict[str, Any]) -> bool:
+    scaffold = audit.get(
+        "executable_scaffold_contract", audit.get("declared_symmetries", {})
+    )
+    external = audit.get("external_model_validation", {})
+    external_checks = external.get("checks", {})
+    required_external = (
+        "tool_native_model_format_matches_path",
+        "external_process_command_matches_tool",
+        "input_manifest_schema_is_supported",
+        "input_manifest_sha256_matches_entries",
+        "primary_model_is_bound_in_input_manifest",
+        "validation_driver_is_bound_to_command",
+        "captured_process_log_is_hash_bound",
+        "captured_process_log_has_all_required_pass_markers",
+    )
+    return bool(
+        scaffold.get("model_syntax_class") == "sarah_native"
+        and scaffold.get("tool_native_sarah_syntax") is True
+        and scaffold.get("statically_executable_model_contract") is True
+        and _dig(
+            scaffold,
+            "lagrangian",
+            "registered_in_GaugeES_LagrangianInput",
+            default=False,
+        )
+        is True
+        and external.get("schema") == exact_x_gate.EXTERNAL_VALIDATION_SCHEMA
+        and external.get("valid") is True
+        and all(external_checks.get(name) is True for name in required_external)
+    )
+
+
+def _model_contract_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
+    audit = reports.get("x_contract", {})
+    desired = reports.get("gauged_contract", {})
+    audit_executes = bool(audit) and audit.get("n_failed") == 0
+    desired_executes = bool(desired) and desired.get("n_failed") == 0
+    consistent = bool(audit.get("contract_consistent", False))
+    implementation_matches = bool(
+        desired.get("implementation_matches_manuscript", False)
+    )
+    tool_native_bound_evidence = _tool_native_bound_root_contract(audit)
+    if not audit_executes or not desired_executes:
+        state = "OPEN"
+    elif (
+        not consistent
+        or not implementation_matches
+        or not tool_native_bound_evidence
+    ):
+        state = "BLOCKED"
+    else:
+        state = "PASS"
+    return _gate(
+        "authoritative_model_contract",
+        state,
+        (
+            "The manuscript gauges U(1)_X. The scalar census and every "
+            "tool-native executable model must implement that same contract, "
+            "with manifest/log-bound external evidence, before any "
+            "G1-G8 result can validate the manuscript."
+        ),
+        {
+            "audit_present": bool(audit),
+            "audit_executes": audit_executes,
+            "desired_contract_present": bool(desired),
+            "desired_contract_executes": desired_executes,
+            "contract_consistent": consistent,
+            "implementation_matches_manuscript": implementation_matches,
+            "tool_native_bound_external_evidence": tool_native_bound_evidence,
+            "model_syntax_class": _dig(
+                audit,
+                "executable_scaffold_contract",
+                "model_syntax_class",
+            ),
+            "conflicts": audit.get("contract_conflicts", []),
+            "blockers": audit.get("scientific_blockers", []),
+        },
+        "The implemented symmetry contract differs from the theory being claimed.",
+        (
+            "The TeX definition, tool-native gauge sector, exact-X scalar census, "
+            "and derivative/quotient calculations carry one matching contract ID, "
+            "and v2 evidence binds the model, manifest, driver, and process log."
+        ),
+    )
+
+
 def _operator_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
     audit = reports.get("error_audit", {})
     soft = set(audit.get("soft_falsifications_of_manuscript_overclaims", []))
@@ -204,32 +331,1068 @@ def _operator_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
 
 
 def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
-    vacuum = reports.get("vacuum", {})
-    flags = vacuum.get("flag", {})
-    named = bool(flags.get("vacuum_alignment_principle_stated"))
-    selected = bool(flags.get("exact_W_zero_vacuum_selected"))
-    minimized = bool(flags.get("scalar_quartic_landscape_fully_minimized"))
-    if minimized and selected:
+    contract_state = _model_contract_gate(reports)["state"]
+    ledger = reports.get("g1_g8", {})
+    authoritative_gates = ledger.get("gates", {})
+    g1_closed = _dig(authoritative_gates, "G1", "status") == "CLOSED"
+    g2_closed = _dig(authoritative_gates, "G2", "status") == "CLOSED"
+    scoped = ledger.get("gauged_u1x_scalar_subtheorems", {})
+    g1_scoped_complete = bool(
+        g1_closed
+        or _dig(authoritative_gates, "G1", "scoped_calculation_complete", default=False)
+        or _dig(scoped, "G1", "scoped_status", default="").startswith("COMPLETE_")
+    )
+    g2_audit = reports.get("gauged_g2", {})
+    g2_counts = g2_audit.get("counts", {})
+    g2_stationary = _dig(
+        g2_audit,
+        "stationary_Hessian_bridge",
+        "promoted_stationarity_matrix",
+        default={},
+    )
+    g2_scoped_complete = bool(
+        g2_audit.get("model_contract_id") == "gauged_u1x_phi17_v20"
+        and g2_audit.get("n_failed") == 0
+        and _dig(
+            g2_audit,
+            "flags",
+            "G2_gauged_u1x_derivatives_certified",
+            default=False,
+        )
+        and _dig(
+            g2_audit,
+            "flags",
+            "exact_Delta_R_projector_zero_certificate",
+            default=False,
+        )
+        and _dig(
+            g2_audit,
+            "flags",
+            "exact_projector_zero_corrected_normalized_SVD_rank_13",
+            default=False,
+        )
+        and _dig(
+            g2_audit,
+            "flags",
+            "stationarity_rank_13_exactly_certified",
+            default=False,
+        )
+        and _dig(
+            g2_audit,
+            "flags",
+            "stationarity_nullity_38_exactly_certified",
+            default=False,
+        )
+        and _dig(
+            g2_audit,
+            "flags",
+            "stationarity_rank_upper_bound_13_exactly_certified",
+            default=False,
+        )
+        and g2_counts.get("invariant_directions") == 44
+        and g2_counts.get("real_parameters") == 51
+        and g2_counts.get("real_field_dimension") == 486
+        and g2_stationary.get("rank") == 13
+        and g2_stationary.get("nullity") == 38
+    )
+    gauged = reports.get("gauged_g3", {})
+    gauged_flags = gauged.get("flags", {})
+    gauged_coverage = gauged.get("coverage", {})
+    common = reports.get("gauged_g3_common_kernel", {})
+    common_flags = common.get("flags", {})
+    common_diagnostic = common.get("corrected_common_kernel_diagnostic", {})
+    common_kernel = common_diagnostic.get("corrected_common_kernel", {})
+    sos = reports.get("gauged_g3_sos_candidate", {})
+    sos_flags = sos.get("flags", {})
+    sos_coefficients = sos.get("coefficient_vector", {})
+    sos_quotient = sos.get("symmetry_quotient", {})
+    sos_pd = sos.get("exact_rank_certificate", {})
+    sos_a_square = sos.get("exact_A_square_recoupling_certificate", {})
+    sos_exact_bfb = sos.get("exact_SOS_BFB_stationarity_certificate", {})
+    pd_rank = reports.get("gauged_g3_pd_rank", {})
+    pd_flags = pd_rank.get("flags", {})
+    pd_direct = pd_rank.get("direct_P_plus_Delta_certificate", {})
+    pd_ranks = pd_rank.get("direct_exact_ranks", {})
+    pd_core = pd_ranks.get("H_Phi_plus_K", {})
+    pd_extension = pd_rank.get("exact_full_kernel_argument", {})
+    a_square = reports.get("gauged_g3_a_square", {})
+    a_square_flags = a_square.get("flags", {})
+    a_square_certificate = a_square.get("certificate", {})
+    sos_bfb = reports.get("gauged_g3_sos_bfb", {})
+    sos_bfb_flags = sos_bfb.get("flags", {})
+    kernel_bound = reports.get("gauged_g3_kernel_bound", {})
+    kernel_bound_flags = kernel_bound.get("flags", {})
+    replacement = reports.get("gauged_g3_replacement", {})
+    replacement_flags = replacement.get("flags", {})
+    su5_pd = reports.get("gauged_g3_su5_pd", {})
+    su5_pd_scope = su5_pd.get("scope", {})
+    su5_hsx = reports.get("gauged_g3_su5_hsx", {})
+    su5_hsx_flags = su5_hsx.get("flag", {})
+    su5_hsx_orbit = _dig(su5_hsx, "chiral_H_candidate", "exact_orbit", default={})
+    su5_hsx_bfb = su5_hsx.get("BFB_certificate", {})
+    su5_hsx_hessian = su5_hsx.get("live_full_gradient_and_quotient_Hessian", {})
+    su5_hsx_global = su5_hsx.get("global_status", {})
+    su5_hsx_exact_hessian = reports.get("gauged_g3_su5_hsx_exact_hessian", {})
+    su5_hsx_exact_hessian_flags = su5_hsx_exact_hessian.get("flags", {})
+    su5_equality = reports.get("gauged_g3_su5_equality", {})
+    su5_equality_scope = su5_equality.get("scope", {})
+    su5_equality_lemma = su5_equality.get("remaining_global_lemma", {})
+    su5_phi_orbit = reports.get("gauged_g3_su5_phi_orbit", {})
+    su5_phi_orbit_scope = su5_phi_orbit.get("scope", {})
+    su5_phi_orbit_checks = su5_phi_orbit.get("checks", {})
+    su5_phi_orbit_corrected = su5_phi_orbit.get("corrected_global_lemma", {})
+    su5_phi_local = reports.get("gauged_g3_su5_phi_local_component", {})
+    su5_phi_local_scope = su5_phi_local.get("scope", {})
+    su5_phi_su3 = reports.get("gauged_g3_su5_phi_su3_slice", {})
+    su5_phi_su3_scope = su5_phi_su3.get("scope", {})
+    su5_phi_su3_checks = su5_phi_su3.get("checks", {})
+    su5_gap = reports.get("gauged_g3_su5_gap", {})
+    su5_gap_flags = su5_gap.get("flags", {})
+    su5_gap_acceptance = su5_gap.get("final_acceptance_test", {})
+    fixed_f_bound = reports.get("gauged_g3_su5_fixed_f_offkernel", {})
+    fixed_f_bound_scope = fixed_f_bound.get("scope", {})
+    fixed_f_bound_checks = fixed_f_bound.get("checks", {})
+    max_negative_bound = reports.get(
+        "gauged_g3_su5_max_negative_zero_residual", {}
+    )
+    max_negative_scope = max_negative_bound.get("scope", {})
+    max_negative_checks = max_negative_bound.get("checks", {})
+    max_negative_full_bound = reports.get(
+        "gauged_g3_su5_max_negative_full_residual", {}
+    )
+    max_negative_full_scope = max_negative_full_bound.get("scope", {})
+    max_negative_full_checks = max_negative_full_bound.get("checks", {})
+    alternative_sos = reports.get("gauged_g3_alternative_global_sos", {})
+    alternative_sos_flags = alternative_sos.get("flags", {})
+    final_g3 = reports.get("final_g3", {})
+    final_g3_classification = final_g3.get("classification", {})
+    corrected_common_kernel_honestly_bound = bool(
+        common.get("model_contract_id") == "gauged_u1x_phi17_v20"
+        and common.get("n_failed") == 0
+        and common.get("overall_state") == "OPEN"
+        and common_flags.get("legacy_common_kernel_dimension_135_invalidated")
+        is True
+        and common_flags.get("exact_H6_radial_flat_direction_refuted") is True
+        and common_kernel.get("rank") == 448
+        and common_kernel.get("nullity") == 0
+        and common_diagnostic.get("proof_grade") is False
+        and common_diagnostic.get("certified_PSD_feasibility") is False
+        and common_diagnostic.get("certified_no_go") is False
+    )
+    a_square_exactly_scoped = bool(
+        a_square.get("status") == "EXACT_A_SQUARE_RECOUPLING_CERTIFIED"
+        and a_square.get("overall_state") == "CLOSED_SUBPROBLEM"
+        and a_square.get("n_failed") == 0
+        and a_square_certificate.get("source_binding_exact") is True
+        and a_square_certificate.get("proof_grade") is True
+        and a_square_certificate.get("unique_weights")
+        == ["40", "72", "28", "-8", "-12", "12"]
+        and a_square_flags.get("A_square_recoupling_exactly_source_bound") is True
+        and a_square_flags.get("complete_potential_BFB_exactly_certified") is False
+        and a_square_flags.get("full_Hessian_exactly_source_bound") is False
+        and a_square_flags.get("strict_local_minimum_certified") is False
+        and a_square_flags.get("G3_closed") is False
+    )
+    sos_bfb_exactly_scoped = bool(
+        sos_bfb.get("status")
+        == "EXACT_COMPLETE_POTENTIAL_BFB_AND_SELECTED_STATIONARITY_CERTIFIED"
+        and sos_bfb.get("overall_state") == "CLOSED_SUBPROBLEM"
+        and sos_bfb.get("model_contract_id") == "gauged_u1x_phi17_v20"
+        and sos_bfb.get("n_failed") == 0
+        and sos_bfb_flags.get(
+            "complete_27_parameter_SOS_identity_exactly_source_bound"
+        )
+        is True
+        and sos_bfb_flags.get("complete_potential_BFB_exactly_certified") is True
+        and sos_bfb_flags.get("selected_vacuum_stationarity_exactly_certified")
+        is True
+        and sos_bfb_flags.get("selected_vacuum_global_minimum_certified") is False
+        and sos_bfb_flags.get("selected_vacuum_unique_modulo_symmetry") is False
+        and sos_bfb_flags.get("full_Hessian_exactly_source_bound") is False
+        and sos_bfb_flags.get("strict_local_minimum_certified") is False
+        and sos_bfb_flags.get("G3_closed") is False
+    )
+    pd_rank_direct_exact_and_fail_closed = bool(
+        pd_rank.get("status")
+        == "DIRECT_EXACT_TRANSVERSE_HESSIAN_PASS__SOS_AND_GLOBAL_EXTREMA_EXTERNAL"
+        and pd_rank.get("overall_state") == "OPEN"
+        and pd_rank.get("n_failed") == 0
+        and pd_direct.get("source_binding_exact") is True
+        and pd_direct.get("proof_grade") is True
+        and pd_core == {"rank": 429, "nullity": 33, "PSD": True}
+        and pd_extension.get("exact_full_Hessian_rank") == 448
+        and pd_extension.get("remaining_kernel_dimension") == 38
+        and pd_extension.get("source_binding_exact") is True
+        and pd_extension.get("proof_grade") is True
+        and pd_flags.get("conditional_exact_LDL_on_reconstructed_matrix") is False
+        and pd_flags.get("direct_exact_source_binding") is True
+        and pd_flags.get("proof_grade_P_plus_Delta_PSD") is True
+        and pd_flags.get("proof_grade_full_rank_448") is True
+        and pd_flags.get("strict_transverse_Hessian_positive_certified") is True
+        and pd_flags.get("strict_local_minimum_certified_here") is False
+        and pd_flags.get("global_minimum_certified") is False
+        and pd_flags.get("global_uniqueness_certified") is False
+        and pd_flags.get("G3_closed") is False
+        and pd_flags.get("whole_model_validated") is False
+        and pd_flags.get("whole_model_excluded") is False
+    )
+    sos_candidate_exact_local_and_globally_fail_closed = bool(
+        sos.get("status")
+        == "EXACT_BFB_STATIONARY_STRICT_LOCAL_MINIMUM__GLOBAL_COUNTEREXAMPLE"
+        and sos.get("overall_state") == "OPEN"
+        and sos.get("model_contract_id") == "gauged_u1x_phi17_v20"
+        and sos.get("n_failed") == 0
+        and sos_coefficients.get("nonzero_count") == 27
+        and sos_coefficients.get("maximum_absolute_coefficient") == 9.125
+        and _dig(
+            sos_coefficients,
+            "symbolic_nonzero",
+            "lambda::O48_B01_Phi_self_quartics",
+        )
+        == "-21/200"
+        and sos_quotient.get("SO10_plus_U1X_plus_global_PQ_rank") == 38
+        and sos_quotient.get("massive_transverse_dimension") == 448
+        and sos_flags.get("exact_sparse_51_parameter_candidate_constructed") is True
+        and sos_flags.get("candidate_inside_4pi_box") is True
+        and sos_flags.get(
+            "positive_J0_normalization_is_without_loss_of_generality"
+        )
+        is False
+        and sos_flags.get("manifest_BFB_decomposition_candidate_constructed") is True
+        and sos_flags.get("A_square_recoupling_exactly_source_bound") is True
+        and sos_flags.get("complete_potential_BFB_exactly_certified") is True
+        and sos_flags.get(
+            "selected_vacuum_stationarity_exactly_compiler_certified"
+        )
+        is True
+        and sos_flags.get("selected_vacuum_global_minimum_certified") is False
+        and sos_flags.get("selected_vacuum_global_minimum_disproved") is True
+        and sos_flags.get("selected_vacuum_unique_modulo_symmetry") is False
+        and sos_flags.get("exact_lower_energy_field_witness_certified") is True
+        and sos_flags.get("constructive_candidate_rejected_for_G3") is True
+        and sos_flags.get("P_plus_Delta_Qsqrt2_component_LDL_conditional") is False
+        and sos_flags.get("P_plus_Delta_source_binding_exactly_certified") is True
+        and sos_flags.get("full_448_kernel_count_conditional") is False
+        and sos_flags.get("full_448_kernel_count_exact") is True
+        and sos_flags.get("full_448_PSD_feasibility_certified") is True
+        and sos_flags.get("strict_local_minimum_certified") is True
+        and sos_flags.get("G3_closed") is False
+        and sos_flags.get("whole_model_validated") is False
+        and sos_flags.get("whole_model_excluded") is False
+        and sos_pd.get("status") == pd_rank.get("status")
+        and _dig(
+            sos_pd,
+            "direct_exact_ranks",
+            "H_Phi_plus_K",
+            default={},
+        )
+        == pd_core
+        and sos_exact_bfb.get("status") == sos_bfb.get("status")
+        and sos_a_square.get("status") == a_square.get("status")
+        and _dig(
+            sos_a_square,
+            "certificate",
+            "unique_weights",
+            default=[],
+        )
+        == a_square_certificate.get("unique_weights")
+    )
+    fixed_p_branch_exactly_excluded = bool(
+        kernel_bound.get("n_failed") == 0
+        and kernel_bound_flags.get("fixed_P_strict_local_global_no_go_exact")
+        is True
+        and kernel_bound_flags.get("fixed_P_branch_closed_negative") is True
+        and kernel_bound_flags.get("G3_closed") is False
+        and kernel_bound_flags.get("whole_model_excluded") is False
+    )
+    lower_replacement_rejected_for_wrong_symmetry = bool(
+        replacement.get("n_failed") == 0
+        and replacement_flags.get("replacement_full_stationarity_exact") is True
+        and replacement_flags.get("replacement_symmetry_orbit_rank_exact") is True
+        and replacement_flags.get("replacement_target_gauge_symmetry_correct")
+        is False
+        and replacement_flags.get("replacement_strict_local_minimum_proof_grade")
+        is False
+        and replacement_flags.get("replacement_global_minimum_established")
+        is False
+        and replacement_flags.get("G3_closed") is False
+    )
+    su5_delta_pd_exact_global_frontier = bool(
+        su5_pd.get("n_failed") == 0
+        and su5_pd.get("status")
+        == "EXACT_SU5_DELTA_PD_GLOBAL_SOS_CANDIDATE_CERTIFIED"
+        and su5_pd_scope.get("Phi_Sigma_global_minimum_exact") is True
+        and su5_pd_scope.get("Phi_Sigma_stationarity_exact") is True
+        and su5_pd_scope.get("SO10_to_SM_stabilizer_dimension_exact") is True
+        and su5_pd_scope.get("Phi_Sigma_Hessian_rank_429_nullity_33_exact") is True
+        and su5_pd_scope.get("Phi_Sigma_quotient_strictly_positive_exact") is True
+        and su5_pd_scope.get("Phi_Sigma_equality_set_locally_one_orbit") is True
+        and su5_pd_scope.get("full_486_field_stationarity") is False
+        and su5_pd_scope.get("global_orbit_uniqueness") is False
+        and su5_pd_scope.get("G3_closed") is False
+    )
+    su5_delta_hsx_honest_frontier = bool(
+        su5_hsx.get("n_failed") == 0
+        and su5_hsx.get("status")
+        == "EXACT_REAL_H_NO_GO__CHIRAL_H_STRICT_LOCAL_CANDIDATE__GLOBAL_GAP_OPEN"
+        and su5_hsx_flags.get("real_H_e6_extension_exactly_excluded") is True
+        and su5_hsx_flags.get("chiral_H_exact_stationary_candidate_constructed")
+        is True
+        and su5_hsx_flags.get("full_486_gradient_zero_live") is True
+        and su5_hsx_flags.get("full_quartic_BFB_certified") is True
+        and su5_hsx_flags.get("full_global_minimum_certified") is False
+        and su5_hsx_flags.get("G3_closed") is False
+        and su5_hsx_orbit.get("SO10_rank") == 36
+        and su5_hsx_orbit.get("SO10_plus_U1X_rank") == 37
+        and su5_hsx_orbit.get("SO10_plus_U1X_plus_PQ_rank") == 38
+        and su5_hsx_orbit.get("physical_quotient_dimension") == 448
+        and su5_hsx_bfb.get("homogeneous_quartic_BFB_certified") is True
+        and su5_hsx_bfb.get("finite_field_global_gap_certified") is False
+        and su5_hsx_hessian.get("proof_grade") is False
+        and su5_hsx_hessian.get("transverse_dimension") == 448
+        and su5_hsx_hessian.get("negative_transverse_eigenvalues_below_minus_1e_minus_9")
+        == 0
+        and su5_hsx_hessian.get("zero_transverse_eigenvalues_at_1e_minus_9") == 0
+        and su5_hsx_global.get("global_equality_orbits_classified") is False
+    )
+    hsx_exact_hessian_closed = bool(
+        su5_hsx_exact_hessian.get("status")
+        == "EXACT_FULL_HESSIAN_RANK_448_NULLITY_38_CERTIFIED"
+        and su5_hsx_exact_hessian.get("overall_state")
+        == "CLOSED_FULL_LOCAL_HESSIAN_SUBPROBLEM"
+        and su5_hsx_exact_hessian_flags.get("exact_rank_448") is True
+        and su5_hsx_exact_hessian_flags.get("exact_nullity_38") is True
+        and su5_hsx_exact_hessian_flags.get("exact_PSD") is True
+        and su5_hsx_exact_hessian_flags.get("strict_quotient") is True
+        and su5_hsx_exact_hessian_flags.get("proof_grade") is True
+        and su5_hsx_exact_hessian_flags.get("source_binding") is True
+        and su5_hsx_exact_hessian.get("G3_closed") is False
+    )
+    hsx_exact_hessian_open = bool(
+        su5_hsx_exact_hessian.get("status")
+        == "EXACT_HESSIAN_CERTIFICATE_INCOMPLETE"
+        and su5_hsx_exact_hessian.get("overall_state")
+        == "G3_EXACT_LOCAL_TEST_OPEN"
+        and su5_hsx_exact_hessian_flags.get("proof_grade") is False
+        and su5_hsx_exact_hessian.get("G3_closed") is False
+    )
+    su5_hsx_exact_hessian_audit_fail_closed = bool(
+        su5_hsx_exact_hessian
+        and su5_hsx_exact_hessian.get("model_contract_id")
+        == "gauged_u1x_phi17_v20"
+        and su5_hsx_exact_hessian.get("n_failed", 0) == 0
+        and (hsx_exact_hessian_closed or hsx_exact_hessian_open)
+    )
+    su5_equality_honestly_reduced = bool(
+        su5_equality.get("n_failed") == 0
+        and su5_equality.get("status")
+        == "EXACT_CONDITIONAL_EQUALITY_CLASSIFICATION__SIGNED_GLOBAL_PHI_ORBIT_LEMMA_OPEN"
+        and su5_equality_scope.get("fixed_F_Sigma_global_equality_classified")
+        is True
+        and su5_equality_scope.get(
+            "fixed_Delta_diagonal_Phi_global_equality_classified"
+        )
+        is True
+        and su5_equality_scope.get(
+            "fixed_Delta_two_tau_plus_representatives_equivalent"
+        )
+        is True
+        and su5_equality_scope.get(
+            "literal_single_Phi_orbit_statement_refuted"
+        )
+        is True
+        and su5_equality_scope.get("minus_F_mixed_branch_excluded_exact") is True
+        and su5_equality_scope.get("corrected_signed_Phi_orbit_theorem_open")
+        is True
+        and su5_equality_scope.get(
+            "complete_SU3_fixed_Phi_slice_classified_exactly"
+        )
+        is True
+        and su5_equality_scope.get("global_equality_orbit_classification_complete")
+        is False
+        and su5_equality_scope.get("G3_closed") is False
+        and su5_equality_lemma.get("proved") is False
+        and su5_equality_lemma.get("literal_single_orbit_version_refuted") is True
+        and su5_equality_lemma.get("corrected_signed_two_orbit_version") is True
+        and su5_equality_lemma.get("complete_SU3_fixed_slice_classified_exactly")
+        is True
+        and su5_equality_lemma.get("SU3_fixed_slice_real_dimension") == 16
+        and su5_equality_lemma.get("source_bound_certificate_available") is False
+        and su5_equality_lemma.get("source_bound_partial_certificate_available")
+        is True
+        and su5_equality_lemma.get("numerical_search_is_not_a_substitute") is True
+    )
+    su5_phi_orbit_honestly_refuted_and_open = bool(
+        su5_phi_orbit.get("n_failed") == 0
+        and su5_phi_orbit.get("status")
+        == "LITERAL_SINGLE_ORBIT_LEMMA_REFUTED__SIGNED_GLOBAL_LEMMA_OPEN"
+        and su5_phi_orbit.get("overall_state")
+        == "SHARP_COUNTEREXAMPLE_AND_REDUCTION"
+        and su5_phi_orbit_checks.get("literal_single_orbit_lemma_is_refuted")
+        is True
+        and su5_phi_orbit_checks.get("corrected_signed_global_lemma_not_overclaimed")
+        is True
+        and su5_phi_orbit_scope.get("literal_plus_orbit_only_statement_refuted")
+        is True
+        and su5_phi_orbit_scope.get("complete_SU4_invariant_slice_classified")
+        is True
+        and su5_phi_orbit_scope.get("all_arbitrary_real_four_forms_classified")
+        is False
+        and su5_phi_orbit_scope.get("corrected_signed_two_orbit_theorem_proved")
+        is False
+        and su5_phi_orbit_scope.get(
+            "PD_global_equality_orbit_classification_complete"
+        )
+        is False
+        and su5_phi_orbit_scope.get("G3_closed") is False
+        and su5_phi_orbit_scope.get("whole_model_excluded") is False
+        and su5_phi_orbit_corrected.get("proved") is False
+    )
+    su5_phi_local_components_exactly_closed = bool(
+        su5_phi_local.get("n_failed") == 0
+        and su5_phi_local.get("status")
+        == "EXACT_LOCAL_COMPONENT_THEOREM_CLOSED__DISTANT_COMPONENTS_OPEN"
+        and su5_phi_local.get("overall_state")
+        == "LOCAL_COMPONENT_THEOREM_CLOSED"
+        and su5_phi_local_scope.get("plus_F_local_component_classified") is True
+        and su5_phi_local_scope.get("minus_F_local_component_classified") is True
+        and su5_phi_local_scope.get("signed_orbit_locally_isolated") is True
+        and su5_phi_local_scope.get("explicit_neighborhood_radius_available")
+        is False
+        and su5_phi_local_scope.get("disconnected_distant_components_excluded")
+        is False
+        and su5_phi_local_scope.get(
+            "corrected_signed_global_orbit_theorem_proved"
+        )
+        is False
+        and su5_phi_local_scope.get(
+            "PD_global_equality_orbit_classification_complete"
+        )
+        is False
+        and su5_phi_local_scope.get("G3_closed") is False
+        and su5_phi_local_scope.get("whole_model_excluded") is False
+    )
+    su5_phi_su3_slice_exactly_closed = bool(
+        su5_phi_su3.get("n_failed") == 0
+        and su5_phi_su3.get("status")
+        == "EXACT_COMPLETE_SU3_FIXED_SLICE_CLASSIFIED__GENERIC_GLOBAL_OPEN"
+        and su5_phi_su3.get("overall_state") == "SU3_FIXED_SLICE_CLOSED"
+        and su5_phi_su3_checks.get("displayed_space_is_complete_SU3_fixed_space")
+        is True
+        and su5_phi_su3_checks.get("restricted_projector_rowspace_reduced_exactly")
+        is True
+        and su5_phi_su3_checks.get(
+            "eight_nondiagonal_directions_have_real_SOS_obstruction"
+        )
+        is True
+        and su5_phi_su3_checks.get("complete_SU3_fixed_slice_is_signed_Kahler_orbit")
+        is True
+        and su5_phi_su3_scope.get(
+            "complete_16_real_dimensional_SU3_fixed_space_classified"
+        )
+        is True
+        and su5_phi_su3_scope.get(
+            "all_nonzero_slice_solutions_are_signed_Kahler_squares"
+        )
+        is True
+        and su5_phi_su3_scope.get("all_arbitrary_real_four_forms_classified")
+        is False
+        and su5_phi_su3_scope.get("disconnected_distant_components_excluded")
+        is False
+        and su5_phi_su3_scope.get("corrected_signed_global_orbit_theorem_proved")
+        is False
+        and su5_phi_su3_scope.get("G3_closed") is False
+        and su5_phi_su3_scope.get("whole_model_excluded") is False
+    )
+    su5_chiral_gap_honestly_reduced = bool(
+        su5_gap.get("n_failed") == 0
+        and su5_gap.get("status")
+        == "GLOBAL_GAP_REDUCED_TO_PD_EQUALITY_CLASSIFICATION"
+        and su5_gap.get("overall_state") == "FINAL_G3_TEST_OPEN"
+        and su5_gap_flags.get("lower_witness_found") is False
+        and su5_gap_flags.get("conditional_small_positive_beta_route_exists")
+        is True
+        and su5_gap_flags.get("beta_1_over_20_global_minimum_certified") is False
+        and su5_gap_flags.get("global_equality_orbits_classified") is False
+        and su5_gap_flags.get("G3_closed") is False
+        and su5_gap_acceptance.get("currently_passes") is False
+    )
+    su5_fixed_f_full_gap_closed = bool(
+        fixed_f_bound.get("n_failed") == 0
+        and fixed_f_bound.get("status")
+        == "EXACT_FIXED_F_FULL_OFFKERNEL_BETA_GAP_CERTIFIED"
+        and fixed_f_bound.get("overall_state")
+        == "CLOSED_FIXED_F_GLOBAL_SUBPROBLEM"
+        and fixed_f_bound_checks.get(
+            "mixed_offkernel_gap_at_least_6_over_5_exact"
+        )
+        is True
+        and fixed_f_bound_checks.get("pure_hplus_current_error_bound_exact")
+        is True
+        and fixed_f_bound_checks.get("kernel_chirality_cross_zero_exact") is True
+        and fixed_f_bound_checks.get("cross_block_bound_exact") is True
+        and fixed_f_bound_checks.get("rational_inside_outside_patch_positive")
+        is True
+        and fixed_f_bound_checks.get("full_fixed_F_equality_orbit_exact") is True
+        and fixed_f_bound_scope.get("Phi_fixed_to_F") is True
+        and fixed_f_bound_scope.get("H_arbitrary") is True
+        and fixed_f_bound_scope.get("Sigma_arbitrary") is True
+        and fixed_f_bound_scope.get("beta_equals_1_over_20") is True
+        and fixed_f_bound_scope.get(
+            "global_gap_nonnegative_on_full_fixed_F_stratum"
+        )
+        is True
+        and fixed_f_bound_scope.get("equality_is_selected_SU5_flag_orbit") is True
+        and fixed_f_bound_scope.get("arbitrary_Phi_proved") is False
+        and fixed_f_bound_scope.get("G3_closed") is False
+    )
+    su5_max_negative_all_zero_route_excluded = bool(
+        max_negative_bound.get("n_failed") == 0
+        and max_negative_bound.get("status")
+        == "EXACT_PURE_DELTA_MAX_NEGATIVE_MIXED_ZERO_ROUTE_EXCLUDED"
+        and max_negative_bound.get("overall_state")
+        == "CLOSED_PURE_DELTA_MAX_NEGATIVE_MIXED_ZERO_STRATUM__ARBITRARY_PHI_OPEN"
+        and max_negative_bound.get("model_contract_id")
+        == "gauged_u1x_phi17_v20"
+        and max_negative_checks.get("exact_rank_168_nullity_42") is True
+        and max_negative_checks.get("kernel_splits_35_plus_7_exactly") is True
+        and max_negative_checks.get("live_HSX_and_PD_coefficients_bound_exactly")
+        is True
+        and max_negative_checks.get(
+            "N_and_C00_C11_contraction_identities_computed_exactly"
+        )
+        is True
+        and max_negative_checks.get(
+            "Phi_radial_plus_I54_lower_bound_1_over_141"
+        )
+        is True
+        and max_negative_checks.get("worst_radial_current_minimum_exact") is True
+        and max_negative_checks.get("strict_positive_stratum_margin_exact") is True
+        and max_negative_checks.get(
+            "u_zero_and_v_zero_radial_boundaries_closed_exactly"
+        )
+        is True
+        and _dig(max_negative_bound, "exact_stratum_gap", "strict_margin")
+        == "7859/140295000"
+        and max_negative_scope.get(
+            "strongest_all_zero_max_negative_route_excluded"
+        )
+        is True
+        and max_negative_scope.get(
+            "strongest_pure_Delta_mixed_zero_max_negative_route_excluded"
+        )
+        is True
+        and max_negative_scope.get(
+            "normalized_affine_stratum_requires_u_gt_0_v_gt_0"
+        )
+        is True
+        and max_negative_scope.get(
+            "u_zero_and_v_zero_boundaries_closed_separately"
+        )
+        is True
+        and max_negative_scope.get("nonzero_residual_cancellations_excluded")
+        is False
+        and max_negative_scope.get("arbitrary_Phi_global_gap_proved") is False
+        and max_negative_scope.get("G3_closed") is False
+    )
+    su5_max_negative_full_residual_pure_delta_closed = bool(
+        max_negative_full_bound.get("n_failed") == 0
+        and max_negative_full_bound.get("status")
+        == "EXACT_MAX_NEGATIVE_FULL_RESIDUAL_PURE_DELTA_BOUND_CERTIFIED"
+        and max_negative_full_bound.get("overall_state")
+        == "CLOSED_MAX_NEGATIVE_PURE_DELTA_ARBITRARY_PHI_SUBPROBLEM"
+        and max_negative_full_bound.get("model_contract_id")
+        == "gauged_u1x_phi17_v20"
+        and max_negative_full_scope.get("Sigma_on_pure_Delta_orbit") is True
+        and max_negative_full_scope.get("Phi_arbitrary_real_210") is True
+        and max_negative_full_scope.get("nonzero_Phi_Sigma_residuals_covered")
+        is True
+        and max_negative_full_scope.get("nonzero_chiral_Phi_H_residual_covered")
+        is True
+        and max_negative_full_scope.get("u_v_all_nonnegative") is True
+        and max_negative_full_scope.get("restricted_gap_global_minimum")
+        == "1/5000"
+        and max_negative_full_scope.get("arbitrary_Sigma_orientation_proved")
+        is False
+        and max_negative_full_scope.get("G3_closed") is False
+        and all(
+            max_negative_full_checks.get(name) is True
+            for name in (
+                "live_restricted_residual_normalizations_exact",
+                "single_4125_covariant_Cauchy_bound_exact",
+                "anchor_quadratic_has_exact_positive_spectral_floor",
+                "anchor_lower_bound_strictly_exceeds_1_over_50",
+                "piecewise_u_v_completion_covers_nonnegative_quadrant",
+                "exact_1_over_5000_saturation_exhibited",
+                "arbitrary_real_Phi_covered",
+                "mixed_and_chiral_residuals_not_assumed_zero",
+                "arbitrary_Sigma_orientation_not_overclaimed",
+                "G3_not_overclaimed",
+            )
+        )
+    )
+    alternative_global_sos_honestly_open = bool(
+        alternative_sos.get("n_failed") == 0
+        and alternative_sos.get("status")
+        == "ALTERNATIVE_GLOBAL_SOS_AUDIT_COMPLETE__NO_CERTIFIED_REPLACEMENT"
+        and alternative_sos.get("overall_state") == "G3_GLOBAL_ALTERNATIVE_OPEN"
+        and alternative_sos_flags.get(
+            "all_vanishing_45_current_Gram_completion_excluded"
+        )
+        is True
+        and alternative_sos_flags.get(
+            "all_vanishing_affine_SOS_completion_excluded"
+        )
+        is True
+        and alternative_sos_flags.get(
+            "all_vanishing_unique_chiral_quartic_completion_excluded"
+        )
+        is True
+        and alternative_sos_flags.get(
+            "nonvanishing_residual_gradient_cancellation_excluded"
+        )
+        is False
+        and alternative_sos_flags.get("different_vacuum_orbit_excluded") is False
+        and alternative_sos_flags.get("globally_certifiable_alternative_found")
+        is False
+        and alternative_sos_flags.get("G3_closed") is False
+        and alternative_sos_flags.get("whole_model_excluded") is False
+    )
+    final_g3_honestly_open = bool(
+        final_g3.get("n_failed") == 0
+        and final_g3.get("status") == "FINAL_G3_ACCEPTANCE_TEST_EXECUTED"
+        and final_g3.get("overall_state") == "OPEN"
+        and final_g3_classification.get("mathematical_G3_closed") is False
+        and final_g3_classification.get("release_G3_verified") is False
+        and final_g3_classification.get("whole_model_excluded") is False
+        and final_g3_classification.get("theory_still_viable") is True
+        and final_g3_classification.get("G3_closed") is False
+    )
+    g3_frontier_honestly_fail_closed = bool(
+        a_square_exactly_scoped
+        and sos_bfb_exactly_scoped
+        and pd_rank_direct_exact_and_fail_closed
+        and sos_candidate_exact_local_and_globally_fail_closed
+        and fixed_p_branch_exactly_excluded
+        and lower_replacement_rejected_for_wrong_symmetry
+        and su5_delta_pd_exact_global_frontier
+        and su5_delta_hsx_honest_frontier
+        and su5_hsx_exact_hessian_audit_fail_closed
+        and su5_equality_honestly_reduced
+        and su5_phi_orbit_honestly_refuted_and_open
+        and su5_phi_local_components_exactly_closed
+        and su5_phi_su3_slice_exactly_closed
+        and su5_chiral_gap_honestly_reduced
+        and su5_fixed_f_full_gap_closed
+        and su5_max_negative_all_zero_route_excluded
+        and su5_max_negative_full_residual_pure_delta_closed
+        and alternative_global_sos_honestly_open
+        and final_g3_honestly_open
+    )
+    gauged_g3_contract_bound = bool(
+        gauged.get("model_contract_id") == "gauged_u1x_phi17_v20"
+        and gauged.get("authoritative_for_manuscript_G3_formulation") is True
+        and gauged.get("n_failed") == 0
+        and gauged_coverage.get("invariant_directions") == 44
+        and gauged_coverage.get("real_parameters") == 51
+        and gauged_coverage.get("real_field_dimension") == 486
+        and gauged_coverage.get("gauge_quotient_dimension_including_axion") == 449
+        and gauged_coverage.get("massive_transverse_quotient_dimension") == 448
+        and gauged_flags.get(
+            "gauge_quotient_dimension_449_including_axion_certified"
+        ) is True
+        and gauged_flags.get(
+            "massive_transverse_quotient_dimension_448_certified"
+        ) is True
+        and gauged_flags.get("stationarity_nullity_38_exactly_certified") is True
+        and gauged_flags.get("constructive_candidate_exact_rank448_certificate")
+        is True
+        and gauged_flags.get("constructive_candidate_direct_exact_source_binding")
+        is True
+        and gauged_flags.get("G3_fixed_vacuum_strict_minimum_certified") is True
+        and gauged_flags.get("G3_fixed_vacuum_PSD_feasible_certified") is True
+        and gauged_flags.get("G3_selected_vacuum_global_no_go_certified") is True
+        and gauged_flags.get("exact_lower_energy_field_witness_certified")
+        is True
+        and gauged_flags.get("constructive_candidate_rejected_for_G3") is True
+        and gauged_flags.get("complete_potential_BFB") is True
+        and corrected_common_kernel_honestly_bound
+        and g3_frontier_honestly_fail_closed
+    )
+    exact_stationarity_rank = bool(
+        gauged_g3_contract_bound
+        and gauged_flags.get("stationarity_rank_13_exactly_certified", False)
+    )
+    model_wide_no_go = bool(
+        gauged_g3_contract_bound
+        and exact_stationarity_rank
+        and gauged_flags.get("model_wide_no_go_certified", False)
+        and gauged_flags.get("whole_model_excluded", False)
+        and gauged_flags.get("proof_grade_model_wide_no_go", False)
+    )
+    stable_quotient = bool(
+        gauged_g3_contract_bound
+        and exact_stationarity_rank
+        and gauged_flags.get("G3_fixed_vacuum_strict_minimum_certified", False)
+    )
+    bfb = bool(
+        gauged_g3_contract_bound
+        and exact_stationarity_rank
+        and gauged_flags.get("complete_potential_BFB", False)
+    )
+    global_minimum = bool(
+        gauged_g3_contract_bound
+        and exact_stationarity_rank
+        and gauged_flags.get("global_competing_extrema_exhausted", False)
+    )
+    if contract_state == "BLOCKED" or (ledger and not (g1_closed and g2_closed)):
+        state = "BLOCKED"
+    elif (
+        contract_state != "PASS"
+        or not g1_scoped_complete
+        or not g2_scoped_complete
+        or not gauged_g3_contract_bound
+    ):
+        state = "OPEN"
+    elif model_wide_no_go:
+        state = "FAIL"
+    elif stable_quotient and bfb and global_minimum:
         state = "PASS"
-    elif named and selected:
-        state = "CONDITIONAL"
     else:
         state = "OPEN"
     return _gate(
         "full_scalar_potential_vacuum_and_spectrum",
         state,
         (
-            "The repository selects W=0 through named assumptions. It has not "
-            "derived that point by minimizing the complete SO(10)+210+10+126+S+Phi "
-            "scalar potential or proving stability and the full mass spectrum."
+            "The gauged 44-direction/51-parameter derivatives on 486 real fields "
+            "are recertified. Three structural gradient columns vanish exactly, "
+            "and exact lower- and upper-rank certificates prove stationarity "
+            "rank/nullity 13/38. The gauged SO(10)xU(1)_X orbit has exact rank "
+            "37, so its gauge quotient is 449-dimensional and includes the axion; "
+            "removing the independent global-PQ direction gives the exactly "
+            "448-dimensional massive/transverse Hessian space. A sparse "
+            "27-of-51 candidate with J0=-21/200 has a complete source-bound "
+            "sum-of-squares decomposition: the potential is exactly BFB and "
+            "the selected vacuum is exactly stationary. Direct tensor assembly "
+            "gives P+Delta rank/nullity 429/33, while the exact extension "
+            "Jacobian leaves only 38 symmetry tangents and proves positivity in "
+            "all 448 transverse directions. The selected orbit is therefore a "
+            "strict local minimum. An exact symmetry-inequivalent 126bar field "
+            "configuration is lower by 25*r^4/19008, and the fixed-P branch obeys "
+            "the exact gap/curvature identity gap=-m_transverse^2/8; that branch is "
+            "therefore excluded. The lower replacement has the wrong stabilizer. "
+            "A new SU(5)-singlet Phi+Delta branch is an exact global minimum in the "
+            "Phi/Sigma subsystem, has the SM stabilizer, and has exact Hessian "
+            "rank/nullity 429/33 with a strictly positive local quotient. Its "
+            "chiral-H extension is exactly stationary, symmetry-correct and BFB; "
+            "the exact full Hessian has rank/nullity 448/38 and is positive on the "
+            "quotient. The maximally negative pure-Delta sector is excluded for "
+            "arbitrary real Phi with all residuals retained and sharp gap 1/5000. "
+            "G3 remains open only on uniform coercivity for arbitrary non-pure-Delta "
+            "Sigma orientations. "
+            "The old no-X 64/91 result remains historical."
         ),
         {
-            "named_alignment_principle": named,
-            "exact_W_zero_selected_by_axiom": selected,
-            "scalar_quartic_landscape_fully_minimized": minimized,
-            "reported_status": vacuum.get("status"),
+            "model_contract_state": contract_state,
+            "authoritative_G1_closed": g1_closed,
+            "authoritative_G2_closed": g2_closed,
+            "gauged_G1_scoped_calculation_complete": g1_scoped_complete,
+            "gauged_G2_scoped_calculation_complete": g2_scoped_complete,
+            "gauged_G2_direction_parameter_field_counts": [
+                g2_counts.get("invariant_directions"),
+                g2_counts.get("real_parameters"),
+                g2_counts.get("real_field_dimension"),
+            ],
+            "gauged_G2_promoted_stationarity_rank_nullity": [
+                g2_stationary.get("rank"),
+                g2_stationary.get("nullity"),
+            ],
+            "gauged_G2_exact_projector_zero_corrected_normalized_SVD_rank_13": bool(
+                _dig(
+                    g2_audit,
+                    "flags",
+                    "exact_projector_zero_corrected_normalized_SVD_rank_13",
+                    default=False,
+                )
+            ),
+            "gauged_G2_stationarity_rank_13_exactly_certified": bool(
+                _dig(
+                    g2_audit,
+                    "flags",
+                    "stationarity_rank_13_exactly_certified",
+                    default=False,
+                )
+            ),
+            "gauged_G2_stationarity_nullity_38_exactly_certified": bool(
+                _dig(
+                    g2_audit,
+                    "flags",
+                    "stationarity_nullity_38_exactly_certified",
+                    default=False,
+                )
+            ),
+            "gauged_G2_stationarity_rank_upper_bound_13_exactly_certified": bool(
+                _dig(
+                    g2_audit,
+                    "flags",
+                    "stationarity_rank_upper_bound_13_exactly_certified",
+                    default=False,
+                )
+            ),
+            "gauged_G3_artifact_present": bool(gauged),
+            "gauged_G3_corrected_common_kernel_artifact_present": bool(common),
+            "gauged_G3_corrected_common_kernel_honestly_bound": (
+                corrected_common_kernel_honestly_bound
+            ),
+            "gauged_G3_corrected_common_kernel_rank_nullity_numerical": [
+                common_kernel.get("rank"),
+                common_kernel.get("nullity"),
+            ],
+            "gauged_G3_corrected_common_kernel_proof_grade": (
+                common_diagnostic.get("proof_grade")
+            ),
+            "gauged_G3_SOS_candidate_artifact_present": bool(sos),
+            "gauged_G3_PD_rank_artifact_present": bool(pd_rank),
+            "gauged_G3_A_square_artifact_present": bool(a_square),
+            "gauged_G3_SOS_BFB_artifact_present": bool(sos_bfb),
+            "gauged_G3_fixed_P_kernel_bound_artifact_present": bool(kernel_bound),
+            "gauged_G3_lower_replacement_artifact_present": bool(replacement),
+            "gauged_G3_SU5_Delta_PD_artifact_present": bool(su5_pd),
+            "gauged_G3_SU5_Delta_HSX_artifact_present": bool(su5_hsx),
+            "gauged_G3_SU5_Delta_HSX_exact_Hessian_artifact_present": bool(
+                su5_hsx_exact_hessian
+            ),
+            "gauged_G3_SU5_equality_artifact_present": bool(su5_equality),
+            "gauged_G3_SU5_Phi_orbit_audit_artifact_present": bool(
+                su5_phi_orbit
+            ),
+            "gauged_G3_SU5_Phi_local_component_artifact_present": bool(
+                su5_phi_local
+            ),
+            "gauged_G3_SU5_Phi_SU3_slice_artifact_present": bool(
+                su5_phi_su3
+            ),
+            "gauged_G3_SU5_global_gap_artifact_present": bool(su5_gap),
+            "gauged_G3_SU5_fixed_F_offkernel_artifact_present": bool(
+                fixed_f_bound
+            ),
+            "gauged_G3_SU5_max_negative_zero_residual_artifact_present": bool(
+                max_negative_bound
+            ),
+            "gauged_G3_SU5_max_negative_full_residual_artifact_present": bool(
+                max_negative_full_bound
+            ),
+            "gauged_G3_alternative_global_SOS_artifact_present": bool(
+                alternative_sos
+            ),
+            "final_G3_acceptance_gate_artifact_present": bool(final_g3),
+            "gauged_G3_SOS_candidate_exact_local_and_globally_fail_closed": (
+                sos_candidate_exact_local_and_globally_fail_closed
+            ),
+            # Compatibility alias retained for older report consumers.
+            "gauged_G3_SOS_candidate_honestly_scoped": (
+                sos_candidate_exact_local_and_globally_fail_closed
+            ),
+            "gauged_G3_A_square_recoupling_exactly_source_bound": (
+                a_square_exactly_scoped
+            ),
+            "gauged_G3_SOS_BFB_stationarity_exactly_source_bound": (
+                sos_bfb_exactly_scoped
+            ),
+            "gauged_G3_PD_rank_direct_exact_and_fail_closed": (
+                pd_rank_direct_exact_and_fail_closed
+            ),
+            "gauged_G3_constructive_candidate_nonzero_of_51": [
+                sos_coefficients.get("nonzero_count"),
+                51,
+            ],
+            "gauged_G3_constructive_candidate_max_abs_coefficient": (
+                sos_coefficients.get("maximum_absolute_coefficient")
+            ),
+            "gauged_G3_constructive_candidate_J0": _dig(
+                sos_coefficients,
+                "symbolic_nonzero",
+                "lambda::O48_B01_Phi_self_quartics",
+            ),
+            "gauged_G3_exact_PD_rank_nullity": [
+                pd_core.get("rank"),
+                pd_core.get("nullity"),
+            ],
+            "gauged_G3_exact_full_Hessian_rank": pd_extension.get(
+                "exact_full_Hessian_rank"
+            ),
+            "gauged_G3_direct_PD_source_binding": pd_flags.get(
+                "direct_exact_source_binding"
+            ),
+            "gauged_G3_frontier_honestly_fail_closed": (
+                g3_frontier_honestly_fail_closed
+            ),
+            "gauged_G3_fixed_P_branch_exactly_excluded": (
+                fixed_p_branch_exactly_excluded
+            ),
+            "gauged_G3_lower_replacement_rejected_for_wrong_symmetry": (
+                lower_replacement_rejected_for_wrong_symmetry
+            ),
+            "gauged_G3_SU5_Delta_PD_exact_global_frontier": (
+                su5_delta_pd_exact_global_frontier
+            ),
+            "gauged_G3_SU5_Delta_PD_exact_Hessian_rank_nullity": (
+                [429, 33] if su5_delta_pd_exact_global_frontier else [None, None]
+            ),
+            "gauged_G3_SU5_Delta_PD_full_486_extension_open": not bool(
+                su5_pd_scope.get("full_486_field_stationarity")
+            ),
+            "gauged_G3_SU5_Delta_PD_global_orbit_uniqueness_open": not bool(
+                su5_pd_scope.get("global_orbit_uniqueness")
+            ),
+            "gauged_G3_SU5_Delta_HSX_honest_frontier": (
+                su5_delta_hsx_honest_frontier
+            ),
+            "gauged_G3_SU5_Delta_HSX_exact_symmetry_ranks": [
+                su5_hsx_orbit.get("SO10_rank"),
+                su5_hsx_orbit.get("SO10_plus_U1X_rank"),
+                su5_hsx_orbit.get("SO10_plus_U1X_plus_PQ_rank"),
+            ],
+            "gauged_G3_SU5_Delta_HSX_full_quartic_BFB_exact": (
+                su5_hsx_bfb.get("homogeneous_quartic_BFB_certified")
+            ),
+            "gauged_G3_SU5_Delta_HSX_transverse_dimension": (
+                su5_hsx_hessian.get("transverse_dimension")
+            ),
+            "gauged_G3_SU5_Delta_HSX_full_Hessian_proof_grade": (
+                su5_hsx_hessian.get("proof_grade")
+            ),
+            "gauged_G3_SU5_Delta_HSX_exact_Hessian_audit_fail_closed": (
+                su5_hsx_exact_hessian_audit_fail_closed
+            ),
+            "gauged_G3_SU5_Delta_HSX_exact_Hessian_certified": (
+                hsx_exact_hessian_closed
+            ),
+            "gauged_G3_SU5_Delta_HSX_exact_Hessian_status": (
+                su5_hsx_exact_hessian.get("status")
+            ),
+            "gauged_G3_SU5_equality_honestly_reduced": (
+                su5_equality_honestly_reduced
+            ),
+            "gauged_G3_SU5_Phi_orbit_literal_refuted_signed_open": (
+                su5_phi_orbit_honestly_refuted_and_open
+            ),
+            "gauged_G3_SU5_signed_Phi_local_components_exactly_closed": (
+                su5_phi_local_components_exactly_closed
+            ),
+            "gauged_G3_SU5_distant_Phi_components_excluded": (
+                su5_phi_local_scope.get("disconnected_distant_components_excluded")
+            ),
+            "gauged_G3_SU5_Phi_SU3_fixed_slice_exactly_closed": (
+                su5_phi_su3_slice_exactly_closed
+            ),
+            "gauged_G3_SU5_global_Phi_orbit_lemma_open": not bool(
+                su5_equality_lemma.get("proved")
+            ),
+            "gauged_G3_SU5_chiral_global_gap_honestly_reduced": (
+                su5_chiral_gap_honestly_reduced
+            ),
+            "gauged_G3_SU5_fixed_F_full_gap_exactly_closed": (
+                su5_fixed_f_full_gap_closed
+            ),
+            "gauged_G3_SU5_arbitrary_Phi_offstratum_gap_open": not bool(
+                fixed_f_bound_scope.get("arbitrary_Phi_proved")
+            ),
+            "gauged_G3_SU5_max_negative_all_zero_residual_route_excluded": (
+                su5_max_negative_all_zero_route_excluded
+            ),
+            "gauged_G3_SU5_max_negative_all_zero_residual_strict_margin": _dig(
+                max_negative_bound,
+                "exact_stratum_gap",
+                "strict_margin",
+            ),
+            "gauged_G3_SU5_max_negative_pure_Delta_full_residual_gap_closed": (
+                su5_max_negative_full_residual_pure_delta_closed
+            ),
+            "gauged_G3_SU5_max_negative_pure_Delta_full_residual_minimum": (
+                max_negative_full_scope.get("restricted_gap_global_minimum")
+            ),
+            "gauged_G3_SU5_arbitrary_Phi_nonzero_residual_cancellations_open": (
+                not bool(
+                    max_negative_full_scope.get(
+                        "nonzero_Phi_Sigma_residuals_covered"
+                    )
+                    and max_negative_full_scope.get(
+                        "nonzero_chiral_Phi_H_residual_covered"
+                    )
+                )
+            ),
+            "gauged_G3_SU5_arbitrary_Phi_uniform_coercivity_open": not bool(
+                max_negative_full_scope.get("arbitrary_Sigma_orientation_proved")
+            ),
+            "gauged_G3_SU5_arbitrary_non_pure_Delta_Sigma_coercivity_open": not bool(
+                max_negative_full_scope.get("arbitrary_Sigma_orientation_proved")
+            ),
+            "gauged_G3_alternative_global_SOS_honestly_open": (
+                alternative_global_sos_honestly_open
+            ),
+            "gauged_G3_all_vanishing_global_SOS_routes_excluded": bool(
+                alternative_sos_flags.get(
+                    "all_vanishing_45_current_Gram_completion_excluded"
+                )
+                and alternative_sos_flags.get(
+                    "all_vanishing_affine_SOS_completion_excluded"
+                )
+                and alternative_sos_flags.get(
+                    "all_vanishing_unique_chiral_quartic_completion_excluded"
+                )
+            ),
+            "gauged_G3_SU5_beta_1_over_20_global_certified": (
+                su5_gap_flags.get("beta_1_over_20_global_minimum_certified")
+            ),
+            "gauged_G3_final_acceptance_test_passes": su5_gap_acceptance.get(
+                "currently_passes"
+            ),
+            "final_G3_acceptance_gate_honestly_open": final_g3_honestly_open,
+            "gauged_G3_contract_and_coverage_bound": gauged_g3_contract_bound,
+            "gauged_G3_direction_parameter_field_quotient_counts": [
+                gauged_coverage.get("invariant_directions"),
+                gauged_coverage.get("real_parameters"),
+                gauged_coverage.get("real_field_dimension"),
+                gauged_coverage.get("gauge_quotient_dimension_including_axion"),
+                gauged_coverage.get("massive_transverse_quotient_dimension"),
+            ],
+            "gauged_G3_gauge_quotient_dimension_449_certified": bool(
+                gauged_g3_contract_bound
+                and gauged_flags.get(
+                    "gauge_quotient_dimension_449_including_axion_certified"
+                )
+            ),
+            "gauged_G3_massive_transverse_dimension_448_certified": bool(
+                gauged_g3_contract_bound
+                and gauged_flags.get(
+                    "massive_transverse_quotient_dimension_448_certified"
+                )
+            ),
+            "gauged_G3_legacy_physical_quotient_448_alias_present": bool(
+                gauged_flags.get("physical_quotient_dimension_448_certified")
+            ),
+            "gauged_G3_stationarity_rank_13_exactly_certified": (
+                exact_stationarity_rank
+            ),
+            "gauged_model_wide_no_go_certified": model_wide_no_go,
+            "gauged_strict_local_physical_minimum": stable_quotient,
+            "gauged_complete_BFB": bfb,
+            "gauged_global_comparison_complete": global_minimum,
+            "historical_option_c_stationarity_authoritative": reports.get(
+                "g3_stationarity", {}
+            ).get("authoritative_for_manuscript", False),
+            "historical_option_c_hessian_authoritative": reports.get(
+                "g3_hessian", {}
+            ).get("authoritative_for_manuscript", False),
+            "historical_option_c_search_authoritative": reports.get(
+                "g3_search", {}
+            ).get("authoritative_for_manuscript", False),
         },
-        "No stable or sufficiently metastable vacuum realizes the assumed breaking chain.",
+        (
+            "A proof-grade no-go shows no BFB stationary vacuum in the complete "
+            "gauged scalar theory realizes the required breaking chain."
+        ),
         (
             "Complete minimization, Hessian/tachyon tests, Goldstone counting, "
             "global-or-metastable vacuum comparison, and physical scalar thresholds pass."
@@ -509,6 +1672,25 @@ def _reproducibility_gate(
             "V20_ERROR_AUDIT.json",
             "FALSIFICATION_VERDICT.json",
             "EXTENSIVE_CONFIRM_FALSIFY_VERDICT.json",
+            "GAUGED_U1X_G3_SOS_CANDIDATE_V20.json",
+            "EXACT_GAUGED_U1X_G3_PD_RANK_CERTIFICATE_V20.json",
+            "EXACT_GAUGED_U1X_G3_A_SQUARE_RECOUPLING_V20.json",
+            "EXACT_GAUGED_U1X_G3_SOS_BFB_STATIONARITY_V20.json",
+            "EXACT_GAUGED_U1X_G3_KERNEL_QUARTIC_BOUND_V20.json",
+            "EXACT_GAUGED_U1X_G3_REPLACEMENT_STATIONARY_ORBIT_V20.json",
+            "EXACT_GAUGED_U1X_G3_SU5_DELTA_PD_SOS_V20.json",
+            "EXACT_GAUGED_U1X_G3_SU5_DELTA_HSX_EXTENSION_V20.json",
+            "EXACT_GAUGED_U1X_G3_SU5_DELTA_HSX_EXACT_HESSIAN_V20.json",
+            "EXACT_GAUGED_U1X_G3_SU5_EQUALITY_ORBIT_V20.json",
+            "EXACT_GAUGED_U1X_G3_SU5_PHI_ORBIT_LEMMA_V20.json",
+            "EXACT_GAUGED_U1X_G3_SU5_PHI_LOCAL_COMPONENT_V20.json",
+            "EXACT_GAUGED_U1X_G3_SU5_PHI_SU3_SLICE_V20.json",
+            "EXACT_GAUGED_U1X_G3_SU5_CHIRAL_GLOBAL_GAP_REDUCTION_V20.json",
+            "EXACT_GAUGED_U1X_G3_SU5_FIXED_F_OFFKERNEL_BOUND_V20.json",
+            "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_ZERO_RESIDUAL_BOUND_V20.json",
+            "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_FULL_RESIDUAL_BOUND_V20.json",
+            "EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json",
+            "FINAL_G3_ACCEPTANCE_GATE_V20.json",
         )
         if name in missing
     ]
@@ -549,6 +1731,7 @@ def build_report(root: Path = ROOT) -> dict[str, Any]:
         str(root)
     ).countTestCases()
     gates = [
+        _model_contract_gate(reports),
         _core_gate(reports),
         _operator_gate(reports),
         _vacuum_gate(reports),
@@ -562,11 +1745,12 @@ def build_report(root: Path = ROOT) -> dict[str, Any]:
     ]
     states = {gate["name"]: gate["state"] for gate in gates}
     failed = [gate["name"] for gate in gates if gate["state"] == "FAIL"]
+    blocked = [gate["name"] for gate in gates if gate["state"] == "BLOCKED"]
     mandatory_open = [
         gate["name"]
         for gate in gates
         if gate["mandatory_for_full_validation"]
-        and gate["state"] in {"OPEN", "CONDITIONAL"}
+        and gate["state"] in {"OPEN", "CONDITIONAL", "BLOCKED"}
     ]
     all_mandatory_pass = not failed and not mandatory_open
 
@@ -574,6 +1758,9 @@ def build_report(root: Path = ROOT) -> dict[str, Any]:
     if failed:
         classification = "CURRENT_REALIZATION_REJECTED"
         decision = "REJECT"
+    elif blocked:
+        classification = "MODEL_CONTRACT_INCONSISTENT__AUTHORITATIVE_GATES_REOPENED"
+        decision = "WITHHOLD_APPROVAL"
     elif all_mandatory_pass:
         classification = "FULL_PHENOMENOLOGY_VALIDATED__NO_DISCOVERY_IMPLIED"
         decision = "VALIDATE_FULL_PHENOMENOLOGY"
@@ -656,6 +1843,7 @@ def build_report(root: Path = ROOT) -> dict[str, Any]:
 
     return {
         "status": "PASS" if integrity_pass else "FAIL",
+        "overall_state": _overall_state(integrity_pass, gates),
         "classification": classification,
         "decision": decision,
         "full_theory_validated": bool(all_mandatory_pass and integrity_pass),
@@ -664,6 +1852,8 @@ def build_report(root: Path = ROOT) -> dict[str, Any]:
         "n_gates": len(gates),
         "n_failed_gates": len(failed),
         "failed_gates": failed,
+        "n_blocked_gates": len(blocked),
+        "blocked_gates": blocked,
         "mandatory_nonpass_gates": mandatory_open,
         "overclaim_errors": overclaim_errors,
         "overclaim_warnings": overclaim_warnings,
@@ -674,8 +1864,11 @@ def build_report(root: Path = ROOT) -> dict[str, Any]:
             gate["name"]: gate["green_condition"] for gate in gates
         },
         "verdict": (
-            "The present repository can approve only an internally consistent, "
-            "conditional candidate. Full validity requires the complete operator "
+            "The present repository cannot approve a manuscript candidate while "
+            "the statically consistent gauged-U(1)_X SARAH model lacks v2 bound "
+            "external execution evidence. The historical "
+            "no-X calculations remain reproducible subtheorems, not validation. "
+            "Full validity requires a matching contract, the complete operator "
             "basis, scalar vacuum and spectrum, reference-derived two-loop thresholds, "
             "a common-scale flavour fit, UV-selected portal currents, proton decay, "
             "a fixed cosmology, and real independent 37 GHz data."
@@ -737,6 +1930,11 @@ def main() -> int:
             "classification"
         ),
     )
+    parser.add_argument(
+        "--expect-blocked",
+        action="store_true",
+        help="fail unless the current scientific state is honestly BLOCKED",
+    )
     parser.add_argument("--no-write", action="store_true")
     args = parser.parse_args()
 
@@ -754,6 +1952,7 @@ def main() -> int:
         json.dumps(
             {
                 "status": report["status"],
+                "overall_state": report["overall_state"],
                 "classification": report["classification"],
                 "decision": report["decision"],
                 "full_theory_validated": report["full_theory_validated"],
@@ -771,6 +1970,8 @@ def main() -> int:
         ok = ok and report["classification"] == (
             "INTERNALLY_CONSISTENT_CONDITIONAL_CANDIDATE"
         )
+    if args.expect_blocked:
+        ok = ok and report["overall_state"] == "BLOCKED"
     return 0 if ok else 1
 
 

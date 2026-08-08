@@ -13,17 +13,28 @@ class NextGenG1G6ProgressGateTests(unittest.TestCase):
 
     def test_gate_executes(self) -> None:
         self.assertEqual(self.report["n_failed"], 0, self.report["failures"])
-        self.assertEqual(self.report["overall_state"], "PARTIAL")
+        self.assertEqual(self.report["overall_state"], "BLOCKED")
+        self.assertFalse(self.report["contract_consistent"])
         self.assertEqual(self.report["n_closed_subproblems"], 26)
         self.assertTrue(all(self.report["closed_subproblems"].values()))
 
     def test_top_level_gates_remain_honest(self) -> None:
         states = self.report["gate_states"]
-        self.assertEqual(states["G1"], "CLOSED")
-        self.assertEqual(states["G2"], "CLOSED")
-        self.assertEqual(states["G6"], "PARTIAL")
-        self.assertEqual(states["G7"], "OPEN")
-        self.assertEqual(states["G8"], "PARTIAL")
+        self.assertTrue(all(state == "BLOCKED" for state in states.values()))
+
+        scoped = self.report["scoped_subtheorems"]
+        self.assertTrue(scoped["exact_X_G1"]["completed"])
+        self.assertEqual(scoped["exact_X_G1"]["invariant_directions"], 44)
+        self.assertEqual(scoped["exact_X_G1"]["real_potential_parameters"], 51)
+        self.assertTrue(scoped["exact_X_G2"]["completed"])
+        self.assertEqual(scoped["exact_X_G2"]["real_field_dimension"], 486)
+        self.assertEqual(scoped["exact_X_G2"]["promoted_stationarity_rank"], 13)
+        self.assertEqual(scoped["exact_X_G2"]["promoted_stationarity_nullity"], 38)
+        self.assertFalse(
+            scoped["historical_option_C"]["authoritative_for_gauged_model"]
+        )
+        self.assertEqual(scoped["historical_option_C"]["invariant_directions"], 64)
+        self.assertEqual(scoped["historical_option_C"]["real_potential_parameters"], 91)
 
     def test_authoritative_structure(self) -> None:
         structure = self.report["authoritative_triplet_structure"]
@@ -63,7 +74,10 @@ class NextGenG1G6ProgressGateTests(unittest.TestCase):
         self.assertTrue(flags["shared_Hermitian_54_channel_closed"])
         self.assertTrue(flags["shared_Hermitian_45_channel_closed"])
         self.assertTrue(flags["PhiH_Hermitian_channel_family_complete"])
-        self.assertTrue(flags["G1_closed"])
+        self.assertTrue(flags["exact_X_G1_G2_scoped_subtheorems_complete"])
+        self.assertFalse(flags["historical_option_C_authoritative"])
+        self.assertTrue(flags["G6_diagnostics_are_scoped_not_gate_closure"])
+        self.assertFalse(flags["G1_closed"])
         self.assertFalse(flags["G6_closed"])
         self.assertFalse(flags["physical_triplet_spectrum_complete"])
         self.assertFalse(flags["exact_unique_proton_lifetime"])

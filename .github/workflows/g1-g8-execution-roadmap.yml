@@ -3,44 +3,253 @@ name: g1-g8-execution-roadmap
 on:
   push:
     branches:
-      - agent/g1-g8-roadmap-ew-backreaction
+      - main
   pull_request:
     paths:
       - g1_g8_execution_roadmap_v20.py
       - test_g1_g8_execution_roadmap_v20.py
+      - g1_g8_gate_ledger_v20.py
+      - exact_x_symmetry_consistency_gate_v20.py
+      - gauged_u1x_scalar_contract_v20.py
+      - exact_gauged_u1x_g3_pd_rank_certificate_v20.py
+      - exact_gauged_u1x_g3_a_square_recoupling_v20.py
+      - exact_gauged_u1x_g3_sos_bfb_stationarity_v20.py
+      - gauged_u1x_g3_sos_candidate_v20.py
+      - exact_gauged_u1x_g3_kernel_quartic_bound_v20.py
+      - exact_gauged_u1x_g3_replacement_stationary_orbit_v20.py
+      - exact_gauged_u1x_g3_su5_delta_pd_sos_v20.py
+      - exact_gauged_u1x_g3_su5_delta_hsx_extension_v20.py
+      - exact_gauged_u1x_g3_su5_delta_hsx_exact_hessian_v20.py
+      - test_exact_gauged_u1x_g3_su5_delta_hsx_exact_hessian_v20.py
+      - exact_gauged_u1x_g3_su5_phi_orbit_lemma_v20.py
+      - test_exact_gauged_u1x_g3_su5_phi_orbit_lemma_v20.py
+      - exact_gauged_u1x_g3_su5_phi_local_component_v20.py
+      - test_exact_gauged_u1x_g3_su5_phi_local_component_v20.py
+      - exact_gauged_u1x_g3_su5_phi_su3_slice_v20.py
+      - test_exact_gauged_u1x_g3_su5_phi_su3_slice_v20.py
+      - exact_gauged_u1x_g3_su5_equality_orbit_v20.py
+      - exact_gauged_u1x_g3_su5_chiral_global_gap_reduction_v20.py
+      - exact_gauged_u1x_g3_su5_fixed_f_offkernel_bound_v20.py
+      - test_exact_gauged_u1x_g3_su5_fixed_f_offkernel_bound_v20.py
+      - exact_gauged_u1x_g3_su5_max_negative_zero_residual_bound_v20.py
+      - test_exact_gauged_u1x_g3_su5_max_negative_zero_residual_bound_v20.py
+      - exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py
+      - test_exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py
+      - exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py
+      - test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py
+      - final_g3_acceptance_gate_v20.py
       - .github/workflows/g1-g8-execution-roadmap.yml
   workflow_dispatch:
 
 jobs:
   g1-g8-execution-roadmap:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 60
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      NUMEXPR_NUM_THREADS: "1"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
       - name: Install test dependency
-        run: python -m pip install --upgrade pip pytest
+        run: python -m pip install -r requirements.txt
       - name: Compile roadmap
-        run: python -m py_compile g1_g8_execution_roadmap_v20.py test_g1_g8_execution_roadmap_v20.py
+        run: |
+          python -m py_compile \
+            g1_g8_execution_roadmap_v20.py \
+            test_g1_g8_execution_roadmap_v20.py \
+            exact_gauged_u1x_g3_pd_rank_certificate_v20.py \
+            exact_gauged_u1x_g3_a_square_recoupling_v20.py \
+            exact_gauged_u1x_g3_sos_bfb_stationarity_v20.py \
+            gauged_u1x_g3_sos_candidate_v20.py \
+            exact_gauged_u1x_g3_kernel_quartic_bound_v20.py \
+            exact_gauged_u1x_g3_replacement_stationary_orbit_v20.py \
+            exact_gauged_u1x_g3_su5_delta_pd_sos_v20.py \
+            exact_gauged_u1x_g3_su5_delta_hsx_extension_v20.py \
+            exact_gauged_u1x_g3_su5_delta_hsx_exact_hessian_v20.py \
+            exact_gauged_u1x_g3_su5_phi_orbit_lemma_v20.py \
+            exact_gauged_u1x_g3_su5_phi_local_component_v20.py \
+            exact_gauged_u1x_g3_su5_phi_su3_slice_v20.py \
+            exact_gauged_u1x_g3_su5_equality_orbit_v20.py \
+            exact_gauged_u1x_g3_su5_chiral_global_gap_reduction_v20.py \
+            exact_gauged_u1x_g3_su5_fixed_f_offkernel_bound_v20.py \
+            exact_gauged_u1x_g3_su5_max_negative_zero_residual_bound_v20.py \
+            exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py \
+            exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py \
+            final_g3_acceptance_gate_v20.py
+      - name: Rebuild exact local G3 frontier
+        run: |
+          python exact_gauged_u1x_g3_pd_rank_certificate_v20.py --recompute-heavy --write
+          python exact_gauged_u1x_g3_a_square_recoupling_v20.py --recompute --write
+          python exact_gauged_u1x_g3_sos_bfb_stationarity_v20.py --recompute --write
+          python gauged_u1x_g3_sos_candidate_v20.py --write
+          python exact_gauged_u1x_g3_kernel_quartic_bound_v20.py --write
+          python exact_gauged_u1x_g3_replacement_stationary_orbit_v20.py --write
+          python exact_gauged_u1x_g3_su5_delta_pd_sos_v20.py --write
+          python exact_gauged_u1x_g3_su5_delta_hsx_extension_v20.py --write
+          python exact_gauged_u1x_g3_su5_delta_hsx_exact_hessian_v20.py --write
+          python exact_gauged_u1x_g3_su5_phi_orbit_lemma_v20.py --write
+          python exact_gauged_u1x_g3_su5_phi_local_component_v20.py --write
+          python exact_gauged_u1x_g3_su5_phi_su3_slice_v20.py --write
+          python exact_gauged_u1x_g3_su5_equality_orbit_v20.py --write
+          python exact_gauged_u1x_g3_su5_chiral_global_gap_reduction_v20.py --write
+          python exact_gauged_u1x_g3_su5_fixed_f_offkernel_bound_v20.py --write
+          python exact_gauged_u1x_g3_su5_max_negative_zero_residual_bound_v20.py --write
+          python exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py --write
+          python exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py --write
       - name: Test roadmap contracts
-        run: python -m pytest -q test_g1_g8_execution_roadmap_v20.py
+        run: |
+          python -m pytest -q \
+            test_g1_g8_execution_roadmap_v20.py \
+            test_exact_gauged_u1x_g3_pd_rank_certificate_v20.py \
+            test_exact_gauged_u1x_g3_a_square_recoupling_v20.py \
+            test_exact_gauged_u1x_g3_sos_bfb_stationarity_v20.py \
+            test_gauged_u1x_g3_sos_candidate_v20.py \
+            test_exact_gauged_u1x_g3_kernel_quartic_bound_v20.py \
+            test_exact_gauged_u1x_g3_replacement_stationary_orbit_v20.py \
+            test_exact_gauged_u1x_g3_su5_delta_pd_sos_v20.py \
+            test_exact_gauged_u1x_g3_su5_delta_hsx_extension_v20.py \
+            test_exact_gauged_u1x_g3_su5_delta_hsx_exact_hessian_v20.py \
+            test_exact_gauged_u1x_g3_su5_phi_orbit_lemma_v20.py \
+            test_exact_gauged_u1x_g3_su5_phi_local_component_v20.py \
+            test_exact_gauged_u1x_g3_su5_phi_su3_slice_v20.py \
+            test_exact_gauged_u1x_g3_su5_equality_orbit_v20.py \
+            test_exact_gauged_u1x_g3_su5_chiral_global_gap_reduction_v20.py \
+            test_exact_gauged_u1x_g3_su5_fixed_f_offkernel_bound_v20.py \
+            test_exact_gauged_u1x_g3_su5_max_negative_zero_residual_bound_v20.py \
+            test_exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py \
+            test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py \
+            test_final_g3_acceptance_gate_v20.py
       - name: Generate roadmap artifacts
-        run: python g1_g8_execution_roadmap_v20.py --json G1_G8_EXECUTION_ROADMAP_V20.json > /tmp/g1-g8-roadmap.log
+        run: |
+          python g1_g8_execution_roadmap_v20.py --write > /tmp/g1-g8-roadmap.log
+          python final_g3_acceptance_gate_v20.py --write > /tmp/final-g3.log
       - name: Assert fail-closed roadmap
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
           report = json.loads(Path('G1_G8_EXECUTION_ROADMAP_V20.json').read_text())
+          pd = json.loads(Path('EXACT_GAUGED_U1X_G3_PD_RANK_CERTIFICATE_V20.json').read_text())
+          sos = json.loads(Path('EXACT_GAUGED_U1X_G3_SOS_BFB_STATIONARITY_V20.json').read_text())
+          candidate = json.loads(Path('GAUGED_U1X_G3_SOS_CANDIDATE_V20.json').read_text())
+          kernel = json.loads(Path('EXACT_GAUGED_U1X_G3_KERNEL_QUARTIC_BOUND_V20.json').read_text())
+          replacement = json.loads(Path('EXACT_GAUGED_U1X_G3_REPLACEMENT_STATIONARY_ORBIT_V20.json').read_text())
+          su5 = json.loads(Path('EXACT_GAUGED_U1X_G3_SU5_DELTA_PD_SOS_V20.json').read_text())
+          hsx = json.loads(Path('EXACT_GAUGED_U1X_G3_SU5_DELTA_HSX_EXTENSION_V20.json').read_text())
+          hsx_exact = json.loads(Path('EXACT_GAUGED_U1X_G3_SU5_DELTA_HSX_EXACT_HESSIAN_V20.json').read_text())
+          phi_orbit = json.loads(Path('EXACT_GAUGED_U1X_G3_SU5_PHI_ORBIT_LEMMA_V20.json').read_text())
+          phi_local = json.loads(Path('EXACT_GAUGED_U1X_G3_SU5_PHI_LOCAL_COMPONENT_V20.json').read_text())
+          phi_su3 = json.loads(Path('EXACT_GAUGED_U1X_G3_SU5_PHI_SU3_SLICE_V20.json').read_text())
+          equality = json.loads(Path('EXACT_GAUGED_U1X_G3_SU5_EQUALITY_ORBIT_V20.json').read_text())
+          gap = json.loads(Path('EXACT_GAUGED_U1X_G3_SU5_CHIRAL_GLOBAL_GAP_REDUCTION_V20.json').read_text())
+          fixed_f_bound = json.loads(Path('EXACT_GAUGED_U1X_G3_SU5_FIXED_F_OFFKERNEL_BOUND_V20.json').read_text())
+          max_negative = json.loads(Path('EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_ZERO_RESIDUAL_BOUND_V20.json').read_text())
+          max_negative_full = json.loads(Path('EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_FULL_RESIDUAL_BOUND_V20.json').read_text())
+          alternative_sos = json.loads(Path('EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json').read_text())
+          final_g3 = json.loads(Path('FINAL_G3_ACCEPTANCE_GATE_V20.json').read_text())
           assert report['n_failed'] == 0, report['failures']
-          assert report['gates']['G1']['status'] == 'CLOSED'
-          assert report['gates']['G2']['status'] == 'CLOSED'
-          assert report['gates']['G7']['status'] == 'OPEN'
-          assert [name for name, row in report['gates'].items() if row['status'] == 'CLOSED'] == ['G1', 'G2']
+          assert report['overall_state'] == 'BLOCKED'
+          assert report['contract_consistent'] is False
+          assert report['critical_path'][0] == 'MODEL_CONTRACT'
+          assert report['tasks'][0]['status'] == 'BLOCKED__EXTERNAL_SARAH_EXECUTION_ATTESTATION_MISSING'
+          x=report['model_contract_reports']['exact_X']
+          assert x['static_contract_consistent'] is True
+          assert x['blocker'] == 'AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED'
+          assert x['executable_scaffold_contract']['model_syntax_class'] == 'sarah_native'
+          assert x['executable_scaffold_contract']['tool_native_sarah_syntax']
+          assert not x['external_model_validation']['valid']
+          assert x['repository_external_input_manifest']['valid']
+          assert report['summary']['closed'] == []
+          assert all(row['status'] == 'BLOCKED' for row in report['gates'].values())
           assert report['dependencies']['G8'] == ['G3', 'G6', 'G7']
-          assert 'empirical discovery' in report['new_physics_policy']
+          assert report['historical_option_c_subtheorems']['G1']['invariant_directions'] == 64
+          assert report['historical_option_c_subtheorems']['G3']['massive_physical_quotient_dimension'] == 449
+          assert 'discovery' in report['new_physics_policy']
+          assert pd['flags']['direct_exact_source_binding']
+          assert pd['flags']['proof_grade_full_rank_448']
+          assert pd['flags']['strict_transverse_Hessian_positive_certified']
+          assert not pd['flags']['global_minimum_certified']
+          assert not pd['flags']['G3_closed']
+          assert sos['flags']['complete_potential_BFB_exactly_certified']
+          assert sos['flags']['selected_vacuum_stationarity_exactly_certified']
+          assert not sos['flags']['selected_vacuum_global_minimum_certified']
+          assert not sos['flags']['G3_closed']
+          assert candidate['flags']['strict_local_minimum_certified']
+          assert not candidate['flags']['selected_vacuum_global_minimum_certified']
+          assert not candidate['flags']['G3_closed']
+          assert kernel['flags']['fixed_P_branch_closed_negative']
+          assert not kernel['flags']['whole_model_excluded']
+          assert not replacement['flags']['replacement_target_gauge_symmetry_correct']
+          assert su5['scope']['Phi_Sigma_global_minimum_exact']
+          assert su5['scope']['SO10_to_SM_stabilizer_dimension_exact']
+          assert not su5['scope']['full_486_field_stationarity']
+          assert not su5['scope']['G3_closed']
+          assert hsx['n_failed'] == 0 and hsx['flag']['chiral_H_exact_stationary_candidate_constructed']
+          assert hsx['flag']['full_quartic_BFB_certified'] and not hsx['flag']['full_global_minimum_certified']
+          assert hsx['chiral_H_candidate']['exact_orbit']['SO10_plus_U1X_plus_PQ_rank'] == 38
+          assert hsx['live_full_gradient_and_quotient_Hessian']['transverse_dimension'] == 448
+          assert not hsx['live_full_gradient_and_quotient_Hessian']['proof_grade']
+          assert hsx_exact['status'] == 'EXACT_FULL_HESSIAN_RANK_448_NULLITY_38_CERTIFIED'
+          assert hsx_exact['overall_state'] == 'CLOSED_FULL_LOCAL_HESSIAN_SUBPROBLEM'
+          assert all(hsx_exact['flags'][name] for name in ('exact_rank_448','exact_nullity_38','exact_PSD','strict_quotient','proof_grade','source_binding'))
+          assert not hsx_exact['G3_closed']
+          assert phi_orbit['n_failed'] == 0 and phi_orbit['status'] == 'LITERAL_SINGLE_ORBIT_LEMMA_REFUTED__SIGNED_GLOBAL_LEMMA_OPEN'
+          assert phi_orbit['scope']['literal_plus_orbit_only_statement_refuted']
+          assert not phi_orbit['scope']['corrected_signed_two_orbit_theorem_proved']
+          assert not phi_orbit['scope']['G3_closed']
+          assert phi_local['n_failed'] == 0 and phi_local['status'] == 'EXACT_LOCAL_COMPONENT_THEOREM_CLOSED__DISTANT_COMPONENTS_OPEN'
+          assert phi_local['scope']['signed_orbit_locally_isolated']
+          assert not phi_local['scope']['disconnected_distant_components_excluded']
+          assert not phi_local['scope']['G3_closed']
+          assert phi_su3['n_failed'] == 0 and phi_su3['status'] == 'EXACT_COMPLETE_SU3_FIXED_SLICE_CLASSIFIED__GENERIC_GLOBAL_OPEN'
+          assert phi_su3['scope']['complete_16_real_dimensional_SU3_fixed_space_classified']
+          assert phi_su3['scope']['all_nonzero_slice_solutions_are_signed_Kahler_squares']
+          assert not phi_su3['scope']['corrected_signed_global_orbit_theorem_proved']
+          assert equality['n_failed'] == 0 and not equality['remaining_global_lemma']['proved']
+          assert not equality['scope']['global_equality_orbit_classification_complete']
+          assert gap['n_failed'] == 0 and not gap['flags']['lower_witness_found']
+          assert not gap['flags']['beta_1_over_20_global_minimum_certified']
+          assert fixed_f_bound['n_failed'] == 0 and fixed_f_bound['status'] == 'EXACT_FIXED_F_FULL_OFFKERNEL_BETA_GAP_CERTIFIED'
+          assert fixed_f_bound['scope']['global_gap_nonnegative_on_full_fixed_F_stratum']
+          assert fixed_f_bound['checks']['full_fixed_F_equality_orbit_exact']
+          assert fixed_f_bound['flags']['equality_is_selected_SU5_flag_orbit']
+          assert not fixed_f_bound['flags']['arbitrary_Phi_proved']
+          assert max_negative['n_failed'] == 0, max_negative['failures']
+          assert max_negative['status'] == 'EXACT_PURE_DELTA_MAX_NEGATIVE_MIXED_ZERO_ROUTE_EXCLUDED'
+          assert max_negative['overall_state'] == 'CLOSED_PURE_DELTA_MAX_NEGATIVE_MIXED_ZERO_STRATUM__ARBITRARY_PHI_OPEN'
+          assert max_negative['model_contract_id'] == 'gauged_u1x_phi17_v20'
+          assert max_negative['scope']['strongest_all_zero_max_negative_route_excluded'] is True
+          assert max_negative['scope']['strongest_pure_Delta_mixed_zero_max_negative_route_excluded'] is True
+          assert max_negative['scope']['normalized_affine_stratum_requires_u_gt_0_v_gt_0'] is True
+          assert max_negative['scope']['u_zero_and_v_zero_boundaries_closed_separately'] is True
+          assert max_negative['checks']['live_HSX_and_PD_coefficients_bound_exactly'] is True
+          assert max_negative['checks']['N_and_C00_C11_contraction_identities_computed_exactly'] is True
+          assert max_negative['checks']['u_zero_and_v_zero_radial_boundaries_closed_exactly'] is True
+          assert max_negative['scope']['nonzero_residual_cancellations_excluded'] is False
+          assert max_negative['scope']['arbitrary_Phi_global_gap_proved'] is False
+          assert max_negative['scope']['G3_closed'] is False
+          assert max_negative_full['n_failed'] == 0, max_negative_full['failures']
+          assert max_negative_full['status'] == 'EXACT_MAX_NEGATIVE_FULL_RESIDUAL_PURE_DELTA_BOUND_CERTIFIED'
+          assert max_negative_full['overall_state'] == 'CLOSED_MAX_NEGATIVE_PURE_DELTA_ARBITRARY_PHI_SUBPROBLEM'
+          assert max_negative_full['model_contract_id'] == 'gauged_u1x_phi17_v20'
+          assert max_negative_full['scope']['Phi_arbitrary_real_210'] is True
+          assert max_negative_full['scope']['nonzero_Phi_Sigma_residuals_covered'] is True
+          assert max_negative_full['scope']['nonzero_chiral_Phi_H_residual_covered'] is True
+          assert max_negative_full['scope']['restricted_gap_global_minimum'] == '1/5000'
+          assert max_negative_full['scope']['arbitrary_Sigma_orientation_proved'] is False
+          assert max_negative_full['scope']['G3_closed'] is False
+          assert alternative_sos['n_failed'] == 0 and alternative_sos['overall_state'] == 'G3_GLOBAL_ALTERNATIVE_OPEN'
+          assert alternative_sos['flags']['all_vanishing_45_current_Gram_completion_excluded']
+          assert alternative_sos['flags']['all_vanishing_affine_SOS_completion_excluded']
+          assert not alternative_sos['flags']['nonvanishing_residual_gradient_cancellation_excluded']
+          assert not alternative_sos['flags']['G3_closed']
+          assert final_g3['n_failed'] == 0 and final_g3['overall_state'] == 'OPEN'
+          assert not final_g3['classification']['G3_closed']
           PY
       - uses: actions/upload-artifact@v4
         with:
@@ -48,3 +257,39 @@ jobs:
           path: |
             G1_G8_EXECUTION_ROADMAP_V20.json
             G1_G8_EXECUTION_ROADMAP_V20.md
+            EXACT_GAUGED_U1X_G3_PD_RANK_CERTIFICATE_V20.json
+            EXACT_GAUGED_U1X_G3_PD_RANK_CERTIFICATE_V20.md
+            EXACT_GAUGED_U1X_G3_SOS_BFB_STATIONARITY_V20.json
+            EXACT_GAUGED_U1X_G3_SOS_BFB_STATIONARITY_V20.md
+            GAUGED_U1X_G3_SOS_CANDIDATE_V20.json
+            GAUGED_U1X_G3_SOS_CANDIDATE_V20.md
+            EXACT_GAUGED_U1X_G3_KERNEL_QUARTIC_BOUND_V20.json
+            EXACT_GAUGED_U1X_G3_KERNEL_QUARTIC_BOUND_V20.md
+            EXACT_GAUGED_U1X_G3_REPLACEMENT_STATIONARY_ORBIT_V20.json
+            EXACT_GAUGED_U1X_G3_REPLACEMENT_STATIONARY_ORBIT_V20.md
+            EXACT_GAUGED_U1X_G3_SU5_DELTA_PD_SOS_V20.json
+            EXACT_GAUGED_U1X_G3_SU5_DELTA_PD_SOS_V20.md
+            EXACT_GAUGED_U1X_G3_SU5_DELTA_HSX_EXTENSION_V20.json
+            EXACT_GAUGED_U1X_G3_SU5_DELTA_HSX_EXTENSION_V20.md
+            EXACT_GAUGED_U1X_G3_SU5_DELTA_HSX_EXACT_HESSIAN_V20.json
+            EXACT_GAUGED_U1X_G3_SU5_DELTA_HSX_EXACT_HESSIAN_V20.md
+            EXACT_GAUGED_U1X_G3_SU5_PHI_ORBIT_LEMMA_V20.json
+            EXACT_GAUGED_U1X_G3_SU5_PHI_ORBIT_LEMMA_V20.md
+            EXACT_GAUGED_U1X_G3_SU5_PHI_LOCAL_COMPONENT_V20.json
+            EXACT_GAUGED_U1X_G3_SU5_PHI_LOCAL_COMPONENT_V20.md
+            EXACT_GAUGED_U1X_G3_SU5_PHI_SU3_SLICE_V20.json
+            EXACT_GAUGED_U1X_G3_SU5_PHI_SU3_SLICE_V20.md
+            EXACT_GAUGED_U1X_G3_SU5_EQUALITY_ORBIT_V20.json
+            EXACT_GAUGED_U1X_G3_SU5_EQUALITY_ORBIT_V20.md
+            EXACT_GAUGED_U1X_G3_SU5_CHIRAL_GLOBAL_GAP_REDUCTION_V20.json
+            EXACT_GAUGED_U1X_G3_SU5_CHIRAL_GLOBAL_GAP_REDUCTION_V20.md
+            EXACT_GAUGED_U1X_G3_SU5_FIXED_F_OFFKERNEL_BOUND_V20.json
+            EXACT_GAUGED_U1X_G3_SU5_FIXED_F_OFFKERNEL_BOUND_V20.md
+            EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_ZERO_RESIDUAL_BOUND_V20.json
+            EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_ZERO_RESIDUAL_BOUND_V20.md
+            EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_FULL_RESIDUAL_BOUND_V20.json
+            EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_FULL_RESIDUAL_BOUND_V20.md
+            EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json
+            EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.md
+            FINAL_G3_ACCEPTANCE_GATE_V20.json
+            FINAL_G3_ACCEPTANCE_GATE_V20.md

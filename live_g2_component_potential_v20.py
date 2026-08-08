@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Corrected public interface for the live G2 component-potential work.
+"""Historical Option-C/no-X interface for the component-potential value layer.
 
 PR #155 identified the 64 invariant directions and 91 real coupling
 parameters, but its implementation and closure claim were invalid:
@@ -12,7 +12,7 @@ parameters, but its implementation and closure claim were invalid:
 * an eight-coordinate species probe is not the complete 486-real gradient or
   Hessian required by G2.
 
-The authoritative arbitrary-field value layer is
+The corrected historical arbitrary-field value layer is
 ``live_g2_arbitrary_component_potential_values_v20``. It compiles all 48
 Hermitian orbits, 64 normalized directions, and 91 real parameters with
 physical chirality enforcement and homogeneous-scaling checks.
@@ -23,7 +23,10 @@ The scalar coordinate count is exactly
 
 for real 210_H, complex 10_H, complex chiral 126bar_H, complex S, and complex
 Phi17. The symmetric Hessian therefore has 486*487/2 = 118341 independent
-entries. Until those complete derivatives exist, G2 remains PARTIAL.
+entries. These counts belong to ``historical_option_c_no_x_v20`` and do not
+implement the continuous-X filter of the manuscript. Consequently this
+module is not authoritative for manuscript G1 or G2, irrespective of the
+historical value-layer result.
 """
 from __future__ import annotations
 
@@ -39,6 +42,8 @@ import live_g2_arbitrary_component_potential_values_v20 as exact
 ROOT = Path(__file__).resolve().parent
 OUT_JSON = ROOT / "LIVE_G2_COMPONENT_POTENTIAL_V20.json"
 OUT_MD = ROOT / "LIVE_G2_COMPONENT_POTENTIAL_V20.md"
+MODEL_CONTRACT_ID = "historical_option_c_no_x_v20"
+AUTHORITATIVE_FOR_MANUSCRIPT = False
 
 FieldConfiguration = exact.FieldState
 
@@ -150,7 +155,13 @@ def finite_difference_hessian(*_args: Any, **_kwargs: Any) -> dict[str, Any]:
 def build_report() -> dict[str, Any]:
     corrected = exact.build_report()
     checks = {
-        "corrected_value_layer_executes": corrected["n_failed"] == 0,
+        "historical_option_c_value_layer_executes": corrected["n_failed"] == 0,
+        "historical_model_contract_matches": (
+            corrected.get("model_contract_id") == MODEL_CONTRACT_ID
+        ),
+        "value_layer_is_not_authoritative_for_manuscript": (
+            corrected.get("authoritative_for_manuscript") is False
+        ),
         "all_48_orbits_compiled": corrected["counts"]["Hermitian_orbits"] == 48,
         "all_64_directions_compiled": (
             corrected["counts"]["invariant_directions"] == 64
@@ -175,15 +186,24 @@ def build_report() -> dict[str, Any]:
     failures = [name for name, passed in checks.items() if not passed]
     return {
         "status": (
-            "LIVE_G2_VALUE_LAYER_CORRECTED__FULL_DIFFERENTIATION_OPEN"
+            "HISTORICAL_OPTION_C_NO_X_G2_VALUE_LAYER_CORRECTED"
             if not failures
-            else "LIVE_G2_CORRECTION_FAILED"
+            else "HISTORICAL_OPTION_C_NO_X_G2_VALUE_LAYER_FAILED"
         ),
-        "overall_state": "PARTIAL" if not failures else "EXECUTION_FAIL",
+        "overall_state": "HISTORICAL" if not failures else "EXECUTION_FAIL",
+        "model_contract_id": MODEL_CONTRACT_ID,
+        "authoritative_for_manuscript": AUTHORITATIVE_FOR_MANUSCRIPT,
+        "supersedes_for_current_status": False,
         "n_checks": len(checks),
         "n_failed": len(failures),
         "failures": failures,
         "checks": checks,
+        "historical_contract": {
+            "gauge": ["SO(10)"],
+            "accidental_global": ["PQ"],
+            "residual": ["Z17"],
+            "continuous_X_enforced": False,
+        },
         "counts": {
             "independent_invariant_directions": corrected["counts"][
                 "invariant_directions"
@@ -215,9 +235,18 @@ def build_report() -> dict[str, Any]:
         },
         "value_layer": corrected,
         "flags": {
-            "g1_closed": True,
-            "g2_value_layer_complete": not failures,
-            "g2_coefficient_assembly_complete": not failures,
+            "historical_option_c_g1_closed": corrected["flags"][
+                "historical_option_c_g1_closed"
+            ],
+            "historical_option_c_g2_value_layer_complete": not failures,
+            "historical_option_c_g2_coefficient_assembly_complete": not failures,
+            "historical_option_c_g2_closed_by_this_module": False,
+            "authoritative_manuscript_g1_closed": False,
+            "authoritative_manuscript_g2_value_layer_complete": False,
+            "authoritative_manuscript_g2_closed": False,
+            "g1_closed": False,
+            "g2_value_layer_complete": False,
+            "g2_coefficient_assembly_complete": False,
             "g2_complete_field_gradient": False,
             "g2_complete_field_Hessian": False,
             "g2_closed": False,
@@ -233,13 +262,14 @@ def build_report() -> dict[str, Any]:
             "empirical_discovery": False,
         },
         "next_exact_target": (
-            "Construct the canonical 486-real physical field vector and emit "
-            "the complete 91-parameter gradient and Hessian with direction provenance."
+            "Use gauged_u1x_scalar_contract_v20.py and "
+            "gauged_u1x_g2_derivative_audit_v20.py for the manuscript's "
+            "44-direction/51-real-parameter exact-X calculation."
         ),
         "verdict": (
-            "The 64-direction arbitrary-field value and 91-parameter assembly "
-            "layer is corrected. G2 is PARTIAL, not closed: the complete "
-            "486-real gradient and Hessian have not yet been constructed."
+            "The historical Option-C/no-X 64-direction arbitrary-field value "
+            "and 91-parameter assembly layer is corrected. It neither closes "
+            "nor supersedes manuscript G1 or G2 under gauged U(1)_X."
         ),
     }
 
@@ -247,10 +277,12 @@ def build_report() -> dict[str, Any]:
 def write_markdown(report: dict[str, Any]) -> str:
     return "\n".join(
         [
-            "# Corrected live G2 component potential — v20",
+            "# Historical Option-C/no-X G2 component potential — v20",
             "",
             f"**Status:** `{report['status']}`",
             f"**Overall state:** `{report['overall_state']}`",
+            f"**Model contract:** `{report['model_contract_id']}`",
+            f"**Authoritative for manuscript:** `{report['authoritative_for_manuscript']}`",
             "",
             report["verdict"],
             "",

@@ -55,7 +55,7 @@ def resolve_operators() -> list[dict[str, Any]]:
         "126bar_H^2 10_H^2 S^2": ("LITERATURE_CLAIMED", "locking CG normalization open"),
     }
     output: list[dict[str, Any]] = []
-    for operator in z17.operator_catalogue():
+    for operator in z17.operator_catalogue(require_x=True):
         row = dict(operator)
         if row["name"] in resolutions:
             verdict, reason = resolutions[row["name"]]

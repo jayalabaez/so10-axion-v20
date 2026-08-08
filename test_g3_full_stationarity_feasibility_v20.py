@@ -22,6 +22,11 @@ class G3FullStationarityFeasibilityTests(unittest.TestCase):
             else None
         )
 
+    def test_historical_option_c_scope_is_explicit(self):
+        self.assertEqual(mod.MODEL_CONTRACT_ID, "historical_option_c_no_x_v20")
+        self.assertFalse(mod.AUTHORITATIVE_FOR_MANUSCRIPT)
+        self.assertFalse(mod.MODEL_WIDE_NO_GO_CERTIFIED)
+
     def test_authoritative_metadata_partition(self):
         directions = mod.direction_metadata()
         self.assertEqual(len(directions), 64)

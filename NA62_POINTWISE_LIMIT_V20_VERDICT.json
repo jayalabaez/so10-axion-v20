@@ -1,0 +1,73 @@
+{
+  "status": "NA62_POINTWISE_LIMIT_APPLIED__GENERATION_DEPENDENT_POINT_EXCLUDED",
+  "n_checks": 6,
+  "n_failed": 0,
+  "failures": [],
+  "source": {
+    "collaboration": "NA62",
+    "publication_title": "Searches for hidden sectors using K+ to pi+ X decays",
+    "publication_hepdata_doi": "10.17182/hepdata.160245.v2",
+    "table_doi": "10.17182/hepdata.160245.v2/t3",
+    "publication_recid": 160245,
+    "table_id": 1815429,
+    "version": 2,
+    "table_name": "Figure 2-a",
+    "endpoint": "https://www.hepdata.net/record/data/160245/1815429/2?format=json",
+    "license": "CC0",
+    "canonical_payload_sha256": "dc4e94e6223dc4e002413c68f0a4d752afca7b4030943eb0bc9aec3ce14e2555",
+    "vendored_scope": "Minimal offline anchor sufficient for the v20 axion mass, which is 1.535e-10 MeV and lies effectively at zero mass. The complete 151-point curve remains available from the official endpoint."
+  },
+  "target": {
+    "axion_mass_GeV": 1.535e-13,
+    "axion_mass_MeV": 1.535e-10,
+    "limit_evaluation": {
+      "mass_MeV": 1.535e-10,
+      "observed_br_ul_90cl": 2.9120000000069075e-11,
+      "interpolation": "linear_between_official_grid_points",
+      "lower_anchor": {
+        "mass_MeV": 0.0,
+        "observed_br_ul_90cl": 2.912e-11
+      },
+      "upper_anchor": {
+        "mass_MeV": 1.4,
+        "observed_br_ul_90cl": 2.975e-11
+      },
+      "fraction_from_lower_anchor": 1.0964285714285716e-10
+    }
+  },
+  "hierarchical_universal_benchmark": {
+    "predicted_branching_ratio": 9.737785334278848e-31,
+    "observed_br_upper_limit_90cl": 2.9120000000069075e-11,
+    "prediction_over_limit": 3.344019688961452e-20,
+    "pointwise_excluded_90cl": false,
+    "K_L_plus_K_R_abs": 1.2756033636485075e-11,
+    "K_L_plus_K_R_abs_upper_bound": 0.06975594761464027,
+    "required_amplitude_scale_to_reach_limit": 5468466892.022206
+  },
+  "generation_dependent_counterexample": {
+    "predicted_branching_ratio": 3.65003319938114e-11,
+    "observed_br_upper_limit_90cl": 2.9120000000069075e-11,
+    "prediction_over_limit": 1.253445466817473,
+    "pointwise_excluded_90cl": true,
+    "K_L_plus_K_R_abs": 0.07809693050772354,
+    "K_L_plus_K_R_abs_upper_bound": 0.06975594761464027,
+    "required_amplitude_scale_to_reach_limit": 0.8931970457883953
+  },
+  "flag": {
+    "official_pointwise_observed_limit_ingested": true,
+    "offline_provenance_hash_verified": true,
+    "hierarchical_benchmark_excluded": false,
+    "generation_dependent_portal_point_excluded": true,
+    "all_portal_parameter_space_excluded": false,
+    "full_correlated_experimental_likelihood_implemented": false,
+    "component_specific_uv_chiral_currents_derived": false,
+    "whole_v20_model_excluded": false
+  },
+  "interpretation": "At the v20 mass the official NA62 observed 90% CL upper limit is 2.912000e-11. The hierarchical universal benchmark is far below it. The selected generation-dependent counterexample exceeds the pointwise limit and is excluded under the common-family-current assumption. This removes that portal point, not the whole v20 model, because the UV portal tensors and component-specific chiral currents are not uniquely fixed.",
+  "remaining_for_model_level_exclusion": [
+    "derive or fit the UV portal-Yukawa posterior",
+    "derive component-specific left/right PQ currents through all thresholds",
+    "scan the full allowed portal parameter space against the 151-point curve",
+    "ingest full experimental nuisance correlations if released"
+  ]
+}

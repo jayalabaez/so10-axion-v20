@@ -18,10 +18,12 @@ class PublicationRefereeTests(unittest.TestCase):
 
     def test_gate_counts(self):
         totals = self.report["authoritative_totals"]
-        self.assertEqual(totals["closed"], ["G1", "G2"])
-        self.assertEqual(totals["n_closed"], 2)
-        self.assertEqual(totals["n_partial"], 5)
-        self.assertEqual(totals["n_open"], 1)
+        self.assertEqual(totals["closed"], [])
+        self.assertEqual(totals["n_closed"], 0)
+        self.assertEqual(totals["n_blocked"], 8)
+        self.assertTrue(
+            all(row["status"] == "BLOCKED" for row in self.report["gates"].values())
+        )
 
     def test_tprime_and_cg_honesty(self):
         self.assertEqual(

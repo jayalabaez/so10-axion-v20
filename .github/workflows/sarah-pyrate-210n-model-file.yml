@@ -1,6 +1,17 @@
 name: sarah-pyrate-210n-model-file
 
 on:
+  pull_request:
+    paths:
+      - sarah_pyrate_210n_model_file_v20.py
+      - test_sarah_pyrate_210n_model_file_v20.py
+      - exact_x_symmetry_consistency_gate_v20.py
+      - models/SO10Z17AxionV20.m
+      - models/SO10Z17AxionV20_pyrate.yaml
+      - models/EXACT_X_EXTERNAL_MODEL_VALIDATION_V20.json
+      - models/EXACT_X_EXTERNAL_INPUT_MANIFEST_V20.json
+      - tools/validate-exact-x-model.wls
+      - .github/workflows/sarah-pyrate-210n-model-file.yml
   workflow_dispatch:
 
 concurrency:
@@ -19,7 +30,7 @@ jobs:
           cache: pip
       - name: Install dependencies
         run: python -m pip install -r requirements.txt
-      - name: Execute model-file scaffold + live probe
+      - name: Classify native SARAH input + bound-evidence probe
         run: python sarah_pyrate_210n_model_file_v20.py
       - name: Focused regression tests
         run: python -m unittest -v test_sarah_pyrate_210n_model_file_v20.py
@@ -28,11 +39,18 @@ jobs:
           python - <<'PY'
           import json
           r=json.load(open('SARAH_PYRATE_MODEL_FILE_V20_VERDICT.json'))
-          assert r['status']=='SARAH_PYRATE_MODEL_FILE_AUTHORED__LIVE_RUN_BLOCKED'
+          assert r['status']=='SARAH_NATIVE_STATIC_CONTRACT__EXTERNAL_VALIDATION_BLOCKED'
+          assert r['overall_state']=='BLOCKED'
           assert r['n_failed']==0
           assert r['flag']['sarah_pyrate_model_file_authored']
+          assert r['flag']['sarah_metadata_scaffold_present']
+          assert r['flag']['pyrate_metadata_scaffold_present']
+          assert r['flag']['sarah_model_tool_native']
+          assert r['flag']['sarah_static_contract_consistent']
+          assert not r['flag']['pyrate_model_tool_native']
           assert r['flag']['pyrate_yaml_dynkin_matches_upstream']
           assert r['flag']['charge_locks_encoded']
+          assert not r['flag']['external_validation_v2_valid']
           assert not r['flag']['live_sarah_or_pyrate_executable_run']
           assert not r['flag']['exact_unique_proton_lifetime']
           assert not r['flag']['whole_model_excluded']
@@ -47,4 +65,6 @@ jobs:
             SARAH_PYRATE_MODEL_FILE_V20_VERDICT.json
             SARAH_PYRATE_MODEL_FILE_V20.md
             models/SO10Z17AxionV20.m
+            models/EXACT_X_EXTERNAL_INPUT_MANIFEST_V20.json
+            tools/validate-exact-x-model.wls
             models/SO10Z17AxionV20_pyrate.yaml

@@ -9,6 +9,8 @@ def test_character_crosscheck_passes_fail_closed():
     report = mod.build_report()
     assert report["n_failed"] == 0, report["failures"]
     assert all(report["checks"].values())
+    assert report["model_contract_id"] == "historical_option_c_no_x_v20"
+    assert report["authoritative_for_manuscript"] is False
     assert report["flags"]["complete_mixed_tensor_basis"] is False
     assert report["flags"]["whole_model_validated"] is False
 

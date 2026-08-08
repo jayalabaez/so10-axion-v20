@@ -128,7 +128,7 @@ def allowed_dim4_mix_210_10_126_S() -> dict[str, Any]:
     totals = z17._total_charge(
         {"210_H": 1, "10_H": 1, "126bar_H": 1, "S": 1}
     )
-    allowed = z17._allowed(totals)
+    allowed = z17._allowed(totals, require_x=True)
     return {
         "operator": "210_H · 10_H · 126bar_H · S",
         "dimension": 4,

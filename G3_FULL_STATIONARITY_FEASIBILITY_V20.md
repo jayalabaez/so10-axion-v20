@@ -1,7 +1,11 @@
 # G3 full-coordinate stationarity feasibility — v20
 
 **Status:** `G3_FIRST_ORDER_PHYSICAL_EW_STATIONARITY_FEASIBLE__LOCAL_GLOBAL_OPEN`
+
 **State:** `PARTIAL`
+
+**Contract:** `historical_option_c_no_x_v20`
+**Authoritative for the gauged-U(1)_X manuscript:** `False`
 
 ## Executed result
 

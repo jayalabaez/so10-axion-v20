@@ -27,7 +27,7 @@ flavour fit remains external.
   True/True/True).
 - Continuous $\alpha^{-1}(v_\Phi)\approx16.65$
   — **not** 40.
-- $\alpha(M_{\rm Pl})\approx0.09358475823033058$ (physical 210).
+- $\alpha(M_{\rm Pl})\approx0.09358475823033739$ (physical 210).
 
 ## 3. 36.6–37.6 GHz haloscope scan forecast
 

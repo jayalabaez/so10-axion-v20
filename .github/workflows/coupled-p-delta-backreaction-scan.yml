@@ -94,10 +94,16 @@ jobs:
           assert mud_path.exists(), 'mu_D Schur report missing'
           mud = json.loads(mud_path.read_text())
           assert mud['n_failed'] == 0, mud['failures']
+          assert mud['model_contract_id']=='historical_option_c_no_x_v20'
+          assert mud['authoritative_for_manuscript'] is False
+          assert mud['overall_state']=='HISTORICAL'
           assert mud['dimensions']['enlarged_real_Hessian'] == 482
           assert mud['dimensions']['enlarged_physical_quotient'] == 449
           assert mud['flag']['muD_cross_block_inserted'] is True
-          assert mud['flag']['exact_effective_H_mass_stability_bound'] is True
+          assert mud['flag']['historical_option_c_only'] is True
+          assert mud['flag']['authoritative_manuscript_G3_result'] is False
+          assert mud['flag']['exact_effective_H_mass_stability_bound'] is False
+          assert mud['flag']['numerical_effective_H_mass_stability_envelope'] is True
           assert mud['flag']['gauge_goldstones_preserved_above_bound'] is True
           assert mud['flag']['tachyon_below_bound_exhibited'] is True
           assert mud['flag']['complete_operator_derived_H_mass_matrix'] is False

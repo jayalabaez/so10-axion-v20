@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Cross-check the seven Phi17 dressing tensors against the exact D5 census."""
+"""Cross-check historical no-X Phi17 dressings against the exact D5 census."""
 from __future__ import annotations
 
 import argparse
@@ -54,15 +54,16 @@ def multiplicity_rows() -> dict[str, Any]:
 
 def build_report() -> dict[str, Any]:
     exact_census = census.build_report()
+    option_c_counts = census.counts(census.census(False))
     closure_report = closure.build_report()
     rows = multiplicity_rows()
     checks = {
         "exact_live_census_executes": exact_census["n_failed"] == 0,
-        "live_census_has_74_multidegrees": (
-            exact_census["counts"]["charge_and_so10_allowed_multidegrees"] == 74
+        "historical_option_c_census_has_74_multidegrees": (
+            option_c_counts["charge_and_so10_allowed_multidegrees"] == 74
         ),
-        "live_census_has_64_coefficient_directions": (
-            exact_census["counts"]["total_potential_orbit_multiplicity"] == 64
+        "historical_option_c_census_has_64_coefficient_directions": (
+            option_c_counts["total_potential_orbit_multiplicity"] == 64
         ),
         "dressing_closure_executes": closure_report["n_failed"] == 0,
         "seven_rows_crosschecked": len(rows) == 7,
@@ -78,6 +79,8 @@ def build_report() -> dict[str, Any]:
     }
     failures = [name for name, passed in checks.items() if not passed]
     return {
+        "model_contract_id": "historical_option_c_no_x_v20",
+        "authoritative_for_manuscript": False,
         "status": (
             "PHI17_DRESSINGS_EXACTLY_MATCH_LIVE_D5_CENSUS"
             if not failures
@@ -87,7 +90,8 @@ def build_report() -> dict[str, Any]:
         "n_failed": len(failures),
         "failures": failures,
         "checks": checks,
-        "live_census_summary": exact_census["counts"],
+        "authoritative_gauged_census_summary": exact_census["counts"],
+        "historical_option_c_census_summary": option_c_counts,
         "multiplicity_rows": rows,
         "flags": {
             "seven_dressings_character_verified": not failures,
@@ -99,11 +103,10 @@ def build_report() -> dict[str, Any]:
             "empirical_discovery": False,
         },
         "verdict": (
-            "Every one of the seven neutral-Phi17 dressing classes appears "
-            "in the exact live SO(10)+PQ+Z17 character census with singlet "
-            "multiplicity one. The dressing theorem is therefore reconciled "
-            "with the complete multiplicity census; other explicit tensor "
-            "directions remain open."
+            "Every one of the seven Phi17 dressing classes appears with "
+            "singlet multiplicity one in the historical no-X D5 census. These "
+            "directions carry nonzero U(1)_X charge and are not operators of "
+            "the manuscript-authoritative gauged theory."
         ),
     }
 

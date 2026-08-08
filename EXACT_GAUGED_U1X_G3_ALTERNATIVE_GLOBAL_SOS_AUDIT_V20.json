@@ -1,0 +1,413 @@
+{
+  "status": "ALTERNATIVE_GLOBAL_SOS_AUDIT_COMPLETE__NO_CERTIFIED_REPLACEMENT",
+  "overall_state": "G3_GLOBAL_ALTERNATIVE_OPEN",
+  "model_contract_id": "gauged_u1x_phi17_v20",
+  "n_checks": 8,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "current_covariants_source_bound": true,
+    "current_covariant_Gram_is_positive_definite": true,
+    "current_square_no_go_is_proof_grade": true,
+    "unique_chiral_quartic_no_go_is_proof_grade": true,
+    "affine_all_vanishing_SOS_no_go_is_proof_grade": true,
+    "reduced_search_source_polynomial_is_bound": true,
+    "numerical_search_not_misrepresented_as_proof": true,
+    "G3_not_promoted_by_negative_result": true
+  },
+  "exact_current_square_no_go": {
+    "scope": "Phi=F, H=(e6+i e7)/sqrt(2), Sigma=r Delta_R, r>0",
+    "orthonormal_plane_order": [
+      "C1",
+      "C2",
+      "C3",
+      "W1",
+      "W2"
+    ],
+    "exact_covariants_at_r_equals_1_over_5": {
+      "K45_Phi": [
+        "3/5",
+        "3/5",
+        "3/5",
+        "3/5",
+        "3/5"
+      ],
+      "J45_H": [
+        "0",
+        "0",
+        "0",
+        "1",
+        "0"
+      ],
+      "J45_Sigma": [
+        "1/25",
+        "1/25",
+        "1/25",
+        "0",
+        "0"
+      ]
+    },
+    "observed_source_matrix": [
+      [
+        0.6,
+        0.0,
+        0.04
+      ],
+      [
+        0.6,
+        0.0,
+        0.04
+      ],
+      [
+        0.6,
+        0.0,
+        0.04
+      ],
+      [
+        0.6,
+        0.9999999999999998,
+        0.0
+      ],
+      [
+        0.6,
+        0.0,
+        0.0
+      ]
+    ],
+    "source_maximum_abs_residual": 4.440892098500626e-16,
+    "exact_Gram_matrix": [
+      [
+        "9/5",
+        "3/5",
+        "9/125"
+      ],
+      [
+        "3/5",
+        "1",
+        "0"
+      ],
+      [
+        "9/125",
+        "0",
+        "3/625"
+      ]
+    ],
+    "exact_leading_principal_minors": [
+      "9/5",
+      "36/25",
+      "27/15625"
+    ],
+    "exact_determinant_general_nonzero_H_Sigma": "27*N_H^2*N_Sigma^2/25",
+    "exact_determinant_at_target": "27/15625",
+    "rank": 3,
+    "positive_definite": true,
+    "linear_algebra_lemma": "If C has these three covariants as columns and A is PSD, tr(A C^T C)=||C sqrt(A)||_F^2. Since rank(C)=3, zero at the target forces A=0.",
+    "consequence": "no nonzero all-vanishing PSD 45-channel Gram square can carry the H-Sigma cross coefficient at this orbit",
+    "holds_for_every_nonzero_r": true,
+    "source_binding_exact": true,
+    "proof_grade": true
+  },
+  "exact_unique_chiral_quartic_no_go": {
+    "scope": "unique exact-X quartics O28 and O31 at F+Delta+Hchi",
+    "O28_quadratic_covariants": {
+      "U_norm_squared": "48/5",
+      "W_norm_squared": "4032/625",
+      "inner_product": "0",
+      "Gram_determinant": "193536/3125",
+      "linearly_independent": true,
+      "consequence": "a PSD quadratic-covariant Gram square that vanishes here cannot retain the O28 cross term"
+    },
+    "O31_quadratic_covariant": {
+      "z_norm_squared": "24/25",
+      "z_holomorphic_square": "0",
+      "nonzero_isotropic": true,
+      "consequence": "a||z||^2+Re(b z.z) is globally PSD only for a>=|b|; zero at this nonzero null z forces a=b=0"
+    },
+    "source_maximum_abs_residual": 4.085620730620576e-14,
+    "all_vanishing_O28_completion_excluded": true,
+    "all_vanishing_O31_completion_excluded": true,
+    "nonvanishing_residual_cancellations_excluded": false,
+    "source_binding_exact": true,
+    "proof_grade": true
+  },
+  "upstream_affine_zero_residual_no_go": {
+    "status": "EXACT_NO_GO_FOR_ALL_VANISHING_RENORMALIZABLE_AFFINE_SOS_REPLACEMENT",
+    "exact_X_portals": {
+      "O12_HH_vs_S": {
+        "counts": {
+          "P": 0,
+          "H": 0,
+          "Hb": 2,
+          "D": 0,
+          "Db": 0,
+          "S": 0,
+          "Sb": 1,
+          "X": 0,
+          "Xb": 0
+        },
+        "charges": {
+          "PQ": 0,
+          "X": 0,
+          "Z17": 0
+        }
+      },
+      "O15_PhiH_vs_Sigma": {
+        "counts": {
+          "P": 1,
+          "H": 0,
+          "Hb": 1,
+          "D": 1,
+          "Db": 0,
+          "S": 0,
+          "Sb": 0,
+          "X": 0,
+          "Xb": 0
+        },
+        "charges": {
+          "PQ": 0,
+          "X": 0,
+          "Z17": 0
+        }
+      },
+      "O38_PhiH_vs_S_Sigmadag": {
+        "counts": {
+          "P": 1,
+          "H": 0,
+          "Hb": 1,
+          "D": 0,
+          "Db": 1,
+          "S": 0,
+          "Sb": 1,
+          "X": 0,
+          "Xb": 0
+        },
+        "charges": {
+          "PQ": 0,
+          "X": 0,
+          "Z17": 0
+        }
+      }
+    },
+    "all_portal_parameters_in_51_parameter_contract": true,
+    "O12_scalar_obstruction": {
+      "target_H_dot_H": {
+        "re": 0.0,
+        "im": 0.0
+      },
+      "target_S": "1/5",
+      "consequence": "H.H-c S*=0 forces c=0",
+      "H_dot_H_identically_zero_on_chiral_C5": true,
+      "therefore_cannot_lift_six_chiral_colour_flats": true
+    },
+    "O15_O38_126_residual_obstruction": {
+      "Phi_contract_Delta_norm": 0.0,
+      "Phi_contract_Deltadag_norm": 0.0,
+      "H_wedge_Phi_norm_squared": 0.6,
+      "Delta_norm_squared": 1.9999999999999998,
+      "inner_HwedgePhi_Delta": {
+        "re": 0.0,
+        "im": 0.0
+      },
+      "inner_HwedgePhi_Deltadag": {
+        "re": 0.0,
+        "im": 0.0
+      },
+      "consequence": "L(F,Hchi) is orthogonal to Delta and Deltadag; equality to a nonzero scalar multiple is impossible"
+    },
+    "O45_210_1050_residual_obstruction": {
+      "Phi2_210_norm_squared": 4.799999999999999,
+      "Phi2_1050_norm_squared": 9.244463733058732e-32,
+      "HDelta_210_norm_squared": 0.33333333333333326,
+      "HDelta_1050_norm_squared": 1.6666666666666656,
+      "channel_210_inner": {
+        "re": 0.0,
+        "im": 0.0
+      },
+      "channel_1050_inner": {
+        "re": 0.0,
+        "im": 0.0
+      },
+      "expected_exact_norms": {
+        "Phi2": {
+          "210": "24/5",
+          "1050": "0"
+        },
+        "Hchi_tensor_Delta": {
+          "210": "1/3",
+          "1050": "5/3"
+        }
+      },
+      "maximum_source_target_residual": 1.1102230246251565e-15,
+      "consequence": "the 210 vectors are nonzero and orthogonal, while the Phi2 1050 side is zero and the Hchi-Delta side is nonzero"
+    },
+    "targeted_G2_gradient_audit": {
+      "evidence_kind": "targeted_live_G2_exact_X_parameter_gradient_rows_float64",
+      "parameter_order": [
+        "re::O12_B01_Hdag_Hdag_pair",
+        "im::O12_B01_Hdag_Hdag_pair",
+        "re::O15_B01_Phi_Hdag_Sigma",
+        "im::O15_B01_Phi_Hdag_Sigma",
+        "re::O38_B01_Phi_Hdag_Sigmadag",
+        "im::O38_B01_Phi_Hdag_Sigmadag"
+      ],
+      "gradient_gram_exact_target_diagonal": [
+        "8/25",
+        "8/25",
+        "62/25",
+        "62/25",
+        "2/625",
+        "2/625"
+      ],
+      "maximum_off_diagonal_abs": 0.0,
+      "maximum_diagonal_target_residual": 8.881784197001252e-16,
+      "gradient_column_rank": 6,
+      "stationarity_preserving_portal_only_nullity": 0
+    },
+    "all_vanishing_positive_affine_SOS_can_replace_beta": false,
+    "nonvanishing_residual_gradient_cancellation_construction_excluded": false,
+    "proof_grade": true
+  },
+  "targeted_reduced_searches": {
+    "scope": "complete P/A/omega singlet slice, Sigma=rho Delta_R, all five complex H planes and both chiralities",
+    "optimizer": "deterministic-seed scipy differential_evolution plus polish",
+    "bounds": {
+      "p_a_omega_rho": [
+        -3,
+        3
+      ],
+      "N_H": [
+        0,
+        8
+      ]
+    },
+    "source_formula": "exact PD residual decomposition plus live-source Q_chi and I45 restrictions; Sigma 54/1050bar residuals vanish on the Delta ray",
+    "phi_polynomial_validation_residual": 9.094947017729282e-13,
+    "configurations": [
+      {
+        "name": "current_beta_1_over_20",
+        "beta": "1/20",
+        "t": "1/8",
+        "r": "1/5",
+        "radial_cross": "0",
+        "minimum_gap_found": -7.163257268718742e-15,
+        "best_sector": {
+          "plane": 4,
+          "chirality": -1
+        },
+        "best_point_p_a_omega_rho_NH": [
+          0.3162277707744332,
+          0.5477225585455858,
+          -0.774596670166893,
+          0.2000000114410727,
+          1.0000000019305189
+        ],
+        "lower_witness_found": false,
+        "counts_as_global_proof": false
+      },
+      {
+        "name": "small_beta_1_over_1000",
+        "beta": "1/1000",
+        "t": "1/8",
+        "r": "1/5",
+        "radial_cross": "0",
+        "minimum_gap_found": -7.261021811733826e-15,
+        "best_sector": {
+          "plane": 3,
+          "chirality": -1
+        },
+        "best_point_p_a_omega_rho_NH": [
+          0.31622777084771125,
+          0.547722556542187,
+          -0.7745966660796075,
+          -0.20000001271622803,
+          1.0000000061018826
+        ],
+        "lower_witness_found": false,
+        "counts_as_global_proof": false
+      },
+      {
+        "name": "maximal_simple_perturbative_t_1_over_6",
+        "beta": "1/20",
+        "t": "1/6",
+        "r": "1/5",
+        "radial_cross": "0",
+        "minimum_gap_found": -7.285343952641727e-15,
+        "best_sector": {
+          "plane": 4,
+          "chirality": 1
+        },
+        "best_point_p_a_omega_rho_NH": [
+          0.31622775657839486,
+          0.5477225587191503,
+          0.7745966757843958,
+          -0.20000000287531328,
+          1.0000000063618018
+        ],
+        "lower_witness_found": false,
+        "counts_as_global_proof": false
+      },
+      {
+        "name": "radially_recentered_positive_projector_attempt",
+        "beta": "1/20",
+        "t": "1/8",
+        "r": "1/5",
+        "radial_cross": "1/20",
+        "minimum_gap_found": -7.300636944198542e-15,
+        "best_sector": {
+          "plane": 4,
+          "chirality": 1
+        },
+        "best_point_p_a_omega_rho_NH": [
+          0.3162277543165315,
+          0.5477225549079703,
+          0.7745966767861319,
+          0.20000000886693647,
+          0.9999999954366889
+        ],
+        "lower_witness_found": false,
+        "counts_as_global_proof": false
+      },
+      {
+        "name": "unit_sigma_scale_small_beta",
+        "beta": "1/100",
+        "t": "1/8",
+        "r": "1",
+        "radial_cross": "0",
+        "minimum_gap_found": -7.330400045874784e-15,
+        "best_sector": {
+          "plane": 4,
+          "chirality": -1
+        },
+        "best_point_p_a_omega_rho_NH": [
+          0.3162277683990846,
+          0.547722555057987,
+          -0.7745966711795527,
+          -0.9999999941415963,
+          1.0000000075294753
+        ],
+        "lower_witness_found": false,
+        "counts_as_global_proof": false
+      }
+    ],
+    "any_lower_witness_found": false,
+    "diagnostic_only": true
+  },
+  "flags": {
+    "globally_certifiable_alternative_found": false,
+    "all_vanishing_45_current_Gram_completion_excluded": true,
+    "all_vanishing_affine_SOS_completion_excluded": true,
+    "all_vanishing_unique_chiral_quartic_completion_excluded": true,
+    "nonvanishing_residual_gradient_cancellation_excluded": false,
+    "different_vacuum_orbit_excluded": false,
+    "lower_witness_found_in_reduced_searches": false,
+    "current_candidate_global_minimum_certified": false,
+    "G3_closed": false,
+    "whole_model_excluded": false
+  },
+  "remaining_routes": [
+    "prove a uniform finite-field gap for the signed beta deformation",
+    "construct and certify a nonvanishing-residual positive completion",
+    "move to a different exact stationary orbit and repeat rank/global tests"
+  ],
+  "verdict": "The most direct beta-free positive completion is exactly obstructed: the Phi, H and Sigma adjoint covariants are linearly independent at the selected orbit for every nonzero r. The independent affine zero-residual routes are obstructed as well. No lower point was found in the enlarged reduced searches, but that numerical survival is not a global certificate. G3 remains open and the whole model is not excluded."
+}
