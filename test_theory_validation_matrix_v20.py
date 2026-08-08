@@ -698,6 +698,8 @@ def minimal_tree(
     for filename in (
         "EXACT_GAUGED_U1X_G3_RANK1_SU4_STABILIZER_V20.json",
         "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_INTERTWINERS_V20.json",
+        "EXACT_GAUGED_U1X_G3_RANK1_SU4_ALIGNED_CARRIERS_V20.json",
+        "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_V20.json",
     ):
         write_json(
             root,
@@ -911,6 +913,37 @@ class TheoryValidationMatrixTests(unittest.TestCase):
             self.assertEqual(
                 evidence["gauged_G3_rank1_SU4_Sym2_invariant_dimension"], 45
             )
+            self.assertTrue(
+                evidence["gauged_G3_rank1_SU4_aligned_carriers_exact"]
+            )
+            self.assertEqual(
+                evidence["gauged_G3_rank1_SU4_aligned_direct_sum_rank"], 210
+            )
+            self.assertTrue(
+                evidence["gauged_G3_rank1_SU4_physical_real_maps_exact"]
+            )
+            self.assertTrue(
+                evidence["gauged_G3_rank1_SU4_Phi210_quadratic_basis_exact"]
+            )
+            self.assertEqual(
+                evidence["gauged_G3_rank1_SU4_quadratic_constraint_shape"],
+                [5952, 551],
+            )
+            self.assertEqual(
+                evidence["gauged_G3_rank1_SU4_quadratic_constraint_rank"], 506
+            )
+            self.assertEqual(
+                evidence["gauged_G3_rank1_SU4_quadratic_constraint_nullity"], 45
+            )
+            self.assertEqual(
+                evidence["gauged_G3_rank1_SU4_quadratic_basis_count"], 45
+            )
+            self.assertEqual(
+                evidence["gauged_G3_rank1_SU4_quadratic_basis_rank"], 45
+            )
+            self.assertTrue(
+                evidence["gauged_G3_rank1_SU4_quadratic_live_invariance_exact"]
+            )
             self.assertTrue(evidence["gauged_G3_rank1_SU4_Schur_SOS_SDP_open"])
             self.assertTrue(
                 evidence["gauged_G3_rank1_SU4_arbitrary_Phi_bound_open"]
@@ -926,6 +959,24 @@ class TheoryValidationMatrixTests(unittest.TestCase):
                 "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_INTERTWINERS_V20.json",
                 lambda value: value["scope"].__setitem__(
                     "Schur_SOS_SDP_constructed", True
+                ),
+            ),
+            (
+                "EXACT_GAUGED_U1X_G3_RANK1_SU4_ALIGNED_CARRIERS_V20.json",
+                lambda value: value["alignment"].__setitem__(
+                    "concatenated_aligned_basis_rank_mod_prime", 209
+                ),
+            ),
+            (
+                "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_V20.json",
+                lambda value: value["constraint_system"].__setitem__(
+                    "exact_rational_rank", 505
+                ),
+            ),
+            (
+                "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_V20.json",
+                lambda value: value["scope"].__setitem__(
+                    "augmented_homogeneous_Schur_SOS_SDP_constructed", True
                 ),
             ),
             (

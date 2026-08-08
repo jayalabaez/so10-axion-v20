@@ -113,11 +113,14 @@ the model.
 - For that same fixed `H=h_-`, `Sigma=q/4` endpoint, the common continuous
   stabilizer is now certified exactly as `SU(4)`: its 15-dimensional kernel,
   integral Lie brackets, and all 15 exact skew actions on `Phi210` are
-  source-bound.  Exact intertwiners then decompose the complexified 210 into
-  25 carriers of total rank 210 and prove that the symmetric invariant
-  multiplicity is 45.  This is representation infrastructure for the full
-  augmented SU(4)-equivariant degree-2 Schur/SOS SDP; the 45-dimensional
-  quadratic invariant sector is only one input, while all isotypic blocks and
+  source-bound. Exact intertwiners decompose the complexified 210 into 25
+  carriers; deterministic lowering words align them into an exact rank-210
+  basis with physical conjugation/real-form maps. A `5952 x 551` exact
+  constraint system has rank/nullity `506/45` and yields an explicit complete
+  45-element integral symmetric invariant quadratic basis, invariant under all
+  15 live actions. This is representation infrastructure for the full augmented
+  SU(4)-equivariant degree-2 Schur/SOS SDP; the quadratic basis is only one
+  input, while all isotypic blocks and
   homogenizing cross terms, an arbitrary-`Phi` lower bound, G3, and any
   whole-model exclusion remain open
 - The former 64-direction / 91-parameter G1-G2 calculation is retained as a
@@ -201,9 +204,10 @@ branch has an exact Phi/Sigma global SOS certificate and a chiral-H full-field
   `Phi` sub-slice of the 16-dimensional `SU(3)`-fixed space; it does not
   establish a bound for arbitrary `Phi` at that endpoint or on the ambient space.
   At this same fixed endpoint, the exact common `SU(4)` stabilizer and its
-  15 actions on `Phi210` are now certified, and a 25-carrier intertwiner
-  decomposition proves the 45-dimensional symmetric invariant census. This
-  completes only one input sector for the future full augmented
+  15 actions on `Phi210` are now certified. The 25 carriers are aligned at
+  exact rank 210 with physical real maps, and the complete explicit
+  45-element invariant quadratic basis is certified from a `5952 x 551`
+  rank-506 constraint system. This completes only one input sector for the full augmented
   SU(4)-equivariant degree-2 Schur/SOS SDP; it does not construct all
   isotypic/cross blocks or prove the arbitrary-`Phi` bound.
   `G3_closed` remains
@@ -327,9 +331,10 @@ $g_{a\gamma\gamma}\sim2.3\times10^{-14}\,{\rm GeV}^{-1}$ by MADMAX / ALPHA / ORG
 > same exact gap on only a four-real-dimensional `Phi` sub-slice of the
 > 16-dimensional `SU(3)`-fixed space; arbitrary `Phi` at that rank-one Sigma
 > endpoint and arbitrary Sigma orientations remain open.  At that fixed
-> endpoint, the exact `SU(4)` stabilizer, its 15 `Phi210` actions, and the
-> 25-carrier/45-invariant intertwiner census are certified only as
-> infrastructure for the still-unconstructed Schur/SOS SDP.
+> endpoint, the exact `SU(4)` stabilizer, its 15 `Phi210` actions, aligned
+> rank-210 carriers with physical real maps, and the explicit complete
+> 45-element invariant quadratic basis are certified only as infrastructure
+> for the still-unconstructed augmented Schur/SOS SDP.
 > G3 remains open because a uniform coercive bound for arbitrary non-pure-
 > `Delta_R` Sigma orientations has not yet been proved. The complete theory is
 > neither validated nor discarded.

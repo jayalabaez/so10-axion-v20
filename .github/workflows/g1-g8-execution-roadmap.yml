@@ -41,6 +41,10 @@ on:
       - test_exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py
       - exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py
       - test_exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py
+      - exact_gauged_u1x_g3_rank1_su4_aligned_carriers_v20.py
+      - test_exact_gauged_u1x_g3_rank1_su4_aligned_carriers_v20.py
+      - exact_gauged_u1x_g3_rank1_su4_phi210_quadratic_basis_v20.py
+      - test_exact_gauged_u1x_g3_rank1_su4_phi210_quadratic_basis_v20.py
       - exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py
       - test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py
       - final_g3_acceptance_gate_v20.py
@@ -88,6 +92,8 @@ jobs:
             exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py \
             exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py \
             exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py \
+            exact_gauged_u1x_g3_rank1_su4_aligned_carriers_v20.py \
+            exact_gauged_u1x_g3_rank1_su4_phi210_quadratic_basis_v20.py \
             exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py \
             final_g3_acceptance_gate_v20.py
       - name: Rebuild exact local G3 frontier
@@ -112,6 +118,8 @@ jobs:
           python exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py --write
           python exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py --write
           python exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py --write
+          python exact_gauged_u1x_g3_rank1_su4_aligned_carriers_v20.py --write
+          python exact_gauged_u1x_g3_rank1_su4_phi210_quadratic_basis_v20.py --write
           python exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py --write
       - name: Test roadmap contracts
         run: |
@@ -137,6 +145,8 @@ jobs:
             test_exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py \
             test_exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py \
             test_exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py \
+            test_exact_gauged_u1x_g3_rank1_su4_aligned_carriers_v20.py \
+            test_exact_gauged_u1x_g3_rank1_su4_phi210_quadratic_basis_v20.py \
             test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py \
             test_final_g3_acceptance_gate_v20.py
       - name: Generate roadmap artifacts
@@ -169,6 +179,8 @@ jobs:
           rank1_su3 = json.loads(Path('EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_V20.json').read_text())
           rank1_su4_stabilizer = json.loads(Path('EXACT_GAUGED_U1X_G3_RANK1_SU4_STABILIZER_V20.json').read_text())
           rank1_su4_intertwiners = json.loads(Path('EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_INTERTWINERS_V20.json').read_text())
+          rank1_su4_aligned = json.loads(Path('EXACT_GAUGED_U1X_G3_RANK1_SU4_ALIGNED_CARRIERS_V20.json').read_text())
+          rank1_su4_quadratic = json.loads(Path('EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_V20.json').read_text())
           alternative_sos = json.loads(Path('EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json').read_text())
           final_g3 = json.loads(Path('FINAL_G3_ACCEPTANCE_GATE_V20.json').read_text())
           assert report['n_failed'] == 0, report['failures']
@@ -282,10 +294,12 @@ jobs:
           assert rank1_su3['radial_patch']['restricted_global_minimum'] == '1/5000'
           assert gate_ledger._rank1_su4_stabilizer_infrastructure_exact(rank1_su4_stabilizer)
           assert gate_ledger._rank1_su4_phi210_intertwiners_exact(rank1_su4_intertwiners, rank1_su4_stabilizer)
-          assert rank1_su4_intertwiners['scope']['Schur_SOS_SDP_constructed'] is False
-          assert rank1_su4_intertwiners['scope']['arbitrary_rank1_Phi_proved'] is False
-          assert rank1_su4_intertwiners['scope']['G3_closed'] is False
-          assert rank1_su4_intertwiners['scope']['whole_model_excluded'] is False
+          assert gate_ledger._rank1_su4_aligned_carriers_exact(rank1_su4_aligned, rank1_su4_intertwiners, rank1_su4_stabilizer)
+          assert gate_ledger._rank1_su4_phi210_quadratic_basis_exact(rank1_su4_quadratic, rank1_su4_stabilizer, rank1_su4_intertwiners, rank1_su4_aligned)
+          assert rank1_su4_quadratic['scope']['augmented_homogeneous_Schur_SOS_SDP_constructed'] is False
+          assert rank1_su4_quadratic['scope']['arbitrary_rank1_Phi_proved'] is False
+          assert rank1_su4_quadratic['scope']['G3_closed'] is False
+          assert rank1_su4_quadratic['scope']['whole_model_excluded'] is False
           assert alternative_sos['n_failed'] == 0 and alternative_sos['overall_state'] == 'G3_GLOBAL_ALTERNATIVE_OPEN'
           assert alternative_sos['flags']['all_vanishing_45_current_Gram_completion_excluded']
           assert alternative_sos['flags']['all_vanishing_affine_SOS_completion_excluded']
@@ -338,6 +352,10 @@ jobs:
             EXACT_GAUGED_U1X_G3_RANK1_SU4_STABILIZER_V20.md
             EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_INTERTWINERS_V20.json
             EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_INTERTWINERS_V20.md
+            EXACT_GAUGED_U1X_G3_RANK1_SU4_ALIGNED_CARRIERS_V20.json
+            EXACT_GAUGED_U1X_G3_RANK1_SU4_ALIGNED_CARRIERS_V20.md
+            EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_V20.json
+            EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_V20.md
             EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json
             EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.md
             FINAL_G3_ACCEPTANCE_GATE_V20.json

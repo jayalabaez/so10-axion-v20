@@ -14,6 +14,8 @@
     "max_negative_rank1_SU3_four_dimensional_slice_audit_executes_fail_closed": true,
     "numerical_Hessian_not_promoted_to_proof": true,
     "rank1_SU4_Phi210_intertwiner_infrastructure_executes_fail_closed": true,
+    "rank1_SU4_Phi210_quadratic_basis_executes_fail_closed": true,
+    "rank1_SU4_aligned_carrier_infrastructure_executes_fail_closed": true,
     "rank1_SU4_stabilizer_infrastructure_executes_fail_closed": true,
     "upstream_G3_not_overclaimed": true
   },
@@ -59,13 +61,22 @@
     "rank1_SU4_Phi210_carrier_count": 25,
     "rank1_SU4_Schur_SOS_SDP_constructed": false,
     "rank1_SU4_Sym2_invariant_dimension": 45,
-    "rank1_SU4_joint_stabilizer_dimension": 15
+    "rank1_SU4_aligned_direct_sum_rank": 210,
+    "rank1_SU4_joint_stabilizer_dimension": 15,
+    "rank1_SU4_physical_real_maps_exact": true,
+    "rank1_SU4_quadratic_basis_count": 45,
+    "rank1_SU4_quadratic_constraint_nullity": 45,
+    "rank1_SU4_quadratic_constraint_rank": 506,
+    "rank1_SU4_quadratic_constraint_shape": [
+      5952,
+      551
+    ]
   },
   "failures": [],
   "missing_artifacts": [],
   "model_contract_id": "gauged_u1x_phi17_v20",
   "n_failed": 0,
-  "n_integrity_checks": 16,
+  "n_integrity_checks": 18,
   "overall_state": "OPEN",
   "release_criteria": {
     "G1_promoted_closed": false,
@@ -93,5 +104,5 @@
   },
   "status": "FINAL_G3_ACCEPTANCE_TEST_EXECUTED",
   "upstream_frontier_integrity": true,
-  "verdict": "G3 remains open. The chiral-H candidate now has an exact full Hessian theorem (rank/nullity 448/38, positive on the quotient) and an exact global gap/equality theorem on the complete Phi=F stratum for arbitrary H and Sigma. The complete maximally-negative pure-Delta sector is now also excluded for arbitrary real Phi and all nonzero residuals, with sharp gap 1/5000; no exact lower witness is known. At fixed H=h_- and one explicit rank-one Sigma endpoint, an exact certificate also proves the 1/5000 gap on only a four-real-dimensional Phi sub-slice of the 16-dimensional SU(3)-fixed space. At that fixed endpoint, the exact SU(4) stabilizer and 25-carrier, 45-invariant Phi210 census are certified as infrastructure only; the Schur/SOS SDP and arbitrary-Phi bound remain open. PASS still requires a uniform coercive beta gap for arbitrary non-pure-Delta Sigma orientations, plus the external authoritative model execution."
+  "verdict": "G3 remains open. The chiral-H candidate now has an exact full Hessian theorem (rank/nullity 448/38, positive on the quotient) and an exact global gap/equality theorem on the complete Phi=F stratum for arbitrary H and Sigma. The complete maximally-negative pure-Delta sector is now also excluded for arbitrary real Phi and all nonzero residuals, with sharp gap 1/5000; no exact lower witness is known. At fixed H=h_- and one explicit rank-one Sigma endpoint, an exact certificate also proves the 1/5000 gap on only a four-real-dimensional Phi sub-slice of the 16-dimensional SU(3)-fixed space. At that fixed endpoint, the exact SU(4) stabilizer, aligned rank-210 carrier real maps, and explicit complete 45-element Phi210 invariant quadratic basis are certified as infrastructure only; the augmented Schur/SOS SDP and arbitrary-Phi bound remain open. PASS still requires a uniform coercive beta gap for arbitrary non-pure-Delta Sigma orientations, plus the external authoritative model execution."
 }
