@@ -18,6 +18,7 @@ evidence.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 from functools import lru_cache
 from pathlib import Path
@@ -79,6 +80,12 @@ G3_RANK1_SU4_STABILIZER_JSON = (
 G3_RANK1_SU4_PHI210_INTERTWINERS_JSON = (
     ROOT / "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_INTERTWINERS_V20.json"
 )
+G3_RANK1_SU4_ALIGNED_CARRIERS_JSON = (
+    ROOT / "EXACT_GAUGED_U1X_G3_RANK1_SU4_ALIGNED_CARRIERS_V20.json"
+)
+G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_JSON = (
+    ROOT / "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_V20.json"
+)
 RANK1_SU4_ORDERED_LABELS = (
     "H1",
     "H2",
@@ -97,6 +104,10 @@ RANK1_SU4_ORDERED_LABELS = (
     "Y34",
 )
 RANK1_SU4_MODULAR_PRIME = 1_000_003
+RANK1_SU4_BRANCHING = {
+    "1": 4, "4": 4, "4bar": 4, "6": 4, "10": 1,
+    "10bar": 1, "15": 2, "20": 2, "20bar": 2, "20prime": 1,
+}
 
 STATUS_CLOSED = "CLOSED"
 STATUS_PARTIAL = "PARTIAL"
@@ -251,6 +262,20 @@ def _load_json_artifact(path: Path) -> dict[str, Any]:
     except (OSError, json.JSONDecodeError):
         return {}
     return value if isinstance(value, dict) else {}
+
+
+def _canonical_json_sha256(value: Any) -> str:
+    payload = json.dumps(
+        value, sort_keys=True, separators=(",", ":"), ensure_ascii=True
+    ).encode("utf-8")
+    return hashlib.sha256(payload).hexdigest()
+
+
+def _file_sha256(path: Path) -> str:
+    try:
+        return hashlib.sha256(path.read_bytes()).hexdigest()
+    except OSError:
+        return ""
 
 
 def _rank1_su4_stabilizer_infrastructure_exact(report: dict[str, Any]) -> bool:
@@ -588,6 +613,512 @@ def _rank1_su4_phi210_intertwiners_exact(
     )
 
 
+def _rank1_su4_aligned_carriers_exact(
+    report: dict[str, Any],
+    intertwiners_report: dict[str, Any],
+    stabilizer_report: dict[str, Any],
+) -> bool:
+    """Fail closed on the literal 25-carrier alignment and physical real maps."""
+    checks = report.get("checks", {})
+    scope = report.get("scope", {})
+    provenance = report.get("upstream_provenance", {})
+    source = provenance.get("source_contract", {})
+    alignment = report.get("alignment", {})
+    alignment_provenance = report.get("alignment_provenance", {})
+    carriers = alignment.get("carriers", [])
+    families = alignment.get("families", [])
+    true_checks = {
+        "model_contract_and_endpoint_provenance_exact",
+        "upstream_source_bytes_match_pinned_contract_exact",
+        "upstream_full_schema_and_literal_certificates_exact",
+        "upstream_intertwiner_report_green_and_scope_exact",
+        "upstream_live_Gaussian_intertwiner_exact",
+        "upstream_25_carrier_census_exact",
+        "upstream_embedded_certificates_match_live_inputs",
+        "alignment_full_schema_and_literals_exact",
+        "integral_A3_Chevalley_system_exact",
+        "integer_and_rational_arithmetic_safety_exact",
+        "deterministic_lowering_words_align_all_25_carriers_exact",
+        "common_source_actions_on_all_equivalent_copies_exact",
+        "physical_live_Phi210_embeddings_exact",
+        "physical_conjugation_and_real_structures_exact",
+        "aligned_25_carrier_direct_sum_rank_210_exact",
+    }
+    false_checks = {
+        "SU4_invariant_quadratic_basis_constructed",
+        "Schur_SOS_SDP_constructed",
+        "arbitrary_real_Phi_lower_bound_proved",
+        "G3_closed",
+    }
+    true_scope = {
+        "H_fixed_to_h_minus", "Sigma_fixed_to_q_over_4",
+        "rank1_endpoint_SU4_stabilizer_used",
+        "aligned_complexified_Phi210_carriers_constructed",
+        "physical_real_structure_and_Gaussian_embeddings_constructed",
+    }
+    false_scope = {
+        "SU4_invariant_quadratic_form_basis_constructed",
+        "Schur_SOS_SDP_constructed", "arbitrary_real_Phi_lower_bound_proved",
+        "arbitrary_rank1_Phi_proved", "G3_closed", "whole_model_excluded",
+    }
+    provenance_keys = {
+        "module", "model_contract_id", "status", "n_failed",
+        "intertwiner_proof_grade", "carrier_proof_grade",
+        "embedded_certificates_match", "source_contract",
+        "source_contract_exact", "upstream_report_sha256",
+        "expected_upstream_report_sha256",
+        "upstream_intertwiner_certificate_sha256",
+        "expected_upstream_intertwiner_certificate_sha256",
+        "upstream_carrier_certificate_sha256",
+        "expected_upstream_carrier_certificate_sha256",
+        "full_schema_and_literals_exact", "all_required_provenance_exact",
+    }
+    source_keys = {
+        "upstream_module", "upstream_module_sha256",
+        "expected_upstream_module_sha256", "stabilizer_module",
+        "stabilizer_module_sha256", "expected_stabilizer_module_sha256",
+        "both_modules_resolve_to_repository_root_exact",
+        "source_bytes_match_pinned_contract_exact", "proof_grade",
+    }
+    alignment_keys = {
+        "proof_grade", "modular_prime", "generator_labels",
+        "simple_Chevalley_system", "family_count", "families", "carrier_count",
+        "carriers", "expected_irrep_multiplicities",
+        "observed_irrep_multiplicities", "upstream_carrier_order_exact",
+        "all_family_word_counts_equal_dimensions", "all_25_carriers_exact",
+        "all_equivalent_copies_use_common_source_actions_exact",
+        "concatenated_aligned_basis_shape",
+        "concatenated_aligned_basis_rank_mod_prime",
+        "concatenated_aligned_basis_sha256", "exact_rank_argument",
+        "exterior_conjugation_shape",
+        "exterior_conjugation_signed_permutation_exact",
+        "exterior_conjugation_square_equals_identity_exact",
+        "Gaussian_basis_conjugation_is_physical_exact",
+        "all_25_physical_Gaussian_embeddings_intertwine_live_Phi210_exact",
+        "all_25_conjugate_carrier_maps_exact",
+        "all_25_conjugate_maps_involutive_exact",
+        "conjugation_compatible_with_all_15_generators_exact",
+        "complex_type_carrier_count", "self_conjugate_real_type_carrier_count",
+        "rational_matrix_convention",
+        "exact_integer_and_rational_arithmetic_safety",
+    }
+    carrier_keys = {
+        "name", "irrep", "copy_index", "highest_weight", "dimension",
+        "natural_block", "lowering_word_count", "lowering_word_maximum_length",
+        "basis_maximum_absolute_entry", "basis_sha256",
+        "aligned_rank_mod_prime", "highest_weight_primitive_and_raising_annihilated",
+        "C8_eigen_equation_exact", "all_15_common_source_actions_intertwine_exact",
+        "natural_block_support_exact", "source_action_denominators",
+        "exterior_gram_sha256", "canonical_basis_real_sha256",
+        "canonical_basis_imaginary_sha256",
+        "all_15_live_canonical_Phi210_actions_intertwine_exact",
+        "reality_kind", "conjugate_carrier_name", "conjugation_map_denominator",
+        "conjugation_map_sha256", "conjugation_involution_exact",
+        "physical_conjugation_embedding_exact",
+    }
+    family_keys = {
+        "irrep", "dimension", "multiplicity", "reference_carrier_name",
+        "lowering_words", "lowering_word_sha256", "common_source_action_count",
+        "common_source_actions_sha256",
+    }
+    names = {row.get("name") for row in carriers if isinstance(row, dict)}
+    rows_by_name = {
+        row.get("name"): row for row in carriers if isinstance(row, dict)
+    }
+    upstream_intertwiner = intertwiners_report.get("intertwiner", {})
+    upstream_carriers = intertwiners_report.get("carriers", {})
+    expected_alignment_hash = (
+        "f74b7845b57472f62773c398fa927b551b5d9d09f86bd7defb92a6ed71adbe15"
+    )
+    return bool(
+        _rank1_su4_phi210_intertwiners_exact(
+            intertwiners_report, stabilizer_report
+        )
+        and _canonical_json_sha256(report)
+        == "d2da0572dc33a1f3f88b5ac5df3343201650ca660498f34ff59806a607015c67"
+        and set(report) == {
+            "status", "overall_state", "model_contract_id", "n_checks",
+            "n_failed", "failures", "checks", "upstream_provenance",
+            "alignment", "alignment_provenance", "scope", "next_exact_target",
+            "verdict",
+        }
+        and report.get("status")
+        == "EXACT_RANK1_SU4_ALIGNED_CARRIER_INFRASTRUCTURE_CERTIFIED"
+        and report.get("overall_state")
+        == "SU4_ALIGNED_CARRIERS_CLOSED__INVARIANT_BASIS_SDP_AND_G3_OPEN"
+        and report.get("model_contract_id") == AUTHORITATIVE_CONTRACT_ID
+        and report.get("n_checks") == 19
+        and report.get("n_failed") == 0 and report.get("failures") == []
+        and set(checks) == true_checks | false_checks
+        and all(checks.get(key) is True for key in true_checks)
+        and all(checks.get(key) is False for key in false_checks)
+        and set(scope) == true_scope | false_scope
+        and all(scope.get(key) is True for key in true_scope)
+        and all(scope.get(key) is False for key in false_scope)
+        and set(provenance) == provenance_keys
+        and provenance.get("module")
+        == "exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py"
+        and provenance.get("model_contract_id") == AUTHORITATIVE_CONTRACT_ID
+        and provenance.get("status") == intertwiners_report.get("status")
+        and provenance.get("n_failed") == 0
+        and all(
+            provenance.get(key) is True
+            for key in (
+                "intertwiner_proof_grade", "carrier_proof_grade",
+                "embedded_certificates_match", "source_contract_exact",
+                "full_schema_and_literals_exact", "all_required_provenance_exact",
+            )
+        )
+        and provenance.get("upstream_report_sha256")
+        == provenance.get("expected_upstream_report_sha256")
+        == _canonical_json_sha256(intertwiners_report)
+        and provenance.get("upstream_intertwiner_certificate_sha256")
+        == provenance.get("expected_upstream_intertwiner_certificate_sha256")
+        == _canonical_json_sha256(upstream_intertwiner)
+        and provenance.get("upstream_carrier_certificate_sha256")
+        == provenance.get("expected_upstream_carrier_certificate_sha256")
+        == _canonical_json_sha256(upstream_carriers)
+        and set(source) == source_keys
+        and source.get("upstream_module") == provenance.get("module")
+        and source.get("stabilizer_module")
+        == "exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py"
+        and source.get("upstream_module_sha256")
+        == source.get("expected_upstream_module_sha256")
+        == _file_sha256(ROOT / source.get("upstream_module", ""))
+        and source.get("stabilizer_module_sha256")
+        == source.get("expected_stabilizer_module_sha256")
+        == _file_sha256(ROOT / source.get("stabilizer_module", ""))
+        and all(
+            source.get(key) is True
+            for key in (
+                "both_modules_resolve_to_repository_root_exact",
+                "source_bytes_match_pinned_contract_exact", "proof_grade",
+            )
+        )
+        and set(alignment_provenance) == {
+            "certificate_sha256", "expected_live_certificate_sha256",
+            "full_schema_and_literals_exact",
+        }
+        and alignment_provenance.get("full_schema_and_literals_exact") is True
+        and alignment_provenance.get("certificate_sha256")
+        == alignment_provenance.get("expected_live_certificate_sha256")
+        == _canonical_json_sha256(alignment) == expected_alignment_hash
+        and set(alignment) == alignment_keys
+        and alignment.get("proof_grade") is True
+        and alignment.get("modular_prime") == RANK1_SU4_MODULAR_PRIME
+        and alignment.get("generator_labels") == list(RANK1_SU4_ORDERED_LABELS)
+        and alignment.get("family_count") == len(families) == 10
+        and alignment.get("carrier_count") == len(carriers) == len(names) == 25
+        and alignment.get("expected_irrep_multiplicities") == RANK1_SU4_BRANCHING
+        and alignment.get("observed_irrep_multiplicities") == RANK1_SU4_BRANCHING
+        and alignment.get("concatenated_aligned_basis_shape") == [210, 210]
+        and alignment.get("concatenated_aligned_basis_rank_mod_prime") == 210
+        and alignment.get("exterior_conjugation_shape") == [210, 210]
+        and alignment.get("complex_type_carrier_count") == 14
+        and alignment.get("self_conjugate_real_type_carrier_count") == 11
+        and all(
+            alignment.get(key) is True
+            for key in (
+                "upstream_carrier_order_exact", "all_family_word_counts_equal_dimensions",
+                "all_25_carriers_exact",
+                "all_equivalent_copies_use_common_source_actions_exact",
+                "exterior_conjugation_signed_permutation_exact",
+                "exterior_conjugation_square_equals_identity_exact",
+                "Gaussian_basis_conjugation_is_physical_exact",
+                "all_25_physical_Gaussian_embeddings_intertwine_live_Phi210_exact",
+                "all_25_conjugate_carrier_maps_exact",
+                "all_25_conjugate_maps_involutive_exact",
+                "conjugation_compatible_with_all_15_generators_exact",
+            )
+        )
+        and sum(row.get("dimension", 0) for row in carriers) == 210
+        and all(
+            isinstance(row, dict) and set(row) == carrier_keys
+            and row.get("irrep") in RANK1_SU4_BRANCHING
+            and row.get("dimension") == row.get("lowering_word_count")
+            == row.get("aligned_rank_mod_prime")
+            and row.get("conjugate_carrier_name") in names
+            and rows_by_name[row.get("conjugate_carrier_name")].get(
+                "conjugate_carrier_name"
+            ) == row.get("name")
+            and row.get("conjugation_map_denominator", 0) > 0
+            and all(value > 0 for value in row.get("source_action_denominators", []))
+            and all(
+                row.get(key) is True
+                for key in (
+                    "highest_weight_primitive_and_raising_annihilated",
+                    "C8_eigen_equation_exact",
+                    "all_15_common_source_actions_intertwine_exact",
+                    "natural_block_support_exact",
+                    "all_15_live_canonical_Phi210_actions_intertwine_exact",
+                    "conjugation_involution_exact",
+                    "physical_conjugation_embedding_exact",
+                )
+            )
+            for row in carriers
+        )
+        and all(
+            isinstance(row, dict) and set(row) == family_keys
+            and row.get("irrep") in RANK1_SU4_BRANCHING
+            and row.get("multiplicity") == RANK1_SU4_BRANCHING[row.get("irrep")]
+            and row.get("dimension") == len(row.get("lowering_words", []))
+            and row.get("common_source_action_count") == 15
+            and row.get("reference_carrier_name") in names
+            for row in families
+        )
+        and alignment.get("simple_Chevalley_system", {}).get("proof_grade") is True
+        and alignment.get("simple_Chevalley_system", {}).get(
+            "all_actions_integral_real"
+        ) is True
+        and alignment.get("simple_Chevalley_system", {}).get(
+            "all_12_Serre_relations_exact"
+        ) is True
+        and alignment.get("exact_integer_and_rational_arithmetic_safety", {}).get(
+            "proof_grade"
+        ) is True
+        and alignment.get("exact_integer_and_rational_arithmetic_safety", {}).get(
+            "all_live_conservative_bounds_fit_int64"
+        ) is True
+    )
+
+
+def _rank1_su4_phi210_quadratic_basis_exact(
+    report: dict[str, Any],
+    stabilizer_report: dict[str, Any],
+    intertwiners_report: dict[str, Any],
+    aligned_report: dict[str, Any],
+) -> bool:
+    """Fail closed on the exact 45-dimensional live invariant basis."""
+    checks = report.get("checks", {})
+    scope = report.get("scope", {})
+    provenance = report.get("source_provenance", {})
+    constraint = report.get("constraint_system", {})
+    census = report.get("real_form_completeness", {})
+    basis = report.get("quadratic_basis", {})
+    construction = report.get("construction_metadata", {})
+    reconstruction = report.get("reconstruction_api", {})
+    rows = basis.get("ordered_basis_metadata", [])
+    check_keys = {
+        "model_contract_and_live_companions_exact",
+        "Cartan_reduced_constraint_nullity_45_exact",
+        "real_form_completeness_upper_bound_45_exact",
+        "explicit_real_symmetric_integral_basis_exact",
+        "all_basis_matrices_live_invariant_exact",
+        "lower_and_upper_dimensions_match_exact",
+    }
+    true_scope = {
+        "H_fixed_to_h_minus", "Sigma_fixed_to_q_over_4",
+        "rank1_endpoint_SU4_stabilizer_used", "canonical_real_Phi210_chart_used",
+        "SU4_invariant_quadratic_form_basis_constructed",
+        "SU4_invariant_quadratic_form_basis_complete",
+        "SU4_invariant_quadratic_form_dimension_45_exact",
+    }
+    false_scope = {
+        "augmented_homogeneous_Schur_SOS_SDP_constructed",
+        "arbitrary_real_Phi_lower_bound_proved", "arbitrary_rank1_Phi_proved",
+        "G3_closed", "whole_model_validated", "whole_model_excluded",
+    }
+    provenance_keys = {
+        "stabilizer_module", "stabilizer_module_sha256", "intertwiner_module",
+        "intertwiner_module_sha256", "companion_model_contract_id",
+        "stabilizer_status", "intertwiner_status",
+        "stabilizer_report_equals_live_report_exact",
+        "intertwiner_report_equals_live_report_exact",
+        "carrier_certificate_equals_embedded_and_live_exact",
+        "all_required_live_provenance_exact",
+    }
+    constraint_keys = {
+        "proof_grade", "Cartan_generator_count", "non_Cartan_generator_count",
+        "Cartan_weight_zero_symmetric_monomial_count", "reduced_constraint_shape",
+        "reduced_constraint_nnz", "reduced_constraint_maximum_absolute_entry",
+        "modular_prime", "reduced_constraint_rank_mod_prime", "free_column_count",
+        "integer_nullspace_shape", "integer_nullspace_maximum_absolute_entry",
+        "integer_nullspace_nnz", "integer_nullspace_residual_zero_exact",
+        "all_45_nullvectors_invariant_under_all_15_exterior_actions_exact",
+        "exact_rational_rank", "exact_rational_nullity", "rank_nullity_argument",
+        "constraint_sha256", "nullspace_sha256",
+    }
+    census_keys = {
+        "proof_grade", "complexified_branching", "expected_complexified_branching",
+        "branching_exact", "self_conjugate_real_types",
+        "self_conjugate_symmetric_pairing_dimension",
+        "complex_types_with_conjugates", "complex_Hermitian_real_dimension",
+        "total_real_symmetric_invariant_dimension_upper_bound",
+        "dimension_identity", "real_form_argument",
+    }
+    basis_keys = {
+        "proof_grade", "matrix_count", "matrix_shape", "all_shapes_210_by_210_exact",
+        "all_entries_integral_exact", "all_matrices_symmetric_exact",
+        "all_matrices_primitive_exact", "all_canonical_first_entries_positive_exact",
+        "all_45_commute_with_all_15_live_Phi210_generators_exact",
+        "upper_triangle_column_rank_mod_prime", "modular_prime", "independence_argument",
+        "minimum_nnz", "maximum_nnz", "total_nnz", "maximum_absolute_entry",
+        "basis_sha256", "ordered_basis_metadata", "Gram_shape", "Gram_rank_mod_prime",
+        "Gram_minimum_diagonal", "Gram_maximum_diagonal", "Gram_sha256",
+        "polynomial_monomial_count", "polynomial_upper_triangle_convention",
+        "integer_matrix_to_primitive_polynomial_scale_factors",
+        "primitive_polynomial_rows_exact", "primitive_polynomial_basis_rank_mod_prime",
+        "primitive_polynomial_basis_sha256",
+    }
+    construction_keys = {
+        "modular_pivot_upper_triangle_coordinates",
+        "modular_pivot_upper_triangle_flat_indices",
+        "nonzero_real_imaginary_candidate_count", "selected_candidate_indices",
+        "selected_candidate_origins",
+    }
+    reconstruction_keys = {
+        "basis_accessor", "Gram_accessor", "exact_reconstruction_accessor",
+        "integral_evaluation_accessor", "primitive_polynomial_accessor",
+        "matrix_to_polynomial_accessor", "polynomial_to_matrix_accessor",
+        "formula", "polynomial_convention", "rational_return_convention",
+        "exact_arithmetic_contract", "ordered_basis_hash", "Gram_hash",
+    }
+    expected_hashes = {
+        "constraint": "cddac4827dc47c663c8ca7b4ebe9ccb2338103ae5daf917c4eb615f4c3659d90",
+        "nullspace": "a92c9fc421809623e50a0c7dc043d546cd866e7acaa819cffab3ae52da3998d6",
+        "basis": "27c0649758c87aa2cbe39ae04596f4bd6df511ba3ca4004013bdcf936599b694",
+        "gram": "17d352a43fc0a555df3d2abbe0f59f1ceecc89498648a84703bcf0ccd9c23124",
+        "polynomial": "a9d417aa7210143ad6bd69f62dce358239673b6c0c7bc545f9b65ec586002caa",
+    }
+    return bool(
+        _rank1_su4_stabilizer_infrastructure_exact(stabilizer_report)
+        and _rank1_su4_phi210_intertwiners_exact(
+            intertwiners_report, stabilizer_report
+        )
+        and _rank1_su4_aligned_carriers_exact(
+            aligned_report, intertwiners_report, stabilizer_report
+        )
+        and _canonical_json_sha256(report)
+        == "497a8c1db29e7d88f30bd1cc68902cc7981da4a3fefd5586bd15bad323d1e259"
+        and set(report) == {
+            "status", "overall_state", "model_contract_id", "n_checks",
+            "n_failed", "failures", "checks", "source_provenance",
+            "constraint_system", "real_form_completeness", "quadratic_basis",
+            "construction_metadata", "reconstruction_api", "scope",
+            "next_exact_target", "verdict",
+        }
+        and report.get("status")
+        == "EXACT_RANK1_SU4_PHI210_QUADRATIC_BASIS_CERTIFIED"
+        and report.get("overall_state")
+        == "SU4_INVARIANT_QUADRATIC_BASIS_CLOSED__AUGMENTED_SDP_AND_G3_OPEN"
+        and report.get("model_contract_id") == AUTHORITATIVE_CONTRACT_ID
+        and report.get("n_checks") == len(check_keys)
+        and report.get("n_failed") == 0 and report.get("failures") == []
+        and set(checks) == check_keys
+        and all(checks.get(key) is True for key in check_keys)
+        and set(scope) == true_scope | false_scope
+        and all(scope.get(key) is True for key in true_scope)
+        and all(scope.get(key) is False for key in false_scope)
+        and set(provenance) == provenance_keys
+        and provenance.get("companion_model_contract_id")
+        == AUTHORITATIVE_CONTRACT_ID
+        and provenance.get("stabilizer_status") == stabilizer_report.get("status")
+        and provenance.get("intertwiner_status") == intertwiners_report.get("status")
+        and provenance.get("stabilizer_module")
+        == "exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py"
+        and provenance.get("intertwiner_module")
+        == "exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py"
+        and provenance.get("stabilizer_module_sha256")
+        == _file_sha256(ROOT / provenance.get("stabilizer_module", ""))
+        and provenance.get("intertwiner_module_sha256")
+        == _file_sha256(ROOT / provenance.get("intertwiner_module", ""))
+        and all(
+            provenance.get(key) is True
+            for key in (
+                "stabilizer_report_equals_live_report_exact",
+                "intertwiner_report_equals_live_report_exact",
+                "carrier_certificate_equals_embedded_and_live_exact",
+                "all_required_live_provenance_exact",
+            )
+        )
+        and set(constraint) == constraint_keys
+        and constraint.get("proof_grade") is True
+        and constraint.get("Cartan_generator_count") == 3
+        and constraint.get("non_Cartan_generator_count") == 12
+        and constraint.get("Cartan_weight_zero_symmetric_monomial_count") == 551
+        and constraint.get("reduced_constraint_shape") == [5952, 551]
+        and constraint.get("reduced_constraint_rank_mod_prime") == 506
+        and constraint.get("exact_rational_rank") == 506
+        and constraint.get("exact_rational_nullity") == 45
+        and constraint.get("free_column_count") == 45
+        and constraint.get("integer_nullspace_shape") == [551, 45]
+        and constraint.get("integer_nullspace_residual_zero_exact") is True
+        and constraint.get(
+            "all_45_nullvectors_invariant_under_all_15_exterior_actions_exact"
+        ) is True
+        and constraint.get("modular_prime") == RANK1_SU4_MODULAR_PRIME
+        and constraint.get("constraint_sha256") == expected_hashes["constraint"]
+        and constraint.get("nullspace_sha256") == expected_hashes["nullspace"]
+        and set(census) == census_keys
+        and census.get("proof_grade") is True
+        and census.get("branching_exact") is True
+        and census.get("complexified_branching") == RANK1_SU4_BRANCHING
+        and census.get("expected_complexified_branching") == RANK1_SU4_BRANCHING
+        and census.get("self_conjugate_symmetric_pairing_dimension") == 24
+        and census.get("complex_Hermitian_real_dimension") == 21
+        and census.get("total_real_symmetric_invariant_dimension_upper_bound") == 45
+        and census.get("self_conjugate_real_types") == {
+            "1": {"multiplicity": 4, "symmetric_pairings": 10},
+            "6": {"multiplicity": 4, "symmetric_pairings": 10},
+            "15": {"multiplicity": 2, "symmetric_pairings": 3},
+            "20prime": {"multiplicity": 1, "symmetric_pairings": 1},
+        }
+        and census.get("complex_types_with_conjugates") == {
+            "4/4bar": {"multiplicity": 4, "Hermitian_real_dimension": 16},
+            "10/10bar": {"multiplicity": 1, "Hermitian_real_dimension": 1},
+            "20/20bar": {"multiplicity": 2, "Hermitian_real_dimension": 4},
+        }
+        and set(basis) == basis_keys
+        and basis.get("proof_grade") is True
+        and basis.get("matrix_count") == len(rows) == 45
+        and basis.get("matrix_shape") == [210, 210]
+        and basis.get("all_shapes_210_by_210_exact") is True
+        and basis.get("all_entries_integral_exact") is True
+        and basis.get("all_matrices_symmetric_exact") is True
+        and basis.get("all_matrices_primitive_exact") is True
+        and basis.get(
+            "all_45_commute_with_all_15_live_Phi210_generators_exact"
+        ) is True
+        and basis.get("upper_triangle_column_rank_mod_prime") == 45
+        and basis.get("Gram_shape") == [45, 45]
+        and basis.get("Gram_rank_mod_prime") == 45
+        and basis.get("primitive_polynomial_basis_rank_mod_prime") == 45
+        and basis.get("modular_prime") == RANK1_SU4_MODULAR_PRIME
+        and basis.get("basis_sha256") == expected_hashes["basis"]
+        and basis.get("Gram_sha256") == expected_hashes["gram"]
+        and basis.get("primitive_polynomial_basis_sha256")
+        == expected_hashes["polynomial"]
+        and all(
+            isinstance(row, dict)
+            and set(row) == {
+                "basis_index", "nnz", "maximum_absolute_entry",
+                "Frobenius_norm_squared", "matrix_sha256",
+            }
+            and row.get("basis_index") == index
+            and isinstance(row.get("matrix_sha256"), str)
+            and len(row.get("matrix_sha256")) == 64
+            for index, row in enumerate(rows)
+        )
+        and set(construction) == construction_keys
+        and construction.get("nonzero_real_imaginary_candidate_count") == 73
+        and len(construction.get("selected_candidate_indices", [])) == 45
+        and len(construction.get("selected_candidate_origins", [])) == 45
+        and len(construction.get("modular_pivot_upper_triangle_coordinates", [])) == 45
+        and len(construction.get("modular_pivot_upper_triangle_flat_indices", [])) == 45
+        and set(reconstruction) == reconstruction_keys
+        and reconstruction.get("ordered_basis_hash") == expected_hashes["basis"]
+        and reconstruction.get("Gram_hash") == expected_hashes["gram"]
+        and reconstruction.get("formula") == "Q(c)=sum_{a=0}^{44} c_a Q_a"
+        and set(reconstruction.get("exact_arithmetic_contract", {})) == {
+            "integral_evaluation", "rational_reconstruction",
+            "polynomial_encoding", "live_basis_maximum_absolute_entry",
+        }
+        and reconstruction.get("exact_arithmetic_contract", {}).get(
+            "live_basis_maximum_absolute_entry"
+        ) == 8
+    )
+
+
 def _gauged_u1x_g3_frontier(
     sos_report: dict[str, Any],
     pd_report: dict[str, Any],
@@ -609,6 +1140,8 @@ def _gauged_u1x_g3_frontier(
     su5_max_negative_rank1_su3_slice_report: dict[str, Any],
     rank1_su4_stabilizer_report: dict[str, Any],
     rank1_su4_phi210_intertwiners_report: dict[str, Any],
+    rank1_su4_aligned_carriers_report: dict[str, Any],
+    rank1_su4_phi210_quadratic_basis_report: dict[str, Any],
     alternative_global_sos_report: dict[str, Any],
 ) -> dict[str, Any]:
     """Bind rejected branches and the surviving SU(5)+Delta G3 frontier."""
@@ -678,6 +1211,12 @@ def _gauged_u1x_g3_frontier(
     rank1_su4_intertwiner_checks = rank1_su4_phi210_intertwiners_report.get(
         "checks", {}
     )
+    rank1_su4_aligned_scope = rank1_su4_aligned_carriers_report.get(
+        "scope", {}
+    )
+    rank1_su4_quadratic_scope = rank1_su4_phi210_quadratic_basis_report.get(
+        "scope", {}
+    )
     alternative_flags = alternative_global_sos_report.get("flags", {})
 
     artifacts_present = {
@@ -712,6 +1251,12 @@ def _gauged_u1x_g3_frontier(
         "rank1_SU4_stabilizer_infrastructure": bool(rank1_su4_stabilizer_report),
         "rank1_SU4_Phi210_intertwiner_infrastructure": bool(
             rank1_su4_phi210_intertwiners_report
+        ),
+        "rank1_SU4_aligned_carrier_infrastructure": bool(
+            rank1_su4_aligned_carriers_report
+        ),
+        "rank1_SU4_Phi210_quadratic_basis": bool(
+            rank1_su4_phi210_quadratic_basis_report
         ),
         "alternative_global_SOS_audit": bool(alternative_global_sos_report),
     }
@@ -1232,6 +1777,19 @@ def _gauged_u1x_g3_frontier(
             rank1_su4_stabilizer_report,
         )
     )
+    rank1_su4_aligned_carriers_exact = _rank1_su4_aligned_carriers_exact(
+        rank1_su4_aligned_carriers_report,
+        rank1_su4_phi210_intertwiners_report,
+        rank1_su4_stabilizer_report,
+    )
+    rank1_su4_phi210_quadratic_basis_exact = (
+        _rank1_su4_phi210_quadratic_basis_exact(
+            rank1_su4_phi210_quadratic_basis_report,
+            rank1_su4_stabilizer_report,
+            rank1_su4_phi210_intertwiners_report,
+            rank1_su4_aligned_carriers_report,
+        )
+    )
     alternative_global_sos_honestly_open = bool(
         alternative_global_sos_report.get("n_failed") == 0
         and alternative_global_sos_report.get("status")
@@ -1283,6 +1841,8 @@ def _gauged_u1x_g3_frontier(
         and su5_max_negative_rank1_su3_slice_closed
         and rank1_su4_stabilizer_infrastructure_exact
         and rank1_su4_phi210_intertwiners_exact
+        and rank1_su4_aligned_carriers_exact
+        and rank1_su4_phi210_quadratic_basis_exact
         and alternative_global_sos_honestly_open
     )
     return {
@@ -1460,11 +2020,60 @@ def _gauged_u1x_g3_frontier(
                 "Sym2_Phi210_SU4_singlet_dimension"
             )
         ),
-        "rank1_SU4_Schur_SOS_SDP_open": not bool(
-            rank1_su4_intertwiner_scope.get("Schur_SOS_SDP_constructed")
+        "rank1_SU4_aligned_carriers_exact": rank1_su4_aligned_carriers_exact,
+        "rank1_SU4_aligned_direct_sum_rank": (
+            rank1_su4_aligned_carriers_report.get("alignment", {}).get(
+                "concatenated_aligned_basis_rank_mod_prime"
+            )
         ),
-        "rank1_SU4_arbitrary_Phi_bound_open": not bool(
-            rank1_su4_intertwiner_scope.get("arbitrary_rank1_Phi_proved")
+        "rank1_SU4_physical_real_maps_exact": bool(
+            rank1_su4_aligned_scope.get(
+                "physical_real_structure_and_Gaussian_embeddings_constructed"
+            )
+            is True
+        ),
+        "rank1_SU4_Phi210_quadratic_basis_exact": (
+            rank1_su4_phi210_quadratic_basis_exact
+        ),
+        "rank1_SU4_quadratic_constraint_shape": (
+            rank1_su4_phi210_quadratic_basis_report.get(
+                "constraint_system", {}
+            ).get("reduced_constraint_shape")
+        ),
+        "rank1_SU4_quadratic_constraint_rank": (
+            rank1_su4_phi210_quadratic_basis_report.get(
+                "constraint_system", {}
+            ).get("exact_rational_rank")
+        ),
+        "rank1_SU4_quadratic_constraint_nullity": (
+            rank1_su4_phi210_quadratic_basis_report.get(
+                "constraint_system", {}
+            ).get("exact_rational_nullity")
+        ),
+        "rank1_SU4_quadratic_basis_count": (
+            rank1_su4_phi210_quadratic_basis_report.get(
+                "quadratic_basis", {}
+            ).get("matrix_count")
+        ),
+        "rank1_SU4_quadratic_basis_rank": (
+            rank1_su4_phi210_quadratic_basis_report.get(
+                "quadratic_basis", {}
+            ).get("upper_triangle_column_rank_mod_prime")
+        ),
+        "rank1_SU4_quadratic_live_invariance_exact": (
+            rank1_su4_phi210_quadratic_basis_report.get(
+                "quadratic_basis", {}
+            ).get("all_45_commute_with_all_15_live_Phi210_generators_exact")
+        ),
+        "rank1_SU4_Schur_SOS_SDP_open": (
+            rank1_su4_quadratic_scope.get(
+                "augmented_homogeneous_Schur_SOS_SDP_constructed"
+            )
+            is False
+        ),
+        "rank1_SU4_arbitrary_Phi_bound_open": (
+            rank1_su4_quadratic_scope.get("arbitrary_rank1_Phi_proved")
+            is False
         ),
         "SU5_max_negative_arbitrary_Sigma_orientation_open": not bool(
             rank1_su3_scope.get("arbitrary_max_negative_Sigma")
@@ -1761,6 +2370,8 @@ def _build_report_from_inputs(
     g3_su5_max_negative_rank1_su3_slice_report: dict[str, Any] | None = None,
     g3_rank1_su4_stabilizer_report: dict[str, Any] | None = None,
     g3_rank1_su4_phi210_intertwiners_report: dict[str, Any] | None = None,
+    g3_rank1_su4_aligned_carriers_report: dict[str, Any] | None = None,
+    g3_rank1_su4_phi210_quadratic_basis_report: dict[str, Any] | None = None,
     g3_alternative_global_sos_report: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Build a ledger from fresh reports, including repaired-contract states."""
@@ -1834,6 +2445,14 @@ def _build_report_from_inputs(
         g3_rank1_su4_phi210_intertwiners_report = _load_json_artifact(
             G3_RANK1_SU4_PHI210_INTERTWINERS_JSON
         )
+    if g3_rank1_su4_aligned_carriers_report is None:
+        g3_rank1_su4_aligned_carriers_report = _load_json_artifact(
+            G3_RANK1_SU4_ALIGNED_CARRIERS_JSON
+        )
+    if g3_rank1_su4_phi210_quadratic_basis_report is None:
+        g3_rank1_su4_phi210_quadratic_basis_report = _load_json_artifact(
+            G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_JSON
+        )
     if g3_alternative_global_sos_report is None:
         g3_alternative_global_sos_report = _load_json_artifact(
             G3_ALTERNATIVE_GLOBAL_SOS_JSON
@@ -1859,6 +2478,8 @@ def _build_report_from_inputs(
         g3_su5_max_negative_rank1_su3_slice_report,
         g3_rank1_su4_stabilizer_report,
         g3_rank1_su4_phi210_intertwiners_report,
+        g3_rank1_su4_aligned_carriers_report,
+        g3_rank1_su4_phi210_quadratic_basis_report,
         g3_alternative_global_sos_report,
     )
     gates = _build_gates(
@@ -2105,6 +2726,19 @@ def _build_report_from_inputs(
             is True
             and g3_frontier["rank1_SU4_Phi210_carrier_count"] == 25
             and g3_frontier["rank1_SU4_Sym2_invariant_dimension"] == 45
+            and g3_frontier["rank1_SU4_aligned_carriers_exact"] is True
+            and g3_frontier["rank1_SU4_aligned_direct_sum_rank"] == 210
+            and g3_frontier["rank1_SU4_physical_real_maps_exact"] is True
+            and g3_frontier["rank1_SU4_Phi210_quadratic_basis_exact"] is True
+            and g3_frontier["rank1_SU4_quadratic_constraint_shape"]
+            == [5952, 551]
+            and g3_frontier["rank1_SU4_quadratic_constraint_rank"] == 506
+            and g3_frontier["rank1_SU4_quadratic_constraint_nullity"] == 45
+            and g3_frontier["rank1_SU4_quadratic_basis_count"] == 45
+            and g3_frontier["rank1_SU4_quadratic_basis_rank"] == 45
+            and g3_frontier[
+                "rank1_SU4_quadratic_live_invariance_exact"
+            ] is True
             and g3_frontier["rank1_SU4_Schur_SOS_SDP_open"] is True
             and g3_frontier["rank1_SU4_arbitrary_Phi_bound_open"] is True
             and g3_frontier["G3_closed"] is False
@@ -2249,8 +2883,9 @@ def _build_report_from_inputs(
                 "endpoint, a separate exact certificate closes only a "
                 "four-real-dimensional Phi sub-slice of the 16-dimensional "
                 "SU(3)-fixed space, also with minimum 1/5000. Its exact SU(4) "
-                "stabilizer and 25-carrier, 45-invariant Phi210 census are now "
-                "available for the still-open Schur/SOS SDP."
+                "stabilizer, aligned rank-210 carrier real maps, and explicit "
+                "complete 45-element Phi210 invariant quadratic basis are now "
+                "available for the still-open augmented Schur/SOS SDP."
             ),
         },
         {"wave": 4, "gates": ["G6"], "status": "BLOCKED_ON_G3_G4_G5"},
@@ -2277,8 +2912,9 @@ def _build_report_from_inputs(
         "has an exact 1/5000 "
         "gap on a four-real-dimensional Phi sub-slice only; the ambient "
         "16-dimensional SU(3)-fixed space and arbitrary Phi remain open. The "
-        "exact SU(4) stabilizer and 25-carrier, 45-invariant Phi210 census are "
-        "infrastructure only; the Schur/SOS SDP remains open. Only "
+        "exact SU(4) stabilizer, aligned rank-210 carrier real maps, and explicit "
+        "complete 45-element Phi210 invariant quadratic basis are infrastructure "
+        "only; the augmented Schur/SOS SDP remains open. Only "
         "arbitrary non-pure-Delta Sigma coercivity remains open. "
         "G5 is CLOSED; G4 and G6-G8 remain "
         "dependency-blocked. Historical "
@@ -2312,9 +2948,10 @@ def _build_report_from_inputs(
         "fixed H=h_- and one explicit rank-one Sigma endpoint, an exact "
         "Gram/LDL certificate also proves "
         "the 1/5000 gap on only a four-real-dimensional Phi sub-slice of the "
-        "16-dimensional SU(3)-fixed space. Its exact SU(4) stabilizer and "
-        "25-carrier, 45-invariant Phi210 census are certified only as input to "
-        "the still-open Schur/SOS SDP. Uniform "
+        "16-dimensional SU(3)-fixed space. Its exact SU(4) stabilizer, aligned "
+        "rank-210 carrier real maps, and explicit complete 45-element Phi210 "
+        "invariant quadratic basis are certified only as input to the still-open "
+        "augmented Schur/SOS SDP. Uniform "
         "coercivity for arbitrary non-pure-Delta Sigma orientations remains open. The "
         "historical 64/91 "
         "derivative theorem, 449-dimensional "
@@ -2379,6 +3016,12 @@ def _build_report_from_inputs(
             ),
             "gauged_G3_rank1_SU4_Phi210_intertwiner_infrastructure": (
                 g3_rank1_su4_phi210_intertwiners_report
+            ),
+            "gauged_G3_rank1_SU4_aligned_carrier_infrastructure": (
+                g3_rank1_su4_aligned_carriers_report
+            ),
+            "gauged_G3_rank1_SU4_Phi210_quadratic_basis": (
+                g3_rank1_su4_phi210_quadratic_basis_report
             ),
             "gauged_G3_alternative_global_SOS_audit": (
                 g3_alternative_global_sos_report
@@ -2465,6 +3108,12 @@ def build_report() -> dict[str, Any]:
         ),
         g3_rank1_su4_phi210_intertwiners_report=_load_json_artifact(
             G3_RANK1_SU4_PHI210_INTERTWINERS_JSON
+        ),
+        g3_rank1_su4_aligned_carriers_report=_load_json_artifact(
+            G3_RANK1_SU4_ALIGNED_CARRIERS_JSON
+        ),
+        g3_rank1_su4_phi210_quadratic_basis_report=_load_json_artifact(
+            G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_JSON
         ),
         g3_alternative_global_sos_report=_load_json_artifact(
             G3_ALTERNATIVE_GLOBAL_SOS_JSON

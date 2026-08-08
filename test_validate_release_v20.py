@@ -33,6 +33,14 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             "test_exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py",
             "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_INTERTWINERS_V20.json",
             "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_INTERTWINERS_V20.md",
+            "exact_gauged_u1x_g3_rank1_su4_aligned_carriers_v20.py",
+            "test_exact_gauged_u1x_g3_rank1_su4_aligned_carriers_v20.py",
+            "EXACT_GAUGED_U1X_G3_RANK1_SU4_ALIGNED_CARRIERS_V20.json",
+            "EXACT_GAUGED_U1X_G3_RANK1_SU4_ALIGNED_CARRIERS_V20.md",
+            "exact_gauged_u1x_g3_rank1_su4_phi210_quadratic_basis_v20.py",
+            "test_exact_gauged_u1x_g3_rank1_su4_phi210_quadratic_basis_v20.py",
+            "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_V20.json",
+            "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_V20.md",
         ):
             self.assertIn(required, paths)
         for relative in paths:
@@ -88,9 +96,23 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
                 / "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_INTERTWINERS_V20.json"
             ).read_text(encoding="utf-8")
         )
+        aligned = json.loads(
+            (
+                release.ROOT
+                / "EXACT_GAUGED_U1X_G3_RANK1_SU4_ALIGNED_CARRIERS_V20.json"
+            ).read_text(encoding="utf-8")
+        )
+        quadratic = json.loads(
+            (
+                release.ROOT
+                / "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_V20.json"
+            ).read_text(encoding="utf-8")
+        )
         self.assertEqual(
-            release.rank1_su4_release_predicates(stabilizer, intertwiners),
-            (True, True),
+            release.rank1_su4_release_predicates(
+                stabilizer, intertwiners, aligned, quadratic
+            ),
+            (True, True, True, True),
         )
 
         mutations = []
@@ -163,14 +185,42 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
         mutations.append((forged_stabilizer, forged_intertwiners))
 
         for forged_stabilizer, forged_intertwiners in mutations:
-            stabilizer_exact, intertwiners_exact = (
+            stabilizer_exact, intertwiners_exact, aligned_exact, quadratic_exact = (
                 release.rank1_su4_release_predicates(
                     forged_stabilizer,
                     forged_intertwiners,
+                    aligned,
+                    quadratic,
                 )
             )
             self.assertFalse(stabilizer_exact and intertwiners_exact)
             self.assertFalse(intertwiners_exact)
+            self.assertFalse(aligned_exact)
+            self.assertFalse(quadratic_exact)
+
+        stage2_mutations = []
+        forged_aligned = copy.deepcopy(aligned)
+        forged_aligned["alignment"]["concatenated_aligned_basis_rank_mod_prime"] = 209
+        stage2_mutations.append((forged_aligned, copy.deepcopy(quadratic)))
+        forged_aligned = copy.deepcopy(aligned)
+        forged_aligned["upstream_provenance"]["source_contract"][
+            "upstream_module_sha256"
+        ] = "0" * 64
+        stage2_mutations.append((forged_aligned, copy.deepcopy(quadratic)))
+        forged_quadratic = copy.deepcopy(quadratic)
+        forged_quadratic["constraint_system"]["exact_rational_rank"] = 505
+        stage2_mutations.append((copy.deepcopy(aligned), forged_quadratic))
+        forged_quadratic = copy.deepcopy(quadratic)
+        forged_quadratic["scope"][
+            "augmented_homogeneous_Schur_SOS_SDP_constructed"
+        ] = True
+        stage2_mutations.append((copy.deepcopy(aligned), forged_quadratic))
+        for forged_aligned, forged_quadratic in stage2_mutations:
+            predicates = release.rank1_su4_release_predicates(
+                stabilizer, intertwiners, forged_aligned, forged_quadratic
+            )
+            self.assertFalse(predicates[2] and predicates[3])
+            self.assertFalse(predicates[3])
 
     def test_su4_release_does_not_mislabel_the_full_augmented_sos_as_45_by_45(
         self,

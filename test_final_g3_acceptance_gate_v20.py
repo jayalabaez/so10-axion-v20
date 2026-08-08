@@ -48,6 +48,12 @@ def test_current_gate_is_open_not_failed_or_overclaimed():
     assert report["artifact_integrity"][
         "rank1_SU4_Phi210_intertwiner_infrastructure_executes_fail_closed"
     ] is True
+    assert report["artifact_integrity"][
+        "rank1_SU4_aligned_carrier_infrastructure_executes_fail_closed"
+    ] is True
+    assert report["artifact_integrity"][
+        "rank1_SU4_Phi210_quadratic_basis_executes_fail_closed"
+    ] is True
     assert report["science_criteria"][
         "max_negative_all_zero_residual_route_excluded_exactly"
     ] is True
@@ -101,6 +107,12 @@ def test_current_gate_is_open_not_failed_or_overclaimed():
     assert report["diagnostic_only"]["rank1_SU4_joint_stabilizer_dimension"] == 15
     assert report["diagnostic_only"]["rank1_SU4_Phi210_carrier_count"] == 25
     assert report["diagnostic_only"]["rank1_SU4_Sym2_invariant_dimension"] == 45
+    assert report["diagnostic_only"]["rank1_SU4_aligned_direct_sum_rank"] == 210
+    assert report["diagnostic_only"]["rank1_SU4_physical_real_maps_exact"] is True
+    assert report["diagnostic_only"]["rank1_SU4_quadratic_constraint_shape"] == [5952, 551]
+    assert report["diagnostic_only"]["rank1_SU4_quadratic_constraint_rank"] == 506
+    assert report["diagnostic_only"]["rank1_SU4_quadratic_constraint_nullity"] == 45
+    assert report["diagnostic_only"]["rank1_SU4_quadratic_basis_count"] == 45
     assert report["diagnostic_only"]["rank1_SU4_Schur_SOS_SDP_constructed"] is False
     assert report["diagnostic_only"][
         "arbitrary_non_pure_Delta_Sigma_orientations_open"
@@ -259,3 +271,30 @@ def test_rank1_su4_infrastructure_mutations_are_fail_closed():
         assert report["artifact_integrity"][
             "rank1_SU4_Phi210_intertwiner_infrastructure_executes_fail_closed"
         ] is False
+
+
+def test_rank1_su4_stage2_mutations_are_fail_closed():
+    aligned = mod._load(mod.RANK1_SU4_ALIGNED_CARRIERS_JSON)
+    quadratic = mod._load(mod.RANK1_SU4_PHI210_QUADRATIC_BASIS_JSON)
+
+    forged_aligned = copy.deepcopy(aligned)
+    forged_aligned["alignment"]["concatenated_aligned_basis_rank_mod_prime"] = 209
+    report = mod.build_report(rank1_su4_aligned_carriers_report=forged_aligned)
+    assert report["overall_state"] == "EXECUTION_FAIL"
+    assert report["artifact_integrity"][
+        "rank1_SU4_aligned_carrier_infrastructure_executes_fail_closed"
+    ] is False
+    assert report["artifact_integrity"][
+        "rank1_SU4_Phi210_quadratic_basis_executes_fail_closed"
+    ] is False
+
+    forged_quadratic = copy.deepcopy(quadratic)
+    forged_quadratic["scope"]["augmented_homogeneous_Schur_SOS_SDP_constructed"] = True
+    report = mod.build_report(
+        rank1_su4_phi210_quadratic_basis_report=forged_quadratic
+    )
+    assert report["overall_state"] == "EXECUTION_FAIL"
+    assert report["classification"]["G3_closed"] is False
+    assert report["artifact_integrity"][
+        "rank1_SU4_Phi210_quadratic_basis_executes_fail_closed"
+    ] is False

@@ -40,6 +40,10 @@ FINAL_THEOREM_CORE_PATHS: tuple[str, ...] = (
     "EXACT_GAUGED_U1X_G3_RANK1_SU4_STABILIZER_V20.md",
     "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_INTERTWINERS_V20.json",
     "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_INTERTWINERS_V20.md",
+    "EXACT_GAUGED_U1X_G3_RANK1_SU4_ALIGNED_CARRIERS_V20.json",
+    "EXACT_GAUGED_U1X_G3_RANK1_SU4_ALIGNED_CARRIERS_V20.md",
+    "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_V20.json",
+    "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_V20.md",
     "G1_EXACT_DECLARED_SYMMETRY_CHARACTER_CENSUS_V20.json",
     "G1_EXACT_DECLARED_SYMMETRY_CHARACTER_CENSUS_V20.md",
     "G1_G8_EXECUTION_ROADMAP_V20.md",
@@ -56,6 +60,8 @@ FINAL_THEOREM_CORE_PATHS: tuple[str, ...] = (
     "exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py",
     "exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py",
     "exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py",
+    "exact_gauged_u1x_g3_rank1_su4_aligned_carriers_v20.py",
+    "exact_gauged_u1x_g3_rank1_su4_phi210_quadratic_basis_v20.py",
     "prepare_validation_artifacts_v20.py",
     "replicate.py",
     "test_authoritative_full_model_gate_v20.py",
@@ -63,6 +69,8 @@ FINAL_THEOREM_CORE_PATHS: tuple[str, ...] = (
     "test_exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py",
     "test_exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py",
     "test_exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py",
+    "test_exact_gauged_u1x_g3_rank1_su4_aligned_carriers_v20.py",
+    "test_exact_gauged_u1x_g3_rank1_su4_phi210_quadratic_basis_v20.py",
     "test_g1_exact_declared_symmetry_character_census_v20.py",
     "test_g1_g8_execution_roadmap_v20.py",
     "test_g1_g8_gate_ledger_v20.py",
@@ -96,7 +104,9 @@ def require(condition: bool, message: str) -> None:
 def rank1_su4_release_predicates(
     stabilizer_report: dict,
     intertwiners_report: dict,
-) -> tuple[bool, bool]:
+    aligned_report: dict,
+    quadratic_report: dict,
+) -> tuple[bool, bool, bool, bool]:
     """Return exact, fail-closed infrastructure predicates for the release."""
     stabilizer_exact = gate_ledger._rank1_su4_stabilizer_infrastructure_exact(
         stabilizer_report
@@ -105,7 +115,13 @@ def rank1_su4_release_predicates(
         intertwiners_report,
         stabilizer_report,
     )
-    return stabilizer_exact, intertwiners_exact
+    aligned_exact = gate_ledger._rank1_su4_aligned_carriers_exact(
+        aligned_report, intertwiners_report, stabilizer_report
+    )
+    quadratic_exact = gate_ledger._rank1_su4_phi210_quadratic_basis_exact(
+        quadratic_report, stabilizer_report, intertwiners_report, aligned_report
+    )
+    return stabilizer_exact, intertwiners_exact, aligned_exact, quadratic_exact
 
 
 def write_checksums(files: list[Path], *, root: Path | None = None) -> None:
@@ -347,6 +363,20 @@ def main() -> int:
     run(
         [
             sys.executable,
+            "exact_gauged_u1x_g3_rank1_su4_aligned_carriers_v20.py",
+            "--write",
+        ]
+    )
+    run(
+        [
+            sys.executable,
+            "exact_gauged_u1x_g3_rank1_su4_phi210_quadratic_basis_v20.py",
+            "--write",
+        ]
+    )
+    run(
+        [
+            sys.executable,
             "exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py",
             "--write",
         ]
@@ -496,6 +526,18 @@ def main() -> int:
         (
             ROOT
             / "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_INTERTWINERS_V20.json"
+        ).read_text()
+    )
+    exact_rank1_su4_aligned_carriers = json.loads(
+        (
+            ROOT
+            / "EXACT_GAUGED_U1X_G3_RANK1_SU4_ALIGNED_CARRIERS_V20.json"
+        ).read_text()
+    )
+    exact_rank1_su4_phi210_quadratic_basis = json.loads(
+        (
+            ROOT
+            / "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_V20.json"
         ).read_text()
     )
     exact_alternative_sos = json.loads(
@@ -1107,9 +1149,13 @@ def main() -> int:
     (
         rank1_su4_stabilizer_exact,
         rank1_su4_phi210_intertwiners_exact,
+        rank1_su4_aligned_carriers_exact,
+        rank1_su4_phi210_quadratic_basis_exact,
     ) = rank1_su4_release_predicates(
         exact_rank1_su4_stabilizer,
         exact_rank1_su4_phi210_intertwiners,
+        exact_rank1_su4_aligned_carriers,
+        exact_rank1_su4_phi210_quadratic_basis,
     )
     require(
         rank1_su4_stabilizer_exact,
@@ -1121,6 +1167,14 @@ def main() -> int:
             "rank-one SU(4) Phi210 intertwiner infrastructure drifted, lost "
             "provenance, or overclaimed scope"
         ),
+    )
+    require(
+        rank1_su4_aligned_carriers_exact,
+        "rank-one SU(4) aligned-carrier/real-map certificate drifted or overclaimed scope",
+    )
+    require(
+        rank1_su4_phi210_quadratic_basis_exact,
+        "rank-one SU(4) Phi210 invariant quadratic-basis certificate drifted or overclaimed G3",
     )
     alternative_flags = exact_alternative_sos["flags"]
     require(
@@ -1360,6 +1414,8 @@ def main() -> int:
             "test_exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py",
             "test_exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py",
             "test_exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py",
+            "test_exact_gauged_u1x_g3_rank1_su4_aligned_carriers_v20.py",
+            "test_exact_gauged_u1x_g3_rank1_su4_phi210_quadratic_basis_v20.py",
             "test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py",
             "test_final_g3_acceptance_gate_v20.py",
             "test_gauged_u1x_g3_sos_candidate_v20.py",
