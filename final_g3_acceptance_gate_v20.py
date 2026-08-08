@@ -58,6 +58,12 @@ RANK1_SU4_STABILIZER_JSON = (
 RANK1_SU4_PHI210_INTERTWINERS_JSON = (
     ROOT / "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_INTERTWINERS_V20.json"
 )
+RANK1_SU4_ALIGNED_CARRIERS_JSON = (
+    ROOT / "EXACT_GAUGED_U1X_G3_RANK1_SU4_ALIGNED_CARRIERS_V20.json"
+)
+RANK1_SU4_PHI210_QUADRATIC_BASIS_JSON = (
+    ROOT / "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_V20.json"
+)
 
 MODEL_CONTRACT_ID = ledger.AUTHORITATIVE_CONTRACT_ID
 FINAL_THEOREM = (
@@ -99,6 +105,8 @@ def build_report(
     max_negative_rank1_su3_slice_report: dict[str, Any] | None = None,
     rank1_su4_stabilizer_report: dict[str, Any] | None = None,
     rank1_su4_phi210_intertwiners_report: dict[str, Any] | None = None,
+    rank1_su4_aligned_carriers_report: dict[str, Any] | None = None,
+    rank1_su4_phi210_quadratic_basis_report: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     ledger_report = ledger.build_report() if ledger_report is None else ledger_report
     hsx_report = _load(HSX_JSON) if hsx_report is None else hsx_report
@@ -154,6 +162,16 @@ def build_report(
         if rank1_su4_phi210_intertwiners_report is None
         else rank1_su4_phi210_intertwiners_report
     )
+    rank1_su4_aligned_carriers_report = (
+        _load(RANK1_SU4_ALIGNED_CARRIERS_JSON)
+        if rank1_su4_aligned_carriers_report is None
+        else rank1_su4_aligned_carriers_report
+    )
+    rank1_su4_phi210_quadratic_basis_report = (
+        _load(RANK1_SU4_PHI210_QUADRATIC_BASIS_JSON)
+        if rank1_su4_phi210_quadratic_basis_report is None
+        else rank1_su4_phi210_quadratic_basis_report
+    )
 
     frontier = ledger_report.get("gauged_u1x_g3_constructive_frontier", {})
     gates = ledger_report.get("gates", {})
@@ -189,6 +207,25 @@ def build_report(
         rank1_su4_stabilizer_report,
     )
     rank1_su4_intertwiner_scope = rank1_su4_phi210_intertwiners_report.get(
+        "scope", {}
+    )
+    rank1_su4_aligned_exact = ledger._rank1_su4_aligned_carriers_exact(
+        rank1_su4_aligned_carriers_report,
+        rank1_su4_phi210_intertwiners_report,
+        rank1_su4_stabilizer_report,
+    )
+    rank1_su4_quadratic_exact = (
+        ledger._rank1_su4_phi210_quadratic_basis_exact(
+            rank1_su4_phi210_quadratic_basis_report,
+            rank1_su4_stabilizer_report,
+            rank1_su4_phi210_intertwiners_report,
+            rank1_su4_aligned_carriers_report,
+        )
+    )
+    rank1_su4_aligned_scope = rank1_su4_aligned_carriers_report.get(
+        "scope", {}
+    )
+    rank1_su4_quadratic_scope = rank1_su4_phi210_quadratic_basis_report.get(
         "scope", {}
     )
 
@@ -421,6 +458,12 @@ def build_report(
         "rank1_SU4_Phi210_intertwiner_infrastructure_executes_fail_closed": (
             rank1_su4_intertwiners_exact
         ),
+        "rank1_SU4_aligned_carrier_infrastructure_executes_fail_closed": (
+            rank1_su4_aligned_exact
+        ),
+        "rank1_SU4_Phi210_quadratic_basis_executes_fail_closed": (
+            rank1_su4_quadratic_exact
+        ),
         "alternative_global_SOS_audit_executes_fail_closed": bool(
             alternative_sos_report.get("n_failed") == 0
             and alternative_sos_report.get("status")
@@ -460,6 +503,8 @@ def build_report(
                 max_negative_rank1_su3_slice_report,
                 rank1_su4_stabilizer_report,
                 rank1_su4_phi210_intertwiners_report,
+                rank1_su4_aligned_carriers_report,
+                rank1_su4_phi210_quadratic_basis_report,
             )
         ),
         "numerical_Hessian_not_promoted_to_proof": (
@@ -478,6 +523,8 @@ def build_report(
             and rank1_su4_stabilizer_report.get("scope", {}).get("G3_closed")
             is False
             and rank1_su4_intertwiner_scope.get("G3_closed") is False
+            and rank1_su4_aligned_scope.get("G3_closed") is False
+            and rank1_su4_quadratic_scope.get("G3_closed") is False
         ),
     }
 
@@ -651,16 +698,48 @@ def build_report(
         "rank1_SU4_representation_infrastructure_ready_without_closing_G3": bool(
             rank1_su4_stabilizer_exact
             and rank1_su4_intertwiners_exact
-            and rank1_su4_intertwiner_scope.get(
-                "SU4_invariant_quadratic_form_basis_constructed"
-            )
+            and rank1_su4_aligned_exact
+            and rank1_su4_quadratic_exact
+            and _dig(
+                rank1_su4_aligned_carriers_report,
+                "alignment", "carrier_count",
+            ) == 25
+            and _dig(
+                rank1_su4_aligned_carriers_report,
+                "alignment", "concatenated_aligned_basis_rank_mod_prime",
+            ) == 210
+            and _dig(
+                rank1_su4_phi210_quadratic_basis_report,
+                "constraint_system", "reduced_constraint_shape",
+            ) == [5952, 551]
+            and _dig(
+                rank1_su4_phi210_quadratic_basis_report,
+                "constraint_system", "exact_rational_rank",
+            ) == 506
+            and _dig(
+                rank1_su4_phi210_quadratic_basis_report,
+                "constraint_system", "exact_rational_nullity",
+            ) == 45
+            and _dig(
+                rank1_su4_phi210_quadratic_basis_report,
+                "quadratic_basis", "matrix_count",
+            ) == 45
+            and _dig(
+                rank1_su4_phi210_quadratic_basis_report,
+                "quadratic_basis", "upper_triangle_column_rank_mod_prime",
+            ) == 45
+            and _dig(
+                rank1_su4_phi210_quadratic_basis_report,
+                "quadratic_basis",
+                "all_45_commute_with_all_15_live_Phi210_generators_exact",
+            ) is True
+            and rank1_su4_quadratic_scope.get(
+                "augmented_homogeneous_Schur_SOS_SDP_constructed"
+            ) is False
+            and rank1_su4_quadratic_scope.get("arbitrary_rank1_Phi_proved")
             is False
-            and rank1_su4_intertwiner_scope.get("Schur_SOS_SDP_constructed")
-            is False
-            and rank1_su4_intertwiner_scope.get("arbitrary_rank1_Phi_proved")
-            is False
-            and rank1_su4_intertwiner_scope.get("G3_closed") is False
-            and rank1_su4_intertwiner_scope.get("whole_model_excluded") is False
+            and rank1_su4_quadratic_scope.get("G3_closed") is False
+            and rank1_su4_quadratic_scope.get("whole_model_excluded") is False
         ),
         "signed_Phi_orbits_locally_isolated_exactly": bool(
             local_scope.get("plus_F_local_component_classified") is True
@@ -758,6 +837,14 @@ def build_report(
             (
                 RANK1_SU4_PHI210_INTERTWINERS_JSON,
                 rank1_su4_phi210_intertwiners_report,
+            ),
+            (
+                RANK1_SU4_ALIGNED_CARRIERS_JSON,
+                rank1_su4_aligned_carriers_report,
+            ),
+            (
+                RANK1_SU4_PHI210_QUADRATIC_BASIS_JSON,
+                rank1_su4_phi210_quadratic_basis_report,
             ),
         )
         if not report
@@ -862,7 +949,34 @@ def build_report(
                 "Sym2_Phi210_SU4_singlet_dimension",
             ),
             "rank1_SU4_Schur_SOS_SDP_constructed": (
-                rank1_su4_intertwiner_scope.get("Schur_SOS_SDP_constructed")
+                rank1_su4_quadratic_scope.get(
+                    "augmented_homogeneous_Schur_SOS_SDP_constructed"
+                )
+            ),
+            "rank1_SU4_aligned_direct_sum_rank": _dig(
+                rank1_su4_aligned_carriers_report,
+                "alignment", "concatenated_aligned_basis_rank_mod_prime",
+            ),
+            "rank1_SU4_physical_real_maps_exact": _dig(
+                rank1_su4_aligned_carriers_report,
+                "scope",
+                "physical_real_structure_and_Gaussian_embeddings_constructed",
+            ),
+            "rank1_SU4_quadratic_constraint_shape": _dig(
+                rank1_su4_phi210_quadratic_basis_report,
+                "constraint_system", "reduced_constraint_shape",
+            ),
+            "rank1_SU4_quadratic_constraint_rank": _dig(
+                rank1_su4_phi210_quadratic_basis_report,
+                "constraint_system", "exact_rational_rank",
+            ),
+            "rank1_SU4_quadratic_constraint_nullity": _dig(
+                rank1_su4_phi210_quadratic_basis_report,
+                "constraint_system", "exact_rational_nullity",
+            ),
+            "rank1_SU4_quadratic_basis_count": _dig(
+                rank1_su4_phi210_quadratic_basis_report,
+                "quadratic_basis", "matrix_count",
             ),
             "arbitrary_non_pure_Delta_Sigma_orientations_open": not bool(
                 max_negative_full_scope.get("arbitrary_Sigma_orientation_proved")
@@ -908,8 +1022,9 @@ def build_report(
             "an exact certificate "
             "also proves the 1/5000 gap on only a four-real-dimensional Phi "
             "sub-slice of the 16-dimensional SU(3)-fixed space. At that fixed "
-            "endpoint, the exact SU(4) stabilizer and 25-carrier, 45-invariant "
-            "Phi210 census are certified as infrastructure only; the Schur/SOS "
+            "endpoint, the exact SU(4) stabilizer, aligned rank-210 carrier real "
+            "maps, and explicit complete 45-element Phi210 invariant quadratic "
+            "basis are certified as infrastructure only; the augmented Schur/SOS "
             "SDP and arbitrary-Phi bound remain open. PASS still "
             "requires a uniform coercive beta gap for "
             "arbitrary non-pure-Delta Sigma orientations, plus the external authoritative "

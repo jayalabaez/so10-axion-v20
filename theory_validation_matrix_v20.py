@@ -85,6 +85,8 @@ ARTIFACTS = {
     "gauged_g3_su5_max_negative_rank1_su3_slice": "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_V20.json",
     "gauged_g3_rank1_su4_stabilizer": "EXACT_GAUGED_U1X_G3_RANK1_SU4_STABILIZER_V20.json",
     "gauged_g3_rank1_su4_phi210_intertwiners": "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_INTERTWINERS_V20.json",
+    "gauged_g3_rank1_su4_aligned_carriers": "EXACT_GAUGED_U1X_G3_RANK1_SU4_ALIGNED_CARRIERS_V20.json",
+    "gauged_g3_rank1_su4_phi210_quadratic_basis": "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_V20.json",
     "gauged_g3_alternative_global_sos": "EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json",
     "final_g3": "FINAL_G3_ACCEPTANCE_GATE_V20.json",
     "authoritative": "AUTHORITATIVE_FULL_MODEL_GATE_V20.json",
@@ -477,6 +479,13 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
         "gauged_g3_rank1_su4_phi210_intertwiners", {}
     )
     rank1_su4_intertwiner_scope = rank1_su4_intertwiners.get("scope", {})
+    rank1_su4_aligned = reports.get(
+        "gauged_g3_rank1_su4_aligned_carriers", {}
+    )
+    rank1_su4_quadratic = reports.get(
+        "gauged_g3_rank1_su4_phi210_quadratic_basis", {}
+    )
+    rank1_su4_quadratic_scope = rank1_su4_quadratic.get("scope", {})
     alternative_sos = reports.get("gauged_g3_alternative_global_sos", {})
     alternative_sos_flags = alternative_sos.get("flags", {})
     final_g3 = reports.get("final_g3", {})
@@ -1006,6 +1015,21 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
             rank1_su4_stabilizer,
         )
     )
+    rank1_su4_aligned_carriers_exact = (
+        gate_ledger._rank1_su4_aligned_carriers_exact(
+            rank1_su4_aligned,
+            rank1_su4_intertwiners,
+            rank1_su4_stabilizer,
+        )
+    )
+    rank1_su4_phi210_quadratic_basis_exact = (
+        gate_ledger._rank1_su4_phi210_quadratic_basis_exact(
+            rank1_su4_quadratic,
+            rank1_su4_stabilizer,
+            rank1_su4_intertwiners,
+            rank1_su4_aligned,
+        )
+    )
     alternative_global_sos_honestly_open = bool(
         alternative_sos.get("n_failed") == 0
         and alternative_sos.get("status")
@@ -1064,6 +1088,8 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
         and su5_max_negative_rank1_su3_four_dimensional_slice_closed
         and rank1_su4_stabilizer_infrastructure_exact
         and rank1_su4_phi210_intertwiners_exact
+        and rank1_su4_aligned_carriers_exact
+        and rank1_su4_phi210_quadratic_basis_exact
         and alternative_global_sos_honestly_open
         and final_g3_honestly_open
     )
@@ -1171,8 +1197,10 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
             "proves that gap on only a four-real-dimensional Phi sub-slice of the "
             "16-dimensional SU(3)-fixed space. At that fixed endpoint, the exact "
             "SU(4) stabilizer and its 15 Phi210 actions are certified, while an "
-            "exact 25-carrier decomposition proves the 45-dimensional symmetric "
-            "invariant census. This is infrastructure only: the full augmented "
+            "exact aligned 25-carrier rank-210 decomposition and physical real "
+            "maps feed an explicit 45-element invariant quadratic basis obtained "
+            "from a 5952x551 rank-506 constraint system. This is infrastructure "
+            "only: the full augmented "
             "SU(4)-equivariant degree-2 Schur/SOS SDP, including all isotypic "
             "blocks and homogenizing cross terms, and the arbitrary-Phi bound "
             "remain open. "
@@ -1447,11 +1475,54 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
                 "carriers",
                 "Sym2_Phi210_SU4_singlet_dimension",
             ),
-            "gauged_G3_rank1_SU4_Schur_SOS_SDP_open": not bool(
-                rank1_su4_intertwiner_scope.get("Schur_SOS_SDP_constructed")
+            "gauged_G3_rank1_SU4_aligned_carriers_exact": (
+                rank1_su4_aligned_carriers_exact
             ),
-            "gauged_G3_rank1_SU4_arbitrary_Phi_bound_open": not bool(
-                rank1_su4_intertwiner_scope.get("arbitrary_rank1_Phi_proved")
+            "gauged_G3_rank1_SU4_aligned_direct_sum_rank": _dig(
+                rank1_su4_aligned,
+                "alignment", "concatenated_aligned_basis_rank_mod_prime",
+            ),
+            "gauged_G3_rank1_SU4_physical_real_maps_exact": _dig(
+                rank1_su4_aligned,
+                "scope",
+                "physical_real_structure_and_Gaussian_embeddings_constructed",
+            ),
+            "gauged_G3_rank1_SU4_Phi210_quadratic_basis_exact": (
+                rank1_su4_phi210_quadratic_basis_exact
+            ),
+            "gauged_G3_rank1_SU4_quadratic_constraint_shape": _dig(
+                rank1_su4_quadratic,
+                "constraint_system", "reduced_constraint_shape",
+            ),
+            "gauged_G3_rank1_SU4_quadratic_constraint_rank": _dig(
+                rank1_su4_quadratic,
+                "constraint_system", "exact_rational_rank",
+            ),
+            "gauged_G3_rank1_SU4_quadratic_constraint_nullity": _dig(
+                rank1_su4_quadratic,
+                "constraint_system", "exact_rational_nullity",
+            ),
+            "gauged_G3_rank1_SU4_quadratic_basis_count": _dig(
+                rank1_su4_quadratic,
+                "quadratic_basis", "matrix_count",
+            ),
+            "gauged_G3_rank1_SU4_quadratic_basis_rank": _dig(
+                rank1_su4_quadratic,
+                "quadratic_basis", "upper_triangle_column_rank_mod_prime",
+            ),
+            "gauged_G3_rank1_SU4_quadratic_live_invariance_exact": _dig(
+                rank1_su4_quadratic,
+                "quadratic_basis",
+                "all_45_commute_with_all_15_live_Phi210_generators_exact",
+            ),
+            "gauged_G3_rank1_SU4_Schur_SOS_SDP_open": (
+                rank1_su4_quadratic_scope.get(
+                    "augmented_homogeneous_Schur_SOS_SDP_constructed"
+                ) is False
+            ),
+            "gauged_G3_rank1_SU4_arbitrary_Phi_bound_open": (
+                rank1_su4_quadratic_scope.get("arbitrary_rank1_Phi_proved")
+                is False
             ),
             "gauged_G3_SU5_max_negative_arbitrary_Sigma_orientation_open": not bool(
                 rank1_su3_scope.get("arbitrary_max_negative_Sigma")
@@ -1836,6 +1907,8 @@ def _reproducibility_gate(
             "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_V20.json",
             "EXACT_GAUGED_U1X_G3_RANK1_SU4_STABILIZER_V20.json",
             "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_INTERTWINERS_V20.json",
+            "EXACT_GAUGED_U1X_G3_RANK1_SU4_ALIGNED_CARRIERS_V20.json",
+            "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_V20.json",
             "EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json",
             "FINAL_G3_ACCEPTANCE_GATE_V20.json",
         )

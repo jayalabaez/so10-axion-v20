@@ -118,6 +118,12 @@ class G1G8GateLedgerTests(unittest.TestCase):
         rank1_su4_intertwiners = reports[
             "gauged_G3_rank1_SU4_Phi210_intertwiner_infrastructure"
         ]
+        rank1_su4_aligned = reports[
+            "gauged_G3_rank1_SU4_aligned_carrier_infrastructure"
+        ]
+        rank1_su4_quadratic = reports[
+            "gauged_G3_rank1_SU4_Phi210_quadratic_basis"
+        ]
         alternative_sos = reports["gauged_G3_alternative_global_SOS_audit"]
         self.assertEqual(x_report["n_failed"], 0)
         self.assertFalse(x_report["contract_consistent"])
@@ -193,6 +199,32 @@ class G1G8GateLedgerTests(unittest.TestCase):
             rank1_su4_intertwiners["scope"]["Schur_SOS_SDP_constructed"]
         )
         self.assertFalse(rank1_su4_intertwiners["scope"]["G3_closed"])
+        self.assertEqual(
+            rank1_su4_aligned["alignment"][
+                "concatenated_aligned_basis_rank_mod_prime"
+            ],
+            210,
+        )
+        self.assertTrue(
+            rank1_su4_aligned["scope"][
+                "physical_real_structure_and_Gaussian_embeddings_constructed"
+            ]
+        )
+        self.assertEqual(
+            rank1_su4_quadratic["constraint_system"]["reduced_constraint_shape"],
+            [5952, 551],
+        )
+        self.assertEqual(
+            rank1_su4_quadratic["constraint_system"]["exact_rational_rank"], 506
+        )
+        self.assertEqual(
+            rank1_su4_quadratic["constraint_system"]["exact_rational_nullity"], 45
+        )
+        self.assertFalse(
+            rank1_su4_quadratic["scope"][
+                "augmented_homogeneous_Schur_SOS_SDP_constructed"
+            ]
+        )
         self.assertEqual(alternative_sos["n_failed"], 0)
 
     def test_constructive_g3_frontier_is_present_but_fail_closed(self):
@@ -310,6 +342,18 @@ class G1G8GateLedgerTests(unittest.TestCase):
         )
         self.assertEqual(frontier["rank1_SU4_Phi210_carrier_count"], 25)
         self.assertEqual(frontier["rank1_SU4_Sym2_invariant_dimension"], 45)
+        self.assertTrue(frontier["rank1_SU4_aligned_carriers_exact"])
+        self.assertEqual(frontier["rank1_SU4_aligned_direct_sum_rank"], 210)
+        self.assertTrue(frontier["rank1_SU4_physical_real_maps_exact"])
+        self.assertTrue(frontier["rank1_SU4_Phi210_quadratic_basis_exact"])
+        self.assertEqual(
+            frontier["rank1_SU4_quadratic_constraint_shape"], [5952, 551]
+        )
+        self.assertEqual(frontier["rank1_SU4_quadratic_constraint_rank"], 506)
+        self.assertEqual(frontier["rank1_SU4_quadratic_constraint_nullity"], 45)
+        self.assertEqual(frontier["rank1_SU4_quadratic_basis_count"], 45)
+        self.assertEqual(frontier["rank1_SU4_quadratic_basis_rank"], 45)
+        self.assertTrue(frontier["rank1_SU4_quadratic_live_invariance_exact"])
         self.assertTrue(frontier["rank1_SU4_Schur_SOS_SDP_open"])
         self.assertTrue(frontier["rank1_SU4_arbitrary_Phi_bound_open"])
         self.assertFalse(
@@ -726,6 +770,122 @@ class G1G8GateLedgerTests(unittest.TestCase):
                 forged_intertwiners,
                 forged_stabilizer,
             )
+        )
+
+    def test_rank1_su4_stage2_predicates_reject_adversarial_mutations(self):
+        inputs = self.report["model_contract_reports"]
+        stabilizer = inputs["gauged_G3_rank1_SU4_stabilizer_infrastructure"]
+        intertwiners = inputs[
+            "gauged_G3_rank1_SU4_Phi210_intertwiner_infrastructure"
+        ]
+        aligned = inputs["gauged_G3_rank1_SU4_aligned_carrier_infrastructure"]
+        quadratic = inputs["gauged_G3_rank1_SU4_Phi210_quadratic_basis"]
+
+        aligned_mutations = (
+            lambda value: value["scope"].__setitem__("G3_closed", True),
+            lambda value: value["checks"].__setitem__(
+                "aligned_25_carrier_direct_sum_rank_210_exact", False
+            ),
+            lambda value: value["alignment"].__setitem__(
+                "concatenated_aligned_basis_rank_mod_prime", 209
+            ),
+            lambda value: value["alignment"]["carriers"][0].__setitem__(
+                "physical_conjugation_embedding_exact", False
+            ),
+            lambda value: value["upstream_provenance"].__setitem__(
+                "upstream_report_sha256", "0" * 64
+            ),
+            lambda value: value["upstream_provenance"][
+                "source_contract"
+            ].__setitem__("upstream_module_sha256", "0" * 64),
+            lambda value: (
+                value["alignment"].__setitem__("carrier_count", 24),
+                value["alignment_provenance"].__setitem__(
+                    "certificate_sha256",
+                    mod._canonical_json_sha256(value["alignment"]),
+                ),
+                value["alignment_provenance"].__setitem__(
+                    "expected_live_certificate_sha256",
+                    mod._canonical_json_sha256(value["alignment"]),
+                ),
+            ),
+        )
+        for mutate in aligned_mutations:
+            forged = copy.deepcopy(aligned)
+            mutate(forged)
+            self.assertFalse(
+                mod._rank1_su4_aligned_carriers_exact(
+                    forged, intertwiners, stabilizer
+                ),
+                mutate.__code__.co_firstlineno,
+            )
+
+        quadratic_mutations = (
+            lambda value: value["scope"].__setitem__(
+                "augmented_homogeneous_Schur_SOS_SDP_constructed", True
+            ),
+            lambda value: value["constraint_system"].__setitem__(
+                "reduced_constraint_shape", [5951, 551]
+            ),
+            lambda value: value["constraint_system"].__setitem__(
+                "exact_rational_rank", 505
+            ),
+            lambda value: value["quadratic_basis"].__setitem__(
+                "matrix_count", 44
+            ),
+            lambda value: value["quadratic_basis"].__setitem__(
+                "all_45_commute_with_all_15_live_Phi210_generators_exact", False
+            ),
+            lambda value: value["construction_metadata"][
+                "selected_candidate_indices"
+            ].__setitem__(0, 72),
+            lambda value: value["reconstruction_api"].__setitem__(
+                "basis_accessor", "forged()"
+            ),
+            lambda value: value["source_provenance"].__setitem__(
+                "intertwiner_module_sha256", "0" * 64
+            ),
+            lambda value: value["scope"].__setitem__(
+                "arbitrary_real_Phi_lower_bound_proved", True
+            ),
+            lambda value: value["scope"].__setitem__(
+                "arbitrary_rank1_Phi_proved", True
+            ),
+            lambda value: value["scope"].__setitem__("G3_closed", True),
+            lambda value: value["scope"].__setitem__(
+                "whole_model_validated", True
+            ),
+            lambda value: value["scope"].__setitem__(
+                "whole_model_excluded", True
+            ),
+        )
+        for mutate in quadratic_mutations:
+            forged = copy.deepcopy(quadratic)
+            mutate(forged)
+            self.assertFalse(
+                mod._rank1_su4_phi210_quadratic_basis_exact(
+                    forged, stabilizer, intertwiners, aligned
+                ),
+                mutate.__code__.co_firstlineno,
+            )
+
+        forged = copy.deepcopy(quadratic)
+        forged["scope"]["G3_closed"] = True
+        report = mod._build_report_from_inputs(
+            x_report=inputs["exact_X"],
+            g1_report=inputs["gauged_G1_character_census"],
+            g2_report=inputs["gauged_G2_derivative_audit"],
+            filter_report=inputs["gauged_scalar_filter"],
+            g3_rank1_su4_stabilizer_report=stabilizer,
+            g3_rank1_su4_phi210_intertwiners_report=intertwiners,
+            g3_rank1_su4_aligned_carriers_report=aligned,
+            g3_rank1_su4_phi210_quadratic_basis_report=forged,
+        )
+        self.assertEqual(report["overall_state"], "EXECUTION_FAIL")
+        self.assertFalse(
+            report["gauged_u1x_g3_constructive_frontier"][
+                "rank1_SU4_Phi210_quadratic_basis_exact"
+            ]
         )
 
 
