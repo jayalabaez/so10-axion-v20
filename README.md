@@ -110,6 +110,16 @@ the model.
   anchor is `3/200`.
   This does not cover arbitrary `Phi` at that rank-one Sigma endpoint, the
   ambient 16-dimensional fixed space, arbitrary Sigma orientations, or G3
+- For that same fixed `H=h_-`, `Sigma=q/4` endpoint, the common continuous
+  stabilizer is now certified exactly as `SU(4)`: its 15-dimensional kernel,
+  integral Lie brackets, and all 15 exact skew actions on `Phi210` are
+  source-bound.  Exact intertwiners then decompose the complexified 210 into
+  25 carriers of total rank 210 and prove that the symmetric invariant
+  multiplicity is 45.  This is representation infrastructure for the full
+  augmented SU(4)-equivariant degree-2 Schur/SOS SDP; the 45-dimensional
+  quadratic invariant sector is only one input, while all isotypic blocks and
+  homogenizing cross terms, an arbitrary-`Phi` lower bound, G3, and any
+  whole-model exclusion remain open
 - The former 64-direction / 91-parameter G1-G2 calculation is retained as a
   reproducible historical no-`X` subtheorem, not as validation of the manuscript
 
@@ -190,6 +200,12 @@ branch has an exact Phi/Sigma global SOS certificate and a chiral-H full-field
   Gram/LDL certificate proves the same minimum only on a four-real-dimensional
   `Phi` sub-slice of the 16-dimensional `SU(3)`-fixed space; it does not
   establish a bound for arbitrary `Phi` at that endpoint or on the ambient space.
+  At this same fixed endpoint, the exact common `SU(4)` stabilizer and its
+  15 actions on `Phi210` are now certified, and a 25-carrier intertwiner
+  decomposition proves the 45-dimensional symmetric invariant census. This
+  completes only one input sector for the future full augmented
+  SU(4)-equivariant degree-2 Schur/SOS SDP; it does not construct all
+  isotypic/cross blocks or prove the arbitrary-`Phi` bound.
   `G3_closed` remains
   false only because the same uniform coercive control has not yet been proved
   for arbitrary non-pure-`Delta_R` Sigma orientations. Run
@@ -310,7 +326,10 @@ $g_{a\gamma\gamma}\sim2.3\times10^{-14}\,{\rm GeV}^{-1}$ by MADMAX / ALPHA / ORG
 > At fixed `H=h_-`, one explicit rank-one Sigma endpoint separately has the
 > same exact gap on only a four-real-dimensional `Phi` sub-slice of the
 > 16-dimensional `SU(3)`-fixed space; arbitrary `Phi` at that rank-one Sigma
-> endpoint and arbitrary Sigma orientations remain open.
+> endpoint and arbitrary Sigma orientations remain open.  At that fixed
+> endpoint, the exact `SU(4)` stabilizer, its 15 `Phi210` actions, and the
+> 25-carrier/45-invariant intertwiner census are certified only as
+> infrastructure for the still-unconstructed Schur/SOS SDP.
 > G3 remains open because a uniform coercive bound for arbitrary non-pure-
 > `Delta_R` Sigma orientations has not yet been proved. The complete theory is
 > neither validated nor discarded.

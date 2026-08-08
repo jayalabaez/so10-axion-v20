@@ -32,6 +32,7 @@ from typing import Any
 
 from audit_v20_errors import build_audit
 import exact_x_symmetry_consistency_gate_v20 as exact_x_gate
+import g1_g8_gate_ledger_v20 as gate_ledger
 
 ROOT = Path(__file__).resolve().parent
 MODEL_CONTRACT_ID = "gauged_u1x_phi17_v20"
@@ -82,6 +83,8 @@ ARTIFACTS = {
     "gauged_g3_su5_max_negative_zero_residual": "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_ZERO_RESIDUAL_BOUND_V20.json",
     "gauged_g3_su5_max_negative_full_residual": "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_FULL_RESIDUAL_BOUND_V20.json",
     "gauged_g3_su5_max_negative_rank1_su3_slice": "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_V20.json",
+    "gauged_g3_rank1_su4_stabilizer": "EXACT_GAUGED_U1X_G3_RANK1_SU4_STABILIZER_V20.json",
+    "gauged_g3_rank1_su4_phi210_intertwiners": "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_INTERTWINERS_V20.json",
     "gauged_g3_alternative_global_sos": "EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json",
     "final_g3": "FINAL_G3_ACCEPTANCE_GATE_V20.json",
     "authoritative": "AUTHORITATIVE_FULL_MODEL_GATE_V20.json",
@@ -469,6 +472,11 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
     )
     rank1_su3_scope = rank1_su3_bound.get("scope", {})
     rank1_su3_checks = rank1_su3_bound.get("checks", {})
+    rank1_su4_stabilizer = reports.get("gauged_g3_rank1_su4_stabilizer", {})
+    rank1_su4_intertwiners = reports.get(
+        "gauged_g3_rank1_su4_phi210_intertwiners", {}
+    )
+    rank1_su4_intertwiner_scope = rank1_su4_intertwiners.get("scope", {})
     alternative_sos = reports.get("gauged_g3_alternative_global_sos", {})
     alternative_sos_flags = alternative_sos.get("flags", {})
     final_g3 = reports.get("final_g3", {})
@@ -987,6 +995,17 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
         and _dig(rank1_su3_bound, "radial_patch", "restricted_global_minimum")
         == "1/5000"
     )
+    rank1_su4_stabilizer_infrastructure_exact = (
+        gate_ledger._rank1_su4_stabilizer_infrastructure_exact(
+            rank1_su4_stabilizer
+        )
+    )
+    rank1_su4_phi210_intertwiners_exact = (
+        gate_ledger._rank1_su4_phi210_intertwiners_exact(
+            rank1_su4_intertwiners,
+            rank1_su4_stabilizer,
+        )
+    )
     alternative_global_sos_honestly_open = bool(
         alternative_sos.get("n_failed") == 0
         and alternative_sos.get("status")
@@ -1043,6 +1062,8 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
         and su5_max_negative_all_zero_route_excluded
         and su5_max_negative_full_residual_pure_delta_closed
         and su5_max_negative_rank1_su3_four_dimensional_slice_closed
+        and rank1_su4_stabilizer_infrastructure_exact
+        and rank1_su4_phi210_intertwiners_exact
         and alternative_global_sos_honestly_open
         and final_g3_honestly_open
     )
@@ -1148,7 +1169,13 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
             "At fixed H=h_- and one explicit rank-one Sigma endpoint, an exact "
             "Gram/LDL certificate also "
             "proves that gap on only a four-real-dimensional Phi sub-slice of the "
-            "16-dimensional SU(3)-fixed space. "
+            "16-dimensional SU(3)-fixed space. At that fixed endpoint, the exact "
+            "SU(4) stabilizer and its 15 Phi210 actions are certified, while an "
+            "exact 25-carrier decomposition proves the 45-dimensional symmetric "
+            "invariant census. This is infrastructure only: the full augmented "
+            "SU(4)-equivariant degree-2 Schur/SOS SDP, including all isotypic "
+            "blocks and homogenizing cross terms, and the arbitrary-Phi bound "
+            "remain open. "
             "G3 remains open only on uniform coercivity for arbitrary non-pure-Delta "
             "Sigma orientations. "
             "The old no-X 64/91 result remains historical."
@@ -1245,6 +1272,12 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
             ),
             "gauged_G3_SU5_max_negative_rank1_SU3_slice_artifact_present": bool(
                 rank1_su3_bound
+            ),
+            "gauged_G3_rank1_SU4_stabilizer_artifact_present": bool(
+                rank1_su4_stabilizer
+            ),
+            "gauged_G3_rank1_SU4_Phi210_intertwiners_artifact_present": bool(
+                rank1_su4_intertwiners
             ),
             "gauged_G3_alternative_global_SOS_artifact_present": bool(
                 alternative_sos
@@ -1392,6 +1425,33 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
             ),
             "gauged_G3_SU5_max_negative_arbitrary_rank1_Phi_open": not bool(
                 rank1_su3_checks.get("arbitrary_rank1_Phi_proved")
+            ),
+            "gauged_G3_rank1_SU4_stabilizer_infrastructure_exact": (
+                rank1_su4_stabilizer_infrastructure_exact
+            ),
+            "gauged_G3_rank1_SU4_joint_stabilizer_dimension": _dig(
+                rank1_su4_stabilizer,
+                "joint_stabilizer_tangent",
+                "exact_tangent_nullity",
+            ),
+            "gauged_G3_rank1_SU4_Phi210_intertwiner_infrastructure_exact": (
+                rank1_su4_phi210_intertwiners_exact
+            ),
+            "gauged_G3_rank1_SU4_Phi210_carrier_count": _dig(
+                rank1_su4_intertwiners,
+                "carriers",
+                "carrier_count",
+            ),
+            "gauged_G3_rank1_SU4_Sym2_invariant_dimension": _dig(
+                rank1_su4_intertwiners,
+                "carriers",
+                "Sym2_Phi210_SU4_singlet_dimension",
+            ),
+            "gauged_G3_rank1_SU4_Schur_SOS_SDP_open": not bool(
+                rank1_su4_intertwiner_scope.get("Schur_SOS_SDP_constructed")
+            ),
+            "gauged_G3_rank1_SU4_arbitrary_Phi_bound_open": not bool(
+                rank1_su4_intertwiner_scope.get("arbitrary_rank1_Phi_proved")
             ),
             "gauged_G3_SU5_max_negative_arbitrary_Sigma_orientation_open": not bool(
                 rank1_su3_scope.get("arbitrary_max_negative_Sigma")
@@ -1774,6 +1834,8 @@ def _reproducibility_gate(
             "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_ZERO_RESIDUAL_BOUND_V20.json",
             "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_FULL_RESIDUAL_BOUND_V20.json",
             "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_V20.json",
+            "EXACT_GAUGED_U1X_G3_RANK1_SU4_STABILIZER_V20.json",
+            "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_INTERTWINERS_V20.json",
             "EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json",
             "FINAL_G3_ACCEPTANCE_GATE_V20.json",
         )

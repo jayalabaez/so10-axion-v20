@@ -61,7 +61,7 @@ TASKS: list[dict[str, Any]] = [
         "id": "W3-G3-FULL-STATIONARITY",
         "wave": 3,
         "gates": ["G3"],
-        "status": "SU5_DELTA_CHIRAL_H_EXACT_LOCAL_MINIMUM__PURE_DELTA_FULL_RESIDUAL_GAP_CLOSED__RANK1_SU3_FOUR_DIMENSIONAL_SLICE_CLOSED__ARBITRARY_SIGMA_COERCIVITY_OPEN__BLOCKED_ON_G2_PROMOTION",
+        "status": "SU5_DELTA_CHIRAL_H_EXACT_LOCAL_MINIMUM__PURE_DELTA_FULL_RESIDUAL_GAP_CLOSED__RANK1_SU3_FOUR_DIMENSIONAL_SLICE_CLOSED__RANK1_SU4_REPRESENTATION_INFRASTRUCTURE_READY__ARBITRARY_SIGMA_COERCIVITY_OPEN__BLOCKED_ON_G2_PROMOTION",
         "issue": 178,
         "deliverable": (
             "prove a uniform coercive global gap for arbitrary non-pure-Delta "
@@ -70,7 +70,11 @@ TASKS: list[dict[str, Any]] = [
             "complete, while fixed H=h_- and one explicit rank-one Sigma "
             "endpoint are certified only "
             "on a four-real-dimensional Phi sub-slice of the 16-dimensional "
-            "SU(3)-fixed space"
+            "SU(3)-fixed space; its exact SU(4) stabilizer and 25-carrier, "
+            "45-invariant Phi210 census are ready, but the full augmented "
+            "SU(4)-equivariant degree-2 Schur/SOS SDP (including every "
+            "isotypic block and homogenizing cross term) and arbitrary-Phi "
+            "bound remain open"
         ),
         "acceptance": (
             "the full 486-field candidate is globally minimal with all equality "
@@ -349,6 +353,16 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
                 "SU5_max_negative_arbitrary_Sigma_orientation_open"
             ]
             is True
+            and g3_frontier["rank1_SU4_stabilizer_infrastructure_exact"] is True
+            and g3_frontier["rank1_SU4_joint_stabilizer_dimension"] == 15
+            and g3_frontier[
+                "rank1_SU4_Phi210_intertwiner_infrastructure_exact"
+            ]
+            is True
+            and g3_frontier["rank1_SU4_Phi210_carrier_count"] == 25
+            and g3_frontier["rank1_SU4_Sym2_invariant_dimension"] == 45
+            and g3_frontier["rank1_SU4_Schur_SOS_SDP_open"] is True
+            and g3_frontier["rank1_SU4_arbitrary_Phi_bound_open"] is True
             and g3_frontier[
                 "SU5_arbitrary_Phi_nonzero_residual_cancellations_open"
             ]
@@ -427,7 +441,9 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
         "maximally-negative pure-Delta sector is excluded for arbitrary real Phi "
         "and all nonzero residuals with sharp gap 1/5000. One explicit rank-one "
         "endpoint also has an exact 1/5000 gap on only a four-real-dimensional "
-        "Phi sub-slice of the 16-dimensional SU(3)-fixed space. Uniform coercivity for "
+        "Phi sub-slice of the 16-dimensional SU(3)-fixed space. Its exact SU(4) "
+        "stabilizer and 25-carrier, 45-invariant Phi210 census are infrastructure "
+        "for the still-open Schur/SOS SDP. Uniform coercivity for "
         "arbitrary non-pure-Delta Sigma orientations remains open. G5 is "
         "CLOSED. G4 and "
         "G6-G8 remain dependency-blocked; the "
@@ -455,7 +471,9 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
         "The complete maximally-negative pure-Delta sector is excluded for arbitrary "
         "real Phi and all nonzero residuals with sharp gap 1/5000. One explicit "
         "fixed-H rank-one Sigma endpoint also has an exact 1/5000 gap on only a four-real-dimensional "
-        "Phi sub-slice of the 16-dimensional SU(3)-fixed space. Uniform coercivity "
+        "Phi sub-slice of the 16-dimensional SU(3)-fixed space. Its exact SU(4) "
+        "stabilizer and 25-carrier, 45-invariant Phi210 census are infrastructure "
+        "only; the Schur/SOS SDP remains open. Uniform coercivity "
         "for arbitrary non-pure-Delta Sigma orientations is the precise G3 blocker. The historical "
         "64/91 calculation "
         "and 449-dimensional saddle/search remain scoped to option C."

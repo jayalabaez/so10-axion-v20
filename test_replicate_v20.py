@@ -100,3 +100,24 @@ def test_rank1_su3_slice_certificate_is_scoped_generated_and_tested() -> None:
         "theory_validation_matrix_v20.py",
     ):
         assert certificate_index < source.index(consumer)
+
+
+def test_rank1_su4_infrastructure_is_generated_in_provenance_order() -> None:
+    source = replicate.Path(replicate.__file__).read_text(encoding="utf-8")
+    endpoint = "exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py"
+    stabilizer = "exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py"
+    intertwiners = "exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py"
+    stabilizer_test = "test_exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py"
+    intertwiner_test = (
+        "test_exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py"
+    )
+    for token in (stabilizer, intertwiners, stabilizer_test, intertwiner_test):
+        assert token in source
+    assert source.index(endpoint) < source.index(stabilizer) < source.index(intertwiners)
+    for consumer in (
+        "g1_g8_gate_ledger_v20.py",
+        "final_g3_acceptance_gate_v20.py",
+        "g1_g8_execution_roadmap_v20.py",
+        "theory_validation_matrix_v20.py",
+    ):
+        assert source.index(intertwiners) < source.index(consumer)

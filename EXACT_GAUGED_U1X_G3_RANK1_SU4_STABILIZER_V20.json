@@ -1,0 +1,951 @@
+{
+  "Lie_algebra": {
+    "Cartan_commutator_max_abs": 0,
+    "Jacobi_max_abs_residual": 0,
+    "Lie_algebra_dimension": 15,
+    "antisymmetry_max_abs_residual": 0,
+    "basis_labels": [
+      "H1",
+      "H2",
+      "H3",
+      "X12",
+      "Y12",
+      "X13",
+      "Y13",
+      "X14",
+      "Y14",
+      "X23",
+      "Y23",
+      "X24",
+      "Y24",
+      "X34",
+      "Y34"
+    ],
+    "coefficient_commutator_reconstruction_max_abs": 0,
+    "coordinate_block_unimodular": true,
+    "coordinate_pivot_labels": [
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        2,
+        9
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        6,
+        8
+      ],
+      [
+        6,
+        9
+      ]
+    ],
+    "maximum_abs_structure_constant": 2,
+    "nonzero_structure_constant_count": 88,
+    "nonzero_structure_constants_for_left_less_than_right": [
+      {
+        "coefficient": 2,
+        "left": "H1",
+        "output": "Y12",
+        "right": "X12"
+      },
+      {
+        "coefficient": -2,
+        "left": "H1",
+        "output": "X12",
+        "right": "Y12"
+      },
+      {
+        "coefficient": 1,
+        "left": "H1",
+        "output": "Y13",
+        "right": "X13"
+      },
+      {
+        "coefficient": -1,
+        "left": "H1",
+        "output": "X13",
+        "right": "Y13"
+      },
+      {
+        "coefficient": 1,
+        "left": "H1",
+        "output": "Y14",
+        "right": "X14"
+      },
+      {
+        "coefficient": -1,
+        "left": "H1",
+        "output": "X14",
+        "right": "Y14"
+      },
+      {
+        "coefficient": -1,
+        "left": "H1",
+        "output": "Y23",
+        "right": "X23"
+      },
+      {
+        "coefficient": 1,
+        "left": "H1",
+        "output": "X23",
+        "right": "Y23"
+      },
+      {
+        "coefficient": -1,
+        "left": "H1",
+        "output": "Y24",
+        "right": "X24"
+      },
+      {
+        "coefficient": 1,
+        "left": "H1",
+        "output": "X24",
+        "right": "Y24"
+      },
+      {
+        "coefficient": -1,
+        "left": "H2",
+        "output": "Y12",
+        "right": "X12"
+      },
+      {
+        "coefficient": 1,
+        "left": "H2",
+        "output": "X12",
+        "right": "Y12"
+      },
+      {
+        "coefficient": 1,
+        "left": "H2",
+        "output": "Y13",
+        "right": "X13"
+      },
+      {
+        "coefficient": -1,
+        "left": "H2",
+        "output": "X13",
+        "right": "Y13"
+      },
+      {
+        "coefficient": 2,
+        "left": "H2",
+        "output": "Y23",
+        "right": "X23"
+      },
+      {
+        "coefficient": -2,
+        "left": "H2",
+        "output": "X23",
+        "right": "Y23"
+      },
+      {
+        "coefficient": 1,
+        "left": "H2",
+        "output": "Y24",
+        "right": "X24"
+      },
+      {
+        "coefficient": -1,
+        "left": "H2",
+        "output": "X24",
+        "right": "Y24"
+      },
+      {
+        "coefficient": -1,
+        "left": "H2",
+        "output": "Y34",
+        "right": "X34"
+      },
+      {
+        "coefficient": 1,
+        "left": "H2",
+        "output": "X34",
+        "right": "Y34"
+      },
+      {
+        "coefficient": -1,
+        "left": "H3",
+        "output": "Y13",
+        "right": "X13"
+      },
+      {
+        "coefficient": 1,
+        "left": "H3",
+        "output": "X13",
+        "right": "Y13"
+      },
+      {
+        "coefficient": 1,
+        "left": "H3",
+        "output": "Y14",
+        "right": "X14"
+      },
+      {
+        "coefficient": -1,
+        "left": "H3",
+        "output": "X14",
+        "right": "Y14"
+      },
+      {
+        "coefficient": -1,
+        "left": "H3",
+        "output": "Y23",
+        "right": "X23"
+      },
+      {
+        "coefficient": 1,
+        "left": "H3",
+        "output": "X23",
+        "right": "Y23"
+      },
+      {
+        "coefficient": 1,
+        "left": "H3",
+        "output": "Y24",
+        "right": "X24"
+      },
+      {
+        "coefficient": -1,
+        "left": "H3",
+        "output": "X24",
+        "right": "Y24"
+      },
+      {
+        "coefficient": 2,
+        "left": "H3",
+        "output": "Y34",
+        "right": "X34"
+      },
+      {
+        "coefficient": -2,
+        "left": "H3",
+        "output": "X34",
+        "right": "Y34"
+      },
+      {
+        "coefficient": 2,
+        "left": "X12",
+        "output": "H1",
+        "right": "Y12"
+      },
+      {
+        "coefficient": -1,
+        "left": "X12",
+        "output": "X23",
+        "right": "X13"
+      },
+      {
+        "coefficient": -1,
+        "left": "X12",
+        "output": "Y23",
+        "right": "Y13"
+      },
+      {
+        "coefficient": -1,
+        "left": "X12",
+        "output": "X24",
+        "right": "X14"
+      },
+      {
+        "coefficient": -1,
+        "left": "X12",
+        "output": "Y24",
+        "right": "Y14"
+      },
+      {
+        "coefficient": 1,
+        "left": "X12",
+        "output": "X13",
+        "right": "X23"
+      },
+      {
+        "coefficient": 1,
+        "left": "X12",
+        "output": "Y13",
+        "right": "Y23"
+      },
+      {
+        "coefficient": 1,
+        "left": "X12",
+        "output": "X14",
+        "right": "X24"
+      },
+      {
+        "coefficient": 1,
+        "left": "X12",
+        "output": "Y14",
+        "right": "Y24"
+      },
+      {
+        "coefficient": 1,
+        "left": "Y12",
+        "output": "Y23",
+        "right": "X13"
+      },
+      {
+        "coefficient": -1,
+        "left": "Y12",
+        "output": "X23",
+        "right": "Y13"
+      },
+      {
+        "coefficient": 1,
+        "left": "Y12",
+        "output": "Y24",
+        "right": "X14"
+      },
+      {
+        "coefficient": -1,
+        "left": "Y12",
+        "output": "X24",
+        "right": "Y14"
+      },
+      {
+        "coefficient": 1,
+        "left": "Y12",
+        "output": "Y13",
+        "right": "X23"
+      },
+      {
+        "coefficient": -1,
+        "left": "Y12",
+        "output": "X13",
+        "right": "Y23"
+      },
+      {
+        "coefficient": 1,
+        "left": "Y12",
+        "output": "Y14",
+        "right": "X24"
+      },
+      {
+        "coefficient": -1,
+        "left": "Y12",
+        "output": "X14",
+        "right": "Y24"
+      },
+      {
+        "coefficient": 2,
+        "left": "X13",
+        "output": "H1",
+        "right": "Y13"
+      },
+      {
+        "coefficient": 2,
+        "left": "X13",
+        "output": "H2",
+        "right": "Y13"
+      },
+      {
+        "coefficient": -1,
+        "left": "X13",
+        "output": "X34",
+        "right": "X14"
+      },
+      {
+        "coefficient": -1,
+        "left": "X13",
+        "output": "Y34",
+        "right": "Y14"
+      },
+      {
+        "coefficient": -1,
+        "left": "X13",
+        "output": "X12",
+        "right": "X23"
+      },
+      {
+        "coefficient": 1,
+        "left": "X13",
+        "output": "Y12",
+        "right": "Y23"
+      },
+      {
+        "coefficient": 1,
+        "left": "X13",
+        "output": "X14",
+        "right": "X34"
+      },
+      {
+        "coefficient": 1,
+        "left": "X13",
+        "output": "Y14",
+        "right": "Y34"
+      },
+      {
+        "coefficient": 1,
+        "left": "Y13",
+        "output": "Y34",
+        "right": "X14"
+      },
+      {
+        "coefficient": -1,
+        "left": "Y13",
+        "output": "X34",
+        "right": "Y14"
+      },
+      {
+        "coefficient": -1,
+        "left": "Y13",
+        "output": "Y12",
+        "right": "X23"
+      },
+      {
+        "coefficient": -1,
+        "left": "Y13",
+        "output": "X12",
+        "right": "Y23"
+      },
+      {
+        "coefficient": 1,
+        "left": "Y13",
+        "output": "Y14",
+        "right": "X34"
+      },
+      {
+        "coefficient": -1,
+        "left": "Y13",
+        "output": "X14",
+        "right": "Y34"
+      },
+      {
+        "coefficient": 2,
+        "left": "X14",
+        "output": "H1",
+        "right": "Y14"
+      },
+      {
+        "coefficient": 2,
+        "left": "X14",
+        "output": "H2",
+        "right": "Y14"
+      },
+      {
+        "coefficient": 2,
+        "left": "X14",
+        "output": "H3",
+        "right": "Y14"
+      },
+      {
+        "coefficient": -1,
+        "left": "X14",
+        "output": "X12",
+        "right": "X24"
+      },
+      {
+        "coefficient": 1,
+        "left": "X14",
+        "output": "Y12",
+        "right": "Y24"
+      },
+      {
+        "coefficient": -1,
+        "left": "X14",
+        "output": "X13",
+        "right": "X34"
+      },
+      {
+        "coefficient": 1,
+        "left": "X14",
+        "output": "Y13",
+        "right": "Y34"
+      },
+      {
+        "coefficient": -1,
+        "left": "Y14",
+        "output": "Y12",
+        "right": "X24"
+      },
+      {
+        "coefficient": -1,
+        "left": "Y14",
+        "output": "X12",
+        "right": "Y24"
+      },
+      {
+        "coefficient": -1,
+        "left": "Y14",
+        "output": "Y13",
+        "right": "X34"
+      },
+      {
+        "coefficient": -1,
+        "left": "Y14",
+        "output": "X13",
+        "right": "Y34"
+      },
+      {
+        "coefficient": 2,
+        "left": "X23",
+        "output": "H2",
+        "right": "Y23"
+      },
+      {
+        "coefficient": -1,
+        "left": "X23",
+        "output": "X34",
+        "right": "X24"
+      },
+      {
+        "coefficient": -1,
+        "left": "X23",
+        "output": "Y34",
+        "right": "Y24"
+      },
+      {
+        "coefficient": 1,
+        "left": "X23",
+        "output": "X24",
+        "right": "X34"
+      },
+      {
+        "coefficient": 1,
+        "left": "X23",
+        "output": "Y24",
+        "right": "Y34"
+      },
+      {
+        "coefficient": 1,
+        "left": "Y23",
+        "output": "Y34",
+        "right": "X24"
+      },
+      {
+        "coefficient": -1,
+        "left": "Y23",
+        "output": "X34",
+        "right": "Y24"
+      },
+      {
+        "coefficient": 1,
+        "left": "Y23",
+        "output": "Y24",
+        "right": "X34"
+      },
+      {
+        "coefficient": -1,
+        "left": "Y23",
+        "output": "X24",
+        "right": "Y34"
+      },
+      {
+        "coefficient": 2,
+        "left": "X24",
+        "output": "H2",
+        "right": "Y24"
+      },
+      {
+        "coefficient": 2,
+        "left": "X24",
+        "output": "H3",
+        "right": "Y24"
+      },
+      {
+        "coefficient": -1,
+        "left": "X24",
+        "output": "X23",
+        "right": "X34"
+      },
+      {
+        "coefficient": 1,
+        "left": "X24",
+        "output": "Y23",
+        "right": "Y34"
+      },
+      {
+        "coefficient": -1,
+        "left": "Y24",
+        "output": "Y23",
+        "right": "X34"
+      },
+      {
+        "coefficient": -1,
+        "left": "Y24",
+        "output": "X23",
+        "right": "Y34"
+      },
+      {
+        "coefficient": 2,
+        "left": "X34",
+        "output": "H3",
+        "right": "Y34"
+      }
+    ],
+    "nonzero_unordered_bracket_count": 84,
+    "proof_grade": true,
+    "structure_constants_integral": true,
+    "vector_commutator_reconstruction_max_abs": 0
+  },
+  "Phi210_action": {
+    "Lie_commutator_reconstruction_max_abs": 0,
+    "action_count": 15,
+    "action_shapes": [
+      [
+        210,
+        210
+      ]
+    ],
+    "all_action_dtypes_integral": true,
+    "flattened_action_rank_mod_prime": 15,
+    "maximum_abs_action_entry": 1,
+    "ordered_labels": [
+      "H1",
+      "H2",
+      "H3",
+      "X12",
+      "Y12",
+      "X13",
+      "Y13",
+      "X14",
+      "Y14",
+      "X23",
+      "Y23",
+      "X24",
+      "Y24",
+      "X34",
+      "Y34"
+    ],
+    "prime": 1000003,
+    "proof_grade": true,
+    "representation": "real Lambda^4(R^10) = Phi210",
+    "skew_transpose_max_abs_residual": 0,
+    "source_binding": "direct_phi_h_sigmabar_tensor_v20 generator_action through the tracked exact Phi210 generator source",
+    "total_nonzero_entries": 3360
+  },
+  "checks": {
+    "Phi210_actions_integral_skew_faithful_and_Lie_exact": true,
+    "explicit_fifteen_dimensional_kernel_upper_bound_exact": true,
+    "fifteen_correct_shifted_SU4_generators_exact": true,
+    "fixed_h_minus_q_over_4_endpoint_bound_exact": true,
+    "integral_SU4_Lie_structure_constants_close_exactly": true,
+    "joint_stabilizer_kernel_exhausted_exactly_by_SU4": true,
+    "joint_tangent_rank_30_modular_lower_bound_exact": true,
+    "old_offset_zero_SU4_embedding_rejected_by_h_minus_exactly": true
+  },
+  "failed_checks": [],
+  "generator_basis": {
+    "Cartan_generator_count": 3,
+    "all_coefficients_are_signed_units": true,
+    "all_support_is_in_indices_2_through_9": true,
+    "coefficient_matrix_shape": [
+      45,
+      15
+    ],
+    "coefficient_rank_mod_prime": 15,
+    "complex_planes": [
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        8,
+        9
+      ]
+    ],
+    "definitions": [
+      {
+        "definition": "1 G_23 + -1 G_45",
+        "kind": "Cartan_difference",
+        "label": "H1",
+        "so10_coefficients": {
+          "G_23": 1,
+          "G_45": -1
+        }
+      },
+      {
+        "definition": "1 G_45 + -1 G_67",
+        "kind": "Cartan_difference",
+        "label": "H2",
+        "so10_coefficients": {
+          "G_45": 1,
+          "G_67": -1
+        }
+      },
+      {
+        "definition": "1 G_67 + -1 G_89",
+        "kind": "Cartan_difference",
+        "label": "H3",
+        "so10_coefficients": {
+          "G_67": 1,
+          "G_89": -1
+        }
+      },
+      {
+        "definition": "1 G_24 + +1 G_35",
+        "kind": "complex_linear_real",
+        "label": "X12",
+        "so10_coefficients": {
+          "G_24": 1,
+          "G_35": 1
+        }
+      },
+      {
+        "definition": "1 G_25 + -1 G_34",
+        "kind": "complex_linear_imaginary",
+        "label": "Y12",
+        "so10_coefficients": {
+          "G_25": 1,
+          "G_34": -1
+        }
+      },
+      {
+        "definition": "1 G_26 + +1 G_37",
+        "kind": "complex_linear_real",
+        "label": "X13",
+        "so10_coefficients": {
+          "G_26": 1,
+          "G_37": 1
+        }
+      },
+      {
+        "definition": "1 G_27 + -1 G_36",
+        "kind": "complex_linear_imaginary",
+        "label": "Y13",
+        "so10_coefficients": {
+          "G_27": 1,
+          "G_36": -1
+        }
+      },
+      {
+        "definition": "1 G_28 + +1 G_39",
+        "kind": "complex_linear_real",
+        "label": "X14",
+        "so10_coefficients": {
+          "G_28": 1,
+          "G_39": 1
+        }
+      },
+      {
+        "definition": "1 G_29 + -1 G_38",
+        "kind": "complex_linear_imaginary",
+        "label": "Y14",
+        "so10_coefficients": {
+          "G_29": 1,
+          "G_38": -1
+        }
+      },
+      {
+        "definition": "1 G_46 + +1 G_57",
+        "kind": "complex_linear_real",
+        "label": "X23",
+        "so10_coefficients": {
+          "G_46": 1,
+          "G_57": 1
+        }
+      },
+      {
+        "definition": "1 G_47 + -1 G_56",
+        "kind": "complex_linear_imaginary",
+        "label": "Y23",
+        "so10_coefficients": {
+          "G_47": 1,
+          "G_56": -1
+        }
+      },
+      {
+        "definition": "1 G_48 + +1 G_59",
+        "kind": "complex_linear_real",
+        "label": "X24",
+        "so10_coefficients": {
+          "G_48": 1,
+          "G_59": 1
+        }
+      },
+      {
+        "definition": "1 G_49 + -1 G_58",
+        "kind": "complex_linear_imaginary",
+        "label": "Y24",
+        "so10_coefficients": {
+          "G_49": 1,
+          "G_58": -1
+        }
+      },
+      {
+        "definition": "1 G_68 + +1 G_79",
+        "kind": "complex_linear_real",
+        "label": "X34",
+        "so10_coefficients": {
+          "G_68": 1,
+          "G_79": 1
+        }
+      },
+      {
+        "definition": "1 G_69 + -1 G_78",
+        "kind": "complex_linear_imaginary",
+        "label": "Y34",
+        "so10_coefficients": {
+          "G_69": 1,
+          "G_78": -1
+        }
+      }
+    ],
+    "generator_count": 15,
+    "offdiagonal_generator_count": 12,
+    "ordered_labels": [
+      "H1",
+      "H2",
+      "H3",
+      "X12",
+      "Y12",
+      "X13",
+      "Y13",
+      "X14",
+      "Y14",
+      "X23",
+      "Y23",
+      "X24",
+      "Y24",
+      "X34",
+      "Y34"
+    ],
+    "prime": 1000003,
+    "proof_grade": true
+  },
+  "joint_stabilizer_tangent": {
+    "displayed_kernel_rank_mod_prime": 15,
+    "displayed_kernel_residual_max_abs": 0,
+    "displayed_kernel_shape": [
+      45,
+      15
+    ],
+    "exact_tangent_nullity": 15,
+    "exact_tangent_rank_over_Q_R": 30,
+    "explicit_kernel_is_complete": true,
+    "fixed_endpoint": {
+      "H": "h_-=(e0-i e1)/sqrt(2)",
+      "H_numerator_norm_squared": 2,
+      "Sigma": "q/4",
+      "endpoint_binding_exact": true,
+      "integer_tangent_numerators": "e0-i e1 for H and q for Sigma; independent nonzero block rescalings preserve the common tangent kernel",
+      "q": "q=(e0+i e1)(e2+i e3)(e4+i e5)(e6+i e7)(e8+i e9)",
+      "q_coordinate_norm_squared": 16
+    },
+    "joint_tangent_coordinate_order": "Re(H)[10], Im(H)[10], Re(Sigma)[126], Im(Sigma)[126]",
+    "joint_tangent_max_abs_entry": 1,
+    "joint_tangent_rank_mod_prime": 30,
+    "joint_tangent_shape": [
+      272,
+      45
+    ],
+    "kernel_exhaustion_identity": "ker[d(SO10.(h_-,q/4))] = span_Z{H1,H2,H3,Xij,Yij} tensor R",
+    "kernel_upper_bound_on_tangent_rank": 30,
+    "prime": 1000003,
+    "proof_grade": true,
+    "rank_lower_bound_over_Q_R": 30,
+    "source_actions": {
+      "H_action_shape": [
+        45,
+        10,
+        10
+      ],
+      "H_generators_integral_real_skew": true,
+      "SO10_generator_count": 45,
+      "Sigma_action_shape": [
+        45,
+        126,
+        126
+      ],
+      "Sigma_generators_Gaussian_integral_antihermitian": true,
+      "ordered_generator_labels_match_exactly": true
+    },
+    "wrong_offset_zero_SU4_negative_control": {
+      "H_tangent_residual_max_abs": 1,
+      "Sigma_tangent_residual_max_abs": 0,
+      "complex_planes": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          6,
+          7
+        ]
+      ],
+      "does_not_stabilize_fixed_h_minus": true,
+      "joint_tangent_residual_max_abs": 1,
+      "wrong_embedding_rejected_exactly": true
+    }
+  },
+  "model_contract_id": "gauged_u1x_phi17_v20",
+  "n_checks": 8,
+  "n_failed": 0,
+  "next_exact_target": "Construct the full SU(4)-equivariant multiplicity/intertwiner decomposition of the arbitrary-Phi rank-one anchor, then solve and rationalize its Schur/SOS SDP.",
+  "overall_state": "STABILIZER_INFRASTRUCTURE_CLOSED__ARBITRARY_PHI_SDP_OPEN",
+  "scope": {
+    "G3_closed": false,
+    "H_fixed_to_h_minus": true,
+    "Sigma_fixed_to_normalized_explicit_decomposable_pure_spinor_q_over_4": true,
+    "arbitrary_Phi_Schur_SOS_SDP_constructed": false,
+    "arbitrary_Phi_Schur_SOS_SDP_feasible": false,
+    "arbitrary_max_negative_Sigma_proved": false,
+    "arbitrary_rank1_Phi_bound_proved": false,
+    "common_continuous_stabilizer_identified_as_SU4": true,
+    "exact_Phi210_SU4_action_available_for_next_stage": true,
+    "infrastructure_only": true,
+    "whole_model_excluded": false
+  },
+  "status": "EXACT_RANK1_SU4_STABILIZER_INFRASTRUCTURE_CERTIFIED",
+  "verdict": "The exact common continuous stabilizer Lie algebra of fixed h_- and the explicit q/4 rank-one endpoint is the displayed su(4), with integral Lie structure and exact skew actions on Phi210. This certifies only the representation infrastructure; no arbitrary-Phi SDP or G3 closure is claimed."
+}
