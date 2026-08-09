@@ -41,6 +41,10 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             "test_exact_gauged_u1x_g3_rank1_su4_phi210_quadratic_basis_v20.py",
             "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_V20.json",
             "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_V20.md",
+            "exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py",
+            "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py",
+            "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_V20.json",
+            "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_V20.md",
         ):
             self.assertIn(required, paths)
         for relative in paths:
@@ -55,22 +59,32 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             root = Path(directory)
             readme = root / "README.md"
             model = root / "models" / "SO10Z17AxionV20.m"
+            manual = root / "release.pdf"
             model.parent.mkdir()
-            readme.write_bytes(b"release\n")
-            model.write_bytes(b"model\n")
+            readme.write_bytes(b"release\r\n")
+            model.write_bytes(b"model\x97legacy\r")
+            manual.write_bytes(b"%PDF-1.7\r\nraw-binary\r")
 
-            release.write_checksums([model, readme], root=root)
+            release.write_checksums([manual, model, readme], root=root)
 
             expected = [
-                f"{hashlib.sha256(readme.read_bytes()).hexdigest()}  README.md",
+                f"{hashlib.sha256(b'release\n').hexdigest()}  README.md",
                 (
-                    f"{hashlib.sha256(model.read_bytes()).hexdigest()}  "
+                    f"{hashlib.sha256(b'model\x97legacy\n').hexdigest()}  "
                     "models/SO10Z17AxionV20.m"
                 ),
+                f"{hashlib.sha256(manual.read_bytes()).hexdigest()}  release.pdf",
             ]
             lines = (root / "SHA256SUMS").read_text(encoding="utf-8").splitlines()
             self.assertEqual(lines, expected)
             self.assertNotIn("\\", "\n".join(lines))
+            self.assertEqual(
+                release.portable_checksum_payload(readme),
+                b"release\n",
+            )
+            self.assertEqual(
+                release.portable_checksum_payload(model), b"model\x97legacy\n"
+            )
 
     def test_rank1_release_predicate_requires_all_false_scope_flags(self):
         source = Path(release.__file__).read_text(encoding="utf-8")
@@ -108,11 +122,17 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
                 / "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_V20.json"
             ).read_text(encoding="utf-8")
         )
+        census = json.loads(
+            (
+                release.ROOT
+                / "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_V20.json"
+            ).read_text(encoding="utf-8")
+        )
         self.assertEqual(
             release.rank1_su4_release_predicates(
-                stabilizer, intertwiners, aligned, quadratic
+                stabilizer, intertwiners, aligned, quadratic, census
             ),
-            (True, True, True, True),
+            (True, True, True, True, True),
         )
 
         mutations = []
@@ -185,18 +205,26 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
         mutations.append((forged_stabilizer, forged_intertwiners))
 
         for forged_stabilizer, forged_intertwiners in mutations:
-            stabilizer_exact, intertwiners_exact, aligned_exact, quadratic_exact = (
+            (
+                stabilizer_exact,
+                intertwiners_exact,
+                aligned_exact,
+                quadratic_exact,
+                census_exact,
+            ) = (
                 release.rank1_su4_release_predicates(
                     forged_stabilizer,
                     forged_intertwiners,
                     aligned,
                     quadratic,
+                    census,
                 )
             )
             self.assertFalse(stabilizer_exact and intertwiners_exact)
             self.assertFalse(intertwiners_exact)
             self.assertFalse(aligned_exact)
             self.assertFalse(quadratic_exact)
+            self.assertFalse(census_exact)
 
         stage2_mutations = []
         forged_aligned = copy.deepcopy(aligned)
@@ -217,10 +245,38 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
         stage2_mutations.append((copy.deepcopy(aligned), forged_quadratic))
         for forged_aligned, forged_quadratic in stage2_mutations:
             predicates = release.rank1_su4_release_predicates(
-                stabilizer, intertwiners, forged_aligned, forged_quadratic
+                stabilizer, intertwiners, forged_aligned, forged_quadratic,
+                census,
             )
             self.assertFalse(predicates[2] and predicates[3])
             self.assertFalse(predicates[3])
+            self.assertFalse(predicates[4])
+
+        census_mutations = []
+        for key in (
+            "Schur_coordinate_6585_by_19594_coefficient_matrix_constructed",
+            "physical_G3_gap_target_vector_constructed",
+            "augmented_Schur_SOS_SDP_constructed",
+            "arbitrary_real_Phi_lower_bound_proved",
+            "G3_closed",
+            "whole_model_validated",
+            "whole_model_excluded",
+        ):
+            forged_census = copy.deepcopy(census)
+            forged_census["scope"][key] = True
+            census_mutations.append(forged_census)
+        forged_census = copy.deepcopy(census)
+        forged_census["source_provenance"]["quadratic_source_sha256"] = "0" * 64
+        census_mutations.append(forged_census)
+        forged_census = copy.deepcopy(census)
+        forged_census["augmented_representation"]["complex_irreducible_copy_count"] = 823
+        census_mutations.append(forged_census)
+        for forged_census in census_mutations:
+            predicates = release.rank1_su4_release_predicates(
+                stabilizer, intertwiners, aligned, quadratic, forged_census
+            )
+            self.assertEqual(predicates[:4], (True, True, True, True))
+            self.assertFalse(predicates[4])
 
     def test_su4_release_does_not_mislabel_the_full_augmented_sos_as_45_by_45(
         self,
@@ -254,6 +310,24 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
         self.assertIn("full augmented SU(4)-equivariant degree-2", source)
         self.assertIn("every real/Hermitian isotypic block", source)
         self.assertIn("homogenizing cross terms", source)
+
+    def test_current_main_heredocs_use_the_exact_census_scope_contract(self):
+        source = (
+            release.ROOT / ".github/workflows/current-main-full-reaudit.yml"
+        ).read_text(encoding="utf-8")
+        self.assertEqual(
+            source.count("_rank1_su4_augmented_sos_census_exact("), 2
+        )
+        self.assertEqual(
+            source.count(
+                "all(rank1_su4_census['scope'][name] is False "
+                "for name in census_false_scope)"
+            ),
+            2,
+        )
+        self.assertNotIn(
+            "set(rank1_su4_census['scope'])==set(census_false_scope)", source
+        )
 
     def test_checksums_reject_files_outside_repository(self):
         with tempfile.TemporaryDirectory() as directory:

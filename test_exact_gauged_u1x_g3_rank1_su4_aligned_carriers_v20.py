@@ -1,6 +1,7 @@
 import ast
 from collections import Counter
 import copy
+import hashlib
 import json
 from pathlib import Path
 
@@ -9,6 +10,18 @@ import pytest
 from scipy import sparse
 
 import exact_gauged_u1x_g3_rank1_su4_aligned_carriers_v20 as subject
+
+
+def test_source_hash_is_lf_crlf_and_cr_invariant(tmp_path):
+    expected = hashlib.sha256(b"alpha\nbeta\n").hexdigest()
+    paths = []
+    for index, payload in enumerate(
+        (b"alpha\nbeta\n", b"alpha\r\nbeta\r\n", b"alpha\rbeta\r")
+    ):
+        path = tmp_path / f"source-{index}.py"
+        path.write_bytes(payload)
+        paths.append(path)
+    assert {subject._file_sha256(path) for path in paths} == {expected}
 
 
 def test_exact_A3_chevalley_system_and_deterministic_hashes():

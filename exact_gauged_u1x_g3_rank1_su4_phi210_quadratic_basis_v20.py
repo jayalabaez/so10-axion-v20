@@ -117,7 +117,8 @@ def _sparse_is_zero(matrix: sparse.spmatrix) -> bool:
 
 
 def _file_sha256(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+    payload = path.read_bytes().replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+    return hashlib.sha256(payload).hexdigest()
 
 
 def _update_sparse_hash(digest: Any, matrix: sparse.spmatrix) -> None:

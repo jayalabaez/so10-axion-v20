@@ -211,6 +211,16 @@ def test_constructive_g3_frontier_is_actionable_but_not_promoted():
     assert frontier["rank1_SU4_quadratic_live_invariance_exact"] is True
     assert frontier["rank1_SU4_Schur_SOS_SDP_open"] is True
     assert frontier["rank1_SU4_arbitrary_Phi_bound_open"] is True
+    assert frontier["rank1_SU4_augmented_SOS_census_exact"] is True
+    assert frontier["rank1_SU4_augmented_homogeneous_dimension"] == 22_366
+    assert frontier["rank1_SU4_augmented_complex_isotypic_type_count"] == 35
+    assert frontier["rank1_SU4_augmented_complex_irreducible_copy_count"] == 824
+    assert frontier["rank1_SU4_augmented_real_isotypic_block_count"] == 22
+    assert frontier["rank1_SU4_augmented_Schur_real_parameter_count"] == 19_594
+    assert frontier["rank1_SU4_augmented_invariant_equation_count"] == 6_585
+    assert frontier["rank1_SU4_augmented_coordinate_Schur_map_open"] is True
+    assert frontier["rank1_SU4_augmented_physical_target_open"] is True
+    assert frontier["rank1_SU4_augmented_Schur_SOS_SDP_open"] is True
     assert frontier["SU5_arbitrary_Phi_nonzero_residual_cancellations_open"] is False
     assert (
         frontier["SU5_arbitrary_non_pure_Delta_Sigma_uniform_coercivity_open"]
@@ -245,9 +255,10 @@ def test_constructive_g3_frontier_is_actionable_but_not_promoted():
     assert "exact SU(4) stabilizer" in g3_task["deliverable"]
     assert "aligned 25-carrier" in g3_task["deliverable"]
     assert "5952x551 rank-506" in g3_task["deliverable"]
-    assert "full augmented SU(4)-equivariant degree-2 Schur/SOS SDP" in (
+    assert "exact augmented census has dimension 22366" in (
         g3_task["deliverable"]
     )
+    assert "6585x19594 coordinate Schur map" in g3_task["deliverable"]
     assert "486-field" in g3_task["acceptance"]
 
 

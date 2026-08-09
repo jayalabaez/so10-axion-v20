@@ -124,6 +124,9 @@ class G1G8GateLedgerTests(unittest.TestCase):
         rank1_su4_quadratic = reports[
             "gauged_G3_rank1_SU4_Phi210_quadratic_basis"
         ]
+        rank1_su4_census = reports[
+            "gauged_G3_rank1_SU4_augmented_SOS_census"
+        ]
         alternative_sos = reports["gauged_G3_alternative_global_SOS_audit"]
         self.assertEqual(x_report["n_failed"], 0)
         self.assertFalse(x_report["contract_consistent"])
@@ -223,6 +226,35 @@ class G1G8GateLedgerTests(unittest.TestCase):
         self.assertFalse(
             rank1_su4_quadratic["scope"][
                 "augmented_homogeneous_Schur_SOS_SDP_constructed"
+            ]
+        )
+        self.assertEqual(
+            rank1_su4_census["augmented_representation"][
+                "augmented_homogeneous_dimension"
+            ],
+            22_366,
+        )
+        self.assertEqual(
+            rank1_su4_census["augmented_representation"][
+                "complex_irreducible_copy_count"
+            ],
+            824,
+        )
+        self.assertEqual(
+            rank1_su4_census["augmented_representation"][
+                "Schur_real_parameter_count"
+            ],
+            19_594,
+        )
+        self.assertEqual(
+            rank1_su4_census["invariant_quartic_target"][
+                "invariant_equation_count"
+            ],
+            6_585,
+        )
+        self.assertFalse(
+            rank1_su4_census["scope"][
+                "Schur_coordinate_6585_by_19594_coefficient_matrix_constructed"
             ]
         )
         self.assertEqual(alternative_sos["n_failed"], 0)
@@ -356,6 +388,30 @@ class G1G8GateLedgerTests(unittest.TestCase):
         self.assertTrue(frontier["rank1_SU4_quadratic_live_invariance_exact"])
         self.assertTrue(frontier["rank1_SU4_Schur_SOS_SDP_open"])
         self.assertTrue(frontier["rank1_SU4_arbitrary_Phi_bound_open"])
+        self.assertTrue(frontier["rank1_SU4_augmented_SOS_census_exact"])
+        self.assertEqual(
+            frontier["rank1_SU4_augmented_homogeneous_dimension"], 22_366
+        )
+        self.assertEqual(
+            frontier["rank1_SU4_augmented_complex_isotypic_type_count"], 35
+        )
+        self.assertEqual(
+            frontier["rank1_SU4_augmented_complex_irreducible_copy_count"], 824
+        )
+        self.assertEqual(
+            frontier["rank1_SU4_augmented_real_isotypic_block_count"], 22
+        )
+        self.assertEqual(
+            frontier["rank1_SU4_augmented_Schur_real_parameter_count"], 19_594
+        )
+        self.assertEqual(
+            frontier["rank1_SU4_augmented_invariant_equation_count"], 6_585
+        )
+        self.assertTrue(frontier["rank1_SU4_augmented_coordinate_Schur_map_open"])
+        self.assertTrue(frontier["rank1_SU4_augmented_isotypic_maps_open"])
+        self.assertTrue(frontier["rank1_SU4_augmented_physical_target_open"])
+        self.assertTrue(frontier["rank1_SU4_augmented_Schur_SOS_SDP_open"])
+        self.assertTrue(frontier["rank1_SU4_augmented_arbitrary_Phi_bound_open"])
         self.assertFalse(
             frontier["SU5_arbitrary_Phi_nonzero_residual_cancellations_open"]
         )
@@ -885,6 +941,91 @@ class G1G8GateLedgerTests(unittest.TestCase):
         self.assertFalse(
             report["gauged_u1x_g3_constructive_frontier"][
                 "rank1_SU4_Phi210_quadratic_basis_exact"
+            ]
+        )
+
+    def test_rank1_su4_augmented_census_rejects_every_physical_overclaim(self):
+        inputs = self.report["model_contract_reports"]
+        stabilizer = inputs["gauged_G3_rank1_SU4_stabilizer_infrastructure"]
+        intertwiners = inputs[
+            "gauged_G3_rank1_SU4_Phi210_intertwiner_infrastructure"
+        ]
+        aligned = inputs["gauged_G3_rank1_SU4_aligned_carrier_infrastructure"]
+        quadratic = inputs["gauged_G3_rank1_SU4_Phi210_quadratic_basis"]
+        census = inputs["gauged_G3_rank1_SU4_augmented_SOS_census"]
+
+        mutations = [
+            lambda value: value.__setitem__("status", "FORGED"),
+            lambda value: value.__setitem__("n_failed", 1),
+            lambda value: value["checks"].__setitem__("unexpected_check", True),
+            lambda value: value["checks"].__setitem__(
+                "universal_GL211_equivariant_section_exact", False
+            ),
+            lambda value: value["source_provenance"].__setitem__(
+                "aligned_source_sha256", "0" * 64
+            ),
+            lambda value: value["source_provenance"].__setitem__(
+                "quadratic_report_sha256", "0" * 64
+            ),
+            lambda value: value["augmented_representation"].__setitem__(
+                "complex_isotypic_type_count", 34
+            ),
+            lambda value: value["augmented_representation"].__setitem__(
+                "Schur_real_parameter_count", 19_593
+            ),
+            lambda value: value["invariant_quartic_target"].__setitem__(
+                "invariant_equation_count", 6_584
+            ),
+            lambda value: value["abstract_coefficient_map_census"].__setitem__(
+                "abstract_total_rank_exact", 6_584
+            ),
+        ]
+        false_scope = (
+            "all_35_isotypic_type_maps_spanning_824_irreducible_copies_constructed",
+            "ordered_invariant_cubic_basis_constructed",
+            "ordered_invariant_quartic_basis_constructed",
+            "Schur_coordinate_6585_by_19594_coefficient_matrix_constructed",
+            "physical_G3_gap_target_vector_constructed",
+            "physical_G3_gap_cubic_zero_RHS_certified",
+            "augmented_Schur_SOS_SDP_constructed",
+            "augmented_Schur_SOS_SDP_feasibility_certified",
+            "augmented_Schur_SOS_SDP_infeasibility_certified",
+            "arbitrary_real_Phi_lower_bound_proved",
+            "arbitrary_rank1_Phi_proved",
+            "G3_closed",
+            "whole_model_validated",
+            "whole_model_excluded",
+        )
+        mutations.extend(
+            lambda value, key=key: value["scope"].__setitem__(key, True)
+            for key in false_scope
+        )
+        for mutate in mutations:
+            forged = copy.deepcopy(census)
+            mutate(forged)
+            self.assertFalse(
+                mod._rank1_su4_augmented_sos_census_exact(
+                    forged, stabilizer, intertwiners, aligned, quadratic
+                )
+            )
+
+        forged = copy.deepcopy(census)
+        forged["scope"]["G3_closed"] = True
+        report = mod._build_report_from_inputs(
+            x_report=inputs["exact_X"],
+            g1_report=inputs["gauged_G1_character_census"],
+            g2_report=inputs["gauged_G2_derivative_audit"],
+            filter_report=inputs["gauged_scalar_filter"],
+            g3_rank1_su4_stabilizer_report=stabilizer,
+            g3_rank1_su4_phi210_intertwiners_report=intertwiners,
+            g3_rank1_su4_aligned_carriers_report=aligned,
+            g3_rank1_su4_phi210_quadratic_basis_report=quadratic,
+            g3_rank1_su4_augmented_sos_census_report=forged,
+        )
+        self.assertEqual(report["overall_state"], "EXECUTION_FAIL")
+        self.assertFalse(
+            report["gauged_u1x_g3_constructive_frontier"][
+                "rank1_SU4_augmented_SOS_census_exact"
             ]
         )
 

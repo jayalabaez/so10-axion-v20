@@ -264,6 +264,12 @@ def main() -> int:
     run(
         [
             sys.executable,
+            "exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py",
+        ]
+    )
+    run(
+        [
+            sys.executable,
             "exact_gauged_u1x_g3_su5_chiral_global_gap_reduction_v20.py",
             "--write",
         ]
@@ -353,6 +359,7 @@ def main() -> int:
             "test_exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py",
             "test_exact_gauged_u1x_g3_rank1_su4_aligned_carriers_v20.py",
             "test_exact_gauged_u1x_g3_rank1_su4_phi210_quadratic_basis_v20.py",
+            "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py",
             "test_exact_gauged_u1x_g3_su5_chiral_global_gap_reduction_v20.py",
             "test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py",
             "test_final_g3_acceptance_gate_v20.py",

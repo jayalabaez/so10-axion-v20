@@ -109,6 +109,7 @@ def test_rank1_su4_infrastructure_is_generated_in_provenance_order() -> None:
     intertwiners = "exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py"
     aligned = "exact_gauged_u1x_g3_rank1_su4_aligned_carriers_v20.py"
     quadratic = "exact_gauged_u1x_g3_rank1_su4_phi210_quadratic_basis_v20.py"
+    census = "exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py"
     stabilizer_test = "test_exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py"
     intertwiner_test = (
         "test_exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py"
@@ -117,9 +118,13 @@ def test_rank1_su4_infrastructure_is_generated_in_provenance_order() -> None:
     quadratic_test = (
         "test_exact_gauged_u1x_g3_rank1_su4_phi210_quadratic_basis_v20.py"
     )
+    census_test = (
+        "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py"
+    )
     for token in (
-        stabilizer, intertwiners, aligned, quadratic,
+        stabilizer, intertwiners, aligned, quadratic, census,
         stabilizer_test, intertwiner_test, aligned_test, quadratic_test,
+        census_test,
     ):
         assert token in source
     assert (
@@ -128,6 +133,7 @@ def test_rank1_su4_infrastructure_is_generated_in_provenance_order() -> None:
         < source.index(intertwiners)
         < source.index(aligned)
         < source.index(quadratic)
+        < source.index(census)
     )
     for consumer in (
         "g1_g8_gate_ledger_v20.py",
@@ -135,4 +141,4 @@ def test_rank1_su4_infrastructure_is_generated_in_provenance_order() -> None:
         "g1_g8_execution_roadmap_v20.py",
         "theory_validation_matrix_v20.py",
     ):
-        assert source.index(quadratic) < source.index(consumer)
+        assert source.index(census) < source.index(consumer)

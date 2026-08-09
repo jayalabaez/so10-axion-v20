@@ -64,6 +64,9 @@ RANK1_SU4_ALIGNED_CARRIERS_JSON = (
 RANK1_SU4_PHI210_QUADRATIC_BASIS_JSON = (
     ROOT / "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_V20.json"
 )
+RANK1_SU4_AUGMENTED_SOS_CENSUS_JSON = (
+    ROOT / "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_V20.json"
+)
 
 MODEL_CONTRACT_ID = ledger.AUTHORITATIVE_CONTRACT_ID
 FINAL_THEOREM = (
@@ -107,6 +110,7 @@ def build_report(
     rank1_su4_phi210_intertwiners_report: dict[str, Any] | None = None,
     rank1_su4_aligned_carriers_report: dict[str, Any] | None = None,
     rank1_su4_phi210_quadratic_basis_report: dict[str, Any] | None = None,
+    rank1_su4_augmented_sos_census_report: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     ledger_report = ledger.build_report() if ledger_report is None else ledger_report
     hsx_report = _load(HSX_JSON) if hsx_report is None else hsx_report
@@ -172,6 +176,11 @@ def build_report(
         if rank1_su4_phi210_quadratic_basis_report is None
         else rank1_su4_phi210_quadratic_basis_report
     )
+    rank1_su4_augmented_sos_census_report = (
+        _load(RANK1_SU4_AUGMENTED_SOS_CENSUS_JSON)
+        if rank1_su4_augmented_sos_census_report is None
+        else rank1_su4_augmented_sos_census_report
+    )
 
     frontier = ledger_report.get("gauged_u1x_g3_constructive_frontier", {})
     gates = ledger_report.get("gates", {})
@@ -222,10 +231,20 @@ def build_report(
             rank1_su4_aligned_carriers_report,
         )
     )
+    rank1_su4_census_exact = ledger._rank1_su4_augmented_sos_census_exact(
+        rank1_su4_augmented_sos_census_report,
+        rank1_su4_stabilizer_report,
+        rank1_su4_phi210_intertwiners_report,
+        rank1_su4_aligned_carriers_report,
+        rank1_su4_phi210_quadratic_basis_report,
+    )
     rank1_su4_aligned_scope = rank1_su4_aligned_carriers_report.get(
         "scope", {}
     )
     rank1_su4_quadratic_scope = rank1_su4_phi210_quadratic_basis_report.get(
+        "scope", {}
+    )
+    rank1_su4_census_scope = rank1_su4_augmented_sos_census_report.get(
         "scope", {}
     )
 
@@ -464,6 +483,9 @@ def build_report(
         "rank1_SU4_Phi210_quadratic_basis_executes_fail_closed": (
             rank1_su4_quadratic_exact
         ),
+        "rank1_SU4_augmented_SOS_census_executes_fail_closed": (
+            rank1_su4_census_exact
+        ),
         "alternative_global_SOS_audit_executes_fail_closed": bool(
             alternative_sos_report.get("n_failed") == 0
             and alternative_sos_report.get("status")
@@ -505,6 +527,7 @@ def build_report(
                 rank1_su4_phi210_intertwiners_report,
                 rank1_su4_aligned_carriers_report,
                 rank1_su4_phi210_quadratic_basis_report,
+                rank1_su4_augmented_sos_census_report,
             )
         ),
         "numerical_Hessian_not_promoted_to_proof": (
@@ -525,6 +548,7 @@ def build_report(
             and rank1_su4_intertwiner_scope.get("G3_closed") is False
             and rank1_su4_aligned_scope.get("G3_closed") is False
             and rank1_su4_quadratic_scope.get("G3_closed") is False
+            and rank1_su4_census_scope.get("G3_closed") is False
         ),
     }
 
@@ -700,6 +724,7 @@ def build_report(
             and rank1_su4_intertwiners_exact
             and rank1_su4_aligned_exact
             and rank1_su4_quadratic_exact
+            and rank1_su4_census_exact
             and _dig(
                 rank1_su4_aligned_carriers_report,
                 "alignment", "carrier_count",
@@ -740,6 +765,65 @@ def build_report(
             is False
             and rank1_su4_quadratic_scope.get("G3_closed") is False
             and rank1_su4_quadratic_scope.get("whole_model_excluded") is False
+            and _dig(
+                rank1_su4_augmented_sos_census_report,
+                "augmented_representation", "augmented_homogeneous_dimension",
+            ) == 22_366
+            and _dig(
+                rank1_su4_augmented_sos_census_report,
+                "augmented_representation", "complex_isotypic_type_count",
+            ) == 35
+            and _dig(
+                rank1_su4_augmented_sos_census_report,
+                "augmented_representation", "complex_irreducible_copy_count",
+            ) == 824
+            and _dig(
+                rank1_su4_augmented_sos_census_report,
+                "augmented_representation", "real_isotypic_block_count",
+            ) == 22
+            and _dig(
+                rank1_su4_augmented_sos_census_report,
+                "augmented_representation", "Schur_real_parameter_count",
+            ) == 19_594
+            and _dig(
+                rank1_su4_augmented_sos_census_report,
+                "invariant_quartic_target", "invariant_equation_count",
+            ) == 6_585
+            and rank1_su4_census_scope.get(
+                "all_35_isotypic_type_maps_spanning_824_irreducible_copies_constructed"
+            ) is False
+            and rank1_su4_census_scope.get(
+                "Schur_coordinate_6585_by_19594_coefficient_matrix_constructed"
+            ) is False
+            and rank1_su4_census_scope.get(
+                "ordered_invariant_cubic_basis_constructed"
+            ) is False
+            and rank1_su4_census_scope.get(
+                "ordered_invariant_quartic_basis_constructed"
+            ) is False
+            and rank1_su4_census_scope.get(
+                "physical_G3_gap_target_vector_constructed"
+            ) is False
+            and rank1_su4_census_scope.get(
+                "physical_G3_gap_cubic_zero_RHS_certified"
+            ) is False
+            and rank1_su4_census_scope.get(
+                "augmented_Schur_SOS_SDP_constructed"
+            ) is False
+            and rank1_su4_census_scope.get(
+                "augmented_Schur_SOS_SDP_feasibility_certified"
+            ) is False
+            and rank1_su4_census_scope.get(
+                "augmented_Schur_SOS_SDP_infeasibility_certified"
+            ) is False
+            and rank1_su4_census_scope.get(
+                "arbitrary_real_Phi_lower_bound_proved"
+            ) is False
+            and rank1_su4_census_scope.get("arbitrary_rank1_Phi_proved")
+            is False
+            and rank1_su4_census_scope.get("G3_closed") is False
+            and rank1_su4_census_scope.get("whole_model_validated") is False
+            and rank1_su4_census_scope.get("whole_model_excluded") is False
         ),
         "signed_Phi_orbits_locally_isolated_exactly": bool(
             local_scope.get("plus_F_local_component_classified") is True
@@ -845,6 +929,10 @@ def build_report(
             (
                 RANK1_SU4_PHI210_QUADRATIC_BASIS_JSON,
                 rank1_su4_phi210_quadratic_basis_report,
+            ),
+            (
+                RANK1_SU4_AUGMENTED_SOS_CENSUS_JSON,
+                rank1_su4_augmented_sos_census_report,
             ),
         )
         if not report
@@ -978,6 +1066,43 @@ def build_report(
                 rank1_su4_phi210_quadratic_basis_report,
                 "quadratic_basis", "matrix_count",
             ),
+            "rank1_SU4_augmented_homogeneous_dimension": _dig(
+                rank1_su4_augmented_sos_census_report,
+                "augmented_representation", "augmented_homogeneous_dimension",
+            ),
+            "rank1_SU4_augmented_isotypic_types": _dig(
+                rank1_su4_augmented_sos_census_report,
+                "augmented_representation", "complex_isotypic_type_count",
+            ),
+            "rank1_SU4_augmented_irreducible_copies": _dig(
+                rank1_su4_augmented_sos_census_report,
+                "augmented_representation", "complex_irreducible_copy_count",
+            ),
+            "rank1_SU4_augmented_real_blocks": _dig(
+                rank1_su4_augmented_sos_census_report,
+                "augmented_representation", "real_isotypic_block_count",
+            ),
+            "rank1_SU4_augmented_Schur_parameters": _dig(
+                rank1_su4_augmented_sos_census_report,
+                "augmented_representation", "Schur_real_parameter_count",
+            ),
+            "rank1_SU4_augmented_invariant_rows": _dig(
+                rank1_su4_augmented_sos_census_report,
+                "invariant_quartic_target", "invariant_equation_count",
+            ),
+            "rank1_SU4_augmented_coordinate_Schur_map_constructed": (
+                rank1_su4_census_scope.get(
+                    "Schur_coordinate_6585_by_19594_coefficient_matrix_constructed"
+                )
+            ),
+            "rank1_SU4_augmented_physical_target_constructed": (
+                rank1_su4_census_scope.get(
+                    "physical_G3_gap_target_vector_constructed"
+                )
+            ),
+            "rank1_SU4_augmented_SDP_constructed": (
+                rank1_su4_census_scope.get("augmented_Schur_SOS_SDP_constructed")
+            ),
             "arbitrary_non_pure_Delta_Sigma_orientations_open": not bool(
                 max_negative_full_scope.get("arbitrary_Sigma_orientation_proved")
             ),
@@ -1023,9 +1148,11 @@ def build_report(
             "also proves the 1/5000 gap on only a four-real-dimensional Phi "
             "sub-slice of the 16-dimensional SU(3)-fixed space. At that fixed "
             "endpoint, the exact SU(4) stabilizer, aligned rank-210 carrier real "
-            "maps, and explicit complete 45-element Phi210 invariant quadratic "
-            "basis are certified as infrastructure only; the augmented Schur/SOS "
-            "SDP and arbitrary-Phi bound remain open. PASS still "
+            "maps and complete 45-element Phi210 quadratic basis feed an exact "
+            "22366-dimensional augmented census with 35 types/824 copies, 22 "
+            "real/Hermitian blocks, 19594 Schur parameters, and 6585 invariant "
+            "rows. The universal map is abstract: no coordinate Schur matrix, "
+            "physical target, PSD result, or arbitrary-Phi bound is claimed. PASS still "
             "requires a uniform coercive beta gap for "
             "arbitrary non-pure-Delta Sigma orientations, plus the external authoritative "
             "model execution."

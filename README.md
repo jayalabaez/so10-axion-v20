@@ -118,11 +118,15 @@ the model.
   basis with physical conjugation/real-form maps. A `5952 x 551` exact
   constraint system has rank/nullity `506/45` and yields an explicit complete
   45-element integral symmetric invariant quadratic basis, invariant under all
-  15 live actions. This is representation infrastructure for the full augmented
-  SU(4)-equivariant degree-2 Schur/SOS SDP; the quadratic basis is only one
-  input, while all isotypic blocks and
-  homogenizing cross terms, an arbitrary-`Phi` lower bound, G3, and any
-  whole-model exclusion remain open
+  15 live actions. The augmented homogeneous representation census is also
+  exact: dimension `22366`, `35` complex isotypic types spanning `824`
+  irreducible copies, `22` real/Hermitian blocks (`9` real-symmetric and `13`
+  complex-Hermitian), `19594` real Schur parameters, and `6585` invariant
+  target rows. A universal grade-preserving rational section proves abstract
+  rank `6585` and kernel dimension `13009`. This is not a coordinate SOS
+  certificate: the 35 aligned isotypic maps, ordered cubic/quartic coordinates,
+  physical G3 target vector, `6585 x 19594` Schur matrix, PSD feasibility,
+  arbitrary-`Phi` bound, G3, and whole-model conclusions remain open
 - The former 64-direction / 91-parameter G1-G2 calculation is retained as a
   reproducible historical no-`X` subtheorem, not as validation of the manuscript
 
@@ -207,9 +211,12 @@ branch has an exact Phi/Sigma global SOS certificate and a chiral-H full-field
   15 actions on `Phi210` are now certified. The 25 carriers are aligned at
   exact rank 210 with physical real maps, and the complete explicit
   45-element invariant quadratic basis is certified from a `5952 x 551`
-  rank-506 constraint system. This completes only one input sector for the full augmented
-  SU(4)-equivariant degree-2 Schur/SOS SDP; it does not construct all
-  isotypic/cross blocks or prove the arbitrary-`Phi` bound.
+  rank-506 constraint system. The exact augmented census then resolves
+  dimension `22366` into 35 isotypic types/824 copies and 22 real/Hermitian
+  blocks, with 19594 Schur parameters and 6585 invariant rows. Its universal
+  multiplication map is abstractly surjective; it does not construct the 35
+  aligned isotypic embeddings, ordered cubic/quartic coordinates, physical
+  target, coordinate Schur matrix, PSD certificate, or arbitrary-`Phi` bound.
   `G3_closed` remains
   false only because the same uniform coercive control has not yet been proved
   for arbitrary non-pure-`Delta_R` Sigma orientations. Run
@@ -333,8 +340,11 @@ $g_{a\gamma\gamma}\sim2.3\times10^{-14}\,{\rm GeV}^{-1}$ by MADMAX / ALPHA / ORG
 > endpoint and arbitrary Sigma orientations remain open.  At that fixed
 > endpoint, the exact `SU(4)` stabilizer, its 15 `Phi210` actions, aligned
 > rank-210 carriers with physical real maps, and the explicit complete
-> 45-element invariant quadratic basis are certified only as infrastructure
-> for the still-unconstructed augmented Schur/SOS SDP.
+> 45-element invariant quadratic basis, and the exact 22366-dimensional
+> augmented census (35 isotypic types, 824 copies, 22 real/Hermitian blocks,
+> 19594 Schur parameters, 6585 invariant rows) are certified. The universal
+> map is abstract: the coordinate Schur map, physical target vector, PSD
+> feasibility, arbitrary-`Phi` bound, and G3 remain open.
 > G3 remains open because a uniform coercive bound for arbitrary non-pure-
 > `Delta_R` Sigma orientations has not yet been proved. The complete theory is
 > neither validated nor discarded.
