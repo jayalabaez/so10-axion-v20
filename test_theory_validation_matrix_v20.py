@@ -702,6 +702,7 @@ def minimal_tree(
         "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_V20.json",
         "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_V20.json",
         "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_V20.json",
+        "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.json",
     ):
         write_json(
             root,
@@ -1043,12 +1044,60 @@ class TheoryValidationMatrixTests(unittest.TestCase):
             self.assertTrue(
                 evidence["gauged_G3_rank1_SU4_augmented_cubic_G3_open"]
             )
+            self.assertTrue(
+                evidence["gauged_G3_rank1_SU4_augmented_quartic_map_exact"]
+            )
+            self.assertEqual(
+                evidence[
+                    "gauged_G3_rank1_SU4_augmented_quartic_carrier_family_count"
+                ],
+                35,
+            )
+            self.assertEqual(
+                evidence[
+                    "gauged_G3_rank1_SU4_augmented_quartic_irreducible_copy_count"
+                ],
+                798,
+            )
+            self.assertEqual(
+                evidence["gauged_G3_rank1_SU4_augmented_quartic_map_shape"],
+                [6_057, 18_085],
+            )
+            self.assertEqual(
+                evidence["gauged_G3_rank1_SU4_augmented_quartic_map_rank"],
+                6_057,
+            )
+            self.assertEqual(
+                evidence[
+                    "gauged_G3_rank1_SU4_augmented_quartic_map_kernel_dimension"
+                ],
+                12_028,
+            )
+            self.assertTrue(
+                evidence[
+                    "gauged_G3_rank1_SU4_augmented_quartic_physical_target_open"
+                ]
+            )
+            self.assertTrue(
+                evidence[
+                    "gauged_G3_rank1_SU4_augmented_quartic_standard_PSD_congruences_open"
+                ]
+            )
+            self.assertTrue(
+                evidence["gauged_G3_rank1_SU4_augmented_quartic_SDP_open"]
+            )
+            self.assertTrue(
+                evidence["gauged_G3_rank1_SU4_augmented_quartic_G3_open"]
+            )
             self.assertIn("478x1414 integer map", vacuum["summary"])
             self.assertIn("kernel dimension 936", vacuum["summary"])
             self.assertIn(
                 "reserved zero placeholder is nonphysical", vacuum["summary"]
             )
-            self.assertIn("6057x18085 quartic sector", vacuum["summary"])
+            self.assertIn(
+                "exact-rank-6057, 6057x18085 integer map", vacuum["summary"]
+            )
+            self.assertIn("kernel dimension 12028", vacuum["summary"])
             self.assertIn("full 6585x19594 matrix", vacuum["summary"])
             self.assertNotIn("infrastructure only", vacuum["summary"])
 
@@ -1111,6 +1160,22 @@ class TheoryValidationMatrixTests(unittest.TestCase):
                 lambda value: value["scope"].__setitem__("G3_closed", True),
             ),
             (
+                "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.json",
+                lambda value: value["coefficient_map_certificate"].__setitem__(
+                    "rank_over_Q_exact", 6_056
+                ),
+            ),
+            (
+                "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.json",
+                lambda value: value["scope"].__setitem__(
+                    "semidefinite_feasibility_solved", True
+                ),
+            ),
+            (
+                "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.json",
+                lambda value: value["scope"].__setitem__("G3_closed", True),
+            ),
+            (
                 "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_V20.json",
                 lambda value: value["scope"].__setitem__(
                     "augmented_homogeneous_Schur_SOS_SDP_constructed", True
@@ -1148,6 +1213,11 @@ class TheoryValidationMatrixTests(unittest.TestCase):
                     self.assertFalse(
                         vacuum["evidence"][
                             "gauged_G3_frontier_honestly_fail_closed"
+                        ]
+                    )
+                    self.assertFalse(
+                        vacuum["evidence"][
+                            "gauged_G3_rank1_SU4_augmented_quartic_map_exact"
                         ]
                     )
 

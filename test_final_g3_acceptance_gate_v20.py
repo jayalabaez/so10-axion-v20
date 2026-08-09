@@ -60,6 +60,9 @@ def test_current_gate_is_open_not_failed_or_overclaimed():
     assert report["artifact_integrity"][
         "rank1_SU4_augmented_SOS_cubic_map_executes_fail_closed"
     ] is True
+    assert report["artifact_integrity"][
+        "rank1_SU4_augmented_SOS_quartic_map_executes_fail_closed"
+    ] is True
     assert report["science_criteria"][
         "max_negative_all_zero_residual_route_excluded_exactly"
     ] is True
@@ -159,6 +162,23 @@ def test_current_gate_is_open_not_failed_or_overclaimed():
     assert report["diagnostic_only"][
         "rank1_SU4_augmented_cubic_physical_zero_RHS_certified"
     ] is False
+    assert report["diagnostic_only"]["rank1_SU4_augmented_quartic_map_shape"] == [
+        6_057,
+        18_085,
+    ]
+    assert report["diagnostic_only"]["rank1_SU4_augmented_quartic_map_rank"] == 6_057
+    assert report["diagnostic_only"][
+        "rank1_SU4_augmented_quartic_map_kernel_dimension"
+    ] == 12_028
+    assert report["diagnostic_only"][
+        "rank1_SU4_augmented_quartic_physical_target_constructed"
+    ] is False
+    assert report["diagnostic_only"][
+        "rank1_SU4_augmented_quartic_standard_PSD_congruences_constructed"
+    ] is False
+    assert report["diagnostic_only"][
+        "rank1_SU4_augmented_quartic_SDP_solved"
+    ] is False
     assert report["diagnostic_only"]["rank1_SU4_Schur_SOS_SDP_constructed"] is False
     assert report["diagnostic_only"][
         "arbitrary_non_pure_Delta_Sigma_orientations_open"
@@ -172,7 +192,8 @@ def test_current_gate_is_open_not_failed_or_overclaimed():
     assert "478x1414 integer map" in report["verdict"]
     assert "kernel dimension 936" in report["verdict"]
     assert "zero placeholder is nonphysical" in report["verdict"]
-    assert "6057x18085 quartic sector" in report["verdict"]
+    assert "exact-rank-6057, 6057x18085 integer map" in report["verdict"]
+    assert "kernel dimension 12028" in report["verdict"]
     assert "full 6585x19594 map" in report["verdict"]
     assert "G3 remains open" in report["verdict"]
     assert "no coordinate Schur matrix" not in report["verdict"]
@@ -324,6 +345,9 @@ def test_rank1_su4_infrastructure_mutations_are_fail_closed():
         assert report["artifact_integrity"][
             "rank1_SU4_Phi210_intertwiner_infrastructure_executes_fail_closed"
         ] is False
+        assert report["artifact_integrity"][
+            "rank1_SU4_augmented_SOS_quartic_map_executes_fail_closed"
+        ] is False
 
 
 def test_rank1_su4_stage2_mutations_are_fail_closed():
@@ -345,6 +369,9 @@ def test_rank1_su4_stage2_mutations_are_fail_closed():
     ] is False
     assert report["artifact_integrity"][
         "rank1_SU4_augmented_SOS_cubic_map_executes_fail_closed"
+    ] is False
+    assert report["artifact_integrity"][
+        "rank1_SU4_augmented_SOS_quartic_map_executes_fail_closed"
     ] is False
 
 
@@ -385,6 +412,9 @@ def test_rank1_su4_augmented_cubic_mutations_cascade_fail_closed():
         assert report["artifact_integrity"][
             "rank1_SU4_augmented_SOS_cubic_map_executes_fail_closed"
         ] is False
+        assert report["artifact_integrity"][
+            "rank1_SU4_augmented_SOS_quartic_map_executes_fail_closed"
+        ] is False
 
     for field in (
         "degree_zero_coefficient_map_constructed",
@@ -412,6 +442,9 @@ def test_rank1_su4_augmented_cubic_mutations_cascade_fail_closed():
         assert report["classification"]["G3_closed"] is False
         assert report["artifact_integrity"][
             "rank1_SU4_augmented_SOS_cubic_map_executes_fail_closed"
+        ] is False
+        assert report["artifact_integrity"][
+            "rank1_SU4_augmented_SOS_quartic_map_executes_fail_closed"
         ] is False
 
 
@@ -455,3 +488,38 @@ def test_rank1_su4_augmented_census_mutations_are_fail_closed():
     assert report["artifact_integrity"][
         "rank1_SU4_augmented_SOS_cubic_map_executes_fail_closed"
     ] is False
+    assert report["artifact_integrity"][
+        "rank1_SU4_augmented_SOS_quartic_map_executes_fail_closed"
+    ] is False
+
+
+def test_rank1_su4_augmented_quartic_mutations_cascade_fail_closed():
+    quartic = mod._load(mod.RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_JSON)
+    mutations = (
+        ("scope", "physical_quartic_target_constructed", True),
+        (
+            "scope",
+            "standard_PSD_congruences_for_real_type_fixed_bases_constructed",
+            True,
+        ),
+        ("scope", "semidefinite_feasibility_solved", True),
+        ("scope", "G3_closed", True),
+        ("coefficient_map_certificate", "rank_over_Q_exact", 6_056),
+        (
+            "coefficient_map_certificate",
+            "kernel_dimension_over_Q_exact",
+            12_029,
+        ),
+        ("coefficient_map_certificate", "coordinate_map_sha256", "f" * 64),
+    )
+    for section, key, value in mutations:
+        forged = copy.deepcopy(quartic)
+        forged[section][key] = value
+        report = mod.build_report(
+            rank1_su4_augmented_sos_quartic_map_report=forged
+        )
+        assert report["overall_state"] == "EXECUTION_FAIL"
+        assert report["classification"]["G3_closed"] is False
+        assert report["artifact_integrity"][
+            "rank1_SU4_augmented_SOS_quartic_map_executes_fail_closed"
+        ] is False
