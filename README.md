@@ -132,9 +132,14 @@ the model.
   all `35` carrier families (`798` irreducible copies, `22155` carrier
   dimensions) and all `22` block pairings yield a sparse integer
   `6057 x 18085` map with `115641` nonzeros, exact rank `6057`, and kernel
-  dimension `12028`. This closes only the quartic coefficient-map interface.
-  The physical target, standard real-type PSD congruences, full
-  `6585 x 19594` Schur matrix, SDP feasibility, arbitrary-`Phi` bound, G3,
+  dimension `12028`. The next exact stage constructs all `22` standard
+  PSD-coordinate routes: `9` real-type congruences and `13` complex blocks in
+  standard Hermitian coordinates. It also constructs the physical target in
+  the full `6585`-row graded chart (common denominator `1728000`, `845`
+  nonzeros; SHA-256
+  `e2d9eec1b01b3eeefc4a54d404db93171aa6600ea9ef646a215ab0b5401f7630`).
+  The coefficient map reparameterized in those standard coordinates, SDP
+  feasibility or an exact primal/dual certificate, arbitrary-`Phi` bound, G3,
   and whole-model conclusions remain open
 - The former 64-direction / 91-parameter G1-G2 calculation is retained as a
   reproducible historical no-`X` subtheorem, not as validation of the manuscript
@@ -228,9 +233,10 @@ branch has an exact Phi/Sigma global SOS certificate and a chiral-H full-field
   its 936-dimensional kernel is exact. The zero placeholder exposed by that
   interface is not a physical target and certifies no physical zero RHS.
   The exact homogeneous quartic interface has shape `6057 x 18085`, rank
-  `6057`, and kernel dimension `12028`. The physical target, standard
-  real-type PSD congruences, full coordinate Schur matrix, SDP certificate,
-  arbitrary-`Phi` bound, and arbitrary non-pure-`Delta_R`
+  `6057`, and kernel dimension `12028`. All 22 standard PSD-coordinate routes
+  and the exact physical `6585`-row target are now constructed. The
+  standard-coordinate coefficient matrix, SDP feasibility and exact
+  primal/dual certificate, arbitrary-`Phi` bound, and arbitrary non-pure-`Delta_R`
   Sigma coercivity remain open. Therefore `G3_closed` remains false. Run
   `python final_g3_acceptance_gate_v20.py --write` for the
 fail-closed final test. The
@@ -359,8 +365,9 @@ $g_{a\gamma\gamma}\sim2.3\times10^{-14}\,{\rm GeV}^{-1}$ by MADMAX / ALPHA / ORG
 > rank-478 `478 x 1414` map with kernel dimension 936. Its abstract zero
 > placeholder is not the physical G3 target. The homogeneous quartic interface
 > is an exact-rank-6057 `6057 x 18085` integer map with kernel dimension 12028.
-> Its physical target, standard real-type PSD congruences, full Schur matrix,
-> SDP feasibility, arbitrary-`Phi`
+> All 22 standard PSD-coordinate routes and the exact physical 6585-row target
+> are constructed. The standard-coordinate coefficient matrix, SDP feasibility,
+> exact primal/dual certificate, arbitrary-`Phi`
 > bound, and arbitrary non-pure-`Delta_R` Sigma coercivity remain open.
 > Consequently G3 remains open and the complete theory is neither validated
 > nor discarded.

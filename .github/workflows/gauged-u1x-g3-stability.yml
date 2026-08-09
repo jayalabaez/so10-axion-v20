@@ -64,6 +64,10 @@ on:
       - "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py"
       - "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.json"
       - "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.md"
+      - "exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py"
+      - "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py"
+      - "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_V20.json"
+      - "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_V20.md"
       - "exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py"
       - "test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py"
       - "final_g3_acceptance_gate_v20.py"
@@ -214,6 +218,7 @@ jobs:
             exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py \
             exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py \
             exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py \
+            exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py \
             exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py \
             final_g3_acceptance_gate_v20.py \
             gauged_u1x_g3_sos_candidate_v20.py \
@@ -248,6 +253,7 @@ jobs:
             test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py \
             test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py \
             test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py \
+            test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py \
             test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py \
             test_final_g3_acceptance_gate_v20.py \
             test_gauged_u1x_g3_sos_candidate_v20.py \
@@ -284,6 +290,7 @@ jobs:
           python exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py
           python exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py
           python exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py
+          python exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py
           python exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py --write
           python final_g3_acceptance_gate_v20.py --write
           python gauged_u1x_g3_sos_candidate_v20.py --recompute-heavy --write
@@ -321,6 +328,7 @@ jobs:
             test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py \
             test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py \
             test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py \
+            test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py \
             test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py \
             test_final_g3_acceptance_gate_v20.py \
             test_gauged_u1x_g3_sos_candidate_v20.py \
@@ -413,6 +421,9 @@ jobs:
           )
           rank1_su4_quartic = json.loads(
               Path("EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.json").read_text()
+          )
+          rank1_su4_psd_target = json.loads(
+              Path("EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_V20.json").read_text()
           )
           alternative_sos = json.loads(
               Path("EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json").read_text()
@@ -663,6 +674,38 @@ jobs:
           assert set(rank1_su4_quartic["scope"]) == set(quartic_true_scope) | set(quartic_false_scope)
           assert all(rank1_su4_quartic["scope"][name] is True for name in quartic_true_scope)
           assert all(rank1_su4_quartic["scope"][name] is False for name in quartic_false_scope)
+          assert gate_ledger._rank1_su4_augmented_sos_psd_target_exact(
+              rank1_su4_psd_target, rank1_su4_census, rank1_su4_cubic, rank1_su4_quartic
+          )
+          psd_target_true_scope = (
+              "all_22_standard_PSD_coordinate_routes_constructed",
+              "all_nine_real_type_standard_PSD_congruences_constructed",
+              "all_thirteen_complex_blocks_in_standard_Hermitian_coordinates",
+              "physical_target_formula_all_five_grades_constructed",
+              "physical_target_full_6585_row_vector_constructed",
+          )
+          psd_target_false_scope = (
+              "coefficient_map_reparameterized_in_standard_PSD_coordinates",
+              "semidefinite_feasibility_solved",
+              "exact_primal_PSD_certificate_constructed",
+              "exact_dual_Farkas_certificate_constructed",
+              "arbitrary_Phi_lower_bound_proved",
+              "equality_orbit_classification_proved",
+              "full_486_field_Hessian_classification_proved",
+              "G3_closed",
+          )
+          assert set(rank1_su4_psd_target["scope"]) == set(psd_target_true_scope) | set(psd_target_false_scope)
+          assert all(rank1_su4_psd_target["scope"][name] is True for name in psd_target_true_scope)
+          assert all(rank1_su4_psd_target["scope"][name] is False for name in psd_target_false_scope)
+          psd_routes = rank1_su4_psd_target["standard_PSD_coordinate_routes"]
+          full_target = rank1_su4_psd_target["physical_target"]["full_graded_chart"]
+          quartic_target = rank1_su4_psd_target["physical_target"]["quartic"]
+          assert psd_routes["real_type_block_count"] == 9 and psd_routes["complex_Hermitian_block_count"] == 13
+          assert psd_routes["standard_total_parameter_count"] == 19594
+          assert full_target["row_count"] == 6585 and full_target["common_denominator"] == 1728000
+          assert full_target["total_nonzero_count"] == 845 and full_target["numerator_sha256"] == "e2d9eec1b01b3eeefc4a54d404db93171aa6600ea9ef646a215ab0b5401f7630"
+          assert quartic_target["row_count"] == 6057 and quartic_target["common_denominator"] == 3375
+          assert quartic_target["nonzero_count"] == 825 and quartic_target["numerator_sha256"] == "38476cff340ef8702735d48d7dbdf644ed41f8dc4a359264d33d966f177145ad"
           assert rank1_su4_quadratic["scope"]["augmented_homogeneous_Schur_SOS_SDP_constructed"] is False
           assert rank1_su4_quadratic["scope"]["arbitrary_rank1_Phi_proved"] is False
           assert rank1_su4_quadratic["scope"]["G3_closed"] is False
@@ -859,6 +902,8 @@ jobs:
             EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_V20.md
             EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.json
             EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.md
+            EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_V20.json
+            EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_V20.md
             EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json
             EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.md
             FINAL_G3_ACCEPTANCE_GATE_V20.json

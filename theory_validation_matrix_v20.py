@@ -90,6 +90,7 @@ ARTIFACTS = {
     "gauged_g3_rank1_su4_augmented_sos_census": "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_V20.json",
     "gauged_g3_rank1_su4_augmented_sos_cubic_map": "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_V20.json",
     "gauged_g3_rank1_su4_augmented_sos_quartic_map": "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.json",
+    "gauged_g3_rank1_su4_augmented_sos_psd_target": "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_V20.json",
     "gauged_g3_alternative_global_sos": "EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json",
     "final_g3": "FINAL_G3_ACCEPTANCE_GATE_V20.json",
     "authoritative": "AUTHORITATIVE_FULL_MODEL_GATE_V20.json",
@@ -505,6 +506,18 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
     rank1_su4_quartic_map = rank1_su4_quartic.get(
         "coefficient_map_certificate", {}
     )
+    rank1_su4_psd_target = reports.get(
+        "gauged_g3_rank1_su4_augmented_sos_psd_target", {}
+    )
+    rank1_su4_psd_target_scope = rank1_su4_psd_target.get("scope", {})
+    rank1_su4_psd_routes = rank1_su4_psd_target.get(
+        "standard_PSD_coordinate_routes", {}
+    )
+    rank1_su4_physical_target = rank1_su4_psd_target.get("physical_target", {})
+    rank1_su4_full_target = rank1_su4_physical_target.get(
+        "full_graded_chart", {}
+    )
+    rank1_su4_quartic_target = rank1_su4_physical_target.get("quartic", {})
     alternative_sos = reports.get("gauged_g3_alternative_global_sos", {})
     alternative_sos_flags = alternative_sos.get("flags", {})
     final_g3 = reports.get("final_g3", {})
@@ -1077,6 +1090,15 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
             rank1_su4_cubic,
         )
     )
+    rank1_su4_augmented_sos_psd_target_exact = (
+        rank1_su4_augmented_sos_quartic_map_exact
+        and gate_ledger._rank1_su4_augmented_sos_psd_target_exact(
+            rank1_su4_psd_target,
+            rank1_su4_census,
+            rank1_su4_cubic,
+            rank1_su4_quartic,
+        )
+    )
     alternative_global_sos_honestly_open = bool(
         alternative_sos.get("n_failed") == 0
         and alternative_sos.get("status")
@@ -1140,6 +1162,7 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
         and rank1_su4_augmented_sos_census_exact
         and rank1_su4_augmented_sos_cubic_map_exact
         and rank1_su4_augmented_sos_quartic_map_exact
+        and rank1_su4_augmented_sos_psd_target_exact
         and alternative_global_sos_honestly_open
         and final_g3_honestly_open
     )
@@ -1255,10 +1278,10 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
             "and an exact-rank-478, 478x1414 integer map with kernel dimension "
             "936. The reserved zero placeholder is nonphysical. The homogeneous "
             "quartic interface is an exact-rank-6057, 6057x18085 integer map "
-            "with kernel dimension 12028. Its physical target, standard "
-            "real-type PSD congruences, full 6585x19594 matrix, SDP feasibility, "
-            "and arbitrary-Phi bound "
-            "remain open. "
+            "with kernel dimension 12028. All 22 standard PSD-coordinate routes "
+            "and the exact physical 6585-row target are constructed. The "
+            "coefficient map in standard PSD coordinates, SDP feasibility, and "
+            "arbitrary-Phi bound remain open. "
             "G3 remains open only on uniform coercivity for arbitrary non-pure-Delta "
             "Sigma orientations. "
             "The old no-X 64/91 result remains historical."
@@ -1370,6 +1393,15 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
             ),
             "gauged_G3_rank1_SU4_augmented_SOS_census_artifact_present": bool(
                 rank1_su4_census
+            ),
+            "gauged_G3_rank1_SU4_augmented_SOS_cubic_map_artifact_present": bool(
+                rank1_su4_cubic
+            ),
+            "gauged_G3_rank1_SU4_augmented_SOS_quartic_map_artifact_present": bool(
+                rank1_su4_quartic
+            ),
+            "gauged_G3_rank1_SU4_augmented_SOS_PSD_target_artifact_present": bool(
+                rank1_su4_psd_target
             ),
             "gauged_G3_alternative_global_SOS_artifact_present": bool(
                 alternative_sos
@@ -1781,6 +1813,74 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
             ),
             "gauged_G3_rank1_SU4_augmented_quartic_G3_open": (
                 rank1_su4_quartic_scope.get("G3_closed") is False
+            ),
+            "gauged_G3_rank1_SU4_augmented_PSD_target_exact": (
+                rank1_su4_augmented_sos_psd_target_exact
+            ),
+            "gauged_G3_rank1_SU4_augmented_standard_PSD_route_count": (
+                rank1_su4_psd_routes.get("real_type_block_count", 0)
+                + rank1_su4_psd_routes.get("complex_Hermitian_block_count", 0)
+            ),
+            "gauged_G3_rank1_SU4_augmented_standard_PSD_parameter_count": (
+                rank1_su4_psd_routes.get("standard_total_parameter_count")
+            ),
+            "gauged_G3_rank1_SU4_augmented_real_type_PSD_congruences_exact": (
+                rank1_su4_psd_target_scope.get(
+                    "all_nine_real_type_standard_PSD_congruences_constructed"
+                ) is True
+            ),
+            "gauged_G3_rank1_SU4_augmented_complex_Hermitian_coordinates_exact": (
+                rank1_su4_psd_target_scope.get(
+                    "all_thirteen_complex_blocks_in_standard_Hermitian_coordinates"
+                ) is True
+            ),
+            "gauged_G3_rank1_SU4_augmented_physical_target_exact": (
+                rank1_su4_psd_target_scope.get(
+                    "physical_target_formula_all_five_grades_constructed"
+                ) is True
+                and rank1_su4_psd_target_scope.get(
+                    "physical_target_full_6585_row_vector_constructed"
+                ) is True
+            ),
+            "gauged_G3_rank1_SU4_augmented_physical_target_row_count": (
+                rank1_su4_full_target.get("row_count")
+            ),
+            "gauged_G3_rank1_SU4_augmented_physical_target_common_denominator": (
+                rank1_su4_full_target.get("common_denominator")
+            ),
+            "gauged_G3_rank1_SU4_augmented_physical_target_nonzero_count": (
+                rank1_su4_full_target.get("total_nonzero_count")
+            ),
+            "gauged_G3_rank1_SU4_augmented_physical_target_sha256": (
+                rank1_su4_full_target.get("numerator_sha256")
+            ),
+            "gauged_G3_rank1_SU4_augmented_physical_quartic_target_row_count": (
+                rank1_su4_quartic_target.get("row_count")
+            ),
+            "gauged_G3_rank1_SU4_augmented_physical_quartic_target_denominator": (
+                rank1_su4_quartic_target.get("common_denominator")
+            ),
+            "gauged_G3_rank1_SU4_augmented_physical_quartic_target_nnz": (
+                rank1_su4_quartic_target.get("nonzero_count")
+            ),
+            "gauged_G3_rank1_SU4_augmented_physical_quartic_target_sha256": (
+                rank1_su4_quartic_target.get("numerator_sha256")
+            ),
+            "gauged_G3_rank1_SU4_augmented_standard_coordinate_map_open": (
+                rank1_su4_psd_target_scope.get(
+                    "coefficient_map_reparameterized_in_standard_PSD_coordinates"
+                ) is False
+            ),
+            "gauged_G3_rank1_SU4_augmented_PSD_SDP_open": (
+                rank1_su4_psd_target_scope.get("semidefinite_feasibility_solved")
+                is False
+            ),
+            "gauged_G3_rank1_SU4_augmented_PSD_arbitrary_Phi_open": (
+                rank1_su4_psd_target_scope.get("arbitrary_Phi_lower_bound_proved")
+                is False
+            ),
+            "gauged_G3_rank1_SU4_augmented_PSD_G3_open": (
+                rank1_su4_psd_target_scope.get("G3_closed") is False
             ),
             "gauged_G3_SU5_max_negative_arbitrary_Sigma_orientation_open": not bool(
                 rank1_su3_scope.get("arbitrary_max_negative_Sigma")

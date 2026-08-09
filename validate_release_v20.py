@@ -50,6 +50,8 @@ FINAL_THEOREM_CORE_PATHS: tuple[str, ...] = (
     "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_V20.md",
     "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.json",
     "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.md",
+    "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_V20.json",
+    "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_V20.md",
     "G1_EXACT_DECLARED_SYMMETRY_CHARACTER_CENSUS_V20.json",
     "G1_EXACT_DECLARED_SYMMETRY_CHARACTER_CENSUS_V20.md",
     "G1_G8_EXECUTION_ROADMAP_V20.md",
@@ -71,6 +73,7 @@ FINAL_THEOREM_CORE_PATHS: tuple[str, ...] = (
     "exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py",
     "exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py",
     "exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py",
+    "exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py",
     "prepare_validation_artifacts_v20.py",
     "replicate.py",
     "test_authoritative_full_model_gate_v20.py",
@@ -83,6 +86,7 @@ FINAL_THEOREM_CORE_PATHS: tuple[str, ...] = (
     "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py",
     "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py",
     "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py",
+    "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py",
     "test_g1_exact_declared_symmetry_character_census_v20.py",
     "test_g1_g8_execution_roadmap_v20.py",
     "test_g1_g8_gate_ledger_v20.py",
@@ -121,7 +125,8 @@ def rank1_su4_release_predicates(
     census_report: dict,
     cubic_report: dict,
     quartic_report: dict,
-) -> tuple[bool, bool, bool, bool, bool, bool, bool]:
+    psd_target_report: dict,
+) -> tuple[bool, bool, bool, bool, bool, bool, bool, bool]:
     """Return exact, fail-closed infrastructure predicates for the release."""
     stabilizer_exact = gate_ledger._rank1_su4_stabilizer_infrastructure_exact(
         stabilizer_report
@@ -151,11 +156,18 @@ def rank1_su4_release_predicates(
             quartic_report, census_report, cubic_report,
         )
     )
+    psd_target_exact = (
+        quartic_exact
+        and gate_ledger._rank1_su4_augmented_sos_psd_target_exact(
+            psd_target_report, census_report, cubic_report, quartic_report,
+        )
+    )
     return (
         stabilizer_exact, intertwiners_exact, aligned_exact, quadratic_exact,
         census_exact,
         cubic_exact,
         quartic_exact,
+        psd_target_exact,
     )
 
 
@@ -448,6 +460,12 @@ def main() -> int:
     run(
         [
             sys.executable,
+            "exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py",
+        ]
+    )
+    run(
+        [
+            sys.executable,
             "exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py",
             "--write",
         ]
@@ -627,6 +645,12 @@ def main() -> int:
         (
             ROOT
             / "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.json"
+        ).read_text()
+    )
+    exact_rank1_su4_augmented_sos_psd_target = json.loads(
+        (
+            ROOT
+            / "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_V20.json"
         ).read_text()
     )
     exact_alternative_sos = json.loads(
@@ -1243,6 +1267,7 @@ def main() -> int:
         rank1_su4_augmented_sos_census_exact,
         rank1_su4_augmented_sos_cubic_map_exact,
         rank1_su4_augmented_sos_quartic_map_exact,
+        rank1_su4_augmented_sos_psd_target_exact,
     ) = rank1_su4_release_predicates(
         exact_rank1_su4_stabilizer,
         exact_rank1_su4_phi210_intertwiners,
@@ -1251,6 +1276,7 @@ def main() -> int:
         exact_rank1_su4_augmented_sos_census,
         exact_rank1_su4_augmented_sos_cubic_map,
         exact_rank1_su4_augmented_sos_quartic_map,
+        exact_rank1_su4_augmented_sos_psd_target,
     )
     require(
         rank1_su4_stabilizer_exact,
@@ -1332,6 +1358,49 @@ def main() -> int:
             )
         ),
         "quartic-map open-scope contract was promoted beyond the exact theorem",
+    )
+    require(
+        rank1_su4_augmented_sos_psd_target_exact,
+        "rank-one SU(4) PSD routes or physical target drifted, lost local provenance, or overclaimed SDP/G3",
+    )
+    psd_target_scope = exact_rank1_su4_augmented_sos_psd_target["scope"]
+    psd_routes = exact_rank1_su4_augmented_sos_psd_target[
+        "standard_PSD_coordinate_routes"
+    ]
+    physical_target = exact_rank1_su4_augmented_sos_psd_target[
+        "physical_target"
+    ]
+    full_target = physical_target["full_graded_chart"]
+    physical_quartic_target = physical_target["quartic"]
+    require(
+        psd_routes["real_type_block_count"] == 9
+        and psd_routes["complex_Hermitian_block_count"] == 13
+        and psd_routes["all_22_cones_have_standard_coordinate_routes"] is True
+        and psd_routes["standard_total_parameter_count"] == 19_594
+        and full_target["row_count"] == 6_585
+        and full_target["common_denominator"] == 1_728_000
+        and full_target["total_nonzero_count"] == 845
+        and full_target["numerator_sha256"]
+        == "e2d9eec1b01b3eeefc4a54d404db93171aa6600ea9ef646a215ab0b5401f7630"
+        and physical_quartic_target["row_count"] == 6_057
+        and physical_quartic_target["common_denominator"] == 3_375
+        and physical_quartic_target["nonzero_count"] == 825
+        and physical_quartic_target["numerator_sha256"]
+        == "38476cff340ef8702735d48d7dbdf644ed41f8dc4a359264d33d966f177145ad"
+        and all(
+            psd_target_scope[name] is False
+            for name in (
+                "coefficient_map_reparameterized_in_standard_PSD_coordinates",
+                "semidefinite_feasibility_solved",
+                "exact_primal_PSD_certificate_constructed",
+                "exact_dual_Farkas_certificate_constructed",
+                "arbitrary_Phi_lower_bound_proved",
+                "equality_orbit_classification_proved",
+                "full_486_field_Hessian_classification_proved",
+                "G3_closed",
+            )
+        ),
+        "PSD-target open-scope contract was promoted beyond the exact theorem",
     )
     alternative_flags = exact_alternative_sos["flags"]
     require(
@@ -1576,6 +1645,7 @@ def main() -> int:
             "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py",
             "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py",
             "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py",
+            "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py",
             "test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py",
             "test_final_g3_acceptance_gate_v20.py",
             "test_gauged_u1x_g3_sos_candidate_v20.py",
