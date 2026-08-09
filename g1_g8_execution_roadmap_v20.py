@@ -61,7 +61,7 @@ TASKS: list[dict[str, Any]] = [
         "id": "W3-G3-FULL-STATIONARITY",
         "wave": 3,
         "gates": ["G3"],
-        "status": "SU5_DELTA_CHIRAL_H_EXACT_LOCAL_MINIMUM__PURE_DELTA_FULL_RESIDUAL_GAP_CLOSED__RANK1_SU3_FOUR_DIMENSIONAL_SLICE_CLOSED__RANK1_SU4_QUADRATIC_BASIS_READY__AUGMENTED_SOS_AND_ARBITRARY_SIGMA_COERCIVITY_OPEN__BLOCKED_ON_G2_PROMOTION",
+        "status": "SU5_DELTA_CHIRAL_H_EXACT_LOCAL_MINIMUM__PURE_DELTA_FULL_RESIDUAL_GAP_CLOSED__RANK1_SU3_FOUR_DIMENSIONAL_SLICE_CLOSED__RANK1_SU4_AUGMENTED_SOS_CENSUS_READY__COORDINATE_SCHUR_MAP_PSD_AND_ARBITRARY_SIGMA_COERCIVITY_OPEN__BLOCKED_ON_G2_PROMOTION",
         "issue": 178,
         "deliverable": (
             "prove a uniform coercive global gap for arbitrary non-pure-Delta "
@@ -73,10 +73,13 @@ TASKS: list[dict[str, Any]] = [
             "SU(3)-fixed space; its exact SU(4) stabilizer, aligned 25-carrier "
             "rank-210 real-form maps, and complete 45-element invariant "
             "quadratic basis from a 5952x551 rank-506 constraint system are "
-            "ready, but the full augmented "
-            "SU(4)-equivariant degree-2 Schur/SOS SDP (including every "
-            "isotypic block and homogenizing cross term) and arbitrary-Phi "
-            "bound remain open"
+            "ready. The exact augmented census has dimension 22366, 35 "
+            "complex isotypic types spanning 824 copies, 22 real/Hermitian "
+            "blocks, 19594 real Schur parameters, and 6585 invariant target "
+            "rows with an abstract surjective multiplication map. The aligned "
+            "isotypic embeddings, ordered cubic/quartic coordinates, physical "
+            "gap target, 6585x19594 coordinate Schur map, PSD feasibility, and "
+            "arbitrary-Phi bound remain open"
         ),
         "acceptance": (
             "the full 486-field candidate is globally minimal with all equality "
@@ -378,6 +381,30 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
             ] is True
             and g3_frontier["rank1_SU4_Schur_SOS_SDP_open"] is True
             and g3_frontier["rank1_SU4_arbitrary_Phi_bound_open"] is True
+            and g3_frontier["rank1_SU4_augmented_SOS_census_exact"] is True
+            and g3_frontier["rank1_SU4_augmented_homogeneous_dimension"]
+            == 22_366
+            and g3_frontier[
+                "rank1_SU4_augmented_complex_isotypic_type_count"
+            ] == 35
+            and g3_frontier[
+                "rank1_SU4_augmented_complex_irreducible_copy_count"
+            ] == 824
+            and g3_frontier["rank1_SU4_augmented_real_isotypic_block_count"]
+            == 22
+            and g3_frontier["rank1_SU4_augmented_Schur_real_parameter_count"]
+            == 19_594
+            and g3_frontier["rank1_SU4_augmented_invariant_equation_count"]
+            == 6_585
+            and g3_frontier["rank1_SU4_augmented_coordinate_Schur_map_open"]
+            is True
+            and g3_frontier["rank1_SU4_augmented_isotypic_maps_open"] is True
+            and g3_frontier["rank1_SU4_augmented_physical_target_open"]
+            is True
+            and g3_frontier["rank1_SU4_augmented_Schur_SOS_SDP_open"]
+            is True
+            and g3_frontier["rank1_SU4_augmented_arbitrary_Phi_bound_open"]
+            is True
             and g3_frontier[
                 "SU5_arbitrary_Phi_nonzero_residual_cancellations_open"
             ]
@@ -458,8 +485,11 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
         "endpoint also has an exact 1/5000 gap on only a four-real-dimensional "
         "Phi sub-slice of the 16-dimensional SU(3)-fixed space. Its exact SU(4) "
         "stabilizer, aligned rank-210 carrier maps, and explicit 45-element "
-        "Phi210 invariant quadratic basis are infrastructure for the still-open "
-        "augmented Schur/SOS SDP. Uniform coercivity for "
+        "Phi210 invariant quadratic basis now feed an exact augmented census: "
+        "dimension 22366, 35 isotypic types/824 copies, 22 real/Hermitian "
+        "blocks, 19594 real Schur parameters, and 6585 invariant rows. Its "
+        "universal invariant map is abstractly surjective; no coordinate Schur "
+        "matrix, physical target vector, or PSD result is claimed. Uniform coercivity for "
         "arbitrary non-pure-Delta Sigma orientations remains open. G5 is "
         "CLOSED. G4 and "
         "G6-G8 remain dependency-blocked; the "
@@ -489,8 +519,11 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
         "fixed-H rank-one Sigma endpoint also has an exact 1/5000 gap on only a four-real-dimensional "
         "Phi sub-slice of the 16-dimensional SU(3)-fixed space. Its exact SU(4) "
         "stabilizer, aligned rank-210 carrier maps, and explicit 45-element "
-        "Phi210 invariant quadratic basis are infrastructure only; the augmented "
-        "Schur/SOS SDP remains open. Uniform coercivity "
+        "Phi210 invariant quadratic basis now feed the exact 22366-dimensional "
+        "augmented census with 35 isotypic types/824 copies, 22 real/Hermitian "
+        "blocks, 19594 Schur parameters and 6585 invariant rows. The universal "
+        "map is abstract only: the coordinate Schur matrix, physical gap target, "
+        "and PSD feasibility remain open. Uniform coercivity "
         "for arbitrary non-pure-Delta Sigma orientations is the precise G3 blocker. The historical "
         "64/91 calculation "
         "and 449-dimensional saddle/search remain scoped to option C."

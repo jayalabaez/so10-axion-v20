@@ -87,6 +87,7 @@ ARTIFACTS = {
     "gauged_g3_rank1_su4_phi210_intertwiners": "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_INTERTWINERS_V20.json",
     "gauged_g3_rank1_su4_aligned_carriers": "EXACT_GAUGED_U1X_G3_RANK1_SU4_ALIGNED_CARRIERS_V20.json",
     "gauged_g3_rank1_su4_phi210_quadratic_basis": "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_V20.json",
+    "gauged_g3_rank1_su4_augmented_sos_census": "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_V20.json",
     "gauged_g3_alternative_global_sos": "EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json",
     "final_g3": "FINAL_G3_ACCEPTANCE_GATE_V20.json",
     "authoritative": "AUTHORITATIVE_FULL_MODEL_GATE_V20.json",
@@ -486,6 +487,10 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
         "gauged_g3_rank1_su4_phi210_quadratic_basis", {}
     )
     rank1_su4_quadratic_scope = rank1_su4_quadratic.get("scope", {})
+    rank1_su4_census = reports.get(
+        "gauged_g3_rank1_su4_augmented_sos_census", {}
+    )
+    rank1_su4_census_scope = rank1_su4_census.get("scope", {})
     alternative_sos = reports.get("gauged_g3_alternative_global_sos", {})
     alternative_sos_flags = alternative_sos.get("flags", {})
     final_g3 = reports.get("final_g3", {})
@@ -1030,6 +1035,15 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
             rank1_su4_aligned,
         )
     )
+    rank1_su4_augmented_sos_census_exact = (
+        gate_ledger._rank1_su4_augmented_sos_census_exact(
+            rank1_su4_census,
+            rank1_su4_stabilizer,
+            rank1_su4_intertwiners,
+            rank1_su4_aligned,
+            rank1_su4_quadratic,
+        )
+    )
     alternative_global_sos_honestly_open = bool(
         alternative_sos.get("n_failed") == 0
         and alternative_sos.get("status")
@@ -1090,6 +1104,7 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
         and rank1_su4_phi210_intertwiners_exact
         and rank1_su4_aligned_carriers_exact
         and rank1_su4_phi210_quadratic_basis_exact
+        and rank1_su4_augmented_sos_census_exact
         and alternative_global_sos_honestly_open
         and final_g3_honestly_open
     )
@@ -1307,6 +1322,15 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
             "gauged_G3_rank1_SU4_Phi210_intertwiners_artifact_present": bool(
                 rank1_su4_intertwiners
             ),
+            "gauged_G3_rank1_SU4_aligned_carriers_artifact_present": bool(
+                rank1_su4_aligned
+            ),
+            "gauged_G3_rank1_SU4_Phi210_quadratic_basis_artifact_present": bool(
+                rank1_su4_quadratic
+            ),
+            "gauged_G3_rank1_SU4_augmented_SOS_census_artifact_present": bool(
+                rank1_su4_census
+            ),
             "gauged_G3_alternative_global_SOS_artifact_present": bool(
                 alternative_sos
             ),
@@ -1523,6 +1547,78 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
             "gauged_G3_rank1_SU4_arbitrary_Phi_bound_open": (
                 rank1_su4_quadratic_scope.get("arbitrary_rank1_Phi_proved")
                 is False
+            ),
+            "gauged_G3_rank1_SU4_augmented_SOS_census_exact": (
+                rank1_su4_augmented_sos_census_exact
+            ),
+            "gauged_G3_rank1_SU4_augmented_homogeneous_dimension": _dig(
+                rank1_su4_census,
+                "augmented_representation", "augmented_homogeneous_dimension",
+            ),
+            "gauged_G3_rank1_SU4_augmented_isotypic_type_count": _dig(
+                rank1_su4_census,
+                "augmented_representation", "complex_isotypic_type_count",
+            ),
+            "gauged_G3_rank1_SU4_augmented_irreducible_copy_count": _dig(
+                rank1_su4_census,
+                "augmented_representation", "complex_irreducible_copy_count",
+            ),
+            "gauged_G3_rank1_SU4_augmented_real_block_count": _dig(
+                rank1_su4_census,
+                "augmented_representation", "real_isotypic_block_count",
+            ),
+            "gauged_G3_rank1_SU4_augmented_Schur_parameter_count": _dig(
+                rank1_su4_census,
+                "augmented_representation", "Schur_real_parameter_count",
+            ),
+            "gauged_G3_rank1_SU4_augmented_invariant_row_count": _dig(
+                rank1_su4_census,
+                "invariant_quartic_target", "invariant_equation_count",
+            ),
+            "gauged_G3_rank1_SU4_augmented_abstract_rank": _dig(
+                rank1_su4_census,
+                "abstract_coefficient_map_census", "abstract_total_rank_exact",
+            ),
+            "gauged_G3_rank1_SU4_augmented_coordinate_Schur_map_open": (
+                rank1_su4_census_scope.get(
+                    "Schur_coordinate_6585_by_19594_coefficient_matrix_constructed"
+                ) is False
+            ),
+            "gauged_G3_rank1_SU4_augmented_isotypic_maps_open": (
+                rank1_su4_census_scope.get(
+                    "all_35_isotypic_type_maps_spanning_824_irreducible_copies_constructed"
+                ) is False
+            ),
+            "gauged_G3_rank1_SU4_augmented_physical_target_open": (
+                rank1_su4_census_scope.get(
+                    "physical_G3_gap_target_vector_constructed"
+                ) is False
+                and rank1_su4_census_scope.get(
+                    "physical_G3_gap_cubic_zero_RHS_certified"
+                ) is False
+            ),
+            "gauged_G3_rank1_SU4_augmented_SDP_open": (
+                rank1_su4_census_scope.get(
+                    "augmented_Schur_SOS_SDP_constructed"
+                ) is False
+                and rank1_su4_census_scope.get(
+                    "augmented_Schur_SOS_SDP_feasibility_certified"
+                ) is False
+                and rank1_su4_census_scope.get(
+                    "augmented_Schur_SOS_SDP_infeasibility_certified"
+                ) is False
+            ),
+            "gauged_G3_rank1_SU4_augmented_arbitrary_Phi_open": (
+                rank1_su4_census_scope.get(
+                    "arbitrary_real_Phi_lower_bound_proved"
+                ) is False
+                and rank1_su4_census_scope.get("arbitrary_rank1_Phi_proved")
+                is False
+            ),
+            "gauged_G3_rank1_SU4_augmented_G3_open": (
+                rank1_su4_census_scope.get("G3_closed") is False
+                and rank1_su4_census_scope.get("whole_model_validated") is False
+                and rank1_su4_census_scope.get("whole_model_excluded") is False
             ),
             "gauged_G3_SU5_max_negative_arbitrary_Sigma_orientation_open": not bool(
                 rank1_su3_scope.get("arbitrary_max_negative_Sigma")
@@ -1909,6 +2005,7 @@ def _reproducibility_gate(
             "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_INTERTWINERS_V20.json",
             "EXACT_GAUGED_U1X_G3_RANK1_SU4_ALIGNED_CARRIERS_V20.json",
             "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_V20.json",
+            "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_V20.json",
             "EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json",
             "FINAL_G3_ACCEPTANCE_GATE_V20.json",
         )

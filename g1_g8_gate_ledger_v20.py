@@ -86,6 +86,9 @@ G3_RANK1_SU4_ALIGNED_CARRIERS_JSON = (
 G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_JSON = (
     ROOT / "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_V20.json"
 )
+G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_JSON = (
+    ROOT / "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_V20.json"
+)
 RANK1_SU4_ORDERED_LABELS = (
     "H1",
     "H2",
@@ -273,7 +276,10 @@ def _canonical_json_sha256(value: Any) -> str:
 
 def _file_sha256(path: Path) -> str:
     try:
-        return hashlib.sha256(path.read_bytes()).hexdigest()
+        # Git may materialize text sources with CRLF on Windows.  The frozen
+        # provenance certificates use the repository's canonical LF bytes.
+        payload = path.read_bytes().replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+        return hashlib.sha256(payload).hexdigest()
     except OSError:
         return ""
 
@@ -1119,6 +1125,327 @@ def _rank1_su4_phi210_quadratic_basis_exact(
     )
 
 
+def _rank1_su4_augmented_sos_census_exact(
+    report: dict[str, Any],
+    stabilizer_report: dict[str, Any],
+    intertwiners_report: dict[str, Any],
+    aligned_report: dict[str, Any],
+    quadratic_report: dict[str, Any],
+) -> bool:
+    """Fail closed on the abstract augmented-SOS census, not on a PSD claim."""
+    checks = report.get("checks", {})
+    scope = report.get("scope", {})
+    provenance = report.get("source_provenance", {})
+    representation = report.get("augmented_representation", {})
+    target = report.get("invariant_quartic_target", {})
+    universal = report.get("universal_multiplication_and_section", {})
+    coefficient_map = report.get("abstract_coefficient_map_census", {})
+    cubic = coefficient_map.get("cubic_cross_sector", {})
+    public_apis = report.get("public_exact_APIs", {})
+    check_keys = {
+        "Frobenius_Schur_indicators_computed_and_real_types_exact",
+        "Schur_parameter_19594_grade_census_exact",
+        "abstract_invariant_map_ranks_and_kernels_exact",
+        "augmented_dimension_35_isotypic_types_and_824_copies_exact",
+        "coordinate_map_absence_declared_fail_closed",
+        "cubic_abstract_zero_interface_reserved_without_physical_claim",
+        "frozen_aligned_carrier_and_quadratic_basis_APIs_exact",
+        "invariant_target_6585_grade_census_exact",
+        "live_Phi210_character_and_exact_branching_certified",
+        "nine_real_and_thirteen_complex_isotypic_blocks_exact",
+        "real_symmetric_and_complex_Hermitian_conventions_complete",
+        "universal_GL211_equivariant_section_exact",
+    }
+    true_scope = {
+        "H_fixed_to_h_minus",
+        "Sigma_fixed_to_q_over_4",
+        "rank1_endpoint_SU4_stabilizer_used",
+        "augmented_homogeneous_representation_census_constructed",
+        "all_22_real_Hermitian_Schur_block_sizes_certified",
+        "abstract_invariant_grade_ranks_certified",
+        "quadratic_target_invariant_basis_dimension_45_bound_live",
+        "universal_GL211_multiplication_and_rational_section_constructed",
+    }
+    false_scope = {
+        "all_35_isotypic_type_maps_spanning_824_irreducible_copies_constructed",
+        "ordered_invariant_cubic_basis_constructed",
+        "ordered_invariant_quartic_basis_constructed",
+        "Schur_coordinate_6585_by_19594_coefficient_matrix_constructed",
+        "physical_G3_gap_target_vector_constructed",
+        "physical_G3_gap_cubic_zero_RHS_certified",
+        "augmented_Schur_SOS_SDP_constructed",
+        "augmented_Schur_SOS_SDP_feasibility_certified",
+        "augmented_Schur_SOS_SDP_infeasibility_certified",
+        "arbitrary_real_Phi_lower_bound_proved",
+        "arbitrary_rank1_Phi_proved",
+        "G3_closed",
+        "whole_model_validated",
+        "whole_model_excluded",
+    }
+    provenance_keys = {
+        "aligned_module", "aligned_report_sha256", "aligned_source_sha256",
+        "alignment_certificate_sha256", "all_required_frozen_API_provenance_exact",
+        "expected_aligned_report_sha256", "expected_aligned_source_sha256",
+        "expected_alignment_certificate_sha256", "expected_quadratic_basis_sha256",
+        "expected_quadratic_report_sha256", "expected_quadratic_source_sha256",
+        "model_contract_id", "proof_grade", "quadratic_basis_matrix_count",
+        "quadratic_basis_sha256", "quadratic_module", "quadratic_report_sha256",
+        "quadratic_source_sha256",
+    }
+    representation_keys = {
+        "Frobenius_Schur_classification_computed_exact", "Phi210_branching",
+        "Phi210_branching_expected_exact", "Phi210_character_sha256",
+        "Phi210_weight_character_dimension", "Phi210_weight_count",
+        "Schur_real_parameter_count", "Schur_real_parameter_grade_counts",
+        "Sym2Phi_character_sha256", "Sym2Phi_dimension",
+        "all_Gelfand_Tsetlin_character_dimensions_match_Weyl_exact",
+        "augmented_character_sha256", "augmented_homogeneous_dimension",
+        "complex_Hermitian_block_count", "complex_irreducible_copy_count",
+        "complex_irreducible_copy_grade_counts_t2_tPhi_Phi2", "complex_irrep_rows",
+        "complex_isotypic_type_count", "expected_augmented_multiplicities_exact",
+        "proof_grade", "real_isotypic_block_count", "real_isotypic_blocks",
+        "real_symmetric_block_count", "represented_real_dimension",
+    }
+    target_keys = {
+        "Weyl_group_order", "expected_symmetric_power_dimensions",
+        "invariant_equation_count", "invariant_equation_grade_counts",
+        "proof_grade", "symmetric_power_character_sha256",
+        "symmetric_power_dimensions", "target_sector",
+        "trivial_multiplicity_extraction",
+    }
+    universal_keys = {
+        "all_representative_identities_exact",
+        "equality_and_grade_pattern_representative_count",
+        "invariant_restriction_surjective_exact", "invariant_surjectivity_argument",
+        "linear_dimension", "linear_space",
+        "multiplication_after_section_is_identity_exact", "multiplication_formula",
+        "proof_grade", "quadratic_monomial_dimension", "quadratic_monomial_space",
+        "raw_domain_grade_dimensions", "raw_grade_kernel_dimensions",
+        "raw_grade_ranks_exact", "raw_quartic_polynomial_dimension",
+        "raw_symmetric_Gram_dimension", "raw_target_grade_dimensions",
+        "section_formula", "section_is_GL211_equivariant_by_naturality_exact",
+        "section_preserves_Phi_degree_exact",
+    }
+    coefficient_map_keys = {
+        "Schur_coordinate_matrix_constructed",
+        "Schur_coordinate_matrix_shape_when_constructed",
+        "abstract_grade_kernel_dimensions_exact", "abstract_grade_ranks_exact",
+        "abstract_total_kernel_dimension_exact", "abstract_total_rank_exact",
+        "cubic_cross_sector", "domain_real_parameter_grade_counts", "map",
+        "missing_coordinate_data", "proof_grade",
+        "surjectivity_is_abstract_not_a_coordinate_matrix",
+        "target_invariant_row_grade_counts",
+    }
+    cubic_keys = {
+        "abstract_interface_RHS", "abstract_zero_RHS_interface_contract_reserved",
+        "abstract_zero_RHS_row_count_reserved",
+        "all_1414_cross_variables_present_in_census_exact",
+        "all_478_cubic_target_rows_reserved_exact", "block_rows",
+        "invariant_target_row_count", "nonzero_block_row_count",
+        "physical_G3_gap_cubic_zero_RHS_certified",
+        "physical_G3_gap_target_vector_constructed", "real_Schur_variable_count",
+        "source", "zero_RHS_is_interface_contract_not_a_physical_vector_certificate",
+    }
+    public_api_keys = {
+        "Frobenius_Schur_indicator", "Phi_character", "Schur_grade_counts",
+        "augmented_character", "character_decompositions", "polarized_Gram_section",
+        "polarized_tensor_section", "raw_Gram_entry_map", "real_isotypic_blocks",
+        "symmetric_power_character", "target_grade_counts",
+    }
+    expected_aligned_report = (
+        "d2da0572dc33a1f3f88b5ac5df3343201650ca660498f34ff59806a607015c67"
+    )
+    expected_aligned_source = (
+        "5671857444bda7d53db45393e28a3b9ac0784d0f2a63aa1e541eb5e356d23ccc"
+    )
+    expected_alignment = (
+        "f74b7845b57472f62773c398fa927b551b5d9d09f86bd7defb92a6ed71adbe15"
+    )
+    expected_quadratic_report = (
+        "497a8c1db29e7d88f30bd1cc68902cc7981da4a3fefd5586bd15bad323d1e259"
+    )
+    expected_quadratic_source = (
+        "4eec63ba40b888de736c84f607019ba0f21915028b423578502893744bab1060"
+    )
+    expected_quadratic_basis = (
+        "27c0649758c87aa2cbe39ae04596f4bd6df511ba3ca4004013bdcf936599b694"
+    )
+    return bool(
+        _rank1_su4_stabilizer_infrastructure_exact(stabilizer_report)
+        and _rank1_su4_phi210_intertwiners_exact(
+            intertwiners_report, stabilizer_report
+        )
+        and _rank1_su4_aligned_carriers_exact(
+            aligned_report, intertwiners_report, stabilizer_report
+        )
+        and _rank1_su4_phi210_quadratic_basis_exact(
+            quadratic_report, stabilizer_report, intertwiners_report,
+            aligned_report,
+        )
+        and _file_sha256(
+            ROOT / "exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py"
+        ) == "3e0d7f2eac73eec950960f1ffd78c9584a4b15d070c84889080cf4c67d5a4d63"
+        and _canonical_json_sha256(report)
+        == "703a3819fea5afe857757082190f9cf1e22f283ab0ddcc882c2f011b65ba58f3"
+        and set(report) == {
+            "abstract_coefficient_map_census", "augmented_representation",
+            "blocking_gap", "checks", "failures", "invariant_quartic_target",
+            "model_contract_id", "n_checks", "n_failed", "next_exact_target",
+            "overall_state", "public_exact_APIs", "scope", "source_provenance",
+            "status", "universal_multiplication_and_section", "verdict",
+        }
+        and report.get("status")
+        == "EXACT_RANK1_SU4_AUGMENTED_SOS_CENSUS_AND_UNIVERSAL_MAP_CERTIFIED"
+        and report.get("overall_state")
+        == "SU4_AUGMENTED_SOS_CENSUS_CLOSED__SCHUR_EMBEDDINGS_SDP_AND_G3_OPEN"
+        and report.get("model_contract_id") == AUTHORITATIVE_CONTRACT_ID
+        and report.get("n_checks") == len(check_keys)
+        and report.get("n_failed") == 0
+        and report.get("failures") == []
+        and set(checks) == check_keys
+        and all(checks.get(key) is True for key in check_keys)
+        and set(scope) == true_scope | false_scope
+        and all(scope.get(key) is True for key in true_scope)
+        and all(scope.get(key) is False for key in false_scope)
+        and set(provenance) == provenance_keys
+        and provenance.get("model_contract_id") == AUTHORITATIVE_CONTRACT_ID
+        and provenance.get("proof_grade") is True
+        and provenance.get("all_required_frozen_API_provenance_exact") is True
+        and provenance.get("aligned_module")
+        == "exact_gauged_u1x_g3_rank1_su4_aligned_carriers_v20.py"
+        and provenance.get("quadratic_module")
+        == "exact_gauged_u1x_g3_rank1_su4_phi210_quadratic_basis_v20.py"
+        and provenance.get("aligned_report_sha256")
+        == provenance.get("expected_aligned_report_sha256")
+        == _canonical_json_sha256(aligned_report)
+        == expected_aligned_report
+        and provenance.get("aligned_source_sha256")
+        == provenance.get("expected_aligned_source_sha256")
+        == _file_sha256(ROOT / provenance.get("aligned_module", ""))
+        == expected_aligned_source
+        and provenance.get("alignment_certificate_sha256")
+        == provenance.get("expected_alignment_certificate_sha256")
+        == _canonical_json_sha256(aligned_report.get("alignment", {}))
+        == expected_alignment
+        and provenance.get("quadratic_report_sha256")
+        == provenance.get("expected_quadratic_report_sha256")
+        == _canonical_json_sha256(quadratic_report)
+        == expected_quadratic_report
+        and provenance.get("quadratic_source_sha256")
+        == provenance.get("expected_quadratic_source_sha256")
+        == _file_sha256(ROOT / provenance.get("quadratic_module", ""))
+        == expected_quadratic_source
+        and provenance.get("quadratic_basis_sha256")
+        == provenance.get("expected_quadratic_basis_sha256")
+        == quadratic_report.get("quadratic_basis", {}).get("basis_sha256")
+        == expected_quadratic_basis
+        and provenance.get("quadratic_basis_matrix_count") == 45
+        and set(representation) == representation_keys
+        and representation.get("proof_grade") is True
+        and representation.get("Phi210_weight_character_dimension") == 210
+        and representation.get("Sym2Phi_dimension") == 22_155
+        and representation.get("augmented_homogeneous_dimension") == 22_366
+        and representation.get("represented_real_dimension") == 22_366
+        and representation.get("complex_isotypic_type_count") == 35
+        and representation.get("complex_irreducible_copy_count") == 824
+        and representation.get("complex_irreducible_copy_grade_counts_t2_tPhi_Phi2")
+        == [1, 25, 798]
+        and representation.get("real_isotypic_block_count") == 22
+        and representation.get("real_symmetric_block_count") == 9
+        and representation.get("complex_Hermitian_block_count") == 13
+        and representation.get("Schur_real_parameter_count") == 19_594
+        and representation.get("Schur_real_parameter_grade_counts")
+        == [1, 4, 90, 1_414, 18_085]
+        and len(representation.get("complex_irrep_rows", [])) == 35
+        and len(representation.get("real_isotypic_blocks", [])) == 22
+        and all(
+            isinstance(row, dict)
+            and set(row) == {
+                "complex_dimension", "dynkin", "multiplicity_Phi",
+                "multiplicity_Sym2Phi", "multiplicity_augmented",
+            }
+            for row in representation.get("complex_irrep_rows", [])
+        )
+        and all(
+            isinstance(row, dict)
+            and set(row) == {
+                "Frobenius_Schur_indicator", "Frobenius_Schur_type",
+                "Frobenius_Schur_type_argument", "PSD_cone", "conjugate_dynkin",
+                "coordinate_convention",
+                "cubic_tPhi_to_Phi2_cross_real_parameter_count",
+                "graded_multiplicities_t2_tPhi_Phi2", "irrep_complex_dimension",
+                "multiplicity_matrix_order", "real_Schur_parameter_count",
+                "real_block_kind", "real_parameter_grade_counts",
+                "representative_dynkin", "represented_real_dimension",
+                "self_conjugate", "young_diagram_box_count",
+            }
+            for row in representation.get("real_isotypic_blocks", [])
+        )
+        and set(target) == target_keys
+        and target.get("proof_grade") is True
+        and target.get("invariant_equation_count") == 6_585
+        and target.get("invariant_equation_grade_counts")
+        == [1, 4, 45, 478, 6_057]
+        and target.get("symmetric_power_dimensions")
+        == [1, 210, 22_155, 1_565_620, 83_369_265]
+        and target.get("expected_symmetric_power_dimensions")
+        == [1, 210, 22_155, 1_565_620, 83_369_265]
+        and set(universal) == universal_keys
+        and universal.get("proof_grade") is True
+        and universal.get("linear_dimension") == 211
+        and universal.get("quadratic_monomial_dimension") == 22_366
+        and universal.get("raw_symmetric_Gram_dimension") == 250_130_161
+        and universal.get("raw_quartic_polynomial_dimension") == 84_957_251
+        and universal.get("multiplication_after_section_is_identity_exact") is True
+        and universal.get("section_is_GL211_equivariant_by_naturality_exact") is True
+        and universal.get("section_preserves_Phi_degree_exact") is True
+        and universal.get("invariant_restriction_surjective_exact") is True
+        and universal.get("raw_grade_ranks_exact")
+        == [1, 210, 22_155, 1_565_620, 83_369_265]
+        and set(coefficient_map) == coefficient_map_keys
+        and coefficient_map.get("proof_grade") is True
+        and coefficient_map.get("domain_real_parameter_grade_counts")
+        == [1, 4, 90, 1_414, 18_085]
+        and coefficient_map.get("target_invariant_row_grade_counts")
+        == [1, 4, 45, 478, 6_057]
+        and coefficient_map.get("abstract_grade_ranks_exact")
+        == [1, 4, 45, 478, 6_057]
+        and coefficient_map.get("abstract_grade_kernel_dimensions_exact")
+        == [0, 0, 45, 936, 12_028]
+        and coefficient_map.get("abstract_total_rank_exact") == 6_585
+        and coefficient_map.get("abstract_total_kernel_dimension_exact") == 13_009
+        and coefficient_map.get("Schur_coordinate_matrix_constructed") is False
+        and coefficient_map.get("Schur_coordinate_matrix_shape_when_constructed")
+        == [6_585, 19_594]
+        and coefficient_map.get("surjectivity_is_abstract_not_a_coordinate_matrix")
+        is True
+        and set(cubic) == cubic_keys
+        and cubic.get("real_Schur_variable_count") == 1_414
+        and cubic.get("invariant_target_row_count") == 478
+        and cubic.get("nonzero_block_row_count") == 7
+        and len(cubic.get("block_rows", [])) == 7
+        and cubic.get("abstract_interface_RHS") == "zero"
+        and cubic.get("abstract_zero_RHS_row_count_reserved") == 478
+        and cubic.get("abstract_zero_RHS_interface_contract_reserved") is True
+        and cubic.get("all_1414_cross_variables_present_in_census_exact") is True
+        and cubic.get("all_478_cubic_target_rows_reserved_exact") is True
+        and cubic.get("zero_RHS_is_interface_contract_not_a_physical_vector_certificate")
+        is True
+        and cubic.get("physical_G3_gap_target_vector_constructed") is False
+        and cubic.get("physical_G3_gap_cubic_zero_RHS_certified") is False
+        and all(
+            isinstance(row, dict)
+            and set(row) == {
+                "Phi2_multiplicity", "real_block_kind",
+                "real_cross_parameter_count", "representative_dynkin",
+                "tPhi_multiplicity",
+            }
+            for row in cubic.get("block_rows", [])
+        )
+        and set(public_apis) == public_api_keys
+    )
+
+
 def _gauged_u1x_g3_frontier(
     sos_report: dict[str, Any],
     pd_report: dict[str, Any],
@@ -1142,6 +1469,7 @@ def _gauged_u1x_g3_frontier(
     rank1_su4_phi210_intertwiners_report: dict[str, Any],
     rank1_su4_aligned_carriers_report: dict[str, Any],
     rank1_su4_phi210_quadratic_basis_report: dict[str, Any],
+    rank1_su4_augmented_sos_census_report: dict[str, Any],
     alternative_global_sos_report: dict[str, Any],
 ) -> dict[str, Any]:
     """Bind rejected branches and the surviving SU(5)+Delta G3 frontier."""
@@ -1217,6 +1545,9 @@ def _gauged_u1x_g3_frontier(
     rank1_su4_quadratic_scope = rank1_su4_phi210_quadratic_basis_report.get(
         "scope", {}
     )
+    rank1_su4_census_scope = rank1_su4_augmented_sos_census_report.get(
+        "scope", {}
+    )
     alternative_flags = alternative_global_sos_report.get("flags", {})
 
     artifacts_present = {
@@ -1257,6 +1588,9 @@ def _gauged_u1x_g3_frontier(
         ),
         "rank1_SU4_Phi210_quadratic_basis": bool(
             rank1_su4_phi210_quadratic_basis_report
+        ),
+        "rank1_SU4_augmented_SOS_census": bool(
+            rank1_su4_augmented_sos_census_report
         ),
         "alternative_global_SOS_audit": bool(alternative_global_sos_report),
     }
@@ -1790,6 +2124,15 @@ def _gauged_u1x_g3_frontier(
             rank1_su4_aligned_carriers_report,
         )
     )
+    rank1_su4_augmented_sos_census_exact = (
+        _rank1_su4_augmented_sos_census_exact(
+            rank1_su4_augmented_sos_census_report,
+            rank1_su4_stabilizer_report,
+            rank1_su4_phi210_intertwiners_report,
+            rank1_su4_aligned_carriers_report,
+            rank1_su4_phi210_quadratic_basis_report,
+        )
+    )
     alternative_global_sos_honestly_open = bool(
         alternative_global_sos_report.get("n_failed") == 0
         and alternative_global_sos_report.get("status")
@@ -1843,6 +2186,7 @@ def _gauged_u1x_g3_frontier(
         and rank1_su4_phi210_intertwiners_exact
         and rank1_su4_aligned_carriers_exact
         and rank1_su4_phi210_quadratic_basis_exact
+        and rank1_su4_augmented_sos_census_exact
         and alternative_global_sos_honestly_open
     )
     return {
@@ -2073,6 +2417,93 @@ def _gauged_u1x_g3_frontier(
         ),
         "rank1_SU4_arbitrary_Phi_bound_open": (
             rank1_su4_quadratic_scope.get("arbitrary_rank1_Phi_proved")
+            is False
+        ),
+        "rank1_SU4_augmented_SOS_census_exact": (
+            rank1_su4_augmented_sos_census_exact
+        ),
+        "rank1_SU4_augmented_homogeneous_dimension": (
+            rank1_su4_augmented_sos_census_report.get(
+                "augmented_representation", {}
+            ).get("augmented_homogeneous_dimension")
+        ),
+        "rank1_SU4_augmented_complex_isotypic_type_count": (
+            rank1_su4_augmented_sos_census_report.get(
+                "augmented_representation", {}
+            ).get("complex_isotypic_type_count")
+        ),
+        "rank1_SU4_augmented_complex_irreducible_copy_count": (
+            rank1_su4_augmented_sos_census_report.get(
+                "augmented_representation", {}
+            ).get("complex_irreducible_copy_count")
+        ),
+        "rank1_SU4_augmented_real_isotypic_block_count": (
+            rank1_su4_augmented_sos_census_report.get(
+                "augmented_representation", {}
+            ).get("real_isotypic_block_count")
+        ),
+        "rank1_SU4_augmented_real_symmetric_block_count": (
+            rank1_su4_augmented_sos_census_report.get(
+                "augmented_representation", {}
+            ).get("real_symmetric_block_count")
+        ),
+        "rank1_SU4_augmented_complex_Hermitian_block_count": (
+            rank1_su4_augmented_sos_census_report.get(
+                "augmented_representation", {}
+            ).get("complex_Hermitian_block_count")
+        ),
+        "rank1_SU4_augmented_Schur_real_parameter_count": (
+            rank1_su4_augmented_sos_census_report.get(
+                "augmented_representation", {}
+            ).get("Schur_real_parameter_count")
+        ),
+        "rank1_SU4_augmented_invariant_equation_count": (
+            rank1_su4_augmented_sos_census_report.get(
+                "invariant_quartic_target", {}
+            ).get("invariant_equation_count")
+        ),
+        "rank1_SU4_augmented_abstract_total_rank": (
+            rank1_su4_augmented_sos_census_report.get(
+                "abstract_coefficient_map_census", {}
+            ).get("abstract_total_rank_exact")
+        ),
+        "rank1_SU4_augmented_abstract_total_kernel_dimension": (
+            rank1_su4_augmented_sos_census_report.get(
+                "abstract_coefficient_map_census", {}
+            ).get("abstract_total_kernel_dimension_exact")
+        ),
+        "rank1_SU4_augmented_coordinate_Schur_map_open": (
+            rank1_su4_census_scope.get(
+                "Schur_coordinate_6585_by_19594_coefficient_matrix_constructed"
+            ) is False
+        ),
+        "rank1_SU4_augmented_isotypic_maps_open": (
+            rank1_su4_census_scope.get(
+                "all_35_isotypic_type_maps_spanning_824_irreducible_copies_constructed"
+            ) is False
+        ),
+        "rank1_SU4_augmented_physical_target_open": (
+            rank1_su4_census_scope.get(
+                "physical_G3_gap_target_vector_constructed"
+            ) is False
+            and rank1_su4_census_scope.get(
+                "physical_G3_gap_cubic_zero_RHS_certified"
+            ) is False
+        ),
+        "rank1_SU4_augmented_Schur_SOS_SDP_open": (
+            rank1_su4_census_scope.get("augmented_Schur_SOS_SDP_constructed")
+            is False
+            and rank1_su4_census_scope.get(
+                "augmented_Schur_SOS_SDP_feasibility_certified"
+            ) is False
+            and rank1_su4_census_scope.get(
+                "augmented_Schur_SOS_SDP_infeasibility_certified"
+            ) is False
+        ),
+        "rank1_SU4_augmented_arbitrary_Phi_bound_open": (
+            rank1_su4_census_scope.get("arbitrary_real_Phi_lower_bound_proved")
+            is False
+            and rank1_su4_census_scope.get("arbitrary_rank1_Phi_proved")
             is False
         ),
         "SU5_max_negative_arbitrary_Sigma_orientation_open": not bool(
@@ -2372,6 +2803,7 @@ def _build_report_from_inputs(
     g3_rank1_su4_phi210_intertwiners_report: dict[str, Any] | None = None,
     g3_rank1_su4_aligned_carriers_report: dict[str, Any] | None = None,
     g3_rank1_su4_phi210_quadratic_basis_report: dict[str, Any] | None = None,
+    g3_rank1_su4_augmented_sos_census_report: dict[str, Any] | None = None,
     g3_alternative_global_sos_report: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Build a ledger from fresh reports, including repaired-contract states."""
@@ -2453,6 +2885,10 @@ def _build_report_from_inputs(
         g3_rank1_su4_phi210_quadratic_basis_report = _load_json_artifact(
             G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_JSON
         )
+    if g3_rank1_su4_augmented_sos_census_report is None:
+        g3_rank1_su4_augmented_sos_census_report = _load_json_artifact(
+            G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_JSON
+        )
     if g3_alternative_global_sos_report is None:
         g3_alternative_global_sos_report = _load_json_artifact(
             G3_ALTERNATIVE_GLOBAL_SOS_JSON
@@ -2480,6 +2916,7 @@ def _build_report_from_inputs(
         g3_rank1_su4_phi210_intertwiners_report,
         g3_rank1_su4_aligned_carriers_report,
         g3_rank1_su4_phi210_quadratic_basis_report,
+        g3_rank1_su4_augmented_sos_census_report,
         g3_alternative_global_sos_report,
     )
     gates = _build_gates(
@@ -2741,6 +3178,41 @@ def _build_report_from_inputs(
             ] is True
             and g3_frontier["rank1_SU4_Schur_SOS_SDP_open"] is True
             and g3_frontier["rank1_SU4_arbitrary_Phi_bound_open"] is True
+            and g3_frontier["rank1_SU4_augmented_SOS_census_exact"] is True
+            and g3_frontier["rank1_SU4_augmented_homogeneous_dimension"]
+            == 22_366
+            and g3_frontier[
+                "rank1_SU4_augmented_complex_isotypic_type_count"
+            ] == 35
+            and g3_frontier[
+                "rank1_SU4_augmented_complex_irreducible_copy_count"
+            ] == 824
+            and g3_frontier["rank1_SU4_augmented_real_isotypic_block_count"]
+            == 22
+            and g3_frontier[
+                "rank1_SU4_augmented_real_symmetric_block_count"
+            ] == 9
+            and g3_frontier[
+                "rank1_SU4_augmented_complex_Hermitian_block_count"
+            ] == 13
+            and g3_frontier["rank1_SU4_augmented_Schur_real_parameter_count"]
+            == 19_594
+            and g3_frontier["rank1_SU4_augmented_invariant_equation_count"]
+            == 6_585
+            and g3_frontier["rank1_SU4_augmented_abstract_total_rank"]
+            == 6_585
+            and g3_frontier[
+                "rank1_SU4_augmented_abstract_total_kernel_dimension"
+            ] == 13_009
+            and g3_frontier["rank1_SU4_augmented_coordinate_Schur_map_open"]
+            is True
+            and g3_frontier["rank1_SU4_augmented_isotypic_maps_open"] is True
+            and g3_frontier["rank1_SU4_augmented_physical_target_open"]
+            is True
+            and g3_frontier["rank1_SU4_augmented_Schur_SOS_SDP_open"]
+            is True
+            and g3_frontier["rank1_SU4_augmented_arbitrary_Phi_bound_open"]
+            is True
             and g3_frontier["G3_closed"] is False
             and g3_frontier["whole_model_excluded"] is False
         ),
@@ -2884,8 +3356,11 @@ def _build_report_from_inputs(
                 "four-real-dimensional Phi sub-slice of the 16-dimensional "
                 "SU(3)-fixed space, also with minimum 1/5000. Its exact SU(4) "
                 "stabilizer, aligned rank-210 carrier real maps, and explicit "
-                "complete 45-element Phi210 invariant quadratic basis are now "
-                "available for the still-open augmented Schur/SOS SDP."
+                "complete 45-element Phi210 invariant quadratic basis feed an "
+                "exact 22366-dimensional augmented census with 35 isotypic "
+                "types/824 copies, 22 real/Hermitian blocks, 19594 Schur "
+                "parameters, and 6585 invariant rows. The coordinate Schur "
+                "map, physical target, and PSD result remain open."
             ),
         },
         {"wave": 4, "gates": ["G6"], "status": "BLOCKED_ON_G3_G4_G5"},
@@ -2913,8 +3388,10 @@ def _build_report_from_inputs(
         "gap on a four-real-dimensional Phi sub-slice only; the ambient "
         "16-dimensional SU(3)-fixed space and arbitrary Phi remain open. The "
         "exact SU(4) stabilizer, aligned rank-210 carrier real maps, and explicit "
-        "complete 45-element Phi210 invariant quadratic basis are infrastructure "
-        "only; the augmented Schur/SOS SDP remains open. Only "
+        "complete 45-element Phi210 invariant quadratic basis feed the exact "
+        "22366-dimensional augmented census (35 types/824 copies, 22 blocks, "
+        "19594 parameters, 6585 rows). Its universal map is abstract only; the "
+        "coordinate Schur map, physical target, and PSD result remain open. Only "
         "arbitrary non-pure-Delta Sigma coercivity remains open. "
         "G5 is CLOSED; G4 and G6-G8 remain "
         "dependency-blocked. Historical "
@@ -2949,9 +3426,11 @@ def _build_report_from_inputs(
         "Gram/LDL certificate also proves "
         "the 1/5000 gap on only a four-real-dimensional Phi sub-slice of the "
         "16-dimensional SU(3)-fixed space. Its exact SU(4) stabilizer, aligned "
-        "rank-210 carrier real maps, and explicit complete 45-element Phi210 "
-        "invariant quadratic basis are certified only as input to the still-open "
-        "augmented Schur/SOS SDP. Uniform "
+        "rank-210 carrier real maps, explicit complete 45-element Phi210 "
+        "invariant quadratic basis, and exact augmented census are certified. "
+        "The 35 aligned isotypic embeddings across 824 copies, ordered target "
+        "coordinates, physical gap vector, 6585x19594 Schur matrix, and PSD "
+        "certificate remain open. Uniform "
         "coercivity for arbitrary non-pure-Delta Sigma orientations remains open. The "
         "historical 64/91 "
         "derivative theorem, 449-dimensional "
@@ -3022,6 +3501,9 @@ def _build_report_from_inputs(
             ),
             "gauged_G3_rank1_SU4_Phi210_quadratic_basis": (
                 g3_rank1_su4_phi210_quadratic_basis_report
+            ),
+            "gauged_G3_rank1_SU4_augmented_SOS_census": (
+                g3_rank1_su4_augmented_sos_census_report
             ),
             "gauged_G3_alternative_global_SOS_audit": (
                 g3_alternative_global_sos_report
@@ -3114,6 +3596,9 @@ def build_report() -> dict[str, Any]:
         ),
         g3_rank1_su4_phi210_quadratic_basis_report=_load_json_artifact(
             G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_JSON
+        ),
+        g3_rank1_su4_augmented_sos_census_report=_load_json_artifact(
+            G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_JSON
         ),
         g3_alternative_global_sos_report=_load_json_artifact(
             G3_ALTERNATIVE_GLOBAL_SOS_JSON

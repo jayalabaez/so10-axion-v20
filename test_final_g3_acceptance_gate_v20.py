@@ -54,6 +54,9 @@ def test_current_gate_is_open_not_failed_or_overclaimed():
     assert report["artifact_integrity"][
         "rank1_SU4_Phi210_quadratic_basis_executes_fail_closed"
     ] is True
+    assert report["artifact_integrity"][
+        "rank1_SU4_augmented_SOS_census_executes_fail_closed"
+    ] is True
     assert report["science_criteria"][
         "max_negative_all_zero_residual_route_excluded_exactly"
     ] is True
@@ -113,6 +116,29 @@ def test_current_gate_is_open_not_failed_or_overclaimed():
     assert report["diagnostic_only"]["rank1_SU4_quadratic_constraint_rank"] == 506
     assert report["diagnostic_only"]["rank1_SU4_quadratic_constraint_nullity"] == 45
     assert report["diagnostic_only"]["rank1_SU4_quadratic_basis_count"] == 45
+    assert report["diagnostic_only"][
+        "rank1_SU4_augmented_homogeneous_dimension"
+    ] == 22_366
+    assert report["diagnostic_only"]["rank1_SU4_augmented_isotypic_types"] == 35
+    assert report["diagnostic_only"][
+        "rank1_SU4_augmented_irreducible_copies"
+    ] == 824
+    assert report["diagnostic_only"]["rank1_SU4_augmented_real_blocks"] == 22
+    assert report["diagnostic_only"][
+        "rank1_SU4_augmented_Schur_parameters"
+    ] == 19_594
+    assert report["diagnostic_only"][
+        "rank1_SU4_augmented_invariant_rows"
+    ] == 6_585
+    assert report["diagnostic_only"][
+        "rank1_SU4_augmented_coordinate_Schur_map_constructed"
+    ] is False
+    assert report["diagnostic_only"][
+        "rank1_SU4_augmented_physical_target_constructed"
+    ] is False
+    assert report["diagnostic_only"][
+        "rank1_SU4_augmented_SDP_constructed"
+    ] is False
     assert report["diagnostic_only"]["rank1_SU4_Schur_SOS_SDP_constructed"] is False
     assert report["diagnostic_only"][
         "arbitrary_non_pure_Delta_Sigma_orientations_open"
@@ -287,6 +313,31 @@ def test_rank1_su4_stage2_mutations_are_fail_closed():
     assert report["artifact_integrity"][
         "rank1_SU4_Phi210_quadratic_basis_executes_fail_closed"
     ] is False
+    assert report["artifact_integrity"][
+        "rank1_SU4_augmented_SOS_census_executes_fail_closed"
+    ] is False
+
+
+def test_rank1_su4_augmented_census_mutations_are_fail_closed():
+    census = mod._load(mod.RANK1_SU4_AUGMENTED_SOS_CENSUS_JSON)
+    quadratic = mod._load(mod.RANK1_SU4_PHI210_QUADRATIC_BASIS_JSON)
+    for key in (
+        "Schur_coordinate_6585_by_19594_coefficient_matrix_constructed",
+        "physical_G3_gap_target_vector_constructed",
+        "augmented_Schur_SOS_SDP_constructed",
+        "arbitrary_real_Phi_lower_bound_proved",
+        "G3_closed",
+        "whole_model_validated",
+        "whole_model_excluded",
+    ):
+        forged = copy.deepcopy(census)
+        forged["scope"][key] = True
+        report = mod.build_report(rank1_su4_augmented_sos_census_report=forged)
+        assert report["overall_state"] == "EXECUTION_FAIL"
+        assert report["classification"]["G3_closed"] is False
+        assert report["artifact_integrity"][
+            "rank1_SU4_augmented_SOS_census_executes_fail_closed"
+        ] is False
 
     forged_quadratic = copy.deepcopy(quadratic)
     forged_quadratic["scope"]["augmented_homogeneous_Schur_SOS_SDP_constructed"] = True

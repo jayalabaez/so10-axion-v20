@@ -700,6 +700,7 @@ def minimal_tree(
         "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_INTERTWINERS_V20.json",
         "EXACT_GAUGED_U1X_G3_RANK1_SU4_ALIGNED_CARRIERS_V20.json",
         "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_V20.json",
+        "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_V20.json",
     ):
         write_json(
             root,
@@ -948,6 +949,50 @@ class TheoryValidationMatrixTests(unittest.TestCase):
             self.assertTrue(
                 evidence["gauged_G3_rank1_SU4_arbitrary_Phi_bound_open"]
             )
+            self.assertTrue(
+                evidence["gauged_G3_rank1_SU4_augmented_SOS_census_exact"]
+            )
+            self.assertEqual(
+                evidence[
+                    "gauged_G3_rank1_SU4_augmented_homogeneous_dimension"
+                ],
+                22_366,
+            )
+            self.assertEqual(
+                evidence["gauged_G3_rank1_SU4_augmented_isotypic_type_count"],
+                35,
+            )
+            self.assertEqual(
+                evidence[
+                    "gauged_G3_rank1_SU4_augmented_irreducible_copy_count"
+                ],
+                824,
+            )
+            self.assertEqual(
+                evidence["gauged_G3_rank1_SU4_augmented_Schur_parameter_count"],
+                19_594,
+            )
+            self.assertEqual(
+                evidence["gauged_G3_rank1_SU4_augmented_invariant_row_count"],
+                6_585,
+            )
+            self.assertTrue(
+                evidence[
+                    "gauged_G3_rank1_SU4_augmented_coordinate_Schur_map_open"
+                ]
+            )
+            self.assertTrue(
+                evidence["gauged_G3_rank1_SU4_augmented_physical_target_open"]
+            )
+            self.assertTrue(
+                evidence["gauged_G3_rank1_SU4_augmented_SDP_open"]
+            )
+            self.assertTrue(
+                evidence["gauged_G3_rank1_SU4_augmented_arbitrary_Phi_open"]
+            )
+            self.assertTrue(
+                evidence["gauged_G3_rank1_SU4_augmented_G3_open"]
+            )
 
     def test_rank1_su4_infrastructure_mutations_fail_closed(self):
         mutations = (
@@ -972,6 +1017,17 @@ class TheoryValidationMatrixTests(unittest.TestCase):
                 lambda value: value["constraint_system"].__setitem__(
                     "exact_rational_rank", 505
                 ),
+            ),
+            (
+                "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_V20.json",
+                lambda value: value["scope"].__setitem__(
+                    "Schur_coordinate_6585_by_19594_coefficient_matrix_constructed",
+                    True,
+                ),
+            ),
+            (
+                "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_V20.json",
+                lambda value: value["scope"].__setitem__("G3_closed", True),
             ),
             (
                 "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_V20.json",

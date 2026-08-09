@@ -1,6 +1,7 @@
 import ast
 import copy
 from fractions import Fraction
+import hashlib
 import json
 import math
 from pathlib import Path
@@ -10,6 +11,18 @@ import pytest
 from scipy import sparse
 
 import exact_gauged_u1x_g3_rank1_su4_phi210_quadratic_basis_v20 as subject
+
+
+def test_source_hash_is_lf_crlf_and_cr_invariant(tmp_path):
+    expected = hashlib.sha256(b"alpha\nbeta\n").hexdigest()
+    paths = []
+    for index, payload in enumerate(
+        (b"alpha\nbeta\n", b"alpha\r\nbeta\r\n", b"alpha\rbeta\r")
+    ):
+        path = tmp_path / f"source-{index}.py"
+        path.write_bytes(payload)
+        paths.append(path)
+    assert {subject._file_sha256(path) for path in paths} == {expected}
 
 
 def _assemble(**overrides):

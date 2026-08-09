@@ -109,7 +109,8 @@ def _jsonable(value: Any) -> Any:
 
 
 def _file_sha256(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+    payload = path.read_bytes().replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+    return hashlib.sha256(payload).hexdigest()
 
 
 def _canonical_json_sha256(value: Any) -> str:

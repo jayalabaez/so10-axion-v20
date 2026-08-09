@@ -81,6 +81,7 @@ jobs:
           python exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py --write
           python exact_gauged_u1x_g3_rank1_su4_aligned_carriers_v20.py --write
           python exact_gauged_u1x_g3_rank1_su4_phi210_quadratic_basis_v20.py --write
+          python exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py
           python exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py --write
           python gauged_u1x_g3_sos_candidate_v20.py --recompute-heavy --write
           python gauged_u1x_g3_stability_v20.py --write
@@ -139,6 +140,7 @@ jobs:
             test_exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py \
             test_exact_gauged_u1x_g3_rank1_su4_aligned_carriers_v20.py \
             test_exact_gauged_u1x_g3_rank1_su4_phi210_quadratic_basis_v20.py \
+            test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py \
             test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py \
             test_final_g3_acceptance_gate_v20.py \
             test_gauged_u1x_g3_sos_candidate_v20.py \
@@ -189,6 +191,7 @@ jobs:
           rank1_su4_intertwiners=json.load(open('EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_INTERTWINERS_V20.json'))
           rank1_su4_aligned=json.load(open('EXACT_GAUGED_U1X_G3_RANK1_SU4_ALIGNED_CARRIERS_V20.json'))
           rank1_su4_quadratic=json.load(open('EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_V20.json'))
+          rank1_su4_census=json.load(open('EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_V20.json'))
           altsos=json.load(open('EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json'))
           fg=json.load(open('FINAL_G3_ACCEPTANCE_GATE_V20.json'))
           sc=json.load(open('GAUGED_U1X_G3_SOS_CANDIDATE_V20.json'))
@@ -359,10 +362,33 @@ jobs:
           assert gate_ledger._rank1_su4_phi210_intertwiners_exact(rank1_su4_intertwiners, rank1_su4_stabilizer), rank1_su4_intertwiners
           assert gate_ledger._rank1_su4_aligned_carriers_exact(rank1_su4_aligned, rank1_su4_intertwiners, rank1_su4_stabilizer), rank1_su4_aligned
           assert gate_ledger._rank1_su4_phi210_quadratic_basis_exact(rank1_su4_quadratic, rank1_su4_stabilizer, rank1_su4_intertwiners, rank1_su4_aligned), rank1_su4_quadratic
+          assert gate_ledger._rank1_su4_augmented_sos_census_exact(rank1_su4_census, rank1_su4_stabilizer, rank1_su4_intertwiners, rank1_su4_aligned, rank1_su4_quadratic), rank1_su4_census
           assert rank1_su4_quadratic['scope']['augmented_homogeneous_Schur_SOS_SDP_constructed'] is False, rank1_su4_quadratic
           assert rank1_su4_quadratic['scope']['arbitrary_rank1_Phi_proved'] is False, rank1_su4_quadratic
           assert rank1_su4_quadratic['scope']['G3_closed'] is False, rank1_su4_quadratic
           assert rank1_su4_quadratic['scope']['whole_model_excluded'] is False, rank1_su4_quadratic
+          assert rank1_su4_census['augmented_representation']['augmented_homogeneous_dimension']==22366, rank1_su4_census
+          assert rank1_su4_census['augmented_representation']['complex_isotypic_type_count']==35, rank1_su4_census
+          assert rank1_su4_census['augmented_representation']['complex_irreducible_copy_count']==824, rank1_su4_census
+          assert rank1_su4_census['augmented_representation']['Schur_real_parameter_count']==19594, rank1_su4_census
+          assert rank1_su4_census['invariant_quartic_target']['invariant_equation_count']==6585, rank1_su4_census
+          census_false_scope=(
+              'all_35_isotypic_type_maps_spanning_824_irreducible_copies_constructed',
+              'ordered_invariant_cubic_basis_constructed',
+              'ordered_invariant_quartic_basis_constructed',
+              'Schur_coordinate_6585_by_19594_coefficient_matrix_constructed',
+              'physical_G3_gap_target_vector_constructed',
+              'physical_G3_gap_cubic_zero_RHS_certified',
+              'augmented_Schur_SOS_SDP_constructed',
+              'augmented_Schur_SOS_SDP_feasibility_certified',
+              'augmented_Schur_SOS_SDP_infeasibility_certified',
+              'arbitrary_real_Phi_lower_bound_proved',
+              'arbitrary_rank1_Phi_proved',
+              'G3_closed',
+              'whole_model_validated',
+              'whole_model_excluded',
+          )
+          assert all(rank1_su4_census['scope'][name] is False for name in census_false_scope), rank1_su4_census
           assert altsos['n_failed']==0 and altsos['overall_state']=='G3_GLOBAL_ALTERNATIVE_OPEN', altsos
           assert altsos['flags']['all_vanishing_45_current_Gram_completion_excluded'], altsos
           assert altsos['flags']['all_vanishing_affine_SOS_completion_excluded'], altsos
@@ -504,6 +530,8 @@ jobs:
             GAUGED_U1X_G3_STABILITY_V20.md
             GAUGED_U1X_G3_CORRECTED_COMMON_KERNEL_V20.json
             GAUGED_U1X_G3_CORRECTED_COMMON_KERNEL_V20.md
+            EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_V20.json
+            EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_V20.md
 
   full-reaudit:
     if: github.event_name != 'pull_request'
@@ -564,6 +592,7 @@ jobs:
       - run: python exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py --write
       - run: python exact_gauged_u1x_g3_rank1_su4_aligned_carriers_v20.py --write
       - run: python exact_gauged_u1x_g3_rank1_su4_phi210_quadratic_basis_v20.py --write
+      - run: python exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py
       - run: python replicate.py
       - run: python validate_release_v20.py
       - run: python falsify_v20.py
@@ -604,6 +633,7 @@ jobs:
           rank1_su4_intertwiners=json.load(open('EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_INTERTWINERS_V20.json'))
           rank1_su4_aligned=json.load(open('EXACT_GAUGED_U1X_G3_RANK1_SU4_ALIGNED_CARRIERS_V20.json'))
           rank1_su4_quadratic=json.load(open('EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_V20.json'))
+          rank1_su4_census=json.load(open('EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_V20.json'))
           sc=json.load(open('GAUGED_U1X_G3_SOS_CANDIDATE_V20.json'))
           g3=json.load(open('GAUGED_U1X_G3_STABILITY_V20.json'))
           ck=json.load(open('GAUGED_U1X_G3_CORRECTED_COMMON_KERNEL_V20.json'))
@@ -712,10 +742,33 @@ jobs:
           assert gate_ledger._rank1_su4_phi210_intertwiners_exact(rank1_su4_intertwiners, rank1_su4_stabilizer), rank1_su4_intertwiners
           assert gate_ledger._rank1_su4_aligned_carriers_exact(rank1_su4_aligned, rank1_su4_intertwiners, rank1_su4_stabilizer), rank1_su4_aligned
           assert gate_ledger._rank1_su4_phi210_quadratic_basis_exact(rank1_su4_quadratic, rank1_su4_stabilizer, rank1_su4_intertwiners, rank1_su4_aligned), rank1_su4_quadratic
+          assert gate_ledger._rank1_su4_augmented_sos_census_exact(rank1_su4_census, rank1_su4_stabilizer, rank1_su4_intertwiners, rank1_su4_aligned, rank1_su4_quadratic), rank1_su4_census
           assert rank1_su4_quadratic['scope']['augmented_homogeneous_Schur_SOS_SDP_constructed'] is False, rank1_su4_quadratic
           assert rank1_su4_quadratic['scope']['arbitrary_rank1_Phi_proved'] is False, rank1_su4_quadratic
           assert rank1_su4_quadratic['scope']['G3_closed'] is False, rank1_su4_quadratic
           assert rank1_su4_quadratic['scope']['whole_model_excluded'] is False, rank1_su4_quadratic
+          assert rank1_su4_census['augmented_representation']['augmented_homogeneous_dimension']==22366, rank1_su4_census
+          assert rank1_su4_census['augmented_representation']['complex_isotypic_type_count']==35, rank1_su4_census
+          assert rank1_su4_census['augmented_representation']['complex_irreducible_copy_count']==824, rank1_su4_census
+          assert rank1_su4_census['augmented_representation']['Schur_real_parameter_count']==19594, rank1_su4_census
+          assert rank1_su4_census['invariant_quartic_target']['invariant_equation_count']==6585, rank1_su4_census
+          census_false_scope=(
+              'all_35_isotypic_type_maps_spanning_824_irreducible_copies_constructed',
+              'ordered_invariant_cubic_basis_constructed',
+              'ordered_invariant_quartic_basis_constructed',
+              'Schur_coordinate_6585_by_19594_coefficient_matrix_constructed',
+              'physical_G3_gap_target_vector_constructed',
+              'physical_G3_gap_cubic_zero_RHS_certified',
+              'augmented_Schur_SOS_SDP_constructed',
+              'augmented_Schur_SOS_SDP_feasibility_certified',
+              'augmented_Schur_SOS_SDP_infeasibility_certified',
+              'arbitrary_real_Phi_lower_bound_proved',
+              'arbitrary_rank1_Phi_proved',
+              'G3_closed',
+              'whole_model_validated',
+              'whole_model_excluded',
+          )
+          assert all(rank1_su4_census['scope'][name] is False for name in census_false_scope), rank1_su4_census
           assert sc['n_failed']==0 and sc['coefficient_vector']['nonzero_count']==27, sc
           assert sc['coefficient_vector']['maximum_absolute_coefficient']==73/8, sc
           assert sc['coefficient_vector']['symbolic_nonzero']['lambda::O48_B01_Phi_self_quartics']=='-21/200', sc
@@ -829,3 +882,5 @@ jobs:
             GAUGED_U1X_G3_STABILITY_V20.md
             GAUGED_U1X_G3_CORRECTED_COMMON_KERNEL_V20.json
             GAUGED_U1X_G3_CORRECTED_COMMON_KERNEL_V20.md
+            EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_V20.json
+            EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_V20.md
