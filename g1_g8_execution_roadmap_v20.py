@@ -83,8 +83,9 @@ TASKS: list[dict[str, Any]] = [
             "dimension 936. Its reserved zero vector is only an abstract "
             "interface placeholder, not the physical G3 target. The exact "
             "homogeneous quartic map has shape 6057x18085, rank 6057, and "
-            "kernel dimension 12028. The physical gap target, standard "
-            "real-type PSD congruences, full 6585x19594 map, SDP feasibility, arbitrary-Phi "
+            "kernel dimension 12028. All 22 standard PSD-coordinate routes and "
+            "the exact physical 6585-row target are constructed. The coefficient "
+            "map in standard PSD coordinates, SDP feasibility, arbitrary-Phi "
             "bound, and G3 remain open"
         ),
         "acceptance": (
@@ -482,6 +483,42 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
                 "rank1_SU4_augmented_quartic_arbitrary_Phi_bound_open"
             ] is True
             and g3_frontier["rank1_SU4_augmented_quartic_G3_open"] is True
+            and g3_frontier["rank1_SU4_augmented_PSD_target_exact"] is True
+            and g3_frontier[
+                "rank1_SU4_augmented_standard_PSD_route_count"
+            ] == 22
+            and g3_frontier[
+                "rank1_SU4_augmented_standard_PSD_parameter_count"
+            ] == 19_594
+            and g3_frontier[
+                "rank1_SU4_augmented_real_type_PSD_congruences_exact"
+            ] is True
+            and g3_frontier[
+                "rank1_SU4_augmented_complex_Hermitian_coordinates_exact"
+            ] is True
+            and g3_frontier[
+                "rank1_SU4_augmented_physical_target_exact"
+            ] is True
+            and g3_frontier[
+                "rank1_SU4_augmented_physical_target_row_count"
+            ] == 6_585
+            and g3_frontier[
+                "rank1_SU4_augmented_physical_target_common_denominator"
+            ] == 1_728_000
+            and g3_frontier[
+                "rank1_SU4_augmented_physical_target_nonzero_count"
+            ] == 845
+            and g3_frontier[
+                "rank1_SU4_augmented_physical_target_sha256"
+            ] == "e2d9eec1b01b3eeefc4a54d404db93171aa6600ea9ef646a215ab0b5401f7630"
+            and g3_frontier[
+                "rank1_SU4_augmented_standard_coordinate_map_open"
+            ] is True
+            and g3_frontier["rank1_SU4_augmented_PSD_SDP_open"] is True
+            and g3_frontier[
+                "rank1_SU4_augmented_PSD_arbitrary_Phi_bound_open"
+            ] is True
+            and g3_frontier["rank1_SU4_augmented_PSD_G3_open"] is True
             and g3_frontier[
                 "SU5_arbitrary_Phi_nonzero_residual_cancellations_open"
             ]
@@ -569,8 +606,9 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
         "exact-rank-478, 478x1414 integer map with kernel dimension 936. Its "
         "zero placeholder is not a physical target. The homogeneous quartic "
         "map is exact-rank-6057 with shape 6057x18085 and kernel dimension "
-        "12028. The physical target vector, standard real-type PSD congruences, "
-        "full 6585x19594 matrix, SDP result, and arbitrary-Phi bound remain open. "
+        "12028. All 22 standard PSD-coordinate routes and the exact physical "
+        "6585-row target are constructed. The coefficient map in standard PSD "
+        "coordinates, SDP result, and arbitrary-Phi bound remain open. "
         "Uniform coercivity for "
         "arbitrary non-pure-Delta Sigma orientations remains open. G5 is "
         "CLOSED. G4 and "
@@ -607,9 +645,10 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
         "cubic interface has all 1414 real cross variables and an exact-rank-478, "
         "478x1414 integer map with kernel dimension 936. Its zero placeholder "
         "is not a physical target. The homogeneous quartic map is exact-rank-6057 "
-        "with shape 6057x18085 and kernel dimension 12028. The physical gap "
-        "target, standard real-type PSD congruences, full 6585x19594 matrix, "
-        "SDP feasibility, and arbitrary-Phi bound remain open. Uniform coercivity "
+        "with shape 6057x18085 and kernel dimension 12028. All 22 standard "
+        "PSD-coordinate routes and the exact physical 6585-row target are "
+        "constructed. The coefficient map in standard PSD coordinates, SDP "
+        "feasibility, and arbitrary-Phi bound remain open. Uniform coercivity "
         "for arbitrary non-pure-Delta Sigma orientations is the precise G3 blocker. The historical "
         "64/91 calculation "
         "and 449-dimensional saddle/search remain scoped to option C."

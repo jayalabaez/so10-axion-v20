@@ -703,6 +703,7 @@ def minimal_tree(
         "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_V20.json",
         "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_V20.json",
         "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.json",
+        "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_V20.json",
     ):
         write_json(
             root,
@@ -1089,6 +1090,63 @@ class TheoryValidationMatrixTests(unittest.TestCase):
             self.assertTrue(
                 evidence["gauged_G3_rank1_SU4_augmented_quartic_G3_open"]
             )
+            self.assertTrue(
+                evidence["gauged_G3_rank1_SU4_augmented_PSD_target_exact"]
+            )
+            self.assertEqual(
+                evidence["gauged_G3_rank1_SU4_augmented_standard_PSD_route_count"],
+                22,
+            )
+            self.assertEqual(
+                evidence[
+                    "gauged_G3_rank1_SU4_augmented_standard_PSD_parameter_count"
+                ],
+                19_594,
+            )
+            self.assertTrue(
+                evidence[
+                    "gauged_G3_rank1_SU4_augmented_real_type_PSD_congruences_exact"
+                ]
+            )
+            self.assertTrue(
+                evidence[
+                    "gauged_G3_rank1_SU4_augmented_complex_Hermitian_coordinates_exact"
+                ]
+            )
+            self.assertTrue(
+                evidence["gauged_G3_rank1_SU4_augmented_physical_target_exact"]
+            )
+            self.assertEqual(
+                evidence["gauged_G3_rank1_SU4_augmented_physical_target_row_count"],
+                6_585,
+            )
+            self.assertEqual(
+                evidence[
+                    "gauged_G3_rank1_SU4_augmented_physical_target_common_denominator"
+                ],
+                1_728_000,
+            )
+            self.assertEqual(
+                evidence[
+                    "gauged_G3_rank1_SU4_augmented_physical_target_nonzero_count"
+                ],
+                845,
+            )
+            self.assertEqual(
+                evidence["gauged_G3_rank1_SU4_augmented_physical_target_sha256"],
+                "e2d9eec1b01b3eeefc4a54d404db93171aa6600ea9ef646a215ab0b5401f7630",
+            )
+            self.assertTrue(
+                evidence[
+                    "gauged_G3_rank1_SU4_augmented_standard_coordinate_map_open"
+                ]
+            )
+            self.assertTrue(
+                evidence["gauged_G3_rank1_SU4_augmented_PSD_SDP_open"]
+            )
+            self.assertTrue(
+                evidence["gauged_G3_rank1_SU4_augmented_PSD_G3_open"]
+            )
             self.assertIn("478x1414 integer map", vacuum["summary"])
             self.assertIn("kernel dimension 936", vacuum["summary"])
             self.assertIn(
@@ -1098,7 +1156,11 @@ class TheoryValidationMatrixTests(unittest.TestCase):
                 "exact-rank-6057, 6057x18085 integer map", vacuum["summary"]
             )
             self.assertIn("kernel dimension 12028", vacuum["summary"])
-            self.assertIn("full 6585x19594 matrix", vacuum["summary"])
+            self.assertIn("22 standard PSD-coordinate routes", vacuum["summary"])
+            self.assertIn("physical 6585-row target", vacuum["summary"])
+            self.assertIn(
+                "coefficient map in standard PSD coordinates", vacuum["summary"]
+            )
             self.assertNotIn("infrastructure only", vacuum["summary"])
 
     def test_rank1_su4_infrastructure_mutations_fail_closed(self):
@@ -1176,6 +1238,16 @@ class TheoryValidationMatrixTests(unittest.TestCase):
                 lambda value: value["scope"].__setitem__("G3_closed", True),
             ),
             (
+                "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_V20.json",
+                lambda value: value["standard_PSD_coordinate_routes"].__setitem__(
+                    "standard_total_parameter_count", 19_593
+                ),
+            ),
+            (
+                "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_V20.json",
+                lambda value: value["scope"].__setitem__("G3_closed", True),
+            ),
+            (
                 "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_V20.json",
                 lambda value: value["scope"].__setitem__(
                     "augmented_homogeneous_Schur_SOS_SDP_constructed", True
@@ -1215,9 +1287,21 @@ class TheoryValidationMatrixTests(unittest.TestCase):
                             "gauged_G3_frontier_honestly_fail_closed"
                         ]
                     )
+                    if filename.endswith("AUGMENTED_SOS_PSD_TARGET_V20.json"):
+                        self.assertTrue(
+                            vacuum["evidence"][
+                                "gauged_G3_rank1_SU4_augmented_quartic_map_exact"
+                            ]
+                        )
+                    else:
+                        self.assertFalse(
+                            vacuum["evidence"][
+                                "gauged_G3_rank1_SU4_augmented_quartic_map_exact"
+                            ]
+                        )
                     self.assertFalse(
                         vacuum["evidence"][
-                            "gauged_G3_rank1_SU4_augmented_quartic_map_exact"
+                            "gauged_G3_rank1_SU4_augmented_PSD_target_exact"
                         ]
                     )
 

@@ -53,6 +53,10 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py",
             "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.json",
             "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.md",
+            "exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py",
+            "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py",
+            "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_V20.json",
+            "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_V20.md",
         ):
             self.assertIn(required, paths)
         for relative in paths:
@@ -148,12 +152,18 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
                 / "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.json"
             ).read_text(encoding="utf-8")
         )
+        psd_target = json.loads(
+            (
+                release.ROOT
+                / "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_V20.json"
+            ).read_text(encoding="utf-8")
+        )
         self.assertEqual(
             release.rank1_su4_release_predicates(
                 stabilizer, intertwiners, aligned, quadratic, census, cubic,
-                quartic,
+                quartic, psd_target,
             ),
-            (True, True, True, True, True, True, True),
+            (True, True, True, True, True, True, True, True),
         )
 
         mutations = []
@@ -234,6 +244,7 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
                 census_exact,
                 cubic_exact,
                 quartic_exact,
+                psd_target_exact,
             ) = (
                 release.rank1_su4_release_predicates(
                     forged_stabilizer,
@@ -243,6 +254,7 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
                     census,
                     cubic,
                     quartic,
+                    psd_target,
                 )
             )
             self.assertFalse(stabilizer_exact and intertwiners_exact)
@@ -252,6 +264,7 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             self.assertFalse(census_exact)
             self.assertFalse(cubic_exact)
             self.assertFalse(quartic_exact)
+            self.assertFalse(psd_target_exact)
 
         stage2_mutations = []
         forged_aligned = copy.deepcopy(aligned)
@@ -273,13 +286,14 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
         for forged_aligned, forged_quadratic in stage2_mutations:
             predicates = release.rank1_su4_release_predicates(
                 stabilizer, intertwiners, forged_aligned, forged_quadratic,
-                census, cubic, quartic,
+                census, cubic, quartic, psd_target,
             )
             self.assertFalse(predicates[2] and predicates[3])
             self.assertFalse(predicates[3])
             self.assertFalse(predicates[4])
             self.assertFalse(predicates[5])
             self.assertFalse(predicates[6])
+            self.assertFalse(predicates[7])
 
         census_mutations = []
         for key in (
@@ -303,12 +317,13 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
         for forged_census in census_mutations:
             predicates = release.rank1_su4_release_predicates(
                 stabilizer, intertwiners, aligned, quadratic, forged_census,
-                cubic, quartic,
+                cubic, quartic, psd_target,
             )
             self.assertEqual(predicates[:4], (True, True, True, True))
             self.assertFalse(predicates[4])
             self.assertFalse(predicates[5])
             self.assertFalse(predicates[6])
+            self.assertFalse(predicates[7])
 
         cubic_mutations = []
         for section, key, value in (
@@ -360,11 +375,12 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
         for forged_cubic in cubic_mutations:
             predicates = release.rank1_su4_release_predicates(
                 stabilizer, intertwiners, aligned, quadratic, census,
-                forged_cubic, quartic,
+                forged_cubic, quartic, psd_target,
             )
             self.assertEqual(predicates[:5], (True, True, True, True, True))
             self.assertFalse(predicates[5])
             self.assertFalse(predicates[6])
+            self.assertFalse(predicates[7])
 
         quartic_mutations = []
         for section, key, value in (
@@ -393,12 +409,35 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
         for forged_quartic in quartic_mutations:
             predicates = release.rank1_su4_release_predicates(
                 stabilizer, intertwiners, aligned, quadratic, census, cubic,
-                forged_quartic,
+                forged_quartic, psd_target,
             )
             self.assertEqual(
                 predicates[:6], (True, True, True, True, True, True)
             )
             self.assertFalse(predicates[6])
+            self.assertFalse(predicates[7])
+
+        psd_target_mutations = []
+        for section, key, value in (
+            ("scope", "semidefinite_feasibility_solved", True),
+            ("scope", "exact_primal_PSD_certificate_constructed", True),
+            ("scope", "exact_dual_Farkas_certificate_constructed", True),
+            ("scope", "arbitrary_Phi_lower_bound_proved", True),
+            ("scope", "G3_closed", True),
+            ("standard_PSD_coordinate_routes", "standard_total_parameter_count", 19_593),
+        ):
+            forged_psd_target = copy.deepcopy(psd_target)
+            forged_psd_target[section][key] = value
+            psd_target_mutations.append(forged_psd_target)
+        for forged_psd_target in psd_target_mutations:
+            predicates = release.rank1_su4_release_predicates(
+                stabilizer, intertwiners, aligned, quadratic, census, cubic,
+                quartic, forged_psd_target,
+            )
+            self.assertEqual(
+                predicates[:7], (True, True, True, True, True, True, True)
+            )
+            self.assertFalse(predicates[7])
 
     def test_su4_release_does_not_mislabel_the_full_augmented_sos_as_45_by_45(
         self,
@@ -433,7 +472,7 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
         self.assertIn("every real/Hermitian isotypic block", source)
         self.assertIn("homogenizing cross terms", source)
 
-    def test_current_main_heredocs_use_exact_census_cubic_and_quartic_scope_contracts(self):
+    def test_current_main_heredocs_use_exact_census_cubic_quartic_and_psd_target_scope_contracts(self):
         source = (
             release.ROOT / ".github/workflows/current-main-full-reaudit.yml"
         ).read_text(encoding="utf-8")
@@ -500,6 +539,25 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             "arbitrary_Phi_stationarity_or_lower_bound_proved",
         ):
             self.assertGreaterEqual(source.count(required), 2, required)
+        self.assertEqual(
+            source.count("_rank1_su4_augmented_sos_psd_target_exact("), 2
+        )
+        for required in (
+            "all_22_standard_PSD_coordinate_routes_constructed",
+            "all_nine_real_type_standard_PSD_congruences_constructed",
+            "all_thirteen_complex_blocks_in_standard_Hermitian_coordinates",
+            "physical_target_formula_all_five_grades_constructed",
+            "physical_target_full_6585_row_vector_constructed",
+            "coefficient_map_reparameterized_in_standard_PSD_coordinates",
+            "exact_primal_PSD_certificate_constructed",
+            "exact_dual_Farkas_certificate_constructed",
+            "arbitrary_Phi_lower_bound_proved",
+            "equality_orbit_classification_proved",
+            "full_486_field_Hessian_classification_proved",
+            "e2d9eec1b01b3eeefc4a54d404db93171aa6600ea9ef646a215ab0b5401f7630",
+            "38476cff340ef8702735d48d7dbdf644ed41f8dc4a359264d33d966f177145ad",
+        ):
+            self.assertGreaterEqual(source.count(required), 2, required)
         for required in (
             "degree_zero_coefficient_map_constructed",
             "degree_one_coefficient_map_constructed",
@@ -520,8 +578,12 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             self.assertGreaterEqual(source.count(required), 2, required)
 
     def test_all_seven_release_heredocs_pin_the_quartic_map_contract(self):
+        requirements = (release.ROOT / "requirements.txt").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("sympy==1.14.0", requirements.splitlines())
         workflow_contracts = {
-            ".github/workflows/current-main-full-reaudit.yml": (2, (120, 240)),
+            ".github/workflows/current-main-full-reaudit.yml": (2, (120, 360)),
             ".github/workflows/g1-g8-execution-roadmap.yml": (1, (90,)),
             ".github/workflows/g1-g8-gate-ledger.yml": (1, (90,)),
             ".github/workflows/gauged-u1x-g3-stability.yml": (1, (75,)),
@@ -547,6 +609,11 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
                 expected_heredocs,
                 relative,
             )
+            self.assertEqual(
+                source.count("_rank1_su4_augmented_sos_psd_target_exact("),
+                expected_heredocs,
+                relative,
+            )
             total_heredocs += expected_heredocs
             for timeout in timeouts:
                 self.assertIn(f"timeout-minutes: {timeout}", source, relative)
@@ -558,10 +625,36 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             ):
                 self.assertIn(required, source, (relative, required))
             for required in (
+                "exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py",
+                "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py",
+                "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_V20.json",
+                "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_V20.md",
+            ):
+                self.assertIn(required, source, (relative, required))
+            for required in (
                 "115641",
                 "12028",
                 *true_scope,
                 *false_scope,
+            ):
+                self.assertGreaterEqual(
+                    source.count(required), expected_heredocs, (relative, required)
+                )
+            for required in (
+                "all_22_standard_PSD_coordinate_routes_constructed",
+                "all_nine_real_type_standard_PSD_congruences_constructed",
+                "all_thirteen_complex_blocks_in_standard_Hermitian_coordinates",
+                "physical_target_formula_all_five_grades_constructed",
+                "physical_target_full_6585_row_vector_constructed",
+                "coefficient_map_reparameterized_in_standard_PSD_coordinates",
+                "semidefinite_feasibility_solved",
+                "exact_primal_PSD_certificate_constructed",
+                "exact_dual_Farkas_certificate_constructed",
+                "arbitrary_Phi_lower_bound_proved",
+                "equality_orbit_classification_proved",
+                "full_486_field_Hessian_classification_proved",
+                "e2d9eec1b01b3eeefc4a54d404db93171aa6600ea9ef646a215ab0b5401f7630",
+                "38476cff340ef8702735d48d7dbdf644ed41f8dc4a359264d33d966f177145ad",
             ):
                 self.assertGreaterEqual(
                     source.count(required), expected_heredocs, (relative, required)

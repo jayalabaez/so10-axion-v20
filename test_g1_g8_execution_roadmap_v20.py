@@ -262,6 +262,35 @@ def test_constructive_g3_frontier_is_actionable_but_not_promoted():
     assert frontier["rank1_SU4_augmented_quartic_SDP_open"]
     assert frontier["rank1_SU4_augmented_quartic_arbitrary_Phi_bound_open"]
     assert frontier["rank1_SU4_augmented_quartic_G3_open"]
+    assert frontier["rank1_SU4_augmented_PSD_target_exact"]
+    assert frontier["rank1_SU4_augmented_standard_PSD_route_count"] == 22
+    assert frontier["rank1_SU4_augmented_standard_PSD_parameter_count"] == 19_594
+    assert frontier["rank1_SU4_augmented_physical_target_exact"]
+    assert frontier["rank1_SU4_augmented_physical_target_row_count"] == 6_585
+    assert (
+        frontier["rank1_SU4_augmented_physical_target_common_denominator"]
+        == 1_728_000
+    )
+    assert frontier["rank1_SU4_augmented_physical_target_nonzero_count"] == 845
+    assert frontier["rank1_SU4_augmented_physical_target_sha256"] == (
+        "e2d9eec1b01b3eeefc4a54d404db93171aa6600ea9ef646a215ab0b5401f7630"
+    )
+    assert frontier["rank1_SU4_augmented_physical_quartic_target_row_count"] == 6_057
+    assert (
+        frontier["rank1_SU4_augmented_physical_quartic_target_common_denominator"]
+        == 3_375
+    )
+    assert (
+        frontier["rank1_SU4_augmented_physical_quartic_target_nonzero_count"]
+        == 825
+    )
+    assert frontier["rank1_SU4_augmented_physical_quartic_target_sha256"] == (
+        "38476cff340ef8702735d48d7dbdf644ed41f8dc4a359264d33d966f177145ad"
+    )
+    assert frontier["rank1_SU4_augmented_standard_coordinate_map_open"]
+    assert frontier["rank1_SU4_augmented_PSD_SDP_open"]
+    assert frontier["rank1_SU4_augmented_PSD_arbitrary_Phi_bound_open"]
+    assert frontier["rank1_SU4_augmented_PSD_G3_open"]
     assert frontier["SU5_arbitrary_Phi_nonzero_residual_cancellations_open"] is False
     assert (
         frontier["SU5_arbitrary_non_pure_Delta_Sigma_uniform_coercivity_open"]
@@ -305,7 +334,9 @@ def test_constructive_g3_frontier_is_actionable_but_not_promoted():
     assert "homogeneous quartic map has shape 6057x18085" in g3_task["deliverable"]
     assert "rank 6057" in g3_task["deliverable"]
     assert "kernel dimension 12028" in g3_task["deliverable"]
-    assert "full 6585x19594 map" in g3_task["deliverable"]
+    assert "coefficient map in standard PSD coordinates" in g3_task["deliverable"]
+    assert "22 standard PSD-coordinate routes" in g3_task["deliverable"]
+    assert "physical 6585-row target" in g3_task["deliverable"]
     assert "G3 remain open" in g3_task["deliverable"]
     assert "486-field" in g3_task["acceptance"]
     assert "478x1414 integer map" in report["verdict"]
@@ -313,7 +344,9 @@ def test_constructive_g3_frontier_is_actionable_but_not_promoted():
     assert "zero placeholder is not a physical target" in report["verdict"]
     assert "homogeneous quartic map is exact-rank-6057" in report["verdict"]
     assert "kernel dimension 12028" in report["verdict"]
-    assert "full 6585x19594 matrix" in report["verdict"]
+    assert "22 standard PSD-coordinate routes" in report["verdict"]
+    assert "physical 6585-row target" in report["verdict"]
+    assert "coefficient map in standard PSD coordinates" in report["verdict"]
     assert "coordinate Schur matrix" not in report["verdict"]
 
 

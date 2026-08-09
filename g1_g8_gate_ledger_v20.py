@@ -95,6 +95,9 @@ G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_JSON = (
 G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_JSON = (
     ROOT / "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.json"
 )
+G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_JSON = (
+    ROOT / "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_V20.json"
+)
 RANK1_SU4_ORDERED_LABELS = (
     "H1",
     "H2",
@@ -2146,6 +2149,165 @@ def _rank1_su4_augmented_sos_quartic_map_exact(
     )
 
 
+def _rank1_su4_augmented_sos_psd_target_exact(
+    report: dict[str, Any],
+    census_report: dict[str, Any],
+    cubic_report: dict[str, Any],
+    quartic_report: dict[str, Any],
+) -> bool:
+    """Fail closed on the exact PSD routes and physical target, never on G3."""
+    scope = report.get("scope", {})
+    routes = report.get("standard_PSD_coordinate_routes", {})
+    physical = report.get("physical_target", {})
+    full_target = physical.get("full_graded_chart", {})
+    quartic_target = physical.get("quartic", {})
+    provenance = report.get("provenance", {})
+    expected_hashes = provenance.get("expected_dependency_hashes", {})
+    actual_hashes = provenance.get("actual_dependency_hashes", {})
+    bindings = provenance.get("dependency_file_bindings", {})
+
+    true_scope = {
+        "all_22_standard_PSD_coordinate_routes_constructed",
+        "all_nine_real_type_standard_PSD_congruences_constructed",
+        "all_thirteen_complex_blocks_in_standard_Hermitian_coordinates",
+        "physical_target_formula_all_five_grades_constructed",
+        "physical_target_full_6585_row_vector_constructed",
+    }
+    false_scope = {
+        "coefficient_map_reparameterized_in_standard_PSD_coordinates",
+        "semidefinite_feasibility_solved",
+        "exact_primal_PSD_certificate_constructed",
+        "exact_dual_Farkas_certificate_constructed",
+        "arbitrary_Phi_lower_bound_proved",
+        "equality_orbit_classification_proved",
+        "full_486_field_Hessian_classification_proved",
+        "G3_closed",
+    }
+    pinned_dependency_hashes = {
+        "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_V20.json":
+            "505f846291320e0671ff1208dc34339d0c2302f24ab80e9569b73d6479b2db8a",
+        "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.json":
+            "056e1a90c028f0aaca8fb17f2f53dfb02d5e7a33230ec3675537d2778755266a",
+        "exact_gauged_u1x_g3_pd_rank_certificate_v20.py":
+            "e2499baf3f7a572df7647ca02f109666a549c9e2c1989110c682ee584e0483c6",
+        "exact_gauged_u1x_g3_rank1_su4_aligned_carriers_v20.py":
+            "5671857444bda7d53db45393e28a3b9ac0784d0f2a63aa1e541eb5e356d23ccc",
+        "exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py":
+            "3e0d7f2eac73eec950960f1ffd78c9584a4b15d070c84889080cf4c67d5a4d63",
+        "exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py":
+            "589952b9b0a0b6af1543b87c89b0f3626a4bfb9c4219821a915fe04fab8af690",
+        "exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py":
+            "28633a2dba4d70f019a3e63ca87e8224ca11630a9e7c53bc963aedc6824208c1",
+        "exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py":
+            "76fa77c99b8d6e963e8694acf74280de29ced4c7a7623bffa991aead77329f49",
+        "exact_gauged_u1x_g3_rank1_su4_phi210_quadratic_basis_v20.py":
+            "4eec63ba40b888de736c84f607019ba0f21915028b423578502893744bab1060",
+        "exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py":
+            "6b2cfe46503833d8ac81dae385bef1bfa192bc0d4aa1dce392f2513b270aa14b",
+        "exact_phisigma_casimir_projectors_v20.py":
+            "372401c9b760e7b4e2224d4b6b2151611e68e7ba786ec735ebbd8baeb0103355",
+    }
+    binding_exact = bool(
+        set(bindings) == set(pinned_dependency_hashes)
+        and all(
+            binding.get("imported_file_basename") == name
+            and binding.get("repository_local_path") == name
+            and binding.get("required_parent") == "."
+            and binding.get("portable_sha256") == digest
+            for name, digest in pinned_dependency_hashes.items()
+            for binding in (bindings.get(name, {}),)
+        )
+    )
+    live_dependencies_exact = all(
+        _file_sha256(ROOT / name) == digest
+        for name, digest in pinned_dependency_hashes.items()
+    )
+    prior_quartic_scope = quartic_report.get("scope", {})
+    return bool(
+        _file_sha256(
+            ROOT
+            / "exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py"
+        ) == "8037bd021d5e416974d54b8b750e94c0406ace343836dc9c1b1976d71c3dbe8b"
+        and _canonical_json_sha256(report)
+        == "bc29a856410f6c6a8e9f13b84ed25f0e595c002ef3b1440a84376304ff3dfd05"
+        and _canonical_json_sha256(census_report)
+        == "703a3819fea5afe857757082190f9cf1e22f283ab0ddcc882c2f011b65ba58f3"
+        and _canonical_json_sha256(cubic_report)
+        == "f1486e4100e15c457cef9d0377665a06dbbb6a31e9476de1a1c9de5333da8e45"
+        and _canonical_json_sha256(quartic_report)
+        == "ac48f6e6183a5b51ced47fcb8f4a1a9218df9bcf0951b632d8644f2a3d850f68"
+        and set(report) == {
+            "claim_boundary", "exact_arithmetic_safety", "model_contract_id",
+            "overall_state", "physical_target", "proof_grade", "provenance",
+            "scope", "standard_PSD_coordinate_routes", "status",
+        }
+        and report.get("model_contract_id") == AUTHORITATIVE_CONTRACT_ID
+        and report.get("status")
+        == "EXACT_RANK1_SU4_AUGMENTED_SOS_PSD_ROUTES_AND_PHYSICAL_TARGET_CERTIFIED"
+        and report.get("overall_state")
+        == "PSD_ROUTES_AND_PHYSICAL_TARGET_CLOSED__SDP_ARBITRARY_PHI_AND_G3_OPEN"
+        and report.get("proof_grade") is True
+        and set(scope) == true_scope | false_scope
+        and all(scope.get(name) is True for name in true_scope)
+        and all(scope.get(name) is False for name in false_scope)
+        and routes.get("all_22_cones_have_standard_coordinate_routes") is True
+        and routes.get("real_type_block_count") == 9
+        and len(routes.get("real_type_rows", [])) == 9
+        and routes.get("complex_Hermitian_block_count") == 13
+        and len(routes.get("complex_Hermitian_rows", [])) == 13
+        and routes.get("standard_real_parameter_count") == 7_979
+        and routes.get("standard_complex_parameter_count") == 11_615
+        and routes.get("standard_total_parameter_count") == 19_594
+        and physical.get("constant") == {"numerator": 237, "denominator": 200}
+        and physical.get("cubic", {}).get("row_count") == 478
+        and physical.get("cubic", {}).get("all_target_rows_zero_exact") is True
+        and quartic_target.get("row_count") == 6_057
+        and quartic_target.get("common_denominator") == 3_375
+        and quartic_target.get("nonzero_count") == 825
+        and quartic_target.get("numerator_sha256")
+        == "38476cff340ef8702735d48d7dbdf644ed41f8dc4a359264d33d966f177145ad"
+        and quartic_target.get("pivot_physical_quartic_coordinates_sha256")
+        == "f33cb0163f3cdc4a3480cb55e09329888c8cf0641cc0acab4cb01f8075058ce4"
+        and quartic_target.get("all_i_times_anti_real_rows_zero_exact") is True
+        and quartic_target.get("proof_grade") is True
+        and full_target.get("grade_lengths") == [1, 4, 45, 478, 6_057]
+        and full_target.get("row_count") == 6_585
+        and full_target.get("common_denominator") == 1_728_000
+        and full_target.get("total_nonzero_count") == 845
+        and full_target.get("nonzero_count_by_grade") == {
+            "constant": 1, "linear": 2, "quadratic": 17,
+            "cubic": 0, "quartic": 825,
+        }
+        and full_target.get("numerator_sha256")
+        == "e2d9eec1b01b3eeefc4a54d404db93171aa6600ea9ef646a215ab0b5401f7630"
+        and len(full_target.get("numerator", [])) == 6_585
+        and full_target.get("primitive_common_fraction") is True
+        and full_target.get("proof_grade") is True
+        and provenance.get("repository_local_dependency_root") == "."
+        and provenance.get("all_dependency_files_required_beside_this_module")
+        is True
+        and provenance.get("dependency_hash_algorithm")
+        == "SHA256 of UTF-8 text after LF normalization"
+        and "no external shadow can satisfy it"
+        in provenance.get("source_module_path_binding", "")
+        and expected_hashes == pinned_dependency_hashes
+        and actual_hashes == pinned_dependency_hashes
+        and provenance.get("all_dependency_hashes_match_exact") is True
+        and binding_exact
+        and live_dependencies_exact
+        and prior_quartic_scope.get("physical_quartic_target_constructed")
+        is False
+        and prior_quartic_scope.get(
+            "standard_PSD_congruences_for_real_type_fixed_bases_constructed"
+        ) is False
+        and prior_quartic_scope.get("semidefinite_feasibility_solved") is False
+        and prior_quartic_scope.get(
+            "arbitrary_Phi_stationarity_or_lower_bound_proved"
+        ) is False
+        and prior_quartic_scope.get("G3_closed") is False
+    )
+
+
 def _gauged_u1x_g3_frontier(
     sos_report: dict[str, Any],
     pd_report: dict[str, Any],
@@ -2172,6 +2334,7 @@ def _gauged_u1x_g3_frontier(
     rank1_su4_augmented_sos_census_report: dict[str, Any],
     rank1_su4_augmented_sos_cubic_map_report: dict[str, Any],
     rank1_su4_augmented_sos_quartic_map_report: dict[str, Any],
+    rank1_su4_augmented_sos_psd_target_report: dict[str, Any],
     alternative_global_sos_report: dict[str, Any],
 ) -> dict[str, Any]:
     """Bind rejected branches and the surviving SU(5)+Delta G3 frontier."""
@@ -2259,6 +2422,19 @@ def _gauged_u1x_g3_frontier(
     rank1_su4_quartic_map = rank1_su4_augmented_sos_quartic_map_report.get(
         "coefficient_map_certificate", {}
     )
+    rank1_su4_psd_target_scope = rank1_su4_augmented_sos_psd_target_report.get(
+        "scope", {}
+    )
+    rank1_su4_psd_routes = rank1_su4_augmented_sos_psd_target_report.get(
+        "standard_PSD_coordinate_routes", {}
+    )
+    rank1_su4_physical_target = rank1_su4_augmented_sos_psd_target_report.get(
+        "physical_target", {}
+    )
+    rank1_su4_full_target = rank1_su4_physical_target.get(
+        "full_graded_chart", {}
+    )
+    rank1_su4_quartic_target = rank1_su4_physical_target.get("quartic", {})
     alternative_flags = alternative_global_sos_report.get("flags", {})
 
     artifacts_present = {
@@ -2308,6 +2484,9 @@ def _gauged_u1x_g3_frontier(
         ),
         "rank1_SU4_augmented_SOS_quartic_map": bool(
             rank1_su4_augmented_sos_quartic_map_report
+        ),
+        "rank1_SU4_augmented_SOS_PSD_routes_and_physical_target": bool(
+            rank1_su4_augmented_sos_psd_target_report
         ),
         "alternative_global_SOS_audit": bool(alternative_global_sos_report),
     }
@@ -2869,6 +3048,15 @@ def _gauged_u1x_g3_frontier(
             rank1_su4_augmented_sos_cubic_map_report,
         )
     )
+    rank1_su4_augmented_sos_psd_target_exact = (
+        rank1_su4_augmented_sos_quartic_map_exact
+        and _rank1_su4_augmented_sos_psd_target_exact(
+            rank1_su4_augmented_sos_psd_target_report,
+            rank1_su4_augmented_sos_census_report,
+            rank1_su4_augmented_sos_cubic_map_report,
+            rank1_su4_augmented_sos_quartic_map_report,
+        )
+    )
     alternative_global_sos_honestly_open = bool(
         alternative_global_sos_report.get("n_failed") == 0
         and alternative_global_sos_report.get("status")
@@ -2925,6 +3113,7 @@ def _gauged_u1x_g3_frontier(
         and rank1_su4_augmented_sos_census_exact
         and rank1_su4_augmented_sos_cubic_map_exact
         and rank1_su4_augmented_sos_quartic_map_exact
+        and rank1_su4_augmented_sos_psd_target_exact
         and alternative_global_sos_honestly_open
     )
     return {
@@ -3381,6 +3570,80 @@ def _gauged_u1x_g3_frontier(
         "rank1_SU4_augmented_quartic_G3_open": (
             rank1_su4_quartic_scope.get("G3_closed") is False
         ),
+        "rank1_SU4_augmented_PSD_target_exact": (
+            rank1_su4_augmented_sos_psd_target_exact
+        ),
+        "rank1_SU4_augmented_standard_PSD_route_count": (
+            rank1_su4_psd_routes.get("real_type_block_count", 0)
+            + rank1_su4_psd_routes.get("complex_Hermitian_block_count", 0)
+        ),
+        "rank1_SU4_augmented_standard_PSD_parameter_count": (
+            rank1_su4_psd_routes.get("standard_total_parameter_count")
+        ),
+        "rank1_SU4_augmented_real_type_PSD_congruences_exact": (
+            rank1_su4_psd_target_scope.get(
+                "all_nine_real_type_standard_PSD_congruences_constructed"
+            ) is True
+        ),
+        "rank1_SU4_augmented_complex_Hermitian_coordinates_exact": (
+            rank1_su4_psd_target_scope.get(
+                "all_thirteen_complex_blocks_in_standard_Hermitian_coordinates"
+            ) is True
+        ),
+        "rank1_SU4_augmented_physical_target_exact": (
+            rank1_su4_psd_target_scope.get(
+                "physical_target_formula_all_five_grades_constructed"
+            ) is True
+            and rank1_su4_psd_target_scope.get(
+                "physical_target_full_6585_row_vector_constructed"
+            ) is True
+        ),
+        "rank1_SU4_augmented_physical_target_row_count": (
+            rank1_su4_full_target.get("row_count")
+        ),
+        "rank1_SU4_augmented_physical_target_common_denominator": (
+            rank1_su4_full_target.get("common_denominator")
+        ),
+        "rank1_SU4_augmented_physical_target_nonzero_count": (
+            rank1_su4_full_target.get("total_nonzero_count")
+        ),
+        "rank1_SU4_augmented_physical_target_sha256": (
+            rank1_su4_full_target.get("numerator_sha256")
+        ),
+        "rank1_SU4_augmented_physical_quartic_target_row_count": (
+            rank1_su4_quartic_target.get("row_count")
+        ),
+        "rank1_SU4_augmented_physical_quartic_target_common_denominator": (
+            rank1_su4_quartic_target.get("common_denominator")
+        ),
+        "rank1_SU4_augmented_physical_quartic_target_nonzero_count": (
+            rank1_su4_quartic_target.get("nonzero_count")
+        ),
+        "rank1_SU4_augmented_physical_quartic_target_sha256": (
+            rank1_su4_quartic_target.get("numerator_sha256")
+        ),
+        "rank1_SU4_augmented_standard_coordinate_map_open": (
+            rank1_su4_psd_target_scope.get(
+                "coefficient_map_reparameterized_in_standard_PSD_coordinates"
+            ) is False
+        ),
+        "rank1_SU4_augmented_PSD_SDP_open": (
+            rank1_su4_psd_target_scope.get("semidefinite_feasibility_solved")
+            is False
+            and rank1_su4_psd_target_scope.get(
+                "exact_primal_PSD_certificate_constructed"
+            ) is False
+            and rank1_su4_psd_target_scope.get(
+                "exact_dual_Farkas_certificate_constructed"
+            ) is False
+        ),
+        "rank1_SU4_augmented_PSD_arbitrary_Phi_bound_open": (
+            rank1_su4_psd_target_scope.get("arbitrary_Phi_lower_bound_proved")
+            is False
+        ),
+        "rank1_SU4_augmented_PSD_G3_open": (
+            rank1_su4_psd_target_scope.get("G3_closed") is False
+        ),
         "SU5_max_negative_arbitrary_Sigma_orientation_open": not bool(
             rank1_su3_scope.get("arbitrary_max_negative_Sigma")
         ),
@@ -3681,6 +3944,7 @@ def _build_report_from_inputs(
     g3_rank1_su4_augmented_sos_census_report: dict[str, Any] | None = None,
     g3_rank1_su4_augmented_sos_cubic_map_report: dict[str, Any] | None = None,
     g3_rank1_su4_augmented_sos_quartic_map_report: dict[str, Any] | None = None,
+    g3_rank1_su4_augmented_sos_psd_target_report: dict[str, Any] | None = None,
     g3_alternative_global_sos_report: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Build a ledger from fresh reports, including repaired-contract states."""
@@ -3774,6 +4038,10 @@ def _build_report_from_inputs(
         g3_rank1_su4_augmented_sos_quartic_map_report = _load_json_artifact(
             G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_JSON
         )
+    if g3_rank1_su4_augmented_sos_psd_target_report is None:
+        g3_rank1_su4_augmented_sos_psd_target_report = _load_json_artifact(
+            G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_JSON
+        )
     if g3_alternative_global_sos_report is None:
         g3_alternative_global_sos_report = _load_json_artifact(
             G3_ALTERNATIVE_GLOBAL_SOS_JSON
@@ -3804,6 +4072,7 @@ def _build_report_from_inputs(
         g3_rank1_su4_augmented_sos_census_report,
         g3_rank1_su4_augmented_sos_cubic_map_report,
         g3_rank1_su4_augmented_sos_quartic_map_report,
+        g3_rank1_su4_augmented_sos_psd_target_report,
         g3_alternative_global_sos_report,
     )
     gates = _build_gates(
@@ -4173,6 +4442,54 @@ def _build_report_from_inputs(
                 "rank1_SU4_augmented_quartic_arbitrary_Phi_bound_open"
             ] is True
             and g3_frontier["rank1_SU4_augmented_quartic_G3_open"] is True
+            and g3_frontier["rank1_SU4_augmented_PSD_target_exact"] is True
+            and g3_frontier[
+                "rank1_SU4_augmented_standard_PSD_route_count"
+            ] == 22
+            and g3_frontier[
+                "rank1_SU4_augmented_standard_PSD_parameter_count"
+            ] == 19_594
+            and g3_frontier[
+                "rank1_SU4_augmented_real_type_PSD_congruences_exact"
+            ] is True
+            and g3_frontier[
+                "rank1_SU4_augmented_complex_Hermitian_coordinates_exact"
+            ] is True
+            and g3_frontier[
+                "rank1_SU4_augmented_physical_target_exact"
+            ] is True
+            and g3_frontier[
+                "rank1_SU4_augmented_physical_target_row_count"
+            ] == 6_585
+            and g3_frontier[
+                "rank1_SU4_augmented_physical_target_common_denominator"
+            ] == 1_728_000
+            and g3_frontier[
+                "rank1_SU4_augmented_physical_target_nonzero_count"
+            ] == 845
+            and g3_frontier[
+                "rank1_SU4_augmented_physical_target_sha256"
+            ] == "e2d9eec1b01b3eeefc4a54d404db93171aa6600ea9ef646a215ab0b5401f7630"
+            and g3_frontier[
+                "rank1_SU4_augmented_physical_quartic_target_row_count"
+            ] == 6_057
+            and g3_frontier[
+                "rank1_SU4_augmented_physical_quartic_target_common_denominator"
+            ] == 3_375
+            and g3_frontier[
+                "rank1_SU4_augmented_physical_quartic_target_nonzero_count"
+            ] == 825
+            and g3_frontier[
+                "rank1_SU4_augmented_physical_quartic_target_sha256"
+            ] == "38476cff340ef8702735d48d7dbdf644ed41f8dc4a359264d33d966f177145ad"
+            and g3_frontier[
+                "rank1_SU4_augmented_standard_coordinate_map_open"
+            ] is True
+            and g3_frontier["rank1_SU4_augmented_PSD_SDP_open"] is True
+            and g3_frontier[
+                "rank1_SU4_augmented_PSD_arbitrary_Phi_bound_open"
+            ] is True
+            and g3_frontier["rank1_SU4_augmented_PSD_G3_open"] is True
             and g3_frontier["G3_closed"] is False
             and g3_frontier["whole_model_excluded"] is False
         ),
@@ -4325,9 +4642,10 @@ def _build_report_from_inputs(
                 "dimension 936. Its zero placeholder is not a physical target. "
                 "The homogeneous quartic interface is also exact: its "
                 "6057x18085 integer map has rank 6057 and kernel dimension "
-                "12028. The physical target, standard real-type PSD "
-                "congruences, full coordinate Schur map, SDP result, and G3 "
-                "remain open."
+                "12028. All 22 standard PSD-coordinate routes and the exact "
+                "physical 6585-row target are constructed. The coefficient "
+                "map in standard PSD coordinates, SDP result, and G3 remain "
+                "open."
             ),
         },
         {"wave": 4, "gates": ["G6"], "status": "BLOCKED_ON_G3_G4_G5"},
@@ -4361,8 +4679,9 @@ def _build_report_from_inputs(
         "explicit, with 1414 real variables and an exact-rank-478, 478x1414 "
         "integer map whose kernel has dimension 936. Its reserved zero vector "
         "is not a physical G3 target. The exact quartic Schur map has shape "
-        "6057x18085, rank 6057, and kernel dimension 12028. The physical "
-        "target, standard real-type PSD congruences, full coordinate map, SDP "
+        "6057x18085, rank 6057, and kernel dimension 12028. All 22 standard "
+        "PSD-coordinate routes and the exact physical 6585-row target are "
+        "constructed. The coefficient map in standard PSD coordinates, SDP "
         "result, arbitrary-Phi bound, and "
         "arbitrary non-pure-Delta Sigma coercivity remain open. "
         "G5 is CLOSED; G4 and G6-G8 remain "
@@ -4404,8 +4723,9 @@ def _build_report_from_inputs(
         "variables and an exact-rank-478, 478x1414 map with kernel dimension "
         "936; its abstract zero placeholder is not the physical gap target. "
         "The homogeneous quartic interface is now an exact-rank-6057, "
-        "6057x18085 map with kernel dimension 12028. The physical gap vector, "
-        "standard real-type PSD congruences, 6585x19594 Schur matrix, and SDP "
+        "6057x18085 map with kernel dimension 12028. All 22 standard "
+        "PSD-coordinate routes and the exact physical 6585-row target are "
+        "constructed. The coefficient map in standard PSD coordinates and SDP "
         "remain open. Uniform "
         "coercivity for arbitrary non-pure-Delta Sigma orientations remains open. The "
         "historical 64/91 "
@@ -4486,6 +4806,9 @@ def _build_report_from_inputs(
             ),
             "gauged_G3_rank1_SU4_augmented_SOS_quartic_map": (
                 g3_rank1_su4_augmented_sos_quartic_map_report
+            ),
+            "gauged_G3_rank1_SU4_augmented_SOS_PSD_routes_and_physical_target": (
+                g3_rank1_su4_augmented_sos_psd_target_report
             ),
             "gauged_G3_alternative_global_SOS_audit": (
                 g3_alternative_global_sos_report
@@ -4587,6 +4910,9 @@ def build_report() -> dict[str, Any]:
         ),
         g3_rank1_su4_augmented_sos_quartic_map_report=_load_json_artifact(
             G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_JSON
+        ),
+        g3_rank1_su4_augmented_sos_psd_target_report=_load_json_artifact(
+            G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_JSON
         ),
         g3_alternative_global_sos_report=_load_json_artifact(
             G3_ALTERNATIVE_GLOBAL_SOS_JSON
