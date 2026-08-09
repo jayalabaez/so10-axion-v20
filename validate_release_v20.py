@@ -46,6 +46,8 @@ FINAL_THEOREM_CORE_PATHS: tuple[str, ...] = (
     "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_V20.md",
     "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_V20.json",
     "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_V20.md",
+    "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_V20.json",
+    "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_V20.md",
     "G1_EXACT_DECLARED_SYMMETRY_CHARACTER_CENSUS_V20.json",
     "G1_EXACT_DECLARED_SYMMETRY_CHARACTER_CENSUS_V20.md",
     "G1_G8_EXECUTION_ROADMAP_V20.md",
@@ -65,6 +67,7 @@ FINAL_THEOREM_CORE_PATHS: tuple[str, ...] = (
     "exact_gauged_u1x_g3_rank1_su4_aligned_carriers_v20.py",
     "exact_gauged_u1x_g3_rank1_su4_phi210_quadratic_basis_v20.py",
     "exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py",
+    "exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py",
     "prepare_validation_artifacts_v20.py",
     "replicate.py",
     "test_authoritative_full_model_gate_v20.py",
@@ -75,6 +78,7 @@ FINAL_THEOREM_CORE_PATHS: tuple[str, ...] = (
     "test_exact_gauged_u1x_g3_rank1_su4_aligned_carriers_v20.py",
     "test_exact_gauged_u1x_g3_rank1_su4_phi210_quadratic_basis_v20.py",
     "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py",
+    "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py",
     "test_g1_exact_declared_symmetry_character_census_v20.py",
     "test_g1_g8_execution_roadmap_v20.py",
     "test_g1_g8_gate_ledger_v20.py",
@@ -111,7 +115,8 @@ def rank1_su4_release_predicates(
     aligned_report: dict,
     quadratic_report: dict,
     census_report: dict,
-) -> tuple[bool, bool, bool, bool, bool]:
+    cubic_report: dict,
+) -> tuple[bool, bool, bool, bool, bool, bool]:
     """Return exact, fail-closed infrastructure predicates for the release."""
     stabilizer_exact = gate_ledger._rank1_su4_stabilizer_infrastructure_exact(
         stabilizer_report
@@ -130,9 +135,14 @@ def rank1_su4_release_predicates(
         census_report, stabilizer_report, intertwiners_report, aligned_report,
         quadratic_report,
     )
+    cubic_exact = gate_ledger._rank1_su4_augmented_sos_cubic_map_exact(
+        cubic_report, stabilizer_report, intertwiners_report, aligned_report,
+        quadratic_report, census_report,
+    )
     return (
         stabilizer_exact, intertwiners_exact, aligned_exact, quadratic_exact,
         census_exact,
+        cubic_exact,
     )
 
 
@@ -413,6 +423,12 @@ def main() -> int:
     run(
         [
             sys.executable,
+            "exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py",
+        ]
+    )
+    run(
+        [
+            sys.executable,
             "exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py",
             "--write",
         ]
@@ -580,6 +596,12 @@ def main() -> int:
         (
             ROOT
             / "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_V20.json"
+        ).read_text()
+    )
+    exact_rank1_su4_augmented_sos_cubic_map = json.loads(
+        (
+            ROOT
+            / "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_V20.json"
         ).read_text()
     )
     exact_alternative_sos = json.loads(
@@ -1194,12 +1216,14 @@ def main() -> int:
         rank1_su4_aligned_carriers_exact,
         rank1_su4_phi210_quadratic_basis_exact,
         rank1_su4_augmented_sos_census_exact,
+        rank1_su4_augmented_sos_cubic_map_exact,
     ) = rank1_su4_release_predicates(
         exact_rank1_su4_stabilizer,
         exact_rank1_su4_phi210_intertwiners,
         exact_rank1_su4_aligned_carriers,
         exact_rank1_su4_phi210_quadratic_basis,
         exact_rank1_su4_augmented_sos_census,
+        exact_rank1_su4_augmented_sos_cubic_map,
     )
     require(
         rank1_su4_stabilizer_exact,
@@ -1223,6 +1247,39 @@ def main() -> int:
     require(
         rank1_su4_augmented_sos_census_exact,
         "rank-one SU(4) augmented-SOS census drifted or overclaimed a coordinate map, PSD result, arbitrary-Phi bound, or G3",
+    )
+    require(
+        rank1_su4_augmented_sos_cubic_map_exact,
+        "rank-one SU(4) augmented cubic map drifted or promoted its abstract zero placeholder to a physical target, PSD result, arbitrary-Phi bound, or G3",
+    )
+    cubic_scope = exact_rank1_su4_augmented_sos_cubic_map["scope"]
+    cubic_map = exact_rank1_su4_augmented_sos_cubic_map["cubic_coordinate_map"]
+    require(
+        cubic_map["abstract_zero_placeholder_is_not_a_physical_G3_target"]
+        is True
+        and cubic_map["physical_G3_gap_target_vector_constructed"] is False
+        and cubic_map["physical_G3_gap_cubic_zero_RHS_certified"] is False
+        and all(
+            cubic_scope[name] is False
+            for name in (
+                "degree_zero_coefficient_map_constructed",
+                "degree_one_coefficient_map_constructed",
+                "degree_two_coefficient_map_constructed",
+                "degree_four_coefficient_map_constructed",
+                "full_6585_by_19594_Schur_coordinate_matrix_constructed",
+                "physical_G3_gap_target_vector_constructed",
+                "physical_G3_gap_cubic_zero_RHS_certified",
+                "augmented_Schur_SOS_SDP_constructed",
+                "augmented_Schur_SOS_SDP_feasibility_certified",
+                "augmented_Schur_SOS_SDP_infeasibility_certified",
+                "arbitrary_real_Phi_lower_bound_proved",
+                "arbitrary_rank1_Phi_proved",
+                "G3_closed",
+                "whole_model_validated",
+                "whole_model_excluded",
+            )
+        ),
+        "cubic-map placeholder or open-scope contract was promoted beyond the exact theorem",
     )
     alternative_flags = exact_alternative_sos["flags"]
     require(
@@ -1465,6 +1522,7 @@ def main() -> int:
             "test_exact_gauged_u1x_g3_rank1_su4_aligned_carriers_v20.py",
             "test_exact_gauged_u1x_g3_rank1_su4_phi210_quadratic_basis_v20.py",
             "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py",
+            "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py",
             "test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py",
             "test_final_g3_acceptance_gate_v20.py",
             "test_gauged_u1x_g3_sos_candidate_v20.py",

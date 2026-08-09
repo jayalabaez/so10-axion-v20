@@ -89,6 +89,9 @@ G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_JSON = (
 G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_JSON = (
     ROOT / "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_V20.json"
 )
+G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_JSON = (
+    ROOT / "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_V20.json"
+)
 RANK1_SU4_ORDERED_LABELS = (
     "H1",
     "H2",
@@ -1446,6 +1449,425 @@ def _rank1_su4_augmented_sos_census_exact(
     )
 
 
+def _rank1_su4_augmented_sos_cubic_map_exact(
+    report: dict[str, Any],
+    stabilizer_report: dict[str, Any],
+    intertwiners_report: dict[str, Any],
+    aligned_report: dict[str, Any],
+    quadratic_report: dict[str, Any],
+    census_report: dict[str, Any],
+) -> bool:
+    """Fail closed on the exact cubic Schur map, never on a physical RHS."""
+    checks = report.get("checks", {})
+    scope = report.get("scope", {})
+    provenance = report.get("source_provenance", {})
+    targets = report.get("Sym2_target_carriers", {})
+    pairings = report.get("contragredient_pairings", {})
+    domain = report.get("physical_cubic_domain", {})
+    cubic_map = report.get("cubic_coordinate_map", {})
+    arithmetic = report.get("exact_arithmetic_safety", {})
+    public_apis = report.get("public_exact_APIs", {})
+    target_families = targets.get("families", [])
+    pairing_families = pairings.get("families", [])
+    block_rows = domain.get("all_22_augmented_block_rows", [])
+
+    check_keys = {
+        "abstract_478_coordinate_zero_placeholder_exact_and_nonphysical",
+        "all_1414_complexified_cross_tensors_constructed_exact",
+        "all_22_real_Hermitian_block_rows_and_1414_variables_exact",
+        "all_required_Sym2_highest_weight_carriers_exact",
+        "all_target_carriers_use_frozen_common_words_and_actions_exact",
+        "all_ten_contragredient_pairings_exact",
+        "exact_rank_478_and_kernel_936_certified",
+        "explicit_integer_478_by_1414_coordinate_map_exact",
+        "frozen_census_aligned_quadratic_and_intertwiner_provenance_exact",
+        "full_SDP_and_G3_absence_declared_fail_closed",
+        "integer_rational_and_modular_arithmetic_safety_exact",
+        "physical_realification_rank_1414_exact",
+    }
+    true_scope = {
+        "H_fixed_to_h_minus",
+        "Sigma_fixed_to_q_over_4",
+        "rank1_endpoint_SU4_stabilizer_used",
+        "all_1414_real_structure_fixed_cubic_Schur_cross_variables_constructed",
+        "explicit_478_by_1414_cubic_coordinate_map_constructed",
+        "cubic_map_rank_478_and_kernel_dimension_936_exact",
+        "abstract_478_coordinate_zero_placeholder_available",
+    }
+    false_scope = {
+        "degree_zero_coefficient_map_constructed",
+        "degree_one_coefficient_map_constructed",
+        "degree_two_coefficient_map_constructed",
+        "degree_four_coefficient_map_constructed",
+        "full_6585_by_19594_Schur_coordinate_matrix_constructed",
+        "physical_G3_gap_target_vector_constructed",
+        "physical_G3_gap_cubic_zero_RHS_certified",
+        "augmented_Schur_SOS_SDP_constructed",
+        "augmented_Schur_SOS_SDP_feasibility_certified",
+        "augmented_Schur_SOS_SDP_infeasibility_certified",
+        "arbitrary_real_Phi_lower_bound_proved",
+        "arbitrary_rank1_Phi_proved",
+        "G3_closed",
+        "whole_model_validated",
+        "whole_model_excluded",
+    }
+    provenance_keys = {
+        "aligned_module", "aligned_n_failed", "aligned_source_sha256",
+        "aligned_status", "all_required_frozen_provenance_exact",
+        "census_module", "census_n_failed",
+        "census_physical_G3_gap_cubic_zero_RHS_certified",
+        "census_physical_G3_gap_target_vector_constructed",
+        "census_report_sha256", "census_source_sha256", "census_status",
+        "expected_aligned_source_sha256", "expected_census_report_sha256",
+        "expected_census_source_sha256", "expected_intertwiner_source_sha256",
+        "expected_quadratic_basis_sha256", "expected_quadratic_report_sha256",
+        "expected_quadratic_source_sha256", "intertwiner_module",
+        "intertwiner_source_sha256", "live_Schur_parameter_grade_counts",
+        "live_target_invariant_grade_counts", "model_contract_id", "proof_grade",
+        "quadratic_basis_sha256", "quadratic_module",
+        "quadratic_report_sha256", "quadratic_source_sha256",
+    }
+    target_keys = {
+        "all_common_lowering_word_carriers_have_full_rank_exact",
+        "all_copies_aligned_by_exact_highest_weight_universality",
+        "all_highest_vectors_raise_to_zero_exact",
+        "all_highest_weight_nullities_match_character_census_exact",
+        "all_reference_copies_intertwine_9_Chevalley_actions_exact",
+        "families", "irrep_family_count", "proof_grade", "representation",
+        "total_complex_carrier_copy_count", "total_isotypic_dimension",
+    }
+    target_family_keys = {
+        "checked_Chevalley_action_count", "concatenated_nnz",
+        "concatenated_rank_by_highest_weight_evaluation_exact",
+        "concatenated_sha256", "concatenated_shape", "constraint_nnz",
+        "constraint_sha256", "constraint_shape", "copy_count", "dimension",
+        "every_copy_alignment_follows_from_highest_weight_universality_exact",
+        "every_copy_full_rank_mod_prime", "free_columns",
+        "highest_vectors_maximum_absolute_entry", "highest_vectors_nnz",
+        "highest_vectors_sha256", "highest_weight",
+        "highest_weight_evaluation_rank_argument", "individual_copy_ranks_mod_prime",
+        "irrep", "lowering_word_count", "maximum_absolute_entry",
+        "maximum_rational_reconstruction_denominator", "modular_rank", "nullity",
+        "proof_grade", "raising_residual_zero_exact", "rank_nullity_argument",
+        "reference_copy_all_9_Chevalley_actions_intertwine_exact",
+        "source_Chevalley_imaginary_residuals_zero_exact",
+        "source_weight_space_dimension",
+    }
+    pairing_keys = {
+        "all_15_compact_tensor_equations_exact",
+        "all_pairing_spaces_one_dimensional_exact", "families",
+        "pairing_family_count", "proof_grade",
+    }
+    pairing_family_keys = {
+        "all_15_compact_tensor_invariance_equations_exact", "constraint_nnz",
+        "constraint_sha256", "constraint_shape", "dimension", "exact_nullity",
+        "matrix_maximum_absolute_entry", "matrix_nnz", "matrix_sha256",
+        "maximum_rational_reconstruction_denominator", "modular_rank",
+        "proof_grade", "rank_nullity_argument", "source_irrep",
+        "target_contragredient_irrep", "weight_zero_variable_count",
+    }
+    domain_keys = {
+        "Gram_symmetric_off_diagonal_multiplier", "all_22_augmented_block_rows",
+        "all_22_block_provenance_rows_exact",
+        "all_multiplications_commute_with_physical_conjugation_exact",
+        "all_selected_vectors_satisfy_physical_real_structure_exact",
+        "complexified_domain_basis_count", "complexified_raw_image_total_nnz",
+        "complexified_raw_tensor_total_nnz", "domain_basis_metadata_sha256",
+        "domain_modular_elimination_fill", "domain_modular_pivot_count",
+        "expected_complexified_counts_by_irrep", "nonzero_cubic_block_count",
+        "observed_complexified_counts_by_irrep", "physical_basis_count",
+        "physical_candidate_count", "physical_component_counts",
+        "physical_real_block_counts", "proof_grade",
+    }
+    block_row_keys = {
+        "Phi2_multiplicity", "all_variables_constructed_exact",
+        "constructed_physical_basis_variable_count",
+        "expected_cubic_cross_real_parameter_count", "real_block_kind",
+        "representative_dynkin", "tPhi_multiplicity",
+    }
+    map_keys = {
+        "Gram_convention", "abstract_zero_interface_placeholder_dtype",
+        "abstract_zero_interface_placeholder_nnz",
+        "abstract_zero_interface_placeholder_shape",
+        "abstract_zero_placeholder_is_not_a_physical_G3_target",
+        "all_478_abstract_interface_placeholder_entries_zero_exact",
+        "coordinate_map_maximum_absolute_entry", "coordinate_map_nnz",
+        "coordinate_map_sha256", "coordinate_map_shape", "exact_kernel_dimension",
+        "exact_rank", "full_physical_image_maximum_absolute_entry",
+        "full_physical_image_nnz", "full_physical_image_sha256",
+        "full_physical_image_shape", "independent_domain_column_indices",
+        "modular_prime", "physical_G3_gap_cubic_zero_RHS_certified",
+        "physical_G3_gap_target_vector_constructed", "proof_grade",
+        "rank_argument", "rank_mod_prime",
+        "selected_minor_determinant_nonzero_mod_prime",
+        "selected_minor_rank_mod_prime", "selected_minor_sha256",
+        "source_coordinate_space", "target_coordinate_metadata_sha256",
+        "target_coordinate_space", "target_imaginary_coordinate_count",
+        "target_pivot_row_count", "target_real_coordinate_count",
+    }
+    arithmetic_keys = {
+        "Fraction_based_constraint_denominator_clearing_exact",
+        "Python_integer_sparse_aggregation_exact",
+        "all_recorded_bounds_fit_signed_int64",
+        "checked_sparse_products_reject_unsafe_int64_bounds",
+        "conservative_live_product_absolute_bound", "maximum_live_absolute_entry",
+        "modular_rational_reconstruction_verified_over_Z_exact",
+        "modular_row_update_absolute_bound", "proof_grade",
+        "signed_int64_maximum", "storage_dtype",
+    }
+    public_api_keys = {
+        "abstract_zero_interface_placeholder", "coordinate_map",
+        "domain_metadata", "map_convention", "target_metadata",
+    }
+    expected_counts = {
+        "1": 180, "4": 240, "4bar": 240, "6": 248, "10": 39,
+        "10bar": 39, "20": 124, "20bar": 124, "20prime": 42, "15": 138,
+    }
+    expected_real_blocks = {
+        "(0, 0, 0)": 180, "(0, 0, 1)": 480, "(0, 0, 2)": 78,
+        "(0, 1, 0)": 248, "(0, 1, 1)": 248, "(0, 2, 0)": 42,
+        "(1, 0, 1)": 138,
+    }
+    expected_census_source = (
+        "3e0d7f2eac73eec950960f1ffd78c9584a4b15d070c84889080cf4c67d5a4d63"
+    )
+    expected_census_report = (
+        "703a3819fea5afe857757082190f9cf1e22f283ab0ddcc882c2f011b65ba58f3"
+    )
+    expected_aligned_source = (
+        "5671857444bda7d53db45393e28a3b9ac0784d0f2a63aa1e541eb5e356d23ccc"
+    )
+    expected_intertwiner_source = (
+        "76fa77c99b8d6e963e8694acf74280de29ced4c7a7623bffa991aead77329f49"
+    )
+    expected_quadratic_source = (
+        "4eec63ba40b888de736c84f607019ba0f21915028b423578502893744bab1060"
+    )
+    expected_quadratic_report = (
+        "497a8c1db29e7d88f30bd1cc68902cc7981da4a3fefd5586bd15bad323d1e259"
+    )
+    expected_quadratic_basis = (
+        "27c0649758c87aa2cbe39ae04596f4bd6df511ba3ca4004013bdcf936599b694"
+    )
+    return bool(
+        _rank1_su4_stabilizer_infrastructure_exact(stabilizer_report)
+        and _rank1_su4_phi210_intertwiners_exact(
+            intertwiners_report, stabilizer_report
+        )
+        and _rank1_su4_aligned_carriers_exact(
+            aligned_report, intertwiners_report, stabilizer_report
+        )
+        and _rank1_su4_phi210_quadratic_basis_exact(
+            quadratic_report, stabilizer_report, intertwiners_report,
+            aligned_report,
+        )
+        and _rank1_su4_augmented_sos_census_exact(
+            census_report, stabilizer_report, intertwiners_report,
+            aligned_report, quadratic_report,
+        )
+        and _file_sha256(
+            ROOT / "exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py"
+        ) == "589952b9b0a0b6af1543b87c89b0f3626a4bfb9c4219821a915fe04fab8af690"
+        and _canonical_json_sha256(report)
+        == "f1486e4100e15c457cef9d0377665a06dbbb6a31e9476de1a1c9de5333da8e45"
+        and set(report) == {
+            "Sym2_target_carriers", "checks", "contragredient_pairings",
+            "cubic_coordinate_map", "exact_arithmetic_safety", "failures",
+            "model_contract_id", "n_checks", "n_failed", "next_exact_target",
+            "overall_state", "physical_cubic_domain", "public_exact_APIs",
+            "scope", "source_provenance", "status", "verdict",
+        }
+        and report.get("status")
+        == "EXACT_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_CERTIFIED"
+        and report.get("overall_state")
+        == "SU4_AUGMENTED_CUBIC_MAP_CLOSED__FULL_SDP_AND_G3_OPEN"
+        and report.get("model_contract_id") == AUTHORITATIVE_CONTRACT_ID
+        and report.get("n_checks") == len(check_keys)
+        and report.get("n_failed") == 0
+        and report.get("failures") == []
+        and set(checks) == check_keys
+        and all(checks.get(key) is True for key in check_keys)
+        and set(scope) == true_scope | false_scope
+        and all(scope.get(key) is True for key in true_scope)
+        and all(scope.get(key) is False for key in false_scope)
+        and set(provenance) == provenance_keys
+        and provenance.get("model_contract_id") == AUTHORITATIVE_CONTRACT_ID
+        and provenance.get("proof_grade") is True
+        and provenance.get("all_required_frozen_provenance_exact") is True
+        and provenance.get("census_module")
+        == "exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py"
+        and provenance.get("census_source_sha256")
+        == provenance.get("expected_census_source_sha256")
+        == _file_sha256(ROOT / provenance.get("census_module", ""))
+        == expected_census_source
+        and provenance.get("census_report_sha256")
+        == provenance.get("expected_census_report_sha256")
+        == _canonical_json_sha256(census_report)
+        == expected_census_report
+        and provenance.get("census_status")
+        == "EXACT_RANK1_SU4_AUGMENTED_SOS_CENSUS_AND_UNIVERSAL_MAP_CERTIFIED"
+        and provenance.get("census_n_failed") == 0
+        and provenance.get("census_physical_G3_gap_target_vector_constructed")
+        is False
+        and provenance.get("census_physical_G3_gap_cubic_zero_RHS_certified")
+        is False
+        and provenance.get("aligned_module")
+        == "exact_gauged_u1x_g3_rank1_su4_aligned_carriers_v20.py"
+        and provenance.get("aligned_source_sha256")
+        == provenance.get("expected_aligned_source_sha256")
+        == _file_sha256(ROOT / provenance.get("aligned_module", ""))
+        == expected_aligned_source
+        and provenance.get("aligned_status")
+        == "EXACT_RANK1_SU4_ALIGNED_CARRIER_INFRASTRUCTURE_CERTIFIED"
+        and provenance.get("aligned_n_failed") == 0
+        and provenance.get("intertwiner_module")
+        == "exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py"
+        and provenance.get("intertwiner_source_sha256")
+        == provenance.get("expected_intertwiner_source_sha256")
+        == _file_sha256(ROOT / provenance.get("intertwiner_module", ""))
+        == expected_intertwiner_source
+        and provenance.get("quadratic_module")
+        == "exact_gauged_u1x_g3_rank1_su4_phi210_quadratic_basis_v20.py"
+        and provenance.get("quadratic_source_sha256")
+        == provenance.get("expected_quadratic_source_sha256")
+        == _file_sha256(ROOT / provenance.get("quadratic_module", ""))
+        == expected_quadratic_source
+        and provenance.get("quadratic_report_sha256")
+        == provenance.get("expected_quadratic_report_sha256")
+        == _canonical_json_sha256(quadratic_report)
+        == expected_quadratic_report
+        and provenance.get("quadratic_basis_sha256")
+        == provenance.get("expected_quadratic_basis_sha256")
+        == quadratic_report.get("quadratic_basis", {}).get("basis_sha256")
+        == expected_quadratic_basis
+        and provenance.get("live_Schur_parameter_grade_counts")
+        == [1, 4, 90, 1_414, 18_085]
+        and provenance.get("live_target_invariant_grade_counts")
+        == [1, 4, 45, 478, 6_057]
+        and set(targets) == target_keys
+        and targets.get("proof_grade") is True
+        and targets.get("irrep_family_count") == 10
+        and targets.get("total_complex_carrier_copy_count") == 540
+        and targets.get("total_isotypic_dimension") == 6_032
+        and len(target_families) == 10
+        and {row.get("irrep") for row in target_families}
+        == {"1", "4", "4bar", "6", "10", "10bar", "20", "20bar", "20prime", "15"}
+        and all(
+            isinstance(row, dict)
+            and set(row) == target_family_keys
+            and row.get("proof_grade") is True
+            for row in target_families
+        )
+        and all(
+            targets.get(key) is True
+            for key in (
+                "all_common_lowering_word_carriers_have_full_rank_exact",
+                "all_copies_aligned_by_exact_highest_weight_universality",
+                "all_highest_vectors_raise_to_zero_exact",
+                "all_highest_weight_nullities_match_character_census_exact",
+                "all_reference_copies_intertwine_9_Chevalley_actions_exact",
+            )
+        )
+        and set(pairings) == pairing_keys
+        and pairings.get("proof_grade") is True
+        and pairings.get("pairing_family_count") == 10
+        and pairings.get("all_pairing_spaces_one_dimensional_exact") is True
+        and pairings.get("all_15_compact_tensor_equations_exact") is True
+        and len(pairing_families) == 10
+        and all(
+            isinstance(row, dict)
+            and set(row) == pairing_family_keys
+            and row.get("exact_nullity") == 1
+            and row.get("all_15_compact_tensor_invariance_equations_exact") is True
+            and row.get("proof_grade") is True
+            for row in pairing_families
+        )
+        and set(domain) == domain_keys
+        and domain.get("proof_grade") is True
+        and domain.get("complexified_domain_basis_count") == 1_414
+        and domain.get("physical_candidate_count") == 2_754
+        and domain.get("physical_basis_count") == 1_414
+        and domain.get("domain_modular_pivot_count") == 1_414
+        and domain.get("expected_complexified_counts_by_irrep") == expected_counts
+        and domain.get("observed_complexified_counts_by_irrep") == expected_counts
+        and domain.get("physical_component_counts")
+        == {"imaginary_minus": 667, "real_plus": 747}
+        and domain.get("physical_real_block_counts") == expected_real_blocks
+        and domain.get("all_multiplications_commute_with_physical_conjugation_exact")
+        is True
+        and domain.get("all_selected_vectors_satisfy_physical_real_structure_exact")
+        is True
+        and domain.get("all_22_block_provenance_rows_exact") is True
+        and domain.get("nonzero_cubic_block_count") == 7
+        and domain.get("Gram_symmetric_off_diagonal_multiplier") == 2
+        and domain.get("domain_basis_metadata_sha256")
+        == "765a0f92ef26b1e8335e212595389ddc73e4a54274fd2b3450f04b9bd56383a5"
+        and len(block_rows) == 22
+        and all(
+            isinstance(row, dict)
+            and set(row) == block_row_keys
+            and row.get("all_variables_constructed_exact") is True
+            for row in block_rows
+        )
+        and sum(
+            int(row.get("constructed_physical_basis_variable_count", 0))
+            for row in block_rows
+        ) == 1_414
+        and set(cubic_map) == map_keys
+        and cubic_map.get("proof_grade") is True
+        and cubic_map.get("full_physical_image_shape") == [43_820, 1_414]
+        and cubic_map.get("full_physical_image_nnz") == 287_472
+        and cubic_map.get("full_physical_image_maximum_absolute_entry") == 32
+        and cubic_map.get("full_physical_image_sha256")
+        == "f2b09f7a6596469b25e1f8c0dc2eb109029f99ac9b774f8deaf335432161e0fb"
+        and cubic_map.get("coordinate_map_shape") == [478, 1_414]
+        and cubic_map.get("coordinate_map_nnz") == 3_145
+        and cubic_map.get("coordinate_map_maximum_absolute_entry") == 32
+        and cubic_map.get("coordinate_map_sha256")
+        == "77035bb3e5960879c54da3673670eb024b4ed0c0e60752fcc26973eee023941a"
+        and cubic_map.get("modular_prime") == 1_000_003
+        and cubic_map.get("rank_mod_prime") == 478
+        and cubic_map.get("selected_minor_rank_mod_prime") == 478
+        and cubic_map.get("selected_minor_determinant_nonzero_mod_prime") is True
+        and cubic_map.get("selected_minor_sha256")
+        == "6a27a6bb10d4c486e2ae6b0232bd871be088ede4f64daa706c0df66da0a9017f"
+        and cubic_map.get("exact_rank") == 478
+        and cubic_map.get("exact_kernel_dimension") == 936
+        and len(cubic_map.get("independent_domain_column_indices", [])) == 478
+        and len(set(cubic_map.get("independent_domain_column_indices", []))) == 478
+        and cubic_map.get("target_pivot_row_count") == 478
+        and cubic_map.get("target_real_coordinate_count") == 272
+        and cubic_map.get("target_imaginary_coordinate_count") == 206
+        and cubic_map.get("target_coordinate_metadata_sha256")
+        == "fb3f4a2c9fde59b087cc1d95c4f08685ac51b720df354ff0cc2090c37536a482"
+        and cubic_map.get("abstract_zero_interface_placeholder_shape") == [478]
+        and cubic_map.get("abstract_zero_interface_placeholder_dtype") == "int64"
+        and cubic_map.get("abstract_zero_interface_placeholder_nnz") == 0
+        and cubic_map.get("all_478_abstract_interface_placeholder_entries_zero_exact")
+        is True
+        and cubic_map.get("abstract_zero_placeholder_is_not_a_physical_G3_target")
+        is True
+        and cubic_map.get("physical_G3_gap_target_vector_constructed") is False
+        and cubic_map.get("physical_G3_gap_cubic_zero_RHS_certified") is False
+        and set(arithmetic) == arithmetic_keys
+        and arithmetic.get("proof_grade") is True
+        and arithmetic.get("all_recorded_bounds_fit_signed_int64") is True
+        and arithmetic.get("checked_sparse_products_reject_unsafe_int64_bounds")
+        is True
+        and arithmetic.get("conservative_live_product_absolute_bound")
+        == 22_686_720
+        and arithmetic.get("modular_row_update_absolute_bound")
+        == 1_000_005_000_006
+        and arithmetic.get("signed_int64_maximum") == 9_223_372_036_854_775_807
+        and set(public_apis) == public_api_keys
+        and public_apis.get("coordinate_map") == "exact_cubic_coordinate_map()"
+        and public_apis.get("abstract_zero_interface_placeholder")
+        == "abstract_zero_cubic_interface_placeholder()"
+        and public_apis.get("domain_metadata") == "cubic_domain_basis_metadata()"
+        and public_apis.get("target_metadata") == "cubic_target_coordinate_metadata()"
+    )
+
+
 def _gauged_u1x_g3_frontier(
     sos_report: dict[str, Any],
     pd_report: dict[str, Any],
@@ -1470,6 +1892,7 @@ def _gauged_u1x_g3_frontier(
     rank1_su4_aligned_carriers_report: dict[str, Any],
     rank1_su4_phi210_quadratic_basis_report: dict[str, Any],
     rank1_su4_augmented_sos_census_report: dict[str, Any],
+    rank1_su4_augmented_sos_cubic_map_report: dict[str, Any],
     alternative_global_sos_report: dict[str, Any],
 ) -> dict[str, Any]:
     """Bind rejected branches and the surviving SU(5)+Delta G3 frontier."""
@@ -1548,6 +1971,9 @@ def _gauged_u1x_g3_frontier(
     rank1_su4_census_scope = rank1_su4_augmented_sos_census_report.get(
         "scope", {}
     )
+    rank1_su4_cubic_scope = rank1_su4_augmented_sos_cubic_map_report.get(
+        "scope", {}
+    )
     alternative_flags = alternative_global_sos_report.get("flags", {})
 
     artifacts_present = {
@@ -1591,6 +2017,9 @@ def _gauged_u1x_g3_frontier(
         ),
         "rank1_SU4_augmented_SOS_census": bool(
             rank1_su4_augmented_sos_census_report
+        ),
+        "rank1_SU4_augmented_SOS_cubic_map": bool(
+            rank1_su4_augmented_sos_cubic_map_report
         ),
         "alternative_global_SOS_audit": bool(alternative_global_sos_report),
     }
@@ -2133,6 +2562,16 @@ def _gauged_u1x_g3_frontier(
             rank1_su4_phi210_quadratic_basis_report,
         )
     )
+    rank1_su4_augmented_sos_cubic_map_exact = (
+        _rank1_su4_augmented_sos_cubic_map_exact(
+            rank1_su4_augmented_sos_cubic_map_report,
+            rank1_su4_stabilizer_report,
+            rank1_su4_phi210_intertwiners_report,
+            rank1_su4_aligned_carriers_report,
+            rank1_su4_phi210_quadratic_basis_report,
+            rank1_su4_augmented_sos_census_report,
+        )
+    )
     alternative_global_sos_honestly_open = bool(
         alternative_global_sos_report.get("n_failed") == 0
         and alternative_global_sos_report.get("status")
@@ -2187,6 +2626,7 @@ def _gauged_u1x_g3_frontier(
         and rank1_su4_aligned_carriers_exact
         and rank1_su4_phi210_quadratic_basis_exact
         and rank1_su4_augmented_sos_census_exact
+        and rank1_su4_augmented_sos_cubic_map_exact
         and alternative_global_sos_honestly_open
     )
     return {
@@ -2506,6 +2946,92 @@ def _gauged_u1x_g3_frontier(
             and rank1_su4_census_scope.get("arbitrary_rank1_Phi_proved")
             is False
         ),
+        "rank1_SU4_augmented_cubic_map_exact": (
+            rank1_su4_augmented_sos_cubic_map_exact
+        ),
+        "rank1_SU4_augmented_cubic_carrier_copy_count": (
+            rank1_su4_augmented_sos_cubic_map_report.get(
+                "Sym2_target_carriers", {}
+            ).get("total_complex_carrier_copy_count")
+        ),
+        "rank1_SU4_augmented_cubic_real_variable_count": (
+            rank1_su4_augmented_sos_cubic_map_report.get(
+                "physical_cubic_domain", {}
+            ).get("physical_basis_count")
+        ),
+        "rank1_SU4_augmented_cubic_coordinate_map_shape": (
+            rank1_su4_augmented_sos_cubic_map_report.get(
+                "cubic_coordinate_map", {}
+            ).get("coordinate_map_shape")
+        ),
+        "rank1_SU4_augmented_cubic_coordinate_map_nnz": (
+            rank1_su4_augmented_sos_cubic_map_report.get(
+                "cubic_coordinate_map", {}
+            ).get("coordinate_map_nnz")
+        ),
+        "rank1_SU4_augmented_cubic_coordinate_map_rank": (
+            rank1_su4_augmented_sos_cubic_map_report.get(
+                "cubic_coordinate_map", {}
+            ).get("exact_rank")
+        ),
+        "rank1_SU4_augmented_cubic_coordinate_map_kernel_dimension": (
+            rank1_su4_augmented_sos_cubic_map_report.get(
+                "cubic_coordinate_map", {}
+            ).get("exact_kernel_dimension")
+        ),
+        "rank1_SU4_augmented_cubic_zero_placeholder_nonphysical": (
+            rank1_su4_augmented_sos_cubic_map_report.get(
+                "cubic_coordinate_map", {}
+            ).get("abstract_zero_placeholder_is_not_a_physical_G3_target")
+            is True
+            and rank1_su4_augmented_sos_cubic_map_report.get(
+                "cubic_coordinate_map", {}
+            ).get("physical_G3_gap_target_vector_constructed") is False
+            and rank1_su4_augmented_sos_cubic_map_report.get(
+                "cubic_coordinate_map", {}
+            ).get("physical_G3_gap_cubic_zero_RHS_certified") is False
+        ),
+        "rank1_SU4_augmented_cubic_other_graded_maps_open": all(
+            rank1_su4_cubic_scope.get(name) is False
+            for name in (
+                "degree_zero_coefficient_map_constructed",
+                "degree_one_coefficient_map_constructed",
+                "degree_two_coefficient_map_constructed",
+                "degree_four_coefficient_map_constructed",
+            )
+        ),
+        "rank1_SU4_augmented_cubic_full_coordinate_map_open": (
+            rank1_su4_cubic_scope.get(
+                "full_6585_by_19594_Schur_coordinate_matrix_constructed"
+            ) is False
+        ),
+        "rank1_SU4_augmented_cubic_physical_target_open": (
+            rank1_su4_cubic_scope.get(
+                "physical_G3_gap_target_vector_constructed"
+            ) is False
+            and rank1_su4_cubic_scope.get(
+                "physical_G3_gap_cubic_zero_RHS_certified"
+            ) is False
+        ),
+        "rank1_SU4_augmented_cubic_Schur_SOS_SDP_open": all(
+            rank1_su4_cubic_scope.get(name) is False
+            for name in (
+                "augmented_Schur_SOS_SDP_constructed",
+                "augmented_Schur_SOS_SDP_feasibility_certified",
+                "augmented_Schur_SOS_SDP_infeasibility_certified",
+            )
+        ),
+        "rank1_SU4_augmented_cubic_arbitrary_Phi_bound_open": (
+            rank1_su4_cubic_scope.get("arbitrary_real_Phi_lower_bound_proved")
+            is False
+            and rank1_su4_cubic_scope.get("arbitrary_rank1_Phi_proved")
+            is False
+        ),
+        "rank1_SU4_augmented_cubic_G3_open": (
+            rank1_su4_cubic_scope.get("G3_closed") is False
+            and rank1_su4_cubic_scope.get("whole_model_validated") is False
+            and rank1_su4_cubic_scope.get("whole_model_excluded") is False
+        ),
         "SU5_max_negative_arbitrary_Sigma_orientation_open": not bool(
             rank1_su3_scope.get("arbitrary_max_negative_Sigma")
         ),
@@ -2804,6 +3330,7 @@ def _build_report_from_inputs(
     g3_rank1_su4_aligned_carriers_report: dict[str, Any] | None = None,
     g3_rank1_su4_phi210_quadratic_basis_report: dict[str, Any] | None = None,
     g3_rank1_su4_augmented_sos_census_report: dict[str, Any] | None = None,
+    g3_rank1_su4_augmented_sos_cubic_map_report: dict[str, Any] | None = None,
     g3_alternative_global_sos_report: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Build a ledger from fresh reports, including repaired-contract states."""
@@ -2889,6 +3416,10 @@ def _build_report_from_inputs(
         g3_rank1_su4_augmented_sos_census_report = _load_json_artifact(
             G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_JSON
         )
+    if g3_rank1_su4_augmented_sos_cubic_map_report is None:
+        g3_rank1_su4_augmented_sos_cubic_map_report = _load_json_artifact(
+            G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_JSON
+        )
     if g3_alternative_global_sos_report is None:
         g3_alternative_global_sos_report = _load_json_artifact(
             G3_ALTERNATIVE_GLOBAL_SOS_JSON
@@ -2917,6 +3448,7 @@ def _build_report_from_inputs(
         g3_rank1_su4_aligned_carriers_report,
         g3_rank1_su4_phi210_quadratic_basis_report,
         g3_rank1_su4_augmented_sos_census_report,
+        g3_rank1_su4_augmented_sos_cubic_map_report,
         g3_alternative_global_sos_report,
     )
     gates = _build_gates(
@@ -3213,6 +3745,44 @@ def _build_report_from_inputs(
             is True
             and g3_frontier["rank1_SU4_augmented_arbitrary_Phi_bound_open"]
             is True
+            and g3_frontier["rank1_SU4_augmented_cubic_map_exact"] is True
+            and g3_frontier[
+                "rank1_SU4_augmented_cubic_carrier_copy_count"
+            ] == 540
+            and g3_frontier[
+                "rank1_SU4_augmented_cubic_real_variable_count"
+            ] == 1_414
+            and g3_frontier[
+                "rank1_SU4_augmented_cubic_coordinate_map_shape"
+            ] == [478, 1_414]
+            and g3_frontier[
+                "rank1_SU4_augmented_cubic_coordinate_map_nnz"
+            ] == 3_145
+            and g3_frontier[
+                "rank1_SU4_augmented_cubic_coordinate_map_rank"
+            ] == 478
+            and g3_frontier[
+                "rank1_SU4_augmented_cubic_coordinate_map_kernel_dimension"
+            ] == 936
+            and g3_frontier[
+                "rank1_SU4_augmented_cubic_zero_placeholder_nonphysical"
+            ] is True
+            and g3_frontier[
+                "rank1_SU4_augmented_cubic_other_graded_maps_open"
+            ] is True
+            and g3_frontier[
+                "rank1_SU4_augmented_cubic_full_coordinate_map_open"
+            ] is True
+            and g3_frontier[
+                "rank1_SU4_augmented_cubic_physical_target_open"
+            ] is True
+            and g3_frontier[
+                "rank1_SU4_augmented_cubic_Schur_SOS_SDP_open"
+            ] is True
+            and g3_frontier[
+                "rank1_SU4_augmented_cubic_arbitrary_Phi_bound_open"
+            ] is True
+            and g3_frontier["rank1_SU4_augmented_cubic_G3_open"] is True
             and g3_frontier["G3_closed"] is False
             and g3_frontier["whole_model_excluded"] is False
         ),
@@ -3359,8 +3929,12 @@ def _build_report_from_inputs(
                 "complete 45-element Phi210 invariant quadratic basis feed an "
                 "exact 22366-dimensional augmented census with 35 isotypic "
                 "types/824 copies, 22 real/Hermitian blocks, 19594 Schur "
-                "parameters, and 6585 invariant rows. The coordinate Schur "
-                "map, physical target, and PSD result remain open."
+                "parameters, and 6585 invariant rows. The complete cubic "
+                "interface is explicit: all 1414 real cross variables map "
+                "through a 478x1414 integer matrix of exact rank 478 and kernel "
+                "dimension 936. Its zero placeholder is not a physical target. "
+                "The remaining graded maps, physical target, full coordinate "
+                "Schur map, PSD result, and G3 remain open."
             ),
         },
         {"wave": 4, "gates": ["G6"], "status": "BLOCKED_ON_G3_G4_G5"},
@@ -3390,9 +3964,12 @@ def _build_report_from_inputs(
         "exact SU(4) stabilizer, aligned rank-210 carrier real maps, and explicit "
         "complete 45-element Phi210 invariant quadratic basis feed the exact "
         "22366-dimensional augmented census (35 types/824 copies, 22 blocks, "
-        "19594 parameters, 6585 rows). Its universal map is abstract only; the "
-        "coordinate Schur map, physical target, and PSD result remain open. Only "
-        "arbitrary non-pure-Delta Sigma coercivity remains open. "
+        "19594 parameters, 6585 rows). The complete cubic Schur interface is "
+        "explicit, with 1414 real variables and an exact-rank-478, 478x1414 "
+        "integer map whose kernel has dimension 936. Its reserved zero vector "
+        "is not a physical G3 target. The remaining graded maps, physical "
+        "target, full coordinate map, PSD result, arbitrary-Phi bound, and "
+        "arbitrary non-pure-Delta Sigma coercivity remain open. "
         "G5 is CLOSED; G4 and G6-G8 remain "
         "dependency-blocked. Historical "
         "Option-C evidence remains scoped and closes no gauged-model gate."
@@ -3428,9 +4005,12 @@ def _build_report_from_inputs(
         "16-dimensional SU(3)-fixed space. Its exact SU(4) stabilizer, aligned "
         "rank-210 carrier real maps, explicit complete 45-element Phi210 "
         "invariant quadratic basis, and exact augmented census are certified. "
-        "The 35 aligned isotypic embeddings across 824 copies, ordered target "
-        "coordinates, physical gap vector, 6585x19594 Schur matrix, and PSD "
-        "certificate remain open. Uniform "
+        "The complete cubic interface now has all 1414 real Schur cross "
+        "variables and an exact-rank-478, 478x1414 map with kernel dimension "
+        "936; its abstract zero placeholder is not the physical gap target. "
+        "The remaining graded maps, especially the 6057x18085 quartic sector, "
+        "physical gap vector, 6585x19594 Schur matrix, and PSD certificate "
+        "remain open. Uniform "
         "coercivity for arbitrary non-pure-Delta Sigma orientations remains open. The "
         "historical 64/91 "
         "derivative theorem, 449-dimensional "
@@ -3504,6 +4084,9 @@ def _build_report_from_inputs(
             ),
             "gauged_G3_rank1_SU4_augmented_SOS_census": (
                 g3_rank1_su4_augmented_sos_census_report
+            ),
+            "gauged_G3_rank1_SU4_augmented_SOS_cubic_map": (
+                g3_rank1_su4_augmented_sos_cubic_map_report
             ),
             "gauged_G3_alternative_global_SOS_audit": (
                 g3_alternative_global_sos_report
@@ -3599,6 +4182,9 @@ def build_report() -> dict[str, Any]:
         ),
         g3_rank1_su4_augmented_sos_census_report=_load_json_artifact(
             G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_JSON
+        ),
+        g3_rank1_su4_augmented_sos_cubic_map_report=_load_json_artifact(
+            G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_JSON
         ),
         g3_alternative_global_sos_report=_load_json_artifact(
             G3_ALTERNATIVE_GLOBAL_SOS_JSON

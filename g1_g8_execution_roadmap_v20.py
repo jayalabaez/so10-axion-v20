@@ -61,7 +61,7 @@ TASKS: list[dict[str, Any]] = [
         "id": "W3-G3-FULL-STATIONARITY",
         "wave": 3,
         "gates": ["G3"],
-        "status": "SU5_DELTA_CHIRAL_H_EXACT_LOCAL_MINIMUM__PURE_DELTA_FULL_RESIDUAL_GAP_CLOSED__RANK1_SU3_FOUR_DIMENSIONAL_SLICE_CLOSED__RANK1_SU4_AUGMENTED_SOS_CENSUS_READY__COORDINATE_SCHUR_MAP_PSD_AND_ARBITRARY_SIGMA_COERCIVITY_OPEN__BLOCKED_ON_G2_PROMOTION",
+        "status": "SU5_DELTA_CHIRAL_H_EXACT_LOCAL_MINIMUM__PURE_DELTA_FULL_RESIDUAL_GAP_CLOSED__RANK1_SU3_FOUR_DIMENSIONAL_SLICE_CLOSED__RANK1_SU4_CUBIC_SCHUR_MAP_READY__REMAINING_GRADED_MAPS_PHYSICAL_TARGET_PSD_AND_ARBITRARY_SIGMA_COERCIVITY_OPEN__BLOCKED_ON_G2_PROMOTION",
         "issue": 178,
         "deliverable": (
             "prove a uniform coercive global gap for arbitrary non-pure-Delta "
@@ -76,10 +76,15 @@ TASKS: list[dict[str, Any]] = [
             "ready. The exact augmented census has dimension 22366, 35 "
             "complex isotypic types spanning 824 copies, 22 real/Hermitian "
             "blocks, 19594 real Schur parameters, and 6585 invariant target "
-            "rows with an abstract surjective multiplication map. The aligned "
-            "isotypic embeddings, ordered cubic/quartic coordinates, physical "
-            "gap target, 6585x19594 coordinate Schur map, PSD feasibility, and "
-            "arbitrary-Phi bound remain open"
+            "rows with an abstract surjective multiplication map. The complete "
+            "cubic interface is now explicit: 540 required Sym2(Phi210) carrier "
+            "copies generate all 1414 real Schur cross variables, and their "
+            "478x1414 integer coefficient map has exact rank 478 and kernel "
+            "dimension 936. Its reserved zero vector is only an abstract "
+            "interface placeholder, not the physical G3 target. The remaining "
+            "graded maps, especially the 6057x18085 quartic sector, the physical "
+            "gap target, full 6585x19594 map, PSD feasibility, arbitrary-Phi "
+            "bound, and G3 remain open"
         ),
         "acceptance": (
             "the full 486-field candidate is globally minimal with all equality "
@@ -405,6 +410,44 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
             is True
             and g3_frontier["rank1_SU4_augmented_arbitrary_Phi_bound_open"]
             is True
+            and g3_frontier["rank1_SU4_augmented_cubic_map_exact"] is True
+            and g3_frontier[
+                "rank1_SU4_augmented_cubic_carrier_copy_count"
+            ] == 540
+            and g3_frontier[
+                "rank1_SU4_augmented_cubic_real_variable_count"
+            ] == 1_414
+            and g3_frontier[
+                "rank1_SU4_augmented_cubic_coordinate_map_shape"
+            ] == [478, 1_414]
+            and g3_frontier[
+                "rank1_SU4_augmented_cubic_coordinate_map_nnz"
+            ] == 3_145
+            and g3_frontier[
+                "rank1_SU4_augmented_cubic_coordinate_map_rank"
+            ] == 478
+            and g3_frontier[
+                "rank1_SU4_augmented_cubic_coordinate_map_kernel_dimension"
+            ] == 936
+            and g3_frontier[
+                "rank1_SU4_augmented_cubic_zero_placeholder_nonphysical"
+            ] is True
+            and g3_frontier[
+                "rank1_SU4_augmented_cubic_other_graded_maps_open"
+            ] is True
+            and g3_frontier[
+                "rank1_SU4_augmented_cubic_full_coordinate_map_open"
+            ] is True
+            and g3_frontier[
+                "rank1_SU4_augmented_cubic_physical_target_open"
+            ] is True
+            and g3_frontier[
+                "rank1_SU4_augmented_cubic_Schur_SOS_SDP_open"
+            ] is True
+            and g3_frontier[
+                "rank1_SU4_augmented_cubic_arbitrary_Phi_bound_open"
+            ] is True
+            and g3_frontier["rank1_SU4_augmented_cubic_G3_open"] is True
             and g3_frontier[
                 "SU5_arbitrary_Phi_nonzero_residual_cancellations_open"
             ]
@@ -487,9 +530,13 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
         "stabilizer, aligned rank-210 carrier maps, and explicit 45-element "
         "Phi210 invariant quadratic basis now feed an exact augmented census: "
         "dimension 22366, 35 isotypic types/824 copies, 22 real/Hermitian "
-        "blocks, 19594 real Schur parameters, and 6585 invariant rows. Its "
-        "universal invariant map is abstractly surjective; no coordinate Schur "
-        "matrix, physical target vector, or PSD result is claimed. Uniform coercivity for "
+        "blocks, 19594 real Schur parameters, and 6585 invariant rows. The "
+        "complete cubic interface has all 1414 real cross variables and an "
+        "exact-rank-478, 478x1414 integer map with kernel dimension 936. Its "
+        "zero placeholder is not a physical target. The other graded maps, "
+        "especially the 6057x18085 quartic sector, physical target vector, full "
+        "6585x19594 matrix, PSD result, and arbitrary-Phi bound remain open. "
+        "Uniform coercivity for "
         "arbitrary non-pure-Delta Sigma orientations remains open. G5 is "
         "CLOSED. G4 and "
         "G6-G8 remain dependency-blocked; the "
@@ -521,9 +568,12 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
         "stabilizer, aligned rank-210 carrier maps, and explicit 45-element "
         "Phi210 invariant quadratic basis now feed the exact 22366-dimensional "
         "augmented census with 35 isotypic types/824 copies, 22 real/Hermitian "
-        "blocks, 19594 Schur parameters and 6585 invariant rows. The universal "
-        "map is abstract only: the coordinate Schur matrix, physical gap target, "
-        "and PSD feasibility remain open. Uniform coercivity "
+        "blocks, 19594 Schur parameters and 6585 invariant rows. The complete "
+        "cubic interface has all 1414 real cross variables and an exact-rank-478, "
+        "478x1414 integer map with kernel dimension 936. Its zero placeholder "
+        "is not a physical target. The other graded maps, especially the "
+        "6057x18085 quartic sector, physical gap target, full 6585x19594 matrix, "
+        "PSD feasibility, and arbitrary-Phi bound remain open. Uniform coercivity "
         "for arbitrary non-pure-Delta Sigma orientations is the precise G3 blocker. The historical "
         "64/91 calculation "
         "and 449-dimensional saddle/search remain scoped to option C."

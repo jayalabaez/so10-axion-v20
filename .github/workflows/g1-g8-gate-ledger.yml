@@ -47,6 +47,10 @@ on:
       - "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py"
       - "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_V20.json"
       - "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_V20.md"
+      - "exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py"
+      - "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py"
+      - "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_V20.json"
+      - "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_V20.md"
       - "exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py"
       - "test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py"
       - "final_g3_acceptance_gate_v20.py"
@@ -114,6 +118,10 @@ on:
       - "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py"
       - "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_V20.json"
       - "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_V20.md"
+      - "exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py"
+      - "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py"
+      - "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_V20.json"
+      - "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_V20.md"
       - "exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py"
       - "test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py"
       - "final_g3_acceptance_gate_v20.py"
@@ -185,6 +193,8 @@ jobs:
             exact_gauged_u1x_g3_rank1_su4_aligned_carriers_v20.py \
             exact_gauged_u1x_g3_rank1_su4_phi210_quadratic_basis_v20.py \
             exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py \
+            exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py \
+            test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py \
             exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py \
             final_g3_acceptance_gate_v20.py \
             authoritative_full_model_gate_v20.py \
@@ -218,6 +228,7 @@ jobs:
           python exact_gauged_u1x_g3_rank1_su4_aligned_carriers_v20.py --write
           python exact_gauged_u1x_g3_rank1_su4_phi210_quadratic_basis_v20.py --write
           python exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py
+          python exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py
           python exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py --write
       - name: Run gate tests
         run: |
@@ -251,6 +262,7 @@ jobs:
             test_exact_gauged_u1x_g3_rank1_su4_aligned_carriers_v20.py \
             test_exact_gauged_u1x_g3_rank1_su4_phi210_quadratic_basis_v20.py \
             test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py \
+            test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py \
             test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py \
             test_final_g3_acceptance_gate_v20.py
       - name: Generate G1-G8 ledger
@@ -291,6 +303,7 @@ jobs:
           rank1_su4_aligned=json.load(open('EXACT_GAUGED_U1X_G3_RANK1_SU4_ALIGNED_CARRIERS_V20.json'))
           rank1_su4_quadratic=json.load(open('EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_V20.json'))
           rank1_su4_census=json.load(open('EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_V20.json'))
+          rank1_su4_cubic=json.load(open('EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_V20.json'))
           alternative_sos=json.load(open('EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json'))
           final_g3=json.load(open('FINAL_G3_ACCEPTANCE_GATE_V20.json'))
           assert ledger['n_failed']==0, ledger['failures']
@@ -411,6 +424,34 @@ jobs:
           assert gate_ledger._rank1_su4_aligned_carriers_exact(rank1_su4_aligned, rank1_su4_intertwiners, rank1_su4_stabilizer)
           assert gate_ledger._rank1_su4_phi210_quadratic_basis_exact(rank1_su4_quadratic, rank1_su4_stabilizer, rank1_su4_intertwiners, rank1_su4_aligned)
           assert gate_ledger._rank1_su4_augmented_sos_census_exact(rank1_su4_census, rank1_su4_stabilizer, rank1_su4_intertwiners, rank1_su4_aligned, rank1_su4_quadratic)
+          assert gate_ledger._rank1_su4_augmented_sos_cubic_map_exact(rank1_su4_cubic, rank1_su4_stabilizer, rank1_su4_intertwiners, rank1_su4_aligned, rank1_su4_quadratic, rank1_su4_census)
+          cubic_map = rank1_su4_cubic['cubic_coordinate_map']
+          assert cubic_map['coordinate_map_shape'] == [478, 1414]
+          assert cubic_map['exact_rank'] == 478
+          assert cubic_map['exact_kernel_dimension'] == 936
+          assert cubic_map['abstract_zero_interface_placeholder_shape'] == [478]
+          assert cubic_map['abstract_zero_interface_placeholder_dtype'] == 'int64'
+          assert cubic_map['abstract_zero_interface_placeholder_nnz'] == 0
+          assert cubic_map['abstract_zero_placeholder_is_not_a_physical_G3_target'] is True
+          assert rank1_su4_cubic['scope']['abstract_478_coordinate_zero_placeholder_available'] is True
+          cubic_false_scope = (
+              'degree_zero_coefficient_map_constructed',
+              'degree_one_coefficient_map_constructed',
+              'degree_two_coefficient_map_constructed',
+              'degree_four_coefficient_map_constructed',
+              'full_6585_by_19594_Schur_coordinate_matrix_constructed',
+              'physical_G3_gap_target_vector_constructed',
+              'physical_G3_gap_cubic_zero_RHS_certified',
+              'augmented_Schur_SOS_SDP_constructed',
+              'augmented_Schur_SOS_SDP_feasibility_certified',
+              'augmented_Schur_SOS_SDP_infeasibility_certified',
+              'arbitrary_real_Phi_lower_bound_proved',
+              'arbitrary_rank1_Phi_proved',
+              'G3_closed',
+              'whole_model_validated',
+              'whole_model_excluded',
+          )
+          assert all(rank1_su4_cubic['scope'][name] is False for name in cubic_false_scope)
           assert rank1_su4_quadratic['scope']['augmented_homogeneous_Schur_SOS_SDP_constructed'] is False
           assert rank1_su4_quadratic['scope']['arbitrary_rank1_Phi_proved'] is False
           assert rank1_su4_quadratic['scope']['G3_closed'] is False
@@ -502,6 +543,8 @@ jobs:
             EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_V20.md
             EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_V20.json
             EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_V20.md
+            EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_V20.json
+            EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_V20.md
             EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json
             EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.md
             FINAL_G3_ACCEPTANCE_GATE_V20.json

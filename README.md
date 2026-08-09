@@ -123,10 +123,15 @@ the model.
   irreducible copies, `22` real/Hermitian blocks (`9` real-symmetric and `13`
   complex-Hermitian), `19594` real Schur parameters, and `6585` invariant
   target rows. A universal grade-preserving rational section proves abstract
-  rank `6585` and kernel dimension `13009`. This is not a coordinate SOS
-  certificate: the 35 aligned isotypic maps, ordered cubic/quartic coordinates,
-  physical G3 target vector, `6585 x 19594` Schur matrix, PSD feasibility,
-  arbitrary-`Phi` bound, G3, and whole-model conclusions remain open
+  rank `6585` and kernel dimension `13009`. The complete cubic interface is
+  now coordinate-exact: `540` required `Sym2(Phi210)` carrier copies construct
+  all `1414` real Schur cross variables, and the resulting integer
+  `478 x 1414` map has exact rank `478` and kernel dimension `936`. Its
+  reserved zero vector is only an abstract interface placeholder, not the
+  physical G3 target. The remaining graded maps, especially the
+  `6057 x 18085` quartic sector, the physical target, full
+  `6585 x 19594` Schur matrix, PSD feasibility, arbitrary-`Phi` bound, G3,
+  and whole-model conclusions remain open
 - The former 64-direction / 91-parameter G1-G2 calculation is retained as a
   reproducible historical no-`X` subtheorem, not as validation of the manuscript
 
@@ -214,12 +219,13 @@ branch has an exact Phi/Sigma global SOS certificate and a chiral-H full-field
   rank-506 constraint system. The exact augmented census then resolves
   dimension `22366` into 35 isotypic types/824 copies and 22 real/Hermitian
   blocks, with 19594 Schur parameters and 6585 invariant rows. Its universal
-  multiplication map is abstractly surjective; it does not construct the 35
-  aligned isotypic embeddings, ordered cubic/quartic coordinates, physical
-  target, coordinate Schur matrix, PSD certificate, or arbitrary-`Phi` bound.
-  `G3_closed` remains
-  false only because the same uniform coercive control has not yet been proved
-  for arbitrary non-pure-`Delta_R` Sigma orientations. Run
+  multiplication map is abstractly surjective. The cubic sector is now
+  explicit, with all 1414 real variables and a rank-478 `478 x 1414` map;
+  its 936-dimensional kernel is exact. The zero placeholder exposed by that
+  interface is not a physical target and certifies no physical zero RHS.
+  The remaining graded maps, physical target, full coordinate Schur matrix,
+  PSD certificate, arbitrary-`Phi` bound, and arbitrary non-pure-`Delta_R`
+  Sigma coercivity remain open. Therefore `G3_closed` remains false. Run
   `python final_g3_acceptance_gate_v20.py --write` for the
 fail-closed final test. The
 historical finite-cut and SDP outputs remain non-certifying and are not used in
@@ -342,12 +348,14 @@ $g_{a\gamma\gamma}\sim2.3\times10^{-14}\,{\rm GeV}^{-1}$ by MADMAX / ALPHA / ORG
 > rank-210 carriers with physical real maps, and the explicit complete
 > 45-element invariant quadratic basis, and the exact 22366-dimensional
 > augmented census (35 isotypic types, 824 copies, 22 real/Hermitian blocks,
-> 19594 Schur parameters, 6585 invariant rows) are certified. The universal
-> map is abstract: the coordinate Schur map, physical target vector, PSD
-> feasibility, arbitrary-`Phi` bound, and G3 remain open.
-> G3 remains open because a uniform coercive bound for arbitrary non-pure-
-> `Delta_R` Sigma orientations has not yet been proved. The complete theory is
-> neither validated nor discarded.
+> 19594 Schur parameters, 6585 invariant rows) are certified. The complete
+> cubic interface contains all 1414 real Schur cross variables and an exact
+> rank-478 `478 x 1414` map with kernel dimension 936. Its abstract zero
+> placeholder is not the physical G3 target. The remaining graded maps,
+> physical target vector, full Schur matrix, PSD feasibility, arbitrary-`Phi`
+> bound, and arbitrary non-pure-`Delta_R` Sigma coercivity remain open.
+> Consequently G3 remains open and the complete theory is neither validated
+> nor discarded.
 
 Anything stronger is incorrect.
 
