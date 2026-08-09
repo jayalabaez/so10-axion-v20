@@ -701,6 +701,7 @@ def minimal_tree(
         "EXACT_GAUGED_U1X_G3_RANK1_SU4_ALIGNED_CARRIERS_V20.json",
         "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_V20.json",
         "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_V20.json",
+        "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_V20.json",
     ):
         write_json(
             root,
@@ -993,6 +994,63 @@ class TheoryValidationMatrixTests(unittest.TestCase):
             self.assertTrue(
                 evidence["gauged_G3_rank1_SU4_augmented_G3_open"]
             )
+            self.assertTrue(
+                evidence["gauged_G3_rank1_SU4_augmented_cubic_map_exact"]
+            )
+            self.assertEqual(
+                evidence[
+                    "gauged_G3_rank1_SU4_augmented_cubic_carrier_copy_count"
+                ],
+                540,
+            )
+            self.assertEqual(
+                evidence[
+                    "gauged_G3_rank1_SU4_augmented_cubic_real_variable_count"
+                ],
+                1_414,
+            )
+            self.assertEqual(
+                evidence["gauged_G3_rank1_SU4_augmented_cubic_map_shape"],
+                [478, 1_414],
+            )
+            self.assertEqual(
+                evidence["gauged_G3_rank1_SU4_augmented_cubic_map_rank"], 478
+            )
+            self.assertEqual(
+                evidence[
+                    "gauged_G3_rank1_SU4_augmented_cubic_map_kernel_dimension"
+                ],
+                936,
+            )
+            self.assertTrue(
+                evidence[
+                    "gauged_G3_rank1_SU4_augmented_cubic_zero_placeholder_nonphysical"
+                ]
+            )
+            self.assertTrue(
+                evidence[
+                    "gauged_G3_rank1_SU4_augmented_cubic_other_maps_open"
+                ]
+            )
+            self.assertTrue(
+                evidence[
+                    "gauged_G3_rank1_SU4_augmented_cubic_physical_target_open"
+                ]
+            )
+            self.assertTrue(
+                evidence["gauged_G3_rank1_SU4_augmented_cubic_SDP_open"]
+            )
+            self.assertTrue(
+                evidence["gauged_G3_rank1_SU4_augmented_cubic_G3_open"]
+            )
+            self.assertIn("478x1414 integer map", vacuum["summary"])
+            self.assertIn("kernel dimension 936", vacuum["summary"])
+            self.assertIn(
+                "reserved zero placeholder is nonphysical", vacuum["summary"]
+            )
+            self.assertIn("6057x18085 quartic sector", vacuum["summary"])
+            self.assertIn("full 6585x19594 matrix", vacuum["summary"])
+            self.assertNotIn("infrastructure only", vacuum["summary"])
 
     def test_rank1_su4_infrastructure_mutations_fail_closed(self):
         mutations = (
@@ -1027,6 +1085,29 @@ class TheoryValidationMatrixTests(unittest.TestCase):
             ),
             (
                 "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_V20.json",
+                lambda value: value["scope"].__setitem__("G3_closed", True),
+            ),
+            (
+                "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_V20.json",
+                lambda value: value["cubic_coordinate_map"].__setitem__(
+                    "exact_rank", 477
+                ),
+            ),
+            (
+                "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_V20.json",
+                lambda value: value["cubic_coordinate_map"].__setitem__(
+                    "abstract_zero_placeholder_is_not_a_physical_G3_target",
+                    False,
+                ),
+            ),
+            (
+                "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_V20.json",
+                lambda value: value["scope"].__setitem__(
+                    "physical_G3_gap_target_vector_constructed", True
+                ),
+            ),
+            (
+                "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_V20.json",
                 lambda value: value["scope"].__setitem__("G3_closed", True),
             ),
             (

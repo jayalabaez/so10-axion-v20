@@ -67,6 +67,9 @@ RANK1_SU4_PHI210_QUADRATIC_BASIS_JSON = (
 RANK1_SU4_AUGMENTED_SOS_CENSUS_JSON = (
     ROOT / "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_V20.json"
 )
+RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_JSON = (
+    ROOT / "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_V20.json"
+)
 
 MODEL_CONTRACT_ID = ledger.AUTHORITATIVE_CONTRACT_ID
 FINAL_THEOREM = (
@@ -111,6 +114,7 @@ def build_report(
     rank1_su4_aligned_carriers_report: dict[str, Any] | None = None,
     rank1_su4_phi210_quadratic_basis_report: dict[str, Any] | None = None,
     rank1_su4_augmented_sos_census_report: dict[str, Any] | None = None,
+    rank1_su4_augmented_sos_cubic_map_report: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     ledger_report = ledger.build_report() if ledger_report is None else ledger_report
     hsx_report = _load(HSX_JSON) if hsx_report is None else hsx_report
@@ -181,6 +185,11 @@ def build_report(
         if rank1_su4_augmented_sos_census_report is None
         else rank1_su4_augmented_sos_census_report
     )
+    rank1_su4_augmented_sos_cubic_map_report = (
+        _load(RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_JSON)
+        if rank1_su4_augmented_sos_cubic_map_report is None
+        else rank1_su4_augmented_sos_cubic_map_report
+    )
 
     frontier = ledger_report.get("gauged_u1x_g3_constructive_frontier", {})
     gates = ledger_report.get("gates", {})
@@ -238,6 +247,14 @@ def build_report(
         rank1_su4_aligned_carriers_report,
         rank1_su4_phi210_quadratic_basis_report,
     )
+    rank1_su4_cubic_exact = ledger._rank1_su4_augmented_sos_cubic_map_exact(
+        rank1_su4_augmented_sos_cubic_map_report,
+        rank1_su4_stabilizer_report,
+        rank1_su4_phi210_intertwiners_report,
+        rank1_su4_aligned_carriers_report,
+        rank1_su4_phi210_quadratic_basis_report,
+        rank1_su4_augmented_sos_census_report,
+    )
     rank1_su4_aligned_scope = rank1_su4_aligned_carriers_report.get(
         "scope", {}
     )
@@ -246,6 +263,12 @@ def build_report(
     )
     rank1_su4_census_scope = rank1_su4_augmented_sos_census_report.get(
         "scope", {}
+    )
+    rank1_su4_cubic_scope = rank1_su4_augmented_sos_cubic_map_report.get(
+        "scope", {}
+    )
+    rank1_su4_cubic_map = rank1_su4_augmented_sos_cubic_map_report.get(
+        "cubic_coordinate_map", {}
     )
 
     artifact_integrity = {
@@ -486,6 +509,19 @@ def build_report(
         "rank1_SU4_augmented_SOS_census_executes_fail_closed": (
             rank1_su4_census_exact
         ),
+        "rank1_SU4_augmented_SOS_cubic_map_executes_fail_closed": (
+            rank1_su4_cubic_exact
+            and rank1_su4_cubic_map.get(
+                "abstract_zero_placeholder_is_not_a_physical_G3_target"
+            ) is True
+            and rank1_su4_cubic_map.get(
+                "physical_G3_gap_target_vector_constructed"
+            ) is False
+            and rank1_su4_cubic_map.get(
+                "physical_G3_gap_cubic_zero_RHS_certified"
+            ) is False
+            and rank1_su4_cubic_scope.get("G3_closed") is False
+        ),
         "alternative_global_SOS_audit_executes_fail_closed": bool(
             alternative_sos_report.get("n_failed") == 0
             and alternative_sos_report.get("status")
@@ -528,6 +564,7 @@ def build_report(
                 rank1_su4_aligned_carriers_report,
                 rank1_su4_phi210_quadratic_basis_report,
                 rank1_su4_augmented_sos_census_report,
+                rank1_su4_augmented_sos_cubic_map_report,
             )
         ),
         "numerical_Hessian_not_promoted_to_proof": (
@@ -549,6 +586,13 @@ def build_report(
             and rank1_su4_aligned_scope.get("G3_closed") is False
             and rank1_su4_quadratic_scope.get("G3_closed") is False
             and rank1_su4_census_scope.get("G3_closed") is False
+            and rank1_su4_cubic_scope.get("G3_closed") is False
+            and rank1_su4_cubic_scope.get(
+                "physical_G3_gap_target_vector_constructed"
+            ) is False
+            and rank1_su4_cubic_scope.get(
+                "physical_G3_gap_cubic_zero_RHS_certified"
+            ) is False
         ),
     }
 
@@ -725,6 +769,7 @@ def build_report(
             and rank1_su4_aligned_exact
             and rank1_su4_quadratic_exact
             and rank1_su4_census_exact
+            and rank1_su4_cubic_exact
             and _dig(
                 rank1_su4_aligned_carriers_report,
                 "alignment", "carrier_count",
@@ -824,6 +869,50 @@ def build_report(
             and rank1_su4_census_scope.get("G3_closed") is False
             and rank1_su4_census_scope.get("whole_model_validated") is False
             and rank1_su4_census_scope.get("whole_model_excluded") is False
+            and _dig(
+                rank1_su4_augmented_sos_cubic_map_report,
+                "Sym2_target_carriers", "total_complex_carrier_copy_count",
+            ) == 540
+            and _dig(
+                rank1_su4_augmented_sos_cubic_map_report,
+                "physical_cubic_domain", "physical_basis_count",
+            ) == 1_414
+            and _dig(
+                rank1_su4_augmented_sos_cubic_map_report,
+                "physical_cubic_domain", "nonzero_cubic_block_count",
+            ) == 7
+            and rank1_su4_cubic_map.get("coordinate_map_shape")
+            == [478, 1_414]
+            and rank1_su4_cubic_map.get("coordinate_map_nnz") == 3_145
+            and rank1_su4_cubic_map.get("exact_rank") == 478
+            and rank1_su4_cubic_map.get("exact_kernel_dimension") == 936
+            and rank1_su4_cubic_map.get(
+                "abstract_zero_placeholder_is_not_a_physical_G3_target"
+            ) is True
+            and rank1_su4_cubic_map.get(
+                "physical_G3_gap_target_vector_constructed"
+            ) is False
+            and rank1_su4_cubic_map.get(
+                "physical_G3_gap_cubic_zero_RHS_certified"
+            ) is False
+            and all(
+                rank1_su4_cubic_scope.get(name) is False
+                for name in (
+                    "degree_zero_coefficient_map_constructed",
+                    "degree_one_coefficient_map_constructed",
+                    "degree_two_coefficient_map_constructed",
+                    "degree_four_coefficient_map_constructed",
+                    "full_6585_by_19594_Schur_coordinate_matrix_constructed",
+                    "augmented_Schur_SOS_SDP_constructed",
+                    "augmented_Schur_SOS_SDP_feasibility_certified",
+                    "augmented_Schur_SOS_SDP_infeasibility_certified",
+                    "arbitrary_real_Phi_lower_bound_proved",
+                    "arbitrary_rank1_Phi_proved",
+                    "G3_closed",
+                    "whole_model_validated",
+                    "whole_model_excluded",
+                )
+            )
         ),
         "signed_Phi_orbits_locally_isolated_exactly": bool(
             local_scope.get("plus_F_local_component_classified") is True
@@ -933,6 +1022,10 @@ def build_report(
             (
                 RANK1_SU4_AUGMENTED_SOS_CENSUS_JSON,
                 rank1_su4_augmented_sos_census_report,
+            ),
+            (
+                RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_JSON,
+                rank1_su4_augmented_sos_cubic_map_report,
             ),
         )
         if not report
@@ -1103,6 +1196,30 @@ def build_report(
             "rank1_SU4_augmented_SDP_constructed": (
                 rank1_su4_census_scope.get("augmented_Schur_SOS_SDP_constructed")
             ),
+            "rank1_SU4_augmented_cubic_map_shape": (
+                rank1_su4_cubic_map.get("coordinate_map_shape")
+            ),
+            "rank1_SU4_augmented_cubic_map_rank": (
+                rank1_su4_cubic_map.get("exact_rank")
+            ),
+            "rank1_SU4_augmented_cubic_map_kernel_dimension": (
+                rank1_su4_cubic_map.get("exact_kernel_dimension")
+            ),
+            "rank1_SU4_augmented_cubic_zero_placeholder_is_nonphysical": (
+                rank1_su4_cubic_map.get(
+                    "abstract_zero_placeholder_is_not_a_physical_G3_target"
+                )
+            ),
+            "rank1_SU4_augmented_cubic_physical_target_constructed": (
+                rank1_su4_cubic_scope.get(
+                    "physical_G3_gap_target_vector_constructed"
+                )
+            ),
+            "rank1_SU4_augmented_cubic_physical_zero_RHS_certified": (
+                rank1_su4_cubic_scope.get(
+                    "physical_G3_gap_cubic_zero_RHS_certified"
+                )
+            ),
             "arbitrary_non_pure_Delta_Sigma_orientations_open": not bool(
                 max_negative_full_scope.get("arbitrary_Sigma_orientation_proved")
             ),
@@ -1151,8 +1268,12 @@ def build_report(
             "maps and complete 45-element Phi210 quadratic basis feed an exact "
             "22366-dimensional augmented census with 35 types/824 copies, 22 "
             "real/Hermitian blocks, 19594 Schur parameters, and 6585 invariant "
-            "rows. The universal map is abstract: no coordinate Schur matrix, "
-            "physical target, PSD result, or arbitrary-Phi bound is claimed. PASS still "
+            "rows. The complete cubic interface has all 1414 real cross "
+            "variables and an exact-rank-478, 478x1414 integer map with kernel "
+            "dimension 936. Its zero placeholder is nonphysical and certifies "
+            "no physical zero RHS. The other graded maps, especially the "
+            "6057x18085 quartic sector, physical target, full 6585x19594 map, "
+            "PSD result, and arbitrary-Phi bound remain open. PASS still "
             "requires a uniform coercive beta gap for "
             "arbitrary non-pure-Delta Sigma orientations, plus the external authoritative "
             "model execution."

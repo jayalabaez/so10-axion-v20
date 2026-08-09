@@ -221,6 +221,26 @@ def test_constructive_g3_frontier_is_actionable_but_not_promoted():
     assert frontier["rank1_SU4_augmented_coordinate_Schur_map_open"] is True
     assert frontier["rank1_SU4_augmented_physical_target_open"] is True
     assert frontier["rank1_SU4_augmented_Schur_SOS_SDP_open"] is True
+    assert frontier["rank1_SU4_augmented_cubic_map_exact"] is True
+    assert frontier["rank1_SU4_augmented_cubic_carrier_copy_count"] == 540
+    assert frontier["rank1_SU4_augmented_cubic_real_variable_count"] == 1_414
+    assert frontier["rank1_SU4_augmented_cubic_coordinate_map_shape"] == [
+        478,
+        1_414,
+    ]
+    assert frontier["rank1_SU4_augmented_cubic_coordinate_map_nnz"] == 3_145
+    assert frontier["rank1_SU4_augmented_cubic_coordinate_map_rank"] == 478
+    assert (
+        frontier["rank1_SU4_augmented_cubic_coordinate_map_kernel_dimension"]
+        == 936
+    )
+    assert frontier["rank1_SU4_augmented_cubic_zero_placeholder_nonphysical"]
+    assert frontier["rank1_SU4_augmented_cubic_other_graded_maps_open"]
+    assert frontier["rank1_SU4_augmented_cubic_full_coordinate_map_open"]
+    assert frontier["rank1_SU4_augmented_cubic_physical_target_open"]
+    assert frontier["rank1_SU4_augmented_cubic_Schur_SOS_SDP_open"]
+    assert frontier["rank1_SU4_augmented_cubic_arbitrary_Phi_bound_open"]
+    assert frontier["rank1_SU4_augmented_cubic_G3_open"]
     assert frontier["SU5_arbitrary_Phi_nonzero_residual_cancellations_open"] is False
     assert (
         frontier["SU5_arbitrary_non_pure_Delta_Sigma_uniform_coercivity_open"]
@@ -258,8 +278,19 @@ def test_constructive_g3_frontier_is_actionable_but_not_promoted():
     assert "exact augmented census has dimension 22366" in (
         g3_task["deliverable"]
     )
-    assert "6585x19594 coordinate Schur map" in g3_task["deliverable"]
+    assert "478x1414 integer coefficient map" in g3_task["deliverable"]
+    assert "exact rank 478 and kernel" in g3_task["deliverable"]
+    assert "abstract interface placeholder" in g3_task["deliverable"]
+    assert "6057x18085 quartic sector" in g3_task["deliverable"]
+    assert "full 6585x19594 map" in g3_task["deliverable"]
+    assert "G3 remain open" in g3_task["deliverable"]
     assert "486-field" in g3_task["acceptance"]
+    assert "478x1414 integer map" in report["verdict"]
+    assert "kernel dimension 936" in report["verdict"]
+    assert "zero placeholder is not a physical target" in report["verdict"]
+    assert "6057x18085 quartic sector" in report["verdict"]
+    assert "full 6585x19594 matrix" in report["verdict"]
+    assert "coordinate Schur matrix" not in report["verdict"]
 
 
 def test_no_validation_exclusion_or_discovery_claim():
