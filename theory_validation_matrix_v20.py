@@ -89,6 +89,7 @@ ARTIFACTS = {
     "gauged_g3_rank1_su4_phi210_quadratic_basis": "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_V20.json",
     "gauged_g3_rank1_su4_augmented_sos_census": "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_V20.json",
     "gauged_g3_rank1_su4_augmented_sos_cubic_map": "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_V20.json",
+    "gauged_g3_rank1_su4_augmented_sos_quartic_map": "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.json",
     "gauged_g3_alternative_global_sos": "EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json",
     "final_g3": "FINAL_G3_ACCEPTANCE_GATE_V20.json",
     "authoritative": "AUTHORITATIVE_FULL_MODEL_GATE_V20.json",
@@ -497,6 +498,13 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
     )
     rank1_su4_cubic_scope = rank1_su4_cubic.get("scope", {})
     rank1_su4_cubic_map = rank1_su4_cubic.get("cubic_coordinate_map", {})
+    rank1_su4_quartic = reports.get(
+        "gauged_g3_rank1_su4_augmented_sos_quartic_map", {}
+    )
+    rank1_su4_quartic_scope = rank1_su4_quartic.get("scope", {})
+    rank1_su4_quartic_map = rank1_su4_quartic.get(
+        "coefficient_map_certificate", {}
+    )
     alternative_sos = reports.get("gauged_g3_alternative_global_sos", {})
     alternative_sos_flags = alternative_sos.get("flags", {})
     final_g3 = reports.get("final_g3", {})
@@ -1060,6 +1068,15 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
             rank1_su4_census,
         )
     )
+    rank1_su4_augmented_sos_quartic_map_exact = (
+        rank1_su4_augmented_sos_census_exact
+        and rank1_su4_augmented_sos_cubic_map_exact
+        and gate_ledger._rank1_su4_augmented_sos_quartic_map_exact(
+            rank1_su4_quartic,
+            rank1_su4_census,
+            rank1_su4_cubic,
+        )
+    )
     alternative_global_sos_honestly_open = bool(
         alternative_sos.get("n_failed") == 0
         and alternative_sos.get("status")
@@ -1122,6 +1139,7 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
         and rank1_su4_phi210_quadratic_basis_exact
         and rank1_su4_augmented_sos_census_exact
         and rank1_su4_augmented_sos_cubic_map_exact
+        and rank1_su4_augmented_sos_quartic_map_exact
         and alternative_global_sos_honestly_open
         and final_g3_honestly_open
     )
@@ -1235,9 +1253,11 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
             "census has 19594 real Schur parameters and 6585 invariant rows. "
             "Its complete cubic interface contains all 1414 real cross variables "
             "and an exact-rank-478, 478x1414 integer map with kernel dimension "
-            "936. The reserved zero placeholder is nonphysical. The other graded "
-            "maps, especially the 6057x18085 quartic sector, physical target, "
-            "full 6585x19594 matrix, PSD feasibility, and arbitrary-Phi bound "
+            "936. The reserved zero placeholder is nonphysical. The homogeneous "
+            "quartic interface is an exact-rank-6057, 6057x18085 integer map "
+            "with kernel dimension 12028. Its physical target, standard "
+            "real-type PSD congruences, full 6585x19594 matrix, SDP feasibility, "
+            "and arbitrary-Phi bound "
             "remain open. "
             "G3 remains open only on uniform coercivity for arbitrary non-pure-Delta "
             "Sigma orientations. "
@@ -1716,6 +1736,52 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
                 and rank1_su4_cubic_scope.get("whole_model_validated") is False
                 and rank1_su4_cubic_scope.get("whole_model_excluded") is False
             ),
+            "gauged_G3_rank1_SU4_augmented_quartic_map_exact": (
+                rank1_su4_augmented_sos_quartic_map_exact
+            ),
+            "gauged_G3_rank1_SU4_augmented_quartic_carrier_family_count": _dig(
+                rank1_su4_quartic, "dimensions", "complex_isotypic_types",
+            ),
+            "gauged_G3_rank1_SU4_augmented_quartic_irreducible_copy_count": _dig(
+                rank1_su4_quartic, "dimensions", "irreducible_copies",
+            ),
+            "gauged_G3_rank1_SU4_augmented_quartic_real_block_count": _dig(
+                rank1_su4_quartic, "dimensions", "real_Schur_blocks",
+            ),
+            "gauged_G3_rank1_SU4_augmented_quartic_map_shape": (
+                rank1_su4_quartic_map.get("shape")
+            ),
+            "gauged_G3_rank1_SU4_augmented_quartic_map_nnz": (
+                rank1_su4_quartic_map.get("nnz")
+            ),
+            "gauged_G3_rank1_SU4_augmented_quartic_map_rank": (
+                rank1_su4_quartic_map.get("rank_over_Q_exact")
+            ),
+            "gauged_G3_rank1_SU4_augmented_quartic_map_kernel_dimension": (
+                rank1_su4_quartic_map.get("kernel_dimension_over_Q_exact")
+            ),
+            "gauged_G3_rank1_SU4_augmented_quartic_physical_target_open": (
+                rank1_su4_quartic_scope.get(
+                    "physical_quartic_target_constructed"
+                ) is False
+            ),
+            "gauged_G3_rank1_SU4_augmented_quartic_standard_PSD_congruences_open": (
+                rank1_su4_quartic_scope.get(
+                    "standard_PSD_congruences_for_real_type_fixed_bases_constructed"
+                ) is False
+            ),
+            "gauged_G3_rank1_SU4_augmented_quartic_SDP_open": (
+                rank1_su4_quartic_scope.get("semidefinite_feasibility_solved")
+                is False
+            ),
+            "gauged_G3_rank1_SU4_augmented_quartic_arbitrary_Phi_open": (
+                rank1_su4_quartic_scope.get(
+                    "arbitrary_Phi_stationarity_or_lower_bound_proved"
+                ) is False
+            ),
+            "gauged_G3_rank1_SU4_augmented_quartic_G3_open": (
+                rank1_su4_quartic_scope.get("G3_closed") is False
+            ),
             "gauged_G3_SU5_max_negative_arbitrary_Sigma_orientation_open": not bool(
                 rank1_su3_scope.get("arbitrary_max_negative_Sigma")
             ),
@@ -2103,6 +2169,7 @@ def _reproducibility_gate(
             "EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_V20.json",
             "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_V20.json",
             "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_V20.json",
+            "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.json",
             "EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json",
             "FINAL_G3_ACCEPTANCE_GATE_V20.json",
         )

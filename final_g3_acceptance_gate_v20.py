@@ -70,6 +70,9 @@ RANK1_SU4_AUGMENTED_SOS_CENSUS_JSON = (
 RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_JSON = (
     ROOT / "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_V20.json"
 )
+RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_JSON = (
+    ROOT / "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.json"
+)
 
 MODEL_CONTRACT_ID = ledger.AUTHORITATIVE_CONTRACT_ID
 FINAL_THEOREM = (
@@ -115,6 +118,7 @@ def build_report(
     rank1_su4_phi210_quadratic_basis_report: dict[str, Any] | None = None,
     rank1_su4_augmented_sos_census_report: dict[str, Any] | None = None,
     rank1_su4_augmented_sos_cubic_map_report: dict[str, Any] | None = None,
+    rank1_su4_augmented_sos_quartic_map_report: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     ledger_report = ledger.build_report() if ledger_report is None else ledger_report
     hsx_report = _load(HSX_JSON) if hsx_report is None else hsx_report
@@ -190,6 +194,11 @@ def build_report(
         if rank1_su4_augmented_sos_cubic_map_report is None
         else rank1_su4_augmented_sos_cubic_map_report
     )
+    rank1_su4_augmented_sos_quartic_map_report = (
+        _load(RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_JSON)
+        if rank1_su4_augmented_sos_quartic_map_report is None
+        else rank1_su4_augmented_sos_quartic_map_report
+    )
 
     frontier = ledger_report.get("gauged_u1x_g3_constructive_frontier", {})
     gates = ledger_report.get("gates", {})
@@ -255,6 +264,15 @@ def build_report(
         rank1_su4_phi210_quadratic_basis_report,
         rank1_su4_augmented_sos_census_report,
     )
+    rank1_su4_quartic_exact = (
+        rank1_su4_census_exact
+        and rank1_su4_cubic_exact
+        and ledger._rank1_su4_augmented_sos_quartic_map_exact(
+            rank1_su4_augmented_sos_quartic_map_report,
+            rank1_su4_augmented_sos_census_report,
+            rank1_su4_augmented_sos_cubic_map_report,
+        )
+    )
     rank1_su4_aligned_scope = rank1_su4_aligned_carriers_report.get(
         "scope", {}
     )
@@ -269,6 +287,12 @@ def build_report(
     )
     rank1_su4_cubic_map = rank1_su4_augmented_sos_cubic_map_report.get(
         "cubic_coordinate_map", {}
+    )
+    rank1_su4_quartic_scope = rank1_su4_augmented_sos_quartic_map_report.get(
+        "scope", {}
+    )
+    rank1_su4_quartic_map = rank1_su4_augmented_sos_quartic_map_report.get(
+        "coefficient_map_certificate", {}
     )
 
     artifact_integrity = {
@@ -522,6 +546,22 @@ def build_report(
             ) is False
             and rank1_su4_cubic_scope.get("G3_closed") is False
         ),
+        "rank1_SU4_augmented_SOS_quartic_map_executes_fail_closed": (
+            rank1_su4_quartic_exact
+            and rank1_su4_quartic_map.get("shape") == [6_057, 18_085]
+            and rank1_su4_quartic_map.get("rank_over_Q_exact") == 6_057
+            and rank1_su4_quartic_map.get("kernel_dimension_over_Q_exact")
+            == 12_028
+            and rank1_su4_quartic_scope.get(
+                "physical_quartic_target_constructed"
+            ) is False
+            and rank1_su4_quartic_scope.get(
+                "standard_PSD_congruences_for_real_type_fixed_bases_constructed"
+            ) is False
+            and rank1_su4_quartic_scope.get("semidefinite_feasibility_solved")
+            is False
+            and rank1_su4_quartic_scope.get("G3_closed") is False
+        ),
         "alternative_global_SOS_audit_executes_fail_closed": bool(
             alternative_sos_report.get("n_failed") == 0
             and alternative_sos_report.get("status")
@@ -565,6 +605,7 @@ def build_report(
                 rank1_su4_phi210_quadratic_basis_report,
                 rank1_su4_augmented_sos_census_report,
                 rank1_su4_augmented_sos_cubic_map_report,
+                rank1_su4_augmented_sos_quartic_map_report,
             )
         ),
         "numerical_Hessian_not_promoted_to_proof": (
@@ -593,6 +634,15 @@ def build_report(
             and rank1_su4_cubic_scope.get(
                 "physical_G3_gap_cubic_zero_RHS_certified"
             ) is False
+            and rank1_su4_quartic_scope.get("G3_closed") is False
+            and rank1_su4_quartic_scope.get(
+                "physical_quartic_target_constructed"
+            ) is False
+            and rank1_su4_quartic_scope.get(
+                "standard_PSD_congruences_for_real_type_fixed_bases_constructed"
+            ) is False
+            and rank1_su4_quartic_scope.get("semidefinite_feasibility_solved")
+            is False
         ),
     }
 
@@ -770,6 +820,7 @@ def build_report(
             and rank1_su4_quadratic_exact
             and rank1_su4_census_exact
             and rank1_su4_cubic_exact
+            and rank1_su4_quartic_exact
             and _dig(
                 rank1_su4_aligned_carriers_report,
                 "alignment", "carrier_count",
@@ -913,6 +964,23 @@ def build_report(
                     "whole_model_excluded",
                 )
             )
+            and rank1_su4_quartic_map.get("shape") == [6_057, 18_085]
+            and rank1_su4_quartic_map.get("nnz") == 115_641
+            and rank1_su4_quartic_map.get("rank_over_Q_exact") == 6_057
+            and rank1_su4_quartic_map.get("kernel_dimension_over_Q_exact")
+            == 12_028
+            and rank1_su4_quartic_scope.get(
+                "physical_quartic_target_constructed"
+            ) is False
+            and rank1_su4_quartic_scope.get(
+                "standard_PSD_congruences_for_real_type_fixed_bases_constructed"
+            ) is False
+            and rank1_su4_quartic_scope.get("semidefinite_feasibility_solved")
+            is False
+            and rank1_su4_quartic_scope.get(
+                "arbitrary_Phi_stationarity_or_lower_bound_proved"
+            ) is False
+            and rank1_su4_quartic_scope.get("G3_closed") is False
         ),
         "signed_Phi_orbits_locally_isolated_exactly": bool(
             local_scope.get("plus_F_local_component_classified") is True
@@ -1026,6 +1094,10 @@ def build_report(
             (
                 RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_JSON,
                 rank1_su4_augmented_sos_cubic_map_report,
+            ),
+            (
+                RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_JSON,
+                rank1_su4_augmented_sos_quartic_map_report,
             ),
         )
         if not report
@@ -1220,6 +1292,28 @@ def build_report(
                     "physical_G3_gap_cubic_zero_RHS_certified"
                 )
             ),
+            "rank1_SU4_augmented_quartic_map_shape": (
+                rank1_su4_quartic_map.get("shape")
+            ),
+            "rank1_SU4_augmented_quartic_map_rank": (
+                rank1_su4_quartic_map.get("rank_over_Q_exact")
+            ),
+            "rank1_SU4_augmented_quartic_map_kernel_dimension": (
+                rank1_su4_quartic_map.get("kernel_dimension_over_Q_exact")
+            ),
+            "rank1_SU4_augmented_quartic_physical_target_constructed": (
+                rank1_su4_quartic_scope.get(
+                    "physical_quartic_target_constructed"
+                )
+            ),
+            "rank1_SU4_augmented_quartic_standard_PSD_congruences_constructed": (
+                rank1_su4_quartic_scope.get(
+                    "standard_PSD_congruences_for_real_type_fixed_bases_constructed"
+                )
+            ),
+            "rank1_SU4_augmented_quartic_SDP_solved": (
+                rank1_su4_quartic_scope.get("semidefinite_feasibility_solved")
+            ),
             "arbitrary_non_pure_Delta_Sigma_orientations_open": not bool(
                 max_negative_full_scope.get("arbitrary_Sigma_orientation_proved")
             ),
@@ -1271,9 +1365,11 @@ def build_report(
             "rows. The complete cubic interface has all 1414 real cross "
             "variables and an exact-rank-478, 478x1414 integer map with kernel "
             "dimension 936. Its zero placeholder is nonphysical and certifies "
-            "no physical zero RHS. The other graded maps, especially the "
-            "6057x18085 quartic sector, physical target, full 6585x19594 map, "
-            "PSD result, and arbitrary-Phi bound remain open. PASS still "
+            "no physical zero RHS. The homogeneous quartic interface is an "
+            "exact-rank-6057, 6057x18085 integer map with kernel dimension "
+            "12028. Its physical target, standard real-type PSD congruences, "
+            "full 6585x19594 map, SDP result, and arbitrary-Phi bound remain "
+            "open. PASS still "
             "requires a uniform coercive beta gap for "
             "arbitrary non-pure-Delta Sigma orientations, plus the external authoritative "
             "model execution."

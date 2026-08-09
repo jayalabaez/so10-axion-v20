@@ -111,6 +111,7 @@ def test_rank1_su4_infrastructure_is_generated_in_provenance_order() -> None:
     quadratic = "exact_gauged_u1x_g3_rank1_su4_phi210_quadratic_basis_v20.py"
     census = "exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py"
     cubic = "exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py"
+    quartic = "exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py"
     stabilizer_test = "test_exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py"
     intertwiner_test = (
         "test_exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py"
@@ -125,10 +126,13 @@ def test_rank1_su4_infrastructure_is_generated_in_provenance_order() -> None:
     cubic_test = (
         "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py"
     )
+    quartic_test = (
+        "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py"
+    )
     for token in (
-        stabilizer, intertwiners, aligned, quadratic, census, cubic,
+        stabilizer, intertwiners, aligned, quadratic, census, cubic, quartic,
         stabilizer_test, intertwiner_test, aligned_test, quadratic_test,
-        census_test, cubic_test,
+        census_test, cubic_test, quartic_test,
     ):
         assert token in source
     assert (
@@ -139,12 +143,13 @@ def test_rank1_su4_infrastructure_is_generated_in_provenance_order() -> None:
         < source.index(quadratic)
         < source.index(census)
         < source.index(cubic)
+        < source.index(quartic)
     )
-    assert source.index(census_test) < source.index(cubic_test)
+    assert source.index(census_test) < source.index(cubic_test) < source.index(quartic_test)
     for consumer in (
         "g1_g8_gate_ledger_v20.py",
         "final_g3_acceptance_gate_v20.py",
         "g1_g8_execution_roadmap_v20.py",
         "theory_validation_matrix_v20.py",
     ):
-        assert source.index(cubic) < source.index(consumer)
+        assert source.index(quartic) < source.index(consumer)

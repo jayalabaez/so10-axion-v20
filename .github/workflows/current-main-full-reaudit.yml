@@ -14,7 +14,7 @@ jobs:
   pr-direct-tensor-gate:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 120
     env:
       PYTHONHASHSEED: "0"
       OPENBLAS_NUM_THREADS: "1"
@@ -83,6 +83,7 @@ jobs:
           python exact_gauged_u1x_g3_rank1_su4_phi210_quadratic_basis_v20.py --write
           python exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py
           python exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py
+          python exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py
           python exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py --write
           python gauged_u1x_g3_sos_candidate_v20.py --recompute-heavy --write
           python gauged_u1x_g3_stability_v20.py --write
@@ -143,6 +144,7 @@ jobs:
             test_exact_gauged_u1x_g3_rank1_su4_phi210_quadratic_basis_v20.py \
             test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py \
             test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py \
+            test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py \
             test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py \
             test_final_g3_acceptance_gate_v20.py \
             test_gauged_u1x_g3_sos_candidate_v20.py \
@@ -195,6 +197,7 @@ jobs:
           rank1_su4_quadratic=json.load(open('EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_V20.json'))
           rank1_su4_census=json.load(open('EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_V20.json'))
           rank1_su4_cubic=json.load(open('EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_V20.json'))
+          rank1_su4_quartic=json.load(open('EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.json'))
           altsos=json.load(open('EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json'))
           fg=json.load(open('FINAL_G3_ACCEPTANCE_GATE_V20.json'))
           sc=json.load(open('GAUGED_U1X_G3_SOS_CANDIDATE_V20.json'))
@@ -367,6 +370,26 @@ jobs:
           assert gate_ledger._rank1_su4_phi210_quadratic_basis_exact(rank1_su4_quadratic, rank1_su4_stabilizer, rank1_su4_intertwiners, rank1_su4_aligned), rank1_su4_quadratic
           assert gate_ledger._rank1_su4_augmented_sos_census_exact(rank1_su4_census, rank1_su4_stabilizer, rank1_su4_intertwiners, rank1_su4_aligned, rank1_su4_quadratic), rank1_su4_census
           assert gate_ledger._rank1_su4_augmented_sos_cubic_map_exact(rank1_su4_cubic, rank1_su4_stabilizer, rank1_su4_intertwiners, rank1_su4_aligned, rank1_su4_quadratic, rank1_su4_census), rank1_su4_cubic
+          assert gate_ledger._rank1_su4_augmented_sos_quartic_map_exact(rank1_su4_quartic, rank1_su4_census, rank1_su4_cubic), rank1_su4_quartic
+          quartic_map=rank1_su4_quartic['coefficient_map_certificate']
+          assert quartic_map['shape']==[6057,18085], rank1_su4_quartic
+          assert quartic_map['nnz']==115641, rank1_su4_quartic
+          assert quartic_map['rank_over_Q_exact']==6057, rank1_su4_quartic
+          assert quartic_map['kernel_dimension_over_Q_exact']==12028, rank1_su4_quartic
+          quartic_true_scope=(
+              'homogeneous_quartic_Schur_coefficient_map_constructed_exact',
+              'all_35_complex_carrier_families_constructed_exact',
+              'all_22_real_block_pairings_constructed_exact',
+          )
+          quartic_false_scope=(
+              'physical_quartic_target_constructed',
+              'standard_PSD_congruences_for_real_type_fixed_bases_constructed',
+              'semidefinite_feasibility_solved',
+              'arbitrary_Phi_stationarity_or_lower_bound_proved',
+              'G3_closed',
+          )
+          assert all(rank1_su4_quartic['scope'][name] is True for name in quartic_true_scope), rank1_su4_quartic
+          assert all(rank1_su4_quartic['scope'][name] is False for name in quartic_false_scope), rank1_su4_quartic
           cubic_map=rank1_su4_cubic['cubic_coordinate_map']
           assert cubic_map['coordinate_map_shape']==[478,1414], rank1_su4_cubic
           assert cubic_map['exact_rank']==478, rank1_su4_cubic
@@ -565,11 +588,13 @@ jobs:
             EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_V20.md
             EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_V20.json
             EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_V20.md
+            EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.json
+            EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.md
 
   full-reaudit:
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
-    timeout-minutes: 180
+    timeout-minutes: 240
     env:
       PYTHONHASHSEED: "0"
       OPENBLAS_NUM_THREADS: "1"
@@ -627,6 +652,7 @@ jobs:
       - run: python exact_gauged_u1x_g3_rank1_su4_phi210_quadratic_basis_v20.py --write
       - run: python exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py
       - run: python exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py
+      - run: python exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py
       - run: python replicate.py
       - run: python validate_release_v20.py
       - run: python falsify_v20.py
@@ -669,6 +695,7 @@ jobs:
           rank1_su4_quadratic=json.load(open('EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_QUADRATIC_BASIS_V20.json'))
           rank1_su4_census=json.load(open('EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CENSUS_V20.json'))
           rank1_su4_cubic=json.load(open('EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_V20.json'))
+          rank1_su4_quartic=json.load(open('EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.json'))
           sc=json.load(open('GAUGED_U1X_G3_SOS_CANDIDATE_V20.json'))
           g3=json.load(open('GAUGED_U1X_G3_STABILITY_V20.json'))
           ck=json.load(open('GAUGED_U1X_G3_CORRECTED_COMMON_KERNEL_V20.json'))
@@ -779,6 +806,26 @@ jobs:
           assert gate_ledger._rank1_su4_phi210_quadratic_basis_exact(rank1_su4_quadratic, rank1_su4_stabilizer, rank1_su4_intertwiners, rank1_su4_aligned), rank1_su4_quadratic
           assert gate_ledger._rank1_su4_augmented_sos_census_exact(rank1_su4_census, rank1_su4_stabilizer, rank1_su4_intertwiners, rank1_su4_aligned, rank1_su4_quadratic), rank1_su4_census
           assert gate_ledger._rank1_su4_augmented_sos_cubic_map_exact(rank1_su4_cubic, rank1_su4_stabilizer, rank1_su4_intertwiners, rank1_su4_aligned, rank1_su4_quadratic, rank1_su4_census), rank1_su4_cubic
+          assert gate_ledger._rank1_su4_augmented_sos_quartic_map_exact(rank1_su4_quartic, rank1_su4_census, rank1_su4_cubic), rank1_su4_quartic
+          quartic_map=rank1_su4_quartic['coefficient_map_certificate']
+          assert quartic_map['shape']==[6057,18085], rank1_su4_quartic
+          assert quartic_map['nnz']==115641, rank1_su4_quartic
+          assert quartic_map['rank_over_Q_exact']==6057, rank1_su4_quartic
+          assert quartic_map['kernel_dimension_over_Q_exact']==12028, rank1_su4_quartic
+          quartic_true_scope=(
+              'homogeneous_quartic_Schur_coefficient_map_constructed_exact',
+              'all_35_complex_carrier_families_constructed_exact',
+              'all_22_real_block_pairings_constructed_exact',
+          )
+          quartic_false_scope=(
+              'physical_quartic_target_constructed',
+              'standard_PSD_congruences_for_real_type_fixed_bases_constructed',
+              'semidefinite_feasibility_solved',
+              'arbitrary_Phi_stationarity_or_lower_bound_proved',
+              'G3_closed',
+          )
+          assert all(rank1_su4_quartic['scope'][name] is True for name in quartic_true_scope), rank1_su4_quartic
+          assert all(rank1_su4_quartic['scope'][name] is False for name in quartic_false_scope), rank1_su4_quartic
           cubic_map=rank1_su4_cubic['cubic_coordinate_map']
           assert cubic_map['coordinate_map_shape']==[478,1414], rank1_su4_cubic
           assert cubic_map['exact_rank']==478, rank1_su4_cubic
@@ -900,6 +947,8 @@ jobs:
             DIRECT_PHI_H_SIGMABAR_TENSOR_V20.json
             EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_V20.json
             EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_V20.md
+            EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.json
+            EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.md
             DIRECT_PHI_H_SIGMABAR_TENSOR_V20.md
             DIRECT_PHI_H_SIGMABAR_TD_CROSSCHECK_V20.json
             DIRECT_PHI_H_SIGMABAR_TD_CROSSCHECK_V20.md

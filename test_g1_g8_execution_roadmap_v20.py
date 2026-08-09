@@ -241,6 +241,27 @@ def test_constructive_g3_frontier_is_actionable_but_not_promoted():
     assert frontier["rank1_SU4_augmented_cubic_Schur_SOS_SDP_open"]
     assert frontier["rank1_SU4_augmented_cubic_arbitrary_Phi_bound_open"]
     assert frontier["rank1_SU4_augmented_cubic_G3_open"]
+    assert frontier["rank1_SU4_augmented_quartic_map_exact"] is True
+    assert frontier["rank1_SU4_augmented_quartic_carrier_family_count"] == 35
+    assert frontier["rank1_SU4_augmented_quartic_irreducible_copy_count"] == 798
+    assert frontier["rank1_SU4_augmented_quartic_real_block_count"] == 22
+    assert frontier["rank1_SU4_augmented_quartic_coordinate_map_shape"] == [
+        6_057,
+        18_085,
+    ]
+    assert frontier["rank1_SU4_augmented_quartic_coordinate_map_nnz"] == 115_641
+    assert frontier["rank1_SU4_augmented_quartic_coordinate_map_rank"] == 6_057
+    assert (
+        frontier["rank1_SU4_augmented_quartic_coordinate_map_kernel_dimension"]
+        == 12_028
+    )
+    assert frontier["rank1_SU4_augmented_quartic_physical_target_open"]
+    assert frontier[
+        "rank1_SU4_augmented_quartic_standard_PSD_congruences_open"
+    ]
+    assert frontier["rank1_SU4_augmented_quartic_SDP_open"]
+    assert frontier["rank1_SU4_augmented_quartic_arbitrary_Phi_bound_open"]
+    assert frontier["rank1_SU4_augmented_quartic_G3_open"]
     assert frontier["SU5_arbitrary_Phi_nonzero_residual_cancellations_open"] is False
     assert (
         frontier["SU5_arbitrary_non_pure_Delta_Sigma_uniform_coercivity_open"]
@@ -281,14 +302,17 @@ def test_constructive_g3_frontier_is_actionable_but_not_promoted():
     assert "478x1414 integer coefficient map" in g3_task["deliverable"]
     assert "exact rank 478 and kernel" in g3_task["deliverable"]
     assert "abstract interface placeholder" in g3_task["deliverable"]
-    assert "6057x18085 quartic sector" in g3_task["deliverable"]
+    assert "homogeneous quartic map has shape 6057x18085" in g3_task["deliverable"]
+    assert "rank 6057" in g3_task["deliverable"]
+    assert "kernel dimension 12028" in g3_task["deliverable"]
     assert "full 6585x19594 map" in g3_task["deliverable"]
     assert "G3 remain open" in g3_task["deliverable"]
     assert "486-field" in g3_task["acceptance"]
     assert "478x1414 integer map" in report["verdict"]
     assert "kernel dimension 936" in report["verdict"]
     assert "zero placeholder is not a physical target" in report["verdict"]
-    assert "6057x18085 quartic sector" in report["verdict"]
+    assert "homogeneous quartic map is exact-rank-6057" in report["verdict"]
+    assert "kernel dimension 12028" in report["verdict"]
     assert "full 6585x19594 matrix" in report["verdict"]
     assert "coordinate Schur matrix" not in report["verdict"]
 

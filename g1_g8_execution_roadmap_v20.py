@@ -61,7 +61,7 @@ TASKS: list[dict[str, Any]] = [
         "id": "W3-G3-FULL-STATIONARITY",
         "wave": 3,
         "gates": ["G3"],
-        "status": "SU5_DELTA_CHIRAL_H_EXACT_LOCAL_MINIMUM__PURE_DELTA_FULL_RESIDUAL_GAP_CLOSED__RANK1_SU3_FOUR_DIMENSIONAL_SLICE_CLOSED__RANK1_SU4_CUBIC_SCHUR_MAP_READY__REMAINING_GRADED_MAPS_PHYSICAL_TARGET_PSD_AND_ARBITRARY_SIGMA_COERCIVITY_OPEN__BLOCKED_ON_G2_PROMOTION",
+        "status": "SU5_DELTA_CHIRAL_H_EXACT_LOCAL_MINIMUM__PURE_DELTA_FULL_RESIDUAL_GAP_CLOSED__RANK1_SU3_FOUR_DIMENSIONAL_SLICE_CLOSED__RANK1_SU4_CUBIC_AND_QUARTIC_SCHUR_MAPS_READY__PHYSICAL_TARGET_PSD_AND_ARBITRARY_SIGMA_COERCIVITY_OPEN__BLOCKED_ON_G2_PROMOTION",
         "issue": 178,
         "deliverable": (
             "prove a uniform coercive global gap for arbitrary non-pure-Delta "
@@ -81,9 +81,10 @@ TASKS: list[dict[str, Any]] = [
             "copies generate all 1414 real Schur cross variables, and their "
             "478x1414 integer coefficient map has exact rank 478 and kernel "
             "dimension 936. Its reserved zero vector is only an abstract "
-            "interface placeholder, not the physical G3 target. The remaining "
-            "graded maps, especially the 6057x18085 quartic sector, the physical "
-            "gap target, full 6585x19594 map, PSD feasibility, arbitrary-Phi "
+            "interface placeholder, not the physical G3 target. The exact "
+            "homogeneous quartic map has shape 6057x18085, rank 6057, and "
+            "kernel dimension 12028. The physical gap target, standard "
+            "real-type PSD congruences, full 6585x19594 map, SDP feasibility, arbitrary-Phi "
             "bound, and G3 remain open"
         ),
         "acceptance": (
@@ -448,6 +449,39 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
                 "rank1_SU4_augmented_cubic_arbitrary_Phi_bound_open"
             ] is True
             and g3_frontier["rank1_SU4_augmented_cubic_G3_open"] is True
+            and g3_frontier["rank1_SU4_augmented_quartic_map_exact"] is True
+            and g3_frontier[
+                "rank1_SU4_augmented_quartic_carrier_family_count"
+            ] == 35
+            and g3_frontier[
+                "rank1_SU4_augmented_quartic_irreducible_copy_count"
+            ] == 798
+            and g3_frontier[
+                "rank1_SU4_augmented_quartic_real_block_count"
+            ] == 22
+            and g3_frontier[
+                "rank1_SU4_augmented_quartic_coordinate_map_shape"
+            ] == [6_057, 18_085]
+            and g3_frontier[
+                "rank1_SU4_augmented_quartic_coordinate_map_nnz"
+            ] == 115_641
+            and g3_frontier[
+                "rank1_SU4_augmented_quartic_coordinate_map_rank"
+            ] == 6_057
+            and g3_frontier[
+                "rank1_SU4_augmented_quartic_coordinate_map_kernel_dimension"
+            ] == 12_028
+            and g3_frontier[
+                "rank1_SU4_augmented_quartic_physical_target_open"
+            ] is True
+            and g3_frontier[
+                "rank1_SU4_augmented_quartic_standard_PSD_congruences_open"
+            ] is True
+            and g3_frontier["rank1_SU4_augmented_quartic_SDP_open"] is True
+            and g3_frontier[
+                "rank1_SU4_augmented_quartic_arbitrary_Phi_bound_open"
+            ] is True
+            and g3_frontier["rank1_SU4_augmented_quartic_G3_open"] is True
             and g3_frontier[
                 "SU5_arbitrary_Phi_nonzero_residual_cancellations_open"
             ]
@@ -533,9 +567,10 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
         "blocks, 19594 real Schur parameters, and 6585 invariant rows. The "
         "complete cubic interface has all 1414 real cross variables and an "
         "exact-rank-478, 478x1414 integer map with kernel dimension 936. Its "
-        "zero placeholder is not a physical target. The other graded maps, "
-        "especially the 6057x18085 quartic sector, physical target vector, full "
-        "6585x19594 matrix, PSD result, and arbitrary-Phi bound remain open. "
+        "zero placeholder is not a physical target. The homogeneous quartic "
+        "map is exact-rank-6057 with shape 6057x18085 and kernel dimension "
+        "12028. The physical target vector, standard real-type PSD congruences, "
+        "full 6585x19594 matrix, SDP result, and arbitrary-Phi bound remain open. "
         "Uniform coercivity for "
         "arbitrary non-pure-Delta Sigma orientations remains open. G5 is "
         "CLOSED. G4 and "
@@ -571,9 +606,10 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
         "blocks, 19594 Schur parameters and 6585 invariant rows. The complete "
         "cubic interface has all 1414 real cross variables and an exact-rank-478, "
         "478x1414 integer map with kernel dimension 936. Its zero placeholder "
-        "is not a physical target. The other graded maps, especially the "
-        "6057x18085 quartic sector, physical gap target, full 6585x19594 matrix, "
-        "PSD feasibility, and arbitrary-Phi bound remain open. Uniform coercivity "
+        "is not a physical target. The homogeneous quartic map is exact-rank-6057 "
+        "with shape 6057x18085 and kernel dimension 12028. The physical gap "
+        "target, standard real-type PSD congruences, full 6585x19594 matrix, "
+        "SDP feasibility, and arbitrary-Phi bound remain open. Uniform coercivity "
         "for arbitrary non-pure-Delta Sigma orientations is the precise G3 blocker. The historical "
         "64/91 calculation "
         "and 449-dimensional saddle/search remain scoped to option C."

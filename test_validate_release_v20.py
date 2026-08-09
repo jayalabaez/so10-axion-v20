@@ -49,6 +49,10 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py",
             "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_V20.json",
             "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_V20.md",
+            "exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py",
+            "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py",
+            "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.json",
+            "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.md",
         ):
             self.assertIn(required, paths)
         for relative in paths:
@@ -138,11 +142,18 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
                 / "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_V20.json"
             ).read_text(encoding="utf-8")
         )
+        quartic = json.loads(
+            (
+                release.ROOT
+                / "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.json"
+            ).read_text(encoding="utf-8")
+        )
         self.assertEqual(
             release.rank1_su4_release_predicates(
-                stabilizer, intertwiners, aligned, quadratic, census, cubic
+                stabilizer, intertwiners, aligned, quadratic, census, cubic,
+                quartic,
             ),
-            (True, True, True, True, True, True),
+            (True, True, True, True, True, True, True),
         )
 
         mutations = []
@@ -222,6 +233,7 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
                 quadratic_exact,
                 census_exact,
                 cubic_exact,
+                quartic_exact,
             ) = (
                 release.rank1_su4_release_predicates(
                     forged_stabilizer,
@@ -230,6 +242,7 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
                     quadratic,
                     census,
                     cubic,
+                    quartic,
                 )
             )
             self.assertFalse(stabilizer_exact and intertwiners_exact)
@@ -238,6 +251,7 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             self.assertFalse(quadratic_exact)
             self.assertFalse(census_exact)
             self.assertFalse(cubic_exact)
+            self.assertFalse(quartic_exact)
 
         stage2_mutations = []
         forged_aligned = copy.deepcopy(aligned)
@@ -259,12 +273,13 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
         for forged_aligned, forged_quadratic in stage2_mutations:
             predicates = release.rank1_su4_release_predicates(
                 stabilizer, intertwiners, forged_aligned, forged_quadratic,
-                census, cubic,
+                census, cubic, quartic,
             )
             self.assertFalse(predicates[2] and predicates[3])
             self.assertFalse(predicates[3])
             self.assertFalse(predicates[4])
             self.assertFalse(predicates[5])
+            self.assertFalse(predicates[6])
 
         census_mutations = []
         for key in (
@@ -288,11 +303,12 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
         for forged_census in census_mutations:
             predicates = release.rank1_su4_release_predicates(
                 stabilizer, intertwiners, aligned, quadratic, forged_census,
-                cubic,
+                cubic, quartic,
             )
             self.assertEqual(predicates[:4], (True, True, True, True))
             self.assertFalse(predicates[4])
             self.assertFalse(predicates[5])
+            self.assertFalse(predicates[6])
 
         cubic_mutations = []
         for section, key, value in (
@@ -344,10 +360,45 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
         for forged_cubic in cubic_mutations:
             predicates = release.rank1_su4_release_predicates(
                 stabilizer, intertwiners, aligned, quadratic, census,
-                forged_cubic,
+                forged_cubic, quartic,
             )
             self.assertEqual(predicates[:5], (True, True, True, True, True))
             self.assertFalse(predicates[5])
+            self.assertFalse(predicates[6])
+
+        quartic_mutations = []
+        for section, key, value in (
+            ("scope", "physical_quartic_target_constructed", True),
+            (
+                "scope",
+                "standard_PSD_congruences_for_real_type_fixed_bases_constructed",
+                True,
+            ),
+            ("scope", "semidefinite_feasibility_solved", True),
+            ("scope", "arbitrary_Phi_stationarity_or_lower_bound_proved", True),
+            ("scope", "G3_closed", True),
+            ("dimensions", "quartic_kernel", 12_029),
+            ("coefficient_map_certificate", "shape", [6_056, 18_085]),
+            ("coefficient_map_certificate", "nnz", 115_640),
+            ("coefficient_map_certificate", "rank_over_Q_exact", 6_056),
+            (
+                "coefficient_map_certificate",
+                "kernel_dimension_over_Q_exact",
+                12_029,
+            ),
+        ):
+            forged_quartic = copy.deepcopy(quartic)
+            forged_quartic[section][key] = value
+            quartic_mutations.append(forged_quartic)
+        for forged_quartic in quartic_mutations:
+            predicates = release.rank1_su4_release_predicates(
+                stabilizer, intertwiners, aligned, quadratic, census, cubic,
+                forged_quartic,
+            )
+            self.assertEqual(
+                predicates[:6], (True, True, True, True, True, True)
+            )
+            self.assertFalse(predicates[6])
 
     def test_su4_release_does_not_mislabel_the_full_augmented_sos_as_45_by_45(
         self,
@@ -382,7 +433,7 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
         self.assertIn("every real/Hermitian isotypic block", source)
         self.assertIn("homogenizing cross terms", source)
 
-    def test_current_main_heredocs_use_exact_census_and_cubic_scope_contracts(self):
+    def test_current_main_heredocs_use_exact_census_cubic_and_quartic_scope_contracts(self):
         source = (
             release.ROOT / ".github/workflows/current-main-full-reaudit.yml"
         ).read_text(encoding="utf-8")
@@ -415,6 +466,40 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             ),
             2,
         )
+        self.assertEqual(
+            source.count("_rank1_su4_augmented_sos_quartic_map_exact("), 2
+        )
+        self.assertEqual(
+            source.count(
+                "all(rank1_su4_quartic['scope'][name] is True "
+                "for name in quartic_true_scope)"
+            ),
+            2,
+        )
+        self.assertEqual(
+            source.count(
+                "all(rank1_su4_quartic['scope'][name] is False "
+                "for name in quartic_false_scope)"
+            ),
+            2,
+        )
+        for required in (
+            "quartic_map['shape']==[6057,18085]",
+            "quartic_map['nnz']==115641",
+            "quartic_map['rank_over_Q_exact']==6057",
+            "quartic_map['kernel_dimension_over_Q_exact']==12028",
+        ):
+            self.assertEqual(source.count(required), 2, required)
+        for required in (
+            "homogeneous_quartic_Schur_coefficient_map_constructed_exact",
+            "all_35_complex_carrier_families_constructed_exact",
+            "all_22_real_block_pairings_constructed_exact",
+            "physical_quartic_target_constructed",
+            "standard_PSD_congruences_for_real_type_fixed_bases_constructed",
+            "semidefinite_feasibility_solved",
+            "arbitrary_Phi_stationarity_or_lower_bound_proved",
+        ):
+            self.assertGreaterEqual(source.count(required), 2, required)
         for required in (
             "degree_zero_coefficient_map_constructed",
             "degree_one_coefficient_map_constructed",
@@ -433,6 +518,55 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             "whole_model_excluded",
         ):
             self.assertGreaterEqual(source.count(required), 2, required)
+
+    def test_all_seven_release_heredocs_pin_the_quartic_map_contract(self):
+        workflow_contracts = {
+            ".github/workflows/current-main-full-reaudit.yml": (2, (120, 240)),
+            ".github/workflows/g1-g8-execution-roadmap.yml": (1, (90,)),
+            ".github/workflows/g1-g8-gate-ledger.yml": (1, (90,)),
+            ".github/workflows/gauged-u1x-g3-stability.yml": (1, (75,)),
+            ".github/workflows/replicate-and-falsify.yml": (2, (75,)),
+        }
+        true_scope = (
+            "homogeneous_quartic_Schur_coefficient_map_constructed_exact",
+            "all_35_complex_carrier_families_constructed_exact",
+            "all_22_real_block_pairings_constructed_exact",
+        )
+        false_scope = (
+            "physical_quartic_target_constructed",
+            "standard_PSD_congruences_for_real_type_fixed_bases_constructed",
+            "semidefinite_feasibility_solved",
+            "arbitrary_Phi_stationarity_or_lower_bound_proved",
+            "G3_closed",
+        )
+        total_heredocs = 0
+        for relative, (expected_heredocs, timeouts) in workflow_contracts.items():
+            source = (release.ROOT / relative).read_text(encoding="utf-8")
+            self.assertEqual(
+                source.count("_rank1_su4_augmented_sos_quartic_map_exact("),
+                expected_heredocs,
+                relative,
+            )
+            total_heredocs += expected_heredocs
+            for timeout in timeouts:
+                self.assertIn(f"timeout-minutes: {timeout}", source, relative)
+            for required in (
+                "exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py",
+                "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py",
+                "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.json",
+                "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.md",
+            ):
+                self.assertIn(required, source, (relative, required))
+            for required in (
+                "115641",
+                "12028",
+                *true_scope,
+                *false_scope,
+            ):
+                self.assertGreaterEqual(
+                    source.count(required), expected_heredocs, (relative, required)
+                )
+        self.assertEqual(total_heredocs, 7)
 
     def test_checksums_reject_files_outside_repository(self):
         with tempfile.TemporaryDirectory() as directory:

@@ -130,6 +130,9 @@ class G1G8GateLedgerTests(unittest.TestCase):
         rank1_su4_cubic = reports[
             "gauged_G3_rank1_SU4_augmented_SOS_cubic_map"
         ]
+        rank1_su4_quartic = reports[
+            "gauged_G3_rank1_SU4_augmented_SOS_quartic_map"
+        ]
         alternative_sos = reports["gauged_G3_alternative_global_SOS_audit"]
         self.assertEqual(x_report["n_failed"], 0)
         self.assertFalse(x_report["contract_consistent"])
@@ -282,6 +285,24 @@ class G1G8GateLedgerTests(unittest.TestCase):
             ]
         )
         self.assertFalse(rank1_su4_cubic["scope"]["G3_closed"])
+        self.assertEqual(
+            rank1_su4_quartic["coefficient_map_certificate"]["shape"],
+            [6_057, 18_085],
+        )
+        self.assertEqual(
+            rank1_su4_quartic["coefficient_map_certificate"]["rank_over_Q_exact"],
+            6_057,
+        )
+        self.assertEqual(
+            rank1_su4_quartic["coefficient_map_certificate"][
+                "kernel_dimension_over_Q_exact"
+            ],
+            12_028,
+        )
+        self.assertFalse(
+            rank1_su4_quartic["scope"]["physical_quartic_target_constructed"]
+        )
+        self.assertFalse(rank1_su4_quartic["scope"]["G3_closed"])
         self.assertEqual(alternative_sos["n_failed"], 0)
 
     def test_constructive_g3_frontier_is_present_but_fail_closed(self):
@@ -464,6 +485,30 @@ class G1G8GateLedgerTests(unittest.TestCase):
             frontier["rank1_SU4_augmented_cubic_Schur_SOS_SDP_open"]
         )
         self.assertTrue(frontier["rank1_SU4_augmented_cubic_G3_open"])
+        self.assertTrue(frontier["rank1_SU4_augmented_quartic_map_exact"])
+        self.assertEqual(
+            frontier["rank1_SU4_augmented_quartic_coordinate_map_shape"],
+            [6_057, 18_085],
+        )
+        self.assertEqual(
+            frontier["rank1_SU4_augmented_quartic_coordinate_map_rank"], 6_057
+        )
+        self.assertEqual(
+            frontier[
+                "rank1_SU4_augmented_quartic_coordinate_map_kernel_dimension"
+            ],
+            12_028,
+        )
+        self.assertTrue(
+            frontier["rank1_SU4_augmented_quartic_physical_target_open"]
+        )
+        self.assertTrue(
+            frontier[
+                "rank1_SU4_augmented_quartic_standard_PSD_congruences_open"
+            ]
+        )
+        self.assertTrue(frontier["rank1_SU4_augmented_quartic_SDP_open"])
+        self.assertTrue(frontier["rank1_SU4_augmented_quartic_G3_open"])
         self.assertFalse(
             frontier["SU5_arbitrary_Phi_nonzero_residual_cancellations_open"]
         )
@@ -995,6 +1040,11 @@ class G1G8GateLedgerTests(unittest.TestCase):
                 "rank1_SU4_Phi210_quadratic_basis_exact"
             ]
         )
+        self.assertFalse(
+            report["gauged_u1x_g3_constructive_frontier"][
+                "rank1_SU4_augmented_quartic_map_exact"
+            ]
+        )
 
     def test_rank1_su4_augmented_census_rejects_every_physical_overclaim(self):
         inputs = self.report["model_contract_reports"]
@@ -1078,6 +1128,11 @@ class G1G8GateLedgerTests(unittest.TestCase):
         self.assertFalse(
             report["gauged_u1x_g3_constructive_frontier"][
                 "rank1_SU4_augmented_SOS_census_exact"
+            ]
+        )
+        self.assertFalse(
+            report["gauged_u1x_g3_constructive_frontier"][
+                "rank1_SU4_augmented_quartic_map_exact"
             ]
         )
 
@@ -1232,6 +1287,94 @@ class G1G8GateLedgerTests(unittest.TestCase):
         self.assertEqual(report["overall_state"], "EXECUTION_FAIL")
         self.assertFalse(frontier["integrity_pass"])
         self.assertFalse(frontier["rank1_SU4_augmented_cubic_map_exact"])
+        self.assertFalse(frontier["rank1_SU4_augmented_quartic_map_exact"])
+        self.assertFalse(
+            report["checks"][
+                "gauged_G3_rank1_SU4_infrastructure_is_exact_and_fail_closed"
+            ]
+        )
+
+    def test_rank1_su4_augmented_quartic_map_is_canonical_and_fail_closed(self):
+        inputs = self.report["model_contract_reports"]
+        census = inputs["gauged_G3_rank1_SU4_augmented_SOS_census"]
+        cubic = inputs["gauged_G3_rank1_SU4_augmented_SOS_cubic_map"]
+        quartic = inputs["gauged_G3_rank1_SU4_augmented_SOS_quartic_map"]
+
+        self.assertTrue(
+            mod._rank1_su4_augmented_sos_quartic_map_exact(
+                quartic, census, cubic
+            )
+        )
+        mutations = (
+            lambda value: value.__setitem__("status", "FORGED"),
+            lambda value: value["scope"].__setitem__("G3_closed", True),
+            lambda value: value["scope"].__setitem__(
+                "physical_quartic_target_constructed", True
+            ),
+            lambda value: value["scope"].__setitem__(
+                "standard_PSD_congruences_for_real_type_fixed_bases_constructed",
+                True,
+            ),
+            lambda value: value["scope"].__setitem__(
+                "semidefinite_feasibility_solved", True
+            ),
+            lambda value: value["dimensions"].__setitem__(
+                "quartic_kernel", 12_029
+            ),
+            lambda value: value["provenance"].__setitem__(
+                "cubic_source_sha256_canonical_LF", "0" * 64
+            ),
+            lambda value: value["carrier_certificate"].__setitem__(
+                "irreducible_copy_count", 797
+            ),
+            lambda value: value["pairing_certificate"].__setitem__(
+                "real_block_count", 21
+            ),
+            lambda value: value["realification_certificate"].__setitem__(
+                "domain_dimension", 18_084
+            ),
+            lambda value: value["coefficient_map_certificate"].__setitem__(
+                "shape", [6_056, 18_085]
+            ),
+            lambda value: value["coefficient_map_certificate"].__setitem__(
+                "nnz", 115_640
+            ),
+            lambda value: value["coefficient_map_certificate"].__setitem__(
+                "rank_over_Q_exact", 6_056
+            ),
+            lambda value: value["coefficient_map_certificate"].__setitem__(
+                "kernel_dimension_over_Q_exact", 12_029
+            ),
+            lambda value: value["coefficient_map_certificate"].__setitem__(
+                "coordinate_map_sha256", "f" * 64
+            ),
+            lambda value: value["coefficient_map_certificate"].__setitem__(
+                "unexpected_schema_key", True
+            ),
+        )
+        for mutate in mutations:
+            forged = copy.deepcopy(quartic)
+            mutate(forged)
+            self.assertFalse(
+                mod._rank1_su4_augmented_sos_quartic_map_exact(
+                    forged, census, cubic
+                ),
+                mutate.__code__.co_firstlineno,
+            )
+
+        forged = copy.deepcopy(quartic)
+        forged["scope"]["semidefinite_feasibility_solved"] = True
+        report = mod._build_report_from_inputs(
+            x_report=inputs["exact_X"],
+            g1_report=inputs["gauged_G1_character_census"],
+            g2_report=inputs["gauged_G2_derivative_audit"],
+            filter_report=inputs["gauged_scalar_filter"],
+            g3_rank1_su4_augmented_sos_quartic_map_report=forged,
+        )
+        frontier = report["gauged_u1x_g3_constructive_frontier"]
+        self.assertEqual(report["overall_state"], "EXECUTION_FAIL")
+        self.assertFalse(frontier["integrity_pass"])
+        self.assertFalse(frontier["rank1_SU4_augmented_quartic_map_exact"])
         self.assertFalse(
             report["checks"][
                 "gauged_G3_rank1_SU4_infrastructure_is_exact_and_fail_closed"

@@ -59,12 +59,14 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
             "exact_gauged_u1x_g3_rank1_su4_phi210_quadratic_basis_v20.py --write",
             "exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py",
             "exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py",
+            "exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py",
             "test_exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py",
             "test_exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py",
             "test_exact_gauged_u1x_g3_rank1_su4_aligned_carriers_v20.py",
             "test_exact_gauged_u1x_g3_rank1_su4_phi210_quadratic_basis_v20.py",
             "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py",
             "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py",
+            "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py",
             (
                 "gauged_u1x_g3_sos_candidate_v20.py "
                 "--recompute-heavy --write"
@@ -228,6 +230,12 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
             if "exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py"
             in display
         )
+        rank1_su4_quartic_index = next(
+            i
+            for i, display in enumerate(displays)
+            if "exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py"
+            in display
+        )
         global_gap_index = next(
             i
             for i, display in enumerate(displays)
@@ -287,7 +295,8 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
         self.assertLess(rank1_su4_aligned_index, rank1_su4_quadratic_index)
         self.assertLess(rank1_su4_quadratic_index, rank1_su4_census_index)
         self.assertLess(rank1_su4_census_index, rank1_su4_cubic_index)
-        self.assertLess(rank1_su4_cubic_index, global_gap_index)
+        self.assertLess(rank1_su4_cubic_index, rank1_su4_quartic_index)
+        self.assertLess(rank1_su4_quartic_index, global_gap_index)
         self.assertLess(fixed_f_offkernel_index, global_gap_index)
         self.assertLess(a_square_index, sos_candidate_index)
         self.assertLess(sos_candidate_index, g3_index)
