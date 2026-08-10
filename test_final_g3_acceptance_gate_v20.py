@@ -64,7 +64,10 @@ def test_current_gate_is_open_not_failed_or_overclaimed():
         "rank1_SU4_augmented_SOS_quartic_map_executes_fail_closed"
     ] is True
     assert report["artifact_integrity"][
-        "rank1_SU4_augmented_SOS_PSD_target_executes_fail_closed"
+        "rank1_SU4_legacy_v20_PSD_target_is_rejected_fail_closed"
+    ] is True
+    assert report["artifact_integrity"][
+        "rank1_SU4_corrected_fixed_endpoint_theorem_executes_fail_closed"
     ] is True
     assert report["science_criteria"][
         "max_negative_all_zero_residual_route_excluded_exactly"
@@ -183,8 +186,12 @@ def test_current_gate_is_open_not_failed_or_overclaimed():
         "rank1_SU4_augmented_quartic_SDP_solved"
     ] is False
     assert report["diagnostic_only"][
-        "rank1_SU4_augmented_PSD_routes_and_target_exact"
+        "rank1_SU4_legacy_v20_PSD_routes_and_stale_payload_well_formed"
     ] is True
+    assert report["diagnostic_only"][
+        "rank1_SU4_legacy_v20_physical_target_valid"
+    ] is False
+    assert report["diagnostic_only"]["rank1_SU4_legacy_v20_primal_valid"] is False
     assert report["diagnostic_only"][
         "rank1_SU4_augmented_standard_PSD_route_count"
     ] == 22
@@ -192,23 +199,24 @@ def test_current_gate_is_open_not_failed_or_overclaimed():
         "rank1_SU4_augmented_standard_PSD_parameter_count"
     ] == 19_594
     assert report["diagnostic_only"][
-        "rank1_SU4_augmented_physical_target_row_count"
+        "rank1_SU4_corrected_positive_Gram_map_shape"
+    ] == [6_585, 19_594]
+    assert report["diagnostic_only"][
+        "rank1_SU4_corrected_exact_coefficient_equalities"
     ] == 6_585
     assert report["diagnostic_only"][
-        "rank1_SU4_augmented_physical_target_common_denominator"
-    ] == 1_728_000
+        "rank1_SU4_corrected_strict_positive_Gram_blocks"
+    ] == 22
     assert report["diagnostic_only"][
-        "rank1_SU4_augmented_physical_target_nonzero_count"
-    ] == 845
+        "rank1_SU4_corrected_strict_positive_LDL_pivots"
+    ] == 824
     assert report["diagnostic_only"][
-        "rank1_SU4_augmented_standard_coordinate_map_constructed"
+        "rank1_SU4_corrected_arbitrary_real_Phi_at_fixed_endpoint"
+    ] is True
+    assert report["diagnostic_only"][
+        "rank1_SU4_corrected_global_Sigma_proved"
     ] is False
-    assert report["diagnostic_only"][
-        "rank1_SU4_augmented_PSD_SDP_solved"
-    ] is False
-    assert report["diagnostic_only"][
-        "rank1_SU4_augmented_PSD_G3_closed"
-    ] is False
+    assert report["diagnostic_only"]["rank1_SU4_corrected_G3_closed"] is False
     assert report["diagnostic_only"]["rank1_SU4_Schur_SOS_SDP_constructed"] is False
     assert report["diagnostic_only"][
         "arbitrary_non_pure_Delta_Sigma_orientations_open"
@@ -224,10 +232,14 @@ def test_current_gate_is_open_not_failed_or_overclaimed():
     assert "zero placeholder is nonphysical" in report["verdict"]
     assert "exact-rank-6057, 6057x18085 integer map" in report["verdict"]
     assert "kernel dimension 12028" in report["verdict"]
-    assert "22 standard PSD-coordinate routes" in report["verdict"]
-    assert "physical 6585-row target" in report["verdict"]
-    assert "coefficient map in standard PSD coordinates" in report["verdict"]
+    assert "legacy v20 assembled physical target is rejected" in report["verdict"]
+    assert "corrected 6585x19594 standard positive-Gram map" in report["verdict"]
+    assert "strict 22-block/824-pivot primal" in report["verdict"]
+    assert "every real Phi210" in report["verdict"]
+    assert "Global Sigma, general/full H, the full Hessian, and G3 remain open" in report["verdict"]
     assert "G3 remains open" in report["verdict"]
+    assert "only a four-real-dimensional Phi sub-slice" not in report["verdict"]
+    assert "arbitrary-Phi bound remain open" not in report["verdict"]
     assert "no coordinate Schur matrix" not in report["verdict"]
 
 
@@ -381,10 +393,10 @@ def test_rank1_su4_infrastructure_mutations_are_fail_closed():
             "rank1_SU4_augmented_SOS_quartic_map_executes_fail_closed"
         ] is False
         assert report["artifact_integrity"][
-            "rank1_SU4_augmented_SOS_PSD_target_executes_fail_closed"
+            "rank1_SU4_legacy_v20_PSD_target_is_rejected_fail_closed"
         ] is False
         assert report["artifact_integrity"][
-            "rank1_SU4_augmented_SOS_PSD_target_executes_fail_closed"
+            "rank1_SU4_legacy_v20_PSD_target_is_rejected_fail_closed"
         ] is False
 
 
@@ -407,7 +419,7 @@ def test_rank1_su4_augmented_psd_target_mutations_fail_closed_without_closing_g3
         assert report["overall_state"] == "EXECUTION_FAIL"
         assert report["classification"]["G3_closed"] is False
         assert report["artifact_integrity"][
-            "rank1_SU4_augmented_SOS_PSD_target_executes_fail_closed"
+            "rank1_SU4_legacy_v20_PSD_target_is_rejected_fail_closed"
         ] is False
 
 
@@ -477,7 +489,7 @@ def test_rank1_su4_augmented_cubic_mutations_cascade_fail_closed():
             "rank1_SU4_augmented_SOS_quartic_map_executes_fail_closed"
         ] is False
         assert report["artifact_integrity"][
-            "rank1_SU4_augmented_SOS_PSD_target_executes_fail_closed"
+            "rank1_SU4_legacy_v20_PSD_target_is_rejected_fail_closed"
         ] is False
 
     for field in (
@@ -508,7 +520,7 @@ def test_rank1_su4_augmented_cubic_mutations_cascade_fail_closed():
             "rank1_SU4_augmented_SOS_cubic_map_executes_fail_closed"
         ] is False
         assert report["artifact_integrity"][
-            "rank1_SU4_augmented_SOS_PSD_target_executes_fail_closed"
+            "rank1_SU4_legacy_v20_PSD_target_is_rejected_fail_closed"
         ] is False
         assert report["artifact_integrity"][
             "rank1_SU4_augmented_SOS_quartic_map_executes_fail_closed"
@@ -559,7 +571,7 @@ def test_rank1_su4_augmented_census_mutations_are_fail_closed():
         "rank1_SU4_augmented_SOS_quartic_map_executes_fail_closed"
     ] is False
     assert report["artifact_integrity"][
-        "rank1_SU4_augmented_SOS_PSD_target_executes_fail_closed"
+        "rank1_SU4_legacy_v20_PSD_target_is_rejected_fail_closed"
     ] is False
 
 
@@ -594,5 +606,5 @@ def test_rank1_su4_augmented_quartic_mutations_cascade_fail_closed():
             "rank1_SU4_augmented_SOS_quartic_map_executes_fail_closed"
         ] is False
         assert report["artifact_integrity"][
-            "rank1_SU4_augmented_SOS_PSD_target_executes_fail_closed"
+            "rank1_SU4_legacy_v20_PSD_target_is_rejected_fail_closed"
         ] is False

@@ -1,0 +1,127 @@
+{
+  "claim_boundary": {
+    "G3_closed": false,
+    "arbitrary_real_Phi_at_fixed_endpoint": true,
+    "fixed_H": "h_-=(e0-i e1)/sqrt(2)",
+    "fixed_Sigma": "q/4",
+    "full_H_proved": false,
+    "full_Hessian_proved": false,
+    "general_H_proved": false,
+    "global_Sigma_proved": false
+  },
+  "heavy_validation": {
+    "embedded_full_RHS_reconstruction_count": 1,
+    "entrypoint": "heavy_regenerate_exact_gauged_u1x_g3_rank1_su4_corrected_system_v21.py --check",
+    "full_map_reconstruction_count": 1,
+    "ordinary_unittest_discovery_runs_heavy_entrypoint": false
+  },
+  "inventory": {
+    "EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_FIXED_ENDPOINT_THEOREM_V21.json": {
+      "raw_sha256": "147fafdf1acfedd62a66e7fd0049cd9eb6ea94cc775e0bffc99598c9b47e8825",
+      "role": "runtime theorem report",
+      "size_bytes": 2925
+    },
+    "EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_LIVE_POLYNOMIAL_V21.json": {
+      "raw_sha256": "2eab2223c9782535764485ad5d90898a8b90a7a97b2e4d714819acd06cd1a964",
+      "role": "generation-time live regression report",
+      "size_bytes": 7499
+    },
+    "EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_ORDERED_SPECTRAL_OVERFLOW_V21.json": {
+      "raw_sha256": "db332026626cdea336005c0630e06d4c128f0436b9a2a96a4eeed8e9f96495f2",
+      "role": "generation-time overflow report",
+      "size_bytes": 2388
+    },
+    "EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_POSITIVE_GRAM_PRIMAL_V21.json": {
+      "raw_sha256": "dd40a508a08c219117ddefaf574652a24f0e1f868d011e05f558ecafc9600e03",
+      "role": "runtime exact primal certificate",
+      "size_bytes": 1496572
+    },
+    "EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_POSITIVE_GRAM_SYSTEM_V21.npz": {
+      "raw_sha256": "25ec946b1e9bca50cfe4e31ac9bb58f5d8d0f4a24b83dc11fdeec0d68a80c6f3",
+      "role": "runtime corrected sparse system",
+      "size_bytes": 293539
+    },
+    "EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_POSITIVE_GRAM_VERIFY_V21.json": {
+      "raw_sha256": "b7cf3296b16176b2bf5e84fa39e0ba78d72f7f1740e046ce7665f33b3d18c49c",
+      "role": "runtime independent exact-verifier report",
+      "size_bytes": 10303
+    },
+    "EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_SOURCE_RECONSTRUCTION_V21.json": {
+      "raw_sha256": "f0704cdd5199eadfdebc2cb916b353b3ee1000589ccbd480cc78883e8731b108",
+      "role": "generation-time exhaustive source report",
+      "size_bytes": 4800
+    },
+    "README.md": {
+      "raw_sha256": "5d02997341f1382315adc1285403bff564b5409c340372c8cbe59bba43ec8826",
+      "role": "publication documentation",
+      "size_bytes": 4297
+    },
+    "exact_gauged_u1x_g3_rank1_su4_corrected_physical_rhs_v21.py": {
+      "raw_sha256": "e607e6a269037f5a844dc147043cf0053af8a5320c7c947133c3f61e5eca6051",
+      "role": "generation-time ordered-spectral RHS source",
+      "size_bytes": 36573
+    },
+    "exact_gauged_u1x_g3_rank1_su4_corrected_positive_gram_map_v21.py": {
+      "raw_sha256": "a7fe300ccf69dcb2520f2b3f18bf994fb8ab7ad90c5be866b34143b69c971259",
+      "role": "generation-time exhaustive map source",
+      "size_bytes": 51876
+    },
+    "exact_gauged_u1x_g3_rank1_su4_corrected_positive_gram_primal_v21.py": {
+      "raw_sha256": "9a6015946362c199cf64de7d8f48e82df51874bc1ae204c1d2c9f8ce6e9b178b",
+      "role": "runtime HERE-only canonical loader",
+      "size_bytes": 13679
+    },
+    "freeze_exact_gauged_u1x_g3_rank1_su4_corrected_publication_v21.py": {
+      "raw_sha256": "f79f22feacb58946c686806a45b828e600bf3eb913935cbe9b2fe92e4d5a0401",
+      "role": "inventory writer/verifier",
+      "size_bytes": 7846
+    },
+    "heavy_regenerate_exact_gauged_u1x_g3_rank1_su4_corrected_system_v21.py": {
+      "raw_sha256": "a304a3a224462e09e8833ef5818b0df48fc42fe4b7577e9d04a483e872f6d7df",
+      "role": "explicit once-only heavy test",
+      "size_bytes": 3523
+    },
+    "test_exact_gauged_u1x_g3_rank1_su4_corrected_publication_v21.py": {
+      "raw_sha256": "5e993798c120fc1b00a15a9ae28994be2031ddb163bd80960ea00e46114b3aa1",
+      "role": "fast fail-closed tests",
+      "size_bytes": 15228
+    },
+    "verify_exact_gauged_u1x_g3_rank1_su4_corrected_fixed_endpoint_theorem_v21.py": {
+      "raw_sha256": "907f50415501fc73396b5fb4a50152c9ae8a54c460a5d15d643ac10d1308da77",
+      "role": "runtime HERE-only theorem bridge",
+      "size_bytes": 16573
+    },
+    "verify_exact_gauged_u1x_g3_rank1_su4_corrected_live_polynomial_v21.py": {
+      "raw_sha256": "9e37096cb1d6a967ed739f459437e6796dc9d8340e32f6a2c1a59bcbee7a36cd",
+      "role": "generation-time direct live evaluator",
+      "size_bytes": 17591
+    },
+    "verify_exact_gauged_u1x_g3_rank1_su4_corrected_ordered_spectral_overflow_v21.py": {
+      "raw_sha256": "1beb8a2dd6d742d4a55f4cde2d02c1b89264a1ac0d202a26d210d35e344d2e57",
+      "role": "generation-time direct overflow evaluator",
+      "size_bytes": 8925
+    },
+    "verify_exact_gauged_u1x_g3_rank1_su4_corrected_positive_gram_primal_v21.py": {
+      "raw_sha256": "aef55868d573e8caa4627ab118d1ad06e2e94366b5aa816a200cf1d3c92cd46b",
+      "role": "runtime HERE-only Fraction/Bareiss verifier",
+      "size_bytes": 10620
+    }
+  },
+  "inventory_count": 18,
+  "logical_pins": {
+    "certificate_raw_sha256": "dd40a508a08c219117ddefaf574652a24f0e1f868d011e05f558ecafc9600e03",
+    "exact_LDL_pivot_sha256": "bc8626c201d626aa33a97f707bfa963ae887fe9abb64a0fab728343825a430c2",
+    "exact_coordinate_sha256": "7a36b579821e135fb7283d02e696153cc78907048e73ca5dce0dd260abdc3147",
+    "map_numerator_csr_sha256": "1834c8439fa3e44459f7ba871420a4351cd0b4de194dec6f5c4a84c1f39d3a16",
+    "system_raw_sha256": "25ec946b1e9bca50cfe4e31ac9bb58f5d8d0f4a24b83dc11fdeec0d68a80c6f3",
+    "target_numerator_sha256": "14debcfaf02d4b8c20d1d43a2e1f82d6a7390e28428fc63dd21a9c5f90aec0cf"
+  },
+  "manifest_self_excluded_by_definition": true,
+  "ordinary_validation": {
+    "heavy_source_reconstruction_performed": false,
+    "relocation_tested_with_python_isolated_mode": true,
+    "runtime_dependency_root": "HERE only"
+  },
+  "schema": "so10-rank1-su4-corrected-positive-gram-publication-v21",
+  "status": "EXACT_RANK1_SU4_CORRECTED_PUBLICATION_V21_INVENTORY_FROZEN"
+}

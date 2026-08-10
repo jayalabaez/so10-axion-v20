@@ -1,16 +1,14 @@
 #!/usr/bin/env python3
-"""Exact PSD-coordinate routes and physical RHS for the rank-one SU(4) endpoint.
+"""Legacy structural PSD-route API; the v20 physical RHS is rejected.
 
-This module closes two bounded pieces of the augmented-SOS infrastructure:
+Only the private exact congruence and lower-grade construction helpers remain
+available as byte-pinned generation inputs for the corrected v21 publication.
+The old raw-Schur physical target is invalid and superseded.  Public report,
+render, validation, artifact-writing, and command-line entrypoints fail closed
+so this source cannot regenerate or certify the rejected payload.
 
-* exact congruences from the nine physical real-type fixed spaces to standard
-  real symmetric PSD cones, together with the thirteen already-standard
-  complex Hermitian cones; and
-* the exact physical polynomial ``A(z)-3/200`` in the concatenated
-  1+4+45+478+6057 graded invariant chart.
-
-It deliberately does *not* solve the semidefinite feasibility problem, prove
-the arbitrary-Phi inequality, classify equality, or close G3.
+The corrected theorem is restricted to ``H=h_-`` and ``Sigma=q/4`` with
+arbitrary real ``Phi``.  It does not close G3 or vary H or Sigma.
 """
 from __future__ import annotations
 
@@ -65,8 +63,11 @@ SPECTRAL_DENOMINATOR = 221_184_000
 SPECTRAL_BATCH_SIZE = 24
 INT64_MAX = int(np.iinfo(np.int64).max)
 
-STATUS = "EXACT_RANK1_SU4_AUGMENTED_SOS_PSD_ROUTES_AND_PHYSICAL_TARGET_CERTIFIED"
-OVERALL_STATE = "PSD_ROUTES_AND_PHYSICAL_TARGET_CLOSED__SDP_ARBITRARY_PHI_AND_G3_OPEN"
+STATUS = "REJECTED_V20_PHYSICAL_TARGET__STRUCTURAL_PSD_ROUTES_ONLY"
+OVERALL_STATE = (
+    "STRUCTURAL_PSD_ROUTES_RETAINED__V20_PHYSICAL_TARGET_REJECTED__"
+    "SUPERSEDED_BY_V21"
+)
 JSON_NAME = "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_V20.json"
 MARKDOWN_NAME = "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_V20.md"
 
@@ -118,8 +119,10 @@ EXPECTED_SCOPE = {
     "all_nine_real_type_standard_PSD_congruences_constructed": True,
     "all_thirteen_complex_blocks_in_standard_Hermitian_coordinates": True,
     "all_22_standard_PSD_coordinate_routes_constructed": True,
-    "physical_target_formula_all_five_grades_constructed": True,
-    "physical_target_full_6585_row_vector_constructed": True,
+    "physical_target_formula_all_five_grades_constructed": False,
+    "physical_target_full_6585_row_vector_constructed": False,
+    "legacy_physical_target_rejected": True,
+    "structural_PSD_routes_retained_for_v21_generation": True,
     "coefficient_map_reparameterized_in_standard_PSD_coordinates": False,
     "semidefinite_feasibility_solved": False,
     "exact_primal_PSD_certificate_constructed": False,
@@ -133,9 +136,9 @@ EXPECTED_SCOPE = {
 EXPECTED_CLAIM_BOUNDARY = {
     "proved_here": (
         "exact standard-cone coordinate routes for all 22 augmented blocks",
-        "exact physical target in the 6,585-row graded chart",
     ),
     "not_proved_here": (
+        "a valid physical target in the 6,585-row graded chart",
         "standard-coordinate coefficient matrix",
         "semidefinite feasibility",
         "primal PSD or dual Farkas certificate",
@@ -1430,8 +1433,11 @@ def _cached_report_payload() -> str:
 
 
 def build_report() -> dict[str, Any]:
-    """Return a fresh deep object graph backed by an immutable private cache."""
-    return copy.deepcopy(json.loads(_cached_report_payload()))
+    """Reject the superseded v20 physical-target report entrypoint."""
+    raise ArithmeticError(
+        "the v20 physical target is rejected and superseded by "
+        "corrected_rank1_publication_v21; structural private APIs only"
+    )
 
 
 def build_report_cache_info() -> Any:
@@ -1445,6 +1451,17 @@ def clear_build_report_cache() -> None:
 def validate_report(
     raw_report: Mapping[str, Any], *, check_live_dependencies: bool = False
 ) -> tuple[bool, tuple[str, ...]]:
+    del raw_report, check_live_dependencies
+    return False, (
+        "the v20 physical target is rejected and superseded by "
+        "corrected_rank1_publication_v21",
+    )
+
+
+def _validate_rejected_payload_never_called(
+    raw_report: Mapping[str, Any], *, check_live_dependencies: bool = False
+) -> tuple[bool, tuple[str, ...]]:
+    """Historical validator body retained as unreachable forensic source."""
     report = _jsonable(dict(raw_report))
     failures: list[str] = []
 
@@ -1681,6 +1698,15 @@ def validate_report(
 
 
 def render_markdown(raw_report: Mapping[str, Any]) -> str:
+    del raw_report
+    raise ArithmeticError(
+        "the v20 physical-target renderer is disabled; use the tracked "
+        "rejection notice and corrected_rank1_publication_v21"
+    )
+
+
+def _render_rejected_payload_never_called(raw_report: Mapping[str, Any]) -> str:
+    """Historical renderer retained as unreachable forensic source."""
     report = _jsonable(dict(raw_report))
     routes = report["standard_PSD_coordinate_routes"]
     target = report["physical_target"]
@@ -1768,76 +1794,20 @@ def render_markdown(raw_report: Mapping[str, Any]) -> str:
 
 
 def _write_artifacts(report: Mapping[str, Any], output: Path, markdown_output: Path) -> None:
-    serializable = _jsonable(dict(report))
-    valid, failures = validate_report(serializable, check_live_dependencies=True)
-    if not valid:
-        raise ArithmeticError("certificate validation failed: " + "; ".join(failures))
-    output.write_text(
-        json.dumps(serializable, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+    del report, output, markdown_output
+    raise ArithmeticError(
+        "writing the rejected v20 physical target is permanently disabled"
     )
-    markdown_output.write_text(render_markdown(serializable), encoding="utf-8")
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--output", type=Path, default=HERE / JSON_NAME)
-    parser.add_argument("--markdown-output", type=Path, default=HERE / MARKDOWN_NAME)
-    parser.add_argument(
-        "--check",
-        action="store_true",
-        help="validate the frozen JSON/Markdown and live dependency provenance",
-    )
-    arguments = parser.parse_args(argv)
-    if arguments.check:
-        report = json.loads(arguments.output.read_text(encoding="utf-8"))
-        valid, failures = validate_report(report, check_live_dependencies=True)
-        expected_markdown = render_markdown(report)
-        if arguments.markdown_output.read_text(encoding="utf-8") != expected_markdown:
-            failures = (*failures, "Markdown rendering drifted")
-            valid = False
-        print(
-            json.dumps(
-                {"status": report.get("status"), "valid": valid, "failures": failures},
-                indent=2,
-                sort_keys=True,
-            )
-        )
-        return 0 if valid else 1
-    report = build_report()
-    _write_artifacts(report, arguments.output, arguments.markdown_output)
-    serializable = _jsonable(report)
+    del argv
     print(
-        json.dumps(
-            {
-                "status": serializable["status"],
-                "proof_grade": serializable["proof_grade"],
-                "scope": serializable["scope"],
-                "standard_PSD_coordinate_routes": {
-                    "real_type_block_count": serializable[
-                        "standard_PSD_coordinate_routes"
-                    ]["real_type_block_count"],
-                    "complex_Hermitian_block_count": serializable[
-                        "standard_PSD_coordinate_routes"
-                    ]["complex_Hermitian_block_count"],
-                    "standard_total_parameter_count": serializable[
-                        "standard_PSD_coordinate_routes"
-                    ]["standard_total_parameter_count"],
-                },
-                "physical_target": {
-                    key: serializable["physical_target"]["full_graded_chart"][key]
-                    for key in (
-                        "row_count",
-                        "common_denominator",
-                        "total_nonzero_count",
-                        "numerator_sha256",
-                    )
-                },
-            },
-            indent=2,
-            sort_keys=True,
-        )
+        "REJECTED: the v20 physical-target generator is disabled and superseded "
+        "by corrected_rank1_publication_v21; no files were read or written.",
+        file=sys.stderr,
     )
-    return 0
+    return 2
 
 
 if __name__ == "__main__":

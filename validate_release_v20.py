@@ -13,6 +13,7 @@ import sys
 import unittest
 
 import g1_g8_gate_ledger_v20 as gate_ledger
+import corrected_rank1_endpoint_v21 as corrected_rank1
 
 
 ROOT = Path(__file__).resolve().parent
@@ -52,6 +53,35 @@ FINAL_THEOREM_CORE_PATHS: tuple[str, ...] = (
     "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.md",
     "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_V20.json",
     "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_V20.md",
+    "corrected_rank1_endpoint_v21.py",
+    "freeze_corrected_rank1_endpoint_v21_integration.py",
+    "test_corrected_rank1_endpoint_v21.py",
+    "test_freeze_corrected_rank1_endpoint_v21_integration.py",
+    ".github/workflows/current-main-full-reaudit.yml",
+    ".github/workflows/g1-g8-execution-roadmap.yml",
+    ".github/workflows/g1-g8-gate-ledger.yml",
+    ".github/workflows/gauged-u1x-g3-stability.yml",
+    ".github/workflows/latest-main-final-scalar-gate.yml",
+    ".github/workflows/replicate-and-falsify.yml",
+    "corrected_rank1_publication_v21/EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_FIXED_ENDPOINT_THEOREM_V21.json",
+    "corrected_rank1_publication_v21/EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_LIVE_POLYNOMIAL_V21.json",
+    "corrected_rank1_publication_v21/EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_ORDERED_SPECTRAL_OVERFLOW_V21.json",
+    "corrected_rank1_publication_v21/EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_POSITIVE_GRAM_PRIMAL_V21.json",
+    "corrected_rank1_publication_v21/EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_POSITIVE_GRAM_SYSTEM_V21.npz",
+    "corrected_rank1_publication_v21/EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_POSITIVE_GRAM_VERIFY_V21.json",
+    "corrected_rank1_publication_v21/EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_PUBLICATION_V21_MANIFEST.json",
+    "corrected_rank1_publication_v21/EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_SOURCE_RECONSTRUCTION_V21.json",
+    "corrected_rank1_publication_v21/README.md",
+    "corrected_rank1_publication_v21/exact_gauged_u1x_g3_rank1_su4_corrected_physical_rhs_v21.py",
+    "corrected_rank1_publication_v21/exact_gauged_u1x_g3_rank1_su4_corrected_positive_gram_map_v21.py",
+    "corrected_rank1_publication_v21/exact_gauged_u1x_g3_rank1_su4_corrected_positive_gram_primal_v21.py",
+    "corrected_rank1_publication_v21/freeze_exact_gauged_u1x_g3_rank1_su4_corrected_publication_v21.py",
+    "corrected_rank1_publication_v21/heavy_regenerate_exact_gauged_u1x_g3_rank1_su4_corrected_system_v21.py",
+    "corrected_rank1_publication_v21/test_exact_gauged_u1x_g3_rank1_su4_corrected_publication_v21.py",
+    "corrected_rank1_publication_v21/verify_exact_gauged_u1x_g3_rank1_su4_corrected_fixed_endpoint_theorem_v21.py",
+    "corrected_rank1_publication_v21/verify_exact_gauged_u1x_g3_rank1_su4_corrected_live_polynomial_v21.py",
+    "corrected_rank1_publication_v21/verify_exact_gauged_u1x_g3_rank1_su4_corrected_ordered_spectral_overflow_v21.py",
+    "corrected_rank1_publication_v21/verify_exact_gauged_u1x_g3_rank1_su4_corrected_positive_gram_primal_v21.py",
     "G1_EXACT_DECLARED_SYMMETRY_CHARACTER_CENSUS_V20.json",
     "G1_EXACT_DECLARED_SYMMETRY_CHARACTER_CENSUS_V20.md",
     "G1_G8_EXECUTION_ROADMAP_V20.md",
@@ -102,6 +132,8 @@ def run(command: list[str]) -> None:
     print("+", " ".join(command), flush=True)
     environment = os.environ.copy()
     environment["SOURCE_DATE_EPOCH"] = "1785638400"
+    environment["PYTHONDONTWRITEBYTECODE"] = "1"
+    environment["SO10_PUBLISHED_API_ROOT"] = str(ROOT)
     for name in (
         "OPENBLAS_NUM_THREADS",
         "OMP_NUM_THREADS",
@@ -126,8 +158,9 @@ def rank1_su4_release_predicates(
     cubic_report: dict,
     quartic_report: dict,
     psd_target_report: dict,
+    corrected_publication: dict | None = None,
 ) -> tuple[bool, bool, bool, bool, bool, bool, bool, bool]:
-    """Return exact, fail-closed infrastructure predicates for the release."""
+    """Return exact infrastructure plus the corrected endpoint theorem."""
     stabilizer_exact = gate_ledger._rank1_su4_stabilizer_infrastructure_exact(
         stabilizer_report
     )
@@ -156,10 +189,24 @@ def rank1_su4_release_predicates(
             quartic_report, census_report, cubic_report,
         )
     )
-    psd_target_exact = (
+    legacy_routes_well_formed = (
         quartic_exact
+        and gate_ledger._rank1_su4_augmented_sos_psd_routes_and_stale_payload_well_formed(
+            psd_target_report, census_report, cubic_report, quartic_report,
+        )
+    )
+    corrected_publication = (
+        corrected_rank1.load_validated_publication()
+        if corrected_publication is None
+        else corrected_publication
+    )
+    corrected_endpoint_exact = bool(
+        legacy_routes_well_formed
         and gate_ledger._rank1_su4_augmented_sos_psd_target_exact(
             psd_target_report, census_report, cubic_report, quartic_report,
+        ) is False
+        and corrected_rank1.corrected_fixed_endpoint_theorem_exact(
+            corrected_publication
         )
     )
     return (
@@ -167,7 +214,7 @@ def rank1_su4_release_predicates(
         census_exact,
         cubic_exact,
         quartic_exact,
-        psd_target_exact,
+        corrected_endpoint_exact,
     )
 
 
@@ -214,7 +261,17 @@ def write_checksums(files: list[Path], *, root: Path | None = None) -> None:
 
 
 def main() -> int:
-    run([sys.executable, "-m", "compileall", "-q", str(ROOT)])
+    run(
+        [
+            sys.executable,
+            "-m",
+            "compileall",
+            "-q",
+            "-x",
+            "corrected_rank1_publication_v21",
+            str(ROOT),
+        ]
+    )
 
     run(
         [
@@ -457,10 +514,47 @@ def main() -> int:
             "exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py",
         ]
     )
+    corrected_dir = ROOT / "corrected_rank1_publication_v21"
     run(
         [
             sys.executable,
-            "exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py",
+            "-B",
+            str(
+                corrected_dir
+                / "freeze_exact_gauged_u1x_g3_rank1_su4_corrected_publication_v21.py"
+            ),
+            "--check",
+        ]
+    )
+    run(
+        [
+            sys.executable,
+            "-B",
+            str(
+                corrected_dir
+                / "exact_gauged_u1x_g3_rank1_su4_corrected_positive_gram_primal_v21.py"
+            ),
+            "--check",
+        ]
+    )
+    run(
+        [
+            sys.executable,
+            "-B",
+            str(
+                corrected_dir
+                / "verify_exact_gauged_u1x_g3_rank1_su4_corrected_positive_gram_primal_v21.py"
+            ),
+        ]
+    )
+    run(
+        [
+            sys.executable,
+            "-B",
+            str(
+                corrected_dir
+                / "verify_exact_gauged_u1x_g3_rank1_su4_corrected_fixed_endpoint_theorem_v21.py"
+            ),
         ]
     )
     run(
@@ -652,6 +746,9 @@ def main() -> int:
             ROOT
             / "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_V20.json"
         ).read_text()
+    )
+    exact_rank1_su4_corrected_publication = (
+        corrected_rank1.load_validated_publication()
     )
     exact_alternative_sos = json.loads(
         (
@@ -1267,7 +1364,7 @@ def main() -> int:
         rank1_su4_augmented_sos_census_exact,
         rank1_su4_augmented_sos_cubic_map_exact,
         rank1_su4_augmented_sos_quartic_map_exact,
-        rank1_su4_augmented_sos_psd_target_exact,
+        rank1_su4_corrected_endpoint_exact,
     ) = rank1_su4_release_predicates(
         exact_rank1_su4_stabilizer,
         exact_rank1_su4_phi210_intertwiners,
@@ -1277,6 +1374,7 @@ def main() -> int:
         exact_rank1_su4_augmented_sos_cubic_map,
         exact_rank1_su4_augmented_sos_quartic_map,
         exact_rank1_su4_augmented_sos_psd_target,
+        exact_rank1_su4_corrected_publication,
     )
     require(
         rank1_su4_stabilizer_exact,
@@ -1360,47 +1458,51 @@ def main() -> int:
         "quartic-map open-scope contract was promoted beyond the exact theorem",
     )
     require(
-        rank1_su4_augmented_sos_psd_target_exact,
-        "rank-one SU(4) PSD routes or physical target drifted, lost local provenance, or overclaimed SDP/G3",
+        rank1_su4_corrected_endpoint_exact,
+        "rank-one SU(4) corrected fixed-endpoint theorem drifted, lost byte provenance, or overclaimed G3",
     )
     psd_target_scope = exact_rank1_su4_augmented_sos_psd_target["scope"]
     psd_routes = exact_rank1_su4_augmented_sos_psd_target[
         "standard_PSD_coordinate_routes"
     ]
-    physical_target = exact_rank1_su4_augmented_sos_psd_target[
-        "physical_target"
-    ]
-    full_target = physical_target["full_graded_chart"]
-    physical_quartic_target = physical_target["quartic"]
+    corrected_view = corrected_rank1.central_view(
+        exact_rank1_su4_corrected_publication
+    )
     require(
         psd_routes["real_type_block_count"] == 9
         and psd_routes["complex_Hermitian_block_count"] == 13
         and psd_routes["all_22_cones_have_standard_coordinate_routes"] is True
         and psd_routes["standard_total_parameter_count"] == 19_594
-        and full_target["row_count"] == 6_585
-        and full_target["common_denominator"] == 1_728_000
-        and full_target["total_nonzero_count"] == 845
-        and full_target["numerator_sha256"]
-        == "e2d9eec1b01b3eeefc4a54d404db93171aa6600ea9ef646a215ab0b5401f7630"
-        and physical_quartic_target["row_count"] == 6_057
-        and physical_quartic_target["common_denominator"] == 3_375
-        and physical_quartic_target["nonzero_count"] == 825
-        and physical_quartic_target["numerator_sha256"]
-        == "38476cff340ef8702735d48d7dbdf644ed41f8dc4a359264d33d966f177145ad"
-        and all(
-            psd_target_scope[name] is False
-            for name in (
-                "coefficient_map_reparameterized_in_standard_PSD_coordinates",
-                "semidefinite_feasibility_solved",
-                "exact_primal_PSD_certificate_constructed",
-                "exact_dual_Farkas_certificate_constructed",
-                "arbitrary_Phi_lower_bound_proved",
-                "equality_orbit_classification_proved",
-                "full_486_field_Hessian_classification_proved",
-                "G3_closed",
-            )
-        ),
-        "PSD-target open-scope contract was promoted beyond the exact theorem",
+        and gate_ledger._rank1_su4_augmented_sos_psd_target_exact(
+            exact_rank1_su4_augmented_sos_psd_target,
+            exact_rank1_su4_augmented_sos_census,
+            exact_rank1_su4_augmented_sos_cubic_map,
+            exact_rank1_su4_augmented_sos_quartic_map,
+        ) is False
+        and corrected_view["legacy_v20_physical_target_valid"] is False
+        and corrected_view["legacy_v20_primal_valid"] is False
+        and corrected_view["map_shape"] == [6_585, 19_594]
+        and corrected_view["map_common_denominator"] == 256
+        and corrected_view["map_nnz"] == 138_550
+        and corrected_view["map_numerator_csr_sha256"]
+        == corrected_rank1.EXPECTED_MAP_SHA256
+        and corrected_view["target_common_denominator"] == 576_000
+        and corrected_view["target_nonzero_count"] == 512
+        and corrected_view["target_numerator_sha256"]
+        == corrected_rank1.EXPECTED_TARGET_SHA256
+        and corrected_view["exact_coefficient_equalities"] == 6_585
+        and corrected_view["strict_positive_Gram_blocks"] == 22
+        and corrected_view["strict_positive_LDL_pivots"] == 824
+        and corrected_view["arbitrary_real_Phi_at_fixed_endpoint"] is True
+        and corrected_view["strict_positive_off_homogeneous_origin"] is True
+        and corrected_view["A_greater_than_3_over_200_at_t1"] is True
+        and corrected_view["p_zero_set_at_t1_empty"] is True
+        and corrected_view["global_Sigma_proved"] is False
+        and corrected_view["general_H_proved"] is False
+        and corrected_view["full_H_proved"] is False
+        and corrected_view["full_Hessian_proved"] is False
+        and corrected_view["G3_closed"] is False,
+        "corrected endpoint theorem or superseded-v20 rejection contract drifted",
     )
     alternative_flags = exact_alternative_sos["flags"]
     require(
@@ -1611,9 +1713,12 @@ def main() -> int:
     run(
         [
             sys.executable,
+            "-B",
             "-m",
             "pytest",
             "-q",
+            "-p",
+            "no:cacheprovider",
             "test_exact_x_symmetry_consistency_gate_v20.py",
             "test_g1_exact_declared_symmetry_character_census_v20.py",
             "test_gauged_u1x_scalar_contract_v20.py",
@@ -1645,6 +1750,8 @@ def main() -> int:
             "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py",
             "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py",
             "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py",
+            "corrected_rank1_publication_v21/test_exact_gauged_u1x_g3_rank1_su4_corrected_publication_v21.py",
+            "test_corrected_rank1_endpoint_v21.py",
             "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py",
             "test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py",
             "test_final_g3_acceptance_gate_v20.py",
@@ -1655,6 +1762,14 @@ def main() -> int:
             "test_g1_g8_execution_roadmap_v20.py",
             "test_theory_validation_matrix_v20.py",
             "test_replicate_v20.py",
+        ]
+    )
+    run(
+        [
+            sys.executable,
+            "-B",
+            "corrected_rank1_publication_v21/freeze_exact_gauged_u1x_g3_rank1_su4_corrected_publication_v21.py",
+            "--check",
         ]
     )
 

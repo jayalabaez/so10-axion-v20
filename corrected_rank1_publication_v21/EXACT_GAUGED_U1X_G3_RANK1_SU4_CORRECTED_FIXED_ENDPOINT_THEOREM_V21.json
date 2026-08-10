@@ -1,0 +1,62 @@
+{
+  "claim_boundary": {
+    "G3_closed": false,
+    "arbitrary_real_Phi_at_this_fixed_endpoint": true,
+    "fixed_H_h_minus": true,
+    "fixed_Sigma_q_over_4": true,
+    "full_H_proved": false,
+    "full_Hessian_proved": false,
+    "general_H_proved": false,
+    "global_Sigma_proved": false
+  },
+  "exact_evidence": {
+    "carrier_dimension": 22366,
+    "carrier_dimension_formula": "211*212/2",
+    "coefficient_equalities": 6585,
+    "exact_LDL_pivot_sha256": "bc8626c201d626aa33a97f707bfa963ae887fe9abb64a0fab728343825a430c2",
+    "exact_coordinate_sha256": "7a36b579821e135fb7283d02e696153cc78907048e73ca5dce0dd260abdc3147",
+    "exact_verify_report_raw_sha256": "b7cf3296b16176b2bf5e84fa39e0ba78d72f7f1740e046ce7665f33b3d18c49c",
+    "live_report_raw_sha256": "2eab2223c9782535764485ad5d90898a8b90a7a97b2e4d714819acd06cd1a964",
+    "map_numerator_csr_sha256": "1834c8439fa3e44459f7ba871420a4351cd0b4de194dec6f5c4a84c1f39d3a16",
+    "overflow_report_raw_sha256": "db332026626cdea336005c0630e06d4c128f0436b9a2a96a4eeed8e9f96495f2",
+    "source_report_raw_sha256": "f0704cdd5199eadfdebc2cb916b353b3ee1000589ccbd480cc78883e8731b108",
+    "strict_positive_Gram_blocks": 22,
+    "strict_positive_LDL_pivots": 824,
+    "target_numerator_sha256": "14debcfaf02d4b8c20d1d43a2e1f82d6a7390e28428fc63dd21a9c5f90aec0cf"
+  },
+  "live_SU3_regression": {
+    "exact_grade_residuals": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    "scope": "independent point regression, not the source of the global identity",
+    "target_and_carrier_total": "15742745821207/3000000000000000"
+  },
+  "overflow_audit_hardening": {
+    "both_exceed_signed_int64": true,
+    "coarse_bit_length": 68,
+    "coarse_raw_contraction": "225852143492225949696",
+    "fixed_width_physical_contraction_used": false,
+    "logical_role": "arithmetic-path hardening; not a premise of positivity",
+    "sharp_bit_length": 108,
+    "sharp_raw_contraction": "225742872026058646911271963582464"
+  },
+  "status": "EXACT_RANK1_SU4_CORRECTED_FIXED_ENDPOINT_THEOREM_V21_PASS",
+  "theorem": {
+    "at_t_equals_one": "A(Phi)>3/200 for every real Phi",
+    "complete_polynomial_identity_for_all_real_t_Phi": true,
+    "fixed_endpoint": {
+      "H": "h_-=(e0-i e1)/sqrt(2)",
+      "Sigma": "q/4",
+      "unbroken_stabilizer_used": "SU(4)"
+    },
+    "identity_reason": "all 19594 standard Gram columns were reconstructed from the complete positive-carrier basis in the full 6585-row chart; the corrected ordered-spectral RHS is the physical p chart; all 6585 rational coefficient equalities hold",
+    "p_zero_set_at_t_equals_one": "empty",
+    "polynomial": "p(t,Phi)=A(t,Phi)-3*t^4/200",
+    "strict_positive_off_homogeneous_origin": true,
+    "strictness_reason": "the 22366-dimensional carrier transform is invertible on Sym^2(R plus Phi210), so (t,Phi)!=(0,0) has a nonzero carrier feature; all 22 exact Gram blocks are strictly positive definite"
+  }
+}

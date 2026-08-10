@@ -60,7 +60,11 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
             "exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py",
             "exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py",
             "exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py",
-            "exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py",
+            "corrected_rank1_publication_v21/freeze_exact_gauged_u1x_g3_rank1_su4_corrected_publication_v21.py --check",
+            "corrected_rank1_publication_v21/exact_gauged_u1x_g3_rank1_su4_corrected_positive_gram_primal_v21.py --check",
+            "corrected_rank1_publication_v21/verify_exact_gauged_u1x_g3_rank1_su4_corrected_positive_gram_primal_v21.py",
+            "corrected_rank1_publication_v21/verify_exact_gauged_u1x_g3_rank1_su4_corrected_fixed_endpoint_theorem_v21.py",
+            "corrected_rank1_endpoint_v21.py",
             "test_exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py",
             "test_exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py",
             "test_exact_gauged_u1x_g3_rank1_su4_aligned_carriers_v20.py",
@@ -68,7 +72,8 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
             "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py",
             "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py",
             "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py",
-            "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py",
+            "corrected_rank1_publication_v21/test_exact_gauged_u1x_g3_rank1_su4_corrected_publication_v21.py",
+            "test_corrected_rank1_endpoint_v21.py",
             (
                 "gauged_u1x_g3_sos_candidate_v20.py "
                 "--recompute-heavy --write"
@@ -238,11 +243,34 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
             if "exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py"
             in display
         )
-        rank1_su4_psd_target_index = next(
+        corrected_freezer_index = next(
             i
             for i, display in enumerate(displays)
-            if "exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py"
+            if "corrected_rank1_publication_v21/freeze_exact_gauged_u1x_g3_rank1_su4_corrected_publication_v21.py"
             in display
+        )
+        corrected_primal_index = next(
+            i
+            for i, display in enumerate(displays)
+            if "corrected_rank1_publication_v21/exact_gauged_u1x_g3_rank1_su4_corrected_positive_gram_primal_v21.py"
+            in display
+        )
+        corrected_verifier_index = next(
+            i
+            for i, display in enumerate(displays)
+            if "corrected_rank1_publication_v21/verify_exact_gauged_u1x_g3_rank1_su4_corrected_positive_gram_primal_v21.py"
+            in display
+        )
+        corrected_theorem_index = next(
+            i
+            for i, display in enumerate(displays)
+            if "corrected_rank1_publication_v21/verify_exact_gauged_u1x_g3_rank1_su4_corrected_fixed_endpoint_theorem_v21.py"
+            in display
+        )
+        corrected_adapter_index = next(
+            i
+            for i, display in enumerate(displays)
+            if "corrected_rank1_endpoint_v21.py" in display
         )
         global_gap_index = next(
             i
@@ -304,8 +332,12 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
         self.assertLess(rank1_su4_quadratic_index, rank1_su4_census_index)
         self.assertLess(rank1_su4_census_index, rank1_su4_cubic_index)
         self.assertLess(rank1_su4_cubic_index, rank1_su4_quartic_index)
-        self.assertLess(rank1_su4_quartic_index, rank1_su4_psd_target_index)
-        self.assertLess(rank1_su4_psd_target_index, global_gap_index)
+        self.assertLess(rank1_su4_quartic_index, corrected_freezer_index)
+        self.assertLess(corrected_freezer_index, corrected_primal_index)
+        self.assertLess(corrected_primal_index, corrected_verifier_index)
+        self.assertLess(corrected_verifier_index, corrected_theorem_index)
+        self.assertLess(corrected_theorem_index, corrected_adapter_index)
+        self.assertLess(corrected_adapter_index, global_gap_index)
         self.assertLess(fixed_f_offkernel_index, global_gap_index)
         self.assertLess(a_square_index, sos_candidate_index)
         self.assertLess(sos_candidate_index, g3_index)
@@ -313,6 +345,14 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
         self.assertLess(corrected_g3_index, matrix_index)
         self.assertLess(matrix_index, ultimate_index)
         self.assertLess(ultimate_index, unittest_index)
+        self.assertNotIn(
+            "exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py",
+            [token for display in displays for token in display.split()],
+        )
+        self.assertIn(
+            "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py",
+            "\n".join(displays),
+        )
 
     def test_command_runner_records_failure_and_continues(self):
         commands = (

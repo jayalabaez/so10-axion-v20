@@ -103,13 +103,12 @@ the model.
   piecewise radial bounds prove the sharp restricted gap `1/5000`, saturated at
   `u=1,v=0`. Thus this entire pure-`Delta_R` sector is closed; extension to
   arbitrary non-pure-`Delta_R` Sigma orientations remains open
-- At fixed `H=h_-` and one explicit normalized decomposable rank-one Sigma
-  endpoint, a separate exact source-bound Gram/LDL certificate proves the same
-  `1/5000` gap for all nonnegative radial variables on a four-real-dimensional
-  `Phi` sub-slice of the 16-dimensional `SU(3)`-fixed space. Its strict angular
-  anchor is `3/200`.
-  This does not cover arbitrary `Phi` at that rank-one Sigma endpoint, the
-  ambient 16-dimensional fixed space, arbitrary Sigma orientations, or G3
+- The earlier four-real-dimensional `SU(3)` regression is historical and is
+  subsumed by the corrected v21 theorem. At fixed `H=h_-` and `Sigma=q/4`, an
+  exact source-reconstructed positive-Gram identity proves `p(t,Phi)>0` away
+  from the homogeneous origin for every real `Phi210`. Thus at `t=1`,
+  `A(Phi)>3/200` and the `p`-zero set is empty. This theorem does not vary `H`
+  or Sigma and does not prove the full Hessian or G3
 - For that same fixed `H=h_-`, `Sigma=q/4` endpoint, the common continuous
   stabilizer is now certified exactly as `SU(4)`: its 15-dimensional kernel,
   integral Lie brackets, and all 15 exact skew actions on `Phi210` are
@@ -132,15 +131,17 @@ the model.
   all `35` carrier families (`798` irreducible copies, `22155` carrier
   dimensions) and all `22` block pairings yield a sparse integer
   `6057 x 18085` map with `115641` nonzeros, exact rank `6057`, and kernel
-  dimension `12028`. The next exact stage constructs all `22` standard
-  PSD-coordinate routes: `9` real-type congruences and `13` complex blocks in
-  standard Hermitian coordinates. It also constructs the physical target in
-  the full `6585`-row graded chart (common denominator `1728000`, `845`
-  nonzeros; SHA-256
-  `e2d9eec1b01b3eeefc4a54d404db93171aa6600ea9ef646a215ab0b5401f7630`).
-  The coefficient map reparameterized in those standard coordinates, SDP
-  feasibility or an exact primal/dual certificate, arbitrary-`Phi` bound, G3,
-  and whole-model conclusions remain open
+  dimension `12028`. The legacy v20 assembled target is retained only as
+  rejected structural provenance; its public report/render/write/CLI entrypoints
+  fail closed and cannot regenerate the invalid certificate. The corrected standard positive-Gram map has
+  shape `6585 x 19594`, denominator `256`, `138550` nonzeros, and numerator CSR
+  SHA-256 `1834c8439fa3e44459f7ba871420a4351cd0b4de194dec6f5c4a84c1f39d3a16`.
+  Its independently reconstructed ordered-spectral RHS has denominator `576000`,
+  `512` nonzeros, and SHA-256
+  `14debcfaf02d4b8c20d1d43a2e1f82d6a7390e28428fc63dd21a9c5f90aec0cf`.
+  All `6585` rational equalities hold, and an exact strict primal has `22`
+  positive blocks and `824` positive LDL pivots. Global Sigma, general/full
+  `H`, the full Hessian, G3, and whole-model conclusions remain open
 - The former 64-direction / 91-parameter G1-G2 calculation is retained as a
   reproducible historical no-`X` subtheorem, not as validation of the manuscript
 
@@ -216,12 +217,11 @@ branch has an exact Phi/Sigma global SOS certificate and a chiral-H full-field
   negative-current pure-`Delta_R` sector is excluded for arbitrary real `Phi`,
   including all nonzero shifted Phi-Sigma and chiral Phi-H residuals. The exact
   4125-projector source bound, rational Schur certificate, and radial quadrant
-  completion give the sharp restricted minimum `1/5000`. At fixed `H=h_-`
-  and one explicit decomposable rank-one Sigma endpoint, an independent exact
-  Gram/LDL certificate proves the same minimum only on a four-real-dimensional
-  `Phi` sub-slice of the 16-dimensional `SU(3)`-fixed space; it does not
-  establish a bound for arbitrary `Phi` at that endpoint or on the ambient space.
-  At this same fixed endpoint, the exact common `SU(4)` stabilizer and its
+  completion give the sharp restricted minimum `1/5000`. The earlier
+  four-real-dimensional `SU(3)` regression is historical and subsumed. At fixed
+  `H=h_-`, `Sigma=q/4`, the corrected exact positive-Gram theorem covers every
+  real `Phi210`, proving `p(t,Phi)>0` away from the homogeneous origin and
+  `A(Phi)>3/200` at `t=1`. At this same fixed endpoint, the exact common `SU(4)` stabilizer and its
   15 actions on `Phi210` are now certified. The 25 carriers are aligned at
   exact rank 210 with physical real maps, and the complete explicit
   45-element invariant quadratic basis is certified from a `5952 x 551`
@@ -233,11 +233,12 @@ branch has an exact Phi/Sigma global SOS certificate and a chiral-H full-field
   its 936-dimensional kernel is exact. The zero placeholder exposed by that
   interface is not a physical target and certifies no physical zero RHS.
   The exact homogeneous quartic interface has shape `6057 x 18085`, rank
-  `6057`, and kernel dimension `12028`. All 22 standard PSD-coordinate routes
-  and the exact physical `6585`-row target are now constructed. The
-  standard-coordinate coefficient matrix, SDP feasibility and exact
-  primal/dual certificate, arbitrary-`Phi` bound, and arbitrary non-pure-`Delta_R`
-  Sigma coercivity remain open. Therefore `G3_closed` remains false. Run
+  `6057`, and kernel dimension `12028`. The legacy v20 assembled target is
+  rejected. The corrected `6585 x 19594` standard positive-Gram map,
+  ordered-spectral target, `6585` exact equalities, and strict `22`-block,
+  `824`-pivot primal establish the arbitrary-real-`Phi210` result only at the
+  fixed endpoint. Arbitrary non-pure-`Delta_R` Sigma coercivity, general/full
+  `H`, the full Hessian, and G3 remain open. Therefore `G3_closed` remains false. Run
   `python final_g3_acceptance_gate_v20.py --write` for the
 fail-closed final test. The
 historical finite-cut and SDP outputs remain non-certifying and are not used in
@@ -352,10 +353,10 @@ $g_{a\gamma\gamma}\sim2.3\times10^{-14}\,{\rm GeV}^{-1}$ by MADMAX / ALPHA / ORG
 > `SU(3)`-fixed slice contains no extra branch, and the full fixed-`F` gap is
 > exact. The full-residual, maximally negative-current pure-`Delta_R` sector is
 > also excluded for arbitrary real `Phi`, with sharp restricted gap `1/5000`.
-> At fixed `H=h_-`, one explicit rank-one Sigma endpoint separately has the
-> same exact gap on only a four-real-dimensional `Phi` sub-slice of the
-> 16-dimensional `SU(3)`-fixed space; arbitrary `Phi` at that rank-one Sigma
-> endpoint and arbitrary Sigma orientations remain open.  At that fixed
+> The prior four-real-dimensional `SU(3)` regression is historical and
+> subsumed. At fixed `H=h_-`, `Sigma=q/4`, the corrected v21 exact
+> positive-Gram identity proves `p(t,Phi)>0` off the homogeneous origin for
+> every real `Phi210`, hence `A(Phi)>3/200` at `t=1`. At that fixed
 > endpoint, the exact `SU(4)` stabilizer, its 15 `Phi210` actions, aligned
 > rank-210 carriers with physical real maps, and the explicit complete
 > 45-element invariant quadratic basis, and the exact 22366-dimensional
@@ -365,10 +366,11 @@ $g_{a\gamma\gamma}\sim2.3\times10^{-14}\,{\rm GeV}^{-1}$ by MADMAX / ALPHA / ORG
 > rank-478 `478 x 1414` map with kernel dimension 936. Its abstract zero
 > placeholder is not the physical G3 target. The homogeneous quartic interface
 > is an exact-rank-6057 `6057 x 18085` integer map with kernel dimension 12028.
-> All 22 standard PSD-coordinate routes and the exact physical 6585-row target
-> are constructed. The standard-coordinate coefficient matrix, SDP feasibility,
-> exact primal/dual certificate, arbitrary-`Phi`
-> bound, and arbitrary non-pure-`Delta_R` Sigma coercivity remain open.
+> The legacy v20 assembled target is rejected. The corrected `6585 x 19594`
+> standard positive-Gram map, ordered-spectral RHS, all 6585 exact equalities,
+> and a strict 22-block/824-pivot primal prove the arbitrary-real-`Phi210`
+> statement only at fixed `H=h_-`, `Sigma=q/4`. Global Sigma, general/full `H`,
+> the full Hessian, and G3 remain open.
 > Consequently G3 remains open and the complete theory is neither validated
 > nor discarded.
 
