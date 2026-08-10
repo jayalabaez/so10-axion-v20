@@ -53,7 +53,7 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
             "exact_gauged_u1x_g3_su5_max_negative_zero_residual_bound_v20.py --write",
             "exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py --write",
             "exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py --write",
-            "exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py --write",
+            "exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py",
             "exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py --write",
             "exact_gauged_u1x_g3_rank1_su4_aligned_carriers_v20.py --write",
             "exact_gauged_u1x_g3_rank1_su4_phi210_quadratic_basis_v20.py --write",
@@ -94,6 +94,12 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
                 any(token in display for display in displays),
                 msg=f"missing command token: {token}",
             )
+
+        stabilizer = "exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py"
+        stabilizer_commands = [
+            command for command in prepare.FULL_COMMANDS if stabilizer in command
+        ]
+        self.assertEqual(stabilizer_commands, [(sys.executable, stabilizer)])
 
     def test_full_inventory_uses_current_fail_closed_contract(self):
         displays = [prepare._display(command) for command in prepare.FULL_COMMANDS]
