@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import hashlib
 import json
+import subprocess
+import sys
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -14,6 +16,37 @@ import freeze_corrected_rank1_endpoint_v21_integration as freezer
 class CorrectedEndpointIntegrationFreezeTests(unittest.TestCase):
     def test_frozen_manifest_matches_all_intended_paths(self) -> None:
         report = freezer.check_manifest()
+        discovery = subprocess.run(
+            [
+                sys.executable,
+                "-B",
+                "-c",
+                (
+                    "import unittest; "
+                    "print(unittest.defaultTestLoader.discover('.')"
+                    ".countTestCases())"
+                ),
+            ],
+            cwd=freezer.ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        current_test_count = int(discovery.stdout.strip())
+        theory_verdict = json.loads(
+            (freezer.ROOT / "THEORY_VALIDATION_MATRIX_V20_VERDICT.json")
+            .read_text(encoding="utf-8")
+        )
+        self.assertEqual(
+            theory_verdict["current_tree_unit_tests_discovered"],
+            current_test_count,
+        )
+        self.assertEqual(
+            theory_verdict["gates"][-1]["evidence"][
+                "current_tree_tests_discovered"
+            ],
+            current_test_count,
+        )
         self.assertEqual(
             report["status"],
             "EXACT_CORRECTED_ENDPOINT_V21_CENTRAL_INTEGRATION_FROZEN",
