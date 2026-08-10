@@ -582,9 +582,30 @@ def main() -> int:
     run([sys.executable, "final_g3_acceptance_gate_v20.py"])
     run([sys.executable, "g1_g8_execution_roadmap_v20.py"])
     run([sys.executable, "authoritative_full_model_gate_v20.py"])
-    run([sys.executable, "theory_validation_matrix_v20.py", "--expect-blocked"])
-    run([sys.executable, "theory_confirmation_verdict_v20.py", "--expect-blocked"])
-    run([sys.executable, "ultimate_theory_gate_v20.py", "--expect-blocked"])
+    run(
+        [
+            sys.executable,
+            "theory_validation_matrix_v20.py",
+            "--expect-blocked",
+            "--no-write",
+        ]
+    )
+    run(
+        [
+            sys.executable,
+            "theory_confirmation_verdict_v20.py",
+            "--expect-blocked",
+            "--no-write",
+        ]
+    )
+    run(
+        [
+            sys.executable,
+            "ultimate_theory_gate_v20.py",
+            "--expect-blocked",
+            "--no-write",
+        ]
+    )
     contract = json.loads(
         (ROOT / "EXACT_X_SYMMETRY_CONSISTENCY_GATE_V20.json").read_text()
     )

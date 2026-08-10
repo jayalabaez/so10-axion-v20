@@ -32,6 +32,25 @@ def test_cross_platform_and_central_frozen_reports_are_read_only() -> None:
                 commands.append(literals)
         assert commands, script
         assert all("--write" not in command for command in commands), script
+    for script in (
+        "theory_validation_matrix_v20.py",
+        "theory_confirmation_verdict_v20.py",
+        "ultimate_theory_gate_v20.py",
+    ):
+        commands = []
+        for node in ast.walk(tree):
+            if not isinstance(node, (ast.List, ast.Tuple)):
+                continue
+            literals = {
+                item.value
+                for item in node.elts
+                if isinstance(item, ast.Constant)
+                and isinstance(item.value, str)
+            }
+            if script in literals:
+                commands.append(literals)
+        assert commands, script
+        assert all("--no-write" in command for command in commands), script
 
 
 def test_golden_anchors_match_current_package() -> None:

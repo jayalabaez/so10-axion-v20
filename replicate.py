@@ -370,9 +370,30 @@ def main() -> int:
     run([sys.executable, "empirical_roadmap_lock_v20.py"])
     run([sys.executable, "next_phenomenology_lock_v20.py"])
     run([sys.executable, "close_open_gaps_v20.py"])
-    run([sys.executable, "theory_validation_matrix_v20.py", "--expect-blocked"])
-    run([sys.executable, "theory_confirmation_verdict_v20.py", "--expect-blocked"])
-    run([sys.executable, "ultimate_theory_gate_v20.py", "--expect-blocked"])
+    run(
+        [
+            sys.executable,
+            "theory_validation_matrix_v20.py",
+            "--expect-blocked",
+            "--no-write",
+        ]
+    )
+    run(
+        [
+            sys.executable,
+            "theory_confirmation_verdict_v20.py",
+            "--expect-blocked",
+            "--no-write",
+        ]
+    )
+    run(
+        [
+            sys.executable,
+            "ultimate_theory_gate_v20.py",
+            "--expect-blocked",
+            "--no-write",
+        ]
+    )
     run([sys.executable, "-m", "unittest", "discover", "-v"])
     run(
         [
