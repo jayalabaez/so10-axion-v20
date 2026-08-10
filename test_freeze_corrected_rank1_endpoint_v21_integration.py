@@ -74,6 +74,8 @@ class CorrectedEndpointIntegrationFreezeTests(unittest.TestCase):
                 "legacy_rejection_assertions": 7,
                 "full_source_rebuild_invocations": 1,
                 "read_only_frozen_dependency_orchestrators": 3,
+                "read_only_frozen_report_sources": 7,
+                "read_only_frozen_report_commands": 21,
             },
         )
         self.assertTrue(
@@ -149,6 +151,28 @@ class CorrectedEndpointIntegrationFreezeTests(unittest.TestCase):
                 )
                 with self.assertRaisesRegex(
                     ArithmeticError, "rewrites the frozen stabilizer dependency"
+                ):
+                    freezer._require_workflow_contract()
+
+                replicate.write_text(baseline_replicate, encoding="utf-8")
+                report_needle = (
+                    'run([sys.executable, '
+                    '"gauged_u1x_g2_derivative_audit_v20.py"])'
+                )
+                report_replacement = (
+                    'run([sys.executable, '
+                    '"gauged_u1x_g2_derivative_audit_v20.py", "--write"])'
+                )
+                self.assertIn(report_needle, baseline_replicate)
+                replicate.write_text(
+                    baseline_replicate.replace(
+                        report_needle, report_replacement, 1
+                    ),
+                    encoding="utf-8",
+                )
+                with self.assertRaisesRegex(
+                    ArithmeticError,
+                    "rewrites a frozen validation report",
                 ):
                     freezer._require_workflow_contract()
 

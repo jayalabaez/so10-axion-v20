@@ -331,7 +331,7 @@ def main() -> int:
             "--write",
         ]
     )
-    run([sys.executable, "gauged_u1x_g2_derivative_audit_v20.py", "--write"])
+    run([sys.executable, "gauged_u1x_g2_derivative_audit_v20.py"])
     run(
         [
             sys.executable,
@@ -568,21 +568,19 @@ def main() -> int:
             sys.executable,
             "gauged_u1x_g3_sos_candidate_v20.py",
             "--recompute-heavy",
-            "--write",
         ]
     )
-    run([sys.executable, "gauged_u1x_g3_stability_v20.py", "--write"])
+    run([sys.executable, "gauged_u1x_g3_stability_v20.py"])
     run(
         [
             sys.executable,
             "gauged_u1x_g3_corrected_common_kernel_v20.py",
             "--recompute-heavy",
-            "--write",
         ]
     )
-    run([sys.executable, "g1_g8_gate_ledger_v20.py", "--write"])
-    run([sys.executable, "final_g3_acceptance_gate_v20.py", "--write"])
-    run([sys.executable, "g1_g8_execution_roadmap_v20.py", "--write"])
+    run([sys.executable, "g1_g8_gate_ledger_v20.py"])
+    run([sys.executable, "final_g3_acceptance_gate_v20.py"])
+    run([sys.executable, "g1_g8_execution_roadmap_v20.py"])
     run([sys.executable, "authoritative_full_model_gate_v20.py"])
     run([sys.executable, "theory_validation_matrix_v20.py", "--expect-blocked"])
     run([sys.executable, "theory_confirmation_verdict_v20.py", "--expect-blocked"])

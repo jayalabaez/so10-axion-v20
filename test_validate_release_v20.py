@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import ast
 import copy
 import hashlib
 import json
@@ -27,6 +28,43 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             with self.subTest(relative=relative):
                 self.assertIn(stabilizer, source)
                 self.assertIsNone(mutating_command.search(source))
+        self._assert_frozen_numerical_and_central_reports_are_read_only()
+
+    def _assert_frozen_numerical_and_central_reports_are_read_only(self):
+        frozen_sources = (
+            "gauged_u1x_g2_derivative_audit_v20.py",
+            "gauged_u1x_g3_sos_candidate_v20.py",
+            "gauged_u1x_g3_stability_v20.py",
+            "gauged_u1x_g3_corrected_common_kernel_v20.py",
+            "g1_g8_gate_ledger_v20.py",
+            "final_g3_acceptance_gate_v20.py",
+            "g1_g8_execution_roadmap_v20.py",
+        )
+        for relative in (
+            "prepare_validation_artifacts_v20.py",
+            "replicate.py",
+            "validate_release_v20.py",
+        ):
+            source = (release.ROOT / relative).read_text(encoding="utf-8")
+            tree = ast.parse(source, filename=relative)
+            for script in frozen_sources:
+                commands = []
+                for node in ast.walk(tree):
+                    if not isinstance(node, (ast.List, ast.Tuple)):
+                        continue
+                    literals = {
+                        item.value
+                        for item in node.elts
+                        if isinstance(item, ast.Constant)
+                        and isinstance(item.value, str)
+                    }
+                    if script in literals:
+                        commands.append(literals)
+                with self.subTest(relative=relative, script=script):
+                    self.assertTrue(commands)
+                    self.assertTrue(
+                        all("--write" not in command for command in commands)
+                    )
 
     def test_final_theorem_core_paths_are_portable_unique_and_present(self):
         paths = release.FINAL_THEOREM_CORE_PATHS
