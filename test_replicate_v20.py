@@ -1,7 +1,37 @@
 #!/usr/bin/env python3
 """Regression tests for the pristine replication preflight."""
 
+import ast
+
 import replicate
+
+
+def test_cross_platform_and_central_frozen_reports_are_read_only() -> None:
+    source = replicate.Path(replicate.__file__).read_text(encoding="utf-8")
+    tree = ast.parse(source)
+    for script in (
+        "gauged_u1x_g2_derivative_audit_v20.py",
+        "gauged_u1x_g3_sos_candidate_v20.py",
+        "gauged_u1x_g3_stability_v20.py",
+        "gauged_u1x_g3_corrected_common_kernel_v20.py",
+        "g1_g8_gate_ledger_v20.py",
+        "final_g3_acceptance_gate_v20.py",
+        "g1_g8_execution_roadmap_v20.py",
+    ):
+        commands = []
+        for node in ast.walk(tree):
+            if not isinstance(node, (ast.List, ast.Tuple)):
+                continue
+            literals = {
+                item.value
+                for item in node.elts
+                if isinstance(item, ast.Constant)
+                and isinstance(item.value, str)
+            }
+            if script in literals:
+                commands.append(literals)
+        assert commands, script
+        assert all("--write" not in command for command in commands), script
 
 
 def test_golden_anchors_match_current_package() -> None:

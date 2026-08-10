@@ -10,6 +10,7 @@ instead, its raw SHA-256 is the external freeze identifier.
 from __future__ import annotations
 
 import argparse
+import ast
 import hashlib
 import json
 import re
@@ -78,6 +79,15 @@ READ_ONLY_FROZEN_DEPENDENCY_ORCHESTRATORS = (
 )
 FROZEN_STABILIZER_SOURCE = (
     "exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py"
+)
+READ_ONLY_FROZEN_REPORT_SOURCES = (
+    "gauged_u1x_g2_derivative_audit_v20.py",
+    "gauged_u1x_g3_sos_candidate_v20.py",
+    "gauged_u1x_g3_stability_v20.py",
+    "gauged_u1x_g3_corrected_common_kernel_v20.py",
+    "g1_g8_gate_ledger_v20.py",
+    "final_g3_acceptance_gate_v20.py",
+    "g1_g8_execution_roadmap_v20.py",
 )
 
 RAW_SOURCE_PINS = {
@@ -314,6 +324,7 @@ def _require_workflow_contract() -> dict[str, int]:
         rf'["\']{re.escape(FROZEN_STABILIZER_SOURCE)}["\']\s*,\s*'
         r'["\']--write["\']'
     )
+    read_only_report_commands = 0
     for relative in READ_ONLY_FROZEN_DEPENDENCY_ORCHESTRATORS:
         text = (ROOT / relative).read_text(encoding="utf-8")
         if FROZEN_STABILIZER_SOURCE not in text:
@@ -324,6 +335,31 @@ def _require_workflow_contract() -> dict[str, int]:
             raise ArithmeticError(
                 f"orchestrator rewrites the frozen stabilizer dependency: {relative}"
             )
+        tree = ast.parse(text, filename=relative)
+        for source in READ_ONLY_FROZEN_REPORT_SOURCES:
+            commands = []
+            for node in ast.walk(tree):
+                if not isinstance(node, (ast.List, ast.Tuple)):
+                    continue
+                literals = {
+                    item.value
+                    for item in node.elts
+                    if isinstance(item, ast.Constant)
+                    and isinstance(item.value, str)
+                }
+                if source in literals:
+                    commands.append(literals)
+            if not commands:
+                raise ArithmeticError(
+                    f"frozen report validation is absent from orchestrator: "
+                    f"{relative}: {source}"
+                )
+            if any("--write" in command for command in commands):
+                raise ArithmeticError(
+                    f"orchestrator rewrites a frozen validation report: "
+                    f"{relative}: {source}"
+                )
+            read_only_report_commands += 1
     return {
         "corrected_assertion_heredocs": heredocs,
         "legacy_rejection_assertions": legacy_rejections,
@@ -331,6 +367,8 @@ def _require_workflow_contract() -> dict[str, int]:
         "read_only_frozen_dependency_orchestrators": len(
             READ_ONLY_FROZEN_DEPENDENCY_ORCHESTRATORS
         ),
+        "read_only_frozen_report_sources": len(READ_ONLY_FROZEN_REPORT_SOURCES),
+        "read_only_frozen_report_commands": read_only_report_commands,
     }
 
 

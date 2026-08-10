@@ -30,7 +30,7 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
             "gauged_u1x_scalar_contract_v20.py --write",
             "g1_exact_declared_symmetry_character_census_v20.py --write",
             "exact_gauged_u1x_stationarity_rank_certificate_v20.py --write",
-            "gauged_u1x_g2_derivative_audit_v20.py --write",
+            "gauged_u1x_g2_derivative_audit_v20.py",
             "exact_gauged_u1x_physical_quotient_v20.py --write",
             (
                 "exact_gauged_u1x_g3_pd_rank_certificate_v20.py "
@@ -76,15 +76,16 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
             "test_corrected_rank1_endpoint_v21.py",
             (
                 "gauged_u1x_g3_sos_candidate_v20.py "
-                "--recompute-heavy --write"
+                "--recompute-heavy"
             ),
-            "gauged_u1x_g3_stability_v20.py --write",
+            "gauged_u1x_g3_stability_v20.py",
             (
                 "gauged_u1x_g3_corrected_common_kernel_v20.py "
-                "--recompute-heavy --write"
+                "--recompute-heavy"
             ),
-            "g1_g8_gate_ledger_v20.py --write",
-            "g1_g8_execution_roadmap_v20.py --write",
+            "g1_g8_gate_ledger_v20.py",
+            "final_g3_acceptance_gate_v20.py",
+            "g1_g8_execution_roadmap_v20.py",
             "authoritative_full_model_gate_v20.py",
             "theory_validation_matrix_v20.py --expect-blocked",
             "ultimate_theory_gate_v20.py --expect-blocked --no-write",
@@ -100,6 +101,21 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
             command for command in prepare.FULL_COMMANDS if stabilizer in command
         ]
         self.assertEqual(stabilizer_commands, [(sys.executable, stabilizer)])
+        for source in (
+            "gauged_u1x_g2_derivative_audit_v20.py",
+            "gauged_u1x_g3_sos_candidate_v20.py",
+            "gauged_u1x_g3_stability_v20.py",
+            "gauged_u1x_g3_corrected_common_kernel_v20.py",
+            "g1_g8_gate_ledger_v20.py",
+            "final_g3_acceptance_gate_v20.py",
+            "g1_g8_execution_roadmap_v20.py",
+        ):
+            commands = [command for command in prepare.FULL_COMMANDS if source in command]
+            self.assertTrue(commands, source)
+            self.assertTrue(
+                all("--write" not in command for command in commands),
+                source,
+            )
 
     def test_full_inventory_uses_current_fail_closed_contract(self):
         displays = [prepare._display(command) for command in prepare.FULL_COMMANDS]
@@ -110,7 +126,7 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
         g2_index = next(
             i
             for i, display in enumerate(displays)
-            if "gauged_u1x_g2_derivative_audit_v20.py --write" in display
+            if "gauged_u1x_g2_derivative_audit_v20.py" in display
         )
         rank_index = next(
             i
@@ -126,7 +142,7 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
         g3_index = next(
             i
             for i, display in enumerate(displays)
-            if "gauged_u1x_g3_stability_v20.py --write" in display
+            if "gauged_u1x_g3_stability_v20.py" in display
         )
         pd_certificate_index = next(
             i
