@@ -613,6 +613,11 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
                 "python exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py",
                 source,
             )
+            self.assertNotIn(
+                "python exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py --write",
+                source,
+                relative,
+            )
             self.assertIn(
                 "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py",
                 source,
