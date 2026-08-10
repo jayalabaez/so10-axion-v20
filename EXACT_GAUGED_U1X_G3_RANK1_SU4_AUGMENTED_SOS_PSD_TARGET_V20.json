@@ -1,6 +1,7 @@
 {
   "claim_boundary": {
     "not_proved_here": [
+      "a valid physical target in the 6,585-row graded chart",
       "standard-coordinate coefficient matrix",
       "semidefinite feasibility",
       "primal PSD or dual Farkas certificate",
@@ -10,14 +11,14 @@
       "G3"
     ],
     "proved_here": [
-      "exact standard-cone coordinate routes for all 22 augmented blocks",
-      "exact physical target in the 6,585-row graded chart"
+      "exact standard-cone coordinate routes for all 22 augmented blocks"
     ]
   },
   "exact_arithmetic_safety": {
     "all_recorded_bounds_fit_signed_int64": true,
     "checked_sparse_products_reject_unsafe_int64_bounds": true,
     "full_target_maximum_absolute_numerator": 172796928,
+    "historical_invalid_target_only": true,
     "observed_quartic_image_maximum": 13934592,
     "observed_spectral_power_maximum": 783703040,
     "observed_spectral_response_maximum": 49545216,
@@ -25,8 +26,9 @@
     "storage_dtype": "signed int64"
   },
   "model_contract_id": "gauged_u1x_phi17_v20",
-  "overall_state": "PSD_ROUTES_AND_PHYSICAL_TARGET_CLOSED__SDP_ARBITRARY_PHI_AND_G3_OPEN",
+  "overall_state": "STRUCTURAL_PSD_ROUTES_RETAINED__V20_PHYSICAL_TARGET_REJECTED__SUPERSEDED_BY_V21",
   "physical_target": {
+    "accepted_as_physical_target": false,
     "constant": {
       "denominator": 200,
       "numerator": 237
@@ -6671,7 +6673,7 @@
       ],
       "numerator_sha256": "e2d9eec1b01b3eeefc4a54d404db93171aa6600ea9ef646a215ab0b5401f7630",
       "primitive_common_fraction": true,
-      "proof_grade": true,
+      "proof_grade": false,
       "row_count": 6585,
       "total_nonzero_count": 845
     },
@@ -6680,7 +6682,7 @@
       "SU4_invariant_basis": {
         "basis_sha256": "8b800fb7b46420d25aeb9a3040851ad40133361d030053f13731564f019ec7e9",
         "candidate_count": 6,
-        "proof_grade": true,
+        "proof_grade": false,
         "rank_at_first_prime": 4,
         "rank_at_second_prime": 4,
         "selected_candidate_indices": [
@@ -6751,7 +6753,7 @@
       "quadratic_numerator_symmetric_exact": true,
       "rank1_residual_source_exact": true
     },
-    "lower_grade_proof_grade": true,
+    "lower_grade_proof_grade": false,
     "normalization": {
       "anchor": "A=(N_Phi-1)^2+I54+I4125+9||Cz||^2/400+||Mz-b||^2/5120",
       "physical_target": "p=A-3/200",
@@ -6762,7 +6764,7 @@
       "SU4_invariant_basis": {
         "ordered_basis_dimension": 45,
         "ordered_basis_sha256": "27c0649758c87aa2cbe39ae04596f4bd6df511ba3ca4004013bdcf936599b694",
-        "proof_grade": true,
+        "proof_grade": false,
         "rank_at_first_prime": 45,
         "rank_at_second_prime": 45,
         "selected_upper_triangle_rows": [
@@ -13071,7 +13073,7 @@
       ],
       "numerator_sha256": "38476cff340ef8702735d48d7dbdf644ed41f8dc4a359264d33d966f177145ad",
       "pivot_physical_quartic_coordinates_sha256": "f33cb0163f3cdc4a3480cb55e09329888c8cf0641cc0acab4cb01f8075058ce4",
-      "proof_grade": true,
+      "proof_grade": false,
       "real_channel_row_count": 3215,
       "row_count": 6057,
       "spectral_operator_denominator": 221184000,
@@ -13134,7 +13136,7 @@
       "b_norm_squared": 1024
     }
   },
-  "proof_grade": true,
+  "proof_grade": false,
   "provenance": {
     "actual_dependency_hashes": {
       "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_V20.json": "505f846291320e0671ff1208dc34339d0c2302f24ab80e9569b73d6479b2db8a",
@@ -13258,6 +13260,17 @@
     "repository_local_dependency_root": ".",
     "source_module_path_binding": "Every Python source hash is read from Path(the_actually_imported_module.__file__).resolve(), whose parent must equal Path(this_module.__file__).resolve().parent. Artifacts obey the same parent contract; no external shadow can satisfy it."
   },
+  "rejection": {
+    "corrected_certificate_raw_sha256": "dd40a508a08c219117ddefaf574652a24f0e1f868d011e05f558ecafc9600e03",
+    "corrected_map_numerator_csr_sha256": "1834c8439fa3e44459f7ba871420a4351cd0b4de194dec6f5c4a84c1f39d3a16",
+    "corrected_publication_manifest_raw_sha256": "7ecf96a12321b9df5e7d118ce0fb83e65ad9859516b520936408ec4d46a11017",
+    "corrected_target_numerator_sha256": "14debcfaf02d4b8c20d1d43a2e1f82d6a7390e28428fc63dd21a9c5f90aec0cf",
+    "reason": "The v20 extremal-minor raw-Schur reconstruction does not equal the collapsed ordered-spectral physical quartic, and the grade-0/grade-1 map normalization is wrong.",
+    "retained_content": "The 22 standard PSD-coordinate congruence routes are structural generation provenance only.",
+    "superseded_by": "corrected_rank1_publication_v21",
+    "v20_physical_target_accepted": false,
+    "v20_primal_or_arbitrary_Phi_theorem_accepted": false
+  },
   "scope": {
     "G3_closed": false,
     "all_22_standard_PSD_coordinate_routes_constructed": true,
@@ -13269,9 +13282,11 @@
     "exact_dual_Farkas_certificate_constructed": false,
     "exact_primal_PSD_certificate_constructed": false,
     "full_486_field_Hessian_classification_proved": false,
-    "physical_target_formula_all_five_grades_constructed": true,
-    "physical_target_full_6585_row_vector_constructed": true,
-    "semidefinite_feasibility_solved": false
+    "legacy_physical_target_rejected": true,
+    "physical_target_formula_all_five_grades_constructed": false,
+    "physical_target_full_6585_row_vector_constructed": false,
+    "semidefinite_feasibility_solved": false,
+    "structural_PSD_routes_retained_for_v21_generation": true
   },
   "standard_PSD_coordinate_routes": {
     "all_22_cones_have_standard_coordinate_routes": true,
@@ -61994,5 +62009,5 @@
     "standard_real_parameter_count": 7979,
     "standard_total_parameter_count": 19594
   },
-  "status": "EXACT_RANK1_SU4_AUGMENTED_SOS_PSD_ROUTES_AND_PHYSICAL_TARGET_CERTIFIED"
+  "status": "REJECTED_V20_PHYSICAL_TARGET__STRUCTURAL_PSD_ROUTES_ONLY"
 }

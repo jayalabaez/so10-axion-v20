@@ -112,7 +112,11 @@ def test_rank1_su4_infrastructure_is_generated_in_provenance_order() -> None:
     census = "exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py"
     cubic = "exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py"
     quartic = "exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py"
-    psd_target = "exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py"
+    freezer = "corrected_rank1_publication_v21/freeze_exact_gauged_u1x_g3_rank1_su4_corrected_publication_v21.py"
+    primal = "corrected_rank1_publication_v21/exact_gauged_u1x_g3_rank1_su4_corrected_positive_gram_primal_v21.py"
+    verifier = "corrected_rank1_publication_v21/verify_exact_gauged_u1x_g3_rank1_su4_corrected_positive_gram_primal_v21.py"
+    theorem = "corrected_rank1_publication_v21/verify_exact_gauged_u1x_g3_rank1_su4_corrected_fixed_endpoint_theorem_v21.py"
+    adapter = "corrected_rank1_endpoint_v21.py"
     stabilizer_test = "test_exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py"
     intertwiner_test = (
         "test_exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py"
@@ -130,14 +134,17 @@ def test_rank1_su4_infrastructure_is_generated_in_provenance_order() -> None:
     quartic_test = (
         "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py"
     )
-    psd_target_test = (
+    publication_test = "corrected_rank1_publication_v21/test_exact_gauged_u1x_g3_rank1_su4_corrected_publication_v21.py"
+    adapter_test = "test_corrected_rank1_endpoint_v21.py"
+    legacy_rejection_test = (
         "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py"
     )
     for token in (
         stabilizer, intertwiners, aligned, quadratic, census, cubic, quartic,
-        psd_target,
+        freezer, primal, verifier, theorem, adapter,
         stabilizer_test, intertwiner_test, aligned_test, quadratic_test,
-        census_test, cubic_test, quartic_test, psd_target_test,
+        census_test, cubic_test, quartic_test, publication_test, adapter_test,
+        legacy_rejection_test,
     ):
         assert token in source
     assert (
@@ -149,13 +156,19 @@ def test_rank1_su4_infrastructure_is_generated_in_provenance_order() -> None:
         < source.index(census)
         < source.index(cubic)
         < source.index(quartic)
-        < source.index(psd_target)
+        < source.index(freezer)
+        < source.index(primal)
+        < source.index(verifier)
+        < source.index(theorem)
+        < source.index(adapter)
     )
     assert (
         source.index(census_test)
         < source.index(cubic_test)
         < source.index(quartic_test)
-        < source.index(psd_target_test)
+        < source.index(publication_test)
+        < source.index(adapter_test)
+        < source.index(legacy_rejection_test)
     )
     for consumer in (
         "g1_g8_gate_ledger_v20.py",
@@ -163,4 +176,7 @@ def test_rank1_su4_infrastructure_is_generated_in_provenance_order() -> None:
         "g1_g8_execution_roadmap_v20.py",
         "theory_validation_matrix_v20.py",
     ):
-        assert source.index(psd_target) < source.index(consumer)
+        assert source.index(adapter) < source.index(consumer)
+    legacy_source = "exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py"
+    assert f'"{legacy_source}"' not in source
+    assert legacy_rejection_test in source

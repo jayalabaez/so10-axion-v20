@@ -1,0 +1,176 @@
+{
+  "carrier_exhaustion": {
+    "Schur_coordinate_count": 19594,
+    "Schur_coordinate_grade_counts": [
+      1,
+      4,
+      90,
+      1414,
+      18085
+    ],
+    "all_carrier_families_exhausted_exact": true,
+    "all_standard_columns_reconstructed_from_rank_one_positive_component_metrics": true,
+    "augmented_linear_dimension": 211,
+    "carrier_transform_invertibility_argument": "all 824 exact irreducible carrier copies are injective, their images are pairwise isotypically independent, and their represented real dimensions sum to 22366=dim Sym^2(R plus Phi210)",
+    "carrier_transform_invertible_exact": true,
+    "carrier_transform_square_shape": [
+      22366,
+      22366
+    ],
+    "complete_real_carrier_dimension": 22366,
+    "complete_real_carrier_dimension_formula": "211*212/2",
+    "complex_isotypic_type_count": 35,
+    "constant_t_squared_carrier_present_exact": true,
+    "irreducible_carrier_copy_count": 824,
+    "isotypic_block_count": 22,
+    "real_Hermitian_block_split": [
+      9,
+      13
+    ]
+  },
+  "claim_boundary": {
+    "G3_closed": false,
+    "arbitrary_real_Phi_proved_by_source_reconstruction_alone": false,
+    "fixed_H": "h_-=(e0-i e1)/sqrt(2)",
+    "fixed_Sigma": "q/4",
+    "full_Hessian_proved": false,
+    "general_H_proved": false,
+    "global_Sigma_proved": false,
+    "requires_exact_strict_PSD_primal_and_theorem_bridge": true
+  },
+  "generation_boundary": {
+    "heavy_reconstruction_is_explicit_once_only": true,
+    "ordinary_validation_uses_frozen_canonical_bytes": true,
+    "prior_assembled_map_read": false,
+    "prior_primal_certificate_read": false,
+    "repository_modified": false,
+    "v20_physical_target_payload_read": false
+  },
+  "map": {
+    "all_grade_ranks_surjective_at_primes_1000003_1000033": true,
+    "common_denominator": 256,
+    "complex_quartic_identity_columns_checked_exact": 10788,
+    "complex_quartic_identity_mismatch_nnz": 0,
+    "corrected_grade01_changes": [
+      {
+        "column": 2,
+        "corrected_numerator": 64,
+        "row": 1
+      },
+      {
+        "column": 35,
+        "corrected_numerator": -64,
+        "row": 2
+      },
+      {
+        "column": 1,
+        "corrected_numerator": 128,
+        "row": 3
+      },
+      {
+        "column": 3,
+        "corrected_numerator": -128,
+        "row": 4
+      }
+    ],
+    "full_column_reconstruction_count": 19594,
+    "grade01_formula": "linear_column returns solved coordinates divided by 16; the off-diagonal factor 2 remains in the carrier expansion",
+    "grade_blocks": [
+      {
+        "degree": 0,
+        "nnz": 1,
+        "rank": 1,
+        "shape": [
+          1,
+          1
+        ]
+      },
+      {
+        "degree": 1,
+        "nnz": 4,
+        "rank": 4,
+        "shape": [
+          4,
+          4
+        ]
+      },
+      {
+        "degree": 2,
+        "nnz": 114,
+        "rank": 45,
+        "shape": [
+          45,
+          90
+        ]
+      },
+      {
+        "degree": 3,
+        "nnz": 3480,
+        "rank": 478,
+        "shape": [
+          478,
+          1414
+        ]
+      },
+      {
+        "degree": 4,
+        "nnz": 134951,
+        "rank": 6057,
+        "shape": [
+          6057,
+          18085
+        ]
+      }
+    ],
+    "maximum_absolute_numerator": 2548039680,
+    "nnz": 138550,
+    "numerator_csr_sha256": "1834c8439fa3e44459f7ba871420a4351cd0b4de194dec6f5c4a84c1f39d3a16",
+    "shape": [
+      6585,
+      19594
+    ]
+  },
+  "physical_RHS": {
+    "common_denominator": 576000,
+    "first_quartic_monomial": [
+      0,
+      13,
+      22,
+      27
+    ],
+    "first_quartic_pivot": 1155894,
+    "first_quartic_value_correct": "27776/1125",
+    "first_quartic_value_rejected_raw_schur": "129568/3375",
+    "full_grade_lengths": [
+      1,
+      4,
+      45,
+      478,
+      6057
+    ],
+    "full_nonzero_count": 512,
+    "full_nonzero_count_by_grade": [
+      1,
+      2,
+      17,
+      0,
+      492
+    ],
+    "numerator_sha256": "14debcfaf02d4b8c20d1d43a2e1f82d6a7390e28428fc63dd21a9c5f90aec0cf",
+    "ordered_spectral_quartic_common_denominator": 1125,
+    "ordered_spectral_quartic_numerator_sha256": "9460ddb239c7af45124396b469d5d633a82d46b72b16427809f3cca4cc39dff4",
+    "packed_pair_columns_checked": 3613,
+    "python_int_ordered_contractions": 18515,
+    "quartic_row_count": 6057,
+    "row_by_row_direct_evaluator_mismatch_count": 0
+  },
+  "source_raw_sha256": {
+    "exact_gauged_u1x_g3_rank1_su4_corrected_physical_rhs_v21.py": "e607e6a269037f5a844dc147043cf0053af8a5320c7c947133c3f61e5eca6051",
+    "exact_gauged_u1x_g3_rank1_su4_corrected_positive_gram_map_v21.py": "a7fe300ccf69dcb2520f2b3f18bf994fb8ab7ad90c5be866b34143b69c971259"
+  },
+  "status": "EXACT_RANK1_SU4_CORRECTED_SOURCE_RECONSTRUCTION_V21_PASS",
+  "terminal_check": {
+    "exit_code": 0,
+    "wall_seconds": 165.503
+  }
+}

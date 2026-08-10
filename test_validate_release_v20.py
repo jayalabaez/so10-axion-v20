@@ -57,6 +57,22 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py",
             "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_V20.json",
             "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_V20.md",
+            "corrected_rank1_endpoint_v21.py",
+            "freeze_corrected_rank1_endpoint_v21_integration.py",
+            "test_corrected_rank1_endpoint_v21.py",
+            "test_freeze_corrected_rank1_endpoint_v21_integration.py",
+            ".github/workflows/current-main-full-reaudit.yml",
+            ".github/workflows/g1-g8-execution-roadmap.yml",
+            ".github/workflows/g1-g8-gate-ledger.yml",
+            ".github/workflows/gauged-u1x-g3-stability.yml",
+            ".github/workflows/latest-main-final-scalar-gate.yml",
+            ".github/workflows/replicate-and-falsify.yml",
+            "corrected_rank1_publication_v21/EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_PUBLICATION_V21_MANIFEST.json",
+            "corrected_rank1_publication_v21/EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_FIXED_ENDPOINT_THEOREM_V21.json",
+            "corrected_rank1_publication_v21/EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_POSITIVE_GRAM_SYSTEM_V21.npz",
+            "corrected_rank1_publication_v21/verify_exact_gauged_u1x_g3_rank1_su4_corrected_fixed_endpoint_theorem_v21.py",
+            "corrected_rank1_publication_v21/heavy_regenerate_exact_gauged_u1x_g3_rank1_su4_corrected_system_v21.py",
+            "corrected_rank1_publication_v21/test_exact_gauged_u1x_g3_rank1_su4_corrected_publication_v21.py",
         ):
             self.assertIn(required, paths)
         for relative in paths:
@@ -164,6 +180,22 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
                 quartic, psd_target,
             ),
             (True, True, True, True, True, True, True, True),
+        )
+        publication = release.corrected_rank1.load_validated_publication()
+        forged_publication = copy.deepcopy(publication)
+        forged_publication["manifest"]["schema"] = "evil"
+        self.assertFalse(
+            release.rank1_su4_release_predicates(
+                stabilizer,
+                intertwiners,
+                aligned,
+                quadratic,
+                census,
+                cubic,
+                quartic,
+                psd_target,
+                forged_publication,
+            )[-1]
         )
 
         mutations = []
@@ -472,112 +504,43 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
         self.assertIn("every real/Hermitian isotypic block", source)
         self.assertIn("homogenizing cross terms", source)
 
-    def test_current_main_heredocs_use_exact_census_cubic_quartic_and_psd_target_scope_contracts(self):
+    def test_current_main_heredocs_reject_legacy_target_and_accept_corrected_endpoint(self):
         source = (
             release.ROOT / ".github/workflows/current-main-full-reaudit.yml"
         ).read_text(encoding="utf-8")
-        self.assertEqual(
-            source.count("_rank1_su4_augmented_sos_census_exact("), 2
-        )
-        self.assertEqual(
-            source.count(
-                "all(rank1_su4_census['scope'][name] is False "
-                "for name in census_false_scope)"
-            ),
-            2,
-        )
-        self.assertNotIn(
-            "set(rank1_su4_census['scope'])==set(census_false_scope)", source
-        )
-        self.assertEqual(
-            source.count("_rank1_su4_augmented_sos_cubic_map_exact("), 2
-        )
-        self.assertEqual(
-            source.count(
-                "all(rank1_su4_cubic['scope'][name] is False "
-                "for name in cubic_false_scope)"
-            ),
-            2,
-        )
-        self.assertEqual(
-            source.count(
-                "cubic_map['abstract_zero_placeholder_is_not_a_physical_G3_target'] is True"
-            ),
-            2,
-        )
-        self.assertEqual(
-            source.count("_rank1_su4_augmented_sos_quartic_map_exact("), 2
-        )
-        self.assertEqual(
-            source.count(
-                "all(rank1_su4_quartic['scope'][name] is True "
-                "for name in quartic_true_scope)"
-            ),
-            2,
-        )
-        self.assertEqual(
-            source.count(
-                "all(rank1_su4_quartic['scope'][name] is False "
-                "for name in quartic_false_scope)"
-            ),
-            2,
-        )
         for required in (
-            "quartic_map['shape']==[6057,18085]",
-            "quartic_map['nnz']==115641",
-            "quartic_map['rank_over_Q_exact']==6057",
-            "quartic_map['kernel_dimension_over_Q_exact']==12028",
+            "_rank1_su4_augmented_sos_psd_routes_and_stale_payload_well_formed(",
+            "_rank1_su4_augmented_sos_psd_target_exact(",
+            "corrected=central_view(corrected_publication)",
+            "corrected['legacy_v20_physical_target_valid'] is False",
+            "corrected['corrected_fixed_endpoint_theorem_exact'] is True",
+            "corrected['map_shape'] == [6585, 19594]",
+            "corrected['target_common_denominator'] == 576000",
+            "corrected['exact_coefficient_equalities'] == 6585",
+            "corrected['strict_positive_Gram_blocks'] == 22",
+            "corrected['strict_positive_LDL_pivots'] == 824",
+            "corrected['arbitrary_real_Phi_at_fixed_endpoint'] is True",
         ):
             self.assertEqual(source.count(required), 2, required)
         for required in (
-            "homogeneous_quartic_Schur_coefficient_map_constructed_exact",
-            "all_35_complex_carrier_families_constructed_exact",
-            "all_22_real_block_pairings_constructed_exact",
-            "physical_quartic_target_constructed",
-            "standard_PSD_congruences_for_real_type_fixed_bases_constructed",
-            "semidefinite_feasibility_solved",
-            "arbitrary_Phi_stationarity_or_lower_bound_proved",
+            "'global_Sigma_proved'",
+            "'general_H_proved'",
+            "'full_Hessian_proved'",
+            "'G3_closed'",
         ):
             self.assertGreaterEqual(source.count(required), 2, required)
-        self.assertEqual(
-            source.count("_rank1_su4_augmented_sos_psd_target_exact("), 2
+        self.assertNotIn(
+            "python exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py",
+            source,
         )
-        for required in (
-            "all_22_standard_PSD_coordinate_routes_constructed",
-            "all_nine_real_type_standard_PSD_congruences_constructed",
-            "all_thirteen_complex_blocks_in_standard_Hermitian_coordinates",
-            "physical_target_formula_all_five_grades_constructed",
-            "physical_target_full_6585_row_vector_constructed",
-            "coefficient_map_reparameterized_in_standard_PSD_coordinates",
-            "exact_primal_PSD_certificate_constructed",
-            "exact_dual_Farkas_certificate_constructed",
-            "arbitrary_Phi_lower_bound_proved",
-            "equality_orbit_classification_proved",
-            "full_486_field_Hessian_classification_proved",
-            "e2d9eec1b01b3eeefc4a54d404db93171aa6600ea9ef646a215ab0b5401f7630",
-            "38476cff340ef8702735d48d7dbdf644ed41f8dc4a359264d33d966f177145ad",
-        ):
-            self.assertGreaterEqual(source.count(required), 2, required)
-        for required in (
-            "degree_zero_coefficient_map_constructed",
-            "degree_one_coefficient_map_constructed",
-            "degree_two_coefficient_map_constructed",
-            "degree_four_coefficient_map_constructed",
-            "full_6585_by_19594_Schur_coordinate_matrix_constructed",
-            "physical_G3_gap_target_vector_constructed",
-            "physical_G3_gap_cubic_zero_RHS_certified",
-            "augmented_Schur_SOS_SDP_constructed",
-            "augmented_Schur_SOS_SDP_feasibility_certified",
-            "augmented_Schur_SOS_SDP_infeasibility_certified",
-            "arbitrary_real_Phi_lower_bound_proved",
-            "arbitrary_rank1_Phi_proved",
-            "G3_closed",
-            "whole_model_validated",
-            "whole_model_excluded",
-        ):
-            self.assertGreaterEqual(source.count(required), 2, required)
+        self.assertEqual(
+            source.count(
+                "heavy_regenerate_exact_gauged_u1x_g3_rank1_su4_corrected_system_v21.py --check"
+            ),
+            1,
+        )
 
-    def test_all_seven_release_heredocs_pin_the_quartic_map_contract(self):
+    def test_all_seven_release_heredocs_pin_corrected_endpoint_and_reject_legacy(self):
         requirements = (release.ROOT / "requirements.txt").read_text(
             encoding="utf-8"
         )
@@ -589,77 +552,73 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             ".github/workflows/gauged-u1x-g3-stability.yml": (1, (75,)),
             ".github/workflows/replicate-and-falsify.yml": (2, (75,)),
         }
-        true_scope = (
-            "homogeneous_quartic_Schur_coefficient_map_constructed_exact",
-            "all_35_complex_carrier_families_constructed_exact",
-            "all_22_real_block_pairings_constructed_exact",
-        )
-        false_scope = (
-            "physical_quartic_target_constructed",
-            "standard_PSD_congruences_for_real_type_fixed_bases_constructed",
-            "semidefinite_feasibility_solved",
-            "arbitrary_Phi_stationarity_or_lower_bound_proved",
-            "G3_closed",
-        )
         total_heredocs = 0
+        heavy_count = 0
         for relative, (expected_heredocs, timeouts) in workflow_contracts.items():
             source = (release.ROOT / relative).read_text(encoding="utf-8")
-            self.assertEqual(
-                source.count("_rank1_su4_augmented_sos_quartic_map_exact("),
-                expected_heredocs,
-                relative,
-            )
+            self.assertEqual(source.count("python - <<'PY'"), expected_heredocs)
             self.assertEqual(
                 source.count("_rank1_su4_augmented_sos_psd_target_exact("),
                 expected_heredocs,
                 relative,
             )
+            self.assertEqual(
+                source.count(
+                    "_rank1_su4_augmented_sos_psd_routes_and_stale_payload_well_formed("
+                ),
+                expected_heredocs,
+                relative,
+            )
+            self.assertEqual(
+                source.count("central_view(corrected_publication)"),
+                expected_heredocs,
+                relative,
+            )
             total_heredocs += expected_heredocs
+            heavy_count += source.count(
+                "heavy_regenerate_exact_gauged_u1x_g3_rank1_su4_corrected_system_v21.py --check"
+            )
             for timeout in timeouts:
                 self.assertIn(f"timeout-minutes: {timeout}", source, relative)
-            for required in (
-                "exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py",
-                "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py",
-                "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.json",
-                "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.md",
-            ):
-                self.assertIn(required, source, (relative, required))
             for required in (
                 "exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py",
                 "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py",
                 "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_V20.json",
                 "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_V20.md",
+                "corrected_rank1_endpoint_v21.py",
+                "corrected_rank1_publication_v21",
+                "PYTHONDONTWRITEBYTECODE",
+                "SO10_PUBLISHED_API_ROOT",
+                "python -B",
             ):
                 self.assertIn(required, source, (relative, required))
             for required in (
-                "115641",
-                "12028",
-                *true_scope,
-                *false_scope,
+                "legacy_v20_physical_target_valid",
+                "corrected_fixed_endpoint_theorem_exact",
+                "map_shape",
+                "target_common_denominator",
+                "exact_coefficient_equalities",
+                "strict_positive_Gram_blocks",
+                "strict_positive_LDL_pivots",
+                "arbitrary_real_Phi_at_fixed_endpoint",
+                "global_Sigma_proved",
+                "general_H_proved",
+                "full_Hessian_proved",
+                "G3_closed",
             ):
                 self.assertGreaterEqual(
                     source.count(required), expected_heredocs, (relative, required)
                 )
-            for required in (
-                "all_22_standard_PSD_coordinate_routes_constructed",
-                "all_nine_real_type_standard_PSD_congruences_constructed",
-                "all_thirteen_complex_blocks_in_standard_Hermitian_coordinates",
-                "physical_target_formula_all_five_grades_constructed",
-                "physical_target_full_6585_row_vector_constructed",
-                "coefficient_map_reparameterized_in_standard_PSD_coordinates",
-                "semidefinite_feasibility_solved",
-                "exact_primal_PSD_certificate_constructed",
-                "exact_dual_Farkas_certificate_constructed",
-                "arbitrary_Phi_lower_bound_proved",
-                "equality_orbit_classification_proved",
-                "full_486_field_Hessian_classification_proved",
-                "e2d9eec1b01b3eeefc4a54d404db93171aa6600ea9ef646a215ab0b5401f7630",
-                "38476cff340ef8702735d48d7dbdf644ed41f8dc4a359264d33d966f177145ad",
-            ):
-                self.assertGreaterEqual(
-                    source.count(required), expected_heredocs, (relative, required)
-                )
+            self.assertNotIn(
+                "python exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py",
+                source,
+            )
+            self.assertIn(
+                "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py",
+                source,
+            )
         self.assertEqual(total_heredocs, 7)
+        self.assertEqual(heavy_count, 1)
 
     def test_checksums_reject_files_outside_repository(self):
         with tempfile.TemporaryDirectory() as directory:

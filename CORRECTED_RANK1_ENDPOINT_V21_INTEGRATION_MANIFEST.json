@@ -1,0 +1,525 @@
+{
+  "claim_boundary": {
+    "G3_closed": false,
+    "arbitrary_real_Phi_at_fixed_endpoint": true,
+    "fixed_H": "h_-=(e0-i e1)/sqrt(2)",
+    "fixed_Sigma": "q/4",
+    "full_H_proved": false,
+    "full_Hessian_proved": false,
+    "general_H_proved": false,
+    "global_Sigma_proved": false,
+    "legacy_v20_physical_target_valid": false,
+    "legacy_v20_primal_valid": false
+  },
+  "exact_dimensions": {
+    "coefficient_equalities": 6585,
+    "map_common_denominator": 256,
+    "map_nnz": 138550,
+    "map_shape": [
+      6585,
+      19594
+    ],
+    "strict_positive_Gram_blocks": 22,
+    "strict_positive_LDL_pivots": 824,
+    "target_common_denominator": 576000,
+    "target_nonzero_count": 512
+  },
+  "generation_source_pins": {
+    "map_raw_sha256": {
+      "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.json": "0efce9154b5b4204107cf211ff3c355641783353bf8d68ddb931f40994fdbb08",
+      "EXACT_GAUGED_U1X_G3_RANK1_SU4_STABILIZER_V20.json": "91996a1e36b8169ffe5a8553f7efacf4586935aec7f971ad9689805049c62feb",
+      "EXACT_GAUGED_U1X_G3_RANK1_SU4_STABILIZER_V20.md": "a243c9b9de43fe8e5245e58dc1f3d0464dc93127cd1142317108e0518f4954f9",
+      "exact_gauged_u1x_g3_rank1_su4_aligned_carriers_v20.py": "9964606de2ef2a322536c6185342bc6e8fe61a46fb6ceeed9ab51d812c395b84",
+      "exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py": "a6ca509755d352ddb17d8f8081a247cc55861b75c7f15f85b3a7a6b9218af85c",
+      "exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py": "589952b9b0a0b6af1543b87c89b0f3626a4bfb9c4219821a915fe04fab8af690",
+      "exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py": "8493a90d9b689bc02479151529ac697425f56087f2bdbebb40176f418b7c0ff8",
+      "exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py": "28633a2dba4d70f019a3e63ca87e8224ca11630a9e7c53bc963aedc6824208c1",
+      "exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py": "b848448fa6badfcb491136862b26ec9f6c80a0b509e2aad79fdb917be9eb7617",
+      "exact_gauged_u1x_g3_rank1_su4_phi210_quadratic_basis_v20.py": "cb54ad8b5222872187af404d3bbfa939157d4fb25db9941bc9ac3a6976fa0492",
+      "exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py": "a0641dfda3573cbd9343c65a4c26d7f89602bb4a21eb6e4ab8a360fa1d434e8f"
+    },
+    "physical_RHS_portable_lf_sha256": {
+      "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.json": "056e1a90c028f0aaca8fb17f2f53dfb02d5e7a33230ec3675537d2778755266a",
+      "exact_gauged_u1x_g3_pd_rank_certificate_v20.py": "e2499baf3f7a572df7647ca02f109666a549c9e2c1989110c682ee584e0483c6",
+      "exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py": "589952b9b0a0b6af1543b87c89b0f3626a4bfb9c4219821a915fe04fab8af690",
+      "exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py": "8493a90d9b689bc02479151529ac697425f56087f2bdbebb40176f418b7c0ff8",
+      "exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py": "28633a2dba4d70f019a3e63ca87e8224ca11630a9e7c53bc963aedc6824208c1",
+      "exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py": "76fa77c99b8d6e963e8694acf74280de29ced4c7a7623bffa991aead77329f49"
+    }
+  },
+  "inventory": {
+    ".gitattributes": {
+      "content_sha256": "c99a4c77c178c48d259064c71c0782eea04846cc819c54bbd26da9370212eb89",
+      "content_size_bytes": 1690,
+      "hash_mode": "raw",
+      "role": "central corrected-endpoint integration source"
+    },
+    ".github/workflows/current-main-full-reaudit.yml": {
+      "content_sha256": "533d5d01f1624db074e34517689122d0182d497d36a4004dc2b7e66c5c10a768",
+      "content_size_bytes": 77647,
+      "hash_mode": "portable-lf",
+      "role": "CI orchestration and claim-boundary enforcement"
+    },
+    ".github/workflows/g1-g8-execution-roadmap.yml": {
+      "content_sha256": "51d774dcf60b349df0b98a6f72f26415338be2b895e2ac5a93b32fe788af339c",
+      "content_size_bytes": 35569,
+      "hash_mode": "portable-lf",
+      "role": "CI orchestration and claim-boundary enforcement"
+    },
+    ".github/workflows/g1-g8-gate-ledger.yml": {
+      "content_sha256": "a2a492319334f7c55cdef12be9b0e67d749b5f4ff9536f84fe3229dd29a3c73c",
+      "content_size_bytes": 42815,
+      "hash_mode": "portable-lf",
+      "role": "CI orchestration and claim-boundary enforcement"
+    },
+    ".github/workflows/gauged-u1x-g3-stability.yml": {
+      "content_sha256": "afaf2c938fe9e5e6fc062c0903babe6400de949bac68cb50fb1e1f21ef73365d",
+      "content_size_bytes": 58794,
+      "hash_mode": "portable-lf",
+      "role": "CI orchestration and claim-boundary enforcement"
+    },
+    ".github/workflows/latest-main-final-scalar-gate.yml": {
+      "content_sha256": "47d2a4fdb7f167521c960ec7171cbd72cbf1491fc9e2e0631c64a11767aa47f5",
+      "content_size_bytes": 8059,
+      "hash_mode": "portable-lf",
+      "role": "CI orchestration and claim-boundary enforcement"
+    },
+    ".github/workflows/replicate-and-falsify.yml": {
+      "content_sha256": "0235db802399cb2d83960c3b6642b1e156fa856feaff4aae662dc310fb1e41aa",
+      "content_size_bytes": 44947,
+      "hash_mode": "portable-lf",
+      "role": "CI orchestration and claim-boundary enforcement"
+    },
+    "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_V20.json": {
+      "content_sha256": "9b5236b8eb57f8262cf14ef7cfcfd4b40d9bf582a995221e8f15a64b393ca2b3",
+      "content_size_bytes": 968894,
+      "hash_mode": "portable-lf",
+      "role": "superseded invalid historical artifact; structural routes only"
+    },
+    "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_V20.md": {
+      "content_sha256": "c6c9d9008831333ccee056330c00f769187e834996a4cfd666df452e7e297629",
+      "content_size_bytes": 2764,
+      "hash_mode": "portable-lf",
+      "role": "superseded invalid historical artifact; structural routes only"
+    },
+    "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.json": {
+      "content_sha256": "0efce9154b5b4204107cf211ff3c355641783353bf8d68ddb931f40994fdbb08",
+      "content_size_bytes": 3676157,
+      "hash_mode": "raw",
+      "role": "generation-only byte-pinned structural dependency"
+    },
+    "EXACT_GAUGED_U1X_G3_RANK1_SU4_STABILIZER_V20.json": {
+      "content_sha256": "91996a1e36b8169ffe5a8553f7efacf4586935aec7f971ad9689805049c62feb",
+      "content_size_bytes": 20931,
+      "hash_mode": "raw",
+      "role": "generation-only byte-pinned structural dependency"
+    },
+    "EXACT_GAUGED_U1X_G3_RANK1_SU4_STABILIZER_V20.md": {
+      "content_sha256": "a243c9b9de43fe8e5245e58dc1f3d0464dc93127cd1142317108e0518f4954f9",
+      "content_size_bytes": 1245,
+      "hash_mode": "raw",
+      "role": "generation-only byte-pinned structural dependency"
+    },
+    "FINAL_G3_ACCEPTANCE_GATE_V20.json": {
+      "content_sha256": "7058fc619e1822137ce26e62e966804383026a709f89aa8125cd3dd5e05c8f96",
+      "content_size_bytes": 10641,
+      "hash_mode": "portable-lf",
+      "role": "regenerated central report or documentation"
+    },
+    "FINAL_G3_ACCEPTANCE_GATE_V20.md": {
+      "content_sha256": "7e77891f915564d573d80b319fa5dcbf6445b576710cc565c75d37280ecfc05b",
+      "content_size_bytes": 3102,
+      "hash_mode": "portable-lf",
+      "role": "regenerated central report or documentation"
+    },
+    "G1_G8_EXECUTION_ROADMAP_V20.json": {
+      "content_sha256": "14cd831603d23a6c96840384d89363d0379ea26cd8c6daed8443b1dbe52c8b02",
+      "content_size_bytes": 9371404,
+      "hash_mode": "portable-lf",
+      "role": "regenerated central report or documentation"
+    },
+    "G1_G8_EXECUTION_ROADMAP_V20.md": {
+      "content_sha256": "1ee70b0aac6018312c69b094096b6c5159f7111e07bbb3275cf10fdeeba75ff5",
+      "content_size_bytes": 8398,
+      "hash_mode": "portable-lf",
+      "role": "regenerated central report or documentation"
+    },
+    "G1_G8_GATE_LEDGER_V20.json": {
+      "content_sha256": "b9d5fa9c25f4bed623b30b87238747f79ca113d1470ce4875380f37fafa92bcf",
+      "content_size_bytes": 9370183,
+      "hash_mode": "portable-lf",
+      "role": "regenerated central report or documentation"
+    },
+    "G1_G8_GATE_LEDGER_V20.md": {
+      "content_sha256": "26a2c7b513877c725ea590150688078d962d48e89e2e77438b76c4a4f7ce175a",
+      "content_size_bytes": 4135,
+      "hash_mode": "portable-lf",
+      "role": "regenerated central report or documentation"
+    },
+    "README.md": {
+      "content_sha256": "c694d57d17598dc2516e0d0d621fe10962c20a302e9d37dd8352f1067973e3f9",
+      "content_size_bytes": 25234,
+      "hash_mode": "portable-lf",
+      "role": "regenerated central report or documentation"
+    },
+    "SHA256SUMS": {
+      "content_sha256": "fa41d4219b5f830f055ee8b4f20a4a83550bbe0336723bc83d4ee031f8931a9e",
+      "content_size_bytes": 29902,
+      "hash_mode": "portable-lf",
+      "role": "release-core portable checksum manifest"
+    },
+    "THEORY_VALIDATION_MATRIX_V20.md": {
+      "content_sha256": "6fc66c213b775d8d2d99fdf9cbf5d7a4f7d37ed7623057d1724b51c653f43840",
+      "content_size_bytes": 9599,
+      "hash_mode": "portable-lf",
+      "role": "regenerated central report or documentation"
+    },
+    "THEORY_VALIDATION_MATRIX_V20_VERDICT.json": {
+      "content_sha256": "c75bf469dd90956bbd2dc3888ffbbe302f4dc45b0e64e812b6aa012e8dbaf835",
+      "content_size_bytes": 30856,
+      "hash_mode": "portable-lf",
+      "role": "regenerated central report or documentation"
+    },
+    "VALIDATION_EXECUTION_V20.md": {
+      "content_sha256": "abff3b095513a4299e3b7b90971eb91f9a507061cd9d3835a96baed19fd3827a",
+      "content_size_bytes": 9196,
+      "hash_mode": "portable-lf",
+      "role": "regenerated central report or documentation"
+    },
+    "VALIDATION_EXECUTION_V20_VERDICT.json": {
+      "content_sha256": "c805eb72363d6fc7098c8fcf50e6a35d712cf7f01a6b6f31a53ec52cfe43d2e3",
+      "content_size_bytes": 32754,
+      "hash_mode": "portable-lf",
+      "role": "regenerated central report or documentation"
+    },
+    "axion_so10_theory_v20.pdf": {
+      "content_sha256": "95840341526812fa8adb275ed330381082193506dd2be28d8a2b794ebe4f9ae5",
+      "content_size_bytes": 392486,
+      "hash_mode": "raw",
+      "role": "corrected theorem manuscript"
+    },
+    "axion_so10_theory_v20.tex": {
+      "content_sha256": "eb4801a44feb8a933db361f20274279e60ea1387c66e2fab6ea7f95e4f9bd69c",
+      "content_size_bytes": 55929,
+      "hash_mode": "portable-lf",
+      "role": "corrected theorem manuscript"
+    },
+    "corrected_rank1_endpoint_v21.py": {
+      "content_sha256": "1d99cd24a54fa889fabbcb8405808f00fbd3cc67260316e2f26302667ccb8d99",
+      "content_size_bytes": 16861,
+      "hash_mode": "raw",
+      "role": "central corrected-endpoint integration source"
+    },
+    "corrected_rank1_publication_v21/EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_FIXED_ENDPOINT_THEOREM_V21.json": {
+      "content_sha256": "147fafdf1acfedd62a66e7fd0049cd9eb6ea94cc775e0bffc99598c9b47e8825",
+      "content_size_bytes": 2925,
+      "hash_mode": "raw",
+      "role": "audited corrected v21 publication byte"
+    },
+    "corrected_rank1_publication_v21/EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_LIVE_POLYNOMIAL_V21.json": {
+      "content_sha256": "2eab2223c9782535764485ad5d90898a8b90a7a97b2e4d714819acd06cd1a964",
+      "content_size_bytes": 7499,
+      "hash_mode": "raw",
+      "role": "audited corrected v21 publication byte"
+    },
+    "corrected_rank1_publication_v21/EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_ORDERED_SPECTRAL_OVERFLOW_V21.json": {
+      "content_sha256": "db332026626cdea336005c0630e06d4c128f0436b9a2a96a4eeed8e9f96495f2",
+      "content_size_bytes": 2388,
+      "hash_mode": "raw",
+      "role": "audited corrected v21 publication byte"
+    },
+    "corrected_rank1_publication_v21/EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_POSITIVE_GRAM_PRIMAL_V21.json": {
+      "content_sha256": "dd40a508a08c219117ddefaf574652a24f0e1f868d011e05f558ecafc9600e03",
+      "content_size_bytes": 1496572,
+      "hash_mode": "raw",
+      "role": "audited corrected v21 publication byte"
+    },
+    "corrected_rank1_publication_v21/EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_POSITIVE_GRAM_SYSTEM_V21.npz": {
+      "content_sha256": "25ec946b1e9bca50cfe4e31ac9bb58f5d8d0f4a24b83dc11fdeec0d68a80c6f3",
+      "content_size_bytes": 293539,
+      "hash_mode": "raw",
+      "role": "audited corrected v21 publication byte"
+    },
+    "corrected_rank1_publication_v21/EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_POSITIVE_GRAM_VERIFY_V21.json": {
+      "content_sha256": "b7cf3296b16176b2bf5e84fa39e0ba78d72f7f1740e046ce7665f33b3d18c49c",
+      "content_size_bytes": 10303,
+      "hash_mode": "raw",
+      "role": "audited corrected v21 publication byte"
+    },
+    "corrected_rank1_publication_v21/EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_PUBLICATION_V21_MANIFEST.json": {
+      "content_sha256": "7ecf96a12321b9df5e7d118ce0fb83e65ad9859516b520936408ec4d46a11017",
+      "content_size_bytes": 6070,
+      "hash_mode": "raw",
+      "role": "audited corrected v21 publication byte"
+    },
+    "corrected_rank1_publication_v21/EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_SOURCE_RECONSTRUCTION_V21.json": {
+      "content_sha256": "f0704cdd5199eadfdebc2cb916b353b3ee1000589ccbd480cc78883e8731b108",
+      "content_size_bytes": 4800,
+      "hash_mode": "raw",
+      "role": "audited corrected v21 publication byte"
+    },
+    "corrected_rank1_publication_v21/README.md": {
+      "content_sha256": "5d02997341f1382315adc1285403bff564b5409c340372c8cbe59bba43ec8826",
+      "content_size_bytes": 4297,
+      "hash_mode": "raw",
+      "role": "audited corrected v21 publication byte"
+    },
+    "corrected_rank1_publication_v21/exact_gauged_u1x_g3_rank1_su4_corrected_physical_rhs_v21.py": {
+      "content_sha256": "e607e6a269037f5a844dc147043cf0053af8a5320c7c947133c3f61e5eca6051",
+      "content_size_bytes": 36573,
+      "hash_mode": "raw",
+      "role": "audited corrected v21 publication byte"
+    },
+    "corrected_rank1_publication_v21/exact_gauged_u1x_g3_rank1_su4_corrected_positive_gram_map_v21.py": {
+      "content_sha256": "a7fe300ccf69dcb2520f2b3f18bf994fb8ab7ad90c5be866b34143b69c971259",
+      "content_size_bytes": 51876,
+      "hash_mode": "raw",
+      "role": "audited corrected v21 publication byte"
+    },
+    "corrected_rank1_publication_v21/exact_gauged_u1x_g3_rank1_su4_corrected_positive_gram_primal_v21.py": {
+      "content_sha256": "9a6015946362c199cf64de7d8f48e82df51874bc1ae204c1d2c9f8ce6e9b178b",
+      "content_size_bytes": 13679,
+      "hash_mode": "raw",
+      "role": "audited corrected v21 publication byte"
+    },
+    "corrected_rank1_publication_v21/freeze_exact_gauged_u1x_g3_rank1_su4_corrected_publication_v21.py": {
+      "content_sha256": "f79f22feacb58946c686806a45b828e600bf3eb913935cbe9b2fe92e4d5a0401",
+      "content_size_bytes": 7846,
+      "hash_mode": "raw",
+      "role": "audited corrected v21 publication byte"
+    },
+    "corrected_rank1_publication_v21/heavy_regenerate_exact_gauged_u1x_g3_rank1_su4_corrected_system_v21.py": {
+      "content_sha256": "a304a3a224462e09e8833ef5818b0df48fc42fe4b7577e9d04a483e872f6d7df",
+      "content_size_bytes": 3523,
+      "hash_mode": "raw",
+      "role": "audited corrected v21 publication byte"
+    },
+    "corrected_rank1_publication_v21/test_exact_gauged_u1x_g3_rank1_su4_corrected_publication_v21.py": {
+      "content_sha256": "5e993798c120fc1b00a15a9ae28994be2031ddb163bd80960ea00e46114b3aa1",
+      "content_size_bytes": 15228,
+      "hash_mode": "raw",
+      "role": "audited corrected v21 publication byte"
+    },
+    "corrected_rank1_publication_v21/verify_exact_gauged_u1x_g3_rank1_su4_corrected_fixed_endpoint_theorem_v21.py": {
+      "content_sha256": "907f50415501fc73396b5fb4a50152c9ae8a54c460a5d15d643ac10d1308da77",
+      "content_size_bytes": 16573,
+      "hash_mode": "raw",
+      "role": "audited corrected v21 publication byte"
+    },
+    "corrected_rank1_publication_v21/verify_exact_gauged_u1x_g3_rank1_su4_corrected_live_polynomial_v21.py": {
+      "content_sha256": "9e37096cb1d6a967ed739f459437e6796dc9d8340e32f6a2c1a59bcbee7a36cd",
+      "content_size_bytes": 17591,
+      "hash_mode": "raw",
+      "role": "audited corrected v21 publication byte"
+    },
+    "corrected_rank1_publication_v21/verify_exact_gauged_u1x_g3_rank1_su4_corrected_ordered_spectral_overflow_v21.py": {
+      "content_sha256": "1beb8a2dd6d742d4a55f4cde2d02c1b89264a1ac0d202a26d210d35e344d2e57",
+      "content_size_bytes": 8925,
+      "hash_mode": "raw",
+      "role": "audited corrected v21 publication byte"
+    },
+    "corrected_rank1_publication_v21/verify_exact_gauged_u1x_g3_rank1_su4_corrected_positive_gram_primal_v21.py": {
+      "content_sha256": "aef55868d573e8caa4627ab118d1ad06e2e94366b5aa816a200cf1d3c92cd46b",
+      "content_size_bytes": 10620,
+      "hash_mode": "raw",
+      "role": "audited corrected v21 publication byte"
+    },
+    "exact_gauged_u1x_g3_pd_rank_certificate_v20.py": {
+      "content_sha256": "e2499baf3f7a572df7647ca02f109666a549c9e2c1989110c682ee584e0483c6",
+      "content_size_bytes": 71621,
+      "hash_mode": "portable-lf",
+      "role": "generation-only byte-pinned structural dependency"
+    },
+    "exact_gauged_u1x_g3_rank1_su4_aligned_carriers_v20.py": {
+      "content_sha256": "9964606de2ef2a322536c6185342bc6e8fe61a46fb6ceeed9ab51d812c395b84",
+      "content_size_bytes": 87890,
+      "hash_mode": "raw",
+      "role": "generation-only byte-pinned structural dependency"
+    },
+    "exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py": {
+      "content_sha256": "a6ca509755d352ddb17d8f8081a247cc55861b75c7f15f85b3a7a6b9218af85c",
+      "content_size_bytes": 62890,
+      "hash_mode": "raw",
+      "role": "generation-only byte-pinned structural dependency"
+    },
+    "exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py": {
+      "content_sha256": "589952b9b0a0b6af1543b87c89b0f3626a4bfb9c4219821a915fe04fab8af690",
+      "content_size_bytes": 94119,
+      "hash_mode": "raw",
+      "role": "generation-only byte-pinned structural dependency"
+    },
+    "exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py": {
+      "content_sha256": "8493a90d9b689bc02479151529ac697425f56087f2bdbebb40176f418b7c0ff8",
+      "content_size_bytes": 81487,
+      "hash_mode": "raw",
+      "role": "generation-only byte-pinned structural dependency"
+    },
+    "exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py": {
+      "content_sha256": "28633a2dba4d70f019a3e63ca87e8224ca11630a9e7c53bc963aedc6824208c1",
+      "content_size_bytes": 66524,
+      "hash_mode": "raw",
+      "role": "generation-only byte-pinned structural dependency"
+    },
+    "exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py": {
+      "content_sha256": "b848448fa6badfcb491136862b26ec9f6c80a0b509e2aad79fdb917be9eb7617",
+      "content_size_bytes": 52715,
+      "hash_mode": "raw",
+      "role": "generation-only byte-pinned structural dependency"
+    },
+    "exact_gauged_u1x_g3_rank1_su4_phi210_quadratic_basis_v20.py": {
+      "content_sha256": "cb54ad8b5222872187af404d3bbfa939157d4fb25db9941bc9ac3a6976fa0492",
+      "content_size_bytes": 61057,
+      "hash_mode": "raw",
+      "role": "generation-only byte-pinned structural dependency"
+    },
+    "exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py": {
+      "content_sha256": "a0641dfda3573cbd9343c65a4c26d7f89602bb4a21eb6e4ab8a360fa1d434e8f",
+      "content_size_bytes": 37821,
+      "hash_mode": "raw",
+      "role": "generation-only byte-pinned structural dependency"
+    },
+    "final_g3_acceptance_gate_v20.py": {
+      "content_sha256": "31d25ea8718f39194eb07a2d1f4a3618c5d0d56c229bac0db8c21b44e88f6783",
+      "content_size_bytes": 72881,
+      "hash_mode": "portable-lf",
+      "role": "central corrected-endpoint integration source"
+    },
+    "freeze_corrected_rank1_endpoint_v21_integration.py": {
+      "content_sha256": "dd3792d94d97ae893c02b6f741ba03a870dfe05ca7ff2f7786f6c9b9c3e4c842",
+      "content_size_bytes": 20682,
+      "hash_mode": "raw",
+      "role": "central corrected-endpoint integration source"
+    },
+    "g1_g8_execution_roadmap_v20.py": {
+      "content_sha256": "b5bafd8a79beac07b757354b3af7dab2adecc6017b130b36395b98b641ec18eb",
+      "content_size_bytes": 36822,
+      "hash_mode": "portable-lf",
+      "role": "central corrected-endpoint integration source"
+    },
+    "g1_g8_gate_ledger_v20.py": {
+      "content_sha256": "da1ed961be9eb6987c1eb64dd4ce29284d83411c588915cbff6b43436933abc5",
+      "content_size_bytes": 244628,
+      "hash_mode": "portable-lf",
+      "role": "central corrected-endpoint integration source"
+    },
+    "prepare_validation_artifacts_v20.py": {
+      "content_sha256": "2dec74aac980a05747fbb2200f127632a5496744fe18403cc2133ef8d3cfa5ab",
+      "content_size_bytes": 17386,
+      "hash_mode": "portable-lf",
+      "role": "central corrected-endpoint integration source"
+    },
+    "replicate.py": {
+      "content_sha256": "5305e774096de7f82d17b19e816e76abe1fc6ddb612e27a2307e4fbc5e13cb2a",
+      "content_size_bytes": 15016,
+      "hash_mode": "portable-lf",
+      "role": "central corrected-endpoint integration source"
+    },
+    "test_corrected_rank1_endpoint_v21.py": {
+      "content_sha256": "2f3fc88a49fc74ecb93b4c323bee0ccf94d7d281d56232680ee066ad41549769",
+      "content_size_bytes": 8281,
+      "hash_mode": "portable-lf",
+      "role": "fail-closed central integration regression"
+    },
+    "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py": {
+      "content_sha256": "a224a19317c1e849a40e6f729df06c4e50f1e556a71c604dcc8aeca0c3f2555f",
+      "content_size_bytes": 7867,
+      "hash_mode": "portable-lf",
+      "role": "fail-closed central integration regression"
+    },
+    "test_final_g3_acceptance_gate_v20.py": {
+      "content_sha256": "33e178be12bb78251f4d4cb81eae2452c658c54e747053e70e10fa9131806fbb",
+      "content_size_bytes": 25918,
+      "hash_mode": "portable-lf",
+      "role": "fail-closed central integration regression"
+    },
+    "test_freeze_corrected_rank1_endpoint_v21_integration.py": {
+      "content_sha256": "f6080fe1712137700fe933ef713aa3a18d1079323f4f2f6869a70a86d1cddc6f",
+      "content_size_bytes": 3058,
+      "hash_mode": "raw",
+      "role": "fail-closed central integration regression"
+    },
+    "test_g1_g8_execution_roadmap_v20.py": {
+      "content_sha256": "8561f0a1c5a788675fbd30d3498d32f29e7648e499aa040c6ad149654686aa54",
+      "content_size_bytes": 20737,
+      "hash_mode": "portable-lf",
+      "role": "fail-closed central integration regression"
+    },
+    "test_g1_g8_gate_ledger_v20.py": {
+      "content_sha256": "0906c787b88dbf480380fe5882a74bf4dfcb3b1e653a187ac1bbcc04ac7da574",
+      "content_size_bytes": 68661,
+      "hash_mode": "portable-lf",
+      "role": "fail-closed central integration regression"
+    },
+    "test_prepare_validation_artifacts_v20.py": {
+      "content_sha256": "b7248656261401fa0621593b5a5784b8b376b12e0502bf9b7de06650acc9e71f",
+      "content_size_bytes": 17277,
+      "hash_mode": "portable-lf",
+      "role": "fail-closed central integration regression"
+    },
+    "test_replicate_v20.py": {
+      "content_sha256": "883f49d37f44c309f13b76b4841f1f10c7bd3dbb85d2e10af8785fa612c9cfd3",
+      "content_size_bytes": 7630,
+      "hash_mode": "portable-lf",
+      "role": "fail-closed central integration regression"
+    },
+    "test_theory_validation_matrix_v20.py": {
+      "content_sha256": "fcf05250bd96ccc77e97bfce63a6269318360a728c9e7ea2e853a1990589c5a0",
+      "content_size_bytes": 80195,
+      "hash_mode": "portable-lf",
+      "role": "fail-closed central integration regression"
+    },
+    "test_validate_release_v20.py": {
+      "content_sha256": "906cc66a49a292a25c8707ac2b4f0c95c66d09a8433c1488e11c51770a3f1ab6",
+      "content_size_bytes": 28793,
+      "hash_mode": "portable-lf",
+      "role": "fail-closed central integration regression"
+    },
+    "theory_validation_matrix_v20.py": {
+      "content_sha256": "c260aa9b04103990e27510d58a126bd162b782295e256c9b6aa945cafc300376",
+      "content_size_bytes": 116430,
+      "hash_mode": "portable-lf",
+      "role": "central corrected-endpoint integration source"
+    },
+    "validate_release_v20.py": {
+      "content_sha256": "8dee14a27407d010a56af96ae8414b2a7fd76d04552775c2d6e171925b0216e1",
+      "content_size_bytes": 83467,
+      "hash_mode": "portable-lf",
+      "role": "central corrected-endpoint integration source"
+    }
+  },
+  "inventory_count": 73,
+  "legacy_v20_quarantine": {
+    "CLI_exit_code": 2,
+    "CLI_writes_files": false,
+    "artifact_proof_grade": false,
+    "artifact_status": "REJECTED_V20_PHYSICAL_TARGET__STRUCTURAL_PSD_ROUTES_ONLY",
+    "private_structural_APIs_retained_for_v21_generation": true,
+    "public_report_render_write_entrypoints_disabled": true
+  },
+  "logical_pins": {
+    "certificate_raw_sha256": "dd40a508a08c219117ddefaf574652a24f0e1f868d011e05f558ecafc9600e03",
+    "exact_LDL_pivot_sha256": "bc8626c201d626aa33a97f707bfa963ae887fe9abb64a0fab728343825a430c2",
+    "exact_coordinate_sha256": "7a36b579821e135fb7283d02e696153cc78907048e73ca5dce0dd260abdc3147",
+    "map_numerator_csr_sha256": "1834c8439fa3e44459f7ba871420a4351cd0b4de194dec6f5c4a84c1f39d3a16",
+    "target_numerator_sha256": "14debcfaf02d4b8c20d1d43a2e1f82d6a7390e28428fc63dd21a9c5f90aec0cf"
+  },
+  "manifest_self_excluded_by_definition": true,
+  "publication_manifest_raw_sha256": "7ecf96a12321b9df5e7d118ce0fb83e65ad9859516b520936408ec4d46a11017",
+  "quarantine": {
+    "excluded_from_inventory": [
+      "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_SIGMA35_ORBITS_V20.json",
+      "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_SIGMA35_ORBITS_V20.md",
+      "exact_gauged_u1x_g3_su5_max_negative_sigma35_orbits_v20.py",
+      "test_exact_gauged_u1x_g3_su5_max_negative_sigma35_orbits_v20.py"
+    ],
+    "touched_or_promoted": false
+  },
+  "release_checksum_entry_count": 262,
+  "schema": "so10-rank1-su4-corrected-endpoint-central-integration-v21",
+  "status": "EXACT_CORRECTED_ENDPOINT_V21_CENTRAL_INTEGRATION_FROZEN",
+  "workflow_contract": {
+    "corrected_assertion_heredocs": 7,
+    "full_source_rebuild_invocations": 1,
+    "legacy_rejection_assertions": 7
+  }
+}

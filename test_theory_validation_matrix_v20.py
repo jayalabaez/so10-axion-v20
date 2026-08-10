@@ -18,7 +18,9 @@ def test_overall_state_never_promotes_open_or_conditional_gates_to_pass():
 
 
 def write_json(root: Path, name: str, value: dict) -> None:
-    root.joinpath(name).write_text(json.dumps(value), encoding="utf-8")
+    path = root.joinpath(name)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(value), encoding="utf-8")
 
 
 def minimal_tree(
@@ -710,6 +712,22 @@ def minimal_tree(
             filename,
             json.loads((matrix.ROOT / filename).read_text(encoding="utf-8")),
         )
+    for filename in (
+        "EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_PUBLICATION_V21_MANIFEST.json",
+        "EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_FIXED_ENDPOINT_THEOREM_V21.json",
+        "EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_SOURCE_RECONSTRUCTION_V21.json",
+        "EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_POSITIVE_GRAM_VERIFY_V21.json",
+        "EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_LIVE_POLYNOMIAL_V21.json",
+        "EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_ORDERED_SPECTRAL_OVERFLOW_V21.json",
+    ):
+        relative = f"corrected_rank1_publication_v21/{filename}"
+        write_json(
+            root,
+            relative,
+            json.loads(
+                (matrix.ROOT / relative).read_text(encoding="utf-8")
+            ),
+        )
     write_json(
         root,
         "EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json",
@@ -1091,7 +1109,15 @@ class TheoryValidationMatrixTests(unittest.TestCase):
                 evidence["gauged_G3_rank1_SU4_augmented_quartic_G3_open"]
             )
             self.assertTrue(
-                evidence["gauged_G3_rank1_SU4_augmented_PSD_target_exact"]
+                evidence[
+                    "gauged_G3_rank1_SU4_legacy_v20_PSD_routes_and_stale_payload_well_formed"
+                ]
+            )
+            self.assertFalse(
+                evidence["gauged_G3_rank1_SU4_legacy_v20_physical_target_valid"]
+            )
+            self.assertFalse(
+                evidence["gauged_G3_rank1_SU4_legacy_v20_primal_valid"]
             )
             self.assertEqual(
                 evidence["gauged_G3_rank1_SU4_augmented_standard_PSD_route_count"],
@@ -1114,39 +1140,49 @@ class TheoryValidationMatrixTests(unittest.TestCase):
                 ]
             )
             self.assertTrue(
-                evidence["gauged_G3_rank1_SU4_augmented_physical_target_exact"]
+                evidence[
+                    "gauged_G3_rank1_SU4_corrected_fixed_endpoint_theorem_exact"
+                ]
             )
             self.assertEqual(
-                evidence["gauged_G3_rank1_SU4_augmented_physical_target_row_count"],
+                evidence["gauged_G3_rank1_SU4_corrected_positive_Gram_map_shape"],
+                [6_585, 19_594],
+            )
+            self.assertEqual(
+                evidence[
+                    "gauged_G3_rank1_SU4_corrected_positive_Gram_map_common_denominator"
+                ],
+                256,
+            )
+            self.assertEqual(
+                evidence[
+                    "gauged_G3_rank1_SU4_corrected_physical_target_common_denominator"
+                ],
+                576_000,
+            )
+            self.assertEqual(
+                evidence[
+                    "gauged_G3_rank1_SU4_corrected_exact_coefficient_equalities"
+                ],
                 6_585,
             )
             self.assertEqual(
-                evidence[
-                    "gauged_G3_rank1_SU4_augmented_physical_target_common_denominator"
-                ],
-                1_728_000,
+                evidence["gauged_G3_rank1_SU4_corrected_strict_positive_Gram_blocks"],
+                22,
             )
             self.assertEqual(
-                evidence[
-                    "gauged_G3_rank1_SU4_augmented_physical_target_nonzero_count"
-                ],
-                845,
-            )
-            self.assertEqual(
-                evidence["gauged_G3_rank1_SU4_augmented_physical_target_sha256"],
-                "e2d9eec1b01b3eeefc4a54d404db93171aa6600ea9ef646a215ab0b5401f7630",
+                evidence["gauged_G3_rank1_SU4_corrected_strict_positive_LDL_pivots"],
+                824,
             )
             self.assertTrue(
                 evidence[
-                    "gauged_G3_rank1_SU4_augmented_standard_coordinate_map_open"
+                    "gauged_G3_rank1_SU4_corrected_arbitrary_real_Phi_at_fixed_endpoint"
                 ]
             )
-            self.assertTrue(
-                evidence["gauged_G3_rank1_SU4_augmented_PSD_SDP_open"]
+            self.assertFalse(
+                evidence["gauged_G3_rank1_SU4_corrected_global_Sigma_proved"]
             )
-            self.assertTrue(
-                evidence["gauged_G3_rank1_SU4_augmented_PSD_G3_open"]
-            )
+            self.assertFalse(evidence["gauged_G3_rank1_SU4_corrected_G3_closed"])
             self.assertIn("478x1414 integer map", vacuum["summary"])
             self.assertIn("kernel dimension 936", vacuum["summary"])
             self.assertIn(
@@ -1156,10 +1192,16 @@ class TheoryValidationMatrixTests(unittest.TestCase):
                 "exact-rank-6057, 6057x18085 integer map", vacuum["summary"]
             )
             self.assertIn("kernel dimension 12028", vacuum["summary"])
-            self.assertIn("22 standard PSD-coordinate routes", vacuum["summary"])
-            self.assertIn("physical 6585-row target", vacuum["summary"])
             self.assertIn(
-                "coefficient map in standard PSD coordinates", vacuum["summary"]
+                "legacy v20 assembled physical target is rejected",
+                vacuum["summary"],
+            )
+            self.assertIn("corrected 6585x19594", vacuum["summary"])
+            self.assertIn("strict 22-block/824-pivot primal", vacuum["summary"])
+            self.assertIn("every real Phi210", vacuum["summary"])
+            self.assertIn(
+                "Global Sigma, general/full H, the full Hessian, and G3 remain open",
+                vacuum["summary"],
             )
             self.assertNotIn("infrastructure only", vacuum["summary"])
 
@@ -1301,7 +1343,7 @@ class TheoryValidationMatrixTests(unittest.TestCase):
                         )
                     self.assertFalse(
                         vacuum["evidence"][
-                            "gauged_G3_rank1_SU4_augmented_PSD_target_exact"
+                            "gauged_G3_rank1_SU4_legacy_v20_PSD_routes_and_stale_payload_well_formed"
                         ]
                     )
 

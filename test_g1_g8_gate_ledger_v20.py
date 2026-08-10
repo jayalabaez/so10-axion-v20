@@ -134,7 +134,10 @@ class G1G8GateLedgerTests(unittest.TestCase):
             "gauged_G3_rank1_SU4_augmented_SOS_quartic_map"
         ]
         rank1_su4_psd_target = reports[
-            "gauged_G3_rank1_SU4_augmented_SOS_PSD_routes_and_physical_target"
+            "gauged_G3_rank1_SU4_legacy_v20_PSD_routes_and_rejected_target"
+        ]
+        rank1_su4_corrected = reports[
+            "gauged_G3_rank1_SU4_corrected_fixed_endpoint_publication_v21"
         ]
         alternative_sos = reports["gauged_G3_alternative_global_SOS_audit"]
         self.assertEqual(x_report["n_failed"], 0)
@@ -317,11 +320,10 @@ class G1G8GateLedgerTests(unittest.TestCase):
             ],
             19_594,
         )
-        self.assertEqual(
-            rank1_su4_psd_target["physical_target"]["full_graded_chart"][
-                "row_count"
-            ],
-            6_585,
+        self.assertTrue(
+            mod.corrected_rank1.corrected_fixed_endpoint_theorem_exact(
+                rank1_su4_corrected
+            )
         )
         self.assertFalse(
             rank1_su4_psd_target["scope"]["semidefinite_feasibility_solved"]
@@ -533,7 +535,13 @@ class G1G8GateLedgerTests(unittest.TestCase):
         )
         self.assertTrue(frontier["rank1_SU4_augmented_quartic_SDP_open"])
         self.assertTrue(frontier["rank1_SU4_augmented_quartic_G3_open"])
-        self.assertTrue(frontier["rank1_SU4_augmented_PSD_target_exact"])
+        self.assertTrue(
+            frontier[
+                "rank1_SU4_legacy_v20_PSD_routes_and_stale_payload_well_formed"
+            ]
+        )
+        self.assertFalse(frontier["rank1_SU4_legacy_v20_physical_target_valid"])
+        self.assertFalse(frontier["rank1_SU4_legacy_v20_primal_valid"])
         self.assertEqual(
             frontier["rank1_SU4_augmented_standard_PSD_route_count"], 22
         )
@@ -541,26 +549,41 @@ class G1G8GateLedgerTests(unittest.TestCase):
             frontier["rank1_SU4_augmented_standard_PSD_parameter_count"],
             19_594,
         )
-        self.assertTrue(frontier["rank1_SU4_augmented_physical_target_exact"])
+        self.assertTrue(frontier["rank1_SU4_corrected_fixed_endpoint_theorem_exact"])
         self.assertEqual(
-            frontier["rank1_SU4_augmented_physical_target_row_count"], 6_585
+            frontier["rank1_SU4_corrected_positive_Gram_map_shape"],
+            [6_585, 19_594],
         )
         self.assertEqual(
-            frontier[
-                "rank1_SU4_augmented_physical_target_common_denominator"
-            ],
-            1_728_000,
+            frontier["rank1_SU4_corrected_positive_Gram_map_common_denominator"],
+            256,
         )
         self.assertEqual(
-            frontier["rank1_SU4_augmented_physical_target_nonzero_count"], 845
+            frontier["rank1_SU4_corrected_positive_Gram_map_nnz"], 138_550
         )
         self.assertEqual(
-            frontier["rank1_SU4_augmented_physical_target_sha256"],
-            "e2d9eec1b01b3eeefc4a54d404db93171aa6600ea9ef646a215ab0b5401f7630",
+            frontier["rank1_SU4_corrected_physical_target_common_denominator"],
+            576_000,
         )
-        self.assertTrue(frontier["rank1_SU4_augmented_standard_coordinate_map_open"])
-        self.assertTrue(frontier["rank1_SU4_augmented_PSD_SDP_open"])
-        self.assertTrue(frontier["rank1_SU4_augmented_PSD_G3_open"])
+        self.assertEqual(
+            frontier["rank1_SU4_corrected_physical_target_nonzero_count"], 512
+        )
+        self.assertEqual(
+            frontier["rank1_SU4_corrected_exact_coefficient_equalities"], 6_585
+        )
+        self.assertEqual(
+            frontier["rank1_SU4_corrected_strict_positive_Gram_blocks"], 22
+        )
+        self.assertEqual(
+            frontier["rank1_SU4_corrected_strict_positive_LDL_pivots"], 824
+        )
+        self.assertTrue(
+            frontier["rank1_SU4_corrected_arbitrary_real_Phi_at_fixed_endpoint"]
+        )
+        self.assertFalse(frontier["rank1_SU4_corrected_global_Sigma_proved"])
+        self.assertFalse(frontier["rank1_SU4_corrected_general_H_proved"])
+        self.assertFalse(frontier["rank1_SU4_corrected_full_Hessian_proved"])
+        self.assertFalse(frontier["rank1_SU4_corrected_G3_closed"])
         self.assertFalse(
             frontier["SU5_arbitrary_Phi_nonzero_residual_cancellations_open"]
         )
@@ -1433,20 +1456,44 @@ class G1G8GateLedgerTests(unittest.TestCase):
             ]
         )
 
-    def test_rank1_su4_augmented_psd_target_is_canonical_and_fail_closed(self):
+    def test_rank1_su4_corrected_endpoint_supersedes_v20_target_fail_closed(self):
         inputs = self.report["model_contract_reports"]
         census = inputs["gauged_G3_rank1_SU4_augmented_SOS_census"]
         cubic = inputs["gauged_G3_rank1_SU4_augmented_SOS_cubic_map"]
         quartic = inputs["gauged_G3_rank1_SU4_augmented_SOS_quartic_map"]
         psd_target = inputs[
-            "gauged_G3_rank1_SU4_augmented_SOS_PSD_routes_and_physical_target"
+            "gauged_G3_rank1_SU4_legacy_v20_PSD_routes_and_rejected_target"
+        ]
+        corrected_publication = inputs[
+            "gauged_G3_rank1_SU4_corrected_fixed_endpoint_publication_v21"
         ]
 
-        self.assertTrue(
+        self.assertFalse(
             mod._rank1_su4_augmented_sos_psd_target_exact(
                 psd_target, census, cubic, quartic
             )
         )
+        self.assertTrue(
+            mod._rank1_su4_augmented_sos_psd_routes_and_stale_payload_well_formed(
+                psd_target, census, cubic, quartic
+            )
+        )
+        self.assertTrue(
+            mod.corrected_rank1.corrected_fixed_endpoint_theorem_exact(
+                corrected_publication
+            )
+        )
+        verdict = self.report["verdict"]
+        self.assertIn("legacy v20 assembled physical target is rejected", verdict)
+        self.assertIn("corrected 6585x19594 standard positive-Gram map", verdict)
+        self.assertIn("strict 22-block/824-pivot primal", verdict)
+        self.assertIn("every real Phi210", verdict)
+        self.assertIn(
+            "Global Sigma, general/full H, the full Hessian, and G3 remain open",
+            verdict,
+        )
+        self.assertNotIn("only a four-real-dimensional Phi sub-slice", verdict)
+        self.assertNotIn("arbitrary-Phi bound remain open", verdict)
         mutations = (
             lambda value: value["scope"].__setitem__("G3_closed", True),
             lambda value: value["scope"].__setitem__(
@@ -1463,7 +1510,7 @@ class G1G8GateLedgerTests(unittest.TestCase):
             forged = copy.deepcopy(psd_target)
             mutate(forged)
             self.assertFalse(
-                mod._rank1_su4_augmented_sos_psd_target_exact(
+                mod._rank1_su4_augmented_sos_psd_routes_and_stale_payload_well_formed(
                     forged, census, cubic, quartic
                 ),
                 mutate.__code__.co_firstlineno,
@@ -1481,7 +1528,11 @@ class G1G8GateLedgerTests(unittest.TestCase):
         frontier = report["gauged_u1x_g3_constructive_frontier"]
         self.assertEqual(report["overall_state"], "EXECUTION_FAIL")
         self.assertFalse(frontier["integrity_pass"])
-        self.assertFalse(frontier["rank1_SU4_augmented_PSD_target_exact"])
+        self.assertFalse(
+            frontier[
+                "rank1_SU4_legacy_v20_PSD_routes_and_stale_payload_well_formed"
+            ]
+        )
         self.assertFalse(
             report["checks"][
                 "gauged_G3_rank1_SU4_infrastructure_is_exact_and_fail_closed"

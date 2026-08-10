@@ -1,10 +1,17 @@
-# Exact rank-one SU(4) PSD routes and physical target
+# Rejected v20 physical target; structural SU(4) PSD routes retained
 
-Status: `EXACT_RANK1_SU4_AUGMENTED_SOS_PSD_ROUTES_AND_PHYSICAL_TARGET_CERTIFIED`
+Status: `REJECTED_V20_PHYSICAL_TARGET__STRUCTURAL_PSD_ROUTES_ONLY`
 
-This certificate constructs the exact standard-cone coordinate routes for all 22
-augmented isotypic blocks and the exact physical right-hand side in the 6,585-row
-graded invariant chart. It does not solve the SDP and does not close G3.
+**This is not a physical-target certificate.** The v20 extremal-minor
+raw-Schur reconstruction does not equal the collapsed ordered-spectral
+physical quartic, and its grade-0/grade-1 map normalization is wrong. The
+embedded v20 target values are retained only to identify and reject the stale
+payload. The corrected v21 publication is authoritative.
+
+The only surviving structural result here is the exact standard-cone
+coordinate routing for all 22 augmented isotypic blocks. It is a
+generation-time input to the corrected v21 reconstruction, not an SDP or
+positivity theorem.
 
 ## Standard PSD coordinate routes
 
@@ -34,9 +41,9 @@ Raw carrier-copy coordinates are not standard PSD coordinates: `H=I` fails
 tau-fixedness in exactly four displayed blocks. This is an explicit
 counterexample to the naive coordinate identification.
 
-## Physical target
+## Rejected historical target payload
 
-The normalized polynomial is
+The historical module attempted to encode
 
 `p(z)=A(z)-3/200`, with `z=sqrt(10) Phi`,
 
@@ -50,22 +57,16 @@ where `A=(N_Phi-1)^2+I54+I4125+9||Cz||^2/400+||Mz-b||^2/5120`.
 | cubic | 478 | 0 |
 | quartic | 6057 | 825 |
 
-The primitive full target has denominator `1728000`,
-845 nonzero entries, and numerator SHA-256
-`e2d9eec1b01b3eeefc4a54d404db93171aa6600ea9ef646a215ab0b5401f7630`.
-
-The quartic component is streamed exactly from the degree-seven SO(10)
-pair-Casimir projector polynomial into the frozen 6,057-row chart. It has
-denominator `3375`,
-825 nonzero entries, and all
-i-times-anti-real chart rows vanish exactly. The 478-row cubic RHS is
-exactly zero because the explicit physical polynomial has no cubic term.
+Those displayed counts and values are not accepted as physical coefficients.
+They are retained in the JSON solely as a fail-closed fingerprint of the
+superseded payload. The corrected target has denominator `576000`, 512
+nonzero entries, and is bound by the v21 publication manifest
+`7ecf96a12321b9df5e7d118ce0fb83e65ad9859516b520936408ec4d46a11017`.
 
 ## Claim boundary
 
-Still open: the coefficient matrix in these standard PSD coordinates, SDP
-feasibility or an exact dual obstruction, the arbitrary-Phi inequality,
-equality-orbit classification, the full 486-field Hessian classification,
-and G3 itself.
+The corrected v21 exact positive-Gram identity proves the arbitrary-real-Phi
+inequality only at fixed `H=h_-` and `Sigma=q/4`. Global Sigma, general/full H,
+the full Hessian, and G3 remain open.
 
-Top-level proof grade: `true`.
+Top-level proof grade for this v20 target: `false`.

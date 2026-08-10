@@ -262,35 +262,30 @@ def test_constructive_g3_frontier_is_actionable_but_not_promoted():
     assert frontier["rank1_SU4_augmented_quartic_SDP_open"]
     assert frontier["rank1_SU4_augmented_quartic_arbitrary_Phi_bound_open"]
     assert frontier["rank1_SU4_augmented_quartic_G3_open"]
-    assert frontier["rank1_SU4_augmented_PSD_target_exact"]
+    assert frontier[
+        "rank1_SU4_legacy_v20_PSD_routes_and_stale_payload_well_formed"
+    ]
+    assert frontier["rank1_SU4_legacy_v20_physical_target_valid"] is False
+    assert frontier["rank1_SU4_legacy_v20_primal_valid"] is False
     assert frontier["rank1_SU4_augmented_standard_PSD_route_count"] == 22
     assert frontier["rank1_SU4_augmented_standard_PSD_parameter_count"] == 19_594
-    assert frontier["rank1_SU4_augmented_physical_target_exact"]
-    assert frontier["rank1_SU4_augmented_physical_target_row_count"] == 6_585
-    assert (
-        frontier["rank1_SU4_augmented_physical_target_common_denominator"]
-        == 1_728_000
-    )
-    assert frontier["rank1_SU4_augmented_physical_target_nonzero_count"] == 845
-    assert frontier["rank1_SU4_augmented_physical_target_sha256"] == (
-        "e2d9eec1b01b3eeefc4a54d404db93171aa6600ea9ef646a215ab0b5401f7630"
-    )
-    assert frontier["rank1_SU4_augmented_physical_quartic_target_row_count"] == 6_057
-    assert (
-        frontier["rank1_SU4_augmented_physical_quartic_target_common_denominator"]
-        == 3_375
-    )
-    assert (
-        frontier["rank1_SU4_augmented_physical_quartic_target_nonzero_count"]
-        == 825
-    )
-    assert frontier["rank1_SU4_augmented_physical_quartic_target_sha256"] == (
-        "38476cff340ef8702735d48d7dbdf644ed41f8dc4a359264d33d966f177145ad"
-    )
-    assert frontier["rank1_SU4_augmented_standard_coordinate_map_open"]
-    assert frontier["rank1_SU4_augmented_PSD_SDP_open"]
-    assert frontier["rank1_SU4_augmented_PSD_arbitrary_Phi_bound_open"]
-    assert frontier["rank1_SU4_augmented_PSD_G3_open"]
+    assert frontier["rank1_SU4_corrected_fixed_endpoint_theorem_exact"]
+    assert frontier["rank1_SU4_corrected_positive_Gram_map_shape"] == [
+        6_585, 19_594
+    ]
+    assert frontier["rank1_SU4_corrected_positive_Gram_map_common_denominator"] == 256
+    assert frontier["rank1_SU4_corrected_positive_Gram_map_nnz"] == 138_550
+    assert frontier["rank1_SU4_corrected_physical_target_common_denominator"] == 576_000
+    assert frontier["rank1_SU4_corrected_physical_target_nonzero_count"] == 512
+    assert frontier["rank1_SU4_corrected_exact_coefficient_equalities"] == 6_585
+    assert frontier["rank1_SU4_corrected_strict_positive_Gram_blocks"] == 22
+    assert frontier["rank1_SU4_corrected_strict_positive_LDL_pivots"] == 824
+    assert frontier["rank1_SU4_corrected_arbitrary_real_Phi_at_fixed_endpoint"]
+    assert frontier["rank1_SU4_corrected_p_zero_set_at_t1_empty"]
+    assert frontier["rank1_SU4_corrected_global_Sigma_proved"] is False
+    assert frontier["rank1_SU4_corrected_general_H_proved"] is False
+    assert frontier["rank1_SU4_corrected_full_Hessian_proved"] is False
+    assert frontier["rank1_SU4_corrected_G3_closed"] is False
     assert frontier["SU5_arbitrary_Phi_nonzero_residual_cancellations_open"] is False
     assert (
         frontier["SU5_arbitrary_non_pure_Delta_Sigma_uniform_coercivity_open"]
@@ -320,8 +315,8 @@ def test_constructive_g3_frontier_is_actionable_but_not_promoted():
         task for task in report["tasks"] if task["id"] == "W3-G3-FULL-STATIONARITY"
     )
     assert "SU(5)+Delta" in g3_task["deliverable"]
-    assert "four-real-dimensional Phi sub-slice" in g3_task["deliverable"]
-    assert "16-dimensional SU(3)-fixed space" in g3_task["deliverable"]
+    assert "four-real-dimensional SU(3) regression is historical" in g3_task["deliverable"]
+    assert "corrected v21 exact theorem covers every real Phi210" in g3_task["deliverable"]
     assert "exact SU(4) stabilizer" in g3_task["deliverable"]
     assert "aligned 25-carrier" in g3_task["deliverable"]
     assert "5952x551 rank-506" in g3_task["deliverable"]
@@ -334,19 +329,23 @@ def test_constructive_g3_frontier_is_actionable_but_not_promoted():
     assert "homogeneous quartic map has shape 6057x18085" in g3_task["deliverable"]
     assert "rank 6057" in g3_task["deliverable"]
     assert "kernel dimension 12028" in g3_task["deliverable"]
-    assert "coefficient map in standard PSD coordinates" in g3_task["deliverable"]
-    assert "22 standard PSD-coordinate routes" in g3_task["deliverable"]
-    assert "physical 6585-row target" in g3_task["deliverable"]
-    assert "G3 remain open" in g3_task["deliverable"]
+    assert "legacy v20 assembled physical target is rejected" in g3_task["deliverable"]
+    assert "corrected 6585x19594 standard positive-Gram map" in g3_task["deliverable"]
+    assert "strict 22-block/824-pivot primal" in g3_task["deliverable"]
+    assert "Global Sigma, general/full H, the full Hessian, and G3 remain open" in g3_task["deliverable"]
     assert "486-field" in g3_task["acceptance"]
     assert "478x1414 integer map" in report["verdict"]
     assert "kernel dimension 936" in report["verdict"]
     assert "zero placeholder is not a physical target" in report["verdict"]
     assert "homogeneous quartic map is exact-rank-6057" in report["verdict"]
     assert "kernel dimension 12028" in report["verdict"]
-    assert "22 standard PSD-coordinate routes" in report["verdict"]
-    assert "physical 6585-row target" in report["verdict"]
-    assert "coefficient map in standard PSD coordinates" in report["verdict"]
+    assert "legacy v20 assembled physical target is rejected" in report["verdict"]
+    assert "corrected 6585x19594 standard positive-Gram map" in report["verdict"]
+    assert "strict 22-block/824-pivot primal" in report["verdict"]
+    assert "every real Phi210" in report["verdict"]
+    assert "Global Sigma, general/full H, the full Hessian, and G3 remain open" in report["verdict"]
+    assert "only a four-real-dimensional Phi sub-slice" not in report["verdict"]
+    assert "arbitrary-Phi bound remain open" not in report["verdict"]
     assert "coordinate Schur matrix" not in report["verdict"]
 
 

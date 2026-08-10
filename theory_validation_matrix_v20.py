@@ -33,6 +33,7 @@ from typing import Any
 from audit_v20_errors import build_audit
 import exact_x_symmetry_consistency_gate_v20 as exact_x_gate
 import g1_g8_gate_ledger_v20 as gate_ledger
+import corrected_rank1_endpoint_v21 as corrected_rank1
 
 ROOT = Path(__file__).resolve().parent
 MODEL_CONTRACT_ID = "gauged_u1x_phi17_v20"
@@ -91,6 +92,12 @@ ARTIFACTS = {
     "gauged_g3_rank1_su4_augmented_sos_cubic_map": "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_V20.json",
     "gauged_g3_rank1_su4_augmented_sos_quartic_map": "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.json",
     "gauged_g3_rank1_su4_augmented_sos_psd_target": "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_V20.json",
+    "gauged_g3_rank1_su4_corrected_manifest": "corrected_rank1_publication_v21/EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_PUBLICATION_V21_MANIFEST.json",
+    "gauged_g3_rank1_su4_corrected_theorem": "corrected_rank1_publication_v21/EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_FIXED_ENDPOINT_THEOREM_V21.json",
+    "gauged_g3_rank1_su4_corrected_source": "corrected_rank1_publication_v21/EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_SOURCE_RECONSTRUCTION_V21.json",
+    "gauged_g3_rank1_su4_corrected_verify": "corrected_rank1_publication_v21/EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_POSITIVE_GRAM_VERIFY_V21.json",
+    "gauged_g3_rank1_su4_corrected_live": "corrected_rank1_publication_v21/EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_LIVE_POLYNOMIAL_V21.json",
+    "gauged_g3_rank1_su4_corrected_overflow": "corrected_rank1_publication_v21/EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_ORDERED_SPECTRAL_OVERFLOW_V21.json",
     "gauged_g3_alternative_global_sos": "EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json",
     "final_g3": "FINAL_G3_ACCEPTANCE_GATE_V20.json",
     "authoritative": "AUTHORITATIVE_FULL_MODEL_GATE_V20.json",
@@ -518,6 +525,24 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
         "full_graded_chart", {}
     )
     rank1_su4_quartic_target = rank1_su4_physical_target.get("quartic", {})
+    rank1_su4_corrected_publication = {
+        "manifest": reports.get("gauged_g3_rank1_su4_corrected_manifest", {}),
+        "theorem": reports.get("gauged_g3_rank1_su4_corrected_theorem", {}),
+        "source": reports.get("gauged_g3_rank1_su4_corrected_source", {}),
+        "verify": reports.get("gauged_g3_rank1_su4_corrected_verify", {}),
+        "live": reports.get("gauged_g3_rank1_su4_corrected_live", {}),
+        "overflow": reports.get("gauged_g3_rank1_su4_corrected_overflow", {}),
+    }
+    rank1_su4_corrected_exact = (
+        corrected_rank1.corrected_fixed_endpoint_theorem_exact(
+            rank1_su4_corrected_publication
+        )
+    )
+    rank1_su4_corrected_view = (
+        corrected_rank1.central_view(rank1_su4_corrected_publication)
+        if rank1_su4_corrected_exact
+        else {}
+    )
     alternative_sos = reports.get("gauged_g3_alternative_global_sos", {})
     alternative_sos_flags = alternative_sos.get("flags", {})
     final_g3 = reports.get("final_g3", {})
@@ -1090,9 +1115,9 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
             rank1_su4_cubic,
         )
     )
-    rank1_su4_augmented_sos_psd_target_exact = (
+    rank1_su4_legacy_psd_routes_and_stale_payload_well_formed = (
         rank1_su4_augmented_sos_quartic_map_exact
-        and gate_ledger._rank1_su4_augmented_sos_psd_target_exact(
+        and gate_ledger._rank1_su4_augmented_sos_psd_routes_and_stale_payload_well_formed(
             rank1_su4_psd_target,
             rank1_su4_census,
             rank1_su4_cubic,
@@ -1162,7 +1187,8 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
         and rank1_su4_augmented_sos_census_exact
         and rank1_su4_augmented_sos_cubic_map_exact
         and rank1_su4_augmented_sos_quartic_map_exact
-        and rank1_su4_augmented_sos_psd_target_exact
+        and rank1_su4_legacy_psd_routes_and_stale_payload_well_formed
+        and rank1_su4_corrected_exact
         and alternative_global_sos_honestly_open
         and final_g3_honestly_open
     )
@@ -1265,10 +1291,9 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
             "the exact full Hessian has rank/nullity 448/38 and is positive on the "
             "quotient. The maximally negative pure-Delta sector is excluded for "
             "arbitrary real Phi with all residuals retained and sharp gap 1/5000. "
-            "At fixed H=h_- and one explicit rank-one Sigma endpoint, an exact "
-            "Gram/LDL certificate also "
-            "proves that gap on only a four-real-dimensional Phi sub-slice of the "
-            "16-dimensional SU(3)-fixed space. At that fixed endpoint, the exact "
+            "The prior four-real-dimensional SU(3) regression is historical and "
+            "subsumed. At fixed H=h_- and Sigma=q/4, the corrected v21 exact "
+            "theorem covers every real Phi210. At that fixed endpoint, the exact "
             "SU(4) stabilizer and its 15 Phi210 actions are certified, while an "
             "exact aligned 25-carrier rank-210 decomposition and physical real "
             "maps feed an explicit 45-element invariant quadratic basis obtained "
@@ -1278,12 +1303,12 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
             "and an exact-rank-478, 478x1414 integer map with kernel dimension "
             "936. The reserved zero placeholder is nonphysical. The homogeneous "
             "quartic interface is an exact-rank-6057, 6057x18085 integer map "
-            "with kernel dimension 12028. All 22 standard PSD-coordinate routes "
-            "and the exact physical 6585-row target are constructed. The "
-            "coefficient map in standard PSD coordinates, SDP feasibility, and "
-            "arbitrary-Phi bound remain open. "
-            "G3 remains open only on uniform coercivity for arbitrary non-pure-Delta "
-            "Sigma orientations. "
+            "with kernel dimension 12028. The legacy v20 assembled physical "
+            "target is rejected. The corrected 6585x19594 standard positive-Gram "
+            "map, ordered-spectral target, and exact strict 22-block/824-pivot "
+            "primal prove p(t,Phi)>0 off the homogeneous origin and A(Phi)>3/200 "
+            "at t=1 for every real Phi210. Global Sigma, general/full H, the full "
+            "Hessian, and G3 remain open. "
             "The old no-X 64/91 result remains historical."
         ),
         {
@@ -1814,9 +1839,11 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
             "gauged_G3_rank1_SU4_augmented_quartic_G3_open": (
                 rank1_su4_quartic_scope.get("G3_closed") is False
             ),
-            "gauged_G3_rank1_SU4_augmented_PSD_target_exact": (
-                rank1_su4_augmented_sos_psd_target_exact
+            "gauged_G3_rank1_SU4_legacy_v20_PSD_routes_and_stale_payload_well_formed": (
+                rank1_su4_legacy_psd_routes_and_stale_payload_well_formed
             ),
+            "gauged_G3_rank1_SU4_legacy_v20_physical_target_valid": False,
+            "gauged_G3_rank1_SU4_legacy_v20_primal_valid": False,
             "gauged_G3_rank1_SU4_augmented_standard_PSD_route_count": (
                 rank1_su4_psd_routes.get("real_type_block_count", 0)
                 + rank1_su4_psd_routes.get("complex_Hermitian_block_count", 0)
@@ -1834,54 +1861,51 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
                     "all_thirteen_complex_blocks_in_standard_Hermitian_coordinates"
                 ) is True
             ),
-            "gauged_G3_rank1_SU4_augmented_physical_target_exact": (
-                rank1_su4_psd_target_scope.get(
-                    "physical_target_formula_all_five_grades_constructed"
-                ) is True
-                and rank1_su4_psd_target_scope.get(
-                    "physical_target_full_6585_row_vector_constructed"
-                ) is True
+            "gauged_G3_rank1_SU4_corrected_fixed_endpoint_theorem_exact": (
+                rank1_su4_corrected_exact
             ),
-            "gauged_G3_rank1_SU4_augmented_physical_target_row_count": (
-                rank1_su4_full_target.get("row_count")
+            "gauged_G3_rank1_SU4_corrected_positive_Gram_map_shape": (
+                rank1_su4_corrected_view.get("map_shape")
             ),
-            "gauged_G3_rank1_SU4_augmented_physical_target_common_denominator": (
-                rank1_su4_full_target.get("common_denominator")
+            "gauged_G3_rank1_SU4_corrected_positive_Gram_map_common_denominator": (
+                rank1_su4_corrected_view.get("map_common_denominator")
             ),
-            "gauged_G3_rank1_SU4_augmented_physical_target_nonzero_count": (
-                rank1_su4_full_target.get("total_nonzero_count")
+            "gauged_G3_rank1_SU4_corrected_positive_Gram_map_nnz": (
+                rank1_su4_corrected_view.get("map_nnz")
             ),
-            "gauged_G3_rank1_SU4_augmented_physical_target_sha256": (
-                rank1_su4_full_target.get("numerator_sha256")
+            "gauged_G3_rank1_SU4_corrected_positive_Gram_map_sha256": (
+                rank1_su4_corrected_view.get("map_numerator_csr_sha256")
             ),
-            "gauged_G3_rank1_SU4_augmented_physical_quartic_target_row_count": (
-                rank1_su4_quartic_target.get("row_count")
+            "gauged_G3_rank1_SU4_corrected_physical_target_common_denominator": (
+                rank1_su4_corrected_view.get("target_common_denominator")
             ),
-            "gauged_G3_rank1_SU4_augmented_physical_quartic_target_denominator": (
-                rank1_su4_quartic_target.get("common_denominator")
+            "gauged_G3_rank1_SU4_corrected_physical_target_nonzero_count": (
+                rank1_su4_corrected_view.get("target_nonzero_count")
             ),
-            "gauged_G3_rank1_SU4_augmented_physical_quartic_target_nnz": (
-                rank1_su4_quartic_target.get("nonzero_count")
+            "gauged_G3_rank1_SU4_corrected_physical_target_sha256": (
+                rank1_su4_corrected_view.get("target_numerator_sha256")
             ),
-            "gauged_G3_rank1_SU4_augmented_physical_quartic_target_sha256": (
-                rank1_su4_quartic_target.get("numerator_sha256")
+            "gauged_G3_rank1_SU4_corrected_exact_coefficient_equalities": (
+                rank1_su4_corrected_view.get("exact_coefficient_equalities")
             ),
-            "gauged_G3_rank1_SU4_augmented_standard_coordinate_map_open": (
-                rank1_su4_psd_target_scope.get(
-                    "coefficient_map_reparameterized_in_standard_PSD_coordinates"
-                ) is False
+            "gauged_G3_rank1_SU4_corrected_strict_positive_Gram_blocks": (
+                rank1_su4_corrected_view.get("strict_positive_Gram_blocks")
             ),
-            "gauged_G3_rank1_SU4_augmented_PSD_SDP_open": (
-                rank1_su4_psd_target_scope.get("semidefinite_feasibility_solved")
-                is False
+            "gauged_G3_rank1_SU4_corrected_strict_positive_LDL_pivots": (
+                rank1_su4_corrected_view.get("strict_positive_LDL_pivots")
             ),
-            "gauged_G3_rank1_SU4_augmented_PSD_arbitrary_Phi_open": (
-                rank1_su4_psd_target_scope.get("arbitrary_Phi_lower_bound_proved")
-                is False
+            "gauged_G3_rank1_SU4_corrected_arbitrary_real_Phi_at_fixed_endpoint": (
+                rank1_su4_corrected_view.get(
+                    "arbitrary_real_Phi_at_fixed_endpoint"
+                )
             ),
-            "gauged_G3_rank1_SU4_augmented_PSD_G3_open": (
-                rank1_su4_psd_target_scope.get("G3_closed") is False
+            "gauged_G3_rank1_SU4_corrected_p_zero_set_at_t1_empty": (
+                rank1_su4_corrected_view.get("p_zero_set_at_t1_empty")
             ),
+            "gauged_G3_rank1_SU4_corrected_global_Sigma_proved": False,
+            "gauged_G3_rank1_SU4_corrected_general_H_proved": False,
+            "gauged_G3_rank1_SU4_corrected_full_Hessian_proved": False,
+            "gauged_G3_rank1_SU4_corrected_G3_closed": False,
             "gauged_G3_SU5_max_negative_arbitrary_Sigma_orientation_open": not bool(
                 rank1_su3_scope.get("arbitrary_max_negative_Sigma")
             ),

@@ -32,6 +32,7 @@ import live_g1_tensor_closure_ledger_v20 as historical_g1
 import live_g2_derivative_coverage_ledger_v20 as historical_g2
 import g3_full_hessian_classification_v20 as historical_g3_hessian
 import g3_stationary_stability_search_v20 as historical_g3_search
+import corrected_rank1_endpoint_v21 as corrected_rank1
 
 ROOT = Path(__file__).resolve().parent
 OUT_JSON = ROOT / "G1_G8_GATE_LEDGER_V20.json"
@@ -2149,19 +2150,25 @@ def _rank1_su4_augmented_sos_quartic_map_exact(
     )
 
 
-def _rank1_su4_augmented_sos_psd_target_exact(
+def _rank1_su4_augmented_sos_psd_routes_and_stale_payload_well_formed(
     report: dict[str, Any],
     census_report: dict[str, Any],
     cubic_report: dict[str, Any],
     quartic_report: dict[str, Any],
 ) -> bool:
-    """Fail closed on the exact PSD routes and physical target, never on G3."""
+    """Recognize the rejected v20 payload and its retained route schema.
+
+    The standard-cone congruences and lower-grade source APIs are retained as
+    generation inputs for v21.  The assembled v20 target was built with the
+    wrong quartic chart and is never accepted as a physical target or primal.
+    """
     scope = report.get("scope", {})
     routes = report.get("standard_PSD_coordinate_routes", {})
     physical = report.get("physical_target", {})
     full_target = physical.get("full_graded_chart", {})
     quartic_target = physical.get("quartic", {})
     provenance = report.get("provenance", {})
+    rejection = report.get("rejection", {})
     expected_hashes = provenance.get("expected_dependency_hashes", {})
     actual_hashes = provenance.get("actual_dependency_hashes", {})
     bindings = provenance.get("dependency_file_bindings", {})
@@ -2170,8 +2177,8 @@ def _rank1_su4_augmented_sos_psd_target_exact(
         "all_22_standard_PSD_coordinate_routes_constructed",
         "all_nine_real_type_standard_PSD_congruences_constructed",
         "all_thirteen_complex_blocks_in_standard_Hermitian_coordinates",
-        "physical_target_formula_all_five_grades_constructed",
-        "physical_target_full_6585_row_vector_constructed",
+        "legacy_physical_target_rejected",
+        "structural_PSD_routes_retained_for_v21_generation",
     }
     false_scope = {
         "coefficient_map_reparameterized_in_standard_PSD_coordinates",
@@ -2181,6 +2188,8 @@ def _rank1_su4_augmented_sos_psd_target_exact(
         "arbitrary_Phi_lower_bound_proved",
         "equality_orbit_classification_proved",
         "full_486_field_Hessian_classification_proved",
+        "physical_target_formula_all_five_grades_constructed",
+        "physical_target_full_6585_row_vector_constructed",
         "G3_closed",
     }
     pinned_dependency_hashes = {
@@ -2227,9 +2236,9 @@ def _rank1_su4_augmented_sos_psd_target_exact(
         _file_sha256(
             ROOT
             / "exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py"
-        ) == "8037bd021d5e416974d54b8b750e94c0406ace343836dc9c1b1976d71c3dbe8b"
+        ) == "8493a90d9b689bc02479151529ac697425f56087f2bdbebb40176f418b7c0ff8"
         and _canonical_json_sha256(report)
-        == "bc29a856410f6c6a8e9f13b84ed25f0e595c002ef3b1440a84376304ff3dfd05"
+        == "ebd1ec3edf7a02fc3919b55f61906d56269f490d28e70703e25c1c8b88e93566"
         and _canonical_json_sha256(census_report)
         == "703a3819fea5afe857757082190f9cf1e22f283ab0ddcc882c2f011b65ba58f3"
         and _canonical_json_sha256(cubic_report)
@@ -2239,14 +2248,36 @@ def _rank1_su4_augmented_sos_psd_target_exact(
         and set(report) == {
             "claim_boundary", "exact_arithmetic_safety", "model_contract_id",
             "overall_state", "physical_target", "proof_grade", "provenance",
-            "scope", "standard_PSD_coordinate_routes", "status",
+            "rejection", "scope", "standard_PSD_coordinate_routes", "status",
         }
         and report.get("model_contract_id") == AUTHORITATIVE_CONTRACT_ID
         and report.get("status")
-        == "EXACT_RANK1_SU4_AUGMENTED_SOS_PSD_ROUTES_AND_PHYSICAL_TARGET_CERTIFIED"
+        == "REJECTED_V20_PHYSICAL_TARGET__STRUCTURAL_PSD_ROUTES_ONLY"
         and report.get("overall_state")
-        == "PSD_ROUTES_AND_PHYSICAL_TARGET_CLOSED__SDP_ARBITRARY_PHI_AND_G3_OPEN"
-        and report.get("proof_grade") is True
+        == "STRUCTURAL_PSD_ROUTES_RETAINED__V20_PHYSICAL_TARGET_REJECTED__SUPERSEDED_BY_V21"
+        and report.get("proof_grade") is False
+        and rejection == {
+            "corrected_certificate_raw_sha256":
+                "dd40a508a08c219117ddefaf574652a24f0e1f868d011e05f558ecafc9600e03",
+            "corrected_map_numerator_csr_sha256":
+                "1834c8439fa3e44459f7ba871420a4351cd0b4de194dec6f5c4a84c1f39d3a16",
+            "corrected_publication_manifest_raw_sha256":
+                "7ecf96a12321b9df5e7d118ce0fb83e65ad9859516b520936408ec4d46a11017",
+            "corrected_target_numerator_sha256":
+                "14debcfaf02d4b8c20d1d43a2e1f82d6a7390e28428fc63dd21a9c5f90aec0cf",
+            "reason": (
+                "The v20 extremal-minor raw-Schur reconstruction does not equal "
+                "the collapsed ordered-spectral physical quartic, and the "
+                "grade-0/grade-1 map normalization is wrong."
+            ),
+            "retained_content": (
+                "The 22 standard PSD-coordinate congruence routes are structural "
+                "generation provenance only."
+            ),
+            "superseded_by": "corrected_rank1_publication_v21",
+            "v20_physical_target_accepted": False,
+            "v20_primal_or_arbitrary_Phi_theorem_accepted": False,
+        }
         and set(scope) == true_scope | false_scope
         and all(scope.get(name) is True for name in true_scope)
         and all(scope.get(name) is False for name in false_scope)
@@ -2258,6 +2289,7 @@ def _rank1_su4_augmented_sos_psd_target_exact(
         and routes.get("standard_real_parameter_count") == 7_979
         and routes.get("standard_complex_parameter_count") == 11_615
         and routes.get("standard_total_parameter_count") == 19_594
+        and physical.get("accepted_as_physical_target") is False
         and physical.get("constant") == {"numerator": 237, "denominator": 200}
         and physical.get("cubic", {}).get("row_count") == 478
         and physical.get("cubic", {}).get("all_target_rows_zero_exact") is True
@@ -2269,7 +2301,7 @@ def _rank1_su4_augmented_sos_psd_target_exact(
         and quartic_target.get("pivot_physical_quartic_coordinates_sha256")
         == "f33cb0163f3cdc4a3480cb55e09329888c8cf0641cc0acab4cb01f8075058ce4"
         and quartic_target.get("all_i_times_anti_real_rows_zero_exact") is True
-        and quartic_target.get("proof_grade") is True
+        and quartic_target.get("proof_grade") is False
         and full_target.get("grade_lengths") == [1, 4, 45, 478, 6_057]
         and full_target.get("row_count") == 6_585
         and full_target.get("common_denominator") == 1_728_000
@@ -2282,7 +2314,7 @@ def _rank1_su4_augmented_sos_psd_target_exact(
         == "e2d9eec1b01b3eeefc4a54d404db93171aa6600ea9ef646a215ab0b5401f7630"
         and len(full_target.get("numerator", [])) == 6_585
         and full_target.get("primitive_common_fraction") is True
-        and full_target.get("proof_grade") is True
+        and full_target.get("proof_grade") is False
         and provenance.get("repository_local_dependency_root") == "."
         and provenance.get("all_dependency_files_required_beside_this_module")
         is True
@@ -2306,6 +2338,17 @@ def _rank1_su4_augmented_sos_psd_target_exact(
         ) is False
         and prior_quartic_scope.get("G3_closed") is False
     )
+
+
+def _rank1_su4_augmented_sos_psd_target_exact(
+    report: dict[str, Any],
+    census_report: dict[str, Any],
+    cubic_report: dict[str, Any],
+    quartic_report: dict[str, Any],
+) -> bool:
+    """The v20 assembled physical target is superseded and always rejected."""
+    del report, census_report, cubic_report, quartic_report
+    return False
 
 
 def _gauged_u1x_g3_frontier(
@@ -2335,6 +2378,7 @@ def _gauged_u1x_g3_frontier(
     rank1_su4_augmented_sos_cubic_map_report: dict[str, Any],
     rank1_su4_augmented_sos_quartic_map_report: dict[str, Any],
     rank1_su4_augmented_sos_psd_target_report: dict[str, Any],
+    rank1_su4_corrected_publication: dict[str, Any],
     alternative_global_sos_report: dict[str, Any],
 ) -> dict[str, Any]:
     """Bind rejected branches and the surviving SU(5)+Delta G3 frontier."""
@@ -2435,6 +2479,16 @@ def _gauged_u1x_g3_frontier(
         "full_graded_chart", {}
     )
     rank1_su4_quartic_target = rank1_su4_physical_target.get("quartic", {})
+    rank1_su4_corrected_exact = (
+        corrected_rank1.corrected_fixed_endpoint_theorem_exact(
+            rank1_su4_corrected_publication
+        )
+    )
+    rank1_su4_corrected_view = (
+        corrected_rank1.central_view(rank1_su4_corrected_publication)
+        if rank1_su4_corrected_exact
+        else {}
+    )
     alternative_flags = alternative_global_sos_report.get("flags", {})
 
     artifacts_present = {
@@ -2485,8 +2539,11 @@ def _gauged_u1x_g3_frontier(
         "rank1_SU4_augmented_SOS_quartic_map": bool(
             rank1_su4_augmented_sos_quartic_map_report
         ),
-        "rank1_SU4_augmented_SOS_PSD_routes_and_physical_target": bool(
+        "rank1_SU4_legacy_v20_PSD_routes_and_rejected_target": bool(
             rank1_su4_augmented_sos_psd_target_report
+        ),
+        "rank1_SU4_corrected_fixed_endpoint_publication_v21": bool(
+            rank1_su4_corrected_publication
         ),
         "alternative_global_SOS_audit": bool(alternative_global_sos_report),
     }
@@ -3048,9 +3105,9 @@ def _gauged_u1x_g3_frontier(
             rank1_su4_augmented_sos_cubic_map_report,
         )
     )
-    rank1_su4_augmented_sos_psd_target_exact = (
+    rank1_su4_legacy_psd_routes_and_stale_payload_well_formed = (
         rank1_su4_augmented_sos_quartic_map_exact
-        and _rank1_su4_augmented_sos_psd_target_exact(
+        and _rank1_su4_augmented_sos_psd_routes_and_stale_payload_well_formed(
             rank1_su4_augmented_sos_psd_target_report,
             rank1_su4_augmented_sos_census_report,
             rank1_su4_augmented_sos_cubic_map_report,
@@ -3113,7 +3170,8 @@ def _gauged_u1x_g3_frontier(
         and rank1_su4_augmented_sos_census_exact
         and rank1_su4_augmented_sos_cubic_map_exact
         and rank1_su4_augmented_sos_quartic_map_exact
-        and rank1_su4_augmented_sos_psd_target_exact
+        and rank1_su4_legacy_psd_routes_and_stale_payload_well_formed
+        and rank1_su4_corrected_exact
         and alternative_global_sos_honestly_open
     )
     return {
@@ -3570,9 +3628,11 @@ def _gauged_u1x_g3_frontier(
         "rank1_SU4_augmented_quartic_G3_open": (
             rank1_su4_quartic_scope.get("G3_closed") is False
         ),
-        "rank1_SU4_augmented_PSD_target_exact": (
-            rank1_su4_augmented_sos_psd_target_exact
+        "rank1_SU4_legacy_v20_PSD_routes_and_stale_payload_well_formed": (
+            rank1_su4_legacy_psd_routes_and_stale_payload_well_formed
         ),
+        "rank1_SU4_legacy_v20_physical_target_valid": False,
+        "rank1_SU4_legacy_v20_primal_valid": False,
         "rank1_SU4_augmented_standard_PSD_route_count": (
             rank1_su4_psd_routes.get("real_type_block_count", 0)
             + rank1_su4_psd_routes.get("complex_Hermitian_block_count", 0)
@@ -3590,59 +3650,72 @@ def _gauged_u1x_g3_frontier(
                 "all_thirteen_complex_blocks_in_standard_Hermitian_coordinates"
             ) is True
         ),
-        "rank1_SU4_augmented_physical_target_exact": (
-            rank1_su4_psd_target_scope.get(
-                "physical_target_formula_all_five_grades_constructed"
-            ) is True
-            and rank1_su4_psd_target_scope.get(
-                "physical_target_full_6585_row_vector_constructed"
-            ) is True
+        "rank1_SU4_corrected_fixed_endpoint_theorem_exact": (
+            rank1_su4_corrected_exact
         ),
-        "rank1_SU4_augmented_physical_target_row_count": (
-            rank1_su4_full_target.get("row_count")
+        "rank1_SU4_corrected_publication_manifest_sha256": (
+            rank1_su4_corrected_view.get("publication_manifest_raw_sha256")
         ),
-        "rank1_SU4_augmented_physical_target_common_denominator": (
-            rank1_su4_full_target.get("common_denominator")
+        "rank1_SU4_corrected_positive_Gram_map_shape": (
+            rank1_su4_corrected_view.get("map_shape")
         ),
-        "rank1_SU4_augmented_physical_target_nonzero_count": (
-            rank1_su4_full_target.get("total_nonzero_count")
+        "rank1_SU4_corrected_positive_Gram_map_common_denominator": (
+            rank1_su4_corrected_view.get("map_common_denominator")
         ),
-        "rank1_SU4_augmented_physical_target_sha256": (
-            rank1_su4_full_target.get("numerator_sha256")
+        "rank1_SU4_corrected_positive_Gram_map_nnz": (
+            rank1_su4_corrected_view.get("map_nnz")
         ),
-        "rank1_SU4_augmented_physical_quartic_target_row_count": (
-            rank1_su4_quartic_target.get("row_count")
+        "rank1_SU4_corrected_positive_Gram_map_sha256": (
+            rank1_su4_corrected_view.get("map_numerator_csr_sha256")
         ),
-        "rank1_SU4_augmented_physical_quartic_target_common_denominator": (
-            rank1_su4_quartic_target.get("common_denominator")
+        "rank1_SU4_corrected_physical_target_common_denominator": (
+            rank1_su4_corrected_view.get("target_common_denominator")
         ),
-        "rank1_SU4_augmented_physical_quartic_target_nonzero_count": (
-            rank1_su4_quartic_target.get("nonzero_count")
+        "rank1_SU4_corrected_physical_target_nonzero_count": (
+            rank1_su4_corrected_view.get("target_nonzero_count")
         ),
-        "rank1_SU4_augmented_physical_quartic_target_sha256": (
-            rank1_su4_quartic_target.get("numerator_sha256")
+        "rank1_SU4_corrected_physical_target_sha256": (
+            rank1_su4_corrected_view.get("target_numerator_sha256")
         ),
-        "rank1_SU4_augmented_standard_coordinate_map_open": (
-            rank1_su4_psd_target_scope.get(
-                "coefficient_map_reparameterized_in_standard_PSD_coordinates"
-            ) is False
+        "rank1_SU4_corrected_exact_coefficient_equalities": (
+            rank1_su4_corrected_view.get("exact_coefficient_equalities")
         ),
-        "rank1_SU4_augmented_PSD_SDP_open": (
-            rank1_su4_psd_target_scope.get("semidefinite_feasibility_solved")
-            is False
-            and rank1_su4_psd_target_scope.get(
-                "exact_primal_PSD_certificate_constructed"
-            ) is False
-            and rank1_su4_psd_target_scope.get(
-                "exact_dual_Farkas_certificate_constructed"
-            ) is False
+        "rank1_SU4_corrected_strict_positive_Gram_blocks": (
+            rank1_su4_corrected_view.get("strict_positive_Gram_blocks")
         ),
-        "rank1_SU4_augmented_PSD_arbitrary_Phi_bound_open": (
-            rank1_su4_psd_target_scope.get("arbitrary_Phi_lower_bound_proved")
-            is False
+        "rank1_SU4_corrected_strict_positive_LDL_pivots": (
+            rank1_su4_corrected_view.get("strict_positive_LDL_pivots")
         ),
-        "rank1_SU4_augmented_PSD_G3_open": (
-            rank1_su4_psd_target_scope.get("G3_closed") is False
+        "rank1_SU4_corrected_arbitrary_real_Phi_at_fixed_endpoint": (
+            rank1_su4_corrected_view.get(
+                "arbitrary_real_Phi_at_fixed_endpoint"
+            )
+        ),
+        "rank1_SU4_corrected_strict_positive_off_homogeneous_origin": (
+            rank1_su4_corrected_view.get(
+                "strict_positive_off_homogeneous_origin"
+            )
+        ),
+        "rank1_SU4_corrected_A_greater_than_3_over_200_at_t1": (
+            rank1_su4_corrected_view.get("A_greater_than_3_over_200_at_t1")
+        ),
+        "rank1_SU4_corrected_p_zero_set_at_t1_empty": (
+            rank1_su4_corrected_view.get("p_zero_set_at_t1_empty")
+        ),
+        "rank1_SU4_corrected_global_Sigma_proved": (
+            rank1_su4_corrected_view.get("global_Sigma_proved")
+        ),
+        "rank1_SU4_corrected_general_H_proved": (
+            rank1_su4_corrected_view.get("general_H_proved")
+        ),
+        "rank1_SU4_corrected_full_H_proved": (
+            rank1_su4_corrected_view.get("full_H_proved")
+        ),
+        "rank1_SU4_corrected_full_Hessian_proved": (
+            rank1_su4_corrected_view.get("full_Hessian_proved")
+        ),
+        "rank1_SU4_corrected_G3_closed": (
+            rank1_su4_corrected_view.get("G3_closed")
         ),
         "SU5_max_negative_arbitrary_Sigma_orientation_open": not bool(
             rank1_su3_scope.get("arbitrary_max_negative_Sigma")
@@ -3945,6 +4018,7 @@ def _build_report_from_inputs(
     g3_rank1_su4_augmented_sos_cubic_map_report: dict[str, Any] | None = None,
     g3_rank1_su4_augmented_sos_quartic_map_report: dict[str, Any] | None = None,
     g3_rank1_su4_augmented_sos_psd_target_report: dict[str, Any] | None = None,
+    g3_rank1_su4_corrected_publication: dict[str, Any] | None = None,
     g3_alternative_global_sos_report: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Build a ledger from fresh reports, including repaired-contract states."""
@@ -4042,6 +4116,10 @@ def _build_report_from_inputs(
         g3_rank1_su4_augmented_sos_psd_target_report = _load_json_artifact(
             G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_JSON
         )
+    if g3_rank1_su4_corrected_publication is None:
+        g3_rank1_su4_corrected_publication = (
+            corrected_rank1.load_validated_publication()
+        )
     if g3_alternative_global_sos_report is None:
         g3_alternative_global_sos_report = _load_json_artifact(
             G3_ALTERNATIVE_GLOBAL_SOS_JSON
@@ -4073,6 +4151,7 @@ def _build_report_from_inputs(
         g3_rank1_su4_augmented_sos_cubic_map_report,
         g3_rank1_su4_augmented_sos_quartic_map_report,
         g3_rank1_su4_augmented_sos_psd_target_report,
+        g3_rank1_su4_corrected_publication,
         g3_alternative_global_sos_report,
     )
     gates = _build_gates(
@@ -4442,7 +4521,12 @@ def _build_report_from_inputs(
                 "rank1_SU4_augmented_quartic_arbitrary_Phi_bound_open"
             ] is True
             and g3_frontier["rank1_SU4_augmented_quartic_G3_open"] is True
-            and g3_frontier["rank1_SU4_augmented_PSD_target_exact"] is True
+            and g3_frontier[
+                "rank1_SU4_legacy_v20_PSD_routes_and_stale_payload_well_formed"
+            ] is True
+            and g3_frontier["rank1_SU4_legacy_v20_physical_target_valid"]
+            is False
+            and g3_frontier["rank1_SU4_legacy_v20_primal_valid"] is False
             and g3_frontier[
                 "rank1_SU4_augmented_standard_PSD_route_count"
             ] == 22
@@ -4456,40 +4540,62 @@ def _build_report_from_inputs(
                 "rank1_SU4_augmented_complex_Hermitian_coordinates_exact"
             ] is True
             and g3_frontier[
-                "rank1_SU4_augmented_physical_target_exact"
+                "rank1_SU4_corrected_fixed_endpoint_theorem_exact"
             ] is True
             and g3_frontier[
-                "rank1_SU4_augmented_physical_target_row_count"
+                "rank1_SU4_corrected_publication_manifest_sha256"
+            ] == corrected_rank1.EXPECTED_MANIFEST_RAW_SHA256
+            and g3_frontier[
+                "rank1_SU4_corrected_positive_Gram_map_shape"
+            ] == [6_585, 19_594]
+            and g3_frontier[
+                "rank1_SU4_corrected_positive_Gram_map_common_denominator"
+            ] == 256
+            and g3_frontier[
+                "rank1_SU4_corrected_positive_Gram_map_nnz"
+            ] == 138_550
+            and g3_frontier[
+                "rank1_SU4_corrected_positive_Gram_map_sha256"
+            ] == corrected_rank1.EXPECTED_MAP_SHA256
+            and g3_frontier[
+                "rank1_SU4_corrected_physical_target_common_denominator"
+            ] == 576_000
+            and g3_frontier[
+                "rank1_SU4_corrected_physical_target_nonzero_count"
+            ] == 512
+            and g3_frontier[
+                "rank1_SU4_corrected_physical_target_sha256"
+            ] == corrected_rank1.EXPECTED_TARGET_SHA256
+            and g3_frontier[
+                "rank1_SU4_corrected_exact_coefficient_equalities"
             ] == 6_585
             and g3_frontier[
-                "rank1_SU4_augmented_physical_target_common_denominator"
-            ] == 1_728_000
+                "rank1_SU4_corrected_strict_positive_Gram_blocks"
+            ] == 22
             and g3_frontier[
-                "rank1_SU4_augmented_physical_target_nonzero_count"
-            ] == 845
+                "rank1_SU4_corrected_strict_positive_LDL_pivots"
+            ] == 824
             and g3_frontier[
-                "rank1_SU4_augmented_physical_target_sha256"
-            ] == "e2d9eec1b01b3eeefc4a54d404db93171aa6600ea9ef646a215ab0b5401f7630"
-            and g3_frontier[
-                "rank1_SU4_augmented_physical_quartic_target_row_count"
-            ] == 6_057
-            and g3_frontier[
-                "rank1_SU4_augmented_physical_quartic_target_common_denominator"
-            ] == 3_375
-            and g3_frontier[
-                "rank1_SU4_augmented_physical_quartic_target_nonzero_count"
-            ] == 825
-            and g3_frontier[
-                "rank1_SU4_augmented_physical_quartic_target_sha256"
-            ] == "38476cff340ef8702735d48d7dbdf644ed41f8dc4a359264d33d966f177145ad"
-            and g3_frontier[
-                "rank1_SU4_augmented_standard_coordinate_map_open"
+                "rank1_SU4_corrected_arbitrary_real_Phi_at_fixed_endpoint"
             ] is True
-            and g3_frontier["rank1_SU4_augmented_PSD_SDP_open"] is True
             and g3_frontier[
-                "rank1_SU4_augmented_PSD_arbitrary_Phi_bound_open"
+                "rank1_SU4_corrected_strict_positive_off_homogeneous_origin"
             ] is True
-            and g3_frontier["rank1_SU4_augmented_PSD_G3_open"] is True
+            and g3_frontier[
+                "rank1_SU4_corrected_A_greater_than_3_over_200_at_t1"
+            ] is True
+            and g3_frontier[
+                "rank1_SU4_corrected_p_zero_set_at_t1_empty"
+            ] is True
+            and g3_frontier[
+                "rank1_SU4_corrected_global_Sigma_proved"
+            ] is False
+            and g3_frontier["rank1_SU4_corrected_general_H_proved"] is False
+            and g3_frontier["rank1_SU4_corrected_full_H_proved"] is False
+            and g3_frontier[
+                "rank1_SU4_corrected_full_Hessian_proved"
+            ] is False
+            and g3_frontier["rank1_SU4_corrected_G3_closed"] is False
             and g3_frontier["G3_closed"] is False
             and g3_frontier["whole_model_excluded"] is False
         ),
@@ -4628,10 +4734,10 @@ def _build_report_from_inputs(
                 "with rank/nullity 448/38 and symmetry kernel exactly 38; the "
                 "complete maximally-negative pure-Delta sector is already "
                 "excluded for arbitrary real Phi and nonzero residuals with "
-                "sharp gap 1/5000. At one explicit decomposable rank-one "
-                "endpoint, a separate exact certificate closes only a "
-                "four-real-dimensional Phi sub-slice of the 16-dimensional "
-                "SU(3)-fixed space, also with minimum 1/5000. Its exact SU(4) "
+                "sharp gap 1/5000. The prior four-real-dimensional SU(3) "
+                "regression is historical and subsumed. At fixed H=h_- and "
+                "Sigma=q/4, the corrected v21 exact theorem covers every real "
+                "Phi210. Its exact SU(4) "
                 "stabilizer, aligned rank-210 carrier real maps, and explicit "
                 "complete 45-element Phi210 invariant quadratic basis feed an "
                 "exact 22366-dimensional augmented census with 35 isotypic "
@@ -4642,10 +4748,12 @@ def _build_report_from_inputs(
                 "dimension 936. Its zero placeholder is not a physical target. "
                 "The homogeneous quartic interface is also exact: its "
                 "6057x18085 integer map has rank 6057 and kernel dimension "
-                "12028. All 22 standard PSD-coordinate routes and the exact "
-                "physical 6585-row target are constructed. The coefficient "
-                "map in standard PSD coordinates, SDP result, and G3 remain "
-                "open."
+                "12028. The legacy v20 assembled physical target is rejected. "
+                "The corrected 6585x19594 standard positive-Gram map, corrected "
+                "ordered-spectral target, and exact strict 22-block/824-pivot "
+                "primal prove p(t,Phi)>0 off the homogeneous origin, hence "
+                "A(Phi)>3/200 at t=1 for every real Phi210. Global Sigma, "
+                "general/full H, the full Hessian, and G3 remain open."
             ),
         },
         {"wave": 4, "gates": ["G6"], "status": "BLOCKED_ON_G3_G4_G5"},
@@ -4668,10 +4776,9 @@ def _build_report_from_inputs(
         "Hessian is exactly PSD with rank/nullity 448/38 and kernel precisely the "
         "38 symmetry tangents. The complete maximally-negative pure-Delta sector "
         "is excluded for arbitrary real Phi and all nonzero residuals, with sharp "
-        "gap 1/5000. At fixed H=h_-, one explicit rank-one Sigma endpoint also "
-        "has an exact 1/5000 "
-        "gap on a four-real-dimensional Phi sub-slice only; the ambient "
-        "16-dimensional SU(3)-fixed space and arbitrary Phi remain open. The "
+        "gap 1/5000. The prior four-real-dimensional SU(3) regression is "
+        "historical and subsumed. At fixed H=h_- and Sigma=q/4, the corrected "
+        "v21 exact theorem covers every real Phi210. The "
         "exact SU(4) stabilizer, aligned rank-210 carrier real maps, and explicit "
         "complete 45-element Phi210 invariant quadratic basis feed the exact "
         "22366-dimensional augmented census (35 types/824 copies, 22 blocks, "
@@ -4679,11 +4786,12 @@ def _build_report_from_inputs(
         "explicit, with 1414 real variables and an exact-rank-478, 478x1414 "
         "integer map whose kernel has dimension 936. Its reserved zero vector "
         "is not a physical G3 target. The exact quartic Schur map has shape "
-        "6057x18085, rank 6057, and kernel dimension 12028. All 22 standard "
-        "PSD-coordinate routes and the exact physical 6585-row target are "
-        "constructed. The coefficient map in standard PSD coordinates, SDP "
-        "result, arbitrary-Phi bound, and "
-        "arbitrary non-pure-Delta Sigma coercivity remain open. "
+        "6057x18085, rank 6057, and kernel dimension 12028. The legacy v20 "
+        "assembled physical target is rejected. The corrected 6585x19594 "
+        "standard positive-Gram map, ordered-spectral target, and exact strict "
+        "22-block/824-pivot primal prove p(t,Phi)>0 off the homogeneous origin, "
+        "hence A(Phi)>3/200 at t=1 for every real Phi210. Global Sigma, "
+        "general/full H, the full Hessian, and G3 remain open. "
         "G5 is CLOSED; G4 and G6-G8 remain "
         "dependency-blocked. Historical "
         "Option-C evidence remains scoped and closes no gauged-model gate."
@@ -4712,22 +4820,22 @@ def _build_report_from_inputs(
         "exactly PSD with rank/nullity 448/38, and its kernel is exactly the 38 "
         "symmetry tangents. The literal one-orbit Phi lemma is refuted by -F; the "
         "complete maximally-negative pure-Delta sector is excluded for arbitrary "
-        "real Phi and all nonzero residuals with sharp gap 1/5000. At one "
-        "fixed H=h_- and one explicit rank-one Sigma endpoint, an exact "
-        "Gram/LDL certificate also proves "
-        "the 1/5000 gap on only a four-real-dimensional Phi sub-slice of the "
-        "16-dimensional SU(3)-fixed space. Its exact SU(4) stabilizer, aligned "
+        "real Phi and all nonzero residuals with sharp gap 1/5000. The prior "
+        "four-real-dimensional SU(3) regression is historical and subsumed. "
+        "At fixed H=h_- and Sigma=q/4, the corrected v21 exact theorem covers "
+        "every real Phi210. Its exact SU(4) stabilizer, aligned "
         "rank-210 carrier real maps, explicit complete 45-element Phi210 "
         "invariant quadratic basis, and exact augmented census are certified. "
         "The complete cubic interface now has all 1414 real Schur cross "
         "variables and an exact-rank-478, 478x1414 map with kernel dimension "
         "936; its abstract zero placeholder is not the physical gap target. "
         "The homogeneous quartic interface is now an exact-rank-6057, "
-        "6057x18085 map with kernel dimension 12028. All 22 standard "
-        "PSD-coordinate routes and the exact physical 6585-row target are "
-        "constructed. The coefficient map in standard PSD coordinates and SDP "
-        "remain open. Uniform "
-        "coercivity for arbitrary non-pure-Delta Sigma orientations remains open. The "
+        "6057x18085 map with kernel dimension 12028. The legacy v20 assembled "
+        "physical target is rejected. The corrected 6585x19594 standard "
+        "positive-Gram map, ordered-spectral target, and exact strict "
+        "22-block/824-pivot primal prove p(t,Phi)>0 off the homogeneous origin, "
+        "hence A(Phi)>3/200 at t=1 for every real Phi210. Global Sigma, "
+        "general/full H, the full Hessian, and G3 remain open. The "
         "historical 64/91 "
         "derivative theorem, 449-dimensional "
         "quotient, 46-mode saddle, and 80-iteration no-PSD search are preserved "
@@ -4807,8 +4915,11 @@ def _build_report_from_inputs(
             "gauged_G3_rank1_SU4_augmented_SOS_quartic_map": (
                 g3_rank1_su4_augmented_sos_quartic_map_report
             ),
-            "gauged_G3_rank1_SU4_augmented_SOS_PSD_routes_and_physical_target": (
+            "gauged_G3_rank1_SU4_legacy_v20_PSD_routes_and_rejected_target": (
                 g3_rank1_su4_augmented_sos_psd_target_report
+            ),
+            "gauged_G3_rank1_SU4_corrected_fixed_endpoint_publication_v21": (
+                g3_rank1_su4_corrected_publication
             ),
             "gauged_G3_alternative_global_SOS_audit": (
                 g3_alternative_global_sos_report
@@ -4913,6 +5024,9 @@ def build_report() -> dict[str, Any]:
         ),
         g3_rank1_su4_augmented_sos_psd_target_report=_load_json_artifact(
             G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_JSON
+        ),
+        g3_rank1_su4_corrected_publication=(
+            corrected_rank1.load_validated_publication()
         ),
         g3_alternative_global_sos_report=_load_json_artifact(
             G3_ALTERNATIVE_GLOBAL_SOS_JSON

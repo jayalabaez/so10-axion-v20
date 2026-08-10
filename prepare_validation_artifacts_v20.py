@@ -9,6 +9,9 @@ Two modes are intentionally separate:
 * ``--full`` executes the complete repository validation chain and records
   every command, duration, and return code.  It continues after failures so a
   single early error cannot hide later independent failures.
+* ``--inventory-only`` rewrites the tracked command inventory without
+  executing it.  This is used by bounded integrations that must not replay the
+  full heavy release.
 
 The harness does not promote an unimplemented calculation to a pass.
 Scientific classification is produced by ``theory_validation_matrix_v20.py``.
@@ -210,7 +213,30 @@ FULL_COMMANDS: tuple[tuple[str, ...], ...] = (
     ),
     (
         sys.executable,
-        "exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py",
+        "-B",
+        "corrected_rank1_publication_v21/freeze_exact_gauged_u1x_g3_rank1_su4_corrected_publication_v21.py",
+        "--check",
+    ),
+    (
+        sys.executable,
+        "-B",
+        "corrected_rank1_publication_v21/exact_gauged_u1x_g3_rank1_su4_corrected_positive_gram_primal_v21.py",
+        "--check",
+    ),
+    (
+        sys.executable,
+        "-B",
+        "corrected_rank1_publication_v21/verify_exact_gauged_u1x_g3_rank1_su4_corrected_positive_gram_primal_v21.py",
+    ),
+    (
+        sys.executable,
+        "-B",
+        "corrected_rank1_publication_v21/verify_exact_gauged_u1x_g3_rank1_su4_corrected_fixed_endpoint_theorem_v21.py",
+    ),
+    (
+        sys.executable,
+        "-B",
+        "corrected_rank1_endpoint_v21.py",
     ),
     (
         sys.executable,
@@ -246,9 +272,12 @@ FULL_COMMANDS: tuple[tuple[str, ...], ...] = (
     (sys.executable, "-m", "unittest", "discover", "-v"),
     (
         sys.executable,
+        "-B",
         "-m",
         "pytest",
         "-q",
+        "-p",
+        "no:cacheprovider",
         "test_exact_x_symmetry_consistency_gate_v20.py",
         "test_g1_exact_declared_symmetry_character_census_v20.py",
         "test_gauged_u1x_scalar_contract_v20.py",
@@ -279,6 +308,8 @@ FULL_COMMANDS: tuple[tuple[str, ...], ...] = (
         "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py",
         "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py",
         "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py",
+        "corrected_rank1_publication_v21/test_exact_gauged_u1x_g3_rank1_su4_corrected_publication_v21.py",
+        "test_corrected_rank1_endpoint_v21.py",
         "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py",
         "test_exact_gauged_u1x_g3_su5_chiral_global_gap_reduction_v20.py",
         "test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py",
@@ -290,6 +321,12 @@ FULL_COMMANDS: tuple[tuple[str, ...], ...] = (
         "test_g1_g8_execution_roadmap_v20.py",
         "test_theory_validation_matrix_v20.py",
         "test_replicate_v20.py",
+    ),
+    (
+        sys.executable,
+        "-B",
+        "corrected_rank1_publication_v21/freeze_exact_gauged_u1x_g3_rank1_su4_corrected_publication_v21.py",
+        "--check",
     ),
 )
 
@@ -313,6 +350,8 @@ def run_commands(
     for index, command in enumerate(commands, start=1):
         started = time.monotonic()
         environment = os.environ.copy()
+        environment["PYTHONDONTWRITEBYTECODE"] = "1"
+        environment["SO10_PUBLISHED_API_ROOT"] = str(ROOT)
         for name in (
             "OPENBLAS_NUM_THREADS",
             "OMP_NUM_THREADS",
@@ -364,11 +403,14 @@ def write_markdown(report: dict[str, Any]) -> str:
         "",
     ]
     for row in report["commands"]:
-        mark = "PASS" if row["passed"] else "FAIL"
-        lines.append(
-            f"- **{mark}** `{row['display']}` "
-            f"({row['elapsed_seconds']:.3f} s, rc={row['returncode']})"
-        )
+        if row["passed"] is None:
+            lines.append(f"- **NOT RUN** `{row['display']}`")
+        else:
+            mark = "PASS" if row["passed"] else "FAIL"
+            lines.append(
+                f"- **{mark}** `{row['display']}` "
+                f"({row['elapsed_seconds']:.3f} s, rc={row['returncode']})"
+            )
     if report["failures"]:
         lines += ["", "## Failures", ""]
         lines.extend(f"- `{row['display']}`" for row in report["failures"])
@@ -391,14 +433,42 @@ def main() -> int:
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("--pre-unit", action="store_true")
     group.add_argument("--full", action="store_true")
+    group.add_argument("--inventory-only", action="store_true")
     args = parser.parse_args()
 
-    mode = "PRE_UNIT" if args.pre_unit else "FULL"
-    commands = PRE_UNIT_COMMANDS if args.pre_unit else FULL_COMMANDS
-    report = run_commands(
-        commands,
-        continue_after_failure=bool(args.full),
+    mode = (
+        "PRE_UNIT"
+        if args.pre_unit
+        else "FULL"
+        if args.full
+        else "INVENTORY_ONLY"
     )
+    commands = PRE_UNIT_COMMANDS if args.pre_unit else FULL_COMMANDS
+    if args.inventory_only:
+        rows = [
+            {
+                "index": index,
+                "command": list(_portable_command(command)),
+                "display": _display(command),
+                "returncode": None,
+                "elapsed_seconds": None,
+                "passed": None,
+            }
+            for index, command in enumerate(commands, start=1)
+        ]
+        report = {
+            "status": "NOT_EXECUTED_IN_BOUNDED_INTEGRATION",
+            "n_commands_requested": len(commands),
+            "n_commands_executed": 0,
+            "n_failed": 0,
+            "failures": [],
+            "commands": rows,
+        }
+    else:
+        report = run_commands(
+            commands,
+            continue_after_failure=bool(args.full),
+        )
     report["mode"] = mode
     report["commit_sha"] = os.getenv("GITHUB_SHA", "")
     report["workflow_run_id"] = os.getenv("GITHUB_RUN_ID", "")
@@ -418,7 +488,10 @@ def main() -> int:
         "n_failed": report["n_failed"],
         "failures": [row["display"] for row in report["failures"]],
     }, indent=2))
-    return 0 if report["status"] == "PASS" else 1
+    return 0 if report["status"] in {
+        "PASS",
+        "NOT_EXECUTED_IN_BOUNDED_INTEGRATION",
+    } else 1
 
 
 if __name__ == "__main__":

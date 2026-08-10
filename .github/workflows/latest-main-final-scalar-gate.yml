@@ -27,7 +27,7 @@ jobs:
       - name: Install dependencies
         run: python -m pip install -r requirements.txt
       - name: Compile repository
-        run: python -m compileall -q .
+        run: python -m compileall -q -x 'corrected_rank1_publication_v21' .
       - name: Execute subgroup-resolved RGE
         run: python quartic_soft_betas_v20.py
       - name: Execute signed invariant chain

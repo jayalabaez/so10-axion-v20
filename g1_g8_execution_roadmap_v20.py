@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Any
 
 import g1_g8_gate_ledger_v20 as ledger
+import corrected_rank1_endpoint_v21 as corrected_rank1
 
 ROOT = Path(__file__).resolve().parent
 OUT_JSON = ROOT / "G1_G8_EXECUTION_ROADMAP_V20.json"
@@ -61,16 +62,16 @@ TASKS: list[dict[str, Any]] = [
         "id": "W3-G3-FULL-STATIONARITY",
         "wave": 3,
         "gates": ["G3"],
-        "status": "SU5_DELTA_CHIRAL_H_EXACT_LOCAL_MINIMUM__PURE_DELTA_FULL_RESIDUAL_GAP_CLOSED__RANK1_SU3_FOUR_DIMENSIONAL_SLICE_CLOSED__RANK1_SU4_CUBIC_AND_QUARTIC_SCHUR_MAPS_READY__PHYSICAL_TARGET_PSD_AND_ARBITRARY_SIGMA_COERCIVITY_OPEN__BLOCKED_ON_G2_PROMOTION",
+        "status": "SU5_DELTA_CHIRAL_H_EXACT_LOCAL_MINIMUM__PURE_DELTA_FULL_RESIDUAL_GAP_CLOSED__RANK1_SU4_FIXED_ENDPOINT_ARBITRARY_PHI_EXACT__GLOBAL_SIGMA_GENERAL_H_FULL_HESSIAN_AND_G3_OPEN__BLOCKED_ON_G2_PROMOTION",
         "issue": 178,
         "deliverable": (
             "prove a uniform coercive global gap for arbitrary non-pure-Delta "
             "Sigma orientations of the SU(5)+Delta chiral-H candidate; its exact "
             "448/38 Hessian and complete pure-Delta maximal-negative sector are "
-            "complete, while fixed H=h_- and one explicit rank-one Sigma "
-            "endpoint are certified only "
-            "on a four-real-dimensional Phi sub-slice of the 16-dimensional "
-            "SU(3)-fixed space; its exact SU(4) stabilizer, aligned 25-carrier "
+            "complete. The prior four-real-dimensional SU(3) regression is "
+            "historical and subsumed. At fixed H=h_- and Sigma=q/4, the "
+            "corrected v21 exact theorem covers every real Phi210; its exact "
+            "SU(4) stabilizer, aligned 25-carrier "
             "rank-210 real-form maps, and complete 45-element invariant "
             "quadratic basis from a 5952x551 rank-506 constraint system are "
             "ready. The exact augmented census has dimension 22366, 35 "
@@ -83,10 +84,12 @@ TASKS: list[dict[str, Any]] = [
             "dimension 936. Its reserved zero vector is only an abstract "
             "interface placeholder, not the physical G3 target. The exact "
             "homogeneous quartic map has shape 6057x18085, rank 6057, and "
-            "kernel dimension 12028. All 22 standard PSD-coordinate routes and "
-            "the exact physical 6585-row target are constructed. The coefficient "
-            "map in standard PSD coordinates, SDP feasibility, arbitrary-Phi "
-            "bound, and G3 remain open"
+            "kernel dimension 12028. The legacy v20 assembled physical target "
+            "is rejected. The corrected 6585x19594 standard positive-Gram map, "
+            "ordered-spectral target, and exact strict 22-block/824-pivot primal "
+            "prove p(t,Phi)>0 off the homogeneous origin and A(Phi)>3/200 at "
+            "t=1 for every real Phi210. Global Sigma, general/full H, the full "
+            "Hessian, and G3 remain open"
         ),
         "acceptance": (
             "the full 486-field candidate is globally minimal with all equality "
@@ -483,7 +486,12 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
                 "rank1_SU4_augmented_quartic_arbitrary_Phi_bound_open"
             ] is True
             and g3_frontier["rank1_SU4_augmented_quartic_G3_open"] is True
-            and g3_frontier["rank1_SU4_augmented_PSD_target_exact"] is True
+            and g3_frontier[
+                "rank1_SU4_legacy_v20_PSD_routes_and_stale_payload_well_formed"
+            ] is True
+            and g3_frontier["rank1_SU4_legacy_v20_physical_target_valid"]
+            is False
+            and g3_frontier["rank1_SU4_legacy_v20_primal_valid"] is False
             and g3_frontier[
                 "rank1_SU4_augmented_standard_PSD_route_count"
             ] == 22
@@ -497,28 +505,56 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
                 "rank1_SU4_augmented_complex_Hermitian_coordinates_exact"
             ] is True
             and g3_frontier[
-                "rank1_SU4_augmented_physical_target_exact"
+                "rank1_SU4_corrected_fixed_endpoint_theorem_exact"
             ] is True
             and g3_frontier[
-                "rank1_SU4_augmented_physical_target_row_count"
+                "rank1_SU4_corrected_publication_manifest_sha256"
+            ] == corrected_rank1.EXPECTED_MANIFEST_RAW_SHA256
+            and g3_frontier[
+                "rank1_SU4_corrected_positive_Gram_map_shape"
+            ] == [6_585, 19_594]
+            and g3_frontier[
+                "rank1_SU4_corrected_positive_Gram_map_common_denominator"
+            ] == 256
+            and g3_frontier[
+                "rank1_SU4_corrected_positive_Gram_map_nnz"
+            ] == 138_550
+            and g3_frontier[
+                "rank1_SU4_corrected_positive_Gram_map_sha256"
+            ] == corrected_rank1.EXPECTED_MAP_SHA256
+            and g3_frontier[
+                "rank1_SU4_corrected_physical_target_common_denominator"
+            ] == 576_000
+            and g3_frontier[
+                "rank1_SU4_corrected_physical_target_nonzero_count"
+            ] == 512
+            and g3_frontier[
+                "rank1_SU4_corrected_physical_target_sha256"
+            ] == corrected_rank1.EXPECTED_TARGET_SHA256
+            and g3_frontier[
+                "rank1_SU4_corrected_exact_coefficient_equalities"
             ] == 6_585
             and g3_frontier[
-                "rank1_SU4_augmented_physical_target_common_denominator"
-            ] == 1_728_000
+                "rank1_SU4_corrected_strict_positive_Gram_blocks"
+            ] == 22
             and g3_frontier[
-                "rank1_SU4_augmented_physical_target_nonzero_count"
-            ] == 845
+                "rank1_SU4_corrected_strict_positive_LDL_pivots"
+            ] == 824
             and g3_frontier[
-                "rank1_SU4_augmented_physical_target_sha256"
-            ] == "e2d9eec1b01b3eeefc4a54d404db93171aa6600ea9ef646a215ab0b5401f7630"
-            and g3_frontier[
-                "rank1_SU4_augmented_standard_coordinate_map_open"
+                "rank1_SU4_corrected_arbitrary_real_Phi_at_fixed_endpoint"
             ] is True
-            and g3_frontier["rank1_SU4_augmented_PSD_SDP_open"] is True
             and g3_frontier[
-                "rank1_SU4_augmented_PSD_arbitrary_Phi_bound_open"
+                "rank1_SU4_corrected_p_zero_set_at_t1_empty"
             ] is True
-            and g3_frontier["rank1_SU4_augmented_PSD_G3_open"] is True
+            and g3_frontier[
+                "rank1_SU4_corrected_global_Sigma_proved"
+            ] is False
+            and g3_frontier["rank1_SU4_corrected_general_H_proved"] is False
+            and g3_frontier["rank1_SU4_corrected_full_H_proved"] is False
+            and g3_frontier[
+                "rank1_SU4_corrected_full_Hessian_proved"
+            ] is False
+            and g3_frontier["rank1_SU4_corrected_G3_closed"] is False
             and g3_frontier[
                 "SU5_arbitrary_Phi_nonzero_residual_cancellations_open"
             ]
@@ -595,9 +631,10 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
         "rank/nullity 429/33. Its chiral-H full Hessian is exactly PSD with "
         "rank/nullity 448/38 and kernel precisely the symmetry orbit. The complete "
         "maximally-negative pure-Delta sector is excluded for arbitrary real Phi "
-        "and all nonzero residuals with sharp gap 1/5000. One explicit rank-one "
-        "endpoint also has an exact 1/5000 gap on only a four-real-dimensional "
-        "Phi sub-slice of the 16-dimensional SU(3)-fixed space. Its exact SU(4) "
+        "and all nonzero residuals with sharp gap 1/5000. The prior "
+        "four-real-dimensional SU(3) regression is historical and subsumed. At "
+        "fixed H=h_- and Sigma=q/4, the corrected theorem covers every real "
+        "Phi210. Its exact SU(4) "
         "stabilizer, aligned rank-210 carrier maps, and explicit 45-element "
         "Phi210 invariant quadratic basis now feed an exact augmented census: "
         "dimension 22366, 35 isotypic types/824 copies, 22 real/Hermitian "
@@ -606,11 +643,12 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
         "exact-rank-478, 478x1414 integer map with kernel dimension 936. Its "
         "zero placeholder is not a physical target. The homogeneous quartic "
         "map is exact-rank-6057 with shape 6057x18085 and kernel dimension "
-        "12028. All 22 standard PSD-coordinate routes and the exact physical "
-        "6585-row target are constructed. The coefficient map in standard PSD "
-        "coordinates, SDP result, and arbitrary-Phi bound remain open. "
-        "Uniform coercivity for "
-        "arbitrary non-pure-Delta Sigma orientations remains open. G5 is "
+        "12028. The legacy v20 assembled physical target is rejected. The "
+        "corrected 6585x19594 standard positive-Gram map, ordered-spectral "
+        "target, and exact strict 22-block/824-pivot primal prove p(t,Phi)>0 "
+        "off the homogeneous origin and A(Phi)>3/200 at t=1 for every real "
+        "Phi210. Global Sigma, general/full H, the full Hessian, and G3 remain "
+        "open. G5 is "
         "CLOSED. G4 and "
         "G6-G8 remain dependency-blocked; the "
         "historical 64/91 saddle/search remains scoped to option C."
@@ -635,9 +673,10 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
         "BFB and symmetry-correct. Its source-bound 486-real Hessian is exactly "
         "PSD with rank/nullity 448/38 and kernel exactly the 38 symmetry tangents. "
         "The complete maximally-negative pure-Delta sector is excluded for arbitrary "
-        "real Phi and all nonzero residuals with sharp gap 1/5000. One explicit "
-        "fixed-H rank-one Sigma endpoint also has an exact 1/5000 gap on only a four-real-dimensional "
-        "Phi sub-slice of the 16-dimensional SU(3)-fixed space. Its exact SU(4) "
+        "real Phi and all nonzero residuals with sharp gap 1/5000. The prior "
+        "four-real-dimensional SU3 regression is historical and subsumed. At "
+        "fixed H=h_- and Sigma=q/4, the corrected v21 exact theorem covers every "
+        "real Phi210. Its exact SU(4) "
         "stabilizer, aligned rank-210 carrier maps, and explicit 45-element "
         "Phi210 invariant quadratic basis now feed the exact 22366-dimensional "
         "augmented census with 35 isotypic types/824 copies, 22 real/Hermitian "
@@ -645,11 +684,12 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
         "cubic interface has all 1414 real cross variables and an exact-rank-478, "
         "478x1414 integer map with kernel dimension 936. Its zero placeholder "
         "is not a physical target. The homogeneous quartic map is exact-rank-6057 "
-        "with shape 6057x18085 and kernel dimension 12028. All 22 standard "
-        "PSD-coordinate routes and the exact physical 6585-row target are "
-        "constructed. The coefficient map in standard PSD coordinates, SDP "
-        "feasibility, and arbitrary-Phi bound remain open. Uniform coercivity "
-        "for arbitrary non-pure-Delta Sigma orientations is the precise G3 blocker. The historical "
+        "with shape 6057x18085 and kernel dimension 12028. The legacy v20 "
+        "assembled physical target is rejected. The corrected 6585x19594 "
+        "standard positive-Gram map, ordered-spectral target, and exact strict "
+        "22-block/824-pivot primal prove p(t,Phi)>0 off the homogeneous origin "
+        "and A(Phi)>3/200 at t=1 for every real Phi210. Global Sigma, "
+        "general/full H, the full Hessian, and G3 remain open. The historical "
         "64/91 calculation "
         "and 449-dimensional saddle/search remain scoped to option C."
     )

@@ -19,6 +19,7 @@ from pathlib import Path
 from typing import Any
 
 import g1_g8_gate_ledger_v20 as ledger
+import corrected_rank1_endpoint_v21 as corrected_rank1
 
 ROOT = Path(__file__).resolve().parent
 OUT_JSON = ROOT / "FINAL_G3_ACCEPTANCE_GATE_V20.json"
@@ -123,6 +124,7 @@ def build_report(
     rank1_su4_augmented_sos_cubic_map_report: dict[str, Any] | None = None,
     rank1_su4_augmented_sos_quartic_map_report: dict[str, Any] | None = None,
     rank1_su4_augmented_sos_psd_target_report: dict[str, Any] | None = None,
+    rank1_su4_corrected_publication: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     ledger_report = ledger.build_report() if ledger_report is None else ledger_report
     hsx_report = _load(HSX_JSON) if hsx_report is None else hsx_report
@@ -208,6 +210,11 @@ def build_report(
         if rank1_su4_augmented_sos_psd_target_report is None
         else rank1_su4_augmented_sos_psd_target_report
     )
+    rank1_su4_corrected_publication = (
+        corrected_rank1.load_validated_publication()
+        if rank1_su4_corrected_publication is None
+        else rank1_su4_corrected_publication
+    )
 
     frontier = ledger_report.get("gauged_u1x_g3_constructive_frontier", {})
     gates = ledger_report.get("gates", {})
@@ -282,14 +289,22 @@ def build_report(
             rank1_su4_augmented_sos_cubic_map_report,
         )
     )
-    rank1_su4_psd_target_exact = (
+    rank1_su4_legacy_psd_routes_and_stale_payload_well_formed = (
         rank1_su4_quartic_exact
-        and ledger._rank1_su4_augmented_sos_psd_target_exact(
+        and ledger._rank1_su4_augmented_sos_psd_routes_and_stale_payload_well_formed(
             rank1_su4_augmented_sos_psd_target_report,
             rank1_su4_augmented_sos_census_report,
             rank1_su4_augmented_sos_cubic_map_report,
             rank1_su4_augmented_sos_quartic_map_report,
         )
+    )
+    rank1_su4_corrected_exact = corrected_rank1.corrected_fixed_endpoint_theorem_exact(
+        rank1_su4_corrected_publication
+    )
+    rank1_su4_corrected_view = (
+        corrected_rank1.central_view(rank1_su4_corrected_publication)
+        if rank1_su4_corrected_exact
+        else {}
     )
     rank1_su4_aligned_scope = rank1_su4_aligned_carriers_report.get(
         "scope", {}
@@ -593,30 +608,45 @@ def build_report(
             is False
             and rank1_su4_quartic_scope.get("G3_closed") is False
         ),
-        "rank1_SU4_augmented_SOS_PSD_target_executes_fail_closed": (
-            rank1_su4_psd_target_exact
+        "rank1_SU4_legacy_v20_PSD_target_is_rejected_fail_closed": (
+            rank1_su4_legacy_psd_routes_and_stale_payload_well_formed
             and rank1_su4_psd_routes.get(
                 "all_22_cones_have_standard_coordinate_routes"
             ) is True
             and rank1_su4_psd_routes.get("standard_total_parameter_count")
             == 19_594
-            and rank1_su4_full_target.get("row_count") == 6_585
-            and rank1_su4_full_target.get("common_denominator") == 1_728_000
-            and rank1_su4_full_target.get("total_nonzero_count") == 845
-            and rank1_su4_full_target.get("numerator_sha256")
-            == "e2d9eec1b01b3eeefc4a54d404db93171aa6600ea9ef646a215ab0b5401f7630"
-            and rank1_su4_quartic_target.get("row_count") == 6_057
-            and rank1_su4_quartic_target.get("common_denominator") == 3_375
-            and rank1_su4_quartic_target.get("nonzero_count") == 825
-            and rank1_su4_quartic_target.get("numerator_sha256")
-            == "38476cff340ef8702735d48d7dbdf644ed41f8dc4a359264d33d966f177145ad"
-            and rank1_su4_psd_target_scope.get(
-                "coefficient_map_reparameterized_in_standard_PSD_coordinates"
+            and ledger._rank1_su4_augmented_sos_psd_target_exact(
+                rank1_su4_augmented_sos_psd_target_report,
+                rank1_su4_augmented_sos_census_report,
+                rank1_su4_augmented_sos_cubic_map_report,
+                rank1_su4_augmented_sos_quartic_map_report,
             ) is False
-            and rank1_su4_psd_target_scope.get(
-                "semidefinite_feasibility_solved"
-            ) is False
-            and rank1_su4_psd_target_scope.get("G3_closed") is False
+        ),
+        "rank1_SU4_corrected_fixed_endpoint_theorem_executes_fail_closed": (
+            rank1_su4_corrected_exact
+            and rank1_su4_corrected_view.get("legacy_v20_physical_target_valid")
+            is False
+            and rank1_su4_corrected_view.get("legacy_v20_primal_valid") is False
+            and rank1_su4_corrected_view.get("map_shape") == [6_585, 19_594]
+            and rank1_su4_corrected_view.get("map_common_denominator") == 256
+            and rank1_su4_corrected_view.get("map_nnz") == 138_550
+            and rank1_su4_corrected_view.get("map_numerator_csr_sha256")
+            == corrected_rank1.EXPECTED_MAP_SHA256
+            and rank1_su4_corrected_view.get("target_common_denominator")
+            == 576_000
+            and rank1_su4_corrected_view.get("target_nonzero_count") == 512
+            and rank1_su4_corrected_view.get("target_numerator_sha256")
+            == corrected_rank1.EXPECTED_TARGET_SHA256
+            and rank1_su4_corrected_view.get("exact_coefficient_equalities")
+            == 6_585
+            and rank1_su4_corrected_view.get("strict_positive_Gram_blocks")
+            == 22
+            and rank1_su4_corrected_view.get("strict_positive_LDL_pivots")
+            == 824
+            and rank1_su4_corrected_view.get(
+                "arbitrary_real_Phi_at_fixed_endpoint"
+            ) is True
+            and rank1_su4_corrected_view.get("G3_closed") is False
         ),
         "alternative_global_SOS_audit_executes_fail_closed": bool(
             alternative_sos_report.get("n_failed") == 0
@@ -713,6 +743,11 @@ def build_report(
             and rank1_su4_psd_target_scope.get(
                 "arbitrary_Phi_lower_bound_proved"
             ) is False
+            and rank1_su4_corrected_view.get("global_Sigma_proved") is False
+            and rank1_su4_corrected_view.get("general_H_proved") is False
+            and rank1_su4_corrected_view.get("full_H_proved") is False
+            and rank1_su4_corrected_view.get("full_Hessian_proved") is False
+            and rank1_su4_corrected_view.get("G3_closed") is False
         ),
     }
 
@@ -891,7 +926,8 @@ def build_report(
             and rank1_su4_census_exact
             and rank1_su4_cubic_exact
             and rank1_su4_quartic_exact
-            and rank1_su4_psd_target_exact
+            and rank1_su4_legacy_psd_routes_and_stale_payload_well_formed
+            and rank1_su4_corrected_exact
             and _dig(
                 rank1_su4_aligned_carriers_report,
                 "alignment", "carrier_count",
@@ -1057,26 +1093,33 @@ def build_report(
             ) is True
             and rank1_su4_psd_routes.get("standard_total_parameter_count")
             == 19_594
-            and rank1_su4_full_target.get("row_count") == 6_585
-            and rank1_su4_full_target.get("common_denominator") == 1_728_000
-            and rank1_su4_full_target.get("total_nonzero_count") == 845
-            and rank1_su4_full_target.get("numerator_sha256")
-            == "e2d9eec1b01b3eeefc4a54d404db93171aa6600ea9ef646a215ab0b5401f7630"
-            and rank1_su4_quartic_target.get("row_count") == 6_057
-            and rank1_su4_quartic_target.get("common_denominator") == 3_375
-            and rank1_su4_quartic_target.get("nonzero_count") == 825
-            and rank1_su4_quartic_target.get("numerator_sha256")
-            == "38476cff340ef8702735d48d7dbdf644ed41f8dc4a359264d33d966f177145ad"
-            and rank1_su4_psd_target_scope.get(
-                "coefficient_map_reparameterized_in_standard_PSD_coordinates"
-            ) is False
-            and rank1_su4_psd_target_scope.get(
-                "semidefinite_feasibility_solved"
-            ) is False
-            and rank1_su4_psd_target_scope.get(
-                "arbitrary_Phi_lower_bound_proved"
-            ) is False
-            and rank1_su4_psd_target_scope.get("G3_closed") is False
+            and rank1_su4_corrected_view.get("map_shape") == [6_585, 19_594]
+            and rank1_su4_corrected_view.get("map_common_denominator") == 256
+            and rank1_su4_corrected_view.get("map_nnz") == 138_550
+            and rank1_su4_corrected_view.get("target_common_denominator")
+            == 576_000
+            and rank1_su4_corrected_view.get("target_nonzero_count") == 512
+            and rank1_su4_corrected_view.get("exact_coefficient_equalities")
+            == 6_585
+            and rank1_su4_corrected_view.get("strict_positive_Gram_blocks")
+            == 22
+            and rank1_su4_corrected_view.get("strict_positive_LDL_pivots")
+            == 824
+            and rank1_su4_corrected_view.get(
+                "arbitrary_real_Phi_at_fixed_endpoint"
+            ) is True
+            and rank1_su4_corrected_view.get(
+                "strict_positive_off_homogeneous_origin"
+            ) is True
+            and rank1_su4_corrected_view.get(
+                "A_greater_than_3_over_200_at_t1"
+            ) is True
+            and rank1_su4_corrected_view.get("p_zero_set_at_t1_empty") is True
+            and rank1_su4_corrected_view.get("global_Sigma_proved") is False
+            and rank1_su4_corrected_view.get("general_H_proved") is False
+            and rank1_su4_corrected_view.get("full_H_proved") is False
+            and rank1_su4_corrected_view.get("full_Hessian_proved") is False
+            and rank1_su4_corrected_view.get("G3_closed") is False
         ),
         "signed_Phi_orbits_locally_isolated_exactly": bool(
             local_scope.get("plus_F_local_component_classified") is True
@@ -1199,6 +1242,10 @@ def build_report(
                 RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_JSON,
                 rank1_su4_augmented_sos_psd_target_report,
             ),
+            (
+                corrected_rank1.MANIFEST_PATH,
+                rank1_su4_corrected_publication.get("manifest", {}),
+            ),
         )
         if not report
     ]
@@ -1212,6 +1259,7 @@ def build_report(
         "failures": [name for name, value in artifact_integrity.items() if not value],
         "missing_artifacts": missing_artifacts,
         "artifact_integrity": artifact_integrity,
+        "corrected_rank1_fixed_endpoint_subtheorem": rank1_su4_corrected_view,
         "decisive_theorem": FINAL_THEOREM,
         "science_criteria": science_criteria,
         "release_criteria": release_criteria,
@@ -1414,9 +1462,11 @@ def build_report(
             "rank1_SU4_augmented_quartic_SDP_solved": (
                 rank1_su4_quartic_scope.get("semidefinite_feasibility_solved")
             ),
-            "rank1_SU4_augmented_PSD_routes_and_target_exact": (
-                rank1_su4_psd_target_exact
+            "rank1_SU4_legacy_v20_PSD_routes_and_stale_payload_well_formed": (
+                rank1_su4_legacy_psd_routes_and_stale_payload_well_formed
             ),
+            "rank1_SU4_legacy_v20_physical_target_valid": False,
+            "rank1_SU4_legacy_v20_primal_valid": False,
             "rank1_SU4_augmented_standard_PSD_route_count": (
                 rank1_su4_psd_routes.get("real_type_block_count", 0)
                 + rank1_su4_psd_routes.get("complex_Hermitian_block_count", 0)
@@ -1424,29 +1474,36 @@ def build_report(
             "rank1_SU4_augmented_standard_PSD_parameter_count": (
                 rank1_su4_psd_routes.get("standard_total_parameter_count")
             ),
-            "rank1_SU4_augmented_physical_target_row_count": (
-                rank1_su4_full_target.get("row_count")
+            "rank1_SU4_corrected_fixed_endpoint_theorem_exact": (
+                rank1_su4_corrected_exact
             ),
-            "rank1_SU4_augmented_physical_target_common_denominator": (
-                rank1_su4_full_target.get("common_denominator")
+            "rank1_SU4_corrected_positive_Gram_map_shape": (
+                rank1_su4_corrected_view.get("map_shape")
             ),
-            "rank1_SU4_augmented_physical_target_nonzero_count": (
-                rank1_su4_full_target.get("total_nonzero_count")
+            "rank1_SU4_corrected_positive_Gram_map_sha256": (
+                rank1_su4_corrected_view.get("map_numerator_csr_sha256")
             ),
-            "rank1_SU4_augmented_physical_target_sha256": (
-                rank1_su4_full_target.get("numerator_sha256")
+            "rank1_SU4_corrected_physical_target_sha256": (
+                rank1_su4_corrected_view.get("target_numerator_sha256")
             ),
-            "rank1_SU4_augmented_standard_coordinate_map_constructed": (
-                rank1_su4_psd_target_scope.get(
-                    "coefficient_map_reparameterized_in_standard_PSD_coordinates"
+            "rank1_SU4_corrected_exact_coefficient_equalities": (
+                rank1_su4_corrected_view.get("exact_coefficient_equalities")
+            ),
+            "rank1_SU4_corrected_strict_positive_Gram_blocks": (
+                rank1_su4_corrected_view.get("strict_positive_Gram_blocks")
+            ),
+            "rank1_SU4_corrected_strict_positive_LDL_pivots": (
+                rank1_su4_corrected_view.get("strict_positive_LDL_pivots")
+            ),
+            "rank1_SU4_corrected_arbitrary_real_Phi_at_fixed_endpoint": (
+                rank1_su4_corrected_view.get(
+                    "arbitrary_real_Phi_at_fixed_endpoint"
                 )
             ),
-            "rank1_SU4_augmented_PSD_SDP_solved": (
-                rank1_su4_psd_target_scope.get("semidefinite_feasibility_solved")
-            ),
-            "rank1_SU4_augmented_PSD_G3_closed": (
-                rank1_su4_psd_target_scope.get("G3_closed")
-            ),
+            "rank1_SU4_corrected_global_Sigma_proved": False,
+            "rank1_SU4_corrected_general_H_proved": False,
+            "rank1_SU4_corrected_full_Hessian_proved": False,
+            "rank1_SU4_corrected_G3_closed": False,
             "arbitrary_non_pure_Delta_Sigma_orientations_open": not bool(
                 max_negative_full_scope.get("arbitrary_Sigma_orientation_proved")
             ),
@@ -1487,10 +1544,9 @@ def build_report(
             "stratum for arbitrary H and Sigma. The complete maximally-negative "
             "pure-Delta sector is now also excluded for arbitrary real Phi and "
             "all nonzero residuals, with sharp gap 1/5000; no exact lower witness "
-            "is known. At fixed H=h_- and one explicit rank-one Sigma endpoint, "
-            "an exact certificate "
-            "also proves the 1/5000 gap on only a four-real-dimensional Phi "
-            "sub-slice of the 16-dimensional SU(3)-fixed space. At that fixed "
+            "is known. The prior four-real-dimensional SU(3) regression is "
+            "historical and subsumed. At fixed H=h_- and Sigma=q/4, the "
+            "corrected v21 exact theorem covers every real Phi210. At that fixed "
             "endpoint, the exact SU(4) stabilizer, aligned rank-210 carrier real "
             "maps and complete 45-element Phi210 quadratic basis feed an exact "
             "22366-dimensional augmented census with 35 types/824 copies, 22 "
@@ -1500,13 +1556,14 @@ def build_report(
             "dimension 936. Its zero placeholder is nonphysical and certifies "
             "no physical zero RHS. The homogeneous quartic interface is an "
             "exact-rank-6057, 6057x18085 integer map with kernel dimension "
-            "12028. All 22 standard PSD-coordinate routes and the exact "
-            "physical 6585-row target are constructed. The coefficient map "
-            "in standard PSD coordinates, SDP result, and arbitrary-Phi bound "
-            "remain open. PASS still "
-            "requires a uniform coercive beta gap for "
-            "arbitrary non-pure-Delta Sigma orientations, plus the external authoritative "
-            "model execution."
+            "12028. The legacy v20 assembled physical target is rejected. The "
+            "corrected 6585x19594 standard positive-Gram map, ordered-spectral "
+            "target, and exact strict 22-block/824-pivot primal prove p(t,Phi)>0 "
+            "off the homogeneous origin and A(Phi)>3/200 at t=1 for every real "
+            "Phi210. Global Sigma, general/full H, the full Hessian, and G3 "
+            "remain open. PASS still requires uniform coercivity away from the "
+            "fixed Sigma=q/4 endpoint, plus the external authoritative model "
+            "execution."
         ),
     }
 
