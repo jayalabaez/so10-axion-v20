@@ -472,7 +472,6 @@ def main() -> int:
         [
             sys.executable,
             "exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py",
-            "--write",
         ]
     )
     run(

@@ -71,6 +71,14 @@ WORKFLOW_PATHS = (
 CORRECTED_CONSUMER_WORKFLOWS = tuple(
     path for path in WORKFLOW_PATHS if "latest-main-final-scalar-gate" not in path
 )
+READ_ONLY_FROZEN_DEPENDENCY_ORCHESTRATORS = (
+    "prepare_validation_artifacts_v20.py",
+    "replicate.py",
+    "validate_release_v20.py",
+)
+FROZEN_STABILIZER_SOURCE = (
+    "exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py"
+)
 
 RAW_SOURCE_PINS = {
     "exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py":
@@ -288,6 +296,12 @@ def _require_workflow_contract() -> dict[str, int]:
     )
     if any(token in all_text for token in forbidden_runs):
         raise ArithmeticError("a workflow executes the rejected legacy target generator")
+    mutating_stabilizer_workflow = re.compile(
+        rf"\bpython(?:\s+-B)?\s+{re.escape(FROZEN_STABILIZER_SOURCE)}"
+        r"\s+--write\b"
+    )
+    if mutating_stabilizer_workflow.search(all_text):
+        raise ArithmeticError("a workflow rewrites the frozen stabilizer dependency")
     for relative in WORKFLOW_PATHS:
         text = (ROOT / relative).read_text(encoding="utf-8")
         if "compileall" in text:
@@ -296,10 +310,27 @@ def _require_workflow_contract() -> dict[str, int]:
                     raise ArithmeticError(
                         f"workflow compileall can contaminate publication: {relative}"
                     )
+    mutating_stabilizer = re.compile(
+        rf'["\']{re.escape(FROZEN_STABILIZER_SOURCE)}["\']\s*,\s*'
+        r'["\']--write["\']'
+    )
+    for relative in READ_ONLY_FROZEN_DEPENDENCY_ORCHESTRATORS:
+        text = (ROOT / relative).read_text(encoding="utf-8")
+        if FROZEN_STABILIZER_SOURCE not in text:
+            raise ArithmeticError(
+                f"frozen stabilizer validation is absent from orchestrator: {relative}"
+            )
+        if mutating_stabilizer.search(text):
+            raise ArithmeticError(
+                f"orchestrator rewrites the frozen stabilizer dependency: {relative}"
+            )
     return {
         "corrected_assertion_heredocs": heredocs,
         "legacy_rejection_assertions": legacy_rejections,
         "full_source_rebuild_invocations": heavy,
+        "read_only_frozen_dependency_orchestrators": len(
+            READ_ONLY_FROZEN_DEPENDENCY_ORCHESTRATORS
+        ),
     }
 
 

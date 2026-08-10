@@ -4,7 +4,9 @@ from __future__ import annotations
 
 import hashlib
 import json
+import tempfile
 import unittest
+from unittest.mock import patch
 
 import freeze_corrected_rank1_endpoint_v21_integration as freezer
 
@@ -38,6 +40,7 @@ class CorrectedEndpointIntegrationFreezeTests(unittest.TestCase):
                 "corrected_assertion_heredocs": 7,
                 "legacy_rejection_assertions": 7,
                 "full_source_rebuild_invocations": 1,
+                "read_only_frozen_dependency_orchestrators": 3,
             },
         )
         self.assertTrue(
@@ -74,6 +77,61 @@ class CorrectedEndpointIntegrationFreezeTests(unittest.TestCase):
         digest = hashlib.sha256(freezer.MANIFEST.read_bytes()).hexdigest()
         self.assertRegex(digest, r"^[0-9a-f]{64}$")
         self.assertEqual(len(digest), 64)
+
+    def test_mutating_frozen_dependency_commands_are_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = freezer.Path(directory)
+            relative_paths = (
+                *freezer.WORKFLOW_PATHS,
+                *freezer.READ_ONLY_FROZEN_DEPENDENCY_ORCHESTRATORS,
+            )
+            for relative in relative_paths:
+                destination = root / relative
+                destination.parent.mkdir(parents=True, exist_ok=True)
+                destination.write_bytes((freezer.ROOT / relative).read_bytes())
+
+            replicate = root / "replicate.py"
+            baseline_replicate = replicate.read_text(encoding="utf-8")
+            needle = (
+                '"exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py",\n'
+                "        ]"
+            )
+            replacement = (
+                '"exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py",\n'
+                '            "--write",\n'
+                "        ]"
+            )
+            self.assertIn(needle, baseline_replicate)
+
+            with patch.object(freezer, "ROOT", root):
+                self.assertEqual(
+                    freezer._require_workflow_contract()[
+                        "read_only_frozen_dependency_orchestrators"
+                    ],
+                    3,
+                )
+                replicate.write_text(
+                    baseline_replicate.replace(needle, replacement, 1),
+                    encoding="utf-8",
+                )
+                with self.assertRaisesRegex(
+                    ArithmeticError, "rewrites the frozen stabilizer dependency"
+                ):
+                    freezer._require_workflow_contract()
+
+                replicate.write_text(baseline_replicate, encoding="utf-8")
+                workflow = root / freezer.WORKFLOW_PATHS[0]
+                workflow.write_text(
+                    workflow.read_text(encoding="utf-8")
+                    + "\nrun: python -B  "
+                    + freezer.FROZEN_STABILIZER_SOURCE
+                    + "   --write\n",
+                    encoding="utf-8",
+                )
+                with self.assertRaisesRegex(
+                    ArithmeticError, "workflow rewrites the frozen stabilizer"
+                ):
+                    freezer._require_workflow_contract()
 
 
 if __name__ == "__main__":

@@ -162,6 +162,10 @@ def test_rank1_su4_infrastructure_is_generated_in_provenance_order() -> None:
         < source.index(theorem)
         < source.index(adapter)
     )
+    stabilizer_command = source[
+        source.index(stabilizer) : source.index(intertwiners)
+    ]
+    assert '"--write"' not in stabilizer_command
     assert (
         source.index(census_test)
         < source.index(cubic_test)

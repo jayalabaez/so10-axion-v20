@@ -5,6 +5,7 @@ import copy
 import hashlib
 import json
 from pathlib import Path
+import re
 import tempfile
 import unittest
 
@@ -12,6 +13,21 @@ import validate_release_v20 as release
 
 
 class ValidateReleaseChecksumTests(unittest.TestCase):
+    def test_frozen_stabilizer_dependency_is_read_only_in_all_orchestrators(self):
+        stabilizer = "exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py"
+        mutating_command = re.compile(
+            rf'["\']{re.escape(stabilizer)}["\']\s*,\s*["\']--write["\']'
+        )
+        for relative in (
+            "prepare_validation_artifacts_v20.py",
+            "replicate.py",
+            "validate_release_v20.py",
+        ):
+            source = (release.ROOT / relative).read_text(encoding="utf-8")
+            with self.subTest(relative=relative):
+                self.assertIn(stabilizer, source)
+                self.assertIsNone(mutating_command.search(source))
+
     def test_final_theorem_core_paths_are_portable_unique_and_present(self):
         paths = release.FINAL_THEOREM_CORE_PATHS
 
@@ -616,6 +632,15 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             self.assertNotIn(
                 "python exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py --write",
                 source,
+                relative,
+            )
+            self.assertIsNone(
+                re.search(
+                    r"\bpython(?:\s+-B)?\s+"
+                    r"exact_gauged_u1x_g3_rank1_su4_stabilizer_v20\.py"
+                    r"\s+--write\b",
+                    source,
+                ),
                 relative,
             )
             self.assertIn(
