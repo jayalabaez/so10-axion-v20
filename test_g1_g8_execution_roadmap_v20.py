@@ -165,13 +165,15 @@ def test_constructive_g3_frontier_is_actionable_but_not_promoted():
     assert frontier["SU5_Delta_equality_honestly_reduced"] is True
     assert frontier["SU5_Delta_Phi_orbit_audit_honest"] is True
     assert frontier["SU5_Delta_literal_single_Phi_orbit_refuted"] is True
-    assert frontier["SU5_Delta_signed_Phi_orbit_theorem_open"] is True
+    assert frontier["SU5_Delta_signed_Phi_orbit_theorem_open"] is False
+    assert frontier["SU5_Delta_signed_Phi_orbit_theorem_closed"] is True
     assert frontier["SU5_Delta_SU4_Phi_slice_classified"] is True
     assert frontier["SU5_Delta_signed_Phi_local_components_closed"] is True
-    assert frontier["SU5_Delta_distant_Phi_components_excluded"] is False
+    assert frontier["SU5_Delta_distant_Phi_components_excluded"] is True
     assert frontier["SU5_Delta_Phi_SU3_fixed_slice_closed"] is True
     assert frontier["SU5_Delta_Phi_SU3_fixed_slice_dimension"] == 16
-    assert frontier["SU5_Delta_global_Phi_orbit_lemma_open"] is True
+    assert frontier["SU5_Delta_global_Phi_orbit_lemma_open"] is False
+    assert frontier["SU5_Delta_global_Phi_orbit_lemma_closed"] is True
     assert frontier["SU5_Delta_chiral_global_gap_honestly_reduced"] is True
     assert frontier["SU5_Delta_chiral_lower_witness_found"] is False
     assert frontier["SU5_Delta_chiral_small_beta_route_exists"] is True

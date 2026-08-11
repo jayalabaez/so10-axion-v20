@@ -444,10 +444,10 @@ def minimal_tree(
         "EXACT_GAUGED_U1X_G3_SU5_EQUALITY_ORBIT_V20.json",
         {
             "status": (
-                "EXACT_CONDITIONAL_EQUALITY_CLASSIFICATION__"
-                "SIGNED_GLOBAL_PHI_ORBIT_LEMMA_OPEN"
+                "EXACT_GLOBAL_EQUALITY_CLASSIFICATION__"
+                "SIGNED_PHI_THEOREM_CLOSED__G3_OPEN"
             ),
-            "overall_state": "OPEN_GLOBAL_LEMMA",
+            "overall_state": "GLOBAL_EQUALITY_ORBITS_CLOSED",
             "n_failed": 0,
             "scope": {
                 "fixed_F_Sigma_global_equality_classified": True,
@@ -455,20 +455,33 @@ def minimal_tree(
                 "fixed_Delta_two_tau_plus_representatives_equivalent": True,
                 "literal_single_Phi_orbit_statement_refuted": True,
                 "minus_F_mixed_branch_excluded_exact": True,
-                "corrected_signed_Phi_orbit_theorem_open": True,
+                "corrected_signed_Phi_orbit_theorem_open": False,
+                "corrected_signed_Phi_orbit_theorem_proved": True,
                 "complete_SU3_fixed_Phi_slice_classified_exactly": True,
-                "global_equality_orbit_classification_complete": False,
+                "distant_disconnected_Phi_components_excluded": True,
+                "all_arbitrary_Phi_global_equalities_classified": True,
+                "global_equality_orbit_classification_complete": True,
+                "quantitative_beta_global_coercivity_proved": False,
                 "G3_closed": False,
             },
             "remaining_global_lemma": {
-                "proved": False,
+                "proved": True,
                 "literal_single_orbit_version_refuted": True,
                 "corrected_signed_two_orbit_version": True,
                 "complete_SU3_fixed_slice_classified_exactly": True,
                 "SU3_fixed_slice_real_dimension": 16,
-                "source_bound_certificate_available": False,
+                "source_bound_certificate_available": True,
                 "source_bound_partial_certificate_available": True,
+                "quantitative_orbit_distance_bound_proved": False,
                 "numerical_search_is_not_a_substitute": True,
+            },
+            "Phi_global_signed_zero_theorem": {
+                "frozen_source_sha256": (
+                    "17038c6fb82ba565a16228f5f5c03026f0ab8e3ad7959792498c2785b9653066"
+                ),
+                "core_sha256": (
+                    "db493a74303a57862f09c2a92118ea3d66b8b12ecbaea9162155d4ab3baafecc"
+                ),
             },
         },
     )
@@ -546,13 +559,14 @@ def minimal_tree(
         root,
         "EXACT_GAUGED_U1X_G3_SU5_CHIRAL_GLOBAL_GAP_REDUCTION_V20.json",
         {
-            "status": "GLOBAL_GAP_REDUCED_TO_PD_EQUALITY_CLASSIFICATION",
+            "status": "GLOBAL_GAP_REDUCED_TO_QUANTITATIVE_COERCIVITY",
             "overall_state": "FINAL_G3_TEST_OPEN",
             "n_failed": 0,
             "flags": {
                 "lower_witness_found": False,
                 "conditional_small_positive_beta_route_exists": True,
                 "beta_1_over_20_global_minimum_certified": False,
+                "PD_equality_orbits_classified": True,
                 "global_equality_orbits_classified": False,
                 "G3_closed": False,
             },
@@ -1595,7 +1609,7 @@ class TheoryValidationMatrixTests(unittest.TestCase):
                     "gauged_G3_SU5_signed_Phi_local_components_exactly_closed"
                 ]
             )
-            self.assertFalse(
+            self.assertTrue(
                 vacuum["evidence"][
                     "gauged_G3_SU5_distant_Phi_components_excluded"
                 ]
@@ -1605,9 +1619,28 @@ class TheoryValidationMatrixTests(unittest.TestCase):
                     "gauged_G3_SU5_Phi_SU3_fixed_slice_exactly_closed"
                 ]
             )
-            self.assertTrue(
+            self.assertFalse(
                 vacuum["evidence"][
                     "gauged_G3_SU5_global_Phi_orbit_lemma_open"
+                ]
+            )
+            self.assertTrue(
+                vacuum["evidence"][
+                    "gauged_G3_SU5_global_Phi_orbit_lemma_closed"
+                ]
+            )
+            self.assertTrue(
+                vacuum["evidence"][
+                    "gauged_G3_SU5_all_PD_equality_orbits_classified_exactly"
+                ]
+            )
+            self.assertEqual(
+                vacuum["evidence"]["gauged_G3_SU5_global_Phi_theorem_core_sha256"],
+                "db493a74303a57862f09c2a92118ea3d66b8b12ecbaea9162155d4ab3baafecc",
+            )
+            self.assertTrue(
+                vacuum["evidence"][
+                    "gauged_G3_SU5_quantitative_beta_global_coercivity_open"
                 ]
             )
             self.assertTrue(

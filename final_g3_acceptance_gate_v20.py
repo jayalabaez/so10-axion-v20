@@ -224,6 +224,9 @@ def build_report(
     hsx_hessian = hsx_report.get("live_full_gradient_and_quotient_Hessian", {})
     equality_scope = equality_report.get("scope", {})
     equality_lemma = equality_report.get("remaining_global_lemma", {})
+    equality_global_theorem = equality_report.get(
+        "Phi_global_signed_zero_theorem", {}
+    )
     local_scope = local_component_report.get("scope", {})
     local_checks = local_component_report.get("checks", {})
     su3_scope = su3_slice_report.get("scope", {})
@@ -344,7 +347,38 @@ def build_report(
     artifact_integrity = {
         "ledger_executes": ledger_report.get("n_failed") == 0,
         "HSX_audit_executes": hsx_report.get("n_failed") == 0,
-        "equality_audit_executes": equality_report.get("n_failed") == 0,
+        "equality_audit_executes": bool(
+            equality_report.get("n_failed") == 0
+            and equality_report.get("status")
+            == "EXACT_GLOBAL_EQUALITY_CLASSIFICATION__SIGNED_PHI_THEOREM_CLOSED__G3_OPEN"
+            and equality_report.get("overall_state")
+            == "GLOBAL_EQUALITY_ORBITS_CLOSED"
+            and equality_scope.get(
+                "all_arbitrary_Phi_global_equalities_classified"
+            )
+            is True
+            and equality_scope.get(
+                "global_equality_orbit_classification_complete"
+            )
+            is True
+            and equality_scope.get("quantitative_beta_global_coercivity_proved")
+            is False
+            and equality_scope.get("G3_closed") is False
+            and equality_lemma.get("proved") is True
+            and equality_lemma.get("source_bound_certificate_available") is True
+            and equality_lemma.get("quantitative_orbit_distance_bound_proved")
+            is False
+            and equality_global_theorem.get("frozen_source_sha256")
+            == "17038c6fb82ba565a16228f5f5c03026f0ab8e3ad7959792498c2785b9653066"
+            and equality_global_theorem.get("core_sha256")
+            == "db493a74303a57862f09c2a92118ea3d66b8b12ecbaea9162155d4ab3baafecc"
+            and _dig(
+                equality_global_theorem,
+                "external_theorem_dependency",
+                "kind",
+            )
+            == "published subgroup-classification theorem"
+        ),
         "Phi_local_component_audit_executes": (
             local_component_report.get("n_failed") == 0
             and local_component_report.get("status")
@@ -1278,6 +1312,20 @@ def build_report(
             "distant_Phi_components_excluded": local_scope.get(
                 "disconnected_distant_components_excluded"
             ),
+            "all_PD_equality_orbits_classified_exactly": science_criteria[
+                "all_PD_equality_orbits_classified_exactly"
+            ],
+            "global_signed_Phi_zero_theorem_core_sha256": (
+                equality_global_theorem.get("core_sha256")
+            ),
+            "global_signed_Phi_zero_theorem_external_dependency": _dig(
+                equality_global_theorem,
+                "external_theorem_dependency",
+                "theorem",
+            ),
+            "quantitative_beta_global_coercivity_proved": equality_scope.get(
+                "quantitative_beta_global_coercivity_proved"
+            ),
             "complete_SU3_fixed_Phi_slice_classified": su3_scope.get(
                 "complete_16_real_dimensional_SU3_fixed_space_classified"
             ),
@@ -1540,7 +1588,11 @@ def build_report(
             "G3 is verified." if release_g3_verified else
             "G3 remains open. The chiral-H candidate now has an exact full "
             "Hessian theorem (rank/nullity 448/38, positive on the quotient) "
-            "and an exact global gap/equality theorem on the complete Phi=F "
+            "and the exact signed-Kahler theorem now classifies every PD "
+            "equality orbit (with Dynkin maximal-subgroup classification as "
+            "an explicit external dependency). It does not provide the "
+            "quantitative projector-to-orbit coercivity estimate. The candidate "
+            "also has an exact global gap/equality theorem on the complete Phi=F "
             "stratum for arbitrary H and Sigma. The complete maximally-negative "
             "pure-Delta sector is now also excluded for arbitrary real Phi and "
             "all nonzero residuals, with sharp gap 1/5000; no exact lower witness "

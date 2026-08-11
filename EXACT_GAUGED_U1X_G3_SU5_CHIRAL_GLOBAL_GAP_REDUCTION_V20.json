@@ -1,5 +1,5 @@
 {
-  "status": "GLOBAL_GAP_REDUCED_TO_PD_EQUALITY_CLASSIFICATION",
+  "status": "GLOBAL_GAP_REDUCED_TO_QUANTITATIVE_COERCIVITY",
   "overall_state": "FINAL_G3_TEST_OPEN",
   "model_contract_id": "gauged_u1x_phi17_v20",
   "n_checks": 9,
@@ -9,7 +9,7 @@
     "sigma_zero_exact_gap_is_1_over_5000": true,
     "fixed_PD_H_orientation_has_no_lower_direction": true,
     "quartic_BFB_is_not_confused_with_globality": true,
-    "PD_global_equality_classification_is_fail_closed": true,
+    "PD_global_equality_classification_is_exact": true,
     "fixed_F_Pluecker_reduction_is_exact": true,
     "fixed_F_full_offkernel_beta_gap_is_exact": true,
     "diagonal_Phi_slice_is_exact": true,
@@ -82,7 +82,7 @@
       "fixed_F_full_offkernel_beta_1_over_20_gap_is_exact": true,
       "pair_plane_diagonal_Phi_equalities_are_one_physical_orbit": true,
       "signed_Phi_orbits_are_exactly_isolated_local_components": true,
-      "all_PD_global_equality_components_are_classified": false,
+      "all_PD_global_equality_components_are_classified": true,
       "current_is_nonnegative_on_every_PD_equality_component": false,
       "every_zero_of_current_on_the_PD_equality_set_is_the_selected_flag_orbit": false,
       "exact_full_486_Hessian_kernel_equals_the_38_symmetry_tangents": true
@@ -111,20 +111,21 @@
       "fixed_F_gap_equality_set": "one determinant-corrected SU(5) flag orbit",
       "pair_plane_diagonal_Phi_zero_set": "F+ and F-, one physical orbit",
       "signed_Phi_orbits_locally_isolated": true,
-      "distant_disconnected_Phi_components_excluded": false,
+      "distant_disconnected_Phi_components_excluded": true,
       "remaining_lemma": {
         "statement": "Every real unit four-form Phi with Pi54(Phi tensor Phi)=0 and Pi4125(Phi tensor Phi)=0 belongs to SO(10).F or SO(10).(-F).",
-        "proved": false,
+        "proved": true,
         "literal_single_orbit_version_refuted": true,
         "corrected_signed_two_orbit_version": true,
-        "source_bound_certificate_available": false,
+        "source_bound_certificate_available": true,
         "source_bound_partial_certificate_available": true,
         "signed_orbits_locally_isolated_exactly": true,
         "complete_SU3_fixed_slice_classified_exactly": true,
         "SU3_fixed_slice_real_dimension": 16,
         "SU3_fixed_slice_nondiagonal_directions_excluded": 8,
-        "distant_disconnected_components_excluded": false,
-        "why_required": "It is the missing step needed to put an arbitrary projector zero into a signed canonical orbit.  The -F orbit is then excluded by exact mixed invertibility, while the +F orbit is handled by the exact Plucker classification.",
+        "distant_disconnected_components_excluded": true,
+        "why_required": "The exact conductor/Cauchy/sextic chain and the external Dynkin subgroup classification put every arbitrary projector zero into a signed canonical orbit.  Exact mixed invertibility excludes -F, and the Plucker theorem handles +F.",
+        "quantitative_orbit_distance_bound_proved": false,
         "numerical_search_is_not_a_substitute": true
       }
     }
@@ -132,9 +133,9 @@
   "final_acceptance_test": {
     "required_statement": "For every 486-real field q, V_beta(q)-V_beta(q0)>=0; equality holds only on the SO(10)xU(1)_XxPQ orbit of q0.",
     "required_evidence": [
-      "classify every equality component of the beta=0 PD SOS",
-      "prove I45(H,Sigma)>=0 on each full-SOS equality component",
-      "prove all zeros of that restriction are the selected chiral flag orbit",
+      "derive a quantitative projector-to-signed-orbit distance bound",
+      "control the beta current uniformly off the PD equality set",
+      "prove all zeros of the controlled restriction are the selected chiral flag orbit",
       "supply an explicit beta interval containing beta=1/20, or lower beta to a certified interval"
     ],
     "currently_passes": false
@@ -143,9 +144,10 @@
     "lower_witness_found": false,
     "conditional_small_positive_beta_route_exists": true,
     "beta_1_over_20_global_minimum_certified": false,
+    "PD_equality_orbits_classified": true,
     "global_equality_orbits_classified": false,
     "G3_closed": false,
     "whole_model_excluded": false
   },
-  "verdict": "The chiral-H candidate has survived the exact Sigma=0 and fixed-PD orientation tests, and no lower witness is known. The final global question is reduced to the unproved global equality classification of the PD SOS and a uniform bound away from the signed Phi strata. The complete Phi=F stratum is now certified at beta=1/20 for arbitrary H and Sigma, but that subtheorem does not by itself close G3."
+  "verdict": "The chiral-H candidate has survived the exact Sigma=0 and fixed-PD orientation tests, and no lower witness is known. The PD equality-orbit classification is now exact. The final global question is the quantitative uniform coercivity bound away from the signed Phi strata. The complete Phi=F stratum is now certified at beta=1/20 for arbitrary H and Sigma, but that subtheorem does not by itself close G3."
 }

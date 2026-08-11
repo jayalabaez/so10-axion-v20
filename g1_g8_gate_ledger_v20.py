@@ -2420,6 +2420,9 @@ def _gauged_u1x_g3_frontier(
     hsx_exact_flags = su5_hsx_exact_hessian_report.get("flags", {})
     equality_scope = su5_equality_report.get("scope", {})
     equality_lemma = su5_equality_report.get("remaining_global_lemma", {})
+    equality_global = su5_equality_report.get(
+        "Phi_global_signed_zero_theorem", {}
+    )
     phi_orbit_scope = su5_phi_orbit_report.get("scope", {})
     phi_orbit_lemma = su5_phi_orbit_report.get("corrected_global_lemma", {})
     phi_local_scope = su5_phi_local_component_report.get("scope", {})
@@ -2744,8 +2747,9 @@ def _gauged_u1x_g3_frontier(
     su5_equality_honestly_reduced = bool(
         su5_equality_report.get("n_failed") == 0
         and su5_equality_report.get("status")
-        == "EXACT_CONDITIONAL_EQUALITY_CLASSIFICATION__SIGNED_GLOBAL_PHI_ORBIT_LEMMA_OPEN"
-        and su5_equality_report.get("overall_state") == "OPEN_GLOBAL_LEMMA"
+        == "EXACT_GLOBAL_EQUALITY_CLASSIFICATION__SIGNED_PHI_THEOREM_CLOSED__G3_OPEN"
+        and su5_equality_report.get("overall_state")
+        == "GLOBAL_EQUALITY_ORBITS_CLOSED"
         and equality_scope.get("fixed_F_Sigma_global_equality_classified") is True
         and equality_scope.get(
             "fixed_Delta_diagonal_Phi_global_equality_classified"
@@ -2758,32 +2762,44 @@ def _gauged_u1x_g3_frontier(
         and equality_scope.get("literal_single_Phi_orbit_statement_refuted")
         is True
         and equality_scope.get("minus_F_mixed_branch_excluded_exact") is True
-        and equality_scope.get("corrected_signed_Phi_orbit_theorem_open") is True
+        and equality_scope.get("corrected_signed_Phi_orbit_theorem_open") is False
+        and equality_scope.get("corrected_signed_Phi_orbit_theorem_proved")
+        is True
         and equality_scope.get("signed_Phi_orbits_locally_isolated_exactly")
         is True
         and equality_scope.get("complete_SU3_fixed_Phi_slice_classified_exactly")
         is True
         and equality_scope.get("distant_disconnected_Phi_components_excluded")
-        is False
+        is True
         and equality_scope.get(
             "all_arbitrary_Phi_global_equalities_classified"
         )
-        is False
+        is True
         and equality_scope.get("global_equality_orbit_classification_complete")
+        is True
+        and equality_scope.get("quantitative_beta_global_coercivity_proved")
         is False
         and equality_scope.get("G3_closed") is False
         and equality_scope.get("whole_model_excluded") is False
-        and equality_lemma.get("proved") is False
+        and equality_lemma.get("proved") is True
         and equality_lemma.get("literal_single_orbit_version_refuted") is True
         and equality_lemma.get("corrected_signed_two_orbit_version") is True
-        and equality_lemma.get("source_bound_certificate_available") is False
+        and equality_lemma.get("source_bound_certificate_available") is True
         and equality_lemma.get("source_bound_partial_certificate_available") is True
         and equality_lemma.get("signed_orbits_locally_isolated_exactly") is True
         and equality_lemma.get("complete_SU3_fixed_slice_classified_exactly")
         is True
         and equality_lemma.get("SU3_fixed_slice_real_dimension") == 16
-        and equality_lemma.get("distant_disconnected_components_excluded") is False
+        and equality_lemma.get("distant_disconnected_components_excluded") is True
+        and equality_lemma.get("quantitative_orbit_distance_bound_proved")
+        is False
         and equality_lemma.get("numerical_search_is_not_a_substitute") is True
+        and equality_global.get("frozen_source_sha256")
+        == "17038c6fb82ba565a16228f5f5c03026f0ab8e3ad7959792498c2785b9653066"
+        and equality_global.get("core_sha256")
+        == "db493a74303a57862f09c2a92118ea3d66b8b12ecbaea9162155d4ab3baafecc"
+        and equality_global.get("external_theorem_dependency", {}).get("kind")
+        == "published subgroup-classification theorem"
     )
     su5_phi_orbit_audit_honest = bool(
         su5_phi_orbit_report.get("status")
@@ -2863,12 +2879,13 @@ def _gauged_u1x_g3_frontier(
     su5_chiral_gap_honestly_reduced = bool(
         su5_gap_report.get("n_failed") == 0
         and su5_gap_report.get("status")
-        == "GLOBAL_GAP_REDUCED_TO_PD_EQUALITY_CLASSIFICATION"
+        == "GLOBAL_GAP_REDUCED_TO_QUANTITATIVE_COERCIVITY"
         and su5_gap_report.get("overall_state") == "FINAL_G3_TEST_OPEN"
         and su5_gap_report.get("model_contract_id") == AUTHORITATIVE_CONTRACT_ID
         and gap_flags.get("lower_witness_found") is False
         and gap_flags.get("conditional_small_positive_beta_route_exists") is True
         and gap_flags.get("beta_1_over_20_global_minimum_certified") is False
+        and gap_flags.get("PD_equality_orbits_classified") is True
         and gap_flags.get("global_equality_orbits_classified") is False
         and gap_flags.get("G3_closed") is False
         and gap_flags.get("whole_model_excluded") is False
@@ -3198,7 +3215,10 @@ def _gauged_u1x_g3_frontier(
             su5_scope.get("full_486_field_stationarity")
         ),
         "SU5_Delta_PD_disconnected_equality_orbits_open": not bool(
-            su5_scope.get("global_orbit_uniqueness")
+            equality_scope.get("global_equality_orbit_classification_complete")
+        ),
+        "SU5_Delta_PD_equality_orbits_classified_exactly": bool(
+            equality_scope.get("global_equality_orbit_classification_complete")
         ),
         "SU5_Delta_HSX_honest_frontier": su5_hsx_honest_frontier,
         "SU5_Delta_HSX_nonzero_real_parameters": (
@@ -3250,7 +3270,10 @@ def _gauged_u1x_g3_frontier(
             "literal_plus_orbit_only_statement_refuted"
         ),
         "SU5_Delta_signed_Phi_orbit_theorem_open": not bool(
-            phi_orbit_scope.get("corrected_signed_two_orbit_theorem_proved")
+            equality_scope.get("corrected_signed_Phi_orbit_theorem_proved")
+        ),
+        "SU5_Delta_signed_Phi_orbit_theorem_closed": bool(
+            equality_scope.get("corrected_signed_Phi_orbit_theorem_proved")
         ),
         "SU5_Delta_SU4_Phi_slice_classified": phi_orbit_scope.get(
             "complete_SU4_invariant_slice_classified"
@@ -3258,8 +3281,8 @@ def _gauged_u1x_g3_frontier(
         "SU5_Delta_signed_Phi_local_components_closed": (
             su5_phi_local_components_closed
         ),
-        "SU5_Delta_distant_Phi_components_excluded": phi_local_scope.get(
-            "disconnected_distant_components_excluded"
+        "SU5_Delta_distant_Phi_components_excluded": equality_scope.get(
+            "distant_disconnected_Phi_components_excluded"
         ),
         "SU5_Delta_Phi_SU3_fixed_slice_closed": su5_phi_su3_slice_closed,
         "SU5_Delta_Phi_SU3_fixed_slice_dimension": 16
@@ -3274,6 +3297,15 @@ def _gauged_u1x_g3_frontier(
         "SU5_Delta_global_Phi_orbit_lemma_open": not bool(
             equality_lemma.get("proved")
         ),
+        "SU5_Delta_global_Phi_orbit_lemma_closed": bool(
+            equality_lemma.get("proved")
+        ),
+        "SU5_Delta_global_Phi_orbit_theorem_core_sha256": equality_global.get(
+            "core_sha256"
+        ),
+        "SU5_Delta_global_Phi_orbit_external_dependency": equality_global.get(
+            "external_theorem_dependency", {}
+        ).get("theorem"),
         "SU5_Delta_global_Phi_orbit_lemma": equality_lemma.get("statement"),
         "SU5_Delta_chiral_global_gap_honestly_reduced": (
             su5_chiral_gap_honestly_reduced
@@ -4278,6 +4310,8 @@ def _build_report_from_inputs(
             and g3_frontier[
                 "SU5_Delta_PD_disconnected_equality_orbits_open"
             ]
+            is False
+            and g3_frontier["SU5_Delta_PD_equality_orbits_classified_exactly"]
             is True
         ),
         "gauged_G3_SU5_HSX_extension_is_promising_and_fail_closed": (
@@ -4315,20 +4349,26 @@ def _build_report_from_inputs(
                 "SU5_Delta_literal_single_Phi_orbit_refuted"
             ]
             is True
-            and g3_frontier["SU5_Delta_signed_Phi_orbit_theorem_open"] is True
+            and g3_frontier["SU5_Delta_signed_Phi_orbit_theorem_open"] is False
+            and g3_frontier["SU5_Delta_signed_Phi_orbit_theorem_closed"] is True
             and g3_frontier["SU5_Delta_SU4_Phi_slice_classified"] is True
             and g3_frontier[
                 "SU5_Delta_signed_Phi_local_components_closed"
             ]
             is True
             and g3_frontier["SU5_Delta_distant_Phi_components_excluded"]
-            is False
+            is True
             and g3_frontier["SU5_Delta_Phi_SU3_fixed_slice_closed"] is True
             and g3_frontier["SU5_Delta_Phi_SU3_fixed_slice_dimension"] == 16
             and g3_frontier["SU5_Delta_fixed_F_Sigma_one_orbit_exact"] is True
             and g3_frontier["SU5_Delta_diagonal_Phi_slice_one_orbit_exact"]
             is True
-            and g3_frontier["SU5_Delta_global_Phi_orbit_lemma_open"] is True
+            and g3_frontier["SU5_Delta_global_Phi_orbit_lemma_open"] is False
+            and g3_frontier["SU5_Delta_global_Phi_orbit_lemma_closed"] is True
+            and g3_frontier[
+                "SU5_Delta_global_Phi_orbit_theorem_core_sha256"
+            ]
+            == "db493a74303a57862f09c2a92118ea3d66b8b12ecbaea9162155d4ab3baafecc"
         ),
         "gauged_G3_SU5_chiral_global_gap_is_reduced_and_fail_closed": (
             g3_frontier["SU5_Delta_chiral_global_gap_honestly_reduced"] is True

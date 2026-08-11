@@ -87,6 +87,21 @@ def test_current_gate_is_open_not_failed_or_overclaimed():
     assert report["science_criteria"][
         "complete_SU3_fixed_Phi_slice_classified_exactly"
     ] is True
+    assert report["science_criteria"][
+        "all_PD_equality_orbits_classified_exactly"
+    ] is True
+    assert report["diagnostic_only"][
+        "all_PD_equality_orbits_classified_exactly"
+    ] is True
+    assert report["diagnostic_only"][
+        "global_signed_Phi_zero_theorem_core_sha256"
+    ] == "db493a74303a57862f09c2a92118ea3d66b8b12ecbaea9162155d4ab3baafecc"
+    assert "Dynkin" in report["diagnostic_only"][
+        "global_signed_Phi_zero_theorem_external_dependency"
+    ]
+    assert report["diagnostic_only"][
+        "quantitative_beta_global_coercivity_proved"
+    ] is False
     assert report["diagnostic_only"]["Phi_local_component_state"] == (
         "LOCAL_COMPONENT_THEOREM_CLOSED"
     )
@@ -227,6 +242,8 @@ def test_current_gate_is_open_not_failed_or_overclaimed():
     assert report["science_criteria"][
         "beta_global_gap_and_unique_equality_exact"
     ] is False
+    assert "all_PD_equality_orbits_classified_exactly" not in report["blockers"]
+    assert "beta_global_gap_and_unique_equality_exact" in report["blockers"]
     assert "478x1414 integer map" in report["verdict"]
     assert "kernel dimension 936" in report["verdict"]
     assert "zero placeholder is nonphysical" in report["verdict"]
@@ -238,6 +255,8 @@ def test_current_gate_is_open_not_failed_or_overclaimed():
     assert "every real Phi210" in report["verdict"]
     assert "Global Sigma, general/full H, the full Hessian, and G3 remain open" in report["verdict"]
     assert "G3 remains open" in report["verdict"]
+    assert "classifies every PD equality orbit" in report["verdict"]
+    assert "quantitative projector-to-orbit coercivity" in report["verdict"]
     assert "only a four-real-dimensional Phi sub-slice" not in report["verdict"]
     assert "arbitrary-Phi bound remain open" not in report["verdict"]
     assert "no coordinate Schur matrix" not in report["verdict"]

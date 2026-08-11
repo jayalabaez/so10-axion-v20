@@ -1,6 +1,8 @@
 {
   "claim_boundary": {
+    "Dynkin_maximal_subgroup_classification_external_dependency": true,
     "G3_closed": false,
+    "all_PD_equality_orbits_classified_exactly": true,
     "arbitrary_real_Phi_at_fixed_endpoint": true,
     "fixed_H": "h_-=(e0-i e1)/sqrt(2)",
     "fixed_Sigma": "q/4",
@@ -8,8 +10,10 @@
     "full_Hessian_proved": false,
     "general_H_proved": false,
     "global_Sigma_proved": false,
+    "global_signed_kaehler_Phi_self_zero_classification_proved": true,
     "legacy_v20_physical_target_valid": false,
-    "legacy_v20_primal_valid": false
+    "legacy_v20_primal_valid": false,
+    "quantitative_beta_global_coercivity_proved": false
   },
   "exact_dimensions": {
     "coefficient_equalities": 6585,
@@ -25,6 +29,27 @@
     "target_nonzero_count": 512
   },
   "generation_source_pins": {
+    "global_Phi_classification_raw_sha256": {
+      "EXACT_PHI_ZERO_DEGREE8_CONDUCTOR_EVALUATION_TABLE.json": "beab3649ca03c3ee3c6fc2ab700efedfe614328a6da52f2234d3b9610f3c167c",
+      "EXACT_PHI_ZERO_DEGREE8_CONDUCTOR_RECONSTRUCTION_CHECKPOINT.json": "0afad3c1a1de58243d27fd07fe550c90ca516e1c5483c027bcbd8e752e892179",
+      "EXACT_PHI_ZERO_DEGREE8_CONDUCTOR_SOLUTION.json": "c49833b4f90b0b5a6604d4d5aded36ea00944dd198d2ceefd8def8213174dcfa",
+      "FROZEN_EXACT_SIGNED_KAEHLER_FULL126_STRONG_OPERATOR_SOURCE_V20.py": "c7ad27cc1566e743f762f675dabfcfb0ccc499c8acf5c5956c2bf768a90eb771",
+      "FROZEN_PHI_SELF_ZERO_GLOBAL_SEXTIC_SYZYGY_SOURCE_V20.py": "0ad2c69915d0b758342d68c568c9d29c5bd80c0e39c0ab686824eba1a1350a8c",
+      "FROZEN_PHI_SELF_ZERO_GLOBAL_SIGNED_KAEHLER_CLASSIFICATION_SOURCE_V20.py": "17038c6fb82ba565a16228f5f5c03026f0ab8e3ad7959792498c2785b9653066",
+      "FROZEN_PHI_ZERO_CUBIC_CAUCHY_BRIDGE_SOURCE_V20.py": "01b1bb5f450521506bf6a025650629691ce738325d1f16c5aafc050abe34e1c7",
+      "FROZEN_PHI_ZERO_DEGREE8_CONDUCTOR_IDENTITY_SOURCE_V20.py": "92c5b244daa40ec423c6292f3816f6c87395ce31fe7aebe73dd264a5596f44df",
+      "FROZEN_PHI_ZERO_DEGREE8_CONDUCTOR_RECONSTRUCTION_SOURCE_V20.py": "0bdb091d506a1fc180dbd68fa1c32b7bdb09084a78bcf86ebedad2aa2d2bc9f6",
+      "FROZEN_SIGNED_KAEHLER_FULL126_PHYSICAL_SUBTRACTION_SOURCE_V20.py": "911f9566cbdc957e2ec8bbf90f6d3546505a03e1bd76d66d85267a0536066c1a",
+      "FROZEN_SIGNED_KAEHLER_P0_FULL126_KERNEL_RADIAL_STRICTNESS_SOURCE_V20.py": "73819bb79be24a1cc2234c87b90bfb4bc2029e00c41fdedfa491bb89b9f06c4f",
+      "exact_phi_self_zero_global_sextic_syzygy_v20.py": "5de73274c9def8bbc9628895457065fb1a93536eb611288dd66ffa6e1f8b2766",
+      "exact_phi_self_zero_global_signed_kaehler_classification_v20.py": "6887429cebbe0e0ee9171b9346b85c671959c2fdbc2b5187efc73a52552b0883",
+      "exact_phi_zero_cubic_cauchy_bridge_v20.py": "282307be1abfe6d8d59c4e63861dbd5f8b4cf01d488d5df8793c27e029060bb0",
+      "exact_phi_zero_degree8_conductor_identity_v20.py": "d8587194b647a49f2b9950aebb920ee7a3c7f28f9f0823d8257676fe70e81fd9",
+      "exact_phi_zero_o10_degree8_invariant_split_v20.py": "6a80a8f95efc1f4515b8b8e9120c4011df5d378ebeb38f59f6119c73308daa90",
+      "reconstruct_exact_phi_zero_degree8_conductor_table_v20.py": "968c4f63bbc4a1eb213a335d10ee465e8f27621b79c9ce860ca187702f49bbc9",
+      "reconstruct_exact_phi_zero_degree8_radical_v20.py": "8c835c5df2bce72d263117061fde770d53bb7d607cd305cc4a6a039466529133",
+      "solve_exact_phi_zero_degree8_conductor_identity_v20.py": "3679695424452230c1583088b83291a7671348cfa90deb872cba51f2a07eceb0"
+    },
     "map_raw_sha256": {
       "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.json": "0efce9154b5b4204107cf211ff3c355641783353bf8d68ddb931f40994fdbb08",
       "EXACT_GAUGED_U1X_G3_RANK1_SU4_STABILIZER_V20.json": "91996a1e36b8169ffe5a8553f7efacf4586935aec7f971ad9689805049c62feb",
@@ -49,8 +74,8 @@
   },
   "inventory": {
     ".gitattributes": {
-      "content_sha256": "c99a4c77c178c48d259064c71c0782eea04846cc819c54bbd26da9370212eb89",
-      "content_size_bytes": 1690,
+      "content_sha256": "b89e9b25801c53979455676aa7653fa80c9bf187af208feb3f2b46522f2aed79",
+      "content_size_bytes": 3080,
       "hash_mode": "raw",
       "role": "central corrected-endpoint integration source"
     },
@@ -120,21 +145,135 @@
       "hash_mode": "raw",
       "role": "generation-only byte-pinned structural dependency"
     },
+    "EXACT_GAUGED_U1X_G3_SU5_CHIRAL_GLOBAL_GAP_REDUCTION_V20.json": {
+      "content_sha256": "31ca7705a3d3197c11cabea1dcf2030b343ace13fab555c326625b3530b730a5",
+      "content_size_bytes": 7393,
+      "hash_mode": "portable-lf",
+      "role": "regenerated central report or documentation"
+    },
+    "EXACT_GAUGED_U1X_G3_SU5_CHIRAL_GLOBAL_GAP_REDUCTION_V20.md": {
+      "content_sha256": "c72cd1d3a60f8e0e78482df79ecdd6dd1b6f9d47ebe832b1de967e23e2f679db",
+      "content_size_bytes": 677,
+      "hash_mode": "portable-lf",
+      "role": "regenerated central report or documentation"
+    },
+    "EXACT_GAUGED_U1X_G3_SU5_EQUALITY_ORBIT_V20.json": {
+      "content_sha256": "999b241ccaf47a1323cd13bdf63034e1a1021a4c6b2d77557e44884378f5d1bf",
+      "content_size_bytes": 35710,
+      "hash_mode": "portable-lf",
+      "role": "regenerated central report or documentation"
+    },
+    "EXACT_GAUGED_U1X_G3_SU5_EQUALITY_ORBIT_V20.md": {
+      "content_sha256": "0d3c81bb5597aff63ed08f1347e1774c43d4bd72174a7cf4136be3a013b3352c",
+      "content_size_bytes": 1249,
+      "hash_mode": "portable-lf",
+      "role": "regenerated central report or documentation"
+    },
+    "EXACT_PHI_SELF_ZERO_GLOBAL_SEXTIC_SYZYGY.md": {
+      "content_sha256": "5fe6765228c12b287634aee5acb282f7ccc06d0fa87363fea8feafc39f83dddb",
+      "content_size_bytes": 2092,
+      "hash_mode": "portable-lf",
+      "role": "regenerated central report or documentation"
+    },
+    "EXACT_PHI_SELF_ZERO_GLOBAL_SIGNED_KAEHLER_CLASSIFICATION.md": {
+      "content_sha256": "e7c4c58d120a479d4139b971bdbaa93088ba156e4dc0eb30a3382a28e51a3214",
+      "content_size_bytes": 3795,
+      "hash_mode": "portable-lf",
+      "role": "regenerated central report or documentation"
+    },
+    "EXACT_PHI_ZERO_CUBIC_CAUCHY_BRIDGE.md": {
+      "content_sha256": "ed4cb77f81d25436bff9444aa4a0baf21799e03730cdce31f4b3eb3e410ea3e8",
+      "content_size_bytes": 1294,
+      "hash_mode": "portable-lf",
+      "role": "regenerated central report or documentation"
+    },
+    "EXACT_PHI_ZERO_DEGREE8_CONDUCTOR_EVALUATION_TABLE.json": {
+      "content_sha256": "beab3649ca03c3ee3c6fc2ab700efedfe614328a6da52f2234d3b9610f3c167c",
+      "content_size_bytes": 606167,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact global Phi self-zero proof dependency"
+    },
+    "EXACT_PHI_ZERO_DEGREE8_CONDUCTOR_IDENTITY.md": {
+      "content_sha256": "45f99f4d7f57acfbeeaa54d4f4dac403db296267de73e2654e6b62a161cfe5c4",
+      "content_size_bytes": 2762,
+      "hash_mode": "portable-lf",
+      "role": "regenerated central report or documentation"
+    },
+    "EXACT_PHI_ZERO_DEGREE8_CONDUCTOR_RECONSTRUCTION_CHECKPOINT.json": {
+      "content_sha256": "0afad3c1a1de58243d27fd07fe550c90ca516e1c5483c027bcbd8e752e892179",
+      "content_size_bytes": 520262,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact global Phi self-zero proof dependency"
+    },
+    "EXACT_PHI_ZERO_DEGREE8_CONDUCTOR_SOLUTION.json": {
+      "content_sha256": "c49833b4f90b0b5a6604d4d5aded36ea00944dd198d2ceefd8def8213174dcfa",
+      "content_size_bytes": 235971,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact global Phi self-zero proof dependency"
+    },
     "FINAL_G3_ACCEPTANCE_GATE_V20.json": {
-      "content_sha256": "7058fc619e1822137ce26e62e966804383026a709f89aa8125cd3dd5e05c8f96",
-      "content_size_bytes": 10641,
+      "content_sha256": "e6c57ab0092c15654f15cde46076f13163863bd0b8312c0c308a8dfabe7cd420",
+      "content_size_bytes": 11251,
       "hash_mode": "portable-lf",
       "role": "regenerated central report or documentation"
     },
     "FINAL_G3_ACCEPTANCE_GATE_V20.md": {
-      "content_sha256": "7e77891f915564d573d80b319fa5dcbf6445b576710cc565c75d37280ecfc05b",
-      "content_size_bytes": 3102,
+      "content_sha256": "b9e8d5e254e4b878c1f3d964a80fd82a84949c9363b57aa9184eb931046cf034",
+      "content_size_bytes": 3308,
       "hash_mode": "portable-lf",
       "role": "regenerated central report or documentation"
     },
+    "FROZEN_EXACT_SIGNED_KAEHLER_FULL126_STRONG_OPERATOR_SOURCE_V20.py": {
+      "content_sha256": "c7ad27cc1566e743f762f675dabfcfb0ccc499c8acf5c5956c2bf768a90eb771",
+      "content_size_bytes": 22710,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact global Phi self-zero proof dependency"
+    },
+    "FROZEN_PHI_SELF_ZERO_GLOBAL_SEXTIC_SYZYGY_SOURCE_V20.py": {
+      "content_sha256": "0ad2c69915d0b758342d68c568c9d29c5bd80c0e39c0ab686824eba1a1350a8c",
+      "content_size_bytes": 22631,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact global Phi self-zero proof dependency"
+    },
+    "FROZEN_PHI_SELF_ZERO_GLOBAL_SIGNED_KAEHLER_CLASSIFICATION_SOURCE_V20.py": {
+      "content_sha256": "17038c6fb82ba565a16228f5f5c03026f0ab8e3ad7959792498c2785b9653066",
+      "content_size_bytes": 13589,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact global Phi self-zero proof dependency"
+    },
+    "FROZEN_PHI_ZERO_CUBIC_CAUCHY_BRIDGE_SOURCE_V20.py": {
+      "content_sha256": "01b1bb5f450521506bf6a025650629691ce738325d1f16c5aafc050abe34e1c7",
+      "content_size_bytes": 9763,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact global Phi self-zero proof dependency"
+    },
+    "FROZEN_PHI_ZERO_DEGREE8_CONDUCTOR_IDENTITY_SOURCE_V20.py": {
+      "content_sha256": "92c5b244daa40ec423c6292f3816f6c87395ce31fe7aebe73dd264a5596f44df",
+      "content_size_bytes": 16214,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact global Phi self-zero proof dependency"
+    },
+    "FROZEN_PHI_ZERO_DEGREE8_CONDUCTOR_RECONSTRUCTION_SOURCE_V20.py": {
+      "content_sha256": "0bdb091d506a1fc180dbd68fa1c32b7bdb09084a78bcf86ebedad2aa2d2bc9f6",
+      "content_size_bytes": 11400,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact global Phi self-zero proof dependency"
+    },
+    "FROZEN_SIGNED_KAEHLER_FULL126_PHYSICAL_SUBTRACTION_SOURCE_V20.py": {
+      "content_sha256": "911f9566cbdc957e2ec8bbf90f6d3546505a03e1bd76d66d85267a0536066c1a",
+      "content_size_bytes": 8185,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact global Phi self-zero proof dependency"
+    },
+    "FROZEN_SIGNED_KAEHLER_P0_FULL126_KERNEL_RADIAL_STRICTNESS_SOURCE_V20.py": {
+      "content_sha256": "73819bb79be24a1cc2234c87b90bfb4bc2029e00c41fdedfa491bb89b9f06c4f",
+      "content_size_bytes": 21364,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact global Phi self-zero proof dependency"
+    },
     "G1_G8_EXECUTION_ROADMAP_V20.json": {
-      "content_sha256": "14cd831603d23a6c96840384d89363d0379ea26cd8c6daed8443b1dbe52c8b02",
-      "content_size_bytes": 9371404,
+      "content_sha256": "1d83cc17badfb1dc94dbdabe505cb4e1c6c83fd12d363542d556cf4f073fc57c",
+      "content_size_bytes": 9378092,
       "hash_mode": "portable-lf",
       "role": "regenerated central report or documentation"
     },
@@ -145,8 +284,8 @@
       "role": "regenerated central report or documentation"
     },
     "G1_G8_GATE_LEDGER_V20.json": {
-      "content_sha256": "b9d5fa9c25f4bed623b30b87238747f79ca113d1470ce4875380f37fafa92bcf",
-      "content_size_bytes": 9370183,
+      "content_sha256": "9a71ea0d15ede33322720300bd38b99f4edc2685cb7050a936d33f016d7f1948",
+      "content_size_bytes": 9376871,
       "hash_mode": "portable-lf",
       "role": "regenerated central report or documentation"
     },
@@ -157,14 +296,14 @@
       "role": "regenerated central report or documentation"
     },
     "README.md": {
-      "content_sha256": "c694d57d17598dc2516e0d0d621fe10962c20a302e9d37dd8352f1067973e3f9",
-      "content_size_bytes": 25234,
+      "content_sha256": "f8a1b3310916f63de18ecdeed9da3841a02126009905f92b6bfa5b2df803a801",
+      "content_size_bytes": 25262,
       "hash_mode": "portable-lf",
       "role": "regenerated central report or documentation"
     },
     "SHA256SUMS": {
-      "content_sha256": "c9cc54b7f3438bb6c972a7892381cb5ff2b7ae60203b334baf74e3cb420e2034",
-      "content_size_bytes": 29902,
+      "content_sha256": "6fa2e46ee8a9cf13a27e45e8238c2169081a4850937ace3dcf9b8e6720c31c64",
+      "content_size_bytes": 33177,
       "hash_mode": "portable-lf",
       "role": "release-core portable checksum manifest"
     },
@@ -175,20 +314,20 @@
       "role": "regenerated central report or documentation"
     },
     "THEORY_VALIDATION_MATRIX_V20_VERDICT.json": {
-      "content_sha256": "f10d91dfd9dfc2012f0f553c9f27fe1df61a482735f9e60c670ebabc46c7d2f8",
-      "content_size_bytes": 30856,
+      "content_sha256": "2ea2bc4832b11ecfda68df3510a73ea64c96ec24f7188bed4be090fcd142d738",
+      "content_size_bytes": 31186,
       "hash_mode": "portable-lf",
       "role": "regenerated central report or documentation"
     },
     "VALIDATION_EXECUTION_V20.md": {
-      "content_sha256": "9d360a056fbae610e4ce1870675cce3a5f287ca391f3ea6bab1aa2f8e02709f2",
-      "content_size_bytes": 9188,
+      "content_sha256": "9de17d76e77f57688b1be4555367324957dd3319fcbbf81191331bf9e533f5e4",
+      "content_size_bytes": 9391,
       "hash_mode": "portable-lf",
       "role": "regenerated central report or documentation"
     },
     "VALIDATION_EXECUTION_V20_VERDICT.json": {
-      "content_sha256": "3086d6af5f3a46828efd05bf3c993dd4fa2c767e133b6368d17d3ffb3a49db00",
-      "content_size_bytes": 32727,
+      "content_sha256": "76d3e6c94aba1326a91b11e6351c25e8595c3606919a96809be930184be56086",
+      "content_size_bytes": 33100,
       "hash_mode": "portable-lf",
       "role": "regenerated central report or documentation"
     },
@@ -378,27 +517,69 @@
       "hash_mode": "raw",
       "role": "generation-only byte-pinned structural dependency"
     },
+    "exact_gauged_u1x_g3_su5_chiral_global_gap_reduction_v20.py": {
+      "content_sha256": "31353b5db8c2c577e387edb440165fb7ab56427b90dc132025af48b246c5c6b4",
+      "content_size_bytes": 16224,
+      "hash_mode": "portable-lf",
+      "role": "central corrected-endpoint integration source"
+    },
+    "exact_gauged_u1x_g3_su5_equality_orbit_v20.py": {
+      "content_sha256": "e28544545fa41e39f2e50017e6a33ce65abb370c33f911054ea25a825feb3032",
+      "content_size_bytes": 37284,
+      "hash_mode": "portable-lf",
+      "role": "central corrected-endpoint integration source"
+    },
+    "exact_phi_self_zero_global_sextic_syzygy_v20.py": {
+      "content_sha256": "5de73274c9def8bbc9628895457065fb1a93536eb611288dd66ffa6e1f8b2766",
+      "content_size_bytes": 22597,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact global Phi self-zero proof dependency"
+    },
+    "exact_phi_self_zero_global_signed_kaehler_classification_v20.py": {
+      "content_sha256": "6887429cebbe0e0ee9171b9346b85c671959c2fdbc2b5187efc73a52552b0883",
+      "content_size_bytes": 15121,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact global Phi self-zero proof dependency"
+    },
+    "exact_phi_zero_cubic_cauchy_bridge_v20.py": {
+      "content_sha256": "282307be1abfe6d8d59c4e63861dbd5f8b4cf01d488d5df8793c27e029060bb0",
+      "content_size_bytes": 9729,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact global Phi self-zero proof dependency"
+    },
+    "exact_phi_zero_degree8_conductor_identity_v20.py": {
+      "content_sha256": "d8587194b647a49f2b9950aebb920ee7a3c7f28f9f0823d8257676fe70e81fd9",
+      "content_size_bytes": 16516,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact global Phi self-zero proof dependency"
+    },
+    "exact_phi_zero_o10_degree8_invariant_split_v20.py": {
+      "content_sha256": "6a80a8f95efc1f4515b8b8e9120c4011df5d378ebeb38f59f6119c73308daa90",
+      "content_size_bytes": 13064,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact global Phi self-zero proof dependency"
+    },
     "final_g3_acceptance_gate_v20.py": {
-      "content_sha256": "31d25ea8718f39194eb07a2d1f4a3618c5d0d56c229bac0db8c21b44e88f6783",
-      "content_size_bytes": 72881,
+      "content_sha256": "728c8e431adb619901eb1533f2c6e13f6898ba6dcbfc2eb672dd12838904302a",
+      "content_size_bytes": 75360,
       "hash_mode": "portable-lf",
       "role": "central corrected-endpoint integration source"
     },
     "freeze_corrected_rank1_endpoint_v21_integration.py": {
-      "content_sha256": "a3d2b00b40539e769320b40102edb648e36f3830e48455bf90f4ab3df1100d8e",
-      "content_size_bytes": 27348,
+      "content_sha256": "b9ce1300307f3abccc92e9912ee6d0d44418bd7c5522bd49b6846e2c6c2f5746",
+      "content_size_bytes": 32903,
       "hash_mode": "raw",
       "role": "central corrected-endpoint integration source"
     },
     "g1_g8_execution_roadmap_v20.py": {
-      "content_sha256": "b5bafd8a79beac07b757354b3af7dab2adecc6017b130b36395b98b641ec18eb",
-      "content_size_bytes": 36822,
+      "content_sha256": "f0cd36328801ca9a389d610197e038d9be419e1c8f8d7b95670eb43a0c6f900d",
+      "content_size_bytes": 37272,
       "hash_mode": "portable-lf",
       "role": "central corrected-endpoint integration source"
     },
     "g1_g8_gate_ledger_v20.py": {
-      "content_sha256": "da1ed961be9eb6987c1eb64dd4ce29284d83411c588915cbff6b43436933abc5",
-      "content_size_bytes": 244628,
+      "content_sha256": "9db9de47573181efa3e743154ecf1006defa7e35ca67fc528476888c685eaed7",
+      "content_size_bytes": 246629,
       "hash_mode": "portable-lf",
       "role": "central corrected-endpoint integration source"
     },
@@ -409,16 +590,34 @@
       "role": "central corrected-endpoint integration source"
     },
     "prepare_validation_artifacts_v20.py": {
-      "content_sha256": "72e852c0d95571f5faab0b55829285b13e326ef034459e299f3280520e727d3f",
-      "content_size_bytes": 17321,
+      "content_sha256": "6064abb2b17b593e315361e24a3e37e92e7bf9a3e6c20dba23cea5ea2221c44f",
+      "content_size_bytes": 17662,
       "hash_mode": "portable-lf",
       "role": "central corrected-endpoint integration source"
     },
+    "reconstruct_exact_phi_zero_degree8_conductor_table_v20.py": {
+      "content_sha256": "968c4f63bbc4a1eb213a335d10ee465e8f27621b79c9ce860ca187702f49bbc9",
+      "content_size_bytes": 11434,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact global Phi self-zero proof dependency"
+    },
+    "reconstruct_exact_phi_zero_degree8_radical_v20.py": {
+      "content_sha256": "8c835c5df2bce72d263117061fde770d53bb7d607cd305cc4a6a039466529133",
+      "content_size_bytes": 12448,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact global Phi self-zero proof dependency"
+    },
     "replicate.py": {
-      "content_sha256": "97c686d44d522aba789fa4dc29ed6e99dfe7e3d061868230ada09ae79d6c4528",
-      "content_size_bytes": 15167,
+      "content_sha256": "b0625cbea48d95fd46c7369b95d04125dcfdf0ff742507d54a5d229596ba28be",
+      "content_size_bytes": 15546,
       "hash_mode": "portable-lf",
       "role": "central corrected-endpoint integration source"
+    },
+    "solve_exact_phi_zero_degree8_conductor_identity_v20.py": {
+      "content_sha256": "3679695424452230c1583088b83291a7671348cfa90deb872cba51f2a07eceb0",
+      "content_size_bytes": 5115,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact global Phi self-zero proof dependency"
     },
     "test_corrected_rank1_endpoint_v21.py": {
       "content_sha256": "2f3fc88a49fc74ecb93b4c323bee0ccf94d7d281d56232680ee066ad41549769",
@@ -432,27 +631,63 @@
       "hash_mode": "portable-lf",
       "role": "fail-closed central integration regression"
     },
+    "test_exact_gauged_u1x_g3_su5_chiral_global_gap_reduction_v20.py": {
+      "content_sha256": "ab2645f3b9b584fcc53b3a02efa1713f8588842f162678d6a255de8166802829",
+      "content_size_bytes": 2446,
+      "hash_mode": "portable-lf",
+      "role": "fail-closed central integration regression"
+    },
+    "test_exact_gauged_u1x_g3_su5_equality_orbit_v20.py": {
+      "content_sha256": "8fa60b8b04eb6fac32593f6a56103659c45f5da0f5fcd7558aaf4e878272e47c",
+      "content_size_bytes": 5087,
+      "hash_mode": "portable-lf",
+      "role": "fail-closed central integration regression"
+    },
+    "test_exact_phi_self_zero_global_sextic_syzygy_v20.py": {
+      "content_sha256": "f2a9cb079794df6f51399d9d64e63a36d4d55e0656df6ef9839de89ba5f3fe61",
+      "content_size_bytes": 1683,
+      "hash_mode": "portable-lf",
+      "role": "fail-closed central integration regression"
+    },
+    "test_exact_phi_self_zero_global_signed_kaehler_classification_v20.py": {
+      "content_sha256": "b2abf31378d1e0f79c6c5d47fb1cfecbb6b1248858696eb18bf4069c78c6a83d",
+      "content_size_bytes": 1409,
+      "hash_mode": "portable-lf",
+      "role": "fail-closed central integration regression"
+    },
+    "test_exact_phi_zero_cubic_cauchy_bridge_v20.py": {
+      "content_sha256": "b6dfe0e5fbbbe8df9ce31673f0fb28752e22f7b62c401981765e370be6862d28",
+      "content_size_bytes": 1297,
+      "hash_mode": "portable-lf",
+      "role": "fail-closed central integration regression"
+    },
+    "test_exact_phi_zero_degree8_conductor_identity_v20.py": {
+      "content_sha256": "d43c3026082a1132795266d24875e6477c7e9fcc7dc0cd5939049a873f19c82d",
+      "content_size_bytes": 877,
+      "hash_mode": "portable-lf",
+      "role": "fail-closed central integration regression"
+    },
     "test_final_g3_acceptance_gate_v20.py": {
-      "content_sha256": "33e178be12bb78251f4d4cb81eae2452c658c54e747053e70e10fa9131806fbb",
-      "content_size_bytes": 25918,
+      "content_sha256": "68a0cad8b0c50a6e6de8583bad9c3b492ff50a3b0ed12306b03e5fae368e0a7e",
+      "content_size_bytes": 26821,
       "hash_mode": "portable-lf",
       "role": "fail-closed central integration regression"
     },
     "test_freeze_corrected_rank1_endpoint_v21_integration.py": {
-      "content_sha256": "e37bbd92d88a0a0b9a290e3e04d8733356008a4493727d01af985b7cadae19b6",
-      "content_size_bytes": 9727,
+      "content_sha256": "f89671f97bc99c01ce3fadb457a7254acb57d4f6eac137ef3a01d1a7b3043324",
+      "content_size_bytes": 10682,
       "hash_mode": "raw",
       "role": "fail-closed central integration regression"
     },
     "test_g1_g8_execution_roadmap_v20.py": {
-      "content_sha256": "8561f0a1c5a788675fbd30d3498d32f29e7648e499aa040c6ad149654686aa54",
-      "content_size_bytes": 20737,
+      "content_sha256": "01469fb90377eda7cf44c1d61e20cb41dc6d2e91a7c1b10bb647284193732c26",
+      "content_size_bytes": 20882,
       "hash_mode": "portable-lf",
       "role": "fail-closed central integration regression"
     },
     "test_g1_g8_gate_ledger_v20.py": {
-      "content_sha256": "0906c787b88dbf480380fe5882a74bf4dfcb3b1e653a187ac1bbcc04ac7da574",
-      "content_size_bytes": 68661,
+      "content_sha256": "63f4275d4b3019839dc57eb2fe7666ce3ce75750758b8a443063b759de3bb088",
+      "content_size_bytes": 69114,
       "hash_mode": "portable-lf",
       "role": "fail-closed central integration regression"
     },
@@ -463,43 +698,43 @@
       "role": "fail-closed central integration regression"
     },
     "test_prepare_validation_artifacts_v20.py": {
-      "content_sha256": "a151c91e10312d0f960fac852eef270cc67015ced7a384c4f809e95f7a6431be",
-      "content_size_bytes": 18563,
+      "content_sha256": "79b8493df73cc57c69a2b283ab0bac19b4183f135b29ace94d173680a08768d6",
+      "content_size_bytes": 19200,
       "hash_mode": "portable-lf",
       "role": "fail-closed central integration regression"
     },
     "test_replicate_v20.py": {
-      "content_sha256": "0627816eb1003d57012ccae11dfe529db8eea61ddda3023f566517b1439ff5d6",
-      "content_size_bytes": 9569,
+      "content_sha256": "975836ba246a23ff75919b31f208bb5a69dee7a83d298fc0681195c49f72d114",
+      "content_size_bytes": 10471,
       "hash_mode": "portable-lf",
       "role": "fail-closed central integration regression"
     },
     "test_theory_validation_matrix_v20.py": {
-      "content_sha256": "fcf05250bd96ccc77e97bfce63a6269318360a728c9e7ea2e853a1990589c5a0",
-      "content_size_bytes": 80195,
+      "content_sha256": "5384ed7dbdea9053ea0c180c1e2fab115cf5dfd79ab0a075b342e699f07f1d31",
+      "content_size_bytes": 81671,
       "hash_mode": "portable-lf",
       "role": "fail-closed central integration regression"
     },
     "test_validate_release_v20.py": {
-      "content_sha256": "f22e7ad015a60dabb465d291fc65b8d9291482f863773b9e03eab2668836ffb6",
-      "content_size_bytes": 34647,
+      "content_sha256": "32d23983363ad0d54e28d4ccce38f5906af8a51b17123c0afc8dd8df9bcb1981",
+      "content_size_bytes": 35111,
       "hash_mode": "portable-lf",
       "role": "fail-closed central integration regression"
     },
     "theory_validation_matrix_v20.py": {
-      "content_sha256": "c260aa9b04103990e27510d58a126bd162b782295e256c9b6aa945cafc300376",
-      "content_size_bytes": 116430,
+      "content_sha256": "e5ab545ab3ac605e7cc603d3b6eeecaac6188638e4bb9cc43bad715aa22455d7",
+      "content_size_bytes": 117962,
       "hash_mode": "portable-lf",
       "role": "central corrected-endpoint integration source"
     },
     "validate_release_v20.py": {
-      "content_sha256": "458fb10529ec023785b7f2cffe2c32779f048d18cd40188518292beb9718f16d",
-      "content_size_bytes": 85132,
+      "content_sha256": "cd40a51f60302e2a1a3dcadfebcdfee79bbf3ddb676578a858348b628d03c50f",
+      "content_size_bytes": 88250,
       "hash_mode": "portable-lf",
       "role": "central corrected-endpoint integration source"
     }
   },
-  "inventory_count": 75,
+  "inventory_count": 110,
   "legacy_v20_quarantine": {
     "CLI_exit_code": 2,
     "CLI_writes_files": false,
@@ -512,6 +747,8 @@
     "certificate_raw_sha256": "dd40a508a08c219117ddefaf574652a24f0e1f868d011e05f558ecafc9600e03",
     "exact_LDL_pivot_sha256": "bc8626c201d626aa33a97f707bfa963ae887fe9abb64a0fab728343825a430c2",
     "exact_coordinate_sha256": "7a36b579821e135fb7283d02e696153cc78907048e73ca5dce0dd260abdc3147",
+    "global_Phi_classification_core_sha256": "db493a74303a57862f09c2a92118ea3d66b8b12ecbaea9162155d4ab3baafecc",
+    "global_Phi_classification_source_raw_sha256": "17038c6fb82ba565a16228f5f5c03026f0ab8e3ad7959792498c2785b9653066",
     "map_numerator_csr_sha256": "1834c8439fa3e44459f7ba871420a4351cd0b4de194dec6f5c4a84c1f39d3a16",
     "target_numerator_sha256": "14debcfaf02d4b8c20d1d43a2e1f82d6a7390e28428fc63dd21a9c5f90aec0cf"
   },
@@ -526,7 +763,7 @@
     ],
     "touched_or_promoted": false
   },
-  "release_checksum_entry_count": 262,
+  "release_checksum_entry_count": 289,
   "schema": "so10-rank1-su4-corrected-endpoint-central-integration-v21",
   "status": "EXACT_CORRECTED_ENDPOINT_V21_CENTRAL_INTEGRATION_FROZEN",
   "workflow_contract": {
@@ -538,7 +775,7 @@
     "no_write_stochastic_report_commands": 3,
     "no_write_stochastic_report_orchestrators": 2,
     "read_only_frozen_dependency_orchestrators": 3,
-    "read_only_frozen_report_commands": 21,
-    "read_only_frozen_report_sources": 7
+    "read_only_frozen_report_commands": 30,
+    "read_only_frozen_report_sources": 10
   }
 }

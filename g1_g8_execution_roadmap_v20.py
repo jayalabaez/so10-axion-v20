@@ -321,17 +321,25 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
                 "SU5_Delta_literal_single_Phi_orbit_refuted"
             ]
             is True
-            and g3_frontier["SU5_Delta_signed_Phi_orbit_theorem_open"] is True
+            and g3_frontier["SU5_Delta_signed_Phi_orbit_theorem_open"] is False
+            and g3_frontier["SU5_Delta_signed_Phi_orbit_theorem_closed"] is True
             and g3_frontier["SU5_Delta_SU4_Phi_slice_classified"] is True
             and g3_frontier[
                 "SU5_Delta_signed_Phi_local_components_closed"
             ]
             is True
             and g3_frontier["SU5_Delta_distant_Phi_components_excluded"]
-            is False
+            is True
             and g3_frontier["SU5_Delta_Phi_SU3_fixed_slice_closed"] is True
             and g3_frontier["SU5_Delta_Phi_SU3_fixed_slice_dimension"] == 16
-            and g3_frontier["SU5_Delta_global_Phi_orbit_lemma_open"] is True
+            and g3_frontier["SU5_Delta_global_Phi_orbit_lemma_open"] is False
+            and g3_frontier["SU5_Delta_global_Phi_orbit_lemma_closed"] is True
+            and g3_frontier["SU5_Delta_PD_equality_orbits_classified_exactly"]
+            is True
+            and g3_frontier[
+                "SU5_Delta_global_Phi_orbit_theorem_core_sha256"
+            ]
+            == "db493a74303a57862f09c2a92118ea3d66b8b12ecbaea9162155d4ab3baafecc"
             and g3_frontier[
                 "SU5_Delta_chiral_global_gap_honestly_reduced"
             ]

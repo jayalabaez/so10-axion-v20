@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail-closed global-equality audit for the SU(5)+Delta_R PD SOS.
+"""Fail-closed global-equality theorem for the SU(5)+Delta_R PD SOS.
 
 The Phi/Sigma sum of squares in
 ``exact_gauged_u1x_g3_su5_delta_pd_sos_v20.py`` has a proof-grade local
@@ -29,26 +29,29 @@ remaining +F orbit the mixed equations and norm leave two pair-plane sign
 patterns; an explicit determinant-one reflection maps them into each other
 while sending Delta to -Delta, which is restored by an allowed U(1) phase.
 
-One corrected global lemma remains unavailable:
+The corrected global lemma is now available:
 
     every real Phi with ||Phi||=1 and Pi_54(Phi Phi)=Pi_4125(Phi Phi)=0
     belongs to SO(10).F or SO(10).(-F).
 
-The earlier one-orbit wording was false as written.  The companion
+The earlier one-orbit wording was false as written.  The frozen global
+signed-Kahler theorem proves the displayed two-orbit statement for every real
+four-form.  The companion
 ``exact_gauged_u1x_g3_su5_phi_orbit_lemma_v20`` artifact supplies the exact
 counterexample and classifies the complete SU(4)-invariant slice.  Its local
 component companion further proves that both signed orbits are isolated local
 components.  A second companion classifies the complete 16-real-dimensional
 SU(3)-fixed slice, including eight non-diagonal Omega_3 wedge R4 directions,
-and again finds only the signed Kahler-square orbit.  These results do not
-exclude disconnected zeros with generic stabilizer or prove the corrected
-signed theorem for arbitrary real four-forms.
-Consequently this artifact does NOT upgrade local-one-orbit to
-global-one-orbit and does NOT close G3.
+and again finds only the signed Kahler-square orbit.  Together with the exact
+mixed invertibility of the -F sheet and the fixed-F Pluecker classification,
+the global theorem closes the PD equality-orbit classification.  It does not
+prove the quantitative arbitrary-field coercivity estimate needed for the
+beta-deformed global gap, and therefore does not close G3.
 """
 from __future__ import annotations
 
 import argparse
+import hashlib
 import itertools
 import json
 import math
@@ -68,6 +71,7 @@ import exact_gauged_u1x_g3_su5_phi_orbit_lemma_v20 as orbit_lemma_audit
 import exact_gauged_u1x_g3_su5_phi_local_component_v20 as local_component_audit
 import exact_gauged_u1x_g3_su5_phi_su3_slice_v20 as su3_slice_audit
 import exact_phisigma_casimir_projectors_v20 as phi_projectors
+import exact_phi_self_zero_global_signed_kaehler_classification_v20 as global_phi
 import live_g2_canonical_486_field_chart_v20 as chart
 
 ROOT = Path(__file__).resolve().parent
@@ -80,6 +84,13 @@ TEN_MONOMIALS = tuple(itertools.combinations_with_replacement(range(10), 2))
 PAIR_INDEX = {pair: index for index, pair in enumerate(COMPLEX_PAIRS)}
 MONOMIAL_INDEX = {pair: index for index, pair in enumerate(TEN_MONOMIALS)}
 MODULAR_PRIME = 1_000_003
+GLOBAL_PHI_SOURCE_SHA256 = (
+    "6887429cebbe0e0ee9171b9346b85c671959c2fdbc2b5187efc73a52552b0883"
+)
+
+
+def _sha256(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
 def _jsonable(value: Any) -> Any:
@@ -609,6 +620,10 @@ def build_report() -> dict[str, Any]:
     local_scope = local_component["scope"]
     su3_slice = su3_slice_audit.build_report()
     su3_scope = su3_slice["scope"]
+    global_classification = global_phi.certificate()
+    global_source_hash = _sha256(Path(global_phi.__file__).resolve())
+    global_scope = global_classification["scope"]
+    rigidity = global_classification["subgroup_rigidity"]
     checks = {
         "fixed_F_mixed_kernel_has_exact_real_nullity_20": (
             kernel["exact_real_nullity"] == 20
@@ -648,9 +663,9 @@ def build_report() -> dict[str, Any]:
         "SU4_slice_obstruction_is_source_bound": orbit_audit["scope"][
             "complete_SU4_invariant_slice_classified"
         ],
-        "corrected_signed_global_Phi_lemma_not_overclaimed": not orbit_audit[
-            "corrected_global_lemma"
-        ]["proved"],
+        "historical_signed_global_Phi_lemma_audit_is_not_rewritten": not (
+            orbit_audit["corrected_global_lemma"]["proved"]
+        ),
         "signed_Phi_orbits_are_exactly_local_components": bool(
             local_component["n_failed"] == 0
             and local_scope["plus_F_local_component_classified"] is True
@@ -682,17 +697,34 @@ def build_report() -> dict[str, Any]:
             is False
             and su3_scope["G3_closed"] is False
         ),
+        "global_signed_Phi_zero_locus_is_source_bound_exactly": bool(
+            global_source_hash == GLOBAL_PHI_SOURCE_SHA256
+            and global_classification["status"]
+            == "EXACT_GLOBAL_REAL_PHI_SELF_ZERO_IS_SIGNED_KAEHLER_CONE__G3_OPEN"
+            and global_classification["core_sha256"]
+            == global_phi.EXPECTED_CORE_SHA256
+            and global_classification["norm10_zero_locus"]
+            == "SO(10).F union SO(10).(-F)"
+            and global_scope["global_real_zero_locus_classified"] is True
+            and global_scope["quantitative_orbit_distance_bound"] is False
+            and global_scope["G3_closed"] is False
+            and rigidity["unitary_maximal"]
+            == {"name": "U(5)", "dimension": 25}
+            and "Dynkin" in rigidity["external_classification"]
+        ),
         "global_equality_orbit_not_overclaimed": True,
         "G3_not_overclaimed": True,
     }
     failures = [name for name, passed in checks.items() if not passed]
     return {
         "status": (
-            "EXACT_CONDITIONAL_EQUALITY_CLASSIFICATION__SIGNED_GLOBAL_PHI_ORBIT_LEMMA_OPEN"
+            "EXACT_GLOBAL_EQUALITY_CLASSIFICATION__SIGNED_PHI_THEOREM_CLOSED__G3_OPEN"
             if not failures
             else "EQUALITY_ORBIT_REDUCTION_EXECUTION_FAILED"
         ),
-        "overall_state": "OPEN_GLOBAL_LEMMA" if not failures else "EXECUTION_FAIL",
+        "overall_state": (
+            "GLOBAL_EQUALITY_ORBITS_CLOSED" if not failures else "EXECUTION_FAIL"
+        ),
         "n_checks": len(checks),
         "n_failed": len(failures),
         "failures": failures,
@@ -712,28 +744,52 @@ def build_report() -> dict[str, Any]:
         },
         "Phi_local_component_theorem": local_component,
         "Phi_SU3_fixed_slice_theorem": su3_slice,
+        "Phi_global_signed_zero_theorem": {
+            **global_classification,
+            "production_adapter_source_sha256": global_source_hash,
+            "frozen_source_sha256": (
+                global_phi.FROZEN_SOURCE_SHA256[
+                    ROOT
+                    / "FROZEN_PHI_SELF_ZERO_GLOBAL_SIGNED_KAEHLER_CLASSIFICATION_SOURCE_V20.py"
+                ]
+            ),
+            "external_theorem_dependency": {
+                "kind": "published subgroup-classification theorem",
+                "theorem": rigidity["external_classification"],
+                "citation": rigidity["primary_reference"],
+                "role": (
+                    "forces the connected 25-dimensional stabilizer to be "
+                    "conjugate to U(5) after the exact invariant identities"
+                ),
+                "repository_scope": (
+                    "the exact dimension eliminations and fixed-line argument "
+                    "are checked here; Dynkin's classification is imported"
+                ),
+            },
+        },
         "remaining_global_lemma": {
             "statement": (
                 "Every real unit four-form Phi with Pi54(Phi tensor Phi)=0 "
                 "and Pi4125(Phi tensor Phi)=0 belongs to SO(10).F or "
                 "SO(10).(-F)."
             ),
-            "proved": False,
+            "proved": not failures,
             "literal_single_orbit_version_refuted": True,
             "corrected_signed_two_orbit_version": True,
-            "source_bound_certificate_available": False,
+            "source_bound_certificate_available": not failures,
             "source_bound_partial_certificate_available": True,
             "signed_orbits_locally_isolated_exactly": not failures,
             "complete_SU3_fixed_slice_classified_exactly": not failures,
             "SU3_fixed_slice_real_dimension": 16,
             "SU3_fixed_slice_nondiagonal_directions_excluded": 8,
-            "distant_disconnected_components_excluded": False,
+            "distant_disconnected_components_excluded": not failures,
             "why_required": (
-                "It is the missing step needed to put an arbitrary projector "
-                "zero into a signed canonical orbit.  The -F orbit is then "
-                "excluded by exact mixed invertibility, while the +F orbit "
-                "is handled by the exact Plucker classification."
+                "The exact conductor/Cauchy/sextic chain and the external "
+                "Dynkin subgroup classification put every arbitrary projector "
+                "zero into a signed canonical orbit.  Exact mixed invertibility "
+                "excludes -F, and the Plucker theorem handles +F."
             ),
+            "quantitative_orbit_distance_bound_proved": False,
             "numerical_search_is_not_a_substitute": True,
         },
         "scope": {
@@ -746,30 +802,27 @@ def build_report() -> dict[str, Any]:
             "two_visible_sign_branches_equivalent": not failures,
             "literal_single_Phi_orbit_statement_refuted": not failures,
             "minus_F_mixed_branch_excluded_exact": not failures,
-            "corrected_signed_Phi_orbit_theorem_open": True,
+            "corrected_signed_Phi_orbit_theorem_open": False,
+            "corrected_signed_Phi_orbit_theorem_proved": not failures,
             "signed_Phi_orbits_locally_isolated_exactly": not failures,
             "complete_SU3_fixed_Phi_slice_classified_exactly": not failures,
-            "distant_disconnected_Phi_components_excluded": False,
-            "all_arbitrary_Phi_global_equalities_classified": False,
-            "local_one_orbit_can_be_strengthened_globally": False,
-            "global_equality_orbit_classification_complete": False,
+            "distant_disconnected_Phi_components_excluded": not failures,
+            "all_arbitrary_Phi_global_equalities_classified": not failures,
+            "local_one_orbit_can_be_strengthened_globally": not failures,
+            "global_equality_orbit_classification_complete": not failures,
+            "quantitative_beta_global_coercivity_proved": False,
             "G3_closed": False,
             "whole_model_excluded": False,
         },
         "verdict": (
-            "The Phi-projector zero set cannot be one SO(10) orbit: F and -F "
-            "are separated exactly by Tr(A_Phi^3).  The -F orbit is nevertheless "
-            "excluded from the coupled equality set because M(F)+8 is exactly "
-            "invertible.  At +F the entire Sigma equality locus is one U(5) "
-            "Plucker orbit, and the two fixed-Delta tau=+ sign patterns are "
-            "gauge/phase-equivalent.  Global coupled one-orbit still depends on "
-            "the corrected, unproved theorem that every arbitrary real Phi "
-            "projector zero lies in the signed union SO(10).F union SO(10).(-F). "
-            "Both signed orbits are now exact isolated local components; only "
-            "distant disconnected components remain unclassified.  The "
-            "complete 16-dimensional SU(3)-fixed slice, including its eight "
-            "non-diagonal Omega_3 wedge R4 directions, is also classified "
-            "exactly and contains no additional branch."
+            "The exact global signed-Kahler theorem classifies every real Phi "
+            "projector zero as +F or -F up to scale and SO(10). The two sheets "
+            "are separated by Tr(A_Phi^3). Exact mixed invertibility excludes "
+            "the -F sheet from the coupled PD equality set. At +F the entire "
+            "Sigma equality locus is one U(5) Plucker orbit, so all PD equality "
+            "orbits are classified exactly. The stabilizer-rigidity step imports "
+            "Dynkin's published maximal-subgroup classification. Quantitative "
+            "beta-global coercivity remains unproved, so G3 remains open."
         ),
     }
 
@@ -789,8 +842,10 @@ def _markdown(report: dict[str, Any]) -> str:
             "- coupled `-F` branch: excluded by exact rank `252/252`;",
             "- fixed-Delta tau=+ sign patterns: SO(10)+phase equivalent;",
             "- complete SU(3)-fixed Phi slice: signed Kahler squares only;",
-            "- corrected signed arbitrary-four-form lemma: `OPEN`;",
-            "- global equality-orbit classification: `OPEN`;",
+            "- corrected signed arbitrary-four-form theorem: `CLOSED`;",
+            "- external dependency: Dynkin maximal-subgroup classification;",
+            "- global equality-orbit classification: `CLOSED`;",
+            "- quantitative beta-global coercivity: `OPEN`;",
             "- G3: `OPEN`.",
             "",
         ]

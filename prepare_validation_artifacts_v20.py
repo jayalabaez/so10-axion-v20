@@ -156,8 +156,11 @@ FULL_COMMANDS: tuple[tuple[str, ...], ...] = (
     ),
     (
         sys.executable,
+        "exact_phi_self_zero_global_signed_kaehler_classification_v20.py",
+    ),
+    (
+        sys.executable,
         "exact_gauged_u1x_g3_su5_equality_orbit_v20.py",
-        "--write",
     ),
     (
         sys.executable,
@@ -240,7 +243,6 @@ FULL_COMMANDS: tuple[tuple[str, ...], ...] = (
     (
         sys.executable,
         "exact_gauged_u1x_g3_su5_chiral_global_gap_reduction_v20.py",
-        "--write",
     ),
     (
         sys.executable,
@@ -302,6 +304,10 @@ FULL_COMMANDS: tuple[tuple[str, ...], ...] = (
         "test_exact_gauged_u1x_g3_su5_phi_orbit_lemma_v20.py",
         "test_exact_gauged_u1x_g3_su5_phi_local_component_v20.py",
         "test_exact_gauged_u1x_g3_su5_phi_su3_slice_v20.py",
+        "test_exact_phi_zero_degree8_conductor_identity_v20.py",
+        "test_exact_phi_zero_cubic_cauchy_bridge_v20.py",
+        "test_exact_phi_self_zero_global_sextic_syzygy_v20.py",
+        "test_exact_phi_self_zero_global_signed_kaehler_classification_v20.py",
         "test_exact_gauged_u1x_g3_su5_equality_orbit_v20.py",
         "test_exact_gauged_u1x_g3_su5_fixed_f_offkernel_bound_v20.py",
         "test_exact_gauged_u1x_g3_su5_max_negative_zero_residual_bound_v20.py",

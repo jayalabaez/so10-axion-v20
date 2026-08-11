@@ -2,7 +2,7 @@
 
 **State:** `OPEN`
 
-G3 remains open. The chiral-H candidate now has an exact full Hessian theorem (rank/nullity 448/38, positive on the quotient) and an exact global gap/equality theorem on the complete Phi=F stratum for arbitrary H and Sigma. The complete maximally-negative pure-Delta sector is now also excluded for arbitrary real Phi and all nonzero residuals, with sharp gap 1/5000; no exact lower witness is known. The prior four-real-dimensional SU(3) regression is historical and subsumed. At fixed H=h_- and Sigma=q/4, the corrected v21 exact theorem covers every real Phi210. At that fixed endpoint, the exact SU(4) stabilizer, aligned rank-210 carrier real maps and complete 45-element Phi210 quadratic basis feed an exact 22366-dimensional augmented census with 35 types/824 copies, 22 real/Hermitian blocks, 19594 Schur parameters, and 6585 invariant rows. The complete cubic interface has all 1414 real cross variables and an exact-rank-478, 478x1414 integer map with kernel dimension 936. Its zero placeholder is nonphysical and certifies no physical zero RHS. The homogeneous quartic interface is an exact-rank-6057, 6057x18085 integer map with kernel dimension 12028. The legacy v20 assembled physical target is rejected. The corrected 6585x19594 standard positive-Gram map, ordered-spectral target, and exact strict 22-block/824-pivot primal prove p(t,Phi)>0 off the homogeneous origin and A(Phi)>3/200 at t=1 for every real Phi210. Global Sigma, general/full H, the full Hessian, and G3 remain open. PASS still requires uniform coercivity away from the fixed Sigma=q/4 endpoint, plus the external authoritative model execution.
+G3 remains open. The chiral-H candidate now has an exact full Hessian theorem (rank/nullity 448/38, positive on the quotient) and the exact signed-Kahler theorem now classifies every PD equality orbit (with Dynkin maximal-subgroup classification as an explicit external dependency). It does not provide the quantitative projector-to-orbit coercivity estimate. The candidate also has an exact global gap/equality theorem on the complete Phi=F stratum for arbitrary H and Sigma. The complete maximally-negative pure-Delta sector is now also excluded for arbitrary real Phi and all nonzero residuals, with sharp gap 1/5000; no exact lower witness is known. The prior four-real-dimensional SU(3) regression is historical and subsumed. At fixed H=h_- and Sigma=q/4, the corrected v21 exact theorem covers every real Phi210. At that fixed endpoint, the exact SU(4) stabilizer, aligned rank-210 carrier real maps and complete 45-element Phi210 quadratic basis feed an exact 22366-dimensional augmented census with 35 types/824 copies, 22 real/Hermitian blocks, 19594 Schur parameters, and 6585 invariant rows. The complete cubic interface has all 1414 real cross variables and an exact-rank-478, 478x1414 integer map with kernel dimension 936. Its zero placeholder is nonphysical and certifies no physical zero RHS. The homogeneous quartic interface is an exact-rank-6057, 6057x18085 integer map with kernel dimension 12028. The legacy v20 assembled physical target is rejected. The corrected 6585x19594 standard positive-Gram map, ordered-spectral target, and exact strict 22-block/824-pivot primal prove p(t,Phi)>0 off the homogeneous origin and A(Phi)>3/200 at t=1 for every real Phi210. Global Sigma, general/full H, the full Hessian, and G3 remain open. PASS still requires uniform coercivity away from the fixed Sigma=q/4 endpoint, plus the external authoritative model execution.
 
 ## Decisive theorem
 
@@ -24,7 +24,7 @@ For every 486-real field q, V_beta(q)-V_beta(q0)>=0; equality holds exactly on t
 - `rank1_SU4_representation_infrastructure_ready_without_closing_G3`: `True`
 - `signed_Phi_orbits_locally_isolated_exactly`: `True`
 - `complete_SU3_fixed_Phi_slice_classified_exactly`: `True`
-- `all_PD_equality_orbits_classified_exactly`: `False`
+- `all_PD_equality_orbits_classified_exactly`: `True`
 - `beta_global_gap_and_unique_equality_exact`: `False`
 
 ## Release criteria
@@ -35,7 +35,6 @@ For every 486-real field q, V_beta(q)-V_beta(q0)>=0; equality holds exactly on t
 
 ## Blockers
 
-- `all_PD_equality_orbits_classified_exactly`
 - `beta_global_gap_and_unique_equality_exact`
 - `authoritative_external_model_contract_executed`
 - `G1_promoted_closed`

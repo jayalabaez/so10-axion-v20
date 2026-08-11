@@ -68,14 +68,24 @@ class CorrectedEndpointIntegrationFreezeTests(unittest.TestCase):
             freezer.PUBLICATION_MANIFEST_SHA256,
         )
         self.assertEqual(
+            report["logical_pins"][
+                "global_Phi_classification_source_raw_sha256"
+            ],
+            "17038c6fb82ba565a16228f5f5c03026f0ab8e3ad7959792498c2785b9653066",
+        )
+        self.assertEqual(
+            report["logical_pins"]["global_Phi_classification_core_sha256"],
+            "db493a74303a57862f09c2a92118ea3d66b8b12ecbaea9162155d4ab3baafecc",
+        )
+        self.assertEqual(
             report["workflow_contract"],
             {
                 "corrected_assertion_heredocs": 7,
                 "legacy_rejection_assertions": 7,
                 "full_source_rebuild_invocations": 1,
                 "read_only_frozen_dependency_orchestrators": 3,
-                "read_only_frozen_report_sources": 7,
-                "read_only_frozen_report_commands": 21,
+                "read_only_frozen_report_sources": 10,
+                "read_only_frozen_report_commands": 30,
                 "no_write_frozen_classification_sources": 3,
                 "no_write_frozen_classification_commands": 9,
                 "no_write_stochastic_report_orchestrators": 2,
@@ -85,7 +95,23 @@ class CorrectedEndpointIntegrationFreezeTests(unittest.TestCase):
         self.assertTrue(
             report["claim_boundary"]["arbitrary_real_Phi_at_fixed_endpoint"]
         )
+        self.assertTrue(
+            report["claim_boundary"][
+                "all_PD_equality_orbits_classified_exactly"
+            ]
+        )
+        self.assertTrue(
+            report["claim_boundary"][
+                "global_signed_kaehler_Phi_self_zero_classification_proved"
+            ]
+        )
+        self.assertTrue(
+            report["claim_boundary"][
+                "Dynkin_maximal_subgroup_classification_external_dependency"
+            ]
+        )
         for name in (
+            "quantitative_beta_global_coercivity_proved",
             "legacy_v20_physical_target_valid",
             "legacy_v20_primal_valid",
             "global_Sigma_proved",

@@ -14,7 +14,7 @@ def test_exact_boundary_gap_and_fixed_orientation() -> None:
     assert report["n_failed"] == 0
 
 
-def test_small_beta_theorem_is_fail_closed_on_missing_hypotheses() -> None:
+def test_small_beta_theorem_is_fail_closed_on_quantitative_hypotheses() -> None:
     theorem = audit.perturbation_theorem_audit()
     assert theorem["hypotheses"]["V0_is_an_explicit_nonnegative_sum_of_squares"]
     assert theorem["hypotheses"]["homogeneous_quartic_remains_BFB_exactly"]
@@ -31,7 +31,13 @@ def test_small_beta_theorem_is_fail_closed_on_missing_hypotheses() -> None:
     assert theorem["hypotheses"][
         "exact_full_486_Hessian_kernel_equals_the_38_symmetry_tangents"
     ]
-    assert not theorem["hypotheses"]["all_PD_global_equality_components_are_classified"]
+    assert theorem["hypotheses"]["all_PD_global_equality_components_are_classified"]
+    assert not theorem["hypotheses"][
+        "current_is_nonnegative_on_every_PD_equality_component"
+    ]
+    assert not theorem["hypotheses"][
+        "every_zero_of_current_on_the_PD_equality_set_is_the_selected_flag_orbit"
+    ]
     assert not theorem["theorem_ready"]
     assert not theorem["beta_equals_1_over_20_covered_by_theorem"]
 
@@ -42,5 +48,7 @@ def test_final_acceptance_contract_does_not_promote_g3() -> None:
     assert report["final_acceptance_test"]["currently_passes"] is False
     assert report["flags"]["lower_witness_found"] is False
     assert report["flags"]["beta_1_over_20_global_minimum_certified"] is False
+    assert report["flags"]["PD_equality_orbits_classified"] is True
+    assert report["flags"]["global_equality_orbits_classified"] is False
     assert report["flags"]["G3_closed"] is False
     assert report["flags"]["whole_model_excluded"] is False

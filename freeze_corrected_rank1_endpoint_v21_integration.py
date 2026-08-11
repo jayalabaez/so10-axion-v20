@@ -35,6 +35,12 @@ COORDINATE_SHA256 = (
     "7a36b579821e135fb7283d02e696153cc78907048e73ca5dce0dd260abdc3147"
 )
 LDL_SHA256 = "bc8626c201d626aa33a97f707bfa963ae887fe9abb64a0fab728343825a430c2"
+GLOBAL_PHI_CLASSIFICATION_SOURCE_SHA256 = (
+    "17038c6fb82ba565a16228f5f5c03026f0ab8e3ad7959792498c2785b9653066"
+)
+GLOBAL_PHI_CLASSIFICATION_CORE_SHA256 = (
+    "db493a74303a57862f09c2a92118ea3d66b8b12ecbaea9162155d4ab3baafecc"
+)
 
 PUBLICATION_FILES = (
     "EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_FIXED_ENDPOINT_THEOREM_V21.json",
@@ -82,6 +88,9 @@ FROZEN_STABILIZER_SOURCE = (
 )
 READ_ONLY_FROZEN_REPORT_SOURCES = (
     "gauged_u1x_g2_derivative_audit_v20.py",
+    "exact_phi_self_zero_global_signed_kaehler_classification_v20.py",
+    "exact_gauged_u1x_g3_su5_equality_orbit_v20.py",
+    "exact_gauged_u1x_g3_su5_chiral_global_gap_reduction_v20.py",
     "gauged_u1x_g3_sos_candidate_v20.py",
     "gauged_u1x_g3_stability_v20.py",
     "gauged_u1x_g3_corrected_common_kernel_v20.py",
@@ -127,6 +136,65 @@ RAW_SOURCE_PINS = {
     "EXACT_GAUGED_U1X_G3_RANK1_SU4_STABILIZER_V20.md":
         "a243c9b9de43fe8e5245e58dc1f3d0464dc93127cd1142317108e0518f4954f9",
 }
+GLOBAL_PHI_CLASSIFICATION_RAW_PINS = {
+    "FROZEN_EXACT_SIGNED_KAEHLER_FULL126_STRONG_OPERATOR_SOURCE_V20.py": (
+        "c7ad27cc1566e743f762f675dabfcfb0ccc499c8acf5c5956c2bf768a90eb771"
+    ),
+    "FROZEN_PHI_SELF_ZERO_GLOBAL_SEXTIC_SYZYGY_SOURCE_V20.py": (
+        "0ad2c69915d0b758342d68c568c9d29c5bd80c0e39c0ab686824eba1a1350a8c"
+    ),
+    "FROZEN_PHI_SELF_ZERO_GLOBAL_SIGNED_KAEHLER_CLASSIFICATION_SOURCE_V20.py": (
+        GLOBAL_PHI_CLASSIFICATION_SOURCE_SHA256
+    ),
+    "FROZEN_PHI_ZERO_CUBIC_CAUCHY_BRIDGE_SOURCE_V20.py": (
+        "01b1bb5f450521506bf6a025650629691ce738325d1f16c5aafc050abe34e1c7"
+    ),
+    "FROZEN_PHI_ZERO_DEGREE8_CONDUCTOR_IDENTITY_SOURCE_V20.py": (
+        "92c5b244daa40ec423c6292f3816f6c87395ce31fe7aebe73dd264a5596f44df"
+    ),
+    "FROZEN_PHI_ZERO_DEGREE8_CONDUCTOR_RECONSTRUCTION_SOURCE_V20.py": (
+        "0bdb091d506a1fc180dbd68fa1c32b7bdb09084a78bcf86ebedad2aa2d2bc9f6"
+    ),
+    "FROZEN_SIGNED_KAEHLER_FULL126_PHYSICAL_SUBTRACTION_SOURCE_V20.py": (
+        "911f9566cbdc957e2ec8bbf90f6d3546505a03e1bd76d66d85267a0536066c1a"
+    ),
+    "FROZEN_SIGNED_KAEHLER_P0_FULL126_KERNEL_RADIAL_STRICTNESS_SOURCE_V20.py": (
+        "73819bb79be24a1cc2234c87b90bfb4bc2029e00c41fdedfa491bb89b9f06c4f"
+    ),
+    "EXACT_PHI_ZERO_DEGREE8_CONDUCTOR_EVALUATION_TABLE.json": (
+        "beab3649ca03c3ee3c6fc2ab700efedfe614328a6da52f2234d3b9610f3c167c"
+    ),
+    "EXACT_PHI_ZERO_DEGREE8_CONDUCTOR_RECONSTRUCTION_CHECKPOINT.json": (
+        "0afad3c1a1de58243d27fd07fe550c90ca516e1c5483c027bcbd8e752e892179"
+    ),
+    "EXACT_PHI_ZERO_DEGREE8_CONDUCTOR_SOLUTION.json": (
+        "c49833b4f90b0b5a6604d4d5aded36ea00944dd198d2ceefd8def8213174dcfa"
+    ),
+    "exact_phi_zero_o10_degree8_invariant_split_v20.py": (
+        "6a80a8f95efc1f4515b8b8e9120c4011df5d378ebeb38f59f6119c73308daa90"
+    ),
+    "reconstruct_exact_phi_zero_degree8_radical_v20.py": (
+        "8c835c5df2bce72d263117061fde770d53bb7d607cd305cc4a6a039466529133"
+    ),
+    "reconstruct_exact_phi_zero_degree8_conductor_table_v20.py": (
+        "968c4f63bbc4a1eb213a335d10ee465e8f27621b79c9ce860ca187702f49bbc9"
+    ),
+    "solve_exact_phi_zero_degree8_conductor_identity_v20.py": (
+        "3679695424452230c1583088b83291a7671348cfa90deb872cba51f2a07eceb0"
+    ),
+    "exact_phi_zero_degree8_conductor_identity_v20.py": (
+        "d8587194b647a49f2b9950aebb920ee7a3c7f28f9f0823d8257676fe70e81fd9"
+    ),
+    "exact_phi_zero_cubic_cauchy_bridge_v20.py": (
+        "282307be1abfe6d8d59c4e63861dbd5f8b4cf01d488d5df8793c27e029060bb0"
+    ),
+    "exact_phi_self_zero_global_sextic_syzygy_v20.py": (
+        "5de73274c9def8bbc9628895457065fb1a93536eb611288dd66ffa6e1f8b2766"
+    ),
+    "exact_phi_self_zero_global_signed_kaehler_classification_v20.py": (
+        "6887429cebbe0e0ee9171b9346b85c671959c2fdbc2b5187efc73a52552b0883"
+    ),
+}
 RHS_PORTABLE_SOURCE_PINS = {
     "exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py":
         "8493a90d9b689bc02479151529ac697425f56087f2bdbebb40176f418b7c0ff8",
@@ -148,9 +216,31 @@ RAW_INTEGRATION_PATHS = (
     "corrected_rank1_endpoint_v21.py",
     "freeze_corrected_rank1_endpoint_v21_integration.py",
     "test_freeze_corrected_rank1_endpoint_v21_integration.py",
-) + PUBLICATION_PATHS + tuple(RAW_SOURCE_PINS)
+) + PUBLICATION_PATHS + tuple(RAW_SOURCE_PINS) + tuple(
+    GLOBAL_PHI_CLASSIFICATION_RAW_PINS
+)
 
-PORTABLE_INTEGRATION_PATHS = WORKFLOW_PATHS + (
+GLOBAL_PHI_CLASSIFICATION_PORTABLE_PATHS = (
+    "EXACT_PHI_SELF_ZERO_GLOBAL_SEXTIC_SYZYGY.md",
+    "EXACT_PHI_SELF_ZERO_GLOBAL_SIGNED_KAEHLER_CLASSIFICATION.md",
+    "EXACT_PHI_ZERO_CUBIC_CAUCHY_BRIDGE.md",
+    "EXACT_PHI_ZERO_DEGREE8_CONDUCTOR_IDENTITY.md",
+    "EXACT_GAUGED_U1X_G3_SU5_EQUALITY_ORBIT_V20.json",
+    "EXACT_GAUGED_U1X_G3_SU5_EQUALITY_ORBIT_V20.md",
+    "EXACT_GAUGED_U1X_G3_SU5_CHIRAL_GLOBAL_GAP_REDUCTION_V20.json",
+    "EXACT_GAUGED_U1X_G3_SU5_CHIRAL_GLOBAL_GAP_REDUCTION_V20.md",
+    "exact_gauged_u1x_g3_su5_equality_orbit_v20.py",
+    "exact_gauged_u1x_g3_su5_chiral_global_gap_reduction_v20.py",
+    "test_exact_phi_zero_degree8_conductor_identity_v20.py",
+    "test_exact_phi_zero_cubic_cauchy_bridge_v20.py",
+    "test_exact_phi_self_zero_global_sextic_syzygy_v20.py",
+    "test_exact_phi_self_zero_global_signed_kaehler_classification_v20.py",
+    "test_exact_gauged_u1x_g3_su5_equality_orbit_v20.py",
+    "test_exact_gauged_u1x_g3_su5_chiral_global_gap_reduction_v20.py",
+)
+
+PORTABLE_INTEGRATION_PATHS = (
+    WORKFLOW_PATHS + GLOBAL_PHI_CLASSIFICATION_PORTABLE_PATHS + (
     "FINAL_G3_ACCEPTANCE_GATE_V20.json",
     "FINAL_G3_ACCEPTANCE_GATE_V20.md",
     "G1_G8_EXECUTION_ROADMAP_V20.json",
@@ -185,6 +275,7 @@ PORTABLE_INTEGRATION_PATHS = WORKFLOW_PATHS + (
     "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_V20.json",
     "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_V20.md",
     "exact_gauged_u1x_g3_pd_rank_certificate_v20.py",
+    )
 )
 
 QUARANTINED_SIGMA35_PATHS = (
@@ -201,7 +292,9 @@ CHECKSUM_REQUIRED_PATHS = (
     "test_corrected_rank1_endpoint_v21.py",
     "test_freeze_corrected_rank1_endpoint_v21_integration.py",
     "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py",
-) + WORKFLOW_PATHS + PUBLICATION_PATHS
+) + WORKFLOW_PATHS + PUBLICATION_PATHS + tuple(
+    GLOBAL_PHI_CLASSIFICATION_RAW_PINS
+) + GLOBAL_PHI_CLASSIFICATION_PORTABLE_PATHS
 
 
 def _raw_payload(path: Path) -> bytes:
@@ -240,6 +333,8 @@ def _inventory_row(relative: str, mode: str) -> dict[str, Any]:
 def _role(relative: str) -> str:
     if relative in PUBLICATION_PATHS:
         return "audited corrected v21 publication byte"
+    if relative in GLOBAL_PHI_CLASSIFICATION_RAW_PINS:
+        return "byte-pinned exact global Phi self-zero proof dependency"
     if relative in RAW_SOURCE_PINS or relative in RHS_PORTABLE_SOURCE_PINS:
         return "generation-only byte-pinned structural dependency"
     if relative in WORKFLOW_PATHS:
@@ -269,6 +364,12 @@ def _require_source_pins() -> None:
         observed = _sha256(_portable_payload(ROOT / relative))
         if observed != expected:
             raise ArithmeticError(f"portable RHS dependency drifted: {relative}")
+    for relative, expected in GLOBAL_PHI_CLASSIFICATION_RAW_PINS.items():
+        observed = _sha256(_raw_payload(ROOT / relative))
+        if observed != expected:
+            raise ArithmeticError(
+                f"raw global Phi classification dependency drifted: {relative}"
+            )
 
 
 def _require_publication_inventory() -> None:
@@ -559,6 +660,12 @@ def build_manifest() -> dict[str, Any]:
             "exact_LDL_pivot_sha256": LDL_SHA256,
             "map_numerator_csr_sha256": MAP_SHA256,
             "target_numerator_sha256": TARGET_SHA256,
+            "global_Phi_classification_source_raw_sha256": (
+                GLOBAL_PHI_CLASSIFICATION_SOURCE_SHA256
+            ),
+            "global_Phi_classification_core_sha256": (
+                GLOBAL_PHI_CLASSIFICATION_CORE_SHA256
+            ),
         },
         "exact_dimensions": {
             "map_shape": [6585, 19594],
@@ -575,6 +682,9 @@ def build_manifest() -> dict[str, Any]:
         "release_checksum_entry_count": checksum_count,
         "generation_source_pins": {
             "map_raw_sha256": dict(sorted(RAW_SOURCE_PINS.items())),
+            "global_Phi_classification_raw_sha256": dict(
+                sorted(GLOBAL_PHI_CLASSIFICATION_RAW_PINS.items())
+            ),
             "physical_RHS_portable_lf_sha256": dict(
                 sorted(RHS_PORTABLE_SOURCE_PINS.items())
             ),
@@ -583,6 +693,10 @@ def build_manifest() -> dict[str, Any]:
             "fixed_H": "h_-=(e0-i e1)/sqrt(2)",
             "fixed_Sigma": "q/4",
             "arbitrary_real_Phi_at_fixed_endpoint": True,
+            "all_PD_equality_orbits_classified_exactly": True,
+            "global_signed_kaehler_Phi_self_zero_classification_proved": True,
+            "Dynkin_maximal_subgroup_classification_external_dependency": True,
+            "quantitative_beta_global_coercivity_proved": False,
             "legacy_v20_physical_target_valid": False,
             "legacy_v20_primal_valid": False,
             "global_Sigma_proved": False,

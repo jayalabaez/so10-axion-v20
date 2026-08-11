@@ -349,8 +349,11 @@ class G1G8GateLedgerTests(unittest.TestCase):
         self.assertEqual(frontier["SU5_Delta_PD_exact_Hessian_rank"], 429)
         self.assertEqual(frontier["SU5_Delta_PD_exact_Hessian_nullity"], 33)
         self.assertTrue(frontier["SU5_Delta_PD_full_486_extension_open"])
-        self.assertTrue(
+        self.assertFalse(
             frontier["SU5_Delta_PD_disconnected_equality_orbits_open"]
+        )
+        self.assertTrue(
+            frontier["SU5_Delta_PD_equality_orbits_classified_exactly"]
         )
         self.assertTrue(frontier["SU5_Delta_HSX_honest_frontier"])
         self.assertEqual(frontier["SU5_Delta_HSX_nonzero_real_parameters"], 28)
@@ -382,17 +385,23 @@ class G1G8GateLedgerTests(unittest.TestCase):
         self.assertTrue(frontier["SU5_Delta_equality_honestly_reduced"])
         self.assertTrue(frontier["SU5_Delta_Phi_orbit_audit_honest"])
         self.assertTrue(frontier["SU5_Delta_literal_single_Phi_orbit_refuted"])
-        self.assertTrue(frontier["SU5_Delta_signed_Phi_orbit_theorem_open"])
+        self.assertFalse(frontier["SU5_Delta_signed_Phi_orbit_theorem_open"])
+        self.assertTrue(frontier["SU5_Delta_signed_Phi_orbit_theorem_closed"])
         self.assertTrue(frontier["SU5_Delta_SU4_Phi_slice_classified"])
         self.assertTrue(frontier["SU5_Delta_signed_Phi_local_components_closed"])
-        self.assertFalse(frontier["SU5_Delta_distant_Phi_components_excluded"])
+        self.assertTrue(frontier["SU5_Delta_distant_Phi_components_excluded"])
         self.assertTrue(frontier["SU5_Delta_Phi_SU3_fixed_slice_closed"])
         self.assertEqual(frontier["SU5_Delta_Phi_SU3_fixed_slice_dimension"], 16)
         self.assertTrue(frontier["SU5_Delta_fixed_F_Sigma_one_orbit_exact"])
         self.assertTrue(
             frontier["SU5_Delta_diagonal_Phi_slice_one_orbit_exact"]
         )
-        self.assertTrue(frontier["SU5_Delta_global_Phi_orbit_lemma_open"])
+        self.assertFalse(frontier["SU5_Delta_global_Phi_orbit_lemma_open"])
+        self.assertTrue(frontier["SU5_Delta_global_Phi_orbit_lemma_closed"])
+        self.assertEqual(
+            frontier["SU5_Delta_global_Phi_orbit_theorem_core_sha256"],
+            "db493a74303a57862f09c2a92118ea3d66b8b12ecbaea9162155d4ab3baafecc",
+        )
         self.assertTrue(
             frontier["SU5_Delta_chiral_global_gap_honestly_reduced"]
         )

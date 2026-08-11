@@ -68,6 +68,9 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
     def _assert_frozen_numerical_and_central_reports_are_read_only(self):
         frozen_sources = (
             "gauged_u1x_g2_derivative_audit_v20.py",
+            "exact_phi_self_zero_global_signed_kaehler_classification_v20.py",
+            "exact_gauged_u1x_g3_su5_equality_orbit_v20.py",
+            "exact_gauged_u1x_g3_su5_chiral_global_gap_reduction_v20.py",
             "gauged_u1x_g3_sos_candidate_v20.py",
             "gauged_u1x_g3_stability_v20.py",
             "gauged_u1x_g3_corrected_common_kernel_v20.py",
@@ -145,6 +148,9 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             paths,
         )
         for required in (
+            "FROZEN_PHI_SELF_ZERO_GLOBAL_SIGNED_KAEHLER_CLASSIFICATION_SOURCE_V20.py",
+            "exact_phi_self_zero_global_signed_kaehler_classification_v20.py",
+            "test_exact_phi_self_zero_global_signed_kaehler_classification_v20.py",
             "exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py",
             "test_exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py",
             "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_V20.json",

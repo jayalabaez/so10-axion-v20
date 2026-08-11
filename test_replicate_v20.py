@@ -11,6 +11,9 @@ def test_cross_platform_and_central_frozen_reports_are_read_only() -> None:
     tree = ast.parse(source)
     for script in (
         "gauged_u1x_g2_derivative_audit_v20.py",
+        "exact_phi_self_zero_global_signed_kaehler_classification_v20.py",
+        "exact_gauged_u1x_g3_su5_equality_orbit_v20.py",
+        "exact_gauged_u1x_g3_su5_chiral_global_gap_reduction_v20.py",
         "gauged_u1x_g3_sos_candidate_v20.py",
         "gauged_u1x_g3_stability_v20.py",
         "gauged_u1x_g3_corrected_common_kernel_v20.py",
@@ -70,6 +73,20 @@ def test_su3_phi_slice_is_generated_before_equality_and_its_test_is_run() -> Non
     assert generator in source
     assert test in source
     assert source.index(generator) < source.index(consumer)
+
+
+def test_global_phi_classification_is_checked_before_equality_and_proof_tests_run() -> None:
+    source = replicate.Path(replicate.__file__).read_text(encoding="utf-8")
+    classifier = "exact_phi_self_zero_global_signed_kaehler_classification_v20.py"
+    equality = "exact_gauged_u1x_g3_su5_equality_orbit_v20.py"
+    assert source.index(classifier) < source.index(equality)
+    for test in (
+        "test_exact_phi_zero_degree8_conductor_identity_v20.py",
+        "test_exact_phi_zero_cubic_cauchy_bridge_v20.py",
+        "test_exact_phi_self_zero_global_sextic_syzygy_v20.py",
+        "test_exact_phi_self_zero_global_signed_kaehler_classification_v20.py",
+    ):
+        assert test in source
 
 
 def test_fixed_f_offkernel_certificate_is_generated_and_tested_before_final_gate() -> None:

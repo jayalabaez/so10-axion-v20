@@ -25,7 +25,6 @@
     "upstream_G3_not_overclaimed": true
   },
   "blockers": [
-    "all_PD_equality_orbits_classified_exactly",
     "beta_global_gap_and_unique_equality_exact",
     "authoritative_external_model_contract_executed",
     "G1_promoted_closed",
@@ -75,6 +74,7 @@
   "diagnostic_only": {
     "Phi_local_component_state": "LOCAL_COMPONENT_THEOREM_CLOSED",
     "SU3_slice_generic_components_excluded": false,
+    "all_PD_equality_orbits_classified_exactly": true,
     "all_vanishing_global_SOS_replacements_excluded": true,
     "arbitrary_Phi_global_gap_closed": false,
     "arbitrary_Phi_nonzero_residual_cancellations_excluded": false,
@@ -84,6 +84,8 @@
     "distant_Phi_components_excluded": false,
     "fixed_F_full_offkernel_state": "CLOSED_FIXED_F_GLOBAL_SUBPROBLEM",
     "fixed_F_global_gap_closed": true,
+    "global_signed_Phi_zero_theorem_core_sha256": "db493a74303a57862f09c2a92118ea3d66b8b12ecbaea9162155d4ab3baafecc",
+    "global_signed_Phi_zero_theorem_external_dependency": "Dynkin classification of connected maximal proper subgroups of SO(10), with the corresponding SO(9) and SO(8) lists",
     "live_full_gradient_max_abs_residual": 1.1515094433534045e-13,
     "live_minimum_transverse_eigenvalue": 0.004844587743069171,
     "live_transverse_dimension": 448,
@@ -92,6 +94,7 @@
     "max_negative_pure_Delta_full_residual_gap_closed": true,
     "max_negative_pure_Delta_full_residual_minimum": "1/5000",
     "nonvanishing_residual_global_SOS_replacements_excluded": false,
+    "quantitative_beta_global_coercivity_proved": false,
     "rank1_SU3_Phi_slice_real_dimension": 4,
     "rank1_SU3_ambient_real_dimension": 16,
     "rank1_SU3_slice_minimum": "1/5000",
@@ -170,7 +173,7 @@
   "remaining_open_problem": "uniform coercivity for arbitrary non-pure-Delta Sigma orientations",
   "science_criteria": {
     "G1_G2_exact_scoped_calculations_complete": true,
-    "all_PD_equality_orbits_classified_exactly": false,
+    "all_PD_equality_orbits_classified_exactly": true,
     "beta_global_gap_and_unique_equality_exact": false,
     "complete_SU3_fixed_Phi_slice_classified_exactly": true,
     "couplings_perturbative": true,
@@ -188,5 +191,5 @@
   },
   "status": "FINAL_G3_ACCEPTANCE_TEST_EXECUTED",
   "upstream_frontier_integrity": true,
-  "verdict": "G3 remains open. The chiral-H candidate now has an exact full Hessian theorem (rank/nullity 448/38, positive on the quotient) and an exact global gap/equality theorem on the complete Phi=F stratum for arbitrary H and Sigma. The complete maximally-negative pure-Delta sector is now also excluded for arbitrary real Phi and all nonzero residuals, with sharp gap 1/5000; no exact lower witness is known. The prior four-real-dimensional SU(3) regression is historical and subsumed. At fixed H=h_- and Sigma=q/4, the corrected v21 exact theorem covers every real Phi210. At that fixed endpoint, the exact SU(4) stabilizer, aligned rank-210 carrier real maps and complete 45-element Phi210 quadratic basis feed an exact 22366-dimensional augmented census with 35 types/824 copies, 22 real/Hermitian blocks, 19594 Schur parameters, and 6585 invariant rows. The complete cubic interface has all 1414 real cross variables and an exact-rank-478, 478x1414 integer map with kernel dimension 936. Its zero placeholder is nonphysical and certifies no physical zero RHS. The homogeneous quartic interface is an exact-rank-6057, 6057x18085 integer map with kernel dimension 12028. The legacy v20 assembled physical target is rejected. The corrected 6585x19594 standard positive-Gram map, ordered-spectral target, and exact strict 22-block/824-pivot primal prove p(t,Phi)>0 off the homogeneous origin and A(Phi)>3/200 at t=1 for every real Phi210. Global Sigma, general/full H, the full Hessian, and G3 remain open. PASS still requires uniform coercivity away from the fixed Sigma=q/4 endpoint, plus the external authoritative model execution."
+  "verdict": "G3 remains open. The chiral-H candidate now has an exact full Hessian theorem (rank/nullity 448/38, positive on the quotient) and the exact signed-Kahler theorem now classifies every PD equality orbit (with Dynkin maximal-subgroup classification as an explicit external dependency). It does not provide the quantitative projector-to-orbit coercivity estimate. The candidate also has an exact global gap/equality theorem on the complete Phi=F stratum for arbitrary H and Sigma. The complete maximally-negative pure-Delta sector is now also excluded for arbitrary real Phi and all nonzero residuals, with sharp gap 1/5000; no exact lower witness is known. The prior four-real-dimensional SU(3) regression is historical and subsumed. At fixed H=h_- and Sigma=q/4, the corrected v21 exact theorem covers every real Phi210. At that fixed endpoint, the exact SU(4) stabilizer, aligned rank-210 carrier real maps and complete 45-element Phi210 quadratic basis feed an exact 22366-dimensional augmented census with 35 types/824 copies, 22 real/Hermitian blocks, 19594 Schur parameters, and 6585 invariant rows. The complete cubic interface has all 1414 real cross variables and an exact-rank-478, 478x1414 integer map with kernel dimension 936. Its zero placeholder is nonphysical and certifies no physical zero RHS. The homogeneous quartic interface is an exact-rank-6057, 6057x18085 integer map with kernel dimension 12028. The legacy v20 assembled physical target is rejected. The corrected 6585x19594 standard positive-Gram map, ordered-spectral target, and exact strict 22-block/824-pivot primal prove p(t,Phi)>0 off the homogeneous origin and A(Phi)>3/200 at t=1 for every real Phi210. Global Sigma, general/full H, the full Hessian, and G3 remain open. PASS still requires uniform coercivity away from the fixed Sigma=q/4 endpoint, plus the external authoritative model execution."
 }

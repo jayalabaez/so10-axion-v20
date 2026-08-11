@@ -79,13 +79,13 @@ the model.
   Pluecker/`U(5)` orbit. The literal claim that every Phi-projector zero is
   the `+F` orbit is false: `-F` is a second SO(10) orbit, separated exactly by
   `Tr(A_Phi^3)=+/-60`. The coupled `-F` branch is nevertheless excluded by an
-  exact `252/252` mixed rank. The corrected signed classification
-  `SO(10).F union SO(10).(-F)` is proved on the complete `SU(4)`-invariant
-  slice. An exact implicit-function/equivariance certificate further proves
-  that both signed orbits are isolated local components of the full zero set;
-  the complete 16-real-dimensional `SU(3)`-fixed subspace is also classified
-  and contains only the signed Kahler-square orbits. Excluding generic distant
-  components remains open
+  exact `252/252` mixed rank. A frozen degree-eight conductor, cubic Cauchy
+  bridge, sextic syzygy, and stabilizer-rigidity theorem now prove the corrected
+  signed classification `SO(10).F union SO(10).(-F)` for every real four-form,
+  so all PD equality orbits are classified exactly. The rigidity step imports
+  Dynkin's published maximal-subgroup classification explicitly. This is a
+  zero-locus theorem, not a quantitative projector-to-orbit estimate; uniform
+  beta-global coercivity remains open
 - For the full field content, real `H=e6` is exactly obstructed, while the
   neutral chiral vector `H=(e6+i e7)/sqrt(2)` gives a 28-of-51, coefficient-safe,
   exactly stationary and exactly BFB candidate. Its exact symmetry ranks are

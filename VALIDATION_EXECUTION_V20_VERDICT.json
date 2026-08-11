@@ -198,9 +198,10 @@
       "index": 18,
       "command": [
         "python",
-        "global_flavour_fit_v20.py"
+        "global_flavour_fit_v20.py",
+        "--no-write"
       ],
-      "display": "python global_flavour_fit_v20.py",
+      "display": "python global_flavour_fit_v20.py --no-write",
       "returncode": null,
       "elapsed_seconds": null,
       "passed": null
@@ -520,10 +521,9 @@
       "index": 47,
       "command": [
         "python",
-        "gauged_u1x_g2_derivative_audit_v20.py",
-        "--write"
+        "gauged_u1x_g2_derivative_audit_v20.py"
       ],
-      "display": "python gauged_u1x_g2_derivative_audit_v20.py --write",
+      "display": "python gauged_u1x_g2_derivative_audit_v20.py",
       "returncode": null,
       "elapsed_seconds": null,
       "passed": null
@@ -691,16 +691,26 @@
       "index": 61,
       "command": [
         "python",
-        "exact_gauged_u1x_g3_su5_equality_orbit_v20.py",
-        "--write"
+        "exact_phi_self_zero_global_signed_kaehler_classification_v20.py"
       ],
-      "display": "python exact_gauged_u1x_g3_su5_equality_orbit_v20.py --write",
+      "display": "python exact_phi_self_zero_global_signed_kaehler_classification_v20.py",
       "returncode": null,
       "elapsed_seconds": null,
       "passed": null
     },
     {
       "index": 62,
+      "command": [
+        "python",
+        "exact_gauged_u1x_g3_su5_equality_orbit_v20.py"
+      ],
+      "display": "python exact_gauged_u1x_g3_su5_equality_orbit_v20.py",
+      "returncode": null,
+      "elapsed_seconds": null,
+      "passed": null
+    },
+    {
+      "index": 63,
       "command": [
         "python",
         "exact_gauged_u1x_g3_su5_fixed_f_offkernel_bound_v20.py",
@@ -712,7 +722,7 @@
       "passed": null
     },
     {
-      "index": 63,
+      "index": 64,
       "command": [
         "python",
         "exact_gauged_u1x_g3_su5_max_negative_zero_residual_bound_v20.py",
@@ -724,7 +734,7 @@
       "passed": null
     },
     {
-      "index": 64,
+      "index": 65,
       "command": [
         "python",
         "exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py",
@@ -736,7 +746,7 @@
       "passed": null
     },
     {
-      "index": 65,
+      "index": 66,
       "command": [
         "python",
         "exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py",
@@ -748,7 +758,7 @@
       "passed": null
     },
     {
-      "index": 66,
+      "index": 67,
       "command": [
         "python",
         "exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py"
@@ -759,7 +769,7 @@
       "passed": null
     },
     {
-      "index": 67,
+      "index": 68,
       "command": [
         "python",
         "exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py",
@@ -771,7 +781,7 @@
       "passed": null
     },
     {
-      "index": 68,
+      "index": 69,
       "command": [
         "python",
         "exact_gauged_u1x_g3_rank1_su4_aligned_carriers_v20.py",
@@ -783,7 +793,7 @@
       "passed": null
     },
     {
-      "index": 69,
+      "index": 70,
       "command": [
         "python",
         "exact_gauged_u1x_g3_rank1_su4_phi210_quadratic_basis_v20.py",
@@ -795,7 +805,7 @@
       "passed": null
     },
     {
-      "index": 70,
+      "index": 71,
       "command": [
         "python",
         "exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py"
@@ -806,7 +816,7 @@
       "passed": null
     },
     {
-      "index": 71,
+      "index": 72,
       "command": [
         "python",
         "exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py"
@@ -817,7 +827,7 @@
       "passed": null
     },
     {
-      "index": 72,
+      "index": 73,
       "command": [
         "python",
         "exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py"
@@ -828,7 +838,7 @@
       "passed": null
     },
     {
-      "index": 73,
+      "index": 74,
       "command": [
         "python",
         "-B",
@@ -841,7 +851,7 @@
       "passed": null
     },
     {
-      "index": 74,
+      "index": 75,
       "command": [
         "python",
         "-B",
@@ -854,7 +864,7 @@
       "passed": null
     },
     {
-      "index": 75,
+      "index": 76,
       "command": [
         "python",
         "-B",
@@ -866,7 +876,7 @@
       "passed": null
     },
     {
-      "index": 76,
+      "index": 77,
       "command": [
         "python",
         "-B",
@@ -878,7 +888,7 @@
       "passed": null
     },
     {
-      "index": 77,
+      "index": 78,
       "command": [
         "python",
         "-B",
@@ -890,19 +900,18 @@
       "passed": null
     },
     {
-      "index": 78,
+      "index": 79,
       "command": [
         "python",
-        "exact_gauged_u1x_g3_su5_chiral_global_gap_reduction_v20.py",
-        "--write"
+        "exact_gauged_u1x_g3_su5_chiral_global_gap_reduction_v20.py"
       ],
-      "display": "python exact_gauged_u1x_g3_su5_chiral_global_gap_reduction_v20.py --write",
+      "display": "python exact_gauged_u1x_g3_su5_chiral_global_gap_reduction_v20.py",
       "returncode": null,
       "elapsed_seconds": null,
       "passed": null
     },
     {
-      "index": 79,
+      "index": 80,
       "command": [
         "python",
         "exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py",
@@ -914,26 +923,13 @@
       "passed": null
     },
     {
-      "index": 80,
-      "command": [
-        "python",
-        "gauged_u1x_g3_sos_candidate_v20.py",
-        "--recompute-heavy",
-        "--write"
-      ],
-      "display": "python gauged_u1x_g3_sos_candidate_v20.py --recompute-heavy --write",
-      "returncode": null,
-      "elapsed_seconds": null,
-      "passed": null
-    },
-    {
       "index": 81,
       "command": [
         "python",
-        "gauged_u1x_g3_stability_v20.py",
-        "--write"
+        "gauged_u1x_g3_sos_candidate_v20.py",
+        "--recompute-heavy"
       ],
-      "display": "python gauged_u1x_g3_stability_v20.py --write",
+      "display": "python gauged_u1x_g3_sos_candidate_v20.py --recompute-heavy",
       "returncode": null,
       "elapsed_seconds": null,
       "passed": null
@@ -942,11 +938,9 @@
       "index": 82,
       "command": [
         "python",
-        "gauged_u1x_g3_corrected_common_kernel_v20.py",
-        "--recompute-heavy",
-        "--write"
+        "gauged_u1x_g3_stability_v20.py"
       ],
-      "display": "python gauged_u1x_g3_corrected_common_kernel_v20.py --recompute-heavy --write",
+      "display": "python gauged_u1x_g3_stability_v20.py",
       "returncode": null,
       "elapsed_seconds": null,
       "passed": null
@@ -955,10 +949,10 @@
       "index": 83,
       "command": [
         "python",
-        "g1_g8_gate_ledger_v20.py",
-        "--write"
+        "gauged_u1x_g3_corrected_common_kernel_v20.py",
+        "--recompute-heavy"
       ],
-      "display": "python g1_g8_gate_ledger_v20.py --write",
+      "display": "python gauged_u1x_g3_corrected_common_kernel_v20.py --recompute-heavy",
       "returncode": null,
       "elapsed_seconds": null,
       "passed": null
@@ -967,10 +961,9 @@
       "index": 84,
       "command": [
         "python",
-        "final_g3_acceptance_gate_v20.py",
-        "--write"
+        "g1_g8_gate_ledger_v20.py"
       ],
-      "display": "python final_g3_acceptance_gate_v20.py --write",
+      "display": "python g1_g8_gate_ledger_v20.py",
       "returncode": null,
       "elapsed_seconds": null,
       "passed": null
@@ -979,16 +972,26 @@
       "index": 85,
       "command": [
         "python",
-        "g1_g8_execution_roadmap_v20.py",
-        "--write"
+        "final_g3_acceptance_gate_v20.py"
       ],
-      "display": "python g1_g8_execution_roadmap_v20.py --write",
+      "display": "python final_g3_acceptance_gate_v20.py",
       "returncode": null,
       "elapsed_seconds": null,
       "passed": null
     },
     {
       "index": 86,
+      "command": [
+        "python",
+        "g1_g8_execution_roadmap_v20.py"
+      ],
+      "display": "python g1_g8_execution_roadmap_v20.py",
+      "returncode": null,
+      "elapsed_seconds": null,
+      "passed": null
+    },
+    {
+      "index": 87,
       "command": [
         "python",
         "authoritative_full_model_gate_v20.py"
@@ -999,25 +1002,14 @@
       "passed": null
     },
     {
-      "index": 87,
-      "command": [
-        "python",
-        "theory_validation_matrix_v20.py",
-        "--expect-blocked"
-      ],
-      "display": "python theory_validation_matrix_v20.py --expect-blocked",
-      "returncode": null,
-      "elapsed_seconds": null,
-      "passed": null
-    },
-    {
       "index": 88,
       "command": [
         "python",
-        "theory_confirmation_verdict_v20.py",
-        "--expect-blocked"
+        "theory_validation_matrix_v20.py",
+        "--expect-blocked",
+        "--no-write"
       ],
-      "display": "python theory_confirmation_verdict_v20.py --expect-blocked",
+      "display": "python theory_validation_matrix_v20.py --expect-blocked --no-write",
       "returncode": null,
       "elapsed_seconds": null,
       "passed": null
@@ -1026,10 +1018,11 @@
       "index": 89,
       "command": [
         "python",
-        "ultimate_theory_gate_v20.py",
-        "--expect-blocked"
+        "theory_confirmation_verdict_v20.py",
+        "--expect-blocked",
+        "--no-write"
       ],
-      "display": "python ultimate_theory_gate_v20.py --expect-blocked",
+      "display": "python theory_confirmation_verdict_v20.py --expect-blocked --no-write",
       "returncode": null,
       "elapsed_seconds": null,
       "passed": null
@@ -1089,6 +1082,10 @@
         "test_exact_gauged_u1x_g3_su5_phi_orbit_lemma_v20.py",
         "test_exact_gauged_u1x_g3_su5_phi_local_component_v20.py",
         "test_exact_gauged_u1x_g3_su5_phi_su3_slice_v20.py",
+        "test_exact_phi_zero_degree8_conductor_identity_v20.py",
+        "test_exact_phi_zero_cubic_cauchy_bridge_v20.py",
+        "test_exact_phi_self_zero_global_sextic_syzygy_v20.py",
+        "test_exact_phi_self_zero_global_signed_kaehler_classification_v20.py",
         "test_exact_gauged_u1x_g3_su5_equality_orbit_v20.py",
         "test_exact_gauged_u1x_g3_su5_fixed_f_offkernel_bound_v20.py",
         "test_exact_gauged_u1x_g3_su5_max_negative_zero_residual_bound_v20.py",
@@ -1115,7 +1112,7 @@
         "test_theory_validation_matrix_v20.py",
         "test_replicate_v20.py"
       ],
-      "display": "python -B -m pytest -q -p no:cacheprovider test_exact_x_symmetry_consistency_gate_v20.py test_g1_exact_declared_symmetry_character_census_v20.py test_gauged_u1x_scalar_contract_v20.py test_gauged_u1x_g2_derivative_audit_v20.py test_exact_gauged_u1x_stationarity_rank_certificate_v20.py test_exact_gauged_u1x_physical_quotient_v20.py test_exact_gauged_u1x_g3_pd_rank_certificate_v20.py test_exact_gauged_u1x_g3_a_square_recoupling_v20.py test_exact_gauged_u1x_g3_sos_bfb_stationarity_v20.py test_exact_gauged_u1x_g3_global_counterexample_v20.py test_exact_gauged_u1x_g3_kernel_quartic_bound_v20.py test_exact_gauged_u1x_g3_replacement_stationary_orbit_v20.py test_exact_gauged_u1x_g3_su5_delta_pd_sos_v20.py test_exact_gauged_u1x_g3_su5_delta_hsx_extension_v20.py test_exact_gauged_u1x_g3_su5_delta_hsx_exact_hessian_v20.py test_exact_gauged_u1x_g3_su5_phi_orbit_lemma_v20.py test_exact_gauged_u1x_g3_su5_phi_local_component_v20.py test_exact_gauged_u1x_g3_su5_phi_su3_slice_v20.py test_exact_gauged_u1x_g3_su5_equality_orbit_v20.py test_exact_gauged_u1x_g3_su5_fixed_f_offkernel_bound_v20.py test_exact_gauged_u1x_g3_su5_max_negative_zero_residual_bound_v20.py test_exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py test_exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py test_exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py test_exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py test_exact_gauged_u1x_g3_rank1_su4_aligned_carriers_v20.py test_exact_gauged_u1x_g3_rank1_su4_phi210_quadratic_basis_v20.py test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py corrected_rank1_publication_v21/test_exact_gauged_u1x_g3_rank1_su4_corrected_publication_v21.py test_corrected_rank1_endpoint_v21.py test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py test_exact_gauged_u1x_g3_su5_chiral_global_gap_reduction_v20.py test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py test_final_g3_acceptance_gate_v20.py test_gauged_u1x_g3_sos_candidate_v20.py test_gauged_u1x_g3_stability_v20.py test_gauged_u1x_g3_corrected_common_kernel_v20.py test_g1_g8_gate_ledger_v20.py test_g1_g8_execution_roadmap_v20.py test_theory_validation_matrix_v20.py test_replicate_v20.py",
+      "display": "python -B -m pytest -q -p no:cacheprovider test_exact_x_symmetry_consistency_gate_v20.py test_g1_exact_declared_symmetry_character_census_v20.py test_gauged_u1x_scalar_contract_v20.py test_gauged_u1x_g2_derivative_audit_v20.py test_exact_gauged_u1x_stationarity_rank_certificate_v20.py test_exact_gauged_u1x_physical_quotient_v20.py test_exact_gauged_u1x_g3_pd_rank_certificate_v20.py test_exact_gauged_u1x_g3_a_square_recoupling_v20.py test_exact_gauged_u1x_g3_sos_bfb_stationarity_v20.py test_exact_gauged_u1x_g3_global_counterexample_v20.py test_exact_gauged_u1x_g3_kernel_quartic_bound_v20.py test_exact_gauged_u1x_g3_replacement_stationary_orbit_v20.py test_exact_gauged_u1x_g3_su5_delta_pd_sos_v20.py test_exact_gauged_u1x_g3_su5_delta_hsx_extension_v20.py test_exact_gauged_u1x_g3_su5_delta_hsx_exact_hessian_v20.py test_exact_gauged_u1x_g3_su5_phi_orbit_lemma_v20.py test_exact_gauged_u1x_g3_su5_phi_local_component_v20.py test_exact_gauged_u1x_g3_su5_phi_su3_slice_v20.py test_exact_phi_zero_degree8_conductor_identity_v20.py test_exact_phi_zero_cubic_cauchy_bridge_v20.py test_exact_phi_self_zero_global_sextic_syzygy_v20.py test_exact_phi_self_zero_global_signed_kaehler_classification_v20.py test_exact_gauged_u1x_g3_su5_equality_orbit_v20.py test_exact_gauged_u1x_g3_su5_fixed_f_offkernel_bound_v20.py test_exact_gauged_u1x_g3_su5_max_negative_zero_residual_bound_v20.py test_exact_gauged_u1x_g3_su5_max_negative_full_residual_bound_v20.py test_exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py test_exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py test_exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py test_exact_gauged_u1x_g3_rank1_su4_aligned_carriers_v20.py test_exact_gauged_u1x_g3_rank1_su4_phi210_quadratic_basis_v20.py test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py corrected_rank1_publication_v21/test_exact_gauged_u1x_g3_rank1_su4_corrected_publication_v21.py test_corrected_rank1_endpoint_v21.py test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py test_exact_gauged_u1x_g3_su5_chiral_global_gap_reduction_v20.py test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py test_final_g3_acceptance_gate_v20.py test_gauged_u1x_g3_sos_candidate_v20.py test_gauged_u1x_g3_stability_v20.py test_gauged_u1x_g3_corrected_common_kernel_v20.py test_g1_g8_gate_ledger_v20.py test_g1_g8_execution_roadmap_v20.py test_theory_validation_matrix_v20.py test_replicate_v20.py",
       "returncode": null,
       "elapsed_seconds": null,
       "passed": null

@@ -36,6 +36,33 @@ FINAL_THEOREM_CORE_PATHS: tuple[str, ...] = (
     ".gitattributes",
     "AUTHORITATIVE_FULL_MODEL_GATE_V20.md",
     "EXACT_X_SYMMETRY_CONSISTENCY_GATE_V20.md",
+    "EXACT_PHI_SELF_ZERO_GLOBAL_SEXTIC_SYZYGY.md",
+    "EXACT_PHI_SELF_ZERO_GLOBAL_SIGNED_KAEHLER_CLASSIFICATION.md",
+    "EXACT_PHI_ZERO_CUBIC_CAUCHY_BRIDGE.md",
+    "EXACT_PHI_ZERO_DEGREE8_CONDUCTOR_EVALUATION_TABLE.json",
+    "EXACT_PHI_ZERO_DEGREE8_CONDUCTOR_IDENTITY.md",
+    "EXACT_PHI_ZERO_DEGREE8_CONDUCTOR_RECONSTRUCTION_CHECKPOINT.json",
+    "EXACT_PHI_ZERO_DEGREE8_CONDUCTOR_SOLUTION.json",
+    "FROZEN_EXACT_SIGNED_KAEHLER_FULL126_STRONG_OPERATOR_SOURCE_V20.py",
+    "FROZEN_PHI_SELF_ZERO_GLOBAL_SEXTIC_SYZYGY_SOURCE_V20.py",
+    "FROZEN_PHI_SELF_ZERO_GLOBAL_SIGNED_KAEHLER_CLASSIFICATION_SOURCE_V20.py",
+    "FROZEN_PHI_ZERO_CUBIC_CAUCHY_BRIDGE_SOURCE_V20.py",
+    "FROZEN_PHI_ZERO_DEGREE8_CONDUCTOR_IDENTITY_SOURCE_V20.py",
+    "FROZEN_PHI_ZERO_DEGREE8_CONDUCTOR_RECONSTRUCTION_SOURCE_V20.py",
+    "FROZEN_SIGNED_KAEHLER_FULL126_PHYSICAL_SUBTRACTION_SOURCE_V20.py",
+    "FROZEN_SIGNED_KAEHLER_P0_FULL126_KERNEL_RADIAL_STRICTNESS_SOURCE_V20.py",
+    "exact_phi_zero_o10_degree8_invariant_split_v20.py",
+    "reconstruct_exact_phi_zero_degree8_radical_v20.py",
+    "reconstruct_exact_phi_zero_degree8_conductor_table_v20.py",
+    "solve_exact_phi_zero_degree8_conductor_identity_v20.py",
+    "exact_phi_zero_degree8_conductor_identity_v20.py",
+    "exact_phi_zero_cubic_cauchy_bridge_v20.py",
+    "exact_phi_self_zero_global_sextic_syzygy_v20.py",
+    "exact_phi_self_zero_global_signed_kaehler_classification_v20.py",
+    "test_exact_phi_zero_degree8_conductor_identity_v20.py",
+    "test_exact_phi_zero_cubic_cauchy_bridge_v20.py",
+    "test_exact_phi_self_zero_global_sextic_syzygy_v20.py",
+    "test_exact_phi_self_zero_global_signed_kaehler_classification_v20.py",
     "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_V20.json",
     "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_V20.md",
     "EXACT_GAUGED_U1X_G3_RANK1_SU4_STABILIZER_V20.json",
@@ -430,15 +457,19 @@ def main() -> int:
     run(
         [
             sys.executable,
+            "exact_phi_self_zero_global_signed_kaehler_classification_v20.py",
+        ]
+    )
+    run(
+        [
+            sys.executable,
             "exact_gauged_u1x_g3_su5_equality_orbit_v20.py",
-            "--write",
         ]
     )
     run(
         [
             sys.executable,
             "exact_gauged_u1x_g3_su5_chiral_global_gap_reduction_v20.py",
-            "--write",
         ]
     )
     run(
@@ -1192,16 +1223,30 @@ def main() -> int:
     )
     equality_scope = exact_su5_equality["scope"]
     equality_lemma = exact_su5_equality["remaining_global_lemma"]
+    equality_global = exact_su5_equality["Phi_global_signed_zero_theorem"]
     require(
         exact_su5_equality["n_failed"] == 0
+        and exact_su5_equality["status"]
+        == "EXACT_GLOBAL_EQUALITY_CLASSIFICATION__SIGNED_PHI_THEOREM_CLOSED__G3_OPEN"
+        and exact_su5_equality["overall_state"]
+        == "GLOBAL_EQUALITY_ORBITS_CLOSED"
         and equality_scope["fixed_F_Sigma_global_equality_classified"] is True
         and equality_scope[
             "fixed_Delta_diagonal_Phi_global_equality_classified"
         ]
         is True
         and equality_scope["global_equality_orbit_classification_complete"]
-        is False
-        and equality_lemma["proved"] is False
+        is True
+        and equality_scope["quantitative_beta_global_coercivity_proved"] is False
+        and equality_lemma["proved"] is True
+        and equality_lemma["source_bound_certificate_available"] is True
+        and equality_lemma["quantitative_orbit_distance_bound_proved"] is False
+        and equality_global["frozen_source_sha256"]
+        == "17038c6fb82ba565a16228f5f5c03026f0ab8e3ad7959792498c2785b9653066"
+        and equality_global["core_sha256"]
+        == "db493a74303a57862f09c2a92118ea3d66b8b12ecbaea9162155d4ab3baafecc"
+        and equality_global["external_theorem_dependency"]["kind"]
+        == "published subgroup-classification theorem"
         and equality_lemma["numerical_search_is_not_a_substitute"] is True
         and equality_scope["G3_closed"] is False,
         "SU(5)+Delta equality classification was not fail-closed",
@@ -1209,9 +1254,12 @@ def main() -> int:
     gap_flags = exact_su5_gap["flags"]
     require(
         exact_su5_gap["n_failed"] == 0
+        and exact_su5_gap["status"]
+        == "GLOBAL_GAP_REDUCED_TO_QUANTITATIVE_COERCIVITY"
         and gap_flags["lower_witness_found"] is False
         and gap_flags["conditional_small_positive_beta_route_exists"] is True
         and gap_flags["beta_1_over_20_global_minimum_certified"] is False
+        and gap_flags["PD_equality_orbits_classified"] is True
         and gap_flags["global_equality_orbits_classified"] is False
         and gap_flags["G3_closed"] is False
         and exact_su5_gap["small_beta_global_reduction"]["hypotheses"][
@@ -1756,6 +1804,10 @@ def main() -> int:
             "test_exact_gauged_u1x_g3_su5_phi_orbit_lemma_v20.py",
             "test_exact_gauged_u1x_g3_su5_phi_local_component_v20.py",
             "test_exact_gauged_u1x_g3_su5_phi_su3_slice_v20.py",
+            "test_exact_phi_zero_degree8_conductor_identity_v20.py",
+            "test_exact_phi_zero_cubic_cauchy_bridge_v20.py",
+            "test_exact_phi_self_zero_global_sextic_syzygy_v20.py",
+            "test_exact_phi_self_zero_global_signed_kaehler_classification_v20.py",
             "test_exact_gauged_u1x_g3_su5_equality_orbit_v20.py",
             "test_exact_gauged_u1x_g3_su5_chiral_global_gap_reduction_v20.py",
             "test_exact_gauged_u1x_g3_su5_fixed_f_offkernel_bound_v20.py",

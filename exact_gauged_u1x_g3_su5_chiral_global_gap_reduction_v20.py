@@ -27,15 +27,16 @@ Thus beta I_45 selects precisely an electroweak vector on this stratum.
 
 A standard compact Morse--Bott perturbation argument would then prove that
 ``V0+beta I45`` has the same global lower bound for every sufficiently small
-positive beta, provided *all* equality components of the PD SOS are first
-classified and have the same current property.  The upstream PD certificate
-deliberately leaves that global equality-orbit classification open.  This
-module therefore does not turn the conditional argument into a G3 claim.
+positive beta, provided *all* equality components of the PD SOS are classified
+and the current is controlled quantitatively away from them.  The global
+signed-Kahler theorem now supplies the equality-orbit classification.  The
+uniform quantitative control remains open, so this module does not turn the
+conditional argument into a G3 claim.
 
 The output is a final acceptance test, not another local candidate.  The exact
 full Hessian/rank certificate is now supplied independently; G3 may be promoted
-only when the missing global equality classification and a uniform finite-field
-gap are also supplied.  No random scan is treated as proof.
+only when the missing uniform coercivity/global-gap estimate is supplied.  No
+random scan is treated as proof.
 """
 from __future__ import annotations
 
@@ -173,11 +174,10 @@ def perturbation_theorem_audit() -> dict[str, Any]:
         ),
         "signed_Phi_orbits_are_exactly_isolated_local_components": bool(
             equality_scope["signed_Phi_orbits_locally_isolated_exactly"]
-            and not equality_scope["distant_disconnected_Phi_components_excluded"]
         ),
         "all_PD_global_equality_components_are_classified": bool(
-            pd_scope["global_orbit_uniqueness"]
-            and equality_scope["global_equality_orbit_classification_complete"]
+            equality_scope["global_equality_orbit_classification_complete"]
+            and equality_report["remaining_global_lemma"]["proved"]
         ),
         "current_is_nonnegative_on_every_PD_equality_component": False,
         "every_zero_of_current_on_the_PD_equality_set_is_the_selected_flag_orbit": False,
@@ -211,7 +211,7 @@ def perturbation_theorem_audit() -> dict[str, Any]:
             "fixed_F_gap_equality_set": "one determinant-corrected SU(5) flag orbit",
             "pair_plane_diagonal_Phi_zero_set": "F+ and F-, one physical orbit",
             "signed_Phi_orbits_locally_isolated": True,
-            "distant_disconnected_Phi_components_excluded": False,
+            "distant_disconnected_Phi_components_excluded": True,
             "remaining_lemma": equality_report["remaining_global_lemma"],
         },
     }
@@ -262,9 +262,9 @@ def build_report() -> dict[str, Any]:
             theorem["hypotheses"]["homogeneous_quartic_remains_BFB_exactly"]
             and not theorem["beta_equals_1_over_20_covered_by_theorem"]
         ),
-        "PD_global_equality_classification_is_fail_closed": not theorem[
-            "hypotheses"
-        ]["all_PD_global_equality_components_are_classified"],
+        "PD_global_equality_classification_is_exact": theorem["hypotheses"][
+            "all_PD_global_equality_components_are_classified"
+        ],
         "fixed_F_Pluecker_reduction_is_exact": theorem["hypotheses"][
             "fixed_F_Sigma_equalities_are_one_Pluecker_orbit"
         ],
@@ -283,7 +283,7 @@ def build_report() -> dict[str, Any]:
     return _jsonable(
         {
             "status": (
-                "GLOBAL_GAP_REDUCED_TO_PD_EQUALITY_CLASSIFICATION"
+                "GLOBAL_GAP_REDUCED_TO_QUANTITATIVE_COERCIVITY"
                 if not failures
                 else "GLOBAL_GAP_REDUCTION_INTEGRITY_FAILED"
             ),
@@ -309,9 +309,9 @@ def build_report() -> dict[str, Any]:
                     "equality holds only on the SO(10)xU(1)_XxPQ orbit of q0."
                 ),
                 "required_evidence": [
-                    "classify every equality component of the beta=0 PD SOS",
-                    "prove I45(H,Sigma)>=0 on each full-SOS equality component",
-                    "prove all zeros of that restriction are the selected chiral flag orbit",
+                    "derive a quantitative projector-to-signed-orbit distance bound",
+                    "control the beta current uniformly off the PD equality set",
+                    "prove all zeros of the controlled restriction are the selected chiral flag orbit",
                     "supply an explicit beta interval containing beta=1/20, or lower beta to a certified interval",
                 ],
                 "currently_passes": False,
@@ -320,6 +320,7 @@ def build_report() -> dict[str, Any]:
                 "lower_witness_found": False,
                 "conditional_small_positive_beta_route_exists": True,
                 "beta_1_over_20_global_minimum_certified": False,
+                "PD_equality_orbits_classified": True,
                 "global_equality_orbits_classified": False,
                 "G3_closed": False,
                 "whole_model_excluded": False,
@@ -327,8 +328,8 @@ def build_report() -> dict[str, Any]:
             "verdict": (
                 "The chiral-H candidate has survived the exact Sigma=0 and "
                 "fixed-PD orientation tests, and no lower witness is known. "
-                "The final global question is reduced to the unproved global "
-                "equality classification of the PD SOS and a uniform bound "
+                "The PD equality-orbit classification is now exact. The final "
+                "global question is the quantitative uniform coercivity bound "
                 "away from the signed Phi strata. The complete Phi=F stratum "
                 "is now certified at beta=1/20 for arbitrary H and Sigma, but "
                 "that subtheorem does not by itself close G3."
