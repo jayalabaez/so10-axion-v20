@@ -88,6 +88,19 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
                         all("--no-write" in command for command in commands)
                     )
 
+    def test_release_latex_build_is_out_of_tree(self):
+        source = (release.ROOT / "validate_release_v20.py").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn('tempfile.TemporaryDirectory(prefix="so10-latex-")', source)
+        self.assertIn('f"-output-directory={build_root}"', source)
+        self.assertIn("built_pdf = build_root / PDF.name", source)
+        self.assertIn("built_log = build_root / LOG.name", source)
+        self.assertIn(
+            "release checksum regeneration drifted from the frozen", source
+        )
+        self.assertIn("regenerated_sums != committed_sums", source)
+
     def test_final_theorem_core_paths_are_portable_unique_and_present(self):
         paths = release.FINAL_THEOREM_CORE_PATHS
 

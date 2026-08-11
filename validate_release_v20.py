@@ -10,6 +10,7 @@ from pathlib import Path
 import shutil
 import subprocess
 import sys
+import tempfile
 import unittest
 
 import g1_g8_gate_ledger_v20 as gate_ledger
@@ -1791,38 +1792,62 @@ def main() -> int:
         ]
     )
 
+    # Build the manuscript out of tree: the committed PDF is frozen by the
+    # corrected-endpoint integration manifest and SHA256SUMS, so validation
+    # must never rewrite its bytes.
     pdflatex = shutil.which("pdflatex")
     require(pdflatex is not None, "pdflatex is required")
-    latex = [pdflatex, "-interaction=nonstopmode", "-halt-on-error", TEX.name]
-    run(latex)
-    run(latex)
-    stable = hashlib.sha256(PDF.read_bytes()).hexdigest()
-    run(latex)
-    rebuilt = hashlib.sha256(PDF.read_bytes()).hexdigest()
-    require(rebuilt == stable, "PDF is not byte-reproducible after stabilization")
+    with tempfile.TemporaryDirectory(prefix="so10-latex-") as latex_directory:
+        build_root = Path(latex_directory)
+        latex = [
+            pdflatex,
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            f"-output-directory={build_root}",
+            TEX.name,
+        ]
+        built_pdf = build_root / PDF.name
+        built_log = build_root / LOG.name
+        run(latex)
+        run(latex)
+        stable = hashlib.sha256(built_pdf.read_bytes()).hexdigest()
+        run(latex)
+        rebuilt = hashlib.sha256(built_pdf.read_bytes()).hexdigest()
+        require(
+            rebuilt == stable, "PDF is not byte-reproducible after stabilization"
+        )
 
-    forbidden = (
-        "LaTeX Warning",
-        "Package hyperref Warning",
-        "Overfull \\hbox",
-        "Underfull \\hbox",
-        "Overfull \\vbox",
-        "Underfull \\vbox",
-        "undefined references",
-        "multiply defined",
-    )
-    log_text = LOG.read_text(errors="replace")
-    hits = [marker for marker in forbidden if marker in log_text]
-    require(not hits, f"LaTeX log defects: {hits}")
-    require(PDF.read_bytes()[:5] == b"%PDF-", "invalid PDF header")
-    require(PDF.stat().st_size > 100_000, "PDF unexpectedly small")
+        forbidden = (
+            "LaTeX Warning",
+            "Package hyperref Warning",
+            "Overfull \\hbox",
+            "Underfull \\hbox",
+            "Overfull \\vbox",
+            "Underfull \\vbox",
+            "undefined references",
+            "multiply defined",
+        )
+        log_text = built_log.read_text(errors="replace")
+        hits = [marker for marker in forbidden if marker in log_text]
+        require(not hits, f"LaTeX log defects: {hits}")
+        require(built_pdf.read_bytes()[:5] == b"%PDF-", "invalid PDF header")
+        require(built_pdf.stat().st_size > 100_000, "PDF unexpectedly small")
 
-    pdfinfo = shutil.which("pdfinfo")
-    require(pdfinfo is not None, "pdfinfo is required")
-    metadata = subprocess.run(
-        [pdfinfo, str(PDF)], cwd=ROOT, check=True, text=True, capture_output=True
-    ).stdout
-    require("Pages:           14" in metadata, "expected a fourteen-page manuscript")
+        pdfinfo = shutil.which("pdfinfo")
+        require(pdfinfo is not None, "pdfinfo is required")
+        metadata = subprocess.run(
+            [pdfinfo, str(built_pdf)],
+            cwd=ROOT,
+            check=True,
+            text=True,
+            capture_output=True,
+        ).stdout
+        require(
+            "Pages:           14" in metadata,
+            "expected a fourteen-page manuscript",
+        )
+    require(PDF.read_bytes()[:5] == b"%PDF-", "invalid frozen PDF header")
+    require(PDF.stat().st_size > 100_000, "frozen PDF unexpectedly small")
 
     core = [
         ROOT / "README.md",
@@ -2002,7 +2027,24 @@ def main() -> int:
     if external_model_attestation.exists():
         core.append(external_model_attestation)
     require(all(path.exists() for path in core), "release core is incomplete")
+    committed_sums = (ROOT / "SHA256SUMS").read_text(encoding="utf-8")
     write_checksums(core)
+    regenerated_sums = (ROOT / "SHA256SUMS").read_text(encoding="utf-8")
+    if regenerated_sums != committed_sums:
+        drifted = sorted(
+            {
+                line.split("  ", 1)[1]
+                for line in (
+                    set(regenerated_sums.splitlines())
+                    ^ set(committed_sums.splitlines())
+                )
+            }
+        )
+        require(
+            False,
+            "release checksum regeneration drifted from the frozen "
+            f"SHA256SUMS entries: {drifted}",
+        )
     print(
         f"RELEASE GATE PASS: v17 65/65; v19 59/59; v20 42/42; "
         f"tests {n_tests}/{n_tests}; clean 14-page PDF; scientific state BLOCKED"
