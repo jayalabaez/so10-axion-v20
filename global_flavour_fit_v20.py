@@ -12,6 +12,7 @@ It does not claim a unique tan(beta) or close portal matching.
 
 from __future__ import annotations
 
+import argparse
 import json
 import math
 from pathlib import Path
@@ -266,35 +267,47 @@ def write_markdown(report: dict) -> str:
     return "\n".join(lines)
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(
+        description="Run the bounded global flavour/Higgs validation scan."
+    )
+    parser.add_argument(
+        "--no-write",
+        action="store_true",
+        help="validate the scan without rewriting the frozen report files",
+    )
+    args = parser.parse_args(argv)
     report = build_report()
-    # Shrink JSON: drop bulky params from every point in the written summary
-    # but keep best/viable params.
-    slim_points = []
-    for p in report["points"]:
-        slim_points.append(
-            {
-                "v_r_GeV": p["v_r_GeV"],
-                "chi2": p["chi2"],
-                "tan_beta": p["tan_beta"],
-                "viable_chi2_lt_30": p["viable_chi2_lt_30"],
-                "max_abs_pull": float(
-                    max(abs(x) for x in p["pulls"].values()) if p["pulls"] else 0.0
-                ),
-            }
+    if not args.no_write:
+        # Shrink JSON: drop bulky params from every point in the written summary
+        # but keep best/viable params.
+        slim_points = []
+        for p in report["points"]:
+            slim_points.append(
+                {
+                    "v_r_GeV": p["v_r_GeV"],
+                    "chi2": p["chi2"],
+                    "tan_beta": p["tan_beta"],
+                    "viable_chi2_lt_30": p["viable_chi2_lt_30"],
+                    "max_abs_pull": float(
+                        max(abs(x) for x in p["pulls"].values())
+                        if p["pulls"]
+                        else 0.0
+                    ),
+                }
+            )
+        out = {
+            **{k: v for k, v in report.items() if k != "points"},
+            "points": slim_points,
+            "best_point": report["best_point"],
+            "viable_points": report["viable_points"],
+        }
+        ROOT.joinpath("GLOBAL_FLAVOUR_FIT_V20_VERDICT.json").write_text(
+            json.dumps(out, indent=2) + "\n", encoding="utf-8"
         )
-    out = {
-        **{k: v for k, v in report.items() if k != "points"},
-        "points": slim_points,
-        "best_point": report["best_point"],
-        "viable_points": report["viable_points"],
-    }
-    ROOT.joinpath("GLOBAL_FLAVOUR_FIT_V20_VERDICT.json").write_text(
-        json.dumps(out, indent=2) + "\n", encoding="utf-8"
-    )
-    ROOT.joinpath("GLOBAL_FLAVOUR_FIT_V20.md").write_text(
-        write_markdown(report), encoding="utf-8"
-    )
+        ROOT.joinpath("GLOBAL_FLAVOUR_FIT_V20.md").write_text(
+            write_markdown(report), encoding="utf-8"
+        )
     print(
         json.dumps(
             {

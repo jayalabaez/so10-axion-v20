@@ -29,6 +29,41 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
                 self.assertIn(stabilizer, source)
                 self.assertIsNone(mutating_command.search(source))
         self._assert_frozen_numerical_and_central_reports_are_read_only()
+        self._assert_stochastic_global_flavour_report_is_read_only()
+
+    def _assert_stochastic_global_flavour_report_is_read_only(self):
+        script = "global_flavour_fit_v20.py"
+        for relative in (
+            "prepare_validation_artifacts_v20.py",
+            "replicate.py",
+        ):
+            source = (release.ROOT / relative).read_text(encoding="utf-8")
+            tree = ast.parse(source, filename=relative)
+            commands = []
+            for node in ast.walk(tree):
+                if not isinstance(node, (ast.List, ast.Tuple)):
+                    continue
+                literals = {
+                    item.value
+                    for item in node.elts
+                    if isinstance(item, ast.Constant)
+                    and isinstance(item.value, str)
+                }
+                if script in literals:
+                    commands.append(literals)
+            with self.subTest(relative=relative, script=script):
+                self.assertTrue(commands)
+                self.assertTrue(
+                    all("--no-write" in command for command in commands)
+                )
+        workflow = (
+            release.ROOT / ".github/workflows/replicate-and-falsify.yml"
+        ).read_text(encoding="utf-8")
+        self.assertIn("python global_flavour_fit_v20.py --no-write", workflow)
+        self.assertNotRegex(
+            workflow,
+            r"(?m)^\s*python global_flavour_fit_v20\.py\s*$",
+        )
 
     def _assert_frozen_numerical_and_central_reports_are_read_only(self):
         frozen_sources = (

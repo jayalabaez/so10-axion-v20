@@ -94,6 +94,14 @@ NO_WRITE_FROZEN_CLASSIFICATION_SOURCES = (
     "theory_confirmation_verdict_v20.py",
     "ultimate_theory_gate_v20.py",
 )
+NO_WRITE_STOCHASTIC_REPORT_SOURCE = "global_flavour_fit_v20.py"
+NO_WRITE_STOCHASTIC_REPORT_ORCHESTRATORS = (
+    "prepare_validation_artifacts_v20.py",
+    "replicate.py",
+)
+NO_WRITE_STOCHASTIC_REPORT_WORKFLOW = (
+    ".github/workflows/replicate-and-falsify.yml"
+)
 
 RAW_SOURCE_PINS = {
     "exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py":
@@ -159,6 +167,7 @@ PORTABLE_INTEGRATION_PATHS = WORKFLOW_PATHS + (
     "final_g3_acceptance_gate_v20.py",
     "g1_g8_execution_roadmap_v20.py",
     "g1_g8_gate_ledger_v20.py",
+    "global_flavour_fit_v20.py",
     "prepare_validation_artifacts_v20.py",
     "replicate.py",
     "test_corrected_rank1_endpoint_v21.py",
@@ -166,6 +175,7 @@ PORTABLE_INTEGRATION_PATHS = WORKFLOW_PATHS + (
     "test_final_g3_acceptance_gate_v20.py",
     "test_g1_g8_execution_roadmap_v20.py",
     "test_g1_g8_gate_ledger_v20.py",
+    "test_global_flavour_fit_v20.py",
     "test_prepare_validation_artifacts_v20.py",
     "test_replicate_v20.py",
     "test_theory_validation_matrix_v20.py",
@@ -390,6 +400,47 @@ def _require_workflow_contract() -> dict[str, int]:
                     f"{relative}: {source}"
                 )
             no_write_classification_commands += len(commands)
+    no_write_stochastic_report_commands = 0
+    for relative in NO_WRITE_STOCHASTIC_REPORT_ORCHESTRATORS:
+        text = (ROOT / relative).read_text(encoding="utf-8")
+        tree = ast.parse(text, filename=relative)
+        commands = []
+        for node in ast.walk(tree):
+            if not isinstance(node, (ast.List, ast.Tuple)):
+                continue
+            literals = {
+                item.value
+                for item in node.elts
+                if isinstance(item, ast.Constant)
+                and isinstance(item.value, str)
+            }
+            if NO_WRITE_STOCHASTIC_REPORT_SOURCE in literals:
+                commands.append(literals)
+        if not commands:
+            raise ArithmeticError(
+                "stochastic frozen report validation is absent from "
+                f"orchestrator: {relative}"
+            )
+        if any("--no-write" not in command for command in commands):
+            raise ArithmeticError(
+                "orchestrator rewrites the stochastic frozen report: "
+                f"{relative}: {NO_WRITE_STOCHASTIC_REPORT_SOURCE}"
+            )
+        no_write_stochastic_report_commands += len(commands)
+    workflow_text = (ROOT / NO_WRITE_STOCHASTIC_REPORT_WORKFLOW).read_text(
+        encoding="utf-8"
+    )
+    workflow_commands = re.findall(
+        rf"\bpython(?:\s+-B)?\s+"
+        rf"{re.escape(NO_WRITE_STOCHASTIC_REPORT_SOURCE)}([^\n]*)",
+        workflow_text,
+    )
+    if len(workflow_commands) != 1 or "--no-write" not in workflow_commands[0]:
+        raise ArithmeticError(
+            "workflow rewrites the stochastic frozen report: "
+            f"{NO_WRITE_STOCHASTIC_REPORT_WORKFLOW}: "
+            f"{NO_WRITE_STOCHASTIC_REPORT_SOURCE}"
+        )
     return {
         "corrected_assertion_heredocs": heredocs,
         "legacy_rejection_assertions": legacy_rejections,
@@ -404,6 +455,12 @@ def _require_workflow_contract() -> dict[str, int]:
         ),
         "no_write_frozen_classification_commands": (
             no_write_classification_commands
+        ),
+        "no_write_stochastic_report_orchestrators": len(
+            NO_WRITE_STOCHASTIC_REPORT_ORCHESTRATORS
+        ),
+        "no_write_stochastic_report_commands": (
+            no_write_stochastic_report_commands + len(workflow_commands)
         ),
     }
 

@@ -52,7 +52,7 @@ FULL_COMMANDS: tuple[tuple[str, ...], ...] = (
     (sys.executable, "reanalysis_portal_beta_v20.py"),
     (sys.executable, "portal_tensors_abcd_v20.py"),
     (sys.executable, "physical_cf_matching_v20.py"),
-    (sys.executable, "global_flavour_fit_v20.py"),
+    (sys.executable, "global_flavour_fit_v20.py", "--no-write"),
     (sys.executable, "cmb_public_data_pipeline_v20.py"),
     (sys.executable, "empirical_roadmap_lock_v20.py"),
     (sys.executable, "next_phenomenology_lock_v20.py"),

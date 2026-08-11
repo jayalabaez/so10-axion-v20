@@ -78,6 +78,8 @@ class CorrectedEndpointIntegrationFreezeTests(unittest.TestCase):
                 "read_only_frozen_report_commands": 21,
                 "no_write_frozen_classification_sources": 3,
                 "no_write_frozen_classification_commands": 9,
+                "no_write_stochastic_report_orchestrators": 2,
+                "no_write_stochastic_report_commands": 3,
             },
         )
         self.assertTrue(
@@ -198,6 +200,27 @@ class CorrectedEndpointIntegrationFreezeTests(unittest.TestCase):
                 with self.assertRaisesRegex(
                     ArithmeticError,
                     "rewrites a frozen classification report",
+                ):
+                    freezer._require_workflow_contract()
+
+                replicate.write_text(baseline_replicate, encoding="utf-8")
+                stochastic_needle = (
+                    'run([sys.executable, "global_flavour_fit_v20.py", '
+                    '"--no-write"])'
+                )
+                stochastic_replacement = (
+                    'run([sys.executable, "global_flavour_fit_v20.py"])'
+                )
+                self.assertIn(stochastic_needle, baseline_replicate)
+                replicate.write_text(
+                    baseline_replicate.replace(
+                        stochastic_needle, stochastic_replacement, 1
+                    ),
+                    encoding="utf-8",
+                )
+                with self.assertRaisesRegex(
+                    ArithmeticError,
+                    "rewrites the stochastic frozen report",
                 ):
                     freezer._require_workflow_contract()
 

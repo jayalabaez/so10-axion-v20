@@ -36,6 +36,7 @@ def test_cross_platform_and_central_frozen_reports_are_read_only() -> None:
         "theory_validation_matrix_v20.py",
         "theory_confirmation_verdict_v20.py",
         "ultimate_theory_gate_v20.py",
+        "global_flavour_fit_v20.py",
     ):
         commands = []
         for node in ast.walk(tree):

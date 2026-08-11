@@ -66,7 +66,7 @@ jobs:
         run: |
           python portal_tensors_abcd_v20.py
           python physical_cf_matching_v20.py
-          python global_flavour_fit_v20.py
+          python global_flavour_fit_v20.py --no-write
       - name: CMB, diagnostic RG, FCNC limits, portal maps, and strict re-audit
         run: |
           python cmb_public_data_pipeline_v20.py

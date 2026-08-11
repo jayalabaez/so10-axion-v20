@@ -20,6 +20,7 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
         displays = [prepare._display(command) for command in prepare.FULL_COMMANDS]
         required = (
             "audit_v20_errors.py",
+            "global_flavour_fit_v20.py --no-write",
             "unittest discover -v",
             "portal_full_complex_orientation_sphere_v20.py",
             "uv_vacuum_alignment_v20.py",
@@ -116,6 +117,15 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
                 all("--write" not in command for command in commands),
                 source,
             )
+        global_flavour_commands = [
+            command
+            for command in prepare.FULL_COMMANDS
+            if "global_flavour_fit_v20.py" in command
+        ]
+        self.assertTrue(global_flavour_commands)
+        self.assertTrue(
+            all("--no-write" in command for command in global_flavour_commands)
+        )
 
     def test_full_inventory_uses_current_fail_closed_contract(self):
         displays = [prepare._display(command) for command in prepare.FULL_COMMANDS]
