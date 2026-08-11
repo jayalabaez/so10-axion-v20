@@ -89,6 +89,11 @@ READ_ONLY_FROZEN_REPORT_SOURCES = (
     "final_g3_acceptance_gate_v20.py",
     "g1_g8_execution_roadmap_v20.py",
 )
+NO_WRITE_FROZEN_CLASSIFICATION_SOURCES = (
+    "theory_validation_matrix_v20.py",
+    "theory_confirmation_verdict_v20.py",
+    "ultimate_theory_gate_v20.py",
+)
 
 RAW_SOURCE_PINS = {
     "exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py":
@@ -325,6 +330,7 @@ def _require_workflow_contract() -> dict[str, int]:
         r'["\']--write["\']'
     )
     read_only_report_commands = 0
+    no_write_classification_commands = 0
     for relative in READ_ONLY_FROZEN_DEPENDENCY_ORCHESTRATORS:
         text = (ROOT / relative).read_text(encoding="utf-8")
         if FROZEN_STABILIZER_SOURCE not in text:
@@ -360,6 +366,30 @@ def _require_workflow_contract() -> dict[str, int]:
                     f"{relative}: {source}"
                 )
             read_only_report_commands += 1
+        for source in NO_WRITE_FROZEN_CLASSIFICATION_SOURCES:
+            commands = []
+            for node in ast.walk(tree):
+                if not isinstance(node, (ast.List, ast.Tuple)):
+                    continue
+                literals = {
+                    item.value
+                    for item in node.elts
+                    if isinstance(item, ast.Constant)
+                    and isinstance(item.value, str)
+                }
+                if source in literals:
+                    commands.append(literals)
+            if not commands:
+                raise ArithmeticError(
+                    f"frozen classification gate is absent from orchestrator: "
+                    f"{relative}: {source}"
+                )
+            if any("--no-write" not in command for command in commands):
+                raise ArithmeticError(
+                    f"orchestrator rewrites a frozen classification report: "
+                    f"{relative}: {source}"
+                )
+            no_write_classification_commands += len(commands)
     return {
         "corrected_assertion_heredocs": heredocs,
         "legacy_rejection_assertions": legacy_rejections,
@@ -369,6 +399,12 @@ def _require_workflow_contract() -> dict[str, int]:
         ),
         "read_only_frozen_report_sources": len(READ_ONLY_FROZEN_REPORT_SOURCES),
         "read_only_frozen_report_commands": read_only_report_commands,
+        "no_write_frozen_classification_sources": len(
+            NO_WRITE_FROZEN_CLASSIFICATION_SOURCES
+        ),
+        "no_write_frozen_classification_commands": (
+            no_write_classification_commands
+        ),
     }
 
 

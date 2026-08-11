@@ -65,6 +65,28 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
                     self.assertTrue(
                         all("--write" not in command for command in commands)
                     )
+            for script in (
+                "theory_validation_matrix_v20.py",
+                "theory_confirmation_verdict_v20.py",
+                "ultimate_theory_gate_v20.py",
+            ):
+                commands = []
+                for node in ast.walk(tree):
+                    if not isinstance(node, (ast.List, ast.Tuple)):
+                        continue
+                    literals = {
+                        item.value
+                        for item in node.elts
+                        if isinstance(item, ast.Constant)
+                        and isinstance(item.value, str)
+                    }
+                    if script in literals:
+                        commands.append(literals)
+                with self.subTest(relative=relative, script=script):
+                    self.assertTrue(commands)
+                    self.assertTrue(
+                        all("--no-write" in command for command in commands)
+                    )
 
     def test_final_theorem_core_paths_are_portable_unique_and_present(self):
         paths = release.FINAL_THEOREM_CORE_PATHS

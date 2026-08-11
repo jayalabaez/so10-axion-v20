@@ -262,9 +262,18 @@ FULL_COMMANDS: tuple[tuple[str, ...], ...] = (
     (sys.executable, "final_g3_acceptance_gate_v20.py"),
     (sys.executable, "g1_g8_execution_roadmap_v20.py"),
     (sys.executable, "authoritative_full_model_gate_v20.py"),
-    (sys.executable, "theory_validation_matrix_v20.py", "--expect-blocked"),
-    (sys.executable, "theory_confirmation_verdict_v20.py", "--expect-blocked"),
-    (sys.executable, "ultimate_theory_gate_v20.py", "--expect-blocked"),
+    (
+        sys.executable,
+        "theory_validation_matrix_v20.py",
+        "--expect-blocked",
+        "--no-write",
+    ),
+    (
+        sys.executable,
+        "theory_confirmation_verdict_v20.py",
+        "--expect-blocked",
+        "--no-write",
+    ),
     (sys.executable, "ultimate_theory_gate_v20.py", "--expect-blocked", "--no-write"),
     (sys.executable, "-m", "unittest", "discover", "-v"),
     (

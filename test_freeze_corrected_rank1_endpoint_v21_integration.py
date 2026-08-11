@@ -76,6 +76,8 @@ class CorrectedEndpointIntegrationFreezeTests(unittest.TestCase):
                 "read_only_frozen_dependency_orchestrators": 3,
                 "read_only_frozen_report_sources": 7,
                 "read_only_frozen_report_commands": 21,
+                "no_write_frozen_classification_sources": 3,
+                "no_write_frozen_classification_commands": 9,
             },
         )
         self.assertTrue(
@@ -173,6 +175,29 @@ class CorrectedEndpointIntegrationFreezeTests(unittest.TestCase):
                 with self.assertRaisesRegex(
                     ArithmeticError,
                     "rewrites a frozen validation report",
+                ):
+                    freezer._require_workflow_contract()
+
+                replicate.write_text(baseline_replicate, encoding="utf-8")
+                classification_needle = (
+                    '            "theory_validation_matrix_v20.py",\n'
+                    '            "--expect-blocked",\n'
+                    '            "--no-write",'
+                )
+                classification_replacement = (
+                    '            "theory_validation_matrix_v20.py",\n'
+                    '            "--expect-blocked",'
+                )
+                self.assertIn(classification_needle, baseline_replicate)
+                replicate.write_text(
+                    baseline_replicate.replace(
+                        classification_needle, classification_replacement, 1
+                    ),
+                    encoding="utf-8",
+                )
+                with self.assertRaisesRegex(
+                    ArithmeticError,
+                    "rewrites a frozen classification report",
                 ):
                     freezer._require_workflow_contract()
 
