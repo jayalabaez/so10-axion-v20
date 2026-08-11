@@ -147,6 +147,34 @@ the model.
 
 ## Current root/G3 result (fail-closed)
 
+### Exact dimension-six EFT resolution
+
+The repository now contains a parallel, explicit EFT contract
+`gauged_u1x_phi17_v20_eft_o6_current_kernel_gamma_1_over_20`.  It sets the
+indefinite renormalizable `I45` coefficient to zero and adds the positive
+Wilson operator
+
+`(1/20) Lambda_EFT^-2 ||K_H Sigma||^2`,
+
+where `K_H` is the Hermitian SO(10)-current endomorphism induced by `H` on the
+`126bar`.  The new term is globally nonnegative, gauge/PQ neutral, and has
+zero value and first derivative at the selected vacuum.  Exact integer
+algebra gives the beta-zero Hessian rank/nullity `442/44`; the current-kernel
+Jacobian removes precisely the six nonsymmetry flats, leaving a PSD Hessian
+of rank/nullity `448/38`.  The global zero-set chain proves
+`||K_H Sigma(z)||^2=||h||^2||h wedge z||^2` on the complete decomposable
+`+F` locus, so equality is exactly one incident-flag orbit with stabilizer
+`SU(3)_C x U(1)_em`.
+
+Accordingly, mathematical G3 is **closed for this dimension-six EFT model**.
+The original 51-parameter renormalizable G3 remains open, G4 is not promoted,
+and release verification remains blocked on cutoff/Wilson matching,
+radiative stability, external execution of the extended contract, and the
+separate upstream G1/G2 release prerequisites.  Run
+`python final_g3_eft_acceptance_gate_v20.py --write` for the EFT gate; the
+legacy `final_g3_acceptance_gate_v20.py` remains the fail-closed gate for the
+renormalizable model.
+
 The TeX manuscript gauges a primitive `U(1)_X`. The model file is now native
 non-supersymmetric SARAH syntax, includes that gauge factor, and passes the
 repository's static catalogue, charge, Lagrangian, filter, and manifest checks.

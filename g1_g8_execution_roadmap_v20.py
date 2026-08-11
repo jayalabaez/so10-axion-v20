@@ -14,6 +14,13 @@ import corrected_rank1_endpoint_v21 as corrected_rank1
 ROOT = Path(__file__).resolve().parent
 OUT_JSON = ROOT / "G1_G8_EXECUTION_ROADMAP_V20.json"
 OUT_MD = ROOT / "G1_G8_EXECUTION_ROADMAP_V20.md"
+EFT_G3_JSON = ROOT / "FINAL_G3_EFT_ACCEPTANCE_GATE_V20.json"
+EFT_G3_CORE_SHA256 = (
+    "472770981ee7f9ad5880d614826e687c6d9402c286980b421a2bad7d079f09fb"
+)
+EFT_G3_RAW_SHA256 = (
+    "482f9da84d677e24594ca536a2c257602e02f5187419df5cba5356f771ddbaf0"
+)
 
 DEPENDENCIES = ledger.DEPENDENCIES
 
@@ -220,6 +227,29 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
         "G8",
     ]
     contract_consistent = bool(gate_report["contract_consistent"])
+    try:
+        eft_g3 = json.loads(EFT_G3_JSON.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        eft_g3 = {}
+    eft_classification = eft_g3.get("classification", {})
+    eft_g3_raw_sha256 = ledger._raw_file_sha256(EFT_G3_JSON)
+    direct_parallel_eft_g3 = ledger._parallel_eft_g3_acceptance(
+        eft_g3,
+        raw_sha256=eft_g3_raw_sha256,
+    )
+    ledger_parallel_eft_g3 = gate_report.get(
+        "parallel_EFT_G3_acceptance", {}
+    )
+    parallel_eft_g3_closed = bool(
+        EFT_G3_CORE_SHA256 == ledger.FINAL_G3_EFT_ACCEPTANCE_CORE_SHA256
+        and EFT_G3_RAW_SHA256 == ledger.FINAL_G3_EFT_ACCEPTANCE_RAW_SHA256
+        and direct_parallel_eft_g3["source_bound"] is True
+        and ledger_parallel_eft_g3 == direct_parallel_eft_g3
+        and direct_parallel_eft_g3[
+            "mathematical_G3_closed_for_EFT_model"
+        ]
+        is True
+    )
     expected_statuses = ledger._expected_gate_statuses(contract_consistent)
     statuses = {name: row["status"] for name, row in gates.items()}
     expected_task_frontier = {task["id"]: task["status"] for task in TASKS}
@@ -237,6 +267,11 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
     task_statuses = {task["id"]: task["status"] for task in tasks}
     checks = {
         "gate_ledger_audit_executes": gate_report["n_failed"] == 0,
+        "parallel_EFT_G3_acceptance_raw_and_core_bound": (
+            parallel_eft_g3_closed
+            and direct_parallel_eft_g3["raw_sha256"] == EFT_G3_RAW_SHA256
+            and direct_parallel_eft_g3["core_sha256"] == EFT_G3_CORE_SHA256
+        ),
         "gate_ledger_state_classified": gate_report["overall_state"] == (
             ledger.STATUS_OPEN if contract_consistent else ledger.STATUS_BLOCKED
         ),
@@ -701,6 +736,13 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
         "64/91 calculation "
         "and 449-dimensional saddle/search remain scoped to option C."
     )
+    verdict += (
+        " In parallel, the registered dimension-six current-kernel EFT "
+        "contract closes mathematical G3 exactly; its release verification, "
+        "the original renormalizable G3, and G4 remain open."
+        if parallel_eft_g3_closed
+        else " The parallel EFT G3 certificate is missing or invalid."
+    )
     return {
         "status": status,
         "overall_state": overall_state,
@@ -720,6 +762,20 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
         "historical_option_c_subtheorems": historical,
         "gauged_u1x_scalar_subtheorems": gauged,
         "gauged_u1x_g3_constructive_frontier": g3_frontier,
+        "parallel_EFT_G3_resolution": {
+            "gate": EFT_G3_JSON.name,
+            "source_bound": direct_parallel_eft_g3["source_bound"],
+            "raw_sha256": eft_g3_raw_sha256,
+            "expected_raw_sha256": EFT_G3_RAW_SHA256,
+            "core_sha256": eft_g3.get("core_sha256"),
+            "expected_core_sha256": EFT_G3_CORE_SHA256,
+            "mathematical_G3_closed": parallel_eft_g3_closed,
+            "original_renormalizable_G3_closed": False,
+            "release_G3_verified": eft_classification.get(
+                "release_G3_verified_for_EFT_model"
+            ),
+            "G4_closed": False,
+        },
         "summary": gate_report["summary"],
         "new_physics_policy": (
             "Historical calculations remain scoped subtheorems. No whole-model "

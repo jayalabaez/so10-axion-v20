@@ -77,6 +77,13 @@ RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_JSON = (
 RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_JSON = (
     ROOT / "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_V20.json"
 )
+EFT_G3_JSON = ROOT / "FINAL_G3_EFT_ACCEPTANCE_GATE_V20.json"
+EFT_G3_CORE_SHA256 = (
+    "472770981ee7f9ad5880d614826e687c6d9402c286980b421a2bad7d079f09fb"
+)
+EFT_G3_RAW_SHA256 = (
+    "482f9da84d677e24594ca536a2c257602e02f5187419df5cba5356f771ddbaf0"
+)
 
 MODEL_CONTRACT_ID = ledger.AUTHORITATIVE_CONTRACT_ID
 FINAL_THEOREM = (
@@ -215,6 +222,19 @@ def build_report(
         if rank1_su4_corrected_publication is None
         else rank1_su4_corrected_publication
     )
+    eft_g3_report = _load(EFT_G3_JSON)
+    eft_g3_classification = eft_g3_report.get("classification", {})
+    eft_g3_raw_sha256 = ledger._raw_file_sha256(EFT_G3_JSON)
+    parallel_eft_g3 = ledger._parallel_eft_g3_acceptance(
+        eft_g3_report,
+        raw_sha256=eft_g3_raw_sha256,
+    )
+    parallel_eft_g3_closed = bool(
+        EFT_G3_CORE_SHA256 == ledger.FINAL_G3_EFT_ACCEPTANCE_CORE_SHA256
+        and EFT_G3_RAW_SHA256 == ledger.FINAL_G3_EFT_ACCEPTANCE_RAW_SHA256
+        and parallel_eft_g3["source_bound"] is True
+        and parallel_eft_g3["mathematical_G3_closed_for_EFT_model"] is True
+    )
 
     frontier = ledger_report.get("gauged_u1x_g3_constructive_frontier", {})
     gates = ledger_report.get("gates", {})
@@ -346,6 +366,11 @@ def build_report(
 
     artifact_integrity = {
         "ledger_executes": ledger_report.get("n_failed") == 0,
+        "parallel_EFT_G3_acceptance_raw_and_core_bound": (
+            parallel_eft_g3_closed
+            and parallel_eft_g3["raw_sha256"] == EFT_G3_RAW_SHA256
+            and parallel_eft_g3["core_sha256"] == EFT_G3_CORE_SHA256
+        ),
         "HSX_audit_executes": hsx_report.get("n_failed") == 0,
         "equality_audit_executes": bool(
             equality_report.get("n_failed") == 0
@@ -1280,6 +1305,7 @@ def build_report(
                 corrected_rank1.MANIFEST_PATH,
                 rank1_su4_corrected_publication.get("manifest", {}),
             ),
+            (EFT_G3_JSON, eft_g3_report),
         )
         if not report
     ]
@@ -1575,6 +1601,10 @@ def build_report(
         "classification": {
             "mathematical_G3_closed": mathematical_g3_closed,
             "release_G3_verified": release_g3_verified,
+            "parallel_EFT_mathematical_G3_closed": parallel_eft_g3_closed,
+            "parallel_EFT_release_G3_verified": eft_g3_classification.get(
+                "release_G3_verified_for_EFT_model"
+            ),
             "candidate_exactly_rejected": exact_lower_witness,
             "whole_model_excluded": whole_model_excluded,
             "theory_still_viable": not whole_model_excluded,
@@ -1584,9 +1614,25 @@ def build_report(
         "remaining_open_problem": (
             "uniform coercivity for arbitrary non-pure-Delta Sigma orientations"
         ),
+        "parallel_EFT_resolution": {
+            "gate": EFT_G3_JSON.name,
+            "source_bound": parallel_eft_g3["source_bound"],
+            "raw_sha256": eft_g3_raw_sha256,
+            "expected_raw_sha256": EFT_G3_RAW_SHA256,
+            "core_sha256": eft_g3_report.get("core_sha256"),
+            "expected_core_sha256": EFT_G3_CORE_SHA256,
+            "mathematical_G3_closed": parallel_eft_g3_closed,
+            "original_renormalizable_G3_unchanged": True,
+            "G4_closed": False,
+            "release_blockers": eft_g3_report.get("release_blockers", []),
+        },
         "verdict": (
             "G3 is verified." if release_g3_verified else
-            "G3 remains open. The chiral-H candidate now has an exact full "
+            "The original renormalizable G3 remains open. A parallel, explicit "
+            "dimension-six current-kernel EFT extension now has a source-bound "
+            "global minimum, unique equality orbit, and exact 448/38 Hessian, "
+            "so mathematical G3 is closed for that EFT contract only. The "
+            "renormalizable chiral-H candidate has an exact full "
             "Hessian theorem (rank/nullity 448/38, positive on the quotient) "
             "and the exact signed-Kahler theorem now classifies every PD "
             "equality orbit (with Dynkin maximal-subgroup classification as "

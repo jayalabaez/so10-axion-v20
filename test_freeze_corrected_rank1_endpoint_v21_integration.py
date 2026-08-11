@@ -78,14 +78,44 @@ class CorrectedEndpointIntegrationFreezeTests(unittest.TestCase):
             "db493a74303a57862f09c2a92118ea3d66b8b12ecbaea9162155d4ab3baafecc",
         )
         self.assertEqual(
+            report["logical_pins"]["EFT_O6_current_endomorphism_core_sha256"],
+            freezer.EFT_O6_CORE_SHA256,
+        )
+        self.assertEqual(
+            report["logical_pins"]["EFT_global_G3_theorem_core_sha256"],
+            freezer.EFT_GLOBAL_G3_THEOREM_CORE_SHA256,
+        )
+        self.assertEqual(
+            report["logical_pins"]["EFT_G3_acceptance_gate_core_sha256"],
+            freezer.EFT_G3_ACCEPTANCE_GATE_CORE_SHA256,
+        )
+        self.assertEqual(
+            report["logical_pins"][
+                "EFT_beta_zero_base_Hessian_payload_sha256"
+            ],
+            freezer.EFT_BETA_ZERO_BASE_HESSIAN_PAYLOAD_SHA256,
+        )
+        self.assertEqual(
+            report["logical_pins"]["EFT_stabilized_Hessian_payload_sha256"],
+            freezer.EFT_STABILIZED_HESSIAN_PAYLOAD_SHA256,
+        )
+        self.assertEqual(report["EFT_G3_bundle"]["raw_file_count"], 13)
+        self.assertTrue(report["EFT_G3_bundle"]["all_checks_pass"])
+        self.assertEqual(
+            report["EFT_G3_bundle"]["theorem_adapter_allowlist"][
+                "allowlisted_difference_count"
+            ],
+            2,
+        )
+        self.assertEqual(
             report["workflow_contract"],
             {
                 "corrected_assertion_heredocs": 7,
                 "legacy_rejection_assertions": 7,
                 "full_source_rebuild_invocations": 1,
                 "read_only_frozen_dependency_orchestrators": 3,
-                "read_only_frozen_report_sources": 10,
-                "read_only_frozen_report_commands": 30,
+                "read_only_frozen_report_sources": 13,
+                "read_only_frozen_report_commands": 39,
                 "no_write_frozen_classification_sources": 3,
                 "no_write_frozen_classification_commands": 9,
                 "no_write_stochastic_report_orchestrators": 2,
@@ -110,6 +140,14 @@ class CorrectedEndpointIntegrationFreezeTests(unittest.TestCase):
                 "Dynkin_maximal_subgroup_classification_external_dependency"
             ]
         )
+        self.assertFalse(report["claim_boundary"]["renormalizable_G3_closed"])
+        self.assertTrue(
+            report["claim_boundary"]["EFT_dimension6_mathematical_G3_closed"]
+        )
+        self.assertFalse(
+            report["claim_boundary"]["EFT_release_G3_verified"]
+        )
+        self.assertFalse(report["claim_boundary"]["G4_closed"])
         for name in (
             "quantitative_beta_global_coercivity_proved",
             "legacy_v20_physical_target_valid",
@@ -130,6 +168,56 @@ class CorrectedEndpointIntegrationFreezeTests(unittest.TestCase):
         for relative in freezer.QUARANTINED_SIGMA35_PATHS:
             self.assertNotIn(relative, value["inventory"])
         self.assertFalse(value["quarantine"]["touched_or_promoted"])
+
+    def test_eft_raw_bundle_is_fully_inventoried(self) -> None:
+        report = freezer.check_manifest()
+        self.assertEqual(len(freezer.EFT_G3_RAW_PINS), 13)
+        self.assertEqual(
+            report["generation_source_pins"]["EFT_G3_raw_sha256"],
+            dict(sorted(freezer.EFT_G3_RAW_PINS.items())),
+        )
+        for relative, expected in freezer.EFT_G3_RAW_PINS.items():
+            row = report["inventory"][relative]
+            self.assertEqual(row["hash_mode"], "raw")
+            self.assertEqual(row["content_sha256"], expected)
+            self.assertIn(relative, freezer.CHECKSUM_REQUIRED_PATHS)
+
+    def test_eft_adapter_allowlist_and_logical_bundle(self) -> None:
+        bundle = freezer._require_eft_g3_bundle()
+        self.assertTrue(bundle["all_checks_pass"])
+        self.assertTrue(all(bundle["checks"].values()))
+        self.assertEqual(
+            bundle["theorem_adapter_allowlist"]["differences"],
+            [
+                "production core pin",
+                "production-local equality-source raw pin",
+            ],
+        )
+
+        with tempfile.TemporaryDirectory() as directory:
+            root = freezer.Path(directory)
+            names = (
+                "FROZEN_EXACT_EFT_CURRENT_KERNEL_STABILIZED_GLOBAL_G3_SOURCE_V20.py",
+                "exact_gauged_u1x_g3_su5_eft_current_kernel_stabilized_global_v20.py",
+            )
+            for name in names:
+                (root / name).write_bytes((freezer.ROOT / name).read_bytes())
+            with patch.object(freezer, "ROOT", root):
+                self.assertTrue(
+                    freezer._require_eft_theorem_adapter_allowlist()[
+                        "all_other_bytes_identical"
+                    ]
+                )
+                production = root / names[1]
+                production.write_text(
+                    production.read_text(encoding="utf-8")
+                    + "\n# non-allowlisted mutation\n",
+                    encoding="utf-8",
+                )
+                with self.assertRaisesRegex(
+                    ArithmeticError, "outside the two allowlisted"
+                ):
+                    freezer._require_eft_theorem_adapter_allowlist()
 
     def test_release_checksum_binds_adapter_regressions_and_workflows(self) -> None:
         lines = (freezer.ROOT / "SHA256SUMS").read_text(encoding="utf-8").splitlines()
@@ -197,6 +285,31 @@ class CorrectedEndpointIntegrationFreezeTests(unittest.TestCase):
                 replicate.write_text(
                     baseline_replicate.replace(
                         report_needle, report_replacement, 1
+                    ),
+                    encoding="utf-8",
+                )
+                with self.assertRaisesRegex(
+                    ArithmeticError,
+                    "rewrites a frozen validation report",
+                ):
+                    freezer._require_workflow_contract()
+
+                replicate.write_text(baseline_replicate, encoding="utf-8")
+                eft_needle = (
+                    '            "exact_gauged_u1x_g3_su5_eft_current_kernel_'
+                    'stabilized_global_v20.py",\n'
+                    "        ]"
+                )
+                eft_replacement = (
+                    '            "exact_gauged_u1x_g3_su5_eft_current_kernel_'
+                    'stabilized_global_v20.py",\n'
+                    '            "--write",\n'
+                    "        ]"
+                )
+                self.assertIn(eft_needle, baseline_replicate)
+                replicate.write_text(
+                    baseline_replicate.replace(
+                        eft_needle, eft_replacement, 1
                     ),
                     encoding="utf-8",
                 )

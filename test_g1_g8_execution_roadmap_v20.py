@@ -313,6 +313,16 @@ def test_constructive_g3_frontier_is_actionable_but_not_promoted():
     assert report["checks"][
         "constructive_G3_local_minimum_and_global_rejection_integrated"
     ]
+    assert report["parallel_EFT_G3_resolution"]["mathematical_G3_closed"] is True
+    assert report["parallel_EFT_G3_resolution"]["source_bound"] is True
+    assert report["parallel_EFT_G3_resolution"]["raw_sha256"] == mod.EFT_G3_RAW_SHA256
+    assert report["parallel_EFT_G3_resolution"]["core_sha256"] == mod.EFT_G3_CORE_SHA256
+    assert report["checks"][
+        "parallel_EFT_G3_acceptance_raw_and_core_bound"
+    ] is True
+    assert report["parallel_EFT_G3_resolution"][
+        "original_renormalizable_G3_closed"
+    ] is False
     g3_task = next(
         task for task in report["tasks"] if task["id"] == "W3-G3-FULL-STATIONARITY"
     )

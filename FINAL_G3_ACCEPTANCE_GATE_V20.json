@@ -13,6 +13,7 @@
     "max_negative_full_residual_pure_Delta_audit_executes_fail_closed": true,
     "max_negative_rank1_SU3_four_dimensional_slice_audit_executes_fail_closed": true,
     "numerical_Hessian_not_promoted_to_proof": true,
+    "parallel_EFT_G3_acceptance_raw_and_core_bound": true,
     "rank1_SU4_Phi210_intertwiner_infrastructure_executes_fail_closed": true,
     "rank1_SU4_Phi210_quadratic_basis_executes_fail_closed": true,
     "rank1_SU4_aligned_carrier_infrastructure_executes_fail_closed": true,
@@ -34,6 +35,8 @@
     "G3_closed": false,
     "candidate_exactly_rejected": false,
     "mathematical_G3_closed": false,
+    "parallel_EFT_mathematical_G3_closed": true,
+    "parallel_EFT_release_G3_verified": false,
     "release_G3_verified": false,
     "theory_still_viable": true,
     "whole_model_excluded": false
@@ -163,8 +166,26 @@
   "missing_artifacts": [],
   "model_contract_id": "gauged_u1x_phi17_v20",
   "n_failed": 0,
-  "n_integrity_checks": 23,
+  "n_integrity_checks": 24,
   "overall_state": "OPEN",
+  "parallel_EFT_resolution": {
+    "G4_closed": false,
+    "core_sha256": "472770981ee7f9ad5880d614826e687c6d9402c286980b421a2bad7d079f09fb",
+    "expected_core_sha256": "472770981ee7f9ad5880d614826e687c6d9402c286980b421a2bad7d079f09fb",
+    "expected_raw_sha256": "482f9da84d677e24594ca536a2c257602e02f5187419df5cba5356f771ddbaf0",
+    "gate": "FINAL_G3_EFT_ACCEPTANCE_GATE_V20.json",
+    "mathematical_G3_closed": true,
+    "original_renormalizable_G3_unchanged": true,
+    "raw_sha256": "482f9da84d677e24594ca536a2c257602e02f5187419df5cba5356f771ddbaf0",
+    "release_blockers": [
+      "Lambda_EFT_and_positive_Wilson_matching_approved",
+      "radiative_stability_completed",
+      "external_extended_model_contract_executed",
+      "G1_promoted_closed",
+      "G2_promoted_closed"
+    ],
+    "source_bound": true
+  },
   "release_criteria": {
     "G1_promoted_closed": false,
     "G2_promoted_closed": false,
@@ -191,5 +212,5 @@
   },
   "status": "FINAL_G3_ACCEPTANCE_TEST_EXECUTED",
   "upstream_frontier_integrity": true,
-  "verdict": "G3 remains open. The chiral-H candidate now has an exact full Hessian theorem (rank/nullity 448/38, positive on the quotient) and the exact signed-Kahler theorem now classifies every PD equality orbit (with Dynkin maximal-subgroup classification as an explicit external dependency). It does not provide the quantitative projector-to-orbit coercivity estimate. The candidate also has an exact global gap/equality theorem on the complete Phi=F stratum for arbitrary H and Sigma. The complete maximally-negative pure-Delta sector is now also excluded for arbitrary real Phi and all nonzero residuals, with sharp gap 1/5000; no exact lower witness is known. The prior four-real-dimensional SU(3) regression is historical and subsumed. At fixed H=h_- and Sigma=q/4, the corrected v21 exact theorem covers every real Phi210. At that fixed endpoint, the exact SU(4) stabilizer, aligned rank-210 carrier real maps and complete 45-element Phi210 quadratic basis feed an exact 22366-dimensional augmented census with 35 types/824 copies, 22 real/Hermitian blocks, 19594 Schur parameters, and 6585 invariant rows. The complete cubic interface has all 1414 real cross variables and an exact-rank-478, 478x1414 integer map with kernel dimension 936. Its zero placeholder is nonphysical and certifies no physical zero RHS. The homogeneous quartic interface is an exact-rank-6057, 6057x18085 integer map with kernel dimension 12028. The legacy v20 assembled physical target is rejected. The corrected 6585x19594 standard positive-Gram map, ordered-spectral target, and exact strict 22-block/824-pivot primal prove p(t,Phi)>0 off the homogeneous origin and A(Phi)>3/200 at t=1 for every real Phi210. Global Sigma, general/full H, the full Hessian, and G3 remain open. PASS still requires uniform coercivity away from the fixed Sigma=q/4 endpoint, plus the external authoritative model execution."
+  "verdict": "The original renormalizable G3 remains open. A parallel, explicit dimension-six current-kernel EFT extension now has a source-bound global minimum, unique equality orbit, and exact 448/38 Hessian, so mathematical G3 is closed for that EFT contract only. The renormalizable chiral-H candidate has an exact full Hessian theorem (rank/nullity 448/38, positive on the quotient) and the exact signed-Kahler theorem now classifies every PD equality orbit (with Dynkin maximal-subgroup classification as an explicit external dependency). It does not provide the quantitative projector-to-orbit coercivity estimate. The candidate also has an exact global gap/equality theorem on the complete Phi=F stratum for arbitrary H and Sigma. The complete maximally-negative pure-Delta sector is now also excluded for arbitrary real Phi and all nonzero residuals, with sharp gap 1/5000; no exact lower witness is known. The prior four-real-dimensional SU(3) regression is historical and subsumed. At fixed H=h_- and Sigma=q/4, the corrected v21 exact theorem covers every real Phi210. At that fixed endpoint, the exact SU(4) stabilizer, aligned rank-210 carrier real maps and complete 45-element Phi210 quadratic basis feed an exact 22366-dimensional augmented census with 35 types/824 copies, 22 real/Hermitian blocks, 19594 Schur parameters, and 6585 invariant rows. The complete cubic interface has all 1414 real cross variables and an exact-rank-478, 478x1414 integer map with kernel dimension 936. Its zero placeholder is nonphysical and certifies no physical zero RHS. The homogeneous quartic interface is an exact-rank-6057, 6057x18085 integer map with kernel dimension 12028. The legacy v20 assembled physical target is rejected. The corrected 6585x19594 standard positive-Gram map, ordered-spectral target, and exact strict 22-block/824-pivot primal prove p(t,Phi)>0 off the homogeneous origin and A(Phi)>3/200 at t=1 for every real Phi210. Global Sigma, general/full H, the full Hessian, and G3 remain open. PASS still requires uniform coercivity away from the fixed Sigma=q/4 endpoint, plus the external authoritative model execution."
 }

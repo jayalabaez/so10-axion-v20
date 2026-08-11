@@ -76,6 +76,19 @@ on:
       - "corrected_rank1_publication_v21/**"
       - "exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py"
       - "test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py"
+      - "exact_hsigma_current_endomorphism_dimension6_stabilizer_v20.py"
+      - "test_exact_hsigma_current_endomorphism_dimension6_stabilizer_v20.py"
+      - "EXACT_HSIGMA_CURRENT_ENDOMORPHISM_DIMENSION6_STABILIZER.md"
+      - "FROZEN_EXACT_HSIGMA_CURRENT_ENDOMORPHISM_DIMENSION6_STABILIZER_SOURCE_V20.py"
+      - "exact_gauged_u1x_g3_su5_eft_current_kernel_stabilized_global_v20.py"
+      - "test_exact_gauged_u1x_g3_su5_eft_current_kernel_stabilized_global_v20.py"
+      - "EXACT_EFT_CURRENT_KERNEL_STABILIZED_GLOBAL_G3.json"
+      - "EXACT_EFT_CURRENT_KERNEL_STABILIZED_GLOBAL_G3.md"
+      - "FROZEN_EXACT_EFT_CURRENT_KERNEL_STABILIZED_GLOBAL_G3_SOURCE_V20.py"
+      - "final_g3_eft_acceptance_gate_v20.py"
+      - "test_final_g3_eft_acceptance_gate_v20.py"
+      - "FINAL_G3_EFT_ACCEPTANCE_GATE_V20.json"
+      - "FINAL_G3_EFT_ACCEPTANCE_GATE_V20.md"
       - "final_g3_acceptance_gate_v20.py"
       - "test_final_g3_acceptance_gate_v20.py"
       - "gauged_u1x_g3_sos_candidate_v20.py"
@@ -155,6 +168,19 @@ on:
       - "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.md"
       - "exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py"
       - "test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py"
+      - "exact_hsigma_current_endomorphism_dimension6_stabilizer_v20.py"
+      - "test_exact_hsigma_current_endomorphism_dimension6_stabilizer_v20.py"
+      - "EXACT_HSIGMA_CURRENT_ENDOMORPHISM_DIMENSION6_STABILIZER.md"
+      - "FROZEN_EXACT_HSIGMA_CURRENT_ENDOMORPHISM_DIMENSION6_STABILIZER_SOURCE_V20.py"
+      - "exact_gauged_u1x_g3_su5_eft_current_kernel_stabilized_global_v20.py"
+      - "test_exact_gauged_u1x_g3_su5_eft_current_kernel_stabilized_global_v20.py"
+      - "EXACT_EFT_CURRENT_KERNEL_STABILIZED_GLOBAL_G3.json"
+      - "EXACT_EFT_CURRENT_KERNEL_STABILIZED_GLOBAL_G3.md"
+      - "FROZEN_EXACT_EFT_CURRENT_KERNEL_STABILIZED_GLOBAL_G3_SOURCE_V20.py"
+      - "final_g3_eft_acceptance_gate_v20.py"
+      - "test_final_g3_eft_acceptance_gate_v20.py"
+      - "FINAL_G3_EFT_ACCEPTANCE_GATE_V20.json"
+      - "FINAL_G3_EFT_ACCEPTANCE_GATE_V20.md"
       - "final_g3_acceptance_gate_v20.py"
       - "test_final_g3_acceptance_gate_v20.py"
       - "gauged_u1x_g3_sos_candidate_v20.py"
@@ -227,6 +253,12 @@ jobs:
             corrected_rank1_endpoint_v21.py \
             test_corrected_rank1_endpoint_v21.py \
             exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py \
+            exact_hsigma_current_endomorphism_dimension6_stabilizer_v20.py \
+            test_exact_hsigma_current_endomorphism_dimension6_stabilizer_v20.py \
+            exact_gauged_u1x_g3_su5_eft_current_kernel_stabilized_global_v20.py \
+            test_exact_gauged_u1x_g3_su5_eft_current_kernel_stabilized_global_v20.py \
+            final_g3_eft_acceptance_gate_v20.py \
+            test_final_g3_eft_acceptance_gate_v20.py \
             final_g3_acceptance_gate_v20.py \
             gauged_u1x_g3_sos_candidate_v20.py \
             gauged_u1x_g3_corrected_common_kernel_v20.py \
@@ -268,6 +300,11 @@ jobs:
             test_gauged_u1x_g3_corrected_common_kernel_v20.py \
             test_gauged_u1x_g3_stability_v20.py
           python -B corrected_rank1_publication_v21/freeze_exact_gauged_u1x_g3_rank1_su4_corrected_publication_v21.py --check
+      - name: Verify EFT current-kernel G3 reports read-only
+        run: |
+          python -B exact_hsigma_current_endomorphism_dimension6_stabilizer_v20.py
+          python -B exact_gauged_u1x_g3_su5_eft_current_kernel_stabilized_global_v20.py
+          python -B final_g3_eft_acceptance_gate_v20.py
       - name: Generate corrected gauged-X G2 and G3 artifacts
         run: |
           python gauged_u1x_scalar_contract_v20.py --write
@@ -345,6 +382,9 @@ jobs:
             test_corrected_rank1_endpoint_v21.py \
             test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py \
             test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py \
+            test_exact_hsigma_current_endomorphism_dimension6_stabilizer_v20.py \
+            test_exact_gauged_u1x_g3_su5_eft_current_kernel_stabilized_global_v20.py \
+            test_final_g3_eft_acceptance_gate_v20.py \
             test_final_g3_acceptance_gate_v20.py \
             test_gauged_u1x_g3_sos_candidate_v20.py \
             test_gauged_u1x_g3_corrected_common_kernel_v20.py \
@@ -914,6 +954,13 @@ jobs:
             corrected_rank1_publication_v21
             EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json
             EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.md
+            EXACT_HSIGMA_CURRENT_ENDOMORPHISM_DIMENSION6_STABILIZER.md
+            FROZEN_EXACT_HSIGMA_CURRENT_ENDOMORPHISM_DIMENSION6_STABILIZER_SOURCE_V20.py
+            EXACT_EFT_CURRENT_KERNEL_STABILIZED_GLOBAL_G3.json
+            EXACT_EFT_CURRENT_KERNEL_STABILIZED_GLOBAL_G3.md
+            FROZEN_EXACT_EFT_CURRENT_KERNEL_STABILIZED_GLOBAL_G3_SOURCE_V20.py
+            FINAL_G3_EFT_ACCEPTANCE_GATE_V20.json
+            FINAL_G3_EFT_ACCEPTANCE_GATE_V20.md
             FINAL_G3_ACCEPTANCE_GATE_V20.json
             FINAL_G3_ACCEPTANCE_GATE_V20.md
             GAUGED_U1X_G3_SOS_CANDIDATE_V20.json

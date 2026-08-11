@@ -777,6 +777,9 @@ def minimal_tree(
             },
         },
     )
+    root.joinpath("FINAL_G3_EFT_ACCEPTANCE_GATE_V20.json").write_bytes(
+        (matrix.ROOT / "FINAL_G3_EFT_ACCEPTANCE_GATE_V20.json").read_bytes()
+    )
     write_json(
         root,
         "so10_axion_v20_verdict.json",
@@ -898,6 +901,67 @@ def minimal_tree(
 
 
 class TheoryValidationMatrixTests(unittest.TestCase):
+    def test_parallel_eft_g3_is_math_pass_release_open_only(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            minimal_tree(root)
+            report = matrix.build_report(root)
+            parallel = report["parallel_EFT_G3_acceptance"]
+            self.assertTrue(parallel["source_bound"])
+            self.assertEqual(
+                parallel["core_sha256"],
+                matrix.gate_ledger.FINAL_G3_EFT_ACCEPTANCE_CORE_SHA256,
+            )
+            self.assertEqual(
+                parallel["raw_sha256"],
+                matrix.gate_ledger.FINAL_G3_EFT_ACCEPTANCE_RAW_SHA256,
+            )
+            self.assertTrue(parallel["checks"]["raw_sha256_exact"])
+            self.assertTrue(parallel["mathematical_G3_closed_for_EFT_model"])
+            self.assertFalse(parallel["release_G3_verified_for_EFT_model"])
+            self.assertFalse(
+                parallel[
+                    "mathematical_G3_closed_for_original_renormalizable_model"
+                ]
+            )
+            self.assertFalse(parallel["renormalizable_gate_mutated"])
+            self.assertFalse(parallel["G4_closed"])
+            self.assertFalse(report["full_theory_validated"])
+
+            vacuum = next(
+                gate
+                for gate in report["gates"]
+                if gate["name"] == "full_scalar_potential_vacuum_and_spectrum"
+            )
+            evidence = vacuum["evidence"]
+            self.assertTrue(
+                evidence["parallel_EFT_G3_acceptance_gate_artifact_present"]
+            )
+            self.assertTrue(evidence["parallel_EFT_G3_acceptance_source_bound"])
+            self.assertTrue(
+                evidence["parallel_EFT_G3_acceptance_raw_sha256_exact"]
+            )
+            self.assertTrue(evidence["parallel_EFT_mathematical_G3_closed"])
+            self.assertFalse(evidence["parallel_EFT_release_G3_verified"])
+            self.assertFalse(
+                evidence["original_renormalizable_mathematical_G3_closed"]
+            )
+            self.assertFalse(evidence["parallel_EFT_G4_closed"])
+            self.assertTrue(evidence["final_G3_acceptance_gate_honestly_open"])
+
+    def test_parallel_eft_g3_rejects_raw_byte_drift(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            minimal_tree(root)
+            artifact = root / "FINAL_G3_EFT_ACCEPTANCE_GATE_V20.json"
+            artifact.write_bytes(artifact.read_bytes() + b"\n")
+            report = matrix.build_report(root)
+            parallel = report["parallel_EFT_G3_acceptance"]
+            self.assertFalse(parallel["source_bound"])
+            self.assertFalse(parallel["checks"]["raw_sha256_exact"])
+            self.assertFalse(parallel["mathematical_G3_closed_for_EFT_model"])
+            self.assertFalse(report["full_theory_validated"])
+
     def test_rank1_slice_rejects_wrong_fixed_H_orientation(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

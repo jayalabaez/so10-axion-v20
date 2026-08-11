@@ -1,0 +1,67 @@
+{
+  "artifact_sha256": {
+    "theorem_json": "38520c5aed7a3a72dbede3e4358e5edb48c16f35a5bb31601864e1f8dc0e2271",
+    "theorem_markdown": "3de0990e13a5c6f9fd9e9663e9115a06b41b99cee32ac210090d09afa481e47b",
+    "theorem_source": "d3b3368e8e640b285f43a106f5c236dc2780c01df4d71e88365cb607f35277f9",
+    "theorem_test": "dc9d424c0bd0247978c22d0c9384fdee208ed903578354286a704b208a681551"
+  },
+  "classification": {
+    "G4_closed": false,
+    "mathematical_G3_closed_for_EFT_model": true,
+    "mathematical_G3_closed_for_original_renormalizable_model": false,
+    "production_gate_integrated": true,
+    "release_G3_verified_for_EFT_model": false,
+    "renormalizable_gate_mutated": false,
+    "whole_model_excluded": false
+  },
+  "contract": {
+    "EFT_model_contract_id": "gauged_u1x_phi17_v20_eft_o6_current_kernel_gamma_1_over_20",
+    "authoritative_51_parameter_contract_unchanged": true,
+    "authoritative_renormalizable_parameter_count": 51,
+    "base_model_contract_id": "gauged_u1x_phi17_v20",
+    "dimension_six_operator_count": 1,
+    "extension": "(1/20)Lambda_EFT^-2||K_H Sigma||^2 with Lambda_EFT>0",
+    "selected_nonzero_renormalizable_parameter_count": 27
+  },
+  "core_sha256": "472770981ee7f9ad5880d614826e687c6d9402c286980b421a2bad7d079f09fb",
+  "decisive_theorem": "For every 486-real field q, V_EFT(q)-V_EFT(q0)>=0, where V_EFT=V_beta0+(1/20)Lambda_EFT^-2||K_H Sigma||^2; equality holds exactly on the SO(10)xU(1)_XxU(1)_PQ orbit of q0.",
+  "mathematical_checks": {
+    "EFT_mathematical_G3_flag": true,
+    "G4_not_relabelled": true,
+    "arbitrary_486_field_lower_bound": true,
+    "base_contract_id_exact": true,
+    "frozen_core_matches_source": true,
+    "full_Hessian_rank_nullity_exact": true,
+    "operator_is_dimension_six_EFT": true,
+    "renormalizable_G3_not_relabelled": true,
+    "selected_exact_stationarity": true,
+    "selected_global_minimum": true,
+    "selected_stabilizer_is_low_energy_gauge_group": true,
+    "unique_declared_symmetry_orbit": true
+  },
+  "production_mapping": {
+    "do_not_flip": "FINAL_G3_ACCEPTANCE_GATE_V20 for the renormalizable model",
+    "new_parallel_gate_required": "EFT_G3_ACCEPTANCE",
+    "portable_O6_module": "exact_hsigma_current_endomorphism_dimension6_stabilizer_v20",
+    "portable_source_module": "exact_gauged_u1x_g3_su5_eft_current_kernel_stabilized_global_v20"
+  },
+  "release_blockers": [
+    "Lambda_EFT_and_positive_Wilson_matching_approved",
+    "radiative_stability_completed",
+    "external_extended_model_contract_executed",
+    "G1_promoted_closed",
+    "G2_promoted_closed"
+  ],
+  "release_criteria": {
+    "G1_promoted_closed": false,
+    "G2_promoted_closed": false,
+    "Lambda_EFT_and_positive_Wilson_matching_approved": false,
+    "authoritative_EFT_contract_registered": true,
+    "clean_production_gate_integration_completed": true,
+    "external_extended_model_contract_executed": false,
+    "radiative_stability_completed": false
+  },
+  "status": "FINAL_EFT_G3_ACCEPTANCE__MATHEMATICAL_PASS_RELEASE_OPEN",
+  "theorem_core_sha256": "2eca279488d92d8bd9eca974c0d598340124f025e62212cd8a188413a6e8b7d0",
+  "verdict": "Mathematical G3 is closed for the explicitly stated dimension-six EFT extension. The original renormalizable model remains open, G4 is not claimed, and release verification remains open until the extended contract is executed, EFT matching is approved, and the upstream G1/G2 release gates close."
+}

@@ -21,6 +21,17 @@ def test_current_gate_is_open_not_failed_or_overclaimed():
     assert report["overall_state"] == "OPEN"
     assert report["classification"]["theory_still_viable"] is True
     assert report["classification"]["mathematical_G3_closed"] is False
+    assert report["classification"]["parallel_EFT_mathematical_G3_closed"] is True
+    assert report["parallel_EFT_resolution"]["mathematical_G3_closed"] is True
+    assert report["parallel_EFT_resolution"]["source_bound"] is True
+    assert report["parallel_EFT_resolution"]["raw_sha256"] == mod.EFT_G3_RAW_SHA256
+    assert report["parallel_EFT_resolution"]["core_sha256"] == mod.EFT_G3_CORE_SHA256
+    assert report["artifact_integrity"][
+        "parallel_EFT_G3_acceptance_raw_and_core_bound"
+    ] is True
+    assert report["parallel_EFT_resolution"][
+        "original_renormalizable_G3_unchanged"
+    ] is True
     assert report["classification"]["release_G3_verified"] is False
     assert report["classification"]["G3_closed"] is False
     assert report["diagnostic_only"]["live_transverse_dimension"] == 448

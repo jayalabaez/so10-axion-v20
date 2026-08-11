@@ -60,6 +60,16 @@ G3_SU5_GAP_JSON = ROOT / "EXACT_GAUGED_U1X_G3_SU5_CHIRAL_GLOBAL_GAP_REDUCTION_V2
 G3_ALTERNATIVE_GLOBAL_SOS_JSON = (
     ROOT / "EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json"
 )
+FINAL_G3_EFT_ACCEPTANCE_JSON = ROOT / "FINAL_G3_EFT_ACCEPTANCE_GATE_V20.json"
+FINAL_G3_EFT_ACCEPTANCE_CORE_SHA256 = (
+    "472770981ee7f9ad5880d614826e687c6d9402c286980b421a2bad7d079f09fb"
+)
+FINAL_G3_EFT_ACCEPTANCE_RAW_SHA256 = (
+    "482f9da84d677e24594ca536a2c257602e02f5187419df5cba5356f771ddbaf0"
+)
+EFT_MODEL_CONTRACT_ID = (
+    "gauged_u1x_phi17_v20_eft_o6_current_kernel_gamma_1_over_20"
+)
 G3_SU5_FIXED_F_OFFKERNEL_JSON = (
     ROOT / "EXACT_GAUGED_U1X_G3_SU5_FIXED_F_OFFKERNEL_BOUND_V20.json"
 )
@@ -277,6 +287,130 @@ def _load_json_artifact(path: Path) -> dict[str, Any]:
     return value if isinstance(value, dict) else {}
 
 
+def _parallel_eft_g3_acceptance(
+    report: dict[str, Any], *, raw_sha256: str = ""
+) -> dict[str, Any]:
+    """Validate and expose the EFT G3 result without mutating G3 or G4."""
+    classification = report.get("classification", {})
+    contract = report.get("contract", {})
+    mathematical_checks = report.get("mathematical_checks", {})
+    production_mapping = report.get("production_mapping", {})
+    release_criteria = report.get("release_criteria", {})
+    required_release_blockers = {
+        "Lambda_EFT_and_positive_Wilson_matching_approved",
+        "radiative_stability_completed",
+        "external_extended_model_contract_executed",
+        "G1_promoted_closed",
+        "G2_promoted_closed",
+    }
+    checks = {
+        "artifact_present": bool(report),
+        "status_exact": (
+            report.get("status")
+            == "FINAL_EFT_G3_ACCEPTANCE__MATHEMATICAL_PASS_RELEASE_OPEN"
+        ),
+        "core_sha256_exact": (
+            report.get("core_sha256")
+            == FINAL_G3_EFT_ACCEPTANCE_CORE_SHA256
+        ),
+        "raw_sha256_exact": (
+            raw_sha256 == FINAL_G3_EFT_ACCEPTANCE_RAW_SHA256
+        ),
+        "base_contract_exact": (
+            contract.get("base_model_contract_id") == AUTHORITATIVE_CONTRACT_ID
+        ),
+        "EFT_contract_exact": (
+            contract.get("EFT_model_contract_id") == EFT_MODEL_CONTRACT_ID
+        ),
+        "authoritative_parameter_count_51": (
+            contract.get("authoritative_renormalizable_parameter_count") == 51
+            and contract.get("authoritative_51_parameter_contract_unchanged")
+            is True
+        ),
+        "selected_nonzero_parameter_count_27": (
+            contract.get("selected_nonzero_renormalizable_parameter_count")
+            == 27
+        ),
+        "single_dimension_six_operator": (
+            contract.get("dimension_six_operator_count") == 1
+            and mathematical_checks.get("operator_is_dimension_six_EFT") is True
+        ),
+        "EFT_mathematical_G3_closed": (
+            classification.get("mathematical_G3_closed_for_EFT_model") is True
+            and mathematical_checks.get("EFT_mathematical_G3_flag") is True
+            and mathematical_checks.get("arbitrary_486_field_lower_bound")
+            is True
+            and mathematical_checks.get("selected_global_minimum") is True
+            and mathematical_checks.get("unique_declared_symmetry_orbit")
+            is True
+        ),
+        "renormalizable_G3_unchanged_and_open": (
+            classification.get(
+                "mathematical_G3_closed_for_original_renormalizable_model"
+            )
+            is False
+            and classification.get("renormalizable_gate_mutated") is False
+            and mathematical_checks.get("renormalizable_G3_not_relabelled")
+            is True
+            and production_mapping.get("do_not_flip")
+            == "FINAL_G3_ACCEPTANCE_GATE_V20 for the renormalizable model"
+        ),
+        "G4_not_closed": (
+            classification.get("G4_closed") is False
+            and mathematical_checks.get("G4_not_relabelled") is True
+        ),
+        "EFT_release_open": (
+            classification.get("release_G3_verified_for_EFT_model") is False
+            and required_release_blockers.issubset(
+                set(report.get("release_blockers", []))
+            )
+            and all(
+                release_criteria.get(name) is False
+                for name in required_release_blockers
+            )
+        ),
+        "parallel_namespace_exact": (
+            production_mapping.get("new_parallel_gate_required")
+            == "EFT_G3_ACCEPTANCE"
+        ),
+        "parallel_production_mapping_integrated": (
+            classification.get("production_gate_integrated") is True
+            and release_criteria.get("authoritative_EFT_contract_registered")
+            is True
+            and release_criteria.get("clean_production_gate_integration_completed")
+            is True
+        ),
+        "whole_model_not_excluded": (
+            classification.get("whole_model_excluded") is False
+        ),
+    }
+    source_bound = all(checks.values())
+    return {
+        "namespace": "EFT_G3_ACCEPTANCE",
+        "artifact": FINAL_G3_EFT_ACCEPTANCE_JSON.name,
+        "expected_core_sha256": FINAL_G3_EFT_ACCEPTANCE_CORE_SHA256,
+        "core_sha256": report.get("core_sha256"),
+        "expected_raw_sha256": FINAL_G3_EFT_ACCEPTANCE_RAW_SHA256,
+        "raw_sha256": raw_sha256,
+        "EFT_model_contract_id": contract.get("EFT_model_contract_id"),
+        "base_model_contract_id": contract.get("base_model_contract_id"),
+        "source_bound": source_bound,
+        "mathematical_G3_closed_for_EFT_model": bool(
+            source_bound
+            and classification.get("mathematical_G3_closed_for_EFT_model")
+            is True
+        ),
+        "release_G3_verified_for_EFT_model": False,
+        "mathematical_G3_closed_for_original_renormalizable_model": False,
+        "renormalizable_gate_mutated": False,
+        "G4_closed": False,
+        "release_blockers": (
+            list(report.get("release_blockers", [])) if source_bound else []
+        ),
+        "checks": checks,
+    }
+
+
 def _canonical_json_sha256(value: Any) -> str:
     payload = json.dumps(
         value, sort_keys=True, separators=(",", ":"), ensure_ascii=True
@@ -290,6 +424,14 @@ def _file_sha256(path: Path) -> str:
         # provenance certificates use the repository's canonical LF bytes.
         payload = path.read_bytes().replace(b"\r\n", b"\n").replace(b"\r", b"\n")
         return hashlib.sha256(payload).hexdigest()
+    except OSError:
+        return ""
+
+
+def _raw_file_sha256(path: Path) -> str:
+    """Hash the exact artifact bytes without newline canonicalization."""
+    try:
+        return hashlib.sha256(path.read_bytes()).hexdigest()
     except OSError:
         return ""
 
@@ -4052,6 +4194,8 @@ def _build_report_from_inputs(
     g3_rank1_su4_augmented_sos_psd_target_report: dict[str, Any] | None = None,
     g3_rank1_su4_corrected_publication: dict[str, Any] | None = None,
     g3_alternative_global_sos_report: dict[str, Any] | None = None,
+    final_g3_eft_acceptance_report: dict[str, Any] | None = None,
+    final_g3_eft_acceptance_raw_sha256: str | None = None,
 ) -> dict[str, Any]:
     """Build a ledger from fresh reports, including repaired-contract states."""
     declared_contract_consistent = bool(x_report["contract_consistent"])
@@ -4156,6 +4300,21 @@ def _build_report_from_inputs(
         g3_alternative_global_sos_report = _load_json_artifact(
             G3_ALTERNATIVE_GLOBAL_SOS_JSON
         )
+    eft_acceptance_loaded_from_disk = final_g3_eft_acceptance_report is None
+    if eft_acceptance_loaded_from_disk:
+        final_g3_eft_acceptance_report = _load_json_artifact(
+            FINAL_G3_EFT_ACCEPTANCE_JSON
+        )
+    if final_g3_eft_acceptance_raw_sha256 is None:
+        final_g3_eft_acceptance_raw_sha256 = (
+            _raw_file_sha256(FINAL_G3_EFT_ACCEPTANCE_JSON)
+            if eft_acceptance_loaded_from_disk
+            else ""
+        )
+    parallel_eft_g3_acceptance = _parallel_eft_g3_acceptance(
+        final_g3_eft_acceptance_report,
+        raw_sha256=final_g3_eft_acceptance_raw_sha256,
+    )
     g3_frontier = _gauged_u1x_g3_frontier(
         g3_sos_report,
         g3_pd_report,
@@ -4220,6 +4379,24 @@ def _build_report_from_inputs(
 
     checks = {
         "exact_X_audit_executes": x_report["n_failed"] == 0,
+        "parallel_EFT_G3_acceptance_is_source_bound_and_release_open": (
+            parallel_eft_g3_acceptance["source_bound"] is True
+            and parallel_eft_g3_acceptance[
+                "mathematical_G3_closed_for_EFT_model"
+            ]
+            is True
+            and parallel_eft_g3_acceptance[
+                "release_G3_verified_for_EFT_model"
+            ]
+            is False
+            and parallel_eft_g3_acceptance[
+                "mathematical_G3_closed_for_original_renormalizable_model"
+            ]
+            is False
+            and parallel_eft_g3_acceptance["renormalizable_gate_mutated"]
+            is False
+            and parallel_eft_g3_acceptance["G4_closed"] is False
+        ),
         "consistent_contract_requires_tool_native_bound_evidence": bool(
             not declared_contract_consistent or contract_evidence_complete
         ),
@@ -4964,9 +5141,11 @@ def _build_report_from_inputs(
             "gauged_G3_alternative_global_SOS_audit": (
                 g3_alternative_global_sos_report
             ),
+            "parallel_EFT_G3_acceptance_gate": final_g3_eft_acceptance_report,
         },
         "gauged_u1x_scalar_subtheorems": scoped,
         "gauged_u1x_g3_constructive_frontier": g3_frontier,
+        "parallel_EFT_G3_acceptance": parallel_eft_g3_acceptance,
         "historical_option_c_subtheorems": historical,
         "dependencies": DEPENDENCIES,
         "gates": gates,
@@ -5071,6 +5250,12 @@ def build_report() -> dict[str, Any]:
         g3_alternative_global_sos_report=_load_json_artifact(
             G3_ALTERNATIVE_GLOBAL_SOS_JSON
         ),
+        final_g3_eft_acceptance_report=_load_json_artifact(
+            FINAL_G3_EFT_ACCEPTANCE_JSON
+        ),
+        final_g3_eft_acceptance_raw_sha256=_raw_file_sha256(
+            FINAL_G3_EFT_ACCEPTANCE_JSON
+        ),
     )
 
 
@@ -5087,6 +5272,18 @@ def write_markdown(report: dict[str, Any]) -> str:
         "## Critical path",
         "",
         "`MODEL_CONTRACT -> G1 -> G2 -> G3/G4/G5 -> G6 -> G7 -> G8`",
+        "",
+        "## Parallel EFT G3 acceptance",
+        "",
+        (
+            "- Dimension-six EFT mathematical G3: "
+            f"**{report['parallel_EFT_G3_acceptance']['mathematical_G3_closed_for_EFT_model']}**"
+        ),
+        (
+            "- EFT release G3 verified: "
+            f"**{report['parallel_EFT_G3_acceptance']['release_G3_verified_for_EFT_model']}**"
+        ),
+        "- The authoritative renormalizable G3 and G4 gates are unchanged.",
         "",
         "## Authoritative gates",
         "",

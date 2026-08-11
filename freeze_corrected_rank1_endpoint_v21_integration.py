@@ -41,6 +41,24 @@ GLOBAL_PHI_CLASSIFICATION_SOURCE_SHA256 = (
 GLOBAL_PHI_CLASSIFICATION_CORE_SHA256 = (
     "db493a74303a57862f09c2a92118ea3d66b8b12ecbaea9162155d4ab3baafecc"
 )
+EFT_O6_CORE_SHA256 = (
+    "598d916da16e746c8be30e979a13a27a47d1600e2dd4bee7b9cf9fc398ec9da1"
+)
+EFT_FROZEN_GLOBAL_G3_THEOREM_CORE_SHA256 = (
+    "37acd6063765c0a28469b2f22c4502824871674ca99853ec2c940617b9c46423"
+)
+EFT_GLOBAL_G3_THEOREM_CORE_SHA256 = (
+    "2eca279488d92d8bd9eca974c0d598340124f025e62212cd8a188413a6e8b7d0"
+)
+EFT_G3_ACCEPTANCE_GATE_CORE_SHA256 = (
+    "472770981ee7f9ad5880d614826e687c6d9402c286980b421a2bad7d079f09fb"
+)
+EFT_BETA_ZERO_BASE_HESSIAN_PAYLOAD_SHA256 = (
+    "194740e7e90eeee33d5d772ab549df969e9665e3aebc1580c3319f58eee36930"
+)
+EFT_STABILIZED_HESSIAN_PAYLOAD_SHA256 = (
+    "7ea54d59138f8e5b66aad3d1f1ecb707c65ac9bb0f0e118a597daaccc136b568"
+)
 
 PUBLICATION_FILES = (
     "EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_FIXED_ENDPOINT_THEOREM_V21.json",
@@ -97,6 +115,9 @@ READ_ONLY_FROZEN_REPORT_SOURCES = (
     "g1_g8_gate_ledger_v20.py",
     "final_g3_acceptance_gate_v20.py",
     "g1_g8_execution_roadmap_v20.py",
+    "exact_hsigma_current_endomorphism_dimension6_stabilizer_v20.py",
+    "exact_gauged_u1x_g3_su5_eft_current_kernel_stabilized_global_v20.py",
+    "final_g3_eft_acceptance_gate_v20.py",
 )
 NO_WRITE_FROZEN_CLASSIFICATION_SOURCES = (
     "theory_validation_matrix_v20.py",
@@ -195,6 +216,47 @@ GLOBAL_PHI_CLASSIFICATION_RAW_PINS = {
         "6887429cebbe0e0ee9171b9346b85c671959c2fdbc2b5187efc73a52552b0883"
     ),
 }
+EFT_G3_RAW_PINS = {
+    "exact_hsigma_current_endomorphism_dimension6_stabilizer_v20.py": (
+        "c113abf41ca9527528dc00d248fdfa3fcae990e39ba4b76251ca197167cbad23"
+    ),
+    "FROZEN_EXACT_HSIGMA_CURRENT_ENDOMORPHISM_DIMENSION6_STABILIZER_SOURCE_V20.py": (
+        "c113abf41ca9527528dc00d248fdfa3fcae990e39ba4b76251ca197167cbad23"
+    ),
+    "test_exact_hsigma_current_endomorphism_dimension6_stabilizer_v20.py": (
+        "bc8397bf74bc28ed7b372c508d65d843ad0baf1bd9078f25a141e700cbb25f65"
+    ),
+    "EXACT_HSIGMA_CURRENT_ENDOMORPHISM_DIMENSION6_STABILIZER.md": (
+        "181632706a73d68f439083b9b3f95314d2be390aee9486caa527be3ab6f23917"
+    ),
+    "exact_gauged_u1x_g3_su5_eft_current_kernel_stabilized_global_v20.py": (
+        "d3b3368e8e640b285f43a106f5c236dc2780c01df4d71e88365cb607f35277f9"
+    ),
+    "FROZEN_EXACT_EFT_CURRENT_KERNEL_STABILIZED_GLOBAL_G3_SOURCE_V20.py": (
+        "9db99e83a32eefd43c74f3fb006e0ef32c37162980c7abb031efdbb8422a360f"
+    ),
+    "test_exact_gauged_u1x_g3_su5_eft_current_kernel_stabilized_global_v20.py": (
+        "dc9d424c0bd0247978c22d0c9384fdee208ed903578354286a704b208a681551"
+    ),
+    "EXACT_EFT_CURRENT_KERNEL_STABILIZED_GLOBAL_G3.json": (
+        "38520c5aed7a3a72dbede3e4358e5edb48c16f35a5bb31601864e1f8dc0e2271"
+    ),
+    "EXACT_EFT_CURRENT_KERNEL_STABILIZED_GLOBAL_G3.md": (
+        "3de0990e13a5c6f9fd9e9663e9115a06b41b99cee32ac210090d09afa481e47b"
+    ),
+    "final_g3_eft_acceptance_gate_v20.py": (
+        "bd67e726fb2f482ef415307943bacdc5a54a0ebeae757852fe4c40010d6a0af5"
+    ),
+    "test_final_g3_eft_acceptance_gate_v20.py": (
+        "7520de4bc4176eb17b648b5f70a66a420a1b7999f855b389f8a2214c7fbf312a"
+    ),
+    "FINAL_G3_EFT_ACCEPTANCE_GATE_V20.json": (
+        "482f9da84d677e24594ca536a2c257602e02f5187419df5cba5356f771ddbaf0"
+    ),
+    "FINAL_G3_EFT_ACCEPTANCE_GATE_V20.md": (
+        "93fb87a00d34069a0fa4dfacb7c7c41714d2eff64686cacfed2bfbae73fd9936"
+    ),
+}
 RHS_PORTABLE_SOURCE_PINS = {
     "exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py":
         "8493a90d9b689bc02479151529ac697425f56087f2bdbebb40176f418b7c0ff8",
@@ -218,7 +280,7 @@ RAW_INTEGRATION_PATHS = (
     "test_freeze_corrected_rank1_endpoint_v21_integration.py",
 ) + PUBLICATION_PATHS + tuple(RAW_SOURCE_PINS) + tuple(
     GLOBAL_PHI_CLASSIFICATION_RAW_PINS
-)
+) + tuple(EFT_G3_RAW_PINS)
 
 GLOBAL_PHI_CLASSIFICATION_PORTABLE_PATHS = (
     "EXACT_PHI_SELF_ZERO_GLOBAL_SEXTIC_SYZYGY.md",
@@ -294,7 +356,7 @@ CHECKSUM_REQUIRED_PATHS = (
     "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py",
 ) + WORKFLOW_PATHS + PUBLICATION_PATHS + tuple(
     GLOBAL_PHI_CLASSIFICATION_RAW_PINS
-) + GLOBAL_PHI_CLASSIFICATION_PORTABLE_PATHS
+) + tuple(EFT_G3_RAW_PINS) + GLOBAL_PHI_CLASSIFICATION_PORTABLE_PATHS
 
 
 def _raw_payload(path: Path) -> bytes:
@@ -335,6 +397,8 @@ def _role(relative: str) -> str:
         return "audited corrected v21 publication byte"
     if relative in GLOBAL_PHI_CLASSIFICATION_RAW_PINS:
         return "byte-pinned exact global Phi self-zero proof dependency"
+    if relative in EFT_G3_RAW_PINS:
+        return "byte-pinned dimension-six EFT G3 theorem and acceptance bundle"
     if relative in RAW_SOURCE_PINS or relative in RHS_PORTABLE_SOURCE_PINS:
         return "generation-only byte-pinned structural dependency"
     if relative in WORKFLOW_PATHS:
@@ -370,6 +434,170 @@ def _require_source_pins() -> None:
             raise ArithmeticError(
                 f"raw global Phi classification dependency drifted: {relative}"
             )
+    for relative, expected in EFT_G3_RAW_PINS.items():
+        observed = _sha256(_raw_payload(ROOT / relative))
+        if observed != expected:
+            raise ArithmeticError(f"raw EFT G3 bundle member drifted: {relative}")
+
+
+def _source_string_constant(relative: str, name: str) -> str:
+    tree = ast.parse((ROOT / relative).read_text(encoding="utf-8"), filename=relative)
+    values: list[str] = []
+    for node in tree.body:
+        if not isinstance(node, ast.Assign) or not isinstance(node.value, ast.Constant):
+            continue
+        if not isinstance(node.value.value, str):
+            continue
+        if any(isinstance(target, ast.Name) and target.id == name for target in node.targets):
+            values.append(node.value.value)
+    if len(values) != 1:
+        raise ArithmeticError(f"expected one string constant {name} in {relative}")
+    return values[0]
+
+
+def _replace_once(source: str, old: str, new: str, label: str) -> str:
+    if source.count(old) != 1:
+        raise ArithmeticError(f"the frozen EFT theorem {label} anchor drifted")
+    return source.replace(old, new, 1)
+
+
+def _require_eft_theorem_adapter_allowlist() -> dict[str, Any]:
+    """Prove that production changes only two frozen integration anchors."""
+    frozen_name = "FROZEN_EXACT_EFT_CURRENT_KERNEL_STABILIZED_GLOBAL_G3_SOURCE_V20.py"
+    production_name = (
+        "exact_gauged_u1x_g3_su5_eft_current_kernel_stabilized_global_v20.py"
+    )
+    frozen = (ROOT / frozen_name).read_text(encoding="utf-8")
+    production = (ROOT / production_name).read_text(encoding="utf-8")
+    frozen_core = (
+        'EXPECTED_CORE_SHA256 = "'
+        + EFT_FROZEN_GLOBAL_G3_THEOREM_CORE_SHA256
+        + '"'
+    )
+    production_core = (
+        'EXPECTED_CORE_SHA256 = "' + EFT_GLOBAL_G3_THEOREM_CORE_SHA256 + '"'
+    )
+    expected = _replace_once(
+        frozen, frozen_core, production_core, "production-core replacement"
+    )
+    frozen_equality_pin = """    "fixed_F_equality_source": (
+        REPO / "exact_gauged_u1x_g3_su5_equality_orbit_v20.py",
+        "f0f3efd4cb930825523d3b70c285d2a85c37b1c19bfdbcf1363597c6e9a4ba52",
+    ),"""
+    production_equality_pin = """    "fixed_F_equality_source": (
+        REPO / "exact_gauged_u1x_g3_su5_equality_orbit_v20.py",
+        (
+            "53f8b5b6175f4c3a7a5b3ab49ef151be2baa91c4dcd3fdd4f4de07e15d002df6"
+            if REPO == HERE
+            else "f0f3efd4cb930825523d3b70c285d2a85c37b1c19bfdbcf1363597c6e9a4ba52"
+        ),
+    ),"""
+    expected = _replace_once(
+        expected,
+        frozen_equality_pin,
+        production_equality_pin,
+        "production equality-source replacement",
+    )
+    if expected != production:
+        raise ArithmeticError(
+            "production EFT theorem differs from the frozen source outside "
+            "the two allowlisted integration anchors"
+        )
+    return {
+        "frozen_source": frozen_name,
+        "production_source": production_name,
+        "allowlisted_difference_count": 2,
+        "differences": [
+            "production core pin",
+            "production-local equality-source raw pin",
+        ],
+        "all_other_bytes_identical": True,
+    }
+
+
+def _require_eft_g3_bundle() -> dict[str, Any]:
+    if len(EFT_G3_RAW_PINS) != 13:
+        raise ArithmeticError("the EFT G3 raw bundle must contain exactly 13 files")
+    allowlist = _require_eft_theorem_adapter_allowlist()
+    o6_source = "exact_hsigma_current_endomorphism_dimension6_stabilizer_v20.py"
+    o6_frozen = (
+        "FROZEN_EXACT_HSIGMA_CURRENT_ENDOMORPHISM_DIMENSION6_STABILIZER_SOURCE_V20.py"
+    )
+    theorem_source = (
+        "exact_gauged_u1x_g3_su5_eft_current_kernel_stabilized_global_v20.py"
+    )
+    gate_source = "final_g3_eft_acceptance_gate_v20.py"
+    theorem = json.loads(
+        (ROOT / "EXACT_EFT_CURRENT_KERNEL_STABILIZED_GLOBAL_G3.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    gate = json.loads(
+        (ROOT / "FINAL_G3_EFT_ACCEPTANCE_GATE_V20.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    hessian = theorem.get("exact_stabilized_Hessian", {})
+    flags = theorem.get("closure_flags", {})
+    classification = gate.get("classification", {})
+    checks = {
+        "O6_frozen_equals_production": (
+            (ROOT / o6_frozen).read_bytes() == (ROOT / o6_source).read_bytes()
+        ),
+        "O6_core_exact": (
+            _source_string_constant(o6_source, "EXPECTED_CORE_SHA256")
+            == EFT_O6_CORE_SHA256
+        ),
+        "theorem_source_core_exact": (
+            _source_string_constant(theorem_source, "EXPECTED_CORE_SHA256")
+            == EFT_GLOBAL_G3_THEOREM_CORE_SHA256
+        ),
+        "theorem_report_core_exact": (
+            theorem.get("core_sha256") == EFT_GLOBAL_G3_THEOREM_CORE_SHA256
+        ),
+        "acceptance_source_core_exact": (
+            _source_string_constant(gate_source, "EXPECTED_CORE_SHA256")
+            == EFT_G3_ACCEPTANCE_GATE_CORE_SHA256
+        ),
+        "acceptance_report_core_exact": (
+            gate.get("core_sha256") == EFT_G3_ACCEPTANCE_GATE_CORE_SHA256
+        ),
+        "beta_zero_Hessian_payload_exact": (
+            hessian.get("beta_zero_base", {}).get("payload_sha256")
+            == EFT_BETA_ZERO_BASE_HESSIAN_PAYLOAD_SHA256
+        ),
+        "stabilized_Hessian_payload_exact": (
+            hessian.get("stabilized", {}).get("payload_sha256")
+            == EFT_STABILIZED_HESSIAN_PAYLOAD_SHA256
+        ),
+        "EFT_mathematical_G3_closed": (
+            flags.get("G3_closed_for_EFT_extended_model") is True
+            and classification.get("mathematical_G3_closed_for_EFT_model") is True
+        ),
+        "renormalizable_G3_open": (
+            flags.get("G3_closed_for_original_renormalizable_model") is False
+            and classification.get(
+                "mathematical_G3_closed_for_original_renormalizable_model"
+            )
+            is False
+        ),
+        "EFT_release_open": (
+            classification.get("release_G3_verified_for_EFT_model") is False
+        ),
+        "G4_open": (
+            flags.get("G4_closed") is False
+            and classification.get("G4_closed") is False
+        ),
+    }
+    failed = [name for name, passed in checks.items() if not passed]
+    if failed:
+        raise ArithmeticError(f"the frozen EFT G3 logical bundle drifted: {failed}")
+    return {
+        "raw_file_count": len(EFT_G3_RAW_PINS),
+        "theorem_adapter_allowlist": allowlist,
+        "checks": checks,
+        "all_checks_pass": True,
+    }
 
 
 def _require_publication_inventory() -> None:
@@ -501,6 +729,21 @@ def _require_workflow_contract() -> dict[str, int]:
                     f"{relative}: {source}"
                 )
             no_write_classification_commands += len(commands)
+    expected_read_only_commands = (
+        len(READ_ONLY_FROZEN_REPORT_SOURCES)
+        * len(READ_ONLY_FROZEN_DEPENDENCY_ORCHESTRATORS)
+    )
+    if (
+        len(READ_ONLY_FROZEN_REPORT_SOURCES) != 13
+        or expected_read_only_commands != 39
+        or read_only_report_commands != expected_read_only_commands
+    ):
+        raise ArithmeticError(
+            "read-only frozen report command census drifted: "
+            f"sources={len(READ_ONLY_FROZEN_REPORT_SOURCES)}, "
+            f"commands={read_only_report_commands}, "
+            f"expected={expected_read_only_commands}"
+        )
     no_write_stochastic_report_commands = 0
     for relative in NO_WRITE_STOCHASTIC_REPORT_ORCHESTRATORS:
         text = (ROOT / relative).read_text(encoding="utf-8")
@@ -638,6 +881,7 @@ def build_manifest() -> dict[str, Any]:
         raise ArithmeticError("quarantined Sigma35 paths entered integration inventory")
     _require_publication_inventory()
     _require_source_pins()
+    eft_g3_bundle = _require_eft_g3_bundle()
     workflow_counts = _require_workflow_contract()
     legacy_quarantine = _require_legacy_quarantine()
     checksum_count = _require_checksum_coverage()
@@ -666,6 +910,19 @@ def build_manifest() -> dict[str, Any]:
             "global_Phi_classification_core_sha256": (
                 GLOBAL_PHI_CLASSIFICATION_CORE_SHA256
             ),
+            "EFT_O6_current_endomorphism_core_sha256": EFT_O6_CORE_SHA256,
+            "EFT_global_G3_theorem_core_sha256": (
+                EFT_GLOBAL_G3_THEOREM_CORE_SHA256
+            ),
+            "EFT_G3_acceptance_gate_core_sha256": (
+                EFT_G3_ACCEPTANCE_GATE_CORE_SHA256
+            ),
+            "EFT_beta_zero_base_Hessian_payload_sha256": (
+                EFT_BETA_ZERO_BASE_HESSIAN_PAYLOAD_SHA256
+            ),
+            "EFT_stabilized_Hessian_payload_sha256": (
+                EFT_STABILIZED_HESSIAN_PAYLOAD_SHA256
+            ),
         },
         "exact_dimensions": {
             "map_shape": [6585, 19594],
@@ -678,6 +935,7 @@ def build_manifest() -> dict[str, Any]:
             "strict_positive_LDL_pivots": 824,
         },
         "workflow_contract": workflow_counts,
+        "EFT_G3_bundle": eft_g3_bundle,
         "legacy_v20_quarantine": legacy_quarantine,
         "release_checksum_entry_count": checksum_count,
         "generation_source_pins": {
@@ -688,6 +946,7 @@ def build_manifest() -> dict[str, Any]:
             "physical_RHS_portable_lf_sha256": dict(
                 sorted(RHS_PORTABLE_SOURCE_PINS.items())
             ),
+            "EFT_G3_raw_sha256": dict(sorted(EFT_G3_RAW_PINS.items())),
         },
         "claim_boundary": {
             "fixed_H": "h_-=(e0-i e1)/sqrt(2)",
@@ -703,6 +962,10 @@ def build_manifest() -> dict[str, Any]:
             "general_H_proved": False,
             "full_H_proved": False,
             "full_Hessian_proved": False,
+            "renormalizable_G3_closed": False,
+            "EFT_dimension6_mathematical_G3_closed": True,
+            "EFT_release_G3_verified": False,
+            "G4_closed": False,
             "G3_closed": False,
         },
         "quarantine": {

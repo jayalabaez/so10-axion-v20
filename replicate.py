@@ -350,6 +350,19 @@ def main() -> int:
             "--recompute-heavy",
         ]
     )
+    run(
+        [
+            sys.executable,
+            "exact_hsigma_current_endomorphism_dimension6_stabilizer_v20.py",
+        ]
+    )
+    run(
+        [
+            sys.executable,
+            "exact_gauged_u1x_g3_su5_eft_current_kernel_stabilized_global_v20.py",
+        ]
+    )
+    run([sys.executable, "final_g3_eft_acceptance_gate_v20.py"])
     run([sys.executable, "g1_g8_gate_ledger_v20.py"])
     run([sys.executable, "final_g3_acceptance_gate_v20.py"])
     run([sys.executable, "g1_g8_execution_roadmap_v20.py"])
@@ -447,11 +460,14 @@ def main() -> int:
             "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py",
             "test_exact_gauged_u1x_g3_su5_chiral_global_gap_reduction_v20.py",
             "test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py",
+            "test_exact_hsigma_current_endomorphism_dimension6_stabilizer_v20.py",
+            "test_exact_gauged_u1x_g3_su5_eft_current_kernel_stabilized_global_v20.py",
+            "test_final_g3_eft_acceptance_gate_v20.py",
+            "test_g1_g8_gate_ledger_v20.py",
             "test_final_g3_acceptance_gate_v20.py",
             "test_gauged_u1x_g3_sos_candidate_v20.py",
             "test_gauged_u1x_g3_stability_v20.py",
             "test_gauged_u1x_g3_corrected_common_kernel_v20.py",
-            "test_g1_g8_gate_ledger_v20.py",
             "test_g1_g8_execution_roadmap_v20.py",
             "test_theory_validation_matrix_v20.py",
         ]

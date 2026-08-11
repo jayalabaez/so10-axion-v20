@@ -1,0 +1,199 @@
+{
+  "candidate_and_global_SOS": {
+    "EFT_operator": {
+      "SO10_x_U1X_x_PQ_invariant": true,
+      "Wilson_coefficient": "kappa=gamma/Lambda_EFT^2",
+      "field_content": "H^2 Hdag^2 Sigma Sigmadag",
+      "field_degree": 6,
+      "formula": "gamma||A_H Sigma||^2",
+      "inside_renormalizable_51_parameter_contract": false,
+      "nonnegative_for_all_fields": true,
+      "normalized_exact_point": "gamma=1/20, Lambda_EFT=1"
+    },
+    "all_renormalizable_parameters_in_authoritative_51_contract": true,
+    "bounded_below_for_arbitrary_486_real_fields": true,
+    "exact_full_field_gap": {
+      "EFT_part": "(1/20)||A_H Sigma||^2",
+      "H_part": "(N_H-1)^2-1+|H.H|^2",
+      "Phi17_part": "(1/32)(|Phi17|^2-1)^2-1/32",
+      "Phi_H_part": "2||P_chi(H wedge Phi)||^2",
+      "Phi_Sigma_part": "(Nphi-1)^2-1+I54phi+I4125phi+(1/8)[||(Mphi-8/sqrt(10))Sigma||^2+||Cphi Sigma||^2+(Nsigma-r^2)^2-r^4+I54sigma+I1050barsigma]",
+      "S_part": "(|S|^2-1/25)^2-1/625",
+      "all_omitted_terms": "none",
+      "sum_of_nonnegative_residuals_plus_constant": true
+    },
+    "global_lower_bound": "-1-r^4/8-1-1/625-1/32 at r=1/5",
+    "model_contract_id": "gauged_u1x_phi17_v20",
+    "removed_signed_current_coefficient": {
+      "new_value": "0",
+      "old_value": "1/20",
+      "parameter": "lambda::O35_B02_H_Sigma_hermitian"
+    },
+    "renormalizable_nonzero_parameter_count": 27,
+    "selected_target_saturates_every_residual": true,
+    "stationary_from_zero_residuals": true
+  },
+  "closure_flags": {
+    "G3_closed_for_EFT_extended_model": true,
+    "G3_closed_for_original_renormalizable_model": false,
+    "G4_closed": false,
+    "arbitrary_486_real_field_global_lower_bound": true,
+    "full_Hessian_PSD_rank_448_nullity_38": true,
+    "global_equality_orbit_unique_mod_declared_symmetries": true,
+    "selected_target_exact_stationary": true,
+    "selected_target_global_minimum": true,
+    "strict_local_minimum_on_physical_quotient": true
+  },
+  "core_sha256": "2eca279488d92d8bd9eca974c0d598340124f025e62212cd8a188413a6e8b7d0",
+  "dependencies": {
+    "G2_contract": "26e87e092986caf3fed729b97b6850d8500f9644603a70c5bc40ec4f843883e0",
+    "H10_self_quartic_source": "111de6af03b86af6e0ca3f125d150a5439cfdb90e3663d0dad46349584074936",
+    "Phi_Sigma_global_SOS": "afc1dca43a6ec2a657a4ab8e3a846517edaaaf532f1c3fffd1a82c637d208c6b",
+    "chiral_H_candidate_source": "c88a76c4bcc1f32ddce9eef15c87fe0a6794f7e0d7643ae774972a9b4b67c71f",
+    "dimension_six_current_endomorphism": "c113abf41ca9527528dc00d248fdfa3fcae990e39ba4b76251ca197167cbad23",
+    "exact_Hessian_source": "cd4192713d8b3b13f6a9cf492f37d8615e3ead7a1a49fb3c30a1f6de235f7498",
+    "fixed_F_equality_source": "53f8b5b6175f4c3a7a5b3ab49ef151be2baa91c4dcd3fdd4f4de07e15d002df6",
+    "global_signed_Kahler_classification": "6887429cebbe0e0ee9171b9346b85c671959c2fdbc2b5187efc73a52552b0883",
+    "live_HSigma_current_derivatives": "bd15f4c15585e49e7884558992c3ca14a1e9777282e747f98f31fb2d8e32b1af",
+    "live_coordinate_chart": "85ae9470f3aa25c28fc03c083b6c1e150106a276e51044a590060d290ba7945e",
+    "live_potential_rows": "997ab9e2a29c3125d47b006189b1ed69599644313b499754f7ee5e1e7e12d6bf",
+    "live_quadratic_derivatives": "abdf1cf943908ff338208ce57bad4db2c70710ec36b9654eb56d06f3ca4aa9c8"
+  },
+  "exact_global_equality_orbit": {
+    "complete_global_equality_set": "one SO(10) x U(1)_X x U(1)_PQ orbit of (F,H_chi,(1/5)Delta_R,S=1/5,Phi17=1)",
+    "global_equality_orbit_classification_complete": true,
+    "selected_full_symmetry_orbit_rank": 38,
+    "selected_stabilizer": "SU(3)_C x U(1)_em",
+    "step_1_Phi": "Phi residual zero and NPhi=1 imply Phi in SO10.F union SO10.(-F)",
+    "step_2_signed_sheet": "the -F mixed operator is invertible, while NSigma=1/25; hence only +F",
+    "step_3_Sigma": "at +F, mixed and Sigma-self zeros are normalized decomposable z in Lambda^2(C^5), one U(5) orbit",
+    "step_4_H_chirality": "the Hodge square forces h_minus=0 and (NH-1)^2 fixes ||h_plus||=1",
+    "step_5_EFT_flag": {
+      "EFT_zero_equivalence": "K_H Sigma(z)=0 iff h_plus wedge z=0 iff the H line lies in the two-plane of z",
+      "coefficientwise_integer_guard": true,
+      "exact_norm_identity": "||K_H Sigma(z)||^2=||h||^2 ||h wedge z||^2",
+      "orbit": "normalized incident line-in-two-plane flags form one SU5 orbit"
+    },
+    "step_6_phases": "the central U5 action together with U1X and accidental PQ removes the Sigma, H, S and Phi17 phases; no phase modulus remains"
+  },
+  "exact_stabilized_Hessian": {
+    "EFT_Jacobian": {
+      "I45_identity": "I45(H,Sigma)=<Sigma,A_H Sigma>",
+      "current_convention": "K_H=sum_g conjugate(Hdag T_10^g H)T_126bar^g is Hermitian; A_H is its canonical realification, with no extra factor of i",
+      "definition": "R(H,Sigma)=A_H Sigma",
+      "exact_integer_source_derivation": true,
+      "full_Jacobian_rank_mod_1000003": 140,
+      "integer_entry_set": [
+        -1,
+        0,
+        1
+      ],
+      "integer_nonzero_count": 220,
+      "live_realification_crosscheck_residual": 0.0,
+      "payload_sha256": "a2f606e09324e21011b2a475bee8af47cb56963d23a70614657689214b788902",
+      "raw_coordinate_denominator": 10,
+      "selected_first_jet_reason": "R=0 implies d||R||^2=2<J,R>=0",
+      "selected_residual_max_abs": 0.0
+    },
+    "beta_zero_base": {
+      "exact_PSD": true,
+      "exact_nullity": 44,
+      "exact_rank": 442,
+      "maximum_LDL_denominator_bits": 68,
+      "maximum_LDL_numerator_bits": 86,
+      "payload_sha256": "194740e7e90eeee33d5d772ab549df969e9665e3aebc1580c3319f58eee36930",
+      "support_component_count": 39,
+      "support_component_sizes": [
+        24,
+        24,
+        16,
+        16,
+        16,
+        16,
+        16,
+        16,
+        16,
+        16,
+        16,
+        16,
+        16,
+        16,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12,
+        10,
+        8,
+        8,
+        2,
+        2,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "compiler": {
+      "direction_row_count": 44,
+      "nonzero_renormalizable_parameter_count": 27,
+      "parameter_row_count": 51
+    },
+    "exact_beta_zero_source": {
+      "construction": "source-bound beta=1/20 integer Hessian minus the exact coefficient-(1/20) signed-current Hessian numerator",
+      "float_base_scaled_crosscheck_max_abs": 3.779423423111439e-07,
+      "float_compiler_is_crosscheck_only": true,
+      "float_gradient_scaled_crosscheck_max_abs": 2.9018037972505795e-07,
+      "integer_subtraction_factor": 6300,
+      "original_payload_sha256": "b08fd08b570808162468f7b7c9a7ac0e8115f99259b84ae73bc2a32e7ec37428",
+      "signed_current_coefficient": "1/20",
+      "signed_current_contribution_payload_sha256": "9e905164008449400464f33fee72d158808aff3c90490efa7d5ec2bdc79f4316",
+      "signed_current_raw_denominator": 200
+    },
+    "fixed_Hessian_denominator": 25200000,
+    "kernel_intersection": {
+      "Jacobian_tangent_residual": 0,
+      "base_tangent_residual": 0,
+      "exact_intersection_nullity": 38,
+      "exact_symmetry_tangent_rank": 38,
+      "proof": "modular rank 448 is a rational lower bound; the 38 independent symmetry tangents lie in both kernels and give the matching upper bound",
+      "ranks_mod_primes": {
+        "1000003": 448,
+        "1000033": 448
+      },
+      "six_nonsymmetry_base_flats_lifted": true,
+      "stack": "vertical stack of the beta-zero Hessian and integer J"
+    },
+    "raw_coordinate_congruence": "qPhi=x/sqrt(10), qH=u, qSigma=y/10, qS=sqrt(2)s/5, qPhi17=sqrt(2)z",
+    "stabilized": {
+      "exact_nullity": 38,
+      "exact_rank": 448,
+      "kappa": "gamma/Lambda_EFT^2",
+      "normalized_exact_point": "gamma=1/20, Lambda_EFT=1",
+      "payload_sha256": "7ea54d59138f8e5b66aad3d1f1ecb707c65ac9bb0f0e118a597daaccc136b568",
+      "raw_integer_formula": "Hgamma_integer=H0_integer+12600 J^T J",
+      "realification_normalization": "||R||^2=(1/2)||R_real||^2, hence Hessian=gamma J^T J",
+      "strict_on_448_dimensional_physical_quotient": true,
+      "sum_of_PSD_matrices": true
+    }
+  },
+  "scope_boundary": {
+    "EFT_dimension_six_extension": true,
+    "EFT_scale_matching_performed": false,
+    "G4_closed": false,
+    "authoritative_renormalizable_51_parameter_model": false,
+    "radiative_stability_performed": false
+  },
+  "status": "EXACT_EFT_CURRENT_KERNEL_STABILIZED_GLOBAL_G3"
+}

@@ -100,6 +100,7 @@ ARTIFACTS = {
     "gauged_g3_rank1_su4_corrected_overflow": "corrected_rank1_publication_v21/EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_ORDERED_SPECTRAL_OVERFLOW_V21.json",
     "gauged_g3_alternative_global_sos": "EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json",
     "final_g3": "FINAL_G3_ACCEPTANCE_GATE_V20.json",
+    "final_g3_eft": "FINAL_G3_EFT_ACCEPTANCE_GATE_V20.json",
     "authoritative": "AUTHORITATIVE_FULL_MODEL_GATE_V20.json",
 }
 
@@ -348,7 +349,10 @@ def _operator_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
     )
 
 
-def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
+def _vacuum_gate(
+    reports: dict[str, dict[str, Any]],
+    parallel_eft_g3_acceptance: dict[str, Any] | None = None,
+) -> dict[str, Any]:
     contract_state = _model_contract_gate(reports)["state"]
     ledger = reports.get("g1_g8", {})
     authoritative_gates = ledger.get("gates", {})
@@ -550,6 +554,11 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
     alternative_sos_flags = alternative_sos.get("flags", {})
     final_g3 = reports.get("final_g3", {})
     final_g3_classification = final_g3.get("classification", {})
+    final_g3_eft = reports.get("final_g3_eft", {})
+    if parallel_eft_g3_acceptance is None:
+        parallel_eft_g3_acceptance = gate_ledger._parallel_eft_g3_acceptance(
+            final_g3_eft
+        )
     corrected_common_kernel_honestly_bound = bool(
         common.get("model_contract_id") == MODEL_CONTRACT_ID
         and common.get("n_failed") == 0
@@ -1447,6 +1456,31 @@ def _vacuum_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
                 alternative_sos
             ),
             "final_G3_acceptance_gate_artifact_present": bool(final_g3),
+            "parallel_EFT_G3_acceptance_gate_artifact_present": bool(
+                final_g3_eft
+            ),
+            "parallel_EFT_G3_acceptance_source_bound": (
+                parallel_eft_g3_acceptance["source_bound"]
+            ),
+            "parallel_EFT_G3_acceptance_raw_sha256_exact": (
+                parallel_eft_g3_acceptance["checks"]["raw_sha256_exact"]
+            ),
+            "parallel_EFT_mathematical_G3_closed": (
+                parallel_eft_g3_acceptance[
+                    "mathematical_G3_closed_for_EFT_model"
+                ]
+            ),
+            "parallel_EFT_release_G3_verified": (
+                parallel_eft_g3_acceptance[
+                    "release_G3_verified_for_EFT_model"
+                ]
+            ),
+            "original_renormalizable_mathematical_G3_closed": (
+                parallel_eft_g3_acceptance[
+                    "mathematical_G3_closed_for_original_renormalizable_model"
+                ]
+            ),
+            "parallel_EFT_G4_closed": parallel_eft_g3_acceptance["G4_closed"],
             "gauged_G3_SOS_candidate_exact_local_and_globally_fail_closed": (
                 sos_candidate_exact_local_and_globally_fail_closed
             ),
@@ -2365,6 +2399,12 @@ def _reproducibility_gate(
 
 def build_report(root: Path = ROOT) -> dict[str, Any]:
     reports, missing = load_reports(root)
+    parallel_eft_g3_acceptance = gate_ledger._parallel_eft_g3_acceptance(
+        reports.get("final_g3_eft", {}),
+        raw_sha256=gate_ledger._raw_file_sha256(
+            root / ARTIFACTS["final_g3_eft"]
+        ),
+    )
     current_test_count = unittest.defaultTestLoader.discover(
         str(root)
     ).countTestCases()
@@ -2372,7 +2412,7 @@ def build_report(root: Path = ROOT) -> dict[str, Any]:
         _model_contract_gate(reports),
         _core_gate(reports),
         _operator_gate(reports),
-        _vacuum_gate(reports),
+        _vacuum_gate(reports, parallel_eft_g3_acceptance),
         _rge_gate(reports),
         _flavour_gate(reports),
         _portal_gate(reports),
@@ -2486,6 +2526,7 @@ def build_report(root: Path = ROOT) -> dict[str, Any]:
         "decision": decision,
         "full_theory_validated": bool(all_mandatory_pass and integrity_pass),
         "empirical_discovery": False,
+        "parallel_EFT_G3_acceptance": parallel_eft_g3_acceptance,
         "current_tree_unit_tests_discovered": current_test_count,
         "n_gates": len(gates),
         "n_failed_gates": len(failed),
@@ -2526,6 +2567,15 @@ def write_markdown(report: dict[str, Any]) -> str:
         "",
         f"- Full theory validated: **{report['full_theory_validated']}**",
         f"- Empirical discovery: **{report['empirical_discovery']}**",
+        (
+            "- Parallel dimension-six EFT mathematical G3: "
+            f"**{report['parallel_EFT_G3_acceptance']['mathematical_G3_closed_for_EFT_model']}**"
+        ),
+        (
+            "- Parallel EFT release G3 verified: "
+            f"**{report['parallel_EFT_G3_acceptance']['release_G3_verified_for_EFT_model']}**"
+        ),
+        "- Original renormalizable G3 and G4 remain authoritative and unchanged.",
         f"- Gates: {report['n_gates']}",
         f"- Failed gates: {report['n_failed_gates']}",
         "",

@@ -63,6 +63,19 @@ FINAL_THEOREM_CORE_PATHS: tuple[str, ...] = (
     "test_exact_phi_zero_cubic_cauchy_bridge_v20.py",
     "test_exact_phi_self_zero_global_sextic_syzygy_v20.py",
     "test_exact_phi_self_zero_global_signed_kaehler_classification_v20.py",
+    "EXACT_HSIGMA_CURRENT_ENDOMORPHISM_DIMENSION6_STABILIZER.md",
+    "FROZEN_EXACT_HSIGMA_CURRENT_ENDOMORPHISM_DIMENSION6_STABILIZER_SOURCE_V20.py",
+    "exact_hsigma_current_endomorphism_dimension6_stabilizer_v20.py",
+    "test_exact_hsigma_current_endomorphism_dimension6_stabilizer_v20.py",
+    "EXACT_EFT_CURRENT_KERNEL_STABILIZED_GLOBAL_G3.json",
+    "EXACT_EFT_CURRENT_KERNEL_STABILIZED_GLOBAL_G3.md",
+    "FROZEN_EXACT_EFT_CURRENT_KERNEL_STABILIZED_GLOBAL_G3_SOURCE_V20.py",
+    "exact_gauged_u1x_g3_su5_eft_current_kernel_stabilized_global_v20.py",
+    "test_exact_gauged_u1x_g3_su5_eft_current_kernel_stabilized_global_v20.py",
+    "FINAL_G3_EFT_ACCEPTANCE_GATE_V20.json",
+    "FINAL_G3_EFT_ACCEPTANCE_GATE_V20.md",
+    "final_g3_eft_acceptance_gate_v20.py",
+    "test_final_g3_eft_acceptance_gate_v20.py",
     "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_V20.json",
     "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_V20.md",
     "EXACT_GAUGED_U1X_G3_RANK1_SU4_STABILIZER_V20.json",
@@ -610,6 +623,19 @@ def main() -> int:
             "--recompute-heavy",
         ]
     )
+    run(
+        [
+            sys.executable,
+            "exact_hsigma_current_endomorphism_dimension6_stabilizer_v20.py",
+        ]
+    )
+    run(
+        [
+            sys.executable,
+            "exact_gauged_u1x_g3_su5_eft_current_kernel_stabilized_global_v20.py",
+        ]
+    )
+    run([sys.executable, "final_g3_eft_acceptance_gate_v20.py"])
     run([sys.executable, "g1_g8_gate_ledger_v20.py"])
     run([sys.executable, "final_g3_acceptance_gate_v20.py"])
     run([sys.executable, "g1_g8_execution_roadmap_v20.py"])
@@ -805,7 +831,13 @@ def main() -> int:
             ROOT / "EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json"
         ).read_text()
     )
+    exact_eft_g3 = json.loads(
+        (ROOT / "EXACT_EFT_CURRENT_KERNEL_STABILIZED_GLOBAL_G3.json").read_text()
+    )
     final_g3 = json.loads((ROOT / "FINAL_G3_ACCEPTANCE_GATE_V20.json").read_text())
+    final_g3_eft = json.loads(
+        (ROOT / "FINAL_G3_EFT_ACCEPTANCE_GATE_V20.json").read_text()
+    )
     g3_candidate = json.loads(
         (ROOT / "GAUGED_U1X_G3_SOS_CANDIDATE_V20.json").read_text()
     )
@@ -1605,6 +1637,46 @@ def main() -> int:
         and final_g3["classification"]["theory_still_viable"] is True,
         "final G3 acceptance gate failed or promoted incomplete evidence",
     )
+    eft_flags = exact_eft_g3["closure_flags"]
+    eft_scope = exact_eft_g3["scope_boundary"]
+    require(
+        exact_eft_g3["status"]
+        == "EXACT_EFT_CURRENT_KERNEL_STABILIZED_GLOBAL_G3"
+        and eft_scope["EFT_dimension_six_extension"] is True
+        and eft_scope["authoritative_renormalizable_51_parameter_model"] is False
+        and eft_flags["arbitrary_486_real_field_global_lower_bound"] is True
+        and eft_flags["global_equality_orbit_unique_mod_declared_symmetries"]
+        is True
+        and eft_flags["full_Hessian_PSD_rank_448_nullity_38"] is True
+        and eft_flags["G3_closed_for_EFT_extended_model"] is True
+        and eft_flags["G3_closed_for_original_renormalizable_model"] is False
+        and eft_flags["G4_closed"] is False,
+        "dimension-six EFT G3 theorem failed or changed its scope",
+    )
+    eft_classification = final_g3_eft["classification"]
+    eft_contract = final_g3_eft["contract"]
+    eft_release_criteria = final_g3_eft["release_criteria"]
+    require(
+        final_g3_eft["status"]
+        == "FINAL_EFT_G3_ACCEPTANCE__MATHEMATICAL_PASS_RELEASE_OPEN"
+        and final_g3_eft["core_sha256"]
+        == "472770981ee7f9ad5880d614826e687c6d9402c286980b421a2bad7d079f09fb"
+        and eft_contract["base_model_contract_id"] == MODEL_CONTRACT_ID
+        and eft_contract["authoritative_renormalizable_parameter_count"] == 51
+        and eft_contract["selected_nonzero_renormalizable_parameter_count"] == 27
+        and eft_contract["authoritative_51_parameter_contract_unchanged"] is True
+        and eft_classification["mathematical_G3_closed_for_EFT_model"] is True
+        and eft_classification[
+            "mathematical_G3_closed_for_original_renormalizable_model"
+        ]
+        is False
+        and eft_classification["release_G3_verified_for_EFT_model"] is False
+        and eft_classification["renormalizable_gate_mutated"] is False
+        and eft_classification["G4_closed"] is False
+        and eft_release_criteria["G1_promoted_closed"] is False
+        and eft_release_criteria["G2_promoted_closed"] is False,
+        "parallel EFT G3 gate failed or mutated the renormalizable contract",
+    )
     candidate_coefficients = g3_candidate["coefficient_vector"]
     require(
         g3_candidate["n_failed"] == 0
@@ -1825,11 +1897,14 @@ def main() -> int:
             "test_corrected_rank1_endpoint_v21.py",
             "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py",
             "test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py",
+            "test_exact_hsigma_current_endomorphism_dimension6_stabilizer_v20.py",
+            "test_exact_gauged_u1x_g3_su5_eft_current_kernel_stabilized_global_v20.py",
+            "test_final_g3_eft_acceptance_gate_v20.py",
+            "test_g1_g8_gate_ledger_v20.py",
             "test_final_g3_acceptance_gate_v20.py",
             "test_gauged_u1x_g3_sos_candidate_v20.py",
             "test_gauged_u1x_g3_stability_v20.py",
             "test_gauged_u1x_g3_corrected_common_kernel_v20.py",
-            "test_g1_g8_gate_ledger_v20.py",
             "test_g1_g8_execution_roadmap_v20.py",
             "test_theory_validation_matrix_v20.py",
             "test_replicate_v20.py",

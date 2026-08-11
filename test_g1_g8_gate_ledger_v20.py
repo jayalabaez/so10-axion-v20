@@ -51,6 +51,62 @@ class G1G8GateLedgerTests(unittest.TestCase):
             self.report["scientific_blockers"],
         )
 
+    def test_parallel_eft_g3_is_bound_without_mutating_g3_or_g4(self):
+        parallel = self.report["parallel_EFT_G3_acceptance"]
+        self.assertTrue(parallel["source_bound"])
+        self.assertEqual(
+            parallel["core_sha256"],
+            mod.FINAL_G3_EFT_ACCEPTANCE_CORE_SHA256,
+        )
+        self.assertEqual(
+            parallel["raw_sha256"],
+            mod.FINAL_G3_EFT_ACCEPTANCE_RAW_SHA256,
+        )
+        self.assertTrue(parallel["checks"]["raw_sha256_exact"])
+        self.assertTrue(parallel["mathematical_G3_closed_for_EFT_model"])
+        self.assertFalse(parallel["release_G3_verified_for_EFT_model"])
+        self.assertFalse(
+            parallel[
+                "mathematical_G3_closed_for_original_renormalizable_model"
+            ]
+        )
+        self.assertFalse(parallel["renormalizable_gate_mutated"])
+        self.assertFalse(parallel["G4_closed"])
+        self.assertEqual(self.report["gates"]["G3"]["status"], mod.STATUS_BLOCKED)
+        self.assertEqual(self.report["gates"]["G4"]["status"], mod.STATUS_BLOCKED)
+        self.assertFalse(
+            self.report["gauged_u1x_g3_constructive_frontier"]["G3_closed"]
+        )
+        self.assertTrue(
+            self.report["checks"][
+                "parallel_EFT_G3_acceptance_is_source_bound_and_release_open"
+            ]
+        )
+        self.assertEqual(
+            self.report["model_contract_reports"][
+                "parallel_EFT_G3_acceptance_gate"
+            ]["core_sha256"],
+            mod.FINAL_G3_EFT_ACCEPTANCE_CORE_SHA256,
+        )
+
+        forged = copy.deepcopy(
+            mod._load_json_artifact(mod.FINAL_G3_EFT_ACCEPTANCE_JSON)
+        )
+        forged["core_sha256"] = "0" * 64
+        self.assertFalse(
+            mod._parallel_eft_g3_acceptance(
+                forged,
+                raw_sha256=mod.FINAL_G3_EFT_ACCEPTANCE_RAW_SHA256,
+            )["source_bound"]
+        )
+        valid = mod._load_json_artifact(mod.FINAL_G3_EFT_ACCEPTANCE_JSON)
+        self.assertFalse(
+            mod._parallel_eft_g3_acceptance(
+                valid,
+                raw_sha256="0" * 64,
+            )["source_bound"]
+        )
+
     def test_rank1_slice_rejects_wrong_fixed_H_orientation(self):
         forged = copy.deepcopy(
             mod._load_json_artifact(mod.G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_JSON)

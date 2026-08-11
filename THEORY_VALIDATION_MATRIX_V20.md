@@ -8,6 +8,9 @@
 
 - Full theory validated: **False**
 - Empirical discovery: **False**
+- Parallel dimension-six EFT mathematical G3: **True**
+- Parallel EFT release G3 verified: **False**
+- Original renormalizable G3 and G4 remain authoritative and unchanged.
 - Gates: 11
 - Failed gates: 0
 
