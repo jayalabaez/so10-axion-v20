@@ -24,6 +24,10 @@ on:
       - test_exact_gauged_u1x_g1_component_tensor_closure_v20.py
       - EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_CLOSURE_V20.json
       - EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_CLOSURE_V20.md
+      - exact_gauged_u1x_g2_mathematical_closure_v20.py
+      - test_exact_gauged_u1x_g2_mathematical_closure_v20.py
+      - EXACT_GAUGED_U1X_G2_MATHEMATICAL_CLOSURE_V20.json
+      - EXACT_GAUGED_U1X_G2_MATHEMATICAL_CLOSURE_V20.md
       - exact_gauged_u1x_g3_pd_rank_certificate_v20.py
       - exact_gauged_u1x_g3_a_square_recoupling_v20.py
       - exact_gauged_u1x_g3_sos_bfb_stationarity_v20.py
@@ -134,6 +138,8 @@ jobs:
             test_g1_g8_execution_roadmap_v20.py \
             exact_gauged_u1x_g1_component_tensor_closure_v20.py \
             test_exact_gauged_u1x_g1_component_tensor_closure_v20.py \
+            exact_gauged_u1x_g2_mathematical_closure_v20.py \
+            test_exact_gauged_u1x_g2_mathematical_closure_v20.py \
             exact_gauged_u1x_g3_pd_rank_certificate_v20.py \
             exact_gauged_u1x_g3_a_square_recoupling_v20.py \
             exact_gauged_u1x_g3_sos_bfb_stationarity_v20.py \
@@ -212,9 +218,10 @@ jobs:
           python -B corrected_rank1_publication_v21/verify_exact_gauged_u1x_g3_rank1_su4_corrected_fixed_endpoint_theorem_v21.py
           python -B corrected_rank1_endpoint_v21.py
           python exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py --write
-      - name: Verify mathematical G1 and parallel EFT G3-G6 gates read-only
+      - name: Verify mathematical G1-G2 and parallel EFT G3-G6 gates read-only
         run: |
           python -B exact_gauged_u1x_g1_component_tensor_closure_v20.py
+          python -B exact_gauged_u1x_g2_mathematical_closure_v20.py
           python -B exact_hsigma_current_endomorphism_dimension6_stabilizer_v20.py
           python -B exact_gauged_u1x_g3_su5_eft_current_kernel_stabilized_global_v20.py
           python -B final_g3_eft_acceptance_gate_v20.py
@@ -226,6 +233,7 @@ jobs:
         run: |
           python -B -m pytest -q -p no:cacheprovider \
             test_exact_gauged_u1x_g1_component_tensor_closure_v20.py \
+            test_exact_gauged_u1x_g2_mathematical_closure_v20.py \
             test_g1_g8_execution_roadmap_v20.py \
             test_exact_gauged_u1x_g3_pd_rank_certificate_v20.py \
             test_exact_gauged_u1x_g3_a_square_recoupling_v20.py \
@@ -517,6 +525,8 @@ jobs:
             G1_G8_EXECUTION_ROADMAP_V20.md
             EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_CLOSURE_V20.json
             EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_CLOSURE_V20.md
+            EXACT_GAUGED_U1X_G2_MATHEMATICAL_CLOSURE_V20.json
+            EXACT_GAUGED_U1X_G2_MATHEMATICAL_CLOSURE_V20.md
             EXACT_GAUGED_U1X_G3_PD_RANK_CERTIFICATE_V20.json
             EXACT_GAUGED_U1X_G3_PD_RANK_CERTIFICATE_V20.md
             EXACT_GAUGED_U1X_G3_SOS_BFB_STATIONARITY_V20.json

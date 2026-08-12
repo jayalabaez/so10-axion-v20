@@ -20,7 +20,7 @@ Wave 0 MODEL_CONTRACT is the first critical-path task. All G1-G8 authoritative g
 | Gate | Status | Immediate work |
 |---|---:|---|
 | G1 | BLOCKED | complete and source-bind the explicit component-tensor/Clebsch integration for the exact 44-direction/51-parameter multiplicity census |
-| G2 | BLOCKED | promote the completed 44/51/486 dense derivative and Ward-identity audit only after full G1 component-tensor integration and executable-contract repair |
+| G2 | BLOCKED | promote the source-bound complete mathematical 44/51/486 component potential after executable-contract repair |
 | G3 | BLOCKED | classify every competing stationary symmetry orbit and compare exact potential values |
 | G4 | BLOCKED | carry the exact rank-37 gauge quotient (449, axion included) and rank-38 massive/transverse quotient (448) to an accepted G3 witness, recomputing if its stabilizer changes |
 | G5 | BLOCKED | promote the completed source-bound SOS/BFB certificate after repairing the executable model contract |
@@ -42,10 +42,10 @@ Wave 0 MODEL_CONTRACT is the first critical-path task. All G1-G8 authoritative g
 - Deliverable: promote the source-bound 28-orbit, 44-direction, 51-parameter mathematical G1 component-tensor theorem after external SARAH attestation
 - Acceptance: the separate multiplicity census remains scoped, the component-tensor theorem remains raw/core/source bound, and authoritative G1 carries a valid external executable-contract attestation
 
-### W2-G2-GAUGED-PROJECTION - `SCOPED_DERIVATIVE_AUDIT_COMPLETE__BLOCKED_ON_MODEL_CONTRACT`
+### W2-G2-GAUGED-PROJECTION - `SOURCE_BOUND_FULL_MATHEMATICAL_G2_POTENTIAL_COMPLETE__MODEL_CONTRACT_BLOCKED`
 
 - Wave: `2`
-- Deliverable: promote the completed 44/51/486 component-potential derivative, Hessian, and Ward audit after the executable contract promotes mathematical G1
+- Deliverable: promote the source-bound complete 44/51/486 mathematical component potential after the executable contract closes
 - Acceptance: all SO(10)xU(1)_X Ward identities stay green; all three exact structural-zero columns, the compiler-bound nonzero 13x13 minor, and the exact full-row factorization continue to prove rank/nullity 13/38; SVD remains diagnostic only
 
 ### W3-G3-FULL-STATIONARITY - `SU5_DELTA_CHIRAL_H_EXACT_LOCAL_MINIMUM__PURE_DELTA_FULL_RESIDUAL_GAP_CLOSED__RANK1_SU4_FIXED_ENDPOINT_ARBITRARY_PHI_EXACT__GLOBAL_SIGMA_GENERAL_H_FULL_HESSIAN_AND_G3_OPEN__BLOCKED_ON_G2_PROMOTION`

@@ -63,6 +63,68 @@
     }
   },
   "renormalizable_G1_component_tensor_closure_matches_ledger": true,
+  "renormalizable_G2_mathematical_closure": {
+    "namespace": "RENORMALIZABLE_G2_MATHEMATICAL_CLOSURE",
+    "artifact": "EXACT_GAUGED_U1X_G2_MATHEMATICAL_CLOSURE_V20.json",
+    "source": "exact_gauged_u1x_g2_mathematical_closure_v20.py",
+    "expected_core_sha256": "eb11744d0dbc9ceb883e8a6063177d8e3e370b1dcdc2c4e3eba97541b53d8fc4",
+    "core_sha256": "eb11744d0dbc9ceb883e8a6063177d8e3e370b1dcdc2c4e3eba97541b53d8fc4",
+    "expected_raw_sha256": "de105a206685a236dcddc4cb70d98d756d87b9641e02150c41493897e01f7ff0",
+    "raw_sha256": "de105a206685a236dcddc4cb70d98d756d87b9641e02150c41493897e01f7ff0",
+    "expected_source_raw_sha256": "5f56a55a7c9597918c530ad6c77252ed161a206ad0dffbf25651e32f4f590a8b",
+    "source_raw_sha256": "5f56a55a7c9597918c530ad6c77252ed161a206ad0dffbf25651e32f4f590a8b",
+    "model_contract_id": "gauged_u1x_phi17_v20",
+    "source_bound": true,
+    "mathematical_G2_closed_for_renormalizable_model": true,
+    "authoritative_G2_promoted_closed": false,
+    "release_G2_verified": false,
+    "renormalizable_model_mutated": false,
+    "new_physics_required_for_G2": false,
+    "G3_closed_by_this_theorem": false,
+    "downstream_integration_completed": true,
+    "integration": {
+      "consumed_by_central_G1_G8_ledger": true,
+      "consumed_by_execution_roadmap": true,
+      "consumed_by_validation_matrix": true,
+      "release_orchestrators_execute_read_only": true
+    },
+    "integration_blockers": [],
+    "release_blockers": [
+      "AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED"
+    ],
+    "counts": {
+      "Hessian_shape_per_parameter": [
+        486,
+        486
+      ],
+      "base_tensor_families": 18,
+      "gradient_entries_per_parameter": 486,
+      "invariant_directions": 44,
+      "real_field_dimension": 486,
+      "real_parameters": 51,
+      "symmetric_Hessian_entries_per_parameter": 118341,
+      "upstream_derivative_audit_checks": 49
+    },
+    "checks": {
+      "artifact_present": true,
+      "status_exact": true,
+      "core_sha256_exact": true,
+      "raw_sha256_exact": true,
+      "source_raw_sha256_exact": true,
+      "model_contract_exact": true,
+      "terminal_G1_core_exact": true,
+      "counts_exact": true,
+      "all_embedded_mathematical_checks_pass": true,
+      "sixteen_upstream_artifacts_are_hash_bound": true,
+      "complete_derivative_and_Ward_coverage": true,
+      "exact_stationarity_13_38_is_compiler_bound": true,
+      "mathematical_G2_closure_exact": true,
+      "mathematical_not_authoritative_or_release": true,
+      "external_SARAH_blocker_preserved": true,
+      "downstream_integration_state_is_fail_closed": true
+    }
+  },
+  "renormalizable_G2_mathematical_closure_matches_ledger": true,
   "parallel_EFT_G3_acceptance": {
     "namespace": "EFT_G3_ACCEPTANCE",
     "artifact": "FINAL_G3_EFT_ACCEPTANCE_GATE_V20.json",
@@ -365,6 +427,27 @@
         },
         "gauged_G1_scoped_calculation_complete": true,
         "gauged_G2_scoped_calculation_complete": true,
+        "renormalizable_G2_mathematical_theorem_artifact_present": true,
+        "renormalizable_G2_mathematical_theorem_source_bound": true,
+        "renormalizable_G2_mathematical_theorem_matches_ledger": true,
+        "renormalizable_mathematical_G2_closed": true,
+        "renormalizable_G2_authoritative_promotion_closed": false,
+        "renormalizable_G2_release_verified": false,
+        "renormalizable_G2_downstream_integration_completed": true,
+        "renormalizable_G2_external_SARAH_blocker_preserved": true,
+        "renormalizable_G2_component_potential_counts": {
+          "Hessian_shape_per_parameter": [
+            486,
+            486
+          ],
+          "base_tensor_families": 18,
+          "gradient_entries_per_parameter": 486,
+          "invariant_directions": 44,
+          "real_field_dimension": 486,
+          "real_parameters": 51,
+          "symmetric_Hessian_entries_per_parameter": 118341,
+          "upstream_derivative_audit_checks": 49
+        },
         "scalar_contract_pre_audit_G2_certified_flag": false,
         "dedicated_G2_audit_is_source_authoritative": true,
         "dedicated_G2_audit_supersedes_pre_audit_scalar_contract_flag": true,

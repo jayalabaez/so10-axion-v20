@@ -29,6 +29,17 @@ G1_COMPONENT_TENSOR_RAW_SHA256 = (
 G1_COMPONENT_TENSOR_SOURCE_RAW_SHA256 = (
     "ca2b92198cbb7cbe6c7051b9c5952bc4af1462ba33db02eaa126533213b1e87f"
 )
+G2_MATHEMATICAL_JSON = ROOT / "EXACT_GAUGED_U1X_G2_MATHEMATICAL_CLOSURE_V20.json"
+G2_MATHEMATICAL_SOURCE = ROOT / "exact_gauged_u1x_g2_mathematical_closure_v20.py"
+G2_MATHEMATICAL_CORE_SHA256 = (
+    "eb11744d0dbc9ceb883e8a6063177d8e3e370b1dcdc2c4e3eba97541b53d8fc4"
+)
+G2_MATHEMATICAL_RAW_SHA256 = (
+    "de105a206685a236dcddc4cb70d98d756d87b9641e02150c41493897e01f7ff0"
+)
+G2_MATHEMATICAL_SOURCE_RAW_SHA256 = (
+    "5f56a55a7c9597918c530ad6c77252ed161a206ad0dffbf25651e32f4f590a8b"
+)
 EFT_G3_JSON = ROOT / "FINAL_G3_EFT_ACCEPTANCE_GATE_V20.json"
 EFT_G3_CORE_SHA256 = (
     "472770981ee7f9ad5880d614826e687c6d9402c286980b421a2bad7d079f09fb"
@@ -103,12 +114,13 @@ TASKS: list[dict[str, Any]] = [
         "wave": 2,
         "gates": ["G2"],
         "status": (
-            "SCOPED_DERIVATIVE_AUDIT_COMPLETE__BLOCKED_ON_MODEL_CONTRACT"
+            "SOURCE_BOUND_FULL_MATHEMATICAL_G2_POTENTIAL_COMPLETE__"
+            "MODEL_CONTRACT_BLOCKED"
         ),
         "issue": 176,
         "deliverable": (
-            "promote the completed 44/51/486 component-potential derivative, "
-            "Hessian, and Ward audit after the executable contract promotes mathematical G1"
+            "promote the source-bound complete 44/51/486 mathematical component "
+            "potential after the executable contract closes"
         ),
         "acceptance": (
             "all SO(10)xU(1)_X Ward identities stay green; all three exact "
@@ -329,6 +341,33 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
         ]
         is True
     )
+    g2_mathematical = ledger._load_json_artifact(G2_MATHEMATICAL_JSON)
+    g2_mathematical_raw_sha256 = ledger._raw_file_sha256(G2_MATHEMATICAL_JSON)
+    g2_mathematical_source_raw_sha256 = ledger._raw_file_sha256(
+        G2_MATHEMATICAL_SOURCE
+    )
+    direct_g2_mathematical = ledger._renormalizable_g2_mathematical_closure(
+        g2_mathematical,
+        raw_sha256=g2_mathematical_raw_sha256,
+        source_raw_sha256=g2_mathematical_source_raw_sha256,
+    )
+    ledger_g2_mathematical = gate_report.get(
+        "renormalizable_G2_mathematical_closure", {}
+    )
+    mathematical_g2_closed = bool(
+        G2_MATHEMATICAL_CORE_SHA256
+        == ledger.RENORMALIZABLE_G2_MATHEMATICAL_CORE_SHA256
+        and G2_MATHEMATICAL_RAW_SHA256
+        == ledger.RENORMALIZABLE_G2_MATHEMATICAL_RAW_SHA256
+        and G2_MATHEMATICAL_SOURCE_RAW_SHA256
+        == ledger.RENORMALIZABLE_G2_MATHEMATICAL_SOURCE_RAW_SHA256
+        and direct_g2_mathematical["source_bound"] is True
+        and direct_g2_mathematical == ledger_g2_mathematical
+        and direct_g2_mathematical[
+            "mathematical_G2_closed_for_renormalizable_model"
+        ]
+        is True
+    )
     try:
         eft_g3 = json.loads(EFT_G3_JSON.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError):
@@ -411,13 +450,15 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
     g1_full_component_tensors_closed = bool(
         gauged["G1"].get("full_G1_closed", False)
     )
-    g2_scoped_derivatives_complete = bool(
-        gauged["G2"].get("scoped_derivative_audit_complete", False)
+    g2_full_mathematical_potential_closed = bool(
+        gauged["G2"].get(
+            "full_renormalizable_G2_mathematical_potential_closed", False
+        )
     )
     expected_statuses = ledger._expected_gate_statuses(
         contract_consistent,
         g1_full_component_tensors_closed=g1_full_component_tensors_closed,
-        g2_scoped_derivatives_complete=g2_scoped_derivatives_complete,
+        g2_scoped_derivatives_complete=g2_full_mathematical_potential_closed,
     )
     statuses = {name: row["status"] for name, row in gates.items()}
     expected_task_frontier = {task["id"]: task["status"] for task in TASKS}
@@ -458,6 +499,17 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
             and direct_g1_component_tensor["authoritative_G1_promoted_closed"]
             is False
             and direct_g1_component_tensor["release_G1_verified"] is False
+        ),
+        "renormalizable_G2_mathematical_raw_core_source_bound": (
+            mathematical_g2_closed
+            and direct_g2_mathematical["raw_sha256"] == G2_MATHEMATICAL_RAW_SHA256
+            and direct_g2_mathematical["core_sha256"] == G2_MATHEMATICAL_CORE_SHA256
+            and direct_g2_mathematical["source_raw_sha256"]
+            == G2_MATHEMATICAL_SOURCE_RAW_SHA256
+            and direct_g2_mathematical["authoritative_G2_promoted_closed"]
+            is False
+            and direct_g2_mathematical["release_G2_verified"] is False
+            and direct_g2_mathematical["G3_closed_by_this_theorem"] is False
         ),
         "parallel_EFT_G3_acceptance_raw_and_core_bound": (
             parallel_eft_g3_closed
@@ -551,6 +603,10 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
             and gauged["G1"]["full_G1_closed"] is True
             and gauged["G2"]["real_field_dimension"] == 486
             and gauged["G2"]["scoped_derivative_audit_complete"] is True
+            and gauged["G2"][
+                "full_renormalizable_G2_mathematical_potential_closed"
+            ]
+            is True
             and gauged["G2"]["authoritative_promotion_blocked_on_full_G1"]
             is False
             and gauged["G2"]["authoritative_promotion_blocked_on_model_contract"]
@@ -565,6 +621,7 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
             and gates["G1"]["scoped_calculation_complete"] is True
             and gates["G1"]["full_gate_calculation_complete"] is True
             and gates["G2"]["scoped_calculation_complete"] is True
+            and gates["G2"]["full_gate_calculation_complete"] is True
         ),
         "constructive_G3_frontier_artifacts_are_integrated": (
             g3_frontier["integrity_pass"] is True
@@ -1076,6 +1133,28 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
                 "downstream_integration_completed"
             ],
             "release_blockers": direct_g1_component_tensor["release_blockers"],
+        },
+        "renormalizable_G2_mathematical_resolution": {
+            "theorem": G2_MATHEMATICAL_JSON.name,
+            "source": G2_MATHEMATICAL_SOURCE.name,
+            "source_bound": direct_g2_mathematical["source_bound"],
+            "raw_sha256": g2_mathematical_raw_sha256,
+            "expected_raw_sha256": G2_MATHEMATICAL_RAW_SHA256,
+            "core_sha256": g2_mathematical.get("core_sha256"),
+            "expected_core_sha256": G2_MATHEMATICAL_CORE_SHA256,
+            "source_raw_sha256": g2_mathematical_source_raw_sha256,
+            "expected_source_raw_sha256": G2_MATHEMATICAL_SOURCE_RAW_SHA256,
+            "mathematical_G2_closed": mathematical_g2_closed,
+            "authoritative_G2_promoted_closed": False,
+            "release_G2_verified": False,
+            "G3_closed_by_this_theorem": False,
+            "downstream_integration_completed": direct_g2_mathematical[
+                "downstream_integration_completed"
+            ],
+            "integration_blockers": direct_g2_mathematical[
+                "integration_blockers"
+            ],
+            "release_blockers": direct_g2_mathematical["release_blockers"],
         },
         "parallel_EFT_G3_resolution": {
             "gate": EFT_G3_JSON.name,

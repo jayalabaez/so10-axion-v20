@@ -214,6 +214,16 @@ SARAH execution: authoritative/release G1 and the full model remain blocked.
 Run the theorem read-only with
 `python exact_gauged_u1x_g1_component_tensor_closure_v20.py`.
 
+With that terminal G1 basis fixed, the source-bound G2 theorem evaluates all
+`44` normalized directions and all `51` real coefficients on the canonical
+`486`-real arbitrary-component chart. It certifies every value, gradient, and
+`486 x 486` Hessian, all SO(10) and `U(1)_X` Ward identities, and the exact
+compiler-bound stationarity rank/nullity `13/38`. This completes mathematical
+renormalizable G2 without adding fields, operators, or fitted Clebsches.
+Authoritative/release G2 remains blocked only by the same missing real,
+hash-bound external SARAH execution. Run the frozen theorem read-only with
+`python exact_gauged_u1x_g2_mathematical_closure_v20.py`.
+
 The existing stationary point, historical 449-dimensional quotient,
 46-negative-mode saddle, and 80-iteration stability search all belong to the
 historical no-`X`

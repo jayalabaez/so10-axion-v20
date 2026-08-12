@@ -28,6 +28,15 @@ RENORMALIZABLE_G1_COMPONENT_TENSOR_SOURCE_RAW_SHA256 = (
 RENORMALIZABLE_G1_COMPONENT_TENSOR_JSON_RAW_SHA256 = (
     "bec8587376c7dc5a29b45c9c7f0110fcbed98a3ae2d130aaf00bb42f6997aca4"
 )
+RENORMALIZABLE_G2_MATHEMATICAL_CORE_SHA256 = (
+    "eb11744d0dbc9ceb883e8a6063177d8e3e370b1dcdc2c4e3eba97541b53d8fc4"
+)
+RENORMALIZABLE_G2_MATHEMATICAL_SOURCE_RAW_SHA256 = (
+    "5f56a55a7c9597918c530ad6c77252ed161a206ad0dffbf25651e32f4f590a8b"
+)
+RENORMALIZABLE_G2_MATHEMATICAL_JSON_RAW_SHA256 = (
+    "de105a206685a236dcddc4cb70d98d756d87b9641e02150c41493897e01f7ff0"
+)
 V17_ENGINE = ROOT / "so10_axion_v17_engine.py"
 V19_ENGINE = ROOT / "so10_axion_v19_engine.py"
 V20_ENGINE = ROOT / "so10_axion_v20_engine.py"
@@ -152,6 +161,8 @@ FINAL_THEOREM_CORE_PATHS: tuple[str, ...] = (
     "G1_EXACT_DECLARED_SYMMETRY_CHARACTER_CENSUS_V20.md",
     "EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_CLOSURE_V20.json",
     "EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_CLOSURE_V20.md",
+    "EXACT_GAUGED_U1X_G2_MATHEMATICAL_CLOSURE_V20.json",
+    "EXACT_GAUGED_U1X_G2_MATHEMATICAL_CLOSURE_V20.md",
     "G1_G8_EXECUTION_ROADMAP_V20.md",
     "G1_G8_GATE_LEDGER_V20.md",
     "GAUGED_U1X_SCALAR_CONTRACT_V20.md",
@@ -164,6 +175,7 @@ FINAL_THEOREM_CORE_PATHS: tuple[str, ...] = (
     "VALIDATION_EXECUTION_V20_VERDICT.json",
     "g1_exact_declared_symmetry_character_census_v20.py",
     "exact_gauged_u1x_g1_component_tensor_closure_v20.py",
+    "exact_gauged_u1x_g2_mathematical_closure_v20.py",
     "exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py",
     "exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py",
     "exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py",
@@ -188,6 +200,7 @@ FINAL_THEOREM_CORE_PATHS: tuple[str, ...] = (
     "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py",
     "test_g1_exact_declared_symmetry_character_census_v20.py",
     "test_exact_gauged_u1x_g1_component_tensor_closure_v20.py",
+    "test_exact_gauged_u1x_g2_mathematical_closure_v20.py",
     "test_g1_g8_execution_roadmap_v20.py",
     "test_g1_g8_gate_ledger_v20.py",
     "test_gauged_u1x_scalar_contract_v20.py",
@@ -395,14 +408,9 @@ def main() -> int:
     run([sys.executable, "gauged_u1x_scalar_contract_v20.py", "--write"])
     run([sys.executable, "g1_exact_declared_symmetry_character_census_v20.py", "--write"])
     run([sys.executable, "exact_gauged_u1x_g1_component_tensor_closure_v20.py"])
-    run(
-        [
-            sys.executable,
-            "exact_gauged_u1x_stationarity_rank_certificate_v20.py",
-            "--write",
-        ]
-    )
+    run([sys.executable, "exact_gauged_u1x_stationarity_rank_certificate_v20.py"])
     run([sys.executable, "gauged_u1x_g2_derivative_audit_v20.py"])
+    run([sys.executable, "exact_gauged_u1x_g2_mathematical_closure_v20.py"])
     run(
         [
             sys.executable,
@@ -712,6 +720,11 @@ def main() -> int:
     gauged_g2 = json.loads(
         (ROOT / "GAUGED_U1X_G2_DERIVATIVE_AUDIT_V20.json").read_text()
     )
+    mathematical_g2 = json.loads(
+        (
+            ROOT / "EXACT_GAUGED_U1X_G2_MATHEMATICAL_CLOSURE_V20.json"
+        ).read_text()
+    )
     exact_rank = json.loads(
         (
             ROOT / "EXACT_GAUGED_U1X_STATIONARITY_RANK_CERTIFICATE_V20.json"
@@ -1008,6 +1021,49 @@ def main() -> int:
         and gauged_g2["counts"]["real_parameters"] == 51
         and gauged_g2["counts"]["real_field_dimension"] == 486,
         "gauged U(1)_X G2 dimensions changed",
+    )
+    g2_counts = mathematical_g2["counts"]
+    g2_closure = mathematical_g2["closure"]
+    g2_classification = mathematical_g2["classification"]
+    require(
+        mathematical_g2["status"]
+        == "EXACT_GAUGED_U1X_G2_MATHEMATICAL_CLOSED_RELEASE_OPEN"
+        and mathematical_g2["overall_state"] == "CLOSED_SUBPROBLEM"
+        and mathematical_g2["model_contract_id"] == MODEL_CONTRACT_ID
+        and mathematical_g2["core_sha256"]
+        == RENORMALIZABLE_G2_MATHEMATICAL_CORE_SHA256
+        and hashlib.sha256(
+            (ROOT / "exact_gauged_u1x_g2_mathematical_closure_v20.py").read_bytes()
+        ).hexdigest()
+        == RENORMALIZABLE_G2_MATHEMATICAL_SOURCE_RAW_SHA256
+        and hashlib.sha256(
+            (
+                ROOT / "EXACT_GAUGED_U1X_G2_MATHEMATICAL_CLOSURE_V20.json"
+            ).read_bytes()
+        ).hexdigest()
+        == RENORMALIZABLE_G2_MATHEMATICAL_JSON_RAW_SHA256
+        and mathematical_g2["n_failed"] == 0
+        and all(mathematical_g2["checks"].values())
+        and g2_counts["invariant_directions"] == 44
+        and g2_counts["real_parameters"] == 51
+        and g2_counts["base_tensor_families"] == 18
+        and g2_counts["real_field_dimension"] == 486
+        and mathematical_g2["stationarity"]["exact_rank"] == 13
+        and mathematical_g2["stationarity"]["exact_nullity"] == 38
+        and g2_closure["terminal_mathematical_G1_prerequisite_closed"] is True
+        and g2_closure["full_component_potential_G2_mathematically_closed"]
+        is True
+        and g2_closure["external_model_execution_contract_closed"] is False
+        and g2_classification["mathematical_renormalizable_G2_closed"] is True
+        and g2_classification["authoritative_G2_promoted_closed"] is False
+        and g2_classification["release_G2_verified"] is False
+        and g2_classification["renormalizable_model_mutated"] is False
+        and g2_classification["new_physics_required_for_G2"] is False
+        and all(value is True for value in mathematical_g2["integration"].values())
+        and mathematical_g2["integration_blockers"] == []
+        and mathematical_g2["release_blockers"]
+        == ["AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED"],
+        "renormalizable mathematical G2 theorem failed or exceeded its release scope",
     )
     require(
         gauged_g2["stationary_Hessian_bridge"]["promoted_stationarity_matrix"][
@@ -2130,6 +2186,7 @@ def main() -> int:
             "test_exact_gauged_u1x_g1_component_tensor_closure_v20.py",
             "test_gauged_u1x_scalar_contract_v20.py",
             "test_gauged_u1x_g2_derivative_audit_v20.py",
+            "test_exact_gauged_u1x_g2_mathematical_closure_v20.py",
             "test_exact_gauged_u1x_stationarity_rank_certificate_v20.py",
             "test_exact_gauged_u1x_physical_quotient_v20.py",
             "test_exact_gauged_u1x_g3_pd_rank_certificate_v20.py",

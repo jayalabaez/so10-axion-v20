@@ -11,7 +11,9 @@ def test_cross_platform_and_central_frozen_reports_are_read_only() -> None:
     tree = ast.parse(source)
     for script in (
         "exact_gauged_u1x_g1_component_tensor_closure_v20.py",
+        "exact_gauged_u1x_stationarity_rank_certificate_v20.py",
         "gauged_u1x_g2_derivative_audit_v20.py",
+        "exact_gauged_u1x_g2_mathematical_closure_v20.py",
         "exact_phi_self_zero_global_signed_kaehler_classification_v20.py",
         "exact_gauged_u1x_g3_su5_equality_orbit_v20.py",
         "exact_gauged_u1x_g3_su5_chiral_global_gap_reduction_v20.py",
@@ -109,12 +111,26 @@ def test_parallel_eft_gates_run_read_only_in_dependency_order() -> None:
     assert gate_rows[-1][0] < ledger_line
     for test_name in (
         "test_exact_gauged_u1x_g1_component_tensor_closure_v20.py",
+        "test_exact_gauged_u1x_g2_mathematical_closure_v20.py",
         "test_final_g4_eft_mathematical_gate_v20.py",
         "test_final_g5_eft_mathematical_gate_v20.py",
         "test_exact_eft_physical_scalar_spectrum_v20.py",
         "test_final_g6_eft_mathematical_gate_v20.py",
     ):
         assert test_name in source
+
+
+def test_mathematical_g2_runs_read_only_after_audit_before_central_gates() -> None:
+    source = replicate.Path(replicate.__file__).read_text(encoding="utf-8")
+    audit = "gauged_u1x_g2_derivative_audit_v20.py"
+    closure = "exact_gauged_u1x_g2_mathematical_closure_v20.py"
+    assert source.index(audit) < source.index(closure)
+    for consumer in (
+        "g1_g8_gate_ledger_v20.py",
+        "g1_g8_execution_roadmap_v20.py",
+        "theory_validation_matrix_v20.py",
+    ):
+        assert source.index(closure) < source.index(consumer)
 
 
 def test_current_native_root_contract_is_fail_closed_only_on_external_evidence() -> None:

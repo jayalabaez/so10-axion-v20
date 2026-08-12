@@ -40,6 +40,9 @@ MODEL_CONTRACT_ID = "gauged_u1x_phi17_v20"
 RENORMALIZABLE_G1_COMPONENT_TENSOR_SOURCE = (
     "exact_gauged_u1x_g1_component_tensor_closure_v20.py"
 )
+RENORMALIZABLE_G2_MATHEMATICAL_SOURCE = (
+    "exact_gauged_u1x_g2_mathematical_closure_v20.py"
+)
 FINAL_G6_EFT_GATE_SOURCE = "final_g6_eft_mathematical_gate_v20.py"
 
 ARTIFACTS = {
@@ -66,6 +69,9 @@ ARTIFACTS = {
     "gauged_g2": "GAUGED_U1X_G2_DERIVATIVE_AUDIT_V20.json",
     "renormalizable_g1_component_tensor": (
         "EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_CLOSURE_V20.json"
+    ),
+    "renormalizable_g2_mathematical": (
+        "EXACT_GAUGED_U1X_G2_MATHEMATICAL_CLOSURE_V20.json"
     ),
     "g1_g8": "G1_G8_GATE_LEDGER_V20.json",
     "g6_spectrum": "G6_FULL_PHYSICAL_SPECTRUM_V20.json",
@@ -363,6 +369,7 @@ def _operator_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
 def _vacuum_gate(
     reports: dict[str, dict[str, Any]],
     renormalizable_g1_component_tensor_closure: dict[str, Any] | None = None,
+    renormalizable_g2_mathematical_closure: dict[str, Any] | None = None,
     parallel_eft_g3_acceptance: dict[str, Any] | None = None,
     parallel_eft_g4_mathematical: dict[str, Any] | None = None,
     parallel_eft_g5_mathematical: dict[str, Any] | None = None,
@@ -401,6 +408,32 @@ def _vacuum_gate(
         )
         is False
         and renormalizable_g1_component_tensor_closure.get("release_G1_verified")
+        is False
+    )
+    ledger_g2_mathematical_closure = ledger.get(
+        "renormalizable_G2_mathematical_closure", {}
+    )
+    if renormalizable_g2_mathematical_closure is None:
+        renormalizable_g2_mathematical_closure = {}
+    g2_mathematical_view_matches_ledger = bool(
+        renormalizable_g2_mathematical_closure
+        and ledger_g2_mathematical_closure
+        and renormalizable_g2_mathematical_closure
+        == ledger_g2_mathematical_closure
+    )
+    mathematical_g2_component_potential_closure = bool(
+        mathematical_g1_component_tensor_closure
+        and g2_mathematical_view_matches_ledger
+        and renormalizable_g2_mathematical_closure.get("source_bound") is True
+        and renormalizable_g2_mathematical_closure.get(
+            "mathematical_G2_closed_for_renormalizable_model"
+        )
+        is True
+        and renormalizable_g2_mathematical_closure.get(
+            "authoritative_G2_promoted_closed"
+        )
+        is False
+        and renormalizable_g2_mathematical_closure.get("release_G2_verified")
         is False
     )
     g1_census_marker = _dig(
@@ -1412,6 +1445,7 @@ def _vacuum_gate(
         or not g1_scoped_complete
         or not g1_full_component_tensor_integration_complete
         or not g2_scoped_complete
+        or not mathematical_g2_component_potential_closure
         or not gauged_g3_contract_bound
     ):
         state = "OPEN"
@@ -1537,6 +1571,43 @@ def _vacuum_gate(
             # Compatibility alias: this means the multiplicity census only.
             "gauged_G1_scoped_calculation_complete": g1_scoped_complete,
             "gauged_G2_scoped_calculation_complete": g2_scoped_complete,
+            "renormalizable_G2_mathematical_theorem_artifact_present": bool(
+                reports.get("renormalizable_g2_mathematical", {})
+            ),
+            "renormalizable_G2_mathematical_theorem_source_bound": (
+                renormalizable_g2_mathematical_closure.get("source_bound") is True
+            ),
+            "renormalizable_G2_mathematical_theorem_matches_ledger": (
+                g2_mathematical_view_matches_ledger
+            ),
+            "renormalizable_mathematical_G2_closed": (
+                mathematical_g2_component_potential_closure
+            ),
+            "renormalizable_G2_authoritative_promotion_closed": (
+                renormalizable_g2_mathematical_closure.get(
+                    "authoritative_G2_promoted_closed"
+                )
+                is True
+            ),
+            "renormalizable_G2_release_verified": (
+                renormalizable_g2_mathematical_closure.get("release_G2_verified")
+                is True
+            ),
+            "renormalizable_G2_downstream_integration_completed": (
+                renormalizable_g2_mathematical_closure.get(
+                    "downstream_integration_completed"
+                )
+                is True
+            ),
+            "renormalizable_G2_external_SARAH_blocker_preserved": (
+                gate_ledger.CONTRACT_BLOCKER
+                in renormalizable_g2_mathematical_closure.get(
+                    "release_blockers", []
+                )
+            ),
+            "renormalizable_G2_component_potential_counts": (
+                renormalizable_g2_mathematical_closure.get("counts", {})
+            ),
             "scalar_contract_pre_audit_G2_certified_flag": (
                 scalar_contract_pre_audit_g2_flag
             ),
@@ -2698,6 +2769,7 @@ def _reproducibility_gate(
             "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.json",
             "EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json",
             "EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_CLOSURE_V20.json",
+            "EXACT_GAUGED_U1X_G2_MATHEMATICAL_CLOSURE_V20.json",
             "FINAL_G3_ACCEPTANCE_GATE_V20.json",
         )
         if name in missing
@@ -2754,6 +2826,25 @@ def build_report(root: Path = ROOT) -> dict[str, Any]:
         and renormalizable_g1_component_tensor_closure
         == ledger_g1_component_tensor_closure
     )
+    renormalizable_g2_mathematical_closure = (
+        gate_ledger._renormalizable_g2_mathematical_closure(
+            reports.get("renormalizable_g2_mathematical", {}),
+            raw_sha256=gate_ledger._raw_file_sha256(
+                root / ARTIFACTS["renormalizable_g2_mathematical"]
+            ),
+            source_raw_sha256=gate_ledger._raw_file_sha256(
+                root / RENORMALIZABLE_G2_MATHEMATICAL_SOURCE
+            ),
+        )
+    )
+    ledger_g2_mathematical_closure = reports.get("g1_g8", {}).get(
+        "renormalizable_G2_mathematical_closure", {}
+    )
+    renormalizable_g2_mathematical_closure_matches_ledger = bool(
+        ledger_g2_mathematical_closure
+        and renormalizable_g2_mathematical_closure
+        == ledger_g2_mathematical_closure
+    )
     parallel_eft_g3_acceptance = gate_ledger._parallel_eft_g3_acceptance(
         reports.get("final_g3_eft", {}),
         raw_sha256=gate_ledger._raw_file_sha256(
@@ -2791,6 +2882,7 @@ def build_report(root: Path = ROOT) -> dict[str, Any]:
         _vacuum_gate(
             reports,
             renormalizable_g1_component_tensor_closure,
+            renormalizable_g2_mathematical_closure,
             parallel_eft_g3_acceptance,
             parallel_eft_g4_mathematical,
             parallel_eft_g5_mathematical,
@@ -2915,6 +3007,12 @@ def build_report(root: Path = ROOT) -> dict[str, Any]:
         "renormalizable_G1_component_tensor_closure_matches_ledger": (
             renormalizable_g1_component_tensor_closure_matches_ledger
         ),
+        "renormalizable_G2_mathematical_closure": (
+            renormalizable_g2_mathematical_closure
+        ),
+        "renormalizable_G2_mathematical_closure_matches_ledger": (
+            renormalizable_g2_mathematical_closure_matches_ledger
+        ),
         "parallel_EFT_G3_acceptance": parallel_eft_g3_acceptance,
         "parallel_EFT_G4_mathematical": parallel_eft_g4_mathematical,
         "parallel_EFT_G5_mathematical": parallel_eft_g5_mathematical,
@@ -2966,6 +3064,14 @@ def write_markdown(report: dict[str, Any]) -> str:
         (
             "- Authoritative/release G1 promotion: "
             f"**{report['renormalizable_G1_component_tensor_closure']['release_G1_verified']}**"
+        ),
+        (
+            "- Renormalizable mathematical G2 component-potential closure: "
+            f"**{report['renormalizable_G2_mathematical_closure']['mathematical_G2_closed_for_renormalizable_model']}**"
+        ),
+        (
+            "- Authoritative/release G2 promotion: "
+            f"**{report['renormalizable_G2_mathematical_closure']['release_G2_verified']}**"
         ),
         (
             "- Parallel dimension-six EFT mathematical G3: "

@@ -76,8 +76,9 @@ jobs:
           python exact_x_symmetry_consistency_gate_v20.py
           python gauged_u1x_scalar_contract_v20.py --write
           python g1_exact_declared_symmetry_character_census_v20.py --write
-          python exact_gauged_u1x_stationarity_rank_certificate_v20.py --write
-          python gauged_u1x_g2_derivative_audit_v20.py --write
+          python -B exact_gauged_u1x_stationarity_rank_certificate_v20.py
+          python -B gauged_u1x_g2_derivative_audit_v20.py
+          python -B exact_gauged_u1x_g2_mathematical_closure_v20.py
           python exact_gauged_u1x_physical_quotient_v20.py --write
           python exact_gauged_u1x_g3_pd_rank_certificate_v20.py --recompute-heavy --write
           python exact_gauged_u1x_g3_a_square_recoupling_v20.py --recompute --write
@@ -143,6 +144,7 @@ jobs:
           python -B -m pytest -q -p no:cacheprovider \
             test_gauged_u1x_scalar_contract_v20.py \
             test_gauged_u1x_g2_derivative_audit_v20.py \
+            test_exact_gauged_u1x_g2_mathematical_closure_v20.py \
             test_exact_gauged_u1x_stationarity_rank_certificate_v20.py \
             test_exact_gauged_u1x_physical_quotient_v20.py \
             test_exact_gauged_u1x_g3_pd_rank_certificate_v20.py \
@@ -587,6 +589,8 @@ jobs:
             REPOSITORY_BLOCKER_INVENTORY_V20.json
             GAUGED_U1X_G2_DERIVATIVE_AUDIT_V20.json
             GAUGED_U1X_G2_DERIVATIVE_AUDIT_V20.md
+            EXACT_GAUGED_U1X_G2_MATHEMATICAL_CLOSURE_V20.json
+            EXACT_GAUGED_U1X_G2_MATHEMATICAL_CLOSURE_V20.md
             EXACT_GAUGED_U1X_STATIONARITY_RANK_CERTIFICATE_V20.json
             EXACT_GAUGED_U1X_STATIONARITY_RANK_CERTIFICATE_V20.md
             EXACT_GAUGED_U1X_PHYSICAL_QUOTIENT_V20.json
@@ -1054,6 +1058,8 @@ jobs:
             REPOSITORY_BLOCKER_INVENTORY_V20.json
             GAUGED_U1X_G2_DERIVATIVE_AUDIT_V20.json
             GAUGED_U1X_G2_DERIVATIVE_AUDIT_V20.md
+            EXACT_GAUGED_U1X_G2_MATHEMATICAL_CLOSURE_V20.json
+            EXACT_GAUGED_U1X_G2_MATHEMATICAL_CLOSURE_V20.md
             EXACT_GAUGED_U1X_STATIONARITY_RANK_CERTIFICATE_V20.json
             EXACT_GAUGED_U1X_STATIONARITY_RANK_CERTIFICATE_V20.md
             EXACT_GAUGED_U1X_PHYSICAL_QUOTIENT_V20.json

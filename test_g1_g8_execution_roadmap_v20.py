@@ -178,7 +178,8 @@ def test_g1_census_component_theorem_and_g2_audit_are_distinct_scoped_results():
         "MODEL_CONTRACT_BLOCKED"
     )
     assert tasks["W2-G2-GAUGED-PROJECTION"]["status"] == (
-        "SCOPED_DERIVATIVE_AUDIT_COMPLETE__BLOCKED_ON_MODEL_CONTRACT"
+        "SOURCE_BOUND_FULL_MATHEMATICAL_G2_POTENTIAL_COMPLETE__"
+        "MODEL_CONTRACT_BLOCKED"
     )
     resolution = report["renormalizable_G1_component_tensor_resolution"]
     assert resolution["source_bound"] is True

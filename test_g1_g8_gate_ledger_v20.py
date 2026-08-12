@@ -42,7 +42,7 @@ class G1G8GateLedgerTests(unittest.TestCase):
         self.assertEqual(
             self.report["status"],
             "G1_G8_LEDGER_AUDIT_COMPLETE__MODEL_CONTRACT_BLOCKED__"
-            "MATHEMATICAL_G1_COMPONENT_RING_AND_G2_DERIVATIVE_AUDIT_RECERTIFIED",
+            "MATHEMATICAL_G1_COMPONENT_RING_AND_G2_COMPONENT_POTENTIAL_CLOSED",
         )
         self.assertEqual(self.report["overall_state"], mod.STATUS_BLOCKED)
         self.assertFalse(self.report["contract_consistent"])

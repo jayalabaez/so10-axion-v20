@@ -58,6 +58,30 @@ def minimal_tree(
             ),
         )
     )
+    g2_mathematical_artifact = matrix.ARTIFACTS[
+        "renormalizable_g2_mathematical"
+    ]
+    root.joinpath(g2_mathematical_artifact).write_bytes(
+        matrix.ROOT.joinpath(g2_mathematical_artifact).read_bytes()
+    )
+    root.joinpath(matrix.RENORMALIZABLE_G2_MATHEMATICAL_SOURCE).write_bytes(
+        matrix.ROOT.joinpath(
+            matrix.RENORMALIZABLE_G2_MATHEMATICAL_SOURCE
+        ).read_bytes()
+    )
+    g2_mathematical_closure = (
+        matrix.gate_ledger._renormalizable_g2_mathematical_closure(
+            json.loads(
+                root.joinpath(g2_mathematical_artifact).read_text(encoding="utf-8")
+            ),
+            raw_sha256=matrix.gate_ledger._raw_file_sha256(
+                root / g2_mathematical_artifact
+            ),
+            source_raw_sha256=matrix.gate_ledger._raw_file_sha256(
+                root / matrix.RENORMALIZABLE_G2_MATHEMATICAL_SOURCE
+            ),
+        )
+    )
     write_json(
         root,
         "EXACT_X_SYMMETRY_CONSISTENCY_GATE_V20.json",
@@ -121,6 +145,7 @@ def minimal_tree(
             "renormalizable_G1_component_tensor_closure": (
                 g1_component_tensor_closure
             ),
+            "renormalizable_G2_mathematical_closure": g2_mathematical_closure,
             "gates": {
                 "G1": {
                     "status": "CLOSED" if contract_consistent else "BLOCKED",
@@ -150,7 +175,10 @@ def minimal_tree(
                         g1_component_tensor_closure
                     ),
                 },
-                "G2": {"scoped_derivative_audit_complete": True},
+                "G2": {
+                    "scoped_derivative_audit_complete": True,
+                    "full_renormalizable_G2_mathematical_potential_closed": True,
+                },
             },
         },
     )

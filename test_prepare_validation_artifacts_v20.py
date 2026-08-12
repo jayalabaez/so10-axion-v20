@@ -31,8 +31,9 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
             "gauged_u1x_scalar_contract_v20.py --write",
             "g1_exact_declared_symmetry_character_census_v20.py --write",
             "exact_gauged_u1x_g1_component_tensor_closure_v20.py",
-            "exact_gauged_u1x_stationarity_rank_certificate_v20.py --write",
+            "exact_gauged_u1x_stationarity_rank_certificate_v20.py",
             "gauged_u1x_g2_derivative_audit_v20.py",
+            "exact_gauged_u1x_g2_mathematical_closure_v20.py",
             "exact_gauged_u1x_physical_quotient_v20.py --write",
             (
                 "exact_gauged_u1x_g3_pd_rank_certificate_v20.py "
@@ -116,7 +117,9 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
         self.assertEqual(stabilizer_commands, [(sys.executable, stabilizer)])
         for source in (
             "exact_gauged_u1x_g1_component_tensor_closure_v20.py",
+            "exact_gauged_u1x_stationarity_rank_certificate_v20.py",
             "gauged_u1x_g2_derivative_audit_v20.py",
+            "exact_gauged_u1x_g2_mathematical_closure_v20.py",
             "gauged_u1x_g3_sos_candidate_v20.py",
             "gauged_u1x_g3_stability_v20.py",
             "gauged_u1x_g3_corrected_common_kernel_v20.py",
@@ -195,10 +198,15 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
             for i, display in enumerate(displays)
             if "gauged_u1x_g2_derivative_audit_v20.py" in display
         )
+        g2_closure_index = next(
+            i
+            for i, display in enumerate(displays)
+            if "exact_gauged_u1x_g2_mathematical_closure_v20.py" in display
+        )
         rank_index = next(
             i
             for i, display in enumerate(displays)
-            if "exact_gauged_u1x_stationarity_rank_certificate_v20.py --write"
+            if "exact_gauged_u1x_stationarity_rank_certificate_v20.py"
             in display
         )
         quotient_index = next(
@@ -388,8 +396,10 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
             if "unittest discover -v" in display
         )
         self.assertLess(rank_index, g2_index)
+        self.assertLess(g2_index, g2_closure_index)
+        self.assertLess(g2_closure_index, g3_index)
         self.assertLess(g2_index, g3_index)
-        self.assertLess(g2_index, quotient_index)
+        self.assertLess(g2_closure_index, quotient_index)
         self.assertLess(quotient_index, pd_certificate_index)
         self.assertLess(pd_certificate_index, a_square_index)
         self.assertLess(a_square_index, exact_sos_index)

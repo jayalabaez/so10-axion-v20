@@ -1,6 +1,6 @@
 # G1-G8 contract-aware gate ledger - v20
 
-**Status:** `G1_G8_LEDGER_AUDIT_COMPLETE__MODEL_CONTRACT_BLOCKED__MATHEMATICAL_G1_COMPONENT_RING_AND_G2_DERIVATIVE_AUDIT_RECERTIFIED`
+**Status:** `G1_G8_LEDGER_AUDIT_COMPLETE__MODEL_CONTRACT_BLOCKED__MATHEMATICAL_G1_COMPONENT_RING_AND_G2_COMPONENT_POTENTIAL_CLOSED`
 **Overall state:** `BLOCKED`
 **Contract consistent:** `False`
 
@@ -23,7 +23,7 @@ The ledger audit succeeds, but all G1-G8 gates are BLOCKED. The gauged-U(1)_X SA
 ## Authoritative gates
 
 - `G1`: `BLOCKED` - complete and source-bind the explicit component-tensor/Clebsch integration for the exact 44-direction/51-parameter multiplicity census
-- `G2`: `BLOCKED` - promote the completed 44/51/486 dense derivative and Ward-identity audit only after full G1 component-tensor integration and executable-contract repair
+- `G2`: `BLOCKED` - promote the source-bound complete mathematical 44/51/486 component potential after executable-contract repair
 - `G3`: `BLOCKED` - classify every competing stationary symmetry orbit and compare exact potential values
 - `G4`: `BLOCKED` - carry the exact rank-37 gauge quotient (449, axion included) and rank-38 massive/transverse quotient (448) to an accepted G3 witness, recomputing if its stabilizer changes
 - `G5`: `BLOCKED` - promote the completed source-bound SOS/BFB certificate after repairing the executable model contract

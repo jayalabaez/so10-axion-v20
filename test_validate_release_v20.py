@@ -68,7 +68,9 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
     def _assert_frozen_numerical_and_central_reports_are_read_only(self):
         frozen_sources = (
             "exact_gauged_u1x_g1_component_tensor_closure_v20.py",
+            "exact_gauged_u1x_stationarity_rank_certificate_v20.py",
             "gauged_u1x_g2_derivative_audit_v20.py",
+            "exact_gauged_u1x_g2_mathematical_closure_v20.py",
             "exact_phi_self_zero_global_signed_kaehler_classification_v20.py",
             "exact_gauged_u1x_g3_su5_equality_orbit_v20.py",
             "exact_gauged_u1x_g3_su5_chiral_global_gap_reduction_v20.py",
@@ -282,6 +284,10 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             "EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_CLOSURE_V20.md",
             "exact_gauged_u1x_g1_component_tensor_closure_v20.py",
             "test_exact_gauged_u1x_g1_component_tensor_closure_v20.py",
+            "EXACT_GAUGED_U1X_G2_MATHEMATICAL_CLOSURE_V20.json",
+            "EXACT_GAUGED_U1X_G2_MATHEMATICAL_CLOSURE_V20.md",
+            "exact_gauged_u1x_g2_mathematical_closure_v20.py",
+            "test_exact_gauged_u1x_g2_mathematical_closure_v20.py",
             ".github/workflows/current-main-full-reaudit.yml",
             ".github/workflows/g1-g8-execution-roadmap.yml",
             ".github/workflows/g1-g8-gate-ledger.yml",

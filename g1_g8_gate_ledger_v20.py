@@ -12,9 +12,9 @@ scoped historical Option-C subtheorems.
 Scientific blocking is not an audit execution failure: a correct current
 report has ``n_failed=0``, ``overall_state=BLOCKED``, and no closed gates.  The
 exact-X 44-direction/51-parameter multiplicity census, the source-bound
-component-tensor G1 ring, and the G2 derivative audit are completed scoped
-subtheorems.  Their authoritative promotion remains fail-closed on the external
-SARAH execution attestation.
+component-tensor G1 ring, and the complete source-bound mathematical G2
+component potential are closed subtheorems. Their authoritative promotion
+remains fail-closed on the external SARAH execution attestation.
 """
 from __future__ import annotations
 
@@ -55,6 +55,23 @@ RENORMALIZABLE_G1_COMPONENT_TENSOR_SOURCE_RAW_SHA256 = (
 )
 RENORMALIZABLE_G1_DIRECTION_MAP_SHA256 = (
     "657b739208f46ece75bfed977aa30ce1baa25f7aeed861b81007e81c7551684d"
+)
+RENORMALIZABLE_G2_MATHEMATICAL_JSON = (
+    ROOT / "EXACT_GAUGED_U1X_G2_MATHEMATICAL_CLOSURE_V20.json"
+)
+RENORMALIZABLE_G2_MATHEMATICAL_SOURCE = (
+    ROOT / "exact_gauged_u1x_g2_mathematical_closure_v20.py"
+)
+# Replaced by the terminal producer pins after downstream integration is
+# complete.  Keeping explicit constants makes every consumer fail closed.
+RENORMALIZABLE_G2_MATHEMATICAL_CORE_SHA256 = (
+    "eb11744d0dbc9ceb883e8a6063177d8e3e370b1dcdc2c4e3eba97541b53d8fc4"
+)
+RENORMALIZABLE_G2_MATHEMATICAL_RAW_SHA256 = (
+    "de105a206685a236dcddc4cb70d98d756d87b9641e02150c41493897e01f7ff0"
+)
+RENORMALIZABLE_G2_MATHEMATICAL_SOURCE_RAW_SHA256 = (
+    "5f56a55a7c9597918c530ad6c77252ed161a206ad0dffbf25651e32f4f590a8b"
 )
 G3_SOS_JSON = ROOT / "GAUGED_U1X_G3_SOS_CANDIDATE_V20.json"
 G3_PD_JSON = ROOT / "EXACT_GAUGED_U1X_G3_PD_RANK_CERTIFICATE_V20.json"
@@ -491,6 +508,165 @@ def _renormalizable_g1_component_tensor_closure(
         "downstream_integration_completed": integration_complete,
         "integration": integration_values,
         "release_blockers": list(report.get("release_blockers", [])) if source_bound else [],
+        "counts": dict(counts) if source_bound else {},
+        "checks": checks,
+    }
+
+
+def _renormalizable_g2_mathematical_closure(
+    report: dict[str, Any],
+    *,
+    raw_sha256: str = "",
+    source_raw_sha256: str = "",
+) -> dict[str, Any]:
+    """Validate mathematical G2 without fabricating authoritative release."""
+    counts = report.get("counts", {})
+    closure = report.get("closure", {})
+    classification = report.get("classification", {})
+    integration = report.get("integration", {})
+    integration_blockers = list(report.get("integration_blockers", []))
+    release_blockers = list(report.get("release_blockers", []))
+    embedded_checks = report.get("checks", {})
+    artifact_hashes = report.get("artifact_sha256", {})
+    derivative_coverage = report.get("derivative_coverage", {})
+    ward_coverage = report.get("Ward_identity_coverage", {})
+    stationarity = report.get("stationarity", {})
+    integration_keys = {
+        "consumed_by_central_G1_G8_ledger",
+        "consumed_by_execution_roadmap",
+        "consumed_by_validation_matrix",
+        "release_orchestrators_execute_read_only",
+    }
+    integration_values = {
+        name: integration.get(name) for name in sorted(integration_keys)
+    }
+    integration_complete = bool(
+        set(integration) == integration_keys
+        and all(value is True for value in integration_values.values())
+    )
+    integration_pending = bool(
+        set(integration) == integration_keys
+        and all(value is False for value in integration_values.values())
+    )
+    expected_integration_blocker = (
+        "G2_MATHEMATICAL_CLOSURE_NOT_YET_WIRED_TO_ALL_DOWNSTREAM_CONSUMERS"
+    )
+    integration_state_fail_closed = bool(
+        (integration_complete and not integration_blockers)
+        or (
+            integration_pending
+            and integration_blockers == [expected_integration_blocker]
+        )
+    )
+    checks = {
+        "artifact_present": bool(report),
+        "status_exact": (
+            report.get("status")
+            == "EXACT_GAUGED_U1X_G2_MATHEMATICAL_CLOSED_RELEASE_OPEN"
+            and report.get("overall_state") == "CLOSED_SUBPROBLEM"
+            and report.get("n_failed") == 0
+            and report.get("failures") == []
+        ),
+        "core_sha256_exact": (
+            report.get("core_sha256")
+            == RENORMALIZABLE_G2_MATHEMATICAL_CORE_SHA256
+        ),
+        "raw_sha256_exact": raw_sha256 == RENORMALIZABLE_G2_MATHEMATICAL_RAW_SHA256,
+        "source_raw_sha256_exact": (
+            source_raw_sha256
+            == RENORMALIZABLE_G2_MATHEMATICAL_SOURCE_RAW_SHA256
+        ),
+        "model_contract_exact": report.get("model_contract_id") == AUTHORITATIVE_CONTRACT_ID,
+        "terminal_G1_core_exact": (
+            report.get("upstream_cores", {}).get("terminal_mathematical_G1")
+            == RENORMALIZABLE_G1_COMPONENT_TENSOR_CORE_SHA256
+        ),
+        "counts_exact": counts == {
+            "invariant_directions": 44,
+            "real_parameters": 51,
+            "base_tensor_families": 18,
+            "real_field_dimension": 486,
+            "gradient_entries_per_parameter": 486,
+            "Hessian_shape_per_parameter": [486, 486],
+            "symmetric_Hessian_entries_per_parameter": 118341,
+            "upstream_derivative_audit_checks": 49,
+        },
+        "all_embedded_mathematical_checks_pass": (
+            report.get("n_checks") == len(embedded_checks) == 17
+            and all(value is True for value in embedded_checks.values())
+        ),
+        "sixteen_upstream_artifacts_are_hash_bound": (
+            len(artifact_hashes) == 16
+            and all(
+                isinstance(value, str)
+                and len(value) == 64
+                and set(value).issubset(set("0123456789abcdef"))
+                for value in artifact_hashes.values()
+            )
+        ),
+        "complete_derivative_and_Ward_coverage": (
+            len(derivative_coverage) == 5
+            and all(value is True for value in derivative_coverage.values())
+            and len(ward_coverage) == 12
+            and all(value is True for value in ward_coverage.values())
+        ),
+        "exact_stationarity_13_38_is_compiler_bound": (
+            stationarity.get("matrix_shape") == [486, 51]
+            and stationarity.get("exact_rank") == 13
+            and stationarity.get("exact_nullity") == 38
+            and stationarity.get("exact_nonzero_13x13_minor") is True
+            and stationarity.get("exact_rank_upper_factorization") is True
+            and stationarity.get("compiler_minor_binding") is True
+            and stationarity.get("stationary_witness_P24_trace") == 288
+            and stationarity.get("stationary_Hessian_compiler_binding") is True
+            and stationarity.get("float64_SVD_is_diagnostic_only") is True
+        ),
+        "mathematical_G2_closure_exact": (
+            closure.get("terminal_mathematical_G1_prerequisite_closed") is True
+            and closure.get("full_component_potential_G2_mathematically_closed")
+            is True
+            and closure.get("values_gradients_Hessians_and_Ward_identities_closed")
+            is True
+            and closure.get("exact_stationarity_rank_nullity_closed") is True
+            and closure.get("external_model_execution_contract_closed") is False
+        ),
+        "mathematical_not_authoritative_or_release": (
+            classification.get("mathematical_renormalizable_G2_closed") is True
+            and classification.get("authoritative_G2_promoted_closed") is False
+            and classification.get("release_G2_verified") is False
+            and classification.get("renormalizable_model_mutated") is False
+            and classification.get("new_physics_required_for_G2") is False
+            and classification.get("G3_closed_by_this_theorem") is False
+        ),
+        "external_SARAH_blocker_preserved": release_blockers == [CONTRACT_BLOCKER],
+        "downstream_integration_state_is_fail_closed": integration_state_fail_closed,
+    }
+    source_bound = all(checks.values())
+    return {
+        "namespace": "RENORMALIZABLE_G2_MATHEMATICAL_CLOSURE",
+        "artifact": RENORMALIZABLE_G2_MATHEMATICAL_JSON.name,
+        "source": RENORMALIZABLE_G2_MATHEMATICAL_SOURCE.name,
+        "expected_core_sha256": RENORMALIZABLE_G2_MATHEMATICAL_CORE_SHA256,
+        "core_sha256": report.get("core_sha256"),
+        "expected_raw_sha256": RENORMALIZABLE_G2_MATHEMATICAL_RAW_SHA256,
+        "raw_sha256": raw_sha256,
+        "expected_source_raw_sha256": RENORMALIZABLE_G2_MATHEMATICAL_SOURCE_RAW_SHA256,
+        "source_raw_sha256": source_raw_sha256,
+        "model_contract_id": report.get("model_contract_id"),
+        "source_bound": source_bound,
+        "mathematical_G2_closed_for_renormalizable_model": bool(
+            source_bound
+            and classification.get("mathematical_renormalizable_G2_closed") is True
+        ),
+        "authoritative_G2_promoted_closed": False,
+        "release_G2_verified": False,
+        "renormalizable_model_mutated": False,
+        "new_physics_required_for_G2": False,
+        "G3_closed_by_this_theorem": False,
+        "downstream_integration_completed": integration_complete,
+        "integration": integration_values,
+        "integration_blockers": integration_blockers if source_bound else [],
+        "release_blockers": release_blockers if source_bound else [],
         "counts": dict(counts) if source_bound else {},
         "checks": checks,
     }
@@ -4583,6 +4759,7 @@ def _gauged_u1x_scalar_subtheorems(
     g1_report: dict[str, Any],
     g1_component_tensor_closure: dict[str, Any],
     g2_report: dict[str, Any],
+    g2_mathematical_closure: dict[str, Any],
     *,
     contract_consistent: bool,
 ) -> dict[str, Any]:
@@ -4620,6 +4797,17 @@ def _gauged_u1x_scalar_subtheorems(
         and g2_report.get("flags", {}).get("G2_gauged_u1x_derivatives_certified")
         is True
     )
+    full_g2_mathematical_closed = bool(
+        full_g1_closed
+        and g2_scoped_audit_complete
+        and g2_mathematical_closure.get("source_bound") is True
+        and g2_mathematical_closure.get(
+            "mathematical_G2_closed_for_renormalizable_model"
+        )
+        is True
+        and g2_mathematical_closure.get("model_contract_id")
+        == AUTHORITATIVE_CONTRACT_ID
+    )
     stationary = g2_report["stationary_Hessian_bridge"][
         "promoted_stationarity_matrix"
     ]
@@ -4631,7 +4819,7 @@ def _gauged_u1x_scalar_subtheorems(
         ),
         "whole_model_gate_closure": False,
         "promoted_to_authoritative_G1_G2": bool(
-            contract_consistent and full_g1_closed and g2_scoped_audit_complete
+            contract_consistent and full_g2_mathematical_closed
         ),
         "blocked_only_from_promotion_by_model_contract_mismatch": (
             not contract_consistent and full_g1_closed
@@ -4639,6 +4827,7 @@ def _gauged_u1x_scalar_subtheorems(
         "renormalizable_G1_component_tensor_closure": (
             g1_component_tensor_closure
         ),
+        "renormalizable_G2_mathematical_closure": g2_mathematical_closure,
         "G1": {
             "scoped_status": (
                 "COMPLETE_GAUGED_U1X_MULTIPLICITY_CENSUS__FULL_G1_OPEN"
@@ -4682,14 +4871,37 @@ def _gauged_u1x_scalar_subtheorems(
             ],
         },
         "G2": {
-            "scoped_status": "COMPLETE_GAUGED_U1X_DENSE_DERIVATIVE_AUDIT",
+            "scoped_status": (
+                "COMPLETE_GAUGED_U1X_FULL_MATHEMATICAL_COMPONENT_POTENTIAL"
+                if full_g2_mathematical_closed
+                else "COMPLETE_GAUGED_U1X_DENSE_DERIVATIVE_AUDIT__FULL_G2_OPEN"
+                if g2_scoped_audit_complete
+                else "GAUGED_U1X_DENSE_DERIVATIVE_AUDIT_INCOMPLETE"
+            ),
             "scoped_derivative_audit_complete": g2_scoped_audit_complete,
+            "mathematical_component_potential_closure_complete": (
+                full_g2_mathematical_closed
+            ),
+            "full_renormalizable_G2_mathematical_potential_closed": (
+                full_g2_mathematical_closed
+            ),
             "authoritative_promotion_blocked_on_full_G1": not full_g1_closed,
             "authoritative_promotion_blocked_on_model_contract": (
                 not contract_consistent
             ),
             "authoritative_promotion_ready_after_model_contract": bool(
-                full_g1_closed and g2_scoped_audit_complete
+                full_g2_mathematical_closed
+            ),
+            "authoritative_G2_promoted_closed": bool(
+                contract_consistent and full_g2_mathematical_closed
+            ),
+            "release_G2_verified": bool(
+                contract_consistent and full_g2_mathematical_closed
+            ),
+            "remaining_exact_target": (
+                "Supply the hash-bound external SARAH v2 execution attestation."
+                if full_g2_mathematical_closed
+                else "Restore the source-bound mathematical G2 closure theorem."
             ),
             "invariant_directions": g2_report["counts"]["invariant_directions"],
             "real_potential_parameters": g2_report["counts"]["real_parameters"],
@@ -4773,7 +4985,7 @@ def _build_gates(
         "G2": (
             "Fully projected non-SUSY component potential",
             [
-                "promote the completed 44/51/486 dense derivative and Ward-identity audit only after full G1 component-tensor integration and executable-contract repair",
+                "promote the source-bound complete mathematical 44/51/486 component potential after executable-contract repair",
             ],
         ),
         "G3": (
@@ -4812,13 +5024,17 @@ def _build_gates(
     g1_full_component_tensors_closed = bool(
         scoped and scoped["G1"]["full_G1_closed"] is True
     )
-    g2_scoped_derivatives_complete = bool(
-        scoped and scoped["G2"]["scoped_derivative_audit_complete"] is True
+    g2_full_mathematical_potential_closed = bool(
+        scoped
+        and scoped["G2"].get(
+            "full_renormalizable_G2_mathematical_potential_closed", False
+        )
+        is True
     )
     statuses = _expected_gate_statuses(
         contract_consistent,
         g1_full_component_tensors_closed=g1_full_component_tensors_closed,
-        g2_scoped_derivatives_complete=g2_scoped_derivatives_complete,
+        g2_scoped_derivatives_complete=g2_full_mathematical_potential_closed,
     )
     gates: dict[str, dict[str, Any]] = {}
     for name, (title, open_scope) in specifications.items():
@@ -4878,7 +5094,9 @@ def _build_gates(
             gates[name]["full_gate_calculation_complete"] = bool(
                 scoped[name].get("full_G1_closed")
                 if name == "G1"
-                else scoped[name].get("scoped_derivative_audit_complete")
+                else scoped[name].get(
+                    "full_renormalizable_G2_mathematical_potential_closed"
+                )
             )
             gates[name]["scoped_calculation_evidence"] = scoped[name]
     return gates
@@ -4893,6 +5111,9 @@ def _build_report_from_inputs(
     g1_component_tensor_report: dict[str, Any] | None = None,
     g1_component_tensor_raw_sha256: str | None = None,
     g1_component_tensor_source_raw_sha256: str | None = None,
+    g2_mathematical_report: dict[str, Any] | None = None,
+    g2_mathematical_raw_sha256: str | None = None,
+    g2_mathematical_source_raw_sha256: str | None = None,
     g3_sos_report: dict[str, Any] | None = None,
     g3_pd_report: dict[str, Any] | None = None,
     g3_a_square_report: dict[str, Any] | None = None,
@@ -4956,15 +5177,36 @@ def _build_report_from_inputs(
         raw_sha256=g1_component_tensor_raw_sha256,
         source_raw_sha256=g1_component_tensor_source_raw_sha256,
     )
+    if g2_mathematical_report is None:
+        g2_mathematical_report = _load_json_artifact(
+            RENORMALIZABLE_G2_MATHEMATICAL_JSON
+        )
+    if g2_mathematical_raw_sha256 is None:
+        g2_mathematical_raw_sha256 = _raw_file_sha256(
+            RENORMALIZABLE_G2_MATHEMATICAL_JSON
+        )
+    if g2_mathematical_source_raw_sha256 is None:
+        g2_mathematical_source_raw_sha256 = _raw_file_sha256(
+            RENORMALIZABLE_G2_MATHEMATICAL_SOURCE
+        )
+    g2_mathematical_closure = _renormalizable_g2_mathematical_closure(
+        g2_mathematical_report,
+        raw_sha256=g2_mathematical_raw_sha256,
+        source_raw_sha256=g2_mathematical_source_raw_sha256,
+    )
     scoped = _gauged_u1x_scalar_subtheorems(
         g1_report,
         g1_component_tensor_closure,
         g2_report,
+        g2_mathematical_closure,
         contract_consistent=contract_consistent,
     )
     g1_full_component_tensors_closed = bool(scoped["G1"]["full_G1_closed"])
     g2_scoped_derivatives_complete = bool(
         scoped["G2"]["scoped_derivative_audit_complete"]
+    )
+    g2_full_mathematical_potential_closed = bool(
+        scoped["G2"]["full_renormalizable_G2_mathematical_potential_closed"]
     )
     if g3_sos_report is None:
         g3_sos_report = _load_json_artifact(G3_SOS_JSON)
@@ -5170,7 +5412,7 @@ def _build_report_from_inputs(
     expected_statuses = _expected_gate_statuses(
         contract_consistent,
         g1_full_component_tensors_closed=g1_full_component_tensors_closed,
-        g2_scoped_derivatives_complete=g2_scoped_derivatives_complete,
+        g2_scoped_derivatives_complete=g2_full_mathematical_potential_closed,
     )
     contract_state_classified = (
         contract_consistent
@@ -5343,6 +5585,17 @@ def _build_report_from_inputs(
             and g2_report["model_contract_id"] == AUTHORITATIVE_CONTRACT_ID
             and g2_report["flags"]["G2_gauged_u1x_derivatives_certified"] is True
         ),
+        "gauged_G2_mathematical_theorem_is_source_bound_and_closed": (
+            g2_mathematical_closure["source_bound"] is True
+            and g2_mathematical_closure[
+                "mathematical_G2_closed_for_renormalizable_model"
+            ]
+            is True
+            and scoped["G2"][
+                "full_renormalizable_G2_mathematical_potential_closed"
+            ]
+            is True
+        ),
         "gauged_G2_counts_are_44_51_486": (
             g2_report["counts"]["invariant_directions"] == 44
             and g2_report["counts"]["real_parameters"] == 51
@@ -5360,13 +5613,30 @@ def _build_report_from_inputs(
             and scoped["G2"]["stationarity_rank_13_exactly_certified"] is True
             and scoped["G2"]["stationarity_nullity_38_exactly_certified"] is True
         ),
-        "gauged_G1_multiplicity_census_and_G2_scoped_audit_are_complete": (
+        "gauged_G1_and_G2_full_mathematical_calculations_are_complete": (
             gates["G1"]["scoped_calculation_complete"] is True
             and gates["G2"]["scoped_calculation_complete"] is True
+            and gates["G2"]["full_gate_calculation_complete"] is True
             and gates["G1"]["full_gate_calculation_complete"]
             == scoped["G1"]["full_G1_closed"]
             and scoped["G2"]["authoritative_promotion_blocked_on_full_G1"]
             == (not scoped["G1"]["full_G1_closed"])
+        ),
+        "full_G2_never_closes_without_source_bound_mathematical_theorem": (
+            statuses["G2"] != STATUS_CLOSED
+            or (
+                contract_consistent
+                and statuses["G1"] == STATUS_CLOSED
+                and g2_mathematical_closure["source_bound"] is True
+                and g2_mathematical_closure[
+                    "mathematical_G2_closed_for_renormalizable_model"
+                ]
+                is True
+                and scoped["G2"][
+                    "full_renormalizable_G2_mathematical_potential_closed"
+                ]
+                is True
+            )
         ),
         "historical_sources_share_scoped_contract": historical_ids
         == {HISTORICAL_CONTRACT_ID},
@@ -5823,7 +6093,7 @@ def _build_report_from_inputs(
     else:
         status = (
             "G1_G8_LEDGER_AUDIT_COMPLETE__MODEL_CONTRACT_BLOCKED__"
-            "MATHEMATICAL_G1_COMPONENT_RING_AND_G2_DERIVATIVE_AUDIT_RECERTIFIED"
+            "MATHEMATICAL_G1_COMPONENT_RING_AND_G2_COMPONENT_POTENTIAL_CLOSED"
         )
         overall_state = STATUS_BLOCKED
 
@@ -5867,11 +6137,12 @@ def _build_report_from_inputs(
             "wave": 2,
             "gates": ["G2"],
             "status": gates["G2"]["status"],
-            "scoped_calculation_status": "DENSE_DERIVATIVE_AUDIT_COMPLETE",
+            "scoped_calculation_status": (
+                "SOURCE_BOUND_FULL_RENORMALIZABLE_G2_MATHEMATICAL_POTENTIAL_CLOSED"
+            ),
             "deliverable": (
-                "Promote the completed 44/51/486 derivative and Ward audit only "
-                "after the source-bound mathematical G1 theorem and external SARAH "
-                "contract are both authoritative."
+                "Promote the source-bound complete 44/51/486 mathematical component "
+                "potential after the external SARAH contract is authoritative."
             ),
         },
         {
@@ -6049,6 +6320,7 @@ def _build_report_from_inputs(
             "gauged_G1_character_census": g1_report,
             "gauged_G1_component_tensor_closure": g1_component_tensor_report,
             "gauged_G2_derivative_audit": g2_report,
+            "gauged_G2_mathematical_closure": g2_mathematical_report,
             "gauged_scalar_filter": filter_report,
             "gauged_G3_SOS_candidate": g3_sos_report,
             "gauged_G3_direct_exact_PD_rank": g3_pd_report,
@@ -6128,6 +6400,7 @@ def _build_report_from_inputs(
         "renormalizable_G1_component_tensor_closure": (
             g1_component_tensor_closure
         ),
+        "renormalizable_G2_mathematical_closure": g2_mathematical_closure,
         "gauged_u1x_scalar_subtheorems": scoped,
         "gauged_u1x_g3_constructive_frontier": g3_frontier,
         "parallel_EFT_G3_acceptance": parallel_eft_g3_acceptance,
@@ -6161,6 +6434,9 @@ def _build_report_from_inputs(
             "gauged_G2_dense_derivative_scoped_subtheorem_complete": scoped["G2"][
                 "scoped_derivative_audit_complete"
             ],
+            "gauged_G2_full_mathematical_component_potential_complete": scoped[
+                "G2"
+            ]["full_renormalizable_G2_mathematical_potential_closed"],
             "gauged_G3_constructive_candidate_available": g3_frontier[
                 "integrity_pass"
             ],

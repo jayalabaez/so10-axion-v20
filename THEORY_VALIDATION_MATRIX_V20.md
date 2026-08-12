@@ -10,6 +10,8 @@
 - Empirical discovery: **False**
 - Renormalizable mathematical G1 component-tensor closure: **True**
 - Authoritative/release G1 promotion: **False**
+- Renormalizable mathematical G2 component-potential closure: **True**
+- Authoritative/release G2 promotion: **False**
 - Parallel dimension-six EFT mathematical G3: **True**
 - Parallel EFT release G3 verified: **False**
 - Parallel dimension-six EFT mathematical G4: **True**
