@@ -1,0 +1,72 @@
+{
+  "artifact_sha256": {
+    "G4_gate_JSON": "98664542a4e1bbfba233652737826b974963a31c2e86a15e2d73fda1457d987b",
+    "G5_gate_JSON": "6d6e4fd9932a03e35146afb1bca850666e883aaed5e23b73b81f0f703e4e7db9",
+    "spectrum_JSON": "797a90473c064a78ef313d56f1894d71114643a19ebd373e86fe8b2911bcf416",
+    "spectrum_source": "cdcc25b383098464fc6312d553dff555d19c57388df7de08db48b4167ebc5a36"
+  },
+  "classification": {
+    "authoritative_G6_gate_mutated": false,
+    "authoritative_renormalizable_G6_closed": false,
+    "mathematical_G6_closed_for_EFT_model": true,
+    "release_G6_verified_for_EFT_model": false,
+    "whole_model_validated": false
+  },
+  "contract": {
+    "EFT_model_contract_id": "gauged_u1x_phi17_v20_eft_o6_current_kernel_gamma_1_over_20",
+    "base_model_contract_id": "gauged_u1x_phi17_v20",
+    "scope": "normalized exact tree-level dimension-six EFT spectrum"
+  },
+  "core_sha256": "e34b791478bf9cb00f951819cbfec45a99d51be776889d8a4e13cf1717eee738",
+  "mathematical_checks": {
+    "complete_448_dimensional_positive_massive_spectrum": true,
+    "complete_486_degree_factorization": true,
+    "complete_exact_algebraic_mixing_subspaces": true,
+    "complete_residual_group_provenance": true,
+    "exact_38_dimensional_symmetry_kernel": true,
+    "mathematical_EFT_G4_closed": true,
+    "mathematical_EFT_G5_closed": true,
+    "physical_PQ_axion_retained": true,
+    "release_uncertainties_remain_open": true,
+    "same_EFT_contract_as_G4_G5": true,
+    "spectrum_core_source_bound": true,
+    "tree_level_exact_uncertainty_is_zero": true
+  },
+  "release_blockers": [
+    "absolute_Lambda_EFT_and_Wilson_matching_approved",
+    "loop_running_and_pole_mass_spectrum_complete",
+    "threshold_uncertainty_budget_complete",
+    "external_extended_model_contract_executed",
+    "authoritative_G1_closed",
+    "authoritative_G2_closed",
+    "authoritative_renormalizable_G3_G4_G5_closed"
+  ],
+  "release_criteria": {
+    "absolute_Lambda_EFT_and_Wilson_matching_approved": false,
+    "authoritative_G1_closed": false,
+    "authoritative_G2_closed": false,
+    "authoritative_renormalizable_G3_G4_G5_closed": false,
+    "external_extended_model_contract_executed": false,
+    "loop_running_and_pole_mass_spectrum_complete": false,
+    "mathematical_tree_level_EFT_G6_complete": true,
+    "parallel_EFT_G6_integrated_into_release_orchestrators": true,
+    "threshold_uncertainty_budget_complete": false
+  },
+  "spectrum_summary": {
+    "ambient_real_fields": 486,
+    "distinct_mass_squared_roots_including_zero": 61,
+    "gauge_quotient_dimension": 449,
+    "mixing_subspaces_complete": true,
+    "physical_PQ_axions": 1,
+    "positive_massive_modes": 448,
+    "primitive_factors": 45,
+    "residual_group": "SU(3)_C x U(1)_em"
+  },
+  "status": "FINAL_EFT_G6_TREE_LEVEL_MATHEMATICAL_PASS_RELEASE_OPEN",
+  "upstream_cores": {
+    "G4": "931a152aed49eb28bf415a1aca093e923850cf68db3f40ccf1d2027b447a8c09",
+    "G5": "1b578471e74626e3b186cf7398aebd35349a67f45940b9c37d42bb49c1b8c8ba",
+    "spectrum": "abb704133c8be22b424ba20e23387d6f30412e6c82ab3a214e88bd8df5bef9cc"
+  },
+  "verdict": "Mathematical tree-level G6 is exact for the registered dimension-six EFT.  Release and the original authoritative renormalizable G6 remain open."
+}

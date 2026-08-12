@@ -77,6 +77,8 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             "final_g3_eft_acceptance_gate_v20.py",
             "final_g4_eft_mathematical_gate_v20.py",
             "final_g5_eft_mathematical_gate_v20.py",
+            "exact_eft_physical_scalar_spectrum_v20.py",
+            "final_g6_eft_mathematical_gate_v20.py",
             "g1_g8_gate_ledger_v20.py",
             "final_g3_acceptance_gate_v20.py",
             "g1_g8_execution_roadmap_v20.py",
@@ -167,6 +169,8 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             "final_g3_eft_acceptance_gate_v20.py",
             "final_g4_eft_mathematical_gate_v20.py",
             "final_g5_eft_mathematical_gate_v20.py",
+            "exact_eft_physical_scalar_spectrum_v20.py",
+            "final_g6_eft_mathematical_gate_v20.py",
         )
         gate_rows = []
         for name in gate_names:
@@ -185,17 +189,20 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
         )
         self.assertLess(gate_rows[-1][0], ledger_line)
 
-    def test_release_pins_the_integrated_g4_g5_refreeze(self):
+    def test_release_pins_the_integrated_g4_g5_g6_refreezes(self):
         source = (release.ROOT / "validate_release_v20.py").read_text(
             encoding="utf-8"
         )
         for token in (
             "931a152aed49eb28bf415a1aca093e923850cf68db3f40ccf1d2027b447a8c09",
             "1b578471e74626e3b186cf7398aebd35349a67f45940b9c37d42bb49c1b8c8ba",
+            "abb704133c8be22b424ba20e23387d6f30412e6c82ab3a214e88bd8df5bef9cc",
+            "e34b791478bf9cb00f951819cbfec45a99d51be776889d8a4e13cf1717eee738",
             "parallel_EFT_G4_integrated_into_release_orchestrators",
             "release_integration_completed",
             "downstream_parallel_G5_integration_completed",
             "downstream_integration_completed",
+            "parallel_EFT_G6_integrated_into_release_orchestrators",
         ):
             self.assertIn(token, source)
 
@@ -259,6 +266,14 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             "FINAL_G5_EFT_MATHEMATICAL_GATE_V20.md",
             "final_g5_eft_mathematical_gate_v20.py",
             "test_final_g5_eft_mathematical_gate_v20.py",
+            "EXACT_EFT_PHYSICAL_SCALAR_SPECTRUM_V20.json",
+            "EXACT_EFT_PHYSICAL_SCALAR_SPECTRUM_V20.md",
+            "exact_eft_physical_scalar_spectrum_v20.py",
+            "test_exact_eft_physical_scalar_spectrum_v20.py",
+            "FINAL_G6_EFT_MATHEMATICAL_GATE_V20.json",
+            "FINAL_G6_EFT_MATHEMATICAL_GATE_V20.md",
+            "final_g6_eft_mathematical_gate_v20.py",
+            "test_final_g6_eft_mathematical_gate_v20.py",
             ".github/workflows/current-main-full-reaudit.yml",
             ".github/workflows/g1-g8-execution-roadmap.yml",
             ".github/workflows/g1-g8-gate-ledger.yml",

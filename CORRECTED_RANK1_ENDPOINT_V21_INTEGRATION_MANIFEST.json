@@ -49,18 +49,44 @@
     },
     "raw_file_count": 8
   },
+  "EFT_G6_bundle": {
+    "all_checks_pass": true,
+    "checks": {
+      "SU3C_U1em_provenance_exact": true,
+      "complete_exact_positive_factorization": true,
+      "exact_algebraic_mixing_complete": true,
+      "gate_claim_boundary_exact": true,
+      "gate_completed_integration_and_blockers_exact": true,
+      "gate_internal_checks_all_exact": true,
+      "gate_report_core_exact": true,
+      "gate_source_core_exact": true,
+      "gate_summary_exact": true,
+      "gate_upstream_cores_exact": true,
+      "normalized_generalized_pencil_exact": true,
+      "physical_quotient_and_PQ_axion_exact": true,
+      "spectrum_claim_boundary_exact": true,
+      "spectrum_report_core_exact": true,
+      "spectrum_source_core_exact": true,
+      "stabilized_Hessian_source_bound": true,
+      "tree_level_exactness_and_release_uncertainties_exact": true
+    },
+    "raw_file_count": 8
+  },
   "claim_boundary": {
     "Dynkin_maximal_subgroup_classification_external_dependency": true,
     "EFT_dimension6_mathematical_G3_closed": true,
     "EFT_dimension6_mathematical_G4_closed": true,
     "EFT_dimension6_mathematical_G5_closed": true,
+    "EFT_dimension6_tree_level_mathematical_G6_closed": true,
     "EFT_release_G3_verified": false,
     "EFT_release_G4_verified": false,
     "EFT_release_G5_verified": false,
+    "EFT_release_G6_verified": false,
     "G3_closed": false,
     "G4_closed": false,
     "all_PD_equality_orbits_classified_exactly": true,
     "arbitrary_real_Phi_at_fixed_endpoint": true,
+    "authoritative_renormalizable_G6_closed": false,
     "fixed_H": "h_-=(e0-i e1)/sqrt(2)",
     "fixed_Sigma": "q/4",
     "full_H_proved": false,
@@ -114,6 +140,16 @@
       "test_final_g4_eft_mathematical_gate_v20.py": "078b8dbc34c8003c9e5fa98a2adaa432238cacd5bd0a42278c9a0082334edd05",
       "test_final_g5_eft_mathematical_gate_v20.py": "8cdfe60bd8d568de58a76321ae954d6fbbcc00df19c27528d9bfae0bf61864ad"
     },
+    "EFT_G6_raw_sha256": {
+      "EXACT_EFT_PHYSICAL_SCALAR_SPECTRUM_V20.json": "797a90473c064a78ef313d56f1894d71114643a19ebd373e86fe8b2911bcf416",
+      "EXACT_EFT_PHYSICAL_SCALAR_SPECTRUM_V20.md": "0b356c55a231432bf72d1877f35664abe2457f095c926e538b371d412764c153",
+      "FINAL_G6_EFT_MATHEMATICAL_GATE_V20.json": "85000f555eb3bc4e2e4bc49236a82ce2161987212906d78efd667bb52dd432f8",
+      "FINAL_G6_EFT_MATHEMATICAL_GATE_V20.md": "288c53bce177ac687cbf6ceee3c6d74808a1dde2e2b39e0ac5728ab577db5fba",
+      "exact_eft_physical_scalar_spectrum_v20.py": "cdcc25b383098464fc6312d553dff555d19c57388df7de08db48b4167ebc5a36",
+      "final_g6_eft_mathematical_gate_v20.py": "6ef314bf22e1d6ce43b382b5cb6e7673cef1e328f2f4c38abdafab6038edc150",
+      "test_exact_eft_physical_scalar_spectrum_v20.py": "6867a703bc3fed1fa1b7a76696a2d2e34159df3fb6be3a2db907fbebd51137c4",
+      "test_final_g6_eft_mathematical_gate_v20.py": "841badaa0fb1931060159233fad85d378bcaf68b71944f02bdd280e197813570"
+    },
     "global_Phi_classification_raw_sha256": {
       "EXACT_PHI_ZERO_DEGREE8_CONDUCTOR_EVALUATION_TABLE.json": "beab3649ca03c3ee3c6fc2ab700efedfe614328a6da52f2234d3b9610f3c167c",
       "EXACT_PHI_ZERO_DEGREE8_CONDUCTOR_RECONSTRUCTION_CHECKPOINT.json": "0afad3c1a1de58243d27fd07fe550c90ca516e1c5483c027bcbd8e752e892179",
@@ -159,8 +195,8 @@
   },
   "inventory": {
     ".gitattributes": {
-      "content_sha256": "c8c13142a81631d2a4c85a6ef2cbc759b4818a3ae197a2d84536436e36c626cd",
-      "content_size_bytes": 5406,
+      "content_sha256": "2b1bf831fef1f40e1096e6f6c8cef472637569e16de198a4f56ba4e1d92b06f2",
+      "content_size_bytes": 5927,
       "hash_mode": "raw",
       "role": "central corrected-endpoint integration source"
     },
@@ -171,20 +207,20 @@
       "role": "CI orchestration and claim-boundary enforcement"
     },
     ".github/workflows/g1-g8-execution-roadmap.yml": {
-      "content_sha256": "e6c95b1cfef90cc40cc215a88ea2ce0d6f68c9f9aa6c90c0b064021e5ef4990b",
-      "content_size_bytes": 39027,
+      "content_sha256": "047bccb52be77fcc03d0d0a7cad0cce38b3c1b9cd22118959fd814245266513d",
+      "content_size_bytes": 40101,
       "hash_mode": "portable-lf",
       "role": "CI orchestration and claim-boundary enforcement"
     },
     ".github/workflows/g1-g8-gate-ledger.yml": {
-      "content_sha256": "b14ae0d9083b60acd1d56db24049f1e7563b979d2f9caf8618cfda69d10f6c4f",
-      "content_size_bytes": 47527,
+      "content_sha256": "7fb807b39eb1096b0cf258a57d9e507e7eb0b06e4d9fb0cc812325b59405a322",
+      "content_size_bytes": 49031,
       "hash_mode": "portable-lf",
       "role": "CI orchestration and claim-boundary enforcement"
     },
     ".github/workflows/gauged-u1x-g3-stability.yml": {
-      "content_sha256": "4a69105e1a6c6887e829ccf6af2d766021740aeec77e002c779a2b691738fb61",
-      "content_size_bytes": 63252,
+      "content_sha256": "2a5046fa2c0948be0af13a8c525240f55a8448e3deeec3fd413e589c5b922756",
+      "content_size_bytes": 64756,
       "hash_mode": "portable-lf",
       "role": "CI orchestration and claim-boundary enforcement"
     },
@@ -211,6 +247,18 @@
       "content_size_bytes": 1242,
       "hash_mode": "raw",
       "role": "byte-pinned dimension-six EFT G3 theorem and acceptance bundle"
+    },
+    "EXACT_EFT_PHYSICAL_SCALAR_SPECTRUM_V20.json": {
+      "content_sha256": "797a90473c064a78ef313d56f1894d71114643a19ebd373e86fe8b2911bcf416",
+      "content_size_bytes": 46136,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact EFT scalar spectrum and mathematical G6 gate bundle"
+    },
+    "EXACT_EFT_PHYSICAL_SCALAR_SPECTRUM_V20.md": {
+      "content_sha256": "0b356c55a231432bf72d1877f35664abe2457f095c926e538b371d412764c153",
+      "content_size_bytes": 750,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact EFT scalar spectrum and mathematical G6 gate bundle"
     },
     "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_V20.json": {
       "content_sha256": "9b5236b8eb57f8262cf14ef7cfcfd4b40d9bf582a995221e8f15a64b393ca2b3",
@@ -362,6 +410,18 @@
       "hash_mode": "raw",
       "role": "byte-pinned dimension-six EFT mathematical G4/G5 gate bundle"
     },
+    "FINAL_G6_EFT_MATHEMATICAL_GATE_V20.json": {
+      "content_sha256": "85000f555eb3bc4e2e4bc49236a82ce2161987212906d78efd667bb52dd432f8",
+      "content_size_bytes": 3308,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact EFT scalar spectrum and mathematical G6 gate bundle"
+    },
+    "FINAL_G6_EFT_MATHEMATICAL_GATE_V20.md": {
+      "content_sha256": "288c53bce177ac687cbf6ceee3c6d74808a1dde2e2b39e0ac5728ab577db5fba",
+      "content_size_bytes": 438,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact EFT scalar spectrum and mathematical G6 gate bundle"
+    },
     "FROZEN_EXACT_EFT_CURRENT_KERNEL_STABILIZED_GLOBAL_G3_SOURCE_V20.py": {
       "content_sha256": "9db99e83a32eefd43c74f3fb006e0ef32c37162980c7abb031efdbb8422a360f",
       "content_size_bytes": 37408,
@@ -423,50 +483,50 @@
       "role": "byte-pinned exact global Phi self-zero proof dependency"
     },
     "G1_G8_EXECUTION_ROADMAP_V20.json": {
-      "content_sha256": "3b321380d0b531962e2c858794e874a3f524224341d43f93ee5b8d8c02f9e038",
-      "content_size_bytes": 9395856,
+      "content_sha256": "b528249cb66c85e8b5a9c6367363754549474380df2585ecf65009f7e3b82e5d",
+      "content_size_bytes": 9403084,
       "hash_mode": "portable-lf",
       "role": "regenerated central report or documentation"
     },
     "G1_G8_EXECUTION_ROADMAP_V20.md": {
-      "content_sha256": "6762b41e8cf2f81ed687ec3947ee64ebf1de9824eaea95b2b51c11cc10139999",
-      "content_size_bytes": 9108,
+      "content_sha256": "5d979806af348501f45b6359b689d2aaac4891ff74e16948a425241ccd052d1a",
+      "content_size_bytes": 9866,
       "hash_mode": "portable-lf",
       "role": "regenerated central report or documentation"
     },
     "G1_G8_GATE_LEDGER_V20.json": {
-      "content_sha256": "a0359e5f34fe9ac85a6c37b791d6a86985da2c1e5a54d0c3c6df8add9251f00f",
-      "content_size_bytes": 9397088,
+      "content_sha256": "6990b1189a2daa6f4e45b026f5127ea7da8c2234b42c560a151ae221b9d3f279",
+      "content_size_bytes": 9405974,
       "hash_mode": "portable-lf",
       "role": "regenerated central report or documentation"
     },
     "G1_G8_GATE_LEDGER_V20.md": {
-      "content_sha256": "37ca9b1dbd3da34d8c5cda1c15af898f307068119770f21750d9e61a0d20821d",
-      "content_size_bytes": 4498,
+      "content_sha256": "040a3499eef683c80bfc09ec0309beeaebb16ca6429514d1ac576a450f94c255",
+      "content_size_bytes": 5090,
       "hash_mode": "portable-lf",
       "role": "regenerated central report or documentation"
     },
     "README.md": {
-      "content_sha256": "e035780ab70ff118136bd09401d4f23abcfdff1cbadd9bb7ac48b4ad1fd33a95",
-      "content_size_bytes": 27443,
+      "content_sha256": "b40ca631c6195a88728c9d02c1351e8c9f937db0b9cca9133fdd91987cc75b72",
+      "content_size_bytes": 27901,
       "hash_mode": "portable-lf",
       "role": "regenerated central report or documentation"
     },
     "SHA256SUMS": {
-      "content_sha256": "8cfd8bd60d005fce410cbf1c4483ad1570fa741aedf7314dde6df7ac8fcf4262",
-      "content_size_bytes": 35607,
+      "content_sha256": "39723609d94f0a35637ca06fd207d55c20358c437bef562118204a2a3a22f0d3",
+      "content_size_bytes": 36469,
       "hash_mode": "portable-lf",
       "role": "release-core portable checksum manifest"
     },
     "THEORY_VALIDATION_MATRIX_V20.md": {
-      "content_sha256": "9ab14229a1b55863067da60428944717935caf078ee88d818db3b34841bb530d",
-      "content_size_bytes": 9979,
+      "content_sha256": "daca09b6e4d67fbc803f883aec06811453063a2cf4ded9ceac282dacb7dc0ec7",
+      "content_size_bytes": 10256,
       "hash_mode": "portable-lf",
       "role": "regenerated central report or documentation"
     },
     "THEORY_VALIDATION_MATRIX_V20_VERDICT.json": {
-      "content_sha256": "e7dd2395bb865f00f0161cf7f7a8ac4b0e23785d0b37ee43cfb46ae9c70e0ec4",
-      "content_size_bytes": 38033,
+      "content_sha256": "ef29174bdb7a6a372af6de206cd6996a3bf09009db3df5d38dc51410ee029514",
+      "content_size_bytes": 43442,
       "hash_mode": "portable-lf",
       "role": "regenerated central report or documentation"
     },
@@ -614,6 +674,12 @@
       "hash_mode": "raw",
       "role": "audited corrected v21 publication byte"
     },
+    "exact_eft_physical_scalar_spectrum_v20.py": {
+      "content_sha256": "cdcc25b383098464fc6312d553dff555d19c57388df7de08db48b4167ebc5a36",
+      "content_size_bytes": 27168,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact EFT scalar spectrum and mathematical G6 gate bundle"
+    },
     "exact_gauged_u1x_g3_pd_rank_certificate_v20.py": {
       "content_sha256": "e2499baf3f7a572df7647ca02f109666a549c9e2c1989110c682ee584e0483c6",
       "content_size_bytes": 71621,
@@ -746,21 +812,27 @@
       "hash_mode": "raw",
       "role": "byte-pinned dimension-six EFT mathematical G4/G5 gate bundle"
     },
+    "final_g6_eft_mathematical_gate_v20.py": {
+      "content_sha256": "6ef314bf22e1d6ce43b382b5cb6e7673cef1e328f2f4c38abdafab6038edc150",
+      "content_size_bytes": 9156,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact EFT scalar spectrum and mathematical G6 gate bundle"
+    },
     "freeze_corrected_rank1_endpoint_v21_integration.py": {
-      "content_sha256": "42878534477d866ed6e7b83385e286d491c9f44d6c94bcc833f0466e57fe975b",
-      "content_size_bytes": 53562,
+      "content_sha256": "8fb4cafa910d777593df7aa050b46817bcc2d4471f092468d3a4fa24b9d9667e",
+      "content_size_bytes": 65669,
       "hash_mode": "raw",
       "role": "central corrected-endpoint integration source"
     },
     "g1_g8_execution_roadmap_v20.py": {
-      "content_sha256": "eae7a1706b6e34e72e0b871699df12cec1f41f5a81a18f211b422b615348b84e",
-      "content_size_bytes": 45761,
+      "content_sha256": "2c4f6182fe8baf7b5468e23722d82a2d272ddb431a1cf11b556aab0af8717b6c",
+      "content_size_bytes": 52862,
       "hash_mode": "portable-lf",
       "role": "central corrected-endpoint integration source"
     },
     "g1_g8_gate_ledger_v20.py": {
-      "content_sha256": "ee00c42750519d342959c705df9ae143e85d06bb01ca752e62f9a49b65d71e4e",
-      "content_size_bytes": 271363,
+      "content_sha256": "5980ef2d9338f8d81855655f16e8625c4bffcfc54e2e81f5c85fb860980fc8da",
+      "content_size_bytes": 288804,
       "hash_mode": "portable-lf",
       "role": "central corrected-endpoint integration source"
     },
@@ -771,8 +843,8 @@
       "role": "central corrected-endpoint integration source"
     },
     "prepare_validation_artifacts_v20.py": {
-      "content_sha256": "be6e5107202cf7f9b9239d69e7ecc600491262219aba7ed8a7962e356b0fb457",
-      "content_size_bytes": 18399,
+      "content_sha256": "9044adfd8d96e80c85046611ae1aa996bfc5a575483fe6c07aca36a8c9d0d224",
+      "content_size_bytes": 18641,
       "hash_mode": "portable-lf",
       "role": "central corrected-endpoint integration source"
     },
@@ -789,8 +861,8 @@
       "role": "byte-pinned exact global Phi self-zero proof dependency"
     },
     "replicate.py": {
-      "content_sha256": "9142125a875626dc0565d22324489bc96fa086841bd3dcfde64cfda645987d50",
-      "content_size_bytes": 16375,
+      "content_sha256": "38615c0c3f9584602315f671beb546eb4140343648b0d2c51278cc64e335a172",
+      "content_size_bytes": 16633,
       "hash_mode": "portable-lf",
       "role": "central corrected-endpoint integration source"
     },
@@ -805,6 +877,12 @@
       "content_size_bytes": 8281,
       "hash_mode": "portable-lf",
       "role": "fail-closed central integration regression"
+    },
+    "test_exact_eft_physical_scalar_spectrum_v20.py": {
+      "content_sha256": "6867a703bc3fed1fa1b7a76696a2d2e34159df3fb6be3a2db907fbebd51137c4",
+      "content_size_bytes": 3096,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact EFT scalar spectrum and mathematical G6 gate bundle"
     },
     "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py": {
       "content_sha256": "a224a19317c1e849a40e6f729df06c4e50f1e556a71c604dcc8aeca0c3f2555f",
@@ -884,21 +962,27 @@
       "hash_mode": "raw",
       "role": "byte-pinned dimension-six EFT mathematical G4/G5 gate bundle"
     },
+    "test_final_g6_eft_mathematical_gate_v20.py": {
+      "content_sha256": "841badaa0fb1931060159233fad85d378bcaf68b71944f02bdd280e197813570",
+      "content_size_bytes": 2178,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact EFT scalar spectrum and mathematical G6 gate bundle"
+    },
     "test_freeze_corrected_rank1_endpoint_v21_integration.py": {
-      "content_sha256": "af6003f87a39c336cc917a0e677bbb97c589dc5d2e41f552031696a5859dffb2",
-      "content_size_bytes": 20222,
+      "content_sha256": "2f62e51448399e2878b98470fb1f20f8eeceafd7fd003f3dd83b42fb345e4a82",
+      "content_size_bytes": 23699,
       "hash_mode": "raw",
       "role": "fail-closed central integration regression"
     },
     "test_g1_g8_execution_roadmap_v20.py": {
-      "content_sha256": "6e9ac2a19cafd763e9ff56a518f31360af1fbe94836da38308163a87aa99eb2c",
-      "content_size_bytes": 23220,
+      "content_sha256": "4f1caa40fe01804b8bb528911a694092ded1292a8fb75dd754dff739291784d3",
+      "content_size_bytes": 25078,
       "hash_mode": "portable-lf",
       "role": "fail-closed central integration regression"
     },
     "test_g1_g8_gate_ledger_v20.py": {
-      "content_sha256": "48b738d2c6f81d712547caa9a4174f5af72734116aa454ef5e633a273adeb082",
-      "content_size_bytes": 74449,
+      "content_sha256": "62cda45d5078da782ef90120111d86fe8be5b925001ce10cbe9368c43af0d62f",
+      "content_size_bytes": 78382,
       "hash_mode": "portable-lf",
       "role": "fail-closed central integration regression"
     },
@@ -909,43 +993,43 @@
       "role": "fail-closed central integration regression"
     },
     "test_prepare_validation_artifacts_v20.py": {
-      "content_sha256": "b3453783a4c0da9fac276e1f1a2bd5776518ce6f05bb96238f940fcdb14fc0c4",
-      "content_size_bytes": 20758,
+      "content_sha256": "54852b95ecefe4cfdbea11ebb3daa849c45950192f239d3bbedd539b38cc665a",
+      "content_size_bytes": 21208,
       "hash_mode": "portable-lf",
       "role": "fail-closed central integration regression"
     },
     "test_replicate_v20.py": {
-      "content_sha256": "40970de162c4a2bd845f2fc5dba6794ce2c3f0513e862fc7ccfd8913b014d397",
-      "content_size_bytes": 12197,
+      "content_sha256": "2b62426be008c5dcfe49f4898a54d2156019558d1eee44d26f070c1e264c6491",
+      "content_size_bytes": 12513,
       "hash_mode": "portable-lf",
       "role": "fail-closed central integration regression"
     },
     "test_theory_validation_matrix_v20.py": {
-      "content_sha256": "90f8a53bcba7857fbf097dad1afa637a75550b0183794ac70cef494c349f5131",
-      "content_size_bytes": 89029,
+      "content_sha256": "3071ddfeff276e2770368482f71df4c90afd356561b549a68e2033f94c34c49e",
+      "content_size_bytes": 96780,
       "hash_mode": "portable-lf",
       "role": "fail-closed central integration regression"
     },
     "test_validate_release_v20.py": {
-      "content_sha256": "8f92e0e936eb4a58888e379335f7e044734e45af769b7424fe71088b548ddc6d",
-      "content_size_bytes": 37973,
+      "content_sha256": "9dbc696e4f2e0fedcc17a7d0278aafc70e4a34758f466b8c89e4f0b287aed50d",
+      "content_size_bytes": 38880,
       "hash_mode": "portable-lf",
       "role": "fail-closed central integration regression"
     },
     "theory_validation_matrix_v20.py": {
-      "content_sha256": "ca335c4479f7ace55641232dd22173c5d433aa661bacb892255bdee58674db0c",
-      "content_size_bytes": 125249,
+      "content_sha256": "87738cd313d64a447415a935a5385262af4bc8affafe4c23ef93704f384a695e",
+      "content_size_bytes": 133450,
       "hash_mode": "portable-lf",
       "role": "central corrected-endpoint integration source"
     },
     "validate_release_v20.py": {
-      "content_sha256": "b38d2c219ee496b848fa99d28dd9220e1ff872fd90f14116548111b2e65a8b8c",
-      "content_size_bytes": 97429,
+      "content_sha256": "ef1c8e91222fd68499897795a574b7437d21684a713c309f8216ab4157649c80",
+      "content_size_bytes": 102007,
       "hash_mode": "portable-lf",
       "role": "central corrected-endpoint integration source"
     }
   },
-  "inventory_count": 131,
+  "inventory_count": 139,
   "legacy_v20_quarantine": {
     "CLI_exit_code": 2,
     "CLI_writes_files": false,
@@ -959,6 +1043,8 @@
     "EFT_G4_mathematical_gate_core_sha256": "931a152aed49eb28bf415a1aca093e923850cf68db3f40ccf1d2027b447a8c09",
     "EFT_G5_exact_global_lower_bound": "-40661/20000",
     "EFT_G5_mathematical_gate_core_sha256": "1b578471e74626e3b186cf7398aebd35349a67f45940b9c37d42bb49c1b8c8ba",
+    "EFT_G6_mathematical_gate_core_sha256": "e34b791478bf9cb00f951819cbfec45a99d51be776889d8a4e13cf1717eee738",
+    "EFT_G6_spectrum_core_sha256": "abb704133c8be22b424ba20e23387d6f30412e6c82ab3a214e88bd8df5bef9cc",
     "EFT_O6_current_endomorphism_core_sha256": "598d916da16e746c8be30e979a13a27a47d1600e2dd4bee7b9cf9fc398ec9da1",
     "EFT_beta_zero_base_Hessian_payload_sha256": "194740e7e90eeee33d5d772ab549df969e9665e3aebc1580c3319f58eee36930",
     "EFT_global_G3_theorem_core_sha256": "2eca279488d92d8bd9eca974c0d598340124f025e62212cd8a188413a6e8b7d0",
@@ -982,7 +1068,7 @@
     ],
     "touched_or_promoted": false
   },
-  "release_checksum_entry_count": 310,
+  "release_checksum_entry_count": 318,
   "schema": "so10-rank1-su4-corrected-endpoint-central-integration-v21",
   "status": "EXACT_CORRECTED_ENDPOINT_V21_CENTRAL_INTEGRATION_FROZEN",
   "workflow_contract": {
@@ -994,7 +1080,7 @@
     "no_write_stochastic_report_commands": 3,
     "no_write_stochastic_report_orchestrators": 2,
     "read_only_frozen_dependency_orchestrators": 3,
-    "read_only_frozen_report_commands": 45,
-    "read_only_frozen_report_sources": 15
+    "read_only_frozen_report_commands": 51,
+    "read_only_frozen_report_sources": 17
   }
 }

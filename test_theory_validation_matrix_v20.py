@@ -85,6 +85,9 @@ def minimal_tree(
         {
             "n_failed": 0,
             "implementation_matches_manuscript": contract_consistent,
+            # This is the scalar-contract module's pre-G2-audit snapshot. The
+            # dedicated G2 artifact below is the source-authoritative aggregate.
+            "flags": {"G2_gauged_u1x_derivatives_certified": False},
         },
     )
     write_json(
@@ -92,12 +95,36 @@ def minimal_tree(
         "G1_G8_GATE_LEDGER_V20.json",
         {
             "gates": {
-                "G1": {"status": "CLOSED" if contract_consistent else "BLOCKED"},
-                "G2": {"status": "CLOSED" if contract_consistent else "BLOCKED"},
+                "G1": {
+                    "status": "CLOSED" if contract_consistent else "BLOCKED",
+                    "scoped_calculation_complete": True,
+                    "full_gate_calculation_complete": contract_consistent,
+                },
+                "G2": {
+                    "status": "CLOSED" if contract_consistent else "BLOCKED",
+                    "scoped_calculation_complete": True,
+                    "full_gate_calculation_complete": True,
+                },
                 "G3": {"status": "OPEN" if contract_consistent else "BLOCKED"},
                 "G4": {"status": "BLOCKED"},
                 "G5": {"status": "CLOSED" if contract_consistent else "BLOCKED"},
-            }
+                "G6": {"status": "BLOCKED"},
+            },
+            "gauged_u1x_scalar_subtheorems": {
+                "G1": {
+                    "scoped_status": (
+                        "COMPLETE_GAUGED_U1X_FULL_COMPONENT_TENSOR_INTEGRATION"
+                        if contract_consistent
+                        else "COMPLETE_GAUGED_U1X_MULTIPLICITY_CENSUS__FULL_G1_OPEN"
+                    ),
+                    "multiplicity_census_complete": True,
+                    "explicit_component_tensor_subset_integration_complete": (
+                        contract_consistent
+                    ),
+                    "full_G1_closed": contract_consistent,
+                },
+                "G2": {"scoped_derivative_audit_complete": True},
+            },
         },
     )
     write_json(
@@ -786,8 +813,12 @@ def minimal_tree(
     for filename in (
         "FINAL_G4_EFT_MATHEMATICAL_GATE_V20.json",
         "FINAL_G5_EFT_MATHEMATICAL_GATE_V20.json",
+        "FINAL_G6_EFT_MATHEMATICAL_GATE_V20.json",
     ):
         root.joinpath(filename).write_bytes((matrix.ROOT / filename).read_bytes())
+    root.joinpath(matrix.FINAL_G6_EFT_GATE_SOURCE).write_bytes(
+        (matrix.ROOT / matrix.FINAL_G6_EFT_GATE_SOURCE).read_bytes()
+    )
     write_json(
         root,
         "so10_axion_v20_verdict.json",
@@ -957,13 +988,14 @@ class TheoryValidationMatrixTests(unittest.TestCase):
             self.assertTrue(evidence["parallel_EFT_G4_closed"])
             self.assertTrue(evidence["final_G3_acceptance_gate_honestly_open"])
 
-    def test_parallel_eft_g4_g5_are_math_pass_release_open_and_fail_closed(self):
+    def test_parallel_eft_g4_g5_g6_are_math_pass_release_open_and_fail_closed(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             minimal_tree(root, contract_consistent=False)
             report = matrix.build_report(root)
             g4 = report["parallel_EFT_G4_mathematical"]
             g5 = report["parallel_EFT_G5_mathematical"]
+            g6 = report["parallel_EFT_G6_spectrum"]
             self.assertTrue(g4["source_bound"])
             self.assertEqual(
                 g4["core_sha256"],
@@ -1000,6 +1032,26 @@ class TheoryValidationMatrixTests(unittest.TestCase):
                 "downstream_parallel_G5_integration_completed",
                 g5["release_blockers"],
             )
+            self.assertTrue(g6["source_bound"])
+            self.assertEqual(
+                g6["core_sha256"],
+                matrix.gate_ledger.FINAL_G6_EFT_MATHEMATICAL_CORE_SHA256,
+            )
+            self.assertEqual(
+                g6["raw_sha256"],
+                matrix.gate_ledger.FINAL_G6_EFT_MATHEMATICAL_RAW_SHA256,
+            )
+            self.assertTrue(g6["mathematical_G6_closed_for_EFT_model"])
+            self.assertFalse(g6["release_G6_verified_for_EFT_model"])
+            self.assertFalse(g6["authoritative_renormalizable_G6_closed"])
+            self.assertFalse(g6["authoritative_G6_gate_mutated"])
+            self.assertFalse(g6["whole_model_validated"])
+            self.assertEqual(g6["spectrum_summary"]["ambient_real_fields"], 486)
+            self.assertEqual(
+                g6["spectrum_summary"]["gauge_quotient_dimension"], 449
+            )
+            self.assertEqual(g6["spectrum_summary"]["physical_PQ_axions"], 1)
+            self.assertEqual(g6["spectrum_summary"]["positive_massive_modes"], 448)
 
             vacuum = next(
                 gate
@@ -1019,9 +1071,45 @@ class TheoryValidationMatrixTests(unittest.TestCase):
             self.assertTrue(
                 evidence["parallel_EFT_G5_integration_blocker_removed"]
             )
+            self.assertTrue(evidence["parallel_EFT_G6_spectrum_source_bound"])
+            self.assertTrue(evidence["parallel_EFT_G6_spectrum_raw_sha256_exact"])
+            self.assertTrue(
+                evidence["parallel_EFT_G6_gate_source_raw_sha256_exact"]
+            )
+            self.assertTrue(evidence["parallel_EFT_G6_spectrum_core_sha256_exact"])
+            self.assertTrue(evidence["parallel_EFT_G6_spectrum_dependency_pins_exact"])
+            self.assertTrue(evidence["parallel_EFT_G6_integration_completed"])
+            self.assertTrue(
+                evidence["parallel_EFT_G6_integration_blocker_removed"]
+            )
+            self.assertTrue(evidence["parallel_EFT_mathematical_G6_closed"])
+            self.assertFalse(evidence["parallel_EFT_release_G6_verified"])
+            self.assertFalse(
+                evidence["original_renormalizable_mathematical_G6_closed"]
+            )
+            self.assertFalse(
+                evidence["authoritative_G6_gate_mutated_by_parallel_EFT"]
+            )
+            self.assertEqual(
+                evidence["parallel_EFT_G6_spectrum_summary"][
+                    "positive_massive_modes"
+                ],
+                448,
+            )
             self.assertEqual(
                 evidence["authoritative_renormalizable_G3_G4_G5_statuses"],
                 {"G3": "BLOCKED", "G4": "BLOCKED", "G5": "BLOCKED"},
+            )
+            self.assertEqual(
+                evidence[
+                    "authoritative_renormalizable_G3_G4_G5_G6_statuses"
+                ],
+                {
+                    "G3": "BLOCKED",
+                    "G4": "BLOCKED",
+                    "G5": "BLOCKED",
+                    "G6": "BLOCKED",
+                },
             )
 
             for filename, key in (
@@ -1032,6 +1120,10 @@ class TheoryValidationMatrixTests(unittest.TestCase):
                 (
                     "FINAL_G5_EFT_MATHEMATICAL_GATE_V20.json",
                     "parallel_EFT_G5_mathematical",
+                ),
+                (
+                    "FINAL_G6_EFT_MATHEMATICAL_GATE_V20.json",
+                    "parallel_EFT_G6_spectrum",
                 ),
             ):
                 with self.subTest(filename=filename):
@@ -1613,6 +1705,25 @@ class TheoryValidationMatrixTests(unittest.TestCase):
             self.assertTrue(
                 vacuum["evidence"]["gauged_G2_scoped_calculation_complete"]
             )
+            self.assertTrue(
+                vacuum["evidence"]["gauged_G1_multiplicity_census_complete"]
+            )
+            self.assertFalse(
+                vacuum["evidence"][
+                    "gauged_G1_full_component_tensor_integration_complete"
+                ]
+            )
+            self.assertFalse(
+                vacuum["evidence"]["scalar_contract_pre_audit_G2_certified_flag"]
+            )
+            self.assertTrue(
+                vacuum["evidence"]["dedicated_G2_audit_is_source_authoritative"]
+            )
+            self.assertTrue(
+                vacuum["evidence"][
+                    "dedicated_G2_audit_supersedes_pre_audit_scalar_contract_flag"
+                ]
+            )
             self.assertEqual(
                 vacuum["evidence"]["gauged_G2_direction_parameter_field_counts"],
                 [44, 51, 486],
@@ -1972,7 +2083,7 @@ class TheoryValidationMatrixTests(unittest.TestCase):
             )
             self.assertFalse(report["full_theory_validated"])
 
-    def test_hypothetical_consistent_stable_gauged_vacuum_can_pass_vacuum_gate(self):
+    def test_hypothetical_vacuum_pass_requires_g3_g6_and_source_bound_spectrum(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             minimal_tree(
@@ -1981,11 +2092,77 @@ class TheoryValidationMatrixTests(unittest.TestCase):
                 vacuum_minimized=True,
                 exact_stationarity_rank=True,
             )
+            spectrum_payload = {
+                "model_contract_id": matrix.MODEL_CONTRACT_ID,
+                "n_failed": 0,
+                "classification": {
+                    "complete_physical_scalar_spectrum": True,
+                    "source_bound_to_authoritative_vacuum": True,
+                    "all_physical_scalar_eigenstates_classified": True,
+                    "no_unexplained_zero_or_negative_modes": True,
+                },
+            }
+            write_json(
+                root,
+                "G6_FULL_PHYSICAL_SPECTRUM_V20.json",
+                spectrum_payload,
+            )
+
+            # A valid spectrum artifact cannot bypass the authoritative G3-G6
+            # dependency chain.
+            report = matrix.build_report(root)
+            states = {gate["name"]: gate["state"] for gate in report["gates"]}
+            self.assertEqual(
+                states["full_scalar_potential_vacuum_and_spectrum"], "OPEN"
+            )
+
+            ledger_path = root / "G1_G8_GATE_LEDGER_V20.json"
+            ledger = json.loads(ledger_path.read_text(encoding="utf-8"))
+            for name in ("G3", "G4", "G5", "G6"):
+                ledger["gates"][name]["status"] = "CLOSED"
+            ledger_path.write_text(json.dumps(ledger), encoding="utf-8")
+
+            # Conversely, closed ledger booleans cannot bypass exact source
+            # binding of the complete spectrum.
+            spectrum_payload["classification"][
+                "source_bound_to_authoritative_vacuum"
+            ] = False
+            write_json(
+                root,
+                "G6_FULL_PHYSICAL_SPECTRUM_V20.json",
+                spectrum_payload,
+            )
+            report = matrix.build_report(root)
+            states = {gate["name"]: gate["state"] for gate in report["gates"]}
+            self.assertEqual(states["authoritative_model_contract"], "PASS")
+            self.assertEqual(
+                states["full_scalar_potential_vacuum_and_spectrum"], "OPEN"
+            )
+
+            spectrum_payload["classification"][
+                "source_bound_to_authoritative_vacuum"
+            ] = True
+            write_json(
+                root,
+                "G6_FULL_PHYSICAL_SPECTRUM_V20.json",
+                spectrum_payload,
+            )
             report = matrix.build_report(root)
             states = {gate["name"]: gate["state"] for gate in report["gates"]}
             self.assertEqual(states["authoritative_model_contract"], "PASS")
             self.assertEqual(
                 states["full_scalar_potential_vacuum_and_spectrum"], "PASS"
+            )
+            vacuum = next(
+                gate
+                for gate in report["gates"]
+                if gate["name"] == "full_scalar_potential_vacuum_and_spectrum"
+            )
+            self.assertTrue(
+                vacuum["evidence"]["authoritative_G3_G4_G5_G6_closed"]
+            )
+            self.assertTrue(
+                vacuum["evidence"]["G6_complete_source_bound_physical_spectrum"]
             )
 
     def test_numerical_rank_diagnostic_cannot_promote_vacuum_gate(self):

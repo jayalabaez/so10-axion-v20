@@ -9,13 +9,14 @@
     "gate_frontier_matches_contract_state": true,
     "gate_ledger_audit_executes": true,
     "gate_ledger_state_classified": true,
-    "gauged_G1_G2_scoped_recertification_recorded": true,
+    "gauged_G1_multiplicity_census_and_G2_scoped_audit_recorded": true,
     "historical_64_91_449_facts_preserved": true,
     "historical_saddle_search_not_promoted": true,
     "parallel_EFT_G3_acceptance_raw_and_core_bound": true,
-    "parallel_EFT_G4_G5_leave_authoritative_frontier_unchanged": true,
+    "parallel_EFT_G4_G5_G6_leave_authoritative_frontier_unchanged": true,
     "parallel_EFT_G4_mathematical_raw_and_core_bound": true,
     "parallel_EFT_G5_mathematical_raw_and_core_bound": true,
+    "parallel_EFT_G6_spectrum_raw_and_core_bound": true,
     "task_frontier_matches_contract_state": true,
     "task_ids_unique": true,
     "wave_zero_precedes_G1": true,
@@ -76,18 +77,23 @@
       "dependencies": [
         "MODEL_CONTRACT"
       ],
+      "full_gate_calculation_complete": false,
       "historical_option_c_evidence_retained": true,
       "open_scope": [
-        "bind the recertified 44-direction/51-parameter scalar census to the repaired executable gauge scaffold"
+        "complete and source-bind the explicit component-tensor/Clebsch integration for the exact 44-direction/51-parameter multiplicity census"
       ],
       "scoped_calculation_complete": true,
       "scoped_calculation_evidence": {
+        "explicit_component_tensor_subset_integration_complete": false,
+        "full_G1_closed": false,
         "hermitian_conjugacy_orbits": 28,
         "invariant_directions": 44,
+        "multiplicity_census_complete": true,
         "real_potential_parameters": 51,
-        "scoped_status": "COMPLETE_GAUGED_U1X_SCALAR_CENSUS"
+        "remaining_exact_target": "Re-audit the normalized 44-direction subset of the existing tensor compiler under the gauged U(1)_X contract.",
+        "scoped_status": "COMPLETE_GAUGED_U1X_MULTIPLICITY_CENSUS__FULL_G1_OPEN"
       },
-      "scoped_calculation_status": "COMPLETE_GAUGED_U1X_SCALAR_CENSUS",
+      "scoped_calculation_status": "COMPLETE_GAUGED_U1X_MULTIPLICITY_CENSUS__FULL_G1_OPEN",
       "status": "BLOCKED",
       "title": "Invariant ring and component Clebsch tensors",
       "unsatisfied_dependencies": [
@@ -103,13 +109,15 @@
       "dependencies": [
         "G1"
       ],
+      "full_gate_calculation_complete": true,
       "historical_option_c_evidence_retained": true,
       "open_scope": [
-        "promote the completed 44/51/486 dense derivative and Ward-identity audit after the executable contract is repaired"
+        "promote the completed 44/51/486 dense derivative and Ward-identity audit only after full G1 component-tensor integration and executable-contract repair"
       ],
       "scoped_calculation_complete": true,
       "scoped_calculation_evidence": {
         "G3_closed": false,
+        "authoritative_promotion_blocked_on_full_G1": true,
         "dense_Hessian_shape": [
           486,
           486
@@ -123,6 +131,7 @@
         "raw_dense_rank_14_certified": false,
         "real_field_dimension": 486,
         "real_potential_parameters": 51,
+        "scoped_derivative_audit_complete": true,
         "scoped_status": "COMPLETE_GAUGED_U1X_DENSE_DERIVATIVE_AUDIT",
         "stationarity_nullity_38_exactly_certified": true,
         "stationarity_rank_13_exactly_certified": true
@@ -949,13 +958,18 @@
   },
   "gauged_u1x_scalar_subtheorems": {
     "G1": {
+      "explicit_component_tensor_subset_integration_complete": false,
+      "full_G1_closed": false,
       "hermitian_conjugacy_orbits": 28,
       "invariant_directions": 44,
+      "multiplicity_census_complete": true,
       "real_potential_parameters": 51,
-      "scoped_status": "COMPLETE_GAUGED_U1X_SCALAR_CENSUS"
+      "remaining_exact_target": "Re-audit the normalized 44-direction subset of the existing tensor compiler under the gauged U(1)_X contract.",
+      "scoped_status": "COMPLETE_GAUGED_U1X_MULTIPLICITY_CENSUS__FULL_G1_OPEN"
     },
     "G2": {
       "G3_closed": false,
+      "authoritative_promotion_blocked_on_full_G1": true,
       "dense_Hessian_shape": [
         486,
         486
@@ -969,11 +983,12 @@
       "raw_dense_rank_14_certified": false,
       "real_field_dimension": 486,
       "real_potential_parameters": 51,
+      "scoped_derivative_audit_complete": true,
       "scoped_status": "COMPLETE_GAUGED_U1X_DENSE_DERIVATIVE_AUDIT",
       "stationarity_nullity_38_exactly_certified": true,
       "stationarity_rank_13_exactly_certified": true
     },
-    "blocked_only_from_promotion_by_model_contract_mismatch": true,
+    "blocked_only_from_promotion_by_model_contract_mismatch": false,
     "model_contract_id": "gauged_u1x_phi17_v20",
     "promoted_to_authoritative_G1_G2": false,
     "scope": "exact-X-neutral renormalizable scalar potential on the canonical 486-real field chart",
@@ -521078,9 +521093,81 @@
       },
       "status": "FINAL_EFT_G5_MATHEMATICAL_GATE__MATHEMATICAL_PASS_RELEASE_OPEN",
       "verdict": "Mathematical G5 is closed for the explicitly stated dimension-six EFT because its complete 486-real-field potential has an exact finite SOS lower bound and the added O6 term is globally PSD. No new SOS is claimed. EFT release G5 remains open, and the current authoritative renormalizable G5 gate remains unmodified and contract-blocked."
+    },
+    "parallel_EFT_G6_mathematical_gate": {
+      "artifact_sha256": {
+        "G4_gate_JSON": "98664542a4e1bbfba233652737826b974963a31c2e86a15e2d73fda1457d987b",
+        "G5_gate_JSON": "6d6e4fd9932a03e35146afb1bca850666e883aaed5e23b73b81f0f703e4e7db9",
+        "spectrum_JSON": "797a90473c064a78ef313d56f1894d71114643a19ebd373e86fe8b2911bcf416",
+        "spectrum_source": "cdcc25b383098464fc6312d553dff555d19c57388df7de08db48b4167ebc5a36"
+      },
+      "classification": {
+        "authoritative_G6_gate_mutated": false,
+        "authoritative_renormalizable_G6_closed": false,
+        "mathematical_G6_closed_for_EFT_model": true,
+        "release_G6_verified_for_EFT_model": false,
+        "whole_model_validated": false
+      },
+      "contract": {
+        "EFT_model_contract_id": "gauged_u1x_phi17_v20_eft_o6_current_kernel_gamma_1_over_20",
+        "base_model_contract_id": "gauged_u1x_phi17_v20",
+        "scope": "normalized exact tree-level dimension-six EFT spectrum"
+      },
+      "core_sha256": "e34b791478bf9cb00f951819cbfec45a99d51be776889d8a4e13cf1717eee738",
+      "mathematical_checks": {
+        "complete_448_dimensional_positive_massive_spectrum": true,
+        "complete_486_degree_factorization": true,
+        "complete_exact_algebraic_mixing_subspaces": true,
+        "complete_residual_group_provenance": true,
+        "exact_38_dimensional_symmetry_kernel": true,
+        "mathematical_EFT_G4_closed": true,
+        "mathematical_EFT_G5_closed": true,
+        "physical_PQ_axion_retained": true,
+        "release_uncertainties_remain_open": true,
+        "same_EFT_contract_as_G4_G5": true,
+        "spectrum_core_source_bound": true,
+        "tree_level_exact_uncertainty_is_zero": true
+      },
+      "release_blockers": [
+        "absolute_Lambda_EFT_and_Wilson_matching_approved",
+        "loop_running_and_pole_mass_spectrum_complete",
+        "threshold_uncertainty_budget_complete",
+        "external_extended_model_contract_executed",
+        "authoritative_G1_closed",
+        "authoritative_G2_closed",
+        "authoritative_renormalizable_G3_G4_G5_closed"
+      ],
+      "release_criteria": {
+        "absolute_Lambda_EFT_and_Wilson_matching_approved": false,
+        "authoritative_G1_closed": false,
+        "authoritative_G2_closed": false,
+        "authoritative_renormalizable_G3_G4_G5_closed": false,
+        "external_extended_model_contract_executed": false,
+        "loop_running_and_pole_mass_spectrum_complete": false,
+        "mathematical_tree_level_EFT_G6_complete": true,
+        "parallel_EFT_G6_integrated_into_release_orchestrators": true,
+        "threshold_uncertainty_budget_complete": false
+      },
+      "spectrum_summary": {
+        "ambient_real_fields": 486,
+        "distinct_mass_squared_roots_including_zero": 61,
+        "gauge_quotient_dimension": 449,
+        "mixing_subspaces_complete": true,
+        "physical_PQ_axions": 1,
+        "positive_massive_modes": 448,
+        "primitive_factors": 45,
+        "residual_group": "SU(3)_C x U(1)_em"
+      },
+      "status": "FINAL_EFT_G6_TREE_LEVEL_MATHEMATICAL_PASS_RELEASE_OPEN",
+      "upstream_cores": {
+        "G4": "931a152aed49eb28bf415a1aca093e923850cf68db3f40ccf1d2027b447a8c09",
+        "G5": "1b578471e74626e3b186cf7398aebd35349a67f45940b9c37d42bb49c1b8c8ba",
+        "spectrum": "abb704133c8be22b424ba20e23387d6f30412e6c82ab3a214e88bd8df5bef9cc"
+      },
+      "verdict": "Mathematical tree-level G6 is exact for the registered dimension-six EFT.  Release and the original authoritative renormalizable G6 remain open."
     }
   },
-  "n_checks": 20,
+  "n_checks": 21,
   "n_failed": 0,
   "new_physics_policy": "Historical calculations remain scoped subtheorems. No whole-model validation, exclusion, or discovery claim is permitted until every authoritative gauged-U(1)_X gate is complete.",
   "overall_state": "BLOCKED",
@@ -521136,6 +521223,42 @@
     ],
     "source_bound": true
   },
+  "parallel_EFT_G6_resolution": {
+    "authoritative_G6_gate_mutated": false,
+    "core_sha256": "e34b791478bf9cb00f951819cbfec45a99d51be776889d8a4e13cf1717eee738",
+    "expected_core_sha256": "e34b791478bf9cb00f951819cbfec45a99d51be776889d8a4e13cf1717eee738",
+    "expected_gate_source_raw_sha256": "6ef314bf22e1d6ce43b382b5cb6e7673cef1e328f2f4c38abdafab6038edc150",
+    "expected_raw_sha256": "85000f555eb3bc4e2e4bc49236a82ce2161987212906d78efd667bb52dd432f8",
+    "expected_spectrum_core_sha256": "abb704133c8be22b424ba20e23387d6f30412e6c82ab3a214e88bd8df5bef9cc",
+    "gate": "FINAL_G6_EFT_MATHEMATICAL_GATE_V20.json",
+    "gate_source_raw_sha256": "6ef314bf22e1d6ce43b382b5cb6e7673cef1e328f2f4c38abdafab6038edc150",
+    "integration_completed": true,
+    "mathematical_G6_closed": true,
+    "original_renormalizable_G6_closed": false,
+    "raw_sha256": "85000f555eb3bc4e2e4bc49236a82ce2161987212906d78efd667bb52dd432f8",
+    "release_G6_verified": false,
+    "release_blockers": [
+      "absolute_Lambda_EFT_and_Wilson_matching_approved",
+      "loop_running_and_pole_mass_spectrum_complete",
+      "threshold_uncertainty_budget_complete",
+      "external_extended_model_contract_executed",
+      "authoritative_G1_closed",
+      "authoritative_G2_closed",
+      "authoritative_renormalizable_G3_G4_G5_closed"
+    ],
+    "source_bound": true,
+    "spectrum_core_sha256": "abb704133c8be22b424ba20e23387d6f30412e6c82ab3a214e88bd8df5bef9cc",
+    "spectrum_summary": {
+      "ambient_real_fields": 486,
+      "distinct_mass_squared_roots_including_zero": 61,
+      "gauge_quotient_dimension": 449,
+      "mixing_subspaces_complete": true,
+      "physical_PQ_axions": 1,
+      "positive_massive_modes": 448,
+      "primitive_factors": 45,
+      "residual_group": "SU(3)_C x U(1)_em"
+    }
+  },
   "recent_milestones": [
     {
       "authoritative_gate_closure": false,
@@ -521153,6 +521276,8 @@
   ],
   "scientific_blockers": [
     "AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED",
+    "G1_EXPLICIT_COMPONENT_TENSOR_INTEGRATION_OPEN",
+    "G2_AUTHORITATIVE_PROMOTION_BLOCKED_ON_FULL_G1",
     "GAUGED_U1X_G3_G8_CLOSURE_REQUIRED",
     "G3_ARBITRARY_NON_PURE_DELTA_SIGMA_UNIFORM_COERCIVITY_OPEN"
   ],
@@ -521188,25 +521313,25 @@
       "wave": 0
     },
     {
-      "acceptance": "the complete scoped census remains green and carries the repaired executable contract ID",
-      "deliverable": "promote the recertified 28-orbit, 44-direction, 51-parameter scalar census after external model execution",
+      "acceptance": "the multiplicity census remains green, the explicit component-tensor subset integration closes, and full G1 carries the repaired executable contract ID",
+      "deliverable": "complete and source-bind the explicit component-tensor/Clebsch integration for the recertified 28-orbit, 44-direction, 51-parameter multiplicity census",
       "gates": [
         "G1"
       ],
       "id": "W1-G1-GAUGED-RECERTIFICATION",
       "issue": 176,
-      "status": "SCOPED_CALCULATION_COMPLETE__BLOCKED_ON_MODEL_CONTRACT_PROMOTION",
+      "status": "MULTIPLICITY_CENSUS_COMPLETE__FULL_COMPONENT_TENSOR_INTEGRATION_OPEN__MODEL_CONTRACT_BLOCKED",
       "wave": 1
     },
     {
       "acceptance": "all SO(10)xU(1)_X Ward identities stay green; all three exact structural-zero columns, the compiler-bound nonzero 13x13 minor, and the exact full-row factorization continue to prove rank/nullity 13/38; SVD remains diagnostic only",
-      "deliverable": "promote the completed 44/51/486 component potential, gradient, Hessian, and Ward audit after external model execution",
+      "deliverable": "promote the completed 44/51/486 component-potential derivative, Hessian, and Ward audit only after full G1 and the executable contract close",
       "gates": [
         "G2"
       ],
       "id": "W2-G2-GAUGED-PROJECTION",
       "issue": 176,
-      "status": "SCOPED_CALCULATION_COMPLETE__BLOCKED_ON_MODEL_CONTRACT_PROMOTION",
+      "status": "SCOPED_DERIVATIVE_AUDIT_COMPLETE__BLOCKED_ON_MODEL_CONTRACT_AND_FULL_G1",
       "wave": 2
     },
     {
@@ -521239,7 +521364,7 @@
       ],
       "id": "W3-G5-FULL-BFB",
       "issue": 86,
-      "status": "SCOPED_BFB_CERTIFICATE_COMPLETE__BLOCKED_ON_MODEL_CONTRACT_PROMOTION",
+      "status": "SCOPED_BFB_CERTIFICATE_COMPLETE__BLOCKED_ON_MODEL_CONTRACT_AND_G1_G2",
       "wave": 3
     },
     {
@@ -521276,5 +521401,5 @@
       "wave": 6
     }
   ],
-  "verdict": "Wave 0 MODEL_CONTRACT is the first critical-path task. All G1-G8 gates are BLOCKED and none is closed. The gauged scalar G1/G2 calculations are complete scoped subtheorems at 44/51/486. Three structural gradient columns vanish exactly; a compiler-bound nonzero 13x13 minor and exact full-row factorization prove stationarity rank/nullity 13/38, with SVD retained only as a diagnostic. These results await contract promotion, not recalculation. G3 now has a 27-of-51 perturbative SOS candidate with J0=-21/200. Exact source-bound SOS identities prove stationarity and complete BFB. Direct exact arithmetic gives P+Delta rank/nullity 429/33 and proves positivity on all 448 transverse Hessian directions, so the selected orbit is a strict local minimum. A source-bound field counterexample is lower by 25*r^4/19008 and rejects it as the global vacuum. The fixed-P branch is exactly excluded and the lower replacement has the wrong gauge symmetry. The SU(5)+Delta Phi/Sigma branch is an exact global SOS minimum with the correct SM stabilizer and rank/nullity 429/33. A chiral-H extension is exactly stationary, BFB and symmetry-correct. Its source-bound 486-real Hessian is exactly PSD with rank/nullity 448/38 and kernel exactly the 38 symmetry tangents. The complete maximally-negative pure-Delta sector is excluded for arbitrary real Phi and all nonzero residuals with sharp gap 1/5000. The prior four-real-dimensional SU3 regression is historical and subsumed. At fixed H=h_- and Sigma=q/4, the corrected v21 exact theorem covers every real Phi210. Its exact SU(4) stabilizer, aligned rank-210 carrier maps, and explicit 45-element Phi210 invariant quadratic basis now feed the exact 22366-dimensional augmented census with 35 isotypic types/824 copies, 22 real/Hermitian blocks, 19594 Schur parameters and 6585 invariant rows. The complete cubic interface has all 1414 real cross variables and an exact-rank-478, 478x1414 integer map with kernel dimension 936. Its zero placeholder is not a physical target. The homogeneous quartic map is exact-rank-6057 with shape 6057x18085 and kernel dimension 12028. The legacy v20 assembled physical target is rejected. The corrected 6585x19594 standard positive-Gram map, ordered-spectral target, and exact strict 22-block/824-pivot primal prove p(t,Phi)>0 off the homogeneous origin and A(Phi)>3/200 at t=1 for every real Phi210. Global Sigma, general/full H, the full Hessian, and G3 remain open. The historical 64/91 calculation and 449-dimensional saddle/search remain scoped to option C. In parallel, the registered dimension-six current-kernel EFT contract closes mathematical G3 exactly; its release verification and the original renormalizable G3 remain open. The same EFT closes mathematical G4 with exact Hessian rank/nullity 448/38; EFT release G4 and authoritative renormalizable G4 remain open. It also closes mathematical G5 by the frozen full-field SOS lower bound plus the PSD dimension-six operator; EFT release G5 remains open and authoritative renormalizable G5 remains contract-blocked."
+  "verdict": "Wave 0 MODEL_CONTRACT is the first critical-path task. All G1-G8 gates are BLOCKED and none is closed. The exact G1 multiplicity census is complete at 28 Hermitian conjugacy orbits, 44 directions, and 51 parameters, while its explicit component-tensor/Clebsch integration remains open. The scoped G2 derivative audit is complete at 44/51/486. Three structural gradient columns vanish exactly; a compiler-bound nonzero 13x13 minor and exact full-row factorization prove stationarity rank/nullity 13/38, with SVD retained only as a diagnostic. G2 does not require recalculation, but cannot be promoted before full G1 and the model contract close. G3 now has a 27-of-51 perturbative SOS candidate with J0=-21/200. Exact source-bound SOS identities prove stationarity and complete BFB. Direct exact arithmetic gives P+Delta rank/nullity 429/33 and proves positivity on all 448 transverse Hessian directions, so the selected orbit is a strict local minimum. A source-bound field counterexample is lower by 25*r^4/19008 and rejects it as the global vacuum. The fixed-P branch is exactly excluded and the lower replacement has the wrong gauge symmetry. The SU(5)+Delta Phi/Sigma branch is an exact global SOS minimum with the correct SM stabilizer and rank/nullity 429/33. A chiral-H extension is exactly stationary, BFB and symmetry-correct. Its source-bound 486-real Hessian is exactly PSD with rank/nullity 448/38 and kernel exactly the 38 symmetry tangents. The complete maximally-negative pure-Delta sector is excluded for arbitrary real Phi and all nonzero residuals with sharp gap 1/5000. The prior four-real-dimensional SU3 regression is historical and subsumed. At fixed H=h_- and Sigma=q/4, the corrected v21 exact theorem covers every real Phi210. Its exact SU(4) stabilizer, aligned rank-210 carrier maps, and explicit 45-element Phi210 invariant quadratic basis now feed the exact 22366-dimensional augmented census with 35 isotypic types/824 copies, 22 real/Hermitian blocks, 19594 Schur parameters and 6585 invariant rows. The complete cubic interface has all 1414 real cross variables and an exact-rank-478, 478x1414 integer map with kernel dimension 936. Its zero placeholder is not a physical target. The homogeneous quartic map is exact-rank-6057 with shape 6057x18085 and kernel dimension 12028. The legacy v20 assembled physical target is rejected. The corrected 6585x19594 standard positive-Gram map, ordered-spectral target, and exact strict 22-block/824-pivot primal prove p(t,Phi)>0 off the homogeneous origin and A(Phi)>3/200 at t=1 for every real Phi210. Global Sigma, general/full H, the full Hessian, and G3 remain open. The historical 64/91 calculation and 449-dimensional saddle/search remain scoped to option C. In parallel, the registered dimension-six current-kernel EFT contract closes mathematical G3 exactly; its release verification and the original renormalizable G3 remain open. The same EFT closes mathematical G4 with exact Hessian rank/nullity 448/38; EFT release G4 and authoritative renormalizable G4 remain open. It also closes mathematical G5 by the frozen full-field SOS lower bound plus the PSD dimension-six operator; EFT release G5 remains open and authoritative renormalizable G5 remains contract-blocked. Its exact normalized tree-level scalar spectrum closes mathematical G6: 486 real modes split into 37 gauge tangents, one physical PQ axion, and 448 strictly positive massive modes with complete residual-group and mixing provenance. EFT release G6 and authoritative renormalizable G6 remain false."
 }

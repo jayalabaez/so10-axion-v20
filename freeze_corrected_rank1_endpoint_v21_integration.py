@@ -66,6 +66,12 @@ EFT_G5_MATHEMATICAL_GATE_CORE_SHA256 = (
     "1b578471e74626e3b186cf7398aebd35349a67f45940b9c37d42bb49c1b8c8ba"
 )
 EFT_G5_EXACT_GLOBAL_LOWER_BOUND = "-40661/20000"
+EFT_G6_SPECTRUM_CORE_SHA256 = (
+    "abb704133c8be22b424ba20e23387d6f30412e6c82ab3a214e88bd8df5bef9cc"
+)
+EFT_G6_MATHEMATICAL_GATE_CORE_SHA256 = (
+    "e34b791478bf9cb00f951819cbfec45a99d51be776889d8a4e13cf1717eee738"
+)
 
 PUBLICATION_FILES = (
     "EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_FIXED_ENDPOINT_THEOREM_V21.json",
@@ -127,6 +133,8 @@ READ_ONLY_FROZEN_REPORT_SOURCES = (
     "final_g3_eft_acceptance_gate_v20.py",
     "final_g4_eft_mathematical_gate_v20.py",
     "final_g5_eft_mathematical_gate_v20.py",
+    "exact_eft_physical_scalar_spectrum_v20.py",
+    "final_g6_eft_mathematical_gate_v20.py",
 )
 NO_WRITE_FROZEN_CLASSIFICATION_SOURCES = (
     "theory_validation_matrix_v20.py",
@@ -292,6 +300,32 @@ EFT_G4_G5_RAW_PINS = {
         "4ed0d85930430c78b0fe8465e50bde9f4b114014c76c1708c6e332e0c4490d33"
     ),
 }
+EFT_G6_RAW_PINS = {
+    "exact_eft_physical_scalar_spectrum_v20.py": (
+        "cdcc25b383098464fc6312d553dff555d19c57388df7de08db48b4167ebc5a36"
+    ),
+    "test_exact_eft_physical_scalar_spectrum_v20.py": (
+        "6867a703bc3fed1fa1b7a76696a2d2e34159df3fb6be3a2db907fbebd51137c4"
+    ),
+    "EXACT_EFT_PHYSICAL_SCALAR_SPECTRUM_V20.json": (
+        "797a90473c064a78ef313d56f1894d71114643a19ebd373e86fe8b2911bcf416"
+    ),
+    "EXACT_EFT_PHYSICAL_SCALAR_SPECTRUM_V20.md": (
+        "0b356c55a231432bf72d1877f35664abe2457f095c926e538b371d412764c153"
+    ),
+    "final_g6_eft_mathematical_gate_v20.py": (
+        "6ef314bf22e1d6ce43b382b5cb6e7673cef1e328f2f4c38abdafab6038edc150"
+    ),
+    "test_final_g6_eft_mathematical_gate_v20.py": (
+        "841badaa0fb1931060159233fad85d378bcaf68b71944f02bdd280e197813570"
+    ),
+    "FINAL_G6_EFT_MATHEMATICAL_GATE_V20.json": (
+        "85000f555eb3bc4e2e4bc49236a82ce2161987212906d78efd667bb52dd432f8"
+    ),
+    "FINAL_G6_EFT_MATHEMATICAL_GATE_V20.md": (
+        "288c53bce177ac687cbf6ceee3c6d74808a1dde2e2b39e0ac5728ab577db5fba"
+    ),
+}
 RHS_PORTABLE_SOURCE_PINS = {
     "exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py":
         "8493a90d9b689bc02479151529ac697425f56087f2bdbebb40176f418b7c0ff8",
@@ -315,7 +349,9 @@ RAW_INTEGRATION_PATHS = (
     "test_freeze_corrected_rank1_endpoint_v21_integration.py",
 ) + PUBLICATION_PATHS + tuple(RAW_SOURCE_PINS) + tuple(
     GLOBAL_PHI_CLASSIFICATION_RAW_PINS
-) + tuple(EFT_G3_RAW_PINS) + tuple(EFT_G4_G5_RAW_PINS)
+) + tuple(EFT_G3_RAW_PINS) + tuple(EFT_G4_G5_RAW_PINS) + tuple(
+    EFT_G6_RAW_PINS
+)
 
 GLOBAL_PHI_CLASSIFICATION_PORTABLE_PATHS = (
     "EXACT_PHI_SELF_ZERO_GLOBAL_SEXTIC_SYZYGY.md",
@@ -393,7 +429,7 @@ CHECKSUM_REQUIRED_PATHS = (
     GLOBAL_PHI_CLASSIFICATION_RAW_PINS
 ) + tuple(EFT_G3_RAW_PINS) + tuple(
     EFT_G4_G5_RAW_PINS
-) + GLOBAL_PHI_CLASSIFICATION_PORTABLE_PATHS
+) + tuple(EFT_G6_RAW_PINS) + GLOBAL_PHI_CLASSIFICATION_PORTABLE_PATHS
 
 
 def _raw_payload(path: Path) -> bytes:
@@ -438,6 +474,8 @@ def _role(relative: str) -> str:
         return "byte-pinned dimension-six EFT G3 theorem and acceptance bundle"
     if relative in EFT_G4_G5_RAW_PINS:
         return "byte-pinned dimension-six EFT mathematical G4/G5 gate bundle"
+    if relative in EFT_G6_RAW_PINS:
+        return "byte-pinned exact EFT scalar spectrum and mathematical G6 gate bundle"
     if relative in RAW_SOURCE_PINS or relative in RHS_PORTABLE_SOURCE_PINS:
         return "generation-only byte-pinned structural dependency"
     if relative in WORKFLOW_PATHS:
@@ -483,6 +521,10 @@ def _require_source_pins() -> None:
             raise ArithmeticError(
                 f"raw EFT G4/G5 bundle member drifted: {relative}"
             )
+    for relative, expected in EFT_G6_RAW_PINS.items():
+        observed = _sha256(_raw_payload(ROOT / relative))
+        if observed != expected:
+            raise ArithmeticError(f"raw EFT G6 bundle member drifted: {relative}")
 
 
 def _source_string_constant(relative: str, name: str) -> str:
@@ -810,6 +852,225 @@ def _require_eft_g4_g5_bundle() -> dict[str, Any]:
     }
 
 
+def _require_eft_g6_bundle() -> dict[str, Any]:
+    if len(EFT_G6_RAW_PINS) != 8:
+        raise ArithmeticError("the EFT G6 raw bundle must contain exactly 8 files")
+    spectrum_source = "exact_eft_physical_scalar_spectrum_v20.py"
+    gate_source = "final_g6_eft_mathematical_gate_v20.py"
+    spectrum = json.loads(
+        (ROOT / "EXACT_EFT_PHYSICAL_SCALAR_SPECTRUM_V20.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    gate = json.loads(
+        (ROOT / "FINAL_G6_EFT_MATHEMATICAL_GATE_V20.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    spectrum_classification = spectrum.get("classification", {})
+    factorization = spectrum.get("exact_factorization", {})
+    provenance = spectrum.get("stabilizer_provenance", {})
+    sectors = provenance.get("sector_reports", {})
+    mixing = spectrum.get("mixing_classification", {})
+    quotient = spectrum.get("physical_quotient", {})
+    uncertainty = spectrum.get("uncertainty_scope", {})
+    scope = spectrum.get("scope", {})
+    gate_classification = gate.get("classification", {})
+    gate_release_criteria = gate.get("release_criteria", {})
+    gate_summary = gate.get("spectrum_summary", {})
+    expected_sector_dimensions = {
+        "C0_Q0": (24, 4, 20),
+        "C0_Q1": (24, 4, 20),
+        "C16_Q0": (102, 18, 84),
+        "C16_Q1": (96, 12, 84),
+        "C36_Q0": (56, 0, 56),
+        "C36_Q1": (64, 0, 64),
+        "C40_Q0": (48, 0, 48),
+        "C40_Q1": (72, 0, 72),
+    }
+    observed_sector_dimensions = {
+        name: (
+            row.get("full_real_dimension"),
+            row.get("zero_dimension"),
+            row.get("massive_real_dimension"),
+        )
+        for name, row in sectors.items()
+    }
+    checks = {
+        "spectrum_source_core_exact": (
+            _source_string_constant(spectrum_source, "EXPECTED_CORE_SHA256")
+            == EFT_G6_SPECTRUM_CORE_SHA256
+        ),
+        "spectrum_report_core_exact": (
+            spectrum.get("core_sha256") == EFT_G6_SPECTRUM_CORE_SHA256
+        ),
+        "gate_source_core_exact": (
+            _source_string_constant(gate_source, "EXPECTED_CORE_SHA256")
+            == EFT_G6_MATHEMATICAL_GATE_CORE_SHA256
+        ),
+        "gate_report_core_exact": (
+            gate.get("core_sha256") == EFT_G6_MATHEMATICAL_GATE_CORE_SHA256
+        ),
+        "normalized_generalized_pencil_exact": (
+            spectrum.get("normalization", {}).get("gamma") == "1/20"
+            and spectrum.get("normalization", {}).get("Lambda_EFT") == "1"
+            and spectrum.get("normalization", {}).get("raw_Hessian_denominator")
+            == 25_200_000
+            and spectrum.get("normalization", {}).get("kinetic_metric_times_100")
+            == {
+                "H10": 100,
+                "Phi17": 200,
+                "Phi210": 10,
+                "S": 8,
+                "Sigma126bar": 1,
+            }
+            and spectrum.get("normalization", {}).get("generalized_pencil")
+            == "det(M-252000*x*K100)=0"
+        ),
+        "stabilized_Hessian_source_bound": (
+            spectrum.get("source_binding", {}).get(
+                "stabilized_Hessian_payload_sha256"
+            )
+            == EFT_STABILIZED_HESSIAN_PAYLOAD_SHA256
+            and spectrum.get("source_binding", {}).get(
+                "expected_stabilized_Hessian_payload_sha256"
+            )
+            == EFT_STABILIZED_HESSIAN_PAYLOAD_SHA256
+            and spectrum.get("source_binding", {}).get("EFT_G4_core_sha256")
+            == EFT_G4_MATHEMATICAL_GATE_CORE_SHA256
+        ),
+        "complete_exact_positive_factorization": (
+            factorization.get("support_component_count") == 39
+            and factorization.get("support_component_type_count") == 15
+            and factorization.get("primitive_factor_count") == 45
+            and factorization.get("distinct_mass_squared_root_count_including_zero")
+            == 61
+            and factorization.get("total_algebraic_degree") == 486
+            and factorization.get("zero_multiplicity") == 38
+            and factorization.get("positive_massive_multiplicity") == 448
+            and factorization.get("all_roots_real_from_symmetric_positive_metric_pencil")
+            is True
+            and factorization.get("no_negative_roots_by_p_of_minus_x_coefficient_certificate")
+            is True
+            and factorization.get("all_nonzero_roots_strictly_positive") is True
+        ),
+        "SU3C_U1em_provenance_exact": (
+            provenance.get("unbroken_group") == "SU(3)_C x U(1)_em"
+            and provenance.get("casimir12_eigenvalues") == [0, 16, 36, 40]
+            and provenance.get("charge_squared_eigenvalues") == [0, 1]
+            and provenance.get(
+                "operators_commute_exactly_with_Hessian_and_kinetic_metric"
+            )
+            is True
+            and observed_sector_dimensions == expected_sector_dimensions
+        ),
+        "exact_algebraic_mixing_complete": (
+            mixing.get("complete") is True
+            and mixing.get(
+                "projector_traces_reproduce_every_sector_factor_exponent"
+            )
+            is True
+            and len(mixing.get("component_signatures", ())) == 39
+        ),
+        "physical_quotient_and_PQ_axion_exact": (
+            quotient.get("ambient_real_dimension") == 486
+            and quotient.get("Hessian_kernel_dimension") == 38
+            and quotient.get("gauged_tangent_dimension") == 37
+            and quotient.get("physical_PQ_axion_count") == 1
+            and quotient.get("gauge_quotient_dimension") == 449
+            and quotient.get("massive_positive_dimension") == 448
+            and quotient.get("all_38_zero_modes_are_unphysical") is False
+        ),
+        "spectrum_claim_boundary_exact": (
+            spectrum_classification.get(
+                "EFT_dimension6_tree_level_mathematical_G6_closed"
+            )
+            is True
+            and spectrum_classification.get("EFT_release_G6_verified") is False
+            and spectrum_classification.get(
+                "renormalizable_authoritative_G6_closed"
+            )
+            is False
+            and scope.get("EFT_tree_level_mathematical_spectrum_complete") is True
+            and scope.get("authoritative_renormalizable_G6_closed") is False
+            and scope.get("EFT_release_G6_verified") is False
+            and scope.get("authoritative_G6_acceptance_satisfied") is False
+        ),
+        "tree_level_exactness_and_release_uncertainties_exact": (
+            uncertainty.get("exact_algebraic_tree_level_uncertainty") == "0"
+            and uncertainty.get("root_intervals_are_rendering_certificates_not_physical_errors")
+            is True
+            and uncertainty.get("absolute_scale_and_Wilson_matching_complete")
+            is False
+            and uncertainty.get("loop_and_pole_mass_corrections_complete")
+            is False
+            and uncertainty.get("renormalization_scheme_and_running_complete")
+            is False
+            and uncertainty.get("physical_threshold_uncertainties_complete")
+            is False
+        ),
+        "gate_internal_checks_all_exact": (
+            bool(gate.get("mathematical_checks"))
+            and all(value is True for value in gate["mathematical_checks"].values())
+        ),
+        "gate_upstream_cores_exact": (
+            gate.get("upstream_cores")
+            == {
+                "G4": EFT_G4_MATHEMATICAL_GATE_CORE_SHA256,
+                "G5": EFT_G5_MATHEMATICAL_GATE_CORE_SHA256,
+                "spectrum": EFT_G6_SPECTRUM_CORE_SHA256,
+            }
+        ),
+        "gate_summary_exact": (
+            gate_summary.get("ambient_real_fields") == 486
+            and gate_summary.get("gauge_quotient_dimension") == 449
+            and gate_summary.get("physical_PQ_axions") == 1
+            and gate_summary.get("positive_massive_modes") == 448
+            and gate_summary.get("primitive_factors") == 45
+            and gate_summary.get("distinct_mass_squared_roots_including_zero")
+            == 61
+            and gate_summary.get("residual_group") == "SU(3)_C x U(1)_em"
+            and gate_summary.get("mixing_subspaces_complete") is True
+        ),
+        "gate_claim_boundary_exact": (
+            gate_classification.get("mathematical_G6_closed_for_EFT_model")
+            is True
+            and gate_classification.get("release_G6_verified_for_EFT_model")
+            is False
+            and gate_classification.get("authoritative_renormalizable_G6_closed")
+            is False
+            and gate_classification.get("authoritative_G6_gate_mutated") is False
+            and gate_classification.get("whole_model_validated") is False
+        ),
+        "gate_completed_integration_and_blockers_exact": (
+            gate_release_criteria.get("mathematical_tree_level_EFT_G6_complete")
+            is True
+            and gate_release_criteria.get(
+                "parallel_EFT_G6_integrated_into_release_orchestrators"
+            )
+            is True
+            and set(gate.get("release_blockers", ()))
+            == {
+                "absolute_Lambda_EFT_and_Wilson_matching_approved",
+                "loop_running_and_pole_mass_spectrum_complete",
+                "threshold_uncertainty_budget_complete",
+                "external_extended_model_contract_executed",
+                "authoritative_G1_closed",
+                "authoritative_G2_closed",
+                "authoritative_renormalizable_G3_G4_G5_closed",
+            }
+        ),
+    }
+    failed = [name for name, passed in checks.items() if not passed]
+    if failed:
+        raise ArithmeticError(f"the frozen EFT G6 logical bundle drifted: {failed}")
+    return {
+        "raw_file_count": len(EFT_G6_RAW_PINS),
+        "checks": checks,
+        "all_checks_pass": True,
+    }
+
+
 def _require_publication_inventory() -> None:
     directory = ROOT / "corrected_rank1_publication_v21"
     if (directory / "__pycache__").exists():
@@ -944,8 +1205,8 @@ def _require_workflow_contract() -> dict[str, int]:
         * len(READ_ONLY_FROZEN_DEPENDENCY_ORCHESTRATORS)
     )
     if (
-        len(READ_ONLY_FROZEN_REPORT_SOURCES) != 15
-        or expected_read_only_commands != 45
+        len(READ_ONLY_FROZEN_REPORT_SOURCES) != 17
+        or expected_read_only_commands != 51
         or read_only_report_commands != expected_read_only_commands
     ):
         raise ArithmeticError(
@@ -1093,6 +1354,7 @@ def build_manifest() -> dict[str, Any]:
     _require_source_pins()
     eft_g3_bundle = _require_eft_g3_bundle()
     eft_g4_g5_bundle = _require_eft_g4_g5_bundle()
+    eft_g6_bundle = _require_eft_g6_bundle()
     workflow_counts = _require_workflow_contract()
     legacy_quarantine = _require_legacy_quarantine()
     checksum_count = _require_checksum_coverage()
@@ -1141,6 +1403,10 @@ def build_manifest() -> dict[str, Any]:
                 EFT_G5_MATHEMATICAL_GATE_CORE_SHA256
             ),
             "EFT_G5_exact_global_lower_bound": EFT_G5_EXACT_GLOBAL_LOWER_BOUND,
+            "EFT_G6_spectrum_core_sha256": EFT_G6_SPECTRUM_CORE_SHA256,
+            "EFT_G6_mathematical_gate_core_sha256": (
+                EFT_G6_MATHEMATICAL_GATE_CORE_SHA256
+            ),
         },
         "exact_dimensions": {
             "map_shape": [6585, 19594],
@@ -1155,6 +1421,7 @@ def build_manifest() -> dict[str, Any]:
         "workflow_contract": workflow_counts,
         "EFT_G3_bundle": eft_g3_bundle,
         "EFT_G4_G5_bundle": eft_g4_g5_bundle,
+        "EFT_G6_bundle": eft_g6_bundle,
         "legacy_v20_quarantine": legacy_quarantine,
         "release_checksum_entry_count": checksum_count,
         "generation_source_pins": {
@@ -1169,6 +1436,7 @@ def build_manifest() -> dict[str, Any]:
             "EFT_G4_G5_raw_sha256": dict(
                 sorted(EFT_G4_G5_RAW_PINS.items())
             ),
+            "EFT_G6_raw_sha256": dict(sorted(EFT_G6_RAW_PINS.items())),
         },
         "claim_boundary": {
             "fixed_H": "h_-=(e0-i e1)/sqrt(2)",
@@ -1193,6 +1461,9 @@ def build_manifest() -> dict[str, Any]:
             "renormalizable_G5_closed": False,
             "EFT_dimension6_mathematical_G5_closed": True,
             "EFT_release_G5_verified": False,
+            "authoritative_renormalizable_G6_closed": False,
+            "EFT_dimension6_tree_level_mathematical_G6_closed": True,
+            "EFT_release_G6_verified": False,
             "G4_closed": False,
             "G3_closed": False,
         },

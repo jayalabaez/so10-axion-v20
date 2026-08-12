@@ -35,6 +35,14 @@ EFT_G5_CORE_SHA256 = (
 EFT_G5_RAW_SHA256 = (
     "6d6e4fd9932a03e35146afb1bca850666e883aaed5e23b73b81f0f703e4e7db9"
 )
+EFT_G6_JSON = ROOT / "FINAL_G6_EFT_MATHEMATICAL_GATE_V20.json"
+EFT_G6_SOURCE = ROOT / "final_g6_eft_mathematical_gate_v20.py"
+EFT_G6_CORE_SHA256 = (
+    "e34b791478bf9cb00f951819cbfec45a99d51be776889d8a4e13cf1717eee738"
+)
+EFT_G6_RAW_SHA256 = (
+    "85000f555eb3bc4e2e4bc49236a82ce2161987212906d78efd667bb52dd432f8"
+)
 
 DEPENDENCIES = ledger.DEPENDENCIES
 
@@ -60,18 +68,34 @@ TASKS: list[dict[str, Any]] = [
         "id": "W1-G1-GAUGED-RECERTIFICATION",
         "wave": 1,
         "gates": ["G1"],
-        "status": "SCOPED_CALCULATION_COMPLETE__BLOCKED_ON_MODEL_CONTRACT_PROMOTION",
+        "status": (
+            "MULTIPLICITY_CENSUS_COMPLETE__FULL_COMPONENT_TENSOR_INTEGRATION_"
+            "OPEN__MODEL_CONTRACT_BLOCKED"
+        ),
         "issue": 176,
-        "deliverable": "promote the recertified 28-orbit, 44-direction, 51-parameter scalar census after external model execution",
-        "acceptance": "the complete scoped census remains green and carries the repaired executable contract ID",
+        "deliverable": (
+            "complete and source-bind the explicit component-tensor/Clebsch "
+            "integration for the recertified 28-orbit, 44-direction, "
+            "51-parameter multiplicity census"
+        ),
+        "acceptance": (
+            "the multiplicity census remains green, the explicit component-tensor "
+            "subset integration closes, and full G1 carries the repaired executable "
+            "contract ID"
+        ),
     },
     {
         "id": "W2-G2-GAUGED-PROJECTION",
         "wave": 2,
         "gates": ["G2"],
-        "status": "SCOPED_CALCULATION_COMPLETE__BLOCKED_ON_MODEL_CONTRACT_PROMOTION",
+        "status": (
+            "SCOPED_DERIVATIVE_AUDIT_COMPLETE__BLOCKED_ON_MODEL_CONTRACT_AND_FULL_G1"
+        ),
         "issue": 176,
-        "deliverable": "promote the completed 44/51/486 component potential, gradient, Hessian, and Ward audit after external model execution",
+        "deliverable": (
+            "promote the completed 44/51/486 component-potential derivative, "
+            "Hessian, and Ward audit only after full G1 and the executable contract close"
+        ),
         "acceptance": (
             "all SO(10)xU(1)_X Ward identities stay green; all three exact "
             "structural-zero columns, the compiler-bound nonzero 13x13 minor, "
@@ -137,7 +161,9 @@ TASKS: list[dict[str, Any]] = [
         "id": "W3-G5-FULL-BFB",
         "wave": 3,
         "gates": ["G5"],
-        "status": "SCOPED_BFB_CERTIFICATE_COMPLETE__BLOCKED_ON_MODEL_CONTRACT_PROMOTION",
+        "status": (
+            "SCOPED_BFB_CERTIFICATE_COMPLETE__BLOCKED_ON_MODEL_CONTRACT_AND_G1_G2"
+        ),
         "issue": 86,
         "deliverable": (
             "promote the completed source-bound SOS/BFB certificate after "
@@ -205,16 +231,33 @@ def acyclic() -> bool:
 
 
 def _tasks_for_gate_report(gate_report: dict[str, Any]) -> list[dict[str, Any]]:
-    """Promote task states when the authoritative contract is repaired."""
+    """Reflect the authoritative frontier without promoting scoped subtheorems."""
     if not gate_report["contract_consistent"]:
         return [dict(task) for task in TASKS]
+    gates = gate_report["gates"]
     promoted_statuses = {
         "W0-MODEL-CONTRACT": ledger.STATUS_CLOSED,
-        "W1-G1-GAUGED-RECERTIFICATION": ledger.STATUS_CLOSED,
-        "W2-G2-GAUGED-PROJECTION": ledger.STATUS_CLOSED,
-        "W3-G3-FULL-STATIONARITY": ledger.STATUS_OPEN,
-        "W3-G4-FULL-GAUGE-QUOTIENT": "BLOCKED_ON_G3",
-        "W3-G5-FULL-BFB": ledger.STATUS_CLOSED,
+        "W1-G1-GAUGED-RECERTIFICATION": gates["G1"]["status"],
+        "W2-G2-GAUGED-PROJECTION": (
+            "BLOCKED_ON_G1"
+            if gates["G2"]["status"] == ledger.STATUS_BLOCKED
+            else gates["G2"]["status"]
+        ),
+        "W3-G3-FULL-STATIONARITY": (
+            "BLOCKED_ON_G2"
+            if gates["G3"]["status"] == ledger.STATUS_BLOCKED
+            else gates["G3"]["status"]
+        ),
+        "W3-G4-FULL-GAUGE-QUOTIENT": (
+            "BLOCKED_ON_G3"
+            if gates["G4"]["status"] == ledger.STATUS_BLOCKED
+            else gates["G4"]["status"]
+        ),
+        "W3-G5-FULL-BFB": (
+            "BLOCKED_ON_G1_G2"
+            if gates["G5"]["status"] == ledger.STATUS_BLOCKED
+            else gates["G5"]["status"]
+        ),
     }
     return [
         {**task, "status": promoted_statuses.get(task["id"], task["status"])}
@@ -302,18 +345,58 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
         ]
         is True
     )
-    expected_statuses = ledger._expected_gate_statuses(contract_consistent)
+    eft_g6 = ledger._load_json_artifact(EFT_G6_JSON)
+    eft_g6_raw_sha256 = ledger._raw_file_sha256(EFT_G6_JSON)
+    direct_parallel_eft_g6 = ledger._parallel_eft_g6_spectrum(
+        eft_g6,
+        raw_sha256=eft_g6_raw_sha256,
+        gate_source_raw_sha256=ledger._raw_file_sha256(EFT_G6_SOURCE),
+    )
+    ledger_parallel_eft_g6 = gate_report.get("parallel_EFT_G6_spectrum", {})
+    parallel_eft_g6_closed = bool(
+        EFT_G6_CORE_SHA256 == ledger.FINAL_G6_EFT_MATHEMATICAL_CORE_SHA256
+        and EFT_G6_RAW_SHA256 == ledger.FINAL_G6_EFT_MATHEMATICAL_RAW_SHA256
+        and direct_parallel_eft_g6["source_bound"] is True
+        and ledger_parallel_eft_g6 == direct_parallel_eft_g6
+        and direct_parallel_eft_g6[
+            "mathematical_G6_closed_for_EFT_model"
+        ]
+        is True
+    )
+    g1_full_component_tensors_closed = bool(
+        gauged["G1"].get("full_G1_closed", False)
+    )
+    g2_scoped_derivatives_complete = bool(
+        gauged["G2"].get("scoped_derivative_audit_complete", False)
+    )
+    expected_statuses = ledger._expected_gate_statuses(
+        contract_consistent,
+        g1_full_component_tensors_closed=g1_full_component_tensors_closed,
+        g2_scoped_derivatives_complete=g2_scoped_derivatives_complete,
+    )
     statuses = {name: row["status"] for name, row in gates.items()}
     expected_task_frontier = {task["id"]: task["status"] for task in TASKS}
     if contract_consistent:
         expected_task_frontier.update(
             {
                 "W0-MODEL-CONTRACT": ledger.STATUS_CLOSED,
-                "W1-G1-GAUGED-RECERTIFICATION": ledger.STATUS_CLOSED,
-                "W2-G2-GAUGED-PROJECTION": ledger.STATUS_CLOSED,
-                "W3-G3-FULL-STATIONARITY": ledger.STATUS_OPEN,
+                "W1-G1-GAUGED-RECERTIFICATION": statuses["G1"],
+                "W2-G2-GAUGED-PROJECTION": (
+                    "BLOCKED_ON_G1"
+                    if statuses["G2"] == ledger.STATUS_BLOCKED
+                    else statuses["G2"]
+                ),
+                "W3-G3-FULL-STATIONARITY": (
+                    "BLOCKED_ON_G2"
+                    if statuses["G3"] == ledger.STATUS_BLOCKED
+                    else statuses["G3"]
+                ),
                 "W3-G4-FULL-GAUGE-QUOTIENT": "BLOCKED_ON_G3",
-                "W3-G5-FULL-BFB": ledger.STATUS_CLOSED,
+                "W3-G5-FULL-BFB": (
+                    "BLOCKED_ON_G1_G2"
+                    if statuses["G5"] == ledger.STATUS_BLOCKED
+                    else statuses["G5"]
+                ),
             }
         )
     task_statuses = {task["id"]: task["status"] for task in tasks}
@@ -350,13 +433,28 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
             ]
             is False
         ),
-        "parallel_EFT_G4_G5_leave_authoritative_frontier_unchanged": (
+        "parallel_EFT_G6_spectrum_raw_and_core_bound": (
+            parallel_eft_g6_closed
+            and direct_parallel_eft_g6["raw_sha256"] == EFT_G6_RAW_SHA256
+            and direct_parallel_eft_g6["core_sha256"] == EFT_G6_CORE_SHA256
+            and direct_parallel_eft_g6[
+                "release_G6_verified_for_EFT_model"
+            ]
+            is False
+            and direct_parallel_eft_g6[
+                "authoritative_renormalizable_G6_closed"
+            ]
+            is False
+            and direct_parallel_eft_g6["authoritative_G6_gate_mutated"]
+            is False
+        ),
+        "parallel_EFT_G4_G5_G6_leave_authoritative_frontier_unchanged": (
             statuses == expected_statuses
             and (
                 contract_consistent
                 or all(
                     statuses[name] == ledger.STATUS_BLOCKED
-                    for name in ("G3", "G4", "G5")
+                    for name in ("G3", "G4", "G5", "G6")
                 )
             )
         ),
@@ -388,10 +486,15 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
             and historical["G3"]["strict_local_minimum_found"] is False
             and gates["G3"]["status"] != ledger.STATUS_CLOSED
         ),
-        "gauged_G1_G2_scoped_recertification_recorded": (
+        "gauged_G1_multiplicity_census_and_G2_scoped_audit_recorded": (
             gauged["G1"]["invariant_directions"] == 44
             and gauged["G1"]["real_potential_parameters"] == 51
+            and gauged["G1"]["multiplicity_census_complete"] is True
+            and gauged["G1"]["full_G1_closed"] is False
             and gauged["G2"]["real_field_dimension"] == 486
+            and gauged["G2"]["scoped_derivative_audit_complete"] is True
+            and gauged["G2"]["authoritative_promotion_blocked_on_full_G1"]
+            is True
             and gauged["G2"]["promoted_stationarity_rank"] == 13
             and gauged["G2"]["promoted_stationarity_nullity"] == 38
             and gauged["G2"][
@@ -400,6 +503,7 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
             and gauged["G2"]["stationarity_rank_13_exactly_certified"] is True
             and gauged["G2"]["stationarity_nullity_38_exactly_certified"] is True
             and gates["G1"]["scoped_calculation_complete"] is True
+            and gates["G1"]["full_gate_calculation_complete"] is False
             and gates["G2"]["scoped_calculation_complete"] is True
         ),
         "constructive_G3_frontier_artifacts_are_integrated": (
@@ -730,8 +834,7 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
             and g3_frontier["global_uniqueness_certified"] is False
             and g3_frontier["G3_closed"] is False
             and gates["G3"]["status"] != ledger.STATUS_CLOSED
-            and gates["G5"]["status"]
-            == (ledger.STATUS_CLOSED if contract_consistent else ledger.STATUS_BLOCKED)
+            and gates["G5"]["status"] == expected_statuses["G5"]
         ),
         "whole_model_neither_validated_nor_excluded": (
             gate_report["feasibility"]["whole_model_validated"] is False
@@ -742,8 +845,16 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
     if audit_failures:
         status = "G1_G8_EXECUTION_ROADMAP_AUDIT_FAILED"
         overall_state = "EXECUTION_FAIL"
-    elif contract_consistent:
+    elif contract_consistent and statuses["G1"] == ledger.STATUS_CLOSED and statuses[
+        "G2"
+    ] == ledger.STATUS_CLOSED:
         status = "G1_G8_EXECUTION_ROADMAP_READY__G1_G2_G5_CLOSED__G3_GLOBAL_OPEN"
+        overall_state = ledger.STATUS_OPEN
+    elif contract_consistent:
+        status = (
+            "G1_G8_EXECUTION_ROADMAP_READY__MODEL_CONTRACT_CLOSED__"
+            "G1_COMPONENT_TENSOR_INTEGRATION_OPEN__G2_BLOCKED_ON_G1"
+        )
         overall_state = ledger.STATUS_OPEN
     else:
         status = "G1_G8_EXECUTION_ROADMAP_READY__WAVE0_MODEL_CONTRACT_BLOCKED"
@@ -784,14 +895,18 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
         "G6-G8 remain dependency-blocked; the "
         "historical 64/91 saddle/search remains scoped to option C."
         if contract_consistent
+        and statuses["G1"] == ledger.STATUS_CLOSED
+        and statuses["G2"] == ledger.STATUS_CLOSED
         else "Wave 0 MODEL_CONTRACT is the first critical-path task. All G1-G8 "
-        "gates are BLOCKED and none is closed. The gauged scalar G1/G2 "
-        "calculations are complete scoped subtheorems at 44/51/486. Three "
+        "gates are BLOCKED and none is closed. The exact G1 multiplicity census "
+        "is complete at 28 Hermitian conjugacy orbits, 44 directions, and 51 "
+        "parameters, while its explicit component-tensor/Clebsch integration "
+        "remains open. The scoped G2 derivative audit is complete at 44/51/486. Three "
         "structural gradient columns vanish exactly; a compiler-bound nonzero "
         "13x13 minor and exact full-row factorization prove stationarity "
-        "rank/nullity 13/38, with SVD retained only as a diagnostic. These "
-        "results await contract "
-        "promotion, not recalculation. G3 now has a 27-of-51 perturbative SOS "
+        "rank/nullity 13/38, with SVD retained only as a diagnostic. G2 does not "
+        "require recalculation, but cannot be promoted before full G1 and the "
+        "model contract close. G3 now has a 27-of-51 perturbative SOS "
         "candidate with J0=-21/200. Exact source-bound SOS identities prove "
         "stationarity and complete BFB. Direct exact arithmetic gives P+Delta "
         "rank/nullity 429/33 and proves positivity on all 448 transverse Hessian "
@@ -824,6 +939,17 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
         "64/91 calculation "
         "and 449-dimensional saddle/search remain scoped to option C."
     )
+    if contract_consistent and statuses["G1"] == ledger.STATUS_OPEN:
+        verdict = (
+            "Wave 0 MODEL_CONTRACT is CLOSED, but full G1 remains OPEN. The exact "
+            "renormalizable multiplicity census is complete at 28 Hermitian "
+            "conjugacy orbits, 44 invariant directions, and 51 real parameters; "
+            "the explicit component-tensor/Clebsch integration is still open. "
+            "The exact 44/51/486 G2 derivative and Ward audit is complete as a "
+            "scoped subtheorem with stationarity rank/nullity 13/38, but its "
+            "authoritative task remains BLOCKED_ON_G1. Contract repair alone "
+            "therefore closes no G1-G8 gate; G3-G8 remain dependency-blocked."
+        )
     verdict += (
         " In parallel, the registered dimension-six current-kernel EFT "
         "contract closes mathematical G3 exactly; its release verification "
@@ -843,6 +969,15 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
         "open and authoritative renormalizable G5 remains contract-blocked."
         if parallel_eft_g5_closed
         else " The parallel EFT G5 certificate is missing or invalid."
+    )
+    verdict += (
+        " Its exact normalized tree-level scalar spectrum closes mathematical "
+        "G6: 486 real modes split into 37 gauge tangents, one physical PQ axion, "
+        "and 448 strictly positive massive modes with complete residual-group and "
+        "mixing provenance. EFT release G6 and authoritative renormalizable G6 "
+        "remain false."
+        if parallel_eft_g6_closed
+        else " The parallel EFT G6 spectrum gate is missing or invalid."
     )
     return {
         "status": status,
@@ -908,6 +1043,35 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
             ],
             "release_blockers": direct_parallel_eft_g5["release_blockers"],
         },
+        "parallel_EFT_G6_resolution": {
+            "gate": EFT_G6_JSON.name,
+            "source_bound": direct_parallel_eft_g6["source_bound"],
+            "raw_sha256": eft_g6_raw_sha256,
+            "expected_raw_sha256": EFT_G6_RAW_SHA256,
+            "core_sha256": eft_g6.get("core_sha256"),
+            "expected_core_sha256": EFT_G6_CORE_SHA256,
+            "gate_source_raw_sha256": direct_parallel_eft_g6[
+                "gate_source_raw_sha256"
+            ],
+            "expected_gate_source_raw_sha256": (
+                ledger.FINAL_G6_EFT_GATE_SOURCE_RAW_SHA256
+            ),
+            "spectrum_core_sha256": direct_parallel_eft_g6[
+                "spectrum_core_sha256"
+            ],
+            "expected_spectrum_core_sha256": (
+                ledger.FINAL_G6_EFT_SPECTRUM_CORE_SHA256
+            ),
+            "mathematical_G6_closed": parallel_eft_g6_closed,
+            "original_renormalizable_G6_closed": False,
+            "release_G6_verified": False,
+            "authoritative_G6_gate_mutated": False,
+            "integration_completed": direct_parallel_eft_g6[
+                "parallel_integration_completed"
+            ],
+            "spectrum_summary": direct_parallel_eft_g6["spectrum_summary"],
+            "release_blockers": direct_parallel_eft_g6["release_blockers"],
+        },
         "summary": gate_report["summary"],
         "new_physics_policy": (
             "Historical calculations remain scoped subtheorems. No whole-model "
@@ -940,13 +1104,14 @@ def write_markdown(report: dict[str, Any]) -> str:
         "## Parallel dimension-six EFT classifications",
         "",
         (
-            "- Mathematical G3/G4/G5: "
+            "- Mathematical G3/G4/G5/G6: "
             f"`{report['parallel_EFT_G3_resolution']['mathematical_G3_closed']}`/"
             f"`{report['parallel_EFT_G4_resolution']['mathematical_G4_closed']}`/"
-            f"`{report['parallel_EFT_G5_resolution']['mathematical_G5_closed']}`"
+            f"`{report['parallel_EFT_G5_resolution']['mathematical_G5_closed']}`/"
+            f"`{report['parallel_EFT_G6_resolution']['mathematical_G6_closed']}`"
         ),
-        "- Release G3/G4/G5: `False`/`False`/`False`",
-        "- Authoritative renormalizable G3/G4/G5 are not promoted.",
+        "- Release G3/G4/G5/G6: `False`/`False`/`False`/`False`",
+        "- Authoritative renormalizable G3/G4/G5/G6 are not promoted.",
         "",
         "## Gate ledger",
         "",

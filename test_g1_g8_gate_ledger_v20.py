@@ -41,7 +41,8 @@ class G1G8GateLedgerTests(unittest.TestCase):
         self.assertEqual(self.report["n_failed"], 0, self.report["audit_failures"])
         self.assertEqual(
             self.report["status"],
-            "G1_G8_LEDGER_AUDIT_COMPLETE__MODEL_CONTRACT_BLOCKED__GAUGED_G1_G2_SCOPED_RECERTIFIED",
+            "G1_G8_LEDGER_AUDIT_COMPLETE__MODEL_CONTRACT_BLOCKED__"
+            "G1_MULTIPLICITY_CENSUS_AND_G2_DERIVATIVE_AUDIT_RECERTIFIED",
         )
         self.assertEqual(self.report["overall_state"], mod.STATUS_BLOCKED)
         self.assertFalse(self.report["contract_consistent"])
@@ -107,9 +108,10 @@ class G1G8GateLedgerTests(unittest.TestCase):
             )["source_bound"]
         )
 
-    def test_parallel_eft_g4_g5_are_bound_without_promoting_legacy_gates(self):
+    def test_parallel_eft_g4_g5_g6_are_bound_without_authoritative_promotion(self):
         g4 = self.report["parallel_EFT_G4_mathematical"]
         g5 = self.report["parallel_EFT_G5_mathematical"]
+        g6 = self.report["parallel_EFT_G6_spectrum"]
         self.assertTrue(g4["source_bound"])
         self.assertEqual(g4["core_sha256"], mod.FINAL_G4_EFT_MATHEMATICAL_CORE_SHA256)
         self.assertEqual(g4["raw_sha256"], mod.FINAL_G4_EFT_MATHEMATICAL_RAW_SHA256)
@@ -139,7 +141,48 @@ class G1G8GateLedgerTests(unittest.TestCase):
             g5["release_blockers"],
         )
 
-        for name in ("G3", "G4", "G5"):
+        self.assertTrue(g6["source_bound"])
+        self.assertEqual(g6["core_sha256"], mod.FINAL_G6_EFT_MATHEMATICAL_CORE_SHA256)
+        self.assertEqual(g6["raw_sha256"], mod.FINAL_G6_EFT_MATHEMATICAL_RAW_SHA256)
+        self.assertEqual(
+            g6["gate_source_raw_sha256"],
+            mod.FINAL_G6_EFT_GATE_SOURCE_RAW_SHA256,
+        )
+        self.assertEqual(
+            g6["spectrum_core_sha256"], mod.FINAL_G6_EFT_SPECTRUM_CORE_SHA256
+        )
+        self.assertEqual(
+            g6["spectrum_source_raw_sha256"],
+            mod.FINAL_G6_EFT_SPECTRUM_SOURCE_RAW_SHA256,
+        )
+        self.assertEqual(
+            g6["spectrum_JSON_raw_sha256"],
+            mod.FINAL_G6_EFT_SPECTRUM_JSON_RAW_SHA256,
+        )
+        self.assertTrue(g6["mathematical_G6_closed_for_EFT_model"])
+        self.assertFalse(g6["release_G6_verified_for_EFT_model"])
+        self.assertFalse(g6["authoritative_renormalizable_G6_closed"])
+        self.assertFalse(g6["authoritative_G6_gate_mutated"])
+        self.assertFalse(g6["whole_model_validated"])
+        self.assertEqual(g6["spectrum_summary"]["ambient_real_fields"], 486)
+        self.assertEqual(g6["spectrum_summary"]["gauge_quotient_dimension"], 449)
+        self.assertEqual(g6["spectrum_summary"]["physical_PQ_axions"], 1)
+        self.assertEqual(g6["spectrum_summary"]["positive_massive_modes"], 448)
+        self.assertTrue(g6["checks"]["parallel_integration_state_classified"])
+        self.assertEqual(
+            g6["parallel_integration_completed"],
+            "parallel_EFT_G6_integrated_into_release_orchestrators"
+            not in g6["release_blockers"],
+        )
+        self.assertFalse(
+            mod._parallel_eft_g6_spectrum(
+                mod._load_json_artifact(mod.FINAL_G6_EFT_MATHEMATICAL_JSON),
+                raw_sha256=mod.FINAL_G6_EFT_MATHEMATICAL_RAW_SHA256,
+                gate_source_raw_sha256="0" * 64,
+            )["source_bound"]
+        )
+
+        for name in ("G3", "G4", "G5", "G6"):
             self.assertEqual(self.report["gates"][name]["status"], mod.STATUS_BLOCKED)
         self.assertTrue(
             self.report["checks"][
@@ -149,6 +192,11 @@ class G1G8GateLedgerTests(unittest.TestCase):
         self.assertTrue(
             self.report["checks"][
                 "parallel_EFT_G5_mathematical_is_source_bound_and_release_open"
+            ]
+        )
+        self.assertTrue(
+            self.report["checks"][
+                "parallel_EFT_G6_spectrum_is_source_bound_and_release_open"
             ]
         )
 
@@ -162,6 +210,11 @@ class G1G8GateLedgerTests(unittest.TestCase):
                 mod._parallel_eft_g5_mathematical,
                 mod.FINAL_G5_EFT_MATHEMATICAL_JSON,
                 mod.FINAL_G5_EFT_MATHEMATICAL_RAW_SHA256,
+            ),
+            (
+                mod._parallel_eft_g6_spectrum,
+                mod.FINAL_G6_EFT_MATHEMATICAL_JSON,
+                mod.FINAL_G6_EFT_MATHEMATICAL_RAW_SHA256,
             ),
         )
         for validator, path, raw_sha256 in cases:
@@ -770,12 +823,23 @@ class G1G8GateLedgerTests(unittest.TestCase):
             frontier,
         )
 
-    def test_gauged_g1_g2_are_complete_scoped_subtheorems(self):
+    def test_g1_multiplicity_census_and_g2_derivative_audit_are_scoped(self):
         scoped = self.report["gauged_u1x_scalar_subtheorems"]
         self.assertEqual(scoped["model_contract_id"], mod.AUTHORITATIVE_CONTRACT_ID)
         self.assertFalse(scoped["whole_model_gate_closure"])
+        self.assertEqual(
+            scoped["G1"]["scoped_status"],
+            "COMPLETE_GAUGED_U1X_MULTIPLICITY_CENSUS__FULL_G1_OPEN",
+        )
+        self.assertTrue(scoped["G1"]["multiplicity_census_complete"])
+        self.assertFalse(
+            scoped["G1"]["explicit_component_tensor_subset_integration_complete"]
+        )
+        self.assertFalse(scoped["G1"]["full_G1_closed"])
         self.assertEqual(scoped["G1"]["invariant_directions"], 44)
         self.assertEqual(scoped["G1"]["real_potential_parameters"], 51)
+        self.assertTrue(scoped["G2"]["scoped_derivative_audit_complete"])
+        self.assertTrue(scoped["G2"]["authoritative_promotion_blocked_on_full_G1"])
         self.assertEqual(scoped["G2"]["invariant_directions"], 44)
         self.assertEqual(scoped["G2"]["real_potential_parameters"], 51)
         self.assertEqual(scoped["G2"]["real_field_dimension"], 486)
@@ -793,6 +857,12 @@ class G1G8GateLedgerTests(unittest.TestCase):
             gate = self.report["gates"][gate_name]
             self.assertEqual(gate["status"], mod.STATUS_BLOCKED)
             self.assertTrue(gate["scoped_calculation_complete"])
+        self.assertFalse(
+            self.report["gates"]["G1"]["full_gate_calculation_complete"]
+        )
+        self.assertTrue(
+            self.report["gates"]["G2"]["full_gate_calculation_complete"]
+        )
 
     def test_every_authoritative_gate_is_blocked_and_none_is_closed(self):
         gates = self.report["gates"]
@@ -846,7 +916,10 @@ class G1G8GateLedgerTests(unittest.TestCase):
         self.assertEqual(feasibility["current_authoritative_closed_gates"], 0)
         self.assertFalse(feasibility["guarantee_model_survives_recertification"])
         self.assertTrue(
-            feasibility["gauged_G1_scalar_census_scoped_subtheorem_complete"]
+            feasibility["gauged_G1_multiplicity_census_complete"]
+        )
+        self.assertFalse(
+            feasibility["gauged_G1_full_component_tensor_integration_complete"]
         )
         self.assertTrue(
             feasibility["gauged_G2_dense_derivative_scoped_subtheorem_complete"]
@@ -858,7 +931,7 @@ class G1G8GateLedgerTests(unittest.TestCase):
             feasibility["gauged_G3_direct_exact_source_binding_complete"]
         )
 
-    def test_repaired_contract_promotes_g1_g2_without_audit_failure(self):
+    def test_repaired_contract_cannot_close_g1_without_component_tensors(self):
         inputs = self.report["model_contract_reports"]
         repaired_x = copy.deepcopy(inputs["exact_X"])
         repaired_x.update(
@@ -885,24 +958,40 @@ class G1G8GateLedgerTests(unittest.TestCase):
 
         self.assertEqual(report["n_failed"], 0, report["audit_failures"])
         self.assertEqual(report["overall_state"], mod.STATUS_OPEN)
-        self.assertEqual(report["summary"]["closed"], ["G1", "G2", "G5"])
-        self.assertEqual(report["summary"]["open"], ["G3"])
+        self.assertEqual(report["summary"]["closed"], [])
+        self.assertEqual(report["summary"]["open"], ["G1"])
+        self.assertEqual(
+            report["summary"]["blocked"],
+            ["G2", "G3", "G4", "G5", "G6", "G7", "G8"],
+        )
         self.assertEqual(
             {name: row["status"] for name, row in report["gates"].items()},
             {
-                "G1": mod.STATUS_CLOSED,
-                "G2": mod.STATUS_CLOSED,
-                "G3": mod.STATUS_OPEN,
+                "G1": mod.STATUS_OPEN,
+                "G2": mod.STATUS_BLOCKED,
+                "G3": mod.STATUS_BLOCKED,
                 "G4": mod.STATUS_BLOCKED,
-                "G5": mod.STATUS_CLOSED,
+                "G5": mod.STATUS_BLOCKED,
                 "G6": mod.STATUS_BLOCKED,
                 "G7": mod.STATUS_BLOCKED,
                 "G8": mod.STATUS_BLOCKED,
             },
         )
-        self.assertEqual(report["gates"]["G4"]["unsatisfied_dependencies"], ["G3"])
+        self.assertEqual(report["gates"]["G2"]["unsatisfied_dependencies"], ["G1"])
+        self.assertEqual(report["gates"]["G3"]["unsatisfied_dependencies"], ["G2"])
+        self.assertEqual(
+            report["gates"]["G5"]["unsatisfied_dependencies"], ["G1", "G2"]
+        )
         self.assertEqual(report["gates"]["G7"]["unsatisfied_dependencies"], ["G6"])
         self.assertNotIn(mod.CONTRACT_BLOCKER, report["scientific_blockers"])
+        self.assertIn(
+            "G1_EXPLICIT_COMPONENT_TENSOR_INTEGRATION_OPEN",
+            report["scientific_blockers"],
+        )
+        self.assertFalse(
+            report["gauged_u1x_scalar_subtheorems"]["promoted_to_authoritative_G1_G2"]
+        )
+        self.assertIn("full G1 remains OPEN", report["verdict"])
 
     def test_unbound_boolean_cannot_promote_model_contract(self):
         inputs = self.report["model_contract_reports"]

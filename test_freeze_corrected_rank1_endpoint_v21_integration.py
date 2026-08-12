@@ -111,6 +111,14 @@ class CorrectedEndpointIntegrationFreezeTests(unittest.TestCase):
             report["logical_pins"]["EFT_G5_exact_global_lower_bound"],
             freezer.EFT_G5_EXACT_GLOBAL_LOWER_BOUND,
         )
+        self.assertEqual(
+            report["logical_pins"]["EFT_G6_spectrum_core_sha256"],
+            freezer.EFT_G6_SPECTRUM_CORE_SHA256,
+        )
+        self.assertEqual(
+            report["logical_pins"]["EFT_G6_mathematical_gate_core_sha256"],
+            freezer.EFT_G6_MATHEMATICAL_GATE_CORE_SHA256,
+        )
         self.assertEqual(report["EFT_G3_bundle"]["raw_file_count"], 13)
         self.assertTrue(report["EFT_G3_bundle"]["all_checks_pass"])
         self.assertEqual(
@@ -122,6 +130,9 @@ class CorrectedEndpointIntegrationFreezeTests(unittest.TestCase):
         self.assertEqual(report["EFT_G4_G5_bundle"]["raw_file_count"], 8)
         self.assertTrue(report["EFT_G4_G5_bundle"]["all_checks_pass"])
         self.assertTrue(all(report["EFT_G4_G5_bundle"]["checks"].values()))
+        self.assertEqual(report["EFT_G6_bundle"]["raw_file_count"], 8)
+        self.assertTrue(report["EFT_G6_bundle"]["all_checks_pass"])
+        self.assertTrue(all(report["EFT_G6_bundle"]["checks"].values()))
         self.assertEqual(
             report["workflow_contract"],
             {
@@ -129,8 +140,8 @@ class CorrectedEndpointIntegrationFreezeTests(unittest.TestCase):
                 "legacy_rejection_assertions": 7,
                 "full_source_rebuild_invocations": 1,
                 "read_only_frozen_dependency_orchestrators": 3,
-                "read_only_frozen_report_sources": 15,
-                "read_only_frozen_report_commands": 45,
+                "read_only_frozen_report_sources": 17,
+                "read_only_frozen_report_commands": 51,
                 "no_write_frozen_classification_sources": 3,
                 "no_write_frozen_classification_commands": 9,
                 "no_write_stochastic_report_orchestrators": 2,
@@ -181,6 +192,17 @@ class CorrectedEndpointIntegrationFreezeTests(unittest.TestCase):
         self.assertFalse(
             report["claim_boundary"]["EFT_release_G5_verified"]
         )
+        self.assertFalse(
+            report["claim_boundary"]["authoritative_renormalizable_G6_closed"]
+        )
+        self.assertTrue(
+            report["claim_boundary"][
+                "EFT_dimension6_tree_level_mathematical_G6_closed"
+            ]
+        )
+        self.assertFalse(
+            report["claim_boundary"]["EFT_release_G6_verified"]
+        )
         for name in (
             "quantitative_beta_global_coercivity_proved",
             "legacy_v20_physical_target_valid",
@@ -221,6 +243,17 @@ class CorrectedEndpointIntegrationFreezeTests(unittest.TestCase):
             dict(sorted(freezer.EFT_G4_G5_RAW_PINS.items())),
         )
         for relative, expected in freezer.EFT_G4_G5_RAW_PINS.items():
+            row = report["inventory"][relative]
+            self.assertEqual(row["hash_mode"], "raw")
+            self.assertEqual(row["content_sha256"], expected)
+            self.assertIn(relative, freezer.CHECKSUM_REQUIRED_PATHS)
+
+        self.assertEqual(len(freezer.EFT_G6_RAW_PINS), 8)
+        self.assertEqual(
+            report["generation_source_pins"]["EFT_G6_raw_sha256"],
+            dict(sorted(freezer.EFT_G6_RAW_PINS.items())),
+        )
+        for relative, expected in freezer.EFT_G6_RAW_PINS.items():
             row = report["inventory"][relative]
             self.assertEqual(row["hash_mode"], "raw")
             self.assertEqual(row["content_sha256"], expected)
@@ -302,6 +335,47 @@ class CorrectedEndpointIntegrationFreezeTests(unittest.TestCase):
                     ArithmeticError, "frozen EFT G4/G5 logical bundle drifted"
                 ):
                     freezer._require_eft_g4_g5_bundle()
+
+        self._assert_eft_g6_logical_bundle_and_claim_boundary()
+
+    def _assert_eft_g6_logical_bundle_and_claim_boundary(self) -> None:
+        bundle = freezer._require_eft_g6_bundle()
+        self.assertEqual(bundle["raw_file_count"], 8)
+        self.assertTrue(bundle["all_checks_pass"])
+        self.assertTrue(all(bundle["checks"].values()))
+        self.assertTrue(bundle["checks"]["complete_exact_positive_factorization"])
+        self.assertTrue(bundle["checks"]["SU3C_U1em_provenance_exact"])
+        self.assertTrue(bundle["checks"]["exact_algebraic_mixing_complete"])
+        self.assertTrue(bundle["checks"]["physical_quotient_and_PQ_axion_exact"])
+        self.assertTrue(
+            bundle["checks"]["gate_completed_integration_and_blockers_exact"]
+        )
+
+        with tempfile.TemporaryDirectory() as directory:
+            root = freezer.Path(directory)
+            names = (
+                "exact_eft_physical_scalar_spectrum_v20.py",
+                "EXACT_EFT_PHYSICAL_SCALAR_SPECTRUM_V20.json",
+                "final_g6_eft_mathematical_gate_v20.py",
+                "FINAL_G6_EFT_MATHEMATICAL_GATE_V20.json",
+            )
+            for name in names:
+                (root / name).write_bytes((freezer.ROOT / name).read_bytes())
+            with patch.object(freezer, "ROOT", root):
+                self.assertTrue(freezer._require_eft_g6_bundle()["all_checks_pass"])
+                spectrum_report = (
+                    root / "EXACT_EFT_PHYSICAL_SCALAR_SPECTRUM_V20.json"
+                )
+                mutated = json.loads(spectrum_report.read_text(encoding="utf-8"))
+                mutated["physical_quotient"]["physical_PQ_axion_count"] = 0
+                spectrum_report.write_text(
+                    json.dumps(mutated, indent=2, sort_keys=True) + "\n",
+                    encoding="utf-8",
+                )
+                with self.assertRaisesRegex(
+                    ArithmeticError, "frozen EFT G6 logical bundle drifted"
+                ):
+                    freezer._require_eft_g6_bundle()
 
     def test_release_checksum_binds_adapter_regressions_and_workflows(self) -> None:
         lines = (freezer.ROOT / "SHA256SUMS").read_text(encoding="utf-8").splitlines()

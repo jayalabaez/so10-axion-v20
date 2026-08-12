@@ -166,24 +166,31 @@ of rank/nullity `448/38`.  The global zero-set chain proves
 `+F` locus, so equality is exactly one incident-flag orbit with stabilizer
 `SU(3)_C x U(1)_em`.
 
-Accordingly, mathematical G3, G4, and G5 are **closed for this dimension-six
-EFT model**.  The parallel G4 gate identifies one physical PQ axion in the
+Accordingly, mathematical G3, G4, G5, and normalized tree-level G6 are
+**closed for this dimension-six EFT model**.  The parallel G4 gate identifies
+one physical PQ axion in the
 449-dimensional gauge quotient and proves strict positivity on all 448
 massive/transverse directions for every positive EFT coefficient.  The G5
 gate reuses the frozen complete 486-real-field SOS lower bound together with
-the globally PSD dimension-six operator; it introduces no new SOS claim.
+the globally PSD dimension-six operator; it introduces no new SOS claim.  The
+G6 theorem factors the normalized physical generalized-Hessian pencil exactly,
+retains the PQ axion, and classifies all 448 positive massive modes by
+`SU(3)_C x U(1)_em` sector and basis-free algebraic mixing subspace.
 
 These are scoped mathematical gates, not a release promotion.  The original
 51-parameter renormalizable G3 and G4 remain open, authoritative
-renormalizable G5 remains contract-blocked, and the parallel G4/G5 production
+renormalizable G5/G6 remain contract-blocked, and the parallel G4-G6 production
 integration is complete.  The integration-only blockers are therefore
 discharged.  EFT release verification remains blocked on cutoff/Wilson
 matching, radiative stability, external execution of the extended contract,
 the separate upstream G1/G2 release prerequisites, and (for G4) release-level
-G3 approval.  Run the read-only chain with
+G3 approval.  G6 release additionally requires loop/pole masses and a physical
+threshold-uncertainty budget.  Run the read-only chain with
 `python final_g3_eft_acceptance_gate_v20.py`, then
 `python final_g4_eft_mathematical_gate_v20.py`, then
-`python final_g5_eft_mathematical_gate_v20.py`.  The legacy
+`python final_g5_eft_mathematical_gate_v20.py`, then
+`python exact_eft_physical_scalar_spectrum_v20.py`, then
+`python final_g6_eft_mathematical_gate_v20.py`.  The legacy
 `final_g3_acceptance_gate_v20.py` remains the fail-closed gate for the
 renormalizable model.
 

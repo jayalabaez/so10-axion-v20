@@ -84,6 +84,14 @@ FINAL_THEOREM_CORE_PATHS: tuple[str, ...] = (
     "FINAL_G5_EFT_MATHEMATICAL_GATE_V20.md",
     "final_g5_eft_mathematical_gate_v20.py",
     "test_final_g5_eft_mathematical_gate_v20.py",
+    "EXACT_EFT_PHYSICAL_SCALAR_SPECTRUM_V20.json",
+    "EXACT_EFT_PHYSICAL_SCALAR_SPECTRUM_V20.md",
+    "exact_eft_physical_scalar_spectrum_v20.py",
+    "test_exact_eft_physical_scalar_spectrum_v20.py",
+    "FINAL_G6_EFT_MATHEMATICAL_GATE_V20.json",
+    "FINAL_G6_EFT_MATHEMATICAL_GATE_V20.md",
+    "final_g6_eft_mathematical_gate_v20.py",
+    "test_final_g6_eft_mathematical_gate_v20.py",
     "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_V20.json",
     "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_V20.md",
     "EXACT_GAUGED_U1X_G3_RANK1_SU4_STABILIZER_V20.json",
@@ -646,6 +654,8 @@ def main() -> int:
     run([sys.executable, "final_g3_eft_acceptance_gate_v20.py"])
     run([sys.executable, "final_g4_eft_mathematical_gate_v20.py"])
     run([sys.executable, "final_g5_eft_mathematical_gate_v20.py"])
+    run([sys.executable, "exact_eft_physical_scalar_spectrum_v20.py"])
+    run([sys.executable, "final_g6_eft_mathematical_gate_v20.py"])
     run([sys.executable, "g1_g8_gate_ledger_v20.py"])
     run([sys.executable, "final_g3_acceptance_gate_v20.py"])
     run([sys.executable, "g1_g8_execution_roadmap_v20.py"])
@@ -853,6 +863,12 @@ def main() -> int:
     )
     final_g5_eft = json.loads(
         (ROOT / "FINAL_G5_EFT_MATHEMATICAL_GATE_V20.json").read_text()
+    )
+    exact_eft_g6_spectrum = json.loads(
+        (ROOT / "EXACT_EFT_PHYSICAL_SCALAR_SPECTRUM_V20.json").read_text()
+    )
+    final_g6_eft = json.loads(
+        (ROOT / "FINAL_G6_EFT_MATHEMATICAL_GATE_V20.json").read_text()
     )
     g3_candidate = json.loads(
         (ROOT / "GAUGED_U1X_G3_SOS_CANDIDATE_V20.json").read_text()
@@ -1795,6 +1811,81 @@ def main() -> int:
         },
         "parallel EFT G5 gate failed or mutated authoritative release scope",
     )
+    eft_g6_spectrum_classification = exact_eft_g6_spectrum["classification"]
+    eft_g6_factorization = exact_eft_g6_spectrum["exact_factorization"]
+    eft_g6_quotient = exact_eft_g6_spectrum["physical_quotient"]
+    require(
+        exact_eft_g6_spectrum["status"]
+        == "EXACT_EFT_TREE_LEVEL_PHYSICAL_SCALAR_SPECTRUM"
+        and exact_eft_g6_spectrum["core_sha256"]
+        == "abb704133c8be22b424ba20e23387d6f30412e6c82ab3a214e88bd8df5bef9cc"
+        and exact_eft_g6_spectrum["model_contract_id"]
+        == eft_contract["EFT_model_contract_id"]
+        and eft_g6_spectrum_classification[
+            "EFT_dimension6_tree_level_mathematical_G6_closed"
+        ]
+        is True
+        and eft_g6_spectrum_classification["EFT_release_G6_verified"] is False
+        and eft_g6_spectrum_classification[
+            "renormalizable_authoritative_G6_closed"
+        ]
+        is False
+        and eft_g6_factorization["total_algebraic_degree"] == 486
+        and eft_g6_factorization["zero_multiplicity"] == 38
+        and eft_g6_factorization["positive_massive_multiplicity"] == 448
+        and eft_g6_factorization["all_nonzero_roots_strictly_positive"] is True
+        and eft_g6_quotient["gauge_quotient_dimension"] == 449
+        and eft_g6_quotient["physical_PQ_axion_count"] == 1
+        and eft_g6_quotient["all_38_zero_modes_are_unphysical"] is False
+        and exact_eft_g6_spectrum["mixing_classification"]["complete"] is True
+        and exact_eft_g6_spectrum["uncertainty_scope"][
+            "physical_threshold_uncertainties_complete"
+        ]
+        is False,
+        "exact EFT G6 spectrum failed or exceeded its normalized tree-level scope",
+    )
+    eft_g6_classification = final_g6_eft["classification"]
+    eft_g6_release_criteria = final_g6_eft["release_criteria"]
+    require(
+        final_g6_eft["status"]
+        == "FINAL_EFT_G6_TREE_LEVEL_MATHEMATICAL_PASS_RELEASE_OPEN"
+        and final_g6_eft["core_sha256"]
+        == "e34b791478bf9cb00f951819cbfec45a99d51be776889d8a4e13cf1717eee738"
+        and final_g6_eft["contract"]["base_model_contract_id"]
+        == MODEL_CONTRACT_ID
+        and final_g6_eft["contract"]["EFT_model_contract_id"]
+        == eft_contract["EFT_model_contract_id"]
+        and eft_g6_classification["mathematical_G6_closed_for_EFT_model"] is True
+        and eft_g6_classification["release_G6_verified_for_EFT_model"] is False
+        and eft_g6_classification["authoritative_renormalizable_G6_closed"] is False
+        and eft_g6_classification["authoritative_G6_gate_mutated"] is False
+        and eft_g6_classification["whole_model_validated"] is False
+        and eft_g6_release_criteria["mathematical_tree_level_EFT_G6_complete"]
+        is True
+        and eft_g6_release_criteria[
+            "absolute_Lambda_EFT_and_Wilson_matching_approved"
+        ]
+        is False
+        and eft_g6_release_criteria["loop_running_and_pole_mass_spectrum_complete"]
+        is False
+        and eft_g6_release_criteria["threshold_uncertainty_budget_complete"]
+        is False
+        and eft_g6_release_criteria[
+            "parallel_EFT_G6_integrated_into_release_orchestrators"
+        ]
+        is True
+        and set(final_g6_eft["release_blockers"])
+        == {
+            "absolute_Lambda_EFT_and_Wilson_matching_approved",
+            "loop_running_and_pole_mass_spectrum_complete",
+            "threshold_uncertainty_budget_complete",
+            "external_extended_model_contract_executed",
+            "authoritative_G1_closed",
+            "authoritative_G2_closed",
+            "authoritative_renormalizable_G3_G4_G5_closed",
+        },
+        "parallel EFT G6 gate failed or mutated authoritative/release scope",
+    )
     candidate_coefficients = g3_candidate["coefficient_vector"]
     require(
         g3_candidate["n_failed"] == 0
@@ -2020,6 +2111,8 @@ def main() -> int:
             "test_final_g3_eft_acceptance_gate_v20.py",
             "test_final_g4_eft_mathematical_gate_v20.py",
             "test_final_g5_eft_mathematical_gate_v20.py",
+            "test_exact_eft_physical_scalar_spectrum_v20.py",
+            "test_final_g6_eft_mathematical_gate_v20.py",
             "test_g1_g8_gate_ledger_v20.py",
             "test_final_g3_acceptance_gate_v20.py",
             "test_gauged_u1x_g3_sos_candidate_v20.py",

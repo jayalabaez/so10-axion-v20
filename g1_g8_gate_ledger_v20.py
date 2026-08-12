@@ -11,9 +11,9 @@ scoped historical Option-C subtheorems.
 
 Scientific blocking is not an audit execution failure: a correct current
 report has ``n_failed=0``, ``overall_state=BLOCKED``, and no closed gates.  The
-exact-X 44-direction/51-parameter scalar calculus is nevertheless a completed,
-contract-scoped subtheorem: blocking the whole-model gate must not erase that
-evidence.
+exact-X 44-direction/51-parameter multiplicity census and the G2 derivative
+audit are completed scoped subtheorems, while the explicit component-tensor
+integration required for full G1 remains open.
 """
 from __future__ import annotations
 
@@ -80,6 +80,26 @@ FINAL_G5_EFT_MATHEMATICAL_CORE_SHA256 = (
 )
 FINAL_G5_EFT_MATHEMATICAL_RAW_SHA256 = (
     "6d6e4fd9932a03e35146afb1bca850666e883aaed5e23b73b81f0f703e4e7db9"
+)
+FINAL_G6_EFT_MATHEMATICAL_JSON = ROOT / "FINAL_G6_EFT_MATHEMATICAL_GATE_V20.json"
+FINAL_G6_EFT_GATE_SOURCE = ROOT / "final_g6_eft_mathematical_gate_v20.py"
+FINAL_G6_EFT_MATHEMATICAL_CORE_SHA256 = (
+    "e34b791478bf9cb00f951819cbfec45a99d51be776889d8a4e13cf1717eee738"
+)
+FINAL_G6_EFT_MATHEMATICAL_RAW_SHA256 = (
+    "85000f555eb3bc4e2e4bc49236a82ce2161987212906d78efd667bb52dd432f8"
+)
+FINAL_G6_EFT_GATE_SOURCE_RAW_SHA256 = (
+    "6ef314bf22e1d6ce43b382b5cb6e7673cef1e328f2f4c38abdafab6038edc150"
+)
+FINAL_G6_EFT_SPECTRUM_CORE_SHA256 = (
+    "abb704133c8be22b424ba20e23387d6f30412e6c82ab3a214e88bd8df5bef9cc"
+)
+FINAL_G6_EFT_SPECTRUM_SOURCE_RAW_SHA256 = (
+    "cdcc25b383098464fc6312d553dff555d19c57388df7de08db48b4167ebc5a36"
+)
+FINAL_G6_EFT_SPECTRUM_JSON_RAW_SHA256 = (
+    "797a90473c064a78ef313d56f1894d71114643a19ebd373e86fe8b2911bcf416"
 )
 EFT_MODEL_CONTRACT_ID = (
     "gauged_u1x_phi17_v20_eft_o6_current_kernel_gamma_1_over_20"
@@ -680,6 +700,145 @@ def _parallel_eft_g5_mathematical(
         "release_blockers": (
             list(report.get("release_blockers", [])) if source_bound else []
         ),
+        "checks": checks,
+    }
+
+
+def _parallel_eft_g6_spectrum(
+    report: dict[str, Any], *, raw_sha256: str = "", gate_source_raw_sha256: str = ""
+) -> dict[str, Any]:
+    """Validate exact tree-level EFT G6 without promoting authoritative G6."""
+    classification = report.get("classification", {})
+    contract = report.get("contract", {})
+    mathematical_checks = report.get("mathematical_checks", {})
+    spectrum = report.get("spectrum_summary", {})
+    artifacts = report.get("artifact_sha256", {})
+    upstream = report.get("upstream_cores", {})
+    release_criteria = report.get("release_criteria", {})
+    release_blockers = set(report.get("release_blockers", []))
+    nonmathematical_release_criteria = {
+        name
+        for name in release_criteria
+        if name != "mathematical_tree_level_EFT_G6_complete"
+    }
+    false_release_criteria = {
+        name
+        for name in nonmathematical_release_criteria
+        if release_criteria.get(name) is False
+    }
+    integration_criterion = release_criteria.get(
+        "parallel_EFT_G6_integrated_into_release_orchestrators"
+    )
+    checks = {
+        "artifact_present": bool(report),
+        "status_exact": (
+            report.get("status")
+            == "FINAL_EFT_G6_TREE_LEVEL_MATHEMATICAL_PASS_RELEASE_OPEN"
+        ),
+        "core_sha256_exact": (
+            report.get("core_sha256") == FINAL_G6_EFT_MATHEMATICAL_CORE_SHA256
+        ),
+        "raw_sha256_exact": raw_sha256 == FINAL_G6_EFT_MATHEMATICAL_RAW_SHA256,
+        "gate_source_raw_sha256_exact": (
+            gate_source_raw_sha256 == FINAL_G6_EFT_GATE_SOURCE_RAW_SHA256
+        ),
+        "contract_exact": (
+            contract.get("base_model_contract_id") == AUTHORITATIVE_CONTRACT_ID
+            and contract.get("EFT_model_contract_id") == EFT_MODEL_CONTRACT_ID
+            and contract.get("scope")
+            == "normalized exact tree-level dimension-six EFT spectrum"
+        ),
+        "spectrum_source_and_JSON_raw_pins_exact": (
+            artifacts.get("spectrum_source")
+            == FINAL_G6_EFT_SPECTRUM_SOURCE_RAW_SHA256
+            and artifacts.get("spectrum_JSON")
+            == FINAL_G6_EFT_SPECTRUM_JSON_RAW_SHA256
+        ),
+        "upstream_cores_and_gate_JSON_pins_exact": (
+            upstream.get("spectrum") == FINAL_G6_EFT_SPECTRUM_CORE_SHA256
+            and upstream.get("G4") == FINAL_G4_EFT_MATHEMATICAL_CORE_SHA256
+            and upstream.get("G5") == FINAL_G5_EFT_MATHEMATICAL_CORE_SHA256
+            and artifacts.get("G4_gate_JSON")
+            == FINAL_G4_EFT_MATHEMATICAL_RAW_SHA256
+            and artifacts.get("G5_gate_JSON")
+            == FINAL_G5_EFT_MATHEMATICAL_RAW_SHA256
+        ),
+        "all_embedded_mathematical_checks_pass": (
+            bool(mathematical_checks)
+            and all(value is True for value in mathematical_checks.values())
+        ),
+        "complete_exact_tree_level_spectrum": (
+            spectrum.get("ambient_real_fields") == 486
+            and spectrum.get("gauge_quotient_dimension") == 449
+            and spectrum.get("physical_PQ_axions") == 1
+            and spectrum.get("positive_massive_modes") == 448
+            and spectrum.get("primitive_factors") == 45
+            and spectrum.get("distinct_mass_squared_roots_including_zero") == 61
+            and spectrum.get("residual_group") == "SU(3)_C x U(1)_em"
+            and spectrum.get("mixing_subspaces_complete") is True
+        ),
+        "EFT_mathematical_G6_closed": (
+            classification.get("mathematical_G6_closed_for_EFT_model") is True
+            and release_criteria.get("mathematical_tree_level_EFT_G6_complete")
+            is True
+        ),
+        "renormalizable_authoritative_G6_unchanged": (
+            classification.get("authoritative_renormalizable_G6_closed") is False
+            and classification.get("authoritative_G6_gate_mutated") is False
+        ),
+        "EFT_release_open_and_criteria_fail_closed": (
+            classification.get("release_G6_verified_for_EFT_model") is False
+            and nonmathematical_release_criteria
+            and all(
+                isinstance(release_criteria.get(name), bool)
+                for name in nonmathematical_release_criteria
+            )
+            and release_blockers == false_release_criteria
+        ),
+        "parallel_integration_state_classified": (
+            isinstance(integration_criterion, bool)
+            and (
+                "parallel_EFT_G6_integrated_into_release_orchestrators"
+                in release_blockers
+            )
+            is (not integration_criterion)
+        ),
+        "whole_model_not_validated": (
+            classification.get("whole_model_validated") is False
+        ),
+    }
+    source_bound = all(checks.values())
+    return {
+        "namespace": "EFT_G6_TREE_LEVEL_MATHEMATICAL",
+        "artifact": FINAL_G6_EFT_MATHEMATICAL_JSON.name,
+        "expected_core_sha256": FINAL_G6_EFT_MATHEMATICAL_CORE_SHA256,
+        "core_sha256": report.get("core_sha256"),
+        "expected_raw_sha256": FINAL_G6_EFT_MATHEMATICAL_RAW_SHA256,
+        "raw_sha256": raw_sha256,
+        "expected_gate_source_raw_sha256": FINAL_G6_EFT_GATE_SOURCE_RAW_SHA256,
+        "gate_source_raw_sha256": gate_source_raw_sha256,
+        "expected_spectrum_core_sha256": FINAL_G6_EFT_SPECTRUM_CORE_SHA256,
+        "spectrum_core_sha256": upstream.get("spectrum"),
+        "expected_spectrum_source_raw_sha256": (
+            FINAL_G6_EFT_SPECTRUM_SOURCE_RAW_SHA256
+        ),
+        "spectrum_source_raw_sha256": artifacts.get("spectrum_source"),
+        "expected_spectrum_JSON_raw_sha256": FINAL_G6_EFT_SPECTRUM_JSON_RAW_SHA256,
+        "spectrum_JSON_raw_sha256": artifacts.get("spectrum_JSON"),
+        "EFT_model_contract_id": contract.get("EFT_model_contract_id"),
+        "base_model_contract_id": contract.get("base_model_contract_id"),
+        "source_bound": source_bound,
+        "mathematical_G6_closed_for_EFT_model": bool(
+            source_bound
+            and classification.get("mathematical_G6_closed_for_EFT_model") is True
+        ),
+        "release_G6_verified_for_EFT_model": False,
+        "authoritative_renormalizable_G6_closed": False,
+        "authoritative_G6_gate_mutated": False,
+        "whole_model_validated": False,
+        "parallel_integration_completed": integration_criterion is True,
+        "spectrum_summary": dict(spectrum) if source_bound else {},
+        "release_blockers": list(report.get("release_blockers", [])) if source_bound else [],
         "checks": checks,
     }
 
@@ -4252,6 +4411,34 @@ def _gauged_u1x_scalar_subtheorems(
     contract_consistent: bool,
 ) -> dict[str, Any]:
     """Expose completed scalar calculations without closing whole-model gates."""
+    g1_closure = g1_report.get("closure", {})
+    g1_flags = g1_report.get("flags", {})
+    g1_multiplicity_census_complete = bool(
+        g1_report.get("n_failed") == 0
+        and g1_closure.get(
+            "declared_symmetry_charge_multidegrees_degree_le_4_closed"
+        )
+        is True
+        and g1_closure.get("so10_singlet_multiplicities_degree_le_4_closed")
+        is True
+        and g1_closure.get("gauged_u1x_44_direction_subcensus_closed") is True
+        and g1_flags.get("renormalizable_G1_multiplicity_census_closed") is True
+    )
+    g1_component_tensors_complete = bool(
+        g1_closure.get("explicit_component_tensor_subset_integration_closed")
+        is True
+        and g1_flags.get("g1_explicit_tensor_subset_reaudit_open") is False
+    )
+    full_g1_closed = bool(
+        g1_multiplicity_census_complete
+        and g1_component_tensors_complete
+        and g1_flags.get("g1_closed") is True
+    )
+    g2_scoped_audit_complete = bool(
+        g2_report.get("n_failed") == 0
+        and g2_report.get("flags", {}).get("G2_gauged_u1x_derivatives_certified")
+        is True
+    )
     stationary = g2_report["stationary_Hessian_bridge"][
         "promoted_stationarity_matrix"
     ]
@@ -4262,12 +4449,26 @@ def _gauged_u1x_scalar_subtheorems(
             "486-real field chart"
         ),
         "whole_model_gate_closure": False,
-        "promoted_to_authoritative_G1_G2": contract_consistent,
+        "promoted_to_authoritative_G1_G2": bool(
+            contract_consistent and full_g1_closed and g2_scoped_audit_complete
+        ),
         "blocked_only_from_promotion_by_model_contract_mismatch": (
-            not contract_consistent
+            not contract_consistent and full_g1_closed
         ),
         "G1": {
-            "scoped_status": "COMPLETE_GAUGED_U1X_SCALAR_CENSUS",
+            "scoped_status": (
+                "COMPLETE_GAUGED_U1X_MULTIPLICITY_CENSUS__FULL_G1_OPEN"
+                if g1_multiplicity_census_complete and not full_g1_closed
+                else "COMPLETE_GAUGED_U1X_FULL_COMPONENT_TENSOR_INTEGRATION"
+                if full_g1_closed
+                else "GAUGED_U1X_MULTIPLICITY_CENSUS_INCOMPLETE"
+            ),
+            "multiplicity_census_complete": g1_multiplicity_census_complete,
+            "explicit_component_tensor_subset_integration_complete": (
+                g1_component_tensors_complete
+            ),
+            "full_G1_closed": full_g1_closed,
+            "remaining_exact_target": g1_report.get("next_exact_target"),
             "hermitian_conjugacy_orbits": g1_report["counts"][
                 "hermitian_conjugacy_orbits"
             ],
@@ -4280,6 +4481,8 @@ def _gauged_u1x_scalar_subtheorems(
         },
         "G2": {
             "scoped_status": "COMPLETE_GAUGED_U1X_DENSE_DERIVATIVE_AUDIT",
+            "scoped_derivative_audit_complete": g2_scoped_audit_complete,
+            "authoritative_promotion_blocked_on_full_G1": not full_g1_closed,
             "invariant_directions": g2_report["counts"]["invariant_directions"],
             "real_potential_parameters": g2_report["counts"]["real_parameters"],
             "real_field_dimension": g2_report["counts"]["real_field_dimension"],
@@ -4311,16 +4514,35 @@ def _gauged_u1x_scalar_subtheorems(
     }
 
 
-def _expected_gate_statuses(contract_consistent: bool) -> dict[str, str]:
+def _expected_gate_statuses(
+    contract_consistent: bool,
+    *,
+    g1_full_component_tensors_closed: bool = False,
+    g2_scoped_derivatives_complete: bool = True,
+) -> dict[str, str]:
     """Return the next scientifically honest frontier for the contract state."""
     if not contract_consistent:
         return {f"G{i}": STATUS_BLOCKED for i in range(1, 9)}
+    g1_status = (
+        STATUS_CLOSED if g1_full_component_tensors_closed else STATUS_OPEN
+    )
+    g2_status = (
+        STATUS_CLOSED
+        if g1_status == STATUS_CLOSED and g2_scoped_derivatives_complete
+        else STATUS_OPEN
+        if g1_status == STATUS_CLOSED
+        else STATUS_BLOCKED
+    )
     return {
-        "G1": STATUS_CLOSED,
-        "G2": STATUS_CLOSED,
-        "G3": STATUS_OPEN,
+        "G1": g1_status,
+        "G2": g2_status,
+        "G3": STATUS_OPEN if g2_status == STATUS_CLOSED else STATUS_BLOCKED,
         "G4": STATUS_BLOCKED,
-        "G5": STATUS_CLOSED,
+        "G5": (
+            STATUS_CLOSED
+            if g1_status == STATUS_CLOSED and g2_status == STATUS_CLOSED
+            else STATUS_BLOCKED
+        ),
         "G6": STATUS_BLOCKED,
         "G7": STATUS_BLOCKED,
         "G8": STATUS_BLOCKED,
@@ -4337,13 +4559,13 @@ def _build_gates(
         "G1": (
             "Invariant ring and component Clebsch tensors",
             [
-                "bind the recertified 44-direction/51-parameter scalar census to the repaired executable gauge scaffold",
+                "complete and source-bind the explicit component-tensor/Clebsch integration for the exact 44-direction/51-parameter multiplicity census",
             ],
         ),
         "G2": (
             "Fully projected non-SUSY component potential",
             [
-                "promote the completed 44/51/486 dense derivative and Ward-identity audit after the executable contract is repaired",
+                "promote the completed 44/51/486 dense derivative and Ward-identity audit only after full G1 component-tensor integration and executable-contract repair",
             ],
         ),
         "G3": (
@@ -4379,7 +4601,17 @@ def _build_gates(
             ["await authoritative G3/G6/G7 before any unique lifetime claim"],
         ),
     }
-    statuses = _expected_gate_statuses(contract_consistent)
+    g1_full_component_tensors_closed = bool(
+        scoped and scoped["G1"]["full_G1_closed"] is True
+    )
+    g2_scoped_derivatives_complete = bool(
+        scoped and scoped["G2"]["scoped_derivative_audit_complete"] is True
+    )
+    statuses = _expected_gate_statuses(
+        contract_consistent,
+        g1_full_component_tensors_closed=g1_full_component_tensors_closed,
+        g2_scoped_derivatives_complete=g2_scoped_derivatives_complete,
+    )
     gates: dict[str, dict[str, Any]] = {}
     for name, (title, open_scope) in specifications.items():
         status = statuses[name]
@@ -4412,7 +4644,7 @@ def _build_gates(
             "dependencies": list(DEPENDENCIES[name]),
             "authoritative_closed_scope": (
                 [
-                    "promoted exact-X scalar census"
+                    "promoted exact-X multiplicity census and explicit component Clebsch tensors"
                     if name == "G1"
                     else (
                         "promoted exact-X dense derivative and Ward audit"
@@ -4428,7 +4660,18 @@ def _build_gates(
         }
         if scoped is not None and name in {"G1", "G2"}:
             gates[name]["scoped_calculation_status"] = scoped[name]["scoped_status"]
-            gates[name]["scoped_calculation_complete"] = True
+            gates[name]["scoped_calculation_complete"] = bool(
+                scoped[name].get(
+                    "multiplicity_census_complete"
+                    if name == "G1"
+                    else "scoped_derivative_audit_complete"
+                )
+            )
+            gates[name]["full_gate_calculation_complete"] = bool(
+                scoped[name].get("full_G1_closed")
+                if name == "G1"
+                else scoped[name].get("scoped_derivative_audit_complete")
+            )
             gates[name]["scoped_calculation_evidence"] = scoped[name]
     return gates
 
@@ -4473,6 +4716,9 @@ def _build_report_from_inputs(
     final_g4_eft_mathematical_raw_sha256: str | None = None,
     final_g5_eft_mathematical_report: dict[str, Any] | None = None,
     final_g5_eft_mathematical_raw_sha256: str | None = None,
+    final_g6_eft_mathematical_report: dict[str, Any] | None = None,
+    final_g6_eft_mathematical_raw_sha256: str | None = None,
+    final_g6_eft_gate_source_raw_sha256: str | None = None,
 ) -> dict[str, Any]:
     """Build a ledger from fresh reports, including repaired-contract states."""
     declared_contract_consistent = bool(x_report["contract_consistent"])
@@ -4486,6 +4732,10 @@ def _build_report_from_inputs(
         g1_report,
         g2_report,
         contract_consistent=contract_consistent,
+    )
+    g1_full_component_tensors_closed = bool(scoped["G1"]["full_G1_closed"])
+    g2_scoped_derivatives_complete = bool(
+        scoped["G2"]["scoped_derivative_audit_complete"]
     )
     if g3_sos_report is None:
         g3_sos_report = _load_json_artifact(G3_SOS_JSON)
@@ -4622,6 +4872,26 @@ def _build_report_from_inputs(
         final_g5_eft_mathematical_report,
         raw_sha256=final_g5_eft_mathematical_raw_sha256,
     )
+    eft_g6_loaded_from_disk = final_g6_eft_mathematical_report is None
+    if eft_g6_loaded_from_disk:
+        final_g6_eft_mathematical_report = _load_json_artifact(
+            FINAL_G6_EFT_MATHEMATICAL_JSON
+        )
+    if final_g6_eft_mathematical_raw_sha256 is None:
+        final_g6_eft_mathematical_raw_sha256 = (
+            _raw_file_sha256(FINAL_G6_EFT_MATHEMATICAL_JSON)
+            if eft_g6_loaded_from_disk
+            else ""
+        )
+    if final_g6_eft_gate_source_raw_sha256 is None:
+        final_g6_eft_gate_source_raw_sha256 = _raw_file_sha256(
+            FINAL_G6_EFT_GATE_SOURCE
+        )
+    parallel_eft_g6_spectrum = _parallel_eft_g6_spectrum(
+        final_g6_eft_mathematical_report,
+        raw_sha256=final_g6_eft_mathematical_raw_sha256,
+        gate_source_raw_sha256=final_g6_eft_gate_source_raw_sha256,
+    )
     g3_frontier = _gauged_u1x_g3_frontier(
         g3_sos_report,
         g3_pd_report,
@@ -4668,7 +4938,11 @@ def _build_report_from_inputs(
 
     gauged_counts = g1_report["counts"]
     historical_ids = set(historical["source_contract_ids"].values())
-    expected_statuses = _expected_gate_statuses(contract_consistent)
+    expected_statuses = _expected_gate_statuses(
+        contract_consistent,
+        g1_full_component_tensors_closed=g1_full_component_tensors_closed,
+        g2_scoped_derivatives_complete=g2_scoped_derivatives_complete,
+    )
     contract_state_classified = (
         contract_consistent
         and x_report.get("blocker") is None
@@ -4743,11 +5017,32 @@ def _build_report_from_inputs(
             is False
             and parallel_eft_g5_mathematical["new_SOS_claimed"] is False
         ),
-        "parallel_EFT_G4_G5_do_not_promote_authoritative_frontier": (
+        "parallel_EFT_G6_spectrum_is_source_bound_and_release_open": (
+            parallel_eft_g6_spectrum["source_bound"] is True
+            and parallel_eft_g6_spectrum[
+                "mathematical_G6_closed_for_EFT_model"
+            ]
+            is True
+            and parallel_eft_g6_spectrum[
+                "release_G6_verified_for_EFT_model"
+            ]
+            is False
+            and parallel_eft_g6_spectrum[
+                "authoritative_renormalizable_G6_closed"
+            ]
+            is False
+            and parallel_eft_g6_spectrum["authoritative_G6_gate_mutated"]
+            is False
+            and parallel_eft_g6_spectrum["whole_model_validated"] is False
+        ),
+        "parallel_EFT_G4_G5_G6_do_not_promote_authoritative_frontier": (
             statuses == expected_statuses
             and (
                 contract_consistent
-                or all(statuses[name] == STATUS_BLOCKED for name in ("G3", "G4", "G5"))
+                or all(
+                    statuses[name] == STATUS_BLOCKED
+                    for name in ("G3", "G4", "G5", "G6")
+                )
             )
         ),
         "consistent_contract_requires_tool_native_bound_evidence": bool(
@@ -4769,6 +5064,32 @@ def _build_report_from_inputs(
             gauged_counts["hermitian_conjugacy_orbits"] == 28
             and gauged_counts["total_potential_orbit_multiplicity"] == 44
             and gauged_counts["total_real_potential_parameters"] == 51
+        ),
+        "gauged_G1_multiplicity_census_is_complete": (
+            scoped["G1"]["multiplicity_census_complete"] is True
+        ),
+        "gauged_G1_full_component_tensor_integration_is_honestly_open": (
+            scoped["G1"][
+                "explicit_component_tensor_subset_integration_complete"
+            ]
+            is False
+            and scoped["G1"]["full_G1_closed"] is False
+            and g1_report.get("flags", {}).get(
+                "g1_explicit_tensor_subset_reaudit_open"
+            )
+            is True
+            and g1_report.get("flags", {}).get("g1_closed") is False
+        ),
+        "full_G1_never_closes_without_component_tensor_integration": (
+            statuses["G1"] != STATUS_CLOSED
+            or (
+                contract_consistent
+                and scoped["G1"][
+                    "explicit_component_tensor_subset_integration_complete"
+                ]
+                is True
+                and scoped["G1"]["full_G1_closed"] is True
+            )
         ),
         "gauged_scalar_filter_executes": filter_report["n_failed"] == 0,
         "gauged_scalar_filter_enforces_X": filter_report[
@@ -4797,9 +5118,13 @@ def _build_report_from_inputs(
             and scoped["G2"]["stationarity_rank_13_exactly_certified"] is True
             and scoped["G2"]["stationarity_nullity_38_exactly_certified"] is True
         ),
-        "gauged_G1_G2_scoped_calculations_are_complete": (
+        "gauged_G1_multiplicity_census_and_G2_scoped_audit_are_complete": (
             gates["G1"]["scoped_calculation_complete"] is True
             and gates["G2"]["scoped_calculation_complete"] is True
+            and gates["G1"]["full_gate_calculation_complete"]
+            == scoped["G1"]["full_G1_closed"]
+            and scoped["G2"]["authoritative_promotion_blocked_on_full_G1"]
+            == (not scoped["G1"]["full_G1_closed"])
         ),
         "historical_sources_share_scoped_contract": historical_ids
         == {HISTORICAL_CONTRACT_ID},
@@ -5222,9 +5547,8 @@ def _build_report_from_inputs(
             all(dependency_closed(parent) for parent in DEPENDENCIES[name])
             for name in open_gates
         ),
-        "only_certified_G5_closes_among_G3_G8": (
-            statuses["G5"]
-            == (STATUS_CLOSED if contract_consistent else STATUS_BLOCKED)
+        "G5_closure_respects_full_G1_G2_dependencies": (
+            statuses["G5"] == expected_statuses["G5"]
             and not any(
                 statuses[f"G{i}"] == STATUS_CLOSED for i in (3, 4, 6, 7, 8)
             )
@@ -5240,16 +5564,24 @@ def _build_report_from_inputs(
     if audit_failures:
         status = "G1_G8_LEDGER_AUDIT_EXECUTION_FAILED"
         overall_state = "EXECUTION_FAIL"
-    elif contract_consistent:
+    elif contract_consistent and statuses["G1"] == STATUS_CLOSED and statuses[
+        "G2"
+    ] == STATUS_CLOSED:
         status = (
             "G1_G8_LEDGER_AUDIT_COMPLETE__MODEL_CONTRACT_CONSISTENT__"
             "G1_G2_G5_CLOSED__G3_GLOBAL_OPEN"
         )
         overall_state = STATUS_OPEN
+    elif contract_consistent:
+        status = (
+            "G1_G8_LEDGER_AUDIT_COMPLETE__MODEL_CONTRACT_CONSISTENT__"
+            "G1_COMPONENT_TENSOR_INTEGRATION_OPEN__G2_DEPENDENCY_BLOCKED"
+        )
+        overall_state = STATUS_OPEN
     else:
         status = (
             "G1_G8_LEDGER_AUDIT_COMPLETE__MODEL_CONTRACT_BLOCKED__"
-            "GAUGED_G1_G2_SCOPED_RECERTIFIED"
+            "G1_MULTIPLICITY_CENSUS_AND_G2_DERIVATIVE_AUDIT_RECERTIFIED"
         )
         overall_state = STATUS_BLOCKED
 
@@ -5257,6 +5589,11 @@ def _build_report_from_inputs(
         "GAUGED_U1X_G3_G8_CLOSURE_REQUIRED",
         "G3_ARBITRARY_NON_PURE_DELTA_SIGMA_UNIFORM_COERCIVITY_OPEN",
     ]
+    if not g1_full_component_tensors_closed:
+        scientific_blockers[0:0] = [
+            "G1_EXPLICIT_COMPONENT_TENSOR_INTEGRATION_OPEN",
+            "G2_AUTHORITATIVE_PROMOTION_BLOCKED_ON_FULL_G1",
+        ]
     if not contract_consistent:
         scientific_blockers[0:0] = list(
             x_report.get("scientific_blockers") or [contract_blocker]
@@ -5276,22 +5613,28 @@ def _build_report_from_inputs(
             "wave": 1,
             "gates": ["G1"],
             "status": gates["G1"]["status"],
-            "scoped_calculation_status": "COMPLETE",
-            "deliverable": "Promote the recertified 44-direction/51-parameter scalar census after scaffold repair.",
+            "scoped_calculation_status": "MULTIPLICITY_CENSUS_COMPLETE__FULL_G1_OPEN",
+            "deliverable": (
+                "Complete and source-bind the explicit component-tensor/Clebsch "
+                "integration for the exact 44-direction/51-parameter census."
+            ),
         },
         {
             "wave": 2,
             "gates": ["G2"],
             "status": gates["G2"]["status"],
-            "scoped_calculation_status": "COMPLETE",
-            "deliverable": "Promote the completed 44/51/486 derivative and Ward audit after scaffold repair.",
+            "scoped_calculation_status": "DENSE_DERIVATIVE_AUDIT_COMPLETE",
+            "deliverable": (
+                "Promote the completed 44/51/486 derivative and Ward audit only "
+                "after full G1 component-tensor integration and scaffold repair."
+            ),
         },
         {
             "wave": 3,
             "gates": ["G3", "G4", "G5"],
             "status": (
                 "G3_OPEN__G4_BLOCKED_ON_G3__G5_CLOSED"
-                if contract_consistent
+                if statuses["G3"] == STATUS_OPEN
                 else "BLOCKED_ON_G2"
             ),
             "deliverable": (
@@ -5333,8 +5676,9 @@ def _build_report_from_inputs(
 
     verdict = (
         "The ledger audit succeeds and the repaired gauged-U(1)_X contract "
-        "promotes the completed G1 scalar census and G2 dense derivative theorem "
-        "to CLOSED. A perturbative 27-of-51 SOS candidate with J0=-21/200 has a "
+        "promotes full G1, including the multiplicity census and explicit "
+        "component tensors, plus the G2 dense derivative theorem to CLOSED. A "
+        "perturbative 27-of-51 SOS candidate with J0=-21/200 has a "
         "source-bound complete-potential BFB proof, exact stationarity, direct "
         "P+Delta rank/nullity 429/33, and a proof of positivity on all 448 "
         "transverse Hessian directions. The selected orbit is a strict local "
@@ -5366,15 +5710,19 @@ def _build_report_from_inputs(
         "dependency-blocked. Historical "
         "Option-C evidence remains scoped and closes no gauged-model gate."
         if contract_consistent
+        and statuses["G1"] == STATUS_CLOSED
+        and statuses["G2"] == STATUS_CLOSED
         else "The ledger audit succeeds, but all G1-G8 gates are BLOCKED. The "
         "gauged-U(1)_X SARAH input, charge catalogues, Lagrangian registration, "
         "and hash-bound validation bundle are now statically consistent; Wave 0 "
-        "still requires a real external SARAH execution attestation. The gauged G1 scalar "
-        "census and G2 dense derivative theorem are already recertified as "
+        "still requires a real external SARAH execution attestation. The gauged G1 "
+        "multiplicity census and G2 dense derivative theorem are already recertified as "
         "44 directions, 51 parameters, and 486 fields. Three structural gradient "
         "columns vanish exactly; matching exact lower- and upper-rank certificates "
         "prove stationarity rank/nullity 13/38. "
-        "They await contract promotion rather than recalculation. A perturbative "
+        "The G1 explicit component-tensor/Clebsch integration remains open; the "
+        "G2 scoped audit does not require recalculation but cannot be promoted before "
+        "full G1 and the model contract close. A perturbative "
         "27-of-51 SOS candidate with J0=-21/200 is explicit. Exact source-bound "
         "SOS identities prove complete-potential BFB and stationarity. Direct "
         "Gaussian-integer/Fraction/Q(sqrt(2)) assembly gives P+Delta rank/nullity "
@@ -5410,6 +5758,30 @@ def _build_report_from_inputs(
         "derivative theorem, 449-dimensional "
         "quotient, 46-mode saddle, and 80-iteration no-PSD search are preserved "
         "as Option-C subtheorems and neither validate nor exclude the gauged model."
+    )
+    if contract_consistent and statuses["G1"] == STATUS_OPEN:
+        verdict = (
+            "The ledger audit succeeds and the gauged-U(1)_X executable contract "
+            "is consistent, but full G1 remains OPEN. Its exact renormalizable "
+            "multiplicity census is complete at 28 Hermitian conjugacy orbits, "
+            "44 invariant directions, and 51 real parameters; the explicit "
+            "component-tensor/Clebsch integration is still open. The exact "
+            "44/51/486 G2 derivative and Ward-identity audit is a complete scoped "
+            "subtheorem with stationarity rank/nullity 13/38, but authoritative "
+            "G2 remains dependency-BLOCKED until full G1 closes. Consequently G3, "
+            "G4, G5, G6, G7, and G8 remain dependency-BLOCKED, and no full-model "
+            "gate is promoted by contract repair alone. Historical Option-C "
+            "evidence remains scoped and closes no gauged-model gate."
+        )
+    verdict += (
+        " In the parallel dimension-six EFT namespace, the exact normalized "
+        "tree-level physical scalar spectrum closes mathematical G6: all 486 "
+        "real modes are classified into 37 gauge tangents, one physical PQ "
+        "axion, and 448 strictly positive massive modes with exact residual-group "
+        "and mixing provenance. EFT release G6 and authoritative renormalizable "
+        "G6 remain false."
+        if parallel_eft_g6_spectrum["mathematical_G6_closed_for_EFT_model"]
+        else " The parallel EFT G6 spectrum gate is missing or invalid."
     )
 
     return {
@@ -5501,12 +5873,16 @@ def _build_report_from_inputs(
             "parallel_EFT_G5_mathematical_gate": (
                 final_g5_eft_mathematical_report
             ),
+            "parallel_EFT_G6_mathematical_gate": (
+                final_g6_eft_mathematical_report
+            ),
         },
         "gauged_u1x_scalar_subtheorems": scoped,
         "gauged_u1x_g3_constructive_frontier": g3_frontier,
         "parallel_EFT_G3_acceptance": parallel_eft_g3_acceptance,
         "parallel_EFT_G4_mathematical": parallel_eft_g4_mathematical,
         "parallel_EFT_G5_mathematical": parallel_eft_g5_mathematical,
+        "parallel_EFT_G6_spectrum": parallel_eft_g6_spectrum,
         "historical_option_c_subtheorems": historical,
         "dependencies": DEPENDENCIES,
         "gates": gates,
@@ -5525,8 +5901,15 @@ def _build_report_from_inputs(
             "closure_program_defined": True,
             "current_authoritative_closed_gates": len(closed),
             "historical_subtheorems_reusable_after_contract_filtering": True,
-            "gauged_G1_scalar_census_scoped_subtheorem_complete": True,
-            "gauged_G2_dense_derivative_scoped_subtheorem_complete": True,
+            "gauged_G1_multiplicity_census_complete": scoped["G1"][
+                "multiplicity_census_complete"
+            ],
+            "gauged_G1_full_component_tensor_integration_complete": scoped["G1"][
+                "full_G1_closed"
+            ],
+            "gauged_G2_dense_derivative_scoped_subtheorem_complete": scoped["G2"][
+                "scoped_derivative_audit_complete"
+            ],
             "gauged_G3_constructive_candidate_available": g3_frontier[
                 "integrity_pass"
             ],

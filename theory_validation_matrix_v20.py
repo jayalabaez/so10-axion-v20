@@ -37,6 +37,7 @@ import corrected_rank1_endpoint_v21 as corrected_rank1
 
 ROOT = Path(__file__).resolve().parent
 MODEL_CONTRACT_ID = "gauged_u1x_phi17_v20"
+FINAL_G6_EFT_GATE_SOURCE = "final_g6_eft_mathematical_gate_v20.py"
 
 ARTIFACTS = {
     "engine": "so10_axion_v20_verdict.json",
@@ -61,6 +62,7 @@ ARTIFACTS = {
     "gauged_contract": "GAUGED_U1X_SCALAR_CONTRACT_V20.json",
     "gauged_g2": "GAUGED_U1X_G2_DERIVATIVE_AUDIT_V20.json",
     "g1_g8": "G1_G8_GATE_LEDGER_V20.json",
+    "g6_spectrum": "G6_FULL_PHYSICAL_SPECTRUM_V20.json",
     "g3_stationarity": "G3_FULL_STATIONARITY_FEASIBILITY_V20.json",
     "g3_hessian": "G3_FULL_HESSIAN_CLASSIFICATION_V20.json",
     "g3_search": "G3_STATIONARY_STABILITY_SEARCH_V20.json",
@@ -103,6 +105,7 @@ ARTIFACTS = {
     "final_g3_eft": "FINAL_G3_EFT_ACCEPTANCE_GATE_V20.json",
     "final_g4_eft": "FINAL_G4_EFT_MATHEMATICAL_GATE_V20.json",
     "final_g5_eft": "FINAL_G5_EFT_MATHEMATICAL_GATE_V20.json",
+    "final_g6_eft": "FINAL_G6_EFT_MATHEMATICAL_GATE_V20.json",
     "authoritative": "AUTHORITATIVE_FULL_MODEL_GATE_V20.json",
 }
 
@@ -356,17 +359,69 @@ def _vacuum_gate(
     parallel_eft_g3_acceptance: dict[str, Any] | None = None,
     parallel_eft_g4_mathematical: dict[str, Any] | None = None,
     parallel_eft_g5_mathematical: dict[str, Any] | None = None,
+    parallel_eft_g6_spectrum: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     contract_state = _model_contract_gate(reports)["state"]
     ledger = reports.get("g1_g8", {})
     authoritative_gates = ledger.get("gates", {})
     g1_closed = _dig(authoritative_gates, "G1", "status") == "CLOSED"
     g2_closed = _dig(authoritative_gates, "G2", "status") == "CLOSED"
+    g3_closed = _dig(authoritative_gates, "G3", "status") == "CLOSED"
+    g4_closed = _dig(authoritative_gates, "G4", "status") == "CLOSED"
+    g5_closed = _dig(authoritative_gates, "G5", "status") == "CLOSED"
+    g6_closed = _dig(authoritative_gates, "G6", "status") == "CLOSED"
     scoped = ledger.get("gauged_u1x_scalar_subtheorems", {})
-    g1_scoped_complete = bool(
-        g1_closed
-        or _dig(authoritative_gates, "G1", "scoped_calculation_complete", default=False)
-        or _dig(scoped, "G1", "scoped_status", default="").startswith("COMPLETE_")
+    g1_census_marker = _dig(
+        scoped, "G1", "multiplicity_census_complete", default=None
+    )
+    g1_multiplicity_census_complete = bool(
+        g1_census_marker
+        if g1_census_marker is not None
+        else (
+            g1_closed
+            or _dig(
+                authoritative_gates,
+                "G1",
+                "scoped_calculation_complete",
+                default=False,
+            )
+            or _dig(scoped, "G1", "scoped_status", default="").startswith(
+                "COMPLETE_"
+            )
+        )
+    )
+    g1_component_marker = _dig(
+        scoped,
+        "G1",
+        "explicit_component_tensor_subset_integration_complete",
+        default=None,
+    )
+    g1_full_marker = _dig(scoped, "G1", "full_G1_closed", default=None)
+    g1_gate_full_marker = _dig(
+        authoritative_gates,
+        "G1",
+        "full_gate_calculation_complete",
+        default=None,
+    )
+    if g1_component_marker is False:
+        g1_full_component_tensor_integration_complete = False
+    elif g1_full_marker is not None or g1_gate_full_marker is not None:
+        g1_full_component_tensor_integration_complete = bool(
+            g1_multiplicity_census_complete
+            and (g1_full_marker is True or g1_gate_full_marker is True)
+            and g1_component_marker is not False
+        )
+    else:
+        # Compatibility for older, internally consistent ledgers that predate
+        # the explicit census/full-G1 split.
+        g1_full_component_tensor_integration_complete = bool(g1_closed)
+    g1_scoped_complete = g1_multiplicity_census_complete
+    scalar_contract = reports.get("gauged_contract", {})
+    scalar_contract_pre_audit_g2_flag = _dig(
+        scalar_contract,
+        "flags",
+        "G2_gauged_u1x_derivatives_certified",
+        default=None,
     )
     g2_audit = reports.get("gauged_g2", {})
     g2_counts = g2_audit.get("counts", {})
@@ -420,6 +475,25 @@ def _vacuum_gate(
         and g2_counts.get("real_field_dimension") == 486
         and g2_stationary.get("rank") == 13
         and g2_stationary.get("nullity") == 38
+    )
+    dedicated_g2_supersedes_pre_audit_scalar_contract_flag = bool(
+        scalar_contract_pre_audit_g2_flag is False and g2_scoped_complete
+    )
+    spectrum = reports.get("g6_spectrum", {})
+    spectrum_classification = spectrum.get("classification", {})
+    complete_source_bound_spectrum = bool(
+        spectrum.get("model_contract_id") == MODEL_CONTRACT_ID
+        and spectrum.get("n_failed") == 0
+        and spectrum_classification.get("complete_physical_scalar_spectrum") is True
+        and spectrum_classification.get("source_bound_to_authoritative_vacuum")
+        is True
+        and spectrum_classification.get("all_physical_scalar_eigenstates_classified")
+        is True
+        and spectrum_classification.get("no_unexplained_zero_or_negative_modes")
+        is True
+    )
+    authoritative_g3_g4_g5_g6_closed = bool(
+        g3_closed and g4_closed and g5_closed and g6_closed
     )
     gauged = reports.get("gauged_g3", {})
     gauged_flags = gauged.get("flags", {})
@@ -572,6 +646,14 @@ def _vacuum_gate(
     if parallel_eft_g5_mathematical is None:
         parallel_eft_g5_mathematical = gate_ledger._parallel_eft_g5_mathematical(
             final_g5_eft
+        )
+    final_g6_eft = reports.get("final_g6_eft", {})
+    if parallel_eft_g6_spectrum is None:
+        parallel_eft_g6_spectrum = gate_ledger._parallel_eft_g6_spectrum(
+            final_g6_eft,
+            gate_source_raw_sha256=gate_ledger._raw_file_sha256(
+                ROOT / FINAL_G6_EFT_GATE_SOURCE
+            ),
         )
     corrected_common_kernel_honestly_bound = bool(
         common.get("model_contract_id") == MODEL_CONTRACT_ID
@@ -1291,13 +1373,20 @@ def _vacuum_gate(
     elif (
         contract_state != "PASS"
         or not g1_scoped_complete
+        or not g1_full_component_tensor_integration_complete
         or not g2_scoped_complete
         or not gauged_g3_contract_bound
     ):
         state = "OPEN"
     elif model_wide_no_go:
         state = "FAIL"
-    elif stable_quotient and bfb and global_minimum:
+    elif (
+        stable_quotient
+        and bfb
+        and global_minimum
+        and authoritative_g3_g4_g5_g6_closed
+        and complete_source_bound_spectrum
+    ):
         state = "PASS"
     else:
         state = "OPEN"
@@ -1305,8 +1394,10 @@ def _vacuum_gate(
         "full_scalar_potential_vacuum_and_spectrum",
         state,
         (
-            "The gauged 44-direction/51-parameter derivatives on 486 real fields "
-            "are recertified. Three structural gradient columns vanish exactly, "
+            "The exact G1 multiplicity census is distinct from the explicit "
+            "component-tensor integration required for full G1. The gauged "
+            "44-direction/51-parameter G2 derivatives on 486 real fields are "
+            "recertified. Three structural gradient columns vanish exactly, "
             "and exact lower- and upper-rank certificates prove stationarity "
             "rank/nullity 13/38. The gauged SO(10)xU(1)_X orbit has exact rank "
             "37, so its gauge quotient is 449-dimensional and includes the axion; "
@@ -1353,8 +1444,33 @@ def _vacuum_gate(
             "model_contract_state": contract_state,
             "authoritative_G1_closed": g1_closed,
             "authoritative_G2_closed": g2_closed,
+            "authoritative_G3_closed": g3_closed,
+            "authoritative_G4_closed": g4_closed,
+            "authoritative_G5_closed": g5_closed,
+            "authoritative_G6_closed": g6_closed,
+            "authoritative_G3_G4_G5_G6_closed": (
+                authoritative_g3_g4_g5_g6_closed
+            ),
+            "gauged_G1_multiplicity_census_complete": (
+                g1_multiplicity_census_complete
+            ),
+            "gauged_G1_full_component_tensor_integration_complete": (
+                g1_full_component_tensor_integration_complete
+            ),
+            # Compatibility alias: this means the multiplicity census only.
             "gauged_G1_scoped_calculation_complete": g1_scoped_complete,
             "gauged_G2_scoped_calculation_complete": g2_scoped_complete,
+            "scalar_contract_pre_audit_G2_certified_flag": (
+                scalar_contract_pre_audit_g2_flag
+            ),
+            "dedicated_G2_audit_is_source_authoritative": g2_scoped_complete,
+            "dedicated_G2_audit_supersedes_pre_audit_scalar_contract_flag": (
+                dedicated_g2_supersedes_pre_audit_scalar_contract_flag
+            ),
+            "G6_full_physical_spectrum_artifact_present": bool(spectrum),
+            "G6_complete_source_bound_physical_spectrum": (
+                complete_source_bound_spectrum
+            ),
             "gauged_G2_direction_parameter_field_counts": [
                 g2_counts.get("invariant_directions"),
                 g2_counts.get("real_parameters"),
@@ -1563,9 +1679,64 @@ def _vacuum_gate(
                     "authoritative_renormalizable_G5_closed"
                 ]
             ),
+            "parallel_EFT_G6_spectrum_gate_artifact_present": bool(final_g6_eft),
+            "parallel_EFT_G6_spectrum_source_bound": (
+                parallel_eft_g6_spectrum["source_bound"]
+            ),
+            "parallel_EFT_G6_spectrum_raw_sha256_exact": (
+                parallel_eft_g6_spectrum["checks"]["raw_sha256_exact"]
+            ),
+            "parallel_EFT_G6_gate_source_raw_sha256_exact": (
+                parallel_eft_g6_spectrum["checks"][
+                    "gate_source_raw_sha256_exact"
+                ]
+            ),
+            "parallel_EFT_G6_spectrum_core_sha256_exact": (
+                parallel_eft_g6_spectrum["checks"]["core_sha256_exact"]
+            ),
+            "parallel_EFT_G6_spectrum_dependency_pins_exact": (
+                parallel_eft_g6_spectrum["checks"][
+                    "spectrum_source_and_JSON_raw_pins_exact"
+                ]
+                and parallel_eft_g6_spectrum["checks"][
+                    "upstream_cores_and_gate_JSON_pins_exact"
+                ]
+            ),
+            "parallel_EFT_G6_integration_completed": (
+                parallel_eft_g6_spectrum["parallel_integration_completed"]
+            ),
+            "parallel_EFT_G6_integration_blocker_removed": (
+                "parallel_EFT_G6_integrated_into_release_orchestrators"
+                not in parallel_eft_g6_spectrum["release_blockers"]
+            ),
+            "parallel_EFT_mathematical_G6_closed": (
+                parallel_eft_g6_spectrum[
+                    "mathematical_G6_closed_for_EFT_model"
+                ]
+            ),
+            "parallel_EFT_release_G6_verified": (
+                parallel_eft_g6_spectrum[
+                    "release_G6_verified_for_EFT_model"
+                ]
+            ),
+            "parallel_EFT_G6_spectrum_summary": parallel_eft_g6_spectrum[
+                "spectrum_summary"
+            ],
+            "original_renormalizable_mathematical_G6_closed": (
+                parallel_eft_g6_spectrum[
+                    "authoritative_renormalizable_G6_closed"
+                ]
+            ),
+            "authoritative_G6_gate_mutated_by_parallel_EFT": (
+                parallel_eft_g6_spectrum["authoritative_G6_gate_mutated"]
+            ),
             "authoritative_renormalizable_G3_G4_G5_statuses": {
                 name: _dig(authoritative_gates, name, "status")
                 for name in ("G3", "G4", "G5")
+            },
+            "authoritative_renormalizable_G3_G4_G5_G6_statuses": {
+                name: _dig(authoritative_gates, name, "status")
+                for name in ("G3", "G4", "G5", "G6")
             },
             "gauged_G3_SOS_candidate_exact_local_and_globally_fail_closed": (
                 sos_candidate_exact_local_and_globally_fail_closed
@@ -2145,7 +2316,8 @@ def _vacuum_gate(
         ),
         (
             "Complete minimization, Hessian/tachyon tests, Goldstone counting, "
-            "global-or-metastable vacuum comparison, and physical scalar thresholds pass."
+            "global-or-metastable vacuum comparison, authoritative G3-G6 closure, "
+            "and a complete source-bound physical scalar spectrum all pass."
         ),
     )
 
@@ -2503,6 +2675,15 @@ def build_report(root: Path = ROOT) -> dict[str, Any]:
             root / ARTIFACTS["final_g5_eft"]
         ),
     )
+    parallel_eft_g6_spectrum = gate_ledger._parallel_eft_g6_spectrum(
+        reports.get("final_g6_eft", {}),
+        raw_sha256=gate_ledger._raw_file_sha256(
+            root / ARTIFACTS["final_g6_eft"]
+        ),
+        gate_source_raw_sha256=gate_ledger._raw_file_sha256(
+            root / FINAL_G6_EFT_GATE_SOURCE
+        ),
+    )
     current_test_count = unittest.defaultTestLoader.discover(
         str(root)
     ).countTestCases()
@@ -2515,6 +2696,7 @@ def build_report(root: Path = ROOT) -> dict[str, Any]:
             parallel_eft_g3_acceptance,
             parallel_eft_g4_mathematical,
             parallel_eft_g5_mathematical,
+            parallel_eft_g6_spectrum,
         ),
         _rge_gate(reports),
         _flavour_gate(reports),
@@ -2632,6 +2814,7 @@ def build_report(root: Path = ROOT) -> dict[str, Any]:
         "parallel_EFT_G3_acceptance": parallel_eft_g3_acceptance,
         "parallel_EFT_G4_mathematical": parallel_eft_g4_mathematical,
         "parallel_EFT_G5_mathematical": parallel_eft_g5_mathematical,
+        "parallel_EFT_G6_spectrum": parallel_eft_g6_spectrum,
         "current_tree_unit_tests_discovered": current_test_count,
         "n_gates": len(gates),
         "n_failed_gates": len(failed),
@@ -2696,7 +2879,15 @@ def write_markdown(report: dict[str, Any]) -> str:
             "- Parallel EFT release G5 verified: "
             f"**{report['parallel_EFT_G5_mathematical']['release_G5_verified_for_EFT_model']}**"
         ),
-        "- Original renormalizable G3, G4, and G5 remain authoritative and unchanged.",
+        (
+            "- Parallel dimension-six EFT mathematical G6: "
+            f"**{report['parallel_EFT_G6_spectrum']['mathematical_G6_closed_for_EFT_model']}**"
+        ),
+        (
+            "- Parallel EFT release G6 verified: "
+            f"**{report['parallel_EFT_G6_spectrum']['release_G6_verified_for_EFT_model']}**"
+        ),
+        "- Original renormalizable G3, G4, G5, and G6 remain authoritative and unchanged.",
         f"- Gates: {report['n_gates']}",
         f"- Failed gates: {report['n_failed_gates']}",
         "",
