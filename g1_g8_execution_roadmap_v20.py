@@ -21,6 +21,20 @@ EFT_G3_CORE_SHA256 = (
 EFT_G3_RAW_SHA256 = (
     "482f9da84d677e24594ca536a2c257602e02f5187419df5cba5356f771ddbaf0"
 )
+EFT_G4_JSON = ROOT / "FINAL_G4_EFT_MATHEMATICAL_GATE_V20.json"
+EFT_G4_CORE_SHA256 = (
+    "931a152aed49eb28bf415a1aca093e923850cf68db3f40ccf1d2027b447a8c09"
+)
+EFT_G4_RAW_SHA256 = (
+    "98664542a4e1bbfba233652737826b974963a31c2e86a15e2d73fda1457d987b"
+)
+EFT_G5_JSON = ROOT / "FINAL_G5_EFT_MATHEMATICAL_GATE_V20.json"
+EFT_G5_CORE_SHA256 = (
+    "1b578471e74626e3b186cf7398aebd35349a67f45940b9c37d42bb49c1b8c8ba"
+)
+EFT_G5_RAW_SHA256 = (
+    "6d6e4fd9932a03e35146afb1bca850666e883aaed5e23b73b81f0f703e4e7db9"
+)
 
 DEPENDENCIES = ledger.DEPENDENCIES
 
@@ -250,6 +264,44 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
         ]
         is True
     )
+    eft_g4 = ledger._load_json_artifact(EFT_G4_JSON)
+    eft_g4_raw_sha256 = ledger._raw_file_sha256(EFT_G4_JSON)
+    direct_parallel_eft_g4 = ledger._parallel_eft_g4_mathematical(
+        eft_g4,
+        raw_sha256=eft_g4_raw_sha256,
+    )
+    ledger_parallel_eft_g4 = gate_report.get(
+        "parallel_EFT_G4_mathematical", {}
+    )
+    parallel_eft_g4_closed = bool(
+        EFT_G4_CORE_SHA256 == ledger.FINAL_G4_EFT_MATHEMATICAL_CORE_SHA256
+        and EFT_G4_RAW_SHA256 == ledger.FINAL_G4_EFT_MATHEMATICAL_RAW_SHA256
+        and direct_parallel_eft_g4["source_bound"] is True
+        and ledger_parallel_eft_g4 == direct_parallel_eft_g4
+        and direct_parallel_eft_g4[
+            "mathematical_G4_closed_for_EFT_model"
+        ]
+        is True
+    )
+    eft_g5 = ledger._load_json_artifact(EFT_G5_JSON)
+    eft_g5_raw_sha256 = ledger._raw_file_sha256(EFT_G5_JSON)
+    direct_parallel_eft_g5 = ledger._parallel_eft_g5_mathematical(
+        eft_g5,
+        raw_sha256=eft_g5_raw_sha256,
+    )
+    ledger_parallel_eft_g5 = gate_report.get(
+        "parallel_EFT_G5_mathematical", {}
+    )
+    parallel_eft_g5_closed = bool(
+        EFT_G5_CORE_SHA256 == ledger.FINAL_G5_EFT_MATHEMATICAL_CORE_SHA256
+        and EFT_G5_RAW_SHA256 == ledger.FINAL_G5_EFT_MATHEMATICAL_RAW_SHA256
+        and direct_parallel_eft_g5["source_bound"] is True
+        and ledger_parallel_eft_g5 == direct_parallel_eft_g5
+        and direct_parallel_eft_g5[
+            "mathematical_G5_closed_for_EFT_model"
+        ]
+        is True
+    )
     expected_statuses = ledger._expected_gate_statuses(contract_consistent)
     statuses = {name: row["status"] for name, row in gates.items()}
     expected_task_frontier = {task["id"]: task["status"] for task in TASKS}
@@ -271,6 +323,42 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
             parallel_eft_g3_closed
             and direct_parallel_eft_g3["raw_sha256"] == EFT_G3_RAW_SHA256
             and direct_parallel_eft_g3["core_sha256"] == EFT_G3_CORE_SHA256
+        ),
+        "parallel_EFT_G4_mathematical_raw_and_core_bound": (
+            parallel_eft_g4_closed
+            and direct_parallel_eft_g4["raw_sha256"] == EFT_G4_RAW_SHA256
+            and direct_parallel_eft_g4["core_sha256"] == EFT_G4_CORE_SHA256
+            and direct_parallel_eft_g4[
+                "release_G4_verified_for_EFT_model"
+            ]
+            is False
+            and direct_parallel_eft_g4[
+                "mathematical_G4_closed_for_original_renormalizable_model"
+            ]
+            is False
+        ),
+        "parallel_EFT_G5_mathematical_raw_and_core_bound": (
+            parallel_eft_g5_closed
+            and direct_parallel_eft_g5["raw_sha256"] == EFT_G5_RAW_SHA256
+            and direct_parallel_eft_g5["core_sha256"] == EFT_G5_CORE_SHA256
+            and direct_parallel_eft_g5[
+                "release_G5_verified_for_EFT_model"
+            ]
+            is False
+            and direct_parallel_eft_g5[
+                "authoritative_renormalizable_G5_closed"
+            ]
+            is False
+        ),
+        "parallel_EFT_G4_G5_leave_authoritative_frontier_unchanged": (
+            statuses == expected_statuses
+            and (
+                contract_consistent
+                or all(
+                    statuses[name] == ledger.STATUS_BLOCKED
+                    for name in ("G3", "G4", "G5")
+                )
+            )
         ),
         "gate_ledger_state_classified": gate_report["overall_state"] == (
             ledger.STATUS_OPEN if contract_consistent else ledger.STATUS_BLOCKED
@@ -738,10 +826,23 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
     )
     verdict += (
         " In parallel, the registered dimension-six current-kernel EFT "
-        "contract closes mathematical G3 exactly; its release verification, "
-        "the original renormalizable G3, and G4 remain open."
+        "contract closes mathematical G3 exactly; its release verification "
+        "and the original renormalizable G3 remain open."
         if parallel_eft_g3_closed
         else " The parallel EFT G3 certificate is missing or invalid."
+    )
+    verdict += (
+        " The same EFT closes mathematical G4 with exact Hessian rank/nullity "
+        "448/38; EFT release G4 and authoritative renormalizable G4 remain open."
+        if parallel_eft_g4_closed
+        else " The parallel EFT G4 certificate is missing or invalid."
+    )
+    verdict += (
+        " It also closes mathematical G5 by the frozen full-field SOS lower "
+        "bound plus the PSD dimension-six operator; EFT release G5 remains "
+        "open and authoritative renormalizable G5 remains contract-blocked."
+        if parallel_eft_g5_closed
+        else " The parallel EFT G5 certificate is missing or invalid."
     )
     return {
         "status": status,
@@ -776,6 +877,37 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
             ),
             "G4_closed": False,
         },
+        "parallel_EFT_G4_resolution": {
+            "gate": EFT_G4_JSON.name,
+            "source_bound": direct_parallel_eft_g4["source_bound"],
+            "raw_sha256": eft_g4_raw_sha256,
+            "expected_raw_sha256": EFT_G4_RAW_SHA256,
+            "core_sha256": eft_g4.get("core_sha256"),
+            "expected_core_sha256": EFT_G4_CORE_SHA256,
+            "mathematical_G4_closed": parallel_eft_g4_closed,
+            "original_renormalizable_G4_closed": False,
+            "release_G4_verified": False,
+            "integration_completed": direct_parallel_eft_g4["checks"][
+                "parallel_integration_completed"
+            ],
+            "release_blockers": direct_parallel_eft_g4["release_blockers"],
+        },
+        "parallel_EFT_G5_resolution": {
+            "gate": EFT_G5_JSON.name,
+            "source_bound": direct_parallel_eft_g5["source_bound"],
+            "raw_sha256": eft_g5_raw_sha256,
+            "expected_raw_sha256": EFT_G5_RAW_SHA256,
+            "core_sha256": eft_g5.get("core_sha256"),
+            "expected_core_sha256": EFT_G5_CORE_SHA256,
+            "mathematical_G5_closed": parallel_eft_g5_closed,
+            "original_renormalizable_G5_closed": False,
+            "release_G5_verified": False,
+            "new_SOS_claimed": False,
+            "integration_completed": direct_parallel_eft_g5["checks"][
+                "parallel_integration_completed"
+            ],
+            "release_blockers": direct_parallel_eft_g5["release_blockers"],
+        },
         "summary": gate_report["summary"],
         "new_physics_policy": (
             "Historical calculations remain scoped subtheorems. No whole-model "
@@ -804,6 +936,17 @@ def write_markdown(report: dict[str, Any]) -> str:
         "## Critical path",
         "",
         "`MODEL_CONTRACT -> G1 -> G2 -> G3/G4/G5 -> G6 -> G7 -> G8`",
+        "",
+        "## Parallel dimension-six EFT classifications",
+        "",
+        (
+            "- Mathematical G3/G4/G5: "
+            f"`{report['parallel_EFT_G3_resolution']['mathematical_G3_closed']}`/"
+            f"`{report['parallel_EFT_G4_resolution']['mathematical_G4_closed']}`/"
+            f"`{report['parallel_EFT_G5_resolution']['mathematical_G5_closed']}`"
+        ),
+        "- Release G3/G4/G5: `False`/`False`/`False`",
+        "- Authoritative renormalizable G3/G4/G5 are not promoted.",
         "",
         "## Gate ledger",
         "",

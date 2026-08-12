@@ -64,3 +64,29 @@ final_g3_eft_acceptance_gate_v20.py text eol=lf
 test_final_g3_eft_acceptance_gate_v20.py text eol=lf
 FINAL_G3_EFT_ACCEPTANCE_GATE_V20.json text eol=crlf
 FINAL_G3_EFT_ACCEPTANCE_GATE_V20.md text eol=crlf
+
+# Parallel mathematical G4/G5 EFT gates are also raw-byte pinned.
+final_g4_eft_mathematical_gate_v20.py text eol=lf
+test_final_g4_eft_mathematical_gate_v20.py text eol=lf
+FINAL_G4_EFT_MATHEMATICAL_GATE_V20.json text eol=crlf
+FINAL_G4_EFT_MATHEMATICAL_GATE_V20.md text eol=crlf
+final_g5_eft_mathematical_gate_v20.py text eol=lf
+test_final_g5_eft_mathematical_gate_v20.py text eol=lf
+FINAL_G5_EFT_MATHEMATICAL_GATE_V20.json text eol=crlf
+FINAL_G5_EFT_MATHEMATICAL_GATE_V20.md text eol=crlf
+
+# Transitive raw dependencies of the EFT G3/G4/G5 proof chain.
+EXACT_GAUGED_U1X_PHYSICAL_QUOTIENT_V20.json text eol=crlf
+exact_gauged_u1x_physical_quotient_v20.py text eol=crlf
+exact_gauged_u1x_g3_su5_delta_hsx_exact_hessian_v20.py text eol=crlf
+exact_gauged_u1x_g3_su5_delta_hsx_extension_v20.py text eol=crlf
+exact_gauged_u1x_g3_su5_delta_pd_sos_v20.py text eol=crlf
+exact_h10_self_quartic_family_v20.py text eol=crlf
+gauged_u1x_g2_derivative_audit_v20.py text eol=crlf
+live_g2_arbitrary_component_potential_values_v20.py text eol=crlf
+live_g2_canonical_486_field_chart_v20.py text eol=crlf
+live_g2_exact_hsigma_hermitian_derivatives_v20.py text eol=crlf
+live_g2_exact_quadratic_family_derivatives_v20.py text eol=crlf
+
+# This historical proof source is raw-pinned with intentionally mixed EOLs.
+exact_gauged_u1x_g3_su5_equality_orbit_v20.py -text whitespace=cr-at-eol

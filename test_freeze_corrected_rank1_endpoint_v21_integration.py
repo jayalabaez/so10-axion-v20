@@ -99,6 +99,18 @@ class CorrectedEndpointIntegrationFreezeTests(unittest.TestCase):
             report["logical_pins"]["EFT_stabilized_Hessian_payload_sha256"],
             freezer.EFT_STABILIZED_HESSIAN_PAYLOAD_SHA256,
         )
+        self.assertEqual(
+            report["logical_pins"]["EFT_G4_mathematical_gate_core_sha256"],
+            freezer.EFT_G4_MATHEMATICAL_GATE_CORE_SHA256,
+        )
+        self.assertEqual(
+            report["logical_pins"]["EFT_G5_mathematical_gate_core_sha256"],
+            freezer.EFT_G5_MATHEMATICAL_GATE_CORE_SHA256,
+        )
+        self.assertEqual(
+            report["logical_pins"]["EFT_G5_exact_global_lower_bound"],
+            freezer.EFT_G5_EXACT_GLOBAL_LOWER_BOUND,
+        )
         self.assertEqual(report["EFT_G3_bundle"]["raw_file_count"], 13)
         self.assertTrue(report["EFT_G3_bundle"]["all_checks_pass"])
         self.assertEqual(
@@ -107,6 +119,9 @@ class CorrectedEndpointIntegrationFreezeTests(unittest.TestCase):
             ],
             2,
         )
+        self.assertEqual(report["EFT_G4_G5_bundle"]["raw_file_count"], 8)
+        self.assertTrue(report["EFT_G4_G5_bundle"]["all_checks_pass"])
+        self.assertTrue(all(report["EFT_G4_G5_bundle"]["checks"].values()))
         self.assertEqual(
             report["workflow_contract"],
             {
@@ -114,8 +129,8 @@ class CorrectedEndpointIntegrationFreezeTests(unittest.TestCase):
                 "legacy_rejection_assertions": 7,
                 "full_source_rebuild_invocations": 1,
                 "read_only_frozen_dependency_orchestrators": 3,
-                "read_only_frozen_report_sources": 13,
-                "read_only_frozen_report_commands": 39,
+                "read_only_frozen_report_sources": 15,
+                "read_only_frozen_report_commands": 45,
                 "no_write_frozen_classification_sources": 3,
                 "no_write_frozen_classification_commands": 9,
                 "no_write_stochastic_report_orchestrators": 2,
@@ -148,6 +163,24 @@ class CorrectedEndpointIntegrationFreezeTests(unittest.TestCase):
             report["claim_boundary"]["EFT_release_G3_verified"]
         )
         self.assertFalse(report["claim_boundary"]["G4_closed"])
+        self.assertFalse(
+            report["claim_boundary"]["renormalizable_G4_closed"]
+        )
+        self.assertTrue(
+            report["claim_boundary"]["EFT_dimension6_mathematical_G4_closed"]
+        )
+        self.assertFalse(
+            report["claim_boundary"]["EFT_release_G4_verified"]
+        )
+        self.assertFalse(
+            report["claim_boundary"]["renormalizable_G5_closed"]
+        )
+        self.assertTrue(
+            report["claim_boundary"]["EFT_dimension6_mathematical_G5_closed"]
+        )
+        self.assertFalse(
+            report["claim_boundary"]["EFT_release_G5_verified"]
+        )
         for name in (
             "quantitative_beta_global_coercivity_proved",
             "legacy_v20_physical_target_valid",
@@ -177,6 +210,17 @@ class CorrectedEndpointIntegrationFreezeTests(unittest.TestCase):
             dict(sorted(freezer.EFT_G3_RAW_PINS.items())),
         )
         for relative, expected in freezer.EFT_G3_RAW_PINS.items():
+            row = report["inventory"][relative]
+            self.assertEqual(row["hash_mode"], "raw")
+            self.assertEqual(row["content_sha256"], expected)
+            self.assertIn(relative, freezer.CHECKSUM_REQUIRED_PATHS)
+
+        self.assertEqual(len(freezer.EFT_G4_G5_RAW_PINS), 8)
+        self.assertEqual(
+            report["generation_source_pins"]["EFT_G4_G5_raw_sha256"],
+            dict(sorted(freezer.EFT_G4_G5_RAW_PINS.items())),
+        )
+        for relative, expected in freezer.EFT_G4_G5_RAW_PINS.items():
             row = report["inventory"][relative]
             self.assertEqual(row["hash_mode"], "raw")
             self.assertEqual(row["content_sha256"], expected)
@@ -218,6 +262,46 @@ class CorrectedEndpointIntegrationFreezeTests(unittest.TestCase):
                     ArithmeticError, "outside the two allowlisted"
                 ):
                     freezer._require_eft_theorem_adapter_allowlist()
+
+    def test_eft_g4_g5_logical_bundle(self) -> None:
+        bundle = freezer._require_eft_g4_g5_bundle()
+        self.assertEqual(bundle["raw_file_count"], 8)
+        self.assertTrue(bundle["all_checks_pass"])
+        self.assertTrue(all(bundle["checks"].values()))
+        self.assertTrue(
+            bundle["checks"]["G4_completed_integration_and_blockers_exact"]
+        )
+        self.assertTrue(
+            bundle["checks"]["G5_completed_integration_and_blockers_exact"]
+        )
+
+        with tempfile.TemporaryDirectory() as directory:
+            root = freezer.Path(directory)
+            names = (
+                "final_g4_eft_mathematical_gate_v20.py",
+                "FINAL_G4_EFT_MATHEMATICAL_GATE_V20.json",
+                "final_g5_eft_mathematical_gate_v20.py",
+                "FINAL_G5_EFT_MATHEMATICAL_GATE_V20.json",
+            )
+            for name in names:
+                (root / name).write_bytes((freezer.ROOT / name).read_bytes())
+            with patch.object(freezer, "ROOT", root):
+                self.assertTrue(
+                    freezer._require_eft_g4_g5_bundle()["all_checks_pass"]
+                )
+                g4_report = root / "FINAL_G4_EFT_MATHEMATICAL_GATE_V20.json"
+                mutated = json.loads(g4_report.read_text(encoding="utf-8"))
+                mutated["classification"][
+                    "mathematical_G4_closed_for_EFT_model"
+                ] = False
+                g4_report.write_text(
+                    json.dumps(mutated, indent=2, sort_keys=True) + "\n",
+                    encoding="utf-8",
+                )
+                with self.assertRaisesRegex(
+                    ArithmeticError, "frozen EFT G4/G5 logical bundle drifted"
+                ):
+                    freezer._require_eft_g4_g5_bundle()
 
     def test_release_checksum_binds_adapter_regressions_and_workflows(self) -> None:
         lines = (freezer.ROOT / "SHA256SUMS").read_text(encoding="utf-8").splitlines()
@@ -320,6 +404,30 @@ class CorrectedEndpointIntegrationFreezeTests(unittest.TestCase):
                     freezer._require_workflow_contract()
 
                 replicate.write_text(baseline_replicate, encoding="utf-8")
+                for source in (
+                    "final_g4_eft_mathematical_gate_v20.py",
+                    "final_g5_eft_mathematical_gate_v20.py",
+                ):
+                    report_needle = f'run([sys.executable, "{source}"])'
+                    report_replacement = (
+                        f'run([sys.executable, "{source}", "--write"])'
+                    )
+                    self.assertIn(report_needle, baseline_replicate)
+                    replicate.write_text(
+                        baseline_replicate.replace(
+                            report_needle, report_replacement, 1
+                        ),
+                        encoding="utf-8",
+                    )
+                    with self.assertRaisesRegex(
+                        ArithmeticError,
+                        "rewrites a frozen validation report",
+                    ):
+                        freezer._require_workflow_contract()
+                    replicate.write_text(
+                        baseline_replicate, encoding="utf-8"
+                    )
+
                 classification_needle = (
                     '            "theory_validation_matrix_v20.py",\n'
                     '            "--expect-blocked",\n'

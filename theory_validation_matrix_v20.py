@@ -101,6 +101,8 @@ ARTIFACTS = {
     "gauged_g3_alternative_global_sos": "EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json",
     "final_g3": "FINAL_G3_ACCEPTANCE_GATE_V20.json",
     "final_g3_eft": "FINAL_G3_EFT_ACCEPTANCE_GATE_V20.json",
+    "final_g4_eft": "FINAL_G4_EFT_MATHEMATICAL_GATE_V20.json",
+    "final_g5_eft": "FINAL_G5_EFT_MATHEMATICAL_GATE_V20.json",
     "authoritative": "AUTHORITATIVE_FULL_MODEL_GATE_V20.json",
 }
 
@@ -352,6 +354,8 @@ def _operator_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
 def _vacuum_gate(
     reports: dict[str, dict[str, Any]],
     parallel_eft_g3_acceptance: dict[str, Any] | None = None,
+    parallel_eft_g4_mathematical: dict[str, Any] | None = None,
+    parallel_eft_g5_mathematical: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     contract_state = _model_contract_gate(reports)["state"]
     ledger = reports.get("g1_g8", {})
@@ -558,6 +562,16 @@ def _vacuum_gate(
     if parallel_eft_g3_acceptance is None:
         parallel_eft_g3_acceptance = gate_ledger._parallel_eft_g3_acceptance(
             final_g3_eft
+        )
+    final_g4_eft = reports.get("final_g4_eft", {})
+    if parallel_eft_g4_mathematical is None:
+        parallel_eft_g4_mathematical = gate_ledger._parallel_eft_g4_mathematical(
+            final_g4_eft
+        )
+    final_g5_eft = reports.get("final_g5_eft", {})
+    if parallel_eft_g5_mathematical is None:
+        parallel_eft_g5_mathematical = gate_ledger._parallel_eft_g5_mathematical(
+            final_g5_eft
         )
     corrected_common_kernel_honestly_bound = bool(
         common.get("model_contract_id") == MODEL_CONTRACT_ID
@@ -1480,7 +1494,79 @@ def _vacuum_gate(
                     "mathematical_G3_closed_for_original_renormalizable_model"
                 ]
             ),
-            "parallel_EFT_G4_closed": parallel_eft_g3_acceptance["G4_closed"],
+            "legacy_EFT_G3_gate_did_not_claim_G4": (
+                parallel_eft_g3_acceptance["G4_closed"] is False
+            ),
+            "parallel_EFT_G4_mathematical_gate_artifact_present": bool(
+                final_g4_eft
+            ),
+            "parallel_EFT_G4_mathematical_source_bound": (
+                parallel_eft_g4_mathematical["source_bound"]
+            ),
+            "parallel_EFT_G4_mathematical_raw_sha256_exact": (
+                parallel_eft_g4_mathematical["checks"]["raw_sha256_exact"]
+            ),
+            "parallel_EFT_G4_integration_completed": (
+                parallel_eft_g4_mathematical["checks"][
+                    "parallel_integration_completed"
+                ]
+            ),
+            "parallel_EFT_G4_integration_blocker_removed": (
+                "parallel_EFT_G4_integrated_into_release_orchestrators"
+                not in parallel_eft_g4_mathematical["release_blockers"]
+            ),
+            "parallel_EFT_G4_closed": (
+                parallel_eft_g4_mathematical[
+                    "mathematical_G4_closed_for_EFT_model"
+                ]
+            ),
+            "parallel_EFT_release_G4_verified": (
+                parallel_eft_g4_mathematical[
+                    "release_G4_verified_for_EFT_model"
+                ]
+            ),
+            "original_renormalizable_mathematical_G4_closed": (
+                parallel_eft_g4_mathematical[
+                    "mathematical_G4_closed_for_original_renormalizable_model"
+                ]
+            ),
+            "parallel_EFT_G5_mathematical_gate_artifact_present": bool(
+                final_g5_eft
+            ),
+            "parallel_EFT_G5_mathematical_source_bound": (
+                parallel_eft_g5_mathematical["source_bound"]
+            ),
+            "parallel_EFT_G5_mathematical_raw_sha256_exact": (
+                parallel_eft_g5_mathematical["checks"]["raw_sha256_exact"]
+            ),
+            "parallel_EFT_G5_integration_completed": (
+                parallel_eft_g5_mathematical["checks"][
+                    "parallel_integration_completed"
+                ]
+            ),
+            "parallel_EFT_G5_integration_blocker_removed": (
+                "downstream_parallel_G5_integration_completed"
+                not in parallel_eft_g5_mathematical["release_blockers"]
+            ),
+            "parallel_EFT_G5_closed": (
+                parallel_eft_g5_mathematical[
+                    "mathematical_G5_closed_for_EFT_model"
+                ]
+            ),
+            "parallel_EFT_release_G5_verified": (
+                parallel_eft_g5_mathematical[
+                    "release_G5_verified_for_EFT_model"
+                ]
+            ),
+            "original_renormalizable_mathematical_G5_closed": (
+                parallel_eft_g5_mathematical[
+                    "authoritative_renormalizable_G5_closed"
+                ]
+            ),
+            "authoritative_renormalizable_G3_G4_G5_statuses": {
+                name: _dig(authoritative_gates, name, "status")
+                for name in ("G3", "G4", "G5")
+            },
             "gauged_G3_SOS_candidate_exact_local_and_globally_fail_closed": (
                 sos_candidate_exact_local_and_globally_fail_closed
             ),
@@ -2405,6 +2491,18 @@ def build_report(root: Path = ROOT) -> dict[str, Any]:
             root / ARTIFACTS["final_g3_eft"]
         ),
     )
+    parallel_eft_g4_mathematical = gate_ledger._parallel_eft_g4_mathematical(
+        reports.get("final_g4_eft", {}),
+        raw_sha256=gate_ledger._raw_file_sha256(
+            root / ARTIFACTS["final_g4_eft"]
+        ),
+    )
+    parallel_eft_g5_mathematical = gate_ledger._parallel_eft_g5_mathematical(
+        reports.get("final_g5_eft", {}),
+        raw_sha256=gate_ledger._raw_file_sha256(
+            root / ARTIFACTS["final_g5_eft"]
+        ),
+    )
     current_test_count = unittest.defaultTestLoader.discover(
         str(root)
     ).countTestCases()
@@ -2412,7 +2510,12 @@ def build_report(root: Path = ROOT) -> dict[str, Any]:
         _model_contract_gate(reports),
         _core_gate(reports),
         _operator_gate(reports),
-        _vacuum_gate(reports, parallel_eft_g3_acceptance),
+        _vacuum_gate(
+            reports,
+            parallel_eft_g3_acceptance,
+            parallel_eft_g4_mathematical,
+            parallel_eft_g5_mathematical,
+        ),
         _rge_gate(reports),
         _flavour_gate(reports),
         _portal_gate(reports),
@@ -2527,6 +2630,8 @@ def build_report(root: Path = ROOT) -> dict[str, Any]:
         "full_theory_validated": bool(all_mandatory_pass and integrity_pass),
         "empirical_discovery": False,
         "parallel_EFT_G3_acceptance": parallel_eft_g3_acceptance,
+        "parallel_EFT_G4_mathematical": parallel_eft_g4_mathematical,
+        "parallel_EFT_G5_mathematical": parallel_eft_g5_mathematical,
         "current_tree_unit_tests_discovered": current_test_count,
         "n_gates": len(gates),
         "n_failed_gates": len(failed),
@@ -2575,7 +2680,23 @@ def write_markdown(report: dict[str, Any]) -> str:
             "- Parallel EFT release G3 verified: "
             f"**{report['parallel_EFT_G3_acceptance']['release_G3_verified_for_EFT_model']}**"
         ),
-        "- Original renormalizable G3 and G4 remain authoritative and unchanged.",
+        (
+            "- Parallel dimension-six EFT mathematical G4: "
+            f"**{report['parallel_EFT_G4_mathematical']['mathematical_G4_closed_for_EFT_model']}**"
+        ),
+        (
+            "- Parallel EFT release G4 verified: "
+            f"**{report['parallel_EFT_G4_mathematical']['release_G4_verified_for_EFT_model']}**"
+        ),
+        (
+            "- Parallel dimension-six EFT mathematical G5: "
+            f"**{report['parallel_EFT_G5_mathematical']['mathematical_G5_closed_for_EFT_model']}**"
+        ),
+        (
+            "- Parallel EFT release G5 verified: "
+            f"**{report['parallel_EFT_G5_mathematical']['release_G5_verified_for_EFT_model']}**"
+        ),
+        "- Original renormalizable G3, G4, and G5 remain authoritative and unchanged.",
         f"- Gates: {report['n_gates']}",
         f"- Failed gates: {report['n_failed_gates']}",
         "",

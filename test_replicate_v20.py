@@ -17,6 +17,9 @@ def test_cross_platform_and_central_frozen_reports_are_read_only() -> None:
         "gauged_u1x_g3_sos_candidate_v20.py",
         "gauged_u1x_g3_stability_v20.py",
         "gauged_u1x_g3_corrected_common_kernel_v20.py",
+        "final_g3_eft_acceptance_gate_v20.py",
+        "final_g4_eft_mathematical_gate_v20.py",
+        "final_g5_eft_mathematical_gate_v20.py",
         "g1_g8_gate_ledger_v20.py",
         "final_g3_acceptance_gate_v20.py",
         "g1_g8_execution_roadmap_v20.py",
@@ -59,6 +62,51 @@ def test_cross_platform_and_central_frozen_reports_are_read_only() -> None:
 
 def test_golden_anchors_match_current_package() -> None:
     replicate.check_golden_anchors()
+
+
+def test_parallel_eft_gates_run_read_only_in_dependency_order() -> None:
+    source = replicate.Path(replicate.__file__).read_text(encoding="utf-8")
+    tree = ast.parse(source)
+    executed_scripts = []
+    for node in ast.walk(tree):
+        if not (
+            isinstance(node, ast.Call)
+            and isinstance(node.func, ast.Name)
+            and node.func.id == "run"
+            and node.args
+            and isinstance(node.args[0], ast.List)
+        ):
+            continue
+        literals = [
+            item.value
+            for item in node.args[0].elts
+            if isinstance(item, ast.Constant) and isinstance(item.value, str)
+        ]
+        if literals:
+            executed_scripts.append((node.lineno, literals))
+    gate_names = (
+        "final_g3_eft_acceptance_gate_v20.py",
+        "final_g4_eft_mathematical_gate_v20.py",
+        "final_g5_eft_mathematical_gate_v20.py",
+    )
+    gate_rows = []
+    for name in gate_names:
+        rows = [row for row in executed_scripts if name in row[1]]
+        assert len(rows) == 1, name
+        assert "--write" not in rows[0][1], name
+        gate_rows.append(rows[0])
+    assert [row[0] for row in gate_rows] == sorted(row[0] for row in gate_rows)
+    ledger_line = next(
+        line
+        for line, command in executed_scripts
+        if "g1_g8_gate_ledger_v20.py" in command
+    )
+    assert gate_rows[-1][0] < ledger_line
+    for test_name in (
+        "test_final_g4_eft_mathematical_gate_v20.py",
+        "test_final_g5_eft_mathematical_gate_v20.py",
+    ):
+        assert test_name in source
 
 
 def test_current_native_root_contract_is_fail_closed_only_on_external_evidence() -> None:

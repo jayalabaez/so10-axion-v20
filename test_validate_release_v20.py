@@ -74,6 +74,9 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             "gauged_u1x_g3_sos_candidate_v20.py",
             "gauged_u1x_g3_stability_v20.py",
             "gauged_u1x_g3_corrected_common_kernel_v20.py",
+            "final_g3_eft_acceptance_gate_v20.py",
+            "final_g4_eft_mathematical_gate_v20.py",
+            "final_g5_eft_mathematical_gate_v20.py",
             "g1_g8_gate_ledger_v20.py",
             "final_g3_acceptance_gate_v20.py",
             "g1_g8_execution_roadmap_v20.py",
@@ -139,6 +142,63 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
         )
         self.assertIn("regenerated_sums != committed_sums", source)
 
+    def test_release_runs_parallel_eft_gates_read_only_in_dependency_order(self):
+        source = (release.ROOT / "validate_release_v20.py").read_text(
+            encoding="utf-8"
+        )
+        tree = ast.parse(source, filename="validate_release_v20.py")
+        commands = []
+        for node in ast.walk(tree):
+            if not (
+                isinstance(node, ast.Call)
+                and isinstance(node.func, ast.Name)
+                and node.func.id == "run"
+                and node.args
+                and isinstance(node.args[0], ast.List)
+            ):
+                continue
+            literals = [
+                item.value
+                for item in node.args[0].elts
+                if isinstance(item, ast.Constant) and isinstance(item.value, str)
+            ]
+            commands.append((node.lineno, literals))
+        gate_names = (
+            "final_g3_eft_acceptance_gate_v20.py",
+            "final_g4_eft_mathematical_gate_v20.py",
+            "final_g5_eft_mathematical_gate_v20.py",
+        )
+        gate_rows = []
+        for name in gate_names:
+            rows = [row for row in commands if name in row[1]]
+            self.assertEqual(len(rows), 1, name)
+            self.assertNotIn("--write", rows[0][1], name)
+            gate_rows.append(rows[0])
+        self.assertEqual(
+            [row[0] for row in gate_rows],
+            sorted(row[0] for row in gate_rows),
+        )
+        ledger_line = next(
+            line
+            for line, command in commands
+            if "g1_g8_gate_ledger_v20.py" in command
+        )
+        self.assertLess(gate_rows[-1][0], ledger_line)
+
+    def test_release_pins_the_integrated_g4_g5_refreeze(self):
+        source = (release.ROOT / "validate_release_v20.py").read_text(
+            encoding="utf-8"
+        )
+        for token in (
+            "931a152aed49eb28bf415a1aca093e923850cf68db3f40ccf1d2027b447a8c09",
+            "1b578471e74626e3b186cf7398aebd35349a67f45940b9c37d42bb49c1b8c8ba",
+            "parallel_EFT_G4_integrated_into_release_orchestrators",
+            "release_integration_completed",
+            "downstream_parallel_G5_integration_completed",
+            "downstream_integration_completed",
+        ):
+            self.assertIn(token, source)
+
     def test_final_theorem_core_paths_are_portable_unique_and_present(self):
         paths = release.FINAL_THEOREM_CORE_PATHS
 
@@ -191,6 +251,14 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             "freeze_corrected_rank1_endpoint_v21_integration.py",
             "test_corrected_rank1_endpoint_v21.py",
             "test_freeze_corrected_rank1_endpoint_v21_integration.py",
+            "FINAL_G4_EFT_MATHEMATICAL_GATE_V20.json",
+            "FINAL_G4_EFT_MATHEMATICAL_GATE_V20.md",
+            "final_g4_eft_mathematical_gate_v20.py",
+            "test_final_g4_eft_mathematical_gate_v20.py",
+            "FINAL_G5_EFT_MATHEMATICAL_GATE_V20.json",
+            "FINAL_G5_EFT_MATHEMATICAL_GATE_V20.md",
+            "final_g5_eft_mathematical_gate_v20.py",
+            "test_final_g5_eft_mathematical_gate_v20.py",
             ".github/workflows/current-main-full-reaudit.yml",
             ".github/workflows/g1-g8-execution-roadmap.yml",
             ".github/workflows/g1-g8-gate-ledger.yml",

@@ -107,6 +107,76 @@ class G1G8GateLedgerTests(unittest.TestCase):
             )["source_bound"]
         )
 
+    def test_parallel_eft_g4_g5_are_bound_without_promoting_legacy_gates(self):
+        g4 = self.report["parallel_EFT_G4_mathematical"]
+        g5 = self.report["parallel_EFT_G5_mathematical"]
+        self.assertTrue(g4["source_bound"])
+        self.assertEqual(g4["core_sha256"], mod.FINAL_G4_EFT_MATHEMATICAL_CORE_SHA256)
+        self.assertEqual(g4["raw_sha256"], mod.FINAL_G4_EFT_MATHEMATICAL_RAW_SHA256)
+        self.assertTrue(g4["mathematical_G4_closed_for_EFT_model"])
+        self.assertFalse(g4["release_G4_verified_for_EFT_model"])
+        self.assertFalse(
+            g4["mathematical_G4_closed_for_original_renormalizable_model"]
+        )
+        self.assertFalse(g4["authoritative_renormalizable_G4_gate_mutated"])
+        self.assertTrue(g4["checks"]["parallel_integration_completed"])
+        self.assertNotIn(
+            "parallel_EFT_G4_integrated_into_release_orchestrators",
+            g4["release_blockers"],
+        )
+
+        self.assertTrue(g5["source_bound"])
+        self.assertEqual(g5["core_sha256"], mod.FINAL_G5_EFT_MATHEMATICAL_CORE_SHA256)
+        self.assertEqual(g5["raw_sha256"], mod.FINAL_G5_EFT_MATHEMATICAL_RAW_SHA256)
+        self.assertTrue(g5["mathematical_G5_closed_for_EFT_model"])
+        self.assertFalse(g5["release_G5_verified_for_EFT_model"])
+        self.assertFalse(g5["authoritative_renormalizable_G5_closed"])
+        self.assertFalse(g5["authoritative_renormalizable_G5_mutated"])
+        self.assertFalse(g5["new_SOS_claimed"])
+        self.assertTrue(g5["checks"]["parallel_integration_completed"])
+        self.assertNotIn(
+            "downstream_parallel_G5_integration_completed",
+            g5["release_blockers"],
+        )
+
+        for name in ("G3", "G4", "G5"):
+            self.assertEqual(self.report["gates"][name]["status"], mod.STATUS_BLOCKED)
+        self.assertTrue(
+            self.report["checks"][
+                "parallel_EFT_G4_mathematical_is_source_bound_and_release_open"
+            ]
+        )
+        self.assertTrue(
+            self.report["checks"][
+                "parallel_EFT_G5_mathematical_is_source_bound_and_release_open"
+            ]
+        )
+
+        cases = (
+            (
+                mod._parallel_eft_g4_mathematical,
+                mod.FINAL_G4_EFT_MATHEMATICAL_JSON,
+                mod.FINAL_G4_EFT_MATHEMATICAL_RAW_SHA256,
+            ),
+            (
+                mod._parallel_eft_g5_mathematical,
+                mod.FINAL_G5_EFT_MATHEMATICAL_JSON,
+                mod.FINAL_G5_EFT_MATHEMATICAL_RAW_SHA256,
+            ),
+        )
+        for validator, path, raw_sha256 in cases:
+            with self.subTest(artifact=path.name, mutation="core"):
+                forged = copy.deepcopy(mod._load_json_artifact(path))
+                forged["core_sha256"] = "0" * 64
+                self.assertFalse(
+                    validator(forged, raw_sha256=raw_sha256)["source_bound"]
+                )
+            with self.subTest(artifact=path.name, mutation="raw"):
+                valid = mod._load_json_artifact(path)
+                self.assertFalse(
+                    validator(valid, raw_sha256="0" * 64)["source_bound"]
+                )
+
     def test_rank1_slice_rejects_wrong_fixed_H_orientation(self):
         forged = copy.deepcopy(
             mod._load_json_artifact(mod.G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_JSON)

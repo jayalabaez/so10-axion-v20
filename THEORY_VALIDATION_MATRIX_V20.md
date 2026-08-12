@@ -10,7 +10,11 @@
 - Empirical discovery: **False**
 - Parallel dimension-six EFT mathematical G3: **True**
 - Parallel EFT release G3 verified: **False**
-- Original renormalizable G3 and G4 remain authoritative and unchanged.
+- Parallel dimension-six EFT mathematical G4: **True**
+- Parallel EFT release G4 verified: **False**
+- Parallel dimension-six EFT mathematical G5: **True**
+- Parallel EFT release G5 verified: **False**
+- Original renormalizable G3, G4, and G5 remain authoritative and unchanged.
 - Gates: 11
 - Failed gates: 0
 

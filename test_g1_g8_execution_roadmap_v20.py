@@ -44,6 +44,44 @@ def test_roadmap_audit_succeeds_but_science_is_blocked():
     assert report["scientific_blockers"]
 
 
+def test_parallel_eft_g4_g5_are_pinned_without_promoting_legacy_gates():
+    report = mod.build_report()
+    g4 = report["parallel_EFT_G4_resolution"]
+    g5 = report["parallel_EFT_G5_resolution"]
+    assert g4["source_bound"] is True
+    assert g4["raw_sha256"] == mod.EFT_G4_RAW_SHA256
+    assert g4["core_sha256"] == mod.EFT_G4_CORE_SHA256
+    assert g4["mathematical_G4_closed"] is True
+    assert g4["release_G4_verified"] is False
+    assert g4["original_renormalizable_G4_closed"] is False
+    assert g4["integration_completed"] is True
+    assert "parallel_EFT_G4_integrated_into_release_orchestrators" not in g4[
+        "release_blockers"
+    ]
+    assert g5["source_bound"] is True
+    assert g5["raw_sha256"] == mod.EFT_G5_RAW_SHA256
+    assert g5["core_sha256"] == mod.EFT_G5_CORE_SHA256
+    assert g5["mathematical_G5_closed"] is True
+    assert g5["release_G5_verified"] is False
+    assert g5["original_renormalizable_G5_closed"] is False
+    assert g5["new_SOS_claimed"] is False
+    assert g5["integration_completed"] is True
+    assert "downstream_parallel_G5_integration_completed" not in g5[
+        "release_blockers"
+    ]
+    for name in ("G3", "G4", "G5"):
+        assert report["gates"][name]["status"] == mod.ledger.STATUS_BLOCKED
+    assert report["checks"]["parallel_EFT_G4_mathematical_raw_and_core_bound"]
+    assert report["checks"]["parallel_EFT_G5_mathematical_raw_and_core_bound"]
+
+    for key in ("parallel_EFT_G4_mathematical", "parallel_EFT_G5_mathematical"):
+        forged_ledger = copy.deepcopy(mod.ledger.build_report())
+        forged_ledger[key]["core_sha256"] = "0" * 64
+        forged_roadmap = mod._build_report_from_ledger(forged_ledger)
+        assert forged_roadmap["n_failed"] > 0
+        assert forged_roadmap["overall_state"] == "EXECUTION_FAIL"
+
+
 def test_wave_zero_is_first_on_the_critical_path():
     report = mod.build_report()
     assert mod.acyclic() is True

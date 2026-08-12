@@ -40,6 +40,9 @@
     "only_certified_G5_closes_among_G3_G8": true,
     "open_gates_have_closed_dependencies": true,
     "parallel_EFT_G3_acceptance_is_source_bound_and_release_open": true,
+    "parallel_EFT_G4_G5_do_not_promote_authoritative_frontier": true,
+    "parallel_EFT_G4_mathematical_is_source_bound_and_release_open": true,
+    "parallel_EFT_G5_mathematical_is_source_bound_and_release_open": true,
     "whole_model_neither_validated_nor_excluded": true
   },
   "closure_waves": [
@@ -520963,9 +520966,206 @@
       "status": "FINAL_EFT_G3_ACCEPTANCE__MATHEMATICAL_PASS_RELEASE_OPEN",
       "theorem_core_sha256": "2eca279488d92d8bd9eca974c0d598340124f025e62212cd8a188413a6e8b7d0",
       "verdict": "Mathematical G3 is closed for the explicitly stated dimension-six EFT extension. The original renormalizable model remains open, G4 is not claimed, and release verification remains open until the extended contract is executed, EFT matching is approved, and the upstream G1/G2 release gates close."
+    },
+    "parallel_EFT_G4_mathematical_gate": {
+      "artifact_sha256": {
+        "EFT_G3_gate_JSON": "482f9da84d677e24594ca536a2c257602e02f5187419df5cba5356f771ddbaf0",
+        "EFT_G3_gate_source": "bd67e726fb2f482ef415307943bacdc5a54a0ebeae757852fe4c40010d6a0af5",
+        "EFT_G3_theorem_JSON": "38520c5aed7a3a72dbede3e4358e5edb48c16f35a5bb31601864e1f8dc0e2271",
+        "EFT_G3_theorem_source": "d3b3368e8e640b285f43a106f5c236dc2780c01df4d71e88365cb607f35277f9",
+        "EFT_witness_Hessian_source": "cd4192713d8b3b13f6a9cf492f37d8615e3ead7a1a49fb3c30a1f6de235f7498",
+        "EFT_witness_orbit_source": "c88a76c4bcc1f32ddce9eef15c87fe0a6794f7e0d7643ae774972a9b4b67c71f",
+        "physical_quotient_JSON": "489e0cb60085d799fb59e5f2976b19d357c88be66013e65fb1d92c8ee49ad9bd",
+        "physical_quotient_source": "5e2a089f32049a82f4d05171df76df27b832b171c0a730dd6922d5e797326a9b"
+      },
+      "classification": {
+        "authoritative_renormalizable_G4_gate_mutated": false,
+        "mathematical_G4_closed_for_EFT_model": true,
+        "mathematical_G4_closed_for_original_renormalizable_model": false,
+        "release_G4_verified_for_EFT_model": false,
+        "whole_model_validated": false
+      },
+      "contract": {
+        "EFT_model_contract_id": "gauged_u1x_phi17_v20_eft_o6_current_kernel_gamma_1_over_20",
+        "authoritative_51_parameter_contract_unchanged": true,
+        "base_model_contract_id": "gauged_u1x_phi17_v20",
+        "extension": "(1/20)Lambda_EFT^-2||K_H Sigma||^2"
+      },
+      "core_sha256": "931a152aed49eb28bf415a1aca093e923850cf68db3f40ccf1d2027b447a8c09",
+      "exact_EFT_witness_quotient_geometry": {
+        "column_order": "45 SO(10), then U(1)_X, then global PQ",
+        "exact_integer_lattice_residual": 0.0,
+        "exact_tangent_ranks": {
+          "SO10": 36,
+          "SO10_plus_U1X": 37,
+          "SO10_plus_U1X_plus_PQ": 38
+        },
+        "gauge_quotient_dimension_including_axion": 449,
+        "generator_columns": 47,
+        "independent_PQ_axion_dimension": 1,
+        "massive_transverse_quotient_dimension": 448,
+        "real_field_dimension": 486,
+        "same_witness_crosscheck": {
+          "full_symmetry_nullity": 9,
+          "method": "exact integer row echelon after invertible block-row scaling",
+          "pivot_column_counts": [
+            36,
+            37,
+            38
+          ]
+        },
+        "source_binding_exact": true
+      },
+      "exact_Hessian_classification": {
+        "Hessian_nullity": 38,
+        "Hessian_rank": 448,
+        "full_real_dimension": 486,
+        "gauge_quotient_dimension_including_axion": 449,
+        "kernel": "exactly SO(10)xU(1)_XxU(1)_PQ tangents",
+        "massive_transverse_dimension": 448,
+        "massless_physical_axion_modes": 1,
+        "negative_modes": 0,
+        "positive_kappa_family": {
+          "Hessian_form": "H(kappa)=H0+c(kappa) J^T J with c(kappa)>0",
+          "coefficient": "kappa=(1/20)Lambda_EFT^-2 > 0 for Lambda_EFT>0",
+          "kernel_identity": "ker H(kappa)=ker H0 intersect ker J for every kappa>0",
+          "normalized_exact_payload_point": "gamma=1/20, Lambda_EFT=1",
+          "rank448_nullity38_for_every_positive_kappa": true,
+          "reason": "H0 and J^T J are PSD, so a positive weighted sum vanishes exactly on the common kernel"
+        },
+        "stabilized_payload_sha256": "7ea54d59138f8e5b66aad3d1f1ecb707c65ac9bb0f0e118a597daaccc136b568",
+        "strictly_positive_massive_transverse_modes": 448,
+        "unexplained_zero_modes": 0
+      },
+      "mathematical_checks": {
+        "EFT_G3_theorem_core_exact": true,
+        "EFT_contract_scope_exact": true,
+        "EFT_witness_tangent_lattice_source_bound": true,
+        "Hessian_kernel_equals_full_symmetry_tangents": true,
+        "SO10_orbit_rank_36_exact": true,
+        "accepted_EFT_G3_witness_exact": true,
+        "accepted_witness_is_exact_stationary_global_minimum": true,
+        "all_448_transverse_modes_strictly_positive": true,
+        "all_positive_kappa_have_same_PSD_kernel_and_rank": true,
+        "authoritative_quotient_convention_source_bound": true,
+        "full_symmetry_orbit_rank_38_exact": true,
+        "gauge_quotient_449_includes_one_PQ_axion": true,
+        "gauged_orbit_rank_37_exact": true,
+        "legacy_scopes_not_relabelled": true,
+        "massive_transverse_quotient_448_exact": true,
+        "stabilized_Hessian_is_exact_PSD": true,
+        "stabilized_Hessian_rank448_nullity38_exact": true
+      },
+      "production_mapping": {
+        "do_not_flip": "authoritative renormalizable G4",
+        "new_parallel_gate": "EFT_G4_MATHEMATICAL",
+        "release_integration_completed": true
+      },
+      "release_blockers": [
+        "Lambda_EFT_and_positive_Wilson_matching_approved",
+        "radiative_stability_completed",
+        "external_extended_model_contract_executed",
+        "G1_promoted_closed",
+        "G2_promoted_closed",
+        "release_G3_verified_for_EFT_model"
+      ],
+      "release_criteria": {
+        "G1_promoted_closed": false,
+        "G2_promoted_closed": false,
+        "Lambda_EFT_and_positive_Wilson_matching_approved": false,
+        "authoritative_EFT_contract_registered": true,
+        "external_extended_model_contract_executed": false,
+        "mathematical_EFT_G3_gate_passed": true,
+        "parallel_EFT_G4_integrated_into_release_orchestrators": true,
+        "radiative_stability_completed": false,
+        "release_G3_verified_for_EFT_model": false
+      },
+      "status": "FINAL_EFT_G4_MATHEMATICAL_PASS_RELEASE_OPEN",
+      "theorem_core_sha256": "2eca279488d92d8bd9eca974c0d598340124f025e62212cd8a188413a6e8b7d0",
+      "upstream_G3_gate_core_sha256": "472770981ee7f9ad5880d614826e687c6d9402c286980b421a2bad7d079f09fb",
+      "verdict": "Mathematical G4 is closed for the registered dimension-six EFT model for every positive kappa=(1/20)Lambda_EFT^-2: the 449-dimensional gauge quotient contains exactly one independent PQ axion, and the remaining 448-dimensional physical Hessian is strictly positive. The original renormalizable G4 and EFT release G4 remain open."
+    },
+    "parallel_EFT_G5_mathematical_gate": {
+      "artifact_sha256": {
+        "EFT_theorem_report": "38520c5aed7a3a72dbede3e4358e5edb48c16f35a5bb31601864e1f8dc0e2271",
+        "EFT_theorem_source": "d3b3368e8e640b285f43a106f5c236dc2780c01df4d71e88365cb607f35277f9",
+        "O6_exact_source": "c113abf41ca9527528dc00d248fdfa3fcae990e39ba4b76251ca197167cbad23",
+        "immutable_EFT_G3_gate": "482f9da84d677e24594ca536a2c257602e02f5187419df5cba5356f771ddbaf0"
+      },
+      "classification": {
+        "authoritative_renormalizable_G5_blocked_by_model_contract": true,
+        "authoritative_renormalizable_G5_blocker": "AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED",
+        "authoritative_renormalizable_G5_closed": false,
+        "authoritative_renormalizable_G5_mutated": false,
+        "immutable_EFT_G3_gate_mutated": false,
+        "mathematical_G5_closed_for_EFT_model": true,
+        "new_SOS_claimed": false,
+        "release_G5_verified_for_EFT_model": false,
+        "whole_model_excluded": false
+      },
+      "contract": {
+        "EFT_model_contract_id": "gauged_u1x_phi17_v20_eft_o6_current_kernel_gamma_1_over_20",
+        "authoritative_51_parameter_contract_unchanged": true,
+        "authoritative_renormalizable_parameter_count": 51,
+        "base_model_contract_id": "gauged_u1x_phi17_v20",
+        "dimension_six_operator_count": 1,
+        "extension": "(1/20)Lambda_EFT^-2||K_H Sigma||^2 with Lambda_EFT>0",
+        "real_field_dimension": 486,
+        "selected_nonzero_renormalizable_parameter_count": 27
+      },
+      "core_sha256": "1b578471e74626e3b186cf7398aebd35349a67f45940b9c37d42bb49c1b8c8ba",
+      "decisive_theorem": "For every one of the 486 real field coordinates, the frozen beta-zero potential is an exact sum of nonnegative residuals plus -40661/20000 at r=1/5.  The only EFT addition is (1/20)Lambda_EFT^-2||K_H Sigma||^2>=0 for Lambda_EFT>0.  Therefore the specified EFT potential is globally bounded below.",
+      "exact_global_lower_bound": "-40661/20000",
+      "mathematical_checks": {
+        "EFT_contract_exact": true,
+        "O6_globally_PSD_for_gamma_nonnegative": true,
+        "O6_is_the_only_dimension_six_addition": true,
+        "all_486_real_fields_covered": true,
+        "exact_full_field_SOS_has_no_omitted_terms": true,
+        "existing_EFT_G3_gate_is_unmodified": true,
+        "finite_exact_global_lower_bound": true,
+        "frozen_EFT_theorem_core_exact": true,
+        "immutable_EFT_G3_gate_core_exact": true,
+        "normalized_positive_Wilson_point_exact": true
+      },
+      "namespace": "EFT_G5_MATHEMATICAL",
+      "production_mapping": {
+        "do_not_flip": "authoritative G5 in G1_G8_GATE_LEDGER_V20 for the renormalizable model",
+        "downstream_integration_completed": true,
+        "immutable_EFT_G3_gate": "FINAL_G3_EFT_ACCEPTANCE_GATE_V20.json",
+        "new_parallel_gate": "EFT_G5_MATHEMATICAL",
+        "portable_O6_module": "exact_hsigma_current_endomorphism_dimension6_stabilizer_v20",
+        "portable_source_module": "exact_gauged_u1x_g3_su5_eft_current_kernel_stabilized_global_v20"
+      },
+      "proof_reuse": {
+        "EFT_theorem_core_sha256": "2eca279488d92d8bd9eca974c0d598340124f025e62212cd8a188413a6e8b7d0",
+        "O6_theorem_core_sha256": "598d916da16e746c8be30e979a13a27a47d1600e2dd4bee7b9cf9fc398ec9da1",
+        "immutable_EFT_G3_gate_core_sha256": "472770981ee7f9ad5880d614826e687c6d9402c286980b421a2bad7d079f09fb",
+        "kind": "composition_of_existing_frozen_exact_theorems",
+        "new_SOS_constructed_or_claimed": false
+      },
+      "release_blockers": [
+        "Lambda_EFT_and_positive_Wilson_matching_approved",
+        "radiative_stability_completed",
+        "external_extended_model_contract_executed",
+        "G1_promoted_closed",
+        "G2_promoted_closed"
+      ],
+      "release_criteria": {
+        "G1_promoted_closed": false,
+        "G2_promoted_closed": false,
+        "Lambda_EFT_and_positive_Wilson_matching_approved": false,
+        "authoritative_EFT_contract_registered": true,
+        "downstream_parallel_G5_integration_completed": true,
+        "external_extended_model_contract_executed": false,
+        "mathematical_EFT_G5_certificate_source_bound": true,
+        "radiative_stability_completed": false
+      },
+      "status": "FINAL_EFT_G5_MATHEMATICAL_GATE__MATHEMATICAL_PASS_RELEASE_OPEN",
+      "verdict": "Mathematical G5 is closed for the explicitly stated dimension-six EFT because its complete 486-real-field potential has an exact finite SOS lower bound and the added O6 term is globally PSD. No new SOS is claimed. EFT release G5 remains open, and the current authoritative renormalizable G5 gate remains unmodified and contract-blocked."
     }
   },
-  "n_checks": 40,
+  "n_checks": 43,
   "n_failed": 0,
   "overall_state": "BLOCKED",
   "parallel_EFT_G3_acceptance": {
@@ -521007,6 +521207,84 @@
       "G2_promoted_closed"
     ],
     "renormalizable_gate_mutated": false,
+    "source_bound": true
+  },
+  "parallel_EFT_G4_mathematical": {
+    "EFT_model_contract_id": "gauged_u1x_phi17_v20_eft_o6_current_kernel_gamma_1_over_20",
+    "artifact": "FINAL_G4_EFT_MATHEMATICAL_GATE_V20.json",
+    "authoritative_renormalizable_G4_gate_mutated": false,
+    "base_model_contract_id": "gauged_u1x_phi17_v20",
+    "checks": {
+      "EFT_mathematical_G4_closed": true,
+      "EFT_release_open": true,
+      "all_embedded_mathematical_checks_pass": true,
+      "artifact_present": true,
+      "contract_exact_and_renormalizable_contract_unchanged": true,
+      "core_sha256_exact": true,
+      "exact_physical_hessian_classification": true,
+      "parallel_integration_completed": true,
+      "parallel_namespace_exact": true,
+      "raw_sha256_exact": true,
+      "renormalizable_G4_unchanged_and_open": true,
+      "status_exact": true,
+      "upstream_cores_exact": true,
+      "whole_model_not_validated": true
+    },
+    "core_sha256": "931a152aed49eb28bf415a1aca093e923850cf68db3f40ccf1d2027b447a8c09",
+    "expected_core_sha256": "931a152aed49eb28bf415a1aca093e923850cf68db3f40ccf1d2027b447a8c09",
+    "expected_raw_sha256": "98664542a4e1bbfba233652737826b974963a31c2e86a15e2d73fda1457d987b",
+    "mathematical_G4_closed_for_EFT_model": true,
+    "mathematical_G4_closed_for_original_renormalizable_model": false,
+    "namespace": "EFT_G4_MATHEMATICAL",
+    "raw_sha256": "98664542a4e1bbfba233652737826b974963a31c2e86a15e2d73fda1457d987b",
+    "release_G4_verified_for_EFT_model": false,
+    "release_blockers": [
+      "Lambda_EFT_and_positive_Wilson_matching_approved",
+      "radiative_stability_completed",
+      "external_extended_model_contract_executed",
+      "G1_promoted_closed",
+      "G2_promoted_closed",
+      "release_G3_verified_for_EFT_model"
+    ],
+    "source_bound": true
+  },
+  "parallel_EFT_G5_mathematical": {
+    "EFT_model_contract_id": "gauged_u1x_phi17_v20_eft_o6_current_kernel_gamma_1_over_20",
+    "artifact": "FINAL_G5_EFT_MATHEMATICAL_GATE_V20.json",
+    "authoritative_renormalizable_G5_blocked_by_model_contract": true,
+    "authoritative_renormalizable_G5_closed": false,
+    "authoritative_renormalizable_G5_mutated": false,
+    "base_model_contract_id": "gauged_u1x_phi17_v20",
+    "checks": {
+      "EFT_mathematical_G5_closed": true,
+      "EFT_release_open": true,
+      "all_embedded_mathematical_checks_pass": true,
+      "artifact_present": true,
+      "contract_exact_and_renormalizable_contract_unchanged": true,
+      "core_sha256_exact": true,
+      "frozen_theorem_composition_exact": true,
+      "parallel_integration_completed": true,
+      "parallel_namespace_exact": true,
+      "raw_sha256_exact": true,
+      "renormalizable_G5_unchanged_and_blocked": true,
+      "status_exact": true,
+      "whole_model_not_excluded": true
+    },
+    "core_sha256": "1b578471e74626e3b186cf7398aebd35349a67f45940b9c37d42bb49c1b8c8ba",
+    "expected_core_sha256": "1b578471e74626e3b186cf7398aebd35349a67f45940b9c37d42bb49c1b8c8ba",
+    "expected_raw_sha256": "6d6e4fd9932a03e35146afb1bca850666e883aaed5e23b73b81f0f703e4e7db9",
+    "mathematical_G5_closed_for_EFT_model": true,
+    "namespace": "EFT_G5_MATHEMATICAL",
+    "new_SOS_claimed": false,
+    "raw_sha256": "6d6e4fd9932a03e35146afb1bca850666e883aaed5e23b73b81f0f703e4e7db9",
+    "release_G5_verified_for_EFT_model": false,
+    "release_blockers": [
+      "Lambda_EFT_and_positive_Wilson_matching_approved",
+      "radiative_stability_completed",
+      "external_extended_model_contract_executed",
+      "G1_promoted_closed",
+      "G2_promoted_closed"
+    ],
     "source_bound": true
   },
   "scientific_blockers": [

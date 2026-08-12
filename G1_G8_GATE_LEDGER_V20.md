@@ -10,11 +10,15 @@ The ledger audit succeeds, but all G1-G8 gates are BLOCKED. The gauged-U(1)_X SA
 
 `MODEL_CONTRACT -> G1 -> G2 -> G3/G4/G5 -> G6 -> G7 -> G8`
 
-## Parallel EFT G3 acceptance
+## Parallel EFT G3/G4/G5 classifications
 
 - Dimension-six EFT mathematical G3: **True**
 - EFT release G3 verified: **False**
-- The authoritative renormalizable G3 and G4 gates are unchanged.
+- Dimension-six EFT mathematical G4: **True**
+- EFT release G4 verified: **False**
+- Dimension-six EFT mathematical G5: **True**
+- EFT release G5 verified: **False**
+- The authoritative renormalizable G3, G4, and G5 gates are unchanged.
 
 ## Authoritative gates
 

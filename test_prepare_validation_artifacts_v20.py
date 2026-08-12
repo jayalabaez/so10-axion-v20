@@ -91,6 +91,9 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
                 "--recompute-heavy"
             ),
             "g1_g8_gate_ledger_v20.py",
+            "final_g3_eft_acceptance_gate_v20.py",
+            "final_g4_eft_mathematical_gate_v20.py",
+            "final_g5_eft_mathematical_gate_v20.py",
             "final_g3_acceptance_gate_v20.py",
             "g1_g8_execution_roadmap_v20.py",
             "authoritative_full_model_gate_v20.py",
@@ -116,6 +119,9 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
             "exact_phi_self_zero_global_signed_kaehler_classification_v20.py",
             "exact_gauged_u1x_g3_su5_equality_orbit_v20.py",
             "exact_gauged_u1x_g3_su5_chiral_global_gap_reduction_v20.py",
+            "final_g3_eft_acceptance_gate_v20.py",
+            "final_g4_eft_mathematical_gate_v20.py",
+            "final_g5_eft_mathematical_gate_v20.py",
             "g1_g8_gate_ledger_v20.py",
             "final_g3_acceptance_gate_v20.py",
             "g1_g8_execution_roadmap_v20.py",
@@ -135,6 +141,37 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
         self.assertTrue(
             all("--no-write" in command for command in global_flavour_commands)
         )
+
+    def test_parallel_eft_gates_are_read_only_and_in_dependency_order(self):
+        displays = [prepare._display(command) for command in prepare.FULL_COMMANDS]
+        gate_names = (
+            "final_g3_eft_acceptance_gate_v20.py",
+            "final_g4_eft_mathematical_gate_v20.py",
+            "final_g5_eft_mathematical_gate_v20.py",
+        )
+        indices = []
+        for name in gate_names:
+            matching = [
+                (index, command)
+                for index, command in enumerate(prepare.FULL_COMMANDS)
+                if name in command
+            ]
+            self.assertEqual(len(matching), 1, name)
+            index, command = matching[0]
+            self.assertNotIn("--write", command, name)
+            indices.append(index)
+        self.assertEqual(indices, sorted(indices))
+        ledger_index = next(
+            index
+            for index, display in enumerate(displays)
+            if "g1_g8_gate_ledger_v20.py" in display
+        )
+        self.assertLess(indices[-1], ledger_index)
+        for test_name in (
+            "test_final_g4_eft_mathematical_gate_v20.py",
+            "test_final_g5_eft_mathematical_gate_v20.py",
+        ):
+            self.assertIn(test_name, "\n".join(displays))
 
     def test_full_inventory_uses_current_fail_closed_contract(self):
         displays = [prepare._display(command) for command in prepare.FULL_COMMANDS]

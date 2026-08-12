@@ -94,6 +94,9 @@ def minimal_tree(
             "gates": {
                 "G1": {"status": "CLOSED" if contract_consistent else "BLOCKED"},
                 "G2": {"status": "CLOSED" if contract_consistent else "BLOCKED"},
+                "G3": {"status": "OPEN" if contract_consistent else "BLOCKED"},
+                "G4": {"status": "BLOCKED"},
+                "G5": {"status": "CLOSED" if contract_consistent else "BLOCKED"},
             }
         },
     )
@@ -780,6 +783,11 @@ def minimal_tree(
     root.joinpath("FINAL_G3_EFT_ACCEPTANCE_GATE_V20.json").write_bytes(
         (matrix.ROOT / "FINAL_G3_EFT_ACCEPTANCE_GATE_V20.json").read_bytes()
     )
+    for filename in (
+        "FINAL_G4_EFT_MATHEMATICAL_GATE_V20.json",
+        "FINAL_G5_EFT_MATHEMATICAL_GATE_V20.json",
+    ):
+        root.joinpath(filename).write_bytes((matrix.ROOT / filename).read_bytes())
     write_json(
         root,
         "so10_axion_v20_verdict.json",
@@ -946,8 +954,94 @@ class TheoryValidationMatrixTests(unittest.TestCase):
             self.assertFalse(
                 evidence["original_renormalizable_mathematical_G3_closed"]
             )
-            self.assertFalse(evidence["parallel_EFT_G4_closed"])
+            self.assertTrue(evidence["parallel_EFT_G4_closed"])
             self.assertTrue(evidence["final_G3_acceptance_gate_honestly_open"])
+
+    def test_parallel_eft_g4_g5_are_math_pass_release_open_and_fail_closed(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            minimal_tree(root, contract_consistent=False)
+            report = matrix.build_report(root)
+            g4 = report["parallel_EFT_G4_mathematical"]
+            g5 = report["parallel_EFT_G5_mathematical"]
+            self.assertTrue(g4["source_bound"])
+            self.assertEqual(
+                g4["core_sha256"],
+                matrix.gate_ledger.FINAL_G4_EFT_MATHEMATICAL_CORE_SHA256,
+            )
+            self.assertEqual(
+                g4["raw_sha256"],
+                matrix.gate_ledger.FINAL_G4_EFT_MATHEMATICAL_RAW_SHA256,
+            )
+            self.assertTrue(g4["mathematical_G4_closed_for_EFT_model"])
+            self.assertFalse(g4["release_G4_verified_for_EFT_model"])
+            self.assertFalse(
+                g4["mathematical_G4_closed_for_original_renormalizable_model"]
+            )
+            self.assertTrue(g4["checks"]["parallel_integration_completed"])
+            self.assertNotIn(
+                "parallel_EFT_G4_integrated_into_release_orchestrators",
+                g4["release_blockers"],
+            )
+            self.assertTrue(g5["source_bound"])
+            self.assertEqual(
+                g5["core_sha256"],
+                matrix.gate_ledger.FINAL_G5_EFT_MATHEMATICAL_CORE_SHA256,
+            )
+            self.assertEqual(
+                g5["raw_sha256"],
+                matrix.gate_ledger.FINAL_G5_EFT_MATHEMATICAL_RAW_SHA256,
+            )
+            self.assertTrue(g5["mathematical_G5_closed_for_EFT_model"])
+            self.assertFalse(g5["release_G5_verified_for_EFT_model"])
+            self.assertFalse(g5["authoritative_renormalizable_G5_closed"])
+            self.assertTrue(g5["checks"]["parallel_integration_completed"])
+            self.assertNotIn(
+                "downstream_parallel_G5_integration_completed",
+                g5["release_blockers"],
+            )
+
+            vacuum = next(
+                gate
+                for gate in report["gates"]
+                if gate["name"] == "full_scalar_potential_vacuum_and_spectrum"
+            )
+            evidence = vacuum["evidence"]
+            self.assertTrue(evidence["parallel_EFT_G4_closed"])
+            self.assertFalse(evidence["parallel_EFT_release_G4_verified"])
+            self.assertTrue(evidence["parallel_EFT_G4_integration_completed"])
+            self.assertTrue(
+                evidence["parallel_EFT_G4_integration_blocker_removed"]
+            )
+            self.assertTrue(evidence["parallel_EFT_G5_closed"])
+            self.assertFalse(evidence["parallel_EFT_release_G5_verified"])
+            self.assertTrue(evidence["parallel_EFT_G5_integration_completed"])
+            self.assertTrue(
+                evidence["parallel_EFT_G5_integration_blocker_removed"]
+            )
+            self.assertEqual(
+                evidence["authoritative_renormalizable_G3_G4_G5_statuses"],
+                {"G3": "BLOCKED", "G4": "BLOCKED", "G5": "BLOCKED"},
+            )
+
+            for filename, key in (
+                (
+                    "FINAL_G4_EFT_MATHEMATICAL_GATE_V20.json",
+                    "parallel_EFT_G4_mathematical",
+                ),
+                (
+                    "FINAL_G5_EFT_MATHEMATICAL_GATE_V20.json",
+                    "parallel_EFT_G5_mathematical",
+                ),
+            ):
+                with self.subTest(filename=filename):
+                    artifact = root / filename
+                    original = artifact.read_bytes()
+                    artifact.write_bytes(original + b"\n")
+                    forged = matrix.build_report(root)[key]
+                    self.assertFalse(forged["source_bound"])
+                    self.assertFalse(forged["checks"]["raw_sha256_exact"])
+                    artifact.write_bytes(original)
 
     def test_parallel_eft_g3_rejects_raw_byte_drift(self):
         with tempfile.TemporaryDirectory() as tmp:

@@ -59,6 +59,13 @@ EFT_BETA_ZERO_BASE_HESSIAN_PAYLOAD_SHA256 = (
 EFT_STABILIZED_HESSIAN_PAYLOAD_SHA256 = (
     "7ea54d59138f8e5b66aad3d1f1ecb707c65ac9bb0f0e118a597daaccc136b568"
 )
+EFT_G4_MATHEMATICAL_GATE_CORE_SHA256 = (
+    "931a152aed49eb28bf415a1aca093e923850cf68db3f40ccf1d2027b447a8c09"
+)
+EFT_G5_MATHEMATICAL_GATE_CORE_SHA256 = (
+    "1b578471e74626e3b186cf7398aebd35349a67f45940b9c37d42bb49c1b8c8ba"
+)
+EFT_G5_EXACT_GLOBAL_LOWER_BOUND = "-40661/20000"
 
 PUBLICATION_FILES = (
     "EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_FIXED_ENDPOINT_THEOREM_V21.json",
@@ -118,6 +125,8 @@ READ_ONLY_FROZEN_REPORT_SOURCES = (
     "exact_hsigma_current_endomorphism_dimension6_stabilizer_v20.py",
     "exact_gauged_u1x_g3_su5_eft_current_kernel_stabilized_global_v20.py",
     "final_g3_eft_acceptance_gate_v20.py",
+    "final_g4_eft_mathematical_gate_v20.py",
+    "final_g5_eft_mathematical_gate_v20.py",
 )
 NO_WRITE_FROZEN_CLASSIFICATION_SOURCES = (
     "theory_validation_matrix_v20.py",
@@ -257,6 +266,32 @@ EFT_G3_RAW_PINS = {
         "93fb87a00d34069a0fa4dfacb7c7c41714d2eff64686cacfed2bfbae73fd9936"
     ),
 }
+EFT_G4_G5_RAW_PINS = {
+    "final_g4_eft_mathematical_gate_v20.py": (
+        "1ba0a11fa09b1893fa10ec940e9c7444ff54003e25623ab82f0796fe732f5d35"
+    ),
+    "test_final_g4_eft_mathematical_gate_v20.py": (
+        "078b8dbc34c8003c9e5fa98a2adaa432238cacd5bd0a42278c9a0082334edd05"
+    ),
+    "FINAL_G4_EFT_MATHEMATICAL_GATE_V20.json": (
+        "98664542a4e1bbfba233652737826b974963a31c2e86a15e2d73fda1457d987b"
+    ),
+    "FINAL_G4_EFT_MATHEMATICAL_GATE_V20.md": (
+        "e859af53c619b90c265e410d6ddc26a2f20c5aaf26269e9619250aa8fc4f70ce"
+    ),
+    "final_g5_eft_mathematical_gate_v20.py": (
+        "54ccea280c911ad8999ba4a233651d4892c2f6a3d6751cde48e26a5ff5ab828b"
+    ),
+    "test_final_g5_eft_mathematical_gate_v20.py": (
+        "8cdfe60bd8d568de58a76321ae954d6fbbcc00df19c27528d9bfae0bf61864ad"
+    ),
+    "FINAL_G5_EFT_MATHEMATICAL_GATE_V20.json": (
+        "6d6e4fd9932a03e35146afb1bca850666e883aaed5e23b73b81f0f703e4e7db9"
+    ),
+    "FINAL_G5_EFT_MATHEMATICAL_GATE_V20.md": (
+        "4ed0d85930430c78b0fe8465e50bde9f4b114014c76c1708c6e332e0c4490d33"
+    ),
+}
 RHS_PORTABLE_SOURCE_PINS = {
     "exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py":
         "8493a90d9b689bc02479151529ac697425f56087f2bdbebb40176f418b7c0ff8",
@@ -280,7 +315,7 @@ RAW_INTEGRATION_PATHS = (
     "test_freeze_corrected_rank1_endpoint_v21_integration.py",
 ) + PUBLICATION_PATHS + tuple(RAW_SOURCE_PINS) + tuple(
     GLOBAL_PHI_CLASSIFICATION_RAW_PINS
-) + tuple(EFT_G3_RAW_PINS)
+) + tuple(EFT_G3_RAW_PINS) + tuple(EFT_G4_G5_RAW_PINS)
 
 GLOBAL_PHI_CLASSIFICATION_PORTABLE_PATHS = (
     "EXACT_PHI_SELF_ZERO_GLOBAL_SEXTIC_SYZYGY.md",
@@ -356,7 +391,9 @@ CHECKSUM_REQUIRED_PATHS = (
     "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py",
 ) + WORKFLOW_PATHS + PUBLICATION_PATHS + tuple(
     GLOBAL_PHI_CLASSIFICATION_RAW_PINS
-) + tuple(EFT_G3_RAW_PINS) + GLOBAL_PHI_CLASSIFICATION_PORTABLE_PATHS
+) + tuple(EFT_G3_RAW_PINS) + tuple(
+    EFT_G4_G5_RAW_PINS
+) + GLOBAL_PHI_CLASSIFICATION_PORTABLE_PATHS
 
 
 def _raw_payload(path: Path) -> bytes:
@@ -399,6 +436,8 @@ def _role(relative: str) -> str:
         return "byte-pinned exact global Phi self-zero proof dependency"
     if relative in EFT_G3_RAW_PINS:
         return "byte-pinned dimension-six EFT G3 theorem and acceptance bundle"
+    if relative in EFT_G4_G5_RAW_PINS:
+        return "byte-pinned dimension-six EFT mathematical G4/G5 gate bundle"
     if relative in RAW_SOURCE_PINS or relative in RHS_PORTABLE_SOURCE_PINS:
         return "generation-only byte-pinned structural dependency"
     if relative in WORKFLOW_PATHS:
@@ -438,6 +477,12 @@ def _require_source_pins() -> None:
         observed = _sha256(_raw_payload(ROOT / relative))
         if observed != expected:
             raise ArithmeticError(f"raw EFT G3 bundle member drifted: {relative}")
+    for relative, expected in EFT_G4_G5_RAW_PINS.items():
+        observed = _sha256(_raw_payload(ROOT / relative))
+        if observed != expected:
+            raise ArithmeticError(
+                f"raw EFT G4/G5 bundle member drifted: {relative}"
+            )
 
 
 def _source_string_constant(relative: str, name: str) -> str:
@@ -600,6 +645,171 @@ def _require_eft_g3_bundle() -> dict[str, Any]:
     }
 
 
+def _require_eft_g4_g5_bundle() -> dict[str, Any]:
+    if len(EFT_G4_G5_RAW_PINS) != 8:
+        raise ArithmeticError("the EFT G4/G5 raw bundle must contain exactly 8 files")
+    g4_source = "final_g4_eft_mathematical_gate_v20.py"
+    g5_source = "final_g5_eft_mathematical_gate_v20.py"
+    g4 = json.loads(
+        (ROOT / "FINAL_G4_EFT_MATHEMATICAL_GATE_V20.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    g5 = json.loads(
+        (ROOT / "FINAL_G5_EFT_MATHEMATICAL_GATE_V20.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    g4_classification = g4.get("classification", {})
+    g4_geometry = g4.get("exact_EFT_witness_quotient_geometry", {})
+    g4_hessian = g4.get("exact_Hessian_classification", {})
+    g4_positive_kappa = g4_hessian.get("positive_kappa_family", {})
+    g4_release_criteria = g4.get("release_criteria", {})
+    g4_production_mapping = g4.get("production_mapping", {})
+    g5_classification = g5.get("classification", {})
+    g5_proof = g5.get("proof_reuse", {})
+    g5_release_criteria = g5.get("release_criteria", {})
+    g5_production_mapping = g5.get("production_mapping", {})
+    checks = {
+        "G4_source_core_exact": (
+            _source_string_constant(g4_source, "EXPECTED_CORE_SHA256")
+            == EFT_G4_MATHEMATICAL_GATE_CORE_SHA256
+        ),
+        "G4_report_core_exact": (
+            g4.get("core_sha256") == EFT_G4_MATHEMATICAL_GATE_CORE_SHA256
+        ),
+        "G4_internal_checks_all_exact": (
+            bool(g4.get("mathematical_checks"))
+            and all(value is True for value in g4["mathematical_checks"].values())
+        ),
+        "G4_same_witness_orbit_ranks_exact": (
+            g4_geometry.get("exact_tangent_ranks")
+            == {
+                "SO10": 36,
+                "SO10_plus_U1X": 37,
+                "SO10_plus_U1X_plus_PQ": 38,
+            }
+            and g4_geometry.get("source_binding_exact") is True
+        ),
+        "G4_physical_quotient_exact": (
+            g4_geometry.get("real_field_dimension") == 486
+            and g4_geometry.get("gauge_quotient_dimension_including_axion")
+            == 449
+            and g4_geometry.get("independent_PQ_axion_dimension") == 1
+            and g4_geometry.get("massive_transverse_quotient_dimension") == 448
+        ),
+        "G4_Hessian_classification_exact": (
+            g4_hessian.get("Hessian_rank") == 448
+            and g4_hessian.get("Hessian_nullity") == 38
+            and g4_hessian.get("negative_modes") == 0
+            and g4_hessian.get("unexplained_zero_modes") == 0
+            and g4_hessian.get("strictly_positive_massive_transverse_modes")
+            == 448
+            and g4_hessian.get("stabilized_payload_sha256")
+            == EFT_STABILIZED_HESSIAN_PAYLOAD_SHA256
+        ),
+        "G4_all_positive_kappa_exact": (
+            g4_positive_kappa.get(
+                "rank448_nullity38_for_every_positive_kappa"
+            )
+            is True
+            and g4_positive_kappa.get("kernel_identity")
+            == "ker H(kappa)=ker H0 intersect ker J for every kappa>0"
+        ),
+        "G4_claim_boundary_exact": (
+            g4_classification.get("mathematical_G4_closed_for_EFT_model")
+            is True
+            and g4_classification.get(
+                "mathematical_G4_closed_for_original_renormalizable_model"
+            )
+            is False
+            and g4_classification.get("release_G4_verified_for_EFT_model")
+            is False
+            and g4_classification.get(
+                "authoritative_renormalizable_G4_gate_mutated"
+            )
+            is False
+        ),
+        "G4_completed_integration_and_blockers_exact": (
+            g4_release_criteria.get(
+                "parallel_EFT_G4_integrated_into_release_orchestrators"
+            )
+            is True
+            and g4_production_mapping.get("release_integration_completed")
+            is True
+            and "release_integration_required" not in g4_production_mapping
+            and set(g4.get("release_blockers", ()))
+            == {
+                "Lambda_EFT_and_positive_Wilson_matching_approved",
+                "radiative_stability_completed",
+                "external_extended_model_contract_executed",
+                "G1_promoted_closed",
+                "G2_promoted_closed",
+                "release_G3_verified_for_EFT_model",
+            }
+        ),
+        "G5_source_core_exact": (
+            _source_string_constant(g5_source, "EXPECTED_CORE_SHA256")
+            == EFT_G5_MATHEMATICAL_GATE_CORE_SHA256
+        ),
+        "G5_report_core_exact": (
+            g5.get("core_sha256") == EFT_G5_MATHEMATICAL_GATE_CORE_SHA256
+        ),
+        "G5_internal_checks_all_exact": (
+            bool(g5.get("mathematical_checks"))
+            and all(value is True for value in g5["mathematical_checks"].values())
+        ),
+        "G5_exact_global_lower_bound": (
+            g5.get("exact_global_lower_bound") == EFT_G5_EXACT_GLOBAL_LOWER_BOUND
+        ),
+        "G5_reuses_frozen_exact_theorems": (
+            g5_proof.get("kind")
+            == "composition_of_existing_frozen_exact_theorems"
+            and g5_proof.get("new_SOS_constructed_or_claimed") is False
+            and g5_proof.get("EFT_theorem_core_sha256")
+            == EFT_GLOBAL_G3_THEOREM_CORE_SHA256
+            and g5_proof.get("O6_theorem_core_sha256") == EFT_O6_CORE_SHA256
+            and g5_proof.get("immutable_EFT_G3_gate_core_sha256")
+            == EFT_G3_ACCEPTANCE_GATE_CORE_SHA256
+        ),
+        "G5_claim_boundary_exact": (
+            g5_classification.get("mathematical_G5_closed_for_EFT_model")
+            is True
+            and g5_classification.get("release_G5_verified_for_EFT_model")
+            is False
+            and g5_classification.get("authoritative_renormalizable_G5_closed")
+            is False
+            and g5_classification.get("authoritative_renormalizable_G5_mutated")
+            is False
+            and g5_classification.get("new_SOS_claimed") is False
+        ),
+        "G5_completed_integration_and_blockers_exact": (
+            g5_release_criteria.get(
+                "downstream_parallel_G5_integration_completed"
+            )
+            is True
+            and g5_production_mapping.get("downstream_integration_completed")
+            is True
+            and set(g5.get("release_blockers", ()))
+            == {
+                "Lambda_EFT_and_positive_Wilson_matching_approved",
+                "radiative_stability_completed",
+                "external_extended_model_contract_executed",
+                "G1_promoted_closed",
+                "G2_promoted_closed",
+            }
+        ),
+    }
+    failed = [name for name, passed in checks.items() if not passed]
+    if failed:
+        raise ArithmeticError(f"the frozen EFT G4/G5 logical bundle drifted: {failed}")
+    return {
+        "raw_file_count": len(EFT_G4_G5_RAW_PINS),
+        "checks": checks,
+        "all_checks_pass": True,
+    }
+
+
 def _require_publication_inventory() -> None:
     directory = ROOT / "corrected_rank1_publication_v21"
     if (directory / "__pycache__").exists():
@@ -734,8 +944,8 @@ def _require_workflow_contract() -> dict[str, int]:
         * len(READ_ONLY_FROZEN_DEPENDENCY_ORCHESTRATORS)
     )
     if (
-        len(READ_ONLY_FROZEN_REPORT_SOURCES) != 13
-        or expected_read_only_commands != 39
+        len(READ_ONLY_FROZEN_REPORT_SOURCES) != 15
+        or expected_read_only_commands != 45
         or read_only_report_commands != expected_read_only_commands
     ):
         raise ArithmeticError(
@@ -882,6 +1092,7 @@ def build_manifest() -> dict[str, Any]:
     _require_publication_inventory()
     _require_source_pins()
     eft_g3_bundle = _require_eft_g3_bundle()
+    eft_g4_g5_bundle = _require_eft_g4_g5_bundle()
     workflow_counts = _require_workflow_contract()
     legacy_quarantine = _require_legacy_quarantine()
     checksum_count = _require_checksum_coverage()
@@ -923,6 +1134,13 @@ def build_manifest() -> dict[str, Any]:
             "EFT_stabilized_Hessian_payload_sha256": (
                 EFT_STABILIZED_HESSIAN_PAYLOAD_SHA256
             ),
+            "EFT_G4_mathematical_gate_core_sha256": (
+                EFT_G4_MATHEMATICAL_GATE_CORE_SHA256
+            ),
+            "EFT_G5_mathematical_gate_core_sha256": (
+                EFT_G5_MATHEMATICAL_GATE_CORE_SHA256
+            ),
+            "EFT_G5_exact_global_lower_bound": EFT_G5_EXACT_GLOBAL_LOWER_BOUND,
         },
         "exact_dimensions": {
             "map_shape": [6585, 19594],
@@ -936,6 +1154,7 @@ def build_manifest() -> dict[str, Any]:
         },
         "workflow_contract": workflow_counts,
         "EFT_G3_bundle": eft_g3_bundle,
+        "EFT_G4_G5_bundle": eft_g4_g5_bundle,
         "legacy_v20_quarantine": legacy_quarantine,
         "release_checksum_entry_count": checksum_count,
         "generation_source_pins": {
@@ -947,6 +1166,9 @@ def build_manifest() -> dict[str, Any]:
                 sorted(RHS_PORTABLE_SOURCE_PINS.items())
             ),
             "EFT_G3_raw_sha256": dict(sorted(EFT_G3_RAW_PINS.items())),
+            "EFT_G4_G5_raw_sha256": dict(
+                sorted(EFT_G4_G5_RAW_PINS.items())
+            ),
         },
         "claim_boundary": {
             "fixed_H": "h_-=(e0-i e1)/sqrt(2)",
@@ -965,6 +1187,12 @@ def build_manifest() -> dict[str, Any]:
             "renormalizable_G3_closed": False,
             "EFT_dimension6_mathematical_G3_closed": True,
             "EFT_release_G3_verified": False,
+            "renormalizable_G4_closed": False,
+            "EFT_dimension6_mathematical_G4_closed": True,
+            "EFT_release_G4_verified": False,
+            "renormalizable_G5_closed": False,
+            "EFT_dimension6_mathematical_G5_closed": True,
+            "EFT_release_G5_verified": False,
             "G4_closed": False,
             "G3_closed": False,
         },

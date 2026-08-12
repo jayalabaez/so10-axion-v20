@@ -67,6 +67,20 @@ FINAL_G3_EFT_ACCEPTANCE_CORE_SHA256 = (
 FINAL_G3_EFT_ACCEPTANCE_RAW_SHA256 = (
     "482f9da84d677e24594ca536a2c257602e02f5187419df5cba5356f771ddbaf0"
 )
+FINAL_G4_EFT_MATHEMATICAL_JSON = ROOT / "FINAL_G4_EFT_MATHEMATICAL_GATE_V20.json"
+FINAL_G4_EFT_MATHEMATICAL_CORE_SHA256 = (
+    "931a152aed49eb28bf415a1aca093e923850cf68db3f40ccf1d2027b447a8c09"
+)
+FINAL_G4_EFT_MATHEMATICAL_RAW_SHA256 = (
+    "98664542a4e1bbfba233652737826b974963a31c2e86a15e2d73fda1457d987b"
+)
+FINAL_G5_EFT_MATHEMATICAL_JSON = ROOT / "FINAL_G5_EFT_MATHEMATICAL_GATE_V20.json"
+FINAL_G5_EFT_MATHEMATICAL_CORE_SHA256 = (
+    "1b578471e74626e3b186cf7398aebd35349a67f45940b9c37d42bb49c1b8c8ba"
+)
+FINAL_G5_EFT_MATHEMATICAL_RAW_SHA256 = (
+    "6d6e4fd9932a03e35146afb1bca850666e883aaed5e23b73b81f0f703e4e7db9"
+)
 EFT_MODEL_CONTRACT_ID = (
     "gauged_u1x_phi17_v20_eft_o6_current_kernel_gamma_1_over_20"
 )
@@ -404,6 +418,265 @@ def _parallel_eft_g3_acceptance(
         "mathematical_G3_closed_for_original_renormalizable_model": False,
         "renormalizable_gate_mutated": False,
         "G4_closed": False,
+        "release_blockers": (
+            list(report.get("release_blockers", [])) if source_bound else []
+        ),
+        "checks": checks,
+    }
+
+
+def _parallel_eft_g4_mathematical(
+    report: dict[str, Any], *, raw_sha256: str = ""
+) -> dict[str, Any]:
+    """Validate the parallel EFT G4 theorem without promoting legacy G4."""
+    classification = report.get("classification", {})
+    contract = report.get("contract", {})
+    mathematical_checks = report.get("mathematical_checks", {})
+    hessian = report.get("exact_Hessian_classification", {})
+    production_mapping = report.get("production_mapping", {})
+    release_criteria = report.get("release_criteria", {})
+    required_release_blockers = {
+        "Lambda_EFT_and_positive_Wilson_matching_approved",
+        "radiative_stability_completed",
+        "external_extended_model_contract_executed",
+        "G1_promoted_closed",
+        "G2_promoted_closed",
+        "release_G3_verified_for_EFT_model",
+    }
+    checks = {
+        "artifact_present": bool(report),
+        "status_exact": (
+            report.get("status")
+            == "FINAL_EFT_G4_MATHEMATICAL_PASS_RELEASE_OPEN"
+        ),
+        "core_sha256_exact": (
+            report.get("core_sha256")
+            == FINAL_G4_EFT_MATHEMATICAL_CORE_SHA256
+        ),
+        "raw_sha256_exact": (
+            raw_sha256 == FINAL_G4_EFT_MATHEMATICAL_RAW_SHA256
+        ),
+        "contract_exact_and_renormalizable_contract_unchanged": (
+            contract.get("base_model_contract_id") == AUTHORITATIVE_CONTRACT_ID
+            and contract.get("EFT_model_contract_id") == EFT_MODEL_CONTRACT_ID
+            and contract.get("authoritative_51_parameter_contract_unchanged")
+            is True
+        ),
+        "upstream_cores_exact": (
+            report.get("theorem_core_sha256")
+            == "2eca279488d92d8bd9eca974c0d598340124f025e62212cd8a188413a6e8b7d0"
+            and report.get("upstream_G3_gate_core_sha256")
+            == FINAL_G3_EFT_ACCEPTANCE_CORE_SHA256
+        ),
+        "all_embedded_mathematical_checks_pass": (
+            bool(mathematical_checks)
+            and all(value is True for value in mathematical_checks.values())
+        ),
+        "exact_physical_hessian_classification": (
+            hessian.get("full_real_dimension") == 486
+            and hessian.get("gauge_quotient_dimension_including_axion") == 449
+            and hessian.get("massless_physical_axion_modes") == 1
+            and hessian.get("massive_transverse_dimension") == 448
+            and hessian.get("negative_modes") == 0
+            and hessian.get("unexplained_zero_modes") == 0
+            and hessian.get("strictly_positive_massive_transverse_modes") == 448
+            and hessian.get("Hessian_rank") == 448
+            and hessian.get("Hessian_nullity") == 38
+            and hessian.get("positive_kappa_family", {}).get(
+                "rank448_nullity38_for_every_positive_kappa"
+            )
+            is True
+        ),
+        "EFT_mathematical_G4_closed": (
+            classification.get("mathematical_G4_closed_for_EFT_model") is True
+        ),
+        "renormalizable_G4_unchanged_and_open": (
+            classification.get(
+                "mathematical_G4_closed_for_original_renormalizable_model"
+            )
+            is False
+            and classification.get(
+                "authoritative_renormalizable_G4_gate_mutated"
+            )
+            is False
+            and production_mapping.get("do_not_flip")
+            == "authoritative renormalizable G4"
+        ),
+        "EFT_release_open": (
+            classification.get("release_G4_verified_for_EFT_model") is False
+            and set(report.get("release_blockers", []))
+            == required_release_blockers
+            and all(
+                release_criteria.get(name) is False
+                for name in required_release_blockers
+            )
+        ),
+        "parallel_namespace_exact": (
+            production_mapping.get("new_parallel_gate")
+            == "EFT_G4_MATHEMATICAL"
+            and production_mapping.get("release_integration_completed") is True
+            and "release_integration_required" not in production_mapping
+        ),
+        "parallel_integration_completed": (
+            release_criteria.get(
+                "parallel_EFT_G4_integrated_into_release_orchestrators"
+            )
+            is True
+        ),
+        "whole_model_not_validated": (
+            classification.get("whole_model_validated") is False
+        ),
+    }
+    source_bound = all(checks.values())
+    return {
+        "namespace": "EFT_G4_MATHEMATICAL",
+        "artifact": FINAL_G4_EFT_MATHEMATICAL_JSON.name,
+        "expected_core_sha256": FINAL_G4_EFT_MATHEMATICAL_CORE_SHA256,
+        "core_sha256": report.get("core_sha256"),
+        "expected_raw_sha256": FINAL_G4_EFT_MATHEMATICAL_RAW_SHA256,
+        "raw_sha256": raw_sha256,
+        "EFT_model_contract_id": contract.get("EFT_model_contract_id"),
+        "base_model_contract_id": contract.get("base_model_contract_id"),
+        "source_bound": source_bound,
+        "mathematical_G4_closed_for_EFT_model": bool(
+            source_bound
+            and classification.get("mathematical_G4_closed_for_EFT_model")
+            is True
+        ),
+        "release_G4_verified_for_EFT_model": False,
+        "mathematical_G4_closed_for_original_renormalizable_model": False,
+        "authoritative_renormalizable_G4_gate_mutated": False,
+        "release_blockers": (
+            list(report.get("release_blockers", [])) if source_bound else []
+        ),
+        "checks": checks,
+    }
+
+
+def _parallel_eft_g5_mathematical(
+    report: dict[str, Any], *, raw_sha256: str = ""
+) -> dict[str, Any]:
+    """Validate the parallel EFT G5 theorem without promoting legacy G5."""
+    classification = report.get("classification", {})
+    contract = report.get("contract", {})
+    mathematical_checks = report.get("mathematical_checks", {})
+    proof_reuse = report.get("proof_reuse", {})
+    production_mapping = report.get("production_mapping", {})
+    release_criteria = report.get("release_criteria", {})
+    required_release_blockers = {
+        "Lambda_EFT_and_positive_Wilson_matching_approved",
+        "radiative_stability_completed",
+        "external_extended_model_contract_executed",
+        "G1_promoted_closed",
+        "G2_promoted_closed",
+    }
+    checks = {
+        "artifact_present": bool(report),
+        "status_exact": (
+            report.get("status")
+            == "FINAL_EFT_G5_MATHEMATICAL_GATE__MATHEMATICAL_PASS_RELEASE_OPEN"
+        ),
+        "core_sha256_exact": (
+            report.get("core_sha256")
+            == FINAL_G5_EFT_MATHEMATICAL_CORE_SHA256
+        ),
+        "raw_sha256_exact": (
+            raw_sha256 == FINAL_G5_EFT_MATHEMATICAL_RAW_SHA256
+        ),
+        "contract_exact_and_renormalizable_contract_unchanged": (
+            contract.get("base_model_contract_id") == AUTHORITATIVE_CONTRACT_ID
+            and contract.get("EFT_model_contract_id") == EFT_MODEL_CONTRACT_ID
+            and contract.get("real_field_dimension") == 486
+            and contract.get("authoritative_renormalizable_parameter_count")
+            == 51
+            and contract.get("selected_nonzero_renormalizable_parameter_count")
+            == 27
+            and contract.get("dimension_six_operator_count") == 1
+            and contract.get("authoritative_51_parameter_contract_unchanged")
+            is True
+        ),
+        "all_embedded_mathematical_checks_pass": (
+            bool(mathematical_checks)
+            and all(value is True for value in mathematical_checks.values())
+        ),
+        "frozen_theorem_composition_exact": (
+            proof_reuse.get("kind")
+            == "composition_of_existing_frozen_exact_theorems"
+            and proof_reuse.get("new_SOS_constructed_or_claimed") is False
+            and proof_reuse.get("EFT_theorem_core_sha256")
+            == "2eca279488d92d8bd9eca974c0d598340124f025e62212cd8a188413a6e8b7d0"
+            and proof_reuse.get("O6_theorem_core_sha256")
+            == "598d916da16e746c8be30e979a13a27a47d1600e2dd4bee7b9cf9fc398ec9da1"
+            and proof_reuse.get("immutable_EFT_G3_gate_core_sha256")
+            == FINAL_G3_EFT_ACCEPTANCE_CORE_SHA256
+            and report.get("exact_global_lower_bound") == "-40661/20000"
+        ),
+        "EFT_mathematical_G5_closed": (
+            classification.get("mathematical_G5_closed_for_EFT_model") is True
+            and classification.get("new_SOS_claimed") is False
+        ),
+        "renormalizable_G5_unchanged_and_blocked": (
+            classification.get("authoritative_renormalizable_G5_closed")
+            is False
+            and classification.get(
+                "authoritative_renormalizable_G5_blocked_by_model_contract"
+            )
+            is True
+            and classification.get("authoritative_renormalizable_G5_blocker")
+            == CONTRACT_BLOCKER
+            and classification.get("authoritative_renormalizable_G5_mutated")
+            is False
+            and production_mapping.get("do_not_flip")
+            == (
+                "authoritative G5 in G1_G8_GATE_LEDGER_V20 for the "
+                "renormalizable model"
+            )
+        ),
+        "EFT_release_open": (
+            classification.get("release_G5_verified_for_EFT_model") is False
+            and set(report.get("release_blockers", []))
+            == required_release_blockers
+            and all(
+                release_criteria.get(name) is False
+                for name in required_release_blockers
+            )
+        ),
+        "parallel_namespace_exact": (
+            report.get("namespace") == "EFT_G5_MATHEMATICAL"
+            and production_mapping.get("new_parallel_gate")
+            == "EFT_G5_MATHEMATICAL"
+            and production_mapping.get("downstream_integration_completed")
+            is True
+        ),
+        "parallel_integration_completed": (
+            release_criteria.get("downstream_parallel_G5_integration_completed")
+            is True
+        ),
+        "whole_model_not_excluded": (
+            classification.get("whole_model_excluded") is False
+        ),
+    }
+    source_bound = all(checks.values())
+    return {
+        "namespace": "EFT_G5_MATHEMATICAL",
+        "artifact": FINAL_G5_EFT_MATHEMATICAL_JSON.name,
+        "expected_core_sha256": FINAL_G5_EFT_MATHEMATICAL_CORE_SHA256,
+        "core_sha256": report.get("core_sha256"),
+        "expected_raw_sha256": FINAL_G5_EFT_MATHEMATICAL_RAW_SHA256,
+        "raw_sha256": raw_sha256,
+        "EFT_model_contract_id": contract.get("EFT_model_contract_id"),
+        "base_model_contract_id": contract.get("base_model_contract_id"),
+        "source_bound": source_bound,
+        "mathematical_G5_closed_for_EFT_model": bool(
+            source_bound
+            and classification.get("mathematical_G5_closed_for_EFT_model")
+            is True
+        ),
+        "release_G5_verified_for_EFT_model": False,
+        "authoritative_renormalizable_G5_closed": False,
+        "authoritative_renormalizable_G5_blocked_by_model_contract": True,
+        "authoritative_renormalizable_G5_mutated": False,
+        "new_SOS_claimed": False,
         "release_blockers": (
             list(report.get("release_blockers", [])) if source_bound else []
         ),
@@ -4196,6 +4469,10 @@ def _build_report_from_inputs(
     g3_alternative_global_sos_report: dict[str, Any] | None = None,
     final_g3_eft_acceptance_report: dict[str, Any] | None = None,
     final_g3_eft_acceptance_raw_sha256: str | None = None,
+    final_g4_eft_mathematical_report: dict[str, Any] | None = None,
+    final_g4_eft_mathematical_raw_sha256: str | None = None,
+    final_g5_eft_mathematical_report: dict[str, Any] | None = None,
+    final_g5_eft_mathematical_raw_sha256: str | None = None,
 ) -> dict[str, Any]:
     """Build a ledger from fresh reports, including repaired-contract states."""
     declared_contract_consistent = bool(x_report["contract_consistent"])
@@ -4315,6 +4592,36 @@ def _build_report_from_inputs(
         final_g3_eft_acceptance_report,
         raw_sha256=final_g3_eft_acceptance_raw_sha256,
     )
+    eft_g4_loaded_from_disk = final_g4_eft_mathematical_report is None
+    if eft_g4_loaded_from_disk:
+        final_g4_eft_mathematical_report = _load_json_artifact(
+            FINAL_G4_EFT_MATHEMATICAL_JSON
+        )
+    if final_g4_eft_mathematical_raw_sha256 is None:
+        final_g4_eft_mathematical_raw_sha256 = (
+            _raw_file_sha256(FINAL_G4_EFT_MATHEMATICAL_JSON)
+            if eft_g4_loaded_from_disk
+            else ""
+        )
+    parallel_eft_g4_mathematical = _parallel_eft_g4_mathematical(
+        final_g4_eft_mathematical_report,
+        raw_sha256=final_g4_eft_mathematical_raw_sha256,
+    )
+    eft_g5_loaded_from_disk = final_g5_eft_mathematical_report is None
+    if eft_g5_loaded_from_disk:
+        final_g5_eft_mathematical_report = _load_json_artifact(
+            FINAL_G5_EFT_MATHEMATICAL_JSON
+        )
+    if final_g5_eft_mathematical_raw_sha256 is None:
+        final_g5_eft_mathematical_raw_sha256 = (
+            _raw_file_sha256(FINAL_G5_EFT_MATHEMATICAL_JSON)
+            if eft_g5_loaded_from_disk
+            else ""
+        )
+    parallel_eft_g5_mathematical = _parallel_eft_g5_mathematical(
+        final_g5_eft_mathematical_report,
+        raw_sha256=final_g5_eft_mathematical_raw_sha256,
+    )
     g3_frontier = _gauged_u1x_g3_frontier(
         g3_sos_report,
         g3_pd_report,
@@ -4396,6 +4703,52 @@ def _build_report_from_inputs(
             and parallel_eft_g3_acceptance["renormalizable_gate_mutated"]
             is False
             and parallel_eft_g3_acceptance["G4_closed"] is False
+        ),
+        "parallel_EFT_G4_mathematical_is_source_bound_and_release_open": (
+            parallel_eft_g4_mathematical["source_bound"] is True
+            and parallel_eft_g4_mathematical[
+                "mathematical_G4_closed_for_EFT_model"
+            ]
+            is True
+            and parallel_eft_g4_mathematical[
+                "release_G4_verified_for_EFT_model"
+            ]
+            is False
+            and parallel_eft_g4_mathematical[
+                "mathematical_G4_closed_for_original_renormalizable_model"
+            ]
+            is False
+            and parallel_eft_g4_mathematical[
+                "authoritative_renormalizable_G4_gate_mutated"
+            ]
+            is False
+        ),
+        "parallel_EFT_G5_mathematical_is_source_bound_and_release_open": (
+            parallel_eft_g5_mathematical["source_bound"] is True
+            and parallel_eft_g5_mathematical[
+                "mathematical_G5_closed_for_EFT_model"
+            ]
+            is True
+            and parallel_eft_g5_mathematical[
+                "release_G5_verified_for_EFT_model"
+            ]
+            is False
+            and parallel_eft_g5_mathematical[
+                "authoritative_renormalizable_G5_closed"
+            ]
+            is False
+            and parallel_eft_g5_mathematical[
+                "authoritative_renormalizable_G5_mutated"
+            ]
+            is False
+            and parallel_eft_g5_mathematical["new_SOS_claimed"] is False
+        ),
+        "parallel_EFT_G4_G5_do_not_promote_authoritative_frontier": (
+            statuses == expected_statuses
+            and (
+                contract_consistent
+                or all(statuses[name] == STATUS_BLOCKED for name in ("G3", "G4", "G5"))
+            )
         ),
         "consistent_contract_requires_tool_native_bound_evidence": bool(
             not declared_contract_consistent or contract_evidence_complete
@@ -5142,10 +5495,18 @@ def _build_report_from_inputs(
                 g3_alternative_global_sos_report
             ),
             "parallel_EFT_G3_acceptance_gate": final_g3_eft_acceptance_report,
+            "parallel_EFT_G4_mathematical_gate": (
+                final_g4_eft_mathematical_report
+            ),
+            "parallel_EFT_G5_mathematical_gate": (
+                final_g5_eft_mathematical_report
+            ),
         },
         "gauged_u1x_scalar_subtheorems": scoped,
         "gauged_u1x_g3_constructive_frontier": g3_frontier,
         "parallel_EFT_G3_acceptance": parallel_eft_g3_acceptance,
+        "parallel_EFT_G4_mathematical": parallel_eft_g4_mathematical,
+        "parallel_EFT_G5_mathematical": parallel_eft_g5_mathematical,
         "historical_option_c_subtheorems": historical,
         "dependencies": DEPENDENCIES,
         "gates": gates,
@@ -5256,6 +5617,18 @@ def build_report() -> dict[str, Any]:
         final_g3_eft_acceptance_raw_sha256=_raw_file_sha256(
             FINAL_G3_EFT_ACCEPTANCE_JSON
         ),
+        final_g4_eft_mathematical_report=_load_json_artifact(
+            FINAL_G4_EFT_MATHEMATICAL_JSON
+        ),
+        final_g4_eft_mathematical_raw_sha256=_raw_file_sha256(
+            FINAL_G4_EFT_MATHEMATICAL_JSON
+        ),
+        final_g5_eft_mathematical_report=_load_json_artifact(
+            FINAL_G5_EFT_MATHEMATICAL_JSON
+        ),
+        final_g5_eft_mathematical_raw_sha256=_raw_file_sha256(
+            FINAL_G5_EFT_MATHEMATICAL_JSON
+        ),
     )
 
 
@@ -5273,7 +5646,7 @@ def write_markdown(report: dict[str, Any]) -> str:
         "",
         "`MODEL_CONTRACT -> G1 -> G2 -> G3/G4/G5 -> G6 -> G7 -> G8`",
         "",
-        "## Parallel EFT G3 acceptance",
+        "## Parallel EFT G3/G4/G5 classifications",
         "",
         (
             "- Dimension-six EFT mathematical G3: "
@@ -5283,7 +5656,23 @@ def write_markdown(report: dict[str, Any]) -> str:
             "- EFT release G3 verified: "
             f"**{report['parallel_EFT_G3_acceptance']['release_G3_verified_for_EFT_model']}**"
         ),
-        "- The authoritative renormalizable G3 and G4 gates are unchanged.",
+        (
+            "- Dimension-six EFT mathematical G4: "
+            f"**{report['parallel_EFT_G4_mathematical']['mathematical_G4_closed_for_EFT_model']}**"
+        ),
+        (
+            "- EFT release G4 verified: "
+            f"**{report['parallel_EFT_G4_mathematical']['release_G4_verified_for_EFT_model']}**"
+        ),
+        (
+            "- Dimension-six EFT mathematical G5: "
+            f"**{report['parallel_EFT_G5_mathematical']['mathematical_G5_closed_for_EFT_model']}**"
+        ),
+        (
+            "- EFT release G5 verified: "
+            f"**{report['parallel_EFT_G5_mathematical']['release_G5_verified_for_EFT_model']}**"
+        ),
+        "- The authoritative renormalizable G3, G4, and G5 gates are unchanged.",
         "",
         "## Authoritative gates",
         "",

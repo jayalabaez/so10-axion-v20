@@ -30,7 +30,7 @@ PDF = ROOT / "axion_so10_theory_v20.pdf"
 LOG = ROOT / "axion_so10_theory_v20.log"
 
 # Files that complete the script/test/report bundles for the current exact-X
-# G1--G3 release chain and its reproducibility gates.  Keep paths relative so
+# G1--G5 release chain and its reproducibility gates.  Keep paths relative so
 # the checksum manifest is portable across checkout locations and platforms.
 FINAL_THEOREM_CORE_PATHS: tuple[str, ...] = (
     ".gitattributes",
@@ -76,6 +76,14 @@ FINAL_THEOREM_CORE_PATHS: tuple[str, ...] = (
     "FINAL_G3_EFT_ACCEPTANCE_GATE_V20.md",
     "final_g3_eft_acceptance_gate_v20.py",
     "test_final_g3_eft_acceptance_gate_v20.py",
+    "FINAL_G4_EFT_MATHEMATICAL_GATE_V20.json",
+    "FINAL_G4_EFT_MATHEMATICAL_GATE_V20.md",
+    "final_g4_eft_mathematical_gate_v20.py",
+    "test_final_g4_eft_mathematical_gate_v20.py",
+    "FINAL_G5_EFT_MATHEMATICAL_GATE_V20.json",
+    "FINAL_G5_EFT_MATHEMATICAL_GATE_V20.md",
+    "final_g5_eft_mathematical_gate_v20.py",
+    "test_final_g5_eft_mathematical_gate_v20.py",
     "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_V20.json",
     "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_V20.md",
     "EXACT_GAUGED_U1X_G3_RANK1_SU4_STABILIZER_V20.json",
@@ -636,6 +644,8 @@ def main() -> int:
         ]
     )
     run([sys.executable, "final_g3_eft_acceptance_gate_v20.py"])
+    run([sys.executable, "final_g4_eft_mathematical_gate_v20.py"])
+    run([sys.executable, "final_g5_eft_mathematical_gate_v20.py"])
     run([sys.executable, "g1_g8_gate_ledger_v20.py"])
     run([sys.executable, "final_g3_acceptance_gate_v20.py"])
     run([sys.executable, "g1_g8_execution_roadmap_v20.py"])
@@ -837,6 +847,12 @@ def main() -> int:
     final_g3 = json.loads((ROOT / "FINAL_G3_ACCEPTANCE_GATE_V20.json").read_text())
     final_g3_eft = json.loads(
         (ROOT / "FINAL_G3_EFT_ACCEPTANCE_GATE_V20.json").read_text()
+    )
+    final_g4_eft = json.loads(
+        (ROOT / "FINAL_G4_EFT_MATHEMATICAL_GATE_V20.json").read_text()
+    )
+    final_g5_eft = json.loads(
+        (ROOT / "FINAL_G5_EFT_MATHEMATICAL_GATE_V20.json").read_text()
     )
     g3_candidate = json.loads(
         (ROOT / "GAUGED_U1X_G3_SOS_CANDIDATE_V20.json").read_text()
@@ -1677,6 +1693,108 @@ def main() -> int:
         and eft_release_criteria["G2_promoted_closed"] is False,
         "parallel EFT G3 gate failed or mutated the renormalizable contract",
     )
+    eft_g4_classification = final_g4_eft["classification"]
+    eft_g4_contract = final_g4_eft["contract"]
+    eft_g4_release_criteria = final_g4_eft["release_criteria"]
+    require(
+        final_g4_eft["status"]
+        == "FINAL_EFT_G4_MATHEMATICAL_PASS_RELEASE_OPEN"
+        and final_g4_eft["core_sha256"]
+        == "931a152aed49eb28bf415a1aca093e923850cf68db3f40ccf1d2027b447a8c09"
+        and eft_g4_contract["base_model_contract_id"] == MODEL_CONTRACT_ID
+        and eft_g4_contract["EFT_model_contract_id"]
+        == eft_contract["EFT_model_contract_id"]
+        and eft_g4_contract["authoritative_51_parameter_contract_unchanged"]
+        is True
+        and eft_g4_classification["mathematical_G4_closed_for_EFT_model"]
+        is True
+        and eft_g4_classification[
+            "mathematical_G4_closed_for_original_renormalizable_model"
+        ]
+        is False
+        and eft_g4_classification["release_G4_verified_for_EFT_model"] is False
+        and eft_g4_classification[
+            "authoritative_renormalizable_G4_gate_mutated"
+        ]
+        is False
+        and eft_g4_classification["whole_model_validated"] is False
+        and eft_g4_release_criteria["G1_promoted_closed"] is False
+        and eft_g4_release_criteria["G2_promoted_closed"] is False
+        and eft_g4_release_criteria["release_G3_verified_for_EFT_model"]
+        is False
+        and eft_g4_release_criteria[
+            "parallel_EFT_G4_integrated_into_release_orchestrators"
+        ]
+        is True
+        and final_g4_eft["production_mapping"][
+            "release_integration_completed"
+        ]
+        is True
+        and "release_integration_required"
+        not in final_g4_eft["production_mapping"]
+        and set(final_g4_eft["release_blockers"])
+        == {
+            "Lambda_EFT_and_positive_Wilson_matching_approved",
+            "radiative_stability_completed",
+            "external_extended_model_contract_executed",
+            "G1_promoted_closed",
+            "G2_promoted_closed",
+            "release_G3_verified_for_EFT_model",
+        },
+        "parallel EFT G4 gate failed or mutated the renormalizable contract",
+    )
+    eft_g5_classification = final_g5_eft["classification"]
+    eft_g5_contract = final_g5_eft["contract"]
+    eft_g5_release_criteria = final_g5_eft["release_criteria"]
+    require(
+        final_g5_eft["status"]
+        == "FINAL_EFT_G5_MATHEMATICAL_GATE__MATHEMATICAL_PASS_RELEASE_OPEN"
+        and final_g5_eft["core_sha256"]
+        == "1b578471e74626e3b186cf7398aebd35349a67f45940b9c37d42bb49c1b8c8ba"
+        and eft_g5_contract["base_model_contract_id"] == MODEL_CONTRACT_ID
+        and eft_g5_contract["EFT_model_contract_id"]
+        == eft_contract["EFT_model_contract_id"]
+        and eft_g5_contract["authoritative_renormalizable_parameter_count"]
+        == 51
+        and eft_g5_contract["selected_nonzero_renormalizable_parameter_count"]
+        == 27
+        and eft_g5_contract["dimension_six_operator_count"] == 1
+        and eft_g5_contract["authoritative_51_parameter_contract_unchanged"]
+        is True
+        and eft_g5_classification["mathematical_G5_closed_for_EFT_model"]
+        is True
+        and eft_g5_classification["release_G5_verified_for_EFT_model"] is False
+        and eft_g5_classification["authoritative_renormalizable_G5_closed"]
+        is False
+        and eft_g5_classification[
+            "authoritative_renormalizable_G5_blocked_by_model_contract"
+        ]
+        is True
+        and eft_g5_classification["authoritative_renormalizable_G5_mutated"]
+        is False
+        and eft_g5_classification["immutable_EFT_G3_gate_mutated"] is False
+        and eft_g5_classification["new_SOS_claimed"] is False
+        and eft_g5_classification["whole_model_excluded"] is False
+        and eft_g5_release_criteria["G1_promoted_closed"] is False
+        and eft_g5_release_criteria["G2_promoted_closed"] is False
+        and eft_g5_release_criteria[
+            "downstream_parallel_G5_integration_completed"
+        ]
+        is True
+        and final_g5_eft["production_mapping"][
+            "downstream_integration_completed"
+        ]
+        is True
+        and set(final_g5_eft["release_blockers"])
+        == {
+            "Lambda_EFT_and_positive_Wilson_matching_approved",
+            "radiative_stability_completed",
+            "external_extended_model_contract_executed",
+            "G1_promoted_closed",
+            "G2_promoted_closed",
+        },
+        "parallel EFT G5 gate failed or mutated authoritative release scope",
+    )
     candidate_coefficients = g3_candidate["coefficient_vector"]
     require(
         g3_candidate["n_failed"] == 0
@@ -1900,6 +2018,8 @@ def main() -> int:
             "test_exact_hsigma_current_endomorphism_dimension6_stabilizer_v20.py",
             "test_exact_gauged_u1x_g3_su5_eft_current_kernel_stabilized_global_v20.py",
             "test_final_g3_eft_acceptance_gate_v20.py",
+            "test_final_g4_eft_mathematical_gate_v20.py",
+            "test_final_g5_eft_mathematical_gate_v20.py",
             "test_g1_g8_gate_ledger_v20.py",
             "test_final_g3_acceptance_gate_v20.py",
             "test_gauged_u1x_g3_sos_candidate_v20.py",
