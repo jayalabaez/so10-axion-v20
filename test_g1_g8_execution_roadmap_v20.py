@@ -107,6 +107,32 @@ def test_parallel_eft_g4_g5_g6_are_pinned_without_authoritative_promotion():
         assert forged_roadmap["overall_state"] == "EXECUTION_FAIL"
 
 
+def test_exact_eft_g7_input_obstruction_is_pinned_and_keeps_g7_g8_blocked():
+    report = mod.build_report()
+    g7 = report["parallel_EFT_G7_nonidentifiability_resolution"]
+    assert g7["source_bound"] is True
+    assert g7["core_sha256"] == mod.EFT_G7_NONIDENTIFIABILITY_CORE_SHA256
+    assert g7["raw_sha256"] == mod.EFT_G7_NONIDENTIFIABILITY_RAW_SHA256
+    assert g7["source_raw_sha256"] == mod.EFT_G7_NONIDENTIFIABILITY_SOURCE_RAW_SHA256
+    assert g7["exact_input_nonidentifiability_proved"] is True
+    assert g7["restriction_map_noninjective"] is True
+    assert g7["absolute_scale_unidentified"] is True
+    assert g7["mathematical_G7_closed"] is False
+    assert g7["positive_G7_certified"] is False
+    assert g7["negative_G7_no_go_certified"] is False
+    assert g7["release_G7_verified"] is False
+    assert g7["authoritative_renormalizable_G7_closed"] is False
+    assert g7["integration_completed"] is True
+    assert report["gates"]["G7"]["status"] == mod.ledger.STATUS_BLOCKED
+    assert report["gates"]["G8"]["status"] == mod.ledger.STATUS_BLOCKED
+
+    forged = copy.deepcopy(mod.ledger.build_report())
+    forged["parallel_EFT_G7_nonidentifiability"]["core_sha256"] = "0" * 64
+    failed = mod._build_report_from_ledger(forged)
+    assert failed["n_failed"] > 0
+    assert failed["overall_state"] == "EXECUTION_FAIL"
+
+
 def test_wave_zero_is_first_on_the_critical_path():
     report = mod.build_report()
     assert mod.acyclic() is True

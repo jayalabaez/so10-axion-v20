@@ -104,6 +104,10 @@ on:
       - "test_final_g6_eft_mathematical_gate_v20.py"
       - "FINAL_G6_EFT_MATHEMATICAL_GATE_V20.json"
       - "FINAL_G6_EFT_MATHEMATICAL_GATE_V20.md"
+      - "exact_eft_g7_threshold_nonidentifiability_v20.py"
+      - "test_exact_eft_g7_threshold_nonidentifiability_v20.py"
+      - "EXACT_EFT_G7_THRESHOLD_NONIDENTIFIABILITY_V20.json"
+      - "EXACT_EFT_G7_THRESHOLD_NONIDENTIFIABILITY_V20.md"
       - "final_g3_acceptance_gate_v20.py"
       - "G1_G8_GATE_LEDGER_V20.json"
       - "G1_G8_GATE_LEDGER_V20.md"
@@ -218,6 +222,10 @@ on:
       - "test_final_g6_eft_mathematical_gate_v20.py"
       - "FINAL_G6_EFT_MATHEMATICAL_GATE_V20.json"
       - "FINAL_G6_EFT_MATHEMATICAL_GATE_V20.md"
+      - "exact_eft_g7_threshold_nonidentifiability_v20.py"
+      - "test_exact_eft_g7_threshold_nonidentifiability_v20.py"
+      - "EXACT_EFT_G7_THRESHOLD_NONIDENTIFIABILITY_V20.json"
+      - "EXACT_EFT_G7_THRESHOLD_NONIDENTIFIABILITY_V20.md"
       - "final_g3_acceptance_gate_v20.py"
       - "G1_G8_GATE_LEDGER_V20.json"
       - "G1_G8_GATE_LEDGER_V20.md"
@@ -314,6 +322,8 @@ jobs:
             test_exact_eft_physical_scalar_spectrum_v20.py \
             final_g6_eft_mathematical_gate_v20.py \
             test_final_g6_eft_mathematical_gate_v20.py \
+            exact_eft_g7_threshold_nonidentifiability_v20.py \
+            test_exact_eft_g7_threshold_nonidentifiability_v20.py \
             final_g3_acceptance_gate_v20.py \
             authoritative_full_model_gate_v20.py \
             test_authoritative_full_model_gate_v20.py \
@@ -354,7 +364,7 @@ jobs:
           python -B corrected_rank1_publication_v21/verify_exact_gauged_u1x_g3_rank1_su4_corrected_fixed_endpoint_theorem_v21.py
           python -B corrected_rank1_endpoint_v21.py
           python exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py --write
-      - name: Verify mathematical G1-G2 and parallel EFT G3-G6 gates read-only
+      - name: Verify mathematical G1-G2 and parallel EFT G3-G7 gates read-only
         run: |
           python -B exact_gauged_u1x_g1_component_tensor_closure_v20.py
           python -B exact_gauged_u1x_g2_mathematical_closure_v20.py
@@ -365,6 +375,7 @@ jobs:
           python -B final_g5_eft_mathematical_gate_v20.py
           python -B exact_eft_physical_scalar_spectrum_v20.py
           python -B final_g6_eft_mathematical_gate_v20.py
+          python -B exact_eft_g7_threshold_nonidentifiability_v20.py
       - name: Run gate tests
         run: |
           python -m unittest -v \
@@ -412,6 +423,7 @@ jobs:
             test_final_g5_eft_mathematical_gate_v20.py \
             test_exact_eft_physical_scalar_spectrum_v20.py \
             test_final_g6_eft_mathematical_gate_v20.py \
+            test_exact_eft_g7_threshold_nonidentifiability_v20.py \
             test_final_g3_acceptance_gate_v20.py
           python -B corrected_rank1_publication_v21/freeze_exact_gauged_u1x_g3_rank1_su4_corrected_publication_v21.py --check
       - name: Generate G1-G8 ledger
@@ -762,6 +774,8 @@ jobs:
             EXACT_EFT_PHYSICAL_SCALAR_SPECTRUM_V20.md
             FINAL_G6_EFT_MATHEMATICAL_GATE_V20.json
             FINAL_G6_EFT_MATHEMATICAL_GATE_V20.md
+            EXACT_EFT_G7_THRESHOLD_NONIDENTIFIABILITY_V20.json
+            EXACT_EFT_G7_THRESHOLD_NONIDENTIFIABILITY_V20.md
             FINAL_G3_ACCEPTANCE_GATE_V20.json
             FINAL_G3_ACCEPTANCE_GATE_V20.md
             AUTHORITATIVE_FULL_MODEL_GATE_V20.json

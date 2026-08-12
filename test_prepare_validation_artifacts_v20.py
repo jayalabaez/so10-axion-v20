@@ -98,6 +98,7 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
             "final_g5_eft_mathematical_gate_v20.py",
             "exact_eft_physical_scalar_spectrum_v20.py",
             "final_g6_eft_mathematical_gate_v20.py",
+            "exact_eft_g7_threshold_nonidentifiability_v20.py",
             "final_g3_acceptance_gate_v20.py",
             "g1_g8_execution_roadmap_v20.py",
             "authoritative_full_model_gate_v20.py",
@@ -131,6 +132,7 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
             "final_g5_eft_mathematical_gate_v20.py",
             "exact_eft_physical_scalar_spectrum_v20.py",
             "final_g6_eft_mathematical_gate_v20.py",
+            "exact_eft_g7_threshold_nonidentifiability_v20.py",
             "g1_g8_gate_ledger_v20.py",
             "final_g3_acceptance_gate_v20.py",
             "g1_g8_execution_roadmap_v20.py",
@@ -159,6 +161,7 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
             "final_g5_eft_mathematical_gate_v20.py",
             "exact_eft_physical_scalar_spectrum_v20.py",
             "final_g6_eft_mathematical_gate_v20.py",
+            "exact_eft_g7_threshold_nonidentifiability_v20.py",
         )
         indices = []
         for name in gate_names:
@@ -184,6 +187,7 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
             "test_final_g5_eft_mathematical_gate_v20.py",
             "test_exact_eft_physical_scalar_spectrum_v20.py",
             "test_final_g6_eft_mathematical_gate_v20.py",
+            "test_exact_eft_g7_threshold_nonidentifiability_v20.py",
         ):
             self.assertIn(test_name, "\n".join(displays))
 

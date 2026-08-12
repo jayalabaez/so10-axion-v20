@@ -230,6 +230,45 @@ class G1G8GateLedgerTests(unittest.TestCase):
                     validator(valid, raw_sha256="0" * 64)["source_bound"]
                 )
 
+    def test_exact_eft_g7_input_obstruction_is_bound_without_closing_g7(self):
+        g7 = self.report["parallel_EFT_G7_nonidentifiability"]
+        self.assertTrue(g7["source_bound"])
+        self.assertEqual(g7["core_sha256"], mod.EFT_G7_NONIDENTIFIABILITY_CORE_SHA256)
+        self.assertEqual(g7["raw_sha256"], mod.EFT_G7_NONIDENTIFIABILITY_RAW_SHA256)
+        self.assertEqual(
+            g7["source_raw_sha256"],
+            mod.EFT_G7_NONIDENTIFIABILITY_SOURCE_RAW_SHA256,
+        )
+        self.assertTrue(g7["exact_EFT_G7_input_nonidentifiability_proved"])
+        self.assertTrue(g7["restriction_map_noninjective"])
+        self.assertTrue(g7["absolute_scale_unidentified"])
+        self.assertFalse(g7["mathematical_EFT_G7_closed"])
+        self.assertFalse(g7["positive_G7_certified"])
+        self.assertFalse(g7["negative_G7_no_go_certified"])
+        self.assertFalse(g7["EFT_release_G7_verified"])
+        self.assertFalse(g7["authoritative_renormalizable_G7_closed"])
+        self.assertTrue(g7["downstream_integration_completed"])
+        self.assertEqual(self.report["gates"]["G7"]["status"], mod.STATUS_BLOCKED)
+        self.assertEqual(self.report["gates"]["G8"]["status"], mod.STATUS_BLOCKED)
+
+        valid = mod._load_json_artifact(mod.EFT_G7_NONIDENTIFIABILITY_JSON)
+        self.assertFalse(
+            mod._parallel_eft_g7_nonidentifiability(
+                valid,
+                raw_sha256="0" * 64,
+                source_raw_sha256=mod.EFT_G7_NONIDENTIFIABILITY_SOURCE_RAW_SHA256,
+            )["source_bound"]
+        )
+        forged = copy.deepcopy(valid)
+        forged["classification"]["positive_G7_certified"] = True
+        self.assertFalse(
+            mod._parallel_eft_g7_nonidentifiability(
+                forged,
+                raw_sha256=mod.EFT_G7_NONIDENTIFIABILITY_RAW_SHA256,
+                source_raw_sha256=mod.EFT_G7_NONIDENTIFIABILITY_SOURCE_RAW_SHA256,
+            )["source_bound"]
+        )
+
     def test_rank1_slice_rejects_wrong_fixed_H_orientation(self):
         forged = copy.deepcopy(
             mod._load_json_artifact(mod.G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_JSON)

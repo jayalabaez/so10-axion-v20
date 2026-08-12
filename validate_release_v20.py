@@ -37,6 +37,9 @@ RENORMALIZABLE_G2_MATHEMATICAL_SOURCE_RAW_SHA256 = (
 RENORMALIZABLE_G2_MATHEMATICAL_JSON_RAW_SHA256 = (
     "de105a206685a236dcddc4cb70d98d756d87b9641e02150c41493897e01f7ff0"
 )
+EFT_G7_THRESHOLD_NONIDENTIFIABILITY_CORE_SHA256 = (
+    "303b4fa923b0475b8abe273836baea89671c2825da7756cbb79430a6400f4511"
+)
 V17_ENGINE = ROOT / "so10_axion_v17_engine.py"
 V19_ENGINE = ROOT / "so10_axion_v19_engine.py"
 V20_ENGINE = ROOT / "so10_axion_v20_engine.py"
@@ -110,6 +113,10 @@ FINAL_THEOREM_CORE_PATHS: tuple[str, ...] = (
     "FINAL_G6_EFT_MATHEMATICAL_GATE_V20.md",
     "final_g6_eft_mathematical_gate_v20.py",
     "test_final_g6_eft_mathematical_gate_v20.py",
+    "EXACT_EFT_G7_THRESHOLD_NONIDENTIFIABILITY_V20.json",
+    "EXACT_EFT_G7_THRESHOLD_NONIDENTIFIABILITY_V20.md",
+    "exact_eft_g7_threshold_nonidentifiability_v20.py",
+    "test_exact_eft_g7_threshold_nonidentifiability_v20.py",
     "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_V20.json",
     "EXACT_GAUGED_U1X_G3_SU5_MAX_NEGATIVE_RANK1_SU3_SLICE_V20.md",
     "EXACT_GAUGED_U1X_G3_RANK1_SU4_STABILIZER_V20.json",
@@ -678,6 +685,7 @@ def main() -> int:
     run([sys.executable, "final_g5_eft_mathematical_gate_v20.py"])
     run([sys.executable, "exact_eft_physical_scalar_spectrum_v20.py"])
     run([sys.executable, "final_g6_eft_mathematical_gate_v20.py"])
+    run([sys.executable, "exact_eft_g7_threshold_nonidentifiability_v20.py"])
     run([sys.executable, "g1_g8_gate_ledger_v20.py"])
     run([sys.executable, "final_g3_acceptance_gate_v20.py"])
     run([sys.executable, "g1_g8_execution_roadmap_v20.py"])
@@ -901,6 +909,11 @@ def main() -> int:
     )
     final_g6_eft = json.loads(
         (ROOT / "FINAL_G6_EFT_MATHEMATICAL_GATE_V20.json").read_text()
+    )
+    exact_eft_g7_nonidentifiability = json.loads(
+        (
+            ROOT / "EXACT_EFT_G7_THRESHOLD_NONIDENTIFIABILITY_V20.json"
+        ).read_text()
     )
     g3_candidate = json.loads(
         (ROOT / "GAUGED_U1X_G3_SOS_CANDIDATE_V20.json").read_text()
@@ -2000,6 +2013,82 @@ def main() -> int:
         },
         "parallel EFT G6 gate failed or mutated authoritative/release scope",
     )
+    eft_g7_classification = exact_eft_g7_nonidentifiability["classification"]
+    eft_g7_integration = exact_eft_g7_nonidentifiability["integration"]
+    eft_g7_collision = exact_eft_g7_nonidentifiability[
+        "threshold_restriction_counterexample"
+    ]
+    eft_g7_scale = exact_eft_g7_nonidentifiability[
+        "absolute_scale_counterexample"
+    ]
+    eft_g7_scope = exact_eft_g7_nonidentifiability["reduced_RGE_model_scope"]
+    require(
+        exact_eft_g7_nonidentifiability["status"]
+        == "EFT_G7_INPUT_NONIDENTIFIABILITY_PROVED__G7_OPEN"
+        and exact_eft_g7_nonidentifiability["core_sha256"]
+        == EFT_G7_THRESHOLD_NONIDENTIFIABILITY_CORE_SHA256
+        and exact_eft_g7_nonidentifiability["n_failed"] == 0
+        and exact_eft_g7_nonidentifiability["failures"] == []
+        and bool(exact_eft_g7_nonidentifiability["checks"])
+        and all(exact_eft_g7_nonidentifiability["checks"].values())
+        and eft_g7_collision["same_SU3C_x_U1em_restriction"] is True
+        and eft_g7_collision["same_frozen_G6_masses"] is True
+        and eft_g7_collision["restriction_map_noninjective"] is True
+        and eft_g7_collision["one_loop_coefficients_differ"] is True
+        and eft_g7_collision["completion_A"][
+            "complex_scalar_one_loop_delta_b2"
+        ]
+        == "0"
+        and eft_g7_collision["completion_A"][
+            "complex_scalar_one_loop_delta_bY"
+        ]
+        == "1/3"
+        and eft_g7_collision["completion_B"][
+            "complex_scalar_one_loop_delta_b2"
+        ]
+        == "1/6"
+        and eft_g7_collision["completion_B"][
+            "complex_scalar_one_loop_delta_bY"
+        ]
+        == "1/6"
+        and eft_g7_scale["same_normalized_G6_spectrum"] is True
+        and eft_g7_scale["threshold_log_shift"] == "ln(2)"
+        and eft_g7_scale["absolute_scale_unidentified"] is True
+        and eft_g7_scope["full_210_quartic_basis_present"] is False
+        and eft_g7_scope["lambda4_CGC_present"] is False
+        and eft_g7_scope["dimension6_O6_lock_present"] is False
+        and eft_g7_scope["two_loop_SO10_complete"] is False
+        and eft_g7_scope["piecewise_component_threshold_matching_complete"]
+        is False
+        and eft_g7_classification[
+            "exact_EFT_G7_input_nonidentifiability_proved"
+        ]
+        is True
+        and eft_g7_classification["mathematical_EFT_G7_closed"] is False
+        and eft_g7_classification["EFT_release_G7_verified"] is False
+        and eft_g7_classification["authoritative_renormalizable_G7_closed"]
+        is False
+        and eft_g7_classification["positive_G7_certified"] is False
+        and eft_g7_classification["negative_G7_no_go_certified"] is False
+        and set(eft_g7_integration)
+        == {
+            "ledger_consumes_obstruction",
+            "roadmap_consumes_obstruction",
+            "validation_matrix_consumes_obstruction",
+            "release_orchestrators_and_workflows_consume_obstruction",
+        }
+        and all(value is True for value in eft_g7_integration.values())
+        and set(exact_eft_g7_nonidentifiability["release_blockers"])
+        == {
+            "ELECTROWEAK_AND_INTERMEDIATE_REPRESENTATION_PROVENANCE_REQUIRED",
+            "ABSOLUTE_SCALE_AND_WILSON_MATCHING_REQUIRED",
+            "COMPLETE_COMPONENT_THRESHOLD_MATCHING_REQUIRED",
+            "COMPLETE_GAUGE_YUKAWA_SCALAR_SOFT_EFT_TWO_LOOP_SYSTEM_REQUIRED",
+            "SECOND_INDEPENDENT_IMPLEMENTATION_REQUIRED",
+            "AUTHORITATIVE_G1_THROUGH_G6_REQUIRED",
+        },
+        "exact EFT G7 obstruction failed or promoted a positive G7 closure",
+    )
     candidate_coefficients = g3_candidate["coefficient_vector"]
     require(
         g3_candidate["n_failed"] == 0
@@ -2229,6 +2318,7 @@ def main() -> int:
             "test_final_g5_eft_mathematical_gate_v20.py",
             "test_exact_eft_physical_scalar_spectrum_v20.py",
             "test_final_g6_eft_mathematical_gate_v20.py",
+            "test_exact_eft_g7_threshold_nonidentifiability_v20.py",
             "test_g1_g8_gate_ledger_v20.py",
             "test_final_g3_acceptance_gate_v20.py",
             "test_gauged_u1x_g3_sos_candidate_v20.py",

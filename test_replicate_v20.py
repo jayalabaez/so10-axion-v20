@@ -25,6 +25,7 @@ def test_cross_platform_and_central_frozen_reports_are_read_only() -> None:
         "final_g5_eft_mathematical_gate_v20.py",
         "exact_eft_physical_scalar_spectrum_v20.py",
         "final_g6_eft_mathematical_gate_v20.py",
+        "exact_eft_g7_threshold_nonidentifiability_v20.py",
         "g1_g8_gate_ledger_v20.py",
         "final_g3_acceptance_gate_v20.py",
         "g1_g8_execution_roadmap_v20.py",
@@ -95,6 +96,7 @@ def test_parallel_eft_gates_run_read_only_in_dependency_order() -> None:
         "final_g5_eft_mathematical_gate_v20.py",
         "exact_eft_physical_scalar_spectrum_v20.py",
         "final_g6_eft_mathematical_gate_v20.py",
+        "exact_eft_g7_threshold_nonidentifiability_v20.py",
     )
     gate_rows = []
     for name in gate_names:
@@ -116,6 +118,7 @@ def test_parallel_eft_gates_run_read_only_in_dependency_order() -> None:
         "test_final_g5_eft_mathematical_gate_v20.py",
         "test_exact_eft_physical_scalar_spectrum_v20.py",
         "test_final_g6_eft_mathematical_gate_v20.py",
+        "test_exact_eft_g7_threshold_nonidentifiability_v20.py",
     ):
         assert test_name in source
 

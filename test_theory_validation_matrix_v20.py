@@ -69,6 +69,13 @@ def minimal_tree(
             matrix.RENORMALIZABLE_G2_MATHEMATICAL_SOURCE
         ).read_bytes()
     )
+    g7_artifact = matrix.ARTIFACTS["eft_g7_nonidentifiability"]
+    root.joinpath(g7_artifact).write_bytes(
+        matrix.ROOT.joinpath(g7_artifact).read_bytes()
+    )
+    root.joinpath(matrix.EFT_G7_NONIDENTIFIABILITY_SOURCE).write_bytes(
+        matrix.ROOT.joinpath(matrix.EFT_G7_NONIDENTIFIABILITY_SOURCE).read_bytes()
+    )
     g2_mathematical_closure = (
         matrix.gate_ledger._renormalizable_g2_mathematical_closure(
             json.loads(
@@ -1806,7 +1813,7 @@ class TheoryValidationMatrixTests(unittest.TestCase):
             self.assertEqual(report["status"], "PASS")
             self.assertEqual(
                 report["classification"],
-                "INTERNALLY_CONSISTENT_CONDITIONAL_CANDIDATE",
+                "MODEL_CONTRACT_INCONSISTENT__AUTHORITATIVE_GATES_REOPENED",
             )
             self.assertFalse(report["full_theory_validated"])
             states = {gate["name"]: gate["state"] for gate in report["gates"]}
@@ -1855,8 +1862,34 @@ class TheoryValidationMatrixTests(unittest.TestCase):
             )
             self.assertEqual(
                 states["two_loop_RGE_unification_and_thresholds"],
-                "CONDITIONAL",
+                "BLOCKED",
             )
+            rge_gate = next(
+                gate
+                for gate in report["gates"]
+                if gate["name"] == "two_loop_RGE_unification_and_thresholds"
+            )
+            evidence = rge_gate["evidence"]
+            self.assertTrue(evidence["exact_EFT_G7_input_nonidentifiability_proved"])
+            self.assertTrue(evidence["threshold_restriction_map_noninjective"])
+            self.assertTrue(evidence["absolute_matching_scale_unidentified"])
+            self.assertFalse(evidence["mathematical_G7_closed"])
+            self.assertFalse(evidence["positive_G7_certified"])
+            self.assertFalse(evidence["negative_G7_no_go_certified"])
+            self.assertFalse(evidence["release_G7_verified"])
+            self.assertFalse(evidence["authoritative_renormalizable_G7_closed"])
+
+    def test_eft_g7_obstruction_rejects_raw_byte_drift(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            minimal_tree(root)
+            artifact = root / matrix.ARTIFACTS["eft_g7_nonidentifiability"]
+            original = artifact.read_bytes()
+            artifact.write_bytes(original + b"\n")
+            g7 = matrix.build_report(root)["parallel_EFT_G7_nonidentifiability"]
+            self.assertFalse(g7["source_bound"])
+            self.assertFalse(g7["checks"]["raw_sha256_exact"])
+            self.assertFalse(g7["exact_EFT_G7_input_nonidentifiability_proved"])
 
     def test_current_repository_can_never_claim_discovery_from_internal_tests(self):
         report = matrix.build_report(matrix.ROOT)

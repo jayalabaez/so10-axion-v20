@@ -121,6 +121,12 @@ class CorrectedEndpointIntegrationFreezeTests(unittest.TestCase):
         )
         self.assertEqual(
             report["logical_pins"][
+                "EFT_G7_threshold_nonidentifiability_core_sha256"
+            ],
+            freezer.EFT_G7_THRESHOLD_NONIDENTIFIABILITY_CORE_SHA256,
+        )
+        self.assertEqual(
+            report["logical_pins"][
                 "renormalizable_G1_component_tensor_core_sha256"
             ],
             freezer.RENORMALIZABLE_G1_COMPONENT_TENSOR_CORE_SHA256,
@@ -143,6 +149,15 @@ class CorrectedEndpointIntegrationFreezeTests(unittest.TestCase):
         self.assertEqual(report["EFT_G6_bundle"]["raw_file_count"], 8)
         self.assertTrue(report["EFT_G6_bundle"]["all_checks_pass"])
         self.assertTrue(all(report["EFT_G6_bundle"]["checks"].values()))
+        self.assertEqual(
+            report["EFT_G7_nonidentifiability_bundle"]["raw_file_count"], 4
+        )
+        self.assertTrue(
+            report["EFT_G7_nonidentifiability_bundle"]["all_checks_pass"]
+        )
+        self.assertTrue(
+            all(report["EFT_G7_nonidentifiability_bundle"]["checks"].values())
+        )
         self.assertEqual(
             report["renormalizable_G1_component_tensor_bundle"][
                 "raw_file_count"
@@ -168,8 +183,8 @@ class CorrectedEndpointIntegrationFreezeTests(unittest.TestCase):
                 "legacy_rejection_assertions": 7,
                 "full_source_rebuild_invocations": 1,
                 "read_only_frozen_dependency_orchestrators": 3,
-                "read_only_frozen_report_sources": 20,
-                "read_only_frozen_report_commands": 60,
+                "read_only_frozen_report_sources": 21,
+                "read_only_frozen_report_commands": 63,
                 "no_write_frozen_classification_sources": 3,
                 "no_write_frozen_classification_commands": 9,
                 "no_write_stochastic_report_orchestrators": 2,
@@ -232,6 +247,24 @@ class CorrectedEndpointIntegrationFreezeTests(unittest.TestCase):
             report["claim_boundary"]["EFT_release_G6_verified"]
         )
         self.assertTrue(
+            report["claim_boundary"][
+                "EFT_G7_input_nonidentifiability_proved"
+            ]
+        )
+        self.assertFalse(
+            report["claim_boundary"]["EFT_mathematical_G7_closed"]
+        )
+        self.assertFalse(report["claim_boundary"]["EFT_release_G7_verified"])
+        self.assertFalse(
+            report["claim_boundary"][
+                "authoritative_renormalizable_G7_closed"
+            ]
+        )
+        self.assertFalse(report["claim_boundary"]["positive_G7_certified"])
+        self.assertFalse(
+            report["claim_boundary"]["negative_G7_no_go_certified"]
+        )
+        self.assertTrue(
             report["claim_boundary"]["renormalizable_mathematical_G1_closed"]
         )
         self.assertFalse(
@@ -289,6 +322,19 @@ class CorrectedEndpointIntegrationFreezeTests(unittest.TestCase):
             dict(sorted(freezer.EFT_G6_RAW_PINS.items())),
         )
         for relative, expected in freezer.EFT_G6_RAW_PINS.items():
+            row = report["inventory"][relative]
+            self.assertEqual(row["hash_mode"], "raw")
+            self.assertEqual(row["content_sha256"], expected)
+            self.assertIn(relative, freezer.CHECKSUM_REQUIRED_PATHS)
+
+        self.assertEqual(len(freezer.EFT_G7_NONIDENTIFIABILITY_RAW_PINS), 4)
+        self.assertEqual(
+            report["generation_source_pins"][
+                "EFT_G7_nonidentifiability_raw_sha256"
+            ],
+            dict(sorted(freezer.EFT_G7_NONIDENTIFIABILITY_RAW_PINS.items())),
+        )
+        for relative, expected in freezer.EFT_G7_NONIDENTIFIABILITY_RAW_PINS.items():
             row = report["inventory"][relative]
             self.assertEqual(row["hash_mode"], "raw")
             self.assertEqual(row["content_sha256"], expected)
@@ -407,6 +453,7 @@ class CorrectedEndpointIntegrationFreezeTests(unittest.TestCase):
                     freezer._require_eft_g4_g5_bundle()
 
         self._assert_eft_g6_logical_bundle_and_claim_boundary()
+        self._assert_eft_g7_nonidentifiability_bundle_and_claim_boundary()
         self._assert_renormalizable_g1_component_tensor_bundle()
         self._assert_renormalizable_g2_mathematical_bundle()
 
@@ -448,6 +495,49 @@ class CorrectedEndpointIntegrationFreezeTests(unittest.TestCase):
                     ArithmeticError, "frozen EFT G6 logical bundle drifted"
                 ):
                     freezer._require_eft_g6_bundle()
+
+    def _assert_eft_g7_nonidentifiability_bundle_and_claim_boundary(self) -> None:
+        bundle = freezer._require_eft_g7_nonidentifiability_bundle()
+        self.assertEqual(bundle["raw_file_count"], 4)
+        self.assertTrue(bundle["all_checks_pass"])
+        self.assertTrue(all(bundle["checks"].values()))
+        self.assertTrue(
+            bundle["checks"]["electroweak_restriction_collision_exact"]
+        )
+        self.assertTrue(bundle["checks"]["absolute_scale_collision_exact"])
+        self.assertTrue(
+            bundle["checks"]["claim_boundary_remains_fail_closed"]
+        )
+        self.assertTrue(bundle["checks"]["central_integration_complete_exact"])
+
+        with tempfile.TemporaryDirectory() as directory:
+            root = freezer.Path(directory)
+            names = (
+                "exact_eft_g7_threshold_nonidentifiability_v20.py",
+                "EXACT_EFT_G7_THRESHOLD_NONIDENTIFIABILITY_V20.json",
+            )
+            for name in names:
+                (root / name).write_bytes((freezer.ROOT / name).read_bytes())
+            with patch.object(freezer, "ROOT", root):
+                self.assertTrue(
+                    freezer._require_eft_g7_nonidentifiability_bundle()[
+                        "all_checks_pass"
+                    ]
+                )
+                report_path = (
+                    root / "EXACT_EFT_G7_THRESHOLD_NONIDENTIFIABILITY_V20.json"
+                )
+                mutated = json.loads(report_path.read_text(encoding="utf-8"))
+                mutated["classification"]["mathematical_EFT_G7_closed"] = True
+                report_path.write_text(
+                    json.dumps(mutated, indent=2, sort_keys=True) + "\n",
+                    encoding="utf-8",
+                )
+                with self.assertRaisesRegex(
+                    ArithmeticError,
+                    "frozen EFT G7 non-identifiability logical bundle drifted",
+                ):
+                    freezer._require_eft_g7_nonidentifiability_bundle()
 
     def _assert_renormalizable_g1_component_tensor_bundle(self) -> None:
         bundle = freezer._require_renormalizable_g1_component_tensor_bundle()

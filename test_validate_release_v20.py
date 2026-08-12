@@ -82,6 +82,7 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             "final_g5_eft_mathematical_gate_v20.py",
             "exact_eft_physical_scalar_spectrum_v20.py",
             "final_g6_eft_mathematical_gate_v20.py",
+            "exact_eft_g7_threshold_nonidentifiability_v20.py",
             "g1_g8_gate_ledger_v20.py",
             "final_g3_acceptance_gate_v20.py",
             "g1_g8_execution_roadmap_v20.py",
@@ -174,6 +175,7 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             "final_g5_eft_mathematical_gate_v20.py",
             "exact_eft_physical_scalar_spectrum_v20.py",
             "final_g6_eft_mathematical_gate_v20.py",
+            "exact_eft_g7_threshold_nonidentifiability_v20.py",
         )
         gate_rows = []
         for name in gate_names:
@@ -192,7 +194,7 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
         )
         self.assertLess(gate_rows[-1][0], ledger_line)
 
-    def test_release_pins_the_integrated_g4_g5_g6_refreezes(self):
+    def test_release_pins_the_integrated_g4_g5_g6_and_g7_obstruction_refreezes(self):
         source = (release.ROOT / "validate_release_v20.py").read_text(
             encoding="utf-8"
         )
@@ -209,6 +211,16 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             "downstream_parallel_G5_integration_completed",
             "downstream_integration_completed",
             "parallel_EFT_G6_integrated_into_release_orchestrators",
+            "EFT_G7_INPUT_NONIDENTIFIABILITY_PROVED__G7_OPEN",
+            "exact_EFT_G7_input_nonidentifiability_proved",
+            "mathematical_EFT_G7_closed",
+            "EFT_release_G7_verified",
+            "authoritative_renormalizable_G7_closed",
+            "positive_G7_certified",
+            "negative_G7_no_go_certified",
+            "release_orchestrators_and_workflows_consume_obstruction",
+            "restriction_map_noninjective",
+            "absolute_scale_unidentified",
         ):
             self.assertIn(token, source)
 
@@ -280,6 +292,10 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             "FINAL_G6_EFT_MATHEMATICAL_GATE_V20.md",
             "final_g6_eft_mathematical_gate_v20.py",
             "test_final_g6_eft_mathematical_gate_v20.py",
+            "EXACT_EFT_G7_THRESHOLD_NONIDENTIFIABILITY_V20.json",
+            "EXACT_EFT_G7_THRESHOLD_NONIDENTIFIABILITY_V20.md",
+            "exact_eft_g7_threshold_nonidentifiability_v20.py",
+            "test_exact_eft_g7_threshold_nonidentifiability_v20.py",
             "EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_CLOSURE_V20.json",
             "EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_CLOSURE_V20.md",
             "exact_gauged_u1x_g1_component_tensor_closure_v20.py",

@@ -46,10 +46,11 @@
     "model_contract_precedes_G1": true,
     "open_gates_have_closed_dependencies": true,
     "parallel_EFT_G3_acceptance_is_source_bound_and_release_open": true,
-    "parallel_EFT_G4_G5_G6_do_not_promote_authoritative_frontier": true,
+    "parallel_EFT_G4_G5_G6_G7_do_not_promote_authoritative_frontier": true,
     "parallel_EFT_G4_mathematical_is_source_bound_and_release_open": true,
     "parallel_EFT_G5_mathematical_is_source_bound_and_release_open": true,
     "parallel_EFT_G6_spectrum_is_source_bound_and_release_open": true,
+    "parallel_EFT_G7_nonidentifiability_is_source_bound_and_G7_open": true,
     "whole_model_neither_validated_nor_excluded": true
   },
   "closure_waves": [
@@ -95,10 +96,11 @@
       "wave": 4
     },
     {
+      "deliverable": "Add independent UV matching information that removes the certified kernel of the EFT threshold restriction map; no positive G7 conclusion follows from the current observables.",
       "gates": [
         "G7"
       ],
-      "status": "BLOCKED_ON_G6",
+      "status": "BLOCKED__EXACT_EFT_THRESHOLD_RESTRICTION_NONIDENTIFIABLE",
       "wave": 5
     },
     {
@@ -794,6 +796,57 @@
       "authoritative_closed_scope": [],
       "authoritative_model_contract_id": "gauged_u1x_phi17_v20",
       "blocking_root": "AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED",
+      "certified_input_obstruction": {
+        "EFT_release_G7_verified": false,
+        "absolute_scale_unidentified": true,
+        "artifact": "EXACT_EFT_G7_THRESHOLD_NONIDENTIFIABILITY_V20.json",
+        "authoritative_renormalizable_G7_closed": false,
+        "checks": {
+          "absolute_scale_counterexample_exact": true,
+          "all_embedded_checks_pass": true,
+          "artifact_present": true,
+          "contract_exact": true,
+          "core_sha256_exact": true,
+          "integration_schema_exact": true,
+          "negative_classification_exact": true,
+          "positive_requirements_and_release_blockers_retained": true,
+          "raw_sha256_exact": true,
+          "reduced_RGE_scope_fail_closed": true,
+          "restriction_map_counterexample_exact": true,
+          "source_raw_sha256_exact": true,
+          "status_exact": true
+        },
+        "core_sha256": "303b4fa923b0475b8abe273836baea89671c2825da7756cbb79430a6400f4511",
+        "downstream_integration_completed": true,
+        "exact_EFT_G7_input_nonidentifiability_proved": true,
+        "expected_core_sha256": "303b4fa923b0475b8abe273836baea89671c2825da7756cbb79430a6400f4511",
+        "expected_raw_sha256": "d59146ed577680f3a1dfd449256d60d8116afcb844a8b65bbc009a8472bb766b",
+        "expected_source_raw_sha256": "0f8868d7d23e6b49f25f075a1974bdb7c1c72b88ae4c9c358a9d11d04e2f06b6",
+        "mathematical_EFT_G7_closed": false,
+        "namespace": "EFT_G7_INPUT_NONIDENTIFIABILITY",
+        "negative_G7_no_go_certified": false,
+        "positive_G7_certified": false,
+        "positive_closure_requirements": [
+          "per-state SU(2)_L x U(1)_Y and SO(10)-to-intermediate-to-SM provenance",
+          "physical pole masses, absolute scale, Wilson matching, and threshold uncertainties",
+          "complete component thresholds in a declared renormalization scheme",
+          "complete gauge/Yukawa/scalar/soft/EFT beta and anomalous-dimension system",
+          "agreement of two independent implementations within declared tolerances"
+        ],
+        "raw_sha256": "d59146ed577680f3a1dfd449256d60d8116afcb844a8b65bbc009a8472bb766b",
+        "release_blockers": [
+          "ELECTROWEAK_AND_INTERMEDIATE_REPRESENTATION_PROVENANCE_REQUIRED",
+          "ABSOLUTE_SCALE_AND_WILSON_MATCHING_REQUIRED",
+          "COMPLETE_COMPONENT_THRESHOLD_MATCHING_REQUIRED",
+          "COMPLETE_GAUGE_YUKAWA_SCALAR_SOFT_EFT_TWO_LOOP_SYSTEM_REQUIRED",
+          "SECOND_INDEPENDENT_IMPLEMENTATION_REQUIRED",
+          "AUTHORITATIVE_G1_THROUGH_G6_REQUIRED"
+        ],
+        "restriction_map_noninjective": true,
+        "source": "exact_eft_g7_threshold_nonidentifiability_v20.py",
+        "source_bound": true,
+        "source_raw_sha256": "0f8868d7d23e6b49f25f075a1974bdb7c1c72b88ae4c9c358a9d11d04e2f06b6"
+      },
       "closed_on_current_authoritative_contract": false,
       "closure_route_defined": true,
       "dependencies": [
@@ -801,7 +854,7 @@
       ],
       "historical_option_c_evidence_retained": false,
       "open_scope": [
-        "await G6 and independently validate the full beta system"
+        "supply independent UV threshold data that make the exact EFT restriction map injective, then validate the complete gauged-X two-loop beta system"
       ],
       "status": "BLOCKED",
       "title": "Validated two-loop RGE and threshold matching",
@@ -522103,9 +522156,171 @@
         "spectrum": "abb704133c8be22b424ba20e23387d6f30412e6c82ab3a214e88bd8df5bef9cc"
       },
       "verdict": "Mathematical tree-level G6 is exact for the registered dimension-six EFT.  Release and the original authoritative renormalizable G6 remain open."
+    },
+    "parallel_EFT_G7_input_nonidentifiability": {
+      "absolute_scale_counterexample": {
+        "absolute_scale_unidentified": true,
+        "completion_A_mass_unit": "M0",
+        "completion_B_mass_unit": "2*M0",
+        "same_normalized_G6_spectrum": true,
+        "threshold_log_shift": "ln(2)"
+      },
+      "checks": {
+        "G6_gate_core_bound": true,
+        "G6_is_normalized_tree_level_EFT_only": true,
+        "G6_omits_electroweak_and_intermediate_labels": true,
+        "G6_residual_group_only_SU3C_x_U1em": true,
+        "G6_spectrum_core_bound": true,
+        "absolute_scale_not_frozen": true,
+        "authoritative_contract_gauges_U1X": true,
+        "charged_collision_mode_exact": true,
+        "electroweak_restriction_map_noninjective": true,
+        "legacy_210_contractions_incomplete": true,
+        "legacy_component_thresholds_incomplete": true,
+        "legacy_two_loop_SO10_incomplete": true,
+        "live_executable_declares_X_global": true,
+        "loop_and_pole_masses_not_frozen": true,
+        "neutral_collision_mode_exact": true,
+        "one_loop_threshold_coefficients_not_unique": true,
+        "reduced_quartic_omits_full_lambda4_and_O6": true,
+        "running_scheme_not_frozen": true,
+        "threshold_uncertainties_not_frozen": true
+      },
+      "classification": {
+        "EFT_release_G7_verified": false,
+        "authoritative_renormalizable_G7_closed": false,
+        "exact_EFT_G7_input_nonidentifiability_proved": true,
+        "mathematical_EFT_G7_closed": false,
+        "negative_G7_no_go_certified": false,
+        "positive_G7_certified": false
+      },
+      "core_sha256": "303b4fa923b0475b8abe273836baea89671c2825da7756cbb79430a6400f4511",
+      "failures": [],
+      "integration": {
+        "ledger_consumes_obstruction": true,
+        "release_orchestrators_and_workflows_consume_obstruction": true,
+        "roadmap_consumes_obstruction": true,
+        "validation_matrix_consumes_obstruction": true
+      },
+      "model_contract_id": "gauged_u1x_phi17_v20_eft_o6_current_kernel_gamma_1_over_20",
+      "n_checks": 19,
+      "n_failed": 0,
+      "positive_closure_requirements": [
+        "per-state SU(2)_L x U(1)_Y and SO(10)-to-intermediate-to-SM provenance",
+        "physical pole masses, absolute scale, Wilson matching, and threshold uncertainties",
+        "complete component thresholds in a declared renormalization scheme",
+        "complete gauge/Yukawa/scalar/soft/EFT beta and anomalous-dimension system",
+        "agreement of two independent implementations within declared tolerances"
+      ],
+      "reduced_RGE_model_scope": {
+        "authoritative_contract": "SO(10) x gauged U(1)_X with Phi17/anomaly-cancelling sector",
+        "available_executable_contract": "SO(10) only; U(1)_X/PQ/Z17 declared global",
+        "dimension6_O6_lock_present": false,
+        "full_210_quartic_basis_present": false,
+        "lambda4_CGC_present": false,
+        "piecewise_component_threshold_matching_complete": false,
+        "two_loop_SO10_complete": false
+      },
+      "release_blockers": [
+        "ELECTROWEAK_AND_INTERMEDIATE_REPRESENTATION_PROVENANCE_REQUIRED",
+        "ABSOLUTE_SCALE_AND_WILSON_MATCHING_REQUIRED",
+        "COMPLETE_COMPONENT_THRESHOLD_MATCHING_REQUIRED",
+        "COMPLETE_GAUGE_YUKAWA_SCALAR_SOFT_EFT_TWO_LOOP_SYSTEM_REQUIRED",
+        "SECOND_INDEPENDENT_IMPLEMENTATION_REQUIRED",
+        "AUTHORITATIVE_G1_THROUGH_G6_REQUIRED"
+      ],
+      "source_binding": {
+        "G6_gate_JSON": {
+          "mode": "raw",
+          "path": "FINAL_G6_EFT_MATHEMATICAL_GATE_V20.json",
+          "sha256": "85000f555eb3bc4e2e4bc49236a82ce2161987212906d78efd667bb52dd432f8"
+        },
+        "G6_gate_source": {
+          "mode": "raw",
+          "path": "final_g6_eft_mathematical_gate_v20.py",
+          "sha256": "6ef314bf22e1d6ce43b382b5cb6e7673cef1e328f2f4c38abdafab6038edc150"
+        },
+        "G6_spectrum_JSON": {
+          "mode": "raw",
+          "path": "EXACT_EFT_PHYSICAL_SCALAR_SPECTRUM_V20.json",
+          "sha256": "797a90473c064a78ef313d56f1894d71114643a19ebd373e86fe8b2911bcf416"
+        },
+        "G6_spectrum_source": {
+          "mode": "raw",
+          "path": "exact_eft_physical_scalar_spectrum_v20.py",
+          "sha256": "cdcc25b383098464fc6312d553dff555d19c57388df7de08db48b4167ebc5a36"
+        },
+        "authoritative_gauged_U1X_model": {
+          "mode": "portable_text",
+          "path": "models\\SO10Z17AxionV20.m",
+          "sha256": "3c3536c166ba7fca06ffedd0f244f76cc9b6db4840822a727f7a2f8e8bf1d1cd"
+        },
+        "legacy_RGE_source": {
+          "mode": "portable_text",
+          "path": "yukawa_rge_2loop_v20.py",
+          "sha256": "a48d3f2c84d26b12e6429bbce5794a6198aead4d3ccde9afadb22a9568ccba4c"
+        },
+        "legacy_RGE_verdict": {
+          "mode": "portable_text",
+          "path": "YUKAWA_RGE_2LOOP_V20_VERDICT.json",
+          "sha256": "afbaca5c508140e448e54437848863d534f9b93396688a19652061c35b00da11"
+        },
+        "reduced_live_model": {
+          "mode": "portable_text",
+          "path": "models\\SO10Z17AxionV20_live.model",
+          "sha256": "976ad1c1e01c45df309b0f0511121607d723c531471a9ce3e6b4db311621475f"
+        },
+        "reduced_pyrate_yaml": {
+          "mode": "portable_text",
+          "path": "models\\SO10Z17AxionV20_pyrate.yaml",
+          "sha256": "5a0a7772e3c4d3dcfb4304446e4fbaf5263f8281a9dd0f5415efa7904f5b5a58"
+        },
+        "reduced_quartic_model": {
+          "mode": "portable_text",
+          "path": "models\\SO10Z17AxionV20_quartic_live.model",
+          "sha256": "605d5ae6235f33c30c2755873185b7e9d94b11b35a8bf15199cb915c5c02a12a"
+        }
+      },
+      "status": "EFT_G7_INPUT_NONIDENTIFIABILITY_PROVED__G7_OPEN",
+      "threshold_restriction_counterexample": {
+        "completion_A": {
+          "complex_scalar_one_loop_delta_b2": "0",
+          "complex_scalar_one_loop_delta_bY": "1/3",
+          "electroweak_representations": [
+            "(1,1)_0",
+            "(1,1)_1"
+          ],
+          "sum_T2": "0",
+          "sum_Y_squared": "1"
+        },
+        "completion_B": {
+          "complex_scalar_one_loop_delta_b2": "1/6",
+          "complex_scalar_one_loop_delta_bY": "1/6",
+          "electroweak_representation": "(1,2)_{1/2}",
+          "interpretation": "the two observed states are its EWSB-split Q=0,1 components",
+          "sum_T2": "1/2",
+          "sum_Y_squared": "1/2"
+        },
+        "observed_residual_modes": [
+          {
+            "real_multiplicity": 2,
+            "sector": "C0_Q0",
+            "x": "26/5"
+          },
+          {
+            "real_multiplicity": 2,
+            "sector": "C0_Q1",
+            "x": "37/20"
+          }
+        ],
+        "one_loop_coefficients_differ": true,
+        "restriction_map_noninjective": true,
+        "same_SU3C_x_U1em_restriction": true,
+        "same_frozen_G6_masses": true
+      }
     }
   },
-  "n_checks": 50,
+  "n_checks": 51,
   "n_failed": 0,
   "overall_state": "BLOCKED",
   "parallel_EFT_G3_acceptance": {
@@ -522288,6 +522503,57 @@
     },
     "whole_model_validated": false
   },
+  "parallel_EFT_G7_nonidentifiability": {
+    "EFT_release_G7_verified": false,
+    "absolute_scale_unidentified": true,
+    "artifact": "EXACT_EFT_G7_THRESHOLD_NONIDENTIFIABILITY_V20.json",
+    "authoritative_renormalizable_G7_closed": false,
+    "checks": {
+      "absolute_scale_counterexample_exact": true,
+      "all_embedded_checks_pass": true,
+      "artifact_present": true,
+      "contract_exact": true,
+      "core_sha256_exact": true,
+      "integration_schema_exact": true,
+      "negative_classification_exact": true,
+      "positive_requirements_and_release_blockers_retained": true,
+      "raw_sha256_exact": true,
+      "reduced_RGE_scope_fail_closed": true,
+      "restriction_map_counterexample_exact": true,
+      "source_raw_sha256_exact": true,
+      "status_exact": true
+    },
+    "core_sha256": "303b4fa923b0475b8abe273836baea89671c2825da7756cbb79430a6400f4511",
+    "downstream_integration_completed": true,
+    "exact_EFT_G7_input_nonidentifiability_proved": true,
+    "expected_core_sha256": "303b4fa923b0475b8abe273836baea89671c2825da7756cbb79430a6400f4511",
+    "expected_raw_sha256": "d59146ed577680f3a1dfd449256d60d8116afcb844a8b65bbc009a8472bb766b",
+    "expected_source_raw_sha256": "0f8868d7d23e6b49f25f075a1974bdb7c1c72b88ae4c9c358a9d11d04e2f06b6",
+    "mathematical_EFT_G7_closed": false,
+    "namespace": "EFT_G7_INPUT_NONIDENTIFIABILITY",
+    "negative_G7_no_go_certified": false,
+    "positive_G7_certified": false,
+    "positive_closure_requirements": [
+      "per-state SU(2)_L x U(1)_Y and SO(10)-to-intermediate-to-SM provenance",
+      "physical pole masses, absolute scale, Wilson matching, and threshold uncertainties",
+      "complete component thresholds in a declared renormalization scheme",
+      "complete gauge/Yukawa/scalar/soft/EFT beta and anomalous-dimension system",
+      "agreement of two independent implementations within declared tolerances"
+    ],
+    "raw_sha256": "d59146ed577680f3a1dfd449256d60d8116afcb844a8b65bbc009a8472bb766b",
+    "release_blockers": [
+      "ELECTROWEAK_AND_INTERMEDIATE_REPRESENTATION_PROVENANCE_REQUIRED",
+      "ABSOLUTE_SCALE_AND_WILSON_MATCHING_REQUIRED",
+      "COMPLETE_COMPONENT_THRESHOLD_MATCHING_REQUIRED",
+      "COMPLETE_GAUGE_YUKAWA_SCALAR_SOFT_EFT_TWO_LOOP_SYSTEM_REQUIRED",
+      "SECOND_INDEPENDENT_IMPLEMENTATION_REQUIRED",
+      "AUTHORITATIVE_G1_THROUGH_G6_REQUIRED"
+    ],
+    "restriction_map_noninjective": true,
+    "source": "exact_eft_g7_threshold_nonidentifiability_v20.py",
+    "source_bound": true,
+    "source_raw_sha256": "0f8868d7d23e6b49f25f075a1974bdb7c1c72b88ae4c9c358a9d11d04e2f06b6"
+  },
   "renormalizable_G1_component_tensor_closure": {
     "artifact": "EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_CLOSURE_V20.json",
     "authoritative_G1_promoted_closed": false,
@@ -522409,7 +522675,8 @@
   "scientific_blockers": [
     "AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED",
     "GAUGED_U1X_G3_G8_CLOSURE_REQUIRED",
-    "G3_ARBITRARY_NON_PURE_DELTA_SIGMA_UNIFORM_COERCIVITY_OPEN"
+    "G3_ARBITRARY_NON_PURE_DELTA_SIGMA_UNIFORM_COERCIVITY_OPEN",
+    "EFT_G7_THRESHOLD_RESTRICTION_AND_ABSOLUTE_SCALE_NONIDENTIFIABLE"
   ],
   "status": "G1_G8_LEDGER_AUDIT_COMPLETE__MODEL_CONTRACT_BLOCKED__MATHEMATICAL_G1_COMPONENT_RING_AND_G2_COMPONENT_POTENTIAL_CLOSED",
   "summary": {
@@ -522431,5 +522698,5 @@
     "open": [],
     "partial": []
   },
-  "verdict": "The ledger audit succeeds, but all G1-G8 gates are BLOCKED. The gauged-U(1)_X SARAH input, charge catalogues, Lagrangian registration, and hash-bound validation bundle are now statically consistent; Wave 0 still requires a real external SARAH execution attestation. The gauged G1 multiplicity census, source-bound normalized component-tensor ring, and G2 dense derivative theorem are recertified as 44 directions, 51 parameters, 18 tensor families, and 486 fields. Three structural gradient columns vanish exactly; matching exact lower- and upper-rank certificates prove stationarity rank/nullity 13/38. The character census remains explicitly multiplicity-only; the separate G1 theorem supplies its complete source-bound tensor integration without changing that census scope. G1 and the G2 scoped audit cannot be promoted until the external model contract closes. A perturbative 27-of-51 SOS candidate with J0=-21/200 is explicit. Exact source-bound SOS identities prove complete-potential BFB and stationarity. Direct Gaussian-integer/Fraction/Q(sqrt(2)) assembly gives P+Delta rank/nullity 429/33, and the exact extension leaves only 38 symmetry tangents, proving a strict local minimum on all 448 transverse directions. An exact symmetry-inequivalent field configuration is lower by 25*r^4/19008, so this selected global vacuum and candidate are rejected. The fixed-P branch is exactly excluded, and the lower stationary replacement has the wrong gauge symmetry. A new SU(5)+Delta Phi/Sigma branch has an exact global SOS minimum, the correct SM stabilizer, and exact quotient rank/nullity 429/33. Its chiral-H full-field extension is exactly BFB, stationary and symmetry-correct. The source-bound 486-real Hessian is exactly PSD with rank/nullity 448/38, and its kernel is exactly the 38 symmetry tangents. The literal one-orbit Phi lemma is refuted by -F; the complete maximally-negative pure-Delta sector is excluded for arbitrary real Phi and all nonzero residuals with sharp gap 1/5000. The prior four-real-dimensional SU(3) regression is historical and subsumed. At fixed H=h_- and Sigma=q/4, the corrected v21 exact theorem covers every real Phi210. Its exact SU(4) stabilizer, aligned rank-210 carrier real maps, explicit complete 45-element Phi210 invariant quadratic basis, and exact augmented census are certified. The complete cubic interface now has all 1414 real Schur cross variables and an exact-rank-478, 478x1414 map with kernel dimension 936; its abstract zero placeholder is not the physical gap target. The homogeneous quartic interface is now an exact-rank-6057, 6057x18085 map with kernel dimension 12028. The legacy v20 assembled physical target is rejected. The corrected 6585x19594 standard positive-Gram map, ordered-spectral target, and exact strict 22-block/824-pivot primal prove p(t,Phi)>0 off the homogeneous origin, hence A(Phi)>3/200 at t=1 for every real Phi210. Global Sigma, general/full H, the full Hessian, and G3 remain open. The historical 64/91 derivative theorem, 449-dimensional quotient, 46-mode saddle, and 80-iteration no-PSD search are preserved as Option-C subtheorems and neither validate nor exclude the gauged model. In the parallel dimension-six EFT namespace, the exact normalized tree-level physical scalar spectrum closes mathematical G6: all 486 real modes are classified into 37 gauge tangents, one physical PQ axion, and 448 strictly positive massive modes with exact residual-group and mixing provenance. EFT release G6 and authoritative renormalizable G6 remain false."
+  "verdict": "The ledger audit succeeds, but all G1-G8 gates are BLOCKED. The gauged-U(1)_X SARAH input, charge catalogues, Lagrangian registration, and hash-bound validation bundle are now statically consistent; Wave 0 still requires a real external SARAH execution attestation. The gauged G1 multiplicity census, source-bound normalized component-tensor ring, and G2 dense derivative theorem are recertified as 44 directions, 51 parameters, 18 tensor families, and 486 fields. Three structural gradient columns vanish exactly; matching exact lower- and upper-rank certificates prove stationarity rank/nullity 13/38. The character census remains explicitly multiplicity-only; the separate G1 theorem supplies its complete source-bound tensor integration without changing that census scope. G1 and the G2 scoped audit cannot be promoted until the external model contract closes. A perturbative 27-of-51 SOS candidate with J0=-21/200 is explicit. Exact source-bound SOS identities prove complete-potential BFB and stationarity. Direct Gaussian-integer/Fraction/Q(sqrt(2)) assembly gives P+Delta rank/nullity 429/33, and the exact extension leaves only 38 symmetry tangents, proving a strict local minimum on all 448 transverse directions. An exact symmetry-inequivalent field configuration is lower by 25*r^4/19008, so this selected global vacuum and candidate are rejected. The fixed-P branch is exactly excluded, and the lower stationary replacement has the wrong gauge symmetry. A new SU(5)+Delta Phi/Sigma branch has an exact global SOS minimum, the correct SM stabilizer, and exact quotient rank/nullity 429/33. Its chiral-H full-field extension is exactly BFB, stationary and symmetry-correct. The source-bound 486-real Hessian is exactly PSD with rank/nullity 448/38, and its kernel is exactly the 38 symmetry tangents. The literal one-orbit Phi lemma is refuted by -F; the complete maximally-negative pure-Delta sector is excluded for arbitrary real Phi and all nonzero residuals with sharp gap 1/5000. The prior four-real-dimensional SU(3) regression is historical and subsumed. At fixed H=h_- and Sigma=q/4, the corrected v21 exact theorem covers every real Phi210. Its exact SU(4) stabilizer, aligned rank-210 carrier real maps, explicit complete 45-element Phi210 invariant quadratic basis, and exact augmented census are certified. The complete cubic interface now has all 1414 real Schur cross variables and an exact-rank-478, 478x1414 map with kernel dimension 936; its abstract zero placeholder is not the physical gap target. The homogeneous quartic interface is now an exact-rank-6057, 6057x18085 map with kernel dimension 12028. The legacy v20 assembled physical target is rejected. The corrected 6585x19594 standard positive-Gram map, ordered-spectral target, and exact strict 22-block/824-pivot primal prove p(t,Phi)>0 off the homogeneous origin, hence A(Phi)>3/200 at t=1 for every real Phi210. Global Sigma, general/full H, the full Hessian, and G3 remain open. The historical 64/91 derivative theorem, 449-dimensional quotient, 46-mode saddle, and 80-iteration no-PSD search are preserved as Option-C subtheorems and neither validate nor exclude the gauged model. In the parallel dimension-six EFT namespace, the exact normalized tree-level physical scalar spectrum closes mathematical G6: all 486 real modes are classified into 37 gauge tangents, one physical PQ axion, and 448 strictly positive massive modes with exact residual-group and mixing provenance. EFT release G6 and authoritative renormalizable G6 remain false. The exact EFT G7 input audit proves that the restriction from electroweak threshold representations to the frozen SU(3)_C x U(1)_em G6 data is noninjective and that the absolute matching scale is unidentified. This is an input obstruction, not a positive G7 result or a no-go theorem: mathematical, release, and authoritative G7 all remain false, and G8 remains dependent on G7."
 }

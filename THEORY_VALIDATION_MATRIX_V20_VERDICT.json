@@ -305,14 +305,66 @@
       "whole_model_not_validated": true
     }
   },
-  "current_tree_unit_tests_discovered": 995,
+  "parallel_EFT_G7_nonidentifiability": {
+    "namespace": "EFT_G7_INPUT_NONIDENTIFIABILITY",
+    "artifact": "EXACT_EFT_G7_THRESHOLD_NONIDENTIFIABILITY_V20.json",
+    "source": "exact_eft_g7_threshold_nonidentifiability_v20.py",
+    "expected_core_sha256": "303b4fa923b0475b8abe273836baea89671c2825da7756cbb79430a6400f4511",
+    "core_sha256": "303b4fa923b0475b8abe273836baea89671c2825da7756cbb79430a6400f4511",
+    "expected_raw_sha256": "d59146ed577680f3a1dfd449256d60d8116afcb844a8b65bbc009a8472bb766b",
+    "raw_sha256": "d59146ed577680f3a1dfd449256d60d8116afcb844a8b65bbc009a8472bb766b",
+    "expected_source_raw_sha256": "0f8868d7d23e6b49f25f075a1974bdb7c1c72b88ae4c9c358a9d11d04e2f06b6",
+    "source_raw_sha256": "0f8868d7d23e6b49f25f075a1974bdb7c1c72b88ae4c9c358a9d11d04e2f06b6",
+    "source_bound": true,
+    "exact_EFT_G7_input_nonidentifiability_proved": true,
+    "mathematical_EFT_G7_closed": false,
+    "EFT_release_G7_verified": false,
+    "authoritative_renormalizable_G7_closed": false,
+    "positive_G7_certified": false,
+    "negative_G7_no_go_certified": false,
+    "downstream_integration_completed": true,
+    "restriction_map_noninjective": true,
+    "absolute_scale_unidentified": true,
+    "release_blockers": [
+      "ELECTROWEAK_AND_INTERMEDIATE_REPRESENTATION_PROVENANCE_REQUIRED",
+      "ABSOLUTE_SCALE_AND_WILSON_MATCHING_REQUIRED",
+      "COMPLETE_COMPONENT_THRESHOLD_MATCHING_REQUIRED",
+      "COMPLETE_GAUGE_YUKAWA_SCALAR_SOFT_EFT_TWO_LOOP_SYSTEM_REQUIRED",
+      "SECOND_INDEPENDENT_IMPLEMENTATION_REQUIRED",
+      "AUTHORITATIVE_G1_THROUGH_G6_REQUIRED"
+    ],
+    "positive_closure_requirements": [
+      "per-state SU(2)_L x U(1)_Y and SO(10)-to-intermediate-to-SM provenance",
+      "physical pole masses, absolute scale, Wilson matching, and threshold uncertainties",
+      "complete component thresholds in a declared renormalization scheme",
+      "complete gauge/Yukawa/scalar/soft/EFT beta and anomalous-dimension system",
+      "agreement of two independent implementations within declared tolerances"
+    ],
+    "checks": {
+      "artifact_present": true,
+      "status_exact": true,
+      "core_sha256_exact": true,
+      "raw_sha256_exact": true,
+      "source_raw_sha256_exact": true,
+      "contract_exact": true,
+      "all_embedded_checks_pass": true,
+      "restriction_map_counterexample_exact": true,
+      "absolute_scale_counterexample_exact": true,
+      "reduced_RGE_scope_fail_closed": true,
+      "negative_classification_exact": true,
+      "integration_schema_exact": true,
+      "positive_requirements_and_release_blockers_retained": true
+    }
+  },
+  "current_tree_unit_tests_discovered": 997,
   "n_gates": 11,
   "n_failed_gates": 0,
   "failed_gates": [],
-  "n_blocked_gates": 2,
+  "n_blocked_gates": 3,
   "blocked_gates": [
     "authoritative_model_contract",
-    "full_scalar_potential_vacuum_and_spectrum"
+    "full_scalar_potential_vacuum_and_spectrum",
+    "two_loop_RGE_unification_and_thresholds"
   ],
   "mandatory_nonpass_gates": [
     "authoritative_model_contract",
@@ -748,14 +800,29 @@
     },
     {
       "name": "two_loop_RGE_unification_and_thresholds",
-      "state": "CONDITIONAL",
-      "summary": "A diagnostic one-loop Pati-Salam/2HDM chain with the -3 lepton Clebsch is integrated. Published SO(10)+210 two-loop tensor contractions, running VEVs, and component thresholds remain open.",
+      "state": "BLOCKED",
+      "summary": "The exact EFT G7 audit proves that the frozen G6 residual spectrum does not identify electroweak threshold representations or the absolute matching scale. Published SO(10)+210 two-loop tensors, running VEVs, and component thresholds also remain open.",
       "evidence": {
         "piecewise_chain_integrated": true,
         "clebsch_matching": true,
         "published_210_tensor_contractions": false,
         "two_loop_so10_complete": false,
-        "component_threshold_matching_complete": false
+        "component_threshold_matching_complete": false,
+        "exact_EFT_G7_input_nonidentifiability_proved": true,
+        "threshold_restriction_map_noninjective": true,
+        "absolute_matching_scale_unidentified": true,
+        "mathematical_G7_closed": false,
+        "positive_G7_certified": false,
+        "negative_G7_no_go_certified": false,
+        "release_G7_verified": false,
+        "authoritative_renormalizable_G7_closed": false,
+        "positive_closure_requirements": [
+          "per-state SU(2)_L x U(1)_Y and SO(10)-to-intermediate-to-SM provenance",
+          "physical pole masses, absolute scale, Wilson matching, and threshold uncertainties",
+          "complete component thresholds in a declared renormalization scheme",
+          "complete gauge/Yukawa/scalar/soft/EFT beta and anomalous-dimension system",
+          "agreement of two independent implementations within declared tolerances"
+        ]
       },
       "kill_condition": "Every physically allowed threshold spectrum becomes nonperturbative, fails unification, destabilizes the vacuum, or destroys the flavour fit.",
       "green_condition": "Reference-validated two-loop beta functions and component matching yield a perturbative, unified, vacuum-consistent common-scale solution.",
@@ -839,7 +906,7 @@
         "unit_test_attestation_present": false,
         "unit_tests_passed": false,
         "tests_discovered": null,
-        "current_tree_tests_discovered": 995,
+        "current_tree_tests_discovered": 997,
         "test_count_matches_current_tree": false,
         "attested_commit": null,
         "current_commit": "",

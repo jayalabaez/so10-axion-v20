@@ -72,6 +72,9 @@ EFT_G6_SPECTRUM_CORE_SHA256 = (
 EFT_G6_MATHEMATICAL_GATE_CORE_SHA256 = (
     "e34b791478bf9cb00f951819cbfec45a99d51be776889d8a4e13cf1717eee738"
 )
+EFT_G7_THRESHOLD_NONIDENTIFIABILITY_CORE_SHA256 = (
+    "303b4fa923b0475b8abe273836baea89671c2825da7756cbb79430a6400f4511"
+)
 RENORMALIZABLE_G1_COMPONENT_TENSOR_CORE_SHA256 = (
     "32bed88b5fad0fe6e51cf19c3b3e120d53362150cfc1db6eafd8c897e24223b7"
 )
@@ -142,6 +145,7 @@ READ_ONLY_FROZEN_REPORT_SOURCES = (
     "final_g5_eft_mathematical_gate_v20.py",
     "exact_eft_physical_scalar_spectrum_v20.py",
     "final_g6_eft_mathematical_gate_v20.py",
+    "exact_eft_g7_threshold_nonidentifiability_v20.py",
     "exact_gauged_u1x_g1_component_tensor_closure_v20.py",
     "exact_gauged_u1x_g2_mathematical_closure_v20.py",
 )
@@ -335,6 +339,20 @@ EFT_G6_RAW_PINS = {
         "288c53bce177ac687cbf6ceee3c6d74808a1dde2e2b39e0ac5728ab577db5fba"
     ),
 }
+EFT_G7_NONIDENTIFIABILITY_RAW_PINS = {
+    "exact_eft_g7_threshold_nonidentifiability_v20.py": (
+        "0f8868d7d23e6b49f25f075a1974bdb7c1c72b88ae4c9c358a9d11d04e2f06b6"
+    ),
+    "test_exact_eft_g7_threshold_nonidentifiability_v20.py": (
+        "c99f0b60cbdba11b32039c6a898ceeceb619460d8909c2dcc88b3df4e5148587"
+    ),
+    "EXACT_EFT_G7_THRESHOLD_NONIDENTIFIABILITY_V20.json": (
+        "d59146ed577680f3a1dfd449256d60d8116afcb844a8b65bbc009a8472bb766b"
+    ),
+    "EXACT_EFT_G7_THRESHOLD_NONIDENTIFIABILITY_V20.md": (
+        "85a0a40924debb203b87488b4625a0da38d02ba7eb6c3ff741ae0f90a3e0bbac"
+    ),
+}
 RENORMALIZABLE_G1_COMPONENT_TENSOR_RAW_PINS = {
     "exact_gauged_u1x_g1_component_tensor_closure_v20.py": (
         "ca2b92198cbb7cbe6c7051b9c5952bc4af1462ba33db02eaa126533213b1e87f"
@@ -388,6 +406,8 @@ RAW_INTEGRATION_PATHS = (
     GLOBAL_PHI_CLASSIFICATION_RAW_PINS
 ) + tuple(EFT_G3_RAW_PINS) + tuple(EFT_G4_G5_RAW_PINS) + tuple(
     EFT_G6_RAW_PINS
+) + tuple(
+    EFT_G7_NONIDENTIFIABILITY_RAW_PINS
 ) + tuple(
     RENORMALIZABLE_G1_COMPONENT_TENSOR_RAW_PINS
 ) + tuple(
@@ -471,6 +491,8 @@ CHECKSUM_REQUIRED_PATHS = (
 ) + tuple(EFT_G3_RAW_PINS) + tuple(
     EFT_G4_G5_RAW_PINS
 ) + tuple(EFT_G6_RAW_PINS) + tuple(
+    EFT_G7_NONIDENTIFIABILITY_RAW_PINS
+) + tuple(
     RENORMALIZABLE_G1_COMPONENT_TENSOR_RAW_PINS
 ) + tuple(
     RENORMALIZABLE_G2_MATHEMATICAL_RAW_PINS
@@ -521,6 +543,8 @@ def _role(relative: str) -> str:
         return "byte-pinned dimension-six EFT mathematical G4/G5 gate bundle"
     if relative in EFT_G6_RAW_PINS:
         return "byte-pinned exact EFT scalar spectrum and mathematical G6 gate bundle"
+    if relative in EFT_G7_NONIDENTIFIABILITY_RAW_PINS:
+        return "byte-pinned exact EFT G7 threshold non-identifiability obstruction bundle"
     if relative in RENORMALIZABLE_G1_COMPONENT_TENSOR_RAW_PINS:
         return "byte-pinned complete renormalizable mathematical G1 component-tensor bundle"
     if relative in RENORMALIZABLE_G2_MATHEMATICAL_RAW_PINS:
@@ -574,6 +598,12 @@ def _require_source_pins() -> None:
         observed = _sha256(_raw_payload(ROOT / relative))
         if observed != expected:
             raise ArithmeticError(f"raw EFT G6 bundle member drifted: {relative}")
+    for relative, expected in EFT_G7_NONIDENTIFIABILITY_RAW_PINS.items():
+        observed = _sha256(_raw_payload(ROOT / relative))
+        if observed != expected:
+            raise ArithmeticError(
+                f"raw EFT G7 non-identifiability bundle member drifted: {relative}"
+            )
     for relative, expected in RENORMALIZABLE_G1_COMPONENT_TENSOR_RAW_PINS.items():
         observed = _sha256(_raw_payload(ROOT / relative))
         if observed != expected:
@@ -1132,6 +1162,107 @@ def _require_eft_g6_bundle() -> dict[str, Any]:
     }
 
 
+def _require_eft_g7_nonidentifiability_bundle() -> dict[str, Any]:
+    if len(EFT_G7_NONIDENTIFIABILITY_RAW_PINS) != 4:
+        raise ArithmeticError(
+            "the EFT G7 non-identifiability raw bundle must contain exactly 4 files"
+        )
+    source_name = "exact_eft_g7_threshold_nonidentifiability_v20.py"
+    report = json.loads(
+        (
+            ROOT / "EXACT_EFT_G7_THRESHOLD_NONIDENTIFIABILITY_V20.json"
+        ).read_text(encoding="utf-8")
+    )
+    collision = report.get("threshold_restriction_counterexample", {})
+    scale = report.get("absolute_scale_counterexample", {})
+    classification = report.get("classification", {})
+    integration = report.get("integration", {})
+    reduced = report.get("reduced_RGE_model_scope", {})
+    checks = {
+        "source_and_report_core_exact": (
+            _source_string_constant(source_name, "EXPECTED_CORE_SHA256")
+            == EFT_G7_THRESHOLD_NONIDENTIFIABILITY_CORE_SHA256
+            and report.get("core_sha256")
+            == EFT_G7_THRESHOLD_NONIDENTIFIABILITY_CORE_SHA256
+        ),
+        "status_and_checks_exact": (
+            report.get("status")
+            == "EFT_G7_INPUT_NONIDENTIFIABILITY_PROVED__G7_OPEN"
+            and report.get("n_failed") == 0
+            and report.get("failures") == []
+            and bool(report.get("checks"))
+            and all(value is True for value in report["checks"].values())
+        ),
+        "electroweak_restriction_collision_exact": (
+            collision.get("same_SU3C_x_U1em_restriction") is True
+            and collision.get("same_frozen_G6_masses") is True
+            and collision.get("restriction_map_noninjective") is True
+            and collision.get("one_loop_coefficients_differ") is True
+            and collision.get("completion_A", {}).get(
+                "complex_scalar_one_loop_delta_b2"
+            )
+            == "0"
+            and collision.get("completion_A", {}).get(
+                "complex_scalar_one_loop_delta_bY"
+            )
+            == "1/3"
+            and collision.get("completion_B", {}).get(
+                "complex_scalar_one_loop_delta_b2"
+            )
+            == "1/6"
+            and collision.get("completion_B", {}).get(
+                "complex_scalar_one_loop_delta_bY"
+            )
+            == "1/6"
+        ),
+        "absolute_scale_collision_exact": (
+            scale.get("same_normalized_G6_spectrum") is True
+            and scale.get("threshold_log_shift") == "ln(2)"
+            and scale.get("absolute_scale_unidentified") is True
+        ),
+        "reduced_RGE_scope_incomplete_exact": (
+            reduced.get("full_210_quartic_basis_present") is False
+            and reduced.get("lambda4_CGC_present") is False
+            and reduced.get("dimension6_O6_lock_present") is False
+            and reduced.get("two_loop_SO10_complete") is False
+            and reduced.get("piecewise_component_threshold_matching_complete")
+            is False
+        ),
+        "claim_boundary_remains_fail_closed": (
+            classification.get("exact_EFT_G7_input_nonidentifiability_proved")
+            is True
+            and classification.get("mathematical_EFT_G7_closed") is False
+            and classification.get("EFT_release_G7_verified") is False
+            and classification.get("authoritative_renormalizable_G7_closed")
+            is False
+            and classification.get("positive_G7_certified") is False
+            and classification.get("negative_G7_no_go_certified") is False
+        ),
+        "central_integration_complete_exact": (
+            set(integration)
+            == {
+                "ledger_consumes_obstruction",
+                "roadmap_consumes_obstruction",
+                "validation_matrix_consumes_obstruction",
+                "release_orchestrators_and_workflows_consume_obstruction",
+            }
+            and all(value is True for value in integration.values())
+            and "G7_NONIDENTIFIABILITY_DOWNSTREAM_INTEGRATION_REQUIRED"
+            not in report.get("release_blockers", ())
+        ),
+    }
+    failed = [name for name, passed in checks.items() if not passed]
+    if failed:
+        raise ArithmeticError(
+            f"the frozen EFT G7 non-identifiability logical bundle drifted: {failed}"
+        )
+    return {
+        "raw_file_count": len(EFT_G7_NONIDENTIFIABILITY_RAW_PINS),
+        "checks": checks,
+        "all_checks_pass": True,
+    }
+
+
 def _require_renormalizable_g1_component_tensor_bundle() -> dict[str, Any]:
     if len(RENORMALIZABLE_G1_COMPONENT_TENSOR_RAW_PINS) != 4:
         raise ArithmeticError(
@@ -1497,8 +1628,8 @@ def _require_workflow_contract() -> dict[str, int]:
         * len(READ_ONLY_FROZEN_DEPENDENCY_ORCHESTRATORS)
     )
     if (
-        len(READ_ONLY_FROZEN_REPORT_SOURCES) != 20
-        or expected_read_only_commands != 60
+        len(READ_ONLY_FROZEN_REPORT_SOURCES) != 21
+        or expected_read_only_commands != 63
         or read_only_report_commands != expected_read_only_commands
     ):
         raise ArithmeticError(
@@ -1647,6 +1778,9 @@ def build_manifest() -> dict[str, Any]:
     eft_g3_bundle = _require_eft_g3_bundle()
     eft_g4_g5_bundle = _require_eft_g4_g5_bundle()
     eft_g6_bundle = _require_eft_g6_bundle()
+    eft_g7_nonidentifiability_bundle = (
+        _require_eft_g7_nonidentifiability_bundle()
+    )
     renormalizable_g1_component_tensor_bundle = (
         _require_renormalizable_g1_component_tensor_bundle()
     )
@@ -1705,6 +1839,9 @@ def build_manifest() -> dict[str, Any]:
             "EFT_G6_mathematical_gate_core_sha256": (
                 EFT_G6_MATHEMATICAL_GATE_CORE_SHA256
             ),
+            "EFT_G7_threshold_nonidentifiability_core_sha256": (
+                EFT_G7_THRESHOLD_NONIDENTIFIABILITY_CORE_SHA256
+            ),
             "renormalizable_G1_component_tensor_core_sha256": (
                 RENORMALIZABLE_G1_COMPONENT_TENSOR_CORE_SHA256
             ),
@@ -1726,6 +1863,9 @@ def build_manifest() -> dict[str, Any]:
         "EFT_G3_bundle": eft_g3_bundle,
         "EFT_G4_G5_bundle": eft_g4_g5_bundle,
         "EFT_G6_bundle": eft_g6_bundle,
+        "EFT_G7_nonidentifiability_bundle": (
+            eft_g7_nonidentifiability_bundle
+        ),
         "renormalizable_G1_component_tensor_bundle": (
             renormalizable_g1_component_tensor_bundle
         ),
@@ -1747,6 +1887,9 @@ def build_manifest() -> dict[str, Any]:
                 sorted(EFT_G4_G5_RAW_PINS.items())
             ),
             "EFT_G6_raw_sha256": dict(sorted(EFT_G6_RAW_PINS.items())),
+            "EFT_G7_nonidentifiability_raw_sha256": dict(
+                sorted(EFT_G7_NONIDENTIFIABILITY_RAW_PINS.items())
+            ),
             "renormalizable_G1_component_tensor_raw_sha256": dict(
                 sorted(RENORMALIZABLE_G1_COMPONENT_TENSOR_RAW_PINS.items())
             ),
@@ -1783,6 +1926,12 @@ def build_manifest() -> dict[str, Any]:
             "authoritative_renormalizable_G6_closed": False,
             "EFT_dimension6_tree_level_mathematical_G6_closed": True,
             "EFT_release_G6_verified": False,
+            "EFT_G7_input_nonidentifiability_proved": True,
+            "EFT_mathematical_G7_closed": False,
+            "EFT_release_G7_verified": False,
+            "authoritative_renormalizable_G7_closed": False,
+            "positive_G7_certified": False,
+            "negative_G7_no_go_certified": False,
             "G4_closed": False,
             "G3_closed": False,
         },

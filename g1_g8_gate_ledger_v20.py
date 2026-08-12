@@ -137,6 +137,22 @@ FINAL_G6_EFT_SPECTRUM_SOURCE_RAW_SHA256 = (
 FINAL_G6_EFT_SPECTRUM_JSON_RAW_SHA256 = (
     "797a90473c064a78ef313d56f1894d71114643a19ebd373e86fe8b2911bcf416"
 )
+EFT_G7_NONIDENTIFIABILITY_JSON = (
+    ROOT / "EXACT_EFT_G7_THRESHOLD_NONIDENTIFIABILITY_V20.json"
+)
+EFT_G7_NONIDENTIFIABILITY_SOURCE = (
+    ROOT / "exact_eft_g7_threshold_nonidentifiability_v20.py"
+)
+# Provisional pins are replaced once every integration flag is promoted.
+EFT_G7_NONIDENTIFIABILITY_CORE_SHA256 = (
+    "303b4fa923b0475b8abe273836baea89671c2825da7756cbb79430a6400f4511"
+)
+EFT_G7_NONIDENTIFIABILITY_RAW_SHA256 = (
+    "d59146ed577680f3a1dfd449256d60d8116afcb844a8b65bbc009a8472bb766b"
+)
+EFT_G7_NONIDENTIFIABILITY_SOURCE_RAW_SHA256 = (
+    "0f8868d7d23e6b49f25f075a1974bdb7c1c72b88ae4c9c358a9d11d04e2f06b6"
+)
 EFT_MODEL_CONTRACT_ID = (
     "gauged_u1x_phi17_v20_eft_o6_current_kernel_gamma_1_over_20"
 )
@@ -1190,6 +1206,138 @@ def _parallel_eft_g6_spectrum(
         "parallel_integration_completed": integration_criterion is True,
         "spectrum_summary": dict(spectrum) if source_bound else {},
         "release_blockers": list(report.get("release_blockers", [])) if source_bound else [],
+        "checks": checks,
+    }
+
+
+def _parallel_eft_g7_nonidentifiability(
+    report: dict[str, Any], *, raw_sha256: str = "", source_raw_sha256: str = ""
+) -> dict[str, Any]:
+    """Validate the exact EFT G7 input obstruction without promoting G7."""
+    classification = report.get("classification", {})
+    integration = report.get("integration", {})
+    counterexample = report.get("threshold_restriction_counterexample", {})
+    scale = report.get("absolute_scale_counterexample", {})
+    reduced = report.get("reduced_RGE_model_scope", {})
+    embedded_checks = report.get("checks", {})
+    expected_integration = {
+        "ledger_consumes_obstruction",
+        "roadmap_consumes_obstruction",
+        "validation_matrix_consumes_obstruction",
+        "release_orchestrators_and_workflows_consume_obstruction",
+    }
+    checks = {
+        "artifact_present": bool(report),
+        "status_exact": (
+            report.get("status")
+            == "EFT_G7_INPUT_NONIDENTIFIABILITY_PROVED__G7_OPEN"
+        ),
+        "core_sha256_exact": (
+            report.get("core_sha256") == EFT_G7_NONIDENTIFIABILITY_CORE_SHA256
+        ),
+        "raw_sha256_exact": raw_sha256 == EFT_G7_NONIDENTIFIABILITY_RAW_SHA256,
+        "source_raw_sha256_exact": (
+            source_raw_sha256 == EFT_G7_NONIDENTIFIABILITY_SOURCE_RAW_SHA256
+        ),
+        "contract_exact": report.get("model_contract_id") == EFT_MODEL_CONTRACT_ID,
+        "all_embedded_checks_pass": (
+            report.get("n_failed") == 0
+            and bool(embedded_checks)
+            and all(value is True for value in embedded_checks.values())
+        ),
+        "restriction_map_counterexample_exact": (
+            counterexample.get("restriction_map_noninjective") is True
+            and counterexample.get("same_SU3C_x_U1em_restriction") is True
+            and counterexample.get("same_frozen_G6_masses") is True
+            and counterexample.get("one_loop_coefficients_differ") is True
+            and counterexample.get("completion_A", {}).get(
+                "complex_scalar_one_loop_delta_b2"
+            )
+            == "0"
+            and counterexample.get("completion_A", {}).get(
+                "complex_scalar_one_loop_delta_bY"
+            )
+            == "1/3"
+            and counterexample.get("completion_B", {}).get(
+                "complex_scalar_one_loop_delta_b2"
+            )
+            == "1/6"
+            and counterexample.get("completion_B", {}).get(
+                "complex_scalar_one_loop_delta_bY"
+            )
+            == "1/6"
+        ),
+        "absolute_scale_counterexample_exact": (
+            scale.get("same_normalized_G6_spectrum") is True
+            and scale.get("absolute_scale_unidentified") is True
+            and scale.get("threshold_log_shift") == "ln(2)"
+        ),
+        "reduced_RGE_scope_fail_closed": (
+            reduced.get("full_210_quartic_basis_present") is False
+            and reduced.get("lambda4_CGC_present") is False
+            and reduced.get("dimension6_O6_lock_present") is False
+            and reduced.get("two_loop_SO10_complete") is False
+            and reduced.get("piecewise_component_threshold_matching_complete")
+            is False
+        ),
+        "negative_classification_exact": (
+            classification.get("exact_EFT_G7_input_nonidentifiability_proved")
+            is True
+            and classification.get("mathematical_EFT_G7_closed") is False
+            and classification.get("EFT_release_G7_verified") is False
+            and classification.get("authoritative_renormalizable_G7_closed")
+            is False
+            and classification.get("positive_G7_certified") is False
+            and classification.get("negative_G7_no_go_certified") is False
+        ),
+        "integration_schema_exact": set(integration) == expected_integration,
+        "positive_requirements_and_release_blockers_retained": (
+            len(report.get("positive_closure_requirements", [])) == 5
+            and bool(report.get("release_blockers", []))
+        ),
+    }
+    source_bound = all(checks.values())
+    integration_completed = bool(
+        set(integration) == expected_integration
+        and all(integration.get(name) is True for name in expected_integration)
+    )
+    return {
+        "namespace": "EFT_G7_INPUT_NONIDENTIFIABILITY",
+        "artifact": EFT_G7_NONIDENTIFIABILITY_JSON.name,
+        "source": EFT_G7_NONIDENTIFIABILITY_SOURCE.name,
+        "expected_core_sha256": EFT_G7_NONIDENTIFIABILITY_CORE_SHA256,
+        "core_sha256": report.get("core_sha256"),
+        "expected_raw_sha256": EFT_G7_NONIDENTIFIABILITY_RAW_SHA256,
+        "raw_sha256": raw_sha256,
+        "expected_source_raw_sha256": EFT_G7_NONIDENTIFIABILITY_SOURCE_RAW_SHA256,
+        "source_raw_sha256": source_raw_sha256,
+        "source_bound": source_bound,
+        "exact_EFT_G7_input_nonidentifiability_proved": bool(
+            source_bound
+            and classification.get("exact_EFT_G7_input_nonidentifiability_proved")
+            is True
+        ),
+        "mathematical_EFT_G7_closed": False,
+        "EFT_release_G7_verified": False,
+        "authoritative_renormalizable_G7_closed": False,
+        "positive_G7_certified": False,
+        "negative_G7_no_go_certified": False,
+        "downstream_integration_completed": integration_completed,
+        "restriction_map_noninjective": bool(
+            source_bound
+            and counterexample.get("restriction_map_noninjective") is True
+        ),
+        "absolute_scale_unidentified": bool(
+            source_bound and scale.get("absolute_scale_unidentified") is True
+        ),
+        "release_blockers": (
+            list(report.get("release_blockers", [])) if source_bound else []
+        ),
+        "positive_closure_requirements": (
+            list(report.get("positive_closure_requirements", []))
+            if source_bound
+            else []
+        ),
         "checks": checks,
     }
 
@@ -5014,7 +5162,9 @@ def _build_gates(
         ),
         "G7": (
             "Validated two-loop RGE and threshold matching",
-            ["await G6 and independently validate the full beta system"],
+            [
+                "supply independent UV threshold data that make the exact EFT restriction map injective, then validate the complete gauged-X two-loop beta system"
+            ],
         ),
         "G8": (
             "Proton-decay prediction and falsification",
@@ -5151,6 +5301,9 @@ def _build_report_from_inputs(
     final_g6_eft_mathematical_report: dict[str, Any] | None = None,
     final_g6_eft_mathematical_raw_sha256: str | None = None,
     final_g6_eft_gate_source_raw_sha256: str | None = None,
+    eft_g7_nonidentifiability_report: dict[str, Any] | None = None,
+    eft_g7_nonidentifiability_raw_sha256: str | None = None,
+    eft_g7_nonidentifiability_source_raw_sha256: str | None = None,
 ) -> dict[str, Any]:
     """Build a ledger from fresh reports, including repaired-contract states."""
     declared_contract_consistent = bool(x_report["contract_consistent"])
@@ -5363,6 +5516,26 @@ def _build_report_from_inputs(
         raw_sha256=final_g6_eft_mathematical_raw_sha256,
         gate_source_raw_sha256=final_g6_eft_gate_source_raw_sha256,
     )
+    g7_loaded_from_disk = eft_g7_nonidentifiability_report is None
+    if g7_loaded_from_disk:
+        eft_g7_nonidentifiability_report = _load_json_artifact(
+            EFT_G7_NONIDENTIFIABILITY_JSON
+        )
+    if eft_g7_nonidentifiability_raw_sha256 is None:
+        eft_g7_nonidentifiability_raw_sha256 = (
+            _raw_file_sha256(EFT_G7_NONIDENTIFIABILITY_JSON)
+            if g7_loaded_from_disk
+            else ""
+        )
+    if eft_g7_nonidentifiability_source_raw_sha256 is None:
+        eft_g7_nonidentifiability_source_raw_sha256 = _raw_file_sha256(
+            EFT_G7_NONIDENTIFIABILITY_SOURCE
+        )
+    parallel_eft_g7_nonidentifiability = _parallel_eft_g7_nonidentifiability(
+        eft_g7_nonidentifiability_report,
+        raw_sha256=eft_g7_nonidentifiability_raw_sha256,
+        source_raw_sha256=eft_g7_nonidentifiability_source_raw_sha256,
+    )
     g3_frontier = _gauged_u1x_g3_frontier(
         g3_sos_report,
         g3_pd_report,
@@ -5400,6 +5573,9 @@ def _build_report_from_inputs(
     )
     gates["G3"]["constructive_frontier_evidence"] = g3_frontier
     gates["G5"]["constructive_frontier_evidence"] = g3_frontier
+    gates["G7"]["certified_input_obstruction"] = (
+        parallel_eft_g7_nonidentifiability
+    )
 
     statuses = {name: row["status"] for name, row in gates.items()}
     closed = [name for name, status in statuses.items() if status == STATUS_CLOSED]
@@ -5506,13 +5682,52 @@ def _build_report_from_inputs(
             is False
             and parallel_eft_g6_spectrum["whole_model_validated"] is False
         ),
-        "parallel_EFT_G4_G5_G6_do_not_promote_authoritative_frontier": (
+        "parallel_EFT_G7_nonidentifiability_is_source_bound_and_G7_open": (
+            parallel_eft_g7_nonidentifiability["source_bound"] is True
+            and parallel_eft_g7_nonidentifiability[
+                "exact_EFT_G7_input_nonidentifiability_proved"
+            ]
+            is True
+            and parallel_eft_g7_nonidentifiability[
+                "restriction_map_noninjective"
+            ]
+            is True
+            and parallel_eft_g7_nonidentifiability[
+                "absolute_scale_unidentified"
+            ]
+            is True
+            and parallel_eft_g7_nonidentifiability[
+                "mathematical_EFT_G7_closed"
+            ]
+            is False
+            and parallel_eft_g7_nonidentifiability[
+                "EFT_release_G7_verified"
+            ]
+            is False
+            and parallel_eft_g7_nonidentifiability[
+                "authoritative_renormalizable_G7_closed"
+            ]
+            is False
+            and parallel_eft_g7_nonidentifiability["positive_G7_certified"]
+            is False
+            and parallel_eft_g7_nonidentifiability[
+                "negative_G7_no_go_certified"
+            ]
+            is False
+            and parallel_eft_g7_nonidentifiability[
+                "downstream_integration_completed"
+            ]
+            is True
+            and statuses["G7"] == STATUS_BLOCKED
+            and statuses["G8"] == STATUS_BLOCKED
+        ),
+        "parallel_EFT_G4_G5_G6_G7_do_not_promote_authoritative_frontier": (
             statuses == expected_statuses
             and (
                 contract_consistent
                 or all(
                     statuses[name] == STATUS_BLOCKED
-                    for name in ("G3", "G4", "G5", "G6")
+                    for name in ("G3", "G4", "G5", "G6", "G7", "G8")
                 )
             )
         ),
@@ -6100,6 +6315,7 @@ def _build_report_from_inputs(
     scientific_blockers = [
         "GAUGED_U1X_G3_G8_CLOSURE_REQUIRED",
         "G3_ARBITRARY_NON_PURE_DELTA_SIGMA_UNIFORM_COERCIVITY_OPEN",
+        "EFT_G7_THRESHOLD_RESTRICTION_AND_ABSOLUTE_SCALE_NONIDENTIFIABLE",
     ]
     if not g1_full_component_tensors_closed:
         scientific_blockers[0:0] = [
@@ -6186,7 +6402,16 @@ def _build_report_from_inputs(
             ),
         },
         {"wave": 4, "gates": ["G6"], "status": "BLOCKED_ON_G3_G4_G5"},
-        {"wave": 5, "gates": ["G7"], "status": "BLOCKED_ON_G6"},
+        {
+            "wave": 5,
+            "gates": ["G7"],
+            "status": "BLOCKED__EXACT_EFT_THRESHOLD_RESTRICTION_NONIDENTIFIABLE",
+            "deliverable": (
+                "Add independent UV matching information that removes the "
+                "certified kernel of the EFT threshold restriction map; no "
+                "positive G7 conclusion follows from the current observables."
+            ),
+        },
         {"wave": 6, "gates": ["G8"], "status": "BLOCKED_ON_G3_G6_G7"},
     ]
 
@@ -6301,6 +6526,18 @@ def _build_report_from_inputs(
         if parallel_eft_g6_spectrum["mathematical_G6_closed_for_EFT_model"]
         else " The parallel EFT G6 spectrum gate is missing or invalid."
     )
+    verdict += (
+        " The exact EFT G7 input audit proves that the restriction from "
+        "electroweak threshold representations to the frozen SU(3)_C x U(1)_em "
+        "G6 data is noninjective and that the absolute matching scale is "
+        "unidentified. This is an input obstruction, not a positive G7 result "
+        "or a no-go theorem: mathematical, release, and authoritative G7 all "
+        "remain false, and G8 remains dependent on G7."
+        if parallel_eft_g7_nonidentifiability[
+            "exact_EFT_G7_input_nonidentifiability_proved"
+        ]
+        else " The EFT G7 nonidentifiability certificate is missing or invalid."
+    )
 
     return {
         "status": status,
@@ -6396,6 +6633,9 @@ def _build_report_from_inputs(
             "parallel_EFT_G6_mathematical_gate": (
                 final_g6_eft_mathematical_report
             ),
+            "parallel_EFT_G7_input_nonidentifiability": (
+                eft_g7_nonidentifiability_report
+            ),
         },
         "renormalizable_G1_component_tensor_closure": (
             g1_component_tensor_closure
@@ -6407,6 +6647,9 @@ def _build_report_from_inputs(
         "parallel_EFT_G4_mathematical": parallel_eft_g4_mathematical,
         "parallel_EFT_G5_mathematical": parallel_eft_g5_mathematical,
         "parallel_EFT_G6_spectrum": parallel_eft_g6_spectrum,
+        "parallel_EFT_G7_nonidentifiability": (
+            parallel_eft_g7_nonidentifiability
+        ),
         "historical_option_c_subtheorems": historical,
         "dependencies": DEPENDENCIES,
         "gates": gates,
@@ -6556,7 +6799,7 @@ def write_markdown(report: dict[str, Any]) -> str:
         "",
         "`MODEL_CONTRACT -> G1 -> G2 -> G3/G4/G5 -> G6 -> G7 -> G8`",
         "",
-        "## Parallel EFT G3/G4/G5 classifications",
+        "## Parallel EFT G3-G7 classifications",
         "",
         (
             "- Dimension-six EFT mathematical G3: "
@@ -6582,7 +6825,16 @@ def write_markdown(report: dict[str, Any]) -> str:
             "- EFT release G5 verified: "
             f"**{report['parallel_EFT_G5_mathematical']['release_G5_verified_for_EFT_model']}**"
         ),
-        "- The authoritative renormalizable G3, G4, and G5 gates are unchanged.",
+        (
+            "- Dimension-six EFT mathematical G6: "
+            f"**{report['parallel_EFT_G6_spectrum']['mathematical_G6_closed_for_EFT_model']}**"
+        ),
+        (
+            "- Exact EFT G7 input nonidentifiability: "
+            f"**{report['parallel_EFT_G7_nonidentifiability']['exact_EFT_G7_input_nonidentifiability_proved']}**"
+        ),
+        "- Mathematical/release/authoritative G7: `False`/`False`/`False`.",
+        "- The authoritative renormalizable G3-G8 frontier is unchanged.",
         "",
         "## Authoritative gates",
         "",

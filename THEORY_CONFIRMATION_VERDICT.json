@@ -4,6 +4,7 @@
     "empirical_realization": false,
     "full_approval_blockers": [
       "AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED",
+      "EFT_G7_THRESHOLD_RESTRICTION_AND_ABSOLUTE_SCALE_NONIDENTIFIABLE",
       "G1_NOT_CLOSED",
       "G2_NOT_CLOSED",
       "G3_ARBITRARY_NON_PURE_DELTA_SIGMA_UNIFORM_COERCIVITY_OPEN",
@@ -42,7 +43,7 @@
     "commit_sha": "ba2c66364cd68d733a2dff51416f28d92100eff5",
     "conclusion": "success",
     "current_tree_covered": false,
-    "current_tree_test_count": 995,
+    "current_tree_test_count": 997,
     "note": "This run covers only its named historical commit and cannot approve the current gauged-U(1)_X model.",
     "run_id": 30790747879,
     "run_url": "https://github.com/jayalabaez/so10-axion-v20/actions/runs/30790747879",
@@ -54,13 +55,13 @@
   "classification": "MODEL_CONTRACT_INCONSISTENT__AUTHORITATIVE_GATES_REOPENED",
   "conditional_benchmark_approved": false,
   "correct_public_claim": "The repository has a statically consistent tool-native SARAH input for the authoritative gauged-U(1)_X scalar contract, but lacks a v2 manifest/log-bound external SARAH execution attestation. G1-G8 approval is withheld. Historical Option-C calculations are scoped subtheorems and neither validate nor exclude the gauged model.",
-  "current_tree_unit_tests": 995,
+  "current_tree_unit_tests": 997,
   "decision": "WITHHOLD_APPROVAL",
   "empirical_realization_approved": false,
   "failures": [],
   "full_phenomenology_approved": false,
   "full_theory_validated": false,
-  "generated_utc": "2026-08-12T03:47:44.288705+00:00",
+  "generated_utc": "2026-08-12T04:27:24.711022+00:00",
   "historical_option_c_subtheorems": {
     "G1": {
       "base_tensor_families": 18,
@@ -110,6 +111,7 @@
   "overall_state": "BLOCKED",
   "scientific_blockers": [
     "AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED",
+    "EFT_G7_THRESHOLD_RESTRICTION_AND_ABSOLUTE_SCALE_NONIDENTIFIABLE",
     "G1_NOT_CLOSED",
     "G2_NOT_CLOSED",
     "G3_ARBITRARY_NON_PURE_DELTA_SIGMA_UNIFORM_COERCIVITY_OPEN",
@@ -156,7 +158,7 @@
     "g1_g8": {
       "contract_consistent": false,
       "model_contract_id": "gauged_u1x_phi17_v20",
-      "n_checks": 50,
+      "n_checks": 51,
       "n_failed": 0,
       "overall_state": "BLOCKED",
       "status": "G1_G8_LEDGER_AUDIT_COMPLETE__MODEL_CONTRACT_BLOCKED__MATHEMATICAL_G1_COMPONENT_RING_AND_G2_COMPONENT_POTENTIAL_CLOSED"

@@ -44,6 +44,9 @@ RENORMALIZABLE_G2_MATHEMATICAL_SOURCE = (
     "exact_gauged_u1x_g2_mathematical_closure_v20.py"
 )
 FINAL_G6_EFT_GATE_SOURCE = "final_g6_eft_mathematical_gate_v20.py"
+EFT_G7_NONIDENTIFIABILITY_SOURCE = (
+    "exact_eft_g7_threshold_nonidentifiability_v20.py"
+)
 
 ARTIFACTS = {
     "engine": "so10_axion_v20_verdict.json",
@@ -118,6 +121,9 @@ ARTIFACTS = {
     "final_g4_eft": "FINAL_G4_EFT_MATHEMATICAL_GATE_V20.json",
     "final_g5_eft": "FINAL_G5_EFT_MATHEMATICAL_GATE_V20.json",
     "final_g6_eft": "FINAL_G6_EFT_MATHEMATICAL_GATE_V20.json",
+    "eft_g7_nonidentifiability": (
+        "EXACT_EFT_G7_THRESHOLD_NONIDENTIFIABILITY_V20.json"
+    ),
     "authoritative": "AUTHORITATIVE_FULL_MODEL_GATE_V20.json",
 }
 
@@ -2470,7 +2476,10 @@ def _vacuum_gate(
     )
 
 
-def _rge_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
+def _rge_gate(
+    reports: dict[str, dict[str, Any]],
+    eft_g7_nonidentifiability: dict[str, Any] | None = None,
+) -> dict[str, Any]:
     rge = reports.get("rge", {})
     flags = rge.get("flag", {})
     chain = bool(flags.get("piecewise_yukawa_chain_integrated"))
@@ -2480,7 +2489,30 @@ def _rge_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
     component_matching = bool(
         flags.get("piecewise_component_threshold_matching_complete")
     )
-    if full_two_loop and tensors and component_matching:
+    if eft_g7_nonidentifiability is None:
+        eft_g7_nonidentifiability = {}
+    exact_input_obstruction = bool(
+        eft_g7_nonidentifiability.get("source_bound") is True
+        and eft_g7_nonidentifiability.get(
+            "exact_EFT_G7_input_nonidentifiability_proved"
+        )
+        is True
+        and eft_g7_nonidentifiability.get("restriction_map_noninjective") is True
+        and eft_g7_nonidentifiability.get("absolute_scale_unidentified") is True
+        and eft_g7_nonidentifiability.get("mathematical_EFT_G7_closed") is False
+        and eft_g7_nonidentifiability.get("positive_G7_certified") is False
+        and eft_g7_nonidentifiability.get("negative_G7_no_go_certified") is False
+        and eft_g7_nonidentifiability.get("EFT_release_G7_verified") is False
+        and eft_g7_nonidentifiability.get(
+            "authoritative_renormalizable_G7_closed"
+        )
+        is False
+        and eft_g7_nonidentifiability.get("downstream_integration_completed")
+        is True
+    )
+    if exact_input_obstruction:
+        state = "BLOCKED"
+    elif full_two_loop and tensors and component_matching:
         state = "PASS"
     elif chain and clebsch:
         state = "CONDITIONAL"
@@ -2490,7 +2522,12 @@ def _rge_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
         "two_loop_RGE_unification_and_thresholds",
         state,
         (
-            "A diagnostic one-loop Pati-Salam/2HDM chain with the -3 lepton "
+            "The exact EFT G7 audit proves that the frozen G6 residual spectrum "
+            "does not identify electroweak threshold representations or the "
+            "absolute matching scale. Published SO(10)+210 two-loop tensors, "
+            "running VEVs, and component thresholds also remain open."
+            if exact_input_obstruction
+            else "A diagnostic one-loop Pati-Salam/2HDM chain with the -3 lepton "
             "Clebsch is integrated. Published SO(10)+210 two-loop tensor "
             "contractions, running VEVs, and component thresholds remain open."
         ),
@@ -2500,6 +2537,23 @@ def _rge_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
             "published_210_tensor_contractions": tensors,
             "two_loop_so10_complete": full_two_loop,
             "component_threshold_matching_complete": component_matching,
+            "exact_EFT_G7_input_nonidentifiability_proved": (
+                exact_input_obstruction
+            ),
+            "threshold_restriction_map_noninjective": (
+                eft_g7_nonidentifiability.get("restriction_map_noninjective")
+            ),
+            "absolute_matching_scale_unidentified": (
+                eft_g7_nonidentifiability.get("absolute_scale_unidentified")
+            ),
+            "mathematical_G7_closed": False,
+            "positive_G7_certified": False,
+            "negative_G7_no_go_certified": False,
+            "release_G7_verified": False,
+            "authoritative_renormalizable_G7_closed": False,
+            "positive_closure_requirements": eft_g7_nonidentifiability.get(
+                "positive_closure_requirements", []
+            ),
         },
         (
             "Every physically allowed threshold spectrum becomes nonperturbative, "
@@ -2872,6 +2926,15 @@ def build_report(root: Path = ROOT) -> dict[str, Any]:
             root / FINAL_G6_EFT_GATE_SOURCE
         ),
     )
+    eft_g7_nonidentifiability = gate_ledger._parallel_eft_g7_nonidentifiability(
+        reports.get("eft_g7_nonidentifiability", {}),
+        raw_sha256=gate_ledger._raw_file_sha256(
+            root / ARTIFACTS["eft_g7_nonidentifiability"]
+        ),
+        source_raw_sha256=gate_ledger._raw_file_sha256(
+            root / EFT_G7_NONIDENTIFIABILITY_SOURCE
+        ),
+    )
     current_test_count = unittest.defaultTestLoader.discover(
         str(root)
     ).countTestCases()
@@ -2888,7 +2951,7 @@ def build_report(root: Path = ROOT) -> dict[str, Any]:
             parallel_eft_g5_mathematical,
             parallel_eft_g6_spectrum,
         ),
-        _rge_gate(reports),
+        _rge_gate(reports, eft_g7_nonidentifiability),
         _flavour_gate(reports),
         _portal_gate(reports),
         _proton_gate(reports, root),
@@ -3017,6 +3080,7 @@ def build_report(root: Path = ROOT) -> dict[str, Any]:
         "parallel_EFT_G4_mathematical": parallel_eft_g4_mathematical,
         "parallel_EFT_G5_mathematical": parallel_eft_g5_mathematical,
         "parallel_EFT_G6_spectrum": parallel_eft_g6_spectrum,
+        "parallel_EFT_G7_nonidentifiability": eft_g7_nonidentifiability,
         "current_tree_unit_tests_discovered": current_test_count,
         "n_gates": len(gates),
         "n_failed_gates": len(failed),
@@ -3105,7 +3169,12 @@ def write_markdown(report: dict[str, Any]) -> str:
             "- Parallel EFT release G6 verified: "
             f"**{report['parallel_EFT_G6_spectrum']['release_G6_verified_for_EFT_model']}**"
         ),
-        "- Original renormalizable G3, G4, G5, and G6 remain authoritative and unchanged.",
+        (
+            "- Exact EFT G7 input nonidentifiability: "
+            f"**{report['parallel_EFT_G7_nonidentifiability']['exact_EFT_G7_input_nonidentifiability_proved']}**"
+        ),
+        "- Mathematical/release/authoritative G7: **False**/**False**/**False**.",
+        "- Original renormalizable G3-G8 remain authoritative and unchanged.",
         f"- Gates: {report['n_gates']}",
         f"- Failed gates: {report['n_failed_gates']}",
         "",

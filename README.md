@@ -187,12 +187,21 @@ discharged.  EFT release verification remains blocked on cutoff/Wilson
 matching, radiative stability, external execution of the extended contract,
 the separate upstream G1/G2 release prerequisites, and (for G4) release-level
 G3 approval.  G6 release additionally requires loop/pole masses and a physical
-threshold-uncertainty budget.  Run the read-only chain with
+threshold-uncertainty budget.  The exact G7 obstruction theorem makes the
+next boundary explicit: two distinct electroweak completions of the same
+frozen G6 residual spectrum give different one-loop threshold coefficients,
+and the normalized mass unit has no absolute matching scale.  Therefore the
+component thresholds, and hence the requested two-loop running, are not
+identified by the current EFT evidence.  Mathematical, release, and
+authoritative G7 all remain false; this is a proof of input
+non-identifiability, neither a positive G7 closure nor a full-model no-go.
+Run the read-only chain with
 `python final_g3_eft_acceptance_gate_v20.py`, then
 `python final_g4_eft_mathematical_gate_v20.py`, then
 `python final_g5_eft_mathematical_gate_v20.py`, then
 `python exact_eft_physical_scalar_spectrum_v20.py`, then
-`python final_g6_eft_mathematical_gate_v20.py`.  The legacy
+`python final_g6_eft_mathematical_gate_v20.py`, then
+`python exact_eft_g7_threshold_nonidentifiability_v20.py`.  The legacy
 `final_g3_acceptance_gate_v20.py` remains the fail-closed gate for the
 renormalizable model.
 
