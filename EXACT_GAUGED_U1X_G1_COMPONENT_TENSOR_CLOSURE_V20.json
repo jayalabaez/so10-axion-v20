@@ -1,0 +1,512 @@
+{
+  "canonical_direction_map_sha256": "657b739208f46ece75bfed977aa30ce1baa25f7aeed861b81007e81c7551684d",
+  "certificate_reports": {
+    "direct_phi_h_sigmabar_tensor_v20": {
+      "n_checks": 13,
+      "n_failed": 0,
+      "status": "DIRECT_NONSUSY_PHI_H_SIGMABAR_TENSOR_MAP_EXECUTED"
+    },
+    "exact_126bar_self_quartic_basis_v20": {
+      "n_checks": 17,
+      "n_failed": 0,
+      "status": "EXACT_126BAR_SELF_QUARTIC_BASIS_CLOSED__DELTA_R_SELF_SECTOR_NO_GO"
+    },
+    "exact_210_self_invariant_basis_v20": {
+      "n_checks": 15,
+      "n_failed": 0,
+      "status": "EXACT_REAL_210_SELF_INVARIANT_BASIS_COMPLETE"
+    },
+    "exact_h10_self_quartic_family_v20": {
+      "n_checks": 14,
+      "n_failed": 0,
+      "status": "EXACT_H10_TWO_SELF_QUARTICS_AND_BFB_CONE_CLOSED__FULL_G1_OPEN"
+    },
+    "exact_hsigma_hermitian_family_closure_v20": {
+      "n_checks": 15,
+      "n_failed": 0,
+      "status": "EXACT_HSIGMA_HERMITIAN_BILINEAR_FAMILY_COMPLETE__OTHER_HSIGMA_SECTORS_OPEN"
+    },
+    "exact_p_delta_second_stage_hessian_v20": {
+      "n_checks": 14,
+      "n_failed": 0,
+      "status": "FIXED_P_DELTA_R_PHYSICAL_CHIRALITY_HESSIAN_PASS"
+    },
+    "exact_phi2_126dag126_six_contractions_v20": {
+      "n_checks": 8,
+      "n_failed": 0,
+      "status": "EXACT_PHI2_126DAG126_SIX_CONTRACTION_BASIS_COMPLETE"
+    },
+    "exact_phi2_h_126dag_210_1050_channels_v20": {
+      "n_checks": 18,
+      "n_failed": 0,
+      "status": "EXACT_PHI2_H_126DAG_210_1050_CHANNELS_COMPLETE"
+    },
+    "exact_phi2_hdagh_channel_family_v20": {
+      "n_checks": 13,
+      "n_failed": 0,
+      "status": "EXACT_PHI2_HDAGH_1_45_54_FAMILY_CLOSED__FULL_G1_OPEN"
+    },
+    "exact_phi_hdag_sigmabar_cubic_audit_v20": {
+      "n_checks": 20,
+      "n_failed": 0,
+      "status": "DECLARED_SYMMETRY_CUBIC_REGISTERED__COMPLETE_HESSIAN_REAUDIT_REQUIRED"
+    },
+    "exact_phisigma_126bar_minus_projectors_v20": {
+      "n_checks": 10,
+      "n_failed": 0,
+      "status": "EXACT_PHISIGMA_126BAR_MINUS_PROJECTORS_PASS"
+    },
+    "exact_phisigma_all_component_projectors_v20": {
+      "n_failed": 0,
+      "required_callables": [
+        "pure_invariant",
+        "evaluate_full_sigma_operator",
+        "all_component_coefficients"
+      ],
+      "status": "SOURCE_BOUND_PURE_ALL_COMPONENT_API"
+    },
+    "exact_unique_hsigma_chiral_quartics_v20": {
+      "n_checks": 12,
+      "n_failed": 0,
+      "status": "EXACT_UNIQUE_HSIGMA_CHIRAL_QUARTICS_COMPLETE"
+    },
+    "live_g1_tensor_closure_ledger_v20": {
+      "n_checks": 14,
+      "n_failed": 0,
+      "status": "HISTORICAL_OPTION_C_NO_X_G1_TENSOR_RING_CLOSED"
+    }
+  },
+  "checks": {
+    "28_Hermitian_conjugacy_orbits": true,
+    "37_self_plus_7_paired_directions": true,
+    "44_independent_invariant_directions": true,
+    "51_unique_real_parameter_ids": true,
+    "all_18_tensor_families_present": true,
+    "all_exact_family_certificates_pass": true,
+    "arbitrary_component_evaluator_covers_ordered_44_at_two_states": true,
+    "arbitrary_component_values_are_finite": true,
+    "authoritative_contract_exact": true,
+    "canonical_44_row_map_hash_exact": true,
+    "census_executes": true,
+    "conjugate_parameter_convention_exact": true,
+    "degree_direction_split_exact": true,
+    "every_direction_exact_X_neutral": true,
+    "every_direction_has_normalization_and_source": true,
+    "every_orbit_D5_multiplicity_equals_basis_length": true,
+    "external_SARAH_execution_not_fabricated": true,
+    "lambda_re_im_parameter_split_exact": true,
+    "no_new_physics_or_fitted_Clebsch_added": true,
+    "one_derivative_owner_per_tensor_family": true,
+    "scalar_contract_executes": true
+  },
+  "classification": {
+    "authoritative_G1_promoted_closed": false,
+    "new_physics_required_for_G1": false,
+    "release_G1_verified": false,
+    "renormalizable_model_mutated": false,
+    "scoped_mathematical_G1_closed": true
+  },
+  "closure": {
+    "declared_symmetry_charge_multidegrees_degree_le_4_closed": true,
+    "explicit_component_tensor_subset_integration_closed": true,
+    "external_model_execution_contract_closed": false,
+    "full_renormalizable_G1_mathematical_ring_closed": true,
+    "gauged_u1x_44_direction_subcensus_closed": true,
+    "normalized_component_tensor_basis_all_44_directions_closed": true,
+    "so10_singlet_multiplicities_degree_le_4_closed": true
+  },
+  "core_sha256": "32bed88b5fad0fe6e51cf19c3b3e120d53362150cfc1db6eafd8c897e24223b7",
+  "counts": {
+    "Hermitian_conjugacy_orbits": 28,
+    "complex_paired_directions": 7,
+    "invariant_directions": 44,
+    "multidegrees": 34,
+    "real_field_dimension": 486,
+    "real_parameters": 51,
+    "self_conjugate_directions": 37,
+    "tensor_families": 18
+  },
+  "direction_ids": [
+    "O03_B01_singlet_polynomial",
+    "O04_B01_singlet_polynomial",
+    "O05_B01_126bar_norm",
+    "O06_B01_Hdag_H_norm",
+    "O07_B01_Phi_norm",
+    "O12_B01_Hdag_Hdag_pair",
+    "O14_B01_Phi_Sigma_Sigmadag_cubic",
+    "O15_B01_Phi_Hdag_Sigma",
+    "O17_B01_Phi_cubic",
+    "O20_B01_singlet_polynomial",
+    "O22_B01_singlet_polynomial",
+    "O23_B01_singlet_polynomial",
+    "O25_B01_126bar_norm",
+    "O26_B01_126bar_norm",
+    "O27_B01_126bar_self_projectors",
+    "O27_B02_126bar_self_projectors",
+    "O27_B03_126bar_self_projectors",
+    "O27_B04_126bar_self_projectors",
+    "O28_B01_unique_Hdag_Sigma2_Sigmadag",
+    "O31_B01_unique_Hdag2_Sigma2",
+    "O33_B01_Hdag_H_norm",
+    "O34_B01_Hdag_H_norm",
+    "O35_B01_H_Sigma_hermitian",
+    "O35_B02_H_Sigma_hermitian",
+    "O36_B01_H_self_quartics",
+    "O36_B02_H_self_quartics",
+    "O38_B01_Phi_Hdag_Sigmadag",
+    "O42_B01_Phi_norm",
+    "O43_B01_Phi_norm",
+    "O44_B01_Phi2_Sigma_projectors",
+    "O44_B02_Phi2_Sigma_projectors",
+    "O44_B03_Phi2_Sigma_projectors",
+    "O44_B04_Phi2_Sigma_projectors",
+    "O44_B05_Phi2_Sigma_projectors",
+    "O44_B06_Phi2_Sigma_projectors",
+    "O45_B01_Phi2_Hdag_Sigma_210_1050",
+    "O45_B02_Phi2_Hdag_Sigma_210_1050",
+    "O46_B01_Phi2_HdagH_channels",
+    "O46_B02_Phi2_HdagH_channels",
+    "O46_B03_Phi2_HdagH_channels",
+    "O48_B01_Phi_self_quartics",
+    "O48_B02_Phi_self_quartics",
+    "O48_B03_Phi_self_quartics",
+    "O48_B04_Phi_self_quartics"
+  ],
+  "failures": [],
+  "family_ids": [
+    "126bar_norm",
+    "126bar_self_projectors",
+    "H_Sigma_hermitian",
+    "H_self_quartics",
+    "Hdag_H_norm",
+    "Hdag_Hdag_pair",
+    "Phi2_HdagH_channels",
+    "Phi2_Hdag_Sigma_210_1050",
+    "Phi2_Sigma_projectors",
+    "Phi_Hdag_Sigma",
+    "Phi_Hdag_Sigmadag",
+    "Phi_Sigma_Sigmadag_cubic",
+    "Phi_cubic",
+    "Phi_norm",
+    "Phi_self_quartics",
+    "singlet_polynomial",
+    "unique_Hdag2_Sigma2",
+    "unique_Hdag_Sigma2_Sigmadag"
+  ],
+  "integration": {
+    "consumed_by_central_G1_G8_ledger": true,
+    "consumed_by_execution_roadmap": true,
+    "consumed_by_validation_matrix": true,
+    "release_orchestrators_execute_read_only": true
+  },
+  "model_contract_id": "gauged_u1x_phi17_v20",
+  "n_checks": 21,
+  "n_failed": 0,
+  "orbit_independence_audit": [
+    {
+      "D5_multiplicity": 1,
+      "base_family": "singlet_polynomial",
+      "basis_length": 1,
+      "declared_multiplicity": 1,
+      "independent_by_exact_irrep_or_contraction_certificate": true,
+      "representative": "Phi17 Phi17^dag"
+    },
+    {
+      "D5_multiplicity": 1,
+      "base_family": "singlet_polynomial",
+      "basis_length": 1,
+      "declared_multiplicity": 1,
+      "independent_by_exact_irrep_or_contraction_certificate": true,
+      "representative": "S S^dag"
+    },
+    {
+      "D5_multiplicity": 1,
+      "base_family": "126bar_norm",
+      "basis_length": 1,
+      "declared_multiplicity": 1,
+      "independent_by_exact_irrep_or_contraction_certificate": true,
+      "representative": "126bar_H 126bar_H^dag"
+    },
+    {
+      "D5_multiplicity": 1,
+      "base_family": "Hdag_H_norm",
+      "basis_length": 1,
+      "declared_multiplicity": 1,
+      "independent_by_exact_irrep_or_contraction_certificate": true,
+      "representative": "10_H 10_H^dag"
+    },
+    {
+      "D5_multiplicity": 1,
+      "base_family": "Phi_norm",
+      "basis_length": 1,
+      "declared_multiplicity": 1,
+      "independent_by_exact_irrep_or_contraction_certificate": true,
+      "representative": "210_H^2"
+    },
+    {
+      "D5_multiplicity": 1,
+      "base_family": "Hdag_Hdag_pair",
+      "basis_length": 1,
+      "declared_multiplicity": 1,
+      "independent_by_exact_irrep_or_contraction_certificate": true,
+      "representative": "10_H^dag^2 S^dag"
+    },
+    {
+      "D5_multiplicity": 1,
+      "base_family": "Phi_Sigma_Sigmadag_cubic",
+      "basis_length": 1,
+      "declared_multiplicity": 1,
+      "independent_by_exact_irrep_or_contraction_certificate": true,
+      "representative": "210_H 126bar_H 126bar_H^dag"
+    },
+    {
+      "D5_multiplicity": 1,
+      "base_family": "Phi_Hdag_Sigma",
+      "basis_length": 1,
+      "declared_multiplicity": 1,
+      "independent_by_exact_irrep_or_contraction_certificate": true,
+      "representative": "210_H 10_H^dag 126bar_H"
+    },
+    {
+      "D5_multiplicity": 1,
+      "base_family": "Phi_cubic",
+      "basis_length": 1,
+      "declared_multiplicity": 1,
+      "independent_by_exact_irrep_or_contraction_certificate": true,
+      "representative": "210_H^3"
+    },
+    {
+      "D5_multiplicity": 1,
+      "base_family": "singlet_polynomial",
+      "basis_length": 1,
+      "declared_multiplicity": 1,
+      "independent_by_exact_irrep_or_contraction_certificate": true,
+      "representative": "Phi17^2 Phi17^dag^2"
+    },
+    {
+      "D5_multiplicity": 1,
+      "base_family": "singlet_polynomial",
+      "basis_length": 1,
+      "declared_multiplicity": 1,
+      "independent_by_exact_irrep_or_contraction_certificate": true,
+      "representative": "S S^dag Phi17 Phi17^dag"
+    },
+    {
+      "D5_multiplicity": 1,
+      "base_family": "singlet_polynomial",
+      "basis_length": 1,
+      "declared_multiplicity": 1,
+      "independent_by_exact_irrep_or_contraction_certificate": true,
+      "representative": "S^2 S^dag^2"
+    },
+    {
+      "D5_multiplicity": 1,
+      "base_family": "126bar_norm",
+      "basis_length": 1,
+      "declared_multiplicity": 1,
+      "independent_by_exact_irrep_or_contraction_certificate": true,
+      "representative": "126bar_H 126bar_H^dag Phi17 Phi17^dag"
+    },
+    {
+      "D5_multiplicity": 1,
+      "base_family": "126bar_norm",
+      "basis_length": 1,
+      "declared_multiplicity": 1,
+      "independent_by_exact_irrep_or_contraction_certificate": true,
+      "representative": "126bar_H 126bar_H^dag S S^dag"
+    },
+    {
+      "D5_multiplicity": 4,
+      "base_family": "126bar_self_projectors",
+      "basis_length": 4,
+      "declared_multiplicity": 4,
+      "independent_by_exact_irrep_or_contraction_certificate": true,
+      "representative": "126bar_H^2 126bar_H^dag^2"
+    },
+    {
+      "D5_multiplicity": 1,
+      "base_family": "unique_Hdag_Sigma2_Sigmadag",
+      "basis_length": 1,
+      "declared_multiplicity": 1,
+      "independent_by_exact_irrep_or_contraction_certificate": true,
+      "representative": "10_H^dag 126bar_H^2 126bar_H^dag"
+    },
+    {
+      "D5_multiplicity": 1,
+      "base_family": "unique_Hdag2_Sigma2",
+      "basis_length": 1,
+      "declared_multiplicity": 1,
+      "independent_by_exact_irrep_or_contraction_certificate": true,
+      "representative": "10_H^dag^2 126bar_H^2"
+    },
+    {
+      "D5_multiplicity": 1,
+      "base_family": "Hdag_H_norm",
+      "basis_length": 1,
+      "declared_multiplicity": 1,
+      "independent_by_exact_irrep_or_contraction_certificate": true,
+      "representative": "10_H 10_H^dag Phi17 Phi17^dag"
+    },
+    {
+      "D5_multiplicity": 1,
+      "base_family": "Hdag_H_norm",
+      "basis_length": 1,
+      "declared_multiplicity": 1,
+      "independent_by_exact_irrep_or_contraction_certificate": true,
+      "representative": "10_H 10_H^dag S S^dag"
+    },
+    {
+      "D5_multiplicity": 2,
+      "base_family": "H_Sigma_hermitian",
+      "basis_length": 2,
+      "declared_multiplicity": 2,
+      "independent_by_exact_irrep_or_contraction_certificate": true,
+      "representative": "10_H 10_H^dag 126bar_H 126bar_H^dag"
+    },
+    {
+      "D5_multiplicity": 2,
+      "base_family": "H_self_quartics",
+      "basis_length": 2,
+      "declared_multiplicity": 2,
+      "independent_by_exact_irrep_or_contraction_certificate": true,
+      "representative": "10_H^2 10_H^dag^2"
+    },
+    {
+      "D5_multiplicity": 1,
+      "base_family": "Phi_Hdag_Sigmadag",
+      "basis_length": 1,
+      "declared_multiplicity": 1,
+      "independent_by_exact_irrep_or_contraction_certificate": true,
+      "representative": "210_H 10_H^dag 126bar_H^dag S^dag"
+    },
+    {
+      "D5_multiplicity": 1,
+      "base_family": "Phi_norm",
+      "basis_length": 1,
+      "declared_multiplicity": 1,
+      "independent_by_exact_irrep_or_contraction_certificate": true,
+      "representative": "210_H^2 Phi17 Phi17^dag"
+    },
+    {
+      "D5_multiplicity": 1,
+      "base_family": "Phi_norm",
+      "basis_length": 1,
+      "declared_multiplicity": 1,
+      "independent_by_exact_irrep_or_contraction_certificate": true,
+      "representative": "210_H^2 S S^dag"
+    },
+    {
+      "D5_multiplicity": 6,
+      "base_family": "Phi2_Sigma_projectors",
+      "basis_length": 6,
+      "declared_multiplicity": 6,
+      "independent_by_exact_irrep_or_contraction_certificate": true,
+      "representative": "210_H^2 126bar_H 126bar_H^dag"
+    },
+    {
+      "D5_multiplicity": 2,
+      "base_family": "Phi2_Hdag_Sigma_210_1050",
+      "basis_length": 2,
+      "declared_multiplicity": 2,
+      "independent_by_exact_irrep_or_contraction_certificate": true,
+      "representative": "210_H^2 10_H^dag 126bar_H"
+    },
+    {
+      "D5_multiplicity": 3,
+      "base_family": "Phi2_HdagH_channels",
+      "basis_length": 3,
+      "declared_multiplicity": 3,
+      "independent_by_exact_irrep_or_contraction_certificate": true,
+      "representative": "210_H^2 10_H 10_H^dag"
+    },
+    {
+      "D5_multiplicity": 4,
+      "base_family": "Phi_self_quartics",
+      "basis_length": 4,
+      "declared_multiplicity": 4,
+      "independent_by_exact_irrep_or_contraction_certificate": true,
+      "representative": "210_H^4"
+    }
+  ],
+  "overall_state": "CLOSED_SUBPROBLEM",
+  "parameter_ids": [
+    "lambda::O03_B01_singlet_polynomial",
+    "lambda::O04_B01_singlet_polynomial",
+    "lambda::O05_B01_126bar_norm",
+    "lambda::O06_B01_Hdag_H_norm",
+    "lambda::O07_B01_Phi_norm",
+    "re::O12_B01_Hdag_Hdag_pair",
+    "im::O12_B01_Hdag_Hdag_pair",
+    "lambda::O14_B01_Phi_Sigma_Sigmadag_cubic",
+    "re::O15_B01_Phi_Hdag_Sigma",
+    "im::O15_B01_Phi_Hdag_Sigma",
+    "lambda::O17_B01_Phi_cubic",
+    "lambda::O20_B01_singlet_polynomial",
+    "lambda::O22_B01_singlet_polynomial",
+    "lambda::O23_B01_singlet_polynomial",
+    "lambda::O25_B01_126bar_norm",
+    "lambda::O26_B01_126bar_norm",
+    "lambda::O27_B01_126bar_self_projectors",
+    "lambda::O27_B02_126bar_self_projectors",
+    "lambda::O27_B03_126bar_self_projectors",
+    "lambda::O27_B04_126bar_self_projectors",
+    "re::O28_B01_unique_Hdag_Sigma2_Sigmadag",
+    "im::O28_B01_unique_Hdag_Sigma2_Sigmadag",
+    "re::O31_B01_unique_Hdag2_Sigma2",
+    "im::O31_B01_unique_Hdag2_Sigma2",
+    "lambda::O33_B01_Hdag_H_norm",
+    "lambda::O34_B01_Hdag_H_norm",
+    "lambda::O35_B01_H_Sigma_hermitian",
+    "lambda::O35_B02_H_Sigma_hermitian",
+    "lambda::O36_B01_H_self_quartics",
+    "lambda::O36_B02_H_self_quartics",
+    "re::O38_B01_Phi_Hdag_Sigmadag",
+    "im::O38_B01_Phi_Hdag_Sigmadag",
+    "lambda::O42_B01_Phi_norm",
+    "lambda::O43_B01_Phi_norm",
+    "lambda::O44_B01_Phi2_Sigma_projectors",
+    "lambda::O44_B02_Phi2_Sigma_projectors",
+    "lambda::O44_B03_Phi2_Sigma_projectors",
+    "lambda::O44_B04_Phi2_Sigma_projectors",
+    "lambda::O44_B05_Phi2_Sigma_projectors",
+    "lambda::O44_B06_Phi2_Sigma_projectors",
+    "re::O45_B01_Phi2_Hdag_Sigma_210_1050",
+    "im::O45_B01_Phi2_Hdag_Sigma_210_1050",
+    "re::O45_B02_Phi2_Hdag_Sigma_210_1050",
+    "im::O45_B02_Phi2_Hdag_Sigma_210_1050",
+    "lambda::O46_B01_Phi2_HdagH_channels",
+    "lambda::O46_B02_Phi2_HdagH_channels",
+    "lambda::O46_B03_Phi2_HdagH_channels",
+    "lambda::O48_B01_Phi_self_quartics",
+    "lambda::O48_B02_Phi_self_quartics",
+    "lambda::O48_B03_Phi_self_quartics",
+    "lambda::O48_B04_Phi_self_quartics"
+  ],
+  "proof": "Disjoint field multidegrees are linearly independent. Within each multidegree, the exact D5 singlet multiplicity equals the number of source-bound normalized projector/contraction basis elements, whose exact family certificates pass. Therefore the filtered compiler basis has exact rank 44, with 37 real and seven complex-paired directions giving 51 real coefficients.",
+  "release_blockers": [
+    "AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED"
+  ],
+  "source_hash_convention": "text bytes canonicalized to LF before SHA-256",
+  "source_sha256": {
+    "direct_phi_h_sigmabar_tensor_v20.py": "3a87470a06362a2a4c05eac6b71fe9cd4cd6c9b8a41732786184cbfeae89fac4",
+    "exact_126bar_self_quartic_basis_v20.py": "6b945b21b991ad1c055e7ae39190bcbb258fd8503c1ad37789003310041ddd30",
+    "exact_210_self_invariant_basis_v20.py": "663747aa896d8609a0a12fb0bbf5374520ef4fc3a205b6525cbba66022654ae5",
+    "exact_h10_self_quartic_family_v20.py": "a6a54818fce5a98b9e06d657581bb43482eb63a8598860840bc2553060b3f94e",
+    "exact_hsigma_hermitian_family_closure_v20.py": "1d27e3a089fd7b4e44f3534eb91c58a1505c8396ddc6301df6df87d07cac9863",
+    "exact_p_delta_second_stage_hessian_v20.py": "6f03a6305c9a302d6a1664c3100d1f629bd8af08ac303e5766d6ae463d35dc58",
+    "exact_phi2_126dag126_six_contractions_v20.py": "78bd1110530be968ab2e62d150c73def74fe96d1d1100ccfb88cb9c4710a6dba",
+    "exact_phi2_h_126dag_210_1050_channels_v20.py": "c68addf116d905a7daf216fd004e8137e49a72d18e5702c0a7670d1338b7da7a",
+    "exact_phi2_hdagh_channel_family_v20.py": "42f347e5d8cb8d378f737425d7b152cc71e678627b8a2128b8faba0ce41261cf",
+    "exact_phi_hdag_sigmabar_cubic_audit_v20.py": "d63d126573a71145456b1617df7e5ca793a54072cf0b40b6c5c9f33f429d907e",
+    "exact_phisigma_126bar_minus_projectors_v20.py": "35574f536dd6a5a6619075784324d3a8e5965544dd91fdca5ce2ce3de6bb2af7",
+    "exact_phisigma_all_component_projectors_v20.py": "e381b814959ae0d41fb72c50a462b8f0c8d67bdc6b29d5de085d63da9d18590d",
+    "exact_unique_hsigma_chiral_quartics_v20.py": "bf47a9b2e794bbbf8a169452da08e3ea4269cadb74f61581f2c02d2c8101202e",
+    "g1_exact_declared_symmetry_character_census_v20.py": "79e91fdd255467ca21035a2c8daf264c863345c5670c46b28b3fa1a1898265bf",
+    "gauged_u1x_scalar_contract_v20.py": "eb687091f4e1815988bcfdeede7c2061c7b32ba687f98bea00104ad161d74f08",
+    "live_g1_tensor_closure_ledger_v20.py": "e17dd3a443ddd04ab412844f8d4273c27322371518bbc805705be9c030287d57",
+    "live_g2_arbitrary_component_potential_values_v20.py": "3c868c724c67ee012fa819400924d1c50864e5d9da0392e1ce3c7f9f013e7506",
+    "live_g2_derivative_coverage_ledger_v20.py": "715d84f07ffe23486e47164af0c81bb72db2cba8a8300264150b8f8d6c79ba20"
+  },
+  "status": "EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_RING_CLOSED",
+  "verdict": "The complete renormalizable SO(10)xU(1)_X scalar invariant ring now has a source-bound normalized component-tensor basis for all 44 directions and 51 real couplings. No new physics is needed for G1. Authoritative release promotion still requires a real hash-bound external SARAH execution."
+}

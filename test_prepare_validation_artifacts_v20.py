@@ -30,6 +30,7 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
             "sarah_pyrate_210n_model_file_v20.py",
             "gauged_u1x_scalar_contract_v20.py --write",
             "g1_exact_declared_symmetry_character_census_v20.py --write",
+            "exact_gauged_u1x_g1_component_tensor_closure_v20.py",
             "exact_gauged_u1x_stationarity_rank_certificate_v20.py --write",
             "gauged_u1x_g2_derivative_audit_v20.py",
             "exact_gauged_u1x_physical_quotient_v20.py --write",
@@ -114,6 +115,7 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
         ]
         self.assertEqual(stabilizer_commands, [(sys.executable, stabilizer)])
         for source in (
+            "exact_gauged_u1x_g1_component_tensor_closure_v20.py",
             "gauged_u1x_g2_derivative_audit_v20.py",
             "gauged_u1x_g3_sos_candidate_v20.py",
             "gauged_u1x_g3_stability_v20.py",
@@ -174,6 +176,7 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
         )
         self.assertLess(indices[-1], ledger_index)
         for test_name in (
+            "test_exact_gauged_u1x_g1_component_tensor_closure_v20.py",
             "test_final_g4_eft_mathematical_gate_v20.py",
             "test_final_g5_eft_mathematical_gate_v20.py",
             "test_exact_eft_physical_scalar_spectrum_v20.py",

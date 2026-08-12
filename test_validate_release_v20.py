@@ -67,6 +67,7 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
 
     def _assert_frozen_numerical_and_central_reports_are_read_only(self):
         frozen_sources = (
+            "exact_gauged_u1x_g1_component_tensor_closure_v20.py",
             "gauged_u1x_g2_derivative_audit_v20.py",
             "exact_phi_self_zero_global_signed_kaehler_classification_v20.py",
             "exact_gauged_u1x_g3_su5_equality_orbit_v20.py",
@@ -194,6 +195,9 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             encoding="utf-8"
         )
         for token in (
+            "32bed88b5fad0fe6e51cf19c3b3e120d53362150cfc1db6eafd8c897e24223b7",
+            "ca2b92198cbb7cbe6c7051b9c5952bc4af1462ba33db02eaa126533213b1e87f",
+            "bec8587376c7dc5a29b45c9c7f0110fcbed98a3ae2d130aaf00bb42f6997aca4",
             "931a152aed49eb28bf415a1aca093e923850cf68db3f40ccf1d2027b447a8c09",
             "1b578471e74626e3b186cf7398aebd35349a67f45940b9c37d42bb49c1b8c8ba",
             "abb704133c8be22b424ba20e23387d6f30412e6c82ab3a214e88bd8df5bef9cc",
@@ -274,6 +278,10 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             "FINAL_G6_EFT_MATHEMATICAL_GATE_V20.md",
             "final_g6_eft_mathematical_gate_v20.py",
             "test_final_g6_eft_mathematical_gate_v20.py",
+            "EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_CLOSURE_V20.json",
+            "EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_CLOSURE_V20.md",
+            "exact_gauged_u1x_g1_component_tensor_closure_v20.py",
+            "test_exact_gauged_u1x_g1_component_tensor_closure_v20.py",
             ".github/workflows/current-main-full-reaudit.yml",
             ".github/workflows/g1-g8-execution-roadmap.yml",
             ".github/workflows/g1-g8-gate-ledger.yml",

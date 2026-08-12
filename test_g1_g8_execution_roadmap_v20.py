@@ -148,18 +148,22 @@ def test_every_gate_has_an_actionable_recertification_task():
     assert all(task["acceptance"] for task in report["tasks"])
 
 
-def test_g1_census_and_g2_audit_are_distinct_scoped_results():
+def test_g1_census_component_theorem_and_g2_audit_are_distinct_scoped_results():
     report = mod.build_report()
     scoped = report["gauged_u1x_scalar_subtheorems"]
     assert scoped["G1"]["multiplicity_census_complete"] is True
     assert scoped["G1"][
         "explicit_component_tensor_subset_integration_complete"
-    ] is False
-    assert scoped["G1"]["full_G1_closed"] is False
+    ] is True
+    assert scoped["G1"]["character_census_remains_multiplicity_only"] is True
+    assert scoped["G1"]["full_G1_closed"] is True
+    assert scoped["G1"]["authoritative_G1_promoted_closed"] is False
+    assert scoped["G1"]["release_G1_verified"] is False
     assert scoped["G1"]["invariant_directions"] == 44
     assert scoped["G1"]["real_potential_parameters"] == 51
     assert scoped["G2"]["scoped_derivative_audit_complete"] is True
-    assert scoped["G2"]["authoritative_promotion_blocked_on_full_G1"] is True
+    assert scoped["G2"]["authoritative_promotion_blocked_on_full_G1"] is False
+    assert scoped["G2"]["authoritative_promotion_blocked_on_model_contract"] is True
     assert scoped["G2"]["real_field_dimension"] == 486
     assert scoped["G2"]["promoted_stationarity_rank"] == 13
     assert scoped["G2"]["promoted_stationarity_nullity"] == 38
@@ -170,12 +174,19 @@ def test_g1_census_and_g2_audit_are_distinct_scoped_results():
     assert scoped["G2"]["stationarity_nullity_38_exactly_certified"] is True
     tasks = {item["id"]: item for item in report["tasks"]}
     assert tasks["W1-G1-GAUGED-RECERTIFICATION"]["status"] == (
-        "MULTIPLICITY_CENSUS_COMPLETE__FULL_COMPONENT_TENSOR_INTEGRATION_"
-        "OPEN__MODEL_CONTRACT_BLOCKED"
+        "SOURCE_BOUND_FULL_MATHEMATICAL_G1_COMPONENT_RING_COMPLETE__"
+        "MODEL_CONTRACT_BLOCKED"
     )
     assert tasks["W2-G2-GAUGED-PROJECTION"]["status"] == (
-        "SCOPED_DERIVATIVE_AUDIT_COMPLETE__BLOCKED_ON_MODEL_CONTRACT_AND_FULL_G1"
+        "SCOPED_DERIVATIVE_AUDIT_COMPLETE__BLOCKED_ON_MODEL_CONTRACT"
     )
+    resolution = report["renormalizable_G1_component_tensor_resolution"]
+    assert resolution["source_bound"] is True
+    assert resolution["mathematical_G1_closed"] is True
+    assert resolution["authoritative_G1_promoted_closed"] is False
+    assert resolution["release_G1_verified"] is False
+    assert resolution["downstream_integration_completed"] is True
+    assert resolution["release_blockers"] == [mod.ledger.CONTRACT_BLOCKER]
     assert report["gates"]["G1"]["status"] == "BLOCKED"
     assert report["gates"]["G2"]["status"] == "BLOCKED"
 
@@ -441,7 +452,7 @@ def test_no_validation_exclusion_or_discovery_claim():
     assert report["checks"]["whole_model_neither_validated_nor_excluded"]
 
 
-def test_repaired_contract_leaves_full_g1_open_and_g2_blocked():
+def test_repaired_contract_promotes_source_bound_g1_g2_and_g5():
     current = mod.ledger.build_report()
     inputs = current["model_contract_reports"]
     repaired_x = copy.deepcopy(inputs["exact_X"])
@@ -470,26 +481,23 @@ def test_repaired_contract_leaves_full_g1_open_and_g2_blocked():
 
     assert report["n_failed"] == 0, report["audit_failures"]
     assert report["overall_state"] == mod.ledger.STATUS_OPEN
-    assert report["summary"]["closed"] == []
-    assert report["summary"]["open"] == ["G1"]
+    assert report["summary"]["closed"] == ["G1", "G2", "G5"]
+    assert report["summary"]["open"] == ["G3"]
     assert report["summary"]["blocked"] == [
-        "G2",
-        "G3",
         "G4",
-        "G5",
         "G6",
         "G7",
         "G8",
     ]
     task_statuses = {task["id"]: task["status"] for task in report["tasks"]}
     assert task_statuses["W0-MODEL-CONTRACT"] == mod.ledger.STATUS_CLOSED
-    assert task_statuses["W1-G1-GAUGED-RECERTIFICATION"] == mod.ledger.STATUS_OPEN
-    assert task_statuses["W2-G2-GAUGED-PROJECTION"] == "BLOCKED_ON_G1"
-    assert task_statuses["W3-G3-FULL-STATIONARITY"] == "BLOCKED_ON_G2"
-    assert task_statuses["W3-G5-FULL-BFB"] == "BLOCKED_ON_G1_G2"
+    assert task_statuses["W1-G1-GAUGED-RECERTIFICATION"] == mod.ledger.STATUS_CLOSED
+    assert task_statuses["W2-G2-GAUGED-PROJECTION"] == mod.ledger.STATUS_CLOSED
+    assert task_statuses["W3-G3-FULL-STATIONARITY"] == mod.ledger.STATUS_OPEN
+    assert task_statuses["W3-G5-FULL-BFB"] == mod.ledger.STATUS_CLOSED
     assert task_statuses["W3-G4-FULL-GAUGE-QUOTIENT"] == "BLOCKED_ON_G3"
-    assert report["gates"]["G1"]["status"] == mod.ledger.STATUS_OPEN
-    assert report["gates"]["G2"]["status"] == mod.ledger.STATUS_BLOCKED
+    assert report["gates"]["G1"]["status"] == mod.ledger.STATUS_CLOSED
+    assert report["gates"]["G2"]["status"] == mod.ledger.STATUS_CLOSED
     assert report["gates"]["G6"]["status"] == mod.ledger.STATUS_BLOCKED
     assert report["gates"]["G8"]["status"] == mod.ledger.STATUS_BLOCKED
-    assert "full G1 remains OPEN" in report["verdict"]
+    assert "G1/G2 recertification are CLOSED" in report["verdict"]

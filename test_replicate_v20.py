@@ -10,6 +10,7 @@ def test_cross_platform_and_central_frozen_reports_are_read_only() -> None:
     source = replicate.Path(replicate.__file__).read_text(encoding="utf-8")
     tree = ast.parse(source)
     for script in (
+        "exact_gauged_u1x_g1_component_tensor_closure_v20.py",
         "gauged_u1x_g2_derivative_audit_v20.py",
         "exact_phi_self_zero_global_signed_kaehler_classification_v20.py",
         "exact_gauged_u1x_g3_su5_equality_orbit_v20.py",
@@ -107,6 +108,7 @@ def test_parallel_eft_gates_run_read_only_in_dependency_order() -> None:
     )
     assert gate_rows[-1][0] < ledger_line
     for test_name in (
+        "test_exact_gauged_u1x_g1_component_tensor_closure_v20.py",
         "test_final_g4_eft_mathematical_gate_v20.py",
         "test_final_g5_eft_mathematical_gate_v20.py",
         "test_exact_eft_physical_scalar_spectrum_v20.py",

@@ -98,6 +98,7 @@ def main() -> int:
     run([sys.executable, "sarah_pyrate_210n_model_file_v20.py"])
     run([sys.executable, "gauged_u1x_scalar_contract_v20.py", "--write"])
     run([sys.executable, "g1_exact_declared_symmetry_character_census_v20.py", "--write"])
+    run([sys.executable, "exact_gauged_u1x_g1_component_tensor_closure_v20.py"])
     run(
         [
             sys.executable,
@@ -427,6 +428,7 @@ def main() -> int:
             "no:cacheprovider",
             "test_exact_x_symmetry_consistency_gate_v20.py",
             "test_g1_exact_declared_symmetry_character_census_v20.py",
+            "test_exact_gauged_u1x_g1_component_tensor_closure_v20.py",
             "test_gauged_u1x_scalar_contract_v20.py",
             "test_gauged_u1x_g2_derivative_audit_v20.py",
             "test_exact_gauged_u1x_stationarity_rank_certificate_v20.py",

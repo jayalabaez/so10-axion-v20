@@ -81,7 +81,7 @@ class AuthoritativeFullModelGateTests(unittest.TestCase):
         self.assertIn("G8_NOT_CLOSED", blockers)
         self.assertTrue(any(item.startswith("PROTON_READINESS_") for item in blockers))
 
-    def test_repaired_contract_does_not_bypass_open_full_g1_scope(self):
+    def test_repaired_contract_promotes_only_the_now_closed_scalar_gates(self):
         current_ledger = mod.gate_ledger.build_report()
         inputs = current_ledger["model_contract_reports"]
         repaired_x = copy.deepcopy(inputs["exact_X"])
@@ -114,10 +114,11 @@ class AuthoritativeFullModelGateTests(unittest.TestCase):
         self.assertTrue(
             report["classification"]["authoritative_model_contract_consistent"]
         )
-        self.assertEqual(repaired_ledger["gates"]["G1"]["status"], "OPEN")
-        self.assertEqual(repaired_ledger["gates"]["G2"]["status"], "BLOCKED")
-        self.assertIn("G1_NOT_CLOSED", report["blockers"])
-        self.assertIn("G2_NOT_CLOSED", report["blockers"])
+        self.assertEqual(repaired_ledger["gates"]["G1"]["status"], "CLOSED")
+        self.assertEqual(repaired_ledger["gates"]["G2"]["status"], "CLOSED")
+        self.assertEqual(repaired_ledger["gates"]["G5"]["status"], "CLOSED")
+        self.assertNotIn("G1_NOT_CLOSED", report["blockers"])
+        self.assertNotIn("G2_NOT_CLOSED", report["blockers"])
         self.assertIn("G3_NOT_CLOSED", report["blockers"])
         self.assertIn("G8_NOT_CLOSED", report["blockers"])
         self.assertFalse(report["classification"]["whole_model_validated"])

@@ -42,7 +42,7 @@ class G1G8GateLedgerTests(unittest.TestCase):
         self.assertEqual(
             self.report["status"],
             "G1_G8_LEDGER_AUDIT_COMPLETE__MODEL_CONTRACT_BLOCKED__"
-            "G1_MULTIPLICITY_CENSUS_AND_G2_DERIVATIVE_AUDIT_RECERTIFIED",
+            "MATHEMATICAL_G1_COMPONENT_RING_AND_G2_DERIVATIVE_AUDIT_RECERTIFIED",
         )
         self.assertEqual(self.report["overall_state"], mod.STATUS_BLOCKED)
         self.assertFalse(self.report["contract_consistent"])
@@ -823,23 +823,43 @@ class G1G8GateLedgerTests(unittest.TestCase):
             frontier,
         )
 
-    def test_g1_multiplicity_census_and_g2_derivative_audit_are_scoped(self):
+    def test_source_bound_g1_ring_and_g2_derivative_audit_are_scoped(self):
         scoped = self.report["gauged_u1x_scalar_subtheorems"]
         self.assertEqual(scoped["model_contract_id"], mod.AUTHORITATIVE_CONTRACT_ID)
         self.assertFalse(scoped["whole_model_gate_closure"])
         self.assertEqual(
             scoped["G1"]["scoped_status"],
-            "COMPLETE_GAUGED_U1X_MULTIPLICITY_CENSUS__FULL_G1_OPEN",
+            "COMPLETE_GAUGED_U1X_FULL_COMPONENT_TENSOR_INTEGRATION",
         )
         self.assertTrue(scoped["G1"]["multiplicity_census_complete"])
-        self.assertFalse(
+        self.assertTrue(
             scoped["G1"]["explicit_component_tensor_subset_integration_complete"]
         )
-        self.assertFalse(scoped["G1"]["full_G1_closed"])
+        self.assertTrue(scoped["G1"]["mathematical_component_tensor_closure_complete"])
+        self.assertTrue(scoped["G1"]["character_census_remains_multiplicity_only"])
+        self.assertTrue(scoped["G1"]["full_G1_closed"])
+        self.assertFalse(scoped["G1"]["authoritative_G1_promoted_closed"])
+        self.assertFalse(scoped["G1"]["release_G1_verified"])
         self.assertEqual(scoped["G1"]["invariant_directions"], 44)
         self.assertEqual(scoped["G1"]["real_potential_parameters"], 51)
+        closure = self.report["renormalizable_G1_component_tensor_closure"]
+        self.assertTrue(closure["source_bound"])
+        self.assertTrue(
+            closure["mathematical_G1_closed_for_renormalizable_model"]
+        )
+        self.assertFalse(closure["authoritative_G1_promoted_closed"])
+        self.assertFalse(closure["release_G1_verified"])
+        self.assertTrue(closure["downstream_integration_completed"])
+        self.assertIn(mod.CONTRACT_BLOCKER, closure["release_blockers"])
+        self.assertNotIn(
+            "G1_COMPONENT_TENSOR_CLOSURE_DOWNSTREAM_INTEGRATION_REQUIRED",
+            closure["release_blockers"],
+        )
         self.assertTrue(scoped["G2"]["scoped_derivative_audit_complete"])
-        self.assertTrue(scoped["G2"]["authoritative_promotion_blocked_on_full_G1"])
+        self.assertFalse(scoped["G2"]["authoritative_promotion_blocked_on_full_G1"])
+        self.assertTrue(
+            scoped["G2"]["authoritative_promotion_blocked_on_model_contract"]
+        )
         self.assertEqual(scoped["G2"]["invariant_directions"], 44)
         self.assertEqual(scoped["G2"]["real_potential_parameters"], 51)
         self.assertEqual(scoped["G2"]["real_field_dimension"], 486)
@@ -857,7 +877,7 @@ class G1G8GateLedgerTests(unittest.TestCase):
             gate = self.report["gates"][gate_name]
             self.assertEqual(gate["status"], mod.STATUS_BLOCKED)
             self.assertTrue(gate["scoped_calculation_complete"])
-        self.assertFalse(
+        self.assertTrue(
             self.report["gates"]["G1"]["full_gate_calculation_complete"]
         )
         self.assertTrue(
@@ -918,7 +938,7 @@ class G1G8GateLedgerTests(unittest.TestCase):
         self.assertTrue(
             feasibility["gauged_G1_multiplicity_census_complete"]
         )
-        self.assertFalse(
+        self.assertTrue(
             feasibility["gauged_G1_full_component_tensor_integration_complete"]
         )
         self.assertTrue(
@@ -931,7 +951,7 @@ class G1G8GateLedgerTests(unittest.TestCase):
             feasibility["gauged_G3_direct_exact_source_binding_complete"]
         )
 
-    def test_repaired_contract_cannot_close_g1_without_component_tensors(self):
+    def test_repaired_contract_promotes_source_bound_g1_g2_and_g5_only(self):
         inputs = self.report["model_contract_reports"]
         repaired_x = copy.deepcopy(inputs["exact_X"])
         repaired_x.update(
@@ -958,25 +978,62 @@ class G1G8GateLedgerTests(unittest.TestCase):
 
         self.assertEqual(report["n_failed"], 0, report["audit_failures"])
         self.assertEqual(report["overall_state"], mod.STATUS_OPEN)
-        self.assertEqual(report["summary"]["closed"], [])
-        self.assertEqual(report["summary"]["open"], ["G1"])
+        self.assertEqual(report["summary"]["closed"], ["G1", "G2", "G5"])
+        self.assertEqual(report["summary"]["open"], ["G3"])
         self.assertEqual(
             report["summary"]["blocked"],
-            ["G2", "G3", "G4", "G5", "G6", "G7", "G8"],
+            ["G4", "G6", "G7", "G8"],
         )
         self.assertEqual(
             {name: row["status"] for name, row in report["gates"].items()},
             {
-                "G1": mod.STATUS_OPEN,
-                "G2": mod.STATUS_BLOCKED,
-                "G3": mod.STATUS_BLOCKED,
+                "G1": mod.STATUS_CLOSED,
+                "G2": mod.STATUS_CLOSED,
+                "G3": mod.STATUS_OPEN,
                 "G4": mod.STATUS_BLOCKED,
-                "G5": mod.STATUS_BLOCKED,
+                "G5": mod.STATUS_CLOSED,
                 "G6": mod.STATUS_BLOCKED,
                 "G7": mod.STATUS_BLOCKED,
                 "G8": mod.STATUS_BLOCKED,
             },
         )
+
+    def test_repaired_contract_cannot_bypass_drifted_g1_theorem(self):
+        inputs = self.report["model_contract_reports"]
+        repaired_x = copy.deepcopy(inputs["exact_X"])
+        repaired_x.update(
+            contract_consistent=True,
+            blocker=None,
+            scientific_blockers=[],
+            contract_conflicts=[],
+            overall_state="PASS",
+        )
+        repaired_x["flag"]["contract_consistent"] = True
+        repaired_x["flag"]["x_selection_rule_consistently_declared"] = True
+        _bind_tool_native_root_evidence(repaired_x)
+        drifted = copy.deepcopy(inputs["gauged_G1_component_tensor_closure"])
+        drifted["core_sha256"] = "0" * 64
+
+        report = mod._build_report_from_inputs(
+            x_report=repaired_x,
+            g1_report=inputs["gauged_G1_character_census"],
+            g1_component_tensor_report=drifted,
+            g1_component_tensor_raw_sha256=(
+                mod.RENORMALIZABLE_G1_COMPONENT_TENSOR_RAW_SHA256
+            ),
+            g1_component_tensor_source_raw_sha256=(
+                mod.RENORMALIZABLE_G1_COMPONENT_TENSOR_SOURCE_RAW_SHA256
+            ),
+            g2_report=inputs["gauged_G2_derivative_audit"],
+            filter_report=inputs["gauged_scalar_filter"],
+        )
+
+        self.assertGreater(report["n_failed"], 0)
+        self.assertFalse(
+            report["renormalizable_G1_component_tensor_closure"]["source_bound"]
+        )
+        self.assertEqual(report["gates"]["G1"]["status"], mod.STATUS_OPEN)
+        self.assertEqual(report["gates"]["G2"]["status"], mod.STATUS_BLOCKED)
         self.assertEqual(report["gates"]["G2"]["unsatisfied_dependencies"], ["G1"])
         self.assertEqual(report["gates"]["G3"]["unsatisfied_dependencies"], ["G2"])
         self.assertEqual(

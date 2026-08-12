@@ -72,6 +72,9 @@ EFT_G6_SPECTRUM_CORE_SHA256 = (
 EFT_G6_MATHEMATICAL_GATE_CORE_SHA256 = (
     "e34b791478bf9cb00f951819cbfec45a99d51be776889d8a4e13cf1717eee738"
 )
+RENORMALIZABLE_G1_COMPONENT_TENSOR_CORE_SHA256 = (
+    "32bed88b5fad0fe6e51cf19c3b3e120d53362150cfc1db6eafd8c897e24223b7"
+)
 
 PUBLICATION_FILES = (
     "EXACT_GAUGED_U1X_G3_RANK1_SU4_CORRECTED_FIXED_ENDPOINT_THEOREM_V21.json",
@@ -135,6 +138,7 @@ READ_ONLY_FROZEN_REPORT_SOURCES = (
     "final_g5_eft_mathematical_gate_v20.py",
     "exact_eft_physical_scalar_spectrum_v20.py",
     "final_g6_eft_mathematical_gate_v20.py",
+    "exact_gauged_u1x_g1_component_tensor_closure_v20.py",
 )
 NO_WRITE_FROZEN_CLASSIFICATION_SOURCES = (
     "theory_validation_matrix_v20.py",
@@ -326,6 +330,20 @@ EFT_G6_RAW_PINS = {
         "288c53bce177ac687cbf6ceee3c6d74808a1dde2e2b39e0ac5728ab577db5fba"
     ),
 }
+RENORMALIZABLE_G1_COMPONENT_TENSOR_RAW_PINS = {
+    "exact_gauged_u1x_g1_component_tensor_closure_v20.py": (
+        "ca2b92198cbb7cbe6c7051b9c5952bc4af1462ba33db02eaa126533213b1e87f"
+    ),
+    "test_exact_gauged_u1x_g1_component_tensor_closure_v20.py": (
+        "084c168bb622b3a56ed06cc885571423135e375e48dbe99a616ab657fd4ebc3e"
+    ),
+    "EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_CLOSURE_V20.json": (
+        "bec8587376c7dc5a29b45c9c7f0110fcbed98a3ae2d130aaf00bb42f6997aca4"
+    ),
+    "EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_CLOSURE_V20.md": (
+        "b5901f73551750524d369e8327c93b00ebb791c312e379dd571f2f6be915c955"
+    ),
+}
 RHS_PORTABLE_SOURCE_PINS = {
     "exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py":
         "8493a90d9b689bc02479151529ac697425f56087f2bdbebb40176f418b7c0ff8",
@@ -351,6 +369,8 @@ RAW_INTEGRATION_PATHS = (
     GLOBAL_PHI_CLASSIFICATION_RAW_PINS
 ) + tuple(EFT_G3_RAW_PINS) + tuple(EFT_G4_G5_RAW_PINS) + tuple(
     EFT_G6_RAW_PINS
+) + tuple(
+    RENORMALIZABLE_G1_COMPONENT_TENSOR_RAW_PINS
 )
 
 GLOBAL_PHI_CLASSIFICATION_PORTABLE_PATHS = (
@@ -429,7 +449,9 @@ CHECKSUM_REQUIRED_PATHS = (
     GLOBAL_PHI_CLASSIFICATION_RAW_PINS
 ) + tuple(EFT_G3_RAW_PINS) + tuple(
     EFT_G4_G5_RAW_PINS
-) + tuple(EFT_G6_RAW_PINS) + GLOBAL_PHI_CLASSIFICATION_PORTABLE_PATHS
+) + tuple(EFT_G6_RAW_PINS) + tuple(
+    RENORMALIZABLE_G1_COMPONENT_TENSOR_RAW_PINS
+) + GLOBAL_PHI_CLASSIFICATION_PORTABLE_PATHS
 
 
 def _raw_payload(path: Path) -> bytes:
@@ -476,6 +498,8 @@ def _role(relative: str) -> str:
         return "byte-pinned dimension-six EFT mathematical G4/G5 gate bundle"
     if relative in EFT_G6_RAW_PINS:
         return "byte-pinned exact EFT scalar spectrum and mathematical G6 gate bundle"
+    if relative in RENORMALIZABLE_G1_COMPONENT_TENSOR_RAW_PINS:
+        return "byte-pinned complete renormalizable mathematical G1 component-tensor bundle"
     if relative in RAW_SOURCE_PINS or relative in RHS_PORTABLE_SOURCE_PINS:
         return "generation-only byte-pinned structural dependency"
     if relative in WORKFLOW_PATHS:
@@ -525,6 +549,12 @@ def _require_source_pins() -> None:
         observed = _sha256(_raw_payload(ROOT / relative))
         if observed != expected:
             raise ArithmeticError(f"raw EFT G6 bundle member drifted: {relative}")
+    for relative, expected in RENORMALIZABLE_G1_COMPONENT_TENSOR_RAW_PINS.items():
+        observed = _sha256(_raw_payload(ROOT / relative))
+        if observed != expected:
+            raise ArithmeticError(
+                f"raw renormalizable G1 component-tensor bundle member drifted: {relative}"
+            )
 
 
 def _source_string_constant(relative: str, name: str) -> str:
@@ -1071,6 +1101,112 @@ def _require_eft_g6_bundle() -> dict[str, Any]:
     }
 
 
+def _require_renormalizable_g1_component_tensor_bundle() -> dict[str, Any]:
+    if len(RENORMALIZABLE_G1_COMPONENT_TENSOR_RAW_PINS) != 4:
+        raise ArithmeticError(
+            "the renormalizable G1 component-tensor raw bundle must contain exactly 4 files"
+        )
+    source_name = "exact_gauged_u1x_g1_component_tensor_closure_v20.py"
+    report = json.loads(
+        (
+            ROOT / "EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_CLOSURE_V20.json"
+        ).read_text(encoding="utf-8")
+    )
+    counts = report.get("counts", {})
+    closure = report.get("closure", {})
+    classification = report.get("classification", {})
+    integration = report.get("integration", {})
+    checks = {
+        "source_and_report_core_exact": (
+            _source_string_constant(source_name, "EXPECTED_CORE_SHA256")
+            == RENORMALIZABLE_G1_COMPONENT_TENSOR_CORE_SHA256
+            and report.get("core_sha256")
+            == RENORMALIZABLE_G1_COMPONENT_TENSOR_CORE_SHA256
+        ),
+        "status_and_contract_exact": (
+            report.get("status")
+            == "EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_RING_CLOSED"
+            and report.get("overall_state") == "CLOSED_SUBPROBLEM"
+            and report.get("model_contract_id") == "gauged_u1x_phi17_v20"
+            and report.get("n_failed") == 0
+            and report.get("failures") == []
+        ),
+        "complete_28_44_51_tensor_ring_exact": (
+            counts
+            == {
+                "multidegrees": 34,
+                "Hermitian_conjugacy_orbits": 28,
+                "invariant_directions": 44,
+                "self_conjugate_directions": 37,
+                "complex_paired_directions": 7,
+                "real_parameters": 51,
+                "tensor_families": 18,
+                "real_field_dimension": 486,
+            }
+            and len(report.get("direction_ids", ())) == 44
+            and len(set(report.get("direction_ids", ()))) == 44
+            and len(report.get("parameter_ids", ())) == 51
+            and len(set(report.get("parameter_ids", ()))) == 51
+            and len(report.get("family_ids", ())) == 18
+            and len(set(report.get("family_ids", ()))) == 18
+        ),
+        "exact_family_certificates_and_source_binding_complete": (
+            len(report.get("certificate_reports", {})) == 14
+            and all(
+                row.get("n_failed") == 0
+                for row in report.get("certificate_reports", {}).values()
+            )
+            and len(report.get("source_sha256", {})) == 18
+            and report.get("source_hash_convention")
+            == "text bytes canonicalized to LF before SHA-256"
+            and len(report.get("checks", {})) == 21
+            and all(value is True for value in report.get("checks", {}).values())
+        ),
+        "mathematical_G1_ring_closed_exact": (
+            closure.get("declared_symmetry_charge_multidegrees_degree_le_4_closed")
+            is True
+            and closure.get("so10_singlet_multiplicities_degree_le_4_closed")
+            is True
+            and closure.get("gauged_u1x_44_direction_subcensus_closed") is True
+            and closure.get("explicit_component_tensor_subset_integration_closed")
+            is True
+            and closure.get("normalized_component_tensor_basis_all_44_directions_closed")
+            is True
+            and closure.get("full_renormalizable_G1_mathematical_ring_closed")
+            is True
+            and closure.get("external_model_execution_contract_closed") is False
+        ),
+        "central_integration_completed_exact": (
+            integration
+            == {
+                "consumed_by_central_G1_G8_ledger": True,
+                "consumed_by_execution_roadmap": True,
+                "consumed_by_validation_matrix": True,
+                "release_orchestrators_execute_read_only": True,
+            }
+        ),
+        "authoritative_and_release_claims_remain_fail_closed": (
+            classification.get("scoped_mathematical_G1_closed") is True
+            and classification.get("authoritative_G1_promoted_closed") is False
+            and classification.get("release_G1_verified") is False
+            and classification.get("renormalizable_model_mutated") is False
+            and classification.get("new_physics_required_for_G1") is False
+            and report.get("release_blockers")
+            == ["AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED"]
+        ),
+    }
+    failed = [name for name, passed in checks.items() if not passed]
+    if failed:
+        raise ArithmeticError(
+            f"the frozen renormalizable G1 component-tensor logical bundle drifted: {failed}"
+        )
+    return {
+        "raw_file_count": len(RENORMALIZABLE_G1_COMPONENT_TENSOR_RAW_PINS),
+        "checks": checks,
+        "all_checks_pass": True,
+    }
+
+
 def _require_publication_inventory() -> None:
     directory = ROOT / "corrected_rank1_publication_v21"
     if (directory / "__pycache__").exists():
@@ -1205,8 +1341,8 @@ def _require_workflow_contract() -> dict[str, int]:
         * len(READ_ONLY_FROZEN_DEPENDENCY_ORCHESTRATORS)
     )
     if (
-        len(READ_ONLY_FROZEN_REPORT_SOURCES) != 17
-        or expected_read_only_commands != 51
+        len(READ_ONLY_FROZEN_REPORT_SOURCES) != 18
+        or expected_read_only_commands != 54
         or read_only_report_commands != expected_read_only_commands
     ):
         raise ArithmeticError(
@@ -1355,6 +1491,9 @@ def build_manifest() -> dict[str, Any]:
     eft_g3_bundle = _require_eft_g3_bundle()
     eft_g4_g5_bundle = _require_eft_g4_g5_bundle()
     eft_g6_bundle = _require_eft_g6_bundle()
+    renormalizable_g1_component_tensor_bundle = (
+        _require_renormalizable_g1_component_tensor_bundle()
+    )
     workflow_counts = _require_workflow_contract()
     legacy_quarantine = _require_legacy_quarantine()
     checksum_count = _require_checksum_coverage()
@@ -1407,6 +1546,9 @@ def build_manifest() -> dict[str, Any]:
             "EFT_G6_mathematical_gate_core_sha256": (
                 EFT_G6_MATHEMATICAL_GATE_CORE_SHA256
             ),
+            "renormalizable_G1_component_tensor_core_sha256": (
+                RENORMALIZABLE_G1_COMPONENT_TENSOR_CORE_SHA256
+            ),
         },
         "exact_dimensions": {
             "map_shape": [6585, 19594],
@@ -1422,6 +1564,9 @@ def build_manifest() -> dict[str, Any]:
         "EFT_G3_bundle": eft_g3_bundle,
         "EFT_G4_G5_bundle": eft_g4_g5_bundle,
         "EFT_G6_bundle": eft_g6_bundle,
+        "renormalizable_G1_component_tensor_bundle": (
+            renormalizable_g1_component_tensor_bundle
+        ),
         "legacy_v20_quarantine": legacy_quarantine,
         "release_checksum_entry_count": checksum_count,
         "generation_source_pins": {
@@ -1437,6 +1582,9 @@ def build_manifest() -> dict[str, Any]:
                 sorted(EFT_G4_G5_RAW_PINS.items())
             ),
             "EFT_G6_raw_sha256": dict(sorted(EFT_G6_RAW_PINS.items())),
+            "renormalizable_G1_component_tensor_raw_sha256": dict(
+                sorted(RENORMALIZABLE_G1_COMPONENT_TENSOR_RAW_PINS.items())
+            ),
         },
         "claim_boundary": {
             "fixed_H": "h_-=(e0-i e1)/sqrt(2)",
@@ -1452,6 +1600,9 @@ def build_manifest() -> dict[str, Any]:
             "general_H_proved": False,
             "full_H_proved": False,
             "full_Hessian_proved": False,
+            "renormalizable_mathematical_G1_closed": True,
+            "authoritative_renormalizable_G1_closed": False,
+            "release_G1_verified": False,
             "renormalizable_G3_closed": False,
             "EFT_dimension6_mathematical_G3_closed": True,
             "EFT_release_G3_verified": False,

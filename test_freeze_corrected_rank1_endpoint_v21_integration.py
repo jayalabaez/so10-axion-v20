@@ -119,6 +119,12 @@ class CorrectedEndpointIntegrationFreezeTests(unittest.TestCase):
             report["logical_pins"]["EFT_G6_mathematical_gate_core_sha256"],
             freezer.EFT_G6_MATHEMATICAL_GATE_CORE_SHA256,
         )
+        self.assertEqual(
+            report["logical_pins"][
+                "renormalizable_G1_component_tensor_core_sha256"
+            ],
+            freezer.RENORMALIZABLE_G1_COMPONENT_TENSOR_CORE_SHA256,
+        )
         self.assertEqual(report["EFT_G3_bundle"]["raw_file_count"], 13)
         self.assertTrue(report["EFT_G3_bundle"]["all_checks_pass"])
         self.assertEqual(
@@ -134,14 +140,25 @@ class CorrectedEndpointIntegrationFreezeTests(unittest.TestCase):
         self.assertTrue(report["EFT_G6_bundle"]["all_checks_pass"])
         self.assertTrue(all(report["EFT_G6_bundle"]["checks"].values()))
         self.assertEqual(
+            report["renormalizable_G1_component_tensor_bundle"][
+                "raw_file_count"
+            ],
+            4,
+        )
+        self.assertTrue(
+            report["renormalizable_G1_component_tensor_bundle"][
+                "all_checks_pass"
+            ]
+        )
+        self.assertEqual(
             report["workflow_contract"],
             {
                 "corrected_assertion_heredocs": 7,
                 "legacy_rejection_assertions": 7,
                 "full_source_rebuild_invocations": 1,
                 "read_only_frozen_dependency_orchestrators": 3,
-                "read_only_frozen_report_sources": 17,
-                "read_only_frozen_report_commands": 51,
+                "read_only_frozen_report_sources": 18,
+                "read_only_frozen_report_commands": 54,
                 "no_write_frozen_classification_sources": 3,
                 "no_write_frozen_classification_commands": 9,
                 "no_write_stochastic_report_orchestrators": 2,
@@ -203,6 +220,13 @@ class CorrectedEndpointIntegrationFreezeTests(unittest.TestCase):
         self.assertFalse(
             report["claim_boundary"]["EFT_release_G6_verified"]
         )
+        self.assertTrue(
+            report["claim_boundary"]["renormalizable_mathematical_G1_closed"]
+        )
+        self.assertFalse(
+            report["claim_boundary"]["authoritative_renormalizable_G1_closed"]
+        )
+        self.assertFalse(report["claim_boundary"]["release_G1_verified"])
         for name in (
             "quantitative_beta_global_coercivity_proved",
             "legacy_v20_physical_target_valid",
@@ -254,6 +278,28 @@ class CorrectedEndpointIntegrationFreezeTests(unittest.TestCase):
             dict(sorted(freezer.EFT_G6_RAW_PINS.items())),
         )
         for relative, expected in freezer.EFT_G6_RAW_PINS.items():
+            row = report["inventory"][relative]
+            self.assertEqual(row["hash_mode"], "raw")
+            self.assertEqual(row["content_sha256"], expected)
+            self.assertIn(relative, freezer.CHECKSUM_REQUIRED_PATHS)
+
+        self.assertEqual(
+            len(freezer.RENORMALIZABLE_G1_COMPONENT_TENSOR_RAW_PINS), 4
+        )
+        self.assertEqual(
+            report["generation_source_pins"][
+                "renormalizable_G1_component_tensor_raw_sha256"
+            ],
+            dict(
+                sorted(
+                    freezer.RENORMALIZABLE_G1_COMPONENT_TENSOR_RAW_PINS.items()
+                )
+            ),
+        )
+        for (
+            relative,
+            expected,
+        ) in freezer.RENORMALIZABLE_G1_COMPONENT_TENSOR_RAW_PINS.items():
             row = report["inventory"][relative]
             self.assertEqual(row["hash_mode"], "raw")
             self.assertEqual(row["content_sha256"], expected)
@@ -337,6 +383,7 @@ class CorrectedEndpointIntegrationFreezeTests(unittest.TestCase):
                     freezer._require_eft_g4_g5_bundle()
 
         self._assert_eft_g6_logical_bundle_and_claim_boundary()
+        self._assert_renormalizable_g1_component_tensor_bundle()
 
     def _assert_eft_g6_logical_bundle_and_claim_boundary(self) -> None:
         bundle = freezer._require_eft_g6_bundle()
@@ -376,6 +423,49 @@ class CorrectedEndpointIntegrationFreezeTests(unittest.TestCase):
                     ArithmeticError, "frozen EFT G6 logical bundle drifted"
                 ):
                     freezer._require_eft_g6_bundle()
+
+    def _assert_renormalizable_g1_component_tensor_bundle(self) -> None:
+        bundle = freezer._require_renormalizable_g1_component_tensor_bundle()
+        self.assertEqual(bundle["raw_file_count"], 4)
+        self.assertTrue(bundle["all_checks_pass"])
+        self.assertTrue(all(bundle["checks"].values()))
+        self.assertTrue(bundle["checks"]["complete_28_44_51_tensor_ring_exact"])
+        self.assertTrue(bundle["checks"]["central_integration_completed_exact"])
+        self.assertTrue(
+            bundle["checks"][
+                "authoritative_and_release_claims_remain_fail_closed"
+            ]
+        )
+
+        with tempfile.TemporaryDirectory() as directory:
+            root = freezer.Path(directory)
+            names = (
+                "exact_gauged_u1x_g1_component_tensor_closure_v20.py",
+                "EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_CLOSURE_V20.json",
+            )
+            for name in names:
+                (root / name).write_bytes((freezer.ROOT / name).read_bytes())
+            with patch.object(freezer, "ROOT", root):
+                self.assertTrue(
+                    freezer._require_renormalizable_g1_component_tensor_bundle()[
+                        "all_checks_pass"
+                    ]
+                )
+                report_path = (
+                    root
+                    / "EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_CLOSURE_V20.json"
+                )
+                mutated = json.loads(report_path.read_text(encoding="utf-8"))
+                mutated["classification"]["authoritative_G1_promoted_closed"] = True
+                report_path.write_text(
+                    json.dumps(mutated, indent=2, sort_keys=True) + "\n",
+                    encoding="utf-8",
+                )
+                with self.assertRaisesRegex(
+                    ArithmeticError,
+                    "frozen renormalizable G1 component-tensor logical bundle drifted",
+                ):
+                    freezer._require_renormalizable_g1_component_tensor_bundle()
 
     def test_release_checksum_binds_adapter_regressions_and_workflows(self) -> None:
         lines = (freezer.ROOT / "SHA256SUMS").read_text(encoding="utf-8").splitlines()

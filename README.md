@@ -32,8 +32,10 @@ the model.
 - Every `16` component has a nonzero `10_H` Clifford channel
 - Charge-based absence of vector-neutral PQ closure through `P=7`
 - Finite repeated-pole kernel for the displayed `P=8` graph
-- The exact-`X` G1/G2 scoped calculation has 18 tensor families, 44 invariant
-  directions, 51 real parameters, and dense derivatives on 486 real fields
+- The exact-`X` mathematical G1 ring is complete: all 28 Hermitian conjugacy
+  orbits, 44 normalized component-tensor directions in 18 source-bound
+  families, and 51 real parameters are certified. The scoped G2 compiler has
+  dense derivatives on all 486 real fields
 - Three projector-gradient columns vanish exactly: the `54` and `1050bar`
   Sigma-self channels by a Gaussian-integer identity, and the mixed
   Phi-Sigma `210` channel by an exact integer/rational projector calculation.
@@ -201,10 +203,16 @@ No local Mathematica/SARAH installation is available, so the required external
 run and hash-bound process-log attestation are still absent. The repository
 therefore reports the authoritative G1-G8 release chain as **BLOCKED**, not
 closed or falsified.
-Exact `X` neutrality reduces the
-renormalizable scalar potential from the historical `64/91` compiler superset
-to `44` directions and `51` real parameters. The scoped G1/G2 calculation covers
-all 486 real fields, but this does not repair the scaffold or close the full model.
+Exact `X` neutrality reduces the renormalizable scalar potential from the
+historical `64/91` compiler superset to `44` directions and `51` real
+parameters. The source-bound G1 theorem now proves the complete normalized
+component-tensor basis for every one of those directions, including exact
+conjugacy, multiplicity, normalization, arbitrary-component evaluator, and
+derivative-owner bindings. No new interaction or fitted Clebsch is introduced.
+This closes mathematical G1, but it does not fabricate the missing external
+SARAH execution: authoritative/release G1 and the full model remain blocked.
+Run the theorem read-only with
+`python exact_gauged_u1x_g1_component_tensor_closure_v20.py`.
 
 The existing stationary point, historical 449-dimensional quotient,
 46-negative-mode saddle, and 80-iteration stability search all belong to the
@@ -383,9 +391,11 @@ $g_{a\gamma\gamma}\sim2.3\times10^{-14}\,{\rm GeV}^{-1}$ by MADMAX / ALPHA / ORG
 > The anomaly-cancellation and several scoped calculations are reproducible,
 > and the repository now has a statically consistent native-SARAH gauged
 > `U(1)_X` contract, but the external SARAH execution attestation is missing.
-> Exact-`X` G1/G2, the 449-dimensional gauge quotient
-> including the axion, and its 448-dimensional massive/transverse Hessian space
-> are scoped results. A perturbative 27-of-51 sum-of-squares candidate has an
+> The complete exact-`X` mathematical G1 component-tensor ring is certified at
+> 44 directions and 51 real parameters; authoritative G1 is still blocked by
+> the missing external execution attestation. Scoped G2, the 449-dimensional
+> gauge quotient including the axion, and its 448-dimensional massive/transverse
+> Hessian space remain scoped results. A perturbative 27-of-51 sum-of-squares candidate has an
 > exact complete-potential BFB and stationarity certificate. Direct exact-source
 > arithmetic proves `P+Delta_R` rank/nullity 429/33, full Hessian rank 448, and
 > a strict local minimum modulo the 38 symmetry tangents. An exact lower-energy

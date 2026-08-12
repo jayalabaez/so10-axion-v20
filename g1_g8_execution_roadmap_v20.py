@@ -14,6 +14,21 @@ import corrected_rank1_endpoint_v21 as corrected_rank1
 ROOT = Path(__file__).resolve().parent
 OUT_JSON = ROOT / "G1_G8_EXECUTION_ROADMAP_V20.json"
 OUT_MD = ROOT / "G1_G8_EXECUTION_ROADMAP_V20.md"
+G1_COMPONENT_TENSOR_JSON = (
+    ROOT / "EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_CLOSURE_V20.json"
+)
+G1_COMPONENT_TENSOR_SOURCE = (
+    ROOT / "exact_gauged_u1x_g1_component_tensor_closure_v20.py"
+)
+G1_COMPONENT_TENSOR_CORE_SHA256 = (
+    "32bed88b5fad0fe6e51cf19c3b3e120d53362150cfc1db6eafd8c897e24223b7"
+)
+G1_COMPONENT_TENSOR_RAW_SHA256 = (
+    "bec8587376c7dc5a29b45c9c7f0110fcbed98a3ae2d130aaf00bb42f6997aca4"
+)
+G1_COMPONENT_TENSOR_SOURCE_RAW_SHA256 = (
+    "ca2b92198cbb7cbe6c7051b9c5952bc4af1462ba33db02eaa126533213b1e87f"
+)
 EFT_G3_JSON = ROOT / "FINAL_G3_EFT_ACCEPTANCE_GATE_V20.json"
 EFT_G3_CORE_SHA256 = (
     "472770981ee7f9ad5880d614826e687c6d9402c286980b421a2bad7d079f09fb"
@@ -69,19 +84,18 @@ TASKS: list[dict[str, Any]] = [
         "wave": 1,
         "gates": ["G1"],
         "status": (
-            "MULTIPLICITY_CENSUS_COMPLETE__FULL_COMPONENT_TENSOR_INTEGRATION_"
-            "OPEN__MODEL_CONTRACT_BLOCKED"
+            "SOURCE_BOUND_FULL_MATHEMATICAL_G1_COMPONENT_RING_COMPLETE__"
+            "MODEL_CONTRACT_BLOCKED"
         ),
         "issue": 176,
         "deliverable": (
-            "complete and source-bind the explicit component-tensor/Clebsch "
-            "integration for the recertified 28-orbit, 44-direction, "
-            "51-parameter multiplicity census"
+            "promote the source-bound 28-orbit, 44-direction, 51-parameter "
+            "mathematical G1 component-tensor theorem after external SARAH attestation"
         ),
         "acceptance": (
-            "the multiplicity census remains green, the explicit component-tensor "
-            "subset integration closes, and full G1 carries the repaired executable "
-            "contract ID"
+            "the separate multiplicity census remains scoped, the component-tensor "
+            "theorem remains raw/core/source bound, and authoritative G1 carries a "
+            "valid external executable-contract attestation"
         ),
     },
     {
@@ -89,12 +103,12 @@ TASKS: list[dict[str, Any]] = [
         "wave": 2,
         "gates": ["G2"],
         "status": (
-            "SCOPED_DERIVATIVE_AUDIT_COMPLETE__BLOCKED_ON_MODEL_CONTRACT_AND_FULL_G1"
+            "SCOPED_DERIVATIVE_AUDIT_COMPLETE__BLOCKED_ON_MODEL_CONTRACT"
         ),
         "issue": 176,
         "deliverable": (
             "promote the completed 44/51/486 component-potential derivative, "
-            "Hessian, and Ward audit only after full G1 and the executable contract close"
+            "Hessian, and Ward audit after the executable contract promotes mathematical G1"
         ),
         "acceptance": (
             "all SO(10)xU(1)_X Ward identities stay green; all three exact "
@@ -284,6 +298,37 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
         "G8",
     ]
     contract_consistent = bool(gate_report["contract_consistent"])
+    g1_component_tensor = ledger._load_json_artifact(G1_COMPONENT_TENSOR_JSON)
+    g1_component_tensor_raw_sha256 = ledger._raw_file_sha256(
+        G1_COMPONENT_TENSOR_JSON
+    )
+    g1_component_tensor_source_raw_sha256 = ledger._raw_file_sha256(
+        G1_COMPONENT_TENSOR_SOURCE
+    )
+    direct_g1_component_tensor = (
+        ledger._renormalizable_g1_component_tensor_closure(
+            g1_component_tensor,
+            raw_sha256=g1_component_tensor_raw_sha256,
+            source_raw_sha256=g1_component_tensor_source_raw_sha256,
+        )
+    )
+    ledger_g1_component_tensor = gate_report.get(
+        "renormalizable_G1_component_tensor_closure", {}
+    )
+    mathematical_g1_component_tensor_closed = bool(
+        G1_COMPONENT_TENSOR_CORE_SHA256
+        == ledger.RENORMALIZABLE_G1_COMPONENT_TENSOR_CORE_SHA256
+        and G1_COMPONENT_TENSOR_RAW_SHA256
+        == ledger.RENORMALIZABLE_G1_COMPONENT_TENSOR_RAW_SHA256
+        and G1_COMPONENT_TENSOR_SOURCE_RAW_SHA256
+        == ledger.RENORMALIZABLE_G1_COMPONENT_TENSOR_SOURCE_RAW_SHA256
+        and direct_g1_component_tensor["source_bound"] is True
+        and direct_g1_component_tensor == ledger_g1_component_tensor
+        and direct_g1_component_tensor[
+            "mathematical_G1_closed_for_renormalizable_model"
+        ]
+        is True
+    )
     try:
         eft_g3 = json.loads(EFT_G3_JSON.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError):
@@ -402,6 +447,18 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
     task_statuses = {task["id"]: task["status"] for task in tasks}
     checks = {
         "gate_ledger_audit_executes": gate_report["n_failed"] == 0,
+        "renormalizable_G1_component_tensor_raw_core_source_bound": (
+            mathematical_g1_component_tensor_closed
+            and direct_g1_component_tensor["raw_sha256"]
+            == G1_COMPONENT_TENSOR_RAW_SHA256
+            and direct_g1_component_tensor["core_sha256"]
+            == G1_COMPONENT_TENSOR_CORE_SHA256
+            and direct_g1_component_tensor["source_raw_sha256"]
+            == G1_COMPONENT_TENSOR_SOURCE_RAW_SHA256
+            and direct_g1_component_tensor["authoritative_G1_promoted_closed"]
+            is False
+            and direct_g1_component_tensor["release_G1_verified"] is False
+        ),
         "parallel_EFT_G3_acceptance_raw_and_core_bound": (
             parallel_eft_g3_closed
             and direct_parallel_eft_g3["raw_sha256"] == EFT_G3_RAW_SHA256
@@ -486,15 +543,18 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
             and historical["G3"]["strict_local_minimum_found"] is False
             and gates["G3"]["status"] != ledger.STATUS_CLOSED
         ),
-        "gauged_G1_multiplicity_census_and_G2_scoped_audit_recorded": (
+        "gauged_G1_mathematical_component_ring_and_G2_scoped_audit_recorded": (
             gauged["G1"]["invariant_directions"] == 44
             and gauged["G1"]["real_potential_parameters"] == 51
             and gauged["G1"]["multiplicity_census_complete"] is True
-            and gauged["G1"]["full_G1_closed"] is False
+            and gauged["G1"]["character_census_remains_multiplicity_only"] is True
+            and gauged["G1"]["full_G1_closed"] is True
             and gauged["G2"]["real_field_dimension"] == 486
             and gauged["G2"]["scoped_derivative_audit_complete"] is True
             and gauged["G2"]["authoritative_promotion_blocked_on_full_G1"]
-            is True
+            is False
+            and gauged["G2"]["authoritative_promotion_blocked_on_model_contract"]
+            == (not contract_consistent)
             and gauged["G2"]["promoted_stationarity_rank"] == 13
             and gauged["G2"]["promoted_stationarity_nullity"] == 38
             and gauged["G2"][
@@ -503,7 +563,7 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
             and gauged["G2"]["stationarity_rank_13_exactly_certified"] is True
             and gauged["G2"]["stationarity_nullity_38_exactly_certified"] is True
             and gates["G1"]["scoped_calculation_complete"] is True
-            and gates["G1"]["full_gate_calculation_complete"] is False
+            and gates["G1"]["full_gate_calculation_complete"] is True
             and gates["G2"]["scoped_calculation_complete"] is True
         ),
         "constructive_G3_frontier_artifacts_are_integrated": (
@@ -898,15 +958,16 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
         and statuses["G1"] == ledger.STATUS_CLOSED
         and statuses["G2"] == ledger.STATUS_CLOSED
         else "Wave 0 MODEL_CONTRACT is the first critical-path task. All G1-G8 "
-        "gates are BLOCKED and none is closed. The exact G1 multiplicity census "
-        "is complete at 28 Hermitian conjugacy orbits, 44 directions, and 51 "
-        "parameters, while its explicit component-tensor/Clebsch integration "
-        "remains open. The scoped G2 derivative audit is complete at 44/51/486. Three "
+        "authoritative gates are BLOCKED and none is closed. The exact G1 "
+        "multiplicity census remains a distinct scoped theorem at 28 Hermitian "
+        "conjugacy orbits, while the separate raw/core/source-bound component-tensor "
+        "theorem closes the mathematical ring at 44 directions, 51 parameters, and "
+        "18 tensor families. The scoped G2 derivative audit is complete at 44/51/486. Three "
         "structural gradient columns vanish exactly; a compiler-bound nonzero "
         "13x13 minor and exact full-row factorization prove stationarity "
         "rank/nullity 13/38, with SVD retained only as a diagnostic. G2 does not "
-        "require recalculation, but cannot be promoted before full G1 and the "
-        "model contract close. G3 now has a 27-of-51 perturbative SOS "
+        "require recalculation, but G1/G2 cannot be authoritatively promoted before "
+        "the external model contract closes. G3 now has a 27-of-51 perturbative SOS "
         "candidate with J0=-21/200. Exact source-bound SOS identities prove "
         "stationarity and complete BFB. Direct exact arithmetic gives P+Delta "
         "rank/nullity 429/33 and proves positivity on all 448 transverse Hessian "
@@ -998,6 +1059,24 @@ def _build_report_from_ledger(gate_report: dict[str, Any]) -> dict[str, Any]:
         "historical_option_c_subtheorems": historical,
         "gauged_u1x_scalar_subtheorems": gauged,
         "gauged_u1x_g3_constructive_frontier": g3_frontier,
+        "renormalizable_G1_component_tensor_resolution": {
+            "theorem": G1_COMPONENT_TENSOR_JSON.name,
+            "source": G1_COMPONENT_TENSOR_SOURCE.name,
+            "source_bound": direct_g1_component_tensor["source_bound"],
+            "raw_sha256": g1_component_tensor_raw_sha256,
+            "expected_raw_sha256": G1_COMPONENT_TENSOR_RAW_SHA256,
+            "core_sha256": g1_component_tensor.get("core_sha256"),
+            "expected_core_sha256": G1_COMPONENT_TENSOR_CORE_SHA256,
+            "source_raw_sha256": g1_component_tensor_source_raw_sha256,
+            "expected_source_raw_sha256": G1_COMPONENT_TENSOR_SOURCE_RAW_SHA256,
+            "mathematical_G1_closed": mathematical_g1_component_tensor_closed,
+            "authoritative_G1_promoted_closed": False,
+            "release_G1_verified": False,
+            "downstream_integration_completed": direct_g1_component_tensor[
+                "downstream_integration_completed"
+            ],
+            "release_blockers": direct_g1_component_tensor["release_blockers"],
+        },
         "parallel_EFT_G3_resolution": {
             "gate": EFT_G3_JSON.name,
             "source_bound": direct_parallel_eft_g3["source_bound"],

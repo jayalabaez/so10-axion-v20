@@ -4,16 +4,17 @@
 The manuscript's gauged U(1)_X contract is authoritative.  The repository now
 contains a statically consistent, tool-native SARAH input for that gauge
 contract, but no current external SARAH execution attestation is available.
-Consequently no whole-theory gate may yet be reported closed.  The former
+Consequently no authoritative whole-theory gate may yet be reported closed.  The former
 64-direction/91-parameter G1/G2 calculations and
 their 449-dimensional G3 quotient remain valuable, but only as explicitly
 scoped historical Option-C subtheorems.
 
 Scientific blocking is not an audit execution failure: a correct current
 report has ``n_failed=0``, ``overall_state=BLOCKED``, and no closed gates.  The
-exact-X 44-direction/51-parameter multiplicity census and the G2 derivative
-audit are completed scoped subtheorems, while the explicit component-tensor
-integration required for full G1 remains open.
+exact-X 44-direction/51-parameter multiplicity census, the source-bound
+component-tensor G1 ring, and the G2 derivative audit are completed scoped
+subtheorems.  Their authoritative promotion remains fail-closed on the external
+SARAH execution attestation.
 """
 from __future__ import annotations
 
@@ -37,6 +38,24 @@ import corrected_rank1_endpoint_v21 as corrected_rank1
 ROOT = Path(__file__).resolve().parent
 OUT_JSON = ROOT / "G1_G8_GATE_LEDGER_V20.json"
 OUT_MD = ROOT / "G1_G8_GATE_LEDGER_V20.md"
+RENORMALIZABLE_G1_COMPONENT_TENSOR_JSON = (
+    ROOT / "EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_CLOSURE_V20.json"
+)
+RENORMALIZABLE_G1_COMPONENT_TENSOR_SOURCE = (
+    ROOT / "exact_gauged_u1x_g1_component_tensor_closure_v20.py"
+)
+RENORMALIZABLE_G1_COMPONENT_TENSOR_CORE_SHA256 = (
+    "32bed88b5fad0fe6e51cf19c3b3e120d53362150cfc1db6eafd8c897e24223b7"
+)
+RENORMALIZABLE_G1_COMPONENT_TENSOR_RAW_SHA256 = (
+    "bec8587376c7dc5a29b45c9c7f0110fcbed98a3ae2d130aaf00bb42f6997aca4"
+)
+RENORMALIZABLE_G1_COMPONENT_TENSOR_SOURCE_RAW_SHA256 = (
+    "ca2b92198cbb7cbe6c7051b9c5952bc4af1462ba33db02eaa126533213b1e87f"
+)
+RENORMALIZABLE_G1_DIRECTION_MAP_SHA256 = (
+    "657b739208f46ece75bfed977aa30ce1baa25f7aeed861b81007e81c7551684d"
+)
 G3_SOS_JSON = ROOT / "GAUGED_U1X_G3_SOS_CANDIDATE_V20.json"
 G3_PD_JSON = ROOT / "EXACT_GAUGED_U1X_G3_PD_RANK_CERTIFICATE_V20.json"
 G3_A_SQUARE_JSON = ROOT / "EXACT_GAUGED_U1X_G3_A_SQUARE_RECOUPLING_V20.json"
@@ -319,6 +338,162 @@ def _load_json_artifact(path: Path) -> dict[str, Any]:
     except (OSError, json.JSONDecodeError):
         return {}
     return value if isinstance(value, dict) else {}
+
+
+def _renormalizable_g1_component_tensor_closure(
+    report: dict[str, Any],
+    *,
+    raw_sha256: str = "",
+    source_raw_sha256: str = "",
+) -> dict[str, Any]:
+    """Validate the source-bound mathematical G1 theorem without fabricating release."""
+    closure = report.get("closure", {})
+    classification = report.get("classification", {})
+    counts = report.get("counts", {})
+    integration = report.get("integration", {})
+    release_blockers = set(report.get("release_blockers", []))
+    integration_keys = {
+        "consumed_by_central_G1_G8_ledger",
+        "consumed_by_execution_roadmap",
+        "consumed_by_validation_matrix",
+        "release_orchestrators_execute_read_only",
+    }
+    integration_values = {
+        name: integration.get(name) for name in sorted(integration_keys)
+    }
+    integration_complete = bool(
+        set(integration) == integration_keys
+        and all(value is True for value in integration_values.values())
+    )
+    integration_pending = bool(
+        set(integration) == integration_keys
+        and all(value is False for value in integration_values.values())
+    )
+    integration_blocker = "G1_COMPONENT_TENSOR_CLOSURE_DOWNSTREAM_INTEGRATION_REQUIRED"
+    integration_state_fail_closed = bool(
+        (integration_complete and integration_blocker not in release_blockers)
+        or (integration_pending and integration_blocker in release_blockers)
+    )
+    direction_ids = list(report.get("direction_ids", []))
+    parameter_ids = list(report.get("parameter_ids", []))
+    family_ids = list(report.get("family_ids", []))
+    embedded_checks = report.get("checks", {})
+    source_hashes = report.get("source_sha256", {})
+    checks = {
+        "artifact_present": bool(report),
+        "status_exact": (
+            report.get("status")
+            == "EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_RING_CLOSED"
+            and report.get("overall_state") == "CLOSED_SUBPROBLEM"
+            and report.get("n_failed") == 0
+            and report.get("failures") == []
+        ),
+        "core_sha256_exact": (
+            report.get("core_sha256")
+            == RENORMALIZABLE_G1_COMPONENT_TENSOR_CORE_SHA256
+        ),
+        "raw_sha256_exact": (
+            raw_sha256 == RENORMALIZABLE_G1_COMPONENT_TENSOR_RAW_SHA256
+        ),
+        "source_raw_sha256_exact": (
+            source_raw_sha256
+            == RENORMALIZABLE_G1_COMPONENT_TENSOR_SOURCE_RAW_SHA256
+        ),
+        "model_contract_exact": (
+            report.get("model_contract_id") == AUTHORITATIVE_CONTRACT_ID
+        ),
+        "canonical_direction_map_exact": (
+            report.get("canonical_direction_map_sha256")
+            == RENORMALIZABLE_G1_DIRECTION_MAP_SHA256
+        ),
+        "counts_exact": (
+            counts.get("multidegrees") == 34
+            and counts.get("Hermitian_conjugacy_orbits") == 28
+            and counts.get("invariant_directions") == 44
+            and counts.get("self_conjugate_directions") == 37
+            and counts.get("complex_paired_directions") == 7
+            and counts.get("real_parameters") == 51
+            and counts.get("tensor_families") == 18
+            and counts.get("real_field_dimension") == 486
+        ),
+        "canonical_ids_are_complete_and_unique": (
+            len(direction_ids) == len(set(direction_ids)) == 44
+            and len(parameter_ids) == len(set(parameter_ids)) == 51
+            and len(family_ids) == len(set(family_ids)) == 18
+            and sum(item.startswith("lambda::") for item in parameter_ids) == 37
+            and sum(item.startswith("re::") for item in parameter_ids) == 7
+            and sum(item.startswith("im::") for item in parameter_ids) == 7
+        ),
+        "all_embedded_mathematical_checks_pass": (
+            len(embedded_checks) == 21
+            and all(value is True for value in embedded_checks.values())
+        ),
+        "all_source_hashes_are_portable_sha256": (
+            report.get("source_hash_convention")
+            == "text bytes canonicalized to LF before SHA-256"
+            and len(source_hashes) == 18
+            and all(
+                isinstance(value, str)
+                and len(value) == 64
+                and set(value).issubset(set("0123456789abcdef"))
+                for value in source_hashes.values()
+            )
+        ),
+        "mathematical_G1_closure_exact": (
+            closure.get("declared_symmetry_charge_multidegrees_degree_le_4_closed")
+            is True
+            and closure.get("so10_singlet_multiplicities_degree_le_4_closed")
+            is True
+            and closure.get("gauged_u1x_44_direction_subcensus_closed") is True
+            and closure.get("explicit_component_tensor_subset_integration_closed")
+            is True
+            and closure.get("normalized_component_tensor_basis_all_44_directions_closed")
+            is True
+            and closure.get("full_renormalizable_G1_mathematical_ring_closed")
+            is True
+            and closure.get("external_model_execution_contract_closed") is False
+        ),
+        "mathematical_not_authoritative_or_release": (
+            classification.get("scoped_mathematical_G1_closed") is True
+            and classification.get("authoritative_G1_promoted_closed") is False
+            and classification.get("release_G1_verified") is False
+            and classification.get("renormalizable_model_mutated") is False
+            and classification.get("new_physics_required_for_G1") is False
+        ),
+        "external_SARAH_blocker_preserved": CONTRACT_BLOCKER in release_blockers,
+        "downstream_integration_state_is_fail_closed": integration_state_fail_closed,
+    }
+    source_bound = all(checks.values())
+    return {
+        "namespace": "RENORMALIZABLE_G1_COMPONENT_TENSOR_CLOSURE",
+        "artifact": RENORMALIZABLE_G1_COMPONENT_TENSOR_JSON.name,
+        "source": RENORMALIZABLE_G1_COMPONENT_TENSOR_SOURCE.name,
+        "expected_core_sha256": RENORMALIZABLE_G1_COMPONENT_TENSOR_CORE_SHA256,
+        "core_sha256": report.get("core_sha256"),
+        "expected_raw_sha256": RENORMALIZABLE_G1_COMPONENT_TENSOR_RAW_SHA256,
+        "raw_sha256": raw_sha256,
+        "expected_source_raw_sha256": (
+            RENORMALIZABLE_G1_COMPONENT_TENSOR_SOURCE_RAW_SHA256
+        ),
+        "source_raw_sha256": source_raw_sha256,
+        "expected_direction_map_sha256": RENORMALIZABLE_G1_DIRECTION_MAP_SHA256,
+        "direction_map_sha256": report.get("canonical_direction_map_sha256"),
+        "model_contract_id": report.get("model_contract_id"),
+        "source_bound": source_bound,
+        "mathematical_G1_closed_for_renormalizable_model": bool(
+            source_bound
+            and classification.get("scoped_mathematical_G1_closed") is True
+        ),
+        "authoritative_G1_promoted_closed": False,
+        "release_G1_verified": False,
+        "renormalizable_model_mutated": False,
+        "new_physics_required_for_G1": False,
+        "downstream_integration_completed": integration_complete,
+        "integration": integration_values,
+        "release_blockers": list(report.get("release_blockers", [])) if source_bound else [],
+        "counts": dict(counts) if source_bound else {},
+        "checks": checks,
+    }
 
 
 def _parallel_eft_g3_acceptance(
@@ -4406,6 +4581,7 @@ def _gauged_u1x_g3_frontier(
 
 def _gauged_u1x_scalar_subtheorems(
     g1_report: dict[str, Any],
+    g1_component_tensor_closure: dict[str, Any],
     g2_report: dict[str, Any],
     *,
     contract_consistent: bool,
@@ -4425,14 +4601,19 @@ def _gauged_u1x_scalar_subtheorems(
         and g1_flags.get("renormalizable_G1_multiplicity_census_closed") is True
     )
     g1_component_tensors_complete = bool(
-        g1_closure.get("explicit_component_tensor_subset_integration_closed")
+        g1_component_tensor_closure.get("source_bound") is True
+        and g1_component_tensor_closure.get(
+            "mathematical_G1_closed_for_renormalizable_model"
+        )
         is True
-        and g1_flags.get("g1_explicit_tensor_subset_reaudit_open") is False
+        and g1_component_tensor_closure.get("model_contract_id")
+        == AUTHORITATIVE_CONTRACT_ID
+        and g1_component_tensor_closure.get("direction_map_sha256")
+        == RENORMALIZABLE_G1_DIRECTION_MAP_SHA256
     )
     full_g1_closed = bool(
         g1_multiplicity_census_complete
         and g1_component_tensors_complete
-        and g1_flags.get("g1_closed") is True
     )
     g2_scoped_audit_complete = bool(
         g2_report.get("n_failed") == 0
@@ -4455,6 +4636,9 @@ def _gauged_u1x_scalar_subtheorems(
         "blocked_only_from_promotion_by_model_contract_mismatch": (
             not contract_consistent and full_g1_closed
         ),
+        "renormalizable_G1_component_tensor_closure": (
+            g1_component_tensor_closure
+        ),
         "G1": {
             "scoped_status": (
                 "COMPLETE_GAUGED_U1X_MULTIPLICITY_CENSUS__FULL_G1_OPEN"
@@ -4467,8 +4651,26 @@ def _gauged_u1x_scalar_subtheorems(
             "explicit_component_tensor_subset_integration_complete": (
                 g1_component_tensors_complete
             ),
+            "mathematical_component_tensor_closure_complete": (
+                g1_component_tensors_complete
+            ),
+            "character_census_remains_multiplicity_only": bool(
+                g1_closure.get("explicit_component_tensor_subset_integration_closed")
+                is False
+                and g1_flags.get("g1_explicit_tensor_subset_reaudit_open") is True
+                and g1_flags.get("g1_closed") is False
+            ),
             "full_G1_closed": full_g1_closed,
-            "remaining_exact_target": g1_report.get("next_exact_target"),
+            "full_renormalizable_G1_mathematical_ring_closed": full_g1_closed,
+            "authoritative_G1_promoted_closed": bool(
+                contract_consistent and full_g1_closed
+            ),
+            "release_G1_verified": bool(contract_consistent and full_g1_closed),
+            "remaining_exact_target": (
+                "Supply the hash-bound external SARAH v2 execution attestation."
+                if full_g1_closed
+                else "Restore the source-bound 44-direction component-tensor theorem."
+            ),
             "hermitian_conjugacy_orbits": g1_report["counts"][
                 "hermitian_conjugacy_orbits"
             ],
@@ -4483,6 +4685,12 @@ def _gauged_u1x_scalar_subtheorems(
             "scoped_status": "COMPLETE_GAUGED_U1X_DENSE_DERIVATIVE_AUDIT",
             "scoped_derivative_audit_complete": g2_scoped_audit_complete,
             "authoritative_promotion_blocked_on_full_G1": not full_g1_closed,
+            "authoritative_promotion_blocked_on_model_contract": (
+                not contract_consistent
+            ),
+            "authoritative_promotion_ready_after_model_contract": bool(
+                full_g1_closed and g2_scoped_audit_complete
+            ),
             "invariant_directions": g2_report["counts"]["invariant_directions"],
             "real_potential_parameters": g2_report["counts"]["real_parameters"],
             "real_field_dimension": g2_report["counts"]["real_field_dimension"],
@@ -4682,6 +4890,9 @@ def _build_report_from_inputs(
     g1_report: dict[str, Any],
     g2_report: dict[str, Any],
     filter_report: dict[str, Any],
+    g1_component_tensor_report: dict[str, Any] | None = None,
+    g1_component_tensor_raw_sha256: str | None = None,
+    g1_component_tensor_source_raw_sha256: str | None = None,
     g3_sos_report: dict[str, Any] | None = None,
     g3_pd_report: dict[str, Any] | None = None,
     g3_a_square_report: dict[str, Any] | None = None,
@@ -4728,8 +4939,26 @@ def _build_report_from_inputs(
     )
     contract_blocker = str(x_report.get("blocker") or CONTRACT_BLOCKER)
     historical = _historical_option_c_subtheorems()
+    if g1_component_tensor_report is None:
+        g1_component_tensor_report = _load_json_artifact(
+            RENORMALIZABLE_G1_COMPONENT_TENSOR_JSON
+        )
+    if g1_component_tensor_raw_sha256 is None:
+        g1_component_tensor_raw_sha256 = _raw_file_sha256(
+            RENORMALIZABLE_G1_COMPONENT_TENSOR_JSON
+        )
+    if g1_component_tensor_source_raw_sha256 is None:
+        g1_component_tensor_source_raw_sha256 = _raw_file_sha256(
+            RENORMALIZABLE_G1_COMPONENT_TENSOR_SOURCE
+        )
+    g1_component_tensor_closure = _renormalizable_g1_component_tensor_closure(
+        g1_component_tensor_report,
+        raw_sha256=g1_component_tensor_raw_sha256,
+        source_raw_sha256=g1_component_tensor_source_raw_sha256,
+    )
     scoped = _gauged_u1x_scalar_subtheorems(
         g1_report,
+        g1_component_tensor_closure,
         g2_report,
         contract_consistent=contract_consistent,
     )
@@ -5068,22 +5297,35 @@ def _build_report_from_inputs(
         "gauged_G1_multiplicity_census_is_complete": (
             scoped["G1"]["multiplicity_census_complete"] is True
         ),
-        "gauged_G1_full_component_tensor_integration_is_honestly_open": (
-            scoped["G1"][
+        "gauged_G1_component_tensor_theorem_is_source_bound_and_mathematically_closed": (
+            g1_component_tensor_closure["source_bound"] is True
+            and g1_component_tensor_closure[
+                "mathematical_G1_closed_for_renormalizable_model"
+            ]
+            is True
+            and scoped["G1"][
                 "explicit_component_tensor_subset_integration_complete"
             ]
-            is False
-            and scoped["G1"]["full_G1_closed"] is False
+            is True
+            and scoped["G1"]["full_G1_closed"] is True
+        ),
+        "gauged_G1_character_census_remains_multiplicity_only": (
+            scoped["G1"]["character_census_remains_multiplicity_only"] is True
             and g1_report.get("flags", {}).get(
                 "g1_explicit_tensor_subset_reaudit_open"
             )
             is True
             and g1_report.get("flags", {}).get("g1_closed") is False
         ),
-        "full_G1_never_closes_without_component_tensor_integration": (
+        "full_G1_never_closes_without_source_bound_component_tensor_theorem": (
             statuses["G1"] != STATUS_CLOSED
             or (
                 contract_consistent
+                and g1_component_tensor_closure["source_bound"] is True
+                and g1_component_tensor_closure[
+                    "mathematical_G1_closed_for_renormalizable_model"
+                ]
+                is True
                 and scoped["G1"][
                     "explicit_component_tensor_subset_integration_complete"
                 ]
@@ -5581,7 +5823,7 @@ def _build_report_from_inputs(
     else:
         status = (
             "G1_G8_LEDGER_AUDIT_COMPLETE__MODEL_CONTRACT_BLOCKED__"
-            "G1_MULTIPLICITY_CENSUS_AND_G2_DERIVATIVE_AUDIT_RECERTIFIED"
+            "MATHEMATICAL_G1_COMPONENT_RING_AND_G2_DERIVATIVE_AUDIT_RECERTIFIED"
         )
         overall_state = STATUS_BLOCKED
 
@@ -5613,10 +5855,12 @@ def _build_report_from_inputs(
             "wave": 1,
             "gates": ["G1"],
             "status": gates["G1"]["status"],
-            "scoped_calculation_status": "MULTIPLICITY_CENSUS_COMPLETE__FULL_G1_OPEN",
+            "scoped_calculation_status": (
+                "SOURCE_BOUND_FULL_RENORMALIZABLE_G1_MATHEMATICAL_RING_CLOSED"
+            ),
             "deliverable": (
-                "Complete and source-bind the explicit component-tensor/Clebsch "
-                "integration for the exact 44-direction/51-parameter census."
+                "Promote the source-bound 44-direction/51-parameter mathematical "
+                "G1 theorem only after the external SARAH contract attestation."
             ),
         },
         {
@@ -5626,7 +5870,8 @@ def _build_report_from_inputs(
             "scoped_calculation_status": "DENSE_DERIVATIVE_AUDIT_COMPLETE",
             "deliverable": (
                 "Promote the completed 44/51/486 derivative and Ward audit only "
-                "after full G1 component-tensor integration and scaffold repair."
+                "after the source-bound mathematical G1 theorem and external SARAH "
+                "contract are both authoritative."
             ),
         },
         {
@@ -5716,13 +5961,15 @@ def _build_report_from_inputs(
         "gauged-U(1)_X SARAH input, charge catalogues, Lagrangian registration, "
         "and hash-bound validation bundle are now statically consistent; Wave 0 "
         "still requires a real external SARAH execution attestation. The gauged G1 "
-        "multiplicity census and G2 dense derivative theorem are already recertified as "
-        "44 directions, 51 parameters, and 486 fields. Three structural gradient "
+        "multiplicity census, source-bound normalized component-tensor ring, and G2 "
+        "dense derivative theorem are recertified as 44 directions, 51 parameters, "
+        "18 tensor families, and 486 fields. Three structural gradient "
         "columns vanish exactly; matching exact lower- and upper-rank certificates "
         "prove stationarity rank/nullity 13/38. "
-        "The G1 explicit component-tensor/Clebsch integration remains open; the "
-        "G2 scoped audit does not require recalculation but cannot be promoted before "
-        "full G1 and the model contract close. A perturbative "
+        "The character census remains explicitly multiplicity-only; the separate G1 "
+        "theorem supplies its complete source-bound tensor integration without changing "
+        "that census scope. G1 and the G2 scoped audit cannot be promoted until the "
+        "external model contract closes. A perturbative "
         "27-of-51 SOS candidate with J0=-21/200 is explicit. Exact source-bound "
         "SOS identities prove complete-potential BFB and stationarity. Direct "
         "Gaussian-integer/Fraction/Q(sqrt(2)) assembly gives P+Delta rank/nullity "
@@ -5800,6 +6047,7 @@ def _build_report_from_inputs(
         "model_contract_reports": {
             "exact_X": x_report,
             "gauged_G1_character_census": g1_report,
+            "gauged_G1_component_tensor_closure": g1_component_tensor_report,
             "gauged_G2_derivative_audit": g2_report,
             "gauged_scalar_filter": filter_report,
             "gauged_G3_SOS_candidate": g3_sos_report,
@@ -5877,6 +6125,9 @@ def _build_report_from_inputs(
                 final_g6_eft_mathematical_report
             ),
         },
+        "renormalizable_G1_component_tensor_closure": (
+            g1_component_tensor_closure
+        ),
         "gauged_u1x_scalar_subtheorems": scoped,
         "gauged_u1x_g3_constructive_frontier": g3_frontier,
         "parallel_EFT_G3_acceptance": parallel_eft_g3_acceptance,

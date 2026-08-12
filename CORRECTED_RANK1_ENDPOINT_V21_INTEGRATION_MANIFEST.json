@@ -86,6 +86,7 @@
     "G4_closed": false,
     "all_PD_equality_orbits_classified_exactly": true,
     "arbitrary_real_Phi_at_fixed_endpoint": true,
+    "authoritative_renormalizable_G1_closed": false,
     "authoritative_renormalizable_G6_closed": false,
     "fixed_H": "h_-=(e0-i e1)/sqrt(2)",
     "fixed_Sigma": "q/4",
@@ -97,9 +98,11 @@
     "legacy_v20_physical_target_valid": false,
     "legacy_v20_primal_valid": false,
     "quantitative_beta_global_coercivity_proved": false,
+    "release_G1_verified": false,
     "renormalizable_G3_closed": false,
     "renormalizable_G4_closed": false,
-    "renormalizable_G5_closed": false
+    "renormalizable_G5_closed": false,
+    "renormalizable_mathematical_G1_closed": true
   },
   "exact_dimensions": {
     "coefficient_equalities": 6585,
@@ -191,12 +194,18 @@
       "exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py": "8493a90d9b689bc02479151529ac697425f56087f2bdbebb40176f418b7c0ff8",
       "exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py": "28633a2dba4d70f019a3e63ca87e8224ca11630a9e7c53bc963aedc6824208c1",
       "exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py": "76fa77c99b8d6e963e8694acf74280de29ced4c7a7623bffa991aead77329f49"
+    },
+    "renormalizable_G1_component_tensor_raw_sha256": {
+      "EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_CLOSURE_V20.json": "bec8587376c7dc5a29b45c9c7f0110fcbed98a3ae2d130aaf00bb42f6997aca4",
+      "EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_CLOSURE_V20.md": "b5901f73551750524d369e8327c93b00ebb791c312e379dd571f2f6be915c955",
+      "exact_gauged_u1x_g1_component_tensor_closure_v20.py": "ca2b92198cbb7cbe6c7051b9c5952bc4af1462ba33db02eaa126533213b1e87f",
+      "test_exact_gauged_u1x_g1_component_tensor_closure_v20.py": "084c168bb622b3a56ed06cc885571423135e375e48dbe99a616ab657fd4ebc3e"
     }
   },
   "inventory": {
     ".gitattributes": {
-      "content_sha256": "2b1bf831fef1f40e1096e6f6c8cef472637569e16de198a4f56ba4e1d92b06f2",
-      "content_size_bytes": 5927,
+      "content_sha256": "672999182967737364c808890dcadf98acd86fe4317ff7c3ae105cc6480ff8ae",
+      "content_size_bytes": 6285,
       "hash_mode": "raw",
       "role": "central corrected-endpoint integration source"
     },
@@ -207,20 +216,20 @@
       "role": "CI orchestration and claim-boundary enforcement"
     },
     ".github/workflows/g1-g8-execution-roadmap.yml": {
-      "content_sha256": "047bccb52be77fcc03d0d0a7cad0cce38b3c1b9cd22118959fd814245266513d",
-      "content_size_bytes": 40101,
+      "content_sha256": "f7f1bd5a2d011e13b5fa299ed09ddf3642424286c9106ff826c7a9ae84b0744f",
+      "content_size_bytes": 40778,
       "hash_mode": "portable-lf",
       "role": "CI orchestration and claim-boundary enforcement"
     },
     ".github/workflows/g1-g8-gate-ledger.yml": {
-      "content_sha256": "7fb807b39eb1096b0cf258a57d9e507e7eb0b06e4d9fb0cc812325b59405a322",
-      "content_size_bytes": 49031,
+      "content_sha256": "eb7c806d3dd7ea2148486f5fe611217793cb0c0c321c581aed020ac1c3d9df78",
+      "content_size_bytes": 49971,
       "hash_mode": "portable-lf",
       "role": "CI orchestration and claim-boundary enforcement"
     },
     ".github/workflows/gauged-u1x-g3-stability.yml": {
-      "content_sha256": "2a5046fa2c0948be0af13a8c525240f55a8448e3deeec3fd413e589c5b922756",
-      "content_size_bytes": 64756,
+      "content_sha256": "fc2ea86802476e14e87f2589fa3b48ebd5643fa70085ebd271bb48d5f3e33c9d",
+      "content_size_bytes": 65696,
       "hash_mode": "portable-lf",
       "role": "CI orchestration and claim-boundary enforcement"
     },
@@ -259,6 +268,18 @@
       "content_size_bytes": 750,
       "hash_mode": "raw",
       "role": "byte-pinned exact EFT scalar spectrum and mathematical G6 gate bundle"
+    },
+    "EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_CLOSURE_V20.json": {
+      "content_sha256": "bec8587376c7dc5a29b45c9c7f0110fcbed98a3ae2d130aaf00bb42f6997aca4",
+      "content_size_bytes": 19909,
+      "hash_mode": "raw",
+      "role": "byte-pinned complete renormalizable mathematical G1 component-tensor bundle"
+    },
+    "EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_CLOSURE_V20.md": {
+      "content_sha256": "b5901f73551750524d369e8327c93b00ebb791c312e379dd571f2f6be915c955",
+      "content_size_bytes": 498,
+      "hash_mode": "raw",
+      "role": "byte-pinned complete renormalizable mathematical G1 component-tensor bundle"
     },
     "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_PSD_TARGET_V20.json": {
       "content_sha256": "9b5236b8eb57f8262cf14ef7cfcfd4b40d9bf582a995221e8f15a64b393ca2b3",
@@ -483,50 +504,50 @@
       "role": "byte-pinned exact global Phi self-zero proof dependency"
     },
     "G1_G8_EXECUTION_ROADMAP_V20.json": {
-      "content_sha256": "b528249cb66c85e8b5a9c6367363754549474380df2585ecf65009f7e3b82e5d",
-      "content_size_bytes": 9403084,
+      "content_sha256": "c40ab83c38c07a8abf1959d36919119a2cfcc14eb7f294f128bb4a53688c69dc",
+      "content_size_bytes": 9429158,
       "hash_mode": "portable-lf",
       "role": "regenerated central report or documentation"
     },
     "G1_G8_EXECUTION_ROADMAP_V20.md": {
-      "content_sha256": "5d979806af348501f45b6359b689d2aaac4891ff74e16948a425241ccd052d1a",
-      "content_size_bytes": 9866,
+      "content_sha256": "deba4f05e07be46abe56b2d0c9c028156b977d3a0dc125f8a0b85653dab1baeb",
+      "content_size_bytes": 9968,
       "hash_mode": "portable-lf",
       "role": "regenerated central report or documentation"
     },
     "G1_G8_GATE_LEDGER_V20.json": {
-      "content_sha256": "6990b1189a2daa6f4e45b026f5127ea7da8c2234b42c560a151ae221b9d3f279",
-      "content_size_bytes": 9405974,
+      "content_sha256": "c9d5ab2231fae1492aaaaf30717822207abf69236688e10185d59f508032ba1d",
+      "content_size_bytes": 9433754,
       "hash_mode": "portable-lf",
       "role": "regenerated central report or documentation"
     },
     "G1_G8_GATE_LEDGER_V20.md": {
-      "content_sha256": "040a3499eef683c80bfc09ec0309beeaebb16ca6429514d1ac576a450f94c255",
-      "content_size_bytes": 5090,
+      "content_sha256": "21886c091235eb2acb00c91012fb8f306c7a14d165b5ca1b469403990771c7fb",
+      "content_size_bytes": 5233,
       "hash_mode": "portable-lf",
       "role": "regenerated central report or documentation"
     },
     "README.md": {
-      "content_sha256": "b40ca631c6195a88728c9d02c1351e8c9f937db0b9cca9133fdd91987cc75b72",
-      "content_size_bytes": 27901,
+      "content_sha256": "a793df234634b5dc0abc1dfb247afc00307b8beb9ffbadb9d7a20260d6e47c52",
+      "content_size_bytes": 28630,
       "hash_mode": "portable-lf",
       "role": "regenerated central report or documentation"
     },
     "SHA256SUMS": {
-      "content_sha256": "39723609d94f0a35637ca06fd207d55c20358c437bef562118204a2a3a22f0d3",
-      "content_size_bytes": 36469,
+      "content_sha256": "f5bb26bab4dd97f06729b1dd8f0a363f09d28c451d153c8b8a7beba202f9cb55",
+      "content_size_bytes": 36948,
       "hash_mode": "portable-lf",
       "role": "release-core portable checksum manifest"
     },
     "THEORY_VALIDATION_MATRIX_V20.md": {
-      "content_sha256": "daca09b6e4d67fbc803f883aec06811453063a2cf4ded9ceac282dacb7dc0ec7",
-      "content_size_bytes": 10256,
+      "content_sha256": "bcf158e8bebf52393bf7a26d255a2e7198a9b5e8a8d33fbbd54efcc50930f946",
+      "content_size_bytes": 10372,
       "hash_mode": "portable-lf",
       "role": "regenerated central report or documentation"
     },
     "THEORY_VALIDATION_MATRIX_V20_VERDICT.json": {
-      "content_sha256": "ef29174bdb7a6a372af6de206cd6996a3bf09009db3df5d38dc51410ee029514",
-      "content_size_bytes": 43442,
+      "content_sha256": "d8f725b7670573eb00e17336b7ac643cd737d455a4a7d0d0a6d5c71f07a1e35e",
+      "content_size_bytes": 47055,
       "hash_mode": "portable-lf",
       "role": "regenerated central report or documentation"
     },
@@ -680,6 +701,12 @@
       "hash_mode": "raw",
       "role": "byte-pinned exact EFT scalar spectrum and mathematical G6 gate bundle"
     },
+    "exact_gauged_u1x_g1_component_tensor_closure_v20.py": {
+      "content_sha256": "ca2b92198cbb7cbe6c7051b9c5952bc4af1462ba33db02eaa126533213b1e87f",
+      "content_size_bytes": 17259,
+      "hash_mode": "raw",
+      "role": "byte-pinned complete renormalizable mathematical G1 component-tensor bundle"
+    },
     "exact_gauged_u1x_g3_pd_rank_certificate_v20.py": {
       "content_sha256": "e2499baf3f7a572df7647ca02f109666a549c9e2c1989110c682ee584e0483c6",
       "content_size_bytes": 71621,
@@ -819,20 +846,20 @@
       "role": "byte-pinned exact EFT scalar spectrum and mathematical G6 gate bundle"
     },
     "freeze_corrected_rank1_endpoint_v21_integration.py": {
-      "content_sha256": "8fb4cafa910d777593df7aa050b46817bcc2d4471f092468d3a4fa24b9d9667e",
-      "content_size_bytes": 65669,
+      "content_sha256": "2faf6f6a6342f5d8c48a1dd35644eed03a1ba9a248b8eca75669fb3a8afb70b9",
+      "content_size_bytes": 72588,
       "hash_mode": "raw",
       "role": "central corrected-endpoint integration source"
     },
     "g1_g8_execution_roadmap_v20.py": {
-      "content_sha256": "2c4f6182fe8baf7b5468e23722d82a2d272ddb431a1cf11b556aab0af8717b6c",
-      "content_size_bytes": 52862,
+      "content_sha256": "e372f39694a97648f26eac1c8f5da17375a0193fb77a099a7ca32cc9254ea688",
+      "content_size_bytes": 56719,
       "hash_mode": "portable-lf",
       "role": "central corrected-endpoint integration source"
     },
     "g1_g8_gate_ledger_v20.py": {
-      "content_sha256": "5980ef2d9338f8d81855655f16e8625c4bffcfc54e2e81f5c85fb860980fc8da",
-      "content_size_bytes": 288804,
+      "content_sha256": "1026245d7dfcfc52b2f84af0a47ef152c283d97a2555e3de324c2f24066aea4e",
+      "content_size_bytes": 300406,
       "hash_mode": "portable-lf",
       "role": "central corrected-endpoint integration source"
     },
@@ -843,8 +870,8 @@
       "role": "central corrected-endpoint integration source"
     },
     "prepare_validation_artifacts_v20.py": {
-      "content_sha256": "9044adfd8d96e80c85046611ae1aa996bfc5a575483fe6c07aca36a8c9d0d224",
-      "content_size_bytes": 18641,
+      "content_sha256": "4890572e6bc6c9cd2ff46d8520e9b0eec3ab6224b0a83bbbad92fc058bc9eb4d",
+      "content_size_bytes": 18786,
       "hash_mode": "portable-lf",
       "role": "central corrected-endpoint integration source"
     },
@@ -861,8 +888,8 @@
       "role": "byte-pinned exact global Phi self-zero proof dependency"
     },
     "replicate.py": {
-      "content_sha256": "38615c0c3f9584602315f671beb546eb4140343648b0d2c51278cc64e335a172",
-      "content_size_bytes": 16633,
+      "content_sha256": "892f77fc108559a3fb3e8a669851c65f624bfa6236467dba0ff568c6bf7601fb",
+      "content_size_bytes": 16786,
       "hash_mode": "portable-lf",
       "role": "central corrected-endpoint integration source"
     },
@@ -883,6 +910,12 @@
       "content_size_bytes": 3096,
       "hash_mode": "raw",
       "role": "byte-pinned exact EFT scalar spectrum and mathematical G6 gate bundle"
+    },
+    "test_exact_gauged_u1x_g1_component_tensor_closure_v20.py": {
+      "content_sha256": "084c168bb622b3a56ed06cc885571423135e375e48dbe99a616ab657fd4ebc3e",
+      "content_size_bytes": 3317,
+      "hash_mode": "raw",
+      "role": "byte-pinned complete renormalizable mathematical G1 component-tensor bundle"
     },
     "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py": {
       "content_sha256": "a224a19317c1e849a40e6f729df06c4e50f1e556a71c604dcc8aeca0c3f2555f",
@@ -969,20 +1002,20 @@
       "role": "byte-pinned exact EFT scalar spectrum and mathematical G6 gate bundle"
     },
     "test_freeze_corrected_rank1_endpoint_v21_integration.py": {
-      "content_sha256": "2f62e51448399e2878b98470fb1f20f8eeceafd7fd003f3dd83b42fb345e4a82",
-      "content_size_bytes": 23699,
+      "content_sha256": "0b0bb50e18b13ef13b88dd365388c5938046b9189d5539a2ed41b4d9804ab972",
+      "content_size_bytes": 27409,
       "hash_mode": "raw",
       "role": "fail-closed central integration regression"
     },
     "test_g1_g8_execution_roadmap_v20.py": {
-      "content_sha256": "4f1caa40fe01804b8bb528911a694092ded1292a8fb75dd754dff739291784d3",
-      "content_size_bytes": 25078,
+      "content_sha256": "1314e809d2f0a7b8de8911ae73d7cfed94116199836e24b6dee2e64814db07f8",
+      "content_size_bytes": 25808,
       "hash_mode": "portable-lf",
       "role": "fail-closed central integration regression"
     },
     "test_g1_g8_gate_ledger_v20.py": {
-      "content_sha256": "62cda45d5078da782ef90120111d86fe8be5b925001ce10cbe9368c43af0d62f",
-      "content_size_bytes": 78382,
+      "content_sha256": "424d2bcf6c5fca963c4f6e7fc0f5d46c68cd950e57c9b6003c06d132bfeaf3a8",
+      "content_size_bytes": 81049,
       "hash_mode": "portable-lf",
       "role": "fail-closed central integration regression"
     },
@@ -993,43 +1026,43 @@
       "role": "fail-closed central integration regression"
     },
     "test_prepare_validation_artifacts_v20.py": {
-      "content_sha256": "54852b95ecefe4cfdbea11ebb3daa849c45950192f239d3bbedd539b38cc665a",
-      "content_size_bytes": 21208,
+      "content_sha256": "72908c499e67be988730f8dfd9106b506cd34b54a2b72f84febeb3c380165696",
+      "content_size_bytes": 21414,
       "hash_mode": "portable-lf",
       "role": "fail-closed central integration regression"
     },
     "test_replicate_v20.py": {
-      "content_sha256": "2b62426be008c5dcfe49f4898a54d2156019558d1eee44d26f070c1e264c6491",
-      "content_size_bytes": 12513,
+      "content_sha256": "ee01a97768070ced81f82e0878cd73886d84b2fd35799c334039bf0619524b0c",
+      "content_size_bytes": 12644,
       "hash_mode": "portable-lf",
       "role": "fail-closed central integration regression"
     },
     "test_theory_validation_matrix_v20.py": {
-      "content_sha256": "3071ddfeff276e2770368482f71df4c90afd356561b549a68e2033f94c34c49e",
-      "content_size_bytes": 96780,
+      "content_sha256": "d51b1afde01117762e2339abd38f732c7d4e25de75cb9146423289b87f3a0dec",
+      "content_size_bytes": 103647,
       "hash_mode": "portable-lf",
       "role": "fail-closed central integration regression"
     },
     "test_validate_release_v20.py": {
-      "content_sha256": "9dbc696e4f2e0fedcc17a7d0278aafc70e4a34758f466b8c89e4f0b287aed50d",
-      "content_size_bytes": 38880,
+      "content_sha256": "12dd0545a05464f676dd310a28f1b605ef39b098fe18651bae253358fc37733f",
+      "content_size_bytes": 39462,
       "hash_mode": "portable-lf",
       "role": "fail-closed central integration regression"
     },
     "theory_validation_matrix_v20.py": {
-      "content_sha256": "87738cd313d64a447415a935a5385262af4bc8affafe4c23ef93704f384a695e",
-      "content_size_bytes": 133450,
+      "content_sha256": "26cd1fa61efd86aa04e062fcb03a775f683d7f611565db52f87b3accfdfd5bb5",
+      "content_size_bytes": 138477,
       "hash_mode": "portable-lf",
       "role": "central corrected-endpoint integration source"
     },
     "validate_release_v20.py": {
-      "content_sha256": "ef1c8e91222fd68499897795a574b7437d21684a713c309f8216ab4157649c80",
-      "content_size_bytes": 102007,
+      "content_sha256": "6736643244ad27dad71470fbabc0463a6ad0795d120baa991abb261c0aee45af",
+      "content_size_bytes": 104967,
       "hash_mode": "portable-lf",
       "role": "central corrected-endpoint integration source"
     }
   },
-  "inventory_count": 139,
+  "inventory_count": 143,
   "legacy_v20_quarantine": {
     "CLI_exit_code": 2,
     "CLI_writes_files": false,
@@ -1055,6 +1088,7 @@
     "global_Phi_classification_core_sha256": "db493a74303a57862f09c2a92118ea3d66b8b12ecbaea9162155d4ab3baafecc",
     "global_Phi_classification_source_raw_sha256": "17038c6fb82ba565a16228f5f5c03026f0ab8e3ad7959792498c2785b9653066",
     "map_numerator_csr_sha256": "1834c8439fa3e44459f7ba871420a4351cd0b4de194dec6f5c4a84c1f39d3a16",
+    "renormalizable_G1_component_tensor_core_sha256": "32bed88b5fad0fe6e51cf19c3b3e120d53362150cfc1db6eafd8c897e24223b7",
     "target_numerator_sha256": "14debcfaf02d4b8c20d1d43a2e1f82d6a7390e28428fc63dd21a9c5f90aec0cf"
   },
   "manifest_self_excluded_by_definition": true,
@@ -1068,7 +1102,20 @@
     ],
     "touched_or_promoted": false
   },
-  "release_checksum_entry_count": 318,
+  "release_checksum_entry_count": 322,
+  "renormalizable_G1_component_tensor_bundle": {
+    "all_checks_pass": true,
+    "checks": {
+      "authoritative_and_release_claims_remain_fail_closed": true,
+      "central_integration_completed_exact": true,
+      "complete_28_44_51_tensor_ring_exact": true,
+      "exact_family_certificates_and_source_binding_complete": true,
+      "mathematical_G1_ring_closed_exact": true,
+      "source_and_report_core_exact": true,
+      "status_and_contract_exact": true
+    },
+    "raw_file_count": 4
+  },
   "schema": "so10-rank1-su4-corrected-endpoint-central-integration-v21",
   "status": "EXACT_CORRECTED_ENDPOINT_V21_CENTRAL_INTEGRATION_FROZEN",
   "workflow_contract": {
@@ -1080,7 +1127,7 @@
     "no_write_stochastic_report_commands": 3,
     "no_write_stochastic_report_orchestrators": 2,
     "read_only_frozen_dependency_orchestrators": 3,
-    "read_only_frozen_report_commands": 51,
-    "read_only_frozen_report_sources": 17
+    "read_only_frozen_report_commands": 54,
+    "read_only_frozen_report_sources": 18
   }
 }

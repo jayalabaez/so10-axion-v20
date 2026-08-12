@@ -19,6 +19,15 @@ import corrected_rank1_endpoint_v21 as corrected_rank1
 
 ROOT = Path(__file__).resolve().parent
 MODEL_CONTRACT_ID = "gauged_u1x_phi17_v20"
+RENORMALIZABLE_G1_COMPONENT_TENSOR_CORE_SHA256 = (
+    "32bed88b5fad0fe6e51cf19c3b3e120d53362150cfc1db6eafd8c897e24223b7"
+)
+RENORMALIZABLE_G1_COMPONENT_TENSOR_SOURCE_RAW_SHA256 = (
+    "ca2b92198cbb7cbe6c7051b9c5952bc4af1462ba33db02eaa126533213b1e87f"
+)
+RENORMALIZABLE_G1_COMPONENT_TENSOR_JSON_RAW_SHA256 = (
+    "bec8587376c7dc5a29b45c9c7f0110fcbed98a3ae2d130aaf00bb42f6997aca4"
+)
 V17_ENGINE = ROOT / "so10_axion_v17_engine.py"
 V19_ENGINE = ROOT / "so10_axion_v19_engine.py"
 V20_ENGINE = ROOT / "so10_axion_v20_engine.py"
@@ -141,6 +150,8 @@ FINAL_THEOREM_CORE_PATHS: tuple[str, ...] = (
     "corrected_rank1_publication_v21/verify_exact_gauged_u1x_g3_rank1_su4_corrected_positive_gram_primal_v21.py",
     "G1_EXACT_DECLARED_SYMMETRY_CHARACTER_CENSUS_V20.json",
     "G1_EXACT_DECLARED_SYMMETRY_CHARACTER_CENSUS_V20.md",
+    "EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_CLOSURE_V20.json",
+    "EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_CLOSURE_V20.md",
     "G1_G8_EXECUTION_ROADMAP_V20.md",
     "G1_G8_GATE_LEDGER_V20.md",
     "GAUGED_U1X_SCALAR_CONTRACT_V20.md",
@@ -152,6 +163,7 @@ FINAL_THEOREM_CORE_PATHS: tuple[str, ...] = (
     "VALIDATION_EXECUTION_V20.md",
     "VALIDATION_EXECUTION_V20_VERDICT.json",
     "g1_exact_declared_symmetry_character_census_v20.py",
+    "exact_gauged_u1x_g1_component_tensor_closure_v20.py",
     "exact_gauged_u1x_g3_su5_max_negative_rank1_su3_slice_v20.py",
     "exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py",
     "exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py",
@@ -175,6 +187,7 @@ FINAL_THEOREM_CORE_PATHS: tuple[str, ...] = (
     "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py",
     "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py",
     "test_g1_exact_declared_symmetry_character_census_v20.py",
+    "test_exact_gauged_u1x_g1_component_tensor_closure_v20.py",
     "test_g1_g8_execution_roadmap_v20.py",
     "test_g1_g8_gate_ledger_v20.py",
     "test_gauged_u1x_scalar_contract_v20.py",
@@ -381,6 +394,7 @@ def main() -> int:
     run([sys.executable, "sarah_pyrate_210n_model_file_v20.py"])
     run([sys.executable, "gauged_u1x_scalar_contract_v20.py", "--write"])
     run([sys.executable, "g1_exact_declared_symmetry_character_census_v20.py", "--write"])
+    run([sys.executable, "exact_gauged_u1x_g1_component_tensor_closure_v20.py"])
     run(
         [
             sys.executable,
@@ -690,6 +704,11 @@ def main() -> int:
     model_scaffold_audit = json.loads(
         (ROOT / "SARAH_PYRATE_MODEL_FILE_V20_VERDICT.json").read_text()
     )
+    renormalizable_g1_component_tensor = json.loads(
+        (
+            ROOT / "EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_CLOSURE_V20.json"
+        ).read_text()
+    )
     gauged_g2 = json.loads(
         (ROOT / "GAUGED_U1X_G2_DERIVATIVE_AUDIT_V20.json").read_text()
     )
@@ -934,6 +953,45 @@ def main() -> int:
         ]
         is False,
         "native SARAH static/external execution boundary changed",
+    )
+    g1_counts = renormalizable_g1_component_tensor["counts"]
+    g1_classification = renormalizable_g1_component_tensor["classification"]
+    g1_integration = renormalizable_g1_component_tensor["integration"]
+    require(
+        renormalizable_g1_component_tensor["status"]
+        == "EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_RING_CLOSED"
+        and renormalizable_g1_component_tensor["overall_state"]
+        == "CLOSED_SUBPROBLEM"
+        and renormalizable_g1_component_tensor["model_contract_id"]
+        == MODEL_CONTRACT_ID
+        and renormalizable_g1_component_tensor["core_sha256"]
+        == RENORMALIZABLE_G1_COMPONENT_TENSOR_CORE_SHA256
+        and hashlib.sha256(
+            (
+                ROOT / "exact_gauged_u1x_g1_component_tensor_closure_v20.py"
+            ).read_bytes()
+        ).hexdigest()
+        == RENORMALIZABLE_G1_COMPONENT_TENSOR_SOURCE_RAW_SHA256
+        and hashlib.sha256(
+            (
+                ROOT / "EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_CLOSURE_V20.json"
+            ).read_bytes()
+        ).hexdigest()
+        == RENORMALIZABLE_G1_COMPONENT_TENSOR_JSON_RAW_SHA256
+        and renormalizable_g1_component_tensor["n_failed"] == 0
+        and all(renormalizable_g1_component_tensor["checks"].values())
+        and g1_counts["Hermitian_conjugacy_orbits"] == 28
+        and g1_counts["invariant_directions"] == 44
+        and g1_counts["real_parameters"] == 51
+        and g1_counts["tensor_families"] == 18
+        and g1_counts["real_field_dimension"] == 486
+        and g1_classification["scoped_mathematical_G1_closed"] is True
+        and g1_classification["authoritative_G1_promoted_closed"] is False
+        and g1_classification["release_G1_verified"] is False
+        and all(value is True for value in g1_integration.values())
+        and renormalizable_g1_component_tensor["release_blockers"]
+        == ["AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED"],
+        "renormalizable mathematical G1 theorem failed or exceeded its release scope",
     )
     require(
         exact_rank["n_failed"] == 0
@@ -2069,6 +2127,7 @@ def main() -> int:
             "no:cacheprovider",
             "test_exact_x_symmetry_consistency_gate_v20.py",
             "test_g1_exact_declared_symmetry_character_census_v20.py",
+            "test_exact_gauged_u1x_g1_component_tensor_closure_v20.py",
             "test_gauged_u1x_scalar_contract_v20.py",
             "test_gauged_u1x_g2_derivative_audit_v20.py",
             "test_exact_gauged_u1x_stationarity_rank_certificate_v20.py",

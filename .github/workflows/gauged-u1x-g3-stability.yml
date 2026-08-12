@@ -116,6 +116,10 @@ on:
       - "gauged_u1x_g2_derivative_audit_v20.py"
       - "test_gauged_u1x_g2_derivative_audit_v20.py"
       - "gauged_u1x_scalar_contract_v20.py"
+      - "exact_gauged_u1x_g1_component_tensor_closure_v20.py"
+      - "test_exact_gauged_u1x_g1_component_tensor_closure_v20.py"
+      - "EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_CLOSURE_V20.json"
+      - "EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_CLOSURE_V20.md"
       - "test_gauged_u1x_scalar_contract_v20.py"
       - "live_g2_*.py"
       - ".github/workflows/gauged-u1x-g3-stability.yml"
@@ -224,6 +228,10 @@ on:
       - "gauged_u1x_g2_derivative_audit_v20.py"
       - "test_gauged_u1x_g2_derivative_audit_v20.py"
       - "gauged_u1x_scalar_contract_v20.py"
+      - "exact_gauged_u1x_g1_component_tensor_closure_v20.py"
+      - "test_exact_gauged_u1x_g1_component_tensor_closure_v20.py"
+      - "EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_CLOSURE_V20.json"
+      - "EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_CLOSURE_V20.md"
       - "test_gauged_u1x_scalar_contract_v20.py"
       - "live_g2_*.py"
       - ".github/workflows/gauged-u1x-g3-stability.yml"
@@ -254,6 +262,8 @@ jobs:
         run: |
           python -m py_compile \
             gauged_u1x_scalar_contract_v20.py \
+            exact_gauged_u1x_g1_component_tensor_closure_v20.py \
+            test_exact_gauged_u1x_g1_component_tensor_closure_v20.py \
             exact_gauged_u1x_stationarity_rank_certificate_v20.py \
             gauged_u1x_g2_derivative_audit_v20.py \
             exact_gauged_u1x_physical_quotient_v20.py \
@@ -340,8 +350,9 @@ jobs:
             test_gauged_u1x_g3_corrected_common_kernel_v20.py \
             test_gauged_u1x_g3_stability_v20.py
           python -B corrected_rank1_publication_v21/freeze_exact_gauged_u1x_g3_rank1_su4_corrected_publication_v21.py --check
-      - name: Verify parallel EFT G3-G6 gates read-only
+      - name: Verify mathematical G1 and parallel EFT G3-G6 gates read-only
         run: |
+          python -B exact_gauged_u1x_g1_component_tensor_closure_v20.py
           python -B exact_hsigma_current_endomorphism_dimension6_stabilizer_v20.py
           python -B exact_gauged_u1x_g3_su5_eft_current_kernel_stabilized_global_v20.py
           python -B final_g3_eft_acceptance_gate_v20.py
@@ -393,6 +404,7 @@ jobs:
       - name: Run focused gauged-X tests
         run: |
           python -B -m pytest -q -p no:cacheprovider \
+            test_exact_gauged_u1x_g1_component_tensor_closure_v20.py \
             test_gauged_u1x_scalar_contract_v20.py \
             test_exact_gauged_u1x_stationarity_rank_certificate_v20.py \
             test_gauged_u1x_g2_derivative_audit_v20.py \
@@ -940,6 +952,8 @@ jobs:
           path: |
             GAUGED_U1X_G2_DERIVATIVE_AUDIT_V20.json
             GAUGED_U1X_G2_DERIVATIVE_AUDIT_V20.md
+            EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_CLOSURE_V20.json
+            EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_CLOSURE_V20.md
             EXACT_GAUGED_U1X_STATIONARITY_RANK_CERTIFICATE_V20.json
             EXACT_GAUGED_U1X_STATIONARITY_RANK_CERTIFICATE_V20.md
             EXACT_GAUGED_U1X_PHYSICAL_QUOTIENT_V20.json

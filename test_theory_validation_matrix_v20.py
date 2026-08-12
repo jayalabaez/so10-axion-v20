@@ -34,6 +34,30 @@ def minimal_tree(
     full_rg: bool = False,
     contract_consistent: bool = True,
 ) -> None:
+    g1_component_artifact = matrix.ARTIFACTS[
+        "renormalizable_g1_component_tensor"
+    ]
+    root.joinpath(g1_component_artifact).write_bytes(
+        matrix.ROOT.joinpath(g1_component_artifact).read_bytes()
+    )
+    root.joinpath(matrix.RENORMALIZABLE_G1_COMPONENT_TENSOR_SOURCE).write_bytes(
+        matrix.ROOT.joinpath(
+            matrix.RENORMALIZABLE_G1_COMPONENT_TENSOR_SOURCE
+        ).read_bytes()
+    )
+    g1_component_tensor_closure = (
+        matrix.gate_ledger._renormalizable_g1_component_tensor_closure(
+            json.loads(
+                root.joinpath(g1_component_artifact).read_text(encoding="utf-8")
+            ),
+            raw_sha256=matrix.gate_ledger._raw_file_sha256(
+                root / g1_component_artifact
+            ),
+            source_raw_sha256=matrix.gate_ledger._raw_file_sha256(
+                root / matrix.RENORMALIZABLE_G1_COMPONENT_TENSOR_SOURCE
+            ),
+        )
+    )
     write_json(
         root,
         "EXACT_X_SYMMETRY_CONSISTENCY_GATE_V20.json",
@@ -94,11 +118,14 @@ def minimal_tree(
         root,
         "G1_G8_GATE_LEDGER_V20.json",
         {
+            "renormalizable_G1_component_tensor_closure": (
+                g1_component_tensor_closure
+            ),
             "gates": {
                 "G1": {
                     "status": "CLOSED" if contract_consistent else "BLOCKED",
                     "scoped_calculation_complete": True,
-                    "full_gate_calculation_complete": contract_consistent,
+                    "full_gate_calculation_complete": True,
                 },
                 "G2": {
                     "status": "CLOSED" if contract_consistent else "BLOCKED",
@@ -114,14 +141,14 @@ def minimal_tree(
                 "G1": {
                     "scoped_status": (
                         "COMPLETE_GAUGED_U1X_FULL_COMPONENT_TENSOR_INTEGRATION"
-                        if contract_consistent
-                        else "COMPLETE_GAUGED_U1X_MULTIPLICITY_CENSUS__FULL_G1_OPEN"
                     ),
                     "multiplicity_census_complete": True,
-                    "explicit_component_tensor_subset_integration_complete": (
-                        contract_consistent
+                    "explicit_component_tensor_subset_integration_complete": True,
+                    "mathematical_component_tensor_closure_complete": True,
+                    "full_G1_closed": True,
+                    "renormalizable_G1_component_tensor_closure": (
+                        g1_component_tensor_closure
                     ),
-                    "full_G1_closed": contract_consistent,
                 },
                 "G2": {"scoped_derivative_audit_complete": True},
             },
@@ -940,6 +967,138 @@ def minimal_tree(
 
 
 class TheoryValidationMatrixTests(unittest.TestCase):
+    def test_renormalizable_g1_theorem_is_math_closed_but_release_blocked(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            minimal_tree(root, contract_consistent=False)
+            report = matrix.build_report(root)
+            theorem = report["renormalizable_G1_component_tensor_closure"]
+
+            self.assertTrue(theorem["source_bound"])
+            self.assertEqual(
+                theorem["core_sha256"],
+                matrix.gate_ledger.RENORMALIZABLE_G1_COMPONENT_TENSOR_CORE_SHA256,
+            )
+            self.assertEqual(
+                theorem["raw_sha256"],
+                matrix.gate_ledger.RENORMALIZABLE_G1_COMPONENT_TENSOR_RAW_SHA256,
+            )
+            self.assertEqual(
+                theorem["source_raw_sha256"],
+                matrix.gate_ledger.RENORMALIZABLE_G1_COMPONENT_TENSOR_SOURCE_RAW_SHA256,
+            )
+            self.assertEqual(
+                theorem["direction_map_sha256"],
+                matrix.gate_ledger.RENORMALIZABLE_G1_DIRECTION_MAP_SHA256,
+            )
+            self.assertTrue(
+                theorem["mathematical_G1_closed_for_renormalizable_model"]
+            )
+            self.assertFalse(theorem["authoritative_G1_promoted_closed"])
+            self.assertFalse(theorem["release_G1_verified"])
+            self.assertFalse(theorem["renormalizable_model_mutated"])
+            self.assertFalse(theorem["new_physics_required_for_G1"])
+            self.assertTrue(theorem["downstream_integration_completed"])
+            self.assertIn(
+                matrix.gate_ledger.CONTRACT_BLOCKER,
+                theorem["release_blockers"],
+            )
+            self.assertNotIn(
+                "G1_COMPONENT_TENSOR_CLOSURE_DOWNSTREAM_INTEGRATION_REQUIRED",
+                theorem["release_blockers"],
+            )
+            self.assertTrue(
+                report[
+                    "renormalizable_G1_component_tensor_closure_matches_ledger"
+                ]
+            )
+
+            states = {gate["name"]: gate["state"] for gate in report["gates"]}
+            self.assertEqual(states["authoritative_model_contract"], "BLOCKED")
+            vacuum = next(
+                gate
+                for gate in report["gates"]
+                if gate["name"] == "full_scalar_potential_vacuum_and_spectrum"
+            )
+            evidence = vacuum["evidence"]
+            self.assertFalse(evidence["authoritative_G1_closed"])
+            self.assertFalse(evidence["authoritative_G2_closed"])
+            self.assertTrue(
+                evidence["renormalizable_G1_component_tensor_theorem_source_bound"]
+            )
+            self.assertTrue(
+                evidence["renormalizable_G1_component_tensor_theorem_matches_ledger"]
+            )
+            self.assertTrue(evidence["renormalizable_mathematical_G1_closed"])
+            self.assertTrue(
+                evidence["gauged_G1_full_component_tensor_integration_complete"]
+            )
+            self.assertFalse(
+                evidence["renormalizable_G1_authoritative_promotion_closed"]
+            )
+            self.assertFalse(evidence["renormalizable_G1_release_verified"])
+            self.assertTrue(
+                evidence["renormalizable_G1_downstream_integration_completed"]
+            )
+            self.assertTrue(
+                evidence["renormalizable_G1_external_SARAH_blocker_preserved"]
+            )
+
+    def test_renormalizable_g1_theorem_rejects_artifact_or_source_byte_drift(self):
+        for relative in (
+            matrix.ARTIFACTS["renormalizable_g1_component_tensor"],
+            matrix.RENORMALIZABLE_G1_COMPONENT_TENSOR_SOURCE,
+        ):
+            with self.subTest(relative=relative), tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp)
+                minimal_tree(root, contract_consistent=False)
+                path = root / relative
+                path.write_bytes(path.read_bytes() + b"\n")
+                report = matrix.build_report(root)
+                theorem = report["renormalizable_G1_component_tensor_closure"]
+                self.assertFalse(theorem["source_bound"])
+                self.assertFalse(
+                    theorem[
+                        "mathematical_G1_closed_for_renormalizable_model"
+                    ]
+                )
+                self.assertFalse(
+                    report[
+                        "renormalizable_G1_component_tensor_closure_matches_ledger"
+                    ]
+                )
+
+    def test_renormalizable_g1_theorem_requires_exact_ledger_view(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            minimal_tree(root, contract_consistent=False)
+            ledger_path = root / "G1_G8_GATE_LEDGER_V20.json"
+            ledger = json.loads(ledger_path.read_text(encoding="utf-8"))
+            ledger["renormalizable_G1_component_tensor_closure"][
+                "direction_map_sha256"
+            ] = "0" * 64
+            write_json(root, ledger_path.name, ledger)
+
+            report = matrix.build_report(root)
+            theorem = report["renormalizable_G1_component_tensor_closure"]
+            self.assertTrue(theorem["source_bound"])
+            self.assertTrue(
+                theorem["mathematical_G1_closed_for_renormalizable_model"]
+            )
+            self.assertFalse(
+                report[
+                    "renormalizable_G1_component_tensor_closure_matches_ledger"
+                ]
+            )
+            vacuum = next(
+                gate
+                for gate in report["gates"]
+                if gate["name"] == "full_scalar_potential_vacuum_and_spectrum"
+            )
+            self.assertFalse(
+                vacuum["evidence"]["renormalizable_mathematical_G1_closed"]
+            )
+
     def test_parallel_eft_g3_is_math_pass_release_open_only(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -1708,7 +1867,7 @@ class TheoryValidationMatrixTests(unittest.TestCase):
             self.assertTrue(
                 vacuum["evidence"]["gauged_G1_multiplicity_census_complete"]
             )
-            self.assertFalse(
+            self.assertTrue(
                 vacuum["evidence"][
                     "gauged_G1_full_component_tensor_integration_complete"
                 ]

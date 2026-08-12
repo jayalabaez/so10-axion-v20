@@ -37,6 +37,9 @@ import corrected_rank1_endpoint_v21 as corrected_rank1
 
 ROOT = Path(__file__).resolve().parent
 MODEL_CONTRACT_ID = "gauged_u1x_phi17_v20"
+RENORMALIZABLE_G1_COMPONENT_TENSOR_SOURCE = (
+    "exact_gauged_u1x_g1_component_tensor_closure_v20.py"
+)
 FINAL_G6_EFT_GATE_SOURCE = "final_g6_eft_mathematical_gate_v20.py"
 
 ARTIFACTS = {
@@ -61,6 +64,9 @@ ARTIFACTS = {
     "x_contract": "EXACT_X_SYMMETRY_CONSISTENCY_GATE_V20.json",
     "gauged_contract": "GAUGED_U1X_SCALAR_CONTRACT_V20.json",
     "gauged_g2": "GAUGED_U1X_G2_DERIVATIVE_AUDIT_V20.json",
+    "renormalizable_g1_component_tensor": (
+        "EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_CLOSURE_V20.json"
+    ),
     "g1_g8": "G1_G8_GATE_LEDGER_V20.json",
     "g6_spectrum": "G6_FULL_PHYSICAL_SPECTRUM_V20.json",
     "g3_stationarity": "G3_FULL_STATIONARITY_FEASIBILITY_V20.json",
@@ -356,6 +362,7 @@ def _operator_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
 
 def _vacuum_gate(
     reports: dict[str, dict[str, Any]],
+    renormalizable_g1_component_tensor_closure: dict[str, Any] | None = None,
     parallel_eft_g3_acceptance: dict[str, Any] | None = None,
     parallel_eft_g4_mathematical: dict[str, Any] | None = None,
     parallel_eft_g5_mathematical: dict[str, Any] | None = None,
@@ -371,6 +378,31 @@ def _vacuum_gate(
     g5_closed = _dig(authoritative_gates, "G5", "status") == "CLOSED"
     g6_closed = _dig(authoritative_gates, "G6", "status") == "CLOSED"
     scoped = ledger.get("gauged_u1x_scalar_subtheorems", {})
+    ledger_g1_component_tensor_closure = ledger.get(
+        "renormalizable_G1_component_tensor_closure", {}
+    )
+    if renormalizable_g1_component_tensor_closure is None:
+        renormalizable_g1_component_tensor_closure = {}
+    g1_component_tensor_view_matches_ledger = bool(
+        renormalizable_g1_component_tensor_closure
+        and ledger_g1_component_tensor_closure
+        and renormalizable_g1_component_tensor_closure
+        == ledger_g1_component_tensor_closure
+    )
+    mathematical_g1_component_tensor_closure = bool(
+        g1_component_tensor_view_matches_ledger
+        and renormalizable_g1_component_tensor_closure.get("source_bound") is True
+        and renormalizable_g1_component_tensor_closure.get(
+            "mathematical_G1_closed_for_renormalizable_model"
+        )
+        is True
+        and renormalizable_g1_component_tensor_closure.get(
+            "authoritative_G1_promoted_closed"
+        )
+        is False
+        and renormalizable_g1_component_tensor_closure.get("release_G1_verified")
+        is False
+    )
     g1_census_marker = _dig(
         scoped, "G1", "multiplicity_census_complete", default=None
     )
@@ -403,7 +435,12 @@ def _vacuum_gate(
         "full_gate_calculation_complete",
         default=None,
     )
-    if g1_component_marker is False:
+    if mathematical_g1_component_tensor_closure:
+        # Mathematical component-tensor closure is contract independent.  The
+        # authoritative G1 status above still remains fail-closed on the
+        # external executable-model contract.
+        g1_full_component_tensor_integration_complete = True
+    elif g1_component_marker is False:
         g1_full_component_tensor_integration_complete = False
     elif g1_full_marker is not None or g1_gate_full_marker is not None:
         g1_full_component_tensor_integration_complete = bool(
@@ -1456,6 +1493,46 @@ def _vacuum_gate(
             ),
             "gauged_G1_full_component_tensor_integration_complete": (
                 g1_full_component_tensor_integration_complete
+            ),
+            "renormalizable_G1_component_tensor_theorem_artifact_present": bool(
+                reports.get("renormalizable_g1_component_tensor", {})
+            ),
+            "renormalizable_G1_component_tensor_theorem_source_bound": (
+                renormalizable_g1_component_tensor_closure.get("source_bound")
+                is True
+            ),
+            "renormalizable_G1_component_tensor_theorem_matches_ledger": (
+                g1_component_tensor_view_matches_ledger
+            ),
+            "renormalizable_mathematical_G1_closed": (
+                mathematical_g1_component_tensor_closure
+            ),
+            "renormalizable_G1_authoritative_promotion_closed": (
+                renormalizable_g1_component_tensor_closure.get(
+                    "authoritative_G1_promoted_closed"
+                )
+                is True
+            ),
+            "renormalizable_G1_release_verified": (
+                renormalizable_g1_component_tensor_closure.get(
+                    "release_G1_verified"
+                )
+                is True
+            ),
+            "renormalizable_G1_downstream_integration_completed": (
+                renormalizable_g1_component_tensor_closure.get(
+                    "downstream_integration_completed"
+                )
+                is True
+            ),
+            "renormalizable_G1_external_SARAH_blocker_preserved": (
+                gate_ledger.CONTRACT_BLOCKER
+                in renormalizable_g1_component_tensor_closure.get(
+                    "release_blockers", []
+                )
+            ),
+            "renormalizable_G1_component_tensor_counts": (
+                renormalizable_g1_component_tensor_closure.get("counts", {})
             ),
             # Compatibility alias: this means the multiplicity census only.
             "gauged_G1_scoped_calculation_complete": g1_scoped_complete,
@@ -2620,6 +2697,7 @@ def _reproducibility_gate(
             "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_V20.json",
             "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.json",
             "EXACT_GAUGED_U1X_G3_ALTERNATIVE_GLOBAL_SOS_AUDIT_V20.json",
+            "EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_CLOSURE_V20.json",
             "FINAL_G3_ACCEPTANCE_GATE_V20.json",
         )
         if name in missing
@@ -2657,6 +2735,25 @@ def _reproducibility_gate(
 
 def build_report(root: Path = ROOT) -> dict[str, Any]:
     reports, missing = load_reports(root)
+    renormalizable_g1_component_tensor_closure = (
+        gate_ledger._renormalizable_g1_component_tensor_closure(
+            reports.get("renormalizable_g1_component_tensor", {}),
+            raw_sha256=gate_ledger._raw_file_sha256(
+                root / ARTIFACTS["renormalizable_g1_component_tensor"]
+            ),
+            source_raw_sha256=gate_ledger._raw_file_sha256(
+                root / RENORMALIZABLE_G1_COMPONENT_TENSOR_SOURCE
+            ),
+        )
+    )
+    ledger_g1_component_tensor_closure = reports.get("g1_g8", {}).get(
+        "renormalizable_G1_component_tensor_closure", {}
+    )
+    renormalizable_g1_component_tensor_closure_matches_ledger = bool(
+        ledger_g1_component_tensor_closure
+        and renormalizable_g1_component_tensor_closure
+        == ledger_g1_component_tensor_closure
+    )
     parallel_eft_g3_acceptance = gate_ledger._parallel_eft_g3_acceptance(
         reports.get("final_g3_eft", {}),
         raw_sha256=gate_ledger._raw_file_sha256(
@@ -2693,6 +2790,7 @@ def build_report(root: Path = ROOT) -> dict[str, Any]:
         _operator_gate(reports),
         _vacuum_gate(
             reports,
+            renormalizable_g1_component_tensor_closure,
             parallel_eft_g3_acceptance,
             parallel_eft_g4_mathematical,
             parallel_eft_g5_mathematical,
@@ -2811,6 +2909,12 @@ def build_report(root: Path = ROOT) -> dict[str, Any]:
         "decision": decision,
         "full_theory_validated": bool(all_mandatory_pass and integrity_pass),
         "empirical_discovery": False,
+        "renormalizable_G1_component_tensor_closure": (
+            renormalizable_g1_component_tensor_closure
+        ),
+        "renormalizable_G1_component_tensor_closure_matches_ledger": (
+            renormalizable_g1_component_tensor_closure_matches_ledger
+        ),
         "parallel_EFT_G3_acceptance": parallel_eft_g3_acceptance,
         "parallel_EFT_G4_mathematical": parallel_eft_g4_mathematical,
         "parallel_EFT_G5_mathematical": parallel_eft_g5_mathematical,
@@ -2855,6 +2959,14 @@ def write_markdown(report: dict[str, Any]) -> str:
         "",
         f"- Full theory validated: **{report['full_theory_validated']}**",
         f"- Empirical discovery: **{report['empirical_discovery']}**",
+        (
+            "- Renormalizable mathematical G1 component-tensor closure: "
+            f"**{report['renormalizable_G1_component_tensor_closure']['mathematical_G1_closed_for_renormalizable_model']}**"
+        ),
+        (
+            "- Authoritative/release G1 promotion: "
+            f"**{report['renormalizable_G1_component_tensor_closure']['release_G1_verified']}**"
+        ),
         (
             "- Parallel dimension-six EFT mathematical G3: "
             f"**{report['parallel_EFT_G3_acceptance']['mathematical_G3_closed_for_EFT_model']}**"

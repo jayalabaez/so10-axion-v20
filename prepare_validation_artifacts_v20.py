@@ -80,6 +80,7 @@ FULL_COMMANDS: tuple[tuple[str, ...], ...] = (
     (sys.executable, "sarah_pyrate_210n_model_file_v20.py"),
     (sys.executable, "gauged_u1x_scalar_contract_v20.py", "--write"),
     (sys.executable, "g1_exact_declared_symmetry_character_census_v20.py", "--write"),
+    (sys.executable, "exact_gauged_u1x_g1_component_tensor_closure_v20.py"),
     (
         sys.executable,
         "exact_gauged_u1x_stationarity_rank_certificate_v20.py",
@@ -301,6 +302,7 @@ FULL_COMMANDS: tuple[tuple[str, ...], ...] = (
         "no:cacheprovider",
         "test_exact_x_symmetry_consistency_gate_v20.py",
         "test_g1_exact_declared_symmetry_character_census_v20.py",
+        "test_exact_gauged_u1x_g1_component_tensor_closure_v20.py",
         "test_gauged_u1x_scalar_contract_v20.py",
         "test_gauged_u1x_g2_derivative_audit_v20.py",
         "test_exact_gauged_u1x_stationarity_rank_certificate_v20.py",
