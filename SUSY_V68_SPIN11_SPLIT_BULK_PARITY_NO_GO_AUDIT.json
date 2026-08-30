@@ -1,0 +1,827 @@
+{
+  "boundary_filter_and_frontier": {
+    "lowest_channel_obstructions": {
+      "adjoint_B5": {
+        "obstruction": "F_45^MN = y (Cbar gamma^MN C); the D-flat spinor VEV has plane expectation value v^2/2 in every one of the five planes, so F=0 forces v=0 and rank breaking dies",
+        "status": "CLOSED"
+      },
+      "spinor_B4": {
+        "obstruction": "Psi Psibar self-mass has charge 4 = 0 and is forbidden; the pairing operator is SU(5)-covariant with singlet eigenvalues (1,-5,25) across the (1,45-X,X^2) channels, none zero, so an unaligned coupling gives F(nu-bar_2) != 0 and destabilizes the rank vacuum; the alignment m1=0 is a codimension-one coupling relation protected by no symmetry; and even when aligned, Psi's singlet and its (3bar,1)+(1,1) fragments have eaten or absent partners while the enlarged 5-sector support matrix loses full rank",
+        "scope": "displayed wall-spinor mechanism, not every new two-wall bulk determinant",
+        "status": "CLOSED_AS_MECHANISM__OPEN_ONLY_AS_TUNING_WITH_EXOTICS"
+      }
+    },
+    "six_dimensional_frontier": {
+      "accepted_action": false,
+      "reason": "a reduced G3211 fixed locus admits Q/Qbar themselves as local representations and avoids the inherited conventional-hyper charge/parity route",
+      "status": "REMAINS_THE_MINIMAL_LOCAL_Q_ONLY_BLUEPRINT_FROM_V67"
+    },
+    "surviving_5D_research_branch": {
+      "minimum_requirements": [
+        "define the diagonal R x hyper-flavor symmetry",
+        "give complete UV and IR local representations and superpotentials",
+        "solve F/D/BPS jump conditions with the rank VEV",
+        "derive the regulated infinite-dimensional KK determinant in every SM sector",
+        "show no brane-tower null mode or companion exotic survives",
+        "cancel anomalies independently at both fixed points",
+        "redo beta thresholds, proton operators, soft terms and cosmology"
+      ],
+      "status": "NEW_ACTION_NOT_CONSTRUCTED"
+    },
+    "two_wall_projector_target": {
+      "IR_left_projector": "PiL=(1+P1spinor)/2",
+      "UV_SU5_projector": "Pi10(Z)=-(Z+3)(Z-5)/16",
+      "UV_conjugate_SU5_projector": "Pi10bar(Z)=Pi10(-Z)=-(Z-3)(Z+5)/16",
+      "UV_conjugate_projector_values": {
+        "1": "0",
+        "10bar": "1",
+        "5": "0"
+      },
+      "UV_projector_values": {
+        "1": "0",
+        "10": "1",
+        "5bar": "0"
+      },
+      "charge_convention": "Z used here equals minus the V65 X convention",
+      "intersection_16": "Pi10 PiL (16) = Q",
+      "intersection_16bar": "Pi10bar PiL (16bar) = Qbar",
+      "not_a_local_operator": "Pi10 PiL is not a local UV operator but a zero-mode design target; P1 is not a local UV spurion, so separate SO(10)- and Spin(4)xSpin(7)-invariant wall fields and boundary conditions must realize it",
+      "status": "REPRESENTATION_LEVEL_CANDIDATE_ONLY",
+      "why_it_evades_pure_parity_theorem": "the UV rank VEV and an IR boundary matrix jointly preserve only the SM; this is not a pure P0/P1 kernel"
+    }
+  },
+  "claim_boundary": {
+    "exact_new_result": "representation-independent Z4R charge no-go plus common-group parity theorem",
+    "new_physics_candidate": "diagonal geometric-R x hyper-number selector and a two-wall missing-partner filter",
+    "not_claimed": [
+      "a no-go for every possible 5D boundary-mixing action",
+      "an accepted diagonal selector",
+      "a full KK determinant",
+      "fixed-point anomaly cancellation",
+      "a physical exotic mass",
+      "gate closure"
+    ]
+  },
+  "classification": "INHERITED_CONVENTIONAL_5D_HYPER_ROUTE_CLOSED__PURE_PARITY_Q_ONLY_ROUTE_CLOSED__DIAGONAL_R_X_FLAVOR_TWO_WALL_ROUTE_IS_NEW_ACTION_ONLY",
+  "core_sha256": "368ca47a3e1dac8e283173c4c838d0dfdef76c905735284b45791c85bbb66db7",
+  "date": "2026-08-30",
+  "diagonal_selector_candidate_spectra": {
+    "adjoint_55_candidate": {
+      "V65_natural_UV_channel": "B5 Cbar 45_2 C forces v=0 through its adjoint F term",
+      "X_charge_match_to_V67_partner_rows": false,
+      "X_charges": {
+        "55_Q_Qbar": [
+          4,
+          -4
+        ],
+        "V67_spinor_partner_Q_Qbar": [
+          -1,
+          1
+        ]
+      },
+      "companion_complex_components": 18,
+      "companion_mixed_R_anomaly": {
+        "A2": "3",
+        "A3": "1"
+      },
+      "companions_after_pairing_Q_with_V64_orphans": {
+        "A2": "3",
+        "A3": "1",
+        "b1_GUT": "27/5",
+        "b2": "3",
+        "b3": "3",
+        "dimension": "18"
+      },
+      "desired_Q_pair": {
+        "A2": "3",
+        "A3": "2",
+        "b1_GUT": "1/5",
+        "b2": "3",
+        "b3": "2",
+        "dimension": "12"
+      },
+      "desired_complex_components": 12,
+      "full_new_zero_spectrum": {
+        "A2": "6",
+        "A3": "3",
+        "b1_GUT": "28/5",
+        "b2": "6",
+        "b3": "5",
+        "dimension": "30"
+      },
+      "pairing_requirement": "an X-changing rank-VEV insertion is required; the displayed Cbar 45_2 C invariant supplies it but is rejected by B5",
+      "post_pairing_ledger_status": "CONDITIONAL_ON_THE_REJECTED_OR_REPLACED_X_CHANGING_BOUNDARY_OPERATOR",
+      "qR0_zero_modes": [
+        "D",
+        "Dbar"
+      ],
+      "qR2_zero_modes": [
+        "Q",
+        "Qbar",
+        "X56",
+        "X56bar"
+      ]
+    },
+    "diagonal_selector_definition": {
+      "bulk_term_still_has_charge_mod4": 2,
+      "hyper_flavor_charges": {
+        "Phi": 1,
+        "Phi_conjugate": -1
+      },
+      "new_R_charges": {
+        "Phi": 2,
+        "Phi_conjugate": 0
+      },
+      "new_symmetry": "Z4Rprime subset of Z4R_Cartan x Z4F_hyper",
+      "required_new_data": [
+        "an exact or gauged hyper-number symmetry and its UV origin",
+        "all allowed boundary operators under the diagonal selector",
+        "fixed-point continuous and discrete anomaly traces",
+        "the supersymmetric BPS/jump boundary vacuum",
+        "the full KK boundary-condition determinant"
+      ],
+      "status": "CANDIDATE_NEW_ACTION_NOT_INHERITED"
+    },
+    "nonimport_rule": {
+      "V67_Q_only_partner_beta": {
+        "b1_GUT": "1/5",
+        "b2": "3",
+        "b3": "2"
+      },
+      "V67_Q_only_partner_mixed_R": {
+        "A2": "3",
+        "A3": "2"
+      },
+      "can_be_used_as_bulk_completion_ledger": false,
+      "reason": "a full hyper contributes both H and Hc zero sectors and localized projector anomalies; companions change both running and the discrete anomaly ledger"
+    },
+    "symmetric_65_candidate": {
+      "X_charge_match_to_V67_partner_rows": false,
+      "X_charges": {
+        "65_Q_Qbar": [
+          4,
+          -4
+        ],
+        "V67_spinor_partner_Q_Qbar": [
+          -1,
+          1
+        ]
+      },
+      "companions_after_pairing_Q_with_V64_orphans": {
+        "A2": "3",
+        "A3": "1",
+        "b1_GUT": "27/5",
+        "b2": "3",
+        "b3": "3",
+        "dimension": "18"
+      },
+      "full_new_zero_spectrum": {
+        "A2": "6",
+        "A3": "3",
+        "b1_GUT": "28/5",
+        "b2": "6",
+        "b3": "5",
+        "dimension": "30"
+      },
+      "pairing_requirement": "an X-changing rank-VEV boundary operator beyond the absent renormalizable Cbar 54 C invariant is required",
+      "post_pairing_ledger_status": "CONDITIONAL_ON_AN_UNCONSTRUCTED_HIGHER_OPERATOR",
+      "renormalizable_Cbar_54_C_singlet": false,
+      "same_zero_spectrum_as_55_for_eta_plus_minus": true
+    },
+    "two_spinor_32_candidate": {
+      "V65_lowest_UV_channel": "B4 scoped full-spinor wall coupling fails; a bulk boundary determinant is not thereby exhaustively excluded",
+      "X_charge_match_to_V67_partner_rows": true,
+      "companion_complex_components": 20,
+      "companion_mixed_R_anomaly": {
+        "A2": "1",
+        "A3": "-2"
+      },
+      "companions_after_pairing_Q_with_V64_orphans": {
+        "A2": "1",
+        "A3": "-2",
+        "b1_GUT": "19/5",
+        "b2": "1",
+        "b3": "2",
+        "dimension": "20"
+      },
+      "desired_Q_pair": {
+        "A2": "3",
+        "A3": "2",
+        "b1_GUT": "1/5",
+        "b2": "3",
+        "b3": "2",
+        "dimension": "12"
+      },
+      "desired_complex_components": 12,
+      "full_beta_is_complete_family_universal": true,
+      "full_new_zero_spectrum": {
+        "A2": "4",
+        "A3": "0",
+        "b1_GUT": "4",
+        "b2": "4",
+        "b3": "4",
+        "dimension": "32"
+      },
+      "post_pairing_ledger_status": "CONDITIONAL_ON_A_FULL_RANK_LOCAL_BOUNDARY_DETERMINANT",
+      "qR0_zero_modes": [
+        "U",
+        "Ubar",
+        "D",
+        "Dbar",
+        "E",
+        "Ebar",
+        "N",
+        "Nbar"
+      ],
+      "qR2_zero_modes": [
+        "Q",
+        "Qbar",
+        "L",
+        "Lbar"
+      ]
+    }
+  },
+  "falsifiers": [
+    {
+      "effect": "falsifies the inherited charge no-go",
+      "id": "F1",
+      "test": "exhibit a conventional V61 hyper zero mode with qR=2 without an added flavor rotation"
+    },
+    {
+      "effect": "falsifies the parity theorem",
+      "id": "F2",
+      "test": "exhibit a pure P0/P1 zero kernel that is not invariant under the common Pati-Salam group"
+    },
+    {
+      "effect": "promotes the surviving 5D research branch for a new same-action audit",
+      "id": "F3",
+      "test": "construct the diagonal selector, local two-wall fields and a full-rank KK determinant with no companions"
+    },
+    {
+      "effect": "rejects that redesign even if its integrated spectrum is vectorlike",
+      "id": "F4",
+      "test": "find a nonzero fixed-point anomaly class in any proposed redesign"
+    }
+  ],
+  "gate_ledger": [
+    {
+      "V68_closed": false,
+      "decision": "OPEN: the inherited conventional-5D-hyper split-bulk escape is now closed, but no diagonal-selector two-wall action or 6D completion is constructed.",
+      "gate": "G1",
+      "status": "OPEN"
+    },
+    {
+      "V68_closed": false,
+      "decision": "OPEN: no coefficient-level action, flavor determinant, soft spectrum or physical pole thresholds exist for a surviving branch.",
+      "gate": "G2",
+      "status": "OPEN"
+    },
+    {
+      "V68_closed": false,
+      "decision": "OPEN: the redesigned compactification, BPS boundary vacuum, moduli and full Hessian are absent.",
+      "gate": "G3",
+      "status": "OPEN"
+    },
+    {
+      "V68_closed": false,
+      "decision": "OPEN WITH EXACT ADVANCE: V67 identifies the needed qR2 row; V68 proves an ordinary inherited hyper cannot supply it.",
+      "gate": "G4",
+      "status": "OPEN"
+    },
+    {
+      "V68_closed": false,
+      "decision": "OPEN: the hypothetical 32 and 55/65 bulk spectra have 20 and 18 compulsory companion components before boundary mixing.",
+      "gate": "G5",
+      "status": "OPEN"
+    },
+    {
+      "V68_closed": false,
+      "decision": "OPEN: no accepted spectrum, reheating, defect, relic or moduli history exists.",
+      "gate": "G6",
+      "status": "OPEN"
+    },
+    {
+      "V68_closed": false,
+      "decision": "OPEN: new two-wall fields and the diagonal selector require a complete local operator and proton audit.",
+      "gate": "G7",
+      "status": "OPEN"
+    },
+    {
+      "V68_closed": false,
+      "decision": "OPEN: fixed-point anomalies, Dai-Freed data, a UV regulator and predictivity remain unconstructed.",
+      "gate": "G8",
+      "status": "OPEN"
+    }
+  ],
+  "inherited_Z4R_charge_no_go": {
+    "GM_boundary": "the inherited q0 orphan bilinear can receive the V65 GM mass, but a q0-q1 bilinear has charge1 and is not in the neutral Kahler class",
+    "V65_B3_rebound": {
+      "V68_strengthening": "valid for every conventional hyper representation and every intrinsic parity",
+      "obstruction": "orphan(0) + bulk half(1) = 1 != 2 mod 4; independently, Sigma^AB vanishes at the y=0 wall",
+      "status": "CLOSED"
+    },
+    "all_orders_even_background_dressing": {
+      "all_Kahler_channels_forbidden": true,
+      "all_superpotential_channels_forbidden": true,
+      "background_charge_set_mod4": [
+        0,
+        2
+      ],
+      "finite_residue_scan": [
+        {
+          "Kahler_neutral": false,
+          "dressed_charge_mod4": 1,
+          "number_of_charge_two_insertions": 0,
+          "superpotential_allowed": false
+        },
+        {
+          "Kahler_neutral": false,
+          "dressed_charge_mod4": 3,
+          "number_of_charge_two_insertions": 1,
+          "superpotential_allowed": false
+        },
+        {
+          "Kahler_neutral": false,
+          "dressed_charge_mod4": 1,
+          "number_of_charge_two_insertions": 2,
+          "superpotential_allowed": false
+        },
+        {
+          "Kahler_neutral": false,
+          "dressed_charge_mod4": 3,
+          "number_of_charge_two_insertions": 3,
+          "superpotential_allowed": false
+        },
+        {
+          "Kahler_neutral": false,
+          "dressed_charge_mod4": 1,
+          "number_of_charge_two_insertions": 4,
+          "superpotential_allowed": false
+        },
+        {
+          "Kahler_neutral": false,
+          "dressed_charge_mod4": 3,
+          "number_of_charge_two_insertions": 5,
+          "superpotential_allowed": false
+        },
+        {
+          "Kahler_neutral": false,
+          "dressed_charge_mod4": 1,
+          "number_of_charge_two_insertions": 6,
+          "superpotential_allowed": false
+        },
+        {
+          "Kahler_neutral": false,
+          "dressed_charge_mod4": 3,
+          "number_of_charge_two_insertions": 7,
+          "superpotential_allowed": false
+        },
+        {
+          "Kahler_neutral": false,
+          "dressed_charge_mod4": 1,
+          "number_of_charge_two_insertions": 8,
+          "superpotential_allowed": false
+        }
+      ],
+      "matter_parity_scope": "bare order-two g^2 subgroup of the inherited geometric Z4R; no compensating gauge-center locking is classified here",
+      "odd_charge_vev_preserves_residual_g_squared_matter_parity": false,
+      "only_charge_escape": "a qR=1 or qR=3 background expectation value",
+      "theorem": "1 plus any sum of inherited even background charges is 1 or 3 mod4, never the W charge2 and never the Kahler charge0"
+    },
+    "bulk_hyper_charges": {
+      "Phi": 1,
+      "Phi_conjugate": 1
+    },
+    "bulk_operator": "hyperscalars form an SU(2)R doublet with Cartan charges +-1; the two 4D chiral halves therefore carry charge (1,1), and the bulk operator Phi_c(partial5-Sigma)Phi carries charge 1+0+1=2, exactly the superpotential charge.",
+    "bulk_operator_charge": 2,
+    "charge_two_fields_with_zero_supersymmetric_vev": {
+      "S": 2,
+      "T": 2
+    },
+    "charge_two_vev_escape": {
+      "obstruction": "a charge-2 VEV breaks Z4R to Z2R at the GUT scale; under Z2R the W charge is 0 mod 2, so mu (charge 0) and 16^4 (charge 4 = 0) are both allowed again and the proton selector that defined the route is destroyed",
+      "status": "CLOSED"
+    },
+    "inherited_conventional_5D_split_bulk_status": "CLOSED",
+    "inherited_selector": "order-four subgroup of the orbifold-preserved 5D SU(2)R Cartan",
+    "mass_hessian_selection": "with unbroken Z4R, a quadratic W Hessian entry is nonzero only when qi+qj=2 mod4; q0 rows pair only q2 columns, while q1 bulk states pair q1 states and cannot change the q0 orphan index",
+    "neutral_nonzero_vevs": {
+      "C": 0,
+      "Cbar": 0,
+      "Sigma": 0
+    },
+    "neutral_vev_dressing_changes_charge": false,
+    "ordinary_hyper_bilinear_allowed": false,
+    "orphan_Phi_bilinear_charge_mod4": 1,
+    "orphan_Phic_bilinear_charge_mod4": 1,
+    "orphan_superfield_charge": 0,
+    "rank_charge_binding_exact": true,
+    "representation_or_parity_dependence": "NONE",
+    "required_opposite_chirality_partner_charge": 2,
+    "superpotential_charge_mod4": 2
+  },
+  "integrity_checks": {
+    "32_beta_complete_family_crosscheck": true,
+    "32_companion_beta_exact": true,
+    "32_requires_20_companions": true,
+    "55_65_X_mismatch_explicit": true,
+    "55_and_65_require_18_companions": true,
+    "55_companion_beta_exact": true,
+    "V59_projectors_bound": true,
+    "V61_hyper_halves_q1_q1": true,
+    "V67_Q_only_ledger_not_imported": true,
+    "V67_Q_partner_indices_reproduced": true,
+    "V67_current_action_rejection_preserved": true,
+    "all_32_hypers_are_complete_spinors": true,
+    "all_bound_cores_exact": true,
+    "all_gates_open": true,
+    "all_joint_sector_dimensions_exact": true,
+    "all_orders_even_dressing_no_go": true,
+    "charge_two_vev_escape_rejected": true,
+    "inherited_split_bulk_closed": true,
+    "neutral_vevs_do_not_repair_charge": true,
+    "orphan_hyper_bilinear_forbidden": true,
+    "pure_parity_Q_only_no_go": true,
+    "spinor_multiplicities_bound_to_V59": true,
+    "tensor_multiplicities_derived_from_vector_projectors": true,
+    "two_wall_conjugate_projector_exact": true,
+    "two_wall_filter_not_overclaimed": true,
+    "two_wall_projectors_exact": true
+  },
+  "lineage": {
+    "bound_input_cores": {
+      "v59_route": "bf666eb5e4d57bff18b05182d7d6cc7874bbc26dd71897153faf9ee67a5f8c42",
+      "v61_route": "6d6107dea91e18e7d34e4560ad8003cd8c38eef5c788b2ebd148bb3795b2c33a",
+      "v65_route": "b87696403fb46c4a6b044be8abe58dd5f82b63a83a58fff262a6f00bdd6914ae",
+      "v67_master": "328c5e0abc86b7ad72b8112d6d6fa6b7fd1d4435ce199541a6ae3d947914408c",
+      "v67_route": "5927f64eec6bc27d68b7d429eab11ee1f0efc9709041064f47baaabc25f0eebb"
+    },
+    "relation": "V68 resolves the V67 5D split-bulk classification; no prior artifact is modified and no candidate evidence is promoted into the bound action"
+  },
+  "n_failed_integrity_checks": 0,
+  "n_integrity_checks": 26,
+  "question": "Can the inherited 5D Spin(11) split-bulk route furnish the V67 qR=2 Q/Qbar index partners?",
+  "representation_and_parity_audit": {
+    "V59_spinor_joint_multiplicity_binding": {
+      "branching_labels_use": "the primary-source convention P1=+ for SU(2)L; simultaneous 16/16bar relabeling does not alter the complete-multiplet theorem",
+      "matches": true,
+      "source_counts": {
+        "++": 8,
+        "+-": 8,
+        "-+": 8,
+        "--": 8
+      },
+      "table_counts": {
+        "++": 8,
+        "+-": 8,
+        "-+": 8,
+        "--": 8
+      }
+    },
+    "all_sector_dimensions_exact": true,
+    "every_32_hyper_is_16_or_16bar": true,
+    "expected_representation_dimensions": {
+      "11": 11,
+      "32": 32,
+      "55": 55,
+      "65": 65
+    },
+    "fundamental_11": {
+      "contains_Q_type_sector": false,
+      "decision": "CLOSED_AS_Q_PARTNER_REPRESENTATION"
+    },
+    "independent_tensor_multiplicity_derivation": {
+      "derived": {
+        "11": {
+          "++": 4,
+          "+-": 6,
+          "-+": 0,
+          "--": 1
+        },
+        "55": {
+          "++": 21,
+          "+-": 24,
+          "-+": 6,
+          "--": 4
+        },
+        "65": {
+          "++": 31,
+          "+-": 24,
+          "-+": 6,
+          "--": 4
+        }
+      },
+      "matches_11_55_65_tables": true,
+      "vector_coordinate_signatures": {
+        "++": 4,
+        "+-": 6,
+        "-+": 0,
+        "--": 1
+      }
+    },
+    "joint_sector_multiplicities": {
+      "11": {
+        "++": 4,
+        "+-": 6,
+        "-+": 0,
+        "--": 1
+      },
+      "32": {
+        "++": 8,
+        "+-": 8,
+        "-+": 8,
+        "--": 8
+      },
+      "55": {
+        "++": 21,
+        "+-": 24,
+        "-+": 6,
+        "--": 4
+      },
+      "65": {
+        "++": 31,
+        "+-": 24,
+        "-+": 6,
+        "--": 4
+      }
+    },
+    "joint_sector_tables": {
+      "11": {
+        "++": [
+          "(2,2,1)"
+        ],
+        "+-": [
+          "(1,1,6)"
+        ],
+        "-+": [],
+        "--": [
+          "(1,1,1)"
+        ]
+      },
+      "32": {
+        "++": [
+          "(2,1,4)"
+        ],
+        "+-": [
+          "(1,2,4bar)"
+        ],
+        "-+": [
+          "(2,1,4bar)"
+        ],
+        "--": [
+          "(1,2,4)"
+        ]
+      },
+      "55": {
+        "++": [
+          "(3,1,1)",
+          "(1,3,1)",
+          "(1,1,15)"
+        ],
+        "+-": [
+          "(2,2,6)"
+        ],
+        "-+": [
+          "(1,1,6)"
+        ],
+        "--": [
+          "(2,2,1)"
+        ]
+      },
+      "65": {
+        "++": [
+          "(3,3,1)",
+          "(1,1,20prime)",
+          "2x(1,1,1)"
+        ],
+        "+-": [
+          "(2,2,6)"
+        ],
+        "-+": [
+          "(1,1,6)"
+        ],
+        "--": [
+          "(2,2,1)"
+        ]
+      }
+    },
+    "projector_groups": {
+      "common_group": "Spin(4)xSpin(6) ~= SU(2)L x SU(2)R x SU(4), global quotient unresolved",
+      "y0": "Spin(10)",
+      "yL": "Spin(4)xSpin(7)"
+    },
+    "sector_dimension_sums": {
+      "11": 11,
+      "32": 32,
+      "55": 55,
+      "65": 65
+    },
+    "spinor_32_intrinsic_scan": [
+      {
+        "4D_left_chiral_identification": "16 = (2,1,4) + (1,2,4bar)",
+        "H_joint_sector": "++",
+        "H_zero_dimension": 8,
+        "H_zero_reps": [
+          "(2,1,4)"
+        ],
+        "Hc_joint_sector_before_4D_conjugation": "--",
+        "Hc_left_chiral_zero_reps": [
+          "(1,2,4bar)"
+        ],
+        "Hc_zero_dimension": 8,
+        "eta": "++",
+        "total_zero_dimension": 16
+      },
+      {
+        "4D_left_chiral_identification": "16 = (1,2,4bar) + (2,1,4)",
+        "H_joint_sector": "+-",
+        "H_zero_dimension": 8,
+        "H_zero_reps": [
+          "(1,2,4bar)"
+        ],
+        "Hc_joint_sector_before_4D_conjugation": "-+",
+        "Hc_left_chiral_zero_reps": [
+          "(2,1,4)"
+        ],
+        "Hc_zero_dimension": 8,
+        "eta": "+-",
+        "total_zero_dimension": 16
+      },
+      {
+        "4D_left_chiral_identification": "16bar = (2,1,4bar) + (1,2,4)",
+        "H_joint_sector": "-+",
+        "H_zero_dimension": 8,
+        "H_zero_reps": [
+          "(2,1,4bar)"
+        ],
+        "Hc_joint_sector_before_4D_conjugation": "+-",
+        "Hc_left_chiral_zero_reps": [
+          "(1,2,4)"
+        ],
+        "Hc_zero_dimension": 8,
+        "eta": "-+",
+        "total_zero_dimension": 16
+      },
+      {
+        "4D_left_chiral_identification": "16bar = (1,2,4) + (2,1,4bar)",
+        "H_joint_sector": "--",
+        "H_zero_dimension": 8,
+        "H_zero_reps": [
+          "(1,2,4)"
+        ],
+        "Hc_joint_sector_before_4D_conjugation": "++",
+        "Hc_left_chiral_zero_reps": [
+          "(2,1,4bar)"
+        ],
+        "Hc_zero_dimension": 8,
+        "eta": "--",
+        "total_zero_dimension": 16
+      }
+    ],
+    "symmetric_tensor_65_eta_plus_minus": {
+      "H_joint_sector": "+-",
+      "H_zero_dimension": 24,
+      "H_zero_reps": [
+        "(2,2,6)"
+      ],
+      "Hc_joint_sector_before_4D_conjugation": "-+",
+      "Hc_left_chiral_zero_reps": [
+        "(1,1,6)"
+      ],
+      "Hc_zero_dimension": 6,
+      "SM_content": [
+        "Q=(3,2,+1/6)",
+        "Qbar=(3bar,2,-1/6)",
+        "X56=(3,2,-5/6)",
+        "X56bar=(3bar,2,+5/6)",
+        "D=(3,1,-1/3)",
+        "Dbar=(3bar,1,+1/3)"
+      ],
+      "Spin10_SU5_X_note": "the Q/Qbar rows lie in the 54 SU5 15_(+4)+15bar_(-4) sectors, not the V67 spinor-partner X charges -1/+1",
+      "compulsory_other_complex_components": 18,
+      "desired_Q_Qbar_complex_components": 12,
+      "eta": "+-",
+      "renormalizable_Cbar_54_C_singlet": false,
+      "total_zero_dimension": 30
+    },
+    "tensor_55_eta_plus_minus": {
+      "H_joint_sector": "+-",
+      "H_zero_dimension": 24,
+      "H_zero_reps": [
+        "(2,2,6)"
+      ],
+      "Hc_joint_sector_before_4D_conjugation": "-+",
+      "Hc_left_chiral_zero_reps": [
+        "(1,1,6)"
+      ],
+      "Hc_zero_dimension": 6,
+      "SM_content": [
+        "Q=(3,2,+1/6)",
+        "Qbar=(3bar,2,-1/6)",
+        "X56=(3,2,-5/6)",
+        "X56bar=(3bar,2,+5/6)",
+        "D=(3,1,-1/3)",
+        "Dbar=(3bar,1,+1/3)"
+      ],
+      "Spin10_SU5_X_note": "the Q/Qbar rows lie in 45 -> 10_(+4)+10bar_(-4)+24_0+1_0, not the V67 spinor-partner X charges -1/+1",
+      "V65_branch": "B5",
+      "compulsory_other_complex_components": 18,
+      "desired_Q_Qbar_complex_components": 12,
+      "eta": "+-",
+      "natural_rank_coupling": "Cbar 45_2 C",
+      "total_zero_dimension": 30
+    },
+    "theorem": {
+      "Q_branching": "(2,1,4) -> Q(3,2,+1/6) + L(1,2,-1/2)",
+      "Qbar_branching": "(2,1,4bar) -> Qbar(3bar,2,-1/6) + Lbar(1,2,+1/2)",
+      "proof": "every common-group generator commutes with P0^R and P1^R, so Z_R is a common-group module; flavor-space parity matrices on multiple copies do not change this conclusion",
+      "pure_parity_Q_only_possible": false,
+      "scope": "all bulk representations and intrinsic/flavor parity matrices with the fixed P0/P1 walls; SM-breaking boundary mass matrices are outside the theorem",
+      "zero_space": "Z_R=ker(eta0 P0^R-1) intersect ker(eta1 P1^R-1)"
+    },
+    "two_32s_for_Q_and_Qbar": {
+      "compulsory_other_complex_components": 20,
+      "desired_Q_Qbar_complex_components": 12,
+      "parity_only_Q_pair_isolated": false,
+      "zero_spectrum": "one 16 plus one 16bar"
+    }
+  },
+  "schema": "susy_v68_spin11_split_bulk_parity_no_go_audit/v1",
+  "source_manifest": {
+    "local_files": [
+      {
+        "exists": true,
+        "id": "v59_route",
+        "path": "SUSY_V59_SPIN11_GAUGE_HIGGS_COMPLETION_AUDIT.json",
+        "sha256": "dfe07e9af7ef080cd13413dd877f25e73a0e4f22140d8a5e311de590bf92e0e6"
+      },
+      {
+        "exists": true,
+        "id": "v61_route",
+        "path": "SUSY_V61_SPIN11_Z4R_SELECTOR_ESCAPE_AUDIT.json",
+        "sha256": "bf3f0d5de14350a9b65e94215bc60086f1e58008427132b6af93dce49b9ff0c7"
+      },
+      {
+        "exists": true,
+        "id": "v65_route",
+        "path": "SUSY_V65_SPIN11_ORPHAN_LIFTING_CLASSIFICATION_AUDIT.json",
+        "sha256": "d0bf61e662e8489fddfe50fa3bc0f7e69a48b9ec3d996f9cb1db82cb68a34cce"
+      },
+      {
+        "exists": true,
+        "id": "v67_route",
+        "path": "SUSY_V67_SPIN11_INDEX_PARTNER_6D_ESCAPE_AUDIT.json",
+        "sha256": "fe1e8a4ee7c554217abfd5edb4757093bd873dd0b4b369ae3082c312501046da"
+      },
+      {
+        "exists": true,
+        "id": "v67_master",
+        "path": "SUSY_V67_MULTIPATH_G1_FRONTIER_MASTER_AUDIT.json",
+        "sha256": "91e30533697eb5fd7411e041bdd8adf0a1a29fbf8eba265a9a2dc79e5154c5fb"
+      }
+    ],
+    "primary_sources": [
+      {
+        "id": "HOSOTANI_YAMATSU_2015",
+        "scope": "Primary source for the SO(11) vector and spinor projectors, the SO(10) and SO(4)xSO(7) walls, and a 32 containing one SM family.",
+        "title": "Gauge-Higgs Grand Unification",
+        "url": "https://arxiv.org/abs/1504.03817"
+      },
+      {
+        "id": "FURUI_HOSOTANI_YAMATSU_2016",
+        "scope": "Provides the explicit 5D component parity table and SO(10)-invariant brane interactions; its model is non-supersymmetric and does not establish the V61 Z4R action.",
+        "title": "Toward Realistic Gauge-Higgs Grand Unification",
+        "url": "https://arxiv.org/abs/1606.07222"
+      },
+      {
+        "id": "HOSOTANI_YAMATSU_2018",
+        "scope": "Displays the SO(11) spinor branching/parity organization and reports that the six-dimensional redesign avoids the light exotics of the authors' earlier non-supersymmetric 5D model.",
+        "title": "Electroweak Symmetry Breaking and Mass Spectra in Six-Dimensional Gauge-Higgs Grand Unification",
+        "url": "https://arxiv.org/abs/1710.04811"
+      },
+      {
+        "id": "VON_GERSDORFF_QUIROS_2003",
+        "scope": "Shows that integrated anomaly cancellation is weaker than fixed-point cancellation and classifies restricted Green-Schwarz/CS remedies.",
+        "title": "Localized anomalies in orbifold gauge theories",
+        "url": "https://arxiv.org/abs/hep-th/0305024"
+      }
+    ]
+  },
+  "status": "V68_SPIN11_SPLIT_BULK_PARITY_NO_GO__V59_V61_V65_V67_CORES_BOUND__INHERITED_GEOMETRIC_Z4R_FORCES_EVERY_CONVENTIONAL_HYPER_HALF_QR1__ORPHAN_QR0_NEEDS_QR2_ROW__NEUTRAL_VEV_DRESSING_CANNOT_REPAIR_CHARGE__PURE_PARITY_KERNEL_IS_A_PATI_SALAM_MODULE_FOR_EVERY_REPRESENTATION__Q_ONLY_AND_QBAR_ONLY_PARITY_SPECTRA_IMPOSSIBLE__11_32_55_65_ENUMERATED__DIAGONAL_R_X_HYPER_FLAVOR_REDESIGN_IS_NEW_ACTION__32_HAS_20_COMPANIONS__55_AND_65_HAVE_18_COMPANIONS__V67_Q_ONLY_ANOMALY_AND_BETA_NOT_IMPORTED__TWO_WALL_SM_FILTER_REPRESENTATION_LEVEL_ONLY__FULL_KK_DETERMINANT_AND_FIXED_POINT_ANOMALIES_OPEN__INHERITED_5D_SPLIT_BULK_ROUTE_CLOSED__CURRENT_ACTION_REJECTED__G1_TO_G8_OPEN_ZERO_PROMOTIONS",
+  "terminal_decision": {
+    "D67_6D_route": "CANDIDATE_NEW_ACTION_NOT_CONSTRUCTED",
+    "SM_selective_two_wall_filter": "REPRESENTATION_LEVEL_ONLY",
+    "V68_G1_closed": false,
+    "V68_G4_closed": false,
+    "closed_gates": [],
+    "complete_theory": false,
+    "current_bound_Spin11_action": "REJECTED",
+    "diagonal_R_x_hyper_flavor_route": "CANDIDATE_NEW_ACTION_NOT_CONSTRUCTED",
+    "honest_outcome": "V68 closes the inherited conventional-hyper split-bulk escape and the entire pure-parity Q-only class.  Only a redesigned diagonal selector with SM-selective boundary determinants, or a higher-dimensional action, remains; neither is constructed, so the current action stays rejected.",
+    "inherited_conventional_5D_split_bulk_route": "CLOSED",
+    "physical_colored_mass_certified": false,
+    "pure_parity_Q_only_route_all_representations": "CLOSED",
+    "same_action_microscopic_completion_found": false
+  },
+  "version": "V68"
+}
