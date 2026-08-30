@@ -1,0 +1,940 @@
+{
+  "acceptance": {
+    "A11_positive_kinetic_chamber": "PASS_EXISTENCE_NOT_STABILIZATION",
+    "A7_spin_R_lift_for_localized_charged_parent": "PASS_EXACT_CLASSICAL_SUPERFIELD",
+    "A8_Higgs_spectrum": "PASS_EXACT_IN_BOTH_DISPLAYED_BRANCHES",
+    "A8_three_families": "LOCALIZED_INPUT_NOT_DERIVED_FROM_BULK",
+    "A9_charged_fermion_pointwise_gauge_anomaly": "PASS_EXACT_ZERO",
+    "A9_full_local_supergravity_and_GS": "OPEN",
+    "localized_3x11_parent": "CONDITIONALLY_VIABLE_CHARGED_SECTOR",
+    "published_half32_parent": "REJECTED_FOR_V69_ORBIFOLD"
+  },
+  "artifact_hashes": {
+    "generator_sha256": "689b10525a5b781995f9bda00839a647d2338b9ed619fafed6ad2cf017773d84",
+    "test_sha256": "ad3a032e235b6dd4d086f9f472e688346ff6f2449f444aa83814a61284264fbb"
+  },
+  "core_sha256": "3e7b8e53916fbbc05bdcdf9632bcf4359aa4888b037df775c37d8d7d2551b228",
+  "date": "2026-08-30",
+  "fixed_locus_twist_ledger": {
+    "adjoint_superfields": {
+      "z00": [
+        "V:Ad(Q)",
+        "Sigma:i Ad(Q)"
+      ],
+      "z10_z01": [
+        "V:Ad(R)",
+        "Sigma:-Ad(R)"
+      ],
+      "z11": [
+        "V:Ad(WQ)",
+        "Sigma:i Ad(WQ)"
+      ]
+    },
+    "anomaly_boundary": "These matrices determine the charged-fermion projector weights used below.  Gravity, tensor and neutral-hyper equivariance is separate.",
+    "fixed_gauge_algebras": {
+      "common_4D": "C(Q,W)=u(2)+u(3), dimension 13",
+      "z00": "C(Q)=u(5), dimension 25",
+      "z10_z01": "C(WQ^2)=C(R)=so(4)+so(7), dimension 27",
+      "z11": "C(WQ)=conjugate u(5), dimension 25"
+    },
+    "geometry_convention": {
+      "z00": "Z4 stabilizer theta",
+      "z10_z01": "one Z2 orbit, representative stabilizer t1 theta^2 at 1/2",
+      "z11": "other Z4 stabilizer t1 theta at (1+i)/2"
+    },
+    "minimal_active_11": {
+      "z00": [
+        "Phi+:-i Q",
+        "Phi-:Q^-1"
+      ],
+      "z10_z01": [
+        "Phi+:-R",
+        "Phi-:+R"
+      ],
+      "z11": [
+        "Phi+:-i WQ",
+        "Phi-:WQ^-1"
+      ]
+    },
+    "selected_integer_m301_11s": [
+      {
+        "hyper": "A",
+        "m": 3,
+        "z00": [
+          "Phi+:i^3 Q",
+          "Phi-:i^0 Q^-1"
+        ],
+        "z10_z01": [
+          "Phi+:-R",
+          "Phi-:+R"
+        ],
+        "z11": [
+          "Phi+:i^3 WQ",
+          "Phi-:i^0 WQ^-1"
+        ]
+      },
+      {
+        "hyper": "B",
+        "m": 0,
+        "z00": [
+          "Phi+:i^0 Q",
+          "Phi-:i^3 Q^-1"
+        ],
+        "z10_z01": [
+          "Phi+:+R",
+          "Phi-:-R"
+        ],
+        "z11": [
+          "Phi+:i^0 WQ",
+          "Phi-:i^3 WQ^-1"
+        ]
+      },
+      {
+        "hyper": "C",
+        "m": 1,
+        "z00": [
+          "Phi+:i^1 Q",
+          "Phi-:i^2 Q^-1"
+        ],
+        "z10_z01": [
+          "Phi+:-R",
+          "Phi-:+R"
+        ],
+        "z11": [
+          "Phi+:i^1 WQ",
+          "Phi-:i^2 WQ^-1"
+        ]
+      }
+    ],
+    "spectator_pair": {
+      "z00_Z4_theta": [
+        "X tensor Q",
+        "-i X tensor Q^-1"
+      ],
+      "z10_z01_Z2_t1theta2": [
+        "Z tensor R",
+        "-Z tensor R"
+      ],
+      "z11_Z4_t1theta": [
+        "ZX tensor WQ",
+        "-i ZX tensor WQ^-1"
+      ]
+    }
+  },
+  "four_dimensional_zero_mode_anomaly_audit": {
+    "SU2_Witten": {
+      "even": true,
+      "number_of_fundamental_doublets_with_color_multiplicity": 14
+    },
+    "all_perturbative_coefficients_zero": true,
+    "coefficients": {
+      "SU2_squared_X": "0",
+      "SU2_squared_Y": "0",
+      "SU3_cubed": "0",
+      "SU3_squared_X": "0",
+      "SU3_squared_Y": "0",
+      "X_cubed": "0",
+      "Y_X_squared": "0",
+      "Y_cubed": "0",
+      "Y_squared_X": "0",
+      "gravity_squared_X": "0",
+      "gravity_squared_Y": "0"
+    },
+    "normalization": {
+      "16": "10_-1 + 5bar_3 + 1_-5",
+      "Higgs": "5_2 weak doublet plus 5bar_-2 weak doublet"
+    },
+    "scope_boundary": [
+      "This is the integrated four-dimensional massless spectrum only.",
+      "The separate localized-anomaly audit checks the charged-fermion projector polynomial.",
+      "Gravity, tensor and neutral-hyper normal-bundle anomalies are not implied by this zero-mode sum.",
+      "It does not prove Dai-Freed phases or the global U(2)xU(3) quotient."
+    ],
+    "spectrum": [
+      "three localized 16 families including N^c",
+      "one H_u+H_d vectorlike doublet pair",
+      "one local X(+10)+Xbar(-10) vectorlike rank pair",
+      "gauge singlets do not enter the gauge ledger"
+    ],
+    "status": "EXACT_4D_ZERO_MODE_LIE_ALGEBRA_ANOMALY_CANCELLATION"
+  },
+  "full_11_phase_table": {
+    "half_integer_nonimport": {
+      "claim_in_hep_ph_0108152": "half-integer rotational charges can remove zero modes",
+      "strict_T2Z4_check": "for total m in Z+1/2, Z_plus^4=-I because Q^4=I on 11",
+      "used_in_V70": false,
+      "verdict": "PROJECTIVE_UNLESS_AN_ADDITIONAL_CENTRAL_EQUIVARIANT_STRUCTURE_IS_SPECIFIED"
+    },
+    "rows": [
+      {
+        "Z_minus": "i^3 Q^-1",
+        "Z_plus": "i^0 Q",
+        "m": 0,
+        "minus_column_sectors": [
+          "weak_anti"
+        ],
+        "minus_physical_zero_reps": [
+          "(2,1)"
+        ],
+        "n_minus_complex_components": 2,
+        "n_plus_complex_components": 1,
+        "plus_zero_reps": [
+          "(1,1)"
+        ],
+        "plus_zero_sectors": [
+          "singlet"
+        ],
+        "translation_sign": 1,
+        "triplet_zero": false
+      },
+      {
+        "Z_minus": "i^2 Q^-1",
+        "Z_plus": "i^1 Q",
+        "m": 1,
+        "minus_column_sectors": [],
+        "minus_physical_zero_reps": [],
+        "n_minus_complex_components": 0,
+        "n_plus_complex_components": 2,
+        "plus_zero_reps": [
+          "(2bar,1)"
+        ],
+        "plus_zero_sectors": [
+          "weak_anti"
+        ],
+        "translation_sign": 1,
+        "triplet_zero": false
+      },
+      {
+        "Z_minus": "i^1 Q^-1",
+        "Z_plus": "i^2 Q",
+        "m": 2,
+        "minus_column_sectors": [
+          "weak_hol"
+        ],
+        "minus_physical_zero_reps": [
+          "(2bar,1)"
+        ],
+        "n_minus_complex_components": 2,
+        "n_plus_complex_components": 0,
+        "plus_zero_reps": [],
+        "plus_zero_sectors": [],
+        "translation_sign": 1,
+        "triplet_zero": false
+      },
+      {
+        "Z_minus": "i^0 Q^-1",
+        "Z_plus": "i^3 Q",
+        "m": 3,
+        "minus_column_sectors": [
+          "singlet"
+        ],
+        "minus_physical_zero_reps": [
+          "(1,1)"
+        ],
+        "n_minus_complex_components": 1,
+        "n_plus_complex_components": 2,
+        "plus_zero_reps": [
+          "(2,1)"
+        ],
+        "plus_zero_sectors": [
+          "weak_hol"
+        ],
+        "translation_sign": 1,
+        "triplet_zero": false
+      },
+      {
+        "Z_minus": "i^3 Q^-1",
+        "Z_plus": "i^0 Q",
+        "m": 0,
+        "minus_column_sectors": [
+          "color_anti"
+        ],
+        "minus_physical_zero_reps": [
+          "(1,3)"
+        ],
+        "n_minus_complex_components": 3,
+        "n_plus_complex_components": 0,
+        "plus_zero_reps": [],
+        "plus_zero_sectors": [],
+        "translation_sign": -1,
+        "triplet_zero": true
+      },
+      {
+        "Z_minus": "i^2 Q^-1",
+        "Z_plus": "i^1 Q",
+        "m": 1,
+        "minus_column_sectors": [],
+        "minus_physical_zero_reps": [],
+        "n_minus_complex_components": 0,
+        "n_plus_complex_components": 3,
+        "plus_zero_reps": [
+          "(1,3bar)"
+        ],
+        "plus_zero_sectors": [
+          "color_anti"
+        ],
+        "translation_sign": -1,
+        "triplet_zero": true
+      },
+      {
+        "Z_minus": "i^1 Q^-1",
+        "Z_plus": "i^2 Q",
+        "m": 2,
+        "minus_column_sectors": [
+          "color_hol"
+        ],
+        "minus_physical_zero_reps": [
+          "(1,3bar)"
+        ],
+        "n_minus_complex_components": 3,
+        "n_plus_complex_components": 0,
+        "plus_zero_reps": [],
+        "plus_zero_sectors": [],
+        "translation_sign": -1,
+        "triplet_zero": true
+      },
+      {
+        "Z_minus": "i^0 Q^-1",
+        "Z_plus": "i^3 Q",
+        "m": 3,
+        "minus_column_sectors": [],
+        "minus_physical_zero_reps": [],
+        "n_minus_complex_components": 0,
+        "n_plus_complex_components": 3,
+        "plus_zero_reps": [
+          "(1,3)"
+        ],
+        "plus_zero_sectors": [
+          "color_hol"
+        ],
+        "translation_sign": -1,
+        "triplet_zero": true
+      }
+    ],
+    "rules": {
+      "Z_minus": "-i Z_plus^-1 = i^(3-m) Q^-1",
+      "Z_plus": "i^m Q",
+      "translations_minus": "(eta W)^-1=eta W",
+      "translations_plus": "eta W, eta=+/-1"
+    },
+    "status": "EXACT_FULL_11_N1_SUPERFIELD_PHASE_TABLE"
+  },
+  "gate_ledger": {
+    "G1": "OPEN",
+    "G2": "OPEN",
+    "G3": "OPEN",
+    "G4": "OPEN",
+    "G5": "OPEN",
+    "G6": "OPEN",
+    "G7": "OPEN",
+    "G8": "OPEN"
+  },
+  "genuine_spin_lift": {
+    "clifford_convention": [
+      "{Gamma_i,Gamma_j}=2 delta_ij",
+      "B_a=Gamma_(2a-1) Gamma_(2a), B_a^2=-1, [B_a,B_b]=0"
+    ],
+    "exact_relations": {
+      "phat_squared": "-1",
+      "qhat_fourth": "-1",
+      "qhat_what_qhat_inverse": "what = - what^{-1}",
+      "rhat_squared": "+1",
+      "vector_R_equals_W_Q2_spin_lift": "what qhat^2 = -rhat",
+      "what_squared": "-1"
+    },
+    "lifts": {
+      "phat_equals_qhat_squared": "B1 B2 B3 B4 B5 = Gamma1...Gamma10",
+      "qhat": "product_(a=1..5) exp(pi B_a/4)",
+      "rhat": "B1 B2 = Gamma1...Gamma4",
+      "what": "B3 B4 B5 = Gamma5...Gamma10"
+    },
+    "mathematical_boundary": "The vector and adjoint images hide the central minus signs.  They do not by themselves define boundary conditions for a gauge spinor.",
+    "spinor_weight_formula": {
+      "all_32_weights_qhat4_minus_one": true,
+      "all_32_weights_what2_minus_one": true,
+      "labels": "a=# minus signs in first two planes, b=# in last three",
+      "n_distinct_Eab_eigen_rows": 12,
+      "qhat_on_Eab": "zeta^(5-2(a+b))",
+      "what_on_Eab": "-i (-1)^b",
+      "zeta": "exp(i pi/4)"
+    },
+    "status": "EXACT_GENUINE_SPIN11_LIFTS_WITH_CENTRAL_COCYCLE"
+  },
+  "lineage": {
+    "V69_core_matches": true,
+    "bound_V69_core": "090843c54f6ce041c758f0301289c3cbc91024cd120ab1bafd86fd7bbad3ef1a",
+    "bound_V69_path": "SUSY_V69_SPIN11_ORDER4_GEOMETRIC_RANK_ESCAPE_AUDIT.json",
+    "expected_V69_core": "090843c54f6ce041c758f0301289c3cbc91024cd120ab1bafd86fd7bbad3ef1a",
+    "imported_V69_claim": "vector/adjoint T2/Z4 skeleton and integrated localized 3x11 parent only",
+    "not_imported": [
+      "V69 spin lift",
+      "V69 half32 projection",
+      "V69 pointwise anomalies"
+    ]
+  },
+  "localized_anomaly_and_bulk_global_audit": {
+    "integer_m301_branch": {
+      "after_B0_Higgsing": "the Spin11/Spin10 vector and B-hyper form an anomaly-opposite massive multiplet; the remaining A_m3 and C_m1 rows cancel",
+      "pointwise_charged_polynomial_zero": true,
+      "z00_and_z11_coefficients_in_B_units": {
+        "A_m3": "1/2",
+        "B_m0": "1/2",
+        "C_m1": "-1/2",
+        "sum": "0",
+        "vector": "-1/2"
+      },
+      "z10_z01_SU2_Witten_obstruction": "0",
+      "z10_z01_SU2_fundamental_doublet_ledger": {
+        "adjoint_coset": 14,
+        "three_full_11s": 6
+      },
+      "z10_z01_SU2_fundamental_doublet_total": 20
+    },
+    "local_GS_decision": {
+      "bulk_T1_GS_still_required": true,
+      "charged_fermion_local_polynomial_requires_inflow": false,
+      "charged_sector_anomaly_requires_hypercharge_or_X_Stueckelberg": false,
+      "full_orbifold_GS_completion": "OPEN_EQUIVARIANT_TENSOR_DESCENT",
+      "hypercharge_or_X_Stueckelberg_from_equivariant_GS_descent": "OPEN_NOT_COMPUTED"
+    },
+    "local_anomaly_basis": {
+      "B": [
+        "1",
+        "1",
+        "40",
+        "10"
+      ],
+      "normalization": "the anomaly vector of a local 5_(+2)",
+      "order": [
+        "SU5_cubed",
+        "SU5_squared_X",
+        "X_cubed",
+        "gravity_squared_X"
+      ]
+    },
+    "localized_families_and_rank_fields": "each localized 16 is U5-anomaly-free; X(+10)+Xbar(-10) is vectorlike",
+    "minimal_flavor_Wilson_branch": {
+      "all_local_charged_fermion_polynomials_zero": true,
+      "z00_U5": {
+        "active_11": "1/2 B",
+        "coefficients_in_B_units": {
+          "active_11": "1/2",
+          "spectator_1": "1/2",
+          "spectator_2": "-1/2",
+          "vector": "-1/2"
+        },
+        "spectator_flavor_eigenstates": [
+          "1/2 B",
+          "-1/2 B"
+        ],
+        "sum": "0",
+        "vector": "-1/2 B"
+      },
+      "z10_z01_Spin4xSpin7": {
+        "SU2_fundamental_doublet_ledger": {
+          "active_11": 2,
+          "adjoint_coset": 14,
+          "spectator_11_pair": 4
+        },
+        "SU2_fundamental_doublet_total": 20,
+        "ordinary_SU2_Witten_obstruction": "0",
+        "perturbative_cubic_polynomial": "0",
+        "spectator_flavor_trace": "tr Z=0 pointwise (the two representatives exchange signs)"
+      },
+      "z11_U5_prime": {
+        "Wilson_tracking": "the local complex structure is Q_prime=WQ and ZX has eigenvalues +/-i",
+        "active_11": "1/2 B_prime",
+        "coefficients_in_B_prime_units": {
+          "active_11": "1/2",
+          "spectator_1": "-1/2",
+          "spectator_2": "1/2",
+          "vector": "-1/2"
+        },
+        "spectator_flavor_eigenstates": [
+          "-1/2 B_prime",
+          "1/2 B_prime"
+        ],
+        "sum": "0",
+        "vector": "-1/2 B_prime"
+      }
+    },
+    "not_computed": [
+      "gravitino, tensorino/self-dual-form and 266 neutral-hyper local U1_L/normal-bundle anomaly",
+      "equivariant descent of the bulk Green-Schwarz differential cocycle",
+      "global Spin(2)-Spin(11)-flavor quotient and restricted U5/U5-prime group forms",
+      "orbifold Wu-Chern-Simons extension and localized eta/Dai-Freed phases",
+      "pointwise discrete Z4R anomaly"
+    ],
+    "positive_tensor_chamber": {
+      "gauge_kinetic_positive_and_j_dot_a_positive": true,
+      "j": [
+        "1/2",
+        "1"
+      ],
+      "j_dot_a": "3",
+      "j_dot_b": "3/2",
+      "j_squared": "1",
+      "scope": "j dot b controls the gauge kinetic sign; positive j dot a is recorded arithmetic and is not labeled a gravitational kinetic coefficient",
+      "stabilized_tensor_vacuum": false
+    },
+    "projector_convention": {
+      "effective_Z4_weights_by_superfield_eta": {
+        "-1": "-1/8",
+        "-i": "-3/8",
+        "1": "3/8",
+        "i": "1/8"
+      },
+      "fermion_from_superfield_conversion": "P_f(eta)=exp(-i pi/4) eta^-1 for the positive-chirality hyperino convention used here",
+      "log_branch": "arg(-P_f) in (-pi,pi]",
+      "normalized_formula": "w(eta)=F0/(2 pi), F0=-i log(-P_f(eta))",
+      "source": "VON_GERSDORFF_2007",
+      "table_key": "effective order-four superfield eigenvalue eta after the Lorentz/SU2R and 6D-chirality conversion; eta is not raw P_f"
+    },
+    "smooth_bulk_quantization": {
+      "a": [
+        2,
+        2
+      ],
+      "a_characteristic": true,
+      "b": [
+        2,
+        -1
+      ],
+      "b_is_lattice_vector": true,
+      "coefficient_quantization": "PASS_ON_THE_SMOOTH_BULK",
+      "lattice": "U with Omega=[[0,1],[1,0]]",
+      "simply_connected_bulk_group": "Spin(11)",
+      "unimodular_integral": true
+    },
+    "status": "CHARGED_FERMION_POINTWISE_GAUGE_ANOMALIES_CANCEL__FULL_LOCAL_SUPERGRAVITY_OPEN"
+  },
+  "localized_parent_completion_branches": {
+    "integer_m301_dynamical_reduction": {
+      "bulk_breaking": {
+        "VEV": "<B0>=v_B e11",
+        "breaking": "Spin(11)->Spin(10), rank 5->5",
+        "bulk_F_terms": "partial B+=0 and Sigma=0 make the background F-flat",
+        "colored_VEV": false,
+        "orbifold_compatible": "Q e11=W e11=e11 and m_B=0"
+      },
+      "complete_renormalizable_local_operator_ledger": {
+        "VEV_preservation": "B0 and X,Xbar have R=0, so their selected VEVs preserve Z4R",
+        "Z4R_charges": {
+          "A0": 2,
+          "B0": 0,
+          "H_dC": 0,
+          "H_dSigma": 0,
+          "H_uA": 0,
+          "H_uB": 2,
+          "S0": 2,
+          "X_Xbar": 0,
+          "family_16": 1
+        },
+        "allowed_local_terms": [
+          "A0 f_A(B0,X Xbar)+S0 f_S(B0,X Xbar)+P_3(A0,S0)",
+          "(lambda_A A0+lambda_S S0) H_uA H_dC",
+          "(mu_B+lambda_B B0) H_uB H_dC",
+          "y_u 10 10 H_uA",
+          "y_d 10 5bar H_dC",
+          "y_nu 5bar N H_uA",
+          "M_N N N X"
+        ],
+        "arbitrary_local_Sigma_polynomial": "FORBIDDEN_BY_THE_HIGHER_DIMENSIONAL_GAUGE_SHIFT",
+        "forbidden_terms": {
+          "10_10_HuB": "R=0 not 2",
+          "16_cubed": "R=3 not 2",
+          "16_to_the_fourth": "R=0 not 2",
+          "5bar_N_HuB": "R=0 not 2",
+          "light_mu_HuA_Hd": "R=0 not 2"
+        },
+        "mandatory_bulk_term": "g B0 H_uB H_dSigma",
+        "scope": "complete at renormalizable zero-mode level; higher-dimensional Wilson functions and the gauged origin are open"
+      },
+      "goldstone_audit": {
+        "not_claimed": "a gauge-fixed KK determinant or full compactification Hessian",
+        "reason": "The Q/W-invariant e11 VEV commutes with the orbifold.  The full B hypermultiplet supplies the higher-dimensional Higgs sector for the Spin(11)/Spin(10) generators; at the zero-mode level the mandatory coupling is exactly the displayed rank-one doublet mass.  The complex B0 fluctuation pairs with A0.",
+        "result": "NO_ADDITIONAL_4D_ZERO_MODE_OBSTRUCTION_FOUND"
+      },
+      "local_U5_stabilizer": {
+        "D_flat": true,
+        "D_flat_reason": "a single vector VEV along e11 has v^dagger T^(ij) v=0 for every antisymmetric Spin(11) generator",
+        "complete_renormalizable_driver_class": {
+          "Jacobian_J": [
+            [
+              "b_A+2 c_A v_B",
+              "d_A"
+            ],
+            [
+              "b_S+2 c_S v_B",
+              "d_S"
+            ]
+          ],
+          "P_3_boundary": "any homogeneous cubic in A0,S0; quadratic driver monomials have Z4R charge 0 and are forbidden",
+          "chiral_Hessian_block_form": "H=[[0,J],[J^T,0]] because the cubic P_3 Hessian vanishes at A0=S0=0",
+          "conclusion": "the two drivers and the B0/X-Xbar radial coordinates are all massive after the U1X gauge null is removed",
+          "exact_determinant": "det H=(det J)^2",
+          "f_alpha": "a_alpha+b_alpha B0+c_alpha B0^2+d_alpha z_X",
+          "fields": "drivers A0,S0; coordinates B0,z_X with z_X=X Xbar (not an added field)",
+          "nondegeneracy_condition": "det J != 0",
+          "open_dense_witness": "b_A=d_S=1 and c_A=d_A=b_S=c_S=0 gives J=I_2",
+          "superpotential": "W_drv=A0 f_A(B0,z_X)+S0 f_S(B0,z_X)+P_3(A0,S0)",
+          "supersymmetric_branch": "A0=S0=0, f_A(v_B,v_X^2)=f_S(v_B,v_X^2)=0"
+        },
+        "cross_term_audit": "Cubic driver cross terms have zero Hessian on the branch; generic renormalizable f_A,f_S retain a local branch on the open set detJ!=0.",
+        "minimal_F_A0": "kappa(B0^2-v_B^2)=0",
+        "minimal_F_B0": "2 kappa A0 B0=0",
+        "minimal_slice": "W_stab=kappa A0 (B0^2-v_B^2)",
+        "minimal_supersymmetric_branch": "B0=+/-v_B, A0=0",
+        "selector_boundary": "all-order stability and global uniqueness of this local branch remain open"
+      },
+      "mandatory_and_local_masses": {
+        "H_dC_projection": "-sqrt(2)g v_B, nonzero because the selected branch has g!=0 and v_B!=0",
+        "M_eff": "mu_B+lambda_B v_B",
+        "bulk_gauge_coupling": "sqrt(2) g B_- Sigma B_+ -> sqrt(2) g v_B H_uB H_dSigma",
+        "doublet_mass_matrix_rows_HuA_HuB_cols_HdSigma_HdC": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "sqrt(2) g v_B",
+            "mu_B+lambda_B v_B"
+          ]
+        ],
+        "heavy_pair": "H_uB with sqrt(2)g v_B H_dSigma + (mu_B+lambda_B v_B) H_dC",
+        "light_pair": [
+          "H_uA",
+          "H_d_light proportional to (mu_B+lambda_B v_B) H_dSigma-sqrt(2)g v_B H_dC"
+        ],
+        "local_term": "delta_z00 (mu_B+lambda_B B0) B_- C_+ (full U(5)-invariant boundary contraction)",
+        "local_zero_mode_term": "(mu_B+lambda_B v_B) H_uB H_dC",
+        "rank_for_g_nonzero_vB_nonzero": 1
+      },
+      "phase_assignments": {
+        "A_m3": {
+          "Z_minus": "i^0 Q^-1",
+          "Z_plus": "i^3 Q",
+          "m": 3,
+          "minus_column_sectors": [
+            "singlet"
+          ],
+          "minus_physical_zero_reps": [
+            "(1,1)"
+          ],
+          "n_minus_complex_components": 1,
+          "n_plus_complex_components": 2,
+          "plus_zero_reps": [
+            "(2,1)"
+          ],
+          "plus_zero_sectors": [
+            "weak_hol"
+          ],
+          "translation_sign": 1,
+          "triplet_zero": false
+        },
+        "B_m0": {
+          "Z_minus": "i^3 Q^-1",
+          "Z_plus": "i^0 Q",
+          "m": 0,
+          "minus_column_sectors": [
+            "weak_anti"
+          ],
+          "minus_physical_zero_reps": [
+            "(2,1)"
+          ],
+          "n_minus_complex_components": 2,
+          "n_plus_complex_components": 1,
+          "plus_zero_reps": [
+            "(1,1)"
+          ],
+          "plus_zero_sectors": [
+            "singlet"
+          ],
+          "translation_sign": 1,
+          "triplet_zero": false
+        },
+        "C_m1": {
+          "Z_minus": "i^2 Q^-1",
+          "Z_plus": "i^1 Q",
+          "m": 1,
+          "minus_column_sectors": [],
+          "minus_physical_zero_reps": [],
+          "n_minus_complex_components": 0,
+          "n_plus_complex_components": 2,
+          "plus_zero_reps": [
+            "(2bar,1)"
+          ],
+          "plus_zero_sectors": [
+            "weak_anti"
+          ],
+          "translation_sign": 1,
+          "triplet_zero": false
+        }
+      },
+      "space_group_and_SUSY": {
+        "T1_equals_T2": "W for all three hypers",
+        "Theta_minus_m": "i^(3-m) Q^-1",
+        "Theta_plus_m": "i^m Q for m=3,0,1 independently",
+        "all_translation_relations_pass": true,
+        "each_Theta_fourth_is_identity": true,
+        "each_full_hyper_relation_Zplus_Zminus_i": true
+      },
+      "status": "EXACT_INTEGER_PHASE_M301_CLASSICAL_ACTION_IMPROVED_BRANCH",
+      "zero_mode_ledger_before_superpotential": {
+        "H_d": [
+          "H_dSigma from vector Sigma",
+          "H_dC from C Phi+"
+        ],
+        "H_u": [
+          "H_uA from A Phi+",
+          "H_uB from B Phi-"
+        ],
+        "chiral_doublet_class": "2 H_u plus 2 H_d (vectorlike)",
+        "color_triplets": [],
+        "singlets": [
+          "A0 from A Phi-",
+          "B0 from B Phi+"
+        ]
+      }
+    },
+    "minimal_flavor_Wilson_projection": {
+      "active_11": {
+        "T1_equals_T2": "W",
+        "Theta_minus": "Q^-1",
+        "Theta_plus": "-i Q",
+        "physical_interpretation": [
+          "Phi+ supplies H_u in (2,1)",
+          "Phi- supplies one bulk gauge singlet A0"
+        ],
+        "zero_modes": {
+          "Z_minus": "i^0 Q^-1",
+          "Z_plus": "i^3 Q",
+          "m": 3,
+          "minus_column_sectors": [
+            "singlet"
+          ],
+          "minus_physical_zero_reps": [
+            "(1,1)"
+          ],
+          "n_minus_complex_components": 1,
+          "n_plus_complex_components": 2,
+          "plus_zero_reps": [
+            "(2,1)"
+          ],
+          "plus_zero_sectors": [
+            "weak_hol"
+          ],
+          "translation_sign": 1,
+          "triplet_zero": false
+        }
+      },
+      "local_twists_active_11": {
+        "z00_Z4_theta": [
+          "-i Q",
+          "Q^-1"
+        ],
+        "z10_z01_Z2_t1theta2": [
+          "-R",
+          "+R"
+        ],
+        "z11_Z4_t1theta": [
+          "-i WQ",
+          "WQ^-1"
+        ]
+      },
+      "net_bulk_singlets": [
+        "A0"
+      ],
+      "net_charged_bulk_zero_modes": [
+        "H_u",
+        "H_d"
+      ],
+      "spectator_pair": {
+        "all_checks_pass": true,
+        "flavor_matrices": {
+          "A_rotation": "X=[[0,1],[1,0]]",
+          "F1": "Z=diag(1,-1)",
+          "F2": "-Z=diag(-1,1)",
+          "allowed_flavor_structure": "The two identical full hypers have a U(2) flavor subgroup with Phi+ in the defining and Phi- in the inverse representation.",
+          "identities": "A F1 A^-1=F2; A F2 A^-1=F1^-1"
+        },
+        "full_hyper_action_checks": {
+          "T1_plus_T1_minus": true,
+          "T2_plus_T2_minus": true,
+          "Theta_plus_Theta_minus_i": true
+        },
+        "local_twists": {
+          "z00_Z4_theta": [
+            "X tensor Q",
+            "-i X tensor Q^-1"
+          ],
+          "z10_z01_Z2_t1theta2": [
+            "Z tensor R",
+            "-Z tensor R"
+          ],
+          "z11_Z4_t1theta": [
+            "ZX tensor WQ",
+            "-i ZX tensor WQ^-1"
+          ]
+        },
+        "minus_space_group_checks": {
+          "theta4": true,
+          "theta_t1_theta_inverse_equals_t2": true,
+          "theta_t2_theta_inverse_equals_t1_inverse": true,
+          "translations_commute": true
+        },
+        "operators": {
+          "T1_plus": "Z tensor W",
+          "T2_plus": "-Z tensor W",
+          "Theta_minus": "-i X tensor Q^-1",
+          "Theta_plus": "X tensor Q",
+          "Tj_minus": "Tj_plus^-1"
+        },
+        "plus_space_group_checks": {
+          "theta4": true,
+          "theta_t1_theta_inverse_equals_t2": true,
+          "theta_t2_theta_inverse_equals_t1_inverse": true,
+          "translations_commute": true
+        },
+        "status": "EXACT_TWO_SPECTATOR_11_FLAVOR_WILSON_LIFT_NO_ZERO_MODES",
+        "zero_mode_proof": {
+          "T2_equals_minus_T1": true,
+          "argument": "T1 v=v and T2 v=v imply v=-v, hence v=0",
+          "n_zero_modes": 0
+        }
+      },
+      "status": "EXACT_MINIMAL_CHARGED_ZERO_MODE_PROJECTION_BRANCH",
+      "triplet_zero_modes": 0,
+      "vector_Sigma": "one H_d in (2bar,1)"
+    },
+    "preferred_for_next_action_audit": "integer_m301_dynamical_reduction"
+  },
+  "lorentz_SU2R_and_N1_superfield_lift": {
+    "N1_superfield_rules": {
+      "Phi_minus": "Phi_minus Z_minus",
+      "Phi_plus": "Z_plus Phi_plus",
+      "Sigma": "i Ad(Q)",
+      "V": "Ad(Q)",
+      "full_hyper_constraint": "Z_plus Z_minus i = I, Z_plus^4=Z_minus^4=I"
+    },
+    "SU2R_twist": {
+      "U_R": "diag(zeta^-1,zeta), zeta=exp(i pi/4)",
+      "U_R_fourth": "-I_2",
+      "central_minus_choice": "Multiplying U_R by -I gives the chi=3pi/4 conjugacy class and leaves no constant supercharge; it is an N=0 branch.",
+      "identity_eigenlines_before_reality": 2,
+      "one_product_is_identity": true,
+      "preserved_4D_N": 1,
+      "preserved_supercharge_product_exponents_mod8": [
+        0,
+        0
+      ],
+      "symplectic_Majorana_identity_orbits": 1
+    },
+    "geometry": "square T2/Z4, phi=pi/2",
+    "lorentz_spin_lift": {
+      "L_theta": "exp(pi Gamma_56/4)",
+      "L_theta_fourth": "-1 on a six-dimensional Weyl spinor"
+    },
+    "source_vs_derivation": {
+      "specific_Q_W_lift": "DERIVED here for the V69 matrices",
+      "superfield_rules": "SOURCED from hep-th/0602155 equations (44)-(45)"
+    },
+    "status": "EXACT_4D_N1_VECTOR_AND_FULL_HYPER_SUPERFIELD_LIFT",
+    "translation_R_holonomy": "identity; any nontrivial SU2R translation removes the preserved supercharge"
+  },
+  "open_obligations": [
+    "gravity, tensor and 266 neutral-hyper normal-bundle anomaly and equivariant boundary action",
+    "orbifold Green-Schwarz differential-cocycle descent and Wu-Chern-Simons extension",
+    "Dai-Freed/eta phases and the global Spin(2)-Spin(11)-flavor/U(2)xU(3) quotient",
+    "globally gauged Z4R origin and pointwise discrete anomaly cancellation",
+    "all-order local operator ring and global selection of the m301 vacuum branch",
+    "KK gauge-fixed determinant, regulator and threshold calculation",
+    "full compactification/tensor/rank/Higgs Hessian and stabilization inside the positive chamber",
+    "soft spectrum, unification numerics, cosmology and mediator-complete flavor"
+  ],
+  "primary_sources": [
+    {
+      "id": "GROOT_NIBBELINK_HILLENBACH_2006",
+      "sourced_fact": "For T2/ZN in 4D N=1 superfields, Phi+ -> Z+ Phi+, Phi- -> Phi- Z-, V -> Ad(Z+)V and S -> exp(i phi)Ad(Z+)S; Z+^N=Z-^N=1 and Z+ Z- exp(i phi)=1.",
+      "title": "Quantum Corrections to Non-Abelian SUSY Theories on Orbifolds",
+      "url": "https://arxiv.org/abs/hep-th/0602155"
+    },
+    {
+      "id": "WATARI_YANAGIDA_2001",
+      "nonimport": "Its asserted half-integer total rotational charges are not used here: with Q^4=1 on an 11 they are projective unless an additional central equivariant structure is specified.",
+      "sourced_fact": "Equations (2)-(4) give the T2/Z4 vector, adjoint-chiral and full-hyper phase pattern and use rotational charges to isolate Higgs doublets.",
+      "title": "Supersymmetric Grand Unification Model with Orbifold Symmetry Breaking in Six Dimensional Supergravity",
+      "url": "https://arxiv.org/abs/hep-ph/0108152"
+    },
+    {
+      "id": "APRUZZI_ET_AL_2020",
+      "sourced_fact": "Half hypers in a pseudoreal gauge representation have an orthogonal flavor group; full hypers in a real representation admit the unitary flavor subgroup used below.",
+      "title": "General Prescription for Global U(1)'s in 6D SCFTs",
+      "url": "https://arxiv.org/abs/2001.10549"
+    },
+    {
+      "id": "VON_GERSDORFF_2007",
+      "sourced_fact": "The local anomaly of a six-dimensional Weyl fermion is fixed by the local twist through F0=-i log(-P), including Wilson-line-shifted twists at the inequivalent T2/ZN fixed points.",
+      "title": "Anomalies on Six Dimensional Orbifolds",
+      "url": "https://arxiv.org/abs/hep-th/0612212"
+    },
+    {
+      "id": "MONNIER_MOORE_PARK_2017",
+      "sourced_fact": "Six-dimensional Green--Schwarz coefficients must lie in an integral string-charge lattice with characteristic gravitational coefficient.",
+      "title": "Quantization of anomaly coefficients in 6D N=(1,0) supergravity",
+      "url": "https://arxiv.org/abs/1711.04777"
+    }
+  ],
+  "published_half32_parent_adjudication": {
+    "derived_relations": [
+      "K F1 K^-1 = F2",
+      "K F2 K^-1 = -F1^-1, because what^-1=-what"
+    ],
+    "determinant_proof": [
+      "det(F2)=det(F1)",
+      "det(F2)=(-1)^n det(F1^-1)=(-1)^n det(F1)",
+      "therefore (-1)^n=+1 and n must be even"
+    ],
+    "phase_independence": "the determinant obstruction is independent of K and intrinsic rotation phases",
+    "published_N3_parent_on_this_orbifold": "NO_FIELD_SPACE_REPRESENTATION_OF_THE_V69_SPACE_GROUP",
+    "scope": "This rejects this parent on the V69 W lift, not the published unorbifolded 6D spectrum.",
+    "single_half32": "REJECTED",
+    "spin_operators": {
+      "T1": "F1 tensor what",
+      "T2": "F2 tensor what",
+      "Theta": "K tensor qhat",
+      "flavor": "F1,F2 in the orthogonal flavor group of n pseudoreal half hypers"
+    },
+    "status": "ODD_HALF32_MULTIPLICITY_EXACT_SPACE_GROUP_NO_GO",
+    "three_half32s": "REJECTED"
+  },
+  "schema": "susy_v70_spin11_localized_parent_spin_flavor_completion_audit/v1",
+  "status": "V70_SPIN11_LOCALIZED_PARENT_SPIN_FLAVOR_COMPLETION__V69_CORE_BOUND__GENUINE_SPIN_LIFTS_AND_CENTRAL_COCYCLE_EXACT__4D_N1_LORENTZ_SU2R_LIFT_EXACT__ODD_HALF32_MULTIPLICITY_SPACE_GROUP_NO_GO__PUBLISHED_N3_HALF32_PARENT_REJECTED_FOR_THIS_ORBIFOLD__LOCALIZED_3X11_PARENT_CHARGED_SUPERFIELD_LIFT_EXACT__VECTOR_SIGMA_ONE_WEAK_DOUBLET_NO_TRIPLET__ACTIVE_11_CONJUGATE_DOUBLET_PLUS_SINGLET__PAIRED_SPECTATOR_FLAVOR_WILSON_LIFT_EXACT_NO_ZERO_MODES__INTEGER_M301_DYNAMICAL_BRANCH_EXACT_AT_CLASSICAL_CHARGED_LEVEL__ONE_LIGHT_HIGGS_PAIR_AFTER_RANK_ONE_MASS_MATRIX__4D_ZERO_MODE_PERTURBATIVE_ANOMALIES_AND_SU2_WITTEN_PARITY_CANCEL__CHARGED_FERMION_POINTWISE_U5_U5PRIME_AND_Z2_ANOMALIES_CANCEL_EXACT__SMOOTH_BULK_WU_QUANTIZATION_AND_POSITIVE_TENSOR_CHAMBER_PASS__GRAVITY_TENSOR_NEUTRAL_HYPER_ORBIFOLD_WUCS_Z4R_UV_REGULATOR_THRESHOLDS_VACUUM_COSMOLOGY_OPEN__G1_TO_G8_OPEN",
+  "terminal_decision": {
+    "all_gates_closed": false,
+    "honest_outcome": "V70 removes the V69 spin/Higgs ambiguity for the localized charged parent, cancels its charged-fermion anomaly pointwise, exhibits a positive tensor chamber, and rejects the odd-half32 parent on this orbifold.  Gravity/tensor/neutral equivariance and the global quantum action remain open, so no gate closes.",
+    "theory_complete": false
+  },
+  "vector_multiplet_zero_modes": {
+    "MSSM_boundary": "Sigma alone gives one chiral doublet, not an MSSM pair",
+    "Sigma_rep": "(2bar,1), conjugate to the active-11 (2,1)",
+    "Sigma_rule": "i Ad(Q)=+1 and Ad(W)=+1",
+    "Sigma_zero_complex_dimension": 2,
+    "Sigma_zero_pairs": [
+      [
+        "singlet",
+        "weak_anti"
+      ],
+      [
+        "singlet",
+        "weak_anti"
+      ]
+    ],
+    "V_zero_algebra": "u(2)+u(3)",
+    "V_zero_complex_dimension": 13,
+    "color_triplets": 0,
+    "status": "EXACT_VECTOR_MULTIPLET_ZERO_MODES",
+    "weak_doublets": 1
+  },
+  "version": "V70"
+}
