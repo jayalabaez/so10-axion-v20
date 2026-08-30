@@ -1,0 +1,666 @@
+{
+  "acceptance_matrix": [
+    {
+      "evidence": "order-four coset action",
+      "id": "A1",
+      "requirement": "literal Hall Z2 x Z2' lift to Spin11",
+      "status": "REJECTED"
+    },
+    {
+      "evidence": "Hc restores the full 16; a pseudoreal half-32 projection is open",
+      "id": "A2",
+      "requirement": "published 6D Spin11 scalar projection as a conventional full SUSY hyper",
+      "status": "REJECTED_SCOPED"
+    },
+    {
+      "evidence": "all exact matrix relations pass",
+      "id": "A3",
+      "requirement": "T2/Z4 adjoint/vector space-group embedding",
+      "status": "PASS_KINEMATIC"
+    },
+    {
+      "evidence": "fixed algebra dimension 13",
+      "id": "A4",
+      "requirement": "common G3211 gauge algebra",
+      "status": "PASS_KINEMATIC"
+    },
+    {
+      "evidence": "F/D-flat and no colored rank field",
+      "id": "A5",
+      "requirement": "local singlet-only U1X rank breaking",
+      "status": "PASS_CLASSICAL_LOCAL"
+    },
+    {
+      "evidence": "I8 factorizes on an integral lattice",
+      "id": "A6",
+      "requirement": "published n=3 Spin11 bulk anomaly parent",
+      "status": "PASS_INTEGRATED"
+    },
+    {
+      "evidence": "central phases not fixed",
+      "id": "A7",
+      "requirement": "Spin/R lift for all fermions and half hypers",
+      "status": "OPEN"
+    },
+    {
+      "evidence": "no full phase table or determinant",
+      "id": "A8",
+      "requirement": "exact MSSM Higgs and three-family projection",
+      "status": "OPEN"
+    },
+    {
+      "evidence": "integrated I8 is insufficient",
+      "id": "A9",
+      "requirement": "pointwise continuous/discrete anomaly inflow",
+      "status": "OPEN"
+    },
+    {
+      "evidence": "operator charges are only classical",
+      "id": "A10",
+      "requirement": "globally gauged Z4R and proton lifetime",
+      "status": "OPEN"
+    },
+    {
+      "evidence": "the lattice witness is not a tensor-scalar vacuum",
+      "id": "A11",
+      "requirement": "positive kinetic chamber, UV regulator, thresholds, vacuum and cosmology",
+      "status": "OPEN"
+    }
+  ],
+  "bulk_and_fixed_locus_anomaly_audit": {
+    "N11_alternative": {
+      "bulk_fermion_anomalies": "cancel representation by representation",
+      "orbifold_local_anomalies": "OPEN_AFTER_PROJECTION",
+      "spectrum": "(1,0) vector + adjoint hyper"
+    },
+    "nonimport_rule": "neither integrated parent supplies projector weights, intrinsic phases, local branchings, localized counterterms or inflow for the V69 orbifold",
+    "ordinary_connected_Spin11_torsion": {
+      "bordism": "reduced Omega_7^Spin(BSpin(11))=0",
+      "conclusion": "no independent pure-Spin(11) torsion class after local polynomial cancellation",
+      "does_not_close": [
+        "global GS/Wu-Chern-Simons definition",
+        "integral tensor and string-charge data on the orbifold",
+        "a positive gauge/tensor kinetic chamber at the selected compactification vacuum",
+        "the post-orbifold global quotient",
+        "singular-locus eta/Dai-Freed phases",
+        "Z4R anomalies"
+      ]
+    },
+    "status": "TWO_EXACT_INTEGRATED_BULK_FACTORIZATIONS__NOT_FIXED_POINT_COMPLETIONS",
+    "variants": [
+      {
+        "GS_inner_products": {
+          "a_dot_b_required": "-1",
+          "a_squared_required": 8,
+          "b_squared_required": "-1"
+        },
+        "I8_factorization": "-1/16 (trR2-trF2)(trR2+(1/2)trF2)",
+        "factorization_passes": true,
+        "gravity": {
+          "H_minus_V": "244",
+          "T": 1,
+          "V": 55,
+          "charged_H_dimension": "114",
+          "irreducible_R4_cancels": true,
+          "neutral_H_dimension": 185,
+          "required_H_minus_V": 244,
+          "total_H": "299"
+        },
+        "half_32_interpretation": "32 is pseudoreal for Spin(11); n32=3/2 means three half-hypermultiplets",
+        "irreducible_F4_cancels": true,
+        "lattice_witness": {
+          "Omega": [
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              -1
+            ]
+          ],
+          "a": [
+            3,
+            1
+          ],
+          "a_characteristic": true,
+          "a_dot_b": -1,
+          "a_squared": 8,
+          "b": [
+            0,
+            1
+          ],
+          "b_squared": -1
+        },
+        "multiplicities": {
+          "11": "6",
+          "32": "3/2",
+          "neutral": 185
+        },
+        "name": "PUBLISHED_N3_HALF_SPINOR_PARENT",
+        "published_spectrum": true,
+        "residual_adj_minus_hypers": {
+          "A2": "-3",
+          "B4": "0",
+          "C22": "3/4"
+        },
+        "trace_convention": "tr=tr_11",
+        "trace_identities": {
+          "Tr55_F2": "9 trF2",
+          "Tr55_F4": "3 trF4 + 3 (trF2)^2",
+          "tr32_F2": "4 trF2",
+          "tr32_F4": "-2 trF4 + (3/2)(trF2)^2"
+        }
+      },
+      {
+        "GS_inner_products": {
+          "a_dot_b_required": "2",
+          "a_squared_required": 8,
+          "b_squared_required": "-4"
+        },
+        "I8_factorization": "-1/16 (trR2-trF2)(trR2+2trF2)",
+        "factorization_passes": true,
+        "gravity": {
+          "H_minus_V": "244",
+          "T": 1,
+          "V": 55,
+          "charged_H_dimension": "33",
+          "irreducible_R4_cancels": true,
+          "neutral_H_dimension": 266,
+          "required_H_minus_V": 244,
+          "total_H": "299"
+        },
+        "half_32_interpretation": "no bulk spinor hypers",
+        "irreducible_F4_cancels": true,
+        "lattice_witness": {
+          "Omega": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              0
+            ]
+          ],
+          "a": [
+            2,
+            2
+          ],
+          "a_characteristic": true,
+          "a_dot_b": 2,
+          "a_squared": 8,
+          "b": [
+            2,
+            -1
+          ],
+          "b_squared": -4
+        },
+        "multiplicities": {
+          "11": "3",
+          "32": "0",
+          "neutral": 266
+        },
+        "name": "LOCALIZED_THREE_FAMILY_BULK_PARENT",
+        "published_spectrum": false,
+        "residual_adj_minus_hypers": {
+          "A2": "6",
+          "B4": "0",
+          "C22": "3"
+        },
+        "trace_convention": "tr=tr_11",
+        "trace_identities": {
+          "Tr55_F2": "9 trF2",
+          "Tr55_F4": "3 trF4 + 3 (trF2)^2",
+          "tr32_F2": "4 trF2",
+          "tr32_F4": "-2 trF4 + (3/2)(trF2)^2"
+        }
+      }
+    ]
+  },
+  "claim_boundary": {
+    "exact_new_results": [
+      "order-four obstruction to the literal Hall parity lift",
+      "complete T2/Z4 vector/adjoint space-group matrix witness",
+      "U5 and Spin4xSpin7 intersection equals G3211 at dimension 13",
+      "orphan-free local X(+/-10) rank branch",
+      "two exact integrated Spin11 anomaly factorizations"
+    ],
+    "new_physics_created": "higher-order Spin11 orbifold gauge skeleton plus geometric rank replacement",
+    "not_claimed": [
+      "a complete spin-lifted orbifold action",
+      "a complete MSSM spectrum",
+      "fixed-point anomaly cancellation",
+      "a globally gauged Z4R",
+      "a UV completion or regulator",
+      "gate closure"
+    ]
+  },
+  "classification": "DIRECT_ORDER2_LIFT_CLOSED__ORDER4_GAUGE_AND_RANK_SKELETON_EXACT__PUBLISHED_BULK_ANOMALY_PARENT_EXACT__FULL_ACTION_OPEN",
+  "core_sha256": "090843c54f6ce041c758f0301289c3cbc91024cd120ab1bafd86fd7bbad3ef1a",
+  "date": "2026-08-30",
+  "direct_order2_lift_audit": {
+    "SO10_literature_result": {
+      "G3211_fixed_point_exists": true,
+      "corner_groups": [
+        "SO10",
+        "U5",
+        "Pati-Salam",
+        "G3211"
+      ]
+    },
+    "exact_scope": "the literal order-two lift and the conventional full-hyper scalar import are closed; pseudoreal half-32 projections, higher-order phases and nested boundary space groups are open",
+    "formal_complex_leakage_diagnostic": {
+      "maximum_leakage": 3,
+      "minimum_leakage": 2,
+      "rows": [
+        {
+          "formal_coset_even_even_multiplicity": 2,
+          "r1": 1,
+          "r2": 1,
+          "selected_T51_T422_sector": "(-,-)"
+        },
+        {
+          "formal_coset_even_even_multiplicity": 3,
+          "r1": 1,
+          "r2": -1,
+          "selected_T51_T422_sector": "(-,+)"
+        },
+        {
+          "formal_coset_even_even_multiplicity": 2,
+          "r1": -1,
+          "r2": 1,
+          "selected_T51_T422_sector": "(+,-)"
+        },
+        {
+          "formal_coset_even_even_multiplicity": 3,
+          "r1": -1,
+          "r2": -1,
+          "selected_T51_T422_sector": "(+,+)"
+        }
+      ],
+      "sector_dimensions": {
+        "(+,+)": 3,
+        "(+,-)": 2,
+        "(-,+)": 3,
+        "(-,-)": 2
+      },
+      "warning": "forcing the Hall complex convention to be a parity loses the compact real form; these 2/3 counts diagnose the failure, not physical zero modes"
+    },
+    "order_obstruction": {
+      "Spin11_shifted_parity_square": "diag(-I10,+1)=P0, noncentral on so11",
+      "adjoint_order_on_so10": 2,
+      "adjoint_order_on_spin11_coset": 4,
+      "real_SU5_twist": "J5=J direct-sum five times, J5^2=-I10",
+      "valid_Z2_parity": false
+    },
+    "published_6D_Spin11_scalar_import": {
+      "Q_returns": true,
+      "conventional_SUSY_hyper_H_zero": [
+        "(1,2,4bar)"
+      ],
+      "conventional_SUSY_hyper_Hc_left_chiral_zero": [
+        "(2,1,4)"
+      ],
+      "conventional_full_hyper_import_valid": false,
+      "general_SUSY_import_closed": false,
+      "pseudoreal_half_32_projection": "OPEN_NOT_COMPUTED",
+      "published_zero_sector": "(1,2,4bar) from a non-supersymmetric 5D brane 32 scalar",
+      "total_left_chiral_zero_sector": "16 = (1,2,4bar) + (2,1,4)"
+    },
+    "status": "DIRECT_T2_Z2XZ2_PRIME_SPIN11_LIFT_REJECTED"
+  },
+  "falsifiers_and_promotion_tests": [
+    {
+      "effect": "falsifies the direct-lift order obstruction",
+      "id": "F1",
+      "test": "supply a genuine Spin11 involution implementing the Hall U5 twist on the coset"
+    },
+    {
+      "effect": "promotes the order-four skeleton to a spectrum candidate",
+      "id": "F2",
+      "test": "solve all Spin/R/central phases and enumerate exactly MSSM plus Hu,Hd zero modes"
+    },
+    {
+      "effect": "promotes the integrated anomaly parent to an orbifold completion",
+      "id": "F3",
+      "test": "derive zero projector-weighted anomaly at every singular locus or quantized inflow"
+    },
+    {
+      "effect": "rejects the V69 order-four candidate",
+      "id": "F4",
+      "test": "find any unavoidable colored zero mode or nonzero local anomaly class"
+    }
+  ],
+  "gate_ledger": [
+    {
+      "V69_closed": false,
+      "decision": "OPEN WITH EXACT ADVANCE: the direct order-two 6D lift is closed and an exact T2/Z4 gauge/rank skeleton exists, but its spin/R lift, projected action and local anomalies are open.",
+      "gate": "G1",
+      "status": "OPEN"
+    },
+    {
+      "V69_closed": false,
+      "decision": "OPEN: no coefficient-level 4D action, flavor determinant, soft sector or pole spectrum is derived.",
+      "gate": "G2",
+      "status": "OPEN"
+    },
+    {
+      "V69_closed": false,
+      "decision": "OPEN: the local X branch is F/D-flat, but compactification moduli, tensor scalars and the full Hessian are unsolved.",
+      "gate": "G3",
+      "status": "OPEN"
+    },
+    {
+      "V69_closed": false,
+      "decision": "OPEN: V64 orphans are absent only in the replacement action; an exact Hu/Hd/no-triplet projection and physical hierarchy are not yet certified.",
+      "gate": "G4",
+      "status": "OPEN"
+    },
+    {
+      "V69_closed": false,
+      "decision": "OPEN: the 6D anomaly hypers need a complete orbifold zero-mode and exotic-mass census.",
+      "gate": "G5",
+      "status": "OPEN"
+    },
+    {
+      "V69_closed": false,
+      "decision": "OPEN: reheating, defects from U1X breaking, relics, moduli and cosmology are absent.",
+      "gate": "G6",
+      "status": "OPEN"
+    },
+    {
+      "V69_closed": false,
+      "decision": "OPEN: the classical Z4R ledger passes selected operators, but its gauged origin, KK operators and proton lifetime are open.",
+      "gate": "G7",
+      "status": "OPEN"
+    },
+    {
+      "V69_closed": false,
+      "decision": "OPEN: local anomaly/GS/Dai-Freed data, regulator, thresholds and mediator-complete flavor remain open.",
+      "gate": "G8",
+      "status": "OPEN"
+    }
+  ],
+  "geometric_rank_replacement": {
+    "Z4R_operator_checks": {
+      "Majorana_NNX_allowed": true,
+      "W_rank_allowed": true,
+      "bare_mu_forbidden": true,
+      "charges_mod4": {
+        "Hu_Hd": 0,
+        "N_N_X": 2,
+        "S_X_Xbar": 2,
+        "S_v2": 2,
+        "matter4": 0
+      },
+      "globally_gauged_origin_proved": false,
+      "matter16_four_forbidden": true
+    },
+    "fields": {
+      "S": "gauge singlet, qR=2",
+      "X": "SU5 singlet, X charge +10, qR=0",
+      "Xbar": "SU5 singlet, X charge -10, qR=0"
+    },
+    "gauge_charge_checks": {
+      "Ncharge_plus_Ncharge_plus_X": 0,
+      "X_Xbar": 0,
+      "local_U5_quotient_allows_singlet_charge_10": true
+    },
+    "location": "a Z4 fixed locus with local U(5)=(SU5 x U1X)/Z5",
+    "orphan_statement": {
+      "V59_C16_Cbar16_rank_sector_present": false,
+      "V64_Q_Qbar_orphan_premise_present": false,
+      "classification": "ABSENT_BY_ACTION_REPLACEMENT_NOT_MASS_LIFTED",
+      "colored_rank_fields": 0
+    },
+    "status": "EXACT_LOCAL_CLASSICAL_RANK_SECTOR__NEW_ACTION_ONLY",
+    "superpotential": "W_rank=kappa S (X Xbar-vX^2)",
+    "supersymmetric_branch": {
+      "D_flat": "|X|=|Xbar|",
+      "F_S": "X Xbar-vX^2=0",
+      "F_X_F_Xbar": "S=0 for nonzero X,Xbar",
+      "all_rank_chirals_massive": "one combination is eaten; S pairs with the radial combination at order kappa vX",
+      "solution": "X=Xbar=vX up to the U1X gauge orbit; S=0"
+    },
+    "template_binding": {
+      "V56_rank_pair_matches": true,
+      "V61_charge_rows_bound": true,
+      "not_imported": "V56 Spin(10) fixed-point anomalies and V57 GS coefficients are not V69 Spin(11) evidence"
+    }
+  },
+  "integrity_checks": {
+    "Majorana_gauge_charge_exact": true,
+    "Q4_exact": true,
+    "T2Z4_space_group_embedding_exact": true,
+    "V64_current_action_null_mode_bound": true,
+    "V68_current_action_rejected": true,
+    "Z4R_origin_not_overclaimed": true,
+    "all_bound_cores_exact": true,
+    "all_gates_open": true,
+    "candidate_not_accepted": true,
+    "common_G3211_dimension_exact": true,
+    "direct_Hall_lift_order4_not_Z2": true,
+    "formal_leakage_is_unavoidable": true,
+    "integrated_anomaly_not_imported_locally": true,
+    "local_SO10_dimension_exact": true,
+    "local_SO4_SO7_dimension_exact": true,
+    "local_U5_dimensions_exact": true,
+    "localized_family_bulk_factorizes": true,
+    "localized_family_counts_exact": true,
+    "orphan_absent_not_lifted": true,
+    "published_full_hyper_scalar_not_imported": true,
+    "published_n3_counts_exact": true,
+    "published_n3_irreducible_anomalies_cancel": true,
+    "published_n3_lattice_factorizes": true,
+    "rank_F_D_branch_exact": true,
+    "rank_is_gauge_vectorlike": true,
+    "selected_Z4R_operators_exact": true,
+    "spin_lift_not_overclaimed": true
+  },
+  "lineage_and_nonimport": {
+    "V56_V57_role": "TEMPLATE_ONLY_NOT_SPIN11_CLOSURE_EVIDENCE",
+    "V62_5D_half_wall_GS_imported": false,
+    "V64_orphan_result_modified": false,
+    "V67_5D_tangent_spectrum_imported": false,
+    "bound_input_cores": {
+      "v56_orbifold_template": "09ba35b4e7cc05bf2375818e71610f565d6a330b5e8f0221373c301a58293a55",
+      "v57_spin10_template": "0896cc21d84d6395d6ba9d5c0b6414c3aec14c18981708d2e06b548a4fc21302",
+      "v59_spin11": "bf666eb5e4d57bff18b05182d7d6cc7874bbc26dd71897153faf9ee67a5f8c42",
+      "v61_z4r": "6d6107dea91e18e7d34e4560ad8003cd8c38eef5c788b2ebd148bb3795b2c33a",
+      "v64_null": "fe36b2f6f0e1786253827183bf7f8dc2dd9e15a94b7f036d5e9e6e0739717a1d",
+      "v67_index_6d": "5927f64eec6bc27d68b7d429eab11ee1f0efc9709041064f47baaabc25f0eebb",
+      "v68_master": "c46848e93c9f0d0ee05f1fa9d345cda4cbf4534d265476337834fe635cd2dbe9",
+      "v68_split_bulk": "368ca47a3e1dac8e283173c4c838d0dfdef76c905735284b45791c85bbb66db7"
+    },
+    "current_V68_action_status": "REJECTED",
+    "relation": "V69 constructs a distinct higher-order candidate; it neither repairs nor relabels the rejected V68 action."
+  },
+  "n_failed_integrity_checks": 0,
+  "n_integrity_checks": 27,
+  "order4_space_group_and_fixed_algebra_audit": {
+    "all_vector_space_group_relations_pass": true,
+    "common_group": "G3211",
+    "fixed_algebra_dimensions": {
+      "C_Q2_SO10": 45,
+      "C_Q_U5": 25,
+      "C_Q_and_R_common_G3211": 13,
+      "C_Q_and_W_common_G3211": 13,
+      "C_R_SO4xSO7": 27,
+      "C_WQ_other_U5": 25,
+      "C_W_SO5xSO6": 25,
+      "Spin11_bulk": 55
+    },
+    "fixed_algebras": {
+      "Z2_point": "so(4)+so(7), dimension 27",
+      "Z4_origin": "u(5), dimension 25",
+      "common_4D": "u(2)+u(3)=su(2)+su(3)+u(1)^2, dimension 13",
+      "other_Z4_point": "conjugate u(5), dimension 25"
+    },
+    "gauge_embedding": {
+      "Q": "diag(J,J,J,J,J,1), J=[[0,-1],[1,0]]",
+      "Q_squared_P0": "diag(-I10,+1), centralizer Spin(10)",
+      "R": "diag(-I4,+I7), centralizer Spin(4)xSpin(7)",
+      "W1_equals_W2": "R Q^2 = diag(+I4,-I6,+1)",
+      "local_Z2_twist_t1_theta2": "W Q^2 = R"
+    },
+    "geometry": "square T2/Z4 with theta:z->i z and translations t1,t2",
+    "not_yet_proved": [
+      "a 4D N=1 supersymmetry-preserving spin/R lift",
+      "exact Hu and Hd zero modes with no triplets",
+      "three-family zero modes from the half-32 spectrum",
+      "fixed-point anomaly and inflow cancellation"
+    ],
+    "relation_checks": {
+      "Q2_equals_P0": true,
+      "Q4_equals_identity": true,
+      "Q_W1_Qinv_equals_W2": true,
+      "Q_W2_Qinv_equals_W1inv": true,
+      "R_equals_W_Q2": true,
+      "R_involution": true,
+      "W1_W2_commute": true,
+      "W_involution": true
+    },
+    "space_group_relations": [
+      "theta^4=1",
+      "t1 t2=t2 t1",
+      "theta t1 theta^-1=t2",
+      "theta t2 theta^-1=t1^-1"
+    ],
+    "spin_lift_audit": {
+      "Q_spin_fourth_power": "-1 because five plane rotations each give a 2pi spin sign",
+      "W_spin_square": "-1 because W is a pi rotation in three planes",
+      "obligation": "choose Lorentz/R/intrinsic phases and central translation lifts so every gaugino, half-32 and 11 satisfies the full space-group relations",
+      "status": "OPEN_CENTRAL_PHASE_AND_R_TWIST_REQUIRED"
+    },
+    "status": "EXACT_ADJOINT_AND_VECTOR_SPACE_GROUP_SKELETON"
+  },
+  "question": "Can the V67 six-dimensional branch be made into a local Spin(11) action that removes the V64 orphan without importing the failed 5D hyper route?",
+  "schema": "susy_v69_spin11_order4_geometric_rank_escape_audit/v1",
+  "source_manifest": {
+    "generated_files": [
+      {
+        "exists": true,
+        "path": "susy_v69_spin11_order4_geometric_rank_escape_audit.py",
+        "sha256": "381abbfae4cd9f173ece010b0f3281b9276785d5c06705536422c477b2da964c"
+      },
+      {
+        "exists": true,
+        "path": "test_susy_v69_spin11_order4_geometric_rank_escape_audit.py",
+        "sha256": "7070ae3c50b62e530c3eaa2e937eafcdee25f4e3eb0bfdd3b3d4343325eebe14"
+      }
+    ],
+    "local_files": [
+      {
+        "exists": true,
+        "id": "v56_orbifold_template",
+        "path": "SUSY_V56_ORBIFOLD_GEOMETRIC_Z4R_PROTECTION_AUDIT.json",
+        "sha256": "0ca1aeb877b160e66541ab53d7368908bdcd5030ba443f75bd04d2699fd981ef"
+      },
+      {
+        "exists": true,
+        "id": "v57_spin10_template",
+        "path": "SUSY_V57_G1_MICROSCOPIC_COMPLETION_FRONTIER_AUDIT.json",
+        "sha256": "6b084b41cf566ee6a97d0e40abb2d1c048f029e7f791dcad02260f8307ada56a"
+      },
+      {
+        "exists": true,
+        "id": "v59_spin11",
+        "path": "SUSY_V59_SPIN11_GAUGE_HIGGS_COMPLETION_AUDIT.json",
+        "sha256": "dfe07e9af7ef080cd13413dd877f25e73a0e4f22140d8a5e311de590bf92e0e6"
+      },
+      {
+        "exists": true,
+        "id": "v61_z4r",
+        "path": "SUSY_V61_SPIN11_Z4R_SELECTOR_ESCAPE_AUDIT.json",
+        "sha256": "bf3f0d5de14350a9b65e94215bc60086f1e58008427132b6af93dce49b9ff0c7"
+      },
+      {
+        "exists": true,
+        "id": "v64_null",
+        "path": "SUSY_V64_SPIN11_AB_TOWER_NULL_MODE_RETRACTION_AUDIT.json",
+        "sha256": "1b7bf6d4411f269ad4e13cd32ddfa7349b0fd259f41c322a2113fe5886ca01f2"
+      },
+      {
+        "exists": true,
+        "id": "v67_index_6d",
+        "path": "SUSY_V67_SPIN11_INDEX_PARTNER_6D_ESCAPE_AUDIT.json",
+        "sha256": "fe1e8a4ee7c554217abfd5edb4757093bd873dd0b4b369ae3082c312501046da"
+      },
+      {
+        "exists": true,
+        "id": "v68_split_bulk",
+        "path": "SUSY_V68_SPIN11_SPLIT_BULK_PARITY_NO_GO_AUDIT.json",
+        "sha256": "acca8f92aba25d1d2461bb59a7af6811f01b0193e34b756aa1f60f4408039a27"
+      },
+      {
+        "exists": true,
+        "id": "v68_master",
+        "path": "SUSY_V68_MULTIPATH_G1_FRONTIER_MASTER_AUDIT.json",
+        "sha256": "4e9ef927f9ea9354c6c6fb12532d91a053efd9c361a298bc44066b5d5a5870fa"
+      }
+    ],
+    "primary_sources": [
+      {
+        "id": "HALL_NOMURA_OKUI_SMITH_2001",
+        "scope": "SO(10) T2/(Z2 x Z2') space group, U5 and Pati-Salam twists, the G3211 fixed point, fixed-line Higgs splitting, and local X(+/-10) rank breaking.  It is not a Spin(11) lift.",
+        "title": "SO(10) Unified Theories in Six Dimensions",
+        "url": "https://arxiv.org/abs/hep-ph/0108071"
+      },
+      {
+        "id": "HOSOTANI_YAMATSU_2018",
+        "scope": "Published non-supersymmetric 6D SO(11) parities and a 5D brane 32 scalar; its scalar projection cannot be imported as a conventional full SUSY hyper, while a pseudoreal half-32 projection remains open.",
+        "title": "Electroweak Symmetry Breaking and Mass Spectra in Six-Dimensional Gauge-Higgs Grand Unification",
+        "url": "https://arxiv.org/abs/1710.04811"
+      },
+      {
+        "id": "AVRAMIS_KEHAGIAS_2005",
+        "scope": "Published one-tensor SO(11) series (n+3) x 11 + (n/2) x 32; the n=3 member supplies six 11s and three half-32s.",
+        "title": "A systematic search for anomaly-free supergravities in six dimensions",
+        "url": "https://arxiv.org/abs/hep-th/0508172"
+      },
+      {
+        "id": "ERLER_1993",
+        "scope": "Six-dimensional trace identities and anomaly-polynomial convention.",
+        "title": "Anomaly Cancellation in Six Dimensions",
+        "url": "https://arxiv.org/abs/hep-th/9304104"
+      },
+      {
+        "id": "VON_GERSDORFF_QUIROS_2003",
+        "scope": "Integrated cancellation does not replace a projector-weighted fixed-point ledger.",
+        "title": "Localized anomalies in orbifold gauge theories",
+        "url": "https://arxiv.org/abs/hep-th/0305024"
+      },
+      {
+        "id": "MONNIER_MOORE_PARK_2017",
+        "scope": "Integral anomaly-coefficient and string-charge-lattice obligations.",
+        "title": "Quantization of anomaly coefficients in 6D N=(1,0) supergravity",
+        "url": "https://arxiv.org/abs/1711.04777"
+      },
+      {
+        "id": "LEE_TACHIKAWA_2020",
+        "scope": "Spin bordism result Omega_7^Spin(BSpin(n>=7))=0 and global GS caveat.",
+        "title": "Some comments on 6D global gauge anomalies",
+        "url": "https://arxiv.org/abs/2012.11622"
+      }
+    ]
+  },
+  "status": "V69_SPIN11_ORDER4_GEOMETRIC_RANK_ESCAPE__V56_V57_TEMPLATES_NONIMPORTED__V59_V61_V64_V67_V68_CORES_BOUND__HALL_Z2XZ2_PRIME_DIRECT_SPIN11_LIFT_REJECTED__SU5_COMPLEX_STRUCTURE_IS_ORDER4_ON_SPIN11_COSET__FORMAL_G3211_CORNER_LEAKS_2_OR3_COSET_COMPONENTS__PUBLISHED_6D_SPIN11_SCALAR_PROJECTION_NOT_A_CONVENTIONAL_FULL_SUSY_HYPER__FULL_HYPER_RESTORES_FULL_16__PSEUDOREAL_HALF32_PROJECTION_OPEN__T2_Z4_SPACE_GROUP_GAUGE_EMBEDDING_EXACT__Q4_WILSON_RELATIONS_PASS__COMMON_U3_X_U2_G3211_ALGEBRA_DIM13__LOCAL_U5_RANK_SINGLET_PAIR_REMOVES_V64_ORPHAN_PREMISE_BY_ACTION_REPLACEMENT__PUBLISHED_N3_SPIN11_HALF_SPINOR_BULK_ANOMALY_FACTORIZATION_EXACT__LOCALIZED_FAMILY_BULK_VARIANT_FACTORIZATION_EXACT__SPINOR_LIFTS_SUSY_HIGGS_FIXED_POINT_ANOMALIES_Z4R_UV_THRESHOLDS_VACUUM_COSMOLOGY_OPEN__NEW_6D_ACTION_KINEMATIC_CANDIDATE_NOT_ACCEPTED__CURRENT_ACTION_REJECTED__G1_TO_G8_OPEN_ZERO_PROMOTIONS",
+  "terminal_decision": {
+    "V69_integrated_bulk_anomaly_parent": "EXACT_AND_PUBLISHED_FOR_N3",
+    "V69_local_rank_replacement": "EXACT_CLASSICAL_LOCAL_SUBSECTOR",
+    "V69_new_action_accepted": false,
+    "V69_order4_gauge_skeleton": "EXACT_KINEMATIC_CANDIDATE",
+    "closed_gates": [],
+    "complete_theory": false,
+    "current_bound_Spin11_action": "REJECTED",
+    "direct_Hall_order2_lift": "CLOSED",
+    "fixed_point_anomaly_completion_certified": false,
+    "honest_outcome": "The direct Z2 lift is impossible, but its order-four character yields a valid T2/Z4 adjoint/vector gauge skeleton with common G3211 and a local singlet-only rank sector.  A published anomaly-free Spin11 bulk parent also exists.  These are real advances, not a completed action: the spin/R lift, Higgs/family spectrum, fixed-point anomalies and all phenomenological gates remain open.",
+    "physical_Higgs_family_spectrum_certified": false,
+    "pseudoreal_half_32_projection": "OPEN_NOT_COMPUTED",
+    "published_6D_scalar_conventional_full_hyper_import": "CLOSED_SCOPED",
+    "same_action_microscopic_completion_found": false
+  },
+  "version": "V69"
+}
