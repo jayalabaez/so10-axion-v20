@@ -1,0 +1,41 @@
+# YAML 1.1
+---
+Author: OpenAI Codex exact G7 audit
+Date: 2026-08-12
+Name: SO10U1XGaugeAudit
+Groups: {SO10: SO10, U1X: U1}
+
+Fermions: {
+    F:     {Gen: 3, Qnb: {SO10: [0,0,0,1,0], U1X: 1}},
+    P:     {Gen: 1, Qnb: {SO10: [0,0,0,1,0], U1X: 1}},
+    R:     {Gen: 1, Qnb: {SO10: [0,0,0,1,0], U1X: 1}},
+    SpecS: {Gen: 5, Qnb: {SO10: [0,0,0,1,0], U1X: 2}},
+    SpecB: {Gen: 5, Qnb: {SO10: [0,0,0,0,1], U1X: -6}},
+    Q:     {Gen: 1, Qnb: {SO10: [0,0,0,1,0], U1X: 14}},
+    Pc:    {Gen: 1, Qnb: {SO10: [0,0,0,0,1], U1X: 16}},
+    Qc:    {Gen: 1, Qnb: {SO10: [0,0,0,0,1], U1X: 3}},
+    Rc:    {Gen: 1, Qnb: {SO10: [0,0,0,0,1], U1X: -18}}
+}
+
+RealScalars: {
+    Phi210: {Gen: 1, Qnb: {SO10: [0,0,0,1,1]}}
+}
+
+ComplexScalars: {
+    Delta126bar: {RealFields: [DeltaR, DeltaI], Norm: 1/sqrt(2), Qnb: {SO10: [0,0,0,0,2], U1X: -2}},
+    H10: {RealFields: [H10R, H10I], Norm: 1/sqrt(2), Qnb: {SO10: 10, U1X: -2}},
+    S: {RealFields: [SR, SI], Norm: 1/sqrt(2), Qnb: {U1X: 4}},
+    Phi17: {RealFields: [Phi17R, Phi17I], Norm: 1/sqrt(2), Qnb: {U1X: 17}}
+}
+
+Potential: {
+    Definitions: {},
+    Yukawas: {},
+    QuarticTerms: {},
+    ScalarMasses: {}
+}
+
+Substitutions: {
+    g_SO10: g10,
+    g_U1X: gX
+}

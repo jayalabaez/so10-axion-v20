@@ -1,0 +1,350 @@
+{
+  "checks": {
+    "all_five_diagonal_terms_are_exactly_censused_and_declared": true,
+    "all_twenty_off_diagonal_replacements_are_exactly_censused": true,
+    "all_twenty_off_diagonal_replacements_are_undeclared": true,
+    "five_driver_constraints_are_present": true,
+    "full_V22_G1_is_not_claimed": true,
+    "proof_covers_products_of_Abelian_factors": true,
+    "spurionic_or_restructured_escapes_are_not_silently_excluded": true,
+    "upstream_exact_census_passes": true
+  },
+  "claim_boundary": {
+    "V22_G1_closed": false,
+    "V22_G2_closed": false,
+    "all_possible_UV_selection_mechanisms_excluded": false,
+    "neutral_coefficient_Abelian_shaping_no_go_closed": true
+  },
+  "core_sha256": "736f4803fcfdf5c9b2588d7ee0ff14f49788551e6eaf698a0a45489947cfd50a",
+  "counts": {
+    "diagonal_declared_sectors": 5,
+    "drivers": 5,
+    "off_diagonal_allowed_undeclared_sectors": 20,
+    "replacement_grid_sectors": 25
+  },
+  "driver_constraints": {
+    "NC": [
+      "C16bar",
+      "C16"
+    ],
+    "NMP": [
+      "XMP",
+      "XMP"
+    ],
+    "NS": [
+      "Splus",
+      "Sminus"
+    ],
+    "NX": [
+      "Phi17p",
+      "Phi17m"
+    ],
+    "Nphi": [
+      "Phi210",
+      "Phi210"
+    ]
+  },
+  "failures": [],
+  "n_checks": 8,
+  "n_failed": 0,
+  "namespace": "canonical.susy_so10x17.v22.G1.shaping_symmetry_nogo",
+  "next_exact_target": "Choose and source-land a restructured driver/spurion completion, rerun the exact holomorphic census, then derive component Clebsches only for the resulting accepted G1 operator basis.",
+  "overall_state": "NO_GO_CLOSED",
+  "proof": {
+    "assumptions": [
+      "all five nonzero linear driver terms have neutral constant coefficients",
+      "each retained driver-product term D_i A_i has a neutral coefficient",
+      "the additional shaping rule acts through additive one-dimensional field charges"
+    ],
+    "charge_domain": "an arbitrary additive Abelian group A; products of continuous/discrete Abelian factors are included",
+    "not_ruled_out": [
+      "promoting the dimensionful constants/couplings to explicit charged spurion fields",
+      "removing or restructuring the linear-driver sector",
+      "a source-declared non-Abelian construction with additional fields and invariant contractions",
+      "accepting and parameterizing the complete allowed operator ring"
+    ],
+    "steps": [
+      "The linear term D_i is allowed only if q(D_i)=omega, so every driver has the same charge omega.",
+      "The retained term D_i A_i gives q(A_i)=0 after subtracting q(D_i)=omega.",
+      "For every j, q(D_j A_i)=omega+0=omega; therefore every off-diagonal replacement D_j A_i is allowed.",
+      "The source catalogue omits all twenty off-diagonal replacements, contradicting completeness under any such shaping assignment."
+    ],
+    "superpotential_charge": "omega in A (omega=0 for a non-R symmetry)",
+    "theorem_scope": "ordinary additive Abelian field symmetries with neutral fixed coefficients, including additional discrete or continuous R symmetries"
+  },
+  "replacement_grid": [
+    {
+      "allowed_but_undeclared": false,
+      "declared_catalogue_couplings": [
+        "kappaPhi"
+      ],
+      "diagonal_declared_term": true,
+      "monomial": "Phi210^2 Nphi",
+      "present_in_exact_census": true,
+      "product_owner": "Nphi",
+      "replacement_driver": "Nphi",
+      "so10_flavour_component_multiplicity": 1
+    },
+    {
+      "allowed_but_undeclared": true,
+      "declared_catalogue_couplings": [],
+      "diagonal_declared_term": false,
+      "monomial": "Phi210^2 NC",
+      "present_in_exact_census": true,
+      "product_owner": "Nphi",
+      "replacement_driver": "NC",
+      "so10_flavour_component_multiplicity": 1
+    },
+    {
+      "allowed_but_undeclared": true,
+      "declared_catalogue_couplings": [],
+      "diagonal_declared_term": false,
+      "monomial": "Phi210^2 NMP",
+      "present_in_exact_census": true,
+      "product_owner": "Nphi",
+      "replacement_driver": "NMP",
+      "so10_flavour_component_multiplicity": 1
+    },
+    {
+      "allowed_but_undeclared": true,
+      "declared_catalogue_couplings": [],
+      "diagonal_declared_term": false,
+      "monomial": "Phi210^2 NX",
+      "present_in_exact_census": true,
+      "product_owner": "Nphi",
+      "replacement_driver": "NX",
+      "so10_flavour_component_multiplicity": 1
+    },
+    {
+      "allowed_but_undeclared": true,
+      "declared_catalogue_couplings": [],
+      "diagonal_declared_term": false,
+      "monomial": "Phi210^2 NS",
+      "present_in_exact_census": true,
+      "product_owner": "Nphi",
+      "replacement_driver": "NS",
+      "so10_flavour_component_multiplicity": 1
+    },
+    {
+      "allowed_but_undeclared": true,
+      "declared_catalogue_couplings": [],
+      "diagonal_declared_term": false,
+      "monomial": "C16 C16bar Nphi",
+      "present_in_exact_census": true,
+      "product_owner": "NC",
+      "replacement_driver": "Nphi",
+      "so10_flavour_component_multiplicity": 1
+    },
+    {
+      "allowed_but_undeclared": false,
+      "declared_catalogue_couplings": [
+        "kappaC"
+      ],
+      "diagonal_declared_term": true,
+      "monomial": "C16 C16bar NC",
+      "present_in_exact_census": true,
+      "product_owner": "NC",
+      "replacement_driver": "NC",
+      "so10_flavour_component_multiplicity": 1
+    },
+    {
+      "allowed_but_undeclared": true,
+      "declared_catalogue_couplings": [],
+      "diagonal_declared_term": false,
+      "monomial": "C16 C16bar NMP",
+      "present_in_exact_census": true,
+      "product_owner": "NC",
+      "replacement_driver": "NMP",
+      "so10_flavour_component_multiplicity": 1
+    },
+    {
+      "allowed_but_undeclared": true,
+      "declared_catalogue_couplings": [],
+      "diagonal_declared_term": false,
+      "monomial": "NX C16 C16bar",
+      "present_in_exact_census": true,
+      "product_owner": "NC",
+      "replacement_driver": "NX",
+      "so10_flavour_component_multiplicity": 1
+    },
+    {
+      "allowed_but_undeclared": true,
+      "declared_catalogue_couplings": [],
+      "diagonal_declared_term": false,
+      "monomial": "NS C16 C16bar",
+      "present_in_exact_census": true,
+      "product_owner": "NC",
+      "replacement_driver": "NS",
+      "so10_flavour_component_multiplicity": 1
+    },
+    {
+      "allowed_but_undeclared": true,
+      "declared_catalogue_couplings": [],
+      "diagonal_declared_term": false,
+      "monomial": "XMP^2 Nphi",
+      "present_in_exact_census": true,
+      "product_owner": "NMP",
+      "replacement_driver": "Nphi",
+      "so10_flavour_component_multiplicity": 1
+    },
+    {
+      "allowed_but_undeclared": true,
+      "declared_catalogue_couplings": [],
+      "diagonal_declared_term": false,
+      "monomial": "XMP^2 NC",
+      "present_in_exact_census": true,
+      "product_owner": "NMP",
+      "replacement_driver": "NC",
+      "so10_flavour_component_multiplicity": 1
+    },
+    {
+      "allowed_but_undeclared": false,
+      "declared_catalogue_couplings": [
+        "kappaMP"
+      ],
+      "diagonal_declared_term": true,
+      "monomial": "XMP^2 NMP",
+      "present_in_exact_census": true,
+      "product_owner": "NMP",
+      "replacement_driver": "NMP",
+      "so10_flavour_component_multiplicity": 1
+    },
+    {
+      "allowed_but_undeclared": true,
+      "declared_catalogue_couplings": [],
+      "diagonal_declared_term": false,
+      "monomial": "NX XMP^2",
+      "present_in_exact_census": true,
+      "product_owner": "NMP",
+      "replacement_driver": "NX",
+      "so10_flavour_component_multiplicity": 1
+    },
+    {
+      "allowed_but_undeclared": true,
+      "declared_catalogue_couplings": [],
+      "diagonal_declared_term": false,
+      "monomial": "NS XMP^2",
+      "present_in_exact_census": true,
+      "product_owner": "NMP",
+      "replacement_driver": "NS",
+      "so10_flavour_component_multiplicity": 1
+    },
+    {
+      "allowed_but_undeclared": true,
+      "declared_catalogue_couplings": [],
+      "diagonal_declared_term": false,
+      "monomial": "Phi17p Phi17m Nphi",
+      "present_in_exact_census": true,
+      "product_owner": "NX",
+      "replacement_driver": "Nphi",
+      "so10_flavour_component_multiplicity": 1
+    },
+    {
+      "allowed_but_undeclared": true,
+      "declared_catalogue_couplings": [],
+      "diagonal_declared_term": false,
+      "monomial": "Phi17p Phi17m NC",
+      "present_in_exact_census": true,
+      "product_owner": "NX",
+      "replacement_driver": "NC",
+      "so10_flavour_component_multiplicity": 1
+    },
+    {
+      "allowed_but_undeclared": true,
+      "declared_catalogue_couplings": [],
+      "diagonal_declared_term": false,
+      "monomial": "Phi17p Phi17m NMP",
+      "present_in_exact_census": true,
+      "product_owner": "NX",
+      "replacement_driver": "NMP",
+      "so10_flavour_component_multiplicity": 1
+    },
+    {
+      "allowed_but_undeclared": false,
+      "declared_catalogue_couplings": [
+        "kappaX"
+      ],
+      "diagonal_declared_term": true,
+      "monomial": "Phi17p Phi17m NX",
+      "present_in_exact_census": true,
+      "product_owner": "NX",
+      "replacement_driver": "NX",
+      "so10_flavour_component_multiplicity": 1
+    },
+    {
+      "allowed_but_undeclared": true,
+      "declared_catalogue_couplings": [],
+      "diagonal_declared_term": false,
+      "monomial": "Phi17p Phi17m NS",
+      "present_in_exact_census": true,
+      "product_owner": "NX",
+      "replacement_driver": "NS",
+      "so10_flavour_component_multiplicity": 1
+    },
+    {
+      "allowed_but_undeclared": true,
+      "declared_catalogue_couplings": [],
+      "diagonal_declared_term": false,
+      "monomial": "Splus Sminus Nphi",
+      "present_in_exact_census": true,
+      "product_owner": "NS",
+      "replacement_driver": "Nphi",
+      "so10_flavour_component_multiplicity": 1
+    },
+    {
+      "allowed_but_undeclared": true,
+      "declared_catalogue_couplings": [],
+      "diagonal_declared_term": false,
+      "monomial": "Splus Sminus NC",
+      "present_in_exact_census": true,
+      "product_owner": "NS",
+      "replacement_driver": "NC",
+      "so10_flavour_component_multiplicity": 1
+    },
+    {
+      "allowed_but_undeclared": true,
+      "declared_catalogue_couplings": [],
+      "diagonal_declared_term": false,
+      "monomial": "Splus Sminus NMP",
+      "present_in_exact_census": true,
+      "product_owner": "NS",
+      "replacement_driver": "NMP",
+      "so10_flavour_component_multiplicity": 1
+    },
+    {
+      "allowed_but_undeclared": true,
+      "declared_catalogue_couplings": [],
+      "diagonal_declared_term": false,
+      "monomial": "Splus Sminus NX",
+      "present_in_exact_census": true,
+      "product_owner": "NS",
+      "replacement_driver": "NX",
+      "so10_flavour_component_multiplicity": 1
+    },
+    {
+      "allowed_but_undeclared": false,
+      "declared_catalogue_couplings": [
+        "kappaS"
+      ],
+      "diagonal_declared_term": true,
+      "monomial": "Splus Sminus NS",
+      "present_in_exact_census": true,
+      "product_owner": "NS",
+      "replacement_driver": "NS",
+      "so10_flavour_component_multiplicity": 1
+    }
+  ],
+  "resolution": {
+    "G2_promotion_allowed_before_G1_repair": false,
+    "minimum_source_level_action": "Restructure the driver/tadpole sector or promote its constants to explicit charged spurion fields before assigning a new shaping symmetry.",
+    "ordinary_Abelian_shaping_charge_patch_exists": false,
+    "reason": "the retained linear tadpoles make all five drivers charge-indistinguishable"
+  },
+  "schema": "susy_v22_g1_shaping_symmetry_nogo_v1",
+  "status": "V22_G1_NEUTRAL_COEFFICIENT_ABELIAN_SHAPING_NO_GO_CLOSED__SOURCE_RESTRUCTURE_REQUIRED",
+  "upstream_census": {
+    "allowed_undeclared_sectors": 1016,
+    "core_sha256": "ce81a6dc5ea7b09d2fb8fa6e2334c37610fd9e3547ef9a8f89463eabce9c63b7",
+    "path": "SUSY_V22_G1_HOLOMORPHIC_RING_FRONTIER.json"
+  }
+}

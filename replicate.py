@@ -65,26 +65,39 @@ def check_current_root_contract() -> None:
     scaffold = report["executable_scaffold_contract"]
     external = report["external_model_validation"]
     repository_manifest = report["repository_external_input_manifest"]
-    assert report["n_failed"] == 0 and report["overall_state"] == "BLOCKED"
+    assert report["n_failed"] == 0
     assert report["static_contract_consistent"] is True
-    assert report["contract_consistent"] is False
-    assert (
-        report["blocker"]
-        == "AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED"
-    )
     assert scaffold["model_syntax_class"] == "sarah_native"
     assert scaffold["legacy_pseudo_sarah_grammar"] is False
     assert scaffold["tool_native_sarah_syntax"] is True
     assert scaffold["statically_executable_model_contract"] is True
     assert repository_manifest["valid"] is True
-    assert external["valid"] is False
-    assert external["checks"]["external_process_was_executed"] is False
-    assert external["checks"]["captured_process_log_is_hash_bound"] is False
-    print(
-        "[PASS] root contract is statically native and honestly BLOCKED only on "
-        "missing bound external SARAH evidence",
-        flush=True,
-    )
+    if report["contract_consistent"] is True:
+        assert report["overall_state"] == "PASS"
+        assert report["blocker"] is None
+        assert external["valid"] is True
+        assert external["checks"]["external_process_was_executed"] is True
+        assert external["checks"]["captured_process_log_is_hash_bound"] is True
+    else:
+        assert report["overall_state"] == "BLOCKED"
+        assert (
+            report["blocker"]
+            == "AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED"
+        )
+        assert external["valid"] is False
+        assert external["checks"]["external_process_was_executed"] is False
+        assert external["checks"]["captured_process_log_is_hash_bound"] is False
+    if report["contract_consistent"] is True:
+        message = (
+            "[PASS] root contract is statically native and backed by genuine "
+            "hash-bound external SARAH evidence"
+        )
+    else:
+        message = (
+            "[PASS] root contract is statically native and honestly BLOCKED only "
+            "on missing bound external SARAH evidence"
+        )
+    print(message, flush=True)
 
 
 def main() -> int:
@@ -362,9 +375,36 @@ def main() -> int:
     run([sys.executable, "final_g4_eft_mathematical_gate_v20.py"])
     run([sys.executable, "final_g5_eft_mathematical_gate_v20.py"])
     run([sys.executable, "exact_eft_physical_scalar_spectrum_v20.py"])
+    run([sys.executable, "exact_g6_sm_provenance_feasibility_v20.py"])
+    run([sys.executable, "physical_sm_vacuum_local_feasibility_v20.py"])
+    run([sys.executable, "physical_sm_source_algebra_equality_frontier_v20.py"])
+    run([sys.executable, "exact_physical_sm_five_amplitude_equality_v20.py"])
+    run([sys.executable, "exact_physical_sm_hard_projector_hessians_v20.py"])
+    run([sys.executable, "exact_physical_sm_easy_21_hessians_v20.py"])
+    run([sys.executable, "exact_physical_sm_last_six_hessians_v20.py"])
+    run([sys.executable, "exact_physical_sm_37_row_aggregate_v20.py"])
+    run([sys.executable, "exact_physical_sm_local_equality_orbit_v20.py"])
+    run([sys.executable, "exact_physical_sm_g4_g5_branch_mismatch_v20.py", "--check"])
+    run([sys.executable, "conditional_physical_sm_eft_hessian_spectrum_v20.py"])
+    run([sys.executable, "exact_eft_g6_g7_parameterized_matching_v20.py"])
     run([sys.executable, "final_g6_eft_mathematical_gate_v20.py"])
+    run([sys.executable, "exact_authoritative_so10_u1x_gauge_betas_v20.py"])
+    run([sys.executable, "exact_physical_sm_heavy_vector_masses_v20.py"])
+    run([sys.executable, "exact_physical_sm_heavy_vector_msbar_matching_v20.py"])
+    run([sys.executable, "exact_physical_sm_vector_rxi_vacuum_cancellation_v20.py"])
+    run([sys.executable, "pyrate3_so10_u1x_gauge_beta_replay_v20.py"])
+    run([sys.executable, "exact_normalized_so10_yukawa_cgcs_v20.py"])
     run([sys.executable, "exact_eft_g7_threshold_nonidentifiability_v20.py"])
+    run([sys.executable, "exact_physical_g7_component_threshold_contract_v20.py"])
+    run([sys.executable, "exact_physical_sm_g6_g7_closure_frontier_v20.py"])
+    run([sys.executable, "exact_physical_sm_g8_identifiability_frontier_v20.py"])
     run([sys.executable, "g1_g8_gate_ledger_v20.py"])
+    run([sys.executable, "-B", "canonical_g1_scalar_ring_dim6_frontier_v21.py", "--check"])
+    run([sys.executable, "-B", "canonical_g1_complete_operator_ring_dim6_v21.py", "--check"])
+    run([sys.executable, "-B", "canonical_g2_exact_contraction_basis_v21.py", "--check"])
+    run([sys.executable, "-B", "canonical_g2_full_component_projection_dim6_v21.py", "--check"])
+    run([sys.executable, "-B", "canonical_g3_physical_ew_global_vacuum_v21.py", "--check"])
+    run([sys.executable, "-B", "canonical_g1_g8_gauged_u1x_v21.py", "--check"])
     run([sys.executable, "final_g3_acceptance_gate_v20.py"])
     run([sys.executable, "g1_g8_execution_roadmap_v20.py"])
     run([sys.executable, "authoritative_full_model_gate_v20.py"])
@@ -392,7 +432,6 @@ def main() -> int:
         [
             sys.executable,
             "theory_validation_matrix_v20.py",
-            "--expect-blocked",
             "--no-write",
         ]
     )
@@ -400,7 +439,6 @@ def main() -> int:
         [
             sys.executable,
             "theory_confirmation_verdict_v20.py",
-            "--expect-blocked",
             "--no-write",
         ]
     )
@@ -408,7 +446,6 @@ def main() -> int:
         [
             sys.executable,
             "ultimate_theory_gate_v20.py",
-            "--expect-blocked",
             "--no-write",
         ]
     )
@@ -469,9 +506,39 @@ def main() -> int:
             "test_final_g4_eft_mathematical_gate_v20.py",
             "test_final_g5_eft_mathematical_gate_v20.py",
             "test_exact_eft_physical_scalar_spectrum_v20.py",
+            "test_exact_g6_sm_provenance_feasibility_v20.py",
+            "test_physical_sm_source_algebra_equality_frontier_v20.py",
+            "test_exact_physical_sm_five_amplitude_equality_v20.py",
+            "test_exact_physical_sm_hard_projector_hessians_v20.py",
+            "test_exact_physical_sm_easy_21_hessians_v20.py",
+            "test_exact_physical_sm_last_six_hessians_v20.py",
+            "test_exact_physical_sm_37_row_aggregate_v20.py",
+            "test_exact_physical_sm_local_equality_orbit_v20.py",
+            "test_exact_physical_sm_g4_g5_branch_mismatch_v20.py",
+            "test_conditional_physical_sm_eft_hessian_spectrum_v20.py",
+            "test_exact_eft_g6_g7_parameterized_matching_v20.py",
             "test_final_g6_eft_mathematical_gate_v20.py",
+            "test_exact_authoritative_so10_u1x_gauge_betas_v20.py",
+            "test_exact_physical_sm_heavy_vector_masses_v20.py",
+            "test_exact_physical_sm_heavy_vector_msbar_matching_v20.py",
+            "test_exact_physical_sm_vector_rxi_vacuum_cancellation_v20.py",
+            "test_pyrate3_so10_u1x_gauge_beta_replay_v20.py",
+            "test_exact_normalized_so10_yukawa_cgcs_v20.py",
             "test_exact_eft_g7_threshold_nonidentifiability_v20.py",
+            "test_exact_physical_g7_component_threshold_contract_v20.py",
+            "test_exact_physical_sm_g6_g7_closure_frontier_v20.py",
+            "test_exact_physical_sm_g8_identifiability_frontier_v20.py",
+            "test_physical_sm_vacuum_local_feasibility_v20.py",
             "test_g1_g8_gate_ledger_v20.py",
+            "test_canonical_g1_scalar_ring_dim6_frontier_v21.py",
+            "test_canonical_g1_susyno_channel_basis_v21.py",
+            "test_canonical_g1_complete_operator_ring_dim6_v21.py",
+            "test_canonical_g2_exact_contraction_basis_v21.py",
+            "test_canonical_g2_full_component_projection_dim6_v21.py",
+            "test_verify_canonical_g2_full_component_projection_dim6_v21.py",
+            "test_canonical_g3_physical_ew_global_vacuum_v21.py",
+            "test_verify_canonical_g3_physical_ew_global_vacuum_v21.py",
+            "test_canonical_g1_g8_gauged_u1x_v21.py",
             "test_final_g3_acceptance_gate_v20.py",
             "test_gauged_u1x_g3_sos_candidate_v20.py",
             "test_gauged_u1x_g3_stability_v20.py",
@@ -488,12 +555,25 @@ def main() -> int:
             "--check",
         ]
     )
-    print("=== REPLICATION PASS (SCIENTIFIC STATE: BLOCKED) ===", flush=True)
-    print(
-        "Passing replication means the fail-closed snapshot is reproducible. "
-        "It does not validate the manuscript model or claim a discovery.",
-        flush=True,
+    authoritative = json.loads(
+        (ROOT / "AUTHORITATIVE_FULL_MODEL_GATE_V20.json").read_text(
+            encoding="utf-8"
+        )
     )
+    state = authoritative["overall_state"]
+    print(f"=== REPLICATION PASS (SCIENTIFIC STATE: {state}) ===", flush=True)
+    if state != "PASS":
+        print(
+            "Passing replication means the fail-closed snapshot is reproducible. "
+            "It does not validate the manuscript model or claim a discovery.",
+            flush=True,
+        )
+    else:
+        print(
+            "Passing replication replays the qualified canonical V21 verifier "
+            "chain and its authoritative full-model PASS.",
+            flush=True,
+        )
     return 0
 
 

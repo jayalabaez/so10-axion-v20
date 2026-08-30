@@ -1,0 +1,286 @@
+{
+  "Z4R_new_sector": {
+    "Pbar_plus_five_anomalons_Delta_s1": 0,
+    "Pbar_plus_five_anomalons_Delta_s3": 0,
+    "external_GS_chiral_T_fermion_shift": -1,
+    "fermion_charges": {
+      "A15": 1,
+      "A16": -1,
+      "A17": 1,
+      "A2": -1,
+      "A32": -1,
+      "Pbar": 1
+    },
+    "net_new_linear_and_cubic_shift": [
+      0,
+      0
+    ],
+    "preferred_superfield_charges": {
+      "A15": 2,
+      "A16": 0,
+      "A17": 2,
+      "A2": 0,
+      "A32": 0,
+      "Pbar": 2
+    },
+    "second_driver_Zp_fermion_shift": 1
+  },
+  "full_product_boundary": {
+    "declared_group": "Spin^Z4R x Z66 with the PS gauge factors",
+    "dedicated_full_bordism_with_gravitino_and_PS_center_quotient_done": false,
+    "status": "conditional four-dimensional EFT candidate; G1 not closed",
+    "subgroup_and_pairwise_arithmetic_passes": true
+  },
+  "minimal_countersector": {
+    "all_minimal_full_rank_witnesses": [
+      [
+        2,
+        6,
+        16,
+        26,
+        32
+      ],
+      [
+        2,
+        15,
+        16,
+        17,
+        32
+      ],
+      [
+        5,
+        8,
+        16,
+        26,
+        27
+      ],
+      [
+        9,
+        14,
+        16,
+        20,
+        23
+      ],
+      [
+        12,
+        14,
+        16,
+        20,
+        20
+      ]
+    ],
+    "determinant": "a^2*b^2*c",
+    "determinant_nonzero_condition": "a*b*c != 0",
+    "exhaustive_counts": {
+      "1": {
+        "anomaly_candidates": 0,
+        "generic_full_rank_candidates": 0
+      },
+      "2": {
+        "anomaly_candidates": 1,
+        "generic_full_rank_candidates": 0
+      },
+      "3": {
+        "anomaly_candidates": 6,
+        "generic_full_rank_candidates": 0
+      },
+      "4": {
+        "anomaly_candidates": 68,
+        "generic_full_rank_candidates": 0
+      },
+      "5": {
+        "anomaly_candidates": 447,
+        "generic_full_rank_candidates": 5
+      }
+    },
+    "full_rank": true,
+    "mass_matrix": [
+      [
+        "0",
+        "0",
+        "0",
+        "0",
+        "a"
+      ],
+      [
+        "0",
+        "0",
+        "0",
+        "b",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "c",
+        "mu",
+        "0"
+      ],
+      [
+        "0",
+        "b",
+        "mu",
+        "d",
+        "0"
+      ],
+      [
+        "a",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    ],
+    "mass_matrix_field_order": [
+      "A2",
+      "A15",
+      "A16",
+      "A17",
+      "A32"
+    ],
+    "mass_parameters": {
+      "a": "yAbar*<Pbar>",
+      "b": "yA15*<P>",
+      "c": "yA16*<P>",
+      "d": "yA17*<Pbar>",
+      "mu": "MA"
+    },
+    "minimal_number_of_anomalons": 5,
+    "scope": "PS-singlet chiral anomalons after adding Pbar(q33=32), with a generic symmetric mass entry allowed by a bare, P, or Pbar renormalizable bilinear",
+    "selected_field_order": [
+      "A2",
+      "A15",
+      "A16",
+      "A17",
+      "A32"
+    ],
+    "selected_q33_witness": [
+      2,
+      15,
+      16,
+      17,
+      32
+    ],
+    "selected_q66_CRT_lift": [
+      37,
+      63,
+      65,
+      1,
+      31
+    ],
+    "target_after_Pbar": {
+      "sum_q_cubed_mod99": 16,
+      "sum_q_mod33": 16
+    }
+  },
+  "mixed_PS_squared_Z66": {
+    "conditional_GS_sector": {
+      "chosen_gravitational_level": 0,
+      "four_dimensional_quantized_topological_action_declared": true,
+      "gauge_levels": [
+        1,
+        1,
+        1
+      ],
+      "gravitational_level_mod11_required": 0,
+      "heterotic_equal_level_universality_assumed": false,
+      "microscopic_compactification_or_stueckelberg_origin_derived": false,
+      "period_one_axion_shift_under_Z66_generator": "8/66=4/33"
+    },
+    "direct_matter_cancellation": false,
+    "group_order": [
+      "SU4",
+      "SU2L",
+      "SU2R"
+    ],
+    "half_normalized_residues": [
+      -4,
+      -4,
+      -4
+    ]
+  },
+  "schema": "susy-v36-g1-eft-candidate-v1",
+  "selector": {
+    "Hsieh_Dai_Freed": {
+      "Delta_s1_canonical": 1287,
+      "Delta_s3_canonical": 5061573,
+      "both_vanish": true,
+      "cubic_condition_numerator_mod396": 0,
+      "linear_condition_2Delta_s1_mod66": 0
+    },
+    "Z33_subgroup_signed_audit": {
+      "counter_Delta_s1": 15,
+      "counter_Delta_s3": 3381,
+      "cubic_residue_mod99": 0,
+      "linear_residue_mod33": 0,
+      "pure_finite_counterclass_closed": true,
+      "total_Delta_s1": 0,
+      "total_Delta_s3": 3366,
+      "visible_Delta_s1": -15,
+      "visible_Delta_s3": -15
+    },
+    "charge_map": "q66=2*q33+33*p mod66",
+    "charged_Weyl_rows": [
+      {
+        "field": "PsiBar",
+        "multiplicity": 8,
+        "q66": 64
+      },
+      {
+        "field": "PsiCBar",
+        "multiplicity": 8,
+        "q66": 64
+      },
+      {
+        "field": "P",
+        "multiplicity": 1,
+        "q66": 2
+      },
+      {
+        "field": "Pbar",
+        "multiplicity": 1,
+        "q66": 64
+      },
+      {
+        "field": "A2",
+        "multiplicity": 1,
+        "q66": 37
+      },
+      {
+        "field": "A15",
+        "multiplicity": 1,
+        "q66": 63
+      },
+      {
+        "field": "A16",
+        "multiplicity": 1,
+        "q66": 65
+      },
+      {
+        "field": "A17",
+        "multiplicity": 1,
+        "q66": 1
+      },
+      {
+        "field": "A32",
+        "multiplicity": 1,
+        "q66": 31
+      }
+    ],
+    "construction": "CRT combination of old Z33 and anomalon parity",
+    "group": "untwisted Spin x Z66",
+    "spontaneous_breaking": {
+      "P_q66": 2,
+      "Pbar_q66": 64,
+      "all_anomalons_odd": true,
+      "all_original_fields_even": true,
+      "unbroken_subgroup": "Z2",
+      "unbroken_subgroup_order": 2
+    }
+  },
+  "sources": [
+    "https://arxiv.org/abs/1808.02881",
+    "https://arxiv.org/abs/1102.3595",
+    "https://arxiv.org/abs/1212.4371"
+  ]
+}

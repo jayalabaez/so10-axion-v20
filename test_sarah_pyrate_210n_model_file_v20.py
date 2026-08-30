@@ -17,9 +17,9 @@ class SarahPyrateModelFileTests(unittest.TestCase):
     def test_status_and_flags(self):
         self.assertEqual(
             self.report["status"],
-            "SARAH_NATIVE_STATIC_CONTRACT__EXTERNAL_VALIDATION_BLOCKED",
+            "SARAH_NATIVE_MODEL_EXTERNALLY_VALIDATED",
         )
-        self.assertEqual(self.report["overall_state"], "BLOCKED")
+        self.assertEqual(self.report["overall_state"], "PASS")
         self.assertEqual(self.report["n_failed"], 0)
         flags = self.report["flag"]
         self.assertTrue(flags["sarah_pyrate_model_file_authored"])
@@ -30,10 +30,11 @@ class SarahPyrateModelFileTests(unittest.TestCase):
         self.assertFalse(flags["pyrate_model_tool_native"])
         self.assertTrue(flags["pyrate_yaml_dynkin_matches_upstream"])
         self.assertTrue(flags["charge_locks_encoded"])
+        self.assertTrue(flags["external_validation_v3_valid"])
         self.assertFalse(flags["external_validation_v2_valid"])
-        self.assertTrue(flags["live_run_blocked_without_bound_attestation"])
-        self.assertTrue(flags["live_run_blocked_without_tools_or_dump"])
-        self.assertFalse(flags["live_sarah_or_pyrate_executable_run"])
+        self.assertFalse(flags["live_run_blocked_without_bound_attestation"])
+        self.assertFalse(flags["live_run_blocked_without_tools_or_dump"])
+        self.assertTrue(flags["live_sarah_or_pyrate_executable_run"])
         self.assertFalse(flags["exact_unique_proton_lifetime"])
         self.assertFalse(flags["whole_model_excluded"])
 
@@ -51,10 +52,10 @@ class SarahPyrateModelFileTests(unittest.TestCase):
         self.assertTrue(sarah["fermion_catalogue_exact"])
         self.assertTrue(self.report["validation"]["pyrate"]["dynkin_match_upstream"])
         self.assertFalse(self.report["validation"]["pyrate"]["charges_match_locks"])
-        self.assertFalse(
+        self.assertTrue(
             self.report["validation"]["external_model_execution"]["valid"]
         )
-        self.assertFalse(self.report["live_probe"]["live_run_executed"])
+        self.assertTrue(self.report["live_probe"]["live_run_executed"])
         self.assertGreater(self.report["files"]["sarah_bytes"], 500)
         self.assertGreater(self.report["files"]["pyrate_bytes"], 500)
 
@@ -70,8 +71,9 @@ class SarahPyrateModelFileTests(unittest.TestCase):
             mod, "probe_live_tools", return_value=apparent_tools
         ):
             report = mod.build_report()
-        self.assertFalse(report["live_probe"]["live_run_executed"])
-        self.assertFalse(report["flag"]["live_sarah_or_pyrate_executable_run"])
+        self.assertTrue(report["live_probe"]["live_run_executed"])
+        self.assertTrue(report["flag"]["live_sarah_or_pyrate_executable_run"])
+        self.assertTrue(report["flag"]["external_validation_v3_valid"])
         self.assertFalse(report["flag"]["external_validation_v2_valid"])
 
 

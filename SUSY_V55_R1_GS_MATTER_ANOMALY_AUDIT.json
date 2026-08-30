@@ -1,0 +1,782 @@
+{
+  "FI_D_flat_sign_check": {
+    "FI_sign_from_xi_proportional_to_TrQ": "positive",
+    "not_proved": "The exact D=0 magnitude is not established: F constraints, the modulus-generated FI coefficient, representation normalizations, and the full Kahler metric must be solved simultaneously. Repair spectators remain at X=0.",
+    "opposite_sign_nonzero_VEVs_exist": true,
+    "sign_feasible": true,
+    "universal_trace_equals_24A": true,
+    "vacuum_active_negative_charge_fields": [
+      "E(-2)",
+      "barC(-1)",
+      "S(-12)",
+      "T(-6)",
+      "M(-2)",
+      "D3(-2)",
+      "D4(-2)"
+    ],
+    "vacuum_active_positive_charge_fields": [
+      "A(+1)",
+      "B(+1)",
+      "P(+6)",
+      "R(+4)",
+      "L(+1)",
+      "K(+2)"
+    ]
+  },
+  "V54_q11_reconstruction": {
+    "matter_contribution_of_three_q11_16s": {
+      "Spin10_squared_U1": 66,
+      "TrQ": 528,
+      "TrQ2": 5808,
+      "TrQ3": 63888
+    },
+    "quoted_ledger": {
+      "Spin10_squared_U1": 49,
+      "TrQ": 415,
+      "TrQ2": 14081,
+      "TrQ3": -3887
+    },
+    "recovered_nonmatter_ledger": {
+      "Spin10_squared_U1": -17,
+      "TrQ": -113,
+      "TrQ2": 8273,
+      "TrQ3": -67775
+    }
+  },
+  "core_sha256": "ac4c31629b1d5e862c9175f754488e7eea490418a981fd9636bee3ef9f6a3e7f",
+  "fixed_q11_repair_reduction": {
+    "V54_134_singlet_repair": {
+      "anomalies": {
+        "Spin10_squared_U1": "49",
+        "TrQ": "1176",
+        "TrQ2_diagnostic": "18624",
+        "TrQ3": "23334",
+        "family_charges": [
+          "11",
+          "11",
+          "11"
+        ],
+        "gravity_universal": true,
+        "kA_from_cubic_universality": "3889/49",
+        "kA_positive": true,
+        "ordinary_anomaly_free": false,
+        "spectator_charge_sum": "761",
+        "spectator_count": 134
+      },
+      "charges": {
+        "q_minus1": 1,
+        "q_plus1": 6,
+        "q_plus6": 126,
+        "q_zero": 1
+      }
+    },
+    "exact_minimality_proof": "Universality requires spectator trace 761. In any nonzero determinant monomial for the spectator mass matrix, 2 sum(q_X) equals minus the sum of  N provider charges. Since the most negative available singlet-VEV charge is q(S)=-12, N>=ceil(761/6)=127. N=127 would require provider charge sum -1522, two above 127*(-12); every available replacement raises that sum by one of {6,10,12,13,14,16,18}, so it is impossible. N=128 is realized by 127 S diagonal entries and one K diagonal entry.",
+    "field_reduction": 6,
+    "fractional_reduction": 0.04477611940298507,
+    "smaller_128_singlet_repair": {
+      "all_mass_terms_neutral": true,
+      "anomalies": {
+        "Spin10_squared_U1": "49",
+        "TrQ": "1176",
+        "TrQ2_diagnostic": "18654",
+        "TrQ3": "23544",
+        "family_charges": [
+          "11",
+          "11",
+          "11"
+        ],
+        "gravity_universal": true,
+        "kA_from_cubic_universality": "3924/49",
+        "kA_positive": true,
+        "ordinary_anomaly_free": false,
+        "spectator_charge_sum": "761",
+        "spectator_count": 128
+      },
+      "charges": {
+        "q_minus1": 1,
+        "q_plus6": 127
+      },
+      "masses": [
+        "127 copies of S X_(6)^2/2",
+        "K X_(-1)^2/2"
+      ],
+      "spectator_Hessian_nullity": 0,
+      "spectator_Hessian_rank": 128
+    }
+  },
+  "formal_GS_output": {
+    "FI_in_string_units": "xi = g_s^2 * 3/(8*pi^2)",
+    "abelian_generator_norm_candidate": "185/3",
+    "classification": "FORMAL_SINGLE_GS_ANOMALY_UNIVERSAL_LEDGER",
+    "delta_GS": "3/(8*pi^2)",
+    "ordinary_anomaly_cancellation": false,
+    "universal_anomalies": {
+      "A_Spin10": "3",
+      "TrQ3_over_6kA": "3",
+      "TrQ_over_24": "3"
+    }
+  },
+  "free_family_formal_scan": {
+    "interpretation": "This is the arithmetic minimum in the declared free-family scan. It does not preserve the V54 renormalizable top Yukawa because no family has charge 11.",
+    "scanned_family_rows_by_spectator_count": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 598
+    },
+    "scope": {
+      "integer_family_charge_range": [
+        -24,
+        24
+      ],
+      "mass_topology": "diagonal Phi X^2 blocks from existing singlet VEVs",
+      "maximum_spectator_count": 3,
+      "objective": "minimum spectator count, then minimum max family charge, family square sum, max spectator charge, and spectator square sum"
+    },
+    "winner": {
+      "anomalies": {
+        "Spin10_squared_U1": "1",
+        "TrQ": "24",
+        "TrQ2_diagnostic": "13426",
+        "TrQ3": "8742",
+        "family_charges": [
+          "-4",
+          "-4",
+          "17"
+        ],
+        "gravity_universal": true,
+        "kA_from_cubic_universality": "1457",
+        "kA_positive": true,
+        "ordinary_anomaly_free": false,
+        "spectator_charge_sum": "-7",
+        "spectator_count": 3
+      },
+      "bare_four_family_charge_neutral_witness": null,
+      "family_charges": [
+        -4,
+        -4,
+        17
+      ],
+      "mass_certificate": {
+        "Hessian_determinant": "1",
+        "Hessian_rank": 3,
+        "all_mass_operators_neutral": true,
+        "all_spectators_massive": true,
+        "charges": [
+          -3,
+          -2,
+          -2
+        ],
+        "operators": [
+          {
+            "VEV_provider": "P",
+            "kind": "self",
+            "operator": "P X_(-3)^2/2",
+            "provider_charge": 6,
+            "spectator_charges": [
+              -3
+            ],
+            "total_U1_charge": 0
+          },
+          {
+            "VEV_provider": "R",
+            "kind": "self",
+            "operator": "R X_(-2)^2/2",
+            "provider_charge": 4,
+            "spectator_charges": [
+              -2
+            ],
+            "total_U1_charge": 0
+          },
+          {
+            "VEV_provider": "R",
+            "kind": "self",
+            "operator": "R X_(-2)^2/2",
+            "provider_charge": 4,
+            "spectator_charges": [
+              -2
+            ],
+            "total_U1_charge": 0
+          }
+        ],
+        "spectator_Z2": "all repair singlets odd, all V54 main-action fields even; X=0 preserves the parity and every displayed quadratic mass contains two odd fields",
+        "unit_VEV_Hessian": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "spectator_blocks": [
+        [
+          "self",
+          -3,
+          "P"
+        ],
+        [
+          "self",
+          -2,
+          "R"
+        ],
+        [
+          "self",
+          -2,
+          "R"
+        ]
+      ],
+      "spectator_charges": [
+        -3,
+        -2,
+        -2
+      ]
+    }
+  },
+  "gate_effect": {
+    "G1": "OPEN_GLOBAL_GS_QUOTIENT_AND_MODULUS",
+    "G2": "OPEN_FULL_282_PLUS_MODULUS_SAME_ACTION_HESSIAN",
+    "G3": "OPEN_GLOBAL_F_D_SOFT_VACUUM",
+    "G7": "OPEN_FULL_OPERATOR_AND_WILSON_CENSUS",
+    "G8": "OPEN_LIGHT_FAMILY_FLAVOUR_COMPLETION",
+    "promotions": []
+  },
+  "integrity_checks": {
+    "V54_upstream_is_bound": true,
+    "fixed_q11_128_repair_is_universal_positive_and_massive": true,
+    "formal_GS_arithmetic_is_not_called_supergravity_completion": true,
+    "free_family_scan_finds_three_field_formal_minimum": true,
+    "no_gate_is_promoted": true,
+    "raw_top_optimum_exposes_bare_F4_failure": true,
+    "selected_D_flat_sign_is_feasible_but_not_overclaimed": true,
+    "selected_GS_ratios_are_exact": true,
+    "selected_five_field_repair_preserves_top_and_passes_bare_F4_screen": true,
+    "subtracting_three_q11_families_gives_fixed_nonmatter_ledger": true,
+    "symbolic_trace_repair_formula_is_exact_at_q11": true
+  },
+  "n_failed_integrity_checks": 0,
+  "physical_GS_supergravity_completion_still_required": [
+    "derive a compact charge lattice/current-algebra embedding with k10=1 and kA=185/3 rather than assigning kA from low-energy traces",
+    "introduce a transforming axion-dilaton or modulus T with a fixed delta_GS and gauge-invariant K(T+Tbar-delta_GS V_A)",
+    "derive positive real gauge kinetic functions f10(T), fA(T) and any kinetic mixing with every additional U(1)",
+    "stabilize Re(T) and Im(T) consistently with the gauged shift, including all hidden-sector anomaly contributions",
+    "solve F_T=0 and D_A=0 with the actual Kahler metric, FI magnitude, source constraints, and zero spectator VEVs",
+    "diagonalize the U(1) vector, eaten axion, radial scalars, and modulus Hessian and exclude tachyons or extra light states",
+    "prove that the Z2 spectator parity and five mass operators survive the complete operator ring and do not spoil proton or Higgs protection",
+    "include matter/flavon/messenger thresholds and the large U(1) charge-square trace in perturbative running"
+  ],
+  "primary_sources": [
+    {
+      "title": "Goodsell, Ramos-Sanchez, Ringwald, arXiv:1110.6901",
+      "url": "https://arxiv.org/abs/1110.6901",
+      "use": "single anomalous-U(1) universality and FI conventions, Eqs. (2.9)-(2.10)"
+    }
+  ],
+  "schema": "susy-v55-r1-gs-matter-anomaly-audit-v1",
+  "scope": "exact four-dimensional chiral anomaly arithmetic and bounded integer-charge mass-block searches for the V54 R1 charged-source rescue; not a string compactification, supergravity completion, or completed same-action theory",
+  "selected_formal_repair": {
+    "Spin10_running": {
+      "one_loop_b_Landau": 18,
+      "singlet_repair_changes_Spin10_running": false,
+      "sum_T_including_three_families": 42
+    },
+    "anomalies": {
+      "Spin10_squared_U1": "3",
+      "TrQ": "72",
+      "TrQ2_diagnostic": "13036",
+      "TrQ3": "1110",
+      "family_charges": [
+        "-2",
+        "1",
+        "11"
+      ],
+      "gravity_universal": true,
+      "kA_from_cubic_universality": "185/3",
+      "kA_positive": true,
+      "ordinary_anomaly_free": false,
+      "spectator_charge_sum": "25",
+      "spectator_count": 5
+    },
+    "bare_four_family_charge_neutral_witness": null,
+    "coordinate_accounting": {
+      "V54_local_source_filter_and_driver_coordinates": 229,
+      "full_chiral_coordinate_count_before_GS_modulus": 282,
+      "new_massive_singlet_coordinates": 5,
+      "three_matter_16_coordinates_missing_from_V54_local_Hessian": 48
+    },
+    "family_charges": [
+      -2,
+      1,
+      11
+    ],
+    "mass_certificate": {
+      "Hessian_determinant": "1",
+      "Hessian_rank": 5,
+      "all_mass_operators_neutral": true,
+      "all_spectators_massive": true,
+      "charges": [
+        1,
+        -20,
+        32,
+        -19,
+        31
+      ],
+      "operators": [
+        {
+          "VEV_provider": "M",
+          "kind": "self",
+          "operator": "M X_(1)^2/2",
+          "provider_charge": -2,
+          "spectator_charges": [
+            1
+          ],
+          "total_U1_charge": 0
+        },
+        {
+          "VEV_provider": "S",
+          "kind": "pair",
+          "operator": "S X_(-20) X_(32)",
+          "provider_charge": -12,
+          "spectator_charges": [
+            -20,
+            32
+          ],
+          "total_U1_charge": 0
+        },
+        {
+          "VEV_provider": "S",
+          "kind": "pair",
+          "operator": "S X_(-19) X_(31)",
+          "provider_charge": -12,
+          "spectator_charges": [
+            -19,
+            31
+          ],
+          "total_U1_charge": 0
+        }
+      ],
+      "spectator_Z2": "all repair singlets odd, all V54 main-action fields even; X=0 preserves the parity and every displayed quadratic mass contains two odd fields",
+      "unit_VEV_Hessian": [
+        [
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0
+        ]
+      ]
+    },
+    "remaining_operator_risk": "The bare F^4 charge screen is only a pre-screen. VEV-dressed family operators, contractions using the large-charge spectators, the light-family Yukawa/flavon sector, and physical proton-decay Wilson coefficients are not audited.",
+    "selection_reason": "It is field-count minimal in the declared integer block topology, keeps q3=11 so 16_3 16_3 H1 is neutral, and unlike the raw charge-size optimum has no charge-neutral bare four-family matter monomial.",
+    "spectator_blocks": [
+      [
+        "self",
+        1,
+        "M"
+      ],
+      [
+        "pair",
+        -20,
+        32,
+        "S"
+      ],
+      [
+        "pair",
+        -19,
+        31,
+        "S"
+      ]
+    ],
+    "spectator_charges": [
+      1,
+      -20,
+      32,
+      -19,
+      31
+    ]
+  },
+  "source_manifest": [
+    {
+      "path": "susy_v55_r1_gs_matter_anomaly_audit.py",
+      "sha256": "057cbbfc35c0edb21577023eb1aaf2bdea8fc4897ab757ec2cf2aa1a68d8fe77"
+    },
+    {
+      "path": "test_susy_v55_r1_gs_matter_anomaly_audit.py",
+      "sha256": "09a4758145c61d4bfb7368acb3c910bf2a2c0fa14339edea7b18a3d0cd765e30"
+    },
+    {
+      "path": "SUSY_V54_CONTINUOUS_PARENT_FI_ROUTE_AUDIT.json",
+      "sha256": "9da784e86d6934c837afa2912a22a9c2abb3ca0d1be35f3c4b17b6595a40fbcc"
+    }
+  ],
+  "status": "V55_R1_GS_MATTER_ANOMALY_AUDIT__V54_THREE_Q11_FAMILIES_EXPOSED__SYMBOLIC_MIXED_GRAVITY_AND_CUBIC_POLYNOMIALS_EXACT__OLD_134_REPAIR_REDUCED_TO_128_AT_FIXED_FAMILY_CHARGES__TOP_YUKAWA_PRESERVING_FIVE_SINGLET_INTEGER_REPAIR_FOUND_AND_BLOCK_MINIMAL__BARE_F4_PRESCREEN_PASSED__GS_KAHLER_MODULUS_VECTOR_AND_GLOBAL_D_FLAT_VACUUM_NOT_CONSTRUCTED__FORMAL_ARITHMETIC_ONLY__NO_GATE_PROMOTION",
+  "symbolic_anomaly_conditions": {
+    "TrQ2_warning": "TrQ2 is a running/charge-size diagnostic, not the world-sheet generator norm k_A; a string embedding must derive k_A from the charge lattice.",
+    "fixed_nonmatter_ledger": {
+      "Spin10_squared_U1": -17,
+      "TrQ": -113,
+      "TrQ2": 8273,
+      "TrQ3": -67775
+    },
+    "for_three_family_charges_q1_q2_q3": {
+      "A_Spin10_squared_U1": "-17 + 2*(q1+q2+q3)",
+      "TrQ2_nonanomalous_diagnostic": "8273 + 16*(q1^2+q2^2+q3^2) + sum_a x_a^2",
+      "TrQ3_cubic": "-67775 + 16*(q1^3+q2^3+q3^3) + sum_a x_a^3",
+      "TrQ_gravitational": "-113 + 16*(q1+q2+q3) + sum_a x_a"
+    },
+    "integer_family_consequence": "A_10=-17+2*sum(q_i) is odd and never zero; an integer-charge branch is necessarily anomalous rather than ordinarily anomaly-free",
+    "normalization": "T(10)=1, T(16)=2, Spin(10) current-algebra level assumed one",
+    "ordinary_non_GS_condition": "If rational charges make A_10=0, consistency instead requires TrQ=0 and TrQ3=0 separately; k_A cannot be defined by division through A_10.",
+    "positive_abelian_level": "k_A=TrQ3/(6 A_10)>0",
+    "required_singlet_trace": "sum_a x_a = 32*(q1+q2+q3)-295",
+    "single_GS_universality_in_1110_6901_convention": "A_10 = TrQ/24 = TrQ3/(6 k_A) = 8*pi^2*delta_GS"
+  },
+  "top_yukawa_preserving_scan": {
+    "bare_F4_prescreened_optimum": {
+      "anomalies": {
+        "Spin10_squared_U1": "3",
+        "TrQ": "72",
+        "TrQ2_diagnostic": "13036",
+        "TrQ3": "1110",
+        "family_charges": [
+          "-2",
+          "1",
+          "11"
+        ],
+        "gravity_universal": true,
+        "kA_from_cubic_universality": "185/3",
+        "kA_positive": true,
+        "ordinary_anomaly_free": false,
+        "spectator_charge_sum": "25",
+        "spectator_count": 5
+      },
+      "bare_four_family_charge_neutral_witness": null,
+      "family_charges": [
+        -2,
+        1,
+        11
+      ],
+      "mass_certificate": {
+        "Hessian_determinant": "1",
+        "Hessian_rank": 5,
+        "all_mass_operators_neutral": true,
+        "all_spectators_massive": true,
+        "charges": [
+          1,
+          -20,
+          32,
+          -19,
+          31
+        ],
+        "operators": [
+          {
+            "VEV_provider": "M",
+            "kind": "self",
+            "operator": "M X_(1)^2/2",
+            "provider_charge": -2,
+            "spectator_charges": [
+              1
+            ],
+            "total_U1_charge": 0
+          },
+          {
+            "VEV_provider": "S",
+            "kind": "pair",
+            "operator": "S X_(-20) X_(32)",
+            "provider_charge": -12,
+            "spectator_charges": [
+              -20,
+              32
+            ],
+            "total_U1_charge": 0
+          },
+          {
+            "VEV_provider": "S",
+            "kind": "pair",
+            "operator": "S X_(-19) X_(31)",
+            "provider_charge": -12,
+            "spectator_charges": [
+              -19,
+              31
+            ],
+            "total_U1_charge": 0
+          }
+        ],
+        "spectator_Z2": "all repair singlets odd, all V54 main-action fields even; X=0 preserves the parity and every displayed quadratic mass contains two odd fields",
+        "unit_VEV_Hessian": [
+          [
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            0
+          ]
+        ]
+      },
+      "spectator_blocks": [
+        [
+          "self",
+          1,
+          "M"
+        ],
+        [
+          "pair",
+          -20,
+          32,
+          "S"
+        ],
+        [
+          "pair",
+          -19,
+          31,
+          "S"
+        ]
+      ],
+      "spectator_charges": [
+        1,
+        -20,
+        32,
+        -19,
+        31
+      ]
+    },
+    "mass_configurations_scanned_by_count": {
+      "1": 7,
+      "2": 339,
+      "3": 2261,
+      "4": 57434,
+      "5": 366198
+    },
+    "minimality_statement": "No one-to-four-field block repair exists with positive cubic normalization. The trace congruence leaves only total family charge 9 for N<=4; with q3=11 the family cubic sum is at most 1329, while every N<=4 massive block with repair trace -7 leaves the total cubic anomaly negative. The five-field witness is therefore field-count minimal in this integer block topology, independent of the finite charge bound used to optimize its charge size.",
+    "raw_anomaly_optimum": {
+      "anomalies": {
+        "Spin10_squared_U1": "3",
+        "TrQ": "72",
+        "TrQ2_diagnostic": "12972",
+        "TrQ3": "1206",
+        "family_charges": [
+          "-1",
+          "0",
+          "11"
+        ],
+        "gravity_universal": true,
+        "kA_from_cubic_universality": "67",
+        "kA_positive": true,
+        "ordinary_anomaly_free": false,
+        "spectator_charge_sum": "25",
+        "spectator_count": 5
+      },
+      "bare_four_family_charge_neutral_witness": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "family_charges": [
+        -1,
+        0,
+        11
+      ],
+      "mass_certificate": {
+        "Hessian_determinant": "1",
+        "Hessian_rank": 5,
+        "all_mass_operators_neutral": true,
+        "all_spectators_massive": true,
+        "charges": [
+          1,
+          -20,
+          32,
+          -19,
+          31
+        ],
+        "operators": [
+          {
+            "VEV_provider": "M",
+            "kind": "self",
+            "operator": "M X_(1)^2/2",
+            "provider_charge": -2,
+            "spectator_charges": [
+              1
+            ],
+            "total_U1_charge": 0
+          },
+          {
+            "VEV_provider": "S",
+            "kind": "pair",
+            "operator": "S X_(-20) X_(32)",
+            "provider_charge": -12,
+            "spectator_charges": [
+              -20,
+              32
+            ],
+            "total_U1_charge": 0
+          },
+          {
+            "VEV_provider": "S",
+            "kind": "pair",
+            "operator": "S X_(-19) X_(31)",
+            "provider_charge": -12,
+            "spectator_charges": [
+              -19,
+              31
+            ],
+            "total_U1_charge": 0
+          }
+        ],
+        "spectator_Z2": "all repair singlets odd, all V54 main-action fields even; X=0 preserves the parity and every displayed quadratic mass contains two odd fields",
+        "unit_VEV_Hessian": [
+          [
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            0
+          ]
+        ]
+      },
+      "spectator_blocks": [
+        [
+          "self",
+          1,
+          "M"
+        ],
+        [
+          "pair",
+          -20,
+          32,
+          "S"
+        ],
+        [
+          "pair",
+          -19,
+          31,
+          "S"
+        ]
+      ],
+      "spectator_charges": [
+        1,
+        -20,
+        32,
+        -19,
+        31
+      ]
+    },
+    "scope": {
+      "fixed_top_family_charge": 11,
+      "integer_charge_range": [
+        -40,
+        40
+      ],
+      "mass_topology": "block-diagonal self or pair masses Phi X_i X_j from the existing P,S,T,R,M,L,K,D1 VEVs",
+      "maximum_spectator_count": 5,
+      "objective": "minimum field count, then minimum maximum absolute charge and total charge-square trace",
+      "top_Yukawa_identity": "2 q3 + q(H1) = 2*11-22 = 0"
+    }
+  },
+  "upstream": {
+    "core_sha256": "25b0a48ea19fe6831049a46b01259a2a465f5f65584528d1670927156956633e",
+    "path": "SUSY_V54_CONTINUOUS_PARENT_FI_ROUTE_AUDIT.json"
+  },
+  "verdict": {
+    "complete_theory": false,
+    "formal_anomaly_arithmetic_complete_for_selected_ledger": true,
+    "materially_smaller_exact_massive_singlet_repair_found": true,
+    "old_134_singlet_repair_minimal": false,
+    "physical_GS_completion_complete": false,
+    "selected_repair_singlet_count": 5,
+    "statement": "The V54 anomaly count assumed three charge-11 families. Replacing that hidden assumption by explicit charges exposes a five-singlet, top-Yukawa-preserving formal repair with exact universal anomalies (A10,TrQ,TrQ3,kA)=(3,72,1110,185/3). Its massive spectator Hessian is full rank and the FI sign can be cancelled by existing negative-charge VEVs. This is a large arithmetic reduction from 134 spectators, but it is not yet physical: the GS modulus, Kahler potential, vector/scalar spectrum, exact D magnitude, operator ring, flavour sector, and string charge-lattice embedding are absent."
+  }
+}

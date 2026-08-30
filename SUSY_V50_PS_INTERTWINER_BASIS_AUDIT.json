@@ -1,0 +1,42 @@
+{
+  "C7_decision": {
+    "Cartesian_basis_Wilson_functional": "SUFFICIENT for a basis-covariant physical observable when every source/current tensor and parity projector is supplied in that same Cartesian basis",
+    "named_PS_component_array": "NOT YET PUBLISHED",
+    "verdict": "PARTIAL",
+    "why_not_PASS": "V49 currents/parities are presently declared in PS trace labels while the complete V50 portal tensors are Cartesian; the explicit bridge applying those projectors to every current has not been emitted and tested"
+  },
+  "ambiguity_decision": {
+    "additional_convention_required": true,
+    "external_data_required": false,
+    "proof": "under any unitary U inside an equal-quantum-number block, K->UKUdagger and J->UJ leave -1/2 Jdagger K^-1 J invariant; projectors transform covariantly",
+    "qualification": "holding named component coefficients fixed while rotating only states is inconsistent; a published named-component table must declare U",
+    "repeated_weight_rotations": "basis convention, not external physical CG data"
+  },
+  "certificate": {
+    "block_dimensions": [
+      2,
+      3,
+      2
+    ],
+    "projector_covariance_residual": 2.096074351170154e-16,
+    "unitarity_residual": 8.500021186058271e-16,
+    "wilson_basis_covariance_residual": 1.5265566588595902e-16
+  },
+  "checks": {
+    "external_CG_not_required": true,
+    "projector_covariant": true,
+    "strict_partial": true,
+    "unitary": true,
+    "wilson_invariant": true
+  },
+  "core_sha256": "2ee3bc6d972976b83f523a60e753a418d5cd9a3c7dca72f9379bafce681b0cab",
+  "intertwiner_attempt": {
+    "algorithm": "restrict explicit Cartesian generators to su4+su2L+su2R; simultaneously diagonalize a maximal Cartan; select highest-weight nullspaces; fix phases by first nonzero Cartesian coordinate positive; generate descendants with ordered Chevalley lowering operators; Gram-Schmidt repeated copies against deterministic ancestry projectors",
+    "not_emitted": "the full 120x120, 126x126 and 210x210 numerical unitaries were not generated in this audit",
+    "reason": "the current repository does not expose a single declared PS Chevalley-generator embedding and multiplicity ancestry ordering tied to the V49 trace labels",
+    "what_is_fixed": "irrep labels, weights, ladder normalizations, phases, and multiplicity-copy ordering once a Chevalley basis and ancestry ordering are declared"
+  },
+  "next_finite_action": "declare the PS Chevalley embedding/ancestry order, generate the three unitaries by the stated algorithm, transform all V49 currents and parity projectors, and contract the final array",
+  "schema": "susy-spin10-v50-ps-intertwiner-basis-audit-v1",
+  "status": "V50_CARTESIAN_WILSON_FUNCTIONAL_BASIS_COMPLETE__PS_NAMED_COMPONENT_INTERTWINER_NOT_EMITTED__C7_PARTIAL"
+}

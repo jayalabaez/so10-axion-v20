@@ -1,0 +1,717 @@
+{
+  "V45_exact_results_retained": [
+    {
+      "id": "E1",
+      "result": "exact connected gauge group",
+      "statement": "PS intersect SU5 inside Spin10 is S(U3xU2)=(SU3xSU2xU1)/Z6",
+      "value": "(SU(3)_C x SU(2)_L x U(1)_Y)/Z6"
+    },
+    {
+      "id": "E2",
+      "result": "orbifold zero-mode index",
+      "statement": "21 PS vectors survive before the boundary VEV; nine are lifted and 12 connected-SM vectors remain; no adjoint chiral zero mode",
+      "value": {
+        "continuous_gauge_algebra_dimension": 12,
+        "continuous_gauge_rank": 4,
+        "massless_Spin10_origin_vector_supermultiplets": 12,
+        "massless_U1F_vector_supermultiplets": 0,
+        "massless_adjoint_chiral_supermultiplets": 0
+      }
+    },
+    {
+      "id": "E3",
+      "result": "global representation repair",
+      "statement": "V44 naked doublets fail the diagonal-Z2 quotient; all four V45 spinorial zero modes descend",
+      "value": false
+    },
+    {
+      "id": "E4",
+      "result": "ordinary localized anomaly cancellation",
+      "statement": "PS-wall boundary and bulk densities cancel componentwise in the displayed polynomial; all displayed Spin10-wall rows also vanish",
+      "value": {
+        "PS_boundary": {
+          "SU4_cubed": 0,
+          "U1F_SU2L_squared_doubled": 36,
+          "U1F_SU2R_squared_doubled": -36,
+          "U1F_SU4_squared_doubled": 0,
+          "U1F_cubed": 0,
+          "gravity_squared_U1F": 0
+        },
+        "PS_bulk": {
+          "SU4_cubed": 0,
+          "U1F_SU2L_squared_doubled": -36,
+          "U1F_SU2R_squared_doubled": 36,
+          "U1F_SU4_squared_doubled": 0,
+          "U1F_cubed": 0,
+          "gravity_squared_U1F": 0
+        },
+        "PS_combined": {
+          "SU4_cubed": 0,
+          "U1F_SU2L_squared_doubled": 0,
+          "U1F_SU2R_squared_doubled": 0,
+          "U1F_SU4_squared_doubled": 0,
+          "U1F_cubed": 0,
+          "gravity_squared_U1F": 0
+        },
+        "Spin10_combined": {
+          "Spin10_cubed": 0,
+          "U1F_Spin10_squared_doubled": 0,
+          "U1F_cubed": 0,
+          "gravity_squared_U1F": 0
+        }
+      }
+    },
+    {
+      "id": "E5",
+      "result": "projected exotic zero-mode rank",
+      "statement": "The two source-wall bilinears give rank four and determinant mL^2 mR^2 when both boundary overlaps are nonzero",
+      "value": {
+        "all_operators_local_in_5D": true,
+        "determinant": "mL^2 mR^2",
+        "localization_note": "Odd bulk masses may exponentially suppress f_i(L), but a finite nonzero boundary value still gives a nonzero mass.",
+        "massless_exotic_zero_modes_if_mL_and_mR_nonzero": 0,
+        "projected_zero_mode_basis": [
+          "LF",
+          "LA",
+          "RA",
+          "RF"
+        ],
+        "projected_zero_mode_mass_matrix": [
+          [
+            "0",
+            "mL",
+            "0",
+            "0"
+          ],
+          [
+            "mL",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0",
+            "mR"
+          ],
+          [
+            "0",
+            "0",
+            "mR",
+            "0"
+          ]
+        ],
+        "qualification": "This proves the zero-mode overlap matrix, not the regulated determinant of the complete boundary-condition-shifted KK tower.",
+        "rank_if_mL_and_mR_nonzero": 4,
+        "separate_Bplus_Bminus_shining_hypers_needed": false,
+        "source_wall_operators": [
+          {
+            "Spin10_contraction": "16 x bar16 -> 1",
+            "U1F_charge": 0,
+            "operator": "delta(y-L) lambdaL ThetaPlus HLF HLA",
+            "paired_zero_modes": [
+              "LF",
+              "LA"
+            ],
+            "zero_mode_mass": "mL=lambdaL <ThetaPlus> fLF(L) fLA(L)"
+          },
+          {
+            "Spin10_contraction": "16 x bar16 -> 1",
+            "U1F_charge": 0,
+            "operator": "delta(y-L) lambdaR ThetaMinus HRA HRF",
+            "paired_zero_modes": [
+              "RA",
+              "RF"
+            ],
+            "zero_mode_mass": "mR=lambdaR <ThetaMinus> fRA(L) fRF(L)"
+          }
+        ],
+        "why_local": "All four H chirals are even and have nonzero boundary values at y=L; Theta and the full Spin(10) bilinears are co-located there."
+      }
+    },
+    {
+      "id": "E6",
+      "result": "local orientation frontier",
+      "statement": "No nonzero-orientation PS-U1F invariant occurs through degree 19; explicit degree-20 invariants exist with orientation +/-12",
+      "value": {
+        "equations": {
+          "SU4_center": "p+q-r-s=4k",
+          "U1F_neutrality_divided_by_3": "p+4q-r-4s=0",
+          "deduction": "3(q-s)=-4k, hence k=3 ell"
+        },
+        "first_PS_U1F_invariant_degree": 20,
+        "first_W_aggregate_solutions": [
+          {
+            "H": 1,
+            "degree": 23,
+            "orientation": -12,
+            "p_fund_plus3": 0,
+            "q_fund_plus12": 5,
+            "r_antifund_minus3": 16,
+            "s_antifund_minus12": 1
+          },
+          {
+            "H": 1,
+            "degree": 23,
+            "orientation": -12,
+            "p_fund_plus3": 1,
+            "q_fund_plus12": 4,
+            "r_antifund_minus3": 17,
+            "s_antifund_minus12": 0
+          },
+          {
+            "H": 1,
+            "degree": 23,
+            "orientation": 12,
+            "p_fund_plus3": 16,
+            "q_fund_plus12": 1,
+            "r_antifund_minus3": 0,
+            "s_antifund_minus12": 5
+          },
+          {
+            "H": 1,
+            "degree": 23,
+            "orientation": 12,
+            "p_fund_plus3": 17,
+            "q_fund_plus12": 0,
+            "r_antifund_minus3": 1,
+            "s_antifund_minus12": 4
+          }
+        ],
+        "first_Z4R_superpotential_degree": 23,
+        "first_invariant_aggregate_solutions": [
+          {
+            "H": 0,
+            "degree": 20,
+            "orientation": -12,
+            "p_fund_plus3": 0,
+            "q_fund_plus12": 4,
+            "r_antifund_minus3": 16,
+            "s_antifund_minus12": 0
+          },
+          {
+            "H": 0,
+            "degree": 20,
+            "orientation": 12,
+            "p_fund_plus3": 16,
+            "q_fund_plus12": 0,
+            "r_antifund_minus3": 0,
+            "s_antifund_minus12": 4
+          }
+        ],
+        "first_nonzero_orientation": 12,
+        "no_PS_U1F_invariant_through_degree": 19,
+        "no_Z4R_superpotential_through_degree": 22,
+        "variables": "p=(4,+3), q=(4,+12), r=(bar4,-3), s=(bar4,-12)"
+      }
+    },
+    {
+      "id": "E7",
+      "result": "discrete-R obstruction",
+      "statement": "Equal-level family-universal discrete-R universality forces both degree-20 oriented invariants to have W charge two",
+      "value": {
+        "assumptions": [
+          "The three Q families have one charge q and the three Qc families one charge qc. A generic 3x3 Q_i H Qc_j matrix enforces this family universality.",
+          "Q H Qc, ThetaPlus A16 Bbar16, and ThetaMinus C16 Dbar16 are allowed W terms.",
+          "r(ThetaPlus)=t and r(ThetaMinus)=-t; no value of r(H)=h is assumed.",
+          "The three PS factors have equal level and one universal GS residue, so A4=A2L=A2R mod eta.",
+          "Any 126/bar126 or other complete-Spin10 threshold contributes the same common shift C to all three mixed rows."
+        ],
+        "conclusion": "No Z_N^R satisfying these equal-level universal mixed-anomaly conditions can forbid both first oriented degree-20 local invariants.",
+        "deduction": [
+          "Adding the two differences gives 12-4h=0 mod 2eta.",
+          "Substitution gives 12q+6-4t=0 mod 2eta and therefore mod N.",
+          "The conjugate equation is 12qc+6+4t=0 mod N."
+        ],
+        "difference_equations_mod_2eta": [
+          "A4-A2L = 18-8h-12q+4t = 0",
+          "A4-A2R = -6+4h+12q-4t = 0 after qc=2-h-q"
+        ],
+        "doubled_rows_mod_2eta": {
+          "A2L": "12q+2h-10-4t+C",
+          "A2R": "12qc+2h-10+4t+C",
+          "A4": "8-6h+C"
+        },
+        "escape_routes_not_solutions": [
+          "family-nonuniversal R charges together with a rebuilt flavour/Yukawa texture",
+          "nonuniversal localized GS axions or boundary counterterms with explicit quantized couplings",
+          "a changed light chiral spectrum or changed required mass/Yukawa couplings",
+          "an R-breaking rather than exact-R mass threshold"
+        ],
+        "minus_witness": {
+          "R_charge": "12qc+4(c+d)=12qc+8+4t=2 mod N",
+          "U1F": 0,
+          "degree": 20,
+          "operator": "[eps4 eps2 eps2 Qc1 Qc1 Qc2 Qc2]^3 [delta4 eps2 RA RF]^4",
+          "orientation": -12
+        },
+        "plus_witness": {
+          "R_charge": "12q+4(a+b)=12q+8-4t=2 mod N",
+          "U1F": 0,
+          "degree": 20,
+          "explicit_nonzero_quartic_evaluation": 4,
+          "operator": "[eps4 eps2 eps2 Q1 Q1 Q2 Q2]^3 [delta4 eps2 LF LA]^4",
+          "orientation": 12
+        },
+        "required_congruences_mod_N": [
+          "q+qc+h=2",
+          "a+b+t=2",
+          "c+d-t=2"
+        ]
+      }
+    }
+  ],
+  "V46_exact_results": [
+    {
+      "id": "E8",
+      "result": "singlet-only source no-go",
+      "statement": "A neutral 126+bar126 pair with any renormalizable singlet sector leaves at least 230 physical massless transverse chirals.",
+      "value": 230
+    },
+    {
+      "id": "E9",
+      "result": "neutral-210 repair",
+      "statement": "The explicit SU(5) branch has 21 Goldstones and a generic full-rank 441-component uneaten spectrum.",
+      "value": {
+        "Goldstone_SU5_content": "1 + 10 + bar10",
+        "broken_generators_SO10_to_SU5": 21,
+        "eaten_chiral_components": 21,
+        "generic_massive_uneaten_chiral_components": 441,
+        "generic_physical_massless_chiral_components": 0,
+        "total_chiral_components": 462
+      }
+    },
+    {
+      "id": "E10",
+      "result": "5D PS/GG shortcut rejected",
+      "statement": "Opposite adjoint-chiral parities create 12 massless Phi modes; the four-spinor wall scan also has zero anomaly-free intrinsic-sign assignments.",
+      "value": {
+        "adjoint_chiral_zero_modes": 12,
+        "anomaly_free_sign_assignments": 0
+      }
+    },
+    {
+      "id": "E11",
+      "result": "exact idealized KK characteristics",
+      "statement": "For finite nonzero self-adjoint boundary parameter b, both selected zero modes are lifted and no unselected zero or supersymmetric tachyon occurs.",
+      "value": {
+        "finite_nonzero_b": {
+          "proof": "D_++(0) is nonzero for b!=0 and finite real M_i,L; D_-+(0) is nonzero for every finite b",
+          "selected_zero_modes_remaining_per_pair": 0,
+          "unselected_zero_modes_per_pair": 0
+        },
+        "selected": "D_++(z)=z S_1 S_2-b^2 F_1 F_2",
+        "tachyon_result": "none for real M_i, finite L, and hermitian b sigma_1",
+        "unselected": "D_-+(z)=G_1 G_2-z b^2 S_1 S_2"
+      }
+    },
+    {
+      "id": "E12",
+      "result": "strong-boundary spectral flow",
+      "statement": "The b to infinity endpoint is nonuniform: an unselected mode becomes parametrically light and is exactly massless only at the distinct infinite extension.",
+      "value": "as b->infinity, m_light,-+^2=exp[(M_1+M_2)L]/[b^2 S_1(0)S_2(0)]+O(b^-4)"
+    },
+    {
+      "id": "E13",
+      "result": "5D parity half-level screen",
+      "statement": "Every displayed shift lies in the closed-spin U(1) free lattice and the common-orientation total vanishes.",
+      "value": {
+        "all_integral": true,
+        "closed_spin_lattice": true,
+        "totals": {
+          "delta_k_F_Spin10_squared": 0,
+          "delta_k_F_cubed": 0,
+          "delta_k_F_gravity": 0,
+          "delta_k_Spin10_cubed": 0
+        }
+      }
+    },
+    {
+      "id": "E14",
+      "result": "finite and traditional global screens",
+      "statement": "Spin(10) homotopy, PS Witten, source Spin(10), residual Z3, matter parity and combined Z6 screens pass; the actual quotient-relative eta class is not certified.",
+      "value": {
+        "actual_interval_certified": false,
+        "pure_finite_result": "Both before and after the exotic masses, the Z3 and the full CRT-combined Z6 spectra are exactly balanced between signed charges +1 and -1.  Hsieh's exact Spin x Zn congruences therefore vanish.  The ordinary internal Z2 class is also trivial."
+      }
+    }
+  ],
+  "authoritative_candidate": {
+    "PS_wall_y0": {
+      "boundary_chirals": [
+        "3 Q=(4,2,1)_+1",
+        "3 Qc=(bar4,1,2)_-1",
+        "H=(1,2,2)_0"
+      ],
+      "group": "(SU(4)_C x SU(2)_L x SU(2)_R)/Z2_diag x U(1)_F",
+      "renormalizable_superpotential": "W0=sum_AB Y_AB L_A H R_B + y_m LA H RF, where L_A=(Q1,Q2,Q3,LF) and R_B=(Qc1,Qc2,Qc3,RA)"
+    },
+    "Spin10_source_wall_yL": {
+      "GUT_tensor_superpotential": "W_GUT = (m/4!) Phi_ijkl Phi_ijkl + (lambda/4!) Phi_ijkl Phi_klmn Phi_mnij + (M/5!) Sigma_ijklm barSigma_ijklm + (eta/4!) Phi_ijkl Sigma_ijmno barSigma_klmno",
+      "SU5_branch": {
+        "Aulakh_2003_omega_convention": "p=a=omega",
+        "Aulakh_2005_mass_spectrum_convention": "p=a=-omega",
+        "D_flat": "|sigma|=|barsigma|",
+        "F_equations_Aulakh_2003_convention": [
+          "0=2mp+6lambda omega^2+eta sigma barsigma",
+          "0=6ma+6lambda a^2+12lambda omega^2+3eta sigma barsigma",
+          "0=12momega+12lambda p omega+24lambda a omega+6eta sigma barsigma",
+          "0=(M+eta(p+3a+6omega)) sigma",
+          "0=(M+eta(p+3a+6omega)) barsigma"
+        ],
+        "p": "-M/(10 eta)",
+        "phase_convention_note": "the sign of omega differs; the invariant branch equations below agree",
+        "sigma_barsigma": "-2 p (m+3 lambda p)/eta",
+        "unbroken_source_wall_group": "SU(5)",
+        "vacuum_selection_scope": "The equations exhibit an isolated SU(5) branch; they do not assert that cosmology selects this branch over every other supersymmetric branch."
+      },
+      "boundary_chirals": [
+        "STheta_0",
+        "ThetaPlus_+3",
+        "ThetaMinus_-3",
+        "Phi_210,0",
+        "Sigma_126,0",
+        "barSigma_bar126,0"
+      ],
+      "rank_scope": "The isolated source-Higgs sector has full physical rank on a generic SU(5) branch. Gauge-allowed Theta/GUT cross couplings, Sigma-spinor terms, boundary kinetics and the relative eta problem are not removed by this statement.",
+      "selected_superpotential": "W_source = W_GUT(Phi,Sigma,barSigma) + kappaTheta STheta(ThetaPlus ThetaMinus-vF^2) + lambdaL ThetaPlus HLF HLA + lambdaR ThetaMinus HRA HRF",
+      "specified_terms": [
+        "kappa_F STheta(ThetaPlus ThetaMinus-v_F^2)",
+        "lambda_L ThetaPlus HLF HLA",
+        "lambda_R ThetaMinus HRA HRF"
+      ]
+    },
+    "bulk_group": "Spin(10) x U(1)_F with the direct-product global form used for this witness",
+    "bulk_hypers": [
+      {
+        "eta0": "+",
+        "etaL": "+",
+        "name": "HLF",
+        "rep": "16_+1",
+        "zero_mode": "LF=(4,2,1)_+1"
+      },
+      {
+        "eta0": "+",
+        "etaL": "+",
+        "name": "HLA",
+        "rep": "bar16_-4",
+        "zero_mode": "LA=(bar4,2,1)_-4"
+      },
+      {
+        "eta0": "-",
+        "etaL": "+",
+        "name": "HRA",
+        "rep": "16_-1",
+        "zero_mode": "RA=(bar4,1,2)_-1"
+      },
+      {
+        "eta0": "-",
+        "etaL": "+",
+        "name": "HRF",
+        "rep": "bar16_+4",
+        "zero_mode": "RF=(4,1,2)_+4"
+      }
+    ],
+    "charge_normalization": {
+      "Theta_breaking": "U(1)_F -> Z3_F",
+      "Z9_claim_retained": false,
+      "charges": {
+        "Delta126": 0,
+        "Delta126Bar": 0,
+        "H": 0,
+        "HLA_bar16": -4,
+        "HLF_16": 1,
+        "HRA_16": -1,
+        "HRF_bar16": 4,
+        "Q": 1,
+        "Qc": -1,
+        "STheta": 0,
+        "ThetaMinus": -3,
+        "ThetaPlus": 3
+      },
+      "convention": "primitive displayed local-particle normalization",
+      "relation_to_V40_labels": "q_primitive=q_V40/3"
+    },
+    "mandatory_allowed_operator_extension": [
+      "barSigma HLF HRA",
+      "Sigma HLA HRF",
+      "generic neutral source cross couplings such as STheta Phi^2 and STheta Sigma.barSigma"
+    ],
+    "name": "V46 neutral-210-repaired four-bulk-spinor interval",
+    "not_in_candidate": [
+      "V40/V44 X, Zp, P/Pb, Psi, A, E, NDirac and Sc/Sbc/SigC/SigBc sectors",
+      "the globally invalid naked (1,2,1) and (1,1,2) anomalons",
+      "redundant Bplus/Bminus singlet shining hypermultiplets",
+      "the inherited Z4R as an exact gauge symmetry",
+      "a faithful Z9_F claim without a unit-charge line lattice"
+    ],
+    "route_decision": {
+      "rejected": [
+        "126+bar126 plus gauge singlets only",
+        "five-dimensional PS/GG orbifold wall with charge-ten singlet breaking"
+      ],
+      "retained": "full Spin(10) source wall with neutral 210+126+bar126"
+    },
+    "spacetime": "M4 x [0,L], equivalently a supersymmetric S1/(Z2 x Z2') interval"
+  },
+  "core_sha256": "6cafaa708040832fb1c4b450ecc71f82c2281960e6d7ea744df90d82729ec2ed",
+  "gate_ledger": [
+    {
+      "advance": "No fractional parity-level, homotopy, Witten or pure Z3/Z2/Z6 obstruction was found.",
+      "blocker": "The actual PS/Z2 diagonal quotient and two-wall relative eta/bordism class remain uncomputed.",
+      "closed": false,
+      "gate": "G1"
+    },
+    {
+      "advance": "The full-Spin10 source route is fixed and the nonlocality repair is retained.",
+      "blocker": "Allowed Sigma-spinor and neutral source cross couplings lack a complete selector and Wilson matching.",
+      "closed": false,
+      "gate": "G2"
+    },
+    {
+      "advance": "A neutral 210 gives an explicit D-flat SU5 branch with a full-rank physical source-Higgs Hessian.",
+      "blocker": "The coupled Theta/GUT/Kahler/radion vacuum and branch selection are not solved.",
+      "closed": false,
+      "gate": "G3"
+    },
+    {
+      "advance": "No inconsistent soft sector was imported.",
+      "blocker": "Radion stabilization, SUSY breaking, mu/Bmu, EWSB and the full scalar vacuum are absent.",
+      "closed": false,
+      "gate": "G4"
+    },
+    {
+      "advance": "The V45 core remains free of the excluded V39 dark benchmark.",
+      "blocker": "No dark sector, relic calculation or cosmological history is specified.",
+      "closed": false,
+      "gate": "G5"
+    },
+    {
+      "advance": "Exact full-tower characteristics and regulated determinant ratios exist for the idealized two-hyper system.",
+      "blocker": "The enlarged coupled determinant, regulator matching, thresholds, unification, RG and pole spectrum are missing.",
+      "closed": false,
+      "gate": "G6"
+    },
+    {
+      "advance": "The faithful Z3 and matter parity pass pure finite anomaly tests while the high-degree orientation frontier survives.",
+      "blocker": "The 210-completed operator ring, shifted-KK Wilson coefficients and proton/multinucleon rates are absent.",
+      "closed": false,
+      "gate": "G7"
+    },
+    {
+      "advance": "The generic PS-wall Yukawa block remains compatible with the retained architecture.",
+      "blocker": "There is no neutrino completion, three-family fit, uncertainty propagation or withheld prediction.",
+      "closed": false,
+      "gate": "G8"
+    }
+  ],
+  "input_core_hashes": {
+    "global_eta": "652dd2dfbedd023480b9ead27cdb6a69155789d677565d711a8cecc7eb335470",
+    "source_higgs": "34259ffbc44fcae35443c020f27113dab2daa751d4485e55e4083c73bce2beb3",
+    "spinor_kk": "9b814b32381d2b476f4368054e8f27eedb1423740ac829755ab7570d862d71e8",
+    "v45_master": "911f5201b5538ab7ddf280fe4ef08d055d4bac4b522cc2021b198adbe58aaa75"
+  },
+  "integrity_checks": {
+    "PS_GG_5D_shortcut_rejected": true,
+    "PS_GG_has_12_adjoint_chiral_zero_modes": true,
+    "Sigma_spinor_terms_remain_obligatory": true,
+    "V45_had_zero_closed_gates": true,
+    "all_eight_gates_open": true,
+    "all_input_core_hashes_verify": true,
+    "all_required_sources_exist": true,
+    "all_stages_fail_closed": true,
+    "closed_spin_U1_lattice_screen_passes": true,
+    "idealized_KK_has_no_tachyon": true,
+    "idealized_finite_b_KK_has_no_zero_modes": true,
+    "neutral_210_repair_has_441_massive_uneaten": true,
+    "neutral_210_repair_has_only_21_goldstones": true,
+    "neutral_210_repair_selected": true,
+    "no_fractional_half_level_obstruction": true,
+    "pure_combined_Z6_screen_passes": true,
+    "relative_eta_not_overclaimed": true,
+    "singlet_only_126_pair_is_killed": true,
+    "singlet_only_massless_count_is_230": true,
+    "strong_b_limit_is_not_claimed_safe": true
+  },
+  "n_failed_integrity_checks": 0,
+  "primary_sources": [
+    {
+      "topic": "minimal renormalizable 210+126+bar126 vacuum",
+      "url": "https://arxiv.org/abs/hep-ph/0306242"
+    },
+    {
+      "topic": "complete minimal SO10 heavy spectrum",
+      "url": "https://arxiv.org/abs/hep-ph/0501025"
+    },
+    {
+      "topic": "5D PS/GG adjoint-chiral obstruction",
+      "url": "https://arxiv.org/abs/hep-ph/0108071"
+    },
+    {
+      "topic": "5D supersymmetric hypermultiplet boundary equations",
+      "url": "https://arxiv.org/abs/hep-th/0106256"
+    },
+    {
+      "topic": "brane-delta regulator and order-of-limits warning",
+      "url": "https://arxiv.org/abs/1408.1852"
+    },
+    {
+      "topic": "eta-invariant anomaly framework",
+      "url": "https://arxiv.org/abs/1909.08775"
+    },
+    {
+      "topic": "exact Spin times finite-cyclic anomaly conditions",
+      "url": "https://arxiv.org/abs/1808.02881"
+    },
+    {
+      "topic": "Spin10 Dai-Freed screen",
+      "url": "https://arxiv.org/abs/1808.00009"
+    },
+    {
+      "topic": "centre-quotient global anomaly warning",
+      "url": "https://arxiv.org/abs/2012.11693"
+    }
+  ],
+  "remaining_terminal_calculations": [
+    "Compute the relative or stratified spin-bordism group for the exact bulk group and its two centre-quotiented boundary reductions, then evaluate the regulated APS eta phase on generators.",
+    "Specify a resolved source-wall regulator and derive the renormalized boundary map B_R(mu), including induced kinetic operators.",
+    "Build one enlarged transfer matrix containing both Theta masses and the allowed barSigma HLF HRA and Sigma HLA HRF mixings; prove its complete spectrum and eta phase.",
+    "Write the complete allowed source superpotential and Kahler action, solve the coupled Theta/210/126/radion vacuum and quantify the strong-coupling or threshold window.",
+    "Recompute the full operator ring, KK Wilson coefficients, unification, RG spectrum, proton limits, flavour, neutrinos, SUSY breaking, dark matter and cosmology in this one retained model."
+  ],
+  "research_stopping_rule": "Continue only the neutral-210 full-Spin10-wall candidate.  Kill it if the quotient-relative eta phase cannot be canceled by a quantized local counterterm, if the enlarged KK operator has an unavoidable zero/tachyon, if the source sector has no controlled perturbative window, or if physical likelihood and decay bounds fail throughout the controlled parameter space.",
+  "route_decision": {
+    "continue": "neutral-210-repaired full-Spin10 source wall",
+    "kill": [
+      {
+        "reason": "at least 230 physical massless chiral components at renormalizable order",
+        "route": "126+bar126 plus singlets"
+      },
+      {
+        "reason": "12 adjoint-chiral zero modes, fragmented intended spinor zero modes and 0/16 locally anomaly-free intrinsic-sign assignments",
+        "route": "5D PS/GG source wall plus charge-ten singlets"
+      }
+    ]
+  },
+  "schema": "susy-v46-microscopic-kill-test-audit-v1",
+  "scientific_verdict": {
+    "complete_theory_established": false,
+    "empirically_validated": false,
+    "full_gates_closed": 0,
+    "full_gates_total": 8,
+    "real_new_physics_obtained": true,
+    "summary": "V46 decisively kills the under-rank 126-pair-plus-singlets source and the five-dimensional PS/GG shortcut, then selects one neutral 210 as the smallest standard single-irrep rank repair.  It also proves an exact no-zero/no-tachyon theorem for the declared finite-boundary two-hyper KK problem and clears every currently implemented anomaly screen.  The actual quotient-relative eta phase, all allowed source mixings and the physical reconstruction remain open, so no full G gate closes.",
+    "tests_mean": "deterministic verification of the encoded mathematics, not empirical validation or proof of UV completion"
+  },
+  "source_manifest": [
+    {
+      "exists": true,
+      "path": "susy_v46_microscopic_kill_test_audit.py",
+      "sha256": "d788cb117159abe51d9730460e0c4726af17413ce101d0375c684969099ba009"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v46_microscopic_kill_test_audit.py",
+      "sha256": "5d2ebf60d7738a237954ef43fdab14c2de6917e8ffdb08d7c780e3a8d8edcb1a"
+    },
+    {
+      "exists": true,
+      "path": "susy_v46_source_higgs_rank_audit.py",
+      "sha256": "787a0acd9d79fc34d496ba6ef2a0e610ac53bfe410e0dea4ee638b88d0aa6888"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v46_source_higgs_rank_audit.py",
+      "sha256": "2254fc7a15f5778506c7a12f7ec732dd7930817d2af672d9048ac2c0ca7e4c4f"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V46_SOURCE_HIGGS_RANK_AUDIT.md",
+      "sha256": "86be6d2d5f81b2179290eef07b09bcfa813c5672a7e323f6957a0bf88f3b9d09"
+    },
+    {
+      "exists": true,
+      "path": "susy_v46_spinor_kk_determinant_audit.py",
+      "sha256": "95a99707501cec98860fffb3a0c2ad7ca48a034ce673d55f4c8f491255584da9"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v46_spinor_kk_determinant_audit.py",
+      "sha256": "e7dfe2801eaeebffbbd22546efb09a737e0a25c4a2bb6401c6b3702012527a3e"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V46_SPINOR_KK_DETERMINANT_AUDIT.md",
+      "sha256": "bd0a86e595d9248435764f6d9f1df50215fb1dec32156357bda152164070f269"
+    },
+    {
+      "exists": true,
+      "path": "susy_v46_global_parity_eta_audit.py",
+      "sha256": "7e97cc93e9cb8340a092d28540429e6248584dd9665b1ba8dba50d7b861d5f91"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v46_global_parity_eta_audit.py",
+      "sha256": "e0688371d71f9db04b9e71437db849993520181f0654a9e022569f56f898947f"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V46_GLOBAL_PARITY_ETA_AUDIT.md",
+      "sha256": "93ea592ad482afdef83fa9374bbef9676ecaeb883a6567f3055b231809abb3ed"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V45_NEW_PHYSICS_MASTER_AUDIT.json",
+      "sha256": "67d452d07dc5a11aa6bc99d90b89c1caa44b065ca872029295fa07e7addfe97e"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V46_SOURCE_HIGGS_RANK_AUDIT.json",
+      "sha256": "ee9fd4b3c1a1f2bd7796d6b637d5dc6d483d31a6c402f8dfc6d4692840e3929c"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V46_SPINOR_KK_DETERMINANT_AUDIT.json",
+      "sha256": "744347c6116aa74a333cd3d3ee299d7e1ede1d948a57982bd87b3a640d896511"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V46_GLOBAL_PARITY_ETA_AUDIT.json",
+      "sha256": "a26cb28abdee875a35d4dc683af88de7290d0f19e21ca4d1800971b92057ecc1"
+    }
+  ],
+  "stage_ledger": [
+    {
+      "missing": "one complete all-allowed boundary action, its selector/naturalness rationale, and the compact quotient-relative definition",
+      "passed": "compact V45 skeleton plus a neutral-210 SU5 branch with only 21 Goldstones and 441 massive uneaten chirals",
+      "stage": "S0",
+      "status": "OPEN_WITH_SOURCE_HIGGS_RANK_REPAIR_CERTIFIED"
+    },
+    {
+      "missing": "relative or stratified bordism plus regulated APS eta on the actual two-wall quotient",
+      "passed": "ordinary wall polynomials, closed-spin half-level lattice, homotopy, Witten and pure residual Z3/Z2/Z6 tests",
+      "stage": "S1",
+      "status": "OPEN_WITH_LOCAL_AND_FAST_GLOBAL_SCREENS_CERTIFIED"
+    },
+    {
+      "missing": "resolved-brane map B_R(mu), Sigma-spinor mixing, all boundary kinetic terms and the complete coupled transfer matrix",
+      "passed": "entire D++ and D-+ characteristics; no zero or tachyon for finite nonzero b in the declared two-hyper problem",
+      "stage": "S2",
+      "status": "OPEN_WITH_IDEALIZED_FULL_TOWER_THEOREM_CERTIFIED"
+    },
+    {
+      "missing": "complete operator ring in the 210 repair, shifted-tower Wilson matching and physical decay limits",
+      "passed": "degree-20 local orientation frontier, pure-light charge-flow lower bound and universal discrete-R no-go",
+      "stage": "S3",
+      "status": "OPEN_WITH_V45_OPERATOR_FRONTIER_RETAINED"
+    },
+    {
+      "missing": "thresholds, unification, flavour, neutrinos, light Higgs, SUSY breaking, dark sector and cosmology",
+      "passed": "no phenomenological sector promoted by a microscopic consistency subcheck",
+      "stage": "S4",
+      "status": "OPEN"
+    }
+  ],
+  "status": "V46_MICROSCOPIC_KILL_TESTS_RESOLVED__126_PAIR_PLUS_SINGLETS_KILLED__NEUTRAL_210_REPAIR_SELECTED__IDEALIZED_FULL_KK_ZERO_MODE_THEOREM_PROVED__NO_SCREENED_GLOBAL_ANOMALY_OBSTRUCTION__RELATIVE_ETA_AND_COUPLED_KK_OPEN__ZERO_FULL_GATES_CLOSED"
+}

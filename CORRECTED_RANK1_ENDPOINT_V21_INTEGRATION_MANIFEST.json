@@ -49,12 +49,13 @@
     },
     "raw_file_count": 8
   },
-  "EFT_G6_bundle": {
+  "EFT_G6_truth_bundle": {
     "all_checks_pass": true,
     "checks": {
-      "SU3C_U1em_provenance_exact": true,
+      "actual_G89_and_standard_Q_mismatch_exact": true,
       "complete_exact_positive_factorization": true,
       "exact_algebraic_mixing_complete": true,
+      "formal_U1_89_threshold_scope_and_G7_boundary_exact": true,
       "gate_claim_boundary_exact": true,
       "gate_completed_integration_and_blockers_exact": true,
       "gate_internal_checks_all_exact": true,
@@ -62,36 +63,164 @@
       "gate_source_core_exact": true,
       "gate_summary_exact": true,
       "gate_upstream_cores_exact": true,
+      "independent_true_SM_singlet_swap_fails_stationarity_and_stability": true,
+      "legacy_embedded_U1em_label_recorded_only_for_explicit_override": true,
+      "legacy_formal_kernel_and_PQ_zero_mode_census_exact": true,
+      "legacy_positive_physical_G6_claim_explicitly_overridden": true,
       "normalized_generalized_pencil_exact": true,
-      "physical_quotient_and_PQ_axion_exact": true,
-      "spectrum_claim_boundary_exact": true,
+      "parameterized_matching_source_and_report_core_exact": true,
+      "physical_provenance_source_report_and_internal_checks_exact": true,
+      "physical_provenance_transitive_dependencies_exact": true,
       "spectrum_report_core_exact": true,
       "spectrum_source_core_exact": true,
       "stabilized_Hessian_source_bound": true,
+      "standard_electromagnetic_vacuum_noninvariance_exact": true,
       "tree_level_exactness_and_release_uncertainties_exact": true
     },
-    "raw_file_count": 8
+    "component_raw_file_counts": {
+      "formal_fail_closed_gate": 4,
+      "legacy_formal_spectrum": 4,
+      "parameterized_matching": 4,
+      "physical_provenance_correction": 4
+    },
+    "formal_SU3_x_U1_89_tree_mass_factorization_closed": true,
+    "legacy_spectrum_physical_interpretation_accepted": false,
+    "mathematical_physical_G6_closed": false,
+    "raw_file_count": 16,
+    "release_G6_verified": false
   },
-  "EFT_G7_nonidentifiability_bundle": {
+  "EFT_G7_truth_bundle": {
     "all_checks_pass": true,
     "checks": {
       "absolute_scale_collision_exact": true,
+      "authoritative_gauge_beta_source_report_and_checks_exact": true,
+      "authoritative_gauge_only_coefficients_exact": true,
       "central_integration_complete_exact": true,
       "claim_boundary_remains_fail_closed": true,
-      "electroweak_restriction_collision_exact": true,
+      "formal_U1_89_abstract_restriction_noninjectivity_exact": true,
+      "independent_PyRATE3_exact_match_scoped_fail_closed": true,
+      "independent_PyRATE3_replay_source_report_and_inputs_exact": true,
+      "physical_component_threshold_scoped_truth_exact": true,
+      "physical_component_threshold_source_report_and_checks_exact": true,
       "reduced_RGE_scope_incomplete_exact": true,
       "source_and_report_core_exact": true,
       "status_and_checks_exact": true
     },
-    "raw_file_count": 4
+    "component_raw_file_counts": {
+      "authoritative_gauge_beta_subtheorem": 4,
+      "formal_U1_89_abstract_restriction": 4,
+      "independent_PyRATE3_gauge_only_replay": 6,
+      "physical_PS_SM_component_threshold_contract": 4
+    },
+    "exact_physical_EFT_G7_input_nonidentifiability_proved": false,
+    "exact_two_loop_nonyukawa_gauge_flow_closed": true,
+    "formal_U1_89_abstract_restriction_noninjectivity_proved": true,
+    "full_mathematical_G7_closed": false,
+    "heavy_vector_matching_closed": false,
+    "parameterized_one_loop_matter_threshold_kernel_closed": true,
+    "physical_G7_closed": false,
+    "physical_PS_SM_matter_branching_closed": true,
+    "physical_component_pole_mass_matrices_closed": false,
+    "raw_file_count": 18,
+    "release_G7_verified": false
+  },
+  "canonical_G1_G8_v21_bundle": {
+    "acceptance_criterion_count": 33,
+    "all_canonical_gates_closed": false,
+    "all_checks_pass": true,
+    "canonical_G1_closed": true,
+    "canonical_G2_closed": true,
+    "canonical_G3_closed": true,
+    "checks": {
+      "current_three_of_eight_boundary_exact": true,
+      "embedded_definition_checks_exact": true,
+      "gauge_count_and_nonsupersymmetric_G6_exact": true,
+      "legacy_namespaces_and_cycle_free_definitions_exact": true,
+      "qualified_gate_DAG_artifacts_and_acceptance_exact": true,
+      "schema_namespace_definition_and_integrity_exact": true
+    },
+    "closure_capable_contract_and_regression_test_frozen": true,
+    "contract_namespace": "canonical.gauged_u1x.phenomenology.v21",
+    "core_sha256": "b1a0c9e89794b2e0dc252f874dc2625e04468932d679c1249e96980b71c36ed7",
+    "current_closed_gate_count": 3,
+    "current_open_gate_count": 5,
+    "definition_sha256": "1ecc4a5ae0cb1c51a24438f56f4181a2e1cc03c0fc17bc4ca2c0ce522be75df5",
+    "legacy_bare_gate_numbers_authoritative": false,
+    "portable_file_count": 4,
+    "qualified_gate_count": 8,
+    "required_artifact_count": 8,
+    "whole_model_validated": false
+  },
+  "canonical_G1_dim6_bundle": {
+    "Susyno_channel_core_sha256": "31e789c63e670c59e6db265946f3487afbc58bb0881d3a58dbbb900903eab549",
+    "all_checks_pass": true,
+    "canonical_G1_closed": true,
+    "checks": {
+      "character_census_is_exact_and_source_bound": true,
+      "independent_Susyno_channel_basis_matches_every_sector": true,
+      "trusted_final_verifier_and_complete_evidence_are_exact": true
+    },
+    "complete_ring_core_sha256": "5ad999a8d1d3af208427aab841816fafb1c286b289fe826114e3fbaa98f6dfa9",
+    "complex_invariant_direction_count": 891,
+    "degree_five_direction_count": 119,
+    "degree_six_direction_count": 721,
+    "frontier_core_sha256": "0d58c47752aebebc9fc227dba8be3e7f88aba4528acc2415e8f8d3d2cf7c4838",
+    "neutral_field_content_sector_count": 168,
+    "portable_file_count": 12,
+    "real_potential_coefficient_count": 891,
+    "trusted_verifier_raw_sha256": "26f5dfe44355923b25e264871765b82b779c9bccaa86630b18254fd8a690f2d1"
+  },
+  "canonical_G2_dim6_bundle": {
+    "PS_component_block_combination_count": 9606125,
+    "SM_component_block_combination_count": 177282240225,
+    "all_checks_pass": true,
+    "canonical_G2_closed": true,
+    "canonical_direction_count": 891,
+    "checks": {
+      "all_exact_contraction_bases_are_source_bound": true,
+      "all_normalized_PS_and_SM_component_circuits_are_exact": true,
+      "lambda4_and_dimension_six_lock_are_explicit_and_normalized": true,
+      "trusted_gate_verifier_is_raw_hash_bound": true
+    },
+    "exact_basis_core_sha256": "c731111ba16faaf1efaaebc83e57624e896a001e02f6ae5b6e63a07d00e3338c",
+    "full_projection_core_sha256": "31bf4ad11049db23694cbd92c423c7355ee26a376bb6ea5a8b7ea1e7be667225",
+    "neutral_G1_sector_count": 168,
+    "non_singlet_direction_count": 794,
+    "non_singlet_sector_count": 105,
+    "portable_file_count": 11,
+    "trusted_verifier_raw_sha256": "a13ceb61871da641fce3ca1146c9bb91d1045418686712e3373a56e4233370e7"
+  },
+  "canonical_G3_global_vacuum_bundle": {
+    "all_checks_pass": true,
+    "canonical_G3_closed": true,
+    "canonical_G4_closed": false,
+    "canonical_total_real_direction_count": 891,
+    "checks": {
+      "complete_accepted_potential_is_bound": true,
+      "embedded_checks_and_scope_boundary_are_exact": true,
+      "global_minimum_and_equality_orbit_are_exact": true,
+      "global_value_stationarity_Hessian_and_kernel_are_exact": true,
+      "qualified_evidence_and_core_are_exact": true,
+      "source_manifest_and_trusted_verifier_are_frozen": true
+    },
+    "core_sha256": "1cf871141c5400d237b0ea9203afb10905e46a0c49a98ebe0fe047fcf6c189dc",
+    "exact_nullity": 38,
+    "exact_rank": 448,
+    "exact_value": "-1",
+    "field_dimension": 486,
+    "full_symmetry_orbit_rank": 38,
+    "gauge_orbit_rank": 37,
+    "global_minimum_orbit_unique": true,
+    "nonzero_renormalizable_direction_count": 28,
+    "portable_file_count": 6,
+    "trusted_verifier_raw_sha256": "49bff6ba5b89f321565a30a762fd5559adfcbca1ee157943082acf770b9d461b"
   },
   "claim_boundary": {
     "Dynkin_maximal_subgroup_classification_external_dependency": true,
-    "EFT_G7_input_nonidentifiability_proved": true,
     "EFT_dimension6_mathematical_G3_closed": true,
     "EFT_dimension6_mathematical_G4_closed": true,
     "EFT_dimension6_mathematical_G5_closed": true,
-    "EFT_dimension6_tree_level_mathematical_G6_closed": true,
+    "EFT_dimension6_tree_level_mathematical_G6_closed": false,
     "EFT_mathematical_G7_closed": false,
     "EFT_release_G3_verified": false,
     "EFT_release_G4_verified": false,
@@ -100,28 +229,153 @@
     "EFT_release_G7_verified": false,
     "G3_closed": false,
     "G4_closed": false,
+    "absolute_physical_heavy_vector_masses_closed": false,
+    "all_37_broken_vector_directions_Rxi_cancelled": true,
+    "all_G8_acceptance_criteria_pass": false,
     "all_PD_equality_orbits_classified_exactly": true,
     "arbitrary_real_Phi_at_fixed_endpoint": true,
-    "authoritative_renormalizable_G1_closed": false,
+    "authoritative_G8_closed": false,
+    "authoritative_renormalizable_G1_closed": true,
     "authoritative_renormalizable_G6_closed": false,
     "authoritative_renormalizable_G7_closed": false,
+    "background_covariant_general_field_Rxi_determinants_closed": false,
+    "background_covariant_heat_kernel_replay_closed": false,
+    "canonical_G1_G8_v21_all_gates_closed": false,
+    "canonical_G1_G8_v21_closure_capable": true,
+    "canonical_G1_G8_v21_contract_frozen": true,
+    "canonical_G1_G8_v21_current_closed_gate_count": 3,
+    "canonical_G1_G8_v21_current_open_gate_count": 5,
+    "canonical_G1_G8_v21_whole_model_validated": false,
+    "canonical_G3_physical_EW_global_vacuum_closed": true,
+    "canonical_G8_contract_audited": true,
+    "canonical_dimension6_G1_closed": true,
+    "combined_heavy_vector_FPghost_Goldstone_MSbar_kernel_closed": true,
+    "complete_scalar_and_fermion_thresholds_closed": false,
+    "conditional_reconstructed_physical_SM_tree_scalar_spectrum_closed": true,
+    "continuous_G6_G7_nonidentifiability_proved": true,
+    "continuous_absolute_scale_G8_nonidentifiability_proved": true,
+    "exact_101_case_G8_scale_audit_closed": true,
+    "exact_X_v3_external_execution_attestation_present": true,
+    "exact_X_v3_external_execution_attestation_valid": true,
+    "exact_X_v3_static_native_contract_closed": true,
+    "exact_X_v3_trusted_SARAH_tree_manifest_closed": true,
+    "exact_nonyukawa_two_loop_gauge_polynomial_closed": true,
+    "exact_physical_EFT_G7_input_nonidentifiability_proved": false,
+    "finite_MSbar_vector_constant_closed": true,
     "fixed_H": "h_-=(e0-i e1)/sqrt(2)",
     "fixed_Sigma": "q/4",
+    "flavor_and_interference_G8_nonidentifiability_audited": true,
+    "flavor_tensor_values_and_textures_closed": false,
+    "formal_SU3_x_U1_89_tree_mass_factorization_closed": true,
+    "formal_U1_89_abstract_restriction_noninjectivity_proved": true,
     "full_H_proved": false,
     "full_Hessian_proved": false,
+    "full_Yukawa_scalar_dimensionful_EFT_flow_closed": false,
+    "full_one_two_loop_Yukawa_betas_closed": false,
     "general_H_proved": false,
     "global_Sigma_proved": false,
     "global_signed_kaehler_Phi_self_zero_classification_proved": true,
+    "heavy_vector_Goldstone_double_count_guard_active": true,
+    "historical_electroweak_lift_interpretation_valid": false,
+    "independent_gauge_only_PyRATE3_replay_closed": true,
+    "legacy_G6_spectrum_embedded_U1em_label_valid": false,
+    "legacy_SO10_210_beta_diagnostic_integrity_closed": true,
+    "legacy_SO10_210_full_physical_mathematical_release_G7_closed": false,
+    "legacy_SO10_210_live_SARAH_or_PyRATE_execution_attested": false,
+    "legacy_bare_gate_numbers_authoritative": false,
     "legacy_v20_physical_target_valid": false,
     "legacy_v20_primal_valid": false,
+    "mathematical_physical_G6_closed": false,
     "negative_G7_no_go_certified": false,
+    "normalized_SO10_representation_Yukawa_CGCs_closed": true,
+    "old_selected_EFT_U1em_label_superseded_by_U1_89": true,
+    "parameterized_one_loop_matter_threshold_kernel_closed": true,
+    "physical_G6_closed": false,
+    "physical_G7_closed": false,
+    "physical_G8_closed": false,
+    "physical_PS_SM_matter_branching_closed": true,
+    "physical_SM_37_row_aggregate_stationarity_kernel_rank_PSD_closed": false,
+    "physical_SM_37_row_source_aggregate_PSD_strict_mod_symmetry": true,
+    "physical_SM_37_row_source_aggregate_kernel_dimension": 38,
+    "physical_SM_37_row_source_aggregate_rank": 448,
+    "physical_SM_37_row_source_aggregate_value_minus_one_stationary": true,
+    "physical_SM_G3_closed": false,
+    "physical_SM_G4_G5_branch_mismatch_proved": true,
+    "physical_SM_G4_closed": false,
+    "physical_SM_G5_closed": false,
+    "physical_SM_all_16_sign_variants_one_continuous_K_orbit": true,
+    "physical_SM_all_37_active_source_Hessians_available": true,
+    "physical_SM_all_37_source_Hessians_available_in_hard_projector_bundle": false,
+    "physical_SM_complete_global_equality_orbit_closed": false,
+    "physical_SM_current_five_amplitude_target_is_canonical_EW_branch": false,
+    "physical_SM_direct_source_algebra_Hessian_closed": false,
+    "physical_SM_five_amplitude_continuous_orbit_equivalence_classified": false,
+    "physical_SM_five_amplitude_direct_source_algebra_Hessian_closed": false,
+    "physical_SM_five_amplitude_discrete_real_solution_count": 16,
+    "physical_SM_five_amplitude_full_486_equality_classified": false,
+    "physical_SM_five_amplitude_stationary_equality_classified_exactly": true,
+    "physical_SM_full_486_local_stationary_equality_orbit_classified": true,
+    "physical_SM_full_486_local_stationary_orbit_classified": true,
+    "physical_SM_global_no_go_for_other_EW_branches": false,
+    "physical_SM_hard_projector_exact_source_Hessian_row_count": 10,
+    "physical_SM_last_six_source_Hessians_closed": true,
+    "physical_SM_local_stationary_Hessian_problem_complete": true,
+    "physical_SM_quantitative_local_orbit_radius_proved": false,
+    "physical_SM_radial_stationary_equality_classified_exactly": true,
+    "physical_SM_target_and_standard_stabilizer_constructed": true,
+    "physical_SM_target_orbit_strict_local_minimum_mod_K": true,
+    "physical_SM_tree_vector_mass_matrix_parameterized_closed": true,
+    "physical_SM_unbroken_group_vector_threshold_logs_parameterized_closed": true,
+    "physical_component_pole_mass_matrices_closed": false,
+    "physical_scalar_pole_spectrum_closed": false,
     "positive_G7_certified": false,
     "quantitative_beta_global_coercivity_proved": false,
-    "release_G1_verified": false,
+    "release_G1_verified": true,
+    "release_G8_verified": false,
     "renormalizable_G3_closed": false,
     "renormalizable_G4_closed": false,
     "renormalizable_G5_closed": false,
-    "renormalizable_mathematical_G1_closed": true
+    "renormalizable_mathematical_G1_closed": true,
+    "repository_frozen_PDG_2025_single_channel_constraint_verified": true,
+    "source_bound_physical_SM_tree_scalar_spectrum_closed": false,
+    "stationary_SM_symmetric_pre_EW_matching_closed": false,
+    "unique_absolute_tree_spectrum_identified": false,
+    "unique_full_RGE_trajectory_identified": false,
+    "unique_pole_spectrum_identified": false,
+    "unique_proton_lifetime_or_distribution_identified": false,
+    "unique_threshold_vector_identified": false,
+    "whole_model_excluded_by_conditional_G8_points": false,
+    "zero_background_arbitrary_positive_Rxi_vacuum_determinant_cancellation_closed": true
+  },
+  "conditional_physical_SM_EFT_Hessian_spectrum_bundle": {
+    "all_checks_pass": true,
+    "checks": {
+      "conditional_not_physical_or_release_G6_exact": true,
+      "conditional_tree_spectrum_census_exact": true,
+      "schema_status_core_and_self_pin_exact": true
+    },
+    "conditional_reconstructed_tree_spectrum_closed": true,
+    "pole_spectrum_G6_closed": false,
+    "raw_file_count": 4,
+    "release_G6_verified": false,
+    "source_bound_physical_G6_closed": false
+  },
+  "exact_X_v3_fail_closed_bundle": {
+    "all_checks_pass": true,
+    "authoritative_exact_X_contract_closed": true,
+    "checks": {
+      "exact_X_contract_and_authoritative_runtime_are_closed": true,
+      "external_v3_attestation_is_genuine_and_source_bound": true,
+      "input_manifest_exact_and_transitive_bytes_bound": true,
+      "trusted_SARAH_4_15_3_tree_exact": true
+    },
+    "external_v3_execution_attestation_present": true,
+    "external_v3_execution_attestation_valid": true,
+    "portable_file_count": 2,
+    "raw_file_count": 9,
+    "static_native_contract_closed": true,
+    "trusted_SARAH_source_tree_core_sha256": "de92b2de859efa7a0c4f5fdfb642d9f1ff8e1b071057bc8d4c295f6e2b6f8337",
+    "trusted_SARAH_source_tree_file_count": 1056
   },
   "exact_dimensions": {
     "coefficient_equalities": 6585,
@@ -162,21 +416,110 @@
       "test_final_g4_eft_mathematical_gate_v20.py": "078b8dbc34c8003c9e5fa98a2adaa432238cacd5bd0a42278c9a0082334edd05",
       "test_final_g5_eft_mathematical_gate_v20.py": "8cdfe60bd8d568de58a76321ae954d6fbbcc00df19c27528d9bfae0bf61864ad"
     },
-    "EFT_G6_raw_sha256": {
-      "EXACT_EFT_PHYSICAL_SCALAR_SPECTRUM_V20.json": "797a90473c064a78ef313d56f1894d71114643a19ebd373e86fe8b2911bcf416",
-      "EXACT_EFT_PHYSICAL_SCALAR_SPECTRUM_V20.md": "0b356c55a231432bf72d1877f35664abe2457f095c926e538b371d412764c153",
-      "FINAL_G6_EFT_MATHEMATICAL_GATE_V20.json": "85000f555eb3bc4e2e4bc49236a82ce2161987212906d78efd667bb52dd432f8",
-      "FINAL_G6_EFT_MATHEMATICAL_GATE_V20.md": "288c53bce177ac687cbf6ceee3c6d74808a1dde2e2b39e0ac5728ab577db5fba",
-      "exact_eft_physical_scalar_spectrum_v20.py": "cdcc25b383098464fc6312d553dff555d19c57388df7de08db48b4167ebc5a36",
-      "final_g6_eft_mathematical_gate_v20.py": "6ef314bf22e1d6ce43b382b5cb6e7673cef1e328f2f4c38abdafab6038edc150",
-      "test_exact_eft_physical_scalar_spectrum_v20.py": "6867a703bc3fed1fa1b7a76696a2d2e34159df3fb6be3a2db907fbebd51137c4",
-      "test_final_g6_eft_mathematical_gate_v20.py": "841badaa0fb1931060159233fad85d378bcaf68b71944f02bdd280e197813570"
+    "EFT_G6_G7_parameterized_matching_raw_sha256": {
+      "EXACT_EFT_G6_G7_PARAMETERIZED_MATCHING_V20.json": "b1bbf35b23a272eadc0a8520f0dac32fb342c7f1f3886088db2d9158acfd5ae9",
+      "EXACT_EFT_G6_G7_PARAMETERIZED_MATCHING_V20.md": "18b061d39d0f9272227bc1a021c66b10e1b893e1cef11889b161c0023239e7e4",
+      "exact_eft_g6_g7_parameterized_matching_v20.py": "4653653de5f7f29b8dd12b7a3d1e387aafab2a193137c08dc2e4be942dceee42",
+      "test_exact_eft_g6_g7_parameterized_matching_v20.py": "fa044432c6862a86f46b9edc807d6a07db204d35a301cc339b2345125cec3ef4"
     },
-    "EFT_G7_nonidentifiability_raw_sha256": {
-      "EXACT_EFT_G7_THRESHOLD_NONIDENTIFIABILITY_V20.json": "d59146ed577680f3a1dfd449256d60d8116afcb844a8b65bbc009a8472bb766b",
-      "EXACT_EFT_G7_THRESHOLD_NONIDENTIFIABILITY_V20.md": "85a0a40924debb203b87488b4625a0da38d02ba7eb6c3ff741ae0f90a3e0bbac",
-      "exact_eft_g7_threshold_nonidentifiability_v20.py": "0f8868d7d23e6b49f25f075a1974bdb7c1c72b88ae4c9c358a9d11d04e2f06b6",
-      "test_exact_eft_g7_threshold_nonidentifiability_v20.py": "c99f0b60cbdba11b32039c6a898ceeceb619460d8909c2dcc88b3df4e5148587"
+    "EFT_G6_formal_gate_raw_sha256": {
+      "FINAL_G6_EFT_MATHEMATICAL_GATE_V20.json": "8bd98401ed6e2540ae7968a5b6a51a8e49abd98943252dec159c873d73a13f6c",
+      "FINAL_G6_EFT_MATHEMATICAL_GATE_V20.md": "4615263add89bd825f29dfd09a05bd242013af93847962ba5db5ad74b285c3e0",
+      "final_g6_eft_mathematical_gate_v20.py": "16eba20b834ebca25b3a8b91d867ddee76b1676791b18aa86db32a6ebc77af4e",
+      "test_final_g6_eft_mathematical_gate_v20.py": "f5447ed457035110d292337a17fcbdb894d68b6064b740addf61fd402d54d68e"
+    },
+    "EFT_G7_formal_U1_89_restriction_raw_sha256": {
+      "EXACT_EFT_G7_THRESHOLD_NONIDENTIFIABILITY_V20.json": "778f96c8760a43be5214b215e08a6308d6198b84ebff9edd7729e75203b13cae",
+      "EXACT_EFT_G7_THRESHOLD_NONIDENTIFIABILITY_V20.md": "fc46765cdf7e46f529d2a4a9ceabb308c7a3c5b74c249733ce2833dd70fb3d01",
+      "exact_eft_g7_threshold_nonidentifiability_v20.py": "16e4a011e759df3a31664bcac2711b5270598551f1e2791c8f629f9bb6483406",
+      "test_exact_eft_g7_threshold_nonidentifiability_v20.py": "6daed6acb85f751ba36699d712e5898f53934c9be8f52a6f79e4115237685989"
+    },
+    "G6_SM_provenance_raw_sha256": {
+      "EXACT_G6_SM_PROVENANCE_FEASIBILITY_V20.json": "a8daa4fb1dadbea48b25ad671a18f8d467384979769772be628a43f75054f6fa",
+      "EXACT_G6_SM_PROVENANCE_FEASIBILITY_V20.md": "e3d05634421c4721003cb1916a3d02dc2d2b0c93bd58c03523bc927fa3793673",
+      "exact_g6_sm_provenance_feasibility_v20.py": "8bb67fb09c1cd3b57bf2c02e9ed7f1242a955c5a81ceb7d44dd48435c82618c1",
+      "test_exact_g6_sm_provenance_feasibility_v20.py": "433a6ebea359a5f2be2d1f43df69b02734ccbb4b61493bd2a6e780d95ba96690"
+    },
+    "G6_SM_provenance_transitive_raw_sha256": {
+      "exact_126bar_triplet_clebsch_v20.py": "d94f37da94333fbf58e448ef6effb00e718191ed45b63bafdc0e2650ccdb0499",
+      "exact_210_pati_salam_global_vacuum_v20.py": "d98baa655cd5af9ccbc34fd2637670b7ceadedd5b2eccc10e1d6c000fda943c4",
+      "live_g2_canonical_486_field_chart_v20.py": "85ae9470f3aa25c28fc03c083b6c1e150106a276e51044a590060d290ba7945e"
+    },
+    "PyRATE3_SO10_U1X_gauge_beta_replay_raw_sha256": {
+      "PYRATE3_SO10_U1X_GAUGE_BETA_REPLAY_V20.json": "e17dcc1dc939c8475b6827f4c781f3f5fce6c728cf5aa6511287066087b01fd4",
+      "PYRATE3_SO10_U1X_GAUGE_BETA_REPLAY_V20.md": "ffaeaa138f3831369d6b2b1b5617bc1148f62d3e8fe7f40a828a7c72c05aecfc",
+      "data/PYRATE3_SO10_U1X_GAUGE_BETA_FROZEN_V20.json": "047632c3e81f8eb2dcc1cd922b8d3e34c300743693e18606ff8953e28ccd280b",
+      "models/SO10U1XGaugeAuditV20.model": "18191bc9db705ed9e8a89eff214ad967bac37830c91fede82c418d38ce0c949e",
+      "pyrate3_so10_u1x_gauge_beta_replay_v20.py": "74b70c7d403bd5fc1cefc30ab1a58dd5c6e74c99672c81e9b2a2c59e34a1c42a",
+      "test_pyrate3_so10_u1x_gauge_beta_replay_v20.py": "4fbf1eadf0bb5c6f3e9629a5ddab18743671118b84af709acb2053096fff18d5"
+    },
+    "authoritative_SO10_U1X_gauge_betas_raw_sha256": {
+      "EXACT_AUTHORITATIVE_SO10_U1X_GAUGE_BETAS_V20.json": "f5c12e8b8f9ec40976f675a743d5fd5d8cf4e98ab2087d92e3cf855c756c75eb",
+      "EXACT_AUTHORITATIVE_SO10_U1X_GAUGE_BETAS_V20.md": "39b0c05284c7e66cef484df8b599c8bc963ad1237395fb6cf21428779ab1f3db",
+      "exact_authoritative_so10_u1x_gauge_betas_v20.py": "b3ec8ca5bc472af24081ee5b3409652dde0e1bf219cbf7d29a4f55e76e985cb6",
+      "test_exact_authoritative_so10_u1x_gauge_betas_v20.py": "1612dca09f3a6cdd6883e9cf96b0e12467b724d4267a3728557c9a8256aee7f6"
+    },
+    "canonical_G1_G8_v21_portable_lf_sha256": {
+      "CANONICAL_G1_G8_GAUGED_U1X_V21.json": "b5c8977b97f6f14a12a66ec20c8ba278ff1f8406b22d823b3eac7d4028fa4d1d",
+      "CANONICAL_G1_G8_GAUGED_U1X_V21.md": "8645228be6ac24ba9958ad5ebd793dd2341093d16d8f10d78e1c524736d51101",
+      "canonical_g1_g8_gauged_u1x_v21.py": "4158df2bbef369d100ed95cf45a6428b3307cdf4da066f4664981b2c4d61dea0",
+      "test_canonical_g1_g8_gauged_u1x_v21.py": "58a150d146cb70f2287145cf809032767fa9bf6e0e00e6ee4ca200852d8b2e28"
+    },
+    "canonical_G1_dim6_portable_lf_sha256": {
+      "CANONICAL_G1_COMPLETE_OPERATOR_RING_DIM6_V21.json": "1fe406910513c171006280edb137dd58ec4eaa01ea159c4b5a9ba97bad0def35",
+      "CANONICAL_G1_COMPLETE_OPERATOR_RING_DIM6_V21.md": "278d47f93a6b286019ccf8d416651bef4f839b18044986055591eb96ee98640a",
+      "CANONICAL_G1_SCALAR_RING_DIM6_FRONTIER_V21.json": "30df5a88f55d0a4d5c683e4f63a013574fdd96ebd7ccb4ed3d8a214d09d24a95",
+      "CANONICAL_G1_SCALAR_RING_DIM6_FRONTIER_V21.md": "42c06fb69df6755b15db3bdbca462020aa9d5273c67e6722c6d07243f9e8f4d6",
+      "CANONICAL_G1_SUSYNO_CHANNEL_BASIS_V21.json": "066e2ccd746d97ca562ca4f84957816a2d6babed10574112e8f7118ac23cd309",
+      "canonical_g1_complete_operator_ring_dim6_v21.py": "37f6343b16f231b87a4e9b4f97c7ac563fe19f5b7a196bde02dfd286b13902e9",
+      "canonical_g1_scalar_ring_dim6_frontier_v21.py": "b9b48b93a2e440a2393b6e9b9c3d02a044293aecf7184834e01cf67f0df787a1",
+      "canonical_g1_susyno_channel_basis_v21.wls": "3fae45e08c291ad80f916a2d851bba869c787eea0da50576177781cc9d8fe34e",
+      "test_canonical_g1_complete_operator_ring_dim6_v21.py": "9f33b814e089e819354ea10e9d36d22ed313c0f924af12f3b5cb53190fde6872",
+      "test_canonical_g1_scalar_ring_dim6_frontier_v21.py": "595f4131cf10915e0804057c06fbf5ce7e0c77ecf442cd7a99c58d6ea0a1a1f4",
+      "test_canonical_g1_susyno_channel_basis_v21.py": "ba70f83c9f7982d668b3b4ba3231d4f6e38025d5b9094372b71622816cf001cf",
+      "verify_canonical_g1_complete_operator_ring_dim6_v21.py": "26f5dfe44355923b25e264871765b82b779c9bccaa86630b18254fd8a690f2d1"
+    },
+    "canonical_G2_dim6_portable_lf_sha256": {
+      "CANONICAL_G2_EXACT_CONTRACTION_BASIS_V21.json": "e88c6ddd02818eebf80b554118a5cad14e8d16581430c95f43501e1a6d4736a2",
+      "CANONICAL_G2_FULL_COMPONENT_PROJECTION_DIM6_V21.json": "e296118ab33c3421350b0720fc8c824b2e218c3d80ec9e6b7c84e7eada491dfd",
+      "CANONICAL_G2_FULL_COMPONENT_PROJECTION_DIM6_V21.md": "dea5c22194cfe3e4cebb6e0b4cc9464108991a100cf3f57c84f0538de221de46",
+      "_g2_contraction_graphs.py": "c2d65e4ff5f90448bf5b58a4806a1d2229802bf76a59584c1353b721c1b1db44",
+      "_g2_metric_rank_probe.py": "a218c18915718036827856644c9ebe0b73b6339b070850a00c57c75d03cdeb53",
+      "canonical_g2_exact_contraction_basis_v21.py": "e02417b959d61acacd0d69a68d52b5b4427c4f0e8595b3d94627e5ad4608b75d",
+      "canonical_g2_full_component_projection_dim6_v21.py": "1a94943835eb11cd8e446cdce9925d5cd00bc8471d9bb58c55028b4faca3be66",
+      "test_canonical_g2_exact_contraction_basis_v21.py": "8917d6cd8dea2df95e3415db7d27d599f90d60a5d77b8974a0d06e94f8f1e7b6",
+      "test_canonical_g2_full_component_projection_dim6_v21.py": "67e24697eedf0681b917ba70fee449a469432d704d6e7f38c82b2db2c55fc7d7",
+      "test_verify_canonical_g2_full_component_projection_dim6_v21.py": "26598a42cf232c7d099352cd65fb07879bbddaf0d4b7c1e25bc8bdcf709cb524",
+      "verify_canonical_g2_full_component_projection_dim6_v21.py": "a13ceb61871da641fce3ca1146c9bb91d1045418686712e3373a56e4233370e7"
+    },
+    "canonical_G3_global_vacuum_portable_lf_sha256": {
+      "CANONICAL_G3_PHYSICAL_EW_GLOBAL_VACUUM_V21.json": "03b51b65a0a7d4e597d85acf914957b3f33f81c62f531ac03d62cb1d2fcfc565",
+      "CANONICAL_G3_PHYSICAL_EW_GLOBAL_VACUUM_V21.md": "a7aa62b9a7838f99f7792ac3122571d3c26775a76efabaf522efc857fa7161ce",
+      "canonical_g3_physical_ew_global_vacuum_v21.py": "d9cfab99505ac0fce0e7bdaad336a769dbb50ed29d02c73d9c9afc96dc81f99c",
+      "test_canonical_g3_physical_ew_global_vacuum_v21.py": "b39a48688985948869b54eaf21d9b06b1e4a928ac40817d759e2d3e33c51d88b",
+      "test_verify_canonical_g3_physical_ew_global_vacuum_v21.py": "8c81d43c6edb6d6ef03048fc4ff2073b8205509e85a71defc7a31687a58b1917",
+      "verify_canonical_g3_physical_ew_global_vacuum_v21.py": "49bff6ba5b89f321565a30a762fd5559adfcbca1ee157943082acf770b9d461b"
+    },
+    "conditional_physical_SM_EFT_Hessian_spectrum_raw_sha256": {
+      "CONDITIONAL_PHYSICAL_SM_EFT_HESSIAN_SPECTRUM_V20.json": "6a4354baac91881b796e70d86e529158fe8c51a0a2a9e1dc9ba876130c3510ef",
+      "CONDITIONAL_PHYSICAL_SM_EFT_HESSIAN_SPECTRUM_V20.md": "60e5907263e06f9340d364ecd01f495b1cd470482a409f4ec6a27d86bdd6508e",
+      "conditional_physical_sm_eft_hessian_spectrum_v20.py": "4d1c146f9ab9cd9679bdef7f5c145381c5d53871e62f79c1e59864a5aec981c9",
+      "test_conditional_physical_sm_eft_hessian_spectrum_v20.py": "80ea03cbc4c6079e937d0a133e40ef172e3ffa72f7b2aad36d587f0b5436033d"
+    },
+    "exact_X_v3_portable_lf_sha256": {
+      "models/EXACT_X_EXTERNAL_MODEL_VALIDATION_V20.json": "f5108d94770b9525deff58ddd42f1ba623b54670f13b4809c3c0965217f4dc09",
+      "nonsusy_z17_pq_potential_filter_v20.py": "60e076e7841f60ab19da79ac090220b210cd5ee3c36243a6549fbb08da73a903"
+    },
+    "exact_X_v3_raw_sha256": {
+      "EXACT_X_SYMMETRY_CONSISTENCY_GATE_V20.json": "c0393187fc07848a218830cc23cd59c1ecaaa091ea004f59b3777370ffcef2fa",
+      "EXACT_X_SYMMETRY_CONSISTENCY_GATE_V20.md": "d6c3d3cf2e38542206e8963c91190dfa377a0a3fa697292e576caa6faf3a2a49",
+      "exact_x_symmetry_consistency_gate_v20.py": "5c70efb039b795f94a6b03e8681ad512af837c48f4496948f918eae7faa529d8",
+      "models/EXACT_X_EXTERNAL_INPUT_MANIFEST_V20.json": "1a6c8f8d79186801c840ddb63c30ee518b73c1929642be2139a7d01ed8c41a2f",
+      "models/SARAH_4_15_3_CANONICAL_SOURCE_TREE_V20.json": "c28f08d56a488050b96ce3491473f22fe1b673aad8ac3ac3d0e590dd60e70d91",
+      "models/SO10Z17AxionV20.m": "66a2ce2c3491d0b3079ec93a16ab79d3e8a7e4e35cb54aadf21100b9fdd90cc1",
+      "run_exact_x_sarah_validation_v20.py": "351435619bc45aa9b1bf1ebe2fbc4e9a92e14148c2881e0f37357a8df48d2057",
+      "test_exact_x_symmetry_consistency_gate_v20.py": "9397d65593994f9267845e08d92235a9b934cdea7053dcc7292c8c1f752253ee",
+      "tools/validate-exact-x-model.wls": "1d1dea122de1d3465cd0af14e10574b87bf72594de69e3a888fc7bcba5d1e281"
     },
     "global_Phi_classification_raw_sha256": {
       "EXACT_PHI_ZERO_DEGREE8_CONDUCTOR_EVALUATION_TABLE.json": "beab3649ca03c3ee3c6fc2ab700efedfe614328a6da52f2234d3b9610f3c167c",
@@ -199,6 +542,16 @@
       "reconstruct_exact_phi_zero_degree8_radical_v20.py": "8c835c5df2bce72d263117061fde770d53bb7d607cd305cc4a6a039466529133",
       "solve_exact_phi_zero_degree8_conductor_identity_v20.py": "3679695424452230c1583088b83291a7671348cfa90deb872cba51f2a07eceb0"
     },
+    "legacy_EFT_G6_formal_spectrum_raw_sha256": {
+      "EXACT_EFT_PHYSICAL_SCALAR_SPECTRUM_V20.json": "797a90473c064a78ef313d56f1894d71114643a19ebd373e86fe8b2911bcf416",
+      "EXACT_EFT_PHYSICAL_SCALAR_SPECTRUM_V20.md": "0b356c55a231432bf72d1877f35664abe2457f095c926e538b371d412764c153",
+      "exact_eft_physical_scalar_spectrum_v20.py": "cdcc25b383098464fc6312d553dff555d19c57388df7de08db48b4167ebc5a36",
+      "test_exact_eft_physical_scalar_spectrum_v20.py": "6867a703bc3fed1fa1b7a76696a2d2e34159df3fb6be3a2db907fbebd51137c4"
+    },
+    "legacy_SO10_210_beta_diagnostic_raw_sha256": {
+      "SARAH_PYRATE_SO10_210_BETAS_V20.md": "3d6cc2869b56452e4a8bd6a3e30d5c932506b686db349f34b773166df35a4f44",
+      "SARAH_PYRATE_SO10_210_BETAS_V20_VERDICT.json": "f9eedea44ae98547f94e123fa99ab38450c2c1c57b5871df624a78d6104dbcd9"
+    },
     "map_raw_sha256": {
       "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.json": "0efce9154b5b4204107cf211ff3c355641783353bf8d68ddb931f40994fdbb08",
       "EXACT_GAUGED_U1X_G3_RANK1_SU4_STABILIZER_V20.json": "91996a1e36b8169ffe5a8553f7efacf4586935aec7f971ad9689805049c62feb",
@@ -212,6 +565,22 @@
       "exact_gauged_u1x_g3_rank1_su4_phi210_quadratic_basis_v20.py": "cb54ad8b5222872187af404d3bbfa939157d4fb25db9941bc9ac3a6976fa0492",
       "exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py": "a0641dfda3573cbd9343c65a4c26d7f89602bb4a21eb6e4ab8a360fa1d434e8f"
     },
+    "normalized_SO10_Yukawa_CGC_raw_sha256": {
+      "EXACT_NORMALIZED_SO10_YUKAWA_CGCS_V20.json": "cac9de5d918a38962fc5ad1c8c3b6351e49051f64a5c8b7e005a6859dd1baf1b",
+      "EXACT_NORMALIZED_SO10_YUKAWA_CGCS_V20.md": "5acbb5eb78451b8f37f1d8b990962a7ad4c39fe1974cb4720cf2131a85c14112",
+      "exact_normalized_so10_yukawa_cgcs_v20.py": "432faa3fdf5adebf25015f7f2fda7f040d89d86bce31f6c85b4cc56e37eb14df",
+      "test_exact_normalized_so10_yukawa_cgcs_v20.py": "450321d322634630c3a6713d16f08fbefdba71b7b2bc886f0d95dc4dcf093a02"
+    },
+    "normalized_SO10_Yukawa_CGC_transitive_portable_lf_sha256": {
+      "direct_phi_h_sigmabar_tensor_v20.py": "3a87470a06362a2a4c05eac6b71fe9cd4cd6c9b8a41732786184cbfeae89fac4",
+      "spin10_referee_audit.py": "daf80f5ab2b4480e5e03b025bd685dd1ffdce91a4cb0435774dd52ad702b72c9"
+    },
+    "physical_G7_component_threshold_raw_sha256": {
+      "EXACT_PHYSICAL_G7_COMPONENT_THRESHOLD_CONTRACT_V20.json": "efaec990a6edaf6e01f492ff31b4a5e3520c3b8c8298bf5529dbb3c6c80e182e",
+      "EXACT_PHYSICAL_G7_COMPONENT_THRESHOLD_CONTRACT_V20.md": "23b78d68d4732da2160d7b3911aa3ac0c7e6f9bce59e58228d4a6c755b21d071",
+      "exact_physical_g7_component_threshold_contract_v20.py": "41f28313ee6cb10fe9b10625d10b075ada7eb8030ac82da92debe17f950e7bf0",
+      "test_exact_physical_g7_component_threshold_contract_v20.py": "bdceea8f8e10f566119793c0e0cfc31316bd9704aab89a1b70a9fdc880f7cd4a"
+    },
     "physical_RHS_portable_lf_sha256": {
       "EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_QUARTIC_MAP_V20.json": "056e1a90c028f0aaca8fb17f2f53dfb02d5e7a33230ec3675537d2778755266a",
       "exact_gauged_u1x_g3_pd_rank_certificate_v20.py": "e2499baf3f7a572df7647ca02f109666a549c9e2c1989110c682ee584e0483c6",
@@ -219,6 +588,127 @@
       "exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py": "8493a90d9b689bc02479151529ac697425f56087f2bdbebb40176f418b7c0ff8",
       "exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py": "28633a2dba4d70f019a3e63ca87e8224ca11630a9e7c53bc963aedc6824208c1",
       "exact_gauged_u1x_g3_rank1_su4_phi210_intertwiners_v20.py": "76fa77c99b8d6e963e8694acf74280de29ced4c7a7623bffa991aead77329f49"
+    },
+    "physical_SM_37_row_aggregate_raw_sha256": {
+      "EXACT_PHYSICAL_SM_37_ROW_AGGREGATE_V20.json": "66bafa7e00ce543abea0e29b8be586cca8ecb1c5417204fc0ec75f6736c984b3",
+      "EXACT_PHYSICAL_SM_37_ROW_AGGREGATE_V20.md": "d0ddb600e27b69ad1f45af832fc4381006ef2471dfcf4b028b155b7210bb2fcd",
+      "exact_physical_sm_37_row_aggregate_v20.py": "801b456743d9037d4478dcb3c94fef3d745ad312b58c3b262324aeded7567f5c",
+      "test_exact_physical_sm_37_row_aggregate_v20.py": "8af93e63ed0ffb06734d8cffe60c75a41811dbf5b765fc93e09fc2c3febc2f96"
+    },
+    "physical_SM_37_row_aggregate_transitive_portable_lf_sha256": {
+      "EXACT_PHYSICAL_SM_EASY_21_HESSIANS_V20.json": "bea6bb1b519eb42a610b6a0c66a6b7178e4f1f912aa154035aacecc815089ae8"
+    },
+    "physical_SM_G4_G5_branch_mismatch_raw_sha256": {
+      "EXACT_PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_V20.json": "a94429e7838141cfd7a0860faa93b0a8ee23e9b8e8985222546ce552c9debe06",
+      "EXACT_PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_V20.md": "7cdde1e96c5a47da405ed3c8f89324b807a0032e087e36732d6b986e49cbba9e",
+      "exact_physical_sm_g4_g5_branch_mismatch_v20.py": "cf87a140b031ba625e2f656646402d0eb68aea3d34a555dc391274a198573251",
+      "test_exact_physical_sm_g4_g5_branch_mismatch_v20.py": "4595149177660f51d7b17e5ef7425d55acfd748df38aad02911f22e96041b958"
+    },
+    "physical_SM_G4_G5_branch_mismatch_transitive_raw_sha256": {
+      "GAUGED_U1X_G2_DERIVATIVE_AUDIT_V20.json": "faeded3309949504b1b0e04ec9338db79dad0bf0dac29804f87a0fa1012beaee"
+    },
+    "physical_SM_G6_G7_frontier_raw_sha256": {
+      "EXACT_PHYSICAL_SM_G6_G7_CLOSURE_FRONTIER_V20.json": "caf0255d73a6434452f414f946147db9cae6cf1ebb82aba0897086ed1ac2c53a",
+      "EXACT_PHYSICAL_SM_G6_G7_CLOSURE_FRONTIER_V20.md": "ffea781db860ee162b8a61252900c44315ae2b9afa24561e6395a1be4e16af3b",
+      "exact_physical_sm_g6_g7_closure_frontier_v20.py": "db811c803bfb008d800d79a422918548d72cc87081a966075789178d06fb5043",
+      "test_exact_physical_sm_g6_g7_closure_frontier_v20.py": "525f96ecadc331b3cd1041c457cb40c71fbd59ce8a987a83f7fafe167caf5535"
+    },
+    "physical_SM_G8_frontier_raw_sha256": {
+      "EXACT_PHYSICAL_SM_G8_IDENTIFIABILITY_FRONTIER_V20.json": "bb58ef10bef730cefa8da4cee342711e1033134a5e9468febed5cc0f8a93acac",
+      "EXACT_PHYSICAL_SM_G8_IDENTIFIABILITY_FRONTIER_V20.md": "b946701143bbbf68c1a528e1ac671e65066410808c49fdb906624cff25fc5c17",
+      "exact_physical_sm_g8_identifiability_frontier_v20.py": "d4c294c4ea42e16764de3c8763e5e5a843e37958d4cd1bb57e10024900f93ee4",
+      "test_exact_physical_sm_g8_identifiability_frontier_v20.py": "6f2a5a249084517cf442e0e16856082b1a2b75e7e1e2cfcdda57fd3ef609d527"
+    },
+    "physical_SM_five_amplitude_equality_raw_sha256": {
+      "EXACT_PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_V20.json": "61bca8d55230b798b1d45ae4496c2b1b39490f73d0596e671478a388f72449ce",
+      "EXACT_PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_V20.md": "5a22cb172ff26ac698ca19bb722590cf15368c30d37190a211e5f5f1eff214d6",
+      "exact_physical_sm_five_amplitude_equality_v20.py": "777b11664047574432405373b71bf30ed473fa735bdce56ef95be43dccc76972",
+      "test_exact_physical_sm_five_amplitude_equality_v20.py": "23b5491460efa8bc09d4b4d978619df808f5c796baf07ae6a5aa271dd693049e"
+    },
+    "physical_SM_five_amplitude_transitive_portable_lf_sha256": {
+      "exact_126bar_self_quartic_basis_v20.py": "6b945b21b991ad1c055e7ae39190bcbb258fd8503c1ad37789003310041ddd30",
+      "exact_210_self_invariant_basis_v20.py": "663747aa896d8609a0a12fb0bbf5374520ef4fc3a205b6525cbba66022654ae5",
+      "exact_h10_self_quartic_family_v20.py": "a6a54818fce5a98b9e06d657581bb43482eb63a8598860840bc2553060b3f94e",
+      "exact_hsigma_hermitian_family_closure_v20.py": "1d27e3a089fd7b4e44f3534eb91c58a1505c8396ddc6301df6df87d07cac9863",
+      "exact_p_delta_second_stage_hessian_v20.py": "6f03a6305c9a302d6a1664c3100d1f629bd8af08ac303e5766d6ae463d35dc58",
+      "exact_phi2_126dag126_six_contractions_v20.py": "78bd1110530be968ab2e62d150c73def74fe96d1d1100ccfb88cb9c4710a6dba",
+      "exact_phi2_hdagh_channel_family_v20.py": "42f347e5d8cb8d378f737425d7b152cc71e678627b8a2128b8faba0ce41261cf",
+      "exact_phisigma_126bar_minus_projectors_v20.py": "35574f536dd6a5a6619075784324d3a8e5965544dd91fdca5ce2ce3de6bb2af7",
+      "gauged_u1x_g2_derivative_audit_v20.py": "584e03994ca1187228377c3e4c145d95446ade50616e2d58068e0fee9f96507d",
+      "live_g1_tensor_closure_ledger_v20.py": "e17dd3a443ddd04ab412844f8d4273c27322371518bbc805705be9c030287d57"
+    },
+    "physical_SM_hard_projector_Hessians_raw_sha256": {
+      "EXACT_PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_V20.json": "b8a498926d1ba6a7f07f9c64b56443a14fba098514a8d5cb3e8358bbf7baabfa",
+      "EXACT_PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_V20.md": "47b44edaa79546d294fe7d2a50ae53de764259422967356d74b79235bddc2159",
+      "exact_physical_sm_hard_projector_hessians_v20.py": "2ac49af04f3bbec17a4e616c82898de6a0710ddcfa3462d7ec8d59dad69de27e",
+      "test_exact_physical_sm_hard_projector_hessians_v20.py": "08deeb86a522ba64eee0152b3f68f8fff9bdd75dac13aca9d855fee3652ed76b"
+    },
+    "physical_SM_hard_projector_transitive_portable_lf_sha256": {
+      "exact_phisigma_casimir_projectors_v20.py": "372401c9b760e7b4e2224d4b6b2151611e68e7ba786ec735ebbd8baeb0103355"
+    },
+    "physical_SM_heavy_vector_MSbar_matching_raw_sha256": {
+      "EXACT_PHYSICAL_SM_HEAVY_VECTOR_MSBAR_MATCHING_V20.json": "8163bf30c07e5c4fb4c2d3d0dcc0d54efe18278ca48b137f6b0973838d2b4dee",
+      "EXACT_PHYSICAL_SM_HEAVY_VECTOR_MSBAR_MATCHING_V20.md": "130ec2f078e429cc6b19c7d9013fb803d4ffad9069a24509120f6467f9e72afe",
+      "exact_physical_sm_heavy_vector_msbar_matching_v20.py": "d6c69059b679342b0aff843044eef15e540f0c68836b41f432c878883aad3192",
+      "test_exact_physical_sm_heavy_vector_msbar_matching_v20.py": "e3b9118379cb6bc83e63646c4147a056f5cadc3faed13bc9c25bf42882f83b46"
+    },
+    "physical_SM_heavy_vector_masses_raw_sha256": {
+      "EXACT_PHYSICAL_SM_HEAVY_VECTOR_MASSES_V20.json": "665840c68ce5522f8faeb9cadceba56288c7d9ad0d2e468d29a6a5c4413b17e0",
+      "EXACT_PHYSICAL_SM_HEAVY_VECTOR_MASSES_V20.md": "47b598aed6af33a89ecc47598d5280258e0b5304a23a8873764c9c4778768fff",
+      "exact_physical_sm_heavy_vector_masses_v20.py": "6839c8fdada9fc89efdde26c62188dfa99b7a34ee072cec93c0b3405c117d587",
+      "test_exact_physical_sm_heavy_vector_masses_v20.py": "6f5bd8638cfdd593e722055f74c2de761865b4391720b1b4a11ae9089eb61b42"
+    },
+    "physical_SM_last_six_Hessians_raw_sha256": {
+      "EXACT_PHYSICAL_SM_LAST_SIX_HESSIANS_V20.json": "fe1a92c3bc8e809c41abb88a85f3cf0198c88f7a70482b3f26359d6df78907c5",
+      "EXACT_PHYSICAL_SM_LAST_SIX_HESSIANS_V20.md": "74117a1f5c8a8add31ff82d7034dda32061fb5349b1d8662453cfcc2b266590e",
+      "exact_physical_sm_last_six_hessians_v20.py": "78d712d3573ec3377a331eb52dbf429452aa1c7ed82aeb7eeb0aa5900b3774ce",
+      "test_exact_physical_sm_last_six_hessians_v20.py": "1565454ca40608367e275a2a3cb2fb1a6b3277418a1479720e313431b5d9379f"
+    },
+    "physical_SM_last_six_transitive_portable_lf_sha256": {
+      "exact_mixed_45_triplet_channel_v20.py": "3ac36a491014d59bb4d08a0939e63cd7d5bde8aa9c7cde0bfc4b491521c1073c",
+      "exact_physical_sm_easy_21_hessians_v20.py": "e8b6fcf9bc459ee4c05a74d41cae6d9a82680de88683ba5ffcc4ceb30fe73311"
+    },
+    "physical_SM_local_equality_orbit_portable_lf_sha256": {
+      "EXACT_PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_V20.json": "4a443274dbd6e5f3887161dde5bbdb8e7410d4c951e307b7105587f99d9001c0",
+      "EXACT_PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_V20.md": "2284d1cd3666af797116d2d150963eae05be8be27420e85132f24e66de2a2ee7",
+      "exact_physical_sm_local_equality_orbit_v20.py": "5358c084cd46bdf154fd42505e51d28dc75c6817d392e9bbad5b0d47c55184c7",
+      "test_exact_physical_sm_local_equality_orbit_v20.py": "100488ad2c0173134be41ef52e17c82cc9445fc481bf922d4c36a6b7fe0b8f12"
+    },
+    "physical_SM_local_equality_orbit_transitive_portable_lf_sha256": {
+      "G1_EXACT_DECLARED_SYMMETRY_CHARACTER_CENSUS_V20.json": "506dc21cffda5d25d7f6a86bb100a961186a9f54fe716d3a8daf4251c92248d3",
+      "GAUGED_U1X_SCALAR_CONTRACT_V20.json": "3244ed71f185f22441f73707a8a7ee34e9dcbcae3b1bcb478df560ccb2366375",
+      "exact_gauged_u1x_physical_quotient_v20.py": "405fd691d633d9b925af27c6bc0504bf741784198ae3b0c1fe83da7ca2284324"
+    },
+    "physical_SM_source_equality_frontier_raw_sha256": {
+      "PHYSICAL_SM_SOURCE_ALGEBRA_EQUALITY_FRONTIER_V20.json": "96d00f47eb5365dd9ff43ace871a04252aeb4b3a5d2543f03870091ff78760f2",
+      "PHYSICAL_SM_SOURCE_ALGEBRA_EQUALITY_FRONTIER_V20.md": "e2d7b84c06ba706991a4bb123df3894569f2ee14f330a1b64030ab7656fce9ed",
+      "physical_sm_source_algebra_equality_frontier_v20.py": "3ab97985eb2d178aa1d7b77d2c1e9e30f6134599456fce07e0a071856fc7557f",
+      "test_physical_sm_source_algebra_equality_frontier_v20.py": "e9d5200cbecdb22cbda4479607430f936e03e16b7c4663283abbbece99c7b770"
+    },
+    "physical_SM_vacuum_raw_sha256": {
+      "PHYSICAL_SM_VACUUM_LOCAL_FEASIBILITY_V20.json": "ac575067550472afeae1d87503c04a47bf27386223a4417cf7c2341ad75af315",
+      "PHYSICAL_SM_VACUUM_LOCAL_FEASIBILITY_V20.md": "d312fb960e7a458fadf38977573315a6d0a5eee37437c49c149589abd36416c3",
+      "physical_sm_vacuum_local_feasibility_v20.py": "629ea8c45f101f82b6b4e963fd1fb19dcc5735fe52a1d8efb1fb0812dbaa565c",
+      "test_physical_sm_vacuum_local_feasibility_v20.py": "3b688b8a2bd33a03e19edf4225568a3eaef96b4580f7d9ea23c38857dc069f5c"
+    },
+    "physical_SM_vacuum_transitive_raw_sha256": {
+      "live_g2_arbitrary_component_potential_values_v20.py": "997ab9e2a29c3125d47b006189b1ed69599644313b499754f7ee5e1e7e12d6bf",
+      "live_g2_exact_final_mixed_quartic_derivatives_v20.py": "50c3519de91dea74509b2e6383a930d8804680533bee7faf00f8f13415045ed1",
+      "live_g2_exact_h10_self_quartic_derivatives_v20.py": "1b05c3bc53525c71dc134dce7ff1f60321d5ce6d56eb8759e4ae91b87c8ba74f",
+      "live_g2_exact_hsigma_hermitian_derivatives_v20.py": "bd15f4c15585e49e7884558992c3ca14a1e9777282e747f98f31fb2d8e32b1af",
+      "live_g2_exact_phi2_hdagh_derivatives_v20.py": "a7ccc19d0fb31227f89695b64469918c5198000333c15f6f1ff10fa1a8eb9857",
+      "live_g2_exact_phi_self_quartic_derivatives_v20.py": "69e1fd25900b8264ede773d72c348303bc0a3eb951b4d0ab4a3eeaeda2ac94d8",
+      "live_g2_exact_portal_family_derivatives_v20.py": "5f4eb0d813be606c2cdae8f2fb382855ce313b507bb9e167161f9826a73e24c9",
+      "live_g2_exact_quadratic_family_derivatives_v20.py": "abdf1cf943908ff338208ce57bad4db2c70710ec36b9654eb56d06f3ca4aa9c8",
+      "live_g2_exact_remaining_cubic_derivatives_v20.py": "ee0ef9add618701d70910c2dffd1b9598ce93fd58e770c5cda18e137af565e6e",
+      "live_g2_exact_sigma_self_quartic_derivatives_v20.py": "69ca58a65803e79a996fc316e1d22134774469c177a9c5d2eb294b9d1c084ded",
+      "live_g2_exact_unique_hsigma_chiral_derivatives_v20.py": "0157f4f92adec1f8e893732c86ab327a1615d9f7a862f6950244569940501592"
+    },
+    "physical_SM_vector_Rxi_raw_sha256": {
+      "EXACT_PHYSICAL_SM_VECTOR_RXI_VACUUM_CANCELLATION_V20.json": "e1553d18c5acb9fd738dfc8c16277a634ae42bca2960296656eee57a78101221",
+      "EXACT_PHYSICAL_SM_VECTOR_RXI_VACUUM_CANCELLATION_V20.md": "b549642e47656257c90b13361715c1602f202548ba4e01f068d26ffa163a4286",
+      "exact_physical_sm_vector_rxi_vacuum_cancellation_v20.py": "5a850a37ac97043a4857002bbe96ab963380462a6ec17f1c43eb9a7a371e6a44",
+      "test_exact_physical_sm_vector_rxi_vacuum_cancellation_v20.py": "97275dad209ecef945b95b5dc9ec97b79b6d319346b8f769af5a9f9ae28d1aa7"
     },
     "renormalizable_G1_component_tensor_raw_sha256": {
       "EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_CLOSURE_V20.json": "bec8587376c7dc5a29b45c9c7f0110fcbed98a3ae2d130aaf00bb42f6997aca4",
@@ -235,32 +725,32 @@
   },
   "inventory": {
     ".gitattributes": {
-      "content_sha256": "5feada5be9c5a862d44d9abac2a00f4be450c2f6872e04edf0eaff0c41eb81e9",
-      "content_size_bytes": 7670,
+      "content_sha256": "fefb4947d623039400b18a7cd3d91e89609aaf8651bc37fb9155aed853cf3721",
+      "content_size_bytes": 18715,
       "hash_mode": "raw",
       "role": "central corrected-endpoint integration source"
     },
     ".github/workflows/current-main-full-reaudit.yml": {
-      "content_sha256": "203056f7d79c95de15403b2a4fbf022da1c37272ca35283d9ac881d0f2e6b7af",
-      "content_size_bytes": 78000,
+      "content_sha256": "594a41035c259135c5892a791f8894662abff7f080eb747cba20828797dd1c5d",
+      "content_size_bytes": 85266,
       "hash_mode": "portable-lf",
       "role": "CI orchestration and claim-boundary enforcement"
     },
     ".github/workflows/g1-g8-execution-roadmap.yml": {
-      "content_sha256": "d98d44e21a883b2f147bc8d5316e8255af421bd1b31adc81eb2532b869cdbfb9",
-      "content_size_bytes": 42025,
+      "content_sha256": "6f16f51b3ddab6f8640b79726058033e12ca75f6df3be9c961b677a97bcb7301",
+      "content_size_bytes": 87586,
       "hash_mode": "portable-lf",
       "role": "CI orchestration and claim-boundary enforcement"
     },
     ".github/workflows/g1-g8-gate-ledger.yml": {
-      "content_sha256": "15685d11c1556eaea0a1e44f7c8ac2f1f4d2342113dae05240b36009e5850220",
-      "content_size_bytes": 51716,
+      "content_sha256": "4156ad7be7baa1a81b5de493dd1b9c90bbd15ff9f05faebb57e0cf0d77fea5ca",
+      "content_size_bytes": 107860,
       "hash_mode": "portable-lf",
       "role": "CI orchestration and claim-boundary enforcement"
     },
     ".github/workflows/gauged-u1x-g3-stability.yml": {
-      "content_sha256": "2152c13d08a79915849dfa4f3885fcf4afa33361e34555d096a17dd88258e66e",
-      "content_size_bytes": 66574,
+      "content_sha256": "5370091cc0d9ef7cb917bdb30f524d93ad68d5e8938b05f889c225a11b47e127",
+      "content_size_bytes": 122151,
       "hash_mode": "portable-lf",
       "role": "CI orchestration and claim-boundary enforcement"
     },
@@ -271,10 +761,112 @@
       "role": "CI orchestration and claim-boundary enforcement"
     },
     ".github/workflows/replicate-and-falsify.yml": {
-      "content_sha256": "ea687b8f84ce64f3b7b7e1529c30f886c2c44b2d82e8519704bda462913b86c0",
-      "content_size_bytes": 44950,
+      "content_sha256": "a4c12af17f016a0271dec3e810deedec7505055647c594e0aad1239816c9bbf2",
+      "content_size_bytes": 48467,
       "hash_mode": "portable-lf",
       "role": "CI orchestration and claim-boundary enforcement"
+    },
+    ".github/workflows/sarah-pyrate-so10-210-betas.yml": {
+      "content_sha256": "37f76f8a719fc0c248f6ec45039af04583ba141d54d8267aa81da50ae847adac",
+      "content_size_bytes": 3053,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF active CI for the fail-closed legacy SO(10)+210 G7 diagnostic"
+    },
+    "CANONICAL_G1_COMPLETE_OPERATOR_RING_DIM6_V21.json": {
+      "content_sha256": "1fe406910513c171006280edb137dd58ec4eaa01ea159c4b5a9ba97bad0def35",
+      "content_size_bytes": 8114,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned exact dimension-six canonical G1 character/channel/completeness proof and trusted verifier"
+    },
+    "CANONICAL_G1_COMPLETE_OPERATOR_RING_DIM6_V21.md": {
+      "content_sha256": "278d47f93a6b286019ccf8d416651bef4f839b18044986055591eb96ee98640a",
+      "content_size_bytes": 726,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned exact dimension-six canonical G1 character/channel/completeness proof and trusted verifier"
+    },
+    "CANONICAL_G1_G8_GAUGED_U1X_V21.json": {
+      "content_sha256": "b5c8977b97f6f14a12a66ec20c8ba278ff1f8406b22d823b3eac7d4028fa4d1d",
+      "content_size_bytes": 19574,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned canonical closure-capable G1--G8 v21 contract; canonical G1/G2 closed and G3--G8 open"
+    },
+    "CANONICAL_G1_G8_GAUGED_U1X_V21.md": {
+      "content_sha256": "8645228be6ac24ba9958ad5ebd793dd2341093d16d8f10d78e1c524736d51101",
+      "content_size_bytes": 3118,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned canonical closure-capable G1--G8 v21 contract; canonical G1/G2 closed and G3--G8 open"
+    },
+    "CANONICAL_G1_SCALAR_RING_DIM6_FRONTIER_V21.json": {
+      "content_sha256": "30df5a88f55d0a4d5c683e4f63a013574fdd96ebd7ccb4ed3d8a214d09d24a95",
+      "content_size_bytes": 230594,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned exact dimension-six canonical G1 character/channel/completeness proof and trusted verifier"
+    },
+    "CANONICAL_G1_SCALAR_RING_DIM6_FRONTIER_V21.md": {
+      "content_sha256": "42c06fb69df6755b15db3bdbca462020aa9d5273c67e6722c6d07243f9e8f4d6",
+      "content_size_bytes": 756,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned exact dimension-six canonical G1 character/channel/completeness proof and trusted verifier"
+    },
+    "CANONICAL_G1_SUSYNO_CHANNEL_BASIS_V21.json": {
+      "content_sha256": "066e2ccd746d97ca562ca4f84957816a2d6babed10574112e8f7118ac23cd309",
+      "content_size_bytes": 401201,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned exact dimension-six canonical G1 character/channel/completeness proof and trusted verifier"
+    },
+    "CANONICAL_G2_EXACT_CONTRACTION_BASIS_V21.json": {
+      "content_sha256": "e88c6ddd02818eebf80b554118a5cad14e8d16581430c95f43501e1a6d4736a2",
+      "content_size_bytes": 935279,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned exact canonical G2 contraction/projection proof and trusted verifier"
+    },
+    "CANONICAL_G2_FULL_COMPONENT_PROJECTION_DIM6_V21.json": {
+      "content_sha256": "e296118ab33c3421350b0720fc8c824b2e218c3d80ec9e6b7c84e7eada491dfd",
+      "content_size_bytes": 1215481,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned exact canonical G2 contraction/projection proof and trusted verifier"
+    },
+    "CANONICAL_G2_FULL_COMPONENT_PROJECTION_DIM6_V21.md": {
+      "content_sha256": "dea5c22194cfe3e4cebb6e0b4cc9464108991a100cf3f57c84f0538de221de46",
+      "content_size_bytes": 709,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned exact canonical G2 contraction/projection proof and trusted verifier"
+    },
+    "CANONICAL_G3_PHYSICAL_EW_GLOBAL_VACUUM_V21.json": {
+      "content_sha256": "03b51b65a0a7d4e597d85acf914957b3f33f81c62f531ac03d62cb1d2fcfc565",
+      "content_size_bytes": 27784,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned exact canonical G3 physical-EW global-vacuum proof and trusted verifier"
+    },
+    "CANONICAL_G3_PHYSICAL_EW_GLOBAL_VACUUM_V21.md": {
+      "content_sha256": "a7aa62b9a7838f99f7792ac3122571d3c26775a76efabaf522efc857fa7161ce",
+      "content_size_bytes": 753,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned exact canonical G3 physical-EW global-vacuum proof and trusted verifier"
+    },
+    "CONDITIONAL_PHYSICAL_SM_EFT_HESSIAN_SPECTRUM_V20.json": {
+      "content_sha256": "6a4354baac91881b796e70d86e529158fe8c51a0a2a9e1dc9ba876130c3510ef",
+      "content_size_bytes": 106219,
+      "hash_mode": "raw",
+      "role": "byte-pinned conditional reconstructed physical-SM tree Hessian spectrum; source algebra/pole/release G6 open"
+    },
+    "CONDITIONAL_PHYSICAL_SM_EFT_HESSIAN_SPECTRUM_V20.md": {
+      "content_sha256": "60e5907263e06f9340d364ecd01f495b1cd470482a409f4ec6a27d86bdd6508e",
+      "content_size_bytes": 843,
+      "hash_mode": "raw",
+      "role": "byte-pinned conditional reconstructed physical-SM tree Hessian spectrum; source algebra/pole/release G6 open"
+    },
+    "EXACT_AUTHORITATIVE_SO10_U1X_GAUGE_BETAS_V20.json": {
+      "content_sha256": "f5c12e8b8f9ec40976f675a743d5fd5d8cf4e98ab2087d92e3cf855c756c75eb",
+      "content_size_bytes": 10437,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact non-Yukawa gauge-beta subtheorem"
+    },
+    "EXACT_AUTHORITATIVE_SO10_U1X_GAUGE_BETAS_V20.md": {
+      "content_sha256": "39b0c05284c7e66cef484df8b599c8bc963ad1237395fb6cf21428779ab1f3db",
+      "content_size_bytes": 981,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact non-Yukawa gauge-beta subtheorem"
     },
     "EXACT_EFT_CURRENT_KERNEL_STABILIZED_GLOBAL_G3.json": {
       "content_sha256": "38520c5aed7a3a72dbede3e4358e5edb48c16f35a5bb31601864e1f8dc0e2271",
@@ -288,29 +880,53 @@
       "hash_mode": "raw",
       "role": "byte-pinned dimension-six EFT G3 theorem and acceptance bundle"
     },
-    "EXACT_EFT_G7_THRESHOLD_NONIDENTIFIABILITY_V20.json": {
-      "content_sha256": "d59146ed577680f3a1dfd449256d60d8116afcb844a8b65bbc009a8472bb766b",
-      "content_size_bytes": 6374,
+    "EXACT_EFT_G6_G7_PARAMETERIZED_MATCHING_V20.json": {
+      "content_sha256": "b1bbf35b23a272eadc0a8520f0dac32fb342c7f1f3886088db2d9158acfd5ae9",
+      "content_size_bytes": 40926,
       "hash_mode": "raw",
-      "role": "byte-pinned exact EFT G7 threshold non-identifiability obstruction bundle"
+      "role": "byte-pinned dimensionful G6 family and formal U(1)_89 threshold audit"
+    },
+    "EXACT_EFT_G6_G7_PARAMETERIZED_MATCHING_V20.md": {
+      "content_sha256": "18b061d39d0f9272227bc1a021c66b10e1b893e1cef11889b161c0023239e7e4",
+      "content_size_bytes": 1460,
+      "hash_mode": "raw",
+      "role": "byte-pinned dimensionful G6 family and formal U(1)_89 threshold audit"
+    },
+    "EXACT_EFT_G7_THRESHOLD_NONIDENTIFIABILITY_V20.json": {
+      "content_sha256": "778f96c8760a43be5214b215e08a6308d6198b84ebff9edd7729e75203b13cae",
+      "content_size_bytes": 7719,
+      "hash_mode": "raw",
+      "role": "byte-pinned formal U(1)_89 abstract-restriction example; no physical G7 no-go claim"
     },
     "EXACT_EFT_G7_THRESHOLD_NONIDENTIFIABILITY_V20.md": {
-      "content_sha256": "85a0a40924debb203b87488b4625a0da38d02ba7eb6c3ff741ae0f90a3e0bbac",
-      "content_size_bytes": 1096,
+      "content_sha256": "fc46765cdf7e46f529d2a4a9ceabb308c7a3c5b74c249733ce2833dd70fb3d01",
+      "content_size_bytes": 1073,
       "hash_mode": "raw",
-      "role": "byte-pinned exact EFT G7 threshold non-identifiability obstruction bundle"
+      "role": "byte-pinned formal U(1)_89 abstract-restriction example; no physical G7 no-go claim"
     },
     "EXACT_EFT_PHYSICAL_SCALAR_SPECTRUM_V20.json": {
       "content_sha256": "797a90473c064a78ef313d56f1894d71114643a19ebd373e86fe8b2911bcf416",
       "content_size_bytes": 46136,
       "hash_mode": "raw",
-      "role": "byte-pinned exact EFT scalar spectrum and mathematical G6 gate bundle"
+      "role": "byte-pinned legacy formal SU(3) x U(1)_89 scalar factorization; physical labels superseded"
     },
     "EXACT_EFT_PHYSICAL_SCALAR_SPECTRUM_V20.md": {
       "content_sha256": "0b356c55a231432bf72d1877f35664abe2457f095c926e538b371d412764c153",
       "content_size_bytes": 750,
       "hash_mode": "raw",
-      "role": "byte-pinned exact EFT scalar spectrum and mathematical G6 gate bundle"
+      "role": "byte-pinned legacy formal SU(3) x U(1)_89 scalar factorization; physical labels superseded"
+    },
+    "EXACT_G6_SM_PROVENANCE_FEASIBILITY_V20.json": {
+      "content_sha256": "a8daa4fb1dadbea48b25ad671a18f8d467384979769772be628a43f75054f6fa",
+      "content_size_bytes": 12243,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact G6 physical-stabilizer mismatch and provenance audit"
+    },
+    "EXACT_G6_SM_PROVENANCE_FEASIBILITY_V20.md": {
+      "content_sha256": "e3d05634421c4721003cb1916a3d02dc2d2b0c93bd58c03523bc927fa3793673",
+      "content_size_bytes": 1840,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact G6 physical-stabilizer mismatch and provenance audit"
     },
     "EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_CLOSURE_V20.json": {
       "content_sha256": "bec8587376c7dc5a29b45c9c7f0110fcbed98a3ae2d130aaf00bb42f6997aca4",
@@ -396,6 +1012,18 @@
       "hash_mode": "raw",
       "role": "byte-pinned dimension-six EFT G3 theorem and acceptance bundle"
     },
+    "EXACT_NORMALIZED_SO10_YUKAWA_CGCS_V20.json": {
+      "content_sha256": "cac9de5d918a38962fc5ad1c8c3b6351e49051f64a5c8b7e005a6859dd1baf1b",
+      "content_size_bytes": 17000,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact normalized SO(10) representation Yukawa-CGC subtheorem; flavor/RGE/full G7 open"
+    },
+    "EXACT_NORMALIZED_SO10_YUKAWA_CGCS_V20.md": {
+      "content_sha256": "5acbb5eb78451b8f37f1d8b990962a7ad4c39fe1974cb4720cf2131a85c14112",
+      "content_size_bytes": 3524,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact normalized SO(10) representation Yukawa-CGC subtheorem; flavor/RGE/full G7 open"
+    },
     "EXACT_PHI_SELF_ZERO_GLOBAL_SEXTIC_SYZYGY.md": {
       "content_sha256": "5fe6765228c12b287634aee5acb282f7ccc06d0fa87363fea8feafc39f83dddb",
       "content_size_bytes": 2092,
@@ -437,6 +1065,168 @@
       "content_size_bytes": 235971,
       "hash_mode": "raw",
       "role": "byte-pinned exact global Phi self-zero proof dependency"
+    },
+    "EXACT_PHYSICAL_G7_COMPONENT_THRESHOLD_CONTRACT_V20.json": {
+      "content_sha256": "efaec990a6edaf6e01f492ff31b4a5e3520c3b8c8298bf5529dbb3c6c80e182e",
+      "content_size_bytes": 63671,
+      "hash_mode": "raw",
+      "role": "byte-pinned physical PS/SM branching and parameterized matter-threshold subtheorem; full G7 open"
+    },
+    "EXACT_PHYSICAL_G7_COMPONENT_THRESHOLD_CONTRACT_V20.md": {
+      "content_sha256": "23b78d68d4732da2160d7b3911aa3ac0c7e6f9bce59e58228d4a6c755b21d071",
+      "content_size_bytes": 1502,
+      "hash_mode": "raw",
+      "role": "byte-pinned physical PS/SM branching and parameterized matter-threshold subtheorem; full G7 open"
+    },
+    "EXACT_PHYSICAL_SM_37_ROW_AGGREGATE_V20.json": {
+      "content_sha256": "66bafa7e00ce543abea0e29b8be586cca8ecb1c5417204fc0ec75f6736c984b3",
+      "content_size_bytes": 11723,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact source-derived 37-row local Hessian theorem; global equality and physical G3-G5 open"
+    },
+    "EXACT_PHYSICAL_SM_37_ROW_AGGREGATE_V20.md": {
+      "content_sha256": "d0ddb600e27b69ad1f45af832fc4381006ef2471dfcf4b028b155b7210bb2fcd",
+      "content_size_bytes": 929,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact source-derived 37-row local Hessian theorem; global equality and physical G3-G5 open"
+    },
+    "EXACT_PHYSICAL_SM_EASY_21_HESSIANS_V20.json": {
+      "content_sha256": "bea6bb1b519eb42a610b6a0c66a6b7178e4f1f912aa154035aacecc815089ae8",
+      "content_size_bytes": 18854,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned transitive report for the exact 37-row aggregate theorem"
+    },
+    "EXACT_PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_V20.json": {
+      "content_sha256": "61bca8d55230b798b1d45ae4496c2b1b39490f73d0596e671478a388f72449ce",
+      "content_size_bytes": 19892,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact five-amplitude stationary equality classification; full 486 orbit and physical G3-G5 open"
+    },
+    "EXACT_PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_V20.md": {
+      "content_sha256": "5a22cb172ff26ac698ca19bb722590cf15368c30d37190a211e5f5f1eff214d6",
+      "content_size_bytes": 751,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact five-amplitude stationary equality classification; full 486 orbit and physical G3-G5 open"
+    },
+    "EXACT_PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_V20.json": {
+      "content_sha256": "a94429e7838141cfd7a0860faa93b0a8ee23e9b8e8985222546ce552c9debe06",
+      "content_size_bytes": 9012,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact five-amplitude/physical-EW branch mismatch; not a global hierarchy no-go and physical G4-G8 open"
+    },
+    "EXACT_PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_V20.md": {
+      "content_sha256": "7cdde1e96c5a47da405ed3c8f89324b807a0032e087e36732d6b986e49cbba9e",
+      "content_size_bytes": 1561,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact five-amplitude/physical-EW branch mismatch; not a global hierarchy no-go and physical G4-G8 open"
+    },
+    "EXACT_PHYSICAL_SM_G6_G7_CLOSURE_FRONTIER_V20.json": {
+      "content_sha256": "caf0255d73a6434452f414f946147db9cae6cf1ebb82aba0897086ed1ac2c53a",
+      "content_size_bytes": 8217,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact G6/G7 continuous nonidentifiability frontier and closure path; physical/release G6-G7 open"
+    },
+    "EXACT_PHYSICAL_SM_G6_G7_CLOSURE_FRONTIER_V20.md": {
+      "content_sha256": "ffea781db860ee162b8a61252900c44315ae2b9afa24561e6395a1be4e16af3b",
+      "content_size_bytes": 3399,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact G6/G7 continuous nonidentifiability frontier and closure path; physical/release G6-G7 open"
+    },
+    "EXACT_PHYSICAL_SM_G8_IDENTIFIABILITY_FRONTIER_V20.json": {
+      "content_sha256": "bb58ef10bef730cefa8da4cee342711e1033134a5e9468febed5cc0f8a93acac",
+      "content_size_bytes": 12675,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact G8 scale/flavor/interference nonidentifiability frontier and PDG-2025 single-channel constraint; physical/release/authoritative G8 open"
+    },
+    "EXACT_PHYSICAL_SM_G8_IDENTIFIABILITY_FRONTIER_V20.md": {
+      "content_sha256": "b946701143bbbf68c1a528e1ac671e65066410808c49fdb906624cff25fc5c17",
+      "content_size_bytes": 3529,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact G8 scale/flavor/interference nonidentifiability frontier and PDG-2025 single-channel constraint; physical/release/authoritative G8 open"
+    },
+    "EXACT_PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_V20.json": {
+      "content_sha256": "b8a498926d1ba6a7f07f9c64b56443a14fba098514a8d5cb3e8358bbf7baabfa",
+      "content_size_bytes": 14461,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact ten hard-projector source Hessians; full 37-row aggregate and physical G3-G5 open"
+    },
+    "EXACT_PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_V20.md": {
+      "content_sha256": "47b44edaa79546d294fe7d2a50ae53de764259422967356d74b79235bddc2159",
+      "content_size_bytes": 1390,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact ten hard-projector source Hessians; full 37-row aggregate and physical G3-G5 open"
+    },
+    "EXACT_PHYSICAL_SM_HEAVY_VECTOR_MASSES_V20.json": {
+      "content_sha256": "665840c68ce5522f8faeb9cadceba56288c7d9ad0d2e468d29a6a5c4413b17e0",
+      "content_size_bytes": 36415,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact parameterized physical-SM heavy-vector tree masses and threshold logs; loop/full G6-G7 open"
+    },
+    "EXACT_PHYSICAL_SM_HEAVY_VECTOR_MASSES_V20.md": {
+      "content_sha256": "47b598aed6af33a89ecc47598d5280258e0b5304a23a8873764c9c4778768fff",
+      "content_size_bytes": 3320,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact parameterized physical-SM heavy-vector tree masses and threshold logs; loop/full G6-G7 open"
+    },
+    "EXACT_PHYSICAL_SM_HEAVY_VECTOR_MSBAR_MATCHING_V20.json": {
+      "content_sha256": "8163bf30c07e5c4fb4c2d3d0dcc0d54efe18278ca48b137f6b0973838d2b4dee",
+      "content_size_bytes": 17920,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact combined heavy-vector/FP-ghost/Goldstone non-SUSY MSbar kernel and finite constant; pole/pre-EW/full G6-G7 open"
+    },
+    "EXACT_PHYSICAL_SM_HEAVY_VECTOR_MSBAR_MATCHING_V20.md": {
+      "content_sha256": "130ec2f078e429cc6b19c7d9013fb803d4ffad9069a24509120f6467f9e72afe",
+      "content_size_bytes": 3169,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact combined heavy-vector/FP-ghost/Goldstone non-SUSY MSbar kernel and finite constant; pole/pre-EW/full G6-G7 open"
+    },
+    "EXACT_PHYSICAL_SM_LAST_SIX_HESSIANS_V20.json": {
+      "content_sha256": "fe1a92c3bc8e809c41abb88a85f3cf0198c88f7a70482b3f26359d6df78907c5",
+      "content_size_bytes": 7543,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact last-six source Hessians; all 37 source Hessians available but aggregate/global physical G3-G5 open"
+    },
+    "EXACT_PHYSICAL_SM_LAST_SIX_HESSIANS_V20.md": {
+      "content_sha256": "74117a1f5c8a8add31ff82d7034dda32061fb5349b1d8662453cfcc2b266590e",
+      "content_size_bytes": 552,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact last-six source Hessians; all 37 source Hessians available but aggregate/global physical G3-G5 open"
+    },
+    "EXACT_PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_V20.json": {
+      "content_sha256": "4a443274dbd6e5f3887161dde5bbdb8e7410d4c951e307b7105587f99d9001c0",
+      "content_size_bytes": 12862,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned full-486 local equality-orbit theorem; radius/global equality and physical G3-G5 open"
+    },
+    "EXACT_PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_V20.md": {
+      "content_sha256": "2284d1cd3666af797116d2d150963eae05be8be27420e85132f24e66de2a2ee7",
+      "content_size_bytes": 779,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned full-486 local equality-orbit theorem; radius/global equality and physical G3-G5 open"
+    },
+    "EXACT_PHYSICAL_SM_VECTOR_RXI_VACUUM_CANCELLATION_V20.json": {
+      "content_sha256": "e1553d18c5acb9fd738dfc8c16277a634ae42bca2960296656eee57a78101221",
+      "content_size_bytes": 7190,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact zero-background arbitrary-positive-Rxi vacuum determinant cancellation; general-background/pole/full G6-G7 open"
+    },
+    "EXACT_PHYSICAL_SM_VECTOR_RXI_VACUUM_CANCELLATION_V20.md": {
+      "content_sha256": "b549642e47656257c90b13361715c1602f202548ba4e01f068d26ffa163a4286",
+      "content_size_bytes": 1819,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact zero-background arbitrary-positive-Rxi vacuum determinant cancellation; general-background/pole/full G6-G7 open"
+    },
+    "EXACT_X_SYMMETRY_CONSISTENCY_GATE_V20.json": {
+      "content_sha256": "c0393187fc07848a218830cc23cd59c1ecaaa091ea004f59b3777370ffcef2fa",
+      "content_size_bytes": 490023,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact-X v3 static/input/trusted-tree and genuine Wolfram/SARAH execution contract"
+    },
+    "EXACT_X_SYMMETRY_CONSISTENCY_GATE_V20.md": {
+      "content_sha256": "d6c3d3cf2e38542206e8963c91190dfa377a0a3fa697292e576caa6faf3a2a49",
+      "content_size_bytes": 1362,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact-X v3 static/input/trusted-tree and genuine Wolfram/SARAH execution contract"
     },
     "FINAL_G3_ACCEPTANCE_GATE_V20.json": {
       "content_sha256": "d4fcdcb95c934cfd637f00f27534ba3c663e0f330407b84e8f47b97b30306d8b",
@@ -487,16 +1277,16 @@
       "role": "byte-pinned dimension-six EFT mathematical G4/G5 gate bundle"
     },
     "FINAL_G6_EFT_MATHEMATICAL_GATE_V20.json": {
-      "content_sha256": "85000f555eb3bc4e2e4bc49236a82ce2161987212906d78efd667bb52dd432f8",
-      "content_size_bytes": 3308,
+      "content_sha256": "8bd98401ed6e2540ae7968a5b6a51a8e49abd98943252dec159c873d73a13f6c",
+      "content_size_bytes": 4852,
       "hash_mode": "raw",
-      "role": "byte-pinned exact EFT scalar spectrum and mathematical G6 gate bundle"
+      "role": "byte-pinned fail-closed formal G6 gate"
     },
     "FINAL_G6_EFT_MATHEMATICAL_GATE_V20.md": {
-      "content_sha256": "288c53bce177ac687cbf6ceee3c6d74808a1dde2e2b39e0ac5728ab577db5fba",
-      "content_size_bytes": 438,
+      "content_sha256": "4615263add89bd825f29dfd09a05bd242013af93847962ba5db5ad74b285c3e0",
+      "content_size_bytes": 655,
       "hash_mode": "raw",
-      "role": "byte-pinned exact EFT scalar spectrum and mathematical G6 gate bundle"
+      "role": "byte-pinned fail-closed formal G6 gate"
     },
     "FROZEN_EXACT_EFT_CURRENT_KERNEL_STABILIZED_GLOBAL_G3_SOURCE_V20.py": {
       "content_sha256": "9db99e83a32eefd43c74f3fb006e0ef32c37162980c7abb031efdbb8422a360f",
@@ -558,51 +1348,117 @@
       "hash_mode": "raw",
       "role": "byte-pinned exact global Phi self-zero proof dependency"
     },
+    "G1_EXACT_DECLARED_SYMMETRY_CHARACTER_CENSUS_V20.json": {
+      "content_sha256": "506dc21cffda5d25d7f6a86bb100a961186a9f54fe716d3a8daf4251c92248d3",
+      "content_size_bytes": 44674,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned transitive source/report for the local equality-orbit theorem"
+    },
     "G1_G8_EXECUTION_ROADMAP_V20.json": {
-      "content_sha256": "02f30661c7312ea150dc5cb090168b41b461948e9baa6f59cdf8de42e8b57385",
-      "content_size_bytes": 9457434,
+      "content_sha256": "8b1cdbda9df5800c71743d81cdf4e8ce8a0d4b5371e8b3784b7b9c1d06301c79",
+      "content_size_bytes": 10727115,
       "hash_mode": "portable-lf",
       "role": "regenerated central report or documentation"
     },
     "G1_G8_EXECUTION_ROADMAP_V20.md": {
-      "content_sha256": "32cc19bd0d8f3940bbc8bc85bf5b7b9689faa6a8e272242ca7541c7d855b6f64",
-      "content_size_bytes": 10630,
+      "content_sha256": "10ee5cd720a242531cbed3fe527fdeff5c93d893f2ab5fda71a673ca162f20d1",
+      "content_size_bytes": 15024,
       "hash_mode": "portable-lf",
       "role": "regenerated central report or documentation"
     },
     "G1_G8_GATE_LEDGER_V20.json": {
-      "content_sha256": "a3cbed4cae6f589f93aa997e7458eee40a72c8f62a58707fb0e489b3d158b1b9",
-      "content_size_bytes": 9464463,
+      "content_sha256": "beb0dc6bfc519761f4313715de414dfd3bcdb1eb14c90835acc170711ac9b27c",
+      "content_size_bytes": 10734605,
       "hash_mode": "portable-lf",
       "role": "regenerated central report or documentation"
     },
     "G1_G8_GATE_LEDGER_V20.md": {
-      "content_sha256": "0559fcac35ce679222aceeaf096202833ea31e8c9262272fc8ca7b34db99d123",
-      "content_size_bytes": 5808,
+      "content_sha256": "bf3c1e6a650dca6ff70de71946f4dc1d8d1d2aa0ab56b507fd0b9a2df05776ec",
+      "content_size_bytes": 8938,
       "hash_mode": "portable-lf",
       "role": "regenerated central report or documentation"
+    },
+    "GAUGED_U1X_G2_DERIVATIVE_AUDIT_V20.json": {
+      "content_sha256": "faeded3309949504b1b0e04ec9338db79dad0bf0dac29804f87a0fa1012beaee",
+      "content_size_bytes": 242734,
+      "hash_mode": "raw",
+      "role": "byte-pinned transitive semantic-JSON dependency for the G4/G5 branch-mismatch theorem"
+    },
+    "GAUGED_U1X_SCALAR_CONTRACT_V20.json": {
+      "content_sha256": "3244ed71f185f22441f73707a8a7ee34e9dcbcae3b1bcb478df560ccb2366375",
+      "content_size_bytes": 93968,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned transitive source/report for the local equality-orbit theorem"
+    },
+    "PHYSICAL_SM_SOURCE_ALGEBRA_EQUALITY_FRONTIER_V20.json": {
+      "content_sha256": "96d00f47eb5365dd9ff43ace871a04252aeb4b3a5d2543f03870091ff78760f2",
+      "content_size_bytes": 7218,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact physical-SM radial equality frontier; direct source Hessian/full equality/physical G3-G5 open"
+    },
+    "PHYSICAL_SM_SOURCE_ALGEBRA_EQUALITY_FRONTIER_V20.md": {
+      "content_sha256": "e2d7b84c06ba706991a4bb123df3894569f2ee14f330a1b64030ab7656fce9ed",
+      "content_size_bytes": 895,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact physical-SM radial equality frontier; direct source Hessian/full equality/physical G3-G5 open"
+    },
+    "PHYSICAL_SM_VACUUM_LOCAL_FEASIBILITY_V20.json": {
+      "content_sha256": "ac575067550472afeae1d87503c04a47bf27386223a4417cf7c2341ad75af315",
+      "content_size_bytes": 102920,
+      "hash_mode": "raw",
+      "role": "byte-pinned physical-SM target/stabilizer truth overlay; source algebra/global orbit/physical G3-G7 open"
+    },
+    "PHYSICAL_SM_VACUUM_LOCAL_FEASIBILITY_V20.md": {
+      "content_sha256": "d312fb960e7a458fadf38977573315a6d0a5eee37437c49c149589abd36416c3",
+      "content_size_bytes": 1969,
+      "hash_mode": "raw",
+      "role": "byte-pinned physical-SM target/stabilizer truth overlay; source algebra/global orbit/physical G3-G7 open"
+    },
+    "PYRATE3_SO10_U1X_GAUGE_BETA_REPLAY_V20.json": {
+      "content_sha256": "e17dcc1dc939c8475b6827f4c781f3f5fce6c728cf5aa6511287066087b01fd4",
+      "content_size_bytes": 6173,
+      "hash_mode": "raw",
+      "role": "byte-pinned independent PyR@TE gauge-only replay bundle"
+    },
+    "PYRATE3_SO10_U1X_GAUGE_BETA_REPLAY_V20.md": {
+      "content_sha256": "ffaeaa138f3831369d6b2b1b5617bc1148f62d3e8fe7f40a828a7c72c05aecfc",
+      "content_size_bytes": 943,
+      "hash_mode": "raw",
+      "role": "byte-pinned independent PyR@TE gauge-only replay bundle"
     },
     "README.md": {
-      "content_sha256": "df4ee0e45ef24034083179da2eec99a0abf5e51cbfc3761a5b0275c2d893aa1b",
-      "content_size_bytes": 29900,
+      "content_sha256": "0b1fa5788fa28c79ee3002c5110681720ac8a51b4aee7d4e7c09606edd82da5d",
+      "content_size_bytes": 44288,
       "hash_mode": "portable-lf",
       "role": "regenerated central report or documentation"
     },
+    "SARAH_PYRATE_SO10_210_BETAS_V20.md": {
+      "content_sha256": "3d6cc2869b56452e4a8bd6a3e30d5c932506b686db349f34b773166df35a4f44",
+      "content_size_bytes": 1641,
+      "hash_mode": "raw",
+      "role": "byte-pinned corrected legacy SO(10)+210 gauge-polynomial diagnostic; full physical/mathematical/release G7 open"
+    },
+    "SARAH_PYRATE_SO10_210_BETAS_V20_VERDICT.json": {
+      "content_sha256": "f9eedea44ae98547f94e123fa99ab38450c2c1c57b5871df624a78d6104dbcd9",
+      "content_size_bytes": 4457,
+      "hash_mode": "raw",
+      "role": "byte-pinned corrected legacy SO(10)+210 gauge-polynomial diagnostic; full physical/mathematical/release G7 open"
+    },
     "SHA256SUMS": {
-      "content_sha256": "d6740379c89c7a6aa90f0f7c8a4fac736f1e2a7d3d647063e1826c114d2fffdf",
-      "content_size_bytes": 37878,
+      "content_sha256": "3f3fda8174c154a4fad1c7e059fd83aca459a371d6389464a845f107066cbcc5",
+      "content_size_bytes": 55203,
       "hash_mode": "portable-lf",
       "role": "release-core portable checksum manifest"
     },
     "THEORY_VALIDATION_MATRIX_V20.md": {
-      "content_sha256": "65a3687020026c9be7e8d9d9c6bb5f73b5dddfb2f8aeb3506530e86ca794ba98",
-      "content_size_bytes": 10658,
+      "content_sha256": "baffa605521997dc079cdf9d2c5098010c213d0db344b882db7617aecd9a2cc3",
+      "content_size_bytes": 14236,
       "hash_mode": "portable-lf",
       "role": "regenerated central report or documentation"
     },
     "THEORY_VALIDATION_MATRIX_V20_VERDICT.json": {
-      "content_sha256": "3afcf5f91bde2b20cfb011d8093613d059f8306f581e226364918fbf268660cf",
-      "content_size_bytes": 54341,
+      "content_sha256": "645e30147575b4a1dcd68773b09f9c5d9bb0d1c98fde034cae80e94b240c5368",
+      "content_size_bytes": 127101,
       "hash_mode": "portable-lf",
       "role": "regenerated central report or documentation"
     },
@@ -618,6 +1474,18 @@
       "hash_mode": "portable-lf",
       "role": "regenerated central report or documentation"
     },
+    "_g2_contraction_graphs.py": {
+      "content_sha256": "c2d65e4ff5f90448bf5b58a4806a1d2229802bf76a59584c1353b721c1b1db44",
+      "content_size_bytes": 5162,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned exact canonical G2 contraction/projection proof and trusted verifier"
+    },
+    "_g2_metric_rank_probe.py": {
+      "content_sha256": "a218c18915718036827856644c9ebe0b73b6339b070850a00c57c75d03cdeb53",
+      "content_size_bytes": 15916,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned exact canonical G2 contraction/projection proof and trusted verifier"
+    },
     "axion_so10_theory_v20.pdf": {
       "content_sha256": "95840341526812fa8adb275ed330381082193506dd2be28d8a2b794ebe4f9ae5",
       "content_size_bytes": 392486,
@@ -629,6 +1497,54 @@
       "content_size_bytes": 55929,
       "hash_mode": "portable-lf",
       "role": "corrected theorem manuscript"
+    },
+    "canonical_g1_complete_operator_ring_dim6_v21.py": {
+      "content_sha256": "37f6343b16f231b87a4e9b4f97c7ac563fe19f5b7a196bde02dfd286b13902e9",
+      "content_size_bytes": 12699,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned exact dimension-six canonical G1 character/channel/completeness proof and trusted verifier"
+    },
+    "canonical_g1_g8_gauged_u1x_v21.py": {
+      "content_sha256": "4158df2bbef369d100ed95cf45a6428b3307cdf4da066f4664981b2c4d61dea0",
+      "content_size_bytes": 35001,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned canonical closure-capable G1--G8 v21 contract; canonical G1/G2 closed and G3--G8 open"
+    },
+    "canonical_g1_scalar_ring_dim6_frontier_v21.py": {
+      "content_sha256": "b9b48b93a2e440a2393b6e9b9c3d02a044293aecf7184834e01cf67f0df787a1",
+      "content_size_bytes": 17391,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned exact dimension-six canonical G1 character/channel/completeness proof and trusted verifier"
+    },
+    "canonical_g1_susyno_channel_basis_v21.wls": {
+      "content_sha256": "3fae45e08c291ad80f916a2d851bba869c787eea0da50576177781cc9d8fe34e",
+      "content_size_bytes": 8234,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned exact dimension-six canonical G1 character/channel/completeness proof and trusted verifier"
+    },
+    "canonical_g2_exact_contraction_basis_v21.py": {
+      "content_sha256": "e02417b959d61acacd0d69a68d52b5b4427c4f0e8595b3d94627e5ad4608b75d",
+      "content_size_bytes": 9231,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned exact canonical G2 contraction/projection proof and trusted verifier"
+    },
+    "canonical_g2_full_component_projection_dim6_v21.py": {
+      "content_sha256": "1a94943835eb11cd8e446cdce9925d5cd00bc8471d9bb58c55028b4faca3be66",
+      "content_size_bytes": 15565,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned exact canonical G2 contraction/projection proof and trusted verifier"
+    },
+    "canonical_g3_physical_ew_global_vacuum_v21.py": {
+      "content_sha256": "d9cfab99505ac0fce0e7bdaad336a769dbb50ed29d02c73d9c9afc96dc81f99c",
+      "content_size_bytes": 24237,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned exact canonical G3 physical-EW global-vacuum proof and trusted verifier"
+    },
+    "conditional_physical_sm_eft_hessian_spectrum_v20.py": {
+      "content_sha256": "4d1c146f9ab9cd9679bdef7f5c145381c5d53871e62f79c1e59864a5aec981c9",
+      "content_size_bytes": 30759,
+      "hash_mode": "raw",
+      "role": "byte-pinned conditional reconstructed physical-SM tree Hessian spectrum; source algebra/pole/release G6 open"
     },
     "corrected_rank1_endpoint_v21.py": {
       "content_sha256": "1d99cd24a54fa889fabbcb8405808f00fbd3cc67260316e2f26302667ccb8d99",
@@ -750,17 +1666,71 @@
       "hash_mode": "raw",
       "role": "audited corrected v21 publication byte"
     },
-    "exact_eft_g7_threshold_nonidentifiability_v20.py": {
-      "content_sha256": "0f8868d7d23e6b49f25f075a1974bdb7c1c72b88ae4c9c358a9d11d04e2f06b6",
-      "content_size_bytes": 15518,
+    "data/PYRATE3_SO10_U1X_GAUGE_BETA_FROZEN_V20.json": {
+      "content_sha256": "047632c3e81f8eb2dcc1cd922b8d3e34c300743693e18606ff8953e28ccd280b",
+      "content_size_bytes": 2489,
       "hash_mode": "raw",
-      "role": "byte-pinned exact EFT G7 threshold non-identifiability obstruction bundle"
+      "role": "byte-pinned independent PyR@TE gauge-only replay bundle"
+    },
+    "direct_phi_h_sigmabar_tensor_v20.py": {
+      "content_sha256": "3a87470a06362a2a4c05eac6b71fe9cd4cd6c9b8a41732786184cbfeae89fac4",
+      "content_size_bytes": 22442,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned normalized SO(10) Yukawa-CGC transitive source dependency"
+    },
+    "exact_126bar_self_quartic_basis_v20.py": {
+      "content_sha256": "6b945b21b991ad1c055e7ae39190bcbb258fd8503c1ad37789003310041ddd30",
+      "content_size_bytes": 12843,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned transitive source for the exact five-amplitude equality theorem"
+    },
+    "exact_126bar_triplet_clebsch_v20.py": {
+      "content_sha256": "d94f37da94333fbf58e448ef6effb00e718191ed45b63bafdc0e2650ccdb0499",
+      "content_size_bytes": 28280,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact transitive representation/provenance dependency"
+    },
+    "exact_210_pati_salam_global_vacuum_v20.py": {
+      "content_sha256": "d98baa655cd5af9ccbc34fd2637670b7ceadedd5b2eccc10e1d6c000fda943c4",
+      "content_size_bytes": 17709,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact transitive representation/provenance dependency"
+    },
+    "exact_210_self_invariant_basis_v20.py": {
+      "content_sha256": "663747aa896d8609a0a12fb0bbf5374520ef4fc3a205b6525cbba66022654ae5",
+      "content_size_bytes": 22410,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned transitive source for the exact five-amplitude equality theorem"
+    },
+    "exact_authoritative_so10_u1x_gauge_betas_v20.py": {
+      "content_sha256": "b3ec8ca5bc472af24081ee5b3409652dde0e1bf219cbf7d29a4f55e76e985cb6",
+      "content_size_bytes": 23595,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact non-Yukawa gauge-beta subtheorem"
+    },
+    "exact_eft_g6_g7_parameterized_matching_v20.py": {
+      "content_sha256": "4653653de5f7f29b8dd12b7a3d1e387aafab2a193137c08dc2e4be942dceee42",
+      "content_size_bytes": 27476,
+      "hash_mode": "raw",
+      "role": "byte-pinned dimensionful G6 family and formal U(1)_89 threshold audit"
+    },
+    "exact_eft_g7_threshold_nonidentifiability_v20.py": {
+      "content_sha256": "16e4a011e759df3a31664bcac2711b5270598551f1e2791c8f629f9bb6483406",
+      "content_size_bytes": 18280,
+      "hash_mode": "raw",
+      "role": "byte-pinned formal U(1)_89 abstract-restriction example; no physical G7 no-go claim"
     },
     "exact_eft_physical_scalar_spectrum_v20.py": {
       "content_sha256": "cdcc25b383098464fc6312d553dff555d19c57388df7de08db48b4167ebc5a36",
       "content_size_bytes": 27168,
       "hash_mode": "raw",
-      "role": "byte-pinned exact EFT scalar spectrum and mathematical G6 gate bundle"
+      "role": "byte-pinned legacy formal SU(3) x U(1)_89 scalar factorization; physical labels superseded"
+    },
+    "exact_g6_sm_provenance_feasibility_v20.py": {
+      "content_sha256": "8bb67fb09c1cd3b57bf2c02e9ed7f1242a955c5a81ceb7d44dd48435c82618c1",
+      "content_size_bytes": 45476,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact G6 physical-stabilizer mismatch and provenance audit"
     },
     "exact_gauged_u1x_g1_component_tensor_closure_v20.py": {
       "content_sha256": "ca2b92198cbb7cbe6c7051b9c5952bc4af1462ba33db02eaa126533213b1e87f",
@@ -846,11 +1816,59 @@
       "hash_mode": "portable-lf",
       "role": "central corrected-endpoint integration source"
     },
+    "exact_gauged_u1x_physical_quotient_v20.py": {
+      "content_sha256": "405fd691d633d9b925af27c6bc0504bf741784198ae3b0c1fe83da7ca2284324",
+      "content_size_bytes": 30572,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned transitive source/report for the local equality-orbit theorem"
+    },
+    "exact_h10_self_quartic_family_v20.py": {
+      "content_sha256": "a6a54818fce5a98b9e06d657581bb43482eb63a8598860840bc2553060b3f94e",
+      "content_size_bytes": 12223,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned transitive source for the exact five-amplitude equality theorem"
+    },
     "exact_hsigma_current_endomorphism_dimension6_stabilizer_v20.py": {
       "content_sha256": "c113abf41ca9527528dc00d248fdfa3fcae990e39ba4b76251ca197167cbad23",
       "content_size_bytes": 25244,
       "hash_mode": "raw",
       "role": "byte-pinned dimension-six EFT G3 theorem and acceptance bundle"
+    },
+    "exact_hsigma_hermitian_family_closure_v20.py": {
+      "content_sha256": "1d27e3a089fd7b4e44f3534eb91c58a1505c8396ddc6301df6df87d07cac9863",
+      "content_size_bytes": 17230,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned transitive source for the exact five-amplitude equality theorem"
+    },
+    "exact_mixed_45_triplet_channel_v20.py": {
+      "content_sha256": "3ac36a491014d59bb4d08a0939e63cd7d5bde8aa9c7cde0bfc4b491521c1073c",
+      "content_size_bytes": 14672,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned transitive source for the exact last-six Hessian theorem"
+    },
+    "exact_normalized_so10_yukawa_cgcs_v20.py": {
+      "content_sha256": "432faa3fdf5adebf25015f7f2fda7f040d89d86bce31f6c85b4cc56e37eb14df",
+      "content_size_bytes": 33625,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact normalized SO(10) representation Yukawa-CGC subtheorem; flavor/RGE/full G7 open"
+    },
+    "exact_p_delta_second_stage_hessian_v20.py": {
+      "content_sha256": "6f03a6305c9a302d6a1664c3100d1f629bd8af08ac303e5766d6ae463d35dc58",
+      "content_size_bytes": 16002,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned transitive source for the exact five-amplitude equality theorem"
+    },
+    "exact_phi2_126dag126_six_contractions_v20.py": {
+      "content_sha256": "78bd1110530be968ab2e62d150c73def74fe96d1d1100ccfb88cb9c4710a6dba",
+      "content_size_bytes": 14779,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned transitive source for the exact five-amplitude equality theorem"
+    },
+    "exact_phi2_hdagh_channel_family_v20.py": {
+      "content_sha256": "42f347e5d8cb8d378f737425d7b152cc71e678627b8a2128b8faba0ce41261cf",
+      "content_size_bytes": 12373,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned transitive source for the exact five-amplitude equality theorem"
     },
     "exact_phi_self_zero_global_sextic_syzygy_v20.py": {
       "content_sha256": "5de73274c9def8bbc9628895457065fb1a93536eb611288dd66ffa6e1f8b2766",
@@ -882,6 +1900,102 @@
       "hash_mode": "raw",
       "role": "byte-pinned exact global Phi self-zero proof dependency"
     },
+    "exact_phisigma_126bar_minus_projectors_v20.py": {
+      "content_sha256": "35574f536dd6a5a6619075784324d3a8e5965544dd91fdca5ce2ce3de6bb2af7",
+      "content_size_bytes": 11732,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned transitive source for the exact five-amplitude equality theorem"
+    },
+    "exact_phisigma_casimir_projectors_v20.py": {
+      "content_sha256": "372401c9b760e7b4e2224d4b6b2151611e68e7ba786ec735ebbd8baeb0103355",
+      "content_size_bytes": 23417,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned transitive source for the hard-projector Hessian theorem"
+    },
+    "exact_physical_g7_component_threshold_contract_v20.py": {
+      "content_sha256": "41f28313ee6cb10fe9b10625d10b075ada7eb8030ac82da92debe17f950e7bf0",
+      "content_size_bytes": 48979,
+      "hash_mode": "raw",
+      "role": "byte-pinned physical PS/SM branching and parameterized matter-threshold subtheorem; full G7 open"
+    },
+    "exact_physical_sm_37_row_aggregate_v20.py": {
+      "content_sha256": "801b456743d9037d4478dcb3c94fef3d745ad312b58c3b262324aeded7567f5c",
+      "content_size_bytes": 24200,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact source-derived 37-row local Hessian theorem; global equality and physical G3-G5 open"
+    },
+    "exact_physical_sm_easy_21_hessians_v20.py": {
+      "content_sha256": "e8b6fcf9bc459ee4c05a74d41cae6d9a82680de88683ba5ffcc4ceb30fe73311",
+      "content_size_bytes": 24134,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned transitive source for the exact last-six Hessian theorem"
+    },
+    "exact_physical_sm_five_amplitude_equality_v20.py": {
+      "content_sha256": "777b11664047574432405373b71bf30ed473fa735bdce56ef95be43dccc76972",
+      "content_size_bytes": 21447,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact five-amplitude stationary equality classification; full 486 orbit and physical G3-G5 open"
+    },
+    "exact_physical_sm_g4_g5_branch_mismatch_v20.py": {
+      "content_sha256": "cf87a140b031ba625e2f656646402d0eb68aea3d34a555dc391274a198573251",
+      "content_size_bytes": 26873,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact five-amplitude/physical-EW branch mismatch; not a global hierarchy no-go and physical G4-G8 open"
+    },
+    "exact_physical_sm_g6_g7_closure_frontier_v20.py": {
+      "content_sha256": "db811c803bfb008d800d79a422918548d72cc87081a966075789178d06fb5043",
+      "content_size_bytes": 24475,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact G6/G7 continuous nonidentifiability frontier and closure path; physical/release G6-G7 open"
+    },
+    "exact_physical_sm_g8_identifiability_frontier_v20.py": {
+      "content_sha256": "d4c294c4ea42e16764de3c8763e5e5a843e37958d4cd1bb57e10024900f93ee4",
+      "content_size_bytes": 30659,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact G8 scale/flavor/interference nonidentifiability frontier and PDG-2025 single-channel constraint; physical/release/authoritative G8 open"
+    },
+    "exact_physical_sm_hard_projector_hessians_v20.py": {
+      "content_sha256": "2ac49af04f3bbec17a4e616c82898de6a0710ddcfa3462d7ec8d59dad69de27e",
+      "content_size_bytes": 37786,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact ten hard-projector source Hessians; full 37-row aggregate and physical G3-G5 open"
+    },
+    "exact_physical_sm_heavy_vector_masses_v20.py": {
+      "content_sha256": "6839c8fdada9fc89efdde26c62188dfa99b7a34ee072cec93c0b3405c117d587",
+      "content_size_bytes": 36673,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact parameterized physical-SM heavy-vector tree masses and threshold logs; loop/full G6-G7 open"
+    },
+    "exact_physical_sm_heavy_vector_msbar_matching_v20.py": {
+      "content_sha256": "d6c69059b679342b0aff843044eef15e540f0c68836b41f432c878883aad3192",
+      "content_size_bytes": 33259,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact combined heavy-vector/FP-ghost/Goldstone non-SUSY MSbar kernel and finite constant; pole/pre-EW/full G6-G7 open"
+    },
+    "exact_physical_sm_last_six_hessians_v20.py": {
+      "content_sha256": "78d712d3573ec3377a331eb52dbf429452aa1c7ed82aeb7eeb0aa5900b3774ce",
+      "content_size_bytes": 24720,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact last-six source Hessians; all 37 source Hessians available but aggregate/global physical G3-G5 open"
+    },
+    "exact_physical_sm_local_equality_orbit_v20.py": {
+      "content_sha256": "5358c084cd46bdf154fd42505e51d28dc75c6817d392e9bbad5b0d47c55184c7",
+      "content_size_bytes": 21006,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned full-486 local equality-orbit theorem; radius/global equality and physical G3-G5 open"
+    },
+    "exact_physical_sm_vector_rxi_vacuum_cancellation_v20.py": {
+      "content_sha256": "5a850a37ac97043a4857002bbe96ab963380462a6ec17f1c43eb9a7a371e6a44",
+      "content_size_bytes": 21557,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact zero-background arbitrary-positive-Rxi vacuum determinant cancellation; general-background/pole/full G6-G7 open"
+    },
+    "exact_x_symmetry_consistency_gate_v20.py": {
+      "content_sha256": "5c70efb039b795f94a6b03e8681ad512af837c48f4496948f918eae7faa529d8",
+      "content_size_bytes": 103939,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact-X v3 static/input/trusted-tree and genuine Wolfram/SARAH execution contract"
+    },
     "final_g3_acceptance_gate_v20.py": {
       "content_sha256": "b15f72916b50bf910fafd06a6315a952d3028886094814fb8980c11a0bfdfdd5",
       "content_size_bytes": 77620,
@@ -907,28 +2021,34 @@
       "role": "byte-pinned dimension-six EFT mathematical G4/G5 gate bundle"
     },
     "final_g6_eft_mathematical_gate_v20.py": {
-      "content_sha256": "6ef314bf22e1d6ce43b382b5cb6e7673cef1e328f2f4c38abdafab6038edc150",
-      "content_size_bytes": 9156,
+      "content_sha256": "16eba20b834ebca25b3a8b91d867ddee76b1676791b18aa86db32a6ebc77af4e",
+      "content_size_bytes": 13253,
       "hash_mode": "raw",
-      "role": "byte-pinned exact EFT scalar spectrum and mathematical G6 gate bundle"
+      "role": "byte-pinned fail-closed formal G6 gate"
     },
     "freeze_corrected_rank1_endpoint_v21_integration.py": {
-      "content_sha256": "929fc2b14263f3175ba8d8349526c6251642352b5f261f4ffc0b406764e11883",
-      "content_size_bytes": 86970,
+      "content_sha256": "4aa4c79d9a144d34a17e13b844f4a021fd9527496819c5e24c17bd484eaa6744",
+      "content_size_bytes": 300826,
       "hash_mode": "raw",
       "role": "central corrected-endpoint integration source"
     },
     "g1_g8_execution_roadmap_v20.py": {
-      "content_sha256": "3122454b62b43b99d5c23e23dca4265ea16936578f713cfbc101df090f75c67f",
-      "content_size_bytes": 66432,
+      "content_sha256": "53dd5a7c556a8be76cabd85ffd13f2324ecfd9848d286ab926f6b5abc0ddf3c7",
+      "content_size_bytes": 122570,
       "hash_mode": "portable-lf",
       "role": "central corrected-endpoint integration source"
     },
     "g1_g8_gate_ledger_v20.py": {
-      "content_sha256": "83ffe93525fc4fc073279761f78da6ed7189d3f8c389d08d95d9586651391a5f",
-      "content_size_bytes": 323717,
+      "content_sha256": "5edd53cc39a33a3a7b3569e2c2cbfc45eeed45291762e4ae33dbf16eb232cc49",
+      "content_size_bytes": 605785,
       "hash_mode": "portable-lf",
       "role": "central corrected-endpoint integration source"
+    },
+    "gauged_u1x_g2_derivative_audit_v20.py": {
+      "content_sha256": "584e03994ca1187228377c3e4c145d95446ade50616e2d58068e0fee9f96507d",
+      "content_size_bytes": 114622,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned transitive source for the exact five-amplitude equality theorem"
     },
     "global_flavour_fit_v20.py": {
       "content_sha256": "5446575518257ab10deb3307530a6bfdc9861e9833c0c5619d68214a87f56965",
@@ -936,11 +2056,143 @@
       "hash_mode": "portable-lf",
       "role": "central corrected-endpoint integration source"
     },
+    "live_g1_tensor_closure_ledger_v20.py": {
+      "content_sha256": "e17dd3a443ddd04ab412844f8d4273c27322371518bbc805705be9c030287d57",
+      "content_size_bytes": 16015,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned transitive source for the exact five-amplitude equality theorem"
+    },
+    "live_g2_arbitrary_component_potential_values_v20.py": {
+      "content_sha256": "997ab9e2a29c3125d47b006189b1ed69599644313b499754f7ee5e1e7e12d6bf",
+      "content_size_bytes": 29810,
+      "hash_mode": "raw",
+      "role": "byte-pinned physical-SM vacuum transitive reconstructed-Hessian dependency"
+    },
+    "live_g2_canonical_486_field_chart_v20.py": {
+      "content_sha256": "85ae9470f3aa25c28fc03c083b6c1e150106a276e51044a590060d290ba7945e",
+      "content_size_bytes": 19029,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact transitive representation/provenance dependency"
+    },
+    "live_g2_exact_final_mixed_quartic_derivatives_v20.py": {
+      "content_sha256": "50c3519de91dea74509b2e6383a930d8804680533bee7faf00f8f13415045ed1",
+      "content_size_bytes": 31670,
+      "hash_mode": "raw",
+      "role": "byte-pinned physical-SM vacuum transitive reconstructed-Hessian dependency"
+    },
+    "live_g2_exact_h10_self_quartic_derivatives_v20.py": {
+      "content_sha256": "1b05c3bc53525c71dc134dce7ff1f60321d5ce6d56eb8759e4ae91b87c8ba74f",
+      "content_size_bytes": 16080,
+      "hash_mode": "raw",
+      "role": "byte-pinned physical-SM vacuum transitive reconstructed-Hessian dependency"
+    },
+    "live_g2_exact_hsigma_hermitian_derivatives_v20.py": {
+      "content_sha256": "bd15f4c15585e49e7884558992c3ca14a1e9777282e747f98f31fb2d8e32b1af",
+      "content_size_bytes": 18244,
+      "hash_mode": "raw",
+      "role": "byte-pinned physical-SM vacuum transitive reconstructed-Hessian dependency"
+    },
+    "live_g2_exact_phi2_hdagh_derivatives_v20.py": {
+      "content_sha256": "a7ccc19d0fb31227f89695b64469918c5198000333c15f6f1ff10fa1a8eb9857",
+      "content_size_bytes": 19394,
+      "hash_mode": "raw",
+      "role": "byte-pinned physical-SM vacuum transitive reconstructed-Hessian dependency"
+    },
+    "live_g2_exact_phi_self_quartic_derivatives_v20.py": {
+      "content_sha256": "69e1fd25900b8264ede773d72c348303bc0a3eb951b4d0ab4a3eeaeda2ac94d8",
+      "content_size_bytes": 16703,
+      "hash_mode": "raw",
+      "role": "byte-pinned physical-SM vacuum transitive reconstructed-Hessian dependency"
+    },
+    "live_g2_exact_portal_family_derivatives_v20.py": {
+      "content_sha256": "5f4eb0d813be606c2cdae8f2fb382855ce313b507bb9e167161f9826a73e24c9",
+      "content_size_bytes": 17553,
+      "hash_mode": "raw",
+      "role": "byte-pinned physical-SM vacuum transitive reconstructed-Hessian dependency"
+    },
+    "live_g2_exact_quadratic_family_derivatives_v20.py": {
+      "content_sha256": "abdf1cf943908ff338208ce57bad4db2c70710ec36b9654eb56d06f3ca4aa9c8",
+      "content_size_bytes": 21982,
+      "hash_mode": "raw",
+      "role": "byte-pinned physical-SM vacuum transitive reconstructed-Hessian dependency"
+    },
+    "live_g2_exact_remaining_cubic_derivatives_v20.py": {
+      "content_sha256": "ee0ef9add618701d70910c2dffd1b9598ce93fd58e770c5cda18e137af565e6e",
+      "content_size_bytes": 19390,
+      "hash_mode": "raw",
+      "role": "byte-pinned physical-SM vacuum transitive reconstructed-Hessian dependency"
+    },
+    "live_g2_exact_sigma_self_quartic_derivatives_v20.py": {
+      "content_sha256": "69ca58a65803e79a996fc316e1d22134774469c177a9c5d2eb294b9d1c084ded",
+      "content_size_bytes": 19547,
+      "hash_mode": "raw",
+      "role": "byte-pinned physical-SM vacuum transitive reconstructed-Hessian dependency"
+    },
+    "live_g2_exact_unique_hsigma_chiral_derivatives_v20.py": {
+      "content_sha256": "0157f4f92adec1f8e893732c86ab327a1615d9f7a862f6950244569940501592",
+      "content_size_bytes": 20964,
+      "hash_mode": "raw",
+      "role": "byte-pinned physical-SM vacuum transitive reconstructed-Hessian dependency"
+    },
+    "models/EXACT_X_EXTERNAL_INPUT_MANIFEST_V20.json": {
+      "content_sha256": "1a6c8f8d79186801c840ddb63c30ee518b73c1929642be2139a7d01ed8c41a2f",
+      "content_size_bytes": 908,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact-X v3 static/input/trusted-tree and genuine Wolfram/SARAH execution contract"
+    },
+    "models/EXACT_X_EXTERNAL_MODEL_VALIDATION_V20.json": {
+      "content_sha256": "f5108d94770b9525deff58ddd42f1ba623b54670f13b4809c3c0965217f4dc09",
+      "content_size_bytes": 11810,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned exact-X static filter or genuine v3 execution attestation"
+    },
+    "models/SARAH_4_15_3_CANONICAL_SOURCE_TREE_V20.json": {
+      "content_sha256": "c28f08d56a488050b96ce3491473f22fe1b673aad8ac3ac3d0e590dd60e70d91",
+      "content_size_bytes": 198868,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact-X v3 static/input/trusted-tree and genuine Wolfram/SARAH execution contract"
+    },
+    "models/SO10U1XGaugeAuditV20.model": {
+      "content_sha256": "18191bc9db705ed9e8a89eff214ad967bac37830c91fede82c418d38ce0c949e",
+      "content_size_bytes": 1189,
+      "hash_mode": "raw",
+      "role": "byte-pinned independent PyR@TE gauge-only replay bundle"
+    },
+    "models/SO10Z17AxionV20.m": {
+      "content_sha256": "66a2ce2c3491d0b3079ec93a16ab79d3e8a7e4e35cb54aadf21100b9fdd90cc1",
+      "content_size_bytes": 5182,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact-X v3 static/input/trusted-tree and genuine Wolfram/SARAH execution contract"
+    },
+    "nonsusy_z17_pq_potential_filter_v20.py": {
+      "content_sha256": "60e076e7841f60ab19da79ac090220b210cd5ee3c36243a6549fbb08da73a903",
+      "content_size_bytes": 16675,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned exact-X static filter or genuine v3 execution attestation"
+    },
+    "physical_sm_source_algebra_equality_frontier_v20.py": {
+      "content_sha256": "3ab97985eb2d178aa1d7b77d2c1e9e30f6134599456fce07e0a071856fc7557f",
+      "content_size_bytes": 17977,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact physical-SM radial equality frontier; direct source Hessian/full equality/physical G3-G5 open"
+    },
+    "physical_sm_vacuum_local_feasibility_v20.py": {
+      "content_sha256": "629ea8c45f101f82b6b4e963fd1fb19dcc5735fe52a1d8efb1fb0812dbaa565c",
+      "content_size_bytes": 67384,
+      "hash_mode": "raw",
+      "role": "byte-pinned physical-SM target/stabilizer truth overlay; source algebra/global orbit/physical G3-G7 open"
+    },
     "prepare_validation_artifacts_v20.py": {
-      "content_sha256": "40023e7f09693fd79054dd13b22db67b48e3643c817298b7a24f5b91ae9b3fcc",
-      "content_size_bytes": 19020,
+      "content_sha256": "ba0039ba0ebea3ce68d529131d0a0bf5f4a7e4b4e954fc98d15037c86187beaa",
+      "content_size_bytes": 22960,
       "hash_mode": "portable-lf",
       "role": "central corrected-endpoint integration source"
+    },
+    "pyrate3_so10_u1x_gauge_beta_replay_v20.py": {
+      "content_sha256": "74b70c7d403bd5fc1cefc30ab1a58dd5c6e74c99672c81e9b2a2c59e34a1c42a",
+      "content_size_bytes": 16391,
+      "hash_mode": "raw",
+      "role": "byte-pinned independent PyR@TE gauge-only replay bundle"
     },
     "reconstruct_exact_phi_zero_degree8_conductor_table_v20.py": {
       "content_sha256": "968c4f63bbc4a1eb213a335d10ee465e8f27621b79c9ce860ca187702f49bbc9",
@@ -955,10 +2207,16 @@
       "role": "byte-pinned exact global Phi self-zero proof dependency"
     },
     "replicate.py": {
-      "content_sha256": "bab467d8d2c0de055478f9447987bc88785f9182d6b604183f3a4e1ba8dde95e",
-      "content_size_bytes": 17006,
+      "content_sha256": "eb9eb3f588f700b4f7a7214ec92bc4bbff2f3661dd330503251c19aba22a5e7b",
+      "content_size_bytes": 22093,
       "hash_mode": "portable-lf",
       "role": "central corrected-endpoint integration source"
+    },
+    "run_exact_x_sarah_validation_v20.py": {
+      "content_sha256": "351435619bc45aa9b1bf1ebe2fbc4e9a92e14148c2881e0f37357a8df48d2057",
+      "content_size_bytes": 19139,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact-X v3 static/input/trusted-tree and genuine Wolfram/SARAH execution contract"
     },
     "solve_exact_phi_zero_degree8_conductor_identity_v20.py": {
       "content_sha256": "3679695424452230c1583088b83291a7671348cfa90deb872cba51f2a07eceb0",
@@ -966,23 +2224,95 @@
       "hash_mode": "raw",
       "role": "byte-pinned exact global Phi self-zero proof dependency"
     },
+    "spin10_referee_audit.py": {
+      "content_sha256": "daf80f5ab2b4480e5e03b025bd685dd1ffdce91a4cb0435774dd52ad702b72c9",
+      "content_size_bytes": 14351,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned normalized SO(10) Yukawa-CGC transitive source dependency"
+    },
+    "test_canonical_g1_complete_operator_ring_dim6_v21.py": {
+      "content_sha256": "9f33b814e089e819354ea10e9d36d22ed313c0f924af12f3b5cb53190fde6872",
+      "content_size_bytes": 3674,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned exact dimension-six canonical G1 character/channel/completeness proof and trusted verifier"
+    },
+    "test_canonical_g1_g8_gauged_u1x_v21.py": {
+      "content_sha256": "58a150d146cb70f2287145cf809032767fa9bf6e0e00e6ee4ca200852d8b2e28",
+      "content_size_bytes": 12965,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned canonical closure-capable G1--G8 v21 contract; canonical G1/G2 closed and G3--G8 open"
+    },
+    "test_canonical_g1_scalar_ring_dim6_frontier_v21.py": {
+      "content_sha256": "595f4131cf10915e0804057c06fbf5ce7e0c77ecf442cd7a99c58d6ea0a1a1f4",
+      "content_size_bytes": 2785,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned exact dimension-six canonical G1 character/channel/completeness proof and trusted verifier"
+    },
+    "test_canonical_g1_susyno_channel_basis_v21.py": {
+      "content_sha256": "ba70f83c9f7982d668b3b4ba3231d4f6e38025d5b9094372b71622816cf001cf",
+      "content_size_bytes": 4438,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned exact dimension-six canonical G1 character/channel/completeness proof and trusted verifier"
+    },
+    "test_canonical_g2_exact_contraction_basis_v21.py": {
+      "content_sha256": "8917d6cd8dea2df95e3415db7d27d599f90d60a5d77b8974a0d06e94f8f1e7b6",
+      "content_size_bytes": 3182,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned exact canonical G2 contraction/projection proof and trusted verifier"
+    },
+    "test_canonical_g2_full_component_projection_dim6_v21.py": {
+      "content_sha256": "67e24697eedf0681b917ba70fee449a469432d704d6e7f38c82b2db2c55fc7d7",
+      "content_size_bytes": 4484,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned exact canonical G2 contraction/projection proof and trusted verifier"
+    },
+    "test_canonical_g3_physical_ew_global_vacuum_v21.py": {
+      "content_sha256": "b39a48688985948869b54eaf21d9b06b1e4a928ac40817d759e2d3e33c51d88b",
+      "content_size_bytes": 4030,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned exact canonical G3 physical-EW global-vacuum proof and trusted verifier"
+    },
+    "test_conditional_physical_sm_eft_hessian_spectrum_v20.py": {
+      "content_sha256": "80ea03cbc4c6079e937d0a133e40ef172e3ffa72f7b2aad36d587f0b5436033d",
+      "content_size_bytes": 11970,
+      "hash_mode": "raw",
+      "role": "byte-pinned conditional reconstructed physical-SM tree Hessian spectrum; source algebra/pole/release G6 open"
+    },
     "test_corrected_rank1_endpoint_v21.py": {
       "content_sha256": "2f3fc88a49fc74ecb93b4c323bee0ccf94d7d281d56232680ee066ad41549769",
       "content_size_bytes": 8281,
       "hash_mode": "portable-lf",
       "role": "fail-closed central integration regression"
     },
-    "test_exact_eft_g7_threshold_nonidentifiability_v20.py": {
-      "content_sha256": "c99f0b60cbdba11b32039c6a898ceeceb619460d8909c2dcc88b3df4e5148587",
-      "content_size_bytes": 3761,
+    "test_exact_authoritative_so10_u1x_gauge_betas_v20.py": {
+      "content_sha256": "1612dca09f3a6cdd6883e9cf96b0e12467b724d4267a3728557c9a8256aee7f6",
+      "content_size_bytes": 3202,
       "hash_mode": "raw",
-      "role": "byte-pinned exact EFT G7 threshold non-identifiability obstruction bundle"
+      "role": "byte-pinned exact non-Yukawa gauge-beta subtheorem"
+    },
+    "test_exact_eft_g6_g7_parameterized_matching_v20.py": {
+      "content_sha256": "fa044432c6862a86f46b9edc807d6a07db204d35a301cc339b2345125cec3ef4",
+      "content_size_bytes": 3293,
+      "hash_mode": "raw",
+      "role": "byte-pinned dimensionful G6 family and formal U(1)_89 threshold audit"
+    },
+    "test_exact_eft_g7_threshold_nonidentifiability_v20.py": {
+      "content_sha256": "6daed6acb85f751ba36699d712e5898f53934c9be8f52a6f79e4115237685989",
+      "content_size_bytes": 4033,
+      "hash_mode": "raw",
+      "role": "byte-pinned formal U(1)_89 abstract-restriction example; no physical G7 no-go claim"
     },
     "test_exact_eft_physical_scalar_spectrum_v20.py": {
       "content_sha256": "6867a703bc3fed1fa1b7a76696a2d2e34159df3fb6be3a2db907fbebd51137c4",
       "content_size_bytes": 3096,
       "hash_mode": "raw",
-      "role": "byte-pinned exact EFT scalar spectrum and mathematical G6 gate bundle"
+      "role": "byte-pinned legacy formal SU(3) x U(1)_89 scalar factorization; physical labels superseded"
+    },
+    "test_exact_g6_sm_provenance_feasibility_v20.py": {
+      "content_sha256": "433a6ebea359a5f2be2d1f43df69b02734ccbb4b61493bd2a6e780d95ba96690",
+      "content_size_bytes": 4868,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact G6 physical-stabilizer mismatch and provenance audit"
     },
     "test_exact_gauged_u1x_g1_component_tensor_closure_v20.py": {
       "content_sha256": "084c168bb622b3a56ed06cc885571423135e375e48dbe99a616ab657fd4ebc3e",
@@ -1026,6 +2356,12 @@
       "hash_mode": "raw",
       "role": "byte-pinned dimension-six EFT G3 theorem and acceptance bundle"
     },
+    "test_exact_normalized_so10_yukawa_cgcs_v20.py": {
+      "content_sha256": "450321d322634630c3a6713d16f08fbefdba71b7b2bc886f0d95dc4dcf093a02",
+      "content_size_bytes": 12923,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact normalized SO(10) representation Yukawa-CGC subtheorem; flavor/RGE/full G7 open"
+    },
     "test_exact_phi_self_zero_global_sextic_syzygy_v20.py": {
       "content_sha256": "f2a9cb079794df6f51399d9d64e63a36d4d55e0656df6ef9839de89ba5f3fe61",
       "content_size_bytes": 1683,
@@ -1049,6 +2385,84 @@
       "content_size_bytes": 877,
       "hash_mode": "portable-lf",
       "role": "fail-closed central integration regression"
+    },
+    "test_exact_physical_g7_component_threshold_contract_v20.py": {
+      "content_sha256": "bdceea8f8e10f566119793c0e0cfc31316bd9704aab89a1b70a9fdc880f7cd4a",
+      "content_size_bytes": 16506,
+      "hash_mode": "raw",
+      "role": "byte-pinned physical PS/SM branching and parameterized matter-threshold subtheorem; full G7 open"
+    },
+    "test_exact_physical_sm_37_row_aggregate_v20.py": {
+      "content_sha256": "8af93e63ed0ffb06734d8cffe60c75a41811dbf5b765fc93e09fc2c3febc2f96",
+      "content_size_bytes": 5417,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact source-derived 37-row local Hessian theorem; global equality and physical G3-G5 open"
+    },
+    "test_exact_physical_sm_five_amplitude_equality_v20.py": {
+      "content_sha256": "23b5491460efa8bc09d4b4d978619df808f5c796baf07ae6a5aa271dd693049e",
+      "content_size_bytes": 7778,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact five-amplitude stationary equality classification; full 486 orbit and physical G3-G5 open"
+    },
+    "test_exact_physical_sm_g4_g5_branch_mismatch_v20.py": {
+      "content_sha256": "4595149177660f51d7b17e5ef7425d55acfd748df38aad02911f22e96041b958",
+      "content_size_bytes": 7862,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact five-amplitude/physical-EW branch mismatch; not a global hierarchy no-go and physical G4-G8 open"
+    },
+    "test_exact_physical_sm_g6_g7_closure_frontier_v20.py": {
+      "content_sha256": "525f96ecadc331b3cd1041c457cb40c71fbd59ce8a987a83f7fafe167caf5535",
+      "content_size_bytes": 9151,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact G6/G7 continuous nonidentifiability frontier and closure path; physical/release G6-G7 open"
+    },
+    "test_exact_physical_sm_g8_identifiability_frontier_v20.py": {
+      "content_sha256": "6f2a5a249084517cf442e0e16856082b1a2b75e7e1e2cfcdda57fd3ef609d527",
+      "content_size_bytes": 12482,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact G8 scale/flavor/interference nonidentifiability frontier and PDG-2025 single-channel constraint; physical/release/authoritative G8 open"
+    },
+    "test_exact_physical_sm_hard_projector_hessians_v20.py": {
+      "content_sha256": "08deeb86a522ba64eee0152b3f68f8fff9bdd75dac13aca9d855fee3652ed76b",
+      "content_size_bytes": 6243,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact ten hard-projector source Hessians; full 37-row aggregate and physical G3-G5 open"
+    },
+    "test_exact_physical_sm_heavy_vector_masses_v20.py": {
+      "content_sha256": "6f5bd8638cfdd593e722055f74c2de761865b4391720b1b4a11ae9089eb61b42",
+      "content_size_bytes": 17304,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact parameterized physical-SM heavy-vector tree masses and threshold logs; loop/full G6-G7 open"
+    },
+    "test_exact_physical_sm_heavy_vector_msbar_matching_v20.py": {
+      "content_sha256": "e3b9118379cb6bc83e63646c4147a056f5cadc3faed13bc9c25bf42882f83b46",
+      "content_size_bytes": 18693,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact combined heavy-vector/FP-ghost/Goldstone non-SUSY MSbar kernel and finite constant; pole/pre-EW/full G6-G7 open"
+    },
+    "test_exact_physical_sm_last_six_hessians_v20.py": {
+      "content_sha256": "1565454ca40608367e275a2a3cb2fb1a6b3277418a1479720e313431b5d9379f",
+      "content_size_bytes": 3707,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact last-six source Hessians; all 37 source Hessians available but aggregate/global physical G3-G5 open"
+    },
+    "test_exact_physical_sm_local_equality_orbit_v20.py": {
+      "content_sha256": "100488ad2c0173134be41ef52e17c82cc9445fc481bf922d4c36a6b7fe0b8f12",
+      "content_size_bytes": 4059,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned full-486 local equality-orbit theorem; radius/global equality and physical G3-G5 open"
+    },
+    "test_exact_physical_sm_vector_rxi_vacuum_cancellation_v20.py": {
+      "content_sha256": "97275dad209ecef945b95b5dc9ec97b79b6d319346b8f769af5a9f9ae28d1aa7",
+      "content_size_bytes": 9053,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact zero-background arbitrary-positive-Rxi vacuum determinant cancellation; general-background/pole/full G6-G7 open"
+    },
+    "test_exact_x_symmetry_consistency_gate_v20.py": {
+      "content_sha256": "9397d65593994f9267845e08d92235a9b934cdea7053dcc7292c8c1f752253ee",
+      "content_size_bytes": 35046,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact-X v3 static/input/trusted-tree and genuine Wolfram/SARAH execution contract"
     },
     "test_final_g3_acceptance_gate_v20.py": {
       "content_sha256": "d11645a5268f29efa00af435066150571fd74cc82c4607b5d64ad028bd1f679e",
@@ -1075,26 +2489,26 @@
       "role": "byte-pinned dimension-six EFT mathematical G4/G5 gate bundle"
     },
     "test_final_g6_eft_mathematical_gate_v20.py": {
-      "content_sha256": "841badaa0fb1931060159233fad85d378bcaf68b71944f02bdd280e197813570",
-      "content_size_bytes": 2178,
+      "content_sha256": "f5447ed457035110d292337a17fcbdb894d68b6064b740addf61fd402d54d68e",
+      "content_size_bytes": 3069,
       "hash_mode": "raw",
-      "role": "byte-pinned exact EFT scalar spectrum and mathematical G6 gate bundle"
+      "role": "byte-pinned fail-closed formal G6 gate"
     },
     "test_freeze_corrected_rank1_endpoint_v21_integration.py": {
-      "content_sha256": "65b419e633fdad10e18dd5add9c31ad9108202defa8befbe1ed57381ca06405c",
-      "content_size_bytes": 34470,
+      "content_sha256": "8503f14847c3365e155fc22f09a91f03ac02c084badeb8863c7aa35839d642e7",
+      "content_size_bytes": 85607,
       "hash_mode": "raw",
       "role": "fail-closed central integration regression"
     },
     "test_g1_g8_execution_roadmap_v20.py": {
-      "content_sha256": "6e349f1bfe3c473709a4d16e4ba5fd9b4a60167dfe2f64defe1d82a822a67538",
-      "content_size_bytes": 27175,
+      "content_sha256": "e8a8c612b9a68b30392d40084022ff57f5b197a64963de27edc2877c44ab93e2",
+      "content_size_bytes": 46819,
       "hash_mode": "portable-lf",
       "role": "fail-closed central integration regression"
     },
     "test_g1_g8_gate_ledger_v20.py": {
-      "content_sha256": "0dfa5aa7d1bfc41f533dd4891362a1211c9bdec9efb025743b4d0325468581d2",
-      "content_size_bytes": 83002,
+      "content_sha256": "3c375c4a0ed7a6de1c636ebfcb9444b768b1ff6bd8a9b883c2ff574eb67632fd",
+      "content_size_bytes": 144594,
       "hash_mode": "portable-lf",
       "role": "fail-closed central integration regression"
     },
@@ -1104,44 +2518,114 @@
       "hash_mode": "portable-lf",
       "role": "fail-closed central integration regression"
     },
+    "test_physical_sm_source_algebra_equality_frontier_v20.py": {
+      "content_sha256": "e9d5200cbecdb22cbda4479607430f936e03e16b7c4663283abbbece99c7b770",
+      "content_size_bytes": 5860,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact physical-SM radial equality frontier; direct source Hessian/full equality/physical G3-G5 open"
+    },
+    "test_physical_sm_vacuum_local_feasibility_v20.py": {
+      "content_sha256": "3b688b8a2bd33a03e19edf4225568a3eaef96b4580f7d9ea23c38857dc069f5c",
+      "content_size_bytes": 29454,
+      "hash_mode": "raw",
+      "role": "byte-pinned physical-SM target/stabilizer truth overlay; source algebra/global orbit/physical G3-G7 open"
+    },
     "test_prepare_validation_artifacts_v20.py": {
-      "content_sha256": "59e11ecee4f73639d54d2ebfc074174b916a7953aa20e001d5e03d15cae7c3a1",
-      "content_size_bytes": 22149,
+      "content_sha256": "ceb2e0c6f18e37bcbf747697aada628bddcebaba4f2f118fc4c3a233716aad24",
+      "content_size_bytes": 27747,
       "hash_mode": "portable-lf",
       "role": "fail-closed central integration regression"
     },
+    "test_pyrate3_so10_u1x_gauge_beta_replay_v20.py": {
+      "content_sha256": "4fbf1eadf0bb5c6f3e9629a5ddab18743671118b84af709acb2053096fff18d5",
+      "content_size_bytes": 4206,
+      "hash_mode": "raw",
+      "role": "byte-pinned independent PyR@TE gauge-only replay bundle"
+    },
     "test_replicate_v20.py": {
-      "content_sha256": "35e54b2b2c6fdbf2a5b13184544b5891e12420e444d1df647ce2c801db90a3f1",
-      "content_size_bytes": 13562,
+      "content_sha256": "616dc7a27879645d2d0b37cd169500e4dbec7112137fb87f5c88410e01c8c21a",
+      "content_size_bytes": 17750,
       "hash_mode": "portable-lf",
       "role": "fail-closed central integration regression"
     },
     "test_theory_validation_matrix_v20.py": {
-      "content_sha256": "a98aeb45a553d271a3b6e2d123cec16ff6121bf12be4ca3b2c343e7ee78bd19c",
-      "content_size_bytes": 106554,
+      "content_sha256": "4077d5afdcfcd7fd9b502d24a52e3e1f0d669e48a85ae564d8b80c31fbe59370",
+      "content_size_bytes": 149868,
       "hash_mode": "portable-lf",
       "role": "fail-closed central integration regression"
     },
     "test_validate_release_v20.py": {
-      "content_sha256": "366f733ff74874d9aed2beda58a1642518a756f5e3c91fb065e1751d54a51455",
-      "content_size_bytes": 40759,
+      "content_sha256": "1e549810042fb1e79d3ed02d843f8d1aa9486239602731c784355548b99f059d",
+      "content_size_bytes": 65369,
       "hash_mode": "portable-lf",
       "role": "fail-closed central integration regression"
     },
+    "test_verify_canonical_g2_full_component_projection_dim6_v21.py": {
+      "content_sha256": "26598a42cf232c7d099352cd65fb07879bbddaf0d4b7c1e25bc8bdcf709cb524",
+      "content_size_bytes": 2781,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned exact canonical G2 contraction/projection proof and trusted verifier"
+    },
+    "test_verify_canonical_g3_physical_ew_global_vacuum_v21.py": {
+      "content_sha256": "8c81d43c6edb6d6ef03048fc4ff2073b8205509e85a71defc7a31687a58b1917",
+      "content_size_bytes": 4002,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned exact canonical G3 physical-EW global-vacuum proof and trusted verifier"
+    },
     "theory_validation_matrix_v20.py": {
-      "content_sha256": "6638574666de2b7c103a27c0878e16a9af62b56cc76d3666c407b0f460215916",
-      "content_size_bytes": 146294,
+      "content_sha256": "7af8954b4244be3e296104b20507bb52d1e2497afa1f472196382ef7ff988f6b",
+      "content_size_bytes": 219243,
       "hash_mode": "portable-lf",
       "role": "central corrected-endpoint integration source"
     },
+    "tools/validate-exact-x-model.wls": {
+      "content_sha256": "1d1dea122de1d3465cd0af14e10574b87bf72594de69e3a888fc7bcba5d1e281",
+      "content_size_bytes": 10529,
+      "hash_mode": "raw",
+      "role": "byte-pinned exact-X v3 static/input/trusted-tree and genuine Wolfram/SARAH execution contract"
+    },
     "validate_release_v20.py": {
-      "content_sha256": "180da53aced0e315bad25744b0361a67965f998be09ecb76a6dcd39d87b2ed99",
-      "content_size_bytes": 112356,
+      "content_sha256": "d314d08beca239fbd70d58ab0089de1f6d2d2c21cec834265f9f55c0fb1b851c",
+      "content_size_bytes": 206052,
       "hash_mode": "portable-lf",
       "role": "central corrected-endpoint integration source"
+    },
+    "verify_canonical_g1_complete_operator_ring_dim6_v21.py": {
+      "content_sha256": "26f5dfe44355923b25e264871765b82b779c9bccaa86630b18254fd8a690f2d1",
+      "content_size_bytes": 13359,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned exact dimension-six canonical G1 character/channel/completeness proof and trusted verifier"
+    },
+    "verify_canonical_g2_full_component_projection_dim6_v21.py": {
+      "content_sha256": "a13ceb61871da641fce3ca1146c9bb91d1045418686712e3373a56e4233370e7",
+      "content_size_bytes": 16157,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned exact canonical G2 contraction/projection proof and trusted verifier"
+    },
+    "verify_canonical_g3_physical_ew_global_vacuum_v21.py": {
+      "content_sha256": "49bff6ba5b89f321565a30a762fd5559adfcbca1ee157943082acf770b9d461b",
+      "content_size_bytes": 15778,
+      "hash_mode": "portable-lf",
+      "role": "portable-LF-pinned exact canonical G3 physical-EW global-vacuum proof and trusted verifier"
     }
   },
-  "inventory_count": 151,
+  "inventory_count": 314,
+  "legacy_SO10_210_beta_diagnostic_bundle": {
+    "all_checks_pass": true,
+    "checks": {
+      "active_deterministic_workflow_exact": true,
+      "diagnostic_integrity_exact": true,
+      "diagnostic_scope_fail_closed": true,
+      "generated_reports_are_exact_crlf": true
+    },
+    "diagnostic_checks_pass": true,
+    "full_two_loop_gauge_content_closed": false,
+    "live_SARAH_or_PyRATE_execution_attested": false,
+    "physical_thresholds_and_pole_masses_closed": false,
+    "quartic_dimensionful_EFT_betas_closed": false,
+    "raw_report_count": 2,
+    "unique_physical_mathematical_release_G7_closed": false
+  },
   "legacy_v20_quarantine": {
     "CLI_exit_code": 2,
     "CLI_writes_files": false,
@@ -1155,24 +2639,311 @@
     "EFT_G4_mathematical_gate_core_sha256": "931a152aed49eb28bf415a1aca093e923850cf68db3f40ccf1d2027b447a8c09",
     "EFT_G5_exact_global_lower_bound": "-40661/20000",
     "EFT_G5_mathematical_gate_core_sha256": "1b578471e74626e3b186cf7398aebd35349a67f45940b9c37d42bb49c1b8c8ba",
-    "EFT_G6_mathematical_gate_core_sha256": "e34b791478bf9cb00f951819cbfec45a99d51be776889d8a4e13cf1717eee738",
-    "EFT_G6_spectrum_core_sha256": "abb704133c8be22b424ba20e23387d6f30412e6c82ab3a214e88bd8df5bef9cc",
-    "EFT_G7_threshold_nonidentifiability_core_sha256": "303b4fa923b0475b8abe273836baea89671c2825da7756cbb79430a6400f4511",
+    "EFT_G6_G7_parameterized_matching_core_sha256": "0c7872a9e309ea817270051a84c685e09fc77ccdbd424e69a71106b7689f275f",
+    "EFT_G6_formal_gate_core_sha256": "3b06ae240c7fce18723f0ce77966e894e688dee65f56859239ff5cf552b1323c",
+    "EFT_G7_formal_U1_89_restriction_core_sha256": "93a8ea1abeb3cec2521cb043057b29646bd9c368f8e8bcc7e2d819f42a7dc741",
     "EFT_O6_current_endomorphism_core_sha256": "598d916da16e746c8be30e979a13a27a47d1600e2dd4bee7b9cf9fc398ec9da1",
     "EFT_beta_zero_base_Hessian_payload_sha256": "194740e7e90eeee33d5d772ab549df969e9665e3aebc1580c3319f58eee36930",
     "EFT_global_G3_theorem_core_sha256": "2eca279488d92d8bd9eca974c0d598340124f025e62212cd8a188413a6e8b7d0",
     "EFT_stabilized_Hessian_payload_sha256": "7ea54d59138f8e5b66aad3d1f1ecb707c65ac9bb0f0e118a597daaccc136b568",
+    "G6_SM_provenance_core_sha256": "0d9bad1158c6c93b29243c08b0265d472be1309267e390edafc3afb556233d39",
+    "PyRATE3_SO10_U1X_gauge_beta_replay_core_sha256": "63f097be00c5da69982909b79b5ac9c64c1080efa142ae5d419820fb260cbccf",
+    "authoritative_SO10_U1X_gauge_betas_core_sha256": "714796e4e8f1aa768d9e9f8434c6919aca854d33541b2bccc779f96933345752",
+    "canonical_G1_G8_v21_core_sha256": "b1a0c9e89794b2e0dc252f874dc2625e04468932d679c1249e96980b71c36ed7",
+    "canonical_G1_G8_v21_definition_sha256": "1ecc4a5ae0cb1c51a24438f56f4181a2e1cc03c0fc17bc4ca2c0ce522be75df5",
+    "canonical_G1_Susyno_channel_core_sha256": "31e789c63e670c59e6db265946f3487afbc58bb0881d3a58dbbb900903eab549",
+    "canonical_G1_complete_ring_core_sha256": "5ad999a8d1d3af208427aab841816fafb1c286b289fe826114e3fbaa98f6dfa9",
+    "canonical_G1_dim6_frontier_core_sha256": "0d58c47752aebebc9fc227dba8be3e7f88aba4528acc2415e8f8d3d2cf7c4838",
+    "canonical_G1_trusted_verifier_raw_sha256": "26f5dfe44355923b25e264871765b82b779c9bccaa86630b18254fd8a690f2d1",
+    "canonical_G2_exact_basis_core_sha256": "c731111ba16faaf1efaaebc83e57624e896a001e02f6ae5b6e63a07d00e3338c",
+    "canonical_G2_full_projection_core_sha256": "31bf4ad11049db23694cbd92c423c7355ee26a376bb6ea5a8b7ea1e7be667225",
+    "canonical_G2_trusted_verifier_raw_sha256": "a13ceb61871da641fce3ca1146c9bb91d1045418686712e3373a56e4233370e7",
+    "canonical_G3_global_vacuum_core_sha256": "1cf871141c5400d237b0ea9203afb10905e46a0c49a98ebe0fe047fcf6c189dc",
+    "canonical_G3_trusted_verifier_raw_sha256": "49bff6ba5b89f321565a30a762fd5559adfcbca1ee157943082acf770b9d461b",
     "certificate_raw_sha256": "dd40a508a08c219117ddefaf574652a24f0e1f868d011e05f558ecafc9600e03",
+    "conditional_physical_SM_EFT_Hessian_spectrum_core_sha256": "36bc4131dfb55ca93ab8e0b14caccc18476625e9b443c34672063725ffb6446a",
     "exact_LDL_pivot_sha256": "bc8626c201d626aa33a97f707bfa963ae887fe9abb64a0fab728343825a430c2",
+    "exact_X_v3_trusted_SARAH_tree_core_sha256": "de92b2de859efa7a0c4f5fdfb642d9f1ff8e1b071057bc8d4c295f6e2b6f8337",
     "exact_coordinate_sha256": "7a36b579821e135fb7283d02e696153cc78907048e73ca5dce0dd260abdc3147",
     "global_Phi_classification_core_sha256": "db493a74303a57862f09c2a92118ea3d66b8b12ecbaea9162155d4ab3baafecc",
     "global_Phi_classification_source_raw_sha256": "17038c6fb82ba565a16228f5f5c03026f0ab8e3ad7959792498c2785b9653066",
+    "legacy_EFT_G6_formal_spectrum_core_sha256": "abb704133c8be22b424ba20e23387d6f30412e6c82ab3a214e88bd8df5bef9cc",
+    "legacy_SO10_210_beta_diagnostic_source_raw_sha256": "3b318e32a2ceb43dc26191c32026609ca121d66f9235f1b76a00f0a5da007fa5",
+    "legacy_SO10_210_beta_diagnostic_test_raw_sha256": "162b1aad99ba90d18f707feb4baf6a2c3d05d8e00af8a382ac6493aedc6159e0",
     "map_numerator_csr_sha256": "1834c8439fa3e44459f7ba871420a4351cd0b4de194dec6f5c4a84c1f39d3a16",
+    "normalized_SO10_Yukawa_CGC_core_sha256": "c83671cff9c33043b5c7cad19e2f2a744cb5f861a8ea71937c5f3a7308dfffb7",
+    "physical_G7_component_threshold_core_sha256": "02c397bbe044695bf124b6f7415dbc1663e4beb9339e3e3e1da9632d532c02c2",
+    "physical_SM_37_row_aggregate_core_sha256": "8c1aeffcd29a4f78c42014f92cf4bfa09823a6a2efbd660d512d6b014db99f43",
+    "physical_SM_G4_G5_branch_mismatch_core_sha256": "1b91227393a4402a8433d7947c2b1ce954ebc69ff7fbcc4e8606c61afcfdfdbe",
+    "physical_SM_G6_G7_frontier_core_sha256": "eedc4bf7c068318f7cf597beaed25ff2eb5893951872475ade02ea8a91386aae",
+    "physical_SM_G8_frontier_core_sha256": "029dfd8b707825742c85b6d223a54ee964c76cf519496c5d5da28a7cad407fd5",
+    "physical_SM_five_amplitude_equality_core_sha256": "d0bf68bd5007f71295665add186761577dbe0d67d2d8e5bd1fb4e4eeb669a271",
+    "physical_SM_hard_projector_Hessians_core_sha256": "5c464a3e6725a8ba993d672667d16ea5fb6105b3f8015febcc90c7ea68640d59",
+    "physical_SM_heavy_vector_MSbar_matching_core_sha256": "9f7a269bcc24909b8f543a3ae38c10ea3e5acd5435798a2e74c3223322d1f575",
+    "physical_SM_heavy_vector_masses_core_sha256": "86c3e0dfda09366b1cf06c8c3a8dcb3dfdf3bfe1555a41214d380ed4db329894",
+    "physical_SM_last_six_Hessians_core_sha256": "07666dc9ea513c579ed5f82d19f9b636b21926f552dab49b4b02af288762348b",
+    "physical_SM_local_equality_orbit_core_sha256": "8ddf130f5212db6e918425b093d9b68278f22154f43fc5c1734812f8057768be",
+    "physical_SM_source_equality_frontier_core_sha256": "5d6f01c0ed131dcbc2813fa93f0bd81987178f2dac051e67b6db538b5a55f13d",
+    "physical_SM_vacuum_core_sha256": "01f565d3382756bc467bfaa99d187188bc1bfc4060f2c3a472650f5e57537e80",
+    "physical_SM_vector_Rxi_core_sha256": "ff79272e5f9eea691cae4e05926723d882ced5dcf852154dcfc43f8add44ef93",
     "renormalizable_G1_component_tensor_core_sha256": "32bed88b5fad0fe6e51cf19c3b3e120d53362150cfc1db6eafd8c897e24223b7",
     "renormalizable_G2_mathematical_core_sha256": "eb11744d0dbc9ceb883e8a6063177d8e3e370b1dcdc2c4e3eba97541b53d8fc4",
     "target_numerator_sha256": "14debcfaf02d4b8c20d1d43a2e1f82d6a7390e28428fc63dd21a9c5f90aec0cf"
   },
   "manifest_self_excluded_by_definition": true,
+  "normalized_SO10_Yukawa_CGC_truth_bundle": {
+    "all_checks_pass": true,
+    "checks": {
+      "all_ten_declared_representation_cgcs_exact": true,
+      "claim_boundary_exact": true,
+      "dependency_and_tensor_inventory_exact": true,
+      "producer_checks_preserve_scoped_false_flags": true,
+      "status_core_and_contract_exact": true
+    },
+    "full_yukawa_sector_closed": false,
+    "normalized_representation_CGCs_closed": true,
+    "physical_G7_closed": false,
+    "raw_file_count": 4
+  },
+  "physical_SM_37_row_aggregate_bundle": {
+    "all_37_active_Hessians_source_derived": true,
+    "all_checks_pass": true,
+    "checks": {
+      "exact_value_stationarity_kernel_rank_and_PSD": true,
+      "local_complete_but_global_and_physical_G3_G5_fail_closed": true,
+      "schema_status_core_and_eight_live_sources_exact": true
+    },
+    "exact_PSD_strict_mod_symmetry": true,
+    "exact_rank": 448,
+    "exact_stationary_value_minus_one": true,
+    "exact_symmetry_kernel_dimension": 38,
+    "full_486_global_equality_orbit_closed": false,
+    "live_transitive_source_count": 8,
+    "physical_SM_G3_closed": false,
+    "physical_SM_G4_closed": false,
+    "physical_SM_G5_closed": false,
+    "raw_file_count": 4,
+    "source_bound_local_stationary_Hessian_problem_complete": true
+  },
+  "physical_SM_G4_G5_branch_mismatch_bundle": {
+    "all_checks_pass": true,
+    "checks": {
+      "exact_mismatch_and_101_rescalings": true,
+      "not_global_no_go_and_G4_through_G8_fail_closed": true,
+      "schema_status_core_and_seven_live_dependencies_exact": true
+    },
+    "exact_branch_mismatch_proved": true,
+    "global_no_go_for_other_physical_EW_branches": false,
+    "live_dependency_count": 7,
+    "physical_SM_G4_closed": false,
+    "physical_SM_G5_closed": false,
+    "physical_SM_G6_closed": false,
+    "physical_SM_G7_closed": false,
+    "physical_SM_G8_closed": false,
+    "raw_file_count": 4,
+    "unit_rescaling_case_count": 101
+  },
+  "physical_SM_G6_G7_frontier_bundle": {
+    "all_checks_pass": true,
+    "checks": {
+      "canonical_core_exact": true,
+      "closed_and_open_matrix_exact": true,
+      "status_nonidentifiability_and_path_exact": true,
+      "unique_outputs_and_G6_G7_fail_closed": true
+    },
+    "continuous_nonidentifiability_proved": true,
+    "minimal_closure_path_machine_readable": true,
+    "physical_G6_closed": false,
+    "physical_G7_closed": false,
+    "raw_file_count": 4,
+    "unique_absolute_tree_spectrum": false,
+    "unique_full_RGE_trajectory": false,
+    "unique_pole_spectrum": false,
+    "unique_threshold_vector": false
+  },
+  "physical_SM_G8_frontier_bundle": {
+    "all_acceptance_criteria_pass": false,
+    "all_checks_pass": true,
+    "authoritative_G8_closed": false,
+    "canonical_G8_contract_audited": true,
+    "checks": {
+      "PDG_2025_constraint_exact_but_not_unique_prediction": true,
+      "canonical_G8_definition_and_acceptance_exact": true,
+      "canonical_core_and_source_binding_exact": true,
+      "embedded_checks_and_truth_boundary_exact": true,
+      "exact_101_case_scale_audit": true,
+      "flavor_and_interference_nonidentifiability_exact": true,
+      "minimal_free_vector_and_missing_input_boundary_exact": true,
+      "scale_and_finite_limit_nonidentifiability_exact": true
+    },
+    "continuous_absolute_scale_nonidentifiability_proved": true,
+    "exact_101_case_scale_audit_closed": true,
+    "flavor_and_interference_nonidentifiability_audited": true,
+    "minimal_exhibited_joint_free_real_dimension": 1,
+    "physical_G8_closed": false,
+    "raw_file_count": 4,
+    "release_G8_verified": false,
+    "repository_frozen_PDG_2025_single_channel_constraint_verified": true,
+    "unique_proton_lifetime_or_distribution": false
+  },
+  "physical_SM_five_amplitude_equality_bundle": {
+    "all_checks_pass": true,
+    "checks": {
+      "core_schema_status_and_live_sources_exact": true,
+      "exact_five_amplitude_Groebner_classification": true,
+      "full_486_and_physical_G3_G4_G5_fail_closed": true,
+      "sixteen_discrete_variants_but_no_continuous_orbit_claim": true
+    },
+    "continuous_orbit_equivalence_classified": false,
+    "direct_source_algebra_full_486_Hessian_available": false,
+    "discrete_real_solution_count": 16,
+    "five_real_amplitude_stationary_equality_classified": true,
+    "full_486_equality_classified": false,
+    "physical_SM_G3_closed": false,
+    "physical_SM_G4_closed": false,
+    "physical_SM_G5_closed": false,
+    "raw_file_count": 4,
+    "transitive_portable_source_count": 14
+  },
+  "physical_SM_hard_projector_Hessians_bundle": {
+    "aggregate_stationarity_kernel_rank_PSD_closed": false,
+    "all_37_source_Hessians_available": false,
+    "all_checks_pass": true,
+    "checks": {
+      "schema_status_core_and_live_source_pins_exact": true,
+      "scope_and_physical_claims_fail_closed": true,
+      "ten_exact_486_dimensional_source_Hessians": true
+    },
+    "exact_source_Hessian_row_count": 10,
+    "live_transitive_source_count": 6,
+    "physical_SM_G3_closed": false,
+    "physical_SM_G4_closed": false,
+    "physical_SM_G5_closed": false,
+    "raw_file_count": 4,
+    "remaining_active_row_count": 27
+  },
+  "physical_SM_heavy_vector_MSbar_matching_bundle": {
+    "Goldstone_double_count_guard_active": true,
+    "all_checks_pass": true,
+    "checks": {
+      "arbitrary_Rxi_pole_preEW_and_full_G6_G7_fail_closed": true,
+      "combined_MSbar_formula_and_finite_constants_exact": true,
+      "multiplicity_goldstone_and_neutral_guards_exact": true,
+      "primary_equation_provenance_exact": true,
+      "producer_checks_preserve_exact_scoped_truth_boundary": true,
+      "status_core_schema_and_dependencies_exact": true
+    },
+    "combined_heavy_vector_FPghost_Goldstone_MSbar_kernel_closed": true,
+    "complete_scalar_fermion_thresholds_closed": false,
+    "exact_SU3_and_physical_QED_group_factors_closed": true,
+    "finite_MSbar_vector_constant_closed": true,
+    "independent_background_covariant_general_field_Rxi_replay_closed": false,
+    "physical_G6_closed": false,
+    "physical_G7_closed": false,
+    "pole_mass_conversion_closed": false,
+    "raw_file_count": 4,
+    "stationary_SM_symmetric_pre_EW_matching_closed": false
+  },
+  "physical_SM_heavy_vector_mass_bundle": {
+    "all_checks_pass": true,
+    "checks": {
+      "claim_boundary_exact": true,
+      "exact_tree_mass_rank_kernel_and_goldstone_exact": true,
+      "parameterized_threshold_interface_exact": true,
+      "producer_checks_preserve_scoped_false_flags": true,
+      "status_core_contract_and_dependencies_exact": true
+    },
+    "parameterized_tree_vector_masses_closed": true,
+    "parameterized_unbroken_group_threshold_logs_closed": true,
+    "physical_G6_closed": false,
+    "physical_G7_closed": false,
+    "pole_masses_closed": false,
+    "raw_file_count": 4,
+    "vector_Goldstone_ghost_matching_closed": false
+  },
+  "physical_SM_last_six_Hessians_bundle": {
+    "aggregate_stationarity_kernel_rank_PSD_closed": false,
+    "all_37_active_source_Hessians_available": true,
+    "all_checks_pass": true,
+    "checks": {
+      "all_37_available_but_aggregate_global_and_G3_G5_fail_closed": true,
+      "schema_status_core_and_ten_live_sources_exact": true,
+      "six_exact_486_dimensional_source_Hessians": true
+    },
+    "exact_last_six_source_Hessians_closed": true,
+    "full_486_global_equality_orbit_closed": false,
+    "live_transitive_source_count": 10,
+    "physical_SM_G3_closed": false,
+    "physical_SM_G4_closed": false,
+    "physical_SM_G5_closed": false,
+    "raw_file_count": 4
+  },
+  "physical_SM_local_equality_orbit_bundle": {
+    "all_16_sign_variants_one_continuous_K_orbit": true,
+    "all_checks_pass": true,
+    "checks": {
+      "all_16_sign_variants_one_continuous_K_orbit_exact": true,
+      "full_486_local_Morse_Bott_orbit_exact": true,
+      "local_positive_but_radius_global_and_physical_G3_G5_fail_closed": true,
+      "schema_status_core_and_seven_live_sources_exact": true
+    },
+    "complete_486_global_equality_orbit_classified": false,
+    "full_486_local_stationary_equality_orbit_classified": true,
+    "full_486_local_stationary_orbit_classified": true,
+    "live_transitive_source_count": 7,
+    "physical_SM_G3_closed": false,
+    "physical_SM_G4_closed": false,
+    "physical_SM_G5_closed": false,
+    "portable_file_count": 4,
+    "quantitative_neighborhood_radius_proved": false,
+    "target_orbit_strict_local_minimum_mod_K": true
+  },
+  "physical_SM_source_equality_frontier_bundle": {
+    "all_checks_pass": true,
+    "checks": {
+      "core_schema_status_exact": true,
+      "float_lattice_not_promoted": true,
+      "full_equality_and_G3_G5_fail_closed": true,
+      "radial_equality_only_exact": true
+    },
+    "complete_global_equality_orbit_closed": false,
+    "direct_source_algebra_Hessian_closed": false,
+    "physical_SM_G3_closed": false,
+    "physical_SM_G4_closed": false,
+    "physical_SM_G5_closed": false,
+    "radial_stationary_equality_classified_exactly": true,
+    "raw_file_count": 4
+  },
+  "physical_SM_vacuum_truth_bundle": {
+    "all_checks_pass": true,
+    "checks": {
+      "dependencies_and_standard_stabilizer_exact": true,
+      "old_physical_label_superseded_exact": true,
+      "physical_G3_through_G7_fail_closed": true,
+      "reconstructed_not_source_proof_exact": true,
+      "schema_status_core_exact": true
+    },
+    "old_U1em_label_superseded": true,
+    "physical_SM_G3_G4_G5_G6_G7_closed": false,
+    "raw_file_count": 4,
+    "standard_SU3C_x_U1em_stabilizer_proved": true
+  },
+  "physical_SM_vector_Rxi_bundle": {
+    "all_37_broken_directions_closed": true,
+    "all_checks_pass": true,
+    "background_covariant_general_field_determinants_closed": false,
+    "checks": {
+      "canonical_core_exact": true,
+      "general_background_pole_and_G6_G7_fail_closed": true,
+      "hundred_exact_cases_closed": true,
+      "status_and_exact_vacuum_scope": true
+    },
+    "physical_G6_closed": false,
+    "physical_G7_closed": false,
+    "pole_vector_masses_closed": false,
+    "raw_file_count": 4,
+    "zero_background_Rxi_vacuum_determinant_cancellation_closed": true
+  },
   "publication_manifest_raw_sha256": "7ecf96a12321b9df5e7d118ce0fb83e65ad9859516b520936408ec4d46a11017",
   "quarantine": {
     "excluded_from_inventory": [
@@ -1183,7 +2954,7 @@
     ],
     "touched_or_promoted": false
   },
-  "release_checksum_entry_count": 330,
+  "release_checksum_entry_count": 483,
   "renormalizable_G1_component_tensor_bundle": {
     "all_checks_pass": true,
     "checks": {
@@ -1222,7 +2993,7 @@
     "no_write_stochastic_report_commands": 3,
     "no_write_stochastic_report_orchestrators": 2,
     "read_only_frozen_dependency_orchestrators": 3,
-    "read_only_frozen_report_commands": 63,
-    "read_only_frozen_report_sources": 21
+    "read_only_frozen_report_commands": 138,
+    "read_only_frozen_report_sources": 46
   }
 }

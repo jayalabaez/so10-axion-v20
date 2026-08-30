@@ -1,0 +1,1424 @@
+{
+  "G1_G8": [
+    {
+      "closed": false,
+      "full_gate_claim": false,
+      "gate": "G1",
+      "reason": "The published discrete selector and source operators are landed, but no complete all-order operator census or explicit Green--Schwarz UV sector is present.",
+      "state": "OPEN"
+    },
+    {
+      "closed": false,
+      "full_gate_claim": false,
+      "gate": "G2",
+      "reason": "The 2x2 colored and PQ exotic ranks pass, but normalized full component tensors and pole thresholds are not landed.",
+      "state": "OPEN"
+    },
+    {
+      "closed": false,
+      "full_gate_claim": false,
+      "gate": "G3",
+      "reason": "A zero-energy global-SUSY F=D=0 branch passes; the complete soft/Kahler potential, competing branches, and full Hessian remain open.",
+      "state": "OPEN"
+    },
+    {
+      "closed": false,
+      "full_gate_claim": false,
+      "gate": "G4",
+      "reason": "Z4R protects the high-scale Higgs mass and permits mu~w0, but radiative EWSB and the complete soft hierarchy are not solved.",
+      "state": "OPEN"
+    },
+    {
+      "closed": false,
+      "full_gate_claim": false,
+      "gate": "G5",
+      "reason": "The Z11,rP=2 selector has a narrow conditional P-only quality/timing arithmetic interval and the seesaw scale is viable; the required dynamical GS axion, physical wall-vacuum lattice/collapse, radiative PQ generation, and full axion/relic spectrum remain open.",
+      "state": "OPEN"
+    },
+    {
+      "closed": false,
+      "full_gate_claim": false,
+      "gate": "G6",
+      "reason": "Exact one/two-loop gauge-only matrices and a finite cutoff witness are landed; Yukawa/soft running and physical matching are absent.",
+      "state": "OPEN"
+    },
+    {
+      "closed": false,
+      "full_gate_claim": false,
+      "gate": "G7",
+      "reason": "Source-level proton-suppression estimates exist, but no physical pole spectrum or Wilson-coefficient evolution is computed.",
+      "state": "OPEN"
+    },
+    {
+      "closed": false,
+      "full_gate_claim": false,
+      "gate": "G8",
+      "reason": "A perturbative neutrino-scale witness exists, but flavour and cosmology are fitted/assumed rather than predicted in a likelihood.",
+      "state": "OPEN"
+    }
+  ],
+  "RG_above_PS": {
+    "B": [
+      [
+        108,
+        15,
+        21
+      ],
+      [
+        75,
+        53,
+        3
+      ],
+      [
+        105,
+        3,
+        81
+      ]
+    ],
+    "b": [
+      1,
+      5,
+      9
+    ],
+    "field_contributions": [
+      {
+        "S": {
+          "SU2L": 1,
+          "SU2R": 1,
+          "SU4C": 0
+        },
+        "name": "H"
+      },
+      {
+        "S": {
+          "SU2L": 6,
+          "SU2R": 0,
+          "SU4C": 3
+        },
+        "name": "Q"
+      },
+      {
+        "S": {
+          "SU2L": 0,
+          "SU2R": 6,
+          "SU4C": 3
+        },
+        "name": "Qc"
+      },
+      {
+        "S": {
+          "SU2L": 0,
+          "SU2R": 0,
+          "SU4C": 0
+        },
+        "name": "X"
+      },
+      {
+        "S": {
+          "SU2L": 0,
+          "SU2R": 2,
+          "SU4C": 1
+        },
+        "name": "Sc"
+      },
+      {
+        "S": {
+          "SU2L": 0,
+          "SU2R": 2,
+          "SU4C": 1
+        },
+        "name": "Sbarc"
+      },
+      {
+        "S": {
+          "SU2L": 0,
+          "SU2R": 0,
+          "SU4C": 1
+        },
+        "name": "Sigma"
+      },
+      {
+        "S": {
+          "SU2L": 2,
+          "SU2R": 0,
+          "SU4C": 1
+        },
+        "name": "PsiBar"
+      },
+      {
+        "S": {
+          "SU2L": 2,
+          "SU2R": 0,
+          "SU4C": 1
+        },
+        "name": "Psi"
+      },
+      {
+        "S": {
+          "SU2L": 0,
+          "SU2R": 2,
+          "SU4C": 1
+        },
+        "name": "Psic"
+      },
+      {
+        "S": {
+          "SU2L": 0,
+          "SU2R": 2,
+          "SU4C": 1
+        },
+        "name": "PsiBarc"
+      },
+      {
+        "S": {
+          "SU2L": 0,
+          "SU2R": 0,
+          "SU4C": 0
+        },
+        "name": "P"
+      }
+    ],
+    "formula": "b_a=S_a-3C_a(G); B_ab=delta_ab[-6C_a(G)^2+2C_a(G)S_a]+4 sum_i S_a(i) C_b(i)",
+    "group_order": [
+      "SU4C",
+      "SU2L",
+      "SU2R"
+    ],
+    "scheme": "N=1_SUSY_DRbar_gauge_only",
+    "sum_Dynkin": {
+      "SU2L": 11,
+      "SU2R": 15,
+      "SU4C": 13
+    }
+  },
+  "RG_below_PS": {
+    "MSSM": {
+      "B": [
+        [
+          "199/25",
+          "27/5",
+          "88/5"
+        ],
+        [
+          "9/5",
+          25,
+          24
+        ],
+        [
+          "11/5",
+          9,
+          14
+        ]
+      ],
+      "b": [
+        "33/5",
+        1,
+        -3
+      ]
+    },
+    "MSSM_plus_vectorlike_family": {
+      "B": [
+        [
+          "977/75",
+          "39/5",
+          "88/3"
+        ],
+        [
+          "13/5",
+          53,
+          40
+        ],
+        [
+          "11/3",
+          15,
+          "178/3"
+        ]
+      ],
+      "b": [
+        "53/5",
+        5,
+        1
+      ]
+    },
+    "group_order": [
+      "U1Y_GUT",
+      "SU2L",
+      "SU3C"
+    ],
+    "one_complete_vectorlike_PS_family": {
+      "Delta_B": [
+        [
+          "76/15",
+          "12/5",
+          "176/15"
+        ],
+        [
+          "4/5",
+          28,
+          16
+        ],
+        [
+          "22/15",
+          6,
+          "136/3"
+        ]
+      ],
+      "Delta_b": [
+        4,
+        4,
+        4
+      ],
+      "representation": "(4,2,1)+(bar4,2,1)+(bar4,1,2)+(4,1,2)",
+      "universal_one_loop_threshold": true
+    }
+  },
+  "architecture": "minimal SUSY SU(4)C x SU(2)L x SU(2)R with selected derived Z4R x Z11 (rP=2) selector and one KSVZ vectorlike PS family",
+  "checks": {
+    "PS_B_matrix_exact": true,
+    "PS_b_is_1_5_9": true,
+    "Z11_37GHz_row_is_explicitly_P_only_and_fail_closed": true,
+    "Z11_P_only_interval_arithmetic_is_nonempty_but_GS_wall_open": true,
+    "Z11_rP2_selected_gauge_endpoints_match": true,
+    "Z11_rP2_selector_is_anomaly_universal_and_P_only_gcd_is_one": true,
+    "all_full_G1_G8_claims_are_false": true,
+    "alpha_inverse_threshold_matches": true,
+    "colored_and_exotic_ranks_are_two": true,
+    "complete_family_Delta_b_is_universal_4": true,
+    "coupled_endpoint_matches": true,
+    "coupled_reduced_Planck_endpoint_matches": true,
+    "fPQ_4e10_has_conditional_timing_quality_overlap": true,
+    "global_SUSY_witness_is_zero_energy": true,
+    "harmonic_gcd_blocks_domain_wall_promotion": true,
+    "neutrino_Yukawas_are_perturbative": true,
+    "no_Abelian_kinetic_mixing_interval": true,
+    "postinflation_domain_wall_claim_is_fail_closed": true,
+    "published_Z5_discrete_anomalies_are_universal_but_nonzero": true,
+    "published_Z5_leading_pure_P_W_is_power10": true
+  },
+  "closure_counts": {
+    "closed": 0,
+    "open": 8
+  },
+  "core_sha256": "9f47db6cb3bb97b10b4554b8b3f51f146c09820bd202d7b6dcb429891fece780",
+  "derived_Z11_rP2_GS_eligible_candidate": {
+    "bias_model": {
+      "BBN_temperature_boundary_GeV": 0.001,
+      "Lambda_GeV": 1e+18,
+      "axion_mass_normalization_eV_at_fa_1e12GeV": 5.6925e-06,
+      "c11": 1.0,
+      "cosine_amplitude": "epsilon=2*A after adding the Hermitian conjugate",
+      "generic_theta_formula": "Delta theta=(11/NDW)*Vbias/chi for unit relative sine",
+      "operator": "W=c11*P^11/Lambda^8",
+      "relative_phase_sine_for_interval": 1.0,
+      "scope": "Conditional P-only EFT estimate. A physical bias and wall gap require the dynamical GS axion and gauge quotient.",
+      "soft_monomial": "A=w0*c11*<P>^11/Lambda^8",
+      "theta_bound": 1e-10,
+      "w0_GeV": 100000.0
+    },
+    "charge_ledger": {
+      "H_Q_Qc_X_Sc_Sbarc_Sigma": "same as minimal Z5 with all Z11 charges zero",
+      "P": {
+        "PQ": 1,
+        "Z11": 1,
+        "Z4R": 2
+      },
+      "P_VEV_preserves_R_parity": true,
+      "P_vector_mass_operators_allowed": true,
+      "PsiBar_and_PsiBarc": {
+        "PQ": -1,
+        "Z11": 10,
+        "Z4R": 3
+      },
+      "Psi_and_Psic": {
+        "PQ": 0,
+        "Z11": 0,
+        "Z4R": 1
+      }
+    },
+    "conditional_P_only_EFT_37GHz_benchmark": {
+      "GS_inclusive_wall_vacuum_and_collapse_closed": false,
+      "H_decay_GeV": 1.0089485012755102e-25,
+      "H_decay_over_H_domination": 1046.7026884527459,
+      "H_domination_GeV_sigma_over_3MPlanck2": 9.639303618938395e-29,
+      "P_VEV_GeV": 150000000000.0,
+      "axion_mass_micro_eV": 151.8,
+      "cosine_epsilon_GeV4": 1.729951171875e-16,
+      "full_BBN_wall_axion_relic_calculation_closed": false,
+      "phase_and_gap_dependence": "Delta theta scales as c11*abs(sin(delta)); Hdec scales as c11 times the adjacent-vacuum gap factor, and tdec scales inversely.",
+      "photon_frequency_GHz": 36.705077574,
+      "physical_fa_GeV_if_single_P_canonical": 37500000000.0,
+      "radiation_era_decay_time_s": 3.2618709283372245,
+      "scope": "P-only frequency, quality, and thin-wall timing diagnostic. The actual GS-inclusive wall gap and decay time are not computed.",
+      "soft_monomial_before_hc_GeV4": 8.649755859375e-17,
+      "wall_energy_fraction_at_decay_order": 0.0009553811326100799,
+      "wall_gap_factor": 1.0,
+      "worst_phase_Delta_theta_11_over_4_epsilon_over_chi": 1.4563955963444054e-11
+    },
+    "conditional_P_only_EFT_interval_GeV": {
+      "effective_lower_bound": 174031453560.9043,
+      "maximum_from_theta": 178713257929.25204,
+      "minimum_before_wall_domination": 69271618113.71922,
+      "minimum_decay_by_1MeV": 174031453560.9043,
+      "nonempty_P_only_arithmetic": true,
+      "physical_GS_inclusive_wall_window_claim": false,
+      "scope": "Coefficient-one, unit-sine, thin-wall inequalities in the conditional P-only EFT; not a GS-inclusive cosmological interval.",
+      "upper_over_lower": 1.0269020586368274
+    },
+    "conditional_P_only_EFT_parameter_witness": {
+      "Delta_theta_generic_harmonic_estimate": 8.451131384112682e-11,
+      "GS_inclusive_wall_collapse_pass": false,
+      "H_decay_GeV": 4.98979940779982e-25,
+      "P_VEV_GeV": 176000000000.0,
+      "P_only_decay_before_domination_order_inequality_pass": true,
+      "P_only_decay_by_1MeV_order_inequality_pass": true,
+      "P_only_integer_gcd_is_one": true,
+      "P_only_quality_inequality_pass": true,
+      "T_decay_GeV_order_estimate": 0.0010578512444516352,
+      "alphaPS_inverse_after_complete_family_threshold": 17.03053395963942,
+      "axion_mass_eV": 0.000129375,
+      "bias_GeV4": 1.0038511980063697e-15,
+      "bias_over_chi": 3.073138685131884e-11,
+      "bias_over_minimum_for_decay_by_1MeV": 1.1190492553878733,
+      "bias_over_sigma2_over_3MPlanck2": 4411.802053287488,
+      "coupled_gauge_only_alpha_inverse_at_1e18GeV": [
+        15.760581115599363,
+        12.87767203164891,
+        9.686379301220363
+      ],
+      "coupled_gauge_only_alpha_inverse_at_reduced_Planck": [
+        15.501027745017138,
+        12.06369301733598,
+        8.231081080183568
+      ],
+      "finite_and_perturbative_to_reduced_Planck_gauge_only": true,
+      "physical_fa_GeV_if_single_P_canonical": 44000000000.0,
+      "scope": "Numerical P-only EFT arithmetic benchmark; it does not attest a consistent anomalous-discrete wall system.",
+      "soft_monomial_before_hc_GeV4": 5.019255990031849e-16,
+      "wall_tension_GeV3": 2011806720.0
+    },
+    "harmonics": {
+      "GS_inclusive_residual_degeneracy": null,
+      "GS_inclusive_vacuum_lattice_computed": false,
+      "GS_inclusive_wall_collapse_demonstrated": false,
+      "conditional_P_only_EFT_gcd": 1,
+      "conditional_P_only_QCD_harmonic": 4,
+      "conditional_P_only_formal_residual_degeneracy_from_two_cosines": 1,
+      "leading_holomorphic_Kahler_P_power": 22,
+      "leading_superpotential_P_power": 11,
+      "scope": "Integer arithmetic for a provisional P-only EFT potential cos(4*aP/fP)+cos(11*aP/fP+delta); it is not the GS-inclusive discrete-gauge vacuum count."
+    },
+    "mixed_anomalies": {
+      "Green_Schwarz_completion_required": true,
+      "P_only_QCD_cosine_is_a_complete_discrete_gauge_potential": false,
+      "Z11_mod11": {
+        "SU2L": 9,
+        "SU2R": 9,
+        "SU4C": 9
+      },
+      "Z11_raw": {
+        "SU2L": -2,
+        "SU2R": -2,
+        "SU4C": -2
+      },
+      "Z4R_mod2": {
+        "SU2L": 1,
+        "SU2R": 1,
+        "SU4C": 1
+      },
+      "Z4R_raw": {
+        "SU2L": -3,
+        "SU2R": -3,
+        "SU4C": -3
+      },
+      "dynamical_shifting_GS_axion_required": true,
+      "interpretation": "Universality makes the selector GS-eligible, not anomaly-free. The shifting GS axion and discrete-gauge quotient must be included before the physical axion periodicity or wall-vacuum lattice can be counted.",
+      "universal_but_nonzero": true
+    },
+    "name": "derived_Z4R_x_Z11_rP2_GS_eligible_P_only_arithmetic",
+    "promotion_boundary": {
+      "GS_axion_dynamics_included": false,
+      "GS_inclusive_wall_collapse_attested": false,
+      "GS_inclusive_wall_vacuum_structure_attested": false,
+      "actual_domain_wall_solution": false,
+      "axino_saxion_neutralino_relic_history_attested": false,
+      "complete_discrete_operator_census_and_GS_UV_completion_attested": false,
+      "conditional_P_only_EFT_arithmetic_witness": true,
+      "conditional_axion_field_theory_witness": false,
+      "full_domain_wall_network_attested": false,
+      "hard_boundary": "The anomalous Z11 needs a shifting GS axion. Therefore gcd(11,4)=1 and the numerical interval are P-only EFT arithmetic, not the vacuum count or collapse proof of the physical discrete-gauge theory.",
+      "radiative_generation_of_P_VEV_attested": false,
+      "sensitivity": "The allowed fPQ interval is only about 2.7 percent wide for c11=1 and the stated thin-wall inputs; O(1) coefficients, phases, gap factors, and thermal history must be computed, not assumed."
+    },
+    "status": "P_ONLY_EFT_QUALITY_AND_TIMING_ARITHMETIC_EXISTS__GS_INCLUSIVE_WALL_SYSTEM_OPEN"
+  },
+  "failures": [],
+  "field_content": [
+    {
+      "PQ": 0,
+      "PS_rep": [
+        1,
+        2,
+        2
+      ],
+      "Z11": 0,
+      "Z4R": 0,
+      "multiplicity": 1,
+      "name": "H",
+      "role": "MSSM_bidoublet"
+    },
+    {
+      "PQ": 0,
+      "PS_rep": [
+        4,
+        2,
+        1
+      ],
+      "Z11": 0,
+      "Z4R": 1,
+      "multiplicity": 3,
+      "name": "Q",
+      "role": "three_families"
+    },
+    {
+      "PQ": 0,
+      "PS_rep": [
+        4,
+        1,
+        2
+      ],
+      "Z11": 0,
+      "Z4R": 1,
+      "multiplicity": 3,
+      "name": "Qc",
+      "role": "three_families_conjugate_SU4_rep"
+    },
+    {
+      "PQ": 0,
+      "PS_rep": [
+        1,
+        1,
+        1
+      ],
+      "Z11": 0,
+      "Z4R": 2,
+      "multiplicity": 1,
+      "name": "X",
+      "role": "PS_F_term_driver"
+    },
+    {
+      "PQ": 0,
+      "PS_rep": [
+        4,
+        1,
+        2
+      ],
+      "Z11": 0,
+      "Z4R": 0,
+      "multiplicity": 1,
+      "name": "Sc",
+      "role": "PS_breaking_conjugate_SU4_rep"
+    },
+    {
+      "PQ": 0,
+      "PS_rep": [
+        4,
+        1,
+        2
+      ],
+      "Z11": 0,
+      "Z4R": 0,
+      "multiplicity": 1,
+      "name": "Sbarc",
+      "role": "PS_breaking_SU4_rep"
+    },
+    {
+      "PQ": 0,
+      "PS_rep": [
+        6,
+        1,
+        1
+      ],
+      "Z11": 0,
+      "Z4R": 2,
+      "multiplicity": 1,
+      "name": "Sigma",
+      "role": "colored_partner"
+    },
+    {
+      "PQ": -1,
+      "PS_rep": [
+        4,
+        2,
+        1
+      ],
+      "Z11": 10,
+      "Z4R": 3,
+      "multiplicity": 1,
+      "name": "PsiBar",
+      "role": "KSVZ_vectorlike_left_conjugate"
+    },
+    {
+      "PQ": 0,
+      "PS_rep": [
+        4,
+        2,
+        1
+      ],
+      "Z11": 0,
+      "Z4R": 1,
+      "multiplicity": 1,
+      "name": "Psi",
+      "role": "KSVZ_vectorlike_left"
+    },
+    {
+      "PQ": 0,
+      "PS_rep": [
+        4,
+        1,
+        2
+      ],
+      "Z11": 0,
+      "Z4R": 1,
+      "multiplicity": 1,
+      "name": "Psic",
+      "role": "KSVZ_vectorlike_right_conjugate_SU4_rep"
+    },
+    {
+      "PQ": -1,
+      "PS_rep": [
+        4,
+        1,
+        2
+      ],
+      "Z11": 10,
+      "Z4R": 3,
+      "multiplicity": 1,
+      "name": "PsiBarc",
+      "role": "KSVZ_vectorlike_right"
+    },
+    {
+      "PQ": 1,
+      "PS_rep": [
+        1,
+        1,
+        1
+      ],
+      "Z11": 1,
+      "Z4R": 2,
+      "multiplicity": 1,
+      "name": "P",
+      "role": "PQ_breaking"
+    }
+  ],
+  "namespace": "active.susy_pati_salam_z4r_z11_rp2.v24.vacuum_rg_frontier",
+  "phenomenology_frontier": {
+    "neutrino": {
+      "Dirac_Yukawa_singular_values_for_vu_174GeV": [
+        0.057471264368,
+        0.169633333153,
+        0.40695095319
+      ],
+      "MR_GeV": 100000000000000.0,
+      "interpretation": "The scale supports observed neutrino masses with perturbative Yukawas; mixing and charged-flavour textures are inputs, not predictions.",
+      "mass_eigenvalues_eV": [
+        0.001,
+        0.008712060606,
+        0.050139804547
+      ],
+      "mechanism": "type-I_seesaw_from_(Sbarc*Qc)^2/Lambda",
+      "normal_ordering_input": {
+        "Delta_m21_sq_eV2": 7.49e-05,
+        "Delta_m31_sq_eV2": 0.002513,
+        "m1_eV": 0.001
+      },
+      "perturbative_scale_witness": true
+    },
+    "proton_and_relic_boundaries": {
+      "axino_saxion_neutralino_relic_likelihood_landed": false,
+      "physical_Wilson_matching_and_pole_lifetime_landed": false,
+      "source_dimension4_baryon_coefficient_order": 1e-55,
+      "source_minimal_RPV_lambdaL_order": 1e-29
+    },
+    "selected_Z11_axion_candidate": {
+      "bias_model": {
+        "BBN_temperature_boundary_GeV": 0.001,
+        "Lambda_GeV": 1e+18,
+        "axion_mass_normalization_eV_at_fa_1e12GeV": 5.6925e-06,
+        "c11": 1.0,
+        "cosine_amplitude": "epsilon=2*A after adding the Hermitian conjugate",
+        "generic_theta_formula": "Delta theta=(11/NDW)*Vbias/chi for unit relative sine",
+        "operator": "W=c11*P^11/Lambda^8",
+        "relative_phase_sine_for_interval": 1.0,
+        "scope": "Conditional P-only EFT estimate. A physical bias and wall gap require the dynamical GS axion and gauge quotient.",
+        "soft_monomial": "A=w0*c11*<P>^11/Lambda^8",
+        "theta_bound": 1e-10,
+        "w0_GeV": 100000.0
+      },
+      "charge_ledger": {
+        "H_Q_Qc_X_Sc_Sbarc_Sigma": "same as minimal Z5 with all Z11 charges zero",
+        "P": {
+          "PQ": 1,
+          "Z11": 1,
+          "Z4R": 2
+        },
+        "P_VEV_preserves_R_parity": true,
+        "P_vector_mass_operators_allowed": true,
+        "PsiBar_and_PsiBarc": {
+          "PQ": -1,
+          "Z11": 10,
+          "Z4R": 3
+        },
+        "Psi_and_Psic": {
+          "PQ": 0,
+          "Z11": 0,
+          "Z4R": 1
+        }
+      },
+      "conditional_P_only_EFT_37GHz_benchmark": {
+        "GS_inclusive_wall_vacuum_and_collapse_closed": false,
+        "H_decay_GeV": 1.0089485012755102e-25,
+        "H_decay_over_H_domination": 1046.7026884527459,
+        "H_domination_GeV_sigma_over_3MPlanck2": 9.639303618938395e-29,
+        "P_VEV_GeV": 150000000000.0,
+        "axion_mass_micro_eV": 151.8,
+        "cosine_epsilon_GeV4": 1.729951171875e-16,
+        "full_BBN_wall_axion_relic_calculation_closed": false,
+        "phase_and_gap_dependence": "Delta theta scales as c11*abs(sin(delta)); Hdec scales as c11 times the adjacent-vacuum gap factor, and tdec scales inversely.",
+        "photon_frequency_GHz": 36.705077574,
+        "physical_fa_GeV_if_single_P_canonical": 37500000000.0,
+        "radiation_era_decay_time_s": 3.2618709283372245,
+        "scope": "P-only frequency, quality, and thin-wall timing diagnostic. The actual GS-inclusive wall gap and decay time are not computed.",
+        "soft_monomial_before_hc_GeV4": 8.649755859375e-17,
+        "wall_energy_fraction_at_decay_order": 0.0009553811326100799,
+        "wall_gap_factor": 1.0,
+        "worst_phase_Delta_theta_11_over_4_epsilon_over_chi": 1.4563955963444054e-11
+      },
+      "conditional_P_only_EFT_interval_GeV": {
+        "effective_lower_bound": 174031453560.9043,
+        "maximum_from_theta": 178713257929.25204,
+        "minimum_before_wall_domination": 69271618113.71922,
+        "minimum_decay_by_1MeV": 174031453560.9043,
+        "nonempty_P_only_arithmetic": true,
+        "physical_GS_inclusive_wall_window_claim": false,
+        "scope": "Coefficient-one, unit-sine, thin-wall inequalities in the conditional P-only EFT; not a GS-inclusive cosmological interval.",
+        "upper_over_lower": 1.0269020586368274
+      },
+      "conditional_P_only_EFT_parameter_witness": {
+        "Delta_theta_generic_harmonic_estimate": 8.451131384112682e-11,
+        "GS_inclusive_wall_collapse_pass": false,
+        "H_decay_GeV": 4.98979940779982e-25,
+        "P_VEV_GeV": 176000000000.0,
+        "P_only_decay_before_domination_order_inequality_pass": true,
+        "P_only_decay_by_1MeV_order_inequality_pass": true,
+        "P_only_integer_gcd_is_one": true,
+        "P_only_quality_inequality_pass": true,
+        "T_decay_GeV_order_estimate": 0.0010578512444516352,
+        "alphaPS_inverse_after_complete_family_threshold": 17.03053395963942,
+        "axion_mass_eV": 0.000129375,
+        "bias_GeV4": 1.0038511980063697e-15,
+        "bias_over_chi": 3.073138685131884e-11,
+        "bias_over_minimum_for_decay_by_1MeV": 1.1190492553878733,
+        "bias_over_sigma2_over_3MPlanck2": 4411.802053287488,
+        "coupled_gauge_only_alpha_inverse_at_1e18GeV": [
+          15.760581115599363,
+          12.87767203164891,
+          9.686379301220363
+        ],
+        "coupled_gauge_only_alpha_inverse_at_reduced_Planck": [
+          15.501027745017138,
+          12.06369301733598,
+          8.231081080183568
+        ],
+        "finite_and_perturbative_to_reduced_Planck_gauge_only": true,
+        "physical_fa_GeV_if_single_P_canonical": 44000000000.0,
+        "scope": "Numerical P-only EFT arithmetic benchmark; it does not attest a consistent anomalous-discrete wall system.",
+        "soft_monomial_before_hc_GeV4": 5.019255990031849e-16,
+        "wall_tension_GeV3": 2011806720.0
+      },
+      "harmonics": {
+        "GS_inclusive_residual_degeneracy": null,
+        "GS_inclusive_vacuum_lattice_computed": false,
+        "GS_inclusive_wall_collapse_demonstrated": false,
+        "conditional_P_only_EFT_gcd": 1,
+        "conditional_P_only_QCD_harmonic": 4,
+        "conditional_P_only_formal_residual_degeneracy_from_two_cosines": 1,
+        "leading_holomorphic_Kahler_P_power": 22,
+        "leading_superpotential_P_power": 11,
+        "scope": "Integer arithmetic for a provisional P-only EFT potential cos(4*aP/fP)+cos(11*aP/fP+delta); it is not the GS-inclusive discrete-gauge vacuum count."
+      },
+      "mixed_anomalies": {
+        "Green_Schwarz_completion_required": true,
+        "P_only_QCD_cosine_is_a_complete_discrete_gauge_potential": false,
+        "Z11_mod11": {
+          "SU2L": 9,
+          "SU2R": 9,
+          "SU4C": 9
+        },
+        "Z11_raw": {
+          "SU2L": -2,
+          "SU2R": -2,
+          "SU4C": -2
+        },
+        "Z4R_mod2": {
+          "SU2L": 1,
+          "SU2R": 1,
+          "SU4C": 1
+        },
+        "Z4R_raw": {
+          "SU2L": -3,
+          "SU2R": -3,
+          "SU4C": -3
+        },
+        "dynamical_shifting_GS_axion_required": true,
+        "interpretation": "Universality makes the selector GS-eligible, not anomaly-free. The shifting GS axion and discrete-gauge quotient must be included before the physical axion periodicity or wall-vacuum lattice can be counted.",
+        "universal_but_nonzero": true
+      },
+      "name": "derived_Z4R_x_Z11_rP2_GS_eligible_P_only_arithmetic",
+      "promotion_boundary": {
+        "GS_axion_dynamics_included": false,
+        "GS_inclusive_wall_collapse_attested": false,
+        "GS_inclusive_wall_vacuum_structure_attested": false,
+        "actual_domain_wall_solution": false,
+        "axino_saxion_neutralino_relic_history_attested": false,
+        "complete_discrete_operator_census_and_GS_UV_completion_attested": false,
+        "conditional_P_only_EFT_arithmetic_witness": true,
+        "conditional_axion_field_theory_witness": false,
+        "full_domain_wall_network_attested": false,
+        "hard_boundary": "The anomalous Z11 needs a shifting GS axion. Therefore gcd(11,4)=1 and the numerical interval are P-only EFT arithmetic, not the vacuum count or collapse proof of the physical discrete-gauge theory.",
+        "radiative_generation_of_P_VEV_attested": false,
+        "sensitivity": "The allowed fPQ interval is only about 2.7 percent wide for c11=1 and the stated thin-wall inputs; O(1) coefficients, phases, gap factors, and thermal history must be computed, not assumed."
+      },
+      "status": "P_ONLY_EFT_QUALITY_AND_TIMING_ARITHMETIC_EXISTS__GS_INCLUSIVE_WALL_SYSTEM_OPEN"
+    }
+  },
+  "primary_source": {
+    "citation": "J. Kawamura and S. Raby, arXiv:2009.04582",
+    "html": "https://arxiv.org/html/2009.04582v1",
+    "source_items": [
+      "Table 1",
+      "Eqs. (2)-(3)",
+      "Eq. (8)",
+      "Eqs. (12)-(15)",
+      "Eq. (46)",
+      "Table 3",
+      "Eqs. (47)-(48)"
+    ],
+    "url": "https://arxiv.org/abs/2009.04582"
+  },
+  "published_Z5_control": {
+    "axion": {
+      "E_over_N": "8/3",
+      "KSVZ_QCD_anomaly_2N": -4,
+      "NDW_source_convention": 4,
+      "P_VEV_GeV": 10000000000.0,
+      "QCD_susceptibility_GeV4_using_75p6MeV": 3.266533993e-05,
+      "axion_mass_eV_using_5p7_microeV_relation": 0.00228,
+      "bias_over_QCD_susceptibility": 3.061348824641622e-17,
+      "boundary": "The fPQ=4e10 timing/quality inequalities can overlap for order-one inputs, but P10 leaves gcd(4,10)=2 and no landed P5/coprime vacuum harmonic removes the last degeneracy. NDW=4 therefore still requires a specified pre-inflation history, a demonstrated discrete-gauge quotient, or a new bias sector.",
+      "conditional_timing_window": {
+        "P_VEV_GeV": 40000000000.0,
+        "assumptions": "unit P10 soft coefficient, generic O(1) phase, single-P canonical normalization, thin-wall scaling, radiation domination and g*=10.75; radiative generation and the relic history are not solved",
+        "promoted_to_domain_wall_solution": false,
+        "timing_and_quality_inequalities_pass": true
+      },
+      "fPQ_scan": [
+        {
+          "Delta_theta_direct_bias_over_chi": 3.061348824641622e-17,
+          "Delta_theta_generic_harmonic_estimate_10_over_4": 7.653372061604055e-17,
+          "Delta_theta_scaled_from_source_1e_minus17_anchor": 1e-17,
+          "H_decay_GeV": 8.748355309201869e-30,
+          "H_domination_GeV": 1.9278607237876788e-29,
+          "P10_soft_bias_GeV4_coefficient_one": 1e-21,
+          "P_VEV_GeV": 10000000000.0,
+          "T_decay_GeV_order_estimate": 4.429413902126784e-06,
+          "axion_mass_eV": 0.00228,
+          "bias_over_minimum_for_decay_by_1MeV": 1.9619707516354026e-05,
+          "bias_over_sigma2_over_MPlanck2": 0.453785649619643,
+          "complete_domain_wall_solution": false,
+          "coprime_harmonic_landed": false,
+          "physical_fa_GeV_if_single_P_canonical": 2500000000.0,
+          "timing_and_quality_inequalities_pass": false,
+          "wall_tension_GeV3": 114307200.0
+        },
+        {
+          "Delta_theta_direct_bias_over_chi": 3.134821196433021e-14,
+          "Delta_theta_generic_harmonic_estimate_10_over_4": 7.837052991082553e-14,
+          "Delta_theta_scaled_from_source_1e_minus17_anchor": 1.024e-14,
+          "H_decay_GeV": 4.479157918311357e-27,
+          "H_domination_GeV": 3.8557214475753576e-29,
+          "P10_soft_bias_GeV4_coefficient_one": 1.024e-18,
+          "P_VEV_GeV": 20000000000.0,
+          "T_decay_GeV_order_estimate": 0.0001002261954200261,
+          "axion_mass_eV": 0.00114,
+          "bias_over_minimum_for_decay_by_1MeV": 0.010045290248373261,
+          "bias_over_sigma2_over_MPlanck2": 116.16912630262861,
+          "complete_domain_wall_solution": false,
+          "coprime_harmonic_landed": false,
+          "physical_fa_GeV_if_single_P_canonical": 5000000000.0,
+          "timing_and_quality_inequalities_pass": false,
+          "wall_tension_GeV3": 228614400.0
+        },
+        {
+          "Delta_theta_direct_bias_over_chi": 3.2100569051474134e-11,
+          "Delta_theta_generic_harmonic_estimate_10_over_4": 8.025142262868534e-11,
+          "Delta_theta_scaled_from_source_1e_minus17_anchor": 1.048576e-11,
+          "H_decay_GeV": 2.2933288541754148e-24,
+          "H_domination_GeV": 7.711442895150715e-29,
+          "P10_soft_bias_GeV4_coefficient_one": 1.048576e-15,
+          "P_VEV_GeV": 40000000000.0,
+          "T_decay_GeV_order_estimate": 0.0022678599178889134,
+          "axion_mass_eV": 0.00057,
+          "bias_over_minimum_for_decay_by_1MeV": 5.14318860716711,
+          "bias_over_sigma2_over_MPlanck2": 29739.296333472925,
+          "complete_domain_wall_solution": false,
+          "coprime_harmonic_landed": false,
+          "physical_fa_GeV_if_single_P_canonical": 10000000000.0,
+          "timing_and_quality_inequalities_pass": true,
+          "wall_tension_GeV3": 457228800.0
+        }
+      ],
+      "harmonic_audit": {
+        "P5_fields_with_zero_VEV_at_witness": [
+          "Qc",
+          "Q"
+        ],
+        "P5_source_operators": [
+          "P^5*Qc*Sbarc/Lambda^4",
+          "P^5*H*Q*Sc/Lambda^5"
+        ],
+        "QCD_harmonic": 4,
+        "coprime_phase_potential_demonstrated": false,
+        "gcd": 2,
+        "interpretation": "At the landed witness the P5 operators contain zero-VEV matter fields. Their absolute F squares are phase independent and integrating out a quadratic matter field produces an even P10 harmonic; no harmonic coprime to four is demonstrated. A discrete-gauge vacuum quotient or an additional bias sector must be supplied explicitly.",
+        "landed_nonzero_VEV_PQ_breaking_harmonics": [
+          10
+        ],
+        "residual_degeneracy": 2
+      },
+      "leading_P10_soft_bias_GeV4": 1e-21,
+      "physical_fa_if_single_P_canonical_GeV": 2500000000.0,
+      "postinflation_thin_wall_diagnostic": {
+        "H_decay_GeV": 8.748355309201869e-30,
+        "H_domination_GeV": 1.9278607237876788e-29,
+        "P10_bias_alone_closes_postinflation_domain_walls": false,
+        "T_decay_GeV": 4.429413902126784e-06,
+        "minimum_bias_for_decay_by_1MeV_GeV4": 5.096915941108953e-17,
+        "minimum_over_P10_bias": 50969.15941108954,
+        "wall_tension_GeV3": 114307200.0
+      },
+      "source_order_theta_shift": 1e-17
+    },
+    "field_content": [
+      {
+        "PQ": 0,
+        "PS_rep": [
+          1,
+          2,
+          2
+        ],
+        "Z4R": 0,
+        "Z5": 0,
+        "multiplicity": 1,
+        "name": "H",
+        "role": "MSSM_bidoublet"
+      },
+      {
+        "PQ": 0,
+        "PS_rep": [
+          4,
+          2,
+          1
+        ],
+        "Z4R": 1,
+        "Z5": 0,
+        "multiplicity": 3,
+        "name": "Q",
+        "role": "three_families"
+      },
+      {
+        "PQ": 0,
+        "PS_rep": [
+          4,
+          1,
+          2
+        ],
+        "Z4R": 1,
+        "Z5": 0,
+        "multiplicity": 3,
+        "name": "Qc",
+        "role": "three_families_conjugate_SU4_rep"
+      },
+      {
+        "PQ": 0,
+        "PS_rep": [
+          1,
+          1,
+          1
+        ],
+        "Z4R": 2,
+        "Z5": 0,
+        "multiplicity": 1,
+        "name": "X",
+        "role": "PS_F_term_driver"
+      },
+      {
+        "PQ": 0,
+        "PS_rep": [
+          4,
+          1,
+          2
+        ],
+        "Z4R": 0,
+        "Z5": 0,
+        "multiplicity": 1,
+        "name": "Sc",
+        "role": "PS_breaking_conjugate_SU4_rep"
+      },
+      {
+        "PQ": 0,
+        "PS_rep": [
+          4,
+          1,
+          2
+        ],
+        "Z4R": 0,
+        "Z5": 0,
+        "multiplicity": 1,
+        "name": "Sbarc",
+        "role": "PS_breaking_SU4_rep"
+      },
+      {
+        "PQ": 0,
+        "PS_rep": [
+          6,
+          1,
+          1
+        ],
+        "Z4R": 2,
+        "Z5": 0,
+        "multiplicity": 1,
+        "name": "Sigma",
+        "role": "colored_partner"
+      },
+      {
+        "PQ": -1,
+        "PS_rep": [
+          4,
+          2,
+          1
+        ],
+        "Z4R": 0,
+        "Z5": 4,
+        "multiplicity": 1,
+        "name": "PsiBar",
+        "role": "KSVZ_vectorlike_left_conjugate"
+      },
+      {
+        "PQ": 0,
+        "PS_rep": [
+          4,
+          2,
+          1
+        ],
+        "Z4R": 1,
+        "Z5": 0,
+        "multiplicity": 1,
+        "name": "Psi",
+        "role": "KSVZ_vectorlike_left"
+      },
+      {
+        "PQ": 0,
+        "PS_rep": [
+          4,
+          1,
+          2
+        ],
+        "Z4R": 1,
+        "Z5": 0,
+        "multiplicity": 1,
+        "name": "Psic",
+        "role": "KSVZ_vectorlike_right_conjugate_SU4_rep"
+      },
+      {
+        "PQ": -1,
+        "PS_rep": [
+          4,
+          1,
+          2
+        ],
+        "Z4R": 0,
+        "Z5": 4,
+        "multiplicity": 1,
+        "name": "PsiBarc",
+        "role": "KSVZ_vectorlike_right"
+      },
+      {
+        "PQ": 1,
+        "PS_rep": [
+          1,
+          1,
+          1
+        ],
+        "Z4R": 1,
+        "Z5": 1,
+        "multiplicity": 1,
+        "name": "P",
+        "role": "PQ_breaking"
+      }
+    ],
+    "role": "published minimal N=5 control, not the selected V24 selector",
+    "selector": {
+      "PQ_quality_operator": "P^10/Lambda^7",
+      "leading_pure_P_Kahler_holomorphic_power": 20,
+      "leading_pure_P_superpotential_power": 10,
+      "minimal_choice_Eq46": {
+        "N": 5,
+        "Npsi": 1,
+        "h": 0,
+        "p": 1,
+        "pPsi": 0,
+        "r": 1,
+        "rPsi": 1,
+        "s": 0
+      },
+      "mixed_discrete_anomalies": {
+        "Z4R_mod2": {
+          "SU2L": 1,
+          "SU2R": 1,
+          "SU4C": 1
+        },
+        "Z4R_raw": {
+          "SU2L": -1,
+          "SU2R": -1,
+          "SU4C": -1
+        },
+        "Z4R_universal": true,
+        "Z4R_zero": false,
+        "Z5_mod5": {
+          "SU2L": 3,
+          "SU2R": 3,
+          "SU4C": 3
+        },
+        "Z5_raw": {
+          "SU2L": -2,
+          "SU2R": -2,
+          "SU4C": -2
+        },
+        "Z5_universal": true,
+        "Z5_zero": false,
+        "interpretation": "Both residue triples are universal but nonzero; a discrete Green--Schwarz completion is required and is not specified by the four-dimensional source model."
+      },
+      "operator_checks": {
+        "P_PsiBar_Psi": true,
+        "P_PsiBarc_Psic": true,
+        "Q_H_Qc": true,
+        "Sbarc_Sigma_Sbarc": true,
+        "Sc_Sigma_Sc": true,
+        "X_Sbarc_Sc": true,
+        "bare_H2_forbidden": true
+      }
+    }
+  },
+  "route_verdict": {
+    "complete_theory_claim": false,
+    "preferred_selector_variant": "derived Z4R x Z11 with rP=2 as a GS-eligible candidate, subject to an explicit dynamical GS sector and complete operator audit",
+    "reason": "This small-representation route has a concrete F=D=0 global-SUSY branch, full colored/exotic structural rank, anomaly-universal discrete charges, viable seesaw scale, and finite gauge-only running. Its narrow gcd/quality/timing interval is only P-only EFT arithmetic: the anomalous Z11 requires a shifting GS axion, so no physical wall-vacuum or collapse claim is made. The GS, soft, threshold, wall-network, flavour, proton, and relic completions are not supplied.",
+    "selected_as_V24_primary_frontier": true
+  },
+  "running_witness": {
+    "abelian_kinetic_mixing": {
+      "one_step_matching": "alpha1^-1=(2/5) alpha4^-1+(3/5) alphaR^-1",
+      "present": false,
+      "reason": "Above vPS all three factors are simple non-Abelian groups; below one-step PS breaking only U1Y remains. There is no interval with two unbroken U(1) factors.",
+      "staged_U1xU1_breaking_assumed": false
+    },
+    "alphaPS_inverse_at_vPS_after_complete_family": 15.204772813447,
+    "baseline_MSSM_alphaG_inverse_without_PQ_family": 24.0,
+    "benchmark_scales_GeV": {
+      "fPQ": 10000000000.0,
+      "reduced_Planck": 2.435e+18,
+      "source_cutoff": 1e+18,
+      "vPS": 1e+16
+    },
+    "complete_vectorlike_Delta_b": [
+      4,
+      4,
+      4
+    ],
+    "coupled_two_loop_gauge_only": {
+      "alpha_at_cutoff": [
+        0.072146887365628,
+        0.091030135273661,
+        0.129074979769558
+      ],
+      "alpha_inverse_at_cutoff": [
+        13.860611822824,
+        10.985373107419,
+        7.747434876886
+      ],
+      "finite_to_cutoff": true,
+      "precision_warning": "SU4C has b=1, so its two-loop gauge bracket is comparable to its one-loop bracket; Yukawa and three-loop terms are required for precision unification.",
+      "scale_ratio": 100.0,
+      "steps": 60000,
+      "two_loop_bracket_terms_at_cutoff": [
+        0.94441671378,
+        0.845338641302,
+        1.45655316895
+      ],
+      "two_loop_over_one_loop_bracket_at_cutoff": [
+        0.94441671378,
+        0.16906772826,
+        0.161839240994
+      ]
+    },
+    "coupled_two_loop_gauge_only_reduced_Planck": {
+      "alpha_at_reduced_Planck": [
+        0.073635974590949,
+        0.098481665985989,
+        0.159939978783574
+      ],
+      "alpha_inverse_at_reduced_Planck": [
+        13.580318662923,
+        10.154174281965,
+        6.252345458625
+      ],
+      "finite_to_reduced_Planck": true,
+      "interpretation": "Formal gauge-only continuation to MPlanck(reduced), beyond the source Lambda=1e18 cutoff; this is the Planck-window perturbativity diagnostic, not an EFT precision prediction.",
+      "scale_ratio": 243.5,
+      "steps": 60000,
+      "two_loop_bracket_terms_at_reduced_Planck": [
+        1.017688415576,
+        0.893022072348,
+        1.669723204527
+      ],
+      "two_loop_over_one_loop_bracket_at_reduced_Planck": [
+        1.017688415576,
+        0.17860441447,
+        0.185524800503
+      ]
+    },
+    "scope": "common-boundary gauge-only benchmark; physical superpartner, PS, Yukawa, and scheme thresholds are not fitted",
+    "threshold_formula": "alphaG^-1 -> alphaG^-1 - 4/(2*pi)*ln(vPS/fPQ)"
+  },
+  "selector": {
+    "bias_model": {
+      "BBN_temperature_boundary_GeV": 0.001,
+      "Lambda_GeV": 1e+18,
+      "axion_mass_normalization_eV_at_fa_1e12GeV": 5.6925e-06,
+      "c11": 1.0,
+      "cosine_amplitude": "epsilon=2*A after adding the Hermitian conjugate",
+      "generic_theta_formula": "Delta theta=(11/NDW)*Vbias/chi for unit relative sine",
+      "operator": "W=c11*P^11/Lambda^8",
+      "relative_phase_sine_for_interval": 1.0,
+      "scope": "Conditional P-only EFT estimate. A physical bias and wall gap require the dynamical GS axion and gauge quotient.",
+      "soft_monomial": "A=w0*c11*<P>^11/Lambda^8",
+      "theta_bound": 1e-10,
+      "w0_GeV": 100000.0
+    },
+    "charge_ledger": {
+      "H_Q_Qc_X_Sc_Sbarc_Sigma": "same as minimal Z5 with all Z11 charges zero",
+      "P": {
+        "PQ": 1,
+        "Z11": 1,
+        "Z4R": 2
+      },
+      "P_VEV_preserves_R_parity": true,
+      "P_vector_mass_operators_allowed": true,
+      "PsiBar_and_PsiBarc": {
+        "PQ": -1,
+        "Z11": 10,
+        "Z4R": 3
+      },
+      "Psi_and_Psic": {
+        "PQ": 0,
+        "Z11": 0,
+        "Z4R": 1
+      }
+    },
+    "conditional_P_only_EFT_37GHz_benchmark": {
+      "GS_inclusive_wall_vacuum_and_collapse_closed": false,
+      "H_decay_GeV": 1.0089485012755102e-25,
+      "H_decay_over_H_domination": 1046.7026884527459,
+      "H_domination_GeV_sigma_over_3MPlanck2": 9.639303618938395e-29,
+      "P_VEV_GeV": 150000000000.0,
+      "axion_mass_micro_eV": 151.8,
+      "cosine_epsilon_GeV4": 1.729951171875e-16,
+      "full_BBN_wall_axion_relic_calculation_closed": false,
+      "phase_and_gap_dependence": "Delta theta scales as c11*abs(sin(delta)); Hdec scales as c11 times the adjacent-vacuum gap factor, and tdec scales inversely.",
+      "photon_frequency_GHz": 36.705077574,
+      "physical_fa_GeV_if_single_P_canonical": 37500000000.0,
+      "radiation_era_decay_time_s": 3.2618709283372245,
+      "scope": "P-only frequency, quality, and thin-wall timing diagnostic. The actual GS-inclusive wall gap and decay time are not computed.",
+      "soft_monomial_before_hc_GeV4": 8.649755859375e-17,
+      "wall_energy_fraction_at_decay_order": 0.0009553811326100799,
+      "wall_gap_factor": 1.0,
+      "worst_phase_Delta_theta_11_over_4_epsilon_over_chi": 1.4563955963444054e-11
+    },
+    "conditional_P_only_EFT_interval_GeV": {
+      "effective_lower_bound": 174031453560.9043,
+      "maximum_from_theta": 178713257929.25204,
+      "minimum_before_wall_domination": 69271618113.71922,
+      "minimum_decay_by_1MeV": 174031453560.9043,
+      "nonempty_P_only_arithmetic": true,
+      "physical_GS_inclusive_wall_window_claim": false,
+      "scope": "Coefficient-one, unit-sine, thin-wall inequalities in the conditional P-only EFT; not a GS-inclusive cosmological interval.",
+      "upper_over_lower": 1.0269020586368274
+    },
+    "conditional_P_only_EFT_parameter_witness": {
+      "Delta_theta_generic_harmonic_estimate": 8.451131384112682e-11,
+      "GS_inclusive_wall_collapse_pass": false,
+      "H_decay_GeV": 4.98979940779982e-25,
+      "P_VEV_GeV": 176000000000.0,
+      "P_only_decay_before_domination_order_inequality_pass": true,
+      "P_only_decay_by_1MeV_order_inequality_pass": true,
+      "P_only_integer_gcd_is_one": true,
+      "P_only_quality_inequality_pass": true,
+      "T_decay_GeV_order_estimate": 0.0010578512444516352,
+      "alphaPS_inverse_after_complete_family_threshold": 17.03053395963942,
+      "axion_mass_eV": 0.000129375,
+      "bias_GeV4": 1.0038511980063697e-15,
+      "bias_over_chi": 3.073138685131884e-11,
+      "bias_over_minimum_for_decay_by_1MeV": 1.1190492553878733,
+      "bias_over_sigma2_over_3MPlanck2": 4411.802053287488,
+      "coupled_gauge_only_alpha_inverse_at_1e18GeV": [
+        15.760581115599363,
+        12.87767203164891,
+        9.686379301220363
+      ],
+      "coupled_gauge_only_alpha_inverse_at_reduced_Planck": [
+        15.501027745017138,
+        12.06369301733598,
+        8.231081080183568
+      ],
+      "finite_and_perturbative_to_reduced_Planck_gauge_only": true,
+      "physical_fa_GeV_if_single_P_canonical": 44000000000.0,
+      "scope": "Numerical P-only EFT arithmetic benchmark; it does not attest a consistent anomalous-discrete wall system.",
+      "soft_monomial_before_hc_GeV4": 5.019255990031849e-16,
+      "wall_tension_GeV3": 2011806720.0
+    },
+    "harmonics": {
+      "GS_inclusive_residual_degeneracy": null,
+      "GS_inclusive_vacuum_lattice_computed": false,
+      "GS_inclusive_wall_collapse_demonstrated": false,
+      "conditional_P_only_EFT_gcd": 1,
+      "conditional_P_only_QCD_harmonic": 4,
+      "conditional_P_only_formal_residual_degeneracy_from_two_cosines": 1,
+      "leading_holomorphic_Kahler_P_power": 22,
+      "leading_superpotential_P_power": 11,
+      "scope": "Integer arithmetic for a provisional P-only EFT potential cos(4*aP/fP)+cos(11*aP/fP+delta); it is not the GS-inclusive discrete-gauge vacuum count."
+    },
+    "mixed_anomalies": {
+      "Green_Schwarz_completion_required": true,
+      "P_only_QCD_cosine_is_a_complete_discrete_gauge_potential": false,
+      "Z11_mod11": {
+        "SU2L": 9,
+        "SU2R": 9,
+        "SU4C": 9
+      },
+      "Z11_raw": {
+        "SU2L": -2,
+        "SU2R": -2,
+        "SU4C": -2
+      },
+      "Z4R_mod2": {
+        "SU2L": 1,
+        "SU2R": 1,
+        "SU4C": 1
+      },
+      "Z4R_raw": {
+        "SU2L": -3,
+        "SU2R": -3,
+        "SU4C": -3
+      },
+      "dynamical_shifting_GS_axion_required": true,
+      "interpretation": "Universality makes the selector GS-eligible, not anomaly-free. The shifting GS axion and discrete-gauge quotient must be included before the physical axion periodicity or wall-vacuum lattice can be counted.",
+      "universal_but_nonzero": true
+    },
+    "name": "derived_Z4R_x_Z11_rP2_GS_eligible_P_only_arithmetic",
+    "promotion_boundary": {
+      "GS_axion_dynamics_included": false,
+      "GS_inclusive_wall_collapse_attested": false,
+      "GS_inclusive_wall_vacuum_structure_attested": false,
+      "actual_domain_wall_solution": false,
+      "axino_saxion_neutralino_relic_history_attested": false,
+      "complete_discrete_operator_census_and_GS_UV_completion_attested": false,
+      "conditional_P_only_EFT_arithmetic_witness": true,
+      "conditional_axion_field_theory_witness": false,
+      "full_domain_wall_network_attested": false,
+      "hard_boundary": "The anomalous Z11 needs a shifting GS axion. Therefore gcd(11,4)=1 and the numerical interval are P-only EFT arithmetic, not the vacuum count or collapse proof of the physical discrete-gauge theory.",
+      "radiative_generation_of_P_VEV_attested": false,
+      "sensitivity": "The allowed fPQ interval is only about 2.7 percent wide for c11=1 and the stated thin-wall inputs; O(1) coefficients, phases, gap factors, and thermal history must be computed, not assumed."
+    },
+    "status": "P_ONLY_EFT_QUALITY_AND_TIMING_ARITHMETIC_EXISTS__GS_INCLUSIVE_WALL_SYSTEM_OPEN"
+  },
+  "status": "V24_PS_Z11_RP2_VACUUM_RG_FRONTIER_LANDED__P_ONLY_AXION_ARITHMETIC__GS_INCLUSIVE_WALL_OPEN__FULL_G1_G8_OPEN",
+  "vacuum_and_mass_ranks": {
+    "D_terms": {
+      "all_zero": true,
+      "reason": "Equal conjugate Sc and Sbarc VEV magnitudes cancel every broken-generator D term."
+    },
+    "F_terms": {
+      "F_Sbarc_over_vPS2": 0,
+      "F_Sc_over_vPS2": 0,
+      "F_Sigma_over_vPS2": 0,
+      "F_X_over_vPS2": 0,
+      "why_FSigma_zero": "The antisymmetric SU4 and SU2R contraction of two identical neutral VEV directions vanishes."
+    },
+    "MSSM_doublet_pair": "H=(1,2,2) contains one Hu,Hd pair and no colored partner; mu~w0 is generated only after Z4R/SUSY breaking.",
+    "PQ_exotic_pair_mass_matrix_units_fPQ": [
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "PQ_exotic_pair_rank": 2,
+    "colored_determinant": -1,
+    "colored_interpretation": "The uneaten Y=+/-1/3 components of Sc/Sbarc pair with the two Sigma triplets. The orthogonal colored PS-breaking components are gauge Goldstones.",
+    "colored_mass_matrix_units_vPS": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        0
+      ]
+    ],
+    "colored_rank": 2,
+    "full_F_D_soft_Kahler_hessian_closed": false,
+    "global_SUSY_energy_over_vPS4": 0,
+    "global_minimum_proof": "The global-SUSY potential is a sum of nonnegative F and D squares and the witness makes every square zero.",
+    "neutral_chiral_mass_matrix_units_vPS": [
+      [
+        0,
+        1,
+        1
+      ],
+      [
+        1,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0
+      ]
+    ],
+    "neutral_chiral_rank": 2,
+    "neutral_zero_mode_interpretation": "broken-gauge chiral direction eaten by the massive vector multiplet; this does not attest the full soft/Kahler Hessian",
+    "superpotential_scope": "W=X(Sbarc*Sc-vPS^2)+X^3/3+Sc*Sigma*Sc+Sbarc*Sigma*Sbarc plus matter/PQ terms; nonzero O(1) coefficients absorbed in field normalizations for the rank witness",
+    "witness": {
+      "Sbarc_neutral_over_vPS": 1,
+      "Sc_neutral_over_vPS": 1,
+      "Sigma_over_vPS": 0,
+      "X_over_vPS": 0,
+      "all_matter_Higgs_PQ_fields_at_PS_witness": 0
+    }
+  },
+  "variant_provenance": "The gauge/vacuum architecture is source-based; Z4R x Z11 with rP=2 is a V24-derived selector variant, not a model claimed in arXiv:2009.04582."
+}

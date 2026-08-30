@@ -1,0 +1,337 @@
+{
+  "checks": {
+    "G6_charge_operator_is_minus_t8_squared": true,
+    "G6_core_and_Hessian_payload_bound": true,
+    "G6_sector_census_is_exactly_G89_census": true,
+    "G6_t8_is_exactly_elementary_G89": true,
+    "G89_and_standard_Q_are_not_conjugate_on_vector_10": true,
+    "actual_G89_commutes_with_frozen_mass_pencil": true,
+    "all_dependency_hashes_frozen": true,
+    "all_needed_generators_are_exactly_antisymmetric": true,
+    "ancestry_operators_commute_pairwise_exactly": true,
+    "ancestry_operators_commute_with_kinetic_metric_exactly": true,
+    "coordinate_carrier_projectors_complete": true,
+    "exact_charge_censuses_match_frozen_targets": true,
+    "exact_commutator_signatures_frozen": true,
+    "recorded_naive_true_SM_singlet_swap_is_nonstationary_and_tachyonic": true,
+    "selected_Delta_is_not_standard_SM_hypercharge_singlet": true,
+    "selected_target_is_fixed_by_G89_not_standard_Q": true,
+    "standard_SM_operators_do_not_commute_with_frozen_mass_pencil": true,
+    "standard_embedding_defines_Y_as_T3R_plus_half_BL": true,
+    "standard_embedding_defines_color_and_weak_planes": true,
+    "true_SM_neutral_126bar_singlet_constructed_exactly": true,
+    "true_SM_neutral_126bar_singlet_is_unique_complex_line": true
+  },
+  "classification": {
+    "exact_coordinate_carrier_provenance_projectors_constructed": true,
+    "frozen_G6_Pati_Salam_threshold_provenance_complete": false,
+    "frozen_G6_actual_stabilizer_identified_as_SU3_x_U1_89": true,
+    "frozen_G6_per_mass_state_SU2L_x_U1Y_provenance_complete": false,
+    "frozen_G6_physical_U1em_provenance_complete": false,
+    "mathematical_physical_G6_closed": false,
+    "mathematical_tree_level_mass_factorization_remains_valid": true,
+    "positive_G7_threshold_input_complete": false,
+    "prior_positive_mathematical_G6_as_physical_SM_spectrum_valid": false,
+    "prior_positive_physical_G6_interpretation_valid": false,
+    "release_level_G6_complete": false
+  },
+  "core_sha256": "0d9bad1158c6c93b29243c08b0265d472be1309267e390edafc3afb556233d39",
+  "exact_coordinate_carrier_census": {
+    "casimirs": {
+      "standard_12C2_SU3": {
+        "0": 48,
+        "16": 198,
+        "36": 120,
+        "40": 120
+      },
+      "standard_4C2L": {
+        "0": 149,
+        "3": 232,
+        "8": 105
+      },
+      "standard_4C2R": {
+        "0": 149,
+        "3": 232,
+        "8": 105
+      },
+      "standard_C2_SO6": {
+        "0": 13,
+        "5": 48,
+        "8": 225,
+        "9": 200
+      }
+    },
+    "charge_squared": {
+      "actual_G89_squared": {
+        "0": 230,
+        "1": 256
+      },
+      "standard_Q3_squared": {
+        "0": 78,
+        "1": 132,
+        "16": 60,
+        "25": 24,
+        "36": 6,
+        "4": 102,
+        "9": 84
+      },
+      "standard_Y6_squared": {
+        "0": 52,
+        "1": 72,
+        "100": 6,
+        "144": 2,
+        "16": 48,
+        "25": 48,
+        "36": 26,
+        "4": 102,
+        "49": 24,
+        "64": 18,
+        "81": 4,
+        "9": 84
+      }
+    },
+    "construction": "SO10-origin block projectors times Lagrange polynomials in the mutually commuting exact C2(SO6), 4C2L, 4C2R, 12C2SU3, and charge-squared operators",
+    "coordinate_ancestry_projectors_exactly_available": true,
+    "signed_hypercharge_refinement": "over Q(i), use the spectral projectors of -i*Y6; the real carrier combines the conjugate +Y and -Y spaces"
+  },
+  "failures": [],
+  "independent_live_true_SM_singlet_swap_diagnostic": {
+    "evidence_kind": "independent_live_486_field_compiler_float64",
+    "gradient_entries_above_1e_minus_9": 26,
+    "gradient_l2_norm": 0.562849891179113,
+    "gradient_max_abs": 0.1272792206136687,
+    "gradient_phi_block_l2_norm": 0.23999999999995988,
+    "gradient_sigma_block_l2_norm": 0.5091168824546664,
+    "held_fixed": "Phi, S, Phi17, and all beta=0 coefficients",
+    "interpretation": "the correct SM-neutral representation direction cannot be inserted without re-solving stationarity and stability",
+    "minimum_full_Hessian_eigenvalue": -0.4086149805542996,
+    "naive_swap_is_locally_stable": false,
+    "naive_swap_is_stationary": false,
+    "potential_value": -1.9610499999999509,
+    "proof_grade": false,
+    "recomputation_function": "recompute_live_true_sm_swap_diagnostic",
+    "replacement": "selected direct.delta_r() -> normalized holomorphic z0 wedge z1 wedge z2 wedge z3 wedge z4; selected chiral H=(e6+i e7)/sqrt(2) -> Q-neutral H=(e8+i e9)/sqrt(2)"
+  },
+  "mass_pencil_commutant": {
+    "actual_G89": {
+      "l1_abs": 0,
+      "max_abs": 0,
+      "nnz": 0
+    },
+    "actual_G89_squared": {
+      "l1_abs": 0,
+      "max_abs": 0,
+      "nnz": 0
+    },
+    "standard_4C2L": {
+      "l1_abs": 3271968000,
+      "max_abs": 20160000,
+      "nnz": 442
+    },
+    "standard_4C2R": {
+      "l1_abs": 4384262400,
+      "max_abs": 25984000,
+      "nnz": 814
+    },
+    "standard_Q3": {
+      "l1_abs": 2980091520,
+      "max_abs": 151200000,
+      "nnz": 3576
+    },
+    "standard_Q3_squared": {
+      "l1_abs": 3572553600,
+      "max_abs": 22680000,
+      "nnz": 3632
+    },
+    "standard_Y6": {
+      "l1_abs": 3293015040,
+      "max_abs": 151200000,
+      "nnz": 3576
+    },
+    "standard_Y6_squared": {
+      "l1_abs": 9605433600,
+      "max_abs": 68040000,
+      "nnz": 3632
+    }
+  },
+  "model_contract_id": "gauged_u1x_phi17_v20_eft_o6_current_kernel_gamma_1_over_20",
+  "n_checks": 21,
+  "n_failed": 0,
+  "operator_conventions": {
+    "actual_frozen_G6_U1": "G89",
+    "standard_B_minus_L_times_3": "-2*(G01+G23+G45)",
+    "standard_electric_charge_times_3": "Q3=3*G67-(G01+G23+G45)",
+    "standard_four_C2L": "-[(G78-G69)^2+(-G68-G79)^2+(G67-G89)^2]",
+    "standard_four_C2R": "-[(G78+G69)^2+(-G68+G79)^2+(G67+G89)^2]",
+    "standard_hypercharge_times_6": "Y6=3*(G67+G89)-2*(G01+G23+G45)"
+  },
+  "projector_feasibility": {
+    "UV_coordinate_SO10_PS_SM_ancestry": "EXACTLY_RECONSTRUCTIBLE",
+    "frozen_G6_mass_eigenspace_standard_SU2L_x_U1Y_labels": "NOT_DEFINED_BY_SIMULTANEOUS_PROJECTORS",
+    "mass_projector_overlap_diagnostics_possible": true,
+    "overlap_diagnostics_are_irrep_labels": false,
+    "reason": "the standard ancestry Casimirs/charges do not commute with the frozen generalized mass pencil"
+  },
+  "recommended_gate_downgrades": {
+    "authoritative_renormalizable_G6": false,
+    "authoritative_renormalizable_G7": false,
+    "formal_EFT_G6_mass_factorization_under_SU3_x_U1_89": true,
+    "mathematical_G7": false,
+    "mathematical_physical_SM_G6": false,
+    "release_G6": false,
+    "release_G7": false,
+    "required_status": "FORMAL_SU3_X_U1_89_EFT_SPECTRUM_ONLY__PHYSICAL_G6_AND_G7_OPEN"
+  },
+  "required_recalculation": [
+    "fix one explicit physical SO(10)->intermediate->SM embedding and verify every VEV is neutral under the claimed residual generators",
+    "replace or gauge-align the selected Delta and H directions so the desired Y and Q generators annihilate the staged vacua",
+    "recompute exact Hessians separately at the SO(10), intermediate, SM, and electroweak stages",
+    "diagonalize each stage Hessian jointly with the exact ancestry projectors",
+    "attach absolute VEV/matching scales, pole-mass corrections, and scheme-dependent component thresholds"
+  ],
+  "selected_background_audit": {
+    "F_orbit_stabilizer_dimension": 25,
+    "G6_Phi_background": "F0/sqrt(10), F0 has ten unit four-form components",
+    "P_orbit_stabilizer_dimension": 21,
+    "Pati_Salam_Phi_background": "P=e6789",
+    "backgrounds_are_the_same_direction": false,
+    "selected_Delta_exact_eigen_residuals": {
+      "C2L_singlet_residual_nnz": 0,
+      "C2R_triplet_residual_nnz": 0,
+      "G89_neutral_residual_nnz": 0,
+      "Y6_squared_eigen_residual_nnz": 0,
+      "signed_Q3_equals_minus_3_residual_nnz": 0,
+      "signed_Y6_equals_minus_6_residual_nnz": 0
+    },
+    "selected_Delta_quantum_numbers_in_standard_embedding": {
+      "four_C2L_eigenvalue": 0,
+      "four_C2R_eigenvalue": 8,
+      "minus_G89_squared_eigenvalue": 0,
+      "minus_Q3_squared_eigenvalue": 9,
+      "minus_Y6_squared_eigenvalue": 36,
+      "raw_norm_squared": 8
+    },
+    "selected_Delta_signed_quantum_numbers": {
+      "B_minus_L": "-2",
+      "Q": "-1",
+      "T3R": "0",
+      "Y": "-1"
+    },
+    "selected_full_target_tangents": {
+      "actual_G89_nnz": 0,
+      "standard_Q3_nnz": 10,
+      "standard_Q3_norm_squared": 90
+    },
+    "therefore_F_and_P_are_not_SO10_conjugate": true,
+    "true_SM_neutral_126bar_singlet": {
+      "C2L_singlet_residual_nnz": 0,
+      "C2R_triplet_residual_nnz": 0,
+      "G89_charge_plus_one_residual_nnz": 0,
+      "Hodge_chirality": "-i",
+      "Q3_annihilation_nnz": 0,
+      "SU3_singlet_residual_nnz": 0,
+      "Y6_annihilation_nnz": 0,
+      "exact_form": "(e0+i e1) wedge (e2+i e3) wedge (e4+i e5) wedge (e6+i e7) wedge (e8+i e9)",
+      "four_C2L": 0,
+      "four_C2R": 8,
+      "orthogonal_to_selected_Delta_raw": true,
+      "raw_chart_support": 16,
+      "raw_norm_squared": 16,
+      "signed_G89": 1,
+      "signed_Q3": 0,
+      "signed_Y6": 0,
+      "twelve_C2_SU3": 0
+    },
+    "true_SM_singlet_uniqueness": {
+      "Sigma_real_dimension": 252,
+      "exact_rational_rank": 250,
+      "exact_real_nullity": 2,
+      "kernel_Gram_matrix": [
+        [
+          16,
+          0
+        ],
+        [
+          0,
+          16
+        ]
+      ],
+      "kernel_vectors_independent": true,
+      "nonzero_SM_generator_row_equations": 2452,
+      "rank_argument": "rank 250 modulo either prime gives rank_Q>=250; two independent integer kernel vectors give rank_Q<=250",
+      "rank_mod_primes": {
+        "1000003": 250,
+        "1000033": 250
+      },
+      "two_explicit_integer_kernel_vectors_annihilated": true,
+      "unique_complex_SM_singlet": true
+    }
+  },
+  "source_binding": {
+    "G6_spectrum_JSON": {
+      "path": "EXACT_EFT_PHYSICAL_SCALAR_SPECTRUM_V20.json",
+      "sha256": "797a90473c064a78ef313d56f1894d71114643a19ebd373e86fe8b2911bcf416"
+    },
+    "G6_spectrum_source": {
+      "path": "exact_eft_physical_scalar_spectrum_v20.py",
+      "sha256": "cdcc25b383098464fc6312d553dff555d19c57388df7de08db48b4167ebc5a36"
+    },
+    "Pati_Salam_210_source": {
+      "path": "exact_210_pati_salam_global_vacuum_v20.py",
+      "sha256": "d98baa655cd5af9ccbc34fd2637670b7ceadedd5b2eccc10e1d6c000fda943c4"
+    },
+    "canonical_486_chart": {
+      "path": "live_g2_canonical_486_field_chart_v20.py",
+      "sha256": "85ae9470f3aa25c28fc03c083b6c1e150106a276e51044a590060d290ba7945e"
+    },
+    "exact_full_generator_source": {
+      "path": "exact_gauged_u1x_stationarity_rank_certificate_v20.py",
+      "sha256": "846bd3e57a816dfa8df4a4ce9957c547a591442200fbc3800dfe27f3c84df9c7"
+    },
+    "selected_Hessian_source": {
+      "path": "exact_gauged_u1x_g3_su5_delta_hsx_exact_hessian_v20.py",
+      "sha256": "cd4192713d8b3b13f6a9cf492f37d8615e3ead7a1a49fb3c30a1f6de235f7498"
+    },
+    "selected_SU5_Delta_source": {
+      "path": "exact_gauged_u1x_g3_su5_delta_pd_sos_v20.py",
+      "sha256": "afc1dca43a6ec2a657a4ab8e3a846517edaaaf532f1c3fffd1a82c637d208c6b"
+    },
+    "standard_PS_SM_embedding_source": {
+      "path": "exact_126bar_triplet_clebsch_v20.py",
+      "sha256": "d94f37da94333fbf58e448ef6effb00e718191ed45b63bafdc0e2650ccdb0499"
+    }
+  },
+  "status": "EXACT_G6_SM_PROVENANCE_MISMATCH_PROVED__G6_RELEASE_OPEN",
+  "vector_10_nonconjugacy_certificate": {
+    "actual_G89": {
+      "plane_weights": [
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "rank_on_real_vector_10": 2,
+      "squared_charge_multiplicities": {
+        "0": 8,
+        "1": 2
+      }
+    },
+    "reason": "conjugation preserves rank and squared-charge multiplicities",
+    "standard_Q3": {
+      "plane_weights": [
+        -1,
+        -1,
+        -1,
+        3,
+        0
+      ],
+      "rank_on_real_vector_10": 8,
+      "squared_charge_multiplicities": {
+        "0": 2,
+        "1": 6,
+        "9": 2
+      }
+    }
+  }
+}

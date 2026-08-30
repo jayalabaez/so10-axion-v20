@@ -1,0 +1,126 @@
+{
+  "C1_C7": {
+    "C1": "PARTIAL: leading strong Hc and odd H-Hc terms admitted, invariant multiplicities incomplete",
+    "C2": "PASS within declared four-spinor bulk system",
+    "C3": "PARTIAL: generalized graph pencil exists; explicit superspace variation incomplete",
+    "C4": "PASS for each specified self-adjoint pencil",
+    "C5": "FAIL: second-profile transfer is not universal without profile-dependent leading counterterms",
+    "C6": "PASS only as a renormalized fixed-order EFT declaration",
+    "C7": "PARTIAL: PS trace witness exists; full normalized SO10 physical Wilson array absent"
+  },
+  "D5_Susyno_audit": {
+    "available": "exact multiplicities, normalized abstract Hom channels, ancestry/spectral-projector circuits; explicit normalized 16x16x10, 16x16x126bar and 16x16barx1 Yukawa tensors; selected Cartesian 210-126 and Phi-Sigma projector families",
+    "channel_file": {
+      "path": "CANONICAL_G1_SUSYNO_CHANNEL_BASIS_V21.json",
+      "sha256": "066e2ccd746d97ca562ca4f84957816a2d6babed10574112e8f7118ac23cd309"
+    },
+    "component_file": {
+      "path": "CANONICAL_G2_FULL_COMPONENT_PROJECTION_DIM6_V21.json",
+      "sha256": "e296118ab33c3421350b0720fc8c824b2e218c3d80ec9e6b7c84e7eada491dfd"
+    },
+    "finite_certificate": "the normalized v20 Yukawa tensors can instantiate the corresponding family-current subset, and the V49 64-trace epsilon map instantiates four spinor-Higgs vertices; selected Phi-Sigma files instantiate only their named channels. Their union does not cover the full retained boundary action",
+    "reusable_files": [
+      {
+        "path": "exact_normalized_so10_yukawa_cgcs_v20.py",
+        "sha256": "432faa3fdf5adebf25015f7f2fda7f040d89d86bce31f6c85b4cc56e37eb14df"
+      },
+      {
+        "path": "EXACT_NORMALIZED_SO10_YUKAWA_CGCS_V20.json",
+        "sha256": "cac9de5d918a38962fc5ad1c8c3b6351e49051f64a5c8b7e005a6859dd1baf1b"
+      },
+      {
+        "path": "exact_210_126bar_cubic_clebsch_v20.py",
+        "sha256": "33df6d30f0a3ff27944b3a9d121fa9ee5643d76747277dd446a8dd557e1814ba"
+      },
+      {
+        "path": "exact_phisigma_all_component_projectors_v20.py",
+        "sha256": "76e7a504cab68390d9fd0b542c1cb0bea663510b6c1b40ea0b22e920ec8e1942"
+      },
+      {
+        "path": "exact_phisigma_casimir_projectors_v20.py",
+        "sha256": "f4b7b6eea2bb0c4423ff52bc8b4abb082ad77eaba524a1de0a345c9eae1e2400"
+      },
+      {
+        "path": "exact_phisigma_126bar_minus_projectors_v20.py",
+        "sha256": "a3bfec310c5a0e40bb0fc78175753dda7194f86de14ac9d435262d3b2b6204b2"
+      },
+      {
+        "path": "so10_126_to_54_projector_v20.py",
+        "sha256": "45da2f634c9cc74ce7ae4071a08357a531eb3c10234b2aff84c83467bf3eec55"
+      },
+      {
+        "path": "direct_phi_h_sigmabar_tensor_v20.py",
+        "sha256": "604bd4a2637afca99df880cbc9eb0f62bde04d2d838db9d1c6f893f48b0f6067"
+      }
+    ],
+    "reuse_limit": "V21 scalar projector circuits do not instantiate the distinct V49 superspace boundary action or its normal-derivative operator map",
+    "unavailable_for_this_SUSY_action": "a single convention-locked tensor package covering every 10-H/Hc with 126/126bar/210 source portal, every normal-derivative vertex, conjugate SUSY holomorphic channel, and their mutually phase-compatible PS contraction arrays"
+  },
+  "checks": {
+    "G2_fail_closed": true,
+    "commuting_difference_decays": true,
+    "full_matrix_rematch_identity": true,
+    "rematch_is_symplectic": true,
+    "strong_noncommuting_obstruction_nonzero": true
+  },
+  "constructive_component_route": {
+    "existing_seed": "direct_phi_h_sigmabar_tensor_v20.py supplies the normalized 10-channel seed",
+    "form_realization": "Phi_210 is a 4-form and Sigma/barSigma are chiral 5-forms",
+    "maps": "Phi x Sigma -> 10,120,126 arise from contracting 4,3,2 index pairs to 1-,3-,5-form outputs, with chiral Hodge projection in degree five",
+    "not_yet_certificate": "the 120/126 contraction arrays, Gram normalizations, common phase convention, PS branching, and every retained derivative conjugate have not been generated and tested here",
+    "spinor_maps": "Clifford bilinears realize 16 x bar16 = 1+45+210 and 16 x 16 = 10+120+126"
+  },
+  "core_sha256": "58d96f2b01a0ca5b63afc8d825be43c9c89f9efad8d1d903c54f88b4a6d2d323",
+  "corrected_power_counting": {
+    "consequence": "even-profile HcHc and odd-profile H-Hc blocks are O(1), not an O(epsilon E) remainder",
+    "exact_strong_collar": "Hc(s)=-(s/epsilon) Lambda H at m=0",
+    "pencil_slot": "C is an independent leading odd-profile H-Hc generator; Xi includes all leading HH and HcHc blocks",
+    "renormalization": "one measured condition may fix each allowed local coefficient, but it cannot predict it"
+  },
+  "interpretation": {
+    "Lie_algebra_scope": "for n canonical pairs the symmetric Hamiltonian and mixed blocks span sp(2n), dimension n(n+1)+n^2=n(2n+1); this makes transfer-level local rematching possible when the complete block basis is actually retained",
+    "local_rematch": "the exact transfer-level remedy is C_T=T_square T_smooth^-1. In the Hamiltonian benchmark it is symplectic and can locally be factored into Hamiltonian layers (or a suitable symplectic logarithm chart), but its coefficients are profile-dependent new Wilson data",
+    "obstruction": "ordered mixed profile moments generate [Xi,C] and nested commutators already at O(1)",
+    "result": "equal profile normalizations do not fix the strong transfer when Xi and C fail to commute",
+    "through_inverse_cutoff": "after the O(1) obstruction is fixed by renormalization, A-Xi-C mixed moments generate the O(1/Lambda) matching conditions"
+  },
+  "schema": "susy-spin10-v50-second-profile-clebsch-audit-v1",
+  "second_profile_certificate": {
+    "commutator_Xi_C_norm": 0.908955444452587,
+    "commuting_profile_differences": [
+      0.0006528255592805346,
+      0.00032153152959031085,
+      0.00015955640526138921,
+      7.947726817499912e-05
+    ],
+    "commuting_ratio_last_first": 0.12174349953851278,
+    "counterterm_determinant_real": 1.0000000000000164,
+    "counterterm_distance_from_identity": 0.1533866779620379,
+    "counterterm_symplectic_residual": 2.339490623243815e-14,
+    "epsilons": [
+      0.08,
+      0.04,
+      0.02,
+      0.01
+    ],
+    "exact_full_matrix_counterterm_residual": 2.482534153247273e-16,
+    "noncommuting_profile_differences": [
+      0.11270500436422301,
+      0.11177125571389353,
+      0.11130647596377746,
+      0.11107460048108535
+    ],
+    "noncommuting_thin_limit_estimate": 0.11107460048108535
+  },
+  "status": "V50_SECOND_PROFILE_STRONG_COLLAR_OBSTRUCTION_AND_EXACT_SYMPLECTIC_REMATCH_CERTIFIED__COMPONENT_TENSOR_COVERAGE_PARTIAL__G2_FAIL_CLOSED",
+  "verdict": {
+    "G2_closed": false,
+    "precise_remaining": [
+      "freeze a regulator profile and independent renormalized coefficients for every leading HH, HcHc and odd H-Hc block",
+      "derive the full counterterm basis and graph pencil by varying the explicit boundary superspace action",
+      "generate normalized SO(10)->PS component tensors with fixed phases for all retained source and derivative portals",
+      "contract those tensors with the exact kernel and publish the complete physical Wilson array"
+    ],
+    "recommendation": "KEEP G2 OPEN"
+  }
+}

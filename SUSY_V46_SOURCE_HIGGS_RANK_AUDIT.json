@@ -1,0 +1,385 @@
+{
+  "PS_GG_orbifold_shortcut": {
+    "bulk_spinor_effect": {
+      "GG_split": "16 = 10_-1(+) + bar5_+3(-) + 1_-5(-), up to one intrinsic sign",
+      "Theta_mass_operators_boundary_invariant_for_matched_GG_parities": true,
+      "former_PS_half_zero_modes_remain_intact": false,
+      "qualification": "Boundary invariance does not restore the original complete PS exotic zero modes.",
+      "splitting": {
+        "PS_left_intersect_10": "Q-like",
+        "PS_left_intersect_bar5_plus_1": "L-like",
+        "PS_right_intersect_10": "u^c+e^c-like",
+        "PS_right_intersect_bar5_plus_1": "d^c+nu^c-like"
+      }
+    },
+    "five_dimensional_shortcut_accepted": false,
+    "five_dimensional_vector_obstruction": {
+      "Phi_plus_plus_zero_modes_from_V_minus_minus": 12,
+      "adjoint_chiral_has_opposite_parities": true,
+      "gauge_consistent_mass_exhibited": false,
+      "reason": "The 5D adjoint chiral transforms inhomogeneously under the remnant of odd gauge transformations, so an arbitrary boundary mass is not a certified repair. Hall et al. identify these extra massless chiral states and move the construction to 6D.",
+      "vector_parity_sector_dimensions": {
+        "V_minus_minus": 12,
+        "V_minus_plus": 12,
+        "V_plus_minus": 8,
+        "V_plus_plus": 13
+      }
+    },
+    "rejection_reasons": [
+      "twelve unwanted adjoint-chiral zero modes",
+      "no locally anomaly-free GG parity assignment for the four V45 bulk spinors",
+      "the GG parity further fragments the four intended PS exotic zero modes"
+    ],
+    "small_boundary_Higgs_sector": {
+      "D_flat": "|chiPlus|=|chiMinus|=vChi",
+      "W": "kappaChi Schi (chiPlus chiMinus - vChi^2)",
+      "eaten_chiral_components": 1,
+      "fields": [
+        "chiPlus=1_+10",
+        "chiMinus=1_-10",
+        "Schi=1_0"
+      ],
+      "global_group_note": "The charge-10 VEV leaves Z10 inside U(1)chi, while the Z5 quotient identification reduces the independent remnant to Z2 matter parity.",
+      "residual_group": "GSM/Z6 x Z2_matter_parity",
+      "singlet_hessian_rank": 2,
+      "uneaten_massless_chiral_components": 0
+    },
+    "source_wall_ordinary_anomaly_scan": {
+      "consequence": "The four-spinor content is not locally anomaly-free at the GG wall by itself. A complete quantized inflow/global-zero-mode analysis or extra bi-charged matter would be required even if the adjoint zero-mode obstruction were repaired.",
+      "locally_anomaly_free_assignments": [],
+      "neutral_chi_and_Theta_pairs_cancel_these_rows": false,
+      "normalization": "physical interval; one-half 4D anomaly weighted by GG parity",
+      "number_locally_anomaly_free": 0,
+      "parity_assignments_tested": 16,
+      "reduced_equations": [
+        "s1-s2+s3-s4=0",
+        "3s1-12s2-3s3+12s4=0",
+        "27s1-1728s2-27s3+1728s4=0",
+        "-9(s1+s3)+144(s2+s4)=0"
+      ]
+    },
+    "walls": {
+      "connected_intersection_before_chi_Higgsing": "GSM/Z6 x U(1)extra",
+      "y0": "(SU(4)xSU(2)LxSU(2)R)/Z2",
+      "yL": "(SU(5)xU(1)chi)/Z5"
+    }
+  },
+  "core_sha256": "34259ffbc44fcae35443c020f27113dab2daa751d4485e55e4083c73bce2beb3",
+  "couplings_to_four_bulk_spinors": {
+    "KK_warning": "The two allowed Sigma trilinears can mix a selected zero mode with source-even KK components.  They must be included in the full boundary-condition determinant or forbidden by the final discrete/R selector; the projected 4x4 V45 matrix alone does not decide them.",
+    "Phi_210_trilinears": [
+      {
+        "allowed": false,
+        "operator": "Phi HLF HLA",
+        "qF": -9
+      },
+      {
+        "allowed": false,
+        "operator": "Phi HLF HRF",
+        "qF": 15
+      },
+      {
+        "allowed": false,
+        "operator": "Phi HRA HLA",
+        "qF": -15
+      },
+      {
+        "allowed": false,
+        "operator": "Phi HRA HRF",
+        "qF": 9
+      }
+    ],
+    "Sigma_pair_trilinears": [
+      {
+        "allowed": true,
+        "operator": "barSigma HLF HRA",
+        "qF": 0,
+        "zero_mode_projection": "The SU(5)-singlet barSigma VEV couples two 1_-5 spinor components. HLF has no such PS-selected zero mode, so the direct zero-zero entry vanishes."
+      },
+      {
+        "allowed": true,
+        "operator": "Sigma HLA HRF",
+        "qF": 0,
+        "zero_mode_projection": "The conjugate singlet VEV requires two conjugate SU(5)-singlet components. HLA lacks that PS-selected zero mode, so the direct zero-zero entry vanishes."
+      }
+    ],
+    "intended_Theta_terms": [
+      {
+        "allowed": true,
+        "operator": "ThetaPlus HLF HLA",
+        "qF": 0
+      },
+      {
+        "allowed": true,
+        "operator": "ThetaMinus HRA HRF",
+        "qF": 0
+      }
+    ],
+    "neutral_source_Higgs_anomalies": "Phi is real, Sigma+barSigma is vectorlike, and all have qF=0; they add no displayed ordinary U(1)F anomaly.",
+    "representation_products": {
+      "16_x_16": "10_s + 120_a + 126_s",
+      "16_x_bar16": "1 + 45 + 210",
+      "bar16_x_bar16": "bar10_s + 120_a + bar126_s"
+    },
+    "same_chirality_Phi_terms": {
+      "allowed": false,
+      "reason": "210 is absent from 16x16 and bar16xbar16"
+    },
+    "sequestering_warning": "Gauge symmetry alone also permits neutral-singlet couplings such as STheta Phi^2 and STheta Sigma.barSigma.  A claimed separated Theta/GUT superpotential requires the final R/discrete charge audit."
+  },
+  "decision": {
+    "PS_GG_shortcut_valid_in_5D": false,
+    "complete_5D_model_established": false,
+    "condition": "generic superpotential parameters on the nonzero SU(5) branch, away from extra mass-zero loci",
+    "gates_promoted": [],
+    "original_126_pair_plus_singlets_valid": false,
+    "source_Higgs_rank_subproblem_closed_conditionally": true,
+    "standard_repair_selected": "add one neutral 210 boundary chiral"
+  },
+  "neutral_210_repair": {
+    "F_D_branch": {
+      "Aulakh_2003_omega_convention": "p=a=omega",
+      "Aulakh_2005_mass_spectrum_convention": "p=a=-omega",
+      "D_flat": "|sigma|=|barsigma|",
+      "F_equations_Aulakh_2003_convention": [
+        "0=2mp+6lambda omega^2+eta sigma barsigma",
+        "0=6ma+6lambda a^2+12lambda omega^2+3eta sigma barsigma",
+        "0=12momega+12lambda p omega+24lambda a omega+6eta sigma barsigma",
+        "0=(M+eta(p+3a+6omega)) sigma",
+        "0=(M+eta(p+3a+6omega)) barsigma"
+      ],
+      "p": "-M/(10 eta)",
+      "phase_convention_note": "the sign of omega differs; the invariant branch equations below agree",
+      "sigma_barsigma": "-2 p (m+3 lambda p)/eta",
+      "unbroken_source_wall_group": "SU(5)",
+      "vacuum_selection_scope": "The equations exhibit an isolated SU(5) branch; they do not assert that cosmology selects this branch over every other supersymmetric branch."
+    },
+    "SU5_decompositions": {
+      "126": {
+        "1": 1,
+        "10": 10,
+        "45": 45,
+        "bar15": 15,
+        "bar5": 5,
+        "bar50": 50
+      },
+      "210": {
+        "1": 1,
+        "10": 10,
+        "24": 24,
+        "40": 40,
+        "5": 5,
+        "75": 75,
+        "bar10": 10,
+        "bar40": 40,
+        "bar5": 5
+      },
+      "bar126": {
+        "1": 1,
+        "15": 15,
+        "5": 5,
+        "50": 50,
+        "bar10": 10,
+        "bar45": 45
+      }
+    },
+    "counting": {
+      "Goldstone_SU5_content": "1 + 10 + bar10",
+      "broken_generators_SO10_to_SU5": 21,
+      "eaten_chiral_components": 21,
+      "generic_massive_uneaten_chiral_components": 441,
+      "generic_physical_massless_chiral_components": 0,
+      "total_chiral_components": 462
+    },
+    "exact_rational_witness": {
+      "all_unique_sector_masses_nonzero": true,
+      "branch_residuals": {
+        "D_flat_norm_squared_difference": 0,
+        "M_plus_10_eta_p": 0,
+        "sigma_barsigma_plus_2p_times_m_plus_3lambda_p_over_eta": 0
+      },
+      "five_block": {
+        "a": -12,
+        "d": 5,
+        "determinant": -72,
+        "off_diagonal_product": 12,
+        "rank": 2
+      },
+      "parameters": {
+        "M": -10,
+        "barsigma": 1,
+        "eta": 1,
+        "lambda": 1,
+        "m": "-7/2",
+        "p": 1,
+        "sigma": 1
+      },
+      "singlet_nonzero_minor_squared_magnitude": 20,
+      "singlet_rank": 2,
+      "ten_block": {
+        "a": -12,
+        "d": -1,
+        "determinant": 0,
+        "off_diagonal_product": 12,
+        "rank": 1
+      },
+      "unique_sector_masses": {
+        "15_plus_bar15": -16,
+        "24": "-5/2",
+        "40_plus_bar40": -7,
+        "45_plus_bar45": -20,
+        "50_plus_bar50": -24,
+        "75": "-11/2"
+      }
+    },
+    "field_content": [
+      "Phi=210_0",
+      "Sigma=126_0",
+      "barSigma=bar126_0"
+    ],
+    "mass_rank_obligations": {
+      "10_plus_bar10": {
+        "kernel_SU5_multiplets": "10 + bar10",
+        "matrix": [
+          [
+            "2(M+4 eta p)",
+            "2 eta sqrt(3) sigma"
+          ],
+          [
+            "2 eta sqrt(3) barsigma",
+            "2(m+3 lambda p)"
+          ]
+        ],
+        "required_rank": 1
+      },
+      "5_plus_bar5_without_light_10H": {
+        "required_rank": 2,
+        "size": "2x2"
+      },
+      "singlets_1Sigma_1barSigma_1Phi": {
+        "kernel_SU5_multiplet": "1",
+        "matrix": [
+          [
+            "2(M+10 eta p)",
+            "0",
+            "-2 i eta sqrt(5) barsigma"
+          ],
+          [
+            "0",
+            "2(M+10 eta p)",
+            "+2 i eta sqrt(5) sigma"
+          ],
+          [
+            "-2 i eta sqrt(5) barsigma",
+            "+2 i eta sqrt(5) sigma",
+            "2(m+6 lambda p)"
+          ]
+        ],
+        "required_rank": 2
+      },
+      "unique_sectors_required_nonzero": [
+        "50+bar50",
+        "40+bar40",
+        "15+bar15",
+        "45+bar45",
+        "24",
+        "75"
+      ]
+    },
+    "preserves_matter_parity": true,
+    "reduced_singlet_superpotential_Aulakh_2003_convention": "Wred = m(p^2+3a^2+6omega^2) + 2 lambda(a^3+3p omega^2+6a omega^2) + M sigma barsigma + eta sigma barsigma(p+3a+6omega)",
+    "repair_passes_boundary_rank_problem": true,
+    "tensor_superpotential": "W_GUT = (m/4!) Phi_ijkl Phi_ijkl + (lambda/4!) Phi_ijkl Phi_klmn Phi_mnij + (M/5!) Sigma_ijklm barSigma_ijklm + (eta/4!) Phi_ijkl Sigma_ijmno barSigma_klmno",
+    "why_selected": "This is the standard one-additional-irrep renormalizable repair with a complete published spectrum.  A 45 or 54 alone does not do the standard job; the alternative standard route uses both 45+54 (99 rather than 210 raw components, but two irreps and more couplings)."
+  },
+  "open_kill_tests": [
+    "solve the complete KK boundary-condition determinant including every allowed Sigma-spinor coupling",
+    "complete the R/discrete selector audit, including neutral-singlet cross couplings",
+    "compute the compact-group eta/global anomaly and quantized Chern-Simons lattice",
+    "verify the full source/PS global quotient and line-operator lattice with matter parity",
+    "reconstruct the light Higgs, neutrino, flavour, threshold and RG sectors"
+  ],
+  "operator_obligation": "Either include barSigma HLF HRA and Sigma HLA HRF in the full KK boundary-mass problem, or exhibit a consistent selector symmetry that forbids both while retaining W_source.",
+  "primary_sources": [
+    {
+      "url": "https://arxiv.org/abs/hep-ph/0306242",
+      "use": "D-flat 126 pair, 210 as the standard minimal single-irrep repair, explicit tensor superpotential, vacuum equations, and exact matter parity"
+    },
+    {
+      "url": "https://arxiv.org/abs/hep-ph/0501025",
+      "use": "SU(5) reassembly, exact singlet and 10/bar10 mass matrices, Goldstone count and generic spectrum"
+    },
+    {
+      "url": "https://arxiv.org/abs/1707.00580",
+      "use": "general renormalizable SO(10) couplings among 45, 54, 120, 126 pair and 210"
+    },
+    {
+      "url": "https://arxiv.org/abs/hep-ph/0108071",
+      "use": "five-dimensional PS/GG orbifolding leaves unwanted massless adjoint-chiral states"
+    }
+  ],
+  "provenance": {
+    "files": [
+      {
+        "exists": true,
+        "path": "susy_v46_source_higgs_rank_audit.py",
+        "sha256": "787a0acd9d79fc34d496ba6ef2a0e610ac53bfe410e0dea4ee638b88d0aa6888"
+      },
+      {
+        "exists": true,
+        "path": "test_susy_v46_source_higgs_rank_audit.py",
+        "sha256": "2254fc7a15f5778506c7a12f7ec732dd7930817d2af672d9048ac2c0ca7e4c4f"
+      }
+    ]
+  },
+  "recommended_source_superpotential": "W_source = W_GUT(Phi,Sigma,barSigma) + kappaTheta STheta(ThetaPlus ThetaMinus-vF^2) + lambdaL ThetaPlus HLF HLA + lambdaR ThetaMinus HRA HRF",
+  "schema": "susy-v46-source-higgs-rank-audit-v1",
+  "scope": "Renormalizable supersymmetric source-wall Higgs rank, the standard 210 repair, the PS/GG five-dimensional shortcut, and couplings to the four V45 bulk spinors.",
+  "singlet_only_126_pair": {
+    "claim_strength": "Exact for arbitrary gauge singlets at renormalizable order; additional gauge-nonsinglet fields or nonrenormalizable operators are required.",
+    "dimensions": {
+      "126_plus_bar126": 252,
+      "SU5_singlet_directions_in_pair": 2,
+      "broken_SO10_over_SU5_generators": 21,
+      "physical_massless_transverse_chirals_at_least": 230,
+      "transverse_10_plus_bar10_goldstones": 20,
+      "transverse_pair_directions": 250
+    },
+    "field_content": [
+      "Sigma=126_0",
+      "barSigma=bar126_0",
+      "any number of Spin(10) singlets"
+    ],
+    "most_general_charged_dependence": "W = f(S_a) (Sigma.barSigma) + W_sing(S_a)",
+    "no_go": true,
+    "nonzero_branch_condition": "F_Sigma=F_barSigma=0 with sigma*barsigma != 0 implies f(S0)=0",
+    "one_driver_example": {
+      "D_flat": "|sigma|=|barsigma|=v",
+      "W": "kappa S (Sigma.barSigma - v^2)",
+      "physical_massless_chirals": 230,
+      "singlet_hessian_rank": 2,
+      "singlet_hessian_up_to_nonzero_rescalings": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "singlet_kernel": "one relative-phase Goldstone, eaten by the broken U(1)"
+    },
+    "orientation_result": "The superpotential then has zero transverse Hessian and cannot isolate the SU(5)-singlet orbit; choosing that orbit is not a mass-stabilized vacuum selection.",
+    "reason_no_other_term": "There is no Spin(10)-singlet quadratic Sigma.Sigma or barSigma.barSigma, and the general renormalizable SO(10) superpotential has no pure cubic 126 invariants.",
+    "renormalizable_restriction": "f is affine in the singlets and W_sing has degree at most three"
+  },
+  "status": "V46_126_PAIR_PLUS_SINGLETS_NO_GO_230_PHYSICAL_MASSLESS__NEUTRAL_210_REPAIR_HAS_SU5_DFLAT_BRANCH_AND_GENERIC_RANK441__PS_GG_5D_SHORTCUT_REJECTED_BY_12_ADJOINT_CHIRAL_ZERO_MODES__BULK_SPINOR_SELECTOR_AND_FULL_KK_STILL_OPEN"
+}

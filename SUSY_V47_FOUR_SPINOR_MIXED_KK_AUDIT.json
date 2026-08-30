@@ -1,0 +1,375 @@
+{
+  "V46_Theta_Sigma_zero_count": {
+    "B_EE_left_components": "[[0,t_L],[t_L*,0]] on HLF,HLA",
+    "B_EE_right_components": "[[0,t_R],[t_R*,0]] on HRA,HRF",
+    "Sigma_location": "only E-O entries HLF-HRA and HLA-HRF in the one SU5-singlet component",
+    "both_Theta_nonzero": {
+      "left_component_nullity": 0,
+      "right_SU5_singlet_component_nullity": 0,
+      "right_non_singlet_component_nullity": 0,
+      "total_chiral_component_zero_modes": 0
+    },
+    "both_Theta_zero": {
+      "left_component_nullity": 2,
+      "right_SU5_singlet_component_nullity": 2,
+      "right_non_singlet_component_nullity": 2,
+      "total_chiral_component_zero_modes": 32
+    },
+    "boundary_rank_counterexamples": [
+      "det B_1 can vanish at t_L t_R=s_16 s_bar16 while B_EE remains full rank and there is no zero mode",
+      "with t_R=0 and nonzero s_16,s_bar16, B_1 can be full rank while B_EE is zero and two right-component chiral zero modes remain"
+    ],
+    "conclusion": "t_L and t_R nonzero give zero exact KK zero modes for arbitrary finite Sigma entries; Sigma cannot replace either Theta block",
+    "t_L_zero": {
+      "left_component_nullity": 2,
+      "right_SU5_singlet_component_nullity": 0,
+      "right_non_singlet_component_nullity": 0,
+      "total_chiral_component_zero_modes": 16
+    },
+    "t_R_zero": {
+      "left_component_nullity": 0,
+      "right_SU5_singlet_component_nullity": 2,
+      "right_non_singlet_component_nullity": 2,
+      "total_chiral_component_zero_modes": 16
+    }
+  },
+  "core_sha256": "f4e474c487da680d6da3400d6bb1d093070f6ad8e0628a49319ad09916ba6985",
+  "decision": {
+    "S2_closed": false,
+    "complete_theory": false,
+    "gates_promoted": [],
+    "idealized_four_spinor_zero_mode_problem": "closed for finite Hermitian B with t_L,t_R nonzero",
+    "remaining_obligations": [
+      "derive the full matrix-valued map from bare Theta/Sigma delta coefficients to B in one resolved source-wall regulator",
+      "include induced boundary kinetic, derivative and any wrong-chirality terms in the transfer problem",
+      "choose numerical M_i,L and source couplings and compute the complete shifted threshold spectrum",
+      "recompute 5D unification, perturbativity and cross-wall Wilson coefficients from C_full",
+      "finish eta/global anomaly, discrete selector, flavor, neutrino, Higgs and SUSY-breaking audits"
+    ]
+  },
+  "exact_zero_mode_theorem": {
+    "block_factorization": "det K(0)=det G_O(0) det(B_EE) det F_E(0)",
+    "complex_superpotential": "for arbitrary complex symmetric mu, use the Hermitian Nambu lift B_N=[[0,mu^dagger],[mu,0]]; the complex chiral criterion reduces to ker(mu_EE)",
+    "criterion": "ker K(0) is isomorphic to ker(B_EE), where B_EE=E B E restricted to im(E)",
+    "finite_localization": "F_E(0) and G_O(0) are diagonal exponentials and never singular for finite real M_i,L",
+    "meaning": "even-odd and odd-odd source blocks change the zero-mode wavefunction but cannot lift it",
+    "nullity": "n_zero_chiral=n_even-rank(B_EE)",
+    "odd_solution": "a_O=-G_O(0)^-1 O B E F_E(0) a_E",
+    "zero_matrix": "K(0)=B F(0)E+G(0)O"
+  },
+  "field_and_component_contract": {
+    "P_PS_left": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "P_PS_right": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "P_SU5_singlet": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "SU5_decomposition": "16=10_(chi=-1)+bar5_(chi=+3)+1_(chi=-5); these are U1_chi labels, not U1F charges; the chi=-5 singlet is the right-handed-neutrino component inside the PS-right half",
+    "Sigma_projector_statement": "the SU5-singlet barSigma/Sigma VEV couples only nuC_SU5_singlet and its conjugate; it is zero on the other 15 spinor components",
+    "U1F_operator_charge_sums": {
+      "Sigma_HLA_HRF": 0,
+      "ThetaMinus_HRA_HRF": 0,
+      "ThetaPlus_HLF_HLA": 0,
+      "barSigma_HLF_HRA": 0
+    },
+    "channel_order": [
+      "HLF=16_+1",
+      "HLA=bar16_-4",
+      "HRA=16_-1",
+      "HRF=bar16_+4"
+    ],
+    "internal_component_order": [
+      "Q_r_up",
+      "Q_r_down",
+      "Q_g_up",
+      "Q_g_down",
+      "Q_b_up",
+      "Q_b_down",
+      "L_neutral",
+      "L_charged",
+      "uC_r",
+      "uC_g",
+      "uC_b",
+      "dC_r",
+      "dC_g",
+      "dC_b",
+      "eC",
+      "nuC_SU5_singlet"
+    ],
+    "parity_by_component": {
+      "PS_left_8": {
+        "E_at_y0": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "multiplicity": 8
+      },
+      "PS_right_SU5_singlet_1": {
+        "E_at_y0": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "multiplicity": 1
+      },
+      "PS_right_non_singlet_7": {
+        "E_at_y0": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "multiplicity": 7
+      }
+    },
+    "primitive_U1F_charges": {
+      "HLA": -4,
+      "HLF": 1,
+      "HRA": -1,
+      "HRF": 4,
+      "Sigma": 0,
+      "ThetaMinus": -3,
+      "ThetaPlus": 3,
+      "barSigma": 0
+    },
+    "projector_relations": {
+      "P_left_plus_P_right_is_identity": true,
+      "P_singlet_is_subprojector_of_P_right": true,
+      "rank_P_SU5_singlet": 1,
+      "rank_P_left": 8,
+      "rank_P_right": 8
+    }
+  },
+  "general_transfer_theorem": {
+    "bulk_equations": [
+      "(partial_y+M)f=m g",
+      "(-partial_y+M)g=m f"
+    ],
+    "bulk_state": "Psi=(f,g)^T",
+    "characteristic_matrix": "K(m)=(-m S+B F)E+(G+m B S)O",
+    "full_four_spinor_characteristic": "C_full(m)=C_left(m)^8 C_right_non_singlet(m)^7 C_right_singlet(m)",
+    "initial_parity_data": "f(0)=E a and g(0)=O a, with O=1-E",
+    "mass_squared_characteristic": "D(z)=C(sqrt(z)) C(-sqrt(z)), entire in z",
+    "no_division_warning": "K is valid at m=0 and k_i=0; do not divide by m, S_i, F_i or G_i",
+    "one_channel_transfer": "T_i(m)=[[F_i,m S_i],[-m S_i,G_i]]",
+    "signed_characteristic": "C(m)=det K(m)",
+    "source_condition": "g(L)+B f(L)=0"
+  },
+  "numerical_certificate": {
+    "boundary_is_hermitian": true,
+    "boundary_rank_tuned_example": {
+      "det_B": 0.0,
+      "parameters": {
+        "s_16": 0.8,
+        "s_bar16": 0.3,
+        "t_L": 0.4,
+        "t_R": 0.6
+      },
+      "right_zero_nullity": 0
+    },
+    "complex_Nambu_certificate": {
+      "B_N_is_hermitian": true,
+      "complex_chiral_zero_nullity": 0,
+      "doubled_B_N_rank": 4,
+      "mu_is_symmetric": true
+    },
+    "flat_singlet_lightest_absolute_signed_mass": {
+      "Sigma_large": 0.00551446886439,
+      "Sigma_zero": 0.5404195002706,
+      "large_over_zero": 0.01020405233643
+    },
+    "left_zero_factorization": {
+      "det_B_even_even": -0.16,
+      "det_F_even_0": 0.86070797642506,
+      "det_G_odd_0": 1.56831218549017,
+      "direct": -0.21597740921216,
+      "factorized": -0.21597740921216
+    },
+    "parameters": {
+      "L": 1.0,
+      "M_HLF_HLA_HRA_HRF": [
+        0.35,
+        -0.2,
+        0.55,
+        -0.1
+      ],
+      "s_16": 12.0,
+      "s_bar16": 9.0,
+      "t_L": 0.4,
+      "t_R": 0.6
+    },
+    "right_singlet_zero_factorization": {
+      "det_B_even_even": -0.36,
+      "det_F_even_0": 0.63762815162177,
+      "det_G_odd_0": 1.16183424272828,
+      "direct": -0.26669455944542,
+      "factorized": -0.26669455944542
+    },
+    "zero_counts": {
+      "left_component_nullity": 0,
+      "right_SU5_singlet_component_nullity": 0,
+      "right_non_singlet_component_nullity": 0,
+      "total_chiral_component_zero_modes": 0
+    }
+  },
+  "primary_sources": [
+    {
+      "url": "https://arxiv.org/abs/hep-th/0106256",
+      "use": "5D N=1 hypermultiplet first-order superfield operator"
+    },
+    {
+      "url": "https://arxiv.org/abs/hep-ph/0112230",
+      "use": "orbifold superspace and brane-localized operators"
+    },
+    {
+      "url": "https://arxiv.org/abs/hep-ph/0508153",
+      "use": "explicit SU(5) decomposition of 16x16xbar126 and conjugate SO(10) couplings"
+    },
+    {
+      "url": "https://arxiv.org/abs/hep-ph/0603086",
+      "use": "5D SO(10) interval, Pati--Salam parities and boundary-shifted KK towers"
+    },
+    {
+      "url": "https://arxiv.org/abs/1408.1852",
+      "use": "thin-brane and infinite-KK limits need an explicit regularization prescription"
+    }
+  ],
+  "provenance": {
+    "V45_or_V46_files_modified": false,
+    "charge_blind_numeric_dependency": {
+      "C:\\Users\\jayal\\Downloads\\So10Theory2\\So10Theory\\_g3_equality_classification_integration\\susy_v46_spinor_kk_determinant_audit.py": "95a99707501cec98860fffb3a0c2ad7ca48a034ce673d55f4c8f491255584da9",
+      "use": "only S(z), F(z), and G(z) profile functions are imported; no V46 charge labels are imported"
+    },
+    "generator": "susy_v47_four_spinor_mixed_kk_audit.py",
+    "normalization_audit": {
+      "U1chi_labels_kept_distinct_from_U1F": true,
+      "authoritative_convention": "primitive displayed local-particle U1F normalization",
+      "legacy_x3_channel_labels_retained_in_V47": false,
+      "relation_to_legacy_x3_labels": "q_primitive=q_legacy/3"
+    },
+    "tests": "test_susy_v47_four_spinor_mixed_kk_audit.py",
+    "upstream_sha256": {
+      "SUSY_V45_NEW_PHYSICS_MASTER_AUDIT.json": "67d452d07dc5a11aa6bc99d90b89c1caa44b065ca872029295fa07e7addfe97e",
+      "SUSY_V46_MICROSCOPIC_KILL_TEST_AUDIT.json": "f13705c05831f552807cc92d18a7a84aec55201c5b74756757a3c3735c765f4e",
+      "SUSY_V47_SOURCE_COMPLETION_ROUTE_AUDIT.json": "782f66ce31b6b9669ec847768c614b9d7318a578888271c2bd7b593a08c14fdc"
+    }
+  },
+  "regulated_spectral_determinant": {
+    "boundary_row_normalization": "use (I+B^2)^(-1/2)[g+Bf]=0 for Hermitian B; the squared characteristic receives det(I+B^2)^(-1)",
+    "cross_domain_warning": "absolute and cross-B determinant constants require a brane regulator and boundary counterterm scheme",
+    "nonzero_case": "P_B(z)=C(sqrt(z))C(-sqrt(z))/C(0)^2=product_a(1-z/m_a^2)",
+    "same_domain_invariance": "P_B is unchanged by nonsingular rescaling of boundary equations",
+    "zero_removed_case": "if C(m)=c_q m^q+..., divide C(sqrt(z))C(-sqrt(z)) by (-1)^q c_q^2 z^q"
+  },
+  "renormalized_source_boundary_matrix": {
+    "B_component": [
+      [
+        "0",
+        "t_L",
+        "s_16 P_1",
+        "0"
+      ],
+      [
+        "t_L*",
+        "0",
+        "0",
+        "s_bar16 P_bar1"
+      ],
+      [
+        "s_16* P_1",
+        "0",
+        "0",
+        "t_R"
+      ],
+      [
+        "0",
+        "s_bar16* P_bar1",
+        "t_R*",
+        "0"
+      ]
+    ],
+    "basis": "(HLF,HLA,HRA,HRF)",
+    "complex_singlet_boundary_determinant": "det B_1=|t_L t_R* - s_16 s_bar16*|^2 in the Hermitian extension convention",
+    "parameters": {
+      "s_16": "B_R(lambda_barSigma <barSigma>_SU5-singlet)",
+      "s_bar16": "B_R(lambda_Sigma <Sigma>_SU5-singlet)",
+      "t_L": "B_R(lambda_L <ThetaPlus>)",
+      "t_R": "B_R(lambda_R <ThetaMinus>)"
+    },
+    "real_singlet_boundary_determinant": "det B_1=(t_L t_R-s_16 s_bar16)^2",
+    "warning": "rank(B) is not the zero-mode criterion when y0 parities are mixed"
+  },
+  "schema": "susy-v47-four-spinor-mixed-kk-audit-v1",
+  "self_adjointness_and_stability": {
+    "PS_parity_is_isotropic": true,
+    "boundary_form": "[-f_psi^dagger g_phi+g_psi^dagger f_phi]_0^L",
+    "consequence": "the first-order KK operator has real signed eigenvalues; unbroken 4D N=1 multiplets have m_scalar^2=m_fermion^2>=0",
+    "outside_certificate": [
+      "non-Hermitian matching used without Nambu completion",
+      "negative-norm boundary kinetic terms",
+      "SUSY-breaking scalar-only boundary masses",
+      "energy-dependent boundary kernels with unaccounted boundary states"
+    ],
+    "source_condition_is_self_adjoint_iff": "B=B^dagger (or the equivalent Hermitian Nambu lift for complex holomorphic masses)",
+    "tachyonic_or_complex_roots": 0
+  },
+  "status": "V47_FOUR_SPINOR_TRANSFER_CHARACTERISTIC_DERIVED__ZERO_NULLITY_CONTROLLED_ONLY_BY_SOURCE_EVEN_EVEN_BLOCK__THETA_PLUS_AND_MINUS_REMOVE_ALL_ZERO_MODES_WHILE_SIGMA_CROSS_BLOCKS_ONLY_SHIFT_TOWERS__HERMITIAN_EXTENSION_HAS_NO_TACHYONS__REGULATOR_THRESHOLDS_AND_GLOBAL_GATES_OPEN",
+  "strong_coupling_caveats": {
+    "direction_dependence": "if only selected singular values of B grow, count spectral flow in those image/kernel subspaces; rank alone is insufficient",
+    "finite_B": "no new exact zero occurs while B_EE stays full rank, but eigenvalues can be parametrically small",
+    "localization": "finite kink masses can independently make source overlaps and physical poles exponentially small",
+    "threshold_warning": "full thresholds must use all roots of C_full, not projected rank or det B",
+    "uniform_invertible_B_limit": "as ||B||->infinity the source condition approaches f(L)=0; parity spectral flow produces n_odd asymptotic zero modes"
+  }
+}

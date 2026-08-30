@@ -1,0 +1,1072 @@
+{
+  "schema": "susy_v22r_g2_missing_partner_deformation_audit_v1",
+  "namespace": "canonical.susy_so10x17.v22r.G2.missing_partner_deformation_audit",
+  "status": "V22R_G2_DIRECT_DEFORMATION_BASIS_CLOSED__ABSTRACT_RANK_STABLE__COMPONENT_CLEBSCH_RANK_OPEN",
+  "sources": {
+    "accepted_108_sector_completion": {
+      "path": "SUSY_V22_G1_NO_NEW_FIELD_COMPLETION.json",
+      "raw_sha256": "ac9d2ad4eaa091e7b7381e91956c8a97d57d1bcb2adf5af030a6da1632cfdaf9",
+      "core_sha256": "97fb3273c233fe61df1f746138921d14a486ce2f6a60f2d15655beef87d184f1"
+    },
+    "V22R_contract": {
+      "path": "SUSY_SO10X17_V22R_CONTRACT.json",
+      "raw_sha256": "9804311b0aa2ffb021205238a55438e990472b5ecaa4ef60a11de7256981b259",
+      "core_sha256": "fa961a179c5124c598bb8b2976c1763f1b5057d3aabb1458552f66043a81a59c"
+    },
+    "V22R_operator_catalogue": {
+      "path": "SUSY_V22R_OPERATOR_CATALOGUE.json",
+      "raw_sha256": "dbd3f87df836184673c6bf972c5c3d4a7f278ba19d7be20798db3cb7014d7b1f",
+      "core_sha256": "0be5be830a3c8180224c3818870a3698eb111bb9260df0a2316ab7c1d5a3be70"
+    },
+    "broken_selector_spurion_frontier": {
+      "path": "SUSY_V22R_BROKEN_SELECTOR_SPURION_FRONTIER.json",
+      "raw_sha256": "c6cfb2dc6065d4bdb64d89d77389c9278c11a396e65dfd9f8b91ace2170ca9cd",
+      "core_sha256": "f5614218e61b27c0cd537f43d4ac9096468866c846f7b872d33b67405c33854d"
+    },
+    "V22R_model": {
+      "path": "models/SO10X17SUSYV22R/SO10X17SUSYV22R.m",
+      "portable_sha256": "c792d94c01008a03e5ef8811652764094efdfa3276b4986aa5dc295e7015a77e"
+    }
+  },
+  "accepted_basis": {
+    "selected_sectors": 108,
+    "added_sectors": 79,
+    "direct_missing_partner_deformation_sectors": 10,
+    "direct_deformation_SO10_singlet_contraction_channels": 20,
+    "original_direct_missing_partner_sectors": 6,
+    "original_direct_SO10_singlet_contraction_channels": 6,
+    "all_direct_sectors_after_V22R_acceptance": 16,
+    "all_direct_SO10_singlet_channels_after_V22R_acceptance": 26,
+    "new_pair_supports": 0,
+    "light_light_sectors_in_complete_108_sector_basis": []
+  },
+  "direct_deformations": [
+    {
+      "monomial": "Delta H10m C16 C16bar",
+      "degree": 4,
+      "counts": {
+        "C16": 1,
+        "C16bar": 1,
+        "Delta": 1,
+        "H10m": 1
+      },
+      "so10_singlet_contraction_channels": 1,
+      "so10_multiplicity_histogram": {
+        "1": 1
+      },
+      "mass_effect": {
+        "block": "light_heavy",
+        "residual_pair": [
+          "Delta",
+          "H10m"
+        ],
+        "vev_insertions": [
+          "C16",
+          "C16bar"
+        ]
+      },
+      "coefficient_scaling_after_vevs": "product(VEV insertions)/Mstar",
+      "V22R_sector_id": "V22R-S105"
+    },
+    {
+      "monomial": "Delta T120m C16 C16bar",
+      "degree": 4,
+      "counts": {
+        "C16": 1,
+        "C16bar": 1,
+        "Delta": 1,
+        "T120m": 1
+      },
+      "so10_singlet_contraction_channels": 2,
+      "so10_multiplicity_histogram": {
+        "2": 1
+      },
+      "mass_effect": {
+        "block": "light_heavy",
+        "residual_pair": [
+          "Delta",
+          "T120m"
+        ],
+        "vev_insertions": [
+          "C16",
+          "C16bar"
+        ]
+      },
+      "coefficient_scaling_after_vevs": "product(VEV insertions)/Mstar",
+      "V22R_sector_id": "V22R-S106"
+    },
+    {
+      "monomial": "DeltaB2 H10p C16 C16bar",
+      "degree": 4,
+      "counts": {
+        "C16": 1,
+        "C16bar": 1,
+        "DeltaB2": 1,
+        "H10p": 1
+      },
+      "so10_singlet_contraction_channels": 1,
+      "so10_multiplicity_histogram": {
+        "1": 1
+      },
+      "mass_effect": {
+        "block": "light_heavy",
+        "residual_pair": [
+          "DeltaB2",
+          "H10p"
+        ],
+        "vev_insertions": [
+          "C16",
+          "C16bar"
+        ]
+      },
+      "coefficient_scaling_after_vevs": "product(VEV insertions)/Mstar",
+      "V22R_sector_id": "V22R-S107"
+    },
+    {
+      "monomial": "DeltaB2 T120p C16 C16bar",
+      "degree": 4,
+      "counts": {
+        "C16": 1,
+        "C16bar": 1,
+        "DeltaB2": 1,
+        "T120p": 1
+      },
+      "so10_singlet_contraction_channels": 2,
+      "so10_multiplicity_histogram": {
+        "2": 1
+      },
+      "mass_effect": {
+        "block": "light_heavy",
+        "residual_pair": [
+          "DeltaB2",
+          "T120p"
+        ],
+        "vev_insertions": [
+          "C16",
+          "C16bar"
+        ]
+      },
+      "coefficient_scaling_after_vevs": "product(VEV insertions)/Mstar",
+      "V22R_sector_id": "V22R-S108"
+    },
+    {
+      "monomial": "Phi210 DeltaB Delta XMP",
+      "degree": 4,
+      "counts": {
+        "Delta": 1,
+        "DeltaB": 1,
+        "Phi210": 1,
+        "XMP": 1
+      },
+      "so10_singlet_contraction_channels": 1,
+      "so10_multiplicity_histogram": {
+        "1": 1
+      },
+      "mass_effect": {
+        "block": "heavy_heavy",
+        "residual_pair": [
+          "Delta",
+          "DeltaB"
+        ],
+        "vev_insertions": [
+          "Phi210",
+          "XMP"
+        ]
+      },
+      "coefficient_scaling_after_vevs": "product(VEV insertions)/Mstar",
+      "V22R_sector_id": "V22R-S098"
+    },
+    {
+      "monomial": "Phi210 DeltaB2 Delta2 XMP",
+      "degree": 4,
+      "counts": {
+        "Delta2": 1,
+        "DeltaB2": 1,
+        "Phi210": 1,
+        "XMP": 1
+      },
+      "so10_singlet_contraction_channels": 1,
+      "so10_multiplicity_histogram": {
+        "1": 1
+      },
+      "mass_effect": {
+        "block": "heavy_heavy",
+        "residual_pair": [
+          "Delta2",
+          "DeltaB2"
+        ],
+        "vev_insertions": [
+          "Phi210",
+          "XMP"
+        ]
+      },
+      "coefficient_scaling_after_vevs": "product(VEV insertions)/Mstar",
+      "V22R_sector_id": "V22R-S099"
+    },
+    {
+      "monomial": "Phi210^2 Delta H10m",
+      "degree": 4,
+      "counts": {
+        "Delta": 1,
+        "H10m": 1,
+        "Phi210": 2
+      },
+      "so10_singlet_contraction_channels": 2,
+      "so10_multiplicity_histogram": {
+        "2": 1
+      },
+      "mass_effect": {
+        "block": "light_heavy",
+        "residual_pair": [
+          "Delta",
+          "H10m"
+        ],
+        "vev_insertions": [
+          "Phi210",
+          "Phi210"
+        ]
+      },
+      "coefficient_scaling_after_vevs": "product(VEV insertions)/Mstar",
+      "V22R_sector_id": "V22R-S094"
+    },
+    {
+      "monomial": "Phi210^2 Delta T120m",
+      "degree": 4,
+      "counts": {
+        "Delta": 1,
+        "Phi210": 2,
+        "T120m": 1
+      },
+      "so10_singlet_contraction_channels": 4,
+      "so10_multiplicity_histogram": {
+        "4": 1
+      },
+      "mass_effect": {
+        "block": "light_heavy",
+        "residual_pair": [
+          "Delta",
+          "T120m"
+        ],
+        "vev_insertions": [
+          "Phi210",
+          "Phi210"
+        ]
+      },
+      "coefficient_scaling_after_vevs": "product(VEV insertions)/Mstar",
+      "V22R_sector_id": "V22R-S095"
+    },
+    {
+      "monomial": "Phi210^2 DeltaB2 H10p",
+      "degree": 4,
+      "counts": {
+        "DeltaB2": 1,
+        "H10p": 1,
+        "Phi210": 2
+      },
+      "so10_singlet_contraction_channels": 2,
+      "so10_multiplicity_histogram": {
+        "2": 1
+      },
+      "mass_effect": {
+        "block": "light_heavy",
+        "residual_pair": [
+          "DeltaB2",
+          "H10p"
+        ],
+        "vev_insertions": [
+          "Phi210",
+          "Phi210"
+        ]
+      },
+      "coefficient_scaling_after_vevs": "product(VEV insertions)/Mstar",
+      "V22R_sector_id": "V22R-S096"
+    },
+    {
+      "monomial": "Phi210^2 DeltaB2 T120p",
+      "degree": 4,
+      "counts": {
+        "DeltaB2": 1,
+        "Phi210": 2,
+        "T120p": 1
+      },
+      "so10_singlet_contraction_channels": 4,
+      "so10_multiplicity_histogram": {
+        "4": 1
+      },
+      "mass_effect": {
+        "block": "light_heavy",
+        "residual_pair": [
+          "DeltaB2",
+          "T120p"
+        ],
+        "vev_insertions": [
+          "Phi210",
+          "Phi210"
+        ]
+      },
+      "coefficient_scaling_after_vevs": "product(VEV insertions)/Mstar",
+      "V22R_sector_id": "V22R-S097"
+    }
+  ],
+  "deformation_groups": [
+    {
+      "residual_pair": [
+        "Delta",
+        "DeltaB"
+      ],
+      "block": "heavy_heavy",
+      "new_sectors": 1,
+      "new_SO10_singlet_contraction_channels": 1
+    },
+    {
+      "residual_pair": [
+        "Delta",
+        "H10m"
+      ],
+      "block": "light_heavy",
+      "new_sectors": 2,
+      "new_SO10_singlet_contraction_channels": 3
+    },
+    {
+      "residual_pair": [
+        "Delta",
+        "T120m"
+      ],
+      "block": "light_heavy",
+      "new_sectors": 2,
+      "new_SO10_singlet_contraction_channels": 6
+    },
+    {
+      "residual_pair": [
+        "Delta2",
+        "DeltaB2"
+      ],
+      "block": "heavy_heavy",
+      "new_sectors": 1,
+      "new_SO10_singlet_contraction_channels": 1
+    },
+    {
+      "residual_pair": [
+        "DeltaB2",
+        "H10p"
+      ],
+      "block": "light_heavy",
+      "new_sectors": 2,
+      "new_SO10_singlet_contraction_channels": 3
+    },
+    {
+      "residual_pair": [
+        "DeltaB2",
+        "T120p"
+      ],
+      "block": "light_heavy",
+      "new_sectors": 2,
+      "new_SO10_singlet_contraction_channels": 6
+    }
+  ],
+  "broken_selector_boundary": {
+    "XMP_VEV_breaks_Z2S": true,
+    "first_audited_XMP_spurion_leakage_layer": {
+      "source_degree": 5,
+      "sectors": 67,
+      "so10_flavour_components": 160,
+      "complete_degree_five_census": false,
+      "additional_direct_missing_partner_sectors": 14,
+      "additional_direct_missing_partner_SO10_flavour_components": 28,
+      "additional_direct_missing_partner_rows": [
+        {
+          "monomial": "Phi210^2 DeltaB Delta XMP",
+          "counts": {
+            "Phi210": 2,
+            "DeltaB": 1,
+            "Delta": 1,
+            "XMP": 1
+          },
+          "so10_flavour_component_multiplicity": 6,
+          "mass_effects": [
+            {
+              "block": "heavy_heavy",
+              "residual_pair": [
+                "Delta",
+                "DeltaB"
+              ],
+              "vev_insertions": [
+                "Phi210",
+                "Phi210",
+                "XMP"
+              ]
+            }
+          ]
+        },
+        {
+          "monomial": "Phi210^2 DeltaB2 Delta2 XMP",
+          "counts": {
+            "Phi210": 2,
+            "DeltaB2": 1,
+            "Delta2": 1,
+            "XMP": 1
+          },
+          "so10_flavour_component_multiplicity": 6,
+          "mass_effects": [
+            {
+              "block": "heavy_heavy",
+              "residual_pair": [
+                "Delta2",
+                "DeltaB2"
+              ],
+              "vev_insertions": [
+                "Phi210",
+                "Phi210",
+                "XMP"
+              ]
+            }
+          ]
+        },
+        {
+          "monomial": "Phi210 Delta H10m XMP^2",
+          "counts": {
+            "Phi210": 1,
+            "Delta": 1,
+            "H10m": 1,
+            "XMP": 2
+          },
+          "so10_flavour_component_multiplicity": 1,
+          "mass_effects": [
+            {
+              "block": "light_heavy",
+              "residual_pair": [
+                "Delta",
+                "H10m"
+              ],
+              "vev_insertions": [
+                "Phi210",
+                "XMP",
+                "XMP"
+              ]
+            }
+          ]
+        },
+        {
+          "monomial": "Phi210 Delta T120m XMP^2",
+          "counts": {
+            "Phi210": 1,
+            "Delta": 1,
+            "T120m": 1,
+            "XMP": 2
+          },
+          "so10_flavour_component_multiplicity": 1,
+          "mass_effects": [
+            {
+              "block": "light_heavy",
+              "residual_pair": [
+                "Delta",
+                "T120m"
+              ],
+              "vev_insertions": [
+                "Phi210",
+                "XMP",
+                "XMP"
+              ]
+            }
+          ]
+        },
+        {
+          "monomial": "Phi210 DeltaB2 H10p XMP^2",
+          "counts": {
+            "Phi210": 1,
+            "DeltaB2": 1,
+            "H10p": 1,
+            "XMP": 2
+          },
+          "so10_flavour_component_multiplicity": 1,
+          "mass_effects": [
+            {
+              "block": "light_heavy",
+              "residual_pair": [
+                "DeltaB2",
+                "H10p"
+              ],
+              "vev_insertions": [
+                "Phi210",
+                "XMP",
+                "XMP"
+              ]
+            }
+          ]
+        },
+        {
+          "monomial": "Phi210 DeltaB2 T120p XMP^2",
+          "counts": {
+            "Phi210": 1,
+            "DeltaB2": 1,
+            "T120p": 1,
+            "XMP": 2
+          },
+          "so10_flavour_component_multiplicity": 1,
+          "mass_effects": [
+            {
+              "block": "light_heavy",
+              "residual_pair": [
+                "DeltaB2",
+                "T120p"
+              ],
+              "vev_insertions": [
+                "Phi210",
+                "XMP",
+                "XMP"
+              ]
+            }
+          ]
+        },
+        {
+          "monomial": "DeltaB Delta Splus Sminus XMP",
+          "counts": {
+            "DeltaB": 1,
+            "Delta": 1,
+            "Splus": 1,
+            "Sminus": 1,
+            "XMP": 1
+          },
+          "so10_flavour_component_multiplicity": 1,
+          "mass_effects": [
+            {
+              "block": "heavy_heavy",
+              "residual_pair": [
+                "Delta",
+                "DeltaB"
+              ],
+              "vev_insertions": [
+                "Sminus",
+                "Splus",
+                "XMP"
+              ]
+            }
+          ]
+        },
+        {
+          "monomial": "DeltaB Delta Phi17p Phi17m XMP",
+          "counts": {
+            "DeltaB": 1,
+            "Delta": 1,
+            "Phi17p": 1,
+            "Phi17m": 1,
+            "XMP": 1
+          },
+          "so10_flavour_component_multiplicity": 1,
+          "mass_effects": [
+            {
+              "block": "heavy_heavy",
+              "residual_pair": [
+                "Delta",
+                "DeltaB"
+              ],
+              "vev_insertions": [
+                "Phi17m",
+                "Phi17p",
+                "XMP"
+              ]
+            }
+          ]
+        },
+        {
+          "monomial": "DeltaB Delta XMP^3",
+          "counts": {
+            "DeltaB": 1,
+            "Delta": 1,
+            "XMP": 3
+          },
+          "so10_flavour_component_multiplicity": 1,
+          "mass_effects": [
+            {
+              "block": "heavy_heavy",
+              "residual_pair": [
+                "Delta",
+                "DeltaB"
+              ],
+              "vev_insertions": [
+                "XMP",
+                "XMP",
+                "XMP"
+              ]
+            }
+          ]
+        },
+        {
+          "monomial": "DeltaB Delta XMP C16 C16bar",
+          "counts": {
+            "DeltaB": 1,
+            "Delta": 1,
+            "XMP": 1,
+            "C16": 1,
+            "C16bar": 1
+          },
+          "so10_flavour_component_multiplicity": 3,
+          "mass_effects": [
+            {
+              "block": "heavy_heavy",
+              "residual_pair": [
+                "Delta",
+                "DeltaB"
+              ],
+              "vev_insertions": [
+                "C16",
+                "C16bar",
+                "XMP"
+              ]
+            }
+          ]
+        },
+        {
+          "monomial": "DeltaB2 Delta2 Splus Sminus XMP",
+          "counts": {
+            "DeltaB2": 1,
+            "Delta2": 1,
+            "Splus": 1,
+            "Sminus": 1,
+            "XMP": 1
+          },
+          "so10_flavour_component_multiplicity": 1,
+          "mass_effects": [
+            {
+              "block": "heavy_heavy",
+              "residual_pair": [
+                "Delta2",
+                "DeltaB2"
+              ],
+              "vev_insertions": [
+                "Sminus",
+                "Splus",
+                "XMP"
+              ]
+            }
+          ]
+        },
+        {
+          "monomial": "DeltaB2 Delta2 Phi17p Phi17m XMP",
+          "counts": {
+            "DeltaB2": 1,
+            "Delta2": 1,
+            "Phi17p": 1,
+            "Phi17m": 1,
+            "XMP": 1
+          },
+          "so10_flavour_component_multiplicity": 1,
+          "mass_effects": [
+            {
+              "block": "heavy_heavy",
+              "residual_pair": [
+                "Delta2",
+                "DeltaB2"
+              ],
+              "vev_insertions": [
+                "Phi17m",
+                "Phi17p",
+                "XMP"
+              ]
+            }
+          ]
+        },
+        {
+          "monomial": "DeltaB2 Delta2 XMP^3",
+          "counts": {
+            "DeltaB2": 1,
+            "Delta2": 1,
+            "XMP": 3
+          },
+          "so10_flavour_component_multiplicity": 1,
+          "mass_effects": [
+            {
+              "block": "heavy_heavy",
+              "residual_pair": [
+                "Delta2",
+                "DeltaB2"
+              ],
+              "vev_insertions": [
+                "XMP",
+                "XMP",
+                "XMP"
+              ]
+            }
+          ]
+        },
+        {
+          "monomial": "DeltaB2 Delta2 XMP C16 C16bar",
+          "counts": {
+            "DeltaB2": 1,
+            "Delta2": 1,
+            "XMP": 1,
+            "C16": 1,
+            "C16bar": 1
+          },
+          "so10_flavour_component_multiplicity": 3,
+          "mass_effects": [
+            {
+              "block": "heavy_heavy",
+              "residual_pair": [
+                "Delta2",
+                "DeltaB2"
+              ],
+              "vev_insertions": [
+                "C16",
+                "C16bar",
+                "XMP"
+              ]
+            }
+          ]
+        }
+      ],
+      "light_light_sectors": []
+    },
+    "finite_108_sector_catalogue_is_all_order_closed": false,
+    "declared_standard_embedding_stabilizer_arithmetic_closed": true,
+    "standard_embedding_phase_exponents": {
+      "Phi210": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "XMP": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "Splus": [
+        "0",
+        "-2",
+        "-4",
+        "-6",
+        "-8",
+        "-10",
+        "-12",
+        "-14",
+        "-16",
+        "-18",
+        "-20",
+        "-22",
+        "-24",
+        "-26",
+        "-28",
+        "-30",
+        "-32",
+        "-34",
+        "-36",
+        "-38",
+        "-40",
+        "-42",
+        "-44",
+        "-46",
+        "-48",
+        "-50",
+        "-52",
+        "-54"
+      ],
+      "Sminus": [
+        "0",
+        "3",
+        "6",
+        "9",
+        "12",
+        "15",
+        "18",
+        "21",
+        "24",
+        "27",
+        "30",
+        "33",
+        "36",
+        "39",
+        "42",
+        "45",
+        "48",
+        "51",
+        "54",
+        "57",
+        "60",
+        "63",
+        "66",
+        "69",
+        "72",
+        "75",
+        "78",
+        "81"
+      ],
+      "Phi17p": [
+        "0",
+        "-12",
+        "-24",
+        "-36",
+        "-48",
+        "-60",
+        "-72",
+        "-84",
+        "-96",
+        "-108",
+        "-120",
+        "-132",
+        "-144",
+        "-156",
+        "-168",
+        "-180",
+        "-192",
+        "-204",
+        "-216",
+        "-228",
+        "-240",
+        "-252",
+        "-264",
+        "-276",
+        "-288",
+        "-300",
+        "-312",
+        "-324"
+      ],
+      "Phi17m": [
+        "0",
+        "13",
+        "26",
+        "39",
+        "52",
+        "65",
+        "78",
+        "91",
+        "104",
+        "117",
+        "130",
+        "143",
+        "156",
+        "169",
+        "182",
+        "195",
+        "208",
+        "221",
+        "234",
+        "247",
+        "260",
+        "273",
+        "286",
+        "299",
+        "312",
+        "325",
+        "338",
+        "351"
+      ],
+      "C16": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "20",
+        "21",
+        "22",
+        "23",
+        "24",
+        "25",
+        "26",
+        "27"
+      ],
+      "C16bar": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    "full_F_D_soft_vacuum_realizes_the_declared_stabilizer": false,
+    "interpretation": "The 108-sector result is an exact degree-four EFT theorem. The first audited XMP-spurion leakage layer, not a complete degree-five census, adds fourteen more direct missing-partner deformations but still no light-light sector. The declared standard SO(10)-singlet embedding has an exact gauge-compensated diagonal Z28R stabilizer, but the full F+D+soft vacuum has not been proved to realize that embedding and the Wilsonian spurion tower remains open."
+  },
+  "rank_implications": {
+    "doublet": {
+      "block_form": "[[0_(6x6), A_(6x5)], [B_(5x6), C_(5x5)]]",
+      "matrix_shape": [
+        11,
+        11
+      ],
+      "structural_rank_upper_bound": 10,
+      "structural_nullity_lower_bound": 1,
+      "architecture_witness_rank": 10,
+      "nonzero_10x10_minor_determinant": "-1",
+      "abstract_generic_rank": 10,
+      "abstract_generic_nullity": 1
+    },
+    "triplet": {
+      "block_form": "[[0_(6x6), A_(6x7)], [B_(7x6), C_(7x7)]]",
+      "matrix_shape": [
+        13,
+        13
+      ],
+      "structural_rank_upper_bound": 13,
+      "architecture_witness_rank": 13,
+      "nonzero_13x13_determinant": "1",
+      "abstract_generic_rank": 13,
+      "abstract_generic_nullity": 0
+    },
+    "exact_parameter_extension_theorem": "Setting all ten new-sector coefficients to zero specializes the V22R architecture family to the prior integer rank witness. Its nonzero doublet minor and triplet determinant therefore remain nonzero polynomials on a Zariski-open subset of the enlarged abstract block family. Adding parameters cannot lower the generic maximum rank, although tuned cancellations can lower rank at special points.",
+    "source_tensor_limit": "The frozen census proves invariant-copy multiplicities but supplies neither normalized invariant tensors nor their SO(10)->SM doublet/triplet Clebsch maps. The physical V22R coefficient image may be a proper subvariety of the abstract block family, so the source-exact ranks are not yet proved.",
+    "all_order_zero_block_condition": "The declared standard singlet embedding preserves a gauge-compensated diagonal Z28R by exact phase arithmetic. The full F+D+soft vacuum must still prove that embedding, every relevant zero VEV, and the component action of the diagonal symmetry; the all-order zero block therefore remains open."
+  },
+  "safe_SARAH_integration": {
+    "multi_hour_run_performed": false,
+    "sector_marker_syntax": [
+      "etaPhiPhiDeltaH*Phi210.Phi210.Delta.H10m/Mstar",
+      "etaPhiXDeltaBDelta*Phi210.XMP.DeltaB.Delta/Mstar",
+      "etaCCDeltaH*C16bar.C16.Delta.H10m/Mstar"
+    ],
+    "limits": [
+      "A bare SARAH dot monomial is only a sector marker when the SO(10) singlet multiplicity exceeds one; it does not encode the two or four independent invariant tensors.",
+      "Every invariant copy needs an explicit normalized contraction/CG definition and an independent coupling before component matrices can be generated.",
+      "SuperPotentialCatalogue is metadata ignored by SARAH dynamics; only SuperPotential is processed.",
+      "The model's continuous RSymmetry charge vector is an exact integer lift of Z28R only on the accepted truncation: it is a computational encoding, not a declaration of a new physical continuous R symmetry, and it can reject higher operators whose finite charge is 2+28n.",
+      "SARAH 4.15.3 CheckPossibleTermsSuperPotential enumerates only field degree one through three and cannot attest the V22R quartic closure.",
+      "SARAH CheckChargeConservation exits for SO(10) with ChargeConservation::NoSUN, so the exact external U(1)X/Z28R/Z2S ledger remains authoritative.",
+      "The current GaugeES scaffold has no SO(10)->SM component decomposition or VEV/matter-sector definitions, so it cannot produce the required doublet/triplet Clebsch matrices.",
+      "A non-aborting CheckModel run is not a rank certificate and must reject timeout, missing-definition, charge, and possible-term diagnostics before it is promotable."
+    ],
+    "next_safe_step": "Define the independent SO(10) invariant tensors for the 26 direct contraction channels, project each onto normalized SM doublet/triplet components, then evaluate one exact V22R vacuum parameter point."
+  },
+  "checks": {
+    "accepted_completion_core_is_pinned_and_self_consistent": true,
+    "accepted_completion_has_exactly_108_selected_sectors": true,
+    "accepted_completion_has_exactly_79_additions": true,
+    "exactly_ten_additions_are_direct_missing_partner_deformations": true,
+    "direct_deformation_monomials_match_the_frozen_expected_set": true,
+    "all_direct_deformation_tensor_multiplicities_match": true,
+    "all_ten_deformations_are_ID_bound_in_the_V22R_source_catalogue": true,
+    "ten_deformation_sectors_contain_twenty_SO10_singlet_channels": true,
+    "six_original_direct_sectors_contribute_six_channels": true,
+    "deformations_add_no_new_mass_graph_pair_support": true,
+    "all_108_sectors_preserve_the_light_light_holomorphic_zero_block": true,
+    "accepted_basis_contains_no_degree_two_superpotential_sector": true,
+    "doublet_architecture_has_exact_rank_ten_and_nonzero_minor": true,
+    "doublet_zero_block_enforces_rank_at_most_ten": true,
+    "triplet_architecture_has_exact_full_rank_witness": true,
+    "parameter_extension_contains_the_undeformed_architecture_specialization": true,
+    "rank_statement_is_not_misrepresented_as_a_component_Clebsch_result": true,
+    "V22R_contract_core_is_pinned_and_self_consistent": true,
+    "V22R_contract_is_bound_to_the_accepted_108_sector_basis": true,
+    "machine_readable_V22R_catalogue_core_is_pinned_and_has_108_sectors": true,
+    "broken_selector_frontier_core_is_pinned_and_self_consistent": true,
+    "first_audited_XMP_spurion_leakage_layer_is_67_sectors_and_160_components": true,
+    "first_audited_XMP_spurion_leakage_layer_has_14_more_direct_MP_sectors_and_28_components": true,
+    "first_audited_XMP_spurion_leakage_layer_also_has_no_light_light_sector": true,
+    "declared_standard_embedding_preserves_all_28_diagonal_R_elements": true,
+    "V22R_model_source_exists_and_is_hash_bound": true,
+    "multi_hour_SARAH_was_not_used_as_a_component_rank_or_quartic_ring_proof": true
+  },
+  "n_checks": 27,
+  "n_failed": 0,
+  "failures": [],
+  "claim_boundary": {
+    "accepted_108_sector_basis_source_bound": true,
+    "ten_direct_deformation_sectors_exactly_classified": true,
+    "twenty_new_SO10_invariant_copies_exactly_counted": true,
+    "degree_four_light_light_zero_block_closed": true,
+    "first_audited_XMP_spurion_leakage_layer_light_light_zero_block_closed": true,
+    "abstract_missing_partner_rank_architecture_stable": true,
+    "declared_standard_embedding_stabilizer_arithmetic_closed": true,
+    "full_F_D_soft_vacuum_stabilizer_realization_closed": false,
+    "all_order_light_light_zero_block_closed": false,
+    "source_exact_SO10_to_SM_Clebsch_map_closed": false,
+    "physical_V22R_doublet_triplet_ranks_closed": false,
+    "V22R_G2_closed": false,
+    "canonical_G4_closed": false,
+    "canonical_G5_closed": false
+  },
+  "remaining_exact_work": [
+    "construct and normalize all independent SO(10) invariant tensors for the six original and twenty new direct contraction channels",
+    "project those tensors onto the complete SM doublet/triplet component bases",
+    "solve the full V22R F+D+soft vacuum and prove all R-charge-two VEVs vanish",
+    "substitute that vacuum and prove rank(M_D)=10 and rank(M_T)=13 at one exact source point",
+    "extend the operator audit beyond the accepted holomorphic degree-four truncation to Kahler and soft sectors"
+  ],
+  "core_sha256": "4a519b79e7003701e3932287995741cc44cfa31320b15e7dce5c69767dcfa9c5"
+}

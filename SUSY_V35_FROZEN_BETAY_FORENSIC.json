@@ -1,0 +1,294 @@
+{
+  "PrepareRGEs_remaining_epsTensor_count": 32945,
+  "ambiguity_witnesses": {
+    "kappaX": "epsTensor[rig2,rig3]^2 permits selected values 0 or 1 in the string, while the canonical invariant quotient requires 1/2",
+    "lambdaPX": "epsTensor[1,lef1] permits 0 or 1 with no stored external component"
+  },
+  "distinct_epsTensor_argument_patterns_independent_audit": 14,
+  "duplicate_parameter_heads_without_sector_key": [
+    "kappaPS"
+  ],
+  "frozen_rows_accepted_as_ODE_system": false,
+  "frozen_source": "SUSY_V33_SARAH_RGE_ATTESTATION.json",
+  "known_present_but_wrong_preprojection_normalizations": {
+    "lambdaH": "frozen raw row gives -12 on each SU2 gauge structure; invariant result is -3",
+    "lambdaS/lambdaSb": "frozen raw row contains only -5*g4^2; exact result is -(25/2*g4^2+3*gR^2)"
+  },
+  "linear_projection_can_create_absent_monomials": false,
+  "one_loop_Casimir_support_failure_count": 13,
+  "one_loop_Casimir_support_failures": [
+    "lambdaPX",
+    "lambdaPQ",
+    "lambdaPcX",
+    "lambdaPcQ",
+    "YXX",
+    "YXQ",
+    "YQX",
+    "YQQ",
+    "yNX",
+    "yNQ",
+    "lambdaSb",
+    "lambdaS",
+    "kappaPS"
+  ],
+  "one_loop_Casimir_support_rows": [
+    {
+      "expected_coefficient_4_L_R": [
+        "-15/2",
+        -3,
+        0
+      ],
+      "expected_support": [
+        "g4",
+        "gL"
+      ],
+      "frozen_actual_support": [],
+      "parameter": "lambdaPX",
+      "support_complete": false
+    },
+    {
+      "expected_coefficient_4_L_R": [
+        "-15/2",
+        -3,
+        0
+      ],
+      "expected_support": [
+        "g4",
+        "gL"
+      ],
+      "frozen_actual_support": [],
+      "parameter": "lambdaPQ",
+      "support_complete": false
+    },
+    {
+      "expected_coefficient_4_L_R": [
+        "-15/2",
+        0,
+        -3
+      ],
+      "expected_support": [
+        "g4",
+        "gR"
+      ],
+      "frozen_actual_support": [],
+      "parameter": "lambdaPcX",
+      "support_complete": false
+    },
+    {
+      "expected_coefficient_4_L_R": [
+        "-15/2",
+        0,
+        -3
+      ],
+      "expected_support": [
+        "g4",
+        "gR"
+      ],
+      "frozen_actual_support": [],
+      "parameter": "lambdaPcQ",
+      "support_complete": false
+    },
+    {
+      "expected_coefficient_4_L_R": [
+        "-15/2",
+        -3,
+        -3
+      ],
+      "expected_support": [
+        "g4",
+        "gL",
+        "gR"
+      ],
+      "frozen_actual_support": [
+        "g4",
+        "gR"
+      ],
+      "parameter": "YXX",
+      "support_complete": false
+    },
+    {
+      "expected_coefficient_4_L_R": [
+        "-15/2",
+        -3,
+        -3
+      ],
+      "expected_support": [
+        "g4",
+        "gL",
+        "gR"
+      ],
+      "frozen_actual_support": [
+        "g4",
+        "gR"
+      ],
+      "parameter": "YXQ",
+      "support_complete": false
+    },
+    {
+      "expected_coefficient_4_L_R": [
+        "-15/2",
+        -3,
+        -3
+      ],
+      "expected_support": [
+        "g4",
+        "gL",
+        "gR"
+      ],
+      "frozen_actual_support": [
+        "g4",
+        "gR"
+      ],
+      "parameter": "YQX",
+      "support_complete": false
+    },
+    {
+      "expected_coefficient_4_L_R": [
+        "-15/2",
+        -3,
+        -3
+      ],
+      "expected_support": [
+        "g4",
+        "gL",
+        "gR"
+      ],
+      "frozen_actual_support": [
+        "g4",
+        "gR"
+      ],
+      "parameter": "YQQ",
+      "support_complete": false
+    },
+    {
+      "expected_coefficient_4_L_R": [
+        "-15/2",
+        0,
+        -3
+      ],
+      "expected_support": [
+        "g4",
+        "gR"
+      ],
+      "frozen_actual_support": [],
+      "parameter": "yNX",
+      "support_complete": false
+    },
+    {
+      "expected_coefficient_4_L_R": [
+        "-15/2",
+        0,
+        -3
+      ],
+      "expected_support": [
+        "g4",
+        "gR"
+      ],
+      "frozen_actual_support": [],
+      "parameter": "yNQ",
+      "support_complete": false
+    },
+    {
+      "expected_coefficient_4_L_R": [
+        "-25/2",
+        0,
+        -3
+      ],
+      "expected_support": [
+        "g4",
+        "gR"
+      ],
+      "frozen_actual_support": [
+        "g4"
+      ],
+      "parameter": "lambdaSb",
+      "support_complete": false
+    },
+    {
+      "expected_coefficient_4_L_R": [
+        "-25/2",
+        0,
+        -3
+      ],
+      "expected_support": [
+        "g4",
+        "gR"
+      ],
+      "frozen_actual_support": [
+        "g4"
+      ],
+      "parameter": "lambdaS",
+      "support_complete": false
+    },
+    {
+      "expected_coefficient_4_L_R": [
+        0,
+        -3,
+        -3
+      ],
+      "expected_support": [
+        "gL",
+        "gR"
+      ],
+      "frozen_actual_support": [
+        "gL",
+        "gR"
+      ],
+      "parameter": "lambdaH",
+      "support_complete": true
+    },
+    {
+      "expected_coefficient_4_L_R": [
+        "-15/2",
+        0,
+        -3
+      ],
+      "expected_support": [
+        "g4",
+        "gR"
+      ],
+      "frozen_actual_support": [],
+      "parameter": "kappaPS",
+      "support_complete": false
+    },
+    {
+      "expected_coefficient_4_L_R": [
+        -10,
+        0,
+        0
+      ],
+      "expected_support": [
+        "g4"
+      ],
+      "frozen_actual_support": [
+        "g4"
+      ],
+      "parameter": "lambdaSigma",
+      "support_complete": true
+    },
+    {
+      "expected_coefficient_4_L_R": [
+        0,
+        0,
+        0
+      ],
+      "expected_support": [],
+      "frozen_actual_support": [],
+      "parameter": "kappaX",
+      "support_complete": true
+    }
+  ],
+  "schema": "susy-v35-frozen-betay-forensic-v1",
+  "sector_boundaries": {
+    "bilinear": 1,
+    "linear": 1,
+    "total": 18,
+    "trilinear": 16
+  },
+  "unresolved_epsTensor_counts": {
+    "one_loop": 447,
+    "total": 9863,
+    "two_loop": 9416
+  },
+  "verdict": "FROZEN_V33_BETAY_INPUTFORM_LOSSY__UNIQUE_PROJECTION_IMPOSSIBLE__LIVE_COMPONENT_RECOMPUTATION_REQUIRED"
+}

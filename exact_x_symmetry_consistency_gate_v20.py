@@ -18,7 +18,7 @@ import hashlib
 import json
 import re
 from datetime import datetime, timedelta, timezone
-from pathlib import Path
+from pathlib import Path, PurePosixPath, PureWindowsPath
 from typing import Any
 
 ROOT = Path(__file__).resolve().parent
@@ -34,9 +34,16 @@ EXTERNAL_INPUT_MANIFEST = (
     ROOT / "models" / "EXACT_X_EXTERNAL_INPUT_MANIFEST_V20.json"
 )
 EXTERNAL_DRIVER = ROOT / "tools" / "validate-exact-x-model.wls"
+TRUSTED_SARAH_RELEASE_MANIFEST = (
+    ROOT / "models" / "SARAH_4_15_3_CANONICAL_SOURCE_TREE_V20.json"
+)
 
-EXTERNAL_VALIDATION_SCHEMA = "so10-exact-x-external-model-validation-v2"
-EXTERNAL_INPUT_MANIFEST_SCHEMA = "so10-exact-x-input-manifest-v1"
+LEGACY_EXTERNAL_VALIDATION_SCHEMA = "so10-exact-x-external-model-validation-v2"
+EXTERNAL_VALIDATION_SCHEMA = "so10-exact-x-external-model-validation-v3"
+LEGACY_EXTERNAL_INPUT_MANIFEST_SCHEMA = "so10-exact-x-input-manifest-v1"
+EXTERNAL_INPUT_MANIFEST_SCHEMA = "so10-exact-x-input-manifest-v2"
+TRUSTED_SARAH_RELEASE_MANIFEST_SCHEMA = "sarah-canonical-source-tree-v1"
+SARAH_SOURCE_TREE_SNAPSHOT_SCHEMA = "sarah-source-tree-snapshot-v1"
 SARAH_MODEL_FORMAT = "sarah-mathematica"
 PYRATE_MODEL_FORMAT = "pyrate-yaml"
 MODEL_REPOSITORY_PATH = str(MODEL.relative_to(ROOT)).replace("\\", "/")
@@ -44,6 +51,37 @@ EXTERNAL_DRIVER_REPOSITORY_PATH = str(EXTERNAL_DRIVER.relative_to(ROOT)).replace
     "\\", "/"
 )
 EXTERNAL_DRIVER_FORMAT = "wolfram-language"
+TRUSTED_SARAH_RELEASE_MANIFEST_REPOSITORY_PATH = str(
+    TRUSTED_SARAH_RELEASE_MANIFEST.relative_to(ROOT)
+).replace("\\", "/")
+TRUSTED_SARAH_RELEASE_MANIFEST_FORMAT = "sarah-source-tree-manifest"
+
+# Trust anchors independently obtained from the official SARAH 4.15.3
+# distribution.  The full per-file manifest is repository-bound below; these
+# constants prevent a coherently edited manifest from silently becoming a new
+# trusted release.
+TRUSTED_SARAH_RELEASE = {
+    "name": "SARAH",
+    "version": "4.15.3",
+    "archive_filename": "SARAH-4.15.3.tar.gz",
+    "archive_url": (
+        "https://sarah.hepforge.org/downloads/?f=SARAH-4.15.3.tar.gz"
+    ),
+    "archive_sha256": (
+        "6ee5c12d21a38f9de7f08b5b8db368b6653d7bfbcc8e45189016be87743729fb"
+    ),
+    "archive_size_bytes": 2_902_331,
+    "tree_sha256": (
+        "de92b2de859efa7a0c4f5fdfb642d9f1ff8e1b071057bc8d4c295f6e2b6f8337"
+    ),
+    "tree_file_count": 1_056,
+    "tree_size_bytes": 20_165_588,
+}
+
+WOLFRAM_RUNTIME_PROBE_CODE = (
+    'Print["EXACT_X_ENGINE Wolfram " <> ToString[$Version]]; '
+    'Print["EXACT_X_KERNEL_PATH " <> ToString[First[$CommandLine]]]'
+)
 
 STATIC_CONTRACT_BLOCKER = "AUTHORITATIVE_GAUGED_U1X_CONTRACT_MISMATCH"
 EXTERNAL_EXECUTION_BLOCKER = (
@@ -102,8 +140,9 @@ def _canonical_json_bytes(value: object) -> bytes:
 def build_external_input_manifest(
     model_bytes: bytes,
     driver_bytes: bytes,
+    trusted_release_manifest_bytes: bytes,
 ) -> dict[str, Any]:
-    """Build the canonical two-file manifest consumed by the SARAH runner."""
+    """Build the canonical three-file manifest consumed by the SARAH runner."""
     files = [
         {
             "path": MODEL_REPOSITORY_PATH,
@@ -119,6 +158,13 @@ def build_external_input_manifest(
             "role": "validation_driver",
             "format": EXTERNAL_DRIVER_FORMAT,
         },
+        {
+            "path": TRUSTED_SARAH_RELEASE_MANIFEST_REPOSITORY_PATH,
+            "sha256": _sha256(trusted_release_manifest_bytes),
+            "size_bytes": len(trusted_release_manifest_bytes),
+            "role": "trusted_sarah_release_manifest",
+            "format": TRUSTED_SARAH_RELEASE_MANIFEST_FORMAT,
+        },
     ]
     return {
         "schema": EXTERNAL_INPUT_MANIFEST_SCHEMA,
@@ -131,9 +177,21 @@ def validate_repository_input_manifest(
     model_bytes: bytes,
     driver_bytes: bytes,
     artifact: object,
+    *,
+    trusted_release_manifest_bytes: bytes | None = None,
 ) -> dict[str, Any]:
     """Check that the shipped pre-execution manifest binds current inputs."""
-    expected = build_external_input_manifest(model_bytes, driver_bytes)
+    if trusted_release_manifest_bytes is None:
+        try:
+            trusted_release_manifest_bytes = TRUSTED_SARAH_RELEASE_MANIFEST.read_bytes()
+        except OSError:
+            trusted_release_manifest_bytes = b""
+    trusted_release_validation = validate_trusted_sarah_release_manifest_bytes(
+        trusted_release_manifest_bytes
+    )
+    expected = build_external_input_manifest(
+        model_bytes, driver_bytes, trusted_release_manifest_bytes
+    )
     payload = artifact if isinstance(artifact, dict) else {}
     checks = {
         "artifact_is_structured_json_object": isinstance(artifact, dict),
@@ -143,6 +201,9 @@ def validate_repository_input_manifest(
         == expected["files"],
         "manifest_sha256_matches_exact_entries": payload.get("sha256")
         == expected["sha256"],
+        "trusted_sarah_release_manifest_is_canonical": (
+            trusted_release_validation["valid"]
+        ),
     }
     failures = [name for name, passed in checks.items() if not passed]
     return {
@@ -158,6 +219,7 @@ def validate_repository_input_manifest(
             "Pre-execution content manifest only; it is not an external "
             "SARAH execution attestation."
         ),
+        "trusted_sarah_release_manifest": trusted_release_validation,
     }
 
 
@@ -171,6 +233,160 @@ def _safe_repository_path(value: object) -> bool:
         and not re.match(r"^[A-Za-z]:", normalized)
         and ".." not in path.parts
     )
+
+
+def _safe_source_tree_path(value: object) -> bool:
+    if not isinstance(value, str) or not value or "\\" in value:
+        return False
+    path = PurePosixPath(value)
+    return bool(
+        not path.is_absolute()
+        and value == path.as_posix()
+        and value not in {".", ".."}
+        and ".." not in path.parts
+        and all(part not in {"", "."} for part in path.parts)
+    )
+
+
+def _safe_absolute_execution_path(value: object) -> bool:
+    if not isinstance(value, str) or not value.strip():
+        return False
+    if any(character in value for character in "\r\n\x00"):
+        return False
+    return bool(PurePosixPath(value).is_absolute() or PureWindowsPath(value).is_absolute())
+
+
+def _portable_path_key(value: object) -> str:
+    if not isinstance(value, str):
+        return ""
+    return value.replace("\\", "/").rstrip("/").casefold()
+
+
+def validate_trusted_sarah_release_manifest_bytes(
+    manifest_bytes: bytes,
+) -> dict[str, Any]:
+    """Validate the frozen, full-file SARAH 4.15.3 release trust anchor."""
+    try:
+        artifact: object = json.loads(manifest_bytes.decode("utf-8"))
+        decode_error = None
+    except (UnicodeError, json.JSONDecodeError) as exc:
+        artifact = None
+        decode_error = f"{type(exc).__name__}: {exc}"
+    payload = artifact if isinstance(artifact, dict) else {}
+    release = payload.get("release") if isinstance(payload.get("release"), dict) else {}
+    archive = release.get("archive") if isinstance(release.get("archive"), dict) else {}
+    tree = payload.get("tree") if isinstance(payload.get("tree"), dict) else {}
+    files = tree.get("files") if isinstance(tree.get("files"), list) else []
+
+    normalized_files: list[dict[str, Any]] = []
+    entries_valid = bool(files)
+    for item in files:
+        if not isinstance(item, dict):
+            entries_valid = False
+            continue
+        normalized = {
+            "path": item.get("path"),
+            "sha256": item.get("sha256"),
+            "size_bytes": item.get("size_bytes"),
+        }
+        normalized_files.append(normalized)
+        entries_valid = bool(
+            entries_valid
+            and set(item) == {"path", "sha256", "size_bytes"}
+            and _safe_source_tree_path(normalized["path"])
+            and _valid_sha256(normalized["sha256"])
+            and type(normalized["size_bytes"]) is int
+            and normalized["size_bytes"] >= 0
+        )
+
+    paths = [item.get("path") for item in normalized_files]
+    sorted_unique_paths = bool(
+        paths == sorted(paths)
+        and len(paths) == len(set(paths))
+    )
+    calculated_tree_sha256 = _sha256(_canonical_json_bytes(normalized_files))
+    calculated_tree_size_bytes = sum(
+        item["size_bytes"]
+        for item in normalized_files
+        if type(item.get("size_bytes")) is int
+    )
+    checks = {
+        "artifact_is_structured_json_object": isinstance(artifact, dict),
+        "schema_is_supported": payload.get("schema")
+        == TRUSTED_SARAH_RELEASE_MANIFEST_SCHEMA,
+        "release_name_is_sarah": release.get("name")
+        == TRUSTED_SARAH_RELEASE["name"],
+        "release_version_is_exactly_trusted": release.get("version")
+        == TRUSTED_SARAH_RELEASE["version"],
+        "upstream_archive_filename_is_exactly_trusted": archive.get("filename")
+        == TRUSTED_SARAH_RELEASE["archive_filename"],
+        "upstream_archive_url_is_exactly_trusted": archive.get("url")
+        == TRUSTED_SARAH_RELEASE["archive_url"],
+        "upstream_archive_sha256_is_exactly_trusted": archive.get("sha256")
+        == TRUSTED_SARAH_RELEASE["archive_sha256"],
+        "upstream_archive_size_is_exactly_trusted": type(
+            archive.get("size_bytes")
+        )
+        is int
+        and archive.get("size_bytes")
+        == TRUSTED_SARAH_RELEASE["archive_size_bytes"],
+        "source_tree_entries_are_strictly_structured": entries_valid,
+        "source_tree_paths_are_sorted_and_unique": sorted_unique_paths,
+        "source_tree_file_count_matches_entries": type(tree.get("file_count"))
+        is int
+        and tree.get("file_count") == len(normalized_files),
+        "source_tree_size_matches_entries": type(tree.get("size_bytes")) is int
+        and tree.get("size_bytes") == calculated_tree_size_bytes,
+        "source_tree_sha256_matches_entries": _valid_sha256(tree.get("sha256"))
+        and tree.get("sha256") == calculated_tree_sha256,
+        "source_tree_sha256_is_exactly_trusted": tree.get("sha256")
+        == TRUSTED_SARAH_RELEASE["tree_sha256"],
+        "source_tree_file_count_is_exactly_trusted": tree.get("file_count")
+        == TRUSTED_SARAH_RELEASE["tree_file_count"],
+        "source_tree_size_is_exactly_trusted": tree.get("size_bytes")
+        == TRUSTED_SARAH_RELEASE["tree_size_bytes"],
+    }
+    failures = [name for name, passed in checks.items() if not passed]
+    return {
+        "source": TRUSTED_SARAH_RELEASE_MANIFEST_REPOSITORY_PATH,
+        "present": isinstance(artifact, dict),
+        "decode_error": decode_error,
+        "schema": payload.get("schema"),
+        "release": release,
+        "tree": {
+            "sha256": tree.get("sha256"),
+            "file_count": tree.get("file_count"),
+            "size_bytes": tree.get("size_bytes"),
+            "calculated_sha256": calculated_tree_sha256,
+            "calculated_file_count": len(normalized_files),
+            "calculated_size_bytes": calculated_tree_size_bytes,
+        },
+        "files": normalized_files,
+        "checks": checks,
+        "failures": failures,
+        "valid": not failures,
+    }
+
+
+def _hash_bound_log_record(record: object) -> tuple[bool, str]:
+    payload = record if isinstance(record, dict) else {}
+    content = payload.get("content")
+    encoded = content.encode("utf-8") if isinstance(content, str) else b""
+    valid = bool(
+        isinstance(content, str)
+        and bool(content.strip())
+        and payload.get("encoding") == "utf-8"
+        and _valid_sha256(payload.get("sha256"))
+        and payload.get("sha256") == _sha256(encoded)
+        and type(payload.get("size_bytes")) is int
+        and payload.get("size_bytes") == len(encoded)
+    )
+    return valid, content if isinstance(content, str) else ""
+
+
+def _single_log_marker(pattern: str, content: str) -> str | None:
+    matches = re.findall(pattern, content, re.MULTILINE)
+    return matches[0].strip() if len(matches) == 1 else None
 
 
 def _parse_utc_timestamp(value: object) -> datetime | None:
@@ -193,8 +409,9 @@ def validate_external_model_artifact(
     artifact: object,
     *,
     driver_bytes: bytes | None = None,
+    trusted_release_manifest_bytes: bytes | None = None,
 ) -> dict[str, Any]:
-    """Validate a fail-closed external SARAH/PyR@TE execution attestation.
+    """Validate a fail-closed, proof-grade external SARAH attestation.
 
     The content SHA-256, rather than a checkout-dependent file timestamp,
     defines freshness: an attestation is current only for the exact model
@@ -202,11 +419,11 @@ def validate_external_model_artifact(
     must not be implausibly in the future, but an unchanged historical model
     does not become irreproducible merely because it was checked out again.
 
-    Version 2 also binds the tool-native input type, a canonical manifest of
-    every declared input, the validation driver named by the command, and the
-    captured process log.  The log must contain one machine-readable PASS
-    marker for every required check.  This still is an attestation validator,
-    not a process runner, but a set of unbound booleans is no longer accepted.
+    Version 3 additionally requires the exact official SARAH 4.15.3 source
+    tree, before/after fingerprints of the resolved Wolfram launcher and
+    kernel, matching runtime/version markers from an independent probe and the
+    validation process, and hash-bound logs for both processes.  Version 2 is
+    retained as a named legacy schema but can no longer promote this gate.
 
     This function never upgrades older reduced-sector LIVE_* dumps into
     whole-model evidence.
@@ -222,6 +439,16 @@ def validate_external_model_artifact(
         None if driver_bytes is None else _sha256(driver_bytes)
     )
     expected_driver_bytes = None if driver_bytes is None else len(driver_bytes)
+    if trusted_release_manifest_bytes is None:
+        try:
+            trusted_release_manifest_bytes = TRUSTED_SARAH_RELEASE_MANIFEST.read_bytes()
+        except OSError:
+            trusted_release_manifest_bytes = b""
+    trusted_release_validation = validate_trusted_sarah_release_manifest_bytes(
+        trusted_release_manifest_bytes
+    )
+    expected_release_manifest_sha256 = _sha256(trusted_release_manifest_bytes)
+    expected_release_manifest_size = len(trusted_release_manifest_bytes)
     payload = artifact if isinstance(artifact, dict) else {}
     model = payload.get("model") if isinstance(payload.get("model"), dict) else {}
     tool = payload.get("tool") if isinstance(payload.get("tool"), dict) else {}
@@ -250,53 +477,83 @@ def validate_external_model_artifact(
         else {}
     )
 
+    source_tree = (
+        tool.get("source_tree")
+        if isinstance(tool.get("source_tree"), dict)
+        else {}
+    )
+    release_binding = (
+        tool.get("trusted_release_manifest")
+        if isinstance(tool.get("trusted_release_manifest"), dict)
+        else {}
+    )
+    runtime = (
+        execution.get("runtime")
+        if isinstance(execution.get("runtime"), dict)
+        else {}
+    )
+    launcher = (
+        runtime.get("launcher")
+        if isinstance(runtime.get("launcher"), dict)
+        else {}
+    )
+    kernel = (
+        runtime.get("kernel")
+        if isinstance(runtime.get("kernel"), dict)
+        else {}
+    )
     tool_name = tool.get("name")
-    is_sarah = bool(
-        isinstance(tool_name, str) and re.search(r"\bSARAH\b", tool_name, re.I)
-    )
-    is_pyrate = bool(
-        isinstance(tool_name, str) and re.search(r"PyR(?:A|@)TE", tool_name, re.I)
-    )
-    supported_tool = is_sarah or is_pyrate
+    is_sarah = tool_name == "SARAH"
+    supported_tool = is_sarah
     generated_at = _parse_utc_timestamp(payload.get("generated_at_utc"))
     now = datetime.now(timezone.utc)
     exit_code = execution.get("process_exit_code")
     command = execution.get("command")
     command_recorded = bool(
-        (isinstance(command, str) and command.strip())
-        or (
-            isinstance(command, list)
-            and command
-            and all(isinstance(item, str) and item.strip() for item in command)
-        )
+        isinstance(command, list)
+        and command
+        and all(isinstance(item, str) and item.strip() for item in command)
+    )
+    probe_command = execution.get("runtime_probe_command")
+    probe_command_recorded = bool(
+        isinstance(probe_command, list)
+        and probe_command
+        and all(isinstance(item, str) and item.strip() for item in probe_command)
     )
     command_text = (
-        command
-        if isinstance(command, str)
-        else " ".join(command)
+        " ".join(command)
         if isinstance(command, list)
         and all(isinstance(item, str) for item in command)
         else ""
     ).lower()
+    launcher_path = launcher.get("resolved_path")
     command_matches_tool = bool(
-        (is_sarah and re.search(r"wolfram|math(?:kernel)?|sarah", command_text))
-        or (is_pyrate and "pyrate" in command_text.replace("@", "a"))
+        is_sarah
+        and command_recorded
+        and _portable_path_key(command[0]) == _portable_path_key(launcher_path)
+        and "-file" in command
+        and EXTERNAL_DRIVER_REPOSITORY_PATH in command
+    )
+    source_tree_is_bound_to_command = bool(
+        command_recorded
+        and "--sarah-root" in command
+        and command.index("--sarah-root") + 1 < len(command)
+        and _portable_path_key(command[command.index("--sarah-root") + 1])
+        == _portable_path_key(source_tree.get("resolved_root"))
+    )
+    probe_command_matches_contract = bool(
+        probe_command_recorded
+        and _portable_path_key(probe_command[0])
+        == _portable_path_key(launcher_path)
+        and probe_command[1:] == ["-code", WOLFRAM_RUNTIME_PROBE_CODE]
     )
     model_path = model.get("path")
     model_format = model.get("format")
     tool_native_model_format = bool(
-        (
-            is_sarah
-            and model_format == SARAH_MODEL_FORMAT
-            and isinstance(model_path, str)
-            and model_path.lower().endswith(".m")
-        )
-        or (
-            is_pyrate
-            and model_format == PYRATE_MODEL_FORMAT
-            and isinstance(model_path, str)
-            and model_path.lower().endswith((".model", ".yaml", ".yml"))
-        )
+        is_sarah
+        and model_format == SARAH_MODEL_FORMAT
+        and isinstance(model_path, str)
+        and model_path.lower().endswith(".m")
     )
 
     normalized_manifest_files: list[dict[str, Any]] = []
@@ -315,6 +572,7 @@ def validate_external_model_artifact(
         normalized_manifest_files.append(normalized)
         manifest_entries_valid = bool(
             manifest_entries_valid
+            and set(item) == {"path", "sha256", "size_bytes", "role", "format"}
             and _safe_repository_path(normalized["path"])
             and _valid_sha256(normalized["sha256"])
             and type(normalized["size_bytes"]) is int
@@ -351,6 +609,11 @@ def validate_external_model_artifact(
         for item in normalized_manifest_files
         if item.get("role") == "validation_driver"
     ]
+    release_manifest_entries = [
+        item
+        for item in normalized_manifest_files
+        if item.get("role") == "trusted_sarah_release_manifest"
+    ]
     validation_driver_bound_to_command = bool(
         len(driver_entries) == 1
         and isinstance(driver_entries[0].get("path"), str)
@@ -360,11 +623,19 @@ def validate_external_model_artifact(
         )
     )
     manifest_has_exact_required_files = bool(
-        len(normalized_manifest_files) == 2
+        len(normalized_manifest_files) == 3
         and {item.get("role") for item in normalized_manifest_files}
-        == {"primary_model", "validation_driver"}
+        == {
+            "primary_model",
+            "validation_driver",
+            "trusted_sarah_release_manifest",
+        }
         and {item.get("path") for item in normalized_manifest_files}
-        == {MODEL_REPOSITORY_PATH, EXTERNAL_DRIVER_REPOSITORY_PATH}
+        == {
+            MODEL_REPOSITORY_PATH,
+            EXTERNAL_DRIVER_REPOSITORY_PATH,
+            TRUSTED_SARAH_RELEASE_MANIFEST_REPOSITORY_PATH,
+        }
     )
     validation_driver_matches_repository_bytes = bool(
         driver_bytes is not None
@@ -374,48 +645,101 @@ def validate_external_model_artifact(
         and driver_entries[0].get("size_bytes") == expected_driver_bytes
         and driver_entries[0].get("format") == EXTERNAL_DRIVER_FORMAT
     )
+    release_manifest_matches_repository_bytes = bool(
+        trusted_release_validation["valid"]
+        and len(release_manifest_entries) == 1
+        and release_manifest_entries[0].get("path")
+        == TRUSTED_SARAH_RELEASE_MANIFEST_REPOSITORY_PATH
+        and release_manifest_entries[0].get("sha256")
+        == expected_release_manifest_sha256
+        and release_manifest_entries[0].get("size_bytes")
+        == expected_release_manifest_size
+        and release_manifest_entries[0].get("format")
+        == TRUSTED_SARAH_RELEASE_MANIFEST_FORMAT
+    )
 
-    log_content = process_log.get("content")
-    log_bytes = log_content.encode("utf-8") if isinstance(log_content, str) else b""
-    log_hash_matches = bool(
-        isinstance(log_content, str)
-        and bool(log_content.strip())
-        and _valid_sha256(process_log.get("sha256"))
-        and process_log.get("sha256").lower() == _sha256(log_bytes)
-        and type(process_log.get("size_bytes")) is int
-        and process_log.get("size_bytes") == len(log_bytes)
-        and process_log.get("encoding") == "utf-8"
+    runtime_probe_log = (
+        evidence.get("runtime_probe_log")
+        if isinstance(evidence.get("runtime_probe_log"), dict)
+        else {}
+    )
+    log_hash_matches, log_content = _hash_bound_log_record(process_log)
+    probe_log_hash_matches, probe_log_content = _hash_bound_log_record(
+        runtime_probe_log
     )
     log_markers = {
-        name: bool(
-            isinstance(log_content, str)
-            and re.search(
-                rf"(?m)^EXACT_X_CHECK\s+{re.escape(name)}\s+PASS\s*$",
+        name: len(
+            re.findall(
+                rf"^EXACT_X_CHECK\s+{re.escape(name)}\s+PASS\s*$",
                 log_content,
+                re.MULTILINE,
             )
         )
+        == 1
         for name in REQUIRED_EXTERNAL_CHECKS
     }
     all_required_log_markers_present = all(log_markers.values())
-    tool_log_match = (
-        re.search(
-            r"(?m)^EXACT_X_TOOL\s+(SARAH|PyR(?:A|@)TE)\s+(\S+)\s*$",
-            log_content,
-            re.I,
-        )
-        if isinstance(log_content, str)
-        else None
+    process_log_has_no_fail_markers = not bool(
+        re.search(r"^EXACT_X_CHECK\s+\S+\s+FAIL\s*$", log_content, re.MULTILINE)
+    )
+    tool_log_version = _single_log_marker(
+        r"^EXACT_X_TOOL\s+SARAH\s+(\S+)\s*$", log_content
     )
     process_log_identifies_attested_tool_version = bool(
-        tool_log_match is not None
-        and isinstance(tool.get("version"), str)
-        and tool_log_match.group(2) == tool.get("version")
-        and (
-            is_sarah
-            and tool_log_match.group(1).lower() == "sarah"
-            or is_pyrate
-            and re.fullmatch(r"pyr(?:a|@)te", tool_log_match.group(1), re.I)
+        tool_log_version is not None
+        and tool_log_version == tool.get("version")
+    )
+    driver_engine_version = _single_log_marker(
+        r"^EXACT_X_ENGINE\s+Wolfram\s+(.+?)\s*$", log_content
+    )
+    probe_engine_version = _single_log_marker(
+        r"^EXACT_X_ENGINE\s+Wolfram\s+(.+?)\s*$", probe_log_content
+    )
+    driver_kernel_path = _single_log_marker(
+        r"^EXACT_X_KERNEL_PATH\s+(.+?)\s*$", log_content
+    )
+    probe_kernel_path = _single_log_marker(
+        r"^EXACT_X_KERNEL_PATH\s+(.+?)\s*$", probe_log_content
+    )
+    wolfram_markers_match_runtime = bool(
+        isinstance(runtime.get("wolfram_version"), str)
+        and bool(runtime.get("wolfram_version", "").strip())
+        and driver_engine_version == runtime.get("wolfram_version")
+        and probe_engine_version == runtime.get("wolfram_version")
+        and _portable_path_key(driver_kernel_path)
+        == _portable_path_key(kernel.get("resolved_path"))
+        and _portable_path_key(probe_kernel_path)
+        == _portable_path_key(kernel.get("resolved_path"))
+    )
+
+    def executable_fingerprint_valid(value: dict[str, Any]) -> bool:
+        return bool(
+            _safe_absolute_execution_path(value.get("resolved_path"))
+            and _valid_sha256(value.get("sha256_before"))
+            and _valid_sha256(value.get("sha256_after"))
+            and value.get("sha256_before") == value.get("sha256_after")
+            and type(value.get("size_bytes_before")) is int
+            and value.get("size_bytes_before") > 0
+            and type(value.get("size_bytes_after")) is int
+            and value.get("size_bytes_before") == value.get("size_bytes_after")
+            and value.get("unchanged_during_execution") is True
         )
+
+    release_tree = trusted_release_validation["tree"]
+    source_tree_is_exactly_trusted = bool(
+        source_tree.get("schema") == SARAH_SOURCE_TREE_SNAPSHOT_SCHEMA
+        and _safe_absolute_execution_path(source_tree.get("resolved_root"))
+        and source_tree.get("sha256") == release_tree.get("sha256")
+        and source_tree.get("file_count") == release_tree.get("file_count")
+        and source_tree.get("size_bytes") == release_tree.get("size_bytes")
+        and source_tree.get("verified_against_trusted_release_manifest") is True
+        and source_tree.get("unchanged_during_execution") is True
+    )
+    release_binding_matches_repository = bool(
+        release_binding.get("path")
+        == TRUSTED_SARAH_RELEASE_MANIFEST_REPOSITORY_PATH
+        and release_binding.get("sha256") == expected_release_manifest_sha256
+        and release_binding.get("size_bytes") == expected_release_manifest_size
     )
     unsafe_gauge_check_disable_absent = (
         "--no-checkgaugeinvariance" not in command_text
@@ -424,6 +748,8 @@ def validate_external_model_artifact(
         "artifact_is_structured_json_object": isinstance(artifact, dict),
         "schema_is_supported": payload.get("schema")
         == EXTERNAL_VALIDATION_SCHEMA,
+        "legacy_v2_schema_is_not_promoted": payload.get("schema")
+        != LEGACY_EXTERNAL_VALIDATION_SCHEMA,
         "model_path_is_exact_repository_model": model.get("path")
         == MODEL_REPOSITORY_PATH,
         "model_sha256_matches_exact_bytes": model.get("sha256")
@@ -432,12 +758,34 @@ def validate_external_model_artifact(
         and model.get("size_bytes") == expected_bytes,
         "tool_native_model_format_matches_path": tool_native_model_format,
         "supported_external_tool_identified": supported_tool,
-        "external_tool_version_recorded": isinstance(tool.get("version"), str)
-        and bool(tool.get("version", "").strip()),
+        "external_tool_version_recorded": tool.get("version")
+        == TRUSTED_SARAH_RELEASE["version"],
+        "trusted_sarah_release_manifest_is_canonical": (
+            trusted_release_validation["valid"]
+        ),
+        "trusted_sarah_release_manifest_is_input_bound": (
+            release_manifest_matches_repository_bytes
+        ),
+        "tool_release_binding_matches_repository_manifest": (
+            release_binding_matches_repository
+        ),
+        "sarah_source_tree_is_exactly_trusted": source_tree_is_exactly_trusted,
+        "sarah_source_tree_was_unchanged_during_execution": source_tree.get(
+            "unchanged_during_execution"
+        )
+        is True,
         "external_process_was_executed": execution.get("external_process_executed")
         is True,
         "external_process_command_recorded": command_recorded,
         "external_process_command_matches_tool": command_matches_tool,
+        "sarah_source_tree_is_bound_to_command": source_tree_is_bound_to_command,
+        "runtime_probe_command_recorded": probe_command_recorded,
+        "runtime_probe_command_matches_contract": probe_command_matches_contract,
+        "runtime_probe_exit_code_zero": type(
+            execution.get("runtime_probe_exit_code")
+        )
+        is int
+        and execution.get("runtime_probe_exit_code") == 0,
         "gauge_invariance_check_was_not_disabled": unsafe_gauge_check_disable_absent,
         "external_process_exit_code_zero": type(exit_code) is int
         and exit_code == 0,
@@ -454,12 +802,28 @@ def validate_external_model_artifact(
             validation_driver_matches_repository_bytes
         ),
         "validation_driver_is_bound_to_command": validation_driver_bound_to_command,
+        "trusted_release_manifest_matches_repository_bytes": (
+            release_manifest_matches_repository_bytes
+        ),
+        "resolved_wolfram_launcher_is_hash_bound_and_unchanged": (
+            executable_fingerprint_valid(launcher)
+        ),
+        "resolved_wolfram_kernel_is_hash_bound_and_unchanged": (
+            executable_fingerprint_valid(kernel)
+        ),
+        "runtime_probe_log_is_hash_bound": probe_log_hash_matches,
         "captured_process_log_is_hash_bound": log_hash_matches,
+        "probe_and_driver_wolfram_markers_match_runtime": (
+            wolfram_markers_match_runtime
+        ),
         "process_log_identifies_attested_tool_version": (
             process_log_identifies_attested_tool_version
         ),
         "captured_process_log_has_all_required_pass_markers": (
             all_required_log_markers_present
+        ),
+        "captured_process_log_has_no_fail_markers": (
+            process_log_has_no_fail_markers
         ),
         "generated_at_is_timezone_aware": generated_at is not None,
         "generated_at_is_not_in_future": generated_at is not None
@@ -488,6 +852,15 @@ def validate_external_model_artifact(
         "expected_validation_driver_path": EXTERNAL_DRIVER_REPOSITORY_PATH,
         "expected_validation_driver_sha256": expected_driver_sha256,
         "expected_validation_driver_size_bytes": expected_driver_bytes,
+        "expected_trusted_sarah_release_manifest_path": (
+            TRUSTED_SARAH_RELEASE_MANIFEST_REPOSITORY_PATH
+        ),
+        "expected_trusted_sarah_release_manifest_sha256": (
+            expected_release_manifest_sha256
+        ),
+        "expected_trusted_sarah_release_manifest_size_bytes": (
+            expected_release_manifest_size
+        ),
         "fresh_for_exact_model_bytes": bool(
             validation_checks["model_sha256_matches_exact_bytes"]
             and validation_checks["model_size_matches_exact_bytes"]
@@ -503,18 +876,29 @@ def validate_external_model_artifact(
             "size_bytes": process_log.get("size_bytes"),
             "encoding": process_log.get("encoding"),
             "attested_tool_marker": None
-            if tool_log_match is None
-            else tool_log_match.group(0),
+            if tool_log_version is None
+            else f"EXACT_X_TOOL SARAH {tool_log_version}",
             "required_marker_presence": log_markers,
         },
+        "runtime_probe_log": {
+            "sha256": runtime_probe_log.get("sha256"),
+            "size_bytes": runtime_probe_log.get("size_bytes"),
+            "encoding": runtime_probe_log.get("encoding"),
+            "wolfram_version_marker": probe_engine_version,
+            "kernel_path_marker": probe_kernel_path,
+        },
+        "trusted_sarah_release_manifest": trusted_release_validation,
+        "sarah_source_tree": source_tree,
+        "wolfram_runtime": runtime,
         "checks": validation_checks,
         "failures": failures,
         "valid": valid,
         "note": (
-            "Freshness is content-addressed: the exact tool-native model, the "
-            "canonical input manifest, validation driver, and captured process "
-            "log are hash-bound. Reduced-sector LIVE_BETA_DUMP artifacts and "
-            "unbound success booleans are not accepted."
+            "Freshness is content-addressed: v3 binds the exact tool-native "
+            "model and driver, the official canonical SARAH 4.15.3 source "
+            "tree, resolved Wolfram launcher/kernel bytes before and after the "
+            "run, and hash-bound runtime-probe and validation logs. Legacy v2, "
+            "reduced-sector LIVE dumps, and unbound booleans are not accepted."
         ),
     }
 
@@ -728,6 +1112,18 @@ def _integer(value: str) -> int | None:
     return None if match is None else int(match.group(1))
 
 
+def _cyclic_phase_charge(value: str, order: int) -> int | None:
+    """Decode SARAH's exact multiplicative ``Z[order]`` charge syntax."""
+    compact = re.sub(r"\s+", "", value)
+    if compact == "1":
+        return 0
+    match = re.fullmatch(
+        rf"Exp\[2\*Pi\*I\*([+-]?\d+)/{order}\]",
+        compact,
+    )
+    return None if match is None else int(match.group(1)) % order
+
+
 def _representation(value: str) -> str | None:
     compact = _symbol(value).lower()
     dynkin_aliases = {
@@ -870,7 +1266,15 @@ def declared_symmetries(model_text: str) -> dict[str, Any]:
         is_u1 = normalized_type == "u[1]"
         is_native_so10 = normalized_type == "so[10]"
         is_legacy_so10 = group_type == "SO" and group_name == "10"
-        is_named_x = (group_name or "").lower() == "x"
+        # SARAH 4.15.3 internally takes the first three characters of the
+        # descriptive U(1) name.  A one-character ``X`` therefore aborts a
+        # genuine model initialization even though it is unambiguous to this
+        # parser.  Accept the tool-native long spelling used by the attested
+        # model, while binding it to the dedicated ``GX`` gauge symbol.
+        is_named_x = (
+            (group_symbol or "").lower() == "gx"
+            and (group_name or "").lower() in {"x", "xcharge", "u1x"}
+        )
         native_row = bool(
             len(items) >= 5 and (is_native_so10 or is_u1)
         )
@@ -978,8 +1382,8 @@ def declared_symmetries(model_text: str) -> dict[str, Any]:
                 len(z17_positions) == 1
                 and len(items) > 3 + len(gauge_rows) + z17_positions[0]
             ):
-                z17_charge = _integer(
-                    items[3 + len(gauge_rows) + z17_positions[0]]
+                z17_charge = _cyclic_phase_charge(
+                    items[3 + len(gauge_rows) + z17_positions[0]], 17
                 )
             if canonical is not None and x_charge is not None:
                 charges = (EXPECTED_SCALAR_CHARGES[canonical][0], x_charge)
@@ -1078,8 +1482,8 @@ def declared_symmetries(model_text: str) -> dict[str, Any]:
                 len(z17_positions) == 1
                 and len(items) > 3 + len(gauge_rows) + z17_positions[0]
             ):
-                z17_charge = _integer(
-                    items[3 + len(gauge_rows) + z17_positions[0]]
+                z17_charge = _cyclic_phase_charge(
+                    items[3 + len(gauge_rows) + z17_positions[0]], 17
                 )
             if representation is not None and x_charge is not None:
                 pq_charge = expected_pq_by_rep_x.get((representation, x_charge))
@@ -1572,6 +1976,13 @@ def build_report(
         driver_load_error = f"{type(exc).__name__}: {exc}"
         driver_bytes = None
 
+    trusted_release_manifest_load_error: str | None = None
+    try:
+        trusted_release_manifest_bytes = TRUSTED_SARAH_RELEASE_MANIFEST.read_bytes()
+    except OSError as exc:
+        trusted_release_manifest_load_error = f"{type(exc).__name__}: {exc}"
+        trusted_release_manifest_bytes = b""
+
     manifest_load_error: str | None = None
     if model_text is None and driver_bytes is not None:
         loaded_repository_manifest: object = None
@@ -1583,14 +1994,19 @@ def build_report(
             except (OSError, UnicodeError, json.JSONDecodeError) as exc:
                 manifest_load_error = f"{type(exc).__name__}: {exc}"
         repository_input_manifest = validate_repository_input_manifest(
-            model_bytes, driver_bytes, loaded_repository_manifest
+            model_bytes,
+            driver_bytes,
+            loaded_repository_manifest,
+            trusted_release_manifest_bytes=trusted_release_manifest_bytes,
         )
         repository_input_manifest["applicable_to_repository_inputs"] = True
     elif driver_bytes is not None:
         repository_input_manifest = {
             "source": "in-memory fixture",
             "present": False,
-            "expected": build_external_input_manifest(model_bytes, driver_bytes),
+            "expected": build_external_input_manifest(
+                model_bytes, driver_bytes, trusted_release_manifest_bytes
+            ),
             "checks": {},
             "failures": [],
             "valid": True,
@@ -1612,6 +2028,9 @@ def build_report(
         }
     repository_input_manifest["load_error"] = manifest_load_error
     repository_input_manifest["driver_load_error"] = driver_load_error
+    repository_input_manifest["trusted_release_manifest_load_error"] = (
+        trusted_release_manifest_load_error
+    )
 
     external_load_error: str | None = None
     loaded_external_artifact: object = external_validation_artifact
@@ -1630,6 +2049,7 @@ def build_report(
         model_bytes,
         loaded_external_artifact,
         driver_bytes=driver_bytes,
+        trusted_release_manifest_bytes=trusted_release_manifest_bytes,
     )
     external_validation["load_error"] = external_load_error
     signed_filter = filter_contract(
@@ -1871,8 +2291,10 @@ def build_report(
                     EXTERNAL_VALIDATION.relative_to(ROOT)
                 ).replace("\\", "/"),
                 "claim_boundary": (
-                    "Only a real zero-exit SARAH process with all five PASS "
-                    "markers may create the external attestation."
+                    "Only a real zero-exit SARAH 4.15.3 process over the exact "
+                    "trusted source tree, with unchanged hash-bound Wolfram "
+                    "launcher/kernel bytes and all five unique PASS markers, "
+                    "may create the v3 external attestation."
                 ),
             },
             "option_A_gauge_U1X": {
@@ -1897,11 +2319,12 @@ def build_report(
                     "remove SoftGauginoMass from the nonsupersymmetric model",
                     "remove scaffold and external-Clebsch placeholders",
                     (
-                        "produce a fresh external SARAH/PyR@TE parse, model-load, "
+                        "produce a fresh external SARAH 4.15.3 parse, model-load, "
                         "Lagrangian, gauge-invariance, and anomaly-check attestation "
                         "bound to the tool-native model format, exact model-file "
-                        "SHA-256, canonical input manifest, validation driver, and "
-                        "hash-bound process log"
+                        "SHA-256, official canonical SARAH source-tree manifest, "
+                        "validation driver, resolved Wolfram executable bytes and "
+                        "version, and hash-bound probe/validation logs"
                     ),
                     "enforce exact X neutrality in the scalar-potential census",
                     "prove and quotient the Phi17 phase as the eaten Goldstone",
@@ -1982,8 +2405,9 @@ def build_report(
             "GaugeES Lagrangian registration, scalar filter, and hash-bound "
             "input bundle are statically consistent. The sole remaining "
             "contract blocker is a real external SARAH execution of the "
-            "shipped driver; no local Mathematica/SARAH installation was "
-            "available and no execution attestation is inferred or fabricated. "
+            "shipped driver; the official SARAH 4.15.3 source tree is frozen "
+            "and hash-verified, but no current source/runtime-bound execution "
+            "attestation is present or inferred. "
             "This static result alone does not validate G1-G8."
             if static_contract_consistent
             else "The audit executes successfully but the scientific contract is "
@@ -2031,7 +2455,7 @@ def write_markdown(report: dict[str, Any]) -> str:
                 f"`{report['executable_scaffold_contract']['tool_native_sarah_syntax']}`"
             ),
             (
-                "- Structured executable `U[1]` row named `X`: "
+                "- Structured executable `U[1]` row (`GX`, tool-safe `xcharge` label): "
                 f"`{report['executable_scaffold_contract']['u1x_gauged']}`"
             ),
             (
@@ -2063,7 +2487,7 @@ def write_markdown(report: dict[str, Any]) -> str:
                 f"`{report['repository_external_input_manifest']['valid']}`"
             ),
             (
-                "- Manifest/log/SHA-256-bound external SARAH/PyR@TE validation: "
+                "- Source-tree/runtime/log-bound external SARAH v3 validation: "
                 f"`{report['external_model_validation']['valid']}`"
             ),
             (
@@ -2098,9 +2522,13 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     report = build_report()
     OUT_JSON.write_text(
-        json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+        json.dumps(report, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+        newline="\r\n",
     )
-    OUT_MD.write_text(write_markdown(report), encoding="utf-8")
+    OUT_MD.write_text(
+        write_markdown(report), encoding="utf-8", newline="\r\n"
+    )
     print(json.dumps(report, indent=2, sort_keys=True))
     return exit_code(report, require_consistent=args.require_consistent)
 

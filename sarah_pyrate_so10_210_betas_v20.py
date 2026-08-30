@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-r"""SARAH/PyR@TE-formula SO(10)+210 two-loop β ingest (v20).
+r"""Legacy SO(10)+210 beta diagnostic, corrected and fail-closed (v20).
 
 Next step after ``g_singlet_6x6_cw_v20``:
 
@@ -12,15 +12,18 @@ Next step after ``g_singlet_6x6_cw_v20``:
    ``126bar+10``, Weyl/Dirac ``16`` matter including decay-safe pairs).
 4. Replace the prior ad-hoc ``|b|×1.1`` Spin(10) two-loop fudge by the
    ingested ``b₂`` running of ``α⁻¹``.
-5. Upgrade the SO(10) ``H,F`` Yukawa two-loop gauge piece with the
-   published ``C₂(16)=45`` Casimir (replacing the heuristic ``g⁴Y`` term).
+5. Use the exact identity ``C₂(R) dim(R)=T(R) dim(G)``.  In particular,
+   ``C₂(16)=45/8``; the former value 45 was a group-theory error.
 
 Honesty
 -------
 * Coefficients follow the **published general formulas** validated by
   SARAH/PyR@TE literature — this is not a claim that a SARAH model file
   for the full SO(10)×Z₁₇ potential was executed in this repository.
-* Quartic / soft-parameter two-loop βs and unique ``τ_p`` remain OPEN.
+* The exact replacement ledger is
+  :mod:`exact_authoritative_so10_u1x_gauge_betas_v20`.  Quartic,
+  dimensionful and EFT two-loop betas, Yukawa traces, physical thresholds,
+  and unique ``τ_p`` remain OPEN.
 """
 
 from __future__ import annotations
@@ -59,7 +62,7 @@ SOURCES = {
         ),
         "scope": "simple-group gauge β up to two loops (Yukawa-free b₂ piece)",
     },
-    "casimir": "C₂(R) = T(R)·dim(G)/dim(R)·C₂(G) with C₂(G)=8, dim(G)=45",
+    "casimir": "C₂(R) = T(R)·dim(G)/dim(R), with C₂(G)=8 and dim(G)=45",
 }
 
 # Published Dynkin indices T(R) for SO(10).
@@ -91,7 +94,7 @@ def c2_of(rep: str) -> float:
     }[rep]
     if dim <= 0:
         return 0.0
-    return C2_G * t * DIM_G / dim
+    return t * DIM_G / dim
 
 
 def one_loop_b(
@@ -100,7 +103,7 @@ def one_loop_b(
     complex_scalars: list[str],
     real_scalars: list[str],
 ) -> float:
-    """Nonsusy one-loop b in ``dg/dlnμ = −b g³/(16π²) + …`` convention used here.
+    """Nonsusy coefficient in ``dg/dlnμ = b g³/(16π²) + …``.
 
     Fermions: Weyl → (2/3) T each; scalars: complex → (1/3) T, real → (1/6) T.
     Gauge: −(11/3) C₂(G).
@@ -122,30 +125,30 @@ def two_loop_b2_gauge_only(
 ) -> float:
     """Yukawa-free two-loop gauge coefficient b₂ (Machacek–Vaughn / Jones).
 
-    ``dg/dlnμ = −[b g³/(16π²) + b₂ g⁵/(16π²)² + …]`` with
-    ``b₂ = −(34/3) C₂(G)² + Σ_f[(20/3)C₂(G)+4 C₂(f)] T(f)
-         + Σ_s[(2/3)C₂(G)+4 C₂(s)] T(s)``
-    (Weyl fermions; complex scalars counted once with their T,C₂;
-     real scalars enter with the same formula using their T,C₂).
+    ``dg/dlnμ = b g³/(16π²) + b₂ g⁵/(16π²)² + …``.  This is
+    eq. (30) of Luo--Wang--Xiao with ``κ=1/2`` for Weyl fermions.
+    Complex scalars are two real scalars; a declared real scalar therefore
+    carries half the complex-scalar weight.
     """
     b2 = -(34.0 / 3.0) * (C2_G**2)
     # Weyl 16 fermions
     t16, c16 = T_SO10["16"], c2_of("16")
-    b2 += weyl_16 * ((20.0 / 3.0) * C2_G + 4.0 * c16) * t16
+    b2 += weyl_16 * ((10.0 / 3.0) * C2_G + 2.0 * c16) * t16
     for r in complex_scalars:
         b2 += ((2.0 / 3.0) * C2_G + 4.0 * c2_of(r)) * T_SO10[r]
     for r in real_scalars:
-        b2 += ((2.0 / 3.0) * C2_G + 4.0 * c2_of(r)) * T_SO10[r]
+        b2 += ((1.0 / 3.0) * C2_G + 2.0 * c2_of(r)) * T_SO10[r]
     return float(b2)
 
 
 def v20_content_blocks() -> dict[str, Any]:
     """Field-content blocks for continuous Spin(10) running."""
     n_heavy_pairs = len(decay.HEAVY_PAIRS)  # Dirac 16+16bar each
-    # Below v_Φ: 3 light Weyl 16 + 3 Dirac heavy pairs (=6 Weyl)
-    weyl_below = 3 + 2 * n_heavy_pairs
-    # Above v_Φ: heavy pairs decoupled → 3 light Weyl only
-    weyl_above = 3
+    # Below v_Φ but above M_GUT: the three Phi17-massed pairs are decoupled,
+    # while the ten S-massed spectator multiplets are active because v_S<M_GUT.
+    weyl_below = 3 + 10
+    # Above v_Φ all nineteen declared Weyl 16/16bar multiplets are active.
+    weyl_above = weyl_below + 2 * n_heavy_pairs
     # Scalars always in the UV ledger at these scales (thresholded loosely)
     complex_s = ["126", "10"]  # 126bar counted as 126 Dynkin
     real_s = ["210"]  # real 210
@@ -154,13 +157,13 @@ def v20_content_blocks() -> dict[str, Any]:
             "weyl_16": weyl_below,
             "complex_scalars": complex_s,
             "real_scalars": real_s,
-            "note": "3 light 16 + 3 decay-safe Dirac 16 pairs; real 210 + 126 + 10",
+            "note": "3 light 16 + 10 S-massed spectators; Phi17-massed P/Q/R pairs decoupled",
         },
         "above_vPhi": {
             "weyl_16": weyl_above,
             "complex_scalars": complex_s,
             "real_scalars": real_s,
-            "note": "heavy 16 pairs integrated out above v_Φ",
+            "note": "all 19 declared Weyl 16/16bar multiplets active above v_Phi",
         },
         "casimirs": {r: c2_of(r) for r in ("10", "16", "45", "126", "210")},
         "T": dict(T_SO10),
@@ -302,9 +305,8 @@ def so10_yukawa_betas_ingested(
 ) -> tuple[np.ndarray, np.ndarray]:
     """One-loop SO(10) H,F betas + ingested two-loop gauge/Yukawa piece.
 
-    One-loop gauge factor uses ``C₂(16)=45`` ⇒ ``−2 C₂ g² = −90 g²`` in the
-    common ``(16π²) β`` normalization matching ``common_scale``'s ``−10.5 g²``
-    only as a prior heuristic; here we replace the two-loop layer with
+    One-loop gauge factor uses ``C₂(16)=45/8``.  The remaining matrix
+    coefficients are still only a prior heuristic; this routine uses
     ``(g⁴ C₂² Y + (Tr Y†Y) Y Y† Y)/(16π²)²``.
     """
     h = np.asarray(h, dtype=complex)
@@ -447,7 +449,7 @@ def build_report() -> dict[str, Any]:
 
     checks = {
         "dynkin_210_is_56": abs(T_SO10["210"] - 56.0) < 1e-15,
-        "c2_16_is_45": abs(c2_of("16") - 45.0) < 1e-12,
+        "c2_16_is_45_over_8": abs(c2_of("16") - 45.0 / 8.0) < 1e-12,
         "b1_below_finite": math.isfinite(betas["below_vPhi"]["b1"]),
         "b2_below_finite": math.isfinite(betas["below_vPhi"]["b2_gauge_only"]),
         "spin10_ran": True,  # diagnostic always returns a finite ledger
@@ -466,7 +468,7 @@ def build_report() -> dict[str, Any]:
 
     return {
         "status": (
-            "SARAH_PYRATE_FORMULA_SO10_210_BETAS_INGESTED__QUARTIC_AND_UV_CP_OPEN"
+            "CORRECTED_SO10_NONYUKAWA_GAUGE_POLYNOMIAL__FULL_G7_OPEN"
             if not failures
             else "SARAH_PYRATE_BETAS_FAILED"
         ),
@@ -490,11 +492,12 @@ def build_report() -> dict[str, Any]:
             "Resolve residual G₆ ↔ soft-gaugino CW double-counting if present",
         ],
         "flag": {
-            "sarah_validated_210_betas": True,
+            "sarah_validated_210_betas": False,
             "pyrate_sarah_mv_formulas_ingested": True,
             "published_so10_dynkin_ledger": True,
             "live_sarah_or_pyrate_executable_run": False,
-            "two_loop_so10_gauge_complete_for_content": True,
+            "two_loop_so10_gauge_complete_for_content": False,
+            "two_loop_so10_nonyukawa_gauge_polynomial_complete": True,
             "two_loop_quartic_betas_complete": False,
             "ad_hoc_1p1_fudge_replaced": True,
             "two_loop_landau_or_breakdown_above_MGUT": True,
@@ -503,12 +506,13 @@ def build_report() -> dict[str, Any]:
             "whole_model_excluded": False,
         },
         "verdict": (
-            f"Ingested SARAH/PyR@TE-formula SO(10)+210 two-loop gauge βs "
+            f"Corrected the SO(10)+210 non-Yukawa two-loop gauge polynomial "
             f"(b₁(below)={betas['below_vPhi']['b1']:.3f}, "
             f"b₂={betas['below_vPhi']['b2_gauge_only']:.3f}; "
             f"Δα⁻¹(M_Pl) vs 1.1-fudge={spin['delta_inv_MPl_vs_fudge']:.3f}; "
             f"Yukawa |Δβ_H|/|β_H|={yuk['rel_delta_H']:.3e}). "
-            "Live SARAH run and quartic βs remain OPEN."
+            "The Yukawa trace, live independent run, quartic/dimensionful/EFT "
+            "betas and physical thresholds remain OPEN."
         ),
     }
 
@@ -555,16 +559,37 @@ def write_markdown(report: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
+def _crlf_bytes(text: str) -> bytes:
+    """Encode generated release diagnostics with platform-independent CRLF."""
+    normalized = text.replace("\r\n", "\n").replace("\r", "\n")
+    return normalized.replace("\n", "\r\n").encode("utf-8")
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.parse_args(argv)
+    parser.add_argument(
+        "--check",
+        action="store_true",
+        help="verify that the frozen CRLF diagnostics equal a fresh report",
+    )
+    args = parser.parse_args(argv)
     report = build_report()
-    ROOT.joinpath("SARAH_PYRATE_SO10_210_BETAS_V20_VERDICT.json").write_text(
-        json.dumps(report, indent=2) + "\n", encoding="utf-8"
-    )
-    ROOT.joinpath("SARAH_PYRATE_SO10_210_BETAS_V20.md").write_text(
-        write_markdown(report), encoding="utf-8"
-    )
+    expected = {
+        ROOT / "SARAH_PYRATE_SO10_210_BETAS_V20_VERDICT.json": _crlf_bytes(
+            json.dumps(report, indent=2) + "\n"
+        ),
+        ROOT / "SARAH_PYRATE_SO10_210_BETAS_V20.md": _crlf_bytes(
+            write_markdown(report)
+        ),
+    }
+    if args.check:
+        stale = [str(path.name) for path, payload in expected.items() if path.read_bytes() != payload]
+        if stale:
+            print(json.dumps({"status": "FROZEN_REPORT_MISMATCH", "paths": stale}, indent=2))
+            return 1
+    else:
+        for path, payload in expected.items():
+            path.write_bytes(payload)
     print(
         json.dumps(
             {

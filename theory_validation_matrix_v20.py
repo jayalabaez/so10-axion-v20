@@ -26,6 +26,7 @@ import argparse
 import json
 import math
 import os
+import sys
 import unittest
 from pathlib import Path
 from typing import Any
@@ -34,9 +35,18 @@ from audit_v20_errors import build_audit
 import exact_x_symmetry_consistency_gate_v20 as exact_x_gate
 import g1_g8_gate_ledger_v20 as gate_ledger
 import corrected_rank1_endpoint_v21 as corrected_rank1
+import canonical_g1_g8_gauged_u1x_v21 as canonical_gates
+import authoritative_full_model_gate_v20 as authoritative_gate
 
 ROOT = Path(__file__).resolve().parent
 MODEL_CONTRACT_ID = "gauged_u1x_phi17_v20"
+EXACT_X_V3_SOURCE = "exact_x_symmetry_consistency_gate_v20.py"
+EXACT_X_V3_TEST = "test_exact_x_symmetry_consistency_gate_v20.py"
+EXACT_X_V3_MD = "EXACT_X_SYMMETRY_CONSISTENCY_GATE_V20.md"
+EXACT_X_V3_INPUT_MANIFEST = "models/EXACT_X_EXTERNAL_INPUT_MANIFEST_V20.json"
+EXACT_X_V3_TRUSTED_SARAH_MANIFEST = (
+    "models/SARAH_4_15_3_CANONICAL_SOURCE_TREE_V20.json"
+)
 RENORMALIZABLE_G1_COMPONENT_TENSOR_SOURCE = (
     "exact_gauged_u1x_g1_component_tensor_closure_v20.py"
 )
@@ -46,6 +56,128 @@ RENORMALIZABLE_G2_MATHEMATICAL_SOURCE = (
 FINAL_G6_EFT_GATE_SOURCE = "final_g6_eft_mathematical_gate_v20.py"
 EFT_G7_NONIDENTIFIABILITY_SOURCE = (
     "exact_eft_g7_threshold_nonidentifiability_v20.py"
+)
+G6_SM_PROVENANCE_SOURCE = "exact_g6_sm_provenance_feasibility_v20.py"
+G6_G7_PARAMETERIZED_MATCHING_SOURCE = (
+    "exact_eft_g6_g7_parameterized_matching_v20.py"
+)
+AUTHORITATIVE_GAUGE_BETAS_SOURCE = (
+    "exact_authoritative_so10_u1x_gauge_betas_v20.py"
+)
+PYRATE3_GAUGE_REPLAY_SOURCE = "pyrate3_so10_u1x_gauge_beta_replay_v20.py"
+PHYSICAL_G7_COMPONENT_THRESHOLD_SOURCE = (
+    "exact_physical_g7_component_threshold_contract_v20.py"
+)
+PHYSICAL_G7_COMPONENT_THRESHOLD_TEST = (
+    "test_exact_physical_g7_component_threshold_contract_v20.py"
+)
+PHYSICAL_G7_COMPONENT_THRESHOLD_MD = (
+    "EXACT_PHYSICAL_G7_COMPONENT_THRESHOLD_CONTRACT_V20.md"
+)
+NORMALIZED_YUKAWA_CGCS_SOURCE = "exact_normalized_so10_yukawa_cgcs_v20.py"
+NORMALIZED_YUKAWA_CGCS_TEST = "test_exact_normalized_so10_yukawa_cgcs_v20.py"
+NORMALIZED_YUKAWA_CGCS_MD = "EXACT_NORMALIZED_SO10_YUKAWA_CGCS_V20.md"
+PHYSICAL_SM_VACUUM_SOURCE = "physical_sm_vacuum_local_feasibility_v20.py"
+PHYSICAL_SM_VACUUM_TEST = "test_physical_sm_vacuum_local_feasibility_v20.py"
+PHYSICAL_SM_VACUUM_MD = "PHYSICAL_SM_VACUUM_LOCAL_FEASIBILITY_V20.md"
+PHYSICAL_SM_SOURCE_EQUALITY_SOURCE = (
+    "physical_sm_source_algebra_equality_frontier_v20.py"
+)
+PHYSICAL_SM_SOURCE_EQUALITY_TEST = (
+    "test_physical_sm_source_algebra_equality_frontier_v20.py"
+)
+PHYSICAL_SM_SOURCE_EQUALITY_MD = (
+    "PHYSICAL_SM_SOURCE_ALGEBRA_EQUALITY_FRONTIER_V20.md"
+)
+PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_SOURCE = (
+    "exact_physical_sm_five_amplitude_equality_v20.py"
+)
+PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_TEST = (
+    "test_exact_physical_sm_five_amplitude_equality_v20.py"
+)
+PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_MD = (
+    "EXACT_PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_V20.md"
+)
+PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_SOURCE = (
+    "exact_physical_sm_hard_projector_hessians_v20.py"
+)
+PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_TEST = (
+    "test_exact_physical_sm_hard_projector_hessians_v20.py"
+)
+PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_MD = (
+    "EXACT_PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_V20.md"
+)
+PHYSICAL_SM_LAST_SIX_HESSIANS_SOURCE = (
+    "exact_physical_sm_last_six_hessians_v20.py"
+)
+PHYSICAL_SM_LAST_SIX_HESSIANS_TEST = (
+    "test_exact_physical_sm_last_six_hessians_v20.py"
+)
+PHYSICAL_SM_LAST_SIX_HESSIANS_MD = (
+    "EXACT_PHYSICAL_SM_LAST_SIX_HESSIANS_V20.md"
+)
+PHYSICAL_SM_37_ROW_AGGREGATE_SOURCE = "exact_physical_sm_37_row_aggregate_v20.py"
+PHYSICAL_SM_37_ROW_AGGREGATE_TEST = "test_exact_physical_sm_37_row_aggregate_v20.py"
+PHYSICAL_SM_37_ROW_AGGREGATE_MD = "EXACT_PHYSICAL_SM_37_ROW_AGGREGATE_V20.md"
+PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_SOURCE = "exact_physical_sm_local_equality_orbit_v20.py"
+PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_TEST = "test_exact_physical_sm_local_equality_orbit_v20.py"
+PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_MD = "EXACT_PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_V20.md"
+PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_SOURCE = (
+    "exact_physical_sm_g4_g5_branch_mismatch_v20.py"
+)
+PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_TEST = (
+    "test_exact_physical_sm_g4_g5_branch_mismatch_v20.py"
+)
+PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_MD = (
+    "EXACT_PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_V20.md"
+)
+PHYSICAL_SM_HEAVY_VECTOR_SOURCE = "exact_physical_sm_heavy_vector_masses_v20.py"
+PHYSICAL_SM_HEAVY_VECTOR_TEST = "test_exact_physical_sm_heavy_vector_masses_v20.py"
+PHYSICAL_SM_HEAVY_VECTOR_MD = "EXACT_PHYSICAL_SM_HEAVY_VECTOR_MASSES_V20.md"
+PHYSICAL_SM_HEAVY_VECTOR_MSBAR_SOURCE = (
+    "exact_physical_sm_heavy_vector_msbar_matching_v20.py"
+)
+PHYSICAL_SM_HEAVY_VECTOR_MSBAR_TEST = (
+    "test_exact_physical_sm_heavy_vector_msbar_matching_v20.py"
+)
+PHYSICAL_SM_HEAVY_VECTOR_MSBAR_MD = (
+    "EXACT_PHYSICAL_SM_HEAVY_VECTOR_MSBAR_MATCHING_V20.md"
+)
+PHYSICAL_SM_VECTOR_RXI_SOURCE = (
+    "exact_physical_sm_vector_rxi_vacuum_cancellation_v20.py"
+)
+PHYSICAL_SM_VECTOR_RXI_TEST = (
+    "test_exact_physical_sm_vector_rxi_vacuum_cancellation_v20.py"
+)
+PHYSICAL_SM_VECTOR_RXI_MD = (
+    "EXACT_PHYSICAL_SM_VECTOR_RXI_VACUUM_CANCELLATION_V20.md"
+)
+CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_SOURCE = (
+    "conditional_physical_sm_eft_hessian_spectrum_v20.py"
+)
+CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_TEST = (
+    "test_conditional_physical_sm_eft_hessian_spectrum_v20.py"
+)
+CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_MD = (
+    "CONDITIONAL_PHYSICAL_SM_EFT_HESSIAN_SPECTRUM_V20.md"
+)
+PHYSICAL_SM_G6_G7_FRONTIER_SOURCE = (
+    "exact_physical_sm_g6_g7_closure_frontier_v20.py"
+)
+PHYSICAL_SM_G6_G7_FRONTIER_TEST = (
+    "test_exact_physical_sm_g6_g7_closure_frontier_v20.py"
+)
+PHYSICAL_SM_G6_G7_FRONTIER_MD = (
+    "EXACT_PHYSICAL_SM_G6_G7_CLOSURE_FRONTIER_V20.md"
+)
+PHYSICAL_SM_G8_FRONTIER_SOURCE = (
+    "exact_physical_sm_g8_identifiability_frontier_v20.py"
+)
+PHYSICAL_SM_G8_FRONTIER_TEST = (
+    "test_exact_physical_sm_g8_identifiability_frontier_v20.py"
+)
+PHYSICAL_SM_G8_FRONTIER_MD = (
+    "EXACT_PHYSICAL_SM_G8_IDENTIFIABILITY_FRONTIER_V20.md"
 )
 
 ARTIFACTS = {
@@ -123,6 +255,56 @@ ARTIFACTS = {
     "final_g6_eft": "FINAL_G6_EFT_MATHEMATICAL_GATE_V20.json",
     "eft_g7_nonidentifiability": (
         "EXACT_EFT_G7_THRESHOLD_NONIDENTIFIABILITY_V20.json"
+    ),
+    "g6_sm_provenance": "EXACT_G6_SM_PROVENANCE_FEASIBILITY_V20.json",
+    "g6_g7_parameterized_matching": (
+        "EXACT_EFT_G6_G7_PARAMETERIZED_MATCHING_V20.json"
+    ),
+    "authoritative_gauge_betas": (
+        "EXACT_AUTHORITATIVE_SO10_U1X_GAUGE_BETAS_V20.json"
+    ),
+    "pyrate3_gauge_replay": "PYRATE3_SO10_U1X_GAUGE_BETA_REPLAY_V20.json",
+    "physical_g7_component_threshold": (
+        "EXACT_PHYSICAL_G7_COMPONENT_THRESHOLD_CONTRACT_V20.json"
+    ),
+    "normalized_yukawa_cgcs": "EXACT_NORMALIZED_SO10_YUKAWA_CGCS_V20.json",
+    "physical_sm_vacuum": "PHYSICAL_SM_VACUUM_LOCAL_FEASIBILITY_V20.json",
+    "physical_sm_source_equality": (
+        "PHYSICAL_SM_SOURCE_ALGEBRA_EQUALITY_FRONTIER_V20.json"
+    ),
+    "physical_sm_five_amplitude_equality": (
+        "EXACT_PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_V20.json"
+    ),
+    "physical_sm_hard_projector_hessians": (
+        "EXACT_PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_V20.json"
+    ),
+    "physical_sm_last_six_hessians": (
+        "EXACT_PHYSICAL_SM_LAST_SIX_HESSIANS_V20.json"
+    ),
+    "physical_sm_37_row_aggregate": (
+        "EXACT_PHYSICAL_SM_37_ROW_AGGREGATE_V20.json"
+    ),
+    "physical_sm_local_equality_orbit": (
+        "EXACT_PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_V20.json"
+    ),
+    "physical_sm_g4_g5_branch_mismatch": (
+        "EXACT_PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_V20.json"
+    ),
+    "physical_sm_heavy_vectors": "EXACT_PHYSICAL_SM_HEAVY_VECTOR_MASSES_V20.json",
+    "physical_sm_heavy_vector_msbar": (
+        "EXACT_PHYSICAL_SM_HEAVY_VECTOR_MSBAR_MATCHING_V20.json"
+    ),
+    "physical_sm_vector_rxi": (
+        "EXACT_PHYSICAL_SM_VECTOR_RXI_VACUUM_CANCELLATION_V20.json"
+    ),
+    "conditional_physical_sm_scalar_spectrum": (
+        "CONDITIONAL_PHYSICAL_SM_EFT_HESSIAN_SPECTRUM_V20.json"
+    ),
+    "physical_sm_g6_g7_closure_frontier": (
+        "EXACT_PHYSICAL_SM_G6_G7_CLOSURE_FRONTIER_V20.json"
+    ),
+    "physical_sm_g8_identifiability_frontier": (
+        "EXACT_PHYSICAL_SM_G8_IDENTIFIABILITY_FRONTIER_V20.json"
     ),
     "authoritative": "AUTHORITATIVE_FULL_MODEL_GATE_V20.json",
 }
@@ -262,16 +444,6 @@ def _tool_native_bound_root_contract(audit: dict[str, Any]) -> bool:
     )
     external = audit.get("external_model_validation", {})
     external_checks = external.get("checks", {})
-    required_external = (
-        "tool_native_model_format_matches_path",
-        "external_process_command_matches_tool",
-        "input_manifest_schema_is_supported",
-        "input_manifest_sha256_matches_entries",
-        "primary_model_is_bound_in_input_manifest",
-        "validation_driver_is_bound_to_command",
-        "captured_process_log_is_hash_bound",
-        "captured_process_log_has_all_required_pass_markers",
-    )
     return bool(
         scaffold.get("model_syntax_class") == "sarah_native"
         and scaffold.get("tool_native_sarah_syntax") is True
@@ -284,12 +456,24 @@ def _tool_native_bound_root_contract(audit: dict[str, Any]) -> bool:
         )
         is True
         and external.get("schema") == exact_x_gate.EXTERNAL_VALIDATION_SCHEMA
+        and external.get("present") is True
         and external.get("valid") is True
-        and all(external_checks.get(name) is True for name in required_external)
+        and external.get("fresh_for_exact_model_bytes") is True
+        and set(external_checks)
+        == gate_ledger.EXPECTED_EXACT_X_V3_EXTERNAL_CHECKS
+        and all(
+            external_checks.get(name) is True
+            for name in gate_ledger.EXPECTED_EXACT_X_V3_EXTERNAL_CHECKS
+        )
     )
 
 
-def _model_contract_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
+def _model_contract_gate(
+    reports: dict[str, dict[str, Any]],
+    exact_x_v3_contract: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    if exact_x_v3_contract is None:
+        exact_x_v3_contract = {}
     audit = reports.get("x_contract", {})
     desired = reports.get("gauged_contract", {})
     audit_executes = bool(audit) and audit.get("n_failed") == 0
@@ -326,6 +510,22 @@ def _model_contract_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
             "contract_consistent": consistent,
             "implementation_matches_manuscript": implementation_matches,
             "tool_native_bound_external_evidence": tool_native_bound_evidence,
+            "exact_X_v3_fail_closed_contract_source_bound": (
+                exact_x_v3_contract.get("source_bound") is True
+            ),
+            "trusted_SARAH_4_15_3_source_tree_manifest_closed": (
+                exact_x_v3_contract.get(
+                    "trusted_SARAH_4_15_3_source_tree_manifest_closed"
+                )
+                is True
+            ),
+            "external_v3_execution_attestation_present": (
+                exact_x_v3_contract.get(
+                    "external_v3_execution_attestation_present"
+                )
+                is True
+            ),
+            "authoritative_G1_closed_by_exact_X_v3": False,
             "model_syntax_class": _dig(
                 audit,
                 "executable_scaffold_contract",
@@ -338,8 +538,115 @@ def _model_contract_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
         (
             "The TeX definition, tool-native gauge sector, exact-X scalar census, "
             "and derivative/quotient calculations carry one matching contract ID, "
-            "and v2 evidence binds the model, manifest, driver, and process log."
+            "and v3 evidence binds the trusted SARAH tree, model, driver, "
+            "resolved runtime, probe log, and process log."
         ),
+    )
+
+
+def _canonical_authority_gate(
+    canonical: dict[str, Any],
+    authoritative: dict[str, Any] | None = None,
+    root: Path | None = None,
+) -> dict[str, Any]:
+    """Make qualified V21 evidence the sole G1--G8 closure authority.
+
+    The historical scalar ledger remains useful evidence elsewhere in this
+    matrix.  Its bare G1--G8 labels are deliberately absent here: neither a
+    CLOSED nor a BLOCKED legacy row may promote or veto this gate.
+    """
+    authoritative = authoritative or {}
+    body = dict(canonical) if isinstance(canonical, dict) else {}
+    integrity = body.pop("integrity", None)
+    summary_integrity_valid = bool(
+        isinstance(integrity, dict)
+        and integrity.get("core_sha256") == canonical_gates._sha(body)
+        and canonical.get("schema") == canonical_gates.SCHEMA
+        and canonical.get("contract_namespace")
+        == canonical_gates.CONTRACT_NAMESPACE
+        and canonical.get("definition_sha256")
+        == canonical_gates.DEFINITION_SHA256
+        and canonical.get("n_failed") == 0
+        and canonical.get("failures") == []
+        and all(canonical.get("checks", {}).values())
+    )
+    live_revalidation_valid = bool(
+        summary_integrity_valid
+        and authoritative_gate._canonical_evidence_complete(
+            canonical, canonical_gates.ROOT if root is None else root
+        )
+    )
+    integrity_valid = live_revalidation_valid
+    rows = canonical.get("gates", []) if isinstance(canonical, dict) else []
+    qualified_ids = [row.get("qualified_gate_id") for row in rows]
+    expected_ids = [row["qualified_gate_id"] for row in canonical_gates.GATES]
+    closed = bool(
+        integrity_valid
+        and qualified_ids == expected_ids
+        and len(rows) == 8
+        and all(row.get("closed") is True for row in rows)
+        and canonical.get("closure_counts") == {"closed": 8, "open": 0}
+        and canonical.get("overall_state") == "PASS"
+        and canonical.get("classification", {}).get(
+            "all_canonical_gates_closed"
+        )
+        is True
+        and canonical.get("classification", {}).get("whole_model_validated")
+        is True
+    )
+    authoritative_present = bool(authoritative)
+    authoritative_classification = (
+        authoritative.get("classification", {})
+        if authoritative_present
+        else {}
+    )
+    authoritative_consistent = bool(
+        authoritative_present
+        and authoritative.get("canonical_g1_g8") == canonical
+        and authoritative.get("canonical_g1_g8_summary")
+        == canonical.get("closure_counts")
+        and authoritative_classification.get("all_g1_g8_closed") is closed
+        and authoritative_classification.get("whole_model_validated") is closed
+        and authoritative.get("flag", {}).get(
+            "legacy_ledger_controls_authoritative_closure"
+        )
+        is False
+        and authoritative.get("legacy_g1_g8_evidence", {}).get(
+            "authoritative_for_closure"
+        )
+        is False
+    )
+    if not integrity_valid or (authoritative_present and not authoritative_consistent):
+        state = "FAIL"
+    elif closed and authoritative_consistent:
+        state = "PASS"
+    else:
+        state = "BLOCKED"
+    return _gate(
+        "canonical_gauged_u1x_G1_G8_authority",
+        state,
+        (
+            "Qualified canonical V21 evidence, not matching bare numbers in the "
+            "legacy scalar ledger, controls full-authoritative G1--G8 closure."
+        ),
+        {
+            "canonical_integrity_valid": integrity_valid,
+            "canonical_summary_integrity_valid": summary_integrity_valid,
+            "canonical_gate_specific_verifiers_live_revalidated": (
+                live_revalidation_valid
+            ),
+            "canonical_contract_namespace": canonical.get("contract_namespace"),
+            "canonical_definition_sha256": canonical.get("definition_sha256"),
+            "canonical_closure_counts": canonical.get("closure_counts"),
+            "all_canonical_gates_closed": closed,
+            "authoritative_report_present": authoritative_present,
+            "authoritative_report_matches_canonical_state": (
+                authoritative_consistent
+            ),
+            "legacy_ledger_controls_authoritative_closure": False,
+        },
+        "Any malformed canonical artifact, broken dependency, or inconsistent authoritative summary.",
+        "All eight qualified V21 gates close and the authoritative report reproduces that exact canonical state.",
     )
 
 
@@ -380,6 +687,18 @@ def _vacuum_gate(
     parallel_eft_g4_mathematical: dict[str, Any] | None = None,
     parallel_eft_g5_mathematical: dict[str, Any] | None = None,
     parallel_eft_g6_spectrum: dict[str, Any] | None = None,
+    g6_sm_provenance: dict[str, Any] | None = None,
+    g6_g7_parameterized_matching: dict[str, Any] | None = None,
+    physical_sm_vacuum: dict[str, Any] | None = None,
+    physical_sm_source_equality: dict[str, Any] | None = None,
+    physical_sm_five_amplitude_equality: dict[str, Any] | None = None,
+    physical_sm_hard_projector_hessians: dict[str, Any] | None = None,
+    physical_sm_last_six_hessians: dict[str, Any] | None = None,
+    physical_sm_37_row_aggregate: dict[str, Any] | None = None,
+    physical_sm_local_equality_orbit: dict[str, Any] | None = None,
+    physical_sm_g4_g5_branch_mismatch: dict[str, Any] | None = None,
+    physical_sm_heavy_vectors: dict[str, Any] | None = None,
+    conditional_physical_sm_scalar_spectrum: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     contract_state = _model_contract_gate(reports)["state"]
     ledger = reports.get("g1_g8", {})
@@ -724,12 +1043,24 @@ def _vacuum_gate(
             final_g5_eft
         )
     final_g6_eft = reports.get("final_g6_eft", {})
+    if g6_sm_provenance is None:
+        g6_sm_provenance = {}
+    if g6_g7_parameterized_matching is None:
+        g6_g7_parameterized_matching = {}
+    if physical_sm_vacuum is None:
+        physical_sm_vacuum = {}
+    if physical_sm_heavy_vectors is None:
+        physical_sm_heavy_vectors = {}
+    if conditional_physical_sm_scalar_spectrum is None:
+        conditional_physical_sm_scalar_spectrum = {}
     if parallel_eft_g6_spectrum is None:
         parallel_eft_g6_spectrum = gate_ledger._parallel_eft_g6_spectrum(
             final_g6_eft,
             gate_source_raw_sha256=gate_ledger._raw_file_sha256(
                 ROOT / FINAL_G6_EFT_GATE_SOURCE
             ),
+            provenance_audit=g6_sm_provenance,
+            parameterized_matching=g6_g7_parameterized_matching,
         )
     corrected_common_kernel_honestly_bound = bool(
         common.get("model_contract_id") == MODEL_CONTRACT_ID
@@ -1444,6 +1775,296 @@ def _vacuum_gate(
         and exact_stationarity_rank
         and gauged_flags.get("global_competing_extrema_exhausted", False)
     )
+    physical_sm_overlay_bound = bool(
+        physical_sm_vacuum.get("source_bound") is True
+        and physical_sm_vacuum.get("physical_SM_target_exactly_constructed")
+        is True
+        and physical_sm_vacuum.get("standard_SU3C_x_U1em_stabilizer_proved")
+        is True
+        and physical_sm_vacuum.get(
+            "reconstructed_stationary_transverse_PSD_witness_available"
+        )
+        is True
+        and physical_sm_vacuum.get(
+            "direct_source_algebra_stationary_PSD_witness_available"
+        )
+        is False
+        and physical_sm_vacuum.get("source_bound_global_equality_orbit_proved")
+        is False
+        and physical_sm_vacuum.get("old_selected_EFT_stabilizer_label_superseded")
+        is True
+        and all(
+            physical_sm_vacuum.get(f"physical_SM_{gate}_closed") is False
+            for gate in ("G3", "G4", "G5", "G6", "G7")
+        )
+    )
+    if physical_sm_source_equality is None:
+        physical_sm_source_equality = {}
+    physical_sm_radial_equality_bound = bool(
+        physical_sm_source_equality.get("source_bound") is True
+        and physical_sm_source_equality.get(
+            "radial_stationary_equality_classified_exactly"
+        )
+        is True
+        and physical_sm_source_equality.get("radial_gcd") == "t - 1"
+        and physical_sm_source_equality.get(
+            "direct_source_algebra_stationary_Hessian_available"
+        )
+        is False
+        and physical_sm_source_equality.get(
+            "complete_nonradial_equality_orbit_proved"
+        )
+        is False
+        and physical_sm_source_equality.get("old_formal_U1_89_EFT_scope_promoted")
+        is False
+        and all(
+            physical_sm_source_equality.get(f"physical_SM_{gate}_closed")
+            is False
+            for gate in ("G3", "G4", "G5")
+        )
+    )
+    if physical_sm_five_amplitude_equality is None:
+        physical_sm_five_amplitude_equality = {}
+    physical_sm_five_amplitude_equality_bound = bool(
+        physical_sm_five_amplitude_equality.get("source_bound") is True
+        and physical_sm_five_amplitude_equality.get(
+            "exact_radial_theorem_strictly_extended"
+        )
+        is True
+        and physical_sm_five_amplitude_equality.get(
+            "five_real_amplitude_slice_stationary_equality_classified"
+        )
+        is True
+        and physical_sm_five_amplitude_equality.get(
+            "exact_real_discrete_sign_variant_count"
+        )
+        == 16
+        and physical_sm_five_amplitude_equality.get(
+            "target_strict_minimum_on_five_amplitude_slice"
+        )
+        is True
+        and physical_sm_five_amplitude_equality.get(
+            "full_486_field_stationary_equality_classified"
+        )
+        is False
+        and physical_sm_five_amplitude_equality.get(
+            "continuous_symmetry_orbit_equivalence_of_16_variants_proved"
+        )
+        is False
+        and physical_sm_five_amplitude_equality.get(
+            "direct_source_algebra_full_486_Hessian_available"
+        )
+        is False
+        and all(
+            physical_sm_five_amplitude_equality.get(
+                f"physical_SM_{gate}_closed"
+            )
+            is False
+            for gate in ("G3", "G4", "G5")
+        )
+    )
+    if physical_sm_hard_projector_hessians is None:
+        physical_sm_hard_projector_hessians = {}
+    physical_sm_hard_projector_hessians_bound = bool(
+        physical_sm_hard_projector_hessians.get("source_bound") is True
+        and physical_sm_hard_projector_hessians.get(
+            "exact_source_Hessian_row_count"
+        )
+        == 10
+        and physical_sm_hard_projector_hessians.get(
+            "remaining_active_row_count"
+        )
+        == 27
+        and physical_sm_hard_projector_hessians.get(
+            "all_10_O27_O44_source_Hessians_closed"
+        )
+        is True
+        and physical_sm_hard_projector_hessians.get(
+            "all_37_active_source_Hessians_closed"
+        )
+        is False
+        and physical_sm_hard_projector_hessians.get(
+            "full_witness_stationarity_rank_PSD_closed"
+        )
+        is False
+        and physical_sm_hard_projector_hessians.get(
+            "full_486_global_equality_orbit_closed"
+        )
+        is False
+        and all(
+            physical_sm_hard_projector_hessians.get(
+                f"physical_SM_{gate}_closed"
+            )
+            is False
+            for gate in ("G3", "G4", "G5")
+        )
+    )
+    if physical_sm_last_six_hessians is None:
+        physical_sm_last_six_hessians = {}
+    physical_sm_last_six_hessians_bound = bool(
+        physical_sm_last_six_hessians.get("source_bound") is True
+        and physical_sm_last_six_hessians.get(
+            "exact_last_six_source_Hessians_closed"
+        )
+        is True
+        and physical_sm_last_six_hessians.get(
+            "all_37_active_source_Hessians_available"
+        )
+        is True
+        and physical_sm_last_six_hessians.get(
+            "exact_37_row_aggregate_stationarity_kernel_rank_PSD_closed"
+        )
+        is False
+        and physical_sm_last_six_hessians.get(
+            "full_486_global_equality_orbit_closed"
+        )
+        is False
+        and all(
+            physical_sm_last_six_hessians.get(f"physical_SM_{gate}_closed")
+            is False
+            for gate in ("G3", "G4", "G5")
+        )
+    )
+    if physical_sm_37_row_aggregate is None:
+        physical_sm_37_row_aggregate = {}
+    physical_sm_37_row_aggregate_bound = bool(
+        physical_sm_37_row_aggregate.get("source_bound") is True
+        and physical_sm_37_row_aggregate.get(
+            "all_37_active_Hessians_source_derived"
+        )
+        is True
+        and physical_sm_37_row_aggregate.get(
+            "exact_source_aggregate_value_minus_one_and_stationary"
+        )
+        is True
+        and physical_sm_37_row_aggregate.get(
+            "exact_source_aggregate_kernel_dimension"
+        )
+        == 38
+        and physical_sm_37_row_aggregate.get("exact_source_aggregate_rank") == 448
+        and physical_sm_37_row_aggregate.get(
+            "exact_source_aggregate_PSD_and_strict_mod_symmetry"
+        )
+        is True
+        and physical_sm_37_row_aggregate.get(
+            "source_bound_local_stationary_Hessian_problem_complete"
+        )
+        is True
+        and physical_sm_37_row_aggregate.get(
+            "full_486_global_equality_orbit_closed"
+        )
+        is False
+        and all(
+            physical_sm_37_row_aggregate.get(f"physical_SM_{gate}_closed")
+            is False
+            for gate in ("G3", "G4", "G5")
+        )
+    )
+    if physical_sm_local_equality_orbit is None:
+        physical_sm_local_equality_orbit = {}
+    physical_sm_local_equality_orbit_bound = bool(
+        physical_sm_local_equality_orbit.get("source_bound") is True
+        and physical_sm_local_equality_orbit.get(
+            "full_486_local_stationary_orbit_classified"
+        )
+        is True
+        and physical_sm_local_equality_orbit.get(
+            "full_486_local_stationary_equality_orbit_classified"
+        )
+        is True
+        and physical_sm_local_equality_orbit.get(
+            "all_16_sign_variants_one_continuous_K_orbit"
+        )
+        is True
+        and physical_sm_local_equality_orbit.get(
+            "target_orbit_strict_local_minimum_mod_K"
+        )
+        is True
+        and physical_sm_local_equality_orbit.get(
+            "quantitative_neighborhood_radius_proved"
+        )
+        is False
+        and physical_sm_local_equality_orbit.get(
+            "complete_486_global_equality_orbit_classified"
+        )
+        is False
+        and all(
+            physical_sm_local_equality_orbit.get(f"physical_SM_{gate}_closed")
+            is False
+            for gate in ("G3", "G4", "G5")
+        )
+    )
+    if physical_sm_g4_g5_branch_mismatch is None:
+        physical_sm_g4_g5_branch_mismatch = {}
+    physical_sm_g4_g5_branch_mismatch_bound = bool(
+        physical_sm_g4_g5_branch_mismatch.get("source_bound") is True
+        and physical_sm_g4_g5_branch_mismatch.get(
+            "exact_branch_mismatch_proved"
+        )
+        is True
+        and physical_sm_g4_g5_branch_mismatch.get(
+            "unit_rescaling_case_count"
+        )
+        == 101
+        and physical_sm_g4_g5_branch_mismatch.get(
+            "current_five_amplitude_target_is_canonical_physical_EW_branch"
+        )
+        is False
+        and physical_sm_g4_g5_branch_mismatch.get(
+            "global_no_go_for_other_physical_EW_branches"
+        )
+        is False
+        and all(
+            physical_sm_g4_g5_branch_mismatch.get(
+                f"physical_SM_{gate}_closed"
+            )
+            is False
+            for gate in ("G4", "G5", "G6", "G7", "G8")
+        )
+    )
+    heavy_vector_tree_contract_bound = bool(
+        physical_sm_heavy_vectors.get("source_bound") is True
+        and physical_sm_heavy_vectors.get(
+            "exact_parameterized_tree_vector_mass_matrix_closed"
+        )
+        is True
+        and physical_sm_heavy_vectors.get(
+            "exact_vector_rank_kernel_and_Goldstone_image_closed"
+        )
+        is True
+        and physical_sm_heavy_vectors.get(
+            "exact_SU3C_x_U1em_vector_sector_resolution_closed"
+        )
+        is True
+        and physical_sm_heavy_vectors.get(
+            "parameterized_vector_threshold_log_inputs_closed"
+        )
+        is True
+        and physical_sm_heavy_vectors.get("pole_vector_masses_closed") is False
+        and physical_sm_heavy_vectors.get("physical_G6_closed") is False
+        and physical_sm_heavy_vectors.get("physical_G7_closed") is False
+    )
+    conditional_scalar_tree_contract_bound = bool(
+        conditional_physical_sm_scalar_spectrum.get("source_bound") is True
+        and conditional_physical_sm_scalar_spectrum.get(
+            "conditional_reconstructed_tree_scalar_spectrum_closed"
+        )
+        is True
+        and conditional_physical_sm_scalar_spectrum.get(
+            "conditional_tree_Hessian_factorization_closed"
+        )
+        is True
+        and conditional_physical_sm_scalar_spectrum.get(
+            "source_algebra_derived_tree_scalar_spectrum_closed"
+        )
+        is False
+        and conditional_physical_sm_scalar_spectrum.get(
+            "physical_scalar_pole_spectrum_closed"
+        )
+        is False
+        and conditional_physical_sm_scalar_spectrum.get("physical_G6_closed")
+        is False
+    )
     if contract_state == "BLOCKED" or (ledger and not (g1_closed and g2_closed)):
         state = "BLOCKED"
     elif (
@@ -1491,11 +2112,18 @@ def _vacuum_gate(
             "the exact gap/curvature identity gap=-m_transverse^2/8; that branch is "
             "therefore excluded. The lower replacement has the wrong stabilizer. "
             "A new SU(5)-singlet Phi+Delta branch is an exact global minimum in the "
-            "Phi/Sigma subsystem, has the SM stabilizer, and has exact Hessian "
+            "Phi/Sigma subsystem and has exact Hessian "
             "rank/nullity 429/33 with a strictly positive local quotient. Its "
-            "chiral-H extension is exactly stationary, symmetry-correct and BFB; "
-            "the exact full Hessian has rank/nullity 448/38 and is positive on the "
-            "quotient. The maximally negative pure-Delta sector is excluded for "
+            "chiral-H extension is exactly stationary and BFB for the frozen "
+            "representative; the provenance audit shows its abelian stabilizer "
+            "is U(1)_89 rather than physical electromagnetism. "
+            "A new reconstructed target has the exact standard-SM stabilizer. Its "
+            "source-derived all-37 Hessian is exactly stationary at V=-1, has "
+            "kernel/rank 38/448, and is PSD strictly modulo symmetry. Its full-486 "
+            "local stationary/equality orbit is also exact, but the complete global "
+            "equality orbit remains open, so these results do not close physical "
+            "G3-G7. The old abstract EFT proofs remain formal only. The maximally "
+            "negative pure-Delta sector is excluded for "
             "arbitrary real Phi with all residuals retained and sharp gap 1/5000. "
             "The prior four-real-dimensional SU(3) regression is historical and "
             "subsumed. At fixed H=h_- and Sigma=q/4, the corrected v21 exact "
@@ -1513,8 +2141,11 @@ def _vacuum_gate(
             "target is rejected. The corrected 6585x19594 standard positive-Gram "
             "map, ordered-spectral target, and exact strict 22-block/824-pivot "
             "primal prove p(t,Phi)>0 off the homogeneous origin and A(Phi)>3/200 "
-            "at t=1 for every real Phi210. Global Sigma, general/full H, the full "
-            "Hessian, and G3 remain open. "
+            "at t=1 for every real Phi210. For that historical fixed-H/Sigma "
+            "frontier, global Sigma, general/full H, and its then-unassembled "
+            "Hessian remained open. The current physical-SM branch instead has "
+            "the exact source-derived Hessian closure above; its complete global "
+            "equality orbit and physical G3 remain open. "
             "The old no-X 64/91 result remains historical."
         ),
         {
@@ -1867,6 +2498,135 @@ def _vacuum_gate(
                 parallel_eft_g6_spectrum[
                     "mathematical_G6_closed_for_EFT_model"
                 ]
+            ),
+            "parallel_EFT_formal_SU3_x_U1_89_factorization_closed": (
+                parallel_eft_g6_spectrum[
+                    "formal_SU3_x_U1_89_tree_factorization_closed"
+                ]
+            ),
+            "G6_physical_stabilizer_audit_source_bound": (
+                g6_sm_provenance.get("source_bound") is True
+            ),
+            "G6_actual_residual_group": g6_sm_provenance.get(
+                "actual_residual_group"
+            ),
+            "G6_physical_U1em_provenance_complete": False,
+            "G6_physical_mathematical_closed": False,
+            "physical_SM_vacuum_truth_overlay_source_bound": (
+                physical_sm_overlay_bound
+            ),
+            "physical_SM_target_exactly_constructed": bool(
+                physical_sm_overlay_bound
+            ),
+            "physical_SM_standard_stabilizer_proved": bool(
+                physical_sm_overlay_bound
+            ),
+            "old_selected_EFT_actual_stabilizer": physical_sm_vacuum.get(
+                "old_selected_EFT_target_actual_stabilizer"
+            ),
+            "old_selected_EFT_physical_SM_label_superseded": bool(
+                physical_sm_overlay_bound
+            ),
+            "physical_SM_complete_global_source_algebra_equality_witness_closed": False,
+            "physical_SM_global_equality_orbit_closed": False,
+            "physical_SM_radial_stationary_equality_classified_exactly": (
+                physical_sm_radial_equality_bound
+            ),
+            "physical_SM_radial_stationary_equality_gcd": (
+                physical_sm_source_equality.get("radial_gcd")
+            ),
+            "physical_SM_complete_nonradial_equality_orbit_closed": False,
+            "physical_SM_source_algebra_Hessian_closed": (
+                physical_sm_37_row_aggregate_bound
+            ),
+            "physical_SM_five_amplitude_equality_source_bound": (
+                physical_sm_five_amplitude_equality_bound
+            ),
+            "physical_SM_five_amplitude_slice_stationary_equality_classified": (
+                physical_sm_five_amplitude_equality_bound
+            ),
+            "physical_SM_five_amplitude_exact_sign_variant_count": (
+                16 if physical_sm_five_amplitude_equality_bound else None
+            ),
+            "physical_SM_five_amplitude_variants_one_continuous_orbit_proved": (
+                physical_sm_local_equality_orbit_bound
+            ),
+            "physical_SM_complete_global_486_field_stationary_equality_classified": False,
+            "physical_SM_hard_projector_Hessians_source_bound": (
+                physical_sm_hard_projector_hessians_bound
+            ),
+            "physical_SM_exact_source_Hessian_rows_closed": (
+                37 if physical_sm_37_row_aggregate_bound else None
+            ),
+            "physical_SM_remaining_active_Hessian_rows": (
+                0 if physical_sm_37_row_aggregate_bound else None
+            ),
+            "physical_SM_all_37_active_source_Hessians_closed": (
+                physical_sm_37_row_aggregate_bound
+            ),
+            "physical_SM_last_six_Hessians_source_bound": (
+                physical_sm_last_six_hessians_bound
+            ),
+            "physical_SM_all_37_active_source_Hessians_available": (
+                physical_sm_last_six_hessians_bound
+            ),
+            "physical_SM_37_row_local_Hessian_theorem_source_bound": (
+                physical_sm_37_row_aggregate_bound
+            ),
+            "physical_SM_source_aggregate_kernel_dimension": (
+                38 if physical_sm_37_row_aggregate_bound else None
+            ),
+            "physical_SM_source_aggregate_rank": (
+                448 if physical_sm_37_row_aggregate_bound else None
+            ),
+            "physical_SM_source_aggregate_PSD_strict_mod_symmetry": (
+                physical_sm_37_row_aggregate_bound
+            ),
+            "physical_SM_full_486_local_equality_orbit_source_bound": (
+                physical_sm_local_equality_orbit_bound
+            ),
+            "physical_SM_16_sign_variants_one_continuous_K_orbit": (
+                physical_sm_local_equality_orbit_bound
+            ),
+            "physical_SM_quantitative_local_orbit_radius_proved": False,
+            "physical_SM_full_witness_stationarity_rank_PSD_closed": (
+                physical_sm_37_row_aggregate_bound
+            ),
+            "physical_SM_G4_G5_branch_mismatch_source_bound": (
+                physical_sm_g4_g5_branch_mismatch_bound
+            ),
+            "physical_SM_five_amplitude_target_is_canonical_EW_branch": False,
+            "physical_SM_global_no_go_for_other_EW_branches": False,
+            "physical_SM_G3_G4_G5_G6_G7_closed": {
+                gate: False for gate in ("G3", "G4", "G5", "G6", "G7")
+            },
+            "physical_SM_heavy_vector_tree_contract_source_bound": (
+                heavy_vector_tree_contract_bound
+            ),
+            "exact_parameterized_heavy_vector_mass_matrix_closed": (
+                heavy_vector_tree_contract_bound
+            ),
+            "exact_heavy_vector_rank_kernel_Goldstone_image_closed": (
+                heavy_vector_tree_contract_bound
+            ),
+            "exact_heavy_vector_SU3C_U1em_sector_resolution_closed": (
+                heavy_vector_tree_contract_bound
+            ),
+            "parameterized_heavy_vector_threshold_log_inputs_closed": (
+                heavy_vector_tree_contract_bound
+            ),
+            "physical_heavy_vector_pole_masses_closed": False,
+            "physical_vector_Goldstone_ghost_matching_closed": False,
+            "conditional_physical_SM_scalar_tree_spectrum_source_bound": (
+                conditional_scalar_tree_contract_bound
+            ),
+            "conditional_reconstructed_tree_scalar_spectrum_closed": (
+                conditional_scalar_tree_contract_bound
+            ),
+            "source_algebra_derived_physical_scalar_spectrum_closed": False,
+            "physical_scalar_pole_spectrum_closed": False,
+            "G6_parameterized_formal_G89_matching_source_bound": (
+                g6_g7_parameterized_matching.get("source_bound") is True
             ),
             "parallel_EFT_release_G6_verified": (
                 parallel_eft_g6_spectrum[
@@ -2479,6 +3239,18 @@ def _vacuum_gate(
 def _rge_gate(
     reports: dict[str, dict[str, Any]],
     eft_g7_nonidentifiability: dict[str, Any] | None = None,
+    g6_sm_provenance: dict[str, Any] | None = None,
+    g6_g7_parameterized_matching: dict[str, Any] | None = None,
+    authoritative_gauge_betas: dict[str, Any] | None = None,
+    pyrate3_gauge_replay: dict[str, Any] | None = None,
+    physical_g7_component_threshold: dict[str, Any] | None = None,
+    normalized_yukawa_cgcs: dict[str, Any] | None = None,
+    physical_sm_heavy_vectors: dict[str, Any] | None = None,
+    physical_sm_heavy_vector_msbar: dict[str, Any] | None = None,
+    physical_sm_vector_rxi: dict[str, Any] | None = None,
+    conditional_physical_sm_scalar_spectrum: dict[str, Any] | None = None,
+    physical_sm_g6_g7_closure_frontier: dict[str, Any] | None = None,
+    physical_g7_recalculated_inputs: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     rge = reports.get("rge", {})
     flags = rge.get("flag", {})
@@ -2491,13 +3263,297 @@ def _rge_gate(
     )
     if eft_g7_nonidentifiability is None:
         eft_g7_nonidentifiability = {}
-    exact_input_obstruction = bool(
-        eft_g7_nonidentifiability.get("source_bound") is True
-        and eft_g7_nonidentifiability.get(
-            "exact_EFT_G7_input_nonidentifiability_proved"
+    if g6_sm_provenance is None:
+        g6_sm_provenance = {}
+    if g6_g7_parameterized_matching is None:
+        g6_g7_parameterized_matching = {}
+    if authoritative_gauge_betas is None:
+        authoritative_gauge_betas = {}
+    if pyrate3_gauge_replay is None:
+        pyrate3_gauge_replay = {}
+    if physical_g7_component_threshold is None:
+        physical_g7_component_threshold = {}
+    if normalized_yukawa_cgcs is None:
+        normalized_yukawa_cgcs = {}
+    if physical_sm_heavy_vectors is None:
+        physical_sm_heavy_vectors = {}
+    if physical_sm_heavy_vector_msbar is None:
+        physical_sm_heavy_vector_msbar = {}
+    if physical_sm_vector_rxi is None:
+        physical_sm_vector_rxi = {}
+    if conditional_physical_sm_scalar_spectrum is None:
+        conditional_physical_sm_scalar_spectrum = {}
+    if physical_sm_g6_g7_closure_frontier is None:
+        physical_sm_g6_g7_closure_frontier = {}
+    if physical_g7_recalculated_inputs is None:
+        physical_g7_recalculated_inputs = {}
+    physical_g6_mismatch = bool(
+        g6_sm_provenance.get("source_bound") is True
+        and g6_sm_provenance.get("formal_tree_mass_factorization_valid") is True
+        and g6_sm_provenance.get("actual_residual_group")
+        == "SU(3)_C x U(1)_89"
+        and g6_sm_provenance.get("physical_U1em_provenance_complete") is False
+        and g6_sm_provenance.get("physical_mathematical_G6_closed") is False
+    )
+    formal_matching_bound = bool(
+        g6_g7_parameterized_matching.get("source_bound") is True
+        and g6_g7_parameterized_matching.get(
+            "formal_SU3_x_U1_89_threshold_determinants_complete"
         )
         is True
-        and eft_g7_nonidentifiability.get("restriction_map_noninjective") is True
+        and g6_g7_parameterized_matching.get(
+            "physical_SM_scalar_thresholds_identified"
+        )
+        is False
+        and g6_g7_parameterized_matching.get("mathematical_G7_closed") is False
+    )
+    gauge_only_subtheorem_bound = bool(
+        authoritative_gauge_betas.get("source_bound") is True
+        and authoritative_gauge_betas.get(
+            "exact_nonyukawa_two_loop_gauge_polynomial_closed"
+        )
+        is True
+        and authoritative_gauge_betas.get("full_two_loop_gauge_beta_closed") is False
+        and authoritative_gauge_betas.get("component_threshold_matching_closed")
+        is False
+        and authoritative_gauge_betas.get("mathematical_G7_closed") is False
+    )
+    independent_gauge_replay_bound = bool(
+        pyrate3_gauge_replay.get("source_bound") is True
+        and pyrate3_gauge_replay.get(
+            "second_implementation_for_scoped_gauge_subtheorem"
+        )
+        is True
+        and pyrate3_gauge_replay.get("full_two_loop_gauge_beta_closed") is False
+        and pyrate3_gauge_replay.get("mathematical_G7_closed") is False
+    )
+    physical_component_kernel_bound = bool(
+        physical_g7_component_threshold.get("source_bound") is True
+        and physical_g7_component_threshold.get(
+            "physical_PS_SM_matter_branching_closed"
+        )
+        is True
+        and physical_g7_component_threshold.get(
+            "parameterized_one_loop_matter_threshold_kernel_closed"
+        )
+        is True
+        and physical_g7_component_threshold.get(
+            "exact_two_loop_nonyukawa_gauge_flow_closed"
+        )
+        is True
+        and physical_g7_component_threshold.get(
+            "physical_component_pole_mass_matrices_closed"
+        )
+        is False
+        and physical_g7_component_threshold.get("heavy_vector_matching_closed")
+        is False
+        and physical_g7_component_threshold.get("physical_G7_closed") is False
+        and physical_g7_component_threshold.get("mathematical_G7_closed") is False
+        and physical_g7_component_threshold.get("release_G7_verified") is False
+        and physical_g7_component_threshold.get(
+            "authoritative_renormalizable_G7_closed"
+        )
+        is False
+    )
+    normalized_yukawa_cgcs_bound = bool(
+        normalized_yukawa_cgcs.get("source_bound") is True
+        and normalized_yukawa_cgcs.get("normalized_10_CGCs_closed") is True
+        and normalized_yukawa_cgcs.get("normalized_126bar_CGCs_closed") is True
+        and normalized_yukawa_cgcs.get(
+            "normalized_singlet_duality_CGC_closed"
+        )
+        is True
+        and normalized_yukawa_cgcs.get(
+            "canonical_304_Weyl_sparse_embedding_closed"
+        )
+        is True
+        and normalized_yukawa_cgcs.get("all_declared_representation_CGCs_closed")
+        is True
+        and normalized_yukawa_cgcs.get("flavor_boundary_values_closed") is False
+        and normalized_yukawa_cgcs.get("SARAH_Dot_conversion_closed") is False
+        and normalized_yukawa_cgcs.get("full_one_two_loop_Yukawa_betas_closed")
+        is False
+        and normalized_yukawa_cgcs.get(
+            "physical_threshold_matching_and_running_closed"
+        )
+        is False
+        and normalized_yukawa_cgcs.get("physical_G7_closed") is False
+        and normalized_yukawa_cgcs.get("mathematical_G7_closed") is False
+        and normalized_yukawa_cgcs.get("release_G7_verified") is False
+    )
+    heavy_vector_tree_inputs_bound = bool(
+        physical_sm_heavy_vectors.get("source_bound") is True
+        and physical_sm_heavy_vectors.get(
+            "exact_parameterized_tree_vector_mass_matrix_closed"
+        )
+        is True
+        and physical_sm_heavy_vectors.get(
+            "exact_vector_rank_kernel_and_Goldstone_image_closed"
+        )
+        is True
+        and physical_sm_heavy_vectors.get(
+            "exact_SU3C_x_U1em_vector_sector_resolution_closed"
+        )
+        is True
+        and physical_sm_heavy_vectors.get(
+            "parameterized_vector_threshold_log_inputs_closed"
+        )
+        is True
+        and physical_sm_heavy_vectors.get(
+            "vector_Goldstone_ghost_matching_closed"
+        )
+        is False
+        and physical_sm_heavy_vectors.get("pole_vector_masses_closed") is False
+        and physical_sm_heavy_vectors.get("physical_G7_closed") is False
+    )
+    heavy_vector_msbar_inputs_bound = bool(
+        physical_sm_heavy_vector_msbar.get("source_bound") is True
+        and physical_sm_heavy_vector_msbar.get(
+            "combined_heavy_vector_FPghost_Goldstone_MSbar_kernel_closed"
+        )
+        is True
+        and physical_sm_heavy_vector_msbar.get(
+            "finite_MSbar_vector_constant_closed"
+        )
+        is True
+        and physical_sm_heavy_vector_msbar.get(
+            "exact_SU3_and_physical_QED_group_factors_closed"
+        )
+        is True
+        and physical_sm_heavy_vector_msbar.get(
+            "Goldstone_double_count_guard_active"
+        )
+        is True
+        and physical_sm_heavy_vector_msbar.get(
+            "arbitrary_Rxi_sector_resolved_matching_closed"
+        )
+        is False
+        and physical_sm_heavy_vector_msbar.get("pole_mass_conversion_closed")
+        is False
+        and physical_sm_heavy_vector_msbar.get(
+            "SM_symmetric_pre_EW_matching_closed"
+        )
+        is False
+        and physical_sm_heavy_vector_msbar.get(
+            "complete_scalar_fermion_threshold_matching_closed"
+        )
+        is False
+        and physical_sm_heavy_vector_msbar.get(
+            "complete_one_loop_model_matching_closed"
+        )
+        is False
+        and physical_sm_heavy_vector_msbar.get("physical_G6_closed") is False
+        and physical_sm_heavy_vector_msbar.get("physical_G7_closed") is False
+    )
+    vector_rxi_vacuum_bound = bool(
+        physical_sm_vector_rxi.get("source_bound") is True
+        and physical_sm_vector_rxi.get(
+            "zero_background_Rxi_vacuum_determinant_cancellation_closed"
+        )
+        is True
+        and physical_sm_vector_rxi.get("all_37_broken_directions_closed")
+        is True
+        and physical_sm_vector_rxi.get(
+            "Goldstone_FPghost_double_count_guard_closed"
+        )
+        is True
+        and physical_sm_vector_rxi.get(
+            "background_covariant_heat_kernel_matching_closed"
+        )
+        is False
+        and physical_sm_vector_rxi.get(
+            "sector_resolved_general_background_determinants_closed"
+        )
+        is False
+        and physical_sm_vector_rxi.get("pole_vector_masses_closed") is False
+        and physical_sm_vector_rxi.get("physical_G6_closed") is False
+        and physical_sm_vector_rxi.get("physical_G7_closed") is False
+    )
+    conditional_scalar_tree_inputs_bound = bool(
+        conditional_physical_sm_scalar_spectrum.get("source_bound") is True
+        and conditional_physical_sm_scalar_spectrum.get(
+            "conditional_reconstructed_tree_scalar_spectrum_closed"
+        )
+        is True
+        and conditional_physical_sm_scalar_spectrum.get(
+            "source_algebra_derived_tree_scalar_spectrum_closed"
+        )
+        is False
+        and conditional_physical_sm_scalar_spectrum.get(
+            "physical_scalar_pole_spectrum_closed"
+        )
+        is False
+    )
+    physical_g6_g7_frontier_bound = bool(
+        physical_sm_g6_g7_closure_frontier.get("source_bound") is True
+        and physical_sm_g6_g7_closure_frontier.get(
+            "corrected_terminal_artifacts_composed"
+        )
+        is True
+        and physical_sm_g6_g7_closure_frontier.get(
+            "continuous_nonidentifiability_proved"
+        )
+        is True
+        and physical_sm_g6_g7_closure_frontier.get(
+            "minimal_closure_path_machine_readable"
+        )
+        is True
+        and len(
+            physical_sm_g6_g7_closure_frontier.get(
+                "minimal_closure_path", []
+            )
+        )
+        == 7
+        and physical_sm_g6_g7_closure_frontier.get("unique_pole_spectrum")
+        is False
+        and physical_sm_g6_g7_closure_frontier.get("unique_threshold_vector")
+        is False
+        and physical_sm_g6_g7_closure_frontier.get(
+            "unique_full_RGE_trajectory"
+        )
+        is False
+        and physical_sm_g6_g7_closure_frontier.get("physical_G6_closed")
+        is False
+        and physical_sm_g6_g7_closure_frontier.get("physical_G7_closed")
+        is False
+    )
+    recalculated_inputs_bound = bool(
+        physical_g7_recalculated_inputs.get("source_bound") is True
+        and physical_g7_recalculated_inputs.get(
+            "all_resolved_scoped_inputs_closed"
+        )
+        is True
+        and all(
+            physical_g7_recalculated_inputs.get(
+                "superseded_stale_blockers", {}
+            ).values()
+        )
+        and all(
+            value is False
+            for value in physical_g7_recalculated_inputs.get(
+                "precise_open_inputs", {}
+            ).values()
+        )
+        and physical_g7_recalculated_inputs.get("physical_G7_closed") is False
+    )
+    formal_U1_89_restriction_audit = bool(
+        eft_g7_nonidentifiability.get("source_bound") is True
+        and eft_g7_nonidentifiability.get(
+            "formal_U1_89_abstract_restriction_noninjectivity_proved"
+        )
+        is True
+        and eft_g7_nonidentifiability.get(
+            "exact_physical_EFT_G7_input_nonidentifiability_proved"
+        )
+        is False
+        and eft_g7_nonidentifiability.get(
+            "historical_electroweak_lift_interpretation_valid"
+        )
+        is False
+        and eft_g7_nonidentifiability.get(
+            "formal_U1_89_restriction_map_noninjective"
+        )
+        is True
         and eft_g7_nonidentifiability.get("absolute_scale_unidentified") is True
         and eft_g7_nonidentifiability.get("mathematical_EFT_G7_closed") is False
         and eft_g7_nonidentifiability.get("positive_G7_certified") is False
@@ -2510,7 +3566,9 @@ def _rge_gate(
         and eft_g7_nonidentifiability.get("downstream_integration_completed")
         is True
     )
-    if exact_input_obstruction:
+    if physical_g6_mismatch:
+        state = "BLOCKED"
+    elif formal_U1_89_restriction_audit:
         state = "BLOCKED"
     elif full_two_loop and tensors and component_matching:
         state = "PASS"
@@ -2522,11 +3580,30 @@ def _rge_gate(
         "two_loop_RGE_unification_and_thresholds",
         state,
         (
-            "The exact EFT G7 audit proves that the frozen G6 residual spectrum "
+            "The exact provenance audit proves the frozen G6 abelian stabilizer "
+            "is U(1)_89 rather than physical electromagnetism, so its formal "
+            "threshold determinants cannot be consumed as SM input. The corrected "
+            "physical PS/SM matter branching, parameterized one-loop matter kernel "
+            "and gauge-only one/two-loop polynomial are exact. Normalized SO(10) "
+            "10/126bar/singlet representation Yukawa CGCs, the canonical 304-Weyl "
+            "embedding, parameterized physical-SM heavy-vector tree masses, "
+            "rank/kernel, sectors and threshold logs, and the combined heavy-vector "
+            "+ FP-ghost + Goldstone non-SUSY MSbar kernel including its finite "
+            "constant are also exact. The zero-background vacuum determinant "
+            "cancellation is exact for arbitrary positive Rxi in all 37 broken "
+            "directions, while continuous scale and flavor witnesses prove the "
+            "remaining full output is not identified. Flavor tensors/boundaries, SARAH "
+            "identical-Weyl contraction conversion, the Yukawa/scalar/EFT beta "
+            "system, background-covariant general-field determinants and heat-kernel "
+            "replay, tree-to-pole "
+            "masses with a tadpole/VEV scheme, the stationary pre-EW matching stage, "
+            "and complete scalar/fermion thresholds remain open."
+            if physical_g6_mismatch
+            else "The exact EFT G7 audit proves that the frozen G6 residual spectrum "
             "does not identify electroweak threshold representations or the "
             "absolute matching scale. Published SO(10)+210 two-loop tensors, "
             "running VEVs, and component thresholds also remain open."
-            if exact_input_obstruction
+            if formal_U1_89_restriction_audit
             else "A diagnostic one-loop Pati-Salam/2HDM chain with the -3 lepton "
             "Clebsch is integrated. Published SO(10)+210 two-loop tensor "
             "contractions, running VEVs, and component thresholds remain open."
@@ -2537,11 +3614,106 @@ def _rge_gate(
             "published_210_tensor_contractions": tensors,
             "two_loop_so10_complete": full_two_loop,
             "component_threshold_matching_complete": component_matching,
-            "exact_EFT_G7_input_nonidentifiability_proved": (
-                exact_input_obstruction
+            "G6_physical_stabilizer_mismatch_proved": physical_g6_mismatch,
+            "G6_actual_residual_group": g6_sm_provenance.get(
+                "actual_residual_group"
             ),
-            "threshold_restriction_map_noninjective": (
-                eft_g7_nonidentifiability.get("restriction_map_noninjective")
+            "formal_SU3_x_U1_89_threshold_determinants_complete": (
+                formal_matching_bound
+            ),
+            "authoritative_gauge_only_RGE_subtheorem_closed": (
+                gauge_only_subtheorem_bound
+            ),
+            "independent_PyRATE3_gauge_only_replay_closed": (
+                independent_gauge_replay_bound
+            ),
+            "physical_PS_SM_matter_branching_closed": bool(
+                physical_component_kernel_bound
+            ),
+            "parameterized_one_loop_matter_threshold_kernel_closed": bool(
+                physical_component_kernel_bound
+            ),
+            "normalized_SO10_10_CGCs_closed": bool(
+                normalized_yukawa_cgcs_bound
+            ),
+            "normalized_SO10_126bar_CGCs_closed": bool(
+                normalized_yukawa_cgcs_bound
+            ),
+            "normalized_SO10_singlet_duality_CGC_closed": bool(
+                normalized_yukawa_cgcs_bound
+            ),
+            "canonical_304_Weyl_sparse_Yukawa_embedding_closed": bool(
+                normalized_yukawa_cgcs_bound
+            ),
+            "exact_parameterized_heavy_vector_tree_mass_matrix_closed": bool(
+                heavy_vector_tree_inputs_bound
+            ),
+            "exact_heavy_vector_physical_target_provenance_closed": bool(
+                heavy_vector_tree_inputs_bound
+            ),
+            "exact_heavy_vector_rank_kernel_and_sector_resolution_closed": bool(
+                heavy_vector_tree_inputs_bound
+            ),
+            "parameterized_heavy_vector_threshold_log_inputs_closed": bool(
+                heavy_vector_tree_inputs_bound
+            ),
+            "combined_heavy_vector_FPghost_Goldstone_MSbar_kernel_closed": bool(
+                heavy_vector_msbar_inputs_bound
+            ),
+            "finite_MSbar_vector_constant_closed": bool(
+                heavy_vector_msbar_inputs_bound
+            ),
+            "exact_heavy_vector_SU3_and_QED_group_factors_closed": bool(
+                heavy_vector_msbar_inputs_bound
+            ),
+            "heavy_vector_Goldstone_double_count_guard_active": bool(
+                heavy_vector_msbar_inputs_bound
+            ),
+            "zero_background_Rxi_vacuum_determinant_cancellation_closed": bool(
+                vector_rxi_vacuum_bound
+            ),
+            "all_37_broken_vector_directions_Rxi_cancelled": bool(
+                vector_rxi_vacuum_bound
+            ),
+            "conditional_reconstructed_tree_scalar_spectrum_closed": bool(
+                conditional_scalar_tree_inputs_bound
+            ),
+            "continuous_G6_G7_nonidentifiability_frontier_closed": bool(
+                physical_g6_g7_frontier_bound
+            ),
+            "G6_G7_minimal_closure_path_machine_readable": bool(
+                physical_g6_g7_frontier_bound
+            ),
+            "recalculated_scoped_G7_input_resolution_bound": bool(
+                recalculated_inputs_bound
+            ),
+            "stale_normalized_embedding_blocker_superseded": bool(
+                recalculated_inputs_bound
+            ),
+            "stale_unmatched_heavy_vector_provenance_blocker_superseded": bool(
+                recalculated_inputs_bound
+            ),
+            "flavor_boundary_values_closed": False,
+            "SARAH_Dot_conversion_closed": False,
+            "full_one_two_loop_Yukawa_betas_closed": False,
+            "physical_component_pole_mass_matrices_closed": False,
+            "background_covariant_general_field_Rxi_determinants_closed": False,
+            "background_covariant_heat_kernel_replay_closed": False,
+            "stationary_SM_symmetric_pre_EW_heavy_vector_matching_closed": False,
+            "complete_scalar_and_fermion_threshold_matching_closed": False,
+            "physical_vector_pole_masses_closed": False,
+            "physical_scalar_pole_masses_closed": False,
+            "legacy_quartic_soft_and_heuristic_RGE_threshold_sources_authoritative": False,
+            "full_two_loop_gauge_beta_closed": False,
+            "formal_U1_89_abstract_restriction_noninjectivity_proved": (
+                formal_U1_89_restriction_audit
+            ),
+            "exact_physical_EFT_G7_input_nonidentifiability_proved": False,
+            "historical_electroweak_lift_interpretation_valid": False,
+            "formal_U1_89_restriction_map_noninjective": (
+                eft_g7_nonidentifiability.get(
+                    "formal_U1_89_restriction_map_noninjective"
+                )
             ),
             "absolute_matching_scale_unidentified": (
                 eft_g7_nonidentifiability.get("absolute_scale_unidentified")
@@ -2674,15 +3846,61 @@ def _portal_gate(reports: dict[str, dict[str, Any]]) -> dict[str, Any]:
     )
 
 
-def _proton_gate(reports: dict[str, dict[str, Any]], root: Path) -> dict[str, Any]:
+def _proton_gate(
+    reports: dict[str, dict[str, Any]],
+    root: Path,
+    physical_sm_g8_frontier: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    if physical_sm_g8_frontier is None:
+        physical_sm_g8_frontier = {}
+    frontier_bound = bool(
+        physical_sm_g8_frontier.get("source_bound") is True
+        and physical_sm_g8_frontier.get("canonical_G8_contract_audited") is True
+        and physical_sm_g8_frontier.get(
+            "continuous_absolute_scale_nonidentifiability_proved"
+        )
+        is True
+        and physical_sm_g8_frontier.get(
+            "flavor_and_interference_nonidentifiability_audited"
+        )
+        is True
+        and physical_sm_g8_frontier.get(
+            "repository_frozen_PDG_2025_single_channel_constraint_verified"
+        )
+        is True
+        and physical_sm_g8_frontier.get("unique_proton_lifetime_or_distribution")
+        is False
+        and physical_sm_g8_frontier.get("physical_G8_closed") is False
+        and physical_sm_g8_frontier.get("release_G8_verified") is False
+        and physical_sm_g8_frontier.get("authoritative_G8_closed") is False
+    )
     proton = _load_json(root / "PROTON_DECAY_V20_VERDICT.json")
     if proton is None:
-        state = "OPEN"
+        state = "BLOCKED" if frontier_bound else "OPEN"
         evidence = {
             "artifact_present": False,
             "gauge_boson_exchange_computed": False,
             "scalar_exchange_computed": False,
             "channel_ratios_computed": False,
+            "physical_SM_G8_identifiability_frontier_source_bound": (
+                frontier_bound
+            ),
+            "canonical_G8_contract_audited": physical_sm_g8_frontier.get(
+                "canonical_G8_contract_audited", False
+            ),
+            "absolute_scale_nonidentifiability_proved": (
+                physical_sm_g8_frontier.get(
+                    "continuous_absolute_scale_nonidentifiability_proved", False
+                )
+            ),
+            "PDG_2025_single_channel_constraint_verified": (
+                physical_sm_g8_frontier.get(
+                    "repository_frozen_PDG_2025_single_channel_constraint_verified",
+                    False,
+                )
+            ),
+            "unique_proton_lifetime_or_distribution": False,
+            "physical_G8_closed": False,
         }
     else:
         excluded = bool(
@@ -2701,7 +3919,12 @@ def _proton_gate(reports: dict[str, dict[str, Any]], root: Path) -> dict[str, An
     return _gate(
         "proton_decay",
         state,
-        "No complete proton-decay artifact is currently present.",
+        (
+            "The exact G8 frontier proves that current source-bound inputs do not "
+            "identify a unique lifetime or uncertainty distribution."
+            if frontier_bound
+            else "No complete proton-decay artifact is currently present."
+        ),
         evidence,
         "An unavoidable predicted proton lifetime is below a current experimental bound.",
         (
@@ -2861,6 +4084,30 @@ def _reproducibility_gate(
 
 def build_report(root: Path = ROOT) -> dict[str, Any]:
     reports, missing = load_reports(root)
+    canonical_report = canonical_gates.build_report(root)
+    canonical_authority = _canonical_authority_gate(
+        canonical_report,
+        reports.get("authoritative"),
+        root,
+    )
+    exact_x_v3_contract = gate_ledger._exact_x_v3_fail_closed_contract(
+        reports.get("x_contract", {}),
+        source_raw_sha256=gate_ledger._raw_file_sha256(root / EXACT_X_V3_SOURCE),
+        test_raw_sha256=gate_ledger._raw_file_sha256(root / EXACT_X_V3_TEST),
+        json_raw_sha256=gate_ledger._raw_file_sha256(
+            root / ARTIFACTS["x_contract"]
+        ),
+        markdown_raw_sha256=gate_ledger._raw_file_sha256(root / EXACT_X_V3_MD),
+        input_manifest_raw_sha256=gate_ledger._raw_file_sha256(
+            root / EXACT_X_V3_INPUT_MANIFEST
+        ),
+        trusted_sarah_manifest_raw_sha256=gate_ledger._raw_file_sha256(
+            root / EXACT_X_V3_TRUSTED_SARAH_MANIFEST
+        ),
+        external_validation_file_present=(
+            root / "models/EXACT_X_EXTERNAL_MODEL_VALIDATION_V20.json"
+        ).is_file(),
+    )
     renormalizable_g1_component_tensor_closure = (
         gate_ledger._renormalizable_g1_component_tensor_closure(
             reports.get("renormalizable_g1_component_tensor", {}),
@@ -2917,6 +4164,24 @@ def build_report(root: Path = ROOT) -> dict[str, Any]:
             root / ARTIFACTS["final_g5_eft"]
         ),
     )
+    g6_sm_provenance = gate_ledger._g6_sm_provenance_audit(
+        reports.get("g6_sm_provenance", {}),
+        raw_sha256=gate_ledger._raw_file_sha256(
+            root / ARTIFACTS["g6_sm_provenance"]
+        ),
+        source_raw_sha256=gate_ledger._raw_file_sha256(
+            root / G6_SM_PROVENANCE_SOURCE
+        ),
+    )
+    g6_g7_parameterized_matching = gate_ledger._parameterized_g6_g7_matching(
+        reports.get("g6_g7_parameterized_matching", {}),
+        raw_sha256=gate_ledger._raw_file_sha256(
+            root / ARTIFACTS["g6_g7_parameterized_matching"]
+        ),
+        source_raw_sha256=gate_ledger._raw_file_sha256(
+            root / G6_G7_PARAMETERIZED_MATCHING_SOURCE
+        ),
+    )
     parallel_eft_g6_spectrum = gate_ledger._parallel_eft_g6_spectrum(
         reports.get("final_g6_eft", {}),
         raw_sha256=gate_ledger._raw_file_sha256(
@@ -2925,6 +4190,309 @@ def build_report(root: Path = ROOT) -> dict[str, Any]:
         gate_source_raw_sha256=gate_ledger._raw_file_sha256(
             root / FINAL_G6_EFT_GATE_SOURCE
         ),
+        provenance_audit=g6_sm_provenance,
+        parameterized_matching=g6_g7_parameterized_matching,
+    )
+    authoritative_gauge_betas = gate_ledger._authoritative_gauge_beta_subtheorem(
+        reports.get("authoritative_gauge_betas", {}),
+        raw_sha256=gate_ledger._raw_file_sha256(
+            root / ARTIFACTS["authoritative_gauge_betas"]
+        ),
+        source_raw_sha256=gate_ledger._raw_file_sha256(
+            root / AUTHORITATIVE_GAUGE_BETAS_SOURCE
+        ),
+    )
+    pyrate3_gauge_replay = gate_ledger._pyrate3_gauge_replay_subtheorem(
+        reports.get("pyrate3_gauge_replay", {}),
+        raw_sha256=gate_ledger._raw_file_sha256(
+            root / ARTIFACTS["pyrate3_gauge_replay"]
+        ),
+        source_raw_sha256=gate_ledger._raw_file_sha256(
+            root / PYRATE3_GAUGE_REPLAY_SOURCE
+        ),
+        model_raw_sha256=gate_ledger._raw_file_sha256(
+            root / "models" / "SO10U1XGaugeAuditV20.model"
+        ),
+        data_raw_sha256=gate_ledger._raw_file_sha256(
+            root / "data" / "PYRATE3_SO10_U1X_GAUGE_BETA_FROZEN_V20.json"
+        ),
+    )
+    physical_g7_component_threshold = (
+        gate_ledger._physical_g7_component_threshold_contract(
+            reports.get("physical_g7_component_threshold", {}),
+            raw_sha256=gate_ledger._raw_file_sha256(
+                root / ARTIFACTS["physical_g7_component_threshold"]
+            ),
+            source_raw_sha256=gate_ledger._raw_file_sha256(
+                root / PHYSICAL_G7_COMPONENT_THRESHOLD_SOURCE
+            ),
+            test_raw_sha256=gate_ledger._raw_file_sha256(
+                root / PHYSICAL_G7_COMPONENT_THRESHOLD_TEST
+            ),
+            markdown_raw_sha256=gate_ledger._raw_file_sha256(
+                root / PHYSICAL_G7_COMPONENT_THRESHOLD_MD
+            ),
+        )
+    )
+    normalized_yukawa_cgcs = gate_ledger._normalized_so10_yukawa_cgc_contract(
+        reports.get("normalized_yukawa_cgcs", {}),
+        raw_sha256=gate_ledger._raw_file_sha256(
+            root / ARTIFACTS["normalized_yukawa_cgcs"]
+        ),
+        source_raw_sha256=gate_ledger._raw_file_sha256(
+            root / NORMALIZED_YUKAWA_CGCS_SOURCE
+        ),
+        test_raw_sha256=gate_ledger._raw_file_sha256(
+            root / NORMALIZED_YUKAWA_CGCS_TEST
+        ),
+        markdown_raw_sha256=gate_ledger._raw_file_sha256(
+            root / NORMALIZED_YUKAWA_CGCS_MD
+        ),
+    )
+    physical_sm_vacuum = gate_ledger._physical_sm_vacuum_truth_overlay(
+        reports.get("physical_sm_vacuum", {}),
+        raw_sha256=gate_ledger._raw_file_sha256(
+            root / ARTIFACTS["physical_sm_vacuum"]
+        ),
+        source_raw_sha256=gate_ledger._raw_file_sha256(
+            root / PHYSICAL_SM_VACUUM_SOURCE
+        ),
+        test_raw_sha256=gate_ledger._raw_file_sha256(
+            root / PHYSICAL_SM_VACUUM_TEST
+        ),
+        markdown_raw_sha256=gate_ledger._raw_file_sha256(
+            root / PHYSICAL_SM_VACUUM_MD
+        ),
+    )
+    physical_sm_source_equality = (
+        gate_ledger._physical_sm_source_algebra_equality_frontier_contract(
+            reports.get("physical_sm_source_equality", {}),
+            raw_sha256=gate_ledger._raw_file_sha256(
+                root / ARTIFACTS["physical_sm_source_equality"]
+            ),
+            source_raw_sha256=gate_ledger._raw_file_sha256(
+                root / PHYSICAL_SM_SOURCE_EQUALITY_SOURCE
+            ),
+            test_raw_sha256=gate_ledger._raw_file_sha256(
+                root / PHYSICAL_SM_SOURCE_EQUALITY_TEST
+            ),
+            markdown_raw_sha256=gate_ledger._raw_file_sha256(
+                root / PHYSICAL_SM_SOURCE_EQUALITY_MD
+            ),
+        )
+    )
+    physical_sm_five_amplitude_equality = (
+        gate_ledger._physical_sm_five_amplitude_equality_contract(
+            reports.get("physical_sm_five_amplitude_equality", {}),
+            raw_sha256=gate_ledger._raw_file_sha256(
+                root / ARTIFACTS["physical_sm_five_amplitude_equality"]
+            ),
+            source_raw_sha256=gate_ledger._raw_file_sha256(
+                root / PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_SOURCE
+            ),
+            test_raw_sha256=gate_ledger._raw_file_sha256(
+                root / PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_TEST
+            ),
+            markdown_raw_sha256=gate_ledger._raw_file_sha256(
+                root / PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_MD
+            ),
+        )
+    )
+    physical_sm_hard_projector_hessians = (
+        gate_ledger._physical_sm_hard_projector_hessians_contract(
+            reports.get("physical_sm_hard_projector_hessians", {}),
+            raw_sha256=gate_ledger._raw_file_sha256(
+                root / ARTIFACTS["physical_sm_hard_projector_hessians"]
+            ),
+            source_raw_sha256=gate_ledger._raw_file_sha256(
+                root / PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_SOURCE
+            ),
+            test_raw_sha256=gate_ledger._raw_file_sha256(
+                root / PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_TEST
+            ),
+            markdown_raw_sha256=gate_ledger._raw_file_sha256(
+                root / PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_MD
+            ),
+        )
+    )
+    physical_sm_last_six_hessians = (
+        gate_ledger._physical_sm_last_six_hessians_contract(
+            reports.get("physical_sm_last_six_hessians", {}),
+            raw_sha256=gate_ledger._raw_file_sha256(
+                root / ARTIFACTS["physical_sm_last_six_hessians"]
+            ),
+            source_raw_sha256=gate_ledger._raw_file_sha256(
+                root / PHYSICAL_SM_LAST_SIX_HESSIANS_SOURCE
+            ),
+            test_raw_sha256=gate_ledger._raw_file_sha256(
+                root / PHYSICAL_SM_LAST_SIX_HESSIANS_TEST
+            ),
+            markdown_raw_sha256=gate_ledger._raw_file_sha256(
+                root / PHYSICAL_SM_LAST_SIX_HESSIANS_MD
+            ),
+        )
+    )
+    physical_sm_37_row_aggregate = (
+        gate_ledger._physical_sm_37_row_aggregate_contract(
+            reports.get("physical_sm_37_row_aggregate", {}),
+            raw_sha256=gate_ledger._raw_file_sha256(
+                root / ARTIFACTS["physical_sm_37_row_aggregate"]
+            ),
+            source_raw_sha256=gate_ledger._raw_file_sha256(
+                root / PHYSICAL_SM_37_ROW_AGGREGATE_SOURCE
+            ),
+            test_raw_sha256=gate_ledger._raw_file_sha256(
+                root / PHYSICAL_SM_37_ROW_AGGREGATE_TEST
+            ),
+            markdown_raw_sha256=gate_ledger._raw_file_sha256(
+                root / PHYSICAL_SM_37_ROW_AGGREGATE_MD
+            ),
+        )
+    )
+    physical_sm_local_equality_orbit = (
+        gate_ledger._physical_sm_local_equality_orbit_contract(
+            reports.get("physical_sm_local_equality_orbit", {}),
+            portable_lf_sha256=gate_ledger._file_sha256(
+                root / ARTIFACTS["physical_sm_local_equality_orbit"]
+            ),
+            source_portable_lf_sha256=gate_ledger._file_sha256(
+                root / PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_SOURCE
+            ),
+            test_portable_lf_sha256=gate_ledger._file_sha256(
+                root / PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_TEST
+            ),
+            markdown_portable_lf_sha256=gate_ledger._file_sha256(
+                root / PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_MD
+            ),
+        )
+    )
+    physical_sm_g4_g5_branch_mismatch = (
+        gate_ledger._physical_sm_g4_g5_branch_mismatch_contract(
+            reports.get("physical_sm_g4_g5_branch_mismatch", {}),
+            raw_sha256=gate_ledger._raw_file_sha256(
+                root / ARTIFACTS["physical_sm_g4_g5_branch_mismatch"]
+            ),
+            source_raw_sha256=gate_ledger._raw_file_sha256(
+                root / PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_SOURCE
+            ),
+            test_raw_sha256=gate_ledger._raw_file_sha256(
+                root / PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_TEST
+            ),
+            markdown_raw_sha256=gate_ledger._raw_file_sha256(
+                root / PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_MD
+            ),
+        )
+    )
+    physical_sm_heavy_vectors = gate_ledger._physical_sm_heavy_vector_mass_contract(
+        reports.get("physical_sm_heavy_vectors", {}),
+        raw_sha256=gate_ledger._raw_file_sha256(
+            root / ARTIFACTS["physical_sm_heavy_vectors"]
+        ),
+        source_raw_sha256=gate_ledger._raw_file_sha256(
+            root / PHYSICAL_SM_HEAVY_VECTOR_SOURCE
+        ),
+        test_raw_sha256=gate_ledger._raw_file_sha256(
+            root / PHYSICAL_SM_HEAVY_VECTOR_TEST
+        ),
+        markdown_raw_sha256=gate_ledger._raw_file_sha256(
+            root / PHYSICAL_SM_HEAVY_VECTOR_MD
+        ),
+    )
+    physical_sm_heavy_vector_msbar = (
+        gate_ledger._physical_sm_heavy_vector_msbar_matching_contract(
+            reports.get("physical_sm_heavy_vector_msbar", {}),
+            raw_sha256=gate_ledger._raw_file_sha256(
+                root / ARTIFACTS["physical_sm_heavy_vector_msbar"]
+            ),
+            source_raw_sha256=gate_ledger._raw_file_sha256(
+                root / PHYSICAL_SM_HEAVY_VECTOR_MSBAR_SOURCE
+            ),
+            test_raw_sha256=gate_ledger._raw_file_sha256(
+                root / PHYSICAL_SM_HEAVY_VECTOR_MSBAR_TEST
+            ),
+            markdown_raw_sha256=gate_ledger._raw_file_sha256(
+                root / PHYSICAL_SM_HEAVY_VECTOR_MSBAR_MD
+            ),
+        )
+    )
+    physical_sm_vector_rxi = (
+        gate_ledger._physical_sm_vector_rxi_vacuum_cancellation_contract(
+            reports.get("physical_sm_vector_rxi", {}),
+            raw_sha256=gate_ledger._raw_file_sha256(
+                root / ARTIFACTS["physical_sm_vector_rxi"]
+            ),
+            source_raw_sha256=gate_ledger._raw_file_sha256(
+                root / PHYSICAL_SM_VECTOR_RXI_SOURCE
+            ),
+            test_raw_sha256=gate_ledger._raw_file_sha256(
+                root / PHYSICAL_SM_VECTOR_RXI_TEST
+            ),
+            markdown_raw_sha256=gate_ledger._raw_file_sha256(
+                root / PHYSICAL_SM_VECTOR_RXI_MD
+            ),
+        )
+    )
+    conditional_physical_sm_scalar_spectrum = (
+        gate_ledger._conditional_physical_sm_eft_hessian_spectrum_contract(
+            reports.get("conditional_physical_sm_scalar_spectrum", {}),
+            raw_sha256=gate_ledger._raw_file_sha256(
+                root / ARTIFACTS["conditional_physical_sm_scalar_spectrum"]
+            ),
+            source_raw_sha256=gate_ledger._raw_file_sha256(
+                root / CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_SOURCE
+            ),
+            test_raw_sha256=gate_ledger._raw_file_sha256(
+                root / CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_TEST
+            ),
+            markdown_raw_sha256=gate_ledger._raw_file_sha256(
+                root / CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_MD
+            ),
+        )
+    )
+    physical_sm_g6_g7_closure_frontier = (
+        gate_ledger._physical_sm_g6_g7_closure_frontier_contract(
+            reports.get("physical_sm_g6_g7_closure_frontier", {}),
+            raw_sha256=gate_ledger._raw_file_sha256(
+                root / ARTIFACTS["physical_sm_g6_g7_closure_frontier"]
+            ),
+            source_raw_sha256=gate_ledger._raw_file_sha256(
+                root / PHYSICAL_SM_G6_G7_FRONTIER_SOURCE
+            ),
+            test_raw_sha256=gate_ledger._raw_file_sha256(
+                root / PHYSICAL_SM_G6_G7_FRONTIER_TEST
+            ),
+            markdown_raw_sha256=gate_ledger._raw_file_sha256(
+                root / PHYSICAL_SM_G6_G7_FRONTIER_MD
+            ),
+        )
+    )
+    physical_sm_g8_identifiability_frontier = (
+        gate_ledger._physical_sm_g8_identifiability_frontier_contract(
+            reports.get("physical_sm_g8_identifiability_frontier", {}),
+            raw_sha256=gate_ledger._raw_file_sha256(
+                root / ARTIFACTS["physical_sm_g8_identifiability_frontier"]
+            ),
+            source_raw_sha256=gate_ledger._raw_file_sha256(
+                root / PHYSICAL_SM_G8_FRONTIER_SOURCE
+            ),
+            test_raw_sha256=gate_ledger._raw_file_sha256(
+                root / PHYSICAL_SM_G8_FRONTIER_TEST
+            ),
+            markdown_raw_sha256=gate_ledger._raw_file_sha256(
+                root / PHYSICAL_SM_G8_FRONTIER_MD
+            ),
+        )
+    )
+    physical_g7_recalculated_inputs = (
+        gate_ledger._physical_g7_recalculated_input_resolution(
+            physical_g7_component_threshold,
+            normalized_yukawa_cgcs,
+            physical_sm_heavy_vectors,
+            physical_sm_heavy_vector_msbar,
+            physical_sm_vector_rxi,
+            conditional_physical_sm_scalar_spectrum,
+            physical_sm_g6_g7_closure_frontier,
+        )
     )
     eft_g7_nonidentifiability = gate_ledger._parallel_eft_g7_nonidentifiability(
         reports.get("eft_g7_nonidentifiability", {}),
@@ -2935,11 +4503,30 @@ def build_report(root: Path = ROOT) -> dict[str, Any]:
             root / EFT_G7_NONIDENTIFIABILITY_SOURCE
         ),
     )
-    current_test_count = unittest.defaultTestLoader.discover(
-        str(root)
-    ).countTestCases()
+    # A fresh loader avoids leaking ``_top_level_dir`` between temporary
+    # release fixtures.  Discovery itself also imports every copied test
+    # module.  Preserve and restore the caller's test-module cache so a
+    # temporary fixture cannot poison a later nested discovery with a module
+    # whose ``__file__`` points at an already-deleted temporary directory.
+    cached_test_modules = {
+        name: module
+        for name, module in sys.modules.items()
+        if name.startswith("test_") or ".test_" in name
+    }
+    try:
+        for name in tuple(cached_test_modules):
+            sys.modules.pop(name, None)
+        current_test_count = (
+            unittest.TestLoader().discover(str(root)).countTestCases()
+        )
+    finally:
+        for name in tuple(sys.modules):
+            if name.startswith("test_") or ".test_" in name:
+                sys.modules.pop(name, None)
+        sys.modules.update(cached_test_modules)
     gates = [
-        _model_contract_gate(reports),
+        canonical_authority,
+        _model_contract_gate(reports, exact_x_v3_contract),
         _core_gate(reports),
         _operator_gate(reports),
         _vacuum_gate(
@@ -2950,11 +4537,38 @@ def build_report(root: Path = ROOT) -> dict[str, Any]:
             parallel_eft_g4_mathematical,
             parallel_eft_g5_mathematical,
             parallel_eft_g6_spectrum,
+            g6_sm_provenance,
+            g6_g7_parameterized_matching,
+            physical_sm_vacuum,
+            physical_sm_source_equality,
+            physical_sm_five_amplitude_equality,
+            physical_sm_hard_projector_hessians,
+            physical_sm_last_six_hessians,
+            physical_sm_37_row_aggregate,
+            physical_sm_local_equality_orbit,
+            physical_sm_g4_g5_branch_mismatch,
+            physical_sm_heavy_vectors,
+            conditional_physical_sm_scalar_spectrum,
         ),
-        _rge_gate(reports, eft_g7_nonidentifiability),
+        _rge_gate(
+            reports,
+            eft_g7_nonidentifiability,
+            g6_sm_provenance,
+            g6_g7_parameterized_matching,
+            authoritative_gauge_betas,
+            pyrate3_gauge_replay,
+            physical_g7_component_threshold,
+            normalized_yukawa_cgcs,
+            physical_sm_heavy_vectors,
+            physical_sm_heavy_vector_msbar,
+            physical_sm_vector_rxi,
+            conditional_physical_sm_scalar_spectrum,
+            physical_sm_g6_g7_closure_frontier,
+            physical_g7_recalculated_inputs,
+        ),
         _flavour_gate(reports),
         _portal_gate(reports),
-        _proton_gate(reports, root),
+        _proton_gate(reports, root, physical_sm_g8_identifiability_frontier),
         _cosmology_gate(reports),
         _experiment_gate(reports),
         _reproducibility_gate(reports, missing, current_test_count),
@@ -2968,23 +4582,27 @@ def build_report(root: Path = ROOT) -> dict[str, Any]:
         if gate["mandatory_for_full_validation"]
         and gate["state"] in {"OPEN", "CONDITIONAL", "BLOCKED"}
     ]
-    all_mandatory_pass = not failed and not mandatory_open
+    canonical_closed = bool(
+        canonical_authority["state"] == "PASS"
+        and canonical_authority["evidence"]["all_canonical_gates_closed"]
+        is True
+        and canonical_authority["evidence"][
+            "authoritative_report_matches_canonical_state"
+        ]
+        is True
+    )
 
-    core_state = states["mathematical_and_software_core"]
-    if failed:
-        classification = "CURRENT_REALIZATION_REJECTED"
+    if canonical_authority["state"] == "FAIL":
+        classification = "CANONICAL_G1_G8_AUTHORITY_INTEGRITY_FAILED"
         decision = "REJECT"
-    elif blocked:
-        classification = "MODEL_CONTRACT_INCONSISTENT__AUTHORITATIVE_GATES_REOPENED"
-        decision = "WITHHOLD_APPROVAL"
-    elif all_mandatory_pass:
+    elif canonical_closed:
         classification = "FULL_PHENOMENOLOGY_VALIDATED__NO_DISCOVERY_IMPLIED"
         decision = "VALIDATE_FULL_PHENOMENOLOGY"
-    elif core_state == "PASS":
-        classification = "INTERNALLY_CONSISTENT_CONDITIONAL_CANDIDATE"
-        decision = "APPROVE_CONDITIONAL_CANDIDATE_ONLY"
+    elif states["mathematical_and_software_core"] == "FAIL":
+        classification = "CURRENT_REALIZATION_REJECTED"
+        decision = "REJECT"
     else:
-        classification = "INSUFFICIENT_CURRENT_REPRODUCIBILITY"
+        classification = "CANONICAL_G1_G8_GATES_OPEN"
         decision = "WITHHOLD_APPROVAL"
 
     overclaim_errors: list[str] = []
@@ -3045,25 +4663,39 @@ def build_report(root: Path = ROOT) -> dict[str, Any]:
             "full two-loop SO(10) closure is claimed without published 210 "
             "tensor contractions"
         )
-    if (
-        all_mandatory_pass
-        and classification
-        != "FULL_PHENOMENOLOGY_VALIDATED__NO_DISCOVERY_IMPLIED"
+    if canonical_closed and classification != (
+        "FULL_PHENOMENOLOGY_VALIDATED__NO_DISCOVERY_IMPLIED"
     ):
-        overclaim_errors.append("full-validation state machine is inconsistent")
+        overclaim_errors.append("canonical full-validation state machine is inconsistent")
 
-    integrity_pass = not overclaim_errors and not failed
+    integrity_pass = bool(
+        not overclaim_errors
+        and canonical_authority["state"] != "FAIL"
+        and (
+            canonical_closed
+            or states["mathematical_and_software_core"] != "FAIL"
+        )
+    )
     if overclaim_errors:
         classification = "VALIDATION_MATRIX_FAIL__OVERCLAIM"
         decision = "REJECT"
 
     return {
         "status": "PASS" if integrity_pass else "FAIL",
-        "overall_state": _overall_state(integrity_pass, gates),
+        "overall_state": (
+            "FAIL"
+            if not integrity_pass
+            else "PASS"
+            if canonical_closed
+            else "BLOCKED"
+        ),
         "classification": classification,
         "decision": decision,
-        "full_theory_validated": bool(all_mandatory_pass and integrity_pass),
+        "full_theory_validated": bool(canonical_closed and integrity_pass),
         "empirical_discovery": False,
+        "canonical_G1_G8_V21": canonical_report,
+        "canonical_authoritative_consistency": canonical_authority["evidence"],
+        "exact_X_v3_fail_closed_contract": exact_x_v3_contract,
         "renormalizable_G1_component_tensor_closure": (
             renormalizable_g1_component_tensor_closure
         ),
@@ -3081,6 +4713,51 @@ def build_report(root: Path = ROOT) -> dict[str, Any]:
         "parallel_EFT_G5_mathematical": parallel_eft_g5_mathematical,
         "parallel_EFT_G6_spectrum": parallel_eft_g6_spectrum,
         "parallel_EFT_G7_nonidentifiability": eft_g7_nonidentifiability,
+        "physical_G7_component_threshold_contract": (
+            physical_g7_component_threshold
+        ),
+        "normalized_SO10_Yukawa_CGC_contract": normalized_yukawa_cgcs,
+        "physical_SM_vacuum_truth_overlay": physical_sm_vacuum,
+        "physical_SM_source_algebra_equality_frontier": (
+            physical_sm_source_equality
+        ),
+        "physical_SM_five_amplitude_equality_contract": (
+            physical_sm_five_amplitude_equality
+        ),
+        "physical_SM_hard_projector_Hessians_contract": (
+            physical_sm_hard_projector_hessians
+        ),
+        "physical_SM_last_six_Hessians_contract": (
+            physical_sm_last_six_hessians
+        ),
+        "physical_SM_37_row_aggregate_contract": (
+            physical_sm_37_row_aggregate
+        ),
+        "physical_SM_local_equality_orbit_contract": (
+            physical_sm_local_equality_orbit
+        ),
+        "physical_SM_G4_G5_branch_mismatch_contract": (
+            physical_sm_g4_g5_branch_mismatch
+        ),
+        "physical_SM_heavy_vector_mass_contract": physical_sm_heavy_vectors,
+        "physical_SM_heavy_vector_MSbar_matching_contract": (
+            physical_sm_heavy_vector_msbar
+        ),
+        "physical_SM_vector_Rxi_vacuum_cancellation_contract": (
+            physical_sm_vector_rxi
+        ),
+        "conditional_physical_SM_EFT_Hessian_spectrum_contract": (
+            conditional_physical_sm_scalar_spectrum
+        ),
+        "physical_SM_G6_G7_closure_frontier_contract": (
+            physical_sm_g6_g7_closure_frontier
+        ),
+        "physical_SM_G8_identifiability_frontier_contract": (
+            physical_sm_g8_identifiability_frontier
+        ),
+        "physical_G7_recalculated_input_resolution": (
+            physical_g7_recalculated_inputs
+        ),
         "current_tree_unit_tests_discovered": current_test_count,
         "n_gates": len(gates),
         "n_failed_gates": len(failed),
@@ -3097,14 +4774,12 @@ def build_report(root: Path = ROOT) -> dict[str, Any]:
             gate["name"]: gate["green_condition"] for gate in gates
         },
         "verdict": (
-            "The present repository cannot approve a manuscript candidate while "
-            "the statically consistent gauged-U(1)_X SARAH model lacks v2 bound "
-            "external execution evidence. The historical "
-            "no-X calculations remain reproducible subtheorems, not validation. "
-            "Full validity requires a matching contract, the complete operator "
-            "basis, scalar vacuum and spectrum, reference-derived two-loop thresholds, "
-            "a common-scale flavour fit, UV-selected portal currents, proton decay, "
-            "a fixed cosmology, and real independent 37 GHz data."
+            "All eight qualified canonical gauged-U(1)_X V21 gates are closed, "
+            "and the authoritative full-model report agrees exactly."
+            if canonical_closed
+            else "Qualified canonical gauged-U(1)_X V21 evidence remains open. "
+            "Legacy scalar-ledger gate numbers and historical Option-C results "
+            "remain scoped diagnostics; they cannot promote or veto full closure."
         ),
     }
 
@@ -3170,9 +4845,78 @@ def write_markdown(report: dict[str, Any]) -> str:
             f"**{report['parallel_EFT_G6_spectrum']['release_G6_verified_for_EFT_model']}**"
         ),
         (
-            "- Exact EFT G7 input nonidentifiability: "
-            f"**{report['parallel_EFT_G7_nonidentifiability']['exact_EFT_G7_input_nonidentifiability_proved']}**"
+            "- Formal U(1)_89 abstract restriction noninjectivity: "
+            f"**{report['parallel_EFT_G7_nonidentifiability']['formal_U1_89_abstract_restriction_noninjectivity_proved']}**"
         ),
+        (
+            "- Physical PS/SM matter branching and parameterized one-loop "
+            "matter-threshold kernel: "
+            f"**{report['physical_G7_component_threshold_contract']['source_bound']}**"
+        ),
+        (
+            "- Normalized SO(10) `10`/`126bar`/singlet Yukawa CGCs: "
+            f"**{report['normalized_SO10_Yukawa_CGC_contract']['source_bound']}**"
+        ),
+        "- Flavor values, SARAH conversion, Yukawa RGEs and physical threshold matching remain open.",
+        (
+            "- Physical-SM target/stabilizer truth overlay: "
+            f"**{report['physical_SM_vacuum_truth_overlay']['source_bound']}**"
+        ),
+        (
+            "- Exact five-real-amplitude equality classification (16 discrete "
+            "sign variants; full 486-field/continuous-orbit proof open): "
+            f"**{report['physical_SM_five_amplitude_equality_contract']['source_bound']}**"
+        ),
+        (
+            "- Exact hard-projector Hessians (the staged 10/37-row input; the "
+            "succeeding 37-row aggregate closes stationarity/rank/PSD): "
+            f"**{report['physical_SM_hard_projector_Hessians_contract']['source_bound']}**"
+        ),
+        (
+            "- Exact last-six Hessians (all 37 active source Hessians made "
+            "available; the succeeding aggregate closes stationarity/kernel/rank/PSD): "
+            f"**{report['physical_SM_last_six_Hessians_contract']['source_bound']}**"
+        ),
+        (
+            "- Exact source-derived 37-row local Hessian theorem (stationary, "
+            "38-mode kernel, rank 448, PSD; global equality open): "
+            f"**{report['physical_SM_37_row_aggregate_contract']['source_bound']}**"
+        ),
+        (
+            "- Exact full-486 local stationary/equality orbit plus one continuous "
+            "K-orbit for all 16 sign variants (radius/global equality open): "
+            f"**{report['physical_SM_local_equality_orbit_contract']['source_bound']}**"
+        ),
+        (
+            "- Exact five-amplitude/physical-EW branch mismatch (not a global "
+            "hierarchy no-go): "
+            f"**{report['physical_SM_G4_G5_branch_mismatch_contract']['source_bound']}**"
+        ),
+        (
+            "- Exact parameterized physical-SM heavy-vector tree inputs: "
+            f"**{report['physical_SM_heavy_vector_mass_contract']['source_bound']}**"
+        ),
+        (
+            "- Exact combined heavy-vector + FP-ghost + Goldstone non-SUSY MSbar "
+            "kernel and finite constant: "
+            f"**{report['physical_SM_heavy_vector_MSbar_matching_contract']['source_bound']}**"
+        ),
+        (
+            "- Conditional reconstructed physical-SM tree scalar spectrum: "
+            f"**{report['conditional_physical_SM_EFT_Hessian_spectrum_contract']['source_bound']}**"
+        ),
+        (
+            "- Recalculated scoped G7 inputs with stale embedding/vector blockers "
+            "superseded: "
+            f"**{report['physical_G7_recalculated_input_resolution']['source_bound']}**"
+        ),
+        (
+            "- Exact G8 identifiability frontier, 101-case scale audit, and "
+            "PDG-2025 single-channel constraint: "
+            f"**{report['physical_SM_G8_identifiability_frontier_contract']['source_bound']}**"
+        ),
+        "- Background-covariant general-field Rxi determinants and heat-kernel replay, tree-to-pole vector masses with tadpole/VEV scheme, stationary pre-EW matching, complete scalar/fermion thresholds, physical scale/boundaries, flavor boundaries, SARAH identical-Weyl conversion and full Yukawa betas remain open.",
+        "- Old selected EFT target: `SU(3)_C x U(1)_89`; physical-SM G3-G8 remain false.",
         "- Mathematical/release/authoritative G7: **False**/**False**/**False**.",
         "- Original renormalizable G3-G8 remain authoritative and unchanged.",
         f"- Gates: {report['n_gates']}",
@@ -3209,19 +4953,6 @@ def write_markdown(report: dict[str, Any]) -> str:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--expect-conditional",
-        action="store_true",
-        help=(
-            "fail if the current result is not the conditional-candidate "
-            "classification"
-        ),
-    )
-    parser.add_argument(
-        "--expect-blocked",
-        action="store_true",
-        help="fail unless the current scientific state is honestly BLOCKED",
-    )
     parser.add_argument("--no-write", action="store_true")
     args = parser.parse_args()
 
@@ -3253,12 +4984,6 @@ def main() -> int:
     )
 
     ok = report["status"] == "PASS"
-    if args.expect_conditional:
-        ok = ok and report["classification"] == (
-            "INTERNALLY_CONSISTENT_CONDITIONAL_CANDIDATE"
-        )
-    if args.expect_blocked:
-        ok = ok and report["overall_state"] == "BLOCKED"
     return 0 if ok else 1
 
 

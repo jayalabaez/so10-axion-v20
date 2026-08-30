@@ -1,0 +1,770 @@
+{
+  "G2_closure_assessment": [
+    {
+      "blocker": "The allowed PS mu_H H H term, pure-source quartics at the same 1/Lambda order, source-collar Hc/mixed portals and the normal-derivative/EOM-reduced basis are not all included in one retained-order action.",
+      "id": "C1",
+      "landed": "The complete renormalizable neutral source superpotential, four leading source-spinor portals, twelve next two-bulk-trace contractions, the corrected nineteen PS Yukawa structures, FI data and boundary gauge terms are catalogued.",
+      "name": "fixed_order_action_completeness",
+      "status": "fail"
+    },
+    {
+      "blocker": "none for the fixed-background H/Hc regulator subproblem",
+      "id": "C2",
+      "landed": "A finite square H/Hc collar of width epsilon is an explicit regulator and gives the exact undivided transfer matrices C,D and the map B_epsilon=D^-1 C.",
+      "name": "explicit_regulator",
+      "status": "pass"
+    },
+    {
+      "blocker": "The declared wall kinetic, normal-derivative and source-field terms have not been varied together to derive one complete self-adjoint generalized domain.",
+      "id": "C3",
+      "landed": "The canonical H/Hc collar with Hermitian Nambu source matrix is J-unitary and self-adjoint on its parity/continuity domain.",
+      "name": "variational_domain_and_self_adjointness",
+      "status": "partial"
+    },
+    {
+      "blocker": "The full source, Zhat, K\u00e4hler-mixing and derivative Schur complements are not assembled.  The proposed source-collar y-stiffness changes K\u00e4hler normalization but does not prove a gapped transverse source spectrum.",
+      "id": "C4",
+      "landed": "The H/Hc slab induces Z_b=epsilon(I+A^2/3)>0 and the declared wall metrics can be chosen positive.",
+      "name": "positive_full_kinetic_form",
+      "status": "partial"
+    },
+    {
+      "blocker": "There is no complete retained-order counterterm catalogue or profile-rematching calculation for the source, PS kinetic and normal-derivative sectors.",
+      "id": "C5",
+      "landed": "The square-collar matching scale, minimal quadratic renormalization conditions and NDA domain are explicit.",
+      "name": "counterterm_and_matching_scheme",
+      "status": "partial"
+    },
+    {
+      "blocker": "Because the retained-order basis is incomplete, the claim that every allowed coefficient at that order is admitted is not yet true.",
+      "id": "C6",
+      "landed": "V48 correctly rejects an all-order finite selector, treats allowed coefficients as matching data and declares a sub-cutoff NDA expansion.",
+      "name": "selector_and_naturalness_policy",
+      "status": "partial"
+    },
+    {
+      "blocker": "The kernel omits the declared wall K\u00e4hler/derivative operators and is represented by an eight-coordinate witness rather than a complete component-Clebsch current map for the same retained action.",
+      "id": "C7",
+      "landed": "The undivided matrices K_reg=CR+DQ and N_reg=CP+DT give the exact restricted tree kernel G_00=(K_reg+N_reg V_0)^-1 N_reg; poles, a residue, locality and off-shell decoupling replay numerically.",
+      "name": "action_to_full_tower_Wilson_matching",
+      "status": "partial"
+    }
+  ],
+  "V48_exact_results": [
+    {
+      "id": "E23",
+      "result": "exact finite-collar map",
+      "statement": "For delta=m epsilon and X=delta(A-delta I), D=cosh(sqrt X), C=(A-delta I)sinhc(sqrt X), and B_epsilon=D^-1 C wherever D is invertible.",
+      "value": {
+        "definitions": {
+          "C": "(Lambda-delta I) H",
+          "D": "cosh(sqrt(X))",
+          "H": "sinh(sqrt(X))/sqrt(X), defined by its entire series at X=0",
+          "T_wall": "[[D,U],[C,D]]",
+          "U": "delta H",
+          "X": "delta (Lambda-delta I)",
+          "delta": "m epsilon"
+        },
+        "derivative_expansion": "B_R=Lambda-m epsilon(I+Lambda^2/3)+m^2 epsilon^2(2Lambda/3+2Lambda^3/15)+O((m epsilon)^3)",
+        "exact_zero_energy_map": "B_R^epsilon(0)=Lambda for every epsilon>0",
+        "higher_derivatives": "the exact matrix functions retain the entire tower; no truncation is used in the spectrum",
+        "induced_boundary_kinetic": "Z_b=epsilon(I+Lambda^2/3), so B_R=Lambda-m Z_b+...",
+        "map_where_D_invertible": "B_R^epsilon(m)=D(m)^(-1) C(m), with g(L-epsilon)+B_R^epsilon(m) f(L-epsilon)=0",
+        "pole_warning": "zeros of det D are poles of B_R and are wall-slab states, not pathologies; the pole-free characteristic below retains them",
+        "signed_mode_equations_in_slab": [
+          "f'=m g",
+          "g'=(Lambda/epsilon-m I)f"
+        ]
+      }
+    },
+    {
+      "id": "E24",
+      "result": "positive induced kinetic term",
+      "statement": "B_epsilon=A-m epsilon(I+A^2/3)+... and Z_b=epsilon(I+A^2/3) is strictly positive.",
+      "value": {
+        "derivative_expansion": "B_R=Lambda-m epsilon(I+Lambda^2/3)+m^2 epsilon^2(2Lambda/3+2Lambda^3/15)+O((m epsilon)^3)",
+        "induced_boundary_kinetic": "Z_b=epsilon(I+Lambda^2/3), so B_R=Lambda-m Z_b+...",
+        "strict_kinetic_bound": "f^dagger Z_b f=epsilon(||f||^2+||Lambda f||^2/3)>=epsilon||f||^2>0"
+      }
+    },
+    {
+      "id": "E25",
+      "result": "pole-safe resolved characteristic",
+      "statement": "K_reg=(CF-mDS)E+(mCS+DG)O retains every collar state, tends to V47 in the thin-wall limit and preserves zero nullity at the certificate point.",
+      "value": {
+        "interior_transfer": "f*=F E a+m S O a; g*=-m S E a+G O a at y*=L-epsilon",
+        "order_of_limits": "the slab is solved before epsilon is taken to zero; no finite KK truncation precedes the wall limit",
+        "relation_where_D_invertible": "K_res=D K_eff with K_eff=(-mS+B_R F)E+(G+m B_R S)O",
+        "resolved_characteristic": "K_res=(C F-m D S)E+(m C S+D G)O",
+        "thin_wall_limit": "epsilon->0 gives C->Lambda, D->I, L-epsilon->L and K_res->K_V47"
+      }
+    },
+    {
+      "id": "E26",
+      "result": "scoped operator census",
+      "statement": "The renormalizable source action has 16 raw structures including W0, the next two-bulk-trace portal sector has 12 SO(10) contractions, and the corrected PS Yukawa census has 19 coefficients before the missing Higgs mass term is added.",
+      "value": {
+        "PS_yukawa_coefficients": 19,
+        "leading_two_bulk_portals": 12,
+        "renormalizable_raw": 16
+      }
+    },
+    {
+      "id": "E27",
+      "result": "restricted exact full-tower Schur kernel",
+      "statement": "For the encoded tree action, K_reg=CR+DQ, N_reg=CP+DT and G_00=(K_reg+N_reg V_0)^-1 N_reg.  The witness sees every Theta/Sigma projector.",
+      "value": {
+        "G00_finite": true,
+        "G00_matrix": [
+          [
+            0.0,
+            2.493765663763,
+            -0.0,
+            -0.000249351008,
+            -0.016623400527,
+            0.0,
+            0.083124483163,
+            0.0
+          ],
+          [
+            2.493765663763,
+            0.0,
+            0.000187013256,
+            0.0,
+            0.0,
+            -0.020779250658,
+            -0.0,
+            -0.124686724744
+          ],
+          [
+            -0.0,
+            0.000187013256,
+            0.0,
+            -0.599938525003,
+            0.004098333166,
+            -0.0,
+            -0.002493510079,
+            -0.0
+          ],
+          [
+            -0.000249351008,
+            0.0,
+            -0.599938525003,
+            0.0,
+            -0.0,
+            -0.006830555276,
+            -0.0,
+            -0.004987020158
+          ],
+          [
+            -0.016623400527,
+            0.0,
+            0.004098333166,
+            -0.0,
+            -0.0,
+            -0.455370351757,
+            -0.0,
+            -0.332468010531
+          ],
+          [
+            0.0,
+            -0.020779250658,
+            -0.0,
+            -0.006830555276,
+            -0.455370351757,
+            0.0,
+            0.277056675442,
+            0.0
+          ],
+          [
+            0.083124483163,
+            -0.0,
+            -0.002493510079,
+            -0.0,
+            -0.0,
+            0.277056675442,
+            0.0,
+            1.662489663258
+          ],
+          [
+            0.0,
+            -0.124686724744,
+            -0.0,
+            -0.004987020158,
+            -0.332468010531,
+            0.0,
+            1.662489663258,
+            0.0
+          ]
+        ],
+        "W_eff_minus_half_JGJ": 0.02327485528561006,
+        "all_four_source_projectors_are_seen": true,
+        "host_Higgs_bilinear_vertices": {
+          "A_L--C_R": 0.03,
+          "B_L--D_R": -0.02,
+          "Cc_L--Ac_R": 0.025,
+          "Dc_L--Bc_R": -0.015
+        },
+        "representative_J0": [
+          0.7,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -0.4,
+          0.0
+        ],
+        "representative_coordinate_order": [
+          "A_L",
+          "B_L",
+          "Cc_L",
+          "Dc_L",
+          "Ac_R",
+          "Bc_R",
+          "C_R",
+          "D_R"
+        ],
+        "source_projector_Wilson_coefficients": {
+          "sigma_16": -1.450945058602244e-06,
+          "sigma_bar16": 1.7410133913911345e-06,
+          "theta_left": -0.05804203489622957,
+          "theta_right": -0.03869468992351114
+        },
+        "source_projector_derivative_norms": {
+          "sigma_16": 1.6874848971605227,
+          "sigma_bar16": 1.6998883467379335,
+          "theta_left": 6.230514267613828,
+          "theta_right": 2.8687251743627242
+        }
+      }
+    },
+    {
+      "id": "E28",
+      "result": "regulated pole and locality witness",
+      "statement": "Three representative positive signed roots, the first-pole residue, exponential Euclidean locality and off-shell large-source decoupling replay.",
+      "value": {
+        "decoupling": {
+          "kernel_norms": {
+            "1.0": 0.22524091042316574,
+            "16.0": 0.03797131635600871,
+            "2.0": 0.19028324500349875,
+            "4.0": 0.12998687578736878,
+            "8.0": 0.0734064387579144
+          },
+          "norm16_less_than_norm1": true,
+          "scope": "fixed Euclidean p=2 inside |p| epsilon<1; not uniform at p=0 or at the B=infinity spectral-flow endpoint"
+        },
+        "locality": {
+          "exp_pL_scaled_norms": {
+            "1.0": 1.8398000113749107,
+            "2.0": 1.8393555457770012,
+            "4.0": 1.8696782311754545,
+            "8.0": 1.8950674195716009
+          },
+          "kernel_norms": {
+            "1.0": 0.6438154747952143,
+            "2.0": 0.22524091042316574,
+            "4.0": 0.0280369035451664,
+            "8.0": 0.00042613873977758045
+          },
+          "successive_large_p_ratios": {
+            "expected_exp_minus4": 0.01831563888873418,
+            "norm8_over_norm4": 0.015199208396572286
+          }
+        },
+        "spectral": {
+          "determinant_at_first_root_abs": 2.953664128545643e-13,
+          "first_root_is_simple_det_derivative": 0.9301030268053997,
+          "first_three_positive_signed_roots": [
+            0.5011737123453057,
+            1.1538853845722044,
+            1.8537031680163927
+          ],
+          "near_pole_residue_max_residual": 1.1725924509570218e-06,
+          "residue_formula": "Res K_reg^-1=adj(K_reg(m_n))/C_reg'(m_n)"
+        }
+      }
+    },
+    {
+      "id": "E29",
+      "result": "G2 fail-closed decision",
+      "statement": "Only C2 passes completely.  The exact collar and Schur formula are genuine advances, but the same-action C1--C7 conjunction is false, so G2 is not promoted.",
+      "value": "G2 open; one of eight full gates closed"
+    }
+  ],
+  "authoritative_candidate": {
+    "PS_wall_y0": {
+      "boundary_chirals": [
+        "3 Q=(4,2,1)_+1",
+        "3 Qc=(bar4,1,2)_-1",
+        "H=(1,2,2)_0"
+      ],
+      "group": "(SU(4)_C x SU(2)_L x SU(2)_R)/Z2_diag x U(1)_F",
+      "renormalizable_superpotential": "W0=sum_AB Y_AB L_A H R_B + y_m LA H RF, where L_A=(Q1,Q2,Q3,LF) and R_B=(Qc1,Qc2,Qc3,RA)"
+    },
+    "Spin10_source_wall_yL": {
+      "GUT_tensor_superpotential": "W_GUT = (m/4!) Phi_ijkl Phi_ijkl + (lambda/4!) Phi_ijkl Phi_klmn Phi_mnij + (M/5!) Sigma_ijklm barSigma_ijklm + (eta/4!) Phi_ijkl Sigma_ijmno barSigma_klmno",
+      "SU5_branch": {
+        "Aulakh_2003_omega_convention": "p=a=omega",
+        "Aulakh_2005_mass_spectrum_convention": "p=a=-omega",
+        "D_flat": "|sigma|=|barsigma|",
+        "F_equations_Aulakh_2003_convention": [
+          "0=2mp+6lambda omega^2+eta sigma barsigma",
+          "0=6ma+6lambda a^2+12lambda omega^2+3eta sigma barsigma",
+          "0=12momega+12lambda p omega+24lambda a omega+6eta sigma barsigma",
+          "0=(M+eta(p+3a+6omega)) sigma",
+          "0=(M+eta(p+3a+6omega)) barsigma"
+        ],
+        "p": "-M/(10 eta)",
+        "phase_convention_note": "the sign of omega differs; the invariant branch equations below agree",
+        "sigma_barsigma": "-2 p (m+3 lambda p)/eta",
+        "unbroken_source_wall_group": "SU(5)",
+        "vacuum_selection_scope": "The equations exhibit an isolated SU(5) branch; they do not assert that cosmology selects this branch over every other supersymmetric branch."
+      },
+      "boundary_chirals": [
+        "STheta_0",
+        "ThetaPlus_+3",
+        "ThetaMinus_-3",
+        "Phi_210,0",
+        "Sigma_126,0",
+        "barSigma_bar126,0"
+      ],
+      "coupled_neutral_source_form": "W=W_GUT(m0+m1 STheta,M0+M1 STheta,lambda,eta)+kappa STheta ThetaPlus ThetaMinus+f0+f1 STheta+f2 STheta^2/2+f3 STheta^3/3",
+      "coupled_physical_counting": {
+        "Spin10_to_SU5_goldstones": 21,
+        "U1F_to_Z3F_goldstone": 1,
+        "eaten_chiral_components": 22,
+        "generic_massive_uneaten_chiral_components": 443,
+        "generic_physical_massless_chiral_components": 0,
+        "total_chiral_components": 465
+      },
+      "exact_coupled_branch": {
+        "D_flatness": "For every nonzero complex product P, choose equal magnitudes |ThetaPlus|=|ThetaMinus|=sqrt(|P|) and phases whose sum is arg(P).",
+        "GUT_fields": "the V46 SU(5) branch evaluated with m=m0 and M=M0",
+        "STheta": 0,
+        "Theta_product": "ThetaPlus ThetaMinus=-(f1+m1 I2(Phi)+M1 Sigma.barSigma)/kappa",
+        "nonzero_condition": "the displayed Theta product must not vanish if U(1)F is to break to faithful Z3F",
+        "why_F_flat": [
+          "F_ThetaPlus=F_ThetaMinus=0 because STheta=0",
+          "all GUT F equations reduce exactly to the isolated V46 equations because every cross term is proportional to STheta",
+          "F_STheta=0 fixes the Theta product rather than imposing a new condition on the GUT branch"
+        ]
+      },
+      "operator_policy": "Include the gauge-allowed neutral STheta cross couplings and both Sigma-spinor operators; do not sequester them by assertion.",
+      "rank_scope": "The isolated source-Higgs sector has full physical rank on a generic SU(5) branch. Gauge-allowed Theta/GUT cross couplings, Sigma-spinor terms, boundary kinetics and the relative eta problem are not removed by this statement.",
+      "selected_superpotential": "W_source = W_GUT(Phi,Sigma,barSigma) + kappaTheta STheta(ThetaPlus ThetaMinus-vF^2) + lambdaL ThetaPlus HLF HLA + lambdaR ThetaMinus HRA HRF",
+      "specified_terms": [
+        "kappa_F STheta(ThetaPlus ThetaMinus-v_F^2)",
+        "lambda_L ThetaPlus HLF HLA",
+        "lambda_R ThetaMinus HRA HRF"
+      ]
+    },
+    "alternative_source_route": {
+      "exact_SU5_branch": {
+        "D_flat": "|Sigma|=|barSigma|",
+        "E_24": 0,
+        "Sigma_barSigma": "10 m4 m2/lambda6^2",
+        "a1": "sqrt(10) m2/lambda6",
+        "a2_24": 0,
+        "exact_rational_rescaled_witness": {
+          "all_residuals_zero": true,
+          "parameters": {
+            "E": "0",
+            "V_R_times_barV_R": "10",
+            "a2": "0",
+            "lambda6": "1",
+            "m2": "1",
+            "m4": "1",
+            "u_equals_a1_over_sqrt10": "1"
+          },
+          "residuals": {
+            "F_A1_rescaled": "0",
+            "F_A2": "0",
+            "F_Delta_divided_by_V": "0",
+            "F_E": "0"
+          }
+        },
+        "specialized_F_equations": [
+          "0=V_R(m2-lambda6 a1/sqrt(10))=barV_R(m2-lambda6 a1/sqrt(10))",
+          "0=m4 a1-lambda6 V_R barV_R/sqrt(10)",
+          "0=m4 a2+lambda9 E(2 a1/sqrt(10)+a2/sqrt(15))",
+          "0=m5 E+3 lambda8 E^2/(2 sqrt(15))+lambda9(2 a1 a2/sqrt(10)+a2^2/(2 sqrt(15)))"
+        ],
+        "unbroken_group": "SU(5)",
+        "why_lambda11_lambda12_do_not_source_E": "The 54 has no SU(5) singlet, and the SU(5)-singlet 126 and bar126 VEVs cannot source its 24, 15 or bar15 components.  Thus the E Sigma^2 and E barSigma^2 invariants vanish on this branch, as in the cited reduced singlet superpotential."
+      },
+      "name": "45+54+126+bar126",
+      "status": "priority alternative pending complete Hessian replay"
+    },
+    "bulk_group": "Spin(10) x U(1)_F with the direct-product global form used for this witness",
+    "bulk_hypers": [
+      {
+        "eta0": "+",
+        "etaL": "+",
+        "name": "HLF",
+        "rep": "16_+1",
+        "zero_mode": "LF=(4,2,1)_+1"
+      },
+      {
+        "eta0": "+",
+        "etaL": "+",
+        "name": "HLA",
+        "rep": "bar16_-4",
+        "zero_mode": "LA=(bar4,2,1)_-4"
+      },
+      {
+        "eta0": "-",
+        "etaL": "+",
+        "name": "HRA",
+        "rep": "16_-1",
+        "zero_mode": "RA=(bar4,1,2)_-1"
+      },
+      {
+        "eta0": "-",
+        "etaL": "+",
+        "name": "HRF",
+        "rep": "bar16_+4",
+        "zero_mode": "RF=(4,1,2)_+4"
+      }
+    ],
+    "charge_normalization": {
+      "Theta_breaking": "U(1)_F -> Z3_F",
+      "Z9_claim_retained": false,
+      "charges": {
+        "Delta126": 0,
+        "Delta126Bar": 0,
+        "H": 0,
+        "HLA_bar16": -4,
+        "HLF_16": 1,
+        "HRA_16": -1,
+        "HRF_bar16": 4,
+        "Q": 1,
+        "Qc": -1,
+        "STheta": 0,
+        "ThetaMinus": -3,
+        "ThetaPlus": 3
+      },
+      "convention": "primitive displayed local-particle normalization",
+      "relation_to_V40_labels": "q_primitive=q_V40/3"
+    },
+    "exact_global_structure": {
+      "G1_closed": true,
+      "Omega5_PSxU1F": "0",
+      "Omega6_interval_relative": "0",
+      "PS_group": "(SU4 x SU2L x SU2R)/Z2_diag = (Spin6 x Spin4)/Z2_diag",
+      "spacetime_structure": "ordinary independent Spin; no gauge centre is identified with (-1)^F"
+    },
+    "four_spinor_boundary_extension": {
+      "basis": "(HLF,HLA,HRA,HRF)",
+      "characteristic": "K(m)=(-m S+B F)E+(G+m B S)O",
+      "exact_zero_modes_for_finite_nonzero_Theta_blocks": 0,
+      "matrix": [
+        [
+          "0",
+          "t_L",
+          "s_16 P_1",
+          "0"
+        ],
+        [
+          "t_L*",
+          "0",
+          "0",
+          "s_bar16 P_bar1"
+        ],
+        [
+          "s_16* P_1",
+          "0",
+          "0",
+          "t_R"
+        ],
+        [
+          "0",
+          "s_bar16* P_bar1",
+          "t_R*",
+          "0"
+        ]
+      ],
+      "scope": "finite Hermitian renormalized B; bare-brane matching and induced operators remain open",
+      "zero_criterion": "ker K(0) is isomorphic to ker(B_EE), where B_EE=E B E restricted to im(E)"
+    },
+    "mandatory_allowed_operator_extension": [
+      "barSigma HLF HRA",
+      "Sigma HLA HRF",
+      "generic neutral source cross couplings such as STheta Phi^2 and STheta Sigma.barSigma"
+    ],
+    "name": "V48 G1-closed neutral-210 interval with resolved H/Hc collar frontier",
+    "not_in_candidate": [
+      "V40/V44 X, Zp, P/Pb, Psi, A, E, NDirac and Sc/Sbc/SigC/SigBc sectors",
+      "the globally invalid naked (1,2,1) and (1,1,2) anomalons",
+      "redundant Bplus/Bminus singlet shining hypermultiplets",
+      "the inherited Z4R as an exact gauge symmetry",
+      "a faithful Z9_F claim without a unit-charge line lattice"
+    ],
+    "resolved_H_hyper_collar": {
+      "induced_kinetic": "Z_b=epsilon(I+Lambda^2/3), so B_R=Lambda-m Z_b+...",
+      "map": "B_R^epsilon(m)=D(m)^(-1) C(m), with g(L-epsilon)+B_R^epsilon(m) f(L-epsilon)=0",
+      "pole_safe_characteristic": "K_res=(C F-m D S)E+(m C S+D G)O",
+      "status": "exact fixed-background regulator subproblem closed"
+    },
+    "route_decision": {
+      "rejected": [
+        "126+bar126 plus gauge singlets only",
+        "five-dimensional PS/GG orbifold wall with charge-ten singlet breaking"
+      ],
+      "retained": "full Spin(10) source wall with neutral 210+126+bar126"
+    },
+    "source_host_operator_frontier": {
+      "PS_yukawa_coefficients": 19,
+      "leading_two_bulk_portal_rows": 12,
+      "renormalizable_source_rows": 16,
+      "restricted_kernel": "G_00[A,H]=(K_reg+N_reg V_0(H))^-1 N_reg",
+      "status": "major partial result; not the kernel of a complete retained-order action"
+    },
+    "spacetime": "M4 x [0,L], equivalently a supersymmetric S1/(Z2 x Z2') interval"
+  },
+  "core_sha256": "011ed9c18b48a0bed359e998cde1eb3d04525294f29e03cc8e950e4e7b2c8950",
+  "frozen_G2_contract": {
+    "closure_logic": "G2_closed iff C1 through C7 all pass for the same retained action",
+    "definition": "A fixed-order tree-level Wilsonian source/portal boundary EFT in one declared regulator scheme, with a complete retained-order local action, an action-derived positive self-adjoint domain, and a component-resolved full-tower kernel for that same action.",
+    "not_required_for_G2": {
+      "G3": "solve the vacuum and FI/K\u00e4hler/radion/soft branch",
+      "G6": "compute the complete pole tower, thresholds, unification and RG flow",
+      "G7": "finish the B/L ring, running and decay likelihoods",
+      "G8": "perform the flavor/neutrino fit and withheld prediction",
+      "UV": "predict the infinite irrelevant tower from a fundamental UV completion"
+    }
+  },
+  "fully_passed_clauses": [
+    "C2"
+  ],
+  "gate_ledger": [
+    {
+      "advance": "V47 exact ordinary-Spin quotient and relative anomaly calculations remain intact.",
+      "blocker": "none within the declared ordinary-Spin model",
+      "closed": true,
+      "gate": "G1"
+    },
+    {
+      "advance": "An explicit H/Hc square collar gives exact B_epsilon and K_reg; the leading source/portal census, corrected PS traces and a restricted tree full-tower Schur kernel are executable.",
+      "blocker": "The source realization is not spectrally certified, the retained-order action omits allowed mu_H/source-quartic/Hc/normal-derivative terms, and all declared kinetic terms are not matched in one component-resolved positive kernel.",
+      "closed": false,
+      "gate": "G2"
+    },
+    {
+      "advance": "The exact coupled F/D-flat branch and generic physical-rank theorem remain valid at renormalizable order.",
+      "blocker": "Pure-source higher operators, FI/K\u00e4hler/radion/soft terms, global vacuum selection and the controlled 5D branch are unsolved.",
+      "closed": false,
+      "gate": "G3"
+    },
+    {
+      "advance": "The missing PS mu_H term is now identified as an allowed input rather than silently forbidden.",
+      "blocker": "The mu/Bmu mechanism, SUSY breaking, radion stabilization, EWSB and complete scalar vacuum are absent.",
+      "closed": false,
+      "gate": "G4"
+    },
+    {
+      "advance": "No excluded dark benchmark is reintroduced.",
+      "blocker": "No dark-sector Lagrangian, relic calculation or cosmological history is specified.",
+      "closed": false,
+      "gate": "G5"
+    },
+    {
+      "advance": "The regulator map is exact and three representative regulated poles plus one residue replay.",
+      "blocker": "A complete controlled parameter point, every pole, thresholds, NDA cutoff, unification and RG running are absent.",
+      "closed": false,
+      "gate": "G6"
+    },
+    {
+      "advance": "The source-dependent restricted Schur kernel supplies the correct structural starting point for full-tower matching.",
+      "blocker": "The 210-completed B/L ring, component Wilson coefficients, dressing/running and proton or multinucleon rates are absent.",
+      "closed": false,
+      "gate": "G7"
+    },
+    {
+      "advance": "The PS census now includes complementary Hc Higgs cubics and the allowed family/bulk K\u00e4hler mixings.",
+      "blocker": "There is no complete component Clebsch map, neutrino completion, family fit, uncertainty propagation or withheld prediction.",
+      "closed": false,
+      "gate": "G8"
+    }
+  ],
+  "input_core_hashes": {
+    "adversarial_contract": "76825263d4d397182568168d33134c369b40261e2f3d96c51541acfca4cbd3d1",
+    "operator_wilson": "9e036d222727fa114c986175d0866f2e530e13304c52bb7d9d1a9de9ecdd2d12",
+    "resolved_wall": "f7b497bb63d4a5d42b98328db7a0804426b0d71be221d3fd0b48bcfa6f39f34f",
+    "v47_master": "916c3f3f90aacb691a8232fd58c8ddc2ae422be2f86706c7f91af05fcfe8fbe4"
+  },
+  "integrity_checks": {
+    "G2_not_promoted": true,
+    "S1_only_closed_stage": true,
+    "V47_G1_remains_closed": true,
+    "all_input_core_hashes_verify": true,
+    "all_required_sources_exist": true,
+    "complete_theory_not_claimed": true,
+    "one_of_eight_full_gates_closed": true,
+    "only_C2_fully_passes": true,
+    "only_G1_closed": true,
+    "operator_subaudit_has_no_internal_failures": true,
+    "resolved_H_collar_positive": true,
+    "resolved_wall_map_is_exact": true,
+    "same_action_G2_predicate_fails": true,
+    "seven_specific_defects_recorded": true
+  },
+  "n_failed_integrity_checks": 0,
+  "number_of_clauses": 7,
+  "primary_sources": [
+    {
+      "topic": "5D N=1 hypermultiplets in 4D superspace",
+      "url": "https://arxiv.org/abs/hep-th/0106256"
+    },
+    {
+      "topic": "gauge-covariant brane and normal-derivative operators",
+      "url": "https://arxiv.org/abs/hep-ph/0112230"
+    },
+    {
+      "topic": "interval action principle and boundary conditions",
+      "url": "https://arxiv.org/abs/hep-th/0411133"
+    },
+    {
+      "topic": "thin-defect EFT renormalization",
+      "url": "https://arxiv.org/abs/hep-ph/0601222"
+    },
+    {
+      "topic": "SO(10) spinor cubic/quartic channels",
+      "url": "https://arxiv.org/abs/hep-th/0109116"
+    },
+    {
+      "topic": "finite-width brane and KK order-of-limits",
+      "url": "https://arxiv.org/abs/1408.1852"
+    }
+  ],
+  "route_decision": {
+    "G1_status": "closed",
+    "G2_status": "open after major V48 advance",
+    "G3_to_G8_status": "open",
+    "continue": "the G1-consistent neutral-210 route remains viable",
+    "do_not_claim": "two gates closed, a complete theory, UV completeness, or empirical validation"
+  },
+  "schema": "susy-v48-g2-frontier-integration-audit-v1",
+  "scientific_verdict": {
+    "G2_closed": false,
+    "closed_gates": [
+      "G1"
+    ],
+    "complete_theory_established": false,
+    "empirically_validated": false,
+    "full_gates_closed": 1,
+    "full_gates_total": 8,
+    "real_new_physics_obtained": true,
+    "summary": "V48 solves the fixed-background H/Hc regulator subproblem and derives an exact restricted full-tower source-dependent Schur kernel.  It does not close G2 because the retained action, positive generalized domain and component Wilson kernel are not yet the same complete object. G1 remains the only closed full gate.",
+    "tests_mean": "deterministic checks of the encoded formulas and artifacts, not empirical validation or a UV-completion proof"
+  },
+  "smallest_next_closure_patch": [
+    "Replace the dynamical source collar by a constrained single 4D profile, finite deconstruction, or proper first-order 5D source multiplets and prove that no extra light source tower appears.",
+    "Freeze the full retained-order source/PS action, adding mu_H H H, an abstract complete invariant basis for pure-source quartics, the Hc/mixed terms and an explicit normal-derivative IBP/EOM reduction.",
+    "Insert every retained K\u00e4hler, derivative and counterterm block into generalized K_reg,N_reg; prove self-adjointness and positivity of the complete norm.",
+    "Publish the component Clebsch/projector current map and verify that its poles, residues and low-energy coefficients reproduce the complete retained action."
+  ],
+  "source_manifest": [
+    {
+      "exists": true,
+      "path": "susy_v48_g2_frontier_integration_audit.py",
+      "sha256": "e27469453711d38afcd64c85fd445099a0beb8c7b859c07d110602119c8482c5"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v48_g2_frontier_integration_audit.py",
+      "sha256": "57b79d5f94d4ae92e0868246c30cb85c2be7760faa8c74652d479278bc0a6cdd"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V47_G1_CLOSURE_FRONTIER_AUDIT.json",
+      "sha256": "d9cda6a7b25ad3a59d57f0665e9dbd3d7888e372cad927e51b9722b79b004f9c"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V48_RESOLVED_SOURCE_WALL_AUDIT.json",
+      "sha256": "37aa7935edeed2835e1990b1266ad2cdff48b986f7ca1a2dd0ec9f818a913cc8"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V48_SOURCE_OPERATOR_WILSON_AUDIT.json",
+      "sha256": "0d12771c1d3544d36d845396758d16a690b1dcc5511d4f2d79ab3d95919fc0a3"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V48_G2_ADVERSARIAL_CLOSURE_AUDIT.json",
+      "sha256": "e300b0699e6c51b91f4059e32b44f58be08f5e96191acebf803a0b3ff5c3342f"
+    }
+  ],
+  "stage_ledger": [
+    {
+      "missing": "spectrally healthy source-field regulator, complete K\u00e4hler/FI functional, radion dynamics and branch selection",
+      "passed": "exact coupled neutral-210 branch and 443 generic massive physical source chirals",
+      "stage": "S0",
+      "status": "OPEN_WITH_COUPLED_SOURCE_RANK_RETAINED"
+    },
+    {
+      "missing": "none within the declared ordinary-Spin boundary-condition model",
+      "passed": "V47 local, quotient, relative and residual-discrete gauge/global anomaly certificate",
+      "stage": "S1",
+      "status": "CLOSED"
+    },
+    {
+      "missing": "one complete action-derived generalized domain, healthy source realization, full pole tower and thresholds",
+      "passed": "exact B_epsilon, positive induced H/Hc norm, pole-safe K_reg and representative roots/residue",
+      "stage": "S2",
+      "status": "OPEN_WITH_EXACT_HYPERMULTIPLET_COLLAR"
+    },
+    {
+      "missing": "complete retained-order operator basis, component Clebsches, B/L ring, physical Wilson coefficients and rates",
+      "passed": "leading source portals, corrected PS H/Hc Yukawas and exact restricted full-tower kernel",
+      "stage": "S3",
+      "status": "OPEN_WITH_RESTRICTED_SCHUR_KERNEL"
+    },
+    {
+      "missing": "unification, RG spectrum, flavor, neutrinos, light Higgs, SUSY breaking, dark sector and cosmology",
+      "passed": "no empirical claim imported from the exact microscopic subchecks",
+      "stage": "S4",
+      "status": "OPEN"
+    }
+  ],
+  "status": "V48_G2_MAJOR_REGULATOR_AND_WILSON_ADVANCE__EXACT_POSITIVE_HYPERMULTIPLET_COLLAR_MAP_AND_POLE_SAFE_CHARACTERISTIC__SCOPED_SOURCE_PORTAL_AND_PS_SCHUR_KERNEL_REPLAYED__FULL_RETAINED_ACTION_DOMAIN_AND_COMPONENT_MATCHING_INCOMPLETE__G2_FAIL_CLOSED__ONE_OF_EIGHT_FULL_GATES_CLOSED",
+  "unresolved_defects": [
+    {
+      "defect": "missing_PS_Higgs_mass",
+      "id": "D1",
+      "statement": "After the exact Z4R selector was withdrawn, the local PS invariant mu_H epsilon_L epsilon_R H H is allowed and must be declared even though the small-mu mechanism belongs to G4."
+    },
+    {
+      "defect": "same_order_pure_source_quartics",
+      "id": "D2",
+      "statement": "Pure-source chiral quartics are O(1/Lambda), the same Wilsonian order as the retained degree-four portals.  G3 owns their vacuum solution, but G2 must still parameterize their invariant coefficient space."
+    },
+    {
+      "defect": "source_collar_wrong_chirality_basis",
+      "id": "D3",
+      "statement": "A finite collar makes Hc nonzero.  The four conjugate HcHc source portals and source-dependent HcH/mixed-K\u00e4hler terms require inclusion or a proved symmetric-profile/Dirichlet power-counting reduction."
+    },
+    {
+      "defect": "PS_normal_derivative_basis",
+      "id": "D4",
+      "statement": "Gauge-covariant normal-derivative operators, including Q_i nabla5(HLFc) and Qc_i nabla5(HRAc), are not explicitly reduced by IBP/EOM/field redefinitions or propagated into the boundary pencil."
+    },
+    {
+      "defect": "source_profile_spectrum_unproved",
+      "id": "D5",
+      "statement": "The rho epsilon^2 |D_y X|^2 D-term is a mode-dependent K\u00e4hler metric, not by itself a supersymmetric transverse mass.  A constrained single profile, finite deconstruction or proper first-order 5D source multiplets are needed."
+    },
+    {
+      "defect": "same_action_positivity_and_counterterms",
+      "id": "D6",
+      "statement": "The source, boundary K\u00e4hler, Zhat, derivative and counterterm blocks must be assembled in one positive generalized norm and rematched in the chosen scheme."
+    },
+    {
+      "defect": "component_resolved_matching",
+      "id": "D7",
+      "statement": "The exact Schur structure is established, but all physical PS Clebsches, projectors and currents for the complete retained operator set have not been published."
+    }
+  ]
+}

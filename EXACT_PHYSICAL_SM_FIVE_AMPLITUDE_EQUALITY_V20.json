@@ -1,0 +1,538 @@
+{
+  "schema": "exact_physical_sm_five_amplitude_equality_v20",
+  "status": "EXACT_FIVE_AMPLITUDE_STATIONARY_EQUALITY_CLASSIFIED__FULL_486_ORBIT_OPEN",
+  "model_contract_id": "gauged_u1x_phi17_v20",
+  "n_checks": 12,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "all_source_portable_lf_and_core_pins_match": true,
+    "source_table_has_28_nonzero_target_contributions": true,
+    "all_37_witness_rows_have_even_H_Sigma_S_Phi17_parity": true,
+    "aggregate_polynomial_has_21_monomials": true,
+    "aggregate_denominator_is_frozen": true,
+    "exact_target_value_is_minus_one": true,
+    "all_five_target_slice_derivatives_vanish": true,
+    "Groebner_basis_is_exact_expected_basis": true,
+    "ideals_equal_by_mutual_exact_reduction": true,
+    "exactly_16_real_discrete_sign_variants": true,
+    "target_is_strict_minimum_on_five_amplitude_slice": true,
+    "full_486_and_physical_G3_G4_G5_remain_fail_closed": true
+  },
+  "source_bindings": {
+    "files": {
+      "physical_sm_vacuum_local_feasibility_v20.py": {
+        "portable_lf_sha256": "629ea8c45f101f82b6b4e963fd1fb19dcc5735fe52a1d8efb1fb0812dbaa565c",
+        "expected_portable_lf_sha256": "629ea8c45f101f82b6b4e963fd1fb19dcc5735fe52a1d8efb1fb0812dbaa565c",
+        "matches": true
+      },
+      "PHYSICAL_SM_VACUUM_LOCAL_FEASIBILITY_V20.json": {
+        "portable_lf_sha256": "ac575067550472afeae1d87503c04a47bf27386223a4417cf7c2341ad75af315",
+        "expected_portable_lf_sha256": "ac575067550472afeae1d87503c04a47bf27386223a4417cf7c2341ad75af315",
+        "matches": true
+      },
+      "live_g2_arbitrary_component_potential_values_v20.py": {
+        "portable_lf_sha256": "3c868c724c67ee012fa819400924d1c50864e5d9da0392e1ce3c7f9f013e7506",
+        "expected_portable_lf_sha256": "3c868c724c67ee012fa819400924d1c50864e5d9da0392e1ce3c7f9f013e7506",
+        "matches": true
+      },
+      "gauged_u1x_g2_derivative_audit_v20.py": {
+        "portable_lf_sha256": "584e03994ca1187228377c3e4c145d95446ade50616e2d58068e0fee9f96507d",
+        "expected_portable_lf_sha256": "584e03994ca1187228377c3e4c145d95446ade50616e2d58068e0fee9f96507d",
+        "matches": true
+      },
+      "live_g1_tensor_closure_ledger_v20.py": {
+        "portable_lf_sha256": "e17dd3a443ddd04ab412844f8d4273c27322371518bbc805705be9c030287d57",
+        "expected_portable_lf_sha256": "e17dd3a443ddd04ab412844f8d4273c27322371518bbc805705be9c030287d57",
+        "matches": true
+      },
+      "direct_phi_h_sigmabar_tensor_v20.py": {
+        "portable_lf_sha256": "3a87470a06362a2a4c05eac6b71fe9cd4cd6c9b8a41732786184cbfeae89fac4",
+        "expected_portable_lf_sha256": "3a87470a06362a2a4c05eac6b71fe9cd4cd6c9b8a41732786184cbfeae89fac4",
+        "matches": true
+      },
+      "exact_h10_self_quartic_family_v20.py": {
+        "portable_lf_sha256": "a6a54818fce5a98b9e06d657581bb43482eb63a8598860840bc2553060b3f94e",
+        "expected_portable_lf_sha256": "a6a54818fce5a98b9e06d657581bb43482eb63a8598860840bc2553060b3f94e",
+        "matches": true
+      },
+      "exact_210_self_invariant_basis_v20.py": {
+        "portable_lf_sha256": "663747aa896d8609a0a12fb0bbf5374520ef4fc3a205b6525cbba66022654ae5",
+        "expected_portable_lf_sha256": "663747aa896d8609a0a12fb0bbf5374520ef4fc3a205b6525cbba66022654ae5",
+        "matches": true
+      },
+      "exact_p_delta_second_stage_hessian_v20.py": {
+        "portable_lf_sha256": "6f03a6305c9a302d6a1664c3100d1f629bd8af08ac303e5766d6ae463d35dc58",
+        "expected_portable_lf_sha256": "6f03a6305c9a302d6a1664c3100d1f629bd8af08ac303e5766d6ae463d35dc58",
+        "matches": true
+      },
+      "exact_126bar_self_quartic_basis_v20.py": {
+        "portable_lf_sha256": "6b945b21b991ad1c055e7ae39190bcbb258fd8503c1ad37789003310041ddd30",
+        "expected_portable_lf_sha256": "6b945b21b991ad1c055e7ae39190bcbb258fd8503c1ad37789003310041ddd30",
+        "matches": true
+      },
+      "exact_hsigma_hermitian_family_closure_v20.py": {
+        "portable_lf_sha256": "1d27e3a089fd7b4e44f3534eb91c58a1505c8396ddc6301df6df87d07cac9863",
+        "expected_portable_lf_sha256": "1d27e3a089fd7b4e44f3534eb91c58a1505c8396ddc6301df6df87d07cac9863",
+        "matches": true
+      },
+      "exact_phi2_126dag126_six_contractions_v20.py": {
+        "portable_lf_sha256": "78bd1110530be968ab2e62d150c73def74fe96d1d1100ccfb88cb9c4710a6dba",
+        "expected_portable_lf_sha256": "78bd1110530be968ab2e62d150c73def74fe96d1d1100ccfb88cb9c4710a6dba",
+        "matches": true
+      },
+      "exact_phisigma_126bar_minus_projectors_v20.py": {
+        "portable_lf_sha256": "35574f536dd6a5a6619075784324d3a8e5965544dd91fdca5ce2ce3de6bb2af7",
+        "expected_portable_lf_sha256": "35574f536dd6a5a6619075784324d3a8e5965544dd91fdca5ce2ce3de6bb2af7",
+        "matches": true
+      },
+      "exact_phi2_hdagh_channel_family_v20.py": {
+        "portable_lf_sha256": "42f347e5d8cb8d378f737425d7b152cc71e678627b8a2128b8faba0ce41261cf",
+        "expected_portable_lf_sha256": "42f347e5d8cb8d378f737425d7b152cc71e678627b8a2128b8faba0ce41261cf",
+        "matches": true
+      }
+    },
+    "foundation_core_sha256": "01f565d3382756bc467bfaa99d187188bc1bfc4060f2c3a472650f5e57537e80",
+    "expected_foundation_core_sha256": "01f565d3382756bc467bfaa99d187188bc1bfc4060f2c3a472650f5e57537e80",
+    "all_portable_lf_and_core_pins_match": true
+  },
+  "restriction": {
+    "ambient_real_field_dimension": 486,
+    "slice_dimension": 5,
+    "map": "(Phi,H,Sigma,S,Phi17)=(p Phi*,h H*,d Sigma*,s S*,x Phi17*)",
+    "amplitudes_are_real": true,
+    "construction": "exact source invariant values times exact multihomogeneous amplitude monomials",
+    "polynomial_fitting_or_float_sampling_used": false,
+    "exact_algebra_is_conditional_on_frozen_upstream_witness_table": true,
+    "witness_coefficients_origin": "exact rational lattice reconstruction in physical_sm_vacuum_local_feasibility_v20.py",
+    "witness_coefficients_directly_derived_from_integer_projector_source_algebra": false,
+    "target_invariant_table_is_portable_lf_hash_bound_to_normalized_source_modules": true,
+    "target_invariant_table_independently_rederived_by_integer_arithmetic_in_this_artifact": false,
+    "renormalizable_witness_nonzero_parameter_count": 37,
+    "nonzero_target_contribution_count": 28
+  },
+  "exact_polynomial": {
+    "V_restricted": "(526017324*d**4 - 386696730*d**2*h**2 - 811666494*d**2*p**2 - 896609084*d**2*p + 243369*d**2*s**2 - 58865835*d**2*x**2 + 1101560126*d**2 + 199447059000*h**4 + 257770900800*h**2*p**2 - 90366570*h**2*s**2 + 113485769250*h**2*x**2 - 769673724750*h**2 + 403770045000*p**4 - 153667290*p**2*s**2 + 43315224750*p**2*x**2 - 1107212577224*p**2 + 525018123*s**4 - 23577015*s**2*x**2 - 782668740*s**2 + 33150088125*x**4 - 223018727400*x**2)/1050017221265",
+    "common_denominator": 1050017221265,
+    "integer_numerator": "526017324*d**4 - 386696730*d**2*h**2 - 811666494*d**2*p**2 - 896609084*d**2*p + 243369*d**2*s**2 - 58865835*d**2*x**2 + 1101560126*d**2 + 199447059000*h**4 + 257770900800*h**2*p**2 - 90366570*h**2*s**2 + 113485769250*h**2*x**2 - 769673724750*h**2 + 403770045000*p**4 - 153667290*p**2*s**2 + 43315224750*p**2*x**2 - 1107212577224*p**2 + 525018123*s**4 - 23577015*s**2*x**2 - 782668740*s**2 + 33150088125*x**4 - 223018727400*x**2",
+    "aggregate_monomial_count": 21,
+    "source_contributions": [
+      {
+        "parameter_id": "lambda::O03_B01_singlet_polynomial",
+        "amplitude_exponents_p_h_d_s_x": [
+          0,
+          0,
+          0,
+          0,
+          2
+        ],
+        "exact_normalized_coupling": "-89207490960/210003444253",
+        "exact_target_invariant_value": "1/2"
+      },
+      {
+        "parameter_id": "lambda::O04_B01_singlet_polynomial",
+        "amplitude_exponents_p_h_d_s_x": [
+          0,
+          0,
+          0,
+          2,
+          0
+        ],
+        "exact_normalized_coupling": "-7826687400/210003444253",
+        "exact_target_invariant_value": "1/50"
+      },
+      {
+        "parameter_id": "lambda::O05_B01_126bar_norm",
+        "amplitude_exponents_p_h_d_s_x": [
+          0,
+          0,
+          2,
+          0,
+          0
+        ],
+        "exact_normalized_coupling": "11015601260/210003444253",
+        "exact_target_invariant_value": "1/50"
+      },
+      {
+        "parameter_id": "lambda::O06_B01_Hdag_H_norm",
+        "amplitude_exponents_p_h_d_s_x": [
+          0,
+          2,
+          0,
+          0,
+          0
+        ],
+        "exact_normalized_coupling": "-153934744950/210003444253",
+        "exact_target_invariant_value": "1"
+      },
+      {
+        "parameter_id": "lambda::O07_B01_Phi_norm",
+        "amplitude_exponents_p_h_d_s_x": [
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        "exact_normalized_coupling": "-1107212577224/1050017221265",
+        "exact_target_invariant_value": "1"
+      },
+      {
+        "parameter_id": "lambda::O14_B01_Phi_Sigma_Sigmadag_cubic",
+        "amplitude_exponents_p_h_d_s_x": [
+          1,
+          0,
+          2,
+          0,
+          0
+        ],
+        "exact_normalized_coupling": "-4483045420/210003444253",
+        "exact_target_invariant_value": "1/25"
+      },
+      {
+        "parameter_id": "lambda::O20_B01_singlet_polynomial",
+        "amplitude_exponents_p_h_d_s_x": [
+          0,
+          0,
+          0,
+          0,
+          4
+        ],
+        "exact_normalized_coupling": "26520070500/210003444253",
+        "exact_target_invariant_value": "1/4"
+      },
+      {
+        "parameter_id": "lambda::O22_B01_singlet_polynomial",
+        "amplitude_exponents_p_h_d_s_x": [
+          0,
+          0,
+          0,
+          2,
+          2
+        ],
+        "exact_normalized_coupling": "-471540300/210003444253",
+        "exact_target_invariant_value": "1/100"
+      },
+      {
+        "parameter_id": "lambda::O23_B01_singlet_polynomial",
+        "amplitude_exponents_p_h_d_s_x": [
+          0,
+          0,
+          0,
+          4,
+          0
+        ],
+        "exact_normalized_coupling": "262509061500/210003444253",
+        "exact_target_invariant_value": "1/2500"
+      },
+      {
+        "parameter_id": "lambda::O25_B01_126bar_norm",
+        "amplitude_exponents_p_h_d_s_x": [
+          0,
+          0,
+          2,
+          0,
+          2
+        ],
+        "exact_normalized_coupling": "-1177316700/210003444253",
+        "exact_target_invariant_value": "1/100"
+      },
+      {
+        "parameter_id": "lambda::O26_B01_126bar_norm",
+        "amplitude_exponents_p_h_d_s_x": [
+          0,
+          0,
+          2,
+          2,
+          0
+        ],
+        "exact_normalized_coupling": "121684500/210003444253",
+        "exact_target_invariant_value": "1/2500"
+      },
+      {
+        "parameter_id": "lambda::O27_B03_126bar_self_projectors",
+        "amplitude_exponents_p_h_d_s_x": [
+          0,
+          0,
+          4,
+          0,
+          0
+        ],
+        "exact_normalized_coupling": "263008662000/210003444253",
+        "exact_target_invariant_value": "1/2500"
+      },
+      {
+        "parameter_id": "lambda::O33_B01_Hdag_H_norm",
+        "amplitude_exponents_p_h_d_s_x": [
+          0,
+          2,
+          0,
+          0,
+          2
+        ],
+        "exact_normalized_coupling": "45394307700/210003444253",
+        "exact_target_invariant_value": "1/2"
+      },
+      {
+        "parameter_id": "lambda::O34_B01_Hdag_H_norm",
+        "amplitude_exponents_p_h_d_s_x": [
+          0,
+          2,
+          0,
+          2,
+          0
+        ],
+        "exact_normalized_coupling": "-903665700/210003444253",
+        "exact_target_invariant_value": "1/50"
+      },
+      {
+        "parameter_id": "lambda::O35_B01_H_Sigma_hermitian",
+        "amplitude_exponents_p_h_d_s_x": [
+          0,
+          2,
+          2,
+          0,
+          0
+        ],
+        "exact_normalized_coupling": "16325379000/210003444253",
+        "exact_target_invariant_value": "1/50"
+      },
+      {
+        "parameter_id": "lambda::O35_B02_H_Sigma_hermitian",
+        "amplitude_exponents_p_h_d_s_x": [
+          0,
+          2,
+          2,
+          0,
+          0
+        ],
+        "exact_normalized_coupling": "-20192346300/210003444253",
+        "exact_target_invariant_value": "1/50"
+      },
+      {
+        "parameter_id": "lambda::O36_B02_H_self_quartics",
+        "amplitude_exponents_p_h_d_s_x": [
+          0,
+          4,
+          0,
+          0,
+          0
+        ],
+        "exact_normalized_coupling": "39889411800/210003444253",
+        "exact_target_invariant_value": "1"
+      },
+      {
+        "parameter_id": "lambda::O42_B01_Phi_norm",
+        "amplitude_exponents_p_h_d_s_x": [
+          2,
+          0,
+          0,
+          0,
+          2
+        ],
+        "exact_normalized_coupling": "17326089900/210003444253",
+        "exact_target_invariant_value": "1/2"
+      },
+      {
+        "parameter_id": "lambda::O43_B01_Phi_norm",
+        "amplitude_exponents_p_h_d_s_x": [
+          2,
+          0,
+          0,
+          2,
+          0
+        ],
+        "exact_normalized_coupling": "-1536672900/210003444253",
+        "exact_target_invariant_value": "1/50"
+      },
+      {
+        "parameter_id": "lambda::O44_B01_Phi2_Sigma_projectors",
+        "amplitude_exponents_p_h_d_s_x": [
+          2,
+          0,
+          2,
+          0,
+          0
+        ],
+        "exact_normalized_coupling": "5851780200/210003444253",
+        "exact_target_invariant_value": "1/1050"
+      },
+      {
+        "parameter_id": "lambda::O44_B04_Phi2_Sigma_projectors",
+        "amplitude_exponents_p_h_d_s_x": [
+          2,
+          0,
+          2,
+          0,
+          0
+        ],
+        "exact_normalized_coupling": "37366736400/210003444253",
+        "exact_target_invariant_value": "-1/375"
+      },
+      {
+        "parameter_id": "lambda::O44_B06_Phi2_Sigma_projectors",
+        "amplitude_exponents_p_h_d_s_x": [
+          2,
+          0,
+          2,
+          0,
+          0
+        ],
+        "exact_normalized_coupling": "-39819378900/210003444253",
+        "exact_target_invariant_value": "3/1750"
+      },
+      {
+        "parameter_id": "lambda::O46_B01_Phi2_HdagH_channels",
+        "amplitude_exponents_p_h_d_s_x": [
+          2,
+          2,
+          0,
+          0,
+          0
+        ],
+        "exact_normalized_coupling": "57854223000/210003444253",
+        "exact_target_invariant_value": "1"
+      },
+      {
+        "parameter_id": "lambda::O46_B03_Phi2_HdagH_channels",
+        "amplitude_exponents_p_h_d_s_x": [
+          2,
+          2,
+          0,
+          0,
+          0
+        ],
+        "exact_normalized_coupling": "-10500071400/210003444253",
+        "exact_target_invariant_value": "3/5"
+      },
+      {
+        "parameter_id": "lambda::O48_B01_Phi_self_quartics",
+        "amplitude_exponents_p_h_d_s_x": [
+          4,
+          0,
+          0,
+          0,
+          0
+        ],
+        "exact_normalized_coupling": "47581800/210003444253",
+        "exact_target_invariant_value": "1"
+      },
+      {
+        "parameter_id": "lambda::O48_B02_Phi_self_quartics",
+        "amplitude_exponents_p_h_d_s_x": [
+          4,
+          0,
+          0,
+          0,
+          0
+        ],
+        "exact_normalized_coupling": "173733000/210003444253",
+        "exact_target_invariant_value": "24"
+      },
+      {
+        "parameter_id": "lambda::O48_B03_Phi_self_quartics",
+        "amplitude_exponents_p_h_d_s_x": [
+          4,
+          0,
+          0,
+          0,
+          0
+        ],
+        "exact_normalized_coupling": "-2747637900/210003444253",
+        "exact_target_invariant_value": "192"
+      },
+      {
+        "parameter_id": "lambda::O48_B04_Phi_self_quartics",
+        "amplitude_exponents_p_h_d_s_x": [
+          4,
+          0,
+          0,
+          0,
+          0
+        ],
+        "exact_normalized_coupling": "170068500/210003444253",
+        "exact_target_invariant_value": "3552"
+      }
+    ]
+  },
+  "exact_Groebner_certificate": {
+    "coefficient_domain": "QQ",
+    "monomial_order": "grevlex",
+    "variables": [
+      "p",
+      "h",
+      "d",
+      "s",
+      "x"
+    ],
+    "source_generator_count": 6,
+    "source_generators": [
+      "-405833247*d**2*p - 224152271*d**2 + 128885450400*h**2*p + 403770045000*p**3 - 76833645*p*s**2 + 21657612375*p*x**2 - 553606288612*p",
+      "h*(-1841413*d**2 + 1899495800*h**2 + 1227480480*p**2 - 430317*s**2 + 540408425*x**2 - 3665112975)",
+      "-d*(-1052034648*d**2 + 386696730*h**2 + 811666494*p**2 + 896609084*p - 243369*s**2 + 58865835*x**2 - 1101560126)",
+      "-s*(-11589*d**2 + 4303170*h**2 + 7317490*p**2 - 50001726*s**2 + 1122715*x**2 + 37269940)",
+      "x*(-560627*d**2 + 1080816850*h**2 + 412525950*p**2 - 224543*s**2 + 631430250*x**2 - 2123987880)",
+      "526017324*d**4 - 386696730*d**2*h**2 - 811666494*d**2*p**2 - 896609084*d**2*p + 243369*d**2*s**2 - 58865835*d**2*x**2 + 1101560126*d**2 + 199447059000*h**4 + 257770900800*h**2*p**2 - 90366570*h**2*s**2 + 113485769250*h**2*x**2 - 769673724750*h**2 + 403770045000*p**4 - 153667290*p**2*s**2 + 43315224750*p**2*x**2 - 1107212577224*p**2 + 525018123*s**4 - 23577015*s**2*x**2 - 782668740*s**2 + 33150088125*x**4 - 223018727400*x**2 + 1050017221265"
+    ],
+    "reduced_Groebner_basis": [
+      "h**2 - 1",
+      "d**2 - 1",
+      "s**2 - 1",
+      "x**2 - 1",
+      "p - 1"
+    ],
+    "expected_reduced_Groebner_basis": [
+      "h**2 - 1",
+      "d**2 - 1",
+      "s**2 - 1",
+      "x**2 - 1",
+      "p - 1"
+    ],
+    "observed_basis_equals_expected": true,
+    "source_ideal_contained_in_expected_ideal": true,
+    "expected_ideal_contained_in_source_ideal": true,
+    "ideals_equal_by_mutual_exact_reduction": true,
+    "ideal_zero_dimensional": true,
+    "ideal_is_radical_from_squarefree_separated_basis": true,
+    "complex_solution_count_with_multiplicity": 16,
+    "all_solutions_real": true,
+    "solution_set": "p=1; h,d,s,x independently in {-1,+1}",
+    "target_slice_Hessian_leading_principal_minors": [
+      "3231056969084/1050017221265",
+      "163690603310966669656320/44101446598122878728009",
+      "687545428520206644875188705710336/46307278410727772287006587905911385",
+      "2887695250132147639238029612339280229249024/48623439801177100823166331497714027745027602025",
+      "3013159837561160258437953219818838125898981818019840/408443593187023867859918844305068232899559972792134296493"
+    ],
+    "target_slice_Hessian_positive_definite": true
+  },
+  "discrete_variants": {
+    "count": 16,
+    "description": "p=1 with independent signs of h,d,s,x",
+    "full_witness_support_row_count": 37,
+    "zero_at_target_but_parity_checked_row_count": 9,
+    "all_support_rows_even_in_h_d_s_x": true,
+    "exact_discrete_sign_symmetries_of_selected_witness": true,
+    "full_486_stationarity_inherited_from_upstream_target_under_discrete_sign_symmetry": true,
+    "continuous_SO10_x_U1X_x_PQ_orbit_equivalence_classified": false,
+    "reason_for_not_calling_one_orbit": "no exact group elements connecting all sixteen variants are supplied here"
+  },
+  "closure_claims": {
+    "exact_radial_theorem_strictly_extended": true,
+    "five_real_amplitude_slice_stationary_equality_classified": true,
+    "full_486_field_stationary_equality_classified": false,
+    "declared_continuous_symmetry_orbit_equivalence_of_16_variants_proved": false,
+    "direct_source_algebra_full_486_Hessian_available": false,
+    "physical_SM_G3_closed": false,
+    "physical_SM_G4_closed": false,
+    "physical_SM_G5_closed": false
+  },
+  "remaining_scope": [
+    "derive the complete 486-real stationary Hessian directly from integer/Gaussian-integer projector algebra",
+    "classify stationary equality points with arbitrary non-amplitude field components",
+    "classify the sixteen discrete variants under the declared continuous symmetry only with explicit exact group elements"
+  ],
+  "integrity": {
+    "core_sha256": "d0bf68bd5007f71295665add186761577dbe0d67d2d8e5bd1fb4e4eeb669a271"
+  }
+}

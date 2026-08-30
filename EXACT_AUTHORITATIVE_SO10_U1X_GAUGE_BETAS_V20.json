@@ -1,0 +1,323 @@
+{
+  "status": "EXACT_NONYUKAWA_GAUGE_POLYNOMIAL_CLOSED__FULL_G7_OPEN",
+  "model_contract_id": "gauged_u1x_phi17_v20",
+  "source_binding": {
+    "authoritative_model": {
+      "path": "models\\SO10Z17AxionV20.m",
+      "raw_sha256": "66a2ce2c3491d0b3079ec93a16ab79d3e8a7e4e35cb54aadf21100b9fdd90cc1"
+    },
+    "mathematical_G1_scalar_ring": {
+      "path": "EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_CLOSURE_V20.json",
+      "raw_sha256": "bec8587376c7dc5a29b45c9c7f0110fcbed98a3ae2d130aaf00bb42f6997aca4",
+      "core_sha256": "32bed88b5fad0fe6e51cf19c3b3e120d53362150cfc1db6eafd8c897e24223b7"
+    }
+  },
+  "primary_formula_sources": [
+    {
+      "citation": "M. Luo, H. Wang and Y. Xiao, Phys. Rev. D67 (2003) 065019",
+      "arxiv": "hep-ph/0211440",
+      "equations": "(30), (31), (106)-(110)"
+    },
+    {
+      "citation": "L. Sartore and I. Schienbein, PyR@TE 3, Comput. Phys. Commun. 261 (2021) 107819",
+      "arxiv": "2007.12700",
+      "scope": "independent executable target; not executed here"
+    }
+  ],
+  "convention": {
+    "beta": "beta(g_k)=g_k^3*a_k/(16*pi^2)+g_k^3*sum_l(b_kl*g_l^2)/(16*pi^2)^2-g_k^3*Y4_k/(16*pi^2)^2",
+    "fermions": "two-component Weyl; kappa=1/2",
+    "scalars": "complex scalar = two real scalars",
+    "SO10_Dynkin": "T(10)=1",
+    "U1X_normalization": "integer X charges exactly as declared in SO10Z17AxionV20.m"
+  },
+  "group_theory": {
+    "T": {
+      "1": "0",
+      "10": "1",
+      "16": "2",
+      "45": "8",
+      "54": "12",
+      "120": "28",
+      "126": "35",
+      "210": "56"
+    },
+    "C2": {
+      "1": "0",
+      "10": "9/2",
+      "16": "45/8",
+      "45": "8",
+      "54": "10",
+      "120": "21/2",
+      "126": "25/2",
+      "210": "12"
+    },
+    "C2_G": "8",
+    "dim_G": 45
+  },
+  "inventory": {
+    "fermions": [
+      {
+        "name": "F",
+        "generations": 3,
+        "SO10": "16",
+        "X": 1,
+        "Weyl_components": 48
+      },
+      {
+        "name": "P",
+        "generations": 1,
+        "SO10": "16",
+        "X": 1,
+        "Weyl_components": 16
+      },
+      {
+        "name": "R",
+        "generations": 1,
+        "SO10": "16",
+        "X": 1,
+        "Weyl_components": 16
+      },
+      {
+        "name": "SpecS",
+        "generations": 5,
+        "SO10": "16",
+        "X": 2,
+        "Weyl_components": 80
+      },
+      {
+        "name": "SpecB",
+        "generations": 5,
+        "SO10": "16",
+        "X": -6,
+        "Weyl_components": 80
+      },
+      {
+        "name": "Q",
+        "generations": 1,
+        "SO10": "16",
+        "X": 14,
+        "Weyl_components": 16
+      },
+      {
+        "name": "Pbar",
+        "generations": 1,
+        "SO10": "16",
+        "X": 16,
+        "Weyl_components": 16
+      },
+      {
+        "name": "Qbar",
+        "generations": 1,
+        "SO10": "16",
+        "X": 3,
+        "Weyl_components": 16
+      },
+      {
+        "name": "Rbar",
+        "generations": 1,
+        "SO10": "16",
+        "X": -18,
+        "Weyl_components": 16
+      }
+    ],
+    "scalars": [
+      {
+        "name": "Phi210",
+        "generations": 1,
+        "SO10": "210",
+        "X": 0,
+        "reality": "real",
+        "real_components": 210
+      },
+      {
+        "name": "Delta126bar",
+        "generations": 1,
+        "SO10": "126",
+        "X": -2,
+        "reality": "complex",
+        "real_components": 252
+      },
+      {
+        "name": "H10",
+        "generations": 1,
+        "SO10": "10",
+        "X": -2,
+        "reality": "complex",
+        "real_components": 20
+      },
+      {
+        "name": "S",
+        "generations": 1,
+        "SO10": "1",
+        "X": 4,
+        "reality": "complex",
+        "real_components": 2
+      },
+      {
+        "name": "Phi17",
+        "generations": 1,
+        "SO10": "1",
+        "X": 17,
+        "reality": "complex",
+        "real_components": 2
+      }
+    ]
+  },
+  "all_active_trace_sums": {
+    "sum_Weyl_T_SO10": "38",
+    "sum_complex_scalar_T_SO10": "36",
+    "sum_real_scalar_T_SO10": "56",
+    "sum_Weyl_dim_SO10_X2": "15840",
+    "sum_complex_scalar_dim_SO10_X2": "849",
+    "sum_Weyl_dim_SO10_X4": "3449184",
+    "sum_complex_scalar_dim_SO10_X4": "85953",
+    "sum_Weyl_T_SO10_X2": "1980",
+    "sum_complex_scalar_T_SO10_X2": "144"
+  },
+  "anomalies": {
+    "SO10_squared_X_in_T10_units": 0,
+    "gravity_squared_X": 0,
+    "X_cubed": 0
+  },
+  "regimes": {
+    "all_active_above_vPhi": {
+      "domain": "mu above every declared mass threshold, in unbroken SO(10) x U(1)_X",
+      "Weyl_16_multiplets": 19,
+      "a_one_loop": {
+        "SO10": "52/3",
+        "X": "10843"
+      },
+      "b_two_loop_nonyukawa": {
+        "SO10": {
+          "SO10": "25013/6",
+          "X": "4536"
+        },
+        "X": {
+          "SO10": "204120",
+          "X": "7242180"
+        }
+      },
+      "Yukawa_term": "-g_k^3*Y4_k/(16*pi^2)^2; not numerically identified"
+    },
+    "SO10_between_MGUT_and_vPhi": {
+      "domain": "conditional hierarchy MGUT < mu < vPhi after P/Q/R pairs decouple; U(1)_X is Higgsed",
+      "active_Weyl_16_multiplets": 13,
+      "active_fermions": [
+        "F",
+        "SpecS",
+        "SpecB"
+      ],
+      "a10_one_loop": "28/3",
+      "b1010_two_loop_nonyukawa": "22283/6",
+      "not_a_component_threshold_match": true
+    }
+  },
+  "PyRATE_comparable_all_active_coefficients": {
+    "Beta[g10,1]": "(52/3)*g10^3",
+    "Beta[gX,1]": "10843*gX^3",
+    "Beta[g10,2]_nonyukawa": "g10^3*((25013/6)*g10^2+4536*gX^2)",
+    "Beta[gX,2]_nonyukawa": "gX^3*(204120*g10^2+7242180*gX^2)",
+    "normalization": "loop coefficients before division by (16*pi^2)^loop_order",
+    "full_two_loop_addition": "-g_k^3*Y4_k"
+  },
+  "legacy_error_corrections": {
+    "Casimir": {
+      "incorrect": "C2(R)=C2(G)*T(R)*dim(G)/dim(R)",
+      "correct": "C2(R)=T(R)*dim(G)/dim(R)",
+      "legacy_C2_16": "45",
+      "correct_C2_16": "45/8"
+    },
+    "Weyl_two_loop_weight": {
+      "incorrect": "four-component coefficient applied to each Weyl multiplet",
+      "correct": "kappa=1/2 in eq. (30)"
+    },
+    "real_scalar_two_loop_weight": {
+      "incorrect": "real 210 counted with the complex-scalar weight",
+      "correct": "one real 210 contributes half the complex-scalar trace"
+    },
+    "threshold_inventory": {
+      "incorrect": "3 Weyl 16 above vPhi and 9 below, omitting ten S-massed spectators",
+      "correct": "19 above vPhi and 13 below vPhi but above MGUT"
+    }
+  },
+  "coupling_system_inventory": {
+    "declared_Yukawa_symbols": [
+      "Y10",
+      "Y126",
+      "yP",
+      "yQ",
+      "yR",
+      "ys",
+      "lambdaP",
+      "lambdaR",
+      "lambdaQB",
+      "lambdaQR"
+    ],
+    "declared_scalar_trilinear_symbol": "kappaH",
+    "complete_scalar_ring": {
+      "tensor_families": 18,
+      "invariant_directions": 44,
+      "real_parameters": 51,
+      "real_scalar_chart_dimension": 486
+    },
+    "required_for_full_two_loop": [
+      "normalized sparse Yukawa tensors on the complete 304-Weyl-component gauge space",
+      "the 44-direction scalar tensor ring translated to lambda_abcd, h_abc and mass-squared tensors",
+      "all two-loop gauge/Yukawa/quartic/trilinear/mass beta functions in one declared scheme",
+      "the dimension-six EFT operator basis and anomalous-dimension mixing if the G6 EFT contract is retained",
+      "physical SO(10)-to-intermediate-to-SM branching labels, pole masses and matching scales",
+      "a second independent implementation with explicit numerical tolerances"
+    ],
+    "implementation_feasible_in_principle": true,
+    "implementation_complete_in_repository": false
+  },
+  "G6_input_policy": {
+    "normalized_G6_tree_spectrum_used_for_thresholds": false,
+    "reason": "physical SM/intermediate representation labels and an absolute pole-mass scale are not verified",
+    "loop_and_pole_mass_corrections_required_for_G6_release": true,
+    "physical_representation_audit_required_before_G7_thresholds": true
+  },
+  "checks": {
+    "authoritative_model_raw_SHA256_bound": true,
+    "mathematical_G1_raw_SHA256_bound": true,
+    "authoritative_gauge_and_field_inventory_present": true,
+    "SO10_casimir_identity_exact": true,
+    "C2_16_corrected_to_45_over_8": true,
+    "C2_210_is_12": true,
+    "nineteen_authoritative_Weyl_16_multiplets": true,
+    "thirteen_Weyl_16_multiplets_below_vPhi_above_MGUT": true,
+    "all_continuous_gauge_anomalies_cancel": true,
+    "all_active_one_loop_coefficients_exact": true,
+    "all_active_two_loop_nonyukawa_matrix_exact": true,
+    "mid_interval_SO10_coefficients_exact": true,
+    "cross_coefficient_trace_identity": true,
+    "G1_full_scalar_ring_counts_consumed": true,
+    "full_G7_not_inferred_from_gauge_polynomial": true,
+    "unverified_G6_physical_labels_not_consumed": true
+  },
+  "n_checks": 16,
+  "n_failed": 0,
+  "failures": [],
+  "classification": {
+    "authoritative_field_inventory_closed": true,
+    "exact_nonyukawa_two_loop_gauge_polynomial_closed": true,
+    "full_two_loop_gauge_beta_closed": false,
+    "full_two_loop_Yukawa_scalar_dimensionful_EFT_system_closed": false,
+    "component_threshold_matching_closed": false,
+    "physical_G6_input_accepted_for_G7": false,
+    "mathematical_G7_closed": false,
+    "release_G7_verified": false
+  },
+  "release_blockers": [
+    "NORMALIZED_YUKAWA_TENSOR_EMBEDDINGS_REQUIRED",
+    "FULL_51_PARAMETER_SCALAR_BETA_SYSTEM_REQUIRED",
+    "DIMENSION_SIX_OPERATOR_MIXING_REQUIRED_IF_EFT_G6_RETAINED",
+    "PHYSICAL_G6_REPRESENTATION_AND_POLE_MASS_AUDIT_REQUIRED",
+    "COMPONENT_THRESHOLD_MATCHING_REQUIRED",
+    "SECOND_INDEPENDENT_IMPLEMENTATION_REQUIRED"
+  ],
+  "verdict": "The authoritative field inventory and the Yukawa-free one/two-loop SO(10) x U(1)_X gauge polynomials are now exact.  This corrects C2(16), Weyl/real-scalar weights, spectator counting and threshold direction in the legacy diagnostic.  Yukawa traces, the complete 51-parameter scalar/dimensionful/EFT flow and physical component thresholds remain unidentified, so G7 is not closed.",
+  "core_sha256": "714796e4e8f1aa768d9e9f8434c6919aca854d33541b2bccc779f96933345752",
+  "source_sha256": "b3ec8ca5bc472af24081ee5b3409652dde0e1bf219cbf7d29a4f55e76e985cb6"
+}

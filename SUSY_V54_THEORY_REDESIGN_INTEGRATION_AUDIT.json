@@ -1,0 +1,424 @@
+{
+  "V54_candidate_clause_ledger": [
+    {
+      "id": "C1",
+      "statement": "Exact charge, parity, center, and bounded operator screens exist, but no complete tensor/operator census exists for one GS+Q4+mediator action.",
+      "status": "PARTIAL_SCOPE_ONLY"
+    },
+    {
+      "id": "C2",
+      "statement": "The R1 rescue is an explicit renormalizable local chiral action and R4 is an explicit cutoff Higgs EFT, but neither is one full GS/Q4/Kahler action.",
+      "status": "PARTIAL_HIGGS_EFT_ONLY"
+    },
+    {
+      "id": "C3",
+      "statement": "R1 has an exact 229-coordinate local Hessian and 363-coordinate spectator extension; matter/flavour and the GS vector/modulus sector are absent. R4 has exact reduced 4x4 doublet/triplet ranks only.",
+      "status": "PARTIAL_EXACT_LOCAL_HESSIAN"
+    },
+    {
+      "id": "C4",
+      "statement": "Published local F/D vacuum relations were reconstructed in scope, but no executable global, GS, radiative, soft, or tunnelling proof exists.",
+      "status": "PARTIAL_PUBLISHED_LOCAL_VACUUM_ONLY"
+    },
+    {
+      "id": "C5",
+      "statement": "No same-action current threshold matching and frozen low-energy EFT coefficient array has been reproduced.",
+      "status": "OPEN"
+    },
+    {
+      "id": "C6",
+      "statement": "The GS modulus is unspecified and the published FI and Q4 first-family charge branches are incompatible.",
+      "status": "OPEN_GS_AND_CHARGE_BRANCH_INCOMPATIBLE"
+    },
+    {
+      "id": "C7",
+      "statement": "No same-action current Wilson array, correlated likelihood, or withheld prediction exists.",
+      "status": "OPEN"
+    }
+  ],
+  "core_sha256": "3dabe44528f698e0c39fa69deb8e25c0ec990989495e63f85374b3a0a9487c8e",
+  "expected_input_core_hashes": {
+    "anomalous_u1_blueprint": "59bc36c4899a6ca2985bfa8d9cdbad927d6c33fc3ef326daf9e39c280589b1c7",
+    "continuous_parent": "25b0a48ea19fe6831049a46b01259a2a465f5f65584528d1670927156956633e",
+    "degree5_messenger": "fa9b64b42f439e01a730a8fd98cd911679cbe6968d3492abba7888ecb6490546",
+    "nonabelian_filter": "b6f8f135b794c1ac25a478af90dbf18aa29b1fa791ab11cf59fc46829f051331",
+    "q4_flavour": "6e4b1cc7718dc4f4787dd2c546394af1e0454a026ba53963c9ea81f522afb850",
+    "v53_master": "620525de6b9a6ed2a63fe7e734caa18239dc26b4ef3e36b8eadbd4259d9e3cde"
+  },
+  "final_decision": {
+    "V54_candidate_closed_gates": [],
+    "bounded_V54_redesign_finished": true,
+    "complete_theory": false,
+    "cumulative_reusable_closed_gates": [
+      "G1"
+    ],
+    "empirical_new_physics_discovery": false,
+    "full_gates_closed_for_V54_candidate": 0,
+    "honest_outcome": "V54 saves an exact 229-coordinate charged-source local rescue, its exact 363-coordinate anomaly-repaired singlet extension, several route no-go theorems, and a falsifiable low-index architecture blueprint. It does not produce a complete same-action theory.",
+    "same_action_completion": false,
+    "selected_architecture_blueprint": "R4_ANOMALOUS_U1A_LOW_INDEX_BLUEPRINT",
+    "selected_complete_candidate": null,
+    "selected_executable_frontier_candidate": "R1_CONTINUOUS_PARENT_FI charged-source dynamical rescue"
+  },
+  "gate_ledger": [
+    {
+      "V54_candidate_closed": false,
+      "closed": true,
+      "decision": "Historical ordinary-Spin quotient/anomaly lemma remains frozen; V54 needs its own GS/global quotient.",
+      "gate": "G1",
+      "scope": "frozen ordinary-Spin namespace only"
+    },
+    {
+      "V54_candidate_closed": false,
+      "closed": false,
+      "decision": "The C1-C7 same-action conjunction fails.",
+      "gate": "G2",
+      "scope": "V54"
+    },
+    {
+      "V54_candidate_closed": false,
+      "closed": false,
+      "decision": "R1 has an exact local chiral Hessian/quotient, but no matter/flavour, GS vector/modulus, or global vacuum completion.",
+      "gate": "G3",
+      "scope": "V54"
+    },
+    {
+      "V54_candidate_closed": false,
+      "closed": false,
+      "decision": "R1 preserves four weak modes only through a bounded operator screen; R4 has canonical-vacuum DT protection and reduced ranks. Full spectrum, mu/Bmu and EWSB are open.",
+      "gate": "G4",
+      "scope": "V54"
+    },
+    {
+      "V54_candidate_closed": false,
+      "closed": false,
+      "decision": "No dark-sector or cosmological action and likelihood exists.",
+      "gate": "G5",
+      "scope": "V54"
+    },
+    {
+      "V54_candidate_closed": false,
+      "closed": false,
+      "decision": "R1 has b=18 and R4 has visible b=0 at one loop; full states, thresholds and two-loop running are open.",
+      "gate": "G6",
+      "scope": "V54"
+    },
+    {
+      "V54_candidate_closed": false,
+      "closed": false,
+      "decision": "Q4 x Z2 tensors, mediators, Wilson matching and current proton lifetimes are open.",
+      "gate": "G7",
+      "scope": "V54"
+    },
+    {
+      "V54_candidate_closed": false,
+      "closed": false,
+      "decision": "The frozen benchmark is excluded and the bounded a,b refit found no fit; a consistent modern global refit is open.",
+      "gate": "G8",
+      "scope": "V54"
+    }
+  ],
+  "hard_next_obligations": [
+    {
+      "id": "N1_ONE_ACTION",
+      "requirement": "Choose one anomaly/charge branch and write the complete GS modulus, Q4 flavon, mediator, Kahler, gauge and superpotential action."
+    },
+    {
+      "id": "N2_FULL_GEOMETRY",
+      "requirement": "At one exact vacuum compute F, D, the full Hessian and gauge-orbit matrix; the kernel must contain only the intended broken-gauge, 45 light-matter and four weak-Higgs directions after the RH-neutrino sector is included."
+    },
+    {
+      "id": "N3_COMPLETE_OPERATORS",
+      "requirement": "Enumerate complete SO(10) x U1A x Z2 x Q4 tensors and mediator-generated operators, including proton and Higgs-mass classes."
+    },
+    {
+      "id": "N4_CURRENT_PHENOMENOLOGY",
+      "requirement": "Perform a joint charged-fermion/neutrino fit with current RG thresholds, then propagate it into unification and d=5/d=6 Wilson coefficients."
+    },
+    {
+      "id": "N5_SOFT_AND_COSMOLOGY",
+      "requirement": "Add SUSY breaking, mu/Bmu, radiative EWSB, the physical scalar spectrum, global-vacuum tests and any claimed cosmology."
+    }
+  ],
+  "input_core_hashes": {
+    "anomalous_u1_blueprint": "59bc36c4899a6ca2985bfa8d9cdbad927d6c33fc3ef326daf9e39c280589b1c7",
+    "continuous_parent": "25b0a48ea19fe6831049a46b01259a2a465f5f65584528d1670927156956633e",
+    "degree5_messenger": "fa9b64b42f439e01a730a8fd98cd911679cbe6968d3492abba7888ecb6490546",
+    "nonabelian_filter": "b6f8f135b794c1ac25a478af90dbf18aa29b1fa791ab11cf59fc46829f051331",
+    "q4_flavour": "6e4b1cc7718dc4f4787dd2c546394af1e0454a026ba53963c9ea81f522afb850",
+    "v53_master": "620525de6b9a6ed2a63fe7e734caa18239dc26b4ef3e36b8eadbd4259d9e3cde"
+  },
+  "integrity_checks": {
+    "all_input_cores_are_canonical_and_expected": true,
+    "blueprint_charge_branches_are_not_one_action": true,
+    "blueprint_reduced_DT_ranks_are_exact": true,
+    "bounded_flavour_no_fit_is_not_global_theorem": true,
+    "continuous_charged_source_local_rescue_is_exact": true,
+    "continuous_generic_action_has_zero_Higgs_modes": true,
+    "degree5_center_corrected_census_is_4_rows_24_directions": true,
+    "five_V54_routes_are_integrated": true,
+    "frozen_flavour_benchmark_is_reproduced_then_excluded": true,
+    "no_V54_candidate_gate_is_closed": true,
+    "no_clause_is_passed": true,
+    "no_route_promotes_a_gate": true,
+    "nonabelian_complete_kernel_is_gauge_only": true,
+    "only_historical_G1_is_cumulatively_closed": true
+  },
+  "n_failed_integrity_checks": 0,
+  "primary_sources": [
+    {
+      "title": "Constraining Proton Lifetime in SO(10) with Stabilized Doublet-Triplet Splitting",
+      "url": "https://arxiv.org/abs/1003.2625"
+    },
+    {
+      "title": "NuFit-6.0: Updated global analysis of three-flavor neutrino oscillations",
+      "url": "https://arxiv.org/abs/2410.05380"
+    },
+    {
+      "title": "NuFIT 6.1 official parameter table",
+      "url": "https://www.nu-fit.org/sites/default/files/v61.tbl-parameters.pdf"
+    },
+    {
+      "title": "A Complete Supersymmetric SO(10) Model",
+      "url": "https://arxiv.org/abs/hep-ph/9501298"
+    },
+    {
+      "title": "Natural Doublet-Triplet Splitting from the Viewpoint of the SO(10) Grand Unified Theory",
+      "url": "https://arxiv.org/abs/1410.5625"
+    },
+    {
+      "title": "A Renormalizable Supersymmetric SO(10) Model",
+      "url": "https://arxiv.org/abs/1504.01850"
+    },
+    {
+      "title": "Natural R-Symmetry and the Missing Partner Mechanism",
+      "url": "https://arxiv.org/abs/1109.4797"
+    }
+  ],
+  "route_ledger": [
+    {
+      "changed_physics": "gauge a continuous parent, charge the DW source, and dynamically stabilize seven spurions with six renormalizable constraints",
+      "classification": "UNCHANGED_ACTION_REJECTED__CHARGED_SOURCE_LOCAL_RESCUE_EXACT_BUT_INCOMPLETE",
+      "exact_local_rescue": {
+        "GS_repaired_H_rank": 325,
+        "GS_repaired_coordinates": 363,
+        "GS_spectator_count": 134,
+        "H_nullity": 38,
+        "H_rank": 191,
+        "Q_rank": 34,
+        "all_spurion_F_residuals": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "coordinates": 229,
+        "kernel_decomposition": {
+          "Spin10_gauge": 33,
+          "U1_gauge": 1,
+          "extra": 0,
+          "weak_Higgs": 4
+        },
+        "new_field": {
+          "U1_charge": 2,
+          "VEV": 1,
+          "name": "K"
+        },
+        "spurion_constraint_kernel": [
+          6,
+          -12,
+          -6,
+          4,
+          -2,
+          1,
+          2
+        ],
+        "spurion_constraint_rank": 6
+      },
+      "fail_closed_boundary": {
+        "GS_Kahler_vector_completion": false,
+        "complete_operator_census": false,
+        "first_F4_total_degree": 9,
+        "remaining_items": [
+          "first exact charge-neutral F16^4 dressing occurs at total degree nine",
+          "the standard single-GS repair requires 134 extra singlets and has a very large Abelian charge-square trace",
+          "GS axion/modulus, Kahler potential, vector/scalar mass matrix and global vacuum are absent",
+          "no Wilson coefficients, proton lifetime, thresholds, flavor fit, SUSY breaking or cosmology are computed"
+        ]
+      },
+      "gate_promotions": [],
+      "id": "R1_CONTINUOUS_PARENT_FI",
+      "unchanged_action_control": {
+        "H_nullity": 34,
+        "H_rank": 237,
+        "Q_rank": 34,
+        "coordinates": 271,
+        "physical_weak_Higgs_zero_modes": 0
+      },
+      "unchanged_action_obstruction": "The unchanged source forces q(B)=0; allowing h B H2 therefore allows the renormalizable filler h H2, whose generic action has no weak-Higgs zero mode."
+    },
+    {
+      "changed_physics": "renormalizable singlet-messenger UV completion of the degree-five driver",
+      "classification": "REJECTED_SYMMETRY_COMPLETE_EFT",
+      "exact_advance": {
+        "combined_H_nullity": 37,
+        "combined_H_rank": 193,
+        "combined_coordinates": 230,
+        "singlet_H_determinant": -81,
+        "singlet_H_rank": 14,
+        "singlet_coordinates": 14
+      },
+      "fatal_obstruction": {
+        "DT_filler": "C_messenger H1_10 H1_10",
+        "gauge_invariant_degree6_F4_rows": 4,
+        "gauge_invariant_directions": 24
+      },
+      "gate_promotions": [],
+      "id": "R2_DEGREE5_MESSENGER_UV"
+    },
+    {
+      "changed_physics": "replace the Abelian filter selector by gauged SU(2)_F",
+      "classification": "REJECTED_SELECTOR_COMPLETE_ACTION",
+      "exact_advance": {
+        "combined_Q_rank": 36,
+        "declared_H_nullity": 40,
+        "declared_H_rank": 215,
+        "declared_coordinates": 255,
+        "declared_weak_modes": 4
+      },
+      "fatal_obstruction": {
+        "complete_H_nullity": 36,
+        "complete_H_rank": 219,
+        "kernel": "36 gauge modes only",
+        "operator": "S epsilon_ab H_a^T A H_b / Lambda",
+        "proton_leak": "S (16_F)^4 / Lambda^2 is also Z8 invariant at degree 5"
+      },
+      "gate_promotions": [],
+      "id": "R3_NONABELIAN_SU2F_FILTER"
+    },
+    {
+      "changed_physics": "low-index anomalous-U1A x Z2 cutoff EFT with spinor alignment",
+      "classification": "SELECTED_ARCHITECTURE_BLUEPRINT__NOT_ONE_ACTION",
+      "exact_advance": {
+        "abstract_H2barC4_allowed": true,
+        "doublet_nullity": 1,
+        "doublet_rank": 3,
+        "triplet_determinant_formula": "2*Y1*a*(Y*c-2*Y2*a)",
+        "triplet_rank": 4,
+        "vacuum_active_all_n_formula": "Q[Hu Hd dressing]=2+(2/5)*(n_CbarC+n_S+n_Z)",
+        "visible_Spin10_b": 0,
+        "visible_coordinates": 179
+      },
+      "fatal_boundary": {
+        "FI_branch_F12": "1/10",
+        "Q4_branch_F12": "-11/10",
+        "Q4_partial_TrQ_after_XY": "-256/5",
+        "full_179_Hessian": "not constructed",
+        "one_same_action_charge_ledger": false
+      },
+      "gate_promotions": [],
+      "id": "R4_ANOMALOUS_U1A_LOW_INDEX_BLUEPRINT"
+    },
+    {
+      "changed_physics": "reconstruct the published seesaw texture and test current data",
+      "classification": "FROZEN_POINT_EXCLUDED__BOUNDED_SUBSPACE_NO_FIT",
+      "exact_advance": {
+        "published_benchmark_reproduced": true,
+        "sqrt_mass_splitting_ratio": 0.1281337928,
+        "theta12_deg": 29.9069523777,
+        "theta13_deg": 3.5789613556,
+        "theta23_deg": 42.5290007563
+      },
+      "gate_promotions": [],
+      "id": "R5_Q4_MODERN_FLAVOUR_KILL_TEST",
+      "modern_test": {
+        "bounded_best_objective": 141.065166,
+        "bounded_feasible": false,
+        "bounded_seeds": [
+          1729,
+          2718,
+          31415,
+          65537
+        ],
+        "frozen_failed_observables": [
+          "theta12_deg",
+          "theta13_deg",
+          "sqrt_delta_m21_sq_over_delta_m31_sq"
+        ],
+        "global_texture_theorem": false
+      }
+    }
+  ],
+  "same_action_rule": "A gate can close only when all of its hypotheses are proved in one canonical action. Exact geometry from a deliberately sparse texture cannot be combined with a selector or anomaly certificate belonging to another action.",
+  "schema": "susy-v54-theory-redesign-integration-audit-v1",
+  "selected_redesign": {
+    "architecture_blueprint": "R4_ANOMALOUS_U1A_LOW_INDEX_BLUEPRINT",
+    "complete_candidate": null,
+    "executable_frontier_candidate": "R1_CONTINUOUS_PARENT_FI charged-source dynamical rescue",
+    "reason": "R1 is the strongest executable local candidate: its renormalizable chiral action has an exact gauge-only-plus-four-Higgs kernel, including an exact singlet anomaly repair. It is still incomplete because matter/flavour, the physical GS vector/modulus sector, the global vacuum and the unbounded operator/Wilson analysis are absent. R4 remains the low-index architecture blueprint, but its FI and Q4 charge ledgers differ and therefore do not define one action."
+  },
+  "source_manifest": [
+    {
+      "exists": true,
+      "path": "susy_v54_theory_redesign_integration_audit.py",
+      "sha256": "e2c96d310927fb8605f6ab5147a6b39f166fda8503e4cef2c8d0a99bd4f07f38"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v54_theory_redesign_integration_audit.py",
+      "sha256": "34fef8838c2eacc41966128aefd929c5c11429631c7d20885508cad8164ea912"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V53_THEORY_COMPLETION_VERIFICATION_AUDIT.json",
+      "sha256": "ade2e6a9689b8602f1b69b6f707e0f76789a19b2c308c5f6893137be777ffae6"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V54_CONTINUOUS_PARENT_FI_ROUTE_AUDIT.json",
+      "sha256": "9da784e86d6934c837afa2912a22a9c2abb3ca0d1be35f3c4b17b6595a40fbcc"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V54_DEGREE5_MESSENGER_UV_NO_GO_AUDIT.json",
+      "sha256": "090d665829abf09f2fa2158c5678ba322141f7b034923ba58c2a0c791815d28a"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V54_NONABELIAN_FILTER_ROUTE_AUDIT.json",
+      "sha256": "d06e0c56641d4b831032e256650c7eab13ef3afa6cb90c0831b4eeaa013e34f5"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V54_ANOMALOUS_U1A_BLUEPRINT_AUDIT.json",
+      "sha256": "e3452b2fe8db749ddb931b9c59bf84b28c0caa1faff6b996b336f6d0f97f9f09"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V54_Q4_FLAVOUR_MODERN_DATA_AUDIT.json",
+      "sha256": "3a109f75dc5a66ca1c2e95f2e01eb79a53871a3543faf8dc58c66ce5281352e7"
+    }
+  ],
+  "status": "V54_THEORY_REDESIGN_INTEGRATION__CONTINUOUS_FI_GENERIC_ACTION_HAS_NO_HIGGS__CHARGED_SOURCE_DYNAMICAL_RESCUE_229RANK191NULL38_EXACT__DEGREE5_MESSENGERS_REOPEN_PROTON_AND_DT__SU2F_SELECTOR_FORCES_HAH__ANOMALOUS_U1_BLUEPRINT_SPLITS_FI_AND_Q4_BRANCHES__FROZEN_Q4_BENCHMARK_EXCLUDED_AND_BOUNDED_REFIT_NO_FIT__ZERO_V54_GATE_PROMOTIONS__ONLY_FROZEN_G1_RETAINED__COMPLETE_THEORY_FALSE__REDESIGN_SAVED",
+  "verification_run": {
+    "date": "2026-08-28",
+    "focused_V54_pytest": {
+      "failed": 0,
+      "passed": 71,
+      "scope": "all six V54 route and integration test modules"
+    },
+    "historical_pytest": {
+      "failed": 0,
+      "passed": 697,
+      "scope": "all test_susy_v40 through test_susy_v54 modules"
+    },
+    "python_compile": {
+      "V54_scripts": 6,
+      "passed": true
+    },
+    "supported_artifact_freshness_checks_passed": true
+  }
+}

@@ -1,0 +1,783 @@
+{
+  "Z4R_mass_inventory": {
+    "certified_rank_vacuum_S": 0,
+    "charge_inference": {
+      "C_and_Cbar_fermion_charge": -1,
+      "Goldstone_superfield_charge": 0,
+      "superpotential_required_charge_mod_4": 2
+    },
+    "current_action_verdict": "the exact Z4R that protects the proton also forbids the obvious bilinear that would remove the surviving vectorlike colored pair",
+    "existing_q2_fields": {
+      "S": "SM singlet; cannot be a conjugate Q-type mass partner",
+      "T_10": "Spin(10) 10 = SU(5) 5+5bar and contains no (3bar,2) or (3,2) partner"
+    },
+    "full_rank_Q_type_mass_matrix_in_current_vacuum": false,
+    "operator_scan": [
+      {
+        "allowed_in_W": false,
+        "charge_mod_4": 0,
+        "effect": "the direct vectorlike supersymmetric mass is forbidden",
+        "operator": "X_Q X_Qbar"
+      },
+      {
+        "allowed_in_W": true,
+        "charge_mod_4": 2,
+        "effect": "it gives no bilinear mass in the certified SUSY vacuum because <S>=0",
+        "operator": "S X_Q X_Qbar (contained in S C Cbar)"
+      }
+    ],
+    "possible_but_unbuilt_routes": [
+      "add explicit q=2 conjugate wall chirals and re-audit every anomaly and proton operator",
+      "modify the projector/rank-breaking architecture so every Goldstone has a true gauge zero-mode partner",
+      "generate <S> only with a complete SUSY-breaking sector, accepting that q(S)=2 breaks Z4R to its Z2 subgroup and re-auditing proton protection"
+    ],
+    "q2_conjugate_Q_partner_in_current_inventory": false
+  },
+  "claim_boundary": {
+    "V62_large_gauge_and_saxion_obligations_not_overclaimed": true,
+    "exact_quadratic_action_result": true,
+    "massive_determinant_not_confused_with_full_chiral_spectrum": true,
+    "new_fundamental_physics_invented": false,
+    "no_gate_promotion": true,
+    "primary_source_corroboration_not_used_as_substitute_for_derivation": true
+  },
+  "classification": "EXACT_COUNTEREXAMPLE_TO_V63_GOLDSTONE_DISSOLUTION__CURRENT_SPIN11_ACTION_HAS_NORMALIZABLE_COLORED_CHIRAL_ZERO_MODES",
+  "core_sha256": "fe36b2f6f0e1786253827183bf7f8dc2dd9e15a94b7f036d5e9e6e0739717a1d",
+  "corrected_post_VEV_anomaly_ledger": {
+    "MSSM_only_ledger_from_V61": {
+      "A2": "1",
+      "A3": "3"
+    },
+    "V62_deficit_reinterpretation": "the numbers (-2,-3) are the anomaly of light exotics omitted from the MSSM-only ledger, not anomaly inflow from integrated-out modes",
+    "V62_orbifold_wall_sum": {
+      "A2": "-2",
+      "A3": "1"
+    },
+    "V63_forced_WZ_status": "RETRACTED__NO_DEFICIT_AFTER_CORRECT_LIGHT_SPECTRUM",
+    "WZ_functional_for_this_matching": "NOT_FORCED",
+    "actual_IR_ledger_MSSM_plus_exotics": {
+      "A2": "-2",
+      "A3": "1"
+    },
+    "matching_identities": {
+      "SU2_L": "1+(-3)=-2=-2",
+      "SU3": "3+(-2)=1=1",
+      "both_close_without_WZ": true
+    },
+    "strong_claim_boundary": "V64 proves that the specific V63 WZ term is neither required by the correct spectrum nor dynamically derived.  It does not prove that every possible added topological sector is impossible.",
+    "surviving_sector": {
+      "SM_gauge_character": "vectorlike",
+      "complex_chiral_components": 12,
+      "fermion_Z4R_charge": -1,
+      "irreps": [
+        "(3,2)_(+1/6)",
+        "(3bar,2)_(-1/6)"
+      ],
+      "mixed_R_Dynkin_sums": {
+        "T_SU2L": "3",
+        "T_SU3": "2"
+      },
+      "mixed_R_anomaly": {
+        "Delta_A2": "-3",
+        "Delta_A3": "-2"
+      },
+      "superfield_Z4R_charge": 0
+    },
+    "why_no_V63_WZ_functional_was_derived": [
+      "the purportedly integrated-out Q-type chiral sector is actually a normalizable light kernel",
+      "the anomaly residues (-2,-3) determine a variation class but do not by themselves construct a local supersymmetric functional",
+      "the Q-type Goldstone scalar has superfield charge q=0 and therefore supplies no nonlinear pure-Z4R shift",
+      "Spin(11) has no degree-three invariant, so the ordinary pure-Spin(11) five-dimensional Chern-Simons route carried from V59 is absent",
+      "the regulated determinant phase, superspace completion, global gauge form, and Dai-Freed eta invariant were never supplied"
+    ]
+  },
+  "date": "2026-08-29",
+  "falsifiers": [
+    {
+      "effect": "rebuild M_N with that row and rerun the exact nullity proof",
+      "id": "F1",
+      "test": "supply a missing current-action row that pairs the boundary G/Sigma kernel without adding fields"
+    },
+    {
+      "effect": "the infinite-limit obstruction would fail",
+      "id": "F2",
+      "test": "show the displayed right null vector is non-normalizable in the declared flat interval action"
+    },
+    {
+      "effect": "the current inventory obstruction would fail",
+      "id": "F3",
+      "test": "derive a Z4R-allowed nonzero mass for the Q-type pair in the certified S=0 supersymmetric vacuum"
+    },
+    {
+      "effect": "the representation retraction would need revision",
+      "id": "F4",
+      "test": "demonstrate that the rank VEV couples to the X/Y rather than Q-type half of (2,2,6)"
+    },
+    {
+      "effect": "it must identify where the normalizable chiral kernel went",
+      "id": "F5",
+      "test": "recompute the complete light ledger without the Q-type pair and without an additional mass mechanism"
+    }
+  ],
+  "finite_KK_mass_operator": {
+    "all_truncations_pass": true,
+    "conclusion": "a finite KK truncation never has enough +1-charge lambda rows to mass all -1-charge Sigma columns plus G; one chiral null mode is exact",
+    "exact_rational_truncation_checks": [
+      {
+        "N": 1,
+        "diagonal_minor_nonzero": true,
+        "null_residual_exact": [
+          "0"
+        ],
+        "null_residual_zero": true,
+        "rank": 1,
+        "right_nullity": 1,
+        "shape": [
+          1,
+          2
+        ]
+      },
+      {
+        "N": 2,
+        "diagonal_minor_nonzero": true,
+        "null_residual_exact": [
+          "0",
+          "0"
+        ],
+        "null_residual_zero": true,
+        "rank": 2,
+        "right_nullity": 1,
+        "shape": [
+          2,
+          3
+        ]
+      },
+      {
+        "N": 4,
+        "diagonal_minor_nonzero": true,
+        "null_residual_exact": [
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "null_residual_zero": true,
+        "rank": 4,
+        "right_nullity": 1,
+        "shape": [
+          4,
+          5
+        ]
+      },
+      {
+        "N": 8,
+        "diagonal_minor_nonzero": true,
+        "null_residual_exact": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "null_residual_zero": true,
+        "rank": 8,
+        "right_nullity": 1,
+        "shape": [
+          8,
+          9
+        ]
+      },
+      {
+        "N": 16,
+        "diagonal_minor_nonzero": true,
+        "null_residual_exact": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "null_residual_zero": true,
+        "rank": 16,
+        "right_nullity": 1,
+        "shape": [
+          16,
+          17
+        ]
+      },
+      {
+        "N": 32,
+        "diagonal_minor_nonzero": true,
+        "null_residual_exact": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "null_residual_zero": true,
+        "rank": 32,
+        "right_nullity": 1,
+        "shape": [
+          32,
+          33
+        ]
+      }
+    ],
+    "example_N4": {
+      "diagonal_with_pi_over_L_factored_out": [
+        "1/2",
+        "3/2",
+        "5/2",
+        "7/2"
+      ],
+      "mu": "7/5",
+      "residual": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "right_null_vector": [
+        "-14/5",
+        "-14/15",
+        "-14/25",
+        "-2/5",
+        "1"
+      ]
+    },
+    "per_complex_Q_direction": {
+      "KK_masses": "k_n=(n+1/2) pi/L",
+      "column_fields": "Sigma_n^AB, n=0,...,N-1, followed by the boundary Goldstone G; every column fermion has Z4R charge -1",
+      "normalized_wall_mixing": "mu_n=mu=sqrt(2/L) g5 v",
+      "operator": "M_N=[diag(k_0,...,k_(N-1)) | mu * 1_N]",
+      "rank_proof": "the first N columns form a diagonal minor with determinant product_n k_n != 0, hence rank(M_N)=N and right-nullity=1",
+      "right_null_vector": "chi_0 proportional to (-mu/k_0,...,-mu/k_(N-1),1), i.e. G-sum_n(mu/k_n) Sigma_n",
+      "row_fields": "lambda_n^AB, n=0,...,N-1, fermion Z4R charge +1",
+      "shape": "N x (N+1)"
+    }
+  },
+  "gate_ledger": [
+    {
+      "decision": "OPEN WITH RETRACTION: the present Spin(11) action has twelve normalizable Q-type colored chiral components and is not a valid one-action completion.",
+      "gate": "G1",
+      "status": "OPEN"
+    },
+    {
+      "decision": "OPEN: the coefficient-level 4D theory now contains an unremoved vectorlike colored pair in addition to the unsolved flavor/soft sectors.",
+      "gate": "G2",
+      "status": "OPEN"
+    },
+    {
+      "decision": "OPEN: compactification and saxion stabilization remain absent.",
+      "gate": "G3",
+      "status": "OPEN"
+    },
+    {
+      "decision": "OPEN WITH EXACT FAILURE: the two gauge-Higgs doublets survive, but the complete post-rank spectrum fails the zero-colored-chiral requirement.",
+      "gate": "G4",
+      "status": "OPEN"
+    },
+    {
+      "decision": "OPEN: arithmetic R parity is retained, but the spectrum and axino/LSP cosmology are not viable or computed.",
+      "gate": "G5",
+      "status": "OPEN"
+    },
+    {
+      "decision": "OPEN: inflation, reheating, and defect history remain absent.",
+      "gate": "G6",
+      "status": "OPEN"
+    },
+    {
+      "decision": "OPEN WITH RETRACTION: the V63 rank-VEV-shifted X/Y scale claim is withdrawn; no proton lifetime is derived.",
+      "gate": "G7",
+      "status": "OPEN"
+    },
+    {
+      "decision": "OPEN: no UV completion, full quantum definition, or quantified predictivity score exists.",
+      "gate": "G8",
+      "status": "OPEN"
+    }
+  ],
+  "infinite_normalizable_null_mode": {
+    "alpha_definition": "alpha^2=g5^2 v^2 L",
+    "bulk_profile": "the Sigma part of chi_0 is the flat profile -g5 v on 0<y<L; the mode continuously moves from boundary G at alpha=0 to a bulk Wilson-line/Sigma chiral mode as alpha grows",
+    "exact_sample_norm_squared": 2.7,
+    "fourier_identity": "sum_{n>=0} sin[(n+1/2) pi y/L]/(n+1/2)=pi/2 for 0<y<2L",
+    "half_integer_sum_identity": "sum_{n=0}^infinity 1/(n+1/2)^2 = pi^2/2",
+    "norm_convergence": [
+      {
+        "N": 4,
+        "error_to_exact": 0.08568381426102,
+        "norm_squared": 2.61431618573899
+      },
+      {
+        "N": 16,
+        "error_to_exact": 0.0215237523686,
+        "norm_squared": 2.6784762476314
+      },
+      {
+        "N": 64,
+        "error_to_exact": 0.00538257837929,
+        "norm_squared": 2.69461742162071
+      },
+      {
+        "N": 256,
+        "error_to_exact": 0.00134567025915,
+        "norm_squared": 2.69865432974085
+      },
+      {
+        "N": 1024,
+        "error_to_exact": 0.00033641796583,
+        "norm_squared": 2.69966358203417
+      }
+    ],
+    "norm_finite_for_every_finite_alpha": true,
+    "normalization_derivation": "1+sum_n(mu/k_n)^2 = 1 + (2 g5^2 v^2/L) (L^2/pi^2)(pi^2/2) = 1+g5^2 v^2 L",
+    "normalized_zero_mode": "chi_0=[G-sum_n(mu/k_n) Sigma_n]/sqrt(1+alpha^2)",
+    "physical_conclusion": "the null vector is square-normalizable and cannot disappear at the end of the semi-infinite tower",
+    "profile_samples": [
+      {
+        "absolute_error_to_minus_1": 0.0003317308,
+        "truncated_bulk_profile_for_g5v_1": -0.9996682692,
+        "y_over_L": 0.08
+      },
+      {
+        "absolute_error_to_minus_1": 0.0002030722,
+        "truncated_bulk_profile_for_g5v_1": -0.9997969278,
+        "y_over_L": 0.25
+      },
+      {
+        "absolute_error_to_minus_1": 0.0001099019,
+        "truncated_bulk_profile_for_g5v_1": -0.9998900981,
+        "y_over_L": 0.5
+      },
+      {
+        "absolute_error_to_minus_1": 4.31682e-05,
+        "truncated_bulk_profile_for_g5v_1": -0.9999568318,
+        "y_over_L": 0.83
+      }
+    ],
+    "sample_alpha_squared": 1.7
+  },
+  "integrity_checks": {
+    "AB_parities_match_bound_V63": true,
+    "V63_WZ_retracted": true,
+    "actual_IR_matches_walls_without_WZ": true,
+    "all_eight_gates_open": true,
+    "bound_V63_claim_was_dissolution": true,
+    "bound_V63_master_kept_G1_open": true,
+    "direct_Z4R_mass_absent": true,
+    "finite_truncations_have_exact_kernel": true,
+    "infinite_kernel_norm_finite": true,
+    "massive_roots_all_bracketed": true,
+    "primary_source_agrees_with_12_uneaten": true,
+    "x_zero_excluded_from_massive_equation": true,
+    "zero_gate_promotions": true
+  },
+  "lineage": {
+    "bound_V59_spin11_core": "bf666eb5e4d57bff18b05182d7d6cc7874bbc26dd71897153faf9ee67a5f8c42",
+    "bound_V62_route_core": "f99b9e09bc6d528480e2ac09cf1f2dd9e2feb5383fda25b3aa3cac436758142e",
+    "bound_V63_master_core": "89a16112997c2e0fb8439209b4c17e160f165c20b846697ee7da4a93cc22f3e3",
+    "bound_V63_route_core": "b7178dc59b9cd4a49468ce5ace543c047e58cc34bcf4fcc65466ee93f3a1bfd7",
+    "supersedes": "V63 only where it asserted dissolution, forced WZ inflow, and the rank-VEV-shifted X/Y scale; all other carried results retain their explicitly stated scope"
+  },
+  "massive_determinant_and_secular_flow": {
+    "all_massive_roots_bracketed": true,
+    "conclusion": "the Robin-Dirichlet equation correctly shifts every massive vector root from half-integer toward integer pi, but it cannot remove the additional chiral kernel",
+    "equivalent_unmultiplied_equation": "1+alpha^2 tan(x)/x=0; its x->0 limit is 1+alpha^2, not zero",
+    "euclidean_massive_ratio": "R(p)=1+g5^2 v^2 tanh(pL)/p =1+alpha^2 tanh(q)/q, q=pL",
+    "half_integer_resolvent_identity": "sum_n 1/(p^2+k_n^2)=L tanh(pL)/(2p)",
+    "massive_roots": [
+      {
+        "inside_open_bracket": true,
+        "level": 0,
+        "lower_half_integer_pi": 1.5707963267949,
+        "residual": 0.0,
+        "upper_integer_pi": 3.14159265358979,
+        "x": 2.14834147539713
+      },
+      {
+        "inside_open_bracket": true,
+        "level": 1,
+        "lower_half_integer_pi": 4.71238898038469,
+        "residual": -0.0,
+        "upper_integer_pi": 6.28318530717959,
+        "x": 4.98612029941719
+      },
+      {
+        "inside_open_bracket": true,
+        "level": 2,
+        "lower_half_integer_pi": 7.85398163397448,
+        "residual": -0.0,
+        "upper_integer_pi": 9.42477796076938,
+        "x": 8.02666319872566
+      },
+      {
+        "inside_open_bracket": true,
+        "level": 3,
+        "lower_half_integer_pi": 10.99557428756428,
+        "residual": -0.0,
+        "upper_integer_pi": 12.56637061435917,
+        "x": 11.12080565086363
+      },
+      {
+        "inside_open_bracket": true,
+        "level": 4,
+        "lower_half_integer_pi": 14.13716694115407,
+        "residual": -0.0,
+        "upper_integer_pi": 15.70796326794897,
+        "x": 14.23519944773494
+      }
+    ],
+    "massive_secular_equation": "x cos(x)+alpha^2 sin(x)=0, x=mL, with x=0 explicitly excluded",
+    "matrix_determinant_lemma_finite_N": "det[p^2+M_N M_N^dag]/product_n(p^2+k_n^2) =1+mu^2 sum_n 1/(p^2+k_n^2)",
+    "operator_mismatch": "M_N M_N^dag is N by N and contains only the N nonzero singular values.  M_N^dag M_N is (N+1) by (N+1) and contains the same N massive values plus the exact zero eigenvalue.  V63 used the former secular equation to make a claim about the latter spectrum.",
+    "sample": {
+      "alpha_squared": 1.4,
+      "closed_form_ratio": 2.16206434796874,
+      "convergence": [
+        {
+          "N": 4,
+          "error_to_closed_form": 0.07047038494354,
+          "finite_rank_one_ratio": 2.0915939630252
+        },
+        {
+          "N": 16,
+          "error_to_closed_form": 0.01772394914519,
+          "finite_rank_one_ratio": 2.14434039882354
+        },
+        {
+          "N": 64,
+          "error_to_closed_form": 0.00443268821701,
+          "finite_rank_one_ratio": 2.15763165975172
+        },
+        {
+          "N": 256,
+          "error_to_closed_form": 0.00110819867144,
+          "finite_rank_one_ratio": 2.1609561492973
+        },
+        {
+          "N": 1024,
+          "error_to_closed_form": 0.00027705008379,
+          "finite_rank_one_ratio": 2.16178729788494
+        }
+      ],
+      "q": 0.8
+    },
+    "x_zero_is_spurious_after_multiplication": true
+  },
+  "n_failed_integrity_checks": 0,
+  "n_integrity_checks": 13,
+  "remaining_obligations": [
+    {
+      "detail": "the current action has an exact normalizable zero mode per complex Q-type direction",
+      "obligation": "remove the twelve Q-type colored chiral components with an explicit Z4R-compatible full-rank action",
+      "status": "OPEN_BLOCKER"
+    },
+    {
+      "detail": "new q=2 partners or Z4R-breaking VEVs change the V62 ledger",
+      "obligation": "recompute localized and global anomalies after any repair",
+      "status": "OPEN"
+    },
+    {
+      "detail": "V64 does not promote V62's Lie-algebra-level GS arithmetic to a full quantum definition",
+      "obligation": "large-gauge/global-form quantization and Dai-Freed phase",
+      "status": "OPEN"
+    },
+    {
+      "detail": "no Kahler potential or stabilizing dynamics is specified",
+      "obligation": "saxion stabilization and axino/SUSY-breaking sector",
+      "status": "OPEN"
+    },
+    {
+      "detail": "the AB gauge-tower determinant solved here is not the unspecified flavor determinant",
+      "obligation": "exact mirror-mediator determinant and realistic flavor fit",
+      "status": "OPEN"
+    },
+    {
+      "detail": "the 5D EFT still has no exhibited microscopic regulator",
+      "obligation": "UV regulator/completion",
+      "status": "OPEN"
+    }
+  ],
+  "repair_acceptance_criteria": [
+    {
+      "criterion": "an explicit modified quadratic action gives a square/Fredholm-index-zero operator in every Q-type channel",
+      "fail_closed_test": "construct its finite-N matrices and prove zero right nullity uniformly as N grows",
+      "id": "R1"
+    },
+    {
+      "criterion": "the infinite operator has no normalizable zero or parametrically light colored chiral mode",
+      "fail_closed_test": "solve the exact kernel and spectrum before using a massive secular equation",
+      "id": "R2"
+    },
+    {
+      "criterion": "every new partner and mass term respects the claimed unbroken selector at the scale where it is used",
+      "fail_closed_test": "list gauge representations, Z4R charges, VEVs, and a full-rank mass determinant",
+      "id": "R3"
+    },
+    {
+      "criterion": "localized/global anomalies remain canceled after the repair",
+      "fail_closed_test": "recompute both wall ledgers, global-form quantization, and the Dai-Freed phase with the added fields",
+      "id": "R4"
+    },
+    {
+      "criterion": "the repaired spectrum retains the all-orders proton selector and realistic flavor route",
+      "fail_closed_test": "rerun the operator scan and the complete mediator determinant; no cross-route assumption is accepted",
+      "id": "R5"
+    }
+  ],
+  "representation_and_primary_source_correction": {
+    "AB_under_Pati_Salam": "(2,2,6)",
+    "SM_decomposition": {
+      "Q_type_rank_vev_coupled": [
+        "(3,2)_(+1/6)",
+        "(3bar,2)_(-1/6)"
+      ],
+      "XY_type_not_rank_vev_coupled": [
+        "(3,2)_(-5/6)",
+        "(3bar,2)_(+5/6)"
+      ]
+    },
+    "V63_XY_claim": "RETRACTED",
+    "correction": "the rank VEV shifts the Q-type massive AB tower, not the X/Y half; V63's assertion that the dissolved set fixes the X/Y proton-decay scale was a representation misidentification",
+    "dimension_six_proton_scale_from_rank_vev": "NOT_DERIVED",
+    "group_theory_reason": "Spin(10)->SU(5) breaks 45 into the SU(5)-coset 10+10bar+1.  The Q-type AB pair lies in 10+10bar and couples to the rank VEV.  The X/Y-type AB pair lies in the unbroken SU(5) adjoint 24 and is the other half of (2,2,6).",
+    "primary_source_certificate": {
+      "agrees_with_rectangular_kernel": true,
+      "location": "HTML lines 100-102",
+      "reported_boundary_effect": "the VEV changes Neumann toward Dirichlet for low gauge modes; the same passage nevertheless retains the twelve uneaten modes",
+      "reported_count": {
+        "eaten_by_zero_mode_gauge_fields": 9,
+        "rank_breaking_NG_directions": 21,
+        "uneaten_tree_massless": 12
+      },
+      "reported_quantum_numbers": "one Q-type complex scalar sector (3,2)_(1/6) in the non-supersymmetric model",
+      "source": "Hosotani-Yamatsu arXiv:1504.03817"
+    }
+  },
+  "research_question": "Does the exact supersymmetric AB KK mass operator really absorb the twelve Q-type rank Goldstones, or does the complete rectangular operator retain a normalizable chiral zero mode?",
+  "retraction_ledger": [
+    {
+      "V64_status": "RETRACTED_FOR_THE_ORBIFOLD_ACTION",
+      "prior_claim": "V59: generic rank breaking leaves zero new light colored states",
+      "reason": "only nine gauge zero-mode directions eat rank chirals; the Q-type twelve form the AB kernel"
+    },
+    {
+      "V64_status": "RETRACTED",
+      "prior_claim": "V63: twelve Q-type Goldstone chirals dissolve into the semi-infinite AB tower",
+      "reason": "M_N is rectangular and its unique right null vector remains normalizable at N=infinity"
+    },
+    {
+      "V64_status": "RETRACTED",
+      "prior_claim": "V63: anomaly matching uniquely forces a (-2,-3) WZ inflow term",
+      "reason": "the light exotic anomaly itself is (-2,-3), so the complete IR ledger matches the wall sum without WZ"
+    },
+    {
+      "V64_status": "RETRACTED",
+      "prior_claim": "V63: the dissolved set includes X/Y and the rank VEV fixes their proton-decay scale",
+      "reason": "the VEV-coupled half of (2,2,6) is Q-type; X/Y is the SU(5)-adjoint half"
+    },
+    {
+      "V64_status": "PRESERVED_AS_ARITHMETIC_ONLY",
+      "prior_claim": "V61: the Z4R selector is the unique arithmetic class in the tested scan",
+      "reason": "the null-mode calculation does not alter the charge-classification theorem"
+    },
+    {
+      "V64_status": "PRESERVED_CONDITIONALLY",
+      "prior_claim": "V62: pre-VEV localized wall ledger and Lie-algebra-level GS congruences",
+      "reason": "the retraction changes the post-VEV light-spectrum interpretation, not the pre-VEV projector trace"
+    }
+  ],
+  "schema": "susy_v64_spin11_ab_tower_null_mode_retraction_audit/v1",
+  "source_manifest": {
+    "audit_script": {
+      "path": "C:\\Users\\jayal\\Downloads\\So10Theory2\\So10Theory\\_g3_equality_classification_integration\\susy_v64_spin11_ab_tower_null_mode_retraction_audit.py",
+      "sha256": "c1c2176e234cad4f46ec7ade44a1e439d495438c5c1e23653d410ce0254c1e49"
+    },
+    "bound_V59_spin11": {
+      "path": "C:\\Users\\jayal\\Downloads\\So10Theory2\\So10Theory\\_g3_equality_classification_integration\\SUSY_V59_SPIN11_GAUGE_HIGGS_COMPLETION_AUDIT.json",
+      "sha256": "dfe07e9af7ef080cd13413dd877f25e73a0e4f22140d8a5e311de590bf92e0e6"
+    },
+    "bound_V62_route": {
+      "path": "C:\\Users\\jayal\\Downloads\\So10Theory2\\So10Theory\\_g3_equality_classification_integration\\SUSY_V62_SPIN11_LOCALIZED_Z4R_ANOMALY_GS_AUDIT.json",
+      "sha256": "c43847f3be791ad86d38209a73943f30fbe3284966d9c5c66235912d6af26d07"
+    },
+    "bound_V63_master": {
+      "path": "C:\\Users\\jayal\\Downloads\\So10Theory2\\So10Theory\\_g3_equality_classification_integration\\SUSY_V63_MULTIPATH_G1_FRONTIER_MASTER_AUDIT.json",
+      "sha256": "5c75e94716fa11a08f937fb9036548490c6229d1a4b633b194e805e77c199223"
+    },
+    "bound_V63_route": {
+      "path": "C:\\Users\\jayal\\Downloads\\So10Theory2\\So10Theory\\_g3_equality_classification_integration\\SUSY_V63_SPIN11_GOLDSTONE_DISSOLUTION_WZ_INFLOW_AUDIT.json",
+      "sha256": "d044fb4e61c7df8b4921515d423ab52139059140bdb27bc93ba6ad082bb07b8c"
+    },
+    "primary_sources": [
+      {
+        "arxiv": "1504.03817",
+        "authors": "Yutaka Hosotani and Naoki Yamatsu",
+        "id": "HOSOTANI_YAMATSU_2015",
+        "scope": "The original Spin(11) construction states explicitly that only nine of the twenty-one rank-breaking Nambu-Goldstone directions are eaten, while twelve Q-type modes remain tree-level massless; it separately states that the brane VEV changes low gauge-tower Neumann conditions toward Dirichlet.  See the HTML text corresponding to lines 100-102.",
+        "title": "Gauge-Higgs Grand Unification",
+        "url": "https://arxiv.org/abs/1504.03817"
+      },
+      {
+        "arxiv": "hep-ph/0103125",
+        "authors": "Lawrence J. Hall and Yasunori Nomura",
+        "id": "HALL_NOMURA_2001",
+        "scope": "Standard S1/(Z2 x Z2') mode expansions: (+,-) cosine and (-,+) sine towers share k_n=(n+1/2) pi/L and form massive 4D vector towers.",
+        "title": "Gauge Unification in Higher Dimensions",
+        "url": "https://arxiv.org/abs/hep-ph/0103125"
+      },
+      {
+        "arxiv": "hep-ph/0112230",
+        "authors": "Arthur Hebecker",
+        "id": "HEBECKER_2001",
+        "scope": "Gauge-covariant 4D-superfield description of the 5D vector multiplet and boundary interactions; the framework in which the surviving Goldstone/Sigma chiral combination is counted.",
+        "title": "5D super Yang-Mills theory in 4D superspace, superfield brane operators, and applications to orbifold GUTs",
+        "url": "https://arxiv.org/abs/hep-ph/0112230"
+      },
+      {
+        "arxiv": "hep-th/0101233",
+        "authors": "Nima Arkani-Hamed, Thomas Gregoire, and Jay Wacker",
+        "id": "ARKANI_HAMED_GREGOIRE_WACKER_2001",
+        "scope": "Superspace framework for brane interactions, anomaly inflow, and super-Chern-Simons terms; it makes an explicit supersymmetric functional an obligation rather than something fixed by a residue alone.",
+        "title": "Higher dimensional supersymmetry in 4D superspace",
+        "url": "https://arxiv.org/abs/hep-th/0101233"
+      },
+      {
+        "arxiv": "hep-th/0202144",
+        "authors": "Luigi Pilo and Antonio Riotto",
+        "id": "PILO_RIOTTO_2002",
+        "scope": "In S1/(Z2 x Z2') examples, the Chern-Simons term is obtained from an explicitly regulated KK determinant.  This supports requiring the regulator and determinant phase before asserting an inflow functional.",
+        "title": "On Anomalies in Orbifold Theories",
+        "url": "https://arxiv.org/abs/hep-th/0202144"
+      },
+      {
+        "arxiv": "0803.0497",
+        "authors": "Ben Gripaios",
+        "id": "GRIPAIOS_2008",
+        "scope": "Interval anomalies can induce a WZW term only for the appropriate consistent anomaly pattern; such a term is not automatic and some cosets explicitly have none.",
+        "title": "Anomaly Holography, the Wess-Zumino-Witten Term, and Electroweak Symmetry Breaking",
+        "url": "https://arxiv.org/abs/0803.0497"
+      },
+      {
+        "arxiv": "1808.00009",
+        "authors": "Inaki Garcia-Etxebarria and Miguel Montero",
+        "id": "GARCIA_ETXEBARRIA_MONTERO_2018",
+        "scope": "Refined discrete-anomaly cancellation depends on the global fermion and UV data; the still-absent eta-invariant calculation cannot be replaced by mixed-anomaly residues.",
+        "title": "Dai-Freed anomalies in particle physics",
+        "url": "https://arxiv.org/abs/1808.00009"
+      }
+    ],
+    "pytest": {
+      "path": "C:\\Users\\jayal\\Downloads\\So10Theory2\\So10Theory\\_g3_equality_classification_integration\\test_susy_v64_spin11_ab_tower_null_mode_retraction_audit.py",
+      "sha256": "e9db726a33d14c22e00bd452d19517f4a97bd0310b35c38180cf8d8e2ced087e"
+    }
+  },
+  "status": "V64_SPIN11_AB_TOWER_NULL_MODE_RETRACTION__RECTANGULAR_N_BY_N_PLUS_1_MASS_OPERATOR_HAS_EXACT_RIGHT_KERNEL__INFINITE_KERNEL_NORMALIZABLE__MASSIVE_SECULAR_DETERMINANT_OMITS_ZERO_MODE__TWELVE_Q_TYPE_COLORED_CHIRAL_COMPONENTS_SURVIVE__TRUE_IR_LEDGER_EQUALS_ORBIFOLD_WALL_SUM__V63_FORCED_WZ_AND_SHIFTED_XY_CLAIMS_RETRACTED__Z4R_FORBIDS_DIRECT_BILINEAR__REMOVAL_OPEN__STRICT_G1_OPEN__ZERO_GATES_CLOSED",
+  "strict_G1_matrix": [
+    {
+      "criterion": "exact_two_Higgs_zero_modes_no_colored_chiral_zero_modes",
+      "evidence": "the adjoint Sigma projector still yields two Higgs modes, but rank breaking adds twelve Q-type colored chiral components",
+      "status": "FAIL_FOR_COMPLETE_ACTION"
+    },
+    {
+      "criterion": "rank_breaking_without_light_exotics",
+      "evidence": "one normalizable null mode per complex Q-type AB direction",
+      "status": "FAIL_EXACT"
+    },
+    {
+      "criterion": "V63_Goldstone_dissolution",
+      "evidence": "rectangular M_N has right-nullity one for all N and finite infinite-limit norm",
+      "status": "RETRACTED"
+    },
+    {
+      "criterion": "post_VEV_WZ_inflow",
+      "evidence": "MSSM plus the surviving exotic anomaly equals the V62 wall sum exactly",
+      "status": "NOT_FORCED"
+    },
+    {
+      "criterion": "exact_proton_selector",
+      "evidence": "V61 charge theorem survives, but its q=0 exotic pair has no allowed direct mass",
+      "status": "PASS_ARITHMETIC_ONLY"
+    },
+    {
+      "criterion": "localized_R_anomaly_ledger",
+      "evidence": "V62 projector trace remains; its post-VEV MSSM-only interpretation is corrected",
+      "status": "PRE_VEV_LEDGER_PRESERVED_CONDITIONALLY"
+    },
+    {
+      "criterion": "relative_5D_Dai_Freed_and_large_gauge_quantization",
+      "evidence": "not computed",
+      "status": "OPEN"
+    },
+    {
+      "criterion": "realistic_full_rank_Yukawas",
+      "evidence": "the mirror-mediator determinant remains unspecified",
+      "status": "OPEN"
+    },
+    {
+      "criterion": "UV_complete_regulator",
+      "evidence": "not exhibited",
+      "status": "OPEN"
+    },
+    {
+      "criterion": "strict_G1",
+      "evidence": "the exact light colored kernel is already a spectrum-level blocker",
+      "status": "OPEN_WITH_CURRENT_SPIN11_ACTION_REJECTED"
+    }
+  ],
+  "terminal_decision": {
+    "V63_dissolution_claim_valid": false,
+    "V63_forced_WZ_claim_valid": false,
+    "V64_G1_closed": false,
+    "complete_theory": false,
+    "current_Spin11_action_accepted": false,
+    "exact_blocker": "twelve normalizable Q-type colored chiral components with no full-rank Z4R-compatible mass in the current supersymmetric vacuum",
+    "gate_promotions": 0,
+    "next_action": "do not compute a WZ functional for a nonexistent deficit; first supply and audit an explicit null-mode lifting sector satisfying R1-R5"
+  },
+  "version": "V64"
+}

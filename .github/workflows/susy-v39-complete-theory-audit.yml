@@ -1,0 +1,48 @@
+name: SUSY V39 complete-theory audit
+
+on:
+  push:
+    paths:
+      - "susy_v39_*.py"
+      - "test_susy_v39_*.py"
+      - "SUSY_V39_*.json"
+      - "SUSY_V39_*.md"
+      - "models/PSZ4RZ5610Z3SUSYV39/**"
+      - "tools/derive-susy-v33-ps-rges.wls"
+      - "tools/validate-susy-v39-baryon-repair.wls"
+      - ".github/workflows/susy-v39-complete-theory-audit.yml"
+  pull_request:
+    paths:
+      - "susy_v39_*.py"
+      - "test_susy_v39_*.py"
+      - "SUSY_V39_*.json"
+      - "SUSY_V39_*.md"
+      - "models/PSZ4RZ5610Z3SUSYV39/**"
+      - "tools/derive-susy-v33-ps-rges.wls"
+      - "tools/validate-susy-v39-baryon-repair.wls"
+      - ".github/workflows/susy-v39-complete-theory-audit.yml"
+  workflow_dispatch:
+
+jobs:
+  verify-v39-completion-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install pytest numpy scipy
+      - run: python -B susy_v39_g1_mirror_gap_audit.py --check
+      - run: python -B susy_v39_g5_freezein_cosmology.py --check
+      - run: python -B susy_v39_g5_secluded_freezeout.py --check
+      - run: python -B susy_v39_g7_g8_architecture.py --check
+      - run: python -B susy_v39_soft_boundary_audit.py --check
+      - run: python -B susy_v39_complete_theory_audit.py --check
+      - run: >-
+          python -m pytest -q
+          test_susy_v39_g1_mirror_gap_audit.py
+          test_susy_v39_g5_freezein_cosmology.py
+          test_susy_v39_g5_secluded_freezeout.py
+          test_susy_v39_g7_g8_architecture.py
+          test_susy_v39_soft_boundary_audit.py
+          test_susy_v39_complete_theory_audit.py

@@ -1,0 +1,303 @@
+{
+  "anomaly_and_level_matrix": {
+    "T01_affine_shifts": {
+      "Z11": "-9/11",
+      "Z4R": "-1/2"
+    },
+    "T01_integer_topological_levels": {
+      "SU2L": 1,
+      "SU2R": 1,
+      "SU4": 1,
+      "Z11_cubic": 2,
+      "Z11_gravity": 2,
+      "Z4R_cubic_after_51_modulini": 1,
+      "Z4R_gravity_after_51_modulini": 1
+    },
+    "boundary": "the integer counterterm ledger is exact inside FFCC; deriving it from a compactification remains part of the unproved FCMA microscopic origin",
+    "congruence_checks": {
+      "Z11_cubic": "7 + (-9)*2 = 0 mod 11",
+      "Z11_gauge": "9 + (-9)*1 = 0 mod 11",
+      "Z11_gravity": "7 + (-9)*2 = 0 mod 11",
+      "Z4R_cubic": "same parity identity q^3=q mod 2",
+      "Z4R_gauge": "1 + (-1)*1 = 0 mod 2",
+      "Z4R_gravity": "(20-51) + (-1)*1 = 0 mod 2"
+    },
+    "visible_residues": {
+      "Z11_cubic_mod11": 7,
+      "Z11_gravity_mod11": 7,
+      "Z11_mixed_mod11": {
+        "SU2L": 9,
+        "SU2R": 9,
+        "SU4": 9
+      },
+      "Z4R_mixed_mod2": {
+        "SU2L": 1,
+        "SU2R": 1,
+        "SU4": 1
+      }
+    }
+  },
+  "candidate_id": "V30_FFCC",
+  "new_multiplets": {
+    "Kahler_chiral_moduli": [
+      "T01",
+      "T02",
+      "T03",
+      "T04",
+      "T05",
+      "T06",
+      "T07",
+      "T08",
+      "T09",
+      "T10",
+      "T11",
+      "T12",
+      "T13",
+      "T14",
+      "T15",
+      "T16",
+      "T17",
+      "T18",
+      "T19",
+      "T20",
+      "T21",
+      "T22",
+      "T23",
+      "T24",
+      "T25",
+      "T26",
+      "T27",
+      "T28",
+      "T29",
+      "T30",
+      "T31",
+      "T32",
+      "T33",
+      "T34",
+      "T35",
+      "T36",
+      "T37",
+      "T38",
+      "T39",
+      "T40",
+      "T41",
+      "T42",
+      "T43",
+      "T44",
+      "T45",
+      "T46",
+      "T47",
+      "T48",
+      "T49",
+      "T50",
+      "T51"
+    ],
+    "flux_fixed_chiral_moduli": [
+      "S",
+      "U1",
+      "U2",
+      "U3"
+    ],
+    "gauge_three_form_multiplets": 172,
+    "propagating_hidden_chiral_or_vector_multiplets": 0,
+    "three_form_counting": "18 visible coefficients + 153 instanton coefficients + 1 flux-block coefficient",
+    "three_form_selector_and_anomaly_role": "topological, selector-neutral, and without independent propagating fermions"
+  },
+  "schema": "susy-v30-field-selector-manifest-v1",
+  "selector": {
+    "finite_chiral_functional_axiom": {
+      "definition": "the Wilsonian chiral measure is the idempotent projection onto the 18 normalized V24 superpotential tensor channels; every other holomorphic visible coefficient is exactly zero",
+      "idempotent": true,
+      "local_superspace_realization_known": false,
+      "microscopic_origin_known": false,
+      "name": "FCMA-18"
+    },
+    "residual_subgroup_after_nonperturbative_terms": "Z2 matter parity",
+    "visible_charge_table_inherited_exactly": true,
+    "visible_group": "Z4R x Z11"
+  },
+  "visible_field_content": [
+    {
+      "PS_representation": [
+        1,
+        2,
+        2
+      ],
+      "Z11_charge": 0,
+      "Z11_signed_charge": 0,
+      "Z4R_charge": 0,
+      "accidental_PQ_charge": 0,
+      "multiplicity": 1,
+      "name": "H",
+      "role": "MSSM_bidoublet"
+    },
+    {
+      "PS_representation": [
+        4,
+        2,
+        1
+      ],
+      "Z11_charge": 0,
+      "Z11_signed_charge": 0,
+      "Z4R_charge": 1,
+      "accidental_PQ_charge": 0,
+      "multiplicity": 3,
+      "name": "Q",
+      "role": "three_left_families"
+    },
+    {
+      "PS_representation": [
+        -4,
+        1,
+        2
+      ],
+      "Z11_charge": 0,
+      "Z11_signed_charge": 0,
+      "Z4R_charge": 1,
+      "accidental_PQ_charge": 0,
+      "multiplicity": 3,
+      "name": "Qc",
+      "role": "three_right_families"
+    },
+    {
+      "PS_representation": [
+        1,
+        1,
+        1
+      ],
+      "Z11_charge": 0,
+      "Z11_signed_charge": 0,
+      "Z4R_charge": 2,
+      "accidental_PQ_charge": 0,
+      "multiplicity": 1,
+      "name": "X",
+      "role": "PS_driving_singlet"
+    },
+    {
+      "PS_representation": [
+        -4,
+        1,
+        2
+      ],
+      "Z11_charge": 0,
+      "Z11_signed_charge": 0,
+      "Z4R_charge": 0,
+      "accidental_PQ_charge": 0,
+      "multiplicity": 1,
+      "name": "Sc",
+      "role": "PS_breaking"
+    },
+    {
+      "PS_representation": [
+        4,
+        1,
+        2
+      ],
+      "Z11_charge": 0,
+      "Z11_signed_charge": 0,
+      "Z4R_charge": 0,
+      "accidental_PQ_charge": 0,
+      "multiplicity": 1,
+      "name": "Sbc",
+      "role": "PS_breaking_conjugate"
+    },
+    {
+      "PS_representation": [
+        6,
+        1,
+        1
+      ],
+      "Z11_charge": 0,
+      "Z11_signed_charge": 0,
+      "Z4R_charge": 2,
+      "accidental_PQ_charge": 0,
+      "multiplicity": 1,
+      "name": "Sigma",
+      "role": "real_color_sextet"
+    },
+    {
+      "PS_representation": [
+        -4,
+        2,
+        1
+      ],
+      "Z11_charge": 10,
+      "Z11_signed_charge": -1,
+      "Z4R_charge": 3,
+      "accidental_PQ_charge": -1,
+      "multiplicity": 1,
+      "name": "PsiBar",
+      "role": "KSVZ_left_conjugate"
+    },
+    {
+      "PS_representation": [
+        4,
+        2,
+        1
+      ],
+      "Z11_charge": 0,
+      "Z11_signed_charge": 0,
+      "Z4R_charge": 1,
+      "accidental_PQ_charge": 0,
+      "multiplicity": 1,
+      "name": "Psi",
+      "role": "KSVZ_left"
+    },
+    {
+      "PS_representation": [
+        -4,
+        1,
+        2
+      ],
+      "Z11_charge": 0,
+      "Z11_signed_charge": 0,
+      "Z4R_charge": 1,
+      "accidental_PQ_charge": 0,
+      "multiplicity": 1,
+      "name": "PsiC",
+      "role": "KSVZ_right"
+    },
+    {
+      "PS_representation": [
+        4,
+        1,
+        2
+      ],
+      "Z11_charge": 10,
+      "Z11_signed_charge": -1,
+      "Z4R_charge": 3,
+      "accidental_PQ_charge": -1,
+      "multiplicity": 1,
+      "name": "PsiCBar",
+      "role": "KSVZ_right_conjugate"
+    },
+    {
+      "PS_representation": [
+        1,
+        1,
+        1
+      ],
+      "Z11_charge": 1,
+      "Z11_signed_charge": 1,
+      "Z4R_charge": 2,
+      "accidental_PQ_charge": 1,
+      "multiplicity": 1,
+      "name": "P",
+      "role": "radiative_PQ_breaking"
+    },
+    {
+      "PS_representation": [
+        1,
+        1,
+        1
+      ],
+      "Z11_charge": 0,
+      "Z11_signed_charge": 0,
+      "Z4R_charge": 1,
+      "accidental_PQ_charge": 0,
+      "multiplicity": 3,
+      "name": "N",
+      "role": "Majorana_UV_messenger"
+    }
+  ]
+}

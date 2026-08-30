@@ -1,0 +1,988 @@
+{
+  "checks": {
+    "all_source_files_present": true,
+    "all_v37_charge_lifts_reduce_to_frozen_finite_charges": true,
+    "full_G1_remains_fail_closed": true,
+    "isolated_U1H_parent_is_gauge_anomaly_free": true,
+    "mirror_packet_cancels_all_listed_5D_anomaly_rows": true,
+    "ordinary_threshold_obstruction_survives_even_order_relaxation": true,
+    "pure_PS_anomalies_are_absent": true,
+    "single_compact_axion_has_no_integer_level_solution": true,
+    "visible_mixed_PS_residue_is_exactly_minus_8_each": true
+  },
+  "core_sha256": "0e420f82ec85ad41e64cc4724d9e6dc89e131541ec1d0cc6c0397ead7252ec3f",
+  "failures": [],
+  "five_dimensional_interval_EFT": {
+    "APS_eta_inflow_protocol": {
+      "literature": [
+        "https://arxiv.org/abs/1909.08775",
+        "https://arxiv.org/abs/hep-th/0305024",
+        "https://arxiv.org/abs/1808.02881"
+      ],
+      "prescription": "Use the APS/Dai--Freed eta-invariant of the 5D regulator bundle for the mirror-paired boundary representation; its boundary variation is the negative of the displayed local anomaly polynomial.",
+      "why_it_is_quantized": "The complete boundary representation is rho plus its inverse.  Its anomaly class is additive and therefore zero before choosing a local Chern--Simons representative."
+    },
+    "boundary_0": "the V37 chiral packet with the listed continuous charge lifts",
+    "boundary_L": "one exact opposite-anomaly mirror packet, with PS-conjugate representations and inverse X, H, and chiral-fermion R actions",
+    "established_microscopic_UV_completion": false,
+    "geometry": "M4 x I with I=[0,L] and bulk gauge group GPS x U(1)X x U(1)H",
+    "integer_anomaly_polynomial_coefficient_ledger": {
+      "all_net_rows_zero": true,
+      "mirror": {
+        "U1H_PS_squared_doubled_SU4_SU2L_SU2R": [
+          0,
+          0,
+          0
+        ],
+        "U1H_cubed": 0,
+        "U1H_gravity": 0,
+        "U1X_PS_squared_doubled_SU4_SU2L_SU2R": [
+          8,
+          8,
+          8
+        ],
+        "U1X_U1H_squared": 9520,
+        "U1X_cubed": -5247,
+        "U1X_gravity": 33,
+        "U1X_squared_U1H": -432,
+        "chiral_matter_Z4R_U1H_squared": -9520,
+        "chiral_matter_Z4R_U1X_U1H": 216,
+        "chiral_matter_Z4R_U1X_squared": 1657,
+        "chiral_matter_Z4R_cubed": -117,
+        "chiral_matter_Z4R_gravity": -21,
+        "chiral_matter_Z4R_squared_U1H": 0,
+        "chiral_matter_Z4R_squared_U1X": 129
+      },
+      "net": {
+        "U1H_PS_squared_doubled_SU4_SU2L_SU2R": [
+          0,
+          0,
+          0
+        ],
+        "U1H_cubed": 0,
+        "U1H_gravity": 0,
+        "U1X_PS_squared_doubled_SU4_SU2L_SU2R": [
+          0,
+          0,
+          0
+        ],
+        "U1X_U1H_squared": 0,
+        "U1X_cubed": 0,
+        "U1X_gravity": 0,
+        "U1X_squared_U1H": 0,
+        "chiral_matter_Z4R_U1H_squared": 0,
+        "chiral_matter_Z4R_U1X_U1H": 0,
+        "chiral_matter_Z4R_U1X_squared": 0,
+        "chiral_matter_Z4R_cubed": 0,
+        "chiral_matter_Z4R_gravity": 0,
+        "chiral_matter_Z4R_squared_U1H": 0,
+        "chiral_matter_Z4R_squared_U1X": 0
+      },
+      "visible": {
+        "U1H_PS_squared_doubled_SU4_SU2L_SU2R": [
+          0,
+          0,
+          0
+        ],
+        "U1H_cubed": 0,
+        "U1H_gravity": 0,
+        "U1X_PS_squared_doubled_SU4_SU2L_SU2R": [
+          -8,
+          -8,
+          -8
+        ],
+        "U1X_U1H_squared": -9520,
+        "U1X_cubed": 5247,
+        "U1X_gravity": -33,
+        "U1X_squared_U1H": 432,
+        "chiral_matter_Z4R_U1H_squared": 9520,
+        "chiral_matter_Z4R_U1X_U1H": -216,
+        "chiral_matter_Z4R_U1X_squared": -1657,
+        "chiral_matter_Z4R_cubed": 117,
+        "chiral_matter_Z4R_gravity": 21,
+        "chiral_matter_Z4R_squared_U1H": 0,
+        "chiral_matter_Z4R_squared_U1X": -129
+      }
+    },
+    "mirror_packet": [
+      {
+        "PS_conjugate_representation": "(1,2,2)",
+        "PS_dimension_per_copy": 4,
+        "PS_representation": "(1,2,2)",
+        "SU4_cubic_index": 0,
+        "U1H_charge_lift": 0,
+        "U1X_charge_lift": 0,
+        "Z4R_fermion_lift": 1,
+        "Z4R_superfield_charge": 2,
+        "Z5610_charge": 0,
+        "doubled_Dynkin_indices_SU4_SU2L_SU2R": [
+          0,
+          2,
+          2
+        ],
+        "field": "mirror_H",
+        "multiplicity": 1
+      },
+      {
+        "PS_conjugate_representation": "(bar4,2,1)",
+        "PS_dimension_per_copy": 8,
+        "PS_representation": "(bar4,2,1)",
+        "SU4_cubic_index": -2,
+        "U1H_charge_lift": 0,
+        "U1X_charge_lift": 0,
+        "Z4R_fermion_lift": 0,
+        "Z4R_superfield_charge": 1,
+        "Z5610_charge": 0,
+        "doubled_Dynkin_indices_SU4_SU2L_SU2R": [
+          2,
+          4,
+          0
+        ],
+        "field": "mirror_Q",
+        "multiplicity": 3
+      },
+      {
+        "PS_conjugate_representation": "(4,1,2)",
+        "PS_dimension_per_copy": 8,
+        "PS_representation": "(4,1,2)",
+        "SU4_cubic_index": 2,
+        "U1H_charge_lift": 0,
+        "U1X_charge_lift": 0,
+        "Z4R_fermion_lift": 0,
+        "Z4R_superfield_charge": 1,
+        "Z5610_charge": 0,
+        "doubled_Dynkin_indices_SU4_SU2L_SU2R": [
+          2,
+          0,
+          4
+        ],
+        "field": "mirror_Qc",
+        "multiplicity": 3
+      },
+      {
+        "PS_conjugate_representation": "(1,1,1)",
+        "PS_dimension_per_copy": 1,
+        "PS_representation": "(1,1,1)",
+        "SU4_cubic_index": 0,
+        "U1H_charge_lift": 0,
+        "U1X_charge_lift": 0,
+        "Z4R_fermion_lift": -1,
+        "Z4R_superfield_charge": 0,
+        "Z5610_charge": 0,
+        "doubled_Dynkin_indices_SU4_SU2L_SU2R": [
+          0,
+          0,
+          0
+        ],
+        "field": "mirror_X",
+        "multiplicity": 1
+      },
+      {
+        "PS_conjugate_representation": "(4,1,2)",
+        "PS_dimension_per_copy": 8,
+        "PS_representation": "(4,1,2)",
+        "SU4_cubic_index": 2,
+        "U1H_charge_lift": 0,
+        "U1X_charge_lift": 0,
+        "Z4R_fermion_lift": 1,
+        "Z4R_superfield_charge": 2,
+        "Z5610_charge": 0,
+        "doubled_Dynkin_indices_SU4_SU2L_SU2R": [
+          2,
+          0,
+          4
+        ],
+        "field": "mirror_Sc",
+        "multiplicity": 1
+      },
+      {
+        "PS_conjugate_representation": "(bar4,1,2)",
+        "PS_dimension_per_copy": 8,
+        "PS_representation": "(bar4,1,2)",
+        "SU4_cubic_index": -2,
+        "U1H_charge_lift": 0,
+        "U1X_charge_lift": 0,
+        "Z4R_fermion_lift": 1,
+        "Z4R_superfield_charge": 2,
+        "Z5610_charge": 0,
+        "doubled_Dynkin_indices_SU4_SU2L_SU2R": [
+          2,
+          0,
+          4
+        ],
+        "field": "mirror_Sbc",
+        "multiplicity": 1
+      },
+      {
+        "PS_conjugate_representation": "(6,1,1)",
+        "PS_dimension_per_copy": 6,
+        "PS_representation": "(6,1,1)",
+        "SU4_cubic_index": 0,
+        "U1H_charge_lift": 0,
+        "U1X_charge_lift": 0,
+        "Z4R_fermion_lift": -1,
+        "Z4R_superfield_charge": 0,
+        "Z5610_charge": 0,
+        "doubled_Dynkin_indices_SU4_SU2L_SU2R": [
+          2,
+          0,
+          0
+        ],
+        "field": "mirror_Sig6",
+        "multiplicity": 1
+      },
+      {
+        "PS_conjugate_representation": "(4,2,1)",
+        "PS_dimension_per_copy": 8,
+        "PS_representation": "(4,2,1)",
+        "SU4_cubic_index": 2,
+        "U1H_charge_lift": 0,
+        "U1X_charge_lift": 2,
+        "Z4R_fermion_lift": -2,
+        "Z4R_superfield_charge": 3,
+        "Z5610_charge": 170,
+        "doubled_Dynkin_indices_SU4_SU2L_SU2R": [
+          2,
+          4,
+          0
+        ],
+        "field": "mirror_PsiBar",
+        "multiplicity": 1
+      },
+      {
+        "PS_conjugate_representation": "(bar4,2,1)",
+        "PS_dimension_per_copy": 8,
+        "PS_representation": "(bar4,2,1)",
+        "SU4_cubic_index": -2,
+        "U1H_charge_lift": 0,
+        "U1X_charge_lift": 0,
+        "Z4R_fermion_lift": 0,
+        "Z4R_superfield_charge": 1,
+        "Z5610_charge": 0,
+        "doubled_Dynkin_indices_SU4_SU2L_SU2R": [
+          2,
+          4,
+          0
+        ],
+        "field": "mirror_Psi",
+        "multiplicity": 1
+      },
+      {
+        "PS_conjugate_representation": "(4,1,2)",
+        "PS_dimension_per_copy": 8,
+        "PS_representation": "(4,1,2)",
+        "SU4_cubic_index": 2,
+        "U1H_charge_lift": 0,
+        "U1X_charge_lift": 0,
+        "Z4R_fermion_lift": 0,
+        "Z4R_superfield_charge": 1,
+        "Z5610_charge": 0,
+        "doubled_Dynkin_indices_SU4_SU2L_SU2R": [
+          2,
+          0,
+          4
+        ],
+        "field": "mirror_PsiC",
+        "multiplicity": 1
+      },
+      {
+        "PS_conjugate_representation": "(bar4,1,2)",
+        "PS_dimension_per_copy": 8,
+        "PS_representation": "(bar4,1,2)",
+        "SU4_cubic_index": -2,
+        "U1H_charge_lift": 0,
+        "U1X_charge_lift": 2,
+        "Z4R_fermion_lift": -2,
+        "Z4R_superfield_charge": 3,
+        "Z5610_charge": 170,
+        "doubled_Dynkin_indices_SU4_SU2L_SU2R": [
+          2,
+          0,
+          4
+        ],
+        "field": "mirror_PsiCBar",
+        "multiplicity": 1
+      },
+      {
+        "PS_conjugate_representation": "(1,1,1)",
+        "PS_dimension_per_copy": 1,
+        "PS_representation": "(1,1,1)",
+        "SU4_cubic_index": 0,
+        "U1H_charge_lift": 0,
+        "U1X_charge_lift": -2,
+        "Z4R_fermion_lift": -1,
+        "Z4R_superfield_charge": 0,
+        "Z5610_charge": 5440,
+        "doubled_Dynkin_indices_SU4_SU2L_SU2R": [
+          0,
+          0,
+          0
+        ],
+        "field": "mirror_P",
+        "multiplicity": 1
+      },
+      {
+        "PS_conjugate_representation": "(1,1,1)",
+        "PS_dimension_per_copy": 1,
+        "PS_representation": "(1,1,1)",
+        "SU4_cubic_index": 0,
+        "U1H_charge_lift": 0,
+        "U1X_charge_lift": 0,
+        "Z4R_fermion_lift": 0,
+        "Z4R_superfield_charge": 1,
+        "Z5610_charge": 0,
+        "doubled_Dynkin_indices_SU4_SU2L_SU2R": [
+          0,
+          0,
+          0
+        ],
+        "field": "mirror_Nv",
+        "multiplicity": 3
+      },
+      {
+        "PS_conjugate_representation": "(1,1,1)",
+        "PS_dimension_per_copy": 1,
+        "PS_representation": "(1,1,1)",
+        "SU4_cubic_index": 0,
+        "U1H_charge_lift": 0,
+        "U1X_charge_lift": 2,
+        "Z4R_fermion_lift": -1,
+        "Z4R_superfield_charge": 0,
+        "Z5610_charge": 170,
+        "doubled_Dynkin_indices_SU4_SU2L_SU2R": [
+          0,
+          0,
+          0
+        ],
+        "field": "mirror_Pbar",
+        "multiplicity": 1
+      },
+      {
+        "PS_conjugate_representation": "(1,1,1)",
+        "PS_dimension_per_copy": 1,
+        "PS_representation": "(1,1,1)",
+        "SU4_cubic_index": 0,
+        "U1H_charge_lift": 0,
+        "U1X_charge_lift": 0,
+        "Z4R_fermion_lift": -1,
+        "Z4R_superfield_charge": 0,
+        "Z5610_charge": 0,
+        "doubled_Dynkin_indices_SU4_SU2L_SU2R": [
+          0,
+          0,
+          0
+        ],
+        "field": "mirror_Zp",
+        "multiplicity": 1
+      },
+      {
+        "PS_conjugate_representation": "(1,1,1)",
+        "PS_dimension_per_copy": 1,
+        "PS_representation": "(1,1,1)",
+        "SU4_cubic_index": 0,
+        "U1H_charge_lift": -1,
+        "U1X_charge_lift": 29,
+        "Z4R_fermion_lift": 1,
+        "Z4R_superfield_charge": 2,
+        "Z5610_charge": 2399,
+        "doubled_Dynkin_indices_SU4_SU2L_SU2R": [
+          0,
+          0,
+          0
+        ],
+        "field": "mirror_A2",
+        "multiplicity": 1
+      },
+      {
+        "PS_conjugate_representation": "(1,1,1)",
+        "PS_dimension_per_copy": 1,
+        "PS_representation": "(1,1,1)",
+        "SU4_cubic_index": 0,
+        "U1H_charge_lift": 1,
+        "U1X_charge_lift": -31,
+        "Z4R_fermion_lift": 1,
+        "Z4R_superfield_charge": 2,
+        "Z5610_charge": 3041,
+        "doubled_Dynkin_indices_SU4_SU2L_SU2R": [
+          0,
+          0,
+          0
+        ],
+        "field": "mirror_A32",
+        "multiplicity": 1
+      },
+      {
+        "PS_conjugate_representation": "(1,1,1)",
+        "PS_dimension_per_copy": 1,
+        "PS_representation": "(1,1,1)",
+        "SU4_cubic_index": 0,
+        "U1H_charge_lift": -69,
+        "U1X_charge_lift": 3,
+        "Z4R_fermion_lift": -1,
+        "Z4R_superfield_charge": 0,
+        "Z5610_charge": 1311,
+        "doubled_Dynkin_indices_SU4_SU2L_SU2R": [
+          0,
+          0,
+          0
+        ],
+        "field": "mirror_A15",
+        "multiplicity": 1
+      },
+      {
+        "PS_conjugate_representation": "(1,1,1)",
+        "PS_dimension_per_copy": 1,
+        "PS_representation": "(1,1,1)",
+        "SU4_cubic_index": 0,
+        "U1H_charge_lift": 69,
+        "U1X_charge_lift": -1,
+        "Z4R_fermion_lift": -1,
+        "Z4R_superfield_charge": 0,
+        "Z5610_charge": 4469,
+        "doubled_Dynkin_indices_SU4_SU2L_SU2R": [
+          0,
+          0,
+          0
+        ],
+        "field": "mirror_A17",
+        "multiplicity": 1
+      },
+      {
+        "PS_conjugate_representation": "(1,1,1)",
+        "PS_dimension_per_copy": 1,
+        "PS_representation": "(1,1,1)",
+        "SU4_cubic_index": 0,
+        "U1H_charge_lift": 0,
+        "U1X_charge_lift": 1,
+        "Z4R_fermion_lift": 1,
+        "Z4R_superfield_charge": 2,
+        "Z5610_charge": 85,
+        "doubled_Dynkin_indices_SU4_SU2L_SU2R": [
+          0,
+          0,
+          0
+        ],
+        "field": "mirror_A16",
+        "multiplicity": 1
+      }
+    ],
+    "what_it_does_not_close": [
+      "a symmetry-preserving microscopic gap or mass construction for the mirror wall",
+      "the 5D UV fixed point/string completion and its KK threshold matching",
+      "the full Spin^Z4R anomaly including gaugino, gravitino, and Pati--Salam centre quotient data",
+      "the V37 PQ/relic/cosmology and soft-matching gates"
+    ],
+    "what_this_closes": "the perturbative continuous U(1)X/U(1)H and chiral-matter mixed-anomaly bookkeeping of a local 5D interval EFT"
+  },
+  "four_dimensional_no_go": {
+    "assumptions": [
+      "U(1)_X has primitive integer charges and is first Higgsed only by VEVs with U(1)_X charge in 66 Z, leaving an exact Z66 at the threshold scale.",
+      "Pati--Salam is unbroken at that threshold scale.",
+      "Every extra Pati--Salam-charged fermion becomes massive through an ordinary full-rank polynomial mass matrix whose VEV insertions preserve Z66.",
+      "No Green--Schwarz/Stueckelberg response with fractional topological level, no 5D inflow, and no symmetry-preserving topological order is invoked."
+    ],
+    "combined_Z5610_PS_squared_doubled": [
+      -680,
+      -680,
+      -680
+    ],
+    "combined_residue_mod2805_even_order_relaxation": [
+      2125,
+      2125,
+      2125
+    ],
+    "combined_residue_mod5610": [
+      4930,
+      4930,
+      4930
+    ],
+    "conclusion": "A 4D U(1)_X -> Z66 Higgs parent with only ordinary symmetry-preserving massive matter cannot be the requested G1 completion.",
+    "light_U1X_PS_squared_doubled": [
+      -8,
+      -8,
+      -8
+    ],
+    "light_residue_mod33_even_order_relaxation": [
+      25,
+      25,
+      25
+    ],
+    "light_residue_mod66": [
+      58,
+      58,
+      58
+    ],
+    "not_ruled_out": [
+      "a threshold tied to the later P/Pbar PQ VEV, which must be re-audited for quality and is not an exact-Z66 UV threshold",
+      "a quantized higher/topological Green--Schwarz response beyond the single ordinary compact-axion subcase",
+      "a 5D inflow/symmetry-extension construction"
+    ],
+    "proof": [
+      "For each conjugate PS representation block, Z66 invariance of every nonzero mass-matrix entry gives x_i + xbar_j = 0 (mod 66).  The determinant of a full-rank block therefore has total U(1)_X charge 0 (mod 66).",
+      "Multiplying by its fixed doubled Dynkin index shows that an ordinary gapped threshold changes every U(1)_X-PS^2 coefficient by 0 (mod 66).  For an even-order discrete symmetry, allowing a real-representation/Majorana ambiguity weakens this at most to 0 (mod 33).",
+      "The V37 light packet instead has (-8,-8,-8), which is nonzero modulo both 66 and 33.  Hence no such ordinary four-dimensional threshold can cancel the continuous mixed anomaly while the Z66 selector remains exact."
+    ],
+    "single_compact_GS_axion_subcase": {
+      "assumption": "a periodic axion a~a+2pi shifts by 66 alpha under U(1)_X and has integer instanton level k multiplying a tr(F_PS wedge F_PS)",
+      "integer_solution_exists": false,
+      "reason": "8 is not divisible by 66; a fractional level is outside the ordinary compact-axion assumption and is a distinct topological response.",
+      "required_equation_in_doubled_normalization": "66*k = +8"
+    },
+    "theorem": "ordinary symmetry-preserving heavy-threshold obstruction"
+  },
+  "gate_decision": {
+    "G1_anomaly_subproblem_improved": true,
+    "G1_closed": false,
+    "established_complete_theory_exists": false,
+    "local_5D_continuous_anomaly_EFT_packet_exists": true,
+    "ordinary_4D_Higgsed_U1X_solution_exists_under_theorem_assumptions": false
+  },
+  "isolated_U1H_parent": {
+    "isolated_U1H_gauge_anomalies": {
+      "U1H_PS_squared": [
+        0,
+        0,
+        0
+      ],
+      "U1H_cubed": 0,
+      "U1H_gravity": 0,
+      "all_vanish": true
+    },
+    "minimal_breaking_sector": "Splus(qH=+85), Sminus(qH=-85), YH(Splus*Sminus-vH^2)",
+    "one_loop_N1SUSY_abelian_b": {
+      "Higgs_pair": 14450,
+      "formula": "1/gH(mu)^2 = 1/gH(M)^2 - b log(mu/M)/(8 pi^2)",
+      "gH_max_at_M_for_100x_scale_headroom": 0.026742485777963423,
+      "light_anomalons": 9524,
+      "total": 23974
+    },
+    "product_group_boundary": "The simultaneous U(1)X x U(1)H parent also has X^2H=432 and XH^2=-9520, so this isolated U(1)H statement is not a full product-group completion.",
+    "unbroken_remnant": "Z85"
+  },
+  "n_failed": 0,
+  "purpose": "resolve the V37 ultraviolet-origin question as far as exact anomaly arithmetic allows without inventing an unprovided microscopic completion",
+  "required_for_a_genuine_G1_promotion": [
+    "a microscopic completion of the 5D eta-inflow system or an equally explicit quantized 4D topological response",
+    "a symmetry-preserving mirror-wall gap with its exact spectrum and all threshold determinants",
+    "a complete Spin^Z4R x Z5610 bordism calculation including the PS global form, gaugino, and gravitino",
+    "UV-to-SARAH Wilson/Kahler/gauge-kinetic/soft matching and a global stabilized vacuum"
+  ],
+  "schema": "susy-v38-g1-uv-completion-audit-v1",
+  "source_manifest": [
+    {
+      "exists": true,
+      "path": "susy_v38_g1_uv_completion_audit.py",
+      "sha256": "99370f2203de2d8152fd6f4e9cbab9db88b9047eda9fa3cafdeee2853c944e99"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v38_g1_uv_completion_audit.py",
+      "sha256": "e6bbdb2c3ef733769c2682a7827e85034f5d54595ff51d26bc8bdcc76ea45ce1"
+    },
+    {
+      "exists": true,
+      "path": "susy_v37_new_physics_routes.py",
+      "sha256": "d2ee495b0f55407f17e1310aa748b8c55d4bbc5021f5693b678f0f8239eed86e"
+    },
+    {
+      "exists": true,
+      "path": "models/PSZ4RZ5610SUSYV37/PSZ4RZ5610SUSYV37.m",
+      "sha256": "78d330b7919f3c98183a2c5d0036642810273849c5dd08db0ba077b5d5fc2fdd"
+    }
+  ],
+  "status": "V38_G1_4D_HIGGSED_U1X_NO_GO_PROVED__U1H_ISOLATED_PARENT_AUDITED__5D_ETA_INFLOW_EFT_PACKET_EXPLICIT__FULL_G1_FAIL_CLOSED",
+  "visible_anomaly_ledger": {
+    "SU2L_SU2R_Witten_doublet_counts": [
+      22,
+      30
+    ],
+    "U1H_PS_squared_doubled_SU4_SU2L_SU2R": [
+      0,
+      0,
+      0
+    ],
+    "U1H_cubed": 0,
+    "U1H_gravity": 0,
+    "U1X_PS_squared_doubled_SU4_SU2L_SU2R": [
+      -8,
+      -8,
+      -8
+    ],
+    "U1X_U1H_squared": -9520,
+    "U1X_cubed": 5247,
+    "U1X_gravity": -33,
+    "U1X_squared_U1H": 432,
+    "chiral_matter_Z4R_U1H_squared": 9520,
+    "chiral_matter_Z4R_U1X_U1H": -216,
+    "chiral_matter_Z4R_U1X_squared": -1657,
+    "chiral_matter_Z4R_cubed": 117,
+    "chiral_matter_Z4R_gravity": 21,
+    "chiral_matter_Z4R_squared_U1H": 0,
+    "chiral_matter_Z4R_squared_U1X": -129,
+    "normalization": "continuous U(1) charges are primitive integers; non-Abelian entries use 2T(fundamental)=1",
+    "pure_PS_gauge_anomaly_absent": true,
+    "pure_SU4_cubic": 0
+  },
+  "visible_continuous_charge_packet": [
+    {
+      "PS_conjugate_representation": "(1,2,2)",
+      "PS_dimension_per_copy": 4,
+      "PS_representation": "(1,2,2)",
+      "SU4_cubic_index": 0,
+      "U1H_charge_lift": 0,
+      "U1X_charge_lift": 0,
+      "Z4R_fermion_lift": -1,
+      "Z4R_superfield_charge": 0,
+      "Z5610_charge": 0,
+      "doubled_Dynkin_indices_SU4_SU2L_SU2R": [
+        0,
+        2,
+        2
+      ],
+      "field": "H",
+      "multiplicity": 1
+    },
+    {
+      "PS_conjugate_representation": "(bar4,2,1)",
+      "PS_dimension_per_copy": 8,
+      "PS_representation": "(4,2,1)",
+      "SU4_cubic_index": 2,
+      "U1H_charge_lift": 0,
+      "U1X_charge_lift": 0,
+      "Z4R_fermion_lift": 0,
+      "Z4R_superfield_charge": 1,
+      "Z5610_charge": 0,
+      "doubled_Dynkin_indices_SU4_SU2L_SU2R": [
+        2,
+        4,
+        0
+      ],
+      "field": "Q",
+      "multiplicity": 3
+    },
+    {
+      "PS_conjugate_representation": "(4,1,2)",
+      "PS_dimension_per_copy": 8,
+      "PS_representation": "(bar4,1,2)",
+      "SU4_cubic_index": -2,
+      "U1H_charge_lift": 0,
+      "U1X_charge_lift": 0,
+      "Z4R_fermion_lift": 0,
+      "Z4R_superfield_charge": 1,
+      "Z5610_charge": 0,
+      "doubled_Dynkin_indices_SU4_SU2L_SU2R": [
+        2,
+        0,
+        4
+      ],
+      "field": "Qc",
+      "multiplicity": 3
+    },
+    {
+      "PS_conjugate_representation": "(1,1,1)",
+      "PS_dimension_per_copy": 1,
+      "PS_representation": "(1,1,1)",
+      "SU4_cubic_index": 0,
+      "U1H_charge_lift": 0,
+      "U1X_charge_lift": 0,
+      "Z4R_fermion_lift": 1,
+      "Z4R_superfield_charge": 2,
+      "Z5610_charge": 0,
+      "doubled_Dynkin_indices_SU4_SU2L_SU2R": [
+        0,
+        0,
+        0
+      ],
+      "field": "X",
+      "multiplicity": 1
+    },
+    {
+      "PS_conjugate_representation": "(4,1,2)",
+      "PS_dimension_per_copy": 8,
+      "PS_representation": "(bar4,1,2)",
+      "SU4_cubic_index": -2,
+      "U1H_charge_lift": 0,
+      "U1X_charge_lift": 0,
+      "Z4R_fermion_lift": -1,
+      "Z4R_superfield_charge": 0,
+      "Z5610_charge": 0,
+      "doubled_Dynkin_indices_SU4_SU2L_SU2R": [
+        2,
+        0,
+        4
+      ],
+      "field": "Sc",
+      "multiplicity": 1
+    },
+    {
+      "PS_conjugate_representation": "(bar4,1,2)",
+      "PS_dimension_per_copy": 8,
+      "PS_representation": "(4,1,2)",
+      "SU4_cubic_index": 2,
+      "U1H_charge_lift": 0,
+      "U1X_charge_lift": 0,
+      "Z4R_fermion_lift": -1,
+      "Z4R_superfield_charge": 0,
+      "Z5610_charge": 0,
+      "doubled_Dynkin_indices_SU4_SU2L_SU2R": [
+        2,
+        0,
+        4
+      ],
+      "field": "Sbc",
+      "multiplicity": 1
+    },
+    {
+      "PS_conjugate_representation": "(6,1,1)",
+      "PS_dimension_per_copy": 6,
+      "PS_representation": "(6,1,1)",
+      "SU4_cubic_index": 0,
+      "U1H_charge_lift": 0,
+      "U1X_charge_lift": 0,
+      "Z4R_fermion_lift": 1,
+      "Z4R_superfield_charge": 2,
+      "Z5610_charge": 0,
+      "doubled_Dynkin_indices_SU4_SU2L_SU2R": [
+        2,
+        0,
+        0
+      ],
+      "field": "Sig6",
+      "multiplicity": 1
+    },
+    {
+      "PS_conjugate_representation": "(4,2,1)",
+      "PS_dimension_per_copy": 8,
+      "PS_representation": "(bar4,2,1)",
+      "SU4_cubic_index": -2,
+      "U1H_charge_lift": 0,
+      "U1X_charge_lift": -2,
+      "Z4R_fermion_lift": 2,
+      "Z4R_superfield_charge": 3,
+      "Z5610_charge": 5440,
+      "doubled_Dynkin_indices_SU4_SU2L_SU2R": [
+        2,
+        4,
+        0
+      ],
+      "field": "PsiBar",
+      "multiplicity": 1
+    },
+    {
+      "PS_conjugate_representation": "(bar4,2,1)",
+      "PS_dimension_per_copy": 8,
+      "PS_representation": "(4,2,1)",
+      "SU4_cubic_index": 2,
+      "U1H_charge_lift": 0,
+      "U1X_charge_lift": 0,
+      "Z4R_fermion_lift": 0,
+      "Z4R_superfield_charge": 1,
+      "Z5610_charge": 0,
+      "doubled_Dynkin_indices_SU4_SU2L_SU2R": [
+        2,
+        4,
+        0
+      ],
+      "field": "Psi",
+      "multiplicity": 1
+    },
+    {
+      "PS_conjugate_representation": "(4,1,2)",
+      "PS_dimension_per_copy": 8,
+      "PS_representation": "(bar4,1,2)",
+      "SU4_cubic_index": -2,
+      "U1H_charge_lift": 0,
+      "U1X_charge_lift": 0,
+      "Z4R_fermion_lift": 0,
+      "Z4R_superfield_charge": 1,
+      "Z5610_charge": 0,
+      "doubled_Dynkin_indices_SU4_SU2L_SU2R": [
+        2,
+        0,
+        4
+      ],
+      "field": "PsiC",
+      "multiplicity": 1
+    },
+    {
+      "PS_conjugate_representation": "(bar4,1,2)",
+      "PS_dimension_per_copy": 8,
+      "PS_representation": "(4,1,2)",
+      "SU4_cubic_index": 2,
+      "U1H_charge_lift": 0,
+      "U1X_charge_lift": -2,
+      "Z4R_fermion_lift": 2,
+      "Z4R_superfield_charge": 3,
+      "Z5610_charge": 5440,
+      "doubled_Dynkin_indices_SU4_SU2L_SU2R": [
+        2,
+        0,
+        4
+      ],
+      "field": "PsiCBar",
+      "multiplicity": 1
+    },
+    {
+      "PS_conjugate_representation": "(1,1,1)",
+      "PS_dimension_per_copy": 1,
+      "PS_representation": "(1,1,1)",
+      "SU4_cubic_index": 0,
+      "U1H_charge_lift": 0,
+      "U1X_charge_lift": 2,
+      "Z4R_fermion_lift": 1,
+      "Z4R_superfield_charge": 2,
+      "Z5610_charge": 170,
+      "doubled_Dynkin_indices_SU4_SU2L_SU2R": [
+        0,
+        0,
+        0
+      ],
+      "field": "P",
+      "multiplicity": 1
+    },
+    {
+      "PS_conjugate_representation": "(1,1,1)",
+      "PS_dimension_per_copy": 1,
+      "PS_representation": "(1,1,1)",
+      "SU4_cubic_index": 0,
+      "U1H_charge_lift": 0,
+      "U1X_charge_lift": 0,
+      "Z4R_fermion_lift": 0,
+      "Z4R_superfield_charge": 1,
+      "Z5610_charge": 0,
+      "doubled_Dynkin_indices_SU4_SU2L_SU2R": [
+        0,
+        0,
+        0
+      ],
+      "field": "Nv",
+      "multiplicity": 3
+    },
+    {
+      "PS_conjugate_representation": "(1,1,1)",
+      "PS_dimension_per_copy": 1,
+      "PS_representation": "(1,1,1)",
+      "SU4_cubic_index": 0,
+      "U1H_charge_lift": 0,
+      "U1X_charge_lift": -2,
+      "Z4R_fermion_lift": 1,
+      "Z4R_superfield_charge": 2,
+      "Z5610_charge": 5440,
+      "doubled_Dynkin_indices_SU4_SU2L_SU2R": [
+        0,
+        0,
+        0
+      ],
+      "field": "Pbar",
+      "multiplicity": 1
+    },
+    {
+      "PS_conjugate_representation": "(1,1,1)",
+      "PS_dimension_per_copy": 1,
+      "PS_representation": "(1,1,1)",
+      "SU4_cubic_index": 0,
+      "U1H_charge_lift": 0,
+      "U1X_charge_lift": 0,
+      "Z4R_fermion_lift": 1,
+      "Z4R_superfield_charge": 2,
+      "Z5610_charge": 0,
+      "doubled_Dynkin_indices_SU4_SU2L_SU2R": [
+        0,
+        0,
+        0
+      ],
+      "field": "Zp",
+      "multiplicity": 1
+    },
+    {
+      "PS_conjugate_representation": "(1,1,1)",
+      "PS_dimension_per_copy": 1,
+      "PS_representation": "(1,1,1)",
+      "SU4_cubic_index": 0,
+      "U1H_charge_lift": 1,
+      "U1X_charge_lift": -29,
+      "Z4R_fermion_lift": -1,
+      "Z4R_superfield_charge": 0,
+      "Z5610_charge": 3211,
+      "doubled_Dynkin_indices_SU4_SU2L_SU2R": [
+        0,
+        0,
+        0
+      ],
+      "field": "A2",
+      "multiplicity": 1
+    },
+    {
+      "PS_conjugate_representation": "(1,1,1)",
+      "PS_dimension_per_copy": 1,
+      "PS_representation": "(1,1,1)",
+      "SU4_cubic_index": 0,
+      "U1H_charge_lift": -1,
+      "U1X_charge_lift": 31,
+      "Z4R_fermion_lift": -1,
+      "Z4R_superfield_charge": 0,
+      "Z5610_charge": 2569,
+      "doubled_Dynkin_indices_SU4_SU2L_SU2R": [
+        0,
+        0,
+        0
+      ],
+      "field": "A32",
+      "multiplicity": 1
+    },
+    {
+      "PS_conjugate_representation": "(1,1,1)",
+      "PS_dimension_per_copy": 1,
+      "PS_representation": "(1,1,1)",
+      "SU4_cubic_index": 0,
+      "U1H_charge_lift": 69,
+      "U1X_charge_lift": -3,
+      "Z4R_fermion_lift": 1,
+      "Z4R_superfield_charge": 2,
+      "Z5610_charge": 4299,
+      "doubled_Dynkin_indices_SU4_SU2L_SU2R": [
+        0,
+        0,
+        0
+      ],
+      "field": "A15",
+      "multiplicity": 1
+    },
+    {
+      "PS_conjugate_representation": "(1,1,1)",
+      "PS_dimension_per_copy": 1,
+      "PS_representation": "(1,1,1)",
+      "SU4_cubic_index": 0,
+      "U1H_charge_lift": -69,
+      "U1X_charge_lift": 1,
+      "Z4R_fermion_lift": 1,
+      "Z4R_superfield_charge": 2,
+      "Z5610_charge": 1141,
+      "doubled_Dynkin_indices_SU4_SU2L_SU2R": [
+        0,
+        0,
+        0
+      ],
+      "field": "A17",
+      "multiplicity": 1
+    },
+    {
+      "PS_conjugate_representation": "(1,1,1)",
+      "PS_dimension_per_copy": 1,
+      "PS_representation": "(1,1,1)",
+      "SU4_cubic_index": 0,
+      "U1H_charge_lift": 0,
+      "U1X_charge_lift": -1,
+      "Z4R_fermion_lift": -1,
+      "Z4R_superfield_charge": 0,
+      "Z5610_charge": 5525,
+      "doubled_Dynkin_indices_SU4_SU2L_SU2R": [
+        0,
+        0,
+        0
+      ],
+      "field": "A16",
+      "multiplicity": 1
+    }
+  ]
+}

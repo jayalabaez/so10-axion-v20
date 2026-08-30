@@ -1,0 +1,78 @@
+{
+  "schema": "susy_v22_exact_ew_endpoint_v1",
+  "status": "EXACT_SUSY_EW_ENDPOINT_CLOSED__GUT_RGE_AND_CANONICAL_G4_OPEN",
+  "conventions": {
+    "neutral_complex_VEVs": "H_u^0=vu+(h_u+i a_u)/sqrt(2), H_d^0=vd+(h_d+i a_d)/sqrt(2)",
+    "physical_radius": "sqrt(vu^2+vd^2)=174 GeV"
+  },
+  "exact_inputs": {
+    "vu_GeV": "696/5",
+    "vd_GeV": "522/5",
+    "tan_beta": "4/3",
+    "g2": "13/20",
+    "gY": "9/25",
+    "mA_squared_GeV2": "1000000"
+  },
+  "derived_parameters": {
+    "gZ_squared": "5521/10000",
+    "mZ_squared_GeV2": "41788449/5000",
+    "mW_squared_GeV2": "1279161/200",
+    "Bmu_GeV2": "480000",
+    "m1_squared_GeV2": "160292519143/250000",
+    "m2_squared_GeV2": "89707480857/250000"
+  },
+  "stationarity": {
+    "dV_dvd_over_2vd": "0",
+    "dV_dvu_over_2vu": "0"
+  },
+  "tree_scalar_certificate": {
+    "CP_even_matrix_GeV2": [
+      [
+        "80376096041/125000",
+        "-15125365347/31250"
+      ],
+      [
+        "-15125365347/31250",
+        "5708576898/15625"
+      ]
+    ],
+    "CP_even_trace_GeV2": "5041788449/5000",
+    "CP_even_determinant_GeV4": "16381072008/25",
+    "CP_odd_characteristic": {
+      "trace_GeV2": "1000000",
+      "determinant_GeV4": "0"
+    },
+    "charged_physical_mass_squared_GeV2": "201279161/200",
+    "gauge_Goldstone_counts": {
+      "neutral": 1,
+      "charged_complex": 1
+    }
+  },
+  "protection_boundary": {
+    "exact_N1_limit_removes_GUT_quadratic_sensitivity": true,
+    "soft_breaking_preserves_technical_naturalness_only_after_full_superpartner_threshold_and_RGE_replay": true,
+    "full_superpartner_threshold_and_RGE_replay_complete": false,
+    "GUT_light_doublet_map_complete": false,
+    "125_GeV_pole_Higgs_complete": false,
+    "full_scalar_vacuum_complete": false
+  },
+  "checks": {
+    "complex_VEV_radius_is_exactly_174_GeV": true,
+    "tan_beta_is_exactly_4_over_3": true,
+    "neutral_stationarity_is_exact": true,
+    "CP_even_matrix_is_positive_definite": true,
+    "CP_odd_sector_has_one_gauge_zero_and_one_positive_mode": true,
+    "charged_sector_has_one_gauge_zero_and_one_positive_mode": true,
+    "tree_level_soft_parameters_are_real_and_finite": true,
+    "not_promoted_without_GUT_and_RGE_bridge": true
+  },
+  "n_checks": 8,
+  "n_failed": 0,
+  "failures": [],
+  "claim_boundary": {
+    "exact_tree_EW_endpoint_closed": true,
+    "canonical_G4_closed": false,
+    "canonical_G5_closed": false
+  },
+  "core_sha256": "1d2c0ae4135d5ecfb48fcfaa6b34d46039eaf093a770c02077bea692713e1557"
+}

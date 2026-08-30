@@ -1,0 +1,6366 @@
+{
+  "R5_core_anomaly": {
+    "Witten_doublet_counts": {
+      "SU2L": 22,
+      "SU2R": 30
+    },
+    "Witten_parities_even": true,
+    "convention": "D_G=2 A_G^R=sum_i (2T_G(R_i))(r_i-1)+2C_2(G).  The standard equal-level one-axion test is equality of A_G^R modulo eta.",
+    "core_doubled_rows_D": {
+      "SU2L": 2,
+      "SU2R": -6,
+      "SU4": 8
+    },
+    "core_standard_A": {
+      "SU2L": 1,
+      "SU2R": -3,
+      "SU4": 4
+    },
+    "core_standard_A_mod_eta": {
+      "SU2L": 1,
+      "SU2R": 2,
+      "SU4": 4
+    },
+    "equal_level_single_GS_universal": false,
+    "eta": 5,
+    "gravity_A_PS_bookkeeping": -8,
+    "gravity_A_mod_eta": 2,
+    "meaning": "The R5 operator witness is not an anomaly-complete equal-level one-axion discrete-R gauge symmetry."
+  },
+  "all_visible_VEV_protection": {
+    "Kahler_direct_check": {
+      "Kahler_target": 0,
+      "X_Q4": 1,
+      "Xdag_Q4": 2,
+      "both_forbidden": true,
+      "qualification": "Derivative, soft, mixed-orientation, and full component operator classifications are not completed."
+    },
+    "R5_of_nonzero_visible_VEVs": {
+      "H": 0,
+      "P": 0,
+      "Pb": 0,
+      "Sbc": 0,
+      "Sc": 0
+    },
+    "all_local_sources_forbidden": true,
+    "all_order_VEV_dressing_proof": "Every declared scalar VEV and its conjugate has R5=0.  Thus any arbitrary holomorphic/Kahler VEV dressing adds zero to the source charge.  Each X/Zp Q^4 or X/Zp Qc^4 source has R5=2+4=1, not W charge two.",
+    "canonical_F_D_flat_branch": [
+      "<Sbc.Sc>=mu_PS^2/kappa_PS and equal-conjugate PS D-flat magnitudes",
+      "<P.Pb>=mu_PQ^2/kappa_PQ",
+      "<X>=<Zp>=<SigC>=<SigBc>=0",
+      "<H> is allowed later by electroweak breaking and has R5=0",
+      "the rank-one Sc.Sc and Sbc.Sbc antisymmetric-six contractions vanish on the canonical PS branch"
+    ],
+    "electroweak_HH_dressing_test": [
+      {
+        "R5_for_every_integer_k": 1,
+        "forbidden_for_every_k": true,
+        "operator_family": "X Q^4 (H.H)^k"
+      },
+      {
+        "R5_for_every_integer_k": 1,
+        "forbidden_for_every_k": true,
+        "operator_family": "X Qc^4 (H.H)^k"
+      },
+      {
+        "R5_for_every_integer_k": 1,
+        "forbidden_for_every_k": true,
+        "operator_family": "Zp Q^4 (H.H)^k"
+      },
+      {
+        "R5_for_every_integer_k": 1,
+        "forbidden_for_every_k": true,
+        "operator_family": "Zp Qc^4 (H.H)^k"
+      }
+    ],
+    "every_visible_VEV_and_conjugate_is_R5_neutral": true,
+    "local_driver_sources": [
+      {
+        "R_N": 1,
+        "W_target": 2,
+        "forbidden": true,
+        "operator": "X Q^4"
+      },
+      {
+        "R_N": 1,
+        "W_target": 2,
+        "forbidden": true,
+        "operator": "X Qc^4"
+      },
+      {
+        "R_N": 1,
+        "W_target": 2,
+        "forbidden": true,
+        "operator": "Zp Q^4"
+      },
+      {
+        "R_N": 1,
+        "W_target": 2,
+        "forbidden": true,
+        "operator": "Zp Qc^4"
+      }
+    ],
+    "nonzero_visible_VEVs": [
+      "H",
+      "Sc",
+      "Sbc",
+      "P",
+      "Pb"
+    ],
+    "residual_R5_stabilizer_order": 5,
+    "same_orientation_vectorlike_extension": {
+      "SU4_antifundamental_matter": [
+        "Qc",
+        "PsiBar",
+        "PsiC"
+      ],
+      "SU4_fundamental_matter": [
+        "Q",
+        "Psi",
+        "PsiCBar"
+      ],
+      "all_these_matter_fields_have_R5": 1,
+      "driver_plus_any_four_has_R5": 1,
+      "scope": "This extends only the same-orientation four-matter selector statement; it does not classify mixed-orientation or component operators."
+    },
+    "zero_scalar_VEVs_required": [
+      "X",
+      "Zp",
+      "SigC",
+      "SigBc",
+      "Q",
+      "Qc",
+      "Nv"
+    ]
+  },
+  "core_sha256": "adcb3fcfda1c187372cf2809827c549c1d73c36200743f289dbfd6272fd3c8a8",
+  "decision": {
+    "all_declared_visible_VEV_same_orientation_source_block": true,
+    "complete_new_physics_found": false,
+    "equal_level_single_GS_discrete_R_completion_found": false,
+    "gates_promoted": [],
+    "type_I_source_present_in_operator_witness": true
+  },
+  "escape_requirements_not_claimed": {
+    "massive_exotic_threshold_no_repair": {
+      "consequence": "Ordinary decoupling anomaly exotics cannot repair the nonuniversal core mismatch while keeping the all-VEV protector exact.",
+      "statement": "A vectorlike PS-charged pair made massive using only residual-R-neutral VEVs obeys r(F)+r(Fbar)=2. Its contribution (r(F)-1)+(r(Fbar)-1) to every doubled R-anomaly row vanishes modulo the residual order."
+    },
+    "multi_axion_or_nonuniversal_WZ_escape": {
+      "R5_core_residue_target": {
+        "SU2L": 1,
+        "SU2R": 2,
+        "SU4": 4,
+        "gravity": 2
+      },
+      "formal_mod5_counterterm_witness": {
+        "convention": "all four formal axion shifts delta=1; levels are the negatives of the listed core residues",
+        "k_a_SU2L": 4,
+        "k_a_SU2R": 3,
+        "k_a_SU4": 1,
+        "k_a_gravity": 3
+      },
+      "required_integer_equations": "For axions a with Z_N^R shifts delta_a and quantized Wess--Zumino levels k_aG, A_G + sum_a delta_a k_aG = 0 (mod eta), together with the gravitational and product-symmetry rows.",
+      "why_not_a_solution_here": "No quantized axion-period lattice, kinetic/gauge-coupling realization, Z5610 product anomaly cancellation, or Spin/bordism calculation is supplied.  The arithmetic witness is only a list of required UV data."
+    },
+    "nondecoupling_exotic_escape": {
+      "required_new_input": "PS-charged states whose mass is not generated on the protected branch, plus a complete threshold/spectrum construction.",
+      "why_not_a_solution_here": "Such states are not in the reconstructed spectrum and would be mass-gap/open-spectrum data, not a closure."
+    }
+  },
+  "exhaustive_N3_to_N96_enumeration": {
+    "all_type_I_equations_hold": true,
+    "branch_count": 141,
+    "protective_and_even_weaker_doubled_GS_count": 0,
+    "protective_and_standard_single_GS_count": 0,
+    "protective_branch_count": 139,
+    "range": [
+      3,
+      96
+    ],
+    "rows": [
+      {
+        "N": 3,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 3,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 0,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 0,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 0,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 0,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 4,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": false,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 2,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 2,
+            "W_target": 2,
+            "forbidden": false,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 2,
+            "W_target": 2,
+            "forbidden": false,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 2,
+            "W_target": 2,
+            "forbidden": false,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 2,
+            "W_target": 2,
+            "forbidden": false,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": true
+      },
+      {
+        "N": 4,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": false,
+        "core_doubled_rows": {
+          "SU2L": 26,
+          "SU2R": -30,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 2,
+        "rNv_canonical": 3,
+        "rQ_lift": 3,
+        "rQc_lift": -1,
+        "source_rows": [
+          {
+            "R_N": 2,
+            "W_target": 2,
+            "forbidden": false,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 2,
+            "W_target": 2,
+            "forbidden": false,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 2,
+            "W_target": 2,
+            "forbidden": false,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 2,
+            "W_target": 2,
+            "forbidden": false,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": true
+      },
+      {
+        "N": 5,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 5,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 1,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 1,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 1,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 1,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 6,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 3,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 0,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 0,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 0,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 0,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 6,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 38,
+          "SU2R": -42,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 3,
+        "rNv_canonical": 4,
+        "rQ_lift": 4,
+        "rQc_lift": -2,
+        "source_rows": [
+          {
+            "R_N": 0,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 0,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 0,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 0,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 7,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 7,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 8,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 4,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 8,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 50,
+          "SU2R": -54,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 4,
+        "rNv_canonical": 5,
+        "rQ_lift": 5,
+        "rQc_lift": -3,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 9,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 9,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 10,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 5,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 10,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 62,
+          "SU2R": -66,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 5,
+        "rNv_canonical": 6,
+        "rQ_lift": 6,
+        "rQc_lift": -4,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 11,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 11,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 12,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 6,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 12,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 74,
+          "SU2R": -78,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 6,
+        "rNv_canonical": 7,
+        "rQ_lift": 7,
+        "rQc_lift": -5,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 13,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 13,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 14,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 7,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 14,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 86,
+          "SU2R": -90,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 7,
+        "rNv_canonical": 8,
+        "rQ_lift": 8,
+        "rQc_lift": -6,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 15,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 15,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 16,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 8,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 16,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 98,
+          "SU2R": -102,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 8,
+        "rNv_canonical": 9,
+        "rQ_lift": 9,
+        "rQc_lift": -7,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 17,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 17,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 18,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 9,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 18,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 110,
+          "SU2R": -114,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 9,
+        "rNv_canonical": 10,
+        "rQ_lift": 10,
+        "rQc_lift": -8,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 19,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 19,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 20,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 10,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 20,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 122,
+          "SU2R": -126,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 10,
+        "rNv_canonical": 11,
+        "rQ_lift": 11,
+        "rQc_lift": -9,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 21,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 21,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 22,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 11,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 22,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 134,
+          "SU2R": -138,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 11,
+        "rNv_canonical": 12,
+        "rQ_lift": 12,
+        "rQc_lift": -10,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 23,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 23,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 24,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 12,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 24,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 146,
+          "SU2R": -150,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 12,
+        "rNv_canonical": 13,
+        "rQ_lift": 13,
+        "rQc_lift": -11,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 25,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 25,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 26,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 13,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 26,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 158,
+          "SU2R": -162,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 13,
+        "rNv_canonical": 14,
+        "rQ_lift": 14,
+        "rQc_lift": -12,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 27,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 27,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 28,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 14,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 28,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 170,
+          "SU2R": -174,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 14,
+        "rNv_canonical": 15,
+        "rQ_lift": 15,
+        "rQc_lift": -13,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 29,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 29,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 30,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 15,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 30,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 182,
+          "SU2R": -186,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 15,
+        "rNv_canonical": 16,
+        "rQ_lift": 16,
+        "rQc_lift": -14,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 31,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 31,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 32,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 16,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 32,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 194,
+          "SU2R": -198,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 16,
+        "rNv_canonical": 17,
+        "rQ_lift": 17,
+        "rQc_lift": -15,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 33,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 33,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 34,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 17,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 34,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 206,
+          "SU2R": -210,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 17,
+        "rNv_canonical": 18,
+        "rQ_lift": 18,
+        "rQc_lift": -16,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 35,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 35,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 36,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 18,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 36,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 218,
+          "SU2R": -222,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 18,
+        "rNv_canonical": 19,
+        "rQ_lift": 19,
+        "rQc_lift": -17,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 37,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 37,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 38,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 19,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 38,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 230,
+          "SU2R": -234,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 19,
+        "rNv_canonical": 20,
+        "rQ_lift": 20,
+        "rQc_lift": -18,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 39,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 39,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 40,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 20,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 40,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 242,
+          "SU2R": -246,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 20,
+        "rNv_canonical": 21,
+        "rQ_lift": 21,
+        "rQc_lift": -19,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 41,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 41,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 42,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 21,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 42,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 254,
+          "SU2R": -258,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 21,
+        "rNv_canonical": 22,
+        "rQ_lift": 22,
+        "rQc_lift": -20,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 43,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 43,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 44,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 22,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 44,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 266,
+          "SU2R": -270,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 22,
+        "rNv_canonical": 23,
+        "rQ_lift": 23,
+        "rQc_lift": -21,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 45,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 45,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 46,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 23,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 46,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 278,
+          "SU2R": -282,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 23,
+        "rNv_canonical": 24,
+        "rQ_lift": 24,
+        "rQc_lift": -22,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 47,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 47,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 48,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 24,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 48,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 290,
+          "SU2R": -294,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 24,
+        "rNv_canonical": 25,
+        "rQ_lift": 25,
+        "rQc_lift": -23,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 49,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 49,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 50,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 25,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 50,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 302,
+          "SU2R": -306,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 25,
+        "rNv_canonical": 26,
+        "rQ_lift": 26,
+        "rQc_lift": -24,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 51,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 51,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 52,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 26,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 52,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 314,
+          "SU2R": -318,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 26,
+        "rNv_canonical": 27,
+        "rQ_lift": 27,
+        "rQc_lift": -25,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 53,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 53,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 54,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 27,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 54,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 326,
+          "SU2R": -330,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 27,
+        "rNv_canonical": 28,
+        "rQ_lift": 28,
+        "rQc_lift": -26,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 55,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 55,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 56,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 28,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 56,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 338,
+          "SU2R": -342,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 28,
+        "rNv_canonical": 29,
+        "rQ_lift": 29,
+        "rQc_lift": -27,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 57,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 57,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 58,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 29,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 58,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 350,
+          "SU2R": -354,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 29,
+        "rNv_canonical": 30,
+        "rQ_lift": 30,
+        "rQc_lift": -28,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 59,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 59,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 60,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 30,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 60,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 362,
+          "SU2R": -366,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 30,
+        "rNv_canonical": 31,
+        "rQ_lift": 31,
+        "rQc_lift": -29,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 61,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 61,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 62,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 31,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 62,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 374,
+          "SU2R": -378,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 31,
+        "rNv_canonical": 32,
+        "rQ_lift": 32,
+        "rQc_lift": -30,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 63,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 63,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 64,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 32,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 64,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 386,
+          "SU2R": -390,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 32,
+        "rNv_canonical": 33,
+        "rQ_lift": 33,
+        "rQc_lift": -31,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 65,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 65,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 66,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 33,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 66,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 398,
+          "SU2R": -402,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 33,
+        "rNv_canonical": 34,
+        "rQ_lift": 34,
+        "rQc_lift": -32,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 67,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 67,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 68,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 34,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 68,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 410,
+          "SU2R": -414,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 34,
+        "rNv_canonical": 35,
+        "rQ_lift": 35,
+        "rQc_lift": -33,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 69,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 69,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 70,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 35,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 70,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 422,
+          "SU2R": -426,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 35,
+        "rNv_canonical": 36,
+        "rQ_lift": 36,
+        "rQc_lift": -34,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 71,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 71,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 72,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 36,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 72,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 434,
+          "SU2R": -438,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 36,
+        "rNv_canonical": 37,
+        "rQ_lift": 37,
+        "rQc_lift": -35,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 73,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 73,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 74,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 37,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 74,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 446,
+          "SU2R": -450,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 37,
+        "rNv_canonical": 38,
+        "rQ_lift": 38,
+        "rQc_lift": -36,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 75,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 75,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 76,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 38,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 76,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 458,
+          "SU2R": -462,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 38,
+        "rNv_canonical": 39,
+        "rQ_lift": 39,
+        "rQc_lift": -37,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 77,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 77,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 78,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 39,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 78,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 470,
+          "SU2R": -474,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 39,
+        "rNv_canonical": 40,
+        "rQ_lift": 40,
+        "rQc_lift": -38,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 79,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 79,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 80,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 40,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 80,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 482,
+          "SU2R": -486,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 40,
+        "rNv_canonical": 41,
+        "rQ_lift": 41,
+        "rQc_lift": -39,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 81,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 81,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 82,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 41,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 82,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 494,
+          "SU2R": -498,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 41,
+        "rNv_canonical": 42,
+        "rQ_lift": 42,
+        "rQc_lift": -40,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 83,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 83,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 84,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 42,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 84,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 506,
+          "SU2R": -510,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 42,
+        "rNv_canonical": 43,
+        "rQ_lift": 43,
+        "rQc_lift": -41,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 85,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 85,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 86,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 43,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 86,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 518,
+          "SU2R": -522,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 43,
+        "rNv_canonical": 44,
+        "rQ_lift": 44,
+        "rQc_lift": -42,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 87,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 87,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 88,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 44,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 88,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 530,
+          "SU2R": -534,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 44,
+        "rNv_canonical": 45,
+        "rQ_lift": 45,
+        "rQc_lift": -43,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 89,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 89,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 90,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 45,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 90,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 542,
+          "SU2R": -546,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 45,
+        "rNv_canonical": 46,
+        "rQ_lift": 46,
+        "rQc_lift": -44,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 91,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 91,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 92,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 46,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 92,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 554,
+          "SU2R": -558,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 46,
+        "rNv_canonical": 47,
+        "rQ_lift": 47,
+        "rQc_lift": -45,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 93,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 93,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 94,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 47,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 94,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 566,
+          "SU2R": -570,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 47,
+        "rNv_canonical": 48,
+        "rQ_lift": 48,
+        "rQc_lift": -46,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 95,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 95,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 96,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 2,
+          "SU2R": -6,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 48,
+        "rNv_canonical": 1,
+        "rQ_lift": 1,
+        "rQc_lift": 1,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      },
+      {
+        "N": 96,
+        "all_required_W_equations_hold": true,
+        "all_same_orientation_sources_blocked": true,
+        "core_doubled_rows": {
+          "SU2L": 578,
+          "SU2R": -582,
+          "SU4": 8
+        },
+        "equal_level_single_GS_standard_A_convention": false,
+        "eta": 48,
+        "rNv_canonical": 49,
+        "rQ_lift": 49,
+        "rQc_lift": -47,
+        "source_rows": [
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "X Qc^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Q^4"
+          },
+          {
+            "R_N": 6,
+            "W_target": 2,
+            "forbidden": true,
+            "operator": "Zp Qc^4"
+          }
+        ],
+        "weaker_doubled_row_mod_eta_convention": false
+      }
+    ]
+  },
+  "order_independent_no_go": {
+    "assumptions": [
+      "all visible PS/PQ/electroweak VEVs have residual R charge zero",
+      "X and Zp are ordinary neutral-product drivers, hence r(X)=r(Zp)=2",
+      "Q H Qc, Sbc Qc Nv, and Nv Nv are present",
+      "Sc.Sc.SigC and Sbc.Sbc.SigBc retain the split-six source, hence r(SigC)=r(SigBc)=2",
+      "P-induced vectorlike mixing terms are present",
+      "equal Pati--Salam affine levels and one universal GS axion are required"
+    ],
+    "charge_reduction": [
+      "2 r(Nv)=2; for odd N this gives r(Nv)=1, and for even N there is also the N/2-shifted lift.",
+      "r(Qc)=2-r(Nv), r(Q)=r(Nv), while vectorlike partners pair into the same signed lifts.",
+      "The sources differ from W charge by 4 r(Q) and 4 r(Qc); a protective residual order cannot divide four."
+    ],
+    "core_doubled_anomaly_formula": {
+      "SU2L": "12 (r(Q)-1)+2",
+      "SU2R": "12 (1-r(Q))-6",
+      "SU4": "8"
+    },
+    "divisibility_obstruction": {
+      "consequence": "No residual order able to forbid four same-charge matter fields (order not dividing four) can pass.  The standard A_G convention is at least as restrictive.",
+      "doubled_row_differences_mod_eta": [
+        "D_SU4-D_SU2L = 6-12(r(Q)-1)",
+        "D_SU4-D_SU2R = 14+12(r(Q)-1)"
+      ],
+      "necessary_condition_in_the_weaker_doubled_row_convention": "eta divides both 6 and 14, hence eta divides 2."
+    },
+    "result": "No minimal all-visible-VEV, type-I, equal-level single-GS Z_N^R architecture exists for any N."
+  },
+  "representative_R5_operator_witness": {
+    "all_required_terms_allowed": true,
+    "charges": {
+      "A15": 1,
+      "A16": 1,
+      "A17": 1,
+      "A2": 1,
+      "A32": 1,
+      "H": 0,
+      "Nv": 1,
+      "P": 0,
+      "Pb": 0,
+      "Psi": 1,
+      "PsiBar": 1,
+      "PsiC": 1,
+      "PsiCBar": 1,
+      "Q": 1,
+      "Qc": 1,
+      "Sbc": 0,
+      "Sc": 0,
+      "SigBc": 2,
+      "SigC": 2,
+      "X": 2,
+      "Zp": 2
+    },
+    "intentionally_absent_terms": {
+      "X_SigC_SigBc": {
+        "R5": 1,
+        "forbidden": true
+      },
+      "X_cubic": {
+        "R5": 1,
+        "forbidden": true
+      },
+      "Zp_SigC_SigBc": {
+        "R5": 1,
+        "forbidden": true
+      },
+      "Zp_cubic": {
+        "R5": 1,
+        "forbidden": true
+      }
+    },
+    "rebuilt_visible_superpotential": "W = X(kappa_PS Sbc.Sc - mu_PS^2 + lambda_H H.H) + Zp(kappa_PQ P.Pb - mu_PQ^2) + lambda_c Sc.Sc.SigC/2 + lambda_b Sbc.Sbc.SigBc/2 + W_Yukawa+mix + y_N Sbc.Qc.Nv + M_N Nv.Nv/2 + W_PQ-anomalon.",
+    "representative_order": 5,
+    "required_terms": [
+      {
+        "R5": 2,
+        "fields": [
+          "X"
+        ],
+        "label": "X_linear_PS"
+      },
+      {
+        "R5": 2,
+        "fields": [
+          "X",
+          "Sbc",
+          "Sc"
+        ],
+        "label": "X_Sbc_Sc"
+      },
+      {
+        "R5": 2,
+        "fields": [
+          "X",
+          "H",
+          "H"
+        ],
+        "label": "X_H_H"
+      },
+      {
+        "R5": 2,
+        "fields": [
+          "Zp"
+        ],
+        "label": "Zp_linear_PQ"
+      },
+      {
+        "R5": 2,
+        "fields": [
+          "Zp",
+          "P",
+          "Pb"
+        ],
+        "label": "Zp_P_Pb"
+      },
+      {
+        "R5": 2,
+        "fields": [
+          "Sc",
+          "Sc",
+          "SigC"
+        ],
+        "label": "Sc_Sc_SigC"
+      },
+      {
+        "R5": 2,
+        "fields": [
+          "Sbc",
+          "Sbc",
+          "SigBc"
+        ],
+        "label": "Sbc_Sbc_SigBc"
+      },
+      {
+        "R5": 2,
+        "fields": [
+          "Q",
+          "H",
+          "Qc"
+        ],
+        "label": "Q_H_Qc"
+      },
+      {
+        "R5": 2,
+        "fields": [
+          "Q",
+          "H",
+          "PsiC"
+        ],
+        "label": "Q_H_PsiC"
+      },
+      {
+        "R5": 2,
+        "fields": [
+          "Psi",
+          "H",
+          "Qc"
+        ],
+        "label": "Psi_H_Qc"
+      },
+      {
+        "R5": 2,
+        "fields": [
+          "Psi",
+          "H",
+          "PsiC"
+        ],
+        "label": "Psi_H_PsiC"
+      },
+      {
+        "R5": 2,
+        "fields": [
+          "P",
+          "PsiBar",
+          "Q"
+        ],
+        "label": "P_PsiBar_Q"
+      },
+      {
+        "R5": 2,
+        "fields": [
+          "P",
+          "PsiBar",
+          "Psi"
+        ],
+        "label": "P_PsiBar_Psi"
+      },
+      {
+        "R5": 2,
+        "fields": [
+          "P",
+          "PsiCBar",
+          "Qc"
+        ],
+        "label": "P_PsiCBar_Qc"
+      },
+      {
+        "R5": 2,
+        "fields": [
+          "P",
+          "PsiCBar",
+          "PsiC"
+        ],
+        "label": "P_PsiCBar_PsiC"
+      },
+      {
+        "R5": 2,
+        "fields": [
+          "Sbc",
+          "Qc",
+          "Nv"
+        ],
+        "label": "type_I_Sbc_Qc_Nv"
+      },
+      {
+        "R5": 2,
+        "fields": [
+          "Nv",
+          "Nv"
+        ],
+        "label": "type_I_Majorana_Nv_Nv"
+      },
+      {
+        "R5": 2,
+        "fields": [
+          "Pb",
+          "A2",
+          "A32"
+        ],
+        "label": "Pb_A2_A32"
+      },
+      {
+        "R5": 2,
+        "fields": [
+          "P",
+          "A15",
+          "A17"
+        ],
+        "label": "P_A15_A17"
+      },
+      {
+        "R5": 2,
+        "fields": [
+          "P",
+          "A16",
+          "A16"
+        ],
+        "label": "P_A16_A16"
+      }
+    ],
+    "type_I_mechanism": {
+      "after_PS_breaking": "<Sbc> mixes the right-handed neutrino in Qc with Nv; Nv has an explicit Majorana mass.",
+      "claim_boundary": "A numerical neutrino/flavour fit is not supplied.",
+      "source": "y_N Sbc Qc Nv + M_N Nv Nv / 2"
+    }
+  },
+  "schema": "susy-v41-full-visible-vev-rsym-no-go-v1",
+  "scope": "A fail-closed discrete-R source/symmetry audit.  It is not an active SARAH model, a complete UV completion, a soft/spectrum solution, or a proton-decay computation.",
+  "status": "V41_ALL_VISIBLE_VEV_ZNR_TYPE_I_SELECTOR_NO_GO__EQUAL_LEVEL_SINGLE_GS_IMPOSSIBLE_AT_EVERY_PROTECTIVE_ORDER__MULTI_AXION_OR_NONDECOUPLING_EXOTIC_ESCAPE_REQUIRES_NEW_UV_INPUT__NO_GATE_PROMOTED"
+}

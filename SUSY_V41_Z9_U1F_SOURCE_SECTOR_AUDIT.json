@@ -1,0 +1,734 @@
+{
+  "Kahler_soft_boundary": {
+    "Kahler_requirements_not_yet_supplied": [
+      "positive-definite full Kahler metric after coupling to all host fields",
+      "the complete U(1)_F moment map, including any kinetic mixing and any allowed FI datum",
+      "absence of a lower-energy minimum with an anomalon or messenger VEV",
+      "a derivation that the source/driver sequestering assumed above survives the UV theory"
+    ],
+    "Z9_survival_statement": "The residual gauge Z9 remains exact only on branches where every field with U(1)_F charge not in 9 Z has zero VEV. Gauge invariance alone does not choose that branch once arbitrary Kahler/soft data are admitted.",
+    "canonical_result": "With canonical positive Kahler metric and vanishing soft terms, the reported F/D-flat branch is exact and every nontrivial residual-Z9 field is at the origin except ThetaPlus/ThetaMinus, whose charges are multiples of nine.",
+    "full_Kahler_soft_global_vacuum_or_thermal_selection_computed": false,
+    "local_noncondensation_test_for_each_mass_pair": {
+      "condition": "A_i>0, B_i>0, and A_i B_i>|b_i|^2 for the scalar pair mass matrix with holomorphic mixing b_i",
+      "definition": "A_i=|M_i|^2+m_i^2+q_i g_F<D_F>, B_i=|M_i|^2+m_partner^2+q_partner g_F<D_F>",
+      "interpretation": "This sufficient local condition keeps all anomalon/messenger VEVs zero. If it fails, a field with nonzero charge modulo nine can condense and destroy the claimed Z9 branch."
+    },
+    "soft_terms_that_require_a_real_vacuum_analysis": [
+      "m^2_ThetaPlus, m^2_ThetaMinus, m^2_STheta and the allowed STheta tadpole/B/A terms",
+      "soft scalar masses and A terms for every L, R and E anomalon pair",
+      "soft masses and B term for F/Fc, plus U(1)_F D-term shifts",
+      "soft terms and mixings inherited from X/Zp and the PS/PQ host sector"
+    ]
+  },
+  "canonical_F_D_flat_branch": {
+    "D_equation_convention": "D_F = 9(|ThetaPlus|^2-|ThetaMinus|^2) + sum_i q_i |phi_i|^2 + xi_F",
+    "FI_deformed_solution": {
+      "absolute_values": {
+        "|ThetaMinus|^2": "(-d + sqrt(d^2+4 v_F^4))/2",
+        "|ThetaPlus|^2": "(d + sqrt(d^2+4 v_F^4))/2"
+      },
+      "both_nonzero_for_finite_xi_F_and_mu_F": true,
+      "definitions": "v_F^4 = |mu_F^2|^2 and d = -xi_F/9",
+      "xi_F_zero_special_case": "|ThetaPlus|=|ThetaMinus|=v_F",
+      "zero_D": true
+    },
+    "F_equations": {
+      "F_F": "y2 Sc NDirac + M_F Fc",
+      "F_Fc": "y1 Q H + M_F F",
+      "F_STheta": "kappa(ThetaPlus ThetaMinus-mu_F^2)",
+      "F_ThetaMinus": "kappa STheta ThetaPlus + R0 lambdaR Rplus9 + lambda45 E4 E5 + lambda36 E3 E6",
+      "F_ThetaPlus": "kappa STheta ThetaMinus + L0 lambdaL Lminus9 + lambdaMinus27 Eminus2 Eminus7",
+      "F_anomalons": "ThetaPlus/ThetaMinus times the appropriate full-rank mass matrix times its partner"
+    },
+    "branch": {
+      "F": 0,
+      "Fc": 0,
+      "STheta": 0,
+      "ThetaPlus_times_ThetaMinus": "mu_F^2",
+      "all_anomalons": 0,
+      "host_fields_for_the_isolated_source_test": 0,
+      "zero_F": true
+    },
+    "canonical_assumptions": [
+      "global N=1 SUSY with canonical positive Kahler metric for the displayed source fields",
+      "kappa != 0, mu_F^2 != 0, M_F != 0, and the listed anomalon couplings have the stated ranks",
+      "all anomalons and messenger fields have zero expectation values on the branch",
+      "the displayed branch is isolated from the unsolved host PS/PQ driver sector"
+    ],
+    "canonical_branch_exists": true,
+    "full_host_vacuum_solved": false,
+    "unbroken_gauge_subgroup": {
+      "VEV_charges": [
+        9,
+        -9
+      ],
+      "every_nonzero_branch_VEV_is_zero_mod_9": true,
+      "gcd_of_nonzero_VEV_charges": 9,
+      "result": "Z9"
+    }
+  },
+  "core_sha256": "6ee1a126abe5b20eb308602c0cd95d0b239101fe3cbc1ebe33817f458976507d",
+  "decision": {
+    "all_listed_anomalon_and_U1F_breaking_fields_massable_on_a_rank_witness": true,
+    "exact_Z9_is_preserved_on_that_branch": true,
+    "full_Kahler_soft_vacuum_exists": false,
+    "full_coupled_PS_PQ_U1F_source_exists": false,
+    "full_gate_closed": [],
+    "full_product_symmetry_UV_completion_exists": false,
+    "isolated_renormalizable_source_branch_exists": true,
+    "tree_level_Dirac_messenger_completion_exists": true
+  },
+  "field_table": {
+    "E3": {
+      "multiplicity": 1,
+      "pq": 0,
+      "r4": 1,
+      "representation": "(1,1,1)",
+      "role": "singlet anomalon",
+      "u1f": 3,
+      "z5610": 0
+    },
+    "E4": {
+      "multiplicity": 1,
+      "pq": 0,
+      "r4": 1,
+      "representation": "(1,1,1)",
+      "role": "singlet anomalon",
+      "u1f": 4,
+      "z5610": 0
+    },
+    "E5": {
+      "multiplicity": 1,
+      "pq": 0,
+      "r4": 1,
+      "representation": "(1,1,1)",
+      "role": "singlet anomalon",
+      "u1f": 5,
+      "z5610": 0
+    },
+    "E6": {
+      "multiplicity": 1,
+      "pq": 0,
+      "r4": 1,
+      "representation": "(1,1,1)",
+      "role": "singlet anomalon",
+      "u1f": 6,
+      "z5610": 0
+    },
+    "Eminus2": {
+      "multiplicity": 1,
+      "pq": 0,
+      "r4": 1,
+      "representation": "(1,1,1)",
+      "role": "singlet anomalon",
+      "u1f": -2,
+      "z5610": 0
+    },
+    "Eminus7": {
+      "multiplicity": 1,
+      "pq": 0,
+      "r4": 1,
+      "representation": "(1,1,1)",
+      "role": "singlet anomalon",
+      "u1f": -7,
+      "z5610": 0
+    },
+    "F": {
+      "multiplicity": 1,
+      "pq": 0,
+      "r4": 1,
+      "representation": "(4,1,2)",
+      "role": "Dirac-neutrino messenger",
+      "u1f": 3,
+      "z5610": 0
+    },
+    "Fc": {
+      "multiplicity": 1,
+      "pq": 0,
+      "r4": 1,
+      "representation": "(bar4,1,2)",
+      "role": "Dirac-neutrino messenger",
+      "u1f": -3,
+      "z5610": 0
+    },
+    "H": {
+      "multiplicity": 1,
+      "pq": 0,
+      "r4": 0,
+      "representation": "(1,2,2)",
+      "role": "V40 host Higgs",
+      "u1f": 0,
+      "z5610": 0
+    },
+    "L0": {
+      "multiplicity": 4,
+      "pq": 0,
+      "r4": 1,
+      "representation": "(1,2,1)",
+      "role": "SU(2)_L anomalon",
+      "u1f": 0,
+      "z5610": 0
+    },
+    "Lminus9": {
+      "multiplicity": 4,
+      "pq": 0,
+      "r4": 1,
+      "representation": "(1,2,1)",
+      "role": "SU(2)_L anomalon",
+      "u1f": -9,
+      "z5610": 0
+    },
+    "NDirac": {
+      "multiplicity": 3,
+      "pq": 0,
+      "r4": 1,
+      "representation": "(1,1,1)",
+      "role": "V40 sterile Dirac-neutrino field",
+      "u1f": -3,
+      "z5610": 0
+    },
+    "Q": {
+      "multiplicity": 3,
+      "pq": 0,
+      "r4": 1,
+      "representation": "(4,2,1)",
+      "role": "V40 host matter",
+      "u1f": 3,
+      "z5610": 0
+    },
+    "R0": {
+      "multiplicity": 4,
+      "pq": 0,
+      "r4": 1,
+      "representation": "(1,1,2)",
+      "role": "SU(2)_R anomalon",
+      "u1f": 0,
+      "z5610": 0
+    },
+    "Rplus9": {
+      "multiplicity": 4,
+      "pq": 0,
+      "r4": 1,
+      "representation": "(1,1,2)",
+      "role": "SU(2)_R anomalon",
+      "u1f": 9,
+      "z5610": 0
+    },
+    "STheta": {
+      "multiplicity": 1,
+      "pq": 0,
+      "r4": 2,
+      "representation": "(1,1,1)",
+      "role": "U(1)_F-breaking stabilizer",
+      "u1f": 0,
+      "z5610": 0
+    },
+    "Sc": {
+      "multiplicity": 1,
+      "pq": 0,
+      "r4": 0,
+      "representation": "(bar4,1,2)",
+      "role": "V40 PS-breaking host field",
+      "u1f": 0,
+      "z5610": 0
+    },
+    "ThetaMinus": {
+      "multiplicity": 1,
+      "pq": 0,
+      "r4": 0,
+      "representation": "(1,1,1)",
+      "role": "negative-charge U(1)_F Higgs",
+      "u1f": -9,
+      "z5610": 0
+    },
+    "ThetaPlus": {
+      "multiplicity": 1,
+      "pq": 0,
+      "r4": 0,
+      "representation": "(1,1,1)",
+      "role": "positive-charge U(1)_F Higgs",
+      "u1f": 9,
+      "z5610": 0
+    },
+    "X": {
+      "multiplicity": 1,
+      "pq": 0,
+      "r4": 2,
+      "representation": "(1,1,1)",
+      "role": "existing V40 driver",
+      "u1f": 0,
+      "z5610": 0
+    },
+    "Zp": {
+      "multiplicity": 1,
+      "pq": 0,
+      "r4": 2,
+      "representation": "(1,1,1)",
+      "role": "existing V40 driver",
+      "u1f": 0,
+      "z5610": 0
+    }
+  },
+  "host_embedding_boundary": {
+    "all_three_signatures_identical": true,
+    "consequence": "The isolated source superpotential is an existence construction, not a symmetry-protected separation from the existing X/Zp driver sector.  A full V41 source must either solve the coupled F equations or provide an additional UV/sequestering mechanism and audit every resulting operator.",
+    "embedding_is_complete": false,
+    "identical_declared_signatures": {
+      "STheta": {
+        "pq": 0,
+        "r4": 2,
+        "representation": "(1,1,1)",
+        "u1f": 0,
+        "z5610": 0
+      },
+      "X": {
+        "pq": 0,
+        "r4": 2,
+        "representation": "(1,1,1)",
+        "u1f": 0,
+        "z5610": 0
+      },
+      "Zp": {
+        "pq": 0,
+        "r4": 2,
+        "representation": "(1,1,1)",
+        "u1f": 0,
+        "z5610": 0
+      }
+    },
+    "representative_allowed_cross_terms": [
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "allowed_by_listed_product_symmetries": true,
+        "fields": [
+          "X",
+          "ThetaPlus",
+          "ThetaMinus"
+        ],
+        "label": "X_ThetaPlus_ThetaMinus"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "allowed_by_listed_product_symmetries": true,
+        "fields": [
+          "Zp",
+          "ThetaPlus",
+          "ThetaMinus"
+        ],
+        "label": "Zp_ThetaPlus_ThetaMinus"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "allowed_by_listed_product_symmetries": true,
+        "fields": [
+          "X",
+          "STheta",
+          "STheta"
+        ],
+        "label": "X_STheta_STheta"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "allowed_by_listed_product_symmetries": true,
+        "fields": [
+          "Zp",
+          "STheta",
+          "STheta"
+        ],
+        "label": "Zp_STheta_STheta"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "allowed_by_listed_product_symmetries": true,
+        "fields": [
+          "STheta",
+          "X",
+          "X"
+        ],
+        "label": "STheta_X_X"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "allowed_by_listed_product_symmetries": true,
+        "fields": [
+          "STheta",
+          "X",
+          "Zp"
+        ],
+        "label": "STheta_X_Zp"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "allowed_by_listed_product_symmetries": true,
+        "fields": [
+          "STheta",
+          "Zp",
+          "Zp"
+        ],
+        "label": "STheta_Zp_Zp"
+      }
+    ]
+  },
+  "massability_audit": {
+    "Dirac_neutrino_messenger": {
+      "F_flat_value": "F=Fc=0 when host backgrounds Q,H,Sc,NDirac vanish",
+      "full_flavour_completion_or_fit": false,
+      "mass": "M_F != 0",
+      "tree_level_elimination": {
+        "F_solution": "-(y1/M_F) Q H",
+        "Fc_solution": "-(y2/M_F) Sc NDirac",
+        "effective_operator": "-(y1 y2/M_F) Q H Sc NDirac"
+      },
+      "vectorlike_under_PS_and_U1F": true
+    },
+    "Higgs_stabilizer_and_vector": {
+      "at_xi_F_zero": {
+        "STheta_and_radial_chiral_combination": "mass scale sqrt(2)|kappa| v_F in canonical normalization",
+        "relative_Theta_chiral_combination": "eaten by the U(1)_F vector multiplet",
+        "vector_mass_scale": "proportional to 9 g_F v_F; convention-dependent normalization omitted"
+      },
+      "physical_massless_source_chiral_multiplet_on_canonical_branch": false
+    },
+    "all_required_U1F_breaking_and_anomalon_fields_massable_on_witness": true,
+    "anomalon_thresholds": [
+      {
+        "all_chiral_pairs_massable": true,
+        "full_rank_requirement": 4,
+        "mass_matrix": "v_F lambdaL",
+        "rank_of_witness": 4,
+        "sector": "four L0/Lminus9 SU(2)_L pairs"
+      },
+      {
+        "all_chiral_pairs_massable": true,
+        "full_rank_requirement": 4,
+        "mass_matrix": "v_F lambdaR",
+        "rank_of_witness": 4,
+        "sector": "four R0/Rplus9 SU(2)_R pairs"
+      },
+      {
+        "all_chiral_pairs_massable": true,
+        "mass_matrices": [
+          "lambda45 v_F",
+          "lambda36 v_F",
+          "lambdaMinus27 v_F"
+        ],
+        "nonzero_coupling_requirement": true,
+        "sector": "E4/E5, E3/E6, Eminus2/Eminus7 singlet pairs"
+      }
+    ],
+    "pole_spectrum_or_threshold_matching_computed": false,
+    "rank_witness": {
+      "M_F_over_v_F": 1,
+      "kappa": 1,
+      "lambda36": 1,
+      "lambda45": 1,
+      "lambdaL": [
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "lambdaMinus27": 1,
+      "lambdaR": [
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ]
+    }
+  },
+  "ordinary_anomaly_recheck": {
+    "all_listed_ordinary_PS_times_U1F_anomalies_cancel": true,
+    "convention": "PS rows use 2T(R) including spectator/family multiplicities; gravity and cubic rows use physical Weyl-component multiplicities.",
+    "rows": {
+      "F_Fc_vectorlike_messenger": {
+        "SU2L": 0,
+        "SU2R": 0,
+        "SU4": 0,
+        "cubic": 0,
+        "gravity": 0
+      },
+      "ThetaPlus_ThetaMinus": {
+        "SU2L": 0,
+        "SU2R": 0,
+        "SU4": 0,
+        "cubic": 0,
+        "gravity": 0
+      },
+      "four_L_pairs": {
+        "SU2L": -36,
+        "SU2R": 0,
+        "SU4": 0,
+        "cubic": -5832,
+        "gravity": -72
+      },
+      "four_R_pairs": {
+        "SU2L": 0,
+        "SU2R": 36,
+        "SU4": 0,
+        "cubic": 5832,
+        "gravity": 72
+      },
+      "three_singlet_pairs": {
+        "SU2L": 0,
+        "SU2R": 0,
+        "SU4": 0,
+        "cubic": 81,
+        "gravity": 9
+      },
+      "visible_before_completion": {
+        "SU2L": 36,
+        "SU2R": -36,
+        "SU4": 0,
+        "cubic": -81,
+        "gravity": -9
+      }
+    },
+    "scope_limit": "This rechecks only ordinary local PS times U(1)_F rows. Product anomalies involving the old Z5610/Z4R parents and global bordism data remain outside this source audit.",
+    "totals": {
+      "SU2L": 0,
+      "SU2R": 0,
+      "SU4": 0,
+      "cubic": 0,
+      "gravity": 0
+    }
+  },
+  "schema": "susy-v41-z9-u1f-source-sector-audit-v1",
+  "scope": "A concrete canonical-SUSY source-sector existence proof for U(1)_F -> Z9, anomalon massability, and a tree-level Dirac messenger. It is not an integrated V41 Pati--Salam model.",
+  "source_manifest": [
+    {
+      "exists": true,
+      "path": "susy_v41_z9_u1f_source_sector_audit.py",
+      "sha256": "ae013e53572a271bc2a794308939f77ae409e850fa018afa929203557ba70064"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v41_z9_u1f_source_sector_audit.py",
+      "sha256": "693e6ec95e7e8c6d3fc2ee0a310401097b84a851243f4b5d3ed8bc8244d798cc"
+    }
+  ],
+  "status": "V41_U1F_TO_Z9_RENORMALIZABLE_SOURCE_BRANCH_AND_ANOMALON_MASSABILITY_CERTIFIED_ON_A_CANONICAL_SUSY_BRANCH__EMBEDDING_KAEHLER_SOFT_AND_FULL_THEORY_GATES_FAIL_CLOSED",
+  "superpotential_charge_audit": {
+    "all_PQ_neutral": true,
+    "all_U1F_neutral": true,
+    "all_Z4R_charge_two": true,
+    "all_Z5610_neutral": true,
+    "all_Z9_neutral": true,
+    "all_declared_PS_invariants": true,
+    "declared_renormalizable_superpotential": {
+      "formula": "W_F = kappa STheta(ThetaPlus ThetaMinus-mu_F^2) + ThetaPlus[L0 lambdaL Lminus9 + lambdaMinus27 Eminus2 Eminus7] + ThetaMinus[R0 lambdaR Rplus9 + lambda45 E4 E5 + lambda36 E3 E6] + y1 Q H Fc + y2 F Sc NDirac + M_F F Fc",
+      "scope": "The epsilon_2 contractions and flavour indices on L/R are suppressed in the displayed formula."
+    },
+    "rows": [
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "expression": "-kappa mu_F^2 STheta",
+        "fields": [
+          "STheta"
+        ],
+        "gauge_invariant_by_declared_PS_representations": true,
+        "label": "stabilizer_linear"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "expression": "kappa STheta ThetaPlus ThetaMinus",
+        "fields": [
+          "STheta",
+          "ThetaPlus",
+          "ThetaMinus"
+        ],
+        "gauge_invariant_by_declared_PS_representations": true,
+        "label": "stabilizer_higgs"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "expression": "ThetaPlus epsilon_2 L0^a lambdaL_ab Lminus9^b",
+        "fields": [
+          "ThetaPlus",
+          "L0",
+          "Lminus9"
+        ],
+        "gauge_invariant_by_declared_PS_representations": true,
+        "label": "L_anomalon_mass"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "expression": "ThetaMinus epsilon_2 R0^a lambdaR_ab Rplus9^b",
+        "fields": [
+          "ThetaMinus",
+          "R0",
+          "Rplus9"
+        ],
+        "gauge_invariant_by_declared_PS_representations": true,
+        "label": "R_anomalon_mass"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "expression": "lambda45 ThetaMinus E4 E5",
+        "fields": [
+          "ThetaMinus",
+          "E4",
+          "E5"
+        ],
+        "gauge_invariant_by_declared_PS_representations": true,
+        "label": "E45_anomalon_mass"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "expression": "lambda36 ThetaMinus E3 E6",
+        "fields": [
+          "ThetaMinus",
+          "E3",
+          "E6"
+        ],
+        "gauge_invariant_by_declared_PS_representations": true,
+        "label": "E36_anomalon_mass"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "expression": "lambdaMinus27 ThetaPlus Eminus2 Eminus7",
+        "fields": [
+          "ThetaPlus",
+          "Eminus2",
+          "Eminus7"
+        ],
+        "gauge_invariant_by_declared_PS_representations": true,
+        "label": "Eminus2minus7_anomalon_mass"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "expression": "y1 Q H Fc",
+        "fields": [
+          "Q",
+          "H",
+          "Fc"
+        ],
+        "gauge_invariant_by_declared_PS_representations": true,
+        "label": "Dirac_messenger_yukawa_left"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "expression": "y2 F Sc NDirac",
+        "fields": [
+          "F",
+          "Sc",
+          "NDirac"
+        ],
+        "gauge_invariant_by_declared_PS_representations": true,
+        "label": "Dirac_messenger_yukawa_right"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "expression": "M_F F Fc",
+        "fields": [
+          "F",
+          "Fc"
+        ],
+        "gauge_invariant_by_declared_PS_representations": true,
+        "label": "Dirac_messenger_mass"
+      }
+    ]
+  }
+}

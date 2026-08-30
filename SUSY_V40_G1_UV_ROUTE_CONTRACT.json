@@ -1,0 +1,196 @@
+{
+  "checks": {
+    "both_routes_are_open_research_classes_not_completed_candidates": true,
+    "both_routes_have_explicit_minimum_data_contracts": true,
+    "four_dimensional_route_requires_an_architecture_change": true,
+    "full_G1_remains_fail_closed": true,
+    "source_manifest_complete": true,
+    "v38_same_selector_conventional_4d_parent_is_excluded": true,
+    "v39_trivial_mirror_gap_is_excluded": true
+  },
+  "core_sha256": "aa465cbabf4d3593235a50905d456a8f94b0a86688f3f39be09c63372c26e3d2",
+  "failures": [],
+  "gate_decision": {
+    "G1_closed": false,
+    "V38_5D_inflow_EFT_alone_is_a_microscopic_completion": false,
+    "a_4D_route_exists_in_principle": true,
+    "a_5D_route_exists_in_principle": true,
+    "either_route_is_closed_from_present_inputs": false,
+    "same_V39_conventional_4D_Z66_route_is_available": false
+  },
+  "literature": {
+    "discrete_R_and_GS_scope": "https://arxiv.org/abs/1212.4371",
+    "discrete_anomaly_global_structure": "https://arxiv.org/abs/1808.02881",
+    "eta_inflow": "https://arxiv.org/abs/1909.08775",
+    "gapped_boundary_anomaly_obstruction": "https://arxiv.org/abs/1910.04962",
+    "heavy_threshold_and_discrete_anomaly_data": "https://arxiv.org/abs/hep-ph/9210211",
+    "localized_orbifold_anomaly_and_5D_CS_scope": "https://arxiv.org/abs/hep-th/0305024"
+  },
+  "minimal_shared_promotion_standard": [
+    "one internally consistent microscopic candidate, not an assembly of facts from unrelated EFTs",
+    "quantized anomaly/global-structure data rather than anomaly congruences alone",
+    "a physical vacuum and all required heavy/boundary mass or topological sectors",
+    "reproducible UV-to-visible operator and threshold matching"
+  ],
+  "n_failed": 0,
+  "question_answered": "There are two coherent ways to continue beyond V39, but neither can be promoted from the present inputs. The 4D route must change the excluded conventional selector realization or add a fully quantized new anomaly mechanism; the 5D route must construct the missing microscopic anomalous gapped boundary theory.",
+  "route_comparison": {
+    "five_dimensional_inflow_and_microscopic_boundary_completion": {
+      "can_close_G1_from_present_inputs": false,
+      "classification": "conditional viable research route; V38 remains only an anomaly-EFT scaffold",
+      "minimum_new_physical_data": [
+        {
+          "acceptance_evidence": "A regulated KK spectrum and explicit boundary chiral indices whose zero-mode action is the intended V40 visible theory.",
+          "id": "5D-1-bulk-global-data-and-boundary-conditions",
+          "new_physical_data": "The compact 5D gauge group/global quotient, tangential Spin/Spin^Z4R structure, interval or orbifold geometry, complete bulk multiplets, and boundary conditions/projections.",
+          "why_irreducible": "The quotient and boundary projection determine both global anomalies and which localized modes actually exist."
+        },
+        {
+          "acceptance_evidence": "A gauge-variation/descent calculation showing cancellation locally on each boundary and globally, with integer levels fixed by the stated lattice and regulator.",
+          "id": "5D-2-quantized-inflow-functional",
+          "new_physical_data": "The full quantized 5D Chern--Simons/eta/Green--Schwarz functional, including the U(1)X-PS^2, Abelian, gravitational, and discrete-R pieces.",
+          "why_irreducible": "Globally vanishing local anomalies can be canceled by 5D CS/eta inflow, but the formal coefficient is not enough without its quantization and regulator."
+        },
+        {
+          "acceptance_evidence": "A Lagrangian/state-sum/UV construction plus an anomaly calculation proving that its anomaly exactly equals the mirror residue while its local excitations are gapped and it does not break the selector.",
+          "id": "5D-3-microscopic-far-boundary-theory",
+          "new_physical_data": "An explicit 3+1D nontrivial boundary topological order or symmetry-extension construction coupled to PS x Z4R x Z_N, including all emergent gauge/higher-form fields and the symmetry action.",
+          "why_irreducible": "V39 excludes the alternative of a unique trivial local superpotential gap.  Naming a topological order without its symmetry-enriched anomaly data is not a completion."
+        },
+        {
+          "acceptance_evidence": "A calculation that the combined bulk-plus-both-boundaries partition function is well-defined on every allowed background, not only perturbatively around the trivial bundle.",
+          "id": "5D-4-global-anomaly-and-bordism",
+          "new_physical_data": "The full bordism/invertible-field-theory classification for the actual Spin/Z4R structure, Pati--Salam diagonal quotient, selector, gauginos, gravitino, axions, and boundary topological sector.",
+          "why_irreducible": "The V39 Witten-doublet check is necessary but does not calculate the required product/global anomaly."
+        },
+        {
+          "acceptance_evidence": "A UV construction with its consistency conditions and a map from microscopic states to the 5D action/eta phase.",
+          "id": "5D-5-microscopic-bulk-regulator",
+          "new_physical_data": "A specified microscopic completion or regulator of the nonrenormalizable 5D bulk theory that derives its levels and defect spectrum.",
+          "why_irreducible": "A 5D anomaly EFT cannot establish the UV spectrum, level quantization, or the existence of the required topological boundary sector."
+        },
+        {
+          "acceptance_evidence": "A component-level UV-to-4D matching computation showing no unwanted massless mirror state and no selector-breaking nonlocal operator is induced.",
+          "id": "5D-6-threshold-and-visible-matching",
+          "new_physical_data": "The KK/twisted/boundary threshold determinants and the matching of all visible normalized operators, gauge couplings, and residual symmetry actions.",
+          "why_irreducible": "Even a consistent anomaly system fails G1 if its compactification does not reproduce the claimed 4D EFT."
+        }
+      ],
+      "promotion_rule": "Promote G1 through this route only after an explicit anomalous but symmetry-preserving gapped far-boundary theory and the complete bulk-plus-boundary partition function are constructed.  The V38 interval by itself, or a postulated eta-invariant, is insufficient.",
+      "route_id": "V40_5D_INFLOW_AND_MICROSCOPIC_BOUNDARY_COMPLETION",
+      "source_basis": [
+        "https://arxiv.org/abs/1909.08775",
+        "https://arxiv.org/abs/hep-th/0305024",
+        "https://arxiv.org/abs/1910.04962"
+      ],
+      "what_the_present_interval_packet_establishes": "V38 supplies equal-and-opposite continuous boundary anomaly rows.  Thus a globally vanishing localized anomaly distribution can in principle be represented by quantized 5D inflow.  It does not supply a physical far-wall gap or a UV regulator.",
+      "why_inflow_alone_is_insufficient": "V39 independently finds three net opposite Pati--Salam families and the far-wall mixed selector residue (+8,+8,+8).  A trivial local N=1 wall with unbroken PS x Z66 therefore cannot be fully gapped.  An eta invariant or Chern--Simons symbol accounts for anomaly variation; it does not by itself define the missing boundary degrees of freedom or their gapped dynamics."
+    },
+    "four_dimensional_gauge_derived_selector_rebuild": {
+      "allowed_architecture_changes": [
+        "replace the Z66 action by a different gauge-derived residual selector while re-solving the full operator ring",
+        "change the integral parent charge lattice and complete chiral threshold spectrum",
+        "supply a quantized multi-axion/Green--Schwarz lattice or another microscopic anomaly mechanism, including its periods and levels",
+        "change the boundary/UV realization so that at least one stated V38 no-go assumption is explicitly not applicable"
+      ],
+      "can_close_G1_from_present_inputs": false,
+      "classification": "conditional viable research route; no supplied microscopic candidate",
+      "minimum_new_physical_data": [
+        {
+          "acceptance_evidence": "A machine-readable generator-action table whose exponentiation gives the claimed remnant Z_N (and the correct fermionic/Spin^Z4R action).",
+          "id": "4D-1-parent-global-form-and-lattice",
+          "new_physical_data": "The full compact UV gauge group including all quotients, a primitive integral charge lattice, and the normalization of every U(1), axion, and R generator.",
+          "why_irreducible": "Whether a Higgsed U(1) leaves Z_N and whether a purported GS coefficient is integral are lattice statements; low-energy residues alone do not determine them."
+        },
+        {
+          "acceptance_evidence": "Exact perturbative anomaly polynomial plus discrete/global anomaly calculation before and after Higgsing, with all rows zero or canceled by a stated quantized mechanism.",
+          "id": "4D-2-complete-chiral-spectrum",
+          "new_physical_data": "Every UV chiral multiplet and heavy threshold, with Pati--Salam representation, multiplicity, charge, and chirality.",
+          "why_irreducible": "Heavy fermions can carry the anomaly information that is invisible in a light-field-only calculation."
+        },
+        {
+          "acceptance_evidence": "F/D equations, gauge quotient, mass determinants, and threshold matching that prove the exact selector remains unbroken and the desired light V39/V40 spectrum is obtained.",
+          "id": "4D-3-higgsing-vacuum-and-thresholds",
+          "new_physical_data": "A supersymmetric Higgs/axion sector, complete superpotential and K\u00e4hler/gauge-kinetic data sufficient to establish its physical VEV branch and every heavy mass matrix.",
+          "why_irreducible": "A charge list cannot show that unwanted chiral states are actually gapped without breaking the claimed residual symmetry."
+        },
+        {
+          "acceptance_evidence": "A gauge-variation calculation of the complete action, including mixed PS, Abelian, gravitational, and Z4R/Spin terms, and a global-anomaly/bordism check for the actual gauge quotient.",
+          "id": "4D-4-quantized-anomaly-mechanism",
+          "new_physical_data": "If anomalies are canceled by Green--Schwarz/Stueckelberg data rather than an anomaly-free spectrum: axion periods, transformation lattice, Wess--Zumino couplings, and integer level matrix.",
+          "why_irreducible": "A formal continuous coefficient or a parity repair is not a compact, quantized anomaly-canceling action."
+        },
+        {
+          "acceptance_evidence": "An all-order operator-ring computation and Wilson-coefficient matching which reproduce the claimed selector while excluding every forbidden class, not merely the lowest monomials.",
+          "id": "4D-5-all-order-visible-matching",
+          "new_physical_data": "A UV-to-visible map for normalized superpotential, K\u00e4hler, gauge-kinetic, and soft operators after integrating out every threshold.",
+          "why_irreducible": "G1 is a statement about the actual UV theory reproducing the visible EFT, not only about anomaly arithmetic."
+        },
+        {
+          "acceptance_evidence": "Versioned source, spectrum/threshold manifests, independent executable checks, and a physical-branch matching calculation.",
+          "id": "4D-6-microscopic-regulator-and-reproducibility",
+          "new_physical_data": "A complete local microscopic action or another specified UV regulator from which the above spectrum, couplings, and quantization are derived.",
+          "why_irreducible": "Fitted charge tables or unconstrained coefficients would define a new EFT but not establish a UV completion."
+        }
+      ],
+      "promotion_rule": "Promote G1 through this route only if one *single* candidate provides all six data packets and the exact residual selector/operator map is matched.  Do not combine anomaly cancellation from one model with vacuum or Yukawa data from another.",
+      "reason_existing_V39_parent_cannot_be_reused": "V38 computes the V37 lifted mixed U(1)X-PS^2 row as (-8,-8,-8), nonzero modulo 66 and modulo 33.  Under its assumptions (PS unbroken at the threshold, all breaking VEVs in 66 Z, and ordinary full-rank symmetry-preserving masses), heavy thresholds shift that row by zero modulo the same tests.  A single ordinary compact axion would require 66 k = 8 and therefore also fails.",
+      "retains_exact_V39_conventional_Z66_parent": false,
+      "route_id": "V40_4D_GAUGE_DERIVED_SELECTOR_REBUILD",
+      "source_basis": [
+        "https://arxiv.org/abs/hep-ph/9210211",
+        "https://arxiv.org/abs/1212.4371",
+        "https://arxiv.org/abs/1808.02881"
+      ]
+    }
+  },
+  "schema": "susy-v40-g1-uv-route-contract-v1",
+  "source_manifest": [
+    {
+      "exists": true,
+      "path": "susy_v40_g1_uv_route_contract.py",
+      "sha256": "9739624158a418adeb67905b77a5d3a64e8f261fc07fa20fdc9681288f029277"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v40_g1_uv_route_contract.py",
+      "sha256": "f4b665ca997eaa830d9126ab74f31d6aa9b5963940cca4a357d1d437c65aebcc"
+    },
+    {
+      "exists": true,
+      "path": "susy_v38_g1_uv_completion_audit.py",
+      "sha256": "99370f2203de2d8152fd6f4e9cbab9db88b9047eda9fa3cafdeee2853c944e99"
+    },
+    {
+      "exists": true,
+      "path": "susy_v39_g1_mirror_gap_audit.py",
+      "sha256": "8141098d4ffb1ba274343c81e185e570b2c2bef6b83a471b8aff64a28c8d4cc3"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V38_G1_UV_COMPLETION_AUDIT.json",
+      "sha256": "0feccc69969ba5898c9b8cac9ae0b575be4a1cf14e9c0488420fe478fa501c76"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V39_G1_MIRROR_GAP_AUDIT.json",
+      "sha256": "e0ce5d2f6d9dcac1c909d3bd2055448b296052bd1aa04d5bd2a4e75c10d0cb63"
+    }
+  ],
+  "status": "V40_G1_UV_ROUTE_CONTRACT__TWO_CONDITIONAL_ARCHITECTURES__NO_PRESENT_INPUT_CLOSES_G1",
+  "v39_fixed_facts": {
+    "V38_visible_lifted_U1X_PS_squared_doubled_row": [
+      -8,
+      -8,
+      -8
+    ],
+    "V39_mirror_lifted_U1X_PS_squared_doubled_row": [
+      8,
+      8,
+      8
+    ],
+    "V39_mirror_unpaired_opposite_PS_families": 3,
+    "same_selector_ordinary_4D_parent_excluded": true,
+    "trivial_local_mirror_gap_excluded": true
+  }
+}

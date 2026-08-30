@@ -1,0 +1,53 @@
+{
+  "schema": "susy-v44-terminal-validity-erratum-v1",
+  "status": "V44_V43_TERMINAL_VALIDITY_AUDIT__ONE_PORTAL_OVERCLAIM_CORRECTED__CURRENT_ARCHITECTURE_REJECTED_AS_A_COMPLETE_THEORY__RESTRICTED_RESULTS_RETAINED",
+  "audited_v43_cores": {
+    "charged_spurion": "2b94159dac9311f14790956bd8fbbf5222ea7c4dfa2aa4a9091975e7bc74de8d",
+    "complete_theory": "33213d5060464a5433f0ced29588bb8886b25bb27a64396fe6dcdb42d7615687"
+  },
+  "terminal_classification": {
+    "as_complete_theory": "REJECTED_BY_ACCEPTANCE_CONTRACT_ZERO_OF_EIGHT_GATES",
+    "as_empirically_falsified_model": false,
+    "as_one_integrated_EFT": false,
+    "as_portfolio_of_restricted_EFT_results": true,
+    "current_architecture_should_be_frozen": true,
+    "continuation_requires_a_new_single_architecture": true
+  },
+  "v43_erratum": {
+    "omitted_operator": "NDirac E3 Omega",
+    "field_charges": {
+      "E3": {"PQ_numerator_over_170": 0, "U1F": 3, "U1S": 1, "Z4R": 1, "Z5610": 0, "PS_singlet": true},
+      "NDirac": {"PQ_numerator_over_170": 0, "U1F": -3, "U1S": 0, "Z4R": 1, "Z5610": 0, "PS_singlet": true},
+      "Omega": {"PQ_numerator_over_170": 0, "U1F": 0, "U1S": -1, "Z4R": 0, "Z5610": 0, "PS_singlet": true}
+    },
+    "total_charges": {"PQ_numerator_over_170": 0, "U1F": 0, "U1S": 0, "Z4R": 2, "Z5610": 0},
+    "renormalizable_and_PS_invariant": true,
+    "why_omitted": "The V43 scan candidate tuple contains V40.VISIBLE_FIELDS plus source fields, not the full V40 field table; E3 is an anomalon and was outside the scan.",
+    "claims_to_revise": [
+      "No potentially PS-invariant source-host portal through degree three: restrict this to the scanned visible-plus-source subset.",
+      "Renormalizable source-host separation is symmetry protected: false for the full declared field table.",
+      "Every F-flat host solution factors with the source branch: restrict to branches on which the new portal derivatives vanish, including the target NDirac=E3=0 branch."
+    ],
+    "claims_retained": [
+      "No direct renormalizable X/Zp-source portal was found in the full declared charge table.",
+      "The target zero-NDirac, zero-E3 F-term branch is not disproved by the omitted operator.",
+      "The minimal gauged U1S branch remains excluded by its D-flatness and anomaly failures."
+    ]
+  },
+  "gate_ledger": [
+    {"gate": "G1", "closed": false, "classification": "scoped ordinary threshold classes excluded; common UV parent missing"},
+    {"gate": "G2", "closed": false, "classification": "restricted F-term branch only; portal overclaim corrected; physical spectrum missing"},
+    {"gate": "G3", "closed": false, "classification": "minimal gauged spurion branch excluded; alternatives unbuilt"},
+    {"gate": "G4", "closed": false, "classification": "mediation and electroweak completion missing"},
+    {"gate": "G5", "closed": false, "classification": "isolated Yukawa benchmark excluded; replacement cosmology missing"},
+    {"gate": "G6", "closed": false, "classification": "complete physical RG and threshold chain missing"},
+    {"gate": "G7", "closed": false, "classification": "ordinary no-GS Z4M realization excluded; invariant ring and matching incomplete"},
+    {"gate": "G8", "closed": false, "classification": "local messenger matching valid; flavour prediction missing"}
+  ],
+  "claims_to_narrow_beyond_the_portal_erratum": [
+    "V43 is an integrated theory: it is an integrated audit of alternative branches, not one Lagrangian.",
+    "Z4M isolates anomaly completion as the remaining cost: the operator ring and physical matching are also independently open.",
+    "Passing repository tests validates the physics: those tests establish reproducibility of encoded arithmetic, not UV or experimental validity."
+  ],
+  "recommended_action": "Freeze V40-V43 as a provenance-preserving negative research record and close it as a candidate complete theory. Continue only by defining a new single architecture and re-running G1-G8 in dependency order."
+}

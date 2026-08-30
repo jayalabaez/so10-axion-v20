@@ -53,6 +53,7 @@ jobs:
           sudo apt-get install -y --no-install-recommends texlive-latex-extra poppler-utils
       - run: python -m pip install -r requirements.txt
       - run: python -m compileall -q -x 'corrected_rank1_publication_v21' .
+      - run: python -B -m py_compile canonical_g1_g8_gauged_u1x_v21.py test_canonical_g1_g8_gauged_u1x_v21.py canonical_g1_scalar_ring_dim6_frontier_v21.py test_canonical_g1_susyno_channel_basis_v21.py canonical_g1_complete_operator_ring_dim6_v21.py verify_canonical_g1_complete_operator_ring_dim6_v21.py test_canonical_g1_complete_operator_ring_dim6_v21.py _g2_contraction_graphs.py _g2_metric_rank_probe.py canonical_g2_exact_contraction_basis_v21.py test_canonical_g2_exact_contraction_basis_v21.py canonical_g2_full_component_projection_dim6_v21.py verify_canonical_g2_full_component_projection_dim6_v21.py test_canonical_g2_full_component_projection_dim6_v21.py test_verify_canonical_g2_full_component_projection_dim6_v21.py canonical_g3_physical_ew_global_vacuum_v21.py verify_canonical_g3_physical_ew_global_vacuum_v21.py test_canonical_g3_physical_ew_global_vacuum_v21.py test_verify_canonical_g3_physical_ew_global_vacuum_v21.py
       - name: Execute corrected tensor chain
         run: |
           python direct_phi_h_sigmabar_tensor_v20.py
@@ -115,10 +116,16 @@ jobs:
           python gauged_u1x_g3_stability_v20.py --write
           python gauged_u1x_g3_corrected_common_kernel_v20.py --recompute-heavy --write
           python g1_g8_gate_ledger_v20.py --write
+          python -B canonical_g1_scalar_ring_dim6_frontier_v21.py --check
+          python -B canonical_g1_complete_operator_ring_dim6_v21.py --check
+          python -B canonical_g2_exact_contraction_basis_v21.py --check
+          python -B canonical_g2_full_component_projection_dim6_v21.py --check
+          python -B canonical_g3_physical_ew_global_vacuum_v21.py --check
+          python -B canonical_g1_g8_gauged_u1x_v21.py --check
           python final_g3_acceptance_gate_v20.py --write
           python g1_g8_execution_roadmap_v20.py --write
           python authoritative_full_model_gate_v20.py
-          python theory_validation_matrix_v20.py --expect-blocked
+          python theory_validation_matrix_v20.py
       - name: Focused tests
         run: |
           python -m unittest -v \
@@ -174,6 +181,15 @@ jobs:
             test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py \
             corrected_rank1_publication_v21/test_exact_gauged_u1x_g3_rank1_su4_corrected_publication_v21.py \
             test_corrected_rank1_endpoint_v21.py \
+            test_canonical_g1_g8_gauged_u1x_v21.py \
+            test_canonical_g1_scalar_ring_dim6_frontier_v21.py \
+            test_canonical_g1_susyno_channel_basis_v21.py \
+            test_canonical_g1_complete_operator_ring_dim6_v21.py \
+            test_canonical_g2_exact_contraction_basis_v21.py \
+            test_canonical_g2_full_component_projection_dim6_v21.py \
+            test_verify_canonical_g2_full_component_projection_dim6_v21.py \
+            test_canonical_g3_physical_ew_global_vacuum_v21.py \
+            test_verify_canonical_g3_physical_ew_global_vacuum_v21.py \
             test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py \
             test_exact_gauged_u1x_g3_alternative_global_sos_audit_v20.py \
             test_final_g3_acceptance_gate_v20.py \
@@ -188,6 +204,13 @@ jobs:
           import json
           import g1_g8_gate_ledger_v20 as gate_ledger
           from corrected_rank1_endpoint_v21 import central_view, load_validated_publication
+          canonical=json.load(open('CANONICAL_G1_G8_GAUGED_U1X_V21.json'))
+          assert canonical['n_failed']==0, canonical['failures']
+          assert canonical['overall_state'] in ('BLOCKED', 'PASS')
+          assert (canonical['overall_state']=='PASS') == (canonical['closure_counts']['closed']==8)
+          assert canonical['classification']['whole_model_validated'] == (canonical['overall_state']=='PASS')
+          assert canonical['classification']['all_canonical_gates_closed'] == (canonical['closure_counts']['closed']==8)
+          assert canonical['closure_counts']['open'] == 8-canonical['closure_counts']['closed']
           d=json.load(open('DIRECT_PHI_H_SIGMABAR_TENSOR_V20.json'))
           x=json.load(open('DIRECT_PHI_H_SIGMABAR_TD_CROSSCHECK_V20.json'))
           pm=json.load(open('DIRECT_PHI_H_SIGMABAR_PORTAL_M2_BLOCK_V20.json'))
@@ -289,13 +312,19 @@ jobs:
           assert k['overall_state']=='BLOCKED' and k['n_open']==8, k
           assert not e['flags']['whole_model_validated'], e
           assert not e['flags']['whole_model_excluded'], e
-          assert xc['n_failed']==0 and not xc['contract_consistent'], xc
+          assert xc['n_failed']==0 and xc['overall_state'] in ('BLOCKED','PASS'), xc
           assert xc['static_contract_consistent'] is True, xc
-          assert xc['blocker']=='AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED', xc
           assert xc['executable_scaffold_contract']['model_syntax_class']=='sarah_native', xc
           assert xc['executable_scaffold_contract']['tool_native_sarah_syntax'], xc
-          assert not xc['external_model_validation']['valid'], xc
-          assert not xc['external_model_validation']['checks']['captured_process_log_is_hash_bound'], xc
+          if xc['contract_consistent']:
+              assert xc['overall_state']=='PASS' and xc['blocker'] is None, xc
+              assert xc['external_model_validation']['valid'], xc
+              assert xc['external_model_validation']['checks']['captured_process_log_is_hash_bound'], xc
+          else:
+              assert xc['overall_state']=='BLOCKED', xc
+              assert xc['blocker']=='AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED', xc
+              assert not xc['external_model_validation']['valid'], xc
+              assert not xc['external_model_validation']['checks']['captured_process_log_is_hash_bound'], xc
           assert xc['repository_external_input_manifest']['valid'], xc
           assert er['certified'] and er['rank']==13 and er['nullity']==38, er
           assert eq['certified'] and eq['live_compiler_binding']['compiler_binding_passes'], eq
@@ -556,15 +585,30 @@ jobs:
           assert ck['flags']['exact_H6_radial_flat_direction_refuted'], ck
           assert ck['corrected_common_kernel_diagnostic']['corrected_common_kernel']['rank']==448, ck
           assert ck['corrected_common_kernel_diagnostic']['corrected_common_kernel']['nullity']==0, ck
-          assert gl['summary']['closed']==[] and gl['summary']['n_blocked']==8, gl
-          assert not fm['classification']['whole_model_validated'], fm
-          assert vm['overall_state']=='BLOCKED' and not vm['full_theory_validated'], vm
+          assert gl['n_failed']==0 and gl['overall_state'] in ('BLOCKED','OPEN','PASS'), gl
+          assert gl['summary']['n_closed']==len(gl['summary']['closed']), gl
+          canonical_closed = fm['classification']['whole_model_validated'] is True
+          assert fm['overall_state']==('PASS' if canonical_closed else 'BLOCKED'), fm
+          assert vm['full_theory_validated'] is canonical_closed, vm
+          assert vm['overall_state']==('PASS' if canonical_closed else 'BLOCKED'), vm
           PY
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: pr-direct-tensor-correction
           path: |
+            CANONICAL_G1_G8_GAUGED_U1X_V21.json
+            CANONICAL_G1_G8_GAUGED_U1X_V21.md
+            CANONICAL_G1_SCALAR_RING_DIM6_FRONTIER_V21.json
+            CANONICAL_G1_SCALAR_RING_DIM6_FRONTIER_V21.md
+            CANONICAL_G1_SUSYNO_CHANNEL_BASIS_V21.json
+            CANONICAL_G1_COMPLETE_OPERATOR_RING_DIM6_V21.json
+            CANONICAL_G1_COMPLETE_OPERATOR_RING_DIM6_V21.md
+            CANONICAL_G2_EXACT_CONTRACTION_BASIS_V21.json
+            CANONICAL_G2_FULL_COMPONENT_PROJECTION_DIM6_V21.json
+            CANONICAL_G2_FULL_COMPONENT_PROJECTION_DIM6_V21.md
+            CANONICAL_G3_PHYSICAL_EW_GLOBAL_VACUUM_V21.json
+            CANONICAL_G3_PHYSICAL_EW_GLOBAL_VACUUM_V21.md
             DIRECT_PHI_H_SIGMABAR_TENSOR_V20.json
             DIRECT_PHI_H_SIGMABAR_TENSOR_V20.md
             DIRECT_PHI_H_SIGMABAR_TD_CROSSCHECK_V20.json
@@ -670,6 +714,7 @@ jobs:
           sudo apt-get install -y --no-install-recommends texlive-latex-extra poppler-utils
       - run: python -m pip install -r requirements.txt
       - run: python -m compileall -q -x 'corrected_rank1_publication_v21' .
+      - run: python -B -m py_compile canonical_g1_g8_gauged_u1x_v21.py test_canonical_g1_g8_gauged_u1x_v21.py canonical_g1_scalar_ring_dim6_frontier_v21.py test_canonical_g1_susyno_channel_basis_v21.py canonical_g1_complete_operator_ring_dim6_v21.py verify_canonical_g1_complete_operator_ring_dim6_v21.py test_canonical_g1_complete_operator_ring_dim6_v21.py _g2_contraction_graphs.py _g2_metric_rank_probe.py canonical_g2_exact_contraction_basis_v21.py test_canonical_g2_exact_contraction_basis_v21.py canonical_g2_full_component_projection_dim6_v21.py verify_canonical_g2_full_component_projection_dim6_v21.py test_canonical_g2_full_component_projection_dim6_v21.py test_verify_canonical_g2_full_component_projection_dim6_v21.py canonical_g3_physical_ew_global_vacuum_v21.py verify_canonical_g3_physical_ew_global_vacuum_v21.py test_canonical_g3_physical_ew_global_vacuum_v21.py test_verify_canonical_g3_physical_ew_global_vacuum_v21.py
       - name: Execute canonical scalar and tensor gates
         run: |
           python quartic_soft_betas_v20.py
@@ -715,6 +760,15 @@ jobs:
       - run: python -B corrected_rank1_publication_v21/verify_exact_gauged_u1x_g3_rank1_su4_corrected_positive_gram_primal_v21.py
       - run: python -B corrected_rank1_publication_v21/verify_exact_gauged_u1x_g3_rank1_su4_corrected_fixed_endpoint_theorem_v21.py
       - run: python -B corrected_rank1_endpoint_v21.py
+      - run: python g1_g8_gate_ledger_v20.py --write
+      - run: python -B canonical_g1_scalar_ring_dim6_frontier_v21.py --check
+      - run: python -B canonical_g1_complete_operator_ring_dim6_v21.py --check
+      - run: python -B canonical_g2_exact_contraction_basis_v21.py --check
+      - run: python -B canonical_g2_full_component_projection_dim6_v21.py --check
+      - run: python -B canonical_g3_physical_ew_global_vacuum_v21.py --check
+      - run: python -B canonical_g1_g8_gauged_u1x_v21.py --check
+      - run: python authoritative_full_model_gate_v20.py
+      - run: python -B -m pytest -q -p no:cacheprovider test_canonical_g1_scalar_ring_dim6_frontier_v21.py test_canonical_g1_susyno_channel_basis_v21.py test_canonical_g1_complete_operator_ring_dim6_v21.py test_canonical_g2_exact_contraction_basis_v21.py test_canonical_g2_full_component_projection_dim6_v21.py test_verify_canonical_g2_full_component_projection_dim6_v21.py test_canonical_g3_physical_ew_global_vacuum_v21.py test_verify_canonical_g3_physical_ew_global_vacuum_v21.py test_canonical_g1_g8_gauged_u1x_v21.py
       - run: python replicate.py
       - run: python validate_release_v20.py
       - run: python falsify_v20.py
@@ -726,6 +780,13 @@ jobs:
           import json
           import g1_g8_gate_ledger_v20 as gate_ledger
           from corrected_rank1_endpoint_v21 import central_view, load_validated_publication
+          canonical=json.load(open('CANONICAL_G1_G8_GAUGED_U1X_V21.json'))
+          assert canonical['n_failed']==0, canonical['failures']
+          assert canonical['overall_state'] in ('BLOCKED', 'PASS')
+          assert (canonical['overall_state']=='PASS') == (canonical['closure_counts']['closed']==8)
+          assert canonical['classification']['whole_model_validated'] == (canonical['overall_state']=='PASS')
+          assert canonical['classification']['all_canonical_gates_closed'] == (canonical['closure_counts']['closed']==8)
+          assert canonical['closure_counts']['open'] == 8-canonical['closure_counts']['closed']
           d=json.load(open('DIRECT_PHI_H_SIGMABAR_TENSOR_V20.json'))
           x=json.load(open('DIRECT_PHI_H_SIGMABAR_TD_CROSSCHECK_V20.json'))
           pm=json.load(open('DIRECT_PHI_H_SIGMABAR_PORTAL_M2_BLOCK_V20.json'))
@@ -1024,6 +1085,18 @@ jobs:
         with:
           name: current-main-scalar-proton-reaudit
           path: |
+            CANONICAL_G1_G8_GAUGED_U1X_V21.json
+            CANONICAL_G1_G8_GAUGED_U1X_V21.md
+            CANONICAL_G1_SCALAR_RING_DIM6_FRONTIER_V21.json
+            CANONICAL_G1_SCALAR_RING_DIM6_FRONTIER_V21.md
+            CANONICAL_G1_SUSYNO_CHANNEL_BASIS_V21.json
+            CANONICAL_G1_COMPLETE_OPERATOR_RING_DIM6_V21.json
+            CANONICAL_G1_COMPLETE_OPERATOR_RING_DIM6_V21.md
+            CANONICAL_G2_EXACT_CONTRACTION_BASIS_V21.json
+            CANONICAL_G2_FULL_COMPONENT_PROJECTION_DIM6_V21.json
+            CANONICAL_G2_FULL_COMPONENT_PROJECTION_DIM6_V21.md
+            CANONICAL_G3_PHYSICAL_EW_GLOBAL_VACUUM_V21.json
+            CANONICAL_G3_PHYSICAL_EW_GLOBAL_VACUUM_V21.md
             DIRECT_PHI_H_SIGMABAR_TENSOR_V20.json
             EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_V20.json
             EXACT_GAUGED_U1X_G3_RANK1_SU4_AUGMENTED_SOS_CUBIC_MAP_V20.md

@@ -2,10 +2,9 @@
 """Fail-closed theory-confirmation verdict for SO(10) axion v20.
 
 The authoritative manuscript gauges ``U(1)_X``.  This verdict is assembled
-from fresh builders, rather than from the older release JSON stack, so stale
-Option-C results cannot approve the manuscript model.  A scientifically
-blocked report is still a successful audit: the default command exits zero,
-while explicit approval requirements fail nonzero.
+from fresh builders.  Qualified canonical V21 evidence is the sole G1--G8
+closure authority; stale Option-C and scalar-ledger rows remain diagnostic
+evidence and cannot approve or veto the model.
 """
 
 from __future__ import annotations
@@ -24,14 +23,13 @@ import exact_x_symmetry_consistency_gate_v20 as exact_x_gate
 import g1_g8_gate_ledger_v20 as gate_ledger
 import gauged_u1x_scalar_contract_v20 as gauged_contract
 import theory_validation_matrix_v20 as validation_matrix
+import canonical_g1_g8_gauged_u1x_v21 as canonical_gates
 
 ROOT = Path(__file__).resolve().parent
 OUT_JSON = ROOT / "THEORY_CONFIRMATION_VERDICT.json"
 OUT_MD = ROOT / "THEORY_CONFIRMATION_VERDICT.md"
 
-MODEL_CONTRACT_BLOCKED = (
-    "MODEL_CONTRACT_INCONSISTENT__AUTHORITATIVE_GATES_REOPENED"
-)
+CANONICAL_GATES_OPEN = "CANONICAL_G1_G8_GATES_OPEN"
 WITHHOLD_APPROVAL = "WITHHOLD_APPROVAL"
 
 HISTORICAL_CI = {
@@ -47,10 +45,7 @@ HISTORICAL_CI = {
 }
 
 REQUIRED_SOURCES = (
-    "x_contract",
-    "gauged_contract",
-    "g1_g8",
-    "authoritative",
+    "canonical",
 )
 
 
@@ -103,6 +98,7 @@ def fresh_source_reports() -> dict[str, dict[str, Any]]:
         "x_contract": exact_x_gate.build_report(),
         "gauged_contract": gauged_contract.build_report(),
         "g1_g8": gate_ledger.build_report(),
+        "canonical": canonical_gates.build_report(),
         "authoritative": authoritative_gate.build_report(),
     }
 
@@ -163,11 +159,12 @@ def evaluate_reports(
     attestation: dict[str, Any] | None = None,
     preload_errors: list[str] | None = None,
 ) -> dict[str, Any]:
-    """Evaluate fresh contract reports while separating BLOCKED from failure."""
+    """Evaluate fresh reports against the qualified canonical V21 state."""
     errors = _execution_errors(reports, preload_errors)
     x_report = reports.get("x_contract", {})
     gauged_report = reports.get("gauged_contract", {})
     ledger = reports.get("g1_g8", {})
+    canonical = reports.get("canonical", {})
     authoritative = reports.get("authoritative", {})
 
     matrix_contract_gate = validation_matrix._model_contract_gate(
@@ -176,23 +173,32 @@ def evaluate_reports(
             "gauged_contract": gauged_report,
         }
     )
-    contract_ready = bool(
-        not errors
-        and matrix_contract_gate.get("state") == "PASS"
-        and x_report.get("contract_consistent") is True
-        and gauged_report.get("implementation_matches_manuscript") is True
+    canonical_integrity = authoritative_gate._canonical_evidence_complete(
+        canonical
     )
-
-    gates = ledger.get("gates", {}) if isinstance(ledger, dict) else {}
+    if not canonical_integrity:
+        errors.append("canonical G1-G8 V21 contract integrity failed")
+    canonical_rows = (
+        canonical.get("gates", []) if isinstance(canonical, dict) else []
+    )
+    gates_by_number = {
+        row.get("gate_number"): row
+        for row in canonical_rows
+        if isinstance(row, dict)
+    }
     first_three_closed = all(
-        isinstance(gates.get(name), dict)
-        and gates[name].get("status") == gate_ledger.STATUS_CLOSED
-        for name in ("G1", "G2", "G3")
+        gates_by_number.get(number, {}).get("closed") is True
+        for number in (1, 2, 3)
     )
-    all_eight_closed = all(
-        isinstance(gates.get(name), dict)
-        and gates[name].get("status") == gate_ledger.STATUS_CLOSED
-        for name in (f"G{index}" for index in range(1, 9))
+    canonical_root_closed = gates_by_number.get(1, {}).get("closed") is True
+    all_eight_closed = bool(
+        canonical_integrity
+        and canonical.get("closure_counts") == {"closed": 8, "open": 0}
+        and canonical.get("overall_state") == "PASS"
+        and all(
+            gates_by_number.get(number, {}).get("closed") is True
+            for number in range(1, 9)
+        )
     )
 
     authoritative_classification = authoritative.get("classification", {})
@@ -200,14 +206,38 @@ def evaluate_reports(
         errors.append("authoritative classification is not a JSON object")
         authoritative_classification = {}
 
-    internal_candidate = bool(contract_ready and first_three_closed and not errors)
-    # Old aligned benchmarks were calculated under the superseded no-X
-    # contract.  They remain evidence, but not an approvable current benchmark.
+    authoritative_consistent = bool(
+        authoritative.get("canonical_g1_g8") == canonical
+        and authoritative.get("canonical_g1_g8_summary")
+        == canonical.get("closure_counts")
+        and authoritative_classification.get("all_g1_g8_closed")
+        is all_eight_closed
+        and authoritative_classification.get("whole_model_validated")
+        is all_eight_closed
+        and authoritative.get("flag", {}).get(
+            "legacy_ledger_controls_authoritative_closure"
+        )
+        is False
+        and authoritative.get("legacy_g1_g8_evidence", {}).get(
+            "authoritative_for_closure"
+        )
+        is False
+    )
+    if canonical_integrity and not authoritative_consistent:
+        errors.append(
+            "authoritative full-model report disagrees with canonical V21 state"
+        )
+    contract_ready = bool(
+        canonical_integrity
+        and authoritative_consistent
+        and canonical_root_closed
+    )
+    internal_candidate = bool(first_three_closed and contract_ready and not errors)
+    # Historical aligned benchmarks remain evidence, not closure authority.
     conditional_benchmark = False
     full_phenomenology = bool(
         contract_ready
         and all_eight_closed
-        and authoritative_classification.get("whole_model_validated") is True
         and not errors
     )
     empirical_realization = bool(
@@ -225,11 +255,6 @@ def evaluate_reports(
         classification = "THEORY_CONFIRMATION_AUDIT_EXECUTION_FAILED"
         decision = WITHHOLD_APPROVAL
         status = "THEORY_CONFIRMATION_AUDIT_EXECUTION_FAILED"
-    elif not contract_ready:
-        overall_state = "BLOCKED"
-        classification = MODEL_CONTRACT_BLOCKED
-        decision = WITHHOLD_APPROVAL
-        status = "THEORY_CONFIRMATION_AUDIT_COMPLETE__MODEL_CONTRACT_BLOCKED"
     elif whole_model_excluded:
         overall_state = "FAIL"
         classification = "AUTHORITATIVE_MODEL_EXCLUDED"
@@ -241,13 +266,17 @@ def evaluate_reports(
         decision = "VALIDATE_FULL_PHENOMENOLOGY"
         status = "THEORY_CONFIRMATION_COMPLETE__FULL_PHENOMENOLOGY_VALIDATED"
     else:
-        overall_state = "OPEN"
-        classification = "AUTHORITATIVE_GATES_OPEN"
+        overall_state = "BLOCKED"
+        classification = CANONICAL_GATES_OPEN
         decision = WITHHOLD_APPROVAL
-        status = "THEORY_CONFIRMATION_AUDIT_COMPLETE__GATES_OPEN"
+        status = "THEORY_CONFIRMATION_AUDIT_COMPLETE__CANONICAL_GATES_OPEN"
 
-    scientific_blockers: list[str] = []
-    for source in (x_report, ledger, authoritative):
+    scientific_blockers: list[str] = [
+        f"CANONICAL_GATE_NOT_CLOSED::{row.get('qualified_gate_id')}"
+        for row in canonical_rows
+        if row.get("closed") is not True
+    ]
+    for source in (x_report, authoritative):
         for key in ("scientific_blockers", "blockers"):
             values = source.get(key, []) if isinstance(source, dict) else []
             if isinstance(values, list):
@@ -298,40 +327,51 @@ def evaluate_reports(
             if isinstance(report, dict)
         },
         "authoritative_gate_classification": authoritative_classification,
+        "canonical_G1_G8_V21": canonical,
+        "canonical_authoritative_consistency": {
+            "canonical_integrity_valid": canonical_integrity,
+            "authoritative_report_matches_canonical_state": (
+                authoritative_consistent
+            ),
+            "legacy_ledger_controls_authoritative_closure": False,
+        },
         "scientific_blockers": scientific_blockers,
         "historical_option_c_subtheorems": historical,
         "scope": {
             "authoritative_current_model": "gauged_u1x_phi17_v20",
             "historical_option_c_is_authoritative": False,
             "historical_results_may_close_current_gates": False,
+            "historical_results_may_veto_current_gates": False,
+            "canonical_V21_controls_full_authoritative_closure": True,
             "software_pass_implies_scientific_approval": False,
         },
         "tiers": {
-            "INTERNAL_CANDIDATE": "WITHHELD",
+            "INTERNAL_CANDIDATE": "APPROVED" if internal_candidate else "WITHHELD",
             "CONDITIONAL_BENCHMARK": "WITHHELD",
-            "FULL_PHENOMENOLOGY": "WITHHELD",
-            "EMPIRICAL_REALIZATION": "NOT_ESTABLISHED",
-            "WHOLE_MODEL_EXCLUSION": "NOT_ESTABLISHED",
+            "FULL_PHENOMENOLOGY": "APPROVED" if full_phenomenology else "WITHHELD",
+            "EMPIRICAL_REALIZATION": "ESTABLISHED" if empirical_realization else "NOT_ESTABLISHED",
+            "WHOLE_MODEL_EXCLUSION": "ESTABLISHED" if whole_model_excluded else "NOT_ESTABLISHED",
         },
         "correct_public_claim": (
-            "The repository has a statically consistent tool-native SARAH input "
-            "for the authoritative gauged-U(1)_X scalar contract, but lacks a "
-            "v2 manifest/log-bound external SARAH execution attestation. G1-G8 "
-            "approval is withheld. Historical Option-C "
-            "calculations are scoped subtheorems and neither validate nor exclude "
-            "the gauged model."
+            "All eight qualified canonical gauged-U(1)_X V21 gates are closed "
+            "with evidence-bound artifacts; full phenomenology is validated "
+            "without implying empirical discovery."
+            if full_phenomenology
+            else "Qualified canonical gauged-U(1)_X V21 evidence remains open; "
+            "full approval is withheld. Historical Option-C and scalar-ledger "
+            "gate numbers are scoped evidence and neither promote nor veto the "
+            "canonical state."
         ),
         "incorrect_claim_do_not_use": (
-            "G1, G2, or G3 is closed for the manuscript model; the current "
-            "repository validates the full theory; or the historical saddle "
-            "excludes the gauged-U(1)_X model."
+            "Bare legacy G1-G8 status labels determine closure for the qualified "
+            "canonical gauged-U(1)_X V21 model."
         ),
         "verdict": (
-            "WITHHOLD APPROVAL. The audit itself succeeds, but the manuscript's "
-            "gauged U(1)_X model still lacks a real external SARAH execution. "
-            "Bind an actual v2 external run and recertify "
-            "G1-G3 on the 44-direction, 51-real-parameter potential before any "
-            "internal, full, empirical, or exclusion claim."
+            "VALIDATE FULL PHENOMENOLOGY. Every qualified canonical V21 gate is "
+            "closed and the authoritative report agrees exactly."
+            if full_phenomenology
+            else "WITHHOLD APPROVAL. One or more qualified canonical V21 gates "
+            "remain open, or the authoritative summary is not yet consistent."
         ),
     }
 
@@ -392,7 +432,6 @@ def exit_code(
     *,
     require_internal_approval: bool = False,
     require_full_approval: bool = False,
-    expect_blocked: bool = False,
 ) -> int:
     if verdict.get("n_failed", 1) != 0:
         return 1
@@ -404,8 +443,6 @@ def exit_code(
         "full_phenomenology_approved", False
     ):
         return 3
-    if expect_blocked and verdict.get("overall_state") != "BLOCKED":
-        return 4
     return 0
 
 
@@ -413,7 +450,6 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--require-internal-approval", action="store_true")
     parser.add_argument("--require-full-approval", action="store_true")
-    parser.add_argument("--expect-blocked", action="store_true")
     parser.add_argument("--no-write", action="store_true")
     args = parser.parse_args(argv)
 
@@ -441,7 +477,6 @@ def main(argv: list[str] | None = None) -> int:
         verdict,
         require_internal_approval=args.require_internal_approval,
         require_full_approval=args.require_full_approval,
-        expect_blocked=args.expect_blocked,
     )
 
 

@@ -1,0 +1,779 @@
+{
+  "schema": "susy_so10x17_v22_candidate_contract_v1",
+  "model_contract_id": "susy_so10x17_v22_candidate",
+  "status": "V22_SUSY_FIELD_CHARGE_AND_ANOMALY_CONTRACT_CLOSED__VACUUM_AND_G4_G5_OPEN",
+  "model_source": {
+    "path": "models/SO10X17SUSYV22/SO10X17SUSYV22.m",
+    "mode": "portable-lf",
+    "sha256": "a253e40e712287d654122b74ac94ceeb05b5fc3dddcf8c2af2c790af99be45d4"
+  },
+  "fields": [
+    {
+      "name": "F",
+      "multiplicity": 3,
+      "SO10_dimension": 16,
+      "SO10_Dynkin_index": 2,
+      "X": 1,
+      "Z17": 1,
+      "MP": "-1/2",
+      "role": "matter",
+      "R4": 1
+    },
+    {
+      "name": "P",
+      "multiplicity": 1,
+      "SO10_dimension": 16,
+      "SO10_Dynkin_index": 2,
+      "X": 1,
+      "Z17": 1,
+      "MP": "-1/2",
+      "role": "matter",
+      "R4": 1
+    },
+    {
+      "name": "R",
+      "multiplicity": 1,
+      "SO10_dimension": 16,
+      "SO10_Dynkin_index": 2,
+      "X": 1,
+      "Z17": 1,
+      "MP": "-1/2",
+      "role": "matter",
+      "R4": 1
+    },
+    {
+      "name": "SpecS",
+      "multiplicity": 5,
+      "SO10_dimension": 16,
+      "SO10_Dynkin_index": 2,
+      "X": 2,
+      "Z17": 2,
+      "MP": "-1/2",
+      "role": "matter",
+      "R4": 1
+    },
+    {
+      "name": "SpecB",
+      "multiplicity": 5,
+      "SO10_dimension": -16,
+      "SO10_Dynkin_index": 2,
+      "X": -6,
+      "Z17": 11,
+      "MP": "-1/2",
+      "role": "matter",
+      "R4": 1
+    },
+    {
+      "name": "Q",
+      "multiplicity": 1,
+      "SO10_dimension": 16,
+      "SO10_Dynkin_index": 2,
+      "X": 14,
+      "Z17": 14,
+      "MP": "-1/2",
+      "role": "matter",
+      "R4": 1
+    },
+    {
+      "name": "Pbar",
+      "multiplicity": 1,
+      "SO10_dimension": -16,
+      "SO10_Dynkin_index": 2,
+      "X": 16,
+      "Z17": 16,
+      "MP": "-1/2",
+      "role": "matter",
+      "R4": 1
+    },
+    {
+      "name": "Qbar",
+      "multiplicity": 1,
+      "SO10_dimension": -16,
+      "SO10_Dynkin_index": 2,
+      "X": 3,
+      "Z17": 3,
+      "MP": "-1/2",
+      "role": "matter",
+      "R4": 1
+    },
+    {
+      "name": "Rbar",
+      "multiplicity": 1,
+      "SO10_dimension": -16,
+      "SO10_Dynkin_index": 2,
+      "X": -18,
+      "Z17": 16,
+      "MP": "-1/2",
+      "role": "matter",
+      "R4": 1
+    },
+    {
+      "name": "Phi210",
+      "multiplicity": 1,
+      "SO10_dimension": 210,
+      "SO10_Dynkin_index": 56,
+      "X": 0,
+      "Z17": 0,
+      "MP": "0",
+      "role": "heavy_Higgs",
+      "R4": 0
+    },
+    {
+      "name": "DeltaB",
+      "multiplicity": 1,
+      "SO10_dimension": -126,
+      "SO10_Dynkin_index": 35,
+      "X": -2,
+      "Z17": 15,
+      "MP": "-1",
+      "role": "heavy_Higgs",
+      "R4": 0
+    },
+    {
+      "name": "Delta",
+      "multiplicity": 1,
+      "SO10_dimension": 126,
+      "SO10_Dynkin_index": 35,
+      "X": 2,
+      "Z17": 2,
+      "MP": "-1",
+      "role": "heavy_Higgs",
+      "R4": 2
+    },
+    {
+      "name": "DeltaB2",
+      "multiplicity": 1,
+      "SO10_dimension": -126,
+      "SO10_Dynkin_index": 35,
+      "X": -2,
+      "Z17": 15,
+      "MP": "-1",
+      "role": "heavy_Higgs",
+      "R4": 2
+    },
+    {
+      "name": "Delta2",
+      "multiplicity": 1,
+      "SO10_dimension": 126,
+      "SO10_Dynkin_index": 35,
+      "X": 2,
+      "Z17": 2,
+      "MP": "-1",
+      "role": "heavy_Higgs",
+      "R4": 0
+    },
+    {
+      "name": "H10m",
+      "multiplicity": 1,
+      "SO10_dimension": 10,
+      "SO10_Dynkin_index": 1,
+      "X": -2,
+      "Z17": 15,
+      "MP": "1",
+      "role": "light_Higgs",
+      "R4": 0
+    },
+    {
+      "name": "H10p",
+      "multiplicity": 1,
+      "SO10_dimension": 10,
+      "SO10_Dynkin_index": 1,
+      "X": 2,
+      "Z17": 2,
+      "MP": "1",
+      "role": "light_Higgs",
+      "R4": 0
+    },
+    {
+      "name": "T120m",
+      "multiplicity": 1,
+      "SO10_dimension": 120,
+      "SO10_Dynkin_index": 28,
+      "X": -2,
+      "Z17": 15,
+      "MP": "1",
+      "role": "light_Higgs",
+      "R4": 0
+    },
+    {
+      "name": "T120p",
+      "multiplicity": 1,
+      "SO10_dimension": 120,
+      "SO10_Dynkin_index": 28,
+      "X": 2,
+      "Z17": 2,
+      "MP": "1",
+      "role": "light_Higgs",
+      "R4": 0
+    },
+    {
+      "name": "Splus",
+      "multiplicity": 1,
+      "SO10_dimension": 1,
+      "SO10_Dynkin_index": 0,
+      "X": 4,
+      "Z17": 4,
+      "MP": "1",
+      "role": "Higgs",
+      "R4": 0
+    },
+    {
+      "name": "Sminus",
+      "multiplicity": 1,
+      "SO10_dimension": 1,
+      "SO10_Dynkin_index": 0,
+      "X": -4,
+      "Z17": 13,
+      "MP": "1",
+      "role": "Higgs",
+      "R4": 0
+    },
+    {
+      "name": "Phi17p",
+      "multiplicity": 1,
+      "SO10_dimension": 1,
+      "SO10_Dynkin_index": 0,
+      "X": 17,
+      "Z17": 0,
+      "MP": "1",
+      "role": "Higgs",
+      "R4": 0
+    },
+    {
+      "name": "Phi17m",
+      "multiplicity": 1,
+      "SO10_dimension": 1,
+      "SO10_Dynkin_index": 0,
+      "X": -17,
+      "Z17": 0,
+      "MP": "1",
+      "role": "Higgs",
+      "R4": 0
+    },
+    {
+      "name": "NX",
+      "multiplicity": 1,
+      "SO10_dimension": 1,
+      "SO10_Dynkin_index": 0,
+      "X": 0,
+      "Z17": 0,
+      "MP": "-2",
+      "role": "driving",
+      "R4": 2
+    },
+    {
+      "name": "NS",
+      "multiplicity": 1,
+      "SO10_dimension": 1,
+      "SO10_Dynkin_index": 0,
+      "X": 0,
+      "Z17": 0,
+      "MP": "-2",
+      "role": "driving",
+      "R4": 2
+    },
+    {
+      "name": "XMP",
+      "multiplicity": 1,
+      "SO10_dimension": 1,
+      "SO10_Dynkin_index": 0,
+      "X": 0,
+      "Z17": 0,
+      "MP": "2",
+      "role": "missing_partner_spurion",
+      "R4": 0
+    },
+    {
+      "name": "C16",
+      "multiplicity": 1,
+      "SO10_dimension": 16,
+      "SO10_Dynkin_index": 2,
+      "X": 0,
+      "Z17": 0,
+      "MP": "3/2",
+      "role": "rank_breaking_Higgs",
+      "R4": 0
+    },
+    {
+      "name": "C16bar",
+      "multiplicity": 1,
+      "SO10_dimension": -16,
+      "SO10_Dynkin_index": 2,
+      "X": 0,
+      "Z17": 0,
+      "MP": "-3/2",
+      "role": "rank_breaking_Higgs",
+      "R4": 0
+    },
+    {
+      "name": "Nphi",
+      "multiplicity": 1,
+      "SO10_dimension": 1,
+      "SO10_Dynkin_index": 0,
+      "X": 0,
+      "Z17": 0,
+      "MP": "0",
+      "role": "driving",
+      "R4": 2
+    },
+    {
+      "name": "Z0",
+      "multiplicity": 1,
+      "SO10_dimension": 1,
+      "SO10_Dynkin_index": 0,
+      "X": 0,
+      "Z17": 0,
+      "MP": "0",
+      "role": "discrete_R_anomaly_spectator",
+      "R4": 0
+    },
+    {
+      "name": "NC",
+      "multiplicity": 1,
+      "SO10_dimension": 1,
+      "SO10_Dynkin_index": 0,
+      "X": 0,
+      "Z17": 0,
+      "MP": "0",
+      "role": "driving",
+      "R4": 2
+    },
+    {
+      "name": "NMP",
+      "multiplicity": 1,
+      "SO10_dimension": 1,
+      "SO10_Dynkin_index": 0,
+      "X": 0,
+      "Z17": 0,
+      "MP": "0",
+      "role": "driving",
+      "R4": 2
+    },
+    {
+      "name": "Z1",
+      "multiplicity": 1,
+      "SO10_dimension": 1,
+      "SO10_Dynkin_index": 0,
+      "X": 0,
+      "Z17": 0,
+      "MP": "0",
+      "role": "discrete_R_anomaly_spectator",
+      "R4": 0
+    },
+    {
+      "name": "Z2",
+      "multiplicity": 1,
+      "SO10_dimension": 1,
+      "SO10_Dynkin_index": 0,
+      "X": 0,
+      "Z17": 0,
+      "MP": "0",
+      "role": "discrete_R_anomaly_spectator",
+      "R4": 0
+    }
+  ],
+  "continuous_anomalies": {
+    "SO10_squared_U1X": 0,
+    "gravity_squared_U1X": 0,
+    "U1X_cubed": 0
+  },
+  "vectorlike_Higgs_pairs": {
+    "DeltaB__Delta": true,
+    "DeltaB2__Delta2": true,
+    "H10m__H10p": true,
+    "T120m__T120p": true,
+    "C16bar__C16": true,
+    "Splus__Sminus": true,
+    "Phi17p__Phi17m": true
+  },
+  "superpotential_charge_audit": {
+    "kappaPhi": {
+      "fields": [
+        "Nphi",
+        "Phi210",
+        "Phi210"
+      ],
+      "X_sum": 0,
+      "Z17_sum_mod_17": 0,
+      "MP_sum": "0",
+      "R4_sum_mod_4": 2,
+      "source_symmetry_allowed": true,
+      "literature_MP_grading_neutral": true
+    },
+    "zetaPhi": {
+      "fields": [
+        "Nphi",
+        "Phi210",
+        "Phi210",
+        "Phi210"
+      ],
+      "X_sum": 0,
+      "Z17_sum_mod_17": 0,
+      "MP_sum": "0",
+      "R4_sum_mod_4": 2,
+      "source_symmetry_allowed": true,
+      "literature_MP_grading_neutral": true
+    },
+    "kappaC": {
+      "fields": [
+        "NC",
+        "C16bar",
+        "C16"
+      ],
+      "X_sum": 0,
+      "Z17_sum_mod_17": 0,
+      "MP_sum": "0",
+      "R4_sum_mod_4": 2,
+      "source_symmetry_allowed": true,
+      "literature_MP_grading_neutral": true
+    },
+    "xiC": {
+      "fields": [
+        "NC",
+        "C16bar",
+        "Phi210",
+        "C16"
+      ],
+      "X_sum": 0,
+      "Z17_sum_mod_17": 0,
+      "MP_sum": "0",
+      "R4_sum_mod_4": 2,
+      "source_symmetry_allowed": true,
+      "literature_MP_grading_neutral": true
+    },
+    "kappaMP": {
+      "fields": [
+        "NMP",
+        "XMP",
+        "XMP"
+      ],
+      "X_sum": 0,
+      "Z17_sum_mod_17": 0,
+      "MP_sum": "4",
+      "R4_sum_mod_4": 2,
+      "source_symmetry_allowed": true,
+      "literature_MP_grading_neutral": false
+    },
+    "rho1": {
+      "fields": [
+        "XMP",
+        "DeltaB",
+        "Delta"
+      ],
+      "X_sum": 0,
+      "Z17_sum_mod_17": 0,
+      "MP_sum": "0",
+      "R4_sum_mod_4": 2,
+      "source_symmetry_allowed": true,
+      "literature_MP_grading_neutral": true
+    },
+    "rho2": {
+      "fields": [
+        "XMP",
+        "DeltaB2",
+        "Delta2"
+      ],
+      "X_sum": 0,
+      "Z17_sum_mod_17": 0,
+      "MP_sum": "0",
+      "R4_sum_mod_4": 2,
+      "source_symmetry_allowed": true,
+      "literature_MP_grading_neutral": true
+    },
+    "gammaH": {
+      "fields": [
+        "Phi210",
+        "H10m",
+        "Delta"
+      ],
+      "X_sum": 0,
+      "Z17_sum_mod_17": 0,
+      "MP_sum": "0",
+      "R4_sum_mod_4": 2,
+      "source_symmetry_allowed": true,
+      "literature_MP_grading_neutral": true
+    },
+    "gammaHb2": {
+      "fields": [
+        "Phi210",
+        "H10p",
+        "DeltaB2"
+      ],
+      "X_sum": 0,
+      "Z17_sum_mod_17": 0,
+      "MP_sum": "0",
+      "R4_sum_mod_4": 2,
+      "source_symmetry_allowed": true,
+      "literature_MP_grading_neutral": true
+    },
+    "gammaT": {
+      "fields": [
+        "Phi210",
+        "T120m",
+        "Delta"
+      ],
+      "X_sum": 0,
+      "Z17_sum_mod_17": 0,
+      "MP_sum": "0",
+      "R4_sum_mod_4": 2,
+      "source_symmetry_allowed": true,
+      "literature_MP_grading_neutral": true
+    },
+    "gammaTb2": {
+      "fields": [
+        "Phi210",
+        "T120p",
+        "DeltaB2"
+      ],
+      "X_sum": 0,
+      "Z17_sum_mod_17": 0,
+      "MP_sum": "0",
+      "R4_sum_mod_4": 2,
+      "source_symmetry_allowed": true,
+      "literature_MP_grading_neutral": true
+    },
+    "kappaX": {
+      "fields": [
+        "NX",
+        "Phi17p",
+        "Phi17m"
+      ],
+      "X_sum": 0,
+      "Z17_sum_mod_17": 0,
+      "MP_sum": "0",
+      "R4_sum_mod_4": 2,
+      "source_symmetry_allowed": true,
+      "literature_MP_grading_neutral": true
+    },
+    "kappaS": {
+      "fields": [
+        "NS",
+        "Splus",
+        "Sminus"
+      ],
+      "X_sum": 0,
+      "Z17_sum_mod_17": 0,
+      "MP_sum": "0",
+      "R4_sum_mod_4": 2,
+      "source_symmetry_allowed": true,
+      "literature_MP_grading_neutral": true
+    },
+    "Y10": {
+      "fields": [
+        "F",
+        "F",
+        "H10m"
+      ],
+      "X_sum": 0,
+      "Z17_sum_mod_17": 0,
+      "MP_sum": "0",
+      "R4_sum_mod_4": 2,
+      "source_symmetry_allowed": true,
+      "literature_MP_grading_neutral": true
+    },
+    "Y126eff": {
+      "fields": [
+        "XMP",
+        "F",
+        "F",
+        "DeltaB"
+      ],
+      "X_sum": 0,
+      "Z17_sum_mod_17": 0,
+      "MP_sum": "0",
+      "R4_sum_mod_4": 2,
+      "source_symmetry_allowed": true,
+      "literature_MP_grading_neutral": true
+    },
+    "Y120": {
+      "fields": [
+        "F",
+        "F",
+        "T120m"
+      ],
+      "X_sum": 0,
+      "Z17_sum_mod_17": 0,
+      "MP_sum": "0",
+      "R4_sum_mod_4": 2,
+      "source_symmetry_allowed": true,
+      "literature_MP_grading_neutral": true
+    },
+    "yP": {
+      "fields": [
+        "Phi17m",
+        "P",
+        "Pbar"
+      ],
+      "X_sum": 0,
+      "Z17_sum_mod_17": 0,
+      "MP_sum": "0",
+      "R4_sum_mod_4": 2,
+      "source_symmetry_allowed": true,
+      "literature_MP_grading_neutral": true
+    },
+    "yQ": {
+      "fields": [
+        "Phi17m",
+        "Q",
+        "Qbar"
+      ],
+      "X_sum": 0,
+      "Z17_sum_mod_17": 0,
+      "MP_sum": "0",
+      "R4_sum_mod_4": 2,
+      "source_symmetry_allowed": true,
+      "literature_MP_grading_neutral": true
+    },
+    "yR": {
+      "fields": [
+        "Phi17p",
+        "R",
+        "Rbar"
+      ],
+      "X_sum": 0,
+      "Z17_sum_mod_17": 0,
+      "MP_sum": "0",
+      "R4_sum_mod_4": 2,
+      "source_symmetry_allowed": true,
+      "literature_MP_grading_neutral": true
+    },
+    "ys": {
+      "fields": [
+        "Splus",
+        "SpecS",
+        "SpecB"
+      ],
+      "X_sum": 0,
+      "Z17_sum_mod_17": 0,
+      "MP_sum": "0",
+      "R4_sum_mod_4": 2,
+      "source_symmetry_allowed": true,
+      "literature_MP_grading_neutral": true
+    },
+    "lambdaP": {
+      "fields": [
+        "P",
+        "F",
+        "H10m"
+      ],
+      "X_sum": 0,
+      "Z17_sum_mod_17": 0,
+      "MP_sum": "0",
+      "R4_sum_mod_4": 2,
+      "source_symmetry_allowed": true,
+      "literature_MP_grading_neutral": true
+    },
+    "lambdaR": {
+      "fields": [
+        "R",
+        "F",
+        "H10m"
+      ],
+      "X_sum": 0,
+      "Z17_sum_mod_17": 0,
+      "MP_sum": "0",
+      "R4_sum_mod_4": 2,
+      "source_symmetry_allowed": true,
+      "literature_MP_grading_neutral": true
+    },
+    "lambdaQB": {
+      "fields": [
+        "Sminus",
+        "Qbar",
+        "F"
+      ],
+      "X_sum": 0,
+      "Z17_sum_mod_17": 0,
+      "MP_sum": "0",
+      "R4_sum_mod_4": 2,
+      "source_symmetry_allowed": true,
+      "literature_MP_grading_neutral": true
+    },
+    "lambdaQR": {
+      "fields": [
+        "Splus",
+        "Q",
+        "Rbar"
+      ],
+      "X_sum": 0,
+      "Z17_sum_mod_17": 0,
+      "MP_sum": "0",
+      "R4_sum_mod_4": 2,
+      "source_symmetry_allowed": true,
+      "literature_MP_grading_neutral": true
+    }
+  },
+  "protection_logic": {
+    "mechanism": "N=1 supersymmetry above a declared soft-breaking scale",
+    "exact_limit": "boson/fermion supertrace cancellation forbids additive quadratic scalar-mass sensitivity",
+    "soft_limit_requirement": "all SUSY-breaking operators must be soft and the complete RG-evolved spectrum must remain non-tachyonic",
+    "missing_partner_grading": "the published U(1)_MP charges are retained only as a term-by-term architecture grading; no continuous U(1)_MP is declared, so its spurion VEV creates no extra Goldstone",
+    "all_order_selection_rule": "source-landed Z4R: W has charge 2, every light bilinear and every nonzero-VEV field has charge 0, and every charge-2 Higgs/driving field is required to have zero VEV",
+    "rank_breaking_sector": "C16+C16bar and Phi210 break SO(10), while every missing-partner 126/126bar is required to have zero VEV",
+    "not_yet_proved": [
+      "source-exact component Clebsch realization of the 10/13 rank witnesses",
+      "all-order higher-dimensional operator protection with zero missing-partner-126 VEVs",
+      "soft boundary/RGE bridge to the exact v=174 GeV endpoint",
+      "full RGE perturbativity",
+      "global F+D+soft vacuum"
+    ]
+  },
+  "continuity_with_V21": {
+    "V21_G1_G2_G3_remain_valid_for_their_frozen_nonSUSY_contract": true,
+    "V21_G3_can_be_inherited_as_the_V22_vacuum": false,
+    "reason": "V22 adds chiral partners, 120 pairs, F/D terms and soft breaking; its scalar potential and field space differ",
+    "required_use": "V21 G3 is a regression/reference theorem only until V22 G1-G3 are independently closed"
+  },
+  "literature_basis": [
+    {
+      "title": "The minimal supersymmetric grand unified theory",
+      "arXiv": "hep-ph/0306242",
+      "scope": "210+126+126bar+10 baseline"
+    },
+    {
+      "title": "The New Minimal Supersymmetric GUT: Spectra, RG analysis and fitting formulae",
+      "arXiv": "hep-ph/0612021",
+      "scope": "adds 120 and complete spectrum/RG framework"
+    },
+    {
+      "title": "Missing Partner Mechanism in SO(10) Grand Unification",
+      "arXiv": "hep-ph/0612315",
+      "scope": "all-order protected doublet-triplet splitting"
+    }
+  ],
+  "checks": {
+    "model_declares_N1_superfields": true,
+    "model_declares_Z4R_as_the_only_continuous_R_global_slot": true,
+    "every_audited_coupling_is_landed_in_the_model_catalogue": true,
+    "independent_driver_constraints_are_landed_verbatim": true,
+    "missing_partner_mass_and_mixing_terms_are_landed_with_exact_field_order": true,
+    "all_continuous_anomalies_cancel_exactly": true,
+    "all_charged_Higgsino_sectors_are_vectorlike": true,
+    "every_superpotential_term_is_U1X_Z17_and_R_allowed": true,
+    "only_the_spurion_phase_fixing_term_breaks_the_nonphysical_MP_grading": true,
+    "matter_Yukawas_include_10_effective_126bar_and_120": true,
+    "U1X_breaking_pair_has_charge_17": true,
+    "residual_Z17_is_X_mod_17_for_every_field": true,
+    "missing_partner_light_fields_have_MP_plus_one": true,
+    "missing_partner_heavy_126_fields_have_MP_minus_one": true,
+    "separate_rank_breaking_16_pair_has_published_MP_charges": true,
+    "literature_missing_partner_grading_marks_light_bilinears_nonzero": true,
+    "all_required_superpotential_terms_have_R4_charge_two": true,
+    "all_nonzero_VEV_design_fields_have_R4_zero": true,
+    "missing_partner_spurion_phase_is_fixed_to_a_discrete_pair": true,
+    "independent_GUT_and_missing_partner_VEV_constraints_have_distinct_R2_drivers": true,
+    "every_light_Higgs_bilinear_has_R4_zero": true,
+    "V21_G3_not_claimed_as_V22_vacuum_proof": true,
+    "canonical_G4_G5_not_prematurely_closed": true
+  },
+  "n_checks": 23,
+  "n_failed": 0,
+  "failures": [],
+  "claim_boundary": {
+    "V22_candidate_contract_closed": true,
+    "V22_G1_G2_G3_closed": false,
+    "canonical_G4_closed": false,
+    "canonical_G5_closed": false
+  },
+  "core_sha256": "b50551e10a2052ec2067ca1f440f45079e6dd732be3cd5f1d05df2d9a273053d"
+}

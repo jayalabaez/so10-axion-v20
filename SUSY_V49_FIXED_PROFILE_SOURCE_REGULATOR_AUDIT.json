@@ -1,0 +1,233 @@
+{
+  "Hc_and_mixed_operator_power_counting": {
+    "candidate_matching_input": "the displayed V48 transfer is the zero-finite-part point for Hc-Hc and odd-profile H-Hc/O7/O8 coefficients; zero is not symmetry-enforced, the complete EFT must retain and renormalize them, and generic values change the wall generator already at O(1)",
+    "endpoint_parity": "on the doubled cover H is even and Hc is odd, but the exact strong wall has Hc slope proportional to Lambda/epsilon",
+    "exact_m0_strong_collar": {
+      "even_profile_H_Hc": "zero by oddness for rho_even",
+      "even_profile_Hc_Hc": "(1/3) h0^T Lambda^T Xi Lambda h0 = O(1)",
+      "general_quadratic_generator": "d(f,g)/dy=[[-rho A^T,mI-rho Xi],[rho Lambda-mI,rho A]](f,g), up to the fixed orientation convention",
+      "odd_linear_profile_H_Hc": "-(1/3) h0^T A Lambda h0 = O(1)",
+      "odd_sign_profile_H_Hc": "-(1/2) h0^T A Lambda h0 = O(1)",
+      "solution": "H(s)=h0, Hc(s)=-(s/epsilon)Lambda h0"
+    },
+    "excluded_singular_scalings": "Hc-Hc coefficients growing as 1/epsilon^2 lie outside the declared O(1) Wilsonian domain and define a different singular regulator",
+    "finite_epsilon_scope": "generic O(1) Hc-Hc or odd-profile coefficients modify the full finite-epsilon wall generator; the displayed exact V48 transfer is therefore not a stable complete-action pencil",
+    "naive_smooth_profile_warning": "holding hc1 fixed while epsilon tends to zero gives apparent O(epsilon) and O(epsilon^2) suppression, but that assumption is inconsistent with the exact Lambda/epsilon wall, where hc1=-Lambda h0/epsilon",
+    "normalized_profile_moments": "integral rho_double s^(2n+1) ds=0 and integral rho_double s^(2n) ds=epsilon^(2n)/(2n+1)",
+    "radiative_statement": "orbifold parity kills only the even-profile H-Hc average; symmetry-respecting matching or loops may generate odd-profile and Hc-Hc coefficients, which cannot be assigned to the O(E^2/Lambda^2) remainder in the strong collar"
+  },
+  "core_sha256": "03a9c83da5c0eb0679fcc068861ef8a8869cc92f497a0c4517246a51294c47fa",
+  "counterterm_and_gate_scope": {
+    "G2_statement": "this closes the regulator microscopic-candidate condition only; G2 requires the independent complete boundary-EFT operator and Wilson-matching verdict",
+    "G6_statement": "full KK root and threshold sums are G6 work, not a G2 regulator condition",
+    "not_enumerated_here": [
+      "U(1)F Fayet-Iliopoulos terms",
+      "gauge and source-dependent gauge kinetic functions",
+      "Pati-Salam boundary/bulk kinetic mixing",
+      "all interacting higher-dimensional source operators"
+    ],
+    "quadratic_H_sector_inputs": "independent H Kahler, normal-derivative, H-Hc and Hc-Hc finite counterterms are specified at the matching scale; the certificate point selects their finite parts to zero"
+  },
+  "decision": {
+    "G2_closed_by_this_subaudit": false,
+    "complete_boundary_EFT_basis_proved_here": false,
+    "exact_finite_epsilon_H_boundary_pencil_retained_only_at_zero_counterterm_point": true,
+    "explicit_finite_resolution_tree_prescription_defined": true,
+    "extra_source_KK_tower_absent": true,
+    "gates_promoted": [],
+    "gauge_covariant_smearing_defined": true,
+    "odd_profile_normal_derivative_counterterm_required": true,
+    "point_local_5D_UV_completion_proved": false,
+    "point_local_5D_regulator_defined": false,
+    "regulator_microscopic_candidate_condition_closed": false,
+    "strictly_4D_source_regulator_defined": true,
+    "strong_collar_Hc_terms_unsuppressed": true
+  },
+  "exact_finite_epsilon_boundary_pencil": {
+    "definitions": {
+      "C": "(Lambda-delta I)Hfun",
+      "D": "cosh(sqrt(X))",
+      "Hfun": "sinh(sqrt(X))/sqrt(X)",
+      "U": "delta Hfun",
+      "X": "delta(Lambda-delta I)",
+      "delta": "m epsilon"
+    },
+    "factorization": "K_res=D K_eff where D is invertible",
+    "meromorphic_map": "B_epsilon(m)=D^(-1)C where D is invertible",
+    "pole_free_characteristic": "K_res=(CF-mDS)E+(mCS+DG)O",
+    "self_adjointness": "the V48 Hermitian Lambda, canonical H/Hc norm, g(L)=0 and J-unitary transfer proof apply unchanged",
+    "thin_wall": "after solving the full collar, epsilon->0 gives the V47 K(m)",
+    "wall_transfer": "T_wall=[[D,U],[C,D]]",
+    "zero_energy": "B_epsilon(0)=Lambda exactly, so tau_L,tau_R nonzero leave zero exotic modes"
+  },
+  "gauge_covariant_fixed_smearing": {
+    "axial_gauge_certificate": "on the simply connected collar choose the trivial supersymmetric Wilson-line background and Phi_5=0; then U=I and the H/Hc quadratic operator is exactly V48's square source Lambda/epsilon",
+    "gauge_law": "U_R(L,y)->g_R(L)U_R(L,y)g_R(y)^(-1), hence Hhat_R(y)->g_R(L)Hhat_R(y)",
+    "interaction": "integral_[L-epsilon,L] dy rho_epsilon [kappa_L ThetaPlus Hhat_LF Hhat_LA/Mstar + kappa_R ThetaMinus Hhat_RA Hhat_RF/Mstar + kappa_16 barSigma Hhat_LF Hhat_RA/Mstar + kappa_bar16 Sigma Hhat_LA Hhat_RF/Mstar]",
+    "local_gauge_statement": "each transported bilinear and its source field transform at y=L, so every contraction is Spin(10)xU(1)F invariant",
+    "nonlocality_scope": "the shortest normal Wilson line is part of the declared finite-resolution kernel; it is not evidence for point-local five-dimensional UV completion",
+    "one_sided_normalization": "for every orbifold-even integrand F, integral_-epsilon^epsilon rho_double F = integral_0^epsilon rho_physical F; this is the convention used by the physical H/Hc transfer",
+    "parallel_transporter": "U_R(L,y)=P exp[-integral_y^L Phi_R(y')dy']",
+    "profile": "on the doubled endpoint cover use the even rho_double(s)=1/(2epsilon) for |s|<epsilon, integral one; its quotient physical-half density for parity-even operators is rho_physical=1/epsilon on 0<s<epsilon, also integral one",
+    "transported_bulk_chiral": "Hhat_R(y)=U_R(L,y) H_R(y)"
+  },
+  "numerical_certificate": {
+    "B_epsilon_at_sample_mass": [
+      [
+        -0.01973596574330225,
+        0.4000945272056279,
+        0.20004911283774945,
+        -0.0003701639523545584
+      ],
+      [
+        0.40009452720562805,
+        -0.01962800125719884,
+        6.169399205909279e-05,
+        -0.15003575590793308
+      ],
+      [
+        0.20004911283774954,
+        6.16939920590929e-05,
+        -0.020969845584484118,
+        0.6001479549248937
+      ],
+      [
+        -0.0003701639523545584,
+        -0.15003575590793305,
+        0.6001479549248936,
+        -0.0208618810983807
+      ]
+    ],
+    "K_res_minus_D_K_eff_residual": 1.1102230246251565e-16,
+    "Lambda": [
+      [
+        0.0,
+        0.4,
+        0.2,
+        0.0
+      ],
+      [
+        0.4,
+        0.0,
+        0.0,
+        -0.15
+      ],
+      [
+        0.2,
+        0.0,
+        0.0,
+        0.6
+      ],
+      [
+        0.0,
+        -0.15,
+        0.6,
+        0.0
+      ]
+    ],
+    "doubled_orbifold_profile_moments_n0_to_n4": {
+      "0": 1.0,
+      "1": 0.0,
+      "2": 0.0008333333333333335,
+      "3": 0.0,
+      "4": 1.2500000000000003e-06
+    },
+    "fixed_profile_integral": 1.0,
+    "parameters": {
+      "L": 1.0,
+      "Mstar": 20.0,
+      "bulk_masses": [
+        0.2,
+        -0.4,
+        0.8,
+        -0.1
+      ],
+      "epsilon": 0.05,
+      "s_16": 0.2,
+      "s_bar16": -0.15,
+      "signed_mass": 0.37,
+      "tau_L": 0.4,
+      "tau_R": 0.6
+    },
+    "profile_moments_n0_to_n4": {
+      "0": 1.0,
+      "1": 0.025,
+      "2": 0.0008333333333333335,
+      "3": 3.125000000000001e-05,
+      "4": 1.2500000000000003e-06
+    },
+    "sample_odd_profile_H_Hc": 0.014,
+    "sample_smeared_bilinears": {
+      "HH": 1.4394001125,
+      "H_Hc": 0.0,
+      "Hc_Hc": 0.00040833333333333336,
+      "leading_HH": 1.44,
+      "leading_H_Hc": 0.0,
+      "leading_Hc_Hc": 0.0004083333333333333
+    },
+    "sample_strong_collar_bilinears": {
+      "H_Hc_odd_linear_profile": -0.19199999999999998,
+      "H_Hc_odd_sign_profile": -0.288,
+      "Hc_Hc_even_profile": 0.0768
+    },
+    "source_KK_tower_present": false,
+    "source_field_count_with_y_dependence": 0,
+    "total_exotic_chiral_zero_modes": 0,
+    "wall_J_unitarity_residual": 3.3306690738754696e-16
+  },
+  "primary_sources": [
+    {
+      "url": "https://arxiv.org/abs/hep-th/0106256",
+      "use": "5D hypermultiplets in manifest 4D N=1 superspace"
+    },
+    {
+      "url": "https://arxiv.org/abs/hep-ph/0112230",
+      "use": "gauge-covariant fifth-direction superspace operators and boundary interactions"
+    },
+    {
+      "url": "https://arxiv.org/abs/1408.1852",
+      "use": "fixed finite-width square profiles and the correct thin-wall order of limits"
+    }
+  ],
+  "provenance": {
+    "V45_to_V48_files_modified": false,
+    "upstream_sha256": {
+      "SUSY_V47_FOUR_SPINOR_MIXED_KK_AUDIT.json": "d3f890e4fcfaa6db66ed92ad849f743ac2f5408ab3a77ba9f0534f9e0aa9af45",
+      "SUSY_V47_SOURCE_COMPLETION_ROUTE_AUDIT.json": "782f66ce31b6b9669ec847768c614b9d7318a578888271c2bd7b593a08c14fdc",
+      "SUSY_V48_RESOLVED_SOURCE_WALL_AUDIT.json": "37aa7935edeed2835e1990b1266ad2cdff48b986f7ca1a2dd0ec9f818a913cc8"
+    }
+  },
+  "schema_version": "susy-spin10-v49-fixed-profile-source-regulator-v1",
+  "scope": {
+    "V48_repair": "the y-dependent source-field collar and its transverse-mass claim are superseded; the exact H/Hc square-collar transfer remains valid",
+    "answer": "yes: keep the V47 fields strictly four-dimensional and smear only their gauge-covariant interaction kernel",
+    "question": "Can the V48 H/Hc collar be sourced by the dynamical V47 wall fields without inventing an uncontrolled source KK continuum?"
+  },
+  "status": "V49_STRICTLY_4D_SOURCE_MULTIPLETS_WITH_GAUGE_COVARIANT_FIXED_COLLAR_PROFILE_DEFINED__NO_SOURCE_KK_TOWER__EXACT_V48_TREE_PENCIL_RETAINED_AT_ZERO_COUNTERTERM_POINT__STRONG_COLLAR_HC_AND_ODD_PROFILE_TERMS_UNSUPPRESSED__GAUGE_COVARIANT_BILOCAL_FINITE_RESOLUTION_PRESCRIPTION_ONLY__FULL_G2_BOUNDARY_EFT_NOT_CLAIMED",
+  "strictly_4D_source_action": {
+    "action": "integral d4x [integral d4theta K_V47(X,Xdagger,V(L)) + integral d2theta W_source,V47(X)+h.c.]",
+    "fields": [
+      "Phi_210",
+      "Sigma_126",
+      "barSigma_bar126",
+      "S",
+      "ThetaPlus",
+      "ThetaMinus"
+    ],
+    "location": "four-dimensional N=1 source theory at y=L",
+    "no_source_KK_tower": "X_A depends on x and theta only, not y; rho_epsilon belongs solely to the interaction kernel",
+    "normalization": "no y integration occurs in the source kinetic action; the V47 canonical normalization, dimension-one VEVs, F/D equations and 443-mode physical Hessian are unchanged",
+    "source_spectrum": "exactly the already-audited V47 four-dimensional source spectrum; no transverse source label or source-wall KK determinant exists"
+  },
+  "variation_and_quadratic_reduction": {
+    "axial_gauge_mode_equations": [
+      "f'=m g",
+      "g'=(Lambda/epsilon-m I)f"
+    ],
+    "delta_H": "variation gives rho_epsilon U_R(L,y)^T times the symmetric source mass acting on transported H",
+    "delta_Wilson_line": "variations of U contain at least two H fields and one gauge fluctuation, hence are cubic and absent from the quadratic H/Hc spectral pencil about H=0",
+    "delta_source_fields": "delta W/dX_A equals the V47 source F-term plus the normalized integral of the corresponding transported H bilinear",
+    "outer_domain": "g(L)=0",
+    "vacuum": "at H=0 the second term vanishes, so the exact V47 F-flat/D-flat source branch and Hessian remain unchanged"
+  }
+}

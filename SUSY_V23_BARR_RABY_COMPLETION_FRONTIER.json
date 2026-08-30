@@ -1,0 +1,1415 @@
+{
+  "G1_G8": {
+    "G1_complete_source_and_operator_selection": false,
+    "G2_physical_doublet_triplet_and_exotic_ranks": false,
+    "G3_global_F_D_soft_vacuum": false,
+    "G4_hierarchy_mu_and_soft_protection": false,
+    "G5_axion_quality_and_cosmology": false,
+    "G6_full_two_loop_RGE_and_thresholds": false,
+    "G7_pole_spectrum_and_proton_decay": false,
+    "G8_flavour_fit_and_observable_likelihood": false
+  },
+  "RG_coefficients": {
+    "B10_10_with_K10": "743",
+    "B10_10_without_K10": "709",
+    "B10_X": "17/3",
+    "BX_10": "255",
+    "BX_X": "169/9",
+    "b10_with_K10": 4,
+    "b10_without_K10": 3,
+    "bX": "53/3",
+    "raw_sum_dimension_qX2": 424,
+    "sum_C2_times_T_with_K10": "679/4",
+    "sum_C2_times_T_without_K10": "661/4",
+    "sum_T_with_K10": 28,
+    "sum_T_without_K10": 27
+  },
+  "all_order_additive_Abelian_boundary": {
+    "all_order_additive_Abelian_DT_protection_exists": false,
+    "displayed_Z4_is_completely_broken": true,
+    "displayed_Z4_required_VEV_charges": {
+      "A45": 2,
+      "C16": 1,
+      "C16b": 3,
+      "P": 0,
+      "PQ": 2,
+      "PQbar": 2,
+      "Pbar": 0,
+      "XHminus": 0,
+      "XHplus": 0,
+      "Xnuminus": 3,
+      "Xnuplus": 1,
+      "Z": 2,
+      "Zbar": 2
+    },
+    "displayed_Z4_unbroken_subgroup_order": 1,
+    "gcd_with_group_order": 1,
+    "required_repair": "change the Higgs-mass architecture or add a non-Abelian filter",
+    "residual_no_go": "If A45, XHminus and XHplus are neutral in any surviving additive Abelian subgroup, H1*A45*H2 and XHminus*H2^2 imply q(H1)+q(H2)=qW and 2q(H2)=qW, hence 2q(H1)=qW; therefore XHplus*H1^2 is automatically allowed."
+  },
+  "axion_frontier": {
+    "PQ_radial_sector_isolated": false,
+    "QCD_anomaly_2T_convention": -2,
+    "accidental_PQ_charges": {
+      "K10": -1,
+      "PQ": 2,
+      "PQbar": -2
+    },
+    "effective_domain_wall_number": 1,
+    "explicit_quality_leak": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "accidental_PQ_charge": -2,
+      "degree": 5,
+      "family_parity_product": 1,
+      "fields": [
+        "PQbar",
+        "Z",
+        "Pbar",
+        "Pbar",
+        "Pbar"
+      ]
+    },
+    "fa_GeV": 37140323529,
+    "mechanism": "one SO10 10 KSVZ multiplet",
+    "quantum_gravity_quality_symmetry_closed": false,
+    "target_mass_micro_eV": 153.5
+  },
+  "checks": {
+    "Barr_Raby_non_singlet_core_has_b3_before_KSVZ": true,
+    "KSVZ_10_gives_b4_and_B743": true,
+    "KSVZ_effective_domain_wall_number_is_one": true,
+    "Wolfram_syntax_scaffold_encodes_zero_W_and_GaugeES": true,
+    "XHplus_H1_2_is_exactly_allowed_and_fatal": true,
+    "abstract_DW_doublet_block_has_one_null_pair": true,
+    "abstract_DW_triplet_block_is_full_rank": true,
+    "all_driver_radial_cross_couplings_are_exactly_allowed": true,
+    "all_named_dangerous_terms_except_exact_forced_leak_are_forbidden": true,
+    "all_selected_terms_pass_displayed_charge_audit": true,
+    "conditional_neutrino_texture_gives_approximately_point05_eV": true,
+    "continuous_U1X_anomalies_cancel_exactly": true,
+    "coupled_gauge_only_two_loop_benchmark_is_Planck_perturbative": true,
+    "displayed_Z4_is_completely_broken_by_required_VEVs": true,
+    "explicit_degree5_PQ_quality_leak_is_selected_by_displayed_shaping": true,
+    "generated_model_is_frozen": true,
+    "generic_messenger_mixings_are_exactly_allowed": true,
+    "only_SO10_representations_1_10_16_45_are_used": true,
+    "selector_anomaly_failure_is_fail_closed": true,
+    "separate_neutrino_spurion_forbids_GUT_scale_substitution": true,
+    "three_16_1_plus_10_minus2_plus_1_4_blocks_are_present": true
+  },
+  "claim_boundary": {
+    "PQ_quality_closed": false,
+    "SARAH_model_initialization_closed": false,
+    "complete_operator_census_closed": false,
+    "conditional_abstract_DW_zero_texture_calculated": true,
+    "conditional_neutrino_scale_identity_calculated": true,
+    "continuous_U1X_anomalies_closed": true,
+    "gauge_only_two_loop_benchmark_closed": true,
+    "global_vacuum_closed": false,
+    "inverse_seesaw_texture_closed": false,
+    "normalized_component_tensors_closed": false,
+    "physical_DW_rank_witness_closed": false,
+    "physical_thresholds_and_full_G1_G8_closed": false,
+    "selected_operator_charge_ledger_landed": true,
+    "selector_discrete_anomalies_closed": false,
+    "separate_GUT_neutrino_PQ_driver_hierarchy_closed": false,
+    "unbroken_SO10_Wolfram_syntax_scaffold_landed": true
+  },
+  "continuous_U1X_anomalies": {
+    "SO10_squared_U1X": 0,
+    "U1X_cubed": 0,
+    "gravity_squared_U1X": 0
+  },
+  "core_sha256": "ae63a2e7f15acef92b3bc170e02e281d3ac449803d5ee4945fc0dbe9b67511fc",
+  "coupled_two_loop_running": {
+    "MGUT_GeV": 20000000000000000,
+    "MPlanck_reduced_over_MGUT": 120,
+    "alpha10_at_reduced_Planck": 0.060704154875,
+    "alpha10_inverse_at_MGUT_after_complete_10_KSVZ_threshold": 21.899705496592,
+    "alpha10_inverse_at_reduced_Planck": 16.473336990895,
+    "alpha10_inverse_reference_without_new_KSVZ_threshold": 24.0,
+    "alphaX_at_reduced_Planck": 0.103542986864,
+    "alphaX_inverse_at_MGUT_input": 24.0,
+    "alphaX_inverse_at_reduced_Planck": 9.657824545048,
+    "fa_GeV": 37140323529,
+    "finite_and_perturbative_in_this_gauge_only_benchmark": true,
+    "scheme": "N=1 SUSY gauge-only two-loop benchmark; Yukawa and thresholds omitted"
+  },
+  "cross_driver_leakage_ledger": {
+    "PA__A45_2": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "allowed_by_every_displayed_symmetry": true,
+      "family_parity_product": 1,
+      "fields": [
+        "PA",
+        "A45",
+        "A45"
+      ]
+    },
+    "PA__PQ_pair": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "allowed_by_every_displayed_symmetry": true,
+      "family_parity_product": 1,
+      "fields": [
+        "PA",
+        "PQ",
+        "PQbar"
+      ]
+    },
+    "PA__XH_pair": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "allowed_by_every_displayed_symmetry": true,
+      "family_parity_product": 1,
+      "fields": [
+        "PA",
+        "XHplus",
+        "XHminus"
+      ]
+    },
+    "PA__Xnu_pair": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "allowed_by_every_displayed_symmetry": true,
+      "family_parity_product": 1,
+      "fields": [
+        "PA",
+        "Xnuplus",
+        "Xnuminus"
+      ]
+    },
+    "YH__A45_2": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "allowed_by_every_displayed_symmetry": true,
+      "family_parity_product": 1,
+      "fields": [
+        "YH",
+        "A45",
+        "A45"
+      ]
+    },
+    "YH__PQ_pair": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "allowed_by_every_displayed_symmetry": true,
+      "family_parity_product": 1,
+      "fields": [
+        "YH",
+        "PQ",
+        "PQbar"
+      ]
+    },
+    "YH__XH_pair": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "allowed_by_every_displayed_symmetry": true,
+      "family_parity_product": 1,
+      "fields": [
+        "YH",
+        "XHplus",
+        "XHminus"
+      ]
+    },
+    "YH__Xnu_pair": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "allowed_by_every_displayed_symmetry": true,
+      "family_parity_product": 1,
+      "fields": [
+        "YH",
+        "Xnuplus",
+        "Xnuminus"
+      ]
+    },
+    "YPQ__A45_2": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "allowed_by_every_displayed_symmetry": true,
+      "family_parity_product": 1,
+      "fields": [
+        "YPQ",
+        "A45",
+        "A45"
+      ]
+    },
+    "YPQ__PQ_pair": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "allowed_by_every_displayed_symmetry": true,
+      "family_parity_product": 1,
+      "fields": [
+        "YPQ",
+        "PQ",
+        "PQbar"
+      ]
+    },
+    "YPQ__XH_pair": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "allowed_by_every_displayed_symmetry": true,
+      "family_parity_product": 1,
+      "fields": [
+        "YPQ",
+        "XHplus",
+        "XHminus"
+      ]
+    },
+    "YPQ__Xnu_pair": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "allowed_by_every_displayed_symmetry": true,
+      "family_parity_product": 1,
+      "fields": [
+        "YPQ",
+        "Xnuplus",
+        "Xnuminus"
+      ]
+    },
+    "Ynu__A45_2": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "allowed_by_every_displayed_symmetry": true,
+      "family_parity_product": 1,
+      "fields": [
+        "Ynu",
+        "A45",
+        "A45"
+      ]
+    },
+    "Ynu__PQ_pair": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "allowed_by_every_displayed_symmetry": true,
+      "family_parity_product": 1,
+      "fields": [
+        "Ynu",
+        "PQ",
+        "PQbar"
+      ]
+    },
+    "Ynu__XH_pair": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "allowed_by_every_displayed_symmetry": true,
+      "family_parity_product": 1,
+      "fields": [
+        "Ynu",
+        "XHplus",
+        "XHminus"
+      ]
+    },
+    "Ynu__Xnu_pair": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "allowed_by_every_displayed_symmetry": true,
+      "family_parity_product": 1,
+      "fields": [
+        "Ynu",
+        "Xnuplus",
+        "Xnuminus"
+      ]
+    }
+  },
+  "dangerous_operator_ledger": {
+    "GUT_spurion_inverse_Dirac": {
+      "HShape_sum": 1,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 1,
+      "family_parity_product": 1,
+      "fields": [
+        "F",
+        "N",
+        "C16b",
+        "XHminus"
+      ],
+      "forbidden_at_displayed_operator_level": true,
+      "forbidden_by": [
+        "Z4_selector",
+        "U1H_shape"
+      ]
+    },
+    "GUT_spurion_inverse_Majorana": {
+      "HShape_sum": 2,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 2,
+      "family_parity_product": 1,
+      "fields": [
+        "N",
+        "N",
+        "XHminus",
+        "XHminus"
+      ],
+      "forbidden_at_displayed_operator_level": true,
+      "forbidden_by": [
+        "Z4_selector",
+        "U1H_shape"
+      ]
+    },
+    "H1_H2_A2": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 2,
+      "family_parity_product": 1,
+      "fields": [
+        "H1",
+        "H2",
+        "A45",
+        "A45"
+      ],
+      "forbidden_at_displayed_operator_level": true,
+      "forbidden_by": [
+        "Z4_selector"
+      ]
+    },
+    "H1_Z_H2": {
+      "HShape_sum": 3,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "family_parity_product": 1,
+      "fields": [
+        "H1",
+        "Z",
+        "H2"
+      ],
+      "forbidden_at_displayed_operator_level": true,
+      "forbidden_by": [
+        "U1H_shape"
+      ]
+    },
+    "bare_C_Cbar": {
+      "HShape_sum": -2,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "family_parity_product": 1,
+      "fields": [
+        "C16",
+        "C16b"
+      ],
+      "forbidden_at_displayed_operator_level": true,
+      "forbidden_by": [
+        "U1H_shape"
+      ]
+    },
+    "bare_H1_2": {
+      "HShape_sum": -4,
+      "U1X_sum": -4,
+      "Z4_selector_sum_mod4": 0,
+      "family_parity_product": 1,
+      "fields": [
+        "H1",
+        "H1"
+      ],
+      "forbidden_at_displayed_operator_level": true,
+      "forbidden_by": [
+        "U1X",
+        "U1H_shape"
+      ]
+    },
+    "bare_H1_H2": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 2,
+      "family_parity_product": 1,
+      "fields": [
+        "H1",
+        "H2"
+      ],
+      "forbidden_at_displayed_operator_level": true,
+      "forbidden_by": [
+        "Z4_selector"
+      ]
+    },
+    "bare_K10_2": {
+      "HShape_sum": -18,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 2,
+      "family_parity_product": 1,
+      "fields": [
+        "K10",
+        "K10"
+      ],
+      "forbidden_at_displayed_operator_level": true,
+      "forbidden_by": [
+        "Z4_selector",
+        "U1H_shape"
+      ]
+    },
+    "bare_N_2": {
+      "HShape_sum": 10,
+      "U1X_sum": 8,
+      "Z4_selector_sum_mod4": 2,
+      "family_parity_product": 1,
+      "fields": [
+        "N",
+        "N"
+      ],
+      "forbidden_at_displayed_operator_level": true,
+      "forbidden_by": [
+        "U1X",
+        "Z4_selector",
+        "U1H_shape"
+      ]
+    },
+    "bare_P_Pbar": {
+      "HShape_sum": 8,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "family_parity_product": 1,
+      "fields": [
+        "P",
+        "Pbar"
+      ],
+      "forbidden_at_displayed_operator_level": true,
+      "forbidden_by": [
+        "U1H_shape"
+      ]
+    },
+    "direct_Cbar_A_C": {
+      "HShape_sum": -2,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 2,
+      "family_parity_product": 1,
+      "fields": [
+        "C16b",
+        "A45",
+        "C16"
+      ],
+      "forbidden_at_displayed_operator_level": true,
+      "forbidden_by": [
+        "Z4_selector",
+        "U1H_shape"
+      ]
+    },
+    "forced_L_F_Cbar": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "family_parity_product": 1,
+      "fields": [
+        "L",
+        "F",
+        "C16b"
+      ],
+      "forbidden_at_displayed_operator_level": false,
+      "forbidden_by": []
+    },
+    "forced_M_2": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "family_parity_product": 1,
+      "fields": [
+        "M",
+        "M"
+      ],
+      "forbidden_at_displayed_operator_level": false,
+      "forbidden_by": []
+    },
+    "forced_M_L": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "family_parity_product": 1,
+      "fields": [
+        "M",
+        "L"
+      ],
+      "forbidden_at_displayed_operator_level": false,
+      "forbidden_by": []
+    },
+    "forced_M_N_Xnuminus": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "family_parity_product": 1,
+      "fields": [
+        "M",
+        "N",
+        "Xnuminus"
+      ],
+      "forbidden_at_displayed_operator_level": false,
+      "forbidden_by": []
+    },
+    "forced_Mbar_2": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "family_parity_product": 1,
+      "fields": [
+        "Mbar",
+        "Mbar"
+      ],
+      "forbidden_at_displayed_operator_level": false,
+      "forbidden_by": []
+    },
+    "forced_XHplus_H1_2": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "family_parity_product": 1,
+      "fields": [
+        "XHplus",
+        "H1",
+        "H1"
+      ],
+      "forbidden_at_displayed_operator_level": false,
+      "forbidden_by": []
+    },
+    "wrong_PQbar_K10_2": {
+      "HShape_sum": -36,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "family_parity_product": 1,
+      "fields": [
+        "PQbar",
+        "K10",
+        "K10"
+      ],
+      "forbidden_at_displayed_operator_level": true,
+      "forbidden_by": [
+        "U1H_shape"
+      ]
+    }
+  },
+  "failures": [],
+  "fatal_mass_operator": {
+    "HShape_sum": 0,
+    "U1X_sum": 0,
+    "Z4_selector_sum_mod4": 0,
+    "family_parity_product": 1,
+    "fields": [
+      "XHplus",
+      "H1",
+      "H1"
+    ],
+    "forbidden_at_displayed_operator_level": false,
+    "forbidden_by": []
+  },
+  "fields": [
+    {
+      "HShape_charge": 1,
+      "SO10_Dynkin_index": 2,
+      "SO10_dimension": 16,
+      "U1X_charge": 1,
+      "Z4_selector_charge": 1,
+      "family_parity": -1,
+      "multiplicity": 3,
+      "name": "F",
+      "role": "three chiral families"
+    },
+    {
+      "HShape_charge": -2,
+      "SO10_Dynkin_index": 1,
+      "SO10_dimension": 10,
+      "U1X_charge": -2,
+      "Z4_selector_charge": 0,
+      "family_parity": -1,
+      "multiplicity": 3,
+      "name": "E10",
+      "role": "E6-like vector exotics"
+    },
+    {
+      "HShape_charge": 5,
+      "SO10_Dynkin_index": 0,
+      "SO10_dimension": 1,
+      "U1X_charge": 4,
+      "Z4_selector_charge": 1,
+      "family_parity": -1,
+      "multiplicity": 3,
+      "name": "N",
+      "role": "inverse-seesaw sterile fields"
+    },
+    {
+      "HShape_charge": 0,
+      "SO10_Dynkin_index": 8,
+      "SO10_dimension": 45,
+      "U1X_charge": 0,
+      "Z4_selector_charge": 2,
+      "family_parity": 1,
+      "multiplicity": 1,
+      "name": "A45",
+      "role": "single DW adjoint"
+    },
+    {
+      "HShape_charge": -1,
+      "SO10_Dynkin_index": 2,
+      "SO10_dimension": 16,
+      "U1X_charge": 1,
+      "Z4_selector_charge": 1,
+      "family_parity": 1,
+      "multiplicity": 1,
+      "name": "C16",
+      "role": "rank-breaking spinor"
+    },
+    {
+      "HShape_charge": -1,
+      "SO10_Dynkin_index": 2,
+      "SO10_dimension": -16,
+      "U1X_charge": -1,
+      "Z4_selector_charge": 3,
+      "family_parity": 1,
+      "multiplicity": 1,
+      "name": "C16b",
+      "role": "rank-breaking conjugate spinor"
+    },
+    {
+      "HShape_charge": -4,
+      "SO10_Dynkin_index": 2,
+      "SO10_dimension": 16,
+      "U1X_charge": 1,
+      "Z4_selector_charge": 3,
+      "family_parity": 1,
+      "multiplicity": 1,
+      "name": "Cp16",
+      "role": "zero-VEV bridge spinor"
+    },
+    {
+      "HShape_charge": -2,
+      "SO10_Dynkin_index": 2,
+      "SO10_dimension": -16,
+      "U1X_charge": -1,
+      "Z4_selector_charge": 1,
+      "family_parity": 1,
+      "multiplicity": 1,
+      "name": "Cp16b",
+      "role": "zero-VEV bridge conjugate"
+    },
+    {
+      "HShape_charge": -2,
+      "SO10_Dynkin_index": 1,
+      "SO10_dimension": 10,
+      "U1X_charge": -2,
+      "Z4_selector_charge": 2,
+      "family_parity": 1,
+      "multiplicity": 1,
+      "name": "H1",
+      "role": "matter-coupled light-Higgs source"
+    },
+    {
+      "HShape_charge": 2,
+      "SO10_Dynkin_index": 1,
+      "SO10_dimension": 10,
+      "U1X_charge": 2,
+      "Z4_selector_charge": 0,
+      "family_parity": 1,
+      "multiplicity": 1,
+      "name": "H2",
+      "role": "DW vector partner"
+    },
+    {
+      "HShape_charge": 0,
+      "SO10_Dynkin_index": 0,
+      "SO10_dimension": 1,
+      "U1X_charge": 0,
+      "Z4_selector_charge": 0,
+      "family_parity": 1,
+      "multiplicity": 1,
+      "name": "PA",
+      "role": "adjoint driver"
+    },
+    {
+      "HShape_charge": 2,
+      "SO10_Dynkin_index": 0,
+      "SO10_dimension": 1,
+      "U1X_charge": 0,
+      "Z4_selector_charge": 0,
+      "family_parity": 1,
+      "multiplicity": 1,
+      "name": "XC",
+      "role": "spinor-VEV driver"
+    },
+    {
+      "HShape_charge": -1,
+      "SO10_Dynkin_index": 0,
+      "SO10_dimension": 1,
+      "U1X_charge": 0,
+      "Z4_selector_charge": 0,
+      "family_parity": 1,
+      "multiplicity": 1,
+      "name": "PC",
+      "role": "spinor-VEV modulus"
+    },
+    {
+      "HShape_charge": 3,
+      "SO10_Dynkin_index": 0,
+      "SO10_dimension": 1,
+      "U1X_charge": 0,
+      "Z4_selector_charge": 0,
+      "family_parity": 1,
+      "multiplicity": 1,
+      "name": "P",
+      "role": "first bridge modulus"
+    },
+    {
+      "HShape_charge": 5,
+      "SO10_Dynkin_index": 0,
+      "SO10_dimension": 1,
+      "U1X_charge": 0,
+      "Z4_selector_charge": 0,
+      "family_parity": 1,
+      "multiplicity": 1,
+      "name": "Pbar",
+      "role": "second bridge modulus"
+    },
+    {
+      "HShape_charge": 3,
+      "SO10_Dynkin_index": 0,
+      "SO10_dimension": 1,
+      "U1X_charge": 0,
+      "Z4_selector_charge": 2,
+      "family_parity": 1,
+      "multiplicity": 1,
+      "name": "Z",
+      "role": "first bridge alignment singlet"
+    },
+    {
+      "HShape_charge": 5,
+      "SO10_Dynkin_index": 0,
+      "SO10_dimension": 1,
+      "U1X_charge": 0,
+      "Z4_selector_charge": 2,
+      "family_parity": 1,
+      "multiplicity": 1,
+      "name": "Zbar",
+      "role": "second bridge alignment singlet"
+    },
+    {
+      "HShape_charge": 4,
+      "SO10_Dynkin_index": 0,
+      "SO10_dimension": 1,
+      "U1X_charge": 4,
+      "Z4_selector_charge": 0,
+      "family_parity": 1,
+      "multiplicity": 1,
+      "name": "XHplus",
+      "role": "GUT-scale U1X spurion"
+    },
+    {
+      "HShape_charge": -4,
+      "SO10_Dynkin_index": 0,
+      "SO10_dimension": 1,
+      "U1X_charge": -4,
+      "Z4_selector_charge": 0,
+      "family_parity": 1,
+      "multiplicity": 1,
+      "name": "XHminus",
+      "role": "GUT-scale H2 mass spurion"
+    },
+    {
+      "HShape_charge": 0,
+      "SO10_Dynkin_index": 0,
+      "SO10_dimension": 1,
+      "U1X_charge": 0,
+      "Z4_selector_charge": 0,
+      "family_parity": 1,
+      "multiplicity": 1,
+      "name": "YH",
+      "role": "GUT-spurion radial driver"
+    },
+    {
+      "HShape_charge": 5,
+      "SO10_Dynkin_index": 0,
+      "SO10_dimension": 1,
+      "U1X_charge": 4,
+      "Z4_selector_charge": 1,
+      "family_parity": 1,
+      "multiplicity": 1,
+      "name": "Xnuplus",
+      "role": "low-scale neutrino spurion"
+    },
+    {
+      "HShape_charge": -5,
+      "SO10_Dynkin_index": 0,
+      "SO10_dimension": 1,
+      "U1X_charge": -4,
+      "Z4_selector_charge": 3,
+      "family_parity": 1,
+      "multiplicity": 1,
+      "name": "Xnuminus",
+      "role": "low-scale neutrino spurion"
+    },
+    {
+      "HShape_charge": 0,
+      "SO10_Dynkin_index": 0,
+      "SO10_dimension": 1,
+      "U1X_charge": 0,
+      "Z4_selector_charge": 0,
+      "family_parity": 1,
+      "multiplicity": 1,
+      "name": "Ynu",
+      "role": "neutrino-spurion radial driver"
+    },
+    {
+      "HShape_charge": 0,
+      "SO10_Dynkin_index": 0,
+      "SO10_dimension": 1,
+      "U1X_charge": 0,
+      "Z4_selector_charge": 0,
+      "family_parity": -1,
+      "multiplicity": 3,
+      "name": "M",
+      "role": "Dirac inverse-seesaw messenger"
+    },
+    {
+      "HShape_charge": 0,
+      "SO10_Dynkin_index": 0,
+      "SO10_dimension": 1,
+      "U1X_charge": 0,
+      "Z4_selector_charge": 0,
+      "family_parity": -1,
+      "multiplicity": 3,
+      "name": "Mbar",
+      "role": "conjugate Dirac messenger"
+    },
+    {
+      "HShape_charge": 0,
+      "SO10_Dynkin_index": 0,
+      "SO10_dimension": 1,
+      "U1X_charge": 0,
+      "Z4_selector_charge": 0,
+      "family_parity": -1,
+      "multiplicity": 3,
+      "name": "L",
+      "role": "Majorana inverse-seesaw messenger"
+    },
+    {
+      "HShape_charge": 18,
+      "SO10_Dynkin_index": 0,
+      "SO10_dimension": 1,
+      "U1X_charge": 0,
+      "Z4_selector_charge": 2,
+      "family_parity": 1,
+      "multiplicity": 1,
+      "name": "PQ",
+      "role": "KSVZ PQ field"
+    },
+    {
+      "HShape_charge": -18,
+      "SO10_Dynkin_index": 0,
+      "SO10_dimension": 1,
+      "U1X_charge": 0,
+      "Z4_selector_charge": 2,
+      "family_parity": 1,
+      "multiplicity": 1,
+      "name": "PQbar",
+      "role": "conjugate PQ field"
+    },
+    {
+      "HShape_charge": 0,
+      "SO10_Dynkin_index": 0,
+      "SO10_dimension": 1,
+      "U1X_charge": 0,
+      "Z4_selector_charge": 0,
+      "family_parity": 1,
+      "multiplicity": 1,
+      "name": "YPQ",
+      "role": "PQ radial driver"
+    },
+    {
+      "HShape_charge": -9,
+      "SO10_Dynkin_index": 1,
+      "SO10_dimension": 10,
+      "U1X_charge": 0,
+      "Z4_selector_charge": 1,
+      "family_parity": 1,
+      "multiplicity": 1,
+      "name": "K10",
+      "role": "one-multiplet KSVZ sector"
+    }
+  ],
+  "inverse_seesaw_frontier": {
+    "M_reduced_Planck_GeV": 2400000000000000000,
+    "classification": "conditional inverse-seesaw texture; generic symmetry-allowed messenger mixing produces the same light-mass identity through a type-I term",
+    "exact_characteristic_polynomial": "lambda^3-mu*lambda^2-(M_NS^2+m_D^2)*lambda+m_D^2*mu",
+    "first_order_in_mu_exact_mixing_light_neutrino_eV": "600/12221",
+    "flavour_matrix_fit_closed": false,
+    "generic_typeI_MR_GeV_exact": "605000000000000/3",
+    "inverse_seesaw_certified": false,
+    "leading_formula": "m_nu~m_D^2*M/v_C^2 for M_NS^2 >> m_D^2",
+    "leading_hierarchical_light_neutrino_eV": "6/121",
+    "leading_reconstructed_light_neutrino_eV": "6/121",
+    "mD_GeV": 100,
+    "messenger_texture_protected": false,
+    "muS_eV_exact": "600/121",
+    "operators": {
+      "Dirac": "F*N*C16b*Xnuminus/M",
+      "Majorana": "N*N*Xnuminus^2/M"
+    },
+    "required_vnu_GeV_exact": "1200000/11",
+    "target_MNS_GeV": 1000,
+    "vC_GeV": 22000000000000000,
+    "vnu_cancels_from_leading_hierarchical_formula": true
+  },
+  "lineage": {
+    "V22R_preserved": true,
+    "large_210_126_120_sector_inherited": false,
+    "primary_mechanism": "one-adjoint Barr--Raby DW with two spinor pairs",
+    "primary_source": "arXiv:hep-ph/9705366",
+    "route_classification": "RG-safe negative control; not the promoted V23 candidate"
+  },
+  "missing_VEV_rank_witness": {
+    "benchmark_effective_triplet_mass_over_a": 10,
+    "benchmark_s_over_a": "1/10",
+    "doublet_matrix": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "doublet_nullity": 1,
+    "doublet_rank": 1,
+    "effective_triplet_mass": "(lambda*a)^2/s",
+    "forced_XHplus_H1_2_fills_doublet_11_entry": true,
+    "matter_coupled_inverse_entry": "s/(lambda*a)^2",
+    "physical_light_pair_protected": false,
+    "scope": "conditional abstract DW block at unit lambda*a and unit s with the symmetry-allowed XHplus*H1^2 coefficient set to zero",
+    "triplet_determinant": 1,
+    "triplet_matrix": [
+      [
+        0,
+        1
+      ],
+      [
+        -1,
+        1
+      ]
+    ],
+    "triplet_rank": 2
+  },
+  "model_source": {
+    "SARAH_initialization_attested": false,
+    "SuperPotential": 0,
+    "Wolfram_syntax_parse_observed": true,
+    "artifact_kind": "Wolfram-syntax SARAH-input scaffold",
+    "executable_SARAH_model_landed": false,
+    "field_species": 30,
+    "missing_auxiliary_model_files": [
+      "parameters.m",
+      "particles.m"
+    ],
+    "path": "models/SO10U1V23BarrRaby/SO10U1V23BarrRaby.m",
+    "portable_sha256": "418ab8e5174e4c715bc677d2961e1b4913413d128b31f37d574701b5911ff1a3",
+    "reason_for_zero_W": "normalized quartic trace and bridge tensors are not yet frozen"
+  },
+  "n_checks": 21,
+  "n_failed": 0,
+  "n_full_G1_G8_closed": 0,
+  "namespace": "candidate.susy_so10_u1.v23.barr_raby_completion_frontier",
+  "next_required_artifacts": [
+    "change the Higgs-mass architecture or add a non-Abelian filter; an additive Abelian remnant is exactly insufficient",
+    "separate Dirac and lepton-number-violating messengers with a non-Abelian or anomaly-safe selector",
+    "freeze Tr(A^4), spinor-bridge tensors, and the SO10-to-Pati-Salam normalized map",
+    "stabilize PC, P, Pbar, and XHminus and prove the global F+D+soft DW vacuum",
+    "generate the Pati-Salam component EFT and all doublet/triplet/exotic mass matrices",
+    "run coupled two-loop gauge-Yukawa-soft RGEs with the physical threshold spectrum",
+    "fit fermions and compute pole masses, proton lifetime, axion cosmology, and likelihoods"
+  ],
+  "overall_state": "REJECTED_AS_ALL_ORDER_COMPLETION",
+  "published_and_exact_boundaries": {
+    "SARAH_broken_non_SU_group_component_expansion_available": false,
+    "adjoint_alignment_uses_TrA4_over_M": true,
+    "paper_leaves_PC_P_Pbar_XHminus_VEVs_tree_flat": true,
+    "published_Barr_Raby_DW_branch_exists": true,
+    "spinor_bridge_uses_dimension4_superpotential_terms": true
+  },
+  "schema": "susy_v23_barr_raby_completion_frontier_v1",
+  "selected_operator_ledger": {
+    "DW_H1_A_H2": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "allowed_by_landed_symmetries": true,
+      "coefficient": "dimensionless",
+      "degree": 3,
+      "family_parity_product": 1,
+      "fields": [
+        "H1",
+        "A45",
+        "H2"
+      ]
+    },
+    "DW_XHminus_H2_2": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "allowed_by_landed_symmetries": true,
+      "coefficient": "dimensionless",
+      "degree": 3,
+      "family_parity_product": 1,
+      "fields": [
+        "XHminus",
+        "H2",
+        "H2"
+      ]
+    },
+    "E10_mass": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "allowed_by_landed_symmetries": true,
+      "coefficient": "dimensionless",
+      "degree": 3,
+      "family_parity_product": 1,
+      "fields": [
+        "XHplus",
+        "E10",
+        "E10"
+      ]
+    },
+    "GUT_driver_product": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "allowed_by_landed_symmetries": true,
+      "coefficient": "dimensionless",
+      "degree": 3,
+      "family_parity_product": 1,
+      "fields": [
+        "YH",
+        "XHplus",
+        "XHminus"
+      ]
+    },
+    "GUT_driver_tadpole": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "allowed_by_landed_symmetries": true,
+      "coefficient": "v_H^2",
+      "degree": 1,
+      "family_parity_product": 1,
+      "fields": [
+        "YH"
+      ]
+    },
+    "KSVZ_mass": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "allowed_by_landed_symmetries": true,
+      "coefficient": "dimensionless",
+      "degree": 3,
+      "family_parity_product": 1,
+      "fields": [
+        "PQ",
+        "K10",
+        "K10"
+      ]
+    },
+    "PQ_driver_product": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "allowed_by_landed_symmetries": true,
+      "coefficient": "dimensionless",
+      "degree": 3,
+      "family_parity_product": 1,
+      "fields": [
+        "YPQ",
+        "PQ",
+        "PQbar"
+      ]
+    },
+    "PQ_driver_tadpole": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "allowed_by_landed_symmetries": true,
+      "coefficient": "v_PQ^2",
+      "degree": 1,
+      "family_parity_product": 1,
+      "fields": [
+        "YPQ"
+      ]
+    },
+    "WA_PA_A2": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "allowed_by_landed_symmetries": true,
+      "coefficient": "dimensionless",
+      "degree": 3,
+      "family_parity_product": 1,
+      "fields": [
+        "PA",
+        "A45",
+        "A45"
+      ]
+    },
+    "WA_PA_tadpole": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "allowed_by_landed_symmetries": true,
+      "coefficient": "M_A^2",
+      "degree": 1,
+      "family_parity_product": 1,
+      "fields": [
+        "PA"
+      ]
+    },
+    "WA_trace_A4": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "allowed_by_landed_symmetries": true,
+      "coefficient": "1/M",
+      "degree": 4,
+      "family_parity_product": 1,
+      "fields": [
+        "A45",
+        "A45",
+        "A45",
+        "A45"
+      ]
+    },
+    "WC_XC_C_Cbar": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "allowed_by_landed_symmetries": true,
+      "coefficient": "dimensionless",
+      "degree": 3,
+      "family_parity_product": 1,
+      "fields": [
+        "XC",
+        "C16",
+        "C16b"
+      ]
+    },
+    "WC_XC_PC2": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "allowed_by_landed_symmetries": true,
+      "coefficient": "dimensionless",
+      "degree": 3,
+      "family_parity_product": 1,
+      "fields": [
+        "XC",
+        "PC",
+        "PC"
+      ]
+    },
+    "bridge_Cbar_Pbar_A_Cp": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "allowed_by_landed_symmetries": true,
+      "coefficient": "1/M_P",
+      "degree": 4,
+      "family_parity_product": 1,
+      "fields": [
+        "C16b",
+        "Pbar",
+        "A45",
+        "Cp16"
+      ]
+    },
+    "bridge_Cbar_Zbar_Cp": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "allowed_by_landed_symmetries": true,
+      "coefficient": "dimensionless",
+      "degree": 3,
+      "family_parity_product": 1,
+      "fields": [
+        "C16b",
+        "Zbar",
+        "Cp16"
+      ]
+    },
+    "bridge_Cbarp_P_A_C": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "allowed_by_landed_symmetries": true,
+      "coefficient": "1/M_P",
+      "degree": 4,
+      "family_parity_product": 1,
+      "fields": [
+        "Cp16b",
+        "P",
+        "A45",
+        "C16"
+      ]
+    },
+    "bridge_Cbarp_Z_C": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "allowed_by_landed_symmetries": true,
+      "coefficient": "dimensionless",
+      "degree": 3,
+      "family_parity_product": 1,
+      "fields": [
+        "Cp16b",
+        "Z",
+        "C16"
+      ]
+    },
+    "inverse_Dirac_left": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "allowed_by_landed_symmetries": true,
+      "coefficient": "dimensionless",
+      "degree": 3,
+      "family_parity_product": 1,
+      "fields": [
+        "M",
+        "F",
+        "C16b"
+      ]
+    },
+    "inverse_Dirac_messenger_mass": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "allowed_by_landed_symmetries": true,
+      "coefficient": "M_D",
+      "degree": 2,
+      "family_parity_product": 1,
+      "fields": [
+        "M",
+        "Mbar"
+      ]
+    },
+    "inverse_Dirac_right": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "allowed_by_landed_symmetries": true,
+      "coefficient": "dimensionless",
+      "degree": 3,
+      "family_parity_product": 1,
+      "fields": [
+        "Mbar",
+        "N",
+        "Xnuminus"
+      ]
+    },
+    "inverse_Majorana_messenger_mass": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "allowed_by_landed_symmetries": true,
+      "coefficient": "M_L",
+      "degree": 2,
+      "family_parity_product": 1,
+      "fields": [
+        "L",
+        "L"
+      ]
+    },
+    "inverse_Majorana_vertex": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "allowed_by_landed_symmetries": true,
+      "coefficient": "dimensionless",
+      "degree": 3,
+      "family_parity_product": 1,
+      "fields": [
+        "L",
+        "N",
+        "Xnuminus"
+      ]
+    },
+    "matter_Y10": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "allowed_by_landed_symmetries": true,
+      "coefficient": "dimensionless",
+      "degree": 3,
+      "family_parity_product": 1,
+      "fields": [
+        "F",
+        "F",
+        "H1"
+      ]
+    },
+    "nu_driver_product": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "allowed_by_landed_symmetries": true,
+      "coefficient": "dimensionless",
+      "degree": 3,
+      "family_parity_product": 1,
+      "fields": [
+        "Ynu",
+        "Xnuplus",
+        "Xnuminus"
+      ]
+    },
+    "nu_driver_tadpole": {
+      "HShape_sum": 0,
+      "U1X_sum": 0,
+      "Z4_selector_sum_mod4": 0,
+      "allowed_by_landed_symmetries": true,
+      "coefficient": "v_nu^2",
+      "degree": 1,
+      "family_parity_product": 1,
+      "fields": [
+        "Ynu"
+      ]
+    }
+  },
+  "selector_boundary": {
+    "SO10_squared_Z4_residue_mod2": 1,
+    "U1H_is_claimed_gaugeable": false,
+    "Z4_is_anomaly_free_as_landed": false,
+    "even_order_modulus": 2,
+    "raw_SO10_squared_U1H": -25,
+    "raw_SO10_squared_Z4": 41,
+    "raw_gravity_squared_U1H": -198
+  },
+  "status": "V23_BARR_RABY_ARCHITECTURE_REJECTED__FORCED_H1_MASS__RG_SAFE_NEGATIVE_CONTROL",
+  "tensor_frontier": {
+    "Pati_Salam_branchings": {
+      "10": "(6,1,1)+(1,2,2)",
+      "16": "(4,2,1)+(4bar,1,2)",
+      "45": "(15,1,1)+(1,3,1)+(1,1,3)+(6,2,2)"
+    },
+    "SO10_to_Pati_Salam_Clebsch_map_landed": false,
+    "primitive_SO10_channels": [
+      "45^2",
+      "Tr(45^4)",
+      "16bar*16",
+      "16bar*45*16",
+      "10*45*10",
+      "10^2",
+      "16*16*10"
+    ],
+    "quartic_trace_normalization_landed": false,
+    "renormalizable_primitive_channels_are_multiplicity_one": true
+  }
+}

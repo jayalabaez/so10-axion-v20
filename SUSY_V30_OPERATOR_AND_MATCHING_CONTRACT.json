@@ -1,0 +1,272 @@
+{
+  "Kahler_contract": {
+    "form": "K=sum_A Phi_A^dag exp(V) Phi_A + sum_I |M_I-M_I*|^2",
+    "higher_visible_Kahler_Wilson_coefficients": 0,
+    "metric_positive_at_target": true
+  },
+  "boundary": "three-form dualization is a known mechanism, but FCMA-18 is a new axiom; the zeros above are predictions only conditional on that axiom",
+  "candidate_id": "V30_FFCC",
+  "executable_matching": {
+    "UV_to_component_rule": "flux unit gNN maps in source order to the corresponding normalized V24 tensor and SARAH coefficient symbol",
+    "live_SARAH_validator": "python -B susy_v24_ps_source_contract.py --live-sarah --check",
+    "structural_multiset_exact": true,
+    "target_model": "PSZ4RZ11SUSYV24",
+    "target_operator_count": 18
+  },
+  "finite_chiral_projection": {
+    "all_other_holomorphic_visible_Wilson_coefficients": 0,
+    "driver_tower_X_odd_A_n_for_n_gt_1": 0,
+    "higher_derivative_F_terms": 0,
+    "projector_squared_equals_projector": true,
+    "retained_operator_keys": [
+      "X_tadpole",
+      "X_cubic",
+      "X_Sbc_Sc",
+      "X_H_H",
+      "X_Sigma_Sigma",
+      "Sc_Sc_Sigma",
+      "Sbc_Sbc_Sigma",
+      "Q_H_Qc",
+      "Q_H_PsiC",
+      "Psi_H_Qc",
+      "Psi_H_PsiC",
+      "P_PsiBar_Q",
+      "P_PsiBar_Psi",
+      "P_PsiCBar_Qc",
+      "P_PsiCBar_PsiC",
+      "Sbc_Qc_N",
+      "Sbc_PsiC_N",
+      "N_N"
+    ],
+    "retained_visible_channels": 18
+  },
+  "gauge_kinetic_contract": {
+    "holomorphic_thresholds": "quantized T01 topological row only",
+    "visible_levels": {
+      "SU2L": 1,
+      "SU2R": 1,
+      "SU4": 1
+    }
+  },
+  "quantized_coefficient_map": [
+    {
+      "SARAH_coefficient_symbol": "-kappaPS*vPS^2",
+      "flux_unit": "g01",
+      "four_form_flux_integer": 1,
+      "monomial": [
+        "X"
+      ],
+      "normalized_tensor_multiplicity": 1,
+      "operator_key": "X_tadpole"
+    },
+    {
+      "SARAH_coefficient_symbol": "kappaX/3",
+      "flux_unit": "g02",
+      "four_form_flux_integer": 2,
+      "monomial": [
+        "X",
+        "X",
+        "X"
+      ],
+      "normalized_tensor_multiplicity": 1,
+      "operator_key": "X_cubic"
+    },
+    {
+      "SARAH_coefficient_symbol": "kappaPS",
+      "flux_unit": "g03",
+      "four_form_flux_integer": 3,
+      "monomial": [
+        "X",
+        "Sbc",
+        "Sc"
+      ],
+      "normalized_tensor_multiplicity": 1,
+      "operator_key": "X_Sbc_Sc"
+    },
+    {
+      "SARAH_coefficient_symbol": "lambdaH/2",
+      "flux_unit": "g04",
+      "four_form_flux_integer": 4,
+      "monomial": [
+        "X",
+        "H",
+        "H"
+      ],
+      "normalized_tensor_multiplicity": 1,
+      "operator_key": "X_H_H"
+    },
+    {
+      "SARAH_coefficient_symbol": "lambdaSigma/2",
+      "flux_unit": "g05",
+      "four_form_flux_integer": 5,
+      "monomial": [
+        "X",
+        "Sigma",
+        "Sigma"
+      ],
+      "normalized_tensor_multiplicity": 1,
+      "operator_key": "X_Sigma_Sigma"
+    },
+    {
+      "SARAH_coefficient_symbol": "lambdaS/2",
+      "flux_unit": "g06",
+      "four_form_flux_integer": 6,
+      "monomial": [
+        "Sc",
+        "Sc",
+        "Sigma"
+      ],
+      "normalized_tensor_multiplicity": 1,
+      "operator_key": "Sc_Sc_Sigma"
+    },
+    {
+      "SARAH_coefficient_symbol": "lambdaSb/2",
+      "flux_unit": "g07",
+      "four_form_flux_integer": 7,
+      "monomial": [
+        "Sbc",
+        "Sbc",
+        "Sigma"
+      ],
+      "normalized_tensor_multiplicity": 1,
+      "operator_key": "Sbc_Sbc_Sigma"
+    },
+    {
+      "SARAH_coefficient_symbol": "YQQ",
+      "flux_unit": "g08",
+      "four_form_flux_integer": 8,
+      "monomial": [
+        "Q",
+        "H",
+        "Qc"
+      ],
+      "normalized_tensor_multiplicity": 1,
+      "operator_key": "Q_H_Qc"
+    },
+    {
+      "SARAH_coefficient_symbol": "YQX",
+      "flux_unit": "g09",
+      "four_form_flux_integer": 9,
+      "monomial": [
+        "Q",
+        "H",
+        "PsiC"
+      ],
+      "normalized_tensor_multiplicity": 1,
+      "operator_key": "Q_H_PsiC"
+    },
+    {
+      "SARAH_coefficient_symbol": "YXQ",
+      "flux_unit": "g10",
+      "four_form_flux_integer": 10,
+      "monomial": [
+        "Psi",
+        "H",
+        "Qc"
+      ],
+      "normalized_tensor_multiplicity": 1,
+      "operator_key": "Psi_H_Qc"
+    },
+    {
+      "SARAH_coefficient_symbol": "YXX",
+      "flux_unit": "g11",
+      "four_form_flux_integer": 11,
+      "monomial": [
+        "Psi",
+        "H",
+        "PsiC"
+      ],
+      "normalized_tensor_multiplicity": 1,
+      "operator_key": "Psi_H_PsiC"
+    },
+    {
+      "SARAH_coefficient_symbol": "lambdaPQ",
+      "flux_unit": "g12",
+      "four_form_flux_integer": 12,
+      "monomial": [
+        "P",
+        "PsiBar",
+        "Q"
+      ],
+      "normalized_tensor_multiplicity": 1,
+      "operator_key": "P_PsiBar_Q"
+    },
+    {
+      "SARAH_coefficient_symbol": "lambdaPX",
+      "flux_unit": "g13",
+      "four_form_flux_integer": 13,
+      "monomial": [
+        "P",
+        "PsiBar",
+        "Psi"
+      ],
+      "normalized_tensor_multiplicity": 1,
+      "operator_key": "P_PsiBar_Psi"
+    },
+    {
+      "SARAH_coefficient_symbol": "lambdaPcQ",
+      "flux_unit": "g14",
+      "four_form_flux_integer": 14,
+      "monomial": [
+        "P",
+        "PsiCBar",
+        "Qc"
+      ],
+      "normalized_tensor_multiplicity": 1,
+      "operator_key": "P_PsiCBar_Qc"
+    },
+    {
+      "SARAH_coefficient_symbol": "lambdaPcX",
+      "flux_unit": "g15",
+      "four_form_flux_integer": 15,
+      "monomial": [
+        "P",
+        "PsiCBar",
+        "PsiC"
+      ],
+      "normalized_tensor_multiplicity": 1,
+      "operator_key": "P_PsiCBar_PsiC"
+    },
+    {
+      "SARAH_coefficient_symbol": "yNQ",
+      "flux_unit": "g16",
+      "four_form_flux_integer": 16,
+      "monomial": [
+        "Sbc",
+        "Qc",
+        "N"
+      ],
+      "normalized_tensor_multiplicity": 1,
+      "operator_key": "Sbc_Qc_N"
+    },
+    {
+      "SARAH_coefficient_symbol": "yNX",
+      "flux_unit": "g17",
+      "four_form_flux_integer": 17,
+      "monomial": [
+        "Sbc",
+        "PsiC",
+        "N"
+      ],
+      "normalized_tensor_multiplicity": 1,
+      "operator_key": "Sbc_PsiC_N"
+    },
+    {
+      "SARAH_coefficient_symbol": "MN/2",
+      "flux_unit": "g18",
+      "four_form_flux_integer": 18,
+      "monomial": [
+        "N",
+        "N"
+      ],
+      "normalized_tensor_multiplicity": 1,
+      "operator_key": "N_N"
+    }
+  ],
+  "schema": "susy-v30-operator-matching-contract-v1",
+  "soft_contract": {
+    "all_soft_terms": 0,
+    "reason": "all F and D order parameters vanish at the declared G1 vacuum",
+    "vacuum": "supersymmetric Minkowski"
+  }
+}

@@ -1,0 +1,311 @@
+{
+  "schema": "susy_v22_all_order_r_protection_v1",
+  "status": "EXACT_HOLOMORPHIC_R_SELECTION_RULE_SOURCE_LANDED__FULL_VACUUM_AND_KAHLER_OPEN",
+  "model_source": {
+    "path": "models/SO10X17SUSYV22/SO10X17SUSYV22.m",
+    "mode": "portable-lf",
+    "sha256": "a253e40e712287d654122b74ac94ceeb05b5fc3dddcf8c2af2c790af99be45d4"
+  },
+  "contract_core_sha256": "b50551e10a2052ec2067ca1f440f45079e6dd732be3cd5f1d05df2d9a273053d",
+  "superpotential_R_charge": 2,
+  "field_R_charges": {
+    "F": 1,
+    "P": 1,
+    "R": 1,
+    "SpecS": 1,
+    "SpecB": 1,
+    "Q": 1,
+    "Pbar": 1,
+    "Qbar": 1,
+    "Rbar": 1,
+    "H10m": 0,
+    "H10p": 0,
+    "T120m": 0,
+    "T120p": 0,
+    "Phi210": 0,
+    "C16": 0,
+    "C16bar": 0,
+    "XMP": 0,
+    "Splus": 0,
+    "Sminus": 0,
+    "Phi17p": 0,
+    "Phi17m": 0,
+    "DeltaB": 0,
+    "Delta": 2,
+    "DeltaB2": 2,
+    "Delta2": 0,
+    "NX": 2,
+    "NS": 2,
+    "Nphi": 2,
+    "NC": 2,
+    "NMP": 2,
+    "Z0": 0,
+    "Z1": 0,
+    "Z2": 0
+  },
+  "required_terms": {
+    "Nphi_Phi2": {
+      "fields": [
+        "Nphi",
+        "Phi210",
+        "Phi210"
+      ],
+      "R_sum": 2,
+      "allowed_in_W": true
+    },
+    "NC_CbarC": {
+      "fields": [
+        "NC",
+        "C16bar",
+        "C16"
+      ],
+      "R_sum": 2,
+      "allowed_in_W": true
+    },
+    "NMP_XMP_square": {
+      "fields": [
+        "NMP",
+        "XMP",
+        "XMP"
+      ],
+      "R_sum": 2,
+      "allowed_in_W": true
+    },
+    "rho1": {
+      "fields": [
+        "XMP",
+        "DeltaB",
+        "Delta"
+      ],
+      "R_sum": 2,
+      "allowed_in_W": true
+    },
+    "rho2": {
+      "fields": [
+        "XMP",
+        "DeltaB2",
+        "Delta2"
+      ],
+      "R_sum": 2,
+      "allowed_in_W": true
+    },
+    "gammaH": {
+      "fields": [
+        "Phi210",
+        "H10m",
+        "Delta"
+      ],
+      "R_sum": 2,
+      "allowed_in_W": true
+    },
+    "gammaHb2": {
+      "fields": [
+        "Phi210",
+        "H10p",
+        "DeltaB2"
+      ],
+      "R_sum": 2,
+      "allowed_in_W": true
+    },
+    "gammaT": {
+      "fields": [
+        "Phi210",
+        "T120m",
+        "Delta"
+      ],
+      "R_sum": 2,
+      "allowed_in_W": true
+    },
+    "gammaTb2": {
+      "fields": [
+        "Phi210",
+        "T120p",
+        "DeltaB2"
+      ],
+      "R_sum": 2,
+      "allowed_in_W": true
+    },
+    "kappaX": {
+      "fields": [
+        "NX",
+        "Phi17p",
+        "Phi17m"
+      ],
+      "R_sum": 2,
+      "allowed_in_W": true
+    },
+    "kappaS": {
+      "fields": [
+        "NS",
+        "Splus",
+        "Sminus"
+      ],
+      "R_sum": 2,
+      "allowed_in_W": true
+    },
+    "Y10": {
+      "fields": [
+        "F",
+        "F",
+        "H10m"
+      ],
+      "R_sum": 2,
+      "allowed_in_W": true
+    },
+    "Y120": {
+      "fields": [
+        "F",
+        "F",
+        "T120m"
+      ],
+      "R_sum": 2,
+      "allowed_in_W": true
+    },
+    "Y126eff": {
+      "fields": [
+        "XMP",
+        "F",
+        "F",
+        "DeltaB"
+      ],
+      "R_sum": 2,
+      "allowed_in_W": true
+    },
+    "yP": {
+      "fields": [
+        "Phi17m",
+        "P",
+        "Pbar"
+      ],
+      "R_sum": 2,
+      "allowed_in_W": true
+    },
+    "yQ": {
+      "fields": [
+        "Phi17m",
+        "Q",
+        "Qbar"
+      ],
+      "R_sum": 2,
+      "allowed_in_W": true
+    },
+    "yR": {
+      "fields": [
+        "Phi17p",
+        "R",
+        "Rbar"
+      ],
+      "R_sum": 2,
+      "allowed_in_W": true
+    },
+    "ys": {
+      "fields": [
+        "Splus",
+        "SpecS",
+        "SpecB"
+      ],
+      "R_sum": 2,
+      "allowed_in_W": true
+    },
+    "lambdaP": {
+      "fields": [
+        "P",
+        "F",
+        "H10m"
+      ],
+      "R_sum": 2,
+      "allowed_in_W": true
+    },
+    "lambdaR": {
+      "fields": [
+        "R",
+        "F",
+        "H10m"
+      ],
+      "R_sum": 2,
+      "allowed_in_W": true
+    },
+    "lambdaQB": {
+      "fields": [
+        "Sminus",
+        "Qbar",
+        "F"
+      ],
+      "R_sum": 2,
+      "allowed_in_W": true
+    },
+    "lambdaQR": {
+      "fields": [
+        "Splus",
+        "Q",
+        "Rbar"
+      ],
+      "R_sum": 2,
+      "allowed_in_W": true
+    }
+  },
+  "light_bilinear_R_charges": {
+    "H10m.H10m": 0,
+    "H10m.H10p": 0,
+    "H10m.T120m": 0,
+    "H10m.T120p": 0,
+    "H10p.H10p": 0,
+    "H10p.T120m": 0,
+    "H10p.T120p": 0,
+    "T120m.T120m": 0,
+    "T120m.T120p": 0,
+    "T120p.T120p": 0
+  },
+  "vacuum_partition": {
+    "nonzero_VEV_R0": [
+      "Phi210",
+      "C16",
+      "C16bar",
+      "XMP",
+      "Splus",
+      "Sminus",
+      "Phi17p",
+      "Phi17m"
+    ],
+    "required_zero_VEV": [
+      "DeltaB",
+      "Delta",
+      "DeltaB2",
+      "Delta2",
+      "NX",
+      "NS",
+      "Nphi",
+      "NC",
+      "NMP"
+    ]
+  },
+  "all_order_argument": "a light bilinear has R=0; every arbitrary holomorphic monomial made only from nonzero-VEV fields also has R=0; their product can never have superpotential R=2. Any R=2 insertion is a field whose VEV is required to vanish.",
+  "soft_mu_boundary": "R breaking by a source-bound soft/SUGRA spurion may generate mu only at the soft scale; this must be computed in the RG/threshold bridge",
+  "remaining_requirements": [
+    "prove the complete F/D solution has precisely the declared VEV partition",
+    "prove the source-landed anomaly-free discrete R subgroup is preserved by the full vacuum and soft sector",
+    "audit K\u00e4hler and soft operators and compute the generated mu/Bmu terms"
+  ],
+  "checks": {
+    "all_required_superpotential_terms_have_R_two": true,
+    "every_light_bilinear_has_R_zero": true,
+    "every_declared_nonzero_VEV_has_R_zero": true,
+    "every_R_two_nonmatter_field_is_declared_zero_VEV": true,
+    "arbitrary_nonzero_VEV_monomial_cannot_turn_light_bilinear_into_W_term": true,
+    "opposite_hypercharge_mixings_use_R_two_heavy_fields": true,
+    "missing_partner_U1_is_grading_not_a_spontaneously_broken_continuous_symmetry": true,
+    "discrete_R_anomaly_and_nonperturbative_audit_still_required": true,
+    "R_selection_rule_is_landed_in_the_model_source": true
+  },
+  "n_checks": 9,
+  "n_failed": 0,
+  "failures": [],
+  "claim_boundary": {
+    "holomorphic_charge_theorem_closed": true,
+    "holomorphic_charge_theorem_source_landed": true,
+    "source_bound_all_order_protection_closed": false,
+    "canonical_G4_closed": false,
+    "canonical_G5_closed": false
+  },
+  "core_sha256": "5a22e4866d7fa6159575cf38bd3a68575d4e4b437dd406104fd1a43c8db12cf4"
+}

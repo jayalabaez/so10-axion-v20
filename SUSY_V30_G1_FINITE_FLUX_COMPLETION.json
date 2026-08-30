@@ -1,0 +1,159 @@
+{
+  "algebraic_results": {
+    "Kahler_complex_Hessian_rank": 51,
+    "all_moduli_complex_Hessian_rank": 55,
+    "all_moduli_real_mass_rank": 110,
+    "finite_moduli_Minkowski_branches": 1,
+    "higher_visible_holomorphic_channels": 0,
+    "primitive_charge_rank": 51,
+    "visible_channels": 18
+  },
+  "audit_date": "2026-08-24",
+  "checks": {
+    "51_primitive_charge_vectors_are_identity_basis": true,
+    "Kahler_Hessian_rank_is_51": true,
+    "V25_driver_tower_is_removed": true,
+    "all_110_real_moduli_are_locally_massive": true,
+    "all_raw_source_pins_match": true,
+    "all_six_rows_pass_under_FFCC_axioms": true,
+    "established_G1_is_not_claimed_closed": true,
+    "finite_projector_retains_exactly_18_visible_channels": true,
+    "full_moduli_Hessian_rank_is_55": true,
+    "submission_has_exact_V27_shape": true,
+    "unique_single_field_Minkowski_root_identity": true,
+    "unproved_microscopic_axiom_is_exposed": true,
+    "upstream_cores_match": true
+  },
+  "core_sha256": "e504aed2ac39cec33a23a3779ea5d99cdbec2592bd16a2ba4353706b21148a28",
+  "failures": [],
+  "generated_evidence": {
+    "SUSY_V30_FIELD_AND_SELECTOR_MANIFEST.json": "80474e4950bbecebb3a02f678783df26495f8cac21e578a69858ffab59e7f686",
+    "SUSY_V30_MODULI_AND_HIDDEN_CONTRACT.json": "2231ef13110662a10d1900f3cbb3fc425610191c80defc8c2effae0cb812eba2",
+    "SUSY_V30_OPERATOR_AND_MATCHING_CONTRACT.json": "7cb6f39c85d788937418f61eca9e98c46c21a95549bb220b351ef9e27bff2c6f"
+  },
+  "internal_G1_acceptance": {
+    "condition": "FCMA-18 and the declared zero-mode/global-consistency axioms are fundamental",
+    "conditional_closed": true,
+    "passed": 6,
+    "requirements": {
+      "R1_microscopic_UV_source": {
+        "evidence": "complete FFCC field/sector/action manifest and V27-shaped submission",
+        "passes_under_FFCC_axioms": true
+      },
+      "R2_selector_levels_and_all_anomalies": {
+        "evidence": "explicit integer axion/counterterm matrix cancels every recorded residue",
+        "passes_under_FFCC_axioms": true
+      },
+      "R3_all_order_operator_and_coefficient_contract": {
+        "evidence": "FCMA-18 projector plus quantized four-form coefficient map",
+        "passes_under_FFCC_axioms": true
+      },
+      "R4_all_moduli_stabilized_and_branch_quotient": {
+        "evidence": "unique finite rank-55 supersymmetric Minkowski solution",
+        "passes_under_FFCC_axioms": true
+      },
+      "R5_hidden_threshold_and_residual_Z2_audit": {
+        "evidence": "no propagating hidden thresholds, unit Euclidean Pfaffians, residual Z2",
+        "passes_under_FFCC_axioms": true
+      },
+      "R6_executable_matching_to_visible_source": {
+        "evidence": "one-to-one 18-channel map to live SARAH V24 source",
+        "passes_under_FFCC_axioms": true
+      }
+    },
+    "total": 6
+  },
+  "invented_physics": {
+    "name": "finite-flux constrained chiral completion (FFCC)",
+    "new_axiom": "FCMA-18 finite chiral functional",
+    "purpose": "replace the arbitrary all-order Wilson functional by a finite topological projection and supply 51 independent nonperturbative charge directions"
+  },
+  "n_checks": 13,
+  "n_failed": 0,
+  "namespace": "research.susy_pati_salam.v30.g1.finite_flux_completion",
+  "primary_mechanism_precedents": [
+    {
+      "mechanism": "fluxed E3 instantons can lift zero modes and enlarge the moduli-stabilizing charge span",
+      "url": "https://arxiv.org/abs/1105.3193"
+    },
+    {
+      "mechanism": "world-volume flux can freeze E3 deformation modes and leave the two universal zero modes",
+      "url": "https://arxiv.org/abs/1202.5045"
+    },
+    {
+      "mechanism": "supergravity couplings can be dualized to gauge-three-form field strengths",
+      "url": "https://arxiv.org/abs/1706.09422"
+    },
+    {
+      "mechanism": "constrained superfields can consistently remove selected low-energy components",
+      "url": "https://arxiv.org/abs/0907.2441"
+    },
+    {
+      "mechanism": "multiple Green--Schwarz fields can participate in discrete anomaly cancellation",
+      "url": "https://arxiv.org/abs/1212.4371"
+    }
+  ],
+  "schema": "susy-v30-g1-finite-flux-completion-v1",
+  "scientific_evidence_grade": {
+    "established_microscopic_G1_closed": false,
+    "reason": "no explicit compactification, worldsheet construction, lattice definition, or UV fixed point derives FCMA-18 and the 51-sector zero-mode ledger",
+    "single_remaining_research_target": "derive or falsify FCMA-18 and the primitive instanton frame in one UV-complete source"
+  },
+  "source_manifest": [
+    {
+      "expected_sha256": "4993924ebf64a8eb05f83290174adaffe277342234d1ae43e78d992b3efbf4da",
+      "matches": true,
+      "path": "susy_v24_ps_source_contract.py",
+      "sha256": "4993924ebf64a8eb05f83290174adaffe277342234d1ae43e78d992b3efbf4da"
+    },
+    {
+      "expected_sha256": "c2457e188877a2729e092acf6ddbf76626b884a4c1cb652c282da215f268ce51",
+      "matches": true,
+      "path": "SUSY_V24_PS_SOURCE_CONTRACT.json",
+      "sha256": "c2457e188877a2729e092acf6ddbf76626b884a4c1cb652c282da215f268ce51"
+    },
+    {
+      "expected_sha256": "1158b288ee39601ac4650312ec9e6c83e0d4eb101de5c90ccf0c38cba2f0be9c",
+      "matches": true,
+      "path": "susy_v27_g1_architecture_change_audit.py",
+      "sha256": "1158b288ee39601ac4650312ec9e6c83e0d4eb101de5c90ccf0c38cba2f0be9c"
+    },
+    {
+      "expected_sha256": "4dfaa939bc3ef555fdfbb9d46612ee83df082231cc078176605b38421ac50b61",
+      "matches": true,
+      "path": "SUSY_V27_G1_ARCHITECTURE_CHANGE_AUDIT.json",
+      "sha256": "4dfaa939bc3ef555fdfbb9d46612ee83df082231cc078176605b38421ac50b61"
+    },
+    {
+      "expected_sha256": "4faf4c27fde31f69e81cfd9ec7d30d4a7b7c6860b770b3024076b5c24de0612f",
+      "matches": true,
+      "path": "susy_v28_new_physics_moduli_bridge.py",
+      "sha256": "4faf4c27fde31f69e81cfd9ec7d30d4a7b7c6860b770b3024076b5c24de0612f"
+    },
+    {
+      "expected_sha256": "7b32e13b646eed9700480d29801967069e4a21bde008e4b90dec91cee1db1aa9",
+      "matches": true,
+      "path": "SUSY_V28_NEW_PHYSICS_MODULI_BRIDGE.json",
+      "sha256": "7b32e13b646eed9700480d29801967069e4a21bde008e4b90dec91cee1db1aa9"
+    },
+    {
+      "expected_sha256": "8c3950fa5bc2614ed099e62679990ed99537501c23654b323c6220dad68a11eb",
+      "matches": true,
+      "path": "susy_v29_g1_microscopic_completion_verdict.py",
+      "sha256": "8c3950fa5bc2614ed099e62679990ed99537501c23654b323c6220dad68a11eb"
+    },
+    {
+      "expected_sha256": "f1f47f402eb04efc9cd002d05345a0b70705fc244bdafc6eec11dd6b0df628a7",
+      "matches": true,
+      "path": "SUSY_V29_G1_MICROSCOPIC_COMPLETION_VERDICT.json",
+      "sha256": "f1f47f402eb04efc9cd002d05345a0b70705fc244bdafc6eec11dd6b0df628a7"
+    }
+  ],
+  "status": "V30_FINITE_FLUX_G1_CONDITIONAL_COMPLETION_CONSTRUCTED__SIX_OF_SIX_INTERNAL_ROWS_PASS__FINITE_CHIRAL_UV_ORIGIN_UNPROVEN__ESTABLISHED_G1_OPEN",
+  "upstream_core_pins": {
+    "V24_source": "d408aa7d7d3096ac917f5bd6f4f37576aace4cd78709bf4810b8e036dc2d93a8",
+    "V27_acceptance_audit": "d97af356e9f2e2d7d0d2001a2a3b60027e6845cf4266d6f8c7b36b539281a58e",
+    "V28_moduli_scaffold": "c682234ef01696ad188dc759091d1830f894972b3b279b69a867266d5ed77517",
+    "V29_microscopic_verdict": "c770bbeb49309e13cac8b3438a2decd027da364aa56b696378a24a799e6b8cf7"
+  }
+}

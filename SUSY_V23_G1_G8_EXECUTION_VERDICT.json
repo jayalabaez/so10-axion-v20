@@ -1,0 +1,398 @@
+{
+  "campaign_scope": "V22R frozen finite EFT plus V23 Chacko, Barr--Raby, and flipped missing-partner route evaluation",
+  "checks": {
+    "Barr_Raby_all_order_architecture_is_exactly_rejected": true,
+    "Chacko_unchanged_route_is_exactly_rejected": true,
+    "V22R_finite_EFT_is_preserved_but_not_promoted": true,
+    "V23_model_scaffolds_are_not_called_executable_SARAH_models": true,
+    "all_eight_full_G1_G8_gates_are_false_and_open": true,
+    "all_pinned_sources_match": true,
+    "all_upstream_audits_are_failure_free": true,
+    "all_upstream_canonical_cores_are_valid_and_pinned": true,
+    "all_upstream_schema_namespace_status_metadata_match": true,
+    "exact_route_decision_has_no_complete_theory": true,
+    "flipped_anomalous_U1A_Planck_and_GS_completion_remain_open": true,
+    "flipped_formal_running_is_not_promoted_to_physical_RGE_closure": true,
+    "flipped_published_structural_ranks_are_7_and_3": true,
+    "flipped_route_is_primary_research_frontier_only": true,
+    "flipped_single_10_KSVZ_extension_is_exactly_rejected": true,
+    "landed_model_files_are_exact_zero_W_GaugeES_scaffolds": true
+  },
+  "closure_counts": {
+    "closed": 0,
+    "open": 8
+  },
+  "core_sha256": "ab16d07e95c8ca24873523ecb6e145e84fd46fb3b39f2a6a98b0c3349c3396ca",
+  "failures": [],
+  "gates": [
+    {
+      "closed": false,
+      "evidence_landed": [
+        "V22R finite degree-four sector catalogue",
+        "exact Chacko and Barr--Raby selector obstructions",
+        "published flipped Table-I charge and field ledger"
+      ],
+      "full_gate_claim": false,
+      "gate": "G1",
+      "open_requirements": [
+        "normalized SO(10) invariant tensors and component Clebsches",
+        "complete all-order holomorphic, Kahler, soft, and anomaly-safe selector contract",
+        "an executable nonzero-superpotential SARAH model"
+      ],
+      "qualified_id": "research.susy_so10.v23.G1.full_closure",
+      "state": "SOURCE_SCAFFOLDS_LANDED__FULL_OPERATOR_CONTRACT_OPEN"
+    },
+    {
+      "closed": false,
+      "evidence_landed": [
+        "flipped published zero patterns have generic triplet rank 7 and doublet rank 3",
+        "Barr--Raby conditional DW rank is retained only as a negative control"
+      ],
+      "full_gate_claim": false,
+      "gate": "G2",
+      "open_requirements": [
+        "normalized full component mass matrices on a solved vacuum",
+        "physical threshold eigenvalues with correlated coefficients"
+      ],
+      "qualified_id": "research.susy_so10.v23.G2.full_closure",
+      "state": "GENERIC_STRUCTURAL_RANKS_LANDED__PHYSICAL_COMPONENT_RANKS_OPEN"
+    },
+    {
+      "closed": false,
+      "evidence_landed": [
+        "flipped published VEV pattern and Froggatt--Nielsen scalings",
+        "V22R restricted regular invariant-coordinate branch"
+      ],
+      "full_gate_claim": false,
+      "gate": "G3",
+      "open_requirements": [
+        "source-exact global F+D+soft vacuum",
+        "competing-branch exclusion and positive full Hessian",
+        "Green--Schwarz and hidden-sector completion for anomalous U(1)A"
+      ],
+      "qualified_id": "research.susy_so10.v23.G3.full_closure",
+      "state": "PUBLISHED_VEV_SCALINGS_LANDED__GLOBAL_VACUUM_OPEN"
+    },
+    {
+      "closed": false,
+      "evidence_landed": [
+        "flipped one-light-doublet/no-light-triplet generic zero pattern",
+        "Barr--Raby additive-Abelian Higgs-mass obstruction"
+      ],
+      "full_gate_claim": false,
+      "gate": "G4",
+      "open_requirements": [
+        "mu and soft-scale generation without filling the light block",
+        "all-order hierarchy protection and physical heavy thresholds"
+      ],
+      "qualified_id": "research.susy_so10.v23.G4.full_closure",
+      "state": "MISSING_PARTNER_PATTERN_LANDED__HIERARCHY_PROTECTION_OPEN"
+    },
+    {
+      "closed": false,
+      "evidence_landed": [
+        "the formal N_DW=1 single-10 KSVZ proposal is rejected because flipped hypercharge gives fractional states and nonuniversal Standard-Model beta shifts",
+        "Barr--Raby neutrino scale identity is retained as an unprotected negative control"
+      ],
+      "full_gate_claim": false,
+      "gate": "G5",
+      "open_requirements": [
+        "a viable vectorlike KSVZ set complete under SO(10)xU(1)V-prime",
+        "anomaly-safe PQ-quality symmetry compatible with anomalous U(1)A",
+        "protected physical neutrino texture and complete chiral/gaugino spectrum",
+        "cosmological initial-condition and relic calculation"
+      ],
+      "qualified_id": "research.susy_so10.v23.G5.full_closure",
+      "state": "SINGLE_10_KSVZ_REJECTED__AXION_NEUTRINO_SPECTRUM_OPEN"
+    },
+    {
+      "closed": false,
+      "evidence_landed": [
+        "Chacko stated spectrum fails the Planck-120 perturbative benchmark",
+        "Barr--Raby gauge-only running is retained only as a negative-control benchmark",
+        "flipped common-threshold gA=0 two-coupling running is explicitly formal"
+      ],
+      "full_gate_claim": false,
+      "gate": "G6",
+      "open_requirements": [
+        "stage-resolved SU(5)xU(1)X matching between vPhi and vC",
+        "gauged anomalous-U(1)A and V-prime/U(1)A kinetic mixing, including the recorded B10,A term",
+        "anomalous-U(1)A normalization above the level-one pole",
+        "coupled gauge-Yukawa-soft running with physical stage thresholds",
+        "scheme and independent numerical replay"
+      ],
+      "qualified_id": "research.susy_so10.v23.G6.full_closure",
+      "state": "FORMAL_GAUGE_ONLY_LEDGERS_LANDED__PHYSICAL_RGE_CHAIN_OPEN"
+    },
+    {
+      "closed": false,
+      "evidence_landed": [],
+      "full_gate_claim": false,
+      "gate": "G7",
+      "open_requirements": [
+        "complete tree and pole spectrum",
+        "threshold matching and mass-basis baryon-violating Wilson coefficients",
+        "proton-decay calculation with hadronic inputs"
+      ],
+      "qualified_id": "research.susy_so10.v23.G7.full_closure",
+      "state": "DEPENDENCY_BLOCKED"
+    },
+    {
+      "closed": false,
+      "evidence_landed": [
+        "published flipped qualitative flavour textures only"
+      ],
+      "full_gate_claim": false,
+      "gate": "G8",
+      "open_requirements": [
+        "global fermion/flavour fit with covariance",
+        "proton, axion, neutrino, cosmology, and collider likelihoods",
+        "versioned experimental and lattice input ledger"
+      ],
+      "qualified_id": "research.susy_so10.v23.G8.full_closure",
+      "state": "DEPENDENCY_BLOCKED"
+    }
+  ],
+  "model_artifact_classification": {
+    "barr_raby_route": {
+      "SARAH_initialization_attested": false,
+      "SuperPotential": 0,
+      "Wolfram_syntax_parse_observed": true,
+      "artifact_kind": "Wolfram-syntax SARAH-input scaffold",
+      "executable_SARAH_model_landed": false,
+      "missing_auxiliary_model_files": [
+        "parameters.m",
+        "particles.m"
+      ],
+      "path": "models/SO10U1V23BarrRaby/SO10U1V23BarrRaby.m",
+      "wolfram_syntax_zero_W_stub": true
+    },
+    "chacko_unchanged_route": {
+      "SARAH_initialization_attested": false,
+      "artifact_kind": "analytic rejection certificate; no V23 model file",
+      "executable_SARAH_model_landed": false,
+      "path": null,
+      "wolfram_syntax_zero_W_stub": false
+    },
+    "flipped_missing_partner_route": {
+      "SARAH_initialization_attested": false,
+      "SuperPotential": 0,
+      "Wolfram_syntax_parse_observed": true,
+      "artifact_kind": "Wolfram-syntax SARAH-input scaffold",
+      "executable_SARAH_model_landed": false,
+      "missing_auxiliary_model_files": [
+        "parameters.m",
+        "particles.m"
+      ],
+      "path": "models/SO10U1V23FlippedMissingPartner/SO10U1V23FlippedMissingPartner.m",
+      "wolfram_syntax_zero_W_stub": true
+    },
+    "v22r_degree4_eft": {
+      "SARAH_initialization_attested": false,
+      "SuperPotential": 0,
+      "artifact_kind": "metadata-only Wolfram-syntax source scaffold",
+      "classification_basis": "pinned source plus frozen V22R G1 open requirement",
+      "executable_SARAH_model_landed": false,
+      "path": "models/SO10X17SUSYV22R/SO10X17SUSYV22R.m",
+      "wolfram_syntax_zero_W_stub": true
+    }
+  },
+  "n_checks": 16,
+  "n_failed": 0,
+  "namespace": "terminal.susy_so10.v23.G1_G8.execution_verdict",
+  "next_research_promotion_requirements": [
+    "replace SuperPotential=0 by normalized nonzero component tensors and attest SARAH initialization",
+    "land an anomaly/Green--Schwarz completion and all-order operator census for the flipped selector",
+    "solve the full F+D+soft vacuum and physical doublet/triplet/exotic spectrum",
+    "run coupled gauge-Yukawa-soft RGEs through physical thresholds",
+    "fit flavour and calculate pole masses, proton decay, axion, neutrino, and cosmology likelihoods"
+  ],
+  "overall_state": "END_AT_FAIL_CLOSED_RESEARCH_FRONTIER",
+  "route_decision": {
+    "complete_theory_selected": null,
+    "decision_valid": true,
+    "primary_research_frontier": "flipped_missing_partner_route",
+    "routes": [
+      {
+        "accepted_as_complete_theory": false,
+        "architecture_exactly_rejected": false,
+        "disposition": "PRESERVED_FROZEN_FINITE_EFT__NOT_A_COMPLETE_THEORY",
+        "reason": "The accepted sector-level repair is real as a finite EFT truncation, but the component superpotential, all-order operator contract, physical missing-partner matrices, global soft vacuum, spectator masses, RG chain, pole spectrum and proton lifetime are not determined.",
+        "retained_value": "reproducible degree-four sector-level EFT boundary",
+        "route": "v22r_degree4_eft"
+      },
+      {
+        "accepted_as_complete_theory": false,
+        "architecture_exactly_rejected": true,
+        "disposition": "EXACTLY_REJECTED_AT_STATED_UNCHANGED_ROUTE_SCOPE",
+        "reason": "The unchanged W1/W2 selector is algebraically nonselective and the stated spectrum loses perturbative control below the Planck benchmark.",
+        "retained_value": "selector and gauge-running no-go certificate",
+        "route": "chacko_unchanged_route"
+      },
+      {
+        "accepted_as_complete_theory": false,
+        "architecture_exactly_rejected": true,
+        "disposition": "EXACTLY_REJECTED_AS_ALL_ORDER_COMPLETION",
+        "reason": "The displayed symmetries allow XHplus*H1^2; its required VEV fills the H1 doublet mass, and the exact residual additive-Abelian identity prevents the stated architecture from forbidding it. The same charge system also permits type-I messenger terms, all cross-driver scale mixings, and a degree-five PQ-breaking operator.",
+        "retained_value": "formal gauge-only RG negative control and conditional DW ledger",
+        "route": "barr_raby_route"
+      },
+      {
+        "accepted_as_complete_theory": false,
+        "architecture_exactly_rejected": false,
+        "disposition": "PRIMARY_RESEARCH_FRONTIER__NOT_PROMOTED_TO_COMPLETE_THEORY",
+        "reason": "A formal base coefficient/RK ledger and a published missing-partner rank witness are landed; physical stage-resolved RG, anomalous shaping, thresholds, tensors, vacuum, and phenomenology remain open.",
+        "retained_value": "published generic missing-partner rank witness and comparatively mild formal SO(10)xU(1)V-prime coefficient ledger",
+        "route": "flipped_missing_partner_route"
+      }
+    ]
+  },
+  "schema": "susy_v23_g1_g8_execution_verdict_v1",
+  "source_manifest": [
+    {
+      "expected_sha256": "43f6160d8c3ca2bf5b50961c23b993f559ba99da88260d74aa3d2817cd3243a9",
+      "matches": true,
+      "mode": "raw",
+      "path": "susy_v22r_g1_g8_execution_verdict.py",
+      "sha256": "43f6160d8c3ca2bf5b50961c23b993f559ba99da88260d74aa3d2817cd3243a9"
+    },
+    {
+      "expected_sha256": "a16b740043096a40beae194f3cd585b5ff3de7ceade46ee94e6acb46f963bc86",
+      "matches": true,
+      "mode": "raw",
+      "path": "SUSY_V22R_G1_G8_EXECUTION_VERDICT.json",
+      "sha256": "a16b740043096a40beae194f3cd585b5ff3de7ceade46ee94e6acb46f963bc86"
+    },
+    {
+      "expected_sha256": "3ae30ad402329b339aaf8739d3f578a66b95cf1ec420ba1f76cd51c04a7b317a",
+      "matches": true,
+      "mode": "raw",
+      "path": "SUSY_V22R_G1_G8_EXECUTION_VERDICT.md",
+      "sha256": "3ae30ad402329b339aaf8739d3f578a66b95cf1ec420ba1f76cd51c04a7b317a"
+    },
+    {
+      "expected_sha256": "c792d94c01008a03e5ef8811652764094efdfa3276b4986aa5dc295e7015a77e",
+      "matches": true,
+      "mode": "raw",
+      "path": "models/SO10X17SUSYV22R/SO10X17SUSYV22R.m",
+      "sha256": "c792d94c01008a03e5ef8811652764094efdfa3276b4986aa5dc295e7015a77e"
+    },
+    {
+      "expected_sha256": "707cc06b0789b83f3b050acc8ed83b42dfd33398d487a300bcff5dbf4f35d65a",
+      "matches": true,
+      "mode": "raw",
+      "path": "susy_v23_chacko_route_rejection.py",
+      "sha256": "707cc06b0789b83f3b050acc8ed83b42dfd33398d487a300bcff5dbf4f35d65a"
+    },
+    {
+      "expected_sha256": "102edf31aa6cfb36385a8ac49a58ffc1beefd4cb863a3bc0ca89a05abaaa331e",
+      "matches": true,
+      "mode": "raw",
+      "path": "SUSY_V23_CHACKO_ROUTE_REJECTION.json",
+      "sha256": "102edf31aa6cfb36385a8ac49a58ffc1beefd4cb863a3bc0ca89a05abaaa331e"
+    },
+    {
+      "expected_sha256": "c126a5bfdeae5929777b8a8468f1e15b433bd7218d9d0d32eb35f708977737bc",
+      "matches": true,
+      "mode": "raw",
+      "path": "SUSY_V23_CHACKO_ROUTE_REJECTION.md",
+      "sha256": "c126a5bfdeae5929777b8a8468f1e15b433bd7218d9d0d32eb35f708977737bc"
+    },
+    {
+      "expected_sha256": "f083b7e4d3571786633a9ae15f85e71ecee435fcab73d7df20173dc40d30c43c",
+      "matches": true,
+      "mode": "raw",
+      "path": "susy_v23_barr_raby_completion_frontier.py",
+      "sha256": "f083b7e4d3571786633a9ae15f85e71ecee435fcab73d7df20173dc40d30c43c"
+    },
+    {
+      "expected_sha256": "74c72bd0105a2fffc9bdfb08b5be134a6dfa74216afd2f257461b9aba52966e6",
+      "matches": true,
+      "mode": "raw",
+      "path": "SUSY_V23_BARR_RABY_COMPLETION_FRONTIER.json",
+      "sha256": "74c72bd0105a2fffc9bdfb08b5be134a6dfa74216afd2f257461b9aba52966e6"
+    },
+    {
+      "expected_sha256": "4b176273f490af27d6b7452c9be5a68496176506e2d038cd70aa7d7c4725ce90",
+      "matches": true,
+      "mode": "raw",
+      "path": "SUSY_V23_BARR_RABY_COMPLETION_FRONTIER.md",
+      "sha256": "4b176273f490af27d6b7452c9be5a68496176506e2d038cd70aa7d7c4725ce90"
+    },
+    {
+      "expected_sha256": "418ab8e5174e4c715bc677d2961e1b4913413d128b31f37d574701b5911ff1a3",
+      "matches": true,
+      "mode": "raw",
+      "path": "models/SO10U1V23BarrRaby/SO10U1V23BarrRaby.m",
+      "sha256": "418ab8e5174e4c715bc677d2961e1b4913413d128b31f37d574701b5911ff1a3"
+    },
+    {
+      "expected_sha256": "ad8a41bd09ae100e32a1e5a91a7e71fc3c5c7cd8d2e718a83be86cf66631db00",
+      "matches": true,
+      "mode": "raw",
+      "path": "susy_v23_flipped_missing_partner_frontier.py",
+      "sha256": "ad8a41bd09ae100e32a1e5a91a7e71fc3c5c7cd8d2e718a83be86cf66631db00"
+    },
+    {
+      "expected_sha256": "6d067a3c78dc1053b94356ce23dadeb60685144e27387af8b27dd45320afc902",
+      "matches": true,
+      "mode": "raw",
+      "path": "SUSY_V23_FLIPPED_MISSING_PARTNER_FRONTIER.json",
+      "sha256": "6d067a3c78dc1053b94356ce23dadeb60685144e27387af8b27dd45320afc902"
+    },
+    {
+      "expected_sha256": "cf70a85c4e4eae12592d51b92b6c81730e8544108614ccee198a9d0fc1cc0118",
+      "matches": true,
+      "mode": "raw",
+      "path": "SUSY_V23_FLIPPED_MISSING_PARTNER_FRONTIER.md",
+      "sha256": "cf70a85c4e4eae12592d51b92b6c81730e8544108614ccee198a9d0fc1cc0118"
+    },
+    {
+      "expected_sha256": "17898fd619c4f60edb1bcc6b37eae26ccd95cbdcc06f57cbb63482ef456c16ef",
+      "matches": true,
+      "mode": "raw",
+      "path": "models/SO10U1V23FlippedMissingPartner/SO10U1V23FlippedMissingPartner.m",
+      "sha256": "17898fd619c4f60edb1bcc6b37eae26ccd95cbdcc06f57cbb63482ef456c16ef"
+    }
+  ],
+  "status": "V23_G1_G8_EXECUTION_COMPLETE__PRIMARY_RESEARCH_FRONTIER_LANDED__NO_COMPLETE_THEORY__ZERO_OF_EIGHT_FULL_GATES",
+  "terminal_verdict": {
+    "complete_G1_G8_solution_exists_in_this_repository": false,
+    "new_complete_physics_model_created": false,
+    "primary_research_frontier": "flipped_missing_partner_route",
+    "reason": "The campaign produced exact rejection certificates and a reproducible flipped missing-partner lead, but normalized tensors, an all-order selector, a global vacuum, stage-resolved physical thresholds and RGEs, a viable KSVZ sector, pole spectrum, proton decay, and fitted observables remain open.",
+    "reproducible_research_progress_created": true,
+    "safe_to_claim_a_complete_predictive_theory": false,
+    "stop_current_completion_claim": true
+  },
+  "upstream_core_pins": {
+    "barr_raby_route": {
+      "canonical_core_valid": true,
+      "expected_core_sha256": "ae63a2e7f15acef92b3bc170e02e281d3ac449803d5ee4945fc0dbe9b67511fc",
+      "matches": true,
+      "observed_core_sha256": "ae63a2e7f15acef92b3bc170e02e281d3ac449803d5ee4945fc0dbe9b67511fc",
+      "path": "SUSY_V23_BARR_RABY_COMPLETION_FRONTIER.json"
+    },
+    "chacko_unchanged_route": {
+      "canonical_core_valid": true,
+      "expected_core_sha256": "d0a0f9cbe0ea764327de88be009aa7892e1c41f248feba7dc942581104537a34",
+      "matches": true,
+      "observed_core_sha256": "d0a0f9cbe0ea764327de88be009aa7892e1c41f248feba7dc942581104537a34",
+      "path": "SUSY_V23_CHACKO_ROUTE_REJECTION.json"
+    },
+    "flipped_missing_partner_route": {
+      "canonical_core_valid": true,
+      "expected_core_sha256": "01f8d13d950045f3eaa6de2d950f973dbbb48ebe5711a880b09b602e42c6fd43",
+      "matches": true,
+      "observed_core_sha256": "01f8d13d950045f3eaa6de2d950f973dbbb48ebe5711a880b09b602e42c6fd43",
+      "path": "SUSY_V23_FLIPPED_MISSING_PARTNER_FRONTIER.json"
+    },
+    "v22r_degree4_eft": {
+      "canonical_core_valid": true,
+      "expected_core_sha256": "c1bc4ec70dd1cfe91b3716e485dec58dc3a80adedadcfbc47acf52363b09a994",
+      "matches": true,
+      "observed_core_sha256": "c1bc4ec70dd1cfe91b3716e485dec58dc3a80adedadcfbc47acf52363b09a994",
+      "path": "SUSY_V22R_G1_G8_EXECUTION_VERDICT.json"
+    }
+  }
+}

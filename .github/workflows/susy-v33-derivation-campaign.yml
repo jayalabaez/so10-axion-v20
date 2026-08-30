@@ -1,0 +1,46 @@
+name: SUSY V33 derivation campaign
+
+on:
+  push:
+    paths:
+      - "susy_v33_derivation_campaign.py"
+      - "test_susy_v33_derivation_campaign.py"
+      - "SUSY_V33_DERIVATION_CAMPAIGN.json"
+      - "SUSY_V33_DERIVATION_CAMPAIGN.md"
+      - "SUSY_V33_EXACT_DERIVATIONS.json"
+      - "SUSY_V33_G1_G8_GATE_LEDGER.json"
+      - "SUSY_V33_NEW_PHYSICS_CANDIDATES.json"
+      - "SUSY_V33_SARAH_RGE_ATTESTATION.json"
+      - "SUSY_V33_SARAH_SOFT_RGE_ATTESTATION.json"
+      - "models/PSZ4RZ33SUSYV33/**"
+      - "tools/validate-susy-v33-z33.wls"
+      - "tools/derive-susy-v33-ps-rges.wls"
+      - ".github/workflows/susy-v33-derivation-campaign.yml"
+  pull_request:
+    paths:
+      - "susy_v33_derivation_campaign.py"
+      - "test_susy_v33_derivation_campaign.py"
+      - "SUSY_V33_DERIVATION_CAMPAIGN.json"
+      - "SUSY_V33_DERIVATION_CAMPAIGN.md"
+      - "SUSY_V33_EXACT_DERIVATIONS.json"
+      - "SUSY_V33_G1_G8_GATE_LEDGER.json"
+      - "SUSY_V33_NEW_PHYSICS_CANDIDATES.json"
+      - "SUSY_V33_SARAH_RGE_ATTESTATION.json"
+      - "SUSY_V33_SARAH_SOFT_RGE_ATTESTATION.json"
+      - "models/PSZ4RZ33SUSYV33/**"
+      - "tools/validate-susy-v33-z33.wls"
+      - "tools/derive-susy-v33-ps-rges.wls"
+      - ".github/workflows/susy-v33-derivation-campaign.yml"
+  workflow_dispatch:
+
+jobs:
+  verify-v33:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install pytest
+      - run: python -B susy_v33_derivation_campaign.py --check
+      - run: python -m pytest -q test_susy_v33_derivation_campaign.py

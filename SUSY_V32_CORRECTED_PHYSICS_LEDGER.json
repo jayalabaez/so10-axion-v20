@@ -1,0 +1,510 @@
+{
+  "V30_local_UV_consistency_audit": {
+    "FCMA18_local_UV_interpretation_consistent": false,
+    "SUSY_breaking_contract": {
+      "V30_all_soft_terms": 0,
+      "V30_to_V31_single_N1_vacuum_derived": false,
+      "V31_gravitino_mass_GeV": 10000.0,
+      "V31_nonzero_soft_inputs": {
+        "At_GeV": -3500.0,
+        "common_first_second_squark_GeV": 5000.0,
+        "common_slepton_GeV": 2000.0,
+        "common_third_squark_GeV": 3000.0,
+        "gaugino_running_GeV": {
+          "M1": 600.0,
+          "M2": 1200.0,
+          "M3": 3500.0
+        },
+        "mA_GeV": 2000.0,
+        "mu_GeV": 200.0
+      },
+      "explicit_goldstino_or_uplift_sector_present": false
+    },
+    "conditional_G1_may_only_be_retained_by_treating_FCMA18_as_fundamental": true,
+    "discrete_gauge_covariance": {
+      "T01_affine_shifts": {
+        "Z11": "-9/11",
+        "Z4R": "-1/2"
+      },
+      "Z11_phase_exponents_for_x_x2_x3": [
+        9,
+        7,
+        5
+      ],
+      "Z4R_signs_for_x_x2_x3": [
+        -1,
+        1,
+        -1
+      ],
+      "all_primitive_E3_charged_zero_modes": [
+        0
+      ],
+      "required_repair": "derive charged insertions/zero modes or a transforming flux branch and then derive the residual subgroup",
+      "terms_transform_covariantly_with_neutral_coefficients": false,
+      "three_form_coefficients_selector_neutral": true
+    },
+    "semiclassical_instanton_control": {
+      "Re_T_star": 0.1103178000763258,
+      "action_greater_than_one": false,
+      "controlled_E3_expansion_demonstrated": false,
+      "first_omitted_order_one_x4_term": 0.0625,
+      "instanton_action_2pi_ReT": 0.6931471805599453,
+      "reason": "x=1/2 makes the instanton action ln(2)<1, so an omitted order-one x^4 term is 1/16 and the cubic cancellation is not parametrically stable",
+      "x_star": 0.5
+    },
+    "three_form_scope": {
+      "boundary": "three-form duality promotes specific pre-existing couplings; a ten-dimensional p-form/cycle and membrane charge are still needed for every independent flux coefficient",
+      "declared_role": "topological, selector-neutral, and without independent propagating fermions",
+      "declared_three_form_count": 172,
+      "duality_generates_arbitrary_operator_projector": false,
+      "duality_replaces_only_auxiliary_components_of_chiral_multiplets": true
+    }
+  },
+  "corrected_gauge_running": {
+    "Delta_b_is_universal": true,
+    "V31_alpha_G": 0.039265871694936706,
+    "V31_alpha_inverse_MG": [
+      25.467408638452532,
+      25.467408638452536,
+      25.467408638452536
+    ],
+    "V31_threshold_omission_detected": true,
+    "analytic_vs_RK4_max_residual": 6.039613253960852e-13,
+    "beta_MSSM": [
+      6.6,
+      1.0,
+      -3.0
+    ],
+    "beta_MSSM_plus_vectorlike_family": [
+      10.6,
+      5.0,
+      1.0
+    ],
+    "beta_PS_including_vectorlike_family": [
+      1.0,
+      5.0,
+      9.0
+    ],
+    "complete_vectorlike_family_Delta_b": [
+      4.0,
+      4.0,
+      4.0
+    ],
+    "corrected_alpha_G": 0.05147387782532754,
+    "corrected_alpha_inverse_MG": [
+      19.427329788391297,
+      19.4273297883913,
+      19.427329788391305
+    ],
+    "corrected_unification_spread_inverse_alpha": 7.105427357601002e-15,
+    "gauge_only_two_loop": {
+      "B_MSSM": [
+        [
+          7.96,
+          5.4,
+          17.6
+        ],
+        [
+          1.8,
+          25.0,
+          24.0
+        ],
+        [
+          2.2,
+          9.0,
+          14.0
+        ]
+      ],
+      "B_MSSM_plus_vectorlike": [
+        [
+          13.026666666666667,
+          7.8,
+          29.333333333333332
+        ],
+        [
+          2.6,
+          53.0,
+          40.0
+        ],
+        [
+          3.6666666666666665,
+          15.0,
+          59.333333333333336
+        ]
+      ],
+      "B_PS": [
+        [
+          108.0,
+          15.0,
+          21.0
+        ],
+        [
+          75.0,
+          53.0,
+          3.0
+        ],
+        [
+          105.0,
+          3.0,
+          81.0
+        ]
+      ],
+      "at_V31_one_loop_scales": {
+        "alpha_inverse_MG": [
+          18.54074255949843,
+          18.19177945545444,
+          18.705157127881897
+        ],
+        "residuals": [
+          0.3489631040439889,
+          -0.16441456838346724
+        ],
+        "unification_spread_inverse_alpha": 0.5133776724274561
+      },
+      "beta_MSSM": [
+        6.6,
+        1.0,
+        -3.0
+      ],
+      "beta_MSSM_plus_vectorlike": [
+        10.6,
+        5.0,
+        1.0
+      ],
+      "beta_PS": [
+        1.0,
+        5.0,
+        9.0
+      ],
+      "boundary": "this is stronger than the V31 one-loop replay but still omits Yukawa, soft, scheme, and pole-threshold effects",
+      "precision_G6_closed": false,
+      "root": {
+        "MG_GeV": 1.4493924066642628e+16,
+        "MPS_GeV": 1.4062390182142554e+16,
+        "alpha_G": 0.0534118315932653,
+        "alpha_inverse_MG": [
+          18.72244351429613,
+          18.72244351429609,
+          18.722443514295776
+        ],
+        "converged": true,
+        "iterations": 4,
+        "log_MG_over_MPS": 0.0302256610579738,
+        "log_MPS_over_MSUSY": 29.581377806032886,
+        "residuals": [
+          4.263256414560601e-14,
+          3.552713678800501e-13
+        ],
+        "unification_spread_inverse_alpha": 3.552713678800501e-13
+      },
+      "scope": "V24 N=1 DRbar gauge-only two-loop matrices; Yukawas omitted"
+    },
+    "independent_RK4_alpha_inverse_MG": [
+      19.427329788391095,
+      19.42732978839129,
+      19.4273297883907
+    ],
+    "independent_replay_pass": true,
+    "meeting_scales_unchanged_at_one_loop": true,
+    "ordered_scales_GeV": {
+      "MG": 2.5864720161823796e+16,
+      "MPS": 6598426501109488.0,
+      "MSUSY": 2000.0,
+      "fPQ": 500000000000.0
+    },
+    "precision_G6_closed": false,
+    "precision_boundary": "the correction is exact at the declared piecewise one-loop level; physical pole thresholds, scheme conversion, and coupled two-loop gauge-Yukawa-soft running remain absent",
+    "reason_meeting_scales_unchanged": "a universal Delta b cancels from all inverse-coupling differences",
+    "relative_alpha_G_increase": 0.3109062807833969,
+    "scheme": "V31 one-loop chain with mandatory V24 PQ-family threshold inserted",
+    "universal_inverse_alpha_shift": 6.040078850061236,
+    "universal_shift_identity_max_residual": 3.552713678800501e-15
+  },
+  "cosmology_flavour_audit": {
+    "axion": {
+      "V31_NDW_matches_inherited_source": false,
+      "computed_misalignment_angle_rad": 0.9574271077563381,
+      "coupled_axino_saxion_neutralino_Boltzmann_solution_present": false,
+      "direct_detection_likelihood_present": false,
+      "inherited_KSVZ_QCD_harmonic_and_NDW": 4,
+      "misalignment_angle_solved_from_target_relic": true,
+      "normalization_branches": {
+        "preserve_V31_claimed_physical_fa": {
+          "corrected_alpha_G": 0.049237138997926075,
+          "physical_fa_GeV": 500000000000.0,
+          "required_PQ_VEV_and_vectorlike_mass_GeV": 2000000000000.0,
+          "universal_inverse_alpha_shift": 5.15753644945063
+        },
+        "preserve_declared_KSVZ_pole_and_PQ_VEV": {
+          "PQ_VEV_and_vectorlike_mass_GeV": 500000000000.0,
+          "axion_frequency_GHz": 11.00862168504,
+          "axion_mass_micro_eV": 45.528,
+          "corrected_alpha_G": 0.05147387782532754,
+          "physical_fa_GeV": 125000000000.0
+        }
+      },
+      "physical_domain_wall_number_is_input": 1,
+      "target_axion_relic_is_input": 0.11,
+      "target_neutralino_relic_is_input": 0.01
+    },
+    "baryogenesis": {
+      "Casas_Ibarra_R_matrix": "identity_3",
+      "TR_over_M1": 0.001,
+      "YdaggerY_max_offdiagonal": 2.2061915819741345e-19,
+      "lightest_right_neutrino_mass_GeV": 10000000000.0,
+      "lightest_right_neutrino_thermally_accessible": false,
+      "primary_source": "https://arxiv.org/abs/hep-ph/0202239",
+      "reheat_temperature_GeV": 10000000.0,
+      "standard_hierarchical_decay_CP_asymmetry_nonzero": false,
+      "standard_thermal_leptogenesis_closed": false
+    },
+    "established_G5_or_G8_closed": false,
+    "flavour": {
+      "CKM_role": "PDG-scale fitted boundary input",
+      "Casas_Ibarra_R_matrix": "identity_3",
+      "PMNS_role": "NuFIT 6.1 fitted boundary input",
+      "charged_fermion_global_fit_present": false,
+      "covariance_likelihood_present": false,
+      "documented_out_of_sample_validation_present": false
+    }
+  },
+  "finite_selector_all_order_audit": {
+    "P_sample_witnesses": [
+      {
+        "Z11_charge": 0,
+        "Z4R_charge": 2,
+        "allowed_superpotential_charge": true,
+        "k": 0,
+        "operator": "P^11",
+        "power": 11
+      },
+      {
+        "Z11_charge": 0,
+        "Z4R_charge": 2,
+        "allowed_superpotential_charge": true,
+        "k": 1,
+        "operator": "P^33",
+        "power": 33
+      },
+      {
+        "Z11_charge": 0,
+        "Z4R_charge": 2,
+        "allowed_superpotential_charge": true,
+        "k": 2,
+        "operator": "P^55",
+        "power": 55
+      },
+      {
+        "Z11_charge": 0,
+        "Z4R_charge": 2,
+        "allowed_superpotential_charge": true,
+        "k": 3,
+        "operator": "P^77",
+        "power": 77
+      }
+    ],
+    "X_sample_witnesses": [
+      {
+        "PQ_charge": 0,
+        "Z11_charge": 0,
+        "Z4R_charge": 2,
+        "allowed_superpotential_charge": true,
+        "m": 0,
+        "operator": "X^1",
+        "power": 1
+      },
+      {
+        "PQ_charge": 0,
+        "Z11_charge": 0,
+        "Z4R_charge": 2,
+        "allowed_superpotential_charge": true,
+        "m": 1,
+        "operator": "X^3",
+        "power": 3
+      },
+      {
+        "PQ_charge": 0,
+        "Z11_charge": 0,
+        "Z4R_charge": 2,
+        "allowed_superpotential_charge": true,
+        "m": 2,
+        "operator": "X^5",
+        "power": 5
+      },
+      {
+        "PQ_charge": 0,
+        "Z11_charge": 0,
+        "Z4R_charge": 2,
+        "allowed_superpotential_charge": true,
+        "m": 3,
+        "operator": "X^7",
+        "power": 7
+      }
+    ],
+    "all_samples_allowed": true,
+    "proof": "Every odd power of X has Z4R charge 2 and no other charge.  For n=11+22k, P^n also has Z4R charge 2 and Z11 charge 0.  The finite selector therefore permits two explicit infinite superpotential towers; FCMA-18 is an extra truncation axiom, not a consequence of Z4R x Z11.",
+    "selected_charges": {
+      "P": {
+        "PQ": 1,
+        "Z11": 1,
+        "Z4R": 2
+      },
+      "X": {
+        "PQ": 0,
+        "Z11": 0,
+        "Z4R": 2
+      }
+    },
+    "towers": [
+      "X^(2*m+1), m>=0",
+      "P^(11+22*k), k>=0"
+    ]
+  },
+  "primary_references": [
+    {
+      "audit_use": "field-content and PQ/domain-wall normalization provenance",
+      "topic": "original Pati--Salam axion/KSVZ scaffold",
+      "url": "https://arxiv.org/abs/2009.04582"
+    },
+    {
+      "audit_use": "PS gauge bosons do not mediate proton decay at renormalizable level; dimension-five operators require their own matching",
+      "topic": "Pati--Salam baryon-number violation",
+      "url": "https://arxiv.org/abs/2211.02054"
+    },
+    {
+      "audit_use": "three-form duality promotes specific existing superpotential couplings, not an arbitrary benchmark ledger",
+      "topic": "three-form supergravity duality",
+      "url": "https://arxiv.org/abs/1706.09422"
+    },
+    {
+      "audit_use": "nilpotent constrained fields are an infrared SUSY-breaking formalism",
+      "topic": "constrained superfields",
+      "url": "https://arxiv.org/abs/0907.2441"
+    },
+    {
+      "audit_use": "a real compactification can fix moduli, but it is not a derivation of the chiral V24 Pati--Salam source or FCMA-18",
+      "topic": "explicit moduli-stabilization precedent",
+      "url": "https://arxiv.org/abs/hep-th/0503124"
+    },
+    {
+      "audit_use": "charged instanton zero modes create a concrete chirality/moduli-stabilization constraint that V30 does not calculate",
+      "topic": "fluxed instantons with chiral visible sectors",
+      "url": "https://arxiv.org/abs/1105.3193"
+    },
+    {
+      "audit_use": "relic closure requires axino/saxion production, decay, freeze-out, and re-annihilation calculations",
+      "topic": "mixed axion/neutralino cosmology",
+      "url": "https://arxiv.org/abs/1309.5365"
+    },
+    {
+      "audit_use": "the R=I, diagonal YdaggerY benchmark has no standard decay CP asymmetry, and its reheating temperature is below the lightest right-neutrino mass",
+      "topic": "thermal leptogenesis bound",
+      "url": "https://arxiv.org/abs/hep-ph/0202239"
+    },
+    {
+      "audit_use": "a depleted higgsino abundance does not by itself close direct detection",
+      "topic": "current natural-SUSY axion/axino constraints",
+      "url": "https://arxiv.org/abs/2604.04687"
+    },
+    {
+      "audit_use": "V31 supplies no spin-independent cross section or likelihood",
+      "topic": "LZ WIMP direct detection",
+      "url": "https://arxiv.org/abs/2410.17036"
+    }
+  ],
+  "proton_mechanism_audit": {
+    "PS_gauge_vectors_mediate_proton_decay_at_renormalizable_level": false,
+    "V31_claimed_channel": "p_to_e_plus_pi0_dimension6_vector_exchange",
+    "V31_has_declared_SO10_XY_vector_source": false,
+    "V31_reported_lifetime_retired": true,
+    "V31_vector_exchange_mechanism_supported": false,
+    "counterfactual_conservative_low_years": 9.008574804880722e+35,
+    "counterfactual_must_not_be_compared_as_a_prediction": true,
+    "counterfactual_only_corrected_vector_scaling_years": 2.7025724414642166e+36,
+    "declared_gauge_group": "SU(4)C x SU(2)L x SU(2)R",
+    "primary_source": "https://arxiv.org/abs/2211.02054",
+    "required_replacement": "derive every allowed dimension-five and higher baryon-violating operator from the V24 source, rotate to the mass basis, dress the SUSY operators, run them to hadronic scale, and propagate lattice/spectrum uncertainties",
+    "valid_partial_lifetime_years": null
+  },
+  "schema": "susy-v32-corrected-physics-ledger-v1",
+  "spectrum_vacuum_EWSB_audit": {
+    "CP_even_Higgs_diagnostic": {
+      "V31_inserted_mh_GeV": 125.25,
+      "Xt_GeV": -3520.0,
+      "Xt_over_stop_scale": -1.185245652274594,
+      "boundary": "this leading formula is a diagnostic, not a precision pole prediction; the running-top scheme and two-loop corrections must be calculated",
+      "diagnostic_running_top_GeV": 150.0,
+      "full_pole_calculation_present": false,
+      "leading_one_loop_mh_GeV": 130.9238388740939,
+      "leading_one_loop_minus_inserted_GeV": 5.673838874093889,
+      "stop_geometric_scale_GeV": 2969.8484809834995,
+      "tree_charged_Higgs_GeV": 2001.614150706534,
+      "tree_mH_GeV": 2000.081674815185,
+      "tree_mh_GeV": 89.3782549742667
+    },
+    "dependency_mutation": {
+      "G2_still_conditionally_passes": true,
+      "G4_still_conditionally_passes": true,
+      "conclusion": "V31's G2/G4 booleans do not depend on several declared spectrum inputs; their pass state is not a derived pole-spectrum test",
+      "mutated_values": {
+        "At_GeV": 1000000000000.0,
+        "common_third_squark_GeV": -1000000000000.0,
+        "gaugino_running_GeV": {
+          "M1": -1000000000000.0,
+          "M2": -2000000000000.0,
+          "M3": -3000000000000.0
+        },
+        "mh_GeV": 1.0
+      },
+      "pole_rows_unchanged": true
+    },
+    "established_G2_G3_G4_closed": false,
+    "pole_ledger": {
+      "PS_vector_mass_prediction": {
+        "all_nine_vectors_degenerate_as_listed_by_V31": false,
+        "mass_factors_times_PS_VEV": [
+          0.6994660686006006,
+          0.6769218125437325,
+          1.0918343793739334
+        ],
+        "multiplicities": [
+          6,
+          2,
+          1
+        ]
+      },
+      "V31_G2_evidence_text_claimed_sector_count": 22,
+      "actual_row_count": 30,
+      "correlated_threshold_covariance_present": false,
+      "declared_moduli_chiral_multiplets": 55,
+      "declared_sector_count": 30,
+      "heavy_vector_supermultiplet_partner_inventory_present": false,
+      "minimum_uneaten_modulini_if_one_goldstino_is_removed": 54,
+      "mixing_matrices_present": false,
+      "modulini_rows_present": 0,
+      "pole_mass_matrices_present": false,
+      "self_energies_present": false
+    },
+    "stop_input_dependency_diagnostic": {
+      "V31_inserted_stop_masses_GeV": [
+        2450.0,
+        3600.0
+      ],
+      "common_Q3_U3_soft_input_GeV": 3000.0,
+      "inserted_stops_derived_from_declared_common_soft_input": false,
+      "top_mass_diagnostic_GeV": 172.76,
+      "tree_stop_masses_from_declared_common_soft_input_GeV": [
+        2901.6706714247416,
+        3104.178488601382
+      ]
+    },
+    "vacuum_selector_audit": {
+      "Hessian_eigenvalues_present": false,
+      "competing_branch_enumeration_present": false,
+      "explicit_Hessian_matrix_present": false,
+      "explicit_quotient_coordinate_values_present": false,
+      "local_polynomial_UV_derivation_known": false,
+      "unique_global_orbit_is_asserted_boolean": true
+    }
+  }
+}

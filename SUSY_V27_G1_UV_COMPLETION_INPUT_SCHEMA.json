@@ -1,0 +1,197 @@
+{
+  "$id": "https://local.invalid/susy-v27-g1-uv-completion-input-schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Structural submission contract; passing this schema is necessary but not sufficient for physics acceptance.",
+  "properties": {
+    "all_acceptance_checks_pass": {
+      "const": true
+    },
+    "candidate_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "evidence_manifest": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "claim": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "path_or_url": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "sha256_or_version": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "path_or_url",
+          "sha256_or_version",
+          "claim"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "executable_matching": {
+      "additionalProperties": false,
+      "properties": {
+        "live_engine_pass": {
+          "const": true
+        },
+        "model_source_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "uv_to_component_map_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "model_source_sha256",
+        "uv_to_component_map_sha256",
+        "live_engine_pass"
+      ],
+      "type": "object"
+    },
+    "hidden_and_parity": {
+      "additionalProperties": false,
+      "properties": {
+        "residual_Z2_preserved": {
+          "const": true
+        },
+        "spectrum_threshold_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "vev_branch_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "spectrum_threshold_sha256",
+        "vev_branch_sha256",
+        "residual_Z2_preserved"
+      ],
+      "type": "object"
+    },
+    "microscopic_source": {
+      "additionalProperties": false,
+      "properties": {
+        "consistency_checks_pass": {
+          "const": true
+        },
+        "construction": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "spectrum_manifest_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "construction",
+        "spectrum_manifest_sha256",
+        "consistency_checks_pass"
+      ],
+      "type": "object"
+    },
+    "moduli_and_vacuum": {
+      "additionalProperties": false,
+      "properties": {
+        "all_moduli_stabilized": {
+          "const": true
+        },
+        "branch_quotient_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "field_manifest_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "hessian_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "field_manifest_sha256",
+        "branch_quotient_sha256",
+        "hessian_sha256",
+        "all_moduli_stabilized"
+      ],
+      "type": "object"
+    },
+    "operator_contract": {
+      "additionalProperties": false,
+      "properties": {
+        "all_orders_closed": {
+          "const": true
+        },
+        "kahler_gauge_soft_matching_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "normalized_basis_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "wilson_matching_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "normalized_basis_sha256",
+        "wilson_matching_sha256",
+        "kahler_gauge_soft_matching_sha256",
+        "all_orders_closed"
+      ],
+      "type": "object"
+    },
+    "selector_and_anomalies": {
+      "additionalProperties": false,
+      "properties": {
+        "all_anomalies_canceled": {
+          "const": true
+        },
+        "generator_action_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "level_matrix_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "generator_action_sha256",
+        "level_matrix_sha256",
+        "all_anomalies_canceled"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "candidate_id",
+    "microscopic_source",
+    "selector_and_anomalies",
+    "operator_contract",
+    "moduli_and_vacuum",
+    "hidden_and_parity",
+    "executable_matching",
+    "evidence_manifest",
+    "all_acceptance_checks_pass"
+  ],
+  "title": "SUSY V27 full-G1 UV completion candidate",
+  "type": "object"
+}

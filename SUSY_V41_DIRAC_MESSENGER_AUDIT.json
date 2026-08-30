@@ -1,0 +1,195 @@
+{
+  "anomaly_increment": {
+    "SU2R_doublet_increment": 8,
+    "Witten_parity_preserved": true,
+    "all_incremental_local_anomalies_vanish": true,
+    "delta_U1F_PS_squared": {
+      "SU2L": 0,
+      "SU2R": 0,
+      "SU4": 0
+    },
+    "delta_U1F_cubic": 0,
+    "delta_U1F_gravitational": 0
+  },
+  "complete_theory_exists": false,
+  "core_sha256": "944dfcd6dd19358f7ad06eace5d21f25f5c566f3497be950a870238ba844031b",
+  "field_table": {
+    "F": {
+      "dim": 8,
+      "pq": 0,
+      "ps": {
+        "SU2R": 4,
+        "SU4": 2
+      },
+      "r4": 1,
+      "rep": "(4,1,2)",
+      "u1f": 3,
+      "z5610": 0
+    },
+    "Fc": {
+      "dim": 8,
+      "pq": 0,
+      "ps": {
+        "SU2R": 4,
+        "SU4": 2
+      },
+      "r4": 1,
+      "rep": "(bar4,1,2)",
+      "u1f": -3,
+      "z5610": 0
+    },
+    "H": {
+      "dim": 4,
+      "pq": 0,
+      "ps": {
+        "SU2L": 2,
+        "SU2R": 2
+      },
+      "r4": 0,
+      "rep": "(1,2,2)",
+      "u1f": 0,
+      "z5610": 0
+    },
+    "NDirac": {
+      "dim": 3,
+      "pq": 0,
+      "ps": {},
+      "r4": 1,
+      "rep": "(1,1,1)",
+      "u1f": -3,
+      "z5610": 0
+    },
+    "Q": {
+      "dim": 24,
+      "pq": 0,
+      "ps": {
+        "SU2L": 12,
+        "SU4": 6
+      },
+      "r4": 1,
+      "rep": "(4,2,1)",
+      "u1f": 3,
+      "z5610": 0
+    },
+    "Sc": {
+      "dim": 8,
+      "pq": 0,
+      "ps": {
+        "SU2R": 4,
+        "SU4": 2
+      },
+      "r4": 0,
+      "rep": "(bar4,1,2)",
+      "u1f": 0,
+      "z5610": 0
+    }
+  },
+  "gate_boundary": {
+    "G8_closed": false,
+    "landed": "a renormalizable Pati-Salam and U1F/Z9-compatible UV messenger generates the stated Dirac-neutrino operator",
+    "still_required": [
+      "three-family messenger and coupling texture",
+      "Pati-Salam/electroweak threshold matching and a charged-fermion/PMNS fit",
+      "messenger scalar potential, zero-VEV proof, and physical pole spectrum",
+      "full product-symmetry UV completion and flavour likelihood"
+    ]
+  },
+  "integrity_checks": {
+    "G8_remains_fail_closed": true,
+    "Witten_parity_preserved": true,
+    "all_UV_terms_neutral": true,
+    "effective_operator_matches_required_charges": true,
+    "messenger_anomaly_increment_vanishes": true,
+    "tree_level_matching_explicit": true
+  },
+  "schema": "susy-v41-dirac-messenger-audit-v1",
+  "source_manifest": [
+    {
+      "exists": true,
+      "path": "susy_v41_dirac_messenger_audit.py",
+      "sha256": "7ca8d90347fdf04916cacc69fd29a9c90fc2b50bd221ae2ffe8ebf4f5f7061f9"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v41_dirac_messenger_audit.py",
+      "sha256": "83b0be5c9a078ca4a359dcc327a21a6751c9e3d8685e3703ca073ddb2308c2ca"
+    }
+  ],
+  "status": "V41_DIRAC_NEUTRINO_MESSENGER_MATCHING_CERTIFIED__Z9_AND_LOCAL_ANOMALIES_PRESERVED__FLAVOUR_AND_VACUUM_OPEN",
+  "term_audit": {
+    "Pati_Salam_contractions": [
+      "Q(4,2,1) H(1,2,2) Fc(bar4,1,2) contracts with delta_SU4 and epsilon_SU2L/R",
+      "F(4,1,2) Sc(bar4,1,2) NDirac contracts with delta_SU4 and epsilon_SU2R",
+      "F(4,1,2) Fc(bar4,1,2) is a vectorlike Pati-Salam mass"
+    ],
+    "all_U1F_neutral": true,
+    "all_Z4R_charge_two": true,
+    "all_Z5610_and_PQ_neutral": true,
+    "all_Z9_neutral": true,
+    "effective_operator": {
+      "U1F": 0,
+      "Z4R": 2,
+      "Z9": 0,
+      "fields": [
+        "Q",
+        "H",
+        "Sc",
+        "NDirac"
+      ]
+    },
+    "renormalizable_terms": [
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "Q",
+          "H",
+          "Fc"
+        ],
+        "term": "Q_H_Fc"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "F",
+          "Sc",
+          "NDirac"
+        ],
+        "term": "F_Sc_NDirac"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "F",
+          "Fc"
+        ],
+        "term": "M_F_Fc"
+      }
+    ]
+  },
+  "tree_level_matching": {
+    "UV_superpotential": "M_F F Fc + y1 Q H Fc + y2 F Sc NDirac",
+    "heavy_equations": [
+      "dW/dF = M_F Fc + y2 Sc NDirac = 0",
+      "dW/dFc = M_F F + y1 Q H = 0"
+    ],
+    "matched_superpotential": "W_eff = -(y1 y2/M_F) Q H Sc NDirac",
+    "matching_is_tree_level": true,
+    "selector_preservation": "The messenger mass is U(1)_F invariant before Higgsing, so integrating out F,Fc does not require a charged VEV and cannot break the Z9 remnant.",
+    "solutions": [
+      "Fc = -(y2/M_F) Sc NDirac",
+      "F = -(y1/M_F) Q H"
+    ]
+  }
+}

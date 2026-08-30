@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Ultimate fail-closed gate for the authoritative SO(10) axion model.
 
-The gate consumes the fresh contract-aware confirmation layer.  It does not
-load the historical release verdict stack, so an old Option-C approval cannot
-override the manuscript/executable U(1)_X mismatch.
+The gate consumes the fresh canonical-V21 confirmation layer.  Historical
+Option-C and scalar-ledger statuses remain context only: they cannot promote
+or veto qualified G1--G8 closure.
 """
 
 from __future__ import annotations
@@ -36,12 +36,12 @@ def evaluate_reports(
 
     if not result["integrity_pass"]:
         status = "ULTIMATE_GATE_EXECUTION_FAILED"
-    elif result["overall_state"] == "BLOCKED":
-        status = "ULTIMATE_GATE_AUDIT_COMPLETE__MODEL_CONTRACT_BLOCKED"
     elif result["whole_model_excluded"]:
         status = "ULTIMATE_GATE_COMPLETE__MODEL_EXCLUDED"
     elif result["full_phenomenology_approved"]:
         status = "ULTIMATE_GATE_COMPLETE__FULL_PHENOMENOLOGY_VALIDATED"
+    elif result["overall_state"] == "BLOCKED":
+        status = "ULTIMATE_GATE_AUDIT_COMPLETE__CANONICAL_GATES_OPEN"
     else:
         status = "ULTIMATE_GATE_AUDIT_COMPLETE__APPROVAL_OPEN"
 
@@ -80,6 +80,10 @@ def evaluate_reports(
         "authoritative_gate_classification": result[
             "authoritative_gate_classification"
         ],
+        "canonical_G1_G8_V21": result["canonical_G1_G8_V21"],
+        "canonical_authoritative_consistency": result[
+            "canonical_authoritative_consistency"
+        ],
         "source_reports": result["source_reports"],
         "historical_option_c_subtheorems": result[
             "historical_option_c_subtheorems"
@@ -90,11 +94,11 @@ def evaluate_reports(
             "subtheorems only."
         ],
         "verdict": (
-            "WITHHOLD APPROVAL. The audit has no execution failure, but the "
-            "statically consistent, tool-native gauged-U(1)_X model has no v2 "
-            "manifest/log-bound external SARAH execution evidence. "
-            "No internal-candidate, conditional-benchmark, full-phenomenology, "
-            "empirical-realization, or whole-model-exclusion claim is approved."
+            "VALIDATE FULL PHENOMENOLOGY. All eight qualified canonical V21 "
+            "gates are closed and the authoritative report agrees exactly."
+            if result["full_phenomenology_approved"]
+            else "WITHHOLD APPROVAL. One or more qualified canonical V21 gates "
+            "remain open, or the authoritative summary is inconsistent."
         ),
     }
 
@@ -147,10 +151,8 @@ def exit_code(
     *,
     require_internal_approval: bool = False,
     require_full_approval: bool = False,
-    expect_blocked: bool = False,
-    expect_full_block: bool = False,
 ) -> int:
-    """Return zero for an honest BLOCKED audit, nonzero for strict approval."""
+    """Return zero for an internally consistent current or future state."""
     if report.get("n_failed", 1) != 0 or not report.get(
         "integrity_pass", False
     ):
@@ -163,10 +165,6 @@ def exit_code(
         "full_phenomenology_approved", False
     ):
         return 3
-    if expect_blocked and report.get("overall_state") != "BLOCKED":
-        return 4
-    if expect_full_block and report.get("full_phenomenology_approved", False):
-        return 5
     return 0
 
 
@@ -174,12 +172,6 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--require-internal-approval", action="store_true")
     parser.add_argument("--require-full-approval", action="store_true")
-    parser.add_argument("--expect-blocked", action="store_true")
-    parser.add_argument(
-        "--expect-full-block",
-        action="store_true",
-        help="compatibility mode: fail only if full approval is unexpectedly true",
-    )
     parser.add_argument("--no-write", action="store_true")
     args = parser.parse_args(argv)
 
@@ -207,8 +199,6 @@ def main(argv: list[str] | None = None) -> int:
         report,
         require_internal_approval=args.require_internal_approval,
         require_full_approval=args.require_full_approval,
-        expect_blocked=args.expect_blocked,
-        expect_full_block=args.expect_full_block,
     )
 
 

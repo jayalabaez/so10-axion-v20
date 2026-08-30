@@ -1,0 +1,1734 @@
+{
+  "acceptance_criteria": [
+    {
+      "id": "A1",
+      "requirement": "full pole and running spectrum with every superpartner and exotic threshold",
+      "status": "OPEN"
+    },
+    {
+      "id": "A2",
+      "requirement": "tan(beta) and all relevant Yukawa boundary conditions",
+      "status": "OPEN"
+    },
+    {
+      "id": "A3",
+      "requirement": "two-loop running plus complete one-loop decoupling and scheme matching",
+      "status": "OPEN"
+    },
+    {
+      "id": "A4",
+      "requirement": "Mc, M*, the KK tower and brane-kinetic threshold corrections",
+      "status": "OPEN"
+    },
+    {
+      "id": "A5",
+      "requirement": "physical threshold ordering, perturbativity and vacuum stability",
+      "status": "OPEN"
+    },
+    {
+      "id": "A6",
+      "requirement": "three-coupling residual smaller than a quantified truncation uncertainty",
+      "status": "OPEN"
+    },
+    {
+      "id": "A7",
+      "requirement": "explicit hidden/Kahler/soft sector producing nonzero mu_Q and acceptable B terms",
+      "status": "OPEN"
+    },
+    {
+      "id": "A8",
+      "requirement": "for T66, local Spin(11)/Spin(10) embedding, anomaly/GS closure and baryon safety",
+      "status": "OPEN"
+    }
+  ],
+  "artifact_integrity_and_retraction": {
+    "V65_action_upgrade": "RETRACTED",
+    "V65_artifact_integrity": "PRESERVED",
+    "V65_files_modified": false,
+    "current_Spin11_action_status": "REJECTED"
+  },
+  "comparison_conclusion": {
+    "Spin11": "Current action rejected. H66 has a high-scale orphan-only crossing; T66 restores universal one-loop Delta b but adds embedding, anomaly and baryon obligations.",
+    "frontier": "Accept a branch only after A1-A8 are met in one action.",
+    "gauged_U1R": "Route C completes the integrated seed and 270-singlet parity problem, then exactly rejects the existing bulk GS direction at three fixed points.",
+    "heterotic": "The live calculation is a decisive advance: the 92-state charge ambiguity is conditionally resolved, and the Kappl candidate fails corrected visible/hidden universality throughout the tested Abelian basis. Full-CFT class preservation and GS completion are still open, so this is not a universal heterotic no-go."
+  },
+  "consolidated_theory_card": {
+    "acceptance_criteria": [
+      {
+        "id": "A1",
+        "requirement": "full pole and running spectrum with every superpartner and exotic threshold",
+        "status": "OPEN"
+      },
+      {
+        "id": "A2",
+        "requirement": "tan(beta) and all relevant Yukawa boundary conditions",
+        "status": "OPEN"
+      },
+      {
+        "id": "A3",
+        "requirement": "two-loop running plus complete one-loop decoupling and scheme matching",
+        "status": "OPEN"
+      },
+      {
+        "id": "A4",
+        "requirement": "Mc, M*, the KK tower and brane-kinetic threshold corrections",
+        "status": "OPEN"
+      },
+      {
+        "id": "A5",
+        "requirement": "physical threshold ordering, perturbativity and vacuum stability",
+        "status": "OPEN"
+      },
+      {
+        "id": "A6",
+        "requirement": "three-coupling residual smaller than a quantified truncation uncertainty",
+        "status": "OPEN"
+      },
+      {
+        "id": "A7",
+        "requirement": "explicit hidden/Kahler/soft sector producing nonzero mu_Q and acceptable B terms",
+        "status": "OPEN"
+      },
+      {
+        "id": "A8",
+        "requirement": "for T66, local Spin(11)/Spin(10) embedding, anomaly/GS closure and baryon safety",
+        "status": "OPEN"
+      }
+    ],
+    "candidate_extensions": [
+      {
+        "accepted": false,
+        "id": "H66",
+        "same_action_complete": false,
+        "status": "CANDIDATE_CONDITIONAL_EXTENSION"
+      },
+      {
+        "accepted": false,
+        "id": "T66",
+        "same_action_complete": false,
+        "status": "CANDIDATE_CONDITIONAL_EXTENSION"
+      }
+    ],
+    "current_bound_action_status": "REJECTED",
+    "honesty_clause": "H66 and T66 are candidates only, not an accepted or complete theory.",
+    "name": "V66 fail-closed 5D SUSY Spin(11) frontier card",
+    "open_obligations": [
+      "explicit hidden/Kahler/soft sector and overlap-normalized spectrum",
+      "pole thresholds, decays, relic history and collider constraints",
+      "precision matching with Yukawa, soft, KK and brane thresholds",
+      "T66 Spin(11)/Spin(10) embedding and localized anomaly/GS closure",
+      "T66 baryon safety including Uc_X dc dc and Ec_X L L",
+      "vacuum, Dai-Freed, flavor, proton lifetime and UV regulator"
+    ],
+    "preserved": [
+      "V65 files remain canonically valid historical artifacts",
+      "V64 normalizable Q-like null mode stands",
+      "no Wess-Zumino term is forced",
+      "GM is allowed but not constructed",
+      "Delta b uses conventional (b1_GUT,b2,b3) order"
+    ],
+    "retracted": [
+      "nonzero GM orphan mass in the bound action",
+      "fast orphan decay after overlap suppression",
+      "V65 global baryon-safety inference",
+      "conditionally viable current action"
+    ]
+  },
+  "core_sha256": "499382834b9b63a23e10dbc16106dfb1db0f2bfeae17163862afd4f1467e9fa4",
+  "cross_route_composition_rule": {
+    "aggregated_G1_closure": false,
+    "cross_route_splicing_allowed": false,
+    "logical_rule": "G1 requires one versioned action; A60, B66 and C cannot be spliced, and H66/T66 are alternatives."
+  },
+  "date": "2026-08-30",
+  "gate_ledger": [
+    {
+      "V66_master_closed": false,
+      "cross_route_aggregation_used": false,
+      "decision": "OPEN: current Spin(11) action REJECTED; H66 and T66 are incomplete alternative extensions.",
+      "gate": "G1",
+      "prior_master_semantics_preserved": true,
+      "status": "OPEN"
+    },
+    {
+      "V66_master_closed": false,
+      "cross_route_aggregation_used": false,
+      "decision": "OPEN: no complete coefficient-level action, flavor/KK determinant or soft spectrum.",
+      "gate": "G2",
+      "prior_master_semantics_preserved": true,
+      "status": "OPEN"
+    },
+    {
+      "V66_master_closed": false,
+      "cross_route_aggregation_used": false,
+      "decision": "OPEN: no compactification, hidden-sector vacuum, saxion stabilization or full Hessian.",
+      "gate": "G3",
+      "prior_master_semantics_preserved": true,
+      "status": "OPEN"
+    },
+    {
+      "V66_master_closed": false,
+      "cross_route_aggregation_used": false,
+      "decision": "OPEN WITH REJECTION: the V64 post-rank normalizable colored chiral pair survives; GM is unconstructed.",
+      "gate": "G4",
+      "prior_master_semantics_preserved": true,
+      "status": "OPEN"
+    },
+    {
+      "V66_master_closed": false,
+      "cross_route_aggregation_used": false,
+      "decision": "OPEN: R-parity arithmetic survives, but colored-LSP ordering, decays, relics and collider limits are absent.",
+      "gate": "G5",
+      "prior_master_semantics_preserved": true,
+      "status": "OPEN"
+    },
+    {
+      "V66_master_closed": false,
+      "cross_route_aggregation_used": false,
+      "decision": "OPEN: inflation, reheating, defects and moduli history remain absent; crossing is not cosmology.",
+      "gate": "G6",
+      "prior_master_semantics_preserved": true,
+      "status": "OPEN"
+    },
+    {
+      "V66_master_closed": false,
+      "cross_route_aggregation_used": false,
+      "decision": "OPEN: no proton lifetime; T66 adds Uc_X dc dc and Ec_X L L baryon-danger channels.",
+      "gate": "G7",
+      "prior_master_semantics_preserved": true,
+      "status": "OPEN"
+    },
+    {
+      "V66_master_closed": false,
+      "cross_route_aggregation_used": false,
+      "decision": "OPEN: no UV regulator, Dai-Freed completion or predictivity score.",
+      "gate": "G8",
+      "prior_master_semantics_preserved": true,
+      "status": "OPEN"
+    }
+  ],
+  "input_core_hashes": {
+    "A60": "096537e4701bea02c8d6a3563adfd24b4247c90a8258621eef6c2ce801991ecd",
+    "C": "27b4e032ff10065b534c1c62c2adf88f677b07c228f243b5376227fdb307ac8d",
+    "v65_master": "5b3056510129107959a6725139942307fc47b8cf56b375511a72cf9c6c8e58b8",
+    "v66_route": "07593002755158c96647701da7453b1942114424a5d3aff5318ebb891a2964ae"
+  },
+  "integrity_checks": {
+    "A1_A8_open": true,
+    "A60_preserved": true,
+    "C_preserved": true,
+    "G1_G8_open": true,
+    "GM_overlap": true,
+    "T66_benefit_dangers": true,
+    "V64_null_no_WZ": true,
+    "V65_valid_upgrade_retracted": true,
+    "beta_order": true,
+    "fail_closed": true,
+    "input_cores": true,
+    "one_loop": true,
+    "only_B65_to_B66": true,
+    "suite_208_not_199": true,
+    "two_candidates_only": true,
+    "two_loop_boundary": true
+  },
+  "lineage": {
+    "V66_route_core": "07593002755158c96647701da7453b1942114424a5d3aff5318ebb891a2964ae",
+    "parent_V65_master_core": "5b3056510129107959a6725139942307fc47b8cf56b375511a72cf9c6c8e58b8",
+    "replacement_route": {
+      "classification": "CURRENT_V65_ACTION_REJECTED__HIGH_SCALE_ORPHAN_ONLY_AND_LOW_SCALE_FULL_TEN_ARE_CANDIDATE_CONDITIONAL_EXTENSIONS__NEITHER_COMPLETE",
+      "route_core": "07593002755158c96647701da7453b1942114424a5d3aff5318ebb891a2964ae",
+      "route_id": "B66"
+    },
+    "route_A60_core_unchanged": "096537e4701bea02c8d6a3563adfd24b4247c90a8258621eef6c2ce801991ecd",
+    "route_C_core_unchanged": "27b4e032ff10065b534c1c62c2adf88f677b07c228f243b5376227fdb307ac8d",
+    "superseded_route": {
+      "historical_artifact_modified": false,
+      "route_core": "b87696403fb46c4a6b044be8abe58dd5f82b63a83a58fff262a6f00bdd6914ae",
+      "route_id": "B65",
+      "source_row_sha256": "91e4a9e248c50508433ba5854dc6b7e65532fbb20a5c9b2812b80bb28f5bda05"
+    },
+    "supersession_scope": "B65 to B66 only"
+  },
+  "n_failed_integrity_checks": 0,
+  "n_integrity_checks": 16,
+  "question": "Does any one route close strict G1 after the V66 correction?",
+  "regression_scope_correction": {
+    "correction": "208 pre-V66 tests, not 199",
+    "files": [
+      {
+        "path": "test_susy_v59_gauged_u1r_local_completion_audit.py",
+        "test_functions": 13
+      },
+      {
+        "path": "test_susy_v59_heterotic_corrected_z4r_data_sufficiency_audit.py",
+        "test_functions": 9
+      },
+      {
+        "path": "test_susy_v59_multipath_g1_frontier_master_audit.py",
+        "test_functions": 14
+      },
+      {
+        "path": "test_susy_v59_spin11_gauge_higgs_completion_audit.py",
+        "test_functions": 14
+      },
+      {
+        "path": "test_susy_v60_heterotic_corrected_z4r_live_orbifolder_audit.py",
+        "test_functions": 13
+      },
+      {
+        "path": "test_susy_v60_multipath_g1_frontier_master_audit.py",
+        "test_functions": 14
+      },
+      {
+        "path": "test_susy_v61_multipath_g1_frontier_master_audit.py",
+        "test_functions": 12
+      },
+      {
+        "path": "test_susy_v61_spin11_z4r_selector_escape_audit.py",
+        "test_functions": 16
+      },
+      {
+        "path": "test_susy_v62_multipath_g1_frontier_master_audit.py",
+        "test_functions": 11
+      },
+      {
+        "path": "test_susy_v62_spin11_localized_z4r_anomaly_gs_audit.py",
+        "test_functions": 13
+      },
+      {
+        "path": "test_susy_v63_multipath_g1_frontier_master_audit.py",
+        "test_functions": 11
+      },
+      {
+        "path": "test_susy_v63_spin11_goldstone_dissolution_wz_inflow_audit.py",
+        "test_functions": 12
+      },
+      {
+        "path": "test_susy_v64_multipath_g1_frontier_master_audit.py",
+        "test_functions": 18
+      },
+      {
+        "path": "test_susy_v64_spin11_ab_tower_null_mode_retraction_audit.py",
+        "test_functions": 16
+      },
+      {
+        "path": "test_susy_v65_multipath_g1_frontier_master_audit.py",
+        "test_functions": 10
+      },
+      {
+        "path": "test_susy_v65_spin11_orphan_lifting_classification_audit.py",
+        "test_functions": 12
+      }
+    ],
+    "incorrect_prior_narrow_count": 199,
+    "pre_V66_file_count": 16,
+    "pre_V66_test_count": 208,
+    "selection": "every test_susy_v59 through test_susy_v65 Python file"
+  },
+  "route_matrix": [
+    {
+      "G1_closed": false,
+      "bound_core_sha256": "096537e4701bea02c8d6a3563adfd24b4247c90a8258621eef6c2ce801991ecd",
+      "candidate_G1_completion_rejected": true,
+      "carried_forward_unchanged_from_V60_master_core": "35395532eaf625886b704ed25b7fa8525482ec1d53b94ccc96e7858d6425898e",
+      "carried_forward_unchanged_from_V61_master_core": "a230fda5699b3bd81552317b94733a9f537b0e9ae2a6c35f644830511fa7a810",
+      "carried_forward_unchanged_from_V62_master_core": "4e1344fbaa148c0369417918e3e39d2c94282d8db568a8ec6fa01522e680cdf0",
+      "carried_forward_unchanged_from_V64_master_core": "2840d49f02b4eafd75ca856657ea938e0543e35e7e5c8dab5760f9a908b63e16",
+      "carried_forward_unchanged_from_V65_master_core": "5b3056510129107959a6725139942307fc47b8cf56b375511a72cf9c6c8e58b8",
+      "classification": "KAPPL_CANDIDATE_REJECTED_IN_TESTED_CORRECTED_BASIS__NOT_UNIVERSAL_HETEROTIC_NO_GO",
+      "closed_gates": [],
+      "complete_tested_Abelian_basis_scan": {
+        "available_U1_and_printed_SG_cannot_repair": true,
+        "coefficients_tested": 32,
+        "continuous_U1_columns_all_universal": true,
+        "domain": "c_i in Z4 with c1+c2+c3 odd, so W has charge 2 mod4",
+        "no_combination_in_tested_basis_repairs": true,
+        "residue_pattern_counts": {
+          "0,0,0,1,1": 16,
+          "1,1,1,0,0": 16
+        },
+        "scope_caveat": "The no-repair statement covers the nine continuous U(1) generators and six printed non-R space-group Z2 generators of this exact Orbifolder action. It does not exclude an enlarged sector-permuting symmetry, extra threshold counterterms, or an additional axion not represented by these charge mixings.",
+        "space_group_mixings_enumerated": 64,
+        "space_group_repair_exists": false,
+        "universal_case_count": 0,
+        "universal_case_exists": false
+      },
+      "conditional_charge_reconstruction": {
+        "all_affine_hg_equations_pass": true,
+        "all_oscillators_absent": true,
+        "changed_field_count": 6,
+        "changed_fields": [
+          {
+            "corrected_q_mod4": 2,
+            "field": "F_41",
+            "gamma_h": "1/2",
+            "old_q_mod4": 0,
+            "orbifolder_field_no": 102
+          },
+          {
+            "corrected_q_mod4": 0,
+            "field": "F_42",
+            "gamma_h": "1/2",
+            "old_q_mod4": 2,
+            "orbifolder_field_no": 103
+          },
+          {
+            "corrected_q_mod4": 2,
+            "field": "F_80",
+            "gamma_h": "1/2",
+            "old_q_mod4": 0,
+            "orbifolder_field_no": 180
+          },
+          {
+            "corrected_q_mod4": 0,
+            "field": "F_81",
+            "gamma_h": "1/2",
+            "old_q_mod4": 2,
+            "orbifolder_field_no": 181
+          },
+          {
+            "corrected_q_mod4": 2,
+            "field": "F_91",
+            "gamma_h": "1/2",
+            "old_q_mod4": 0,
+            "orbifolder_field_no": 202
+          },
+          {
+            "corrected_q_mod4": 0,
+            "field": "F_92",
+            "gamma_h": "1/2",
+            "old_q_mod4": 2,
+            "orbifolder_field_no": 203
+          }
+        ],
+        "charge_formula": "qX + R2_corrected + 2 n3 (mod 4)",
+        "field_count": 92,
+        "h_g_equation": "(1-A_g) mu = (rho2-1) lambda for h_g=(1,mu)",
+        "status": "PASS",
+        "vendored_fixture_matches_expected": true,
+        "vendored_fixture_sha256": "79ef2c19fd0b9a563ac36a06a3099e4b240966ef3dd8fe968fe4029d9b237f51"
+      },
+      "corrected_hidden_anomaly_certificate": {
+        "anomaly_representatives": [
+          "3",
+          "1",
+          "7",
+          "2",
+          "2"
+        ],
+        "factor_order": [
+          "SU3_C",
+          "SU2_L",
+          "SU3_hidden",
+          "SU2_hidden_1",
+          "SU2_hidden_2"
+        ],
+        "formula": "A_G=C2(G)+sum_i (q_i-1) T_G(R_i), eta=M/2=2",
+        "hidden_nonuniversality": true,
+        "residue_vector_mod2": [
+          "1",
+          "1",
+          "1",
+          "0",
+          "0"
+        ],
+        "universal": false
+      },
+      "direct_core_rebound_in_V61": true,
+      "direct_core_rebound_in_V62": true,
+      "direct_core_rebound_in_V63": true,
+      "direct_core_rebound_in_V65": true,
+      "direct_core_rebound_in_V66": true,
+      "full_CFT_scope_obstruction": {
+        "all_odd_plane_R_tau_class_scan": {
+          "R_type_occupied_flip_counts": [
+            1,
+            3
+          ],
+          "class_preserving_count": 0,
+          "coefficient_domain": "c_i in Z4 and c1+c2+c3 odd",
+          "combinations_tested": 32,
+          "derivation": "point-group conjugation flips an even number of tau's occupied half-components, while c1+c2+c3 odd implies an odd number of odd c_i and hence an odd number of flipped occupied half-components",
+          "every_allowed_combination_fails_class_preservation": true,
+          "independent_rows_match_upstream_certificate": true,
+          "point_group_occupied_flip_counts": [
+            0,
+            2
+          ],
+          "point_group_orbit_size": 4,
+          "rows": [
+            {
+              "coefficients_mod4": [
+                0,
+                0,
+                1
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                3
+              ],
+              "rho_tau": [
+                "0",
+                "1/2",
+                "0",
+                "1/2",
+                "0",
+                "-1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                0,
+                0,
+                3
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                3
+              ],
+              "rho_tau": [
+                "0",
+                "1/2",
+                "0",
+                "1/2",
+                "0",
+                "-1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                0,
+                1,
+                0
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                2
+              ],
+              "rho_tau": [
+                "0",
+                "1/2",
+                "0",
+                "-1/2",
+                "0",
+                "1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                0,
+                1,
+                2
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                2
+              ],
+              "rho_tau": [
+                "0",
+                "1/2",
+                "0",
+                "-1/2",
+                "0",
+                "1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                0,
+                2,
+                1
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                3
+              ],
+              "rho_tau": [
+                "0",
+                "1/2",
+                "0",
+                "1/2",
+                "0",
+                "-1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                0,
+                2,
+                3
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                3
+              ],
+              "rho_tau": [
+                "0",
+                "1/2",
+                "0",
+                "1/2",
+                "0",
+                "-1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                0,
+                3,
+                0
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                2
+              ],
+              "rho_tau": [
+                "0",
+                "1/2",
+                "0",
+                "-1/2",
+                "0",
+                "1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                0,
+                3,
+                2
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                2
+              ],
+              "rho_tau": [
+                "0",
+                "1/2",
+                "0",
+                "-1/2",
+                "0",
+                "1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                1,
+                0,
+                0
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                1
+              ],
+              "rho_tau": [
+                "0",
+                "-1/2",
+                "0",
+                "1/2",
+                "0",
+                "1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                1,
+                0,
+                2
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                1
+              ],
+              "rho_tau": [
+                "0",
+                "-1/2",
+                "0",
+                "1/2",
+                "0",
+                "1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                1,
+                1,
+                1
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 3,
+              "odd_planes": [
+                1,
+                2,
+                3
+              ],
+              "rho_tau": [
+                "0",
+                "-1/2",
+                "0",
+                "-1/2",
+                "0",
+                "-1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                1,
+                1,
+                3
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 3,
+              "odd_planes": [
+                1,
+                2,
+                3
+              ],
+              "rho_tau": [
+                "0",
+                "-1/2",
+                "0",
+                "-1/2",
+                "0",
+                "-1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                1,
+                2,
+                0
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                1
+              ],
+              "rho_tau": [
+                "0",
+                "-1/2",
+                "0",
+                "1/2",
+                "0",
+                "1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                1,
+                2,
+                2
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                1
+              ],
+              "rho_tau": [
+                "0",
+                "-1/2",
+                "0",
+                "1/2",
+                "0",
+                "1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                1,
+                3,
+                1
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 3,
+              "odd_planes": [
+                1,
+                2,
+                3
+              ],
+              "rho_tau": [
+                "0",
+                "-1/2",
+                "0",
+                "-1/2",
+                "0",
+                "-1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                1,
+                3,
+                3
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 3,
+              "odd_planes": [
+                1,
+                2,
+                3
+              ],
+              "rho_tau": [
+                "0",
+                "-1/2",
+                "0",
+                "-1/2",
+                "0",
+                "-1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                2,
+                0,
+                1
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                3
+              ],
+              "rho_tau": [
+                "0",
+                "1/2",
+                "0",
+                "1/2",
+                "0",
+                "-1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                2,
+                0,
+                3
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                3
+              ],
+              "rho_tau": [
+                "0",
+                "1/2",
+                "0",
+                "1/2",
+                "0",
+                "-1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                2,
+                1,
+                0
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                2
+              ],
+              "rho_tau": [
+                "0",
+                "1/2",
+                "0",
+                "-1/2",
+                "0",
+                "1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                2,
+                1,
+                2
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                2
+              ],
+              "rho_tau": [
+                "0",
+                "1/2",
+                "0",
+                "-1/2",
+                "0",
+                "1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                2,
+                2,
+                1
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                3
+              ],
+              "rho_tau": [
+                "0",
+                "1/2",
+                "0",
+                "1/2",
+                "0",
+                "-1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                2,
+                2,
+                3
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                3
+              ],
+              "rho_tau": [
+                "0",
+                "1/2",
+                "0",
+                "1/2",
+                "0",
+                "-1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                2,
+                3,
+                0
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                2
+              ],
+              "rho_tau": [
+                "0",
+                "1/2",
+                "0",
+                "-1/2",
+                "0",
+                "1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                2,
+                3,
+                2
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                2
+              ],
+              "rho_tau": [
+                "0",
+                "1/2",
+                "0",
+                "-1/2",
+                "0",
+                "1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                3,
+                0,
+                0
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                1
+              ],
+              "rho_tau": [
+                "0",
+                "-1/2",
+                "0",
+                "1/2",
+                "0",
+                "1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                3,
+                0,
+                2
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                1
+              ],
+              "rho_tau": [
+                "0",
+                "-1/2",
+                "0",
+                "1/2",
+                "0",
+                "1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                3,
+                1,
+                1
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 3,
+              "odd_planes": [
+                1,
+                2,
+                3
+              ],
+              "rho_tau": [
+                "0",
+                "-1/2",
+                "0",
+                "-1/2",
+                "0",
+                "-1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                3,
+                1,
+                3
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 3,
+              "odd_planes": [
+                1,
+                2,
+                3
+              ],
+              "rho_tau": [
+                "0",
+                "-1/2",
+                "0",
+                "-1/2",
+                "0",
+                "-1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                3,
+                2,
+                0
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                1
+              ],
+              "rho_tau": [
+                "0",
+                "-1/2",
+                "0",
+                "1/2",
+                "0",
+                "1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                3,
+                2,
+                2
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                1
+              ],
+              "rho_tau": [
+                "0",
+                "-1/2",
+                "0",
+                "1/2",
+                "0",
+                "1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                3,
+                3,
+                1
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 3,
+              "odd_planes": [
+                1,
+                2,
+                3
+              ],
+              "rho_tau": [
+                "0",
+                "-1/2",
+                "0",
+                "-1/2",
+                "0",
+                "-1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                3,
+                3,
+                3
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 3,
+              "odd_planes": [
+                1,
+                2,
+                3
+              ],
+              "rho_tau": [
+                "0",
+                "-1/2",
+                "0",
+                "-1/2",
+                "0",
+                "-1/2"
+              ]
+            }
+          ],
+          "scope_caveat": "This excludes a class-preserving diagonal action in the tested space group. It does not exclude a sector-permuting winding or generalized symmetry.",
+          "source": "upstream theorem independently re-enumerated from data bound by the V60 live-route core",
+          "upstream_every_candidate_fails_class_preservation": true,
+          "upstream_parity_theorem": "The Z2xZ2 point group flips an even number of complex planes, whereas each odd-sum c_i combination flips an odd number. Since tau has a half-component in one real coordinate of every plane, rho_c(tau) cannot equal B tau for any point-group B.",
+          "upstream_point_group_plane_flip_parities": [
+            0,
+            2,
+            2,
+            2
+          ]
+        },
+        "no_h_tau_in_space_group": true,
+        "rho2_tau": [
+          "0",
+          "1/2",
+          "0",
+          "-1/2",
+          "0",
+          "1/2"
+        ],
+        "rho2_tau_equals_tau_minus_e4": true,
+        "rho2_tau_in_conjugacy_orbit": false,
+        "scope": "For all 32 plane-R candidates with superpotential charge 2, this blocks direct use of the class-preserving Eq. (3.40) derivation as a proof of a diagonal symmetry of the full freely quotiented CFT. It is not a theorem that no symmetry exists: rho_c may permute winding sectors and require an enlarged treatment."
+      },
+      "full_physical_symmetry_no_go_proved": false,
+      "name": "live-Orbifolder corrected heterotic Z4R route",
+      "route_id": "A60",
+      "same_action_microscopic_completion": false,
+      "supersedes_V59_route_id": "A",
+      "tested_object": "the source-locked Kappl E8xE8 freely quotiented candidate, its 92 regenerated massless chiral multiplets, all corrected plane-R combinations with superpotential charge two, nine available U(1)s, and six printed non-R space-group Z2 generators",
+      "unknown_obligations": [
+        "derive the action of rho2 on all freely twisted/winding sectors when conjugacy classes are permuted",
+        "compute local/fixed-locus anomaly phases and any localized counterterms",
+        "compute moduli-dependent threshold corrections for the corrected mixed generator",
+        "derive the complete quantized axion coupling and transformation matrix",
+        "recheck the corrected generator after the selected singlet VEVs and mass diagonalization"
+      ]
+    },
+    {
+      "G1_closed": false,
+      "V64_null_mode_core": "fe36b2f6f0e1786253827183bf7f8dc2dd9e15a94b7f036d5e9e6e0739717a1d",
+      "V64_null_mode_stands": true,
+      "V65_action_upgrade": "RETRACTED",
+      "V65_artifact_integrity": "PRESERVED",
+      "WZ_term": "NONE_FORCED",
+      "accepted_extension_count": 0,
+      "beta_and_two_loop_matrices": {
+        "MSSM": {
+          "B": [
+            [
+              "199/25",
+              "27/5",
+              "88/5"
+            ],
+            [
+              "9/5",
+              "25",
+              "24"
+            ],
+            [
+              "11/5",
+              "9",
+              "14"
+            ]
+          ],
+          "b": [
+            "33/5",
+            "1",
+            "-3"
+          ],
+          "reproduces_standard_B": true,
+          "reproduces_standard_b": true,
+          "sum_S": [
+            "33/5",
+            "7",
+            "6"
+          ]
+        },
+        "Uc_and_Ec_companions": {
+          "Delta_B": [
+            [
+              "344/75",
+              "0",
+              "128/15"
+            ],
+            [
+              "0",
+              "0",
+              "0"
+            ],
+            [
+              "16/15",
+              "0",
+              "34/3"
+            ]
+          ],
+          "Delta_b": [
+            "14/5",
+            "0",
+            "1"
+          ],
+          "matches_required": true
+        },
+        "complete_10_plus_10bar": {
+          "Delta_B": [
+            [
+              "23/5",
+              "3/5",
+              "48/5"
+            ],
+            [
+              "1/5",
+              "21",
+              "16"
+            ],
+            [
+              "6/5",
+              "6",
+              "34"
+            ]
+          ],
+          "Delta_b": [
+            "3",
+            "3",
+            "3"
+          ],
+          "matches_required_B": true,
+          "one_loop_shift_is_universal": true
+        },
+        "convention": "rows and columns are ordered (U1_GUT, SU2_L, SU3_c)",
+        "formula": {
+          "B_ab": "-6 C_a(G)^2 delta_ab + 2 C_a(G) S_a delta_ab + 4 sum_i S_a(i) C_b(i)",
+          "b_a": "sum_i S_a(i) - 3 C_a(G)"
+        },
+        "orphan_Q_pair": {
+          "Delta_B": [
+            [
+              "1/75",
+              "3/5",
+              "16/15"
+            ],
+            [
+              "1/5",
+              "21",
+              "16"
+            ],
+            [
+              "2/15",
+              "6",
+              "68/3"
+            ]
+          ],
+          "Delta_b": [
+            "1/5",
+            "3",
+            "2"
+          ],
+          "matches_required": true
+        }
+      },
+      "bound_core_sha256": "07593002755158c96647701da7453b1942114424a5d3aff5318ebb891a2964ae",
+      "candidate_extensions": [
+        {
+          "diagnostic": "gauge-only two-loop common threshold MS=MQ about 4.76e11 GeV (about 4.99e11 GeV with the universal MSbar-to-DRbar shift)",
+          "field_content": "MSSM plus the V64 Q-type orphan pair",
+          "id": "H66",
+          "name": "high-scale SUSY orphan-only extension",
+          "not_complete": true,
+          "open": [
+            "construct nonzero GM mass from an explicit hidden/Kahler sector",
+            "compute suppressed portal lifetime and cosmology",
+            "supply full matching, Yukawa, soft, KK and brane thresholds"
+          ],
+          "status": "CANDIDATE_CONDITIONAL_EXTENSION"
+        },
+        {
+          "baryon_safety": {
+            "inherits_V65_claim": false,
+            "reason": "the full 10 portal 10_X 5bar 5bar contains Uc_X dc dc and Ec_X L L, so the orphan-only effective B-L assignment does not prove safety for the completion"
+          },
+          "companion_Delta_b": [
+            "14/5",
+            "0",
+            "1"
+          ],
+          "diagnostic": "gauge-only two-loop common threshold MS=M10 about 1.383905e4 GeV and MG about 1.216382e16 GeV",
+          "id": "T66",
+          "missing": [
+            "local Spin(11)/Spin(10) representation and wall embedding",
+            "localized anomaly and Green-Schwarz recomputation",
+            "Kahler and soft-sector construction",
+            "precision thresholds and phenomenology"
+          ],
+          "name": "low-scale full-10 compensator extension",
+          "new_fields": "add Uc_X+U_X and Ec_X+E_X at the orphan threshold, completing a vectorlike SU(5) 10+10bar",
+          "not_complete": true,
+          "status": "CANDIDATE_CONDITIONAL_EXTENSION",
+          "total_Delta_b": [
+            "3",
+            "3",
+            "3"
+          ]
+        }
+      ],
+      "classification": "CURRENT_V65_ACTION_REJECTED__HIGH_SCALE_ORPHAN_ONLY_AND_LOW_SCALE_FULL_TEN_ARE_CANDIDATE_CONDITIONAL_EXTENSIONS__NEITHER_COMPLETE",
+      "closed_gates": [],
+      "current_action_status": "REJECTED",
+      "gm_overlap": {
+        "V65_action_upgrade": "RETRACTED",
+        "consequence": "both the GM mass coefficient and decay portals can be small or zero; V65 did not establish a mass or a fast decay",
+        "general_supergravity_mass": "mu_Q = [m_3/2 Z_Q - Fbar^I partial_bar_I Z_Q]/sqrt(Y_Q Y_Qbar)",
+        "nonzero_mass_constructed_in_bound_action": false,
+        "reason_allowed_is_not_constructed": "the bound action specifies neither Z_Q, its hidden-sector derivative, nor the SUSY-breaking F terms; symmetry permission does not prove a nonzero numerator",
+        "replacement_status": "CANDIDATE_CONDITIONAL_EXTENSION",
+        "symbols": {
+          "Fbar_I": "hidden-sector auxiliary expectation values",
+          "Y_Q_and_Y_Qbar": "wave-function metrics of the two light chiral modes",
+          "Z_Q": "hidden-sector-dependent Kahler bilinear coefficient"
+        },
+        "v64_null_mode_normalization": {
+          "alpha_squared": "alpha^2 = g5^2 v^2 L",
+          "effective_bilinear": "Z_eff = c_K/(1+alpha^2)",
+          "local_y0_Kahler_term": "c_K C Cbar",
+          "norm_squared": "1 + alpha^2",
+          "portal_amplitude_overlap": "1/sqrt(1+alpha^2)",
+          "portal_rate_suppression": "1/(1+alpha^2)"
+        },
+        "z4r_allows_charge_zero_bilinear": true
+      },
+      "name": "Spin(11) correction with two unaccepted candidate extensions",
+      "one_loop_crossing": {
+        "analytic_c_family": {
+          "MG": "4.54981e15 GeV * c^(3/64)",
+          "MQ": "2.25084e11 GeV * c^(11/32)",
+          "MS": "2.25084e11 GeV * c^(-21/32)",
+          "alphaU_inverse": "34.16816 - [121/(128*pi)] ln(c)",
+          "definition": "c = MQ/MS",
+          "derived_exact_powers": {
+            "MG": "3/64",
+            "MQ": "11/32",
+            "MS": "-21/32",
+            "alphaU_inverse_ln_c": "-121/(128*pi)"
+          }
+        },
+        "beta_coefficients": {
+          "MSSM": [
+            "33/5",
+            "1",
+            "-3"
+          ],
+          "SM": [
+            "41/10",
+            "-19/6",
+            "-7"
+          ],
+          "companion_Delta_b": [
+            "14/5",
+            "0",
+            "1"
+          ],
+          "full_10_plus_10bar_Delta_b": [
+            "3",
+            "3",
+            "3"
+          ],
+          "orphan_Q_pair_Delta_b": [
+            "1/5",
+            "3",
+            "2"
+          ]
+        },
+        "c_equals_1": {
+          "MG_GeV": 4549789822040069.0,
+          "MQ_GeV": 225082615142.4409,
+          "MS_GeV": 225082615142.4409,
+          "alphaU_inverse": 34.168159510809176,
+          "c_ratio_MQ_over_MS": 1.0,
+          "master_recomputed_residual": 7.105427357601002e-15,
+          "max_inverse_coupling_residual": 7.105427357601002e-15
+        },
+        "c_equals_1_quoted": {
+          "MG_GeV": 4549810000000000.0,
+          "MQ_GeV": 225084000000.0,
+          "MS_GeV": 225084000000.0,
+          "alphaU_inverse": 34.16816
+        },
+        "conventional_order": [
+          "b1_GUT",
+          "b2",
+          "b3"
+        ],
+        "fixed_MS_1_TeV": {
+          "MG_GeV": 1.797161840637619e+16,
+          "MQ_GeV": 5337995621018032.0,
+          "MS_GeV": 1000.0,
+          "alphaU_inverse": 25.34995500054329,
+          "master_recomputed_residual": 1.7763568394002505e-14,
+          "max_inverse_coupling_residual": 1.7763568394002505e-14
+        },
+        "fixed_MS_1_TeV_quoted": {
+          "MG_GeV": 1.797161841e+16,
+          "MQ_GeV": 5337995621000000.0
+        },
+        "input_scheme": "PDG electroweak inputs at MZ treated as MSbar for this diagnostic",
+        "inputs": {
+          "MZ_GeV": 91.1876,
+          "alphaEM_inverse": 127.93,
+          "alphaS": 0.1177,
+          "derived_alpha_inverse_GUT_order": [
+            59.01001524,
+            29.579974600000003,
+            8.496176720475786
+          ],
+          "input_literals": {
+            "MZ_GeV": "91.1876",
+            "alphaEM_inverse": "127.930",
+            "alphaS": "0.1177",
+            "sin2_thetaW": "0.23122"
+          },
+          "sin2_thetaW": 0.23122
+        },
+        "interpretation": "the orphan-only spectrum unifies at one loop only with a very high common SUSY/orphan threshold, or with the orphan threshold driven near MG when MS is fixed to 1 TeV",
+        "threshold_equation": "alpha_i^-1(MG)=alpha_i^-1(MZ)-b_i^SM ln(MS/MZ)/(2pi)-b_i^MSSM ln(MG/MS)/(2pi)-Delta_b_i ln(MG/MQ)/(2pi)"
+      },
+      "route_id": "B66",
+      "same_action_microscopic_completion": false,
+      "supersedes_V65_route_id": "B65",
+      "two_loop_diagnostics": {
+        "claim_boundary": "these are gauge-only diagnostics, not precision unification fits",
+        "diagnostics_within_tolerance": true,
+        "engine": "scipy solve_ivp(DOP853) plus root",
+        "equation": "d alpha_a^-1/d ln(mu) = -b_a/(2pi) - sum_b B_ab alpha_b/(8pi^2)",
+        "full_ten_raw_no_matching": {
+          "computed": {
+            "MG": 1.2163816924934198e+16,
+            "MS": 13839.052519326706,
+            "alphaU": 0.07873997224735535,
+            "alphaU_inverse": 12.700029876294337,
+            "max_inverse_coupling_residual": 1.5987211554602254e-14
+          },
+          "description": "gauge-only two-loop running with a common MS=M10 threshold for a vectorlike 10+10bar",
+          "pinned_reference": {
+            "M10": 13839.05,
+            "MG": 1.216382e+16,
+            "MS": 13839.05,
+            "alphaU": 0.07873997
+          },
+          "relative_difference": {
+            "M10": 1.8204477236771766e-07,
+            "MG": 2.5280428372909114e-07,
+            "MS": 1.8204477236771766e-07,
+            "alphaU": 2.854148073438978e-08
+          }
+        },
+        "matrix_derivation_bound": true,
+        "not_included": [
+          "finite one-loop decoupling beyond the universal scheme conversion",
+          "Yukawa and tan(beta) contributions",
+          "soft-spectrum mass splittings",
+          "Mc, M*, KK and brane-kinetic thresholds"
+        ],
+        "numerical_integration_executed": true,
+        "orphan_only_raw_no_matching": {
+          "computed": {
+            "MG": 2266291458696328.0,
+            "MS": 476037822935.29834,
+            "alphaU": 0.028597970126062994,
+            "alphaU_inverse": 34.967516771011724,
+            "max_inverse_coupling_residual": 0.0
+          },
+          "description": "gauge-only two-loop running with a common MS=MQ threshold and no finite matching",
+          "pinned_reference": {
+            "MG": 2266291000000000.0,
+            "MQ": 476037800000.0,
+            "MS": 476037800000.0,
+            "alphaU": 0.02859797
+          },
+          "relative_difference": {
+            "MG": 2.0239957176926282e-07,
+            "MQ": 4.8179573886031335e-08,
+            "MS": 4.8179573886031335e-08,
+            "alphaU": 4.408109877118704e-09
+          }
+        },
+        "orphan_only_universal_MSbar_to_DRbar": {
+          "computed": {
+            "MG": 2367079473998105.0,
+            "MS": 499196975289.7142,
+            "alphaU": 0.02862003369541571,
+            "alphaU_inverse": 34.94055984148536,
+            "max_inverse_coupling_residual": 7.105427357601002e-15
+          },
+          "description": "same gauge-only solve with only the universal one-loop MSbar-to-DRbar conversion",
+          "matching": "alpha_a^-1,DR = alpha_a^-1,MS - C_a(G)/(12pi) at MS",
+          "pinned_reference": {
+            "MG": 2367090000000000.0,
+            "MQ": 499199000000.0,
+            "MS": 499199000000.0,
+            "alphaU_inverse": 34.9406
+          },
+          "relative_difference": {
+            "MG": 4.446811018965491e-06,
+            "MQ": 4.055918152556792e-06,
+            "MS": 4.055918152556792e-06,
+            "alphaU_inverse": 1.1493367212400685e-06
+          }
+        },
+        "tolerance_policy": {
+          "coupling_relative": 1e-05,
+          "inverse_residual_absolute": 1e-08,
+          "scale_relative": 1e-05
+        }
+      }
+    },
+    {
+      "G1_closed": false,
+      "blocking_certificate": {
+        "failed_fixed_points": [
+          "O_GG",
+          "O_flipped",
+          "O_PS"
+        ],
+        "open_data_deficits": {
+          "faithful_residual_Z4R": false,
+          "normal_bundle": "OPEN_DATA_DEFICIT",
+          "self_dual_strings": "OPEN_DATA_DEFICIT"
+        },
+        "passes_all_four": false,
+        "principle": "For U(1)_R variation, any inflow from the existing two bulk tensors multiplies the restriction of the single Spin(10) invariant tr_10 F^2.  Tensor-lattice rank changes the overall local coefficient, not the relative subgroup embedding indices.",
+        "type": "EXISTING_BULK_GS_DIRECTION_REJECTED_AT_THREE_FIXED_POINTS"
+      },
+      "bound_core_sha256": "27b4e032ff10065b534c1c62c2adf88f677b07c228f243b5376227fdb307ac8d",
+      "carried_forward_unchanged_from_V59_master_core": "9a74431ca080341d56225c6cc85edb937d3cafaa902bbacb556dbb325d78d24a",
+      "carried_forward_unchanged_from_V60_master_core": "35395532eaf625886b704ed25b7fa8525482ec1d53b94ccc96e7858d6425898e",
+      "carried_forward_unchanged_from_V61_master_core": "a230fda5699b3bd81552317b94733a9f537b0e9ae2a6c35f644830511fa7a810",
+      "carried_forward_unchanged_from_V62_master_core": "4e1344fbaa148c0369417918e3e39d2c94282d8db568a8ec6fa01522e680cdf0",
+      "carried_forward_unchanged_from_V64_master_core": "2840d49f02b4eafd75ca856657ea938e0543e35e7e5c8dab5760f9a908b63e16",
+      "carried_forward_unchanged_from_V65_master_core": "5b3056510129107959a6725139942307fc47b8cf56b375511a72cf9c6c8e58b8",
+      "classification": "INTEGRATED_BULK_ADVANCE_WITH_EXACT_EXISTING_LOCAL_GS_REJECTION",
+      "closed_gates": [],
+      "direct_core_rebound_in_V60": true,
+      "direct_core_rebound_in_V61": true,
+      "direct_core_rebound_in_V62": true,
+      "direct_core_rebound_in_V63": true,
+      "direct_core_rebound_in_V65": true,
+      "direct_core_rebound_in_V66": true,
+      "exact_gains": [
+        {
+          "certificate": {
+            "H": 290,
+            "H_minus_V_plus_29T": 273,
+            "T": 1,
+            "V": 46,
+            "factorization_exact": true,
+            "integral_unimodular": true
+          },
+          "claim": "the integrated six-dimensional seed factorizes on an integral unimodular lattice"
+        },
+        {
+          "certificate": {
+            "all_270_singlets_assigned": true,
+            "local_parity_moments": {
+              "sum_q_cubed_sign": [
+                64,
+                64,
+                64,
+                64
+              ],
+              "sum_q_sign": [
+                4,
+                4,
+                4,
+                4
+              ],
+              "sum_sign": [
+                2,
+                2,
+                2,
+                2
+              ]
+            },
+            "q0_global_zero_modes": 1,
+            "q4_global_zero_modes": 1
+          },
+          "claim": "all singlet hypermultiplet parities have a constructive VEV-compatible solution"
+        },
+        {
+          "certificate": {
+            "O_GG": {
+              "bulk_direction": [
+                2,
+                40
+              ],
+              "local": [
+                4,
+                -320
+              ],
+              "minors": {
+                "SU5_squared__X_squared": 800
+              }
+            },
+            "O_PS": {
+              "bulk_direction": [
+                2,
+                2,
+                2
+              ],
+              "local": [
+                4,
+                -12,
+                -12
+              ],
+              "minors": {
+                "SU2L_squared__SU2R_squared": 0,
+                "SU4_squared__SU2L_squared": 32,
+                "SU4_squared__SU2R_squared": 32
+              }
+            },
+            "O_SO10": {
+              "bulk_direction": [
+                1
+              ],
+              "local": [
+                6
+              ],
+              "minors": {}
+            },
+            "O_flipped": {
+              "bulk_direction": [
+                2,
+                40
+              ],
+              "local": [
+                4,
+                -320
+              ],
+              "minors": {
+                "SU5prime_squared__Xprime_squared": 800
+              }
+            }
+          },
+          "claim": "fixed-point proportionality is tested with exact two-by-two minors"
+        }
+      ],
+      "gate_ledger_all_open": true,
+      "name": "gauged-U(1)R to Z4R local-orbifold route",
+      "route_id": "C",
+      "same_action_microscopic_completion": false,
+      "singlet_parity_problem_solved": true,
+      "supersedable_by_live_regeneration": false,
+      "tested_object": "the exact integrated Spin(10) x U(1)R seed on the V56 four-fixed-point projector using only the existing bulk Spin(10) GS direction"
+    }
+  ],
+  "schema": "susy_v66_multipath_g1_frontier_master_audit/v1",
+  "source_manifest": [
+    {
+      "exists": true,
+      "path": "susy_v66_multipath_g1_frontier_master_audit.py",
+      "sha256": "e7dfd0b609f386cfcc95d3bf394f0eb95c4a64b621b045bdf45ce82d5bd3db04"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v66_multipath_g1_frontier_master_audit.py",
+      "sha256": "48fbb822d0e0d97f22052a1a166269bc9af0c6321f8b0bcca5cc069f0500d617"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V65_MULTIPATH_G1_FRONTIER_MASTER_AUDIT.json",
+      "sha256": "369dae6d0e71eadcf784f71588b3b3dbe1e3de2683333ebe6dd8b6088eb839c8"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V66_SPIN11_GM_OVERLAP_UNIFICATION_REPAIR_AUDIT.json",
+      "sha256": "aeca71df0ad6b66ea0b94e9dafdef23a7da587eeaf0550d6098dc17d82e23ef4"
+    },
+    {
+      "exists": true,
+      "path": "susy_v60_heterotic_corrected_z4r_live_orbifolder_audit.json",
+      "sha256": "6c404e660be4bfe8b2c2f812f058e8396b9ca6dddafdce4582bdd08e1800a8b6"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V59_GAUGED_U1R_LOCAL_COMPLETION_AUDIT.json",
+      "sha256": "f5d8c4a117ff5fac956cff62f2cf2e3e0434f511ee38ed2258b620d899361bb7"
+    }
+  ],
+  "source_policy": {
+    "master_adds_no_new_literature_claim": true,
+    "two_loop_diagnostics_are_not_precision_unification": true
+  },
+  "status": "V66_MULTIPATH_G1_FRONTIER_MASTER__V65_AND_V66_CORES_BOUND__ONLY_B65_TO_B66_SUPERSESSION__A60_AND_C_PRESERVED__V65_ARTIFACT_VALID_ACTION_UPGRADE_RETRACTED__CURRENT_SPIN11_ACTION_REJECTED__V64_NULL_MODE_AND_NO_WZ_STAND__H66_HIGH_SCALE_ORPHAN_ONLY_AND_T66_LOW_SCALE_FULL_TEN_ARE_CANDIDATES_ONLY__NO_CROSS_ROUTE_SPLICE__G1_TO_G8_OPEN_ZERO_PROMOTIONS",
+  "strict_master_decision": {
+    "V64_null_mode_retraction_preserved": true,
+    "V65_artifact_integrity_preserved": true,
+    "V65_conditionally_viable_action_upgrade": "RETRACTED",
+    "V66_G1_closed": false,
+    "WZ_term": "NONE_FORCED",
+    "accepted_extension_count": 0,
+    "candidate_extensions": [
+      "H66",
+      "T66"
+    ],
+    "closed_gates": [],
+    "complete_theory": false,
+    "current_Spin11_action_status": "REJECTED",
+    "honest_outcome": "V65 remains a valid historical artifact, but its action upgrade is retracted. Current Spin11 action REJECTED; H66/T66 candidates only; A1-A8 and G1-G8 OPEN.",
+    "same_action_microscopic_completion_found": false
+  },
+  "upstream_status": {
+    "A60": "V60_LIVE_ORBIFOLDER_92_STATE_RECONSTRUCTION_PASS__SIX_GAMMA_CORRECTIONS_EXACT__ALL_THREE_CORRECTED_PLANE_R_LEDGERS_EXACT__FULL_4CUBED_ODD_SUM_SCAN_NONUNIVERSAL__AVAILABLE_U1_AND_SPACE_GROUP_MIXINGS_DO_NOT_REPAIR__ALL_32_ODD_PLANE_R_FREE_TAU_CLASS_PRESERVATION_FAIL__LOCAL_THRESHOLD_AXION_LEDGER_UNKNOWN__STRICT_G1_OPEN",
+    "C": "V59_GAUGED_U1R_LOCAL_COMPLETION__V56_V57_CORES_BOUND__V58_INTEGRATED_SPIN10_X_U1R_SEED_RECONSTRUCTED_EXACTLY__270_SINGLET_PARITIES_HAVE_AN_EXPLICIT_VEV_COMPATIBLE_SOLUTION__CONVENTIONAL_QTHETA1_LIFT_HAS_NONUNIVERSAL_MIXED_U1R_GFP2_ANOMALIES_AT_GG_FLIPPED_AND_PS__EXISTING_BULK_SPIN10_GS_INVARIANT_CANNOT_CANCEL_THEM__LOCALIZED_LEVELS_NORMAL_BUNDLE_DYONIC_STRING_AND_RESIDUAL_NORMALIZATION_DATA_OPEN__SAME_ACTION_MICROSCOPIC_COMPLETION_FALSE__G1_OPEN__ZERO_GATE_PROMOTIONS",
+    "V65_master": "V65_MULTIPATH_G1_FRONTIER_MASTER__V64_MASTER_AND_ORPHAN_LIFT_CORE_BOUND__V64_ROUTE_B_ROW_SUPERSEDED__SIX_GUT_SCALE_LIFT_CHANNELS_CLOSED_EXACTLY__GRAVITINO_SCALE_GM_LIFT_SHARED_WITH_MU__BARYON_SAFE_PORTALS_FORCED_BY_X_ARITHMETIC__GS_IR_CLOSURE_WITH_ORPHANS_EXACT_NO_WZ__ACTION_UPGRADED_FROM_REJECTED_TO_CONDITIONALLY_VIABLE__THEORY_CARD_CORRECTED_NO_WZ_LINE__UNIFICATION_COSMOLOGY_SOFT_DAI_FREED_KK_UV_OPEN__ROUTES_A60_AND_C_CARRIED_FORWARD__NO_CROSS_ROUTE_SPLICING__G1_TO_G8_OPEN",
+    "V66_route": "V66_SPIN11_GM_OVERLAP_UNIFICATION_REPAIR__V65_ARTIFACTS_VALID__V65_ACTION_UPGRADE_RETRACTED__GM_ALLOWED_NOT_CONSTRUCTED__V64_NULL_MODE_NORMALIZATION_SUPPRESSES_GM_AND_PORTALS__ONE_LOOP_THRESHOLD_SOLVE_EXACT__GAUGE_ONLY_TWO_LOOP_DIAGNOSTICS__FULL_SU5_TEN_COMPENSATOR_CANDIDATE_EXHIBITED__BARYON_SAFETY_NOT_INHERITED__CURRENT_ACTION_REJECTED__TWO_CONDITIONAL_EXTENSIONS__NO_WZ__G1_TO_G8_OPEN"
+  },
+  "version": "V66"
+}
+

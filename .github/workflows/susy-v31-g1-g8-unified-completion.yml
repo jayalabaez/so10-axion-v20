@@ -1,0 +1,38 @@
+name: SUSY V31 unified G1-G8 completion
+
+on:
+  push:
+    paths:
+      - "susy_v31_g1_g8_unified_completion.py"
+      - "test_susy_v31_g1_g8_unified_completion.py"
+      - "SUSY_V31_G1_G8_UNIFIED_COMPLETION.json"
+      - "SUSY_V31_G1_G8_UNIFIED_COMPLETION.md"
+      - "SUSY_V31_BENCHMARK_INPUT_LEDGER.json"
+      - "SUSY_V31_SPECTRUM_VACUUM_LEDGER.json"
+      - "SUSY_V31_RGE_FLAVOUR_COSMOLOGY_LEDGER.json"
+      - "SUSY_V31_G1_G8_GATE_LEDGER.json"
+      - ".github/workflows/susy-v31-g1-g8-unified-completion.yml"
+  pull_request:
+    paths:
+      - "susy_v31_g1_g8_unified_completion.py"
+      - "test_susy_v31_g1_g8_unified_completion.py"
+      - "SUSY_V31_G1_G8_UNIFIED_COMPLETION.json"
+      - "SUSY_V31_G1_G8_UNIFIED_COMPLETION.md"
+      - "SUSY_V31_BENCHMARK_INPUT_LEDGER.json"
+      - "SUSY_V31_SPECTRUM_VACUUM_LEDGER.json"
+      - "SUSY_V31_RGE_FLAVOUR_COSMOLOGY_LEDGER.json"
+      - "SUSY_V31_G1_G8_GATE_LEDGER.json"
+      - ".github/workflows/susy-v31-g1-g8-unified-completion.yml"
+  workflow_dispatch:
+
+jobs:
+  verify-v31:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install pytest
+      - run: python -B susy_v31_g1_g8_unified_completion.py --check
+      - run: python -m pytest -q test_susy_v31_g1_g8_unified_completion.py

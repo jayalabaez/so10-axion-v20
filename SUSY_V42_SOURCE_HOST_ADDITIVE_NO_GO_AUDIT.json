@@ -1,0 +1,319 @@
+{
+  "V40_charge_starting_point": {
+    "V40_field_signatures": {
+      "STheta": {
+        "pq": 0,
+        "r4": 2,
+        "u1f": 0,
+        "z5610": 0
+      },
+      "ThetaMinus": {
+        "pq": 0,
+        "r4": 0,
+        "u1f": -9,
+        "z5610": 0
+      },
+      "ThetaPlus": {
+        "pq": 0,
+        "r4": 0,
+        "u1f": 9,
+        "z5610": 0
+      },
+      "X": {
+        "pq": 0,
+        "r4": 2,
+        "u1f": 0,
+        "z5610": 0
+      },
+      "Zp": {
+        "pq": 0,
+        "r4": 2,
+        "u1f": 0,
+        "z5610": 0
+      }
+    },
+    "all_existing_V40_renormalizable_terms_allowed": true,
+    "all_listed_bridges_already_allowed": true,
+    "all_required_terms_allowed": true,
+    "bridge_term_rows": [
+      {
+        "allowed_by_existing_V40_product": true,
+        "charges": {
+          "pq": 0,
+          "r4": 2,
+          "u1f": 0,
+          "z5610": 0
+        },
+        "fields": [
+          "X",
+          "ThetaPlus",
+          "ThetaMinus"
+        ],
+        "label": "X_ThetaPlus_ThetaMinus"
+      },
+      {
+        "allowed_by_existing_V40_product": true,
+        "charges": {
+          "pq": 0,
+          "r4": 2,
+          "u1f": 0,
+          "z5610": 0
+        },
+        "fields": [
+          "Zp",
+          "ThetaPlus",
+          "ThetaMinus"
+        ],
+        "label": "Zp_ThetaPlus_ThetaMinus"
+      },
+      {
+        "allowed_by_existing_V40_product": true,
+        "charges": {
+          "pq": 0,
+          "r4": 2,
+          "u1f": 0,
+          "z5610": 0
+        },
+        "fields": [
+          "X",
+          "STheta",
+          "STheta"
+        ],
+        "label": "X_STheta_STheta"
+      },
+      {
+        "allowed_by_existing_V40_product": true,
+        "charges": {
+          "pq": 0,
+          "r4": 2,
+          "u1f": 0,
+          "z5610": 0
+        },
+        "fields": [
+          "Zp",
+          "STheta",
+          "STheta"
+        ],
+        "label": "Zp_STheta_STheta"
+      },
+      {
+        "allowed_by_existing_V40_product": true,
+        "charges": {
+          "pq": 0,
+          "r4": 2,
+          "u1f": 0,
+          "z5610": 0
+        },
+        "fields": [
+          "STheta",
+          "X",
+          "X"
+        ],
+        "label": "STheta_X_X"
+      },
+      {
+        "allowed_by_existing_V40_product": true,
+        "charges": {
+          "pq": 0,
+          "r4": 2,
+          "u1f": 0,
+          "z5610": 0
+        },
+        "fields": [
+          "STheta",
+          "X",
+          "Zp"
+        ],
+        "label": "STheta_X_Zp"
+      },
+      {
+        "allowed_by_existing_V40_product": true,
+        "charges": {
+          "pq": 0,
+          "r4": 2,
+          "u1f": 0,
+          "z5610": 0
+        },
+        "fields": [
+          "STheta",
+          "Zp",
+          "Zp"
+        ],
+        "label": "STheta_Zp_Zp"
+      }
+    ],
+    "existing_V40_renormalizable_term_count": 36,
+    "required_term_rows": [
+      {
+        "allowed_by_existing_V40_product": true,
+        "charges": {
+          "pq": 0,
+          "r4": 2,
+          "u1f": 0,
+          "z5610": 0
+        },
+        "fields": [
+          "STheta"
+        ],
+        "label": "source_linear"
+      },
+      {
+        "allowed_by_existing_V40_product": true,
+        "charges": {
+          "pq": 0,
+          "r4": 2,
+          "u1f": 0,
+          "z5610": 0
+        },
+        "fields": [
+          "X"
+        ],
+        "label": "host_X_linear"
+      },
+      {
+        "allowed_by_existing_V40_product": true,
+        "charges": {
+          "pq": 0,
+          "r4": 2,
+          "u1f": 0,
+          "z5610": 0
+        },
+        "fields": [
+          "Zp"
+        ],
+        "label": "host_Zp_linear"
+      },
+      {
+        "allowed_by_existing_V40_product": true,
+        "charges": {
+          "pq": 0,
+          "r4": 2,
+          "u1f": 0,
+          "z5610": 0
+        },
+        "fields": [
+          "STheta",
+          "ThetaPlus",
+          "ThetaMinus"
+        ],
+        "label": "source_stabilizer_cubic"
+      }
+    ]
+  },
+  "additive_no_go": {
+    "allowed_term_equations": [
+      "q(STheta) = w from the naked source linear term.",
+      "q(X) = w and q(Zp) = w from the naked host-driver linear terms.",
+      "q(STheta)+q(ThetaPlus)+q(ThetaMinus) = w from the source stabilizer cubic."
+    ],
+    "assumptions": [
+      "A is any additive abelian selection group; it may be finite, continuous, R-type, or a direct product of such factors.",
+      "Every numerical coupling and every dimensionful parameter in the naked linear terms is neutral under A.",
+      "The superpotential target charge is a fixed element w in A (w=0 for a non-R factor).",
+      "The required terms are STheta, X, Zp, and STheta ThetaPlus ThetaMinus; their coefficients are not replaced by VEV-carrying spurions."
+    ],
+    "componentwise_product_extension_statement": "Adding any number of new additive factors does not help: the same three equations hold in every factor, so the bridge is allowed componentwise.",
+    "conclusion": "There is no symmetry-protected separation of the V41 source from both X and Zp within the stated neutral-parameter, naked-linear-term class.",
+    "deductions": [
+      "q(ThetaPlus)+q(ThetaMinus) = 0.",
+      "q(X ThetaPlus ThetaMinus) = q(X) = w.",
+      "q(Zp ThetaPlus ThetaMinus) = q(Zp) = w."
+    ],
+    "does_not_prove": [
+      "that a fully coupled source-plus-host F/D solution is impossible",
+      "that a new model with charged spurions/dynamical linear terms is impossible",
+      "a full G-gate closure"
+    ],
+    "strength_with_respect_to_the_full_V40_ledger": "The proof uses only a necessary subset of the current source and host terms. Requiring every remaining V40 host term can only reduce the allowed charge assignments, not evade an implication already forced by that subset.",
+    "theorem": "neutral-parameter additive source-host separation no-go",
+    "universal_forbidden_goal_fails": [
+      "X ThetaPlus ThetaMinus cannot be forbidden by A.",
+      "Zp ThetaPlus ThetaMinus cannot be forbidden by A."
+    ]
+  },
+  "charged_spurion_evasion_boundary": {
+    "can_be_used_as_evidence_for_current_V41_full_source": false,
+    "can_be_used_to_close_a_gate_without_that_reaudit": false,
+    "minimal_required_reaudit": [
+      "all renormalizable and induced effective source-host operators after the spurion VEVs",
+      "continuous, discrete, mixed-product, gravitational, and global anomaly rows for the new fields",
+      "an explicit F-flat and D-flat branch with every charged-spurion VEV, including the surviving discrete subgroup",
+      "mass ranks and non-condensation of all anomalons/messengers",
+      "the fully coupled PS/PQ/U(1)_F vacuum and its Kahler/soft deformation"
+    ],
+    "why_it_is_outside_the_no_go": "A charged field VEV can replace a numerical coefficient in a linear term, invalidating the neutral-parameter premise.  It is a new theory, not an added label on the V41 ledger."
+  },
+  "core_sha256": "1c84d92745aa78d8eef7b9dad7f3644abc84a388d8260ba04985b7026a6c9c29",
+  "coupled_F_branch_boundary": {
+    "F_terms_on_that_putative_product_branch": {
+      "F_STheta": "kappa(ThetaPlus ThetaMinus-mu_F^2) = 0",
+      "F_X": "partial_X W_host + lambda_X mu_F^2 = lambda_X mu_F^2",
+      "F_Zp": "partial_Zp W_host + lambda_Z mu_F^2 = lambda_Z mu_F^2"
+    },
+    "coupled_full_host_F_D_branch_disproved": false,
+    "coupled_full_host_F_D_branch_solved": false,
+    "generic_allowed_superpotential_piece": "W = kappa STheta(ThetaPlus ThetaMinus-mu_F^2) + lambda_X X ThetaPlus ThetaMinus + lambda_Z Zp ThetaPlus ThetaMinus + W_host",
+    "generic_result": {
+      "isolated_source_times_unperturbed_host_branch_is_F_flat": false,
+      "reason": "For mu_F^2 != 0, it requires lambda_X=lambda_Z=0; the no-go proves no additive neutral-parameter symmetry can enforce those two zeros while retaining the required terms."
+    },
+    "honest_remaining_options": [
+      "solve a genuinely coupled F/D system with all allowed coefficients and the full PS/PQ host field content",
+      "replace one or more naked linear terms by explicitly modelled charged-spurion/dynamical terms, then re-audit anomalies, the residual symmetry, every induced operator, and the F/D branch",
+      "supply a non-additive or geometrical sequestering construction with its microscopic derivation"
+    ],
+    "source_branch_conditions": {
+      "STheta": 0,
+      "ThetaPlus_times_ThetaMinus": "mu_F^2 != 0",
+      "X": 0,
+      "Zp": 0,
+      "unperturbed_host_driver_conditions": "partial_X W_host = partial_Zp W_host = 0"
+    }
+  },
+  "decision": {
+    "a_full_coupled_source_host_branch_is_disproved": false,
+    "all_current_V40_bridges_are_forbidden": false,
+    "charged_spurion_extension_completed": false,
+    "current_V41_source_host_symmetry_protected_separation_exists": false,
+    "full_gate_closed": [],
+    "generic_isolated_source_times_unperturbed_host_branch_is_F_flat": false
+  },
+  "finite_cyclic_crosscheck": {
+    "all_finite_cyclic_examples_confirm_the_symbolic_proof": true,
+    "constructed_assignments_checked": 89439,
+    "counterexamples": [],
+    "orders_checked": [
+      2,
+      64
+    ]
+  },
+  "integrity_checks": {
+    "V40_bridges_already_allowed": true,
+    "V40_existing_renormalizable_ledger_is_consistent": true,
+    "V40_required_terms_are_allowed": true,
+    "finite_cyclic_check_passes": true,
+    "no_false_coupled_vacuum_claim": true,
+    "no_full_gate_promoted": true,
+    "symbolic_no_go_has_two_universal_bridges": true
+  },
+  "schema": "susy-v42-source-host-additive-no-go-audit-v1",
+  "scope": "A formal no-go for additive symmetry-protected separation of the V41 U(1)_F-to-Z9 source from V40 X/Zp drivers when all current naked linear terms have neutral parameters.",
+  "source_manifest": [
+    {
+      "exists": true,
+      "path": "susy_v42_source_host_additive_no_go_audit.py",
+      "sha256": "cf03ce02d768cfa552c216c9e2a7408c0b2c1967f2471313194e6ceaa4cb34f8"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v42_source_host_additive_no_go_audit.py",
+      "sha256": "52f7728793557f0367ab0b3d2e5379a1caa1354709b4585cadb3a24958ff7997"
+    },
+    {
+      "exists": true,
+      "path": "susy_v40_all_ring_selector.py",
+      "sha256": "5adebe960afa417f67339aa32c61db866d2a5d93faa53b50a9b8d472c01d3e1c"
+    }
+  ],
+  "status": "V42_ADDITIVE_SOURCE_HOST_SEPARATION_NO_GO_CERTIFIED_FOR_NEUTRAL_PARAMETERS__COUPLED_VACUUM_AND_SPURION_EXTENSIONS_FAIL_CLOSED"
+}

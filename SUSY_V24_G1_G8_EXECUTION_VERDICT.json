@@ -1,0 +1,530 @@
+{
+  "campaign_scope": "Frozen V23 terminal baseline plus V24 architecture, executable source, exact source-rank, global-SUSY vacuum, gauge-only running, and scoped axion/neutrino/proton diagnostics",
+  "checks": {
+    "GS_topological_contract_does_not_overclaim_dynamical_UV_completion": true,
+    "H_representation_and_mu_protection_are_scoped": true,
+    "P_only_gcd_window_is_not_promoted_to_physical_wall_solution": true,
+    "V23_baseline_is_preserved_at_zero_of_eight_full_gates": true,
+    "V24_architecture_is_selected_only_as_a_research_base": true,
+    "all_eight_full_G1_G8_gates_are_false_and_open": true,
+    "all_pinned_sources_match": true,
+    "all_upstream_canonical_cores_are_valid_and_pinned": true,
+    "all_upstream_schema_namespace_status_metadata_match": true,
+    "exact_PS_breaking_source_Hessian_rank_is_14_of_23_with_nine_Goldstones": true,
+    "finite_zero_PQ_spurion_scan_has_no_quality_RG_overlap": true,
+    "flavour_and_joint_likelihood_remain_open": true,
+    "gauge_only_Planck_endpoints_are_finite_but_not_physical_RGE_closure": true,
+    "live_SARAH_process_is_free_of_Dot_dotsh_and_source_errors": true,
+    "live_SARAH_processed_nonzero_W_and_exact_18_term_multiset": true,
+    "minimal_non_GS_P_mass_completion_has_K7_RG_and_NDW11_obstructions": true,
+    "model_file_is_nonzero_W_PSZ4RZ11_source": true,
+    "proton_result_is_parametric_not_a_pole_lifetime": true,
+    "renormalizable_selector_census_is_exactly_18_of_80": true,
+    "seesaw_witness_is_perturbative_but_not_a_flavour_prediction": true,
+    "source_G1_G2_claims_are_explicitly_partial": true,
+    "zero_energy_global_SUSY_F_D_branch_is_not_promoted_to_full_vacuum": true
+  },
+  "closure_counts": {
+    "closed": 0,
+    "open": 8
+  },
+  "core_sha256": "09b4b232afe0f5150dab74e5fc28f1984551732d9e100c1687971b96410adacd",
+  "exact_landed_results": {
+    "Higgs_and_mu": {
+      "low_energy_doublet_pairs_before_w0": 1,
+      "radiative_EWSB_closed": false,
+      "representation": "H=(1,2,2)",
+      "supersymmetric_mass_at_X0": 0,
+      "w0_H2_generates_soft_scale_mu": true
+    },
+    "architecture": {
+      "complete_theory_selected": false,
+      "derived_not_published": true,
+      "gauge_group": "SU(4)C x SU(2)L x SU(2)R",
+      "research_base_selected": true,
+      "research_route": "DERIVED_PSZ4RZ11_KAWAMURA_RABY_MINIMAL_PS_VARIANT",
+      "shaping_symmetry": "Z4R x Z11"
+    },
+    "axion_and_neutrino": {
+      "GS_inclusive_vacuum_lattice_computed": false,
+      "P_only_interval_nonempty": true,
+      "conditional_P_only_37GHz_frequency_GHz": 36.705077574,
+      "conditional_P_only_gcd": 1,
+      "leading_pure_P_superpotential_power": 11,
+      "neutrino_scale_is_witness_not_prediction": true,
+      "physical_GS_inclusive_wall_window_claim": false,
+      "seesaw_MR_GeV": 100000000000000.0
+    },
+    "gauge_running": {
+      "PS_one_loop_b": [
+        1,
+        5,
+        9
+      ],
+      "PS_two_loop_B": [
+        [
+          108,
+          15,
+          21
+        ],
+        [
+          75,
+          53,
+          3
+        ],
+        [
+          105,
+          3,
+          81
+        ]
+      ],
+      "complete_family_Delta_b": [
+        4,
+        4,
+        4
+      ],
+      "published_Z5_control_alpha_inverse_at_1e18_GeV": [
+        13.860611822824,
+        10.985373107419,
+        7.747434876886
+      ],
+      "published_Z5_control_alpha_inverse_at_reduced_Planck": [
+        13.580318662923,
+        10.154174281965,
+        6.252345458625
+      ],
+      "scope": "common-boundary gauge-only benchmark; physical superpartner, PS, Yukawa, and scheme thresholds are not fitted",
+      "selected_Z11_alpha_inverse_at_1e18_GeV": [
+        15.760581115599363,
+        12.87767203164891,
+        9.686379301220363
+      ],
+      "selected_Z11_alpha_inverse_at_reduced_Planck": [
+        15.501027745017138,
+        12.06369301733598,
+        8.231081080183568
+      ]
+    },
+    "minimal_non_GS_completion_scan": {
+      "Green_Schwarz_dependency_eliminated": false,
+      "P11_lifts_all_completed_QCD_vacua": false,
+      "P_mass_weighted_index_congruence": "K_G=7 (mod 22)",
+      "absolute_N_DW_after_P_mass_completion": 11,
+      "gcd_P11_and_completed_NDW": 11,
+      "minimal_non_GS_completion_viable_in_scanned_scope": false,
+      "minimum_positive_weighted_index": 7,
+      "one_loop_necessary_perturbativity_condition_pass": false,
+      "projected_SU2R_inverse_after_minimal_completion": -6.893001193062,
+      "scope": "minimal weakly-coupled PS/SO10-real or vectorlike anomaly sectors with natural P-generated masses or one zero-PQ discrete-charged mass spurion",
+      "scope_boundary": "This is an exact no-go for the stated minimal weakly-coupled P-mass and finite zero-PQ-spurion classes, not for every possible UV completion.",
+      "zero_PQ_spurion_scan_has_quality_RG_overlap": false,
+      "zero_PQ_spurion_scan_scope": "finite fundamental charge cell qS=1..10, rS in {0,2}; weakly-coupled real-10 index units; rS=0 includes its required existing-P k=1 real-10 repair; coefficient-one generic-phase A-term quality screen"
+    },
+    "proton_and_flavour": {
+      "flavour_and_cosmology_are_predictions": false,
+      "physical_Wilson_matching_and_pole_lifetime_landed": false,
+      "published_Z5_control_dimension4_baryon_coefficient_order": 1e-55,
+      "published_Z5_control_minimal_RPV_lambdaL_order": 1e-29,
+      "selected_Z11_leading_Q4_coefficient_GeV_inverse": 1e-31,
+      "selected_Z11_leading_Q4_dressing": "w0*(Q^4 or Qc^4)/Lambda^2",
+      "selected_Z11_odd_RPV_forbidden_all_spurion_orders": true
+    },
+    "rank_and_vacuum": {
+      "D_terms_all_zero": true,
+      "F_terms_all_zero": true,
+      "PS_breaking_W_Hessian_dimension": [
+        23,
+        23
+      ],
+      "PS_breaking_W_Hessian_nullity": 9,
+      "PS_breaking_W_Hessian_rank": 14,
+      "PS_to_SM_broken_generators": 9,
+      "full_soft_Kahler_hessian_closed": false,
+      "global_SUSY_energy_over_vPS4": 0
+    },
+    "source_and_selector": {
+      "P_VEV_preserves_Z2_matter_parity": true,
+      "actual_discrete_GS_UV_realization_landed": false,
+      "actual_dynamical_GS_modulus_stabilization_landed": false,
+      "declared_structural_classes": 18,
+      "gauge_invariant_degree_le_3_classes": 80,
+      "processed_structural_classes": 18,
+      "selector_allowed_classes": 18,
+      "topological_equal_level_GS_counterterm_contract_landed": true
+    }
+  },
+  "failures": [],
+  "gates": [
+    {
+      "closed": false,
+      "evidence_landed": [
+        "genuine SARAH 4.15.3 Start[] and post-Start processing of a nonzero W",
+        "exact 80-class degree<=3 gauge census with 18 selector-allowed classes",
+        "all 18 processed field structures match the declared structural multiset",
+        "the component superpotential has 18 couplings and the required representative coupling families",
+        "unique renormalizable PS tensor channels and a renormalizable seesaw messenger channel"
+      ],
+      "full_gate_claim": false,
+      "gate": "G1",
+      "open_requirements": [
+        "all-order holomorphic, Kahler, soft, and higher-field operator contract",
+        "dynamical Green--Schwarz axion/modulus, stabilization, and UV realization",
+        "hidden-sector audit preserving the residual Z2 matter parity"
+      ],
+      "qualified_id": "research.susy_pati_salam.v24.G1.full_closure",
+      "state": "EXECUTABLE_RENORMALIZABLE_SOURCE_LANDED__FULL_UV_OPERATOR_CONTRACT_OPEN"
+    },
+    {
+      "closed": false,
+      "evidence_landed": [
+        "exact generic PS-breaking superpotential Hessian rank 14/23",
+        "the nine-dimensional kernel equals the nine PS/SM gauge-Goldstone directions",
+        "full-rank colored block and rank-one-by-four vectorlike family mass rows"
+      ],
+      "full_gate_claim": false,
+      "gate": "G2",
+      "open_requirements": [
+        "gauge-fixed full scalar/fermion component Hessians including soft and PQ sectors",
+        "complete SM decomposition, pole eigenvalues, and correlated thresholds"
+      ],
+      "qualified_id": "research.susy_pati_salam.v24.G2.full_closure",
+      "state": "EXACT_SOURCE_HESSIAN_RANK_LANDED__PHYSICAL_POLE_SPECTRUM_OPEN"
+    },
+    {
+      "closed": false,
+      "evidence_landed": [
+        "explicit equal-conjugate-VEV PS branch with every F term and D term zero",
+        "zero energy is globally minimal for the nonnegative global-SUSY F+D potential"
+      ],
+      "full_gate_claim": false,
+      "gate": "G3",
+      "open_requirements": [
+        "complete soft/Kahler/PQ potential",
+        "competing-branch exclusion and positive full physical Hessian",
+        "radiative electroweak and PQ vacuum selection"
+      ],
+      "qualified_id": "research.susy_pati_salam.v24.G3.full_closure",
+      "state": "ZERO_ENERGY_GLOBAL_SUSY_BRANCH_LANDED__FULL_STABILIZED_VACUUM_OPEN"
+    },
+    {
+      "closed": false,
+      "evidence_landed": [
+        "H=(1,2,2) contains one Hu,Hd pair and no colored partner",
+        "the supersymmetric H mass vanishes at X=0 and w0 H^2 permits mu at the soft scale",
+        "the P VEV leaves the Z2 matter-parity subgroup"
+      ],
+      "full_gate_claim": false,
+      "gate": "G4",
+      "open_requirements": [
+        "explicit mediation and soft spectrum",
+        "radiative EWSB and a stable weak hierarchy",
+        "physical heavy thresholds"
+      ],
+      "qualified_id": "research.susy_pati_salam.v24.G4.full_closure",
+      "state": "REPRESENTATION_AND_R_PROTECTION_LANDED__WEAK_HIERARCHY_OPEN"
+    },
+    {
+      "closed": false,
+      "evidence_landed": [
+        "rank-capable type-I seesaw channel with a perturbative scale witness",
+        "leading pure-P source term P^11/Lambda^8 and conditional P-only gcd(11,4)=1 arithmetic",
+        "conditional P-only 36.705 GHz row and narrow quality/timing arithmetic interval"
+      ],
+      "full_gate_claim": false,
+      "gate": "G5",
+      "open_requirements": [
+        "actual dynamical GS axion/modulus, stabilization, and UV realization",
+        "GS-inclusive discrete-gauge vacuum quotient and physical wall network/collapse",
+        "radiative PQ generation and axion/axino/saxion/neutralino relic likelihood",
+        "predicted neutrino mixing rather than an input mass witness"
+      ],
+      "qualified_id": "research.susy_pati_salam.v24.G5.full_closure",
+      "state": "SEESAW_AND_P_ONLY_AXION_DIAGNOSTICS_LANDED__GS_PHYSICAL_COSMOLOGY_OPEN"
+    },
+    {
+      "closed": false,
+      "evidence_landed": [
+        "exact PS one-loop b=(1,5,9) and gauge-only two-loop B matrix",
+        "universal complete-family Delta b=(4,4,4)",
+        "finite coupled gauge-only endpoints at 1e18 GeV and reduced Planck scale"
+      ],
+      "full_gate_claim": false,
+      "gate": "G6",
+      "open_requirements": [
+        "physical superpartner, PQ, and PS threshold matching",
+        "coupled gauge-Yukawa-soft running and higher-loop uncertainty",
+        "precision unification and scheme replay"
+      ],
+      "qualified_id": "research.susy_pati_salam.v24.G6.full_closure",
+      "state": "EXACT_GAUGE_ONLY_PLANCK_WINDOWS_LANDED__PHYSICAL_RGE_CHAIN_OPEN"
+    },
+    {
+      "closed": false,
+      "evidence_landed": [
+        "exact residual matter parity forbids odd-matter RPV at every P/w0 spurion order",
+        "odd RPV is exactly forbidden for all P/w0 dressings, while the leading allowed Q4/Qc4 coefficient is w0/Lambda^2 approximately 1e-31 GeV^-1"
+      ],
+      "full_gate_claim": false,
+      "gate": "G7",
+      "open_requirements": [
+        "complete pole spectrum and mass-basis baryon-violating Wilson matching",
+        "operator running, dressing, hadronic inputs, and lifetime distributions"
+      ],
+      "qualified_id": "research.susy_pati_salam.v24.G7.full_closure",
+      "state": "PARAMETRIC_PROTON_SUPPRESSION_LANDED__PHYSICAL_LIFETIME_OPEN"
+    },
+    {
+      "closed": false,
+      "evidence_landed": [
+        "a perturbative Dirac-Yukawa witness can reproduce the input neutrino mass scales"
+      ],
+      "full_gate_claim": false,
+      "gate": "G8",
+      "open_requirements": [
+        "charged-fermion, CKM, and PMNS fit with covariance",
+        "joint proton, neutrino, axion, relic, collider, and cosmology likelihood",
+        "versioned experimental, lattice, and cosmological input ledger"
+      ],
+      "qualified_id": "research.susy_pati_salam.v24.G8.full_closure",
+      "state": "KINEMATIC_NEUTRINO_WITNESS_LANDED__GLOBAL_FLAVOUR_LIKELIHOOD_OPEN"
+    }
+  ],
+  "hard_claim_boundaries": {
+    "P_only_gcd_and_numerical_window": "CONDITIONAL_ARITHMETIC_NOT_A_PHYSICAL_WALL_PROOF",
+    "RGE": "GAUGE_ONLY_SCREEN__PHYSICAL_GAUGE_YUKAWA_SOFT_THRESHOLDS_ABSENT",
+    "actual_GS_axion_modulus_stabilization_and_UV_realization": "ABSENT",
+    "flavour": "MASS_SCALE_WITNESS__GLOBAL_LIKELIHOOD_ABSENT",
+    "minimal_non_GS_completion_scan": "P_MASS_CLASS_FAILS_RG_AND_ALIGNS_P11_WITH_NDW11__FINITE_ZERO_PQ_SPURION_CLASS_HAS_NO_QUALITY_RG_OVERLAP__GS_OR_NEW_SHAPING_REQUIRED",
+    "proton": "PARAMETRIC_SOURCE_SUPPRESSION__POLE_LIFETIME_ABSENT",
+    "topological_GS_counterterm_contract": "LANDED_BUT_NOT_A_DYNAMICAL_UV_COMPLETION",
+    "vacuum": "GLOBAL_SUSY_ZERO_BRANCH_ONLY__FULL_SOFT_KAHLER_COMPETING_BRANCH_PROOF_ABSENT"
+  },
+  "n_checks": 22,
+  "n_failed": 0,
+  "namespace": "terminal.susy_pati_salam.v24.G1_G8.execution_verdict",
+  "next_research_promotion_requirements": [
+    "construct and stabilize the dynamical GS axion/modulus and its UV/hidden sector while preserving residual matter parity, or replace the selector with independently anomaly-complete shaping physics",
+    "solve the full F+D+soft+Kahler/PQ vacuum and gauge-fixed component/pole spectrum",
+    "perform physical threshold matching and coupled gauge-Yukawa-soft running",
+    "compute the GS-inclusive vacuum lattice, wall network/collapse, and relic history",
+    "calculate proton Wilson coefficients/lifetimes and fit charged flavour, CKM, PMNS, axion, neutrino, collider, and cosmology data"
+  ],
+  "overall_state": "NEW_RESEARCH_MODEL_AT_FAIL_CLOSED_PREDICTIVE_FRONTIER",
+  "research_model": {
+    "complete_predictive_theory": false,
+    "gauge_group": "SU(4)C x SU(2)L x SU(2)R",
+    "name": "PSZ4RZ11SUSYV24",
+    "new_research_model_created": true,
+    "provenance": "Derived V24 selector/source on the published Kawamura--Raby Pati--Salam scaffold; PSZ4RZ11 itself is not a published model.",
+    "runtime_attested": true,
+    "selector": "Z4R x Z11",
+    "short_name": "PSZ4RZ11"
+  },
+  "runtime_attestation": {
+    "all_required_checks_pass": true,
+    "claim_boundary": "This is a genuine nonzero-W source/runtime attestation, not a pole-spectrum, soft-vacuum, or phenomenological likelihood calculation.",
+    "engine": "Wolfram 15.0.1 for Microsoft Windows (64-bit) (July 2, 2026)",
+    "executed": true,
+    "exit_code": 0,
+    "full_process_free_of_Dot_dotsh": true,
+    "model": "PSZ4RZ11SUSYV24",
+    "model_path": "models/PSZ4RZ11SUSYV24/PSZ4RZ11SUSYV24.m",
+    "nonzero_component_superpotential": true,
+    "processed_field_structure_multiset_exact": true,
+    "processed_structural_term_count": 18,
+    "start_log_free_of_source_errors_and_Dot_dotsh": true,
+    "tool": "SARAH 4.15.3"
+  },
+  "schema": "susy_v24_g1_g8_execution_verdict_v1",
+  "source_manifest": [
+    {
+      "expected_sha256": "1b3d46b6cc17436066fa33e4a7e6702e5ece536a6375b9f9507bae37c15dc009",
+      "matches": true,
+      "mode": "raw",
+      "path": "susy_v23_g1_g8_execution_verdict.py",
+      "sha256": "1b3d46b6cc17436066fa33e4a7e6702e5ece536a6375b9f9507bae37c15dc009"
+    },
+    {
+      "expected_sha256": "495ae179eff96c40cf787c9fe154437ba0941c06679af581a44a0db1983387a7",
+      "matches": true,
+      "mode": "raw",
+      "path": "SUSY_V23_G1_G8_EXECUTION_VERDICT.json",
+      "sha256": "495ae179eff96c40cf787c9fe154437ba0941c06679af581a44a0db1983387a7"
+    },
+    {
+      "expected_sha256": "f9326bd8bdee7046a813c266fa2beecfad557ffc5cc9ac30fe027681785bae21",
+      "matches": true,
+      "mode": "raw",
+      "path": "SUSY_V23_G1_G8_EXECUTION_VERDICT.md",
+      "sha256": "f9326bd8bdee7046a813c266fa2beecfad557ffc5cc9ac30fe027681785bae21"
+    },
+    {
+      "expected_sha256": "1016de11dbee9dce9d912a0e49fa90053b273ce0564b04f05a42f5ea1f2d179a",
+      "matches": true,
+      "mode": "raw",
+      "path": "susy_v24_architecture_decision.py",
+      "sha256": "1016de11dbee9dce9d912a0e49fa90053b273ce0564b04f05a42f5ea1f2d179a"
+    },
+    {
+      "expected_sha256": "9489128ef689ed21db60c06e4964f7f97de4990e6c81e1c89b1e3bf54b5ca9f6",
+      "matches": true,
+      "mode": "raw",
+      "path": "SUSY_V24_ARCHITECTURE_DECISION.json",
+      "sha256": "9489128ef689ed21db60c06e4964f7f97de4990e6c81e1c89b1e3bf54b5ca9f6"
+    },
+    {
+      "expected_sha256": "0249587b53c06853f0a8b2e055f3944bc557fefbcf61b3927db94b4ce3db581b",
+      "matches": true,
+      "mode": "raw",
+      "path": "SUSY_V24_ARCHITECTURE_DECISION.md",
+      "sha256": "0249587b53c06853f0a8b2e055f3944bc557fefbcf61b3927db94b4ce3db581b"
+    },
+    {
+      "expected_sha256": "4993924ebf64a8eb05f83290174adaffe277342234d1ae43e78d992b3efbf4da",
+      "matches": true,
+      "mode": "raw",
+      "path": "susy_v24_ps_source_contract.py",
+      "sha256": "4993924ebf64a8eb05f83290174adaffe277342234d1ae43e78d992b3efbf4da"
+    },
+    {
+      "expected_sha256": "c2457e188877a2729e092acf6ddbf76626b884a4c1cb652c282da215f268ce51",
+      "matches": true,
+      "mode": "raw",
+      "path": "SUSY_V24_PS_SOURCE_CONTRACT.json",
+      "sha256": "c2457e188877a2729e092acf6ddbf76626b884a4c1cb652c282da215f268ce51"
+    },
+    {
+      "expected_sha256": "8ab2697b3efdbec45d48db53074743faefa1a7740989397e295a41f75855c8f5",
+      "matches": true,
+      "mode": "raw",
+      "path": "SUSY_V24_PS_SOURCE_CONTRACT.md",
+      "sha256": "8ab2697b3efdbec45d48db53074743faefa1a7740989397e295a41f75855c8f5"
+    },
+    {
+      "expected_sha256": "c5af70ab22756d79eb72a4d5a3c2c23f86a1f1378cb8e09c1e67076609d44125",
+      "matches": true,
+      "mode": "raw",
+      "path": "susy_v24_ps_vacuum_rg_frontier.py",
+      "sha256": "c5af70ab22756d79eb72a4d5a3c2c23f86a1f1378cb8e09c1e67076609d44125"
+    },
+    {
+      "expected_sha256": "4f47ca9b18902a744c138ddceeec461036e41c6803bb7d60a68a276e09499c0d",
+      "matches": true,
+      "mode": "raw",
+      "path": "SUSY_V24_PS_VACUUM_RG_FRONTIER.json",
+      "sha256": "4f47ca9b18902a744c138ddceeec461036e41c6803bb7d60a68a276e09499c0d"
+    },
+    {
+      "expected_sha256": "593a8ce804651746a99e584b991f773ac771053b7c77242bd6444078c93c5ec8",
+      "matches": true,
+      "mode": "raw",
+      "path": "SUSY_V24_PS_VACUUM_RG_FRONTIER.md",
+      "sha256": "593a8ce804651746a99e584b991f773ac771053b7c77242bd6444078c93c5ec8"
+    },
+    {
+      "expected_sha256": "09326668d02b32b4a66c3b79cba34fb6a709430a360dce6d2d5d2ab039cad2bf",
+      "matches": true,
+      "mode": "raw",
+      "path": "models/PSZ4RZ11SUSYV24/PSZ4RZ11SUSYV24.m",
+      "sha256": "09326668d02b32b4a66c3b79cba34fb6a709430a360dce6d2d5d2ab039cad2bf"
+    },
+    {
+      "expected_sha256": "1a15d9c29e324a33fc2363fc6fa2e9f871bee2ec3253b98961d25442c32e9992",
+      "matches": true,
+      "mode": "raw",
+      "path": "models/PSZ4RZ11SUSYV24/parameters.m",
+      "sha256": "1a15d9c29e324a33fc2363fc6fa2e9f871bee2ec3253b98961d25442c32e9992"
+    },
+    {
+      "expected_sha256": "6c7be1d5ee866cfd8b6696c48edfec5f385f9da13decd045baa21e4881369b47",
+      "matches": true,
+      "mode": "raw",
+      "path": "models/PSZ4RZ11SUSYV24/particles.m",
+      "sha256": "6c7be1d5ee866cfd8b6696c48edfec5f385f9da13decd045baa21e4881369b47"
+    },
+    {
+      "expected_sha256": "751d44288efebd29daccb8601201b2a8c45eb713dfd06fa23d5d8b39db92deb9",
+      "matches": true,
+      "mode": "raw",
+      "path": "tools/validate-susy-v24-ps.wls",
+      "sha256": "751d44288efebd29daccb8601201b2a8c45eb713dfd06fa23d5d8b39db92deb9"
+    },
+    {
+      "expected_sha256": "55054c9bb70629c1ed099dd22c7d54ada510610dced5496ef11ee00db2875bc3",
+      "matches": true,
+      "mode": "raw",
+      "path": "susy_v24_non_gs_anomaly_completion_nogo.py",
+      "sha256": "55054c9bb70629c1ed099dd22c7d54ada510610dced5496ef11ee00db2875bc3"
+    },
+    {
+      "expected_sha256": "c28214d0e3be810e26beeff040e3379a42a0d306dd2fe56f87e52de4b4d26941",
+      "matches": true,
+      "mode": "raw",
+      "path": "SUSY_V24_NON_GS_ANOMALY_COMPLETION_NOGO.json",
+      "sha256": "c28214d0e3be810e26beeff040e3379a42a0d306dd2fe56f87e52de4b4d26941"
+    },
+    {
+      "expected_sha256": "57ecbd0460af8830b6616419e8c20b9f8dd35b5a8ce116f8f9b6a96caf3e7fdb",
+      "matches": true,
+      "mode": "raw",
+      "path": "SUSY_V24_NON_GS_ANOMALY_COMPLETION_NOGO.md",
+      "sha256": "57ecbd0460af8830b6616419e8c20b9f8dd35b5a8ce116f8f9b6a96caf3e7fdb"
+    },
+    {
+      "expected_sha256": "5dd5bf5d58960656dfcdbd99481406b6e11983599b8d8e14fa94bd9972ffd9db",
+      "matches": true,
+      "mode": "raw",
+      "path": "test_susy_v24_non_gs_anomaly_completion_nogo.py",
+      "sha256": "5dd5bf5d58960656dfcdbd99481406b6e11983599b8d8e14fa94bd9972ffd9db"
+    }
+  ],
+  "status": "V24_G1_G8_EXECUTION_COMPLETE__NEW_EXECUTABLE_RESEARCH_MODEL_LANDED__NO_COMPLETE_PREDICTIVE_THEORY__ZERO_OF_EIGHT_FULL_GATES",
+  "terminal_verdict": {
+    "all_full_G1_G8_gates_closed": false,
+    "complete_G1_G8_solution_exists_in_this_repository": false,
+    "complete_predictive_theory": false,
+    "continue_as_research_model": true,
+    "new_research_model_created": true,
+    "reason": "V24 materially advances the project with an executable nonzero-W Pati--Salam source, an exact 18/80 selector census, rank 14/23 source Hessian, an F=D=0 branch, protected Higgs representation, and finite gauge-only Planck screens. It is not a complete predictive theory: the dynamical GS sector and UV realization, full soft/Kahler vacuum and pole spectrum, physical thresholds/RGEs, GS-inclusive wall physics, proton lifetime, flavour fit, and joint likelihood remain absent. The tested minimal non-GS alternatives also fail: natural P-generated masses force K=7 mod 22, exceed the one-loop RG budget, and shift NDW to 11 so P11 aligns; the finite zero-PQ-spurion scan has no quality/RG overlap.",
+    "reproducible_research_progress_created": true,
+    "safe_to_claim_a_new_fundamental_law": false,
+    "stop_complete_theory_claim": true
+  },
+  "upstream_core_pins": {
+    "v23_terminal_baseline": {
+      "canonical_core_valid": true,
+      "expected_core_sha256": "ab16d07e95c8ca24873523ecb6e145e84fd46fb3b39f2a6a98b0c3349c3396ca",
+      "matches": true,
+      "observed_core_sha256": "ab16d07e95c8ca24873523ecb6e145e84fd46fb3b39f2a6a98b0c3349c3396ca",
+      "path": "SUSY_V23_G1_G8_EXECUTION_VERDICT.json"
+    },
+    "v24_architecture": {
+      "canonical_core_valid": true,
+      "expected_core_sha256": "f091f1a452b815bb32c780a5062704532818d0517254960ed799fecfe3fcb71b",
+      "matches": true,
+      "observed_core_sha256": "f091f1a452b815bb32c780a5062704532818d0517254960ed799fecfe3fcb71b",
+      "path": "SUSY_V24_ARCHITECTURE_DECISION.json"
+    },
+    "v24_non_GS_completion_nogo": {
+      "canonical_core_valid": true,
+      "expected_core_sha256": "ee04ddfb4b879efb8e756f54e174b9e33ec35e39ea9a0a58a6741d1249e78932",
+      "matches": true,
+      "observed_core_sha256": "ee04ddfb4b879efb8e756f54e174b9e33ec35e39ea9a0a58a6741d1249e78932",
+      "path": "SUSY_V24_NON_GS_ANOMALY_COMPLETION_NOGO.json"
+    },
+    "v24_source": {
+      "canonical_core_valid": true,
+      "expected_core_sha256": "d408aa7d7d3096ac917f5bd6f4f37576aace4cd78709bf4810b8e036dc2d93a8",
+      "matches": true,
+      "observed_core_sha256": "d408aa7d7d3096ac917f5bd6f4f37576aace4cd78709bf4810b8e036dc2d93a8",
+      "path": "SUSY_V24_PS_SOURCE_CONTRACT.json"
+    },
+    "v24_vacuum_rg": {
+      "canonical_core_valid": true,
+      "expected_core_sha256": "9f47db6cb3bb97b10b4554b8b3f51f146c09820bd202d7b6dcb429891fece780",
+      "matches": true,
+      "observed_core_sha256": "9f47db6cb3bb97b10b4554b8b3f51f146c09820bd202d7b6dcb429891fece780",
+      "path": "SUSY_V24_PS_VACUUM_RG_FRONTIER.json"
+    }
+  }
+}

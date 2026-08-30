@@ -1,0 +1,105 @@
+{
+  "catalogue_audit": {
+    "degree_le_4_sectors": 108,
+    "degree_le_4_spectator_hits": [],
+    "first_audited_XMP_spurion_leakage_layer": {
+      "complete_degree_five_census": false,
+      "scope_statement": "This is the first audited XMP-spurion leakage layer, not a complete degree-five census.",
+      "sectors": 67,
+      "source_operator_degree": 5,
+      "spectator_hits": []
+    },
+    "first_degree_5_spectator_hits": [],
+    "first_degree_5_spurion_sectors": 67
+  },
+  "checks": {
+    "V22R_contract_passes": true,
+    "all_order_masslessness_is_not_claimed": true,
+    "all_three_spectators_are_SO10_and_U1X_singlets": true,
+    "complete_degree_five_census_is_explicitly_not_claimed": true,
+    "complete_degree_four_catalogue_has_108_sectors": true,
+    "first_audited_XMP_spurion_leakage_layer_has_67_degree_five_lifts": true,
+    "global_SUSY_superpotential_Hessian_has_three_zero_spectator_rows_in_scope": true,
+    "none_of_the_108_sectors_contains_Z0_Z1_or_Z2": true,
+    "none_of_the_67_first_audited_XMP_spurion_leakage_lifts_contains_Z0_Z1_or_Z2": true,
+    "soft_or_supergravity_mass_generation_is_not_claimed": true,
+    "spectator_Z28R_charges_match_the_source": true
+  },
+  "claim_boundary": {
+    "V22R_G5_closed": false,
+    "V22R_G5_massive_spectator_requirement_closed": false,
+    "all_order_spectator_masslessness_closed": false,
+    "complete_degree_five_census_closed": false,
+    "full_soft_and_supergravity_spectrum_closed": false,
+    "spectator_masslessness_through_degree_four_closed": true,
+    "spectator_masslessness_through_first_audited_XMP_spurion_leakage_layer_closed": true
+  },
+  "core_sha256": "c14739a0a8946d9f7ae3d77e38829e14463641f98d4c53fa87d06e545ec579af",
+  "failures": [],
+  "mass_matrix_consequence": {
+    "Kahler_metric_can_remove_the_zero_rank_without_additional_mass_sources": false,
+    "exact_zero_rows_and_columns": [
+      "Z0",
+      "Z1",
+      "Z2"
+    ],
+    "fermion_mass_matrix": "M_ij = partial_i partial_j W",
+    "framework": "global N=1 supersymmetry with the declared Wilsonian superpotential",
+    "minimum_massless_chiral_multiplets_in_scope": 3,
+    "ordinary_soft_scalar_masses_alone_lift_the_spectator_fermions": false
+  },
+  "n_checks": 11,
+  "n_failed": 0,
+  "namespace": "active.susy_so10x17.v22r.G5.spectator_mass_frontier",
+  "overall_state": "EXACT_SCOPED_G5_OBSTRUCTION",
+  "resolution_options_not_executed": [
+    "land higher-dimensional spectator-driver operators and re-solve the driver constraints",
+    "add anomaly-consistent R-charge-two spectator partners and rerun the G1 selector/anomalies",
+    "declare a source-bound supergravity or R-breaking hidden-sector fermion-mass mechanism"
+  ],
+  "schema": "susy_v22r_spectator_mass_frontier_v1",
+  "source_manifest": [
+    {
+      "mode": "raw",
+      "path": "SUSY_V22R_OPERATOR_CATALOGUE.json",
+      "sha256": "dbd3f87df836184673c6bf972c5c3d4a7f278ba19d7be20798db3cb7014d7b1f"
+    },
+    {
+      "mode": "raw",
+      "path": "SUSY_V22R_BROKEN_SELECTOR_SPURION_FRONTIER.json",
+      "sha256": "c6cfb2dc6065d4bdb64d89d77389c9278c11a396e65dfd9f8b91ace2170ca9cd"
+    },
+    {
+      "mode": "raw",
+      "path": "SUSY_SO10X17_V22R_CONTRACT.json",
+      "sha256": "9804311b0aa2ffb021205238a55438e990472b5ecaa4ef60a11de7256981b259"
+    }
+  ],
+  "spectators": [
+    {
+      "SO10": 1,
+      "U1X": 0,
+      "Z28R": 20,
+      "degree_le_4_sector_occurrences": 0,
+      "first_audited_XMP_spurion_leakage_layer_occurrences": 0,
+      "name": "Z0"
+    },
+    {
+      "SO10": 1,
+      "U1X": 0,
+      "Z28R": 12,
+      "degree_le_4_sector_occurrences": 0,
+      "first_audited_XMP_spurion_leakage_layer_occurrences": 0,
+      "name": "Z1"
+    },
+    {
+      "SO10": 1,
+      "U1X": 0,
+      "Z28R": 12,
+      "degree_le_4_sector_occurrences": 0,
+      "first_audited_XMP_spurion_leakage_layer_occurrences": 0,
+      "name": "Z2"
+    }
+  ],
+  "status": "V22R_THREE_SPECTATOR_CHIRAL_MULTIPLETS_MASSLESS_THROUGH_FIRST_AUDITED_XMP_SPURION_LEAKAGE_LAYER__NOT_COMPLETE_DEGREE5_CENSUS__G5_OPEN"
+}

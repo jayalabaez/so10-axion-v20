@@ -16,6 +16,7 @@ on:
       - live_g2_derivative_coverage_ledger_v20.py
       - models/SO10Z17AxionV20.m
       - models/EXACT_X_EXTERNAL_INPUT_MANIFEST_V20.json
+      - models/SARAH_4_15_3_CANONICAL_SOURCE_TREE_V20.json
       - tools/validate-exact-x-model.wls
       - run_exact_x_sarah_validation_v20.py
       - models/EXACT_X_EXTERNAL_MODEL_VALIDATION_V20.json
@@ -38,6 +39,7 @@ jobs:
         run: |
           python -m py_compile \
             exact_x_symmetry_consistency_gate_v20.py \
+            run_exact_x_sarah_validation_v20.py \
             gauged_u1x_scalar_contract_v20.py \
             test_exact_x_symmetry_consistency_gate_v20.py \
             test_gauged_u1x_scalar_contract_v20.py
@@ -46,6 +48,8 @@ jobs:
           python -m pytest -q \
             test_exact_x_symmetry_consistency_gate_v20.py \
             test_gauged_u1x_scalar_contract_v20.py
+      - name: Verify proof-grade external bundle preflight
+        run: python run_exact_x_sarah_validation_v20.py --preflight-only
       - name: Generate certificates
         run: |
           python exact_x_symmetry_consistency_gate_v20.py > /tmp/exact-x-symmetry.log
@@ -57,10 +61,8 @@ jobs:
           from pathlib import Path
           report = json.loads(Path('EXACT_X_SYMMETRY_CONSISTENCY_GATE_V20.json').read_text())
           assert report['n_failed'] == 0, report['failures']
-          assert report['overall_state'] == 'BLOCKED'
-          assert report['contract_consistent'] is False
+          assert report['overall_state'] in ('BLOCKED', 'PASS')
           assert report['static_contract_consistent'] is True
-          assert report['blocker'] == 'AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED'
           assert report['authoritative_manuscript_contract']['gauges_primitive_U1X'] is True
           assert report['authoritative_manuscript_contract']['scalar_charge_contract_matches_expected'] is True
           assert report['declared_symmetries']['u1x_gauged'] is True
@@ -74,14 +76,29 @@ jobs:
           assert report['declared_symmetries']['soft_gaugino_absent_in_nonsusy_model'] is True
           assert report['declared_symmetries']['statically_executable_model_contract'] is True
           assert report['declared_symmetries']['lagrangian']['registered_in_GaugeES_LagrangianInput'] is True
-          assert report['external_model_validation']['present'] is False
-          assert report['external_model_validation']['valid'] is False
-          assert report['external_model_validation']['schema'] is None
-          assert report['external_model_validation']['checks']['captured_process_log_is_hash_bound'] is False
-          assert report['flag']['externally_executed_model_contract'] is False
+          if report['contract_consistent']:
+              assert report['overall_state']=='PASS' and report['blocker'] is None
+              assert report['external_model_validation']['present'] is True
+              assert report['external_model_validation']['valid'] is True
+              assert report['external_model_validation']['schema'] == 'so10-exact-x-external-model-validation-v3'
+              assert report['external_model_validation']['checks']['schema_is_supported'] is True
+          else:
+              assert report['overall_state']=='BLOCKED'
+              assert report['blocker'] == 'AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED'
+              assert report['external_model_validation']['present'] is False
+              assert report['external_model_validation']['valid'] is False
+              assert report['external_model_validation']['schema'] is None
+              assert report['external_model_validation']['checks']['schema_is_supported'] is False
+          assert report['external_model_validation']['checks']['trusted_sarah_release_manifest_is_canonical'] is True
+          for name in ('sarah_source_tree_is_exactly_trusted','resolved_wolfram_launcher_is_hash_bound_and_unchanged','resolved_wolfram_kernel_is_hash_bound_and_unchanged','captured_process_log_is_hash_bound'):
+              assert report['external_model_validation']['checks'][name] is report['contract_consistent']
+          assert report['flag']['externally_executed_model_contract'] is report['contract_consistent']
           assert report['flag']['tool_native_sarah_syntax'] is True
           assert report['flag']['legacy_pseudo_sarah_grammar'] is False
           assert report['repository_external_input_manifest']['valid'] is True
+          assert report['repository_external_input_manifest']['checks']['trusted_sarah_release_manifest_is_canonical'] is True
+          assert report['repository_external_input_manifest']['expected']['schema'] == 'so10-exact-x-input-manifest-v2'
+          assert len(report['repository_external_input_manifest']['expected']['files']) == 3
           assert report['signed_filter_contract']['requires_exact_x_neutrality_by_default'] is True
           assert report['signed_filter_contract']['declared_option_C_no_continuous_X'] is False
           assert report['phase_sensitive_count'] > 0
@@ -90,7 +107,7 @@ jobs:
           assert report['dimension17_candidate']['authoritative_U1X_gauge_invariant'] is False
           assert report['dimension17_candidate']['breaks_PQ'] is False
           assert report['flag']['option_C_no_continuous_X_rejected'] is True
-          assert report['flag']['complete_multifield_model'] is False
+          assert report['flag']['complete_multifield_model'] is report['contract_consistent']
           assert report['flag']['whole_model_validated'] is False
 
           scalar = json.loads(Path('GAUGED_U1X_SCALAR_CONTRACT_V20.json').read_text())
@@ -113,5 +130,8 @@ jobs:
           path: |
             EXACT_X_SYMMETRY_CONSISTENCY_GATE_V20.json
             EXACT_X_SYMMETRY_CONSISTENCY_GATE_V20.md
+            models/EXACT_X_EXTERNAL_INPUT_MANIFEST_V20.json
+            models/SARAH_4_15_3_CANONICAL_SOURCE_TREE_V20.json
+            tools/validate-exact-x-model.wls
             GAUGED_U1X_SCALAR_CONTRACT_V20.json
             GAUGED_U1X_SCALAR_CONTRACT_V20.md

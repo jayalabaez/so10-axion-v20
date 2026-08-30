@@ -1,0 +1,78 @@
+{
+  "PS_map_audit": {
+    "covered": "V49 explicit SU4xSU2LxSU2R epsilon maps for the four direct trace vertices; Clifford Cartesian family currents now cover 1,10,45,120,126,210 representation channels",
+    "irreducible_blocker": "without those branching matrices the Cartesian tensors cannot be contracted entry-by-entry with the V49 PS boundary kernel, so no complete physical Wilson coefficient array exists",
+    "missing": "explicit unitary Cartesian-to-PS branching matrices, with common phases, for 120,126/126bar,210 and the normal-derivative H/Hc trace convention"
+  },
+  "certified_maps": {
+    "16x16_to_120": {
+      "covariance_residual": 0.0,
+      "gram_residual": 0.0,
+      "normalization": "C Gamma_[I] / 4 in the existing ordered-pair Hilbert-Schmidt convention",
+      "shape": [
+        120,
+        16,
+        16
+      ]
+    },
+    "16x16bar_to_210": {
+      "covariance_residual": 0.0,
+      "gram_residual": 0.0,
+      "normalization": "C Gamma_[I] / 4 in the existing ordered-pair Hilbert-Schmidt convention",
+      "shape": [
+        210,
+        16,
+        16
+      ]
+    },
+    "16x16bar_to_45": {
+      "covariance_residual": 0.0,
+      "gram_residual": 0.0,
+      "normalization": "C Gamma_[I] / 4 in the existing ordered-pair Hilbert-Schmidt convention",
+      "shape": [
+        45,
+        16,
+        16
+      ]
+    }
+  },
+  "checks": {
+    "16x16_to_120_covariant": true,
+    "16x16_to_120_orthonormal": true,
+    "16x16bar_to_210_covariant": true,
+    "16x16bar_to_210_orthonormal": true,
+    "16x16bar_to_45_covariant": true,
+    "16x16bar_to_45_orthonormal": true,
+    "fail_closed": true
+  },
+  "convention_lock": {
+    "backend": "spin10_referee_audit Clifford generators through exact_normalized_so10_yukawa_cgcs_v20",
+    "chirality": "16=-1, 16bar=+1",
+    "index_basis": "increasing Cartesian indices 0..9",
+    "kinetic_metric": "ordered-pair Hilbert-Schmidt",
+    "phase": "inherits the audited charge-conjugation matrix"
+  },
+  "core_sha256": "697957744751578a7db6a749385b3b6dbee4d9e17871a953b870fd23c9a37eab",
+  "existing_maps": {
+    "16x16_to_10": "certified upstream",
+    "16x16_to_126bar": "certified upstream in canonical -i Hodge basis",
+    "16x16bar_to_1": "certified upstream",
+    "Phi210_x_Sigma126_to_10": {
+      "path": "direct_phi_h_sigmabar_tensor_v20.py",
+      "sha256": "604bd4a2637afca99df880cbc9eb0f62bde04d2d838db9d1c6f893f48b0f6067",
+      "status": "full 10x126 contraction map and covariance certified upstream"
+    }
+  },
+  "form_map_construction": {
+    "Phi_x_Sigma_to_120": "contract three common indices from the 4- and 5-forms, producing a Cartesian 3-form, then Gram-normalize",
+    "Phi_x_Sigma_to_126": "contract two common indices, producing a 5-form, then project with (1 +/- i star)/2 into the source-locked chirality and Gram-normalize",
+    "warning": "these two full arrays and their all-generator covariance/Gram certificates have not yet been emitted; existence/uniqueness is not an executable component package"
+  },
+  "schema": "susy-spin10-v50-clifford-extension-v1",
+  "status": "V50_NORMALIZED_120_45_210_CLIFFORD_MAPS_CERTIFIED__FULL_PS_BRANCHING_AND_PHI_SIGMA_120_126_ARRAYS_OPEN__G2_FAIL_CLOSED",
+  "verdict": {
+    "C7": "PARTIAL",
+    "G2_closed": false,
+    "recommendation": "retain the exact Clifford tensors as finite reusable inputs; keep G2 open pending the two Phi-Sigma arrays and common Cartesian-to-PS branching matrices"
+  }
+}

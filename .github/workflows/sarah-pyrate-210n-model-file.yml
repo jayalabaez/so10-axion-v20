@@ -10,6 +10,7 @@ on:
       - models/SO10Z17AxionV20_pyrate.yaml
       - models/EXACT_X_EXTERNAL_MODEL_VALIDATION_V20.json
       - models/EXACT_X_EXTERNAL_INPUT_MANIFEST_V20.json
+      - models/SARAH_4_15_3_CANONICAL_SOURCE_TREE_V20.json
       - tools/validate-exact-x-model.wls
       - .github/workflows/sarah-pyrate-210n-model-file.yml
   workflow_dispatch:
@@ -39,8 +40,8 @@ jobs:
           python - <<'PY'
           import json
           r=json.load(open('SARAH_PYRATE_MODEL_FILE_V20_VERDICT.json'))
-          assert r['status']=='SARAH_NATIVE_STATIC_CONTRACT__EXTERNAL_VALIDATION_BLOCKED'
-          assert r['overall_state']=='BLOCKED'
+          assert r['status']=='SARAH_NATIVE_MODEL_EXTERNALLY_VALIDATED'
+          assert r['overall_state']=='PASS'
           assert r['n_failed']==0
           assert r['flag']['sarah_pyrate_model_file_authored']
           assert r['flag']['sarah_metadata_scaffold_present']
@@ -50,11 +51,12 @@ jobs:
           assert not r['flag']['pyrate_model_tool_native']
           assert r['flag']['pyrate_yaml_dynkin_matches_upstream']
           assert r['flag']['charge_locks_encoded']
+          assert r['flag']['external_validation_v3_valid']
           assert not r['flag']['external_validation_v2_valid']
-          assert not r['flag']['live_sarah_or_pyrate_executable_run']
+          assert r['flag']['live_sarah_or_pyrate_executable_run']
           assert not r['flag']['exact_unique_proton_lifetime']
           assert not r['flag']['whole_model_excluded']
-          assert not r['live_probe']['live_run_executed']
+          assert r['live_probe']['live_run_executed']
           PY
       - name: Upload model-file verdicts
         if: always()
@@ -66,5 +68,6 @@ jobs:
             SARAH_PYRATE_MODEL_FILE_V20.md
             models/SO10Z17AxionV20.m
             models/EXACT_X_EXTERNAL_INPUT_MANIFEST_V20.json
+            models/SARAH_4_15_3_CANONICAL_SOURCE_TREE_V20.json
             tools/validate-exact-x-model.wls
             models/SO10Z17AxionV20_pyrate.yaml

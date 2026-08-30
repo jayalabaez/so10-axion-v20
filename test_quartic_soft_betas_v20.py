@@ -31,6 +31,10 @@ class QuarticSoftBetasTests(unittest.TestCase):
         self.assertFalse(flags["live_sarah_or_pyrate_executable_run"])
         self.assertFalse(flags["exact_unique_proton_lifetime"])
         self.assertFalse(flags["whole_model_excluded"])
+        self.assertTrue(flags["diagnostic_only_for_physical_G7"])
+        self.assertFalse(flags["physical_G7_closed"])
+        self.assertFalse(flags["mathematical_G7_closed"])
+        self.assertFalse(flags["release_G7_verified"])
 
     def test_charged_components_are_not_fake_singlets(self):
         rows = {
@@ -44,6 +48,25 @@ class QuarticSoftBetasTests(unittest.TestCase):
         self.assertEqual(rows["S_PQ"]["gauge_invariant_Cg2"], 0.0)
         self.assertEqual(rows["DeltaR_126bar"]["casimirs"]["g4"], 4.5)
         self.assertEqual(rows["DeltaR_126bar"]["casimirs"]["gR"], 2.0)
+        self.assertEqual(rows["DeltaR_126bar"]["ps_irrep"], "(10,1,3)")
+
+    def test_signed_delta_r_embedding_is_source_bound(self):
+        embedding = mod.delta_r_standard_embedding()
+        self.assertEqual(embedding["SO10_irrep"], "126bar")
+        self.assertEqual(embedding["PS_irrep"], "(10,1,3)")
+        self.assertEqual(embedding["SM_irrep"], "(1,1)_0")
+        self.assertEqual(embedding["B_minus_L"], "-2")
+        self.assertEqual(embedding["T3R"], "+1")
+        self.assertEqual(embedding["Y"], "0")
+        self.assertEqual(
+            embedding["source_contract_core_sha256"],
+            "02c397bbe044695bf124b6f7415dbc1663e4beb9339e3e3e1da9632d532c02c2",
+        )
+        self.assertTrue(
+            self.report["checks"][
+                "deltaR_signed_PS_label_is_source_bound_10_1_3"
+            ]
+        )
 
     def test_ps_gauge_couplings_split_and_flow_is_fail_closed(self):
         evo = self.report["evolution_GUT_to_MI"]

@@ -1,0 +1,283 @@
+{
+  "C1_to_C7_assessment": {
+    "C1": "FAIL: mu_H, Hc portals and derivative coordinates are named and pure-source quartics are parameterized abstractly, but independent multiplicities/tensors and the complete strong-collar action are not enumerated",
+    "C2": "CONDITIONAL: the square H/Hc transfer is explicit at a restricted point, but its source coupling is a finite-range Wilson-line bilocal rather than a point-local microscopic 5D regulator",
+    "C3": "PARTIAL: the passive endpoint pencils give a positive-metric self-adjoint enlargement, but the allowed O(1) Hc-Hc and odd-profile terms have not been varied into one complete collar generator",
+    "C4": "PARTIAL: direct and auxiliary endpoint metrics and -dP/dm are positive in executable witnesses, but positivity of the complete strong-collar action with all allowed Hc blocks is unproved",
+    "C5": "PARTIAL: all counterterm types fit named pencil coordinates at mu=Lambda, but a second-profile rematching and loop subtraction calculation are absent",
+    "C6": "PARTIAL: the fixed-order policy is explicit, but zero Hc-Hc and odd-profile finite parts define a matching point rather than symmetry-protected omissions and must be rematched",
+    "C7": "PARTIAL: the 64 PS trace/Higgs/current map is executable for the restricted collar and universal admissible tensors are tested, but the O(1) Hc collar blocks, normalized SO10 tensors and derivative-current Clebsches remain absent"
+  },
+  "G2_decision": {
+    "closed": false,
+    "closed_gate_count": 1,
+    "precise_remaining_objects": [
+      "enumerate multiplicities and normalized projectors for B4_source=Hom_G(1,Sym4 R_source)",
+      "supply normalized SO10-to-PS component tensors for all degree-four source portals and H/Hc derivative currents",
+      "derive the named O7/O8 and brane-bulk derivative graph blocks by varying one explicit superspace action",
+      "insert every allowed Hc-Hc and odd-profile H-Hc block into the path-ordered strong-collar generator and recompute its transfer",
+      "perform one independent collar-profile rematch, including local counterterms, and show agreement through O(Lambda^-1)",
+      "publish the complete same-action Wilson coefficient array rather than universal placeholder tensor inputs"
+    ],
+    "verdict": "G2_REMAINS_OPEN",
+    "why_formal_absorption_is_not_closure": "A matrix pencil proves that encoded endpoint blocks propagate consistently; it neither supplies normalized physical invariant tensors nor replaces O(1) interactions that live inside the strong collar generator."
+  },
+  "core_sha256": "173aad00eb3ce89748a402b89d3587574f186b1b01166fe145f297b71956a08c",
+  "full_64_PS_component_certificate": {
+    "PS_right_presentation_permutation": [
+      0,
+      3,
+      1,
+      4,
+      2,
+      5,
+      7,
+      6
+    ],
+    "channel_order": [
+      "HLF=16_+1",
+      "HLA=bar16_-4",
+      "HRA=16_-1",
+      "HRF=bar16_+4"
+    ],
+    "clebsch_expected_norm_squared": 0.034800000000000005,
+    "clebsch_frobenius_norm_squared": 0.034800000000000005,
+    "component_order": [
+      "Q_r_up",
+      "Q_r_down",
+      "Q_g_up",
+      "Q_g_down",
+      "Q_b_up",
+      "Q_b_down",
+      "L_neutral",
+      "L_charged",
+      "uC_r",
+      "uC_g",
+      "uC_b",
+      "dC_r",
+      "dC_g",
+      "dC_b",
+      "eC",
+      "nuC_SU5_singlet"
+    ],
+    "coordinate_count": 64,
+    "current_nonzero_entries": 16,
+    "deterministic_admissible_tensor_trials": [
+      {
+        "host_hermitian_residual": 0.0,
+        "kernel_finite": true,
+        "kernel_norm": 3.8540692469280113,
+        "kinetic_min_eigenvalue": 0.01000022032739612,
+        "seed": 301
+      },
+      {
+        "host_hermitian_residual": 0.0,
+        "kernel_finite": true,
+        "kernel_norm": 3.854598421850971,
+        "kinetic_min_eigenvalue": 0.010000463779161167,
+        "seed": 302
+      },
+      {
+        "host_hermitian_residual": 0.0,
+        "kernel_finite": true,
+        "kernel_norm": 3.853675828957821,
+        "kinetic_min_eigenvalue": 0.010000024542324645,
+        "seed": 303
+      }
+    ],
+    "expected_current_nonzero_entries": 16,
+    "expected_nonzero_entries": 64,
+    "full_kernel_finite": true,
+    "independent_nonzero_vertex_entries": 64,
+    "positive_host_metric_min_eigenvalue": 0.015000931853580554,
+    "representative_full_W_eff": [
+      1.388767995643273e-08,
+      0.0
+    ],
+    "vertex_hermitian_residual": 0.0
+  },
+  "generalized_kernel": {
+    "bulk_composition": "K=Cf R+Cg Q, N=Cf P+Cg T",
+    "collar_composition": "Cf=C+P_L D, Cg=D+P_L U",
+    "full_light_action": "Gamma_eff=Gamma_LL-Gamma_LH Gamma_HH^-1 Gamma_HL",
+    "heavy_pencil": "Gamma_HH=K+N P0",
+    "host_relation": "b=J0+P0(m)a",
+    "host_response": "G00=Gamma_HH^-1 N",
+    "outer_source_pencil": "g_out+P_L(m) f_out=0",
+    "pole_rule": "use the undivided enlarged determinant, including collar D and auxiliary det(H-mW) factors; a divided rational pencil may hide physical wall states"
+  },
+  "integrity_checks": {
+    "all_four_full_component_vertices_present": true,
+    "collar_is_J_unitary": true,
+    "collar_remainder_is_quadratic": true,
+    "first_generalized_root_is_simple": true,
+    "full_64_clebsch_completeness_norm": true,
+    "full_64_kernel_is_finite": true,
+    "full_64_vertex_is_hermitian": true,
+    "full_component_current_has_expected_support": true,
+    "generalized_kernel_is_euclidean_local": true,
+    "generalized_residue_matches": true,
+    "positive_auxiliary_states_decouple": true,
+    "positive_direct_and_auxiliary_metrics": true,
+    "random_admissible_tensor_trials_pass": true,
+    "real_mass_pencils_are_hermitian": true,
+    "three_generalized_roots_found": true
+  },
+  "n_failed_integrity_checks": 0,
+  "positivity_and_self_adjointness_theorem": {
+    "consequence": "the enlarged generalized eigenproblem is self-adjoint in its positive bulk+boundary metric; signed masses are real and unbroken-SUSY scalar mass squares are nonnegative",
+    "not_necessary": "these are sufficient conditions, not a classification of every self-adjoint boundary relation",
+    "positive_derivative_identity": "-dP/dm=Z+C^dag(H-mW)^-1 W(H-mW)^-1 C >=0 between auxiliary poles",
+    "sufficient_conditions": [
+      "bulk and finite collar have positive canonical metric and J-unitary real-m transfer",
+      "direct boundary kinetic matrices Z0,ZL are positive semidefinite",
+      "every retained auxiliary boundary metric W0,WL is positive definite and its Hamiltonian is Hermitian",
+      "M0,ML and every real-m graph pencil are Hermitian",
+      "normal-derivative relations have full rank and define a Hermitian graph A_rel^-1 B_rel in the retained chart",
+      "all poles of eliminated auxiliary resolvents are retained in the enlarged determinant"
+    ]
+  },
+  "primary_sources": [
+    "https://arxiv.org/abs/hep-th/0106256",
+    "https://arxiv.org/abs/hep-ph/0112230",
+    "https://arxiv.org/abs/hep-th/0411133",
+    "https://arxiv.org/abs/hep-ph/0601222",
+    "https://arxiv.org/abs/hep-th/0109116",
+    "https://arxiv.org/abs/1408.1852"
+  ],
+  "representative_generalized_certificate": {
+    "auxiliary_decoupling": {
+      "Schur_correction_norms": {
+        "1.0": 0.00032217010889814396,
+        "16.0": 1.785070561879868e-05,
+        "2.0": 0.00015079050176090324,
+        "4.0": 7.306085067629618e-05,
+        "8.0": 3.5973533888186715e-05
+      },
+      "monotone": true,
+      "norm16_over_norm8": 0.49621773813722103
+    },
+    "collar_linear_remainder": {
+      "epsilon": 0.05,
+      "exact_minus_linear_norm": 3.329890943128052e-05,
+      "mass": 0.17,
+      "normalized_by_m2_epsilon2": 0.4608845596024984
+    },
+    "euclidean_locality": {
+      "host_to_host_G00_norms": {
+        "1.0": 0.9545477971371663,
+        "2.0": 0.7999199674320275,
+        "4.0": 0.6674448195300878,
+        "8.0": 0.5010440952476697
+      },
+      "norm8_over_norm4": 0.008793822783680799,
+      "scaled_at_4": 0.8743132530766441,
+      "scaled_at_8": 0.5127215776374877,
+      "source_to_host_Gamma_inverse_norms": {
+        "1.0": 0.5108021540779939,
+        "2.0": 0.14869027086983466,
+        "4.0": 0.01311083155167258,
+        "8.0": 0.00011529432921209942
+      }
+    },
+    "metric_checks": {
+      "host_W_min_eigenvalue": 0.9,
+      "host_Z_min_eigenvalue": 0.12443430241395885,
+      "minus_dP_host_min_eigenvalue_at_m03": 0.12456975592732025,
+      "minus_dP_source_min_eigenvalue_at_m03": 0.10440830212635928,
+      "source_W_min_eigenvalue": 1.0,
+      "source_Z_min_eigenvalue": 0.10432537277492904
+    },
+    "roots_and_residue": {
+      "det_at_first_abs": 2.592257471792568e-12,
+      "first_derivative": 1.1787027104868002,
+      "first_three_positive_roots": [
+        0.3903576482050121,
+        0.9211400410681962,
+        1.4462836771160366
+      ],
+      "near_pole_residue_residual": 1.2223859561728466e-06
+    },
+    "self_adjoint_checks": {
+      "collar_J_unitary_at_zero": 0.0,
+      "host_pencil_hermitian_at_real_m": 0.0,
+      "source_pencil_hermitian_at_real_m": 0.0
+    }
+  },
+  "retained_action_contract": {
+    "PS_quadratic_and_derivative": [
+      "positive 4x4 Z_L and Z_R including Q-HLF and Qc-HRA mixing",
+      "independent positive metrics for HLA,HRF and four complementary even Hc traces",
+      "O7/O8 covariant normal-derivative graph coefficients",
+      "Q_i nabla5(HLFc) and Qc_i nabla5(HRAc) current coefficients",
+      "constant PS gauge kinetic, U1F FI and broken-sector Zhat^2 coefficients"
+    ],
+    "PS_superpotential": {
+      "coefficient_count": "19 spinor cubics plus mu_H",
+      "terms": [
+        "9 Q_i H Qc_j",
+        "3 Q_i H HRA",
+        "3 HLF H Qc_j",
+        "HLF H HRA",
+        "HLA H HRF",
+        "HRAc_L H HLFc_R",
+        "HRFc_L H HLAc_R",
+        "mu_H epsilon_L epsilon_R H H"
+      ]
+    },
+    "bulk": "V47 four hypermultiplets and gauge multiplet on the interval",
+    "matrix_absorption": {
+      "host": "P0(m)=M0-mZ0-C0^dag(H0-mW0)^-1 C0",
+      "light_Schur_complement": "Gamma_eff=Gamma_LL-Gamma_LH Gamma_HH^-1 Gamma_HL",
+      "normal_derivative": "A_rel b+B_rel a=0 is admitted when A_rel invertible and A_rel^-1 B_rel Hermitian",
+      "restricted_action_kernel": "Gamma_HH=K(P_L)+N(P_L)P0; G00=Gamma_HH^-1 N for the encoded zero-Hc-counterterm collar",
+      "source": "PL(m)=ML-mZL-CL^dag(HL-mWL)^-1 CL",
+      "strong_collar_limit": "generic Hc-Hc and odd-profile H-Hc coefficients enter the path-ordered collar generator at O(1), so they cannot be represented only as an appended endpoint pencil"
+    },
+    "order": "tree level through O(Lambda^-1), with O(E^2/Lambda^2) plus loops as remainder",
+    "pure_source_quartics": {
+      "definition": "B4_source=Hom_(Spin10 x U1F)(1, Sym^4 R_source), with one coefficient per independent invariant tensor",
+      "examples": [
+        "S^4",
+        "S^2 ThetaPlus ThetaMinus",
+        "(ThetaPlus ThetaMinus)^2",
+        "S^2 Phi^2",
+        "S Phi^3",
+        "S Phi Sigma barSigma",
+        "all independent Phi^4, Phi^2 Sigma barSigma and (Sigma barSigma)^2 contractions"
+      ],
+      "status": "complete abstract invariant-space parameterization; multiplicities and normalized SO10 tensors not enumerated"
+    },
+    "source": [
+      "all V48 renormalizable source terms and four H-H portals",
+      "all twelve degree-four two-H portal contractions",
+      "four conjugate Hc-Hc portals in the finite collar",
+      "source-dependent H-Hc and mixed Kahler matrices represented in the source pencil",
+      "constant/source-dependent Spin10 and U1F gauge kinetic terms and source FI coefficient"
+    ]
+  },
+  "schema": "susy-v49-generalized-boundary-pencil-audit-v1",
+  "source_manifest": [
+    {
+      "path": "SUSY_V48_G2_FRONTIER_INTEGRATION_AUDIT.json",
+      "sha256": "eb9945a4cb1940bc6c46e3dae82d4096f6a60b9a10441a484009395980c69676"
+    },
+    {
+      "path": "SUSY_V48_G2_ADVERSARIAL_CLOSURE_AUDIT.json",
+      "sha256": "e300b0699e6c51b91f4059e32b44f58be08f5e96191acebf803a0b3ff5c3342f"
+    },
+    {
+      "path": "SUSY_V48_SOURCE_OPERATOR_WILSON_AUDIT.json",
+      "sha256": "0d12771c1d3544d36d845396758d16a690b1dcc5511d4f2d79ab3d95919fc0a3"
+    },
+    {
+      "path": "SUSY_V48_RESOLVED_SOURCE_WALL_AUDIT.json",
+      "sha256": "37aa7935edeed2835e1990b1266ad2cdff48b986f7ca1a2dd0ec9f818a913cc8"
+    },
+    {
+      "path": "test_susy_v49_generalized_boundary_pencil_audit.py",
+      "sha256": "7e6606a3b62618dfe88ee40da55febebf9d3492f2f653e840bf8b8608af90470"
+    }
+  ],
+  "status": "V49_GENERALIZED_POSITIVE_BOUNDARY_PENCIL_AND_RESTRICTED_ACTION_KERNEL_DERIVED__FULL_64_TRACE_PS_CLEBSCH_CURRENT_MAP_EXECUTABLE__POLE_RESIDUE_LOCALITY_AND_DECOUPLING_IDENTITIES_PASS__STRONG_COLLAR_HC_GENERATOR_AND_SOURCE_QUARTIC_SO10_TENSORS_REMAIN_ABSTRACT__G2_FAIL_CLOSED"
+}

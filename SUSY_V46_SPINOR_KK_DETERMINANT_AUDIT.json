@@ -1,0 +1,297 @@
+{
+  "V45_consequence": {
+    "complete_theory": false,
+    "exact_massless_KK_modes_if_bL_bR_finite_nonzero": 0,
+    "gates_promoted": [],
+    "omitted_allowed_source_terms": [
+      "barSigma HLF HRA",
+      "Sigma HLA HRF"
+    ],
+    "operator_obligation": "include both allowed Sigma-spinor terms in one enlarged coupled transfer matrix, or forbid both with an exact selector, before S2 can close",
+    "projected_exotic_rank_if_bL_bR_nonzero": 4,
+    "remaining_kill_tests": [
+      "derive B_R from a specified resolved source-wall UV action and compare regulator prescriptions",
+      "include barSigma HLF HRA, Sigma HLA HRF, and all boundary kinetic operators in the KK matrix",
+      "bound b_L and b_R away from both zero and the strong-coupling spectral-flow regime",
+      "complete the eta/global anomaly and compact charge-lattice audit",
+      "recompute thresholds and cross-wall Wilson coefficients with the shifted towers"
+    ],
+    "selected_mass_subproblem": "closed only in the declared free-flat-bulk self-adjoint two-hyper system"
+  },
+  "bulk_basis": {
+    "F_i": "cos(k_i L)-M_i S_i",
+    "G_i": "cos(k_i L)+M_i S_i",
+    "S_i": "sin(k_i L)/k_i, entire in z with hyperbolic continuation",
+    "k_i_squared": "z-M_i^2",
+    "z": "m_4^2",
+    "zero_values": {
+      "F_i_0": "exp(-M_i L)",
+      "G_i_0": "exp(+M_i L)",
+      "S_i_0": "sinh(M_i L)/M_i (continuous value L at M_i=0)"
+    }
+  },
+  "core_sha256": "9b814b32381d2b476f4368054e8f27eedb1423740ac829755ab7570d862d71e8",
+  "declared_boundary_prescription": {
+    "bulk_action": "int d2theta H_i^c (partial_y+M_i) H_i + h.c., with real odd kink mass M_i epsilon(y)",
+    "first_order_equations": [
+      "(partial_y+M_i) f_i = m g_i",
+      "(-partial_y+M_i) g_i = m f_i"
+    ],
+    "fundamental_description": "self-adjoint interval boundary condition, not an unqualified orbifold delta distribution",
+    "interior_mass": "M_i is the signed constant value on 0<y<L",
+    "invariant_statement": "all formulas below are exact in b; a nonzero bare mu is sufficient only after proving B_R(mu) is finite and nonzero",
+    "normalized_boundary_rows": "[g+b sigma_1 f]/sqrt(1+b^2)=0",
+    "one_sided_matching": "B_R(mu)=mu, so b=|lambda<Theta>|, only in the explicit one-sided interval convention",
+    "regulator_warning": "a symmetric orbifold delta, shifted-brane regulator, or finite-width profile can change B_R and finite-b KK phases",
+    "source_boundary_condition": "g(L)+b sigma_1 f(L)=0 after rephasing b>=0"
+  },
+  "exact_characteristics": {
+    "full_spin10_pair_factor": "[D_++(z) D_-+(z)]^8",
+    "root_rule": "the nonnegative real zeros z=m_n^2, with multiplicity, are the full KK singular-value spectrum",
+    "selected_plus_plus": {
+      "D": "D_++(z)=z S_1 S_2-b^2 F_1 F_2",
+      "PS_boundary": "g_i(0)=0, equivalently (partial_y+M_i)f_i(0)=0",
+      "basis_profile": "f_i(y)=A_i[cos(k_i y)-M_i sin(k_i y)/k_i]",
+      "boundary_matrix": "[[-m S_1, b F_2],[b F_1,-m S_2]]",
+      "zero_value": "D_++(0)=-b^2 exp[-(M_1+M_2)L]"
+    },
+    "two_pair_factor": "product over a=L,R of [D_++,a(z) D_-+,a(z)]^8",
+    "unselected_minus_plus": {
+      "D": "D_-+(z)=G_1 G_2-z b^2 S_1 S_2",
+      "PS_boundary": "f_i(0)=0",
+      "basis_profile": "f_i(y)=A_i sin(k_i y)/k_i",
+      "boundary_matrix_after_multiplying_rows_by_m": "[[G_1,m b S_2],[m b S_1,G_2]]",
+      "zero_value": "D_-+(0)=exp[+(M_1+M_2)L]"
+    }
+  },
+  "numerical_certificate": {
+    "flat_point": {
+      "D_at_first_minus_plus_root": 0.0,
+      "D_at_first_plus_plus_root": 0.0,
+      "L": 1.0,
+      "alpha": 0.29145679447787,
+      "b": 0.3,
+      "lightest_minus_plus": 1.27933953231703,
+      "lightest_plus_plus": 0.29145679447787
+    },
+    "general_point": {
+      "D_minus_plus_0": 1.349858807576,
+      "D_plus_plus_0": -0.06667363986135,
+      "L": 1.0,
+      "M_1": 0.7,
+      "M_2": -0.4,
+      "b": 0.3,
+      "canonical_determinant_ratios": {
+        "one_component_full_pair": 0.05042845485747,
+        "selected_vs_zero_removed": 0.05496701579464,
+        "spin10_pair_power_8": 4.182e-11,
+        "unselected_vs_b0": 0.91743119266055
+      },
+      "expected_D_minus_plus_0": 1.349858807576,
+      "expected_D_plus_plus_0": -0.06667363986135,
+      "first_minus_plus_mass": 1.23013736275942,
+      "first_plus_plus_mass": 0.23841488904706,
+      "negative_z_sign_samples": [
+        {
+          "D_minus_plus": 1.35346905988818,
+          "D_plus_plus": -0.06966384516234,
+          "kappa": 0.05
+        },
+        {
+          "D_minus_plus": 1.40828735922595,
+          "D_plus_plus": -0.11510858581837,
+          "kappa": 0.2
+        },
+        {
+          "D_minus_plus": 2.46923109505733,
+          "D_plus_plus": -1.00634790337917,
+          "kappa": 0.8
+        },
+        {
+          "D_minus_plus": 18.95479755005318,
+          "D_plus_plus": -15.54283250100054,
+          "kappa": 2.0
+        },
+        {
+          "D_minus_plus": 6678.409592784656,
+          "D_plus_plus": -6290.919196422114,
+          "kappa": 5.0
+        }
+      ],
+      "projected_mass": 0.24477346101275
+    }
+  },
+  "primary_sources": [
+    {
+      "citation": "Marti and Pomarol, Phys. Rev. D64 (2001) 105025",
+      "url": "https://arxiv.org/abs/hep-th/0106256",
+      "use": "5D hypermultiplets as two 4D N=1 chirals and the first-order superfield bulk operator"
+    },
+    {
+      "citation": "Hebecker, Nucl. Phys. B632 (2002) 101",
+      "url": "https://arxiv.org/abs/hep-ph/0112230",
+      "use": "5D superspace on an orbifold and local brane operators"
+    },
+    {
+      "citation": "Alciati et al., JHEP 07 (2006) 061",
+      "url": "https://arxiv.org/abs/hep-ph/0603086",
+      "use": "the SO(10) interval L=pi R/2, parity spectra, and boundary-mass shifts of KK conditions"
+    },
+    {
+      "citation": "Barcelo, Mitra and Moreau, Eur. Phys. J. C75 (2015) 527",
+      "url": "https://arxiv.org/abs/1408.1852",
+      "use": "non-commuting brane-width and infinite-KK limits; a bare delta coupling needs a declared prescription"
+    },
+    {
+      "citation": "Falco, Fedorenko and Gruzberg, J. Phys. A50 (2017) 485201",
+      "url": "https://arxiv.org/abs/1703.07329",
+      "use": "matrix functional determinants with removed zero modes in the Gel'fand--Yaglom framework"
+    }
+  ],
+  "projected_4D_vs_full_KK": {
+    "flat_example": "m_light,++=atan(b)/L, while m_proj=b/L",
+    "full_tower_statement": "rank 4 does not prove a parametrically heavy spectrum; at very large b the unselected tower contains a parametrically light state",
+    "normalization": "N_i^-2=Z_i=(1-exp(-2M_iL))/(2M_i)=exp(-M_iL)S_i(0)",
+    "not_exact_at_finite_b": true,
+    "projected_mass": "m_proj=b N_1N_2 exp[-(M_1+M_2)L]",
+    "projected_mass_squared": "b^2 exp[-(M_1+M_2)L]/[S_1(0)S_2(0)]",
+    "rank_statement": "each nonzero b gives a rank-2 chiral mass block per PS multiplet pair; b_L,b_R nonzero give rank 4 in (LF,LA,RA,RF)",
+    "small_b_relation": "m_light^2=m_proj^2+O(b^4)",
+    "strong_boundary_spectral_flow": "as b->infinity, m_light,-+^2=exp[(M_1+M_2)L]/[b^2 S_1(0)S_2(0)]+O(b^-4)",
+    "zero_profile": "f_i^0(y)=N_i exp(-M_i y)"
+  },
+  "provenance": {
+    "V45_files_modified": false,
+    "V45_inputs_sha256": {
+      "SUSY_V45_RECONCILED_BULK_SPINOR_AUDIT.json": "92dc538c67d1e455d8eab36a1d3a1cd7ccb254f1a131cb9af30f4eb45ab35a38",
+      "SUSY_V45_S0_GROUP_ZERO_MODE_AUDIT.json": "dd982bd79da39f8d59870fdcd3d3da74515a527ac14415d510dab65136e5e2a5"
+    },
+    "generator": "susy_v46_spinor_kk_determinant_audit.py",
+    "tests": "test_susy_v46_spinor_kk_determinant_audit.py"
+  },
+  "regulated_determinants": {
+    "canonical_cross_domain_zeta_ratios": {
+      "boundary_row_convention": "divide each two-channel boundary determinant by 1+b^2",
+      "one_component_full_pair": "b^2 exp[-(M_1+M_2)L]/[(1+b^2)^2 S_1(0)S_2(0)]",
+      "scheme_warning": "absolute determinants and cross-domain constants can be shifted by local boundary counterterms; zeros and same-domain P(z;b) are invariant",
+      "selected": "det_zeta O_++,b / det'_zeta O_++,0 = b^2 exp[-(M_1+M_2)L]/[(1+b^2)S_1(0)S_2(0)]",
+      "unselected": "det_zeta O_-+,b / det_zeta O_-+,0 = 1/(1+b^2)"
+    },
+    "flat_hurwitz_zeta_check": {
+      "alpha": "atan(b)",
+      "selected_masses": "(n pi+alpha)/L and ((n+1)pi-alpha)/L",
+      "selected_ratio": "b^2/[L^2(1+b^2)]",
+      "unselected_masses": "(n pi+pi/2-alpha)/L and ((n+1)pi-pi/2+alpha)/L",
+      "unselected_ratio": "1/(1+b^2)"
+    },
+    "same_domain_hadamard_products": {
+      "b_nonzero_plus_plus": "P_++(z;b)=D_++(z;b)/D_++(0;b)=product_n(1-z/m_n^2)",
+      "b_zero_plus_plus_zero_removed": "P'_++(z;0)=D_++(z;0)/[z partial_z D_++(0;0)]",
+      "convergence": "genus-zero products converge because m_n^2 grows as n^2",
+      "minus_plus": "P_-+(z;b)=D_-+(z;b)/D_-+(0;b)"
+    }
+  },
+  "schema": "susy-v46-spinor-kk-determinant-audit-v1",
+  "scope": {
+    "interval": "0<=y<=L with L=pi R/2; PS wall at y=0 and full-Spin(10) source wall at y=L",
+    "not_in_scope": [
+      "126+bar126-induced mixing",
+      "supersymmetry-breaking boundary scalar operators",
+      "eta/global anomalies",
+      "a UV derivation of the thin-brane matching map B_R"
+    ],
+    "retained_bulk_hypers": [
+      "16_+3",
+      "bar16_-12",
+      "16_-3",
+      "bar16_+12"
+    ],
+    "separate_Bplus_Bminus_hypers": false,
+    "source_superpotentials": [
+      "delta(y-L) lambda_L ThetaPlus HLF HLA",
+      "delta(y-L) lambda_R ThetaMinus HRA HRF"
+    ],
+    "spin10_pairs": [
+      {
+        "bare_coefficient": "mu_L=lambda_L<ThetaPlus>",
+        "extension_parameter": "b_L=|B_R(mu_L)|",
+        "hypers": [
+          "16_+3",
+          "bar16_-12"
+        ],
+        "intrinsic_parities": [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "name": "left_pair",
+        "selected_PS_halves": [
+          "LF=(4,2,1)_+3",
+          "LA=(bar4,2,1)_-12"
+        ],
+        "theta": "ThetaPlus_+9",
+        "unselected_PS_halves": [
+          "(bar4,1,2)_+3",
+          "(4,1,2)_-12"
+        ]
+      },
+      {
+        "bare_coefficient": "mu_R=lambda_R<ThetaMinus>",
+        "extension_parameter": "b_R=|B_R(mu_R)|",
+        "hypers": [
+          "16_-3",
+          "bar16_+12"
+        ],
+        "intrinsic_parities": [
+          [
+            -1,
+            1
+          ],
+          [
+            -1,
+            1
+          ]
+        ],
+        "name": "right_pair",
+        "selected_PS_halves": [
+          "RA=(bar4,1,2)_-3",
+          "RF=(4,1,2)_+12"
+        ],
+        "theta": "ThetaMinus_-9",
+        "unselected_PS_halves": [
+          "(4,2,1)_-3",
+          "(bar4,2,1)_+12"
+        ]
+      }
+    ]
+  },
+  "status": "V46_SELF_ADJOINT_KK_CHARACTERISTICS_DERIVED__FINITE_NONZERO_FULL_RANK_BOUNDARY_EXTENSION_LIFTS_ALL_ZERO_MODES__NO_TACHYONS_IN_THE_SUPERSYMMETRIC_DOMAIN__PROJECTED_RANK_AND_FULL_TOWER_DETERMINANTS_SEPARATED__BARE_DELTA_TO_EXTENSION_MATCHING_AND_GLOBAL_GATES_OPEN",
+  "zero_mode_and_tachyon_theorems": {
+    "finite_nonzero_b": {
+      "proof": "D_++(0) is nonzero for b!=0 and finite real M_i,L; D_-+(0) is nonzero for every finite b",
+      "selected_zero_modes_remaining_per_pair": 0,
+      "unselected_zero_modes_per_pair": 0
+    },
+    "massless_exceptions": [
+      "b=0: Theta VEV/coupling vanishes, or the regulator map B_R(mu) vanishes",
+      "a multi-copy boundary matrix is rank deficient",
+      "a parity error makes a purported source field Dirichlet so the local operator is zero",
+      "b=infinity is a different self-adjoint endpoint: an unselected (-,+) mode becomes exactly massless",
+      "new boundary degrees of freedom in a resolved-brane UV completion can add independent zero modes"
+    ],
+    "multi_copy_rank_rule": "for n_1+n_2 selected chiral zero modes coupled by a boundary matrix mu of rank r, finite nonzero boundary profiles leave n_1+n_2-2r chiral zero modes",
+    "outside_theorem": "non-hermitian boundary matching, wrong-sign boundary kinetic/scalar terms, or SUSY breaking require a new stability audit",
+    "tachyon_proof": [
+      "for z=-kappa^2, rho_i=sqrt(kappa^2+M_i^2)>|M_i|",
+      "S_i=sinh(rho_i L)/rho_i>0 and F_i,G_i>0",
+      "D_++=-kappa^2 S_1S_2-b^2F_1F_2<0 for b!=0",
+      "D_-+=G_1G_2+kappa^2b^2S_1S_2>0"
+    ],
+    "tachyon_result": "none for real M_i, finite L, and hermitian b sigma_1"
+  }
+}

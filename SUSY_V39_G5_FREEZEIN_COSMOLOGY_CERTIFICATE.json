@@ -1,0 +1,418 @@
+{
+  "benchmark": {
+    "cosmology_checks": {
+      "BBN": {
+        "conservative_lifetime_requirement_seconds": 0.1,
+        "longest_displayed_parent_lifetime_seconds": 2.3274530380373334e-07,
+        "unvalidated_proxy_before_BBN": true,
+        "validated_pass": false
+      },
+      "CMB_annihilation": {
+        "Planck_2018_limit": 3.2e-28,
+        "passes_if_proxy_is_correct": true,
+        "proxy_p_ann_cm3_per_s_per_GeV": 3.3110845211581295e-62,
+        "proxy_sigma_v_cm3_per_s": 1.1036948403860432e-58,
+        "validated_pass": false
+      },
+      "axion_isocurvature": {
+        "H_inflation_GeV": 1000000.0,
+        "H_inflation_max_GeV": 71532563.82344487,
+        "P_iso": 1.6211389382774045e-14,
+        "Planck_beta_iso_limit": 0.038,
+        "Tmax_over_fPQ": 0.04,
+        "assumption": "PQ is broken before inflation and no thermal/nonthermal restoration are imposed.",
+        "beta_iso": 7.719649636441853e-06,
+        "imposed_axion_fraction_of_DM": 0.01,
+        "joint_abundance_and_isocurvature_solution": false,
+        "passes_if_one_percent_fraction_is_imposed": true,
+        "standard_misalignment_reference": {
+          "Omega_a_h2": 0.00015120000000000002,
+          "formula": "Omega_a h^2 = 0.06048 theta_i^2 (f_a/(5e11 GeV))^1.165 (small-angle reference normalization)",
+          "fraction_of_DM": 0.0012600000000000003
+        },
+        "thermal_restoration_status": "CONDITIONAL: Tmax<fPQ is only a proxy; the finite-temperature PQ potential is not derived in V39."
+      },
+      "coldness": {
+        "T_nonrelativistic_GeV": 846.4287049760483,
+        "T_production_GeV": 4189822089.631397,
+        "cold_before_BBN": true,
+        "p_over_m_at_equality": 2.9426628383635597e-13,
+        "p_star_GeV": 4949999999.99995,
+        "production_kernel_peak_x": 2.386736187378247,
+        "radiation_era_free_streaming_proxy_Mpc": 1.2754134423450308e-09,
+        "radiation_era_free_streaming_proxy_pc": 0.0012754134423450308
+      },
+      "direct_detection": {
+        "XENONnT_2025_global_minimum_cm2_at_30_GeV": 1.7e-47,
+        "dim5_illustrative_sigma_SI_cm2": 5.466146470338794e-75,
+        "illustrative_assumption": "dim-five chi-chi-H-H contact C=lambda16*lambda_X_visible/mX with h_NN=f_N m_N/v included explicitly",
+        "illustrative_value_below_global_minimum": true,
+        "not_used_for_viability": true,
+        "status": "NON_CONSTRAINING_ILLUSTRATION"
+      },
+      "thermal_unitarity": {
+        "FIMP_is_not_thermal": true,
+        "Griest_Kamionkowski_mass_limit_GeV": 340000.0,
+        "mD16_GeV": 1000.0,
+        "passes_reference_bound": true
+      }
+    },
+    "freezein_boltzmann_solution": {
+      "FIMP_inverse_decay_proxy_Gamma_over_H": 2.139902720800378e-11,
+      "Omega_D16_h2": 0.11879999999975574,
+      "equation": "dY_D/dx = [45*g_A*M_Pl/(4*pi^4*1.66*g_s*sqrt(g_rho)*m_A^2)] Gamma(A->DX) x^3 K_1(x), x=m_A/T",
+      "never_thermalizes_under_proxy": true,
+      "parent_equilibrium_proxy_Gamma_over_H": 2265.8681455006845,
+      "parent_equilibrium_status": "ASSUMED EFT INPUT: this proxy does not derive a thermal A16 population from the V37 K\u00e4hler/soft or reheating sector.",
+      "parent_lifetime_seconds": 2.1895569371037234e-16,
+      "partial_width_GeV": 3.006142227891374e-09,
+      "relative_abundance_error": 2.0559685641206606e-12,
+      "solution": {
+        "integration_kernel": 4.675593248338675,
+        "integration_kernel_error": 5.639108112477094e-14,
+        "nfev": 530,
+        "relative_solver_integral_difference": 2.282826149496883e-12,
+        "yield_integral_crosscheck": 4.3298803265090063e-13,
+        "yield_numerical": 4.329880326499122e-13
+      },
+      "statistics": "Maxwell-Boltzmann, g_A=4 complete parent chiral-multiplet proxy",
+      "target_yield": 4.329880326508024e-13,
+      "width_status": "UNVALIDATED_PHASE_SPACE_PROXY",
+      "x_reheat": 0.5
+    },
+    "other_anomalon_blocks": {
+      "Boltzmann_tail_kernel_fraction": 0.005124299845172965,
+      "mA2_A32_and_A15_A17_GeV": 200000000000.0,
+      "mD2_and_D17_GeV": 180000000000.0,
+      "m_over_Tmax": 10.0,
+      "proxy_before_0p1_second": true,
+      "relative_freezein_yield_proxy_per_heavy_block": 4.820697170010108e-12,
+      "status": "kept above Tmax in the imposed spectrum; component decay width unvalidated",
+      "suppressed_decay_lifetime_proxy_seconds": 2.3274530380373334e-07,
+      "suppressed_decay_width_proxy_GeV": 2.8280353938099177e-18
+    },
+    "parameterization": {
+      "H_inflation_GeV": 1000000.0,
+      "Mred_GeV": 2.4e+18,
+      "Omega_D16_h2_target": 0.11879999999999999,
+      "Omega_c_h2": 0.12,
+      "Tmax_GeV": 20000000000.0,
+      "Treh_GeV": 20000000000.0,
+      "axion_fraction_of_DM": 0.01,
+      "fPQ_GeV": 500000000000.0,
+      "g_parent_chiral_multiplet": 4.0,
+      "gstar": 106.75,
+      "kappa_heavy": 1e-06,
+      "lambda16_freezein_solved": 3.92649007464488e-09,
+      "lambda_X_visible": 0.1,
+      "lambda_heavy_effective": 1.473139127471974e-13,
+      "mA16_GeV": 10000000000.0,
+      "mA_heavy_GeV": 200000000000.0,
+      "mD16_GeV": 1000.0,
+      "mD_heavy_GeV": 180000000000.0,
+      "mX_GeV": 1000000000.0,
+      "theta_i": 0.05,
+      "yA16_from_mass": 0.0282842712474619
+    }
+  },
+  "core_sha256": "8cd4bff59cb02552f764e3a9a212b56923b515528fafb3d55fcb19f59d99bc2e",
+  "exact_symmetry_and_quality": {
+    "Hsieh_Dai_Freed_Z5610": {
+      "Delta_s1_canonical": 126225,
+      "Delta_s3_canonical": 3342782619495,
+      "both_vanish": true,
+      "cubic_condition_mod_6n": 0,
+      "linear_condition_2Delta_s1_mod_n": 0,
+      "order": 5610
+    },
+    "PQ_congruence_residues": {
+      "D16": 0,
+      "D17": 0,
+      "D2": 0,
+      "Db16": 0,
+      "Db17": 0,
+      "Db2": 0
+    },
+    "active_V39_Z3_dark_anomaly_increment": {
+      "Z3_Z5610_squared_increment_mod3": 0,
+      "Z3_fermion_Z4R_squared_increment_mod3": 0,
+      "Z3_squared_Z5610_increment_mod3": 0,
+      "Z3_squared_fermion_Z4R_increment_mod3": 0,
+      "all_listed_increments_vanish": true,
+      "pure_Z3_Hsieh_cubic_condition_mod18": 0,
+      "pure_Z3_Hsieh_linear_condition_mod3": 0,
+      "pure_Z3_cubic_increment": 9,
+      "pure_Z3_linear_increment": 3,
+      "qualification": "Necessary pure/cross residue increments only; the full Z5610 x Z3 x Z4R product bordism remains G1 input.",
+      "rows": [
+        {
+          "Z3": 2,
+          "Z5610": 2399,
+          "fermion_Z4R_lift": -1,
+          "field": "D2"
+        },
+        {
+          "Z3": 1,
+          "Z5610": 3211,
+          "fermion_Z4R_lift": 1,
+          "field": "Db2"
+        },
+        {
+          "Z3": 0,
+          "Z5610": 4469,
+          "fermion_Z4R_lift": 1,
+          "field": "D17"
+        },
+        {
+          "Z3": 0,
+          "Z5610": 1141,
+          "fermion_Z4R_lift": -1,
+          "field": "Db17"
+        },
+        {
+          "Z3": 0,
+          "Z5610": 85,
+          "fermion_Z4R_lift": -1,
+          "field": "D16"
+        },
+        {
+          "Z3": 0,
+          "Z5610": 5525,
+          "fermion_Z4R_lift": 1,
+          "field": "Db16"
+        }
+      ]
+    },
+    "all_chiral_quality": {
+      "Kahler_witness": {
+        "A15": 1,
+        "A16": 1,
+        "A32dag": 16,
+        "PsiBar": 14
+      },
+      "W_witness": {
+        "A32": 21,
+        "D16": 1,
+        "D17": 4,
+        "P": 6,
+        "X": 1
+      },
+      "active_V39_Z3_reasoning": "The V37-plus-D search without Z3 is a relaxation and already excludes breaking below W33/K32; the split sixes project to the existing neutral R=2 Sig6 signature when Z3 is forgotten. Imposing Z3 cannot add states, while the Z3-neutral PS-singlet witnesses P^33 and P^6 A32^21 A16dag (A17dag)^4 attain degrees 33 and 32.",
+      "active_V39_exact_equalities_W33_K32": true,
+      "first_Kahler_breaking_degree": 32,
+      "first_W_breaking_degree": 33
+    },
+    "all_new_fields_obey_PQ_selector_congruence": true,
+    "all_terms_active_V39_Z3_neutral": true,
+    "all_terms_exactly_invariant": true,
+    "mixed_Z4R_Z85_squared_increment": 0,
+    "six_field_cascade": {
+      "D16": [
+        1,
+        0,
+        0,
+        85
+      ],
+      "D17": [
+        65,
+        2,
+        69,
+        113
+      ],
+      "D2": [
+        29,
+        0,
+        84,
+        23
+      ],
+      "Db16": [
+        65,
+        2,
+        0,
+        -85
+      ],
+      "Db17": [
+        1,
+        0,
+        16,
+        -113
+      ],
+      "Db2": [
+        37,
+        2,
+        1,
+        -23
+      ]
+    },
+    "term_audits": {
+      "A15_cascade": {
+        "PQ_numerator_over_170": 0,
+        "V39_Z3_mod3": 0,
+        "Z4R_mod4": 2,
+        "exactly_invariant": true,
+        "h85_mod85": 0,
+        "q66_mod66": 0
+      },
+      "A32_cascade": {
+        "PQ_numerator_over_170": 0,
+        "V39_Z3_mod3": 0,
+        "Z4R_mod4": 2,
+        "exactly_invariant": true,
+        "h85_mod85": 0,
+        "q66_mod66": 0
+      },
+      "D16_freezein": {
+        "PQ_numerator_over_170": 0,
+        "V39_Z3_mod3": 0,
+        "Z4R_mod4": 2,
+        "exactly_invariant": true,
+        "h85_mod85": 0,
+        "q66_mod66": 0
+      },
+      "D17_cascade": {
+        "PQ_numerator_over_170": 0,
+        "V39_Z3_mod3": 0,
+        "Z4R_mod4": 2,
+        "exactly_invariant": true,
+        "h85_mod85": 0,
+        "q66_mod66": 0
+      },
+      "D2_cascade": {
+        "PQ_numerator_over_170": 0,
+        "V39_Z3_mod3": 0,
+        "Z4R_mod4": 2,
+        "exactly_invariant": true,
+        "h85_mod85": 0,
+        "q66_mod66": 0
+      },
+      "mu16_D16_Db16": {
+        "PQ_numerator_over_170": 0,
+        "V39_Z3_mod3": 0,
+        "Z4R_mod4": 2,
+        "exactly_invariant": true,
+        "h85_mod85": 0,
+        "q66_mod66": 0
+      },
+      "mu17_D17_Db17": {
+        "PQ_numerator_over_170": 0,
+        "V39_Z3_mod3": 0,
+        "Z4R_mod4": 2,
+        "exactly_invariant": true,
+        "h85_mod85": 0,
+        "q66_mod66": 0
+      },
+      "mu2_D2_Db2": {
+        "PQ_numerator_over_170": 0,
+        "V39_Z3_mod3": 0,
+        "Z4R_mod4": 2,
+        "exactly_invariant": true,
+        "h85_mod85": 0,
+        "q66_mod66": 0
+      }
+    },
+    "terms": {
+      "A15_cascade": [
+        "P",
+        "X",
+        "A15",
+        "Db17"
+      ],
+      "A32_cascade": [
+        "Pbar",
+        "X",
+        "A32",
+        "Db2"
+      ],
+      "D16_freezein": [
+        "X",
+        "A16",
+        "D16"
+      ],
+      "D17_cascade": [
+        "X",
+        "A17",
+        "D17"
+      ],
+      "D2_cascade": [
+        "X",
+        "A2",
+        "D2"
+      ],
+      "mu16_D16_Db16": [
+        "D16",
+        "Db16"
+      ],
+      "mu17_D17_Db17": [
+        "D17",
+        "Db17"
+      ],
+      "mu2_D2_Db2": [
+        "D2",
+        "Db2"
+      ]
+    }
+  },
+  "promotion": {
+    "G5_closed": false,
+    "benchmark_cosmology_is_internally_viable_under_its_inputs": false,
+    "conditional_screens": {
+      "freezein_integral_hits_imposed_target": true
+    },
+    "next_required_calculations": [
+      "derive mX, X vev/visible mixing, and all component masses from a stabilized K\u00e4hler/soft sector",
+      "solve the coupled Bose/Fermi finite-temperature Boltzmann system including all A_i, D_i, X and reheating source terms",
+      "supply an inflaton/reheaton sector and calculate Tmax and all visible/dark branching fractions",
+      "compute the PQ finite-temperature potential, axion abundance, isocurvature, and defect history at the same point",
+      "match the X/A-mediated nuclear matrix element and compare to the mass-dependent direct-detection likelihood"
+    ],
+    "not_predictive_because": [
+      "mX, anomalon masses, and the parent equilibrium rate are chosen EFT inputs rather than derived from the V37 K\u00e4hler/soft vacuum",
+      "the Maxwell-Boltzmann parent-multiplet treatment is not a component-resolved finite-temperature SUSY calculation",
+      "the axion fraction, theta_i, H_inflation, Tmax, and absence of inflaton-to-D branching are imposed cosmological inputs; the standard-misalignment reference gives 0.126 percent rather than the imposed 1 percent",
+      "finite-temperature PQ restoration, nonthermal preheating, domain walls, and the full soft/global vacuum remain uncomputed",
+      "the direct-detection number is a dimensionally consistent but non-constraining illustration, not a matched 2-TeV nucleon likelihood",
+      "X allows W linear/X^3 while X^2 is R-forbidden, so a single mX/width cannot substitute for the X/visible component mass matrix and possible <X>HH mixing"
+    ],
+    "parent_equilibrium_is_an_imposed_input": true,
+    "primary_candidate": false
+  },
+  "schema": "susy-v39-g5-freezein-cosmology-certificate-v1",
+  "scope": "Secondary conditional decay-freeze-in screen for the six-field Z170 cascade; the corrected low-reheat secluded-freeze-out screen is likewise fail-closed.",
+  "sources": [
+    {
+      "topic": "decay freeze-in",
+      "url": "https://arxiv.org/abs/0911.1120",
+      "use": "thermal FIMP production framework"
+    },
+    {
+      "topic": "thermal-relic unitarity",
+      "url": "https://ntrs.nasa.gov/citations/19900004848",
+      "use": "340 TeV elementary thermal relic reference"
+    },
+    {
+      "topic": "CMB abundance and annihilation",
+      "url": "https://arxiv.org/abs/1807.06209",
+      "use": "Omega_c h^2 and p_ann < 3.2e-28 cm^3 s^-1 GeV^-1"
+    },
+    {
+      "topic": "isocurvature",
+      "url": "https://arxiv.org/abs/1807.06211",
+      "use": "Planck 2018 inflation/isocurvature constraint basis"
+    },
+    {
+      "topic": "BBN",
+      "url": "https://arxiv.org/abs/astro-ph/0408426",
+      "use": "conservative 0.1 s late-decay screening threshold"
+    },
+    {
+      "topic": "direct detection",
+      "url": "https://arxiv.org/abs/2502.18005",
+      "use": "XENONnT 3.1 tonne-year SI reference"
+    },
+    {
+      "topic": "QCD axion susceptibility/misalignment input",
+      "url": "https://arxiv.org/abs/1606.07494",
+      "use": "reference input; no joint axion cosmology is claimed"
+    }
+  ]
+}

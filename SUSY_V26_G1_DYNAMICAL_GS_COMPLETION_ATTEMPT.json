@@ -1,0 +1,316 @@
+{
+  "G1_gate": {
+    "closed": false,
+    "full_G1_closure_blocked_by_missing_UV_data": true,
+    "full_gate_claim": false,
+    "gate": "G1",
+    "new_evidence_landed": [
+      "exact Z4R x Z11 axion quotient with elementary shift 1/22",
+      "three hidden pure-SYM mixed and gravitational anomaly congruences",
+      "exact symmetry-covariant triple racetrack",
+      "supersymmetric Minkowski stationary point with two positive modulus masses",
+      "hidden condensates preserve the visible residual Z2 matter parity",
+      "constructive all-order PS invariant tensor grammar"
+    ],
+    "open_requirements": [
+      "microscopic origin of T and of visible/hidden integer topological levels",
+      "UV derivation of condensate prefactors, threshold determinants, and the full hidden branch quotient",
+      "microscopic pure-discrete/cubic anomaly and local-counterterm audit",
+      "independent normalized all-order operator basis with syzygies",
+      "UV-matched Wilson, Kahler, gauge-kinetic, and soft coefficients"
+    ],
+    "qualified_dynamical_GS_EFT_subgate_closed": true,
+    "qualified_id": "research.susy_pati_salam.v26.G1.full_closure",
+    "state": "DYNAMICAL_GS_EFT_AND_LOCAL_MODULUS_STABILIZATION_LANDED__MICROSCOPIC_UV_OPERATOR_MATCHING_OPEN"
+  },
+  "GS_discrete_quotient": {
+    "Kahler_shift_invariant_form": "K_GS=-log(T+Tdag)",
+    "allowed_positive_exponents_through_121": [
+      11,
+      33,
+      55,
+      77,
+      99,
+      121
+    ],
+    "common_denominator_22_shift_units": [
+      -11,
+      -18
+    ],
+    "discrete_shifts_mod_period": {
+      "Z11": "-9/11",
+      "Z4R": "-1/2"
+    },
+    "exponential_convention": "E_n(T)=exp(-2*pi*n*T)",
+    "field": "T=t+i theta_GS",
+    "first_three_allowed_exponents": [
+      11,
+      33,
+      55
+    ],
+    "generated_translation_lattice_gcd": 1,
+    "physical_quotient_elementary_step": "1/22",
+    "relative_harmonic_matches_quotient_order": true,
+    "relative_harmonics_for_first_three": [
+      22,
+      22
+    ],
+    "superpotential_covariance_conditions": {
+      "Z11_target_charge_0": "n=0 mod 11",
+      "Z4R_target_charge_2": "n odd",
+      "combined": "n=11 mod 22"
+    },
+    "theta_period": 1
+  },
+  "all_order_operator_grammar": {
+    "boundary": "the tensor alphabet spans the invariant ring, but it is not the requested UV-matched independent normalized operator/tensor contract",
+    "chiral_field_multidegree": "n=(n_H,...,n_N) in nonnegative integers^13",
+    "constructive_PS_tensor_alphabet": {
+      "SU2L": [
+        "epsilon_alpha_beta"
+      ],
+      "SU2R": [
+        "epsilon_dotalpha_dotbeta"
+      ],
+      "SU4": [
+        "delta^a_b",
+        "epsilon_abcd",
+        "epsilon^abcd",
+        "Sigma_[ab] realization of the 6"
+      ]
+    },
+    "critical_slice_exact_subgrammar_from_V25": "Wcrit=X Lambda^2 F(Sbc Sc/Lambda^2,X^2/Lambda^2)",
+    "gauge_kinetic_spanning_rule": "holomorphic PS singlets of selector charge (0,0) multiply W_alpha W_alpha; the universal shifting term is k_a*T*W_alpha^a W_alpha^a",
+    "grammar_is_all_order_and_constructive": true,
+    "holomorphic_spanning_rule": "expand every 6 as an antisymmetric pair, contract every gauge index with the listed delta/epsilon tensors, impose identical-superfield symmetrization and flavor tensors, then retain sum(r_i n_i)=2 mod4 and sum(z_i n_i)=0 mod11",
+    "independent_normalized_basis_and_syzygy_reducer_implemented_at_all_orders": false,
+    "kahler_and_soft_matching_derived": false,
+    "kahler_spanning_rule": "repeat the tensor construction for chiral and antichiral indices, retain total Z4R and Z11 charge zero, and pair coefficients to make K Hermitian",
+    "soft_spurion_rule": "once a mediation spurion and its charges are supplied, insert it into the same D-term and F-term contraction grammar",
+    "superpotential_form": "W=sum_[n,a] c_[n,a] I_[n,a]/Lambda^(|n|-3), including nonnegative powers and the GS exponentials E_(11+22j)(T) with the same selector covariance",
+    "wilson_coefficients_derived_from_hidden_or_microscopic_UV": false
+  },
+  "checks": {
+    "GS_quotient_elementary_step_is_1_over_22": true,
+    "V24_source_core_matches": true,
+    "V25_core_matches": true,
+    "all_hidden_mixed_anomaly_congruences_match": true,
+    "all_hidden_sectors_are_asymptotically_free": true,
+    "all_raw_source_pins_match": true,
+    "both_modulus_components_are_locally_massive": true,
+    "combined_gravitational_congruences_match": true,
+    "first_three_covariant_exponents_are_11_33_55": true,
+    "full_G1_remains_fail_closed": true,
+    "hidden_level_rank_ratios_match_racetrack_exponents": true,
+    "qualified_dynamical_GS_EFT_subgate_is_closed": true,
+    "racetrack_WTT_is_nonzero_3872_pi2": true,
+    "racetrack_W_and_WT_vanish_exactly": true,
+    "residual_Z2_matter_parity_is_preserved": true
+  },
+  "closure_counts": {
+    "full_G1_closed": 0,
+    "full_G1_open": 1,
+    "qualified_dynamical_GS_EFT_subgates_closed": 1
+  },
+  "core_sha256": "7dd049d43e1ce6cb6e9ca3385ecb2895521443a80f5af1363260d4ea637ba59d",
+  "exact_racetrack_stabilization": {
+    "D_T_W_at_T0": 0,
+    "F_term_potential_at_T0": 0,
+    "K_T_Tdag_at_T0": "(2 Re T0)^-2 > 0",
+    "Kahler_potential": "K=-log(T+Tdag)",
+    "Planck_units": true,
+    "W_TT_over_pi2_M3_at_T0": 3872,
+    "W_T_over_minus_pi_M3_at_T0": 0,
+    "W_over_M3_at_T0": 0,
+    "both_real_modulus_components_locally_massive": true,
+    "canonically_normalized_real_scalar_mass_squared": "m_T^2=(2 Re T0)^3 |3872*pi^2*M^3|^2 > 0",
+    "dynamical_GS_modulus_stabilization_closed_at_selected_4D_EFT_branch": true,
+    "exact_stationary_point": "T0=log(2)/(22*pi), Im(T0)=0 modulo the discrete gauge quotient",
+    "exp_minus_22pi_T0": "1/2",
+    "gauge_kinetic_functions": "f_a=f_a0+k_a*T with positive real constants f_a0; the constants set physical couplings and are absorbed into condensate prefactors",
+    "modulus": "T=t+i theta_GS",
+    "spacetime": "supersymmetric Minkowski",
+    "superpotential": "W_GS=M^3[2 exp(-22*pi*T)-16 exp(-66*pi*T)+32 exp(-110*pi*T)]",
+    "term_values_over_M3_at_T0": [
+      1,
+      -2,
+      1
+    ]
+  },
+  "failures": [],
+  "hidden_condensation_and_anomaly_ledger": {
+    "all_hidden_mixed_GS_congruences_match": true,
+    "condensate_convention": "W_h=N Lambda_h^3 proportional to exp[-2*pi*(k/N)*T] on a selected branch",
+    "gravitational_anomaly_audit": {
+      "GS_modulino_Z11_contribution": 0,
+      "GS_modulino_Z4R_contribution": -1,
+      "Z11_gravitational_GS_congruence": true,
+      "Z4R_gravitational_GS_congruence": true,
+      "combined_Z11_mod11": 7,
+      "combined_Z4R_mod_eta2": 0,
+      "hidden_Z11_gaugino_contribution": 0,
+      "hidden_Z4R_gaugino_contribution": 35,
+      "required_24rho_mod11": 7,
+      "required_24rho_mod_eta2": 0,
+      "visible_Z11_representative": -15,
+      "visible_Z4R_representative": 20
+    },
+    "important_boundary": "the selected condensate branch is explicit, but the full Veneziano--Yankielowicz composite branch quotient and threshold determinants have not been derived",
+    "raw_condensate_branch_product": 30,
+    "residual_matter_parity": {
+      "P_VEV_and_condensates_preserve_the_same_Z2": true,
+      "condensates_break_Z4R_to_Z2": true,
+      "gaugino_bilinear_Z4R_charge": 2,
+      "hidden_gauge_fields_are_visible_matter_parity_even": true
+    },
+    "sectors": [
+      {
+        "R_gaugino_gravitational_contribution": 3,
+        "Z11_level_times_rho9_mod11": 0,
+        "Z11_mixed_GS_congruence": true,
+        "Z11_mixed_anomaly_mod11": 0,
+        "Z11_mixed_anomaly_representative": 0,
+        "Z4R_level_times_rho_mod_eta2": 0,
+        "Z4R_mixed_GS_congruence": true,
+        "Z4R_mixed_anomaly_mod_eta2": 0,
+        "Z4R_mixed_anomaly_representative": 2,
+        "asymptotically_free": true,
+        "condensate_exponent_k_over_N": 11,
+        "gauge_group": "SU(2)_h",
+        "number_of_pure_SYM_condensate_branches": 2,
+        "one_loop_b0": 6,
+        "pure_SYM": true,
+        "racetrack_prefactor_in_M3_units": 2,
+        "rank_N": 2,
+        "target_exponent": 11,
+        "topological_level_k": 22
+      },
+      {
+        "R_gaugino_gravitational_contribution": 8,
+        "Z11_level_times_rho9_mod11": 0,
+        "Z11_mixed_GS_congruence": true,
+        "Z11_mixed_anomaly_mod11": 0,
+        "Z11_mixed_anomaly_representative": 0,
+        "Z4R_level_times_rho_mod_eta2": 1,
+        "Z4R_mixed_GS_congruence": true,
+        "Z4R_mixed_anomaly_mod_eta2": 1,
+        "Z4R_mixed_anomaly_representative": 3,
+        "asymptotically_free": true,
+        "condensate_exponent_k_over_N": 33,
+        "gauge_group": "SU(3)_h",
+        "number_of_pure_SYM_condensate_branches": 3,
+        "one_loop_b0": 9,
+        "pure_SYM": true,
+        "racetrack_prefactor_in_M3_units": -16,
+        "rank_N": 3,
+        "target_exponent": 33,
+        "topological_level_k": 99
+      },
+      {
+        "R_gaugino_gravitational_contribution": 24,
+        "Z11_level_times_rho9_mod11": 0,
+        "Z11_mixed_GS_congruence": true,
+        "Z11_mixed_anomaly_mod11": 0,
+        "Z11_mixed_anomaly_representative": 0,
+        "Z4R_level_times_rho_mod_eta2": 1,
+        "Z4R_mixed_GS_congruence": true,
+        "Z4R_mixed_anomaly_mod_eta2": 1,
+        "Z4R_mixed_anomaly_representative": 5,
+        "asymptotically_free": true,
+        "condensate_exponent_k_over_N": 55,
+        "gauge_group": "SU(5)_h",
+        "number_of_pure_SYM_condensate_branches": 5,
+        "one_loop_b0": 15,
+        "pure_SYM": true,
+        "racetrack_prefactor_in_M3_units": 32,
+        "rank_N": 5,
+        "target_exponent": 55,
+        "topological_level_k": 275
+      }
+    ]
+  },
+  "n_checks": 15,
+  "n_failed": 0,
+  "namespace": "research.susy_pati_salam.v26.g1_dynamical_gs_completion_attempt",
+  "primary_sources": [
+    {
+      "citation": "Kawamura and Raby, 2020",
+      "topic": "visible Pati--Salam source architecture",
+      "url": "https://arxiv.org/abs/2009.04582"
+    },
+    {
+      "citation": "Dine and Monteux, 2012",
+      "topic": "discrete R anomalies and Green--Schwarz cancellation",
+      "url": "https://arxiv.org/abs/1212.4371"
+    },
+    {
+      "citation": "Burgess, Derendinger, Quevedo, and Quiros, 1995",
+      "topic": "gaugino condensation with field-dependent gauge couplings",
+      "url": "https://arxiv.org/abs/hep-th/9505171"
+    },
+    {
+      "citation": "Blanco-Pillado, Kallosh, and Linde, 2005",
+      "topic": "supersymmetric Minkowski racetrack stabilization",
+      "url": "https://arxiv.org/abs/hep-th/0511042"
+    }
+  ],
+  "schema": "susy-v26-g1-dynamical-gs-completion-attempt-v1",
+  "source_manifest": [
+    {
+      "expected_sha256": "51833f307b05d13ae828cab3dec5922795e80b7d56187c554367692a079db638",
+      "matches": true,
+      "mode": "raw",
+      "path": "susy_v25_g1_g3_completion_frontier.py",
+      "sha256": "51833f307b05d13ae828cab3dec5922795e80b7d56187c554367692a079db638"
+    },
+    {
+      "expected_sha256": "08c25dbd3b978dc28746f87c8ff0cb89aae3fab5346dad61c8230da63717f027",
+      "matches": true,
+      "mode": "raw",
+      "path": "SUSY_V25_G1_G3_COMPLETION_FRONTIER.json",
+      "sha256": "08c25dbd3b978dc28746f87c8ff0cb89aae3fab5346dad61c8230da63717f027"
+    },
+    {
+      "expected_sha256": "bc926ce92a4b85f6ff3527660daafee4f1fd45435ab67c1ca10333fc5e3830e6",
+      "matches": true,
+      "mode": "raw",
+      "path": "SUSY_V25_G1_G3_COMPLETION_FRONTIER.md",
+      "sha256": "bc926ce92a4b85f6ff3527660daafee4f1fd45435ab67c1ca10333fc5e3830e6"
+    },
+    {
+      "expected_sha256": "4993924ebf64a8eb05f83290174adaffe277342234d1ae43e78d992b3efbf4da",
+      "matches": true,
+      "mode": "raw",
+      "path": "susy_v24_ps_source_contract.py",
+      "sha256": "4993924ebf64a8eb05f83290174adaffe277342234d1ae43e78d992b3efbf4da"
+    },
+    {
+      "expected_sha256": "c2457e188877a2729e092acf6ddbf76626b884a4c1cb652c282da215f268ce51",
+      "matches": true,
+      "mode": "raw",
+      "path": "SUSY_V24_PS_SOURCE_CONTRACT.json",
+      "sha256": "c2457e188877a2729e092acf6ddbf76626b884a4c1cb652c282da215f268ce51"
+    },
+    {
+      "expected_sha256": "09326668d02b32b4a66c3b79cba34fb6a709430a360dce6d2d5d2ab039cad2bf",
+      "matches": true,
+      "mode": "raw",
+      "path": "models/PSZ4RZ11SUSYV24/PSZ4RZ11SUSYV24.m",
+      "sha256": "09326668d02b32b4a66c3b79cba34fb6a709430a360dce6d2d5d2ab039cad2bf"
+    }
+  ],
+  "status": "V26_G1_DYNAMICAL_GS_EFT_CONSTRUCTED__MODULUS_STABILIZED__HIDDEN_ANOMALIES_MATCH__MICROSCOPIC_UV_AND_WILSON_MATCHING_OPEN__FULL_G1_NOT_CLOSED",
+  "terminal_decision": {
+    "candidate_is_a_microscopic_UV_completion": false,
+    "candidate_is_mathematically_consistent_at_declared_scope": true,
+    "continue_attempt_completed": true,
+    "full_G1_can_be_closed_now": false,
+    "honest_next_input_if_reopened": "an explicit compactification or other UV-complete source whose massless spectrum, levels, selection rules, moduli stabilization, and threshold matching reproduce this ledger",
+    "new_dynamical_GS_EFT_candidate_created": true,
+    "stop_reason": "a 4D anomaly-matched stabilized racetrack can be constructed, but no microscopic source derives its levels, threshold prefactors, branch quotient, or the visible all-order Wilson/Kahler/soft data"
+  },
+  "upstream_core_pins": {
+    "v24_source": "d408aa7d7d3096ac917f5bd6f4f37576aace4cd78709bf4810b8e036dc2d93a8",
+    "v25_frontier": "5aa1d0bffd39fa3a520105291d95906882842fd185e85cae72b519b03528e307"
+  }
+}

@@ -1,0 +1,4854 @@
+{
+  "PS_wall_action": {
+    "Kahler": [
+      "positive Hermitian 4x4 metric on (Q1,Q2,Q3,HLF_L)",
+      "positive Hermitian 4x4 metric on (Qc1,Qc2,Qc3,HRA_R)",
+      "independent positive metrics on HLA_L,HRF_R,HLFc_R,HLAc_R,HRAc_L,HRFc_L,H"
+    ],
+    "derivative_normal_form": {
+      "brane_bulk_channels": [
+        "Q_i (nabla5 HLFc)_L, i=1,2,3",
+        "Qc_i (nabla5 HRAc)_R, i=1,2,3"
+      ],
+      "bulk_hyper_channels": "four O_minus plus four M_o coordinates after the four O7/O8 IBP relations",
+      "note": "brane fields have no y derivative, so these six mixings are not removed by bulk IBP"
+    },
+    "gauge_coordinates": [
+      "tau4,tau2L,tau2R,tauF0 with positive real parts",
+      "xiF0",
+      "z_Zhat Tr Zhat^2 with its no-ghost inequality in the full gauge norm"
+    ],
+    "mu_H_reason": "allowed by PS x U1F x matter parity; V47 explicitly withdrew inherited Z4R",
+    "spinor_cubic_count": 19,
+    "superpotential": [
+      "sum_AB Y_AB L_A H R_B, L=(Q1,Q2,Q3,HLF), R=(Qc1,Qc2,Qc3,HRA)",
+      "y_m HLA H HRF",
+      "y_c HRAc H HLFc",
+      "y_cb HRFc H HLAc",
+      "mu_H epsilon_L epsilon_R H H/2"
+    ]
+  },
+  "adversarial_verdict": {
+    "C1_retained_sector": "PASS_ABSTRACTLY",
+    "blockers": [
+      "insert the full A,Xi,C tensor families into the same-action spectral/Wilson pencil",
+      "publish normalized SO10-to-PS Cartesian tensors for C7 rather than abstract Hom labels",
+      "perform a second-profile counterterm rematch and loop-level subtraction audit",
+      "decide whether finite Wilson-line bilocality is accepted as the G2 regulator contract"
+    ],
+    "full_G2": "OPEN",
+    "superseded_claim": "The V49 fixed-profile statement that O(1) HcHc is O(epsilon^2) is false in the strong A/epsilon wall unless its normal derivative is held fixed contrary to the wall equation.",
+    "why_C1_passes": "Every retained invariant direction has a coefficient.  The 23 pure-source quartic directions have exact Susyno/character multiplicities; remaining collar tensor families are defined as finite orthonormal Haar-projector bases, including empty-space tests."
+  },
+  "core_sha256": "ed0b77f66a4f800abbf1dca9a199433d549c13a1f92903748c0013ffef6e90ad",
+  "exact_pure_source_quartic_basis": {
+    "component_boundary": "This exactly enumerates Wilson coefficients and invariant directions for C1. It does not publish the normalized 210/126 Cartesian Clebsch arrays required for C7.",
+    "construction": "one coefficient for every orthonormal direction in Im of the compact-Spin10 Haar/Reynolds projector on Sym powers; exact multiplicities and channel labels come from independent D5 plethysm plus character upper-bound equality",
+    "direction_count": 23,
+    "normalization": {
+      "Hermitian_conjugation": "D5 chirality 4<->5, H<->Hb, D<->Db, S<->Sb, X<->Xb; conjugate sectors paired by equal ordered basis index",
+      "component_projection_boundary": "component Clebsch expansion is canonical G2, not silently claimed by this G1 channel basis",
+      "isotypic_embeddings": "orthonormal; ordered by D5 Dynkin label then exact plethysm copy index",
+      "representation_metric": "positive unit invariant Hermitian form on each compact Spin(10) irrep",
+      "singlet_Hom_basis": "orthonormal; deterministic Susyno reduction order; first nonzero weight-lex coefficient positive real"
+    },
+    "rows": [
+      {
+        "U1F_charge": 0,
+        "channels": [
+          {
+            "basis_index": 1,
+            "coefficient": "c4_source_01",
+            "final_singlet_copy_index": 1,
+            "global_direction": 1,
+            "plethysm_copy_indices": {},
+            "plethysm_irreps": {}
+          }
+        ],
+        "counts": {
+          "Phi": 0,
+          "S": 4,
+          "Sigma": 0,
+          "ThetaMinus": 0,
+          "ThetaPlus": 0,
+          "barSigma": 0
+        },
+        "exact_invariant_multiplicity": 1,
+        "monomial": "S^4"
+      },
+      {
+        "U1F_charge": 0,
+        "channels": [
+          {
+            "basis_index": 1,
+            "coefficient": "c4_source_02",
+            "final_singlet_copy_index": 1,
+            "global_direction": 2,
+            "plethysm_copy_indices": {},
+            "plethysm_irreps": {}
+          }
+        ],
+        "counts": {
+          "Phi": 0,
+          "S": 2,
+          "Sigma": 0,
+          "ThetaMinus": 1,
+          "ThetaPlus": 1,
+          "barSigma": 0
+        },
+        "exact_invariant_multiplicity": 1,
+        "monomial": "S^2 ThetaPlus ThetaMinus"
+      },
+      {
+        "U1F_charge": 0,
+        "channels": [
+          {
+            "basis_index": 1,
+            "coefficient": "c4_source_03",
+            "final_singlet_copy_index": 1,
+            "global_direction": 3,
+            "plethysm_copy_indices": {
+              "Phi": 1
+            },
+            "plethysm_irreps": {
+              "Phi": [
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          }
+        ],
+        "counts": {
+          "Phi": 2,
+          "S": 2,
+          "Sigma": 0,
+          "ThetaMinus": 0,
+          "ThetaPlus": 0,
+          "barSigma": 0
+        },
+        "exact_invariant_multiplicity": 1,
+        "monomial": "S^2 Phi^2"
+      },
+      {
+        "U1F_charge": 0,
+        "channels": [
+          {
+            "basis_index": 1,
+            "coefficient": "c4_source_04",
+            "final_singlet_copy_index": 1,
+            "global_direction": 4,
+            "plethysm_copy_indices": {
+              "Sigma": 1,
+              "barSigma": 1
+            },
+            "plethysm_irreps": {
+              "Sigma": [
+                0,
+                0,
+                0,
+                2,
+                0
+              ],
+              "barSigma": [
+                0,
+                0,
+                0,
+                0,
+                2
+              ]
+            }
+          }
+        ],
+        "counts": {
+          "Phi": 0,
+          "S": 2,
+          "Sigma": 1,
+          "ThetaMinus": 0,
+          "ThetaPlus": 0,
+          "barSigma": 1
+        },
+        "exact_invariant_multiplicity": 1,
+        "monomial": "S^2 Sigma barSigma"
+      },
+      {
+        "U1F_charge": 0,
+        "channels": [
+          {
+            "basis_index": 1,
+            "coefficient": "c4_source_05",
+            "final_singlet_copy_index": 1,
+            "global_direction": 5,
+            "plethysm_copy_indices": {
+              "Phi": 1
+            },
+            "plethysm_irreps": {
+              "Phi": [
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          }
+        ],
+        "counts": {
+          "Phi": 3,
+          "S": 1,
+          "Sigma": 0,
+          "ThetaMinus": 0,
+          "ThetaPlus": 0,
+          "barSigma": 0
+        },
+        "exact_invariant_multiplicity": 1,
+        "monomial": "S Phi^3"
+      },
+      {
+        "U1F_charge": 0,
+        "channels": [
+          {
+            "basis_index": 1,
+            "coefficient": "c4_source_06",
+            "final_singlet_copy_index": 1,
+            "global_direction": 6,
+            "plethysm_copy_indices": {
+              "Phi": 1,
+              "Sigma": 1,
+              "barSigma": 1
+            },
+            "plethysm_irreps": {
+              "Phi": [
+                0,
+                0,
+                0,
+                1,
+                1
+              ],
+              "Sigma": [
+                0,
+                0,
+                0,
+                2,
+                0
+              ],
+              "barSigma": [
+                0,
+                0,
+                0,
+                0,
+                2
+              ]
+            }
+          }
+        ],
+        "counts": {
+          "Phi": 1,
+          "S": 1,
+          "Sigma": 1,
+          "ThetaMinus": 0,
+          "ThetaPlus": 0,
+          "barSigma": 1
+        },
+        "exact_invariant_multiplicity": 1,
+        "monomial": "S Phi Sigma barSigma"
+      },
+      {
+        "U1F_charge": 0,
+        "channels": [
+          {
+            "basis_index": 1,
+            "coefficient": "c4_source_07",
+            "final_singlet_copy_index": 1,
+            "global_direction": 7,
+            "plethysm_copy_indices": {},
+            "plethysm_irreps": {}
+          }
+        ],
+        "counts": {
+          "Phi": 0,
+          "S": 0,
+          "Sigma": 0,
+          "ThetaMinus": 2,
+          "ThetaPlus": 2,
+          "barSigma": 0
+        },
+        "exact_invariant_multiplicity": 1,
+        "monomial": "ThetaPlus^2 ThetaMinus^2"
+      },
+      {
+        "U1F_charge": 0,
+        "channels": [
+          {
+            "basis_index": 1,
+            "coefficient": "c4_source_08",
+            "final_singlet_copy_index": 1,
+            "global_direction": 8,
+            "plethysm_copy_indices": {
+              "Phi": 1
+            },
+            "plethysm_irreps": {
+              "Phi": [
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          }
+        ],
+        "counts": {
+          "Phi": 2,
+          "S": 0,
+          "Sigma": 0,
+          "ThetaMinus": 1,
+          "ThetaPlus": 1,
+          "barSigma": 0
+        },
+        "exact_invariant_multiplicity": 1,
+        "monomial": "ThetaPlus ThetaMinus Phi^2"
+      },
+      {
+        "U1F_charge": 0,
+        "channels": [
+          {
+            "basis_index": 1,
+            "coefficient": "c4_source_09",
+            "final_singlet_copy_index": 1,
+            "global_direction": 9,
+            "plethysm_copy_indices": {
+              "Sigma": 1,
+              "barSigma": 1
+            },
+            "plethysm_irreps": {
+              "Sigma": [
+                0,
+                0,
+                0,
+                2,
+                0
+              ],
+              "barSigma": [
+                0,
+                0,
+                0,
+                0,
+                2
+              ]
+            }
+          }
+        ],
+        "counts": {
+          "Phi": 0,
+          "S": 0,
+          "Sigma": 1,
+          "ThetaMinus": 1,
+          "ThetaPlus": 1,
+          "barSigma": 1
+        },
+        "exact_invariant_multiplicity": 1,
+        "monomial": "ThetaPlus ThetaMinus Sigma barSigma"
+      },
+      {
+        "U1F_charge": 0,
+        "channels": [
+          {
+            "basis_index": 1,
+            "coefficient": "c4_source_10",
+            "final_singlet_copy_index": 1,
+            "global_direction": 10,
+            "plethysm_copy_indices": {
+              "Phi": 1
+            },
+            "plethysm_irreps": {
+              "Phi": [
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          },
+          {
+            "basis_index": 2,
+            "coefficient": "c4_source_11",
+            "final_singlet_copy_index": 1,
+            "global_direction": 11,
+            "plethysm_copy_indices": {
+              "Phi": 2
+            },
+            "plethysm_irreps": {
+              "Phi": [
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          },
+          {
+            "basis_index": 3,
+            "coefficient": "c4_source_12",
+            "final_singlet_copy_index": 1,
+            "global_direction": 12,
+            "plethysm_copy_indices": {
+              "Phi": 3
+            },
+            "plethysm_irreps": {
+              "Phi": [
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          },
+          {
+            "basis_index": 4,
+            "coefficient": "c4_source_13",
+            "final_singlet_copy_index": 1,
+            "global_direction": 13,
+            "plethysm_copy_indices": {
+              "Phi": 4
+            },
+            "plethysm_irreps": {
+              "Phi": [
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          }
+        ],
+        "counts": {
+          "Phi": 4,
+          "S": 0,
+          "Sigma": 0,
+          "ThetaMinus": 0,
+          "ThetaPlus": 0,
+          "barSigma": 0
+        },
+        "exact_invariant_multiplicity": 4,
+        "monomial": "Phi^4"
+      },
+      {
+        "U1F_charge": 0,
+        "channels": [
+          {
+            "basis_index": 1,
+            "coefficient": "c4_source_14",
+            "final_singlet_copy_index": 1,
+            "global_direction": 14,
+            "plethysm_copy_indices": {
+              "Phi": 1,
+              "Sigma": 1,
+              "barSigma": 1
+            },
+            "plethysm_irreps": {
+              "Phi": [
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "Sigma": [
+                0,
+                0,
+                0,
+                2,
+                0
+              ],
+              "barSigma": [
+                0,
+                0,
+                0,
+                0,
+                2
+              ]
+            }
+          },
+          {
+            "basis_index": 2,
+            "coefficient": "c4_source_15",
+            "final_singlet_copy_index": 1,
+            "global_direction": 15,
+            "plethysm_copy_indices": {
+              "Phi": 1,
+              "Sigma": 1,
+              "barSigma": 1
+            },
+            "plethysm_irreps": {
+              "Phi": [
+                0,
+                0,
+                0,
+                1,
+                1
+              ],
+              "Sigma": [
+                0,
+                0,
+                0,
+                2,
+                0
+              ],
+              "barSigma": [
+                0,
+                0,
+                0,
+                0,
+                2
+              ]
+            }
+          },
+          {
+            "basis_index": 3,
+            "coefficient": "c4_source_16",
+            "final_singlet_copy_index": 1,
+            "global_direction": 16,
+            "plethysm_copy_indices": {
+              "Phi": 1,
+              "Sigma": 1,
+              "barSigma": 1
+            },
+            "plethysm_irreps": {
+              "Phi": [
+                0,
+                0,
+                0,
+                2,
+                2
+              ],
+              "Sigma": [
+                0,
+                0,
+                0,
+                2,
+                0
+              ],
+              "barSigma": [
+                0,
+                0,
+                0,
+                0,
+                2
+              ]
+            }
+          },
+          {
+            "basis_index": 4,
+            "coefficient": "c4_source_17",
+            "final_singlet_copy_index": 1,
+            "global_direction": 17,
+            "plethysm_copy_indices": {
+              "Phi": 1,
+              "Sigma": 1,
+              "barSigma": 1
+            },
+            "plethysm_irreps": {
+              "Phi": [
+                0,
+                1,
+                0,
+                0,
+                0
+              ],
+              "Sigma": [
+                0,
+                0,
+                0,
+                2,
+                0
+              ],
+              "barSigma": [
+                0,
+                0,
+                0,
+                0,
+                2
+              ]
+            }
+          },
+          {
+            "basis_index": 5,
+            "coefficient": "c4_source_18",
+            "final_singlet_copy_index": 1,
+            "global_direction": 18,
+            "plethysm_copy_indices": {
+              "Phi": 1,
+              "Sigma": 1,
+              "barSigma": 1
+            },
+            "plethysm_irreps": {
+              "Phi": [
+                0,
+                1,
+                0,
+                1,
+                1
+              ],
+              "Sigma": [
+                0,
+                0,
+                0,
+                2,
+                0
+              ],
+              "barSigma": [
+                0,
+                0,
+                0,
+                0,
+                2
+              ]
+            }
+          },
+          {
+            "basis_index": 6,
+            "coefficient": "c4_source_19",
+            "final_singlet_copy_index": 1,
+            "global_direction": 19,
+            "plethysm_copy_indices": {
+              "Phi": 1,
+              "Sigma": 1,
+              "barSigma": 1
+            },
+            "plethysm_irreps": {
+              "Phi": [
+                0,
+                2,
+                0,
+                0,
+                0
+              ],
+              "Sigma": [
+                0,
+                0,
+                0,
+                2,
+                0
+              ],
+              "barSigma": [
+                0,
+                0,
+                0,
+                0,
+                2
+              ]
+            }
+          }
+        ],
+        "counts": {
+          "Phi": 2,
+          "S": 0,
+          "Sigma": 1,
+          "ThetaMinus": 0,
+          "ThetaPlus": 0,
+          "barSigma": 1
+        },
+        "exact_invariant_multiplicity": 6,
+        "monomial": "Phi^2 Sigma barSigma"
+      },
+      {
+        "U1F_charge": 0,
+        "channels": [
+          {
+            "basis_index": 1,
+            "coefficient": "c4_source_20",
+            "final_singlet_copy_index": 1,
+            "global_direction": 20,
+            "plethysm_copy_indices": {
+              "Sigma": 1,
+              "barSigma": 1
+            },
+            "plethysm_irreps": {
+              "Sigma": [
+                0,
+                0,
+                0,
+                4,
+                0
+              ],
+              "barSigma": [
+                0,
+                0,
+                0,
+                0,
+                4
+              ]
+            }
+          },
+          {
+            "basis_index": 2,
+            "coefficient": "c4_source_21",
+            "final_singlet_copy_index": 1,
+            "global_direction": 21,
+            "plethysm_copy_indices": {
+              "Sigma": 1,
+              "barSigma": 1
+            },
+            "plethysm_irreps": {
+              "Sigma": [
+                0,
+                0,
+                2,
+                0,
+                0
+              ],
+              "barSigma": [
+                0,
+                0,
+                2,
+                0,
+                0
+              ]
+            }
+          },
+          {
+            "basis_index": 3,
+            "coefficient": "c4_source_22",
+            "final_singlet_copy_index": 1,
+            "global_direction": 22,
+            "plethysm_copy_indices": {
+              "Sigma": 1,
+              "barSigma": 1
+            },
+            "plethysm_irreps": {
+              "Sigma": [
+                1,
+                0,
+                0,
+                2,
+                0
+              ],
+              "barSigma": [
+                1,
+                0,
+                0,
+                0,
+                2
+              ]
+            }
+          },
+          {
+            "basis_index": 4,
+            "coefficient": "c4_source_23",
+            "final_singlet_copy_index": 1,
+            "global_direction": 23,
+            "plethysm_copy_indices": {
+              "Sigma": 1,
+              "barSigma": 1
+            },
+            "plethysm_irreps": {
+              "Sigma": [
+                2,
+                0,
+                0,
+                0,
+                0
+              ],
+              "barSigma": [
+                2,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          }
+        ],
+        "counts": {
+          "Phi": 0,
+          "S": 0,
+          "Sigma": 2,
+          "ThetaMinus": 0,
+          "ThetaPlus": 0,
+          "barSigma": 2
+        },
+        "exact_invariant_multiplicity": 4,
+        "monomial": "Sigma^2 barSigma^2"
+      }
+    ],
+    "sector_count": 12
+  },
+  "field_redefinition_certificate": {
+    "Yukawa_covariance_residual": 2.6645352591003757e-15,
+    "left_metric_canonical_residual": 2.2216349663358185e-16,
+    "right_metric_canonical_residual": 2.220451361624169e-16
+  },
+  "gauge_covariance_and_locality": {
+    "Wilson_line": "U_R(L,L-s)=P exp[-int_(L-s)^L Phi_R dy] transports every H/Hc and covariant normal derivative to the common source frame",
+    "limitation": "finite Wilson-line smearing is bilocal over epsilon.  It is a legitimate finite-resolution Wilsonian scheme, not evidence for a point-local microscopic 5D UV completion.",
+    "quadratic_axial_gauge": "U=I is a valid benchmark gauge; Wilson-line variations fix gauge vertices",
+    "uniqueness": "the normal path is the unique shortest path inside the collar"
+  },
+  "general_full_collar_transfer": {
+    "determinant": 0.9999999999999993,
+    "generator_Hamiltonian_residual": 0.0,
+    "path_ordered_transfer_symplectic_residual": 1.2212453270876722e-15,
+    "scope": "real CP benchmark of the general A,Xi,C collar; complex coefficients require the standard Hermitian Nambu lift, not a transpose-only transfer"
+  },
+  "integrity_checks": {
+    "IBP_rank_and_quotient_are_4_and_8": true,
+    "IBP_representatives_satisfy_relations": true,
+    "all_23_quartic_coefficients_unique": true,
+    "all_42_charge_neutral_HH_candidate_sectors_declared": true,
+    "all_42_charge_neutral_HcHc_candidate_sectors_declared": true,
+    "all_84_charge_neutral_HcH_candidate_sectors_declared": true,
+    "all_pure_source_rows_charge_neutral": true,
+    "all_two_bulk_holomorphic_candidates_are_charge_neutral": true,
+    "four_HH_and_four_HcHc_cubic_nonempty_witnesses": true,
+    "four_cross_pair_degree_four_HcH_witnesses": true,
+    "four_leading_odd_profile_HcH_coordinates": true,
+    "general_collar_generator_is_Hamiltonian": true,
+    "general_collar_transfer_is_symplectic": true,
+    "mixed_Kahler_charge_complete_candidates_are_16_plus_80": true,
+    "mixed_Kahler_known_nonempty_witnesses_are_8_plus_32": true,
+    "positive_metric_field_redefinition_is_covariant": true,
+    "pure_source_Kahler_census_is_6_plus_13": true,
+    "pure_source_quartic_direction_count_is_23": true,
+    "pure_source_quartic_sector_count_is_12": true,
+    "source_gauge_census_is_two_constants_three_linear_and_one_FI": true,
+    "strong_wall_HcHc_is_unsuppressed": true,
+    "strong_wall_odd_HcH_is_unsuppressed": true,
+    "twelve_HH_and_twelve_HcHc_degree_four_nonempty_witnesses": true
+  },
+  "mixed_Kahler_basis": {
+    "PS_wall": [
+      "positive Hermitian 4x4 metric on (Q1,Q2,Q3,HLF_L)",
+      "positive Hermitian 4x4 metric on (Qc1,Qc2,Qc3,HRA_R)",
+      "independent positive metrics on HLA_L,HRF_R,HLFc_R,HLAc_R,HRAc_L,HRFc_L,H"
+    ],
+    "charge_complete_one_chiral_insertion_candidates_plus_hc": [
+      {
+        "U1F_charge": 0,
+        "bra": "A",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "A",
+        "monomial": "HLF^dagger S HLF + h.c.",
+        "source": "S"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "A",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "A",
+        "monomial": "HLF^dagger Phi HLF + h.c.",
+        "source": "Phi"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "A",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "A",
+        "monomial": "HLF^dagger Sigma HLF + h.c.",
+        "source": "Sigma"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "A",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "A",
+        "monomial": "HLF^dagger barSigma HLF + h.c.",
+        "source": "barSigma"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "A",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "D",
+        "monomial": "HLF^dagger ThetaMinus HRF + h.c.",
+        "source": "ThetaMinus"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "A",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "Bc",
+        "monomial": "HLF^dagger ThetaMinus HLAc + h.c.",
+        "source": "ThetaMinus"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "A",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "Cc",
+        "monomial": "HLF^dagger S HRAc + h.c.",
+        "source": "S"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "A",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "Cc",
+        "monomial": "HLF^dagger Phi HRAc + h.c.",
+        "source": "Phi"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "A",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "Cc",
+        "monomial": "HLF^dagger Sigma HRAc + h.c.",
+        "source": "Sigma"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "A",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "Cc",
+        "monomial": "HLF^dagger barSigma HRAc + h.c.",
+        "source": "barSigma"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "B",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "B",
+        "monomial": "HLA^dagger S HLA + h.c.",
+        "source": "S"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "B",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "B",
+        "monomial": "HLA^dagger Phi HLA + h.c.",
+        "source": "Phi"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "B",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "B",
+        "monomial": "HLA^dagger Sigma HLA + h.c.",
+        "source": "Sigma"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "B",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "B",
+        "monomial": "HLA^dagger barSigma HLA + h.c.",
+        "source": "barSigma"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "B",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "C",
+        "monomial": "HLA^dagger ThetaMinus HRA + h.c.",
+        "source": "ThetaMinus"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "B",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "Ac",
+        "monomial": "HLA^dagger ThetaMinus HLFc + h.c.",
+        "source": "ThetaMinus"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "B",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "Dc",
+        "monomial": "HLA^dagger S HRFc + h.c.",
+        "source": "S"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "B",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "Dc",
+        "monomial": "HLA^dagger Phi HRFc + h.c.",
+        "source": "Phi"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "B",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "Dc",
+        "monomial": "HLA^dagger Sigma HRFc + h.c.",
+        "source": "Sigma"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "B",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "Dc",
+        "monomial": "HLA^dagger barSigma HRFc + h.c.",
+        "source": "barSigma"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "C",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "B",
+        "monomial": "HRA^dagger ThetaPlus HLA + h.c.",
+        "source": "ThetaPlus"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "C",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "C",
+        "monomial": "HRA^dagger S HRA + h.c.",
+        "source": "S"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "C",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "C",
+        "monomial": "HRA^dagger Phi HRA + h.c.",
+        "source": "Phi"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "C",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "C",
+        "monomial": "HRA^dagger Sigma HRA + h.c.",
+        "source": "Sigma"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "C",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "C",
+        "monomial": "HRA^dagger barSigma HRA + h.c.",
+        "source": "barSigma"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "C",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "Ac",
+        "monomial": "HRA^dagger S HLFc + h.c.",
+        "source": "S"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "C",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "Ac",
+        "monomial": "HRA^dagger Phi HLFc + h.c.",
+        "source": "Phi"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "C",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "Ac",
+        "monomial": "HRA^dagger Sigma HLFc + h.c.",
+        "source": "Sigma"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "C",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "Ac",
+        "monomial": "HRA^dagger barSigma HLFc + h.c.",
+        "source": "barSigma"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "C",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "Dc",
+        "monomial": "HRA^dagger ThetaPlus HRFc + h.c.",
+        "source": "ThetaPlus"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "D",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "A",
+        "monomial": "HRF^dagger ThetaPlus HLF + h.c.",
+        "source": "ThetaPlus"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "D",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "D",
+        "monomial": "HRF^dagger S HRF + h.c.",
+        "source": "S"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "D",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "D",
+        "monomial": "HRF^dagger Phi HRF + h.c.",
+        "source": "Phi"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "D",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "D",
+        "monomial": "HRF^dagger Sigma HRF + h.c.",
+        "source": "Sigma"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "D",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "D",
+        "monomial": "HRF^dagger barSigma HRF + h.c.",
+        "source": "barSigma"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "D",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "Bc",
+        "monomial": "HRF^dagger S HLAc + h.c.",
+        "source": "S"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "D",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "Bc",
+        "monomial": "HRF^dagger Phi HLAc + h.c.",
+        "source": "Phi"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "D",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "Bc",
+        "monomial": "HRF^dagger Sigma HLAc + h.c.",
+        "source": "Sigma"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "D",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "Bc",
+        "monomial": "HRF^dagger barSigma HLAc + h.c.",
+        "source": "barSigma"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "D",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "Cc",
+        "monomial": "HRF^dagger ThetaPlus HRAc + h.c.",
+        "source": "ThetaPlus"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Ac",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "B",
+        "monomial": "HLFc^dagger ThetaPlus HLA + h.c.",
+        "source": "ThetaPlus"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Ac",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "C",
+        "monomial": "HLFc^dagger S HRA + h.c.",
+        "source": "S"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Ac",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "C",
+        "monomial": "HLFc^dagger Phi HRA + h.c.",
+        "source": "Phi"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Ac",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "C",
+        "monomial": "HLFc^dagger Sigma HRA + h.c.",
+        "source": "Sigma"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Ac",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "C",
+        "monomial": "HLFc^dagger barSigma HRA + h.c.",
+        "source": "barSigma"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Ac",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "Ac",
+        "monomial": "HLFc^dagger S HLFc + h.c.",
+        "source": "S"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Ac",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "Ac",
+        "monomial": "HLFc^dagger Phi HLFc + h.c.",
+        "source": "Phi"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Ac",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "Ac",
+        "monomial": "HLFc^dagger Sigma HLFc + h.c.",
+        "source": "Sigma"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Ac",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "Ac",
+        "monomial": "HLFc^dagger barSigma HLFc + h.c.",
+        "source": "barSigma"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Ac",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "Dc",
+        "monomial": "HLFc^dagger ThetaPlus HRFc + h.c.",
+        "source": "ThetaPlus"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Bc",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "A",
+        "monomial": "HLAc^dagger ThetaPlus HLF + h.c.",
+        "source": "ThetaPlus"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Bc",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "D",
+        "monomial": "HLAc^dagger S HRF + h.c.",
+        "source": "S"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Bc",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "D",
+        "monomial": "HLAc^dagger Phi HRF + h.c.",
+        "source": "Phi"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Bc",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "D",
+        "monomial": "HLAc^dagger Sigma HRF + h.c.",
+        "source": "Sigma"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Bc",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "D",
+        "monomial": "HLAc^dagger barSigma HRF + h.c.",
+        "source": "barSigma"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Bc",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "Bc",
+        "monomial": "HLAc^dagger S HLAc + h.c.",
+        "source": "S"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Bc",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "Bc",
+        "monomial": "HLAc^dagger Phi HLAc + h.c.",
+        "source": "Phi"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Bc",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "Bc",
+        "monomial": "HLAc^dagger Sigma HLAc + h.c.",
+        "source": "Sigma"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Bc",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "Bc",
+        "monomial": "HLAc^dagger barSigma HLAc + h.c.",
+        "source": "barSigma"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Bc",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "Cc",
+        "monomial": "HLAc^dagger ThetaPlus HRAc + h.c.",
+        "source": "ThetaPlus"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Cc",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "A",
+        "monomial": "HRAc^dagger S HLF + h.c.",
+        "source": "S"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Cc",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "A",
+        "monomial": "HRAc^dagger Phi HLF + h.c.",
+        "source": "Phi"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Cc",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "A",
+        "monomial": "HRAc^dagger Sigma HLF + h.c.",
+        "source": "Sigma"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Cc",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "A",
+        "monomial": "HRAc^dagger barSigma HLF + h.c.",
+        "source": "barSigma"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Cc",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "D",
+        "monomial": "HRAc^dagger ThetaMinus HRF + h.c.",
+        "source": "ThetaMinus"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Cc",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "Bc",
+        "monomial": "HRAc^dagger ThetaMinus HLAc + h.c.",
+        "source": "ThetaMinus"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Cc",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "Cc",
+        "monomial": "HRAc^dagger S HRAc + h.c.",
+        "source": "S"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Cc",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "Cc",
+        "monomial": "HRAc^dagger Phi HRAc + h.c.",
+        "source": "Phi"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Cc",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "Cc",
+        "monomial": "HRAc^dagger Sigma HRAc + h.c.",
+        "source": "Sigma"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Cc",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "Cc",
+        "monomial": "HRAc^dagger barSigma HRAc + h.c.",
+        "source": "barSigma"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Dc",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "B",
+        "monomial": "HRFc^dagger S HLA + h.c.",
+        "source": "S"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Dc",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "B",
+        "monomial": "HRFc^dagger Phi HLA + h.c.",
+        "source": "Phi"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Dc",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "B",
+        "monomial": "HRFc^dagger Sigma HLA + h.c.",
+        "source": "Sigma"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Dc",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "B",
+        "monomial": "HRFc^dagger barSigma HLA + h.c.",
+        "source": "barSigma"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Dc",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "C",
+        "monomial": "HRFc^dagger ThetaMinus HRA + h.c.",
+        "source": "ThetaMinus"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Dc",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "Ac",
+        "monomial": "HRFc^dagger ThetaMinus HLFc + h.c.",
+        "source": "ThetaMinus"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Dc",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "Dc",
+        "monomial": "HRFc^dagger S HRFc + h.c.",
+        "source": "S"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Dc",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "Dc",
+        "monomial": "HRFc^dagger Phi HRFc + h.c.",
+        "source": "Phi"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Dc",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "Dc",
+        "monomial": "HRFc^dagger Sigma HRFc + h.c.",
+        "source": "Sigma"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Dc",
+        "coefficient_space": "one independent complex coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of rep(bra)^* tensor rep(source) tensor rep(ket); an empty image contributes no coefficient",
+        "ket": "Dc",
+        "monomial": "HRFc^dagger barSigma HRFc + h.c.",
+        "source": "barSigma"
+      }
+    ],
+    "charge_complete_zero_insertion_candidates": [
+      {
+        "U1F_charge": 0,
+        "bra": "A",
+        "coefficient_space": "orthonormal basis of the compact-Spin10 Haar-projector image in rep(bra)^* tensor rep(ket), with Hermiticity imposed on the assembled metric",
+        "ket": "A",
+        "monomial": "HLF^dagger HLF"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "A",
+        "coefficient_space": "orthonormal basis of the compact-Spin10 Haar-projector image in rep(bra)^* tensor rep(ket), with Hermiticity imposed on the assembled metric",
+        "ket": "Cc",
+        "monomial": "HLF^dagger HRAc"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "B",
+        "coefficient_space": "orthonormal basis of the compact-Spin10 Haar-projector image in rep(bra)^* tensor rep(ket), with Hermiticity imposed on the assembled metric",
+        "ket": "B",
+        "monomial": "HLA^dagger HLA"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "B",
+        "coefficient_space": "orthonormal basis of the compact-Spin10 Haar-projector image in rep(bra)^* tensor rep(ket), with Hermiticity imposed on the assembled metric",
+        "ket": "Dc",
+        "monomial": "HLA^dagger HRFc"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "C",
+        "coefficient_space": "orthonormal basis of the compact-Spin10 Haar-projector image in rep(bra)^* tensor rep(ket), with Hermiticity imposed on the assembled metric",
+        "ket": "C",
+        "monomial": "HRA^dagger HRA"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "C",
+        "coefficient_space": "orthonormal basis of the compact-Spin10 Haar-projector image in rep(bra)^* tensor rep(ket), with Hermiticity imposed on the assembled metric",
+        "ket": "Ac",
+        "monomial": "HRA^dagger HLFc"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "D",
+        "coefficient_space": "orthonormal basis of the compact-Spin10 Haar-projector image in rep(bra)^* tensor rep(ket), with Hermiticity imposed on the assembled metric",
+        "ket": "D",
+        "monomial": "HRF^dagger HRF"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "D",
+        "coefficient_space": "orthonormal basis of the compact-Spin10 Haar-projector image in rep(bra)^* tensor rep(ket), with Hermiticity imposed on the assembled metric",
+        "ket": "Bc",
+        "monomial": "HRF^dagger HLAc"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Ac",
+        "coefficient_space": "orthonormal basis of the compact-Spin10 Haar-projector image in rep(bra)^* tensor rep(ket), with Hermiticity imposed on the assembled metric",
+        "ket": "C",
+        "monomial": "HLFc^dagger HRA"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Ac",
+        "coefficient_space": "orthonormal basis of the compact-Spin10 Haar-projector image in rep(bra)^* tensor rep(ket), with Hermiticity imposed on the assembled metric",
+        "ket": "Ac",
+        "monomial": "HLFc^dagger HLFc"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Bc",
+        "coefficient_space": "orthonormal basis of the compact-Spin10 Haar-projector image in rep(bra)^* tensor rep(ket), with Hermiticity imposed on the assembled metric",
+        "ket": "D",
+        "monomial": "HLAc^dagger HRF"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Bc",
+        "coefficient_space": "orthonormal basis of the compact-Spin10 Haar-projector image in rep(bra)^* tensor rep(ket), with Hermiticity imposed on the assembled metric",
+        "ket": "Bc",
+        "monomial": "HLAc^dagger HLAc"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Cc",
+        "coefficient_space": "orthonormal basis of the compact-Spin10 Haar-projector image in rep(bra)^* tensor rep(ket), with Hermiticity imposed on the assembled metric",
+        "ket": "A",
+        "monomial": "HRAc^dagger HLF"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Cc",
+        "coefficient_space": "orthonormal basis of the compact-Spin10 Haar-projector image in rep(bra)^* tensor rep(ket), with Hermiticity imposed on the assembled metric",
+        "ket": "Cc",
+        "monomial": "HRAc^dagger HRAc"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Dc",
+        "coefficient_space": "orthonormal basis of the compact-Spin10 Haar-projector image in rep(bra)^* tensor rep(ket), with Hermiticity imposed on the assembled metric",
+        "ket": "B",
+        "monomial": "HRFc^dagger HLA"
+      },
+      {
+        "U1F_charge": 0,
+        "bra": "Dc",
+        "coefficient_space": "orthonormal basis of the compact-Spin10 Haar-projector image in rep(bra)^* tensor rep(ket), with Hermiticity imposed on the assembled metric",
+        "ket": "Dc",
+        "monomial": "HRFc^dagger HRFc"
+      }
+    ],
+    "counts": {
+      "charge_complete_one_insertion_candidates": 80,
+      "charge_complete_zero_insertion_candidates": 16,
+      "known_nonempty_Phi": 8,
+      "known_nonempty_S": 8,
+      "known_nonempty_Sigma": 4,
+      "known_nonempty_Theta": 8,
+      "known_nonempty_barSigma": 4,
+      "known_nonempty_one_insertion_witnesses": 32,
+      "known_nonempty_zero_insertion_witnesses": 8
+    },
+    "exhaustiveness": "For U_i^dagger X U_j, enumerate all 8x8 ordered pairs and X in the six source chirals, impose -q_i+q_X+q_j=0, and project rep(U_i)^* tensor rep(X) tensor rep(U_j) with the Haar projector.  Every Haar-image direction carries a coefficient; the displayed 8 and 32 familiar terms are nonempty witnesses, not an assumption that every other charge-neutral candidate has zero projection.",
+    "known_nonempty_one_chiral_insertion_witnesses_plus_hc": [
+      "S HLF^dagger HLF",
+      "S HLA^dagger HLA",
+      "S HRA^dagger HRA",
+      "S HRF^dagger HRF",
+      "S HLFc^dagger HLFc",
+      "S HLAc^dagger HLAc",
+      "S HRAc^dagger HRAc",
+      "S HRFc^dagger HRFc",
+      "HLF^dagger Phi HLF",
+      "HLA^dagger Phi HLA",
+      "HRA^dagger Phi HRA",
+      "HRF^dagger Phi HRF",
+      "HLFc^dagger Phi HLFc",
+      "HLAc^dagger Phi HLAc",
+      "HRAc^dagger Phi HRAc",
+      "HRFc^dagger Phi HRFc",
+      "ThetaMinus HLF^dagger HLAc",
+      "ThetaPlus HLAc^dagger HLF",
+      "ThetaPlus HRA^dagger HRFc",
+      "ThetaMinus HRFc^dagger HRA",
+      "ThetaMinus HLA^dagger HLFc",
+      "ThetaPlus HLFc^dagger HLA",
+      "ThetaPlus HRF^dagger HRAc",
+      "ThetaMinus HRAc^dagger HRF",
+      "HLF^dagger Sigma HRAc",
+      "HRA^dagger Sigma HLFc",
+      "HLAc^dagger Sigma HRF",
+      "HRFc^dagger Sigma HLA",
+      "HRAc^dagger barSigma HLF",
+      "HLFc^dagger barSigma HRA",
+      "HRF^dagger barSigma HLAc",
+      "HLA^dagger barSigma HRFc"
+    ],
+    "known_nonempty_zero_insertion_witnesses": [
+      "HLF^dagger HLF",
+      "HLA^dagger HLA",
+      "HRA^dagger HRA",
+      "HRF^dagger HRF",
+      "HLFc^dagger HLFc",
+      "HLAc^dagger HLAc",
+      "HRAc^dagger HRAc",
+      "HRFc^dagger HRFc"
+    ]
+  },
+  "n_failed_integrity_checks": 0,
+  "normal_derivative_IBP_EOM_field_redefinition": {
+    "EOM_reduction": "Remove operators proportional to the leading bulk superfield equations and all explicit D5^2 or barD^2 descendants only after substituting the full strong-wall A,Xi,C equations and propagating every induced lower-derivative coefficient shift.  Do not set O_minus or M_o to zero: at a boundary they change the variational graph and are retained physical coordinates.",
+    "PS_independent_coordinates": {
+      "brane_bulk_channels": [
+        "Q_i (nabla5 HLFc)_L, i=1,2,3",
+        "Qc_i (nabla5 HRAc)_R, i=1,2,3"
+      ],
+      "bulk_hyper_channels": "four O_minus plus four M_o coordinates after the four O7/O8 IBP relations",
+      "note": "brane fields have no y derivative, so these six mixings are not removed by bulk IBP"
+    },
+    "canonical_coordinates_per_channel": [
+      "O_minus=O8-O7",
+      "M_o"
+    ],
+    "exact_IBP_relation": "O7+O8+M_o=0 on the doubled cover, where M_o contains the full distributional derivative of the compact-support profile, including both collar-face delta terms; there is no discarded outer boundary term",
+    "field_redefinition_rule": "Canonicalize each positive Kahler block Z=C^dagger C by psi'=C psi. Every holomorphic mass/derivative tensor transforms C^-T M C^-1, every current C^-T J, and PS Yukawa Y transforms C_L^-T Y C_R^-1.  No induced coefficient is dropped.",
+    "original_per_channel": [
+      "O7=Hc nabla5 H",
+      "O8=(nabla5 Hc) H",
+      "M_o=(partial5 profile) Hc H"
+    ],
+    "quotient_dimension": 8,
+    "relation_rank": 4,
+    "representative_residual": 0.0
+  },
+  "primary_sources": [
+    "https://arxiv.org/abs/hep-th/0106256",
+    "https://arxiv.org/abs/hep-ph/0112230",
+    "https://arxiv.org/abs/hep-ph/0601222",
+    "https://arxiv.org/abs/1408.1852"
+  ],
+  "pure_source_Kahler_basis": {
+    "counts": {
+      "cubic": 13,
+      "quadratic": 6
+    },
+    "cubic_one_over_Lambda_sectors_plus_hc": [
+      "S^dagger S^2",
+      "S^dagger ThetaPlus ThetaMinus",
+      "S^dagger (Phi Phi)_1",
+      "S^dagger (Sigma barSigma)_1",
+      "ThetaPlus^dagger S ThetaPlus",
+      "ThetaMinus^dagger S ThetaMinus",
+      "Phi^dagger S Phi",
+      "Phi^dagger (Phi Phi)_210",
+      "Phi^dagger (Sigma barSigma)_210",
+      "Sigma^dagger S Sigma",
+      "Sigma^dagger (Phi Sigma)_126",
+      "barSigma^dagger S barSigma",
+      "barSigma^dagger (Phi barSigma)_bar126"
+    ],
+    "exhaustiveness": "Enumerate X_i^dagger X_j and X_i^dagger X_j X_k with j<=k, impose -q_i+q_j+q_k=0, then use 210x210->1+210, 126xbar126->1+210+..., and the unique renormalizable Phi^3 and Phi Sigma barSigma channels. All other charge-neutral candidate products have zero Spin10 singlet projection.",
+    "positivity": "the full six-field Hermitian metric evaluated on the matching background, including these cubic corrections, must be positive definite before canonical normalization",
+    "quadratic_metric_sectors": [
+      "S^dagger S",
+      "ThetaPlus^dagger ThetaPlus",
+      "ThetaMinus^dagger ThetaMinus",
+      "Phi^dagger Phi",
+      "Sigma^dagger Sigma",
+      "barSigma^dagger barSigma"
+    ]
+  },
+  "schema": "susy-v49-retained-boundary-action-completeness/v1",
+  "scope_contract": {
+    "not_claimed": [
+      "all-order sparsity or UV-calculated coefficients",
+      "a point-local five-dimensional microscopic action",
+      "complete Cartesian SO10 Clebsch tensors",
+      "vacuum selection, pole phenomenology or closure of G2--G8"
+    ],
+    "remainder": [
+      "source holomorphic degree five and higher",
+      "three or more bulk-spinor chiral insertions",
+      "two or more independent normal derivatives after strong-wall resummation",
+      "loop matching and RG evolution",
+      "gauge-kinetic functions with two or more source insertions"
+    ],
+    "retained": [
+      "PS superpotential through chiral degree three",
+      "pure-source superpotential through chiral degree four",
+      "operators with exactly two bulk-spinor chirals through chiral degree four",
+      "quadratic PS/source K\u00e4hler response with at most one source insertion",
+      "one covariant normal derivative, modulo the explicit IBP/EOM/redefinition normal form",
+      "both wall FI coordinates and gauge-kinetic functions through one source insertion"
+    ],
+    "scheme": "tree-level 4D N=1 Wilsonian action at mu_star=M_star=1/epsilon, on the doubled endpoint cover with fixed even/odd profiles and shortest normal Wilson lines"
+  },
+  "source_collar_holomorphic_basis": {
+    "HH_charge_complete_candidate_sectors_by_degree": {
+      "2": [
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "A",
+            "C"
+          ],
+          "bulk_representations": [
+            "16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e HLF HRA",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": []
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "B",
+            "D"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e HLA HRF",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": []
+        }
+      ],
+      "3": [
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "A",
+            "B"
+          ],
+          "bulk_representations": [
+            "16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e ThetaPlus HLF HLA",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "ThetaPlus"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "A",
+            "C"
+          ],
+          "bulk_representations": [
+            "16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e S HLF HRA",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "S"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "A",
+            "C"
+          ],
+          "bulk_representations": [
+            "16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e Phi HLF HRA",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "Phi"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "A",
+            "C"
+          ],
+          "bulk_representations": [
+            "16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e Sigma HLF HRA",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "Sigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "A",
+            "C"
+          ],
+          "bulk_representations": [
+            "16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e barSigma HLF HRA",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "B",
+            "D"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e S HLA HRF",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "S"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "B",
+            "D"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e Phi HLA HRF",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "Phi"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "B",
+            "D"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e Sigma HLA HRF",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "Sigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "B",
+            "D"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e barSigma HLA HRF",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "C",
+            "D"
+          ],
+          "bulk_representations": [
+            "16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e ThetaMinus HRA HRF",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "ThetaMinus"
+          ]
+        }
+      ],
+      "4": [
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "A",
+            "B"
+          ],
+          "bulk_representations": [
+            "16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e S ThetaPlus HLF HLA",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "S",
+            "ThetaPlus"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "A",
+            "B"
+          ],
+          "bulk_representations": [
+            "16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e ThetaPlus Phi HLF HLA",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "ThetaPlus",
+            "Phi"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "A",
+            "B"
+          ],
+          "bulk_representations": [
+            "16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e ThetaPlus Sigma HLF HLA",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "ThetaPlus",
+            "Sigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "A",
+            "B"
+          ],
+          "bulk_representations": [
+            "16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e ThetaPlus barSigma HLF HLA",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "ThetaPlus",
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "A",
+            "C"
+          ],
+          "bulk_representations": [
+            "16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e S S HLF HRA",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "S",
+            "S"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "A",
+            "C"
+          ],
+          "bulk_representations": [
+            "16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e S Phi HLF HRA",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "S",
+            "Phi"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "A",
+            "C"
+          ],
+          "bulk_representations": [
+            "16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e S Sigma HLF HRA",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "S",
+            "Sigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "A",
+            "C"
+          ],
+          "bulk_representations": [
+            "16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e S barSigma HLF HRA",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "S",
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "A",
+            "C"
+          ],
+          "bulk_representations": [
+            "16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e ThetaPlus ThetaMinus HLF HRA",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "ThetaPlus",
+            "ThetaMinus"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "A",
+            "C"
+          ],
+          "bulk_representations": [
+            "16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e Phi Phi HLF HRA",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "Phi",
+            "Phi"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "A",
+            "C"
+          ],
+          "bulk_representations": [
+            "16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e Phi Sigma HLF HRA",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "Phi",
+            "Sigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "A",
+            "C"
+          ],
+          "bulk_representations": [
+            "16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e Phi barSigma HLF HRA",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "Phi",
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "A",
+            "C"
+          ],
+          "bulk_representations": [
+            "16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e Sigma Sigma HLF HRA",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "Sigma",
+            "Sigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "A",
+            "C"
+          ],
+          "bulk_representations": [
+            "16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e Sigma barSigma HLF HRA",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "Sigma",
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "A",
+            "C"
+          ],
+          "bulk_representations": [
+            "16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e barSigma barSigma HLF HRA",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "barSigma",
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "B",
+            "D"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e S S HLA HRF",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "S",
+            "S"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "B",
+            "D"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e S Phi HLA HRF",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "S",
+            "Phi"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "B",
+            "D"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e S Sigma HLA HRF",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "S",
+            "Sigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "B",
+            "D"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e S barSigma HLA HRF",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "S",
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "B",
+            "D"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e ThetaPlus ThetaMinus HLA HRF",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "ThetaPlus",
+            "ThetaMinus"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "B",
+            "D"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e Phi Phi HLA HRF",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "Phi",
+            "Phi"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "B",
+            "D"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e Phi Sigma HLA HRF",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "Phi",
+            "Sigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "B",
+            "D"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e Phi barSigma HLA HRF",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "Phi",
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "B",
+            "D"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e Sigma Sigma HLA HRF",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "Sigma",
+            "Sigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "B",
+            "D"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e Sigma barSigma HLA HRF",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "Sigma",
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "B",
+            "D"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e barSigma barSigma HLA HRF",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "barSigma",
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "C",
+            "D"
+          ],
+          "bulk_representations": [
+            "16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e S ThetaMinus HRA HRF",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "S",
+            "ThetaMinus"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "C",
+            "D"
+          ],
+          "bulk_representations": [
+            "16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e ThetaMinus Phi HRA HRF",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "ThetaMinus",
+            "Phi"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "C",
+            "D"
+          ],
+          "bulk_representations": [
+            "16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e ThetaMinus Sigma HRA HRF",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "ThetaMinus",
+            "Sigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "C",
+            "D"
+          ],
+          "bulk_representations": [
+            "16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e ThetaMinus barSigma HRA HRF",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "ThetaMinus",
+            "barSigma"
+          ]
+        }
+      ]
+    },
+    "HH_known_nonempty_degree_four_witnesses": [
+      "S ThetaPlus (HLF HLA)_1",
+      "ThetaPlus Phi (HLF HLA)_210",
+      "S ThetaMinus (HRA HRF)_1",
+      "ThetaMinus Phi (HRA HRF)_210",
+      "S barSigma (HLF HRA)_126",
+      "Phi barSigma (HLF HRA)_10",
+      "Phi barSigma (HLF HRA)_120",
+      "Phi barSigma (HLF HRA)_126",
+      "S Sigma (HLA HRF)_bar126",
+      "Phi Sigma (HLA HRF)_10",
+      "Phi Sigma (HLA HRF)_120",
+      "Phi Sigma (HLA HRF)_bar126"
+    ],
+    "HH_known_nonempty_degree_three_witnesses": [
+      "ThetaPlus (HLF HLA)_1",
+      "ThetaMinus (HRA HRF)_1",
+      "barSigma (HLF HRA)_126",
+      "Sigma (HLA HRF)_bar126"
+    ],
+    "HcH_charge_complete_candidate_sectors_by_degree": {
+      "2": [
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Ac",
+            "A"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o HLFc HLF",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": []
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Bc",
+            "B"
+          ],
+          "bulk_representations": [
+            "16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o HLAc HLA",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": []
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Cc",
+            "C"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o HRAc HRA",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": []
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Dc",
+            "D"
+          ],
+          "bulk_representations": [
+            "16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o HRFc HRF",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": []
+        }
+      ],
+      "3": [
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Ac",
+            "A"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o S HLFc HLF",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "S"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Ac",
+            "A"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o Phi HLFc HLF",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "Phi"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Ac",
+            "A"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o Sigma HLFc HLF",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "Sigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Ac",
+            "A"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o barSigma HLFc HLF",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Ac",
+            "D"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o ThetaMinus HLFc HRF",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "ThetaMinus"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Bc",
+            "B"
+          ],
+          "bulk_representations": [
+            "16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o S HLAc HLA",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "S"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Bc",
+            "B"
+          ],
+          "bulk_representations": [
+            "16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o Phi HLAc HLA",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "Phi"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Bc",
+            "B"
+          ],
+          "bulk_representations": [
+            "16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o Sigma HLAc HLA",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "Sigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Bc",
+            "B"
+          ],
+          "bulk_representations": [
+            "16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o barSigma HLAc HLA",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Bc",
+            "C"
+          ],
+          "bulk_representations": [
+            "16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o ThetaMinus HLAc HRA",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "ThetaMinus"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Cc",
+            "B"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o ThetaPlus HRAc HLA",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "ThetaPlus"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Cc",
+            "C"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o S HRAc HRA",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "S"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Cc",
+            "C"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o Phi HRAc HRA",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "Phi"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Cc",
+            "C"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o Sigma HRAc HRA",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "Sigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Cc",
+            "C"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o barSigma HRAc HRA",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Dc",
+            "A"
+          ],
+          "bulk_representations": [
+            "16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o ThetaPlus HRFc HLF",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "ThetaPlus"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Dc",
+            "D"
+          ],
+          "bulk_representations": [
+            "16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o S HRFc HRF",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "S"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Dc",
+            "D"
+          ],
+          "bulk_representations": [
+            "16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o Phi HRFc HRF",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "Phi"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Dc",
+            "D"
+          ],
+          "bulk_representations": [
+            "16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o Sigma HRFc HRF",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "Sigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Dc",
+            "D"
+          ],
+          "bulk_representations": [
+            "16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o barSigma HRFc HRF",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "barSigma"
+          ]
+        }
+      ],
+      "4": [
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Ac",
+            "A"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o S S HLFc HLF",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "S",
+            "S"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Ac",
+            "A"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o S Phi HLFc HLF",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "S",
+            "Phi"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Ac",
+            "A"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o S Sigma HLFc HLF",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "S",
+            "Sigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Ac",
+            "A"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o S barSigma HLFc HLF",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "S",
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Ac",
+            "A"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o ThetaPlus ThetaMinus HLFc HLF",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "ThetaPlus",
+            "ThetaMinus"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Ac",
+            "A"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o Phi Phi HLFc HLF",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "Phi",
+            "Phi"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Ac",
+            "A"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o Phi Sigma HLFc HLF",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "Phi",
+            "Sigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Ac",
+            "A"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o Phi barSigma HLFc HLF",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "Phi",
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Ac",
+            "A"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o Sigma Sigma HLFc HLF",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "Sigma",
+            "Sigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Ac",
+            "A"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o Sigma barSigma HLFc HLF",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "Sigma",
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Ac",
+            "A"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o barSigma barSigma HLFc HLF",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "barSigma",
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Ac",
+            "D"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o S ThetaMinus HLFc HRF",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "S",
+            "ThetaMinus"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Ac",
+            "D"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o ThetaMinus Phi HLFc HRF",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "ThetaMinus",
+            "Phi"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Ac",
+            "D"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o ThetaMinus Sigma HLFc HRF",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "ThetaMinus",
+            "Sigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Ac",
+            "D"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o ThetaMinus barSigma HLFc HRF",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "ThetaMinus",
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Bc",
+            "B"
+          ],
+          "bulk_representations": [
+            "16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o S S HLAc HLA",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "S",
+            "S"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Bc",
+            "B"
+          ],
+          "bulk_representations": [
+            "16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o S Phi HLAc HLA",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "S",
+            "Phi"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Bc",
+            "B"
+          ],
+          "bulk_representations": [
+            "16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o S Sigma HLAc HLA",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "S",
+            "Sigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Bc",
+            "B"
+          ],
+          "bulk_representations": [
+            "16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o S barSigma HLAc HLA",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "S",
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Bc",
+            "B"
+          ],
+          "bulk_representations": [
+            "16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o ThetaPlus ThetaMinus HLAc HLA",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "ThetaPlus",
+            "ThetaMinus"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Bc",
+            "B"
+          ],
+          "bulk_representations": [
+            "16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o Phi Phi HLAc HLA",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "Phi",
+            "Phi"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Bc",
+            "B"
+          ],
+          "bulk_representations": [
+            "16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o Phi Sigma HLAc HLA",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "Phi",
+            "Sigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Bc",
+            "B"
+          ],
+          "bulk_representations": [
+            "16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o Phi barSigma HLAc HLA",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "Phi",
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Bc",
+            "B"
+          ],
+          "bulk_representations": [
+            "16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o Sigma Sigma HLAc HLA",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "Sigma",
+            "Sigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Bc",
+            "B"
+          ],
+          "bulk_representations": [
+            "16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o Sigma barSigma HLAc HLA",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "Sigma",
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Bc",
+            "B"
+          ],
+          "bulk_representations": [
+            "16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o barSigma barSigma HLAc HLA",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "barSigma",
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Bc",
+            "C"
+          ],
+          "bulk_representations": [
+            "16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o S ThetaMinus HLAc HRA",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "S",
+            "ThetaMinus"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Bc",
+            "C"
+          ],
+          "bulk_representations": [
+            "16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o ThetaMinus Phi HLAc HRA",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "ThetaMinus",
+            "Phi"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Bc",
+            "C"
+          ],
+          "bulk_representations": [
+            "16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o ThetaMinus Sigma HLAc HRA",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "ThetaMinus",
+            "Sigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Bc",
+            "C"
+          ],
+          "bulk_representations": [
+            "16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o ThetaMinus barSigma HLAc HRA",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "ThetaMinus",
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Cc",
+            "B"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o S ThetaPlus HRAc HLA",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "S",
+            "ThetaPlus"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Cc",
+            "B"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o ThetaPlus Phi HRAc HLA",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "ThetaPlus",
+            "Phi"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Cc",
+            "B"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o ThetaPlus Sigma HRAc HLA",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "ThetaPlus",
+            "Sigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Cc",
+            "B"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o ThetaPlus barSigma HRAc HLA",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "ThetaPlus",
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Cc",
+            "C"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o S S HRAc HRA",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "S",
+            "S"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Cc",
+            "C"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o S Phi HRAc HRA",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "S",
+            "Phi"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Cc",
+            "C"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o S Sigma HRAc HRA",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "S",
+            "Sigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Cc",
+            "C"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o S barSigma HRAc HRA",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "S",
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Cc",
+            "C"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o ThetaPlus ThetaMinus HRAc HRA",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "ThetaPlus",
+            "ThetaMinus"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Cc",
+            "C"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o Phi Phi HRAc HRA",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "Phi",
+            "Phi"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Cc",
+            "C"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o Phi Sigma HRAc HRA",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "Phi",
+            "Sigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Cc",
+            "C"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o Phi barSigma HRAc HRA",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "Phi",
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Cc",
+            "C"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o Sigma Sigma HRAc HRA",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "Sigma",
+            "Sigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Cc",
+            "C"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o Sigma barSigma HRAc HRA",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "Sigma",
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Cc",
+            "C"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o barSigma barSigma HRAc HRA",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "barSigma",
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Dc",
+            "A"
+          ],
+          "bulk_representations": [
+            "16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o S ThetaPlus HRFc HLF",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "S",
+            "ThetaPlus"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Dc",
+            "A"
+          ],
+          "bulk_representations": [
+            "16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o ThetaPlus Phi HRFc HLF",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "ThetaPlus",
+            "Phi"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Dc",
+            "A"
+          ],
+          "bulk_representations": [
+            "16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o ThetaPlus Sigma HRFc HLF",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "ThetaPlus",
+            "Sigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Dc",
+            "A"
+          ],
+          "bulk_representations": [
+            "16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o ThetaPlus barSigma HRFc HLF",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "ThetaPlus",
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Dc",
+            "D"
+          ],
+          "bulk_representations": [
+            "16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o S S HRFc HRF",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "S",
+            "S"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Dc",
+            "D"
+          ],
+          "bulk_representations": [
+            "16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o S Phi HRFc HRF",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "S",
+            "Phi"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Dc",
+            "D"
+          ],
+          "bulk_representations": [
+            "16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o S Sigma HRFc HRF",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "S",
+            "Sigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Dc",
+            "D"
+          ],
+          "bulk_representations": [
+            "16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o S barSigma HRFc HRF",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "S",
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Dc",
+            "D"
+          ],
+          "bulk_representations": [
+            "16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o ThetaPlus ThetaMinus HRFc HRF",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "ThetaPlus",
+            "ThetaMinus"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Dc",
+            "D"
+          ],
+          "bulk_representations": [
+            "16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o Phi Phi HRFc HRF",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "Phi",
+            "Phi"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Dc",
+            "D"
+          ],
+          "bulk_representations": [
+            "16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o Phi Sigma HRFc HRF",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "Phi",
+            "Sigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Dc",
+            "D"
+          ],
+          "bulk_representations": [
+            "16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o Phi barSigma HRFc HRF",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "Phi",
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Dc",
+            "D"
+          ],
+          "bulk_representations": [
+            "16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o Sigma Sigma HRFc HRF",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "Sigma",
+            "Sigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Dc",
+            "D"
+          ],
+          "bulk_representations": [
+            "16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o Sigma barSigma HRFc HRF",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "Sigma",
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Dc",
+            "D"
+          ],
+          "bulk_representations": [
+            "16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_o barSigma barSigma HRFc HRF",
+          "pair_rule": "ordered complementary-parity pair",
+          "sources": [
+            "barSigma",
+            "barSigma"
+          ]
+        }
+      ]
+    },
+    "HcH_degree_four_cross_pair_nonempty_witnesses": [
+      "rho_o ThetaPlus barSigma HRFc HLF",
+      "rho_o ThetaPlus Sigma HRAc HLA",
+      "rho_o ThetaMinus barSigma HLAc HRA",
+      "rho_o ThetaMinus Sigma HLFc HRF"
+    ],
+    "HcH_odd_profile_degree_three": [
+      "rho_o S HLFc HLF",
+      "rho_o Phi HLFc HLF",
+      "rho_o S HLAc HLA",
+      "rho_o Phi HLAc HLA",
+      "rho_o S HRAc HRA",
+      "rho_o Phi HRAc HRA",
+      "rho_o S HRFc HRF",
+      "rho_o Phi HRFc HRF"
+    ],
+    "HcH_odd_profile_degree_two": [
+      "rho_o HLFc HLF",
+      "rho_o HLAc HLA",
+      "rho_o HRAc HRA",
+      "rho_o HRFc HRF"
+    ],
+    "HcHc_charge_complete_candidate_sectors_by_degree": {
+      "2": [
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Ac",
+            "Cc"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e HLFc HRAc",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": []
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Bc",
+            "Dc"
+          ],
+          "bulk_representations": [
+            "16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e HLAc HRFc",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": []
+        }
+      ],
+      "3": [
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Ac",
+            "Bc"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e ThetaMinus HLFc HLAc",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "ThetaMinus"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Ac",
+            "Cc"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e S HLFc HRAc",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "S"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Ac",
+            "Cc"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e Phi HLFc HRAc",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "Phi"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Ac",
+            "Cc"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e Sigma HLFc HRAc",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "Sigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Ac",
+            "Cc"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e barSigma HLFc HRAc",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Bc",
+            "Dc"
+          ],
+          "bulk_representations": [
+            "16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e S HLAc HRFc",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "S"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Bc",
+            "Dc"
+          ],
+          "bulk_representations": [
+            "16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e Phi HLAc HRFc",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "Phi"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Bc",
+            "Dc"
+          ],
+          "bulk_representations": [
+            "16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e Sigma HLAc HRFc",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "Sigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Bc",
+            "Dc"
+          ],
+          "bulk_representations": [
+            "16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e barSigma HLAc HRFc",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Cc",
+            "Dc"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e ThetaPlus HRAc HRFc",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "ThetaPlus"
+          ]
+        }
+      ],
+      "4": [
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Ac",
+            "Bc"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e S ThetaMinus HLFc HLAc",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "S",
+            "ThetaMinus"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Ac",
+            "Bc"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e ThetaMinus Phi HLFc HLAc",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "ThetaMinus",
+            "Phi"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Ac",
+            "Bc"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e ThetaMinus Sigma HLFc HLAc",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "ThetaMinus",
+            "Sigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Ac",
+            "Bc"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e ThetaMinus barSigma HLFc HLAc",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "ThetaMinus",
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Ac",
+            "Cc"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e S S HLFc HRAc",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "S",
+            "S"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Ac",
+            "Cc"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e S Phi HLFc HRAc",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "S",
+            "Phi"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Ac",
+            "Cc"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e S Sigma HLFc HRAc",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "S",
+            "Sigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Ac",
+            "Cc"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e S barSigma HLFc HRAc",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "S",
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Ac",
+            "Cc"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e ThetaPlus ThetaMinus HLFc HRAc",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "ThetaPlus",
+            "ThetaMinus"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Ac",
+            "Cc"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e Phi Phi HLFc HRAc",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "Phi",
+            "Phi"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Ac",
+            "Cc"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e Phi Sigma HLFc HRAc",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "Phi",
+            "Sigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Ac",
+            "Cc"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e Phi barSigma HLFc HRAc",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "Phi",
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Ac",
+            "Cc"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e Sigma Sigma HLFc HRAc",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "Sigma",
+            "Sigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Ac",
+            "Cc"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e Sigma barSigma HLFc HRAc",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "Sigma",
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Ac",
+            "Cc"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "bar16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e barSigma barSigma HLFc HRAc",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "barSigma",
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Bc",
+            "Dc"
+          ],
+          "bulk_representations": [
+            "16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e S S HLAc HRFc",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "S",
+            "S"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Bc",
+            "Dc"
+          ],
+          "bulk_representations": [
+            "16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e S Phi HLAc HRFc",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "S",
+            "Phi"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Bc",
+            "Dc"
+          ],
+          "bulk_representations": [
+            "16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e S Sigma HLAc HRFc",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "S",
+            "Sigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Bc",
+            "Dc"
+          ],
+          "bulk_representations": [
+            "16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e S barSigma HLAc HRFc",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "S",
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Bc",
+            "Dc"
+          ],
+          "bulk_representations": [
+            "16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e ThetaPlus ThetaMinus HLAc HRFc",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "ThetaPlus",
+            "ThetaMinus"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Bc",
+            "Dc"
+          ],
+          "bulk_representations": [
+            "16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e Phi Phi HLAc HRFc",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "Phi",
+            "Phi"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Bc",
+            "Dc"
+          ],
+          "bulk_representations": [
+            "16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e Phi Sigma HLAc HRFc",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "Phi",
+            "Sigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Bc",
+            "Dc"
+          ],
+          "bulk_representations": [
+            "16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e Phi barSigma HLAc HRFc",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "Phi",
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Bc",
+            "Dc"
+          ],
+          "bulk_representations": [
+            "16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e Sigma Sigma HLAc HRFc",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "Sigma",
+            "Sigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Bc",
+            "Dc"
+          ],
+          "bulk_representations": [
+            "16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e Sigma barSigma HLAc HRFc",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "Sigma",
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Bc",
+            "Dc"
+          ],
+          "bulk_representations": [
+            "16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e barSigma barSigma HLAc HRFc",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "barSigma",
+            "barSigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Cc",
+            "Dc"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e S ThetaPlus HRAc HRFc",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "S",
+            "ThetaPlus"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Cc",
+            "Dc"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e ThetaPlus Phi HRAc HRFc",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "ThetaPlus",
+            "Phi"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Cc",
+            "Dc"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e ThetaPlus Sigma HRAc HRFc",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "ThetaPlus",
+            "Sigma"
+          ]
+        },
+        {
+          "U1F_charge": 0,
+          "bulk_fields": [
+            "Cc",
+            "Dc"
+          ],
+          "bulk_representations": [
+            "bar16",
+            "16"
+          ],
+          "coefficient_space": "one independent coefficient for every orthonormal direction in the compact-Spin10 Haar-projector image of the displayed tensor product, with symmetric source factors and the stated bosonic-pair quotient; an empty image contributes no coefficient",
+          "monomial": "rho_e ThetaPlus barSigma HRAc HRFc",
+          "pair_rule": "unordered bosonic pair; use Sym^2 for coincident species",
+          "sources": [
+            "ThetaPlus",
+            "barSigma"
+          ]
+        }
+      ]
+    },
+    "HcHc_known_nonempty_degree_four_witnesses": [
+      "S ThetaMinus (HLFc HLAc)_1",
+      "ThetaMinus Phi (HLFc HLAc)_210",
+      "S ThetaPlus (HRAc HRFc)_1",
+      "ThetaPlus Phi (HRAc HRFc)_210",
+      "S Sigma (HLFc HRAc)_bar126",
+      "Phi Sigma (HLFc HRAc)_10",
+      "Phi Sigma (HLFc HRAc)_120",
+      "Phi Sigma (HLFc HRAc)_bar126",
+      "S barSigma (HLAc HRFc)_126",
+      "Phi barSigma (HLAc HRFc)_10",
+      "Phi barSigma (HLAc HRFc)_120",
+      "Phi barSigma (HLAc HRFc)_126"
+    ],
+    "HcHc_known_nonempty_degree_three_witnesses": [
+      "ThetaMinus (HLFc HLAc)_1",
+      "ThetaPlus (HRAc HRFc)_1",
+      "Sigma (HLFc HRAc)_bar126",
+      "barSigma (HLAc HRFc)_126"
+    ],
+    "even_profile": "rho_e(s)=rho_e(-s), integral rho_e ds=1",
+    "fundamental_collar_superpotential": "W_col=Hc^T D5 H + rho_e[H^T A(X)H/2+Hc^T Xi(X)Hc/2] +rho_o Hc^T C(X)H, with every displayed invariant coefficient retained",
+    "general_zero_energy_generator": "d_s(H,Hc)^T=G(s)(H,Hc)^T, G=[[-rho_o C,-rho_e Xi],[rho_e A,rho_o C^T]]; A=A^T and Xi=Xi^T make G Hamiltonian",
+    "odd_profile": "rho_o(s)=(s/epsilon)rho_e(s); rho_o Hc H is orbifold even",
+    "transport_rule": "Every bulk field at L-s is parallel transported to the source frame at L by the shortest normal chiral Wilson line U_R(L,L-s), in its own representation.",
+    "two_bulk_exhaustiveness": "All 10 unordered H--H pairs, all 10 unordered Hc--Hc pairs, all 16 ordered Hc--H pairs, and every unordered source multiset of degree zero, one or two with total U1F charge zero are listed. The Haar-projector coefficient space retains every Spin10 singlet and automatically has dimension zero for forbidden representation products.",
+    "warning": "Xi=C=0 is a matching point, not a symmetry consequence.  The exact transfer must be the path-ordered exponential of the full generator when these coefficients are nonzero."
+  },
+  "source_manifest": [
+    {
+      "path": "SUSY_V48_G2_ADVERSARIAL_CLOSURE_AUDIT.json",
+      "sha256": "e300b0699e6c51b91f4059e32b44f58be08f5e96191acebf803a0b3ff5c3342f"
+    },
+    {
+      "path": "SUSY_V48_SOURCE_OPERATOR_WILSON_AUDIT.json",
+      "sha256": "0d12771c1d3544d36d845396758d16a690b1dcc5511d4f2d79ab3d95919fc0a3"
+    },
+    {
+      "path": "SUSY_V49_FIXED_PROFILE_SOURCE_REGULATOR_AUDIT.json",
+      "sha256": "e22061b418d6dd3cf5870a8ab0044e409f7d7d1b8aab8778408f88e6c17afd3a"
+    },
+    {
+      "path": "CANONICAL_G1_SUSYNO_CHANNEL_BASIS_V21.json",
+      "sha256": "066e2ccd746d97ca562ca4f84957816a2d6babed10574112e8f7118ac23cd309"
+    },
+    {
+      "path": "susy_v49_retained_boundary_action_completeness.py",
+      "sha256": "7c7171ffa945a418e7b23c5bc4fb464f8e783626d6ce16ee472bb0f35d9c9539"
+    },
+    {
+      "path": "test_susy_v49_retained_boundary_action_completeness.py",
+      "sha256": "efd458aed7400ac8ebdb0afa2b7070e1603bc8ec1332fd0881cf71844cad9c1e"
+    }
+  ],
+  "source_wall_gauge_action": {
+    "FI": "int d4theta xiF_L V_F",
+    "completeness": "At one source insertion only neutral S can multiply either gauge singlet and the 210 source can contract the Spin10 adjoint-square 210 channel. Charged Theta fields and 126/bar126 have no allowed linear gauge-kinetic invariant; non-Abelian--U1 kinetic mixing is forbidden.",
+    "conditions": "positive real part of the complete gauge kinetic matrix on the matching background; xiF_L and xiF_0 are independent renormalized rigid-SUSY data",
+    "constant_gauge_kinetic": [
+      "int d2theta tau10 Tr W10_alpha W10^alpha",
+      "int d2theta tauFL WF_alpha WF^alpha"
+    ],
+    "one_source_gauge_kinetic": [
+      "int d2theta (cS10 S/Lambda) Tr W10_alpha W10^alpha",
+      "int d2theta (cSF S/Lambda) WF_alpha WF^alpha",
+      "int d2theta (cPhi/Lambda) [Phi W10_alpha W10^alpha]_1"
+    ]
+  },
+  "status": "V49_RETAINED_ACTION_CENSUS_COMPLETE_IN_DECLARED_FIXED_ORDER_SECTOR__23_EXACT_PURE_SOURCE_QUARTIC_DIRECTIONS__MU_H_AND_ALL_HC_PROFILE_COORDINATES_RETAINED__IBP_EOM_FIELD_REDEFINITION_NORMAL_FORM_DEFINED__STRONG_WALL_HC_SUPPRESSION_REJECTED__COMPONENT_MATCHING_AND_G2_OPEN",
+  "strong_wall_scaling_correction": {
+    "HcHc_value": -0.0007434166666666673,
+    "analytic_HcHc_average": "f0^T A^T Xi A f0/3",
+    "analytic_odd_mixed_average": "-f0^T C A f0/3",
+    "conclusion": "both are O(1), not O(epsilon^2) or O(epsilon), because the wall equation gives partial_s Hc=O(A/epsilon).  They are leading matching data.",
+    "epsilon_scan": {
+      "0.025": {
+        "average_Hc_Xi_Hc": -0.0007434166666666673,
+        "average_rho_odd_H_C_Hc": -0.015161666666666665
+      },
+      "0.05": {
+        "average_Hc_Xi_Hc": -0.0007434166666666673,
+        "average_rho_odd_H_C_Hc": -0.015161666666666665
+      },
+      "0.1": {
+        "average_Hc_Xi_Hc": -0.0007434166666666673,
+        "average_rho_odd_H_C_Hc": -0.015161666666666665
+      },
+      "0.2": {
+        "average_Hc_Xi_Hc": -0.0007434166666666673,
+        "average_rho_odd_H_C_Hc": -0.015161666666666665
+      }
+    },
+    "odd_mixed_value": -0.015161666666666665,
+    "solution": "f(s)=f0, Hc(s)=-(s/epsilon) A f0 at m=0 in the A/epsilon wall"
+  }
+}

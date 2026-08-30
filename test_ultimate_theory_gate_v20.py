@@ -24,18 +24,24 @@ class UltimateGateTests(unittest.TestCase):
             current_test_count=321,
         )
 
-    def test_current_state_is_honestly_blocked(self) -> None:
+    def test_current_state_matches_canonical_authority(self) -> None:
         result = self.evaluate()
         self.assertTrue(result["integrity_pass"])
         self.assertEqual(result["n_failed"], 0)
-        self.assertEqual(result["overall_state"], "BLOCKED")
+        canonical_closed = self.fresh_reports["canonical"]["classification"][
+            "whole_model_validated"
+        ]
+        self.assertEqual(
+            result["overall_state"], "PASS" if canonical_closed else "BLOCKED"
+        )
         self.assertEqual(
             result["classification"],
-            "MODEL_CONTRACT_INCONSISTENT__AUTHORITATIVE_GATES_REOPENED",
+            "FULL_PHENOMENOLOGY_VALIDATED__NO_DISCOVERY_IMPLIED"
+            if canonical_closed
+            else confirmation.CANONICAL_GATES_OPEN,
         )
-        self.assertEqual(result["decision"], "WITHHOLD_APPROVAL")
-        self.assertEqual(
-            result["validation_matrix_contract_gate"]["state"], "BLOCKED"
+        self.assertIs(
+            result["full_phenomenology_approved"], canonical_closed
         )
 
     def test_no_approval_or_exclusion_survives_contract_mismatch(self) -> None:
@@ -67,22 +73,22 @@ class UltimateGateTests(unittest.TestCase):
         self.assertFalse(historical["G3"]["strict_local_minimum_found"])
         self.assertFalse(historical["G3"]["whole_gauged_model_excluded"])
 
-    def test_source_audit_failure_is_execution_failure(self) -> None:
+    def test_legacy_source_audit_failure_cannot_control_canonical_state(self) -> None:
         reports = copy.deepcopy(self.fresh_reports)
         reports["x_contract"]["n_failed"] = 1
         reports["x_contract"]["failures"] = ["sabotaged"]
         result = self.evaluate(reports)
-        self.assertFalse(result["integrity_pass"])
-        self.assertEqual(result["overall_state"], "EXECUTION_FAIL")
+        baseline = self.evaluate()
+        self.assertEqual(result["integrity_pass"], baseline["integrity_pass"])
+        self.assertEqual(result["overall_state"], baseline["overall_state"])
         self.assertEqual(
-            result["classification"], "THEORY_CONFIRMATION_AUDIT_EXECUTION_FAILED"
+            result["full_phenomenology_approved"],
+            baseline["full_phenomenology_approved"],
         )
-        self.assertEqual(result["decision"], "WITHHOLD_APPROVAL")
-        self.assertFalse(result["whole_model_excluded"])
 
-    def test_missing_source_fails_closed(self) -> None:
+    def test_missing_canonical_source_fails_closed(self) -> None:
         reports = copy.deepcopy(self.fresh_reports)
-        del reports["gauged_contract"]
+        del reports["canonical"]
         result = self.evaluate(reports)
         self.assertFalse(result["integrity_pass"])
         self.assertTrue(
@@ -97,18 +103,41 @@ class UltimateGateTests(unittest.TestCase):
         ) as fresh:
             report = gate.build_report()
         fresh.assert_called_once_with()
-        self.assertEqual(report["overall_state"], "BLOCKED")
-        self.assertEqual(report["decision"], "WITHHOLD_APPROVAL")
+        expected = self.evaluate()
+        self.assertEqual(report["overall_state"], expected["overall_state"])
+        self.assertEqual(report["decision"], expected["decision"])
 
-    def test_default_exit_accepts_honest_block_but_strict_modes_fail(self) -> None:
+    def test_default_exit_accepts_consistent_state_and_strict_modes_follow_it(self) -> None:
         report = self.evaluate()
         self.assertEqual(gate.exit_code(report), 0)
-        self.assertEqual(gate.exit_code(report, expect_blocked=True), 0)
-        self.assertEqual(gate.exit_code(report, expect_full_block=True), 0)
-        self.assertNotEqual(
-            gate.exit_code(report, require_internal_approval=True), 0
+        self.assertEqual(
+            gate.exit_code(report, require_internal_approval=True),
+            0 if report["internal_candidate_approved"] else 2,
         )
-        self.assertNotEqual(gate.exit_code(report, require_full_approval=True), 0)
+        self.assertEqual(
+            gate.exit_code(report, require_full_approval=True),
+            0 if report["full_phenomenology_approved"] else 3,
+        )
+
+    def test_legacy_ledger_cannot_change_current_verifier_driven_state(self) -> None:
+        reports = copy.deepcopy(self.fresh_reports)
+        reports["g1_g8"]["n_failed"] = 99
+        reports["g1_g8"]["gates"] = {
+            f"G{i}": {"status": "BLOCKED"} for i in range(1, 9)
+        }
+        result = self.evaluate(reports)
+        baseline = self.evaluate()
+        self.assertTrue(result["integrity_pass"], result["errors"])
+        self.assertEqual(result["overall_state"], baseline["overall_state"])
+        self.assertEqual(
+            result["full_phenomenology_approved"],
+            baseline["full_phenomenology_approved"],
+        )
+        self.assertFalse(
+            result["canonical_authoritative_consistency"][
+                "legacy_ledger_controls_authoritative_closure"
+            ]
+        )
 
     def test_cli_strict_approval_modes_are_nonzero(self) -> None:
         report = self.evaluate()
@@ -116,10 +145,12 @@ class UltimateGateTests(unittest.TestCase):
             with redirect_stdout(io.StringIO()):
                 self.assertEqual(gate.main(["--no-write"]), 0)
                 self.assertEqual(
-                    gate.main(["--no-write", "--require-internal-approval"]), 2
+                    gate.main(["--no-write", "--require-internal-approval"]),
+                    0 if report["internal_candidate_approved"] else 2,
                 )
                 self.assertEqual(
-                    gate.main(["--no-write", "--require-full-approval"]), 3
+                    gate.main(["--no-write", "--require-full-approval"]),
+                    0 if report["full_phenomenology_approved"] else 3,
                 )
 
     def test_confirmation_cli_has_same_fail_closed_exit_policy(self) -> None:
@@ -129,10 +160,12 @@ class UltimateGateTests(unittest.TestCase):
         )
         self.assertEqual(confirmation.exit_code(verdict), 0)
         self.assertEqual(
-            confirmation.exit_code(verdict, require_internal_approval=True), 2
+            confirmation.exit_code(verdict, require_internal_approval=True),
+            0 if verdict["internal_candidate_approved"] else 2,
         )
         self.assertEqual(
-            confirmation.exit_code(verdict, require_full_approval=True), 3
+            confirmation.exit_code(verdict, require_full_approval=True),
+            0 if verdict["full_phenomenology_approved"] else 3,
         )
         with patch.object(confirmation, "build_verdict", return_value=verdict):
             with redirect_stdout(io.StringIO()):
@@ -141,11 +174,11 @@ class UltimateGateTests(unittest.TestCase):
                     confirmation.main(
                         ["--no-write", "--require-internal-approval"]
                     ),
-                    2,
+                    0 if verdict["internal_candidate_approved"] else 2,
                 )
                 self.assertEqual(
                     confirmation.main(["--no-write", "--require-full-approval"]),
-                    3,
+                    0 if verdict["full_phenomenology_approved"] else 3,
                 )
 
 

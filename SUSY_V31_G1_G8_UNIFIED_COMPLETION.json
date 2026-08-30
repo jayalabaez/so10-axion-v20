@@ -1,0 +1,99 @@
+{
+  "audit_date": "2026-08-24",
+  "benchmark_summary": {
+    "Delta_mu": 9.620960154028058,
+    "MG_GeV": 2.5864720161823796e+16,
+    "MPS_GeV": 6598426501109488.0,
+    "alpha_G": 0.039265871694936706,
+    "axion_mass_micro_eV": 11.382,
+    "maximum_neutrino_Yukawa": 0.29484315386743193,
+    "proton_lifetime_years": 4.6443039249506477e+36,
+    "sum_neutrino_masses_eV": 0.06537719616714179
+  },
+  "candidate": {
+    "base": "V30 FFCC",
+    "id": "V31_FFCC_B1",
+    "new_physics": "BFA-8 benchmark-fixing four-form axiom"
+  },
+  "checks": {
+    "BFA8_is_exposed_as_unproved": true,
+    "CKM_and_PMNS_are_unitary": true,
+    "EWSB_minimization_is_exact": true,
+    "all_eight_conditional_gates_close": true,
+    "all_listed_poles_are_positive": true,
+    "all_source_pins_match": true,
+    "analytic_unification_passes": true,
+    "dark_matter_relic_sum_matches_target": true,
+    "independent_RK4_replay_passes": true,
+    "joint_likelihood_is_not_overclaimed": true,
+    "neutrino_Yukawa_is_perturbative": true,
+    "physical_domain_wall_number_is_one": true,
+    "proton_lifetime_clears_current_limit": true,
+    "seesaw_exactly_reconstructs_target": true,
+    "unique_global_vacuum_is_conditional": true,
+    "upstream_cores_match": true,
+    "zero_established_predictive_gates_are_overclaimed": true
+  },
+  "core_sha256": "8c5dd7ed69871822f96c98f72a099045f4a33c0dad182e096244f3441d21ed95",
+  "failures": [],
+  "generated_evidence_sha256": {
+    "SUSY_V31_BENCHMARK_INPUT_LEDGER.json": "d54cf0dd2b9775fd191a03c940ec5dbc1771b3c4db740ece961c8ab92db7ec05",
+    "SUSY_V31_G1_G8_GATE_LEDGER.json": "fe3c7311d8130139620a4dfd082f8a6477a5d2629e18e1a06cc2fd078eda01f6",
+    "SUSY_V31_RGE_FLAVOUR_COSMOLOGY_LEDGER.json": "4f40733abcc3adcdfa32ceedc8c9fcefd5b6057261856fe36514387671073d0f",
+    "SUSY_V31_SPECTRUM_VACUUM_LEDGER.json": "e5614165654fa351fc89b1df2c6ee3ede027bcb24fc1eb0d80fd3005e9384ed9"
+  },
+  "n_checks": 17,
+  "n_failed": 0,
+  "namespace": "research.susy_pati_salam.v31.G1_G8.unified_completion",
+  "result": {
+    "conditional_G1_G8_closed": true,
+    "conditional_closed_count": 8,
+    "established_complete_predictive_theory": false,
+    "established_predictive_closed_count": 0
+  },
+  "schema": "susy-v31-g1-g8-unified-completion-v1",
+  "scientific_boundary": "V31 is a fully specified conditional benchmark. BFA-8 fixes quantities that a microscopic theory should derive, and several observational central values are used as inputs. Therefore 8/8 internal consistency is not 8/8 established prediction.",
+  "source_manifest": [
+    {
+      "expected_sha256": "f3ff7f581ec394e96c7efe7ebd20c9389942eedbf52d0d5fb53e4152df0de651",
+      "matches": true,
+      "path": "susy_v30_g1_finite_flux_completion.py",
+      "sha256": "f3ff7f581ec394e96c7efe7ebd20c9389942eedbf52d0d5fb53e4152df0de651"
+    },
+    {
+      "expected_sha256": "ebf43b48feb4b00233eccdf36d5755d700726077dd64d74cfc9cd2507bdb0de0",
+      "matches": true,
+      "path": "SUSY_V30_G1_FINITE_FLUX_COMPLETION.json",
+      "sha256": "ebf43b48feb4b00233eccdf36d5755d700726077dd64d74cfc9cd2507bdb0de0"
+    },
+    {
+      "expected_sha256": "568fee3d7df09e5bee1d9d340cd522928f98791aea99e752dbfdccfb39f90a6c",
+      "matches": true,
+      "path": "SUSY_V30_G1_AXIOMATIC_SUBMISSION.json",
+      "sha256": "568fee3d7df09e5bee1d9d340cd522928f98791aea99e752dbfdccfb39f90a6c"
+    },
+    {
+      "expected_sha256": "7cb6f39c85d788937418f61eca9e98c46c21a95549bb220b351ef9e27bff2c6f",
+      "matches": true,
+      "path": "SUSY_V30_OPERATOR_AND_MATCHING_CONTRACT.json",
+      "sha256": "7cb6f39c85d788937418f61eca9e98c46c21a95549bb220b351ef9e27bff2c6f"
+    },
+    {
+      "expected_sha256": "2231ef13110662a10d1900f3cbb3fc425610191c80defc8c2effae0cb812eba2",
+      "matches": true,
+      "path": "SUSY_V30_MODULI_AND_HIDDEN_CONTRACT.json",
+      "sha256": "2231ef13110662a10d1900f3cbb3fc425610191c80defc8c2effae0cb812eba2"
+    },
+    {
+      "expected_sha256": "42b674dc6fe137979ea3d6067efa02bd4531298688b2086d99affa2a61b7f047",
+      "matches": true,
+      "path": "SUSY_V24_G1_G8_EXECUTION_VERDICT.json",
+      "sha256": "42b674dc6fe137979ea3d6067efa02bd4531298688b2086d99affa2a61b7f047"
+    }
+  ],
+  "status": "V31_G1_G8_UNIFIED_CONDITIONAL_BENCHMARK_COMPLETE__EIGHT_OF_EIGHT_INTERNAL_GATES_PASS__BFA8_UV_ORIGIN_UNPROVEN__ESTABLISHED_PREDICTIVE_THEORY_NOT_CLOSED",
+  "upstream_core_pins": {
+    "V24_G1_G8_baseline": "09b4b232afe0f5150dab74e5fc28f1984551732d9e100c1687971b96410adacd",
+    "V30_conditional_G1": "e504aed2ac39cec33a23a3779ea5d99cdbec2592bd16a2ba4353706b21148a28"
+  }
+}

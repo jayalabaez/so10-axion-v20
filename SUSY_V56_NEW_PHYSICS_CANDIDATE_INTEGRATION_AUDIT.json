@@ -1,0 +1,336 @@
+{
+  "backup_action": {
+    "doublet_dimension": 5,
+    "doublet_rank": 4,
+    "id": "BP1_4D_SO10_126_MISSING_PARTNER",
+    "one_loop_b": 141,
+    "pole_over_M_SO10": 1.745463216555,
+    "reason_not_selected": "The structural rank mechanism is credible, but the large 126+126bar+210+120 inventory becomes strongly coupled only about 1.75 times above the declared SO(10) scale and no Clebsch-resolved one-action completion was built.",
+    "status": "MECHANISM_SURVIVOR_NOT_COMPLETED_ACTION",
+    "triplet_dimension": 6,
+    "triplet_rank": 6
+  },
+  "core_sha256": "500bb1429e6202c57f574143e01a2edb3e70d94087ae2ac347462c6729e92124",
+  "decisive_open_obligations": [
+    {
+      "falsifier": "a lifted weak pair, colored zero mode, or hard Hc-Hc block",
+      "id": "O1_BOUNDARY_OPERATOR_COMPLETION",
+      "requirement": "Classify every supersymmetric H-Hc and normal-derivative operator at all four fixed points and compute the regulated infinite KK determinant."
+    },
+    {
+      "falsifier": "any uncancelled bulk, local, global, or discrete anomaly",
+      "id": "O2_ANOMALY_AND_GS_COMPLETION",
+      "requirement": "Supply the full 6D supergravity/tensor/hidden ledger, factorized anomaly polynomial, localized inflow, and quantized discrete-R GS cancellation. Construct the global Z4R action on supercharges, gauge fields, measure, translation twists, and every fixed point."
+    },
+    {
+      "falsifier": "loss of perturbative control or precision unification",
+      "id": "O3_THRESHOLD_AND_CUTOFF_MATCHING",
+      "requirement": "Fix R5, R6, M*, brane kinetic terms and U(1)X boundary masses, then match the full KK thresholds and two-loop low-energy couplings."
+    },
+    {
+      "falsifier": "excluded proton lifetime or failed fermion/neutrino fit",
+      "id": "O4_PROTON_AND_FLAVOUR_MATCHING",
+      "requirement": "Derive infinite-KK C5/C6 tensors, SUSY dressing and lifetimes; construct a mediator-complete Yukawa/seesaw sector and fit current flavour data."
+    },
+    {
+      "falsifier": "unstable vacuum, wrong spectrum, or failed cosmology",
+      "id": "O5_SOFT_VACUUM_AND_COSMOLOGY",
+      "requirement": "Specify supersymmetry breaking, stabilize moduli and radii, prove the global vacuum, obtain EWSB, and test collider and cosmological bounds."
+    }
+  ],
+  "expected_input_core_hashes": {
+    "architecture": "3f3f662cdb8ba0e1081dc77fa2d579fef7c5421b97ca7b16fdce0760f796af0a",
+    "m_dressed": "700122eddf3e303c760030c6346402489bc0bc6c9814f7ac6f17519019e16684",
+    "orbifold_z4r": "09ba35b4e7cc05bf2375818e71610f565d6a330b5e8f0221373c301a58293a55",
+    "two_site": "334778d7082f133c14c800c97b20a82a01394366e8903b46669e6a7d54b186c0",
+    "v55_master": "52d0044e8d227be29b2cab63c565c1f4335aae9a72c9d51f3c9044fe7289a1f7"
+  },
+  "final_decision": {
+    "V56_candidate_closed_gates": [],
+    "candidate_architecture_created": true,
+    "complete_theory": false,
+    "empirical_new_physics_discovery": false,
+    "full_gates_closed_for_V56_candidate": 0,
+    "historical_G1_namespace_may_not_be_imported": true,
+    "honest_outcome": "V56 creates a concrete, executable new-theory candidate that escapes the proved 4D selector obstruction by changing the spacetime architecture.  Its free zero-mode projector and a bounded brane Z4R protection sector pass exact tests.  It is not yet a complete or empirically validated theory, and no G1-G8 gate is closed until the boundary, anomaly, KK, threshold, proton, flavour, soft-vacuum, and cosmology obligations are solved in this same action.",
+    "same_action_completion": false,
+    "selected_complete_candidate": null,
+    "selected_executable_frontier_candidate": "V56_6D_T2_Z2_SU5_BRANE_Z4R"
+  },
+  "gate_ledger": [
+    {
+      "V56_candidate_closed": false,
+      "decision": "OPEN for V56: the local SU(5)xU(1)X family anomaly cancels and the irreducible 6D gauge coefficient vanishes, but gravitational, reducible, localized, discrete-R, global, and physical GS sectors are unfinished.",
+      "gate": "G1",
+      "status": "OPEN"
+    },
+    {
+      "V56_candidate_closed": false,
+      "decision": "OPEN: the projector, R selection, matter terms, anomaly fragments, thresholds, proton matching, flavour fit, and SUSY breaking are not yet one closed action; a globally defined discrete-gauge Z4R for the full 6D compactification has not been constructed.",
+      "gate": "G2",
+      "status": "OPEN"
+    },
+    {
+      "V56_candidate_closed": false,
+      "decision": "OPEN: the free orbifold projector is exact, but the interacting bulk-plus-brane vacuum and regulated infinite-KK quadratic operator are not solved.",
+      "gate": "G3",
+      "status": "OPEN"
+    },
+    {
+      "V56_candidate_closed": false,
+      "decision": "OPEN with a real advance: exactly two weak and zero colored free zero modes are proved, and neutral R0 VEV dressing cannot make HH'; allowed H-Hc and normal-derivative boundary operators remain unclassified.",
+      "gate": "G4",
+      "status": "OPEN"
+    },
+    {
+      "V56_candidate_closed": false,
+      "decision": "OPEN: no dark sector, relic calculation, or cosmological history is supplied.",
+      "gate": "G5",
+      "status": "OPEN"
+    },
+    {
+      "V56_candidate_closed": false,
+      "decision": "OPEN: compactification radii, cutoff, brane kinetic terms, complete KK thresholds, and precision unification are not matched.",
+      "gate": "G6",
+      "status": "OPEN"
+    },
+    {
+      "V56_candidate_closed": false,
+      "decision": "OPEN: direct matter dimension-five and perturbative RPV terms are forbidden and a finite KK witness has zero H-H inverse block, but infinite-KK C5, C6, dressing, flavour rotations, and proton lifetimes are not computed.",
+      "gate": "G7",
+      "status": "OPEN"
+    },
+    {
+      "V56_candidate_closed": false,
+      "decision": "OPEN: local up, down, charged-lepton, and RH-neutrino operators exist, but the minimal SU(5) relations, mediator sector, seesaw scales, and current global fit remain unresolved.",
+      "gate": "G8",
+      "status": "OPEN"
+    }
+  ],
+  "input_core_hashes": {
+    "architecture": "3f3f662cdb8ba0e1081dc77fa2d579fef7c5421b97ca7b16fdce0760f796af0a",
+    "m_dressed": "700122eddf3e303c760030c6346402489bc0bc6c9814f7ac6f17519019e16684",
+    "orbifold_z4r": "09ba35b4e7cc05bf2375818e71610f565d6a330b5e8f0221373c301a58293a55",
+    "two_site": "334778d7082f133c14c800c97b20a82a01394366e8903b46669e6a7d54b186c0",
+    "v55_master": "52d0044e8d227be29b2cab63c565c1f4335aae9a72c9d51f3c9044fe7289a1f7"
+  },
+  "integrity_checks": {
+    "M_dressed_route_is_rejected_at_degree4": true,
+    "all_input_cores_are_canonical_and_expected": true,
+    "boundary_and_infinite_KK_loophole_is_fail_closed": true,
+    "finite_proton_witness_is_conditional_not_a_lifetime_proof": true,
+    "fixed_R1_remains_rejected_with_zero_V55_gate_promotions": true,
+    "missing_partner_backup_has_rectangular_rank_witness": true,
+    "neutral_R0_VEV_charge_lemma_forbids_HHp_mass_and_finite_census_confirms_it": true,
+    "no_V56_gate_is_promoted": true,
+    "only_irreducible_6D_gauge_anomaly_is_currently_closed": true,
+    "orbifold_projector_has_exactly_two_weak_and_zero_colored_modes": true,
+    "selected_brane_family_and_rank_breaking_gauge_anomalies_cancel": true,
+    "selected_candidate_is_not_claimed_complete_or_empirical": true,
+    "two_site_route_is_rejected_at_degree6": true
+  },
+  "meaning_of_new_physics": {
+    "architecture_change": "Replace the fatal finite 4D additive Higgs selector by component-dependent orbifold boundary conditions, then protect the surviving pair with a conventional 4D N=1 Z4R selection rule on the SU(5)xU(1)X brane.",
+    "created": true,
+    "kind": "new falsifiable theoretical candidate architecture",
+    "not_claimed": [
+      "empirical discovery",
+      "experimentally confirmed physics",
+      "UV-complete quantum gravity",
+      "complete G1-G8 theory"
+    ]
+  },
+  "n_failed_integrity_checks": 0,
+  "primary_sources": [
+    {
+      "title": "SO(10) Unified Theories in Six Dimensions",
+      "url": "https://arxiv.org/abs/hep-ph/0108071",
+      "use": "orbifold parities, doublet-triplet splitting, and 6D anomaly target"
+    },
+    {
+      "title": "A unique Z4R symmetry for the MSSM",
+      "url": "https://arxiv.org/abs/1009.0905",
+      "use": "SO(10)-compatible low-energy Z4R and soft-scale mu motivation"
+    },
+    {
+      "title": "Missing Partner Mechanism in SO(10) Grand Unification",
+      "url": "https://arxiv.org/abs/hep-ph/0612315",
+      "use": "4D backup rank architecture and UV-pressure comparison"
+    },
+    {
+      "title": "Localized anomalies in orbifold gauge theories",
+      "url": "https://arxiv.org/abs/hep-th/0612212",
+      "use": "localized fixed-point anomaly obligations"
+    }
+  ],
+  "route_ledger": [
+    {
+      "decision": "REJECTED",
+      "decisive_operator": "h A H2 and L h H2",
+      "effect": "generic completed weak rank 16; zero weak-Higgs modes",
+      "first_decisive_failure_degree": 3,
+      "gate_promotions": [],
+      "id": "R0_FIXED_R1",
+      "theory": "4D N=1 SO(10) fixed R1 source/filter topology"
+    },
+    {
+      "decision": "REJECTED",
+      "decisive_operator": "K h^T A H2/Lambda and L K h^T H2/Lambda",
+      "effect": "each produces weak rank 16 and removes the protected pair",
+      "first_decisive_failure_degree": 4,
+      "gate_promotions": [],
+      "id": "R1_M_DRESSED_B",
+      "theory": "4D N=1 SO(10) zero-new-field M-dressed-B topology"
+    },
+    {
+      "decision": "REJECTED",
+      "decisive_operator": "(h_L^T Omega H2_R) Tr(A_L B Omegabar^T)",
+      "effect": "direct cross-site h-H2 mass; generic weak rank16 and full filter rank40",
+      "first_decisive_failure_degree": 6,
+      "gate_promotions": [],
+      "id": "R2_TWO_SITE_LINK_PARITY",
+      "theory": "4D Spin(10)L x Spin(10)R two-site link EFT"
+    },
+    {
+      "decision": "BACKUP_MECHANISM_ONLY",
+      "decisive_operator": null,
+      "effect": "structural witness has triplet rank 6/6 and doublet rank 4/5, but the Clebsch-resolved Hessian, vacuum, operator completion, and matching are open",
+      "first_decisive_failure_degree": null,
+      "gate_promotions": [],
+      "id": "R3_4D_MISSING_PARTNER",
+      "one_loop_b": 141,
+      "one_loop_pole_over_M_SO10": 1.745463216555,
+      "theory": "4D N=1 supersymmetric SO(10) EFT"
+    },
+    {
+      "decision": "SELECTED_EXECUTABLE_FRONTIER_CANDIDATE",
+      "decisive_operator": null,
+      "effect": "exact free projector: two weak zero modes and zero colored zero modes",
+      "first_decisive_failure_degree": null,
+      "gate_promotions": [],
+      "id": "R4_6D_ORBIFOLD_Z4R",
+      "theory": "6D N=1 supersymmetric SO(10) orbifold EFT"
+    }
+  ],
+  "same_action_rule": "A G1-G8 gate may close only when every premise is established in one canonical action.  Rejected R1/two-site calculations and the 4D missing-partner backup cannot be imported into the selected 6D orbifold action.",
+  "schema": "susy-v56-new-physics-candidate-integration-audit-v1",
+  "selected_frontier_action": {
+    "Z4R_charges": {
+      "H_and_Hprime": 0,
+      "Hc_and_Hprimec": 2,
+      "S": 2,
+      "X_and_Xbar": 0,
+      "matter": 1,
+      "superpotential": 2,
+      "theta": 1
+    },
+    "allowed_core_terms": [
+      "10_-1 10_-1 H5",
+      "10_-1 bar5_3 Hprime_bar5",
+      "1_-5 1_-5 X_+10",
+      "S(X Xbar - vX^2)",
+      "S H Hprime",
+      "S Hc Hprimec"
+    ],
+    "brane_chiral_content": [
+      "3 x (10_-1 + bar5_3 + 1_-5)",
+      "X_+10 + Xbar_-10",
+      "S_0"
+    ],
+    "bulk": "6D N=1 SO(10) gauge theory on T2/Z2",
+    "bulk_Higgs_hypermultiplets": [
+      {
+        "intrinsic_translations": [
+          1,
+          -1
+        ],
+        "name": "H10"
+      },
+      {
+        "intrinsic_translations": [
+          -1,
+          1
+        ],
+        "name": "H10_prime"
+      }
+    ],
+    "exact_certificates": {
+      "Hc_zero_modes": 0,
+      "all_declared_GUT_VEV_R_charges_zero": true,
+      "all_order_R0_charge_lemma": "All non-derivative R0-R0 Higgs bilinears are Z4R-forbidden to every order in the declared q_R=0 GUT-VEV ring.",
+      "color_triplet_zero_modes": 0,
+      "direct_matter_dimension5": "forbidden: quartic matter charge is 0 mod 4",
+      "finite_KK_HH_inverse_block_zero": true,
+      "neutral_VEV_dressing_degree": 12,
+      "neutral_VEV_exponent_vectors": 455,
+      "perturbative_RPV_dimension4": "forbidden: cubic matter charge is 3 mod 4",
+      "weak_doublet_zero_modes": 2,
+      "zero_mode_names": [
+        "H10:H:h2",
+        "H10_prime:H:bar_h2"
+      ]
+    },
+    "id": "V56_6D_T2_Z2_SU5_BRANE_Z4R",
+    "scope_boundary": "The zero-mode statement is exact for the free projector and the R0-VEV mass statement is exact for non-derivative brane superpotential bilinears. Neither statement includes the full boundary differential-operator basis. The protection is conditional on a globally consistent discrete-gauge Z4R acting on the 6D supercharges, gauge multiplet, superspace measure, translation twists, and all four fixed points; that realization is not yet constructed.",
+    "selected_fixed_point": "O_GG with local SU(5) x U(1)X",
+    "supersymmetric_mu_result": "F_X=S Xbar=0 and F_Xbar=S X=0 with nonzero X,Xbar imply <S>=0; the supersymmetric Higgs mass vanishes.  Soft R breaking may give <S> of order the soft scale and mu=lambda<S>."
+  },
+  "source_manifest": [
+    {
+      "exists": true,
+      "path": "susy_v56_new_physics_candidate_integration_audit.py",
+      "sha256": "73998aa0ed7fbc85f8b5d59e2f9fd6c2224f27bc07a124eaebf53b42b2121ba0"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v56_new_physics_candidate_integration_audit.py",
+      "sha256": "ce9f95f297d97ac3c7a198316b7b971f37eba2b8420eafe0361f662456d4c724"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V55_R1_COMPLETION_KILL_TEST_INTEGRATION_AUDIT.json",
+      "sha256": "c35a785092e37233954ec3e74174cc66ce57005e5bf47568bdb620502188320b"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V56_ARCHITECTURE_ESCAPE_RESEARCH_AUDIT.json",
+      "sha256": "94abde517c825be5b26de70f9e3db750508880c96c20a6a7980a577f949c6b37"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V56_TWO_SITE_LINK_PARITY_SELECTOR_AUDIT.json",
+      "sha256": "dae33c009f7ac5ee6f3c4861c9416855f133c1bc45fbf8416a167d871ad565b5"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V56_R1_M_DRESSED_B_TOPOLOGY_HESSIAN_AUDIT.json",
+      "sha256": "310e8eb33a9c94b7ffa8d8d0fd9f56f6ad487eddabc48a00733aec090b1e469d"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V56_ORBIFOLD_GEOMETRIC_Z4R_PROTECTION_AUDIT.json",
+      "sha256": "0ca1aeb877b160e66541ab53d7368908bdcd5030ba443f75bd04d2699fd981ef"
+    }
+  ],
+  "status": "V56_NEW_PHYSICS_CANDIDATE__FIXED_R1_REJECTED__M_DRESSED_REJECTED_AT_DEGREE4__TWO_SITE_REJECTED_AT_DEGREE6__4D_MISSING_PARTNER_RETAINED_AS_UV_STRESSED_BACKUP__6D_T2Z2_SU5_BRANE_Z4R_SELECTED_FRONTIER__TWO_WEAK_ZERO_MODES_ZERO_COLOR__DIRECT_R0_MASS_PROTECTED__BOUNDARY_KK_ANOMALY_THRESHOLD_PROTON_FLAVOUR_OPEN__ZERO_GATE_PROMOTIONS__COMPLETE_THEORY_FALSE",
+  "verification_run": {
+    "date": "2026-08-29",
+    "focused_V56_pytest": {
+      "failed": 0,
+      "passed": 63,
+      "scope": "all five V56 component and integration test modules"
+    },
+    "historical_pytest": {
+      "command": "python -m pytest -q <all test_susy_vN*.py modules with N >= 40>",
+      "evidence_kind": "recorded direct pytest execution; this count is not recursively recomputed by the integration test module",
+      "failed": 0,
+      "passed": 829,
+      "scope": "all test_susy_v40 through test_susy_v56 modules"
+    },
+    "python_compile": {
+      "V56_audit_scripts": 5,
+      "passed": true
+    },
+    "supported_artifact_freshness_checks_passed": true
+  }
+}

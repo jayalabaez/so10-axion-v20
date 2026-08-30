@@ -1,0 +1,613 @@
+{
+  "bulk_mediator_and_nonlocal_Yukawa": {
+    "bulk_fields": "For each mediator channel a, use the mirror 32-hyper pair M_a,Mtilde_a with complementary intrinsic parities listed in spinor_mediator_parities.",
+    "bulk_superpotential_density": "M_a^c*(partial5-Sigma/sqrt(2)+m_a*epsilon(y))*M_a + Mtilde_a^c*(partial5-Sigma/sqrt(2)+mtilde_a*epsilon(y))*Mtilde_a",
+    "full_realistic_yukawa_sector_closed": false,
+    "gauge_covariant_kernel": "K[Sigma]=P_even*(partial5-Sigma/sqrt(2)+M+boundary masses)^(-1)*P_even",
+    "literature_support": [
+      "Burdman-Nomura: bulk gauge interaction yields Yukawas and brane mixing yields flavor",
+      "Furui-Hosotani-Yamatsu: Spin(11) 32/11 bulk matter plus Spin(10)-wall mixings"
+    ],
+    "local_families": "F_i in 16 of Spin(10), i=1,2,3, at y=0",
+    "schur_complement": "Weff[F]=-(1/2) F^T lambda^T K[Sigma] lambda F",
+    "status": "EXPLICIT_LOCAL_SKELETON__NONLOCAL_KERNEL_DEFINED__COEFFICIENT_SPECTRUM_NOT_SOLVED",
+    "unproved_rows": [
+      "No primary source publishes this exact SUSY Spin(11), local-F_i, mirror-32 action.",
+      "The full KK eigenvalue problem after C,Cbar,T wall VEVs is not solved.",
+      "Full-rank, realistic and non-unified Yu,Yd,Ye,Ynu are not demonstrated.",
+      "The same kernel's couplings to colored Sigma KK states and its dimension-five determinant are not evaluated."
+    ],
+    "wilson_line_statement": "K depends on the holonomy W=P exp(integral Sigma dy); its linear coset term is the Spin(10) invariant 16_i*16_j*10_Sigma, while a local polynomial brane Yukawa is forbidden.",
+    "y0_mixing": "W0=[Mtilde_bar16,a]*(mu_ab*[M_16,b]+lambda_ai*F_i), with all brackets denoting the boundary-even Spin(10) fragments.",
+    "yukawa_definition_without_invented_numbers": "Y_ij is defined as the derivative of lambda^T K[h] lambda with respect to the normalized (1,2,2) holonomy coordinate h at h=0.",
+    "zero_mode_obligation": "mu and the complete boundary mass matrix must have maximal rank in every SM sector"
+  },
+  "claim_boundary": {
+    "conditional_mirror_anomaly_pairing_labeled": true,
+    "new_fundamental_physics_invented": false,
+    "no_gate_promotion": true,
+    "published_nonSUSY_action_not_misrepresented_as_SUSY_completion": true,
+    "symbolic_coefficients_not_numerically_fabricated": true
+  },
+  "core_sha256": "bf666eb5e4d57bff18b05182d7d6cc7874bbc26dd71897153faf9ee67a5f8c42",
+  "date": "2026-08-29",
+  "falsifiers": [
+    {
+      "effect": "reject projector",
+      "id": "F1",
+      "test": "Parity enumeration differs from 21 V++ and four Sigma++ components"
+    },
+    {
+      "effect": "uneaten 5+bar5 remains",
+      "id": "F2",
+      "test": "lambda*lambdabar*v^2=0"
+    },
+    {
+      "effect": "redo pointwise anomaly and CS audit",
+      "id": "F3",
+      "test": "Any mediator 32 lacks its opposite-parity mirror"
+    },
+    {
+      "effect": "it must exhibit the failed determinant-cycle premise",
+      "id": "F4",
+      "test": "A claimed Abelian non-R charge assignment allows full-rank neutral-H Yukawas but forbids all 16_i^4"
+    },
+    {
+      "effect": "reject proton sector",
+      "id": "F5",
+      "test": "Colored Wilson-kernel KK determinant generates excessive C5"
+    },
+    {
+      "effect": "reject quantum action",
+      "id": "F6",
+      "test": "Relative 5D eta invariant is nontrivial without an allowed counterterm"
+    },
+    {
+      "effect": "reject compactification",
+      "id": "F7",
+      "test": "Boundary kinetic/KK thresholds cannot fit measured couplings perturbatively"
+    },
+    {
+      "effect": "reject flavor sector",
+      "id": "F8",
+      "test": "No full-rank realistic Yu,Yd,Ye,Ynu solution after the exact KK solve"
+    }
+  ],
+  "gate_ledger": [
+    {
+      "decision": "OPEN: the Higgs projector and rank sector are explicit, but the exact non-R proton selector is obstructed, the mediator determinant is not source-completed, and the 5D Dai-Freed/UV definition is absent.",
+      "gate": "G1",
+      "status": "OPEN"
+    },
+    {
+      "decision": "OPEN: no coefficient-level complete 4D Wilsonian action or realistic flavor/soft solution.",
+      "gate": "G2",
+      "status": "OPEN"
+    },
+    {
+      "decision": "OPEN: no stabilized compactification, physical quotient or full KK Hessian.",
+      "gate": "G3",
+      "status": "OPEN"
+    },
+    {
+      "decision": "OPEN: two weak and zero colored zero modes pass, but colored KK dimension-five exchange is unsolved.",
+      "gate": "G4",
+      "status": "OPEN"
+    },
+    {
+      "decision": "OPEN: dark matter and cosmological history are not selected.",
+      "gate": "G5",
+      "status": "OPEN"
+    },
+    {
+      "decision": "OPEN: inflation, reheating and defect history are absent.",
+      "gate": "G6",
+      "status": "OPEN"
+    },
+    {
+      "decision": "OPEN: precision thresholds and a global data likelihood are absent.",
+      "gate": "G7",
+      "status": "OPEN"
+    },
+    {
+      "decision": "OPEN: no microscopic UV completion or quantified predictivity/stability score.",
+      "gate": "G8",
+      "status": "OPEN"
+    }
+  ],
+  "gauge_and_zero_mode_audit": {
+    "P0_vector": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      -1
+    ],
+    "P1_vector": [
+      1,
+      1,
+      1,
+      1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1
+    ],
+    "SM_decomposition": [
+      "(1,2)_(+1/2)=Hu",
+      "(1,2)_(-1/2)=Hd"
+    ],
+    "Sigma_zero_blocks": [
+      "Ac"
+    ],
+    "Sigma_zero_component_count": 4,
+    "Sigma_zero_representation": "complex (1,2,2) under SU(4)xSU(2)LxSU(2)R",
+    "V_zero_blocks": [
+      "AA",
+      "BB"
+    ],
+    "V_zero_generator_count": 21,
+    "adjoint_generator_count": 55,
+    "classes": {
+      "AA": {
+        "Sigma_parity": [
+          -1,
+          -1
+        ],
+        "V_parity": [
+          1,
+          1
+        ],
+        "multiplicity": 6
+      },
+      "AB": {
+        "Sigma_parity": [
+          -1,
+          1
+        ],
+        "V_parity": [
+          1,
+          -1
+        ],
+        "multiplicity": 24
+      },
+      "Ac": {
+        "Sigma_parity": [
+          1,
+          1
+        ],
+        "V_parity": [
+          -1,
+          -1
+        ],
+        "multiplicity": 4
+      },
+      "BB": {
+        "Sigma_parity": [
+          -1,
+          -1
+        ],
+        "V_parity": [
+          1,
+          1
+        ],
+        "multiplicity": 15
+      },
+      "Bc": {
+        "Sigma_parity": [
+          1,
+          -1
+        ],
+        "V_parity": [
+          -1,
+          1
+        ],
+        "multiplicity": 6
+      }
+    },
+    "colored_chiral_zero_modes": 0,
+    "direct_local_polynomial_Sigma_mass_allowed": false,
+    "reason": "Sigma -> exp(Lambda)(Sigma-sqrt(2) partial5)exp(-Lambda) has an inhomogeneous shift.",
+    "wall_groups": {
+      "y0": "Spin(10)",
+      "yL": "Spin(4)xSpin(7)"
+    },
+    "weak_chiral_zero_modes": 2,
+    "zero_mode_gauge_group_before_rank_breaking": "Spin(4)xSpin(6) (Pati-Salam global quotient not fixed here)"
+  },
+  "integrity_checks": {
+    "Dai_Freed_not_overclaimed": true,
+    "Pati_Salam_vector_zero_algebra_dimension_21": true,
+    "V56_core_is_canonical_and_expected": true,
+    "V58_core_is_canonical_and_expected": true,
+    "all_55_generators_enumerated": true,
+    "all_gates_remain_open": true,
+    "continuous_NPsi_forbids_holomorphic_Yukawa": true,
+    "exact_four_complex_Sigma_components": true,
+    "exact_two_weak_chirals": true,
+    "finite_selector_scan_finds_no_counterexample": true,
+    "pointwise_perturbative_pairing_passes": true,
+    "rank_breaker_five_matrix_nonzero_generic_determinant": true,
+    "zero_colored_chiral_zero_modes": true
+  },
+  "lineage": {
+    "bound_V56_orbifold_core": "09ba35b4e7cc05bf2375818e71610f565d6a330b5e8f0221373c301a58293a55",
+    "bound_V58_frontier_core": "c31d5fe65fc5bd96279bb739f5284854a624b2ee1586004c9b84998225d382c6",
+    "relation": "Route-B replacement action; it reuses no V56 Z4R closure claim and does not patch the V58 heterotic action."
+  },
+  "local_global_and_Dai_Freed_anomalies": {
+    "Dai_Freed": {
+      "boundary_mass_phase_and_global_quotients": "NOT_FIXED",
+      "five_dimensional_relative_eta_invariant": "NOT_COMPUTED",
+      "four_dimensional_Spin10_result_in_literature": "anomaly free",
+      "invertible_bulk_counterterm": "NOT_EXHIBITED",
+      "strict_status": "OPEN",
+      "traditional_pi4_and_SU2_checks": "pass for the displayed light spectrum"
+    },
+    "Pati_Salam_zero_mode_checks": {
+      "SU2L_doublets": 14,
+      "SU2R_doublets": 14,
+      "SU4_cubic_per_family": "2*A(4)+2*A(bar4)=2-2=0",
+      "both_Witten_anomalies_absent": true
+    },
+    "five_dimensional_CS": {
+      "Spin11_invariant_polynomial_degrees": [
+        2,
+        4,
+        6,
+        8,
+        10
+      ],
+      "canonical_pure_Spin11_CS5_available": false,
+      "degree_three_invariant_for_tr_F_cubed": false,
+      "required_level_for_paired_candidate": 0,
+      "warning": "An unpaired fixed-point SU(5)/SU(4) cubic profile cannot be repaired by inventing a Spin(11)-invariant CS5 term; it must cancel pointwise or come with a demonstrated globally-vanishing inflow construction."
+    },
+    "full_quantum_anomaly_trivialization_closed": false,
+    "global_group_warning": "Spin, not SO, is required for spinor 16/32 matter; exact central quotients of the Pati-Salam and SM subgroups must be fixed before a bordism calculation.",
+    "pointwise_continuous": {
+      "condition": "Every bulk 32 channel is accompanied by the exact opposite-intrinsic-parity mirror and the full boundary regulator preserves the pairing.",
+      "conditional_pointwise_total": 0,
+      "y0_after_rank_breaking": {
+        "group": "SU(5)",
+        "mirror_mediator_pairs": "cancel projector-weighted local anomalies pairwise",
+        "per_family": "A(10)+A(bar5)=1-1=0",
+        "rank_sector": "vectorlike/real after Higgsing",
+        "three_family_sum": 0
+      },
+      "y0_before_rank_breaking": {
+        "brane_matter": "3x16 + (16+bar16) + 10 + singlet",
+        "cubic_gauge_anomaly": 0,
+        "group": "Spin(10)",
+        "reason": "Spin(10) has no cubic invariant; C+Cbar is vectorlike and T is real."
+      },
+      "yL": {
+        "cubic_gauge_anomaly": 0,
+        "group": "Spin(4)xSpin(7)",
+        "reason": "SU(2), SU(2) and Spin(7) have no perturbative 4D cubic gauge anomaly."
+      }
+    },
+    "pointwise_perturbative_closed_for_displayed_paired_skeleton": true,
+    "visible_SM": {
+      "SU2_doublet_count_with_color": 14,
+      "SU2_squared_Y": "0",
+      "SU3_cubed": "0",
+      "SU3_squared_Y": "0",
+      "Witten_SU2_anomaly_absent": true,
+      "Y_cubed": "0",
+      "gravity_squared_Y": "0"
+    }
+  },
+  "n_failed_integrity_checks": 0,
+  "n_integrity_checks": 13,
+  "proton_decay_mu_and_thresholds": {
+    "dimension_five_KK": {
+      "required_calculation": "full colored boundary-to-boundary mass matrix and Schur complement",
+      "source": "colored Sigma/mediator KK exchange after Wilson-kernel expansion",
+      "status": "OPEN"
+    },
+    "dimension_six": {
+      "scaling_only": "C6 ~ g4^2/Mc^2",
+      "source": "broken Spin(10) gauge KK exchange at the family wall",
+      "status": "requires Mc and wavefunction fit to current nucleon-lifetime limits"
+    },
+    "direct_wall_operator": {
+      "Spin10_invariant": true,
+      "fatal_without_selector": true,
+      "forbidden_by_candidate_gauge_symmetry": false,
+      "operator": "delta(y) c_ijkl F_i F_j F_k F_l / M_*"
+    },
+    "mu": {
+      "complete_soft_action": false,
+      "local_supersymmetric_mu": "forbidden by the 5D gauge shift",
+      "published_route": "Scherk-Schwarz/radion SUSY breaking gives a Higgsino mass tied to the twist"
+    },
+    "thresholds": [
+      "independent y0 Spin(10) and yL Spin(4)xSpin(7) brane kinetic terms",
+      "rank-breaking thresholds from v and M_T",
+      "mirror-32 KK determinants and kink masses",
+      "Scherk-Schwarz/radion soft threshold"
+    ],
+    "unification_prediction_closed": false
+  },
+  "proton_selector_obstruction": {
+    "Z2_matter_parity": {
+      "16_four_allowed": true,
+      "Yukawa_allowed": true
+    },
+    "continuous_U1_NPsi": {
+      "Yukawa_allowed": false,
+      "Yukawa_charge": 2,
+      "conclusion": "The published Dirac-fermion N_Psi cannot be copied to a holomorphic 16*16*Sigma superpotential.",
+      "q16": 1,
+      "qSigma": 0
+    },
+    "finite_scan": {
+      "counterexamples": [],
+      "full_rank_charge_assignments_checked": 1295,
+      "moduli_scanned": [
+        2,
+        24
+      ],
+      "no_counterexample": true
+    },
+    "loopholes_not_excluded": [
+      "an exact R symmetry",
+      "non-Abelian family symmetry with a complete anomaly-safe UV realization",
+      "noncommuting symmetry after abandoning a local Spin(10) wall",
+      "split or bulk physical families rather than three local 16s",
+      "topological/noninvertible selection with an explicit regulator"
+    ],
+    "proof": [
+      "An allowed Yukawa entry ij obeys q_i+q_j=0 because q_H=0.",
+      "A nonzero determinant monomial selects a permutation of three labels.",
+      "Every permutation of three labels has an odd cycle: a fixed point or a 3-cycle.",
+      "Alternating q_i=-q_j around that odd cycle gives 2q_i=0 for a label on it.",
+      "Therefore 4q_i=0 and the same-family Spin(10) invariant 16_i^4 is allowed."
+    ],
+    "published_NPsi_warning": "Furui-Hosotani-Yamatsu impose a global fermion number and explicitly state that Majorana singlet masses break it and can induce proton decay at higher loops.",
+    "sharp_conclusion": "The requested exact commuting Abelian non-R proton selector does not exist for the local-family neutral-gauge-Higgs architecture.",
+    "theorem_scope": "Any Abelian non-R 0-form symmetry (finite or continuous) commuting with Spin(10), with neutral gauge-Higgs 10 and three wall 16_i, when the symmetric Yukawa support is generically full rank."
+  },
+  "rank_breaking_sector": {
+    "anomaly_character": "C+Cbar is vectorlike, T is real, S is neutral",
+    "breaking": "Spin(10)->SU(5); intersection with Pati-Salam is the SM gauge algebra",
+    "fields": {
+      "C": "16",
+      "Cbar": "bar16",
+      "S": "1",
+      "T": "10"
+    },
+    "five_mass_determinant": "-lambda*lambdabar*v^2",
+    "five_mass_matrix": "[[0,lambdabar*v],[lambda*v,M_T]]",
+    "five_plus_fivebar_full_rank_if": "lambda*lambdabar*v^2 != 0",
+    "location": "y=0 Spin(10) wall",
+    "minimal_pair_only_hazard": {
+      "C_plus_Cbar_complex_components": 32,
+      "broken_generators_and_eaten_chirals": 21,
+      "uneaten_before_T": "5+bar5 plus one radial singlet; S pairs with the radial singlet"
+    },
+    "new_light_colored_states_after_generic_rank_breaking": 0,
+    "normalized_example_determinant": "-1",
+    "not_claimed": "No UV symmetry is supplied that selects this superpotential from every allowed wall operator.",
+    "superpotential": "Wrank=kappa*S*(C*Cbar-v^2)+lambda*C*C*T+lambdabar*Cbar*Cbar*T+(M_T/2)*T*T",
+    "supersymmetric_vacuum": {
+      "C": "v in nu^c direction",
+      "Cbar": "v in conjugate nu^c direction",
+      "D_zero": true,
+      "F_zero": true,
+      "S": 0,
+      "T": 0,
+      "conditions": [
+        "v nonzero",
+        "kappa nonzero",
+        "lambda*lambdabar nonzero"
+      ]
+    }
+  },
+  "research_question": "Can the Spin(11) gauge-Higgs blueprint become one anomaly-safe action with local Spin(10) families and no assumed R symmetry?",
+  "schema": "susy_so10.v59.spin11_gauge_higgs_completion_audit.v1",
+  "source_manifest": {
+    "audit_script": {
+      "path": "C:\\Users\\jayal\\Downloads\\So10Theory2\\So10Theory\\_g3_equality_classification_integration\\susy_v59_spin11_gauge_higgs_completion_audit.py",
+      "sha256": "266e17fce9b37297ece468a1eb142c25a0e022245b4d529a8c41581af7f84a21"
+    },
+    "bound_V56": {
+      "path": "C:\\Users\\jayal\\Downloads\\So10Theory2\\So10Theory\\_g3_equality_classification_integration\\SUSY_V56_ORBIFOLD_GEOMETRIC_Z4R_PROTECTION_AUDIT.json",
+      "sha256": "0ca1aeb877b160e66541ab53d7368908bdcd5030ba443f75bd04d2699fd981ef"
+    },
+    "bound_V58": {
+      "path": "C:\\Users\\jayal\\Downloads\\So10Theory2\\So10Theory\\_g3_equality_classification_integration\\SUSY_V58_HETEROTIC_G1_MICROSCOPIC_COMPLETION_AUDIT.json",
+      "sha256": "4cf8461b0123b71066dbbe45b5182273ed68e92e59a3fbcc114541cf712df2d5"
+    },
+    "primary_sources": [
+      {
+        "arxiv": "1504.03817",
+        "authors": "Yutaka Hosotani and Naoki Yamatsu",
+        "id": "HOSOTANI_YAMATSU_2015",
+        "not_imported_as_proof": "It has one real Higgs doublet rather than the supersymmetric complex bidoublet, and does not supply the V59 SUSY mediator/anomaly completion.",
+        "scope": "Non-supersymmetric warped Spin(11) action; P0/P1 projectors, Spin(10)-wall 16 scalar, bulk 32/11 matter and global fermion-number proposal.",
+        "title": "Gauge-Higgs Grand Unification",
+        "url": "https://arxiv.org/abs/1504.03817"
+      },
+      {
+        "arxiv": "1606.07222",
+        "authors": "Atsushi Furui, Yutaka Hosotani and Naoki Yamatsu",
+        "id": "FURUI_HOSOTANI_YAMATSU_2016",
+        "scope": "Explicit Spin(11) bulk and brane action, component parities, brane mixings, Wilson phase and proton-stability discussion.",
+        "source_falsifiers": "The paper reports light exotic fermions and too small a Higgs mass; it states that Majorana singlet masses break N_Psi and can induce proton decay.",
+        "title": "Toward Realistic Gauge-Higgs Grand Unification",
+        "url": "https://arxiv.org/abs/1606.07222"
+      },
+      {
+        "arxiv": "hep-ph/0210257",
+        "authors": "Gustavo Burdman and Yasunori Nomura",
+        "id": "BURDMAN_NOMURA_2003",
+        "scope": "5D N=1 gauge-Higgs superfield transformation, two MSSM Higgs doublets, bulk-hypermultiplet gauge Yukawas, brane mixing, and soft mu routes.",
+        "source_boundary": "Its explicit realistic models are SU(3)W and SU(6), not the Spin(11) local-family action audited here.",
+        "title": "Unification of Higgs and Gauge Fields in Five Dimensions",
+        "url": "https://arxiv.org/abs/hep-ph/0210257"
+      },
+      {
+        "arxiv": "hep-ph/0112230",
+        "authors": "Arthur Hebecker",
+        "id": "HEBECKER_2001",
+        "scope": "Gauge-covariant fifth derivative and classification of allowed brane operators.",
+        "title": "5D Super Yang-Mills Theory in 4D Superspace, Superfield Brane Operators, and Applications to Orbifold GUTs",
+        "url": "https://arxiv.org/abs/hep-ph/0112230"
+      },
+      {
+        "arxiv": "hep-th/0305024",
+        "authors": "Gero von Gersdorff and Mariano Quiros",
+        "id": "VON_GERSDORFF_QUIROS_2003",
+        "scope": "Fixed-point anomaly formula; only globally vanishing pure-gauge profiles can be canceled by the 5D four-form/CS mechanism.",
+        "title": "Localized anomalies in orbifold gauge theories",
+        "url": "https://arxiv.org/abs/hep-th/0305024"
+      },
+      {
+        "arxiv": "hep-th/0110073",
+        "authors": "C. A. Scrucca, M. Serone, L. Silvestrini and F. Zwirner",
+        "id": "SCRUCCA_SERONE_SILVESTRINI_ZWIRNER_2001",
+        "scope": "Demonstrates localized anomalies even when orbifold projections remove zero modes.",
+        "title": "Anomalies in orbifold field theories",
+        "url": "https://arxiv.org/abs/hep-th/0110073"
+      },
+      {
+        "arxiv": "1808.00009",
+        "authors": "Inaki Garcia-Etxebarria and Miguel Montero",
+        "id": "GARCIA_ETXEBARRIA_MONTERO_2018",
+        "scope": "Refined anomaly conditions; 4D Spin(10) GUT matter is found anomaly free.",
+        "source_boundary": "Does not evaluate this 5D interval determinant with its wall conditions.",
+        "title": "Dai-Freed anomalies in particle physics",
+        "url": "https://arxiv.org/abs/1808.00009"
+      },
+      {
+        "arxiv": "1009.0905",
+        "authors": "Hyun Min Lee et al.",
+        "id": "LEE_ET_AL_2010",
+        "scope": "Classifies anomaly-free Abelian discrete symmetries commuting with Spin(10) that address mu and proton operators; selects Z4R.",
+        "title": "A unique Z_4^R symmetry for the MSSM",
+        "url": "https://arxiv.org/abs/1009.0905"
+      }
+    ],
+    "pytest": {
+      "path": "C:\\Users\\jayal\\Downloads\\So10Theory2\\So10Theory\\_g3_equality_classification_integration\\test_susy_v59_spin11_gauge_higgs_completion_audit.py",
+      "sha256": "e2007e2b672818aa4afa1813e29fc77a5215c2faa76fb6b2f3cd565a4cde28fc"
+    }
+  },
+  "spinor_mediator_parities": {
+    "P0_spinor": "Gamma_11",
+    "P1_spinor": "-Gamma_1 Gamma_2 Gamma_3 Gamma_4",
+    "commute": true,
+    "paired_regulator": {
+      "conditional": true,
+      "hypermultiplets_per_channel": [
+        "M_a in 32 with eta=(+,+)",
+        "Mtilde_a in 32 with eta=(-,-)"
+      ],
+      "localized_anomaly_relation": "A_f(Mtilde)=-A_f(M) at f=0,L",
+      "net_localized_perturbative_anomaly": 0,
+      "zero_modes": "Complementary chiral zero sectors must be lifted by a full-rank Spin(10)-wall mass/mixing matrix."
+    },
+    "simultaneous_eigenspaces": [
+      {
+        "P0sp": 1,
+        "P1sp": 1,
+        "dimension": 8
+      },
+      {
+        "P0sp": 1,
+        "P1sp": -1,
+        "dimension": 8
+      },
+      {
+        "P0sp": -1,
+        "P1sp": 1,
+        "dimension": 8
+      },
+      {
+        "P0sp": -1,
+        "P1sp": -1,
+        "dimension": 8
+      }
+    ],
+    "single_32_hyper_warning": "A source-like intrinsic-parity choice leaves chiral zero modes; a 32 is not a pure heavy mediator."
+  },
+  "status": "V59_SPIN11_GAUGE_HIGGS_ONE_ACTION_ATTEMPT__EXACT_INTERVAL_PROJECTOR__TWO_WEAK_CHIRAL_ZERO_MODES__ZERO_COLORED_CHIRAL_ZERO_MODES__RANK_BREAKING_5_PLUS_5BAR_HAZARD_REPAIRED__MIRROR_32_MEDIATOR_KERNEL_CONSTRUCTIBLE_BUT_NOT_SOURCE_COMPLETED__ABELIAN_NON_R_PROTON_SELECTOR_NO_GO_PROVED__POINTWISE_PERTURBATIVE_ANOMALY_PAIRING_CONDITIONAL__DAI_FREED_AND_UV_COMPLETION_OPEN__STRICT_G1_OPEN__ZERO_GATES_CLOSED",
+  "strict_G1_matrix": [
+    {
+      "criterion": "one_explicit_5D_SUSY_action_skeleton",
+      "evidence": "gauge, rank and paired-mediator terms are explicit; exact KK determinant is absent",
+      "status": "PARTIAL"
+    },
+    {
+      "criterion": "exact_two_Higgs_zero_modes_no_colored_zero",
+      "evidence": "55-generator parity enumeration gives Sigma Ac only",
+      "status": "PASS"
+    },
+    {
+      "criterion": "rank_breaking_without_light_5_plus_5bar",
+      "evidence": "det=-lambda*lambdabar*v^2",
+      "status": "PASS_CONDITIONAL"
+    },
+    {
+      "criterion": "realistic_full_rank_Yukawas",
+      "evidence": "kernel defined, exact spectrum/flavor fit not solved",
+      "status": "OPEN"
+    },
+    {
+      "criterion": "exact_proton_selector_without_R",
+      "evidence": "determinant-cycle theorem",
+      "status": "FAIL_IN_ABELIAN_COMMUTING_CLASS"
+    },
+    {
+      "criterion": "pointwise_perturbative_local_anomalies",
+      "evidence": "opposite-parity 32 mirrors cancel projector traces",
+      "status": "PASS_CONDITIONAL"
+    },
+    {
+      "criterion": "traditional_4D_global_anomalies",
+      "evidence": "even SU2 counts and anomaly-free Spin10/SM ledgers",
+      "status": "PASS"
+    },
+    {
+      "criterion": "relative_5D_Dai_Freed_trivialization",
+      "evidence": "eta phase, wall quotients and counterterm not computed",
+      "status": "OPEN"
+    },
+    {
+      "criterion": "UV_complete_regulator",
+      "evidence": "5D nonrenormalizable EFT has no exhibited string/M-theory completion",
+      "status": "OPEN"
+    },
+    {
+      "criterion": "strict_G1",
+      "evidence": "proton selector obstruction plus quantum/UV obligations",
+      "status": "OPEN"
+    }
+  ],
+  "terminal_decision": {
+    "V59_G1_closed": false,
+    "V59_closed_gates": [],
+    "complete_theory": false,
+    "full_gates_closed": 0,
+    "next_valid_routes": [
+      "restore a microscopic anomaly-safe R symmetry",
+      "abandon three local Spin(10) 16s and use bulk/split matter",
+      "exhibit an anomaly-safe non-Abelian or topological selector and redo the full determinant"
+    ],
+    "obstruction_scope": "commuting Abelian non-R selector with neutral gauge-Higgs and full-rank symmetric local-family Yukawas",
+    "one_action_candidate_accepted": false,
+    "sharp_obstruction_proved": true
+  },
+  "version": "V59"
+}

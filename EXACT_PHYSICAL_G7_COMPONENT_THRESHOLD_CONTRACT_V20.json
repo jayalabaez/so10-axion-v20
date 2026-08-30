@@ -1,0 +1,2457 @@
+{
+  "status": "EXACT_PHYSICAL_MATTER_BRANCHING_AND_PARAMETERIZED_ONE_LOOP_THRESHOLDS_CLOSED__FULL_G7_OPEN",
+  "contract_id": "physical_g7_component_threshold_contract_v20",
+  "source_binding": {
+    "authoritative_model": {
+      "path": "models\\SO10Z17AxionV20.m",
+      "sha256": "66a2ce2c3491d0b3079ec93a16ab79d3e8a7e4e35cb54aadf21100b9fdd90cc1",
+      "mode": "raw"
+    },
+    "authoritative_gauge_source": {
+      "path": "exact_authoritative_so10_u1x_gauge_betas_v20.py",
+      "sha256": "b3ec8ca5bc472af24081ee5b3409652dde0e1bf219cbf7d29a4f55e76e985cb6",
+      "mode": "raw"
+    },
+    "authoritative_gauge_report": {
+      "path": "EXACT_AUTHORITATIVE_SO10_U1X_GAUGE_BETAS_V20.json",
+      "sha256": "f5c12e8b8f9ec40976f675a743d5fd5d8cf4e98ab2087d92e3cf855c756c75eb",
+      "mode": "raw"
+    },
+    "independent_official_PyRATE3_replay": {
+      "path": "PYRATE3_SO10_U1X_GAUGE_BETA_REPLAY_V20.json",
+      "sha256": "e17dcc1dc939c8475b6827f4c781f3f5fce6c728cf5aa6511287066087b01fd4",
+      "mode": "raw"
+    },
+    "standard_PS_SM_embedding": {
+      "path": "exact_126bar_triplet_clebsch_v20.py",
+      "sha256": "c5954c21561f44ea183af17b4cd1205007c0b30021f4cca0a9fc4f96852c103a",
+      "mode": "portable_text"
+    }
+  },
+  "primary_formula_sources": [
+    {
+      "citation": "C. S. Aulakh and A. Girdhar, Nucl. Phys. B711 (2005) 275-313",
+      "arxiv": "hep-ph/0405074",
+      "scope": "SO(10) 210, 126, 126bar, 10 and 16 Pati-Salam decompositions, eqs. (4)-(8)",
+      "convention_note": "the signed 126bar orientation is fixed here by the authoritative model and the repository's standard B-L generator"
+    },
+    {
+      "citation": "M. Luo, H. Wang and Y. Xiao, Phys. Rev. D67 (2003) 065019",
+      "arxiv": "hep-ph/0211440",
+      "scope": "general one/two-loop gauge beta functions for Weyl fermions and real scalars"
+    },
+    {
+      "citation": "L. J. Hall, Nucl. Phys. B178 (1981) 75-124",
+      "scope": "effective gauge theories and one-loop heavy thresholds"
+    },
+    {
+      "citation": "A. Djouadi, R. Fonseca, R. Ouyang and M. Raidal, Eur. Phys. J. C83 (2023) 529",
+      "arxiv": "2212.11315",
+      "scope": "two-loop SO(10) running with Pati-Salam matching and threshold requirements"
+    }
+  ],
+  "scheme_and_basis": {
+    "renormalization_scheme": "MS-bar for the logarithmic matter-threshold kernel",
+    "fermions": "left-handed two-component Weyl",
+    "scalar_reality": "complex scalar weight 1/3; real scalar weight 1/6",
+    "SO10_Dynkin_normalization": "T(10)=1",
+    "hypercharge": "Y=T3R+(B-L)/2",
+    "GUT_normalized_abelian_coupling": "g1=sqrt(5/3)*gY",
+    "U1X_normalization": "integer charges exactly as declared in SO10Z17AxionV20.m",
+    "one_loop_threshold_log": "L_i(mu)=sum_a Delta_b_i,a ln(M_a/mu)",
+    "inverse_coupling_match": "alpha_i^-1(low)-alpha_i^-1(high)=-L_i(mu)/(2*pi)",
+    "mass_input": "positive pole masses; for a mixed block use one half log det(M_pole^2/mu^2)"
+  },
+  "tree_level_matching": {
+    "SO10_to_PS": "alpha4^-1=alpha2L^-1=alpha2R^-1=alpha10^-1",
+    "PS_to_SM": {
+      "alpha1_inverse": "(2/5) alpha4^-1+(3/5) alpha2R^-1",
+      "alpha2_inverse": "alpha2L^-1",
+      "alpha3_inverse": "alpha4^-1"
+    },
+    "BL_generator": "T_BL=sqrt(3/8)*(B-L)"
+  },
+  "heavy_vector_provenance_not_yet_matched": {
+    "SO10_to_PS": {
+      "broken_generators": "(6,2,2)",
+      "real_vector_dimension": 24
+    },
+    "PS_to_SM": {
+      "broken_SM_vectors": [
+        "(3,1)_(2/3)",
+        "(3bar,1)_(-2/3)",
+        "(1,1)_1",
+        "(1,1)_(-1)",
+        "(1,1)_0"
+      ],
+      "real_vector_dimension": 9
+    },
+    "EW_to_QED": {
+      "real_vector_dimension": 3,
+      "requires_physical_EW_input": true
+    },
+    "one_loop_vector_Goldstone_ghost_matching_implemented": false,
+    "reason": "the vector logarithms and finite constants must be derived together in one gauge-fixing and renormalization convention"
+  },
+  "authoritative_field_inventory": [
+    {
+      "name": "Phi210",
+      "generations": 1,
+      "SO10_signed": 210,
+      "branching_rep": "210",
+      "X": 0,
+      "Z17": 1,
+      "statistics": "scalar",
+      "reality": "real",
+      "SO10_complex_components": 210,
+      "real_scalar_coordinates": 210,
+      "complete_degenerate_multiplet_Delta_b_SM": {
+        "g1": "28/3",
+        "g2": "28/3",
+        "g3": "28/3"
+      }
+    },
+    {
+      "name": "Delta126bar",
+      "generations": 1,
+      "SO10_signed": -126,
+      "branching_rep": "126bar",
+      "X": -2,
+      "Z17": 15,
+      "statistics": "scalar",
+      "reality": "complex",
+      "SO10_complex_components": 126,
+      "real_scalar_coordinates": 252,
+      "complete_degenerate_multiplet_Delta_b_SM": {
+        "g1": "35/3",
+        "g2": "35/3",
+        "g3": "35/3"
+      }
+    },
+    {
+      "name": "H10",
+      "generations": 1,
+      "SO10_signed": 10,
+      "branching_rep": "10",
+      "X": -2,
+      "Z17": 15,
+      "statistics": "scalar",
+      "reality": "complex",
+      "SO10_complex_components": 10,
+      "real_scalar_coordinates": 20,
+      "complete_degenerate_multiplet_Delta_b_SM": {
+        "g1": "1/3",
+        "g2": "1/3",
+        "g3": "1/3"
+      }
+    },
+    {
+      "name": "S",
+      "generations": 1,
+      "SO10_signed": 1,
+      "branching_rep": "1",
+      "X": 4,
+      "Z17": 4,
+      "statistics": "scalar",
+      "reality": "complex",
+      "SO10_complex_components": 1,
+      "real_scalar_coordinates": 2,
+      "complete_degenerate_multiplet_Delta_b_SM": {
+        "g1": "0",
+        "g2": "0",
+        "g3": "0"
+      }
+    },
+    {
+      "name": "Phi17",
+      "generations": 1,
+      "SO10_signed": 1,
+      "branching_rep": "1",
+      "X": 17,
+      "Z17": 1,
+      "statistics": "scalar",
+      "reality": "complex",
+      "SO10_complex_components": 1,
+      "real_scalar_coordinates": 2,
+      "complete_degenerate_multiplet_Delta_b_SM": {
+        "g1": "0",
+        "g2": "0",
+        "g3": "0"
+      }
+    },
+    {
+      "name": "F",
+      "generations": 3,
+      "SO10_signed": 16,
+      "branching_rep": "16",
+      "X": 1,
+      "Z17": 1,
+      "statistics": "Weyl",
+      "reality": "complex",
+      "SO10_complex_components": 48,
+      "real_scalar_coordinates": 0,
+      "complete_degenerate_multiplet_Delta_b_SM": {
+        "g1": "4",
+        "g2": "4",
+        "g3": "4"
+      }
+    },
+    {
+      "name": "P",
+      "generations": 1,
+      "SO10_signed": 16,
+      "branching_rep": "16",
+      "X": 1,
+      "Z17": 1,
+      "statistics": "Weyl",
+      "reality": "complex",
+      "SO10_complex_components": 16,
+      "real_scalar_coordinates": 0,
+      "complete_degenerate_multiplet_Delta_b_SM": {
+        "g1": "4/3",
+        "g2": "4/3",
+        "g3": "4/3"
+      }
+    },
+    {
+      "name": "R",
+      "generations": 1,
+      "SO10_signed": 16,
+      "branching_rep": "16",
+      "X": 1,
+      "Z17": 1,
+      "statistics": "Weyl",
+      "reality": "complex",
+      "SO10_complex_components": 16,
+      "real_scalar_coordinates": 0,
+      "complete_degenerate_multiplet_Delta_b_SM": {
+        "g1": "4/3",
+        "g2": "4/3",
+        "g3": "4/3"
+      }
+    },
+    {
+      "name": "SpecS",
+      "generations": 5,
+      "SO10_signed": 16,
+      "branching_rep": "16",
+      "X": 2,
+      "Z17": 2,
+      "statistics": "Weyl",
+      "reality": "complex",
+      "SO10_complex_components": 80,
+      "real_scalar_coordinates": 0,
+      "complete_degenerate_multiplet_Delta_b_SM": {
+        "g1": "20/3",
+        "g2": "20/3",
+        "g3": "20/3"
+      }
+    },
+    {
+      "name": "SpecB",
+      "generations": 5,
+      "SO10_signed": -16,
+      "branching_rep": "16bar",
+      "X": -6,
+      "Z17": 11,
+      "statistics": "Weyl",
+      "reality": "complex",
+      "SO10_complex_components": 80,
+      "real_scalar_coordinates": 0,
+      "complete_degenerate_multiplet_Delta_b_SM": {
+        "g1": "20/3",
+        "g2": "20/3",
+        "g3": "20/3"
+      }
+    },
+    {
+      "name": "Q",
+      "generations": 1,
+      "SO10_signed": 16,
+      "branching_rep": "16",
+      "X": 14,
+      "Z17": 14,
+      "statistics": "Weyl",
+      "reality": "complex",
+      "SO10_complex_components": 16,
+      "real_scalar_coordinates": 0,
+      "complete_degenerate_multiplet_Delta_b_SM": {
+        "g1": "4/3",
+        "g2": "4/3",
+        "g3": "4/3"
+      }
+    },
+    {
+      "name": "Pbar",
+      "generations": 1,
+      "SO10_signed": -16,
+      "branching_rep": "16bar",
+      "X": 16,
+      "Z17": 16,
+      "statistics": "Weyl",
+      "reality": "complex",
+      "SO10_complex_components": 16,
+      "real_scalar_coordinates": 0,
+      "complete_degenerate_multiplet_Delta_b_SM": {
+        "g1": "4/3",
+        "g2": "4/3",
+        "g3": "4/3"
+      }
+    },
+    {
+      "name": "Qbar",
+      "generations": 1,
+      "SO10_signed": -16,
+      "branching_rep": "16bar",
+      "X": 3,
+      "Z17": 3,
+      "statistics": "Weyl",
+      "reality": "complex",
+      "SO10_complex_components": 16,
+      "real_scalar_coordinates": 0,
+      "complete_degenerate_multiplet_Delta_b_SM": {
+        "g1": "4/3",
+        "g2": "4/3",
+        "g3": "4/3"
+      }
+    },
+    {
+      "name": "Rbar",
+      "generations": 1,
+      "SO10_signed": -16,
+      "branching_rep": "16bar",
+      "X": -18,
+      "Z17": 16,
+      "statistics": "Weyl",
+      "reality": "complex",
+      "SO10_complex_components": 16,
+      "real_scalar_coordinates": 0,
+      "complete_degenerate_multiplet_Delta_b_SM": {
+        "g1": "4/3",
+        "g2": "4/3",
+        "g3": "4/3"
+      }
+    }
+  ],
+  "interaction_beta_inventory": {
+    "declared_Yukawa_and_fermion_mixing_symbols": [
+      "Y10",
+      "Y126",
+      "yP",
+      "yQ",
+      "yR",
+      "ys",
+      "lambdaP",
+      "lambdaR",
+      "lambdaQB",
+      "lambdaQR"
+    ],
+    "family_tensor_shapes_before_flavour_quotients": {
+      "Y10": "complex symmetric 3x3",
+      "Y126": "complex symmetric 3x3",
+      "yP": "complex scalar",
+      "yQ": "complex scalar",
+      "yR": "complex scalar",
+      "ys": "complex 5x5",
+      "lambdaP": "complex 1x3",
+      "lambdaR": "complex 1x3",
+      "lambdaQB": "complex 1x3",
+      "lambdaQR": "complex scalar"
+    },
+    "raw_complex_family_entries_before_flavour_quotients": 50,
+    "declared_representative_scalar_symbols": [
+      "m210Sq",
+      "m126Sq",
+      "m10Sq",
+      "mSSq",
+      "m17Sq",
+      "lambdaS",
+      "lambda17",
+      "lambdaS17"
+    ],
+    "all_tokens_present": true,
+    "authoritative_model_scalar_potential_complete": false,
+    "reason": "the model source explicitly delegates the independent 210/126bar/10 Clebsch contractions to the 44-direction tensor backend",
+    "full_scalar_tensor_contract": {
+      "tensor_families": 18,
+      "invariant_directions": 44,
+      "real_parameters": 51,
+      "real_scalar_chart_dimension": 486
+    },
+    "required_RGE_blocks": [
+      {
+        "block": "gauge",
+        "target_loop_order": 2,
+        "closed_piece": "one loop and two-loop non-Yukawa polynomial",
+        "missing_piece": "normalized Yukawa invariants Y4_SO10 and Y4_X"
+      },
+      {
+        "block": "Yukawa_and_fermion_mixing",
+        "target_loop_order": 2,
+        "closed_piece": "field, charge and family-shape inventory",
+        "missing_piece": "normalized sparse Clebsch tensors and beta contractions"
+      },
+      {
+        "block": "scalar_quartic",
+        "target_loop_order": 2,
+        "closed_piece": "44 invariant directions in 18 tensor families",
+        "missing_piece": "translation to canonical lambda_abcd and all beta contractions"
+      },
+      {
+        "block": "scalar_trilinear_and_mass_squared",
+        "target_loop_order": 2,
+        "closed_piece": "declared field chart and representative SARAH symbols",
+        "missing_piece": "complete h_abc and m2_ab tensors plus beta contractions"
+      },
+      {
+        "block": "dimension_six_EFT",
+        "target_loop_order": 1,
+        "closed_piece": "none for the complete physical operator basis",
+        "missing_piece": "nonredundant basis, wave-function terms and anomalous-dimension mixing"
+      }
+    ]
+  },
+  "representation_audits": {
+    "1": {
+      "SO10_irrep": "1",
+      "SO10_complex_dimension": 1,
+      "SO10_Dynkin_T10_equals_1": "0",
+      "PS_branching": [
+        "(1,1,1)"
+      ],
+      "PS_dimension_sum": 1,
+      "PS_index_sums": {
+        "g4": "0",
+        "g2L": "0",
+        "g2R": "0"
+      },
+      "SM_dimension_sum": 1,
+      "SM_GUT_normalized_index_sums": {
+        "g1": "0",
+        "g2": "0",
+        "g3": "0"
+      },
+      "SM_components": [
+        {
+          "PS_parent": "(1,1,1)",
+          "SM_irrep": "(1,1)_0",
+          "SU3": "1",
+          "SU2_dimension": 1,
+          "Y": "0",
+          "complex_dimension": 1,
+          "GUT_normalized_indices": {
+            "g1": "0",
+            "g2": "0",
+            "g3": "0"
+          }
+        }
+      ],
+      "dimension_identity": true,
+      "index_identity": true
+    },
+    "10": {
+      "SO10_irrep": "10",
+      "SO10_complex_dimension": 10,
+      "SO10_Dynkin_T10_equals_1": "1",
+      "PS_branching": [
+        "(6,1,1)",
+        "(1,2,2)"
+      ],
+      "PS_dimension_sum": 10,
+      "PS_index_sums": {
+        "g4": "1",
+        "g2L": "1",
+        "g2R": "1"
+      },
+      "SM_dimension_sum": 10,
+      "SM_GUT_normalized_index_sums": {
+        "g1": "1",
+        "g2": "1",
+        "g3": "1"
+      },
+      "SM_components": [
+        {
+          "PS_parent": "(6,1,1)",
+          "SM_irrep": "(3,1)_-1/3",
+          "SU3": "3",
+          "SU2_dimension": 1,
+          "Y": "-1/3",
+          "complex_dimension": 3,
+          "GUT_normalized_indices": {
+            "g1": "1/5",
+            "g2": "0",
+            "g3": "1/2"
+          }
+        },
+        {
+          "PS_parent": "(6,1,1)",
+          "SM_irrep": "(3bar,1)_1/3",
+          "SU3": "3bar",
+          "SU2_dimension": 1,
+          "Y": "1/3",
+          "complex_dimension": 3,
+          "GUT_normalized_indices": {
+            "g1": "1/5",
+            "g2": "0",
+            "g3": "1/2"
+          }
+        },
+        {
+          "PS_parent": "(1,2,2)",
+          "SM_irrep": "(1,2)_-1/2",
+          "SU3": "1",
+          "SU2_dimension": 2,
+          "Y": "-1/2",
+          "complex_dimension": 2,
+          "GUT_normalized_indices": {
+            "g1": "3/10",
+            "g2": "1/2",
+            "g3": "0"
+          }
+        },
+        {
+          "PS_parent": "(1,2,2)",
+          "SM_irrep": "(1,2)_1/2",
+          "SU3": "1",
+          "SU2_dimension": 2,
+          "Y": "1/2",
+          "complex_dimension": 2,
+          "GUT_normalized_indices": {
+            "g1": "3/10",
+            "g2": "1/2",
+            "g3": "0"
+          }
+        }
+      ],
+      "dimension_identity": true,
+      "index_identity": true
+    },
+    "16": {
+      "SO10_irrep": "16",
+      "SO10_complex_dimension": 16,
+      "SO10_Dynkin_T10_equals_1": "2",
+      "PS_branching": [
+        "(4,2,1)",
+        "(4bar,1,2)"
+      ],
+      "PS_dimension_sum": 16,
+      "PS_index_sums": {
+        "g4": "2",
+        "g2L": "2",
+        "g2R": "2"
+      },
+      "SM_dimension_sum": 16,
+      "SM_GUT_normalized_index_sums": {
+        "g1": "2",
+        "g2": "2",
+        "g3": "2"
+      },
+      "SM_components": [
+        {
+          "PS_parent": "(4,2,1)",
+          "SM_irrep": "(3,2)_1/6",
+          "SU3": "3",
+          "SU2_dimension": 2,
+          "Y": "1/6",
+          "complex_dimension": 6,
+          "GUT_normalized_indices": {
+            "g1": "1/10",
+            "g2": "3/2",
+            "g3": "1"
+          }
+        },
+        {
+          "PS_parent": "(4,2,1)",
+          "SM_irrep": "(1,2)_-1/2",
+          "SU3": "1",
+          "SU2_dimension": 2,
+          "Y": "-1/2",
+          "complex_dimension": 2,
+          "GUT_normalized_indices": {
+            "g1": "3/10",
+            "g2": "1/2",
+            "g3": "0"
+          }
+        },
+        {
+          "PS_parent": "(4bar,1,2)",
+          "SM_irrep": "(3bar,1)_-2/3",
+          "SU3": "3bar",
+          "SU2_dimension": 1,
+          "Y": "-2/3",
+          "complex_dimension": 3,
+          "GUT_normalized_indices": {
+            "g1": "4/5",
+            "g2": "0",
+            "g3": "1/2"
+          }
+        },
+        {
+          "PS_parent": "(4bar,1,2)",
+          "SM_irrep": "(3bar,1)_1/3",
+          "SU3": "3bar",
+          "SU2_dimension": 1,
+          "Y": "1/3",
+          "complex_dimension": 3,
+          "GUT_normalized_indices": {
+            "g1": "1/5",
+            "g2": "0",
+            "g3": "1/2"
+          }
+        },
+        {
+          "PS_parent": "(4bar,1,2)",
+          "SM_irrep": "(1,1)_0",
+          "SU3": "1",
+          "SU2_dimension": 1,
+          "Y": "0",
+          "complex_dimension": 1,
+          "GUT_normalized_indices": {
+            "g1": "0",
+            "g2": "0",
+            "g3": "0"
+          }
+        },
+        {
+          "PS_parent": "(4bar,1,2)",
+          "SM_irrep": "(1,1)_1",
+          "SU3": "1",
+          "SU2_dimension": 1,
+          "Y": "1",
+          "complex_dimension": 1,
+          "GUT_normalized_indices": {
+            "g1": "3/5",
+            "g2": "0",
+            "g3": "0"
+          }
+        }
+      ],
+      "dimension_identity": true,
+      "index_identity": true
+    },
+    "16bar": {
+      "SO10_irrep": "16bar",
+      "SO10_complex_dimension": 16,
+      "SO10_Dynkin_T10_equals_1": "2",
+      "PS_branching": [
+        "(4bar,2,1)",
+        "(4,1,2)"
+      ],
+      "PS_dimension_sum": 16,
+      "PS_index_sums": {
+        "g4": "2",
+        "g2L": "2",
+        "g2R": "2"
+      },
+      "SM_dimension_sum": 16,
+      "SM_GUT_normalized_index_sums": {
+        "g1": "2",
+        "g2": "2",
+        "g3": "2"
+      },
+      "SM_components": [
+        {
+          "PS_parent": "(4bar,2,1)",
+          "SM_irrep": "(3bar,2)_-1/6",
+          "SU3": "3bar",
+          "SU2_dimension": 2,
+          "Y": "-1/6",
+          "complex_dimension": 6,
+          "GUT_normalized_indices": {
+            "g1": "1/10",
+            "g2": "3/2",
+            "g3": "1"
+          }
+        },
+        {
+          "PS_parent": "(4bar,2,1)",
+          "SM_irrep": "(1,2)_1/2",
+          "SU3": "1",
+          "SU2_dimension": 2,
+          "Y": "1/2",
+          "complex_dimension": 2,
+          "GUT_normalized_indices": {
+            "g1": "3/10",
+            "g2": "1/2",
+            "g3": "0"
+          }
+        },
+        {
+          "PS_parent": "(4,1,2)",
+          "SM_irrep": "(3,1)_-1/3",
+          "SU3": "3",
+          "SU2_dimension": 1,
+          "Y": "-1/3",
+          "complex_dimension": 3,
+          "GUT_normalized_indices": {
+            "g1": "1/5",
+            "g2": "0",
+            "g3": "1/2"
+          }
+        },
+        {
+          "PS_parent": "(4,1,2)",
+          "SM_irrep": "(3,1)_2/3",
+          "SU3": "3",
+          "SU2_dimension": 1,
+          "Y": "2/3",
+          "complex_dimension": 3,
+          "GUT_normalized_indices": {
+            "g1": "4/5",
+            "g2": "0",
+            "g3": "1/2"
+          }
+        },
+        {
+          "PS_parent": "(4,1,2)",
+          "SM_irrep": "(1,1)_-1",
+          "SU3": "1",
+          "SU2_dimension": 1,
+          "Y": "-1",
+          "complex_dimension": 1,
+          "GUT_normalized_indices": {
+            "g1": "3/5",
+            "g2": "0",
+            "g3": "0"
+          }
+        },
+        {
+          "PS_parent": "(4,1,2)",
+          "SM_irrep": "(1,1)_0",
+          "SU3": "1",
+          "SU2_dimension": 1,
+          "Y": "0",
+          "complex_dimension": 1,
+          "GUT_normalized_indices": {
+            "g1": "0",
+            "g2": "0",
+            "g3": "0"
+          }
+        }
+      ],
+      "dimension_identity": true,
+      "index_identity": true
+    },
+    "45": {
+      "SO10_irrep": "45",
+      "SO10_complex_dimension": 45,
+      "SO10_Dynkin_T10_equals_1": "8",
+      "PS_branching": [
+        "(15,1,1)",
+        "(1,3,1)",
+        "(1,1,3)",
+        "(6,2,2)"
+      ],
+      "PS_dimension_sum": 45,
+      "PS_index_sums": {
+        "g4": "8",
+        "g2L": "8",
+        "g2R": "8"
+      },
+      "SM_dimension_sum": 45,
+      "SM_GUT_normalized_index_sums": {
+        "g1": "8",
+        "g2": "8",
+        "g3": "8"
+      },
+      "SM_components": [
+        {
+          "PS_parent": "(15,1,1)",
+          "SM_irrep": "(8,1)_0",
+          "SU3": "8",
+          "SU2_dimension": 1,
+          "Y": "0",
+          "complex_dimension": 8,
+          "GUT_normalized_indices": {
+            "g1": "0",
+            "g2": "0",
+            "g3": "3"
+          }
+        },
+        {
+          "PS_parent": "(15,1,1)",
+          "SM_irrep": "(3,1)_2/3",
+          "SU3": "3",
+          "SU2_dimension": 1,
+          "Y": "2/3",
+          "complex_dimension": 3,
+          "GUT_normalized_indices": {
+            "g1": "4/5",
+            "g2": "0",
+            "g3": "1/2"
+          }
+        },
+        {
+          "PS_parent": "(15,1,1)",
+          "SM_irrep": "(3bar,1)_-2/3",
+          "SU3": "3bar",
+          "SU2_dimension": 1,
+          "Y": "-2/3",
+          "complex_dimension": 3,
+          "GUT_normalized_indices": {
+            "g1": "4/5",
+            "g2": "0",
+            "g3": "1/2"
+          }
+        },
+        {
+          "PS_parent": "(15,1,1)",
+          "SM_irrep": "(1,1)_0",
+          "SU3": "1",
+          "SU2_dimension": 1,
+          "Y": "0",
+          "complex_dimension": 1,
+          "GUT_normalized_indices": {
+            "g1": "0",
+            "g2": "0",
+            "g3": "0"
+          }
+        },
+        {
+          "PS_parent": "(1,3,1)",
+          "SM_irrep": "(1,3)_0",
+          "SU3": "1",
+          "SU2_dimension": 3,
+          "Y": "0",
+          "complex_dimension": 3,
+          "GUT_normalized_indices": {
+            "g1": "0",
+            "g2": "2",
+            "g3": "0"
+          }
+        },
+        {
+          "PS_parent": "(1,1,3)",
+          "SM_irrep": "(1,1)_-1",
+          "SU3": "1",
+          "SU2_dimension": 1,
+          "Y": "-1",
+          "complex_dimension": 1,
+          "GUT_normalized_indices": {
+            "g1": "3/5",
+            "g2": "0",
+            "g3": "0"
+          }
+        },
+        {
+          "PS_parent": "(1,1,3)",
+          "SM_irrep": "(1,1)_0",
+          "SU3": "1",
+          "SU2_dimension": 1,
+          "Y": "0",
+          "complex_dimension": 1,
+          "GUT_normalized_indices": {
+            "g1": "0",
+            "g2": "0",
+            "g3": "0"
+          }
+        },
+        {
+          "PS_parent": "(1,1,3)",
+          "SM_irrep": "(1,1)_1",
+          "SU3": "1",
+          "SU2_dimension": 1,
+          "Y": "1",
+          "complex_dimension": 1,
+          "GUT_normalized_indices": {
+            "g1": "3/5",
+            "g2": "0",
+            "g3": "0"
+          }
+        },
+        {
+          "PS_parent": "(6,2,2)",
+          "SM_irrep": "(3,2)_-5/6",
+          "SU3": "3",
+          "SU2_dimension": 2,
+          "Y": "-5/6",
+          "complex_dimension": 6,
+          "GUT_normalized_indices": {
+            "g1": "5/2",
+            "g2": "3/2",
+            "g3": "1"
+          }
+        },
+        {
+          "PS_parent": "(6,2,2)",
+          "SM_irrep": "(3,2)_1/6",
+          "SU3": "3",
+          "SU2_dimension": 2,
+          "Y": "1/6",
+          "complex_dimension": 6,
+          "GUT_normalized_indices": {
+            "g1": "1/10",
+            "g2": "3/2",
+            "g3": "1"
+          }
+        },
+        {
+          "PS_parent": "(6,2,2)",
+          "SM_irrep": "(3bar,2)_-1/6",
+          "SU3": "3bar",
+          "SU2_dimension": 2,
+          "Y": "-1/6",
+          "complex_dimension": 6,
+          "GUT_normalized_indices": {
+            "g1": "1/10",
+            "g2": "3/2",
+            "g3": "1"
+          }
+        },
+        {
+          "PS_parent": "(6,2,2)",
+          "SM_irrep": "(3bar,2)_5/6",
+          "SU3": "3bar",
+          "SU2_dimension": 2,
+          "Y": "5/6",
+          "complex_dimension": 6,
+          "GUT_normalized_indices": {
+            "g1": "5/2",
+            "g2": "3/2",
+            "g3": "1"
+          }
+        }
+      ],
+      "dimension_identity": true,
+      "index_identity": true
+    },
+    "126": {
+      "SO10_irrep": "126",
+      "SO10_complex_dimension": 126,
+      "SO10_Dynkin_T10_equals_1": "35",
+      "PS_branching": [
+        "(6,1,1)",
+        "(10,3,1)",
+        "(10bar,1,3)",
+        "(15,2,2)"
+      ],
+      "PS_dimension_sum": 126,
+      "PS_index_sums": {
+        "g4": "35",
+        "g2L": "35",
+        "g2R": "35"
+      },
+      "SM_dimension_sum": 126,
+      "SM_GUT_normalized_index_sums": {
+        "g1": "35",
+        "g2": "35",
+        "g3": "35"
+      },
+      "SM_components": [
+        {
+          "PS_parent": "(6,1,1)",
+          "SM_irrep": "(3,1)_-1/3",
+          "SU3": "3",
+          "SU2_dimension": 1,
+          "Y": "-1/3",
+          "complex_dimension": 3,
+          "GUT_normalized_indices": {
+            "g1": "1/5",
+            "g2": "0",
+            "g3": "1/2"
+          }
+        },
+        {
+          "PS_parent": "(6,1,1)",
+          "SM_irrep": "(3bar,1)_1/3",
+          "SU3": "3bar",
+          "SU2_dimension": 1,
+          "Y": "1/3",
+          "complex_dimension": 3,
+          "GUT_normalized_indices": {
+            "g1": "1/5",
+            "g2": "0",
+            "g3": "1/2"
+          }
+        },
+        {
+          "PS_parent": "(10,3,1)",
+          "SM_irrep": "(6,3)_1/3",
+          "SU3": "6",
+          "SU2_dimension": 3,
+          "Y": "1/3",
+          "complex_dimension": 18,
+          "GUT_normalized_indices": {
+            "g1": "6/5",
+            "g2": "12",
+            "g3": "15/2"
+          }
+        },
+        {
+          "PS_parent": "(10,3,1)",
+          "SM_irrep": "(3,3)_-1/3",
+          "SU3": "3",
+          "SU2_dimension": 3,
+          "Y": "-1/3",
+          "complex_dimension": 9,
+          "GUT_normalized_indices": {
+            "g1": "3/5",
+            "g2": "6",
+            "g3": "3/2"
+          }
+        },
+        {
+          "PS_parent": "(10,3,1)",
+          "SM_irrep": "(1,3)_-1",
+          "SU3": "1",
+          "SU2_dimension": 3,
+          "Y": "-1",
+          "complex_dimension": 3,
+          "GUT_normalized_indices": {
+            "g1": "9/5",
+            "g2": "2",
+            "g3": "0"
+          }
+        },
+        {
+          "PS_parent": "(10bar,1,3)",
+          "SM_irrep": "(6bar,1)_-4/3",
+          "SU3": "6bar",
+          "SU2_dimension": 1,
+          "Y": "-4/3",
+          "complex_dimension": 6,
+          "GUT_normalized_indices": {
+            "g1": "32/5",
+            "g2": "0",
+            "g3": "5/2"
+          }
+        },
+        {
+          "PS_parent": "(10bar,1,3)",
+          "SM_irrep": "(6bar,1)_-1/3",
+          "SU3": "6bar",
+          "SU2_dimension": 1,
+          "Y": "-1/3",
+          "complex_dimension": 6,
+          "GUT_normalized_indices": {
+            "g1": "2/5",
+            "g2": "0",
+            "g3": "5/2"
+          }
+        },
+        {
+          "PS_parent": "(10bar,1,3)",
+          "SM_irrep": "(6bar,1)_2/3",
+          "SU3": "6bar",
+          "SU2_dimension": 1,
+          "Y": "2/3",
+          "complex_dimension": 6,
+          "GUT_normalized_indices": {
+            "g1": "8/5",
+            "g2": "0",
+            "g3": "5/2"
+          }
+        },
+        {
+          "PS_parent": "(10bar,1,3)",
+          "SM_irrep": "(3bar,1)_-2/3",
+          "SU3": "3bar",
+          "SU2_dimension": 1,
+          "Y": "-2/3",
+          "complex_dimension": 3,
+          "GUT_normalized_indices": {
+            "g1": "4/5",
+            "g2": "0",
+            "g3": "1/2"
+          }
+        },
+        {
+          "PS_parent": "(10bar,1,3)",
+          "SM_irrep": "(3bar,1)_1/3",
+          "SU3": "3bar",
+          "SU2_dimension": 1,
+          "Y": "1/3",
+          "complex_dimension": 3,
+          "GUT_normalized_indices": {
+            "g1": "1/5",
+            "g2": "0",
+            "g3": "1/2"
+          }
+        },
+        {
+          "PS_parent": "(10bar,1,3)",
+          "SM_irrep": "(3bar,1)_4/3",
+          "SU3": "3bar",
+          "SU2_dimension": 1,
+          "Y": "4/3",
+          "complex_dimension": 3,
+          "GUT_normalized_indices": {
+            "g1": "16/5",
+            "g2": "0",
+            "g3": "1/2"
+          }
+        },
+        {
+          "PS_parent": "(10bar,1,3)",
+          "SM_irrep": "(1,1)_0",
+          "SU3": "1",
+          "SU2_dimension": 1,
+          "Y": "0",
+          "complex_dimension": 1,
+          "GUT_normalized_indices": {
+            "g1": "0",
+            "g2": "0",
+            "g3": "0"
+          }
+        },
+        {
+          "PS_parent": "(10bar,1,3)",
+          "SM_irrep": "(1,1)_1",
+          "SU3": "1",
+          "SU2_dimension": 1,
+          "Y": "1",
+          "complex_dimension": 1,
+          "GUT_normalized_indices": {
+            "g1": "3/5",
+            "g2": "0",
+            "g3": "0"
+          }
+        },
+        {
+          "PS_parent": "(10bar,1,3)",
+          "SM_irrep": "(1,1)_2",
+          "SU3": "1",
+          "SU2_dimension": 1,
+          "Y": "2",
+          "complex_dimension": 1,
+          "GUT_normalized_indices": {
+            "g1": "12/5",
+            "g2": "0",
+            "g3": "0"
+          }
+        },
+        {
+          "PS_parent": "(15,2,2)",
+          "SM_irrep": "(8,2)_-1/2",
+          "SU3": "8",
+          "SU2_dimension": 2,
+          "Y": "-1/2",
+          "complex_dimension": 16,
+          "GUT_normalized_indices": {
+            "g1": "12/5",
+            "g2": "4",
+            "g3": "6"
+          }
+        },
+        {
+          "PS_parent": "(15,2,2)",
+          "SM_irrep": "(8,2)_1/2",
+          "SU3": "8",
+          "SU2_dimension": 2,
+          "Y": "1/2",
+          "complex_dimension": 16,
+          "GUT_normalized_indices": {
+            "g1": "12/5",
+            "g2": "4",
+            "g3": "6"
+          }
+        },
+        {
+          "PS_parent": "(15,2,2)",
+          "SM_irrep": "(3,2)_1/6",
+          "SU3": "3",
+          "SU2_dimension": 2,
+          "Y": "1/6",
+          "complex_dimension": 6,
+          "GUT_normalized_indices": {
+            "g1": "1/10",
+            "g2": "3/2",
+            "g3": "1"
+          }
+        },
+        {
+          "PS_parent": "(15,2,2)",
+          "SM_irrep": "(3,2)_7/6",
+          "SU3": "3",
+          "SU2_dimension": 2,
+          "Y": "7/6",
+          "complex_dimension": 6,
+          "GUT_normalized_indices": {
+            "g1": "49/10",
+            "g2": "3/2",
+            "g3": "1"
+          }
+        },
+        {
+          "PS_parent": "(15,2,2)",
+          "SM_irrep": "(3bar,2)_-7/6",
+          "SU3": "3bar",
+          "SU2_dimension": 2,
+          "Y": "-7/6",
+          "complex_dimension": 6,
+          "GUT_normalized_indices": {
+            "g1": "49/10",
+            "g2": "3/2",
+            "g3": "1"
+          }
+        },
+        {
+          "PS_parent": "(15,2,2)",
+          "SM_irrep": "(3bar,2)_-1/6",
+          "SU3": "3bar",
+          "SU2_dimension": 2,
+          "Y": "-1/6",
+          "complex_dimension": 6,
+          "GUT_normalized_indices": {
+            "g1": "1/10",
+            "g2": "3/2",
+            "g3": "1"
+          }
+        },
+        {
+          "PS_parent": "(15,2,2)",
+          "SM_irrep": "(1,2)_-1/2",
+          "SU3": "1",
+          "SU2_dimension": 2,
+          "Y": "-1/2",
+          "complex_dimension": 2,
+          "GUT_normalized_indices": {
+            "g1": "3/10",
+            "g2": "1/2",
+            "g3": "0"
+          }
+        },
+        {
+          "PS_parent": "(15,2,2)",
+          "SM_irrep": "(1,2)_1/2",
+          "SU3": "1",
+          "SU2_dimension": 2,
+          "Y": "1/2",
+          "complex_dimension": 2,
+          "GUT_normalized_indices": {
+            "g1": "3/10",
+            "g2": "1/2",
+            "g3": "0"
+          }
+        }
+      ],
+      "dimension_identity": true,
+      "index_identity": true
+    },
+    "126bar": {
+      "SO10_irrep": "126bar",
+      "SO10_complex_dimension": 126,
+      "SO10_Dynkin_T10_equals_1": "35",
+      "PS_branching": [
+        "(6,1,1)",
+        "(10bar,3,1)",
+        "(10,1,3)",
+        "(15,2,2)"
+      ],
+      "PS_dimension_sum": 126,
+      "PS_index_sums": {
+        "g4": "35",
+        "g2L": "35",
+        "g2R": "35"
+      },
+      "SM_dimension_sum": 126,
+      "SM_GUT_normalized_index_sums": {
+        "g1": "35",
+        "g2": "35",
+        "g3": "35"
+      },
+      "SM_components": [
+        {
+          "PS_parent": "(6,1,1)",
+          "SM_irrep": "(3,1)_-1/3",
+          "SU3": "3",
+          "SU2_dimension": 1,
+          "Y": "-1/3",
+          "complex_dimension": 3,
+          "GUT_normalized_indices": {
+            "g1": "1/5",
+            "g2": "0",
+            "g3": "1/2"
+          }
+        },
+        {
+          "PS_parent": "(6,1,1)",
+          "SM_irrep": "(3bar,1)_1/3",
+          "SU3": "3bar",
+          "SU2_dimension": 1,
+          "Y": "1/3",
+          "complex_dimension": 3,
+          "GUT_normalized_indices": {
+            "g1": "1/5",
+            "g2": "0",
+            "g3": "1/2"
+          }
+        },
+        {
+          "PS_parent": "(10bar,3,1)",
+          "SM_irrep": "(6bar,3)_-1/3",
+          "SU3": "6bar",
+          "SU2_dimension": 3,
+          "Y": "-1/3",
+          "complex_dimension": 18,
+          "GUT_normalized_indices": {
+            "g1": "6/5",
+            "g2": "12",
+            "g3": "15/2"
+          }
+        },
+        {
+          "PS_parent": "(10bar,3,1)",
+          "SM_irrep": "(3bar,3)_1/3",
+          "SU3": "3bar",
+          "SU2_dimension": 3,
+          "Y": "1/3",
+          "complex_dimension": 9,
+          "GUT_normalized_indices": {
+            "g1": "3/5",
+            "g2": "6",
+            "g3": "3/2"
+          }
+        },
+        {
+          "PS_parent": "(10bar,3,1)",
+          "SM_irrep": "(1,3)_1",
+          "SU3": "1",
+          "SU2_dimension": 3,
+          "Y": "1",
+          "complex_dimension": 3,
+          "GUT_normalized_indices": {
+            "g1": "9/5",
+            "g2": "2",
+            "g3": "0"
+          }
+        },
+        {
+          "PS_parent": "(10,1,3)",
+          "SM_irrep": "(6,1)_-2/3",
+          "SU3": "6",
+          "SU2_dimension": 1,
+          "Y": "-2/3",
+          "complex_dimension": 6,
+          "GUT_normalized_indices": {
+            "g1": "8/5",
+            "g2": "0",
+            "g3": "5/2"
+          }
+        },
+        {
+          "PS_parent": "(10,1,3)",
+          "SM_irrep": "(6,1)_1/3",
+          "SU3": "6",
+          "SU2_dimension": 1,
+          "Y": "1/3",
+          "complex_dimension": 6,
+          "GUT_normalized_indices": {
+            "g1": "2/5",
+            "g2": "0",
+            "g3": "5/2"
+          }
+        },
+        {
+          "PS_parent": "(10,1,3)",
+          "SM_irrep": "(6,1)_4/3",
+          "SU3": "6",
+          "SU2_dimension": 1,
+          "Y": "4/3",
+          "complex_dimension": 6,
+          "GUT_normalized_indices": {
+            "g1": "32/5",
+            "g2": "0",
+            "g3": "5/2"
+          }
+        },
+        {
+          "PS_parent": "(10,1,3)",
+          "SM_irrep": "(3,1)_-4/3",
+          "SU3": "3",
+          "SU2_dimension": 1,
+          "Y": "-4/3",
+          "complex_dimension": 3,
+          "GUT_normalized_indices": {
+            "g1": "16/5",
+            "g2": "0",
+            "g3": "1/2"
+          }
+        },
+        {
+          "PS_parent": "(10,1,3)",
+          "SM_irrep": "(3,1)_-1/3",
+          "SU3": "3",
+          "SU2_dimension": 1,
+          "Y": "-1/3",
+          "complex_dimension": 3,
+          "GUT_normalized_indices": {
+            "g1": "1/5",
+            "g2": "0",
+            "g3": "1/2"
+          }
+        },
+        {
+          "PS_parent": "(10,1,3)",
+          "SM_irrep": "(3,1)_2/3",
+          "SU3": "3",
+          "SU2_dimension": 1,
+          "Y": "2/3",
+          "complex_dimension": 3,
+          "GUT_normalized_indices": {
+            "g1": "4/5",
+            "g2": "0",
+            "g3": "1/2"
+          }
+        },
+        {
+          "PS_parent": "(10,1,3)",
+          "SM_irrep": "(1,1)_-2",
+          "SU3": "1",
+          "SU2_dimension": 1,
+          "Y": "-2",
+          "complex_dimension": 1,
+          "GUT_normalized_indices": {
+            "g1": "12/5",
+            "g2": "0",
+            "g3": "0"
+          }
+        },
+        {
+          "PS_parent": "(10,1,3)",
+          "SM_irrep": "(1,1)_-1",
+          "SU3": "1",
+          "SU2_dimension": 1,
+          "Y": "-1",
+          "complex_dimension": 1,
+          "GUT_normalized_indices": {
+            "g1": "3/5",
+            "g2": "0",
+            "g3": "0"
+          }
+        },
+        {
+          "PS_parent": "(10,1,3)",
+          "SM_irrep": "(1,1)_0",
+          "SU3": "1",
+          "SU2_dimension": 1,
+          "Y": "0",
+          "complex_dimension": 1,
+          "GUT_normalized_indices": {
+            "g1": "0",
+            "g2": "0",
+            "g3": "0"
+          }
+        },
+        {
+          "PS_parent": "(15,2,2)",
+          "SM_irrep": "(8,2)_-1/2",
+          "SU3": "8",
+          "SU2_dimension": 2,
+          "Y": "-1/2",
+          "complex_dimension": 16,
+          "GUT_normalized_indices": {
+            "g1": "12/5",
+            "g2": "4",
+            "g3": "6"
+          }
+        },
+        {
+          "PS_parent": "(15,2,2)",
+          "SM_irrep": "(8,2)_1/2",
+          "SU3": "8",
+          "SU2_dimension": 2,
+          "Y": "1/2",
+          "complex_dimension": 16,
+          "GUT_normalized_indices": {
+            "g1": "12/5",
+            "g2": "4",
+            "g3": "6"
+          }
+        },
+        {
+          "PS_parent": "(15,2,2)",
+          "SM_irrep": "(3,2)_1/6",
+          "SU3": "3",
+          "SU2_dimension": 2,
+          "Y": "1/6",
+          "complex_dimension": 6,
+          "GUT_normalized_indices": {
+            "g1": "1/10",
+            "g2": "3/2",
+            "g3": "1"
+          }
+        },
+        {
+          "PS_parent": "(15,2,2)",
+          "SM_irrep": "(3,2)_7/6",
+          "SU3": "3",
+          "SU2_dimension": 2,
+          "Y": "7/6",
+          "complex_dimension": 6,
+          "GUT_normalized_indices": {
+            "g1": "49/10",
+            "g2": "3/2",
+            "g3": "1"
+          }
+        },
+        {
+          "PS_parent": "(15,2,2)",
+          "SM_irrep": "(3bar,2)_-7/6",
+          "SU3": "3bar",
+          "SU2_dimension": 2,
+          "Y": "-7/6",
+          "complex_dimension": 6,
+          "GUT_normalized_indices": {
+            "g1": "49/10",
+            "g2": "3/2",
+            "g3": "1"
+          }
+        },
+        {
+          "PS_parent": "(15,2,2)",
+          "SM_irrep": "(3bar,2)_-1/6",
+          "SU3": "3bar",
+          "SU2_dimension": 2,
+          "Y": "-1/6",
+          "complex_dimension": 6,
+          "GUT_normalized_indices": {
+            "g1": "1/10",
+            "g2": "3/2",
+            "g3": "1"
+          }
+        },
+        {
+          "PS_parent": "(15,2,2)",
+          "SM_irrep": "(1,2)_-1/2",
+          "SU3": "1",
+          "SU2_dimension": 2,
+          "Y": "-1/2",
+          "complex_dimension": 2,
+          "GUT_normalized_indices": {
+            "g1": "3/10",
+            "g2": "1/2",
+            "g3": "0"
+          }
+        },
+        {
+          "PS_parent": "(15,2,2)",
+          "SM_irrep": "(1,2)_1/2",
+          "SU3": "1",
+          "SU2_dimension": 2,
+          "Y": "1/2",
+          "complex_dimension": 2,
+          "GUT_normalized_indices": {
+            "g1": "3/10",
+            "g2": "1/2",
+            "g3": "0"
+          }
+        }
+      ],
+      "dimension_identity": true,
+      "index_identity": true
+    },
+    "210": {
+      "SO10_irrep": "210",
+      "SO10_complex_dimension": 210,
+      "SO10_Dynkin_T10_equals_1": "56",
+      "PS_branching": [
+        "(1,1,1)",
+        "(15,1,1)",
+        "(15,1,3)",
+        "(15,3,1)",
+        "(6,2,2)",
+        "(10,2,2)",
+        "(10bar,2,2)"
+      ],
+      "PS_dimension_sum": 210,
+      "PS_index_sums": {
+        "g4": "56",
+        "g2L": "56",
+        "g2R": "56"
+      },
+      "SM_dimension_sum": 210,
+      "SM_GUT_normalized_index_sums": {
+        "g1": "56",
+        "g2": "56",
+        "g3": "56"
+      },
+      "SM_components": [
+        {
+          "PS_parent": "(1,1,1)",
+          "SM_irrep": "(1,1)_0",
+          "SU3": "1",
+          "SU2_dimension": 1,
+          "Y": "0",
+          "complex_dimension": 1,
+          "GUT_normalized_indices": {
+            "g1": "0",
+            "g2": "0",
+            "g3": "0"
+          }
+        },
+        {
+          "PS_parent": "(15,1,1)",
+          "SM_irrep": "(8,1)_0",
+          "SU3": "8",
+          "SU2_dimension": 1,
+          "Y": "0",
+          "complex_dimension": 8,
+          "GUT_normalized_indices": {
+            "g1": "0",
+            "g2": "0",
+            "g3": "3"
+          }
+        },
+        {
+          "PS_parent": "(15,1,1)",
+          "SM_irrep": "(3,1)_2/3",
+          "SU3": "3",
+          "SU2_dimension": 1,
+          "Y": "2/3",
+          "complex_dimension": 3,
+          "GUT_normalized_indices": {
+            "g1": "4/5",
+            "g2": "0",
+            "g3": "1/2"
+          }
+        },
+        {
+          "PS_parent": "(15,1,1)",
+          "SM_irrep": "(3bar,1)_-2/3",
+          "SU3": "3bar",
+          "SU2_dimension": 1,
+          "Y": "-2/3",
+          "complex_dimension": 3,
+          "GUT_normalized_indices": {
+            "g1": "4/5",
+            "g2": "0",
+            "g3": "1/2"
+          }
+        },
+        {
+          "PS_parent": "(15,1,1)",
+          "SM_irrep": "(1,1)_0",
+          "SU3": "1",
+          "SU2_dimension": 1,
+          "Y": "0",
+          "complex_dimension": 1,
+          "GUT_normalized_indices": {
+            "g1": "0",
+            "g2": "0",
+            "g3": "0"
+          }
+        },
+        {
+          "PS_parent": "(15,1,3)",
+          "SM_irrep": "(8,1)_-1",
+          "SU3": "8",
+          "SU2_dimension": 1,
+          "Y": "-1",
+          "complex_dimension": 8,
+          "GUT_normalized_indices": {
+            "g1": "24/5",
+            "g2": "0",
+            "g3": "3"
+          }
+        },
+        {
+          "PS_parent": "(15,1,3)",
+          "SM_irrep": "(8,1)_0",
+          "SU3": "8",
+          "SU2_dimension": 1,
+          "Y": "0",
+          "complex_dimension": 8,
+          "GUT_normalized_indices": {
+            "g1": "0",
+            "g2": "0",
+            "g3": "3"
+          }
+        },
+        {
+          "PS_parent": "(15,1,3)",
+          "SM_irrep": "(8,1)_1",
+          "SU3": "8",
+          "SU2_dimension": 1,
+          "Y": "1",
+          "complex_dimension": 8,
+          "GUT_normalized_indices": {
+            "g1": "24/5",
+            "g2": "0",
+            "g3": "3"
+          }
+        },
+        {
+          "PS_parent": "(15,1,3)",
+          "SM_irrep": "(3,1)_-1/3",
+          "SU3": "3",
+          "SU2_dimension": 1,
+          "Y": "-1/3",
+          "complex_dimension": 3,
+          "GUT_normalized_indices": {
+            "g1": "1/5",
+            "g2": "0",
+            "g3": "1/2"
+          }
+        },
+        {
+          "PS_parent": "(15,1,3)",
+          "SM_irrep": "(3,1)_2/3",
+          "SU3": "3",
+          "SU2_dimension": 1,
+          "Y": "2/3",
+          "complex_dimension": 3,
+          "GUT_normalized_indices": {
+            "g1": "4/5",
+            "g2": "0",
+            "g3": "1/2"
+          }
+        },
+        {
+          "PS_parent": "(15,1,3)",
+          "SM_irrep": "(3,1)_5/3",
+          "SU3": "3",
+          "SU2_dimension": 1,
+          "Y": "5/3",
+          "complex_dimension": 3,
+          "GUT_normalized_indices": {
+            "g1": "5",
+            "g2": "0",
+            "g3": "1/2"
+          }
+        },
+        {
+          "PS_parent": "(15,1,3)",
+          "SM_irrep": "(3bar,1)_-5/3",
+          "SU3": "3bar",
+          "SU2_dimension": 1,
+          "Y": "-5/3",
+          "complex_dimension": 3,
+          "GUT_normalized_indices": {
+            "g1": "5",
+            "g2": "0",
+            "g3": "1/2"
+          }
+        },
+        {
+          "PS_parent": "(15,1,3)",
+          "SM_irrep": "(3bar,1)_-2/3",
+          "SU3": "3bar",
+          "SU2_dimension": 1,
+          "Y": "-2/3",
+          "complex_dimension": 3,
+          "GUT_normalized_indices": {
+            "g1": "4/5",
+            "g2": "0",
+            "g3": "1/2"
+          }
+        },
+        {
+          "PS_parent": "(15,1,3)",
+          "SM_irrep": "(3bar,1)_1/3",
+          "SU3": "3bar",
+          "SU2_dimension": 1,
+          "Y": "1/3",
+          "complex_dimension": 3,
+          "GUT_normalized_indices": {
+            "g1": "1/5",
+            "g2": "0",
+            "g3": "1/2"
+          }
+        },
+        {
+          "PS_parent": "(15,1,3)",
+          "SM_irrep": "(1,1)_-1",
+          "SU3": "1",
+          "SU2_dimension": 1,
+          "Y": "-1",
+          "complex_dimension": 1,
+          "GUT_normalized_indices": {
+            "g1": "3/5",
+            "g2": "0",
+            "g3": "0"
+          }
+        },
+        {
+          "PS_parent": "(15,1,3)",
+          "SM_irrep": "(1,1)_0",
+          "SU3": "1",
+          "SU2_dimension": 1,
+          "Y": "0",
+          "complex_dimension": 1,
+          "GUT_normalized_indices": {
+            "g1": "0",
+            "g2": "0",
+            "g3": "0"
+          }
+        },
+        {
+          "PS_parent": "(15,1,3)",
+          "SM_irrep": "(1,1)_1",
+          "SU3": "1",
+          "SU2_dimension": 1,
+          "Y": "1",
+          "complex_dimension": 1,
+          "GUT_normalized_indices": {
+            "g1": "3/5",
+            "g2": "0",
+            "g3": "0"
+          }
+        },
+        {
+          "PS_parent": "(15,3,1)",
+          "SM_irrep": "(8,3)_0",
+          "SU3": "8",
+          "SU2_dimension": 3,
+          "Y": "0",
+          "complex_dimension": 24,
+          "GUT_normalized_indices": {
+            "g1": "0",
+            "g2": "16",
+            "g3": "9"
+          }
+        },
+        {
+          "PS_parent": "(15,3,1)",
+          "SM_irrep": "(3,3)_2/3",
+          "SU3": "3",
+          "SU2_dimension": 3,
+          "Y": "2/3",
+          "complex_dimension": 9,
+          "GUT_normalized_indices": {
+            "g1": "12/5",
+            "g2": "6",
+            "g3": "3/2"
+          }
+        },
+        {
+          "PS_parent": "(15,3,1)",
+          "SM_irrep": "(3bar,3)_-2/3",
+          "SU3": "3bar",
+          "SU2_dimension": 3,
+          "Y": "-2/3",
+          "complex_dimension": 9,
+          "GUT_normalized_indices": {
+            "g1": "12/5",
+            "g2": "6",
+            "g3": "3/2"
+          }
+        },
+        {
+          "PS_parent": "(15,3,1)",
+          "SM_irrep": "(1,3)_0",
+          "SU3": "1",
+          "SU2_dimension": 3,
+          "Y": "0",
+          "complex_dimension": 3,
+          "GUT_normalized_indices": {
+            "g1": "0",
+            "g2": "2",
+            "g3": "0"
+          }
+        },
+        {
+          "PS_parent": "(6,2,2)",
+          "SM_irrep": "(3,2)_-5/6",
+          "SU3": "3",
+          "SU2_dimension": 2,
+          "Y": "-5/6",
+          "complex_dimension": 6,
+          "GUT_normalized_indices": {
+            "g1": "5/2",
+            "g2": "3/2",
+            "g3": "1"
+          }
+        },
+        {
+          "PS_parent": "(6,2,2)",
+          "SM_irrep": "(3,2)_1/6",
+          "SU3": "3",
+          "SU2_dimension": 2,
+          "Y": "1/6",
+          "complex_dimension": 6,
+          "GUT_normalized_indices": {
+            "g1": "1/10",
+            "g2": "3/2",
+            "g3": "1"
+          }
+        },
+        {
+          "PS_parent": "(6,2,2)",
+          "SM_irrep": "(3bar,2)_-1/6",
+          "SU3": "3bar",
+          "SU2_dimension": 2,
+          "Y": "-1/6",
+          "complex_dimension": 6,
+          "GUT_normalized_indices": {
+            "g1": "1/10",
+            "g2": "3/2",
+            "g3": "1"
+          }
+        },
+        {
+          "PS_parent": "(6,2,2)",
+          "SM_irrep": "(3bar,2)_5/6",
+          "SU3": "3bar",
+          "SU2_dimension": 2,
+          "Y": "5/6",
+          "complex_dimension": 6,
+          "GUT_normalized_indices": {
+            "g1": "5/2",
+            "g2": "3/2",
+            "g3": "1"
+          }
+        },
+        {
+          "PS_parent": "(10,2,2)",
+          "SM_irrep": "(6,2)_-1/6",
+          "SU3": "6",
+          "SU2_dimension": 2,
+          "Y": "-1/6",
+          "complex_dimension": 12,
+          "GUT_normalized_indices": {
+            "g1": "1/5",
+            "g2": "3",
+            "g3": "5"
+          }
+        },
+        {
+          "PS_parent": "(10,2,2)",
+          "SM_irrep": "(6,2)_5/6",
+          "SU3": "6",
+          "SU2_dimension": 2,
+          "Y": "5/6",
+          "complex_dimension": 12,
+          "GUT_normalized_indices": {
+            "g1": "5",
+            "g2": "3",
+            "g3": "5"
+          }
+        },
+        {
+          "PS_parent": "(10,2,2)",
+          "SM_irrep": "(3,2)_-5/6",
+          "SU3": "3",
+          "SU2_dimension": 2,
+          "Y": "-5/6",
+          "complex_dimension": 6,
+          "GUT_normalized_indices": {
+            "g1": "5/2",
+            "g2": "3/2",
+            "g3": "1"
+          }
+        },
+        {
+          "PS_parent": "(10,2,2)",
+          "SM_irrep": "(3,2)_1/6",
+          "SU3": "3",
+          "SU2_dimension": 2,
+          "Y": "1/6",
+          "complex_dimension": 6,
+          "GUT_normalized_indices": {
+            "g1": "1/10",
+            "g2": "3/2",
+            "g3": "1"
+          }
+        },
+        {
+          "PS_parent": "(10,2,2)",
+          "SM_irrep": "(1,2)_-3/2",
+          "SU3": "1",
+          "SU2_dimension": 2,
+          "Y": "-3/2",
+          "complex_dimension": 2,
+          "GUT_normalized_indices": {
+            "g1": "27/10",
+            "g2": "1/2",
+            "g3": "0"
+          }
+        },
+        {
+          "PS_parent": "(10,2,2)",
+          "SM_irrep": "(1,2)_-1/2",
+          "SU3": "1",
+          "SU2_dimension": 2,
+          "Y": "-1/2",
+          "complex_dimension": 2,
+          "GUT_normalized_indices": {
+            "g1": "3/10",
+            "g2": "1/2",
+            "g3": "0"
+          }
+        },
+        {
+          "PS_parent": "(10bar,2,2)",
+          "SM_irrep": "(6bar,2)_-5/6",
+          "SU3": "6bar",
+          "SU2_dimension": 2,
+          "Y": "-5/6",
+          "complex_dimension": 12,
+          "GUT_normalized_indices": {
+            "g1": "5",
+            "g2": "3",
+            "g3": "5"
+          }
+        },
+        {
+          "PS_parent": "(10bar,2,2)",
+          "SM_irrep": "(6bar,2)_1/6",
+          "SU3": "6bar",
+          "SU2_dimension": 2,
+          "Y": "1/6",
+          "complex_dimension": 12,
+          "GUT_normalized_indices": {
+            "g1": "1/5",
+            "g2": "3",
+            "g3": "5"
+          }
+        },
+        {
+          "PS_parent": "(10bar,2,2)",
+          "SM_irrep": "(3bar,2)_-1/6",
+          "SU3": "3bar",
+          "SU2_dimension": 2,
+          "Y": "-1/6",
+          "complex_dimension": 6,
+          "GUT_normalized_indices": {
+            "g1": "1/10",
+            "g2": "3/2",
+            "g3": "1"
+          }
+        },
+        {
+          "PS_parent": "(10bar,2,2)",
+          "SM_irrep": "(3bar,2)_5/6",
+          "SU3": "3bar",
+          "SU2_dimension": 2,
+          "Y": "5/6",
+          "complex_dimension": 6,
+          "GUT_normalized_indices": {
+            "g1": "5/2",
+            "g2": "3/2",
+            "g3": "1"
+          }
+        },
+        {
+          "PS_parent": "(10bar,2,2)",
+          "SM_irrep": "(1,2)_1/2",
+          "SU3": "1",
+          "SU2_dimension": 2,
+          "Y": "1/2",
+          "complex_dimension": 2,
+          "GUT_normalized_indices": {
+            "g1": "3/10",
+            "g2": "1/2",
+            "g3": "0"
+          }
+        },
+        {
+          "PS_parent": "(10bar,2,2)",
+          "SM_irrep": "(1,2)_3/2",
+          "SU3": "1",
+          "SU2_dimension": 2,
+          "Y": "3/2",
+          "complex_dimension": 2,
+          "GUT_normalized_indices": {
+            "g1": "27/10",
+            "g2": "1/2",
+            "g3": "0"
+          }
+        }
+      ],
+      "dimension_identity": true,
+      "index_identity": true
+    }
+  },
+  "exact_UV_per_field_gauge_ledgers": [
+    {
+      "field": "Phi210",
+      "generations": 1,
+      "one_loop_matter_Delta_a": {
+        "SO10": "28/3",
+        "X": "0"
+      },
+      "two_loop_nonyukawa_matter_Delta_b": {
+        "SO10": {
+          "SO10": "4480/3",
+          "X": "0"
+        },
+        "X": {
+          "SO10": "0",
+          "X": "0"
+        }
+      }
+    },
+    {
+      "field": "Delta126bar",
+      "generations": 1,
+      "one_loop_matter_Delta_a": {
+        "SO10": "35/3",
+        "X": "168"
+      },
+      "two_loop_nonyukawa_matter_Delta_b": {
+        "SO10": {
+          "SO10": "5810/3",
+          "X": "560"
+        },
+        "X": {
+          "SO10": "25200",
+          "X": "8064"
+        }
+      }
+    },
+    {
+      "field": "H10",
+      "generations": 1,
+      "one_loop_matter_Delta_a": {
+        "SO10": "1/3",
+        "X": "40/3"
+      },
+      "two_loop_nonyukawa_matter_Delta_b": {
+        "SO10": {
+          "SO10": "70/3",
+          "X": "16"
+        },
+        "X": {
+          "SO10": "720",
+          "X": "640"
+        }
+      }
+    },
+    {
+      "field": "S",
+      "generations": 1,
+      "one_loop_matter_Delta_a": {
+        "SO10": "0",
+        "X": "16/3"
+      },
+      "two_loop_nonyukawa_matter_Delta_b": {
+        "SO10": {
+          "SO10": "0",
+          "X": "0"
+        },
+        "X": {
+          "SO10": "0",
+          "X": "1024"
+        }
+      }
+    },
+    {
+      "field": "Phi17",
+      "generations": 1,
+      "one_loop_matter_Delta_a": {
+        "SO10": "0",
+        "X": "289/3"
+      },
+      "two_loop_nonyukawa_matter_Delta_b": {
+        "SO10": {
+          "SO10": "0",
+          "X": "0"
+        },
+        "X": {
+          "SO10": "0",
+          "X": "334084"
+        }
+      }
+    },
+    {
+      "field": "F",
+      "generations": 3,
+      "one_loop_matter_Delta_a": {
+        "SO10": "4",
+        "X": "32"
+      },
+      "two_loop_nonyukawa_matter_Delta_b": {
+        "SO10": {
+          "SO10": "455/2",
+          "X": "12"
+        },
+        "X": {
+          "SO10": "540",
+          "X": "96"
+        }
+      }
+    },
+    {
+      "field": "P",
+      "generations": 1,
+      "one_loop_matter_Delta_a": {
+        "SO10": "4/3",
+        "X": "32/3"
+      },
+      "two_loop_nonyukawa_matter_Delta_b": {
+        "SO10": {
+          "SO10": "455/6",
+          "X": "4"
+        },
+        "X": {
+          "SO10": "180",
+          "X": "32"
+        }
+      }
+    },
+    {
+      "field": "R",
+      "generations": 1,
+      "one_loop_matter_Delta_a": {
+        "SO10": "4/3",
+        "X": "32/3"
+      },
+      "two_loop_nonyukawa_matter_Delta_b": {
+        "SO10": {
+          "SO10": "455/6",
+          "X": "4"
+        },
+        "X": {
+          "SO10": "180",
+          "X": "32"
+        }
+      }
+    },
+    {
+      "field": "SpecS",
+      "generations": 5,
+      "one_loop_matter_Delta_a": {
+        "SO10": "20/3",
+        "X": "640/3"
+      },
+      "two_loop_nonyukawa_matter_Delta_b": {
+        "SO10": {
+          "SO10": "2275/6",
+          "X": "80"
+        },
+        "X": {
+          "SO10": "3600",
+          "X": "2560"
+        }
+      }
+    },
+    {
+      "field": "SpecB",
+      "generations": 5,
+      "one_loop_matter_Delta_a": {
+        "SO10": "20/3",
+        "X": "1920"
+      },
+      "two_loop_nonyukawa_matter_Delta_b": {
+        "SO10": {
+          "SO10": "2275/6",
+          "X": "720"
+        },
+        "X": {
+          "SO10": "32400",
+          "X": "207360"
+        }
+      }
+    },
+    {
+      "field": "Q",
+      "generations": 1,
+      "one_loop_matter_Delta_a": {
+        "SO10": "4/3",
+        "X": "6272/3"
+      },
+      "two_loop_nonyukawa_matter_Delta_b": {
+        "SO10": {
+          "SO10": "455/6",
+          "X": "784"
+        },
+        "X": {
+          "SO10": "35280",
+          "X": "1229312"
+        }
+      }
+    },
+    {
+      "field": "Pbar",
+      "generations": 1,
+      "one_loop_matter_Delta_a": {
+        "SO10": "4/3",
+        "X": "8192/3"
+      },
+      "two_loop_nonyukawa_matter_Delta_b": {
+        "SO10": {
+          "SO10": "455/6",
+          "X": "1024"
+        },
+        "X": {
+          "SO10": "46080",
+          "X": "2097152"
+        }
+      }
+    },
+    {
+      "field": "Qbar",
+      "generations": 1,
+      "one_loop_matter_Delta_a": {
+        "SO10": "4/3",
+        "X": "96"
+      },
+      "two_loop_nonyukawa_matter_Delta_b": {
+        "SO10": {
+          "SO10": "455/6",
+          "X": "36"
+        },
+        "X": {
+          "SO10": "1620",
+          "X": "2592"
+        }
+      }
+    },
+    {
+      "field": "Rbar",
+      "generations": 1,
+      "one_loop_matter_Delta_a": {
+        "SO10": "4/3",
+        "X": "3456"
+      },
+      "two_loop_nonyukawa_matter_Delta_b": {
+        "SO10": {
+          "SO10": "455/6",
+          "X": "1296"
+        },
+        "X": {
+          "SO10": "58320",
+          "X": "3359232"
+        }
+      }
+    }
+  ],
+  "UV_two_loop_gauge_flow": {
+    "equation": "d alpha_k^-1/d ln(mu)=-a_k/(2*pi)-sum_l b_kl/(8*pi^2*alpha_l^-1)+Y4_k/(32*pi^3)",
+    "all_active_a": {
+      "SO10": "52/3",
+      "X": "10843"
+    },
+    "all_active_b_nonyukawa": {
+      "SO10": {
+        "SO10": "25013/6",
+        "X": "4536"
+      },
+      "X": {
+        "SO10": "204120",
+        "X": "7242180"
+      }
+    },
+    "Y4_status": "symbolic only; normalized full Yukawa tensors are required",
+    "callable_API": [
+      "uv_nonyukawa_alpha_inverse_rhs",
+      "integrate_uv_nonyukawa_gauge_flow"
+    ],
+    "independent_implementations": [
+      "exact_authoritative_so10_u1x_gauge_betas_v20.py rational trace engine",
+      "official PyR@TE 3 commit 04b219c2016f3fc4f2371d72607edc26a7e06364 replay"
+    ]
+  },
+  "matter_component_threshold_theorem": {
+    "closed_scope": "all Weyl and scalar SM components descending from 1, 10, 16, 16bar, 126bar and real 210, conditional on supplied positive pole masses",
+    "component_coefficient": {
+      "Weyl": "Delta b_i=(2/3) T_i(R)",
+      "complex_scalar": "Delta b_i=(1/3) T_i(R)",
+      "real_scalar": "Delta b_i=(1/6) T_i(R_complexification)"
+    },
+    "mixed_block_formula": "for identical SM irreps, sum_a ln(M_a/mu)=(1/2) ln det(M_pole^2/mu^2); thresholds are basis invariant",
+    "complete_multiplet_check": "sum T1=sum T2=sum T3=T_SO10(R), so a degenerate complete SO(10) multiplet shifts all three inverse couplings equally",
+    "callable_API": [
+      "expand_sm",
+      "component_delta_b",
+      "ps_component_delta_b",
+      "complete_ps_multiplet_delta_b",
+      "complete_multiplet_delta_b",
+      "weighted_threshold_logs",
+      "match_inverse_couplings",
+      "ps_to_sm_tree_match"
+    ]
+  },
+  "valid_mass_bundles_before_or_at_U1X_breaking": {
+    "Phi17_mass_bundle_P": [
+      "P",
+      "Pbar"
+    ],
+    "Phi17_mass_bundle_Q": [
+      "Q",
+      "Qbar"
+    ],
+    "Phi17_mass_bundle_R": [
+      "R",
+      "Rbar"
+    ],
+    "S_mass_bundle_spectators": [
+      "SpecS",
+      "SpecB"
+    ]
+  },
+  "adversarial_guards": {
+    "nonpositive_mass_rejected": true,
+    "nonpositive_matching_scale_rejected": true,
+    "unknown_representation_rejected": true,
+    "wrong_coupling_key_set_rejected": true,
+    "G89_never_used_as_hypercharge": true,
+    "reduced_legacy_PyRATE_models_never_used": true,
+    "incomplete_SARAH_scalar_potential_never_promoted": true
+  },
+  "completion_matrix": {
+    "authoritative_19_Weyl_and_5_scalar_inventory": true,
+    "continuous_gauge_anomaly_cancellation": true,
+    "exact_one_loop_full_inventory_gauge_coefficients": true,
+    "exact_two_loop_nonyukawa_full_inventory_gauge_coefficients": true,
+    "independent_official_PyRATE3_gauge_replay": true,
+    "complete_physical_PS_and_SM_matter_branching": true,
+    "parameterized_one_loop_matter_component_threshold_kernel": true,
+    "physical_component_pole_mass_matrices": false,
+    "heavy_vector_Goldstone_ghost_thresholds": false,
+    "finite_one_loop_matching_constants": false,
+    "normalized_Yukawa_tensor_embeddings": false,
+    "full_two_loop_Yukawa_betas": false,
+    "full_51_real_parameter_scalar_tensor_translation": false,
+    "full_two_loop_scalar_quartic_betas": false,
+    "dimensionful_mass_and_trilinear_betas": false,
+    "dimension_six_EFT_anomalous_dimension_and_mixing": false,
+    "physical_G6_input_available": false,
+    "second_independent_full_RGE_and_matching_implementation": false,
+    "mathematical_G7_closed": false,
+    "release_G7_verified": false
+  },
+  "implementation_hooks": {
+    "hook_A": "translate the normalized 304-Weyl and 486-real-scalar tensors to a general two-loop tensor RGE backend",
+    "hook_B": "generate an independent full PyR@TE model containing all ten Yukawa/mixing tensors and the complete 44-direction scalar ring",
+    "acceptance": "exact symbolic agreement where supported; relative numerical agreement <=1e-10 along at least 100 random nonsingular coupling points"
+  },
+  "release_blockers": [
+    "PHYSICAL_G6_POLE_MASS_MATRICES_WITH_SM_AND_PS_PROVENANCE",
+    "HEAVY_VECTOR_GOLDSTONE_GHOST_MATCHING_IN_DECLARED_SCHEME",
+    "NORMALIZED_304_WEYL_YUKAWA_TENSOR_EMBEDDINGS",
+    "FULL_51_PARAMETER_SCALAR_AND_DIMENSIONFUL_BETA_SYSTEM",
+    "DIMENSION_SIX_EFT_OPERATOR_MIXING_IF_EFT_RETAINED",
+    "SECOND_INDEPENDENT_FULL_RGE_THRESHOLD_IMPLEMENTATION",
+    "BOUNDARY_DATA_AND_MATCHING_SCALES_WITH_COVARIANCE"
+  ],
+  "checks": {
+    "dependency_hashes_bound": true,
+    "authoritative_field_parser_exact_names": true,
+    "five_scalar_multiplets_parsed": true,
+    "nine_fermion_rows_parsed": true,
+    "nineteen_Weyl_SO10_multiplets": true,
+    "three_hundred_four_Weyl_components": true,
+    "four_hundred_eighty_six_real_scalar_coordinates": true,
+    "all_PS_and_SM_dimensions_exact": true,
+    "all_PS_and_SM_Dynkin_indices_exact": true,
+    "16bar_is_exact_SM_conjugate_of_16": true,
+    "126bar_is_exact_SM_conjugate_of_126": true,
+    "Delta126bar_contains_unique_standard_SM_singlet": true,
+    "Delta126bar_singlet_has_PS_10_1_3_provenance": true,
+    "standard_hypercharge_source_bound": true,
+    "GUT_normalized_hypercharge_declared": true,
+    "complete_multiplet_thresholds_are_universal": true,
+    "degenerate_complete_10_log_is_universal": true,
+    "split_complete_10_can_generate_nonuniversal_thresholds": true,
+    "tree_PS_to_SM_match_reproduces_unification": true,
+    "one_loop_matching_scale_covariance_identity": true,
+    "per_field_one_loop_UV_ledger_sums_exactly": true,
+    "per_field_two_loop_UV_ledger_sums_exactly": true,
+    "official_PyRATE3_replay_is_full_inventory_not_reduced_model": true,
+    "analytic_and_external_gauge_coefficients_agree": true,
+    "continuous_gauge_anomalies_cancel_exactly": true,
+    "all_declared_interaction_tokens_in_source": true,
+    "representative_SARAH_scalar_potential_not_misread_as_complete": true,
+    "formal_U1_89_spectrum_not_consumed": true,
+    "SO10_to_PS_broken_vector_dimension_is_24": true,
+    "PS_to_SM_broken_vector_dimension_is_9": true,
+    "physical_G7_remains_fail_closed": true
+  },
+  "n_checks": 31,
+  "n_failed": 0,
+  "failures": [],
+  "verdict": "The physical PS/SM matter representation table and the complete parameterized one-loop matter threshold kernel are exact and source bound.  The all-active non-Yukawa two-loop gauge flow has two independent implementations.  Physical pole masses, heavy-vector matching and the Yukawa/scalar/dimensionful/EFT beta system are still absent; therefore mathematical and release G7 remain false.",
+  "core_sha256": "02c397bbe044695bf124b6f7415dbc1663e4beb9339e3e3e1da9632d532c02c2"
+}

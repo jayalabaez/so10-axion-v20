@@ -1,0 +1,414 @@
+{
+  "V37_unsplit_additive_selector_no_go": {
+    "conclusion": "A new ordinary additive selector alone cannot repair the unsplit V37 architecture. The V39 split removes the equation that forced 4s=0.",
+    "deduction": [
+      "sigma=-2s=2s, hence 4s=0",
+      "q(Qc)=s-n and q(Q)=-h-s+n",
+      "4q(Q)=4q(Qc)=0 using 2h=2n=4s=0",
+      "therefore X Q^4, X Qc^4, Zp Q^4, and Zp Qc^4 are selector-neutral"
+    ],
+    "input_equations": [
+      "q(X)=q(Zp)=0 from their linear driver terms",
+      "sb+s=0 from X Sbc Sc",
+      "2s+sigma=0 from Sc^2 Sig6",
+      "2sb+sigma=0 from Sbc^2 Sig6",
+      "2h=0 from X H^2; 2n=0 from Nv^2",
+      "sb+q(Qc)+n=0 from Sbc Qc Nv",
+      "q(Q)+h+q(Qc)=0 from Q H Qc"
+    ],
+    "scope": "any additional ordinary additive Abelian selector preserving the displayed V37 terms; the linear driver parameters are neutral spurions",
+    "variables": {
+      "h": "q(H)",
+      "n": "q(Nv)",
+      "s": "q(Sc)",
+      "sb": "q(Sbc)",
+      "sigma": "q(Sig6)"
+    }
+  },
+  "V39_selector_and_necessary_anomaly_audit": {
+    "V39_Z3_charge_table": {
+      "A15": 0,
+      "A16": 0,
+      "A17": 0,
+      "A2": 1,
+      "A32": 2,
+      "H": 0,
+      "Nv": 0,
+      "P": 0,
+      "Pb": 0,
+      "Psi": 1,
+      "PsiBar": 2,
+      "PsiC": 2,
+      "PsiCBar": 1,
+      "Q": 1,
+      "Qc": 2,
+      "Sbc": 1,
+      "Sc": 2,
+      "SigBc": 1,
+      "SigC": 2,
+      "X": 0,
+      "Zp": 0
+    },
+    "all_displayed_W_terms_Z3_neutral": true,
+    "all_displayed_W_terms_external_Z4R_charge_two": true,
+    "all_four_local_sources_forbidden": true,
+    "anomalon_choice_reason": "A2,A32=(1,2) and A15,A17=(0,0) preserve the three V37 anomalon mass terms while setting both listed cross residues to zero modulo 3.",
+    "dangerous_local_sources": [
+      {
+        "Z3": 1,
+        "Z4R": 2,
+        "operator": "X Q Q Q Q"
+      },
+      {
+        "Z3": 2,
+        "Z4R": 2,
+        "operator": "X Qc Qc Qc Qc"
+      },
+      {
+        "Z3": 1,
+        "Z4R": 2,
+        "operator": "Zp Q Q Q Q"
+      },
+      {
+        "Z3": 2,
+        "Z4R": 2,
+        "operator": "Zp Qc Qc Qc Qc"
+      }
+    ],
+    "mixed_PS_Z3_standard_doubled_Dynkin": {
+      "all_vanish_mod_3": true,
+      "raw_nonnegative_representative_sums": {
+        "SU2L": 24,
+        "SU2R": 48,
+        "SU4": 42
+      },
+      "residues_mod_3": {
+        "SU2L": 0,
+        "SU2R": 0,
+        "SU4": 0
+      }
+    },
+    "necessary_Z3_Z5610_cross_residues": {
+      "C_Z3_Z5610_squared_mod_3": 0,
+      "C_Z3_Z5610_squared_raw": 733756443,
+      "C_Z3_squared_Z5610_mod_3": 0,
+      "C_Z3_squared_Z5610_raw": 231087,
+      "qualification": "These two raw residues are necessary consistency checks, not a complete classification of Z5610 x Z3 product bordism, discrete-R, heavy-threshold, or Green--Schwarz data."
+    },
+    "pure_Z3_Hsieh_Dai_Freed_convention": {
+      "Delta_s1_canonical": 165,
+      "Delta_s3_canonical": 495,
+      "both_vanish": true,
+      "cubic_condition_mod_6n": 0,
+      "linear_condition_2Delta_s1_mod_n": 0,
+      "order": 3
+    }
+  },
+  "canonical_branch_and_PQ_quality_scope": {
+    "canonical_global_SUSY_scope": "same canonical global-N=1 truncation as V37; no K\u00e4hler/soft completion",
+    "fresh_V39_charge_lattice_enumeration": {
+      "Kahler": {
+        "first_breaking_degree": 32,
+        "reachable_state_counts": [
+          28,
+          234,
+          962,
+          2640,
+          5690,
+          10300,
+          16026,
+          22514,
+          29832,
+          36486,
+          42060,
+          47290,
+          52316,
+          57202,
+          62002,
+          66788,
+          71536,
+          76218,
+          80852,
+          85484,
+          90116,
+          94748,
+          99380,
+          104012,
+          108644,
+          113276,
+          117908,
+          122540,
+          127172,
+          131804,
+          136436,
+          141068
+        ],
+        "search_max_degree": 33,
+        "witness_PQ_charge_numerator_over_170": -5610,
+        "witness_multiplicities": {
+          "A15": 1,
+          "A16": 1,
+          "A32dag": 16,
+          "PsiBar": 12,
+          "PsiCBar": 2
+        }
+      },
+      "exact_W33_K32_equalities_established": true,
+      "gauge_singlet_attainment_witnesses": {
+        "Kahler_degree_32": {
+          "all_fields_are_PS_singlets": true,
+          "degree": 32,
+          "is_exact_PQ_breaking_invariant": true,
+          "multiplicities": {
+            "A16dag": 1,
+            "A17dag": 4,
+            "A32": 21,
+            "P": 6
+          },
+          "residues": {
+            "PQ_numerator_over_170": 5610,
+            "Z3": 0,
+            "Z4R": 0,
+            "Z5610": 0
+          }
+        },
+        "W_degree_33": {
+          "all_fields_are_PS_singlets": true,
+          "degree": 33,
+          "is_exact_PQ_breaking_invariant": true,
+          "multiplicities": {
+            "P": 33
+          },
+          "residues": {
+            "PQ_numerator_over_170": 5610,
+            "Z3": 0,
+            "Z4R": 2,
+            "Z5610": 0
+          }
+        },
+        "both_are_exact_breaking_gauge_singlets": true
+      },
+      "qualification": "This is a gauge-contraction-independent charge-lattice lower bound. It is not a full quantum-gravity quality proof or a classification of every non-polynomial effect.",
+      "result": "fresh active-V39 enumeration gives first W breaking degree 33 and first Kahler breaking degree 32",
+      "superpotential": {
+        "first_breaking_degree": 33,
+        "reachable_state_counts": [
+          18,
+          117,
+          443,
+          1196,
+          2587,
+          4809,
+          7955,
+          11958,
+          16689,
+          22056,
+          27698,
+          33226,
+          38487,
+          43547,
+          48449,
+          53212,
+          57890,
+          62462,
+          66927,
+          71338,
+          75725,
+          80109,
+          84493,
+          88876,
+          93255,
+          97631,
+          102007,
+          106383,
+          110759,
+          115135,
+          119511,
+          123887,
+          128263
+        ],
+        "search_max_degree": 33,
+        "witness_PQ_charge_numerator_over_170": -5610,
+        "witness_multiplicities": {
+          "Pb": 1,
+          "PsiBar": 31,
+          "PsiCBar": 1
+        }
+      },
+      "tracked_constraints": [
+        "Z5610",
+        "Z4R",
+        "Z3",
+        "PQ numerator / 170"
+      ]
+    },
+    "generic_driver_solution": [
+      "<Sbc Sc>=vPS^2",
+      "<P Pb>=fPQ^2"
+    ],
+    "not_a_full_vacuum_proof": [
+      "K\u00e4hler metric",
+      "soft terms",
+      "competing branches",
+      "tunnelling",
+      "cosmological selection"
+    ],
+    "representative": [
+      "<X>=<Zp>=<SigC>=<SigBc>=0",
+      "<Sc>,<Sbc> are equal-conjugate PS breaking VEVs",
+      "<P>,<Pb> are PQ VEVs"
+    ],
+    "why_split_six_F_terms_vanish_on_that_representative": "The F_SigC and F_SigBc contractions contain the same two-identical-PS-spinor 6 projection that vanishes on the rank-one equal-conjugate VEV representative; the driver-sigma terms vanish because X=Zp=0."
+  },
+  "complete_theory_exists": false,
+  "core_sha256": "6bbd94b07c108f989e4538e7afb56085a749dfc47d1048d95a13e3fc977ad933",
+  "established_full_predictive_closed_count": 0,
+  "explicit_Qc4_PSVev_dressing_witness": {
+    "PS_singlet_pair": "B = epsilon^(alpha beta) (Qc)_(i alpha) (Sbc)^(i)_(beta)",
+    "after_canonical_PSVev": "Replacing four Sbc fields by the rank-one PS-breaking VEV generically gives X Qc^4 or Zp Qc^4. Each VEV is paired with a dynamical Qc, so no epsilon(v,v)=0 identity removes it.",
+    "both_selectors_allow_both_operators": true,
+    "conclusion": "The Z3 blocks the four local degree-five sources but is spontaneously broken by the PS VEV and does not protect the full Qc^4 operator ring.",
+    "operators": [
+      {
+        "PQ": 0,
+        "Z3": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "chiral_degree": 9,
+        "operator": "X [epsilon_SU2R delta_SU4 (Qc Sbc)]^4 / M^6"
+      },
+      {
+        "PQ": 0,
+        "Z3": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "chiral_degree": 9,
+        "operator": "Zp [epsilon_SU2R delta_SU4 (Qc Sbc)]^4 / M^6"
+      }
+    ],
+    "qualification": "The standard SM-singlet Sbc VEV selects a particular Qc component. This disproves an all-ring algebraic protection claim but does not alone establish a proton-decay amplitude; component, flavour, SUSY-dressing, and hadronic matching remain required.",
+    "why_gauge_invariant": "Qc x Sbc contracts with the SU4 delta and SU2R epsilon; B is a PS singlet."
+  },
+  "gate_statuses": [
+    {
+      "full_gate_closed": false,
+      "gate": "G7",
+      "landed": [
+        "all four local X/Zp Q^4/Qc^4 source monomials are Z3-forbidden",
+        "a narrow all-order canonical-branch holomorphic Q^4 PS-VEV-dressing result",
+        "an explicit allowed degree-nine X/Zp (Qc Sbc)^4 canonical-VEV dressing that proves the full ring remains open"
+      ],
+      "still_required": [
+        "full Qc^4 and mixed heavy-field operator ring",
+        "Kahler/soft spurion operators and the deformed vacuum",
+        "component spectrum, Wilson matching, SUSY dressing and RG",
+        "flavour tensors and hadronic matrix elements"
+      ]
+    },
+    {
+      "full_gate_closed": false,
+      "gate": "G8",
+      "landed": [
+        "YQQ Q H Qc and vectorlike-mixing source terms remain allowed",
+        "Sbc Qc Nv plus MN Nv^2 remains allowed, retaining type-I seesaw capacity"
+      ],
+      "nonidentifiability_witness": "YQQ=0 and YQQ=y Identity_3 are both selector-allowed but give inequivalent observables.",
+      "still_required": [
+        "a derived flavour texture or UV flavour sector",
+        "charged-fermion and neutrino fit",
+        "threshold/RG evolution with a spectrum",
+        "versioned joint likelihood and covariance"
+      ]
+    },
+    {
+      "full_gate_closed": false,
+      "gate": "G1",
+      "landed": "necessary pure-Z3, mixed-PS-Z3, and two raw Z3-Z5610 residue checks pass for the chosen charges",
+      "still_required": "complete Z5610 x Z3 x Z4R product-bordism/discrete-R/UV anomaly treatment"
+    }
+  ],
+  "minimal_split_six_selector_search": {
+    "analytic_reduction": "The mixed residues are A4=-4p, AL=4(3q-p), AR=-4(3q+p). For odd N this gives p=0 and 3q=0. A nonzero q with 4q!=0 first occurs at N=3.",
+    "assumptions": "odd-order ordinary selector; all retained core terms; vanishing standard PS mixed residues modulo N",
+    "minimum_order": 3,
+    "minimum_solutions": [
+      {
+        "direct_charge": 1,
+        "order": 3,
+        "q_P": 0,
+        "q_Q": 1
+      },
+      {
+        "direct_charge": 2,
+        "order": 3,
+        "q_P": 0,
+        "q_Q": 2
+      }
+    ],
+    "searched_odd_orders": [
+      3,
+      99
+    ],
+    "solution_count": 34
+  },
+  "restricted_Q4_PSVev_dressing_result": {
+    "SU4_counting": "For a=n(Sc), b=n(Sbc), SU(4) invariance requires Delta=4+b-a=4k.",
+    "Z3_counting": "q_Z3(X Q^4 Sc^a Sbc^b)=1-a+b=Delta-3=4k-3. Neutrality requires k=0 mod 3.",
+    "mirror_limit": "The analogous Qc^4 statement is not claimed: Qc itself carries SU(2)_R indices and can absorb VEV indices, so a separate component/ring calculation is required.",
+    "rank_one_consequence": "For k=0 mod 3, a-b=4-4k is never zero (k=1 would be required). After opposite-type SU(2)_R pairings, a nonzero even surplus of identical Sc or Sbc VEVs remains. Every such pair contains epsilon(v,v)=0, so the VEV insertion vanishes.",
+    "result": "No such canonical-branch holomorphic PS-VEV dressing generates X Q^4; replacing X by Zp changes no selector charge.",
+    "scope": "holomorphic operators with exactly four Q fields, arbitrary canonical-branch Sc/Sbc/P/Pb insertions, and rank-one Sc/Sbc PS VEVs; it excludes Qc, other heavy fields, conjugates/Kahler terms, and deformed soft vacua"
+  },
+  "schema": "susy-v39-g7-g8-split-six-architecture-v1",
+  "source_contract": {
+    "SARAH_runtime_validator": {
+      "command": "wolframscript -file tools/validate-susy-v39-baryon-repair.wls --repo-root . --sarah-root <SARAH-4.15.3-root>",
+      "path": "tools/validate-susy-v39-baryon-repair.wls",
+      "scope": "parses and loads the model, checks its 32-term structural multiset, both selector charges, the four local forbidden sources, and continuous gauge anomalies"
+    },
+    "all_static_checks_pass": true,
+    "declared_W_term_count": 32,
+    "field_count": 21,
+    "model_name": "PSZ4RZ5610Z3SUSYV39",
+    "old_single_six_W_fragments_absent": true,
+    "required_source_fragments_present": {
+      "all_soft_flags_disabled": true,
+      "seesaw_source": true,
+      "split_PS_terms": true,
+      "split_driver_terms": true,
+      "split_six_fields": true,
+      "two_globals": "Global[[2]] = {Z[3], V39BaryonSelector};"
+    }
+  },
+  "source_manifest": [
+    {
+      "path": "models/PSZ4RZ5610Z3SUSYV39/PSZ4RZ5610Z3SUSYV39.m",
+      "sha256": "84d93158b8950df6ff77e8e6b975cfb3a162f8cfb1adea8ccaf710dedc82aaf7"
+    },
+    {
+      "path": "models/PSZ4RZ5610Z3SUSYV39/parameters.m",
+      "sha256": "212e551d9c94f2badfd34bfd828965dda6c07d41492bb4942fc8156c9d28823d"
+    },
+    {
+      "path": "models/PSZ4RZ5610Z3SUSYV39/particles.m",
+      "sha256": "f463611d4b830eac05d82a3c517583cc62d784f1ef7874db5b07070187b81030"
+    },
+    {
+      "path": "models/PSZ4RZ5610Z3SUSYV39/README.md",
+      "sha256": "2d42afa15f67a6146472f4529492f8ff0e1afeb53a533c621ec07d4a3852e870"
+    },
+    {
+      "path": "tools/validate-susy-v39-baryon-repair.wls",
+      "sha256": "985683eabf9a5a0edd473871362e02a815cbcac0bc1e5170e25084a85f3f2526"
+    },
+    {
+      "path": "susy_v39_g7_g8_architecture.py",
+      "sha256": "66c2e0cbed62232bfe195592fadf98ea612fc993b25d35ef47b4b1ef4544ef6a"
+    },
+    {
+      "path": "test_susy_v39_g7_g8_architecture.py",
+      "sha256": "f7e74429723f910d07425e4ea0f08cf94cc46c39516799ec727ce7067535ef54"
+    }
+  ],
+  "status": "V39_SPLIT_SIX_Z3_LOCAL_SOURCE_BLOCK_VALIDATED__DEGREE9_QC4_VEV_DRESSING_EXPLICIT__G7_AND_G8_OPEN"
+}

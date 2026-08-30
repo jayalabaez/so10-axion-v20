@@ -1,0 +1,227 @@
+{
+  "complete_theory_exists": false,
+  "core_sha256": "fca44552f1a4bc723d06b3525ba3511d8cbe4bd2605bda6bd181d4e360ba735b",
+  "four_matter_tensor_classification": {
+    "SU4_fundamental_theorem": "For SU(4), any invariant polynomial is built from delta and epsilon tensors. With two 4 and two bar4 indices, the only independent invariant tensors are delta-pair contractions; epsilon times epsilon reduces to their antisymmetrized sum.",
+    "all_matter_only_net_plus_or_minus_four_classes_through_degree_12": {
+      "all_Z9_forbidden": true,
+      "reason": "q_Z9 = 3(n_4-n_bar4) = +/-12 = 3 or 6 modulo 9 for net +/-4.",
+      "row_count": 10,
+      "rows": [
+        {
+          "DeltaB_one_class_Z9_forbidden": true,
+          "DeltaB_one_epsilon_class": true,
+          "Z9_charge": 6,
+          "n_4": 0,
+          "n_bar4": 4,
+          "net_fundamental_number": -4,
+          "tensor_class": "one_epsilon_lower",
+          "total_matter_fields": 4
+        },
+        {
+          "DeltaB_one_class_Z9_forbidden": true,
+          "DeltaB_one_epsilon_class": true,
+          "Z9_charge": 3,
+          "n_4": 4,
+          "n_bar4": 0,
+          "net_fundamental_number": 4,
+          "tensor_class": "one_epsilon_upper",
+          "total_matter_fields": 4
+        },
+        {
+          "DeltaB_one_class_Z9_forbidden": true,
+          "DeltaB_one_epsilon_class": true,
+          "Z9_charge": 6,
+          "n_4": 1,
+          "n_bar4": 5,
+          "net_fundamental_number": -4,
+          "tensor_class": "one_epsilon_lower",
+          "total_matter_fields": 6
+        },
+        {
+          "DeltaB_one_class_Z9_forbidden": true,
+          "DeltaB_one_epsilon_class": true,
+          "Z9_charge": 3,
+          "n_4": 5,
+          "n_bar4": 1,
+          "net_fundamental_number": 4,
+          "tensor_class": "one_epsilon_upper",
+          "total_matter_fields": 6
+        },
+        {
+          "DeltaB_one_class_Z9_forbidden": true,
+          "DeltaB_one_epsilon_class": true,
+          "Z9_charge": 6,
+          "n_4": 2,
+          "n_bar4": 6,
+          "net_fundamental_number": -4,
+          "tensor_class": "one_epsilon_lower",
+          "total_matter_fields": 8
+        },
+        {
+          "DeltaB_one_class_Z9_forbidden": true,
+          "DeltaB_one_epsilon_class": true,
+          "Z9_charge": 3,
+          "n_4": 6,
+          "n_bar4": 2,
+          "net_fundamental_number": 4,
+          "tensor_class": "one_epsilon_upper",
+          "total_matter_fields": 8
+        },
+        {
+          "DeltaB_one_class_Z9_forbidden": true,
+          "DeltaB_one_epsilon_class": true,
+          "Z9_charge": 6,
+          "n_4": 3,
+          "n_bar4": 7,
+          "net_fundamental_number": -4,
+          "tensor_class": "one_epsilon_lower",
+          "total_matter_fields": 10
+        },
+        {
+          "DeltaB_one_class_Z9_forbidden": true,
+          "DeltaB_one_epsilon_class": true,
+          "Z9_charge": 3,
+          "n_4": 7,
+          "n_bar4": 3,
+          "net_fundamental_number": 4,
+          "tensor_class": "one_epsilon_upper",
+          "total_matter_fields": 10
+        },
+        {
+          "DeltaB_one_class_Z9_forbidden": true,
+          "DeltaB_one_epsilon_class": true,
+          "Z9_charge": 6,
+          "n_4": 4,
+          "n_bar4": 8,
+          "net_fundamental_number": -4,
+          "tensor_class": "one_epsilon_lower",
+          "total_matter_fields": 12
+        },
+        {
+          "DeltaB_one_class_Z9_forbidden": true,
+          "DeltaB_one_epsilon_class": true,
+          "Z9_charge": 3,
+          "n_4": 8,
+          "n_bar4": 4,
+          "net_fundamental_number": 4,
+          "tensor_class": "one_epsilon_upper",
+          "total_matter_fields": 12
+        }
+      ]
+    },
+    "four_matter_rows": [
+      {
+        "SU4_singlet_exists": true,
+        "Z9_charge": 6,
+        "can_contain_conventional_DeltaB_equals_one_epsilon": true,
+        "n_4": 0,
+        "n_bar4": 4,
+        "selector_forbidden": true,
+        "tensor_class": "one_epsilon_lower"
+      },
+      {
+        "SU4_singlet_exists": false,
+        "Z9_charge": 3,
+        "can_contain_conventional_DeltaB_equals_one_epsilon": false,
+        "n_4": 1,
+        "n_bar4": 3,
+        "selector_forbidden": false,
+        "tensor_class": "not_an_SU4_singlet"
+      },
+      {
+        "SU4_singlet_exists": true,
+        "Z9_charge": 0,
+        "can_contain_conventional_DeltaB_equals_one_epsilon": false,
+        "n_4": 2,
+        "n_bar4": 2,
+        "selector_forbidden": false,
+        "tensor_class": "delta_only_at_four_matter"
+      },
+      {
+        "SU4_singlet_exists": false,
+        "Z9_charge": 6,
+        "can_contain_conventional_DeltaB_equals_one_epsilon": false,
+        "n_4": 3,
+        "n_bar4": 1,
+        "selector_forbidden": false,
+        "tensor_class": "not_an_SU4_singlet"
+      },
+      {
+        "SU4_singlet_exists": true,
+        "Z9_charge": 3,
+        "can_contain_conventional_DeltaB_equals_one_epsilon": true,
+        "n_4": 4,
+        "n_bar4": 0,
+        "selector_forbidden": true,
+        "tensor_class": "one_epsilon_upper"
+      }
+    ],
+    "mixed_4_squared_bar4_squared": {
+      "B_and_L_statement": "Each delta contracts a 4 component with its conjugate bar4 component. In the Pati-Salam quark/lepton decomposition, every such pair has zero separate baryon and lepton number, so the four-matter mixed class cannot be the conventional Delta-B=Delta-L=1 dimension-five source.",
+      "SU4_tensor_basis": "delta^a_b delta^c_d and delta^a_d delta^c_b",
+      "epsilon_SU4_available": false,
+      "example_source": "X Q Q Qc Qc",
+      "is_conventional_proton_decay_source": false,
+      "selector_Z9_charge": 0
+    },
+    "remaining_scope": [
+      "operators with Pati-Salam-breaking VEV insertions that alter SU(4) index balance",
+      "Kahler, soft-spurion, and nonholomorphic operators",
+      "mixed heavy-field thresholds and component-level matching",
+      "SUSY dressing, RG evolution, flavour tensors, and hadronic matrix elements"
+    ],
+    "same_orientation_classes": {
+      "four_4": {
+        "SU4_singlet_exists": true,
+        "Z9_charge": 3,
+        "can_contain_conventional_DeltaB_equals_one_epsilon": true,
+        "n_4": 4,
+        "n_bar4": 0,
+        "selector_forbidden": true,
+        "tensor_class": "one_epsilon_upper"
+      },
+      "four_bar4": {
+        "SU4_singlet_exists": true,
+        "Z9_charge": 6,
+        "can_contain_conventional_DeltaB_equals_one_epsilon": true,
+        "n_4": 0,
+        "n_bar4": 4,
+        "selector_forbidden": true,
+        "tensor_class": "one_epsilon_lower"
+      },
+      "interpretation": "The epsilon_SU4 tensor is available exactly for the net +/-4 classes. Their components include QQQL and u^c u^c d^c e^c-type sources, and V40 Z9 charges 3 and 6 forbid them."
+    }
+  },
+  "gate_boundary": {
+    "G7_closed": false,
+    "landed": "The selector-neutral X Q Q Qc Qc mixed four-matter example is not a conventional Delta-B=1 epsilon_SU4 source.  All matter-only net +/-4 SU4 epsilon classes through degree twelve are Z9-forbidden.",
+    "still_required": [
+      "operators with Pati-Salam-breaking VEV insertions that alter SU(4) index balance",
+      "Kahler, soft-spurion, and nonholomorphic operators",
+      "mixed heavy-field thresholds and component-level matching",
+      "SUSY dressing, RG evolution, flavour tensors, and hadronic matrix elements"
+    ]
+  },
+  "integrity_checks": {
+    "G7_remains_fail_closed": true,
+    "all_net_plus_or_minus_four_matter_only_classes_through_12_are_Z9_forbidden": true,
+    "both_four_same_orientation_classes_are_Z9_forbidden": true,
+    "four_matter_SU4_singlet_rows_are_exact": true,
+    "mixed_two_plus_two_is_Z9_neutral_but_not_epsilon": true
+  },
+  "schema": "susy-v41-mixed-four-matter-audit-v1",
+  "source_manifest": [
+    {
+      "exists": true,
+      "path": "susy_v41_mixed_four_matter_audit.py",
+      "sha256": "6e352f920315ec864cb4aa77202b132b3dd4f55bc7a3bc8389d8094b07da79c6"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v41_mixed_four_matter_audit.py",
+      "sha256": "9d9d996343f01d34b033cfc3c2c393c4fe8ea1cd45ea42879e4a29c61f458df5"
+    }
+  ],
+  "status": "V41_SU4_MIXED_FOUR_MATTER_CLASSIFIED__DELTA_B1_EPSILON_CLASSES_Z9_FORBIDDEN__VEV_AND_COMPONENT_RING_OPEN"
+}

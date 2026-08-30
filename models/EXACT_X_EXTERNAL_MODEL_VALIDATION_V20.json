@@ -1,0 +1,114 @@
+{
+  "schema": "so10-exact-x-external-model-validation-v3",
+  "generated_at_utc": "2026-08-14T12:09:10.057819+00:00",
+  "model": {
+    "path": "models/SO10Z17AxionV20.m",
+    "sha256": "66a2ce2c3491d0b3079ec93a16ab79d3e8a7e4e35cb54aadf21100b9fdd90cc1",
+    "size_bytes": 5182,
+    "format": "sarah-mathematica"
+  },
+  "tool": {
+    "name": "SARAH",
+    "version": "4.15.3",
+    "trusted_release_manifest": {
+      "path": "models/SARAH_4_15_3_CANONICAL_SOURCE_TREE_V20.json",
+      "sha256": "c28f08d56a488050b96ce3491473f22fe1b673aad8ac3ac3d0e590dd60e70d91",
+      "size_bytes": 198868
+    },
+    "source_tree": {
+      "schema": "sarah-source-tree-snapshot-v1",
+      "resolved_root": "C:\\Users\\jayal\\Downloads\\So10Theory2\\external-tools\\SARAH-4.15.3",
+      "sha256": "de92b2de859efa7a0c4f5fdfb642d9f1ff8e1b071057bc8d4c295f6e2b6f8337",
+      "file_count": 1056,
+      "size_bytes": 20165588,
+      "verified_against_trusted_release_manifest": true,
+      "unchanged_during_execution": true
+    }
+  },
+  "execution": {
+    "external_process_executed": true,
+    "command": [
+      "C:\\Program Files\\Wolfram Research\\Wolfram\\15.0\\wolframscript.exe",
+      "-file",
+      "tools/validate-exact-x-model.wls",
+      "--repo-root",
+      "C:\\Users\\jayal\\Downloads\\So10Theory2\\So10Theory\\_g3_equality_classification_integration",
+      "--sarah-root",
+      "C:\\Users\\jayal\\Downloads\\So10Theory2\\external-tools\\SARAH-4.15.3"
+    ],
+    "process_exit_code": 0,
+    "runtime_probe_command": [
+      "C:\\Program Files\\Wolfram Research\\Wolfram\\15.0\\wolframscript.exe",
+      "-code",
+      "Print[\"EXACT_X_ENGINE Wolfram \" <> ToString[$Version]]; Print[\"EXACT_X_KERNEL_PATH \" <> ToString[First[$CommandLine]]]"
+    ],
+    "runtime_probe_exit_code": 0,
+    "runtime": {
+      "wolfram_version": "15.0.1 for Microsoft Windows (64-bit) (July 2, 2026)",
+      "launcher": {
+        "resolved_path": "C:\\Program Files\\Wolfram Research\\Wolfram\\15.0\\wolframscript.exe",
+        "sha256_before": "30bc95073e6c7c44e1410a23041a5647aee1e4c7f81feea0643d00596506b17a",
+        "size_bytes_before": 2954216,
+        "sha256_after": "30bc95073e6c7c44e1410a23041a5647aee1e4c7f81feea0643d00596506b17a",
+        "size_bytes_after": 2954216,
+        "unchanged_during_execution": true
+      },
+      "kernel": {
+        "resolved_path": "C:\\Program Files\\Wolfram Research\\Wolfram\\15.0\\wolfram.exe",
+        "sha256_before": "d9766069ce08cfb3306366eed0407d4b79ab5ce5febbb8fb043dd2675e58e878",
+        "size_bytes_before": 65768,
+        "sha256_after": "d9766069ce08cfb3306366eed0407d4b79ab5ce5febbb8fb043dd2675e58e878",
+        "size_bytes_after": 65768,
+        "unchanged_during_execution": true
+      }
+    }
+  },
+  "input_manifest": {
+    "schema": "so10-exact-x-input-manifest-v2",
+    "sha256": "0f9050ef8e9ac9cd0a398e7fb8d59b12675d51065610d8dbf4903b87fcd7c313",
+    "files": [
+      {
+        "path": "models/SO10Z17AxionV20.m",
+        "sha256": "66a2ce2c3491d0b3079ec93a16ab79d3e8a7e4e35cb54aadf21100b9fdd90cc1",
+        "size_bytes": 5182,
+        "role": "primary_model",
+        "format": "sarah-mathematica"
+      },
+      {
+        "path": "tools/validate-exact-x-model.wls",
+        "sha256": "1d1dea122de1d3465cd0af14e10574b87bf72594de69e3a888fc7bcba5d1e281",
+        "size_bytes": 10529,
+        "role": "validation_driver",
+        "format": "wolfram-language"
+      },
+      {
+        "path": "models/SARAH_4_15_3_CANONICAL_SOURCE_TREE_V20.json",
+        "sha256": "c28f08d56a488050b96ce3491473f22fe1b673aad8ac3ac3d0e590dd60e70d91",
+        "size_bytes": 198868,
+        "role": "trusted_sarah_release_manifest",
+        "format": "sarah-source-tree-manifest"
+      }
+    ]
+  },
+  "evidence": {
+    "runtime_probe_log": {
+      "encoding": "utf-8",
+      "content": "EXACT_X_ENGINE Wolfram 15.0.1 for Microsoft Windows (64-bit) (July 2, 2026)\nEXACT_X_KERNEL_PATH C:/Program Files/Wolfram Research/Wolfram/15.0/wolfram.exe\nNull\n",
+      "sha256": "24887ac4ec6cdcb12e82e17a54c835ef21af6568ce2a97b1413f4aef0633bfa9",
+      "size_bytes": 160
+    },
+    "process_log": {
+      "encoding": "utf-8",
+      "content": "EXACT_X_ENGINE Wolfram 15.0.1 for Microsoft Windows (64-bit) (July 2, 2026)\nEXACT_X_KERNEL_PATH C:/Program Files/Wolfram Research/Wolfram/15.0/wolfram.exe\nEXACT_X_CHECK model_parse_succeeded PASS\n\nname::shdw: Symbol name appears in multiple contexts {Susyno`LieGroups`, Global`}; definitions in context Susyno`LieGroups` may shadow or be shadowed by other definitions.\n\nconj::shdw: Symbol conj appears in multiple contexts {Susyno`LieGroups`, Global`}; definitions in context Susyno`LieGroups` may shadow or be shadowed by other definitions.\nStyleForm[SARAH , Section, FontSize -> 14]StyleForm[4.15.3, Section, FontSize -> 14]\nby Florian Staub, Mark Goodsell and Werner Porod, 2020\nStyleForm[contributions by M. Gabelmann, K. Nickel, FontSize -> 10]\n\nStyleForm[References:, Section, FontSize -> 10]\n  Comput.Phys.Commun.181 (2010) 1077-1086. (arXiv:0909.2863)\n  Comput.Phys.Commun.182 (2011) 808-833. (arXiv:1002.0840)\n  Comput.Phys.Commun.184 (2013) 1792-1809. (arXiv:1207.0906)\n  Comput.Phys.Commun.185 (2014) 1773-1790. (arXiv:1309.7223)\n  Eur.Phys.J.C 74 (2014) 8, 2992 (arXiv:1405.1434)\n  Eur.Phys.J.C 75 (2015) 1, 32 (arXiv:1411.0675)\n  Eur.Phys.J.C 75 (2015) 6, 290 (arXiv:1503.03098)\n  Eur.Phys.J.C 77 (2017) 11, 758 (arXiv:1703.09237\n  Eur.Phys.J.C 77 (2017) 11, 757 (arXiv:1706.05372)\n  Eur.Phys.J.C 78 (2018) 8, 649 (arXiv:1805.07306)\nStyleForm[Download and Documentation:, Section, FontSize -> 10]\n  http://sarah.hepforge.org\n\nStart evaluation of a model with:\nStyleForm[   Start[\"Name of Model\"], Section, FontSize -> 12]\ne.g. Start[\"MSSM\"] or Start[\"NMSSM\",\"CKM\"]\nTo get a list with all installed models, use StyleForm[ShowModels, Section, FontSize -> 12]\nEXACT_X_STAGE sarah_package_loaded\nEXACT_X_STAGE exact_D5_dimension_map_installed\nEXACT_X_STAGE exact_D5_spinor_indices_installed\nEXACT_X_STAGE exact_D5_center_map_installed\nEXACT_X_STAGE exact_SO10_charge_initializer_installed\nEXACT_X_STAGE empty_broken_group_CGC_contract_installed\nEXACT_X_TOOL SARAH 4.15.3\nEXACT_X_STAGE recursion_budget_2000\n\"Preparing arrays\"\n\" ... checking Directory: \"\"C:\\\\Users\\\\jayal\\\\AppData\\\\Local\\\\Temp\\\\so10-exac\\\nt-x-481ee364-a7c8-4cd6-a27c-24fdaea8db5b\"\nStyleForm[\"Model files loaded   \", \"Section\", FontSize -> 12]\n\"  Model    : \"StyleForm[\"SO10Z17AxionV20\", \"Section\", FontSize -> 10]\n\"  Author(s): \"StyleForm[\"SO10 axion v20 collaboration\", \"Section\", \n   FontSize -> 10]\n\"  Date     : \"StyleForm[\"2026-08-07\", \"Section\", FontSize -> 10]\n\"******************************************************* \"\n\"Loading \"StyleForm[\"Susyno\", \"Section\", FontSize -> 10]\n  \" functions for the handling of Lie Groups \"\n\"Based on Susyno v.2.0 by Renato Fonseca (1106.5016)\"\n\"webpage: \"StyleForm[\"web.ist.utl.pt/renato.fonseca/susyno.html\", \"Section\", \n   FontSize -> 10]\n\"******************************************************* \"\n\narguments::shdw: \n   Symbol arguments appears in multiple contexts {Susyno`LieGroups`, Global`}\n    ; definitions in context Susyno`LieGroups`\n     may shadow or be shadowed by other definitions.\n\nexpression::shdw: \n   Symbol expression appears in multiple contexts {Susyno`LieGroups`, Global`}\n    ; definitions in context Susyno`LieGroups`\n     may shadow or be shadowed by other definitions.\nStyleForm[\"Initialization\", \"Section\", FontSize -> 12]\n\"Checking model files: \"Dynamic[DynamicCheckModelFiles]\n\nPart::partw: Part 2 of {} does not exist.\n\nComplement::heads: \n   Heads List and Integer at positions 2 and 1 are expected to be the same.\n\nModelFile::UnknownKeywordParticle: Unknown keyword Integer[] in particle file.\n\nModelFile::UnknownKeywordParticle: \n   Unknown keyword {Description, FeynArtsNr, LaTeX, Mass, MassDependence, \n     OutputName, PDG, PDG . IX, ElectricCharge, Width, LHPC, Goldstone} in\n     particle file.\n\nPart::partw: Part 2 of {} does not exist.\n\nComplement::heads: \n   Heads List and Integer at positions 2 and 1 are expected to be the same.\n\nModelFile::UnknownKeywordParameter: \n   Unknown keyword Integer[] in parameter file.\n\nModelFile::UnknownKeywordParameter: \n   Unknown keyword {Dependence, DependenceNum, DependenceOptional, \n     Description, DependenceSPheno, Form, GUTnormalization, LaTeX, \n     LesHouches, OutputName, Real, Value, MatrixProduct} in parameter file.\n\"Initialize gauge groups: \"Dynamic[DynamicInitGaugeG]\n\"Initialize field: \"Dynamic[DynamicInitFields]\n\"Preprocessing necessary information: \"Dynamic[DynamicInitMisc]\n\"Checking for anomalies: \"Dynamic[DynamicCheckAnomalies]\nStyleForm[\"Derive Lagrangian\", \"Section\", FontSize -> 12]\n\"Calculate kinetic Terms\"\n\"  ... for scalars: \"Dynamic[DynamicKineticScalarNr]\"/\"14\" (\"\n  Dynamic[DynamicKineticScalarName]\")\"\n\"  ... for fermions: \"Dynamic[DynamicKineticFermionNr]\"/\"14\" (\"\n  Dynamic[DynamicKineticFermionName]\")\"\n\"Calculate vector self-interactions: \"Dynamic[DynamicVectorNr]\"/\"2\" (\"\n  Dynamic[DynamicVectorName]\")\"\n\"Calculate gauge transformations: \"Dynamic[DynamicGaugeTNr]\"/\"16\" (\"\n  Dynamic[DynamicGaugeTName]\")\"\n\"Eleminate sums\"\n\"Calc Complete Lagrangian\"\n\"\"\nStyleForm[\"Evolve States: GaugeES\", \"Section\", FontSize -> 12]\n\"Adding terms to the Lagrangian: \"\n\" ... adding: \"-(lambdaAudit*H10 . H10 . S)\" (\"\n  Dynamic[DynamicStatusAddTerms[-(lambdaAudit*H10 . H10 . S)]]\")\"\n\nPart::partw: Part 1 of {} does not exist.\n\nGeneral::stop: Further output of Part::partw\n     will be suppressed during this calculation.\n\" ... adding: \"-1/2*(m210Sq*Phi210 . Phi210)\" (\"\n  Dynamic[DynamicStatusAddTerms[-1/2*(m210Sq*Phi210 . Phi210)]]\")\"\n\"Rotate Lagrangian: \"Dynamic[DynamicRotateLag[1]]\"/\"14\n\"Derive ghost terms: \"\n\"  ... generate gauge fixing terms: \"Dynamic[DynamicGFnr[GaugeES]]\"/\"2\" (\"\n  Dynamic[DynamicGFname[GaugeES]]\")\"\n\"  ... calculate Ghost interactions\"\n\"Calc Mixings of Matter Fields\"\n\"Save information (\"Dynamic[DynamicSaveInfo[GaugeES]]\")\"\n\"\"\nStyleForm[\"Finishing\", \"Section\", FontSize -> 12]\n\"Calculate final Lagrangian\"\n\"Cleaning up\"\n\"   ... add matrix products\"\n\"   ... checking for massless particles\"\n\"   ... calculating tree level masses (\"Dynamic[DynamicCalcTreeMasses]\")\"\n\"   ... simplify mass matrices\"\n\"Numerical calculations (if necessary)\"\n\"   ... checking for spectrum file: \"Dynamic[DynamicSpectrumFileInput]\n\"   ... reading parameter values and dependences\"\n\"   ... calculate mixing matrices\"\n\"Checking for CP even and odd scalars\"\n\"\"\n\"All Done. \"\"SO10Z17AxionV20\"\" is ready!\"\n\"(Model initialized in \"1.672\"s)\"\n\"\"\n\"\"\n\"Are you unfamiliar with SARAH? Use \"\n  StyleForm[\"SARAH`FirstSteps\", \"Section\", FontSize -> 12]\nEXACT_X_CHECK model_initialization_succeeded PASS\nEXACT_X_CHECK lagrangian_construction_succeeded PASS\nEXACT_X_GAUGE_LOCAL_RESULTS {True, True}\nEXACT_X_GAUGE_GLOBAL_RESULTS {True, True}\nEXACT_X_GAUGE_GLOBAL_FACTORS {{{H10, H10, S}, {E^(((-4*I)/17)*Pi), E^(((-4*I)/17)*Pi), E^(((8*I)/17)*Pi)}, 1}, {{Phi210, Phi210}, {1, 1}, 1}}\nEXACT_X_CHECK gauge_invariance_check_succeeded PASS\n\"Checking for anomalies: \"Dynamic[DynamicCheckAnomalies]\nEXACT_X_CHECK anomaly_check_succeeded PASS\n",
+      "sha256": "ab83a790f6149463e2333a052ea02c2c7db1dcfb367addbba9235a99f4de5864",
+      "size_bytes": 6939
+    }
+  },
+  "checks": {
+    "model_parse_succeeded": true,
+    "model_initialization_succeeded": true,
+    "lagrangian_construction_succeeded": true,
+    "gauge_invariance_check_succeeded": true,
+    "anomaly_check_succeeded": true
+  }
+}

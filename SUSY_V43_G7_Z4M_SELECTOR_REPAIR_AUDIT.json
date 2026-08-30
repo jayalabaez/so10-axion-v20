@@ -1,0 +1,1917 @@
+{
+  "candidate": {
+    "charge_assignment": {
+      "F": 1,
+      "Fc": 3,
+      "NDirac": 3,
+      "Psi": 1,
+      "PsiBar": 3,
+      "PsiC": 3,
+      "PsiCBar": 1,
+      "Q": 1,
+      "Qc": 3
+    },
+    "name": "Z4_M orientation selector",
+    "prospective_parent": "U(1)_M Higgsed by PhiPlus(+4), PhiMinus(-4), with SM(PhiPlus PhiMinus-v_M^2)",
+    "smallest_order_that_blocks_six_Qc_witness": 4,
+    "unbroken_branch": "All PS/PQ/EW/Theta/Phi VEVs have Z4_M residue zero.",
+    "why_Z2_and_Z3_fail": {
+      "Z2_witness_charge": 0,
+      "Z3_witness_charge": 0
+    }
+  },
+  "complete_theory_exists": false,
+  "continuous_parent_and_discrete_anomaly_boundary": {
+    "U1M_U1F_product_cross_rows": {
+      "all_vanish": false,
+      "meaning": "The proposed ordinary selector also cannot silently be combined with the V40 U(1)_F parent: these continuous product rows require additional UV data even before the old Z5610 product is considered.",
+      "rows": {
+        "C_M_U1F_squared": -27,
+        "C_M_squared_U1F": -9
+      }
+    },
+    "U1M_base_rows_before_new_threshold": {
+      "SU2L": 12,
+      "SU2R": -12,
+      "SU4": 0,
+      "cubic": -3,
+      "gravity": -3
+    },
+    "Z4M_low_energy_necessary_screen": {
+      "eta": 2,
+      "gravity_pass": false,
+      "gravity_residue_mod_eta": 1,
+      "mixed_pass": true,
+      "mixed_residues_mod_eta": {
+        "SU2L": 0,
+        "SU2R": 0,
+        "SU4": 0
+      },
+      "result": "fails because the three NDirac fields give A_gravity=-3=1 mod 2"
+    },
+    "continuous_gravity_and_cubic_still_nonzero": true,
+    "convention": "Mixed rows use the doubled Dynkin coefficients recorded in the field table.  The non-R even-Z_N low-energy congruence screen uses eta=N/2; it is a necessary ordinary no-GS screen, not a full Spin-bordism or GS analysis.",
+    "mixed_PS_rows_cancel": true,
+    "rows_after_minimal_mixed_PS_repair": {
+      "SU2L": 0,
+      "SU2R": 0,
+      "SU4": 0,
+      "cubic": -3,
+      "gravity": -3
+    },
+    "three_pair_mixed_PS_anomalon_threshold": {
+      "all_massed_fields_Z4M_neutral": true,
+      "increment": {
+        "SU2L": -12,
+        "SU2R": 12,
+        "SU4": 0,
+        "cubic": 0,
+        "gravity": 0
+      },
+      "rank_witness": "three-by-three identity mass matrices after <PhiPlus>, <PhiMinus> are nonzero",
+      "terms": [
+        "PhiPlus LM0 LMminus4",
+        "PhiMinus RM0 RMplus4"
+      ]
+    }
+  },
+  "core_sha256": "9eac4ca35cdff6ba02a05b5aeb2736644d9c970acf2a80f05f29049e7bd5d4bf",
+  "decision": {
+    "G7_closed": false,
+    "V42_witness_blocked_by_Z4M": true,
+    "all_V40_and_V41_required_terms_preserved": true,
+    "candidate_is_anomaly_complete_discrete_gauge_symmetry": false,
+    "gates_promoted": [],
+    "named_lower_B_L_controls_are_still_blocked_by_at_least_one_selector": true,
+    "no_decoupling_only_ordinary_gauge_repair_exists_under_stated_assumptions": true,
+    "required_Dirac_operator_remains_allowed": true
+  },
+  "independent_V42_degree12_frontier": {
+    "blocked_rows": 4,
+    "domain": "V42 single-epsilon/rank-one-SU2R frontier through complete field degree 12",
+    "representation_count_rows": 6,
+    "rows": [
+      {
+        "Z4M": 2,
+        "blocked_by_Z4M": true,
+        "boundary": "A representation-count frontier only.  Rows with Z4M=0 are deliberately not called safe: their B/L component content and Wilson coefficients remain unclassified.",
+        "complete_field_degree": 10,
+        "counts": {
+          "H": 0,
+          "Q": 0,
+          "Qc": 6,
+          "Sbc": 2,
+          "Sc": 0
+        },
+        "matter_orientation_Q_minus_Qc": -6,
+        "theta_completion": [
+          "ThetaPlus",
+          "ThetaPlus"
+        ]
+      },
+      {
+        "Z4M": 0,
+        "blocked_by_Z4M": false,
+        "boundary": "A representation-count frontier only.  Rows with Z4M=0 are deliberately not called safe: their B/L component content and Wilson coefficients remain unclassified.",
+        "complete_field_degree": 11,
+        "counts": {
+          "H": 1,
+          "Q": 3,
+          "Qc": 3,
+          "Sbc": 0,
+          "Sc": 4
+        },
+        "matter_orientation_Q_minus_Qc": 0,
+        "theta_completion": []
+      },
+      {
+        "Z4M": 0,
+        "blocked_by_Z4M": false,
+        "boundary": "A representation-count frontier only.  Rows with Z4M=0 are deliberately not called safe: their B/L component content and Wilson coefficients remain unclassified.",
+        "complete_field_degree": 11,
+        "counts": {
+          "H": 1,
+          "Q": 3,
+          "Qc": 3,
+          "Sbc": 4,
+          "Sc": 0
+        },
+        "matter_orientation_Q_minus_Qc": 0,
+        "theta_completion": []
+      },
+      {
+        "Z4M": 2,
+        "blocked_by_Z4M": true,
+        "boundary": "A representation-count frontier only.  Rows with Z4M=0 are deliberately not called safe: their B/L component content and Wilson coefficients remain unclassified.",
+        "complete_field_degree": 12,
+        "counts": {
+          "H": 0,
+          "Q": 0,
+          "Qc": 6,
+          "Sbc": 3,
+          "Sc": 1
+        },
+        "matter_orientation_Q_minus_Qc": -6,
+        "theta_completion": [
+          "ThetaPlus",
+          "ThetaPlus"
+        ]
+      },
+      {
+        "Z4M": 2,
+        "blocked_by_Z4M": true,
+        "boundary": "A representation-count frontier only.  Rows with Z4M=0 are deliberately not called safe: their B/L component content and Wilson coefficients remain unclassified.",
+        "complete_field_degree": 12,
+        "counts": {
+          "H": 2,
+          "Q": 0,
+          "Qc": 6,
+          "Sbc": 2,
+          "Sc": 0
+        },
+        "matter_orientation_Q_minus_Qc": -6,
+        "theta_completion": [
+          "ThetaPlus",
+          "ThetaPlus"
+        ]
+      },
+      {
+        "Z4M": 2,
+        "blocked_by_Z4M": true,
+        "boundary": "A representation-count frontier only.  Rows with Z4M=0 are deliberately not called safe: their B/L component content and Wilson coefficients remain unclassified.",
+        "complete_field_degree": 12,
+        "counts": {
+          "H": 2,
+          "Q": 6,
+          "Qc": 0,
+          "Sbc": 0,
+          "Sc": 2
+        },
+        "matter_orientation_Q_minus_Qc": 6,
+        "theta_completion": [
+          "ThetaMinus",
+          "ThetaMinus"
+        ]
+      }
+    ],
+    "unblocked_orientation_neutral_rows": [
+      {
+        "Z4M": 0,
+        "blocked_by_Z4M": false,
+        "boundary": "A representation-count frontier only.  Rows with Z4M=0 are deliberately not called safe: their B/L component content and Wilson coefficients remain unclassified.",
+        "complete_field_degree": 11,
+        "counts": {
+          "H": 1,
+          "Q": 3,
+          "Qc": 3,
+          "Sbc": 0,
+          "Sc": 4
+        },
+        "matter_orientation_Q_minus_Qc": 0,
+        "theta_completion": []
+      },
+      {
+        "Z4M": 0,
+        "blocked_by_Z4M": false,
+        "boundary": "A representation-count frontier only.  Rows with Z4M=0 are deliberately not called safe: their B/L component content and Wilson coefficients remain unclassified.",
+        "complete_field_degree": 11,
+        "counts": {
+          "H": 1,
+          "Q": 3,
+          "Qc": 3,
+          "Sbc": 4,
+          "Sc": 0
+        },
+        "matter_orientation_Q_minus_Qc": 0,
+        "theta_completion": []
+      }
+    ],
+    "witness_row_blocked": true
+  },
+  "literature_context": [
+    {
+      "reference": "L. Ibanez, More About Discrete Gauge Anomalies",
+      "relevance": "Heavy thresholds and a discrete GS sector can change what a low-energy anomaly screen establishes.",
+      "url": "https://arxiv.org/abs/hep-ph/9210211"
+    },
+    {
+      "reference": "C.-T. Hsieh, Discrete gauge anomalies revisited",
+      "relevance": "A complete discrete-gauge claim requires the global symmetry structure, beyond the necessary congruence screen used here.",
+      "url": "https://arxiv.org/abs/1808.02881"
+    }
+  ],
+  "named_B_L_and_required_operator_audit": [
+    {
+      "blocked_by_union_of_old_and_new_selectors": true,
+      "boundary": "standard same-orientation four-matter source",
+      "fields": [
+        "Q",
+        "Q",
+        "Q",
+        "Q"
+      ],
+      "label": "conventional_Q4_epsilon",
+      "selector_signature": {
+        "U1F": 12,
+        "U1M_lift": 4,
+        "Z4M": 0,
+        "Z4R": 0,
+        "Z9": 3,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": false
+      }
+    },
+    {
+      "blocked_by_union_of_old_and_new_selectors": true,
+      "boundary": "standard same-orientation four-matter source",
+      "fields": [
+        "Qc",
+        "Qc",
+        "Qc",
+        "Qc"
+      ],
+      "label": "conventional_Qc4_epsilon",
+      "selector_signature": {
+        "U1F": -12,
+        "U1M_lift": -4,
+        "Z4M": 0,
+        "Z4R": 0,
+        "Z9": 6,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": false
+      }
+    },
+    {
+      "blocked_by_union_of_old_and_new_selectors": true,
+      "boundary": "QQQH precursor on the Sbc branch",
+      "fields": [
+        "ThetaMinus",
+        "Q",
+        "Q",
+        "Q",
+        "Sbc",
+        "H"
+      ],
+      "label": "left_one_PS_VEV_precursor",
+      "selector_signature": {
+        "U1F": 0,
+        "U1M_lift": 3,
+        "Z4M": 3,
+        "Z4R": 3,
+        "Z9": 0,
+        "allowed_by_new_Z4M": false,
+        "allowed_by_preexisting_V40_selectors": false
+      }
+    },
+    {
+      "blocked_by_union_of_old_and_new_selectors": true,
+      "boundary": "UDD precursor on the Sc branch",
+      "fields": [
+        "ThetaPlus",
+        "Qc",
+        "Qc",
+        "Qc",
+        "Sc"
+      ],
+      "label": "right_one_PS_VEV_precursor",
+      "selector_signature": {
+        "U1F": 0,
+        "U1M_lift": -3,
+        "Z4M": 1,
+        "Z4R": 3,
+        "Z9": 0,
+        "allowed_by_new_Z4M": false,
+        "allowed_by_preexisting_V40_selectors": false
+      }
+    },
+    {
+      "blocked_by_union_of_old_and_new_selectors": true,
+      "boundary": "LQD/LLE precursor",
+      "fields": [
+        "Q",
+        "Q",
+        "Qc",
+        "Sc"
+      ],
+      "label": "delta_RPV_control",
+      "selector_signature": {
+        "U1F": 3,
+        "U1M_lift": 1,
+        "Z4M": 1,
+        "Z4R": 3,
+        "Z9": 3,
+        "allowed_by_new_Z4M": false,
+        "allowed_by_preexisting_V40_selectors": false
+      }
+    },
+    {
+      "blocked_by_union_of_old_and_new_selectors": true,
+      "boundary": "LH precursor",
+      "fields": [
+        "Q",
+        "H",
+        "Sc"
+      ],
+      "label": "bilinear_LH_control",
+      "selector_signature": {
+        "U1F": 3,
+        "U1M_lift": 1,
+        "Z4M": 1,
+        "Z4R": 1,
+        "Z9": 3,
+        "allowed_by_new_Z4M": false,
+        "allowed_by_preexisting_V40_selectors": false
+      }
+    },
+    {
+      "blocked_by_union_of_old_and_new_selectors": false,
+      "boundary": "required V40 Dirac neutrino operator",
+      "fields": [
+        "Q",
+        "H",
+        "Sc",
+        "NDirac"
+      ],
+      "label": "required_Dirac_operator",
+      "selector_signature": {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true
+      }
+    },
+    {
+      "blocked_by_union_of_old_and_new_selectors": true,
+      "boundary": "DeltaB=-1, DeltaL=-3 V42 witness",
+      "fields": [
+        "ThetaPlus",
+        "ThetaPlus",
+        "Qc",
+        "Qc",
+        "Qc",
+        "Qc",
+        "Qc",
+        "Qc",
+        "Sbc",
+        "Sbc"
+      ],
+      "label": "V42_six_matter_witness",
+      "selector_signature": {
+        "U1F": 0,
+        "U1M_lift": -6,
+        "Z4M": 2,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": false,
+        "allowed_by_preexisting_V40_selectors": true
+      }
+    }
+  ],
+  "ordinary_unbroken_selector_no_go": {
+    "analytic_proof": "For primitive q, the necessary no-GS gravitational congruence is eta(N) divides 3.  For odd N this permits N=3 (besides the trivial order one); for even N it permits N=2 or N=6.  Every permitted order divides six, so -6q is zero and cannot block the V42 witness.  If q is nonprimitive, replace N by its faithful action order N/gcd(N,q); the same argument applies.",
+    "assumptions": [
+      "an ordinary non-R Z_N selector remains unbroken on the PS/PQ/EW/Theta branch",
+      "Q has a primitive selector charge q while H, Sc, Sbc and the Theta VEVs are neutral modulo N",
+      "the V40 Yukawa and V41 Dirac terms are present, so q(Qc)=q(NDirac)=-q",
+      "all additional anomaly-repair fermions have residual-preserving full-rank masses",
+      "no Green--Schwarz/inflow/topological sector and no unpaired light chiral anomaly carrier is postulated"
+    ],
+    "charge_reduction": [
+      "Q H Qc=0 gives q(Qc)=-q(Q) because q(H)=0.",
+      "Q H Sc NDirac=0 gives q(NDirac)=-q(Q) because q(Sc)=0.",
+      "All other charged V40/vectorlike/messenger contributions pair and cancel in the linear gravitational row.",
+      "Thus A_gravity=-3q from the three NDirac fields, while the V42 witness has charge -6q."
+    ],
+    "no_decoupling_only_ordinary_discrete_gauge_repair_found": true,
+    "orders_that_both_pass_and_block_witness": [],
+    "ordinary_no_GS_orders_passing_necessary_screen": [
+      2,
+      3,
+      6
+    ],
+    "scan_N_2_to_96": [
+      {
+        "N": 2,
+        "blocks_V42_witness_for_primitive_q": false,
+        "eta": 1,
+        "gravity_necessary_screen_pass": true,
+        "mixed_PS_necessary_screen_pass": true,
+        "ordinary_no_GS_screen_pass": true
+      },
+      {
+        "N": 3,
+        "blocks_V42_witness_for_primitive_q": false,
+        "eta": 3,
+        "gravity_necessary_screen_pass": true,
+        "mixed_PS_necessary_screen_pass": true,
+        "ordinary_no_GS_screen_pass": true
+      },
+      {
+        "N": 4,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 2,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": true,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 5,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 5,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 6,
+        "blocks_V42_witness_for_primitive_q": false,
+        "eta": 3,
+        "gravity_necessary_screen_pass": true,
+        "mixed_PS_necessary_screen_pass": true,
+        "ordinary_no_GS_screen_pass": true
+      },
+      {
+        "N": 7,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 7,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 8,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 4,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": true,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 9,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 9,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 10,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 5,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 11,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 11,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 12,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 6,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": true,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 13,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 13,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 14,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 7,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 15,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 15,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 16,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 8,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 17,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 17,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 18,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 9,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 19,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 19,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 20,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 10,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 21,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 21,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 22,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 11,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 23,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 23,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 24,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 12,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": true,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 25,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 25,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 26,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 13,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 27,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 27,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 28,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 14,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 29,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 29,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 30,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 15,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 31,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 31,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 32,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 16,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 33,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 33,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 34,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 17,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 35,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 35,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 36,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 18,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 37,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 37,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 38,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 19,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 39,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 39,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 40,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 20,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 41,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 41,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 42,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 21,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 43,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 43,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 44,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 22,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 45,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 45,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 46,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 23,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 47,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 47,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 48,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 24,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 49,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 49,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 50,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 25,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 51,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 51,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 52,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 26,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 53,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 53,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 54,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 27,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 55,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 55,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 56,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 28,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 57,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 57,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 58,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 29,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 59,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 59,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 60,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 30,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 61,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 61,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 62,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 31,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 63,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 63,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 64,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 32,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 65,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 65,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 66,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 33,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 67,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 67,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 68,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 34,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 69,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 69,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 70,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 35,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 71,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 71,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 72,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 36,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 73,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 73,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 74,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 37,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 75,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 75,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 76,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 38,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 77,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 77,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 78,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 39,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 79,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 79,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 80,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 40,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 81,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 81,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 82,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 41,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 83,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 83,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 84,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 42,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 85,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 85,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 86,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 43,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 87,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 87,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 88,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 44,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 89,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 89,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 90,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 45,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 91,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 91,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 92,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 46,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 93,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 93,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 94,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 47,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 95,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 95,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      },
+      {
+        "N": 96,
+        "blocks_V42_witness_for_primitive_q": true,
+        "eta": 48,
+        "gravity_necessary_screen_pass": false,
+        "mixed_PS_necessary_screen_pass": false,
+        "ordinary_no_GS_screen_pass": false
+      }
+    ],
+    "scope_boundary": "This is not a theorem against a specified GS/inflow construction, a symmetry extension, a strongly coupled topological sector, or an explicitly retained massless anomaly carrier.  Each would require new quantized UV and spectrum data."
+  },
+  "required_term_audit": {
+    "V40_term_count": 36,
+    "all_U1F_neutral": true,
+    "all_Z4M_neutral": true,
+    "all_Z4R_target_two": true,
+    "all_Z9_neutral": true,
+    "meaning": "The candidate is a product selector: it leaves the V40 U(1)_F/Z9 charges and the V41 Dirac messenger unchanged, while every listed required term is neutral under Z4_M.",
+    "messenger_and_effective_term_count": 4,
+    "rows": [
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "X"
+        ],
+        "kind": "V40",
+        "label": "X_linear_PS"
+      },
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "X"
+        ],
+        "kind": "V40",
+        "label": "X_linear_PQ"
+      },
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "Zp"
+        ],
+        "kind": "V40",
+        "label": "Zp_linear_PS"
+      },
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "Zp"
+        ],
+        "kind": "V40",
+        "label": "Zp_linear_PQ"
+      },
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "X",
+          "Sbc",
+          "Sc"
+        ],
+        "kind": "V40",
+        "label": "X_Sbc_Sc"
+      },
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "X",
+          "P",
+          "Pb"
+        ],
+        "kind": "V40",
+        "label": "X_P_Pb"
+      },
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "Zp",
+          "Sbc",
+          "Sc"
+        ],
+        "kind": "V40",
+        "label": "Zp_Sbc_Sc"
+      },
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "Zp",
+          "P",
+          "Pb"
+        ],
+        "kind": "V40",
+        "label": "Zp_P_Pb"
+      },
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "X",
+          "X",
+          "X"
+        ],
+        "kind": "V40",
+        "label": "X_cubic"
+      },
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "X",
+          "X",
+          "Zp"
+        ],
+        "kind": "V40",
+        "label": "XXZp"
+      },
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "X",
+          "Zp",
+          "Zp"
+        ],
+        "kind": "V40",
+        "label": "XZpZp"
+      },
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "Zp",
+          "Zp",
+          "Zp"
+        ],
+        "kind": "V40",
+        "label": "Zp_cubic"
+      },
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "X",
+          "H",
+          "H"
+        ],
+        "kind": "V40",
+        "label": "X_HH"
+      },
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "X",
+          "SigC",
+          "SigBc"
+        ],
+        "kind": "V40",
+        "label": "X_SigC_SigBc"
+      },
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "Zp",
+          "H",
+          "H"
+        ],
+        "kind": "V40",
+        "label": "Zp_HH"
+      },
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "Zp",
+          "SigC",
+          "SigBc"
+        ],
+        "kind": "V40",
+        "label": "Zp_SigC_SigBc"
+      },
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "Sc",
+          "Sc",
+          "SigC"
+        ],
+        "kind": "V40",
+        "label": "ScScSigC"
+      },
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "Sbc",
+          "Sbc",
+          "SigBc"
+        ],
+        "kind": "V40",
+        "label": "SbcSbcSigBc"
+      },
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "Q",
+          "H",
+          "Qc"
+        ],
+        "kind": "V40",
+        "label": "Q_H_Qc"
+      },
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "Q",
+          "H",
+          "PsiC"
+        ],
+        "kind": "V40",
+        "label": "Q_H_PsiC"
+      },
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "Psi",
+          "H",
+          "Qc"
+        ],
+        "kind": "V40",
+        "label": "Psi_H_Qc"
+      },
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "Psi",
+          "H",
+          "PsiC"
+        ],
+        "kind": "V40",
+        "label": "Psi_H_PsiC"
+      },
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "P",
+          "PsiBar",
+          "Q"
+        ],
+        "kind": "V40",
+        "label": "P_PsiBar_Q"
+      },
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "P",
+          "PsiBar",
+          "Psi"
+        ],
+        "kind": "V40",
+        "label": "P_PsiBar_Psi"
+      },
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "P",
+          "PsiCBar",
+          "Qc"
+        ],
+        "kind": "V40",
+        "label": "P_PsiCBar_Qc"
+      },
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "P",
+          "PsiCBar",
+          "PsiC"
+        ],
+        "kind": "V40",
+        "label": "P_PsiCBar_PsiC"
+      },
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "Pb",
+          "A2",
+          "A32"
+        ],
+        "kind": "V40",
+        "label": "Pb_A2_A32"
+      },
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "P",
+          "A15",
+          "A17"
+        ],
+        "kind": "V40",
+        "label": "P_A15_A17"
+      },
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "P",
+          "A16",
+          "A16"
+        ],
+        "kind": "V40",
+        "label": "P_A16_A16"
+      },
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "STheta"
+        ],
+        "kind": "V40",
+        "label": "STheta_linear"
+      },
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "STheta",
+          "ThetaPlus",
+          "ThetaMinus"
+        ],
+        "kind": "V40",
+        "label": "STheta_ThetaPlus_ThetaMinus"
+      },
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "ThetaPlus",
+          "L0",
+          "Lminus9"
+        ],
+        "kind": "V40",
+        "label": "ThetaPlus_L_mass"
+      },
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "ThetaMinus",
+          "R0",
+          "Rplus9"
+        ],
+        "kind": "V40",
+        "label": "ThetaMinus_R_mass"
+      },
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "ThetaMinus",
+          "E4",
+          "E5"
+        ],
+        "kind": "V40",
+        "label": "ThetaMinus_E45_mass"
+      },
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "ThetaMinus",
+          "E3",
+          "E6"
+        ],
+        "kind": "V40",
+        "label": "ThetaMinus_E36_mass"
+      },
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "ThetaPlus",
+          "Eminus2",
+          "Eminus7"
+        ],
+        "kind": "V40",
+        "label": "ThetaPlus_Em2m7_mass"
+      },
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "Q",
+          "H",
+          "Fc"
+        ],
+        "kind": "V41_messenger",
+        "label": "Q_H_Fc"
+      },
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "F",
+          "Sc",
+          "NDirac"
+        ],
+        "kind": "V41_messenger",
+        "label": "F_Sc_NDirac"
+      },
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "F",
+          "Fc"
+        ],
+        "kind": "V41_messenger",
+        "label": "M_F_Fc"
+      },
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "Q",
+          "H",
+          "Sc",
+          "NDirac"
+        ],
+        "kind": "V41_messenger",
+        "label": "Dirac_effective_Q_H_Sc_NDirac"
+      },
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "SM"
+        ],
+        "kind": "new_M_parent",
+        "label": "SM_linear"
+      },
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "SM",
+          "PhiPlus",
+          "PhiMinus"
+        ],
+        "kind": "new_M_parent",
+        "label": "SM_PhiPlus_PhiMinus"
+      },
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "PhiPlus",
+          "LM0",
+          "LMminus4"
+        ],
+        "kind": "new_M_parent",
+        "label": "PhiPlus_LM_mass"
+      },
+      {
+        "U1F": 0,
+        "U1M_lift": 0,
+        "Z4M": 0,
+        "Z4R": 2,
+        "Z9": 0,
+        "allowed_by_new_Z4M": true,
+        "allowed_by_preexisting_V40_selectors": true,
+        "fields": [
+          "PhiMinus",
+          "RM0",
+          "RMplus4"
+        ],
+        "kind": "new_M_parent",
+        "label": "PhiMinus_RM_mass"
+      }
+    ]
+  },
+  "schema": "susy-v43-g7-z4m-selector-repair-audit-v1",
+  "scope": "A target-specific discrete-selector and anomaly-boundary audit.  It does not constitute a complete Pati--Salam invariant ring, a product-symmetry UV completion, a spectrum/vacuum calculation, or a proton-decay prediction.",
+  "source_manifest": [
+    {
+      "exists": true,
+      "path": "susy_v43_g7_z4m_selector_repair.py",
+      "sha256": "44ecbcdea5fc5b26bfa3f121d2a93ba3cfa57079cdf6587e1186d189e01cbbf4"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v43_g7_z4m_selector_repair.py",
+      "sha256": "3f70fa9ed4deb99105e8e774bdd40fab6ece1a09360cc5ab0ad02222d1da8dd2"
+    }
+  ],
+  "status": "V43_Z4M_TARGETED_G7_WITNESS_SELECTOR_ARITHMETIC_CERTIFIED__NO_DECOUPLING_ONLY_ORDINARY_DISCRETE_GAUGE_COMPLETION__G7_FAIL_CLOSED"
+}

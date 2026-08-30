@@ -1,0 +1,830 @@
+{
+  "authoritative_input": {
+    "PS_boundary": [
+      "3Q=(4,2,1)_+1",
+      "3Qc=(bar4,1,2)_-1",
+      "H=(1,2,2)_0"
+    ],
+    "PS_wall_group": "(SU4 x SU2L x SU2R)/Z2_diag x U(1)_F",
+    "bulk_group": "Spin(10) x U(1)_F, direct product",
+    "bulk_hypers": [
+      {
+        "eta0": 1,
+        "etaL": 1,
+        "name": "HLF",
+        "qF": 1,
+        "rep": "16",
+        "zero_mode": "LF"
+      },
+      {
+        "eta0": 1,
+        "etaL": 1,
+        "name": "HLA",
+        "qF": -4,
+        "rep": "bar16",
+        "zero_mode": "LA"
+      },
+      {
+        "eta0": -1,
+        "etaL": 1,
+        "name": "HRA",
+        "qF": -1,
+        "rep": "16",
+        "zero_mode": "RA"
+      },
+      {
+        "eta0": -1,
+        "etaL": 1,
+        "name": "HRF",
+        "qF": 4,
+        "rep": "bar16",
+        "zero_mode": "RF"
+      }
+    ],
+    "charge_normalization": "primitive local-particle U(1)_F unit charge",
+    "source_boundary": [
+      "ThetaPlus_+3",
+      "ThetaMinus_-3",
+      "STheta_0",
+      "126_0",
+      "bar126_0"
+    ],
+    "source_wall_group": "Spin(10) x U(1)_F before boundary Higgsing"
+  },
+  "conditional_U5_wall_simplification": {
+    "Spin10_branching_convention": "16 = 10_-1 + bar5_+3 + 1_-5",
+    "boundary_Higgs_pair": [
+      {
+        "SU5_rep": "1",
+        "name": "chiMinus",
+        "qF": 0,
+        "q_chi": -10
+      },
+      {
+        "SU5_rep": "1",
+        "name": "chiPlus",
+        "qF": 0,
+        "q_chi": 10
+      }
+    ],
+    "branching_checks": [
+      {
+        "SU5_rep": "10",
+        "n_ality": 2,
+        "n_ality_plus_2q_mod5": 0,
+        "q_chi": -1
+      },
+      {
+        "SU5_rep": "bar5",
+        "n_ality": -1,
+        "n_ality_plus_2q_mod5": 0,
+        "q_chi": 3
+      },
+      {
+        "SU5_rep": "1",
+        "n_ality": 0,
+        "n_ality_plus_2q_mod5": 0,
+        "q_chi": -5
+      }
+    ],
+    "formal_breaking": {
+      "before_quotient": "SU5 x Z10",
+      "component_group": "Z2 matter parity",
+      "global_form": "(SU5 x Z10)/Z5",
+      "matter_is_odd": true
+    },
+    "global_half_level_screen_alone_does_not_add_a_new_no_go": true,
+    "globally_certified": false,
+    "independent_V46_5D_result": {
+      "bulk_spinor_intrinsic_sign_assignments_scanned": 16,
+      "five_dimensional_shortcut_accepted": false,
+      "former_PS_half_spinor_zero_modes_remain_intact": false,
+      "locally_anomaly_free_assignments": 0,
+      "source": "SUSY_V46_SOURCE_HIGGS_RANK_AUDIT.json",
+      "unwanted_adjoint_chiral_zero_modes": 12,
+      "vector_parity_sectors_Vpp_Vpm_Vmp_Vmm": [
+        13,
+        8,
+        12,
+        12
+      ]
+    },
+    "new_exact_obligations": [
+      "exhibit the SU5 x U1_chi involution and its lift in Spin(10), including its square on 16/bar16",
+      "give every y=L component parity; an adjoint Z2 can lift as an order-four action on spinors",
+      "recompute every localized SU5, U1_chi, U1F and gravitational anomaly, including mixed abelian rows",
+      "prove the proposed paired etaL assignment cancels those rows rather than assuming it",
+      "recompute the PS/U5 intersection, zero modes and full boundary-mass rank component by component",
+      "write and solve a D-flat chiPlus/chiMinus boundary superpotential and physical Hessian",
+      "fix the residual global line lattice and redo CS quantization and the relative eta invariant",
+      "redo the local and cross-wall operator audit after removing 126/bar126"
+    ],
+    "permitted_as_complete_5D_shortcut": false,
+    "potential_advantage": "A neutral singlet pair can replace the full 126/bar126 boundary spectrum for the single job of removing U1_chi while retaining matter parity.",
+    "promoted_to_authoritative_candidate": false,
+    "quotient_representation_condition": "SU5 n-ality + 2 q_chi = 0 mod 5",
+    "singlet_pair_local_anomalies_cancel": {
+      "U1chi_cubed": 0,
+      "all_U1F_rows": 0,
+      "gravity_squared_U1chi": 0
+    },
+    "singlets_are_honest_quotient_representations": true,
+    "status": "REJECTED_BY_V46_5D_ZERO_MODE_AND_LOCAL_ANOMALY_AUDIT",
+    "wall_group": "(SU5 x U1_chi)/Z5"
+  },
+  "core_sha256": "652dd2dfbedd023480b9ead27cdb6a69155789d677565d711a8cecc7eb335470",
+  "decision": {
+    "G1_closed": false,
+    "PS_SU2_Witten_screens_pass": true,
+    "V45_killed_by_this_audit": false,
+    "actual_quotient_relative_eta_certified": false,
+    "common_orientation_net_displayed_half_levels_zero": true,
+    "complete_global_anomaly_audit": false,
+    "gates_promoted": [],
+    "physical_integer_CS_level_fixed": false,
+    "pure_combined_Z6_Dai_Freed_class_zero": true,
+    "pure_residual_Z3F_Dai_Freed_class_zero": true,
+    "pure_residual_matter_parity_class_zero": true,
+    "source_Spin10_only_Dai_Freed_screen_passes": true,
+    "traditional_homotopy_screen_passes": true,
+    "unavoidable_fractional_5D_half_level_obstruction_found": false
+  },
+  "five_dimensional_parity_half_levels": {
+    "arbitrary_independent_regulator_signs_can_change_only_integer_levels": true,
+    "common_regulator_orientation_net_shift_zero": true,
+    "common_sigma_totals": {
+      "delta_k_F_Spin10_squared": 0,
+      "delta_k_F_cubed": 0,
+      "delta_k_F_gravity": 0,
+      "delta_k_Spin10_cubed": 0
+    },
+    "every_individual_displayed_shift_has_zero_fractional_part": true,
+    "every_individual_shift_lies_in_closed_spin_U1_free_lattice": true,
+    "normalization": {
+      "Spin10_quadratic_index": "T(10)=1, T(16)=T(bar16)=2",
+      "bulk_Dirac_formula": {
+        "F_Spin10_squared": "sigma q T(R)/2",
+        "F_cubed": "sigma dim(R) q^3/2",
+        "F_gravity": "sigma dim(R) q/2"
+      },
+      "primitive_U1F_unit": 1,
+      "sigma": "regulator or massive-fermion orientation sign, not fixed by V45"
+    },
+    "pair_totals": {
+      "charge_four_pair_HLA_HRF": {
+        "delta_k_F_Spin10_squared": 0,
+        "delta_k_F_cubed": 0,
+        "delta_k_F_gravity": 0,
+        "delta_k_Spin10_cubed": 0
+      },
+      "unit_charge_pair_HLF_HRA": {
+        "delta_k_F_Spin10_squared": 0,
+        "delta_k_F_cubed": 0,
+        "delta_k_F_gravity": 0,
+        "delta_k_Spin10_cubed": 0
+      }
+    },
+    "physical_integer_CS_levels_determined": false,
+    "pure_Spin10_cubic_note": "D5 has no rank-three symmetric invariant, so the perturbative Spin(10)^3 row vanishes.",
+    "rows_at_sigma_plus": [
+      {
+        "T_rep_T10_vector_eq_1": 2,
+        "all_displayed_half_levels_integral": true,
+        "closed_spin_U1_basis": {
+          "(k_F_cubed-k_F_gravity)/6": 0,
+          "k_F_gravity": 8
+        },
+        "delta_k_F_Spin10_squared": 1,
+        "delta_k_F_cubed": 8,
+        "delta_k_F_gravity": 8,
+        "delta_k_Spin10_cubed": 0,
+        "dim_rep": 16,
+        "eta0": 1,
+        "etaL": 1,
+        "name": "HLF",
+        "qF": 1,
+        "rep": "16",
+        "zero_mode": "LF"
+      },
+      {
+        "T_rep_T10_vector_eq_1": 2,
+        "all_displayed_half_levels_integral": true,
+        "closed_spin_U1_basis": {
+          "(k_F_cubed-k_F_gravity)/6": -80,
+          "k_F_gravity": -32
+        },
+        "delta_k_F_Spin10_squared": -4,
+        "delta_k_F_cubed": -512,
+        "delta_k_F_gravity": -32,
+        "delta_k_Spin10_cubed": 0,
+        "dim_rep": 16,
+        "eta0": 1,
+        "etaL": 1,
+        "name": "HLA",
+        "qF": -4,
+        "rep": "bar16",
+        "zero_mode": "LA"
+      },
+      {
+        "T_rep_T10_vector_eq_1": 2,
+        "all_displayed_half_levels_integral": true,
+        "closed_spin_U1_basis": {
+          "(k_F_cubed-k_F_gravity)/6": 0,
+          "k_F_gravity": -8
+        },
+        "delta_k_F_Spin10_squared": -1,
+        "delta_k_F_cubed": -8,
+        "delta_k_F_gravity": -8,
+        "delta_k_Spin10_cubed": 0,
+        "dim_rep": 16,
+        "eta0": -1,
+        "etaL": 1,
+        "name": "HRA",
+        "qF": -1,
+        "rep": "16",
+        "zero_mode": "RA"
+      },
+      {
+        "T_rep_T10_vector_eq_1": 2,
+        "all_displayed_half_levels_integral": true,
+        "closed_spin_U1_basis": {
+          "(k_F_cubed-k_F_gravity)/6": 80,
+          "k_F_gravity": 32
+        },
+        "delta_k_F_Spin10_squared": 4,
+        "delta_k_F_cubed": 512,
+        "delta_k_F_gravity": 32,
+        "delta_k_Spin10_cubed": 0,
+        "dim_rep": 16,
+        "eta0": -1,
+        "etaL": 1,
+        "name": "HRF",
+        "qF": 4,
+        "rep": "bar16",
+        "zero_mode": "RF"
+      }
+    ],
+    "source_wall_half_anomaly_rows": [
+      {
+        "etaL": 1,
+        "half_4d_Spin10_cubed": 0,
+        "half_4d_U1F_Spin10_squared_doubled": 2,
+        "half_4d_U1F_cubed": 8,
+        "half_4d_gravity_squared_U1F": 8,
+        "name": "HLF",
+        "qF": 1
+      },
+      {
+        "etaL": 1,
+        "half_4d_Spin10_cubed": 0,
+        "half_4d_U1F_Spin10_squared_doubled": -8,
+        "half_4d_U1F_cubed": -512,
+        "half_4d_gravity_squared_U1F": -32,
+        "name": "HLA",
+        "qF": -4
+      },
+      {
+        "etaL": 1,
+        "half_4d_Spin10_cubed": 0,
+        "half_4d_U1F_Spin10_squared_doubled": -2,
+        "half_4d_U1F_cubed": -8,
+        "half_4d_gravity_squared_U1F": -8,
+        "name": "HRA",
+        "qF": -1
+      },
+      {
+        "etaL": 1,
+        "half_4d_Spin10_cubed": 0,
+        "half_4d_U1F_Spin10_squared_doubled": 8,
+        "half_4d_U1F_cubed": 512,
+        "half_4d_gravity_squared_U1F": 32,
+        "name": "HRF",
+        "qF": 4
+      }
+    ],
+    "source_wall_half_anomaly_totals": {
+      "half_4d_Spin10_cubed": 0,
+      "half_4d_U1F_Spin10_squared_doubled": 0,
+      "half_4d_U1F_cubed": 0,
+      "half_4d_gravity_squared_U1F": 0
+    },
+    "unavoidable_fractional_parity_counterterm_obstruction_found": false,
+    "why_not_determined": "V45 does not fix the gauge-invariant regulator, odd bulk-mass signs, or the full compact product/relative Chern--Simons lattice.  Those choices can change integer levels even though no listed fermion misses the conventional closed-spin free lattice."
+  },
+  "homotopy_and_four_dimensional_bordism_screens": {
+    "PS_SU2_Witten_screen": {
+      "after_Theta_exotic_masses": {
+        "SU2L_fundamental_doublets": 14,
+        "SU2R_fundamental_doublets": 14
+      },
+      "all_counts_even": true,
+      "before_Theta_exotic_masses": {
+        "SU2L_fundamental_doublets": 22,
+        "SU2R_fundamental_doublets": 22
+      },
+      "counting_note": "The light values are 12 family doublets plus two doublets from H on each side; the four exotic zero modes add eight doublets to the corresponding side."
+    },
+    "actual_group_warning": {
+      "actual_PS_wall": "(SU4 x SU2L x SU2R)/Z2_diag",
+      "reason": "The cited Pati--Salam bordism computation explicitly treats the unquotiented product and states that centre-quotient variants require a different computation.",
+      "unquotiented_PS_result_applies_verbatim": false
+    },
+    "full_interval_bordism_or_eta_complete": false,
+    "known_closed_4d_bordism_results": {
+      "Omega5Spin_BSpin10": "0 for Spin(n), n>=8",
+      "Omega5Spin_B_unquotiented_PS": "Z2 x Z2",
+      "source_Spin10_only_Dai_Freed_obstruction": false,
+      "unquotiented_PS_class_for_this_spectrum": "0 by the even counts above",
+      "unquotiented_PS_generators": "the two ordinary SU(2) Witten anomalies"
+    },
+    "neutral_210_repair_effect": {
+      "Spin10_rep_is_real": true,
+      "changes_displayed_U1F_or_residual_finite_rows": false,
+      "if_adopted_from_V46_source_Higgs_audit": true,
+      "matter_parity_even": true,
+      "must_still_be_included_in_full_boundary_eta_operator": true,
+      "qF": 0
+    },
+    "traditional_sphere_mapping_screen": {
+      "bulk_product_pi4": 0,
+      "bulk_product_pi5": 0,
+      "pi4_Spin10": 0,
+      "pi4_U1": 0,
+      "pi5_Spin10": 0,
+      "pi5_U1": 0,
+      "qualification": "These stable Bott-periodicity values exclude the traditional pi4/pi5 alarms; homotopy is neither a necessary nor a sufficient classification of global anomalies.",
+      "screen_passes": true
+    }
+  },
+  "primary_sources": [
+    {
+      "url": "https://arxiv.org/abs/1302.2918",
+      "use": "one-loop 5D gauge and gravitational Chern--Simons shifts from massive Dirac fermions"
+    },
+    {
+      "url": "https://arxiv.org/abs/1909.08775",
+      "use": "nonperturbative anomaly inflow and the APS eta invariant"
+    },
+    {
+      "url": "https://arxiv.org/abs/1808.02881",
+      "use": "exact Dai--Freed anomaly congruences for untwisted Spin x Z_n"
+    },
+    {
+      "url": "https://arxiv.org/abs/1808.00009",
+      "use": "Omega_5^Spin(BSpin(n))=0 for n>=8 and Spin(10) Dai--Freed audit"
+    },
+    {
+      "url": "https://arxiv.org/abs/1910.11277",
+      "use": "unquotiented Pati--Salam bordism Z2 x Z2 and explicit quotient caveat"
+    },
+    {
+      "url": "https://arxiv.org/abs/2012.11693",
+      "use": "why homotopy groups do not classify global anomalies"
+    },
+    {
+      "url": "https://arxiv.org/abs/hep-th/0110073",
+      "use": "localized fermion anomalies in orbifold field theories"
+    },
+    {
+      "url": "https://arxiv.org/abs/hep-th/0305024",
+      "use": "orbifold projector formula and local versus integrated anomaly cancellation"
+    },
+    {
+      "url": "https://arxiv.org/abs/2311.18023",
+      "use": "explicit warning that product symmetries can possess new mixed torsion anomalies"
+    }
+  ],
+  "provenance": {
+    "files": [
+      {
+        "exists": true,
+        "path": "SUSY_V45_NEW_PHYSICS_MASTER_AUDIT.json",
+        "sha256": "67d452d07dc5a11aa6bc99d90b89c1caa44b065ca872029295fa07e7addfe97e"
+      },
+      {
+        "exists": true,
+        "path": "SUSY_V45_RECONCILED_BULK_SPINOR_AUDIT.json",
+        "sha256": "92dc538c67d1e455d8eab36a1d3a1cd7ccb254f1a131cb9af30f4eb45ab35a38"
+      },
+      {
+        "exists": true,
+        "path": "SUSY_V45_S0_GROUP_ZERO_MODE_AUDIT.json",
+        "sha256": "dd982bd79da39f8d59870fdcd3d3da74515a527ac14415d510dab65136e5e2a5"
+      },
+      {
+        "exists": true,
+        "path": "SUSY_V46_SOURCE_HIGGS_RANK_AUDIT.json",
+        "sha256": "ee9fd4b3c1a1f2bd7796d6b637d5dc6d483d31a6c402f8dfc6d4692840e3929c"
+      },
+      {
+        "exists": true,
+        "path": "susy_v46_global_parity_eta_audit.py",
+        "sha256": "7e97cc93e9cb8340a092d28540429e6248584dd9665b1ba8dba50d7b861d5f91"
+      },
+      {
+        "exists": true,
+        "path": "test_susy_v46_global_parity_eta_audit.py",
+        "sha256": "e0688371d71f9db04b9e71437db849993520181f0654a9e022569f56f898947f"
+      }
+    ]
+  },
+  "relative_interval_eta": {
+    "certified": false,
+    "example_supporting_fail_closed_policy": "Spin x (U1 x Z2) has a Z4 bordism anomaly even though Spin x U1 alone has no 4D global anomaly; therefore factorwise screens cannot replace the actual combined calculation.",
+    "missing_inputs_or_computations": [
+      "the exact lift of both orbifold twists to Spin(10) on every bulk representation",
+      "the compact line/operator lattice and all allowed non-liftable PS/Z2_diag boundary bundles",
+      "the relative or stratified spin-bordism group for the bulk group with its two boundary reductions",
+      "self-adjoint fermion boundary conditions after every allowed source mass, including bar126 HLF HRA and 126 HLA HRF as well as the two Theta masses",
+      "the regulated KK eta spectrum, including gauginos, hyperinos, boundary fermions, ghosts and the neutral 210 boundary fermion if the V46 source-Higgs repair is adopted",
+      "the regulator orientation, every odd bulk-mass sign and the quantized bare gauge/gravity CS lattice",
+      "an evaluation on generators or a six-dimensional extension proof that the total phase is one"
+    ],
+    "problem": "Evaluate the exponentiated APS eta invariant of the complete 5D fermion/ghost system for every allowed large gauge transformation and gravitational background of the compact interval theory, including the two inequivalent boundary reductions.",
+    "why_local_cancellation_is_not_enough": "The eta invariant agrees perturbatively with Chern--Simons inflow but contains torsion/global information.  Product symmetries can have mixed torsion absent in either factor separately."
+  },
+  "residual_Z3F_and_matter_parity": {
+    "Higgsing": {
+      "Delta_126_VEV_preserves_Z2M": true,
+      "Theta_charges": [
+        3,
+        -3
+      ],
+      "abstract_finite_group": "Z3F x Z2M isomorphic to Z6 by CRT",
+      "faithful_U1F_remnant": "Z3F",
+      "matter_parity_action": "odd on 16/bar16 matter, even on H, Theta, 126/bar126 and gauge fields",
+      "matter_parity_origin": "the order-two square of the Spin(10) Z4 centre",
+      "spacetime_structure": "untwisted Spin x Z6, not Spin^Z4 and not an R symmetry"
+    },
+    "combined_with_actual_PS_quotient_and_interval_certified": false,
+    "mass_terms": {
+      "HLF_LA_Z6_sum": 0,
+      "RA_RF_Z6_sum": 0,
+      "ThetaMinus_HRA_HRF_Z3_sum": 0,
+      "ThetaPlus_HLF_HLA_Z3_sum": 0,
+      "all_residual_finite_symmetries_preserved": true
+    },
+    "mod16_warning": "No mod-16 condition is invoked: that condition belongs to twisted Spin^Z4/time-reversal-like structures, whereas Z2M here is an ordinary internal matter parity.",
+    "phases": {
+      "before_exotic_masses": {
+        "Spin_times_Z2M": {
+          "Dai_Freed_class_zero": true,
+          "Delta_s1": 80,
+          "Delta_s3": 80,
+          "cubic_condition": "(n^2+3n+2) Delta_s3 = 0 mod 6n",
+          "cubic_lhs": 960,
+          "cubic_modulus": 12,
+          "cubic_residue": 0,
+          "linear_condition": "2 Delta_s1 = 0 mod n",
+          "linear_lhs": 160,
+          "linear_modulus": 2,
+          "linear_residue": 0,
+          "n": 2,
+          "signed_charge_multiplicities": [
+            {
+              "charge": 1,
+              "multiplicity": 24
+            },
+            {
+              "charge": 1,
+              "multiplicity": 24
+            },
+            {
+              "charge": 0,
+              "multiplicity": 4
+            },
+            {
+              "charge": 1,
+              "multiplicity": 8
+            },
+            {
+              "charge": 1,
+              "multiplicity": 8
+            },
+            {
+              "charge": 1,
+              "multiplicity": 8
+            },
+            {
+              "charge": 1,
+              "multiplicity": 8
+            }
+          ]
+        },
+        "Spin_times_Z3F": {
+          "Dai_Freed_class_zero": true,
+          "Delta_s1": 0,
+          "Delta_s3": 0,
+          "cubic_condition": "(n^2+3n+2) Delta_s3 = 0 mod 6n",
+          "cubic_lhs": 0,
+          "cubic_modulus": 18,
+          "cubic_residue": 0,
+          "linear_condition": "2 Delta_s1 = 0 mod n",
+          "linear_lhs": 0,
+          "linear_modulus": 3,
+          "linear_residue": 0,
+          "n": 3,
+          "signed_charge_multiplicities": [
+            {
+              "charge": 1,
+              "multiplicity": 24
+            },
+            {
+              "charge": -1,
+              "multiplicity": 24
+            },
+            {
+              "charge": 0,
+              "multiplicity": 4
+            },
+            {
+              "charge": 1,
+              "multiplicity": 8
+            },
+            {
+              "charge": -1,
+              "multiplicity": 8
+            },
+            {
+              "charge": -1,
+              "multiplicity": 8
+            },
+            {
+              "charge": 1,
+              "multiplicity": 8
+            }
+          ]
+        },
+        "Spin_times_Z6_CRT": {
+          "Dai_Freed_class_zero": true,
+          "Delta_s1": 0,
+          "Delta_s3": 0,
+          "cubic_condition": "(n^2+3n+2) Delta_s3 = 0 mod 6n",
+          "cubic_lhs": 0,
+          "cubic_modulus": 36,
+          "cubic_residue": 0,
+          "linear_condition": "2 Delta_s1 = 0 mod n",
+          "linear_lhs": 0,
+          "linear_modulus": 6,
+          "linear_residue": 0,
+          "n": 6,
+          "signed_charge_multiplicities": [
+            {
+              "charge": 1,
+              "multiplicity": 24
+            },
+            {
+              "charge": -1,
+              "multiplicity": 24
+            },
+            {
+              "charge": 0,
+              "multiplicity": 4
+            },
+            {
+              "charge": 1,
+              "multiplicity": 8
+            },
+            {
+              "charge": -1,
+              "multiplicity": 8
+            },
+            {
+              "charge": -1,
+              "multiplicity": 8
+            },
+            {
+              "charge": 1,
+              "multiplicity": 8
+            }
+          ]
+        },
+        "conventional_mixed_PS_doubled_rows": {
+          "Z2M": {
+            "SU2L_squared": 20,
+            "SU2R_squared": 20,
+            "SU4_squared": 20,
+            "gravity": 80
+          },
+          "Z3F": {
+            "SU2L_squared": 12,
+            "SU2R_squared": -12,
+            "SU4_squared": 0,
+            "gravity": 0
+          },
+          "Z6_CRT": {
+            "SU2L_squared": 12,
+            "SU2R_squared": -12,
+            "SU4_squared": 0,
+            "gravity": 0
+          }
+        },
+        "fermions": [
+          {
+            "Z2M": 1,
+            "Z3F": 1,
+            "Z6_CRT": 1,
+            "name": "3Q",
+            "qF": 1,
+            "weyl_multiplicity": 24
+          },
+          {
+            "Z2M": 1,
+            "Z3F": -1,
+            "Z6_CRT": -1,
+            "name": "3Qc",
+            "qF": -1,
+            "weyl_multiplicity": 24
+          },
+          {
+            "Z2M": 0,
+            "Z3F": 0,
+            "Z6_CRT": 0,
+            "name": "H",
+            "qF": 0,
+            "weyl_multiplicity": 4
+          },
+          {
+            "Z2M": 1,
+            "Z3F": 1,
+            "Z6_CRT": 1,
+            "name": "LF",
+            "qF": 1,
+            "weyl_multiplicity": 8
+          },
+          {
+            "Z2M": 1,
+            "Z3F": -1,
+            "Z6_CRT": -1,
+            "name": "LA",
+            "qF": -4,
+            "weyl_multiplicity": 8
+          },
+          {
+            "Z2M": 1,
+            "Z3F": -1,
+            "Z6_CRT": -1,
+            "name": "RA",
+            "qF": -1,
+            "weyl_multiplicity": 8
+          },
+          {
+            "Z2M": 1,
+            "Z3F": 1,
+            "Z6_CRT": 1,
+            "name": "RF",
+            "qF": 4,
+            "weyl_multiplicity": 8
+          }
+        ],
+        "mixed_rows_divisible_by_respective_modulus": {
+          "Z2M": true,
+          "Z3F": true,
+          "Z6_CRT": true
+        }
+      },
+      "light_after_exotic_masses": {
+        "Spin_times_Z2M": {
+          "Dai_Freed_class_zero": true,
+          "Delta_s1": 48,
+          "Delta_s3": 48,
+          "cubic_condition": "(n^2+3n+2) Delta_s3 = 0 mod 6n",
+          "cubic_lhs": 576,
+          "cubic_modulus": 12,
+          "cubic_residue": 0,
+          "linear_condition": "2 Delta_s1 = 0 mod n",
+          "linear_lhs": 96,
+          "linear_modulus": 2,
+          "linear_residue": 0,
+          "n": 2,
+          "signed_charge_multiplicities": [
+            {
+              "charge": 1,
+              "multiplicity": 24
+            },
+            {
+              "charge": 1,
+              "multiplicity": 24
+            },
+            {
+              "charge": 0,
+              "multiplicity": 4
+            }
+          ]
+        },
+        "Spin_times_Z3F": {
+          "Dai_Freed_class_zero": true,
+          "Delta_s1": 0,
+          "Delta_s3": 0,
+          "cubic_condition": "(n^2+3n+2) Delta_s3 = 0 mod 6n",
+          "cubic_lhs": 0,
+          "cubic_modulus": 18,
+          "cubic_residue": 0,
+          "linear_condition": "2 Delta_s1 = 0 mod n",
+          "linear_lhs": 0,
+          "linear_modulus": 3,
+          "linear_residue": 0,
+          "n": 3,
+          "signed_charge_multiplicities": [
+            {
+              "charge": 1,
+              "multiplicity": 24
+            },
+            {
+              "charge": -1,
+              "multiplicity": 24
+            },
+            {
+              "charge": 0,
+              "multiplicity": 4
+            }
+          ]
+        },
+        "Spin_times_Z6_CRT": {
+          "Dai_Freed_class_zero": true,
+          "Delta_s1": 0,
+          "Delta_s3": 0,
+          "cubic_condition": "(n^2+3n+2) Delta_s3 = 0 mod 6n",
+          "cubic_lhs": 0,
+          "cubic_modulus": 36,
+          "cubic_residue": 0,
+          "linear_condition": "2 Delta_s1 = 0 mod n",
+          "linear_lhs": 0,
+          "linear_modulus": 6,
+          "linear_residue": 0,
+          "n": 6,
+          "signed_charge_multiplicities": [
+            {
+              "charge": 1,
+              "multiplicity": 24
+            },
+            {
+              "charge": -1,
+              "multiplicity": 24
+            },
+            {
+              "charge": 0,
+              "multiplicity": 4
+            }
+          ]
+        },
+        "conventional_mixed_PS_doubled_rows": {
+          "Z2M": {
+            "SU2L_squared": 12,
+            "SU2R_squared": 12,
+            "SU4_squared": 12,
+            "gravity": 48
+          },
+          "Z3F": {
+            "SU2L_squared": 12,
+            "SU2R_squared": -12,
+            "SU4_squared": 0,
+            "gravity": 0
+          },
+          "Z6_CRT": {
+            "SU2L_squared": 12,
+            "SU2R_squared": -12,
+            "SU4_squared": 0,
+            "gravity": 0
+          }
+        },
+        "fermions": [
+          {
+            "Z2M": 1,
+            "Z3F": 1,
+            "Z6_CRT": 1,
+            "name": "3Q",
+            "qF": 1,
+            "weyl_multiplicity": 24
+          },
+          {
+            "Z2M": 1,
+            "Z3F": -1,
+            "Z6_CRT": -1,
+            "name": "3Qc",
+            "qF": -1,
+            "weyl_multiplicity": 24
+          },
+          {
+            "Z2M": 0,
+            "Z3F": 0,
+            "Z6_CRT": 0,
+            "name": "H",
+            "qF": 0,
+            "weyl_multiplicity": 4
+          }
+        ],
+        "mixed_rows_divisible_by_respective_modulus": {
+          "Z2M": true,
+          "Z3F": true,
+          "Z6_CRT": true
+        }
+      }
+    },
+    "pure_finite_Dai_Freed_result": "Both before and after the exotic masses, the Z3 and the full CRT-combined Z6 spectra are exactly balanced between signed charges +1 and -1.  Hsieh's exact Spin x Zn congruences therefore vanish.  The ordinary internal Z2 class is also trivial."
+  },
+  "schema": "susy-v46-global-parity-eta-audit-v1",
+  "scientific_verdict": "V46 finds no fractional parity-level, traditional homotopy, SU(2) Witten, or residual finite-symmetry obstruction in the fixed V45 spectrum.  This is real progress but not closure: the compact PS centre quotient, two boundary reductions, regulator/CS lattice and full KK eta determinant have not been assembled into a relative bordism calculation.",
+  "scope": "Global/parity/eta screens for the exact primitive-charge V45 compact witness, plus a fail-closed assessment of the proposed U5-wall simplification.",
+  "status": "V46_NO_UNAVOIDABLE_FRACTIONAL_5D_HALF_LEVEL_OBSTRUCTION__TRADITIONAL_HOMOTOPY_AND_WITTEN_SCREENS_PASS__RESIDUAL_Z3_AND_MATTER_PARITY_COMBINED_Z6_DAI_FREED_CLASS_ZERO__U5_WALL_SHORTCUT_REJECTED_IN_5D__ACTUAL_QUOTIENT_INTERVAL_RELATIVE_ETA_BORDISM_OPEN__NO_GATE_PROMOTED"
+}

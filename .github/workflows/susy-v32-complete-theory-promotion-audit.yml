@@ -1,0 +1,36 @@
+name: SUSY V32 complete-theory promotion audit
+
+on:
+  push:
+    paths:
+      - "susy_v32_complete_theory_promotion_audit.py"
+      - "test_susy_v32_complete_theory_promotion_audit.py"
+      - "SUSY_V32_COMPLETE_THEORY_PROMOTION_AUDIT.json"
+      - "SUSY_V32_COMPLETE_THEORY_PROMOTION_AUDIT.md"
+      - "SUSY_V32_CORRECTED_PHYSICS_LEDGER.json"
+      - "SUSY_V32_G1_G8_GATE_LEDGER.json"
+      - "SUSY_V32_REQUIRED_DERIVATIONS.json"
+      - ".github/workflows/susy-v32-complete-theory-promotion-audit.yml"
+  pull_request:
+    paths:
+      - "susy_v32_complete_theory_promotion_audit.py"
+      - "test_susy_v32_complete_theory_promotion_audit.py"
+      - "SUSY_V32_COMPLETE_THEORY_PROMOTION_AUDIT.json"
+      - "SUSY_V32_COMPLETE_THEORY_PROMOTION_AUDIT.md"
+      - "SUSY_V32_CORRECTED_PHYSICS_LEDGER.json"
+      - "SUSY_V32_G1_G8_GATE_LEDGER.json"
+      - "SUSY_V32_REQUIRED_DERIVATIONS.json"
+      - ".github/workflows/susy-v32-complete-theory-promotion-audit.yml"
+  workflow_dispatch:
+
+jobs:
+  verify-v32:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install pytest
+      - run: python -B susy_v32_complete_theory_promotion_audit.py --check
+      - run: python -m pytest -q test_susy_v32_complete_theory_promotion_audit.py

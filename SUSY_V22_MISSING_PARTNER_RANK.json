@@ -1,0 +1,110 @@
+{
+  "schema": "susy_v22_missing_partner_rank_v1",
+  "status": "CORRECTED_MISSING_PARTNER_MULTIPLICITY_AND_EXACT_RANK_WITNESS_CLOSED__COMPONENT_G4_OPEN",
+  "sources": {
+    "corrected_model": {
+      "path": "models/SO10X17SUSYV22/SO10X17SUSYV22.m",
+      "portable_sha256": "a253e40e712287d654122b74ac94ceeb05b5fc3dddcf8c2af2c790af99be45d4"
+    },
+    "primary_missing_partner_reference": {
+      "title": "Missing Partner Mechanism in SO(10) Grand Unification",
+      "arXiv": "hep-ph/0612315"
+    },
+    "representation_count_reference": {
+      "title": "Variety of SO(10) GUTs with Natural Doublet-Triplet Splitting via the Missing Partner Mechanism",
+      "arXiv": "1112.5387"
+    }
+  },
+  "representation_pair_counts": {
+    "initial_one_126_pair": {
+      "light_doublet_pairs": 6,
+      "light_triplet_pairs": 6,
+      "heavy_doublet_pairs": 3,
+      "heavy_triplet_pairs": 4
+    },
+    "corrected_two_126_pairs": {
+      "light_doublet_pairs": 6,
+      "light_triplet_pairs": 6,
+      "heavy_doublet_pairs": 5,
+      "heavy_triplet_pairs": 7
+    }
+  },
+  "initial_failure": {
+    "minimum_unpaired_doublet_pairs": 3,
+    "minimum_unpaired_triplet_pairs": 2,
+    "accepted_for_V22": false
+  },
+  "corrected_rank_certificate": {
+    "doublet_matrix_shape": [
+      11,
+      11
+    ],
+    "doublet_rank": 10,
+    "doublet_nullity": 1,
+    "triplet_matrix_shape": [
+      13,
+      13
+    ],
+    "triplet_rank": 13,
+    "triplet_nullity": 0,
+    "matrix_entry_domain": "Z",
+    "top_left_light_light_block": "exact zero in the unbroken source-declared Z4R holomorphic limit, conditional on every R4=2 field having zero VEV",
+    "interpretation": "the determinant/minor polynomials are nonzero, hence these ranks hold on a nonempty Zariski-open parameter set once the accepted G1 basis and actual Clebsch map span the witness"
+  },
+  "required_model_correction": {
+    "add": [
+      "DeltaB2: bar126, X=-2",
+      "Delta2: 126, X=+2",
+      "XMP: singlet, X=0, literature MP grading +2"
+    ],
+    "source_landed": true,
+    "literature_MP_grading_only": {
+      "light_10_120": "+1",
+      "heavy_126_126bar": "-1",
+      "Phi210": "0",
+      "matter_16": "-1/2"
+    },
+    "source_declared_continuous_U1_MP": false,
+    "Z4R_conditionally_forbids": [
+      "light-light GUT mass block",
+      "H10m.H10p",
+      "T120m.T120p"
+    ],
+    "allows": [
+      "Phi210.light.heavy",
+      "XMP.heavy.heavy",
+      "matter.matter.light"
+    ]
+  },
+  "remaining_exact_work": [
+    "repair and close the G1 operator basis before selecting the component mass operators",
+    "derive the full SO(10)->SM doublet and triplet Clebsch matrices and prove their ranks at one source-exact parameter point after G1 repair",
+    "solve the complete V22 F+D+soft vacuum, with C16/C16bar breaking the rank and every missing-partner 126/126bar VEV exactly zero, and exclude deeper branches",
+    "prove the light-light block remains zero against every allowed higher-dimensional operator",
+    "run the complete perturbativity/RGE and pole-spectrum bridge to the exact 174 GeV endpoint"
+  ],
+  "checks": {
+    "initial_vectorlike_scaffold_is_not_missing_partner_complete": true,
+    "corrected_doublet_count_differs_by_exactly_one": true,
+    "corrected_heavy_triplet_count_is_not_deficient": true,
+    "exact_doublet_witness_has_one_zero_pair": true,
+    "exact_triplet_witness_is_full_rank": true,
+    "light_light_superpotential_block_is_exactly_zero": true,
+    "rank_claim_is_structural_not_a_component_CG_claim": true,
+    "corrected_second_126_pair_is_source_landed": true,
+    "continuous_U1_MP_is_not_misrepresented_as_source_declared": true,
+    "canonical_G4_not_promoted_before_component_and_RGE_proofs": true
+  },
+  "n_checks": 10,
+  "n_failed": 0,
+  "failures": [],
+  "claim_boundary": {
+    "initial_V22_scaffold_rejected": true,
+    "corrected_missing_partner_architecture_exists": true,
+    "corrected_missing_partner_fields_source_landed": true,
+    "source_exact_component_missing_partner_closed": false,
+    "canonical_G4_closed": false,
+    "canonical_G5_closed": false
+  },
+  "core_sha256": "f292ed1270e54faa18f2ebe9ec45f85ecf6d119f55995e32dd0593ab3e2340b8"
+}

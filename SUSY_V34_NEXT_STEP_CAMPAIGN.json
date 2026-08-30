@@ -1,0 +1,68 @@
+{
+  "core_sha256": "053572fbf94c2583311de52beaa0ac9ab376b2c7ee5dab4751b890ebab65e1bb",
+  "decision": "V34 resolves the finite-anomaly and gauge-row coefficient questions, but proves that the visible-only Z33 and its charged-flux repair are not a complete microscopic theory; all full gates remain open",
+  "evidence_sha256": {
+    "SUSY_V34_G1_ANOMALY_INSTANTON_CLOSURE.json": "4b308315e1cb44ea223303f35564044575d4ff9e11991af64721a1186be2a30d",
+    "SUSY_V34_G1_G8_GATE_LEDGER.json": "736c4be2bd9678dcf6a04f4e5d3ba6daf1fd9e130a5488528ff80c903ee2a7e7",
+    "SUSY_V34_G6_PROJECTED_RGE_THRESHOLD.json": "925f0a8422e1f1514ab543e8b860766cb678de95b82dbd68bf943f137f3fb48e",
+    "SUSY_V34_NEW_PHYSICS_REPAIRS.json": "825ab419e1bdceda072a2521d940a46bedbf1e581d08a469e4b655e1ef85962f"
+  },
+  "schema": "susy-v34-next-step-campaign-v1",
+  "source_manifest": [
+    {
+      "exists": true,
+      "path": "susy_v34_next_step_campaign.py",
+      "sha256": "3e8c7bf6aa72995663a36b7d18d335f6e2593b88264e6e1f21cd8c21138b0ba7"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v34_next_step_campaign.py",
+      "sha256": "e4e7d5be9ad80b1a46a78a6b726edd157e938724d15ca8a1df18a08fa1847290"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V33_DERIVATION_CAMPAIGN.json",
+      "sha256": "5683d6848615143e07c5e01e90b106ef0db7a8007dcad0336c49069fbcba0a2f"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V33_EXACT_DERIVATIONS.json",
+      "sha256": "00c9502a7a0914580c368776200fc8221aededec713e4c055977e98972c35940"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V33_SARAH_RGE_ATTESTATION.json",
+      "sha256": "c828625f380d83df7fa5c34f8f8234b73017aa0f36949f144b39a0a641542291"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V24_PS_VACUUM_RG_FRONTIER.json",
+      "sha256": "4f47ca9b18902a744c138ddceeec461036e41c6803bb7d60a68a276e09499c0d"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V31_RGE_FLAVOUR_COSMOLOGY_LEDGER.json",
+      "sha256": "4f40733abcc3adcdfa32ceedc8c9fcefd5b6057261856fe36514387671073d0f"
+    },
+    {
+      "exists": true,
+      "path": ".github/workflows/susy-v34-next-step-campaign.yml",
+      "sha256": "b5b85982ad727bc050ce49869c98b6f80c5c2372f3e0b95310e59ab0812a04fc"
+    }
+  ],
+  "status": "V34_NEXT_STEPS_COMPLETE__BARE_Z33_DAI_FREED_ANOMALY_PROVED__MIXED_PRODUCT_FALSE_OBSTRUCTION_RETIRED__CHARGED_FLUX_Z33_INCOMPATIBILITY_PROVED__GAUGE_TWO_LOOP_COEFFICIENTS_RECONSTRUCTED__THRESHOLD_BRIDGE_EXISTS_CONDITIONALLY__ESTABLISHED_FULL_GATES_ZERO_OF_EIGHT__NO_COMPLETE_THEORY",
+  "summary": {
+    "bare_visible_Z33_Dai_Freed_anomaly_free": false,
+    "charged_flux_preserves_Z33": false,
+    "complete_theory_exists": false,
+    "conditional_leading_log_threshold_witness_exists": true,
+    "coupled_G6_solution_exists": false,
+    "established_full_predictive_closed_count": 0,
+    "frozen_SARAH_gauge_rows_normalized_projector_applied": true,
+    "gauge_row_Yukawa_coefficients_match_independent_norm_reference": true,
+    "materially_updated_frontier_count": 3,
+    "raw_gauge_coefficients_match_independent_reference": true,
+    "safe_to_claim_new_fundamental_law": false
+  },
+  "upstream_V33_core_sha256": "63ec68060d188cea4d7d483a540d18b25bfda991661c993f84d67df9fc2ed9d9"
+}

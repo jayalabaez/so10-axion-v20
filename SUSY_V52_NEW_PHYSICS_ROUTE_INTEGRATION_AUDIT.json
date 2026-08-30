@@ -1,0 +1,508 @@
+{
+  "V52_candidate_clause_ledger": [
+    {
+      "id": "C1",
+      "statement": "The most general declared renormalizable 54+45+16+bar16 source is explicit; the full matter/DT/portal action census is not.",
+      "status": "source_subsector_pass_only"
+    },
+    {
+      "id": "C2",
+      "statement": "The selected source is an ordinary local 4D action, but it is not the frozen V50 boundary regulator/action.",
+      "status": "new_action_locality_only"
+    },
+    {
+      "id": "C3",
+      "statement": "The source variational domain, gauge orbit, Ward identity and physical Hessian kernel are exact.",
+      "status": "source_subsector_exact"
+    },
+    {
+      "id": "C4",
+      "statement": "With canonical source Kahler metric, H-dagger-H is positive on all 98 physical source directions; the whole-theory metric is absent.",
+      "status": "source_subsector_exact"
+    },
+    {
+      "id": "C5",
+      "statement": "No V52 one-loop matching, counterterm map or matching-scale cancellation has been computed.",
+      "status": "open"
+    },
+    {
+      "id": "C6",
+      "statement": "An external Z2 survives the declared VEVs and passes the displayed mod-2 ledgers, but its UV embedding, complete operator census and natural DT protection are absent.",
+      "status": "partial_selector_ledger"
+    },
+    {
+      "id": "C7",
+      "statement": "No V52 component Clebsch basis or contracted physical Wilson array exists.",
+      "status": "open"
+    }
+  ],
+  "core_sha256": "9ffa78a63afd3ff0a1e948ff2deffc701f229c5b7cae46b354d6cf5ebecb3df8",
+  "gate_ledger": [
+    {
+      "advance": "Frozen V47 ordinary-Spin quotient/anomaly results remain a reusable lemma; this is not a same-action V52 reclosure.",
+      "blocker": "For an independently gauged V50-style U(1)F, the R1 spinor pair leaves an extra diagonal U(1) unless another charged sector is added; the complete V52 selector/UV quotient is not frozen.",
+      "closed": true,
+      "gate": "G1"
+    },
+    {
+      "advance": "V52 proves an exact low-index source vacuum/Hessian and a separately frozen, fully recomputed two-site hybrid whose rank-24 alignment lifts every relative chiral and whose 176-coordinate Hessian kernel equals its gauge orbit.",
+      "blocker": "The hybrid link is a nonlinear sigma-model EFT without an elementary UV completion; neither V52 action is matched to frozen V50, and no complete C1-C7 Wilson action exists.",
+      "closed": false,
+      "gate": "G2"
+    },
+    {
+      "advance": "The complete 131-coordinate GUT-breaking source has F=D=0, rank(Q)=33, rank(H)=98, HQ=0 and ker(H)=im(Q) at one exact rational witness.",
+      "blocker": "The electroweak/DT, SUSY-breaking and soft sectors, tunnelling/global vacuum selection and the whole-action scalar Hessian are absent.",
+      "closed": false,
+      "gate": "G3"
+    },
+    {
+      "advance": "The minimal R1 repair has an exact renormalizable 10H tree matrix with triplet rank 6 and weak nullity 4, i.e. one Hu,Hd pair.",
+      "blocker": "The result requires the codimension-one tuning mH=3*kH; no symmetry enforces it, and mu/Bmu, SUSY breaking, radiative EWSB and the full scalar vacuum are absent.",
+      "closed": false,
+      "gate": "G4"
+    },
+    {
+      "advance": "V52 introduces no dark/PQ claim; the four seesaw singlets have zero scalar VEV at the displayed witness and are not silently counted as a relic solution.",
+      "blocker": "No dark-sector or PQ Lagrangian, reheating history, relic calculation, BBN/CMB test or cosmological likelihood is specified.",
+      "closed": false,
+      "gate": "G5"
+    },
+    {
+      "advance": "The selected single-site source has sum T=24; with three families and one 10H, b=7 and the one-loop pole ratio at g=0.73 is 1.5575e+09.",
+      "blocker": "The hybrid's 627.6 pole ratio is only a nonlinear-tangent proxy above its NDA cutoff; a frozen elementary spectrum, two-loop running, one-loop thresholds, unification and proton-decay amplitudes have not been computed.",
+      "closed": false,
+      "gate": "G6"
+    },
+    {
+      "advance": "V52 identifies a source action with a controlled local quotient on which a new operator/Wilson calculation can be based.",
+      "blocker": "V51 factor tensors cannot be inherited across the action change; the V52 invariant census, mediator matching, running and B/L rates are absent.",
+      "closed": false,
+      "gate": "G7"
+    },
+    {
+      "advance": "The minimal extension gives an exact renormalizable 10x10 double-seesaw witness: heavy rank 7, full rank 10, induced-RH rank 3 and light-neutrino rank 3. An external Z2 survives all declared VEVs and passes the displayed mod-2 ledgers.",
+      "blocker": "The Z2 has no continuous-parent/full UV discrete-gauge construction; the complete operator census, charged-family fit, uncertainty propagation and withheld prediction are absent.",
+      "closed": false,
+      "gate": "G8"
+    }
+  ],
+  "gate_ledger_scope": "Frozen cumulative frontier: closed flags denote reusable prior-namespace results, not same-action closure for the selected V52 candidate.",
+  "input_core_hashes": {
+    "lean_alignment": "e8bf5bc17469e2e463fa12828278bcb957529a2de3d1cdc588cb8029c4c610ab",
+    "low_index_hybrid": "234442c35dfee6c0374b5562ac6e42a9674d54f6dc985f1d982d32207ea46365",
+    "low_index_source": "c07fd055da382cdc461b212679f70971ced8d4d13a319a51e2cbaabfecbeba52",
+    "minimal_repair": "f4dadf941dbfe6e540347aa720687b2cc8e08201edc8325cea6fabb8b6b4a723",
+    "v51_master": "4b841b77de308c909e602cdb07e749e3dea04a2399a8c2f20c1082c4151fbe66"
+  },
+  "integrity_checks": {
+    "DT_rank_witness_is_exact_and_explicitly_tuned": true,
+    "all_input_core_hashes_valid": true,
+    "flipped_family_local_anomalies_cancel": true,
+    "hybrid_alignment_lifts_exactly_24_relative_chirals": true,
+    "hybrid_full_Hessian_kernel_is_exactly_gauge": true,
+    "hybrid_proxy_pole_is_above_its_NDA_cutoff": true,
+    "lean_alignment_lifts_exactly_the_12_dimensional_V51_analog_sector": true,
+    "low_index_Hessian_kernel_is_exactly_gauge": true,
+    "low_index_source_passes_100_and_1000_scale_windows": true,
+    "low_index_witness_is_exactly_supersymmetric": true,
+    "minimal_repair_Z2_survives_declared_VEVs": true,
+    "minimal_repair_has_rank_three_renormalizable_double_seesaw": true,
+    "minimal_repair_stays_inside_perturbative_screen": true,
+    "no_cross_action_clause_promotion": true,
+    "nonlinear_alignment_not_mislabeled_as_UV_completion": true,
+    "only_frozen_G1_is_closed": true
+  },
+  "minimal_repair_module": {
+    "additions": {
+      "H10_count": 1,
+      "new_Dynkin_index": 1,
+      "new_Spin10_chiral_coordinates": 10,
+      "singlet_count": 4
+    },
+    "core_sha256": "f4dadf941dbfe6e540347aa720687b2cc8e08201edc8325cea6fabb8b6b4a723",
+    "decision": "Exact seesaw and declared external-Z2 existence witnesses; exact but tuned DT rank witness. Natural DT, UV selector, full d<=5 operator/proton census and the enlarged whole-action Hessian remain absent.",
+    "double_seesaw": {
+      "dimensions": {
+        "F": [
+          3,
+          4
+        ],
+        "MS": [
+          4,
+          4
+        ],
+        "full": [
+          10,
+          10
+        ],
+        "heavy": [
+          7,
+          7
+        ],
+        "induced_RH": [
+          3,
+          3
+        ],
+        "light": [
+          3,
+          3
+        ],
+        "mD": [
+          3,
+          3
+        ]
+      },
+      "rank_three_Majorana_generation": true,
+      "ranks": {
+        "F": 3,
+        "MS": 4,
+        "full": 10,
+        "heavy": 7,
+        "induced_RH": 3,
+        "light": 3,
+        "mD": 3
+      },
+      "scope_caveat": "This is a phenomenological neutral-mass-matrix existence witness and presumes a nonzero electroweak Dirac matrix; it is not included in the 131-coordinate GUT-source Hessian.",
+      "source_vacuum_unchanged": "all matter and N scalar VEVs are zero; nonsingular MS fixes N=0"
+    },
+    "doublet_triplet": {
+      "condition_codimension": 1,
+      "decision": "exact tree-level rank witness only; the required coefficient cancellation is tuned",
+      "interpretation": "one massless Hu,Hd pair (four weak-component coordinates)",
+      "massless_condition": "mH-3*kH=0",
+      "natural": false,
+      "triplet_rank": 6,
+      "weak_nullity": 4
+    },
+    "external_Z2": {
+      "all_nonzero_VEV_fields_even": true,
+      "listed_dangerous_operators_odd": true,
+      "mod2_ledgers": {
+        "SO10_Dynkin_index_sum": 6,
+        "SO10_Dynkin_index_sum_mod2": 0,
+        "cubic_Z2_charge_sum": 52,
+        "cubic_Z2_charge_sum_mod2": 0,
+        "odd_Weyl_dimension": 52,
+        "odd_Weyl_dimension_mod2": 0
+      },
+      "required_operators_even": true,
+      "scope_caveat": "conventional low-energy anomaly arithmetic only; no continuous-parent or complete UV discrete-gauge construction is supplied; ordinary matter parity still allows even-matter dangerous classes such as dimension-five 16F^4, so this is not a proton-safe full selector census"
+    },
+    "running": {
+      "above_100x_matching_scale": true,
+      "added_H10_T": 1,
+      "convention": "b=sum_chiral T(R)-3 C2(Spin10), T10=1,T16=2,T45=8,T54=12,C2=8",
+      "formal_landau_pole_over_matching_scale": 1557503331.1144598,
+      "four_singlets_T": 0,
+      "g_at_matching_witness": 0.73,
+      "one_loop_b": 7,
+      "scope_caveat": "excludes any future link/moose, doublet-triplet naturalizer, flavor messenger, or UV-selector completion",
+      "source_T": 24,
+      "three_matter_16_T": 6,
+      "total_chiral_T": 31
+    },
+    "scope": "A tested extension of the selected R1 foundation, not part of the 131-coordinate source Hessian and not yet a frozen whole action.",
+    "status": "V52_MINIMAL_RENORMALIZABLE_DOUBLE_SEESAW_AND_UNBROKEN_Z2_SELECTOR_CERTIFIED__ONE_10H_EXACT_TRIPLET_RANK6_DOUBLET_NULLITY4_EXISTS_BUT_IS_CODIMENSION_ONE__NATURAL_DT_UV_SELECTOR_AND_FULL_OPERATOR_CENSUS_OPEN__NO_G2_PROMOTION"
+  },
+  "n_failed_integrity_checks": 0,
+  "perturbative_acceptance": {
+    "g": 0.73,
+    "maximum_positive_b_for_1000x": 21.449000963088295,
+    "maximum_positive_b_for_100x": 32.17350144463244,
+    "minimum_scale_ratio": 100,
+    "selected_R1_b": 7
+  },
+  "primary_sources": [
+    {
+      "title": "Buccella and Savoy: Intermediate Symmetries in SUSY SO(10)",
+      "url": "https://arxiv.org/abs/hep-ph/0202278"
+    },
+    {
+      "title": "Bertolini, Di Luzio and Malinsky: Minimal Flipped SO(10) x U(1) SUSY Higgs Model",
+      "url": "https://arxiv.org/abs/1011.1821"
+    },
+    {
+      "title": "Chacko and Mohapatra: New Doublet-Triplet Splitting Mechanism",
+      "url": "https://arxiv.org/abs/hep-ph/9810315"
+    },
+    {
+      "title": "Mohapatra and Valle: Neutrino Mass and Baryon-Number Nonconservation in Superstring Models",
+      "url": "https://doi.org/10.1103/PhysRevD.34.1642"
+    },
+    {
+      "title": "Banks and Dine: Note on Discrete Gauge Anomalies",
+      "url": "https://arxiv.org/abs/hep-th/9109045"
+    },
+    {
+      "title": "Nath and Syed: SO(10) Spinor and Tensor Couplings",
+      "url": "https://arxiv.org/abs/hep-th/0109116"
+    },
+    {
+      "title": "Haba, Mimura and Yamada: Proton Decay in Lean SUSY SO(10)",
+      "url": "https://arxiv.org/abs/1904.11697"
+    }
+  ],
+  "route_ranking": [
+    {
+      "coordinates": 131,
+      "decision": "selected as the V52 foundation for the next complete-action build",
+      "evidence_level": "repository-executable exact certificate",
+      "exact_results": {
+        "F_and_D_flat": true,
+        "HQ_zero": true,
+        "Hessian_nullity": 33,
+        "Hessian_rank": 98,
+        "kernel_equals_gauge_orbit": true,
+        "orbit_rank": 33
+      },
+      "fatal_open_items": [
+        "the exact rank-98 Hessian covers only the 131-coordinate GUT-breaking source, not the repair or whole phenomenological action",
+        "with only this pair, an independently gauged U(1)F leaves one diagonal combination with the Spin(10) singlet Cartan unbroken; a charged singlet or other sector is required to reproduce a fully broken V50 U(1)F",
+        "the external Z2 has no continuous-parent/full UV discrete-gauge construction and does not by itself forbid even-matter dimension-five classes such as 16F^4",
+        "the displayed DT rank witness requires an unprotected codimension-one coefficient relation",
+        "the complete invariant/operator census, thresholds, flavour fit and proton-decay calculation are absent"
+      ],
+      "field_content": [
+        "54",
+        "45",
+        "16",
+        "bar16"
+      ],
+      "id": "R1_exact_conventional_low_index",
+      "minimal_renormalizable_repair": {
+        "DT_condition_codimension": 1,
+        "DT_triplet_rank": 6,
+        "DT_weak_nullity": 4,
+        "added_fields": "one H10 plus four Spin(10) singlets N",
+        "double_seesaw_ranks": {
+          "F": 3,
+          "MS": 4,
+          "full": 10,
+          "heavy": 7,
+          "induced_RH": 3,
+          "light": 3,
+          "mD": 3
+        },
+        "external_Z2_scope": "conventional low-energy anomaly arithmetic only; no continuous-parent or complete UV discrete-gauge construction is supplied",
+        "external_Z2_survives_declared_VEVs": true,
+        "natural_DT": false
+      },
+      "rank": 1,
+      "running": {
+        "b_with_three_families_and_10H": 7,
+        "pole_ratio": 1557503331.1144598,
+        "source_sum_T": 24
+      },
+      "scope": "The 131-coordinate certificate covers the Spin(10) GUT-breaking source only; its 12-dimensional stabilizer is SM inside Spin(10). It does not include an independently gauged U(1)F or the phenomenological repair fields.",
+      "strength": "strongest elementary renormalizable single-site foundation; it evades the V51 link-sector obstruction by deleting that sector rather than repairing it"
+    },
+    {
+      "coordinates": 176,
+      "decision": "selected boundary-EFT branch, but not an elementary UV completion",
+      "evidence_level": "repository-executable full coupled-Hessian EFT certificate",
+      "exact_results": {
+        "HQ_zero": true,
+        "Hessian_nullity": 54,
+        "Hessian_rank": 122,
+        "Q_rank": 54,
+        "alignment_orthogonal_to_gauge": true,
+        "alignment_rank": 24,
+        "combined_Goldstone_nullity": 0,
+        "combined_Goldstone_rank": 78,
+        "endpoint_partition": {
+          "PS_intersection_source_SM": 12,
+          "PS_only": 9,
+          "neither": 24,
+          "source_SM_only": 0
+        },
+        "gauge_rank": 54,
+        "kernel_equals_gauge_orbit": true
+      },
+      "fatal_open_items": [
+        "the Spin(10,C) link is a nonlinear sigma EFT without a linear UV completion",
+        "the 176-coordinate Hessian covers only the source, link and alignment\u2014not the complete phenomenological field inventory",
+        "the result changes the V50/V51 action and site count",
+        "the low-index source loses the renormalizable 126-Higgs seesaw and automatic matter parity",
+        "the missing-partner/doublet-triplet sector is absent",
+        "the independent U(1)F breaking sector remains to be supplied",
+        "one-loop matching, Wilson coefficients and global K\u00e4hler topology are unaudited"
+      ],
+      "field_content": "45-dimensional group-valued link chart + exact 131-coordinate R1 source",
+      "id": "R2_low_index_two_site_hybrid",
+      "rank": 2,
+      "running_proxy": {
+        "NDA_cutoff_over_vector_mass": 17.214206321039963,
+        "b_AF_3C2_minus_sumT": -23,
+        "b_Landau_sumT_minus_3C2": 23,
+        "colocated_visible_sum_T": 47,
+        "pole_ratio": 627.6185595500677
+      },
+      "strength": "explicitly recomputes the action after combining the low-index source and a single nonlinear link; all 24 relative modes and all local physical Hessian zero modes are removed"
+    },
+    {
+      "Higgs_coordinates": 109,
+      "Landau_pole_over_matching_scale_at_g0p73": {
+        "Spin10": 2.223324681888307e+64,
+        "U1Xhat": 1.1211731192258032e+23
+      },
+      "broken_generators": 34,
+      "decision": "credible alternative; not selected over the executable exact R1 witness",
+      "evidence_level": "primary-literature-backed; no repository full-chiral-Hessian certificate",
+      "family_anomaly_sums": {
+        "Spin10_squared_U1X": 0,
+        "U1X_cubed": 0,
+        "gravity_squared_U1X": 0
+      },
+      "fatal_open_items": [
+        "full 109-coordinate chiral Hessian and Goldstone equality",
+        "natural doublet-triplet splitting (the minimal setup resorts to tuning)",
+        "an anomaly-safe discrete matter selector through dimension five",
+        "Planck-suppressed down/lepton/neutrino flavour completion",
+        "global gauge quotient, E6 threshold spectrum and proton decay"
+      ],
+      "field_content": "45_0 + 2(16_+1 + bar16_-1), with 3(16_+1+10_-2+1_+4)",
+      "gauge_dimension": 46,
+      "generic_little_group": "SM for two non-aligned spinor pairs",
+      "id": "R3_flipped_Spin10xU1X",
+      "published_one_loop_coefficients": {
+        "b10": 1.0,
+        "bXhat": 2.7916666666666665
+      },
+      "rank": 3,
+      "renormalizable_Higgs_superpotential": "W=(mu/2)Tr(45^2)+rho_ij bar16_i 16_j+tau_ij bar16_i 45 16_j",
+      "required_full_Hessian_rank_before_DT_selection": 75,
+      "strength": "best perturbative margin and no link/A5 sector"
+    },
+    {
+      "decision": "retain as an exact EFT lemma, not as a UV completion",
+      "evidence_level": "repository-executable tangent-space EFT certificate",
+      "exact_results": {
+        "alignment_orthogonal_to_gauge": true,
+        "alignment_rank": 12,
+        "combined_nullity": 0,
+        "combined_rank": 66,
+        "endpoint_partition": {
+          "PS_intersection_SU5__SM": 12,
+          "PS_only": 9,
+          "SU5_only": 12,
+          "neither": 12
+        },
+        "gauge_rank": 54
+      },
+      "fatal_open_items": [
+        "nonlinear/nonrenormalizable sigma-model action",
+        "no elementary UV completion or global Kahler proof",
+        "retaining the linear V51 source leaves a pole ratio of 3.51005"
+      ],
+      "id": "R4_original_two_site_nonlinear_alignment",
+      "rank": 4,
+      "strength": "lifts the 12-dimensional V51-analog incidence sector in this distinct two-site action"
+    },
+    {
+      "Landau_pole_over_matching_scale_at_g0p73": {
+        "23": 627.6185595500677,
+        "24": 479.87167991557965
+      },
+      "advance": "explicit renormalizable doublet and triplet mass matrices with one light MSSM pair",
+      "decision": "passes a 100x perturbative-window screen but fails a 1000x screen; requires a new whole-action Hessian, selector, flavour and proton audit",
+      "evidence_level": "primary-literature repair direction; not integrated into V52 Hessian",
+      "field_content": "54 + 2(45) + 3(16+bar16) + 1 or 2(10) + singlets",
+      "id": "R5_extended_missing_VEV_DT",
+      "one_loop_b_range": [
+        23,
+        24
+      ],
+      "rank": 5
+    }
+  ],
+  "same_action_decision": {
+    "V51_core_sha256": "4b841b77de308c909e602cdb07e749e3dea04a2399a8c2f20c1082c4151fbe66",
+    "V52_lean_alignment_core_sha256": "e8bf5bc17469e2e463fa12828278bcb957529a2de3d1cdc588cb8029c4c610ab",
+    "V52_low_index_hybrid_core_sha256": "234442c35dfee6c0374b5562ac6e42a9674d54f6dc985f1d982d32207ea46365",
+    "V52_low_index_source_core_sha256": "c07fd055da382cdc461b212679f70971ced8d4d13a319a51e2cbaabfecbeba52",
+    "V52_minimal_repair_core_sha256": "f4dadf941dbfe6e540347aa720687b2cc8e08201edc8325cea6fabb8b6b4a723",
+    "equivalence_proved": false,
+    "statement": "No V50/V51 clause or Wilson tensor is inherited by any V52 action. The exact V52 results are reusable lemmas only until one complete action is frozen."
+  },
+  "schema": "susy-v52-new-physics-route-integration-audit-v1",
+  "scientific_verdict": {
+    "G2_closed": false,
+    "V52_candidate_closed_gates": [],
+    "closed_gates": [
+      "G1"
+    ],
+    "complete_theory": false,
+    "empirical_new_physics_discovery": false,
+    "full_gates_closed": 1,
+    "gate_scope": "G1 is closed only in the frozen reusable ordinary-Spin namespace inherited from V47; no complete V52 candidate gate is closed.",
+    "selected_route": "R1_exact_conventional_low_index",
+    "serious_new_candidate_exists": true,
+    "statement": "V52 replaces speculation with an exact low-index Spin(10)-sector source candidate and separately proves that nonlinear alignment lifts the 12-dimensional V51-analog incidence sector in a new two-site action. The selected single-site redesign evades the V51 link and near-threshold running failures by deleting that sector, not by repairing the V51 action. A recomputed low-index hybrid has an exact 176-coordinate source+link Hessian, but remains a nonlinear EFT. A minimal renormalizable extension supplies an exact rank-three double seesaw and external Z2 ledger; its DT result is tuned and its UV/operator completion is open."
+  },
+  "selection_logic": {
+    "hybrid_branch_decision": "R2 is not a pasted inference: its PS-versus-source-SM incidence, alignment and entire 176-coordinate Hessian were recomputed for one new action. It is kept as the boundary-EFT branch because its nonlinear link lacks a UV completion.",
+    "primary_selection_rule": "prefer the exact elementary renormalizable single-site source as the foundation over a nonlinear EFT, while retaining all independently verified branch lemmas",
+    "why_R1": "R1 has a complete source F/D/orbit/Hessian certificate, stays in ordinary Spin(10), has no link sector, and retains a 1.56e9 one-loop window."
+  },
+  "sharp_next_obligations": [
+    {
+      "id": "N1",
+      "kill_condition": "Reject if the external Z2 cannot be UV completed or supplemented to forbid the even-matter proton-decay classes while preserving the required seesaw/Yukawa terms.",
+      "task": "Freeze one complete R1-plus-repair field/action/selector census, construct a UV discrete-gauge embedding, and enumerate every allowed operator through dimension five."
+    },
+    {
+      "id": "N2",
+      "kill_condition": "Require exactly one light Higgs-doublet pair, no light colored triplet/exotic, no unprotected coefficient cancellation and no physical GUT-scale modulus.",
+      "task": "Replace the tuned mH=3*kH relation by a symmetry/vacuum-enforced natural DT mechanism, then recompute the enlarged holomorphic Hessian."
+    },
+    {
+      "id": "N3",
+      "kill_condition": "Reject any route without one action hash shared by the vacuum, regulator/matching and coefficient array.",
+      "task": "Redo the invariant/Clebsch census and derive the V52 action-to-EFT Wilson array; do not reuse the V51 array by name."
+    },
+    {
+      "id": "N4",
+      "kill_condition": "Reject if perturbative control, experimental proton limits or the withheld flavour prediction fails.",
+      "task": "Run two-loop unification, one-loop thresholds, dressed proton decay and a rank-three flavour/neutrino fit."
+    }
+  ],
+  "source_manifest": [
+    {
+      "exists": true,
+      "path": "susy_v52_new_physics_route_integration_audit.py",
+      "sha256": "1cd18d3a3bc86b0367eef0a090a5c8e5fd4be6a054c7cf0e38ba3864c5f6f48d"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v52_new_physics_route_integration_audit.py",
+      "sha256": "55aa1237ef52c9f37e3594bcd678ff19766923d9431bc9e22c57acfe7646a5e5"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V51_NEW_PHYSICS_CANDIDATE_INTEGRATION_AUDIT.json",
+      "sha256": "0aac672c16c034f64014e280562763b3b09a17bbb4c9e61ac411c07ab8ea0d8f"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V52_LOW_INDEX_SOURCE_AUDIT.json",
+      "sha256": "e1d2b340d263dcf46ff38518a9a788c1f339bb3dd1f5474308c3fa498600c6b1"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V52_LEAN_NONLINEAR_ALIGNMENT_AUDIT.json",
+      "sha256": "45b3d753fc77a13870a8fc7708508c2d4acd4b61d862f2a7ae9fd98692d24aa1"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V52_LOW_INDEX_HYBRID_ALIGNMENT_AUDIT.json",
+      "sha256": "11835850ce7b4899d40861348db2e493d3ac31f416d341bf9223c29d850fbae7"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V52_MINIMAL_SEESAW_DT_REPAIR_AUDIT.json",
+      "sha256": "d9536b4f19af3b2cdfd64cb6c140557db35b3398ee4834dabf7f843bc9e64aca"
+    }
+  ],
+  "status": "V52_NEW_PHYSICS_ROUTE_SELECTION__EXACT_LOW_INDEX_54_45_16_BAR16_SOURCE_SELECTED_FOR_NEXT_BUILD__EXACT_RECOMPUTED_TWO_SITE_HYBRID_LIFTS_ALL24_RELATIVE_CHIRALS_AND_HAS_FULL176_HESSIAN_KERNEL_EQUAL_GAUGE_ORBIT__HYBRID_IS_EFT_ONLY__V51_NEAR_THRESHOLD_LANDAU_KILL_EVADED__EXACT_RANK3_DOUBLE_SEESAW_AND_EXTERNAL_Z2_WITNESS__DT_WITNESS_IS_TUNED__UV_SELECTOR_NATURAL_DT_FLAVOUR_MATCHING_AND_GLOBAL_VACUUM_OPEN__NO_G2_OR_FULL_GATE_PROMOTION"
+}

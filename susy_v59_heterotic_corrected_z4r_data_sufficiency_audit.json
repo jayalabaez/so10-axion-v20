@@ -1,0 +1,393 @@
+{
+  "claim_boundary": {
+    "G1_to_G8_not_promoted": true,
+    "absence_of_published_data_not_called_physical_inconsistency": true,
+    "missing_gamma_not_guessed": true,
+    "new_certificate_not_new_action": true,
+    "no_V58_file_modified": true,
+    "old_charge_ledger_not_relabeled_as_corrected": true
+  },
+  "core_sha256": "38747dee7e8bafdae38ddea1408c8163d625ff6cb836aaa97304f4479624250b",
+  "corrected_anomaly_completion_matrix": [
+    {
+      "blocker": "corrected charges of all surviving colored states",
+      "corrected_full_state_status": "NOT_IDENTIFIABLE",
+      "old_result": "A3=3 == 1 mod 2",
+      "row": "SU3C^2-Z4R"
+    },
+    {
+      "blocker": "corrected charges of all surviving doublets",
+      "corrected_full_state_status": "NOT_IDENTIFIABLE",
+      "old_result": "A2=1 signed (5 in the paper representative) == 1 mod 2",
+      "row": "SU2L^2-Z4R"
+    },
+    {
+      "blocker": "corrected charges, massive-state ambiguity and normalized U1 ledger",
+      "corrected_full_state_status": "NOT_IDENTIFIABLE",
+      "old_result": "formal light-MSSM coefficient -3/5",
+      "row": "U1Y^2-Z4R"
+    },
+    {
+      "blocker": "post-VEV hidden eigenbasis and corrected charges",
+      "corrected_full_state_status": "NOT_IDENTIFIABLE",
+      "old_result": null,
+      "row": "SU2_hidden^2-Z4R"
+    },
+    {
+      "blocker": "full U1 generator metric and corrected state ledger",
+      "corrected_full_state_status": "NOT_IDENTIFIABLE",
+      "old_result": "A_U1anom=15 and B_n3=1/2 only",
+      "row": "other_or_broken_U1_rows"
+    },
+    {
+      "blocker": "all corrected light charges and complete post-VEV massless spectrum",
+      "corrected_full_state_status": "NOT_IDENTIFIABLE",
+      "old_result": "truncated visible+S+TU numerator -20 only",
+      "row": "gravity^2-Z4R"
+    },
+    {
+      "blocker": "free-quotient eigenphases, local distribution, inflow and thresholds",
+      "corrected_full_state_status": "NOT_PUBLISHED",
+      "old_result": null,
+      "row": "fixed_locus_and_global_partition_function_phase"
+    },
+    {
+      "blocker": "universal corrected residue and quantized axion/threshold coupling",
+      "corrected_full_state_status": "UNDERDETERMINED",
+      "old_result": "dilaton shifts under U1anom and the independent n3 Z2",
+      "row": "universal_Green_Schwarz_trivialization"
+    }
+  ],
+  "corrected_charge_equations": {
+    "anomaly_gravity": "A_grav = (-21-1-N_T-N_U+sum dim adj G)R/2 + sum_alpha(r_alpha-R/2)dim(R_alpha)",
+    "anomaly_nonAbelian": "A_G = C2(G) R/2 + sum_alpha (r_alpha-R/2) T(R_alpha)",
+    "charge": "r_alpha = sum_i M xi_i(q_sh^i-N_L^i+Nbar_L^i) - M gamma_hg mod M",
+    "gamma": "gamma_h = -p_sh.V_h + v_h.(q_sh-N_L+Nbar_L) - Phi(g,h) mod 1",
+    "mixed_candidate": "q_corrected = q_X + r_2(corrected) + 2 n3 mod 4",
+    "vertex_microdata": "V_-a contains p_sh, q_sh, N_L, Nbar_L and the physical twist field sigma"
+  },
+  "data_sufficiency_theorem": {
+    "equation": "r_alpha = sum_i M xi_i (q_sh^i-N_L^i+Nbar_L^i) - M gamma_hg mod M",
+    "missing_required_data": [
+      "constructing_element_g_for_each_physical_state",
+      "shifted_gauge_momentum_p_sh_for_each_state",
+      "shifted_right_moving_H_momentum_q_sh_for_each_state",
+      "left_oscillators_NL_and_NbarL_in_each_plane",
+      "physical_twist_field_eigenvector_and_gamma_h",
+      "isometry_rho_and_statewise_h_g_for_the_free_quotient",
+      "complete_post_VEV_massless_eigenbasis",
+      "all_U1_generator_vectors_and_Kac_Moody_metric",
+      "local_anomaly_distribution_thresholds_and_axion_coupling_matrix"
+    ],
+    "name": "corrected_charge_projection_nonidentifiability",
+    "physical_no_go_for_Z4R": false,
+    "premise": "The published macrostate projection retains representations, Abelian charges and old R charges but discards gamma_h and the microdata needed to derive it.",
+    "proof": "Holding every published macro column fixed while changing an omitted gamma_h by 1/2 changes a Z4 charge by 2. For an SU(2) fundamental this shifts the mixed anomaly by one, nonzero modulo two. Therefore neither corrected charges nor their anomaly residues factor through the published Table E.2 projection.",
+    "published_table_alone_determines_corrected_charges": false,
+    "published_table_alone_determines_full_anomaly_rows": false,
+    "scope_boundary": "This proves non-identifiability from the published state ledger. The complete worldsheet action may determine the missing data in principle after a new CFT spectrum/eigenphase calculation.",
+    "witness_verified": true
+  },
+  "exact_ambiguity_witness": {
+    "SU2_discrete_modulus": "2",
+    "SU2_mixed_anomaly_difference": "1",
+    "anomaly_residue_can_change": true,
+    "charge_difference": "2",
+    "completion_A_gamma": "0",
+    "completion_B_gamma": "1/2",
+    "corrected_charge_A_mod_4": "0",
+    "corrected_charge_B_mod_4": "2",
+    "gamma_not_in_published_columns": true,
+    "purpose": "information-loss witness only; it does not assert that both gamma assignments solve the exact model's GSO projections",
+    "same_published_macro_columns": [
+      "q_X",
+      "n3",
+      "sector",
+      "representation"
+    ]
+  },
+  "exact_published_scope_derivations": {
+    "A_SU2_paper_nonnegative_representative": "5",
+    "A_SU2_signed": "1",
+    "A_SU3_signed": "3",
+    "A_gravity_truncated_visible_plus_S_TU": "-20",
+    "eta_for_Z4R": 2,
+    "formal_A_U1Y2_GUT_normalized": "-3/5",
+    "gravity_scope_warning": "Includes the gravitino, dilatino, three T modulini, three U modulini, GSM gauginos and MSSM chirals only. Hidden and residual light singlet states are absent, so this is not the model anomaly.",
+    "nonabelian_residues_mod_eta": [
+      "1",
+      "1"
+    ],
+    "published_anomaly_mixing": {
+      "A_U1_anom": 15,
+      "B_Z2_n3": "1/2",
+      "B_plus_nA_residue_mod_1": "1/2 for every integer n",
+      "can_rotate_Z2_n3_entirely_into_U1_anom": false
+    },
+    "scope": "2010 MSSM charge pattern only; not the corrected full Table E.2 spectrum",
+    "superpotential_charge_R": 2,
+    "theta_charge": 1,
+    "visible_nonabelian_universal_mod_eta": true
+  },
+  "gate_ledger": [
+    {
+      "V59_promoted": false,
+      "gate": "G1",
+      "reason": "V59 is a source-data sufficiency certificate; it does not supply the missing corrected CFT state/eigenphase and GS calculation.",
+      "status": "OPEN"
+    },
+    {
+      "V59_promoted": false,
+      "gate": "G2",
+      "reason": "V59 is a source-data sufficiency certificate; it does not supply the missing corrected CFT state/eigenphase and GS calculation.",
+      "status": "OPEN"
+    },
+    {
+      "V59_promoted": false,
+      "gate": "G3",
+      "reason": "V59 is a source-data sufficiency certificate; it does not supply the missing corrected CFT state/eigenphase and GS calculation.",
+      "status": "OPEN"
+    },
+    {
+      "V59_promoted": false,
+      "gate": "G4",
+      "reason": "V59 is a source-data sufficiency certificate; it does not supply the missing corrected CFT state/eigenphase and GS calculation.",
+      "status": "OPEN"
+    },
+    {
+      "V59_promoted": false,
+      "gate": "G5",
+      "reason": "V59 is a source-data sufficiency certificate; it does not supply the missing corrected CFT state/eigenphase and GS calculation.",
+      "status": "OPEN"
+    },
+    {
+      "V59_promoted": false,
+      "gate": "G6",
+      "reason": "V59 is a source-data sufficiency certificate; it does not supply the missing corrected CFT state/eigenphase and GS calculation.",
+      "status": "OPEN"
+    },
+    {
+      "V59_promoted": false,
+      "gate": "G7",
+      "reason": "V59 is a source-data sufficiency certificate; it does not supply the missing corrected CFT state/eigenphase and GS calculation.",
+      "status": "OPEN"
+    },
+    {
+      "V59_promoted": false,
+      "gate": "G8",
+      "reason": "V59 is a source-data sufficiency certificate; it does not supply the missing corrected CFT state/eigenphase and GS calculation.",
+      "status": "OPEN"
+    }
+  ],
+  "geometry_specific_warning": {
+    "geometry": "Z2 x Z2-5-1 with tau=(e2+e4+e6)/2",
+    "model_specific_no_go": false,
+    "published_result": "plane-R anomalies are non-universal in this exceptional freely quotiented class",
+    "repair_of_mixed_Z4R": "explicitly open",
+    "scan_size_per_affine_class": 10000
+  },
+  "green_schwarz_completion": {
+    "Delta_GS_model_specific_value_determined": false,
+    "GS_cancellation_certified": false,
+    "M": 4,
+    "corrected_A_G_rows_known": false,
+    "corrected_A_grav_known": false,
+    "eta": 2,
+    "general_condition": "S -> S + i Delta_GS/2; pi M Delta_GS == A_grav/24 == A_G mod eta",
+    "same_action_axion_present": true,
+    "source": "1102.3595, equations (A.22)--(A.23)",
+    "threshold_or_local_counterterm_matrix_known": false
+  },
+  "integrity_checks": {
+    "GS_is_not_overclaimed": true,
+    "V58_core_is_canonical_and_expected": true,
+    "all_corrected_completion_rows_remain_open": true,
+    "complete_theory_not_claimed": true,
+    "corrected_formula_has_exact_gamma_dependence": true,
+    "nonidentifiability_theorem_is_fail_closed": true,
+    "old_visible_nonabelian_arithmetic_reproduced": true,
+    "omitted_gamma_can_change_anomaly_residue": true,
+    "physical_no_go_not_overclaimed": true,
+    "published_state_ledger_is_not_microstate_complete": true,
+    "zero_gates_promoted": true
+  },
+  "lineage": {
+    "V58_result": "microscopic near-match; corrected mixed-Z4R/GS ledger open",
+    "V59_relation": "distinct route-A source-sufficiency calculation; V58 files are not modified",
+    "bound_frontier": "SUSY_V58_HETEROTIC_G1_MICROSCOPIC_COMPLETION_AUDIT.json",
+    "bound_frontier_core": "c31d5fe65fc5bd96279bb739f5284854a624b2ee1586004c9b84998225d382c6"
+  },
+  "minimum_new_calculation_payload": [
+    "For every physical state: constructing element representative and full free-quotient orbit.",
+    "For every physical state: p or p_sh, q_sh, and all N_L^i and Nbar_L^i.",
+    "Physical twist-field eigenvectors and gamma_h for all relevant centralizer elements.",
+    "The exact second-plane isometry rho and a statewise h_g solving rho(g)=h_g g h_g^-1.",
+    "A corrected charge attached one-to-one to every Table E.2 state/component.",
+    "The coefficient-level post-VEV massless eigenbasis, including hidden and singlet states.",
+    "Normalized U(1) generator vectors/Kac--Moody metric and all mixed anomaly rows.",
+    "The axion periodicity, threshold corrections, local anomaly distribution and inflow map."
+  ],
+  "n_failed_integrity_checks": 0,
+  "n_integrity_checks": 11,
+  "primary_sources": {
+    "corrected_charges": {
+      "arxiv": "1308.5669",
+      "authors": "N. G. Cabo Bizet, T. Kobayashi, D. K. Mayorga Pena, S. L. Parameswaran, M. Schmitz, I. Zavala",
+      "locations": [
+        "vertex operator (2.7)",
+        "gamma phase (2.16)",
+        "corrected R charge (3.24)",
+        "anomaly equations (4.3)--(4.6)"
+      ],
+      "title": "Discrete R-symmetries and Anomaly Universality in Heterotic Orbifolds",
+      "url": "https://arxiv.org/abs/1308.5669"
+    },
+    "geometry_warning": {
+      "author": "Matthias Schmitz",
+      "locations": [
+        "pages 62--63",
+        "pages 78--79"
+      ],
+      "report": "BONN-IR-2014-12",
+      "title": "R-Symmetries from the Orbifolded Heterotic String",
+      "url": "https://d-nb.info/1077289065/34"
+    },
+    "green_schwarz": {
+      "arxiv": "1102.3595",
+      "authors": "H. M. Lee, S. Raby, M. Ratz, G. G. Ross, R. Schieren, K. Schmidt-Hoberg, P. K. S. Vaudrevange",
+      "locations": [
+        "equations (A.22)--(A.23)"
+      ],
+      "title": "Discrete R symmetries for the MSSM and its singlet extensions",
+      "url": "https://arxiv.org/abs/1102.3595"
+    },
+    "model": {
+      "arxiv": "1012.4574",
+      "authors": "R. Kappl, B. Petersen, S. Raby, M. Ratz, R. Schieren, P. K. S. Vaudrevange",
+      "locations": [
+        "equations (3.2), (3.11)--(3.12)",
+        "Appendix A",
+        "Appendix E, equations (E.1)--(E.6), Tables E.1--E.2"
+      ],
+      "title": "String-derived MSSM vacua with residual R symmetries",
+      "url": "https://arxiv.org/abs/1012.4574"
+    }
+  },
+  "published_state_data_matrix": [
+    {
+      "datum": "twists_shifts_Wilson_lines_and_free_shift",
+      "location": "1012.4574, equations (E.1)--(E.4)",
+      "publication_status": "PRESENT",
+      "required_for": "regenerate the CFT spectrum",
+      "sufficient": true
+    },
+    {
+      "datum": "four_dimensional_nonAbelian_representations",
+      "location": "1012.4574, Tables E.1--E.2",
+      "publication_status": "PRESENT",
+      "required_for": "Dynkin indices and representation dimensions",
+      "sufficient": true
+    },
+    {
+      "datum": "qY_qX_q1_through_q6_and_old_qZ4R",
+      "location": "1012.4574, Table E.2",
+      "publication_status": "PRESENT",
+      "required_for": "old Abelian and residual-charge ledger",
+      "sufficient": true
+    },
+    {
+      "datum": "constructing_element_g_for_each_physical_state",
+      "location": "Table E.2 sector column uses stars and paired labels",
+      "publication_status": "PARTIAL_SECTOR_PATTERNS_ONLY",
+      "required_for": "conjugacy class and free-quotient orbit",
+      "sufficient": false
+    },
+    {
+      "datum": "shifted_gauge_momentum_p_sh_for_each_state",
+      "location": "not a Table E.2 column",
+      "publication_status": "ABSENT",
+      "required_for": "gamma_h through equation (2.16)",
+      "sufficient": false
+    },
+    {
+      "datum": "shifted_right_moving_H_momentum_q_sh_for_each_state",
+      "location": "only sector-level old plane charges are stated",
+      "publication_status": "ABSENT_PER_STATE",
+      "required_for": "corrected charge (3.24) and gamma_h",
+      "sufficient": false
+    },
+    {
+      "datum": "left_oscillators_NL_and_NbarL_in_each_plane",
+      "location": "not a Table E.2 column",
+      "publication_status": "ABSENT",
+      "required_for": "corrected charge (3.24) and gamma_h",
+      "sufficient": false
+    },
+    {
+      "datum": "physical_twist_field_eigenvector_and_gamma_h",
+      "location": "not published for the Table E.2 states",
+      "publication_status": "ABSENT",
+      "required_for": "the -M gamma_h term in corrected charge (3.24)",
+      "sufficient": false
+    },
+    {
+      "datum": "isometry_rho_and_statewise_h_g_for_the_free_quotient",
+      "location": "the later paper does not apply its construction to this model",
+      "publication_status": "ABSENT_FOR_EXACT_MODEL",
+      "required_for": "rho(g)=h_g g h_g^-1 and gamma evaluation",
+      "sufficient": false
+    },
+    {
+      "datum": "complete_post_VEV_massless_eigenbasis",
+      "location": "generic mass-matrix ranks are published, not every eigenstate",
+      "publication_status": "ABSENT_AT_COEFFICIENT_LEVEL",
+      "required_for": "infrared hidden and gravitational anomaly sums",
+      "sufficient": false
+    },
+    {
+      "datum": "all_U1_generator_vectors_and_Kac_Moody_metric",
+      "location": "hypercharge normalization and t_X are given; the full basis metric is not",
+      "publication_status": "PARTIAL",
+      "required_for": "normalized U1 anomaly rows and universality",
+      "sufficient": false
+    },
+    {
+      "datum": "local_anomaly_distribution_thresholds_and_axion_coupling_matrix",
+      "location": "not evaluated in the cited model paper",
+      "publication_status": "ABSENT",
+      "required_for": "model-specific localized/threshold Green--Schwarz proof",
+      "sufficient": false
+    }
+  ],
+  "schema": "susy_v59_heterotic_corrected_z4r_data_sufficiency_audit/v1",
+  "source_manifest": [
+    {
+      "exists": true,
+      "path": "susy_v59_heterotic_corrected_z4r_data_sufficiency_audit.py",
+      "sha256": "e1f42b7c2dbdc2ee7687329145d4b5a520801523116937ba10aa4a55c07d1607"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v59_heterotic_corrected_z4r_data_sufficiency_audit.py",
+      "sha256": "da143abfb088508d61c559f8ee7df398d64b69ef34d24f81b69b2fa13df804e9"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V58_HETEROTIC_G1_MICROSCOPIC_COMPLETION_AUDIT.json",
+      "sha256": "4cf8461b0123b71066dbbe45b5182273ed68e92e59a3fbcc114541cf712df2d5"
+    }
+  ],
+  "status": "V59_CORRECTED_HETEROTIC_Z4R_ROUTE_A__PUBLISHED_TABLE_E2_IS_COMPLETE_MACRO_SPECTRUM_BUT_INCOMPLETE_VERTEX_OPERATOR_LEDGER__CORRECTED_GAMMA_PHASES_NOT_IDENTIFIABLE_SOURCE_ONLY__OLD_VISIBLE_ANOMALIES_REPRODUCED_EXACTLY__FULL_VISIBLE_HIDDEN_U1_GRAVITY_AND_GS_ROWS_UNDERDETERMINED__NEW_CFT_REGENERATION_REQUIRED__STRICT_G1_OPEN__NO_GATE_PROMOTION",
+  "terminal_decision": {
+    "V59_G1_closed": false,
+    "closed_gates": [],
+    "complete_theory": false,
+    "corrected_full_state_mixed_Z4R_computed": false,
+    "model_specific_GS_cancellation_closed": false,
+    "physical_Z4R_ruled_out": false,
+    "published_state_data_sufficient_for_corrected_charge_reconstruction": false,
+    "published_state_data_sufficient_for_every_anomaly_row": false,
+    "requires_new_worldsheet_or_Orbifolder_calculation": true,
+    "sharp_result": "source-locked non-identifiability: gamma-sensitive corrected charges and anomalies do not factor through the published Table E.2 columns"
+  }
+}

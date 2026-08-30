@@ -1,0 +1,562 @@
+{
+  "continuous_fixed_point_anomaly_ledger": [
+    {
+      "bulk_10_pair": "each 10 is real; perturbative 4D cubic anomaly zero",
+      "bulk_45_vector": "real adjoint; zero",
+      "fixed_point": "O_SO10",
+      "global_local_group": "Spin(10)",
+      "localized_matter": "none",
+      "passes": true,
+      "perturbative_continuous_anomaly": "ZERO",
+      "traditional_global_check": "pi4(Spin(10))=0"
+    },
+    {
+      "bulk_10_pair": {
+        "H10": [
+          2,
+          2,
+          80,
+          20
+        ],
+        "H10_prime": [
+          -2,
+          -2,
+          -80,
+          -20
+        ],
+        "coefficient_order": [
+          "SU5^3",
+          "SU5^2-U1X",
+          "U1X^3",
+          "grav^2-U1X"
+        ],
+        "sum": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "bulk_45_vector": "24_0+1_0+10_4+10bar_-4 cancels pairwise",
+      "fixed_point": "O_GG",
+      "global_local_group": "(SU(5) x U(1)_X)/Z5",
+      "localized_matter": {
+        "one_family_coefficients": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "rank_breaking": "X_10 + Xbar_-10 vectorlike; S_0 neutral",
+        "three_families": "3 x (10_-1 + 5bar_3 + 1_-5)"
+      },
+      "passes": true,
+      "perturbative_continuous_anomaly": "ZERO",
+      "traditional_global_check": "pi4(SU(5))=0; finite Z5 quotient adds no Witten test here"
+    },
+    {
+      "bulk_10_pair": {
+        "H10": [
+          2,
+          2,
+          80,
+          20
+        ],
+        "H10_prime": [
+          -2,
+          -2,
+          -80,
+          -20
+        ],
+        "sum": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "bulk_45_vector": "tilded 10_4+10bar_-4 cancels pairwise",
+      "fixed_point": "O_fl",
+      "global_local_group": "(SU(5)' x U(1)'_X)/Z5",
+      "localized_matter": "none",
+      "passes": true,
+      "perturbative_continuous_anomaly": "ZERO",
+      "traditional_global_check": "pi4(SU(5))=0"
+    },
+    {
+      "bulk_10_pair": "10=(6,1,1)+(1,2,2): real/pseudoreal; perturbative anomaly zero",
+      "bulk_45_vector": "45=(15,1,1)+(1,3,1)+(1,1,3)+(6,2,2): zero",
+      "fixed_point": "O_PS",
+      "global_local_group": "(SU(4)_C x SU(2)_L x SU(2)_R)/Z2",
+      "localized_matter": "none",
+      "passes": true,
+      "perturbative_continuous_anomaly": "ZERO",
+      "traditional_global_check": "each (1,2,2) gives two doublets and (6,2,2) gives twelve; both SU(2) Witten counts are even"
+    }
+  ],
+  "core_sha256": "0896cc21d84d6395d6ba9d5c0b6414c3aec14c18981708d2e06b548a4fc21302",
+  "discrete_Z4R_microscopic_audit": {
+    "classical_action_automorphism": {
+      "D_terms_neutral": true,
+      "bulk_gauge_kinetic_q": 2,
+      "bulk_hyper_kinetic_superpotential_q": 2,
+      "charges_mod4": {
+        "Hc_Hprimec_S": 2,
+        "V_Phi_H_Hprime_X_Xbar": 0,
+        "matter_superfields": 1,
+        "superpotential": 2,
+        "theta": 1
+      },
+      "classical_global_automorphism_passes": true,
+      "commutes_with_declared_pure_gauge_translation_twists": true
+    },
+    "declared_group_warning": "With matter superfields of charge one, matter fermions have charge zero and r^2=(-1)^F times matter parity. The faithful group is generically Spin x Z4, not automatically Spin^Z4.",
+    "four_dimensional_necessary_residues": {
+      "5A1_R": -3,
+      "A2_R": 1,
+      "A3_R": 3,
+      "eta": 2,
+      "gravitational_congruence_passes": false,
+      "nonabelian_and_GUT_normalized_hypercharge_universal": true,
+      "repair": "retain an explicit GS dilaton/axion multiplet whose axino supplies the missing odd contribution, then quantize its shift and all couplings",
+      "required_24rho": 24,
+      "residues_mod_eta": [
+        1,
+        1,
+        1
+      ],
+      "rho": 1,
+      "visible_plus_X_Xbar_S_gravitational_coefficient": -13
+    },
+    "globally_gauged_Z4R_proved": false,
+    "hard_failures_or_open_obligations": [
+      {
+        "id": "D1_GAUGED_ORIGIN",
+        "reason": "a rigid SU(2)_R/hypermultiplet automorphism is not a discrete gauge construction",
+        "status": "OPEN"
+      },
+      {
+        "id": "D2_POINTWISE_DISCRETE_ANOMALIES",
+        "reason": "no parity-weighted G_f^2-Z4R, U(1)^2-Z4R, grav^2-Z4R, or local-Lorentz ledger at all four singularities",
+        "status": "OPEN"
+      },
+      {
+        "id": "D3_QUANTIZED_LOCAL_INFLOW",
+        "reason": "no axion shifts, tensor parities, localized GS matrix, or integer levels",
+        "status": "OPEN"
+      },
+      {
+        "id": "D4_TORSION_DAI_FREED",
+        "reason": "no eta-invariant/bordism computation for the actual Spin x Z4 symmetry",
+        "status": "OPEN"
+      },
+      {
+        "id": "D5_ALL_FIXED_POINT_COUNTERTERMS",
+        "reason": "normal derivatives of odd fields and the full local counterterm ring remain unaudited",
+        "status": "OPEN"
+      }
+    ]
+  },
+  "exact_6D_bulk_completion": {
+    "bulk_sector_closed": true,
+    "connected_global_anomaly": {
+      "bordism_group": "Omega_7^Spin(BSpin(10)) = 0",
+      "scope": "ordinary connected Spin(10), characteristic a, unimodular Lambda, and standard self-dual-string completeness assumptions",
+      "torsion_obstruction": false
+    },
+    "global_gauge_group": "Spin(10)",
+    "green_schwarz_factorization": {
+      "X4_components": [
+        {
+          "trF2": -2,
+          "trR2": -1
+        },
+        {
+          "trF2": 1,
+          "trR2": -1
+        }
+      ],
+      "convention": "I8=(1/2) Omega_ab X4^a X4^b with X4^a=(a^a/2) trR^2+b^a (2/lambda) trF^2 and lambda=2",
+      "expanded_I8": "(trR2)^2 + trR2 trF2 - 2 (trF2)^2",
+      "factorized_I8": "(trR2 + 2 trF2)(trR2 - trF2)",
+      "quantized_GS_action": "dH^a=X4^a; S_GS=-integral Omega_ab B^a wedge X4^b",
+      "reducible_bulk_anomaly_factorizes": true
+    },
+    "id": "V57_SPIN10_T1_U_GREEN_SCHWARZ_PARENT_LAYER",
+    "not_yet_an_orbifold_completion": [
+      "parities and fixed-point distribution of all 269 neutral hypermultiplet dimensions",
+      "localized tensor/axion boundary conditions and inflow",
+      "self-dual-string worldsheet anomaly cancellation",
+      "mixed discrete-R/local-Lorentz anomaly cancellation"
+    ],
+    "positive_kinetic_chamber": {
+      "j": [
+        "2",
+        "1/4"
+      ],
+      "j_dot_b": "3/2",
+      "j_squared": "1",
+      "minus_j_dot_a": "9/2",
+      "positive": true
+    },
+    "scope": "integrated 6D bulk before the T2/Z2 parity quotient",
+    "string_charge_lattice": {
+      "Omega": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "Spin10_global_form_quantization": "PASS in the declared coroot/cocharacter normalization: the D5 coroot lattice is even and (1/2)bK is Lambda-valued.",
+      "a": [
+        -2,
+        -2
+      ],
+      "a_dot_b": 2,
+      "a_is_characteristic": true,
+      "a_is_characteristic_proof": "For x=(m,n), x^2=2mn and a.x=-2(m+n), so a.x=x^2 mod 2.",
+      "a_squared": 8,
+      "b_Spin10": [
+        -2,
+        1
+      ],
+      "b_squared": -4,
+      "determinant": -1,
+      "name": "even unimodular hyperbolic plane U",
+      "signature": [
+        1,
+        1
+      ],
+      "unimodular": true
+    },
+    "supergravity_spectrum": {
+      "Spin10_vector_multiplets_dimension_V": 45,
+      "charged_hyper_dimensions": 20,
+      "charged_hypermultiplets": "2 x 10",
+      "gravitational_equation": "H - V + 29 T = 273",
+      "gravitational_lhs": 273,
+      "gravity_multiplets": 1,
+      "irreducible_gravitational_anomaly_cancels": true,
+      "neutral_hyper_dimensions": 269,
+      "tensor_multiplets_T": 1,
+      "total_hyper_dimensions_H": 289
+    },
+    "why_not_literal_SO10": "The localized family spinors are 16 representations and therefore require Spin(10); they are not representations of Spin(10)/Z2."
+  },
+  "expected_input_core_hashes": {
+    "v56_master": "500bb1429e6202c57f574143e01a2edb3e70d94087ae2ac347462c6729e92124",
+    "v56_orbifold": "09ba35b4e7cc05bf2375818e71610f565d6a330b5e8f0221373c301a58293a55"
+  },
+  "gate_ledger": [
+    {
+      "V57_candidate_closed": false,
+      "decision": "OPEN: V57 exactly closes the integrated Spin(10) 6D bulk GS sector and all continuous fixed-point gauge anomalies, but a globally gauged Z4R, its pointwise discrete/local-Lorentz anomaly inflow, and the orbifold projection of the 269 neutral hyper dimensions are not constructed in the same action.",
+      "gate": "G1",
+      "status": "OPEN"
+    },
+    {
+      "V57_candidate_closed": false,
+      "decision": "OPEN: the new bulk parent and proposed string spin-lift are not one complete W/K/gauge/soft action.",
+      "gate": "G2",
+      "status": "OPEN"
+    },
+    {
+      "V57_candidate_closed": false,
+      "decision": "OPEN: no interacting orbifold vacuum or regulated infinite-KK Hessian is solved.",
+      "gate": "G3",
+      "status": "OPEN"
+    },
+    {
+      "V57_candidate_closed": false,
+      "decision": "OPEN: the V56 free projector remains exact, but the all-boundary-operator problem is unchanged.",
+      "gate": "G4",
+      "status": "OPEN"
+    },
+    {
+      "V57_candidate_closed": false,
+      "decision": "OPEN: no completed dark sector or cosmological history.",
+      "gate": "G5",
+      "status": "OPEN"
+    },
+    {
+      "V57_candidate_closed": false,
+      "decision": "OPEN: no compactification/threshold/precision-unification match.",
+      "gate": "G6",
+      "status": "OPEN"
+    },
+    {
+      "V57_candidate_closed": false,
+      "decision": "OPEN: no infinite-KK proton tensor, dressing, or lifetime prediction.",
+      "gate": "G7",
+      "status": "OPEN"
+    },
+    {
+      "V57_candidate_closed": false,
+      "decision": "OPEN: no mediator-complete flavour/seesaw fit.",
+      "gate": "G8",
+      "status": "OPEN"
+    }
+  ],
+  "input_core_hashes": {
+    "v56_master": "500bb1429e6202c57f574143e01a2edb3e70d94087ae2ac347462c6729e92124",
+    "v56_orbifold": "09ba35b4e7cc05bf2375818e71610f565d6a330b5e8f0221373c301a58293a55"
+  },
+  "integrity_checks": {
+    "U_lattice_is_integral_unimodular_and_characteristic": true,
+    "Z4R_is_not_overclaimed_as_globally_gauged": true,
+    "all_four_continuous_fixed_point_anomalies_vanish": true,
+    "bound_V56_cores_are_canonical_and_expected": true,
+    "bulk_reducible_anomaly_factorizes": true,
+    "heterotic_redesign_is_selected_but_not_imported": true,
+    "literal_SO10_repair_is_not_imported_into_spinor_model": true,
+    "low_energy_Z4R_gauge_residues_are_universal_mod2": true,
+    "low_energy_Z4R_gravitational_mismatch_is_exposed": true,
+    "minimal_T1_gravitational_count_is_273": true,
+    "no_G1_to_G8_gate_is_promoted": true,
+    "positive_gauge_kinetic_chamber_exists": true,
+    "strict_G1_matrix_contains_open_or_failed_rows": true,
+    "two_10s_cancel_irreducible_Spin10_gauge_anomaly": true,
+    "upstream_G1_was_open": true,
+    "upstream_free_projector_is_preserved_not_reproved": true,
+    "upstream_selected_action_is_the_V56_orbifold": true
+  },
+  "literal_SO10_cross_check": {
+    "compatible_with_localized_16_families": false,
+    "global_group": "SO(10)=Spin(10)/Z2",
+    "id": "LITERAL_SO10_GLOBAL_FORM_CROSS_CHECK",
+    "mathematically_consistent_bulk_alternative": true,
+    "primitive_U_solution": "FAILS because the SO(10) cocharacter lattice forces b in 2 Lambda",
+    "repair_lattice": {
+      "Omega": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          -1
+        ]
+      ],
+      "a": [
+        3,
+        1
+      ],
+      "a_dot_b": 2,
+      "a_is_characteristic": true,
+      "a_squared": 8,
+      "b": [
+        0,
+        -2
+      ],
+      "b_is_even_lattice_vector": true,
+      "b_squared": -4,
+      "determinant": -1,
+      "j": [
+        "5/3",
+        "4/3"
+      ],
+      "j_dot_b": "8/3",
+      "j_squared": "1",
+      "name": "odd unimodular I_(1,1)"
+    },
+    "selected_for_V57": false
+  },
+  "n_failed_integrity_checks": 0,
+  "new_physics_created": {
+    "empirical_discovery": false,
+    "exact_gain": "the integrated 6D irreducible, reducible, gravitational, charge-lattice, kinetic-chamber, and connected global anomaly sector is now closed",
+    "kind": "quantized Spin(10), T=1, U-lattice Green-Schwarz parent layer",
+    "not_a_complete_new_theory": true,
+    "yes": true
+  },
+  "primary_sources": [
+    {
+      "title": "Anomaly Constraints and String/F-theory Geometry in 6D Quantum Gravity",
+      "url": "https://arxiv.org/abs/1008.1062",
+      "use": "6D anomaly equations, group constants, and kinetic chamber"
+    },
+    {
+      "title": "Quantization of anomaly coefficients in 6D N=(1,0) supergravity",
+      "url": "https://arxiv.org/abs/1711.04777",
+      "use": "integral string-charge and global-form quantization"
+    },
+    {
+      "title": "Remarks on the Green-Schwarz terms of six-dimensional supergravity theories",
+      "url": "https://arxiv.org/abs/1808.01334",
+      "use": "unimodular lattice, characteristic a, and global GS conditions"
+    },
+    {
+      "title": "Some comments on 6D global gauge anomalies",
+      "url": "https://arxiv.org/abs/2012.11622",
+      "use": "Spin/SO bordism computation"
+    },
+    {
+      "title": "SO(10) Unified Theories in Six Dimensions",
+      "url": "https://arxiv.org/abs/hep-ph/0108071",
+      "use": "two-10 orbifold spectrum and parity architecture"
+    },
+    {
+      "title": "Anomaly cancellation in six dimensions",
+      "url": "https://arxiv.org/abs/hep-ph/0209144",
+      "use": "parity-weighted localized anomaly formula"
+    },
+    {
+      "title": "Localized anomalies in orbifold gauge theories",
+      "url": "https://arxiv.org/abs/hep-th/0612212",
+      "use": "localized gauge and internal-Lorentz anomaly obligations"
+    },
+    {
+      "title": "A unique Z4R symmetry for the MSSM",
+      "url": "https://arxiv.org/abs/1009.0905",
+      "use": "discrete residues, GS axino repair, and string spin-lift existence witness"
+    },
+    {
+      "title": "On the Anomaly of the Electromagnetic Duality of the Maxwell Theory",
+      "url": "https://arxiv.org/abs/1808.02881",
+      "use": "ordinary Z4 versus Spin-Z4 global-symmetry distinction"
+    },
+    {
+      "title": "Supersymmetric Standard Model from the Heterotic String (II)",
+      "url": "https://arxiv.org/abs/hep-th/0606187",
+      "use": "explicit modular-invariant local-SO10 heterotic redesign precedent"
+    }
+  ],
+  "question": "Can the selected V56 T2/Z2 Spin(10) orbifold be promoted through the strict post-V40 G1 microscopic-consistency gate, creating new physics if needed?",
+  "redesign_ledger": [
+    {
+      "decision": "ACCEPTED_EXACT_BULK_SUBSECTOR",
+      "does_not_close": "orbifold-localized and discrete-R sectors",
+      "gain": "closes irreducible, reducible, gravitational, lattice, and connected global 6D bulk anomalies",
+      "id": "R1_MINIMAL_SPIN10_T1_U_GS_PARENT",
+      "same_action_G1_promotion": false
+    },
+    {
+      "decision": "REJECTED_FOR_V56",
+      "fatal_mismatch": "literal SO(10) cannot carry the localized 16 families",
+      "gain": "mathematically repairs the stronger SO(10) cocharacter quantization condition",
+      "id": "R2_LITERAL_SO10_I11_PARENT",
+      "same_action_G1_promotion": false
+    },
+    {
+      "decision": "NOT_SELECTED",
+      "id": "R3_BOTTOM_UP_GAUGED_U1R_TO_Z4R",
+      "reason": "requires a substantially new gauged 6D R-supergravity spectrum, vacuum, flux, and anomaly lattice",
+      "same_action_G1_promotion": false
+    },
+    {
+      "decision": "SELECTED_UV_REDESIGN_TARGET_NOT_YET_CONSTRUCTED",
+      "id": "R4_HETEROTIC_SPIN_LIFT_MIXED_Z4R",
+      "mechanism": "derive Z4R from the spin lift of a T2/Z2 orbifold plane mixed with space-group and gauge symmetries; retain the universal dilaton GS multiplet",
+      "published_existence_witness": "heterotic orbifold vacua can realize matter charge 1, Higgs charge 0, one Higgs pair, and universal dilaton Green--Schwarz cancellation",
+      "required_same_action_binding": [
+        "explicit worldsheet shift and Wilson lines",
+        "complete massless and massive-index spectrum",
+        "singlet-VEV solution and exact residual symmetry group",
+        "local anomaly/GS maps to all V56 fixed-point groups",
+        "proof that the V56 Higgs projector and brane-family sector survive"
+      ],
+      "same_action_G1_promotion": false,
+      "why_not_imported": "the published witness is a different string action; the semi-realistic example also has an extra Z2 and rank-two down/lepton Yukawas"
+    }
+  ],
+  "schema": "susy_v57_g1_microscopic_completion_frontier_audit/v1",
+  "source_manifest": [
+    {
+      "exists": true,
+      "path": "susy_v57_g1_microscopic_completion_frontier_audit.py",
+      "sha256": "310823a04554592433159da9268035f04267f681a090dd233c2492f8427227d7"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v57_g1_microscopic_completion_frontier_audit.py",
+      "sha256": "bf76c21eb0678596dc02089f833c3be59d2fd1486717fb30302a91bc800b5dd7"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V56_NEW_PHYSICS_CANDIDATE_INTEGRATION_AUDIT.json",
+      "sha256": "6a16ecbfeae2cc3d59f20e3eb2a7a0abb4447c4a9f0d54eb4030638282d5d734"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V56_ORBIFOLD_GEOMETRIC_Z4R_PROTECTION_AUDIT.json",
+      "sha256": "0ca1aeb877b160e66541ab53d7368908bdcd5030ba443f75bd04d2699fd981ef"
+    }
+  ],
+  "status": "V57_G1_MICROSCOPIC_COMPLETION_FRONTIER__SPIN10_T1_U_LATTICE_BULK_GS_CLOSED__ALL_CONTINUOUS_FIXED_POINT_GAUGE_ANOMALIES_ZERO__TRADITIONAL_GLOBAL_CHECKS_PASS__Z4R_CLASSICAL_AUTOMORPHISM_ONLY__DISCRETE_GAUGE_ORIGIN_LOCAL_DISCRETE_INFLOW_AND_NEUTRAL_ORBIFOLD_SECTOR_OPEN__G1_NOT_CLOSED__HETEROTIC_SPIN_LIFT_REDESIGN_SELECTED__ZERO_GATE_PROMOTIONS__COMPLETE_THEORY_FALSE",
+  "strict_G1_matrix": [
+    {
+      "criterion": "compact_global_gauge_group_and_quotients",
+      "evidence": "Spin(10) with (SU5xU1)/Z5 and PS/Z2 fixed-point global forms",
+      "status": "PASS"
+    },
+    {
+      "criterion": "integral_unimodular_string_charge_lattice",
+      "evidence": "U lattice with characteristic a=(-2,-2), b=(-2,1)",
+      "status": "PASS_FOR_INTEGRATED_BULK"
+    },
+    {
+      "criterion": "complete_6D_chiral_supergravity_spectrum",
+      "evidence": "gravity + T=1 + Spin10 vector + 2x10 + 269 neutral hyper dimensions",
+      "status": "PASS_FOR_INTEGRATED_BULK_ONLY"
+    },
+    {
+      "criterion": "all_integrated_6D_perturbative_anomalies",
+      "evidence": "irreducible terms vanish and I8 factorizes on the quantized U lattice",
+      "status": "PASS"
+    },
+    {
+      "criterion": "connected_6D_global_gauge_gravity_anomaly",
+      "evidence": "Omega_7^Spin(BSpin10)=0 plus unimodular lattice and characteristic a",
+      "status": "PASS_UNDER_DECLARED_ASSUMPTIONS"
+    },
+    {
+      "criterion": "continuous_fixed_point_gauge_and_traditional_global_anomalies",
+      "evidence": "4/4 fixed points pass exactly",
+      "status": "PASS"
+    },
+    {
+      "criterion": "orbifold_projection_of_complete_parent_spectrum",
+      "evidence": "269 neutral hyper parities and localized tensor boundary conditions are unspecified",
+      "status": "OPEN"
+    },
+    {
+      "criterion": "globally_gauged_Z4R_and_gravitational_residue",
+      "evidence": "classical automorphism only; low-energy A_grav=-13 fails the required congruence without an explicit GS axino/dilatino",
+      "status": "FAIL_OPEN"
+    },
+    {
+      "criterion": "pointwise_discrete_R_local_Lorentz_and_quantized_inflow",
+      "evidence": "no four-fixed-point coefficient matrix or localized axion/tensor inflow action",
+      "status": "OPEN"
+    },
+    {
+      "criterion": "torsion_global_anomaly_for_actual_Spin_x_Z4_group",
+      "evidence": "Dai-Freed/bordism invariant not computed",
+      "status": "OPEN"
+    },
+    {
+      "criterion": "same_action_G1_closure",
+      "evidence": "every strict row must pass in one versioned action; three rows remain open and one fails/open",
+      "status": "OPEN"
+    }
+  ],
+  "strict_scope": "One action must supply its compact global group, integral charge/axion lattice, complete chiral spectrum, and cancellation of every perturbative, localized, global, and discrete anomaly by an explicitly quantized mechanism.",
+  "terminal_decision": {
+    "V57_G1_closed": false,
+    "V57_closed_gates": [],
+    "complete_theory": false,
+    "continuous_fixed_point_gauge_anomaly_subsector_closed": true,
+    "full_gates_closed_for_V57_candidate": 0,
+    "globally_gauged_Z4R_closed": false,
+    "historical_or_cross_action_G1_closure_may_not_be_imported": true,
+    "honest_outcome": "V57 makes the maximum exact same-line advance presently supported: the bulk Green--Schwarz parent and every continuous fixed-point gauge anomaly are closed. G1 itself remains open because the proposed Z4R is only a classical automorphism, its necessary gravitational residue fails without an explicit GS multiplet, and no quantized pointwise discrete/local-Lorentz inflow or complete neutral orbifold spectrum exists. A heterotic spin-lift embedding is a viable redesign, but importing a published different string vacuum would violate the one-action rule.",
+    "integrated_6D_bulk_G1_subsector_closed": true,
+    "same_action_completion": false,
+    "selected_complete_candidate": null,
+    "selected_next_redesign": "R4_HETEROTIC_SPIN_LIFT_MIXED_Z4R"
+  }
+}

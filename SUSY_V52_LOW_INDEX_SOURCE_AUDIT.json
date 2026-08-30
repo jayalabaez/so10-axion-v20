@@ -1,0 +1,149 @@
+{
+  "anomaly_ledger": {
+    "Spin10_global": "no four-dimensional Witten anomaly for Spin(10)",
+    "Spin10_local_cubic": "zero; Spin(10) has no perturbative cubic gauge anomaly and 16+bar16 is vectorlike",
+    "integration_caveat": "with only this pair, an independently gauged U(1)F leaves one diagonal combination with the Spin(10) singlet Cartan unbroken; a charged singlet or other sector is required to reproduce a fully broken V50 U(1)F",
+    "optional_U1F_Spin10_squared": 0,
+    "optional_U1F_assignment": {
+      "16": 1,
+      "45": 0,
+      "54": 0,
+      "bar16": -1
+    },
+    "optional_U1F_cubed": 0,
+    "optional_gravity_squared_U1F": 0
+  },
+  "candidate": {
+    "complex_coordinates": 131,
+    "literature": {
+      "lean_45_spinor_thresholds": "https://arxiv.org/abs/1904.11697",
+      "perturbative_minimal_sector": "https://arxiv.org/abs/0707.3300",
+      "renormalizable_SM_vacuum": "https://arxiv.org/abs/hep-ph/0202278",
+      "spinor_tensor_coupling": "https://arxiv.org/abs/hep-th/0109116"
+    },
+    "renormalizable": true,
+    "representations": [
+      "54",
+      "45",
+      "16",
+      "bar16"
+    ],
+    "superpotential": "W=(mE/2)Tr(E^2)+(lambda/3)Tr(E^3)-(mA/4)Tr(A^2)-(kappa/2)Tr(E A^2)+barC^T[mC I+eta rho16(A)]C"
+  },
+  "core_sha256": "c07fd055da382cdc461b212679f70971ced8d4d13a319a51e2cbaabfecbeba52",
+  "exact_local_geometry": {
+    "E54_orbit_rank": 24,
+    "E54_plus_spinor_pair_orbit_rank": 33,
+    "E54_stabilizer": "Spin(6)xSpin(4), dimension 21",
+    "exact_rank_lemma": "mod-37 ranks lower-bound ranks over Q(i); exact H*Q=0 gives rank(H)+rank(Q)<=131. The lower bounds 98+33=131 saturate this inequality, proving both characteristic-zero ranks and ker(H)=im(Q).",
+    "hessian_denominator": 20,
+    "hessian_nullity_mod37": 33,
+    "hessian_numerator_sha256": "e9897d8014dc0c63aa161b70307c56a049a6c7a986686d94e2c74e0dc3d3bba1",
+    "hessian_rank_mod37": 98,
+    "hessian_shape": [
+      131,
+      131
+    ],
+    "intersection_identification": "[Spin(6)xSpin(4)] intersection SU(5) = SU(3)c x SU(2)L x U(1)Y",
+    "kernel_equals_broken_gauge_orbit": true,
+    "orbit_denominator": 10,
+    "orbit_numerator_sha256": "1fea10fb95a454dd63463b17bc59983939aaab53413f1ab8d0d5300aa8324dbb",
+    "orbit_rank_mod37": 33,
+    "orbit_shape": [
+      131,
+      45
+    ],
+    "spinor_pair_orbit_rank": 21,
+    "spinor_pair_stabilizer": "SU(5), dimension 24",
+    "stabilizer_dimension": 12,
+    "unbroken_group": "SU(3)c x SU(2)L x U(1)Y (Lie-algebra dimension 12)",
+    "ward_product_exactly_zero": true,
+    "ward_product_max_abs": 0.0
+  },
+  "exact_witness": {
+    "A0_nonzero_upper_entries": {
+      "01": "1",
+      "23": "1",
+      "45": "1",
+      "67": "3",
+      "89": "3"
+    },
+    "C0": "10 times negative-chirality Clifford basis vector e15",
+    "D_nonzero_count": 0,
+    "D_terms_all_zero": true,
+    "E0_diagonal": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      -3,
+      -3,
+      -3,
+      -3
+    ],
+    "F_nonzero_counts": {
+      "A_F_x400": 0,
+      "C_F_x400": 0,
+      "S_F_x400": 0,
+      "barC_F_x400": 0
+    },
+    "F_terms_all_zero": true,
+    "barC0": "10 times dual basis vector e15",
+    "parameters": {
+      "eta": "-3*i/10",
+      "kappa": "1",
+      "lambda": "1",
+      "mA": "11",
+      "mC": "27/20",
+      "mE": "9/5"
+    }
+  },
+  "gate_effect": {
+    "G2": "OPEN",
+    "clause_promotions": [],
+    "reason": "new action is not yet matched to the frozen V50 action and does not provide final C5/C7 Wilson data",
+    "scientific_verdict": "exact viable low-index source replacement; not a complete theory"
+  },
+  "perturbativity": {
+    "Higgs_source_reduction_factor_vs_v51": 5.25,
+    "above_100x_matching_scale": true,
+    "architectural_site_to_lean_source_ratio_apples_oranges": 13.166666666666666,
+    "dynkin_convention": "T(10)=1, C2(45)=8",
+    "g_at_matching_witness": 0.73,
+    "indices": {
+      "T16": 2,
+      "T45": 8,
+      "T54": 12,
+      "Tbar16": 2
+    },
+    "landau_pole_over_matching_scale_if_b_positive": 1557503331.1144598,
+    "one_loop_b_source_only": 0,
+    "one_loop_b_with_three_16_families_and_one_10H": 7,
+    "scope_caveat": "does not include the separate moose/link and mediator field indices",
+    "source_sum_T": 24,
+    "v51_Higgs_source_T": 126,
+    "v51_whole_source_site_T_including_link_inventory": 316
+  },
+  "phenomenology_fail_closed": {
+    "doublet_triplet": "requires a separate audited 10/16 Higgs mass matrix and proton-decay analysis",
+    "flavour_fit": "absent; no charged-fermion or neutrino Yukawa fit is claimed",
+    "full_Higgs_Hessian": "absent; the exact rank-98 result covers only the 54+45+16+bar16 GUT-breaking source",
+    "matter_parity": "not automatic because the 16-Higgs VEV has odd B-L",
+    "missing_partner": "not supplied by 54+45+16+bar16 alone",
+    "possible_repair": "vectorlike singlet fermion mediators can UV-complete (16_F bar16_H)^2/M, but their flavor, parity, and matching are not audited here",
+    "reason": "16_F x 16_F contains 10+120+126, not a source 16; Majorana mass needs a dimension-five operator or a 126bar",
+    "renormalizable_type_I_seesaw": "absent",
+    "threshold_unification": "source beta coefficient only; split multiplet thresholds have not been matched"
+  },
+  "schema": "susy-v52-low-index-source-audit-v1",
+  "source_manifest": {
+    "source_files": {
+      "exact_normalized_so10_yukawa_cgcs_v20.py": "432faa3fdf5adebf25015f7f2fda7f040d89d86bce31f6c85b4cc56e37eb14df",
+      "susy_v52_low_index_source_audit.py": "b9481cb6ffb0ce885528be62a23d4f0c8c432cafe0d690254aafd64ccad51438",
+      "test_susy_v52_low_index_source_audit.py": "41be6439b5c6ca2e57e73865ebcb1512db06df927beed33d5c32f3f2028bdc48"
+    }
+  },
+  "status": "V52_EXACT_RENORMALIZABLE_54_45_16_BAR16_SOURCE_WITNESS__F_AND_D_FLAT__SPIN10_ORBIT_RANK33_STABILIZER12__FULL_131_HESSIAN_RANK98_NULLITY33_AND_KERNEL_EQUALS_GAUGE_ORBIT__SOURCE_DYNKIN_INDEX24__PERTURBATIVE_SOURCE_REPLACEMENT__SEESAW_MATTER_PARITY_AND_MISSING_PARTNER_OBLIGATIONS_OPEN__NO_G2_CLAUSE_PROMOTED"
+}

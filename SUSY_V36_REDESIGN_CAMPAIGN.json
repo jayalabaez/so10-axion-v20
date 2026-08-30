@@ -1,0 +1,898 @@
+{
+  "G1": {
+    "Z4R_new_sector": {
+      "Pbar_plus_five_anomalons_Delta_s1": 0,
+      "Pbar_plus_five_anomalons_Delta_s3": 0,
+      "external_GS_chiral_T_fermion_shift": -1,
+      "fermion_charges": {
+        "A15": 1,
+        "A16": -1,
+        "A17": 1,
+        "A2": -1,
+        "A32": -1,
+        "Pbar": 1
+      },
+      "net_new_linear_and_cubic_shift": [
+        0,
+        0
+      ],
+      "preferred_superfield_charges": {
+        "A15": 2,
+        "A16": 0,
+        "A17": 2,
+        "A2": 0,
+        "A32": 0,
+        "Pbar": 2
+      },
+      "second_driver_Zp_fermion_shift": 1
+    },
+    "full_product_boundary": {
+      "declared_group": "Spin^Z4R x Z66 with the PS gauge factors",
+      "dedicated_full_bordism_with_gravitino_and_PS_center_quotient_done": false,
+      "status": "conditional four-dimensional EFT candidate; G1 not closed",
+      "subgroup_and_pairwise_arithmetic_passes": true
+    },
+    "minimal_countersector": {
+      "all_minimal_full_rank_witnesses": [
+        [
+          2,
+          6,
+          16,
+          26,
+          32
+        ],
+        [
+          2,
+          15,
+          16,
+          17,
+          32
+        ],
+        [
+          5,
+          8,
+          16,
+          26,
+          27
+        ],
+        [
+          9,
+          14,
+          16,
+          20,
+          23
+        ],
+        [
+          12,
+          14,
+          16,
+          20,
+          20
+        ]
+      ],
+      "determinant": "a^2*b^2*c",
+      "determinant_nonzero_condition": "a*b*c != 0",
+      "exhaustive_counts": {
+        "1": {
+          "anomaly_candidates": 0,
+          "generic_full_rank_candidates": 0
+        },
+        "2": {
+          "anomaly_candidates": 1,
+          "generic_full_rank_candidates": 0
+        },
+        "3": {
+          "anomaly_candidates": 6,
+          "generic_full_rank_candidates": 0
+        },
+        "4": {
+          "anomaly_candidates": 68,
+          "generic_full_rank_candidates": 0
+        },
+        "5": {
+          "anomaly_candidates": 447,
+          "generic_full_rank_candidates": 5
+        }
+      },
+      "full_rank": true,
+      "mass_matrix": [
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "a"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "b",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "c",
+          "mu",
+          "0"
+        ],
+        [
+          "0",
+          "b",
+          "mu",
+          "d",
+          "0"
+        ],
+        [
+          "a",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      ],
+      "mass_matrix_field_order": [
+        "A2",
+        "A15",
+        "A16",
+        "A17",
+        "A32"
+      ],
+      "mass_parameters": {
+        "a": "yAbar*<Pbar>",
+        "b": "yA15*<P>",
+        "c": "yA16*<P>",
+        "d": "yA17*<Pbar>",
+        "mu": "MA"
+      },
+      "minimal_number_of_anomalons": 5,
+      "scope": "PS-singlet chiral anomalons after adding Pbar(q33=32), with a generic symmetric mass entry allowed by a bare, P, or Pbar renormalizable bilinear",
+      "selected_field_order": [
+        "A2",
+        "A15",
+        "A16",
+        "A17",
+        "A32"
+      ],
+      "selected_q33_witness": [
+        2,
+        15,
+        16,
+        17,
+        32
+      ],
+      "selected_q66_CRT_lift": [
+        37,
+        63,
+        65,
+        1,
+        31
+      ],
+      "target_after_Pbar": {
+        "sum_q_cubed_mod99": 16,
+        "sum_q_mod33": 16
+      }
+    },
+    "mixed_PS_squared_Z66": {
+      "conditional_GS_sector": {
+        "chosen_gravitational_level": 0,
+        "four_dimensional_quantized_topological_action_declared": true,
+        "gauge_levels": [
+          1,
+          1,
+          1
+        ],
+        "gravitational_level_mod11_required": 0,
+        "heterotic_equal_level_universality_assumed": false,
+        "microscopic_compactification_or_stueckelberg_origin_derived": false,
+        "period_one_axion_shift_under_Z66_generator": "8/66=4/33"
+      },
+      "direct_matter_cancellation": false,
+      "group_order": [
+        "SU4",
+        "SU2L",
+        "SU2R"
+      ],
+      "half_normalized_residues": [
+        -4,
+        -4,
+        -4
+      ]
+    },
+    "schema": "susy-v36-g1-eft-candidate-v1",
+    "selector": {
+      "Hsieh_Dai_Freed": {
+        "Delta_s1_canonical": 1287,
+        "Delta_s3_canonical": 5061573,
+        "both_vanish": true,
+        "cubic_condition_numerator_mod396": 0,
+        "linear_condition_2Delta_s1_mod66": 0
+      },
+      "Z33_subgroup_signed_audit": {
+        "counter_Delta_s1": 15,
+        "counter_Delta_s3": 3381,
+        "cubic_residue_mod99": 0,
+        "linear_residue_mod33": 0,
+        "pure_finite_counterclass_closed": true,
+        "total_Delta_s1": 0,
+        "total_Delta_s3": 3366,
+        "visible_Delta_s1": -15,
+        "visible_Delta_s3": -15
+      },
+      "charge_map": "q66=2*q33+33*p mod66",
+      "charged_Weyl_rows": [
+        {
+          "field": "PsiBar",
+          "multiplicity": 8,
+          "q66": 64
+        },
+        {
+          "field": "PsiCBar",
+          "multiplicity": 8,
+          "q66": 64
+        },
+        {
+          "field": "P",
+          "multiplicity": 1,
+          "q66": 2
+        },
+        {
+          "field": "Pbar",
+          "multiplicity": 1,
+          "q66": 64
+        },
+        {
+          "field": "A2",
+          "multiplicity": 1,
+          "q66": 37
+        },
+        {
+          "field": "A15",
+          "multiplicity": 1,
+          "q66": 63
+        },
+        {
+          "field": "A16",
+          "multiplicity": 1,
+          "q66": 65
+        },
+        {
+          "field": "A17",
+          "multiplicity": 1,
+          "q66": 1
+        },
+        {
+          "field": "A32",
+          "multiplicity": 1,
+          "q66": 31
+        }
+      ],
+      "construction": "CRT combination of old Z33 and anomalon parity",
+      "group": "untwisted Spin x Z66",
+      "spontaneous_breaking": {
+        "P_q66": 2,
+        "Pbar_q66": 64,
+        "all_anomalons_odd": true,
+        "all_original_fields_even": true,
+        "unbroken_subgroup": "Z2",
+        "unbroken_subgroup_order": 2
+      }
+    },
+    "sources": [
+      "https://arxiv.org/abs/1808.02881",
+      "https://arxiv.org/abs/1102.3595",
+      "https://arxiv.org/abs/1212.4371"
+    ]
+  },
+  "core_sha256": "1ceca3ef915150b380ed278162412381e9917cf1ae2a768eb1cc083d112b3f4d",
+  "decision": "Adopt V36 as the next research EFT candidate.  It closes the pure finite selector and anomalon-mass subproblems, defines the conditional mixed GS arithmetic explicitly, and rejects a direct charged repair that would erase the QCD axion.  G1 and the complete theory remain open.",
+  "field_supermultiplet_count_in_SARAH": 20,
+  "gate_ledger": {
+    "complete_theory_exists": false,
+    "declared_4D_EFT_closed_count": 0,
+    "established_full_predictive_closed_count": 0,
+    "gates": [
+      {
+        "closed_at_declared_4D_EFT_level": false,
+        "closed_subproblems": [
+          "pure Spin x Z66 finite counterclass",
+          "minimal full-rank renormalizable anomalon mass sector",
+          "mixed anomaly arithmetic for the declared nonuniversal GS coefficients"
+        ],
+        "established_full_predictive_closed": false,
+        "gate": "G1",
+        "remaining_promotion_requirement": "microscopic origin of the quantized nonuniversal GS sector and a dedicated Spin^Z4R x Z66 bordism/gravitino/PS-center audit",
+        "state": "PURE_FINITE_Z66_AND_FULL_RANK_COUNTERSECTOR_CLOSED__NONUNIVERSAL_GS_DEFINED_AT_4D_EFT_LEVEL__FULL_BORDISM_AND_MICROSCOPIC_PROVENANCE_OPEN"
+      },
+      {
+        "closed_at_declared_4D_EFT_level": false,
+        "established_full_predictive_closed": false,
+        "gate": "G2",
+        "remaining_promotion_requirement": "complete pole matrices, soft splittings, self-energies, mixings, and covariance",
+        "state": "NEW_ANOMALON_TREE_MASS_RANK5_CLOSED__FULL_POLES_OPEN"
+      },
+      {
+        "closed_at_declared_4D_EFT_level": false,
+        "established_full_predictive_closed": false,
+        "gate": "G3",
+        "remaining_promotion_requirement": "derived Kahler/soft potential, saxion stabilization, competing vacua, and tunneling",
+        "state": "LOCAL_TWO_PRODUCT_FTERM_HESSIAN_RANK4__GLOBAL_SELECTION_OPEN"
+      },
+      {
+        "closed_at_declared_4D_EFT_level": false,
+        "established_full_predictive_closed": false,
+        "gate": "G4",
+        "remaining_promotion_requirement": "microscopic mediation, coupled soft running, electroweak poles, and likelihood",
+        "state": "WILSONIAN_SOFT_INTERFACE_SPECIFIABLE__MICROSCOPIC_MEDIATION_OPEN"
+      },
+      {
+        "closed_at_declared_4D_EFT_level": false,
+        "established_full_predictive_closed": false,
+        "gate": "G5",
+        "remaining_promotion_requirement": "all-harmonic quality/sequestering theorem, GS-axion mixing, stable-anomalon relic, and pre-inflation/no-restoration/isocurvature history",
+        "state": "PURE_POLYNOMIAL_DEGREE33_PASSES__GS_DRESSING_AND_COSMOLOGY_OPEN"
+      },
+      {
+        "closed_at_declared_4D_EFT_level": false,
+        "established_full_predictive_closed": false,
+        "gate": "G6",
+        "remaining_promotion_requirement": "source boundary, soft mediation, pole thresholds, matching Wilsons, and uncertainty-propagated piecewise integration",
+        "state": "V36_LIVE_ONE_TWO_LOOP_RGE_ROWS_COMPLETE__PHYSICAL_BOUNDARY_OPEN"
+      },
+      {
+        "closed_at_declared_4D_EFT_level": false,
+        "established_full_predictive_closed": false,
+        "gate": "G7",
+        "remaining_promotion_requirement": "flavour tensors, SUSY dressing, running, lattice covariance, and channels",
+        "state": "BARYON_OPERATOR_CLASSES_RETAINED__FLAVOUR_AND_DRESSING_OPEN"
+      },
+      {
+        "closed_at_declared_4D_EFT_level": false,
+        "established_full_predictive_closed": false,
+        "gate": "G8",
+        "remaining_promotion_requirement": "out-of-sample flavour origin and a joint experimental likelihood",
+        "state": "CONDITIONAL_OBSERVABLE_REPLAY_RETAINED__PREDICTION_OPEN"
+      }
+    ],
+    "internal_cross_checks": {
+      "G1_pure_finite_pass": true,
+      "G3_local_rank": 4,
+      "G6_live_RGE_pass": true
+    },
+    "materially_updated_frontiers": [
+      "G1",
+      "G2",
+      "G3",
+      "G5",
+      "G6"
+    ],
+    "promotion_rule": "an explicit internally consistent EFT subproblem may close at EFT level; a full predictive gate additionally requires its microscopic inputs and likelihood",
+    "schema": "susy-v36-g1-g8-gate-ledger-v1"
+  },
+  "matching_and_RGE": {
+    "Pati_Salam_to_SM_gauge_matching": [
+      "g3=g4",
+      "g2=gL",
+      "1/g1^2=2/(5*g4^2)+3/(5*gR^2)"
+    ],
+    "RGE": {
+      "attestation_file": "SUSY_V36_SARAH_RGE_ATTESTATION.json",
+      "attestation_sha256": "666062fecf54c37513e5d9e389e5e3cd7fe6ab0bb4801c13b8fb75a076730029",
+      "beta_counts": {
+        "bilinear_superpotential": 2,
+        "gauge": 3,
+        "gaugino_mass": 0,
+        "linear_superpotential": 3,
+        "soft_bilinear": 0,
+        "soft_linear": 0,
+        "soft_scalar_mass": 0,
+        "soft_trilinear": 0,
+        "trilinear_superpotential": 28
+      },
+      "counts_match": true,
+      "engine": "15.0.1 for Microsoft Windows (64-bit) (July 2, 2026)",
+      "expected_beta_counts": {
+        "bilinear_superpotential": 2,
+        "gauge": 3,
+        "gaugino_mass": 0,
+        "linear_superpotential": 3,
+        "soft_bilinear": 0,
+        "soft_linear": 0,
+        "soft_scalar_mass": 0,
+        "soft_trilinear": 0,
+        "trilinear_superpotential": 28
+      },
+      "model": "PSZ4RZ66SUSYV36",
+      "model_initialized": true,
+      "new_driver_and_anomalon_beta_rows_live_in_SARAH": true,
+      "physical_boundary_or_pole_spectrum_supplied": false,
+      "soft_terms_intentionally_disabled": true,
+      "tool": "SARAH 4.15.3",
+      "two_loop_RGE_calculation_succeeded": true,
+      "visible_V35_component_engine_reusable_as_subblock": true
+    },
+    "higher_dimensional_gauge_kinetic_and_Kahler_policy": {
+      "alternative": "finite enumerated coefficient vector with NDA priors",
+      "default_falsifiable_hypothesis": "set to zero at Mstar",
+      "derived": false,
+      "unbounded_threshold_knobs_forbidden": true
+    },
+    "minimal_PS_breaking_flavour_EFT": {
+      "invariant_channels": [
+        "(1,1)",
+        "(15,1)",
+        "(1,3)",
+        "(15,3)"
+      ],
+      "must_be_counted_in_likelihood": true,
+      "operator": "Q*H*Qc*(Sbar*S)/Mstar^2",
+      "three_irreducible_PS_breaking_3x3_Wilson_matrices": true,
+      "values_source_derived": false
+    },
+    "one_loop_vectorlike_thresholds": {
+      "Delta_b_L_GUT_normalized_1_2_3": [
+        "4/5",
+        4,
+        2
+      ],
+      "Delta_b_R_GUT_normalized_1_2_3": [
+        "16/5",
+        0,
+        2
+      ],
+      "independent_ad_hoc_Delta_a_allowed": false,
+      "matching_convention": "alpha_full^{-1}(mu)=alpha_EFT^{-1}(mu)+Delta_b/(2*pi)*ln(M/mu)",
+      "sum": [
+        4,
+        4,
+        4
+      ]
+    },
+    "physical_matching_complete": false,
+    "right_handed_neutrino_matching": "MR=-vPS^2*yN*MN^{-1}*yN^T",
+    "schema": "susy-v36-matching-contract-v1",
+    "vectorlike_projectors": {
+      "heavy_singular_mass_L": "fP*||lambda_L||/sqrt(2)",
+      "heavy_singular_mass_R": "fP*||lambda_R||/sqrt(2)",
+      "lambda_L": [
+        "lambdaPQ[1]",
+        "lambdaPQ[2]",
+        "lambdaPQ[3]",
+        "lambdaPX"
+      ],
+      "lambda_R": [
+        "lambdaPcQ[1]",
+        "lambdaPcQ[2]",
+        "lambdaPcQ[3]",
+        "lambdaPcX"
+      ],
+      "light_Yukawa_projection": "Ylight=U_L^T [[YQQ,YQX],[YXQ,YXX]] U_R"
+    }
+  },
+  "model": "PSZ4RZ66SUSYV36",
+  "no_GS_charged_completion_no_go": {
+    "all_poles_below_required_cutoff": true,
+    "alpha_PS_inverse_at_vPS": 15.2048,
+    "baseline_one_loop_b_4_L_R": [
+      1,
+      5,
+      9
+    ],
+    "minimum_completed_one_loop_b_4_L_R": [
+      30,
+      34,
+      38
+    ],
+    "optimistic_pole_ratio_Lambda_over_vPS": [
+      24.15486635752863,
+      16.60726863943097,
+      12.355085854498292
+    ],
+    "physically_viable_GS_elimination_under_scope": false,
+    "proof_ingredients": [
+      "the unsigned doubled Dynkin sum is odd in every PS factor",
+      "the signed selector sum is 4 mod33",
+      "therefore each unsigned sum is at least 29"
+    ],
+    "representation_independent_lower_bound_Delta_b": [
+      29,
+      29,
+      29
+    ],
+    "required_cutoff_ratio": 100,
+    "scope": "PS-vectorlike P/Pbar-massed pairs that cancel the mixed selector and exact Z4R residues without a GS sector, at the frozen PS coupling",
+    "source": "https://arxiv.org/abs/hep-ph/9311340"
+  },
+  "primary_sources": [
+    {
+      "title": "Discrete gauge anomalies revisited",
+      "url": "https://arxiv.org/abs/1808.02881"
+    },
+    {
+      "title": "Discrete R symmetries for the MSSM and its singlet extensions",
+      "url": "https://arxiv.org/abs/1102.3595"
+    },
+    {
+      "title": "Discrete R Symmetries and Anomalies",
+      "url": "https://arxiv.org/abs/1212.4371"
+    },
+    {
+      "title": "Heavy fields and the axion quality problem",
+      "url": "https://arxiv.org/abs/2212.00102"
+    },
+    {
+      "title": "Two-Loop Renormalization Group Equations for Soft SUSY Couplings",
+      "url": "https://arxiv.org/abs/hep-ph/9311340"
+    }
+  ],
+  "processed_SARAH_superpotential_terms": 34,
+  "rejected_direct_charged_repair": {
+    "PQ_constraints": [
+      "Q_Pbar=-Q_P from X*P*Pbar",
+      "Q_16+Q_16bar=+Q_P from Pbar*16*16bar"
+    ],
+    "candidate": "Pbar plus one vectorlike SO(10) 16_0 + 16bar_1",
+    "complete_SO10_threshold": true,
+    "finite_and_mixed_Z33_anomalies_cancel": true,
+    "mass_term": "Pbar*16_0*16bar_1",
+    "new_mixed_PQ_PS_anomaly": [
+      2,
+      2,
+      2
+    ],
+    "surviving_QCD_PQ_anomaly": 0,
+    "verdict": "rejected: it removes the QCD axion mechanism",
+    "visible_mixed_PQ_PS_anomaly": [
+      -2,
+      -2,
+      -2
+    ]
+  },
+  "schema": "susy-v36-redesign-campaign-v1",
+  "source_manifest": [
+    {
+      "exists": true,
+      "path": "susy_v36_redesign_campaign.py",
+      "sha256": "3f484f06cfaf631acb946d679070c6d1e8e193044ea865b10243dd58d50d5d72"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v36_redesign_campaign.py",
+      "sha256": "5ff12af95a24b2c9edba9b426fa87b0b18ab700df1f60f8c5209ceb23905963e"
+    },
+    {
+      "exists": true,
+      "path": "tools/validate-susy-v36-redesign.wls",
+      "sha256": "23728f5aa1063be8734ffb86e7b0aa2377661e2127035a11e630784f6d77cfab"
+    },
+    {
+      "exists": true,
+      "path": "tools/derive-susy-v33-ps-rges.wls",
+      "sha256": "d399843f1b0f973a275afbb2f2ba448c43b5e84ca85f86c7bd1deb205a049834"
+    },
+    {
+      "exists": true,
+      "path": "models/PSZ4RZ66SUSYV36/PSZ4RZ66SUSYV36.m",
+      "sha256": "e6b3a48419bdcbedd724699323b0158d6aa2b4ca1a5c3c1c4aba783e6bcf7cfc"
+    },
+    {
+      "exists": true,
+      "path": "models/PSZ4RZ66SUSYV36/parameters.m",
+      "sha256": "3659016425d0abc045d92c10dbe60674239fe6bc09325c3dcb98ad3de89b77ee"
+    },
+    {
+      "exists": true,
+      "path": "models/PSZ4RZ66SUSYV36/particles.m",
+      "sha256": "eace92c4f5877c8302e5e3165696996a29799852ba7d8d2ebc9b2b5e8726fac6"
+    },
+    {
+      "exists": true,
+      "path": "models/PSZ4RZ66SUSYV36/README.md",
+      "sha256": "61054f297095e32bb394e78292841d50e926af6982a1b0775d6ff1c47d9d977c"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V36_SARAH_RGE_ATTESTATION.json",
+      "sha256": "666062fecf54c37513e5d9e389e5e3cd7fe6ab0bb4801c13b8fb75a076730029"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V35_COMPONENT_BETAY_CAMPAIGN.json",
+      "sha256": "182932758da037ea8a17ab405b63d36f0916d2744c1f0422ce4119ef550932cb"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V35_G6_COMPONENT_BETAY_CLOSURE.json",
+      "sha256": "c1795a3a23f84f0a3eee9799e9eca2bd742d7ad2cef3f1fb522b861b7ef723ac"
+    },
+    {
+      "exists": true,
+      "path": ".github/workflows/susy-v36-redesign.yml",
+      "sha256": "456cea8fde1d6b0e1052fbe5cd94251eba42ffa6e7eb956a233face8641fac8b"
+    }
+  ],
+  "status": "V36_REDESIGN_EXECUTED__EXACT_Z66_SELECTOR__MINIMAL_FIVE_ANOMALON_PURE_FINITE_COUNTERCLASS__FULL_RANK_RENORMALIZABLE_MASSES__LOCAL_TWO_RADIAL_FTERM_RANK4__LIVE_SARAH_ONE_TWO_LOOP_RGES__NONUNIVERSAL_GS_FULL_BORDISM_AND_QUALITY_SEQUESTERING_CONDITIONAL__ESTABLISHED_FULL_PREDICTIVE_GATES_ZERO_OF_EIGHT__NO_COMPLETE_THEORY",
+  "unique_superpotential_structures": 32,
+  "vacuum_and_quality": {
+    "anomalon_mass": [
+      [
+        "0",
+        "0",
+        "0",
+        "0",
+        "a"
+      ],
+      [
+        "0",
+        "0",
+        "0",
+        "b",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "c",
+        "mu",
+        "0"
+      ],
+      [
+        "0",
+        "b",
+        "mu",
+        "d",
+        "0"
+      ],
+      [
+        "a",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    ],
+    "anomalon_mass_determinant": "a^2*b^2*c",
+    "benchmark_quality": {
+      "Asoft_GeV": 10000.0,
+      "Mreduced_GeV": 2.4e+18,
+      "chiQCD_GeV4": 3.26653399296e-05,
+      "fP_GeV": 500000000000.0,
+      "largest_fP_GeV_for_unit_P33_at_theta_1e-10": 1.8311558792169304e+16,
+      "log10_abs_theta_shift_from_unit_P33": -160.60392527450622,
+      "passes_abs_theta_below_1e-10": true
+    },
+    "cosmology_boundary": {
+      "E_over_N_if_single_light_PQ_axion": "8/3",
+      "GS_axion_mixing_and_stabilization_derived": false,
+      "NDW_if_single_light_PQ_axion": 4,
+      "fa_relation_if_single_light_PQ_axion": "fa=fP/4",
+      "isocurvature_and_nonthermal_restoration_checked": false,
+      "required_history": "PQ broken before inflation and never restored",
+      "residual_Z2_lightest_anomalon_relic_checked": false
+    },
+    "full_quality_boundary": {
+      "GS_exponential_spurions_sequestered_from_lower_P_powers": false,
+      "all_non_QCD_harmonics_bounded": false,
+      "fail_closed_requirements": [
+        "positive full anomalon scalar Hessian",
+        "unbroken residual Z2 and exact Ai=0 tree solution",
+        "explicit leading soft/Kahler 1PI matching bound on theta"
+      ],
+      "full_ring_breaking_degree": 10,
+      "full_ring_breaking_vanishes_at_tree_level_on_Ai_zero": true,
+      "heavy_anomalon_soft_loop_matching_done": false,
+      "polynomial_P_Pbar_selector_passes": true,
+      "quality_gate_closed": false,
+      "required_inequality": "sum_h |h| Lambda_h^4 < 1e-10 chi_QCD after all PS, gravitational, GS-stabilization, and hidden harmonics are matched",
+      "supersymmetric_Wilsonian_generation_after_tree_elimination": false
+    },
+    "full_singlet_operator_ring": {
+      "all_first_operators_contain_heavy_anomalons": true,
+      "chosen_anomalon_number_basis": "x=4 with integer Q(P)=2",
+      "first_breaking_degree": 10,
+      "first_breaking_operators": [
+        {
+          "PQ_charge_QP_equals_1": "33/2",
+          "fields": [
+            "P",
+            "P",
+            "A2",
+            "A2",
+            "A2",
+            "A2",
+            "A2",
+            "A2",
+            "A2",
+            "A17"
+          ],
+          "multiplicities": {
+            "A17": 1,
+            "A2": 7,
+            "P": 2
+          }
+        },
+        {
+          "PQ_charge_QP_equals_1": "33/2",
+          "fields": [
+            "A2",
+            "A2",
+            "A2",
+            "A2",
+            "A2",
+            "A2",
+            "A2",
+            "A2",
+            "A2",
+            "A15"
+          ],
+          "multiplicities": {
+            "A15": 1,
+            "A2": 9
+          }
+        }
+      ],
+      "search_max_degree": 12,
+      "vanish_on_classical_Ai_zero_vacuum": true
+    },
+    "global_PQ_fallback_rejected": {
+      "log10_required_coefficient_bounds_at_frozen_benchmark": {
+        "1": -66.49376031225843,
+        "11": 0.7824093546591371,
+        "3": -53.30736909656294,
+        "5": -39.865705375764136,
+        "7": -26.34832094102722,
+        "9": -12.793952940037133
+      },
+      "reason": "Z4R alone permits every odd pure-P superpotential power"
+    },
+    "pure_vev_selector": {
+      "minimum_exponent_pairs_P_Pbar": [
+        [
+          0,
+          33
+        ],
+        [
+          33,
+          0
+        ]
+      ],
+      "minimum_superpotential_degree": 33,
+      "operators": [
+        "Pbar^33",
+        "P^33"
+      ],
+      "search_max_degree": 100
+    },
+    "renormalizable_completeness": {
+      "all_32_unique_displayed_W_structures_have_Z4R_charge_two": true,
+      "all_32_unique_displayed_W_structures_have_Z66_charge_zero": true,
+      "all_32_unique_displayed_W_structures_preserve_accidental_PQ": true,
+      "allowed_count": 14,
+      "allowed_structural_monomials": [
+        [
+          "X"
+        ],
+        [
+          "Zp"
+        ],
+        [
+          "Nv",
+          "Nv"
+        ],
+        [
+          "A17",
+          "A16"
+        ],
+        [
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "Zp"
+        ],
+        [
+          "X",
+          "Zp",
+          "Zp"
+        ],
+        [
+          "X",
+          "P",
+          "Pbar"
+        ],
+        [
+          "Zp",
+          "Zp",
+          "Zp"
+        ],
+        [
+          "Zp",
+          "P",
+          "Pbar"
+        ],
+        [
+          "P",
+          "A15",
+          "A17"
+        ],
+        [
+          "P",
+          "A16",
+          "A16"
+        ],
+        [
+          "Pbar",
+          "A2",
+          "A32"
+        ],
+        [
+          "Pbar",
+          "A17",
+          "A17"
+        ]
+      ],
+      "anomalon_containing_count": 5,
+      "anomalon_containing_monomials": [
+        [
+          "A17",
+          "A16"
+        ],
+        [
+          "P",
+          "A15",
+          "A17"
+        ],
+        [
+          "P",
+          "A16",
+          "A16"
+        ],
+        [
+          "Pbar",
+          "A2",
+          "A32"
+        ],
+        [
+          "Pbar",
+          "A17",
+          "A17"
+        ]
+      ],
+      "dangerous_P_A32_allowed": false,
+      "enumeration_scope": "all gauge-singlet monomials of superfield degree <=3"
+    },
+    "schema": "susy-v36-vacuum-quality-contract-v1",
+    "two_driver_radial_system": {
+      "bilinears": [
+        "U=Sbar*S",
+        "V=P*Pbar"
+      ],
+      "coupling_matrix": [
+        [
+          "kappaPS",
+          "kappaPQ"
+        ],
+        [
+          "rhoPS",
+          "rhoPQ"
+        ]
+      ],
+      "driver_radial_holomorphic_Hessian_rank": 4,
+      "drivers": [
+        "X",
+        "Zp"
+      ],
+      "expected_remaining_chiral_PQ_Goldstone_multiplet": 1,
+      "rank_condition": "det(K)=kappaPS*rhoPQ-kappaPQ*rhoPS != 0",
+      "saxion_and_global_vacuum_selection_derived": false,
+      "target_F_flat_products": [
+        "U=vPS^2",
+        "V=fPQ^2"
+      ]
+    }
+  }
+}

@@ -1,0 +1,793 @@
+{
+  "PS_global_representation_audit": {
+    "honesty_condition": "SU4_nality + 2j_L + 2j_R = 0 mod 2",
+    "inherited_PS_group": "(SU(4)_C x SU(2)_L x SU(2)_R)/Z2_diag",
+    "invalid_V44_classes": [
+      "V44_L0/Lminus9",
+      "V44_R0/Rplus9"
+    ],
+    "original_V44_boundary_manifest_globally_valid": false,
+    "quotiented_element": "(-I4,-I2,-I2)",
+    "rows": [
+      {
+        "PS_representation": "(4,2,1)",
+        "SU2L_twice_isospin_mod2": 1,
+        "SU2R_twice_isospin_mod2": 0,
+        "SU4_nality_mod4": 1,
+        "diagonal_kernel_phase": "+1",
+        "field_class": "Q/Psi",
+        "honest_representation": true
+      },
+      {
+        "PS_representation": "(bar4,1,2)",
+        "SU2L_twice_isospin_mod2": 0,
+        "SU2R_twice_isospin_mod2": 1,
+        "SU4_nality_mod4": 3,
+        "diagonal_kernel_phase": "+1",
+        "field_class": "Qc/PsiC",
+        "honest_representation": true
+      },
+      {
+        "PS_representation": "(1,2,2)",
+        "SU2L_twice_isospin_mod2": 1,
+        "SU2R_twice_isospin_mod2": 1,
+        "SU4_nality_mod4": 0,
+        "diagonal_kernel_phase": "+1",
+        "field_class": "H",
+        "honest_representation": true
+      },
+      {
+        "PS_representation": "(1,2,1)",
+        "SU2L_twice_isospin_mod2": 1,
+        "SU2R_twice_isospin_mod2": 0,
+        "SU4_nality_mod4": 0,
+        "diagonal_kernel_phase": "-1",
+        "field_class": "V44_L0/Lminus9",
+        "honest_representation": false
+      },
+      {
+        "PS_representation": "(1,1,2)",
+        "SU2L_twice_isospin_mod2": 0,
+        "SU2R_twice_isospin_mod2": 1,
+        "SU4_nality_mod4": 0,
+        "diagonal_kernel_phase": "-1",
+        "field_class": "V44_R0/Rplus9",
+        "honest_representation": false
+      },
+      {
+        "PS_representation": "(4 or bar4,2,1)",
+        "SU2L_twice_isospin_mod2": 1,
+        "SU2R_twice_isospin_mod2": 0,
+        "SU4_nality_mod4": 1,
+        "diagonal_kernel_phase": "+1",
+        "field_class": "repair_L",
+        "honest_representation": true
+      },
+      {
+        "PS_representation": "(4 or bar4,1,2)",
+        "SU2L_twice_isospin_mod2": 0,
+        "SU2R_twice_isospin_mod2": 1,
+        "SU4_nality_mod4": 1,
+        "diagonal_kernel_phase": "+1",
+        "field_class": "repair_R",
+        "honest_representation": true
+      }
+    ]
+  },
+  "SM_global_form": {
+    "connected_global_form": "(SU(3)_C x SU(2)_L x U(1)_Y)/Z6",
+    "connected_intersection": "S(U(3)xU(2))",
+    "embedding": "(A,B,z) -> diag(z^(-2) A, z^3 B) in SU(5)",
+    "hypercharge_normalization": "6Y = diag(-2,-2,-2,3,3)",
+    "kernel": [
+      {
+        "SU2_center_exponent_mod_2": 0,
+        "SU3_center_exponent_mod_3": 0,
+        "U1_angle_over_2pi": "0/6",
+        "k": 0
+      },
+      {
+        "SU2_center_exponent_mod_2": 1,
+        "SU3_center_exponent_mod_3": 1,
+        "U1_angle_over_2pi": "1/6",
+        "k": 1
+      },
+      {
+        "SU2_center_exponent_mod_2": 0,
+        "SU3_center_exponent_mod_3": 2,
+        "U1_angle_over_2pi": "2/6",
+        "k": 2
+      },
+      {
+        "SU2_center_exponent_mod_2": 1,
+        "SU3_center_exponent_mod_3": 0,
+        "U1_angle_over_2pi": "3/6",
+        "k": 3
+      },
+      {
+        "SU2_center_exponent_mod_2": 0,
+        "SU3_center_exponent_mod_3": 1,
+        "U1_angle_over_2pi": "4/6",
+        "k": 4
+      },
+      {
+        "SU2_center_exponent_mod_2": 1,
+        "SU3_center_exponent_mod_3": 2,
+        "U1_angle_over_2pi": "5/6",
+        "k": 5
+      }
+    ],
+    "kernel_is_cyclic": true,
+    "kernel_order": 6
+  },
+  "boundary_126_stabilizer": {
+    "F_flat_alignment_supplied": false,
+    "SUSY_D_flat_requirement": "|<Delta>|=|<barDelta>| along conjugate singlet directions",
+    "Spin10_center": "Z4=<c>",
+    "Z5_kernel_generator_description": "The SU(5) centre phase and U(1)_chi phase are identified so that all 10_-1 + bar5_+3 + 1_-5 components of a 16 transform trivially.",
+    "aligned_nonzero_pair_continuous_stabilizer": "SU(5)",
+    "branching_fact": {
+      "Delta_126_singlet": "1_-10 under SU(5)xU(1)_chi",
+      "barDelta_bar126_singlet": "1_+10 under SU(5)xU(1)_chi"
+    },
+    "center_phases": {
+      "126_subset_of_symmetric_16x16_under_c": "-1",
+      "126_under_c_squared": "+1",
+      "16_under_c": "i (convention; conjugate chirality has -i)"
+    },
+    "exact_boundary_stabilizer_in_Spin10": "SU(5) x Z2_M",
+    "global_maximal_subgroup_containing_the_orbit": "(SU(5) x U(1)_chi)/Z5",
+    "qualification": "The representation contains the required conjugate singlets and an equal-norm pair can cancel the gauge D term.  V44 supplies no superpotential that selects this orbit and gives full rank to all uneaten boundary-Higgs modes.",
+    "reason_Z2_is_independent_of_SU5": "c^2 is the nontrivial kernel of Spin(10)->SO(10), whereas the standard SU(5) realification is faithful; hence c^2 is not a nontrivial SU(5) element",
+    "stabilizer_before_simplifying_quotient": "(SU(5) x Z10_chi)/Z5",
+    "unbroken_center_subgroup": "<c^2> = Z2_M"
+  },
+  "core_sha256": "1329d333fee4d06ed7ac4ba47c613525ebf5e8593d9d797c96d070507933b732",
+  "exact_root_intersection": {
+    "D5_dimension": 45,
+    "D5_rank": 5,
+    "D5_root_count": 40,
+    "PS_dimension": 21,
+    "PS_generators_lifted_by_boundary_Higgs": 9,
+    "PS_rank": 5,
+    "PS_root_count": 16,
+    "PS_root_system": "D3 + D2 = A3 + A1 + A1",
+    "SU5_dimension": 24,
+    "SU5_rank": 4,
+    "SU5_root_count": 20,
+    "SU5_root_system": "A4",
+    "ambient_root_system": "D5 = so(10)",
+    "intersection_Cartan_rank": 4,
+    "intersection_algebra": "su(3)_C + su(2)_L + u(1)_Y",
+    "intersection_dimension": 12,
+    "intersection_root_count": 8,
+    "intersection_roots": [
+      [
+        -1,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        -1,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        -1,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        -1,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        -1
+      ],
+      [
+        0,
+        1,
+        -1,
+        0,
+        0
+      ],
+      [
+        1,
+        -1,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        -1,
+        0,
+        0
+      ]
+    ],
+    "intersection_semisimple_rank": 3,
+    "simple_roots_for_A2_plus_A1": [
+      [
+        1,
+        -1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        -1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        -1
+      ]
+    ],
+    "six_Y_commutes_with_common_semisimple_roots": true,
+    "six_Y_is_in_SU5_Cartan": true,
+    "six_Y_is_primitive": true,
+    "six_Y_vector": [
+      -2,
+      -2,
+      -2,
+      3,
+      3
+    ]
+  },
+  "fail_closed_verdict": {
+    "G1_through_G8_promoted": [],
+    "S0_original_V44_manifest_passes": false,
+    "S0_repaired_candidate_group_theory_feasible": true,
+    "S0_stage_closed": false,
+    "classification": "CONDITIONAL_GROUP_THEORY_WITNESS_WITH_REQUIRED_MANIFEST_REPAIR",
+    "next_kill_test": "Build the complete localized-anomaly polynomial for the vector multiplets and the four charged 16/bar16 hypers with the displayed parities.  Reject the repair if no quantized inflow and boundary spectrum cancel both wall distributions while retaining the two source-wall masses.",
+    "why_not_closed": [
+      "The complete 126+bar126 boundary superpotential and all physical mass matrices are absent.",
+      "Localized perturbative, parity, discrete and global anomalies of the four proposed bulk hypers are uncomputed.",
+      "The bulk-hyper repair creates cross-wall propagation, so all dangerous nonlocal Wilson coefficients must be recomputed.",
+      "The finite residual global group is SM_connected x Z2_M x Z9_F, not literally the connected SM alone.",
+      "The minimal local field charges have gcd three; a genuine Z9 rather than faithful-local Z3 requires an explicit unit Wilson-line/charge lattice.",
+      "Gauge-unification and KK-threshold viability of SO(10)-wall Higgs breaking are not established."
+    ]
+  },
+  "fatal_contradiction_search": {
+    "literal_only_SM_reason": "The 126 pair preserves Z2 matter parity and the charge-nine pair preserves Z9_F.",
+    "literal_only_SM_target_fatal_with_declared_VEVs": true,
+    "orbifold_plus_126_intersection_fatal": false,
+    "original_V44_field_manifest_fatal_without_repair": true,
+    "reason": "The group intersection is constructive, but the naked PS doublets in V44 transform nontrivially under the diagonal element that is quotiented in the Spin(10) PS subgroup.",
+    "repair_at_exact_group_and_integrated_anomaly_level_exists": true
+  },
+  "globally_honest_anomalon_repair": {
+    "all_integrated_rows_match": true,
+    "all_mass_terms_U1F_neutral": true,
+    "all_replacement_PS_representations_are_honest": true,
+    "bulk_zero_mode_realization": [
+      {
+        "Hc_has_zero_mode": false,
+        "bulk_hypermultiplet": "16_+3",
+        "intrinsic_parities_eta0_PS_etaL_Spin10": [
+          "+",
+          "+"
+        ],
+        "mechanism": "The two PS halves of a 16 or bar16 have opposite gauge-twist eigenvalues; Hc has the opposite parity at each endpoint.",
+        "selected_H_zero_mode": "(4,2,1)_+3"
+      },
+      {
+        "Hc_has_zero_mode": false,
+        "bulk_hypermultiplet": "bar16_-12",
+        "intrinsic_parities_eta0_PS_etaL_Spin10": [
+          "+",
+          "+"
+        ],
+        "mechanism": "The two PS halves of a 16 or bar16 have opposite gauge-twist eigenvalues; Hc has the opposite parity at each endpoint.",
+        "selected_H_zero_mode": "(bar4,2,1)_-12"
+      },
+      {
+        "Hc_has_zero_mode": false,
+        "bulk_hypermultiplet": "16_-3",
+        "intrinsic_parities_eta0_PS_etaL_Spin10": [
+          "-",
+          "+"
+        ],
+        "mechanism": "The two PS halves of a 16 or bar16 have opposite gauge-twist eigenvalues; Hc has the opposite parity at each endpoint.",
+        "selected_H_zero_mode": "(bar4,1,2)_-3"
+      },
+      {
+        "Hc_has_zero_mode": false,
+        "bulk_hypermultiplet": "bar16_+12",
+        "intrinsic_parities_eta0_PS_etaL_Spin10": [
+          "-",
+          "+"
+        ],
+        "mechanism": "The two PS halves of a 16 or bar16 have opposite gauge-twist eigenvalues; Hc has the opposite parity at each endpoint.",
+        "selected_H_zero_mode": "(4,1,2)_+12"
+      }
+    ],
+    "minimal_V45_core": {
+      "PS_wall": [
+        "3 Q_(4,2,1),+3",
+        "3 Qc_(bar4,1,2),-3",
+        "H_(1,2,2),0",
+        "LF_(4,2,1),+3",
+        "LA_(bar4,2,1),-12",
+        "RA_(bar4,1,2),-3",
+        "RF_(4,1,2),+12"
+      ],
+      "all_displayed_integrated_local_polynomial_and_Witten_rows_vanish": true,
+      "explicitly_not_imported": [
+        "X",
+        "Zp",
+        "P/Pb",
+        "Psi-sector",
+        "A-sector",
+        "E-sector",
+        "NDirac",
+        "Sc/Sbc/SigC/SigBc"
+      ],
+      "full_integrated_anomaly_ledger": {
+        "SU2L_Witten_doublet_count_mod2": 0,
+        "SU2L_squared_U1F_doubled": 0,
+        "SU2R_Witten_doublet_count_mod2": 0,
+        "SU2R_squared_U1F_doubled": 0,
+        "SU4_cubed": 0,
+        "SU4_squared_U1F_doubled": 0,
+        "U1F_cubed": 0,
+        "gravity_squared_U1F": 0
+      },
+      "source_wall": [
+        "STheta_0",
+        "ThetaPlus_+9",
+        "ThetaMinus_-9",
+        "126_0",
+        "bar126_0"
+      ],
+      "visible_plus_source_anomaly_ledger_before_repair": {
+        "SU2L_Witten_doublet_count_mod2": 0,
+        "SU2L_squared_U1F_doubled": 36,
+        "SU2R_Witten_doublet_count_mod2": 0,
+        "SU2R_squared_U1F_doubled": -36,
+        "SU4_cubed": 0,
+        "SU4_squared_U1F_doubled": 0,
+        "U1F_cubed": 0,
+        "gravity_squared_U1F": 0
+      }
+    },
+    "original_integrated_anomaly_ledger": {
+      "SU2L_Witten_doublet_count_mod2": 0,
+      "SU2L_squared_U1F_doubled": -36,
+      "SU2R_Witten_doublet_count_mod2": 0,
+      "SU2R_squared_U1F_doubled": 36,
+      "SU4_cubed": 0,
+      "SU4_squared_U1F_doubled": 0,
+      "U1F_cubed": 0,
+      "gravity_squared_U1F": 0
+    },
+    "original_rows": [
+      {
+        "dim": 8,
+        "doublets_L": 4,
+        "doublets_R": 0,
+        "index_2T": {
+          "SU2L": 4,
+          "SU2R": 0,
+          "SU4": 0
+        },
+        "name": "4x L0",
+        "q": 0,
+        "su4_cubic": 0
+      },
+      {
+        "dim": 8,
+        "doublets_L": 4,
+        "doublets_R": 0,
+        "index_2T": {
+          "SU2L": 4,
+          "SU2R": 0,
+          "SU4": 0
+        },
+        "name": "4x Lminus9",
+        "q": -9,
+        "su4_cubic": 0
+      },
+      {
+        "dim": 8,
+        "doublets_L": 0,
+        "doublets_R": 4,
+        "index_2T": {
+          "SU2L": 0,
+          "SU2R": 4,
+          "SU4": 0
+        },
+        "name": "4x R0",
+        "q": 0,
+        "su4_cubic": 0
+      },
+      {
+        "dim": 8,
+        "doublets_L": 0,
+        "doublets_R": 4,
+        "index_2T": {
+          "SU2L": 0,
+          "SU2R": 4,
+          "SU4": 0
+        },
+        "name": "4x Rplus9",
+        "q": 9,
+        "su4_cubic": 0
+      }
+    ],
+    "qualification": "This is an exact representation/anomaly/zero-mode repair, not a localized orbifold-anomaly certificate.  The four charged bulk hypers can mediate cross-wall operators, so S1 must recompute the local and nonlocal invariant rings rather than inherit the V44 sequestering claim.",
+    "replacement_integrated_anomaly_ledger": {
+      "SU2L_Witten_doublet_count_mod2": 0,
+      "SU2L_squared_U1F_doubled": -36,
+      "SU2R_Witten_doublet_count_mod2": 0,
+      "SU2R_squared_U1F_doubled": 36,
+      "SU4_cubed": 0,
+      "SU4_squared_U1F_doubled": 0,
+      "U1F_cubed": 0,
+      "gravity_squared_U1F": 0
+    },
+    "replacement_rows": [
+      {
+        "PS_rep": "(4,2,1)_+3",
+        "dim": 8,
+        "doublets_L": 4,
+        "doublets_R": 0,
+        "eta_PS": "+",
+        "eta_Spin10": "+",
+        "index_2T": {
+          "SU2L": 4,
+          "SU2R": 0,
+          "SU4": 2
+        },
+        "name": "L4",
+        "q": 3,
+        "spin10_origin": "16_+3",
+        "su4_cubic": 2
+      },
+      {
+        "PS_rep": "(bar4,2,1)_-12",
+        "dim": 8,
+        "doublets_L": 4,
+        "doublets_R": 0,
+        "eta_PS": "+",
+        "eta_Spin10": "+",
+        "index_2T": {
+          "SU2L": 4,
+          "SU2R": 0,
+          "SU4": 2
+        },
+        "name": "Lbar4",
+        "q": -12,
+        "spin10_origin": "bar16_-12",
+        "su4_cubic": -2
+      },
+      {
+        "PS_rep": "(bar4,1,2)_-3",
+        "dim": 8,
+        "doublets_L": 0,
+        "doublets_R": 4,
+        "eta_PS": "-",
+        "eta_Spin10": "+",
+        "index_2T": {
+          "SU2L": 0,
+          "SU2R": 4,
+          "SU4": 2
+        },
+        "name": "Rbar4",
+        "q": -3,
+        "spin10_origin": "16_-3",
+        "su4_cubic": -2
+      },
+      {
+        "PS_rep": "(4,1,2)_+12",
+        "dim": 8,
+        "doublets_L": 0,
+        "doublets_R": 4,
+        "eta_PS": "-",
+        "eta_Spin10": "+",
+        "index_2T": {
+          "SU2L": 0,
+          "SU2R": 4,
+          "SU4": 2
+        },
+        "name": "R4",
+        "q": 12,
+        "spin10_origin": "bar16_+12",
+        "su4_cubic": 2
+      }
+    ],
+    "residual_Z9_orientation": {
+      "all_SU4_antifundamentals_mod9": [
+        6
+      ],
+      "all_SU4_fundamentals_mod9": [
+        3
+      ],
+      "preserved": true,
+      "target": {
+        "antifundamental": 6,
+        "fundamental": 3
+      }
+    },
+    "source_wall_mass_terms": [
+      {
+        "Spin10_invariant": true,
+        "U1F_total": 0,
+        "operator": "ThetaPlus(+9) 16_L(+3) bar16_L(-12)",
+        "zero_modes_paired": "(4,2,1)_+3 with (bar4,2,1)_-12"
+      },
+      {
+        "Spin10_invariant": true,
+        "U1F_total": 0,
+        "operator": "ThetaMinus(-9) 16_R(-3) bar16_R(+12)",
+        "zero_modes_paired": "(bar4,1,2)_-3 with (4,1,2)_+12"
+      }
+    ]
+  },
+  "input_manifest": [
+    {
+      "name": "v44_successor_contract",
+      "path": "SUSY_V44_NEW_PHYSICS_SUCCESSOR_CONTRACT.md",
+      "sha256": "50e2cc036aaea365ad2be8e78fd94b5e047caa4faa5c135a555b71aa0260d327"
+    },
+    {
+      "name": "v40_selector_json",
+      "path": "SUSY_V40_ALL_RING_SELECTOR.json",
+      "sha256": "0fe998cdb6c4aee5c4ab7af2dd028e7d05593cb366e89fd89741f9757fff2d88"
+    },
+    {
+      "name": "v40_selector_source",
+      "path": "susy_v40_all_ring_selector.py",
+      "sha256": "5adebe960afa417f67339aa32c61db866d2a5d93faa53b50a9b8d472c01d3e1c"
+    }
+  ],
+  "integrity_checks": {
+    "D5_root_count_is_40": true,
+    "PS_dimension_is_21": true,
+    "SM_kernel_is_Z6": true,
+    "SU5_dimension_is_24": true,
+    "U1F_line_lattice_distinction_is_exposed": true,
+    "V44_naked_doublets_are_rejected": true,
+    "all_required_inputs_exist": true,
+    "all_source_files_exist": true,
+    "fail_closed_no_gate_promotion": true,
+    "four_dimensional_N1_projection": true,
+    "hypercharge_is_exact_common_u1": true,
+    "intersection_is_rank4_dimension12": true,
+    "intersection_root_system_is_A2_plus_A1": true,
+    "minimal_core_integrated_rows_vanish": true,
+    "nine_PS_vectors_are_lifted": true,
+    "repair_integrated_anomaly_rows_match": true,
+    "repair_mass_terms_are_neutral": true,
+    "repair_preserves_Z9_orientation": true
+  },
+  "minimal_V45_core": {
+    "PS_wall": [
+      "3 Q_(4,2,1),+3",
+      "3 Qc_(bar4,1,2),-3",
+      "H_(1,2,2),0",
+      "LF_(4,2,1),+3",
+      "LA_(bar4,2,1),-12",
+      "RA_(bar4,1,2),-3",
+      "RF_(4,1,2),+12"
+    ],
+    "all_displayed_integrated_local_polynomial_and_Witten_rows_vanish": true,
+    "explicitly_not_imported": [
+      "X",
+      "Zp",
+      "P/Pb",
+      "Psi-sector",
+      "A-sector",
+      "E-sector",
+      "NDirac",
+      "Sc/Sbc/SigC/SigBc"
+    ],
+    "full_integrated_anomaly_ledger": {
+      "SU2L_Witten_doublet_count_mod2": 0,
+      "SU2L_squared_U1F_doubled": 0,
+      "SU2R_Witten_doublet_count_mod2": 0,
+      "SU2R_squared_U1F_doubled": 0,
+      "SU4_cubed": 0,
+      "SU4_squared_U1F_doubled": 0,
+      "U1F_cubed": 0,
+      "gravity_squared_U1F": 0
+    },
+    "source_wall": [
+      "STheta_0",
+      "ThetaPlus_+9",
+      "ThetaMinus_-9",
+      "126_0",
+      "bar126_0"
+    ],
+    "visible_plus_source_anomaly_ledger_before_repair": {
+      "SU2L_Witten_doublet_count_mod2": 0,
+      "SU2L_squared_U1F_doubled": 36,
+      "SU2R_Witten_doublet_count_mod2": 0,
+      "SU2R_squared_U1F_doubled": -36,
+      "SU4_cubed": 0,
+      "SU4_squared_U1F_doubled": 0,
+      "U1F_cubed": 0,
+      "gravity_squared_U1F": 0
+    }
+  },
+  "n_failed_integrity_checks": 0,
+  "orbifold_and_SUSY": {
+    "SUSY_projection": {
+      "V_and_Phi_have_opposite_endpoint_parities": true,
+      "five_dimensional_supercharges": 8,
+      "four_dimensional_name_before_projection": "N=2",
+      "massless_adjoint_chiral_count": 0,
+      "surviving_four_dimensional_SUSY": "N=1"
+    },
+    "adjoint_branching": "45 = (15,1,1) + (1,3,1) + (1,1,3) + (6,2,2)",
+    "boundary_Higgs_effect": "The aligned 126+bar126 VEV induces boundary masses (Robin conditions) for the nine PS/SM vector modes.  For finite VEV these are not removed by parity; they are lifted.  In the infinite-VEV limit the broken directions approach Dirichlet conditions at y=L.",
+    "bulk_group_choice_for_this_S0_witness": "Spin(10) x U(1)_F (Gamma chosen trivial)",
+    "geometry": "M4 x [0,L], equivalently S1/(Z2 x Z2') with L=pi R/2",
+    "only_plus_plus_fields_have_constant_KK_zero_modes": true,
+    "parity_rows": [
+      {
+        "P0_PS": "+",
+        "PL_Spin10": "+",
+        "dimension": 21,
+        "massless_before_boundary_VEV": 21,
+        "sector": "Spin10 vector V_PS"
+      },
+      {
+        "P0_PS": "-",
+        "PL_Spin10": "+",
+        "dimension": 24,
+        "massless_before_boundary_VEV": 0,
+        "sector": "Spin10 vector V_coset (6,2,2)"
+      },
+      {
+        "P0_PS": "-",
+        "PL_Spin10": "-",
+        "dimension": 21,
+        "massless_before_boundary_VEV": 0,
+        "sector": "adjoint chiral Phi_PS"
+      },
+      {
+        "P0_PS": "+",
+        "PL_Spin10": "-",
+        "dimension": 24,
+        "massless_before_boundary_VEV": 0,
+        "sector": "adjoint chiral Phi_coset"
+      },
+      {
+        "P0_PS": "+",
+        "PL_Spin10": "+",
+        "dimension": 1,
+        "massless_before_boundary_VEV": 1,
+        "sector": "U1F vector V_F"
+      },
+      {
+        "P0_PS": "-",
+        "PL_Spin10": "-",
+        "dimension": 1,
+        "massless_before_boundary_VEV": 0,
+        "sector": "U1F adjoint chiral Phi_F"
+      }
+    ],
+    "y0_fixed_identity_component": "(SU(4)_C x SU(2)_L x SU(2)_R)/Z2_diag",
+    "y0_gauge_twist_on_vector_10": "diag(-1,-1,-1,+1,+1) tensor I2",
+    "yL_gauge_twist_on_vector_10": "I10",
+    "yL_group_before_Higgsing": "Spin(10) x U(1)_F"
+  },
+  "primary_sources": [
+    {
+      "supports": "S1/(Z2 x Z2') parity construction, PS gauge zero modes, 4D N=1 projection, and SU5/PS intersection precedent",
+      "title": "Dermisek and Mafi, SO(10) grand unification in five dimensions",
+      "url": "https://arxiv.org/abs/hep-ph/0108139"
+    },
+    {
+      "supports": "rank-preserving orbifold plus rank-reducing brane Higgs mechanism and the warning that SO10-wall Higgs breaking is disfavored for unification",
+      "title": "Alciati and Lin, Gauge coupling Unification and SO(10) in 5D",
+      "url": "https://arxiv.org/abs/hep-ph/0506130"
+    },
+    {
+      "supports": "bulk 16 hypermultiplets, doubled zero-mode constructions, PS decomposition of a 16, and boundary-mass-shifted KK towers",
+      "title": "Alciati et al., Fermion masses and proton decay in a minimal five-dimensional SO(10) model",
+      "url": "https://arxiv.org/abs/hep-ph/0603086"
+    },
+    {
+      "supports": "the 126 and bar126 contain SU5 singlets of U1X charges -10 and +10",
+      "title": "Chen, Zhang and Bai, Couplings in Renormalizable Supersymmetric SO(10) Models",
+      "url": "https://arxiv.org/abs/1707.00580"
+    },
+    {
+      "supports": "126 breaking preserves automatic R/matter parity",
+      "title": "Goh et al., Proton Decay in a Minimal SUSY SO(10) Model for Neutrino Mixings",
+      "url": "https://arxiv.org/abs/hep-ph/0311330"
+    }
+  ],
+  "residual_group": {
+    "SM_connected_group_plus_declared_matter_and_selector_parities": true,
+    "Theta_VEV_charges": [
+      9,
+      -9
+    ],
+    "Z9_versus_Z3_is_fixed_by_local_particle_spectrum_alone": false,
+    "chosen_character_lattice": "Z, including a genuine unit-charge Wilson line",
+    "chosen_character_lattice_is_extra_global_input": true,
+    "continuous_massless_group": "(SU(3)_C x SU(2)_L x U(1)_Y)/Z6",
+    "continuous_rank_after_126_pair": 5,
+    "continuous_rank_after_Theta_pair": 4,
+    "continuous_rank_before_boundary_VEVs": 6,
+    "faithful_action_on_displayed_local_fields_only": "U(1)_F/Z3, equivalently charges divided by three",
+    "finite_gauge_factors_for_trivial_Gamma": "Z2_M x Z9_F",
+    "full_residual_group_for_trivial_Gamma": "[(SU(3)_C x SU(2)_L x U(1)_Y)/Z6] x Z2_M x Z9_F",
+    "literal_SM_and_no_finite_extension": false,
+    "minimal_local_core_charge_gcd": 3,
+    "minimal_local_core_nonzero_charges": [
+      3,
+      -3,
+      3,
+      -12,
+      -3,
+      12,
+      9,
+      -9
+    ],
+    "qualification": "Z9_F is exact only after declaring the unit character/line lattice.  Every displayed local V45 core charge is divisible by three, so local particles alone see only a faithful Z3 remnant.",
+    "unbroken_U1F_subgroup_with_chosen_unit_line_lattice": "Z9",
+    "unbroken_subgroup_seen_faithfully_by_displayed_local_fields": "Z3"
+  },
+  "scope": "V45 successor stage S0 only: exact compact-group choice, orbifold gauge/SUSY parities, gauge-vector zero modes, 126 stabilizer, PS/SU5 intersection, and global honesty of the inherited anomalon representations.",
+  "source_manifest": [
+    {
+      "exists": true,
+      "path": "susy_v45_s0_group_zero_mode_audit.py",
+      "sha256": "c1efda60e504a8d1b58f5a5f116203e3f0e71712ae31989a035a1f52fbf6ed62"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v45_s0_group_zero_mode_audit.py",
+      "sha256": "3fe2ab1670a42404b00e1cb2662165ea9a5dfb842ef1524ef13e38726b986878"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V44_NEW_PHYSICS_SUCCESSOR_CONTRACT.md",
+      "sha256": "50e2cc036aaea365ad2be8e78fd94b5e047caa4faa5c135a555b71aa0260d327"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V40_ALL_RING_SELECTOR.json",
+      "sha256": "0fe998cdb6c4aee5c4ab7af2dd028e7d05593cb366e89fd89741f9757fff2d88"
+    },
+    {
+      "exists": true,
+      "path": "susy_v40_all_ring_selector.py",
+      "sha256": "5adebe960afa417f67339aa32c61db866d2a5d93faa53b50a9b8d472c01d3e1c"
+    }
+  ],
+  "status": "V45_S0_CONNECTED_SM_INTERSECTION_CERTIFIED__V44_NAKED_PS_DOUBLETS_GLOBALLY_INVALID__MINIMAL_SPINORIAL_CORE_HAS_ZERO_INTEGRATED_ANOMALY_ROWS__Z2M_REMAINS_AND_Z9F_REQUIRES_UNIT_LINE_LATTICE__S0_FAIL_CLOSED",
+  "zero_mode_count_after_all_boundary_VEVs": {
+    "continuous_gauge_algebra_dimension": 12,
+    "continuous_gauge_rank": 4,
+    "massless_Spin10_origin_vector_supermultiplets": 12,
+    "massless_U1F_vector_supermultiplets": 0,
+    "massless_adjoint_chiral_supermultiplets": 0
+  }
+}

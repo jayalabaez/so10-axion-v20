@@ -1,0 +1,463 @@
+{
+  "ab_block_recount": {
+    "AB_complex_dimension": 12,
+    "AB_real_dimension": 24,
+    "Sigma_AB_parity": [
+      -1,
+      1
+    ],
+    "Sigma_AB_vanishes_at_y0": true,
+    "V_AB_has_zero_mode": false,
+    "V_AB_nonzero_at_y0": true,
+    "V_AB_parity": [
+      1,
+      -1
+    ],
+    "interpretation": "the AB gauge tower is nonzero at the y=0 wall but has no zero mode; it is exactly the (2,2,6) that the dissolved Goldstones must marry, and its Sigma partner vanishes at the wall so no second wall coupling competes",
+    "pati_salam_rep": "(2,2,6)"
+  },
+  "claim_boundary": {
+    "identification_is_arithmetic_not_dynamical": true,
+    "new_fundamental_physics_invented": false,
+    "no_gate_promotion": true,
+    "no_numerical_coefficients_fabricated": true
+  },
+  "classification": "EXACT_Z4R_SELECTOR_WITH_LOCALIZED_LEDGER_GS_SECTOR_AND_IDENTIFIED_WZ_INFLOW__DYNAMICAL_WZ_AND_SUSY_COMPLETION_OPEN",
+  "core_sha256": "b7178dc59b9cd4a49468ce5ace543c047e58cc34bcf4fcc65466ee93f3a1bfd7",
+  "date": "2026-08-29",
+  "deficit_identification": {
+    "V62_required_inflow": {
+      "SU2_L": "-3",
+      "SU3": "-2"
+    },
+    "both_identities_close": true,
+    "conclusion": "the V62 deficits are not free parameters: they are exactly the anomaly of the twelve tower-dissolved Goldstone chirals, so the wall-localized Wess-Zumino term left by the tower integration is forced to carry precisely (-2,-3) and infrared anomaly matching closes with no residual mismatch",
+    "dissolved_ledger": {
+      "SU2_L": "-3",
+      "SU3": "-2"
+    },
+    "identification_exact": true,
+    "ir_matching_identities": {
+      "SU2_L": {
+        "IR_ledger": "1",
+        "closes": true,
+        "minus_dissolved": "1",
+        "orbifold_wall_sum": "-2"
+      },
+      "SU3": {
+        "IR_ledger": "3",
+        "closes": true,
+        "minus_dissolved": "3",
+        "orbifold_wall_sum": "1"
+      }
+    }
+  },
+  "dissolution_mechanism": {
+    "conditionality": "g v != 0 is required; at g v = 0 the Goldstones are ordinary light fields",
+    "secular_equation_form": "tan(m L) proportional to m / (g^2 v^2 L): displayed as structure only; no numerical spectrum is asserted",
+    "spectral_statement": "the wall mass g v interpolates the lambda^AB boundary condition from Neumann toward Dirichlet; the massless Goldstone content is absorbed by the spectral flow of the semi-infinite tower and no massless remnant survives for g v != 0.  A finite-level count would suggest one leftover chiral state; that count is invalid for the boundary-condition-shifting operator, which is exactly why the anomaly must be tracked by inflow rather than zero modes",
+    "tower_structure": {
+      "lambda_AB_n": "parities (+,-), charge +1, cosine-type modes, nonzero at y=0",
+      "level_mass": "m_n = (2n+1) pi / (2L) from partial_5",
+      "level_pairing_R_neutral": true,
+      "level_pairing_charge": 0,
+      "sigma_AB_n": "parities (-,+), charge -1, sine-type modes, zero at y=0"
+    },
+    "wall_coupling": "sqrt(2) g <C^dagger> T^AB lambda^AB(0) G: the (2,2,6) Goldstone chirals G couple to the AB gaugino tower evaluated at the wall",
+    "wall_mixing_charges": {
+      "R_neutral": true,
+      "lambda_G_coupling_charge": 0
+    }
+  },
+  "falsifiers": [
+    {
+      "effect": "the enumeration and the identification are void",
+      "id": "F1",
+      "test": "find a 33rd rank component or a fate row that does not sum to 32"
+    },
+    {
+      "effect": "the tower-marriage rep matching fails",
+      "id": "F2",
+      "test": "show the dissolved set is not the (2,2,6) or that Sigma^AB couples at the wall"
+    },
+    {
+      "effect": "the deficit identification fails and V62's inflow returns to unexplained",
+      "id": "F3",
+      "test": "compute the dissolved ledger and find values other than (-2,-3)"
+    },
+    {
+      "effect": "the 5D theory is quantum-inconsistent after rank breaking",
+      "id": "F4",
+      "test": "derive the WZ term dynamically and find a coefficient incompatible with (-2,-3)"
+    },
+    {
+      "effect": "the spectral-flow statement fails and light exotics wreck the IR ledger",
+      "id": "F5",
+      "test": "exhibit a massless colored remnant at g v != 0"
+    },
+    {
+      "effect": "the combined GS sector must be re-solved",
+      "id": "F6",
+      "test": "show the WZ term and the V62 axion couplings double-count a wall phase"
+    }
+  ],
+  "fate_enumeration": {
+    "all_4d_pairings_R_neutral": true,
+    "dissolved_ledger": {
+      "Delta_A2": "-3",
+      "Delta_A3": "-2"
+    },
+    "fate_counts": {
+      "dissolved_into_AB_tower": 12,
+      "eaten_by_zero_mode_gauginos": 9,
+      "paired_with_S": 1,
+      "paired_with_T": 10
+    },
+    "paired_nets": [
+      {
+        "R_neutral": true,
+        "components": "(3,1)+(3bar,1) u^c-type coset mixtures",
+        "net_A2": "0",
+        "net_A3": "0"
+      },
+      {
+        "R_neutral": true,
+        "components": "(1,1,+1)+(1,1,-1) e^c-type mixtures",
+        "net_A2": "0",
+        "net_A3": "0"
+      },
+      {
+        "R_neutral": true,
+        "components": "neutral phase of nu^c, nubar^c",
+        "net_A2": "0",
+        "net_A3": "0"
+      },
+      {
+        "R_neutral": true,
+        "components": "5bar_C + 5_Cbar",
+        "net_A2": "0",
+        "net_A3": "0"
+      },
+      {
+        "R_neutral": true,
+        "components": "radial nu^c singlet",
+        "net_A2": "0",
+        "net_A3": "0"
+      }
+    ],
+    "rows": [
+      {
+        "T_SU2L": "3",
+        "T_SU3": "2",
+        "complex_dim": 12,
+        "components": "(3,2)+(3bar,2) mixtures of C_10 and Cbar_10bar",
+        "fate": "DISSOLVED_INTO_AB_TOWER",
+        "fermion_charge": -1,
+        "partner": "lambda^AB_n KK gauginos (no zero mode)",
+        "partner_charge": 1
+      },
+      {
+        "T_SU2L": "0",
+        "T_SU3": "1",
+        "complex_dim": 6,
+        "components": "(3,1)+(3bar,1) u^c-type coset mixtures",
+        "fate": "EATEN_BY_ZERO_MODE_GAUGINOS",
+        "fermion_charge": -1,
+        "partner": "SU(4)/SU(3) coset gauginos",
+        "partner_charge": 1
+      },
+      {
+        "T_SU2L": "0",
+        "T_SU3": "0",
+        "complex_dim": 2,
+        "components": "(1,1,+1)+(1,1,-1) e^c-type mixtures",
+        "fate": "EATEN_BY_ZERO_MODE_GAUGINOS",
+        "fermion_charge": -1,
+        "partner": "SU(2)_R coset gauginos",
+        "partner_charge": 1
+      },
+      {
+        "T_SU2L": "0",
+        "T_SU3": "0",
+        "complex_dim": 1,
+        "components": "neutral phase of nu^c, nubar^c",
+        "fate": "EATEN_BY_ZERO_MODE_GAUGINOS",
+        "fermion_charge": -1,
+        "partner": "B-L/T3R gaugino combination",
+        "partner_charge": 1
+      },
+      {
+        "T_SU2L": "1",
+        "T_SU3": "1",
+        "complex_dim": 10,
+        "components": "5bar_C + 5_Cbar",
+        "fate": "PAIRED_WITH_T_TEN",
+        "fermion_charge": -1,
+        "partner": "5_T + 5bar_T via lambda*v, lambdabar*v",
+        "partner_charge": 1
+      },
+      {
+        "T_SU2L": "0",
+        "T_SU3": "0",
+        "complex_dim": 1,
+        "components": "radial nu^c singlet",
+        "fate": "PAIRED_WITH_S",
+        "fermion_charge": -1,
+        "partner": "S via kappa*v",
+        "partner_charge": 1
+      }
+    ],
+    "total_complex_components": 32,
+    "vacuum": "<C>=<Cbar>=v in the conjugate-neutrino directions, S=T=0"
+  },
+  "five_d_quantum_obligations": [
+    {
+      "detail": "the coefficient is forced but the functional and its superspace form are not derived",
+      "obligation": "dynamical Wess-Zumino extraction and SUSY completion",
+      "status": "OPEN"
+    },
+    {
+      "detail": "carried from V62",
+      "obligation": "saxion Kahler potential, stabilization and axino sector",
+      "status": "OPEN"
+    },
+    {
+      "detail": "the relative eta invariant is not computed",
+      "obligation": "Dai-Freed phase with the Z4R twist, GS sector and WZ term",
+      "status": "OPEN"
+    },
+    {
+      "detail": "carried from V59/V61/V62",
+      "obligation": "exact KK determinant and realistic flavor fit",
+      "status": "OPEN"
+    },
+    {
+      "detail": "carried; the forced WZ term ultimately needs a UV derivation",
+      "obligation": "UV regulator / string completion",
+      "status": "OPEN"
+    }
+  ],
+  "forced_wz_term": {
+    "carrier_fields": "the eaten phase directions of C and Cbar at the y=0 wall",
+    "coefficient_uniquely_forced": true,
+    "consistency_with_V62_gs_sector": "the WZ term carries the <C>-dependent rearrangement while the V62 axion couplings cancel the orbifold wall phases; the two sectors address disjoint pieces of the ledger and do not double-count",
+    "statement": "integrating out the <C>-Higgsed AB tower must leave a wall-localized Wess-Zumino functional of the SU(5)-coset Goldstone phases of C, Cbar whose gauge and Z4R variation reproduces the dissolved ledger; its coefficient is uniquely fixed by anomaly matching to one unit of the (3,2)+(3bar,2) chiral anomaly at fermion charge -1",
+    "status": "COEFFICIENT_FORCED__DYNAMICAL_EXTRACTION_OPEN",
+    "what_is_not_done": [
+      "the explicit tower integration producing the WZ functional",
+      "its supersymmetric (superspace) completion",
+      "its interplay with the saxion Kahler potential"
+    ]
+  },
+  "gate_ledger": [
+    {
+      "decision": "OPEN: the post-VEV inflow deficits are identified exactly with the dissolved Goldstone ledger and the WZ coefficient is forced, but the dynamical WZ extraction, saxion stabilization, Dai-Freed phase, KK determinant and UV regulator remain.",
+      "gate": "G1",
+      "status": "OPEN"
+    },
+    {
+      "decision": "OPEN: no coefficient-level complete 4D Wilsonian action or soft solution.",
+      "gate": "G2",
+      "status": "OPEN"
+    },
+    {
+      "decision": "OPEN: no stabilized compactification; the saxion remains unstabilized.",
+      "gate": "G3",
+      "status": "OPEN"
+    },
+    {
+      "decision": "OPEN WITH ADVANCE: carried; the dissolved set removes no Higgs doublet, so the projector result stands.",
+      "gate": "G4",
+      "status": "OPEN"
+    },
+    {
+      "decision": "OPEN WITH ADVANCE: carried; R parity intact under the WZ sector.",
+      "gate": "G5",
+      "status": "OPEN"
+    },
+    {
+      "decision": "OPEN: inflation, reheating and defect history are absent.",
+      "gate": "G6",
+      "status": "OPEN"
+    },
+    {
+      "decision": "OPEN WITH ADVANCE: the dimension-six proton scale is now the <C>-shifted AB tower mass; still no lifetime number.",
+      "gate": "G7",
+      "status": "OPEN"
+    },
+    {
+      "decision": "OPEN: no microscopic UV completion or quantified predictivity score.",
+      "gate": "G8",
+      "status": "OPEN"
+    }
+  ],
+  "integrity_checks": {
+    "AB_tower_nonzero_at_wall_without_zero_mode": true,
+    "V59_spin11_core_is_canonical_and_expected": true,
+    "V62_inflow_obligation_was_open": true,
+    "V62_master_core_is_canonical_and_expected": true,
+    "V62_route_core_is_canonical_and_expected": true,
+    "all_4d_pairings_R_neutral": true,
+    "all_gates_remain_open": true,
+    "both_ir_matching_identities_close": true,
+    "dissolved_ledger_is_minus_2_minus_3": true,
+    "dissolved_rep_matches_AB_block": true,
+    "fate_counts_are_12_9_10_1": true,
+    "fate_enumeration_exhausts_all_32_components": true,
+    "five_obligations_remain_open": true,
+    "identification_matches_V62_deficits_exactly": true,
+    "no_double_counting_with_v62_axion": true,
+    "sigma_AB_vanishes_at_wall": true,
+    "spectral_statement_is_conditional_on_gv_nonzero": true,
+    "tower_pairings_R_neutral": true,
+    "wz_coefficient_forced_but_extraction_open": true,
+    "xy_proton_numerics_remain_open": true
+  },
+  "lineage": {
+    "bound_V59_spin11_core": "bf666eb5e4d57bff18b05182d7d6cc7874bbc26dd71897153faf9ee67a5f8c42",
+    "bound_V62_master_core": "4e1344fbaa148c0369417918e3e39d2c94282d8db568a8ec6fa01522e680cdf0",
+    "bound_V62_route_core": "f99b9e09bc6d528480e2ac09cf1f2dd9e2feb5383fda25b3aa3cac436758142e",
+    "relation": "route-B63 extension: it identifies the V62 inflow deficits with an exact Goldstone-dissolution ledger; routes A60 and C are untouched"
+  },
+  "n_failed_integrity_checks": 0,
+  "n_integrity_checks": 20,
+  "research_question": "Where do the V62 post-VEV inflow deficits (-2,-3) come from, and does infrared anomaly matching close once the carrier is identified?",
+  "schema": "susy_so10.v63.spin11_goldstone_dissolution_wz_inflow_audit.v1",
+  "source_manifest": {
+    "audit_script": {
+      "path": "C:\\Users\\jayal\\Downloads\\So10Theory2\\So10Theory\\_g3_equality_classification_integration\\susy_v63_spin11_goldstone_dissolution_wz_inflow_audit.py",
+      "sha256": "598af649ddf5af58263b4cba43e0720c50c2884bae56aa961b387bd1a45f65b9"
+    },
+    "bound_V59_spin11": {
+      "path": "C:\\Users\\jayal\\Downloads\\So10Theory2\\So10Theory\\_g3_equality_classification_integration\\SUSY_V59_SPIN11_GAUGE_HIGGS_COMPLETION_AUDIT.json",
+      "sha256": "dfe07e9af7ef080cd13413dd877f25e73a0e4f22140d8a5e311de590bf92e0e6"
+    },
+    "bound_V62_master": {
+      "path": "C:\\Users\\jayal\\Downloads\\So10Theory2\\So10Theory\\_g3_equality_classification_integration\\SUSY_V62_MULTIPATH_G1_FRONTIER_MASTER_AUDIT.json",
+      "sha256": "57f23411d3146de60eac224266358d7d6806caadd6725dd51165d192a771d0de"
+    },
+    "bound_V62_route": {
+      "path": "C:\\Users\\jayal\\Downloads\\So10Theory2\\So10Theory\\_g3_equality_classification_integration\\SUSY_V62_SPIN11_LOCALIZED_Z4R_ANOMALY_GS_AUDIT.json",
+      "sha256": "c43847f3be791ad86d38209a73943f30fbe3284966d9c5c66235912d6af26d07"
+    },
+    "primary_sources": [
+      {
+        "arxiv": "hep-ph/0103125",
+        "authors": "Lawrence J. Hall and Yasunori Nomura",
+        "id": "HALL_NOMURA_2001",
+        "scope": "S1/(Z2xZ2') boundary-condition breaking of unified groups and its relation to wall-Higgs breaking; framework for the AB-tower boundary-condition interpolation used here.",
+        "title": "Gauge unification in higher dimensions",
+        "url": "https://arxiv.org/abs/hep-ph/0103125"
+      },
+      {
+        "arxiv": "hep-ph/0106166",
+        "authors": "Arthur Hebecker and John March-Russell",
+        "id": "HEBECKER_MARCH_RUSSELL_2001",
+        "scope": "Wall-localized breaking on the same orbifold class; KK spectra with brane masses and the large-VEV Dirichlet limit.",
+        "title": "A minimal S1/(Z2xZ2') orbifold GUT",
+        "url": "https://arxiv.org/abs/hep-ph/0106166"
+      },
+      {
+        "arxiv": "hep-th/0110073",
+        "authors": "C. A. Scrucca, M. Serone, L. Silvestrini and F. Zwirner",
+        "id": "SCRUCCA_SERONE_SILVESTRINI_ZWIRNER_2001",
+        "scope": "Zero-mode counting is insufficient for localized anomalies; the principle behind demanding an explicit inflow identification.",
+        "title": "Anomalies in orbifold field theories",
+        "url": "https://arxiv.org/abs/hep-th/0110073"
+      },
+      {
+        "arxiv": "hep-th/0305024",
+        "authors": "Gero von Gersdorff and Mariano Quiros",
+        "id": "VON_GERSDORFF_QUIROS_2003",
+        "scope": "Fixed-point anomaly machinery; the Wess-Zumino/Chern-Simons carriers whose dynamical extraction remains the open obligation.",
+        "title": "Localized anomalies in orbifold gauge theories",
+        "url": "https://arxiv.org/abs/hep-th/0305024"
+      },
+      {
+        "arxiv": "1009.0905",
+        "authors": "Hyun Min Lee et al.",
+        "id": "LEE_ET_AL_2010",
+        "scope": "The 4D Z4R selector whose infrared ledger anchors the matching identities.",
+        "title": "A unique Z4R symmetry for the MSSM",
+        "url": "https://arxiv.org/abs/1009.0905"
+      }
+    ],
+    "pytest": {
+      "path": "C:\\Users\\jayal\\Downloads\\So10Theory2\\So10Theory\\_g3_equality_classification_integration\\test_susy_v63_spin11_goldstone_dissolution_wz_inflow_audit.py",
+      "sha256": "91c074e8241610096ba9d8ef19cb5dd06b0e136922a0f5d83846f2e43583de24"
+    }
+  },
+  "status": "V63_SPIN11_GOLDSTONE_DISSOLUTION_IDENTIFIES_WZ_INFLOW__ALL_32_RANK_COMPONENTS_FATED_EXACTLY__12_GOLDSTONES_IN_2_2_6_DISSOLVE_INTO_AB_TOWERS__DISSOLVED_LEDGER_MINUS_2_MINUS_3_EQUALS_V62_DEFICITS_EXACTLY__IR_ANOMALY_MATCHING_IDENTITIES_CLOSE__WZ_COEFFICIENT_UNIQUELY_FORCED__EVERY_OTHER_PAIRING_R_NEUTRAL__XY_TOWER_PROTON_SCALE_SHIFTED_OPEN__DYNAMICAL_WZ_EXTRACTION_SAXION_DAI_FREED_KK_UV_OPEN__STRICT_G1_OPEN__ZERO_GATES_CLOSED",
+  "strict_G1_matrix": [
+    {
+      "criterion": "exact_proton_selector",
+      "evidence": "carried from V61: unique Z4R class",
+      "status": "PASS_ARITHMETIC_R_TYPE"
+    },
+    {
+      "criterion": "selector_anomaly_universality",
+      "evidence": "carried from V61",
+      "status": "PASS_GLOBAL_LEDGER"
+    },
+    {
+      "criterion": "localized_R_anomaly_ledger",
+      "evidence": "carried from V62 with three matching validations",
+      "status": "PASS_EXACT_ORBIFOLD_LEDGER"
+    },
+    {
+      "criterion": "GS_axion_sector",
+      "evidence": "carried from V62: unique couplings (3,1,1,3) mod 4",
+      "status": "EXHIBITED_QUANTIZED_CANDIDATE"
+    },
+    {
+      "criterion": "post_VEV_inflow_matching",
+      "evidence": "the (-2,-3) deficits equal the dissolved (2,2,6) Goldstone ledger exactly and both IR identities close; supersedes the V62 OPEN row",
+      "status": "IDENTIFIED_ARITHMETICALLY"
+    },
+    {
+      "criterion": "wz_dynamical_extraction_and_susy_completion",
+      "evidence": "coefficient forced; functional not derived",
+      "status": "OPEN"
+    },
+    {
+      "criterion": "relative_5D_Dai_Freed_trivialization",
+      "evidence": "not computed with the R twist, GS sector and WZ term",
+      "status": "OPEN"
+    },
+    {
+      "criterion": "realistic_full_rank_Yukawas",
+      "evidence": "carried",
+      "status": "OPEN"
+    },
+    {
+      "criterion": "UV_complete_regulator",
+      "evidence": "carried",
+      "status": "OPEN"
+    },
+    {
+      "criterion": "strict_G1",
+      "evidence": "inflow identified; dynamical WZ, saxion, Dai-Freed, KK and UV remain",
+      "status": "OPEN"
+    }
+  ],
+  "terminal_decision": {
+    "V63_G1_closed": false,
+    "V63_closed_gates": [],
+    "complete_theory": false,
+    "identification_scope": "exact anomaly arithmetic and representation matching; the WZ functional itself is not derived dynamically",
+    "inflow_deficits_identified": true,
+    "next_obligations": [
+      "derive the wall WZ functional from the tower integration with its SUSY completion",
+      "stabilize the saxion without breaking Z4R",
+      "compute the Dai-Freed phase with the R twist, GS sector and WZ term",
+      "solve the exact KK determinant and flavor fit",
+      "exhibit a UV regulator or string completion"
+    ]
+  },
+  "version": "V63",
+  "xy_proton_note": {
+    "numerics": "OPEN: no lifetime number is computed or asserted",
+    "observation": "the dissolved (2,2,6) directions include the X,Y-type gauge towers; their lightest masses are shifted by the wall VEV, so the dimension-six proton operator scale is the shifted AB mass, not the naive compactification scale",
+    "scaling_only": "C6 ~ g4^2 / M_AB(g v, L)^2"
+  }
+}

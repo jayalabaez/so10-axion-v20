@@ -1,0 +1,2427 @@
+{
+  "G2_all_order_mass_sensitivity": {
+    "a": "A/Lambda^2",
+    "a0": "1/10000",
+    "allowed_source_operator_responsible": "X A^2/Lambda^2",
+    "colored_mass_tower": "Sc Sc Sigma * G(A/Lambda^2) and Sbc Sbc Sigma * Gbar(A/Lambda^2) are also allowed",
+    "conclusion": "the canonical rank is generic but exact pole masses and all-order rank are not symmetry theorems",
+    "dimensionless_completion": "F(a,0)=(a-a0)*(1+c*(a+a0))",
+    "order_one_witness": {
+      "c": -2,
+      "desired_root": "1/10000",
+      "second_positive_subcutoff_root": "4999/10000"
+    },
+    "rank_loss_witness": {
+      "c": -5000,
+      "dF_da_at_a0": 0,
+      "interpretation": "the radial W-Hessian mass can be canceled by an allowed Wilson coefficient"
+    }
+  },
+  "G3_competing_branch_theorem": {
+    "PS_branch_is_a_global_minimum_of_nonnegative_F_plus_D": true,
+    "PS_branch_is_the_unique_global_minimum": false,
+    "competing_zero_energy_PS_unbroken_branch_exists": true,
+    "exact_branches_at_nonzero_kappa_kappaX": {
+      "PS_breaking": {
+        "A": 1,
+        "D": 0,
+        "F_Sc_and_F_Sbc": 0,
+        "F_X": 0,
+        "V_global_SUSY": 0,
+        "X_squared": 0
+      },
+      "PS_unbroken_X": {
+        "A": 0,
+        "D": 0,
+        "F_Sc_and_F_Sbc": 0,
+        "F_X": 0,
+        "V_global_SUSY": 0,
+        "X_squared": 1,
+        "number_of_complex_X_roots": 2
+      }
+    },
+    "first_order_soft_splitting": {
+      "PS_branch_coefficient_over_epsilon_v2": "2 mS2",
+      "PS_selected_witness": {
+        "PS": 2,
+        "X": 3,
+        "mS2": 1,
+        "mX2": 3
+      },
+      "X_branch_coefficient_over_epsilon_v2": "mX2*kappa/kappaX",
+      "X_selected_witness": {
+        "PS": 4,
+        "X": 1,
+        "mS2": 2,
+        "mX2": 1
+      },
+      "conclusion": "allowed but unspecified soft data select opposite branches for arbitrarily small epsilon",
+      "soft_potential": "epsilon*(mS2*(|Sc|^2+|Sbc|^2)+mX2*|X|^2)"
+    },
+    "full_soft_Kahler_PQ_globality_closed": false,
+    "renormalizable_critical_superpotential": "W=-kappa v^2 X+kappa X A+(kappaX/3) X^3"
+  },
+  "all_order_G1_driver_theorem": {
+    "GS_counterterm_effect_on_tower": "a shifting GS modulus cancels anomaly phases but does not assign A a nonzero charge or fix F",
+    "X3_forcing_no_go": {
+      "X3_is_unavoidable_under_every_additive_Abelian_product": true,
+      "minimum_architecture_change": "drop or dress at least one of X Sigma^2, Sc^2 Sigma, or Sbc^2 Sigma, or use a non-additive/non-Abelian coupling selector",
+      "proof": [
+        "qX=omega",
+        "qSc+qSbc=0",
+        "2qSigma=0",
+        "2qSc+qSigma=omega",
+        "2qSbc+qSigma=omega",
+        "adding the last two equations gives 2omega=0",
+        "therefore q(X^3)=3omega=omega"
+      ],
+      "retained_terms": [
+        "X",
+        "X Sbc Sc",
+        "X Sigma^2",
+        "Sc^2 Sigma",
+        "Sbc^2 Sigma"
+      ]
+    },
+    "all_order_kahler_statement": "Xdag X and Adag A are neutral, so arbitrary real analytic functions of them are allowed",
+    "all_order_superpotential_grammar_on_critical_slice": "Wcrit = X Lambda^2 F(A/Lambda^2, X^2/Lambda^2) for an arbitrary analytic F",
+    "can_be_forbidden_by_an_additional_additive_Abelian_factor_while_retaining_X_XA_X3": false,
+    "critical_invariant": "A=Sbc Sc",
+    "degree_le_25_count": 91,
+    "degree_le_25_regression_rows": [
+      {
+        "A_power": 0,
+        "X_power": 1,
+        "engineering_dimension": 1,
+        "m": 0,
+        "monomial": "X^1 A^0",
+        "n": 0
+      },
+      {
+        "A_power": 1,
+        "X_power": 1,
+        "engineering_dimension": 3,
+        "m": 0,
+        "monomial": "X^1 A^1",
+        "n": 1
+      },
+      {
+        "A_power": 0,
+        "X_power": 3,
+        "engineering_dimension": 3,
+        "m": 1,
+        "monomial": "X^3 A^0",
+        "n": 0
+      },
+      {
+        "A_power": 2,
+        "X_power": 1,
+        "engineering_dimension": 5,
+        "m": 0,
+        "monomial": "X^1 A^2",
+        "n": 2
+      },
+      {
+        "A_power": 1,
+        "X_power": 3,
+        "engineering_dimension": 5,
+        "m": 1,
+        "monomial": "X^3 A^1",
+        "n": 1
+      },
+      {
+        "A_power": 0,
+        "X_power": 5,
+        "engineering_dimension": 5,
+        "m": 2,
+        "monomial": "X^5 A^0",
+        "n": 0
+      },
+      {
+        "A_power": 3,
+        "X_power": 1,
+        "engineering_dimension": 7,
+        "m": 0,
+        "monomial": "X^1 A^3",
+        "n": 3
+      },
+      {
+        "A_power": 2,
+        "X_power": 3,
+        "engineering_dimension": 7,
+        "m": 1,
+        "monomial": "X^3 A^2",
+        "n": 2
+      },
+      {
+        "A_power": 1,
+        "X_power": 5,
+        "engineering_dimension": 7,
+        "m": 2,
+        "monomial": "X^5 A^1",
+        "n": 1
+      },
+      {
+        "A_power": 0,
+        "X_power": 7,
+        "engineering_dimension": 7,
+        "m": 3,
+        "monomial": "X^7 A^0",
+        "n": 0
+      },
+      {
+        "A_power": 4,
+        "X_power": 1,
+        "engineering_dimension": 9,
+        "m": 0,
+        "monomial": "X^1 A^4",
+        "n": 4
+      },
+      {
+        "A_power": 3,
+        "X_power": 3,
+        "engineering_dimension": 9,
+        "m": 1,
+        "monomial": "X^3 A^3",
+        "n": 3
+      },
+      {
+        "A_power": 2,
+        "X_power": 5,
+        "engineering_dimension": 9,
+        "m": 2,
+        "monomial": "X^5 A^2",
+        "n": 2
+      },
+      {
+        "A_power": 1,
+        "X_power": 7,
+        "engineering_dimension": 9,
+        "m": 3,
+        "monomial": "X^7 A^1",
+        "n": 1
+      },
+      {
+        "A_power": 0,
+        "X_power": 9,
+        "engineering_dimension": 9,
+        "m": 4,
+        "monomial": "X^9 A^0",
+        "n": 0
+      },
+      {
+        "A_power": 5,
+        "X_power": 1,
+        "engineering_dimension": 11,
+        "m": 0,
+        "monomial": "X^1 A^5",
+        "n": 5
+      },
+      {
+        "A_power": 4,
+        "X_power": 3,
+        "engineering_dimension": 11,
+        "m": 1,
+        "monomial": "X^3 A^4",
+        "n": 4
+      },
+      {
+        "A_power": 3,
+        "X_power": 5,
+        "engineering_dimension": 11,
+        "m": 2,
+        "monomial": "X^5 A^3",
+        "n": 3
+      },
+      {
+        "A_power": 2,
+        "X_power": 7,
+        "engineering_dimension": 11,
+        "m": 3,
+        "monomial": "X^7 A^2",
+        "n": 2
+      },
+      {
+        "A_power": 1,
+        "X_power": 9,
+        "engineering_dimension": 11,
+        "m": 4,
+        "monomial": "X^9 A^1",
+        "n": 1
+      },
+      {
+        "A_power": 0,
+        "X_power": 11,
+        "engineering_dimension": 11,
+        "m": 5,
+        "monomial": "X^11 A^0",
+        "n": 0
+      },
+      {
+        "A_power": 6,
+        "X_power": 1,
+        "engineering_dimension": 13,
+        "m": 0,
+        "monomial": "X^1 A^6",
+        "n": 6
+      },
+      {
+        "A_power": 5,
+        "X_power": 3,
+        "engineering_dimension": 13,
+        "m": 1,
+        "monomial": "X^3 A^5",
+        "n": 5
+      },
+      {
+        "A_power": 4,
+        "X_power": 5,
+        "engineering_dimension": 13,
+        "m": 2,
+        "monomial": "X^5 A^4",
+        "n": 4
+      },
+      {
+        "A_power": 3,
+        "X_power": 7,
+        "engineering_dimension": 13,
+        "m": 3,
+        "monomial": "X^7 A^3",
+        "n": 3
+      },
+      {
+        "A_power": 2,
+        "X_power": 9,
+        "engineering_dimension": 13,
+        "m": 4,
+        "monomial": "X^9 A^2",
+        "n": 2
+      },
+      {
+        "A_power": 1,
+        "X_power": 11,
+        "engineering_dimension": 13,
+        "m": 5,
+        "monomial": "X^11 A^1",
+        "n": 1
+      },
+      {
+        "A_power": 0,
+        "X_power": 13,
+        "engineering_dimension": 13,
+        "m": 6,
+        "monomial": "X^13 A^0",
+        "n": 0
+      },
+      {
+        "A_power": 7,
+        "X_power": 1,
+        "engineering_dimension": 15,
+        "m": 0,
+        "monomial": "X^1 A^7",
+        "n": 7
+      },
+      {
+        "A_power": 6,
+        "X_power": 3,
+        "engineering_dimension": 15,
+        "m": 1,
+        "monomial": "X^3 A^6",
+        "n": 6
+      },
+      {
+        "A_power": 5,
+        "X_power": 5,
+        "engineering_dimension": 15,
+        "m": 2,
+        "monomial": "X^5 A^5",
+        "n": 5
+      },
+      {
+        "A_power": 4,
+        "X_power": 7,
+        "engineering_dimension": 15,
+        "m": 3,
+        "monomial": "X^7 A^4",
+        "n": 4
+      },
+      {
+        "A_power": 3,
+        "X_power": 9,
+        "engineering_dimension": 15,
+        "m": 4,
+        "monomial": "X^9 A^3",
+        "n": 3
+      },
+      {
+        "A_power": 2,
+        "X_power": 11,
+        "engineering_dimension": 15,
+        "m": 5,
+        "monomial": "X^11 A^2",
+        "n": 2
+      },
+      {
+        "A_power": 1,
+        "X_power": 13,
+        "engineering_dimension": 15,
+        "m": 6,
+        "monomial": "X^13 A^1",
+        "n": 1
+      },
+      {
+        "A_power": 0,
+        "X_power": 15,
+        "engineering_dimension": 15,
+        "m": 7,
+        "monomial": "X^15 A^0",
+        "n": 0
+      },
+      {
+        "A_power": 8,
+        "X_power": 1,
+        "engineering_dimension": 17,
+        "m": 0,
+        "monomial": "X^1 A^8",
+        "n": 8
+      },
+      {
+        "A_power": 7,
+        "X_power": 3,
+        "engineering_dimension": 17,
+        "m": 1,
+        "monomial": "X^3 A^7",
+        "n": 7
+      },
+      {
+        "A_power": 6,
+        "X_power": 5,
+        "engineering_dimension": 17,
+        "m": 2,
+        "monomial": "X^5 A^6",
+        "n": 6
+      },
+      {
+        "A_power": 5,
+        "X_power": 7,
+        "engineering_dimension": 17,
+        "m": 3,
+        "monomial": "X^7 A^5",
+        "n": 5
+      },
+      {
+        "A_power": 4,
+        "X_power": 9,
+        "engineering_dimension": 17,
+        "m": 4,
+        "monomial": "X^9 A^4",
+        "n": 4
+      },
+      {
+        "A_power": 3,
+        "X_power": 11,
+        "engineering_dimension": 17,
+        "m": 5,
+        "monomial": "X^11 A^3",
+        "n": 3
+      },
+      {
+        "A_power": 2,
+        "X_power": 13,
+        "engineering_dimension": 17,
+        "m": 6,
+        "monomial": "X^13 A^2",
+        "n": 2
+      },
+      {
+        "A_power": 1,
+        "X_power": 15,
+        "engineering_dimension": 17,
+        "m": 7,
+        "monomial": "X^15 A^1",
+        "n": 1
+      },
+      {
+        "A_power": 0,
+        "X_power": 17,
+        "engineering_dimension": 17,
+        "m": 8,
+        "monomial": "X^17 A^0",
+        "n": 0
+      },
+      {
+        "A_power": 9,
+        "X_power": 1,
+        "engineering_dimension": 19,
+        "m": 0,
+        "monomial": "X^1 A^9",
+        "n": 9
+      },
+      {
+        "A_power": 8,
+        "X_power": 3,
+        "engineering_dimension": 19,
+        "m": 1,
+        "monomial": "X^3 A^8",
+        "n": 8
+      },
+      {
+        "A_power": 7,
+        "X_power": 5,
+        "engineering_dimension": 19,
+        "m": 2,
+        "monomial": "X^5 A^7",
+        "n": 7
+      },
+      {
+        "A_power": 6,
+        "X_power": 7,
+        "engineering_dimension": 19,
+        "m": 3,
+        "monomial": "X^7 A^6",
+        "n": 6
+      },
+      {
+        "A_power": 5,
+        "X_power": 9,
+        "engineering_dimension": 19,
+        "m": 4,
+        "monomial": "X^9 A^5",
+        "n": 5
+      },
+      {
+        "A_power": 4,
+        "X_power": 11,
+        "engineering_dimension": 19,
+        "m": 5,
+        "monomial": "X^11 A^4",
+        "n": 4
+      },
+      {
+        "A_power": 3,
+        "X_power": 13,
+        "engineering_dimension": 19,
+        "m": 6,
+        "monomial": "X^13 A^3",
+        "n": 3
+      },
+      {
+        "A_power": 2,
+        "X_power": 15,
+        "engineering_dimension": 19,
+        "m": 7,
+        "monomial": "X^15 A^2",
+        "n": 2
+      },
+      {
+        "A_power": 1,
+        "X_power": 17,
+        "engineering_dimension": 19,
+        "m": 8,
+        "monomial": "X^17 A^1",
+        "n": 1
+      },
+      {
+        "A_power": 0,
+        "X_power": 19,
+        "engineering_dimension": 19,
+        "m": 9,
+        "monomial": "X^19 A^0",
+        "n": 0
+      },
+      {
+        "A_power": 10,
+        "X_power": 1,
+        "engineering_dimension": 21,
+        "m": 0,
+        "monomial": "X^1 A^10",
+        "n": 10
+      },
+      {
+        "A_power": 9,
+        "X_power": 3,
+        "engineering_dimension": 21,
+        "m": 1,
+        "monomial": "X^3 A^9",
+        "n": 9
+      },
+      {
+        "A_power": 8,
+        "X_power": 5,
+        "engineering_dimension": 21,
+        "m": 2,
+        "monomial": "X^5 A^8",
+        "n": 8
+      },
+      {
+        "A_power": 7,
+        "X_power": 7,
+        "engineering_dimension": 21,
+        "m": 3,
+        "monomial": "X^7 A^7",
+        "n": 7
+      },
+      {
+        "A_power": 6,
+        "X_power": 9,
+        "engineering_dimension": 21,
+        "m": 4,
+        "monomial": "X^9 A^6",
+        "n": 6
+      },
+      {
+        "A_power": 5,
+        "X_power": 11,
+        "engineering_dimension": 21,
+        "m": 5,
+        "monomial": "X^11 A^5",
+        "n": 5
+      },
+      {
+        "A_power": 4,
+        "X_power": 13,
+        "engineering_dimension": 21,
+        "m": 6,
+        "monomial": "X^13 A^4",
+        "n": 4
+      },
+      {
+        "A_power": 3,
+        "X_power": 15,
+        "engineering_dimension": 21,
+        "m": 7,
+        "monomial": "X^15 A^3",
+        "n": 3
+      },
+      {
+        "A_power": 2,
+        "X_power": 17,
+        "engineering_dimension": 21,
+        "m": 8,
+        "monomial": "X^17 A^2",
+        "n": 2
+      },
+      {
+        "A_power": 1,
+        "X_power": 19,
+        "engineering_dimension": 21,
+        "m": 9,
+        "monomial": "X^19 A^1",
+        "n": 1
+      },
+      {
+        "A_power": 0,
+        "X_power": 21,
+        "engineering_dimension": 21,
+        "m": 10,
+        "monomial": "X^21 A^0",
+        "n": 0
+      },
+      {
+        "A_power": 11,
+        "X_power": 1,
+        "engineering_dimension": 23,
+        "m": 0,
+        "monomial": "X^1 A^11",
+        "n": 11
+      },
+      {
+        "A_power": 10,
+        "X_power": 3,
+        "engineering_dimension": 23,
+        "m": 1,
+        "monomial": "X^3 A^10",
+        "n": 10
+      },
+      {
+        "A_power": 9,
+        "X_power": 5,
+        "engineering_dimension": 23,
+        "m": 2,
+        "monomial": "X^5 A^9",
+        "n": 9
+      },
+      {
+        "A_power": 8,
+        "X_power": 7,
+        "engineering_dimension": 23,
+        "m": 3,
+        "monomial": "X^7 A^8",
+        "n": 8
+      },
+      {
+        "A_power": 7,
+        "X_power": 9,
+        "engineering_dimension": 23,
+        "m": 4,
+        "monomial": "X^9 A^7",
+        "n": 7
+      },
+      {
+        "A_power": 6,
+        "X_power": 11,
+        "engineering_dimension": 23,
+        "m": 5,
+        "monomial": "X^11 A^6",
+        "n": 6
+      },
+      {
+        "A_power": 5,
+        "X_power": 13,
+        "engineering_dimension": 23,
+        "m": 6,
+        "monomial": "X^13 A^5",
+        "n": 5
+      },
+      {
+        "A_power": 4,
+        "X_power": 15,
+        "engineering_dimension": 23,
+        "m": 7,
+        "monomial": "X^15 A^4",
+        "n": 4
+      },
+      {
+        "A_power": 3,
+        "X_power": 17,
+        "engineering_dimension": 23,
+        "m": 8,
+        "monomial": "X^17 A^3",
+        "n": 3
+      },
+      {
+        "A_power": 2,
+        "X_power": 19,
+        "engineering_dimension": 23,
+        "m": 9,
+        "monomial": "X^19 A^2",
+        "n": 2
+      },
+      {
+        "A_power": 1,
+        "X_power": 21,
+        "engineering_dimension": 23,
+        "m": 10,
+        "monomial": "X^21 A^1",
+        "n": 1
+      },
+      {
+        "A_power": 0,
+        "X_power": 23,
+        "engineering_dimension": 23,
+        "m": 11,
+        "monomial": "X^23 A^0",
+        "n": 0
+      },
+      {
+        "A_power": 12,
+        "X_power": 1,
+        "engineering_dimension": 25,
+        "m": 0,
+        "monomial": "X^1 A^12",
+        "n": 12
+      },
+      {
+        "A_power": 11,
+        "X_power": 3,
+        "engineering_dimension": 25,
+        "m": 1,
+        "monomial": "X^3 A^11",
+        "n": 11
+      },
+      {
+        "A_power": 10,
+        "X_power": 5,
+        "engineering_dimension": 25,
+        "m": 2,
+        "monomial": "X^5 A^10",
+        "n": 10
+      },
+      {
+        "A_power": 9,
+        "X_power": 7,
+        "engineering_dimension": 25,
+        "m": 3,
+        "monomial": "X^7 A^9",
+        "n": 9
+      },
+      {
+        "A_power": 8,
+        "X_power": 9,
+        "engineering_dimension": 25,
+        "m": 4,
+        "monomial": "X^9 A^8",
+        "n": 8
+      },
+      {
+        "A_power": 7,
+        "X_power": 11,
+        "engineering_dimension": 25,
+        "m": 5,
+        "monomial": "X^11 A^7",
+        "n": 7
+      },
+      {
+        "A_power": 6,
+        "X_power": 13,
+        "engineering_dimension": 25,
+        "m": 6,
+        "monomial": "X^13 A^6",
+        "n": 6
+      },
+      {
+        "A_power": 5,
+        "X_power": 15,
+        "engineering_dimension": 25,
+        "m": 7,
+        "monomial": "X^15 A^5",
+        "n": 5
+      },
+      {
+        "A_power": 4,
+        "X_power": 17,
+        "engineering_dimension": 25,
+        "m": 8,
+        "monomial": "X^17 A^4",
+        "n": 4
+      },
+      {
+        "A_power": 3,
+        "X_power": 19,
+        "engineering_dimension": 25,
+        "m": 9,
+        "monomial": "X^19 A^3",
+        "n": 3
+      },
+      {
+        "A_power": 2,
+        "X_power": 21,
+        "engineering_dimension": 25,
+        "m": 10,
+        "monomial": "X^21 A^2",
+        "n": 2
+      },
+      {
+        "A_power": 1,
+        "X_power": 23,
+        "engineering_dimension": 25,
+        "m": 11,
+        "monomial": "X^23 A^1",
+        "n": 1
+      },
+      {
+        "A_power": 0,
+        "X_power": 25,
+        "engineering_dimension": 25,
+        "m": 12,
+        "monomial": "X^25 A^0",
+        "n": 0
+      }
+    ],
+    "exact_consequences": [
+      "q(A)=0",
+      "q(X)=omega",
+      "2 omega=0",
+      "q(X^(2m+1) A^n)=omega for every m,n>=0"
+    ],
+    "higher_dimensional_rows_through_25": [
+      {
+        "A_power": 2,
+        "X_power": 1,
+        "engineering_dimension": 5,
+        "m": 0,
+        "monomial": "X^1 A^2",
+        "n": 2
+      },
+      {
+        "A_power": 1,
+        "X_power": 3,
+        "engineering_dimension": 5,
+        "m": 1,
+        "monomial": "X^3 A^1",
+        "n": 1
+      },
+      {
+        "A_power": 0,
+        "X_power": 5,
+        "engineering_dimension": 5,
+        "m": 2,
+        "monomial": "X^5 A^0",
+        "n": 0
+      },
+      {
+        "A_power": 3,
+        "X_power": 1,
+        "engineering_dimension": 7,
+        "m": 0,
+        "monomial": "X^1 A^3",
+        "n": 3
+      },
+      {
+        "A_power": 2,
+        "X_power": 3,
+        "engineering_dimension": 7,
+        "m": 1,
+        "monomial": "X^3 A^2",
+        "n": 2
+      },
+      {
+        "A_power": 1,
+        "X_power": 5,
+        "engineering_dimension": 7,
+        "m": 2,
+        "monomial": "X^5 A^1",
+        "n": 1
+      },
+      {
+        "A_power": 0,
+        "X_power": 7,
+        "engineering_dimension": 7,
+        "m": 3,
+        "monomial": "X^7 A^0",
+        "n": 0
+      },
+      {
+        "A_power": 4,
+        "X_power": 1,
+        "engineering_dimension": 9,
+        "m": 0,
+        "monomial": "X^1 A^4",
+        "n": 4
+      },
+      {
+        "A_power": 3,
+        "X_power": 3,
+        "engineering_dimension": 9,
+        "m": 1,
+        "monomial": "X^3 A^3",
+        "n": 3
+      },
+      {
+        "A_power": 2,
+        "X_power": 5,
+        "engineering_dimension": 9,
+        "m": 2,
+        "monomial": "X^5 A^2",
+        "n": 2
+      },
+      {
+        "A_power": 1,
+        "X_power": 7,
+        "engineering_dimension": 9,
+        "m": 3,
+        "monomial": "X^7 A^1",
+        "n": 1
+      },
+      {
+        "A_power": 0,
+        "X_power": 9,
+        "engineering_dimension": 9,
+        "m": 4,
+        "monomial": "X^9 A^0",
+        "n": 0
+      },
+      {
+        "A_power": 5,
+        "X_power": 1,
+        "engineering_dimension": 11,
+        "m": 0,
+        "monomial": "X^1 A^5",
+        "n": 5
+      },
+      {
+        "A_power": 4,
+        "X_power": 3,
+        "engineering_dimension": 11,
+        "m": 1,
+        "monomial": "X^3 A^4",
+        "n": 4
+      },
+      {
+        "A_power": 3,
+        "X_power": 5,
+        "engineering_dimension": 11,
+        "m": 2,
+        "monomial": "X^5 A^3",
+        "n": 3
+      },
+      {
+        "A_power": 2,
+        "X_power": 7,
+        "engineering_dimension": 11,
+        "m": 3,
+        "monomial": "X^7 A^2",
+        "n": 2
+      },
+      {
+        "A_power": 1,
+        "X_power": 9,
+        "engineering_dimension": 11,
+        "m": 4,
+        "monomial": "X^9 A^1",
+        "n": 1
+      },
+      {
+        "A_power": 0,
+        "X_power": 11,
+        "engineering_dimension": 11,
+        "m": 5,
+        "monomial": "X^11 A^0",
+        "n": 0
+      },
+      {
+        "A_power": 6,
+        "X_power": 1,
+        "engineering_dimension": 13,
+        "m": 0,
+        "monomial": "X^1 A^6",
+        "n": 6
+      },
+      {
+        "A_power": 5,
+        "X_power": 3,
+        "engineering_dimension": 13,
+        "m": 1,
+        "monomial": "X^3 A^5",
+        "n": 5
+      },
+      {
+        "A_power": 4,
+        "X_power": 5,
+        "engineering_dimension": 13,
+        "m": 2,
+        "monomial": "X^5 A^4",
+        "n": 4
+      },
+      {
+        "A_power": 3,
+        "X_power": 7,
+        "engineering_dimension": 13,
+        "m": 3,
+        "monomial": "X^7 A^3",
+        "n": 3
+      },
+      {
+        "A_power": 2,
+        "X_power": 9,
+        "engineering_dimension": 13,
+        "m": 4,
+        "monomial": "X^9 A^2",
+        "n": 2
+      },
+      {
+        "A_power": 1,
+        "X_power": 11,
+        "engineering_dimension": 13,
+        "m": 5,
+        "monomial": "X^11 A^1",
+        "n": 1
+      },
+      {
+        "A_power": 0,
+        "X_power": 13,
+        "engineering_dimension": 13,
+        "m": 6,
+        "monomial": "X^13 A^0",
+        "n": 0
+      },
+      {
+        "A_power": 7,
+        "X_power": 1,
+        "engineering_dimension": 15,
+        "m": 0,
+        "monomial": "X^1 A^7",
+        "n": 7
+      },
+      {
+        "A_power": 6,
+        "X_power": 3,
+        "engineering_dimension": 15,
+        "m": 1,
+        "monomial": "X^3 A^6",
+        "n": 6
+      },
+      {
+        "A_power": 5,
+        "X_power": 5,
+        "engineering_dimension": 15,
+        "m": 2,
+        "monomial": "X^5 A^5",
+        "n": 5
+      },
+      {
+        "A_power": 4,
+        "X_power": 7,
+        "engineering_dimension": 15,
+        "m": 3,
+        "monomial": "X^7 A^4",
+        "n": 4
+      },
+      {
+        "A_power": 3,
+        "X_power": 9,
+        "engineering_dimension": 15,
+        "m": 4,
+        "monomial": "X^9 A^3",
+        "n": 3
+      },
+      {
+        "A_power": 2,
+        "X_power": 11,
+        "engineering_dimension": 15,
+        "m": 5,
+        "monomial": "X^11 A^2",
+        "n": 2
+      },
+      {
+        "A_power": 1,
+        "X_power": 13,
+        "engineering_dimension": 15,
+        "m": 6,
+        "monomial": "X^13 A^1",
+        "n": 1
+      },
+      {
+        "A_power": 0,
+        "X_power": 15,
+        "engineering_dimension": 15,
+        "m": 7,
+        "monomial": "X^15 A^0",
+        "n": 0
+      },
+      {
+        "A_power": 8,
+        "X_power": 1,
+        "engineering_dimension": 17,
+        "m": 0,
+        "monomial": "X^1 A^8",
+        "n": 8
+      },
+      {
+        "A_power": 7,
+        "X_power": 3,
+        "engineering_dimension": 17,
+        "m": 1,
+        "monomial": "X^3 A^7",
+        "n": 7
+      },
+      {
+        "A_power": 6,
+        "X_power": 5,
+        "engineering_dimension": 17,
+        "m": 2,
+        "monomial": "X^5 A^6",
+        "n": 6
+      },
+      {
+        "A_power": 5,
+        "X_power": 7,
+        "engineering_dimension": 17,
+        "m": 3,
+        "monomial": "X^7 A^5",
+        "n": 5
+      },
+      {
+        "A_power": 4,
+        "X_power": 9,
+        "engineering_dimension": 17,
+        "m": 4,
+        "monomial": "X^9 A^4",
+        "n": 4
+      },
+      {
+        "A_power": 3,
+        "X_power": 11,
+        "engineering_dimension": 17,
+        "m": 5,
+        "monomial": "X^11 A^3",
+        "n": 3
+      },
+      {
+        "A_power": 2,
+        "X_power": 13,
+        "engineering_dimension": 17,
+        "m": 6,
+        "monomial": "X^13 A^2",
+        "n": 2
+      },
+      {
+        "A_power": 1,
+        "X_power": 15,
+        "engineering_dimension": 17,
+        "m": 7,
+        "monomial": "X^15 A^1",
+        "n": 1
+      },
+      {
+        "A_power": 0,
+        "X_power": 17,
+        "engineering_dimension": 17,
+        "m": 8,
+        "monomial": "X^17 A^0",
+        "n": 0
+      },
+      {
+        "A_power": 9,
+        "X_power": 1,
+        "engineering_dimension": 19,
+        "m": 0,
+        "monomial": "X^1 A^9",
+        "n": 9
+      },
+      {
+        "A_power": 8,
+        "X_power": 3,
+        "engineering_dimension": 19,
+        "m": 1,
+        "monomial": "X^3 A^8",
+        "n": 8
+      },
+      {
+        "A_power": 7,
+        "X_power": 5,
+        "engineering_dimension": 19,
+        "m": 2,
+        "monomial": "X^5 A^7",
+        "n": 7
+      },
+      {
+        "A_power": 6,
+        "X_power": 7,
+        "engineering_dimension": 19,
+        "m": 3,
+        "monomial": "X^7 A^6",
+        "n": 6
+      },
+      {
+        "A_power": 5,
+        "X_power": 9,
+        "engineering_dimension": 19,
+        "m": 4,
+        "monomial": "X^9 A^5",
+        "n": 5
+      },
+      {
+        "A_power": 4,
+        "X_power": 11,
+        "engineering_dimension": 19,
+        "m": 5,
+        "monomial": "X^11 A^4",
+        "n": 4
+      },
+      {
+        "A_power": 3,
+        "X_power": 13,
+        "engineering_dimension": 19,
+        "m": 6,
+        "monomial": "X^13 A^3",
+        "n": 3
+      },
+      {
+        "A_power": 2,
+        "X_power": 15,
+        "engineering_dimension": 19,
+        "m": 7,
+        "monomial": "X^15 A^2",
+        "n": 2
+      },
+      {
+        "A_power": 1,
+        "X_power": 17,
+        "engineering_dimension": 19,
+        "m": 8,
+        "monomial": "X^17 A^1",
+        "n": 1
+      },
+      {
+        "A_power": 0,
+        "X_power": 19,
+        "engineering_dimension": 19,
+        "m": 9,
+        "monomial": "X^19 A^0",
+        "n": 0
+      },
+      {
+        "A_power": 10,
+        "X_power": 1,
+        "engineering_dimension": 21,
+        "m": 0,
+        "monomial": "X^1 A^10",
+        "n": 10
+      },
+      {
+        "A_power": 9,
+        "X_power": 3,
+        "engineering_dimension": 21,
+        "m": 1,
+        "monomial": "X^3 A^9",
+        "n": 9
+      },
+      {
+        "A_power": 8,
+        "X_power": 5,
+        "engineering_dimension": 21,
+        "m": 2,
+        "monomial": "X^5 A^8",
+        "n": 8
+      },
+      {
+        "A_power": 7,
+        "X_power": 7,
+        "engineering_dimension": 21,
+        "m": 3,
+        "monomial": "X^7 A^7",
+        "n": 7
+      },
+      {
+        "A_power": 6,
+        "X_power": 9,
+        "engineering_dimension": 21,
+        "m": 4,
+        "monomial": "X^9 A^6",
+        "n": 6
+      },
+      {
+        "A_power": 5,
+        "X_power": 11,
+        "engineering_dimension": 21,
+        "m": 5,
+        "monomial": "X^11 A^5",
+        "n": 5
+      },
+      {
+        "A_power": 4,
+        "X_power": 13,
+        "engineering_dimension": 21,
+        "m": 6,
+        "monomial": "X^13 A^4",
+        "n": 4
+      },
+      {
+        "A_power": 3,
+        "X_power": 15,
+        "engineering_dimension": 21,
+        "m": 7,
+        "monomial": "X^15 A^3",
+        "n": 3
+      },
+      {
+        "A_power": 2,
+        "X_power": 17,
+        "engineering_dimension": 21,
+        "m": 8,
+        "monomial": "X^17 A^2",
+        "n": 2
+      },
+      {
+        "A_power": 1,
+        "X_power": 19,
+        "engineering_dimension": 21,
+        "m": 9,
+        "monomial": "X^19 A^1",
+        "n": 1
+      },
+      {
+        "A_power": 0,
+        "X_power": 21,
+        "engineering_dimension": 21,
+        "m": 10,
+        "monomial": "X^21 A^0",
+        "n": 0
+      },
+      {
+        "A_power": 11,
+        "X_power": 1,
+        "engineering_dimension": 23,
+        "m": 0,
+        "monomial": "X^1 A^11",
+        "n": 11
+      },
+      {
+        "A_power": 10,
+        "X_power": 3,
+        "engineering_dimension": 23,
+        "m": 1,
+        "monomial": "X^3 A^10",
+        "n": 10
+      },
+      {
+        "A_power": 9,
+        "X_power": 5,
+        "engineering_dimension": 23,
+        "m": 2,
+        "monomial": "X^5 A^9",
+        "n": 9
+      },
+      {
+        "A_power": 8,
+        "X_power": 7,
+        "engineering_dimension": 23,
+        "m": 3,
+        "monomial": "X^7 A^8",
+        "n": 8
+      },
+      {
+        "A_power": 7,
+        "X_power": 9,
+        "engineering_dimension": 23,
+        "m": 4,
+        "monomial": "X^9 A^7",
+        "n": 7
+      },
+      {
+        "A_power": 6,
+        "X_power": 11,
+        "engineering_dimension": 23,
+        "m": 5,
+        "monomial": "X^11 A^6",
+        "n": 6
+      },
+      {
+        "A_power": 5,
+        "X_power": 13,
+        "engineering_dimension": 23,
+        "m": 6,
+        "monomial": "X^13 A^5",
+        "n": 5
+      },
+      {
+        "A_power": 4,
+        "X_power": 15,
+        "engineering_dimension": 23,
+        "m": 7,
+        "monomial": "X^15 A^4",
+        "n": 4
+      },
+      {
+        "A_power": 3,
+        "X_power": 17,
+        "engineering_dimension": 23,
+        "m": 8,
+        "monomial": "X^17 A^3",
+        "n": 3
+      },
+      {
+        "A_power": 2,
+        "X_power": 19,
+        "engineering_dimension": 23,
+        "m": 9,
+        "monomial": "X^19 A^2",
+        "n": 2
+      },
+      {
+        "A_power": 1,
+        "X_power": 21,
+        "engineering_dimension": 23,
+        "m": 10,
+        "monomial": "X^21 A^1",
+        "n": 1
+      },
+      {
+        "A_power": 0,
+        "X_power": 23,
+        "engineering_dimension": 23,
+        "m": 11,
+        "monomial": "X^23 A^0",
+        "n": 0
+      },
+      {
+        "A_power": 12,
+        "X_power": 1,
+        "engineering_dimension": 25,
+        "m": 0,
+        "monomial": "X^1 A^12",
+        "n": 12
+      },
+      {
+        "A_power": 11,
+        "X_power": 3,
+        "engineering_dimension": 25,
+        "m": 1,
+        "monomial": "X^3 A^11",
+        "n": 11
+      },
+      {
+        "A_power": 10,
+        "X_power": 5,
+        "engineering_dimension": 25,
+        "m": 2,
+        "monomial": "X^5 A^10",
+        "n": 10
+      },
+      {
+        "A_power": 9,
+        "X_power": 7,
+        "engineering_dimension": 25,
+        "m": 3,
+        "monomial": "X^7 A^9",
+        "n": 9
+      },
+      {
+        "A_power": 8,
+        "X_power": 9,
+        "engineering_dimension": 25,
+        "m": 4,
+        "monomial": "X^9 A^8",
+        "n": 8
+      },
+      {
+        "A_power": 7,
+        "X_power": 11,
+        "engineering_dimension": 25,
+        "m": 5,
+        "monomial": "X^11 A^7",
+        "n": 7
+      },
+      {
+        "A_power": 6,
+        "X_power": 13,
+        "engineering_dimension": 25,
+        "m": 6,
+        "monomial": "X^13 A^6",
+        "n": 6
+      },
+      {
+        "A_power": 5,
+        "X_power": 15,
+        "engineering_dimension": 25,
+        "m": 7,
+        "monomial": "X^15 A^5",
+        "n": 5
+      },
+      {
+        "A_power": 4,
+        "X_power": 17,
+        "engineering_dimension": 25,
+        "m": 8,
+        "monomial": "X^17 A^4",
+        "n": 4
+      },
+      {
+        "A_power": 3,
+        "X_power": 19,
+        "engineering_dimension": 25,
+        "m": 9,
+        "monomial": "X^19 A^3",
+        "n": 3
+      },
+      {
+        "A_power": 2,
+        "X_power": 21,
+        "engineering_dimension": 25,
+        "m": 10,
+        "monomial": "X^21 A^2",
+        "n": 2
+      },
+      {
+        "A_power": 1,
+        "X_power": 23,
+        "engineering_dimension": 25,
+        "m": 11,
+        "monomial": "X^23 A^1",
+        "n": 1
+      },
+      {
+        "A_power": 0,
+        "X_power": 25,
+        "engineering_dimension": 25,
+        "m": 12,
+        "monomial": "X^25 A^0",
+        "n": 0
+      }
+    ],
+    "kahler_degree_le_24_regression_rows": [
+      {
+        "AdagA_power": 0,
+        "XdagX_power": 1,
+        "engineering_dimension": 2,
+        "monomial": "(Xdag X)^1 (Adag A)^0"
+      },
+      {
+        "AdagA_power": 1,
+        "XdagX_power": 0,
+        "engineering_dimension": 4,
+        "monomial": "(Xdag X)^0 (Adag A)^1"
+      },
+      {
+        "AdagA_power": 0,
+        "XdagX_power": 2,
+        "engineering_dimension": 4,
+        "monomial": "(Xdag X)^2 (Adag A)^0"
+      },
+      {
+        "AdagA_power": 1,
+        "XdagX_power": 1,
+        "engineering_dimension": 6,
+        "monomial": "(Xdag X)^1 (Adag A)^1"
+      },
+      {
+        "AdagA_power": 0,
+        "XdagX_power": 3,
+        "engineering_dimension": 6,
+        "monomial": "(Xdag X)^3 (Adag A)^0"
+      },
+      {
+        "AdagA_power": 2,
+        "XdagX_power": 0,
+        "engineering_dimension": 8,
+        "monomial": "(Xdag X)^0 (Adag A)^2"
+      },
+      {
+        "AdagA_power": 1,
+        "XdagX_power": 2,
+        "engineering_dimension": 8,
+        "monomial": "(Xdag X)^2 (Adag A)^1"
+      },
+      {
+        "AdagA_power": 0,
+        "XdagX_power": 4,
+        "engineering_dimension": 8,
+        "monomial": "(Xdag X)^4 (Adag A)^0"
+      },
+      {
+        "AdagA_power": 2,
+        "XdagX_power": 1,
+        "engineering_dimension": 10,
+        "monomial": "(Xdag X)^1 (Adag A)^2"
+      },
+      {
+        "AdagA_power": 1,
+        "XdagX_power": 3,
+        "engineering_dimension": 10,
+        "monomial": "(Xdag X)^3 (Adag A)^1"
+      },
+      {
+        "AdagA_power": 0,
+        "XdagX_power": 5,
+        "engineering_dimension": 10,
+        "monomial": "(Xdag X)^5 (Adag A)^0"
+      },
+      {
+        "AdagA_power": 3,
+        "XdagX_power": 0,
+        "engineering_dimension": 12,
+        "monomial": "(Xdag X)^0 (Adag A)^3"
+      },
+      {
+        "AdagA_power": 2,
+        "XdagX_power": 2,
+        "engineering_dimension": 12,
+        "monomial": "(Xdag X)^2 (Adag A)^2"
+      },
+      {
+        "AdagA_power": 1,
+        "XdagX_power": 4,
+        "engineering_dimension": 12,
+        "monomial": "(Xdag X)^4 (Adag A)^1"
+      },
+      {
+        "AdagA_power": 0,
+        "XdagX_power": 6,
+        "engineering_dimension": 12,
+        "monomial": "(Xdag X)^6 (Adag A)^0"
+      },
+      {
+        "AdagA_power": 3,
+        "XdagX_power": 1,
+        "engineering_dimension": 14,
+        "monomial": "(Xdag X)^1 (Adag A)^3"
+      },
+      {
+        "AdagA_power": 2,
+        "XdagX_power": 3,
+        "engineering_dimension": 14,
+        "monomial": "(Xdag X)^3 (Adag A)^2"
+      },
+      {
+        "AdagA_power": 1,
+        "XdagX_power": 5,
+        "engineering_dimension": 14,
+        "monomial": "(Xdag X)^5 (Adag A)^1"
+      },
+      {
+        "AdagA_power": 0,
+        "XdagX_power": 7,
+        "engineering_dimension": 14,
+        "monomial": "(Xdag X)^7 (Adag A)^0"
+      },
+      {
+        "AdagA_power": 4,
+        "XdagX_power": 0,
+        "engineering_dimension": 16,
+        "monomial": "(Xdag X)^0 (Adag A)^4"
+      },
+      {
+        "AdagA_power": 3,
+        "XdagX_power": 2,
+        "engineering_dimension": 16,
+        "monomial": "(Xdag X)^2 (Adag A)^3"
+      },
+      {
+        "AdagA_power": 2,
+        "XdagX_power": 4,
+        "engineering_dimension": 16,
+        "monomial": "(Xdag X)^4 (Adag A)^2"
+      },
+      {
+        "AdagA_power": 1,
+        "XdagX_power": 6,
+        "engineering_dimension": 16,
+        "monomial": "(Xdag X)^6 (Adag A)^1"
+      },
+      {
+        "AdagA_power": 0,
+        "XdagX_power": 8,
+        "engineering_dimension": 16,
+        "monomial": "(Xdag X)^8 (Adag A)^0"
+      },
+      {
+        "AdagA_power": 4,
+        "XdagX_power": 1,
+        "engineering_dimension": 18,
+        "monomial": "(Xdag X)^1 (Adag A)^4"
+      },
+      {
+        "AdagA_power": 3,
+        "XdagX_power": 3,
+        "engineering_dimension": 18,
+        "monomial": "(Xdag X)^3 (Adag A)^3"
+      },
+      {
+        "AdagA_power": 2,
+        "XdagX_power": 5,
+        "engineering_dimension": 18,
+        "monomial": "(Xdag X)^5 (Adag A)^2"
+      },
+      {
+        "AdagA_power": 1,
+        "XdagX_power": 7,
+        "engineering_dimension": 18,
+        "monomial": "(Xdag X)^7 (Adag A)^1"
+      },
+      {
+        "AdagA_power": 0,
+        "XdagX_power": 9,
+        "engineering_dimension": 18,
+        "monomial": "(Xdag X)^9 (Adag A)^0"
+      },
+      {
+        "AdagA_power": 5,
+        "XdagX_power": 0,
+        "engineering_dimension": 20,
+        "monomial": "(Xdag X)^0 (Adag A)^5"
+      },
+      {
+        "AdagA_power": 4,
+        "XdagX_power": 2,
+        "engineering_dimension": 20,
+        "monomial": "(Xdag X)^2 (Adag A)^4"
+      },
+      {
+        "AdagA_power": 3,
+        "XdagX_power": 4,
+        "engineering_dimension": 20,
+        "monomial": "(Xdag X)^4 (Adag A)^3"
+      },
+      {
+        "AdagA_power": 2,
+        "XdagX_power": 6,
+        "engineering_dimension": 20,
+        "monomial": "(Xdag X)^6 (Adag A)^2"
+      },
+      {
+        "AdagA_power": 1,
+        "XdagX_power": 8,
+        "engineering_dimension": 20,
+        "monomial": "(Xdag X)^8 (Adag A)^1"
+      },
+      {
+        "AdagA_power": 0,
+        "XdagX_power": 10,
+        "engineering_dimension": 20,
+        "monomial": "(Xdag X)^10 (Adag A)^0"
+      },
+      {
+        "AdagA_power": 5,
+        "XdagX_power": 1,
+        "engineering_dimension": 22,
+        "monomial": "(Xdag X)^1 (Adag A)^5"
+      },
+      {
+        "AdagA_power": 4,
+        "XdagX_power": 3,
+        "engineering_dimension": 22,
+        "monomial": "(Xdag X)^3 (Adag A)^4"
+      },
+      {
+        "AdagA_power": 3,
+        "XdagX_power": 5,
+        "engineering_dimension": 22,
+        "monomial": "(Xdag X)^5 (Adag A)^3"
+      },
+      {
+        "AdagA_power": 2,
+        "XdagX_power": 7,
+        "engineering_dimension": 22,
+        "monomial": "(Xdag X)^7 (Adag A)^2"
+      },
+      {
+        "AdagA_power": 1,
+        "XdagX_power": 9,
+        "engineering_dimension": 22,
+        "monomial": "(Xdag X)^9 (Adag A)^1"
+      },
+      {
+        "AdagA_power": 0,
+        "XdagX_power": 11,
+        "engineering_dimension": 22,
+        "monomial": "(Xdag X)^11 (Adag A)^0"
+      },
+      {
+        "AdagA_power": 6,
+        "XdagX_power": 0,
+        "engineering_dimension": 24,
+        "monomial": "(Xdag X)^0 (Adag A)^6"
+      },
+      {
+        "AdagA_power": 5,
+        "XdagX_power": 2,
+        "engineering_dimension": 24,
+        "monomial": "(Xdag X)^2 (Adag A)^5"
+      },
+      {
+        "AdagA_power": 4,
+        "XdagX_power": 4,
+        "engineering_dimension": 24,
+        "monomial": "(Xdag X)^4 (Adag A)^4"
+      },
+      {
+        "AdagA_power": 3,
+        "XdagX_power": 6,
+        "engineering_dimension": 24,
+        "monomial": "(Xdag X)^6 (Adag A)^3"
+      },
+      {
+        "AdagA_power": 2,
+        "XdagX_power": 8,
+        "engineering_dimension": 24,
+        "monomial": "(Xdag X)^8 (Adag A)^2"
+      },
+      {
+        "AdagA_power": 1,
+        "XdagX_power": 10,
+        "engineering_dimension": 24,
+        "monomial": "(Xdag X)^10 (Adag A)^1"
+      },
+      {
+        "AdagA_power": 0,
+        "XdagX_power": 12,
+        "engineering_dimension": 24,
+        "monomial": "(Xdag X)^12 (Adag A)^0"
+      }
+    ],
+    "reason": "the three retained monomials impose the displayed charge identities componentwise for ordinary, R, continuous, cyclic, or product Abelian shaping groups",
+    "renormalizable_rows": [
+      {
+        "A_power": 0,
+        "X_power": 1,
+        "engineering_dimension": 1,
+        "m": 0,
+        "monomial": "X^1 A^0",
+        "n": 0
+      },
+      {
+        "A_power": 1,
+        "X_power": 1,
+        "engineering_dimension": 3,
+        "m": 0,
+        "monomial": "X^1 A^1",
+        "n": 1
+      },
+      {
+        "A_power": 0,
+        "X_power": 3,
+        "engineering_dimension": 3,
+        "m": 1,
+        "monomial": "X^3 A^0",
+        "n": 0
+      }
+    ],
+    "retained_relations_for_each_additive_Abelian_factor": [
+      "q(X)=omega from the neutral-coupling tadpole X",
+      "q(X)+q(A)=omega from X A",
+      "3 q(X)=omega from X^3"
+    ],
+    "tower_is_infinite": true
+  },
+  "canonical_tree_G2_breaking_spectrum": {
+    "W_hessian_dimension": [
+      23,
+      23
+    ],
+    "W_hessian_nullity": 9,
+    "W_hessian_rank": 14,
+    "canonical_tree_level_breaking_sector_spectrum_closed": true,
+    "chiral_superfield_mass_squared_spectrum": [
+      {
+        "formula_over_vPS2": "2 |kappa|^2",
+        "multiplicity": 2,
+        "sector": "radial physical chirals",
+        "witness_mass_squared": 392
+      },
+      {
+        "formula_over_vPS2": "|lambdaS|^2",
+        "multiplicity": 6,
+        "sector": "Sc-Sigma colored chirals",
+        "witness_mass_squared": 441
+      },
+      {
+        "formula_over_vPS2": "|lambdaSb|^2",
+        "multiplicity": 6,
+        "sector": "Sbc-Sigma colored chirals",
+        "witness_mass_squared": 1225
+      },
+      {
+        "formula_over_vPS2": "0 before the super-Higgs mechanism",
+        "multiplicity": 9,
+        "sector": "gauge-Goldstone chiral directions",
+        "witness_mass_squared": 0
+      }
+    ],
+    "full_G2_missing": [
+      "all-order Wilson coefficients which renormalize the displayed masses",
+      "PQ and soft sectors",
+      "SM-stage mixing, loop self-energies, scheme and threshold matching"
+    ],
+    "full_G2_pole_spectrum_closed": false,
+    "massive_vector_multiplets": 9,
+    "nontrivial_exact_blocks": [
+      {
+        "labels": [
+          "Sc[0,1]",
+          "Sigma[0,3]"
+        ],
+        "matrix": [
+          [
+            0,
+            -21
+          ],
+          [
+            -21,
+            0
+          ]
+        ]
+      },
+      {
+        "labels": [
+          "Sc[1,1]",
+          "Sigma[1,3]"
+        ],
+        "matrix": [
+          [
+            0,
+            -21
+          ],
+          [
+            -21,
+            0
+          ]
+        ]
+      },
+      {
+        "labels": [
+          "Sc[2,1]",
+          "Sigma[2,3]"
+        ],
+        "matrix": [
+          [
+            0,
+            -21
+          ],
+          [
+            -21,
+            0
+          ]
+        ]
+      },
+      {
+        "labels": [
+          "Sc[3,0]",
+          "Sbc[3,0]",
+          "X"
+        ],
+        "matrix": [
+          [
+            0,
+            0,
+            14
+          ],
+          [
+            0,
+            0,
+            14
+          ],
+          [
+            14,
+            14,
+            0
+          ]
+        ]
+      },
+      {
+        "labels": [
+          "Sbc[0,1]",
+          "Sigma[1,2]"
+        ],
+        "matrix": [
+          [
+            0,
+            -35
+          ],
+          [
+            -35,
+            0
+          ]
+        ]
+      },
+      {
+        "labels": [
+          "Sbc[1,1]",
+          "Sigma[0,2]"
+        ],
+        "matrix": [
+          [
+            0,
+            35
+          ],
+          [
+            35,
+            0
+          ]
+        ]
+      },
+      {
+        "labels": [
+          "Sbc[2,1]",
+          "Sigma[0,1]"
+        ],
+        "matrix": [
+          [
+            0,
+            -35
+          ],
+          [
+            -35,
+            0
+          ]
+        ]
+      }
+    ],
+    "physical_massive_chiral_components_after_super_Higgs": 14,
+    "scope": "canonical-Kahler exact-SUSY tree-level PS-breaking sector only",
+    "uneaten_massless_breaking_sector_chirals": 0,
+    "vector_mass_convention": "canonical scalar kinetic terms, Tr(Ta Tb)=delta_ab/2, VEV entries Sc=Sbc=vPS, and Lmass=(1/2) A_a M2_ab A_b",
+    "vector_mass_derivation": {
+      "broken_diagonal_fundamental_charges": {
+        "SU2R_T3": "1/2",
+        "SU4_T15": "-3/(2 sqrt(6))"
+      },
+      "diagonal_outer_product_nonzero_eigenvalue_over_vPS2": "(3/2) g4^2 + gR^2",
+      "each_offdiagonal_generator_norm_squared_per_VEV": "1/4",
+      "number_of_equal_conjugate_VEVs": 2
+    },
+    "vector_multiplet_mass_squared_spectrum": [
+      {
+        "formula_over_vPS2": "g4^2",
+        "multiplicity": 6,
+        "sector": "SU4/SU3 leptoquark vectors",
+        "witness_mass_squared": 49
+      },
+      {
+        "formula_over_vPS2": "gR^2",
+        "multiplicity": 2,
+        "sector": "charged SU2R vectors",
+        "witness_mass_squared": 49
+      },
+      {
+        "formula_over_vPS2": "(3/2) g4^2 + gR^2",
+        "multiplicity": 1,
+        "sector": "broken diagonal Zprime vector",
+        "witness_mass_squared": "245/2"
+      }
+    ],
+    "witness": {
+      "g4": 1,
+      "gR": 1,
+      "kappa": 2,
+      "lambdaS": 3,
+      "lambdaSb": 5,
+      "vPS": 7
+    }
+  },
+  "checks": {
+    "PS_and_X_branches_are_both_exact_F_D_zero": true,
+    "V24_has_18_processed_structures": true,
+    "W_hessian_rank_and_nullity_remain_14_and_9": true,
+    "X3_is_forced_by_the_retained_sextet_architecture": true,
+    "all_raw_source_pins_match": true,
+    "all_three_full_gates_remain_fail_closed": true,
+    "allowed_Wilson_coefficient_can_cancel_radial_derivative": true,
+    "allowed_dimension5_term_can_add_a_second_subcutoff_root": true,
+    "allowed_soft_witnesses_select_opposite_branches": true,
+    "canonical_chiral_spectrum_accounts_for_23_components": true,
+    "canonical_physical_breaking_chirals_are_14": true,
+    "critical_driver_tower_is_all_order_allowed": true,
+    "driver_tower_count_through_dimension25_is_91": true,
+    "driver_tower_has_3_renormalizable_and_88_higher_rows": true,
+    "every_driver_tower_power_of_X_is_odd": true,
+    "massive_vector_count_equals_broken_generator_count": true,
+    "minimal_Z3R_mixed_residues_match_levels_but_gravity_does_not": true,
+    "minimal_Z3R_repair_keeps_16_and_forbids_exactly_2_source_classes": true,
+    "no_uneaten_breaking_chiral_is_massless": true,
+    "normalized_diagonal_vector_coefficients_are_3over2_and_1": true,
+    "renormalizable_source_has_a_competing_zero_energy_branch": true,
+    "source_core_matches": true,
+    "terminal_core_matches": true
+  },
+  "closure_counts": {
+    "full_closed": 0,
+    "full_open": 3,
+    "qualified_subproblems_closed": 2
+  },
+  "core_sha256": "5aa1d0bffd39fa3a520105291d95906882842fd185e85cae72b519b03528e307",
+  "failures": [],
+  "gates": [
+    {
+      "blockers": [
+        "the arbitrary analytic function F is not fixed by the selector",
+        "X^3 and its competing branch cannot be forbidden by another additive Abelian factor while the retained sextet architecture is unchanged",
+        "dynamical GS modulus/stabilization and hidden UV spectrum remain absent",
+        "the full gauge-invariant Kahler/soft Wilson coefficient set is unspecified"
+      ],
+      "closed": false,
+      "full_gate_claim": false,
+      "gate": "G1",
+      "landed": [
+        "all-order Abelian charge theorem for X^(2m+1)(Sbc Sc)^n",
+        "finite regression census through dimension 25",
+        "executable V24 renormalizable source remains valid"
+      ],
+      "state": "CRITICAL_SLICE_ALL_ORDER_GRAMMAR_PROVED__FULL_UV_OPERATOR_AND_GS_COMPLETION_OPEN"
+    },
+    {
+      "blockers": [
+        "allowed Wilson towers change exact masses and can cancel a radial Hessian eigenvalue",
+        "PQ/soft/SM-stage component matrices and loop pole self-energies are absent",
+        "physical threshold matching is absent"
+      ],
+      "closed": false,
+      "full_gate_claim": false,
+      "gate": "G2",
+      "landed": [
+        "14 physical massive chiral breaking components",
+        "nine massive vector multiplets with normalized tree mass formulas",
+        "no uneaten massless breaking-sector chiral"
+      ],
+      "state": "CANONICAL_TREE_PS_BREAKING_SPECTRUM_CLOSED__FULL_COMPONENT_POLE_SPECTRUM_OPEN"
+    },
+    {
+      "blockers": [
+        "soft mediation and Kahler coefficients are unspecified",
+        "higher allowed operators create further roots",
+        "PQ stabilization and the full positive physical Hessian are absent"
+      ],
+      "closed": false,
+      "full_gate_claim": false,
+      "gate": "G3",
+      "landed": [
+        "exact PS-breaking F=D=0 branch",
+        "exact PS-unbroken X branch with the same zero energy",
+        "opposite first-order branch selections from two allowed soft witnesses"
+      ],
+      "state": "TWO_EXACT_ZERO_ENERGY_BRANCHES_PROVED__FULL_SOFT_KAHLER_PQ_GLOBALITY_OPEN"
+    }
+  ],
+  "minimal_new_physics_repair_attempt": {
+    "24rho_residue_mod3": 0,
+    "GS_level_candidate": {
+      "k4": 1,
+      "kL": 2,
+      "kR": 1,
+      "rho": 1
+    },
+    "P_VEV_breaks_Z3R_completely": true,
+    "allowed_source_class_count": 16,
+    "boundary": "this is a concrete source-level way to push the X branch above the EFT cutoff, but it changes Kac--Moody levels, has an unmatched visible gravitational residue, and leaves the X A^n tower",
+    "charges": {
+      "H": 0,
+      "N": 1,
+      "P": 1,
+      "Psi": 1,
+      "PsiBar": 0,
+      "PsiC": 1,
+      "PsiCBar": 0,
+      "Q": 1,
+      "Qc": 1,
+      "Sbc": 0,
+      "Sc": 0,
+      "Sigma": 2,
+      "X": 2
+    },
+    "first_P_dressed_reappearance": {
+      "X_Sigma_Sigma": "P^2 X Sigma^2/Lambda^2",
+      "X_cubic": "P^2 X^3/Lambda^2",
+      "suppression_at_fPQ_over_Lambda_1p76e_minus7": 3.0976e-14
+    },
+    "forbidden_source_classes": [
+      "X_cubic",
+      "X_Sigma_Sigma"
+    ],
+    "full_repair_viable": false,
+    "mixed_anomaly_representatives": {
+      "SU2L": -1,
+      "SU2R": -5,
+      "SU4": 1
+    },
+    "mixed_anomaly_residues_mod3": {
+      "SU2L": 2,
+      "SU2R": 1,
+      "SU4": 1
+    },
+    "mixed_residues_match_level_times_rho_mod3": true,
+    "neutral_A_tower_removed": false,
+    "renormalizable_operator_audit": [
+      {
+        "Z3R_sum_mod3": 2,
+        "allowed": true,
+        "key": "X_tadpole",
+        "monomial": [
+          "X"
+        ]
+      },
+      {
+        "Z3R_sum_mod3": 0,
+        "allowed": false,
+        "key": "X_cubic",
+        "monomial": [
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      {
+        "Z3R_sum_mod3": 2,
+        "allowed": true,
+        "key": "X_Sbc_Sc",
+        "monomial": [
+          "X",
+          "Sbc",
+          "Sc"
+        ]
+      },
+      {
+        "Z3R_sum_mod3": 2,
+        "allowed": true,
+        "key": "X_H_H",
+        "monomial": [
+          "X",
+          "H",
+          "H"
+        ]
+      },
+      {
+        "Z3R_sum_mod3": 0,
+        "allowed": false,
+        "key": "X_Sigma_Sigma",
+        "monomial": [
+          "X",
+          "Sigma",
+          "Sigma"
+        ]
+      },
+      {
+        "Z3R_sum_mod3": 2,
+        "allowed": true,
+        "key": "Sc_Sc_Sigma",
+        "monomial": [
+          "Sc",
+          "Sc",
+          "Sigma"
+        ]
+      },
+      {
+        "Z3R_sum_mod3": 2,
+        "allowed": true,
+        "key": "Sbc_Sbc_Sigma",
+        "monomial": [
+          "Sbc",
+          "Sbc",
+          "Sigma"
+        ]
+      },
+      {
+        "Z3R_sum_mod3": 2,
+        "allowed": true,
+        "key": "Q_H_Qc",
+        "monomial": [
+          "Q",
+          "H",
+          "Qc"
+        ]
+      },
+      {
+        "Z3R_sum_mod3": 2,
+        "allowed": true,
+        "key": "Q_H_PsiC",
+        "monomial": [
+          "Q",
+          "H",
+          "PsiC"
+        ]
+      },
+      {
+        "Z3R_sum_mod3": 2,
+        "allowed": true,
+        "key": "Psi_H_Qc",
+        "monomial": [
+          "Psi",
+          "H",
+          "Qc"
+        ]
+      },
+      {
+        "Z3R_sum_mod3": 2,
+        "allowed": true,
+        "key": "Psi_H_PsiC",
+        "monomial": [
+          "Psi",
+          "H",
+          "PsiC"
+        ]
+      },
+      {
+        "Z3R_sum_mod3": 2,
+        "allowed": true,
+        "key": "P_PsiBar_Q",
+        "monomial": [
+          "P",
+          "PsiBar",
+          "Q"
+        ]
+      },
+      {
+        "Z3R_sum_mod3": 2,
+        "allowed": true,
+        "key": "P_PsiBar_Psi",
+        "monomial": [
+          "P",
+          "PsiBar",
+          "Psi"
+        ]
+      },
+      {
+        "Z3R_sum_mod3": 2,
+        "allowed": true,
+        "key": "P_PsiCBar_Qc",
+        "monomial": [
+          "P",
+          "PsiCBar",
+          "Qc"
+        ]
+      },
+      {
+        "Z3R_sum_mod3": 2,
+        "allowed": true,
+        "key": "P_PsiCBar_PsiC",
+        "monomial": [
+          "P",
+          "PsiCBar",
+          "PsiC"
+        ]
+      },
+      {
+        "Z3R_sum_mod3": 2,
+        "allowed": true,
+        "key": "Sbc_Qc_N",
+        "monomial": [
+          "Sbc",
+          "Qc",
+          "N"
+        ]
+      },
+      {
+        "Z3R_sum_mod3": 2,
+        "allowed": true,
+        "key": "Sbc_PsiC_N",
+        "monomial": [
+          "Sbc",
+          "PsiC",
+          "N"
+        ]
+      },
+      {
+        "Z3R_sum_mod3": 2,
+        "allowed": true,
+        "key": "N_N",
+        "monomial": [
+          "N",
+          "N"
+        ]
+      }
+    ],
+    "selector": "additional Z3R with superpotential charge 2",
+    "visible_gravitational_GS_congruence_closed": false,
+    "visible_gravitational_representative": -29,
+    "visible_gravitational_residue_mod3": 1
+  },
+  "n_checks": 23,
+  "n_failed": 0,
+  "namespace": "research.susy_pati_salam.v25.g1_g3_completion_frontier",
+  "schema": "susy-v25-g1-g3-completion-frontier-v1",
+  "source_manifest": [
+    {
+      "expected_sha256": "1714d781ab0d2f952b742eda0731a934788bde5356c18ce761178254bf67dec5",
+      "matches": true,
+      "path": "susy_v24_g1_g8_execution_verdict.py",
+      "sha256": "1714d781ab0d2f952b742eda0731a934788bde5356c18ce761178254bf67dec5"
+    },
+    {
+      "expected_sha256": "42b674dc6fe137979ea3d6067efa02bd4531298688b2086d99affa2a61b7f047",
+      "matches": true,
+      "path": "SUSY_V24_G1_G8_EXECUTION_VERDICT.json",
+      "sha256": "42b674dc6fe137979ea3d6067efa02bd4531298688b2086d99affa2a61b7f047"
+    },
+    {
+      "expected_sha256": "4993924ebf64a8eb05f83290174adaffe277342234d1ae43e78d992b3efbf4da",
+      "matches": true,
+      "path": "susy_v24_ps_source_contract.py",
+      "sha256": "4993924ebf64a8eb05f83290174adaffe277342234d1ae43e78d992b3efbf4da"
+    },
+    {
+      "expected_sha256": "c2457e188877a2729e092acf6ddbf76626b884a4c1cb652c282da215f268ce51",
+      "matches": true,
+      "path": "SUSY_V24_PS_SOURCE_CONTRACT.json",
+      "sha256": "c2457e188877a2729e092acf6ddbf76626b884a4c1cb652c282da215f268ce51"
+    },
+    {
+      "expected_sha256": "09326668d02b32b4a66c3b79cba34fb6a709430a360dce6d2d5d2ab039cad2bf",
+      "matches": true,
+      "path": "models/PSZ4RZ11SUSYV24/PSZ4RZ11SUSYV24.m",
+      "sha256": "09326668d02b32b4a66c3b79cba34fb6a709430a360dce6d2d5d2ab039cad2bf"
+    }
+  ],
+  "status": "V25_G1_G3_ANALYSIS_COMPLETE__CANONICAL_PS_BREAKING_SPECTRUM_CLOSED__ALL_ORDER_DRIVER_TOWER_AND_COMPETING_F_FLAT_BRANCH_PROVE_FULL_G1_G3_OPEN",
+  "terminal_conclusion": {
+    "G1_full_closed": false,
+    "G2_full_closed": false,
+    "G3_full_closed": false,
+    "analysis_continued": true,
+    "canonical_PS_breaking_tree_spectrum_closed": true,
+    "exact_reason_completion_stops": "the retained driver architecture permits an arbitrary all-order analytic function and already has a degenerate PS-unbroken F-flat branch; UV Wilson/Kahler/soft data are new inputs",
+    "new_physics_needed": "a UV-complete anomaly/GS and mediation sector which fixes the allowed Wilson functions, stabilizes PQ, and selects the PS branch"
+  },
+  "upstream_core_pins": {
+    "source": "d408aa7d7d3096ac917f5bd6f4f37576aace4cd78709bf4810b8e036dc2d93a8",
+    "terminal": "09b4b232afe0f5150dab74e5fc28f1984551732d9e100c1687971b96410adacd"
+  }
+}

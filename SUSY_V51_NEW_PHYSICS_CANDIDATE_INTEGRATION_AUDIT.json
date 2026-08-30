@@ -1,0 +1,4754 @@
+{
+  "V50_frontier_clause_assessment": [
+    {
+      "blocker": "none for C1 at the declared abstract invariant-tensor order",
+      "id": "C1",
+      "landed": "V49 remains the complete abstract retained-order census: 23 pure-source quartics in 12 sectors, mu_H, all H/Hc portals, mixed Kahler blocks, FI/gauge coordinates, and the one-normal-derivative IBP/EOM quotient.",
+      "name": "fixed_order_action_completeness",
+      "status": "pass"
+    },
+    {
+      "blocker": "none for the declared finite-cutoff deconstruction regulator; a renormalizable continuum 5D UV completion is outside the frozen G2 requirement",
+      "id": "C2",
+      "landed": "A finite supersymmetric Spin(10)xU(1)_F gauge moose localizes the source transport.  Its fundamental action is site-local or nearest-neighbour, its constraint determinant is link-independent, and its positive completion has one intended source profile plus only cutoff-scale vectorlike pairs.",
+      "name": "explicit_regulator",
+      "status": "pass"
+    },
+    {
+      "blocker": "These are subblock theorems, not a V50 same-action identification. The combined PS/SU5 endpoint count leaves 12 uneaten A5-like chirals, and the complete interacting variational domain is absent.",
+      "id": "C3",
+      "landed": "V51 publishes the exact 465x22 source orbit, rank-443 projector, 465x465 Cartesian Hessian, HQ=0 Ward identity and a nondegenerate 443-dimensional source pullback.  The candidate link tangent and endpoint incidence blocks are also explicit.",
+      "name": "variational_domain_and_self_adjointness",
+      "status": "partial"
+    },
+    {
+      "blocker": "The 12 residual endpoint chirals, full host/source quotient metric, A/Xi/C/R7/R8/Z lift and complete interacting physical pencil are unresolved.",
+      "id": "C4",
+      "landed": "At the tuned F-flat witness H-dagger-H is positive on the exact 443-dimensional source quotient; the candidate has canonical elementary Kahler terms and paired nonzero source/vector Goldstone spectra.",
+      "name": "positive_full_kinetic_form",
+      "status": "partial"
+    },
+    {
+      "blocker": "The physical field table/background Hessians, one-loop 1PI mixing, finite link/mediator thresholds, bare-to-DRbar maps, affine rematch and scale cancellation are absent.",
+      "id": "C5",
+      "landed": "A representation-faithful vectorlike mediator theorem now realizes every resolved holomorphic factor channel at tree level.",
+      "name": "counterterm_and_matching_scheme",
+      "status": "partial"
+    },
+    {
+      "blocker": "none for the declared fixed-order Wilsonian policy",
+      "id": "C6",
+      "landed": "Every retained invariant direction is admitted with an independent matching coefficient; finite-part zeros are not misrepresented as symmetry predictions, and higher orders have an explicit remainder assignment.",
+      "name": "selector_and_naturalness_policy",
+      "status": "pass"
+    },
+    {
+      "blocker": "The factor currents have not been embedded in one complete retained action, and the contracted source-to-PS physical Wilson array is still absent.",
+      "id": "C7",
+      "landed": "All 168 source rows now have exact degree-two/three or degree-four multiplicities and Cartesian factor data; all 34 PS primitives have chirality-correct Cartesian projector tensors and ordered orientations.",
+      "name": "action_to_full_tower_Wilson_matching",
+      "status": "partial"
+    }
+  ],
+  "V50_frontier_fully_passed_clauses": [
+    "C1",
+    "C2",
+    "C6"
+  ],
+  "V51_candidate_clause_assessment": [
+    {
+      "id": "C1",
+      "statement": "The new link, multiplier, transport, source and mediator content has not received a complete fixed-order invariant/operator census.",
+      "status": "unassessed_for_new_action"
+    },
+    {
+      "id": "C2",
+      "statement": "The finite 4D action is site-local or nearest-neighbour, but no action hash or matching identity equates it to the frozen V50 retained action.",
+      "status": "candidate_locality_only"
+    },
+    {
+      "id": "C3",
+      "statement": "Exact source/link subblocks exist; 12 endpoint A5-like chirals and the full interacting domain remain unresolved.",
+      "status": "partial"
+    },
+    {
+      "id": "C4",
+      "statement": "Canonical elementary metrics and source positivity pass, but the complete physical quotient/pencil is not assembled.",
+      "status": "partial"
+    },
+    {
+      "id": "C5",
+      "statement": "Tree mediator elimination passes; one-loop matching does not exist.",
+      "status": "partial"
+    },
+    {
+      "id": "C6",
+      "statement": "The V50 selector policy is reusable, but the enlarged candidate field/action census has not been rerun and cannot inherit the V50 pass automatically.",
+      "status": "unassessed_for_new_action"
+    },
+    {
+      "id": "C7",
+      "statement": "Factor spaces and PS primitives are explicit; the same-action physical Wilson array is missing.",
+      "status": "partial"
+    }
+  ],
+  "V51_exact_results": [
+    {
+      "id": "E46",
+      "result": "exact physical source orbit and quotient",
+      "statement": "The 465-component source chart has an exact rank-22 broken orbit and an exact Hermitian rank-443 quotient projector.",
+      "value": {
+        "Q_rank": 22,
+        "Q_sha256": "75d8ffd98156a4ac4726bb0841ff3f325e1671ec85a75e013afddd182cd0ee45",
+        "Q_shape": [
+          465,
+          22
+        ],
+        "Z_rank": 443,
+        "Z_sha256": "52996eb51ccbad6bdf19d5ea54c8b33336215060f188386433d4f62a56a250d8",
+        "Z_shape": [
+          465,
+          465
+        ]
+      }
+    },
+    {
+      "id": "E47",
+      "result": "exact Cartesian source Hessian",
+      "statement": "One normalized superpotential gives an exact F/D-flat tuned witness.  Its 465x465 symmetric Hessian obeys HQ=0, has rank 443, and is nondegenerate on the physical source section.",
+      "value": {
+        "HQ_exact_zero": true,
+        "H_nullity": 22,
+        "H_rank": 443,
+        "H_sha256": "0be2edfe6d050b4d6af0339d4d9aa3b58c294adf815068896cee691bb8d0bc3b",
+        "H_shape": [
+          465,
+          465
+        ],
+        "physical_pullback_sha256": "845f7b776778c6317c8afae3dba04f71a4f309cca6592374210bb0438bcac722",
+        "physical_pullback_shape": [
+          443,
+          443
+        ],
+        "tuned_unprotected_parameters": [
+          "m1=0",
+          "M1=0"
+        ]
+      }
+    },
+    {
+      "id": "E48",
+      "result": "chirality-correct Cartesian PS bridge",
+      "statement": "The PS parity, all 48 degree-two/three source rows and all 34 PS superpotential/derivative primitives are explicit with direct chirality tensors and ordered-orientation rules.",
+      "value": {
+        "PS_primitives": 34,
+        "bar16_PS_covariance_residual": 0.0,
+        "low_degree_resolution": {
+          "RESOLVED_EMPTY": 28,
+          "RESOLVED_NONEMPTY_CARTESIAN": 20
+        },
+        "low_degree_rows": 48
+      }
+    },
+    {
+      "id": "E49",
+      "result": "complete degree-four factor census",
+      "statement": "Exact D5 character intersections decide every remaining degree-four row and a finite normalized Cartesian factor registry resolves every nonzero copy channel.",
+      "value": {
+        "all_nonzero_copy_multiplicities_one": true,
+        "by_sector": {
+          "HH": {
+            "invariant_directions": 16,
+            "nonempty_rows": 10,
+            "rows": 30,
+            "zero_rows": 20
+          },
+          "HcH": {
+            "invariant_directions": 40,
+            "nonempty_rows": 24,
+            "rows": 60,
+            "zero_rows": 36
+          },
+          "HcHc": {
+            "invariant_directions": 16,
+            "nonempty_rows": 10,
+            "rows": 30,
+            "zero_rows": 20
+          }
+        },
+        "direction_channel_histogram": {
+          "1": 20,
+          "10": 8,
+          "120": 8,
+          "126": 6,
+          "210": 16,
+          "45": 8,
+          "bar126": 6
+        },
+        "multiplicity_histogram": {
+          "0": 76,
+          "1": 28,
+          "2": 4,
+          "3": 12
+        },
+        "nonempty_rows": 44,
+        "rows": [
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "A",
+              "B"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "1",
+                "direction_id": "HH_d4_000__1__copy_1",
+                "normalized_composite_formula": "(1/sqrt(1)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_16xbar16_TO_1__PAIR__SRC_1x1_TO_1__COPY_1",
+                "source_factor_tensor_id": "SRC_1x1_TO_1",
+                "source_output_representation": "1",
+                "spin_factor_tensor_id": "SPIN_16xbar16_TO_1"
+              }
+            ],
+            "id": "HH_d4_000",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 1,
+            "monomial": "rho_e S ThetaPlus HLF HLA",
+            "ordered_chirality": [
+              "16",
+              "bar16"
+            ],
+            "sector": "HH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "1"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 1,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "A",
+              "B"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "210",
+                "direction_id": "HH_d4_001__210__copy_1",
+                "normalized_composite_formula": "(1/sqrt(210)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_16xbar16_TO_210__PAIR__SRC_1x210_TO_210__COPY_1",
+                "source_factor_tensor_id": "SRC_1x210_TO_210",
+                "source_output_representation": "210",
+                "spin_factor_tensor_id": "SPIN_16xbar16_TO_210"
+              }
+            ],
+            "id": "HH_d4_001",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 1,
+            "monomial": "rho_e ThetaPlus Phi HLF HLA",
+            "ordered_chirality": [
+              "16",
+              "bar16"
+            ],
+            "sector": "HH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "210"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 0,
+              "210": 1,
+              "45": 0
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "A",
+              "B"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HH_d4_002",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_e ThetaPlus Sigma HLF HLA",
+            "ordered_chirality": [
+              "16",
+              "bar16"
+            ],
+            "sector": "HH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 0,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "A",
+              "B"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HH_d4_003",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_e ThetaPlus barSigma HLF HLA",
+            "ordered_chirality": [
+              "16",
+              "bar16"
+            ],
+            "sector": "HH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "bar126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 0,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "A",
+              "C"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HH_d4_004",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_e S S HLF HRA",
+            "ordered_chirality": [
+              "16",
+              "16"
+            ],
+            "sector": "HH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "1"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "A",
+              "C"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HH_d4_005",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_e S Phi HLF HRA",
+            "ordered_chirality": [
+              "16",
+              "16"
+            ],
+            "sector": "HH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "210"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "A",
+              "C"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HH_d4_006",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_e S Sigma HLF HRA",
+            "ordered_chirality": [
+              "16",
+              "16"
+            ],
+            "sector": "HH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "A",
+              "C"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "126",
+                "direction_id": "HH_d4_007__126__copy_1",
+                "normalized_composite_formula": "(1/sqrt(126)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_16x16_TO_126__PAIR__SRC_1xbar126_TO_bar126__COPY_1",
+                "source_factor_tensor_id": "SRC_1xbar126_TO_bar126",
+                "source_output_representation": "bar126",
+                "spin_factor_tensor_id": "SPIN_16x16_TO_126"
+              }
+            ],
+            "id": "HH_d4_007",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 1,
+            "monomial": "rho_e S barSigma HLF HRA",
+            "ordered_chirality": [
+              "16",
+              "16"
+            ],
+            "sector": "HH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "bar126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "126": 1
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "A",
+              "C"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HH_d4_008",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_e ThetaPlus ThetaMinus HLF HRA",
+            "ordered_chirality": [
+              "16",
+              "16"
+            ],
+            "sector": "HH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "1"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "A",
+              "C"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HH_d4_009",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_e Phi Phi HLF HRA",
+            "ordered_chirality": [
+              "16",
+              "16"
+            ],
+            "sector": "HH",
+            "source_pair_rule": "Sym^2 of one commuting nontrivial source species",
+            "source_representations": [
+              "210",
+              "210"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "A",
+              "C"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "10",
+                "direction_id": "HH_d4_010__10__copy_1",
+                "normalized_composite_formula": "(1/sqrt(10)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_16x16_TO_10__PAIR__SRC_PHIxSIGMA_TO_10__COPY_1",
+                "source_factor_tensor_id": "SRC_PHIxSIGMA_TO_10",
+                "source_output_representation": "10",
+                "spin_factor_tensor_id": "SPIN_16x16_TO_10"
+              },
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "120",
+                "direction_id": "HH_d4_010__120__copy_1",
+                "normalized_composite_formula": "(1/sqrt(120)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_16x16_TO_120__PAIR__SRC_PHIxSIGMA_TO_120__COPY_1",
+                "source_factor_tensor_id": "SRC_PHIxSIGMA_TO_120",
+                "source_output_representation": "120",
+                "spin_factor_tensor_id": "SPIN_16x16_TO_120"
+              }
+            ],
+            "id": "HH_d4_010",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 2,
+            "monomial": "rho_e Phi Sigma HLF HRA",
+            "ordered_chirality": [
+              "16",
+              "16"
+            ],
+            "sector": "HH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "210",
+              "126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 1,
+              "120": 1,
+              "126": 0
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "A",
+              "C"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "10",
+                "direction_id": "HH_d4_011__10__copy_1",
+                "normalized_composite_formula": "(1/sqrt(10)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_16x16_TO_10__PAIR__SRC_PHIxBARSIGMA_TO_10__COPY_1",
+                "source_factor_tensor_id": "SRC_PHIxBARSIGMA_TO_10",
+                "source_output_representation": "10",
+                "spin_factor_tensor_id": "SPIN_16x16_TO_10"
+              },
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "120",
+                "direction_id": "HH_d4_011__120__copy_1",
+                "normalized_composite_formula": "(1/sqrt(120)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_16x16_TO_120__PAIR__SRC_PHIxBARSIGMA_TO_120__COPY_1",
+                "source_factor_tensor_id": "SRC_PHIxBARSIGMA_TO_120",
+                "source_output_representation": "120",
+                "spin_factor_tensor_id": "SPIN_16x16_TO_120"
+              },
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "126",
+                "direction_id": "HH_d4_011__126__copy_1",
+                "normalized_composite_formula": "(1/sqrt(126)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_16x16_TO_126__PAIR__SRC_PHIxBARSIGMA_TO_bar126__COPY_1",
+                "source_factor_tensor_id": "SRC_PHIxBARSIGMA_TO_bar126",
+                "source_output_representation": "bar126",
+                "spin_factor_tensor_id": "SPIN_16x16_TO_126"
+              }
+            ],
+            "id": "HH_d4_011",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 3,
+            "monomial": "rho_e Phi barSigma HLF HRA",
+            "ordered_chirality": [
+              "16",
+              "16"
+            ],
+            "sector": "HH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "210",
+              "bar126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 1,
+              "120": 1,
+              "126": 1
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "A",
+              "C"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HH_d4_012",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_e Sigma Sigma HLF HRA",
+            "ordered_chirality": [
+              "16",
+              "16"
+            ],
+            "sector": "HH",
+            "source_pair_rule": "Sym^2 of one commuting nontrivial source species",
+            "source_representations": [
+              "126",
+              "126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "A",
+              "C"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HH_d4_013",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_e Sigma barSigma HLF HRA",
+            "ordered_chirality": [
+              "16",
+              "16"
+            ],
+            "sector": "HH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "126",
+              "bar126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "A",
+              "C"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HH_d4_014",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_e barSigma barSigma HLF HRA",
+            "ordered_chirality": [
+              "16",
+              "16"
+            ],
+            "sector": "HH",
+            "source_pair_rule": "Sym^2 of one commuting nontrivial source species",
+            "source_representations": [
+              "bar126",
+              "bar126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "B",
+              "D"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HH_d4_015",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_e S S HLA HRF",
+            "ordered_chirality": [
+              "bar16",
+              "bar16"
+            ],
+            "sector": "HH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "1"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "bar126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "B",
+              "D"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HH_d4_016",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_e S Phi HLA HRF",
+            "ordered_chirality": [
+              "bar16",
+              "bar16"
+            ],
+            "sector": "HH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "210"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "bar126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "B",
+              "D"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "bar126",
+                "direction_id": "HH_d4_017__bar126__copy_1",
+                "normalized_composite_formula": "(1/sqrt(126)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_bar16xbar16_TO_bar126__PAIR__SRC_1x126_TO_126__COPY_1",
+                "source_factor_tensor_id": "SRC_1x126_TO_126",
+                "source_output_representation": "126",
+                "spin_factor_tensor_id": "SPIN_bar16xbar16_TO_bar126"
+              }
+            ],
+            "id": "HH_d4_017",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 1,
+            "monomial": "rho_e S Sigma HLA HRF",
+            "ordered_chirality": [
+              "bar16",
+              "bar16"
+            ],
+            "sector": "HH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "bar126": 1
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "B",
+              "D"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HH_d4_018",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_e S barSigma HLA HRF",
+            "ordered_chirality": [
+              "bar16",
+              "bar16"
+            ],
+            "sector": "HH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "bar126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "bar126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "B",
+              "D"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HH_d4_019",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_e ThetaPlus ThetaMinus HLA HRF",
+            "ordered_chirality": [
+              "bar16",
+              "bar16"
+            ],
+            "sector": "HH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "1"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "bar126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "B",
+              "D"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HH_d4_020",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_e Phi Phi HLA HRF",
+            "ordered_chirality": [
+              "bar16",
+              "bar16"
+            ],
+            "sector": "HH",
+            "source_pair_rule": "Sym^2 of one commuting nontrivial source species",
+            "source_representations": [
+              "210",
+              "210"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "bar126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "B",
+              "D"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "10",
+                "direction_id": "HH_d4_021__10__copy_1",
+                "normalized_composite_formula": "(1/sqrt(10)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_bar16xbar16_TO_10__PAIR__SRC_PHIxSIGMA_TO_10__COPY_1",
+                "source_factor_tensor_id": "SRC_PHIxSIGMA_TO_10",
+                "source_output_representation": "10",
+                "spin_factor_tensor_id": "SPIN_bar16xbar16_TO_10"
+              },
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "120",
+                "direction_id": "HH_d4_021__120__copy_1",
+                "normalized_composite_formula": "(1/sqrt(120)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_bar16xbar16_TO_120__PAIR__SRC_PHIxSIGMA_TO_120__COPY_1",
+                "source_factor_tensor_id": "SRC_PHIxSIGMA_TO_120",
+                "source_output_representation": "120",
+                "spin_factor_tensor_id": "SPIN_bar16xbar16_TO_120"
+              },
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "bar126",
+                "direction_id": "HH_d4_021__bar126__copy_1",
+                "normalized_composite_formula": "(1/sqrt(126)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_bar16xbar16_TO_bar126__PAIR__SRC_PHIxSIGMA_TO_126__COPY_1",
+                "source_factor_tensor_id": "SRC_PHIxSIGMA_TO_126",
+                "source_output_representation": "126",
+                "spin_factor_tensor_id": "SPIN_bar16xbar16_TO_bar126"
+              }
+            ],
+            "id": "HH_d4_021",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 3,
+            "monomial": "rho_e Phi Sigma HLA HRF",
+            "ordered_chirality": [
+              "bar16",
+              "bar16"
+            ],
+            "sector": "HH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "210",
+              "126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 1,
+              "120": 1,
+              "bar126": 1
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "B",
+              "D"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "10",
+                "direction_id": "HH_d4_022__10__copy_1",
+                "normalized_composite_formula": "(1/sqrt(10)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_bar16xbar16_TO_10__PAIR__SRC_PHIxBARSIGMA_TO_10__COPY_1",
+                "source_factor_tensor_id": "SRC_PHIxBARSIGMA_TO_10",
+                "source_output_representation": "10",
+                "spin_factor_tensor_id": "SPIN_bar16xbar16_TO_10"
+              },
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "120",
+                "direction_id": "HH_d4_022__120__copy_1",
+                "normalized_composite_formula": "(1/sqrt(120)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_bar16xbar16_TO_120__PAIR__SRC_PHIxBARSIGMA_TO_120__COPY_1",
+                "source_factor_tensor_id": "SRC_PHIxBARSIGMA_TO_120",
+                "source_output_representation": "120",
+                "spin_factor_tensor_id": "SPIN_bar16xbar16_TO_120"
+              }
+            ],
+            "id": "HH_d4_022",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 2,
+            "monomial": "rho_e Phi barSigma HLA HRF",
+            "ordered_chirality": [
+              "bar16",
+              "bar16"
+            ],
+            "sector": "HH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "210",
+              "bar126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 1,
+              "120": 1,
+              "bar126": 0
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "B",
+              "D"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HH_d4_023",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_e Sigma Sigma HLA HRF",
+            "ordered_chirality": [
+              "bar16",
+              "bar16"
+            ],
+            "sector": "HH",
+            "source_pair_rule": "Sym^2 of one commuting nontrivial source species",
+            "source_representations": [
+              "126",
+              "126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "bar126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "B",
+              "D"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HH_d4_024",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_e Sigma barSigma HLA HRF",
+            "ordered_chirality": [
+              "bar16",
+              "bar16"
+            ],
+            "sector": "HH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "126",
+              "bar126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "bar126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "B",
+              "D"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HH_d4_025",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_e barSigma barSigma HLA HRF",
+            "ordered_chirality": [
+              "bar16",
+              "bar16"
+            ],
+            "sector": "HH",
+            "source_pair_rule": "Sym^2 of one commuting nontrivial source species",
+            "source_representations": [
+              "bar126",
+              "bar126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "bar126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "C",
+              "D"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "1",
+                "direction_id": "HH_d4_026__1__copy_1",
+                "normalized_composite_formula": "(1/sqrt(1)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_16xbar16_TO_1__PAIR__SRC_1x1_TO_1__COPY_1",
+                "source_factor_tensor_id": "SRC_1x1_TO_1",
+                "source_output_representation": "1",
+                "spin_factor_tensor_id": "SPIN_16xbar16_TO_1"
+              }
+            ],
+            "id": "HH_d4_026",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 1,
+            "monomial": "rho_e S ThetaMinus HRA HRF",
+            "ordered_chirality": [
+              "16",
+              "bar16"
+            ],
+            "sector": "HH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "1"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 1,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "C",
+              "D"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "210",
+                "direction_id": "HH_d4_027__210__copy_1",
+                "normalized_composite_formula": "(1/sqrt(210)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_16xbar16_TO_210__PAIR__SRC_1x210_TO_210__COPY_1",
+                "source_factor_tensor_id": "SRC_1x210_TO_210",
+                "source_output_representation": "210",
+                "spin_factor_tensor_id": "SPIN_16xbar16_TO_210"
+              }
+            ],
+            "id": "HH_d4_027",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 1,
+            "monomial": "rho_e ThetaMinus Phi HRA HRF",
+            "ordered_chirality": [
+              "16",
+              "bar16"
+            ],
+            "sector": "HH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "210"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 0,
+              "210": 1,
+              "45": 0
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "C",
+              "D"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HH_d4_028",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_e ThetaMinus Sigma HRA HRF",
+            "ordered_chirality": [
+              "16",
+              "bar16"
+            ],
+            "sector": "HH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 0,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "C",
+              "D"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HH_d4_029",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_e ThetaMinus barSigma HRA HRF",
+            "ordered_chirality": [
+              "16",
+              "bar16"
+            ],
+            "sector": "HH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "bar126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 0,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Ac",
+              "Bc"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "1",
+                "direction_id": "HcHc_d4_000__1__copy_1",
+                "normalized_composite_formula": "(1/sqrt(1)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_bar16x16_TO_1__PAIR__SRC_1x1_TO_1__COPY_1",
+                "source_factor_tensor_id": "SRC_1x1_TO_1",
+                "source_output_representation": "1",
+                "spin_factor_tensor_id": "SPIN_bar16x16_TO_1"
+              }
+            ],
+            "id": "HcHc_d4_000",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 1,
+            "monomial": "rho_e S ThetaMinus HLFc HLAc",
+            "ordered_chirality": [
+              "bar16",
+              "16"
+            ],
+            "sector": "HcHc",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "1"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 1,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Ac",
+              "Bc"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "210",
+                "direction_id": "HcHc_d4_001__210__copy_1",
+                "normalized_composite_formula": "(1/sqrt(210)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_bar16x16_TO_210__PAIR__SRC_1x210_TO_210__COPY_1",
+                "source_factor_tensor_id": "SRC_1x210_TO_210",
+                "source_output_representation": "210",
+                "spin_factor_tensor_id": "SPIN_bar16x16_TO_210"
+              }
+            ],
+            "id": "HcHc_d4_001",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 1,
+            "monomial": "rho_e ThetaMinus Phi HLFc HLAc",
+            "ordered_chirality": [
+              "bar16",
+              "16"
+            ],
+            "sector": "HcHc",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "210"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 0,
+              "210": 1,
+              "45": 0
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Ac",
+              "Bc"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcHc_d4_002",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_e ThetaMinus Sigma HLFc HLAc",
+            "ordered_chirality": [
+              "bar16",
+              "16"
+            ],
+            "sector": "HcHc",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 0,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Ac",
+              "Bc"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcHc_d4_003",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_e ThetaMinus barSigma HLFc HLAc",
+            "ordered_chirality": [
+              "bar16",
+              "16"
+            ],
+            "sector": "HcHc",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "bar126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 0,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Ac",
+              "Cc"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcHc_d4_004",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_e S S HLFc HRAc",
+            "ordered_chirality": [
+              "bar16",
+              "bar16"
+            ],
+            "sector": "HcHc",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "1"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "bar126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Ac",
+              "Cc"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcHc_d4_005",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_e S Phi HLFc HRAc",
+            "ordered_chirality": [
+              "bar16",
+              "bar16"
+            ],
+            "sector": "HcHc",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "210"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "bar126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Ac",
+              "Cc"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "bar126",
+                "direction_id": "HcHc_d4_006__bar126__copy_1",
+                "normalized_composite_formula": "(1/sqrt(126)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_bar16xbar16_TO_bar126__PAIR__SRC_1x126_TO_126__COPY_1",
+                "source_factor_tensor_id": "SRC_1x126_TO_126",
+                "source_output_representation": "126",
+                "spin_factor_tensor_id": "SPIN_bar16xbar16_TO_bar126"
+              }
+            ],
+            "id": "HcHc_d4_006",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 1,
+            "monomial": "rho_e S Sigma HLFc HRAc",
+            "ordered_chirality": [
+              "bar16",
+              "bar16"
+            ],
+            "sector": "HcHc",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "bar126": 1
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Ac",
+              "Cc"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcHc_d4_007",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_e S barSigma HLFc HRAc",
+            "ordered_chirality": [
+              "bar16",
+              "bar16"
+            ],
+            "sector": "HcHc",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "bar126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "bar126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Ac",
+              "Cc"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcHc_d4_008",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_e ThetaPlus ThetaMinus HLFc HRAc",
+            "ordered_chirality": [
+              "bar16",
+              "bar16"
+            ],
+            "sector": "HcHc",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "1"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "bar126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Ac",
+              "Cc"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcHc_d4_009",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_e Phi Phi HLFc HRAc",
+            "ordered_chirality": [
+              "bar16",
+              "bar16"
+            ],
+            "sector": "HcHc",
+            "source_pair_rule": "Sym^2 of one commuting nontrivial source species",
+            "source_representations": [
+              "210",
+              "210"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "bar126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Ac",
+              "Cc"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "10",
+                "direction_id": "HcHc_d4_010__10__copy_1",
+                "normalized_composite_formula": "(1/sqrt(10)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_bar16xbar16_TO_10__PAIR__SRC_PHIxSIGMA_TO_10__COPY_1",
+                "source_factor_tensor_id": "SRC_PHIxSIGMA_TO_10",
+                "source_output_representation": "10",
+                "spin_factor_tensor_id": "SPIN_bar16xbar16_TO_10"
+              },
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "120",
+                "direction_id": "HcHc_d4_010__120__copy_1",
+                "normalized_composite_formula": "(1/sqrt(120)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_bar16xbar16_TO_120__PAIR__SRC_PHIxSIGMA_TO_120__COPY_1",
+                "source_factor_tensor_id": "SRC_PHIxSIGMA_TO_120",
+                "source_output_representation": "120",
+                "spin_factor_tensor_id": "SPIN_bar16xbar16_TO_120"
+              },
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "bar126",
+                "direction_id": "HcHc_d4_010__bar126__copy_1",
+                "normalized_composite_formula": "(1/sqrt(126)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_bar16xbar16_TO_bar126__PAIR__SRC_PHIxSIGMA_TO_126__COPY_1",
+                "source_factor_tensor_id": "SRC_PHIxSIGMA_TO_126",
+                "source_output_representation": "126",
+                "spin_factor_tensor_id": "SPIN_bar16xbar16_TO_bar126"
+              }
+            ],
+            "id": "HcHc_d4_010",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 3,
+            "monomial": "rho_e Phi Sigma HLFc HRAc",
+            "ordered_chirality": [
+              "bar16",
+              "bar16"
+            ],
+            "sector": "HcHc",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "210",
+              "126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 1,
+              "120": 1,
+              "bar126": 1
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Ac",
+              "Cc"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "10",
+                "direction_id": "HcHc_d4_011__10__copy_1",
+                "normalized_composite_formula": "(1/sqrt(10)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_bar16xbar16_TO_10__PAIR__SRC_PHIxBARSIGMA_TO_10__COPY_1",
+                "source_factor_tensor_id": "SRC_PHIxBARSIGMA_TO_10",
+                "source_output_representation": "10",
+                "spin_factor_tensor_id": "SPIN_bar16xbar16_TO_10"
+              },
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "120",
+                "direction_id": "HcHc_d4_011__120__copy_1",
+                "normalized_composite_formula": "(1/sqrt(120)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_bar16xbar16_TO_120__PAIR__SRC_PHIxBARSIGMA_TO_120__COPY_1",
+                "source_factor_tensor_id": "SRC_PHIxBARSIGMA_TO_120",
+                "source_output_representation": "120",
+                "spin_factor_tensor_id": "SPIN_bar16xbar16_TO_120"
+              }
+            ],
+            "id": "HcHc_d4_011",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 2,
+            "monomial": "rho_e Phi barSigma HLFc HRAc",
+            "ordered_chirality": [
+              "bar16",
+              "bar16"
+            ],
+            "sector": "HcHc",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "210",
+              "bar126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 1,
+              "120": 1,
+              "bar126": 0
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Ac",
+              "Cc"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcHc_d4_012",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_e Sigma Sigma HLFc HRAc",
+            "ordered_chirality": [
+              "bar16",
+              "bar16"
+            ],
+            "sector": "HcHc",
+            "source_pair_rule": "Sym^2 of one commuting nontrivial source species",
+            "source_representations": [
+              "126",
+              "126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "bar126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Ac",
+              "Cc"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcHc_d4_013",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_e Sigma barSigma HLFc HRAc",
+            "ordered_chirality": [
+              "bar16",
+              "bar16"
+            ],
+            "sector": "HcHc",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "126",
+              "bar126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "bar126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Ac",
+              "Cc"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcHc_d4_014",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_e barSigma barSigma HLFc HRAc",
+            "ordered_chirality": [
+              "bar16",
+              "bar16"
+            ],
+            "sector": "HcHc",
+            "source_pair_rule": "Sym^2 of one commuting nontrivial source species",
+            "source_representations": [
+              "bar126",
+              "bar126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "bar126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Bc",
+              "Dc"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcHc_d4_015",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_e S S HLAc HRFc",
+            "ordered_chirality": [
+              "16",
+              "16"
+            ],
+            "sector": "HcHc",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "1"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Bc",
+              "Dc"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcHc_d4_016",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_e S Phi HLAc HRFc",
+            "ordered_chirality": [
+              "16",
+              "16"
+            ],
+            "sector": "HcHc",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "210"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Bc",
+              "Dc"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcHc_d4_017",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_e S Sigma HLAc HRFc",
+            "ordered_chirality": [
+              "16",
+              "16"
+            ],
+            "sector": "HcHc",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Bc",
+              "Dc"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "126",
+                "direction_id": "HcHc_d4_018__126__copy_1",
+                "normalized_composite_formula": "(1/sqrt(126)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_16x16_TO_126__PAIR__SRC_1xbar126_TO_bar126__COPY_1",
+                "source_factor_tensor_id": "SRC_1xbar126_TO_bar126",
+                "source_output_representation": "bar126",
+                "spin_factor_tensor_id": "SPIN_16x16_TO_126"
+              }
+            ],
+            "id": "HcHc_d4_018",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 1,
+            "monomial": "rho_e S barSigma HLAc HRFc",
+            "ordered_chirality": [
+              "16",
+              "16"
+            ],
+            "sector": "HcHc",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "bar126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "126": 1
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Bc",
+              "Dc"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcHc_d4_019",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_e ThetaPlus ThetaMinus HLAc HRFc",
+            "ordered_chirality": [
+              "16",
+              "16"
+            ],
+            "sector": "HcHc",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "1"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Bc",
+              "Dc"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcHc_d4_020",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_e Phi Phi HLAc HRFc",
+            "ordered_chirality": [
+              "16",
+              "16"
+            ],
+            "sector": "HcHc",
+            "source_pair_rule": "Sym^2 of one commuting nontrivial source species",
+            "source_representations": [
+              "210",
+              "210"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Bc",
+              "Dc"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "10",
+                "direction_id": "HcHc_d4_021__10__copy_1",
+                "normalized_composite_formula": "(1/sqrt(10)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_16x16_TO_10__PAIR__SRC_PHIxSIGMA_TO_10__COPY_1",
+                "source_factor_tensor_id": "SRC_PHIxSIGMA_TO_10",
+                "source_output_representation": "10",
+                "spin_factor_tensor_id": "SPIN_16x16_TO_10"
+              },
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "120",
+                "direction_id": "HcHc_d4_021__120__copy_1",
+                "normalized_composite_formula": "(1/sqrt(120)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_16x16_TO_120__PAIR__SRC_PHIxSIGMA_TO_120__COPY_1",
+                "source_factor_tensor_id": "SRC_PHIxSIGMA_TO_120",
+                "source_output_representation": "120",
+                "spin_factor_tensor_id": "SPIN_16x16_TO_120"
+              }
+            ],
+            "id": "HcHc_d4_021",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 2,
+            "monomial": "rho_e Phi Sigma HLAc HRFc",
+            "ordered_chirality": [
+              "16",
+              "16"
+            ],
+            "sector": "HcHc",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "210",
+              "126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 1,
+              "120": 1,
+              "126": 0
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Bc",
+              "Dc"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "10",
+                "direction_id": "HcHc_d4_022__10__copy_1",
+                "normalized_composite_formula": "(1/sqrt(10)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_16x16_TO_10__PAIR__SRC_PHIxBARSIGMA_TO_10__COPY_1",
+                "source_factor_tensor_id": "SRC_PHIxBARSIGMA_TO_10",
+                "source_output_representation": "10",
+                "spin_factor_tensor_id": "SPIN_16x16_TO_10"
+              },
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "120",
+                "direction_id": "HcHc_d4_022__120__copy_1",
+                "normalized_composite_formula": "(1/sqrt(120)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_16x16_TO_120__PAIR__SRC_PHIxBARSIGMA_TO_120__COPY_1",
+                "source_factor_tensor_id": "SRC_PHIxBARSIGMA_TO_120",
+                "source_output_representation": "120",
+                "spin_factor_tensor_id": "SPIN_16x16_TO_120"
+              },
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "126",
+                "direction_id": "HcHc_d4_022__126__copy_1",
+                "normalized_composite_formula": "(1/sqrt(126)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_16x16_TO_126__PAIR__SRC_PHIxBARSIGMA_TO_bar126__COPY_1",
+                "source_factor_tensor_id": "SRC_PHIxBARSIGMA_TO_bar126",
+                "source_output_representation": "bar126",
+                "spin_factor_tensor_id": "SPIN_16x16_TO_126"
+              }
+            ],
+            "id": "HcHc_d4_022",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 3,
+            "monomial": "rho_e Phi barSigma HLAc HRFc",
+            "ordered_chirality": [
+              "16",
+              "16"
+            ],
+            "sector": "HcHc",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "210",
+              "bar126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 1,
+              "120": 1,
+              "126": 1
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Bc",
+              "Dc"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcHc_d4_023",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_e Sigma Sigma HLAc HRFc",
+            "ordered_chirality": [
+              "16",
+              "16"
+            ],
+            "sector": "HcHc",
+            "source_pair_rule": "Sym^2 of one commuting nontrivial source species",
+            "source_representations": [
+              "126",
+              "126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Bc",
+              "Dc"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcHc_d4_024",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_e Sigma barSigma HLAc HRFc",
+            "ordered_chirality": [
+              "16",
+              "16"
+            ],
+            "sector": "HcHc",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "126",
+              "bar126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Bc",
+              "Dc"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcHc_d4_025",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_e barSigma barSigma HLAc HRFc",
+            "ordered_chirality": [
+              "16",
+              "16"
+            ],
+            "sector": "HcHc",
+            "source_pair_rule": "Sym^2 of one commuting nontrivial source species",
+            "source_representations": [
+              "bar126",
+              "bar126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Cc",
+              "Dc"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "1",
+                "direction_id": "HcHc_d4_026__1__copy_1",
+                "normalized_composite_formula": "(1/sqrt(1)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_bar16x16_TO_1__PAIR__SRC_1x1_TO_1__COPY_1",
+                "source_factor_tensor_id": "SRC_1x1_TO_1",
+                "source_output_representation": "1",
+                "spin_factor_tensor_id": "SPIN_bar16x16_TO_1"
+              }
+            ],
+            "id": "HcHc_d4_026",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 1,
+            "monomial": "rho_e S ThetaPlus HRAc HRFc",
+            "ordered_chirality": [
+              "bar16",
+              "16"
+            ],
+            "sector": "HcHc",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "1"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 1,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Cc",
+              "Dc"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "210",
+                "direction_id": "HcHc_d4_027__210__copy_1",
+                "normalized_composite_formula": "(1/sqrt(210)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_bar16x16_TO_210__PAIR__SRC_1x210_TO_210__COPY_1",
+                "source_factor_tensor_id": "SRC_1x210_TO_210",
+                "source_output_representation": "210",
+                "spin_factor_tensor_id": "SPIN_bar16x16_TO_210"
+              }
+            ],
+            "id": "HcHc_d4_027",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 1,
+            "monomial": "rho_e ThetaPlus Phi HRAc HRFc",
+            "ordered_chirality": [
+              "bar16",
+              "16"
+            ],
+            "sector": "HcHc",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "210"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 0,
+              "210": 1,
+              "45": 0
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Cc",
+              "Dc"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcHc_d4_028",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_e ThetaPlus Sigma HRAc HRFc",
+            "ordered_chirality": [
+              "bar16",
+              "16"
+            ],
+            "sector": "HcHc",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 0,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Cc",
+              "Dc"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcHc_d4_029",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_e ThetaPlus barSigma HRAc HRFc",
+            "ordered_chirality": [
+              "bar16",
+              "16"
+            ],
+            "sector": "HcHc",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "bar126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 0,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Ac",
+              "A"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "1",
+                "direction_id": "HcH_d4_000__1__copy_1",
+                "normalized_composite_formula": "(1/sqrt(1)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_bar16x16_TO_1__PAIR__SRC_1x1_TO_1__COPY_1",
+                "source_factor_tensor_id": "SRC_1x1_TO_1",
+                "source_output_representation": "1",
+                "spin_factor_tensor_id": "SPIN_bar16x16_TO_1"
+              }
+            ],
+            "id": "HcH_d4_000",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 1,
+            "monomial": "rho_o S S HLFc HLF",
+            "ordered_chirality": [
+              "bar16",
+              "16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "1"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 1,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Ac",
+              "A"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "210",
+                "direction_id": "HcH_d4_001__210__copy_1",
+                "normalized_composite_formula": "(1/sqrt(210)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_bar16x16_TO_210__PAIR__SRC_1x210_TO_210__COPY_1",
+                "source_factor_tensor_id": "SRC_1x210_TO_210",
+                "source_output_representation": "210",
+                "spin_factor_tensor_id": "SPIN_bar16x16_TO_210"
+              }
+            ],
+            "id": "HcH_d4_001",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 1,
+            "monomial": "rho_o S Phi HLFc HLF",
+            "ordered_chirality": [
+              "bar16",
+              "16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "210"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 0,
+              "210": 1,
+              "45": 0
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Ac",
+              "A"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcH_d4_002",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_o S Sigma HLFc HLF",
+            "ordered_chirality": [
+              "bar16",
+              "16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 0,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Ac",
+              "A"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcH_d4_003",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_o S barSigma HLFc HLF",
+            "ordered_chirality": [
+              "bar16",
+              "16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "bar126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 0,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Ac",
+              "A"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "1",
+                "direction_id": "HcH_d4_004__1__copy_1",
+                "normalized_composite_formula": "(1/sqrt(1)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_bar16x16_TO_1__PAIR__SRC_1x1_TO_1__COPY_1",
+                "source_factor_tensor_id": "SRC_1x1_TO_1",
+                "source_output_representation": "1",
+                "spin_factor_tensor_id": "SPIN_bar16x16_TO_1"
+              }
+            ],
+            "id": "HcH_d4_004",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 1,
+            "monomial": "rho_o ThetaPlus ThetaMinus HLFc HLF",
+            "ordered_chirality": [
+              "bar16",
+              "16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "1"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 1,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Ac",
+              "A"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "1",
+                "direction_id": "HcH_d4_005__1__copy_1",
+                "normalized_composite_formula": "(1/sqrt(1)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_bar16x16_TO_1__PAIR__SRC_PHIxPHI_TO_1__COPY_1",
+                "source_factor_tensor_id": "SRC_PHIxPHI_TO_1",
+                "source_output_representation": "1",
+                "spin_factor_tensor_id": "SPIN_bar16x16_TO_1"
+              },
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "45",
+                "direction_id": "HcH_d4_005__45__copy_1",
+                "normalized_composite_formula": "(1/sqrt(45)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_bar16x16_TO_45__PAIR__SRC_PHIxPHI_TO_45__COPY_1",
+                "source_factor_tensor_id": "SRC_PHIxPHI_TO_45",
+                "source_output_representation": "45",
+                "spin_factor_tensor_id": "SPIN_bar16x16_TO_45"
+              },
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "210",
+                "direction_id": "HcH_d4_005__210__copy_1",
+                "normalized_composite_formula": "(1/sqrt(210)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_bar16x16_TO_210__PAIR__SRC_PHIxPHI_TO_210__COPY_1",
+                "source_factor_tensor_id": "SRC_PHIxPHI_TO_210",
+                "source_output_representation": "210",
+                "spin_factor_tensor_id": "SPIN_bar16x16_TO_210"
+              }
+            ],
+            "id": "HcH_d4_005",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 3,
+            "monomial": "rho_o Phi Phi HLFc HLF",
+            "ordered_chirality": [
+              "bar16",
+              "16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "Sym^2 of one commuting nontrivial source species",
+            "source_representations": [
+              "210",
+              "210"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 1,
+              "210": 1,
+              "45": 1
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Ac",
+              "A"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcH_d4_006",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_o Phi Sigma HLFc HLF",
+            "ordered_chirality": [
+              "bar16",
+              "16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "210",
+              "126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 0,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Ac",
+              "A"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcH_d4_007",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_o Phi barSigma HLFc HLF",
+            "ordered_chirality": [
+              "bar16",
+              "16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "210",
+              "bar126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 0,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Ac",
+              "A"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcH_d4_008",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_o Sigma Sigma HLFc HLF",
+            "ordered_chirality": [
+              "bar16",
+              "16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "Sym^2 of one commuting nontrivial source species",
+            "source_representations": [
+              "126",
+              "126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 0,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Ac",
+              "A"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "1",
+                "direction_id": "HcH_d4_009__1__copy_1",
+                "normalized_composite_formula": "(1/sqrt(1)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_bar16x16_TO_1__PAIR__SRC_SIGMAxBARSIGMA_TO_1__COPY_1",
+                "source_factor_tensor_id": "SRC_SIGMAxBARSIGMA_TO_1",
+                "source_output_representation": "1",
+                "spin_factor_tensor_id": "SPIN_bar16x16_TO_1"
+              },
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "45",
+                "direction_id": "HcH_d4_009__45__copy_1",
+                "normalized_composite_formula": "(1/sqrt(45)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_bar16x16_TO_45__PAIR__SRC_SIGMAxBARSIGMA_TO_45__COPY_1",
+                "source_factor_tensor_id": "SRC_SIGMAxBARSIGMA_TO_45",
+                "source_output_representation": "45",
+                "spin_factor_tensor_id": "SPIN_bar16x16_TO_45"
+              },
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "210",
+                "direction_id": "HcH_d4_009__210__copy_1",
+                "normalized_composite_formula": "(1/sqrt(210)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_bar16x16_TO_210__PAIR__SRC_SIGMAxBARSIGMA_TO_210__COPY_1",
+                "source_factor_tensor_id": "SRC_SIGMAxBARSIGMA_TO_210",
+                "source_output_representation": "210",
+                "spin_factor_tensor_id": "SPIN_bar16x16_TO_210"
+              }
+            ],
+            "id": "HcH_d4_009",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 3,
+            "monomial": "rho_o Sigma barSigma HLFc HLF",
+            "ordered_chirality": [
+              "bar16",
+              "16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "126",
+              "bar126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 1,
+              "210": 1,
+              "45": 1
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Ac",
+              "A"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcH_d4_010",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_o barSigma barSigma HLFc HLF",
+            "ordered_chirality": [
+              "bar16",
+              "16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "Sym^2 of one commuting nontrivial source species",
+            "source_representations": [
+              "bar126",
+              "bar126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 0,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Ac",
+              "D"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcH_d4_011",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_o S ThetaMinus HLFc HRF",
+            "ordered_chirality": [
+              "bar16",
+              "bar16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "1"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "bar126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Ac",
+              "D"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcH_d4_012",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_o ThetaMinus Phi HLFc HRF",
+            "ordered_chirality": [
+              "bar16",
+              "bar16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "210"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "bar126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Ac",
+              "D"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "bar126",
+                "direction_id": "HcH_d4_013__bar126__copy_1",
+                "normalized_composite_formula": "(1/sqrt(126)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_bar16xbar16_TO_bar126__PAIR__SRC_1x126_TO_126__COPY_1",
+                "source_factor_tensor_id": "SRC_1x126_TO_126",
+                "source_output_representation": "126",
+                "spin_factor_tensor_id": "SPIN_bar16xbar16_TO_bar126"
+              }
+            ],
+            "id": "HcH_d4_013",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 1,
+            "monomial": "rho_o ThetaMinus Sigma HLFc HRF",
+            "ordered_chirality": [
+              "bar16",
+              "bar16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "bar126": 1
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Ac",
+              "D"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcH_d4_014",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_o ThetaMinus barSigma HLFc HRF",
+            "ordered_chirality": [
+              "bar16",
+              "bar16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "bar126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "bar126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Bc",
+              "B"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "1",
+                "direction_id": "HcH_d4_015__1__copy_1",
+                "normalized_composite_formula": "(1/sqrt(1)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_16xbar16_TO_1__PAIR__SRC_1x1_TO_1__COPY_1",
+                "source_factor_tensor_id": "SRC_1x1_TO_1",
+                "source_output_representation": "1",
+                "spin_factor_tensor_id": "SPIN_16xbar16_TO_1"
+              }
+            ],
+            "id": "HcH_d4_015",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 1,
+            "monomial": "rho_o S S HLAc HLA",
+            "ordered_chirality": [
+              "16",
+              "bar16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "1"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 1,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Bc",
+              "B"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "210",
+                "direction_id": "HcH_d4_016__210__copy_1",
+                "normalized_composite_formula": "(1/sqrt(210)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_16xbar16_TO_210__PAIR__SRC_1x210_TO_210__COPY_1",
+                "source_factor_tensor_id": "SRC_1x210_TO_210",
+                "source_output_representation": "210",
+                "spin_factor_tensor_id": "SPIN_16xbar16_TO_210"
+              }
+            ],
+            "id": "HcH_d4_016",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 1,
+            "monomial": "rho_o S Phi HLAc HLA",
+            "ordered_chirality": [
+              "16",
+              "bar16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "210"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 0,
+              "210": 1,
+              "45": 0
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Bc",
+              "B"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcH_d4_017",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_o S Sigma HLAc HLA",
+            "ordered_chirality": [
+              "16",
+              "bar16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 0,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Bc",
+              "B"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcH_d4_018",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_o S barSigma HLAc HLA",
+            "ordered_chirality": [
+              "16",
+              "bar16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "bar126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 0,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Bc",
+              "B"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "1",
+                "direction_id": "HcH_d4_019__1__copy_1",
+                "normalized_composite_formula": "(1/sqrt(1)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_16xbar16_TO_1__PAIR__SRC_1x1_TO_1__COPY_1",
+                "source_factor_tensor_id": "SRC_1x1_TO_1",
+                "source_output_representation": "1",
+                "spin_factor_tensor_id": "SPIN_16xbar16_TO_1"
+              }
+            ],
+            "id": "HcH_d4_019",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 1,
+            "monomial": "rho_o ThetaPlus ThetaMinus HLAc HLA",
+            "ordered_chirality": [
+              "16",
+              "bar16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "1"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 1,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Bc",
+              "B"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "1",
+                "direction_id": "HcH_d4_020__1__copy_1",
+                "normalized_composite_formula": "(1/sqrt(1)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_16xbar16_TO_1__PAIR__SRC_PHIxPHI_TO_1__COPY_1",
+                "source_factor_tensor_id": "SRC_PHIxPHI_TO_1",
+                "source_output_representation": "1",
+                "spin_factor_tensor_id": "SPIN_16xbar16_TO_1"
+              },
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "45",
+                "direction_id": "HcH_d4_020__45__copy_1",
+                "normalized_composite_formula": "(1/sqrt(45)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_16xbar16_TO_45__PAIR__SRC_PHIxPHI_TO_45__COPY_1",
+                "source_factor_tensor_id": "SRC_PHIxPHI_TO_45",
+                "source_output_representation": "45",
+                "spin_factor_tensor_id": "SPIN_16xbar16_TO_45"
+              },
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "210",
+                "direction_id": "HcH_d4_020__210__copy_1",
+                "normalized_composite_formula": "(1/sqrt(210)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_16xbar16_TO_210__PAIR__SRC_PHIxPHI_TO_210__COPY_1",
+                "source_factor_tensor_id": "SRC_PHIxPHI_TO_210",
+                "source_output_representation": "210",
+                "spin_factor_tensor_id": "SPIN_16xbar16_TO_210"
+              }
+            ],
+            "id": "HcH_d4_020",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 3,
+            "monomial": "rho_o Phi Phi HLAc HLA",
+            "ordered_chirality": [
+              "16",
+              "bar16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "Sym^2 of one commuting nontrivial source species",
+            "source_representations": [
+              "210",
+              "210"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 1,
+              "210": 1,
+              "45": 1
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Bc",
+              "B"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcH_d4_021",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_o Phi Sigma HLAc HLA",
+            "ordered_chirality": [
+              "16",
+              "bar16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "210",
+              "126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 0,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Bc",
+              "B"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcH_d4_022",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_o Phi barSigma HLAc HLA",
+            "ordered_chirality": [
+              "16",
+              "bar16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "210",
+              "bar126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 0,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Bc",
+              "B"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcH_d4_023",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_o Sigma Sigma HLAc HLA",
+            "ordered_chirality": [
+              "16",
+              "bar16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "Sym^2 of one commuting nontrivial source species",
+            "source_representations": [
+              "126",
+              "126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 0,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Bc",
+              "B"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "1",
+                "direction_id": "HcH_d4_024__1__copy_1",
+                "normalized_composite_formula": "(1/sqrt(1)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_16xbar16_TO_1__PAIR__SRC_SIGMAxBARSIGMA_TO_1__COPY_1",
+                "source_factor_tensor_id": "SRC_SIGMAxBARSIGMA_TO_1",
+                "source_output_representation": "1",
+                "spin_factor_tensor_id": "SPIN_16xbar16_TO_1"
+              },
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "45",
+                "direction_id": "HcH_d4_024__45__copy_1",
+                "normalized_composite_formula": "(1/sqrt(45)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_16xbar16_TO_45__PAIR__SRC_SIGMAxBARSIGMA_TO_45__COPY_1",
+                "source_factor_tensor_id": "SRC_SIGMAxBARSIGMA_TO_45",
+                "source_output_representation": "45",
+                "spin_factor_tensor_id": "SPIN_16xbar16_TO_45"
+              },
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "210",
+                "direction_id": "HcH_d4_024__210__copy_1",
+                "normalized_composite_formula": "(1/sqrt(210)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_16xbar16_TO_210__PAIR__SRC_SIGMAxBARSIGMA_TO_210__COPY_1",
+                "source_factor_tensor_id": "SRC_SIGMAxBARSIGMA_TO_210",
+                "source_output_representation": "210",
+                "spin_factor_tensor_id": "SPIN_16xbar16_TO_210"
+              }
+            ],
+            "id": "HcH_d4_024",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 3,
+            "monomial": "rho_o Sigma barSigma HLAc HLA",
+            "ordered_chirality": [
+              "16",
+              "bar16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "126",
+              "bar126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 1,
+              "210": 1,
+              "45": 1
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Bc",
+              "B"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcH_d4_025",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_o barSigma barSigma HLAc HLA",
+            "ordered_chirality": [
+              "16",
+              "bar16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "Sym^2 of one commuting nontrivial source species",
+            "source_representations": [
+              "bar126",
+              "bar126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 0,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Bc",
+              "C"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcH_d4_026",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_o S ThetaMinus HLAc HRA",
+            "ordered_chirality": [
+              "16",
+              "16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "1"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Bc",
+              "C"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcH_d4_027",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_o ThetaMinus Phi HLAc HRA",
+            "ordered_chirality": [
+              "16",
+              "16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "210"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Bc",
+              "C"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcH_d4_028",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_o ThetaMinus Sigma HLAc HRA",
+            "ordered_chirality": [
+              "16",
+              "16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Bc",
+              "C"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "126",
+                "direction_id": "HcH_d4_029__126__copy_1",
+                "normalized_composite_formula": "(1/sqrt(126)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_16x16_TO_126__PAIR__SRC_1xbar126_TO_bar126__COPY_1",
+                "source_factor_tensor_id": "SRC_1xbar126_TO_bar126",
+                "source_output_representation": "bar126",
+                "spin_factor_tensor_id": "SPIN_16x16_TO_126"
+              }
+            ],
+            "id": "HcH_d4_029",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 1,
+            "monomial": "rho_o ThetaMinus barSigma HLAc HRA",
+            "ordered_chirality": [
+              "16",
+              "16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "bar126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "126": 1
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Cc",
+              "B"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcH_d4_030",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_o S ThetaPlus HRAc HLA",
+            "ordered_chirality": [
+              "bar16",
+              "bar16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "1"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "bar126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Cc",
+              "B"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcH_d4_031",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_o ThetaPlus Phi HRAc HLA",
+            "ordered_chirality": [
+              "bar16",
+              "bar16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "210"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "bar126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Cc",
+              "B"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "bar126",
+                "direction_id": "HcH_d4_032__bar126__copy_1",
+                "normalized_composite_formula": "(1/sqrt(126)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_bar16xbar16_TO_bar126__PAIR__SRC_1x126_TO_126__COPY_1",
+                "source_factor_tensor_id": "SRC_1x126_TO_126",
+                "source_output_representation": "126",
+                "spin_factor_tensor_id": "SPIN_bar16xbar16_TO_bar126"
+              }
+            ],
+            "id": "HcH_d4_032",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 1,
+            "monomial": "rho_o ThetaPlus Sigma HRAc HLA",
+            "ordered_chirality": [
+              "bar16",
+              "bar16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "bar126": 1
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Cc",
+              "B"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcH_d4_033",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_o ThetaPlus barSigma HRAc HLA",
+            "ordered_chirality": [
+              "bar16",
+              "bar16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "bar126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "bar126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Cc",
+              "C"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "1",
+                "direction_id": "HcH_d4_034__1__copy_1",
+                "normalized_composite_formula": "(1/sqrt(1)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_bar16x16_TO_1__PAIR__SRC_1x1_TO_1__COPY_1",
+                "source_factor_tensor_id": "SRC_1x1_TO_1",
+                "source_output_representation": "1",
+                "spin_factor_tensor_id": "SPIN_bar16x16_TO_1"
+              }
+            ],
+            "id": "HcH_d4_034",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 1,
+            "monomial": "rho_o S S HRAc HRA",
+            "ordered_chirality": [
+              "bar16",
+              "16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "1"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 1,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Cc",
+              "C"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "210",
+                "direction_id": "HcH_d4_035__210__copy_1",
+                "normalized_composite_formula": "(1/sqrt(210)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_bar16x16_TO_210__PAIR__SRC_1x210_TO_210__COPY_1",
+                "source_factor_tensor_id": "SRC_1x210_TO_210",
+                "source_output_representation": "210",
+                "spin_factor_tensor_id": "SPIN_bar16x16_TO_210"
+              }
+            ],
+            "id": "HcH_d4_035",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 1,
+            "monomial": "rho_o S Phi HRAc HRA",
+            "ordered_chirality": [
+              "bar16",
+              "16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "210"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 0,
+              "210": 1,
+              "45": 0
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Cc",
+              "C"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcH_d4_036",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_o S Sigma HRAc HRA",
+            "ordered_chirality": [
+              "bar16",
+              "16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 0,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Cc",
+              "C"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcH_d4_037",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_o S barSigma HRAc HRA",
+            "ordered_chirality": [
+              "bar16",
+              "16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "bar126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 0,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Cc",
+              "C"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "1",
+                "direction_id": "HcH_d4_038__1__copy_1",
+                "normalized_composite_formula": "(1/sqrt(1)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_bar16x16_TO_1__PAIR__SRC_1x1_TO_1__COPY_1",
+                "source_factor_tensor_id": "SRC_1x1_TO_1",
+                "source_output_representation": "1",
+                "spin_factor_tensor_id": "SPIN_bar16x16_TO_1"
+              }
+            ],
+            "id": "HcH_d4_038",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 1,
+            "monomial": "rho_o ThetaPlus ThetaMinus HRAc HRA",
+            "ordered_chirality": [
+              "bar16",
+              "16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "1"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 1,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Cc",
+              "C"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "1",
+                "direction_id": "HcH_d4_039__1__copy_1",
+                "normalized_composite_formula": "(1/sqrt(1)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_bar16x16_TO_1__PAIR__SRC_PHIxPHI_TO_1__COPY_1",
+                "source_factor_tensor_id": "SRC_PHIxPHI_TO_1",
+                "source_output_representation": "1",
+                "spin_factor_tensor_id": "SPIN_bar16x16_TO_1"
+              },
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "45",
+                "direction_id": "HcH_d4_039__45__copy_1",
+                "normalized_composite_formula": "(1/sqrt(45)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_bar16x16_TO_45__PAIR__SRC_PHIxPHI_TO_45__COPY_1",
+                "source_factor_tensor_id": "SRC_PHIxPHI_TO_45",
+                "source_output_representation": "45",
+                "spin_factor_tensor_id": "SPIN_bar16x16_TO_45"
+              },
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "210",
+                "direction_id": "HcH_d4_039__210__copy_1",
+                "normalized_composite_formula": "(1/sqrt(210)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_bar16x16_TO_210__PAIR__SRC_PHIxPHI_TO_210__COPY_1",
+                "source_factor_tensor_id": "SRC_PHIxPHI_TO_210",
+                "source_output_representation": "210",
+                "spin_factor_tensor_id": "SPIN_bar16x16_TO_210"
+              }
+            ],
+            "id": "HcH_d4_039",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 3,
+            "monomial": "rho_o Phi Phi HRAc HRA",
+            "ordered_chirality": [
+              "bar16",
+              "16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "Sym^2 of one commuting nontrivial source species",
+            "source_representations": [
+              "210",
+              "210"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 1,
+              "210": 1,
+              "45": 1
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Cc",
+              "C"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcH_d4_040",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_o Phi Sigma HRAc HRA",
+            "ordered_chirality": [
+              "bar16",
+              "16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "210",
+              "126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 0,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Cc",
+              "C"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcH_d4_041",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_o Phi barSigma HRAc HRA",
+            "ordered_chirality": [
+              "bar16",
+              "16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "210",
+              "bar126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 0,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Cc",
+              "C"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcH_d4_042",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_o Sigma Sigma HRAc HRA",
+            "ordered_chirality": [
+              "bar16",
+              "16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "Sym^2 of one commuting nontrivial source species",
+            "source_representations": [
+              "126",
+              "126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 0,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Cc",
+              "C"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "1",
+                "direction_id": "HcH_d4_043__1__copy_1",
+                "normalized_composite_formula": "(1/sqrt(1)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_bar16x16_TO_1__PAIR__SRC_SIGMAxBARSIGMA_TO_1__COPY_1",
+                "source_factor_tensor_id": "SRC_SIGMAxBARSIGMA_TO_1",
+                "source_output_representation": "1",
+                "spin_factor_tensor_id": "SPIN_bar16x16_TO_1"
+              },
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "45",
+                "direction_id": "HcH_d4_043__45__copy_1",
+                "normalized_composite_formula": "(1/sqrt(45)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_bar16x16_TO_45__PAIR__SRC_SIGMAxBARSIGMA_TO_45__COPY_1",
+                "source_factor_tensor_id": "SRC_SIGMAxBARSIGMA_TO_45",
+                "source_output_representation": "45",
+                "spin_factor_tensor_id": "SPIN_bar16x16_TO_45"
+              },
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "210",
+                "direction_id": "HcH_d4_043__210__copy_1",
+                "normalized_composite_formula": "(1/sqrt(210)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_bar16x16_TO_210__PAIR__SRC_SIGMAxBARSIGMA_TO_210__COPY_1",
+                "source_factor_tensor_id": "SRC_SIGMAxBARSIGMA_TO_210",
+                "source_output_representation": "210",
+                "spin_factor_tensor_id": "SPIN_bar16x16_TO_210"
+              }
+            ],
+            "id": "HcH_d4_043",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 3,
+            "monomial": "rho_o Sigma barSigma HRAc HRA",
+            "ordered_chirality": [
+              "bar16",
+              "16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "126",
+              "bar126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 1,
+              "210": 1,
+              "45": 1
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Cc",
+              "C"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcH_d4_044",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_o barSigma barSigma HRAc HRA",
+            "ordered_chirality": [
+              "bar16",
+              "16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "Sym^2 of one commuting nontrivial source species",
+            "source_representations": [
+              "bar126",
+              "bar126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 0,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Dc",
+              "A"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcH_d4_045",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_o S ThetaPlus HRFc HLF",
+            "ordered_chirality": [
+              "16",
+              "16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "1"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Dc",
+              "A"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcH_d4_046",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_o ThetaPlus Phi HRFc HLF",
+            "ordered_chirality": [
+              "16",
+              "16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "210"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Dc",
+              "A"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcH_d4_047",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_o ThetaPlus Sigma HRFc HLF",
+            "ordered_chirality": [
+              "16",
+              "16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "126": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Dc",
+              "A"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "126",
+                "direction_id": "HcH_d4_048__126__copy_1",
+                "normalized_composite_formula": "(1/sqrt(126)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_16x16_TO_126__PAIR__SRC_1xbar126_TO_bar126__COPY_1",
+                "source_factor_tensor_id": "SRC_1xbar126_TO_bar126",
+                "source_output_representation": "bar126",
+                "spin_factor_tensor_id": "SPIN_16x16_TO_126"
+              }
+            ],
+            "id": "HcH_d4_048",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 1,
+            "monomial": "rho_o ThetaPlus barSigma HRFc HLF",
+            "ordered_chirality": [
+              "16",
+              "16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "bar126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "10": 0,
+              "120": 0,
+              "126": 1
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Dc",
+              "D"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "1",
+                "direction_id": "HcH_d4_049__1__copy_1",
+                "normalized_composite_formula": "(1/sqrt(1)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_16xbar16_TO_1__PAIR__SRC_1x1_TO_1__COPY_1",
+                "source_factor_tensor_id": "SRC_1x1_TO_1",
+                "source_output_representation": "1",
+                "spin_factor_tensor_id": "SPIN_16xbar16_TO_1"
+              }
+            ],
+            "id": "HcH_d4_049",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 1,
+            "monomial": "rho_o S S HRFc HRF",
+            "ordered_chirality": [
+              "16",
+              "bar16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "1"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 1,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Dc",
+              "D"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "210",
+                "direction_id": "HcH_d4_050__210__copy_1",
+                "normalized_composite_formula": "(1/sqrt(210)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_16xbar16_TO_210__PAIR__SRC_1x210_TO_210__COPY_1",
+                "source_factor_tensor_id": "SRC_1x210_TO_210",
+                "source_output_representation": "210",
+                "spin_factor_tensor_id": "SPIN_16xbar16_TO_210"
+              }
+            ],
+            "id": "HcH_d4_050",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 1,
+            "monomial": "rho_o S Phi HRFc HRF",
+            "ordered_chirality": [
+              "16",
+              "bar16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "210"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 0,
+              "210": 1,
+              "45": 0
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Dc",
+              "D"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcH_d4_051",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_o S Sigma HRFc HRF",
+            "ordered_chirality": [
+              "16",
+              "bar16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 0,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Dc",
+              "D"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcH_d4_052",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_o S barSigma HRFc HRF",
+            "ordered_chirality": [
+              "16",
+              "bar16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "bar126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 0,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Dc",
+              "D"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "1",
+                "direction_id": "HcH_d4_053__1__copy_1",
+                "normalized_composite_formula": "(1/sqrt(1)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_16xbar16_TO_1__PAIR__SRC_1x1_TO_1__COPY_1",
+                "source_factor_tensor_id": "SRC_1x1_TO_1",
+                "source_output_representation": "1",
+                "spin_factor_tensor_id": "SPIN_16xbar16_TO_1"
+              }
+            ],
+            "id": "HcH_d4_053",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 1,
+            "monomial": "rho_o ThetaPlus ThetaMinus HRFc HRF",
+            "ordered_chirality": [
+              "16",
+              "bar16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "1",
+              "1"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 1,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Dc",
+              "D"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "1",
+                "direction_id": "HcH_d4_054__1__copy_1",
+                "normalized_composite_formula": "(1/sqrt(1)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_16xbar16_TO_1__PAIR__SRC_PHIxPHI_TO_1__COPY_1",
+                "source_factor_tensor_id": "SRC_PHIxPHI_TO_1",
+                "source_output_representation": "1",
+                "spin_factor_tensor_id": "SPIN_16xbar16_TO_1"
+              },
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "45",
+                "direction_id": "HcH_d4_054__45__copy_1",
+                "normalized_composite_formula": "(1/sqrt(45)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_16xbar16_TO_45__PAIR__SRC_PHIxPHI_TO_45__COPY_1",
+                "source_factor_tensor_id": "SRC_PHIxPHI_TO_45",
+                "source_output_representation": "45",
+                "spin_factor_tensor_id": "SPIN_16xbar16_TO_45"
+              },
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "210",
+                "direction_id": "HcH_d4_054__210__copy_1",
+                "normalized_composite_formula": "(1/sqrt(210)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_16xbar16_TO_210__PAIR__SRC_PHIxPHI_TO_210__COPY_1",
+                "source_factor_tensor_id": "SRC_PHIxPHI_TO_210",
+                "source_output_representation": "210",
+                "spin_factor_tensor_id": "SPIN_16xbar16_TO_210"
+              }
+            ],
+            "id": "HcH_d4_054",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 3,
+            "monomial": "rho_o Phi Phi HRFc HRF",
+            "ordered_chirality": [
+              "16",
+              "bar16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "Sym^2 of one commuting nontrivial source species",
+            "source_representations": [
+              "210",
+              "210"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 1,
+              "210": 1,
+              "45": 1
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Dc",
+              "D"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcH_d4_055",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_o Phi Sigma HRFc HRF",
+            "ordered_chirality": [
+              "16",
+              "bar16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "210",
+              "126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 0,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Dc",
+              "D"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcH_d4_056",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_o Phi barSigma HRFc HRF",
+            "ordered_chirality": [
+              "16",
+              "bar16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "210",
+              "bar126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 0,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Dc",
+              "D"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcH_d4_057",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_o Sigma Sigma HRFc HRF",
+            "ordered_chirality": [
+              "16",
+              "bar16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "Sym^2 of one commuting nontrivial source species",
+            "source_representations": [
+              "126",
+              "126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 0,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Dc",
+              "D"
+            ],
+            "degree": 4,
+            "directions": [
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "1",
+                "direction_id": "HcH_d4_058__1__copy_1",
+                "normalized_composite_formula": "(1/sqrt(1)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_16xbar16_TO_1__PAIR__SRC_SIGMAxBARSIGMA_TO_1__COPY_1",
+                "source_factor_tensor_id": "SRC_SIGMAxBARSIGMA_TO_1",
+                "source_output_representation": "1",
+                "spin_factor_tensor_id": "SPIN_16xbar16_TO_1"
+              },
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "45",
+                "direction_id": "HcH_d4_058__45__copy_1",
+                "normalized_composite_formula": "(1/sqrt(45)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_16xbar16_TO_45__PAIR__SRC_SIGMAxBARSIGMA_TO_45__COPY_1",
+                "source_factor_tensor_id": "SRC_SIGMAxBARSIGMA_TO_45",
+                "source_output_representation": "45",
+                "spin_factor_tensor_id": "SPIN_16xbar16_TO_45"
+              },
+              {
+                "channel_copy_index": 1,
+                "channel_representation": "210",
+                "direction_id": "HcH_d4_058__210__copy_1",
+                "normalized_composite_formula": "(1/sqrt(210)) sum_o T_spin[o] T_source[o]",
+                "normalized_composite_tensor_id": "NORM_INV__SPIN_16xbar16_TO_210__PAIR__SRC_SIGMAxBARSIGMA_TO_210__COPY_1",
+                "source_factor_tensor_id": "SRC_SIGMAxBARSIGMA_TO_210",
+                "source_output_representation": "210",
+                "spin_factor_tensor_id": "SPIN_16xbar16_TO_210"
+              }
+            ],
+            "id": "HcH_d4_058",
+            "instantiation_status": "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS",
+            "invariant_multiplicity": 3,
+            "monomial": "rho_o Sigma barSigma HRFc HRF",
+            "ordered_chirality": [
+              "16",
+              "bar16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "ordered representation product; field monomial fixes species",
+            "source_representations": [
+              "126",
+              "bar126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 1,
+              "210": 1,
+              "45": 1
+            },
+            "zero_reason": null
+          },
+          {
+            "U1F_charge": 0,
+            "bulk_fields": [
+              "Dc",
+              "D"
+            ],
+            "degree": 4,
+            "directions": [],
+            "id": "HcH_d4_059",
+            "instantiation_status": "RESOLVED_EMPTY_EXACT_D5_INTERSECTION",
+            "invariant_multiplicity": 0,
+            "monomial": "rho_o barSigma barSigma HRFc HRF",
+            "ordered_chirality": [
+              "16",
+              "bar16"
+            ],
+            "sector": "HcH",
+            "source_pair_rule": "Sym^2 of one commuting nontrivial source species",
+            "source_representations": [
+              "bar126",
+              "bar126"
+            ],
+            "spinor_channel_intersection_multiplicities": {
+              "1": 0,
+              "210": 0,
+              "45": 0
+            },
+            "zero_reason": "the exact D5 source-pair character contains none of the conjugates of the three irreducible spinor-product channels"
+          }
+        ],
+        "status_histogram": {
+          "RESOLVED_EMPTY_EXACT_D5_INTERSECTION": 76,
+          "RESOLVED_NONEMPTY_NORMALIZED_CARTESIAN_FACTORS": 44
+        },
+        "total_invariant_directions": 72,
+        "total_rows": 120,
+        "zero_rows": 76
+      }
+    },
+    {
+      "id": "E50",
+      "result": "finite representation-faithful deconstruction candidate",
+      "statement": "A 5-site 4D N=1 moose has an exact 567x612 Clifford-lock Jacobian of rank 567, leaving precisely the 45 Spin(10) orbit tangents; projected rectangular transport has exactly 32 desired chiral profiles.",
+      "value": {
+        "edges": 4,
+        "extra_transport_profiles": 0,
+        "link_constraint_dimension": 567,
+        "link_nullity": 45,
+        "link_rank": 567,
+        "sites": 5,
+        "transport_profiles": 32
+      }
+    },
+    {
+      "id": "E51",
+      "result": "combined endpoint Rxi obstruction",
+      "statement": "The source U(1) normalization and nonzero vector/Goldstone spectra match, but the exact PS/SU5 incidence partition leaves 12 uneaten A5-like chirals.",
+      "value": {
+        "U1F": {
+          "Goldstone_dimension": 1,
+          "Goldstone_mass_squared_at_xi_1": 18,
+          "candidate_charge_norm_squared": 18,
+          "candidate_source_normalization_matches": true,
+          "link_modes": 0,
+          "primitive_Theta_charges": [
+            3,
+            -3
+          ],
+          "source_orbit_norm_squared": 18,
+          "vector_dimension": 1,
+          "vector_mass_squared_at_unit_gauge_coupling": 18
+        },
+        "partition": {
+          "PS_intersection_SU5__SM": 12,
+          "PS_only": 9,
+          "SU5_only": 12,
+          "neither": 12,
+          "sum": 45
+        },
+        "uneaten_A5_like_chirals": 12
+      }
+    },
+    {
+      "id": "E52",
+      "result": "perturbative UV kill test",
+      "statement": "With canonical dynamical multipliers and g=0.73, the optimistic one-loop Spin(10) Landau poles occur below 1.70 link scales, rejecting this polynomial moose as a controlled perturbative UV completion.",
+      "value": {
+        "controlled_perturbative_window": false,
+        "g_link": 0.73,
+        "interior_b": -280,
+        "interior_pole_ratio": 1.6975036805808787,
+        "source_b": -292,
+        "source_pole_ratio": 1.6609878217710772
+      }
+    }
+  ],
+  "candidate_architecture": {
+    "definition": "A finite 4D N=1 product-Spin(10) moose whose vector and spinor links are locked by covariant Clifford constraints, with a PS endpoint projector, the exact 210+126+bar126+singlet source action, rectangular chiral transport and vectorlike channel mediators.",
+    "name": "Clifford-locked PS-to-Spin(10) deconstructed source-mediator candidate",
+    "rescue_hypotheses_not_constructed": [
+      "a lean link realization with far smaller total Dynkin index",
+      "a genuine strong/composite link sector reproducing the same local orbit"
+    ]
+  },
+  "core_sha256": "4b841b77de308c909e602cdb07e749e3dea04a2399a8c2f20c1082c4151fbe66",
+  "frozen_G2_contract": {
+    "closure_logic": "G2_closed iff C1 through C7 all pass for the same retained action",
+    "definition": "A fixed-order tree-level Wilsonian source/portal boundary EFT in one declared regulator scheme, with a complete retained-order local action, an action-derived positive self-adjoint domain, and a component-resolved full-tower kernel for that same action.",
+    "not_required_for_G2": {
+      "G3": "solve the vacuum and FI/K\u00e4hler/radion/soft branch",
+      "G6": "compute the complete pole tower, thresholds, unification and RG flow",
+      "G7": "finish the B/L ring, running and decay likelihoods",
+      "G8": "perform the flavor/neutrino fit and withheld prediction",
+      "UV": "predict the infinite irrelevant tower from a fundamental UV completion"
+    }
+  },
+  "gate_ledger": [
+    {
+      "advance": "V47 exact ordinary-Spin quotient and relative anomaly calculations remain intact.",
+      "blocker": "none within the declared ordinary-Spin model",
+      "closed": true,
+      "gate": "G1"
+    },
+    {
+      "advance": "V51 exactly closes the source orbit/Hessian subproblem, resolves all source-row multiplicities/factors and constructs a finite local representation-faithful candidate.",
+      "blocker": "No V50/V51 same-action identity; 12 residual A5-like chirals; full physical metric/pencil, one-loop rematch and Wilson array missing; candidate perturbative UV control fails.",
+      "closed": false,
+      "gate": "G2"
+    },
+    {
+      "advance": "An explicit tuned Cartesian F- and D-flat witness has exact Hessian rank 443 on the physical source quotient.",
+      "blocker": "m1=M1=0 lacks radiative protection; the 12 endpoint chirals, full scalar potential, soft terms and global vacuum selection remain open.",
+      "closed": false,
+      "gate": "G3"
+    },
+    {
+      "advance": "The missing PS mu_H term is now identified as an allowed input rather than silently forbidden.",
+      "blocker": "The mu/Bmu mechanism, SUSY breaking, radion stabilization, EWSB and complete scalar vacuum are absent.",
+      "closed": false,
+      "gate": "G4"
+    },
+    {
+      "advance": "No excluded dark benchmark is reintroduced.",
+      "blocker": "No dark-sector Lagrangian, relic calculation or cosmological history is specified.",
+      "closed": false,
+      "gate": "G5"
+    },
+    {
+      "advance": "The candidate spectrum is explicit enough for a one-loop Spin(10) perturbativity kill test.",
+      "blocker": "At g=0.73 the optimistic Landau poles are only 1.6975 and 1.6610 link scales above threshold; no lean or strong/composite UV completion is built.",
+      "closed": false,
+      "gate": "G6"
+    },
+    {
+      "advance": "All 168 source-row multiplicities/factor channels and 34 PS primitive projector tensors are resolved.",
+      "blocker": "No final contracted physical Wilson array, dressing/running or B/L rates.",
+      "closed": false,
+      "gate": "G7"
+    },
+    {
+      "advance": "The PS census now includes complementary Hc Higgs cubics and the allowed family/bulk K\u00e4hler mixings.",
+      "blocker": "There is no complete component Clebsch map, neutrino completion, family fit, uncertainty propagation or withheld prediction.",
+      "closed": false,
+      "gate": "G8"
+    }
+  ],
+  "input_core_hashes": {
+    "cartesian_c5_c7": "cce7c67c44e1a0f164bd226cbf7307054cd16b20604202b5d95e1083983a5da0",
+    "degree4_factors": "7ad3218ec1522940301b613c0d9e737fef68de1972f290d0d0445db00b231cde",
+    "mediator_moose": "011af19f4825da85cc073fc58c12b7308355d2e486e2a1f12135dc0ea7cadf7b",
+    "source_hessian": "54e9caa653b03dec77cbd388595a2d3dbcb828e2dbebf6d9b46bed77b038fee4",
+    "source_orbit": "d8718c1feee465940b8362c9a43d446448eebbf60481b42e035ef5f36d4e2d95",
+    "v50_master": "52a437a5e6f9cc29b09dd23116e14736b14265d742cff2579106f7a0be124658"
+  },
+  "integrity_checks": {
+    "V50_same_action_hash_is_preserved_only_as_reference": true,
+    "V51_candidate_has_no_same_action_identity": true,
+    "all_168_source_rows_have_multiplicity_and_factor_resolution": true,
+    "all_34_PS_primitives_are_chirality_correct": true,
+    "all_component_integrity_checks_pass": true,
+    "all_input_core_hashes_valid": true,
+    "candidate_ledger_has_no_full_pass_or_promotion": true,
+    "candidate_link_and_transport_local_theorems_pass": true,
+    "combined_endpoint_exposes_exactly_12_residual_chirals": true,
+    "controlled_perturbative_candidate_is_killed": true,
+    "frontier_ledger_remains_three_of_seven": true,
+    "only_G1_is_closed": true,
+    "source_U1F_normalization_is_exactly_bound": true,
+    "source_orbit_and_Hessian_exact": true
+  },
+  "n_failed_integrity_checks": 0,
+  "primary_sources": [
+    {
+      "title": "Arkani-Hamed, Cohen and Georgi: (De)constructing Dimensions",
+      "url": "https://arxiv.org/abs/hep-th/0104005"
+    },
+    {
+      "title": "Marti and Pomarol: Supersymmetric theories with compact extra dimensions in N=1 superfields",
+      "url": "https://arxiv.org/abs/he-th/0106256"
+    },
+    {
+      "title": "Hebecker: 5D super Yang-Mills in 4D superspace and brane operators",
+      "url": "https://arxiv.org/abs/hep-ph/0112230"
+    },
+    {
+      "title": "Nath and Syed: Couplings of SO(10) spinor and tensor representations",
+      "url": "https://arxiv.org/abs/he-th/0109116"
+    },
+    {
+      "title": "Aulakh and Girdhar: Minimal supersymmetric SO(10) spectra",
+      "url": "https://arxiv.org/abs/hep-ph/0612021"
+    },
+    {
+      "title": "Brignole: One-loop effective Kahler potential for chiral multiplets",
+      "url": "https://arxiv.org/abs/1205.3492"
+    }
+  ],
+  "same_action_decision": {
+    "V50_shared_action_sha256": "04c6e60038412d99b7c2e9a80c4159fb1a6ba328a159df7b62a8fb45ec1158e4",
+    "V51_shared_action_sha256": null,
+    "equivalence_proved": false,
+    "reason": "V51 changes the microscopic U(1) topology and adds link, multiplier, transport and mediator fields.  Exact subblocks therefore cannot be combined with V50 clause passes as one action until an explicit matching identity exists."
+  },
+  "schema": "susy-v51-new-physics-candidate-integration-audit-v1",
+  "scientific_verdict": {
+    "G2_closed": false,
+    "closed_gates": [
+      "G1"
+    ],
+    "complete_theory": false,
+    "controlled_perturbative_UV_completion": false,
+    "full_gates_closed": 1,
+    "new_physics_discovery": false,
+    "possible_solution_candidate": true,
+    "statement": "V51 is a concrete and falsifiable representation-faithful route.  It solves the source-orbit/Hessian and invariant-factor subproblems, but its first polynomial moose realization fails perturbative UV control and contains 12 unlifted endpoint chirals.  It is not a completed or validated theory."
+  },
+  "smallest_next_candidate_patch": [
+    "Construct one anomaly-safe local lifting interaction for the 12 residual A5-like chirals and recompute the complete host/source Hessian and Rxi pencil.",
+    "Replace the high-index 567-multiplier link with a lean perturbative link, or supply a calculable strong/composite completion with the same exact orbit.",
+    "Freeze one complete action hash, embed every factor/current, emit the physical Wilson array, and perform full one-loop DRbar threshold/scale matching."
+  ],
+  "source_manifest": [
+    {
+      "exists": true,
+      "path": "susy_v51_new_physics_candidate_integration_audit.py",
+      "sha256": "fd359db97d7c891b5cf2063f072d35dd957e0d5229eb519379186aabcf433e9b"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v51_new_physics_candidate_integration_audit.py",
+      "sha256": "d49f2c28f45f3ff1562de585e545a24d995b14d262042c659cc8463f9ce86665"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V50_G2_FRONTIER_INTEGRATION_AUDIT.json",
+      "sha256": "ca77f418eb6851edd35783bf659e42fdd8043429f818c21f577c0e98266996f9"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V51_PHYSICAL_SOURCE_ORBIT_AUDIT.json",
+      "sha256": "ae337d9b4f97a3ed7e537320569487214a0f34751c2803e317f2c03678245282"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V51_CARTESIAN_SOURCE_HESSIAN_AUDIT.json",
+      "sha256": "a0166f4ff393f3ea00d7bbced7b7da2a15ac7d019f07338e140245561fd7b109"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V51_CARTESIAN_MEDIATOR_C5_C7_FEASIBILITY_AUDIT.json",
+      "sha256": "03619f85c396cf8a7cc1e0aa412741bf579bd464484eec2de2e401f379c514cf"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V51_DEGREE4_CARTESIAN_FACTOR_AUDIT.json",
+      "sha256": "9277f1430d2fc5c929e14a7d248b6f8b528cd7b1fa51637c5e3ec1bce828afa7"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V51_REPRESENTATION_FAITHFUL_MEDIATOR_MOOSE_AUDIT.json",
+      "sha256": "0e00dcddbfb569240bc43a676c863f8360d76b4fcca35d8617dd781f67b795cf"
+    }
+  ],
+  "stage_ledger": [
+    {
+      "missing": "radiative protection of the tuned masses, 12 endpoint chirals, radion/soft dynamics and global branch selection",
+      "passed": "exact 465-field stationarity, rank-22 orbit, rank-443 source Hessian and nondegenerate physical pullback",
+      "stage": "S0",
+      "status": "OPEN_WITH_EXACT_CARTESIAN_SOURCE_WITNESS"
+    },
+    {
+      "missing": "none within the declared ordinary-Spin boundary-condition model",
+      "passed": "V47 local, quotient, relative and residual-discrete gauge/global anomaly certificate",
+      "stage": "S1",
+      "status": "CLOSED"
+    },
+    {
+      "missing": "same-action identity, lift of 12 A5-like chirals, full physical pencil, loop matching and controlled UV window",
+      "passed": "exact local link rigidity, 32 projected transport profiles and source-side Rxi spectral pairing",
+      "stage": "S2",
+      "status": "OPEN_WITH_REPRESENTATION_FAITHFUL_CANDIDATE"
+    },
+    {
+      "missing": "one-action coefficient/current embedding, final Wilson array, B/L ring, dressing and rates",
+      "passed": "all source row multiplicities/factors and all PS primitive Cartesian projectors",
+      "stage": "S3",
+      "status": "OPEN_WITH_COMPLETE_FACTOR_CENSUS"
+    },
+    {
+      "missing": "unification, RG spectrum, flavor, neutrinos, light Higgs, SUSY breaking, dark sector and cosmology",
+      "passed": "no empirical claim imported from the exact microscopic subchecks",
+      "stage": "S4",
+      "status": "OPEN"
+    }
+  ],
+  "status": "V51_NEW_PHYSICS_CLIFFORD_LOCKED_DECONSTRUCTION_CANDIDATE_INTEGRATED__EXACT_SOURCE_ORBIT_HESSIAN_AND_DEGREE4_FACTOR_CENSUS__12_RESIDUAL_A5_CHIRALS_AND_LANDAU_WINDOW_BELOW1P70_KILL_CONTROLLED_UV__NO_SAME_ACTION_IDENTITY__NO_G2_CLAUSE_OR_FULL_GATE_PROMOTED",
+  "unresolved_defects": [
+    {
+      "defect": "same_action_identity_and_full_physical_assembly",
+      "id": "D16",
+      "statement": "Publish a complete V51 action manifest/hash and an explicit matching map to the V50 A/Xi/C/R7/R8/Z action, then differentiate the full physical pencil."
+    },
+    {
+      "defect": "twelve_uneaten_endpoint_chirals",
+      "id": "D17",
+      "statement": "Construct a local gauge-covariant interaction that lifts the 12 neither-PS-nor-SU5 A5-like chirals without adding new light modes or anomalies."
+    },
+    {
+      "defect": "one_loop_matching_missing",
+      "id": "D18",
+      "statement": "Compute the complete background Hessians, DRbar counterterms, 1PI mixing, finite link/mediator thresholds and matching-scale cancellation."
+    },
+    {
+      "defect": "final_physical_Wilson_array_missing",
+      "id": "D19",
+      "statement": "Embed every factor/copy tensor and PS primitive in one coefficient/current convention and emit the contracted source-to-PS Wilson array."
+    },
+    {
+      "defect": "controlled_UV_completion_missing",
+      "id": "D20",
+      "statement": "Replace the 567-multiplier link by a much leaner perturbative realization or construct and test a genuine strong/composite link completion."
+    }
+  ]
+}

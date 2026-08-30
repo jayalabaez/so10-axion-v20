@@ -1,0 +1,40 @@
+name: SUSY V26 G1 dynamical GS attempt
+
+on:
+  push:
+    paths:
+      - "susy_v26_g1_dynamical_gs_completion_attempt.py"
+      - "test_susy_v26_g1_dynamical_gs_completion_attempt.py"
+      - "SUSY_V26_G1_DYNAMICAL_GS_COMPLETION_ATTEMPT.json"
+      - "SUSY_V26_G1_DYNAMICAL_GS_COMPLETION_ATTEMPT.md"
+      - "susy_v25_g1_g3_completion_frontier.py"
+      - "SUSY_V25_G1_G3_COMPLETION_FRONTIER.json"
+      - "SUSY_V25_G1_G3_COMPLETION_FRONTIER.md"
+      - "susy_v24_ps_source_contract.py"
+      - "SUSY_V24_PS_SOURCE_CONTRACT.json"
+      - "models/PSZ4RZ11SUSYV24/PSZ4RZ11SUSYV24.m"
+      - ".github/workflows/susy-v26-g1-dynamical-gs-attempt.yml"
+  pull_request:
+    paths:
+      - "susy_v26_g1_dynamical_gs_completion_attempt.py"
+      - "test_susy_v26_g1_dynamical_gs_completion_attempt.py"
+      - "SUSY_V26_G1_DYNAMICAL_GS_COMPLETION_ATTEMPT.json"
+      - "SUSY_V26_G1_DYNAMICAL_GS_COMPLETION_ATTEMPT.md"
+      - "susy_v25_g1_g3_completion_frontier.py"
+      - "SUSY_V25_G1_G3_COMPLETION_FRONTIER.json"
+      - "SUSY_V25_G1_G3_COMPLETION_FRONTIER.md"
+      - "susy_v24_ps_source_contract.py"
+      - "SUSY_V24_PS_SOURCE_CONTRACT.json"
+      - "models/PSZ4RZ11SUSYV24/PSZ4RZ11SUSYV24.m"
+      - ".github/workflows/susy-v26-g1-dynamical-gs-attempt.yml"
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -B susy_v26_g1_dynamical_gs_completion_attempt.py --check
+      - run: python -m pytest -q test_susy_v26_g1_dynamical_gs_completion_attempt.py

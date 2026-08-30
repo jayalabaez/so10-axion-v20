@@ -1,0 +1,268 @@
+{
+  "schema": "susy_v54_nonabelian_filter_route_audit_v1",
+  "status": "V54_SU2F_NONABELIAN_FILTER__CHARGED_Z8_SOURCE_SPURION__EXACT255_DECLARED_ACTION_RANK215_NULL40_GAUGE36_PLUS_WEAK4__GENERIC_ALLOWED_S_H_A_H_FILLS_WEAK_KERNEL__NO_GATE_PROMOTION",
+  "candidate": {
+    "gauge_group": "Spin(10) x SU(2)_F",
+    "flavor_representations": {
+      "H": "(10,2)",
+      "U_V_W": "three (10,1)",
+      "P_Q": "two (1,2)",
+      "X_F": "(1,1)"
+    },
+    "source_replacement": "mu A B + k E A B -> alpha S A B + (beta/Lambda) S E A B, with Z8 charges A=0,B=S=4",
+    "filter_superpotential": "epsilon H B H + (P.H)U + (Q.H)W + U V + (S/2)W^2",
+    "source_driver": "X_S(S^2-1)",
+    "flavor_driver": "X_F(epsilon P Q-1)"
+  },
+  "source_vacuum": {
+    "S": 1,
+    "X_S": "-15/2",
+    "cross_dW_dS_before_driver": 15,
+    "F_S": 0,
+    "F_XS": 0,
+    "upstream_F_nonzero_counts": {
+      "E_F_x400": 0,
+      "A_F_x400": 0,
+      "B_F_x400": 0,
+      "C_F_x400": 0,
+      "barC_F_x400": 0
+    },
+    "D_nonzero_count": 0,
+    "coordinates": 178,
+    "hessian_rank": 145,
+    "hessian_nullity": 33,
+    "Spin10_orbit_rank": 33,
+    "ward_product_zero": true,
+    "kernel_equals_Spin10_gauge_orbit": true
+  },
+  "SU2F_vacuum": {
+    "P": [
+      1,
+      0
+    ],
+    "Q": [
+      0,
+      1
+    ],
+    "X_F": 0,
+    "F_terms_zero": true,
+    "D_terms_zero_for_equal_norms": true,
+    "driver_rank": 2,
+    "driver_nullity": 3,
+    "SU2F_orbit_rank": 3,
+    "driver_kernel_equals_complexified_SU2F_orbit": true
+  },
+  "filter_ranks": {
+    "coordinates": 50,
+    "full_rank": 46,
+    "full_nullity": 4,
+    "color_rank": 30,
+    "color_nullity": 0,
+    "weak_rank": 16,
+    "weak_nullity": 4,
+    "generic_fatal_S_H_A_H_filter_rank": 50,
+    "generic_fatal_weak_rank": 20
+  },
+  "same_action_hessian": {
+    "declared_coordinates": 255,
+    "declared_rank": 215,
+    "declared_nullity": 40,
+    "rank_decomposition": {
+      "source": 145,
+      "filter": 46,
+      "SU2F_driver": 2,
+      "massive_spectators": 22
+    },
+    "combined_gauge_orbit_rank": 36,
+    "ward_product_zero": true,
+    "declared_kernel_decomposition": {
+      "Spin10_gauge": 33,
+      "SU2F_gauge": 3,
+      "weak_Higgs": 4
+    },
+    "symmetry_complete_with_fatal_operator_rank": 219,
+    "symmetry_complete_with_fatal_operator_nullity": 36,
+    "fatal_kernel_equals_gauge_only": true
+  },
+  "selector": {
+    "group": "Z8 x exact Z2_matter",
+    "Z8_charges": {
+      "E54": 0,
+      "A45": 0,
+      "B45_DW": 4,
+      "S_source": 4,
+      "C16H": 0,
+      "barC16H": 0,
+      "H_10_SU2_doublet": 2,
+      "U10": 6,
+      "V10": 2,
+      "W10": 6,
+      "P_SU2_doublet": 0,
+      "Q_SU2_doublet": 0,
+      "X_source": 0,
+      "X_flavor": 0,
+      "F16": 3,
+      "spectator10_x": 1,
+      "spectator10_y": 3,
+      "spectator1_x": 0,
+      "spectator1_y": 4
+    },
+    "required_term_residues": {
+      "SAB": 0,
+      "SEAB": 0,
+      "HBH": 0,
+      "PHU": 0,
+      "QHW": 0,
+      "UV": 0,
+      "SWW": 0,
+      "PQ_driver": 0,
+      "FFV_Yukawa": 0,
+      "S_spectator10_mass": 0,
+      "S_spectator1_mass": 0
+    },
+    "direct_forbidden_residues": {
+      "H_squared": 4,
+      "H_A_H": 4,
+      "PH_QH": 4,
+      "F16_power4": 4
+    },
+    "first_exposed_residues": {
+      "S_H_A_H": 0,
+      "S_PH_QH": 0,
+      "S_F16_power4": 0
+    },
+    "universal_spurion_identity": "q(SAB)=q(HBH)=q(B^2)=0 implies q(S H A H)=0: s+a+b=0, 2h+b=0, 2b=0 => s+2h+a=-2b=0"
+  },
+  "discrete_anomalies": {
+    "convention": "conservative residues modulo 8",
+    "base": {
+      "Spin10_squared_Z8": 4,
+      "gravity_squared_Z8": 4,
+      "Z8_cubed": 0
+    },
+    "repair": {
+      "one_vector10_pair_charges": [
+        1,
+        3
+      ],
+      "one_singlet_pair_charges": [
+        0,
+        4
+      ],
+      "all_masses_from_S_charge4": true,
+      "vector_contribution": {
+        "Spin10_squared_Z8": 4,
+        "gravity_squared_Z8": 0,
+        "Z8_cubed": 0
+      },
+      "singlet_contribution": {
+        "Spin10_squared_Z8": 0,
+        "gravity_squared_Z8": 4,
+        "Z8_cubed": 0
+      }
+    },
+    "total_mod8": {
+      "Spin10_squared_Z8": 0,
+      "gravity_squared_Z8": 0,
+      "Z8_cubed": 0
+    }
+  },
+  "running": {
+    "Spin10": {
+      "EFT_sumT": 45,
+      "EFT_b": 21,
+      "EFT_pole_ratio": 1159.1589551399402,
+      "clean_renormalizable_UV_completion": "two 45 mediators generate S E A B / M",
+      "UV_sumT": 61,
+      "UV_b": 37,
+      "UV_pole_ratio": 54.84135620698124
+    },
+    "SU2_F": {
+      "weighted_fundamental_doublets": 12,
+      "Witten_parity": 0,
+      "sumT": 6,
+      "three_C2": 6,
+      "one_loop_b": 0,
+      "count_explanation": "10 doublets from H=(10,2), plus P and Q"
+    }
+  },
+  "UV_completion": {
+    "EFT_operator": "S Tr[E(AB+BA)]/Lambda",
+    "clean_tree_completion": "M Tr(R45 T45)+lambda Tr[R45(EA+AE)]+kappa S Tr(T45 B)",
+    "Schur_complement_source_coordinates": 268,
+    "Schur_complement_source_rank": 235,
+    "Schur_complement_source_nullity": 33,
+    "limitation": "the two added 45s drive the anomaly-repaired one-loop pole ratio below 100"
+  },
+  "no_go": {
+    "first_fatal_operator": "S epsilon_ab H_a^T A H_b / Lambda",
+    "operator_degree": 4,
+    "effect": "A0 has nonzero weak blocks, so the weak filter rank rises 16 -> 20",
+    "scope": "any additive ordinary selector retaining B^2, S A B, and epsilon H B H; the charge identity forces S epsilon H A H",
+    "proton_leak": "S (16_F)^4 / Lambda^2 is also Z8 invariant at degree 5"
+  },
+  "gate_ledger": {
+    "G1": {
+      "status": "OPEN",
+      "reason": "same-action natural Higgs kernel is removed by a symmetry-allowed operator"
+    },
+    "G2": {
+      "status": "OPEN",
+      "reason": "same-action natural Higgs kernel is removed by a symmetry-allowed operator"
+    },
+    "G3": {
+      "status": "OPEN",
+      "reason": "this bounded filter redesign does not establish the gate"
+    },
+    "G4": {
+      "status": "OPEN",
+      "reason": "same-action natural Higgs kernel is removed by a symmetry-allowed operator"
+    },
+    "G5": {
+      "status": "OPEN",
+      "reason": "this bounded filter redesign does not establish the gate"
+    },
+    "G6": {
+      "status": "OPEN",
+      "reason": "this bounded filter redesign does not establish the gate"
+    },
+    "G7": {
+      "status": "OPEN",
+      "reason": "this bounded filter redesign does not establish the gate"
+    },
+    "G8": {
+      "status": "OPEN",
+      "reason": "this bounded filter redesign does not establish the gate"
+    }
+  },
+  "verdict": {
+    "exact_intermediate_geometry": true,
+    "generic_symmetry_complete_action_has_one_Higgs_pair": false,
+    "complete_theory": false,
+    "gate_promotion": false,
+    "statement": "The SU(2)_F filter and charged-spurion source have an exact same-action witness, but the selector itself allows S H A H, which removes the Higgs pair.  The minimal source-spurion redesign is therefore rejected."
+  },
+  "sources": {
+    "Chen_Zhang_filter": "https://arxiv.org/abs/1410.5625",
+    "Witten_SU2_anomaly_check": "https://arxiv.org/abs/hep-lat/0209098",
+    "four_dimensional_R_symmetry_no_go": "https://arxiv.org/abs/1109.4797",
+    "Delta27_SO10_example": "https://arxiv.org/abs/1512.00850"
+  },
+  "integrity_checks": {
+    "source_rank145_null33": true,
+    "source_ward_and_kernel": true,
+    "filter_rank46_null4": true,
+    "color30_weak16": true,
+    "SU2_driver_rank2_orbit3": true,
+    "declared_rank215_null40": true,
+    "combined_orbit36_and_ward": true,
+    "fatal_rank219_null36": true,
+    "all_required_Z8_terms_allowed": true,
+    "all_direct_fatal_terms_forbidden": true,
+    "all_exposed_terms_allowed": true,
+    "conservative_Z8_anomalies_repaired": true,
+    "Witten_even_and_SU2F_b_zero": true,
+    "no_gate_promotion": true
+  },
+  "core_sha256": "b6f8f135b794c1ac25a478af90dbf18aa29b1fa791ab11cf59fc46829f051331"
+}

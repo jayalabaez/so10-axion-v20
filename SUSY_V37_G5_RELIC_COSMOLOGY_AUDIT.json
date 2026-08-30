@@ -1,0 +1,256 @@
+{
+  "conditional_decay_dark_extension": {
+    "BBN_decay_scale_example": {
+      "before_one_second_for_kappa_one_and_mass_one_TeV": true,
+      "description": "The two P/Mred operators after <P>=<Pbar>=fPQ/sqrt2 have this phase-space-one estimate.",
+      "epsilon_fPQ_over_sqrt2Mred": 1.473139127471974e-07,
+      "kappa": 1.0,
+      "lifetime_seconds": 1.5245725396760996e-12,
+      "mass_GeV": 1000.0,
+      "width_GeV": 4.317354142032751e-13
+    },
+    "all_new_fields_obey_selector_PQ_congruence": true,
+    "all_terms_exactly_invariant": true,
+    "construction_logic": "D2, D17 and D16 carry the inverse residual charges of one representative of each inequivalent anomalon block.  Their vectorlike partners make the selector anomaly-safe; the pre-existing neutral driver X mediates the visible decay operators.  This is a sufficient six-field construction, not a proof of global minimality among all UV completions.",
+    "extension_increment_mixed_Z4R_Z85_squared": 0,
+    "full_Z5610_Hsieh_Dai_Freed": {
+      "Delta_s1_canonical": 126225,
+      "Delta_s3_canonical": 3342782619495,
+      "both_vanish": true,
+      "cubic_condition_mod_6n": 0,
+      "linear_condition_2Delta_s1_mod_n": 0,
+      "order": 5610
+    },
+    "new_chiral_field_count": 6,
+    "new_fields": {
+      "D16": {
+        "PQ_numerator_over_170": 85,
+        "Z4R": 0,
+        "h85": 0,
+        "q5610": 85,
+        "q66": 1,
+        "residual_Z170": 85
+      },
+      "D17": {
+        "PQ_numerator_over_170": 113,
+        "Z4R": 2,
+        "h85": 69,
+        "q5610": 4469,
+        "q66": 65,
+        "residual_Z170": 49
+      },
+      "D2": {
+        "PQ_numerator_over_170": 23,
+        "Z4R": 0,
+        "h85": 84,
+        "q5610": 2399,
+        "q66": 29,
+        "residual_Z170": 19
+      },
+      "Db16": {
+        "PQ_numerator_over_170": -85,
+        "Z4R": 2,
+        "h85": 0,
+        "q5610": 5525,
+        "q66": 65,
+        "residual_Z170": 85
+      },
+      "Db17": {
+        "PQ_numerator_over_170": -113,
+        "Z4R": 0,
+        "h85": 16,
+        "q5610": 1141,
+        "q66": 1,
+        "residual_Z170": 121
+      },
+      "Db2": {
+        "PQ_numerator_over_170": -23,
+        "Z4R": 2,
+        "h85": 1,
+        "q5610": 3211,
+        "q66": 37,
+        "residual_Z170": 151
+      }
+    },
+    "quality_lattice": {
+      "Kahler_first_breaking_degree": 32,
+      "Kahler_witness": {
+        "A15": 1,
+        "A16": 1,
+        "A32dag": 16,
+        "PsiBar": 14
+      },
+      "quality_preserved_relative_to_V37": true,
+      "superpotential_first_breaking_degree": 33,
+      "superpotential_witness": {
+        "A32": 21,
+        "D16": 1,
+        "D17": 4,
+        "P": 6,
+        "X": 1
+      }
+    },
+    "selector_PQ_congruence_residues": {
+      "D16": 0,
+      "D17": 0,
+      "D2": 0,
+      "Db16": 0,
+      "Db17": 0,
+      "Db2": 0
+    },
+    "superpotential_terms": {
+      "decay_A15": [
+        "P",
+        "X",
+        "A15",
+        "Db17"
+      ],
+      "decay_A16": [
+        "X",
+        "A16",
+        "D16"
+      ],
+      "decay_A17": [
+        "X",
+        "A17",
+        "D17"
+      ],
+      "decay_A2": [
+        "X",
+        "A2",
+        "D2"
+      ],
+      "decay_A32": [
+        "Pbar",
+        "X",
+        "A32",
+        "Db2"
+      ],
+      "mu16_D16_Db16": [
+        "D16",
+        "Db16"
+      ],
+      "mu17_D17_Db17": [
+        "D17",
+        "Db17"
+      ],
+      "mu2_D2_Db2": [
+        "D2",
+        "Db2"
+      ]
+    },
+    "term_audits": {
+      "decay_A15": {
+        "PQ_numerator_over_170": 0,
+        "Z4R_mod4": 2,
+        "h85_mod85": 0,
+        "q66_mod66": 0,
+        "selector_and_PQ_invariant": true
+      },
+      "decay_A16": {
+        "PQ_numerator_over_170": 0,
+        "Z4R_mod4": 2,
+        "h85_mod85": 0,
+        "q66_mod66": 0,
+        "selector_and_PQ_invariant": true
+      },
+      "decay_A17": {
+        "PQ_numerator_over_170": 0,
+        "Z4R_mod4": 2,
+        "h85_mod85": 0,
+        "q66_mod66": 0,
+        "selector_and_PQ_invariant": true
+      },
+      "decay_A2": {
+        "PQ_numerator_over_170": 0,
+        "Z4R_mod4": 2,
+        "h85_mod85": 0,
+        "q66_mod66": 0,
+        "selector_and_PQ_invariant": true
+      },
+      "decay_A32": {
+        "PQ_numerator_over_170": 0,
+        "Z4R_mod4": 2,
+        "h85_mod85": 0,
+        "q66_mod66": 0,
+        "selector_and_PQ_invariant": true
+      },
+      "mu16_D16_Db16": {
+        "PQ_numerator_over_170": 0,
+        "Z4R_mod4": 2,
+        "h85_mod85": 0,
+        "q66_mod66": 0,
+        "selector_and_PQ_invariant": true
+      },
+      "mu17_D17_Db17": {
+        "PQ_numerator_over_170": 0,
+        "Z4R_mod4": 2,
+        "h85_mod85": 0,
+        "q66_mod66": 0,
+        "selector_and_PQ_invariant": true
+      },
+      "mu2_D2_Db2": {
+        "PQ_numerator_over_170": 0,
+        "Z4R_mod4": 2,
+        "h85_mod85": 0,
+        "q66_mod66": 0,
+        "selector_and_PQ_invariant": true
+      }
+    }
+  },
+  "core_sha256": "5b7424ef3436c298037bba0853edb484d127a987ba53ff88181a5d07c9744ce2",
+  "promotion": {
+    "G5_closed": false,
+    "defensible_result": "V37 core alone is cosmologically incomplete; the displayed extension is a symmetry- and quality-safe route, not a completed theory.",
+    "reason": "The candidate moves the unavoidable residual charge into dark carriers, but their masses, mediation, Boltzmann evolution, and full vacuum have not been supplied.  A real G5 promotion would require those calculations at one explicit parameter point."
+  },
+  "residual_relic_theorem": {
+    "PQ_breaking_charges": {
+      "P": 170,
+      "Pbar": 5440
+    },
+    "all_non_anomalon_core_fields_neutral": true,
+    "exact_consequence": "No state with a nonzero Z170 charge can decay solely to the V37 core fields outside the anomalon sector.  Hence at least one stable residual-charge relic exists in the unextended EFT; if it was thermal and m >> 3.4e5 GeV, standard thermal freeze-out is excluded by partial-wave unitarity.",
+    "inequivalent_charge_class_count": 3,
+    "inverse_charge_classes": {
+      "A15_A17": [
+        49,
+        121
+      ],
+      "A16": [
+        85,
+        85
+      ],
+      "A2_A32": [
+        19,
+        151
+      ]
+    },
+    "nontrivially_charged_core_fields": {
+      "A15": 49,
+      "A16": 85,
+      "A17": 121,
+      "A2": 151,
+      "A32": 19
+    },
+    "proof_boundary": "The statement is charge conservation only.  It does not assume a particular mass ordering, nor does it claim every anomalon is absolutely stable against multi-anomalon final states.",
+    "unbroken_group": "Z_gcd(5610,170)=Z170 ~= Z2 x Z85",
+    "unbroken_order": 170
+  },
+  "schema": "susy-v37-g5-relic-cosmology-audit-v1",
+  "scope": "Exact residual-relic obstruction plus a conditional symmetry-preserving decay/dark-sector construction; not a full cosmology.",
+  "soft_vacuum_and_cosmology_boundary": {
+    "observed_DM_source": "Planck 2018 cosmological parameters",
+    "observed_DM_target_Omega_h2": 0.12,
+    "thermal_relic_limit_GeV": 340000.0,
+    "thermal_relic_source": "Griest--Kamionkowski partial-wave unitarity bound for an elementary thermal relic",
+    "vacuum_status": "No generic added-sector vacuum lemma is claimed.  X has selector-allowed linear and cubic terms, and the D-sector scalar potential depends on the unprovided Kahler and mediation data.",
+    "viable_histories_not_yet_computed": [
+      "a secluded multi-component WIMP calculation using the X/H portal and the full scalar/fermion spectrum",
+      "or a low-reheat/nonthermal history with explicit inflaton branching fractions",
+      "PQ restoration, isocurvature, domain-wall, and entropy-dilution evolution",
+      "late-decay, BBN, CMB, direct-detection, and dark-radiation likelihoods"
+    ],
+    "why_this_is_not_an_actual_matching_result": "V37 specifies no mediation sector or complete Kahler potential, and electroweak H vevs, A/B terms, and Planck-suppressed coefficients have not been matched.  The displayed decay estimate is a conditional kinematic check, not a derived cosmological boundary condition."
+  }
+}

@@ -1,0 +1,432 @@
+{
+  "core_sha256": "9748910f3a511307f12d6c39c20aa8db9cc86ec2d7bfb4cf45cc66af5c82e40d",
+  "exact_boundary_exposed": {
+    "active_abelian_parent_alternative": {
+      "Tr_H2_light": 9524,
+      "Tr_X2_light": 1885,
+      "Tr_XH_light": -336,
+      "bH_with_plusminus85_breaking_pair": 23974,
+      "bX_with_plusminus66_breaking_pair": 10597,
+      "boundary": "If U1X and U1H remain bulk/active below Mc, the PS-only solution is inapplicable: kinetic mixing and an Abelian gauge/gaugino mass matrix must be evolved.",
+      "gH_max_for_100x_one_loop_headroom": 0.026742485777963423,
+      "gX_max_for_100x_one_loop_headroom": 0.040223564769513616
+    },
+    "advance": "A live transient formal-soft mirror of the active 21-field V39 source has a two-loop standard soft beta system, and the gauge-only 5D gaugino-mediation trajectory is analytic and positive for every PS-charged chiral multiplet.",
+    "obstruction": "X, P, Pbar, Zp, Nv and the anomalon/dark singlets have no gauge Casimir and remain unlifted at this order. Their soft masses, tadpoles, phases and A/B terms require a microscopic hidden-sector coupling.",
+    "why_no_pole_spectrum": "No broken-phase state, canonical numerical Yukawa point, mu/Bmu solution, individual PS/KK thresholds, or self-energy/covariance prescription follows from the gaugino boundary alone."
+  },
+  "gate_decisions": {
+    "G2_closed": false,
+    "G3_closed": false,
+    "G4_closed": false,
+    "G6_calculational_scaffold_advance": true,
+    "G6_closed": false,
+    "reason": "A beta system and a boundary ansatz do not select the missing microscopic singlet soft sector or physical pole solution."
+  },
+  "gaugino_mediation_witness": {
+    "Mhalf_GeV_at_Mc": 50000.0,
+    "PS_charged_fields": [
+      "H",
+      "Q",
+      "Qc",
+      "Sc",
+      "Sbc",
+      "SigC",
+      "SigBc",
+      "PsiBar",
+      "Psi",
+      "PsiC",
+      "PsiCBar"
+    ],
+    "all_PS_charged_m2_positive_in_gauge_only_solution": true,
+    "all_exact_singlets_remain_unlifted_gauge_only": true,
+    "boundary": {
+      "M4_equals_ML_equals_MR": "Mhalf",
+      "brane_A_terms": 0,
+      "brane_chiral_m2": 0,
+      "interpretation": "sequestered 5D gaugino-mediation witness at Mc",
+      "scope_assumption": "U1X and U1H are already broken or localized above Mc; only the Spin(10)/PS gauge multiplet propagates between Mc and vPS, with negligible brane kinetic/contact and KK threshold terms."
+    },
+    "boundary_scale_ratio_Mc_over_vPS": 100.0,
+    "g_unified_at_Mc": 0.7,
+    "one_loop_solution": {
+      "formula_gauge": "1/g_a(vPS)^2 = 1/g_U^2 + b_a log(Mc/vPS)/(8 pi^2)",
+      "formula_gaugino": "M_a(vPS)/Mhalf = g_a(vPS)^2/g_U^2",
+      "formula_scalar": "m_i^2/Mhalf^2 = sum_a 2 C_a(i)/b_a * (1-(M_a/Mhalf)^2)",
+      "gauge_couplings_at_vPS": {
+        "SU2L": 0.6547787263952669,
+        "SU2R": 0.6243001539961734,
+        "SU4": 0.6808131794854941
+      },
+      "gaugino_mass_ratios_at_vPS": {
+        "SU2L": 0.8749697562036896,
+        "SU2R": 0.7954095556727467,
+        "SU4": 0.9459318068594851
+      },
+      "one_loop_b_SU4_SU2L_SU2R": [
+        2.0,
+        5.0,
+        9.0
+      ],
+      "scalar_rows": {
+        "A15": {
+          "casimirs": {
+            "SU2L": 0.0,
+            "SU2R": 0.0,
+            "SU4": 0.0
+          },
+          "gauge_lifted": false,
+          "m2_over_Mhalf2_gauge_only": 0.0,
+          "mass_GeV_if_positive": 0.0
+        },
+        "A16": {
+          "casimirs": {
+            "SU2L": 0.0,
+            "SU2R": 0.0,
+            "SU4": 0.0
+          },
+          "gauge_lifted": false,
+          "m2_over_Mhalf2_gauge_only": 0.0,
+          "mass_GeV_if_positive": 0.0
+        },
+        "A17": {
+          "casimirs": {
+            "SU2L": 0.0,
+            "SU2R": 0.0,
+            "SU4": 0.0
+          },
+          "gauge_lifted": false,
+          "m2_over_Mhalf2_gauge_only": 0.0,
+          "mass_GeV_if_positive": 0.0
+        },
+        "A2": {
+          "casimirs": {
+            "SU2L": 0.0,
+            "SU2R": 0.0,
+            "SU4": 0.0
+          },
+          "gauge_lifted": false,
+          "m2_over_Mhalf2_gauge_only": 0.0,
+          "mass_GeV_if_positive": 0.0
+        },
+        "A32": {
+          "casimirs": {
+            "SU2L": 0.0,
+            "SU2R": 0.0,
+            "SU4": 0.0
+          },
+          "gauge_lifted": false,
+          "m2_over_Mhalf2_gauge_only": 0.0,
+          "mass_GeV_if_positive": 0.0
+        },
+        "D16": {
+          "casimirs": {
+            "SU2L": 0.0,
+            "SU2R": 0.0,
+            "SU4": 0.0
+          },
+          "gauge_lifted": false,
+          "m2_over_Mhalf2_gauge_only": 0.0,
+          "mass_GeV_if_positive": 0.0
+        },
+        "D17": {
+          "casimirs": {
+            "SU2L": 0.0,
+            "SU2R": 0.0,
+            "SU4": 0.0
+          },
+          "gauge_lifted": false,
+          "m2_over_Mhalf2_gauge_only": 0.0,
+          "mass_GeV_if_positive": 0.0
+        },
+        "D2": {
+          "casimirs": {
+            "SU2L": 0.0,
+            "SU2R": 0.0,
+            "SU4": 0.0
+          },
+          "gauge_lifted": false,
+          "m2_over_Mhalf2_gauge_only": 0.0,
+          "mass_GeV_if_positive": 0.0
+        },
+        "Db16": {
+          "casimirs": {
+            "SU2L": 0.0,
+            "SU2R": 0.0,
+            "SU4": 0.0
+          },
+          "gauge_lifted": false,
+          "m2_over_Mhalf2_gauge_only": 0.0,
+          "mass_GeV_if_positive": 0.0
+        },
+        "Db17": {
+          "casimirs": {
+            "SU2L": 0.0,
+            "SU2R": 0.0,
+            "SU4": 0.0
+          },
+          "gauge_lifted": false,
+          "m2_over_Mhalf2_gauge_only": 0.0,
+          "mass_GeV_if_positive": 0.0
+        },
+        "Db2": {
+          "casimirs": {
+            "SU2L": 0.0,
+            "SU2R": 0.0,
+            "SU4": 0.0
+          },
+          "gauge_lifted": false,
+          "m2_over_Mhalf2_gauge_only": 0.0,
+          "mass_GeV_if_positive": 0.0
+        },
+        "H": {
+          "casimirs": {
+            "SU2L": 0.75,
+            "SU2R": 0.75,
+            "SU4": 0.0
+          },
+          "gauge_lifted": true,
+          "m2_over_Mhalf2_gauge_only": 0.13154898417607075,
+          "mass_GeV_if_positive": 18134.84106465168
+        },
+        "Nv": {
+          "casimirs": {
+            "SU2L": 0.0,
+            "SU2R": 0.0,
+            "SU4": 0.0
+          },
+          "gauge_lifted": false,
+          "m2_over_Mhalf2_gauge_only": 0.0,
+          "mass_GeV_if_positive": 0.0
+        },
+        "P": {
+          "casimirs": {
+            "SU2L": 0.0,
+            "SU2R": 0.0,
+            "SU4": 0.0
+          },
+          "gauge_lifted": false,
+          "m2_over_Mhalf2_gauge_only": 0.0,
+          "mass_GeV_if_positive": 0.0
+        },
+        "Pbar": {
+          "casimirs": {
+            "SU2L": 0.0,
+            "SU2R": 0.0,
+            "SU4": 0.0
+          },
+          "gauge_lifted": false,
+          "m2_over_Mhalf2_gauge_only": 0.0,
+          "mass_GeV_if_positive": 0.0
+        },
+        "Psi": {
+          "casimirs": {
+            "SU2L": 0.75,
+            "SU2R": 0.0,
+            "SU4": 1.875
+          },
+          "gauge_lifted": true,
+          "m2_over_Mhalf2_gauge_only": 0.2676027841653127,
+          "mass_GeV_if_positive": 25865.168864967454
+        },
+        "PsiBar": {
+          "casimirs": {
+            "SU2L": 0.75,
+            "SU2R": 0.0,
+            "SU4": 1.875
+          },
+          "gauge_lifted": true,
+          "m2_over_Mhalf2_gauge_only": 0.2676027841653127,
+          "mass_GeV_if_positive": 25865.168864967454
+        },
+        "PsiC": {
+          "casimirs": {
+            "SU2L": 0.0,
+            "SU2R": 0.75,
+            "SU4": 1.875
+          },
+          "gauge_lifted": true,
+          "m2_over_Mhalf2_gauge_only": 0.25849501290406984,
+          "mass_GeV_if_positive": 25421.202415703603
+        },
+        "PsiCBar": {
+          "casimirs": {
+            "SU2L": 0.0,
+            "SU2R": 0.75,
+            "SU4": 1.875
+          },
+          "gauge_lifted": true,
+          "m2_over_Mhalf2_gauge_only": 0.25849501290406984,
+          "mass_GeV_if_positive": 25421.202415703603
+        },
+        "Q": {
+          "casimirs": {
+            "SU2L": 0.75,
+            "SU2R": 0.0,
+            "SU4": 1.875
+          },
+          "gauge_lifted": true,
+          "m2_over_Mhalf2_gauge_only": 0.2676027841653127,
+          "mass_GeV_if_positive": 25865.168864967454
+        },
+        "Qc": {
+          "casimirs": {
+            "SU2L": 0.0,
+            "SU2R": 0.75,
+            "SU4": 1.875
+          },
+          "gauge_lifted": true,
+          "m2_over_Mhalf2_gauge_only": 0.25849501290406984,
+          "mass_GeV_if_positive": 25421.202415703603
+        },
+        "Sbc": {
+          "casimirs": {
+            "SU2L": 0.0,
+            "SU2R": 0.75,
+            "SU4": 1.875
+          },
+          "gauge_lifted": true,
+          "m2_over_Mhalf2_gauge_only": 0.25849501290406984,
+          "mass_GeV_if_positive": 25421.202415703603
+        },
+        "Sc": {
+          "casimirs": {
+            "SU2L": 0.0,
+            "SU2R": 0.75,
+            "SU4": 1.875
+          },
+          "gauge_lifted": true,
+          "m2_over_Mhalf2_gauge_only": 0.25849501290406984,
+          "mass_GeV_if_positive": 25421.202415703603
+        },
+        "SigBc": {
+          "casimirs": {
+            "SU2L": 0.0,
+            "SU2R": 0.0,
+            "SU4": 2.5
+          },
+          "gauge_lifted": true,
+          "m2_over_Mhalf2_gauge_only": 0.26303254192887454,
+          "mass_GeV_if_positive": 25643.349134272346
+        },
+        "SigC": {
+          "casimirs": {
+            "SU2L": 0.0,
+            "SU2R": 0.0,
+            "SU4": 2.5
+          },
+          "gauge_lifted": true,
+          "m2_over_Mhalf2_gauge_only": 0.26303254192887454,
+          "mass_GeV_if_positive": 25643.349134272346
+        },
+        "X": {
+          "casimirs": {
+            "SU2L": 0.0,
+            "SU2R": 0.0,
+            "SU4": 0.0
+          },
+          "gauge_lifted": false,
+          "m2_over_Mhalf2_gauge_only": 0.0,
+          "mass_GeV_if_positive": 0.0
+        },
+        "Zp": {
+          "casimirs": {
+            "SU2L": 0.0,
+            "SU2R": 0.0,
+            "SU4": 0.0
+          },
+          "gauge_lifted": false,
+          "m2_over_Mhalf2_gauge_only": 0.0,
+          "mass_GeV_if_positive": 0.0
+        }
+      }
+    },
+    "unlifted_exact_singlets": [
+      "X",
+      "P",
+      "Nv",
+      "Pbar",
+      "Zp",
+      "A2",
+      "A32",
+      "A15",
+      "A17",
+      "A16",
+      "D2",
+      "Db2",
+      "D17",
+      "Db17",
+      "D16",
+      "Db16"
+    ]
+  },
+  "literature_basis": [
+    "https://arxiv.org/abs/0808.3598",
+    "https://arxiv.org/abs/0803.1758",
+    "https://arxiv.org/abs/0909.2863",
+    "https://arxiv.org/abs/1309.7223"
+  ],
+  "live_soft_RGE": {
+    "attestation_sha256": "374c25a69d15b40d932652bd8c7f958f04bef60c595368e4acba364d89549a4f",
+    "beta_counts": {
+      "bilinear_superpotential": 1,
+      "gauge": 3,
+      "gaugino_mass": 3,
+      "linear_superpotential": 3,
+      "soft_bilinear": 1,
+      "soft_linear": 3,
+      "soft_scalar_mass": 28,
+      "soft_trilinear": 27,
+      "trilinear_superpotential": 27
+    },
+    "declared_source_attestation_sha256": "7be5a3a11ad3d956e2b38bac6925cd8ed27e2a84242d7201cc0e11064a3126d2",
+    "declared_source_soft_terms_enabled": false,
+    "declared_source_two_loop_succeeded": true,
+    "engine": "15.0.1 for Microsoft Windows (64-bit) (July 2, 2026)",
+    "mode": "formal_soft_mirror",
+    "model": "PSZ4RZ5610Z3SUSYV39",
+    "one_loop_gauge_coefficients_input_form": [
+      "2*g4^3",
+      "5*gL^3",
+      "9*gR^3"
+    ],
+    "soft_beta_expression_sha256": "f6d026d035abb6264277b7ab5770496856194002fbf790c8ab4d14f067a913d2",
+    "soft_mirror_source_sha256": "a9c39244af18e49246326de8b1b903d0f4ef345ef3c03a3f3d911eaa7b6ada37",
+    "tool": "SARAH 4.15.3",
+    "two_loop_succeeded": true
+  },
+  "schema": "susy-v39-soft-boundary-audit-v1",
+  "source_manifest": [
+    {
+      "exists": true,
+      "path": "susy_v39_soft_boundary_audit.py",
+      "sha256": "a8e2bcc07f49d844941accc0012fa239aa3e5c4b7ac2b9bf89b4ecdb64c76c2d"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v39_soft_boundary_audit.py",
+      "sha256": "01d6e905872c260c0df6d21ca0e1731671e1fbd448cdbaf556c4f6320ac50050"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V39_Z3_FORMAL_SOFT_RGE_ATTESTATION.json",
+      "sha256": "374c25a69d15b40d932652bd8c7f958f04bef60c595368e4acba364d89549a4f"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V39_SARAH_RGE_ATTESTATION.json",
+      "sha256": "7be5a3a11ad3d956e2b38bac6925cd8ed27e2a84242d7201cc0e11064a3126d2"
+    },
+    {
+      "exists": true,
+      "path": "tools/derive-susy-v33-ps-rges.wls",
+      "sha256": "d0cf381dd016dd9711724e872f4d8c186ee482abddc85f77800f3e27b87d7717"
+    },
+    {
+      "exists": true,
+      "path": "models/PSZ4RZ5610Z3SUSYV39/PSZ4RZ5610Z3SUSYV39.m",
+      "sha256": "84d93158b8950df6ff77e8e6b975cfb3a162f8cfb1adea8ccaf710dedc82aaf7"
+    }
+  ],
+  "status": "V39_ACTIVE_Z3_SOURCE_AND_FORMAL_SOFT_TWO_LOOP_RGES_DERIVED__5D_GAUGINO_MEDIATION_TRAJECTORY_SOLVED__SINGLET_AND_POLE_BOUNDARY_OPEN"
+}

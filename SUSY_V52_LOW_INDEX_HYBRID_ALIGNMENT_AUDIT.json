@@ -1,0 +1,247 @@
+{
+  "candidate_name": "two-site nonlinear link plus exact low-index SM source",
+  "core_sha256": "234442c35dfee6c0374b5562ac6e42a9674d54f6dc985f1d982d32207ea46365",
+  "endpoint_partition": {
+    "E0_diagonal": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      -3,
+      -3,
+      -3,
+      -3
+    ],
+    "P_diagonal": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      -1,
+      -1,
+      -1,
+      -1
+    ],
+    "affine_identity_holds": true,
+    "dimensions": {
+      "PS_intersection_source_SM": 12,
+      "PS_only": 9,
+      "neither": 24,
+      "source_SM_only": 0
+    },
+    "exact_affine_identity": "2 E0 = -I_10 + 5 P",
+    "logical_inclusion_proof": "Every generator stabilizing the full source tuple stabilizes E0. Since E0=(-I+5P)/2, it commutes with P and lies in the 21-dimensional PS algebra. The independently certified source stabilizer has dimension 12.",
+    "source_stabilizer_is_subalgebra_of_PS": true,
+    "sum": 45
+  },
+  "exact_alignment_and_full_Hessian": {
+    "adapted_Rxi_count": {
+      "A_D_exact_zero": true,
+      "A_rank": 24,
+      "A_shape": [
+        24,
+        78
+      ],
+      "D_rank": 54,
+      "D_shape": [
+        78,
+        66
+      ],
+      "combined_Goldstone_determinant": "1152921504606846976",
+      "combined_Goldstone_nullity": 0,
+      "combined_Goldstone_rank": 78,
+      "exact_determinant_formula": "2^60",
+      "massless_SM_vectors": 12,
+      "spectrum": {
+        "(3+sqrt(5))/2": 9,
+        "(3-sqrt(5))/2": 9,
+        "2": 60
+      },
+      "uneaten_chirals_before_alignment": 24
+    },
+    "alignment_action": {
+      "definition": "C=[P,U E U^T], W_align=-(mu/400) Tr(C^2)",
+      "holomorphic": true,
+      "host_PS_covariance": "U->h U, [h,P]=0 gives C->h C h^T and leaves Tr(C^2) invariant",
+      "reason": "U is a constrained group-valued chiral field; expanding it in canonical coordinates makes the action nonpolynomial",
+      "renormalizable_elementary_link_completion": false,
+      "source_Spin10_covariance": "U->U g^{-1}, E->g E g^T makes U E U^T source-gauge invariant",
+      "spin_lift_contract": "U is the vector image rho10(mathcal_U) of a fundamental mathcal_U in Spin(10,C), so rho16(mathcal_U) exists locally for spinor transport; global bundle sectors remain unaudited",
+      "theory_space_locality": "local on the single V52 edge; the four-edge V51 analogue is a Wilson-product operator and requires a separate mediator completion"
+    },
+    "full_holomorphic_system": {
+      "HQ_exact_zero": true,
+      "HQ_max_abs": 0.0,
+      "H_nullity_mod37": 54,
+      "H_rank_mod37": 122,
+      "H_sha256": "1a33e5069aa6165f9973ba34f07bd9183c9bf1dbe5e53ce3697919a07c9dfc2c",
+      "H_shape": [
+        176,
+        176
+      ],
+      "Q_rank_mod37": 54,
+      "Q_sha256": "6613b9208a75cfe0405ceb599e53281d7d0f100a9744d5a67b0635693231f237",
+      "Q_shape": [
+        176,
+        66
+      ],
+      "broken_gauge_dimension": 54,
+      "coordinates": 176,
+      "exact_rank_lemma": "mod-37 gives rank(H)>=122 and rank(Q)>=54; exact HQ=0 gives rank(H)+rank(Q)<=176. Saturation proves both characteristic-zero ranks and ker(H)=im(Q).",
+      "field_order": "45 link chart; 54 E; 45 A; 16 C; 16 barC",
+      "full_alignment_map_rank": 24,
+      "full_alignment_map_shape": [
+        100,
+        176
+      ],
+      "kernel_equals_broken_gauge_orbit": true,
+      "orbit_matrix": "10 Q_total for 21 host-PS plus 45 source generators",
+      "published_matrix": "200 H_total at mu=1",
+      "scope": "source plus nonlinear link and alignment only; transported families, electroweak Higgs, U(1)F repair, seesaw, doublet-triplet and channel mediators are not coordinates of this Hessian"
+    },
+    "link_orientation_map": {
+      "Gram_sha256": "610d508e23b1464df5ac8f613e9884ff813d1bda7da86da0d6a67b33e199d993",
+      "exact_identity": "B_link^T B_link = 200 Pi_(Spin10/PS)",
+      "identity_holds": true,
+      "multiplicity": 24,
+      "nonzero_Gram_eigenvalue": 200,
+      "rank": 24,
+      "sha256": "f8f88cb30bb8f127552493b0ccc89b21548ec63657fc5a4726cff7c7f52f8f1b",
+      "shape": [
+        100,
+        45
+      ]
+    }
+  },
+  "field_and_perturbativity_proxy": {
+    "components": {
+      "54_plus_45_plus_16_plus_bar16": 24,
+      "alignment_extra_index": 0,
+      "four_transport_spinors": 8,
+      "nonlinear_link_adjoint_tangent_proxy": 8,
+      "three_16_families_plus_one_10H_if_colocated": 7
+    },
+    "convention": "b=3 C2-sum T, T(10)=1, C2(Spin10)=8",
+    "gauge_coupling": 0.73,
+    "including_colocated_visible_families_and_10H": {
+      "b": -23,
+      "b_Landau__sumT_minus_3C2": 23,
+      "b_asymptotic_freedom__3C2_minus_sumT": -23,
+      "pole_over_matching_scale": 627.6185595500677,
+      "sum_T": 47
+    },
+    "interpretation": "All formal one-loop poles are above the sigma-model NDA cutoff, so the V51 pre-cutoff Landau catastrophe is removed in this proxy. The link has no elementary linear representation above that cutoff, so this is not a UV beta-function certificate. Here b=3C2-sumT is the asymptotic-freedom convention; the positive Landau coefficient is -b=sumT-3C2.",
+    "minimal_source_plus_link_proxy": {
+      "b": -8,
+      "b_Landau__sumT_minus_3C2": 8,
+      "b_asymptotic_freedom__3C2_minus_sumT": -8,
+      "pole_over_matching_scale": 110503328.86663908,
+      "sum_T": 32
+    },
+    "nonlinear_sigma_NDA_cutoff_over_vector_mass": 17.214206321039963,
+    "same_inventory_as_V51_source_site_except_source_and_link_replaced": {
+      "V51_b": -292,
+      "V51_pole_over_matching_scale": 1.6609878217710772,
+      "V51_sum_T": 316,
+      "b": -16,
+      "b_Landau__sumT_minus_3C2": 16,
+      "b_asymptotic_freedom__3C2_minus_sumT": -16,
+      "pole_over_matching_scale": 10512.056357660906,
+      "sum_T": 40
+    }
+  },
+  "gate_effect": {
+    "C2": "NEW_ACTION_LOCALITY_PASS_ONLY__NO_FROZEN_PROMOTION",
+    "C3": "PARTIAL: exact full local holomorphic kernel/orbit theorem passes, but the gauge-fixed physical pencil and UV link completion are absent",
+    "C4": "PARTIAL: positive local sigma K\u00e4hler chart assumed; global K\u00e4hler completion and radiative stability are unproved",
+    "C5": "OPEN_FOR_NEW_ACTION: no one-loop matching",
+    "C6": "UNASSESSED_FOR_NEW_ACTION",
+    "C7": "OPEN_FOR_NEW_ACTION: no matched Wilson array",
+    "G2_closed": false,
+    "V51_link_multiplier_blocker": "REPAIRED_INSIDE_NEW_NONLINEAR_EFT",
+    "V51_residual_A5_blocker": "REPAIRED_INSIDE_NEW_HYBRID; source change makes the exact count 24",
+    "candidate_UV_viability": "PARTIAL_EFT_ONLY: perturbativity proxy survives to NDA cutoff, but no elementary/composite UV completion is constructed",
+    "gates_promoted": []
+  },
+  "integrity_checks": {
+    "SM_vectors_preserved": true,
+    "alignment_adds_no_Dynkin_index": true,
+    "alignment_annihilates_gauge_orbit": true,
+    "alignment_is_exact_PS_broken_projector": true,
+    "alignment_rank_is_24": true,
+    "all_24_residuals_are_lifted": true,
+    "full_HQ_is_exact": true,
+    "full_kernel_equals_gauge_orbit": true,
+    "low_index_source_is_exact": true,
+    "nonlinear_link_not_called_renormalizable": true,
+    "partition_is_12_9_0_24": true,
+    "pole_is_above_NDA_cutoff_in_proxy": true,
+    "source_SM_is_inside_PS": true
+  },
+  "limitations": [
+    "the Spin(10,C) link is a nonlinear sigma EFT without a linear UV completion",
+    "the 176-coordinate Hessian covers only the source, link and alignment\u2014not the complete phenomenological field inventory",
+    "the result changes the V50/V51 action and site count",
+    "the low-index source loses the renormalizable 126-Higgs seesaw and automatic matter parity",
+    "the missing-partner/doublet-triplet sector is absent",
+    "the independent U(1)F breaking sector remains to be supplied",
+    "one-loop matching, Wilson coefficients and global K\u00e4hler topology are unaudited"
+  ],
+  "n_failed_integrity_checks": 0,
+  "primary_sources": [
+    "https://arxiv.org/abs/hep-th/0104005",
+    "https://arxiv.org/abs/hep-th/0006025",
+    "https://arxiv.org/abs/hep-ph/0202278",
+    "https://arxiv.org/abs/hep-th/0109116"
+  ],
+  "provenance": {
+    "existing_files_modified": false,
+    "files": {
+      "SUSY_V52_LEAN_NONLINEAR_ALIGNMENT_AUDIT.json": "45b3d753fc77a13870a8fc7708508c2d4acd4b61d862f2a7ae9fd98692d24aa1",
+      "SUSY_V52_LOW_INDEX_SOURCE_AUDIT.json": "e1d2b340d263dcf46ff38518a9a788c1f339bb3dd1f5474308c3fa498600c6b1",
+      "susy_v52_lean_nonlinear_alignment_audit.py": "5414e33e604845ad3e222b51ca28c6d4f902910ede860e5d36a5b6da6abe8839",
+      "susy_v52_low_index_source_audit.py": "b9481cb6ffb0ce885528be62a23d4f0c8c432cafe0d690254aafd64ccad51438"
+    }
+  },
+  "schema": "susy-v52-low-index-source-nonlinear-link-hybrid-v1",
+  "scientific_result": "A concrete source-order-parameter invariant, not an arbitrary chart mass, lifts all 24 relative orientations. The exact combined holomorphic Hessian has no kernel beyond the 54 broken gauge directions.",
+  "sharp_next_obligations": [
+    "construct a calculable anomaly-safe UV completion of the nonlinear link",
+    "derive the alignment coefficient from that completion",
+    "add and audit the U(1)F-breaking, seesaw/matter-parity and doublet-triplet sectors",
+    "compute the complete gauge-fixed physical mass pencil with a chosen K\u00e4hler metric",
+    "perform one-loop matching and build the final Wilson array",
+    "match the new action to the frozen target before moving any G2 clause"
+  ],
+  "source_binding": {
+    "D_terms_all_zero": true,
+    "E0_diagonal": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      -3,
+      -3,
+      -3,
+      -3
+    ],
+    "F_terms_all_zero": true,
+    "coordinates": 131,
+    "core_sha256": "c07fd055da382cdc461b212679f70971ced8d4d13a319a51e2cbaabfecbeba52",
+    "orbit_rank": 33,
+    "schema": "susy-v52-low-index-source-audit-v1",
+    "source_Hessian_nullity": 33,
+    "source_Hessian_rank": 98,
+    "source_kernel_equals_orbit": true,
+    "source_sum_T": 24,
+    "stabilizer_dimension": 12,
+    "status": "V52_EXACT_RENORMALIZABLE_54_45_16_BAR16_SOURCE_WITNESS__F_AND_D_FLAT__SPIN10_ORBIT_RANK33_STABILIZER12__FULL_131_HESSIAN_RANK98_NULLITY33_AND_KERNEL_EQUALS_GAUGE_ORBIT__SOURCE_DYNKIN_INDEX24__PERTURBATIVE_SOURCE_REPLACEMENT__SEESAW_MATTER_PARITY_AND_MISSING_PARTNER_OBLIGATIONS_OPEN__NO_G2_CLAUSE_PROMOTED"
+  },
+  "status": "V52_TWO_SITE_NONLINEAR_LINK_PLUS_EXACT_54_45_16_BAR16_SOURCE__PS_VS_SM_PARTITION_12_9_0_24__GAUGE_INVARIANT_LOCAL_ALIGNMENT_RANK24__FULL176_HESSIAN_RANK122_NULLITY54_KERNEL_EQUALS_GAUGE_ORBIT__LEAN_INDEX_PROXY_AVOIDS_PRE_CUTOFF_LANDAU_POLE__NONLINEAR_LINK_UV_AND_FULL_MATCHING_OPEN__NO_G2_PROMOTION"
+}

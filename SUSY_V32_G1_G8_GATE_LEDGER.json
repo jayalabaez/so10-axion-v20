@@ -1,0 +1,76 @@
+{
+  "V31_reported_conditional_closed_count": 8,
+  "V32_conditional_upper_bound_closed_count": 5,
+  "complete_theory_exists_in_V32": false,
+  "conditional_count_is_only_an_upper_bound": true,
+  "established_full_predictive_closed_count": 0,
+  "gates": [
+    {
+      "V31_reported_conditional_closed": true,
+      "V32_conditional_upper_bound_closed": true,
+      "V32_finding": "conditional FCMA-18 algebra is retained only as an upper-bound assumption; the selector admits infinite X and P towers, the x=1/2 instanton expansion is uncontrolled, and the neutral-coefficient instanton sum is not covariant",
+      "established_full_predictive_closed": false,
+      "gate": "G1",
+      "promotion_requirement": "derive FCMA-18 and the instanton frame from one UV-complete source"
+    },
+    {
+      "V31_reported_conditional_closed": true,
+      "V32_conditional_upper_bound_closed": true,
+      "V32_finding": "positivity of 30 inserted rows remains a conditional ledger property; the claimed 22-sector evidence, mass matrices, and pole calculation are absent",
+      "established_full_predictive_closed": false,
+      "gate": "G2",
+      "promotion_requirement": "full component self-energies, mixings, and correlated pole covariance"
+    },
+    {
+      "V31_reported_conditional_closed": true,
+      "V32_conditional_upper_bound_closed": true,
+      "V32_finding": "the quotient-coordinate selector is an asserted potential with no explicit coordinates, local UV derivation, Hessian, or branch certificate",
+      "established_full_predictive_closed": false,
+      "gate": "G3",
+      "promotion_requirement": "derive the quotient-coordinate selector as a local microscopic potential"
+    },
+    {
+      "V31_reported_conditional_closed": true,
+      "V32_conditional_upper_bound_closed": true,
+      "V32_finding": "tree EWSB is algebraically back-solved; the pole Higgs, mediation, longevity, collider, and direct-detection calculations are absent",
+      "established_full_predictive_closed": false,
+      "gate": "G4",
+      "promotion_requirement": "loop EWSB, mediation derivation, collider likelihood, and vacuum longevity"
+    },
+    {
+      "V31_reported_conditional_closed": true,
+      "V32_conditional_upper_bound_closed": false,
+      "V32_finding": "V31 inserts NDW=1 although the inherited KSVZ anomaly is NDW=4; the relic targets and angle are boundary inputs, with no coupled thermal history, predicted neutrino flavour, or viable standard thermal leptogenesis",
+      "established_full_predictive_closed": false,
+      "gate": "G5",
+      "promotion_requirement": "derive flavour flux, PQ thermal history, axino/saxion decays, and initial angle"
+    },
+    {
+      "V31_reported_conditional_closed": true,
+      "V32_conditional_upper_bound_closed": true,
+      "V32_finding": "the omitted Delta b=(4,4,4) threshold is corrected and replayed at one loop, but the precision two-loop and physical-threshold chain remains open",
+      "established_full_predictive_closed": false,
+      "gate": "G6",
+      "promotion_requirement": "independent full two-loop gauge-Yukawa-soft and pole-threshold replay"
+    },
+    {
+      "V31_reported_conditional_closed": true,
+      "V32_conditional_upper_bound_closed": false,
+      "V32_finding": "the V31 vector-exchange mechanism is absent in the declared PS source; no valid partial lifetime exists until the dimension-five operator chain is derived",
+      "established_full_predictive_closed": false,
+      "gate": "G7",
+      "promotion_requirement": "complete dressed Wilson calculation with correlated lattice and spectrum errors"
+    },
+    {
+      "V31_reported_conditional_closed": true,
+      "V32_conditional_upper_bound_closed": false,
+      "V32_finding": "G8 depended on the invalid G7 replay and otherwise replays fitted CKM/PMNS and relic targets without a joint likelihood or out-of-sample prediction",
+      "established_full_predictive_closed": false,
+      "gate": "G8",
+      "promotion_requirement": "out-of-sample flavour/cosmology/collider prediction and a real joint likelihood"
+    }
+  ],
+  "safe_to_claim_new_fundamental_law": false,
+  "schema": "susy-v32-g1-g8-gate-ledger-v1",
+  "upper_bound_boundary": "G1 is counted only after assuming FCMA-18 fundamental; G2--G4 are bookkeeping/selector/tree identities, and G6 is only a corrected one-loop screen"
+}

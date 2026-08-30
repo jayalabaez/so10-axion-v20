@@ -1,0 +1,395 @@
+{
+  "action_derived_operator_and_C3": {
+    "Green_identity": "For the combined Hermitian pencil, u^dagger H v-(H u)^dagger v=0; endpoint rows cancel finite summation-by-parts terms.",
+    "collar_complex_Nambu": {
+      "H_N_Hermitian_residual": 0.0,
+      "M_maximum_imaginary_entry": 0.7772910382296291,
+      "M_transpose_symmetry_residual": 6.206335383118183e-17,
+      "Nambu_dimension": 88,
+      "Z_Hermitian_residual": 9.563252778155814e-18,
+      "Z_N_Hermitian_residual": 9.563252778155814e-18,
+      "Z_N_minimum_eigenvalue": 0.002273998460010712,
+      "Z_minimum_eigenvalue": 0.0022739984600107146,
+      "chiral_dimension": 44,
+      "maximum_signed_eigenvalue": 225.82848544076165,
+      "minimum_signed_eigenvalue": -225.82848544076148,
+      "plus_minus_pairing_residual": 2.5579538487363607e-13,
+      "whitened_Hermitian_residual": 4.4938668397781776e-14,
+      "zero_count_at_1e_minus_9": 0
+    },
+    "combined_representative": {
+      "metric_Hermitian_residual": 2.2809457355012235e-17,
+      "metric_minimum_eigenvalue": 0.002273998460010712,
+      "operator_Hermitian_residual": 0.0,
+      "operator_contract": "direct sum of complex chiral Nambu pencils and transverse/Rxi gauge-link pencils, all derived from the canonical finite action",
+      "representative_pencil_dimension": 138,
+      "whitened_operator_Hermitian_residual": 6.355287432313019e-14
+    },
+    "endpoint_auxiliaries": {
+      "auxiliary_metric_minimum": 0.8412411100139561,
+      "auxiliary_to_interior_maximum": 0.0,
+      "collar_dimension": 44,
+      "domain_statement": "Four endpoint auxiliaries remain coordinates of the 44x44 collar Hessian; endpoint equations are variational rows and rational pencils arise only after optional Schur elimination.",
+      "endpoint_positive_metric_minima": {
+        "host_endpoint": {
+          "W": 0.875978197020154,
+          "Z": 0.07500073738771106
+        },
+        "source_endpoint": {
+          "W": 0.841241110013956,
+          "Z": 0.07579042891198348
+        }
+      },
+      "endpoint_unrounded_Gershgorin_lower_bounds": {
+        "host_endpoint": {
+          "W": 0.87474990730096,
+          "Z": 0.057696955153861
+        },
+        "source_endpoint": {
+          "W": 0.834046435477651,
+          "Z": 0.073262361420894
+        }
+      },
+      "endpoint_unrounded_Gershgorin_lower_bounds_exact": {
+        "host_endpoint": {
+          "W": "5467186920631/6250000000000",
+          "Z": "57696955153861/1000000000000000"
+        },
+        "source_endpoint": {
+          "W": "834046435477651/1000000000000000",
+          "Z": "36631180710447/500000000000000"
+        }
+      },
+      "host_auxiliary_coupling_norm": 0.042018632696203186,
+      "node_dimension": 40,
+      "retained_auxiliary_dimension": 4,
+      "source_auxiliary_coupling_norm": 0.030408993041345533
+    },
+    "finite_variational_domain": "All site X/P, collar H/Hc, four endpoint auxiliaries, transverse site vectors and separate R_xi link coordinates in the abstract matrix model; a candidate positive-metric quotient has dimension 5097.",
+    "gauge_reduction": {
+      "abstract_unbroken_vector_zero_mode_multiplicity": 24,
+      "broken_vector": {
+        "dimension": 5,
+        "metric_Hermitian_residual": 0.0,
+        "metric_minimum_eigenvalue": 1.8765246762994936,
+        "minimum_positive_eigenvalue": 428.5040807722591,
+        "stiffness_Hermitian_residual": 0.0,
+        "whitened_Hermitian_residual": 0.0,
+        "zero_count_at_1e_minus_9": 0
+      },
+      "full_gauge_fixed_dimension": 5303,
+      "full_gauge_reduced_dimension": 5097,
+      "link_Rxi": {
+        "dimension": 4,
+        "metric_Hermitian_residual": 0.0,
+        "metric_minimum_eigenvalue": 1.6900000000000002,
+        "minimum_positive_eigenvalue": 2020.3160925625414,
+        "stiffness_Hermitian_residual": 0.0,
+        "whitened_Hermitian_residual": 0.0,
+        "zero_count_at_1e_minus_9": 0
+      },
+      "quotient_proof": "For any chosen 22-plus-184-dimensional subspace, its metric-orthogonal complement inherits strict positivity. The arithmetic dimension is 5097; identifying that subspace with the physical gauge-orbit image requires the missing explicit orbit map and coupled Goldstone block.",
+      "removed_link_Goldstones": 184,
+      "removed_source_gauge_orbit_profiles": 22,
+      "source_gauge_profile_Nambu_zero_count": 2,
+      "unbroken_vector": {
+        "dimension": 5,
+        "metric_Hermitian_residual": 0.0,
+        "metric_minimum_eigenvalue": 1.8765246762994936,
+        "minimum_positive_eigenvalue": 2020.3160925625396,
+        "stiffness_Hermitian_residual": 0.0,
+        "whitened_Hermitian_residual": 0.0,
+        "zero_count_at_1e_minus_9": 1
+      }
+    },
+    "locality": {
+      "all_fundamental_terms_site_or_nearest_neighbour": true,
+      "collar_non_nearest_neighbour_violations": 0,
+      "endpoint_auxiliary_to_bulk_interior_maximum": 0.0,
+      "source_XP_cross_nonzero_count": 8,
+      "source_XP_expected_incidence_nonzero_count": 8
+    },
+    "source_443_candidate_complex_Nambu": {
+      "H_N_Hermitian_residual": 0.0,
+      "M_maximum_imaginary_entry": 16.024681812207046,
+      "M_transpose_symmetry_residual": 3.972054645195637e-15,
+      "Nambu_dimension": 18,
+      "Z_Hermitian_residual": 2.2809457355012235e-17,
+      "Z_N_Hermitian_residual": 2.2809457355012235e-17,
+      "Z_N_minimum_eigenvalue": 0.19999999999999998,
+      "Z_minimum_eigenvalue": 0.19999999999999998,
+      "chiral_dimension": 9,
+      "maximum_signed_eigenvalue": 138.36561424869845,
+      "minimum_signed_eigenvalue": -138.36561424869842,
+      "plus_minus_pairing_residual": 8.526512829121202e-14,
+      "whitened_Hermitian_residual": 0.0,
+      "zero_count_at_1e_minus_9": 0
+    },
+    "source_gauge_complex_Nambu": {
+      "H_N_Hermitian_residual": 0.0,
+      "M_maximum_imaginary_entry": 17.298237178016038,
+      "M_transpose_symmetry_residual": 3.552713678800501e-15,
+      "Nambu_dimension": 18,
+      "Z_Hermitian_residual": 1.3877787807814457e-17,
+      "Z_N_Hermitian_residual": 1.3877787807814457e-17,
+      "Z_N_minimum_eigenvalue": 0.19999999999999998,
+      "Z_minimum_eigenvalue": 0.19999999999999998,
+      "chiral_dimension": 9,
+      "maximum_signed_eigenvalue": 138.3354932792951,
+      "minimum_signed_eigenvalue": -138.33549327929524,
+      "plus_minus_pairing_residual": 1.4210854715202004e-13,
+      "whitened_Hermitian_residual": 0.0,
+      "zero_count_at_1e_minus_9": 2
+    },
+    "variation_statement": "Every endpoint equation is a row of the canonical finite Hessian; no mass-dependent Schur complement is used as a boundary domain."
+  },
+  "canonical_action_contract": {
+    "anomaly_representations": {
+      "Spin10_link_tangent": "adjoint 45, a real representation",
+      "U1_link_tangent": "Stueckelberg shift multiplet with neutral fermion",
+      "endpoint_auxiliaries": "four positive-Kahler auxiliary multiplets per spinor lift are counted, but their Spin(10)xU(1)_F representations and anomaly pairing are not specified",
+      "scope": "transport/link additions alone are anomaly-safe; the complete physical G1 statement is not re-certified because endpoint-auxiliary representations and a nonlinear Wess-Zumino/global-anomaly completion are absent",
+      "transport": "relative to each original source zero profile, the N extra X_j and N P_j form N copies of R plus R-bar"
+    },
+    "coefficient_generators": {
+      "collar": "deterministic_collar_data(4), epsilon=0.055",
+      "complex_phase_seeds": {
+        "collar": 89,
+        "source_gauge_orbit": 79,
+        "source_physical": 73
+      },
+      "endpoint_seeds": [
+        601,
+        611
+      ]
+    },
+    "field_counts": {
+      "Spin10_spinor_components": 16,
+      "broken_gauge_dimension": 22,
+      "gauge_dimension": 46,
+      "source_components": 465,
+      "source_gauge_orbit_components": 22,
+      "source_physical_components": 443,
+      "spinor_channels": 4,
+      "unbroken_gauge_dimension": 24
+    },
+    "gauge_covariance": {
+      "background_gauge_for_matrices": "Omega_j=1 abstract gauge-fixed matrix witness; not a complete R_xi construction",
+      "collar_rule": "conditional: a physical lift requires explicit site representations, normalized invariant tensors and the covariant midpoint",
+      "fields": "X_j -> G_j X_j; P_j -> P_j G_j^{-1}; Omega_j -> G_j Omega_j G_(j+1)^{-1}",
+      "site_group": "Spin(10)_j x U(1)_{F,j}",
+      "transport_invariant": "P_j[X_j-Omega_j X_(j+1)]"
+    },
+    "geometry": {
+      "N_cells": 4,
+      "epsilon": 0.055,
+      "spacing": 0.01375,
+      "trapezoid_weights": [
+        0.125,
+        0.25,
+        0.25,
+        0.25,
+        0.125
+      ]
+    },
+    "local_action": {
+      "collar_Kahler": "positive mass-lumped trapezoid sum of epsilon times the full mixed H/Hc norm metric",
+      "collar_cell": "psi_bar^T D_j Delta_Omega psi-(1/(2N))psi_bar^T[[A,C^T],[C,Xi]]psi_bar; D_j=[[0,R8^T],[I+R7,0]]",
+      "covariant_difference": "Delta_Omega psi_j=R(Omega_j)psi_(j+1)-psi_j; compressed matrices use the Omega_j=1 background gauge",
+      "covariant_midpoint_required_for_physical_lift": "psi_bar_Omega,j=[psi_j+R(Omega_j)psi_(j+1)]/2 in the site-j frame; the executable matrices implement only its Omega_j=1 value",
+      "endpoint": "direct Z/M and positive-metric C/H/W auxiliary sectors retained as coordinates at nodes 0 and N",
+      "gauge_link": "abstract open path-laplacian transverse vectors, independent positive link block, and endpoint stiffness; this is not a constructed coupled endpoint-plus-link R_xi Goldstone Hessian",
+      "source_collar_interaction": "formal node-local channel-block interaction whose frozen H/Hc Hessian supplies A,Xi,C,R7,R8,Z; the normalized Spin(10) invariant-tensor lift and proof that these blocks lie in the V49 coefficient image are open",
+      "source_endpoint": "abstract background-gauge Hessian 0.31 I_443 plus 0 I_22; no equality to or pullback from the V47 465-component Hessian is proved",
+      "source_transport": "(Mc/sqrt(N+1)) sum_j P_j[X_j-Omega_j X_(j+1)] with K_X=I/(N+1), K_P=I"
+    },
+    "matrix_sha256": {
+      "collar_M": "bb2fb34ebcedab082cce9b7dd9b20a5e97d0c2fe706ba3f0c28081cf751fe576",
+      "collar_Z": "e87c53d27dae2559d88166798cd042b67c90972e020b4f54b884e58b75a8c077",
+      "gauge_L_broken": "2840fe52c2b5d78225745d99f4d700bb36c2128e5a04f0ccfa43ddcbbf92b0ae",
+      "gauge_L_unbroken": "5d8f49ab2fb8cefb2e49217deba03fa45f06e1ba0c6fc45126dd27779bb2e993",
+      "gauge_Z_broken": "2656227a524ef03b9bf097be5b450ab4434ce4f9a3162ec3deb9269c8b72bca7",
+      "gauge_Z_unbroken": "2656227a524ef03b9bf097be5b450ab4434ce4f9a3162ec3deb9269c8b72bca7",
+      "link_L": "776a2e48acdb0ec1772a0b23987794bf2dbd0da1c24f667df6f6f543790e6771",
+      "link_Z": "e57700512007dbc8a623e7b4db77d96b14e85b62d772145e1baed2a100998f68",
+      "source_M_gauge_orbit": "516adf2e1f888a90547b429918999168f65efdc730572637417453e225ffc353",
+      "source_M_physical": "a82dfb2a2ab54338482cd143512ea770df3835032233734b564ad100ab477966",
+      "source_Z_gauge_orbit": "f9bd979d59bd4e23a40bfc6872d43e0a8a2b11ebfb5edf56957e0799ad514157",
+      "source_Z_physical": "dd25c4f1f1106ace94740355a0418ee46b6ee2abbbec9a71227a3fa1f9627089"
+    },
+    "parameters": {
+      "gauge_coupling": 0.73,
+      "link_Kahler_scale": 1.3,
+      "link_vev": 99.62640099626401,
+      "source_gauge_orbit_mass": 0.0,
+      "source_physical_mass": 0.31,
+      "transport_scale": 72.72727272727273
+    },
+    "physical_identification_status": {
+      "missing_maps": [
+        "explicit V47 465x465 Hessian pullback in a representation-respecting basis",
+        "rank-22 orbit map Q, Z-orthogonal projector and Ward identity M Q=0",
+        "coupled five-Goldstone R_xi block from [B; e_N^T] for each broken generator",
+        "normalized Spin(10) invariant-tensor lift of every A/Xi/C/R7/R8/Z block",
+        "endpoint-auxiliary representations, charges and anomaly-safe pairing"
+      ],
+      "status": "OPEN_NOT_A_V47_V49_SAME_ACTION_CERTIFICATE"
+    },
+    "quadratic_domain": {
+      "chiral": "all site X/P, collar H/Hc, and four endpoint auxiliaries",
+      "unitary_gauge_quotient": "formal dimension subtraction of 22 source-orbit profiles and 4x46 link Goldstones; no 465x22 orbit map or Z-orthogonal projector is supplied",
+      "vector": "all transverse site vectors plus R_xi link coordinates"
+    },
+    "regulator_choice": "fixed finite-N positive-Kahler abstract quadratic witness; the degenerate exact-multiplier limit is not used, and identification with the physical V47/V49 action is deliberately not asserted",
+    "schema": "susy-v50-abstract-finite-moose-quadratic-witness-v2",
+    "sector_multiplicities": {
+      "collar": 16,
+      "gauge_broken": 22,
+      "gauge_unbroken": 24,
+      "link": 46,
+      "source_gauge_orbit": 22,
+      "source_physical": 443
+    }
+  },
+  "canonical_action_fingerprint": {
+    "canonical_hash_matches_independent_bytes": true,
+    "canonical_module_sha256": "04c6e60038412d99b7c2e9a80c4159fb1a6ba328a159df7b62a8fb45ec1158e4",
+    "canonical_schema": "susy-v50-abstract-finite-moose-quadratic-witness-v2",
+    "external_certificate_dependency": null,
+    "independent_canonical_bytes_sha256": "04c6e60038412d99b7c2e9a80c4159fb1a6ba328a159df7b62a8fb45ec1158e4",
+    "matrix_fingerprints_recomputed": true
+  },
+  "clause_decision": {
+    "C3_physical_same_action_domain_and_self_adjointness": "PARTIAL_NOT_PHYSICALLY_IDENTIFIED",
+    "C4_physical_full_kinetic_positivity": "PARTIAL_NOT_PHYSICALLY_IDENTIFIED",
+    "C5_counterterm_and_profile_matching": "REMAINS_PARTIAL",
+    "C7_component_Wilson_matching": "REMAINS_PARTIAL",
+    "G2_closed": false,
+    "abstract_finite_matrix_C3_witness": "PASS",
+    "abstract_finite_matrix_C4_witness": "PASS",
+    "gates_promoted": []
+  },
+  "core_sha256": "8711935c6e6c5d9a2728e620fe8bd6c23dd9ff75ba539b0433a1bb082f157bee",
+  "exact_uniform_fifth_derivative_certificate": {
+    "delta_even_frobenius_square_exact": "7639430535669093978350704961657511/2658455991569831745807614120560689152",
+    "delta_odd_frobenius_square_exact": "115701414496311189979427231110394917/85070591730234615865843651857942052864",
+    "independent_tighter_spectral_norm_bound": 0.9314307393181542,
+    "invertible_for_every_t": true,
+    "profile": "K(t)=I+sin^2(pi t)(R7a-R8a)+sin(2 pi t)(R7b-R8b)",
+    "profile_suprema": {
+      "abs_sin_double": 1,
+      "abs_sin_squared": 1
+    },
+    "proof": "For all t and v, ||K(t)v|| >= [1-||Delta_even||_2-||Delta_odd||_2]||v||. Exact binary-rational Frobenius enclosures dominate both operator norms, and the serialization envelope covers the original unrounded generator coefficients.",
+    "rho_upper": 0.09048533048982269,
+    "rho_upper_exact": "2827666577806959/31250000000000000",
+    "serialization_rounding_envelope_exact": "1/62500000000000",
+    "sqrt_upper_decimal_places": 18,
+    "uniform_sigma_min_lower_bound": 0.9095146695101773,
+    "uniform_sigma_min_lower_bound_exact": "28422333422193041/31250000000000000",
+    "uses_grid_in_proof": false
+  },
+  "full_positive_metric_and_C4": {
+    "direct_sum_Kronecker_certificate": {
+      "certified_collar_Gershgorin_lower_bound": 0.0017182433340001944,
+      "certified_full_metric_lower_bound": 0.0017182433340001944,
+      "core_minima": {
+        "collar": 0.0022739984600107146,
+        "gauge_broken": 1.8765246762994936,
+        "gauge_unbroken": 1.8765246762994936,
+        "link": 1.6900000000000002,
+        "source_gauge_orbit": 0.19999999999999998,
+        "source_physical": 0.19999999999999998
+      },
+      "declared_Hermitian_perturbation_ball_radius": 0.0008591216670000972,
+      "direct_sum_Kronecker_identity": "(Z_collar tensor I16) direct_sum (Z_source_phys tensor I443) direct_sum (Z_source_gauge tensor I22) direct_sum (Z_vector_unbroken tensor I24) direct_sum (Z_vector_broken tensor I22) direct_sum (Z_link tensor I46)",
+      "endpoint_additions_certified_PSD": true,
+      "endpoint_unrounded_Gershgorin_minimum": 0.057696955153861,
+      "full_gauge_fixed_coordinate_dimension": 5303,
+      "full_minimum_from_core_spectra": 0.0022739984600107146,
+      "full_positive_eigenvalue_count": 5303,
+      "post_perturbation_lower_bound": 0.0008591216670000972,
+      "proof": "The full spectrum is the multiset union of six core spectra with their frozen multiplicities. Weyl's inequality preserves positivity throughout the displayed global operator-norm perturbation ball.",
+      "representative_core_dimension": 76,
+      "representative_minimum_eigenvalue": 0.002273998460010712,
+      "sector_dimensions": {
+        "collar": 704,
+        "gauge_broken": 110,
+        "gauge_unbroken": 120,
+        "link": 184,
+        "source_gauge_orbit": 198,
+        "source_physical": 3987
+      }
+    },
+    "mixed_Kahler_certificate": {
+      "H_block_minimum": 0.3316596533345037,
+      "Hc_block_minimum": 0.3307760316794434,
+      "exact_Schur_minimum": 0.3303440157791086,
+      "full_metric_minimum": 0.32038836224689315,
+      "mixed_block_operator_norm": 0.058276786808438265,
+      "operator_norm_Schur_lower_bound": 0.32053606475379853,
+      "rounded_Gershgorin_lower_bound_exact": "249926303127309/1000000000000000",
+      "unrounded_generator_Gershgorin_lower_bound": 0.249926303127301,
+      "unrounded_generator_Gershgorin_lower_bound_exact": "249926303127301/1000000000000000"
+    },
+    "positive_cone_scope": "The displayed global Hermitian operator-norm ball applies to simultaneous source/coefficient perturbations of the complete kinetic matrix; outside coefficients are not certified."
+  },
+  "integrity_checks": {
+    "all_named_collar_blocks_are_present": true,
+    "both_source_Nambu_pencils_Hermitian_and_paired": true,
+    "candidate_quotient_arithmetic_and_abstract_zero_modes_exact": true,
+    "canonical_action_hash_matches_independent_bytes": true,
+    "canonical_spec_fail_closes_physical_identification": true,
+    "collar_M_complex_symmetric_and_Nambu_Hermitian": true,
+    "endpoint_auxiliaries_retained_in_same_positive_domain": true,
+    "exact_uniform_K_bound_positive_without_grid": true,
+    "full_5303_metric_strictly_positive": true,
+    "fundamental_action_is_finite_and_nearest_neighbour": true,
+    "mixed_Kahler_Schur_and_Gershgorin_bounds_positive": true,
+    "one_combined_action_operator_is_self_adjoint": true
+  },
+  "n_failed_integrity_checks": 0,
+  "physical_identification_obstructions": [
+    {
+      "id": "V47_HESSIAN_PULLBACK",
+      "impact": "The 443/22 source blocks are witnesses, not yet the physical V47 blocks.",
+      "missing_datum": "An explicit representation-respecting pullback proving that the abstract 0.31 I_443 plus 0 I_22 endpoint Hessian and Kahler block equal the retained V47 source Hessian."
+    },
+    {
+      "id": "GAUGE_ORBIT_PROJECTOR",
+      "impact": "5097 is certified arithmetic, not a certified physical quotient dimension.",
+      "missing_datum": "The actual 465x22 infinitesimal orbit map, its rank-22 proof, the Z-orthogonal projector, and equality of its image with the quadratic Hessian kernel."
+    },
+    {
+      "id": "COUPLED_RXI_GOLDSTONE_BLOCK",
+      "impact": "The separate link and endpoint blocks are not a complete physical R_xi realization.",
+      "missing_datum": "The endpoint source Goldstone/link-Goldstone mixing that yields the five-mode broken-generator R_xi Goldstone matrix."
+    },
+    {
+      "id": "ENDPOINT_AUXILIARY_REPRESENTATIONS",
+      "impact": "Their positive 64-coordinate lift cannot yet be identified with an anomaly-safe physical sector.",
+      "missing_datum": "Spin(10)xU(1)_F representations, charges, and vectorlike/anomaly pairing for all four positive-metric endpoint auxiliary fields."
+    },
+    {
+      "id": "V49_INVARIANT_TENSOR_LIFT",
+      "impact": "The random four-channel blocks tensored with I_16 are not proved to lie in the physical V49 invariant image.",
+      "missing_datum": "Normalized SO(10) invariant tensors/copy maps for A, Xi, C, R7, R8 and Z, plus a covariant midpoint in one site frame."
+    }
+  ],
+  "provenance": {
+    "canonical_spec_file": "susy_v50_finite_moose_action_spec.py",
+    "canonical_spec_file_sha256": "dcf2a973712cd593c5615aa69c09904c405660b7ba38c0fe49e6310c51c90a25",
+    "test_file": "test_susy_v50_complex_nambu_referee_audit.py",
+    "test_file_sha256": "b71473e82024f3d988cc446b1ace6f8370e2375b54cdb9ef884e7eb53697a339"
+  },
+  "schema": "susy-v50-complex-nambu-referee-audit-v2",
+  "scientific_scope": "One frozen finite-N abstract numerical quadratic witness with a positive Kahler metric. Its matrix theorems are proved, but it has not been pulled back from the physical V47/V49 representation-level action.",
+  "scope_boundary": [
+    "The finite N=4 matrix model is an abstract witness, not yet the declared physical regulator action.",
+    "Its positivity theorem covers the frozen point and explicit open ball, not arbitrary Kahler coefficients.",
+    "C5 still lacks a full affine/source-functional loop and finite-threshold rematch under fixed renormalization conditions.",
+    "C7 still lacks the normalized physical component tensor/Wilson incidence array."
+  ],
+  "shared_action_sha256": "04c6e60038412d99b7c2e9a80c4159fb1a6ba328a159df7b62a8fb45ec1158e4",
+  "status": "V50_CANONICAL_ABSTRACT_FINITE_MATRIX_WITNESS_INDEPENDENTLY_REPLAYED__EXACT_RATIONAL_UNIFORM_K_BOUND__COMPLEX_HERMITIAN_NAMBU_DOUBLING__FULL_5303_DIMENSION_POSITIVE_METRIC_AND_5097_DIMENSION_GAUGE_DOMAIN__ABSTRACT_C3_C4_WITNESS_PASS__PHYSICAL_C3_C4_PARTIAL_NOT_IDENTIFIED__C5_C7_AND_G2_OPEN"
+}

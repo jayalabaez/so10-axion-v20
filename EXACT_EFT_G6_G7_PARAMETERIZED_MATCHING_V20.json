@@ -1,0 +1,1032 @@
+{
+  "classification": {
+    "G6_dimensionful_family_parameterized_exactly": true,
+    "G6_normalized_tree_spectrum_reused_exactly": true,
+    "SM_or_PS_component_threshold_matching_complete": false,
+    "absolute_scale_and_Wilson_matching_complete": false,
+    "formal_residual_SU3_x_U1_89_scalar_threshold_determinants_complete": true,
+    "frozen_U1em_identification_correct": false,
+    "loop_and_pole_mass_corrections_complete": false,
+    "physical_SM_scalar_thresholds_identified": false,
+    "positive_G7_closed": false,
+    "selected_Delta_R_neutral_under_standard_Q": false,
+    "selected_chiral_H_neutral_under_standard_Q": false,
+    "standard_electromagnetic_vacuum_preserved": false,
+    "two_loop_RGE_complete": false
+  },
+  "core_sha256": "0c7872a9e309ea817270051a84c685e09fc77ccdbd424e69a71106b7689f275f",
+  "dimensionful_EFT_family": {
+    "common_scale_hierarchy_test": {
+      "cannot_generate_EW_over_GUT_hierarchy_by_selecting_M0": true,
+      "conditional_assumption": "all canonical normalized field coordinates are restored with the same M0",
+      "required_if_nonuniform_matching_is_intended": "field-dependent wave-function/VEV matching followed by a recomputation of canonical masses and threshold couplings",
+      "then_vH_over_vPhi210": "1",
+      "then_vPhi17_over_vPhi210": "1"
+    },
+    "dimension_restoration": {
+      "canonical_common_scale": "q_phys=M0*q_hat and V_phys=M0^4*V_hat(q_phys/M0)",
+      "tree_scalar_masses": "m_tree,a^2=M0^2*x_a",
+      "uniform_scale_transformation": "M0 -> c*M0 sends every tree mass and VEV magnitude to c times itself"
+    },
+    "dimension_six_matching": {
+      "equivalent_Wilson_locus": "C6=1/(20*M0^2)",
+      "equivalent_cutoff_locus": "Lambda_phys=M0*sqrt(20*gamma_phys)",
+      "frozen_dimensionless_coefficient": "C6*M0^2=1/20",
+      "if_gamma_phys_equals_1_over_20": "Lambda_phys=M0",
+      "physical_operator": "C6*||A_H Sigma||^2 with C6=gamma_phys/Lambda_phys^2"
+    },
+    "nonidentifiability_proof": {
+      "M0_solvable_from_frozen_G6": false,
+      "Wilson_coefficient_or_cutoff_separately_solvable": false,
+      "dimensionful_observable_in_frozen_G6": false,
+      "family": "for every c>0, (M0,C6)->(c*M0,C6/c^2) leaves all frozen x_a and C6*M0^2 unchanged",
+      "minimum_external_UV_input_after_M0": "either gamma_phys or Lambda_phys; G6 fixes only their ratio C6=gamma_phys/Lambda_phys^2",
+      "minimum_external_scale_input": "one dimensionful anchor plus its field/observable matching prescription"
+    },
+    "normalized_target_norm_ratios": {
+      "H10": "1",
+      "Phi17": "1",
+      "Phi210": "1",
+      "S": "1/5",
+      "Sigma126bar": "1/5",
+      "warning": "A physical hierarchy cannot be assigned without a declared field/VEV matching map and wave-function normalization."
+    }
+  },
+  "exact_residual_scalar_thresholds": {
+    "at_mu_equals_M0": {
+      "L3": 2.369033908085625,
+      "L89": 2.1391399377977582,
+      "alpha3_inverse_shift_low_minus_high": -0.37704345682413803,
+      "alpha89_inverse_shift_low_minus_high": -0.3404546950658028
+    },
+    "decoupling_convention": {
+      "definition": "low theory excludes these scalar modes; high theory includes them",
+      "finite_scheme_constants_included": false,
+      "inverse_coupling_formula": "alpha_low^-1(mu)-alpha_high^-1(mu)=-L_i(mu)/(2*pi)"
+    },
+    "exact_parameterized_result": {
+      "B3": "41/2",
+      "B89": "40",
+      "L3(mu)": "(41/2)*ln(M0/mu)+2.3690339080856249",
+      "L89(mu)": "(40)*ln(M0/mu)+2.1391399377977582",
+      "c3": 2.369033908085625,
+      "c89": 2.1391399377977582
+    },
+    "independent_implementation_comparison": {
+      "agreement": true,
+      "implementation_A": "exact rational Vieta root products",
+      "implementation_B": "floating companion-matrix roots via numpy.roots",
+      "maximum_sector_log_determinant_difference": 2.6645352591003757e-15,
+      "scope_warning": "This compares the residual scalar determinant only, not two independent two-loop RGE implementations.",
+      "tolerance": 1e-12
+    },
+    "interpretation_guard": {
+      "Pati_Salam_matching_interpretation_allowed": false,
+      "abelian_generator": "G_(8,9)",
+      "forbidden_aliases": [
+        "QED",
+        "U(1)_em",
+        "U(1)_Y"
+      ],
+      "physical_electromagnetic_interpretation_allowed": false,
+      "physical_hypercharge_interpretation_allowed": false,
+      "reason": "standard Q stabilizes neither selected chiral H nor selected Delta_R"
+    },
+    "mass_parameterization": "M_a^2=M0^2*x_a with M0>0",
+    "matching_scale_parameter": "rho=M0/mu",
+    "scope": "448 massive tree-level scalar real modes, formal residual SU(3) x U(1)_89 only",
+    "sector_data": [
+      {
+        "dimensionless_threshold_log_constant": {
+          "c3": -0.0,
+          "c89": -0.0
+        },
+        "full_real_dimension": 24,
+        "mass_squared_determinant_over_M0": {
+          "absolute_log_difference": 1.7763568394002505e-15,
+          "definition": "product over massive roots of x_a, including real multiplicity",
+          "exact_denominator": "23250543750000000000000000000000",
+          "exact_numerator": "269621626402485921836390214967",
+          "maximum_numerical_root_imaginary_part": 0.0,
+          "natural_log_exact_via_Vieta": -4.457064205391401,
+          "natural_log_independent_numerical_roots": -4.457064205391399
+        },
+        "massive_primitive_factors": [
+          {
+            "degree": 1,
+            "exact_log_product_with_multiplicity": 1.3862943611198906,
+            "exact_root_product": "4",
+            "numerical_log_product_with_multiplicity": 1.3862943611198906,
+            "primitive_coefficients_high_to_low": [
+              1,
+              -4
+            ],
+            "real_root_multiplicity": 1
+          },
+          {
+            "degree": 1,
+            "exact_log_product_with_multiplicity": 3.2973172511747633,
+            "exact_root_product": "26/5",
+            "numerical_log_product_with_multiplicity": 3.2973172511747633,
+            "primitive_coefficients_high_to_low": [
+              5,
+              -26
+            ],
+            "real_root_multiplicity": 2
+          },
+          {
+            "degree": 1,
+            "exact_log_product_with_multiplicity": -2.0794415416798357,
+            "exact_root_product": "1/8",
+            "numerical_log_product_with_multiplicity": -2.0794415416798357,
+            "primitive_coefficients_high_to_low": [
+              8,
+              -1
+            ],
+            "real_root_multiplicity": 1
+          },
+          {
+            "degree": 1,
+            "exact_log_product_with_multiplicity": -1.8325814637483102,
+            "exact_root_product": "4/25",
+            "numerical_log_product_with_multiplicity": -1.8325814637483102,
+            "primitive_coefficients_high_to_low": [
+              25,
+              -4
+            ],
+            "real_root_multiplicity": 1
+          },
+          {
+            "degree": 1,
+            "exact_log_product_with_multiplicity": -3.912023005428146,
+            "exact_root_product": "1/50",
+            "numerical_log_product_with_multiplicity": -3.912023005428146,
+            "primitive_coefficients_high_to_low": [
+              50,
+              -1
+            ],
+            "real_root_multiplicity": 1
+          },
+          {
+            "degree": 1,
+            "exact_log_product_with_multiplicity": -3.180204495111864,
+            "exact_root_product": "2141/10500",
+            "numerical_log_product_with_multiplicity": -3.180204495111864,
+            "primitive_coefficients_high_to_low": [
+              10500,
+              -2141
+            ],
+            "real_root_multiplicity": 2
+          },
+          {
+            "degree": 2,
+            "exact_log_product_with_multiplicity": -1.7446141480326423,
+            "exact_root_product": "6019/14400",
+            "numerical_log_product_with_multiplicity": -1.7446141480326423,
+            "primitive_coefficients_high_to_low": [
+              14400,
+              -32656,
+              6019
+            ],
+            "real_root_multiplicity": 2
+          },
+          {
+            "degree": 2,
+            "exact_log_product_with_multiplicity": -0.30116134201978406,
+            "exact_root_product": "4129/4800",
+            "numerical_log_product_with_multiplicity": -0.30116134201978406,
+            "primitive_coefficients_high_to_low": [
+              14400,
+              -27616,
+              12387
+            ],
+            "real_root_multiplicity": 2
+          },
+          {
+            "degree": 4,
+            "exact_log_product_with_multiplicity": 3.909350178334528,
+            "exact_root_product": "63112336/1265625",
+            "numerical_log_product_with_multiplicity": 3.9093501783345292,
+            "primitive_coefficients_high_to_low": [
+              11390625,
+              -176478750,
+              828210825,
+              -1246452890,
+              568011024
+            ],
+            "real_root_multiplicity": 1
+          }
+        ],
+        "massive_real_dimension": 20,
+        "one_loop_real_scalar_beta_contribution": {
+          "Delta_b3": "0",
+          "Delta_b89": "0"
+        },
+        "residual_representation": {
+          "SU3C_irrep": "1",
+          "SU3C_quadratic_Casimir": "0",
+          "formal_U1_89_charge_squared": "0",
+          "source_field_mislabelled_as": "U1em_charge_squared"
+        },
+        "sector": "C0_Q0",
+        "zero_real_dimension_excluded": 4
+      },
+      {
+        "dimensionless_threshold_log_constant": {
+          "c3": -0.0,
+          "c89": -0.9206690932658441
+        },
+        "full_real_dimension": 24,
+        "mass_squared_determinant_over_M0": {
+          "absolute_log_difference": 0.0,
+          "definition": "product over massive roots of x_a, including real multiplicity",
+          "exact_denominator": "269042006250000000000000000000000000000000000",
+          "exact_numerator": "4282742966177213219763164519088261699601",
+          "maximum_numerical_root_imaginary_part": 0.0,
+          "natural_log_exact_via_Vieta": -11.04802911919013,
+          "natural_log_independent_numerical_roots": -11.04802911919013
+        },
+        "massive_primitive_factors": [
+          {
+            "degree": 1,
+            "exact_log_product_with_multiplicity": 1.230371278180467,
+            "exact_root_product": "37/20",
+            "numerical_log_product_with_multiplicity": 1.230371278180467,
+            "primitive_coefficients_high_to_low": [
+              20,
+              -37
+            ],
+            "real_root_multiplicity": 2
+          },
+          {
+            "degree": 1,
+            "exact_log_product_with_multiplicity": 1.7135532086834948,
+            "exact_root_product": "106/45",
+            "numerical_log_product_with_multiplicity": 1.7135532086834948,
+            "primitive_coefficients_high_to_low": [
+              45,
+              -106
+            ],
+            "real_root_multiplicity": 2
+          },
+          {
+            "degree": 1,
+            "exact_log_product_with_multiplicity": -5.483184141627843,
+            "exact_root_product": "1333/5250",
+            "numerical_log_product_with_multiplicity": -5.483184141627843,
+            "primitive_coefficients_high_to_low": [
+              5250,
+              -1333
+            ],
+            "real_root_multiplicity": 4
+          },
+          {
+            "degree": 2,
+            "exact_log_product_with_multiplicity": 2.960625595784788,
+            "exact_root_product": "54929/12500",
+            "numerical_log_product_with_multiplicity": 2.960625595784788,
+            "primitive_coefficients_high_to_low": [
+              12500,
+              -53725,
+              54929
+            ],
+            "real_root_multiplicity": 2
+          },
+          {
+            "degree": 2,
+            "exact_log_product_with_multiplicity": -0.5147727937124028,
+            "exact_root_product": "55661/72000",
+            "numerical_log_product_with_multiplicity": -0.5147727937124027,
+            "primitive_coefficients_high_to_low": [
+              72000,
+              -375680,
+              55661
+            ],
+            "real_root_multiplicity": 2
+          },
+          {
+            "degree": 2,
+            "exact_log_product_with_multiplicity": -10.954622266498633,
+            "exact_root_product": "301/72000",
+            "numerical_log_product_with_multiplicity": -10.954622266498633,
+            "primitive_coefficients_high_to_low": [
+              72000,
+              -62480,
+              301
+            ],
+            "real_root_multiplicity": 2
+          }
+        ],
+        "massive_real_dimension": 20,
+        "one_loop_real_scalar_beta_contribution": {
+          "Delta_b3": "0",
+          "Delta_b89": "10/3"
+        },
+        "residual_representation": {
+          "SU3C_irrep": "1",
+          "SU3C_quadratic_Casimir": "0",
+          "formal_U1_89_charge_squared": "1",
+          "source_field_mislabelled_as": "U1em_charge_squared"
+        },
+        "sector": "C0_Q1",
+        "zero_real_dimension_excluded": 4
+      },
+      {
+        "dimensionless_threshold_log_constant": {
+          "c3": -0.0879003353683767,
+          "c89": -0.0
+        },
+        "full_real_dimension": 102,
+        "mass_squared_determinant_over_M0": {
+          "absolute_log_difference": 2.6645352591003757e-15,
+          "definition": "product over massive roots of x_a, including real multiplicity",
+          "exact_denominator": "26895114222881581755544105026058976907048852610251375144282434521988384593473887795855858939830795861780643463134765625000000000000000000000000000000000000",
+          "exact_numerator": "47984391222907271601216632846388079459401133560785426509251586898396437546829206273957705107632438567832104800738831223732706097713019809039793265195161",
+          "maximum_numerical_root_imaginary_part": 0.0,
+          "natural_log_exact_via_Vieta": -6.3288241465231225,
+          "natural_log_independent_numerical_roots": -6.328824146523125
+        },
+        "massive_primitive_factors": [
+          {
+            "degree": 1,
+            "exact_log_product_with_multiplicity": 4.1588830833596715,
+            "exact_root_product": "2",
+            "numerical_log_product_with_multiplicity": 4.1588830833596715,
+            "primitive_coefficients_high_to_low": [
+              1,
+              -2
+            ],
+            "real_root_multiplicity": 6
+          },
+          {
+            "degree": 1,
+            "exact_log_product_with_multiplicity": -17.73906936240426,
+            "exact_root_product": "13/250",
+            "numerical_log_product_with_multiplicity": -17.73906936240426,
+            "primitive_coefficients_high_to_low": [
+              250,
+              -13
+            ],
+            "real_root_multiplicity": 6
+          },
+          {
+            "degree": 1,
+            "exact_log_product_with_multiplicity": -2.644435493177815,
+            "exact_root_product": "361/450",
+            "numerical_log_product_with_multiplicity": -2.644435493177815,
+            "primitive_coefficients_high_to_low": [
+              450,
+              -361
+            ],
+            "real_root_multiplicity": 12
+          },
+          {
+            "degree": 1,
+            "exact_log_product_with_multiplicity": -0.9535278025373757,
+            "exact_root_product": "53743/63000",
+            "numerical_log_product_with_multiplicity": -0.9535278025373757,
+            "primitive_coefficients_high_to_low": [
+              63000,
+              -53743
+            ],
+            "real_root_multiplicity": 6
+          },
+          {
+            "degree": 1,
+            "exact_log_product_with_multiplicity": -8.244689189797827,
+            "exact_root_product": "15943/63000",
+            "numerical_log_product_with_multiplicity": -8.244689189797827,
+            "primitive_coefficients_high_to_low": [
+              63000,
+              -15943
+            ],
+            "real_root_multiplicity": 6
+          },
+          {
+            "degree": 2,
+            "exact_log_product_with_multiplicity": 8.539690879021027,
+            "exact_root_product": "12971/3125",
+            "numerical_log_product_with_multiplicity": 8.539690879021027,
+            "primitive_coefficients_high_to_low": [
+              3125,
+              -12850,
+              12971
+            ],
+            "real_root_multiplicity": 6
+          },
+          {
+            "degree": 2,
+            "exact_log_product_with_multiplicity": 8.253946472666643,
+            "exact_root_product": "80143/20250",
+            "numerical_log_product_with_multiplicity": 8.253946472666641,
+            "primitive_coefficients_high_to_low": [
+              20250,
+              -81765,
+              80143
+            ],
+            "real_root_multiplicity": 6
+          },
+          {
+            "degree": 4,
+            "exact_log_product_with_multiplicity": 2.3003772663468114,
+            "exact_root_product": "4952/3375",
+            "numerical_log_product_with_multiplicity": 2.30037726634681,
+            "primitive_coefficients_high_to_low": [
+              270000,
+              -2171100,
+              4711017,
+              -3214490,
+              396160
+            ],
+            "real_root_multiplicity": 6
+          }
+        ],
+        "massive_real_dimension": 84,
+        "one_loop_real_scalar_beta_contribution": {
+          "Delta_b3": "7/3",
+          "Delta_b89": "0"
+        },
+        "residual_representation": {
+          "SU3C_irrep": "3+3bar",
+          "SU3C_quadratic_Casimir": "4/3",
+          "formal_U1_89_charge_squared": "0",
+          "source_field_mislabelled_as": "U1em_charge_squared"
+        },
+        "sector": "C16_Q0",
+        "zero_real_dimension_excluded": 18
+      },
+      {
+        "dimensionless_threshold_log_constant": {
+          "c3": -0.10043442876990853,
+          "c89": -0.6026065726194512
+        },
+        "full_real_dimension": 96,
+        "mass_squared_determinant_over_M0": {
+          "absolute_log_difference": 0.0,
+          "definition": "product over massive roots of x_a, including real multiplicity",
+          "exact_denominator": "399714352909680789385429413788339610173594567152597191760500682151426021793128029457875527441501617431640625000000000000000000000000000000000000000000000000000000000000",
+          "exact_numerator": "289231261763705679673090552479931576048887787769272670354013961042934901858834282361206943908043835325318964045969808630164563143558349662189354384905870149388089649",
+          "maximum_numerical_root_imaginary_part": 0.0,
+          "natural_log_exact_via_Vieta": -7.231278871433415,
+          "natural_log_independent_numerical_roots": -7.231278871433415
+        },
+        "massive_primitive_factors": [
+          {
+            "degree": 1,
+            "exact_log_product_with_multiplicity": 8.317766166719343,
+            "exact_root_product": "2",
+            "numerical_log_product_with_multiplicity": 8.317766166719343,
+            "primitive_coefficients_high_to_low": [
+              1,
+              -2
+            ],
+            "real_root_multiplicity": 12
+          },
+          {
+            "degree": 1,
+            "exact_log_product_with_multiplicity": 0.0,
+            "exact_root_product": "1",
+            "numerical_log_product_with_multiplicity": 0.0,
+            "primitive_coefficients_high_to_low": [
+              1,
+              -1
+            ],
+            "real_root_multiplicity": 6
+          },
+          {
+            "degree": 1,
+            "exact_log_product_with_multiplicity": 3.72345892635066,
+            "exact_root_product": "93/50",
+            "numerical_log_product_with_multiplicity": 3.72345892635066,
+            "primitive_coefficients_high_to_low": [
+              50,
+              -93
+            ],
+            "real_root_multiplicity": 6
+          },
+          {
+            "degree": 1,
+            "exact_log_product_with_multiplicity": 3.191607521857355,
+            "exact_root_product": "383/225",
+            "numerical_log_product_with_multiplicity": 3.191607521857355,
+            "primitive_coefficients_high_to_low": [
+              225,
+              -383
+            ],
+            "real_root_multiplicity": 6
+          },
+          {
+            "degree": 1,
+            "exact_log_product_with_multiplicity": -1.9188955434846546,
+            "exact_root_product": "767/900",
+            "numerical_log_product_with_multiplicity": -1.9188955434846546,
+            "primitive_coefficients_high_to_low": [
+              900,
+              -767
+            ],
+            "real_root_multiplicity": 12
+          },
+          {
+            "degree": 1,
+            "exact_log_product_with_multiplicity": -17.71348296968551,
+            "exact_root_product": "47/900",
+            "numerical_log_product_with_multiplicity": -17.71348296968551,
+            "primitive_coefficients_high_to_low": [
+              900,
+              -47
+            ],
+            "real_root_multiplicity": 6
+          },
+          {
+            "degree": 1,
+            "exact_log_product_with_multiplicity": -1.3159289975334656,
+            "exact_root_product": "50593/63000",
+            "numerical_log_product_with_multiplicity": -1.3159289975334656,
+            "primitive_coefficients_high_to_low": [
+              63000,
+              -50593
+            ],
+            "real_root_multiplicity": 6
+          },
+          {
+            "degree": 1,
+            "exact_log_product_with_multiplicity": -9.56541948033981,
+            "exact_root_product": "12793/63000",
+            "numerical_log_product_with_multiplicity": -9.56541948033981,
+            "primitive_coefficients_high_to_low": [
+              63000,
+              -12793
+            ],
+            "real_root_multiplicity": 6
+          },
+          {
+            "degree": 2,
+            "exact_log_product_with_multiplicity": 8.979721838282321,
+            "exact_root_product": "45224/10125",
+            "numerical_log_product_with_multiplicity": 8.979721838282321,
+            "primitive_coefficients_high_to_low": [
+              20250,
+              -122265,
+              90448
+            ],
+            "real_root_multiplicity": 6
+          },
+          {
+            "degree": 2,
+            "exact_log_product_with_multiplicity": -0.9301063335996556,
+            "exact_root_product": "2141/2500",
+            "numerical_log_product_with_multiplicity": -0.9301063335996556,
+            "primitive_coefficients_high_to_low": [
+              22500,
+              -43475,
+              19269
+            ],
+            "real_root_multiplicity": 6
+          }
+        ],
+        "massive_real_dimension": 84,
+        "one_loop_real_scalar_beta_contribution": {
+          "Delta_b3": "7/3",
+          "Delta_b89": "14"
+        },
+        "residual_representation": {
+          "SU3C_irrep": "3+3bar",
+          "SU3C_quadratic_Casimir": "4/3",
+          "formal_U1_89_charge_squared": "1",
+          "source_field_mislabelled_as": "U1em_charge_squared"
+        },
+        "sector": "C16_Q1",
+        "zero_real_dimension_excluded": 12
+      },
+      {
+        "dimensionless_threshold_log_constant": {
+          "c3": 0.47391387500366683,
+          "c89": 0.0
+        },
+        "full_real_dimension": 56,
+        "mass_squared_determinant_over_M0": {
+          "absolute_log_difference": 0.0,
+          "definition": "product over massive roots of x_a, including real multiplicity",
+          "exact_denominator": "8849951897620165467244450818831818452313356328368641386762186819016137565886703786333100651972927153110504150390625",
+          "exact_numerator": "34128931848137723020849879123394935121305621183997795697402762874193508962492140485507641120222537941950594895756048097536",
+          "maximum_numerical_root_imaginary_part": 0.0,
+          "natural_log_exact_via_Vieta": 15.165244000117339,
+          "natural_log_independent_numerical_roots": 15.165244000117339
+        },
+        "massive_primitive_factors": [
+          {
+            "degree": 1,
+            "exact_log_product_with_multiplicity": -3.7956638367609266,
+            "exact_root_product": "28/45",
+            "numerical_log_product_with_multiplicity": -3.7956638367609266,
+            "primitive_coefficients_high_to_low": [
+              45,
+              -28
+            ],
+            "real_root_multiplicity": 8
+          },
+          {
+            "degree": 1,
+            "exact_log_product_with_multiplicity": 9.852576950439637,
+            "exact_root_product": "833/450",
+            "numerical_log_product_with_multiplicity": 9.852576950439637,
+            "primitive_coefficients_high_to_low": [
+              450,
+              -833
+            ],
+            "real_root_multiplicity": 16
+          },
+          {
+            "degree": 1,
+            "exact_log_product_with_multiplicity": -2.5794014973395103,
+            "exact_root_product": "383/450",
+            "numerical_log_product_with_multiplicity": -2.5794014973395103,
+            "primitive_coefficients_high_to_low": [
+              450,
+              -383
+            ],
+            "real_root_multiplicity": 16
+          },
+          {
+            "degree": 2,
+            "exact_log_product_with_multiplicity": 11.687732383778139,
+            "exact_root_product": "8728/2025",
+            "numerical_log_product_with_multiplicity": 11.687732383778139,
+            "primitive_coefficients_high_to_low": [
+              2025,
+              -12105,
+              8728
+            ],
+            "real_root_multiplicity": 8
+          }
+        ],
+        "massive_real_dimension": 56,
+        "one_loop_real_scalar_beta_contribution": {
+          "Delta_b3": "7/2",
+          "Delta_b89": "0"
+        },
+        "residual_representation": {
+          "SU3C_irrep": "8",
+          "SU3C_quadratic_Casimir": "3",
+          "formal_U1_89_charge_squared": "0",
+          "source_field_mislabelled_as": "U1em_charge_squared"
+        },
+        "sector": "C36_Q0",
+        "zero_real_dimension_excluded": 0
+      },
+      {
+        "dimensionless_threshold_log_constant": {
+          "c3": 0.7717961321550102,
+          "c89": 2.058123019080027
+        },
+        "full_real_dimension": 64,
+        "mass_squared_determinant_over_M0": {
+          "absolute_log_difference": 0.0,
+          "definition": "product over massive roots of x_a, including real multiplicity",
+          "exact_denominator": "148142814662678687797738908849156792994826480769552290439605712890625000000000000000000000000000000000000000000000000",
+          "exact_numerator": "7882395738999390428734663330427049329325702788413587603314387839755740759309754330234141729683521835880386600598004886831476801",
+          "maximum_numerical_root_imaginary_part": 0.0,
+          "natural_log_exact_via_Vieta": 24.697476228960326,
+          "natural_log_independent_numerical_roots": 24.697476228960326
+        },
+        "massive_primitive_factors": [
+          {
+            "degree": 1,
+            "exact_log_product_with_multiplicity": 11.090354888959125,
+            "exact_root_product": "2",
+            "numerical_log_product_with_multiplicity": 11.090354888959125,
+            "primitive_coefficients_high_to_low": [
+              1,
+              -2
+            ],
+            "real_root_multiplicity": 16
+          },
+          {
+            "degree": 1,
+            "exact_log_product_with_multiplicity": 7.740751222049142,
+            "exact_root_product": "73/45",
+            "numerical_log_product_with_multiplicity": 7.740751222049142,
+            "primitive_coefficients_high_to_low": [
+              45,
+              -73
+            ],
+            "real_root_multiplicity": 16
+          },
+          {
+            "degree": 1,
+            "exact_log_product_with_multiplicity": 9.414460134581846,
+            "exact_root_product": "1621/900",
+            "numerical_log_product_with_multiplicity": 9.414460134581846,
+            "primitive_coefficients_high_to_low": [
+              900,
+              -1621
+            ],
+            "real_root_multiplicity": 16
+          },
+          {
+            "degree": 1,
+            "exact_log_product_with_multiplicity": -3.548090016629787,
+            "exact_root_product": "721/900",
+            "numerical_log_product_with_multiplicity": -3.548090016629787,
+            "primitive_coefficients_high_to_low": [
+              900,
+              -721
+            ],
+            "real_root_multiplicity": 16
+          }
+        ],
+        "massive_real_dimension": 64,
+        "one_loop_real_scalar_beta_contribution": {
+          "Delta_b3": "4",
+          "Delta_b89": "32/3"
+        },
+        "residual_representation": {
+          "SU3C_irrep": "8",
+          "SU3C_quadratic_Casimir": "3",
+          "formal_U1_89_charge_squared": "1",
+          "source_field_mislabelled_as": "U1em_charge_squared"
+        },
+        "sector": "C36_Q1",
+        "zero_real_dimension_excluded": 0
+      },
+      {
+        "dimensionless_threshold_log_constant": {
+          "c3": 0.6432034214806387,
+          "c89": 0.0
+        },
+        "full_real_dimension": 48,
+        "mass_squared_determinant_over_M0": {
+          "absolute_log_difference": 0.0,
+          "definition": "product over massive roots of x_a, including real multiplicity",
+          "exact_denominator": "13888226847593997631523876634673797525465488433837890625000000000000",
+          "exact_numerator": "1540387785591590469519069630301118555006130720529338299706566716267405667761",
+          "maximum_numerical_root_imaginary_part": 0.0,
+          "natural_log_exact_via_Vieta": 18.524258538642393,
+          "natural_log_independent_numerical_roots": 18.524258538642393
+        },
+        "massive_primitive_factors": [
+          {
+            "degree": 1,
+            "exact_log_product_with_multiplicity": 8.317766166719343,
+            "exact_root_product": "2",
+            "numerical_log_product_with_multiplicity": 8.317766166719343,
+            "primitive_coefficients_high_to_low": [
+              1,
+              -2
+            ],
+            "real_root_multiplicity": 12
+          },
+          {
+            "degree": 1,
+            "exact_log_product_with_multiplicity": 7.053439978825429,
+            "exact_root_product": "9/5",
+            "numerical_log_product_with_multiplicity": 7.053439978825429,
+            "primitive_coefficients_high_to_low": [
+              5,
+              -9
+            ],
+            "real_root_multiplicity": 12
+          },
+          {
+            "degree": 1,
+            "exact_log_product_with_multiplicity": 5.805563416536857,
+            "exact_root_product": "73/45",
+            "numerical_log_product_with_multiplicity": 5.805563416536857,
+            "primitive_coefficients_high_to_low": [
+              45,
+              -73
+            ],
+            "real_root_multiplicity": 12
+          },
+          {
+            "degree": 1,
+            "exact_log_product_with_multiplicity": -2.652511023439236,
+            "exact_root_product": "25253/31500",
+            "numerical_log_product_with_multiplicity": -2.652511023439236,
+            "primitive_coefficients_high_to_low": [
+              31500,
+              -25253
+            ],
+            "real_root_multiplicity": 12
+          }
+        ],
+        "massive_real_dimension": 48,
+        "one_loop_real_scalar_beta_contribution": {
+          "Delta_b3": "10/3",
+          "Delta_b89": "0"
+        },
+        "residual_representation": {
+          "SU3C_irrep": "6+6bar",
+          "SU3C_quadratic_Casimir": "10/3",
+          "formal_U1_89_charge_squared": "0",
+          "source_field_mislabelled_as": "U1em_charge_squared"
+        },
+        "sector": "C40_Q0",
+        "zero_real_dimension_excluded": 0
+      },
+      {
+        "dimensionless_threshold_log_constant": {
+          "c3": 0.6684552435845944,
+          "c89": 1.6042925846030265
+        },
+        "full_real_dimension": 72,
+        "mass_squared_determinant_over_M0": {
+          "absolute_log_difference": 0.0,
+          "definition": "product over massive roots of x_a, including real multiplicity",
+          "exact_denominator": "22528399544939174411840147874772641000000000000000000000000000000000000000000000000000000000000000000000000",
+          "exact_numerator": "5170771447762224359642220344327903289841611844753149781802781214332220347966455075170401412491253633151086794020641",
+          "maximum_numerical_root_imaginary_part": 0.0,
+          "natural_log_exact_via_Vieta": 19.251511015236318,
+          "natural_log_independent_numerical_roots": 19.251511015236318
+        },
+        "massive_primitive_factors": [
+          {
+            "degree": 1,
+            "exact_log_product_with_multiplicity": 19.313254949209202,
+            "exact_root_product": "5",
+            "numerical_log_product_with_multiplicity": 19.313254949209202,
+            "primitive_coefficients_high_to_low": [
+              1,
+              -5
+            ],
+            "real_root_multiplicity": 12
+          },
+          {
+            "degree": 1,
+            "exact_log_product_with_multiplicity": 14.764455338165604,
+            "exact_root_product": "37/20",
+            "numerical_log_product_with_multiplicity": 14.764455338165604,
+            "primitive_coefficients_high_to_low": [
+              20,
+              -37
+            ],
+            "real_root_multiplicity": 24
+          },
+          {
+            "degree": 1,
+            "exact_log_product_with_multiplicity": -5.69349575514139,
+            "exact_root_product": "28/45",
+            "numerical_log_product_with_multiplicity": -5.69349575514139,
+            "primitive_coefficients_high_to_low": [
+              45,
+              -28
+            ],
+            "real_root_multiplicity": 12
+          },
+          {
+            "degree": 1,
+            "exact_log_product_with_multiplicity": 7.396633433117799,
+            "exact_root_product": "1667/900",
+            "numerical_log_product_with_multiplicity": 7.396633433117799,
+            "primitive_coefficients_high_to_low": [
+              900,
+              -1667
+            ],
+            "real_root_multiplicity": 12
+          },
+          {
+            "degree": 1,
+            "exact_log_product_with_multiplicity": -16.529336950114896,
+            "exact_root_product": "227/900",
+            "numerical_log_product_with_multiplicity": -16.529336950114896,
+            "primitive_coefficients_high_to_low": [
+              900,
+              -227
+            ],
+            "real_root_multiplicity": 12
+          }
+        ],
+        "massive_real_dimension": 72,
+        "one_loop_real_scalar_beta_contribution": {
+          "Delta_b3": "5",
+          "Delta_b89": "12"
+        },
+        "residual_representation": {
+          "SU3C_irrep": "6+6bar",
+          "SU3C_quadratic_Casimir": "10/3",
+          "formal_U1_89_charge_squared": "1",
+          "source_field_mislabelled_as": "U1em_charge_squared"
+        },
+        "sector": "C40_Q1",
+        "zero_real_dimension_excluded": 0
+      }
+    ],
+    "weighted_log_definition": "L_i(mu)=sum_a Delta_b_i,a*ln(M_a/mu)"
+  },
+  "loop_and_pole_mass_boundary": {
+    "exact_parameterization": "in each massive mixing sector, det[p^2*I-M0^2*X_tree-Pi_ren(p^2;mu,scheme,boundary_data)]=0",
+    "pole_masses_identified": false,
+    "renormalized_self_energy_Pi_identified": false,
+    "required_external_or_unfrozen_inputs": [
+      "renormalization and tadpole scheme plus matching scales",
+      "complete gauge, Yukawa, scalar-tensor and EFT operator couplings with boundary values",
+      "wave-function, operator-mixing and counterterm matrices",
+      "gauge-boson, ghost, fermion and scalar component masses and mixings",
+      "absolute M0/Wilson/VEV matching and experimental input covariance"
+    ],
+    "tree_level_matrix_X_identified": true,
+    "uncertainty_distribution_identified": false
+  },
+  "model_contract_id": "gauged_u1x_phi17_v20_eft_o6_current_kernel_gamma_1_over_20",
+  "physical_stabilizer_audit": {
+    "G89_equals_standard_electromagnetism": false,
+    "actual_source_generator": "G_(8,9)",
+    "actual_source_projector": "Q_source^2=-G_(8,9)^2",
+    "bare_G89_exact_vacuum_action": {
+      "Delta_R": {
+        "integer_squared_norm": 0,
+        "nonzero_integer_coordinates": 0
+      },
+      "H": {
+        "integer_squared_norm": 0,
+        "nonzero_integer_coordinates": 0
+      },
+      "Phi17": {
+        "integer_squared_norm": 0,
+        "nonzero_integer_coordinates": 0
+      },
+      "S": {
+        "integer_squared_norm": 0,
+        "nonzero_integer_coordinates": 0
+      },
+      "p": {
+        "integer_squared_norm": 0,
+        "nonzero_integer_coordinates": 0
+      }
+    },
+    "decisive_noninvariance": "3 Q_std has 2 nonzero integer coordinates on selected chiral H (norm squared 18) and 8 on Delta_R (norm squared 72); the full target tangent therefore has 10 nonzero coordinates and norm squared 90",
+    "frozen_report_label": "U(1)_em",
+    "physical_U1em_sector_labels_valid": false,
+    "selected_full_target_tangent": {
+      "integer_squared_norm": 90,
+      "nonzero_integer_coordinates": 10
+    },
+    "selected_vacuum_preserves_standard_electromagnetism": false,
+    "standard_PS_SM_embedding_derivation": {
+      "B_minus_L": "-(2/3)(G01+G23+G45)",
+      "Q": "T3L+T3R+(B-L)/2",
+      "T3L": "(G67-G89)/2",
+      "T3R": "(G67+G89)/2"
+    },
+    "standard_candidate_overall_sign_irrelevant": true,
+    "three_Q_standard": "3 Q_std=3 G67-(G01+G23+G45)",
+    "three_Q_standard_exact_vacuum_action": {
+      "Delta_R": {
+        "integer_squared_norm": 72,
+        "nonzero_integer_coordinates": 8
+      },
+      "H": {
+        "integer_squared_norm": 18,
+        "nonzero_integer_coordinates": 2
+      },
+      "Phi17": {
+        "integer_squared_norm": 0,
+        "nonzero_integer_coordinates": 0
+      },
+      "S": {
+        "integer_squared_norm": 0,
+        "nonzero_integer_coordinates": 0
+      },
+      "p": {
+        "integer_squared_norm": 0,
+        "nonzero_integer_coordinates": 0
+      }
+    }
+  },
+  "positive_G7_missing_inputs": [
+    "a corrected vacuum that preserves standard SU(3)_C x U(1)_em, followed by a recomputed G6 spectrum",
+    "per-state SU(2)_L x U(1)_Y labels and SO(10)->PS->SM parent provenance",
+    "absolute physical scale, VEV map, Wilson coefficient and pole masses",
+    "complete gauge-boson, fermion and scalar component threshold table",
+    "complete two-loop gauge/Yukawa/scalar/EFT beta and anomalous-dimension system",
+    "declared subtraction/decoupling/tadpole scheme and low-energy boundary covariance",
+    "agreement of two independent complete RGE/matching implementations"
+  ],
+  "source_binding": {
+    "G3_EFT_JSON": {
+      "path": "EXACT_EFT_CURRENT_KERNEL_STABILIZED_GLOBAL_G3.json",
+      "sha256": "38520c5aed7a3a72dbede3e4358e5edb48c16f35a5bb31601864e1f8dc0e2271"
+    },
+    "G3_EFT_source": {
+      "path": "exact_gauged_u1x_g3_su5_eft_current_kernel_stabilized_global_v20.py",
+      "sha256": "d3b3368e8e640b285f43a106f5c236dc2780c01df4d71e88365cb607f35277f9"
+    },
+    "G6_spectrum_JSON": {
+      "path": "EXACT_EFT_PHYSICAL_SCALAR_SPECTRUM_V20.json",
+      "sha256": "797a90473c064a78ef313d56f1894d71114643a19ebd373e86fe8b2911bcf416"
+    },
+    "G6_spectrum_source": {
+      "path": "exact_eft_physical_scalar_spectrum_v20.py",
+      "sha256": "cdcc25b383098464fc6312d553dff555d19c57388df7de08db48b4167ebc5a36"
+    },
+    "exact_stabilizer_source": {
+      "path": "exact_gauged_u1x_stationarity_rank_certificate_v20.py",
+      "sha256": "846bd3e57a816dfa8df4a4ce9957c547a591442200fbc3800dfe27f3c84df9c7"
+    },
+    "standard_PS_SM_embedding_source": {
+      "path": "exact_126bar_triplet_clebsch_v20.py",
+      "sha256": "d94f37da94333fbf58e448ef6effb00e718191ed45b63bafdc0e2650ccdb0499"
+    }
+  },
+  "status": "EXACT_G6_SCALING_AND_FORMAL_G89_THRESHOLD__PHYSICAL_STABILIZER_MISMATCH__G7_OPEN"
+}

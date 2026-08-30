@@ -1,0 +1,551 @@
+{
+  "schema": "susy_v22_f_flat_gut_slice_v1",
+  "status": "EXACT_SOURCE_BOUND_F_AND_D_FLAT_GUT_SLICE_WITH_ONE_AXION_MULTIPLET__FULL_GLOBAL_VACUUM_OPEN",
+  "contract_core_sha256": "b50551e10a2052ec2067ca1f440f45079e6dd732be3cd5f1d05df2d9a273053d",
+  "model_source": {
+    "path": "models/SO10X17SUSYV22/SO10X17SUSYV22.m",
+    "mode": "portable-lf",
+    "sha256": "a253e40e712287d654122b74ac94ceeb05b5fc3dddcf8c2af2c790af99be45d4"
+  },
+  "dimensionless_exact_witness": {
+    "Phi210": "1",
+    "C16": "1",
+    "C16bar": "1",
+    "XMP": "1",
+    "Phi17p": "1",
+    "Phi17m": "1",
+    "Splus": "1",
+    "Sminus": "1",
+    "Nphi": "0",
+    "NC": "0",
+    "NMP": "0",
+    "NX": "0",
+    "NS": "0"
+  },
+  "driver_constants": {
+    "vPhi2": 2,
+    "vC2": 2,
+    "vMP2": 1,
+    "vX2": 1,
+    "vS2": 1,
+    "Mstar": 1
+  },
+  "F_driver_values": {
+    "F_Nphi": "0",
+    "F_NC": "0",
+    "F_NMP": "0",
+    "F_NX": "0",
+    "F_NS": "0"
+  },
+  "D_values": {
+    "U1X": "0",
+    "SO10_C_pair_norm_difference": "0"
+  },
+  "constraint_Jacobian": [
+    [
+      5,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      1,
+      2,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1
+    ]
+  ],
+  "exact_dimensions": {
+    "Jacobian_rank": 5,
+    "complex_F_flat_tangent_before_gauge": 3,
+    "complexified_broken_gauge_rank": 2,
+    "complex_quotient_moduli": 1
+  },
+  "zero_VEV_multiplets": [
+    "DeltaB",
+    "Delta",
+    "DeltaB2",
+    "Delta2",
+    "H10m",
+    "H10p",
+    "T120m",
+    "T120p"
+  ],
+  "non_driver_termwise_derivative_audit": [
+    {
+      "coupling": "kappaPhi",
+      "differentiated_field": "Phi210",
+      "occurrence": 1,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "kappaPhi",
+      "differentiated_field": "Phi210",
+      "occurrence": 2,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "zetaPhi",
+      "differentiated_field": "Phi210",
+      "occurrence": 1,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "zetaPhi",
+      "differentiated_field": "Phi210",
+      "occurrence": 2,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "zetaPhi",
+      "differentiated_field": "Phi210",
+      "occurrence": 3,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "kappaC",
+      "differentiated_field": "C16bar",
+      "occurrence": 1,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "kappaC",
+      "differentiated_field": "C16",
+      "occurrence": 2,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "xiC",
+      "differentiated_field": "C16bar",
+      "occurrence": 1,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "xiC",
+      "differentiated_field": "Phi210",
+      "occurrence": 2,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "xiC",
+      "differentiated_field": "C16",
+      "occurrence": 3,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "kappaMP",
+      "differentiated_field": "XMP",
+      "occurrence": 1,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "kappaMP",
+      "differentiated_field": "XMP",
+      "occurrence": 2,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "rho1",
+      "differentiated_field": "XMP",
+      "occurrence": 0,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "rho1",
+      "differentiated_field": "DeltaB",
+      "occurrence": 1,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "rho1",
+      "differentiated_field": "Delta",
+      "occurrence": 2,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "rho2",
+      "differentiated_field": "XMP",
+      "occurrence": 0,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "rho2",
+      "differentiated_field": "DeltaB2",
+      "occurrence": 1,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "rho2",
+      "differentiated_field": "Delta2",
+      "occurrence": 2,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "gammaH",
+      "differentiated_field": "Phi210",
+      "occurrence": 0,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "gammaH",
+      "differentiated_field": "H10m",
+      "occurrence": 1,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "gammaH",
+      "differentiated_field": "Delta",
+      "occurrence": 2,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "gammaHb2",
+      "differentiated_field": "Phi210",
+      "occurrence": 0,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "gammaHb2",
+      "differentiated_field": "H10p",
+      "occurrence": 1,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "gammaHb2",
+      "differentiated_field": "DeltaB2",
+      "occurrence": 2,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "gammaT",
+      "differentiated_field": "Phi210",
+      "occurrence": 0,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "gammaT",
+      "differentiated_field": "T120m",
+      "occurrence": 1,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "gammaT",
+      "differentiated_field": "Delta",
+      "occurrence": 2,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "gammaTb2",
+      "differentiated_field": "Phi210",
+      "occurrence": 0,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "gammaTb2",
+      "differentiated_field": "T120p",
+      "occurrence": 1,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "gammaTb2",
+      "differentiated_field": "DeltaB2",
+      "occurrence": 2,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "kappaX",
+      "differentiated_field": "Phi17p",
+      "occurrence": 1,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "kappaX",
+      "differentiated_field": "Phi17m",
+      "occurrence": 2,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "kappaS",
+      "differentiated_field": "Splus",
+      "occurrence": 1,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "kappaS",
+      "differentiated_field": "Sminus",
+      "occurrence": 2,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "Y10",
+      "differentiated_field": "F",
+      "occurrence": 0,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "Y10",
+      "differentiated_field": "F",
+      "occurrence": 1,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "Y10",
+      "differentiated_field": "H10m",
+      "occurrence": 2,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "Y126eff",
+      "differentiated_field": "XMP",
+      "occurrence": 0,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "Y126eff",
+      "differentiated_field": "F",
+      "occurrence": 1,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "Y126eff",
+      "differentiated_field": "F",
+      "occurrence": 2,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "Y126eff",
+      "differentiated_field": "DeltaB",
+      "occurrence": 3,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "Y120",
+      "differentiated_field": "F",
+      "occurrence": 0,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "Y120",
+      "differentiated_field": "F",
+      "occurrence": 1,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "Y120",
+      "differentiated_field": "T120m",
+      "occurrence": 2,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "yP",
+      "differentiated_field": "Phi17m",
+      "occurrence": 0,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "yP",
+      "differentiated_field": "P",
+      "occurrence": 1,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "yP",
+      "differentiated_field": "Pbar",
+      "occurrence": 2,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "yQ",
+      "differentiated_field": "Phi17m",
+      "occurrence": 0,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "yQ",
+      "differentiated_field": "Q",
+      "occurrence": 1,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "yQ",
+      "differentiated_field": "Qbar",
+      "occurrence": 2,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "yR",
+      "differentiated_field": "Phi17p",
+      "occurrence": 0,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "yR",
+      "differentiated_field": "R",
+      "occurrence": 1,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "yR",
+      "differentiated_field": "Rbar",
+      "occurrence": 2,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "ys",
+      "differentiated_field": "Splus",
+      "occurrence": 0,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "ys",
+      "differentiated_field": "SpecS",
+      "occurrence": 1,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "ys",
+      "differentiated_field": "SpecB",
+      "occurrence": 2,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "lambdaP",
+      "differentiated_field": "P",
+      "occurrence": 0,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "lambdaP",
+      "differentiated_field": "F",
+      "occurrence": 1,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "lambdaP",
+      "differentiated_field": "H10m",
+      "occurrence": 2,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "lambdaR",
+      "differentiated_field": "R",
+      "occurrence": 0,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "lambdaR",
+      "differentiated_field": "F",
+      "occurrence": 1,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "lambdaR",
+      "differentiated_field": "H10m",
+      "occurrence": 2,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "lambdaQB",
+      "differentiated_field": "Sminus",
+      "occurrence": 0,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "lambdaQB",
+      "differentiated_field": "Qbar",
+      "occurrence": 1,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "lambdaQB",
+      "differentiated_field": "F",
+      "occurrence": 2,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "lambdaQR",
+      "differentiated_field": "Splus",
+      "occurrence": 0,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "lambdaQR",
+      "differentiated_field": "Q",
+      "occurrence": 1,
+      "monomial_derivative_at_witness": "0"
+    },
+    {
+      "coupling": "lambdaQR",
+      "differentiated_field": "Rbar",
+      "occurrence": 2,
+      "monomial_derivative_at_witness": "0"
+    }
+  ],
+  "remaining_requirements": {
+    "source_exact_SO10_SM_singlet_embedding_and_all_D_generators": false,
+    "global_exclusion_of_other_F_D_flat_branches": false,
+    "soft_terms_select_and_stabilize_the_radial_axion_partner": false,
+    "complete_component_Hessian_is_positive_modulo_gauge_and_axion": false,
+    "RG_flow_connects_to_the_exact_174_GeV_endpoint": false
+  },
+  "checks": {
+    "source_contract_executes": true,
+    "all_five_driver_F_terms_vanish_exactly": true,
+    "declared_abelian_and_rank_breaking_D_terms_vanish_exactly": true,
+    "constraint_Jacobian_has_full_row_rank_five": true,
+    "F_flat_slice_has_three_complex_tangents_before_gauge_quotient": true,
+    "two_complexified_broken_gauge_directions_leave_one_axion_multiplet": true,
+    "missing_partner_and_light_GUT_multiplets_are_zero_on_the_slice": true,
+    "every_non_driver_catalogue_derivative_vanishes_termwise": true,
+    "full_global_V22_vacuum_not_overclaimed": true
+  },
+  "n_checks": 9,
+  "n_failed": 0,
+  "failures": [],
+  "claim_boundary": {
+    "declared_GUT_singlet_slice_F_D_flat": true,
+    "one_complex_axion_multiplet_on_local_quotient": true,
+    "V22_global_vacuum_closed": false,
+    "canonical_G4_closed": false,
+    "canonical_G5_closed": false
+  },
+  "core_sha256": "173aef2a5bed3f4fa61c186fd41a02d79004feb23ccca329b113645de993cb57"
+}

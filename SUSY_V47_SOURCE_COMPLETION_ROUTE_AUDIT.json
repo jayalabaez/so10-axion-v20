@@ -1,0 +1,297 @@
+{
+  "alternative_45_plus_54": {
+    "SU5_branch": {
+      "D_flat": "|Sigma|=|barSigma|",
+      "E_24": 0,
+      "Sigma_barSigma": "10 m4 m2/lambda6^2",
+      "a1": "sqrt(10) m2/lambda6",
+      "a2_24": 0,
+      "exact_rational_rescaled_witness": {
+        "all_residuals_zero": true,
+        "parameters": {
+          "E": "0",
+          "V_R_times_barV_R": "10",
+          "a2": "0",
+          "lambda6": "1",
+          "m2": "1",
+          "m4": "1",
+          "u_equals_a1_over_sqrt10": "1"
+        },
+        "residuals": {
+          "F_A1_rescaled": "0",
+          "F_A2": "0",
+          "F_Delta_divided_by_V": "0",
+          "F_E": "0"
+        }
+      },
+      "specialized_F_equations": [
+        "0=V_R(m2-lambda6 a1/sqrt(10))=barV_R(m2-lambda6 a1/sqrt(10))",
+        "0=m4 a1-lambda6 V_R barV_R/sqrt(10)",
+        "0=m4 a2+lambda9 E(2 a1/sqrt(10)+a2/sqrt(15))",
+        "0=m5 E+3 lambda8 E^2/(2 sqrt(15))+lambda9(2 a1 a2/sqrt(10)+a2^2/(2 sqrt(15)))"
+      ],
+      "unbroken_group": "SU(5)",
+      "why_lambda11_lambda12_do_not_source_E": "The 54 has no SU(5) singlet, and the SU(5)-singlet 126 and bar126 VEVs cannot source its 24, 15 or bar15 components.  Thus the E Sigma^2 and E barSigma^2 invariants vanish on this branch, as in the cited reduced singlet superpotential."
+    },
+    "fields": [
+      "A=45_0",
+      "E=54_0",
+      "Sigma=126_0",
+      "barSigma=bar126_0"
+    ],
+    "rank_status": {
+      "independent_full_physical_hessian_replayed_here": false,
+      "published_complete_mass_matrices_exist": true,
+      "reason_fail_closed": "The exact branch is certified, but V47 has not specialized every published SM-irrep mass block and proved that the only kernels are the 21 SO10/SU5 Goldstones."
+    },
+    "renormalizable_superpotential": "W=m2 barSigma Sigma+m4 A^2/2+m5 E^2/2-i lambda6 A barSigma Sigma+lambda8 E^3+lambda9 E A^2+lambda11 E Sigma^2+lambda12 E barSigma^2",
+    "representation_and_coupling_checks": {
+      "E_to_bulk_spinors": "54 occurs in neither 16x16 nor 16xbar16, so no such cubic exists",
+      "Sigma_spinor_obligations_unchanged": [
+        "barSigma HLF HRA",
+        "Sigma HLA HRF"
+      ],
+      "matter_parity_preserved": true,
+      "neutral_A_to_bulk_16_bar16": "all four possible 16-bar16 pairs have nonzero U1F charge, so no renormalizable A H16 Hbar16 term is allowed"
+    }
+  },
+  "core_sha256": "15ebb7f8e763c98784c65a709d1d753d4327cf28d6029e6a635a8198c6ce2881",
+  "coupled_210_source": {
+    "coordinate_shift": "Starting from kappa STheta ThetaPlus ThetaMinus+muTheta ThetaPlus ThetaMinus, define STheta_prime=STheta+muTheta/kappa and then relabel STheta_prime as STheta.  The shift only redefines the displayed singlet and GUT mass coefficients.",
+    "counting": {
+      "Spin10_to_SU5_goldstones": 21,
+      "U1F_to_Z3F_goldstone": 1,
+      "eaten_chiral_components": 22,
+      "generic_massive_uneaten_chiral_components": 443,
+      "generic_physical_massless_chiral_components": 0,
+      "total_chiral_components": 465
+    },
+    "exact_branch": {
+      "D_flatness": "For every nonzero complex product P, choose equal magnitudes |ThetaPlus|=|ThetaMinus|=sqrt(|P|) and phases whose sum is arg(P).",
+      "GUT_fields": "the V46 SU(5) branch evaluated with m=m0 and M=M0",
+      "STheta": 0,
+      "Theta_product": "ThetaPlus ThetaMinus=-(f1+m1 I2(Phi)+M1 Sigma.barSigma)/kappa",
+      "nonzero_condition": "the displayed Theta product must not vanish if U(1)F is to break to faithful Z3F",
+      "why_F_flat": [
+        "F_ThetaPlus=F_ThetaMinus=0 because STheta=0",
+        "all GUT F equations reduce exactly to the isolated V46 equations because every cross term is proportional to STheta",
+        "F_STheta=0 fixes the Theta product rather than imposing a new condition on the GUT branch"
+      ]
+    },
+    "fields": [
+      "Phi=210_0",
+      "Sigma=126_0",
+      "barSigma=bar126_0",
+      "STheta=1_0",
+      "ThetaPlus=1_+3",
+      "ThetaMinus=1_-3"
+    ],
+    "most_general_relevant_form_after_shifting_STheta": "W=W_GUT(m0+m1 STheta,M0+M1 STheta,lambda,eta)+kappa STheta ThetaPlus ThetaMinus+f0+f1 STheta+f2 STheta^2/2+f3 STheta^3/3",
+    "physical_hessian_lemma": {
+      "assumptions": "det(H)!=0 from the V46 rank certificate and a=kappa times a nonzero Theta radial VEV",
+      "basis": "(n gauge-fixed physical GUT modes, Theta radial mode, STheta)",
+      "certificate": {
+        "all_witnesses_pass": true,
+        "cofactor_proof": "Expand along the Theta-radial row, whose only nonzero entry is a in the STheta column.  Its cofactor sign is minus and its minor is block-triangular [[H,0],[c^T,a]], so det(Mphys)=-a^2 det(H).",
+        "exact_rational_witnesses": [
+          {
+            "a": "3/2",
+            "d": "1/4",
+            "det_H": "2",
+            "det_Mphys": "-9/2",
+            "identity_holds": true,
+            "minus_a_squared_det_H": "-9/2",
+            "n_GUT_physical_modes": 1
+          },
+          {
+            "a": "4/3",
+            "d": "3/5",
+            "det_H": "5",
+            "det_Mphys": "-80/9",
+            "identity_holds": true,
+            "minus_a_squared_det_H": "-80/9",
+            "n_GUT_physical_modes": 2
+          },
+          {
+            "a": "5/4",
+            "d": "5/6",
+            "det_H": "19",
+            "det_Mphys": "-475/16",
+            "identity_holds": true,
+            "minus_a_squared_det_H": "-475/16",
+            "n_GUT_physical_modes": 3
+          },
+          {
+            "a": "6/5",
+            "d": "1",
+            "det_H": "72",
+            "det_Mphys": "-2592/25",
+            "identity_holds": true,
+            "minus_a_squared_det_H": "-2592/25",
+            "n_GUT_physical_modes": 4
+          }
+        ]
+      },
+      "consequence": "the complete coupled source sector has no physical massless chiral multiplet on this branch",
+      "determinant": "det(Mphys)=-a^2 det(H), independent of the cross-coupling vector c and singlet entry d",
+      "gauge_quotient_note": "H is the V46 Hessian after removing the 21 complex Spin(10)/SU(5) gauge-orbit directions.  The cross-coupling gradient c is orthogonal to those directions because I2(Phi) and Sigma.barSigma are gauge invariants.  The independent U(1)F gauge direction is the removed Theta relative mode.",
+      "matrix": "[[H,0,c],[0,0,a],[c^T,a,d]]"
+    },
+    "scope": "This proves existence and generic local physical rank of the coupled source superpotential. It does not choose this branch cosmologically or solve the Kahler, radion, soft, KK, threshold or eta problems."
+  },
+  "decision": {
+    "45_plus_54_status": "priority alternative pending complete Hessian replay",
+    "G3_full_gate_closed": false,
+    "G3_source_superpotential_existence_subproblem": "closed",
+    "authoritative_source_route": "retain neutral 210+126+bar126 for V47 because its full physical rank is executable",
+    "cross_coupling_policy": "include, do not sequester by assertion",
+    "gates_promoted": []
+  },
+  "input_core_hashes": {
+    "v46_master": "6cafaa708040832fb1c4b450ecc71f82c2281960e6d7ea744df90d82729ec2ed",
+    "v46_source": "34259ffbc44fcae35443c020f27113dab2daa751d4485e55e4083c73bce2beb3"
+  },
+  "integrity_checks": {
+    "210_route_still_selected_by_exact_rank": true,
+    "45_54_exact_branch_residuals_zero": true,
+    "45_54_full_rank_not_overclaimed": true,
+    "45_54_index_is_lower": true,
+    "Dynkin_indices_recomputed_from_C2": true,
+    "R_selector_no_go_retained": true,
+    "V46_GUT_physical_rank_certificate_present": true,
+    "V46_retained_210_route": true,
+    "all_sources_exist": true,
+    "coupled_source_has_22_goldstones": true,
+    "coupled_source_has_443_massive_physical_components": true,
+    "coupled_source_has_no_physical_zero": true,
+    "coupled_source_total_is_465": true,
+    "ordinary_selector_forces_cross_terms": true,
+    "physical_hessian_determinant_lemma_nonzero": true,
+    "physical_hessian_exact_witnesses_pass": true
+  },
+  "n_failed_integrity_checks": 0,
+  "parameter_neutral_selector_no_go": {
+    "ZN_R": {
+      "conclusion": "only N dividing two survives; in Z2R the superpotential charge is zero and the same neutral cross terms are allowed",
+      "neutral_parameter_constraints": [
+        "2r(Phi)=2 and 3r(Phi)=2 modulo N",
+        "subtracting gives r(Phi)=0 and therefore 2=0 modulo N"
+      ]
+    },
+    "decision": "include the cross couplings rather than setting them to zero by assertion",
+    "ordinary_ZN": {
+      "conclusion": "no exact ordinary ZN with neutral numerical parameters can forbid either cross term",
+      "forced_cross_terms": [
+        "STheta Phi^2",
+        "STheta Sigma.barSigma"
+      ],
+      "neutral_parameter_constraints": [
+        "STheta vF^2 allowed implies q(STheta)=0",
+        "Phi^2 and Phi^3 allowed imply 2q(Phi)=3q(Phi)=0, hence q(Phi)=0",
+        "Sigma.barSigma allowed implies q(Sigma)+q(barSigma)=0"
+      ]
+    },
+    "spurion_escape": "Charging m, M, lambda or vF^2 introduces additional charged fields/VEVs. That is a different microscopic model whose anomalies, vacuum and operators must be audited; it is not sequestering of the present candidate."
+  },
+  "perturbative_window_stress_test": {
+    "assumed_alpha_inverse_at_source_scale": 25.0,
+    "formula": "Lambda_pole/M=exp(2 pi alpha_inverse/b) for a four-dimensional one-loop logarithm",
+    "index_identity": "T(R)=dim(R) C2(R)/dim(SO10), with dim(SO10)=45",
+    "indices": {
+      "126": 35,
+      "210": 56,
+      "45": 8,
+      "54": 12,
+      "bar126": 35
+    },
+    "normalization": "T(10)=1 and C2(SO10 adjoint)=8",
+    "qualification": "This is a source-Higgs-sector-only comparison, not a complete 4D beta coefficient and not the 5D threshold calculation. Common matter and light fields are omitted from both rows; bulk power-law terms, brane kinetic normalization, split masses and the actual cutoff can change the window. The quoted pole ratios are therefore proxy values, while the exact robust comparison here is the lower source-sector index 90 versus 126.",
+    "relative_result": "45+54 has the better index budget: its vector-included naive ratio is 10.805, versus 4.665 for 210.",
+    "representation_data": {
+      "126": {
+        "C2": "25/2",
+        "computed_T": 35,
+        "dimension": 126
+      },
+      "210": {
+        "C2": "12",
+        "computed_T": 56,
+        "dimension": 210
+      },
+      "45": {
+        "C2": "8",
+        "computed_T": 8,
+        "dimension": 45
+      },
+      "54": {
+        "C2": "10",
+        "computed_T": 12,
+        "dimension": 54
+      },
+      "bar126": {
+        "C2": "25/2",
+        "computed_T": 35,
+        "dimension": 126
+      }
+    },
+    "routes": {
+      "210+126+bar126": {
+        "b_4D_N1_including_minus_3C2": 102,
+        "naive_Landau_ratio_chiral_brane_log_only": 3.478717708884533,
+        "naive_Landau_ratio_including_vector": 4.664573472982305,
+        "sum_chiral_Dynkin_indices": 126
+      },
+      "45+54+126+bar126": {
+        "b_4D_N1_including_minus_3C2": 66,
+        "naive_Landau_ratio_chiral_brane_log_only": 5.727787050299033,
+        "naive_Landau_ratio_including_vector": 10.804842729819292,
+        "sum_chiral_Dynkin_indices": 90
+      }
+    }
+  },
+  "primary_sources": [
+    {
+      "url": "https://arxiv.org/abs/hep-ph/0306242",
+      "use": "minimal renormalizable 210+126+bar126 source sector and matter parity"
+    },
+    {
+      "url": "https://arxiv.org/abs/1707.00580",
+      "use": "general renormalizable 45,54,126-pair,210 superpotential, SU5-basis VEV equations and complete mass matrices"
+    },
+    {
+      "url": "https://arxiv.org/abs/hep-ph/0405300",
+      "use": "independent general SO10 superpotential, decompositions and SM-irrep mass matrices"
+    }
+  ],
+  "remaining_obligations": [
+    "specialize and replay every 45+54+126+bar126 mass block on the exact SU5 branch before considering a route switch",
+    "perform the actual 5D brane-plus-bulk threshold and NDA cutoff calculation for the retained 210 route",
+    "couple the source solution to the enlarged four-spinor KK operator and the relative eta problem",
+    "solve Kahler, radion, SUSY-breaking and cosmological branch selection"
+  ],
+  "schema": "susy-v47-source-completion-route-audit-v1",
+  "scientific_verdict": "The neutral-210 source branch survives the unavoidable renormalizable Theta/GUT cross couplings and remains generically full physical rank. A 45+54 replacement has an exact SU5 branch and a materially better one-loop index budget, but it is not promoted without a complete independent Hessian replay.",
+  "source_manifest": [
+    {
+      "exists": true,
+      "path": "susy_v47_source_completion_route_audit.py",
+      "sha256": "ba5db90cb060f4aae5a6bbbacfb5358792b6072546112057d3bf430802c80114"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v47_source_completion_route_audit.py",
+      "sha256": "6343ce1225f12cea47b9892282a6c6fd37d04c1133aba1445e5227c75e87efd2"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V46_MICROSCOPIC_KILL_TEST_AUDIT.json",
+      "sha256": "f13705c05831f552807cc92d18a7a84aec55201c5b74756757a3c3735c765f4e"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V46_SOURCE_HIGGS_RANK_AUDIT.json",
+      "sha256": "ee9fd4b3c1a1f2bd7796d6b637d5dc6d483d31a6c402f8dfc6d4692840e3929c"
+    }
+  ],
+  "status": "V47_COUPLED_NEUTRAL_SOURCE_BRANCH_AND_GENERIC_PHYSICAL_RANK_PROVED__PARAMETER_NEUTRAL_DISCRETE_SEQUESTERING_NO_GO__210_ROUTE_RETAINED_BY_EXACT_RANK_CERTIFICATE__45_PLUS_54_HAS_BETTER_INDEX_WINDOW_BUT_FULL_HESSIAN_REPLAY_OPEN__NO_G_GATE_PROMOTED"
+}

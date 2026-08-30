@@ -1,0 +1,1074 @@
+{
+  "anomaly_universality_certificate": {
+    "A2": "1",
+    "A3": "3",
+    "GS_axion_exhibited_in_5D_action": false,
+    "GS_axion_required": true,
+    "continuous_cartan_fate": "the classical action preserves the full Cartan U(1)R, but A3=3 and A2=1 differ as exact integers, so no single axion repairs the continuous symmetry; the maximal single-axion-repairable subgroup with these charges is the order-four one",
+    "difference": "2",
+    "eta": 2,
+    "formula": "A_G = C2(G) + sum over fermions of (q-1)*T(R), gauginos at +1",
+    "heterotic_contrast": {
+      "V60_route_A60_residue_vector_mod2": [
+        "1",
+        "1",
+        "1",
+        "0",
+        "0"
+      ],
+      "V60_route_A60_universal": false,
+      "V61_spin11_residue_vector_mod2": [
+        "1",
+        "1"
+      ],
+      "V61_universal": true,
+      "statement": "the corrected heterotic candidate failed because its five residues split 1,1,1 against 0,0; the Spin(11) Z4R selector passes the identical universality test with residues 1,1"
+    },
+    "light_ledger": "MSSM + 3 N^c + two Higgsinos from Sigma + gauginos",
+    "maximal_subgroup_check": {
+      "condition": "Z_M in the Cartan is GS-universal iff eta(M) divides A3-A2 = 2",
+      "moduli_3_to_24_passing": [
+        4
+      ],
+      "unique_maximal_M": 4
+    },
+    "rho_mod_eta": 1,
+    "t_hooft_vertices": {
+      "SU2_vertex_charge": 2,
+      "SU2_vertex_charge_mod_4": 2,
+      "SU3_vertex_charge": 6,
+      "SU3_vertex_charge_mod_4": 2,
+      "both_equal_W_charge_mod_4": true,
+      "statement": "both 't Hooft vertices carry charge 2 mod 4, i.e. they transform exactly like superpotential terms, so nonperturbative gauge dynamics respects Z4R while breaking the continuous Cartan"
+    },
+    "universal_mod_eta": true
+  },
+  "architecture_charge_forcings": {
+    "bulk_hypermultiplet_halves": {
+      "bulk_operator_charge": 2,
+      "bulk_operator_charge_equals_W_charge": true,
+      "charges": {
+        "Phi": 1,
+        "Phi_conjugate": 1
+      },
+      "forcing": "hyperscalars form an SU(2)R doublet with Cartan charges +-1; the two 4D chiral halves therefore carry charge (1,1), and the bulk operator Phi_c(partial5-Sigma)Phi carries charge 1+0+1=2, exactly the superpotential charge."
+    },
+    "gauge_higgs_Sigma": {
+      "both_forcings_agree": true,
+      "charge": 0,
+      "forcing_1_shift_symmetry": "Sigma -> exp(Lambda)(Sigma-sqrt(2) partial5)exp(-Lambda): the inhomogeneous partial5 piece is neutral, so any selector, R or non-R, must keep Sigma at charge 0.",
+      "forcing_2_superalgebra": "the 5D gauginos form an SU(2)R doublet; the orbifold-preserved Cartan gives the V gaugino charge +1 and the Sigma fermion charge -1, hence superfield charge -1+1=0."
+    },
+    "mediator_mixing_forcing": {
+      "forced_matter_charge": 1,
+      "lambda_piece_requirement": "1 + q_i = 2 mod M",
+      "mu_piece_charge": 2,
+      "statement": "with the superalgebra bulk charges, a nonzero lambda_i for every family, required for a full-rank kernel Yukawa, forces q_i = 1 for all three local sixteens.",
+      "wall_term": "W0 = Mtilde_bar16*(mu*M_16 + lambda_i*F_i)"
+    },
+    "orbifold_preserves_cartan": {
+      "P0_and_P1_use_same_SU2R_direction": true,
+      "statement": "both interval projectors act in the same sigma3 direction of SU(2)R, so the Cartan U(1)R survives at y=0 and y=L; the candidate selector is its order-four subgroup, a symmetry of the 5D superalgebra rather than an ad hoc global charge."
+    },
+    "so10_compatibility_is_architectural": "each family is one local Spin(10) sixteen, so all its MSSM members share one charge q_i; the gauge-Higgs sits in the 5D vector multiplet at charge 0.  The Lee et al. Spin(10) compatibility assumption is forced, not chosen."
+  },
+  "claim_boundary": {
+    "five_d_re_derivation_is_new_but_arithmetic": true,
+    "four_d_uniqueness_matches_lee_et_al": true,
+    "new_fundamental_physics_invented": false,
+    "no_gate_promotion": true,
+    "no_numerical_coefficients_fabricated": true
+  },
+  "classification": "EXACT_Z4R_SELECTOR_ESCAPE_CANDIDATE__ARITHMETIC_AND_GLOBAL_ANOMALY_PASS__QUANTUM_LOCALIZED_AND_UV_COMPLETION_OPEN",
+  "core_sha256": "6d6107dea91e18e7d34e4560ad8003cd8c38eef5c788b2ebd148bb3795b2c33a",
+  "date": "2026-08-29",
+  "exhaustive_r_selector_scan": {
+    "arithmetic_selectors_exist_beyond_M4": true,
+    "assignments_scanned": 89999,
+    "conditions": {
+      "A_full_rank_Yukawa_support": "exists sigma in S3 with q_i+q_sigma(i)=2 mod M for all i",
+      "B_W_dim5_proton_ban": "all 15 size-4 family multisets have charge sum != 2 mod M",
+      "C_Kahler_dim5_proton_ban": "all 30 combos q_i+q_j+q_k-q_l != 0 mod M",
+      "D_GS_universality": "A3 = A2 mod eta(M) on the light zero-mode ledger"
+    },
+    "discriminating_tier": "conditions A-C admit R-type selectors at several moduli, unlike the non-R scan which admitted none; Green-Schwarz universality, the same test that rejected the corrected heterotic candidate, removes every modulus except M=4",
+    "domain": "all Z_M^R with 2<=M<=24 and all family charge triples q in Z_M^3; q_Sigma=0 is forced, q_Cbar=0 is forced by VEV neutrality so the seesaw operator F_i F_j Cbar Cbar shares the Yukawa support",
+    "moduli_with_arithmetic_selectors": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ],
+    "per_modulus": [
+      {
+        "M": 2,
+        "eta": 1,
+        "full_rank_supports": 8,
+        "plus_GS_universality": 0,
+        "plus_Kahler_dim5_ban": 0,
+        "plus_W_dim5_ban": 0
+      },
+      {
+        "M": 3,
+        "eta": 3,
+        "full_rank_supports": 7,
+        "plus_GS_universality": 0,
+        "plus_Kahler_dim5_ban": 1,
+        "plus_W_dim5_ban": 1
+      },
+      {
+        "M": 4,
+        "eta": 2,
+        "full_rank_supports": 20,
+        "plus_GS_universality": 2,
+        "plus_Kahler_dim5_ban": 2,
+        "plus_W_dim5_ban": 2
+      },
+      {
+        "M": 5,
+        "eta": 5,
+        "full_rank_supports": 13,
+        "plus_GS_universality": 0,
+        "plus_Kahler_dim5_ban": 1,
+        "plus_W_dim5_ban": 1
+      },
+      {
+        "M": 6,
+        "eta": 3,
+        "full_rank_supports": 32,
+        "plus_GS_universality": 0,
+        "plus_Kahler_dim5_ban": 8,
+        "plus_W_dim5_ban": 8
+      },
+      {
+        "M": 7,
+        "eta": 7,
+        "full_rank_supports": 19,
+        "plus_GS_universality": 0,
+        "plus_Kahler_dim5_ban": 1,
+        "plus_W_dim5_ban": 1
+      },
+      {
+        "M": 8,
+        "eta": 4,
+        "full_rank_supports": 44,
+        "plus_GS_universality": 0,
+        "plus_Kahler_dim5_ban": 8,
+        "plus_W_dim5_ban": 8
+      },
+      {
+        "M": 9,
+        "eta": 9,
+        "full_rank_supports": 25,
+        "plus_GS_universality": 0,
+        "plus_Kahler_dim5_ban": 7,
+        "plus_W_dim5_ban": 7
+      },
+      {
+        "M": 10,
+        "eta": 5,
+        "full_rank_supports": 56,
+        "plus_GS_universality": 0,
+        "plus_Kahler_dim5_ban": 8,
+        "plus_W_dim5_ban": 8
+      },
+      {
+        "M": 11,
+        "eta": 11,
+        "full_rank_supports": 31,
+        "plus_GS_universality": 0,
+        "plus_Kahler_dim5_ban": 7,
+        "plus_W_dim5_ban": 7
+      },
+      {
+        "M": 12,
+        "eta": 6,
+        "full_rank_supports": 68,
+        "plus_GS_universality": 0,
+        "plus_Kahler_dim5_ban": 32,
+        "plus_W_dim5_ban": 32
+      },
+      {
+        "M": 13,
+        "eta": 13,
+        "full_rank_supports": 37,
+        "plus_GS_universality": 0,
+        "plus_Kahler_dim5_ban": 13,
+        "plus_W_dim5_ban": 13
+      },
+      {
+        "M": 14,
+        "eta": 7,
+        "full_rank_supports": 80,
+        "plus_GS_universality": 0,
+        "plus_Kahler_dim5_ban": 20,
+        "plus_W_dim5_ban": 20
+      },
+      {
+        "M": 15,
+        "eta": 15,
+        "full_rank_supports": 43,
+        "plus_GS_universality": 0,
+        "plus_Kahler_dim5_ban": 25,
+        "plus_W_dim5_ban": 25
+      },
+      {
+        "M": 16,
+        "eta": 8,
+        "full_rank_supports": 92,
+        "plus_GS_universality": 0,
+        "plus_Kahler_dim5_ban": 44,
+        "plus_W_dim5_ban": 44
+      },
+      {
+        "M": 17,
+        "eta": 17,
+        "full_rank_supports": 49,
+        "plus_GS_universality": 0,
+        "plus_Kahler_dim5_ban": 25,
+        "plus_W_dim5_ban": 25
+      },
+      {
+        "M": 18,
+        "eta": 9,
+        "full_rank_supports": 104,
+        "plus_GS_universality": 0,
+        "plus_Kahler_dim5_ban": 44,
+        "plus_W_dim5_ban": 44
+      },
+      {
+        "M": 19,
+        "eta": 19,
+        "full_rank_supports": 55,
+        "plus_GS_universality": 0,
+        "plus_Kahler_dim5_ban": 31,
+        "plus_W_dim5_ban": 31
+      },
+      {
+        "M": 20,
+        "eta": 10,
+        "full_rank_supports": 116,
+        "plus_GS_universality": 0,
+        "plus_Kahler_dim5_ban": 68,
+        "plus_W_dim5_ban": 68
+      },
+      {
+        "M": 21,
+        "eta": 21,
+        "full_rank_supports": 61,
+        "plus_GS_universality": 0,
+        "plus_Kahler_dim5_ban": 43,
+        "plus_W_dim5_ban": 43
+      },
+      {
+        "M": 22,
+        "eta": 11,
+        "full_rank_supports": 128,
+        "plus_GS_universality": 0,
+        "plus_Kahler_dim5_ban": 56,
+        "plus_W_dim5_ban": 56
+      },
+      {
+        "M": 23,
+        "eta": 23,
+        "full_rank_supports": 67,
+        "plus_GS_universality": 0,
+        "plus_Kahler_dim5_ban": 43,
+        "plus_W_dim5_ban": 43
+      },
+      {
+        "M": 24,
+        "eta": 12,
+        "full_rank_supports": 140,
+        "plus_GS_universality": 0,
+        "plus_Kahler_dim5_ban": 104,
+        "plus_W_dim5_ban": 104
+      }
+    ],
+    "solution_count": 2,
+    "solutions": [
+      {
+        "A2": "1",
+        "A3": "3",
+        "M": 4,
+        "charges": [
+          1,
+          1,
+          1
+        ],
+        "eta": 2
+      },
+      {
+        "A2": "13",
+        "A3": "15",
+        "M": 4,
+        "charges": [
+          3,
+          3,
+          3
+        ],
+        "eta": 2
+      }
+    ]
+  },
+  "falsifiers": [
+    {
+      "effect": "the uniqueness claim fails and the scan must be rerun",
+      "id": "F1",
+      "test": "exhibit an R-type assignment passing conditions A-D outside the Z4R class"
+    },
+    {
+      "effect": "the R-type inversion of the V59 theorem is false",
+      "id": "F2",
+      "test": "show the odd-cycle escape check fails for some M in 3..24"
+    },
+    {
+      "effect": "the selector is quantum-inconsistent on this orbifold and the route falls back to the V59 no-go frontier",
+      "id": "F3",
+      "test": "compute a nonvanishing localized Z4R anomaly with no allowed local counterterm"
+    },
+    {
+      "effect": "rho=1 cannot be repaired and Z4R is anomalous",
+      "id": "F4",
+      "test": "show no 5D multiplet can furnish the universal GS axion"
+    },
+    {
+      "effect": "SUSY breaking destroys the selector and mu/proton protection",
+      "id": "F5",
+      "test": "show the Scherk-Schwarz twist needed for realistic soft terms lies outside the Cartan"
+    },
+    {
+      "effect": "arithmetic error; the all-orders dimension-five ban is void",
+      "id": "F6",
+      "test": "find a charge-2 W_eff monomial with four matter sixteens"
+    }
+  ],
+  "five_d_quantum_obligations": [
+    {
+      "detail": "the discrete R rotation acts on the fixed-point fermion measure; the von Gersdorff-Quiros decomposition with the mirror-32 pairing has not been evaluated for this generator",
+      "obligation": "localized fixed-point Z4R anomaly ledger",
+      "status": "OPEN"
+    },
+    {
+      "detail": "rho=1 mod 2 requires one axion with universal couplings; no radion/form-field multiplet is exhibited and quantized here",
+      "obligation": "single Green-Schwarz axion multiplet in the 5D action",
+      "status": "OPEN"
+    },
+    {
+      "detail": "the relative eta invariant with wall masses is not computed",
+      "obligation": "Dai-Freed phase with the Z4R twist in the background",
+      "status": "OPEN"
+    },
+    {
+      "detail": "carried unchanged from V59; the kernel is defined but not solved",
+      "obligation": "exact KK determinant and realistic flavor fit",
+      "status": "OPEN"
+    },
+    {
+      "detail": "carried unchanged from V59",
+      "obligation": "UV regulator / string completion",
+      "status": "OPEN"
+    }
+  ],
+  "gate_ledger": [
+    {
+      "decision": "OPEN: the V59 selector obstruction is resolved at the R-type arithmetic and global-anomaly level by a unique Z4R class, but the GS axion multiplet, localized R-anomaly ledger, Dai-Freed phase, KK determinant and UV regulator are absent.",
+      "gate": "G1",
+      "status": "OPEN"
+    },
+    {
+      "decision": "OPEN: no coefficient-level complete 4D Wilsonian action or soft solution.",
+      "gate": "G2",
+      "status": "OPEN"
+    },
+    {
+      "decision": "OPEN: no stabilized compactification, physical quotient or full KK Hessian.",
+      "gate": "G3",
+      "status": "OPEN"
+    },
+    {
+      "decision": "OPEN WITH ADVANCE: mu is now doubly forbidden (gauge shift and charge 0!=2) with a m_3/2 regeneration route, but no soft spectrum or hierarchy test is solved.",
+      "gate": "G4",
+      "status": "OPEN"
+    },
+    {
+      "decision": "OPEN WITH ADVANCE: g^2 acts as exact R parity surviving <W>!=0, so a stable LSP exists structurally; no relic or cosmology computation.",
+      "gate": "G5",
+      "status": "OPEN"
+    },
+    {
+      "decision": "OPEN: inflation, reheating and defect history are absent.",
+      "gate": "G6",
+      "status": "OPEN"
+    },
+    {
+      "decision": "OPEN WITH ADVANCE: all dimension-five proton operators are forbidden to all orders in W and at dimension five in K; the dimension-six KK channel and a lifetime number remain uncomputed.",
+      "gate": "G7",
+      "status": "OPEN"
+    },
+    {
+      "decision": "OPEN: no microscopic UV completion or quantified predictivity score.",
+      "gate": "G8",
+      "status": "OPEN"
+    }
+  ],
+  "gauge_center_equivalence": {
+    "canonical_class": {
+      "M": 4,
+      "matter_charges": [
+        1,
+        1,
+        1
+      ]
+    },
+    "center_statement": "a uniform charge shift of 2 mod 4 on every sixteen is the phase -1 on the 16, i.e. the square of the Spin(10) center generator, a gauge transformation; the two scan solutions therefore define one physical selector class",
+    "difference_is_2_2_2": true,
+    "difference_mod_4": [
+      2,
+      2,
+      2
+    ],
+    "identical_operator_ledgers": true,
+    "physical_class_count": 1,
+    "solution_charge_vectors": [
+      [
+        1,
+        1,
+        1
+      ],
+      [
+        3,
+        3,
+        3
+      ]
+    ]
+  },
+  "integrity_checks": {
+    "GS_axion_required_and_not_overclaimed": true,
+    "GS_universality_selects_only_M4": true,
+    "M2_degeneration_matches_V59_Z2_row": true,
+    "V59_loophole_list_names_exact_R_symmetry_first": true,
+    "V59_spin11_core_is_canonical_and_expected": true,
+    "V60_master_core_is_canonical_and_expected": true,
+    "W_dim5_ban_and_Kahler_dim5_ban_exact": true,
+    "all_five_quantum_obligations_open": true,
+    "all_gates_remain_open": true,
+    "anomaly_A3_3_A2_1_universal_mod_2": true,
+    "arithmetic_selectors_exist_beyond_M4": true,
+    "bulk_operator_charge_equals_W_charge": true,
+    "canonical_class_is_Z4R_matter_charge_one": true,
+    "exactly_two_raw_solutions": true,
+    "five_matrix_full_rank_without_MT": true,
+    "g2_is_R_parity_surviving_gravitino_mass": true,
+    "heavy_pairs_all_decouple": true,
+    "heterotic_contrast_is_bound_not_asserted": true,
+    "mediator_mixing_forces_matter_charge_one": true,
+    "odd_cycle_escape_holds_for_all_M_3_to_24": true,
+    "rank_sector_terms_all_charge_two_except_forbidden_MT": true,
+    "scan_domain_is_complete": true,
+    "selector_unbroken_by_rank_vevs": true,
+    "sigma_neutrality_forced_twice": true,
+    "solutions_are_gauge_center_equivalent": true,
+    "ss_twist_compatibility_is_exact_but_spectrum_open": true,
+    "t_hooft_vertices_carry_W_charge": true,
+    "unique_maximal_cartan_subgroup_is_M4": true,
+    "wanted_operators_all_allowed": true
+  },
+  "lineage": {
+    "bound_V59_spin11_core": "bf666eb5e4d57bff18b05182d7d6cc7874bbc26dd71897153faf9ee67a5f8c42",
+    "bound_V60_master_core": "35395532eaf625886b704ed25b7fa8525482ec1d53b94ccc96e7858d6425898e",
+    "relation": "route-B extension: it keeps every V59 structural result and answers the first V59 loophole; it does not touch routes A60 or C and does not splice actions"
+  },
+  "matter_parity_and_lsp": {
+    "acts_as_R_parity": "matter scalars odd, matter fermions even, Higgs scalars even, Higgsinos and gauginos odd: exactly R parity",
+    "element": "g^2, the order-two element of Z4R",
+    "field_phases": [
+      {
+        "fermion_phase_under_g2": 1,
+        "field": "matter 16_i",
+        "q": 1,
+        "scalar_phase_under_g2": -1
+      },
+      {
+        "fermion_phase_under_g2": -1,
+        "field": "Sigma (Hu,Hd)",
+        "q": 0,
+        "scalar_phase_under_g2": 1
+      },
+      {
+        "fermion_phase_under_g2": -1,
+        "field": "C",
+        "q": 0,
+        "scalar_phase_under_g2": 1
+      },
+      {
+        "fermion_phase_under_g2": -1,
+        "field": "Cbar",
+        "q": 0,
+        "scalar_phase_under_g2": 1
+      },
+      {
+        "fermion_phase_under_g2": -1,
+        "field": "S",
+        "q": 2,
+        "scalar_phase_under_g2": 1
+      },
+      {
+        "fermion_phase_under_g2": -1,
+        "field": "T",
+        "q": 2,
+        "scalar_phase_under_g2": 1
+      }
+    ],
+    "gaugino_phase": -1,
+    "survives_gravitino_mass": {
+      "W_charge_under_g2": 0,
+      "statement": "<W> breaks Z4R to g^2, so R parity and LSP stability persist after supersymmetry breaking; a dark-matter candidate exists structurally but no relic computation is performed",
+      "unbroken_by_nonzero_W_vev": true
+    }
+  },
+  "n_failed_integrity_checks": 0,
+  "n_integrity_checks": 29,
+  "non_R_contrast": {
+    "statement": "the V59 scan proved zero non-R selectors exist among 1295 full-rank supports; the V61 scan proves the R-type family is nonempty and collapses to one class under GS universality",
+    "v59_first_listed_loophole": "an exact R symmetry",
+    "v59_full_rank_assignments_checked": 1295,
+    "v59_non_R_counterexamples": 0,
+    "v61_realizes_that_loophole": true
+  },
+  "odd_cycle_escape_theorem": {
+    "M_equals_2_degeneration": {
+      "quartic_allowed_at_M2": true,
+      "statement": "for M=2 the charges 4q=0=2 mod 2 make the quartic allowed, matching the V59 row that Z2 allows both the Yukawa and 16^4"
+    },
+    "cases_checked": 33,
+    "every_forced_diagonal_16_pow4_forbidden": true,
+    "machine_check_domain": "all M in 3..24 and every q with 2q=2 mod M",
+    "proof": [
+      "An allowed Yukawa entry ij obeys q_i+q_j=2 because q_Sigma=0 and W has charge 2.",
+      "A nonzero determinant monomial selects a permutation of three labels.",
+      "Every permutation of three labels has an odd cycle: a fixed point or a 3-cycle.",
+      "On a fixed point 2q_i=2 directly; on a 3-cycle the three pair sums force q_i=q_j=q_k and again 2q_i=2.",
+      "The same-family 16_i^4 operator then carries charge 4q_i=4, and 4=2 mod M requires M|2.",
+      "Hence for every M>2 the label forced by the odd cycle has its 16_i^4 FORBIDDEN, inverting the V59 non-R conclusion."
+    ],
+    "rows": [
+      {
+        "M": 3,
+        "allowed": false,
+        "diagonal_16_pow4_charge": 1,
+        "q_with_2q_equal_2": 1
+      },
+      {
+        "M": 4,
+        "allowed": false,
+        "diagonal_16_pow4_charge": 0,
+        "q_with_2q_equal_2": 1
+      },
+      {
+        "M": 4,
+        "allowed": false,
+        "diagonal_16_pow4_charge": 0,
+        "q_with_2q_equal_2": 3
+      },
+      {
+        "M": 5,
+        "allowed": false,
+        "diagonal_16_pow4_charge": 4,
+        "q_with_2q_equal_2": 1
+      },
+      {
+        "M": 6,
+        "allowed": false,
+        "diagonal_16_pow4_charge": 4,
+        "q_with_2q_equal_2": 1
+      },
+      {
+        "M": 6,
+        "allowed": false,
+        "diagonal_16_pow4_charge": 4,
+        "q_with_2q_equal_2": 4
+      },
+      {
+        "M": 7,
+        "allowed": false,
+        "diagonal_16_pow4_charge": 4,
+        "q_with_2q_equal_2": 1
+      },
+      {
+        "M": 8,
+        "allowed": false,
+        "diagonal_16_pow4_charge": 4,
+        "q_with_2q_equal_2": 1
+      },
+      {
+        "M": 8,
+        "allowed": false,
+        "diagonal_16_pow4_charge": 4,
+        "q_with_2q_equal_2": 5
+      },
+      {
+        "M": 9,
+        "allowed": false,
+        "diagonal_16_pow4_charge": 4,
+        "q_with_2q_equal_2": 1
+      },
+      {
+        "M": 10,
+        "allowed": false,
+        "diagonal_16_pow4_charge": 4,
+        "q_with_2q_equal_2": 1
+      },
+      {
+        "M": 10,
+        "allowed": false,
+        "diagonal_16_pow4_charge": 4,
+        "q_with_2q_equal_2": 6
+      },
+      {
+        "M": 11,
+        "allowed": false,
+        "diagonal_16_pow4_charge": 4,
+        "q_with_2q_equal_2": 1
+      },
+      {
+        "M": 12,
+        "allowed": false,
+        "diagonal_16_pow4_charge": 4,
+        "q_with_2q_equal_2": 1
+      },
+      {
+        "M": 12,
+        "allowed": false,
+        "diagonal_16_pow4_charge": 4,
+        "q_with_2q_equal_2": 7
+      },
+      {
+        "M": 13,
+        "allowed": false,
+        "diagonal_16_pow4_charge": 4,
+        "q_with_2q_equal_2": 1
+      },
+      {
+        "M": 14,
+        "allowed": false,
+        "diagonal_16_pow4_charge": 4,
+        "q_with_2q_equal_2": 1
+      },
+      {
+        "M": 14,
+        "allowed": false,
+        "diagonal_16_pow4_charge": 4,
+        "q_with_2q_equal_2": 8
+      },
+      {
+        "M": 15,
+        "allowed": false,
+        "diagonal_16_pow4_charge": 4,
+        "q_with_2q_equal_2": 1
+      },
+      {
+        "M": 16,
+        "allowed": false,
+        "diagonal_16_pow4_charge": 4,
+        "q_with_2q_equal_2": 1
+      },
+      {
+        "M": 16,
+        "allowed": false,
+        "diagonal_16_pow4_charge": 4,
+        "q_with_2q_equal_2": 9
+      },
+      {
+        "M": 17,
+        "allowed": false,
+        "diagonal_16_pow4_charge": 4,
+        "q_with_2q_equal_2": 1
+      },
+      {
+        "M": 18,
+        "allowed": false,
+        "diagonal_16_pow4_charge": 4,
+        "q_with_2q_equal_2": 1
+      },
+      {
+        "M": 18,
+        "allowed": false,
+        "diagonal_16_pow4_charge": 4,
+        "q_with_2q_equal_2": 10
+      },
+      {
+        "M": 19,
+        "allowed": false,
+        "diagonal_16_pow4_charge": 4,
+        "q_with_2q_equal_2": 1
+      },
+      {
+        "M": 20,
+        "allowed": false,
+        "diagonal_16_pow4_charge": 4,
+        "q_with_2q_equal_2": 1
+      },
+      {
+        "M": 20,
+        "allowed": false,
+        "diagonal_16_pow4_charge": 4,
+        "q_with_2q_equal_2": 11
+      },
+      {
+        "M": 21,
+        "allowed": false,
+        "diagonal_16_pow4_charge": 4,
+        "q_with_2q_equal_2": 1
+      },
+      {
+        "M": 22,
+        "allowed": false,
+        "diagonal_16_pow4_charge": 4,
+        "q_with_2q_equal_2": 1
+      },
+      {
+        "M": 22,
+        "allowed": false,
+        "diagonal_16_pow4_charge": 4,
+        "q_with_2q_equal_2": 12
+      },
+      {
+        "M": 23,
+        "allowed": false,
+        "diagonal_16_pow4_charge": 4,
+        "q_with_2q_equal_2": 1
+      },
+      {
+        "M": 24,
+        "allowed": false,
+        "diagonal_16_pow4_charge": 4,
+        "q_with_2q_equal_2": 1
+      },
+      {
+        "M": 24,
+        "allowed": false,
+        "diagonal_16_pow4_charge": 4,
+        "q_with_2q_equal_2": 13
+      }
+    ]
+  },
+  "proton_mu_ledger": {
+    "Kahler_dim5_ban": {
+      "charge_mod_4": 2,
+      "forbidden": true,
+      "operator_class": "[16_i 16_j 16_k 16_l^dagger]_D / M_*"
+    },
+    "W_dim5_all_orders_ban": {
+      "forbidden": true,
+      "statement": "any holomorphic W_eff monomial built from matter sixteens alone carries charge = (number of sixteens) mod 4; four sixteens give 0 != 2, so every dimension-five proton operator, including every mediator- or colored-KK-dressed one produced by a charge-2 Schur complement, vanishes identically",
+      "v59_status_upgraded_from": "fatal_without_selector / dimension_five_KK OPEN",
+      "wall_contact_F4_charge_mod_4": 0
+    },
+    "allowed_wanted_operators": {
+      "Weinberg_16_16_Sigma_Sigma": true,
+      "Yukawa_16_16_Sigma_via_kernel": true,
+      "seesaw_16_16_Cbar_Cbar": true
+    },
+    "mu_term": {
+      "W_level_charge_mod_4": 0,
+      "doubly_forbidden": "charge 0 != 2 and the 5D gauge shift independently forbids a local polynomial Sigma mass",
+      "generation_route": "Z4R breaking by <W> of charge 2 at the gravitino scale can regenerate mu of order m_3/2; the soft spectrum is not solved here and stays open"
+    },
+    "proton_gate_not_promoted": true,
+    "remaining_open_channels": [
+      "dimension-six gauge-boson KK exchange: unaffected by any R symmetry; needs Mc and wavefunctions against nucleon limits",
+      "Kahler operators dressed by SUSY breaking: suppressed by m_soft, not computed",
+      "numerical proton lifetime: no calculation exists in this route"
+    ]
+  },
+  "r_type_charge_calculus": {
+    "component_rule": "A chiral superfield of charge q has scalar charge q and fermion charge q-1; gauginos carry charge +1; gauge bosons charge 0.",
+    "definition": "A Z_M^R selector acts on the Grassmann coordinate with theta charge 1, so every superpotential term must carry charge W_CHARGE=2 mod M and every Kahler-potential term charge 0 mod M.",
+    "eta_convention": {
+      "eta_of_4": 2,
+      "matches_V60_heterotic_eta_2_convention": true,
+      "reason": "half-integral instanton-number sectors relax the discrete anomaly comparison for even M (Ibanez; Araki et al.)",
+      "rule": "eta(M)=M for odd M and M/2 for even M"
+    },
+    "kahler_charge": 0,
+    "non_R_limit": "theta charge 0 and W charge 0 reproduce the V59 non-R calculus, so the two audits use one uniform convention.",
+    "superpotential_charge": 2,
+    "theta_charge": 1
+  },
+  "rank_sector_r_compatibility": {
+    "M_T_set_to_zero": true,
+    "M_T_term_forbidden": true,
+    "anomaly_matching_conclusion": "every rank-scale Dirac pair has fermion charge sum 0, so the discrete anomaly of the light ledger equals that of the wall theory",
+    "charges": {
+      "C": 0,
+      "Cbar": 0,
+      "F_i": 1,
+      "S": 2,
+      "Sigma": 0,
+      "T": 2
+    },
+    "five_mass_determinant": "-lambda*lambdabar*v^2",
+    "five_mass_matrix_with_MT_zero": "[[0,lambdabar*v],[lambda*v,0]]",
+    "full_rank_without_MT": true,
+    "heavy_pair_decoupling": [
+      {
+        "charge_sum": 0,
+        "decouples_from_discrete_anomaly": true,
+        "fermion_charges": [
+          -1,
+          1
+        ],
+        "pair": "5bar_C with 5_T via lambda*<1_C>"
+      },
+      {
+        "charge_sum": 0,
+        "decouples_from_discrete_anomaly": true,
+        "fermion_charges": [
+          -1,
+          1
+        ],
+        "pair": "5_Cbar with 5bar_T via lambdabar*<1_Cbar>"
+      },
+      {
+        "charge_sum": 0,
+        "decouples_from_discrete_anomaly": true,
+        "fermion_charges": [
+          -1,
+          1
+        ],
+        "pair": "eaten 16/16bar fragments with gauginos"
+      },
+      {
+        "charge_sum": 0,
+        "decouples_from_discrete_anomaly": true,
+        "fermion_charges": [
+          1,
+          -1
+        ],
+        "pair": "S with the radial C,Cbar singlet"
+      }
+    ],
+    "normalized_example_determinant": "-1",
+    "selector_unbroken_by_all_displayed_vevs": true,
+    "term_ledger": [
+      {
+        "allowed": true,
+        "charge": 2,
+        "charge_mod_4": 2,
+        "term": "kappa*S*C*Cbar"
+      },
+      {
+        "allowed": true,
+        "charge": 2,
+        "charge_mod_4": 2,
+        "term": "kappa*S*v^2"
+      },
+      {
+        "allowed": true,
+        "charge": 2,
+        "charge_mod_4": 2,
+        "term": "lambda*C*C*T"
+      },
+      {
+        "allowed": true,
+        "charge": 2,
+        "charge_mod_4": 2,
+        "term": "lambdabar*Cbar*Cbar*T"
+      },
+      {
+        "allowed": false,
+        "charge": 4,
+        "charge_mod_4": 0,
+        "term": "(M_T/2)*T*T"
+      },
+      {
+        "allowed": true,
+        "charge": 2,
+        "charge_mod_4": 2,
+        "term": "y_ij*F_i*F_j*Cbar*Cbar/M_* (seesaw)"
+      },
+      {
+        "allowed": true,
+        "charge": 2,
+        "charge_mod_4": 2,
+        "term": "F_i*F_j*Sigma*Sigma (Weinberg-type)"
+      }
+    ],
+    "v59_determinant_already_MT_independent": "the V59 determinant -lambda*lambdabar*v^2 never involved M_T, so deleting the now-forbidden M_T term costs nothing",
+    "v59_five_matrix_needed_MT": false,
+    "vev_neutrality_forcing": "the rank VEVs <C>=<Cbar>=v must leave the selector unbroken, which forces q_C=q_Cbar=0 mod 4; the term ledger then forces q_S=q_T=2"
+  },
+  "research_question": "Does the sharp V59 non-R selector no-go extend to R-type Abelian selectors in the same Spin(11) architecture, and if not, which R selectors survive all exact requirements?",
+  "schema": "susy_so10.v61.spin11_z4r_selector_escape_audit.v1",
+  "scherk_schwarz_compatibility": {
+    "exact_statement": "a twist along the same sigma3 Cartan direction commutes with every element of Z4R, which lives in that Cartan, so this soft-breaking route preserves the selector at the twist level",
+    "not_computed": [
+      "the gravitino and soft spectrum induced by the twist",
+      "one-loop radion/Casimir stabilization",
+      "the mu/B-mu ratio after R breaking"
+    ],
+    "status": "COMPATIBILITY_EXACT__SPECTRUM_OPEN",
+    "twist_direction": "the Scherk-Schwarz twist acts in SU(2)R",
+    "twist_in_cartan_commutes_with_Z4R": true
+  },
+  "source_manifest": {
+    "audit_script": {
+      "path": "C:\\Users\\jayal\\Downloads\\So10Theory2\\So10Theory\\_g3_equality_classification_integration\\susy_v61_spin11_z4r_selector_escape_audit.py",
+      "sha256": "28e986fc45dfefd39595d6abc4272d19cd3e3225ade929f69fb0469c1e91a9d2"
+    },
+    "bound_V59_spin11": {
+      "path": "C:\\Users\\jayal\\Downloads\\So10Theory2\\So10Theory\\_g3_equality_classification_integration\\SUSY_V59_SPIN11_GAUGE_HIGGS_COMPLETION_AUDIT.json",
+      "sha256": "dfe07e9af7ef080cd13413dd877f25e73a0e4f22140d8a5e311de590bf92e0e6"
+    },
+    "bound_V60_master": {
+      "path": "C:\\Users\\jayal\\Downloads\\So10Theory2\\So10Theory\\_g3_equality_classification_integration\\SUSY_V60_MULTIPATH_G1_FRONTIER_MASTER_AUDIT.json",
+      "sha256": "699a60f188d12aea953af180eb804aa929bddbc3d6a6393e87859ec737fbc000"
+    },
+    "primary_sources": [
+      {
+        "arxiv": "1009.0905",
+        "authors": "Hyun Min Lee, Stuart Raby, Michael Ratz, Graham G. Ross, Roland Schieren, Kai Schmidt-Hoberg and Patrick K. S. Vaudrevange",
+        "id": "LEE_ET_AL_2010",
+        "scope": "4D classification: among anomaly-universal Abelian discrete symmetries commuting with Spin(10) that forbid mu and dimension-five proton operators while allowing Yukawas and seesaw terms, Z4R with matter charge one is unique.  V61 re-derives this inside the 5D Spin(11) architecture with an independent exhaustive scan.",
+        "title": "A unique Z4R symmetry for the MSSM",
+        "url": "https://arxiv.org/abs/1009.0905"
+      },
+      {
+        "arxiv": "hep-th/9202046",
+        "authors": "Luis E. Ibanez",
+        "id": "IBANEZ_1992",
+        "scope": "Discrete anomaly arithmetic: mixed G^2-Z_M coefficients are constrained modulo M, relaxed to M/2 for even M by half-integral instanton number contributions; source of the eta convention.",
+        "title": "More about discrete gauge anomalies",
+        "url": "https://arxiv.org/abs/hep-th/9202046"
+      },
+      {
+        "arxiv": "0805.0207",
+        "authors": "Takeshi Araki, Tatsuo Kobayashi, Jisuke Kubo, Saul Ramos-Sanchez, Michael Ratz and Patrick K. S. Vaudrevange",
+        "id": "ARAKI_ET_AL_2008",
+        "scope": "Path-integral derivation of discrete-anomaly conditions and of their Green-Schwarz repair; justifies demanding universality of A_G modulo eta with one axion.",
+        "title": "(Non-)Abelian discrete anomalies",
+        "url": "https://arxiv.org/abs/0805.0207"
+      },
+      {
+        "arxiv": "hep-th/9712214",
+        "authors": "Eugene A. Mirabelli and Michael E. Peskin",
+        "id": "MIRABELLI_PESKIN_1997",
+        "scope": "Standard S1/Z2 decomposition of 5D SUSY: the SU(2)R doublet structure of gauginos and hyperscalars that fixes the Cartan R-charges used here.",
+        "title": "Transmission of supersymmetry breaking from a 4-dimensional boundary",
+        "url": "https://arxiv.org/abs/hep-th/9712214"
+      },
+      {
+        "arxiv": "hep-ph/0210257",
+        "authors": "Gustavo Burdman and Yasunori Nomura",
+        "id": "BURDMAN_NOMURA_2003",
+        "scope": "5D gauge-Higgs superfield shift, bulk gauge Yukawas and the Scherk-Schwarz/radion route for mu and soft terms carried as the open soft-sector obligation.",
+        "title": "Unification of Higgs and Gauge Fields in Five Dimensions",
+        "url": "https://arxiv.org/abs/hep-ph/0210257"
+      },
+      {
+        "arxiv": "hep-th/0305024",
+        "authors": "Gero von Gersdorff and Mariano Quiros",
+        "id": "VON_GERSDORFF_QUIROS_2003",
+        "scope": "Fixed-point anomaly machinery that defines the still-open localized Z4R anomaly obligation; not computed here.",
+        "title": "Localized anomalies in orbifold gauge theories",
+        "url": "https://arxiv.org/abs/hep-th/0305024"
+      },
+      {
+        "arxiv": "1808.00009",
+        "authors": "Inaki Garcia-Etxebarria and Miguel Montero",
+        "id": "GARCIA_ETXEBARRIA_MONTERO_2018",
+        "scope": "Framework for the open Dai-Freed obligation with the discrete R twist included in the background; not computed here.",
+        "title": "Dai-Freed anomalies in particle physics",
+        "url": "https://arxiv.org/abs/1808.00009"
+      }
+    ],
+    "pytest": {
+      "path": "C:\\Users\\jayal\\Downloads\\So10Theory2\\So10Theory\\_g3_equality_classification_integration\\test_susy_v61_spin11_z4r_selector_escape_audit.py",
+      "sha256": "1d141da16c0c14a15c40724cc014595333a5df0054f6439e040251ccf7f94278"
+    }
+  },
+  "status": "V61_SPIN11_EXACT_Z4R_SELECTOR_ESCAPE__V59_NON_R_NO_GO_DOES_NOT_EXTEND_TO_R_TYPE__ODD_CYCLE_FORCES_2Q_EQUALS_2_AND_FORBIDS_DIAGONAL_16_POW4__EXHAUSTIVE_M_2_TO_24_SCAN_SELECTS_UNIQUE_Z4R_CLASS_UP_TO_GAUGE_CENTER__SUPERALGEBRA_CARTAN_AND_MEDIATOR_MIXING_FORCE_MATTER_CHARGE_ONE__RANK_SECTOR_COMPATIBLE_WITH_MT_ZERO_AND_FULL_RANK_DETERMINANT__GLOBAL_ANOMALY_UNIVERSAL_MOD_2_WHERE_HETEROTIC_CANDIDATE_FAILED__W_DIM5_PROTON_BAN_ALL_ORDERS__KAHLER_DIM5_BAN_EXACT__GS_AXION_NOT_EXHIBITED__LOCALIZED_R_ANOMALY_DAI_FREED_SS_SOFT_KK_UV_OPEN__STRICT_G1_OPEN__ZERO_GATES_CLOSED",
+  "strict_G1_matrix": [
+    {
+      "criterion": "one_explicit_5D_SUSY_action_skeleton",
+      "evidence": "carried from V59; gauge, rank and paired-mediator terms explicit, KK determinant absent",
+      "status": "PARTIAL"
+    },
+    {
+      "criterion": "exact_two_Higgs_zero_modes_no_colored_zero",
+      "evidence": "carried from V59 55-generator enumeration",
+      "status": "PASS"
+    },
+    {
+      "criterion": "rank_breaking_without_light_5_plus_5bar",
+      "evidence": "det=-lambda*lambdabar*v^2 with the M_T term now forced to zero",
+      "status": "PASS_CONDITIONAL"
+    },
+    {
+      "criterion": "exact_proton_selector",
+      "evidence": "unique Z4R class from the exhaustive scan; W and Kahler dimension-five bans exact; supersedes the V59 non-R FAIL row",
+      "status": "PASS_ARITHMETIC_R_TYPE"
+    },
+    {
+      "criterion": "selector_anomaly_universality",
+      "evidence": "A3=3, A2=1, universal mod eta=2 where the heterotic candidate failed",
+      "status": "PASS_GLOBAL_LEDGER"
+    },
+    {
+      "criterion": "selector_quantum_completion",
+      "evidence": "localized R anomaly, GS axion multiplet and Dai-Freed phase not computed",
+      "status": "OPEN"
+    },
+    {
+      "criterion": "realistic_full_rank_Yukawas",
+      "evidence": "carried from V59; kernel defined, spectrum not solved",
+      "status": "OPEN"
+    },
+    {
+      "criterion": "UV_complete_regulator",
+      "evidence": "carried from V59",
+      "status": "OPEN"
+    },
+    {
+      "criterion": "strict_G1",
+      "evidence": "arithmetic and global-anomaly escape only; quantum and UV obligations remain",
+      "status": "OPEN"
+    }
+  ],
+  "terminal_decision": {
+    "V61_G1_closed": false,
+    "V61_closed_gates": [],
+    "complete_theory": false,
+    "escape_scope": "charge arithmetic, uniqueness scan and 4D global anomaly universality only; no localized, Dai-Freed or UV statement",
+    "next_obligations": [
+      "compute the fixed-point-localized Z4R anomaly ledger with the mirror pairing",
+      "exhibit and quantize the single 5D GS axion multiplet",
+      "compute the Dai-Freed phase with the R twist",
+      "solve the exact KK determinant and flavor fit",
+      "exhibit a UV regulator or string completion"
+    ],
+    "route_classification": "EXACT_Z4R_SELECTOR_ESCAPE_CANDIDATE__ARITHMETIC_AND_GLOBAL_ANOMALY_PASS__QUANTUM_LOCALIZED_AND_UV_COMPLETION_OPEN",
+    "selector_escape_proved": true,
+    "unique_selector_class": "Z4R with matter charge one"
+  },
+  "version": "V61"
+}

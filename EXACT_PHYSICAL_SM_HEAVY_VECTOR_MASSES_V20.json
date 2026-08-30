@@ -1,0 +1,1313 @@
+{
+  "core_sha256": "86c3e0dfda09366b1cf06c8c3a8dcb3dfdf3bfe1555a41214d380ed4db329894",
+  "contract_id": "exact_physical_sm_heavy_vector_masses_v20",
+  "status": "EXACT_PARAMETERIZED_PHYSICAL_SM_HEAVY_VECTOR_MASS_THEOREM_CLOSED__LOOP_MATCHING_AND_FULL_G6_G7_OPEN",
+  "source_binding": {
+    "physical_SM_target_source": {
+      "path": "physical_sm_vacuum_local_feasibility_v20.py",
+      "sha256": "629ea8c45f101f82b6b4e963fd1fb19dcc5735fe52a1d8efb1fb0812dbaa565c",
+      "mode": "raw"
+    },
+    "physical_SM_target_report": {
+      "path": "PHYSICAL_SM_VACUUM_LOCAL_FEASIBILITY_V20.json",
+      "sha256": "ac575067550472afeae1d87503c04a47bf27386223a4417cf7c2341ad75af315",
+      "mode": "raw"
+    },
+    "canonical_486_real_chart": {
+      "path": "live_g2_canonical_486_field_chart_v20.py",
+      "sha256": "9275dbb204324cc48dfd7139cad836e034b1b83b07bd60aecd6ff093d3ab7765",
+      "mode": "portable_text"
+    },
+    "authoritative_gauge_normalization": {
+      "path": "exact_authoritative_so10_u1x_gauge_betas_v20.py",
+      "sha256": "b3ec8ca5bc472af24081ee5b3409652dde0e1bf219cbf7d29a4f55e76e985cb6",
+      "mode": "raw"
+    },
+    "authoritative_model": {
+      "path": "models\\SO10Z17AxionV20.m",
+      "sha256": "66a2ce2c3491d0b3079ec93a16ab79d3e8a7e4e35cb54aadf21100b9fdd90cc1",
+      "mode": "raw"
+    }
+  },
+  "normalization": {
+    "bare_plane_trace_LtL": 2,
+    "canonical_generator": "H_ab=-i*L_ab/sqrt(2)",
+    "canonical_Tr10_H2": "1",
+    "authoritative_T10": "1",
+    "normalization_matches": true,
+    "U1X_generator": "declared integer X charge; no sqrt(2) rescaling",
+    "chart_kinetic_quadratic": "K=q^T q/2",
+    "target_lattice": "n=20 q",
+    "mass_formula": "M2=v^2/400 D A^T A D",
+    "D": "diag(g10/sqrt(2) repeated 45 times, gX)",
+    "exact_sparse_matrix_convention": "800 M2/v^2",
+    "parameter_domain": "g10>0, gX>0, v>0"
+  },
+  "exact_matrix": {
+    "shape": [
+      46,
+      46
+    ],
+    "bare_gram_trace": 136320,
+    "bare_gram_nonzero_entries": 116,
+    "sparse_upper_triangle_nonzero_entries": 81,
+    "sparse_upper_triangle": [
+      {
+        "row": 0,
+        "column": 0,
+        "row_label": "G01",
+        "column_label": "G01",
+        "bare_gram": 16,
+        "coefficient_rational": 16,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 0,
+        "column": 17,
+        "row_label": "G01",
+        "column_label": "G23",
+        "bare_gram": 16,
+        "coefficient_rational": 16,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 0,
+        "column": 30,
+        "row_label": "G01",
+        "column_label": "G45",
+        "bare_gram": 16,
+        "coefficient_rational": 16,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 0,
+        "column": 39,
+        "row_label": "G01",
+        "column_label": "G67",
+        "bare_gram": 16,
+        "coefficient_rational": 16,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 0,
+        "column": 44,
+        "row_label": "G01",
+        "column_label": "G89",
+        "bare_gram": 16,
+        "coefficient_rational": 16,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 0,
+        "column": 45,
+        "row_label": "G01",
+        "column_label": "X",
+        "bare_gram": -32,
+        "coefficient_rational": 0,
+        "coefficient_sqrt2": -32,
+        "monomial": "g10*gX",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 1,
+        "column": 1,
+        "row_label": "G02",
+        "column_label": "G02",
+        "bare_gram": 8,
+        "coefficient_rational": 8,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 1,
+        "column": 10,
+        "row_label": "G02",
+        "column_label": "G13",
+        "bare_gram": -8,
+        "coefficient_rational": -8,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 2,
+        "column": 2,
+        "row_label": "G03",
+        "column_label": "G03",
+        "bare_gram": 8,
+        "coefficient_rational": 8,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 2,
+        "column": 9,
+        "row_label": "G03",
+        "column_label": "G12",
+        "bare_gram": 8,
+        "coefficient_rational": 8,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 3,
+        "column": 3,
+        "row_label": "G04",
+        "column_label": "G04",
+        "bare_gram": 8,
+        "coefficient_rational": 8,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 3,
+        "column": 12,
+        "row_label": "G04",
+        "column_label": "G15",
+        "bare_gram": -8,
+        "coefficient_rational": -8,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 4,
+        "column": 4,
+        "row_label": "G05",
+        "column_label": "G05",
+        "bare_gram": 8,
+        "coefficient_rational": 8,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 4,
+        "column": 11,
+        "row_label": "G05",
+        "column_label": "G14",
+        "bare_gram": 8,
+        "coefficient_rational": 8,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 5,
+        "column": 5,
+        "row_label": "G06",
+        "column_label": "G06",
+        "bare_gram": 408,
+        "coefficient_rational": 408,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 5,
+        "column": 14,
+        "row_label": "G06",
+        "column_label": "G17",
+        "bare_gram": -8,
+        "coefficient_rational": -8,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 6,
+        "column": 6,
+        "row_label": "G07",
+        "column_label": "G07",
+        "bare_gram": 408,
+        "coefficient_rational": 408,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 6,
+        "column": 13,
+        "row_label": "G07",
+        "column_label": "G16",
+        "bare_gram": 8,
+        "coefficient_rational": 8,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 7,
+        "column": 7,
+        "row_label": "G08",
+        "column_label": "G08",
+        "bare_gram": 808,
+        "coefficient_rational": 808,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 7,
+        "column": 16,
+        "row_label": "G08",
+        "column_label": "G19",
+        "bare_gram": -8,
+        "coefficient_rational": -8,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 8,
+        "column": 8,
+        "row_label": "G09",
+        "column_label": "G09",
+        "bare_gram": 808,
+        "coefficient_rational": 808,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 8,
+        "column": 15,
+        "row_label": "G09",
+        "column_label": "G18",
+        "bare_gram": 8,
+        "coefficient_rational": 8,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 9,
+        "column": 9,
+        "row_label": "G12",
+        "column_label": "G12",
+        "bare_gram": 8,
+        "coefficient_rational": 8,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 10,
+        "column": 10,
+        "row_label": "G13",
+        "column_label": "G13",
+        "bare_gram": 8,
+        "coefficient_rational": 8,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 11,
+        "column": 11,
+        "row_label": "G14",
+        "column_label": "G14",
+        "bare_gram": 8,
+        "coefficient_rational": 8,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 12,
+        "column": 12,
+        "row_label": "G15",
+        "column_label": "G15",
+        "bare_gram": 8,
+        "coefficient_rational": 8,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 13,
+        "column": 13,
+        "row_label": "G16",
+        "column_label": "G16",
+        "bare_gram": 408,
+        "coefficient_rational": 408,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 14,
+        "column": 14,
+        "row_label": "G17",
+        "column_label": "G17",
+        "bare_gram": 408,
+        "coefficient_rational": 408,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 15,
+        "column": 15,
+        "row_label": "G18",
+        "column_label": "G18",
+        "bare_gram": 808,
+        "coefficient_rational": 808,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 16,
+        "column": 16,
+        "row_label": "G19",
+        "column_label": "G19",
+        "bare_gram": 808,
+        "coefficient_rational": 808,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 17,
+        "column": 17,
+        "row_label": "G23",
+        "column_label": "G23",
+        "bare_gram": 16,
+        "coefficient_rational": 16,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 17,
+        "column": 30,
+        "row_label": "G23",
+        "column_label": "G45",
+        "bare_gram": 16,
+        "coefficient_rational": 16,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 17,
+        "column": 39,
+        "row_label": "G23",
+        "column_label": "G67",
+        "bare_gram": 16,
+        "coefficient_rational": 16,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 17,
+        "column": 44,
+        "row_label": "G23",
+        "column_label": "G89",
+        "bare_gram": 16,
+        "coefficient_rational": 16,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 17,
+        "column": 45,
+        "row_label": "G23",
+        "column_label": "X",
+        "bare_gram": -32,
+        "coefficient_rational": 0,
+        "coefficient_sqrt2": -32,
+        "monomial": "g10*gX",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 18,
+        "column": 18,
+        "row_label": "G24",
+        "column_label": "G24",
+        "bare_gram": 8,
+        "coefficient_rational": 8,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 18,
+        "column": 25,
+        "row_label": "G24",
+        "column_label": "G35",
+        "bare_gram": -8,
+        "coefficient_rational": -8,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 19,
+        "column": 19,
+        "row_label": "G25",
+        "column_label": "G25",
+        "bare_gram": 8,
+        "coefficient_rational": 8,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 19,
+        "column": 24,
+        "row_label": "G25",
+        "column_label": "G34",
+        "bare_gram": 8,
+        "coefficient_rational": 8,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 20,
+        "column": 20,
+        "row_label": "G26",
+        "column_label": "G26",
+        "bare_gram": 408,
+        "coefficient_rational": 408,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 20,
+        "column": 27,
+        "row_label": "G26",
+        "column_label": "G37",
+        "bare_gram": -8,
+        "coefficient_rational": -8,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 21,
+        "column": 21,
+        "row_label": "G27",
+        "column_label": "G27",
+        "bare_gram": 408,
+        "coefficient_rational": 408,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 21,
+        "column": 26,
+        "row_label": "G27",
+        "column_label": "G36",
+        "bare_gram": 8,
+        "coefficient_rational": 8,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 22,
+        "column": 22,
+        "row_label": "G28",
+        "column_label": "G28",
+        "bare_gram": 808,
+        "coefficient_rational": 808,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 22,
+        "column": 29,
+        "row_label": "G28",
+        "column_label": "G39",
+        "bare_gram": -8,
+        "coefficient_rational": -8,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 23,
+        "column": 23,
+        "row_label": "G29",
+        "column_label": "G29",
+        "bare_gram": 808,
+        "coefficient_rational": 808,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 23,
+        "column": 28,
+        "row_label": "G29",
+        "column_label": "G38",
+        "bare_gram": 8,
+        "coefficient_rational": 8,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 24,
+        "column": 24,
+        "row_label": "G34",
+        "column_label": "G34",
+        "bare_gram": 8,
+        "coefficient_rational": 8,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 25,
+        "column": 25,
+        "row_label": "G35",
+        "column_label": "G35",
+        "bare_gram": 8,
+        "coefficient_rational": 8,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 26,
+        "column": 26,
+        "row_label": "G36",
+        "column_label": "G36",
+        "bare_gram": 408,
+        "coefficient_rational": 408,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 27,
+        "column": 27,
+        "row_label": "G37",
+        "column_label": "G37",
+        "bare_gram": 408,
+        "coefficient_rational": 408,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 28,
+        "column": 28,
+        "row_label": "G38",
+        "column_label": "G38",
+        "bare_gram": 808,
+        "coefficient_rational": 808,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 29,
+        "column": 29,
+        "row_label": "G39",
+        "column_label": "G39",
+        "bare_gram": 808,
+        "coefficient_rational": 808,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 30,
+        "column": 30,
+        "row_label": "G45",
+        "column_label": "G45",
+        "bare_gram": 16,
+        "coefficient_rational": 16,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 30,
+        "column": 39,
+        "row_label": "G45",
+        "column_label": "G67",
+        "bare_gram": 16,
+        "coefficient_rational": 16,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 30,
+        "column": 44,
+        "row_label": "G45",
+        "column_label": "G89",
+        "bare_gram": 16,
+        "coefficient_rational": 16,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 30,
+        "column": 45,
+        "row_label": "G45",
+        "column_label": "X",
+        "bare_gram": -32,
+        "coefficient_rational": 0,
+        "coefficient_sqrt2": -32,
+        "monomial": "g10*gX",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 31,
+        "column": 31,
+        "row_label": "G46",
+        "column_label": "G46",
+        "bare_gram": 408,
+        "coefficient_rational": 408,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 31,
+        "column": 36,
+        "row_label": "G46",
+        "column_label": "G57",
+        "bare_gram": -8,
+        "coefficient_rational": -8,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 32,
+        "column": 32,
+        "row_label": "G47",
+        "column_label": "G47",
+        "bare_gram": 408,
+        "coefficient_rational": 408,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 32,
+        "column": 35,
+        "row_label": "G47",
+        "column_label": "G56",
+        "bare_gram": 8,
+        "coefficient_rational": 8,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 33,
+        "column": 33,
+        "row_label": "G48",
+        "column_label": "G48",
+        "bare_gram": 808,
+        "coefficient_rational": 808,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 33,
+        "column": 38,
+        "row_label": "G48",
+        "column_label": "G59",
+        "bare_gram": -8,
+        "coefficient_rational": -8,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 34,
+        "column": 34,
+        "row_label": "G49",
+        "column_label": "G49",
+        "bare_gram": 808,
+        "coefficient_rational": 808,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 34,
+        "column": 37,
+        "row_label": "G49",
+        "column_label": "G58",
+        "bare_gram": 8,
+        "coefficient_rational": 8,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 35,
+        "column": 35,
+        "row_label": "G56",
+        "column_label": "G56",
+        "bare_gram": 408,
+        "coefficient_rational": 408,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 36,
+        "column": 36,
+        "row_label": "G57",
+        "column_label": "G57",
+        "bare_gram": 408,
+        "coefficient_rational": 408,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 37,
+        "column": 37,
+        "row_label": "G58",
+        "column_label": "G58",
+        "bare_gram": 808,
+        "coefficient_rational": 808,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 38,
+        "column": 38,
+        "row_label": "G59",
+        "column_label": "G59",
+        "bare_gram": 808,
+        "coefficient_rational": 808,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 39,
+        "column": 39,
+        "row_label": "G67",
+        "column_label": "G67",
+        "bare_gram": 16,
+        "coefficient_rational": 16,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 39,
+        "column": 44,
+        "row_label": "G67",
+        "column_label": "G89",
+        "bare_gram": 16,
+        "coefficient_rational": 16,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 39,
+        "column": 45,
+        "row_label": "G67",
+        "column_label": "X",
+        "bare_gram": -32,
+        "coefficient_rational": 0,
+        "coefficient_sqrt2": -32,
+        "monomial": "g10*gX",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 40,
+        "column": 40,
+        "row_label": "G68",
+        "column_label": "G68",
+        "bare_gram": 408,
+        "coefficient_rational": 408,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 40,
+        "column": 43,
+        "row_label": "G68",
+        "column_label": "G79",
+        "bare_gram": -8,
+        "coefficient_rational": -8,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 41,
+        "column": 41,
+        "row_label": "G69",
+        "column_label": "G69",
+        "bare_gram": 408,
+        "coefficient_rational": 408,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 41,
+        "column": 42,
+        "row_label": "G69",
+        "column_label": "G78",
+        "bare_gram": 8,
+        "coefficient_rational": 8,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 42,
+        "column": 42,
+        "row_label": "G78",
+        "column_label": "G78",
+        "bare_gram": 408,
+        "coefficient_rational": 408,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 43,
+        "column": 43,
+        "row_label": "G79",
+        "column_label": "G79",
+        "bare_gram": 408,
+        "coefficient_rational": 408,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 44,
+        "column": 44,
+        "row_label": "G89",
+        "column_label": "G89",
+        "bare_gram": 816,
+        "coefficient_rational": 816,
+        "coefficient_sqrt2": 0,
+        "monomial": "g10^2",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 44,
+        "column": 45,
+        "row_label": "G89",
+        "column_label": "X",
+        "bare_gram": -1632,
+        "coefficient_rational": 0,
+        "coefficient_sqrt2": -1632,
+        "monomial": "g10*gX",
+        "common_denominator_for_M2_over_v2": 800
+      },
+      {
+        "row": 45,
+        "column": 45,
+        "row_label": "X",
+        "column_label": "X",
+        "bare_gram": 119120,
+        "coefficient_rational": 238240,
+        "coefficient_sqrt2": 0,
+        "monomial": "gX^2",
+        "common_denominator_for_M2_over_v2": 800
+      }
+    ],
+    "field_block_contributions": {
+      "Phi210": {
+        "trace": 9600,
+        "nonzero_entries": 24,
+        "rank": 24,
+        "U1X_bare_gram_diagonal": 0,
+        "G89_U1X_bare_mixing": 0,
+        "sha256_i64_C_order": "bb97377c344fa240b5537c5a359f28d4f022d7f43709b14e785e42e3c4bd17f6"
+      },
+      "H10": {
+        "trace": 10400,
+        "nonzero_entries": 20,
+        "rank": 17,
+        "U1X_bare_gram_diagonal": 3200,
+        "G89_U1X_bare_mixing": -1600,
+        "sha256_i64_C_order": "0ad961be3b823e6707858d268988b05455fa23cf387eebebec76893c5fb6e25e"
+      },
+      "Sigma126bar": {
+        "trace": 464,
+        "nonzero_entries": 116,
+        "rank": 21,
+        "U1X_bare_gram_diagonal": 64,
+        "G89_U1X_bare_mixing": -32,
+        "sha256_i64_C_order": "31d1caa373da977fe346a56a1e2f70f49f811cc0db87ee6741ce026ea61fc697"
+      },
+      "S": {
+        "trace": 256,
+        "nonzero_entries": 1,
+        "rank": 1,
+        "U1X_bare_gram_diagonal": 256,
+        "G89_U1X_bare_mixing": 0,
+        "sha256_i64_C_order": "6089f11e68c1444b007389bf5ba39724206dab90de28c50c340761065cfeec96"
+      },
+      "Phi17": {
+        "trace": 115600,
+        "nonzero_entries": 1,
+        "rank": 1,
+        "U1X_bare_gram_diagonal": 115600,
+        "G89_U1X_bare_mixing": 0,
+        "sha256_i64_C_order": "4076dc2c1ff1d3e10606ace61474ab3de1cb954794d2681014b239496b9bd812"
+      }
+    },
+    "block_sum_equals_full_gram": true,
+    "bare_gram_sha256_i64_C_order": "8e58eb233efa3d3e1d02965104a9b568ab9e17143c417d8629f7232fd68efa33"
+  },
+  "rank_kernel_Goldstone": {
+    "tangent_shape": [
+      486,
+      46
+    ],
+    "mass_matrix_shape": [
+      46,
+      46
+    ],
+    "exact_tangent_rank": 37,
+    "exact_gram_rank": 37,
+    "exact_gram_nullity": 9,
+    "declared_unbroken_basis_rank": 9,
+    "all_declared_unbroken_vectors_annihilated": true,
+    "declared_basis_is_complete_kernel": true,
+    "unbroken_algebra": "su(3)_C + u(1)_em",
+    "gauge_Goldstone_image_dimension": 37,
+    "ker_M2_equals_ker_coupled_tangent": true,
+    "reason": "c^T M2 c=(v^2/400)||A D c||^2 for positive couplings",
+    "full_gauge_plus_PQ_tangent_rank": 38,
+    "uneaten_accidental_PQ_dimension": 1
+  },
+  "unbroken_basis_labels": [
+    "SU3_H1",
+    "SU3_H2",
+    "SU3_E12_re",
+    "SU3_E12_im",
+    "SU3_E13_re",
+    "SU3_E13_im",
+    "SU3_E23_re",
+    "SU3_E23_im",
+    "Q3=3Q"
+  ],
+  "sector_resolution": {
+    "operator_convention": "(12*C2_SU3,Q3^2), Q3=3Q",
+    "color_eigenvalues": [
+      0,
+      16,
+      36
+    ],
+    "Q3_squared_eigenvalues": [
+      0,
+      1,
+      4,
+      9,
+      16
+    ],
+    "joint_projectors_sum_to_identity": true,
+    "joint_dimension_sum": 46,
+    "all_sector_mass_polynomials_exact": true,
+    "all_sector_multiplicities_exact": true,
+    "sectors": [
+      {
+        "12C2_SU3": 0,
+        "Q3_squared": 0,
+        "dimension": 4,
+        "unbroken_dimension": 1,
+        "massive_dimension": 3,
+        "spectrum": "three neutral roots of the coupling-dependent cubic plus photon"
+      },
+      {
+        "12C2_SU3": 0,
+        "Q3_squared": 9,
+        "dimension": 4,
+        "bare_gram_spectrum": [
+          {
+            "bare_gram_eigenvalue": 400,
+            "multiplicity": 2
+          },
+          {
+            "bare_gram_eigenvalue": 416,
+            "multiplicity": 2
+          }
+        ],
+        "annihilating_polynomial_residual_zero": true
+      },
+      {
+        "12C2_SU3": 16,
+        "Q3_squared": 1,
+        "dimension": 12,
+        "bare_gram_spectrum": [
+          {
+            "bare_gram_eigenvalue": 800,
+            "multiplicity": 6
+          },
+          {
+            "bare_gram_eigenvalue": 816,
+            "multiplicity": 6
+          }
+        ],
+        "annihilating_polynomial_residual_zero": true
+      },
+      {
+        "12C2_SU3": 16,
+        "Q3_squared": 4,
+        "dimension": 12,
+        "bare_gram_spectrum": [
+          {
+            "bare_gram_eigenvalue": 16,
+            "multiplicity": 6
+          },
+          {
+            "bare_gram_eigenvalue": 416,
+            "multiplicity": 6
+          }
+        ],
+        "annihilating_polynomial_residual_zero": true
+      },
+      {
+        "12C2_SU3": 16,
+        "Q3_squared": 16,
+        "dimension": 6,
+        "bare_gram_spectrum": [
+          {
+            "bare_gram_eigenvalue": 400,
+            "multiplicity": 6
+          }
+        ],
+        "annihilating_polynomial_residual_zero": true
+      },
+      {
+        "12C2_SU3": 36,
+        "Q3_squared": 0,
+        "dimension": 8,
+        "bare_gram_spectrum": [
+          {
+            "bare_gram_eigenvalue": 0,
+            "multiplicity": 8
+          }
+        ],
+        "annihilating_polynomial_residual_zero": true
+      }
+    ]
+  },
+  "massive_non_neutral_multiplets": [
+    {
+      "name": "T_Q1over3_A",
+      "12C2_SU3": 16,
+      "Q3_squared": 1,
+      "SU3": "3",
+      "abs_Q": "1/3",
+      "m2_over_g10_squared_v_squared": "1",
+      "real_vector_dimension": 6,
+      "complex_multiplets": 1,
+      "SU3_Dynkin_threshold_input": "1/2",
+      "QED_index_threshold_input": "1/3"
+    },
+    {
+      "name": "T_Q1over3_B",
+      "12C2_SU3": 16,
+      "Q3_squared": 1,
+      "SU3": "3",
+      "abs_Q": "1/3",
+      "m2_over_g10_squared_v_squared": "51/50",
+      "real_vector_dimension": 6,
+      "complex_multiplets": 1,
+      "SU3_Dynkin_threshold_input": "1/2",
+      "QED_index_threshold_input": "1/3"
+    },
+    {
+      "name": "T_Q2over3_A",
+      "12C2_SU3": 16,
+      "Q3_squared": 4,
+      "SU3": "3",
+      "abs_Q": "2/3",
+      "m2_over_g10_squared_v_squared": "1/50",
+      "real_vector_dimension": 6,
+      "complex_multiplets": 1,
+      "SU3_Dynkin_threshold_input": "1/2",
+      "QED_index_threshold_input": "4/3"
+    },
+    {
+      "name": "T_Q2over3_B",
+      "12C2_SU3": 16,
+      "Q3_squared": 4,
+      "SU3": "3",
+      "abs_Q": "2/3",
+      "m2_over_g10_squared_v_squared": "13/25",
+      "real_vector_dimension": 6,
+      "complex_multiplets": 1,
+      "SU3_Dynkin_threshold_input": "1/2",
+      "QED_index_threshold_input": "4/3"
+    },
+    {
+      "name": "T_Q4over3",
+      "12C2_SU3": 16,
+      "Q3_squared": 16,
+      "SU3": "3",
+      "abs_Q": "4/3",
+      "m2_over_g10_squared_v_squared": "1/2",
+      "real_vector_dimension": 6,
+      "complex_multiplets": 1,
+      "SU3_Dynkin_threshold_input": "1/2",
+      "QED_index_threshold_input": "16/3"
+    },
+    {
+      "name": "W_Q1_A",
+      "12C2_SU3": 0,
+      "Q3_squared": 9,
+      "SU3": "1",
+      "abs_Q": "1",
+      "m2_over_g10_squared_v_squared": "1/2",
+      "real_vector_dimension": 2,
+      "complex_multiplets": 1,
+      "SU3_Dynkin_threshold_input": "0",
+      "QED_index_threshold_input": "1"
+    },
+    {
+      "name": "W_Q1_B",
+      "12C2_SU3": 0,
+      "Q3_squared": 9,
+      "SU3": "1",
+      "abs_Q": "1",
+      "m2_over_g10_squared_v_squared": "13/25",
+      "real_vector_dimension": 2,
+      "complex_multiplets": 1,
+      "SU3_Dynkin_threshold_input": "0",
+      "QED_index_threshold_input": "1"
+    }
+  ],
+  "neutral_massive_sector": {
+    "orthonormal_basis": [
+      "(G01+G23+G45+G67)/2",
+      "G89",
+      "X"
+    ],
+    "M2_over_v2": [
+      [
+        "(2/25) g10^2",
+        "(1/25) g10^2",
+        "-(2 sqrt(2)/25) g10 gX"
+      ],
+      [
+        "(1/25) g10^2",
+        "(51/50) g10^2",
+        "-(51 sqrt(2)/25) g10 gX"
+      ],
+      [
+        "-(2 sqrt(2)/25) g10 gX",
+        "-(51 sqrt(2)/25) g10 gX",
+        "(1489/5) gX^2"
+      ]
+    ],
+    "characteristic_cubic": {
+      "variable": "lambda=m_neutral^2/v^2",
+      "polynomial": "lambda^3 - ((11/10)g10^2+(1489/5)gX^2)lambda^2 + ((2/25)g10^4+(79811/250)g10^2 gX^2)lambda - (14482/625)g10^4 gX^2",
+      "leading_principal_minors": [
+        "(2/25)g10^2",
+        "(2/25)g10^4",
+        "(14482/625)g10^4 gX^2"
+      ],
+      "positive_for": "g10>0 and gX>0 by Sylvester's criterion"
+    },
+    "massive_roots": 3,
+    "massless_neutral_vector": "Q3=3G67-G01-G23-G45"
+  },
+  "parameterized_threshold_interface": {
+    "function": "one_loop_vector_log_inputs(g10,g_x,vev_scale,matching_scale)",
+    "unbroken_group_at_full_target": "SU(3)_C x U(1)_em",
+    "index_weighted_log_definition": "L_i=sum_complex_multiplets S_i(R) log(M/mu)",
+    "total_indices": {
+      "SU3": "5/2",
+      "QED": "32/3"
+    },
+    "neutral_massive_vectors_have_zero_indices": true,
+    "complete_vector_Goldstone_ghost_matching": false,
+    "finite_scheme_constants": false,
+    "SM_g1_g2_g3_matching_at_pre_EW_stage": false
+  },
+  "checks": {
+    "all_dependencies_match_frozen_hashes": true,
+    "target_denominator_is_20": true,
+    "canonical_chart_kinetic_is_identity": true,
+    "SO10_generator_rescaling_matches_T10_one": true,
+    "tangent_matrix_is_486_by_46": true,
+    "exact_tangent_matches_live_chart_without_residual": true,
+    "gram_matrix_is_exact_symmetric_integer": true,
+    "five_field_block_grams_sum_exactly": true,
+    "sparse_upper_triangle_reconstructs_all_nonzero_entries": true,
+    "exact_massive_rank_is_37": true,
+    "exact_unbroken_nullity_is_9": true,
+    "standard_su3C_u1em_basis_is_complete_kernel": true,
+    "Goldstone_image_dimension_is_37": true,
+    "one_accidental_PQ_direction_is_uneaten": true,
+    "mass_gram_commutes_with_color": true,
+    "mass_gram_commutes_with_Q3_squared": true,
+    "joint_sector_projectors_are_complete": true,
+    "all_non_neutral_sector_polynomials_exact": true,
+    "all_non_neutral_multiplicities_exact": true,
+    "non_neutral_massive_real_dimension_is_34": true,
+    "three_neutral_massive_roots_complete_rank_37": true,
+    "one_loop_SU3_index_sum_is_5_over_2": true,
+    "one_loop_QED_index_sum_is_32_over_3": true,
+    "physical_scale_and_coupling_boundaries_fixed": false,
+    "pole_masses_fixed": false,
+    "vector_Goldstone_ghost_matching_closed": false,
+    "finite_scheme_constants_closed": false,
+    "SM_symmetric_pre_EW_threshold_closed": false,
+    "physical_G6_closed": false,
+    "physical_G7_closed": false
+  },
+  "scope": {
+    "exact_parameterized_46x46_tree_mass_matrix": true,
+    "exact_rank_kernel_and_Goldstone_image": true,
+    "exact_non_neutral_sector_masses_and_multiplicities": true,
+    "exact_neutral_characteristic_polynomial": true,
+    "unbroken_group_threshold_log_inputs": true,
+    "absolute_physical_masses": false,
+    "pole_masses": false,
+    "complete_one_loop_vector_threshold_matching": false,
+    "complete_physical_scalar_spectrum": false,
+    "physical_G6": false,
+    "physical_G7": false
+  },
+  "blockers": [
+    "Choose a physical dimensionful target scale and renormalized g10,gX boundary values.",
+    "Derive pole masses and the gauge-fixing-consistent vector, Goldstone and ghost threshold coefficient.",
+    "Fix finite scheme constants and the matching-scale prescription.",
+    "Construct the pre-electroweak SU(3)xSU(2)xU(1) matching step; the full target preserves only SU(3)xU(1)em.",
+    "Combine with a source-exact physical scalar Hessian and the full Yukawa/scalar/dimensionful RGE system before G6/G7 closure."
+  ]
+}

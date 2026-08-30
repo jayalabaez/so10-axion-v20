@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -34,6 +35,76 @@ def minimal_tree(
     full_rg: bool = False,
     contract_consistent: bool = True,
 ) -> None:
+    # Each fixture is a distinct temporary import root.  Avoid unittest's
+    # module-cache collision for the byte-pinned producer test copied below.
+    sys.modules.pop("test_exact_physical_g7_component_threshold_contract_v20", None)
+    sys.modules.pop("test_exact_normalized_so10_yukawa_cgcs_v20", None)
+    sys.modules.pop("test_physical_sm_vacuum_local_feasibility_v20", None)
+    sys.modules.pop(
+        "test_physical_sm_source_algebra_equality_frontier_v20", None
+    )
+    sys.modules.pop(
+        "test_exact_physical_sm_five_amplitude_equality_v20", None
+    )
+    sys.modules.pop(
+        "test_exact_physical_sm_hard_projector_hessians_v20", None
+    )
+    sys.modules.pop(
+        "test_exact_physical_sm_last_six_hessians_v20", None
+    )
+    sys.modules.pop(
+        "test_exact_physical_sm_37_row_aggregate_v20", None
+    )
+    sys.modules.pop(
+        "test_exact_physical_sm_local_equality_orbit_v20", None
+    )
+    sys.modules.pop(
+        "test_exact_physical_sm_g4_g5_branch_mismatch_v20", None
+    )
+    sys.modules.pop("test_exact_physical_sm_heavy_vector_masses_v20", None)
+    sys.modules.pop(
+        "test_exact_physical_sm_heavy_vector_msbar_matching_v20", None
+    )
+    sys.modules.pop(
+        "test_exact_physical_sm_vector_rxi_vacuum_cancellation_v20", None
+    )
+    sys.modules.pop(
+        "test_conditional_physical_sm_eft_hessian_spectrum_v20", None
+    )
+    sys.modules.pop(
+        "test_exact_physical_sm_g6_g7_closure_frontier_v20", None
+    )
+    sys.modules.pop(
+        "test_exact_physical_sm_g8_identifiability_frontier_v20", None
+    )
+    canonical_g1_artifact = json.loads(
+        (matrix.ROOT / "CANONICAL_G1_COMPLETE_OPERATOR_RING_DIM6_V21.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    canonical_g1_paths = {
+        row["path"] for row in canonical_g1_artifact["source_manifest"]
+    }
+    canonical_g1_paths.update(
+        {
+            "CANONICAL_G1_COMPLETE_OPERATOR_RING_DIM6_V21.json",
+            "verify_canonical_g1_complete_operator_ring_dim6_v21.py",
+        }
+    )
+    for name in sorted(canonical_g1_paths):
+        destination = root / name
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_bytes((matrix.ROOT / name).read_bytes())
+    for name in (
+        matrix.EXACT_X_V3_SOURCE,
+        matrix.EXACT_X_V3_TEST,
+        matrix.EXACT_X_V3_MD,
+        matrix.EXACT_X_V3_INPUT_MANIFEST,
+        matrix.EXACT_X_V3_TRUSTED_SARAH_MANIFEST,
+    ):
+        destination = root / name
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_bytes((matrix.ROOT / name).read_bytes())
     g1_component_artifact = matrix.ARTIFACTS[
         "renormalizable_g1_component_tensor"
     ]
@@ -76,6 +147,88 @@ def minimal_tree(
     root.joinpath(matrix.EFT_G7_NONIDENTIFIABILITY_SOURCE).write_bytes(
         matrix.ROOT.joinpath(matrix.EFT_G7_NONIDENTIFIABILITY_SOURCE).read_bytes()
     )
+    physical_g7_artifact = matrix.ARTIFACTS["physical_g7_component_threshold"]
+    for name in (
+        physical_g7_artifact,
+        matrix.PHYSICAL_G7_COMPONENT_THRESHOLD_SOURCE,
+        matrix.PHYSICAL_G7_COMPONENT_THRESHOLD_TEST,
+        matrix.PHYSICAL_G7_COMPONENT_THRESHOLD_MD,
+    ):
+        root.joinpath(name).write_bytes(matrix.ROOT.joinpath(name).read_bytes())
+    for name in (
+        matrix.ARTIFACTS["normalized_yukawa_cgcs"],
+        matrix.NORMALIZED_YUKAWA_CGCS_SOURCE,
+        matrix.NORMALIZED_YUKAWA_CGCS_TEST,
+        matrix.NORMALIZED_YUKAWA_CGCS_MD,
+        matrix.ARTIFACTS["physical_sm_vacuum"],
+        matrix.PHYSICAL_SM_VACUUM_SOURCE,
+        matrix.PHYSICAL_SM_VACUUM_TEST,
+        matrix.PHYSICAL_SM_VACUUM_MD,
+        matrix.ARTIFACTS["physical_sm_source_equality"],
+        matrix.PHYSICAL_SM_SOURCE_EQUALITY_SOURCE,
+        matrix.PHYSICAL_SM_SOURCE_EQUALITY_TEST,
+        matrix.PHYSICAL_SM_SOURCE_EQUALITY_MD,
+        matrix.ARTIFACTS["physical_sm_five_amplitude_equality"],
+        matrix.PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_SOURCE,
+        matrix.PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_TEST,
+        matrix.PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_MD,
+        matrix.ARTIFACTS["physical_sm_hard_projector_hessians"],
+        matrix.PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_SOURCE,
+        matrix.PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_TEST,
+        matrix.PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_MD,
+        matrix.ARTIFACTS["physical_sm_last_six_hessians"],
+        matrix.PHYSICAL_SM_LAST_SIX_HESSIANS_SOURCE,
+        matrix.PHYSICAL_SM_LAST_SIX_HESSIANS_TEST,
+        matrix.PHYSICAL_SM_LAST_SIX_HESSIANS_MD,
+        matrix.ARTIFACTS["physical_sm_37_row_aggregate"],
+        matrix.PHYSICAL_SM_37_ROW_AGGREGATE_SOURCE,
+        matrix.PHYSICAL_SM_37_ROW_AGGREGATE_TEST,
+        matrix.PHYSICAL_SM_37_ROW_AGGREGATE_MD,
+        matrix.ARTIFACTS["physical_sm_local_equality_orbit"],
+        matrix.PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_SOURCE,
+        matrix.PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_TEST,
+        matrix.PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_MD,
+        "G1_EXACT_DECLARED_SYMMETRY_CHARACTER_CENSUS_V20.json",
+        "GAUGED_U1X_SCALAR_CONTRACT_V20.json",
+        "exact_gauged_u1x_physical_quotient_v20.py",
+        "exact_mixed_45_triplet_channel_v20.py",
+        "exact_phi2_hdagh_channel_family_v20.py",
+        "exact_physical_sm_easy_21_hessians_v20.py",
+        "EXACT_PHYSICAL_SM_EASY_21_HESSIANS_V20.json",
+        "live_g2_canonical_486_field_chart_v20.py",
+        "live_g2_exact_hsigma_hermitian_derivatives_v20.py",
+        "live_g2_exact_phi2_hdagh_derivatives_v20.py",
+        "live_g2_exact_remaining_cubic_derivatives_v20.py",
+        matrix.ARTIFACTS["physical_sm_g4_g5_branch_mismatch"],
+        matrix.PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_SOURCE,
+        matrix.PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_TEST,
+        matrix.PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_MD,
+        matrix.ARTIFACTS["physical_sm_heavy_vectors"],
+        matrix.PHYSICAL_SM_HEAVY_VECTOR_SOURCE,
+        matrix.PHYSICAL_SM_HEAVY_VECTOR_TEST,
+        matrix.PHYSICAL_SM_HEAVY_VECTOR_MD,
+        matrix.ARTIFACTS["physical_sm_heavy_vector_msbar"],
+        matrix.PHYSICAL_SM_HEAVY_VECTOR_MSBAR_SOURCE,
+        matrix.PHYSICAL_SM_HEAVY_VECTOR_MSBAR_TEST,
+        matrix.PHYSICAL_SM_HEAVY_VECTOR_MSBAR_MD,
+        matrix.ARTIFACTS["physical_sm_vector_rxi"],
+        matrix.PHYSICAL_SM_VECTOR_RXI_SOURCE,
+        matrix.PHYSICAL_SM_VECTOR_RXI_TEST,
+        matrix.PHYSICAL_SM_VECTOR_RXI_MD,
+        matrix.ARTIFACTS["conditional_physical_sm_scalar_spectrum"],
+        matrix.CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_SOURCE,
+        matrix.CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_TEST,
+        matrix.CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_MD,
+        matrix.ARTIFACTS["physical_sm_g6_g7_closure_frontier"],
+        matrix.PHYSICAL_SM_G6_G7_FRONTIER_SOURCE,
+        matrix.PHYSICAL_SM_G6_G7_FRONTIER_TEST,
+        matrix.PHYSICAL_SM_G6_G7_FRONTIER_MD,
+        matrix.ARTIFACTS["physical_sm_g8_identifiability_frontier"],
+        matrix.PHYSICAL_SM_G8_FRONTIER_SOURCE,
+        matrix.PHYSICAL_SM_G8_FRONTIER_TEST,
+        matrix.PHYSICAL_SM_G8_FRONTIER_MD,
+    ):
+        root.joinpath(name).write_bytes(matrix.ROOT.joinpath(name).read_bytes())
     g2_mathematical_closure = (
         matrix.gate_ledger._renormalizable_g2_mathematical_closure(
             json.loads(
@@ -117,19 +270,12 @@ def minimal_tree(
                 "schema": matrix.exact_x_gate.EXTERNAL_VALIDATION_SCHEMA
                 if contract_consistent
                 else None,
+                "present": contract_consistent,
                 "valid": contract_consistent,
+                "fresh_for_exact_model_bytes": contract_consistent,
                 "checks": {
                     name: contract_consistent
-                    for name in (
-                        "tool_native_model_format_matches_path",
-                        "external_process_command_matches_tool",
-                        "input_manifest_schema_is_supported",
-                        "input_manifest_sha256_matches_entries",
-                        "primary_model_is_bound_in_input_manifest",
-                        "validation_driver_is_bound_to_command",
-                        "captured_process_log_is_hash_bound",
-                        "captured_process_log_has_all_required_pass_markers",
-                    )
+                    for name in matrix.gate_ledger.EXPECTED_EXACT_X_V3_EXTERNAL_CHECKS
                 },
             },
         },
@@ -881,6 +1027,26 @@ def minimal_tree(
     root.joinpath(matrix.FINAL_G6_EFT_GATE_SOURCE).write_bytes(
         (matrix.ROOT / matrix.FINAL_G6_EFT_GATE_SOURCE).read_bytes()
     )
+    for artifact_key, source_name in (
+        ("g6_sm_provenance", matrix.G6_SM_PROVENANCE_SOURCE),
+        ("g6_g7_parameterized_matching", matrix.G6_G7_PARAMETERIZED_MATCHING_SOURCE),
+        ("authoritative_gauge_betas", matrix.AUTHORITATIVE_GAUGE_BETAS_SOURCE),
+        ("pyrate3_gauge_replay", matrix.PYRATE3_GAUGE_REPLAY_SOURCE),
+    ):
+        artifact_name = matrix.ARTIFACTS[artifact_key]
+        root.joinpath(artifact_name).write_bytes(
+            (matrix.ROOT / artifact_name).read_bytes()
+        )
+        root.joinpath(source_name).write_bytes(
+            (matrix.ROOT / source_name).read_bytes()
+        )
+    for relative in (
+        "models/SO10U1XGaugeAuditV20.model",
+        "data/PYRATE3_SO10_U1X_GAUGE_BETA_FROZEN_V20.json",
+    ):
+        destination = root / relative
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_bytes((matrix.ROOT / relative).read_bytes())
     write_json(
         root,
         "so10_axion_v20_verdict.json",
@@ -1002,6 +1168,43 @@ def minimal_tree(
 
 
 class TheoryValidationMatrixTests(unittest.TestCase):
+    def test_canonical_authority_requires_trusted_verifiers_and_ignores_legacy_rows(self):
+        canonical = matrix.canonical_gates.build_report()
+        authoritative = json.loads(
+            (matrix.ROOT / matrix.ARTIFACTS["authoritative"]).read_text(
+                encoding="utf-8"
+            )
+        )
+        gate = matrix._canonical_authority_gate(canonical, authoritative)
+        self.assertEqual(gate["state"], "BLOCKED")
+        self.assertFalse(gate["evidence"]["all_canonical_gates_closed"])
+        self.assertFalse(
+            gate["evidence"]["legacy_ledger_controls_authoritative_closure"]
+        )
+        self.assertTrue(canonical["gates"][0]["evidence_state"]["valid"])
+        self.assertTrue(canonical["gates"][1]["evidence_state"]["valid"])
+        self.assertTrue(canonical["gates"][2]["evidence_state"]["valid"])
+        self.assertTrue(canonical["gates"][2]["closed"])
+        self.assertTrue(
+            all(
+                "trusted_verifier" in row
+                and row["evidence_state"].get("valid") is False
+                for row in canonical["gates"][3:]
+            )
+        )
+
+    def test_temporary_fixture_discovery_does_not_leak_test_modules(self):
+        transient_name = (
+            "test_conditional_physical_sm_eft_hessian_spectrum_v20"
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            minimal_tree(root)
+            self.assertNotIn(transient_name, sys.modules)
+            report = matrix.build_report(root)
+            self.assertEqual(report["status"], "PASS")
+            self.assertNotIn(transient_name, sys.modules)
+
     def test_renormalizable_g1_theorem_is_math_closed_but_release_blocked(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -1235,7 +1438,8 @@ class TheoryValidationMatrixTests(unittest.TestCase):
                 g6["raw_sha256"],
                 matrix.gate_ledger.FINAL_G6_EFT_MATHEMATICAL_RAW_SHA256,
             )
-            self.assertTrue(g6["mathematical_G6_closed_for_EFT_model"])
+            self.assertTrue(g6["formal_SU3_x_U1_89_tree_factorization_closed"])
+            self.assertFalse(g6["mathematical_G6_closed_for_EFT_model"])
             self.assertFalse(g6["release_G6_verified_for_EFT_model"])
             self.assertFalse(g6["authoritative_renormalizable_G6_closed"])
             self.assertFalse(g6["authoritative_G6_gate_mutated"])
@@ -1244,7 +1448,7 @@ class TheoryValidationMatrixTests(unittest.TestCase):
             self.assertEqual(
                 g6["spectrum_summary"]["gauge_quotient_dimension"], 449
             )
-            self.assertEqual(g6["spectrum_summary"]["physical_PQ_axions"], 1)
+            self.assertEqual(g6["spectrum_summary"]["ungauged_PQ_zero_modes"], 1)
             self.assertEqual(g6["spectrum_summary"]["positive_massive_modes"], 448)
 
             vacuum = next(
@@ -1276,7 +1480,12 @@ class TheoryValidationMatrixTests(unittest.TestCase):
             self.assertTrue(
                 evidence["parallel_EFT_G6_integration_blocker_removed"]
             )
-            self.assertTrue(evidence["parallel_EFT_mathematical_G6_closed"])
+            self.assertFalse(evidence["parallel_EFT_mathematical_G6_closed"])
+            self.assertTrue(
+                evidence[
+                    "parallel_EFT_formal_SU3_x_U1_89_factorization_closed"
+                ]
+            )
             self.assertFalse(evidence["parallel_EFT_release_G6_verified"])
             self.assertFalse(
                 evidence["original_renormalizable_mathematical_G6_closed"]
@@ -1658,8 +1867,16 @@ class TheoryValidationMatrixTests(unittest.TestCase):
             self.assertIn("strict 22-block/824-pivot primal", vacuum["summary"])
             self.assertIn("every real Phi210", vacuum["summary"])
             self.assertIn(
-                "Global Sigma, general/full H, the full Hessian, and G3 remain open",
+                "For that historical fixed-H/Sigma frontier, global Sigma, "
+                "general/full H, and its then-unassembled Hessian remained open",
                 vacuum["summary"],
+            )
+            self.assertIn(
+                "source-derived all-37 Hessian is exactly stationary",
+                vacuum["summary"],
+            )
+            self.assertNotIn(
+                "the full Hessian, and G3 remain open", vacuum["summary"]
             )
             self.assertNotIn("infrastructure only", vacuum["summary"])
 
@@ -1813,11 +2030,11 @@ class TheoryValidationMatrixTests(unittest.TestCase):
             self.assertEqual(report["status"], "PASS")
             self.assertEqual(
                 report["classification"],
-                "MODEL_CONTRACT_INCONSISTENT__AUTHORITATIVE_GATES_REOPENED",
+                "CANONICAL_G1_G8_GATES_OPEN",
             )
             self.assertFalse(report["full_theory_validated"])
             states = {gate["name"]: gate["state"] for gate in report["gates"]}
-            self.assertEqual(states["proton_decay"], "OPEN")
+            self.assertEqual(states["proton_decay"], "BLOCKED")
             self.assertEqual(
                 states["full_scalar_potential_vacuum_and_spectrum"],
                 "OPEN",
@@ -1870,14 +2087,673 @@ class TheoryValidationMatrixTests(unittest.TestCase):
                 if gate["name"] == "two_loop_RGE_unification_and_thresholds"
             )
             evidence = rge_gate["evidence"]
-            self.assertTrue(evidence["exact_EFT_G7_input_nonidentifiability_proved"])
-            self.assertTrue(evidence["threshold_restriction_map_noninjective"])
+            self.assertTrue(
+                evidence[
+                    "formal_U1_89_abstract_restriction_noninjectivity_proved"
+                ]
+            )
+            self.assertFalse(
+                evidence["exact_physical_EFT_G7_input_nonidentifiability_proved"]
+            )
+            self.assertFalse(
+                evidence["historical_electroweak_lift_interpretation_valid"]
+            )
+            self.assertTrue(evidence["formal_U1_89_restriction_map_noninjective"])
             self.assertTrue(evidence["absolute_matching_scale_unidentified"])
             self.assertFalse(evidence["mathematical_G7_closed"])
             self.assertFalse(evidence["positive_G7_certified"])
             self.assertFalse(evidence["negative_G7_no_go_certified"])
             self.assertFalse(evidence["release_G7_verified"])
             self.assertFalse(evidence["authoritative_renormalizable_G7_closed"])
+            self.assertTrue(evidence["physical_PS_SM_matter_branching_closed"])
+            self.assertTrue(
+                evidence["parameterized_one_loop_matter_threshold_kernel_closed"]
+            )
+            self.assertTrue(evidence["normalized_SO10_10_CGCs_closed"])
+            self.assertTrue(evidence["normalized_SO10_126bar_CGCs_closed"])
+            self.assertTrue(
+                evidence["canonical_304_Weyl_sparse_Yukawa_embedding_closed"]
+            )
+            self.assertFalse(evidence["flavor_boundary_values_closed"])
+            self.assertFalse(evidence["SARAH_Dot_conversion_closed"])
+            self.assertFalse(evidence["full_one_two_loop_Yukawa_betas_closed"])
+            self.assertFalse(evidence["physical_component_pole_mass_matrices_closed"])
+            self.assertTrue(
+                evidence["exact_parameterized_heavy_vector_tree_mass_matrix_closed"]
+            )
+            self.assertTrue(
+                evidence["exact_heavy_vector_physical_target_provenance_closed"]
+            )
+            self.assertTrue(
+                evidence[
+                    "exact_heavy_vector_rank_kernel_and_sector_resolution_closed"
+                ]
+            )
+            self.assertTrue(
+                evidence["parameterized_heavy_vector_threshold_log_inputs_closed"]
+            )
+            self.assertTrue(
+                evidence[
+                    "combined_heavy_vector_FPghost_Goldstone_MSbar_kernel_closed"
+                ]
+            )
+            self.assertTrue(evidence["finite_MSbar_vector_constant_closed"])
+            self.assertTrue(
+                evidence["exact_heavy_vector_SU3_and_QED_group_factors_closed"]
+            )
+            self.assertTrue(
+                evidence["heavy_vector_Goldstone_double_count_guard_active"]
+            )
+            self.assertTrue(
+                evidence[
+                    "zero_background_Rxi_vacuum_determinant_cancellation_closed"
+                ]
+            )
+            self.assertTrue(
+                evidence["all_37_broken_vector_directions_Rxi_cancelled"]
+            )
+            self.assertFalse(
+                evidence[
+                    "background_covariant_general_field_Rxi_determinants_closed"
+                ]
+            )
+            self.assertFalse(
+                evidence["background_covariant_heat_kernel_replay_closed"]
+            )
+            self.assertTrue(
+                evidence["conditional_reconstructed_tree_scalar_spectrum_closed"]
+            )
+            self.assertTrue(
+                evidence["continuous_G6_G7_nonidentifiability_frontier_closed"]
+            )
+            self.assertTrue(
+                evidence["G6_G7_minimal_closure_path_machine_readable"]
+            )
+            self.assertTrue(evidence["recalculated_scoped_G7_input_resolution_bound"])
+            self.assertTrue(evidence["stale_normalized_embedding_blocker_superseded"])
+            self.assertTrue(
+                evidence["stale_unmatched_heavy_vector_provenance_blocker_superseded"]
+            )
+            self.assertFalse(
+                evidence[
+                    "background_covariant_general_field_Rxi_determinants_closed"
+                ]
+            )
+            self.assertFalse(
+                evidence[
+                    "stationary_SM_symmetric_pre_EW_heavy_vector_matching_closed"
+                ]
+            )
+            self.assertFalse(
+                evidence["complete_scalar_and_fermion_threshold_matching_closed"]
+            )
+            self.assertFalse(evidence["physical_vector_pole_masses_closed"])
+            self.assertFalse(evidence["physical_scalar_pole_masses_closed"])
+            self.assertFalse(
+                evidence[
+                    "legacy_quartic_soft_and_heuristic_RGE_threshold_sources_authoritative"
+                ]
+            )
+
+    def test_physical_sm_source_equality_frontier_is_strict_and_scoped(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            minimal_tree(root)
+            report = matrix.build_report(root)
+            frontier = report["physical_SM_source_algebra_equality_frontier"]
+
+            self.assertTrue(frontier["source_bound"])
+            self.assertTrue(all(frontier["checks"].values()))
+            self.assertEqual(frontier["radial_gcd"], "t - 1")
+            self.assertTrue(
+                frontier["radial_stationary_equality_classified_exactly"]
+            )
+            self.assertEqual(frontier["observed_source_Hessian_row_lcm"], 126000)
+            self.assertEqual(
+                frontier["reconstructed_aggregate_Hessian_lcm"],
+                6300103327590,
+            )
+            self.assertFalse(
+                frontier["direct_source_algebra_stationary_Hessian_available"]
+            )
+            self.assertFalse(
+                frontier["complete_nonradial_equality_orbit_proved"]
+            )
+            self.assertFalse(frontier["old_formal_U1_89_EFT_scope_promoted"])
+            for gate in ("G3", "G4", "G5"):
+                self.assertFalse(frontier[f"physical_SM_{gate}_closed"])
+
+            vacuum = next(
+                gate
+                for gate in report["gates"]
+                if gate["name"] == "full_scalar_potential_vacuum_and_spectrum"
+            )
+            evidence = vacuum["evidence"]
+            self.assertTrue(
+                evidence[
+                    "physical_SM_radial_stationary_equality_classified_exactly"
+                ]
+            )
+            self.assertEqual(
+                evidence["physical_SM_radial_stationary_equality_gcd"],
+                "t - 1",
+            )
+            self.assertFalse(
+                evidence["physical_SM_complete_nonradial_equality_orbit_closed"]
+            )
+            self.assertTrue(evidence["physical_SM_source_algebra_Hessian_closed"])
+            self.assertEqual(
+                evidence["physical_SM_exact_source_Hessian_rows_closed"], 37
+            )
+            self.assertEqual(evidence["physical_SM_remaining_active_Hessian_rows"], 0)
+
+            source = root / matrix.PHYSICAL_SM_SOURCE_EQUALITY_SOURCE
+            source.write_bytes(source.read_bytes() + b"\n")
+            forged = matrix.build_report(root)
+            forged_frontier = forged[
+                "physical_SM_source_algebra_equality_frontier"
+            ]
+            self.assertFalse(forged_frontier["source_bound"])
+            self.assertFalse(
+                forged_frontier["checks"]["core_and_all_four_raw_pins_exact"]
+            )
+            self.assertIsNone(forged_frontier["radial_gcd"])
+            forged_vacuum = next(
+                gate
+                for gate in forged["gates"]
+                if gate["name"] == "full_scalar_potential_vacuum_and_spectrum"
+            )
+            self.assertFalse(
+                forged_vacuum["evidence"][
+                    "physical_SM_radial_stationary_equality_classified_exactly"
+                ]
+            )
+
+    def test_physical_sm_five_amplitude_equality_is_strict_and_scoped(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            minimal_tree(root)
+            report = matrix.build_report(root)
+            scoped = report["physical_SM_five_amplitude_equality_contract"]
+            self.assertTrue(scoped["source_bound"])
+            self.assertTrue(all(scoped["checks"].values()))
+            self.assertTrue(scoped["exact_radial_theorem_strictly_extended"])
+            self.assertTrue(
+                scoped[
+                    "five_real_amplitude_slice_stationary_equality_classified"
+                ]
+            )
+            self.assertEqual(scoped["exact_real_discrete_sign_variant_count"], 16)
+            self.assertTrue(
+                scoped["target_strict_minimum_on_five_amplitude_slice"]
+            )
+            self.assertFalse(
+                scoped["full_486_field_stationary_equality_classified"]
+            )
+            self.assertFalse(
+                scoped[
+                    "continuous_symmetry_orbit_equivalence_of_16_variants_proved"
+                ]
+            )
+            for gate in ("G3", "G4", "G5"):
+                self.assertFalse(scoped[f"physical_SM_{gate}_closed"])
+
+            vacuum = next(
+                gate
+                for gate in report["gates"]
+                if gate["name"] == "full_scalar_potential_vacuum_and_spectrum"
+            )
+            evidence = vacuum["evidence"]
+            self.assertTrue(
+                evidence["physical_SM_five_amplitude_equality_source_bound"]
+            )
+            self.assertTrue(
+                evidence[
+                    "physical_SM_five_amplitude_slice_stationary_equality_classified"
+                ]
+            )
+            self.assertEqual(
+                evidence["physical_SM_five_amplitude_exact_sign_variant_count"],
+                16,
+            )
+            self.assertTrue(
+                evidence[
+                    "physical_SM_five_amplitude_variants_one_continuous_orbit_proved"
+                ]
+            )
+            self.assertFalse(
+                evidence[
+                    "physical_SM_complete_global_486_field_stationary_equality_classified"
+                ]
+            )
+
+            artifact = root / matrix.ARTIFACTS[
+                "physical_sm_five_amplitude_equality"
+            ]
+            artifact.write_bytes(artifact.read_bytes() + b"\n")
+            forged = matrix.build_report(root)
+            forged_scoped = forged[
+                "physical_SM_five_amplitude_equality_contract"
+            ]
+            self.assertFalse(forged_scoped["source_bound"])
+            forged_vacuum = next(
+                gate
+                for gate in forged["gates"]
+                if gate["name"] == "full_scalar_potential_vacuum_and_spectrum"
+            )
+            self.assertFalse(
+                forged_vacuum["evidence"][
+                    "physical_SM_five_amplitude_equality_source_bound"
+                ]
+            )
+
+    def test_hard_projector_hessians_are_bound_without_closing_full_G3_G5(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            minimal_tree(root)
+            report = matrix.build_report(root)
+            scoped = report["physical_SM_hard_projector_Hessians_contract"]
+            self.assertTrue(scoped["source_bound"])
+            self.assertTrue(all(scoped["checks"].values()))
+            self.assertEqual(scoped["exact_source_Hessian_row_count"], 10)
+            self.assertEqual(scoped["remaining_active_row_count"], 27)
+            self.assertTrue(scoped["all_10_O27_O44_source_Hessians_closed"])
+            self.assertFalse(scoped["all_37_active_source_Hessians_closed"])
+            self.assertFalse(scoped["full_witness_stationarity_rank_PSD_closed"])
+            for gate in ("G3", "G4", "G5"):
+                self.assertFalse(scoped[f"physical_SM_{gate}_closed"])
+            vacuum = next(
+                gate for gate in report["gates"]
+                if gate["name"] == "full_scalar_potential_vacuum_and_spectrum"
+            )
+            self.assertTrue(
+                vacuum["evidence"][
+                    "physical_SM_hard_projector_Hessians_source_bound"
+                ]
+            )
+            self.assertTrue(
+                vacuum["evidence"][
+                    "physical_SM_all_37_active_source_Hessians_closed"
+                ]
+            )
+
+            artifact = root / matrix.ARTIFACTS[
+                "physical_sm_hard_projector_hessians"
+            ]
+            forged = json.loads(artifact.read_text(encoding="utf-8"))
+            forged["claims"][
+                "exact_source_algebra_Hessians_for_all_37_active_witness_rows"
+            ] = True
+            write_json(root, artifact.name, forged)
+            rejected = matrix.build_report(root)
+            self.assertFalse(
+                rejected["physical_SM_hard_projector_Hessians_contract"][
+                    "source_bound"
+                ]
+            )
+
+    def test_branch_mismatch_is_bound_but_never_promoted_to_global_no_go(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            minimal_tree(root)
+            report = matrix.build_report(root)
+            scoped = report["physical_SM_G4_G5_branch_mismatch_contract"]
+            self.assertTrue(scoped["source_bound"])
+            self.assertTrue(all(scoped["checks"].values()))
+            self.assertTrue(scoped["exact_branch_mismatch_proved"])
+            self.assertEqual(scoped["unit_rescaling_case_count"], 101)
+            self.assertFalse(
+                scoped[
+                    "current_five_amplitude_target_is_canonical_physical_EW_branch"
+                ]
+            )
+            self.assertFalse(scoped["global_no_go_for_other_physical_EW_branches"])
+            for gate in ("G4", "G5", "G6", "G7", "G8"):
+                self.assertFalse(scoped[f"physical_SM_{gate}_closed"])
+            vacuum = next(
+                gate for gate in report["gates"]
+                if gate["name"] == "full_scalar_potential_vacuum_and_spectrum"
+            )
+            self.assertTrue(
+                vacuum["evidence"][
+                    "physical_SM_G4_G5_branch_mismatch_source_bound"
+                ]
+            )
+            self.assertFalse(
+                vacuum["evidence"][
+                    "physical_SM_global_no_go_for_other_EW_branches"
+                ]
+            )
+
+            artifact = root / matrix.ARTIFACTS[
+                "physical_sm_g4_g5_branch_mismatch"
+            ]
+            forged = json.loads(artifact.read_text(encoding="utf-8"))
+            forged["scope"]["global_no_go_for_all_possible_physical_EW_branches"] = True
+            write_json(root, artifact.name, forged)
+            rejected = matrix.build_report(root)
+            self.assertFalse(
+                rejected["physical_SM_G4_G5_branch_mismatch_contract"][
+                    "source_bound"
+                ]
+            )
+
+    def test_last_six_make_all_37_Hessians_available_without_aggregate_promotion(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            minimal_tree(root)
+            report = matrix.build_report(root)
+            scoped = report["physical_SM_last_six_Hessians_contract"]
+            self.assertTrue(scoped["source_bound"])
+            self.assertTrue(scoped["exact_last_six_source_Hessians_closed"])
+            self.assertTrue(scoped["all_37_active_source_Hessians_available"])
+            self.assertFalse(
+                scoped[
+                    "exact_37_row_aggregate_stationarity_kernel_rank_PSD_closed"
+                ]
+            )
+            for gate in ("G3", "G4", "G5"):
+                self.assertFalse(scoped[f"physical_SM_{gate}_closed"])
+            vacuum = next(
+                gate for gate in report["gates"]
+                if gate["name"] == "full_scalar_potential_vacuum_and_spectrum"
+            )
+            self.assertTrue(
+                vacuum["evidence"][
+                    "physical_SM_all_37_active_source_Hessians_available"
+                ]
+            )
+            self.assertTrue(
+                vacuum["evidence"][
+                    "physical_SM_full_witness_stationarity_rank_PSD_closed"
+                ]
+            )
+
+            artifact = root / matrix.ARTIFACTS["physical_sm_last_six_hessians"]
+            forged = json.loads(artifact.read_text(encoding="utf-8"))
+            forged["claims"][
+                "exact_37_row_aggregate_stationarity_kernel_rank_PSD_proved_here"
+            ] = True
+            write_json(root, artifact.name, forged)
+            rejected = matrix.build_report(root)
+            self.assertFalse(
+                rejected["physical_SM_last_six_Hessians_contract"]["source_bound"]
+            )
+
+    def test_37_row_local_Hessian_theorem_does_not_promote_global_G3_G5(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            minimal_tree(root)
+            report = matrix.build_report(root)
+            scoped = report["physical_SM_37_row_aggregate_contract"]
+            self.assertTrue(scoped["source_bound"])
+            self.assertTrue(scoped["all_37_active_Hessians_source_derived"])
+            self.assertTrue(
+                scoped["exact_source_aggregate_value_minus_one_and_stationary"]
+            )
+            self.assertEqual(scoped["exact_source_aggregate_kernel_dimension"], 38)
+            self.assertEqual(scoped["exact_source_aggregate_rank"], 448)
+            self.assertTrue(
+                scoped["exact_source_aggregate_PSD_and_strict_mod_symmetry"]
+            )
+            self.assertFalse(scoped["full_486_global_equality_orbit_closed"])
+            for gate in ("G3", "G4", "G5"):
+                self.assertFalse(scoped[f"physical_SM_{gate}_closed"])
+            vacuum = next(
+                gate for gate in report["gates"]
+                if gate["name"] == "full_scalar_potential_vacuum_and_spectrum"
+            )
+            evidence = vacuum["evidence"]
+            self.assertTrue(
+                evidence["physical_SM_37_row_local_Hessian_theorem_source_bound"]
+            )
+            self.assertEqual(
+                evidence["physical_SM_source_aggregate_kernel_dimension"], 38
+            )
+            self.assertEqual(evidence["physical_SM_source_aggregate_rank"], 448)
+            self.assertTrue(evidence["physical_SM_source_algebra_Hessian_closed"])
+            self.assertEqual(evidence["physical_SM_exact_source_Hessian_rows_closed"], 37)
+            self.assertEqual(evidence["physical_SM_remaining_active_Hessian_rows"], 0)
+            self.assertTrue(
+                evidence["physical_SM_all_37_active_source_Hessians_closed"]
+            )
+            self.assertTrue(
+                evidence["physical_SM_full_witness_stationarity_rank_PSD_closed"]
+            )
+            self.assertFalse(
+                evidence[
+                    "physical_SM_complete_global_486_field_stationary_equality_classified"
+                ]
+            )
+
+            artifact = root / matrix.ARTIFACTS["physical_sm_37_row_aggregate"]
+            forged = json.loads(artifact.read_text(encoding="utf-8"))
+            forged["claims"]["physical_SM_G3_closed"] = True
+            write_json(root, artifact.name, forged)
+            rejected = matrix.build_report(root)
+            self.assertFalse(
+                rejected["physical_SM_37_row_aggregate_contract"]["source_bound"]
+            )
+
+    def test_full_486_local_orbit_does_not_promote_radius_global_or_G3_G5(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            minimal_tree(root)
+            report = matrix.build_report(root)
+            scoped = report["physical_SM_local_equality_orbit_contract"]
+            self.assertTrue(scoped["source_bound"])
+            self.assertTrue(scoped["full_486_local_stationary_orbit_classified"])
+            self.assertTrue(
+                scoped["full_486_local_stationary_equality_orbit_classified"]
+            )
+            self.assertTrue(scoped["all_16_sign_variants_one_continuous_K_orbit"])
+            self.assertTrue(scoped["target_orbit_strict_local_minimum_mod_K"])
+            self.assertFalse(scoped["quantitative_neighborhood_radius_proved"])
+            self.assertFalse(scoped["complete_486_global_equality_orbit_classified"])
+            for gate in ("G3", "G4", "G5"):
+                self.assertFalse(scoped[f"physical_SM_{gate}_closed"])
+            vacuum = next(
+                gate for gate in report["gates"]
+                if gate["name"] == "full_scalar_potential_vacuum_and_spectrum"
+            )
+            self.assertTrue(
+                vacuum["evidence"][
+                    "physical_SM_full_486_local_equality_orbit_source_bound"
+                ]
+            )
+            self.assertTrue(
+                vacuum["evidence"][
+                    "physical_SM_16_sign_variants_one_continuous_K_orbit"
+                ]
+            )
+            self.assertFalse(
+                vacuum["evidence"][
+                    "physical_SM_quantitative_local_orbit_radius_proved"
+                ]
+            )
+
+            artifact = root / matrix.ARTIFACTS["physical_sm_local_equality_orbit"]
+            baseline = json.loads(artifact.read_text(encoding="utf-8"))
+            for claim in (
+                "quantitative_radius_for_U_proved",
+                "complete_486_field_global_equality_orbit_classified",
+                "physical_SM_G3_closed",
+            ):
+                forged = json.loads(json.dumps(baseline))
+                forged["claims"][claim] = True
+                write_json(root, artifact.name, forged)
+                rejected = matrix.build_report(root)
+                self.assertFalse(
+                    rejected["physical_SM_local_equality_orbit_contract"][
+                        "source_bound"
+                    ],
+                    claim,
+                )
+
+    def test_physical_g7_component_contract_rejects_raw_byte_drift(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            minimal_tree(root)
+            artifact = root / matrix.ARTIFACTS["physical_g7_component_threshold"]
+            artifact.write_bytes(artifact.read_bytes() + b"\n")
+            report = matrix.build_report(root)
+            scoped = report["physical_G7_component_threshold_contract"]
+            self.assertFalse(scoped["source_bound"])
+            self.assertFalse(scoped["checks"]["all_four_raw_artifact_pins_exact"])
+            self.assertFalse(scoped["physical_PS_SM_matter_branching_closed"])
+            self.assertFalse(
+                scoped["parameterized_one_loop_matter_threshold_kernel_closed"]
+            )
+            rge = next(
+                gate
+                for gate in report["gates"]
+                if gate["name"] == "two_loop_RGE_unification_and_thresholds"
+            )
+            self.assertFalse(rge["evidence"]["physical_PS_SM_matter_branching_closed"])
+            self.assertFalse(rge["evidence"]["mathematical_G7_closed"])
+            self.assertFalse(rge["evidence"]["release_G7_verified"])
+
+    def test_yukawa_cgc_and_physical_sm_overlays_reject_raw_byte_drift(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            minimal_tree(root)
+            artifact = root / matrix.ARTIFACTS["normalized_yukawa_cgcs"]
+            artifact.write_bytes(artifact.read_bytes() + b"\n")
+            report = matrix.build_report(root)
+            cgcs = report["normalized_SO10_Yukawa_CGC_contract"]
+            self.assertFalse(cgcs["source_bound"])
+            self.assertFalse(cgcs["normalized_10_CGCs_closed"])
+            rge = next(
+                gate
+                for gate in report["gates"]
+                if gate["name"] == "two_loop_RGE_unification_and_thresholds"
+            )
+            self.assertFalse(rge["evidence"]["normalized_SO10_10_CGCs_closed"])
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            minimal_tree(root)
+            artifact = root / matrix.ARTIFACTS["physical_sm_vacuum"]
+            artifact.write_bytes(artifact.read_bytes() + b"\n")
+            report = matrix.build_report(root)
+            physical = report["physical_SM_vacuum_truth_overlay"]
+            self.assertFalse(physical["source_bound"])
+            self.assertFalse(physical["physical_SM_target_exactly_constructed"])
+            vacuum = next(
+                gate
+                for gate in report["gates"]
+                if gate["name"] == "full_scalar_potential_vacuum_and_spectrum"
+            )
+            self.assertFalse(
+                vacuum["evidence"]["physical_SM_vacuum_truth_overlay_source_bound"]
+            )
+
+    def test_vector_and_conditional_scalar_contracts_reject_raw_byte_drift(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            minimal_tree(root)
+            artifact = root / matrix.ARTIFACTS["physical_sm_heavy_vectors"]
+            artifact.write_bytes(artifact.read_bytes() + b"\n")
+            report = matrix.build_report(root)
+            vectors = report["physical_SM_heavy_vector_mass_contract"]
+            self.assertFalse(vectors["source_bound"])
+            self.assertFalse(
+                vectors["checks"]["all_four_raw_artifact_pins_exact"]
+            )
+            self.assertFalse(
+                vectors["exact_parameterized_tree_vector_mass_matrix_closed"]
+            )
+            vacuum = next(
+                gate
+                for gate in report["gates"]
+                if gate["name"] == "full_scalar_potential_vacuum_and_spectrum"
+            )
+            self.assertFalse(
+                vacuum["evidence"][
+                    "physical_SM_heavy_vector_tree_contract_source_bound"
+                ]
+            )
+            rge = next(
+                gate
+                for gate in report["gates"]
+                if gate["name"] == "two_loop_RGE_unification_and_thresholds"
+            )
+            self.assertFalse(
+                rge["evidence"][
+                    "exact_parameterized_heavy_vector_tree_mass_matrix_closed"
+                ]
+            )
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            minimal_tree(root)
+            report = matrix.build_report(root)
+            matching = report[
+                "physical_SM_heavy_vector_MSbar_matching_contract"
+            ]
+            self.assertTrue(matching["source_bound"])
+            self.assertTrue(
+                matching[
+                    "combined_heavy_vector_FPghost_Goldstone_MSbar_kernel_closed"
+                ]
+            )
+            self.assertTrue(matching["finite_MSbar_vector_constant_closed"])
+            self.assertEqual(
+                matching["complex_index_totals"], {"SU3": "5/2", "QED": "32/3"}
+            )
+            self.assertFalse(
+                matching["arbitrary_Rxi_sector_resolved_matching_closed"]
+            )
+            artifact = root / matrix.ARTIFACTS["physical_sm_heavy_vector_msbar"]
+            artifact.write_bytes(artifact.read_bytes() + b"\n")
+            forged = matrix.build_report(root)
+            forged_matching = forged[
+                "physical_SM_heavy_vector_MSbar_matching_contract"
+            ]
+            self.assertFalse(forged_matching["source_bound"])
+            self.assertFalse(
+                forged_matching["checks"]["all_four_raw_artifact_pins_exact"]
+            )
+            forged_rge = next(
+                gate
+                for gate in forged["gates"]
+                if gate["name"] == "two_loop_RGE_unification_and_thresholds"
+            )
+            self.assertFalse(
+                forged_rge["evidence"][
+                    "combined_heavy_vector_FPghost_Goldstone_MSbar_kernel_closed"
+                ]
+            )
+            self.assertFalse(forged_rge["evidence"]["finite_MSbar_vector_constant_closed"])
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            minimal_tree(root)
+            artifact = root / matrix.ARTIFACTS[
+                "conditional_physical_sm_scalar_spectrum"
+            ]
+            artifact.write_bytes(artifact.read_bytes() + b"\n")
+            report = matrix.build_report(root)
+            scalars = report[
+                "conditional_physical_SM_EFT_Hessian_spectrum_contract"
+            ]
+            self.assertFalse(scalars["source_bound"])
+            self.assertFalse(
+                scalars["checks"]["all_four_raw_artifact_pins_exact"]
+            )
+            self.assertFalse(
+                scalars["conditional_reconstructed_tree_scalar_spectrum_closed"]
+            )
+            vacuum = next(
+                gate
+                for gate in report["gates"]
+                if gate["name"] == "full_scalar_potential_vacuum_and_spectrum"
+            )
+            self.assertFalse(
+                vacuum["evidence"][
+                    "conditional_physical_SM_scalar_tree_spectrum_source_bound"
+                ]
+            )
 
     def test_eft_g7_obstruction_rejects_raw_byte_drift(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -1889,7 +2765,136 @@ class TheoryValidationMatrixTests(unittest.TestCase):
             g7 = matrix.build_report(root)["parallel_EFT_G7_nonidentifiability"]
             self.assertFalse(g7["source_bound"])
             self.assertFalse(g7["checks"]["raw_sha256_exact"])
-            self.assertFalse(g7["exact_EFT_G7_input_nonidentifiability_proved"])
+            self.assertFalse(
+                g7["formal_U1_89_abstract_restriction_noninjectivity_proved"]
+            )
+
+    def test_rxi_and_g6_g7_frontier_contracts_reject_raw_byte_drift(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            minimal_tree(root)
+            report = matrix.build_report(root)
+            rxi = report[
+                "physical_SM_vector_Rxi_vacuum_cancellation_contract"
+            ]
+            frontier = report["physical_SM_G6_G7_closure_frontier_contract"]
+            self.assertTrue(rxi["source_bound"])
+            self.assertTrue(
+                rxi[
+                    "zero_background_Rxi_vacuum_determinant_cancellation_closed"
+                ]
+            )
+            self.assertFalse(
+                rxi["sector_resolved_general_background_determinants_closed"]
+            )
+            self.assertTrue(frontier["source_bound"])
+            self.assertTrue(frontier["continuous_nonidentifiability_proved"])
+            self.assertFalse(frontier["physical_G6_closed"])
+            self.assertFalse(frontier["physical_G7_closed"])
+
+            artifact = root / matrix.ARTIFACTS["physical_sm_vector_rxi"]
+            artifact.write_bytes(artifact.read_bytes() + b"\n")
+            forged = matrix.build_report(root)
+            forged_rxi = forged[
+                "physical_SM_vector_Rxi_vacuum_cancellation_contract"
+            ]
+            self.assertFalse(forged_rxi["source_bound"])
+            forged_rge = next(
+                gate
+                for gate in forged["gates"]
+                if gate["name"] == "two_loop_RGE_unification_and_thresholds"
+            )
+            self.assertFalse(
+                forged_rge["evidence"][
+                    "zero_background_Rxi_vacuum_determinant_cancellation_closed"
+                ]
+            )
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            minimal_tree(root)
+            artifact = root / matrix.ARTIFACTS[
+                "physical_sm_g6_g7_closure_frontier"
+            ]
+            artifact.write_bytes(artifact.read_bytes() + b"\n")
+            forged = matrix.build_report(root)
+            frontier = forged["physical_SM_G6_G7_closure_frontier_contract"]
+            self.assertFalse(frontier["source_bound"])
+            rge = next(
+                gate
+                for gate in forged["gates"]
+                if gate["name"] == "two_loop_RGE_unification_and_thresholds"
+            )
+            self.assertFalse(
+                rge["evidence"][
+                    "continuous_G6_G7_nonidentifiability_frontier_closed"
+                ]
+            )
+
+    def test_g8_frontier_contract_is_bound_and_rejects_raw_byte_drift(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            minimal_tree(root)
+            report = matrix.build_report(root)
+            frontier = report[
+                "physical_SM_G8_identifiability_frontier_contract"
+            ]
+            self.assertTrue(frontier["source_bound"])
+            self.assertTrue(frontier["canonical_G8_contract_audited"])
+            self.assertTrue(
+                frontier["continuous_absolute_scale_nonidentifiability_proved"]
+            )
+            self.assertTrue(
+                frontier["flavor_and_interference_nonidentifiability_audited"]
+            )
+            self.assertTrue(
+                frontier[
+                    "repository_frozen_PDG_2025_single_channel_constraint_verified"
+                ]
+            )
+            self.assertEqual(
+                frontier["minimal_exhibited_joint_free_real_dimension"], 1
+            )
+            self.assertFalse(frontier["unique_proton_lifetime_or_distribution"])
+            self.assertFalse(frontier["physical_G8_closed"])
+            self.assertFalse(frontier["release_G8_verified"])
+            self.assertFalse(frontier["authoritative_G8_closed"])
+            proton = next(
+                gate
+                for gate in report["gates"]
+                if gate["name"] == "proton_decay"
+            )
+            self.assertEqual(proton["state"], "BLOCKED")
+            self.assertTrue(
+                proton["evidence"][
+                    "physical_SM_G8_identifiability_frontier_source_bound"
+                ]
+            )
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            minimal_tree(root)
+            artifact = root / matrix.ARTIFACTS[
+                "physical_sm_g8_identifiability_frontier"
+            ]
+            artifact.write_bytes(artifact.read_bytes() + b"\n")
+            forged = matrix.build_report(root)
+            frontier = forged[
+                "physical_SM_G8_identifiability_frontier_contract"
+            ]
+            self.assertFalse(frontier["source_bound"])
+            self.assertFalse(frontier["physical_G8_closed"])
+            proton = next(
+                gate
+                for gate in forged["gates"]
+                if gate["name"] == "proton_decay"
+            )
+            self.assertEqual(proton["state"], "OPEN")
+            self.assertFalse(
+                proton["evidence"][
+                    "physical_SM_G8_identifiability_frontier_source_bound"
+                ]
+            )
 
     def test_current_repository_can_never_claim_discovery_from_internal_tests(self):
         report = matrix.build_report(matrix.ROOT)
@@ -1898,9 +2903,8 @@ class TheoryValidationMatrixTests(unittest.TestCase):
         self.assertIn(
             report["classification"],
             {
-                "MODEL_CONTRACT_INCONSISTENT__AUTHORITATIVE_GATES_REOPENED",
-                "INTERNALLY_CONSISTENT_CONDITIONAL_CANDIDATE",
-                "INSUFFICIENT_CURRENT_REPRODUCIBILITY",
+                "CANONICAL_G1_G8_GATES_OPEN",
+                "FULL_PHENOMENOLOGY_VALIDATED__NO_DISCOVERY_IMPLIED",
             },
         )
 

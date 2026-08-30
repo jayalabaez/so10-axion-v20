@@ -1,0 +1,57 @@
+{
+  "PS_branching_attempt": {
+    "consequence": "the Cartesian tensors are complete, but a unique entrywise PS Wilson array cannot yet be emitted",
+    "four_trace_sectors": "V49 fixes their PS epsilon tensors, while the Clifford/Fock backend fixes Cartesian spinor weights",
+    "smallest_missing_datum": "a common-phase unitary intertwiner U_R from the Cartesian form bases to the V49 PS basis for R=120,126/126bar,210 (including multiplicity labels); neither weight multisets nor Casimir spectral projectors determine phases inside repeated weight spaces",
+    "source_singlets": "existing p,a,omega and Delta_R Cartesian states provide a finite source-VEV slice"
+  },
+  "certificates": {
+    "PhiSigma_to_120": {
+      "all_45_generator_dense_witness_residual": 0.0,
+      "matrix_rank": 120,
+      "normalized_gram_residual": 1.2212453270876722e-15,
+      "raw_gram_isotropy_residual": 0.0,
+      "raw_gram_scale": 105.0,
+      "raw_shape": [
+        120,
+        210,
+        126
+      ]
+    },
+    "PhiSigma_to_126_minus_i": {
+      "Hodge_projector": "(1+i star)/2; output star=-i",
+      "all_45_generator_dense_witness_residual": 0.0,
+      "matrix_rank": 126,
+      "normalized_gram_residual": 6.661338147750939e-16,
+      "raw_gram_isotropy_residual": 0.0,
+      "raw_gram_scale": 100.0,
+      "raw_shape": [
+        126,
+        210,
+        126
+      ]
+    }
+  },
+  "checks": {
+    "120_covariance_all_generators": true,
+    "120_full_rank": true,
+    "120_gram": true,
+    "126_covariance_all_generators": true,
+    "126_full_rank": true,
+    "126_gram": true,
+    "fail_closed": true
+  },
+  "construction": {
+    "120": "sum over three common contracted indices, wedge residual 1- and 2-forms into a 3-form",
+    "126": "sum over two common contracted indices, wedge residual 2- and 3-forms, then apply (1+i star)/2",
+    "input_bases": "210 increasing Cartesian 4-forms and canonical kinetic-orthonormal -i Hodge 126 basis",
+    "normalization": "divide by square root of the full output Gram scalar"
+  },
+  "core_sha256": "5d4fa0edb42525cfd960af0163c394f4bf8aeb183ab5de0e71ad2c2cd05ef6fe",
+  "schema": "susy-spin10-v50-phi-sigma-form-tensors-v1",
+  "status": "V50_PHI_SIGMA_TO_120_AND_126_CARTESIAN_TENSORS_NORMALIZED__ALL_45_GENERATOR_WITNESSES_PASS__COMMON_PS_BRANCHING_UNITARY_OPEN__G2_FAIL_CLOSED",
+  "verdict": {
+    "C7": "PARTIAL_ONLY_BECAUSE_PS_INTERTWINERS_MISSING",
+    "G2_closed": false
+  }
+}

@@ -1,0 +1,2215 @@
+{
+  "checks": {
+    "Z9_selector_survives_all_declared_product_VEVs": true,
+    "all_host_terms_lift_to_continuous_product": true,
+    "all_new_mass_terms_are_allowed": true,
+    "all_new_spectator_blocks_have_full_rank_witness": true,
+    "all_nine_U1_PS_squared_rows_vanish": true,
+    "all_ten_symmetric_U1_cubic_cross_rows_vanish": true,
+    "all_three_U1_gravity_rows_vanish": true,
+    "even_X_no_go_is_nonvacuous": true,
+    "every_V40_z5610_charge_matches_its_declared_X_H_lift": true,
+    "listed_Z9_arithmetic_survives": true,
+    "no_complete_product_UV_or_gate_closure_claimed": true,
+    "old_Z5610_is_not_silently_claimed_preserved": true,
+    "pure_PS_and_SU2_global_rows_pass": true,
+    "source_files_present": true
+  },
+  "complete_theory_exists": false,
+  "conditional_X_H_higgs_branch": {
+    "D_flat_adjustment": {
+      "H": "85(|EtaPlus|^2-|EtaMinus|^2)=-D_H^host; with a nonzero fixed product this has two positive solutions.",
+      "X": "|XiPlus|^2-|XiMinus|^2=-D_X^host; with a nonzero fixed product this has two positive solutions.",
+      "conclusion": "The isolated source fields admit nonzero conditional F/D-flat representatives for any finite host D backgrounds."
+    },
+    "F_flat_conditions": {
+      "H": "SEta=0 and EtaPlus EtaMinus=mu_H^2",
+      "X": "SXi=0 and XiPlus XiMinus=mu_X^2"
+    },
+    "Higgsing": {
+      "U1F_VEV_charges": [
+        9,
+        -9,
+        0,
+        0,
+        0,
+        0
+      ],
+      "U1H_VEV_charges": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        85,
+        -85
+      ],
+      "U1X_VEV_charges": [
+        0,
+        0,
+        2,
+        -2,
+        1,
+        -1,
+        0,
+        0
+      ],
+      "full_host_vacuum_solved": false,
+      "unbroken_from_F": "Z9",
+      "unbroken_from_H": "Z85",
+      "unbroken_from_X": "trivial because gcd(2,2,1,1)=1"
+    },
+    "assumptions": [
+      "global N=1 SUSY with canonical positive K\u00e4hler metric for Xi/Eta/SXi/SEta",
+      "kappa_X, kappa_H, mu_X^2, and mu_H^2 are nonzero",
+      "the unsolved host supplies finite D_X^host and D_H^host background values",
+      "all V42 spectators have zero VEVs"
+    ]
+  },
+  "core_sha256": "ad4b5a2e2e56765038387d864434d9f73a3e946dcd3f5f99a55d886955c5a7fd",
+  "even_X_residual_threshold_no_go": {
+    "assumptions": [
+      "Every added X-charged chiral field is massive at the matching threshold in a full-rank Dirac block pairing two distinct chiral species or conjugate Pati--Salam blocks.",
+      "No holomorphic self-Majorana/Pfaffian mass block is used; such a block is a known escape from this parity proof and is explicitly not excluded.",
+      "Every VEV entering those mass matrices has even integer U(1)_X charge; this includes any threshold retaining at least a Z2 subgroup of U(1)_X and, a fortiori, a Z66 selector.",
+      "No Green--Schwarz/Stueckelberg/topological response, inflow sector, or intentionally massless anomalon is used to carry the remaining anomaly."
+    ],
+    "conclusion": "The required compensating shift is odd.  No ordinary fully massive *Dirac-paired* even-X threshold can cancel it. An odd-X VEV, a self-paired Majorana/Pfaffian block, an unpaired light state, or a specified topological/inflow response is necessary.  The explicit V42 Xi(+/-1) pair chooses the first option.",
+    "determinant_argument": [
+      "For each full-rank Dirac representation block choose one nonzero determinant monomial.  Gauge invariance gives sum_i x_i + sum_j xbar_sigma(i) = - sum_i x(VEV_i).",
+      "The right-hand side is even by assumption, so the sum of the U(1)_X charges of every massive block is even.",
+      "Multiplying by the integral Pati--Salam representation dimension preserves evenness.  Summing blocks shows every ordinary fully massive threshold shifts A[gravity^2 U(1)_X] by an even integer."
+    ],
+    "input_ledger": {
+      "V40_host_A_gravity_squared_U1X": -33,
+      "V41_P_Pb_threshold_increment": 0,
+      "combined_pre_V42_value": -33,
+      "combined_pre_V42_value_mod_2": 1
+    },
+    "ordinary_even_X_Dirac_pair_local_completion_exists": false,
+    "relation_to_V38": "This is independent of, and weaker than, the V38 Pati--Salam mixed-anomaly obstruction for a Z66-preserving threshold. It already rules out a fully massive Dirac-paired repair retaining even a Z2 X remnant.",
+    "theorem": "Even-X Dirac-pair threshold obstruction from U(1)_X-gravity parity"
+  },
+  "failures": [],
+  "field_packet": [
+    {
+      "F": 0,
+      "H": 0,
+      "X": 0,
+      "dim": 4,
+      "field": "H",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {
+        "SU2L": 2,
+        "SU2R": 2
+      },
+      "r4": 0,
+      "representation": "V40 declared Pati--Salam field",
+      "role": "V40 host",
+      "su4_cubic": 0,
+      "z5610": 0
+    },
+    {
+      "F": 3,
+      "H": 0,
+      "X": 0,
+      "dim": 24,
+      "field": "Q",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {
+        "SU2L": 12,
+        "SU4": 6
+      },
+      "r4": 1,
+      "representation": "V40 declared Pati--Salam field",
+      "role": "V40 host",
+      "su4_cubic": 6,
+      "z5610": 0
+    },
+    {
+      "F": -3,
+      "H": 0,
+      "X": 0,
+      "dim": 24,
+      "field": "Qc",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {
+        "SU2R": 12,
+        "SU4": 6
+      },
+      "r4": 1,
+      "representation": "V40 declared Pati--Salam field",
+      "role": "V40 host",
+      "su4_cubic": -6,
+      "z5610": 0
+    },
+    {
+      "F": 0,
+      "H": 0,
+      "X": 0,
+      "dim": 1,
+      "field": "X",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {},
+      "r4": 2,
+      "representation": "V40 declared Pati--Salam field",
+      "role": "V40 host",
+      "su4_cubic": 0,
+      "z5610": 0
+    },
+    {
+      "F": 0,
+      "H": 0,
+      "X": 0,
+      "dim": 8,
+      "field": "Sc",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {
+        "SU2R": 4,
+        "SU4": 2
+      },
+      "r4": 0,
+      "representation": "V40 declared Pati--Salam field",
+      "role": "V40 host",
+      "su4_cubic": -2,
+      "z5610": 0
+    },
+    {
+      "F": 0,
+      "H": 0,
+      "X": 0,
+      "dim": 8,
+      "field": "Sbc",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {
+        "SU2R": 4,
+        "SU4": 2
+      },
+      "r4": 0,
+      "representation": "V40 declared Pati--Salam field",
+      "role": "V40 host",
+      "su4_cubic": 2,
+      "z5610": 0
+    },
+    {
+      "F": 0,
+      "H": 0,
+      "X": 0,
+      "dim": 6,
+      "field": "SigC",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {
+        "SU4": 2
+      },
+      "r4": 2,
+      "representation": "V40 declared Pati--Salam field",
+      "role": "V40 host",
+      "su4_cubic": 0,
+      "z5610": 0
+    },
+    {
+      "F": 0,
+      "H": 0,
+      "X": 0,
+      "dim": 6,
+      "field": "SigBc",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {
+        "SU4": 2
+      },
+      "r4": 2,
+      "representation": "V40 declared Pati--Salam field",
+      "role": "V40 host",
+      "su4_cubic": 0,
+      "z5610": 0
+    },
+    {
+      "F": -3,
+      "H": 0,
+      "X": -2,
+      "dim": 8,
+      "field": "PsiBar",
+      "multiplicity": 1,
+      "pq": -170,
+      "ps": {
+        "SU2L": 4,
+        "SU4": 2
+      },
+      "r4": 3,
+      "representation": "V40 declared Pati--Salam field",
+      "role": "V40 host",
+      "su4_cubic": -2,
+      "z5610": 5440
+    },
+    {
+      "F": 3,
+      "H": 0,
+      "X": 0,
+      "dim": 8,
+      "field": "Psi",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {
+        "SU2L": 4,
+        "SU4": 2
+      },
+      "r4": 1,
+      "representation": "V40 declared Pati--Salam field",
+      "role": "V40 host",
+      "su4_cubic": 2,
+      "z5610": 0
+    },
+    {
+      "F": -3,
+      "H": 0,
+      "X": 0,
+      "dim": 8,
+      "field": "PsiC",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {
+        "SU2R": 4,
+        "SU4": 2
+      },
+      "r4": 1,
+      "representation": "V40 declared Pati--Salam field",
+      "role": "V40 host",
+      "su4_cubic": -2,
+      "z5610": 0
+    },
+    {
+      "F": 3,
+      "H": 0,
+      "X": -2,
+      "dim": 8,
+      "field": "PsiCBar",
+      "multiplicity": 1,
+      "pq": -170,
+      "ps": {
+        "SU2R": 4,
+        "SU4": 2
+      },
+      "r4": 3,
+      "representation": "V40 declared Pati--Salam field",
+      "role": "V40 host",
+      "su4_cubic": 2,
+      "z5610": 5440
+    },
+    {
+      "F": 0,
+      "H": 0,
+      "X": 2,
+      "dim": 1,
+      "field": "P",
+      "multiplicity": 1,
+      "pq": 170,
+      "ps": {},
+      "r4": 2,
+      "representation": "V40 declared Pati--Salam field",
+      "role": "V40 host",
+      "su4_cubic": 0,
+      "z5610": 170
+    },
+    {
+      "F": -3,
+      "H": 0,
+      "X": 0,
+      "dim": 3,
+      "field": "NDirac",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {},
+      "r4": 1,
+      "representation": "V40 declared Pati--Salam field",
+      "role": "V40 host",
+      "su4_cubic": 0,
+      "z5610": 0
+    },
+    {
+      "F": 0,
+      "H": 0,
+      "X": -2,
+      "dim": 1,
+      "field": "Pb",
+      "multiplicity": 1,
+      "pq": -170,
+      "ps": {},
+      "r4": 2,
+      "representation": "V40 declared Pati--Salam field",
+      "role": "V40 host",
+      "su4_cubic": 0,
+      "z5610": 5440
+    },
+    {
+      "F": 0,
+      "H": 0,
+      "X": 0,
+      "dim": 1,
+      "field": "Zp",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {},
+      "r4": 2,
+      "representation": "V40 declared Pati--Salam field",
+      "role": "V40 host",
+      "su4_cubic": 0,
+      "z5610": 0
+    },
+    {
+      "F": 3,
+      "H": 1,
+      "X": -29,
+      "dim": 1,
+      "field": "A2",
+      "multiplicity": 1,
+      "pq": -23,
+      "ps": {},
+      "r4": 0,
+      "representation": "V40 declared Pati--Salam field",
+      "role": "V40 host",
+      "su4_cubic": 0,
+      "z5610": 3211
+    },
+    {
+      "F": -3,
+      "H": -1,
+      "X": 31,
+      "dim": 1,
+      "field": "A32",
+      "multiplicity": 1,
+      "pq": 193,
+      "ps": {},
+      "r4": 0,
+      "representation": "V40 declared Pati--Salam field",
+      "role": "V40 host",
+      "su4_cubic": 0,
+      "z5610": 2569
+    },
+    {
+      "F": 0,
+      "H": 69,
+      "X": -3,
+      "dim": 1,
+      "field": "A15",
+      "multiplicity": 1,
+      "pq": -57,
+      "ps": {},
+      "r4": 2,
+      "representation": "V40 declared Pati--Salam field",
+      "role": "V40 host",
+      "su4_cubic": 0,
+      "z5610": 4299
+    },
+    {
+      "F": 0,
+      "H": -69,
+      "X": 1,
+      "dim": 1,
+      "field": "A17",
+      "multiplicity": 1,
+      "pq": -113,
+      "ps": {},
+      "r4": 2,
+      "representation": "V40 declared Pati--Salam field",
+      "role": "V40 host",
+      "su4_cubic": 0,
+      "z5610": 1141
+    },
+    {
+      "F": 0,
+      "H": 0,
+      "X": -1,
+      "dim": 1,
+      "field": "A16",
+      "multiplicity": 1,
+      "pq": -85,
+      "ps": {},
+      "r4": 0,
+      "representation": "V40 declared Pati--Salam field",
+      "role": "V40 host",
+      "su4_cubic": 0,
+      "z5610": 5525
+    },
+    {
+      "F": 9,
+      "H": 0,
+      "X": 0,
+      "dim": 1,
+      "field": "ThetaPlus",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {},
+      "r4": 0,
+      "representation": "V40 declared Pati--Salam field",
+      "role": "V40 host",
+      "su4_cubic": 0,
+      "z5610": 0
+    },
+    {
+      "F": -9,
+      "H": 0,
+      "X": 0,
+      "dim": 1,
+      "field": "ThetaMinus",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {},
+      "r4": 0,
+      "representation": "V40 declared Pati--Salam field",
+      "role": "V40 host",
+      "su4_cubic": 0,
+      "z5610": 0
+    },
+    {
+      "F": 0,
+      "H": 0,
+      "X": 0,
+      "dim": 1,
+      "field": "STheta",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {},
+      "r4": 2,
+      "representation": "V40 declared Pati--Salam field",
+      "role": "V40 host",
+      "su4_cubic": 0,
+      "z5610": 0
+    },
+    {
+      "F": 0,
+      "H": 0,
+      "X": 0,
+      "dim": 8,
+      "field": "L0",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {
+        "SU2L": 4
+      },
+      "r4": 1,
+      "representation": "V40 declared Pati--Salam field",
+      "role": "V40 host",
+      "su4_cubic": 0,
+      "z5610": 0
+    },
+    {
+      "F": -9,
+      "H": 0,
+      "X": 0,
+      "dim": 8,
+      "field": "Lminus9",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {
+        "SU2L": 4
+      },
+      "r4": 1,
+      "representation": "V40 declared Pati--Salam field",
+      "role": "V40 host",
+      "su4_cubic": 0,
+      "z5610": 0
+    },
+    {
+      "F": 0,
+      "H": 0,
+      "X": 0,
+      "dim": 8,
+      "field": "R0",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {
+        "SU2R": 4
+      },
+      "r4": 1,
+      "representation": "V40 declared Pati--Salam field",
+      "role": "V40 host",
+      "su4_cubic": 0,
+      "z5610": 0
+    },
+    {
+      "F": 9,
+      "H": 0,
+      "X": 0,
+      "dim": 8,
+      "field": "Rplus9",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {
+        "SU2R": 4
+      },
+      "r4": 1,
+      "representation": "V40 declared Pati--Salam field",
+      "role": "V40 host",
+      "su4_cubic": 0,
+      "z5610": 0
+    },
+    {
+      "F": 4,
+      "H": 0,
+      "X": 0,
+      "dim": 1,
+      "field": "E4",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {},
+      "r4": 1,
+      "representation": "V40 declared Pati--Salam field",
+      "role": "V40 host",
+      "su4_cubic": 0,
+      "z5610": 0
+    },
+    {
+      "F": 5,
+      "H": 0,
+      "X": 0,
+      "dim": 1,
+      "field": "E5",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {},
+      "r4": 1,
+      "representation": "V40 declared Pati--Salam field",
+      "role": "V40 host",
+      "su4_cubic": 0,
+      "z5610": 0
+    },
+    {
+      "F": 3,
+      "H": 0,
+      "X": 0,
+      "dim": 1,
+      "field": "E3",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {},
+      "r4": 1,
+      "representation": "V40 declared Pati--Salam field",
+      "role": "V40 host",
+      "su4_cubic": 0,
+      "z5610": 0
+    },
+    {
+      "F": 6,
+      "H": 0,
+      "X": 0,
+      "dim": 1,
+      "field": "E6",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {},
+      "r4": 1,
+      "representation": "V40 declared Pati--Salam field",
+      "role": "V40 host",
+      "su4_cubic": 0,
+      "z5610": 0
+    },
+    {
+      "F": -2,
+      "H": 0,
+      "X": 0,
+      "dim": 1,
+      "field": "Eminus2",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {},
+      "r4": 1,
+      "representation": "V40 declared Pati--Salam field",
+      "role": "V40 host",
+      "su4_cubic": 0,
+      "z5610": 0
+    },
+    {
+      "F": -7,
+      "H": 0,
+      "X": 0,
+      "dim": 1,
+      "field": "Eminus7",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {},
+      "r4": 1,
+      "representation": "V40 declared Pati--Salam field",
+      "role": "V40 host",
+      "su4_cubic": 0,
+      "z5610": 0
+    },
+    {
+      "F": 12,
+      "H": 0,
+      "X": 6,
+      "dim": 1,
+      "field": "ChiAPlus",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {},
+      "r4": 0,
+      "representation": "(1,1,1)",
+      "role": "V41 F-X/H cross-anomaly threshold field",
+      "su4_cubic": 0,
+      "z5610": 510
+    },
+    {
+      "F": -12,
+      "H": 0,
+      "X": -4,
+      "dim": 1,
+      "field": "ChiAMinus",
+      "multiplicity": 1,
+      "pq": 170,
+      "ps": {},
+      "r4": 0,
+      "representation": "(1,1,1)",
+      "role": "V41 F-X/H cross-anomaly threshold field",
+      "su4_cubic": 0,
+      "z5610": 5270
+    },
+    {
+      "F": 3,
+      "H": 1,
+      "X": -11,
+      "dim": 1,
+      "field": "ChiBPlus",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {},
+      "r4": 0,
+      "representation": "(1,1,1)",
+      "role": "V41 F-X/H cross-anomaly threshold field",
+      "su4_cubic": 0,
+      "z5610": 4741
+    },
+    {
+      "F": -3,
+      "H": -1,
+      "X": 9,
+      "dim": 1,
+      "field": "ChiBMinus",
+      "multiplicity": 1,
+      "pq": -170,
+      "ps": {},
+      "r4": 0,
+      "representation": "(1,1,1)",
+      "role": "V41 F-X/H cross-anomaly threshold field",
+      "su4_cubic": 0,
+      "z5610": 699
+    },
+    {
+      "F": 3,
+      "H": 0,
+      "X": 0,
+      "dim": 8,
+      "field": "Fmess",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {
+        "SU2R": 4,
+        "SU4": 2
+      },
+      "r4": 1,
+      "representation": "(4,1,2)",
+      "role": "V41 Dirac-neutrino messenger",
+      "su4_cubic": 2,
+      "z5610": 0
+    },
+    {
+      "F": -3,
+      "H": 0,
+      "X": 0,
+      "dim": 8,
+      "field": "Fcmess",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {
+        "SU2R": 4,
+        "SU4": 2
+      },
+      "r4": 1,
+      "representation": "(bar4,1,2)",
+      "role": "V41 Dirac-neutrino messenger",
+      "su4_cubic": -2,
+      "z5610": 0
+    },
+    {
+      "F": 0,
+      "H": 0,
+      "X": 1,
+      "dim": 6,
+      "field": "D6a",
+      "multiplicity": 2,
+      "pq": 0,
+      "ps": {
+        "SU4": 2
+      },
+      "r4": 0,
+      "representation": "(6,1,1)",
+      "role": "Pb-massed X-PS^2 spectator",
+      "su4_cubic": 0,
+      "z5610": 85
+    },
+    {
+      "F": 0,
+      "H": 0,
+      "X": 1,
+      "dim": 6,
+      "field": "D6b",
+      "multiplicity": 2,
+      "pq": 170,
+      "ps": {
+        "SU4": 2
+      },
+      "r4": 0,
+      "representation": "(6,1,1)",
+      "role": "Pb-massed X-PS^2 spectator",
+      "su4_cubic": 0,
+      "z5610": 85
+    },
+    {
+      "F": 0,
+      "H": 0,
+      "X": 1,
+      "dim": 2,
+      "field": "LxA",
+      "multiplicity": 4,
+      "pq": 0,
+      "ps": {
+        "SU2L": 1
+      },
+      "r4": 0,
+      "representation": "(1,2,1)",
+      "role": "Pb-massed X-PS^2 spectator",
+      "su4_cubic": 0,
+      "z5610": 85
+    },
+    {
+      "F": 0,
+      "H": 0,
+      "X": 1,
+      "dim": 2,
+      "field": "LxB",
+      "multiplicity": 4,
+      "pq": 170,
+      "ps": {
+        "SU2L": 1
+      },
+      "r4": 0,
+      "representation": "(1,2,1)",
+      "role": "Pb-massed X-PS^2 spectator",
+      "su4_cubic": 0,
+      "z5610": 85
+    },
+    {
+      "F": 0,
+      "H": 0,
+      "X": 1,
+      "dim": 2,
+      "field": "RxA",
+      "multiplicity": 4,
+      "pq": 0,
+      "ps": {
+        "SU2R": 1
+      },
+      "r4": 0,
+      "representation": "(1,1,2)",
+      "role": "Pb-massed X-PS^2 spectator",
+      "su4_cubic": 0,
+      "z5610": 85
+    },
+    {
+      "F": 0,
+      "H": 0,
+      "X": 1,
+      "dim": 2,
+      "field": "RxB",
+      "multiplicity": 4,
+      "pq": 170,
+      "ps": {
+        "SU2R": 1
+      },
+      "r4": 0,
+      "representation": "(1,1,2)",
+      "role": "Pb-massed X-PS^2 spectator",
+      "su4_cubic": 0,
+      "z5610": 85
+    },
+    {
+      "F": 0,
+      "H": 0,
+      "X": 1,
+      "dim": 1,
+      "field": "XiPlus",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {},
+      "r4": 2,
+      "representation": "(1,1,1)",
+      "role": "odd-X product Higgs",
+      "su4_cubic": 0,
+      "z5610": 85
+    },
+    {
+      "F": 0,
+      "H": 0,
+      "X": -1,
+      "dim": 1,
+      "field": "XiMinus",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {},
+      "r4": 2,
+      "representation": "(1,1,1)",
+      "role": "odd-X product Higgs",
+      "su4_cubic": 0,
+      "z5610": 5525
+    },
+    {
+      "F": 0,
+      "H": 0,
+      "X": 0,
+      "dim": 1,
+      "field": "SXi",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {},
+      "r4": 2,
+      "representation": "(1,1,1)",
+      "role": "Xi stabilizer",
+      "su4_cubic": 0,
+      "z5610": 0
+    },
+    {
+      "F": 0,
+      "H": 85,
+      "X": 0,
+      "dim": 1,
+      "field": "EtaPlus",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {},
+      "r4": 0,
+      "representation": "(1,1,1)",
+      "role": "H-to-Z85 Higgs",
+      "su4_cubic": 0,
+      "z5610": 0
+    },
+    {
+      "F": 0,
+      "H": -85,
+      "X": 0,
+      "dim": 1,
+      "field": "EtaMinus",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {},
+      "r4": 0,
+      "representation": "(1,1,1)",
+      "role": "H-to-Z85 Higgs",
+      "su4_cubic": 0,
+      "z5610": 0
+    },
+    {
+      "F": 0,
+      "H": 0,
+      "X": 0,
+      "dim": 1,
+      "field": "SEta",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {},
+      "r4": 2,
+      "representation": "(1,1,1)",
+      "role": "Eta stabilizer",
+      "su4_cubic": 0,
+      "z5610": 0
+    },
+    {
+      "F": 0,
+      "H": 98,
+      "X": 0,
+      "dim": 1,
+      "field": "M98a",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {},
+      "r4": 0,
+      "representation": "(1,1,1)",
+      "role": "XiMinus-massed singlet",
+      "su4_cubic": 0,
+      "z5610": 858
+    },
+    {
+      "F": 0,
+      "H": -98,
+      "X": 1,
+      "dim": 1,
+      "field": "M98b",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {},
+      "r4": 0,
+      "representation": "(1,1,1)",
+      "role": "XiMinus-massed singlet",
+      "su4_cubic": 0,
+      "z5610": 4837
+    },
+    {
+      "F": 0,
+      "H": 9,
+      "X": 20,
+      "dim": 1,
+      "field": "P9a",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {},
+      "r4": 0,
+      "representation": "(1,1,1)",
+      "role": "XiPlus-massed singlet",
+      "su4_cubic": 0,
+      "z5610": 2294
+    },
+    {
+      "F": 0,
+      "H": -9,
+      "X": -21,
+      "dim": 1,
+      "field": "P9b",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {},
+      "r4": 0,
+      "representation": "(1,1,1)",
+      "role": "XiPlus-massed singlet",
+      "su4_cubic": 0,
+      "z5610": 3231
+    },
+    {
+      "F": 0,
+      "H": 1,
+      "X": 2,
+      "dim": 1,
+      "field": "P1a",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {},
+      "r4": 0,
+      "representation": "(1,1,1)",
+      "role": "XiPlus-massed singlet",
+      "su4_cubic": 0,
+      "z5610": 236
+    },
+    {
+      "F": 0,
+      "H": -1,
+      "X": -3,
+      "dim": 1,
+      "field": "P1b",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {},
+      "r4": 0,
+      "representation": "(1,1,1)",
+      "role": "XiPlus-massed singlet",
+      "su4_cubic": 0,
+      "z5610": 5289
+    },
+    {
+      "F": 0,
+      "H": 0,
+      "X": 5,
+      "dim": 1,
+      "field": "P0x5a",
+      "multiplicity": 18,
+      "pq": 0,
+      "ps": {},
+      "r4": 0,
+      "representation": "(1,1,1)",
+      "role": "XiPlus-massed singlet",
+      "su4_cubic": 0,
+      "z5610": 425
+    },
+    {
+      "F": 0,
+      "H": 0,
+      "X": -6,
+      "dim": 1,
+      "field": "P0x5b",
+      "multiplicity": 18,
+      "pq": 0,
+      "ps": {},
+      "r4": 0,
+      "representation": "(1,1,1)",
+      "role": "XiPlus-massed singlet",
+      "su4_cubic": 0,
+      "z5610": 5100
+    },
+    {
+      "F": 0,
+      "H": 0,
+      "X": 6,
+      "dim": 1,
+      "field": "P0x6a",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {},
+      "r4": 0,
+      "representation": "(1,1,1)",
+      "role": "XiPlus-massed singlet",
+      "su4_cubic": 0,
+      "z5610": 510
+    },
+    {
+      "F": 0,
+      "H": 0,
+      "X": -7,
+      "dim": 1,
+      "field": "P0x6b",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {},
+      "r4": 0,
+      "representation": "(1,1,1)",
+      "role": "XiPlus-massed singlet",
+      "su4_cubic": 0,
+      "z5610": 5015
+    },
+    {
+      "F": 0,
+      "H": 0,
+      "X": 13,
+      "dim": 1,
+      "field": "P0x13a",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {},
+      "r4": 0,
+      "representation": "(1,1,1)",
+      "role": "XiPlus-massed singlet",
+      "su4_cubic": 0,
+      "z5610": 1105
+    },
+    {
+      "F": 0,
+      "H": 0,
+      "X": -14,
+      "dim": 1,
+      "field": "P0x13b",
+      "multiplicity": 1,
+      "pq": 0,
+      "ps": {},
+      "r4": 0,
+      "representation": "(1,1,1)",
+      "role": "XiPlus-massed singlet",
+      "su4_cubic": 0,
+      "z5610": 4420
+    },
+    {
+      "F": 0,
+      "H": 0,
+      "X": 14,
+      "dim": 1,
+      "field": "P0x14a",
+      "multiplicity": 2,
+      "pq": 0,
+      "ps": {},
+      "r4": 0,
+      "representation": "(1,1,1)",
+      "role": "XiPlus-massed singlet",
+      "su4_cubic": 0,
+      "z5610": 1190
+    },
+    {
+      "F": 0,
+      "H": 0,
+      "X": -15,
+      "dim": 1,
+      "field": "P0x14b",
+      "multiplicity": 2,
+      "pq": 0,
+      "ps": {},
+      "r4": 0,
+      "representation": "(1,1,1)",
+      "role": "XiPlus-massed singlet",
+      "su4_cubic": 0,
+      "z5610": 4335
+    }
+  ],
+  "finite_selector_boundary": {
+    "VEV_charge_audit": {
+      "EtaMinus": {
+        "F": 0,
+        "H": -85,
+        "X": 0,
+        "r4": 0,
+        "z5610": 0
+      },
+      "EtaPlus": {
+        "F": 0,
+        "H": 85,
+        "X": 0,
+        "r4": 0,
+        "z5610": 0
+      },
+      "P": {
+        "F": 0,
+        "H": 0,
+        "X": 2,
+        "r4": 2,
+        "z5610": 170
+      },
+      "Pb": {
+        "F": 0,
+        "H": 0,
+        "X": -2,
+        "r4": 2,
+        "z5610": 5440
+      },
+      "ThetaMinus": {
+        "F": -9,
+        "H": 0,
+        "X": 0,
+        "r4": 0,
+        "z5610": 0
+      },
+      "ThetaPlus": {
+        "F": 9,
+        "H": 0,
+        "X": 0,
+        "r4": 0,
+        "z5610": 0
+      },
+      "XiMinus": {
+        "F": 0,
+        "H": 0,
+        "X": -1,
+        "r4": 2,
+        "z5610": 5525
+      },
+      "XiPlus": {
+        "F": 0,
+        "H": 0,
+        "X": 1,
+        "r4": 2,
+        "z5610": 85
+      }
+    },
+    "Z4R_boundary": {
+      "Xi_r4": 2,
+      "conclusion": "A discrete-R/product-bordism audit is therefore still required and is not inferred here.",
+      "full_Z4R_preserved_by_Xi_branch": false
+    },
+    "Z5610_preservation": {
+      "XiMinus_z5610": 5525,
+      "XiPlus_z5610": 85,
+      "Xi_VEVs_neutral_under_old_Z5610": false,
+      "conclusion": "The odd-X Xi VEVs carry CRT charges +/-85, so this local-anomaly construction explicitly breaks the old X-derived Z66/Z5610 selector.  It preserves the V40 Z9 selector only."
+    },
+    "Z9_arithmetic": {
+      "C_Z9_Z5610_squared_mod_9": 0,
+      "C_Z9_squared_Z5610_mod_9": 0,
+      "Delta_s1_canonical": 504,
+      "Delta_s3_canonical": 13824,
+      "cubic_condition_110Delta_s3_mod_54": 0,
+      "linear_condition_2Delta_s1_mod_9": 0,
+      "listed_Z9_rows_vanish": true
+    },
+    "all_declared_product_VEVs_preserve_Z9": true
+  },
+  "full_gate_closed": false,
+  "full_local_continuous_anomaly_audit": {
+    "U1_PS_squared": {
+      "F": {
+        "SU2L": 0,
+        "SU2R": 0,
+        "SU4": 0
+      },
+      "H": {
+        "SU2L": 0,
+        "SU2R": 0,
+        "SU4": 0
+      },
+      "X": {
+        "SU2L": 0,
+        "SU2R": 0,
+        "SU4": 0
+      }
+    },
+    "U1_cubic_and_all_cross_triangles": {
+      "F_F_F": 0,
+      "F_F_H": 0,
+      "F_F_X": 0,
+      "F_H_H": 0,
+      "F_X_H": 0,
+      "F_X_X": 0,
+      "H_H_H": 0,
+      "X_H_H": 0,
+      "X_X_H": 0,
+      "X_X_X": 0
+    },
+    "U1_gravity": {
+      "F": 0,
+      "H": 0,
+      "X": 0
+    },
+    "all_local_continuous_gauge_and_mixed_gravitational_rows_vanish": true,
+    "normalization": "sum over left-handed Weyl fermions; PS mixed entries use the V40 doubled-index normalization 2T(fundamental)=1; product entries are fully symmetric charge monomials",
+    "pure_Pati_Salam_and_SU2_global_checks": {
+      "SU2L_Witten_doublet_count": 38,
+      "SU2L_Witten_even": true,
+      "SU2R_Witten_doublet_count": 54,
+      "SU2R_Witten_even": true,
+      "SU4_cubed": 0
+    }
+  },
+  "host_continuous_product_term_audit": {
+    "all_host_terms_continuous_U1F_X_H_neutral": true,
+    "host_term_count": 37,
+    "rows": [
+      {
+        "F": 0,
+        "H": 0,
+        "X": 0,
+        "fields": [
+          "X"
+        ],
+        "kind": "V40_renormalizable",
+        "label": "X_linear_PS"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "X": 0,
+        "fields": [
+          "X"
+        ],
+        "kind": "V40_renormalizable",
+        "label": "X_linear_PQ"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "X": 0,
+        "fields": [
+          "Zp"
+        ],
+        "kind": "V40_renormalizable",
+        "label": "Zp_linear_PS"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "X": 0,
+        "fields": [
+          "Zp"
+        ],
+        "kind": "V40_renormalizable",
+        "label": "Zp_linear_PQ"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "X": 0,
+        "fields": [
+          "X",
+          "Sbc",
+          "Sc"
+        ],
+        "kind": "V40_renormalizable",
+        "label": "X_Sbc_Sc"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "X": 0,
+        "fields": [
+          "X",
+          "P",
+          "Pb"
+        ],
+        "kind": "V40_renormalizable",
+        "label": "X_P_Pb"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "X": 0,
+        "fields": [
+          "Zp",
+          "Sbc",
+          "Sc"
+        ],
+        "kind": "V40_renormalizable",
+        "label": "Zp_Sbc_Sc"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "X": 0,
+        "fields": [
+          "Zp",
+          "P",
+          "Pb"
+        ],
+        "kind": "V40_renormalizable",
+        "label": "Zp_P_Pb"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "X": 0,
+        "fields": [
+          "X",
+          "X",
+          "X"
+        ],
+        "kind": "V40_renormalizable",
+        "label": "X_cubic"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "X": 0,
+        "fields": [
+          "X",
+          "X",
+          "Zp"
+        ],
+        "kind": "V40_renormalizable",
+        "label": "XXZp"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "X": 0,
+        "fields": [
+          "X",
+          "Zp",
+          "Zp"
+        ],
+        "kind": "V40_renormalizable",
+        "label": "XZpZp"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "X": 0,
+        "fields": [
+          "Zp",
+          "Zp",
+          "Zp"
+        ],
+        "kind": "V40_renormalizable",
+        "label": "Zp_cubic"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "X": 0,
+        "fields": [
+          "X",
+          "H",
+          "H"
+        ],
+        "kind": "V40_renormalizable",
+        "label": "X_HH"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "X": 0,
+        "fields": [
+          "X",
+          "SigC",
+          "SigBc"
+        ],
+        "kind": "V40_renormalizable",
+        "label": "X_SigC_SigBc"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "X": 0,
+        "fields": [
+          "Zp",
+          "H",
+          "H"
+        ],
+        "kind": "V40_renormalizable",
+        "label": "Zp_HH"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "X": 0,
+        "fields": [
+          "Zp",
+          "SigC",
+          "SigBc"
+        ],
+        "kind": "V40_renormalizable",
+        "label": "Zp_SigC_SigBc"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "X": 0,
+        "fields": [
+          "Sc",
+          "Sc",
+          "SigC"
+        ],
+        "kind": "V40_renormalizable",
+        "label": "ScScSigC"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "X": 0,
+        "fields": [
+          "Sbc",
+          "Sbc",
+          "SigBc"
+        ],
+        "kind": "V40_renormalizable",
+        "label": "SbcSbcSigBc"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "X": 0,
+        "fields": [
+          "Q",
+          "H",
+          "Qc"
+        ],
+        "kind": "V40_renormalizable",
+        "label": "Q_H_Qc"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "X": 0,
+        "fields": [
+          "Q",
+          "H",
+          "PsiC"
+        ],
+        "kind": "V40_renormalizable",
+        "label": "Q_H_PsiC"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "X": 0,
+        "fields": [
+          "Psi",
+          "H",
+          "Qc"
+        ],
+        "kind": "V40_renormalizable",
+        "label": "Psi_H_Qc"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "X": 0,
+        "fields": [
+          "Psi",
+          "H",
+          "PsiC"
+        ],
+        "kind": "V40_renormalizable",
+        "label": "Psi_H_PsiC"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "X": 0,
+        "fields": [
+          "P",
+          "PsiBar",
+          "Q"
+        ],
+        "kind": "V40_renormalizable",
+        "label": "P_PsiBar_Q"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "X": 0,
+        "fields": [
+          "P",
+          "PsiBar",
+          "Psi"
+        ],
+        "kind": "V40_renormalizable",
+        "label": "P_PsiBar_Psi"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "X": 0,
+        "fields": [
+          "P",
+          "PsiCBar",
+          "Qc"
+        ],
+        "kind": "V40_renormalizable",
+        "label": "P_PsiCBar_Qc"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "X": 0,
+        "fields": [
+          "P",
+          "PsiCBar",
+          "PsiC"
+        ],
+        "kind": "V40_renormalizable",
+        "label": "P_PsiCBar_PsiC"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "X": 0,
+        "fields": [
+          "Pb",
+          "A2",
+          "A32"
+        ],
+        "kind": "V40_renormalizable",
+        "label": "Pb_A2_A32"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "X": 0,
+        "fields": [
+          "P",
+          "A15",
+          "A17"
+        ],
+        "kind": "V40_renormalizable",
+        "label": "P_A15_A17"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "X": 0,
+        "fields": [
+          "P",
+          "A16",
+          "A16"
+        ],
+        "kind": "V40_renormalizable",
+        "label": "P_A16_A16"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "X": 0,
+        "fields": [
+          "STheta"
+        ],
+        "kind": "V40_renormalizable",
+        "label": "STheta_linear"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "X": 0,
+        "fields": [
+          "STheta",
+          "ThetaPlus",
+          "ThetaMinus"
+        ],
+        "kind": "V40_renormalizable",
+        "label": "STheta_ThetaPlus_ThetaMinus"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "X": 0,
+        "fields": [
+          "ThetaPlus",
+          "L0",
+          "Lminus9"
+        ],
+        "kind": "V40_renormalizable",
+        "label": "ThetaPlus_L_mass"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "X": 0,
+        "fields": [
+          "ThetaMinus",
+          "R0",
+          "Rplus9"
+        ],
+        "kind": "V40_renormalizable",
+        "label": "ThetaMinus_R_mass"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "X": 0,
+        "fields": [
+          "ThetaMinus",
+          "E4",
+          "E5"
+        ],
+        "kind": "V40_renormalizable",
+        "label": "ThetaMinus_E45_mass"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "X": 0,
+        "fields": [
+          "ThetaMinus",
+          "E3",
+          "E6"
+        ],
+        "kind": "V40_renormalizable",
+        "label": "ThetaMinus_E36_mass"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "X": 0,
+        "fields": [
+          "ThetaPlus",
+          "Eminus2",
+          "Eminus7"
+        ],
+        "kind": "V40_renormalizable",
+        "label": "ThetaPlus_Em2m7_mass"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "X": 0,
+        "fields": [
+          "Q",
+          "H",
+          "Sc",
+          "NDirac"
+        ],
+        "kind": "V40_effective",
+        "label": "Dirac_neutrino_Q_H_Sc_NDirac_over_M"
+      }
+    ]
+  },
+  "incremental_anomaly_ledger": {
+    "V40_host": {
+      "U1_PS_squared": {
+        "F": {
+          "SU2L": 0,
+          "SU2R": 0,
+          "SU4": 0
+        },
+        "H": {
+          "SU2L": 0,
+          "SU2R": 0,
+          "SU4": 0
+        },
+        "X": {
+          "SU2L": -8,
+          "SU2R": -8,
+          "SU4": -8
+        }
+      },
+      "U1_cubic_and_all_cross_triangles": {
+        "F_F_F": 0,
+        "F_F_H": 0,
+        "F_F_X": -270,
+        "F_H_H": 0,
+        "F_X_H": 6,
+        "F_X_X": -360,
+        "H_H_H": 0,
+        "X_H_H": -9520,
+        "X_X_H": 432,
+        "X_X_X": 5247
+      },
+      "U1_gravity": {
+        "F": 0,
+        "H": 0,
+        "X": -33
+      },
+      "pure_Pati_Salam_and_SU2_global_checks": {
+        "SU2L_Witten_doublet_count": 30,
+        "SU2L_Witten_even": true,
+        "SU2R_Witten_doublet_count": 38,
+        "SU2R_Witten_even": true,
+        "SU4_cubed": 0
+      }
+    },
+    "plus_V41_F_cross_threshold": {
+      "U1_PS_squared": {
+        "F": {
+          "SU2L": 0,
+          "SU2R": 0,
+          "SU4": 0
+        },
+        "H": {
+          "SU2L": 0,
+          "SU2R": 0,
+          "SU4": 0
+        },
+        "X": {
+          "SU2L": -8,
+          "SU2R": -8,
+          "SU4": -8
+        }
+      },
+      "U1_cubic_and_all_cross_triangles": {
+        "F_F_F": 0,
+        "F_F_H": 0,
+        "F_F_X": 0,
+        "F_H_H": 0,
+        "F_X_H": 0,
+        "F_X_X": 0,
+        "H_H_H": 0,
+        "X_H_H": -9522,
+        "X_X_H": 472,
+        "X_X_X": 4797
+      },
+      "U1_gravity": {
+        "F": 0,
+        "H": 0,
+        "X": -33
+      },
+      "pure_Pati_Salam_and_SU2_global_checks": {
+        "SU2L_Witten_doublet_count": 30,
+        "SU2L_Witten_even": true,
+        "SU2R_Witten_doublet_count": 38,
+        "SU2R_Witten_even": true,
+        "SU4_cubed": 0
+      }
+    },
+    "plus_V42_full_packet": {
+      "U1_PS_squared": {
+        "F": {
+          "SU2L": 0,
+          "SU2R": 0,
+          "SU4": 0
+        },
+        "H": {
+          "SU2L": 0,
+          "SU2R": 0,
+          "SU4": 0
+        },
+        "X": {
+          "SU2L": 0,
+          "SU2R": 0,
+          "SU4": 0
+        }
+      },
+      "U1_cubic_and_all_cross_triangles": {
+        "F_F_F": 0,
+        "F_F_H": 0,
+        "F_F_X": 0,
+        "F_H_H": 0,
+        "F_X_H": 0,
+        "F_X_X": 0,
+        "H_H_H": 0,
+        "X_H_H": 0,
+        "X_X_H": 0,
+        "X_X_X": 0
+      },
+      "U1_gravity": {
+        "F": 0,
+        "H": 0,
+        "X": 0
+      },
+      "pure_Pati_Salam_and_SU2_global_checks": {
+        "SU2L_Witten_doublet_count": 38,
+        "SU2L_Witten_even": true,
+        "SU2R_Witten_doublet_count": 54,
+        "SU2R_Witten_even": true,
+        "SU4_cubed": 0
+      }
+    },
+    "plus_vectorlike_Dirac_messenger": {
+      "U1_PS_squared": {
+        "F": {
+          "SU2L": 0,
+          "SU2R": 0,
+          "SU4": 0
+        },
+        "H": {
+          "SU2L": 0,
+          "SU2R": 0,
+          "SU4": 0
+        },
+        "X": {
+          "SU2L": -8,
+          "SU2R": -8,
+          "SU4": -8
+        }
+      },
+      "U1_cubic_and_all_cross_triangles": {
+        "F_F_F": 0,
+        "F_F_H": 0,
+        "F_F_X": 0,
+        "F_H_H": 0,
+        "F_X_H": 0,
+        "F_X_X": 0,
+        "H_H_H": 0,
+        "X_H_H": -9522,
+        "X_X_H": 472,
+        "X_X_X": 4797
+      },
+      "U1_gravity": {
+        "F": 0,
+        "H": 0,
+        "X": -33
+      },
+      "pure_Pati_Salam_and_SU2_global_checks": {
+        "SU2L_Witten_doublet_count": 30,
+        "SU2L_Witten_even": true,
+        "SU2R_Witten_doublet_count": 46,
+        "SU2R_Witten_even": true,
+        "SU4_cubed": 0
+      }
+    }
+  },
+  "massability_audit": {
+    "all_mass_terms_PQ_neutral": true,
+    "all_mass_terms_continuous_U1F_X_H_neutral": true,
+    "all_mass_terms_finite_Z9_Z5610_neutral": true,
+    "all_mass_terms_have_Z4R_superpotential_charge_two": true,
+    "all_stabilizer_terms_continuous_neutral": true,
+    "all_stabilizer_terms_have_Z4R_superpotential_charge_two": true,
+    "full_rank_witness": {
+      "all_spectator_blocks_full_rank": true,
+      "assumption": "Every displayed square coupling matrix is chosen as a nonzero identity matrix of the stated rank.",
+      "term_ranks": {
+        "P_ChiB": 1,
+        "Pb_ChiA": 1,
+        "Pb_D6": 2,
+        "Pb_Lx": 4,
+        "Pb_Rx": 4,
+        "XiMinus_M98": 1,
+        "XiPlus_P0x13": 1,
+        "XiPlus_P0x14": 2,
+        "XiPlus_P0x5": 18,
+        "XiPlus_P0x6": 1,
+        "XiPlus_P1": 1,
+        "XiPlus_P9": 1
+      }
+    },
+    "massability_scope": "On a branch with nonzero <P>, <Pb>, <XiPlus>, <XiMinus>, <EtaPlus>, and <EtaMinus>, and nonzero stated couplings, all added charged spectator blocks have the listed full ranks. This is a massability witness, not a solution of the host P/Pb, K\u00e4hler, soft, or cosmological vacuum problem.",
+    "ordinary_mass_terms": [
+      {
+        "F": 0,
+        "H": 0,
+        "PQ_numerator_over_170": 0,
+        "X": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "Pb",
+          "ChiAPlus",
+          "ChiAMinus"
+        ],
+        "label": "Pb_ChiA",
+        "rank": 1,
+        "source": "Pb"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "PQ_numerator_over_170": 0,
+        "X": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "P",
+          "ChiBPlus",
+          "ChiBMinus"
+        ],
+        "label": "P_ChiB",
+        "rank": 1,
+        "source": "P"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "PQ_numerator_over_170": 0,
+        "X": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "Pb",
+          "D6a",
+          "D6b"
+        ],
+        "label": "Pb_D6",
+        "rank": 2,
+        "source": "Pb"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "PQ_numerator_over_170": 0,
+        "X": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "Pb",
+          "LxA",
+          "LxB"
+        ],
+        "label": "Pb_Lx",
+        "rank": 4,
+        "source": "Pb"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "PQ_numerator_over_170": 0,
+        "X": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "Pb",
+          "RxA",
+          "RxB"
+        ],
+        "label": "Pb_Rx",
+        "rank": 4,
+        "source": "Pb"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "PQ_numerator_over_170": 0,
+        "X": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "XiMinus",
+          "M98a",
+          "M98b"
+        ],
+        "label": "XiMinus_M98",
+        "rank": 1,
+        "source": "XiMinus"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "PQ_numerator_over_170": 0,
+        "X": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "XiPlus",
+          "P9a",
+          "P9b"
+        ],
+        "label": "XiPlus_P9",
+        "rank": 1,
+        "source": "XiPlus"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "PQ_numerator_over_170": 0,
+        "X": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "XiPlus",
+          "P1a",
+          "P1b"
+        ],
+        "label": "XiPlus_P1",
+        "rank": 1,
+        "source": "XiPlus"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "PQ_numerator_over_170": 0,
+        "X": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "XiPlus",
+          "P0x5a",
+          "P0x5b"
+        ],
+        "label": "XiPlus_P0x5",
+        "rank": 18,
+        "source": "XiPlus"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "PQ_numerator_over_170": 0,
+        "X": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "XiPlus",
+          "P0x6a",
+          "P0x6b"
+        ],
+        "label": "XiPlus_P0x6",
+        "rank": 1,
+        "source": "XiPlus"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "PQ_numerator_over_170": 0,
+        "X": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "XiPlus",
+          "P0x13a",
+          "P0x13b"
+        ],
+        "label": "XiPlus_P0x13",
+        "rank": 1,
+        "source": "XiPlus"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "PQ_numerator_over_170": 0,
+        "X": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "XiPlus",
+          "P0x14a",
+          "P0x14b"
+        ],
+        "label": "XiPlus_P0x14",
+        "rank": 2,
+        "source": "XiPlus"
+      }
+    ],
+    "stabilizer_terms": [
+      {
+        "F": 0,
+        "H": 0,
+        "X": 0,
+        "Z4R": 2,
+        "fields": [
+          "SXi"
+        ],
+        "label": "SXi_linear",
+        "spurion": "mu_X^2"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "X": 0,
+        "Z4R": 2,
+        "fields": [
+          "SXi",
+          "XiPlus",
+          "XiMinus"
+        ],
+        "label": "SXi_higgs",
+        "spurion": null
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "X": 0,
+        "Z4R": 2,
+        "fields": [
+          "SEta"
+        ],
+        "label": "SEta_linear",
+        "spurion": "mu_H^2"
+      },
+      {
+        "F": 0,
+        "H": 0,
+        "X": 0,
+        "Z4R": 2,
+        "fields": [
+          "SEta",
+          "EtaPlus",
+          "EtaMinus"
+        ],
+        "label": "SEta_higgs",
+        "spurion": null
+      }
+    ],
+    "superpotential": "W_new = W_V40 + lambda_A Pb ChiAPlus ChiAMinus + lambda_B P ChiBPlus ChiBMinus + Pb[D6a Lambda6 D6b + LxA LambdaL LxB + RxA LambdaR RxB] + XiMinus M98a M98b + XiPlus[P9a P9b + P1a P1b + P0x5a Lambda5 P0x5b + P0x6a P0x6b + P0x13a P0x13b + P0x14a Lambda14 P0x14b] + kappa_X SXi(XiPlus XiMinus-mu_X^2) + kappa_H SEta(EtaPlus EtaMinus-mu_H^2)"
+  },
+  "n_failed": 0,
+  "promotion_boundary": {
+    "established": [
+      "all local four-dimensional U(1)_F x U(1)_X x U(1)_H triangle rows, mixed PS rows, and mixed gravitational rows cancel for the displayed chiral packet",
+      "the displayed spectator blocks have a renormalizable full-rank mass witness on the stated nonzero-VEV branch",
+      "the V40 U(1)_F-to-Z9 selector remains exact on that branch",
+      "a fully massive Dirac-paired threshold that retains any even-X residual is impossible for this ledger"
+    ],
+    "not_established": [
+      "an exact low-energy Z66/Z5610 factor: the necessary Xi(+/-1) VEV breaks it",
+      "a discrete-Z4R anomaly, Spin/bordism, Pati--Salam global-form, gaugino, or gravitino completion",
+      "a complete F/D/K\u00e4hler/soft host vacuum, physical spectrum, kinetic mixing, perturbative running, or threshold matching",
+      "a microscopic UV completion, a G1 closure, a proton calculation, cosmology, or flavour likelihood"
+    ]
+  },
+  "purpose": "Give a reproducible answer to whether the V41 U(1)_F x U(1)_X x U(1)_H triangle ledger can be locally cancelled by ordinary massable four-dimensional matter, while distinguishing that narrow local result from an ultraviolet completion.",
+  "references": [
+    "https://arxiv.org/abs/hep-ph/9210211",
+    "https://arxiv.org/abs/1808.02881",
+    "https://arxiv.org/abs/1909.08775"
+  ],
+  "schema": "susy-v42-local-product-parent-audit-v1",
+  "source_manifest": [
+    {
+      "exists": true,
+      "path": "susy_v42_product_parent_local_completion.py",
+      "sha256": "222bc9e5ec0b5b21b33baab29debbf1029f1c779a4dcb06ccd81e560c2ff0076"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v42_product_parent_local_completion.py",
+      "sha256": "767773820e79fe7bf2083647e1b09f8865c90637b581ff73b87b67f784f6c49f"
+    },
+    {
+      "exists": true,
+      "path": "susy_v40_all_ring_selector.py",
+      "sha256": "5adebe960afa417f67339aa32c61db866d2a5d93faa53b50a9b8d472c01d3e1c"
+    },
+    {
+      "exists": true,
+      "path": "susy_v41_u1f_product_cross_completion.py",
+      "sha256": "b508744d18d139206cf078bf07ceda5be338ad5aca25c999e7b3abce92431aa9"
+    }
+  ],
+  "status": "V42_FULL_LOCAL_U1F_U1X_U1H_TRIANGLE_LEDGER_CANCELLED_BY_EXPLICIT_MASSABLE_PACKET__EVEN_X_DIRAC_THRESHOLD_NO_GO_PROVED__Z9_PRESERVED_BUT_Z5610_AND_FULL_UV_COMPLETION_FAIL_CLOSED"
+}

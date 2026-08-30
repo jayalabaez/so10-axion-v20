@@ -1,20 +1,27 @@
 {
-  "schema": "so10-exact-x-input-manifest-v1",
-  "sha256": "ea71fd43c02ccbf6095690270ee6178bf67c1cda7492b696634c9d4fb83b1ff7",
+  "schema": "so10-exact-x-input-manifest-v2",
+  "sha256": "0f9050ef8e9ac9cd0a398e7fb8d59b12675d51065610d8dbf4903b87fcd7c313",
   "files": [
     {
       "path": "models/SO10Z17AxionV20.m",
-      "sha256": "3c3536c166ba7fca06ffedd0f244f76cc9b6db4840822a727f7a2f8e8bf1d1cd",
-      "size_bytes": 3241,
+      "sha256": "66a2ce2c3491d0b3079ec93a16ab79d3e8a7e4e35cb54aadf21100b9fdd90cc1",
+      "size_bytes": 5182,
       "role": "primary_model",
       "format": "sarah-mathematica"
     },
     {
       "path": "tools/validate-exact-x-model.wls",
-      "sha256": "a2fc2771c8d80e3ea36d9e40fa2b3ae68f10a4ac0ea3dccbdcf39c99bb13b37b",
-      "size_bytes": 5259,
+      "sha256": "1d1dea122de1d3465cd0af14e10574b87bf72594de69e3a888fc7bcba5d1e281",
+      "size_bytes": 10529,
       "role": "validation_driver",
       "format": "wolfram-language"
+    },
+    {
+      "path": "models/SARAH_4_15_3_CANONICAL_SOURCE_TREE_V20.json",
+      "sha256": "c28f08d56a488050b96ce3491473f22fe1b673aad8ac3ac3d0e590dd60e70d91",
+      "size_bytes": 198868,
+      "role": "trusted_sarah_release_manifest",
+      "format": "sarah-source-tree-manifest"
     }
   ]
 }

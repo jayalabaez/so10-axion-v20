@@ -1,0 +1,457 @@
+{
+  "all_chiral_charge_lattice_lower_bound": {
+    "analytic_PQ_congruence": "Q170 = 85*q66 + 2442*h85 (mod 5610) for every chiral species",
+    "analytic_PQ_congruence_holds_for_all_fields": true,
+    "analytic_PQ_congruence_residues": {
+      "A15": 0,
+      "A16": 0,
+      "A17": 0,
+      "A2": 0,
+      "A32": 0,
+      "H": 0,
+      "Nv": 0,
+      "P": 0,
+      "Pbar": 0,
+      "Psi": 0,
+      "PsiBar": 0,
+      "PsiC": 0,
+      "PsiCBar": 0,
+      "Q": 0,
+      "Qc": 0,
+      "Sbc": 0,
+      "Sc": 0,
+      "Sig6": 0,
+      "X": 0,
+      "Zp": 0
+    },
+    "kahler_with_conjugates": {
+      "first_breaking_degree": 32,
+      "reachable_state_counts": [
+        18,
+        114,
+        410,
+        1048,
+        2164,
+        3776,
+        5718,
+        7926,
+        10336,
+        12428,
+        14230,
+        15940,
+        17590,
+        19206,
+        20802,
+        22392,
+        23968,
+        25524,
+        27068,
+        28612,
+        30156,
+        31700,
+        33244,
+        34788,
+        36332,
+        37876,
+        39420,
+        40964,
+        42508,
+        44052,
+        45596,
+        47140
+      ],
+      "search_max_degree": 33,
+      "witness_PQ_charge": "-5610/170",
+      "witness_multiplicities": {
+        "A15": 1,
+        "A16": 1,
+        "A32dag": 16,
+        "PsiBar": 14
+      }
+    },
+    "same_first_degrees_as_singlet_witnesses": true,
+    "scope": "all 20 chiral species before imposing PS index contractions; absence below a degree is therefore stronger than a gauge-invariant census",
+    "superpotential": {
+      "first_breaking_degree": 33,
+      "reachable_state_counts": [
+        11,
+        57,
+        191,
+        480,
+        992,
+        1783,
+        2874,
+        4237,
+        5835,
+        7625,
+        9484,
+        11298,
+        13033,
+        14704,
+        16326,
+        17906,
+        19459,
+        20976,
+        22463,
+        23934,
+        25397,
+        26859,
+        28321,
+        29782,
+        31241,
+        32699,
+        34157,
+        35615,
+        37073,
+        38531,
+        39989,
+        41447,
+        42905
+      ],
+      "search_max_degree": 33,
+      "witness_PQ_charge": "-5610/170",
+      "witness_multiplicities": {
+        "Pbar": 1,
+        "PsiBar": 32
+      }
+    }
+  },
+  "benchmark_unit_coefficient_W_degree33": {
+    "Asoft_GeV": 10000.0,
+    "Mreduced_GeV": 2.4e+18,
+    "chiQCD_GeV4": 3.26653399296e-05,
+    "fP_GeV": 500000000000.0,
+    "log10_abs_theta": -160.60392527450622,
+    "passes_abs_theta_below_1e-10": true
+  },
+  "complete_superpotential_ring": {
+    "first_breaking_degree": 33,
+    "reachable_state_counts": [
+      9,
+      41,
+      129,
+      320,
+      672,
+      1246,
+      2092,
+      3226,
+      4630,
+      6258,
+      8024,
+      9826,
+      11586,
+      13283,
+      14933,
+      16545,
+      18127,
+      19681,
+      21200,
+      22690,
+      24164,
+      25632,
+      27100,
+      28566,
+      30028,
+      31488,
+      32948,
+      34408,
+      35868,
+      37328,
+      38788,
+      40248,
+      41708
+    ],
+    "scope": "all monomials in the ten PS-singlet chiral species",
+    "search_max_degree": 33,
+    "witness_PQ_charge": "5610/170",
+    "witness_multiplicities": {
+      "P": 33
+    }
+  },
+  "conservative_kahler_ring": {
+    "first_breaking_degree": 32,
+    "reachable_state_counts": [
+      15,
+      88,
+      312,
+      808,
+      1704,
+      3084,
+      4858,
+      6926,
+      9210,
+      11320,
+      13122,
+      14836,
+      16492,
+      18114,
+      19716,
+      21310,
+      22900,
+      24470,
+      26022,
+      27570,
+      29118,
+      30666,
+      32214,
+      33762,
+      35308,
+      36852,
+      38396,
+      39940,
+      41484,
+      43028,
+      44572,
+      46116
+    ],
+    "scope": "all monomials in the ten PS-singlet chiral species and their independently enumerated conjugates",
+    "search_max_degree": 33,
+    "witness_PQ_charge": "5610/170",
+    "witness_multiplicities": {
+      "A16dag": 1,
+      "A17dag": 4,
+      "A32": 21,
+      "P": 6
+    }
+  },
+  "minimal_anomalon_mass": {
+    "determinant": "a^2*b^2*c",
+    "field_order": [
+      "A2",
+      "A32",
+      "A15",
+      "A17",
+      "A16"
+    ],
+    "full_rank_condition": "a*b*c != 0",
+    "matrix": [
+      [
+        "0",
+        "a",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "a",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "0",
+        "b",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "b",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "0",
+        "0",
+        "c"
+      ]
+    ],
+    "removed_redundant_v36_terms": [
+      [
+        "Pbar",
+        "A17",
+        "A17"
+      ],
+      [
+        "A16",
+        "A17"
+      ]
+    ],
+    "retained_terms": [
+      [
+        "Pbar",
+        "A2",
+        "A32"
+      ],
+      [
+        "P",
+        "A15",
+        "A17"
+      ],
+      [
+        "P",
+        "A16",
+        "A16"
+      ]
+    ]
+  },
+  "optimized_accidental_PQ_QP_equals_1": {
+    "A15": "-57/170",
+    "A16": "-85/170",
+    "A17": "-113/170",
+    "A2": "-23/170",
+    "A32": "193/170",
+    "P": "170/170",
+    "Pbar": "-170/170"
+  },
+  "promotion_boundary": {
+    "polynomial_quality_materially_improved": true,
+    "quality_gate_closed": false,
+    "remaining": [
+      "complete Spin^Z4R x Z5610 bordism and triple-mixed audit",
+      "origin and quantum-gravity consistency of the Z85 spectator",
+      "stable spectator-charged relic abundance or a symmetry-preserving decay path",
+      "Kahler and soft coefficient matching",
+      "global vacuum, inflation, reheating, and isocurvature history"
+    ]
+  },
+  "renormalizable_census": {
+    "all_preserve_optimized_PQ": true,
+    "allowed": [
+      [
+        "X"
+      ],
+      [
+        "Zp"
+      ],
+      [
+        "Nv",
+        "Nv"
+      ],
+      [
+        "X",
+        "X",
+        "X"
+      ],
+      [
+        "X",
+        "X",
+        "Zp"
+      ],
+      [
+        "X",
+        "Zp",
+        "Zp"
+      ],
+      [
+        "X",
+        "P",
+        "Pbar"
+      ],
+      [
+        "Zp",
+        "Zp",
+        "Zp"
+      ],
+      [
+        "Zp",
+        "P",
+        "Pbar"
+      ],
+      [
+        "P",
+        "A15",
+        "A17"
+      ],
+      [
+        "P",
+        "A16",
+        "A16"
+      ],
+      [
+        "Pbar",
+        "A2",
+        "A32"
+      ]
+    ],
+    "allowed_count": 12,
+    "dangerous_P_A32_forbidden": true,
+    "removed_v36_terms_forbidden": true,
+    "retained_anomalon_terms_present": true,
+    "scope": "all gauge-singlet monomials of superfield degree <=3"
+  },
+  "schema": "susy-v37-g5-quality-certificate-v1",
+  "selector": {
+    "69_squared_mod85": 1,
+    "Z85_cubic_sum": 0,
+    "Z85_linear_sum": 0,
+    "charge_map": "q5610=85*q66+66*h85 mod5610",
+    "combined_Hsieh_Dai_Freed": {
+      "Delta_s1_canonical": 109395,
+      "Delta_s3_canonical": 3036473977185,
+      "both_vanish": true,
+      "cubic_condition_mod_6n": 0,
+      "linear_condition_2Delta_s1_mod_n": 0,
+      "order": 5610
+    },
+    "combined_charged_Weyl_rows": [
+      {
+        "charge": 5440,
+        "field": "PsiBar",
+        "multiplicity": 8
+      },
+      {
+        "charge": 5440,
+        "field": "PsiCBar",
+        "multiplicity": 8
+      },
+      {
+        "charge": 170,
+        "field": "P",
+        "multiplicity": 1
+      },
+      {
+        "charge": 5440,
+        "field": "Pbar",
+        "multiplicity": 1
+      },
+      {
+        "charge": 3211,
+        "field": "A2",
+        "multiplicity": 1
+      },
+      {
+        "charge": 2569,
+        "field": "A32",
+        "multiplicity": 1
+      },
+      {
+        "charge": 4299,
+        "field": "A15",
+        "multiplicity": 1
+      },
+      {
+        "charge": 1141,
+        "field": "A17",
+        "multiplicity": 1
+      },
+      {
+        "charge": 5525,
+        "field": "A16",
+        "multiplicity": 1
+      }
+    ],
+    "factorization": "Z5610 ~= Z66 x Z85",
+    "mixed_Z4R_Z85_squared_integer": 9520,
+    "mixed_Z4R_Z85_squared_mod85": 0,
+    "spectator_charges": {
+      "A15": 69,
+      "A16": 0,
+      "A17": -69,
+      "A2": 1,
+      "A32": -1
+    },
+    "spontaneous_breaking_by_P_and_Pbar": {
+      "P_q5610": 170,
+      "Pbar_q5610": 5440,
+      "relic_implication": "the lightest nontrivially Z85-charged anomalon is stable unless a symmetry-preserving decay/dark sector or nonthermal history is supplied",
+      "unbroken_subgroup": "Z170 ~= Z2 x Z85",
+      "unbroken_subgroup_order": 170
+    }
+  }
+}

@@ -13,7 +13,7 @@ Next step after ``tau_p_uv_vacuum_selection_v20``:
 Honesty
 -------
 * Token presence is not evidence of tool-native SARAH/PyR@TE syntax.
-* ``live_sarah_or_pyrate_executable_run`` stays False unless the exact-X v2
+* ``live_sarah_or_pyrate_executable_run`` stays False unless the exact-X v3
   attestation binds the native model type, exact input manifest, validation
   driver, and captured process log.
 * Exact X/Y masses from the full component vacuum remain OPEN.
@@ -228,7 +228,7 @@ def build_report() -> dict[str, Any]:
 
     # Live run: only True if we actually executed — we never do without tools.
     # A generic reduced-sector beta dump is not evidence that this exact model
-    # parsed or initialized.  Only the v2 exact-X attestation can set this flag.
+    # parsed or initialized.  Only the v3 exact-X attestation can set this flag.
     live_executed = bool(external_validation["valid"])
     live_dump = (
         str(exact_x.EXTERNAL_VALIDATION.relative_to(ROOT)).replace("\\", "/")
@@ -237,8 +237,9 @@ def build_report() -> dict[str, Any]:
     )
     if not live_executed:
         probe["block_reason"] = (
-            "No valid v2 attestation binds tool-native input, exact model bytes, "
-            "the canonical input manifest, validation driver, and process log."
+            "No valid v3 attestation binds tool-native input, exact model bytes, "
+            "the trusted SARAH source tree, Wolfram binaries, canonical input "
+            "manifest, validation driver, runtime probe, and process log."
         )
 
     checks = {
@@ -270,7 +271,7 @@ def build_report() -> dict[str, Any]:
         "authoritative_charge_match_was_classified": isinstance(
             pyrate_v["charges_match_locks"], bool
         ),
-        "external_v2_attestation_was_classified": isinstance(
+        "external_v3_attestation_was_classified": isinstance(
             external_validation["valid"], bool
         ),
         "generic_beta_dump_does_not_claim_full_model_execution": (
@@ -352,7 +353,10 @@ def build_report() -> dict[str, Any]:
             "charge_locks_encoded": sarah_v[
                 "scalar_charges_match_manuscript"
             ],
-            "external_validation_v2_valid": external_validation["valid"],
+            "external_validation_v3_valid": external_validation["valid"],
+            # Retained only for old readers.  A legacy v2 artifact is never
+            # accepted by the hardened exact-X contract.
+            "external_validation_v2_valid": False,
             "live_sarah_or_pyrate_executable_run": bool(live_executed),
             "live_run_blocked_without_bound_attestation": not live_executed,
             "live_run_blocked_without_tools_or_dump": not live_executed,
@@ -384,7 +388,7 @@ def write_markdown(report: dict[str, Any]) -> str:
         f"- PyR@TE: `{report['files']['pyrate']}` ({report['files']['pyrate_bytes']} bytes)",
         f"- SARAH tool-native syntax: {report['flag']['sarah_model_tool_native']}",
         f"- PyR@TE tool-native schema: {report['flag']['pyrate_model_tool_native']}",
-        f"- Bound v2 external validation: {report['flag']['external_validation_v2_valid']}",
+        f"- Bound v3 external validation: {report['flag']['external_validation_v3_valid']}",
         f"- Live tools on PATH: {list(probe['executables_on_PATH'].keys()) or 'none'}",
         f"- Live run executed: {probe['live_run_executed']}",
         "",

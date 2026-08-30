@@ -1,0 +1,38 @@
+name: SUSY V23 resolution frontier
+
+on:
+  push:
+    paths:
+      - "susy_v23_*.py"
+      - "test_susy_v23_*.py"
+      - "SUSY_V23_*.json"
+      - "SUSY_V23_*.md"
+      - "models/SO10U1V23*/**"
+      - ".github/workflows/susy-v23-resolution-frontier.yml"
+  pull_request:
+    paths:
+      - "susy_v23_*.py"
+      - "test_susy_v23_*.py"
+      - "SUSY_V23_*.json"
+      - "SUSY_V23_*.md"
+      - "models/SO10U1V23*/**"
+      - ".github/workflows/susy-v23-resolution-frontier.yml"
+  workflow_dispatch:
+
+jobs:
+  exact-frontier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install focused test dependency
+        run: python -m pip install pytest
+      - name: Replay every frozen V23 producer
+        run: |
+          for producer in susy_v23_*.py; do
+            python -B "$producer" --check
+          done
+      - name: Run the V23 tests
+        run: python -m pytest -q test_susy_v23_*.py

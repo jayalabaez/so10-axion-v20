@@ -26,7 +26,11 @@ class LivePyrateSO10BetaDumpTests(unittest.TestCase):
 
     def test_expected_b_matches_ingest(self):
         exp = mod.expected_above_vphi_b()
-        content = betas.v20_content_blocks()["above_vPhi"]
+        content = {
+            "weyl_16": 3,
+            "complex_scalars": ["126", "10"],
+            "real_scalars": ["210"],
+        }
         b = betas.one_loop_b(
             weyl_16=content["weyl_16"],
             complex_scalars=content["complex_scalars"],

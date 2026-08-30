@@ -1,0 +1,163 @@
+{
+  "schema": "physical_sm_source_algebra_equality_frontier_v20",
+  "status": "RADIAL_EQUALITY_CLOSED__FULL_SOURCE_ALGEBRA_AND_EQUALITY_ORBIT_OPEN",
+  "model_contract_id": "gauged_u1x_phi17_v20",
+  "n_checks": 8,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "foundation_core_pin_matches": true,
+    "all_37_nonzero_witness_parameters_are_Hermitian": true,
+    "observed_source_Hessian_row_lcm_is_126000": true,
+    "aggregate_reconstructed_Hessian_lcm_is_frozen": true,
+    "aggregate_cancellation_remains_fail_closed": true,
+    "exact_radial_gcd_is_t_minus_1": true,
+    "full_equality_orbit_remains_fail_closed": true,
+    "physical_G3_G4_G5_remain_false": true
+  },
+  "source_bindings": {
+    "foundation": {
+      "source": "physical_sm_vacuum_local_feasibility_v20.py",
+      "source_raw_sha256": "629ea8c45f101f82b6b4e963fd1fb19dcc5735fe52a1d8efb1fb0812dbaa565c",
+      "source_portable_lf_sha256": "629ea8c45f101f82b6b4e963fd1fb19dcc5735fe52a1d8efb1fb0812dbaa565c",
+      "json": "PHYSICAL_SM_VACUUM_LOCAL_FEASIBILITY_V20.json",
+      "core_sha256": "01f565d3382756bc467bfaa99d187188bc1bfc4060f2c3a472650f5e57537e80",
+      "expected_core_sha256": "01f565d3382756bc467bfaa99d187188bc1bfc4060f2c3a472650f5e57537e80",
+      "core_pin_matches": true
+    }
+  },
+  "source_row_lattice_frontier": {
+    "evidence_kind": "float_compiler_rational_lattice_census_only",
+    "supported_parameter_count": 37,
+    "supported_parameter_ids": [
+      "lambda::O03_B01_singlet_polynomial",
+      "lambda::O04_B01_singlet_polynomial",
+      "lambda::O05_B01_126bar_norm",
+      "lambda::O06_B01_Hdag_H_norm",
+      "lambda::O07_B01_Phi_norm",
+      "lambda::O14_B01_Phi_Sigma_Sigmadag_cubic",
+      "lambda::O17_B01_Phi_cubic",
+      "lambda::O20_B01_singlet_polynomial",
+      "lambda::O22_B01_singlet_polynomial",
+      "lambda::O23_B01_singlet_polynomial",
+      "lambda::O25_B01_126bar_norm",
+      "lambda::O26_B01_126bar_norm",
+      "lambda::O27_B01_126bar_self_projectors",
+      "lambda::O27_B02_126bar_self_projectors",
+      "lambda::O27_B03_126bar_self_projectors",
+      "lambda::O27_B04_126bar_self_projectors",
+      "lambda::O33_B01_Hdag_H_norm",
+      "lambda::O34_B01_Hdag_H_norm",
+      "lambda::O35_B01_H_Sigma_hermitian",
+      "lambda::O35_B02_H_Sigma_hermitian",
+      "lambda::O36_B01_H_self_quartics",
+      "lambda::O36_B02_H_self_quartics",
+      "lambda::O42_B01_Phi_norm",
+      "lambda::O43_B01_Phi_norm",
+      "lambda::O44_B01_Phi2_Sigma_projectors",
+      "lambda::O44_B02_Phi2_Sigma_projectors",
+      "lambda::O44_B03_Phi2_Sigma_projectors",
+      "lambda::O44_B04_Phi2_Sigma_projectors",
+      "lambda::O44_B05_Phi2_Sigma_projectors",
+      "lambda::O44_B06_Phi2_Sigma_projectors",
+      "lambda::O46_B01_Phi2_HdagH_channels",
+      "lambda::O46_B02_Phi2_HdagH_channels",
+      "lambda::O46_B03_Phi2_HdagH_channels",
+      "lambda::O48_B01_Phi_self_quartics",
+      "lambda::O48_B02_Phi_self_quartics",
+      "lambda::O48_B03_Phi_self_quartics",
+      "lambda::O48_B04_Phi_self_quartics"
+    ],
+    "all_supported_parameters_are_Hermitian_lambda_components": true,
+    "value_rows": {
+      "nonzero_entry_count": 28,
+      "distinct_denominator_count": 11,
+      "maximum_entry_denominator": 2500,
+      "observed_denominator_lcm": 52500,
+      "maximum_reconstruction_residual": 5.585809592645319e-16,
+      "continued_fraction_denominator_bound": 100000,
+      "source_derived_denominator_bound": false,
+      "proof_grade": false
+    },
+    "gradient_rows": {
+      "nonzero_entry_count": 243,
+      "distinct_denominator_count": 18,
+      "maximum_entry_denominator": 1000,
+      "observed_denominator_lcm": 21000,
+      "maximum_reconstruction_residual": 2.3635607360183997e-15,
+      "continued_fraction_denominator_bound": 12600,
+      "source_derived_denominator_bound": false,
+      "proof_grade": false
+    },
+    "Hessian_rows": {
+      "nonzero_entry_count": 30900,
+      "distinct_denominator_count": 48,
+      "maximum_entry_denominator": 12600,
+      "observed_denominator_lcm": 126000,
+      "maximum_reconstruction_residual": 2.7922109069322687e-14,
+      "continued_fraction_denominator_bound": 12600,
+      "source_derived_denominator_bound": false,
+      "proof_grade": false
+    },
+    "coefficient_denominator_lcm": 1050017221265,
+    "naive_source_Hessian_product_lattice_denominator": 132302169879390000,
+    "reconstructed_aggregate_Hessian_nonzero_entries": 5840,
+    "reconstructed_aggregate_Hessian_denominator_lcm": 6300103327590,
+    "aggregate_to_coefficient_lcm_ratio": "6",
+    "aggregate_denominator_is_strictly_smaller_than_naive_product": true,
+    "aggregate_cancellation_source_proved": false,
+    "direct_exact_projector_arithmetic_used_for_rows": false,
+    "source_algebra_derivation_complete": false,
+    "proof_grade": false,
+    "limitation": "The live rows are recognized on rational lattices, but their denominator bounds and the aggregate cancellation have not been derived from exact projector formulas."
+  },
+  "exact_radial_equality": {
+    "evidence_kind": "exact_Q_homogeneity_and_univariate_polynomial_gcd",
+    "radial_line": "q=t*q_star with real t",
+    "homogeneous_coefficients": {
+      "A2": "-2099586137988/1050017221265",
+      "A3": "-896609084/1050017221265",
+      "A4": "1050465525807/1050017221265"
+    },
+    "coefficient_sum_V_at_t1": "-1",
+    "V_of_t_factorized": "t**2*(1050465525807*t**2 - 896609084*t - 2099586137988)/1050017221265",
+    "dV_dt_factorized": "12*t*(t - 1)*(350155175269*t + 349931022998)/1050017221265",
+    "V_plus_1_factorized": "(t - 1)**2*(1050465525807*t**2 + 2100034442530*t + 1050017221265)/1050017221265",
+    "gcd_V_plus_1_and_dV_dt_monic": "t - 1",
+    "stationary_roots": [
+      "-349931022998/350155175269",
+      "0",
+      "1"
+    ],
+    "stationary_values": {
+      "-349931022998/350155175269": "-45002481517485060973511928226006580622092947712/45079394152595556243324016793458269749649467885",
+      "0": "0",
+      "1": "-1"
+    },
+    "maximum_live_value_reconstruction_residual": 5.585809592645319e-16,
+    "V_at_t1_is_minus_one": true,
+    "target_is_stationary_on_radial_line": true,
+    "target_is_only_radial_stationary_equality_point": true,
+    "full_486_field_equality_orbit_classified": false,
+    "physical_SM_G3_closed": false,
+    "physical_SM_G4_closed": false,
+    "physical_SM_G5_closed": false
+  },
+  "closure_claims": {
+    "radial_stationary_equality_classified_exactly": true,
+    "direct_source_algebra_stationary_Hessian_available": false,
+    "complete_global_equality_orbit_proved": false,
+    "physical_SM_G3_closed": false,
+    "physical_SM_G4_closed": false,
+    "physical_SM_G5_closed": false,
+    "old_formal_U1_89_EFT_scope_promoted": false
+  },
+  "next_required_calculation": [
+    "replace every active float projector row by exact integer/Fraction arithmetic and prove the fixed row lattices before evaluation",
+    "prove the summed stationary Hessian numerator and its rank/PSD without continued-fraction reconstruction",
+    "solve or exclude all non-radial common zeros of Vren+1 and grad(Vren), modulo SO(10)xU(1)_XxPQ"
+  ],
+  "integrity": {
+    "core_sha256": "5d6f01c0ed131dcbc2813fa93f0bd81987178f2dac051e67b6db538b5a55f13d"
+  }
+}

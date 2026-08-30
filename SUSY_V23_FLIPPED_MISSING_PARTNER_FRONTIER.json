@@ -1,0 +1,779 @@
+{
+  "G1_G8": [
+    {
+      "closed": false,
+      "full_gate_claim": false,
+      "gate": "G1",
+      "reason": "normalized SO10 tensors, complete operator census, and Green-Schwarz shaping completion are not landed",
+      "state": "OPEN"
+    },
+    {
+      "closed": false,
+      "full_gate_claim": false,
+      "gate": "G2",
+      "reason": "published generic ranks pass, but the normalized full component spectrum and threshold Hessian are open",
+      "state": "OPEN"
+    },
+    {
+      "closed": false,
+      "full_gate_claim": false,
+      "gate": "G3",
+      "reason": "no source-exact global F+D+soft vacuum and competing-branch Hessian is landed",
+      "state": "OPEN"
+    },
+    {
+      "closed": false,
+      "full_gate_claim": false,
+      "gate": "G4",
+      "reason": "mu/soft hierarchy protection and the anomalous-U1A Planck normalization are open",
+      "state": "OPEN"
+    },
+    {
+      "closed": false,
+      "full_gate_claim": false,
+      "gate": "G5",
+      "reason": "the single-10 KSVZ add-on is rejected by flipped hypercharge; a viable PQ-quality sector and physical neutrino fit are open",
+      "state": "OPEN"
+    },
+    {
+      "closed": false,
+      "full_gate_claim": false,
+      "gate": "G6",
+      "reason": "only gauge-only two-loop benchmarks are landed; Yukawa, soft, and physical thresholds are omitted",
+      "state": "OPEN"
+    },
+    {
+      "closed": false,
+      "full_gate_claim": false,
+      "gate": "G7",
+      "reason": "pole spectrum and proton-decay matching are not computed",
+      "state": "OPEN"
+    },
+    {
+      "closed": false,
+      "full_gate_claim": false,
+      "gate": "G8",
+      "reason": "flavour, cosmology, and observable likelihoods are not fitted",
+      "state": "OPEN"
+    }
+  ],
+  "RG_coefficients": {
+    "base": {
+      "B10_10": 565,
+      "B10_Vprime": "17/3",
+      "BVprime_10": 255,
+      "BVprime_Vprime": "89/9",
+      "U1Vprime_normalization": "Q=q/(2 sqrt(6))",
+      "b10": 1,
+      "bVprime": "43/3",
+      "optional_KSVZ_10_included": false,
+      "raw_sum_T_qV2": 34,
+      "raw_sum_dimension_qV2": 344,
+      "raw_sum_dimension_qV4": 1424,
+      "sum_C2_times_T": "549/4",
+      "sum_T": 25
+    },
+    "with_optional_KSVZ_10": {
+      "B10_10": 599,
+      "B10_Vprime": "17/3",
+      "BVprime_10": 255,
+      "BVprime_Vprime": "89/9",
+      "U1Vprime_normalization": "Q=q/(2 sqrt(6))",
+      "b10": 2,
+      "bVprime": "43/3",
+      "optional_KSVZ_10_included": true,
+      "raw_sum_T_qV2": 34,
+      "raw_sum_dimension_qV2": 344,
+      "raw_sum_dimension_qV4": 1424,
+      "sum_C2_times_T": "567/4",
+      "sum_T": 26
+    }
+  },
+  "Table_I_threshold_frontier": {
+    "Table_I_Delta": "-1/2",
+    "geometric_mean_upper_scales_under_unit_O1_product": {
+      "one_heavy_doublet_mass_over_Lambda_at_most": 0.000187814243,
+      "one_heavy_doublet_mass_over_vC_at_most": 0.003880459571,
+      "one_triplet_mass_over_Lambda_at_most": 0.002908240649,
+      "one_triplet_mass_over_vC_at_most": 0.060087616708,
+      "vC_over_Lambda": 0.0484,
+      "vPhi_over_Lambda": 0.469041575982
+    },
+    "heavy_doublet_minimum_matching_1_based": [
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        3,
+        3
+      ]
+    ],
+    "lambda_FN": 0.22,
+    "minimum_heavy_doublet_determinant_exponent": 17,
+    "minimum_triplet_determinant_exponent": 27,
+    "parametric_products": {
+      "det_MD_heavy": "O(1)*lambda^17*Lambda^3",
+      "det_MT": "O(1)*lambda^27*Lambda^7"
+    },
+    "physical_threshold_spectrum_closed": false,
+    "staged_breaking": {
+      "between_vPhi_and_vC": "SU5xU1X",
+      "single_stage_SO10xU1Vprime_running_is_physical": false,
+      "vC_over_Lambda": 0.0484,
+      "vPhi_over_Lambda": 0.469041575982,
+      "vPhi_over_vC": 9.690941652528
+    },
+    "triplet_minimum_matching_1_based": [
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        4,
+        2
+      ],
+      [
+        5,
+        5
+      ],
+      [
+        6,
+        1
+      ],
+      [
+        7,
+        3
+      ]
+    ]
+  },
+  "anomalous_U1A_frontier": {
+    "Green_Schwarz_normalization_and_hidden_spectrum_landed": false,
+    "Planck120_perturbativity_demonstrated": false,
+    "Vprime_U1A_kinetic_mixing_generated": true,
+    "benchmark_alphaA_inverse_at_MGUT": 24.0,
+    "benchmark_kac_moody_level": 1,
+    "normalization": "integer Table-I charges with q_Theta=-1",
+    "omitted_two_loop_B10_A_at_kA1": 1040,
+    "one_loop_pole_mu_over_MGUT_at_k1": 1.06960540757,
+    "raw_Vprime_U1A_kinetic_mixing_trace": 48,
+    "raw_anomalies_requiring_Green_Schwarz_completion": {
+      "SO10_squared_U1A": 50,
+      "U1A_cubed": 8705,
+      "U1Vprime_U1A_squared": 272,
+      "U1Vprime_squared_U1A": 784,
+      "gravity_squared_U1A": 425
+    },
+    "raw_b_U1A": 2241,
+    "raw_b_breakdown": {
+      "Table_I_nonsinglet_Higgs": 1456,
+      "Table_I_singlets": 83,
+      "three_complete_27_matter": 702
+    },
+    "raw_sum_T_SO10_times_qA_squared": 260,
+    "required_kA_strictly_greater_for_pole_above_120MGUT": 71.147359122365
+  },
+  "checks": {
+    "Table_I_has_eight_spinor_Higgs_and_published_singlets": true,
+    "Table_I_threshold_exponents_are_27_and_17": true,
+    "all_full_G1_G8_claims_are_false": true,
+    "anomalous_U1A_raw_b_mixing_and_Planck_blocker_are_explicit": true,
+    "base_RG_coefficients_are_exact": true,
+    "continuous_SO10xU1Vprime_anomalies_cancel": true,
+    "formal_base_coupled_two_loop_endpoint_matches": true,
+    "model_is_frozen_and_zero_W": true,
+    "optional_KSVZ_stays_fail_closed": true,
+    "optional_single_10_KSVZ_is_exactly_rejected": true,
+    "published_structural_ranks_are_7_and_3": true,
+    "three_complete_27_matter_blocks_present": true
+  },
+  "closure_counts": {
+    "closed": 0,
+    "open": 8
+  },
+  "continuous_SO10xU1Vprime_anomalies": {
+    "SO10_squared_U1Vprime": 0,
+    "U1Vprime_cubed": 0,
+    "gravity_squared_U1Vprime": 0
+  },
+  "core_sha256": "01f8d13d950045f3eaa6de2d950f973dbbb48ebe5711a880b09b602e42c6fd43",
+  "coupled_two_loop_gauge_only_base": {
+    "MPlanck_reduced_over_MGUT": 120,
+    "alpha10_at_120MGUT": 0.046041609639,
+    "alpha10_inverse_at_120MGUT": 21.719483915695,
+    "alpha10_inverse_at_MGUT": 24.0,
+    "alphaVprime_at_120MGUT": 0.080853943797,
+    "alphaVprime_inverse_at_120MGUT": 12.367980497098,
+    "alphaVprime_inverse_at_MGUT": 24.0,
+    "finite_and_below_point1": true,
+    "formal_common_threshold_and_gA_zero_truncation": true,
+    "omits_Yukawa_soft_and_physical_thresholds": true,
+    "omits_anomalous_U1A_gauge_coupling_and_kinetic_mixing": true,
+    "omits_intermediate_SU5xU1X_breaking_and_matching": true,
+    "physical_stage_resolved_RGE_closed": false,
+    "scheme": "formal N=1 SUSY SO10xU1Vprime gauge-only two-loop RK4 truncation",
+    "steps": 40000
+  },
+  "failures": [],
+  "field_content": [
+    {
+      "SO10_Dynkin_index": 2,
+      "SO10_dimension": 16,
+      "U1A_charge": 4,
+      "U1Vprime_charge": 1,
+      "VEV_status": "zero",
+      "Z2_parity": 1,
+      "multiplicity": 1,
+      "name": "Psi16a",
+      "parity_source": "source_unspecified_scaffold_even",
+      "sector": "matter_27_family_1"
+    },
+    {
+      "SO10_Dynkin_index": 1,
+      "SO10_dimension": 10,
+      "U1A_charge": 4,
+      "U1Vprime_charge": -2,
+      "VEV_status": "zero",
+      "Z2_parity": 1,
+      "multiplicity": 1,
+      "name": "Psi10a",
+      "parity_source": "source_unspecified_scaffold_even",
+      "sector": "matter_27_family_1"
+    },
+    {
+      "SO10_Dynkin_index": 0,
+      "SO10_dimension": 1,
+      "U1A_charge": 4,
+      "U1Vprime_charge": 4,
+      "VEV_status": "zero",
+      "Z2_parity": 1,
+      "multiplicity": 1,
+      "name": "Psi1a",
+      "parity_source": "source_unspecified_scaffold_even",
+      "sector": "matter_27_family_1"
+    },
+    {
+      "SO10_Dynkin_index": 2,
+      "SO10_dimension": 16,
+      "U1A_charge": 3,
+      "U1Vprime_charge": 1,
+      "VEV_status": "zero",
+      "Z2_parity": 1,
+      "multiplicity": 1,
+      "name": "Psi16b",
+      "parity_source": "source_unspecified_scaffold_even",
+      "sector": "matter_27_family_2"
+    },
+    {
+      "SO10_Dynkin_index": 1,
+      "SO10_dimension": 10,
+      "U1A_charge": 3,
+      "U1Vprime_charge": -2,
+      "VEV_status": "zero",
+      "Z2_parity": 1,
+      "multiplicity": 1,
+      "name": "Psi10b",
+      "parity_source": "source_unspecified_scaffold_even",
+      "sector": "matter_27_family_2"
+    },
+    {
+      "SO10_Dynkin_index": 0,
+      "SO10_dimension": 1,
+      "U1A_charge": 3,
+      "U1Vprime_charge": 4,
+      "VEV_status": "zero",
+      "Z2_parity": 1,
+      "multiplicity": 1,
+      "name": "Psi1b",
+      "parity_source": "source_unspecified_scaffold_even",
+      "sector": "matter_27_family_2"
+    },
+    {
+      "SO10_Dynkin_index": 2,
+      "SO10_dimension": 16,
+      "U1A_charge": 1,
+      "U1Vprime_charge": 1,
+      "VEV_status": "zero",
+      "Z2_parity": 1,
+      "multiplicity": 1,
+      "name": "Psi16c",
+      "parity_source": "source_unspecified_scaffold_even",
+      "sector": "matter_27_family_3"
+    },
+    {
+      "SO10_Dynkin_index": 1,
+      "SO10_dimension": 10,
+      "U1A_charge": 1,
+      "U1Vprime_charge": -2,
+      "VEV_status": "zero",
+      "Z2_parity": 1,
+      "multiplicity": 1,
+      "name": "Psi10c",
+      "parity_source": "source_unspecified_scaffold_even",
+      "sector": "matter_27_family_3"
+    },
+    {
+      "SO10_Dynkin_index": 0,
+      "SO10_dimension": 1,
+      "U1A_charge": 1,
+      "U1Vprime_charge": 4,
+      "VEV_status": "zero",
+      "Z2_parity": 1,
+      "multiplicity": 1,
+      "name": "Psi1c",
+      "parity_source": "source_unspecified_scaffold_even",
+      "sector": "matter_27_family_3"
+    },
+    {
+      "SO10_Dynkin_index": 2,
+      "SO10_dimension": 16,
+      "U1A_charge": 0,
+      "U1Vprime_charge": 1,
+      "VEV_status": "nonzero_SU5_singlet",
+      "Z2_parity": -1,
+      "multiplicity": 1,
+      "name": "Phi",
+      "parity_source": "published_Table_I",
+      "sector": "Table_I_Higgs"
+    },
+    {
+      "SO10_Dynkin_index": 2,
+      "SO10_dimension": 16,
+      "U1A_charge": -2,
+      "U1Vprime_charge": 1,
+      "VEV_status": "nonzero_flipped_10_Nc",
+      "Z2_parity": 1,
+      "multiplicity": 1,
+      "name": "C",
+      "parity_source": "published_Table_I",
+      "sector": "Table_I_Higgs"
+    },
+    {
+      "SO10_Dynkin_index": 2,
+      "SO10_dimension": 16,
+      "U1A_charge": 5,
+      "U1Vprime_charge": 1,
+      "VEV_status": "zero",
+      "Z2_parity": -1,
+      "multiplicity": 2,
+      "name": "PhiPrime",
+      "parity_source": "published_Table_I",
+      "sector": "Table_I_Higgs"
+    },
+    {
+      "SO10_Dynkin_index": 2,
+      "SO10_dimension": -16,
+      "U1A_charge": -1,
+      "U1Vprime_charge": -1,
+      "VEV_status": "nonzero_conjugate_SU5_singlet",
+      "Z2_parity": -1,
+      "multiplicity": 1,
+      "name": "PhiBar",
+      "parity_source": "published_Table_I",
+      "sector": "Table_I_Higgs"
+    },
+    {
+      "SO10_Dynkin_index": 2,
+      "SO10_dimension": -16,
+      "U1A_charge": -2,
+      "U1Vprime_charge": -1,
+      "VEV_status": "nonzero_conjugate_flipped_10_Nc",
+      "Z2_parity": 1,
+      "multiplicity": 1,
+      "name": "CBar",
+      "parity_source": "published_Table_I",
+      "sector": "Table_I_Higgs"
+    },
+    {
+      "SO10_Dynkin_index": 2,
+      "SO10_dimension": -16,
+      "U1A_charge": 4,
+      "U1Vprime_charge": -1,
+      "VEV_status": "zero",
+      "Z2_parity": -1,
+      "multiplicity": 2,
+      "name": "PhiBarPrime",
+      "parity_source": "published_Table_I",
+      "sector": "Table_I_Higgs"
+    },
+    {
+      "SO10_Dynkin_index": 0,
+      "SO10_dimension": 1,
+      "U1A_charge": -1,
+      "U1Vprime_charge": 0,
+      "VEV_status": "nonzero",
+      "Z2_parity": 1,
+      "multiplicity": 1,
+      "name": "Theta",
+      "parity_source": "published_Table_I",
+      "sector": "Table_I_singlet"
+    },
+    {
+      "SO10_Dynkin_index": 0,
+      "SO10_dimension": 1,
+      "U1A_charge": -1,
+      "U1Vprime_charge": 0,
+      "VEV_status": "nonzero",
+      "Z2_parity": 1,
+      "multiplicity": 2,
+      "name": "ZBar",
+      "parity_source": "published_Table_I",
+      "sector": "Table_I_singlet"
+    },
+    {
+      "SO10_Dynkin_index": 0,
+      "SO10_dimension": 1,
+      "U1A_charge": -4,
+      "U1Vprime_charge": 0,
+      "VEV_status": "nonzero",
+      "Z2_parity": -1,
+      "multiplicity": 1,
+      "name": "Z",
+      "parity_source": "published_Table_I",
+      "sector": "Table_I_singlet"
+    },
+    {
+      "SO10_Dynkin_index": 0,
+      "SO10_dimension": 1,
+      "U1A_charge": 8,
+      "U1Vprime_charge": 0,
+      "VEV_status": "zero",
+      "Z2_parity": 1,
+      "multiplicity": 1,
+      "name": "SPrime",
+      "parity_source": "published_Table_I",
+      "sector": "Table_I_singlet"
+    }
+  ],
+  "model_source": {
+    "SARAH_initialization_attested": false,
+    "SuperPotential": 0,
+    "Wolfram_syntax_parse_observed": true,
+    "artifact_kind": "Wolfram-syntax SARAH-input scaffold",
+    "executable_SARAH_model_landed": false,
+    "missing_auxiliary_model_files": [
+      "parameters.m",
+      "particles.m"
+    ],
+    "normalized_tensors_landed": false,
+    "path": "models/SO10U1V23FlippedMissingPartner/SO10U1V23FlippedMissingPartner.m",
+    "portable_sha256": "17898fd619c4f60edb1bcc6b37eae26ccd95cbdcc06f57cbb63482ef456c16ef"
+  },
+  "n_checks": 12,
+  "n_failed": 0,
+  "namespace": "candidate.susy_so10_u1.v23.flipped_missing_partner_frontier",
+  "optional_KSVZ_extension": {
+    "PQ_quality_closed": false,
+    "U1A_PQ_quality_compatibility_landed": false,
+    "U1A_charge_assignment_landed": false,
+    "VEV_field_PQ_charge": 2,
+    "axion_mass_micro_eV_using_5p7_relation": 153.472007198572,
+    "coupled_two_loop_threshold_benchmark_valid": false,
+    "existing_target_micro_eV": 153.5,
+    "fa_GeV": 37140323529,
+    "fields": [
+      {
+        "PQ_charge": -1,
+        "SO10_dimension": 10,
+        "U1Vprime_charge": 0,
+        "multiplicity": 1,
+        "name": "K10"
+      },
+      {
+        "PQ_charge": 2,
+        "SO10_dimension": 1,
+        "U1Vprime_charge": 0,
+        "multiplicity": 1,
+        "name": "PQ"
+      },
+      {
+        "PQ_charge": -2,
+        "SO10_dimension": 1,
+        "U1Vprime_charge": 0,
+        "multiplicity": 1,
+        "name": "PQBar"
+      },
+      {
+        "PQ_charge": 0,
+        "SO10_dimension": 1,
+        "U1Vprime_charge": 0,
+        "multiplicity": 1,
+        "name": "YPQ"
+      }
+    ],
+    "flipped_hypercharge_decomposition": {
+      "SO10_10_with_Vprime_zero": [
+        "(3,1,+1/6)",
+        "(3bar,1,-1/6)",
+        "(1,2,0)",
+        "(1,2,0)"
+      ],
+      "contains_fractionally_charged_states": true,
+      "delta_b_SM_canonical": {
+        "b1": "1/10",
+        "b2": 1,
+        "b3": 1
+      },
+      "is_complete_SM_5_plus_5bar": false,
+      "source_equation": "hep-ph/0304293 Eq. (3.5), Y=(5Vprime-V-4Yprime)/20"
+    },
+    "formal_N_DW_after_charge_two_VEV_quotient": 1,
+    "formal_QCD_anomaly_2T_convention": -2,
+    "formal_unbroken_SO10_RG_delta_above_GUT": {
+      "B10_10": 34,
+      "b10": 1
+    },
+    "optional_not_part_of_base_candidate": true,
+    "required_repair": "add a vectorlike set complete under SO10xU1Vprime, then recompute thresholds, E/N, decays, selector anomalies, and PQ quality",
+    "route_status": "REJECTED_SINGLE_SO10_10_KSVZ_COMPLETION",
+    "selected_terms_if_a_compatible_selector_exists": [
+      "PQ*K10*K10",
+      "YPQ*(PQ*PQBar-fa^2)"
+    ],
+    "universal_below_GUT_threshold_exists": false,
+    "viable_KSVZ_extension_landed": false
+  },
+  "overall_state": "PROMISING_FAIL_CLOSED_CANDIDATE",
+  "primary_source": {
+    "citation": "N. Maekawa and T. Yamashita, hep-ph/0304293",
+    "field_table": "Table I",
+    "mass_matrices": "Eqs. (4.2)-(4.5)",
+    "url": "https://arxiv.org/abs/hep-ph/0304293"
+  },
+  "published_missing_partner_rank_ledger": {
+    "doublet": {
+      "column_labels": [
+        "C",
+        "Phi",
+        "PhiPrime1",
+        "PhiPrime2"
+      ],
+      "generic_rank": 3,
+      "identically_zero_column": "C",
+      "identically_zero_row": "CBar",
+      "matching_1_based": [
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          2
+        ]
+      ],
+      "nullity": 1,
+      "published_light_pair": {
+        "Hd": "(LbarPrimeStar)_CBar",
+        "Hu": "(LbarPrime)_C"
+      },
+      "row_labels": [
+        "CBar",
+        "PhiBar",
+        "PhiBarPrime1",
+        "PhiBarPrime2"
+      ],
+      "zero_pattern": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          1,
+          1
+        ]
+      ]
+    },
+    "interpretation": "generic structural ranks of the published component zero patterns",
+    "normalized_full_SO10_tensor_Hessian_landed": false,
+    "source_equations": "hep-ph/0304293 Eqs. (4.2)-(4.5)",
+    "triplet": {
+      "column_labels": [
+        "10_C",
+        "5bar_C",
+        "5bar_Phi",
+        "10_PhiPrime1",
+        "10_PhiPrime2",
+        "5bar_PhiPrime1",
+        "5bar_PhiPrime2"
+      ],
+      "generic_rank": 7,
+      "matching_1_based": [
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          7,
+          1
+        ]
+      ],
+      "nullity": 0,
+      "row_labels": [
+        "10bar_CBar",
+        "5_CBar",
+        "5_PhiBar",
+        "10bar_PhiBarPrime1",
+        "10bar_PhiBarPrime2",
+        "5_PhiBarPrime1",
+        "5_PhiBarPrime2"
+      ],
+      "zero_pattern": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ]
+    }
+  },
+  "published_physics_caveats": {
+    "Table_I_charge_set_called_unrealistic_for_neutrino_scale_by_source": true,
+    "anomalous_U1A_and_kinetic_mixing_omitted_from_RK_endpoint": true,
+    "formal_two_coupling_RK_endpoint_is_not_physical_stage_resolved_running": true,
+    "full_threshold_unification_and_proton_decay_recomputed": false,
+    "generic_O1_coefficients_required_for_rank_claims": true,
+    "intermediate_gauge_group": "SU5xU1X",
+    "source_estimate_required_cutoff_GeV": 10000000000000,
+    "vPhi_over_vC": 9.690941652528
+  },
+  "route_verdict": {
+    "accepted_as_complete_theory": false,
+    "reason": "A formal base coefficient/RK ledger and a published missing-partner rank witness are landed; physical stage-resolved RG, anomalous shaping, thresholds, tensors, vacuum, and phenomenology remain open.",
+    "safe_as_executable_SARAH_model": false,
+    "safe_as_reproducible_research_frontier": true
+  },
+  "schema": "susy_v23_flipped_missing_partner_frontier_v1",
+  "status": "V23_FLIPPED_MISSING_PARTNER_FRONTIER_LANDED__FULL_G1_G8_OPEN",
+  "vacuum_frontier": {
+    "F_and_D_flat_branch_reconstructed_componentwise": false,
+    "global_soft_vacuum_and_Hessian_closed": false,
+    "invariant_scalings": {
+      "CBar_C": "lambda^4 Lambda^2",
+      "PhiBar_Phi": "lambda^1 Lambda^2"
+    },
+    "published_nonzero_VEV_fields": [
+      "Phi",
+      "C",
+      "PhiBar",
+      "CBar",
+      "Theta",
+      "ZBar",
+      "Z"
+    ],
+    "published_zero_VEV_fields": [
+      "PhiPrime",
+      "PhiBarPrime",
+      "SPrime"
+    ]
+  }
+}

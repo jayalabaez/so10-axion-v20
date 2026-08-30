@@ -1,0 +1,890 @@
+{
+  "G2_closure_assessment": [
+    {
+      "blocker": "none for C1 at the declared abstract invariant-tensor order",
+      "id": "C1",
+      "landed": "V49 remains the complete abstract retained-order census: 23 pure-source quartics in 12 sectors, mu_H, all H/Hc portals, mixed Kahler blocks, FI/gauge coordinates, and the one-normal-derivative IBP/EOM quotient.",
+      "name": "fixed_order_action_completeness",
+      "status": "pass"
+    },
+    {
+      "blocker": "none for the declared finite-cutoff deconstruction regulator; a renormalizable continuum 5D UV completion is outside the frozen G2 requirement",
+      "id": "C2",
+      "landed": "A finite supersymmetric Spin(10)xU(1)_F gauge moose localizes the source transport.  Its fundamental action is site-local or nearest-neighbour, its constraint determinant is link-independent, and its positive completion has one intended source profile plus only cutoff-scale vectorlike pairs.",
+      "name": "explicit_regulator",
+      "status": "pass"
+    },
+    {
+      "blocker": "The abstract matrices are not yet identified with the physical V47/V49 action: the explicit V47 Hessian pullback, 465x22 gauge-orbit map/Z-projector and Ward identity, coupled endpoint/link Goldstone R_xi block, physical invariant-tensor lift, and endpoint-auxiliary representation assignment are missing.",
+      "id": "C3",
+      "landed": "The continuum A/Xi/C/O7/O8 normal form and an independent finite-N complex Nambu construction are mathematically self-adjoint for their declared abstract matrices.  The finite witness has one canonical action hash and retains endpoint auxiliaries instead of imposing an energy-dependent domain.",
+      "name": "variational_domain_and_self_adjointness",
+      "status": "partial"
+    },
+    {
+      "blocker": "Its 443+22 source split, quotient projector, R_xi Goldstone mixing, auxiliary sector, and A/Xi/C/R7/R8/Z tensor lift are abstract placeholders rather than an assembled positive metric for the physical retained theory.",
+      "id": "C4",
+      "landed": "The canonical 5,303-coordinate abstract witness has an exact uniform derivative bound, positive complex Nambu metric, positive mixed-Kahler Schur bounds, and a candidate 5,097-coordinate gauge-reduced restriction.",
+      "name": "positive_full_kinetic_form",
+      "status": "partial"
+    },
+    {
+      "blocker": "The affine/distributed-current and source-functional profile jets, one-loop 1PI divergences and operator mixing, finite deconstruction/link thresholds, bare-to-DRbar coefficient maps, and beta-function cancellation of matching-scale dependence through O(Lambda^-1) have not been calculated.",
+      "id": "C5",
+      "landed": "A genuinely independent smooth profile exposes the O(1) noncommuting profile dependence.  The exact transfer counterterm C_T=T_square T_smooth^-1 is symplectic.  Its zeroth and first spectral jets H0,H1 decompose exactly into retained local A/Xi/C blocks; fixed transfer and endpoint-current conditions then rematch the homogeneous tree quadratic sector through O(Lambda^-1), with residuals scaling as O(Lambda^-2) inside the positive cone.",
+      "name": "counterterm_and_matching_scheme",
+      "status": "partial"
+    },
+    {
+      "blocker": "none for the declared fixed-order Wilsonian policy",
+      "id": "C6",
+      "landed": "Every retained invariant direction is admitted with an independent matching coefficient; finite-part zeros are not misrepresented as symmetry predictions, and higher orders have an explicit remainder assignment.",
+      "name": "selector_and_naturalness_policy",
+      "status": "pass"
+    },
+    {
+      "blocker": "The 168 charge-neutral candidate rows omit resolved Haar multiplicities and normalized tensor/copy IDs; the eight PS string rows omit structured ancestry, per-term charge, parity projectors and tensor IDs.  The common PS Chevalley/multiplicity intertwiners and final contracted physical Wilson-coefficient array are therefore still absent.",
+      "id": "C7",
+      "landed": "The complete abstract same-action kernel now includes the full quadratic collar, undivided characteristic, poles and residues.  Normalized Cartesian generating tensors exist for the 1,10,45,120,126 and 210 spinor representation channels and for Phi-Sigma maps to 10,120 and 126; their conjugate orientations and Hodge chirality flip are now tested.  Basis covariance is explicit, and all 176 V49 schema rows have been enumerated without promoting unresolved candidates.",
+      "name": "action_to_full_tower_Wilson_matching",
+      "status": "partial"
+    }
+  ],
+  "V50_exact_results": [
+    {
+      "id": "E37",
+      "result": "finite local constrained-transport regulator",
+      "statement": "The N-link supersymmetric gauge moose replaces the V49 finite-range bilocal coupling by local site/link interactions.  Exact elimination reconstructs the ordered Wilson chain without new source poles.",
+      "value": {
+        "constraint_determinant": [
+          1.0,
+          0.0
+        ],
+        "extra_light_profiles": 0,
+        "finite_N": 4,
+        "heavy_vectorlike_pairs": 1860,
+        "intended_zero_modes": 465,
+        "source_components": 465
+      }
+    },
+    {
+      "id": "E38",
+      "result": "abstract continuum collar theorem",
+      "statement": "The IBP-reduced A/Xi/C/R7/R8/Z action supplies one symplectic transfer, one variational maximal-isotropic domain, and one nonempty positive kinetic cone for its abstract collar inputs.  This theorem is not by itself a finite-moose physical V47/V49 identification certificate.",
+      "value": {
+        "J_unitarity_residual": 7.771561172376096e-16,
+        "minimum_K_singular_value": 0.9621232503811522,
+        "minimum_collar_metric_eigenvalue": 0.32038836224689377,
+        "sp_basis_rank": 36,
+        "sp_expected_dimension": 36
+      }
+    },
+    {
+      "id": "E39",
+      "result": "hashed finite-matrix witness and physical-identification obstruction",
+      "statement": "One canonical finite-N action hash supports an exact complex-Nambu Hermiticity, uniform derivative and 5,303-coordinate positivity witness.  Independent review proves that physical C3/C4 remain partial because five representation/gauge maps are not executable.",
+      "value": {
+        "bridge_decision": {
+          "C2_same_finite_regulator": "PASS_REPRESENTATION_LEVEL_FINITE_LOCALIZER",
+          "C3_same_action_variational_domain_and_self_adjointness": "PARTIAL_ABSTRACT_MATRIX_PASS__PHYSICAL_IDENTIFICATION_OPEN",
+          "C4_same_action_full_kinetic_positivity": "PARTIAL_ABSTRACT_MATRIX_PASS__PHYSICAL_IDENTIFICATION_OPEN",
+          "C5_counterterm_and_matching": "NOT_ASSESSED_HERE_REMAINS_OPEN",
+          "C7_component_Wilson_matching": "NOT_ASSESSED_HERE_REMAINS_OPEN",
+          "G2_closed": false,
+          "gates_promoted": []
+        },
+        "physical_identification_obstructions": [
+          {
+            "id": "V47_HESSIAN_PULLBACK",
+            "impact": "The 443/22 source blocks are witnesses, not yet the physical V47 blocks.",
+            "missing_datum": "An explicit representation-respecting pullback proving that the abstract 0.31 I_443 plus 0 I_22 endpoint Hessian and Kahler block equal the retained V47 source Hessian."
+          },
+          {
+            "id": "GAUGE_ORBIT_PROJECTOR",
+            "impact": "5097 is certified arithmetic, not a certified physical quotient dimension.",
+            "missing_datum": "The actual 465x22 infinitesimal orbit map, its rank-22 proof, the Z-orthogonal projector, and equality of its image with the quadratic Hessian kernel."
+          },
+          {
+            "id": "COUPLED_RXI_GOLDSTONE_BLOCK",
+            "impact": "The separate link and endpoint blocks are not a complete physical R_xi realization.",
+            "missing_datum": "The endpoint source Goldstone/link-Goldstone mixing that yields the five-mode broken-generator R_xi Goldstone matrix."
+          },
+          {
+            "id": "ENDPOINT_AUXILIARY_REPRESENTATIONS",
+            "impact": "Their positive 64-coordinate lift cannot yet be identified with an anomaly-safe physical sector.",
+            "missing_datum": "Spin(10)xU(1)_F representations, charges, and vectorlike/anomaly pairing for all four positive-metric endpoint auxiliary fields."
+          },
+          {
+            "id": "V49_INVARIANT_TENSOR_LIFT",
+            "impact": "The random four-channel blocks tensored with I_16 are not proved to lie in the physical V49 invariant image.",
+            "missing_datum": "Normalized SO(10) invariant tensors/copy maps for A, Xi, C, R7, R8 and Z, plus a covariant midpoint in one site frame."
+          }
+        ],
+        "positive_metric": {
+          "direct_sum_Kronecker_certificate": {
+            "certified_collar_Gershgorin_lower_bound": 0.0017182433340001944,
+            "certified_full_metric_lower_bound": 0.0017182433340001944,
+            "core_minima": {
+              "collar": 0.0022739984600107146,
+              "gauge_broken": 1.8765246762994936,
+              "gauge_unbroken": 1.8765246762994936,
+              "link": 1.6900000000000002,
+              "source_gauge_orbit": 0.19999999999999998,
+              "source_physical": 0.19999999999999998
+            },
+            "declared_Hermitian_perturbation_ball_radius": 0.0008591216670000972,
+            "direct_sum_Kronecker_identity": "(Z_collar tensor I16) direct_sum (Z_source_phys tensor I443) direct_sum (Z_source_gauge tensor I22) direct_sum (Z_vector_unbroken tensor I24) direct_sum (Z_vector_broken tensor I22) direct_sum (Z_link tensor I46)",
+            "endpoint_additions_certified_PSD": true,
+            "endpoint_unrounded_Gershgorin_minimum": 0.057696955153861,
+            "full_gauge_fixed_coordinate_dimension": 5303,
+            "full_minimum_from_core_spectra": 0.0022739984600107146,
+            "full_positive_eigenvalue_count": 5303,
+            "post_perturbation_lower_bound": 0.0008591216670000972,
+            "proof": "The full spectrum is the multiset union of six core spectra with their frozen multiplicities. Weyl's inequality preserves positivity throughout the displayed global operator-norm perturbation ball.",
+            "representative_core_dimension": 76,
+            "representative_minimum_eigenvalue": 0.002273998460010712,
+            "sector_dimensions": {
+              "collar": 704,
+              "gauge_broken": 110,
+              "gauge_unbroken": 120,
+              "link": 184,
+              "source_gauge_orbit": 198,
+              "source_physical": 3987
+            }
+          },
+          "mixed_Kahler_certificate": {
+            "H_block_minimum": 0.3316596533345037,
+            "Hc_block_minimum": 0.3307760316794434,
+            "exact_Schur_minimum": 0.3303440157791086,
+            "full_metric_minimum": 0.32038836224689315,
+            "mixed_block_operator_norm": 0.058276786808438265,
+            "operator_norm_Schur_lower_bound": 0.32053606475379853,
+            "rounded_Gershgorin_lower_bound_exact": "249926303127309/1000000000000000",
+            "unrounded_generator_Gershgorin_lower_bound": 0.249926303127301,
+            "unrounded_generator_Gershgorin_lower_bound_exact": "249926303127301/1000000000000000"
+          },
+          "positive_cone_scope": "The displayed global Hermitian operator-norm ball applies to simultaneous source/coefficient perturbations of the complete kinetic matrix; outside coefficients are not certified."
+        },
+        "referee_decision": {
+          "C3_physical_same_action_domain_and_self_adjointness": "PARTIAL_NOT_PHYSICALLY_IDENTIFIED",
+          "C4_physical_full_kinetic_positivity": "PARTIAL_NOT_PHYSICALLY_IDENTIFIED",
+          "C5_counterterm_and_profile_matching": "REMAINS_PARTIAL",
+          "C7_component_Wilson_matching": "REMAINS_PARTIAL",
+          "G2_closed": false,
+          "abstract_finite_matrix_C3_witness": "PASS",
+          "abstract_finite_matrix_C4_witness": "PASS",
+          "gates_promoted": []
+        },
+        "shared_action_sha256": "04c6e60038412d99b7c2e9a80c4159fb1a6ba328a159df7b62a8fb45ec1158e4",
+        "uniform_derivative": {
+          "delta_even_frobenius_square_exact": "7639430535669093978350704961657511/2658455991569831745807614120560689152",
+          "delta_odd_frobenius_square_exact": "115701414496311189979427231110394917/85070591730234615865843651857942052864",
+          "independent_tighter_spectral_norm_bound": 0.9314307393181542,
+          "invertible_for_every_t": true,
+          "profile": "K(t)=I+sin^2(pi t)(R7a-R8a)+sin(2 pi t)(R7b-R8b)",
+          "profile_suprema": {
+            "abs_sin_double": 1,
+            "abs_sin_squared": 1
+          },
+          "proof": "For all t and v, ||K(t)v|| >= [1-||Delta_even||_2-||Delta_odd||_2]||v||. Exact binary-rational Frobenius enclosures dominate both operator norms, and the serialization envelope covers the original unrounded generator coefficients.",
+          "rho_upper": 0.09048533048982269,
+          "rho_upper_exact": "2827666577806959/31250000000000000",
+          "serialization_rounding_envelope_exact": "1/62500000000000",
+          "sqrt_upper_decimal_places": 18,
+          "uniform_sigma_min_lower_bound": 0.9095146695101773,
+          "uniform_sigma_min_lower_bound_exact": "28422333422193041/31250000000000000",
+          "uses_grid_in_proof": false
+        }
+      }
+    },
+    {
+      "id": "E40",
+      "result": "abstract pole/residue/Wilson witness",
+      "statement": "The undivided enlarged determinant and reduced kernel agree away from auxiliary poles; three roots, a simple first pole, its full residue, Euclidean locality, and a finite Wilson response are executable in the abstract collar action.",
+      "value": {
+        "Wilson_witness": {
+          "G00_finite": true,
+          "G00_spectral_norm": 4.835020120474336,
+          "norm8_over_norm4": 0.01713516565843035,
+          "representative_W_eff": [
+            0.027172491075829815,
+            0.0
+          ],
+          "source_to_host_euclidean_norms": {
+            "1.0": 0.781348018875641,
+            "2.0": 0.2463867907643691,
+            "4.0": 0.030289523638467947,
+            "8.0": 0.0005190160052600903
+          }
+        },
+        "channels": 4,
+        "normal_form": {
+          "maximum_Q_transpose_symmetry_residual": 0.0,
+          "maximum_canonical_Hamiltonian_residual": 7.632783294297951e-17,
+          "minimum_K_singular_value_on_21_point_grid": 0.9621232503811522
+        },
+        "path_order_steps": 18,
+        "positive_norm": {
+          "collar_H_block_min_eigenvalue": 0.33165965333450437,
+          "collar_metric_min_eigenvalue": 0.32038836224689377,
+          "collar_mixed_Schur_min_eigenvalue": 0.33034401577910827,
+          "host_W_min_eigenvalue": 0.8759781970201543,
+          "host_Z_min_eigenvalue": 0.07500073738771076,
+          "source_W_min_eigenvalue": 0.8412411100139557,
+          "source_Z_min_eigenvalue": 0.07579042891198369
+        },
+        "profile_is_genuinely_noncommuting": 0.06421199760091514,
+        "transfer": {
+          "bulk_symplectic_residual": 1.1102230246251565e-16,
+          "collar_symplectic_residual": 6.661338147750939e-16,
+          "real_slice_J_unitary_residual": 7.771561172376096e-16,
+          "step_doubling_difference_norm": 3.509166459929868e-05,
+          "total_symplectic_residual": 7.771561172376096e-16
+        },
+        "undivided_characteristic": {
+          "determinant_at_first_root_abs": 3.199527855453857e-14,
+          "first_root_derivative": -0.8789034148056802,
+          "first_three_signed_positive_roots": [
+            1.1200300921052984,
+            1.2111016312759602,
+            2.5245205552627645
+          ],
+          "matrix_dimension": 8,
+          "maximum_full_vs_reduced_identity_residual": 6.42344953681056e-16,
+          "near_pole_full_residue_residual": 4.717299129413516e-06
+        },
+        "variational_domain": {
+          "enlarged_domain_keeps_auxiliary_states": true,
+          "host_graph_isotropy_residual": 0.0,
+          "host_pencil_hermitian_residual": 0.0,
+          "source_graph_isotropy_residual": 0.0,
+          "source_pencil_hermitian_residual": 0.0
+        }
+      }
+    },
+    {
+      "id": "E41",
+      "result": "second-profile obstruction and strict tree rematch",
+      "statement": "Noncommuting strong blocks retain an O(1) profile difference, disproving naive universality.  The exact symplectic correction and its first spectral jet are realized by retained A/Xi/C layers; corrected homogeneous transfer and fixed endpoint-current Wilson errors scale as O(Lambda^-2).  Affine and loop/scale matching remain absent.",
+      "value": {
+        "counterterm_distance_from_identity": 0.1533866779620379,
+        "counterterm_symplectic_residual": 2.339490623243815e-14,
+        "rematch_residual": 2.482534153247273e-16,
+        "strict_C5_decision": {
+          "affine_current_and_source_functional_rematch": "FAIL_MISSING_CALCULATION",
+          "loop_subtraction_and_scale_independence": "FAIL_MISSING_CALCULATION",
+          "remaining_unmapped_data": "one-loop divergent mixing, finite local-regulator thresholds, bare-to-renormalized maps, affine distributed-current/source-functional rematching, beta functions and component projections",
+          "status": "PARTIAL_NOT_CLOSED",
+          "tree_quadratic_profile_rematch": "PASS_THROUGH_O_LAMBDA_MINUS1",
+          "unmapped_homogeneous_quadratic_and_fixed_endpoint_current_ambiguity": false
+        },
+        "strict_tree_quadratic_rematch": {
+          "Wilson_rematch": {
+            "epsilons": [
+              0.08,
+              0.04,
+              0.02,
+              0.01
+            ],
+            "errors_divided_by_epsilon_squared": [
+              0.0004680947518358618,
+              0.00046112019041971334,
+              0.0004578387858614466,
+              0.0004562547008378616
+            ],
+            "physical_mass": 0.37,
+            "raw_profile_errors": [
+              0.0032054241151104855,
+              0.0032593891109744563,
+              0.0032870812766948227,
+              0.0033011074022438443
+            ],
+            "rematched_errors": [
+              2.9958064117495156e-06,
+              7.377923046715414e-07,
+              1.8313551434457866e-07,
+              4.562547008378616e-08
+            ],
+            "successive_halving_ratios": [
+              0.24627502691026,
+              0.2482209602689052,
+              0.2491350202994464
+            ]
+          },
+          "channels": 4,
+          "local_counterterm_realization": {
+            "H0": "principal-log Hamiltonian of C_exact(0)",
+            "H0_Hamiltonian_residual": 0.0,
+            "H0_retained_block_decomposition": {
+              "A_norm": 0.0021966488241765064,
+              "A_symmetric_residual": 0.0,
+              "C_norm": 0.0008911175424475881,
+              "Xi_norm": 0.0007875754893337467,
+              "Xi_symmetric_residual": 0.0,
+              "reconstruction_residual": 0.0
+            },
+            "H1": "left logarithmic derivative C_exact'(0)C_exact(0)^-1",
+            "H1_Hamiltonian_residual": 0.0,
+            "H1_retained_block_decomposition": {
+              "A_norm": 0.0038203320409331207,
+              "A_symmetric_residual": 0.0,
+              "C_norm": 0.0008490907593123511,
+              "Xi_norm": 0.0019704778015522738,
+              "Xi_symmetric_residual": 0.0,
+              "reconstruction_residual": 0.0
+            },
+            "definition": "C_exact(x)=T_reference(x)T_profile(x)^-1; C_CT(x)=exp(x H1)exp(H0)",
+            "exact_counterterm_max_symplectic_residual": 4.218847493575595e-15,
+            "exp_H0_exact_correction_residual": 1.7420156407575974e-15,
+            "locality": "H0 is one strong local A/Xi/C layer. H1 is one weak local spectral layer, equivalently a symmetric Z shift; the retained O7/O8 blocks provide the same Darboux-complete chart.",
+            "principal_log_imaginary_residual": 6.261945172461592e-16,
+            "spectral_Z_counterterm_symmetric_residual": 0.0,
+            "total_Kahler_metric_min_eigenvalue": 0.31918564882428524
+          },
+          "path_order_steps": 72,
+          "profile_moment_contract": {
+            "A_Xi_C_zeroth_moments": "equal by analytic normalization",
+            "R7_R8_even_moment": "one half in both profiles",
+            "odd_moments": "zero in both profiles",
+            "ordered_mixed_moments": "different because the strong generators do not commute"
+          },
+          "renormalized_variable": "x=m epsilon=m/Lambda",
+          "transfer_rematch": {
+            "errors": [
+              4.247179917971649e-06,
+              1.0620940380096428e-06,
+              2.6556004889136953e-07,
+              6.63945284386993e-08,
+              1.659919393070568e-08
+            ],
+            "errors_divided_by_x_squared": [
+              0.0026544874487322806,
+              0.002655235095024107,
+              0.0026556004889136953,
+              0.002655781137547972,
+              0.0026558710289129087
+            ],
+            "successive_halving_ratios": [
+              0.2500704134325615,
+              0.25003440315796077,
+              0.2500170063828342,
+              0.25000846185738596
+            ],
+            "x_values": [
+              0.04,
+              0.02,
+              0.01,
+              0.005,
+              0.0025
+            ]
+          },
+          "unmatched_profile_obstruction": {
+            "correction0_distance_from_identity": 0.002315431147841478,
+            "raw_Wilson_error_last_over_first": 1.0298504296770914,
+            "raw_Wilson_response_errors": [
+              0.0032054241151104855,
+              0.0032593891109744563,
+              0.0032870812766948227,
+              0.0033011074022438443
+            ],
+            "zero_energy_transfer_difference_norm": 0.0020859160898716238
+          }
+        },
+        "thin_limit_difference": 0.11107460048108535
+      }
+    },
+    {
+      "id": "E42",
+      "result": "normalized Clifford component tensors",
+      "statement": "Generating arrays for 16x16->120 and 16xbar16->45,210 are Hilbert-Schmidt normalized and covariant under all 45 SO(10) generators, extending the certified 1,10,126 representation maps.  This is not an operator-incidence certificate.",
+      "value": {
+        "16x16_to_120": {
+          "covariance_residual": 0.0,
+          "gram_residual": 0.0,
+          "normalization": "C Gamma_[I] / 4 in the existing ordered-pair Hilbert-Schmidt convention",
+          "shape": [
+            120,
+            16,
+            16
+          ]
+        },
+        "16x16bar_to_210": {
+          "covariance_residual": 0.0,
+          "gram_residual": 0.0,
+          "normalization": "C Gamma_[I] / 4 in the existing ordered-pair Hilbert-Schmidt convention",
+          "shape": [
+            210,
+            16,
+            16
+          ]
+        },
+        "16x16bar_to_45": {
+          "covariance_residual": 0.0,
+          "gram_residual": 0.0,
+          "normalization": "C Gamma_[I] / 4 in the existing ordered-pair Hilbert-Schmidt convention",
+          "shape": [
+            45,
+            16,
+            16
+          ]
+        }
+      }
+    },
+    {
+      "id": "E43",
+      "result": "normalized Phi-Sigma form tensors",
+      "statement": "The Phi210 x Sigma126 maps to 120 and chiral 126 have full target rank, isotropic Gram matrices, and dense all-generator covariance certificates; a separate audit now verifies the conjugate orientation and Hodge-chirality flip.",
+      "value": {
+        "PhiSigma_to_120": {
+          "all_45_generator_dense_witness_residual": 0.0,
+          "matrix_rank": 120,
+          "normalized_gram_residual": 1.2212453270876722e-15,
+          "raw_gram_isotropy_residual": 0.0,
+          "raw_gram_scale": 105.0,
+          "raw_shape": [
+            120,
+            210,
+            126
+          ]
+        },
+        "PhiSigma_to_126_minus_i": {
+          "Hodge_projector": "(1+i star)/2; output star=-i",
+          "all_45_generator_dense_witness_residual": 0.0,
+          "matrix_rank": 126,
+          "normalized_gram_residual": 6.661338147750939e-16,
+          "raw_gram_isotropy_residual": 0.0,
+          "raw_gram_scale": 100.0,
+          "raw_shape": [
+            126,
+            210,
+            126
+          ]
+        }
+      }
+    },
+    {
+      "id": "E44",
+      "result": "basis-ambiguity theorem",
+      "statement": "Unitary rotations within repeated PS weight spaces are conventions, not missing physics: currents, kernels and projectors transform covariantly and leave the Wilson functional invariant.  The identity is universal; the executable witness uses representative blocks rather than the actual 120/126/210 weight blocks, and the explicit convention bridge is still absent.",
+      "value": {
+        "certificate": {
+          "block_dimensions": [
+            2,
+            3,
+            2
+          ],
+          "projector_covariance_residual": 2.096074351170154e-16,
+          "unitarity_residual": 8.500021186058271e-16,
+          "wilson_basis_covariance_residual": 1.5265566588595902e-16
+        },
+        "decision": {
+          "additional_convention_required": true,
+          "external_data_required": false,
+          "proof": "under any unitary U inside an equal-quantum-number block, K->UKUdagger and J->UJ leave -1/2 Jdagger K^-1 J invariant; projectors transform covariantly",
+          "qualification": "holding named component coefficients fixed while rotating only states is inconsistent; a published named-component table must declare U",
+          "repeated_weight_rotations": "basis convention, not external physical CG data"
+        }
+      }
+    },
+    {
+      "id": "E45",
+      "result": "conjugate maps and exhaustive schema-row incidence census",
+      "statement": "All available conjugate Cartesian maps are involutive and orthonormal.  The census enumerates 176 retained schema rows and proves why none of the 168 charge-neutral candidates or eight aggregate PS rows can yet be instantiated as a complete physical tensor/current incidence row.",
+      "value": {
+        "conjugate_maps": {
+          "16x16_to_120__conjugate": {
+            "antiunitary_double_conjugation_residual": 0.0,
+            "conjugate_gram_residual": 0.0,
+            "conjugate_shape": [
+              120,
+              16,
+              16
+            ],
+            "phase_rule": "entrywise complex conjugation in the source-locked Cartesian basis; reverse ordered spinors by transpose when required",
+            "source_shape": [
+              120,
+              16,
+              16
+            ]
+          },
+          "16xbar16_to_210__conjugate": {
+            "antiunitary_double_conjugation_residual": 0.0,
+            "conjugate_gram_residual": 0.0,
+            "conjugate_shape": [
+              210,
+              16,
+              16
+            ],
+            "phase_rule": "entrywise complex conjugation in the source-locked Cartesian basis; reverse ordered spinors by transpose when required",
+            "source_shape": [
+              210,
+              16,
+              16
+            ]
+          },
+          "16xbar16_to_45__conjugate": {
+            "antiunitary_double_conjugation_residual": 0.0,
+            "conjugate_gram_residual": 0.0,
+            "conjugate_shape": [
+              45,
+              16,
+              16
+            ],
+            "phase_rule": "entrywise complex conjugation in the source-locked Cartesian basis; reverse ordered spinors by transpose when required",
+            "source_shape": [
+              45,
+              16,
+              16
+            ]
+          },
+          "PhiSigma_120__conjugate": {
+            "antiunitary_double_conjugation_residual": 0.0,
+            "conjugate_gram_residual": 0.0,
+            "conjugate_shape": [
+              120,
+              210,
+              126
+            ],
+            "phase_rule": "complex conjugate the real 4/3-form contraction coefficients and replace the -i five-form input by its +i conjugate basis",
+            "source_shape": [
+              120,
+              210,
+              126
+            ]
+          },
+          "PhiSigma_126_minus_i__conjugate_plus_i": {
+            "antiunitary_double_conjugation_residual": 0.0,
+            "conjugate_gram_residual": 0.0,
+            "conjugate_hodge_residual": 0.0,
+            "conjugate_shape": [
+              126,
+              210,
+              126
+            ],
+            "phase_rule": "complex conjugation changes (1+i star)/2 to (1-i star)/2 and -i output to +i",
+            "source_shape": [
+              126,
+              210,
+              126
+            ]
+          }
+        },
+        "counts": {
+          "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION": 168,
+          "UNINSTANTIATED_PS_STRING_ROW": 8,
+          "total_rows": 176
+        },
+        "coverage_decision": {
+          "C7": "PARTIAL",
+          "important_distinction": "charge-neutral candidate sectors may have empty invariant image and cannot be promoted to operators from U1F neutrality alone",
+          "row_enumeration": "PASS for every machine-listed HH/HcHc/HcH candidate row plus every PS superpotential and derivative row",
+          "tensor_instantiation": "FAIL: V49 candidate rows declare Haar-projector coefficient spaces but omit resolved invariant multiplicity and normalized tensor IDs; PS rows are prose strings without per-term charge/parity/ancestry fields"
+        },
+        "smallest_missing_schema_data": [
+          "resolved invariant multiplicity for each source-collar candidate row",
+          "normalized tensor ID and contraction-copy index for each nonempty invariant direction",
+          "structured PS field/orientation ancestry rather than aggregate prose",
+          "per-term U1F charge and explicit orbifold parity projector",
+          "common phase Cartesian-to-PS intertwiner ID"
+        ]
+      }
+    },
+    {
+      "id": "E46",
+      "result": "V50 fail-closed decision",
+      "statement": "C1, C2 and C6 pass.  Physical C3/C4, strict C5 and component-resolved C7 remain partial, so the seven-clause conjunction is false and G2 is not promoted.",
+      "value": {
+        "G2_closed": false,
+        "full_gate_count": 1,
+        "passed_clauses": [
+          "C1",
+          "C2",
+          "C6"
+        ]
+      }
+    }
+  ],
+  "core_sha256": "52a437a5e6f9cc29b09dd23116e14736b14265d742cff2579106f7a0be124658",
+  "frozen_G2_contract": {
+    "closure_logic": "G2_closed iff C1 through C7 all pass for the same retained action",
+    "definition": "A fixed-order tree-level Wilsonian source/portal boundary EFT in one declared regulator scheme, with a complete retained-order local action, an action-derived positive self-adjoint domain, and a component-resolved full-tower kernel for that same action.",
+    "not_required_for_G2": {
+      "G3": "solve the vacuum and FI/K\u00e4hler/radion/soft branch",
+      "G6": "compute the complete pole tower, thresholds, unification and RG flow",
+      "G7": "finish the B/L ring, running and decay likelihoods",
+      "G8": "perform the flavor/neutrino fit and withheld prediction",
+      "UV": "predict the infinite irrelevant tower from a fundamental UV completion"
+    }
+  },
+  "fully_passed_clauses": [
+    "C1",
+    "C2",
+    "C6"
+  ],
+  "gate_ledger": [
+    {
+      "advance": "V47 exact ordinary-Spin quotient and relative anomaly calculations remain intact.",
+      "blocker": "none within the declared ordinary-Spin model",
+      "closed": true,
+      "gate": "G1"
+    },
+    {
+      "advance": "V50 closes the finite local regulator (C2), constructs a hashed abstract finite-moose complex-Nambu/positivity witness, completes conjugate Cartesian maps, and exhaustively enumerates all 176 available component-incidence rows.",
+      "blocker": "Physical C3/C4 lack five V47/V49 representation/gauge identifications; C5 lacks affine, loop, threshold and scale rematching; C7 lacks resolved tensor/copy incidence, the Cartesian-to-PS bridge, and the physical Wilson array.",
+      "closed": false,
+      "gate": "G2"
+    },
+    {
+      "advance": "The exact coupled F/D-flat branch and generic physical-rank theorem remain valid at renormalizable order.",
+      "blocker": "Pure-source higher operators, FI/K\u00e4hler/radion/soft terms, global vacuum selection and the controlled 5D branch are unsolved.",
+      "closed": false,
+      "gate": "G3"
+    },
+    {
+      "advance": "The missing PS mu_H term is now identified as an allowed input rather than silently forbidden.",
+      "blocker": "The mu/Bmu mechanism, SUSY breaking, radion stabilization, EWSB and complete scalar vacuum are absent.",
+      "closed": false,
+      "gate": "G4"
+    },
+    {
+      "advance": "No excluded dark benchmark is reintroduced.",
+      "blocker": "No dark-sector Lagrangian, relic calculation or cosmological history is specified.",
+      "closed": false,
+      "gate": "G5"
+    },
+    {
+      "advance": "The regulator map is exact and three representative regulated poles plus one residue replay.",
+      "blocker": "A complete controlled parameter point, every pole, thresholds, NDA cutoff, unification and RG running are absent.",
+      "closed": false,
+      "gate": "G6"
+    },
+    {
+      "advance": "The source-dependent restricted Schur kernel supplies the correct structural starting point for full-tower matching.",
+      "blocker": "The 210-completed B/L ring, component Wilson coefficients, dressing/running and proton or multinucleon rates are absent.",
+      "closed": false,
+      "gate": "G7"
+    },
+    {
+      "advance": "The PS census now includes complementary Hc Higgs cubics and the allowed family/bulk K\u00e4hler mixings.",
+      "blocker": "There is no complete component Clebsch map, neutrino completion, family fit, uncertainty propagation or withheld prediction.",
+      "closed": false,
+      "gate": "G8"
+    }
+  ],
+  "input_core_hashes": {
+    "c7_incidence": "f442708070f28309864535a886693ff07d372943ac0d36f90fe7a910f51cf535",
+    "clifford_tensors": "697957744751578a7db6a749385b3b6dbee4d9e17871a953b870fd23c9a37eab",
+    "complex_nambu_referee": "8711935c6e6c5d9a2728e620fe8bd6c23dd9ff75ba539b0433a1bb082f157bee",
+    "finite_moose_bridge": "5331a33d88abbedd2c84bb3d89fbe54cc3081d8f369a06b4b282e9a71d4e7ed6",
+    "full_collar": "5b91b9f9c85241e09853892550c2323b3b84e27b972668c130917a2db2baa086",
+    "local_regulator": "768d3a60c86770f0c19e9d10175911bfc3112c4937b40b2a7eb9713822dba2fc",
+    "phi_sigma_tensors": "5d4fa0edb42525cfd960af0163c394f4bf8aeb183ab5de0e71ad2c2cd05ef6fe",
+    "ps_intertwiner": "2ee3bc6d972976b83f523a60e753a418d5cd9a3c7dca72f9379bafce681b0cab",
+    "second_profile": "58d96f2b01a0ca5b63afc8d825be43c9c89f9efad8d1d903c54f88b4a6d2d323",
+    "strict_c5": "2cce92e6890fedaedfa51aba425849b4ac0254486a42195565b89ada9301fa1f",
+    "v49_master": "ad582070cd5e948c5b999d39aa03353fa2da23c4a41ee55a3ab821457222fb5b"
+  },
+  "integrity_checks": {
+    "A_Xi_C_span_full_sp8": true,
+    "C5_is_not_overpromoted": true,
+    "C7_conjugate_maps_and_176_row_census_pass_fail_closed": true,
+    "G2_conjunction_is_false": true,
+    "V49_started_with_only_G1_closed": true,
+    "abstract_collar_integrity_passes": true,
+    "abstract_finite_matrix_C3_C4_witness_passes": true,
+    "all_input_core_hashes_valid": true,
+    "basis_rotations_are_conventional_but_C7_is_partial": true,
+    "clifford_tensor_checks_pass": true,
+    "exact_transfer_rematch_passes": true,
+    "exactly_three_clauses_pass": true,
+    "five_physical_identification_maps_are_missing": true,
+    "local_regulator_fundamental_action_is_local": true,
+    "local_regulator_has_only_intended_light_source_profiles": true,
+    "local_regulator_preserves_G1": true,
+    "only_G1_is_closed_after_V50": true,
+    "phi_sigma_tensor_checks_pass": true,
+    "physical_C3_C4_are_fail_closed": true,
+    "second_profile_has_O1_noncommuting_obstruction": true,
+    "shared_abstract_action_fingerprint_matches": true,
+    "tree_quadratic_C5_rematch_is_retained_and_second_order": true
+  },
+  "n_failed_integrity_checks": 0,
+  "number_of_clauses": 7,
+  "primary_sources": [
+    {
+      "title": "Marti--Pomarol: 5D supersymmetry in N=1 superfields",
+      "url": "https://arxiv.org/abs/hep-th/0106256"
+    },
+    {
+      "title": "Hebecker: gauge-covariant brane operators",
+      "url": "https://arxiv.org/abs/hep-ph/0112230"
+    },
+    {
+      "title": "Arkani-Hamed--Cohen--Georgi: (De)constructing Dimensions",
+      "url": "https://arxiv.org/abs/hep-th/0104005"
+    },
+    {
+      "title": "Falkowski--Nilles--Olechowski--Pokorski: supersymmetric deconstruction on orbifolds",
+      "url": "https://arxiv.org/abs/hep-th/0212206"
+    },
+    {
+      "title": "von Gersdorff et al.: interval boundary action principle",
+      "url": "https://arxiv.org/abs/hep-th/0411133"
+    },
+    {
+      "title": "del Aguila et al.: thin-defect EFT and classical renormalization",
+      "url": "https://arxiv.org/abs/hep-ph/0601222"
+    },
+    {
+      "title": "Barcelo--Mitra--Moreau: finite-width brane/KK limit ordering",
+      "url": "https://arxiv.org/abs/1408.1852"
+    },
+    {
+      "title": "Nath--Syed: SO(10) spinor contraction channels",
+      "url": "https://arxiv.org/abs/hep-th/0109116"
+    }
+  ],
+  "route_decision": "Continue only with the three explicit defect families D13-D15.  Do not invent additional fields or promote G2: the abstract matrix witness is reusable, but it must first be identified with the physical retained action before C3/C4 can close.",
+  "schema": "susy-v50-g2-frontier-integration-audit-v1",
+  "scientific_verdict": {
+    "G2_closed": false,
+    "claim_scope": "mathematical fixed-order EFT progress only; not a complete theory, continuum UV completion, phenomenological fit, or empirical validation",
+    "closed_gates": [
+      "G1"
+    ],
+    "full_gates_closed": 1,
+    "passed_G2_clauses": [
+      "C1",
+      "C2",
+      "C6"
+    ],
+    "statement": "V50 closes the finite local-regulator clause C2 and raises G2 from two to three passed clauses.  It also proves strong abstract C3/C4 matrix theorems, but an adversarial audit rejects their physical V47/V49 identification.  Physical C3, C4, strict C5 and component-resolved C7 remain partial."
+  },
+  "smallest_next_closure_patch": [
+    "Physically bind the finite action by emitting the V47 Hessian pullback; 465x22 orbit map/Z-projector/Ward identity; coupled R_xi Goldstone block; normalized V49 tensor lift; and anomaly-safe endpoint-auxiliary representations.",
+    "Complete affine/distributed-current and source-functional profile jets; compute the one-loop 1PI mixing, finite-N/link thresholds and bare-to-DRbar maps; then prove subtraction-scale cancellation through O(Lambda^-1).",
+    "Resolve Haar multiplicities and normalized tensor/copy IDs for all 168 candidates; structure the eight PS rows with ancestry, charge and parity; declare the PS Chevalley/multiplicity intertwiners; then emit the physical Wilson array."
+  ],
+  "source_manifest": [
+    {
+      "exists": true,
+      "path": "susy_v50_g2_frontier_integration_audit.py",
+      "sha256": "4b676ae36d64e00324c7ac7f42a12668b1ffd88cd80498ca1ab7fb217d3a1ef8"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v50_g2_frontier_integration_audit.py",
+      "sha256": "86e5306a17ad6d52df212fc9eb959973ec616c6b48c58e431c1d276ee8c2a9e5"
+    },
+    {
+      "exists": true,
+      "path": "susy_v50_finite_moose_action_spec.py",
+      "sha256": "dcf2a973712cd593c5615aa69c09904c405660b7ba38c0fe49e6310c51c90a25"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V49_G2_FRONTIER_INTEGRATION_AUDIT.json",
+      "sha256": "37cca512421c628b86ed2da5d057809da4ce3054da2843fd3511dc343a2e23f7"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V50_LOCAL_CONSTRAINED_TRANSPORT_REGULATOR_AUDIT.json",
+      "sha256": "5125294868542936f43b07c23f4011f1a18f5b9ad55fda6643ddd322a786284f"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V50_FULL_SAME_ACTION_COLLAR_AUDIT.json",
+      "sha256": "fb3cc2c3565a5d8b23da1f9a5257e5579cd578b7fadf582ac878bf7e41471f58"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V50_FINITE_MOOSE_SAME_ACTION_BRIDGE_AUDIT.json",
+      "sha256": "9f9adc79d0ece17a08654ba8800bf376324a142f034289edaef15cb5a926c92a"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V50_COMPLEX_NAMBU_REFEREE_AUDIT.json",
+      "sha256": "38f6e03289e5a1bff5f114ffd1e813e2fc226ee440af6e0cd8cfdd5541de265a"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V50_SECOND_PROFILE_CLEBSCH_AUDIT.json",
+      "sha256": "d8ec0cdb5b8bd1648883d7c00d2200c7ac8dea1f9dbba29d23c5fd5cd47c9284"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V50_C5_STRICT_REMATCH_AUDIT.json",
+      "sha256": "df4cb5dc08f5631ac8eb1eabd72db865a54829ea538c77229169211ede034fd6"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V50_CLIFFORD_TENSOR_EXTENSION_AUDIT.json",
+      "sha256": "fb3636a303b296f3296043782fa4200d39d2e4360d53aaae41537b2a87e2a250"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V50_PHI_SIGMA_FORM_TENSOR_AUDIT.json",
+      "sha256": "36ca8e0d35491b57a0e7311e5f8e72f176325406d605bf0e5252160f6cf78462"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V50_PS_INTERTWINER_BASIS_AUDIT.json",
+      "sha256": "d35f361a48cbfbb573a616f9c08d4d05435a9d3d0addb547b8dcbb755cc94dbb"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V50_C7_CONJUGATE_INCIDENCE_AUDIT.json",
+      "sha256": "11941f5eafa5bb1d8ffb3d9d1642595adf4a01dc6697ecffae4d5e0c6560dfbc"
+    }
+  ],
+  "stage_ledger": [
+    {
+      "missing": "radion dynamics and global branch selection (outside G2)",
+      "passed": "exact coupled neutral-210 branch, 443 generic massive physical source chirals, strictly 4D sources, and a finite local transport regulator with one intended source zero profile and only vectorlike cutoff pairs",
+      "stage": "S0",
+      "status": "OPEN_WITH_COUPLED_SOURCE_RANK_RETAINED"
+    },
+    {
+      "missing": "none within the declared ordinary-Spin boundary-condition model",
+      "passed": "V47 local, quotient, relative and residual-discrete gauge/global anomaly certificate",
+      "stage": "S1",
+      "status": "CLOSED"
+    },
+    {
+      "missing": "physical V47 Hessian/orbit/Rxi/tensor/auxiliary identification; affine and loop/threshold/scale rematch; complete physical pole tower",
+      "passed": "local finite deconstruction regulator; abstract full A/Xi/C/O7/O8 transfer and hashed finite-matrix complex-Nambu/positive-metric witness",
+      "stage": "S2",
+      "status": "OPEN_WITH_ABSTRACT_FINITE_NAMBU_WITNESS"
+    },
+    {
+      "missing": "resolved Haar/tensor-copy incidence, PS Chevalley/multiplicity bridge, fully contracted physical Wilson array, B/L ring and rates",
+      "passed": "complete abstract retained action, normalized Cartesian spinor and Phi-Sigma generating/conjugate tensors, basis covariance, and a 176-row fail-closed census",
+      "stage": "S3",
+      "status": "OPEN_WITH_NORMALIZED_CARTESIAN_TENSOR_PACKAGE"
+    },
+    {
+      "missing": "unification, RG spectrum, flavor, neutrinos, light Higgs, SUSY breaking, dark sector and cosmology",
+      "passed": "no empirical claim imported from the exact microscopic subchecks",
+      "stage": "S4",
+      "status": "OPEN"
+    }
+  ],
+  "status": "V50_G2_LOCAL_DECONSTRUCTION_REGULATOR_C2_CLOSED__ABSTRACT_FINITE_MOOSE_NAMBU_AND_POSITIVITY_WITNESS_CERTIFIED__PHYSICAL_V47_V49_IDENTIFICATION_FAIL_CLOSED_C3_C4_PARTIAL__TREE_QUADRATIC_C5_PROFILE_REMATCH_THROUGH_O_LAMBDA_MINUS1_CERTIFIED__CARTESIAN_TENSORS_CONJUGATE_MAPS_AND_176_ROW_INCIDENCE_CENSUS_CERTIFIED__C5_AFFINE_LOOP_THRESHOLD_SCALE_MAPS_AND_C7_RESOLVED_INCIDENCE_INCOMPLETE__G2_FAIL_CLOSED__ONE_OF_EIGHT_FULL_GATES_CLOSED",
+  "unresolved_defects": [
+    {
+      "defect": "physical_same_action_identification_missing",
+      "id": "D13",
+      "statement": "Bind the abstract finite matrix to the retained theory with the explicit V47 465x465 Hessian pullback; rank-22 orbit map, Z-projector and Ward identity; coupled five-Goldstone R_xi block; normalized V49 A/Xi/C/R7/R8/Z tensor lift; and charged, anomaly-safe endpoint auxiliary assignments."
+    },
+    {
+      "defect": "coefficient_level_profile_rematch_missing",
+      "id": "D14",
+      "statement": "Extend the certified homogeneous transfer rematch to all affine/distributed currents and source-functional jets; compute the one-loop 1PI mixing, finite-N/link thresholds and bare-to-DRbar maps; then prove matching-scale cancellation through O(Lambda^-1)."
+    },
+    {
+      "defect": "resolved_component_incidence_and_PS_bridge_missing",
+      "id": "D15",
+      "statement": "Resolve the Haar multiplicity and normalized tensor/copy IDs of all 168 candidate rows; structure the eight PS rows with ancestry, charge and parity IDs; freeze the PS Chevalley/multiplicity intertwiners; then emit the complete contracted physical Wilson array in one convention."
+    }
+  ]
+}

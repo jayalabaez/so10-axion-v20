@@ -1,0 +1,265 @@
+{
+  "complete_theory_exists": false,
+  "core_sha256": "0f39a3be0ea16b915adb9974cab9745302c23e59a573ade266bbb3458fedd0b7",
+  "established_full_predictive_closed_count": 0,
+  "g7_additive_abelian_selector_no_go": {
+    "additive_R": {
+      "conclusion": "The combinations give 4r(Q)=4r(Qc)=0.  The linear X term gives r(X)=r(W), so X Q^4 and X Qc^4 have the superpotential charge and are allowed.",
+      "derived_charge_vectors": {
+        "4rQ": {
+          "Q": 4
+        },
+        "4rQc": {
+          "Qc": 4
+        }
+      },
+      "four_Q_linear_combination": {
+        "Nv_Nv": 2,
+        "Q_H_Qc": 4,
+        "Sbc_Qc_Nv": -4,
+        "Sbc_Sbc_Sig6": 1,
+        "Sc_Sc_Sig6": -1,
+        "X_H_H": -2,
+        "X_Sbc_Sc": 2,
+        "X_cubic": 1,
+        "linear_X": -3
+      },
+      "four_Qc_linear_combination": {
+        "Nv_Nv": -2,
+        "Sbc_Qc_Nv": 4,
+        "Sbc_Sbc_Sig6": -1,
+        "Sc_Sc_Sig6": 1,
+        "X_Sbc_Sc": -2,
+        "X_cubic": 1,
+        "linear_X": -1
+      }
+    },
+    "assumption": "An added ordinary or R-type additive Abelian symmetry preserves every listed V37 renormalizable monomial with uncharged numerical couplings.",
+    "ordinary_non_R": {
+      "conclusion": "The combinations give 4q(Q)=4q(Qc)=0; the linear X term gives q(X)=0, so X Q^4 and X Qc^4 are allowed.",
+      "derived_charge_vectors": {
+        "4qQ": {
+          "Q": 4
+        },
+        "4qQc": {
+          "Qc": 4
+        }
+      },
+      "four_Q_linear_combination": {
+        "Nv_Nv": 2,
+        "Q_H_Qc": 4,
+        "Sbc_Qc_Nv": -4,
+        "Sbc_Sbc_Sig6": 1,
+        "Sc_Sc_Sig6": -1,
+        "X_H_H": -2,
+        "X_Sbc_Sc": 2
+      },
+      "four_Qc_linear_combination": {
+        "Nv_Nv": -2,
+        "Sbc_Qc_Nv": 4,
+        "Sbc_Sbc_Sig6": -1,
+        "Sc_Sc_Sig6": 1,
+        "X_Sbc_Sc": -2,
+        "linear_X": 2
+      }
+    },
+    "scope": "This excludes only a simple additive-Abelian selector repair that leaves the full V37 renormalizable driver/cubic/Majorana/PS-breaking architecture intact.  It does not exclude non-Abelian flavour, locality/sequestering, spurion dynamics, or an architecture change.",
+    "source_term_presence": {
+      "Nv_Nv": true,
+      "Q_H_Qc": true,
+      "Sbc_Qc_Nv": true,
+      "Sbc_Sbc_Sig6": true,
+      "Sc_Sc_Sig6": true,
+      "X_H_H": true,
+      "X_Sbc_Sc": true,
+      "X_cubic": true,
+      "linear_X": true
+    },
+    "verified": true
+  },
+  "gate_ledger": [
+    {
+      "blocker": "a microscopic completion of the 5D eta-inflow system or an equally explicit quantized 4D topological response; a symmetry-preserving mirror-wall gap with its exact spectrum and all threshold determinants; a complete Spin^Z4R x Z5610 bordism calculation including the PS global form, gaugino, and gravitino; UV-to-SARAH Wilson/Kahler/gauge-kinetic/soft matching and a global stabilized vacuum",
+      "closed": false,
+      "frozen_ledger_state": "PURE_Z5610_FINITE_AND_SPECTATOR_PAIRWISE_ARITHMETIC_PASS__MIXED_PS_SELECTOR_AND_FULL_Z4R_PRODUCT_UV_OPEN",
+      "gate": "G1",
+      "locked_result": "Z5610 finite congruences pass; V38 proves the ordinary 4D Higgsed-U(1)X heavy-threshold route impossible under its stated assumptions and supplies a locally anomaly-balanced 5D interval EFT."
+    },
+    {
+      "blocker": "no EWSB/pole state, soft masses, numerical boundary, self energies, or covariance",
+      "closed": false,
+      "frozen_ledger_state": "full pole matrices and covariance open",
+      "gate": "G2",
+      "locked_result": "holomorphic tree mass block only"
+    },
+    {
+      "blocker": "K\u00e4hler/soft potential, competing vacua, tunneling and cosmological selection absent",
+      "closed": false,
+      "frozen_ledger_state": "Kahler/soft global vacuum and tunneling open",
+      "gate": "G3",
+      "locked_result": "canonical global-N=1 SUSY truncation; not a K\u00e4hler/soft completion"
+    },
+    {
+      "blocker": "source disables mediation and all soft terms, so radiative EWSB cannot be calculated",
+      "closed": false,
+      "frozen_ledger_state": "microscopic mediation and electroweak likelihood open",
+      "gate": "G4",
+      "locked_result": "The source preserves the desired supersymmetric mu protection, but it does not specify the mediation data required to test radiative EWSB or a weak-scale pole spectrum."
+    },
+    {
+      "blocker": "An unbroken Z170 forces a lightest charged remnant; a spectrum, mediation, Boltzmann/reheat, PQ isocurvature/domain-wall, BBN/CMB, and direct-detection calculation is still absent.",
+      "closed": false,
+      "frozen_ledger_state": "ALL_CHIRAL_CHARGE_LATTICE_W_DEGREE33_AND_KAHLER_DEGREE32__RELIC_COSMOLOGY_AND_FULL_SOFT_MATCHING_OPEN",
+      "gate": "G5",
+      "locked_result": "All-chiral quality stays at W degree 33 / K\u00e4hler degree 32; the six-field D cascade passes selector and finite-anomaly checks but leaves stable dark carriers.",
+      "quality_selector_congruence": "Q170 = 85*q66 + 2442*h85 (mod 5610) for every chiral species"
+    },
+    {
+      "blocker": "no physical boundary, soft beta system, individual pole thresholds, matching Wilsons or uncertainty propagation",
+      "closed": false,
+      "frozen_ledger_state": "physical boundary data and uncertainty-propagated running open",
+      "gate": "G6",
+      "locked_result": "The beta functions are live and useful, but the source cannot select a physical trajectory or calculate a threshold-matched uncertainty band."
+    },
+    {
+      "additive_abelian_no_go_verified": true,
+      "blocker": "X/Zp-dressed Q^4 and Qc^4 source monomials are allowed; their coefficients and soft-induced VEVs are not controlled. A simple additional additive Abelian symmetry cannot forbid the class without changing the V37 architecture.",
+      "closed": false,
+      "frozen_ledger_state": "flavour tensors, dressing, running, and lattice covariance open",
+      "gate": "G7",
+      "locked_result": "Bare Q^4/Qc^4 are R-forbidden, but their driver-dressed degree-five versions are selector-allowed; the added-Abelian-shaping-symmetry no-go is symbolically verified."
+    },
+    {
+      "blocker": "independent Yukawa/Wilson matrices and no versioned joint likelihood leave observables non-identifiable",
+      "closed": false,
+      "frozen_ledger_state": "out-of-sample flavour origin and joint likelihood open",
+      "gate": "G8",
+      "locked_result": "a flavour-capable renormalizable source exists"
+    }
+  ],
+  "integrity_checks": {
+    "all_input_cores_verify": true,
+    "all_required_inputs_present": true,
+    "frozen_v37_ledger_has_zero_closed_gates": true,
+    "g5_residual_relic_obstruction_verified": true,
+    "g7_additive_abelian_no_go_verified": true,
+    "no_full_gate_is_promoted": true,
+    "v38_5D_anomaly_EFT_verified": true,
+    "v38_ordinary_4D_U1X_no_go_verified": true
+  },
+  "literature_backed_architecture_forks_not_merged": [
+    {
+      "reason_not_merged": "Its anomaly-free non-SUSY field content and scalar sector are a different theory; it does not provide the V37 soft/pole/flavour/relic completion.",
+      "reference": "https://arxiv.org/abs/2412.21157",
+      "route": "SO(10) x U(1)_a high-quality-axion construction"
+    },
+    {
+      "reason_not_merged": "It is a distinct composite SU(14) architecture with extra assumed GUT breaking and its own cosmological matching problem.",
+      "reference": "https://arxiv.org/abs/2508.21813",
+      "route": "Exact SUSY chiral-dynamics composite axion with an SO(10) extension"
+    },
+    {
+      "reason_not_merged": "It motivates a quantized GS architecture, but does not furnish the full V37 Pati--Salam, R-symmetry, soft, and likelihood completion.",
+      "reference": "https://arxiv.org/abs/2510.18306",
+      "route": "Anomalous U(1)_X / Green--Schwarz high-quality-axion models"
+    }
+  ],
+  "new_physics_decisions": {
+    "genuine_architecture_choices_remaining": [
+      "Complete the 5D/topological route with a gapped mirror wall, global-form bordism, and UV-to-EFT matching.",
+      "Redesign the driver/cubic/Majorana sector, or derive non-Abelian flavour/locality sequestering, to control driver-dressed baryon violation.",
+      "Supply a microscopic mediation and cosmology sector that predicts a safe Z170-charged dark abundance, or break Z170 and re-audit quality."
+    ],
+    "not_adopted_as_a_complete_theory": [
+      "The ordinary 4D Higgsed-U(1)X repair is excluded by V38 under its explicit threshold assumptions.",
+      "The 5D eta-inflow construction is a local anomaly-EFT scaffold, not a microscopic UV completion.",
+      "The six-field D cascade preserves selector/quality arithmetic but only transfers the unavoidable Z170 charge into dark carriers.",
+      "No soft spectrum, Wilson tensors, covariance, likelihood, or reheating history has been inserted as an arbitrary benchmark."
+    ]
+  },
+  "primary_sources": [
+    "https://arxiv.org/abs/1808.02881",
+    "https://arxiv.org/abs/hep-ph/9210211",
+    "https://arxiv.org/abs/1909.08775",
+    "https://arxiv.org/abs/hep-th/0305024",
+    "https://arxiv.org/abs/2211.02054",
+    "https://ntrs.nasa.gov/citations/19900004848",
+    "https://arxiv.org/abs/1807.06209",
+    "https://arxiv.org/abs/2412.21157",
+    "https://arxiv.org/abs/2508.21813",
+    "https://arxiv.org/abs/2510.18306"
+  ],
+  "promotion_contract": {
+    "G1": [
+      "a microscopic completion of the 5D eta-inflow system or an equally explicit quantized 4D topological response",
+      "a symmetry-preserving mirror-wall gap with its exact spectrum and all threshold determinants",
+      "a complete Spin^Z4R x Z5610 bordism calculation including the PS global form, gaugino, and gravitino",
+      "UV-to-SARAH Wilson/Kahler/gauge-kinetic/soft matching and a global stabilized vacuum"
+    ],
+    "G2": [
+      "A complete broken-phase component Lagrangian, numerical pole solution, self energies, mixings, and covariance matrix."
+    ],
+    "G3": [
+      "Microscopic K\u00e4hler and gauge-kinetic functions, SUSY-breaking terms, all competing vacua, bounce actions, and cosmological vacuum selection."
+    ],
+    "G4": [
+      "A mediation mechanism with soft boundary conditions, threshold-matched running, radiative EWSB, collider likelihood, and uncertainty propagation."
+    ],
+    "G5": [
+      "One explicit mass/interaction point with a Boltzmann solution or a fully specified nonthermal reheating history, plus PQ restoration/isocurvature/domain-wall and late-decay likelihoods."
+    ],
+    "G6": [
+      "Measured or UV-derived gauge/Yukawa/soft boundaries, individual pole thresholds, matching Wilson coefficients, and a covariance model."
+    ],
+    "G7": [
+      "A derived baryon-protection mechanism, flavour Wilson tensors, heavy spectrum, SUSY dressing, operator running, and lattice matrix-element covariance."
+    ],
+    "G8": [
+      "A predictive flavour origin and a versioned out-of-sample joint likelihood with experimentally defined inputs and theory covariance."
+    ]
+  },
+  "schema": "susy-v38-complete-theory-audit-v1",
+  "source_manifest": [
+    {
+      "exists": true,
+      "path": "susy_v38_complete_theory_audit.py",
+      "sha256": "c5b18dcbf60fbdf80e870d0ba6f3c2bd48fa9a6a76ba4c8171551da0c85124b8"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v38_complete_theory_audit.py",
+      "sha256": "3812812b342381f84310d8f093af86a4b408ba185ae3a919dc281d8688846b34"
+    },
+    {
+      "exists": true,
+      "path": "susy_v38_g1_uv_completion_audit.py",
+      "sha256": "99370f2203de2d8152fd6f4e9cbab9db88b9047eda9fa3cafdeee2853c944e99"
+    },
+    {
+      "exists": true,
+      "path": "susy_v37_g5_relic_cosmology_audit.py",
+      "sha256": "5a2da2703fb6a1dd276c4f449b3e7542ed17ec9d8d2489430f3c3baab37e6b75"
+    },
+    {
+      "exists": true,
+      "path": "susy_v37_nonanomaly_gate_audit.py",
+      "sha256": "f349d84d059256a4b14fd5158ad0c83dd83be767ece9a5097ed38a1eba61b8d2"
+    },
+    {
+      "exists": true,
+      "path": "susy_v37_new_physics_routes.py",
+      "sha256": "d2ee495b0f55407f17e1310aa748b8c55d4bbc5021f5693b678f0f8239eed86e"
+    },
+    {
+      "exists": true,
+      "path": "models/PSZ4RZ5610SUSYV37/PSZ4RZ5610SUSYV37.m",
+      "sha256": "78d330b7919f3c98183a2c5d0036642810273849c5dd08db0ba077b5d5fc2fdd"
+    },
+    {
+      "exists": true,
+      "path": ".github/workflows/susy-v38-complete-theory-audit.yml",
+      "sha256": "88609c049e60770148cda415a429c71835a01e70b6a7b3b1ea9448349a7aac51"
+    }
+  ],
+  "status": "V38_EXHAUSTIVE_COMPLETION_AUDIT__ALL_COMPUTABLE_SUBPROBLEMS_REPLAYED__ZERO_OF_EIGHT_FULL_GATES_CLOSED"
+}

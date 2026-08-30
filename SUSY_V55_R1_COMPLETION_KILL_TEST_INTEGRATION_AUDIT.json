@@ -1,0 +1,511 @@
+{
+  "V55_candidate_clause_ledger": [
+    {
+      "id": "C1",
+      "statement": "The displayed R1 texture omits h A H2 and L h H2 even though every additive ordinary/R selector preserving the source and filter terms also preserves both fillers.",
+      "status": "FAIL_OPERATOR_COMPLETENESS"
+    },
+    {
+      "id": "C2",
+      "statement": "A complete explicit sparse chiral superpotential exists, but its zero coefficients are not protected and therefore do not define the generic EFT.",
+      "status": "PARTIAL_SPARSE_ACTION_ONLY"
+    },
+    {
+      "id": "C3",
+      "statement": "The exact sparse 280-coordinate Hessian has four weak modes; adding either forced filler raises the rank by four and leaves no weak-Higgs zero mode.",
+      "status": "FAIL_INTENDED_KERNEL_AFTER_COMPLETION"
+    },
+    {
+      "id": "C4",
+      "statement": "No physical GS modulus/vector sector, full D-flat solution, soft spectrum, global minimum, or tunnelling analysis is present.",
+      "status": "OPEN_GLOBAL_VACUUM"
+    },
+    {
+      "id": "C5",
+      "statement": "No one-action threshold calculation or frozen low-energy Wilson array has been derived.",
+      "status": "OPEN_MATCHING"
+    },
+    {
+      "id": "C6",
+      "statement": "The 133-singlet universal-family/RHN repair, the 128-singlet family-only repair, and the five-singlet differentiated-family repair belong to different ledgers and cannot be merged.",
+      "status": "FAIL_ONE_ACTION_GS_MATTER_COMPATIBILITY"
+    },
+    {
+      "id": "C7",
+      "statement": "No current joint flavour, proton, collider, precision, or cosmological likelihood and withheld prediction exists.",
+      "status": "OPEN_PREDICTIVE_LIKELIHOOD"
+    }
+  ],
+  "anomaly_branch_ledger": [
+    {
+      "RH_neutrinos_included": true,
+      "exact_massive_spectator_Hessian": true,
+      "family_charges": [
+        11,
+        11,
+        11
+      ],
+      "fatal_other_issue": "forced Higgs filler and unprotected flavour",
+      "id": "A1_UNIVERSAL_MATTER_PLUS_RHN",
+      "physical_GS_completion": false,
+      "spectator_count": 133
+    },
+    {
+      "RH_neutrinos_included": false,
+      "cross_action_warning": "This 128-field arithmetic ledger omits the three N_i charges and cannot replace the 133-field repair in A1.",
+      "exact_massive_spectator_Hessian": true,
+      "family_charges": [
+        11,
+        11,
+        11
+      ],
+      "id": "A2_Q11_FAMILY_ONLY_REDUCED_REPAIR",
+      "physical_GS_completion": false,
+      "spectator_count": 128
+    },
+    {
+      "RH_neutrinos_included": false,
+      "anomalies": {
+        "A10": "3",
+        "TrQ": "72",
+        "TrQ3": "1110",
+        "kA": "185/3"
+      },
+      "cross_action_warning": "No complete RHN/flavour action or full matter-extended Hessian uses this charge ledger.",
+      "family_charges": [
+        -2,
+        1,
+        11
+      ],
+      "id": "A3_DIFFERENTIATED_FORMAL_REPAIR",
+      "physical_GS_completion": false,
+      "spectator_H_rank": 5,
+      "spectator_charges": [
+        1,
+        -20,
+        32,
+        -19,
+        31
+      ],
+      "spectator_count": 5
+    }
+  ],
+  "core_sha256": "52d0044e8d227be29b2cab63c565c1f4335aae9a72c9d51f3c9044fe7289a1f7",
+  "expected_input_core_hashes": {
+    "gs_matter_anomaly": "ac4c31629b1d5e862c9175f754488e7eea490418a981fd9636bee3ef9f6a3e7f",
+    "matter_hessian": "efe7e8ba789ab93d12fbd4e478af4a91e8e670fe4361b4b4f9191a9e0eb6b098",
+    "matter_operator": "895f999b53fcf7c4e513e0f9c6ee3245d166d8db8d3cfceaff3d9d8c2af25330",
+    "proton_feasibility": "6959457039b2828c1602e0e0e225b90a24da402260c24b39535a6c3783cbc665",
+    "selector_no_go": "4419949188586eb7ded9551f1cb11c683a672cb30b4ae65d482e6273ba3d7a19",
+    "v54_master": "3dabe44528f698e0c39fa69deb8e25c0ec990989495e63f85374b3a0a9487c8e"
+  },
+  "final_decision": {
+    "R1_fixed_topology_rejected": true,
+    "V55_candidate_closed_gates": [],
+    "bounded_V55_R1_analysis_finished": true,
+    "complete_theory": false,
+    "cumulative_reusable_closed_gates": [
+      "G1"
+    ],
+    "empirical_new_physics_discovery": false,
+    "full_gates_closed_for_V55_candidate": 0,
+    "honest_outcome": "V55 completes the bounded R1 kill test. It preserves an exact conditional matter Hessian and finds useful tensor, anomaly, and proton results, but proves that the fixed R1 topology cannot naturally retain the MSSM Higgs pair. R1 is rejected and no complete theory exists.",
+    "next_redesign_trigger": "Start V56 only from a changed source/filter topology; parameter changes or additional additive Abelian selectors cannot rescue R1.",
+    "same_action_completion": false,
+    "selected_complete_candidate": null,
+    "selected_executable_frontier_candidate": null
+  },
+  "gate_ledger": [
+    {
+      "V55_candidate_closed": false,
+      "closed": true,
+      "decision": "The frozen historical ordinary-Spin quotient/anomaly lemma is retained only in its old namespace; no physical GS/global quotient exists for R1.",
+      "gate": "G1",
+      "scope": "frozen ordinary-Spin namespace only"
+    },
+    {
+      "V55_candidate_closed": false,
+      "closed": false,
+      "decision": "The C1-C7 same-action conjunction fails.",
+      "gate": "G2",
+      "scope": "V55 R1"
+    },
+    {
+      "V55_candidate_closed": false,
+      "closed": false,
+      "decision": "The sparse local Hessian is exact, but the symmetry-complete R1 action has the wrong kernel and lacks the GS/global vacuum sector.",
+      "gate": "G3",
+      "scope": "V55 R1"
+    },
+    {
+      "V55_candidate_closed": false,
+      "closed": false,
+      "decision": "FAILED for R1: forced renormalizable h A H2 and L h H2 terms generically lift all four weak-Higgs zero modes.",
+      "gate": "G4",
+      "scope": "V55 R1"
+    },
+    {
+      "V55_candidate_closed": false,
+      "closed": false,
+      "decision": "No dark-sector or cosmological action and likelihood exists.",
+      "gate": "G5",
+      "scope": "V55 R1"
+    },
+    {
+      "V55_candidate_closed": false,
+      "closed": false,
+      "decision": "The matter-extended one-loop Spin(10) coefficient is recorded, but complete thresholds and two-loop running are absent.",
+      "gate": "G6",
+      "scope": "V55 R1"
+    },
+    {
+      "V55_candidate_closed": false,
+      "closed": false,
+      "decision": "A genuine mixed-family degree-nine proton class exists; it can be numerically suppressed, but its matched Wilson coefficient and lifetime are unknown.",
+      "gate": "G7",
+      "scope": "V55 R1"
+    },
+    {
+      "V55_candidate_closed": false,
+      "closed": false,
+      "decision": "Universal charges do not protect flavour textures; differentiated bounded survivors have no compatible completed GS/matter action or current global fit.",
+      "gate": "G8",
+      "scope": "V55 R1"
+    }
+  ],
+  "hard_next_architecture_obligations": [
+    {
+      "id": "N1_CHANGE_SOURCE_FILTER_TOPOLOGY",
+      "requirement": "Break at least one exact equality behind q(A)=q(B)=q(L), for example by changing the MA^2/MAB source pair or the barC A C/L barC C pair. Merely removing L is insufficient because h A H2 remains forced."
+    },
+    {
+      "id": "N2_PROTECT_THE_FILTER",
+      "requirement": "Supply an exact non-Abelian, locality, mediator, or representation-level selection rule that allows the desired filter chain while forbidding every rank-lifting Higgs filler."
+    },
+    {
+      "id": "N3_RECOMPUTE_FULL_GEOMETRY",
+      "requirement": "For the changed action solve F and D and recompute the complete Hessian and gauge-orbit quotient; the kernel must be exactly 34 gauge, 45 light matter, and four weak-Higgs directions before soft breaking."
+    },
+    {
+      "id": "N4_ONE_ACTION_MATTER_GS_OPERATORS",
+      "requirement": "Embed realistic Yukawa/RHN textures, the physical GS modulus/vector and a complete tensor/operator census in that same action."
+    },
+    {
+      "id": "N5_MATCH_AND_TEST",
+      "requirement": "Derive thresholds and Wilson tensors, perform current flavour/proton likelihoods, and add SUSY breaking, EWSB, global-vacuum and cosmological tests before any gate promotion."
+    }
+  ],
+  "input_core_hashes": {
+    "gs_matter_anomaly": "ac4c31629b1d5e862c9175f754488e7eea490418a981fd9636bee3ef9f6a3e7f",
+    "matter_hessian": "efe7e8ba789ab93d12fbd4e478af4a91e8e670fe4361b4b4f9191a9e0eb6b098",
+    "matter_operator": "895f999b53fcf7c4e513e0f9c6ee3245d166d8db8d3cfceaff3d9d8c2af25330",
+    "proton_feasibility": "6959457039b2828c1602e0e0e225b90a24da402260c24b39535a6c3783cbc665",
+    "selector_no_go": "4419949188586eb7ded9551f1cb11c683a672cb30b4ae65d482e6273ba3d7a19",
+    "v54_master": "3dabe44528f698e0c39fa69deb8e25c0ec990989495e63f85374b3a0a9487c8e"
+  },
+  "integrity_checks": {
+    "V54_promoted_no_candidate_gate": true,
+    "additive_selector_theorem_forces_both_fillers": true,
+    "all_input_cores_are_canonical_and_expected": true,
+    "degree9_proton_class_is_neither_fatal_nor_safe_without_matching": true,
+    "differentiated_family_survivors_break_fixed_GS_repair": true,
+    "exact_tensor_correction_keeps_only_six_mixed_F4_patterns": true,
+    "formal_five_singlet_GS_branch_is_not_physical_completion": true,
+    "no_V55_candidate_gate_is_closed": true,
+    "no_completion_clause_passes": true,
+    "only_frozen_G1_is_cumulatively_retained": true,
+    "sparse_matter_hessian_is_exact_280_rank197_null83": true,
+    "symmetry_complete_blockwise_rank_consequence_is_201_null79": true,
+    "universal_charge_matrices_are_not_texture_protected": true
+  },
+  "matter_tensor_and_family_results": {
+    "broader_integer_proxy_search": {
+      "fixed_GS_repair_survivors": 0,
+      "hierarchical_proxy_survivors": 626,
+      "lowest_charge_strict_example": [
+        45,
+        39,
+        11
+      ],
+      "maximum_first_proton_dressing_insertions": 10,
+      "strict_monotone_survivors": 178,
+      "triples_scanned": 820
+    },
+    "exact_D5_tensor_correction": {
+      "genuine_mixed_patterns": [
+        [
+          2,
+          2,
+          0
+        ],
+        [
+          2,
+          0,
+          2
+        ],
+        [
+          0,
+          2,
+          2
+        ],
+        [
+          2,
+          1,
+          1
+        ],
+        [
+          1,
+          2,
+          1
+        ],
+        [
+          1,
+          1,
+          2
+        ]
+      ],
+      "multiplicity_each": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "same_family_Fi4_absent": true,
+      "three_plus_one_absent": true
+    },
+    "half_integer_low_degree_search": {
+      "nearest_candidate_charges": [
+        "10",
+        "21/2",
+        "11"
+      ],
+      "nearest_candidate_first_F4_total_degree": 8,
+      "safe_through_total_degree": 8,
+      "strict_solution_count": 0
+    },
+    "residual_direct_Yukawa_theorem": {
+      "R_symmetry": "w is the fixed superpotential charge (standard Z_N^R uses w=2 mod N)",
+      "conclusion": "the mixed-family Fa^2 Fb^2 charge class is allowed factorwise; therefore any product of such additive residual factors also allows it",
+      "congruences_mod_N": [
+        "r(H1)+r(barh)=w",
+        "r(barh)+r(h)=w",
+        "r(h)+r(H2)=w",
+        "2 r(H2)=w",
+        "2 r(Fa)+r(H1)=w",
+        "2 r(Fb)+r(H1)=w"
+      ],
+      "exact_derivation_mod_N": [
+        "r(h)=w-r(H2)=r(H2)",
+        "r(barh)=w-r(h)=r(H2)",
+        "r(H1)=w-r(barh)=r(H2)",
+        "2 r(Fa)=2 r(Fb)=w-r(H1)=r(H2)",
+        "2 r(Fa)+2 r(Fb)=2 r(H2)=w"
+      ],
+      "ordinary_symmetry": "w=0",
+      "required_terms": [
+        "P H1 barh",
+        "S barh h",
+        "h B H2",
+        "T H2^2",
+        "Fa Fa H1 for one family a",
+        "Fb Fb H1 for a distinct family b"
+      ],
+      "scope": "any additive residual Abelian factor, ordinary or R, under which every GUT-scale VEV in P H1 barh, S barh h, h B H2 and T H2^2 is neutral"
+    },
+    "universal_family_problem": "U1 permits every symmetric Yukawa, RHN-link, and Majorana entry; the displayed sparse matrices are coefficient choices rather than symmetry textures."
+  },
+  "n_failed_integrity_checks": 0,
+  "primary_sources": [
+    {
+      "title": "Constraining Proton Lifetime in SO(10) with Stabilized Doublet-Triplet Splitting",
+      "url": "https://arxiv.org/abs/1003.2625",
+      "use": "reference proton-lifetime scaling only"
+    },
+    {
+      "title": "Search for proton decay via p to anti-neutrino K+ using 260 kiloton-year data of Super-Kamiokande",
+      "url": "https://arxiv.org/abs/1408.1195",
+      "use": "experimental p to anti-neutrino K+ lower limit"
+    },
+    {
+      "title": "The Green-Schwarz mechanism in heterotic orbifolds",
+      "url": "https://arxiv.org/abs/1110.6901",
+      "use": "single anomalous-U1 universality and FI conventions"
+    }
+  ],
+  "proton_feasibility": {
+    "G7_closed": false,
+    "automatically_fatal": false,
+    "boundary": "five VEV insertions can easily provide adequate numerical suppression, but the physical VEV/cutoff ratios, UV coefficient, family rotations, triplet and superpartner dressing, interference and current spectrum are not fixed",
+    "effective_scale": "Meff = Lambda / (abs(c) xS^4 xR)",
+    "experimental_lower_limit_yr": 5.9e+33,
+    "experimental_mode": "p -> anti-nu K+",
+    "operator": "(F1^2 F2^2)_Spin10-singlet S^4 R / Lambda^6",
+    "proved_safe": false,
+    "published_reference_maximum_c_kappa_eta": 0.05468932432454966,
+    "published_reference_required_Meff_over_kappa_GeV": 4.388425034760681e+19,
+    "testable_inequality": "abs(c*kappa) xS^4 xR < Lambda / M_required(spectrum)",
+    "total_degree": 9
+  },
+  "revision_of_V54": {
+    "preserved_result": "The V54 charged-source sparse Hessian and its V55 matter extension are algebraically valid for the displayed coefficient texture.",
+    "prior_gate_reversal": false,
+    "reason": "The zero coefficients of h A H2 and L h H2 cannot be protected by any product of additive Abelian ordinary/R selectors that retains the required source and filter terms.",
+    "why_no_gate_reversal": "V54 itself closed zero candidate gates.",
+    "withdrawn_classification": "R1_CONTINUOUS_PARENT_FI is no longer an executable frontier candidate; it is a rejected fixed-topology texture."
+  },
+  "same_action_rule": "A gate closes only if all hypotheses are proved in one canonical action. Sparse-Hessian, differentiated-flavour, and formal-GS certificates from different charge or field ledgers may not be assembled into one theory.",
+  "schema": "susy-v55-r1-completion-kill-test-integration-audit-v1",
+  "source_manifest": [
+    {
+      "exists": true,
+      "path": "susy_v55_r1_completion_kill_test_integration_audit.py",
+      "sha256": "71e30d1e6e64ee8c0717e536b7df37bb8b30d2c1aa9f900cfafa45cdc7839c0d"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v55_r1_completion_kill_test_integration_audit.py",
+      "sha256": "c95bb3973f9aecd144016639ec41a7710d8dd9f0602768e49dcdddc1fd1c3cd2"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V54_THEORY_REDESIGN_INTEGRATION_AUDIT.json",
+      "sha256": "c593c8aa1d0a4ebc7c1893a1c6ca5135f98b2790124774acdee86123732e65e0"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V55_R1_MATTER_HESSIAN_AUDIT.json",
+      "sha256": "915b0f02d97937eef0c92615cc0a626380719d2a7f6c2467ea6bcb1ffac0146f"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V55_R1_MATTER_OPERATOR_AUDIT.json",
+      "sha256": "b1a1e61e434f7fdd2719233207ab44d3a263e886028e6250c52dcc6b7b24f093"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V55_R1_RESIDUAL_SELECTOR_NO_GO_AUDIT.json",
+      "sha256": "306f2cd72a94fef4ca5bd3958ff89891af7b4fa6e79b5dcdfd90bee5673aaf0c"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V55_R1_DEGREE9_PROTON_FEASIBILITY_AUDIT.json",
+      "sha256": "a335305b1820eef58f12ac3e8126573b0165d743da708f6b60256f5f06bcd925"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V55_R1_GS_MATTER_ANOMALY_AUDIT.json",
+      "sha256": "1f59476c96a77b3e3d5726688d04c32c0bc2442723af8b27c49fce25ae53c308"
+    }
+  ],
+  "sparse_matter_completion": {
+    "H_nullity": 83,
+    "H_rank": 197,
+    "Q_rank": 34,
+    "RH_neutrino_charges": [
+      -10,
+      -10,
+      -10
+    ],
+    "all_displayed_terms_neutral": true,
+    "conditional_GS_singlet_extension": {
+      "H_nullity": 83,
+      "H_rank": 330,
+      "coordinates": 413,
+      "scope": "exact for the universal-family plus three-RHN ledger; no physical GS modulus, Kahler potential, or string embedding",
+      "spectator_count": 133
+    },
+    "coordinates": 280,
+    "displayed_terms": [
+      "F_i F_j H1",
+      "F_i barC N_j",
+      "(P^2 R^2/M_*^3) N_i N_j"
+    ],
+    "family_charges": [
+      11,
+      11,
+      11
+    ],
+    "kernel_decomposition": {
+      "Spin10_gauge": 33,
+      "U1_gauge": 1,
+      "extra": 0,
+      "light_matter": 45,
+      "weak_Higgs": 4
+    },
+    "matter_block": {
+      "coordinates": 51,
+      "heavy_RHN_determinant_identity": "det([[0,400 Lambda],[400 Lambda^T,40 Mu]])=-400^6 det(Lambda)^2",
+      "nullity": 45,
+      "rank": 6
+    },
+    "symmetry_complete_flavor_statement": "U(1) permits every entry of the symmetric F_i F_j H1 matrix, every entry of F_i barC N_j, and every entry of the dressed symmetric N_i N_j matrix",
+    "texture_protected_by_U1": false
+  },
+  "status": "V55_R1_COMPLETION_KILL_TEST__SPARSE_280_COORDINATE_HESSIAN_EXACT_RANK197_NULL83__SYMMETRY_COMPLETION_FORCES_hAH2_AND_LhH2__GENERIC_RANK201_NULL79_WITH_ZERO_WEAK_HIGGS_MODES__ADDITIVE_SELECTOR_REPAIR_IMPOSSIBLE_AT_FIXED_TOPOLOGY__MIXED_FAMILY_DEGREE9_PROTON_CLASS_EXACT_BUT_NUMERIC_LIFETIME_UNDETERMINED__GS_BRANCHES_FORMAL_OR_INCOMPATIBLE__R1_REJECTED__ZERO_V55_GATE_CLOSURES__COMPLETE_THEORY_FALSE",
+  "symmetry_completion_kill_test": {
+    "A_weak_block_coefficient": 3,
+    "G4_result": "FAILED_FOR_R1",
+    "actual_charge_arithmetic": {
+      "L_h_H2": "1-4+3=0",
+      "h_A_H2": "-4+1+3=0"
+    },
+    "exact_derivation": [
+      "subtract MAB from MA^2: r(A)=r(B)",
+      "subtract L barC C from barC A C: r(A)=r(L)",
+      "therefore both r(A)+r(h)+r(H2) and r(L)+r(h)+r(H2) equal w"
+    ],
+    "fixed_topology_additive_selector_rescue_exists": false,
+    "forced_operators": [
+      "h_10 A45 H2_10",
+      "L h_10 H2_10"
+    ],
+    "generic_symmetry_complete_280_coordinate_consequence": {
+      "H_nullity": 79,
+      "H_rank": 201,
+      "coefficient_scope": "generic nonzero allowed coefficient; an accidental tuned zero is not a symmetry protection and is radiatively unstable",
+      "coordinates": 280,
+      "derivation": "At the zero-matter vacuum the forced filler acts in the existing h/A/H2 weak block and spans the four sparse weak null directions. Its exact rank increment therefore adds to the bound sparse Hessian.",
+      "kernel_decomposition": {
+        "Spin10_gauge": 33,
+        "U1_gauge": 1,
+        "extra": 0,
+        "light_matter": 45,
+        "weak_Higgs": 0
+      }
+    },
+    "one_weak_component_actual_determinant": 9,
+    "one_weak_component_determinant": "x^2",
+    "removing_L_alone_is_sufficient": false,
+    "required_terms": [
+      "M A^2",
+      "M A B",
+      "barC A C",
+      "L barC C",
+      "h B H2"
+    ],
+    "theorem_scope": "any additive symmetry factor, ordinary or R, applied to the full source and filter superpotential; no assumption about unbroken VEV charges is needed",
+    "weak_Higgs_nullity_after": 0,
+    "weak_rank_after": 16,
+    "weak_rank_before": 12
+  },
+  "verification_run": {
+    "date": "2026-08-29",
+    "focused_V55_pytest": {
+      "failed": 0,
+      "passed": 69,
+      "scope": "all six V55 component and integration test modules"
+    },
+    "historical_pytest": {
+      "failed": 0,
+      "passed": 766,
+      "scope": "all test_susy_v40 through test_susy_v55 modules"
+    },
+    "python_compile": {
+      "V55_scripts": 6,
+      "passed": true
+    },
+    "supported_artifact_freshness_checks_passed": true
+  }
+}

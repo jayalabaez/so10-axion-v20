@@ -1,0 +1,306 @@
+{
+  "Majorana_seesaw_no_go": {
+    "allowed_interpretation": "The stated assignment is a Dirac-neutrino route.  A Dirac seesaw can be designed only by adding specified vectorlike sterile mediators and a neutral small-mixing sector; that is a material new V40 neutrino architecture, not the retained V39 type-I seesaw.",
+    "explicit_ND_Majorana_test": {
+      "U1F_equation": "2(-3) + 9 k = 0",
+      "Z9_residue": 3,
+      "integer_solution_exists": false,
+      "operator": "ND ND times arbitrary ThetaPlus/ThetaMinus and canonical-VEV insertions"
+    },
+    "light_Majorana_operator_test": {
+      "Z9_charge": 6,
+      "conclusion": "The exact Z9 also forbids the low-energy Majorana Weinberg class in the stated assignment.",
+      "operator": "(Q H Sc)^2 times residual-neutral VEV insertions"
+    },
+    "stated_neutrino_source": {
+      "U1F_charge": 0,
+      "after_Sc_VEV": "a Dirac neutrino Yukawa source",
+      "operator": "Q H Sc ND / M"
+    },
+    "type_I_general_theorem": {
+      "assumptions": [
+        "<Sbc> and every other high-scale VEV preserve the residual selector, so their charges vanish modulo N",
+        "the standard Pati-Salam type-I source Sbc Qc N is allowed",
+        "a Majorana N N mass is allowed after those VEV insertions"
+      ],
+      "contradiction": "Exact protection of Qc^4 requires 4 q_Qc != 0 modulo N.  Therefore an unbroken additive residual cannot simultaneously furnish this standard type-I seesaw and protect the full pure Qc^4 ring.",
+      "deduction": [
+        "q_N = -q_Qc modulo N from Sbc Qc N",
+        "2 q_N = 0 modulo N from the Majorana mass",
+        "therefore 2 q_Qc = 0 and hence 4 q_Qc = 0 modulo N"
+      ]
+    }
+  },
+  "PQ_R_vacuum_boundary": {
+    "missing_data": [
+      "Z5610/PQ charges of Theta, all doublet pairs and all singlet pairs",
+      "external discrete-R charges and every new superpotential/Kahler term",
+      "F/D equations proving no non-9-multiple charged field gains a VEV"
+    ],
+    "non-worsening_assignment_that_must_be_checked_in_a_real_source": {
+      "F_breaking_driver": "Z5610=PQ=0, R=2",
+      "ThetaPlus_ThetaMinus": "Z5610=PQ=0, R=0",
+      "mass-paired_exotics": "Z5610=PQ=0 and R charges summing to 2 (for example 1+1)",
+      "reason": "Those signatures already occur in the V39 (Z5610, R, PQ) lattice, so they do not automatically create a lower charge-lattice PQ-breaking monomial.  A fresh V40 enumeration is still mandatory."
+    },
+    "result": "PQ quality is unverified, not inherited."
+  },
+  "candidate_scope": "prospective 4D gauged U(1)_F Higgsed by charges plus/minus 9 to Z9; not an active V40 SARAH source",
+  "completion_exotics": [
+    {
+      "copies": 1,
+      "dim": 1,
+      "f": 9,
+      "indices": {},
+      "name": "ThetaPlus"
+    },
+    {
+      "copies": 1,
+      "dim": 1,
+      "f": -9,
+      "indices": {},
+      "name": "ThetaMinus"
+    },
+    {
+      "copies": 4,
+      "dim": 2,
+      "f": 0,
+      "indices": {
+        "SU2L": 1
+      },
+      "name": "L0"
+    },
+    {
+      "copies": 4,
+      "dim": 2,
+      "f": -9,
+      "indices": {
+        "SU2L": 1
+      },
+      "name": "Lminus9"
+    },
+    {
+      "copies": 4,
+      "dim": 2,
+      "f": 0,
+      "indices": {
+        "SU2R": 1
+      },
+      "name": "R0"
+    },
+    {
+      "copies": 4,
+      "dim": 2,
+      "f": 9,
+      "indices": {
+        "SU2R": 1
+      },
+      "name": "Rplus9"
+    },
+    {
+      "copies": 1,
+      "dim": 1,
+      "f": 4,
+      "indices": {},
+      "name": "S4"
+    },
+    {
+      "copies": 1,
+      "dim": 1,
+      "f": 5,
+      "indices": {},
+      "name": "S5"
+    },
+    {
+      "copies": 1,
+      "dim": 1,
+      "f": 3,
+      "indices": {},
+      "name": "S3"
+    },
+    {
+      "copies": 1,
+      "dim": 1,
+      "f": 6,
+      "indices": {},
+      "name": "S6"
+    },
+    {
+      "copies": 1,
+      "dim": 1,
+      "f": -2,
+      "indices": {},
+      "name": "Sminus2"
+    },
+    {
+      "copies": 1,
+      "dim": 1,
+      "f": -7,
+      "indices": {},
+      "name": "Sminus7"
+    }
+  ],
+  "core_sha256": "f213eea7d200675fbcff02d3b94727628804c827365205b4b4e913ff77c2286c",
+  "decision": {
+    "complete_V40_candidate": false,
+    "gates_promoted": [],
+    "ordinary_listed_U1F_parent_anomalies_cancel": true,
+    "pure_driver_dressed_Q4_and_Qc4_ring_blocked_conditional_on_neutral_VEV_branch": true,
+    "retained_V39_type_I_Majorana_seesaw_survives": false
+  },
+  "input_charge_table": {
+    "A15": 0,
+    "A16": 0,
+    "A17": 0,
+    "A2": 3,
+    "A32": -3,
+    "H": 0,
+    "ND": -3,
+    "P": 0,
+    "Pb": 0,
+    "Psi": 3,
+    "PsiBar": -3,
+    "PsiC": -3,
+    "PsiCBar": 3,
+    "Q": 3,
+    "Qc": -3,
+    "Sbc": 0,
+    "Sc": 0,
+    "SigBc": 0,
+    "SigC": 0,
+    "X": 0,
+    "Zp": 0
+  },
+  "old_parent_cross_anomaly_boundary": {
+    "conclusion": "The listed U(1)_F exotics are neutral under the old parent representatives, so they do not by themselves supply a U(1)_F x U(1)_X x U(1)_H anomaly completion.  A continuous-parent lift, extra charged UV states, or a quantized Green--Schwarz/Wess--Zumino sector must be specified before calling the combined selector gauge-derived.",
+    "input_scope": "The primitive continuous U(1)_X and U(1)_H lifts declared in susy_v38_g1_uv_completion_audit.py, for the F-charged PsiBar, PsiCBar, A2 and A32 rows only.",
+    "qualification": "Representative charges are not a unique continuous lift; nonzero rows are an unresolved necessary UV-completion condition, not a standalone anomaly theorem.",
+    "raw_representative_cross_sums": {
+      "F_H_squared": 0,
+      "F_X_H": 6,
+      "F_X_squared": -360,
+      "F_squared_H": 0,
+      "F_squared_X": -270,
+      "F_squared_X_H": -540
+    },
+    "selected_residues": {
+      "F_H_squared_mod85": 0,
+      "F_X_squared_mod66": 36,
+      "F_squared_H_mod85": 0,
+      "F_squared_X_mod66": 60
+    }
+  },
+  "ordinary_U1F_anomaly_audit": {
+    "all_listed_ordinary_parent_anomalies_cancel_exactly": true,
+    "convention": "PS rows use 2T(R) times all other multiplicities; gravity/cubic rows use physical Weyl-component multiplicities.",
+    "exotic_PS_squared_U1F_doubled": {
+      "SU2L": -36,
+      "SU2R": 36,
+      "SU4": 0
+    },
+    "exotic_U1F_cubed": 81,
+    "exotic_gravity_squared_U1F": 9,
+    "massability_of_the_completion_rows": {
+      "doublet_pairs": [
+        "ThetaPlus L0 Lminus9",
+        "ThetaMinus R0 Rplus9"
+      ],
+      "qualification": "These U(1)_F-invariant cubic mass couplings become heavy thresholds only if the displayed Theta branch is actually stabilized.",
+      "singlet_pairs": [
+        "ThetaMinus S4 S5",
+        "ThetaMinus S3 S6",
+        "ThetaPlus Sminus2 Sminus7"
+      ]
+    },
+    "total_PS_squared_U1F_doubled": {
+      "SU2L": 0,
+      "SU2R": 0,
+      "SU4": 0
+    },
+    "total_U1F_cubed": 0,
+    "total_gravity_squared_U1F": 0,
+    "visible_PS_squared_U1F_doubled": {
+      "SU2L": 36,
+      "SU2R": -36,
+      "SU4": 0
+    },
+    "visible_U1F_cubed": -81,
+    "visible_gravity_squared_U1F": -9
+  },
+  "pure_Q4_Qc4_holomorphic_ring": {
+    "assumptions": [
+      "q_F(X)=q_F(Zp)=0, q_F(Q)=+3 and q_F(Qc)=-3",
+      "all canonical PS/PQ/driving VEVs and every other VEV have q_F in 9 Z",
+      "the only U(1)_F-breaking insertions are ThetaPlus/ThetaMinus of charges plus/minus 9"
+    ],
+    "canonical_PSVev_counterexample_retested": {
+      "Theta_dressed_equation": "-12 + 9 k = 0",
+      "U1F_charge": -12,
+      "V39_counterexample": "X [epsilon_SU2R delta_SU4 (Qc Sbc)]^4 / M^6",
+      "Z9_residue": 6,
+      "conclusion": "The V39 degree-nine Qc^4 dressing is forbidden in this Z9 route, provided <Sbc> is Z9 neutral.",
+      "integer_solution_exists": false
+    },
+    "four_pure_operator_classes": [
+      {
+        "Diophantine_equation_for_Theta_insertions": "12 + 9 k = 0",
+        "U1F_charge_before_Theta_insertions": 12,
+        "Z9_residue": 3,
+        "forbidden": true,
+        "integer_solution_exists": false,
+        "operator_class": "X Q^4 times arbitrary canonical VEV insertions"
+      },
+      {
+        "Diophantine_equation_for_Theta_insertions": "-12 + 9 k = 0",
+        "U1F_charge_before_Theta_insertions": -12,
+        "Z9_residue": 6,
+        "forbidden": true,
+        "integer_solution_exists": false,
+        "operator_class": "X Qc^4 times arbitrary canonical VEV insertions"
+      },
+      {
+        "Diophantine_equation_for_Theta_insertions": "12 + 9 k = 0",
+        "U1F_charge_before_Theta_insertions": 12,
+        "Z9_residue": 3,
+        "forbidden": true,
+        "integer_solution_exists": false,
+        "operator_class": "Zp Q^4 times arbitrary canonical VEV insertions"
+      },
+      {
+        "Diophantine_equation_for_Theta_insertions": "-12 + 9 k = 0",
+        "U1F_charge_before_Theta_insertions": -12,
+        "Z9_residue": 6,
+        "forbidden": true,
+        "integer_solution_exists": false,
+        "operator_class": "Zp Qc^4 times arbitrary canonical VEV insertions"
+      }
+    ],
+    "proof": "Gauge contractions cannot change U(1)_F charge.  Canonical VEVs and arbitrary Theta powers shift it only by 9 Z, while each pure driver-dressed Q^4 or Qc^4 class has residue +3 or -3 modulo 9.",
+    "scope_limit": "This proves only the requested pure Q^4 and Qc^4 holomorphic classes.  In particular X Q^2 Qc^2 is F-neutral and must receive its own PS-component, flavour, SUSY-dressing and hadronic analysis before any full proton-stability statement."
+  },
+  "residual_Z9_necessary_audit": {
+    "Higgsing": {
+      "Theta_charges": [
+        9,
+        -9
+      ],
+      "necessary_branch_condition": "Every field with a nonzero VEV has U(1)_F charge in 9 Z; in particular Sc, Sbc, P, Pb, X, Zp and all exotic/singlet completion fields must have zero VEV.",
+      "parent": "gauged U(1)_F",
+      "unbroken_group": "Z9"
+    },
+    "full_chiral_Hsieh_Dai_Freed_style_arithmetic": {
+      "(n2+3n+2)Delta_s3_mod_6n": 0,
+      "2Delta_s1_mod_9": 0,
+      "Delta_s1": 0,
+      "Delta_s3": 0
+    },
+    "low_energy_after_Theta_mass_thresholds": {
+      "(n2+3n+2)Delta_s3_mod_6n": 0,
+      "2Delta_s1_mod_9": 0,
+      "Delta_s1": -9,
+      "Delta_s3": -81
+    },
+    "qualification": "These are necessary finite-arithmetic checks; they do not compute the full Spin x G_PS x Z9 bordism invariant."
+  },
+  "status": "V40_U1F_TO_Z9_PURE_Q4_RING_PROTECTION_AND_ORDINARY_PARENT_ANOMALIES_VALIDATED__EXACT_MAJORANA_SEESAW_NO_GO__NOT_A_COMPLETE_V40_SOURCE"
+}

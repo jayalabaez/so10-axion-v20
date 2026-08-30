@@ -1,0 +1,329 @@
+{
+  "all_order_boundary": {
+    "core_sha256": "f5614218e61b27c0cd537f43d4ac9096468866c846f7b872d33b67405c33854d",
+    "degree_four_EFT_catalogue_exact": true,
+    "finite_108_sector_catalogue_all_order_closed": false,
+    "first_audited_XMP_spurion_leakage_layer": {
+      "complete_degree_five_census": false,
+      "sectors": 67,
+      "so10_flavour_components": 160,
+      "source_degree": 5
+    },
+    "lifts_already_inside_degree_four_catalogue": 15,
+    "path": "SUSY_V22R_BROKEN_SELECTOR_SPURION_FRONTIER.json",
+    "physical_diagonal_Z28R_strengthens_the_remnant_under_standard_embedding": true,
+    "pure_Z4R_direct_light_block_protection_survives": true,
+    "reason": "the required Z2S-odd XMP VEV opens a Wilsonian spurion tower; the reported 67-sector count is only the first audited XMP-spurion leakage layer, not a complete degree-five census"
+  },
+  "checks": {
+    "V22R_is_a_separate_model_and_does_not_overwrite_V22": true,
+    "XMP_VEV_breaks_the_Z2S_selector": true,
+    "accepted_completion_core_is_pinned": true,
+    "all_108_sectors_are_source_symmetry_allowed": true,
+    "broken_selector_frontier_is_source_pinned": true,
+    "catalogue_has_exactly_265_counted_components": true,
+    "catalogue_partition_is_29_plus_79": true,
+    "exact_degree_four_catalogue_has_108_base_sectors": true,
+    "field_content_is_exactly_the_unchanged_33_field_V22_source": true,
+    "first_audited_XMP_spurion_leakage_layer_is_67_sectors_160_components": true,
+    "forced_completion_has_194_counted_components": true,
+    "generated_SARAH_source_is_frozen": true,
+    "generated_catalogue_core_is_frozen": true,
+    "generic_driver_basis_is_materially_larger_than_the_original_diagonal_five": true,
+    "model_declares_exactly_one_SARAH_gauge_eigenstate": true,
+    "model_embeds_all_108_machine_readable_sector_ids": true,
+    "model_marks_component_superpotential_as_unimplemented": true,
+    "no_full_G1_or_later_gate_is_claimed": true,
+    "pure_global_VEV_stabilizer_is_Z4R": true,
+    "standard_Z28R_and_Z2S_anomaly_ledgers_pass": true,
+    "standard_gauge_compensated_physical_stabilizer_is_full_Z28R": true,
+    "ten_direct_missing_partner_deformations_are_explicit": true
+  },
+  "claim_boundary": {
+    "Kahler_and_soft_rings_closed": false,
+    "SARAH_executable_full_superpotential_landed": false,
+    "V22R_G2_closed": false,
+    "V22R_G3_closed": false,
+    "active_V22R_source_model_landed": true,
+    "all_order_holomorphic_ring_closed": false,
+    "component_Clebsches_closed": false,
+    "degree_le_4_base_sector_selection_closed": true,
+    "full_V22R_G1_closed": false,
+    "global_F_D_soft_vacuum_closed": false,
+    "individual_SO10_tensor_contractions_landed": false,
+    "standard_source_symmetry_anomaly_arithmetic_closed": true
+  },
+  "core_sha256": "fa961a179c5124c598bb8b2976c1763f1b5057d3aabb1458552f66043a81a59c",
+  "failures": [],
+  "field_content": {
+    "field_names": [
+      "F",
+      "P",
+      "R",
+      "SpecS",
+      "SpecB",
+      "Q",
+      "Pbar",
+      "Qbar",
+      "Rbar",
+      "Phi210",
+      "DeltaB",
+      "Delta",
+      "DeltaB2",
+      "Delta2",
+      "H10m",
+      "H10p",
+      "T120m",
+      "T120p",
+      "Splus",
+      "Sminus",
+      "Phi17p",
+      "Phi17m",
+      "NX",
+      "NS",
+      "XMP",
+      "C16",
+      "C16bar",
+      "Nphi",
+      "Z0",
+      "NC",
+      "NMP",
+      "Z1",
+      "Z2"
+    ],
+    "new_chiral_fields_relative_to_V22": 0,
+    "source_fields": 33
+  },
+  "material_revalidation": {
+    "direct_missing_partner_deformation_sectors": [
+      {
+        "monomial": "Phi210^2 Delta H10m",
+        "sector_id": "V22R-S094"
+      },
+      {
+        "monomial": "Phi210^2 Delta T120m",
+        "sector_id": "V22R-S095"
+      },
+      {
+        "monomial": "Phi210^2 DeltaB2 H10p",
+        "sector_id": "V22R-S096"
+      },
+      {
+        "monomial": "Phi210^2 DeltaB2 T120p",
+        "sector_id": "V22R-S097"
+      },
+      {
+        "monomial": "Phi210 DeltaB Delta XMP",
+        "sector_id": "V22R-S098"
+      },
+      {
+        "monomial": "Phi210 DeltaB2 Delta2 XMP",
+        "sector_id": "V22R-S099"
+      },
+      {
+        "monomial": "Delta H10m C16 C16bar",
+        "sector_id": "V22R-S105"
+      },
+      {
+        "monomial": "Delta T120m C16 C16bar",
+        "sector_id": "V22R-S106"
+      },
+      {
+        "monomial": "DeltaB2 H10p C16 C16bar",
+        "sector_id": "V22R-S107"
+      },
+      {
+        "monomial": "DeltaB2 T120p C16 C16bar",
+        "sector_id": "V22R-S108"
+      }
+    ],
+    "doublet_triplet_component_matrix_recompute_required": true,
+    "driver_related_selected_sectors": 40,
+    "flavour_fit_recompute_required": true,
+    "generic_driver_product_matrix_shape": [
+      5,
+      5
+    ],
+    "global_F_D_soft_vacuum_recompute_required": true
+  },
+  "model_contract_id": "susy_so10x17_v22r_active_degree4_completion",
+  "model_source": {
+    "mode": "portable-lf",
+    "path": "models/SO10X17SUSYV22R/SO10X17SUSYV22R.m",
+    "sha256": "c792d94c01008a03e5ef8811652764094efdfa3276b4986aa5dc295e7015a77e"
+  },
+  "n_checks": 22,
+  "n_failed": 0,
+  "namespace": "active.susy_so10x17.v22r.source_contract",
+  "operator_catalogue": {
+    "base_sectors": 108,
+    "component_tensor_realizations_landed": 0,
+    "core_sha256": "0be5be830a3c8180224c3818870a3698eb111bb9260df0a2316ab7c1d5a3be70",
+    "counted_so10_flavour_components": 265,
+    "field_degree": [
+      1,
+      4
+    ],
+    "forced_completion_sectors": 79,
+    "path": "SUSY_V22R_OPERATOR_CATALOGUE.json",
+    "retained_v22_sectors": 29
+  },
+  "overall_state": "ACTIVE_DEGREE4_EFT_SOURCE_LANDED",
+  "schema": "susy_so10x17_v22r_contract_v1",
+  "source_manifest": [
+    {
+      "mode": "portable-lf",
+      "path": "susy_v22r_operator_catalogue.py",
+      "role": "catalogue_generator",
+      "sha256": "1c7ff5325229d3aaf9bac3ec56eb99e009b77bbf40b78ce9220d15f903b108ba"
+    },
+    {
+      "mode": "portable-lf",
+      "path": "SUSY_V22R_OPERATOR_CATALOGUE.json",
+      "role": "operator_catalogue",
+      "sha256": "dbd3f87df836184673c6bf972c5c3d4a7f278ba19d7be20798db3cb7014d7b1f"
+    },
+    {
+      "mode": "portable-lf",
+      "path": "models/SO10X17SUSYV22R/SO10X17SUSYV22R.m",
+      "role": "SARAH_source_model",
+      "sha256": "c792d94c01008a03e5ef8811652764094efdfa3276b4986aa5dc295e7015a77e"
+    },
+    {
+      "mode": "portable-lf",
+      "path": "SUSY_V22_G1_NO_NEW_FIELD_COMPLETION.json",
+      "role": "accepted_completion",
+      "sha256": "ac9d2ad4eaa091e7b7381e91956c8a97d57d1bcb2adf5af030a6da1632cfdaf9"
+    },
+    {
+      "mode": "portable-lf",
+      "path": "SUSY_V22R_BROKEN_SELECTOR_SPURION_FRONTIER.json",
+      "role": "broken_selector_frontier",
+      "sha256": "c6cfb2dc6065d4bdb64d89d77389c9278c11a396e65dfd9f8b91ace2170ca9cd"
+    }
+  ],
+  "status": "V22R_ACTIVE_SOURCE_108_SECTOR_DEGREE4_CONTRACT_CLOSED__TENSOR_VACUUM_G2_OPEN",
+  "symmetry": {
+    "SARAH_encoding": "integer U(1)R lift plus ordinary Z2S, selection-equivalent only on the frozen degree<=4 census; finite Z28R Python/JSON data are authoritative at higher degree",
+    "Z28R_field_charges": {
+      "C16": 24,
+      "C16bar": 4,
+      "Delta": 2,
+      "Delta2": 20,
+      "DeltaB": 0,
+      "DeltaB2": 10,
+      "F": 1,
+      "H10m": 0,
+      "H10p": 20,
+      "NC": 2,
+      "NMP": 2,
+      "NS": 2,
+      "NX": 2,
+      "Nphi": 2,
+      "P": 1,
+      "Pbar": 5,
+      "Phi17m": 24,
+      "Phi17p": 4,
+      "Phi210": 0,
+      "Q": 9,
+      "Qbar": 25,
+      "R": 1,
+      "Rbar": 25,
+      "Sminus": 4,
+      "SpecB": 25,
+      "SpecS": 9,
+      "Splus": 24,
+      "T120m": 0,
+      "T120p": 20,
+      "XMP": 0,
+      "Z0": 20,
+      "Z1": 12,
+      "Z2": 12
+    },
+    "Z28R_superpotential_charge": 2,
+    "Z2S_odd_fields": [
+      "Delta2",
+      "DeltaB",
+      "XMP",
+      "Z0"
+    ],
+    "anomaly_ledger": {
+      "Z28R": {
+        "U1X_Z28R_squared_mod_28": 0,
+        "integer_values": {
+          "SO10_squared_Z28R": 1946,
+          "U1X_Z28R_squared": -228648,
+          "U1X_squared_Z28R": 272426,
+          "gravity_squared_Z28R": 9716
+        },
+        "linear_mod_eta_14": {
+          "SO10_squared_Z28R": 0,
+          "U1X_squared_Z28R": 0,
+          "gravity_squared_Z28R": 0
+        }
+      },
+      "Z28R_passes_eta14": true,
+      "Z2S": {
+        "SO10_index_sum": 70,
+        "U1X_Z2_squared_exact": 0,
+        "U1X_squared_sum": 1008,
+        "odd_Weyl_dimension": 254
+      },
+      "Z2S_even_ledgers": true
+    },
+    "group": "Z28R x Z2S",
+    "physical_gauge_compensated_R_remnant": "Z28R",
+    "pure_global_R_remnant": "Z4R",
+    "vacuum_stabilizer": {
+      "SO10_singlet_chi_convention": {
+        "C16": 5,
+        "C16bar": -5,
+        "Phi210": 0
+      },
+      "compensator_for_element_k": {
+        "U1X_parameter": "-5 k / 7",
+        "U1chi_parameter": "k / 35",
+        "phase_convention": "exp(2 pi i [k q28/28 + tX X + tchi chi])"
+      },
+      "gauge_compensated_diagonal_stabilizer_elements": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27
+      ],
+      "interpretation": "the earlier gcd=4 statement describes only transformations with no gauge compensation; the standard rank-breaking singlet embedding preserves the full gauge-compensated diagonal Z28R",
+      "physical_diagonal_stabilizer": "Z28R",
+      "pure_global_stabilizer": "Z4R",
+      "pure_global_stabilizer_elements": [
+        0,
+        7,
+        14,
+        21
+      ]
+    }
+  }
+}

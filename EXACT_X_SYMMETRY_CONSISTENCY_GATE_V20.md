@@ -1,17 +1,17 @@
 # Exact X-symmetry consistency gate - v20
 
-**Status:** `AUTHORITATIVE_GAUGED_U1X_CONTRACT_AUDIT_COMPLETE__BLOCKED`
-**Overall state:** `BLOCKED`
+**Status:** `AUTHORITATIVE_GAUGED_U1X_CONTRACT_AUDIT_COMPLETE__CONSISTENT`
+**Overall state:** `PASS`
 **Static contract consistent:** `True`
-**Contract consistent:** `False`
-**Blocker:** `AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED`
+**Contract consistent:** `True`
+**Blocker:** `None`
 
-The authoritative manuscript, native non-supersymmetric SARAH model, exact charge catalogues, residual Z17 assignments, GaugeES Lagrangian registration, scalar filter, and hash-bound input bundle are statically consistent. The sole remaining contract blocker is a real external SARAH execution of the shipped driver; no local Mathematica/SARAH installation was available and no execution attestation is inferred or fabricated. This static result alone does not validate G1-G8.
+The authoritative manuscript, executable gauge scaffold, and scalar filter consistently implement gauged U(1)_X. Every phase-sensitive Phi17 monomial through dimension four, and Phi17^17 itself, remains gauge forbidden. This contract result alone does not validate G1-G8.
 
 - Authoritative contract: gauged `U(1)_X`, `X(Phi17)=17`
 - Model syntax classification: `sarah_native`
 - Tool-native indexed SARAH syntax: `True`
-- Structured executable `U[1]` row named `X`: `True`
+- Structured executable `U[1]` row (`GX`, tool-safe `xcharge` label): `True`
 - Exact manuscript scalar charge pairs: `True`
 - Complete anomaly-cancelling fermion catalogue: `True`
 - Real `LagHC` and `LagNoHC`: `True`
@@ -19,7 +19,7 @@ The authoritative manuscript, native non-supersymmetric SARAH model, exact charg
 - Registered `DEFINITION[GaugeES][LagrangianInput]`: `True`
 - Tool-native, placeholder-free static model contract: `True`
 - Repository model/driver input manifest current: `True`
-- Manifest/log/SHA-256-bound external SARAH/PyR@TE validation: `False`
+- Source-tree/runtime/log-bound external SARAH v3 validation: `True`
 - Gauge-forbidden phase-sensitive Phi17 monomials at dimension <=4: `12`
 - `Phi17^17 + h.c.` U(1)_X gauge invariant: `False`
 - Option C accepted: `False`

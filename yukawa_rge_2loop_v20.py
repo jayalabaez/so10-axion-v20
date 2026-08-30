@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-r"""Piecewise Yukawa RGE with Pati–Salam Clebsch thresholds — v20.
+r"""Legacy one-loop piecewise Yukawa diagnostic with PS Clebsch matching.
 
 Implements the blueprint chain
 
@@ -19,6 +19,11 @@ Fail-closed:
   - ``piecewise_yukawa_chain_integrated`` may be True for this diagnostic chain;
   - ``two_loop_so10_complete`` and ``published_210_tensor_contractions`` stay False
     until SARAH/PyR@TE-validated SO(10)+210 two-loop betas are ingested.
+
+Despite the historical filename, this module contains no explicit two-loop
+Yukawa beta function.  Its PS and 2HDM Yukawa layers are one loop, and its
+gauge anchor consumes the calibrated-shift diagnostic in
+``two_loop_thresholds_v20``.  It is not a physical G7 input.
 """
 
 from __future__ import annotations
@@ -39,6 +44,7 @@ import two_loop_thresholds_v20 as thresholds
 ROOT = Path(__file__).resolve().parent
 SIXTEEN_PI2 = 16.0 * math.pi**2
 TWO_PI = 2.0 * math.pi
+STATUS = "DIAGNOSTIC_ONE_LOOP_PS_2HDM_YUKAWA_CHAIN__FULL_PHYSICAL_G7_OPEN"
 
 
 def clebsch_match_from_hf(
@@ -240,7 +246,7 @@ def run_piecewise_chain(*, eta_i: float = 1.0) -> dict[str, Any]:
             "M_GUT_GeV": mgut,
             "scheme": gauge["scheme"],
             "note": (
-                "Uses the repository two-loop-corrected threshold chain "
+                "Uses the repository heuristic calibrated-shift threshold diagnostic "
                 "(M_I and M_GUT as returned by two_loop_thresholds_v20)."
             ),
         },
@@ -275,15 +281,17 @@ def build_report() -> dict[str, Any]:
         "sm_layer_ran": chain["sm_evolution_MI_to_MZ"]["n_steps"] > 0,
         "published_210_not_claimed": True,
         "two_loop_so10_not_claimed": True,
+        "explicit_two_loop_yukawa_betas_not_claimed": True,
+        "physical_G7_not_claimed": True,
     }
     failures = [name for name, ok in checks.items() if not ok]
     return {
         "status": (
-            "PIECEWISE_YUKAWA_RGE_WITH_CLEBSCH_THRESHOLDS_COMPLETE__"
-            "PUBLISHED_TWO_LOOP_210_OPEN"
+            STATUS
             if not failures
             else "YUKAWA_RGE_2LOOP_CHAIN_FAILED"
         ),
+        "artifact_class": "diagnostic_only",
         "n_checks": len(checks),
         "n_failed": len(failures),
         "failures": failures,
@@ -301,12 +309,27 @@ def build_report() -> dict[str, Any]:
             "reference_validated_type_II_coefficients": False,
             "running_vevs_included": False,
             "piecewise_component_threshold_matching_complete": False,
+            "source_bound_exact_two_loop_gauge_anchor_used": False,
+            "diagnostic_only_for_physical_G7": True,
+            "physical_G7_closed": False,
+            "mathematical_G7_closed": False,
+            "release_G7_verified": False,
+            "authoritative_renormalizable_G7_closed": False,
         },
+        "release_blockers": [
+            "NORMALIZED_COMPLETE_YUKAWA_CLEBSCH_TENSORS",
+            "EXPLICIT_TWO_LOOP_YUKAWA_BETA_FUNCTIONS",
+            "SOURCE_BOUND_TWO_LOOP_GAUGE_AND_SCALAR_SYSTEM",
+            "PHYSICAL_COMPONENT_POLE_MASSES_AND_THRESHOLD_MATCHING",
+            "RUNNING_VEVS_AND_WAVEFUNCTION_MATCHING",
+            "SECOND_INDEPENDENT_FULL_IMPLEMENTATION",
+        ],
         "verdict": (
-            "The piecewise Yukawa chain with explicit −3 lepton Clebsch matching "
-            "at M_I is integrated (PS one-loop above M_I, diagnostic 2HDM below). "
-            "Published SO(10)+210 two-loop tensor contractions (SARAH/PyR@TE) and "
-            "component-current matching remain open."
+            "A diagnostic one-loop piecewise Yukawa chain with explicit −3 lepton "
+            "Clebsch matching at M_I is integrated (PS one loop above M_I and 2HDM "
+            "one loop below). The gauge scales come from calibrated heuristic shifts. "
+            "No explicit two-loop Yukawa beta, physical component threshold system, "
+            "or full G7 closure is present."
         ),
     }
 
@@ -315,7 +338,7 @@ def write_markdown(report: dict[str, Any]) -> str:
     c = report["chain"]
     return "\n".join(
         [
-            "# Piecewise Yukawa RGE + Clebsch thresholds — v20",
+            "# Diagnostic one-loop piecewise Yukawa RGE + Clebsch thresholds — v20",
             "",
             f"**Status:** `{report['status']}`",
             "",
@@ -323,7 +346,9 @@ def write_markdown(report: dict[str, Any]) -> str:
             f"- M_GUT: {c['gauge_anchor']['M_GUT_GeV']:.4g} GeV",
             f"- Ye = H − 3F identity: "
             f"**{c['clebsch_matching_at_MI']['clebsch_identity_check']['Ye_equals_H_minus_3F']}**",
-            f"- Published two-loop SO(10)+210: **False**",
+            "- Explicit two-loop Yukawa betas: **False**",
+            "- Gauge anchor: **heuristic calibrated-shift diagnostic**",
+            "- Mathematical/release G7: **False**",
             "",
             "## Verdict",
             "",

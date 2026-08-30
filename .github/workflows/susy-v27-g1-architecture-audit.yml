@@ -1,0 +1,44 @@
+name: SUSY V27 G1 architecture audit
+
+on:
+  push:
+    paths:
+      - "susy_v27_g1_architecture_change_audit.py"
+      - "test_susy_v27_g1_architecture_change_audit.py"
+      - "SUSY_V27_G1_ARCHITECTURE_CHANGE_AUDIT.json"
+      - "SUSY_V27_G1_ARCHITECTURE_CHANGE_AUDIT.md"
+      - "SUSY_V27_G1_UV_COMPLETION_INPUT_SCHEMA.json"
+      - "susy_v26_g1_dynamical_gs_completion_attempt.py"
+      - "SUSY_V26_G1_DYNAMICAL_GS_COMPLETION_ATTEMPT.json"
+      - "SUSY_V26_G1_DYNAMICAL_GS_COMPLETION_ATTEMPT.md"
+      - "susy_v25_g1_g3_completion_frontier.py"
+      - "SUSY_V25_G1_G3_COMPLETION_FRONTIER.json"
+      - "susy_v24_non_gs_anomaly_completion_nogo.py"
+      - "SUSY_V24_NON_GS_ANOMALY_COMPLETION_NOGO.json"
+      - ".github/workflows/susy-v27-g1-architecture-audit.yml"
+  pull_request:
+    paths:
+      - "susy_v27_g1_architecture_change_audit.py"
+      - "test_susy_v27_g1_architecture_change_audit.py"
+      - "SUSY_V27_G1_ARCHITECTURE_CHANGE_AUDIT.json"
+      - "SUSY_V27_G1_ARCHITECTURE_CHANGE_AUDIT.md"
+      - "SUSY_V27_G1_UV_COMPLETION_INPUT_SCHEMA.json"
+      - "susy_v26_g1_dynamical_gs_completion_attempt.py"
+      - "SUSY_V26_G1_DYNAMICAL_GS_COMPLETION_ATTEMPT.json"
+      - "SUSY_V26_G1_DYNAMICAL_GS_COMPLETION_ATTEMPT.md"
+      - "susy_v25_g1_g3_completion_frontier.py"
+      - "SUSY_V25_G1_G3_COMPLETION_FRONTIER.json"
+      - "susy_v24_non_gs_anomaly_completion_nogo.py"
+      - "SUSY_V24_NON_GS_ANOMALY_COMPLETION_NOGO.json"
+      - ".github/workflows/susy-v27-g1-architecture-audit.yml"
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -B susy_v27_g1_architecture_change_audit.py --check
+      - run: python -m pytest -q test_susy_v27_g1_architecture_change_audit.py

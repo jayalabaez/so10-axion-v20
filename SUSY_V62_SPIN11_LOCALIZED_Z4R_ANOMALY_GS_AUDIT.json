@@ -1,0 +1,680 @@
+{
+  "claim_boundary": {
+    "half_integer_wall_ledgers_reported_exactly": true,
+    "new_fundamental_physics_invented": true,
+    "new_physics_scope": "the GS axion sector is new, explicitly declared action content with quantized couplings forced by the computed ledger; it is a candidate, not a discovery",
+    "no_gate_promotion": true,
+    "no_numerical_coefficients_fabricated": true
+  },
+  "classification": "EXACT_Z4R_SELECTOR_WITH_EXACT_LOCALIZED_LEDGER_AND_UNIQUE_QUANTIZED_GS_COUPLINGS__POST_VEV_INFLOW_AND_SUSY_COMPLETION_OPEN",
+  "conventions": {
+    "bulk_localization_weight": "a bulk fermion contributes 1/2 of its locally-even trace at each wall (Arkani-Hamed-Cohen-Georgi; von Gersdorff-Quiros)",
+    "charge_zero_dropout": "the three matter sixteens and every mirror-32 mediator carry fermion charge zero and drop out of the entire localized ledger; this is special to the unique V61 charge assignment",
+    "doubled_integer_ledger": "Ahat = 2A is used so every entry is an integer",
+    "fermion_charges": {
+      "C_and_Cbar_fermions": -1,
+      "S_and_T_fermions": 1,
+      "Sigma_fermions": -1,
+      "V_gauginos": 1,
+      "matter_16_fermions": 0,
+      "mirror_32_fermions": 0
+    },
+    "measure_phase": "under one Z4R generator in an instanton-n background of factor G the fermion measure produces exp(2 pi i n Ahat_G / 4) with Ahat_G = sum over Weyl fermions of r_f * 2 T(R_f), r_f the fermion R charge and T(fund SU(N)) = 1/2, T(vector SO(N)) = 1",
+    "wall_fields_weight": "wall-localized 4D fermions contribute with weight 1"
+  },
+  "core_sha256": "f99b9e09bc6d528480e2ac09cf1f2dd9e2feb5383fda25b3aa3cac436758142e",
+  "date": "2026-08-29",
+  "exhibited_gs_sector": {
+    "cancellation_certificate": {
+      "all_four_wall_phases_cancel": true,
+      "coupling_uniqueness": "unique mod 4 once s is fixed; s=3 gives the relabeled inverse sector"
+    },
+    "multiplet": {
+      "R_charge_of_superfield": 0,
+      "Z4R_transformation": "Saxion -> Saxion + i (pi/2) f  (s=1: one quarter period)",
+      "name": "Saxion = (saxion + i axion, axino, F)",
+      "shift_is_nonlinear": true
+    },
+    "new_action_content": "one axion chiral multiplet Saxion with a nonlinearly realized Z4R shift and four wall-localized gauge-kinetic couplings; this is new route-B62 action content, declared as such, not a splice",
+    "superpotential_couplings": {
+      "W_charge_check": "W^a W^a carries R charge 2 and Saxion carries 0, so W_GS has charge 2; the anomalous variation comes from the shift, exactly the 4D GS mechanism at each wall",
+      "couplings_mod_4": {
+        "SO7@yL": 3,
+        "SU2_L@yL": 1,
+        "SU2_R@yL": 1,
+        "Spin10@y0": 3
+      },
+      "form": "W_GS = (1/4) Saxion/f * [ c0 W^a W^a |Spin10,y=0 + cL W^a W^a |SU2L,y=L + cR W^a W^a |SU2R,y=L + c7 W^a W^a |SO7,y=L ]"
+    },
+    "what_is_not_exhibited": [
+      "the saxion Kahler potential and stabilization (runaway direction not excluded)",
+      "the microscopic origin of Saxion (bulk hyper, radion partner, or string modulus)",
+      "the axino mass and its cosmology",
+      "the post-VEV inflow matching described in the deficit section"
+    ]
+  },
+  "falsifiers": [
+    {
+      "effect": "the ledger and the GS couplings are void",
+      "id": "F1",
+      "test": "recompute any wall ledger entry and find a different exact value"
+    },
+    {
+      "effect": "the localization weights are wrong for this orbifold",
+      "id": "F2",
+      "test": "find an integrated-matching factor where wall sums differ from the 4D ledger"
+    },
+    {
+      "effect": "the nonuniversality theorem fails",
+      "id": "F3",
+      "test": "exhibit a matter-free universal cancellation at the Spin(4)xSpin(7) wall"
+    },
+    {
+      "effect": "the exhibited GS sector is inconsistent and the route falls back to V61",
+      "id": "F4",
+      "test": "show boundary theta terms are quantized in units incompatible with c mod 4"
+    },
+    {
+      "effect": "the Z4R selector is quantum-obstructed after rank breaking",
+      "id": "F5",
+      "test": "compute the post-VEV inflow and find it cannot carry (-2,-3)"
+    },
+    {
+      "effect": "the GS sector destroys the selector it was built to save",
+      "id": "F6",
+      "test": "show the saxion cannot be stabilized without breaking Z4R"
+    }
+  ],
+  "five_d_quantum_obligations": [
+    {
+      "detail": "the exhibited GS multiplet has no computed potential; a runaway is not excluded",
+      "obligation": "saxion Kahler potential, stabilization and axino sector",
+      "status": "OPEN"
+    },
+    {
+      "detail": "the exact deficits -2 (SU3) and -3 (SU2) must be carried by computed inflow, not assumed",
+      "obligation": "post-VEV inflow matching",
+      "status": "OPEN"
+    },
+    {
+      "detail": "the relative eta invariant with wall masses and the new GS sector is not computed",
+      "obligation": "Dai-Freed phase with the Z4R twist",
+      "status": "OPEN"
+    },
+    {
+      "detail": "carried unchanged from V59/V61",
+      "obligation": "exact KK determinant and realistic flavor fit",
+      "status": "OPEN"
+    },
+    {
+      "detail": "carried unchanged; the wall-coupling quantization ultimately needs a UV derivation",
+      "obligation": "UV regulator / string completion",
+      "status": "OPEN"
+    }
+  ],
+  "gate_ledger": [
+    {
+      "decision": "OPEN: the localized Z4R ledger is exact and a unique quantized GS sector is exhibited, but post-VEV inflow, saxion stabilization, Dai-Freed, the KK determinant and a UV regulator remain.",
+      "gate": "G1",
+      "status": "OPEN"
+    },
+    {
+      "decision": "OPEN: no coefficient-level complete 4D Wilsonian action or soft solution.",
+      "gate": "G2",
+      "status": "OPEN"
+    },
+    {
+      "decision": "OPEN: no stabilized compactification; the saxion adds an unstabilized modulus.",
+      "gate": "G3",
+      "status": "OPEN"
+    },
+    {
+      "decision": "OPEN WITH ADVANCE: carried from V61; mu protection intact under the new sector.",
+      "gate": "G4",
+      "status": "OPEN"
+    },
+    {
+      "decision": "OPEN WITH ADVANCE: R parity carried from V61; the axino is a new dark-sector candidate but has no computed mass or relic abundance.",
+      "gate": "G5",
+      "status": "OPEN"
+    },
+    {
+      "decision": "OPEN: inflation, reheating and defect history are absent.",
+      "gate": "G6",
+      "status": "OPEN"
+    },
+    {
+      "decision": "OPEN WITH ADVANCE: carried from V61; dimension-six numerics still absent.",
+      "gate": "G7",
+      "status": "OPEN"
+    },
+    {
+      "decision": "OPEN: no microscopic UV completion or quantified predictivity score.",
+      "gate": "G8",
+      "status": "OPEN"
+    }
+  ],
+  "gs_congruence_system": {
+    "Ahat_targets": {
+      "SO7@yL": 1,
+      "SU2_L@yL": -5,
+      "SU2_R@yL": -5,
+      "Spin10@y0": 1
+    },
+    "congruence": "c_G * s + Ahat_G = 0 mod 4, one axion, per-wall-factor couplings",
+    "even_shift_impossible": true,
+    "faithful_odd_quarter_period_theorem": "the congruences have odd right-hand sides, so an even axion shift cannot cancel them: the axion must transform under the full Z4R, not merely its Z2 subgroup",
+    "s3_sector_is_inverse_relabel": {
+      "SO7@yL": 1,
+      "SU2_L@yL": 3,
+      "SU2_R@yL": 3,
+      "Spin10@y0": 1
+    },
+    "selected_sector_s1": {
+      "SO7@yL": 3,
+      "SU2_L@yL": 1,
+      "SU2_R@yL": 1,
+      "Spin10@y0": 3
+    },
+    "shift_scan": [
+      {
+        "couplings_mod_4": null,
+        "s": 0,
+        "solvable": false,
+        "unique": false
+      },
+      {
+        "couplings_mod_4": {
+          "SO7@yL": 3,
+          "SU2_L@yL": 1,
+          "SU2_R@yL": 1,
+          "Spin10@y0": 3
+        },
+        "s": 1,
+        "solvable": true,
+        "unique": true
+      },
+      {
+        "couplings_mod_4": null,
+        "s": 2,
+        "solvable": false,
+        "unique": false
+      },
+      {
+        "couplings_mod_4": {
+          "SO7@yL": 1,
+          "SU2_L@yL": 3,
+          "SU2_R@yL": 3,
+          "Spin10@y0": 1
+        },
+        "s": 3,
+        "solvable": true,
+        "unique": true
+      }
+    ],
+    "solvable_shifts": [
+      1,
+      3
+    ],
+    "universal_yL_coupling_impossible": true,
+    "universal_yL_coupling_solutions": {
+      "1": [],
+      "3": []
+    },
+    "verification_all_phases_cancel": true
+  },
+  "index_tables": {
+    "PS_zero_modes": {
+      "SU2_L": {
+        "10": 1,
+        "16": 2,
+        "PS_gauginos": 2,
+        "Sigma_zero_122": 1
+      },
+      "SU2_R": {
+        "10": 1,
+        "16": 2,
+        "PS_gauginos": 2,
+        "Sigma_zero_122": 1
+      },
+      "SU4": {
+        "10": 1,
+        "16": 2,
+        "PS_gauginos": 4,
+        "Sigma_zero_122": 0
+      }
+    },
+    "SO10": {
+      "10": 1,
+      "16": 2,
+      "45": 8
+    },
+    "SU2_from_SO10": {
+      "10": 1,
+      "16": 2,
+      "45": 8
+    },
+    "SU4_from_SO10": {
+      "10": 1,
+      "16": 2,
+      "45": 8
+    },
+    "SU4_from_SO7": {
+      "adj_21": 5,
+      "coset_227": 4
+    },
+    "yL_factors": {
+      "Sigma_even_coset_227": {
+        "SO7": 4,
+        "SU2_L": 7,
+        "SU2_R": 7
+      },
+      "V_even": {
+        "SO7": 5,
+        "SU2_L": 2,
+        "SU2_R": 2
+      }
+    }
+  },
+  "integrated_matching": {
+    "all_match": true,
+    "checks": [
+      {
+        "direct_4D_zero_mode_ledger": "-2",
+        "direct_composition": "PS gauginos(+1) + Sigma zero modes(-1) + C(-1) + Cbar(-1) + T(10)(+1); matter and S contribute zero",
+        "factor": "SU2_L",
+        "match": true,
+        "wall_sum": "-2"
+      },
+      {
+        "direct_4D_zero_mode_ledger": "-2",
+        "direct_composition": "PS gauginos(+1) + Sigma zero modes(-1) + C(-1) + Cbar(-1) + T(10)(+1); matter and S contribute zero",
+        "factor": "SU2_R",
+        "match": true,
+        "wall_sum": "-2"
+      },
+      {
+        "direct_4D_zero_mode_ledger": "1",
+        "direct_composition": "PS gauginos(+1) + Sigma zero modes(-1) + C(-1) + Cbar(-1) + T(10)(+1); matter and S contribute zero",
+        "factor": "SU4",
+        "match": true,
+        "wall_sum": "1"
+      }
+    ],
+    "statement": "for every unbroken 4D factor the sum of the two wall ledgers must reproduce the direct zero-mode ledger of the orbifold theory before rank breaking; three independent factors are checked"
+  },
+  "integrity_checks": {
+    "V61_localized_ledger_obligation_was_open": true,
+    "V61_master_core_is_canonical_and_expected": true,
+    "V61_route_core_is_canonical_and_expected": true,
+    "all_55_generators_covered": true,
+    "all_four_wall_phases_cancel": true,
+    "all_gates_remain_open": true,
+    "even_axion_shift_impossible": true,
+    "five_obligations_remain_open": true,
+    "gs_sector_carries_W_charge_2": true,
+    "gs_sector_gaps_declared": true,
+    "inflow_deficits_are_minus_2_and_minus_3": true,
+    "left_right_symmetry_of_wall_ledger": true,
+    "matter_and_mediators_drop_out": true,
+    "odd_shifts_solvable_and_unique": true,
+    "projector_blocks_match_V59": true,
+    "selected_couplings_are_3_1_1_3": true,
+    "three_integrated_matching_checks_pass": true,
+    "universal_yL_coupling_impossible": true,
+    "y0_ledger_is_one_half": true,
+    "yL_ledger_is_minus_five_halves_twice_and_one_half": true,
+    "yL_nonuniversality_is_exactly_minus_three": true
+  },
+  "lineage": {
+    "bound_V61_master_core": "a230fda5699b3bd81552317b94733a9f537b0e9ae2a6c35f644830511fa7a810",
+    "bound_V61_route_core": "6d6107dea91e18e7d34e4560ad8003cd8c38eef5c788b2ebd148bb3795b2c33a",
+    "relation": "route-B62 extension: it answers the first V61 quantum obligation (the localized ledger) and adds the GS axion as explicitly declared new action content; routes A60 and C are untouched"
+  },
+  "n_failed_integrity_checks": 0,
+  "n_integrity_checks": 21,
+  "nonuniversality_theorem": {
+    "difference_A": "-3",
+    "difference_Ahat": -6,
+    "difference_is_odd_integer": true,
+    "heterotic_parallel": "the corrected heterotic candidate died of residue nonuniversality with no repair basis; here the same disease appears localized at one wall, but wall-localized couplings may be factor-dependent, so the EFT admits a cure that the modular-locked string basis did not",
+    "matter_free_group_theory_origin": {
+      "Sigma_part": "-(1/2)[T_SU2(2,2,7) - T_SO7(2,2,7)] = -(1/2)(7-4) = -3/2",
+      "V_part": "(1/2)[T(adj SU2) - T(adj SO7)] = (1/2)(2-5) = -3/2",
+      "sum": "-3"
+    },
+    "statement": "at the Spin(4)xSpin(7) wall the SU(2) and Spin(7) Z4R anomaly coefficients differ by exactly -3; the wall hosts no matter, so the difference is fixed purely by dual Coxeter numbers against coset indices and cannot be changed without new wall fields or a different projector"
+  },
+  "post_vev_inflow_deficit": {
+    "IR_ledger_from_V61": {
+      "A2": "1",
+      "A3": "3"
+    },
+    "carrier_candidates": "the <C>-dependent jump of the Saxion wall couplings and/or a bulk Chern-Simons-type exchange; neither is computed here",
+    "orbifold_wall_sums": {
+      "SU2_L": "-2",
+      "SU3_via_SU4": "1"
+    },
+    "required_inflow": {
+      "SU2_L": "-3",
+      "SU3": "-2"
+    },
+    "statement": "after <C>=<Cbar>=v the wall Higgsing marries wall fermions to boundary-condition-shifted KK towers; zero-mode counting alone then fails to reproduce the IR ledger, which is the classic situation requiring explicit anomaly inflow (Scrucca et al.; von Gersdorff-Quiros).  The exact deficits that the inflow must carry are displayed here and remain OPEN obligations",
+    "status": "OPEN"
+  },
+  "projector_block_audit": {
+    "Sigma_even_at_y0": 10,
+    "Sigma_even_at_yL": 28,
+    "V_even_at_y0": 45,
+    "V_even_at_yL": 27,
+    "blocks": {
+      "AA": {
+        "Sigma_parity": [
+          -1,
+          -1
+        ],
+        "V_parity": [
+          1,
+          1
+        ],
+        "multiplicity": 6
+      },
+      "AB": {
+        "Sigma_parity": [
+          -1,
+          1
+        ],
+        "V_parity": [
+          1,
+          -1
+        ],
+        "multiplicity": 24
+      },
+      "Ac": {
+        "Sigma_parity": [
+          1,
+          1
+        ],
+        "V_parity": [
+          -1,
+          -1
+        ],
+        "multiplicity": 4
+      },
+      "BB": {
+        "Sigma_parity": [
+          -1,
+          -1
+        ],
+        "V_parity": [
+          1,
+          1
+        ],
+        "multiplicity": 15
+      },
+      "Bc": {
+        "Sigma_parity": [
+          1,
+          -1
+        ],
+        "V_parity": [
+          -1,
+          1
+        ],
+        "multiplicity": 6
+      }
+    },
+    "identifications": {
+      "Sigma_even_y0": "vector 10 of Spin(10)",
+      "Sigma_even_yL": "coset (4,7) = ((2,2),7)",
+      "V_even_y0": "adjoint 45 of Spin(10)",
+      "V_even_yL": "adjoint 6+21 of Spin(4)xSpin(7)"
+    },
+    "matches_V59_projector_data": true,
+    "total_generators": 55
+  },
+  "research_question": "What is the exact fixed-point-localized Z4R anomaly ledger of the Spin(11) route, and does a consistent quantized Green-Schwarz sector exist for it?",
+  "schema": "susy_so10.v62.spin11_localized_z4r_anomaly_gs_audit.v1",
+  "source_manifest": {
+    "audit_script": {
+      "path": "C:\\Users\\jayal\\Downloads\\So10Theory2\\So10Theory\\_g3_equality_classification_integration\\susy_v62_spin11_localized_z4r_anomaly_gs_audit.py",
+      "sha256": "f22add8e33489e5d6ec4d4b5ad6c8f3b360c33fadfeebc9383e52624b3f9e4f0"
+    },
+    "bound_V61_master": {
+      "path": "C:\\Users\\jayal\\Downloads\\So10Theory2\\So10Theory\\_g3_equality_classification_integration\\SUSY_V61_MULTIPATH_G1_FRONTIER_MASTER_AUDIT.json",
+      "sha256": "f21c34813fbab1f001087f8e323436c86a3df665c2cdbd38a78a0f365b4d6eea"
+    },
+    "bound_V61_route": {
+      "path": "C:\\Users\\jayal\\Downloads\\So10Theory2\\So10Theory\\_g3_equality_classification_integration\\SUSY_V61_SPIN11_Z4R_SELECTOR_ESCAPE_AUDIT.json",
+      "sha256": "bf3f0d5de14350a9b65e94215bc60086f1e58008427132b6af93dce49b9ff0c7"
+    },
+    "primary_sources": [
+      {
+        "arxiv": "hep-th/0103135",
+        "authors": "Nima Arkani-Hamed, Andrew G. Cohen and Howard Georgi",
+        "id": "ARKANI_HAMED_COHEN_GEORGI_2001",
+        "scope": "The bulk-fermion anomaly on S1/Z2 localizes half of the zero-mode anomaly at each fixed point; source of the 1/2 weights used here.",
+        "title": "Anomalies on orbifolds",
+        "url": "https://arxiv.org/abs/hep-th/0103135"
+      },
+      {
+        "arxiv": "hep-th/0110073",
+        "authors": "C. A. Scrucca, M. Serone, L. Silvestrini and F. Zwirner",
+        "id": "SCRUCCA_SERONE_SILVESTRINI_ZWIRNER_2001",
+        "scope": "Localized anomalies exist even without anomalous zero modes; justifies auditing the per-wall ledger and not only the 4D one.",
+        "title": "Anomalies in orbifold field theories",
+        "url": "https://arxiv.org/abs/hep-th/0110073"
+      },
+      {
+        "arxiv": "hep-th/0305024",
+        "authors": "Gero von Gersdorff and Mariano Quiros",
+        "id": "VON_GERSDORFF_QUIROS_2003",
+        "scope": "Fixed-point anomaly decomposition and the bulk-exchange conditions that define the still-open post-VEV inflow obligation.",
+        "title": "Localized anomalies in orbifold gauge theories",
+        "url": "https://arxiv.org/abs/hep-th/0305024"
+      },
+      {
+        "arxiv": "hep-th/9202046",
+        "authors": "Luis E. Ibanez",
+        "id": "IBANEZ_1992",
+        "scope": "Discrete anomaly phases per instanton number; congruence conventions.",
+        "title": "More about discrete gauge anomalies",
+        "url": "https://arxiv.org/abs/hep-th/9202046"
+      },
+      {
+        "arxiv": "0805.0207",
+        "authors": "Takeshi Araki, Tatsuo Kobayashi, Jisuke Kubo, Saul Ramos-Sanchez, Michael Ratz and Patrick K. S. Vaudrevange",
+        "id": "ARAKI_ET_AL_2008",
+        "scope": "Path-integral discrete anomaly and its Green-Schwarz repair by an axion shift.",
+        "title": "(Non-)Abelian discrete anomalies",
+        "url": "https://arxiv.org/abs/0805.0207"
+      },
+      {
+        "arxiv": "1009.0905",
+        "authors": "Hyun Min Lee et al.",
+        "id": "LEE_ET_AL_2010",
+        "scope": "The 4D Z4R selector whose 5D localized completion is audited here.",
+        "title": "A unique Z4R symmetry for the MSSM",
+        "url": "https://arxiv.org/abs/1009.0905"
+      },
+      {
+        "arxiv": "1808.00009",
+        "authors": "Inaki Garcia-Etxebarria and Miguel Montero",
+        "id": "GARCIA_ETXEBARRIA_MONTERO_2018",
+        "scope": "Framework for the still-open Dai-Freed obligation with the R twist.",
+        "title": "Dai-Freed anomalies in particle physics",
+        "url": "https://arxiv.org/abs/1808.00009"
+      }
+    ],
+    "pytest": {
+      "path": "C:\\Users\\jayal\\Downloads\\So10Theory2\\So10Theory\\_g3_equality_classification_integration\\test_susy_v62_spin11_localized_z4r_anomaly_gs_audit.py",
+      "sha256": "63e1a0877b212e17003d6890123322e63208f81e63e48f10048bc807e3ffc785"
+    }
+  },
+  "status": "V62_SPIN11_LOCALIZED_Z4R_LEDGER_AND_QUANTIZED_GS_SECTOR__EXACT_PER_WALL_ANOMALY_LEDGER_COMPUTED__MATTER_AND_MIRROR_MEDIATORS_DROP_OUT_AT_CHARGE_ONE__THREE_INTEGRATED_MATCHING_CHECKS_PASS__SPIN4_SPIN7_WALL_NONUNIVERSAL_BY_MINUS_THREE_FROM_PURE_GROUP_THEORY__SINGLE_UNIVERSAL_WALL_COUPLING_IMPOSSIBLE__PER_FACTOR_QUANTIZED_COUPLINGS_EXIST_UNIQUE_MOD_4__AXION_SHIFT_MUST_BE_FAITHFUL_ODD_QUARTER_PERIOD__CANDIDATE_GS_SECTOR_EXHIBITED__POST_VEV_INFLOW_DEFICITS_MINUS_2_AND_MINUS_3_OPEN__SAXION_STABILIZATION_DAI_FREED_KK_UV_OPEN__STRICT_G1_OPEN__ZERO_GATES_CLOSED",
+  "strict_G1_matrix": [
+    {
+      "criterion": "exact_proton_selector",
+      "evidence": "carried from V61: unique Z4R class",
+      "status": "PASS_ARITHMETIC_R_TYPE"
+    },
+    {
+      "criterion": "selector_anomaly_universality",
+      "evidence": "carried from V61: A3=3, A2=1 universal mod 2",
+      "status": "PASS_GLOBAL_LEDGER"
+    },
+    {
+      "criterion": "localized_R_anomaly_ledger",
+      "evidence": "per-wall ledger computed exactly with three integrated-matching validations; supersedes the V61 OPEN row",
+      "status": "PASS_EXACT_ORBIFOLD_LEDGER"
+    },
+    {
+      "criterion": "GS_axion_sector",
+      "evidence": "one axion, faithful quarter-period shift, unique couplings (3,1,1,3) mod 4; stabilization and origin not computed",
+      "status": "EXHIBITED_QUANTIZED_CANDIDATE"
+    },
+    {
+      "criterion": "post_VEV_inflow_matching",
+      "evidence": "exact deficits -2 (SU3) and -3 (SU2) displayed, carrier not computed",
+      "status": "OPEN"
+    },
+    {
+      "criterion": "relative_5D_Dai_Freed_trivialization",
+      "evidence": "not computed with the R twist and the new GS sector",
+      "status": "OPEN"
+    },
+    {
+      "criterion": "realistic_full_rank_Yukawas",
+      "evidence": "carried from V59/V61",
+      "status": "OPEN"
+    },
+    {
+      "criterion": "UV_complete_regulator",
+      "evidence": "carried from V59/V61",
+      "status": "OPEN"
+    },
+    {
+      "criterion": "strict_G1",
+      "evidence": "ledger and GS arithmetic closed; inflow, stabilization, Dai-Freed, KK and UV remain",
+      "status": "OPEN"
+    }
+  ],
+  "terminal_decision": {
+    "V62_G1_closed": false,
+    "V62_closed_gates": [],
+    "complete_theory": false,
+    "gs_sector_exhibited": true,
+    "gs_sector_scope": "arithmetic cancellation of all four wall phases with unique quantized couplings; no stabilization, inflow, Dai-Freed or UV statement",
+    "localized_ledger_computed": true,
+    "next_obligations": [
+      "compute the post-VEV inflow carrying the displayed (-2,-3) deficits",
+      "stabilize the saxion without breaking Z4R",
+      "compute the Dai-Freed phase with the R twist and the GS sector",
+      "solve the exact KK determinant and flavor fit",
+      "exhibit a UV regulator or string completion"
+    ]
+  },
+  "version": "V62",
+  "wall_ledgers": {
+    "A_y0_Spin10": "1/2",
+    "A_yL": {
+      "SO7": "1/2",
+      "SU2_L": "-5/2",
+      "SU2_R": "-5/2"
+    },
+    "Ahat_y0_Spin10": 1,
+    "Ahat_yL": {
+      "SO7": 1,
+      "SU2_L": -5,
+      "SU2_R": -5
+    },
+    "left_right_symmetric": true,
+    "y0_rows": [
+      {
+        "T": 2,
+        "contribution": "0",
+        "field": "3 x matter 16",
+        "r": 0,
+        "weight": "1"
+      },
+      {
+        "T": 2,
+        "contribution": "-2",
+        "field": "C (16)",
+        "r": -1,
+        "weight": "1"
+      },
+      {
+        "T": 2,
+        "contribution": "-2",
+        "field": "Cbar (16bar)",
+        "r": -1,
+        "weight": "1"
+      },
+      {
+        "T": 1,
+        "contribution": "1",
+        "field": "T (10)",
+        "r": 1,
+        "weight": "1"
+      },
+      {
+        "T": 0,
+        "contribution": "0",
+        "field": "S (1)",
+        "r": 1,
+        "weight": "1"
+      },
+      {
+        "T": 8,
+        "contribution": "4",
+        "field": "bulk V gauginos (45-even)",
+        "r": 1,
+        "weight": "1/2"
+      },
+      {
+        "T": 1,
+        "contribution": "-1/2",
+        "field": "bulk Sigma fermions (10-even)",
+        "r": -1,
+        "weight": "1/2"
+      },
+      {
+        "T": "any",
+        "contribution": "0",
+        "field": "mirror-32 mediators",
+        "r": 0,
+        "weight": "1/2"
+      }
+    ],
+    "yL_rows": [
+      {
+        "Sigma_contribution": "-7/2",
+        "Sigma_coset_T": 7,
+        "V_contribution": "1",
+        "V_even_T": 2,
+        "factor": "SU2_L",
+        "total": "-5/2",
+        "wall_matter": 0
+      },
+      {
+        "Sigma_contribution": "-7/2",
+        "Sigma_coset_T": 7,
+        "V_contribution": "1",
+        "V_even_T": 2,
+        "factor": "SU2_R",
+        "total": "-5/2",
+        "wall_matter": 0
+      },
+      {
+        "Sigma_contribution": "-2",
+        "Sigma_coset_T": 4,
+        "V_contribution": "5/2",
+        "V_even_T": 5,
+        "factor": "SO7",
+        "total": "1/2",
+        "wall_matter": 0
+      }
+    ]
+  }
+}

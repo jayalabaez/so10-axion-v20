@@ -4,8 +4,25 @@ from __future__ import annotations
 
 import copy
 import unittest
+from pathlib import Path
 
 import g1_g8_gate_ledger_v20 as mod
+
+
+EXACT_HESSIAN_TRANSITIVE_SOURCES = (
+    "exact_126bar_self_quartic_basis_v20",
+    "exact_210_self_invariant_basis_v20",
+    "exact_h10_self_quartic_family_v20",
+    "exact_hsigma_hermitian_family_closure_v20",
+    "exact_mixed_45_triplet_channel_v20",
+    "exact_p_delta_second_stage_hessian_v20",
+    "exact_phi2_126dag126_six_contractions_v20",
+    "exact_phi2_hdagh_channel_family_v20",
+    "exact_phisigma_126bar_minus_projectors_v20",
+    "exact_phisigma_casimir_projectors_v20",
+    "live_g1_tensor_closure_ledger_v20",
+    "nonsusy_z17_pq_potential_filter_v20",
+)
 
 
 def _bind_tool_native_root_evidence(report):
@@ -18,17 +35,10 @@ def _bind_tool_native_root_evidence(report):
     ] = True
     external = report["external_model_validation"]
     external["schema"] = mod.exact_x.EXTERNAL_VALIDATION_SCHEMA
+    external["present"] = True
     external["valid"] = True
-    for name in (
-        "tool_native_model_format_matches_path",
-        "external_process_command_matches_tool",
-        "input_manifest_schema_is_supported",
-        "input_manifest_sha256_matches_entries",
-        "primary_model_is_bound_in_input_manifest",
-        "validation_driver_is_bound_to_command",
-        "captured_process_log_is_hash_bound",
-        "captured_process_log_has_all_required_pass_markers",
-    ):
+    external["fresh_for_exact_model_bytes"] = True
+    for name in mod.EXPECTED_EXACT_X_V3_EXTERNAL_CHECKS:
         external["checks"][name] = True
 
 
@@ -37,20 +47,161 @@ class G1G8GateLedgerTests(unittest.TestCase):
     def setUpClass(cls):
         cls.report = mod.build_report()
 
-    def test_audit_succeeds_while_science_is_blocked(self):
-        self.assertEqual(self.report["n_failed"], 0, self.report["audit_failures"])
-        self.assertEqual(
-            self.report["status"],
-            "G1_G8_LEDGER_AUDIT_COMPLETE__MODEL_CONTRACT_BLOCKED__"
-            "MATHEMATICAL_G1_COMPONENT_RING_AND_G2_COMPONENT_POTENTIAL_CLOSED",
+    def test_central_workflows_cover_exact_hessian_transitive_sources(self):
+        root = Path(__file__).resolve().parent
+        workflows = (
+            (
+                ".github/workflows/g1-g8-gate-ledger.yml",
+                2,
+                "Compile gates",
+                "Run gate tests",
+            ),
+            (
+                ".github/workflows/g1-g8-execution-roadmap.yml",
+                1,
+                "Compile roadmap",
+                "Test roadmap contracts",
+            ),
+            (
+                ".github/workflows/gauged-u1x-g3-stability.yml",
+                2,
+                "Compile gauged-X G2/G3 audits",
+                "Run focused gauged-X tests",
+            ),
         )
-        self.assertEqual(self.report["overall_state"], mod.STATUS_BLOCKED)
-        self.assertFalse(self.report["contract_consistent"])
-        self.assertIn(mod.CONTRACT_BLOCKER, self.report["scientific_blockers"])
+
+        def step_block(text, name):
+            marker = f"      - name: {name}\n"
+            self.assertIn(marker, text)
+            block = text.split(marker, 1)[1]
+            return block.split("\n      - ", 1)[0]
+
+        for relative, trigger_copies, compile_name, test_name in workflows:
+            with self.subTest(workflow=relative):
+                text = (root / relative).read_text(encoding="utf-8")
+                trigger = text.split("\nconcurrency:", 1)[0]
+                trigger_entries = []
+                for line in trigger.splitlines():
+                    item = line.strip()
+                    if item.startswith("- "):
+                        trigger_entries.append(item[2:].strip('"'))
+                compile_tokens = step_block(text, compile_name).replace(
+                    "\\", " "
+                ).split()
+                test_tokens = step_block(text, test_name).replace("\\", " ").split()
+                for stem in EXACT_HESSIAN_TRANSITIVE_SOURCES:
+                    source = f"{stem}.py"
+                    test = f"test_{stem}.py"
+                    self.assertEqual(trigger_entries.count(source), trigger_copies)
+                    self.assertEqual(trigger_entries.count(test), trigger_copies)
+                    self.assertEqual(compile_tokens.count(source), 1)
+                    self.assertEqual(compile_tokens.count(test), 1)
+                    self.assertEqual(test_tokens.count(test), 1)
+
+    def test_audit_succeeds_and_tracks_contract_state(self):
+        self.assertEqual(self.report["n_failed"], 0, self.report["audit_failures"])
+        if self.report["contract_consistent"]:
+            self.assertEqual(self.report["overall_state"], mod.STATUS_OPEN)
+            self.assertNotIn(mod.CONTRACT_BLOCKER, self.report["scientific_blockers"])
+        else:
+            self.assertEqual(self.report["overall_state"], mod.STATUS_BLOCKED)
+            self.assertIn(mod.CONTRACT_BLOCKER, self.report["scientific_blockers"])
         self.assertIn(
             "G3_ARBITRARY_NON_PURE_DELTA_SIGMA_UNIFORM_COERCIVITY_OPEN",
             self.report["scientific_blockers"],
         )
+        self.assertIn(
+            "G6_GLOBAL_EQUALITY_SCALE_FULL_MASS_MIXING_POLE_AND_THRESHOLD_INPUTS_REQUIRED",
+            self.report["scientific_blockers"],
+        )
+        self.assertNotIn(
+            "G6_DIRECT_SOURCE_ALGEBRA_GLOBAL_EQUALITY_ORBIT_AND_POLE_SPECTRUM_REQUIRED",
+            self.report["scientific_blockers"],
+        )
+        self.assertNotIn(
+            "G6_FROZEN_STABILIZER_IS_SU3_X_U1_89_NOT_PHYSICAL_ELECTROMAGNETISM",
+            self.report["scientific_blockers"],
+        )
+
+    def test_exact_x_v3_trusted_tree_and_execution_state_are_bound(self):
+        scoped = self.report["exact_X_v3_fail_closed_contract"]
+        self.assertTrue(scoped["source_bound"])
+        self.assertTrue(scoped["static_native_contract_closed"])
+        self.assertTrue(scoped["input_manifest_v2_closed"])
+        self.assertTrue(
+            scoped["trusted_SARAH_4_15_3_source_tree_manifest_closed"]
+        )
+        self.assertEqual(scoped["trusted_SARAH_source_tree_file_count"], 1056)
+        self.assertEqual(
+            scoped["trusted_SARAH_source_tree_core_sha256"],
+            mod.EXACT_X_V3_TRUSTED_SARAH_TREE_CORE_SHA256,
+        )
+        self.assertEqual(
+            scoped["external_attestation_schema_required"],
+            "so10-exact-x-external-model-validation-v3",
+        )
+        consistent = self.report["contract_consistent"]
+        self.assertIs(scoped["external_v3_execution_attestation_present"], consistent)
+        self.assertIs(scoped["resolved_Wolfram_runtime_bound"], consistent)
+        self.assertIs(scoped["runtime_probe_log_bound"], consistent)
+        self.assertIs(scoped["validation_process_log_bound"], consistent)
+        self.assertIs(scoped["contract_consistent"], consistent)
+        self.assertIs(scoped["authoritative_G1_closed"], consistent)
+        self.assertIs(scoped["release_G1_verified"], consistent)
+        self.assertEqual(
+            self.report["gates"]["G1"]["status"],
+            mod.STATUS_CLOSED if consistent else mod.STATUS_BLOCKED,
+        )
+        self.assertTrue(
+            self.report["checks"][
+                "exact_X_v3_contract_state_is_fail_closed_and_consistent"
+            ]
+        )
+
+    def test_exact_x_v3_contract_rejects_forgery_and_raw_pin_drift(self):
+        valid = mod.exact_x.build_report()
+        pins = {
+            "source_raw_sha256": mod.EXACT_X_V3_SOURCE_RAW_SHA256,
+            "test_raw_sha256": mod.EXACT_X_V3_TEST_RAW_SHA256,
+            "json_raw_sha256": mod.EXACT_X_V3_JSON_RAW_SHA256,
+            "markdown_raw_sha256": mod.EXACT_X_V3_MD_RAW_SHA256,
+            "input_manifest_raw_sha256": (
+                mod.EXACT_X_V3_INPUT_MANIFEST_RAW_SHA256
+            ),
+            "trusted_sarah_manifest_raw_sha256": (
+                mod.EXACT_X_V3_TRUSTED_SARAH_MANIFEST_RAW_SHA256
+            ),
+            "external_validation_file_present": True,
+        }
+        self.assertTrue(
+            mod._exact_x_v3_fail_closed_contract(valid, **pins)["source_bound"]
+        )
+        mutations = (
+            lambda value: value["repository_external_input_manifest"][
+                "trusted_sarah_release_manifest"
+            ]["tree"].__setitem__("sha256", "0" * 64),
+            lambda value: value["repository_external_input_manifest"].__setitem__(
+                "role", "external attestation"
+            ),
+            lambda value: value["external_model_validation"].__setitem__(
+                "valid", False
+            ),
+            lambda value: value.__setitem__("contract_consistent", False),
+        )
+        for mutate in mutations:
+            forged = copy.deepcopy(valid)
+            mutate(forged)
+            audited = mod._exact_x_v3_fail_closed_contract(forged, **pins)
+            self.assertFalse(audited["source_bound"])
+            self.assertFalse(audited["authoritative_G1_closed"])
+        for pin_name in pins:
+            forged_pins = dict(pins)
+            forged_pins[pin_name] = "0" * 64
+            self.assertFalse(
+                mod._exact_x_v3_fail_closed_contract(
+                    valid, **forged_pins
+                )["source_bound"]
+            )
 
     def test_parallel_eft_g3_is_bound_without_mutating_g3_or_g4(self):
         parallel = self.report["parallel_EFT_G3_acceptance"]
@@ -73,7 +224,7 @@ class G1G8GateLedgerTests(unittest.TestCase):
         )
         self.assertFalse(parallel["renormalizable_gate_mutated"])
         self.assertFalse(parallel["G4_closed"])
-        self.assertEqual(self.report["gates"]["G3"]["status"], mod.STATUS_BLOCKED)
+        self.assertEqual(self.report["gates"]["G3"]["status"], mod.STATUS_OPEN)
         self.assertEqual(self.report["gates"]["G4"]["status"], mod.STATUS_BLOCKED)
         self.assertFalse(
             self.report["gauged_u1x_g3_constructive_frontier"]["G3_closed"]
@@ -159,14 +310,16 @@ class G1G8GateLedgerTests(unittest.TestCase):
             g6["spectrum_JSON_raw_sha256"],
             mod.FINAL_G6_EFT_SPECTRUM_JSON_RAW_SHA256,
         )
-        self.assertTrue(g6["mathematical_G6_closed_for_EFT_model"])
+        self.assertTrue(g6["formal_SU3_x_U1_89_tree_factorization_closed"])
+        self.assertFalse(g6["mathematical_G6_closed_for_EFT_model"])
+        self.assertFalse(g6["physical_mathematical_G6_closed"])
         self.assertFalse(g6["release_G6_verified_for_EFT_model"])
         self.assertFalse(g6["authoritative_renormalizable_G6_closed"])
         self.assertFalse(g6["authoritative_G6_gate_mutated"])
         self.assertFalse(g6["whole_model_validated"])
         self.assertEqual(g6["spectrum_summary"]["ambient_real_fields"], 486)
         self.assertEqual(g6["spectrum_summary"]["gauge_quotient_dimension"], 449)
-        self.assertEqual(g6["spectrum_summary"]["physical_PQ_axions"], 1)
+        self.assertEqual(g6["spectrum_summary"]["ungauged_PQ_zero_modes"], 1)
         self.assertEqual(g6["spectrum_summary"]["positive_massive_modes"], 448)
         self.assertTrue(g6["checks"]["parallel_integration_state_classified"])
         self.assertEqual(
@@ -182,8 +335,14 @@ class G1G8GateLedgerTests(unittest.TestCase):
             )["source_bound"]
         )
 
-        for name in ("G3", "G4", "G5", "G6"):
-            self.assertEqual(self.report["gates"][name]["status"], mod.STATUS_BLOCKED)
+        expected = {
+            "G3": mod.STATUS_OPEN,
+            "G4": mod.STATUS_BLOCKED,
+            "G5": mod.STATUS_CLOSED,
+            "G6": mod.STATUS_BLOCKED,
+        }
+        for name, status in expected.items():
+            self.assertEqual(self.report["gates"][name]["status"], status)
         self.assertTrue(
             self.report["checks"][
                 "parallel_EFT_G4_mathematical_is_source_bound_and_release_open"
@@ -196,7 +355,7 @@ class G1G8GateLedgerTests(unittest.TestCase):
         )
         self.assertTrue(
             self.report["checks"][
-                "parallel_EFT_G6_spectrum_is_source_bound_and_release_open"
+                "parallel_EFT_G6_formal_spectrum_is_bound_but_physical_G6_open"
             ]
         )
 
@@ -239,8 +398,14 @@ class G1G8GateLedgerTests(unittest.TestCase):
             g7["source_raw_sha256"],
             mod.EFT_G7_NONIDENTIFIABILITY_SOURCE_RAW_SHA256,
         )
-        self.assertTrue(g7["exact_EFT_G7_input_nonidentifiability_proved"])
-        self.assertTrue(g7["restriction_map_noninjective"])
+        self.assertTrue(
+            g7["formal_U1_89_abstract_restriction_noninjectivity_proved"]
+        )
+        self.assertFalse(
+            g7["exact_physical_EFT_G7_input_nonidentifiability_proved"]
+        )
+        self.assertFalse(g7["historical_electroweak_lift_interpretation_valid"])
+        self.assertTrue(g7["formal_U1_89_restriction_map_noninjective"])
         self.assertTrue(g7["absolute_scale_unidentified"])
         self.assertFalse(g7["mathematical_EFT_G7_closed"])
         self.assertFalse(g7["positive_G7_certified"])
@@ -268,6 +433,1148 @@ class G1G8GateLedgerTests(unittest.TestCase):
                 source_raw_sha256=mod.EFT_G7_NONIDENTIFIABILITY_SOURCE_RAW_SHA256,
             )["source_bound"]
         )
+
+    def test_physical_g7_component_threshold_contract_is_raw_bound_and_scoped(self):
+        scoped = self.report["physical_G7_component_threshold_contract"]
+        self.assertTrue(scoped["source_bound"])
+        self.assertTrue(scoped["authoritative_inventory_closed"])
+        self.assertTrue(scoped["physical_PS_SM_matter_branching_closed"])
+        self.assertTrue(
+            scoped["parameterized_one_loop_matter_threshold_kernel_closed"]
+        )
+        self.assertTrue(scoped["exact_two_loop_nonyukawa_gauge_flow_closed"])
+        self.assertFalse(scoped["physical_component_pole_mass_matrices_closed"])
+        self.assertFalse(scoped["physical_G7_closed"])
+        self.assertFalse(scoped["mathematical_G7_closed"])
+        self.assertFalse(scoped["release_G7_verified"])
+        self.assertFalse(scoped["authoritative_renormalizable_G7_closed"])
+        self.assertEqual(self.report["gates"]["G7"]["status"], mod.STATUS_BLOCKED)
+        obstruction = self.report["gates"]["G7"]["certified_input_obstruction"]
+        self.assertEqual(
+            obstruction["physical_PS_SM_component_threshold_contract"], scoped
+        )
+
+    def test_physical_g7_consumer_rejects_schema_hash_and_closure_forgery(self):
+        valid = mod._load_json_artifact(mod.PHYSICAL_G7_COMPONENT_THRESHOLD_JSON)
+        pins = {
+            "raw_sha256": mod.PHYSICAL_G7_COMPONENT_THRESHOLD_RAW_SHA256,
+            "source_raw_sha256": (
+                mod.PHYSICAL_G7_COMPONENT_THRESHOLD_SOURCE_RAW_SHA256
+            ),
+            "test_raw_sha256": mod.PHYSICAL_G7_COMPONENT_THRESHOLD_TEST_RAW_SHA256,
+            "markdown_raw_sha256": (
+                mod.PHYSICAL_G7_COMPONENT_THRESHOLD_MD_RAW_SHA256
+            ),
+        }
+        self.assertTrue(
+            mod._physical_g7_component_threshold_contract(valid, **pins)[
+                "source_bound"
+            ]
+        )
+        mutations = (
+            lambda value: value.__setitem__("unexpected", True),
+            lambda value: value["completion_matrix"].__setitem__(
+                "mathematical_G7_closed", True
+            ),
+            lambda value: value["completion_matrix"].__setitem__(
+                "physical_component_pole_mass_matrices", True
+            ),
+            lambda value: value["release_blockers"].pop(),
+            lambda value: value["adversarial_guards"].__setitem__(
+                "G89_never_used_as_hypercharge", False
+            ),
+        )
+        for mutate in mutations:
+            forged = copy.deepcopy(valid)
+            mutate(forged)
+            audited = mod._physical_g7_component_threshold_contract(
+                forged, **pins
+            )
+            self.assertFalse(audited["source_bound"])
+            self.assertFalse(audited["physical_PS_SM_matter_branching_closed"])
+            self.assertFalse(
+                audited["parameterized_one_loop_matter_threshold_kernel_closed"]
+            )
+            self.assertFalse(audited["mathematical_G7_closed"])
+            self.assertFalse(audited["release_G7_verified"])
+
+        forged_pin = dict(pins)
+        forged_pin["test_raw_sha256"] = "0" * 64
+        self.assertFalse(
+            mod._physical_g7_component_threshold_contract(
+                valid, **forged_pin
+            )["source_bound"]
+        )
+
+    def test_physical_sm_truth_overlay_supersedes_old_stabilizer_fail_closed(self):
+        overlay = self.report["physical_SM_vacuum_truth_overlay"]
+        self.assertTrue(overlay["source_bound"])
+        self.assertTrue(overlay["physical_SM_target_exactly_constructed"])
+        self.assertTrue(overlay["standard_SU3C_x_U1em_stabilizer_proved"])
+        self.assertTrue(
+            overlay["reconstructed_stationary_transverse_PSD_witness_available"]
+        )
+        self.assertFalse(
+            overlay["direct_source_algebra_stationary_PSD_witness_available"]
+        )
+        self.assertFalse(overlay["source_bound_global_equality_orbit_proved"])
+        self.assertTrue(overlay["old_selected_EFT_stabilizer_label_superseded"])
+        self.assertEqual(
+            overlay["old_selected_EFT_target_actual_stabilizer"],
+            "SU(3)_C x U(1)_89",
+        )
+        expected = {
+            "G3": mod.STATUS_OPEN,
+            "G4": mod.STATUS_BLOCKED,
+            "G5": mod.STATUS_CLOSED,
+            "G6": mod.STATUS_BLOCKED,
+            "G7": mod.STATUS_BLOCKED,
+        }
+        for gate, status in expected.items():
+            self.assertFalse(overlay[f"physical_SM_{gate}_closed"])
+            self.assertEqual(self.report["gates"][gate]["status"], status)
+
+    def test_physical_sm_truth_overlay_rejects_pins_schema_and_claim_forgery(self):
+        valid = mod._load_json_artifact(mod.PHYSICAL_SM_VACUUM_JSON)
+        pins = {
+            "raw_sha256": mod.PHYSICAL_SM_VACUUM_RAW_SHA256,
+            "source_raw_sha256": mod.PHYSICAL_SM_VACUUM_SOURCE_RAW_SHA256,
+            "test_raw_sha256": mod.PHYSICAL_SM_VACUUM_TEST_RAW_SHA256,
+            "markdown_raw_sha256": mod.PHYSICAL_SM_VACUUM_MD_RAW_SHA256,
+        }
+        self.assertTrue(
+            mod._physical_sm_vacuum_truth_overlay(valid, **pins)["source_bound"]
+        )
+        mutations = (
+            lambda value: value.__setitem__("unexpected", True),
+            lambda value: value["closure_claims"].__setitem__(
+                "physical_SM_G3", True
+            ),
+            lambda value: value["supersession"].__setitem__(
+                "old_selected_EFT_target_was_standard_SU3C_x_U1em", True
+            ),
+            lambda value: value["logical_summary"].__setitem__(
+                "source_bound_global_equality_orbit_proved", True
+            ),
+            lambda value: value["exact_reconstructed_Hessian_rank"][
+                "reconstruction"
+            ].__setitem__("source_algebra_derivation_complete", True),
+        )
+        for mutate in mutations:
+            forged = copy.deepcopy(valid)
+            mutate(forged)
+            audited = mod._physical_sm_vacuum_truth_overlay(forged, **pins)
+            self.assertFalse(audited["source_bound"])
+            self.assertFalse(audited["physical_SM_target_exactly_constructed"])
+            self.assertFalse(audited["physical_SM_G3_closed"])
+
+        forged_pin = dict(pins)
+        forged_pin["markdown_raw_sha256"] = "0" * 64
+        self.assertFalse(
+            mod._physical_sm_vacuum_truth_overlay(valid, **forged_pin)[
+                "source_bound"
+            ]
+        )
+
+    def test_physical_sm_radial_equality_frontier_is_exact_and_fail_closed(self):
+        scoped = self.report["physical_SM_source_algebra_equality_frontier"]
+        self.assertTrue(scoped["source_bound"])
+        self.assertEqual(
+            scoped["core_sha256"], mod.PHYSICAL_SM_SOURCE_EQUALITY_CORE_SHA256
+        )
+        self.assertTrue(scoped["radial_stationary_equality_classified_exactly"])
+        self.assertEqual(scoped["radial_gcd"], "t - 1")
+        self.assertEqual(scoped["observed_source_Hessian_row_lcm"], 126000)
+        self.assertEqual(
+            scoped["reconstructed_aggregate_Hessian_lcm"], 6300103327590
+        )
+        self.assertFalse(scoped["direct_source_algebra_stationary_Hessian_available"])
+        self.assertFalse(scoped["complete_nonradial_equality_orbit_proved"])
+        self.assertFalse(scoped["old_formal_U1_89_EFT_scope_promoted"])
+        expected = {
+            "G3": mod.STATUS_OPEN,
+            "G4": mod.STATUS_BLOCKED,
+            "G5": mod.STATUS_CLOSED,
+        }
+        for gate, status in expected.items():
+            self.assertFalse(scoped[f"physical_SM_{gate}_closed"])
+            self.assertEqual(self.report["gates"][gate]["status"], status)
+            self.assertEqual(
+                self.report["gates"][gate][
+                    "physical_SM_source_algebra_equality_frontier"
+                ],
+                scoped,
+            )
+        self.assertTrue(
+            self.report["checks"][
+                "physical_SM_radial_equality_is_exact_but_G3_G4_G5_remain_open"
+            ]
+        )
+
+    def test_physical_sm_radial_frontier_rejects_report_and_pin_forgery(self):
+        valid = mod._load_json_artifact(mod.PHYSICAL_SM_SOURCE_EQUALITY_JSON)
+        pins = {
+            "raw_sha256": mod.PHYSICAL_SM_SOURCE_EQUALITY_RAW_SHA256,
+            "source_raw_sha256": (
+                mod.PHYSICAL_SM_SOURCE_EQUALITY_SOURCE_RAW_SHA256
+            ),
+            "test_raw_sha256": mod.PHYSICAL_SM_SOURCE_EQUALITY_TEST_RAW_SHA256,
+            "markdown_raw_sha256": (
+                mod.PHYSICAL_SM_SOURCE_EQUALITY_MD_RAW_SHA256
+            ),
+        }
+        self.assertTrue(
+            mod._physical_sm_source_algebra_equality_frontier_contract(
+                valid, **pins
+            )["source_bound"]
+        )
+        mutations = (
+            lambda value: value.__setitem__("unexpected", True),
+            lambda value: value["integrity"].__setitem__("core_sha256", "0" * 64),
+            lambda value: value["exact_radial_equality"].__setitem__(
+                "gcd_V_plus_1_and_dV_dt_monic", "1"
+            ),
+            lambda value: value["source_row_lattice_frontier"].__setitem__(
+                "source_algebra_derivation_complete", True
+            ),
+            lambda value: value["closure_claims"].__setitem__(
+                "physical_SM_G3_closed", True
+            ),
+            lambda value: value["next_required_calculation"].pop(),
+            lambda value: value["checks"].__setitem__(
+                "full_equality_orbit_remains_fail_closed", False
+            ),
+        )
+        for mutate in mutations:
+            forged = copy.deepcopy(valid)
+            mutate(forged)
+            audited = mod._physical_sm_source_algebra_equality_frontier_contract(
+                forged, **pins
+            )
+            self.assertFalse(audited["source_bound"])
+            self.assertFalse(
+                audited["radial_stationary_equality_classified_exactly"]
+            )
+            self.assertFalse(audited["physical_SM_G3_closed"])
+
+        for pin_name in pins:
+            forged_pins = dict(pins)
+            forged_pins[pin_name] = "0" * 64
+            self.assertFalse(
+                mod._physical_sm_source_algebra_equality_frontier_contract(
+                    valid, **forged_pins
+                )["source_bound"]
+            )
+
+    def test_physical_sm_five_amplitude_equality_is_exact_and_fail_closed(self):
+        scoped = self.report["physical_SM_five_amplitude_equality_contract"]
+        self.assertTrue(scoped["source_bound"])
+        self.assertTrue(scoped["exact_radial_theorem_strictly_extended"])
+        self.assertTrue(
+            scoped["five_real_amplitude_slice_stationary_equality_classified"]
+        )
+        self.assertEqual(scoped["exact_real_discrete_sign_variant_count"], 16)
+        self.assertTrue(scoped["target_strict_minimum_on_five_amplitude_slice"])
+        self.assertFalse(scoped["full_486_field_stationary_equality_classified"])
+        self.assertFalse(
+            scoped["continuous_symmetry_orbit_equivalence_of_16_variants_proved"]
+        )
+        self.assertFalse(scoped["direct_source_algebra_full_486_Hessian_available"])
+        expected = {
+            "G3": mod.STATUS_OPEN,
+            "G4": mod.STATUS_BLOCKED,
+            "G5": mod.STATUS_CLOSED,
+        }
+        for gate, status in expected.items():
+            self.assertFalse(scoped[f"physical_SM_{gate}_closed"])
+            self.assertEqual(self.report["gates"][gate]["status"], status)
+            self.assertEqual(
+                self.report["gates"][gate]["physical_SM_five_amplitude_equality"],
+                scoped,
+            )
+        self.assertTrue(
+            self.report["checks"][
+                "physical_SM_five_amplitude_equality_is_exact_but_full_G3_G4_G5_remain_open"
+            ]
+        )
+
+    def test_physical_sm_five_amplitude_equality_rejects_forgery_and_pins(self):
+        valid = mod._load_json_artifact(
+            mod.PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_JSON
+        )
+        pins = {
+            "raw_sha256": mod.PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_RAW_SHA256,
+            "source_raw_sha256": (
+                mod.PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_SOURCE_RAW_SHA256
+            ),
+            "test_raw_sha256": (
+                mod.PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_TEST_RAW_SHA256
+            ),
+            "markdown_raw_sha256": (
+                mod.PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_MD_RAW_SHA256
+            ),
+        }
+        self.assertTrue(
+            mod._physical_sm_five_amplitude_equality_contract(valid, **pins)[
+                "source_bound"
+            ]
+        )
+        mutations = (
+            lambda value: value.__setitem__("unexpected", True),
+            lambda value: value["integrity"].__setitem__(
+                "core_sha256", "0" * 64
+            ),
+            lambda value: value["restriction"].__setitem__(
+                "witness_coefficients_directly_derived_from_integer_projector_source_algebra",
+                True,
+            ),
+            lambda value: value["exact_Groebner_certificate"].__setitem__(
+                "complex_solution_count_with_multiplicity", 15
+            ),
+            lambda value: value["discrete_variants"].__setitem__(
+                "continuous_SO10_x_U1X_x_PQ_orbit_equivalence_classified", True
+            ),
+            lambda value: value["closure_claims"].__setitem__(
+                "full_486_field_stationary_equality_classified", True
+            ),
+            lambda value: value["closure_claims"].__setitem__(
+                "physical_SM_G3_closed", True
+            ),
+            lambda value: value["remaining_scope"].pop(),
+        )
+        for mutate in mutations:
+            forged = copy.deepcopy(valid)
+            mutate(forged)
+            audited = mod._physical_sm_five_amplitude_equality_contract(
+                forged, **pins
+            )
+            self.assertFalse(audited["source_bound"])
+            self.assertFalse(
+                audited["five_real_amplitude_slice_stationary_equality_classified"]
+            )
+            self.assertFalse(audited["physical_SM_G3_closed"])
+        for pin_name in pins:
+            forged_pins = dict(pins)
+            forged_pins[pin_name] = "0" * 64
+            self.assertFalse(
+                mod._physical_sm_five_amplitude_equality_contract(
+                    valid, **forged_pins
+                )["source_bound"]
+            )
+
+    def test_hard_projector_Hessians_are_exact_and_fail_closed(self):
+        scoped = self.report["physical_SM_hard_projector_Hessians_contract"]
+        self.assertTrue(scoped["source_bound"])
+        self.assertEqual(scoped["exact_source_Hessian_row_count"], 10)
+        self.assertEqual(scoped["remaining_active_row_count"], 27)
+        self.assertTrue(scoped["all_10_O27_O44_source_Hessians_closed"])
+        self.assertFalse(scoped["all_37_active_source_Hessians_closed"])
+        self.assertFalse(scoped["full_witness_stationarity_rank_PSD_closed"])
+        for gate in ("G3", "G4", "G5"):
+            self.assertFalse(scoped[f"physical_SM_{gate}_closed"])
+            self.assertEqual(
+                self.report["gates"][gate]["physical_SM_hard_projector_Hessians"],
+                scoped,
+            )
+        valid = mod._load_json_artifact(mod.PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_JSON)
+        pins = {
+            "raw_sha256": mod.PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_RAW_SHA256,
+            "source_raw_sha256": mod.PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_SOURCE_RAW_SHA256,
+            "test_raw_sha256": mod.PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_TEST_RAW_SHA256,
+            "markdown_raw_sha256": mod.PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_MD_RAW_SHA256,
+        }
+        forged = copy.deepcopy(valid)
+        forged["claims"]["exact_source_algebra_Hessians_for_all_37_active_witness_rows"] = True
+        self.assertFalse(
+            mod._physical_sm_hard_projector_hessians_contract(forged, **pins)["source_bound"]
+        )
+        forged = copy.deepcopy(valid)
+        forged["certified_rows"][0]["Hessian"]["dimension"] = 485
+        self.assertFalse(
+            mod._physical_sm_hard_projector_hessians_contract(forged, **pins)["source_bound"]
+        )
+
+    def test_G4_G5_branch_mismatch_is_exact_not_a_global_no_go(self):
+        scoped = self.report["physical_SM_G4_G5_branch_mismatch_contract"]
+        self.assertTrue(scoped["source_bound"])
+        self.assertTrue(scoped["exact_branch_mismatch_proved"])
+        self.assertEqual(scoped["unit_rescaling_case_count"], 101)
+        self.assertFalse(scoped["current_five_amplitude_target_is_canonical_physical_EW_branch"])
+        self.assertFalse(scoped["global_no_go_for_other_physical_EW_branches"])
+        for gate in range(4, 9):
+            self.assertFalse(scoped[f"physical_SM_G{gate}_closed"])
+            self.assertEqual(
+                self.report["gates"][f"G{gate}"]["physical_SM_G4_G5_branch_mismatch"],
+                scoped,
+            )
+        valid = mod._load_json_artifact(mod.PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_JSON)
+        pins = {
+            "raw_sha256": mod.PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_RAW_SHA256,
+            "source_raw_sha256": mod.PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_SOURCE_RAW_SHA256,
+            "test_raw_sha256": mod.PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_TEST_RAW_SHA256,
+            "markdown_raw_sha256": mod.PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_MD_RAW_SHA256,
+        }
+        forged = copy.deepcopy(valid)
+        forged["scope"]["global_no_go_for_all_possible_physical_EW_branches"] = True
+        self.assertFalse(
+            mod._physical_sm_g4_g5_branch_mismatch_contract(forged, **pins)["source_bound"]
+        )
+        forged = copy.deepcopy(valid)
+        forged["gate_acceptance_boundary"]["G4"]["physical_SM_G4_closed"] = True
+        self.assertFalse(
+            mod._physical_sm_g4_g5_branch_mismatch_contract(forged, **pins)["source_bound"]
+        )
+
+    def test_last_six_make_all_37_source_Hessians_available_but_leave_G3_G5_open(self):
+        scoped = self.report["physical_SM_last_six_Hessians_contract"]
+        self.assertTrue(scoped["source_bound"])
+        self.assertTrue(scoped["exact_last_six_source_Hessians_closed"])
+        self.assertTrue(scoped["all_37_active_source_Hessians_available"])
+        self.assertFalse(
+            scoped["exact_37_row_aggregate_stationarity_kernel_rank_PSD_closed"]
+        )
+        self.assertFalse(scoped["full_486_global_equality_orbit_closed"])
+        for gate in ("G3", "G4", "G5"):
+            self.assertFalse(scoped[f"physical_SM_{gate}_closed"])
+            self.assertEqual(
+                self.report["gates"][gate]["physical_SM_last_six_Hessians"],
+                scoped,
+            )
+        valid = mod._load_json_artifact(mod.PHYSICAL_SM_LAST_SIX_HESSIANS_JSON)
+        pins = {
+            "raw_sha256": mod.PHYSICAL_SM_LAST_SIX_HESSIANS_RAW_SHA256,
+            "source_raw_sha256": mod.PHYSICAL_SM_LAST_SIX_HESSIANS_SOURCE_RAW_SHA256,
+            "test_raw_sha256": mod.PHYSICAL_SM_LAST_SIX_HESSIANS_TEST_RAW_SHA256,
+            "markdown_raw_sha256": mod.PHYSICAL_SM_LAST_SIX_HESSIANS_MD_RAW_SHA256,
+        }
+        forged = copy.deepcopy(valid)
+        forged["claims"][
+            "exact_37_row_aggregate_stationarity_kernel_rank_PSD_proved_here"
+        ] = True
+        self.assertFalse(
+            mod._physical_sm_last_six_hessians_contract(forged, **pins)[
+                "source_bound"
+            ]
+        )
+        forged = copy.deepcopy(valid)
+        forged["certified_rows"][0]["Hessian"]["dimension"] = 485
+        self.assertFalse(
+            mod._physical_sm_last_six_hessians_contract(forged, **pins)[
+                "source_bound"
+            ]
+        )
+
+    def test_37_row_aggregate_closes_local_Hessian_not_global_G3_G5(self):
+        scoped = self.report["physical_SM_37_row_aggregate_contract"]
+        self.assertTrue(scoped["source_bound"])
+        self.assertTrue(scoped["all_37_active_Hessians_source_derived"])
+        self.assertTrue(
+            scoped["exact_source_aggregate_value_minus_one_and_stationary"]
+        )
+        self.assertEqual(scoped["exact_source_aggregate_kernel_dimension"], 38)
+        self.assertEqual(scoped["exact_source_aggregate_rank"], 448)
+        self.assertTrue(
+            scoped["exact_source_aggregate_PSD_and_strict_mod_symmetry"]
+        )
+        self.assertTrue(
+            scoped["source_bound_local_stationary_Hessian_problem_complete"]
+        )
+        self.assertFalse(scoped["full_486_global_equality_orbit_closed"])
+        g6_wave = next(
+            wave
+            for wave in self.report["closure_waves"]
+            if wave.get("gates") == ["G6"]
+        )
+        self.assertIn("LOCAL_SOURCE_HESSIAN_CLOSED", g6_wave["status"])
+        self.assertIn("exact source-derived all-37 Hessian", g6_wave["deliverable"])
+        self.assertIn("kernel/rank 38/448", g6_wave["deliverable"])
+        self.assertIn("complete global equality orbit", g6_wave["deliverable"])
+        self.assertIn("full scalar and fermion mass/mixing", g6_wave["deliverable"])
+        self.assertNotIn("derive the scalar Hessian", g6_wave["deliverable"].lower())
+        for gate in ("G3", "G4", "G5"):
+            self.assertFalse(scoped[f"physical_SM_{gate}_closed"])
+            self.assertEqual(
+                self.report["gates"][gate]["physical_SM_37_row_aggregate"],
+                scoped,
+            )
+        valid = mod._load_json_artifact(mod.PHYSICAL_SM_37_ROW_AGGREGATE_JSON)
+        pins = {
+            "raw_sha256": mod.PHYSICAL_SM_37_ROW_AGGREGATE_RAW_SHA256,
+            "source_raw_sha256": mod.PHYSICAL_SM_37_ROW_AGGREGATE_SOURCE_RAW_SHA256,
+            "test_raw_sha256": mod.PHYSICAL_SM_37_ROW_AGGREGATE_TEST_RAW_SHA256,
+            "markdown_raw_sha256": mod.PHYSICAL_SM_37_ROW_AGGREGATE_MD_RAW_SHA256,
+        }
+        forged = copy.deepcopy(valid)
+        forged["claims"]["physical_SM_G3_closed"] = True
+        self.assertFalse(
+            mod._physical_sm_37_row_aggregate_contract(forged, **pins)[
+                "source_bound"
+            ]
+        )
+        forged = copy.deepcopy(valid)
+        forged["exact_kernel_and_rank"]["exact_rank"] = 447
+        self.assertFalse(
+            mod._physical_sm_37_row_aggregate_contract(forged, **pins)[
+                "source_bound"
+            ]
+        )
+
+    def test_local_equality_orbit_is_full_486_but_not_global_G3_G5(self):
+        scoped = self.report["physical_SM_local_equality_orbit_contract"]
+        self.assertTrue(scoped["source_bound"])
+        self.assertTrue(scoped["full_486_local_stationary_orbit_classified"])
+        self.assertTrue(
+            scoped["full_486_local_stationary_equality_orbit_classified"]
+        )
+        self.assertTrue(scoped["all_16_sign_variants_one_continuous_K_orbit"])
+        self.assertTrue(scoped["target_orbit_strict_local_minimum_mod_K"])
+        self.assertFalse(scoped["quantitative_neighborhood_radius_proved"])
+        self.assertFalse(scoped["complete_486_global_equality_orbit_classified"])
+        for gate in ("G3", "G4", "G5"):
+            self.assertFalse(scoped[f"physical_SM_{gate}_closed"])
+            self.assertEqual(
+                self.report["gates"][gate]["physical_SM_local_equality_orbit"],
+                scoped,
+            )
+        valid = mod._load_json_artifact(mod.PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_JSON)
+        pins = {
+            "portable_lf_sha256": mod.PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_PORTABLE_LF_SHA256,
+            "source_portable_lf_sha256": mod.PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_SOURCE_PORTABLE_LF_SHA256,
+            "test_portable_lf_sha256": mod.PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_TEST_PORTABLE_LF_SHA256,
+            "markdown_portable_lf_sha256": mod.PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_MD_PORTABLE_LF_SHA256,
+        }
+        for mutation in (
+            lambda value: value["claims"].__setitem__(
+                "quantitative_radius_for_U_proved", True
+            ),
+            lambda value: value["claims"].__setitem__(
+                "complete_486_field_global_equality_orbit_classified", True
+            ),
+            lambda value: value["claims"].__setitem__("physical_SM_G3_closed", True),
+            lambda value: value["sixteen_sign_orbit"]["rows"][0].__setitem__(
+                "actual_486_coordinate_endpoint_matches_amplitude_variant", False
+            ),
+        ):
+            forged = copy.deepcopy(valid)
+            mutation(forged)
+            self.assertFalse(
+                mod._physical_sm_local_equality_orbit_contract(forged, **pins)[
+                    "source_bound"
+                ]
+            )
+        wrong_pins = dict(pins)
+        wrong_pins["source_portable_lf_sha256"] = "0" * 64
+        self.assertFalse(
+            mod._physical_sm_local_equality_orbit_contract(valid, **wrong_pins)[
+                "source_bound"
+            ]
+        )
+    def test_normalized_yukawa_cgc_contract_is_scoped_and_G7_open(self):
+        scoped = self.report["normalized_SO10_Yukawa_CGC_contract"]
+        self.assertTrue(scoped["source_bound"])
+        self.assertTrue(scoped["normalized_10_CGCs_closed"])
+        self.assertTrue(scoped["normalized_126bar_CGCs_closed"])
+        self.assertTrue(scoped["normalized_singlet_duality_CGC_closed"])
+        self.assertTrue(scoped["canonical_304_Weyl_sparse_embedding_closed"])
+        self.assertTrue(scoped["all_declared_representation_CGCs_closed"])
+        self.assertFalse(scoped["flavor_boundary_values_closed"])
+        self.assertFalse(scoped["SARAH_Dot_conversion_closed"])
+        self.assertFalse(scoped["full_one_two_loop_Yukawa_betas_closed"])
+        self.assertFalse(scoped["physical_threshold_matching_and_running_closed"])
+        self.assertFalse(scoped["full_yukawa_sector_closed"])
+        self.assertFalse(scoped["physical_G7_closed"])
+        self.assertFalse(scoped["mathematical_G7_closed"])
+        self.assertFalse(scoped["release_G7_verified"])
+        self.assertEqual(self.report["gates"]["G7"]["status"], mod.STATUS_BLOCKED)
+
+    def test_normalized_yukawa_cgc_consumer_rejects_forged_scope_and_pins(self):
+        valid = mod._load_json_artifact(mod.NORMALIZED_YUKAWA_CGCS_JSON)
+        pins = {
+            "raw_sha256": mod.NORMALIZED_YUKAWA_CGCS_RAW_SHA256,
+            "source_raw_sha256": mod.NORMALIZED_YUKAWA_CGCS_SOURCE_RAW_SHA256,
+            "test_raw_sha256": mod.NORMALIZED_YUKAWA_CGCS_TEST_RAW_SHA256,
+            "markdown_raw_sha256": mod.NORMALIZED_YUKAWA_CGCS_MD_RAW_SHA256,
+        }
+        self.assertTrue(
+            mod._normalized_so10_yukawa_cgc_contract(valid, **pins)[
+                "source_bound"
+            ]
+        )
+        mutations = (
+            lambda value: value.__setitem__("unexpected", True),
+            lambda value: value["scope"].__setitem__("mathematical_G7", True),
+            lambda value: value["scope"].__setitem__(
+                "one_or_two_loop_Yukawa_betas", True
+            ),
+            lambda value: value["checks"].__setitem__(
+                "full_physical_G7_closed", True
+            ),
+            lambda value: value["normalized_tensors"]["126bar"].__setitem__(
+                "denominator", 4
+            ),
+            lambda value: value["blockers"].pop(),
+        )
+        for mutate in mutations:
+            forged = copy.deepcopy(valid)
+            mutate(forged)
+            audited = mod._normalized_so10_yukawa_cgc_contract(forged, **pins)
+            self.assertFalse(audited["source_bound"])
+            self.assertFalse(audited["normalized_10_CGCs_closed"])
+            self.assertFalse(audited["full_yukawa_sector_closed"])
+            self.assertFalse(audited["physical_G7_closed"])
+
+        forged_pin = dict(pins)
+        forged_pin["source_raw_sha256"] = "0" * 64
+        self.assertFalse(
+            mod._normalized_so10_yukawa_cgc_contract(valid, **forged_pin)[
+                "source_bound"
+            ]
+        )
+
+    def test_physical_sm_heavy_vector_contract_is_scoped_and_G6_G7_open(self):
+        scoped = self.report["physical_SM_heavy_vector_mass_contract"]
+        self.assertTrue(scoped["source_bound"])
+        self.assertTrue(scoped["exact_parameterized_tree_vector_mass_matrix_closed"])
+        self.assertTrue(scoped["exact_vector_rank_kernel_and_Goldstone_image_closed"])
+        self.assertTrue(scoped["exact_SU3C_x_U1em_vector_sector_resolution_closed"])
+        self.assertTrue(scoped["parameterized_vector_threshold_log_inputs_closed"])
+        self.assertFalse(scoped["absolute_physical_vector_masses_closed"])
+        self.assertFalse(scoped["pole_vector_masses_closed"])
+        self.assertFalse(scoped["vector_Goldstone_ghost_matching_closed"])
+        self.assertFalse(scoped["physical_G6_closed"])
+        self.assertFalse(scoped["physical_G7_closed"])
+        self.assertEqual(self.report["gates"]["G6"]["status"], mod.STATUS_BLOCKED)
+        self.assertEqual(self.report["gates"]["G7"]["status"], mod.STATUS_BLOCKED)
+
+    def test_physical_sm_heavy_vector_consumer_rejects_forgery_and_pins(self):
+        valid = mod._load_json_artifact(mod.PHYSICAL_SM_HEAVY_VECTOR_JSON)
+        pins = {
+            "raw_sha256": mod.PHYSICAL_SM_HEAVY_VECTOR_RAW_SHA256,
+            "source_raw_sha256": mod.PHYSICAL_SM_HEAVY_VECTOR_SOURCE_RAW_SHA256,
+            "test_raw_sha256": mod.PHYSICAL_SM_HEAVY_VECTOR_TEST_RAW_SHA256,
+            "markdown_raw_sha256": mod.PHYSICAL_SM_HEAVY_VECTOR_MD_RAW_SHA256,
+        }
+        self.assertTrue(
+            mod._physical_sm_heavy_vector_mass_contract(valid, **pins)[
+                "source_bound"
+            ]
+        )
+        mutations = (
+            lambda value: value.__setitem__("unexpected", True),
+            lambda value: value["scope"].__setitem__("physical_G6", True),
+            lambda value: value["checks"].__setitem__(
+                "pole_masses_fixed", True
+            ),
+            lambda value: value["source_binding"][
+                "physical_SM_target_report"
+            ].__setitem__("sha256", "0" * 64),
+            lambda value: value["rank_kernel_Goldstone"].__setitem__(
+                "exact_gram_rank", 38
+            ),
+            lambda value: value["blockers"].pop(),
+        )
+        for mutate in mutations:
+            forged = copy.deepcopy(valid)
+            mutate(forged)
+            audited = mod._physical_sm_heavy_vector_mass_contract(
+                forged, **pins
+            )
+            self.assertFalse(audited["source_bound"])
+            self.assertFalse(
+                audited["exact_parameterized_tree_vector_mass_matrix_closed"]
+            )
+            self.assertFalse(audited["physical_G6_closed"])
+            self.assertFalse(audited["physical_G7_closed"])
+
+        forged_pin = dict(pins)
+        forged_pin["markdown_raw_sha256"] = "0" * 64
+        self.assertFalse(
+            mod._physical_sm_heavy_vector_mass_contract(
+                valid, **forged_pin
+            )["source_bound"]
+        )
+
+    def test_conditional_physical_sm_scalar_spectrum_is_scoped_G6_open(self):
+        scoped = self.report[
+            "conditional_physical_SM_EFT_Hessian_spectrum_contract"
+        ]
+        self.assertTrue(scoped["source_bound"])
+        self.assertTrue(scoped["conditional_reconstructed_tree_scalar_spectrum_closed"])
+        self.assertTrue(scoped["conditional_tree_Hessian_factorization_closed"])
+        self.assertTrue(scoped["conditional_tree_sector_assignment_closed"])
+        self.assertFalse(scoped["source_algebra_derived_tree_scalar_spectrum_closed"])
+        self.assertFalse(scoped["physical_scalar_pole_spectrum_closed"])
+        self.assertFalse(scoped["dimensionful_physical_scalar_masses_closed"])
+        self.assertFalse(scoped["physical_G6_closed"])
+        self.assertFalse(scoped["release_G6_verified"])
+        self.assertEqual(self.report["gates"]["G6"]["status"], mod.STATUS_BLOCKED)
+
+    def test_physical_sm_heavy_vector_msbar_contract_is_scoped_fail_closed(self):
+        scoped = self.report[
+            "physical_SM_heavy_vector_MSbar_matching_contract"
+        ]
+        self.assertTrue(scoped["source_bound"])
+        self.assertTrue(
+            scoped[
+                "combined_heavy_vector_FPghost_Goldstone_MSbar_kernel_closed"
+            ]
+        )
+        self.assertTrue(scoped["finite_MSbar_vector_constant_closed"])
+        self.assertTrue(scoped["Goldstone_double_count_guard_active"])
+        self.assertEqual(scoped["complex_index_totals"], {"SU3": "5/2", "QED": "32/3"})
+        self.assertEqual(
+            scoped["per_complex_vector_matching_formula"],
+            "Delta_i=-T_i/(6*pi)+7*T_i/(2*pi)*log(M_tree/mu)",
+        )
+        self.assertFalse(scoped["arbitrary_Rxi_sector_resolved_matching_closed"])
+        self.assertFalse(scoped["pole_mass_conversion_closed"])
+        self.assertFalse(scoped["SM_symmetric_pre_EW_matching_closed"])
+        self.assertFalse(scoped["complete_scalar_fermion_threshold_matching_closed"])
+        self.assertFalse(scoped["physical_G6_closed"])
+        self.assertFalse(scoped["physical_G7_closed"])
+
+    def test_physical_sm_heavy_vector_msbar_consumer_rejects_forgery_and_pins(self):
+        valid = mod._load_json_artifact(mod.PHYSICAL_SM_HEAVY_VECTOR_MSBAR_JSON)
+        pins = {
+            "raw_sha256": mod.PHYSICAL_SM_HEAVY_VECTOR_MSBAR_RAW_SHA256,
+            "source_raw_sha256": (
+                mod.PHYSICAL_SM_HEAVY_VECTOR_MSBAR_SOURCE_RAW_SHA256
+            ),
+            "test_raw_sha256": mod.PHYSICAL_SM_HEAVY_VECTOR_MSBAR_TEST_RAW_SHA256,
+            "markdown_raw_sha256": (
+                mod.PHYSICAL_SM_HEAVY_VECTOR_MSBAR_MD_RAW_SHA256
+            ),
+        }
+        self.assertTrue(
+            mod._physical_sm_heavy_vector_msbar_matching_contract(valid, **pins)[
+                "source_bound"
+            ]
+        )
+        mutations = (
+            lambda value: value.__setitem__("unexpected", True),
+            lambda value: value["scope"].__setitem__("physical_G7", True),
+            lambda value: value["checks"].__setitem__(
+                "finite_MSbar_vector_constant_closed", False
+            ),
+            lambda value: value["exact_group_factors"][
+                "complex_index_totals"
+            ].__setitem__("QED", "31/3"),
+            lambda value: value["gauge_parameter_obstruction"].__setitem__(
+                "arbitrary_Rxi_sector_resolved_matching_closed", True
+            ),
+            lambda value: value["blockers"].pop(),
+        )
+        for mutate in mutations:
+            forged = copy.deepcopy(valid)
+            mutate(forged)
+            audited = mod._physical_sm_heavy_vector_msbar_matching_contract(
+                forged, **pins
+            )
+            self.assertFalse(audited["source_bound"])
+            self.assertFalse(
+                audited[
+                    "combined_heavy_vector_FPghost_Goldstone_MSbar_kernel_closed"
+                ]
+            )
+            self.assertFalse(audited["physical_G6_closed"])
+            self.assertFalse(audited["physical_G7_closed"])
+
+        forged_pin = dict(pins)
+        forged_pin["test_raw_sha256"] = "0" * 64
+        self.assertFalse(
+            mod._physical_sm_heavy_vector_msbar_matching_contract(
+                valid, **forged_pin
+            )["source_bound"]
+        )
+
+    def test_conditional_scalar_spectrum_consumer_rejects_forgery_and_pins(self):
+        valid = mod._load_json_artifact(
+            mod.CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_JSON
+        )
+        pins = {
+            "raw_sha256": mod.CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_RAW_SHA256,
+            "source_raw_sha256": (
+                mod.CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_SOURCE_RAW_SHA256
+            ),
+            "test_raw_sha256": (
+                mod.CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_TEST_RAW_SHA256
+            ),
+            "markdown_raw_sha256": (
+                mod.CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_MD_RAW_SHA256
+            ),
+        }
+        self.assertTrue(
+            mod._conditional_physical_sm_eft_hessian_spectrum_contract(
+                valid, **pins
+            )["source_bound"]
+        )
+        mutations = (
+            lambda value: value.__setitem__("unexpected", True),
+            lambda value: value["closure_claims"].__setitem__(
+                "source_bound_physical_G6", True
+            ),
+            lambda value: value["proof_boundary"].__setitem__(
+                "upstream_source_algebra_derivation_complete", True
+            ),
+            lambda value: value["kernel_and_physics_boundary"].__setitem__(
+                "rho_is_a_pole_mass_squared", True
+            ),
+            lambda value: value["source_binding"]["foundation"].__setitem__(
+                "all_terminal_foundation_pins_match", False
+            ),
+            lambda value: value["squared_EFT_spectrum"].__setitem__(
+                "positive_root_count_with_multiplicity", 449
+            ),
+        )
+        for mutate in mutations:
+            forged = copy.deepcopy(valid)
+            mutate(forged)
+            audited = (
+                mod._conditional_physical_sm_eft_hessian_spectrum_contract(
+                    forged, **pins
+                )
+            )
+            self.assertFalse(audited["source_bound"])
+            self.assertFalse(
+                audited["conditional_reconstructed_tree_scalar_spectrum_closed"]
+            )
+            self.assertFalse(audited["physical_G6_closed"])
+
+        forged_pin = dict(pins)
+        forged_pin["test_raw_sha256"] = "0" * 64
+        self.assertFalse(
+            mod._conditional_physical_sm_eft_hessian_spectrum_contract(
+                valid, **forged_pin
+            )["source_bound"]
+        )
+
+    def test_physical_sm_vector_rxi_contract_is_strictly_scoped(self):
+        scoped = self.report[
+            "physical_SM_vector_Rxi_vacuum_cancellation_contract"
+        ]
+        self.assertTrue(scoped["source_bound"])
+        self.assertTrue(
+            scoped["zero_background_Rxi_vacuum_determinant_cancellation_closed"]
+        )
+        self.assertTrue(scoped["all_37_broken_directions_closed"])
+        self.assertTrue(scoped["Goldstone_FPghost_double_count_guard_closed"])
+        self.assertFalse(scoped["background_covariant_heat_kernel_matching_closed"])
+        self.assertFalse(
+            scoped["sector_resolved_general_background_determinants_closed"]
+        )
+        self.assertFalse(scoped["pole_vector_masses_closed"])
+        self.assertFalse(scoped["physical_G6_closed"])
+        self.assertFalse(scoped["physical_G7_closed"])
+        self.assertTrue(
+            any(
+                "closed exact source-derived 37-row Hessian" in blocker
+                for blocker in scoped["blockers"]
+            )
+        )
+        self.assertFalse(
+            any(
+                "derive the scalar Hessian" in blocker.lower()
+                for blocker in scoped["blockers"]
+            )
+        )
+
+    def test_physical_sm_vector_rxi_consumer_rejects_forgery_and_pins(self):
+        valid = mod._load_json_artifact(mod.PHYSICAL_SM_VECTOR_RXI_JSON)
+        pins = {
+            "raw_sha256": mod.PHYSICAL_SM_VECTOR_RXI_RAW_SHA256,
+            "source_raw_sha256": mod.PHYSICAL_SM_VECTOR_RXI_SOURCE_RAW_SHA256,
+            "test_raw_sha256": mod.PHYSICAL_SM_VECTOR_RXI_TEST_RAW_SHA256,
+            "markdown_raw_sha256": mod.PHYSICAL_SM_VECTOR_RXI_MD_RAW_SHA256,
+        }
+        self.assertTrue(
+            mod._physical_sm_vector_rxi_vacuum_cancellation_contract(
+                valid, **pins
+            )["source_bound"]
+        )
+        mutations = (
+            lambda value: value.__setitem__("unexpected", True),
+            lambda value: value["scope"].__setitem__("physical_G7", True),
+            lambda value: value["checks"].__setitem__(
+                "vacuum_normalized_unphysical_determinant_is_one", False
+            ),
+            lambda value: value["direction_census"].__setitem__(
+                "total_broken_real_directions", 36
+            ),
+            lambda value: value["quadratic_operator_scope"].__setitem__(
+                "background", "general background"
+            ),
+            lambda value: value["multiplet_ledger"][0].__setitem__(
+                "mass_squared", "forged"
+            ),
+            lambda value: value["one_real_broken_direction_theorem"][
+                "effective_action_exponents"
+            ].__setitem__("complex_FP_ghost_pair_on_D_xiM", "0"),
+            lambda value: value["quadratic_operator_scope"].__setitem__(
+                "vacuum_normalization", "forged"
+            ),
+            lambda value: value["blockers"].pop(),
+        )
+        for mutate in mutations:
+            forged = copy.deepcopy(valid)
+            mutate(forged)
+            audited = mod._physical_sm_vector_rxi_vacuum_cancellation_contract(
+                forged, **pins
+            )
+            self.assertFalse(audited["source_bound"])
+            self.assertFalse(
+                audited[
+                    "zero_background_Rxi_vacuum_determinant_cancellation_closed"
+                ]
+            )
+            self.assertFalse(audited["physical_G6_closed"])
+            self.assertFalse(audited["physical_G7_closed"])
+        forged_pins = dict(pins)
+        forged_pins["source_raw_sha256"] = "0" * 64
+        self.assertFalse(
+            mod._physical_sm_vector_rxi_vacuum_cancellation_contract(
+                valid, **forged_pins
+            )["source_bound"]
+        )
+
+    def test_physical_sm_g6_g7_frontier_is_negative_and_fail_closed(self):
+        scoped = self.report["physical_SM_G6_G7_closure_frontier_contract"]
+        self.assertTrue(scoped["source_bound"])
+        self.assertTrue(scoped["corrected_terminal_artifacts_composed"])
+        self.assertTrue(scoped["continuous_nonidentifiability_proved"])
+        self.assertTrue(scoped["minimal_closure_path_machine_readable"])
+        self.assertEqual(len(scoped["minimal_closure_path"]), 7)
+        self.assertFalse(scoped["unique_absolute_tree_spectrum"])
+        self.assertFalse(scoped["unique_pole_spectrum"])
+        self.assertFalse(scoped["unique_threshold_vector"])
+        self.assertFalse(scoped["unique_full_RGE_trajectory"])
+        self.assertFalse(scoped["physical_G6_closed"])
+        self.assertFalse(scoped["physical_G7_closed"])
+
+    def test_physical_sm_g6_g7_frontier_rejects_forgery_and_pins(self):
+        valid = mod._load_json_artifact(mod.PHYSICAL_SM_G6_G7_FRONTIER_JSON)
+        pins = {
+            "raw_sha256": mod.PHYSICAL_SM_G6_G7_FRONTIER_RAW_SHA256,
+            "source_raw_sha256": (
+                mod.PHYSICAL_SM_G6_G7_FRONTIER_SOURCE_RAW_SHA256
+            ),
+            "test_raw_sha256": mod.PHYSICAL_SM_G6_G7_FRONTIER_TEST_RAW_SHA256,
+            "markdown_raw_sha256": (
+                mod.PHYSICAL_SM_G6_G7_FRONTIER_MD_RAW_SHA256
+            ),
+        }
+        self.assertTrue(
+            mod._physical_sm_g6_g7_closure_frontier_contract(valid, **pins)[
+                "source_bound"
+            ]
+        )
+        mutations = (
+            lambda value: value.__setitem__("unexpected", True),
+            lambda value: value["scope"].__setitem__("physical_G6", True),
+            lambda value: value["completed_and_open_matrix"]["open"].__setitem__(
+                "unique_pole_spectrum", False
+            ),
+            lambda value: value["exact_nonidentifiability_witnesses"][
+                "vector_common_scale"
+            ]["log_shift_coefficients"].__setitem__("SU3", "9"),
+            lambda value: value["minimal_closure_path"].pop(),
+            lambda value: value["completed_and_open_matrix"]["closed"].__setitem__(
+                "forged_closed_item",
+                value["completed_and_open_matrix"]["closed"].pop(
+                    "standard_SU3C_x_U1em_target_and_stabilizer"
+                ),
+            ),
+            lambda value: value["exact_nonidentifiability_witnesses"][
+                "scalar_EFT_b_scale"
+            ].__setitem__("source_algebra_derived", True),
+            lambda value: value["exact_nonidentifiability_witnesses"][
+                "flavor_boundaries"
+            ].__setitem__(
+                "different_two_loop_gauge_Y4_and_Yukawa_beta_terms", False
+            ),
+            lambda value: value["minimal_closure_path"][3].__setitem__(
+                "acceptance", "forged acceptance"
+            ),
+        )
+        for mutate in mutations:
+            forged = copy.deepcopy(valid)
+            mutate(forged)
+            audited = mod._physical_sm_g6_g7_closure_frontier_contract(
+                forged, **pins
+            )
+            self.assertFalse(audited["source_bound"])
+            self.assertFalse(audited["continuous_nonidentifiability_proved"])
+            self.assertFalse(audited["physical_G6_closed"])
+            self.assertFalse(audited["physical_G7_closed"])
+        forged_pins = dict(pins)
+        forged_pins["markdown_raw_sha256"] = "0" * 64
+        self.assertFalse(
+            mod._physical_sm_g6_g7_closure_frontier_contract(
+                valid, **forged_pins
+            )["source_bound"]
+        )
+
+    def test_physical_sm_g8_frontier_is_negative_and_fail_closed(self):
+        scoped = self.report["physical_SM_G8_identifiability_frontier_contract"]
+        self.assertTrue(scoped["source_bound"])
+        self.assertTrue(scoped["canonical_G8_contract_audited"])
+        self.assertTrue(scoped["continuous_absolute_scale_nonidentifiability_proved"])
+        self.assertTrue(scoped["flavor_and_interference_nonidentifiability_audited"])
+        self.assertTrue(
+            scoped["repository_frozen_PDG_2025_single_channel_constraint_verified"]
+        )
+        self.assertEqual(scoped["minimal_exhibited_joint_free_real_dimension"], 1)
+        self.assertFalse(scoped["unique_proton_lifetime_or_distribution"])
+        self.assertFalse(scoped["physical_G8_closed"])
+        self.assertFalse(scoped["release_G8_verified"])
+        self.assertFalse(scoped["authoritative_G8_closed"])
+        self.assertFalse(scoped["whole_model_excluded_by_conditional_points"])
+        self.assertFalse(scoped["all_acceptance_criteria_pass"])
+        self.assertIs(
+            self.report["gates"]["G8"][
+                "physical_SM_G8_identifiability_frontier"
+            ]["source_bound"],
+            True,
+        )
+
+    def test_physical_sm_g8_frontier_rejects_forgery_and_pins(self):
+        valid = mod._load_json_artifact(mod.PHYSICAL_SM_G8_FRONTIER_JSON)
+        pins = {
+            "raw_sha256": mod.PHYSICAL_SM_G8_FRONTIER_RAW_SHA256,
+            "source_raw_sha256": mod.PHYSICAL_SM_G8_FRONTIER_SOURCE_RAW_SHA256,
+            "test_raw_sha256": mod.PHYSICAL_SM_G8_FRONTIER_TEST_RAW_SHA256,
+            "markdown_raw_sha256": mod.PHYSICAL_SM_G8_FRONTIER_MD_RAW_SHA256,
+        }
+        self.assertTrue(
+            mod._physical_sm_g8_identifiability_frontier_contract(valid, **pins)[
+                "source_bound"
+            ]
+        )
+        mutations = (
+            lambda value: value.__setitem__("unexpected", True),
+            lambda value: value["scope"].__setitem__("physical_G8", True),
+            lambda value: value["canonical_G8_definition"].__setitem__(
+                "gap_id", "G8_exact_unique_proton_lifetime"
+            ),
+            lambda value: value["canonical_G8_definition"].__setitem__(
+                "definition_sha256", "0" * 64
+            ),
+            lambda value: value["canonical_G8_definition"].__setitem__(
+                "dependencies", []
+            ),
+            lambda value: value["acceptance_matrix"]["criterion_1"].__setitem__(
+                "passed", True
+            ),
+            lambda value: value["exact_nonidentifiability_witnesses"][
+                "absolute_vector_scale"
+            ].__setitem__("partial_lifetime_ratio_at_fixed_dimensionless_data", "15"),
+            lambda value: value["exact_nonidentifiability_witnesses"][
+                "flavor_and_interference"
+            ].__setitem__("flavor_tensor_values_or_textures_fixed", True),
+            lambda value: value["scale_audit_0_through_100"].__setitem__(
+                "case_count", 100
+            ),
+            lambda value: value["repository_frozen_experimental_input"].__setitem__(
+                "usable_as_unique_G8_prediction", True
+            ),
+            lambda value: value["minimal_exhibited_free_input_vector"][
+                "smallest_exhibited_joint_witness"
+            ].__setitem__("real_dimension", 0),
+            lambda value: value["exact_missing_inputs"].__setitem__(
+                "new_laboratory_measurement_required_for_theory_gate", ["forged"]
+            ),
+        )
+        for mutate in mutations:
+            forged = copy.deepcopy(valid)
+            mutate(forged)
+            audited = mod._physical_sm_g8_identifiability_frontier_contract(
+                forged, **pins
+            )
+            self.assertFalse(audited["source_bound"])
+            self.assertFalse(audited["physical_G8_closed"])
+            self.assertFalse(audited["release_G8_verified"])
+            self.assertFalse(audited["authoritative_G8_closed"])
+        forged_pins = dict(pins)
+        forged_pins["source_raw_sha256"] = "0" * 64
+        self.assertFalse(
+            mod._physical_sm_g8_identifiability_frontier_contract(
+                valid, **forged_pins
+            )["source_bound"]
+        )
+
+    def test_recalculated_G7_inputs_supersede_only_stale_broad_blockers(self):
+        resolution = self.report["physical_G7_recalculated_input_resolution"]
+        self.assertTrue(resolution["source_bound"])
+        self.assertTrue(resolution["all_resolved_scoped_inputs_closed"])
+        self.assertTrue(all(resolution["resolved_scoped_inputs"].values()))
+        self.assertTrue(all(resolution["superseded_stale_blockers"].values()))
+        self.assertTrue(
+            all(value is False for value in resolution["precise_open_inputs"].values())
+        )
+        self.assertFalse(resolution["physical_G6_closed"])
+        self.assertFalse(resolution["mathematical_G7_closed"])
+        self.assertFalse(resolution["physical_G7_closed"])
+        self.assertFalse(resolution["release_G7_verified"])
+        self.assertIn(
+            "SARAH_implicit_Dot_to_identical_Weyl_contraction_conversion",
+            resolution["precise_open_inputs"],
+        )
+        self.assertIn(
+            "background_covariant_heat_kernel_and_general_background_determinants",
+            resolution["precise_open_inputs"],
+        )
+        self.assertIn(
+            "zero_background_Rxi_vacuum_determinant_cancellation",
+            resolution["resolved_scoped_inputs"],
+        )
+        self.assertNotIn(
+            "finite_vector_matching_constants", resolution["precise_open_inputs"]
+        )
+
+    def test_recalculated_G7_resolution_fails_closed_with_any_unbound_input(self):
+        component = copy.deepcopy(
+            self.report["physical_G7_component_threshold_contract"]
+        )
+        cgcs = copy.deepcopy(self.report["normalized_SO10_Yukawa_CGC_contract"])
+        vectors = copy.deepcopy(self.report["physical_SM_heavy_vector_mass_contract"])
+        vector_msbar = copy.deepcopy(
+            self.report["physical_SM_heavy_vector_MSbar_matching_contract"]
+        )
+        vector_rxi = copy.deepcopy(
+            self.report["physical_SM_vector_Rxi_vacuum_cancellation_contract"]
+        )
+        scalars = copy.deepcopy(
+            self.report[
+                "conditional_physical_SM_EFT_Hessian_spectrum_contract"
+            ]
+        )
+        frontier = copy.deepcopy(
+            self.report["physical_SM_G6_G7_closure_frontier_contract"]
+        )
+        for forged in (
+            component,
+            cgcs,
+            vectors,
+            vector_msbar,
+            vector_rxi,
+            scalars,
+            frontier,
+        ):
+            forged["source_bound"] = False
+            resolution = mod._physical_g7_recalculated_input_resolution(
+                component,
+                cgcs,
+                vectors,
+                vector_msbar,
+                vector_rxi,
+                scalars,
+                frontier,
+            )
+            self.assertFalse(resolution["source_bound"])
+            self.assertFalse(resolution["all_resolved_scoped_inputs_closed"])
+            self.assertFalse(any(resolution["resolved_scoped_inputs"].values()))
+            self.assertFalse(resolution["physical_G6_closed"])
+            self.assertFalse(resolution["physical_G7_closed"])
+            forged["source_bound"] = True
 
     def test_rank1_slice_rejects_wrong_fixed_H_orientation(self):
         forged = copy.deepcopy(
@@ -359,8 +1666,13 @@ class G1G8GateLedgerTests(unittest.TestCase):
         ]
         alternative_sos = reports["gauged_G3_alternative_global_SOS_audit"]
         self.assertEqual(x_report["n_failed"], 0)
-        self.assertFalse(x_report["contract_consistent"])
-        self.assertEqual(x_report["blocker"], mod.CONTRACT_BLOCKER)
+        self.assertIs(
+            x_report["contract_consistent"], self.report["contract_consistent"]
+        )
+        self.assertEqual(
+            x_report["blocker"],
+            None if self.report["contract_consistent"] else mod.CONTRACT_BLOCKER,
+        )
         self.assertEqual(g1_report["model_contract_id"], mod.AUTHORITATIVE_CONTRACT_ID)
         self.assertEqual(g1_report["counts"]["hermitian_conjugacy_orbits"], 28)
         self.assertEqual(g1_report["counts"]["total_potential_orbit_multiplicity"], 44)
@@ -856,7 +2168,7 @@ class G1G8GateLedgerTests(unittest.TestCase):
                 "gauged_G3_rank1_SU4_infrastructure_is_exact_and_fail_closed"
             ]
         )
-        self.assertEqual(self.report["gates"]["G3"]["status"], mod.STATUS_BLOCKED)
+        self.assertEqual(self.report["gates"]["G3"]["status"], mod.STATUS_OPEN)
         self.assertEqual(
             self.report["gates"]["G3"]["constructive_frontier_evidence"],
             frontier,
@@ -877,8 +2189,8 @@ class G1G8GateLedgerTests(unittest.TestCase):
         self.assertTrue(scoped["G1"]["mathematical_component_tensor_closure_complete"])
         self.assertTrue(scoped["G1"]["character_census_remains_multiplicity_only"])
         self.assertTrue(scoped["G1"]["full_G1_closed"])
-        self.assertFalse(scoped["G1"]["authoritative_G1_promoted_closed"])
-        self.assertFalse(scoped["G1"]["release_G1_verified"])
+        self.assertTrue(scoped["G1"]["authoritative_G1_promoted_closed"])
+        self.assertTrue(scoped["G1"]["release_G1_verified"])
         self.assertEqual(scoped["G1"]["invariant_directions"], 44)
         self.assertEqual(scoped["G1"]["real_potential_parameters"], 51)
         closure = self.report["renormalizable_G1_component_tensor_closure"]
@@ -886,6 +2198,9 @@ class G1G8GateLedgerTests(unittest.TestCase):
         self.assertTrue(
             closure["mathematical_G1_closed_for_renormalizable_model"]
         )
+        consistent = self.report["contract_consistent"]
+        # This frozen theorem records mathematical closure only; authoritative
+        # promotion is performed by the live ledger after exact-X validation.
         self.assertFalse(closure["authoritative_G1_promoted_closed"])
         self.assertFalse(closure["release_G1_verified"])
         self.assertTrue(closure["downstream_integration_completed"])
@@ -896,8 +2211,9 @@ class G1G8GateLedgerTests(unittest.TestCase):
         )
         self.assertTrue(scoped["G2"]["scoped_derivative_audit_complete"])
         self.assertFalse(scoped["G2"]["authoritative_promotion_blocked_on_full_G1"])
-        self.assertTrue(
-            scoped["G2"]["authoritative_promotion_blocked_on_model_contract"]
+        self.assertIs(
+            scoped["G2"]["authoritative_promotion_blocked_on_model_contract"],
+            not consistent,
         )
         self.assertEqual(scoped["G2"]["invariant_directions"], 44)
         self.assertEqual(scoped["G2"]["real_potential_parameters"], 51)
@@ -914,23 +2230,39 @@ class G1G8GateLedgerTests(unittest.TestCase):
         self.assertFalse(scoped["G2"]["G3_closed"])
         for gate_name in ("G1", "G2"):
             gate = self.report["gates"][gate_name]
-            self.assertEqual(gate["status"], mod.STATUS_BLOCKED)
+            self.assertEqual(
+                gate["status"], mod.STATUS_CLOSED if consistent else mod.STATUS_BLOCKED
+            )
             self.assertTrue(gate["scoped_calculation_complete"])
         self.assertTrue(
             self.report["gates"]["G1"]["full_gate_calculation_complete"]
         )
+        if not consistent:
+            self.assertEqual(
+                self.report["gates"]["G1"]["open_scope"],
+                [
+                    "obtain a real hash-bound external SARAH execution attestation for authoritative G1 promotion"
+                ],
+            )
         self.assertTrue(
             self.report["gates"]["G2"]["full_gate_calculation_complete"]
         )
 
-    def test_every_authoritative_gate_is_blocked_and_none_is_closed(self):
+    def test_legacy_gate_frontier_tracks_contract_state(self):
         gates = self.report["gates"]
         self.assertEqual(set(gates), {f"G{i}" for i in range(1, 9)})
-        self.assertTrue(all(row["status"] == mod.STATUS_BLOCKED for row in gates.values()))
-        self.assertEqual(self.report["summary"]["closed"], [])
-        self.assertEqual(self.report["summary"]["blocked"], list(gates))
-        self.assertEqual(self.report["summary"]["n_closed"], 0)
-        self.assertEqual(self.report["summary"]["n_blocked"], 8)
+        if self.report["contract_consistent"]:
+            self.assertEqual(self.report["summary"]["closed"], ["G1", "G2", "G5"])
+            self.assertEqual(self.report["summary"]["open"], ["G3"])
+            self.assertEqual(
+                self.report["summary"]["blocked"], ["G4", "G6", "G7", "G8"]
+            )
+        else:
+            self.assertTrue(
+                all(row["status"] == mod.STATUS_BLOCKED for row in gates.values())
+            )
+            self.assertEqual(self.report["summary"]["closed"], [])
+            self.assertEqual(self.report["summary"]["blocked"], list(gates))
 
     def test_wave_zero_model_contract_precedes_g1(self):
         self.assertTrue(mod._acyclic_dependencies())
@@ -939,7 +2271,12 @@ class G1G8GateLedgerTests(unittest.TestCase):
         wave0 = self.report["closure_waves"][0]
         self.assertEqual(wave0["wave"], 0)
         self.assertEqual(wave0["id"], "MODEL_CONTRACT")
-        self.assertEqual(wave0["status"], mod.STATUS_BLOCKED)
+        self.assertEqual(
+            wave0["status"],
+            mod.STATUS_CLOSED
+            if self.report["contract_consistent"]
+            else mod.STATUS_BLOCKED,
+        )
 
     def test_historical_g1_g2_results_are_preserved_but_scoped(self):
         historical = self.report["historical_option_c_subtheorems"]
@@ -972,7 +2309,10 @@ class G1G8GateLedgerTests(unittest.TestCase):
 
     def test_no_whole_model_validation_or_exclusion_claim(self):
         feasibility = self.report["feasibility"]
-        self.assertEqual(feasibility["current_authoritative_closed_gates"], 0)
+        self.assertEqual(
+            feasibility["current_authoritative_closed_gates"],
+            3 if self.report["contract_consistent"] else 0,
+        )
         self.assertFalse(feasibility["guarantee_model_survives_recertification"])
         self.assertTrue(
             feasibility["gauged_G1_multiplicity_census_complete"]
@@ -1099,6 +2439,8 @@ class G1G8GateLedgerTests(unittest.TestCase):
             contract_conflicts=[],
             overall_state="PASS",
         )
+        forged["external_model_validation"]["valid"] = False
+        forged["external_model_validation"]["fresh_for_exact_model_bytes"] = False
         report = mod._build_report_from_inputs(
             x_report=forged,
             g1_report=inputs["gauged_G1_character_census"],
@@ -1809,11 +3151,21 @@ class G1G8GateLedgerTests(unittest.TestCase):
         self.assertIn("strict 22-block/824-pivot primal", verdict)
         self.assertIn("every real Phi210", verdict)
         self.assertIn(
-            "Global Sigma, general/full H, the full Hessian, and G3 remain open",
+            "For that historical fixed-H/Sigma frontier, global Sigma, "
+            "general/full H, and its then-unassembled Hessian remained open",
             verdict,
         )
+        self.assertIn(
+            "exact source-derived all-37 physical-branch Hessian", verdict
+        )
+        self.assertNotIn("the full Hessian, and G3 remain open", verdict)
         self.assertNotIn("only a four-real-dimensional Phi sub-slice", verdict)
         self.assertNotIn("arbitrary-Phi bound remain open", verdict)
+        self.assertNotIn("pending a corrected vacuum and recomputed spectrum", verdict)
+        self.assertIn("corrected SU(3)_C x U(1)_em target/stabilizer", verdict)
+        self.assertIn("conditional reconstructed 486-state scalar tree spectrum", verdict)
+        self.assertIn("canonical sparse 304-Weyl embedding", verdict)
+        self.assertIn("SARAH implicit/identical-Weyl contraction conversion", verdict)
         mutations = (
             lambda value: value["scope"].__setitem__("G3_closed", True),
             lambda value: value["scope"].__setitem__(

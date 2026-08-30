@@ -1,0 +1,676 @@
+{
+  "G6_full_closed": false,
+  "alpha_equation": "d alpha_a/dt=alpha_a^2/(2pi)*[b_a+sum_b B_ab*alpha_b/(4pi)-Y_a/(16pi^2)]",
+  "beta_function_convention": "beta_g=g^3*b/(16pi^2)+g^3*(sum_b B_ab*g_b^2-Y_a)/(16pi^2)^2",
+  "boundary_diagnostic": {
+    "PS_scale_values_for_16_dimensionless_trilinears_present": false,
+    "V31_fitted_neutrino_Dirac_trace_YdagY": 0.16789741344867715,
+    "below_PS_coupled_Yukawa_EFT_and_matching_present": false,
+    "conditional_if_numerically_identified_with_PS_scale_YQQ": [
+      1.3431793075894172,
+      2.6863586151788343,
+      2.6863586151788343
+    ],
+    "missing_boundary_classes": [
+      "YQQ and yNQ matrices at the PS scale",
+      "vectorlike and PQ coupling vectors",
+      "kappa/lambda magnitudes and phases",
+      "soft mediation data and finite matching"
+    ],
+    "numerical_PS_scale_identification_with_V31_matrix_is_source_derived": false,
+    "structural_YQQ_neutrino_Dirac_role_in_PS_source": true,
+    "unique_coupled_numerical_solution_exists": false
+  },
+  "conditional_new_physics_threshold_bridge": {
+    "SO10_split_multiplet_embedding_derived": false,
+    "adopted_into_active_model": false,
+    "candidate": "simple diagonal six-chiral witness in three anomaly-neutral real-representation pairs",
+    "component_fermion_charges_each_pair": [
+      99,
+      33
+    ],
+    "conditional_leading_log_threshold_existence_proved": true,
+    "corrected_alpha_inverse_4_L_R": [
+      18.9419255747675,
+      18.9419255747675,
+      18.9419255747675
+    ],
+    "corrected_common_alpha": 0.05279294314893191,
+    "corrected_common_alpha_inverse": 18.9419255747675,
+    "each_pair_discrete_anomaly_vectorlike": true,
+    "exact_numerical_replay_closes_target": true,
+    "finite_matching_from_source_derived": false,
+    "four_chiral_nonminimality_counterexample_without_zero_sum_convention": {
+      "Delta_alpha_inverse_4_L_R": [
+        -0.12247222000716462,
+        0.3182237281824669,
+        0.0
+      ],
+      "chosen_common_alpha_inverse": 19.007176077492602,
+      "log_mass_ratios": [
+        -0.38475782664334124,
+        0.4998646633279966
+      ],
+      "mass_ratios": [
+        0.680615443174321,
+        1.648498153348611
+      ],
+      "masses_GeV": [
+        8009936798972785.0,
+        1.9400626527017816e+16
+      ],
+      "pairs_used": [
+        "A4+A4c",
+        "AL+ALc"
+      ],
+      "replays_common_value": true
+    },
+    "matching_convention": "alpha_full^-1(Mstar)=alpha_EFT^-1(Mstar)+(Delta b/2pi) ln(M/Mstar)",
+    "matching_order": "conditional one-loop leading-log diagonal threshold",
+    "maximum_to_minimum_mass_ratio": 2.683488802686773,
+    "minimum_zero_sum_target_convention_used": true,
+    "multiplets": [
+      {
+        "Delta_b_4_L_R": [
+          2,
+          0,
+          0
+        ],
+        "PS_representations": [
+          [
+            6,
+            1,
+            1
+          ],
+          [
+            6,
+            1,
+            1
+          ]
+        ],
+        "Z132_superfield_charges": [
+          0,
+          66
+        ],
+        "pair": "A4+A4c"
+      },
+      {
+        "Delta_b_4_L_R": [
+          0,
+          4,
+          0
+        ],
+        "PS_representations": [
+          [
+            1,
+            3,
+            1
+          ],
+          [
+            1,
+            3,
+            1
+          ]
+        ],
+        "Z132_superfield_charges": [
+          0,
+          66
+        ],
+        "pair": "AL+ALc"
+      },
+      {
+        "Delta_b_4_L_R": [
+          0,
+          0,
+          4
+        ],
+        "PS_representations": [
+          [
+            1,
+            1,
+            3
+          ],
+          [
+            1,
+            1,
+            3
+          ]
+        ],
+        "Z132_superfield_charges": [
+          0,
+          66
+        ],
+        "pair": "AR+ARc"
+      }
+    ],
+    "precision_unification_closed": false,
+    "renormalizable_pair_mass_charge_sum_mod132": 66,
+    "replayed_Delta_alpha_inverse_4_L_R": [
+      -0.18772272273226775,
+      0.2529732254573638,
+      -0.06525050272510313
+    ],
+    "six_chiral_witness_minimality_proved": false,
+    "solved_log_mass_ratios": [
+      -0.589748326647566,
+      0.39736941332588427,
+      -0.10249525000211239
+    ],
+    "solved_mass_ratios": [
+      0.5544668116974746,
+      1.4879054806516085,
+      0.9025824370074125
+    ],
+    "solved_masses_GeV": [
+      6525335508273521.0,
+      1.7510664770226396e+16,
+      1.0622192530004844e+16
+    ],
+    "target_Delta_alpha_inverse_4_L_R": [
+      -0.18772272273226775,
+      0.2529732254573638,
+      -0.06525050272510313
+    ],
+    "target_boundary_repair_derived_from_source": false,
+    "target_common_scale_GeV": 1.1768667430781848e+16,
+    "threshold_parity_and_decay_cosmology_derived": false
+  },
+  "coupled_gauge_Yukawa_soft_solution_present": false,
+  "cross_checks": {
+    "ScScSigma_invariant_norm_check": {
+      "InvMat2_squared_norm": 6,
+      "SARAH_InvMat2_nonzero_entries": 12,
+      "absolute_entry_squared": "1/2",
+      "epsilon2_squared_norm": 2,
+      "lambdaS_coefficient_vector": [
+        5,
+        0,
+        6
+      ],
+      "product_invariant_squared_norm": 12
+    },
+    "projected_Yukawa_coefficients_match_independent_norm_reference": true,
+    "raw_matches_V24_B": true,
+    "raw_matches_V24_b": true,
+    "raw_matches_independent_exactly": true,
+    "raw_minus_independent_B": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "raw_minus_independent_b": [
+      0,
+      0,
+      0
+    ]
+  },
+  "independent_Yukawa_invariant_norm_reference": {
+    "coefficient_vectors_4_L_R": {
+      "YQQ": [
+        8,
+        16,
+        16
+      ],
+      "YQX": [
+        8,
+        16,
+        16
+      ],
+      "YXQ": [
+        8,
+        16,
+        16
+      ],
+      "YXX": [
+        8,
+        16,
+        16
+      ],
+      "kappaPS": [
+        4,
+        0,
+        8
+      ],
+      "kappaX": [
+        0,
+        0,
+        0
+      ],
+      "lambdaH": [
+        0,
+        2,
+        2
+      ],
+      "lambdaPQ": [
+        4,
+        8,
+        0
+      ],
+      "lambdaPX": [
+        4,
+        8,
+        0
+      ],
+      "lambdaPcQ": [
+        4,
+        0,
+        8
+      ],
+      "lambdaPcX": [
+        4,
+        0,
+        8
+      ],
+      "lambdaS": [
+        5,
+        0,
+        6
+      ],
+      "lambdaSb": [
+        5,
+        0,
+        6
+      ],
+      "lambdaSigma": [
+        2,
+        0,
+        0
+      ],
+      "yNQ": [
+        4,
+        0,
+        8
+      ],
+      "yNX": [
+        4,
+        0,
+        8
+      ]
+    },
+    "component_Gram_projection_of_raw_BetaY_executed": false,
+    "derivation": "normalized invariant norm times weighted Casimir sum divided by the adjoint dimension",
+    "invariant_squared_norms": {
+      "YQQ": 16,
+      "YQX": 16,
+      "YXQ": 16,
+      "YXX": 16,
+      "kappaPS": 8,
+      "kappaX": 1,
+      "lambdaH": 4,
+      "lambdaPQ": 8,
+      "lambdaPX": 8,
+      "lambdaPcQ": 8,
+      "lambdaPcX": 8,
+      "lambdaS": 12,
+      "lambdaSb": 12,
+      "lambdaSigma": 6,
+      "yNQ": 8,
+      "yNX": 8
+    }
+  },
+  "independent_group_theory": {
+    "B": [
+      [
+        108,
+        15,
+        21
+      ],
+      [
+        75,
+        53,
+        3
+      ],
+      [
+        105,
+        3,
+        81
+      ]
+    ],
+    "adjoint_Casimirs": [
+      4,
+      2,
+      2
+    ],
+    "b": [
+      1,
+      5,
+      9
+    ],
+    "field_rows": [
+      {
+        "C": {
+          "SU2L": "3/4",
+          "SU2R": "3/4",
+          "SU4": 0
+        },
+        "S": {
+          "SU2L": 1,
+          "SU2R": 1,
+          "SU4": 0
+        },
+        "field": "H"
+      },
+      {
+        "C": {
+          "SU2L": "3/4",
+          "SU2R": 0,
+          "SU4": "15/8"
+        },
+        "S": {
+          "SU2L": 6,
+          "SU2R": 0,
+          "SU4": 3
+        },
+        "field": "Q"
+      },
+      {
+        "C": {
+          "SU2L": 0,
+          "SU2R": "3/4",
+          "SU4": "15/8"
+        },
+        "S": {
+          "SU2L": 0,
+          "SU2R": 6,
+          "SU4": 3
+        },
+        "field": "Qc"
+      },
+      {
+        "C": {
+          "SU2L": 0,
+          "SU2R": 0,
+          "SU4": 0
+        },
+        "S": {
+          "SU2L": 0,
+          "SU2R": 0,
+          "SU4": 0
+        },
+        "field": "X"
+      },
+      {
+        "C": {
+          "SU2L": 0,
+          "SU2R": "3/4",
+          "SU4": "15/8"
+        },
+        "S": {
+          "SU2L": 0,
+          "SU2R": 2,
+          "SU4": 1
+        },
+        "field": "Sc"
+      },
+      {
+        "C": {
+          "SU2L": 0,
+          "SU2R": "3/4",
+          "SU4": "15/8"
+        },
+        "S": {
+          "SU2L": 0,
+          "SU2R": 2,
+          "SU4": 1
+        },
+        "field": "Sbc"
+      },
+      {
+        "C": {
+          "SU2L": 0,
+          "SU2R": 0,
+          "SU4": "5/2"
+        },
+        "S": {
+          "SU2L": 0,
+          "SU2R": 0,
+          "SU4": 1
+        },
+        "field": "Sigma"
+      },
+      {
+        "C": {
+          "SU2L": "3/4",
+          "SU2R": 0,
+          "SU4": "15/8"
+        },
+        "S": {
+          "SU2L": 2,
+          "SU2R": 0,
+          "SU4": 1
+        },
+        "field": "PsiBar"
+      },
+      {
+        "C": {
+          "SU2L": "3/4",
+          "SU2R": 0,
+          "SU4": "15/8"
+        },
+        "S": {
+          "SU2L": 2,
+          "SU2R": 0,
+          "SU4": 1
+        },
+        "field": "Psi"
+      },
+      {
+        "C": {
+          "SU2L": 0,
+          "SU2R": "3/4",
+          "SU4": "15/8"
+        },
+        "S": {
+          "SU2L": 0,
+          "SU2R": 2,
+          "SU4": 1
+        },
+        "field": "PsiC"
+      },
+      {
+        "C": {
+          "SU2L": 0,
+          "SU2R": "3/4",
+          "SU4": "15/8"
+        },
+        "S": {
+          "SU2L": 0,
+          "SU2R": 2,
+          "SU4": 1
+        },
+        "field": "PsiCBar"
+      },
+      {
+        "C": {
+          "SU2L": 0,
+          "SU2R": 0,
+          "SU4": 0
+        },
+        "S": {
+          "SU2L": 0,
+          "SU2R": 0,
+          "SU4": 0
+        },
+        "field": "P"
+      },
+      {
+        "C": {
+          "SU2L": 0,
+          "SU2R": 0,
+          "SU4": 0
+        },
+        "S": {
+          "SU2L": 0,
+          "SU2R": 0,
+          "SU4": 0
+        },
+        "field": "N"
+      }
+    ],
+    "formula": "b_a=S_a-3C_a; B_ab=delta_ab[-6C_a^2+2C_a*S_a]+4*sum_i S_a(i)C_b(i)",
+    "group_order": [
+      "SU4",
+      "SU2L",
+      "SU2R"
+    ],
+    "sum_Dynkin": [
+      13,
+      11,
+      15
+    ]
+  },
+  "normalized_projection_of_frozen_V33_SARAH": {
+    "B": [
+      [
+        108,
+        15,
+        21
+      ],
+      [
+        75,
+        53,
+        3
+      ],
+      [
+        105,
+        3,
+        81
+      ]
+    ],
+    "Yukawa_subtraction_coefficients": {
+      "YQQ": [
+        8,
+        16,
+        16
+      ],
+      "YQX": [
+        8,
+        16,
+        16
+      ],
+      "YXQ": [
+        8,
+        16,
+        16
+      ],
+      "YXX": [
+        8,
+        16,
+        16
+      ],
+      "kappaPS": [
+        4,
+        0,
+        8
+      ],
+      "kappaX": [
+        0,
+        0,
+        0
+      ],
+      "lambdaH": [
+        0,
+        2,
+        2
+      ],
+      "lambdaPQ": [
+        4,
+        8,
+        0
+      ],
+      "lambdaPX": [
+        4,
+        8,
+        0
+      ],
+      "lambdaPcQ": [
+        4,
+        0,
+        8
+      ],
+      "lambdaPcX": [
+        4,
+        0,
+        8
+      ],
+      "lambdaS": [
+        5,
+        0,
+        6
+      ],
+      "lambdaSb": [
+        5,
+        0,
+        6
+      ],
+      "lambdaSigma": [
+        2,
+        0,
+        0
+      ],
+      "yNQ": [
+        4,
+        0,
+        8
+      ],
+      "yNX": [
+        4,
+        0,
+        8
+      ]
+    },
+    "all_Yukawa_subtraction_coefficients_nonnegative": true,
+    "all_raw_gauge_dummy_symbols_removed_by_normalized_projector": true,
+    "attestation_sha256": "c828625f380d83df7fa5c34f8f8234b73017aa0f36949f144b39a0a641542291",
+    "b": [
+      1,
+      5,
+      9
+    ],
+    "engine": "15.0.1 for Microsoft Windows (64-bit) (July 2, 2026)",
+    "linearity_replayed_at_two_rational_points": true,
+    "literal_component_Gram_projection_executed": false,
+    "live_V34_SARAH_execution": false,
+    "model": "PSZ4RZ33SUSYV33",
+    "normalized_invariant_projector": {
+      "classification": "calibrated normalized invariant projector, not a literal component epsilon summation",
+      "eps_l12_eps_l23": "-1/2",
+      "eps_l13_squared": "-1/2",
+      "eps_r12_eps_r23": "-1/2",
+      "eps_r13_squared": "-1/2",
+      "left_right_products_factorize": true
+    },
+    "raw_BetaY_invariant_projection_complete": false,
+    "source_mode": "frozen V33 SARAH attestation replay; no live V34 SARAH call",
+    "tool": "SARAH 4.15.3"
+  },
+  "remaining_next_step": [
+    "expand sparse component Yijk tensors",
+    "perform literal component Gram projections of BetaY and its invariant basis",
+    "test one-hot couplings and random complex family rotations",
+    "integrate three gauge plus 42 complex dimensionless components piecewise",
+    "derive physical thresholds and their SO10 embedding"
+  ],
+  "resolved_subproblems": [
+    "one-loop PS gauge coefficients",
+    "pure-gauge two-loop PS matrix",
+    "normalized invariant projection of the three frozen gauge rows",
+    "independent reconstruction of all gauge-row Yukawa norm coefficients and signs",
+    "existence of a modest conditional leading-log nonuniversal threshold witness"
+  ],
+  "schema": "susy-v34-g6-projected-rge-threshold-v1",
+  "source_derived_boundary_present": false,
+  "status": "PURE_GAUGE_BB_EXACT__YUKAWA_NORM_COEFFICIENTS_RECONSTRUCTED__CONDITIONAL_LEADING_LOG_THRESHOLD_WITNESS__COUPLED_BOUNDARY_OPEN"
+}

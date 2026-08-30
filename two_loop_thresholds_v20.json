@@ -1,5 +1,36 @@
 {
-  "status": "two-loop threshold RG report",
+  "status": "HEURISTIC_CALIBRATED_THRESHOLD_CHAIN_DIAGNOSTIC__NO_PHYSICAL_G7_CLAIM",
+  "artifact_class": "diagnostic_only",
+  "n_checks": 6,
+  "n_failed": 0,
+  "failures": [],
+  "checks": {
+    "one_loop_MI_regression": true,
+    "one_loop_MGUT_regression": true,
+    "one_loop_unified_inverse_coupling_regression": true,
+    "heuristic_branch_explicitly_labelled": true,
+    "calibrated_offsets_are_not_zero": true,
+    "physical_G7_fail_closed": true
+  },
+  "scope": {
+    "allowed_use": "legacy one-loop benchmark and heuristic sensitivity envelope",
+    "forbidden_use": [
+      "physical two-loop SO(10) or Pati-Salam beta input",
+      "physical component-threshold matching",
+      "mathematical or release G7 closure"
+    ],
+    "heuristic_low_energy_offsets": [
+      0.35,
+      -0.2,
+      -0.45
+    ],
+    "heuristic_Pati_Salam_offsets": [
+      -0.25,
+      0.15,
+      0.4
+    ],
+    "heuristic_high_scale_damping_factor": "1.1 multiplying the one-loop heavy b coefficient"
+  },
   "one_loop": {
     "scheme": "one-loop",
     "M_I_GeV": 631385523052.8793,
@@ -33,10 +64,10 @@
       }
     },
     "inconsistent_reset_alpha_inv_vPhi": 40.0,
-    "verdict": "Anchored one/two-loop threshold chain reproduces the manuscript M_I/M_GUT. Continuous Spin(10) running from the spectator-corrected alpha_GUT does not justify resetting alpha_10(v_Phi)=1/40 (continuous alpha_inv(v_Phi)~15.83). Planck-scale coupling remains model-dependent on the heavy beta."
+    "verdict": "The anchored one-loop/heuristic-shift threshold chain reproduces the legacy M_I/M_GUT. Continuous Spin(10) running from the spectator-corrected alpha_GUT does not justify resetting alpha_10(v_Phi)=1/40 (continuous alpha_inv(v_Phi)~15.83). Planck-scale coupling remains model-dependent on the heavy beta."
   },
   "two_loop": {
-    "scheme": "two-loop-corrected",
+    "scheme": "heuristic-two-loop-shift-diagnostic",
     "M_I_GeV": 160982556355.69574,
     "M_GUT_GeV": 1152023707592865.0,
     "alpha_inv_GUT": 37.37661804404197,
@@ -68,7 +99,7 @@
       }
     },
     "inconsistent_reset_alpha_inv_vPhi": 40.0,
-    "verdict": "Anchored one/two-loop threshold chain reproduces the manuscript M_I/M_GUT. Continuous Spin(10) running from the spectator-corrected alpha_GUT does not justify resetting alpha_10(v_Phi)=1/40 (continuous alpha_inv(v_Phi)~16.65). Planck-scale coupling remains model-dependent on the heavy beta."
+    "verdict": "The anchored one-loop/heuristic-shift threshold chain reproduces the legacy M_I/M_GUT. Continuous Spin(10) running from the spectator-corrected alpha_GUT does not justify resetting alpha_10(v_Phi)=1/40 (continuous alpha_inv(v_Phi)~16.65). Planck-scale coupling remains model-dependent on the heavy beta."
   },
   "comparison": {
     "MI_one_GeV": 631385523052.8793,
@@ -91,5 +122,18 @@
     "MGUT_one_ok": true,
     "IU_one_ok": true
   },
-  "honest_limitation": "Two-loop PS/SO(10) shifts here are calibrated corrections on top of the verified one-loop chain, not a full published two-loop tensor library with 210/126 threshold matching."
+  "flag": {
+    "one_loop_regression_chain_available": true,
+    "heuristic_calibrated_two_loop_like_shifts_used": true,
+    "exact_two_loop_beta_system_used": false,
+    "authoritative_full_inventory_gauge_polynomial_used": false,
+    "physical_component_pole_masses_used": false,
+    "heavy_vector_Goldstone_ghost_matching_used": false,
+    "physical_component_threshold_matching_complete": false,
+    "diagnostic_only_for_physical_G7": true,
+    "physical_G7_closed": false,
+    "mathematical_G7_closed": false,
+    "release_G7_verified": false
+  },
+  "honest_limitation": "The so-called two-loop branch consists of calibrated additive offsets and a 10% damping ansatz on top of the one-loop chain. It is not an exact two-loop tensor system and contains no physical 210/126 component or heavy-vector threshold matching."
 }

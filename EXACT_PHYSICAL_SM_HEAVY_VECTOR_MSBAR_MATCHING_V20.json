@@ -1,0 +1,531 @@
+{
+  "core_sha256": "9f7a269bcc24909b8f543a3ae38c10ea3e5acd5435798a2e74c3223322d1f575",
+  "contract_id": "exact_physical_sm_heavy_vector_msbar_matching_v20",
+  "status": "EXACT_COMBINED_HEAVY_VECTOR_GHOST_GOLDSTONE_MSBAR_MATCHING_CLOSED__ARBITRARY_RXI_POLE_PRE_EW_AND_FULL_G7_OPEN",
+  "source_binding": {
+    "exact_heavy_vector_mass_source": {
+      "path": "exact_physical_sm_heavy_vector_masses_v20.py",
+      "sha256": "6839c8fdada9fc89efdde26c62188dfa99b7a34ee072cec93c0b3405c117d587",
+      "mode": "raw"
+    },
+    "exact_heavy_vector_mass_report": {
+      "path": "EXACT_PHYSICAL_SM_HEAVY_VECTOR_MASSES_V20.json",
+      "sha256": "665840c68ce5522f8faeb9cadceba56288c7d9ad0d2e468d29a6a5c4413b17e0",
+      "mode": "raw"
+    },
+    "authoritative_SO10_normalization": {
+      "path": "exact_authoritative_so10_u1x_gauge_betas_v20.py",
+      "sha256": "b3ec8ca5bc472af24081ee5b3409652dde0e1bf219cbf7d29a4f55e76e985cb6",
+      "mode": "raw"
+    },
+    "authoritative_model": {
+      "path": "models\\SO10Z17AxionV20.m",
+      "sha256": "66a2ce2c3491d0b3079ec93a16ab79d3e8a7e4e35cb54aadf21100b9fdd90cc1",
+      "mode": "raw"
+    }
+  },
+  "primary_equation_sources": [
+    {
+      "authors": "S. A. R. Ellis and J. D. Wells",
+      "title": "Visualizing gauge unification with high-scale thresholds",
+      "journal": "Phys. Rev. D 91 (2015) 075016",
+      "doi": "10.1103/PhysRevD.91.075016",
+      "arxiv": "1502.01362",
+      "url": "https://arxiv.org/abs/1502.01362",
+      "equations": [
+        "(2)",
+        "(3)"
+      ],
+      "use": "non-supersymmetric MS-bar inverse-coupling match and lambda_i^V=l_i^V[1-21 log(M_V/mu)]; only physical scalars enter the separate scalar sum"
+    },
+    {
+      "authors": "K. Jarkovska, M. Malinsky and V. Susic",
+      "title": "Trouble with the minimal renormalizable SO(10) GUT",
+      "journal": "Phys. Rev. D 108 (2023) 055003",
+      "doi": "10.1103/PhysRevD.108.055003",
+      "arxiv": "2304.14227",
+      "url": "https://arxiv.org/abs/2304.14227",
+      "equations": [
+        "(B14)",
+        "(B15)"
+      ],
+      "use": "product-group embedding match and separate massive-gauge and would-be-Goldstone terms; tree masses are used and each WGB is assigned the mass of its associated vector"
+    },
+    {
+      "authors": "L. J. Hall",
+      "title": "Grand Unification of Effective Gauge Theories",
+      "journal": "Nucl. Phys. B 178 (1981) 75-124",
+      "doi": "10.1016/0550-3213(81)90498-3",
+      "url": "https://doi.org/10.1016/0550-3213(81)90498-3",
+      "equations": [],
+      "use": "original effective-gauge-theory matching derivation"
+    }
+  ],
+  "scheme_contract": {
+    "renormalization_scheme": "non-supersymmetric MS-bar",
+    "matching_equation": "alpha_low,i^-1=sum_j c_ij alpha_high,j^-1+Delta_i",
+    "per_complex_vector": "Delta_i=-T_i/(6*pi)+7*T_i/(2*pi)*log(M_tree/mu)",
+    "Hall_form": "I_i=2*T_i; lambda_i=I_i*(1-21*log(M_tree/mu)); Delta_i=-lambda_i/(12*pi)",
+    "B15_replay": {
+      "vector_plus_FP_ghost": "Delta_i=(-I_i/12+(11*I_i/6)*log(M_tree/mu))/pi",
+      "would_be_Goldstone": "Delta_i=-(I_i/12)*log(M_tree/mu)/pi",
+      "Goldstone_mass_bookkeeping": "M_WGB=M_vector"
+    },
+    "mass_definition": "tree_running_mass",
+    "gauge_parameter": "not an input; published combined result only; explicit xi is rejected"
+  },
+  "exact_group_factors": {
+    "charged_complex_multiplets": 7,
+    "charged_real_vectors": 34,
+    "neutral_massive_vectors": 3,
+    "all_massive_vectors": 37,
+    "Goldstone_image_dimension": 37,
+    "uneaten_accidental_PQ_dimension": 1,
+    "complex_index_totals": {
+      "SU3": "5/2",
+      "QED": "32/3"
+    },
+    "real_broken_generator_index_totals": {
+      "SU3": "5",
+      "QED": "64/3"
+    },
+    "SO10_adjoint_C2": "8",
+    "low_adjoint_C2": {
+      "SU3": "3",
+      "QED": "0"
+    },
+    "tree_inverse_alpha_embedding": {
+      "SU3": {
+        "SO10": "1",
+        "U1X": "0"
+      },
+      "QED": {
+        "SO10": "8/3",
+        "U1X": "0"
+      }
+    },
+    "embedding_identity": {
+      "SU3": "5 = 8*1 - 3",
+      "QED": "64/3 = 8*(8/3) - 0"
+    },
+    "combined_threshold_coefficients": {
+      "SU3": {
+        "finite_over_pi": "-5/12",
+        "log_over_pi": "35/4"
+      },
+      "QED": {
+        "finite_over_pi": "-16/9",
+        "log_over_pi": "112/3"
+      }
+    },
+    "high_theory_massive_vector_delta_b": {
+      "SU3": "-35/2",
+      "QED": "-224/3"
+    },
+    "matching_scale_derivative_of_Delta_alpha_inverse": {
+      "SU3": "-35/4",
+      "QED": "-112/3"
+    }
+  },
+  "massive_charged_multiplets": [
+    {
+      "name": "T_Q1over3_A",
+      "SU3": "3",
+      "abs_Q": "1/3",
+      "m2_over_g10_squared_v_squared": "1",
+      "real_vector_dimension": 6,
+      "factors": {
+        "SU3": {
+          "complex_index": "1/2",
+          "real_carrier_index": "1",
+          "Hall_lambda_constant": "1",
+          "Hall_lambda_log": "-21",
+          "high_theory_delta_b": "-7/2",
+          "vector_plus_FP_ghost": {
+            "finite_over_pi": "-1/12",
+            "log_over_pi": "11/6"
+          },
+          "would_be_Goldstone": {
+            "finite_over_pi": "0",
+            "log_over_pi": "-1/12"
+          },
+          "combined": {
+            "finite_over_pi": "-1/12",
+            "log_over_pi": "7/4"
+          }
+        },
+        "QED": {
+          "complex_index": "1/3",
+          "real_carrier_index": "2/3",
+          "Hall_lambda_constant": "2/3",
+          "Hall_lambda_log": "-14",
+          "high_theory_delta_b": "-7/3",
+          "vector_plus_FP_ghost": {
+            "finite_over_pi": "-1/18",
+            "log_over_pi": "11/9"
+          },
+          "would_be_Goldstone": {
+            "finite_over_pi": "0",
+            "log_over_pi": "-1/18"
+          },
+          "combined": {
+            "finite_over_pi": "-1/18",
+            "log_over_pi": "7/6"
+          }
+        }
+      }
+    },
+    {
+      "name": "T_Q1over3_B",
+      "SU3": "3",
+      "abs_Q": "1/3",
+      "m2_over_g10_squared_v_squared": "51/50",
+      "real_vector_dimension": 6,
+      "factors": {
+        "SU3": {
+          "complex_index": "1/2",
+          "real_carrier_index": "1",
+          "Hall_lambda_constant": "1",
+          "Hall_lambda_log": "-21",
+          "high_theory_delta_b": "-7/2",
+          "vector_plus_FP_ghost": {
+            "finite_over_pi": "-1/12",
+            "log_over_pi": "11/6"
+          },
+          "would_be_Goldstone": {
+            "finite_over_pi": "0",
+            "log_over_pi": "-1/12"
+          },
+          "combined": {
+            "finite_over_pi": "-1/12",
+            "log_over_pi": "7/4"
+          }
+        },
+        "QED": {
+          "complex_index": "1/3",
+          "real_carrier_index": "2/3",
+          "Hall_lambda_constant": "2/3",
+          "Hall_lambda_log": "-14",
+          "high_theory_delta_b": "-7/3",
+          "vector_plus_FP_ghost": {
+            "finite_over_pi": "-1/18",
+            "log_over_pi": "11/9"
+          },
+          "would_be_Goldstone": {
+            "finite_over_pi": "0",
+            "log_over_pi": "-1/18"
+          },
+          "combined": {
+            "finite_over_pi": "-1/18",
+            "log_over_pi": "7/6"
+          }
+        }
+      }
+    },
+    {
+      "name": "T_Q2over3_A",
+      "SU3": "3",
+      "abs_Q": "2/3",
+      "m2_over_g10_squared_v_squared": "1/50",
+      "real_vector_dimension": 6,
+      "factors": {
+        "SU3": {
+          "complex_index": "1/2",
+          "real_carrier_index": "1",
+          "Hall_lambda_constant": "1",
+          "Hall_lambda_log": "-21",
+          "high_theory_delta_b": "-7/2",
+          "vector_plus_FP_ghost": {
+            "finite_over_pi": "-1/12",
+            "log_over_pi": "11/6"
+          },
+          "would_be_Goldstone": {
+            "finite_over_pi": "0",
+            "log_over_pi": "-1/12"
+          },
+          "combined": {
+            "finite_over_pi": "-1/12",
+            "log_over_pi": "7/4"
+          }
+        },
+        "QED": {
+          "complex_index": "4/3",
+          "real_carrier_index": "8/3",
+          "Hall_lambda_constant": "8/3",
+          "Hall_lambda_log": "-56",
+          "high_theory_delta_b": "-28/3",
+          "vector_plus_FP_ghost": {
+            "finite_over_pi": "-2/9",
+            "log_over_pi": "44/9"
+          },
+          "would_be_Goldstone": {
+            "finite_over_pi": "0",
+            "log_over_pi": "-2/9"
+          },
+          "combined": {
+            "finite_over_pi": "-2/9",
+            "log_over_pi": "14/3"
+          }
+        }
+      }
+    },
+    {
+      "name": "T_Q2over3_B",
+      "SU3": "3",
+      "abs_Q": "2/3",
+      "m2_over_g10_squared_v_squared": "13/25",
+      "real_vector_dimension": 6,
+      "factors": {
+        "SU3": {
+          "complex_index": "1/2",
+          "real_carrier_index": "1",
+          "Hall_lambda_constant": "1",
+          "Hall_lambda_log": "-21",
+          "high_theory_delta_b": "-7/2",
+          "vector_plus_FP_ghost": {
+            "finite_over_pi": "-1/12",
+            "log_over_pi": "11/6"
+          },
+          "would_be_Goldstone": {
+            "finite_over_pi": "0",
+            "log_over_pi": "-1/12"
+          },
+          "combined": {
+            "finite_over_pi": "-1/12",
+            "log_over_pi": "7/4"
+          }
+        },
+        "QED": {
+          "complex_index": "4/3",
+          "real_carrier_index": "8/3",
+          "Hall_lambda_constant": "8/3",
+          "Hall_lambda_log": "-56",
+          "high_theory_delta_b": "-28/3",
+          "vector_plus_FP_ghost": {
+            "finite_over_pi": "-2/9",
+            "log_over_pi": "44/9"
+          },
+          "would_be_Goldstone": {
+            "finite_over_pi": "0",
+            "log_over_pi": "-2/9"
+          },
+          "combined": {
+            "finite_over_pi": "-2/9",
+            "log_over_pi": "14/3"
+          }
+        }
+      }
+    },
+    {
+      "name": "T_Q4over3",
+      "SU3": "3",
+      "abs_Q": "4/3",
+      "m2_over_g10_squared_v_squared": "1/2",
+      "real_vector_dimension": 6,
+      "factors": {
+        "SU3": {
+          "complex_index": "1/2",
+          "real_carrier_index": "1",
+          "Hall_lambda_constant": "1",
+          "Hall_lambda_log": "-21",
+          "high_theory_delta_b": "-7/2",
+          "vector_plus_FP_ghost": {
+            "finite_over_pi": "-1/12",
+            "log_over_pi": "11/6"
+          },
+          "would_be_Goldstone": {
+            "finite_over_pi": "0",
+            "log_over_pi": "-1/12"
+          },
+          "combined": {
+            "finite_over_pi": "-1/12",
+            "log_over_pi": "7/4"
+          }
+        },
+        "QED": {
+          "complex_index": "16/3",
+          "real_carrier_index": "32/3",
+          "Hall_lambda_constant": "32/3",
+          "Hall_lambda_log": "-224",
+          "high_theory_delta_b": "-112/3",
+          "vector_plus_FP_ghost": {
+            "finite_over_pi": "-8/9",
+            "log_over_pi": "176/9"
+          },
+          "would_be_Goldstone": {
+            "finite_over_pi": "0",
+            "log_over_pi": "-8/9"
+          },
+          "combined": {
+            "finite_over_pi": "-8/9",
+            "log_over_pi": "56/3"
+          }
+        }
+      }
+    },
+    {
+      "name": "W_Q1_A",
+      "SU3": "1",
+      "abs_Q": "1",
+      "m2_over_g10_squared_v_squared": "1/2",
+      "real_vector_dimension": 2,
+      "factors": {
+        "SU3": {
+          "complex_index": "0",
+          "real_carrier_index": "0",
+          "Hall_lambda_constant": "0",
+          "Hall_lambda_log": "0",
+          "high_theory_delta_b": "0",
+          "vector_plus_FP_ghost": {
+            "finite_over_pi": "0",
+            "log_over_pi": "0"
+          },
+          "would_be_Goldstone": {
+            "finite_over_pi": "0",
+            "log_over_pi": "0"
+          },
+          "combined": {
+            "finite_over_pi": "0",
+            "log_over_pi": "0"
+          }
+        },
+        "QED": {
+          "complex_index": "1",
+          "real_carrier_index": "2",
+          "Hall_lambda_constant": "2",
+          "Hall_lambda_log": "-42",
+          "high_theory_delta_b": "-7",
+          "vector_plus_FP_ghost": {
+            "finite_over_pi": "-1/6",
+            "log_over_pi": "11/3"
+          },
+          "would_be_Goldstone": {
+            "finite_over_pi": "0",
+            "log_over_pi": "-1/6"
+          },
+          "combined": {
+            "finite_over_pi": "-1/6",
+            "log_over_pi": "7/2"
+          }
+        }
+      }
+    },
+    {
+      "name": "W_Q1_B",
+      "SU3": "1",
+      "abs_Q": "1",
+      "m2_over_g10_squared_v_squared": "13/25",
+      "real_vector_dimension": 2,
+      "factors": {
+        "SU3": {
+          "complex_index": "0",
+          "real_carrier_index": "0",
+          "Hall_lambda_constant": "0",
+          "Hall_lambda_log": "0",
+          "high_theory_delta_b": "0",
+          "vector_plus_FP_ghost": {
+            "finite_over_pi": "0",
+            "log_over_pi": "0"
+          },
+          "would_be_Goldstone": {
+            "finite_over_pi": "0",
+            "log_over_pi": "0"
+          },
+          "combined": {
+            "finite_over_pi": "0",
+            "log_over_pi": "0"
+          }
+        },
+        "QED": {
+          "complex_index": "1",
+          "real_carrier_index": "2",
+          "Hall_lambda_constant": "2",
+          "Hall_lambda_log": "-42",
+          "high_theory_delta_b": "-7",
+          "vector_plus_FP_ghost": {
+            "finite_over_pi": "-1/6",
+            "log_over_pi": "11/3"
+          },
+          "would_be_Goldstone": {
+            "finite_over_pi": "0",
+            "log_over_pi": "-1/6"
+          },
+          "combined": {
+            "finite_over_pi": "-1/6",
+            "log_over_pi": "7/2"
+          }
+        }
+      }
+    }
+  ],
+  "consumer_interface": {
+    "kernel": "matching_kernel(g10,g_x,vev_scale,matching_scale,scheme,mass_definition)",
+    "vector_only_boundary": "heavy_vector_only_matched_inverse_couplings(alpha10_inverse,alpha_x_inverse,g10,g_x,vev_scale,matching_scale)",
+    "Goldstone_exclusion_guard": "assert_goldstone_exclusion(37)",
+    "independent_implementation_hooks": "row-level Hall and B15 decompositions plus the upstream one_loop_vector_log_inputs weighted-log aggregate",
+    "tree_inverse_alpha_map": "alpha3^-1=alpha10^-1; alphaEM^-1=(8/3)alpha10^-1; both U1X coefficients vanish",
+    "later_scalar_consumer_requirement": "exclude all 37 gauge-Goldstone image directions; retain the one uneaten accidental-PQ direction if it is otherwise physical"
+  },
+  "gauge_parameter_obstruction": {
+    "arbitrary_Rxi_sector_resolved_matching_closed": false,
+    "combined_MSbar_matching_closed": true,
+    "why_combined_result_is_still_usable": "the cited MS-bar equations give the gauge-fixed combined threshold directly and the two published forms replay exactly",
+    "missing_for_independent_xi_cancellation_proof": [
+      "background-field gauge-fixing functional for the 486-real chart",
+      "mass-basis vector-longitudinal/Goldstone/FP-ghost quadratic operators at general xi",
+      "tadpole and VEV renormalization convention",
+      "Nielsen-identity or equivalent determinant-level cancellation derivation"
+    ],
+    "guard": "matching_kernel rejects every explicit gauge_parameter; no sqrt(xi)M Goldstone or ghost mass may be inserted by this API"
+  },
+  "checks": {
+    "all_dependencies_match_frozen_hashes": true,
+    "primary_equations_identified_by_DOI_and_number": true,
+    "scheme_is_nonsupersymmetric_MSbar": true,
+    "tree_running_masses_declared": true,
+    "seven_charged_complex_multiplets_complete": true,
+    "charged_real_vector_dimension_is_34": true,
+    "neutral_massive_vector_dimension_is_3": true,
+    "total_massive_and_Goldstone_dimensions_are_37": true,
+    "complex_SU3_index_is_5_over_2": true,
+    "complex_QED_index_is_32_over_3": true,
+    "real_SU3_broken_index_is_5": true,
+    "real_QED_broken_index_is_64_over_3": true,
+    "QED_embedding_index_is_8_over_3": true,
+    "U1X_has_zero_tree_embedding_in_SU3_and_QED": true,
+    "SU3_finite_constant_is_minus_5_over_12pi": true,
+    "QED_finite_constant_is_minus_16_over_9pi": true,
+    "SU3_log_coefficient_is_35_over_4pi": true,
+    "QED_log_coefficient_is_112_over_3pi": true,
+    "Hall_and_B15_implementations_agree": true,
+    "mass_theorem_weighted_log_interface_agrees": true,
+    "combined_vector_FPghost_Goldstone_MSbar_kernel_closed": true,
+    "finite_MSbar_vector_constant_closed": true,
+    "Goldstone_double_count_guard_active": true,
+    "arbitrary_Rxi_determinant_cancellation_rederived": false,
+    "pole_mass_conversion_closed": false,
+    "SM_symmetric_pre_EW_matching_closed": false,
+    "complete_scalar_fermion_threshold_matching_closed": false,
+    "physical_G6_closed": false,
+    "physical_G7_closed": false
+  },
+  "scope": {
+    "combined_heavy_vector_FPghost_Goldstone_MSbar_matching": true,
+    "finite_MSbar_vector_constant": true,
+    "exact_SU3_and_physical_QED_group_factors": true,
+    "parameterized_tree_masses": true,
+    "arbitrary_Rxi_sector_resolved_determinants": false,
+    "pole_mass_thresholds": false,
+    "SM_symmetric_pre_EW_threshold": false,
+    "complete_scalar_and_fermion_thresholds": false,
+    "complete_one_loop_model_matching": false,
+    "physical_G6": false,
+    "physical_G7": false
+  },
+  "blockers": [
+    "Derive the general-background-R_xi vector/longitudinal/Goldstone/FP-ghost quadratic operators and an independent xi-cancellation identity if a sector-resolved proof is required.",
+    "Compute one-loop pole corrections to the seven tree running vector masses and declare the tadpole/VEV renormalization prescription.",
+    "Construct a stationary SM-symmetric pre-electroweak vacuum and its SU(3)xSU(2)xU(1) heavy-vector spectrum; the terminal target already preserves only SU(3)xU(1)em.",
+    "Combine with the Goldstone-projected physical scalar Hessian, fermion masses, and the full two-loop Yukawa/scalar/dimensionful Wilson flow before any physical G7 claim."
+  ]
+}

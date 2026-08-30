@@ -1,0 +1,109 @@
+{
+  "$id": "https://local.invalid/susy-v28-microscopic-instanton-bridge-schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "all_bridge_checks_pass": {
+      "const": true
+    },
+    "axion_charge_matrix_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "candidate_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "charged_zero_mode_audit_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "global_consistency_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "instanton_inventory_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "moduli_inventory": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "axion_period": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "divisor_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "modulus_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "stabilization_source": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "modulus_id",
+          "divisor_id",
+          "axion_period",
+          "stabilization_source"
+        ],
+        "type": "object"
+      },
+      "maxItems": 51,
+      "minItems": 51,
+      "type": "array"
+    },
+    "orientifold_parity_split_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "vacuum_hessian": {
+      "additionalProperties": false,
+      "properties": {
+        "complex_dimension": {
+          "const": 51
+        },
+        "complex_rank": {
+          "const": 51
+        },
+        "positive_physical_spectrum": {
+          "const": true
+        },
+        "real_rank": {
+          "const": 102
+        }
+      },
+      "required": [
+        "complex_dimension",
+        "complex_rank",
+        "real_rank",
+        "positive_physical_spectrum"
+      ],
+      "type": "object"
+    },
+    "visible_matching_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "candidate_id",
+    "moduli_inventory",
+    "orientifold_parity_split_sha256",
+    "axion_charge_matrix_sha256",
+    "instanton_inventory_sha256",
+    "charged_zero_mode_audit_sha256",
+    "global_consistency_sha256",
+    "vacuum_hessian",
+    "visible_matching_sha256",
+    "all_bridge_checks_pass"
+  ],
+  "title": "SUSY V28 51-modulus microscopic instanton bridge",
+  "type": "object"
+}

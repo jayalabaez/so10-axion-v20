@@ -1,0 +1,470 @@
+{
+  "benchmark": {
+    "X_multiplet_structural_blocker": {
+      "cubic_X3_allowed": true,
+      "linear_X_allowed": true,
+      "quadratic_X2_forbidden_by_Z4R": true,
+      "reason": "A single imposed mX and width do not define the X scalar/fermion mass matrix. If psi_X obtains mass through <X>, lambda_X <X> H H simultaneously changes visible-sector Higgs mixing; a solved F+D+soft vacuum is required.",
+      "selection_audits": {
+        "cubic_X3": {
+          "PQ_numerator_over_170": 0,
+          "V39_Z3_mod3": 0,
+          "Z4R_mod4": 2,
+          "exactly_invariant": true,
+          "h85_mod85": 0,
+          "q66_mod66": 0
+        },
+        "linear_X": {
+          "PQ_numerator_over_170": 0,
+          "V39_Z3_mod3": 0,
+          "Z4R_mod4": 2,
+          "exactly_invariant": true,
+          "h85_mod85": 0,
+          "q66_mod66": 0
+        },
+        "quadratic_X2": {
+          "PQ_numerator_over_170": 0,
+          "V39_Z3_mod3": 0,
+          "Z4R_mod4": 0,
+          "exactly_invariant": false,
+          "h85_mod85": 0,
+          "q66_mod66": 0
+        }
+      },
+      "status": "BLOCKER"
+    },
+    "constraints": {
+      "BBN": {
+        "conservative_lifetime_seconds": 0.1,
+        "longest_displayed_lifetime_seconds": 4.22327265024998e-05,
+        "status": "UNVALIDATED_COMPONENT_WIDTHS",
+        "unvalidated_width_proxy_is_before_screen": true,
+        "validated_pass": false
+      },
+      "CMB_annihilation": {
+        "Planck_2018_limit": 3.2e-28,
+        "p_ann_worstcase_feff_one_cm3_per_s_per_GeV": 2.023163694659054e-29,
+        "passes_if_swave_proxy_and_visible_deposition": true,
+        "status": "CONDITIONAL_ON_COMPONENT_AMPLITUDE_AND_X_DECAYS",
+        "validated_pass": false
+      },
+      "axion_isocurvature_and_PQ": {
+        "H_inflation_GeV": 1000000.0,
+        "H_inflation_max_GeV_if_one_percent_fraction_is_imposed": 71532563.82344487,
+        "PQ_restoration": "CONDITIONAL: Tmax/fPQ is small, but the finite-temperature PQ potential is not derived.",
+        "Planck_beta_iso_limit": 0.038,
+        "Tmax_over_fPQ": 2e-05,
+        "assumption": "PQ broken before inflation and no thermal/nonthermal restoration are imposed, not derived.",
+        "imposed_axion_fraction_of_DM": 0.01,
+        "imposed_fraction_beta_iso": 7.719649636441853e-06,
+        "isocurvature_screen_passes_if_one_percent_fraction_is_imposed": true,
+        "joint_abundance_and_isocurvature_solution": false,
+        "misalignment_fraction_beta_iso": 1.2255808871328486e-07,
+        "misalignment_fraction_vs_imposed_ratio": 0.12600000000000003,
+        "standard_misalignment_reference": {
+          "Omega_a_h2": 0.00015120000000000002,
+          "exponent": 1.165,
+          "formula": "Omega_a h^2 = 0.06048 theta_i^2 (f_a/(5e11 GeV))^1.165 (small-angle reference normalization)",
+          "fraction_of_DM": 0.0012600000000000003,
+          "reference_normalization": 0.06048
+        }
+      },
+      "direct_detection": {
+        "XENONnT_2025_global_minimum_cm2_at_30_GeV": 1.7e-47,
+        "dim5_illustrative_sigma_SI_cm2": 7.803269936094088e-55,
+        "illustrative_value_below_global_minimum": true,
+        "matching": "C=lambda_D lambda_X/mX, h_chichi=C v, h_NN=f_N m_N/v; the required 1/v is explicit.",
+        "not_used_for_viability": true,
+        "reason": "The 30-GeV global minimum is not the 2-TeV likelihood, and the dim-five contact/X-A component matching is not derived.",
+        "status": "NON_CONSTRAINING_ILLUSTRATION"
+      },
+      "one_loop_lambda_running": {
+        "beta_prefactor": 0.018997721932938333,
+        "equation": "d lambda_D/d ln(mu) = 3 lambda_D^3/(16 pi^2)",
+        "fPQ_GeV": 500000000000.0,
+        "log_pole_over_reference": 10.772441117591725,
+        "perturbative_to_fPQ_without_new_threshold_or_dynamics": false,
+        "pole_GeV": 95376576.52028309,
+        "pole_below_fPQ": true,
+        "reference_scale_GeV": 2000.0,
+        "status": "HARD_UV_BLOCKER"
+      },
+      "thermal_unitarity": {
+        "Griest_Kamionkowski_reference_mass_GeV": 340000.0,
+        "coupling_loop_factor_lambda_squared_over_4pi": 0.19442158741280885,
+        "freezeout_vrel_proxy": 0.48110136894674427,
+        "mD16_GeV": 2000.0,
+        "passes": true,
+        "reference_mass_passes": true,
+        "s_wave_sigma_v_unitarity_GeV_minus2": 6.5300014848587e-06,
+        "sigma_v_over_s_wave_unitarity": 0.0005417594474157978
+      }
+    },
+    "freezeout_boltzmann_solution": {
+      "Omega_h2": 0.11880000011709255,
+      "coefficient": 235621097425259.03,
+      "component_amplitude_status": "UNCOMPUTED: DDbar->XX is an illustrative EFT proxy.",
+      "equation": "dY_total/dx = -0.5*[0.264*(g_s/sqrt(g_rho))*M_Pl*m_D*<sigma v>/x^2]*(Y_total^2-Yeq_total^2)",
+      "nfev": 2988,
+      "njev": 176,
+      "relative_abundance_error": 9.856275915147826e-10,
+      "sigma_v_proxy_GeV_minus2": 3.5376899960613886e-09,
+      "sigma_v_proxy_cm3_per_s": 4.1284842254036405e-26,
+      "statistics": "Maxwell-Boltzmann, total stable Dirac D+Dbar g=4; scalar spectrum, mass matrix, and coannihilations are uncomputed.",
+      "total_D_plus_Dbar_annihilation_factor": 0.5,
+      "x_freezeout_proxy_Y_over_Yeq_1p5": 25.922570546525854,
+      "yield_final": 2.164940165387837e-13
+    },
+    "heavy_blocks": {
+      "Boltzmann_tail_proxy_exp_minus_m_over_T": 3.720075976020836e-44,
+      "P_over_M_unvalidated_lifetime_proxy_seconds": 4.22327265024998e-05,
+      "P_over_M_unvalidated_width_proxy_GeV": 1.558535314694967e-20,
+      "component_width_status": "UNVALIDATED: no Kallen/spin/multiplicity/component calculation.",
+      "mA_heavy_over_Tmax": 100.0,
+      "mD_heavy_over_Tmax": 90.0,
+      "proxy_decays_before_0p1_second": true
+    },
+    "parameterization": {
+      "H_inflation_GeV": 1000000.0,
+      "Mred_GeV": 2.4e+18,
+      "Omega_D16_h2_target": 0.11879999999999999,
+      "Omega_c_h2": 0.12,
+      "Tmax_GeV": 10000000.0,
+      "Treh_GeV": 10000000.0,
+      "axion_fraction_of_DM": 0.01,
+      "fPQ_GeV": 500000000000.0,
+      "g_chi_dirac": 4.0,
+      "gstar": 106.75,
+      "kappa_heavy": 1e-06,
+      "lambda_X_visible": 3e-06,
+      "lambda_dark_solved": 1.5630654889867488,
+      "mA16_GeV": 3500.0,
+      "mA_heavy_GeV": 1000000000.0,
+      "mD16_GeV": 2000.0,
+      "mD16_scalar_soft_GeV": 3000.0,
+      "mD_heavy_GeV": 900000000.0,
+      "mX_GeV": 1000.0,
+      "scalar_soft_input_status": "ILLUSTRATIVE_ONLY: no soft/vacuum mass matrix or coannihilation calculation turns this input into a scalar-mass eigenvalue.",
+      "target_yield": 2.164940163254012e-13,
+      "theta_i": 0.05,
+      "yA16_from_mass": 9.899494936611665e-09
+    },
+    "thermalization_and_decay": {
+      "A16_unvalidated_lifetime_proxy_seconds": 5.496910741702916e-26,
+      "A16_unvalidated_width_proxy_GeV": 11.974215842844286,
+      "D_Dbar_to_XX_proxy_rate_over_H_at_T_equal_mD": 829172400586.8165,
+      "D_Dbar_to_XX_proxy_rate_over_H_conservative_extra_half": 414586200293.40826,
+      "D_equilibrium_total_density_GeV3_at_T_equal_mD": 2634089607.005259,
+      "D_equilibrium_yield_total_at_x_one": 0.007031620875924411,
+      "Dirac_pair_density_factor": 0.5,
+      "X_visible_unvalidated_lifetime_proxy_seconds": 1.838074531824001e-15,
+      "X_visible_unvalidated_width_proxy_GeV": 3.580986219567646e-10,
+      "X_visible_width_proxy_rate_over_H_at_mX": 254.91016636882705,
+      "proxy_rate_is_large_if_component_amplitude_is_real": true,
+      "thermalization_status": "CONDITIONAL: the DDbar->XX component amplitude, X multiplet spectrum, and visible equilibration are not calculated.",
+      "widths_are_component_unvalidated": true
+    }
+  },
+  "core_sha256": "d4e0811d36e41c597843bdc0365485b0e71d5d7f0a77ec6deb14c34e34972bb3",
+  "exact_symmetry_and_quality": {
+    "Hsieh_Dai_Freed_Z5610": {
+      "Delta_s1_canonical": 126225,
+      "Delta_s3_canonical": 3342782619495,
+      "both_vanish": true,
+      "cubic_condition_mod_6n": 0,
+      "linear_condition_2Delta_s1_mod_n": 0,
+      "order": 5610
+    },
+    "PQ_congruence_residues": {
+      "D16": 0,
+      "D17": 0,
+      "D2": 0,
+      "Db16": 0,
+      "Db17": 0,
+      "Db2": 0
+    },
+    "active_V39_Z3_dark_anomaly_increment": {
+      "Z3_Z5610_squared_increment_mod3": 0,
+      "Z3_fermion_Z4R_squared_increment_mod3": 0,
+      "Z3_squared_Z5610_increment_mod3": 0,
+      "Z3_squared_fermion_Z4R_increment_mod3": 0,
+      "all_listed_increments_vanish": true,
+      "pure_Z3_Hsieh_cubic_condition_mod18": 0,
+      "pure_Z3_Hsieh_linear_condition_mod3": 0,
+      "pure_Z3_cubic_increment": 9,
+      "pure_Z3_linear_increment": 3,
+      "qualification": "Necessary pure/cross residue increments only; the full Z5610 x Z3 x Z4R product bordism remains G1 input.",
+      "rows": [
+        {
+          "Z3": 2,
+          "Z5610": 2399,
+          "fermion_Z4R_lift": -1,
+          "field": "D2"
+        },
+        {
+          "Z3": 1,
+          "Z5610": 3211,
+          "fermion_Z4R_lift": 1,
+          "field": "Db2"
+        },
+        {
+          "Z3": 0,
+          "Z5610": 4469,
+          "fermion_Z4R_lift": 1,
+          "field": "D17"
+        },
+        {
+          "Z3": 0,
+          "Z5610": 1141,
+          "fermion_Z4R_lift": -1,
+          "field": "Db17"
+        },
+        {
+          "Z3": 0,
+          "Z5610": 85,
+          "fermion_Z4R_lift": -1,
+          "field": "D16"
+        },
+        {
+          "Z3": 0,
+          "Z5610": 5525,
+          "fermion_Z4R_lift": 1,
+          "field": "Db16"
+        }
+      ]
+    },
+    "all_chiral_quality": {
+      "Kahler_witness": {
+        "A15": 1,
+        "A16": 1,
+        "A32dag": 16,
+        "PsiBar": 14
+      },
+      "W_witness": {
+        "A32": 21,
+        "D16": 1,
+        "D17": 4,
+        "P": 6,
+        "X": 1
+      },
+      "active_V39_Z3_reasoning": "The V37-plus-D search without Z3 is a relaxation and already excludes breaking below W33/K32; the split sixes project to the existing neutral R=2 Sig6 signature when Z3 is forgotten. Imposing Z3 cannot add states, while the Z3-neutral PS-singlet witnesses P^33 and P^6 A32^21 A16dag (A17dag)^4 attain degrees 33 and 32.",
+      "active_V39_exact_equalities_W33_K32": true,
+      "first_Kahler_breaking_degree": 32,
+      "first_W_breaking_degree": 33
+    },
+    "all_new_fields_obey_PQ_selector_congruence": true,
+    "all_terms_active_V39_Z3_neutral": true,
+    "all_terms_exactly_invariant": true,
+    "mixed_Z4R_Z85_squared_increment": 0,
+    "six_field_cascade": {
+      "D16": [
+        1,
+        0,
+        0,
+        85
+      ],
+      "D17": [
+        65,
+        2,
+        69,
+        113
+      ],
+      "D2": [
+        29,
+        0,
+        84,
+        23
+      ],
+      "Db16": [
+        65,
+        2,
+        0,
+        -85
+      ],
+      "Db17": [
+        1,
+        0,
+        16,
+        -113
+      ],
+      "Db2": [
+        37,
+        2,
+        1,
+        -23
+      ]
+    },
+    "term_audits": {
+      "A15_cascade": {
+        "PQ_numerator_over_170": 0,
+        "V39_Z3_mod3": 0,
+        "Z4R_mod4": 2,
+        "exactly_invariant": true,
+        "h85_mod85": 0,
+        "q66_mod66": 0
+      },
+      "A32_cascade": {
+        "PQ_numerator_over_170": 0,
+        "V39_Z3_mod3": 0,
+        "Z4R_mod4": 2,
+        "exactly_invariant": true,
+        "h85_mod85": 0,
+        "q66_mod66": 0
+      },
+      "D16_freezein": {
+        "PQ_numerator_over_170": 0,
+        "V39_Z3_mod3": 0,
+        "Z4R_mod4": 2,
+        "exactly_invariant": true,
+        "h85_mod85": 0,
+        "q66_mod66": 0
+      },
+      "D17_cascade": {
+        "PQ_numerator_over_170": 0,
+        "V39_Z3_mod3": 0,
+        "Z4R_mod4": 2,
+        "exactly_invariant": true,
+        "h85_mod85": 0,
+        "q66_mod66": 0
+      },
+      "D2_cascade": {
+        "PQ_numerator_over_170": 0,
+        "V39_Z3_mod3": 0,
+        "Z4R_mod4": 2,
+        "exactly_invariant": true,
+        "h85_mod85": 0,
+        "q66_mod66": 0
+      },
+      "mu16_D16_Db16": {
+        "PQ_numerator_over_170": 0,
+        "V39_Z3_mod3": 0,
+        "Z4R_mod4": 2,
+        "exactly_invariant": true,
+        "h85_mod85": 0,
+        "q66_mod66": 0
+      },
+      "mu17_D17_Db17": {
+        "PQ_numerator_over_170": 0,
+        "V39_Z3_mod3": 0,
+        "Z4R_mod4": 2,
+        "exactly_invariant": true,
+        "h85_mod85": 0,
+        "q66_mod66": 0
+      },
+      "mu2_D2_Db2": {
+        "PQ_numerator_over_170": 0,
+        "V39_Z3_mod3": 0,
+        "Z4R_mod4": 2,
+        "exactly_invariant": true,
+        "h85_mod85": 0,
+        "q66_mod66": 0
+      }
+    },
+    "terms": {
+      "A15_cascade": [
+        "P",
+        "X",
+        "A15",
+        "Db17"
+      ],
+      "A32_cascade": [
+        "Pbar",
+        "X",
+        "A32",
+        "Db2"
+      ],
+      "D16_freezein": [
+        "X",
+        "A16",
+        "D16"
+      ],
+      "D17_cascade": [
+        "X",
+        "A17",
+        "D17"
+      ],
+      "D2_cascade": [
+        "X",
+        "A2",
+        "D2"
+      ],
+      "mu16_D16_Db16": [
+        "D16",
+        "Db16"
+      ],
+      "mu17_D17_Db17": [
+        "D17",
+        "Db17"
+      ],
+      "mu2_D2_Db2": [
+        "D2",
+        "Db2"
+      ]
+    }
+  },
+  "promotion": {
+    "G5_closed": false,
+    "G5_status": "OPEN__HARD_UV_BLOCKER_AND_UNDERIVED_COSMOLOGY",
+    "candidate_passes_its_quantitative_proxies": false,
+    "conditional_low_energy_screens": {
+      "BBN_width_screen_is_early_if_proxy_is_correct": true,
+      "Boltzmann_solution_matches_imposed_D_target": true,
+      "CMB_screen_passes_if_swave_proxy_is_correct": true,
+      "DDbar_rate_large_if_proxy_amplitude_is_physical": true,
+      "low_energy_partial_wave_screen_passes": true
+    },
+    "hard_fail_closed_blockers": [
+      "The stated one-loop beta_lambda=3 lambda^3/(16 pi^2) reaches a Landau pole below fPQ absent a new threshold/dynamics.",
+      "X has allowed linear and cubic superpotential terms while X^2 is R-forbidden; an imposed single mX/width cannot represent its component mass matrix or visible mixing.",
+      "DDbar->XX, widths, X-visible equilibration, and direct detection lack a component-resolved calculation.",
+      "The 1 percent axion fraction is imposed but the stated standard-misalignment reference gives about 0.126 percent, so abundance and isocurvature are not jointly solved."
+    ],
+    "next_required_calculations": [
+      "supply new threshold/dynamics below the lambda_D Landau pole and run the complete coupled RGEs to fPQ",
+      "derive the TeV X/A16/D scalar and fermion spectrum, X vev, and visible Higgs mixing from a stabilized UV/K\u00e4hler/soft sector",
+      "derive full SUSY component annihilation amplitudes and solve coupled Bose/Fermi thermal Boltzmann equations",
+      "match the X/A-mediated direct-detection amplitude to nucleons and use the mass-dependent likelihood",
+      "construct an inflaton/reheaton model and calculate Tmax, branching fractions, and nonthermal D production",
+      "compute the PQ finite-temperature potential and axion/isocurvature/defect history jointly with freeze-out"
+    ],
+    "not_predictive_because": [
+      "The light X and all component masses are imposed, not derived from a V37 K\u00e4hler/soft vacuum or X component mass matrix.",
+      "The XX annihilation, widths, visible equilibration, and direct-detection formulas are illustrative EFT proxies, not component or nuclear matching calculations.",
+      "The reheaton sector, Tmax, and direct dark branching are imposed rather than derived.",
+      "PQ restoration, preheating, axion abundance, domain walls, the global soft vacuum, and a joint isocurvature history remain uncomputed.",
+      "Z170 leaves D16/Db16 stable by construction; this point makes the relic acceptable but cannot remove it."
+    ]
+  },
+  "schema": "susy-v39-g5-secluded-freezeout-certificate-v2-corrected-fail-closed",
+  "scope": "Corrected V39 six-field D-cascade freeze-out screen.  It reproduces an imposed low-energy target under illustrative proxies, but is UV-blocked and cannot be a G5 candidate or promotion.",
+  "sources": [
+    {
+      "topic": "freeze-out/freeze-in framework",
+      "url": "https://arxiv.org/abs/0911.1120"
+    },
+    {
+      "topic": "thermal-relic unitarity",
+      "url": "https://ntrs.nasa.gov/citations/19900004848"
+    },
+    {
+      "topic": "Planck abundance and p_ann",
+      "url": "https://arxiv.org/abs/1807.06209"
+    },
+    {
+      "topic": "Planck inflation/isocurvature",
+      "url": "https://arxiv.org/abs/1807.06211"
+    },
+    {
+      "topic": "BBN late-decay screening",
+      "url": "https://arxiv.org/abs/astro-ph/0408426"
+    },
+    {
+      "topic": "XENONnT SI result",
+      "url": "https://arxiv.org/abs/2502.18005"
+    },
+    {
+      "topic": "QCD axion susceptibility/misalignment input",
+      "url": "https://arxiv.org/abs/1606.07494"
+    }
+  ]
+}

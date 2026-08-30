@@ -1,0 +1,165 @@
+{
+  "audit_date": "2026-08-24",
+  "checks": {
+    "Higgs_target_is_not_a_derived_pole": true,
+    "PQ_threshold_scales_are_strictly_ordered": true,
+    "Pati_Salam_vector_proton_lifetime_is_retired": true,
+    "V24_vectorlike_threshold_is_universal": true,
+    "V30_local_UV_interpretation_fails_control_and_covariance": true,
+    "V31_one_loop_scales_do_not_unify_at_gauge_two_loop": true,
+    "V31_reported_eight_conditional_rows_is_preserved": true,
+    "all_source_pins_match": true,
+    "complete_theory_claim_is_fail_closed": true,
+    "conditional_upper_bound_count_is_five": true,
+    "corrected_alphaG_is_larger_than_V31": true,
+    "corrected_running_has_independent_RK4_replay": true,
+    "corrected_running_obeys_universal_shift_identity": true,
+    "finite_selector_has_exact_infinite_tower_witness": true,
+    "gauge_only_two_loop_root_converges": true,
+    "inherited_NDW_regression_is_detected": true,
+    "inserted_stops_are_not_derived_from_common_soft_input": true,
+    "omitted_PQ_threshold_is_detected": true,
+    "pole_ledger_has_thirty_not_twenty_two_rows": true,
+    "pole_ledger_is_incomplete_and_PS_vectors_are_not_degenerate": true,
+    "required_derivations_remain_explicitly_open": true,
+    "standard_thermal_leptogenesis_is_not_closed": true,
+    "unphysical_input_mutation_does_not_close_dependency_gap": true,
+    "upstream_cores_match": true,
+    "vacuum_selector_is_not_a_derived_global_proof": true,
+    "zero_established_gates_are_overclaimed": true
+  },
+  "core_sha256": "6eb7611f7c0195b9812bf0ae23916f5f7f54b28d9a0b38fc85e495369bf0f699",
+  "corrected_numbers": {
+    "MG_GeV": 2.5864720161823796e+16,
+    "MPS_GeV": 6598426501109488.0,
+    "V31_alpha_G": 0.039265871694936706,
+    "corrected_alpha_G": 0.05147387782532754,
+    "corrected_axion_mass_micro_eV_if_KSVZ_pole_preserved": 45.528,
+    "gauge_only_two_loop_MG_GeV": 1.4493924066642628e+16,
+    "gauge_only_two_loop_MPS_GeV": 1.4062390182142554e+16,
+    "gauge_only_two_loop_alpha_G": 0.0534118315932653,
+    "gauge_only_two_loop_spread_at_V31_scales": 0.5133776724274561,
+    "inherited_NDW": 4,
+    "inverse_alpha_universal_PQ_shift": 6.040078850061236,
+    "leading_one_loop_mh_diagnostic_GeV": 130.9238388740939,
+    "physical_fa_GeV_if_KSVZ_pole_preserved": 125000000000.0,
+    "tree_mh_GeV": 89.3782549742667,
+    "valid_proton_partial_lifetime_years": null
+  },
+  "failures": [],
+  "generated_evidence_sha256": {
+    "SUSY_V32_CORRECTED_PHYSICS_LEDGER.json": "7577c0de42588be336d18cdbb5071fa58b1c2d174e4242fd1b972b75852226bc",
+    "SUSY_V32_G1_G8_GATE_LEDGER.json": "45f9fd42aaeff1c1a0072846f93c5724fdd4e11c419a8d2842302ef6b1815176",
+    "SUSY_V32_REQUIRED_DERIVATIONS.json": "a83c203f56c2e5bc556b9af562825d1a99b1d0389015cccae98586d9823cd4f1"
+  },
+  "n_checks": 26,
+  "n_failed": 0,
+  "namespace": "research.susy_pati_salam.v32.complete_theory_promotion_audit",
+  "new_physics_decision": {
+    "constructive_route": "embed the executable V24 chiral Pati--Salam source in one explicit globally consistent compactification, then derive K, W, gauge kinetic functions, soft terms, zero modes, thresholds, and observables from that same construction",
+    "invent_another_unconstrained_selector": false,
+    "reason": "another axiom can assign any desired answer but cannot establish a microscopic theory or create independent predictions",
+    "strongest_known_precedent_not_yet_an_embedding": "explicit flux/instanton/gauge-dynamics moduli stabilization exists, but the V24 chiral Pati--Salam visible sector and its zero modes, correlators, anomalies, and thresholds have not been derived in that construction"
+  },
+  "result": {
+    "V31_reported_conditional_closed_count": 8,
+    "V32_conditional_upper_bound_closed_count": 5,
+    "complete_theory_exists": false,
+    "established_full_predictive_closed_count": 0,
+    "safe_to_claim_new_fundamental_law": false
+  },
+  "schema": "susy-v32-complete-theory-promotion-audit-v1",
+  "scientific_boundary": "V32 completes the requested investigation, not the fundamental theory.  The repository contains a useful executable EFT and conditional benchmark, but no single microscopic construction derives FCMA-18/BFA-8, the global vacuum and pole spectrum, precision thresholds, cosmological history, proton operators, and out-of-sample flavour likelihood.",
+  "source_manifest": [
+    {
+      "expected_sha256": "c5af70ab22756d79eb72a4d5a3c2c23f86a1f1378cb8e09c1e67076609d44125",
+      "matches": true,
+      "path": "susy_v24_ps_vacuum_rg_frontier.py",
+      "sha256": "c5af70ab22756d79eb72a4d5a3c2c23f86a1f1378cb8e09c1e67076609d44125"
+    },
+    {
+      "expected_sha256": "4f47ca9b18902a744c138ddceeec461036e41c6803bb7d60a68a276e09499c0d",
+      "matches": true,
+      "path": "SUSY_V24_PS_VACUUM_RG_FRONTIER.json",
+      "sha256": "4f47ca9b18902a744c138ddceeec461036e41c6803bb7d60a68a276e09499c0d"
+    },
+    {
+      "expected_sha256": "42b674dc6fe137979ea3d6067efa02bd4531298688b2086d99affa2a61b7f047",
+      "matches": true,
+      "path": "SUSY_V24_G1_G8_EXECUTION_VERDICT.json",
+      "sha256": "42b674dc6fe137979ea3d6067efa02bd4531298688b2086d99affa2a61b7f047"
+    },
+    {
+      "expected_sha256": "f3ff7f581ec394e96c7efe7ebd20c9389942eedbf52d0d5fb53e4152df0de651",
+      "matches": true,
+      "path": "susy_v30_g1_finite_flux_completion.py",
+      "sha256": "f3ff7f581ec394e96c7efe7ebd20c9389942eedbf52d0d5fb53e4152df0de651"
+    },
+    {
+      "expected_sha256": "ebf43b48feb4b00233eccdf36d5755d700726077dd64d74cfc9cd2507bdb0de0",
+      "matches": true,
+      "path": "SUSY_V30_G1_FINITE_FLUX_COMPLETION.json",
+      "sha256": "ebf43b48feb4b00233eccdf36d5755d700726077dd64d74cfc9cd2507bdb0de0"
+    },
+    {
+      "expected_sha256": "80474e4950bbecebb3a02f678783df26495f8cac21e578a69858ffab59e7f686",
+      "matches": true,
+      "path": "SUSY_V30_FIELD_AND_SELECTOR_MANIFEST.json",
+      "sha256": "80474e4950bbecebb3a02f678783df26495f8cac21e578a69858ffab59e7f686"
+    },
+    {
+      "expected_sha256": "7cb6f39c85d788937418f61eca9e98c46c21a95549bb220b351ef9e27bff2c6f",
+      "matches": true,
+      "path": "SUSY_V30_OPERATOR_AND_MATCHING_CONTRACT.json",
+      "sha256": "7cb6f39c85d788937418f61eca9e98c46c21a95549bb220b351ef9e27bff2c6f"
+    },
+    {
+      "expected_sha256": "2231ef13110662a10d1900f3cbb3fc425610191c80defc8c2effae0cb812eba2",
+      "matches": true,
+      "path": "SUSY_V30_MODULI_AND_HIDDEN_CONTRACT.json",
+      "sha256": "2231ef13110662a10d1900f3cbb3fc425610191c80defc8c2effae0cb812eba2"
+    },
+    {
+      "expected_sha256": "1f7ae0438454bd1538f0374db22c1f31a6118128e4c111d7fe3ff55724d110a5",
+      "matches": true,
+      "path": "susy_v31_g1_g8_unified_completion.py",
+      "sha256": "1f7ae0438454bd1538f0374db22c1f31a6118128e4c111d7fe3ff55724d110a5"
+    },
+    {
+      "expected_sha256": "017206b65c4a42db2f371da1a54304563e913796d33df7dd86a0531b2f6782bf",
+      "matches": true,
+      "path": "SUSY_V31_G1_G8_UNIFIED_COMPLETION.json",
+      "sha256": "017206b65c4a42db2f371da1a54304563e913796d33df7dd86a0531b2f6782bf"
+    },
+    {
+      "expected_sha256": "d54cf0dd2b9775fd191a03c940ec5dbc1771b3c4db740ece961c8ab92db7ec05",
+      "matches": true,
+      "path": "SUSY_V31_BENCHMARK_INPUT_LEDGER.json",
+      "sha256": "d54cf0dd2b9775fd191a03c940ec5dbc1771b3c4db740ece961c8ab92db7ec05"
+    },
+    {
+      "expected_sha256": "e5614165654fa351fc89b1df2c6ee3ede027bcb24fc1eb0d80fd3005e9384ed9",
+      "matches": true,
+      "path": "SUSY_V31_SPECTRUM_VACUUM_LEDGER.json",
+      "sha256": "e5614165654fa351fc89b1df2c6ee3ede027bcb24fc1eb0d80fd3005e9384ed9"
+    },
+    {
+      "expected_sha256": "4f40733abcc3adcdfa32ceedc8c9fcefd5b6057261856fe36514387671073d0f",
+      "matches": true,
+      "path": "SUSY_V31_RGE_FLAVOUR_COSMOLOGY_LEDGER.json",
+      "sha256": "4f40733abcc3adcdfa32ceedc8c9fcefd5b6057261856fe36514387671073d0f"
+    },
+    {
+      "expected_sha256": "fe3c7311d8130139620a4dfd082f8a6477a5d2629e18e1a06cc2fd078eda01f6",
+      "matches": true,
+      "path": "SUSY_V31_G1_G8_GATE_LEDGER.json",
+      "sha256": "fe3c7311d8130139620a4dfd082f8a6477a5d2629e18e1a06cc2fd078eda01f6"
+    }
+  ],
+  "status": "V32_COMPLETE_THEORY_PROMOTION_AUDIT_COMPLETE__V31_PQ_THRESHOLD_CORRECTED__PATI_SALAM_VECTOR_PROTON_CHANNEL_REJECTED__CORRECTED_CONDITIONAL_UPPER_BOUND_FIVE_OF_EIGHT__ESTABLISHED_ZERO_OF_EIGHT__NO_COMPLETE_THEORY",
+  "upstream_core_pins": {
+    "V24": "09b4b232afe0f5150dab74e5fc28f1984551732d9e100c1687971b96410adacd",
+    "V30": "e504aed2ac39cec33a23a3779ea5d99cdbec2592bd16a2ba4353706b21148a28",
+    "V31": "8c5dd7ed69871822f96c98f72a099045f4a33c0dad182e096244f3441d21ed95"
+  }
+}

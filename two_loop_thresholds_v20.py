@@ -1,11 +1,17 @@
 #!/usr/bin/env python3
-"""Two-loop threshold RG for v20, anchored to the verified one-loop chain.
+"""Legacy calibrated-shift threshold diagnostic for v20.
 
 One-loop SM(2HDM) → PS chain is taken from the package's already-checked
 solver (M_I=6.314e11 GeV, M_GUT=9.918e15 GeV, alpha_GUT^{-1}=37.313).
-Two-loop corrections are then applied as controlled shifts, and Spin(10)
+Heuristic corrections are then applied as calibrated shifts, and Spin(10)
 is evolved continuously from the spectator-corrected coupling — never by
 resetting alpha_10(v_Phi)=1/40.
+
+This module does *not* implement exact two-loop beta tensors or physical
+component matching.  Its ``two_loop=True`` branch adds the explicitly listed
+phenomenological offsets below and a 10% damping ansatz.  It is retained for
+legacy numerical regression only and cannot be consumed as a physical G7
+input.
 
 The root solve is implemented locally so every source checkout can reproduce
 the gauge anchor with only the Python standard library.  Earlier versions
@@ -32,6 +38,8 @@ B_PS = (-7.0 / 3.0, 2.0, 26.0 / 3.0)  # PS one-loop as in v17 engine
 # Approximate two-loop additive shifts to b (literature-sized, conservative)
 B_LOW_2LOOP = (0.35, -0.20, -0.45)
 B_PS_2LOOP = (-0.25, 0.15, 0.40)
+
+STATUS = "HEURISTIC_CALIBRATED_THRESHOLD_CHAIN_DIAGNOSTIC__NO_PHYSICAL_G7_CLAIM"
 
 
 def bracketed_root(
@@ -133,7 +141,7 @@ def solve_unification(two_loop: bool = False) -> dict:
         inv_mpl_cons = run_inv(inv_vphi_cons, b_heavy_cons * 1.1, VPHI, MPL)
 
     return {
-        "scheme": "two-loop-corrected" if two_loop else "one-loop",
+        "scheme": "heuristic-two-loop-shift-diagnostic" if two_loop else "one-loop",
         "M_I_GeV": mi,
         "M_GUT_GeV": mgut,
         "alpha_inv_GUT": iu,
@@ -162,7 +170,7 @@ def solve_unification(two_loop: bool = False) -> dict:
         },
         "inconsistent_reset_alpha_inv_vPhi": 40.0,
         "verdict": (
-            "Anchored one/two-loop threshold chain reproduces the manuscript "
+            "The anchored one-loop/heuristic-shift threshold chain reproduces the legacy "
             "M_I/M_GUT. Continuous Spin(10) running from the spectator-corrected "
             "alpha_GUT does not justify resetting alpha_10(v_Phi)=1/40 "
             f"(continuous alpha_inv(v_Phi)~{inv_vphi_phys:.2f}). "
@@ -174,8 +182,37 @@ def solve_unification(two_loop: bool = False) -> dict:
 def build_report() -> dict:
     one = solve_unification(False)
     two = solve_unification(True)
+    checks = {
+        "one_loop_MI_regression": abs(one["M_I_GeV"] / 6.3139e11 - 1.0) < 2e-3,
+        "one_loop_MGUT_regression": abs(one["M_GUT_GeV"] / 9.9176e15 - 1.0) < 2e-3,
+        "one_loop_unified_inverse_coupling_regression": abs(
+            one["alpha_inv_GUT"] - 37.313
+        )
+        < 0.02,
+        "heuristic_branch_explicitly_labelled": two["scheme"]
+        == "heuristic-two-loop-shift-diagnostic",
+        "calibrated_offsets_are_not_zero": any(B_LOW_2LOOP) and any(B_PS_2LOOP),
+        "physical_G7_fail_closed": True,
+    }
+    failures = [name for name, passed in checks.items() if not passed]
     return {
-        "status": "two-loop threshold RG report",
+        "status": STATUS if not failures else "HEURISTIC_THRESHOLD_DIAGNOSTIC_FAILED",
+        "artifact_class": "diagnostic_only",
+        "n_checks": len(checks),
+        "n_failed": len(failures),
+        "failures": failures,
+        "checks": checks,
+        "scope": {
+            "allowed_use": "legacy one-loop benchmark and heuristic sensitivity envelope",
+            "forbidden_use": [
+                "physical two-loop SO(10) or Pati-Salam beta input",
+                "physical component-threshold matching",
+                "mathematical or release G7 closure",
+            ],
+            "heuristic_low_energy_offsets": list(B_LOW_2LOOP),
+            "heuristic_Pati_Salam_offsets": list(B_PS_2LOOP),
+            "heuristic_high_scale_damping_factor": "1.1 multiplying the one-loop heavy b coefficient",
+        },
         "one_loop": one,
         "two_loop": two,
         "comparison": {
@@ -205,10 +242,24 @@ def build_report() -> dict:
             "MGUT_one_ok": abs(one["M_GUT_GeV"] / 9.9176e15 - 1.0) < 2e-3,
             "IU_one_ok": abs(one["alpha_inv_GUT"] - 37.313) < 0.02,
         },
+        "flag": {
+            "one_loop_regression_chain_available": True,
+            "heuristic_calibrated_two_loop_like_shifts_used": True,
+            "exact_two_loop_beta_system_used": False,
+            "authoritative_full_inventory_gauge_polynomial_used": False,
+            "physical_component_pole_masses_used": False,
+            "heavy_vector_Goldstone_ghost_matching_used": False,
+            "physical_component_threshold_matching_complete": False,
+            "diagnostic_only_for_physical_G7": True,
+            "physical_G7_closed": False,
+            "mathematical_G7_closed": False,
+            "release_G7_verified": False,
+        },
         "honest_limitation": (
-            "Two-loop PS/SO(10) shifts here are calibrated corrections on top of "
-            "the verified one-loop chain, not a full published two-loop tensor "
-            "library with 210/126 threshold matching."
+            "The so-called two-loop branch consists of calibrated additive offsets "
+            "and a 10% damping ansatz on top of the one-loop chain. It is not an "
+            "exact two-loop tensor system and contains no physical 210/126 component "
+            "or heavy-vector threshold matching."
         ),
     }
 

@@ -1,0 +1,337 @@
+{
+  "F_only_anomaly_preservation": {
+    "all_F_only_rows_preserved": true,
+    "threshold_increment": {
+      "F_PS_squared": 0,
+      "F_cubed": 0,
+      "F_gravity": 0
+    }
+  },
+  "checks": {
+    "F_only_rows_preserved": true,
+    "all_genuine_F_X_H_triangle_rows_cancel": true,
+    "baseline_rows_match_V40": true,
+    "finite_Z9_and_listed_Z9_Z5610_rows_preserved": true,
+    "no_full_gate_promoted": true,
+    "one_pair_restricted_minimality_obstruction_is_nonvacuous": true,
+    "same_orientation_ring_subproof_preserved_conditionally": true,
+    "simple_GS_integrality_obstruction_is_nonvacuous": true,
+    "source_files_present": true,
+    "theta_only_residual_preserving_obstruction_is_nonvacuous": true,
+    "threshold_mass_terms_are_allowed": true
+  },
+  "complete_theory_exists": false,
+  "continuous_cross_triangle_audit": {
+    "all_genuine_F_X_H_triangle_rows_cancel": true,
+    "baseline_V40_rows": {
+      "F_H_squared": 0,
+      "F_X_H": 6,
+      "F_X_squared": -360,
+      "F_squared_H": 0,
+      "F_squared_X": -270
+    },
+    "net_rows": {
+      "F_H_squared": 0,
+      "F_X_H": 0,
+      "F_X_squared": 0,
+      "F_squared_H": 0,
+      "F_squared_X": 0
+    },
+    "normalization": "sum over left-handed Weyl fermions; all four new fields are PS singlets of multiplicity one",
+    "threshold_increment": {
+      "F_H_squared": 0,
+      "F_X_H": -6,
+      "F_X_squared": 360,
+      "F_squared_H": 0,
+      "F_squared_X": 270
+    }
+  },
+  "core_sha256": "20a38e9d31e8c68351bed352cbe881ef1390ee322b7056734260e8f79981e555",
+  "degree_four_diagnostic_not_a_triangle_anomaly": {
+    "baseline_C_F_squared_X_H": -540,
+    "net": -720,
+    "reason_not_promoted": "F^2 X H has charge degree four.  In four dimensions it is not a local perturbative triangle-anomaly coefficient, so its nonzero diagnostic value is not an uncancelled triangle anomaly.",
+    "threshold_increment": -180
+  },
+  "failures": [],
+  "finite_remnant_audit": {
+    "combined_V40_plus_threshold": {
+      "C_Z9_Z5610_squared_mod_9": 0,
+      "C_Z9_squared_Z5610_mod_9": 0,
+      "Delta_s1_canonical": 432,
+      "Delta_s3_canonical": 11880,
+      "all_listed_finite_rows_still_vanish": true,
+      "cubic_condition_110Delta_s3_mod_54": 0,
+      "linear_condition_2Delta_s1_mod_9": 0
+    },
+    "new_field_Z5610_lifts": {
+      "ChiAMinus": {
+        "H_mod_85": 0,
+        "X_mod_66": 62,
+        "derived_formula": "85 (X mod 66) + 66 (H mod 85) mod 5610",
+        "z5610": 5270
+      },
+      "ChiAPlus": {
+        "H_mod_85": 0,
+        "X_mod_66": 6,
+        "derived_formula": "85 (X mod 66) + 66 (H mod 85) mod 5610",
+        "z5610": 510
+      },
+      "ChiBMinus": {
+        "H_mod_85": 84,
+        "X_mod_66": 9,
+        "derived_formula": "85 (X mod 66) + 66 (H mod 85) mod 5610",
+        "z5610": 699
+      },
+      "ChiBPlus": {
+        "H_mod_85": 1,
+        "X_mod_66": 55,
+        "derived_formula": "85 (X mod 66) + 66 (H mod 85) mod 5610",
+        "z5610": 4741
+      }
+    },
+    "threshold_Z9_increment": {
+      "C_Z9_Z5610_squared_mod_9_increment": 0,
+      "C_Z9_squared_Z5610_mod_9_increment": 0,
+      "Delta_s1_canonical": 18,
+      "Delta_s3_canonical": 486,
+      "cubic_condition_110Delta_s3_mod_54": 0,
+      "linear_condition_2Delta_s1_mod_9": 0
+    }
+  },
+  "full_gate_closed": false,
+  "massability": {
+    "all_terms_continuous_neutral": true,
+    "all_terms_finite_neutral": true,
+    "all_terms_have_Z4R_superpotential_charge_two": true,
+    "mass_matrix": {
+      "basis": [
+        "ChiAPlus",
+        "ChiAMinus",
+        "ChiBPlus",
+        "ChiBMinus"
+      ],
+      "conditionality": "This is massability on the declared nonzero P/Pb branch; it is not a proof that the full F/D/soft potential selects that branch or that the four new scalars have zero VEV.",
+      "determinant": "(lambda_A <Pb>)^2 (lambda_B <P>)^2",
+      "nonzero_blocks_after_P_Pb_VEVs": [
+        "[[0, lambda_A <Pb>], [lambda_A <Pb>, 0]]",
+        "[[0, lambda_B <P>], [lambda_B <P>, 0]]"
+      ],
+      "rank_if_lambda_A_lambda_B_<P><Pb>_nonzero": 4
+    },
+    "superpotential_terms": [
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1H": 0,
+        "U1X": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "Pb",
+          "ChiAPlus",
+          "ChiAMinus"
+        ],
+        "label": "Pb_ChiAPlus_ChiAMinus"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1H": 0,
+        "U1X": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "P",
+          "ChiBPlus",
+          "ChiBMinus"
+        ],
+        "label": "P_ChiBPlus_ChiBMinus"
+      }
+    ],
+    "threshold_relation_to_V38_no_go": "P and Pb carry primitive X charges +2 and -2, rather than charges in 66 Z.  This threshold is therefore explicitly outside V38's residual-Z66-preserving heavy-threshold theorem."
+  },
+  "n_failed": 0,
+  "promotion_boundary": {
+    "established": [
+      "a two-pair, four-chiral-singlet P/Pb-threshold solution for the five genuine F-X/H triangle rows",
+      "massability of that packet on a nonzero P/Pb background",
+      "conditional preservation of the V40 same-orientation Z9 all-declared-VEV selector proof",
+      "a Theta-only residual-preserving heavy-threshold obstruction and a simple single-axion GS obstruction"
+    ],
+    "not_established": [
+      "a common unbroken 4D U(1)_F x U(1)_X x U(1)_H UV parent",
+      "a complete anomaly-free product including X/H, Z4R, global/bordism, and gravity data",
+      "a physical vacuum, spectrum, beta-function evolution, cosmology, flavour fit, or proton lifetime"
+    ]
+  },
+  "purpose": "Determine the exact status of the V40 U(1)_F cross anomaly block against the V38 X/H lifts without relabelling an EFT threshold as a UV completion.",
+  "references": [
+    "https://arxiv.org/abs/hep-ph/9210211",
+    "https://arxiv.org/abs/hep-th/9602178",
+    "https://arxiv.org/abs/1909.08775"
+  ],
+  "residual_preserving_theta_threshold_no_go": {
+    "V40_required_threshold_increment": -6,
+    "assumptions": [
+      "Every full-rank heavy mass entry is a polynomial in ThetaPlus/ThetaMinus VEVs and has total F charge 9 n for an integer n.",
+      "Those Higgs fields are X/H neutral, so a mass block connects states of fixed (X,H)=(x,h) only to states of (-x,-h).",
+      "The ordinary threshold has no additional VEV carrying nonzero X or H charge."
+    ],
+    "conclusion": "No finite collection of ordinary Theta-only residual-preserving pairs can cancel V40's C_F_X_H=+6 row: their total shift is always a multiple of nine.  This is independent of their X/H charges and is the decisive obstruction.",
+    "consequence": "Every such full-rank ordinary threshold shifts C_F_X_H by 0 modulo 9.",
+    "full_rank_block_extension": [
+      "For a nonzero determinant monomial of a block, every selected entry obeys f_i+g_sigma(i)=9 n_i.",
+      "Summing it gives sum_i f_i + sum_j g_j in 9 Z.",
+      "The whole block contributes C_F_X_H=(sum_i f_i+sum_j g_j) x h, hence is in 9 Z.",
+      "Adding blocks preserves the congruence, so the conclusion does not rely on diagonal pairwise masses."
+    ],
+    "pair_identity": "Delta C_F_X_H = f*x*h + (epsilon*9-f)(-x)(-h) = epsilon*9*x*h",
+    "required_increment_mod_9": 3,
+    "theorem": "Theta-only residual-preserving F-X-H cross-anomaly obstruction"
+  },
+  "restricted_two_pair_minimality": {
+    "conclusion": "Two mass pairs (four chiral singlets) are minimal within this explicitly stated class.",
+    "one_pair_identity": {
+      "P_pair": "Delta C_F_squared_X = -2 f^2",
+      "Pb_pair": "Delta C_F_squared_X = +2 f^2",
+      "integer_solution_exists": false,
+      "required_square_if_one_Pb_pair": "f^2=135",
+      "target": 270
+    },
+    "restricted_class": "Pati--Salam-singlet pairs with F charges (f,-f), each massed by one P or Pb insertion, so the threshold does not alter F^3, F-gravity, or F-PS^2.",
+    "two_pair_solution": {
+      "P_pair": "(F,X,H)=(3,-11,1) plus (-3,9,-1)",
+      "Pb_pair": "(F,X,H)=(12,6,0) plus (-12,-4,0)",
+      "sum_C_F_X_H": "0 - 6 = -6",
+      "sum_C_F_X_squared": "240 + 120 = 360",
+      "sum_C_F_squared_X": "288 - 18 = 270"
+    }
+  },
+  "same_orientation_ring_preservation": {
+    "V40_declared_VEVs_still_Z9_neutral": true,
+    "conditional_result": "With <Chi>=0, the V40 all-declared-VEV proof for same-orientation Q4/Qc4 sources survives exactly.  A full potential proof of <Chi>=0 and a mixed-operator/proton calculation remain open.",
+    "mass_sources_have_U1F_charge": {
+      "P": 0,
+      "Pb": 0
+    },
+    "new_field_Z9_charges": {
+      "ChiAMinus": 6,
+      "ChiAPlus": 3,
+      "ChiBMinus": 6,
+      "ChiBPlus": 3
+    },
+    "new_threshold_scalars_are_declared_noncondensing": true,
+    "same_orientation_all_ring_subproof_preserved_conditionally": true,
+    "same_orientation_source_charges": {
+      "Q4": 3,
+      "Qc4": 6
+    },
+    "ward_identity": "Integrating out fields with U(1)_F-preserving P/Pb masses cannot generate an operator whose external Z9 charge is nonzero.  Theta VEV insertions can change a U(1)_F charge only by 9k."
+  },
+  "schema": "susy-v41-u1f-product-cross-completion-v1",
+  "simple_quantized_GS_subcase": {
+    "additional_boundary": "An axion that shifts only under F cannot by itself cancel the F^2-X row under an X gauge variation.",
+    "equations": {
+      "F_X_H": "9 k_XH = -6",
+      "F_X_squared": "9 k_XX = +360"
+    },
+    "integer_solution": {
+      "k_XH": null,
+      "k_XX": 40
+    },
+    "not_excluded": "A specified multi-axion/Stueckelberg/generalized-Chern--Simons or topological response with its full integral charge lattice and anomaly polynomial.  No such UV datum is supplied here.",
+    "obstruction": "-6/9=-2/3 is not an integer.",
+    "scope": "Single compact axion, shifting only under U(1)_F by its minimal residual-preserving charge 9, with integer Chern--Weil levels in the same one-leg convention q_F k=A used by the V38 audit."
+  },
+  "source_manifest": [
+    {
+      "exists": true,
+      "path": "susy_v41_u1f_product_cross_completion.py",
+      "sha256": "b508744d18d139206cf078bf07ceda5be338ad5aca25c999e7b3abce92431aa9"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v41_u1f_product_cross_completion.py",
+      "sha256": "e86ba455e9b065b31cdcf77395fb08af7f0e0fd92bba7b456f11e532b96c6230"
+    },
+    {
+      "exists": true,
+      "path": "susy_v40_all_ring_selector.py",
+      "sha256": "5adebe960afa417f67339aa32c61db866d2a5d93faa53b50a9b8d472c01d3e1c"
+    }
+  ],
+  "status": "V41_U1F_X_H_CUBIC_CROSS_BLOCK_CANCELLED_AT_P_PB_THRESHOLD__RESIDUAL_PRESERVING_THETA_THRESHOLD_NO_GO_PROVED__PRODUCT_UV_COMPLETION_FAIL_CLOSED",
+  "threshold_field_packet": [
+    {
+      "F": 12,
+      "H": 0,
+      "PS_representation": "(1,1,1)",
+      "X": 6,
+      "dim": 1,
+      "field": "ChiAPlus",
+      "mass_source": "Pb",
+      "pq": 0,
+      "r4": 0,
+      "z5610": 510
+    },
+    {
+      "F": -12,
+      "H": 0,
+      "PS_representation": "(1,1,1)",
+      "X": -4,
+      "dim": 1,
+      "field": "ChiAMinus",
+      "mass_source": "Pb",
+      "pq": 170,
+      "r4": 0,
+      "z5610": 5270
+    },
+    {
+      "F": 3,
+      "H": 1,
+      "PS_representation": "(1,1,1)",
+      "X": -11,
+      "dim": 1,
+      "field": "ChiBPlus",
+      "mass_source": "P",
+      "pq": 0,
+      "r4": 0,
+      "z5610": 4741
+    },
+    {
+      "F": -3,
+      "H": -1,
+      "PS_representation": "(1,1,1)",
+      "X": 9,
+      "dim": 1,
+      "field": "ChiBMinus",
+      "mass_source": "P",
+      "pq": -170,
+      "r4": 0,
+      "z5610": 699
+    }
+  ],
+  "unrepaired_or_new_rows": {
+    "threshold_increment_not_in_F_cross_block": {
+      "Delta_b_F_N1SUSY": 306,
+      "Delta_b_H_N1SUSY": 2,
+      "Delta_b_XH_N1SUSY": -20,
+      "Delta_b_X_N1SUSY": 254,
+      "H_cubed": 0,
+      "H_gravity": 0,
+      "X_H_squared": -2,
+      "X_cubed": -450,
+      "X_gravity": 0,
+      "X_squared_H": 40
+    },
+    "why_full_product_parent_is_not_claimed": [
+      "The pre-existing V38 X^3, X^2H, XH^2, gravitational, and discrete-R/product-bordism rows are not cancelled here.",
+      "The P/Pb threshold breaks the old U(1)_X/Z66 direction and lies outside the V38 residual-preserving no-go assumptions.",
+      "The exact F/D/soft vacuum, threshold matching, kinetic mixing, perturbative running, and all mixed baryon operators remain uncomputed.",
+      "A multi-axion or topological GS completion requires a specified quantized charge lattice and is not inferred from arithmetic alone."
+    ]
+  }
+}

@@ -1,0 +1,181 @@
+{
+  "C3_C4_C7_decision": {
+    "C3": {
+      "boundary": "This does not choose between the local constrained-profile regulator and the admitted finite-range kernel; that is C2, not a defect in the quadratic domain theorem.",
+      "reason": "Every retained A,Xi,C and O7/O8 quadratic block now comes from one IBP-complete action, one path-ordered transfer, and one variational maximal-isotropic endpoint domain. Auxiliary wall states are retained.",
+      "status": "PASS_AT_DECLARED_QUADRATIC_ACTION_LEVEL"
+    },
+    "C4": {
+      "boundary": "Parameter points outside the declared cone are rejected; no claim is made about loop-corrected positivity or an uncomputed component tensor assignment.",
+      "reason": "Uniform K invertibility, positive full Kahler Schur complements, positive endpoint Z, and positive auxiliary W give a positive full quadratic norm. The deterministic same-action witness lies strictly inside this nonempty open cone.",
+      "status": "PASS_ON_EXPLICIT_POSITIVE_ADMISSIBLE_CONE_AT_QUADRATIC_LEVEL"
+    },
+    "C7": {
+      "reason": "The complete abstract A/Xi/C/O7/O8 transfer, undivided enlarged characteristic, pole residues and Wilson response are now same-action.",
+      "remaining": [
+        "normalized SO(10)->PS Cartesian tensors for every retained source portal",
+        "normalized derivative-current Clebsches and their family/component embedding",
+        "the resulting complete physical Wilson-coefficient array rather than abstract matrix inputs"
+      ],
+      "status": "PARTIAL"
+    }
+  },
+  "G2_decision": {
+    "closed": false,
+    "closed_full_gate_count": 1,
+    "verdict": "G2_REMAINS_OPEN",
+    "why": "C3 and the declared quadratic C4 obstruction are removed, but C2 still requires a regulator-class decision/local construction, C5 requires an independent profile rematch and subtraction audit, and C7 lacks normalized physical component tensors and the full Wilson array."
+  },
+  "action_and_domain_theorem": {
+    "exact_IBP_normal_form": {
+      "D": "[[0,R8^T],[I+R7,0]]",
+      "Darboux_map": "z=diag(I,K^T)psi, so J=Darboux^T J0 Darboux",
+      "J": "D-D^T=[[0,-K^T],[K,0]], K=I+R7-R8",
+      "Q": "[[A,C^T],[C,Xi]]-m epsilon Z+S'",
+      "S": "(D+D^T)/2",
+      "endpoint_shift": "[psi^T S psi/2]_0^1 retained in the endpoint action",
+      "generator": "G_raw=J^-1(Q-J'/2)",
+      "path_ordered_transfer": "T_col=P exp integral G_can dt"
+    },
+    "literal_derivative_action": "Hc^T(I+R7)D5H+(D5Hc)^T R8 H, with independent matrix-valued profiles R7 and R8",
+    "positive_admissible_cone": {
+      "conditions": [
+        "K(t)=I+R7(t)-R8(t) is invertible with a uniform singular-value bound",
+        "the complete bulk/collar Kahler metric Z(t) is positive definite",
+        "mixed Kahler blocks obey Z_H>0 and Z_c-Y^dagger Z_H^-1 Y>0",
+        "endpoint direct metrics Z0,Z1 are positive semidefinite",
+        "every retained auxiliary metric W0,W1 is positive definite",
+        "higher-derivative rational pencils are kept as positive auxiliary enlargements"
+      ],
+      "consequence": "The complete quadratic norm is positive and the enlarged mass operator is self-adjoint. Holomorphic A,Xi,C change the mass operator, not the Kahler norm. These are sufficient open-cone conditions, not necessary ones."
+    },
+    "regulator_interface": "Only the coefficient callback (A,Xi,C,R7,R8,Z) depends on whether the source profile is the finite-range V49 kernel or a local constrained profile. The transfer/domain proof consumes either without modification.",
+    "spanning_result": "A=A^T and Xi=Xi^T give the two symmetric Hamiltonian blocks; arbitrary C gives the diagonal block. Together they span all sp(2n).",
+    "variational_domain": {
+      "Green_form": "[u^dagger J0 v]_0^1",
+      "complex_couplings": "transpose-symplectic holomorphic transfer is exact; physical self-adjointness is applied to the real CP slice used by the witness or, equivalently, to the standard field/conjugate Nambu doubling",
+      "graph_condition": "P0=P0^dagger and P1=P1^dagger",
+      "host": "p0=P0 q0 (or p0=j0+P0 q0 with a current)",
+      "proof": "Each endpoint graph is maximal isotropic; the path transfer is J0-unitary. Energy-dependent Schur pencils are not treated as fixed domains: their positive-metric auxiliary states and determinant factors remain in the enlarged operator.",
+      "source": "p1=-P1 q1 (or p1+P1 q1=j1)"
+    }
+  },
+  "core_sha256": "5b91b9f9c85241e09853892550c2323b3b84e27b972668c130917a2db2baa086",
+  "integrity_checks": {
+    "A_Xi_C_span_full_sp8": true,
+    "O7_O8_normal_form_is_symmetric_and_Hamiltonian": true,
+    "collar_bulk_total_transfers_are_symplectic": true,
+    "complete_quadratic_norm_witness_is_positive": true,
+    "derivative_symplectic_form_never_degenerates": true,
+    "endpoint_graphs_are_variational_Lagrangian_subspaces": true,
+    "first_undivided_root_is_simple": true,
+    "full_pole_residue_matches": true,
+    "path_ordering_converges": true,
+    "real_slice_transfer_is_J_unitary": true,
+    "same_action_Wilson_kernel_is_finite": true,
+    "source_to_host_kernel_is_Euclidean_local": true,
+    "three_undivided_roots_are_found": true,
+    "undivided_and_reduced_determinants_agree_off_auxiliary_poles": true
+  },
+  "n_failed_integrity_checks": 0,
+  "primary_sources": [
+    "https://arxiv.org/abs/hep-th/0106256",
+    "https://arxiv.org/abs/hep-ph/0112230",
+    "https://arxiv.org/abs/hep-th/0411133",
+    "https://arxiv.org/abs/hep-ph/0601222",
+    "https://arxiv.org/abs/1408.1852"
+  ],
+  "representative_same_action_certificate": {
+    "Wilson_witness": {
+      "G00_finite": true,
+      "G00_spectral_norm": 4.835020120474336,
+      "norm8_over_norm4": 0.01713516565843035,
+      "representative_W_eff": [
+        0.027172491075829815,
+        0.0
+      ],
+      "source_to_host_euclidean_norms": {
+        "1.0": 0.781348018875641,
+        "2.0": 0.2463867907643691,
+        "4.0": 0.030289523638467947,
+        "8.0": 0.0005190160052600903
+      }
+    },
+    "channels": 4,
+    "normal_form": {
+      "maximum_Q_transpose_symmetry_residual": 0.0,
+      "maximum_canonical_Hamiltonian_residual": 7.632783294297951e-17,
+      "minimum_K_singular_value_on_21_point_grid": 0.9621232503811522
+    },
+    "path_order_steps": 18,
+    "positive_norm": {
+      "collar_H_block_min_eigenvalue": 0.33165965333450437,
+      "collar_metric_min_eigenvalue": 0.32038836224689377,
+      "collar_mixed_Schur_min_eigenvalue": 0.33034401577910827,
+      "host_W_min_eigenvalue": 0.8759781970201543,
+      "host_Z_min_eigenvalue": 0.07500073738771076,
+      "source_W_min_eigenvalue": 0.8412411100139557,
+      "source_Z_min_eigenvalue": 0.07579042891198369
+    },
+    "profile_is_genuinely_noncommuting": 0.06421199760091514,
+    "transfer": {
+      "bulk_symplectic_residual": 1.1102230246251565e-16,
+      "collar_symplectic_residual": 6.661338147750939e-16,
+      "real_slice_J_unitary_residual": 7.771561172376096e-16,
+      "step_doubling_difference_norm": 3.509166459929868e-05,
+      "total_symplectic_residual": 7.771561172376096e-16
+    },
+    "undivided_characteristic": {
+      "determinant_at_first_root_abs": 3.199527855453857e-14,
+      "first_root_derivative": -0.8789034148056802,
+      "first_three_signed_positive_roots": [
+        1.1200300921052984,
+        1.2111016312759602,
+        2.5245205552627645
+      ],
+      "matrix_dimension": 8,
+      "maximum_full_vs_reduced_identity_residual": 6.42344953681056e-16,
+      "near_pole_full_residue_residual": 4.717299129413516e-06
+    },
+    "variational_domain": {
+      "enlarged_domain_keeps_auxiliary_states": true,
+      "host_graph_isotropy_residual": 0.0,
+      "host_pencil_hermitian_residual": 0.0,
+      "source_graph_isotropy_residual": 0.0,
+      "source_pencil_hermitian_residual": 0.0
+    }
+  },
+  "schema": "susy-v50-full-same-action-collar-audit-v1",
+  "scientific_scope": "Complete quadratic invariant-tensor collar/domain calculation. It is not a normalized SO(10) component match, profile-rematching calculation, loop subtraction, UV completion, or empirical validation.",
+  "source_manifest": [
+    {
+      "path": "SUSY_V49_RETAINED_BOUNDARY_ACTION_COMPLETENESS.json",
+      "sha256": "029f4237c8247dee35f5ccee35eb624c4ee16c481ccb58b411b30eff3bf6c89a"
+    },
+    {
+      "path": "SUSY_V49_FIXED_PROFILE_SOURCE_REGULATOR_AUDIT.json",
+      "sha256": "e22061b418d6dd3cf5870a8ab0044e409f7d7d1b8aab8778408f88e6c17afd3a"
+    },
+    {
+      "path": "SUSY_V49_GENERALIZED_BOUNDARY_PENCIL_AUDIT.json",
+      "sha256": "e1a8d98df124140dcaeeb327a02bdbf6da18575d4327c734ca7f1172108fe50e"
+    },
+    {
+      "path": "SUSY_V49_G2_FRONTIER_INTEGRATION_AUDIT.json",
+      "sha256": "37cca512421c628b86ed2da5d057809da4ce3054da2843fd3511dc343a2e23f7"
+    },
+    {
+      "path": "test_susy_v50_full_same_action_collar_audit.py",
+      "sha256": "a60ceaecb0bf5cfd88e8696178826e87654b3f3b61db5ad769cd0a96d8a502f1"
+    }
+  ],
+  "sp_2n_span_certificate": {
+    "basis_count": 36,
+    "channels": 4,
+    "expected_dimension_n_2n_plus_1": 36,
+    "matrix_rank": 36,
+    "maximum_Hamiltonian_residual": 0.0,
+    "spanned": true
+  },
+  "status": "V50_FULL_SAME_ACTION_QUADRATIC_COLLAR_DERIVED__A_XI_C_AND_O7_O8_IN_ONE_PATH_ORDERED_GENERATOR__VARIATIONAL_LAGRANGIAN_DOMAIN_AND_POSITIVE_ADMISSIBLE_CONE_CERTIFIED__UNDIVIDED_BULK_ENDPOINT_POLE_RESIDUE_WILSON_WITNESS_PASSES__C3_AND_QUADRATIC_C4_CLOSED__C7_COMPONENT_MATCHING_PARTIAL__G2_OPEN"
+}

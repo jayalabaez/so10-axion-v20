@@ -18,12 +18,13 @@ def test_frozen_report_matches_live_builder() -> None:
         assert live["core_sha256"] == theorem.EXPECTED_CORE_SHA256
 
 
-def test_exact_electroweak_restriction_collision() -> None:
+def test_formal_u1_89_abstract_restriction_collision() -> None:
     report = theorem.build_report()
-    c = report["threshold_restriction_counterexample"]
-    assert c["same_SU3C_x_U1em_restriction"] is True
-    assert c["same_frozen_G6_masses"] is True
+    c = report["formal_U1_89_abstract_restriction_example"]
     assert c["restriction_map_noninjective"] is True
+    assert c["same_frozen_G6_masses"] is True
+    assert c["physical_electroweak_interpretation_valid"] is False
+    assert c["physical_QED_interpretation_valid"] is False
     assert c["completion_A"]["complex_scalar_one_loop_delta_b2"] == "0"
     assert c["completion_A"]["complex_scalar_one_loop_delta_bY"] == "1/3"
     assert c["completion_B"]["complex_scalar_one_loop_delta_b2"] == "1/6"
@@ -60,7 +61,9 @@ def test_reduced_executable_is_not_the_authoritative_contract() -> None:
 def test_classification_is_fail_closed() -> None:
     report = theorem.build_report()
     classification = report["classification"]
-    assert classification["exact_EFT_G7_input_nonidentifiability_proved"]
+    assert classification["formal_U1_89_abstract_restriction_noninjectivity_proved"]
+    assert classification["exact_physical_EFT_G7_input_nonidentifiability_proved"] is False
+    assert classification["historical_electroweak_lift_interpretation_valid"] is False
     assert classification["mathematical_EFT_G7_closed"] is False
     assert classification["EFT_release_G7_verified"] is False
     assert classification["authoritative_renormalizable_G7_closed"] is False

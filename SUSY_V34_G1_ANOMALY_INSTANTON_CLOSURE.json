@@ -1,0 +1,299 @@
+{
+  "bare_visible_Z33": {
+    "Dai_Freed_eta_phases_mod_one": {
+      "L_n_1_times_K3_gravity": "1/11",
+      "X_n_1_1_cubic": "28/33",
+      "both_zero": false
+    },
+    "Delta_s1": -15,
+    "Delta_s3": -15,
+    "Hsieh_conditions": {
+      "both_vanish": false,
+      "cubic_modulus_3n": 99,
+      "cubic_residue": 84,
+      "doubled_linear_numerator_residue": 3,
+      "linear_modulus_n": 33,
+      "linear_residue": 18
+    },
+    "bare_visible_Z33_gaugeable": false,
+    "charged_Weyl_rows": [
+      {
+        "Weyl_multiplicity": 8,
+        "Z33_charge": -1,
+        "Z4R_fermion_charge": 2,
+        "Z4R_superfield_charge": 3,
+        "field": "PsiBar"
+      },
+      {
+        "Weyl_multiplicity": 8,
+        "Z33_charge": -1,
+        "Z4R_fermion_charge": 2,
+        "Z4R_superfield_charge": 3,
+        "field": "PsiCBar"
+      },
+      {
+        "Weyl_multiplicity": 1,
+        "Z33_charge": 1,
+        "Z4R_fermion_charge": 1,
+        "Z4R_superfield_charge": 2,
+        "field": "P"
+      }
+    ],
+    "explicit_GS_axion_topological_sector_or_UV_fermions_required": true,
+    "ordinary_4D_local_counterterm_sufficient": false,
+    "required_additive_counterclass": {
+      "cubic": "5/33",
+      "gravity": "10/11"
+    },
+    "required_resolution_scope": "a correctly quantized pure finite-background Wess-Zumino/topological coupling or a compensating UV sector; conventional mixed gauge/gravity GS arithmetic alone is insufficient",
+    "source": "https://arxiv.org/abs/1808.02881",
+    "symmetry_structure": "Spin x Z33 subgroup of the declared untwisted product"
+  },
+  "closure_booleans": {
+    "G1_full_closed": false,
+    "charged_flux_compatible_with_exact_Z33": false,
+    "conditional_equal_level_GS_arithmetic": true,
+    "cross_product_finite_anomaly_is_independent": false,
+    "explicit_compactification": false,
+    "instanton_series_uniform_control_established": false,
+    "pure_Z33_Dai_Freed_closed": false
+  },
+  "conditional_GS_and_coprime_product": {
+    "Z33": {
+      "doubled_representatives_4_L_R": [
+        -4,
+        -4,
+        -4
+      ],
+      "half_normalized_representatives_4_L_R": [
+        -2,
+        -2,
+        -2
+      ],
+      "universal_residue_mod33": [
+        29,
+        29,
+        29
+      ]
+    },
+    "Z4R": {
+      "doubled_representatives_4_L_R": [
+        14,
+        10,
+        2
+      ],
+      "half_normalized_representatives_4_L_R": [
+        7,
+        5,
+        1
+      ],
+      "universal_residue_mod4": [
+        2,
+        2,
+        2
+      ]
+    },
+    "conditional_equal_level_GS_gauge_gravity_arithmetic": true,
+    "coprime_cross_term_reduction": {
+      "V33_raw_q_rfermion_squared": -63,
+      "V33_raw_q_squared_rfermion": 33,
+      "Z132_cubic_modulus": 396,
+      "coefficient_of_q_squared_times_rfermion": 1584,
+      "coefficient_of_q_times_rfermion_squared": 13068,
+      "coefficient_over_modulus": 33,
+      "combined_cross_contribution": -771012,
+      "combined_cross_contribution_over_modulus": -1947,
+      "combined_cross_residue_mod396": 0,
+      "independent_finite_product_anomaly": false,
+      "scope": "untwisted Spin x (Z4R x Z33); a new PS-center quotient needs a new bordism audit",
+      "second_coefficient_over_modulus": 4
+    },
+    "microscopic_axion_period_and_couplings_derived": false,
+    "normalization": "twice T(fund)=1/2 for the instanton phase",
+    "product_generator_h_equals_g4_times_g33": {
+      "24rho_residue_mod66": 6,
+      "Z33_generator_restriction_mod_one": "4/33",
+      "Z4_generator_restriction_mod_one": "1/2",
+      "doubled_representatives_4_L_R": [
+        446,
+        314,
+        50
+      ],
+      "equal_level_gauge_gravity_congruence": true,
+      "gravitational_half_normalized": 600,
+      "gravitational_residue_mod66": 6,
+      "half_normalized_representatives_4_L_R": [
+        223,
+        157,
+        25
+      ],
+      "isomorphism": "Z4 x Z33 ~= Z132 because gcd(4,33)=1",
+      "period_one_axion_shift": "-25/66",
+      "universal_residue_mod132": [
+        50,
+        50,
+        50
+      ],
+      "universal_residue_mod66": [
+        25,
+        25,
+        25
+      ]
+    },
+    "pure_finite_Dai_Freed_counterclass_realized": false
+  },
+  "geometry_boundary": {
+    "explicit_compactification_exists": false,
+    "precedents": [
+      {
+        "landed": "global three-family Pati-Salam spectrum, G4 flux quantization and D3 tadpole",
+        "missing": "V34 Z33/operator map, instanton divisors, Pfaffians and moduli stabilization",
+        "source": "https://arxiv.org/abs/1503.02068"
+      },
+      {
+        "landed": "flux lifting of E3 deformation zero modes",
+        "missing": "the 51 V34 divisors and their flux/Pfaffian data",
+        "source": "https://arxiv.org/abs/1105.3193"
+      },
+      {
+        "landed": "freezing of E3 instantons into O(1) configurations",
+        "missing": "a realization of the declared selector and harmonic tower",
+        "source": "https://arxiv.org/abs/1202.5045"
+      },
+      {
+        "landed": "semi-realistic Pati-Salam example with D-term ratios and a dominant instanton",
+        "missing": "51 independent stabilized directions and V34 visible-sector matching",
+        "source": "https://arxiv.org/abs/1703.03402"
+      },
+      {
+        "landed": "arithmetic-genus criterion for superpotential-generating divisors",
+        "missing": "an explicit divisor census satisfying it in the V34 geometry",
+        "source": "https://arxiv.org/abs/hep-th/9604030"
+      }
+    ],
+    "required_but_absent": [
+      "one global compactification with the exact Z33 action",
+      "51 independent primitive divisor directions",
+      "153 harmonic zero-mode and Pfaffian sectors",
+      "Freed-Witten, K-theory and tadpole closure",
+      "a flux orbit or sequestering rule that preserves P33 quality"
+    ]
+  },
+  "instanton_and_flux_compatibility": {
+    "K": 22027,
+    "P33_remains_first_visible_P_power_after_spurion_VEVs": false,
+    "Z33_preserved_on_charged_flux_branch": false,
+    "charged_flux_compatible_with_exact_Z33_quality": false,
+    "coefficient_spurion_charges_Z4R_Z33": {
+      "C1": [
+        0,
+        2
+      ],
+      "C2": [
+        2,
+        4
+      ],
+      "C3": [
+        0,
+        6
+      ]
+    },
+    "exact_nonzero_coefficient_stabilizer_elements_a_mod4_b_mod33": [
+      [
+        0,
+        0
+      ],
+      [
+        2,
+        0
+      ]
+    ],
+    "explicit_lowest_operator": "C2^2 C3^4 P",
+    "factorized_selected_branch_shorthand": "W=C*x*(1-K*x)^2",
+    "fixed_coefficient_ratio_is_selected_symmetry_breaking_flux_branch": true,
+    "hypothetical_K3_x4_relative_to_leading": 1.0000000000000002,
+    "instanton_action": 10.000024252584158,
+    "local_polynomial_expanded": "W=A1*x+A2*x^2+A3*x^3",
+    "minimal_spurion_dressed_P_rows": {
+      "P1": {
+        "C1_power": 0,
+        "C2_power": 2,
+        "C3_power": 4,
+        "P_power": 1,
+        "coefficient_insertions": 6
+      },
+      "P27": {
+        "C1_power": 0,
+        "C2_power": 0,
+        "C3_power": 1,
+        "P_power": 27,
+        "coefficient_insertions": 1
+      },
+      "P31": {
+        "C1_power": 1,
+        "C2_power": 0,
+        "C3_power": 0,
+        "P_power": 31,
+        "coefficient_insertions": 1
+      },
+      "P33": {
+        "C1_power": 0,
+        "C2_power": 0,
+        "C3_power": 0,
+        "P_power": 33,
+        "coefficient_insertions": 0
+      }
+    },
+    "order_one_x4_relative_to_leading": 9.356942153992056e-14,
+    "rank_51_statement": {
+      "independent_primitive_divisor_directions_derived": false,
+      "local_diagonal_rank_if_51_independent_Ci_nonzero": 51,
+      "nonzero_Pfaffians_derived": false
+    },
+    "retained_term_magnitudes_over_abs_C": [
+      4.539882871021928e-05,
+      9.079765742043855e-05,
+      4.539882871021928e-05
+    ],
+    "selected_branch_coefficient_values_over_C": [
+      1,
+      -44054,
+      485188729
+    ],
+    "semiclassical_truncation_control_established": false,
+    "stabilizer_is_only_residual_Z2": true,
+    "stationary_Hessian_over_C": 0.0035845478371414564,
+    "undressed_pure_P_monomial_still_begins_at_P33": true,
+    "uniform_all_harmonic_prefactor_bound_derived": false,
+    "weighted_expansion_variable_Kx": 1.0,
+    "x_star": 4.539882871021928e-05
+  },
+  "minimal_UV_fermion_counterclass_candidate": {
+    "PS_mixed_gauge_anomalies_added": 0,
+    "Z4R_superfield_charges_and_full_product_anomaly_solved": false,
+    "adopted_into_active_source": false,
+    "cancels_visible_residues": true,
+    "candidate": "three PS-singlet chiral Weyl fermions",
+    "exhaustive_charge_domain": "unordered Z33 charges 0..32",
+    "minimal_number": 3,
+    "minimal_unique_charge_witness": [
+      20,
+      29,
+      32
+    ],
+    "minimality_scope": "free unit-multiplicity PS-singlet Weyl counterclasses in the fixed Z33 generator; not topological sectors, non-singlet multiplets or symmetry extensions",
+    "solution_counts_by_number_of_new_fermions": {
+      "1": 0,
+      "2": 0,
+      "3": 1
+    },
+    "symmetry_preserving_mass_and_hidden_dynamics_solved": false,
+    "verdict": "minimal algebraic counterclass candidate, not a UV completion",
+    "witness_cubic_residue_mod99": 15,
+    "witness_cubic_sum": 65157,
+    "witness_linear_residue_mod33": 15,
+    "witness_linear_sum": 81
+  },
+  "schema": "susy-v34-g1-anomaly-instanton-closure-v1",
+  "status": "V34_G1_BARE_Z33_DAI_FREED_ANOMALY_PROVED__COPRIME_PRODUCT_CROSS_RESIDUES_RETIRED__CONDITIONAL_GS_GAUGE_GRAVITY_CERTIFICATE__CHARGED_FLUX_BREAKS_Z33__INSTANTON_TRUNCATION_CONTROL_NOT_ESTABLISHED__NO_MICROSCOPIC_COMPACTIFICATION__G1_OPEN"
+}

@@ -1,0 +1,158 @@
+{
+  "schema": "susy_v53_elementary_filter_hessian_audit_v1",
+  "status": "V53_ELEMENTARY_RENORMALIZABLE_FOUR_10_FILTER_PLUS_PX_DRIVER__FULL_218_HESSIAN_RANK181_NULLITY37__33_GAUGE_PLUS4_WEAK_HIGGS__COLOR_RANK24_WEAK_RANK12_NULLITY4__DRIVER_RANK2__SHAPING_SYMMETRY_AND_UV_ANOMALIES_OPEN__NO_G2_PROMOTION",
+  "action": {
+    "source": "W=(mE/2)TrE2+(lambda/3)TrE3-(mA/4)TrA2-(mB/4)TrB2-(kA/2)Tr(EA2)-(kB/2)Tr(EB2)-(mu/2)Tr(AB)-(kx/2)Tr(E(AB+BA))+barC(mC+eta*rho16(A))C",
+    "filter": "lambdaP P H1^T barh + mh barh^T h + lambdaB h^T B H2 + (m2/2)H2^T H2",
+    "driver": "X(P^2-v^2)",
+    "elementary": true,
+    "renormalizable": true
+  },
+  "coordinate_inventory": {
+    "DW_source": 176,
+    "four_vectors": 40,
+    "P_X_driver": 2,
+    "total": 218
+  },
+  "vacuum": {
+    "P": 1,
+    "X": 0,
+    "v": 1,
+    "all_four_vector_VEVs": 0,
+    "F_P": 0,
+    "F_X": 0,
+    "vector_F_nonzero_count": 0,
+    "driver_hessian": [
+      [
+        0,
+        2
+      ],
+      [
+        2,
+        0
+      ]
+    ],
+    "driver_rank": 2,
+    "driver_nullity": 0,
+    "source_vacuum_unchanged": true
+  },
+  "filter_mass_blocks": {
+    "ordering": [
+      "H1(10)",
+      "barh(10)",
+      "h(10)",
+      "H2(10)"
+    ],
+    "superpotential": "P H1^T barh + 2 barh^T h + h^T B H2 + (3/2) H2^T H2",
+    "witness": {
+      "P": 1,
+      "lambdaP": 1,
+      "mh": 2,
+      "lambdaB": 1,
+      "m2": 3
+    },
+    "full_shape": [
+      40,
+      40
+    ],
+    "full_rank": 36,
+    "full_nullity": 4,
+    "color_shape": [
+      24,
+      24
+    ],
+    "color_rank": 24,
+    "color_nullity": 0,
+    "weak_shape": [
+      16,
+      16
+    ],
+    "weak_rank": 12,
+    "weak_nullity": 4,
+    "one_HuHd_pair_interpretation": "four weak-component chiral coordinates",
+    "open_set_conditions": [
+      "P*lambdaP != 0",
+      "mh != 0",
+      "lambdaB*Bcolor != 0",
+      "m2 != 0"
+    ],
+    "coefficient_equality_required": false,
+    "H1_squared_unit_filler_rank": 40,
+    "generic_filler_lifts_intended_kernel": true
+  },
+  "full_same_action_geometry": {
+    "hessian_shape": [
+      218,
+      218
+    ],
+    "hessian_numerator": "40 times physical Hessian",
+    "hessian_rank_mod37": 181,
+    "hessian_nullity": 37,
+    "rank_decomposition": {
+      "source": 143,
+      "filter": 36,
+      "driver": 2,
+      "total": 181
+    },
+    "nullity_decomposition": {
+      "broken_gauge_orbit": 33,
+      "intended_weak_Higgs": 4,
+      "extra": 0
+    },
+    "orbit_shape": [
+      218,
+      45
+    ],
+    "orbit_rank_mod37": 33,
+    "ward_product_exactly_zero": true
+  },
+  "perturbativity": {
+    "E54_A45_B45_C16_barC16_T": 32,
+    "four_10_filter_T": 4,
+    "P_X_and_four_seesaw_N_T": 0,
+    "three_matter_16_T": 6,
+    "total_chiral_T": 42,
+    "one_loop_b": 18,
+    "formal_pole_over_matching_at_g_0p73": 3756.9333788231534,
+    "above_100x": true,
+    "above_1000x": true
+  },
+  "selector_fail_closed": {
+    "explicit_shaping_symmetry_supplied": false,
+    "all_allowed_renormalizable_operator_census_supplied": false,
+    "discrete_or_continuous_anomaly_completion_supplied": false,
+    "fatal_generic_example": "H1^T H1 fills the four intended weak zero modes",
+    "relationship_to_previous_no_go": "the minimal neutral-B additive-Abelian selector cannot forbid H1^2 while allowing direct H1 B H2 and H2^2; the filter action needs a separate fully audited selector"
+  },
+  "literature": {
+    "Chen_Zhang_filter": "https://arxiv.org/abs/1410.5625",
+    "Barr_Raby_DW": "https://arxiv.org/abs/hep-ph/9705366"
+  },
+  "checks": {
+    "upstream_cross_coupled_DW_source_is_exact": true,
+    "driver_F_terms_vanish_and_driver_is_nonsingular": true,
+    "filter_color_block_is_full_rank24": true,
+    "filter_weak_block_has_rank12_nullity4": true,
+    "filter_rank_split_needs_no_coefficient_equality": true,
+    "full_218_hessian_rank_is_additive_181": true,
+    "full_hessian_nullity_is_37": true,
+    "full_orbit_rank_is_33": true,
+    "full_Ward_product_is_exactly_zero": true,
+    "kernel_decomposes_as_33_gauge_plus4_weak": true,
+    "generic_H1_squared_filler_lifts_filter_kernel": true,
+    "one_loop_screen_exceeds_1000x": true,
+    "selector_and_G2_are_not_claimed": true
+  },
+  "n_checks": 13,
+  "n_failed": 0,
+  "failures": [],
+  "gate_effect": {
+    "elementary_same_action_vacuum_and_Hessian": "CLOSED",
+    "color_and_weak_filter_ranks": "CLOSED",
+    "naturalness_under_complete_selector": "OPEN",
+    "selector_anomalies_and_UV": "OPEN",
+    "G2": "OPEN",
+    "clause_promotions": []
+  },
+  "core_sha256": "993b549668243b06d082a7def8591c63141dfa402d6372b133c19cfa8f8b6ff6"
+}

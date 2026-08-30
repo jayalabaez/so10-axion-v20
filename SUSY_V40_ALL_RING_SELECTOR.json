@@ -1,0 +1,862 @@
+{
+  "Majorana_no_go_and_Dirac_rebuild": {
+    "V40_direction": {
+      "effective_operator": "Q H Sc NDirac / M",
+      "new_singlet": "three NDirac of U(1)_F charge -3",
+      "selector_check": "3 + 0 + 0 - 3 = 0",
+      "still_required": [
+        "renormalizable messenger completion",
+        "Dirac-neutrino and charged-fermion flavour fit",
+        "threshold-matched PMNS/CKM likelihood"
+      ]
+    },
+    "majorana_no_go": {
+      "conclusion": "the V39 neutral-VEV type-I block must be removed for this Z9 route",
+      "deduction": [
+        "neutral Sbc plus Sbc Qc Nv gives q(Qc)+q(Nv)=0",
+        "an allowed Majorana Nv Nv gives 2q(Nv)=0 in the unbroken remnant",
+        "therefore 4q(Qc)=0 and Qc4 cannot be protected by an ordinary additive remnant"
+      ]
+    }
+  },
+  "U1F_continuous_anomaly_audit": {
+    "SU2_global_doublet_counts": {
+      "SU2L": 30,
+      "SU2R": 38
+    },
+    "U1F_cubic": 0,
+    "U1F_gravitational": 0,
+    "all_SU2_Witten_parities_even": true,
+    "all_local_continuous_anomalies_cancel": true,
+    "cancellation_ledger": {
+      "four_L_pairs": {
+        "SU2L": -36,
+        "cubic": -5832,
+        "gravitational": -72
+      },
+      "four_R_pairs": {
+        "SU2R": 36,
+        "cubic": 5832,
+        "gravitational": 72
+      },
+      "singlet_pairs_45_36_minus2minus7": {
+        "cubic": 81,
+        "gravitational": 9
+      },
+      "visible_before_completion": {
+        "SU2L": 36,
+        "SU2R": -36,
+        "SU4": 0,
+        "cubic": -81,
+        "gravitational": -9
+      }
+    },
+    "mixed_U1F_PS_squared": {
+      "SU2L": 0,
+      "SU2R": 0,
+      "SU4": 0
+    },
+    "scope_limit": "This closes local anomalies of PS times U(1)_F.  The unspecified continuous parent, if any, of Z5610 is not included, so product cross anomalies remain open."
+  },
+  "complete_theory_exists": false,
+  "conditional_V38_parent_cross_anomaly_audit": {
+    "all_rows_vanish": false,
+    "conclusion": "The PS times U(1)_F sector is locally anomaly free, but V40 has not completed a common continuous parent for it and the old Z5610 selector.",
+    "rows": {
+      "C_F_H_squared": 0,
+      "C_F_X_H": 6,
+      "C_F_X_squared": -360,
+      "C_F_squared_H": 0,
+      "C_F_squared_X": -270,
+      "C_F_squared_X_H": -540
+    },
+    "scope": "Raw continuous cross rows obtained if the primitive V38 U(1)_X and U(1)_H lifts are reused without additional V40 cross-anomalon or GS data."
+  },
+  "core_sha256": "e1e630df36fb171e121d646108d7f07a3ee8208d3b76fc47b9e838eb5d3fe39a",
+  "established_full_predictive_closed_count": 0,
+  "finite_Z9_anomaly_audit": {
+    "Delta_s1_canonical": 414,
+    "Delta_s3_canonical": 11394,
+    "both_vanish": true,
+    "canonical_Z9_charges": {
+      "A15": 0,
+      "A16": 0,
+      "A17": 0,
+      "A2": 3,
+      "A32": 6,
+      "E3": 3,
+      "E4": 4,
+      "E5": 5,
+      "E6": 6,
+      "Eminus2": 7,
+      "Eminus7": 2,
+      "H": 0,
+      "L0": 0,
+      "Lminus9": 0,
+      "NDirac": 6,
+      "P": 0,
+      "Pb": 0,
+      "Psi": 3,
+      "PsiBar": 6,
+      "PsiC": 6,
+      "PsiCBar": 3,
+      "Q": 3,
+      "Qc": 6,
+      "R0": 0,
+      "Rplus9": 0,
+      "STheta": 0,
+      "Sbc": 0,
+      "Sc": 0,
+      "SigBc": 0,
+      "SigC": 0,
+      "ThetaMinus": 0,
+      "ThetaPlus": 0,
+      "X": 0,
+      "Zp": 0
+    },
+    "convention": "same Hsieh/Dai-Freed arithmetic convention used in the V39 audit",
+    "cubic_condition_mod_54": 0,
+    "linear_condition_2Delta_s1_mod_9": 0
+  },
+  "gate_statuses": [
+    {
+      "full_gate_closed": false,
+      "gate": "G1",
+      "landed": "PS times U(1)_F local anomaly-free selector parent",
+      "still_required": "Z5610/Z4R product anomaly, mirror, and microscopic UV completion"
+    },
+    {
+      "full_gate_closed": false,
+      "gate": "G2",
+      "landed": "explicit new field and charge architecture",
+      "still_required": "stabilized vacuum, pole spectrum, and covariance"
+    },
+    {
+      "full_gate_closed": false,
+      "gate": "G3",
+      "landed": "U(1)_F Higgsing source is explicit",
+      "still_required": "Kahler/soft potential, branches, bounces, and thermal selection"
+    },
+    {
+      "full_gate_closed": false,
+      "gate": "G4",
+      "landed": "no new mediation result",
+      "still_required": "hidden mediation, singlet lifting, mu/Bmu, and EWSB"
+    },
+    {
+      "full_gate_closed": false,
+      "gate": "G5",
+      "landed": "only future compatibility constraints",
+      "still_required": "component dark/PQ cosmology"
+    },
+    {
+      "full_gate_closed": false,
+      "gate": "G6",
+      "landed": "threshold field content is specified",
+      "still_required": "physical threshold-matched RG evolution"
+    },
+    {
+      "full_gate_closed": false,
+      "gate": "G7",
+      "landed": "same-orientation Q4/Qc4 all-declared-VEV selector subproblem is blocked",
+      "still_required": "mixed operator classification, components, Wilsons, dressing, running, hadronic matrix elements"
+    },
+    {
+      "full_gate_closed": false,
+      "gate": "G8",
+      "landed": "Dirac-neutrino route replaces the Majorana obstruction",
+      "still_required": "messenger/flavour theory and global likelihood"
+    }
+  ],
+  "integrity_checks": {
+    "all_SU2_Witten_parities_even": true,
+    "all_declared_VEV_dressings_of_same_orientation_Q4_Qc4_forbidden": true,
+    "all_driver_dressed_Q4_Qc4_sources_forbidden": true,
+    "all_listed_terms_U1F_neutral": true,
+    "all_listed_terms_Z4R_charge_two": true,
+    "all_listed_terms_Z9_neutral": true,
+    "all_local_U1F_anomalies_cancel": true,
+    "common_continuous_parent_for_U1F_and_old_Z5610_is_not_claimed": true,
+    "declared_VEVs_preserve_Z9": true,
+    "finite_Z9_arithmetic_passes": true,
+    "listed_Z9_Z5610_cross_residues_vanish": true,
+    "mixed_PS_Z9_residues_vanish": true,
+    "no_full_gate_promoted": true
+  },
+  "mixed_and_cross_residue_audit": {
+    "all_mixed_PS_Z9_residues_vanish": true,
+    "mixed_PS_Z9_raw": {
+      "SU2L": 72,
+      "SU2R": 108,
+      "SU4": 90
+    },
+    "mixed_PS_Z9_residues_mod_9": {
+      "SU2L": 0,
+      "SU2R": 0,
+      "SU4": 0
+    },
+    "necessary_Z9_Z5610_cross_residues": {
+      "C_Z9_Z5610_squared_mod_9": 0,
+      "C_Z9_squared_Z5610_mod_9": 0,
+      "qualification": "Residual modular rows are not a full continuous U(1)_F times parent(Z5610) anomaly cancellation or a product-bordism calculation."
+    }
+  },
+  "operator_and_charge_audit": {
+    "all_listed_terms_PQ_neutral": true,
+    "all_listed_terms_U1F_neutral": true,
+    "all_listed_terms_Z4R_charge_two": true,
+    "all_listed_terms_Z5610_neutral": true,
+    "all_listed_terms_Z9_neutral": true,
+    "effective_term_count": 1,
+    "removed_V39_type_I_terms": [
+      "Sbc Qc Nv",
+      "Sbc PsiC Nv",
+      "Nv Nv"
+    ],
+    "renormalizable_term_count": 36,
+    "replacement": "Q H Sc NDirac / M with an unspecified messenger and flavour sector",
+    "terms": [
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "X"
+        ],
+        "kind": "renormalizable",
+        "label": "X_linear_PS"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "X"
+        ],
+        "kind": "renormalizable",
+        "label": "X_linear_PQ"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "Zp"
+        ],
+        "kind": "renormalizable",
+        "label": "Zp_linear_PS"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "Zp"
+        ],
+        "kind": "renormalizable",
+        "label": "Zp_linear_PQ"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "X",
+          "Sbc",
+          "Sc"
+        ],
+        "kind": "renormalizable",
+        "label": "X_Sbc_Sc"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "X",
+          "P",
+          "Pb"
+        ],
+        "kind": "renormalizable",
+        "label": "X_P_Pb"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "Zp",
+          "Sbc",
+          "Sc"
+        ],
+        "kind": "renormalizable",
+        "label": "Zp_Sbc_Sc"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "Zp",
+          "P",
+          "Pb"
+        ],
+        "kind": "renormalizable",
+        "label": "Zp_P_Pb"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "X",
+          "X",
+          "X"
+        ],
+        "kind": "renormalizable",
+        "label": "X_cubic"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "X",
+          "X",
+          "Zp"
+        ],
+        "kind": "renormalizable",
+        "label": "XXZp"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "X",
+          "Zp",
+          "Zp"
+        ],
+        "kind": "renormalizable",
+        "label": "XZpZp"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "Zp",
+          "Zp",
+          "Zp"
+        ],
+        "kind": "renormalizable",
+        "label": "Zp_cubic"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "X",
+          "H",
+          "H"
+        ],
+        "kind": "renormalizable",
+        "label": "X_HH"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "X",
+          "SigC",
+          "SigBc"
+        ],
+        "kind": "renormalizable",
+        "label": "X_SigC_SigBc"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "Zp",
+          "H",
+          "H"
+        ],
+        "kind": "renormalizable",
+        "label": "Zp_HH"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "Zp",
+          "SigC",
+          "SigBc"
+        ],
+        "kind": "renormalizable",
+        "label": "Zp_SigC_SigBc"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "Sc",
+          "Sc",
+          "SigC"
+        ],
+        "kind": "renormalizable",
+        "label": "ScScSigC"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "Sbc",
+          "Sbc",
+          "SigBc"
+        ],
+        "kind": "renormalizable",
+        "label": "SbcSbcSigBc"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "Q",
+          "H",
+          "Qc"
+        ],
+        "kind": "renormalizable",
+        "label": "Q_H_Qc"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "Q",
+          "H",
+          "PsiC"
+        ],
+        "kind": "renormalizable",
+        "label": "Q_H_PsiC"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "Psi",
+          "H",
+          "Qc"
+        ],
+        "kind": "renormalizable",
+        "label": "Psi_H_Qc"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "Psi",
+          "H",
+          "PsiC"
+        ],
+        "kind": "renormalizable",
+        "label": "Psi_H_PsiC"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "P",
+          "PsiBar",
+          "Q"
+        ],
+        "kind": "renormalizable",
+        "label": "P_PsiBar_Q"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "P",
+          "PsiBar",
+          "Psi"
+        ],
+        "kind": "renormalizable",
+        "label": "P_PsiBar_Psi"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "P",
+          "PsiCBar",
+          "Qc"
+        ],
+        "kind": "renormalizable",
+        "label": "P_PsiCBar_Qc"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "P",
+          "PsiCBar",
+          "PsiC"
+        ],
+        "kind": "renormalizable",
+        "label": "P_PsiCBar_PsiC"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "Pb",
+          "A2",
+          "A32"
+        ],
+        "kind": "renormalizable",
+        "label": "Pb_A2_A32"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "P",
+          "A15",
+          "A17"
+        ],
+        "kind": "renormalizable",
+        "label": "P_A15_A17"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "P",
+          "A16",
+          "A16"
+        ],
+        "kind": "renormalizable",
+        "label": "P_A16_A16"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "STheta"
+        ],
+        "kind": "renormalizable",
+        "label": "STheta_linear"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "STheta",
+          "ThetaPlus",
+          "ThetaMinus"
+        ],
+        "kind": "renormalizable",
+        "label": "STheta_ThetaPlus_ThetaMinus"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "ThetaPlus",
+          "L0",
+          "Lminus9"
+        ],
+        "kind": "renormalizable",
+        "label": "ThetaPlus_L_mass"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "ThetaMinus",
+          "R0",
+          "Rplus9"
+        ],
+        "kind": "renormalizable",
+        "label": "ThetaMinus_R_mass"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "ThetaMinus",
+          "E4",
+          "E5"
+        ],
+        "kind": "renormalizable",
+        "label": "ThetaMinus_E45_mass"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "ThetaMinus",
+          "E3",
+          "E6"
+        ],
+        "kind": "renormalizable",
+        "label": "ThetaMinus_E36_mass"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "ThetaPlus",
+          "Eminus2",
+          "Eminus7"
+        ],
+        "kind": "renormalizable",
+        "label": "ThetaPlus_Em2m7_mass"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "Z9": 0,
+        "fields": [
+          "Q",
+          "H",
+          "Sc",
+          "NDirac"
+        ],
+        "kind": "effective",
+        "label": "Dirac_neutrino_Q_H_Sc_NDirac_over_M"
+      }
+    ]
+  },
+  "promotion_boundary": {
+    "established": [
+      "a local PS times U(1)_F anomaly-free parent",
+      "an unbroken Z9 on the declared VEV branch",
+      "all declared-VEV dressings of same-orientation Q4/Qc4 sources are forbidden"
+    ],
+    "not_established": [
+      "a continuous parent or bordism completion for Z5610 times Z9 times Z4R",
+      "a soft/Kahler vacuum, spectrum, cosmology, or flavour likelihood",
+      "a full mixed operator ring or component proton-decay calculation"
+    ]
+  },
+  "same_orientation_baryon_ring_proof": {
+    "VEV_field_U1F_lifts": {
+      "P": 0,
+      "Pb": 0,
+      "Sbc": 0,
+      "Sc": 0,
+      "ThetaMinus": -9,
+      "ThetaPlus": 9
+    },
+    "VEV_field_Z9_residues": {
+      "P": 0,
+      "Pb": 0,
+      "Sbc": 0,
+      "Sc": 0,
+      "ThetaMinus": 0,
+      "ThetaPlus": 0
+    },
+    "all_declared_VEV_dressing_proof": {
+      "Kahler_and_soft_conjugates": "conjugate VEVs only replace 9*k by -9*k",
+      "antifundamental": "4*(-3)+9*k = -12+9*k cannot vanish for integer k",
+      "fundamental": "4*(+3)+9*k = 12+9*k cannot vanish for integer k"
+    },
+    "all_declared_VEVs_preserve_Z9": true,
+    "all_local_sources_forbidden": true,
+    "all_order_same_orientation_Q4_Qc4_VEV_dressing_forbidden": true,
+    "all_same_orientation_four_matter_tuples_forbidden": true,
+    "local_driver_dressed_Q4_Qc4_sources": [
+      {
+        "U1F": 12,
+        "Z4R": 2,
+        "Z9": 3,
+        "forbidden": true,
+        "operator": "X Q Q Q Q"
+      },
+      {
+        "U1F": -12,
+        "Z4R": 2,
+        "Z9": 6,
+        "forbidden": true,
+        "operator": "X Qc Qc Qc Qc"
+      },
+      {
+        "U1F": 12,
+        "Z4R": 2,
+        "Z9": 3,
+        "forbidden": true,
+        "operator": "Zp Q Q Q Q"
+      },
+      {
+        "U1F": -12,
+        "Z4R": 2,
+        "Z9": 6,
+        "forbidden": true,
+        "operator": "Zp Qc Qc Qc Qc"
+      }
+    ],
+    "mixed_orientation_caveat": {
+      "U1F": 0,
+      "Z9": 0,
+      "example": "X Q Q Qc Qc",
+      "meaning": "mixed-orientation four-matter structures are not ruled out by this selector. Their component baryon/lepton content must be classified separately."
+    },
+    "precise_scope": "same-orientation Pati-Salam four-matter Q4/Qc4 source operators, including all holomorphic and conjugate declared-VEV dressings.  This does not establish a proton lifetime or classify every mixed-orientation operator.",
+    "same_orientation_four_matter_Z9_residues": {
+      "four_SU4_antifundamental_matter": [
+        6
+      ],
+      "four_SU4_fundamental_matter": [
+        3
+      ]
+    },
+    "unbroken_remnant": "Z9 from U(1)_F Higgs fields of charges +9 and -9"
+  },
+  "schema": "susy-v40-all-ring-selector-v1",
+  "selector_design": {
+    "Higgsing": "ThetaPlus(+9), ThetaMinus(-9), STheta(ThetaPlus ThetaMinus-vF^2)",
+    "exact_low_energy_remnant": "Z9",
+    "gauge_parent": "U(1)_F",
+    "heavy_anomaly_completion": [
+      "four (1,2,1) pairs with charges (0,-9)",
+      "four (1,1,2) pairs with charges (0,+9)",
+      "singlet pairs (4,5), (3,6), and (-2,-7)"
+    ],
+    "visible_U1F_lifts": {
+      "A15": 0,
+      "A16": 0,
+      "A17": 0,
+      "A2": 3,
+      "A32": -3,
+      "H": 0,
+      "NDirac": -3,
+      "P": 0,
+      "Pb": 0,
+      "Psi": 3,
+      "PsiBar": -3,
+      "PsiC": -3,
+      "PsiCBar": 3,
+      "Q": 3,
+      "Qc": -3,
+      "Sbc": 0,
+      "Sc": 0,
+      "SigBc": 0,
+      "SigC": 0,
+      "X": 0,
+      "Zp": 0
+    }
+  },
+  "source_manifest": [
+    {
+      "exists": true,
+      "path": "susy_v40_all_ring_selector.py",
+      "sha256": "5adebe960afa417f67339aa32c61db866d2a5d93faa53b50a9b8d472c01d3e1c"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v40_all_ring_selector.py",
+      "sha256": "f69f3dcc554f39ce3b7568dc19519df50da51f1ff1b3309139adf12091e795b6"
+    }
+  ],
+  "status": "V40_U1F_TO_UNBROKEN_Z9_SAME_ORIENTATION_ALL_RING_SELECTOR_CERTIFIED__DIRAC_NEUTRINO_REBUILD_CONDITIONAL__FULL_GATES_FAIL_CLOSED"
+}

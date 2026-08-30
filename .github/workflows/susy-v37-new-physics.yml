@@ -1,0 +1,42 @@
+name: SUSY V37 new-physics routes
+
+on:
+  push:
+    paths:
+      - "susy_v37_new_physics_routes.py"
+      - "test_susy_v37_new_physics_routes.py"
+      - "SUSY_V37_NEW_PHYSICS_ROUTES.json"
+      - "SUSY_V37_NEW_PHYSICS_ROUTES.md"
+      - "SUSY_V37_G5_QUALITY_CERTIFICATE.json"
+      - "SUSY_V37_G1_G8_GATE_LEDGER.json"
+      - "SUSY_V37_SARAH_RGE_ATTESTATION.json"
+      - "models/PSZ4RZ5610SUSYV37/**"
+      - "tools/validate-susy-v37-new-physics.wls"
+      - "tools/derive-susy-v33-ps-rges.wls"
+      - ".github/workflows/susy-v37-new-physics.yml"
+  pull_request:
+    paths:
+      - "susy_v37_new_physics_routes.py"
+      - "test_susy_v37_new_physics_routes.py"
+      - "SUSY_V37_NEW_PHYSICS_ROUTES.json"
+      - "SUSY_V37_NEW_PHYSICS_ROUTES.md"
+      - "SUSY_V37_G5_QUALITY_CERTIFICATE.json"
+      - "SUSY_V37_G1_G8_GATE_LEDGER.json"
+      - "SUSY_V37_SARAH_RGE_ATTESTATION.json"
+      - "models/PSZ4RZ5610SUSYV37/**"
+      - "tools/validate-susy-v37-new-physics.wls"
+      - "tools/derive-susy-v33-ps-rges.wls"
+      - ".github/workflows/susy-v37-new-physics.yml"
+  workflow_dispatch:
+
+jobs:
+  verify-v37:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install pytest
+      - run: python -B susy_v37_new_physics_routes.py --check
+      - run: python -m pytest -q test_susy_v37_new_physics_routes.py

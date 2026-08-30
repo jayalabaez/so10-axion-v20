@@ -1,0 +1,40 @@
+name: SUSY V28 new-physics moduli bridge
+
+on:
+  push:
+    paths:
+      - "susy_v28_new_physics_moduli_bridge.py"
+      - "test_susy_v28_new_physics_moduli_bridge.py"
+      - "SUSY_V28_NEW_PHYSICS_MODULI_BRIDGE.json"
+      - "SUSY_V28_NEW_PHYSICS_MODULI_BRIDGE.md"
+      - "SUSY_V28_MICROSCOPIC_INSTANTON_BRIDGE_SCHEMA.json"
+      - "susy_v27_g1_architecture_change_audit.py"
+      - "SUSY_V27_G1_ARCHITECTURE_CHANGE_AUDIT.json"
+      - "SUSY_V27_G1_UV_COMPLETION_INPUT_SCHEMA.json"
+      - "susy_v26_g1_dynamical_gs_completion_attempt.py"
+      - "SUSY_V26_G1_DYNAMICAL_GS_COMPLETION_ATTEMPT.json"
+      - ".github/workflows/susy-v28-new-physics-moduli-bridge.yml"
+  pull_request:
+    paths:
+      - "susy_v28_new_physics_moduli_bridge.py"
+      - "test_susy_v28_new_physics_moduli_bridge.py"
+      - "SUSY_V28_NEW_PHYSICS_MODULI_BRIDGE.json"
+      - "SUSY_V28_NEW_PHYSICS_MODULI_BRIDGE.md"
+      - "SUSY_V28_MICROSCOPIC_INSTANTON_BRIDGE_SCHEMA.json"
+      - "susy_v27_g1_architecture_change_audit.py"
+      - "SUSY_V27_G1_ARCHITECTURE_CHANGE_AUDIT.json"
+      - "SUSY_V27_G1_UV_COMPLETION_INPUT_SCHEMA.json"
+      - "susy_v26_g1_dynamical_gs_completion_attempt.py"
+      - "SUSY_V26_G1_DYNAMICAL_GS_COMPLETION_ATTEMPT.json"
+      - ".github/workflows/susy-v28-new-physics-moduli-bridge.yml"
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -B susy_v28_new_physics_moduli_bridge.py --check
+      - run: python -m pytest -q test_susy_v28_new_physics_moduli_bridge.py

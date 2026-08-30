@@ -1,0 +1,229 @@
+{
+  "schema": "susy_v52_minimal_seesaw_dt_repair_audit_v1",
+  "status": "V52_MINIMAL_RENORMALIZABLE_DOUBLE_SEESAW_AND_UNBROKEN_Z2_SELECTOR_CERTIFIED__ONE_10H_EXACT_TRIPLET_RANK6_DOUBLET_NULLITY4_EXISTS_BUT_IS_CODIMENSION_ONE__NATURAL_DT_UV_SELECTOR_AND_FULL_OPERATOR_CENSUS_OPEN__NO_G2_PROMOTION",
+  "upstream": {
+    "path": "SUSY_V52_LOW_INDEX_SOURCE_AUDIT.json",
+    "core_sha256": "c07fd055da382cdc461b212679f70971ced8d4d13a319a51e2cbaabfecbeba52",
+    "status": "V52_EXACT_RENORMALIZABLE_54_45_16_BAR16_SOURCE_WITNESS__F_AND_D_FLAT__SPIN10_ORBIT_RANK33_STABILIZER12__FULL_131_HESSIAN_RANK98_NULLITY33_AND_KERNEL_EQUALS_GAUGE_ORBIT__SOURCE_DYNKIN_INDEX24__PERTURBATIVE_SOURCE_REPLACEMENT__SEESAW_MATTER_PARITY_AND_MISSING_PARTNER_OBLIGATIONS_OPEN__NO_G2_CLAUSE_PROMOTED"
+  },
+  "minimal_additions": {
+    "H10_count": 1,
+    "singlet_count": 4,
+    "new_Spin10_chiral_coordinates": 10,
+    "new_Dynkin_index": 1
+  },
+  "doublet_triplet": {
+    "field_addition": "one H(10)",
+    "renormalizable_superpotential": "W_DT=(mH/2) H^T H+(kH/2) H^T E H",
+    "source_order_parameter": "E0=diag(2,2,2,2,2,2,-3,-3,-3,-3)",
+    "rational_witness": {
+      "mH": 3,
+      "kH": 1
+    },
+    "full_10x10_diagonal": [
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      0,
+      0,
+      0,
+      0
+    ],
+    "color_triplet_coordinate_block": {
+      "shape": [
+        6,
+        6
+      ],
+      "rank": 6,
+      "nullity": 0,
+      "mass_eigenvalue": 5
+    },
+    "weak_doublet_coordinate_block": {
+      "shape": [
+        4,
+        4
+      ],
+      "rank": 0,
+      "nullity": 4,
+      "interpretation": "one massless Hu,Hd pair (four weak-component coordinates)"
+    },
+    "full_rank": 6,
+    "full_nullity": 4,
+    "massless_condition": "mH-3*kH=0",
+    "condition_codimension": 1,
+    "unit_mass_perturbation": {
+      "mH": 4,
+      "kH": 1,
+      "rank": 10,
+      "nullity": 0
+    },
+    "selector_enforces_coefficient_relation": false,
+    "natural_missing_partner_or_DW": false,
+    "claim": "exact tree-level rank witness only; the required coefficient cancellation is tuned"
+  },
+  "renormalizable_double_seesaw": {
+    "field_addition": "four Spin(10) singlets N_a; three participate in the rank witness and one is a massive parity spectator",
+    "renormalizable_operators": [
+      "(1/2) Y10_ij 16F_i 16F_j H10",
+      "yN_ia 16F_i barC_H N_a",
+      "(1/2) MS_ab N_a N_b"
+    ],
+    "neutral_basis": [
+      "nu_L[3]",
+      "nu_R^c[3]",
+      "N[4]"
+    ],
+    "dimensions": {
+      "mD": [
+        3,
+        3
+      ],
+      "F": [
+        3,
+        4
+      ],
+      "MS": [
+        4,
+        4
+      ],
+      "heavy": [
+        7,
+        7
+      ],
+      "full": [
+        10,
+        10
+      ],
+      "induced_RH": [
+        3,
+        3
+      ],
+      "light": [
+        3,
+        3
+      ]
+    },
+    "ranks": {
+      "mD": 3,
+      "F": 3,
+      "MS": 4,
+      "heavy": 7,
+      "full": 10,
+      "induced_RH": 3,
+      "light": 3
+    },
+    "determinants": {
+      "heavy_7x7": "-144000000000",
+      "full_10x10": "-864"
+    },
+    "induced_RH_Majorana_diagonal": [
+      "-1/10",
+      "-1/5",
+      "-3/10"
+    ],
+    "effective_light_diagonal": [
+      "1/1000",
+      "1/500",
+      "3/1000"
+    ],
+    "exact_formula": "mnu=mD (F MS^{-1} F^T)^{-1} mD^T for the displayed nonsingular witness",
+    "rank_three_Majorana_generation": true,
+    "full_neutral_matrix_nonsingular": true,
+    "source_vacuum_unchanged": "all matter and N scalar VEVs are zero; nonsingular MS fixes N=0"
+  },
+  "surviving_selector": {
+    "group": "ordinary external Z2",
+    "odd_superfields": [
+      "16F_1",
+      "16F_2",
+      "16F_3",
+      "N_1",
+      "N_2",
+      "N_3",
+      "N_4"
+    ],
+    "even_superfields": [
+      "E54",
+      "A45",
+      "C16_H",
+      "barC16_H",
+      "H10"
+    ],
+    "all_nonzero_VEV_fields_even": true,
+    "operator_parities": {
+      "source_W": 0,
+      "16F_16F_H10": 0,
+      "16F_barC_N": 0,
+      "N_N": 0,
+      "forbidden_16F_barC_bilinear": 1,
+      "forbidden_16F_C_H10_matter_Higgs_mixing": 1,
+      "forbidden_three_matter_RPV_class": 1
+    },
+    "required_operators_even": true,
+    "listed_dangerous_operators_odd": true,
+    "standard_discrete_anomaly_ledgers": {
+      "odd_Weyl_dimension": 52,
+      "odd_Weyl_dimension_mod2": 0,
+      "SO10_Dynkin_index_sum": 6,
+      "SO10_Dynkin_index_sum_mod2": 0,
+      "cubic_Z2_charge_sum": 52,
+      "cubic_Z2_charge_sum_mod2": 0
+    },
+    "why_four_not_three_singlets": "three N fields would give 51 odd Weyl components; the fourth makes the conservative gravity/cubic parity ledgers even",
+    "all_order_selection_statement": "because every VEV is Z2-even, inserting any number of source VEVs cannot turn an odd-matter monomial even",
+    "scope_caveat": "conventional low-energy anomaly arithmetic only; no continuous-parent or complete UV discrete-gauge construction is supplied"
+  },
+  "perturbativity": {
+    "convention": "b=sum_chiral T(R)-3 C2(Spin10), T10=1,T16=2,T45=8,T54=12,C2=8",
+    "source_T": 24,
+    "added_H10_T": 1,
+    "four_singlets_T": 0,
+    "three_matter_16_T": 6,
+    "total_chiral_T": 31,
+    "one_loop_b": 7,
+    "g_at_matching_witness": 0.73,
+    "formal_landau_pole_over_matching_scale": 1557503331.1144598,
+    "above_100x_matching_scale": true,
+    "scope_caveat": "excludes any future link/moose, doublet-triplet naturalizer, flavor messenger, or UV-selector completion"
+  },
+  "checks": {
+    "upstream_exact_source_is_closed": true,
+    "one_10H_has_exact_triplet_rank6": true,
+    "one_10H_leaves_exactly_one_weak_HuHd_pair": true,
+    "DT_relation_is_exposed_as_codimension_one": true,
+    "double_seesaw_heavy_block_has_rank7": true,
+    "double_seesaw_full_matrix_has_rank10": true,
+    "induced_RH_Majorana_matrix_has_rank3": true,
+    "all_required_Z2_operators_are_allowed": true,
+    "listed_matter_Higgs_and_RPV_operators_are_forbidden": true,
+    "Z2_survives_all_declared_VEVs": true,
+    "conservative_Z2_gravity_SO10_and_cubic_ledgers_are_even": true,
+    "repaired_low_index_inventory_stays_perturbative_for_100x": true,
+    "natural_DT_is_not_claimed": true,
+    "full_G2_is_not_claimed": true
+  },
+  "n_checks": 14,
+  "n_failed": 0,
+  "failures": [],
+  "literature": {
+    "singlet_assisted_seesaw_origin": "https://doi.org/10.1103/PhysRevD.34.1642",
+    "natural_low_rep_DT_comparison": "https://arxiv.org/abs/hep-ph/9810315",
+    "DW_minimal_SO10_comparison": "https://arxiv.org/abs/hep-ph/9705366",
+    "discrete_gauge_anomaly_scope": "https://arxiv.org/abs/hep-th/9109045"
+  },
+  "gate_effect": {
+    "renormalizable_RH_neutrino_mass_mechanism": "EXACT EXISTENCE WITNESS",
+    "unbroken_matter_selector": "STANDARD Z2 LEDGER AND ALL-ORDER VEV-STABILITY WITNESS",
+    "doublet_triplet_rank_existence": "EXACT BUT FINE-TUNED",
+    "natural_doublet_triplet_splitting": "OPEN",
+    "complete_operator_and_proton_decay_census": "OPEN",
+    "UV_discrete_gauge_embedding": "OPEN",
+    "G2": "OPEN",
+    "clause_promotions": []
+  },
+  "next_exact_target": "replace mH=3*kH by a symmetry- or vacuum-enforced relation (or a genuine missing-VEV block), then enumerate every Z2-even renormalizable and leading nonrenormalizable operator and recompute the full source+Higgs vacuum/Hessian",
+  "core_sha256": "f4dadf941dbfe6e540347aa720687b2cc8e08201edc8325cea6fabb8b6b4a723"
+}

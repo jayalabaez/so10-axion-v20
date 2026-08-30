@@ -1,0 +1,196 @@
+{
+  "checks": {
+    "all_101_common_unit_rescalings_preserve_ratio": true,
+    "all_G4_through_G8_closure_flags_fail_closed": true,
+    "all_dependency_pins_match": true,
+    "branch_ratios_are_exactly_unequal": true,
+    "current_witness_not_promoted_to_canonical_G4_or_G5": true,
+    "five_amplitude_ratio_is_exactly_two": true,
+    "mismatch_exceeds_10_pow_26": true,
+    "not_misrepresented_as_global_no_go": true,
+    "physical_hierarchy_ratio_is_exact_nonzero": true,
+    "unit_audit_covers_cases_0_through_100": true
+  },
+  "contract_id": "exact_physical_sm_g4_g5_branch_mismatch_v20",
+  "exact_branch_mismatch": {
+    "canonical_G2_physical_EW_branch": {
+      "H_complex_component": "174 GeV / M_GUT",
+      "H_over_Phi_squared_exact": "1682/2732169209454242979737518576201",
+      "H_over_Phi_squared_formula": "2*(174/M_GUT)^2",
+      "Phi_q_norm_squared": "1",
+      "reported_H_q_norm_decimal": "2.4811852994421186E-14",
+      "reported_norm_is_diagnostic_not_proof": true,
+      "reported_norm_squared_minus_exact_formula_abs": "236855303129512988829934066171460631927643/3415211511817803724671898220251250000000000000000000000000000000000000000000000000000"
+    },
+    "comparison_domain": "QQ after exact parsing of the frozen JSON decimal lexemes",
+    "exact_mismatch": {
+      "common_unit_rescaling_can_remove_mismatch": false,
+      "cross_multiplication_nonzero": "5464338418908485959475037150720/2732169209454242979737518576201",
+      "five_over_physical_norm_ratio": "1652927466483101/29",
+      "five_over_physical_squared_ratio": "2732169209454242979737518576201/841",
+      "mismatch_exceeds_10_pow_26_in_squared_ratio": true,
+      "ratios_are_equal": false
+    },
+    "five_amplitude_branch": {
+      "H_over_Phi_squared": "2",
+      "H_q_norm_squared": "2",
+      "Phi_q_norm_squared": "1",
+      "stationary_equality_constraints": [
+        "p=1",
+        "h^2=1"
+      ]
+    },
+    "frozen_decimal_input_semantics": {
+      "M_GUT_GeV_lexeme_as_exact_rational": "9917564798898606",
+      "h_EW_GeV_lexeme_as_exact_rational": "174",
+      "limitation": "the comparison is exact conditional on these frozen decimal inputs; it does not certify the numerically derived M_GUT as a fundamental exact value"
+    },
+    "shared_chart": "canonical 486-real chart with z=(x+i y)/sqrt(2)",
+    "shared_mass_unit": "GeV"
+  },
+  "failures": [],
+  "gate_acceptance_boundary": {
+    "G4": {
+      "authoritative_G4_closed": false,
+      "canonical_required_artifact": "EW_HIERARCHY_MECHANISM_V20.json",
+      "five_amplitude_witness_is_the_canonical_h_174_GeV_branch": false,
+      "h_174_GeV_hierarchy_mechanism_demonstrated": false,
+      "physical_SM_G4_closed": false,
+      "radiative_stability_or_symmetry_protection_demonstrated": false,
+      "release_G4_closed": false
+    },
+    "G5": {
+      "authoritative_G5_closed": false,
+      "canonical_required_artifact": "CAL_G_LOCK_PHYSICAL_EW_REVALIDATION_V20.json",
+      "live_phase_component_Hessian_on_that_branch_complete": false,
+      "physical_SM_G5_closed": false,
+      "release_G5_closed": false,
+      "same_surviving_physical_EW_branch_used": false
+    },
+    "G6": {
+      "authoritative_G6_closed": false,
+      "physical_SM_G6_closed": false,
+      "promoted_by_this_branch_certificate": false,
+      "release_G6_closed": false
+    },
+    "G7": {
+      "authoritative_G7_closed": false,
+      "physical_SM_G7_closed": false,
+      "promoted_by_this_branch_certificate": false,
+      "release_G7_closed": false
+    },
+    "G8": {
+      "authoritative_G8_closed": false,
+      "physical_SM_G8_closed": false,
+      "promoted_by_this_branch_certificate": false,
+      "release_G8_closed": false
+    }
+  },
+  "integrity": {
+    "core_sha256": "1b91227393a4402a8433d7947c2b1ce954ebc69ff7fbcc4e8606c61afcfdfdbe"
+  },
+  "model_contract_id": "gauged_u1x_phi17_v20",
+  "n_checks": 10,
+  "n_failed": 0,
+  "next_required_work": [
+    "construct or identify a technically stable h=174 GeV branch in the authoritative field/charge contract",
+    "derive its complete source-algebra stationarity and gauge-projected component Hessian",
+    "prove radiative stability or an exact protecting symmetry before canonical G4",
+    "revalidate the cal-G and axion phase directions on that same surviving branch before G5"
+  ],
+  "schema": "exact_physical_sm_g4_g5_branch_mismatch_v1",
+  "scope": {
+    "authoritative_G4_G5_G6_G7_G8_closed": false,
+    "exact_branch_mismatch_proved": true,
+    "global_no_go_for_all_possible_physical_EW_branches": false,
+    "new_hierarchy_mechanism_ruled_out": false,
+    "physical_G4_G5_G6_G7_G8_closed": false,
+    "release_G4_G5_G6_G7_G8_closed": false,
+    "source_exact_Hessian_at_current_five_amplitude_target_alone_can_close_canonical_G4": false,
+    "source_exact_Hessian_at_current_five_amplitude_target_alone_can_close_canonical_G5": false
+  },
+  "source_binding": {
+    "all_dependency_pins_match": true,
+    "files": {
+      "authoritative_G2_hierarchy_report": {
+        "binding_mode": "semantic_json",
+        "expected_sha256": "725cd7582ff1d9b0c69e046ada9f34df413d72db76ce3a43d2fbce01d44eabef",
+        "matches": true,
+        "observed_sha256": "725cd7582ff1d9b0c69e046ada9f34df413d72db76ce3a43d2fbce01d44eabef",
+        "path": "GAUGED_U1X_G2_DERIVATIVE_AUDIT_V20.json"
+      },
+      "authoritative_G2_hierarchy_source": {
+        "binding_mode": "portable_lf",
+        "expected_sha256": "584e03994ca1187228377c3e4c145d95446ade50616e2d58068e0fee9f96507d",
+        "matches": true,
+        "observed_sha256": "584e03994ca1187228377c3e4c145d95446ade50616e2d58068e0fee9f96507d",
+        "path": "gauged_u1x_g2_derivative_audit_v20.py"
+      },
+      "canonical_486_chart_source": {
+        "binding_mode": "portable_lf",
+        "expected_sha256": "9275dbb204324cc48dfd7139cad836e034b1b83b07bd60aecd6ff093d3ab7765",
+        "matches": true,
+        "observed_sha256": "9275dbb204324cc48dfd7139cad836e034b1b83b07bd60aecd6ff093d3ab7765",
+        "path": "live_g2_canonical_486_field_chart_v20.py"
+      },
+      "five_amplitude_theorem_report": {
+        "binding_mode": "semantic_json",
+        "expected_sha256": "03bbbf3e09ed045fa16b23b0a99135a6adcc8b5284f597bdf6cb8492bcafded9",
+        "matches": true,
+        "observed_sha256": "03bbbf3e09ed045fa16b23b0a99135a6adcc8b5284f597bdf6cb8492bcafded9",
+        "path": "EXACT_PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_V20.json"
+      },
+      "five_amplitude_theorem_source": {
+        "binding_mode": "portable_lf",
+        "expected_sha256": "777b11664047574432405373b71bf30ed473fa735bdce56ef95be43dccc76972",
+        "matches": true,
+        "observed_sha256": "777b11664047574432405373b71bf30ed473fa735bdce56ef95be43dccc76972",
+        "path": "exact_physical_sm_five_amplitude_equality_v20.py"
+      },
+      "physical_SM_target_foundation_report": {
+        "binding_mode": "semantic_json",
+        "expected_sha256": "0b581ec26fa47bbfb6c331d1da2cf1b361cd455fda0eb141f16e1e400ca36ba8",
+        "matches": true,
+        "observed_sha256": "0b581ec26fa47bbfb6c331d1da2cf1b361cd455fda0eb141f16e1e400ca36ba8",
+        "path": "PHYSICAL_SM_VACUUM_LOCAL_FEASIBILITY_V20.json"
+      },
+      "physical_SM_target_foundation_source": {
+        "binding_mode": "portable_lf",
+        "expected_sha256": "629ea8c45f101f82b6b4e963fd1fb19dcc5735fe52a1d8efb1fb0812dbaa565c",
+        "matches": true,
+        "observed_sha256": "629ea8c45f101f82b6b4e963fd1fb19dcc5735fe52a1d8efb1fb0812dbaa565c",
+        "path": "physical_sm_vacuum_local_feasibility_v20.py"
+      }
+    },
+    "five_amplitude_core_sha256": "d0bf68bd5007f71295665add186761577dbe0d67d2d8e5bd1fb4e4eeb669a271",
+    "physical_SM_foundation_core_sha256": "01f565d3382756bc467bfaa99d187188bc1bfc4060f2c3a472650f5e57537e80",
+    "shared_model_contract_id": "gauged_u1x_phi17_v20"
+  },
+  "status": "EXACT_FIVE_AMPLITUDE_VS_PHYSICAL_EW_BRANCH_MISMATCH_PROVED__CANONICAL_G4_G5_AND_DOWNSTREAM_G6_G8_OPEN",
+  "unit_rescaling_audit_0_through_100": {
+    "all_common_rescalings_preserve_ratio": true,
+    "case_count": 101,
+    "case_range": [
+      0,
+      100
+    ],
+    "first_case": {
+      "case": 0,
+      "common_scale": "1/51",
+      "ratio_unchanged": true
+    },
+    "identity_case": 50,
+    "identity_record": {
+      "case": 50,
+      "common_scale": "1",
+      "ratio_unchanged": true
+    },
+    "last_case": {
+      "case": 100,
+      "common_scale": "101/51",
+      "ratio_unchanged": true
+    },
+    "records_sha256": "1783b73db34801957825decc3c6e7619f31275935d68e1dd067e36f7eecb0c87"
+  },
+  "verdict": "The exact five-amplitude stationary-equality target and the canonical G2 physical-EW hierarchy target are different branches in the shared 486-real normalization. Their H/Phi squared-norm ratios differ by the exact frozen-input factor (M_GUT/174)^2. Therefore the present five-amplitude theorem, even with a future source-exact Hessian at that target, cannot by itself promote canonical G4 or G5. This is not a no-go for a different protected h=174 GeV branch. G4-G8 remain open."
+}

@@ -12,6 +12,12 @@
 
 ClearAll[argumentValue, emitCheck, failRemaining, captureEvaluation];
 
+Print["EXACT_X_ENGINE Wolfram " <> ToString[$Version]];
+Print[
+  "EXACT_X_KERNEL_PATH " <>
+    ToString[First[$CommandLine]]
+];
+
 argumentValue[flag_String] := Module[{position},
   position = FirstPosition[$ScriptCommandLine, flag];
   If[
@@ -21,9 +27,9 @@ argumentValue[flag_String] := Module[{position},
   ]
 ];
 
-results = Association[];
+exactXResults = Association[];
 emitCheck[name_String, condition_] := Module[{passed = TrueQ[condition]},
-  AssociateTo[results, name -> passed];
+  AssociateTo[exactXResults, name -> passed];
   Print[
     "EXACT_X_CHECK " <> name <> " " <>
       If[passed, "PASS", "FAIL"]
@@ -40,7 +46,7 @@ requiredChecks = {
 };
 
 failRemaining[] := Scan[
-  If[! KeyExistsQ[results, #], emitCheck[#, False]] &,
+  If[! KeyExistsQ[exactXResults, #], emitCheck[#, False]] &,
   requiredChecks
 ];
 
@@ -97,8 +103,16 @@ CopyFile[
   modelSource,
   FileNameJoin[{modelDirectory, modelName <> ".m"}]
 ];
-Export[FileNameJoin[{modelDirectory, "parameters.m"}], "", "Text"];
-Export[FileNameJoin[{modelDirectory, "particles.m"}], "", "Text"];
+Export[
+  FileNameJoin[{modelDirectory, "parameters.m"}],
+  "ParameterDefinitions = {};\n",
+  "Text"
+];
+Export[
+  FileNameJoin[{modelDirectory, "particles.m"}],
+  "ParticleDefinitions[GaugeES] = {};\n",
+  "Text"
+];
 
 SetAttributes[captureEvaluation, HoldAll];
 captureEvaluation[expression_] := Module[
@@ -115,9 +129,94 @@ captureEvaluation[expression_] := Module[
   {TrueQ[completed], content}
 ];
 
-loadResult = captureEvaluation[
-  Get[sarahEntry];
+Get[sarahEntry];
+  Print["EXACT_X_STAGE sarah_package_loaded"];
+  (* SARAH 4.15.3 calls Susyno's dormant repsWithSizeN helper when an
+     SO(N) representation is supplied by dimension.  Freeze the complete
+     unambiguous D5 lookup used by this model before Start: these are exact
+     representation labels, not substituted anomaly results. *)
+  d5Cartan = {
+    {2, -1, 0, 0, 0}, {-1, 2, -1, 0, 0},
+    {0, -1, 2, -1, -1}, {0, 0, -1, 2, 0}, {0, 0, -1, 0, 2}
+  };
+  Susyno`LieGroups`repsWithSizeN[d5Cartan, 1] = {{0, 0, 0, 0, 0}};
+  Susyno`LieGroups`repsWithSizeN[d5Cartan, 10] = {{1, 0, 0, 0, 0}};
+  Susyno`LieGroups`repsWithSizeN[d5Cartan, 16] = {
+    {0, 0, 0, 1, 0}, {0, 0, 0, 0, 1}
+  };
+  Susyno`LieGroups`repsWithSizeN[d5Cartan, 126] = {
+    {0, 0, 0, 2, 0}, {0, 0, 0, 0, 2}
+  };
+  Susyno`LieGroups`repsWithSizeN[d5Cartan, 210] = {{0, 0, 0, 1, 1}};
+  Print["EXACT_X_STAGE exact_D5_dimension_map_installed"];
+  (* CheckAnomalies only initializes quadratic indices for U(1) and SU(N).
+     Its generic SO(N) branch is otherwise symbolic and emits a false mixed
+     anomaly.  Both D5 spinor chiralities have the exact index T(16)=2. *)
+  SA`Dynkin2[16, 10] = 2;
+  SA`Dynkin2[-16, 10] = 2;
+  Print["EXACT_X_STAGE exact_D5_spinor_indices_installed"];
+  (* The non-SUSY charge initializer in SARAH 4.15.3 sends every non-SU
+     representation dimension to TestDim[dim,N], a brute-force SU(N) Young
+     tableau search.  For SO(10) dimensions 126 and 210 that is both the
+     wrong group and prohibitively slow.  Freeze the exact additive Spin(10)
+     center charges for the complete representation set in this model.  A
+     nonzero center sum still falls through to SARAH's exact Invariants test
+     in CheckLagTermChargeConservation. *)
+  exactXSO10CenterCharge[dimension_Integer] := Switch[
+    dimension,
+    1, 0,
+    10, 2, -10, -2,
+    16, 1, -16, -1,
+    126, 2, -126, -2,
+    210, 0, -210, 0,
+    _, Missing["UnsupportedSO10Representation", dimension]
+  ];
+  Print["EXACT_X_STAGE exact_D5_center_map_installed"];
+  InitChargeFactors := Block[
+    {gaugeIndex, fieldIndex, sign, dimension, factor, bareScalar, bareFermion},
+    For[gaugeIndex = 1, gaugeIndex <= Length[Gauge], gaugeIndex++,
+      For[fieldIndex = 1, fieldIndex <= Length[Fields], fieldIndex++,
+        sign = If[
+          Head[SFields[[fieldIndex]] //. A_[{b__}] -> A] === conj,
+          -1,
+          1
+        ];
+        bareScalar = SFields[[fieldIndex]] /. conj[x_] -> x //. A_[{b__}] -> A;
+        bareFermion = FFields[[fieldIndex]] /. conj[x_] -> x //. A_[{b__}] -> A;
+        If[Gauge[[gaugeIndex, 2]] === U[1],
+          factor = Fields[[fieldIndex, 3 + gaugeIndex]];
+          ChargeFactorField[gaugeIndex, Fields[[fieldIndex, 3]]] = factor;
+          ChargeFactorField[gaugeIndex, bareScalar] = sign factor;
+          ChargeFactorField[gaugeIndex, bareFermion] = sign factor,
+          If[Gauge[[gaugeIndex, 2]] === SO[10],
+            dimension = FieldDim[fieldIndex, gaugeIndex];
+            factor = exactXSO10CenterCharge[dimension];
+            If[MissingQ[factor], Abort[]];
+            ChargeFactorField[gaugeIndex, Fields[[fieldIndex, 3]]] = factor;
+            ChargeFactorField[gaugeIndex, bareScalar] = sign factor;
+            ChargeFactorField[gaugeIndex, bareFermion] = sign factor,
+            Abort[]
+          ]
+        ]
+      ]
+    ]
+  ];
+  Print["EXACT_X_STAGE exact_SO10_charge_initializer_installed"];
+  (* SARAH calls this broken-group CGC generator unconditionally from
+     MakeTerms.  The attested Gauge rows both have their breaking flag False,
+     so the exact broken-group CGC set is empty.  Fail closed if that model
+     invariant ever changes. *)
+  Clear[GenerateCGCsForBrokenGroups];
+  GenerateCGCsForBrokenGroups[arguments___] := If[
+    AllTrue[Gauge, Length[#] >= 5 && #[[5]] === False &],
+    Null,
+    Abort[]
+  ];
+  Print["EXACT_X_STAGE empty_broken_group_CGC_contract_installed"];
   Print["EXACT_X_TOOL SARAH " <> ToString[SA`Version]];
+$RecursionLimit = 2000;
+Print["EXACT_X_STAGE recursion_budget_2000"];
+loadResult = captureEvaluation[
   SARAH[InputDirectories] = {workRoot};
   SARAH[OutputDirectory] = outputDirectory;
   Start[modelName]
@@ -130,7 +229,19 @@ initializationOK = And[
   TrueQ[SupersymmetricModel === False],
   ValueQ[SA`LagTermsNonSUSY],
   ListQ[SA`LagTermsNonSUSY],
-  Length[SA`LagTermsNonSUSY] > 0
+  Length[SA`LagTermsNonSUSY] > 0,
+  getDynkinLabels[10, SO[10]] === {1, 0, 0, 0, 0},
+  getDynkinLabels[16, SO[10]] === {0, 0, 0, 0, 1},
+  getDynkinLabels[-16, SO[10]] === {0, 0, 0, 1, 0},
+  getDynkinLabels[-126, SO[10]] === {0, 0, 0, 2, 0},
+  getDynkinLabels[210, SO[10]] === {0, 0, 0, 1, 1},
+  exactXSO10CenterCharge[1] === 0,
+  exactXSO10CenterCharge[10] === 2,
+  exactXSO10CenterCharge[16] === 1,
+  exactXSO10CenterCharge[-16] === -1,
+  exactXSO10CenterCharge[126] === 2,
+  exactXSO10CenterCharge[-126] === -2,
+  exactXSO10CenterCharge[210] === 0
 ];
 emitCheck["model_initialization_succeeded", initializationOK];
 
@@ -153,6 +264,24 @@ If[initializationOK,
     {term, SA`LagTermsNonSUSY},
     {groupIndex, 1, Length[Global]}
   ];
+  WriteString[$Output,
+    "EXACT_X_GAUGE_LOCAL_RESULTS " <>
+      ToString[localGaugeResults, InputForm] <> "\n"
+  ];
+  WriteString[$Output,
+    "EXACT_X_GAUGE_GLOBAL_RESULTS " <>
+      ToString[globalGaugeResults, InputForm] <> "\n"
+  ];
+  WriteString[$Output,
+    "EXACT_X_GAUGE_GLOBAL_FACTORS " <>
+      ToString[
+        ({List @@ #,
+          SA`ChargeGlobal[#, Global[[1, 2]]] & /@ (List @@ #),
+          Times @@ (SA`ChargeGlobal[#, Global[[1, 2]]] & /@ (List @@ #))} & /@
+          SA`LagTermsNonSUSY),
+        InputForm
+      ] <> "\n"
+  ];
   gaugeOK = And[
     Length[localGaugeResults] == Length[SA`LagTermsNonSUSY],
     And @@ (TrueQ /@ localGaugeResults),
@@ -173,6 +302,6 @@ If[initializationOK,
 ];
 emitCheck["anomaly_check_succeeded", anomalyOK];
 
-allPassed = And @@ Lookup[results, requiredChecks, False];
+allPassed = And @@ Lookup[exactXResults, requiredChecks, False];
 Quiet[Check[DeleteDirectory[workRoot, DeleteContents -> True], Null]];
 Exit[If[allPassed, 0, 1]];

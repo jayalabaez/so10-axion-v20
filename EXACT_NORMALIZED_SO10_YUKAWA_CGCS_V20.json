@@ -1,0 +1,729 @@
+{
+  "core_sha256": "c83671cff9c33043b5c7cad19e2f2a744cb5f861a8ea71937c5f3a7308dfffb7",
+  "contract_id": "exact_normalized_so10_yukawa_cgcs_v20",
+  "status": "EXACT_NORMALIZED_SO10_REPRESENTATION_YUKAWA_CGCS_CLOSED__FLAVOR_RGE_AND_FULL_G7_OPEN",
+  "dependencies": {
+    "authoritative_model": {
+      "path": "models\\SO10Z17AxionV20.m",
+      "sha256": "66a2ce2c3491d0b3079ec93a16ab79d3e8a7e4e35cb54aadf21100b9fdd90cc1",
+      "mode": "raw"
+    },
+    "audited_clifford_backend": {
+      "path": "spin10_referee_audit.py",
+      "sha256": "daf80f5ab2b4480e5e03b025bd685dd1ffdce91a4cb0435774dd52ad702b72c9",
+      "mode": "portable_text"
+    },
+    "canonical_scalar_five_form_backend": {
+      "path": "direct_phi_h_sigmabar_tensor_v20.py",
+      "sha256": "3a87470a06362a2a4c05eac6b71fe9cd4cd6c9b8a41732786184cbfeae89fac4",
+      "mode": "portable_text"
+    },
+    "standard_embedding_and_hodge_audit": {
+      "path": "exact_126bar_triplet_clebsch_v20.py",
+      "sha256": "c5954c21561f44ea183af17b4cd1205007c0b30021f4cca0a9fc4f96852c103a",
+      "mode": "portable_text"
+    }
+  },
+  "conventions": {
+    "model_16_clifford_chirality": -1,
+    "model_16bar_clifford_chirality": 1,
+    "physical_Delta126bar_hodge_eigenvalue": "-i",
+    "Delta126bar_kinetic_term": "Sigma*Sigma/(2*5!)",
+    "cgc_inner_product": "Tr(C_A^dagger C_B)=delta_AB",
+    "five_index_antisymmetrization": "strictly increasing indices; Gamma_[I]=ordered product because distinct gammas anticommute",
+    "lagrangian_identical_Weyl_convention": "-1/2 Y_AB psi_A psi_B C_r phi_r + h.c. within this artifact",
+    "sarah_Dot_conversion": "open; no numerical conversion factor inferred"
+  },
+  "canonical_304_weyl_inventory": [
+    {
+      "name": "F",
+      "generations": 3,
+      "SO10": "16",
+      "X": 1,
+      "Z17": 1,
+      "clifford_chirality": -1,
+      "global_component_half_open_range": [
+        0,
+        48
+      ],
+      "generation_offsets": [
+        0,
+        16,
+        32
+      ]
+    },
+    {
+      "name": "P",
+      "generations": 1,
+      "SO10": "16",
+      "X": 1,
+      "Z17": 1,
+      "clifford_chirality": -1,
+      "global_component_half_open_range": [
+        48,
+        64
+      ],
+      "generation_offsets": [
+        48
+      ]
+    },
+    {
+      "name": "R",
+      "generations": 1,
+      "SO10": "16",
+      "X": 1,
+      "Z17": 1,
+      "clifford_chirality": -1,
+      "global_component_half_open_range": [
+        64,
+        80
+      ],
+      "generation_offsets": [
+        64
+      ]
+    },
+    {
+      "name": "SpecS",
+      "generations": 5,
+      "SO10": "16",
+      "X": 2,
+      "Z17": 2,
+      "clifford_chirality": -1,
+      "global_component_half_open_range": [
+        80,
+        160
+      ],
+      "generation_offsets": [
+        80,
+        96,
+        112,
+        128,
+        144
+      ]
+    },
+    {
+      "name": "SpecB",
+      "generations": 5,
+      "SO10": "16bar",
+      "X": -6,
+      "Z17": 11,
+      "clifford_chirality": 1,
+      "global_component_half_open_range": [
+        160,
+        240
+      ],
+      "generation_offsets": [
+        160,
+        176,
+        192,
+        208,
+        224
+      ]
+    },
+    {
+      "name": "Q",
+      "generations": 1,
+      "SO10": "16",
+      "X": 14,
+      "Z17": 14,
+      "clifford_chirality": -1,
+      "global_component_half_open_range": [
+        240,
+        256
+      ],
+      "generation_offsets": [
+        240
+      ]
+    },
+    {
+      "name": "Pbar",
+      "generations": 1,
+      "SO10": "16bar",
+      "X": 16,
+      "Z17": 16,
+      "clifford_chirality": 1,
+      "global_component_half_open_range": [
+        256,
+        272
+      ],
+      "generation_offsets": [
+        256
+      ]
+    },
+    {
+      "name": "Qbar",
+      "generations": 1,
+      "SO10": "16bar",
+      "X": 3,
+      "Z17": 3,
+      "clifford_chirality": 1,
+      "global_component_half_open_range": [
+        272,
+        288
+      ],
+      "generation_offsets": [
+        272
+      ]
+    },
+    {
+      "name": "Rbar",
+      "generations": 1,
+      "SO10": "16bar",
+      "X": -18,
+      "Z17": 16,
+      "clifford_chirality": 1,
+      "global_component_half_open_range": [
+        288,
+        304
+      ],
+      "generation_offsets": [
+        288
+      ]
+    }
+  ],
+  "weyl_multiplet_count": 19,
+  "weyl_component_count": 304,
+  "normalized_tensors": {
+    "10": {
+      "channel": "16x16x10",
+      "shape": [
+        10,
+        16,
+        16
+      ],
+      "numerator_sha256_i16_real_imag_C_order": "29d520d5b7e4a8fe2f35ac6e124c56a3947e04796b1ea1ac0cda0ecabc244a49",
+      "denominator": 4,
+      "nonzero_count": 160,
+      "nonzero_magnitudes": [
+        "1 / 4"
+      ],
+      "numerator_gram_diagonal": 16,
+      "normalized_gram": "identity",
+      "scalar_basis_labels": [
+        "e0",
+        "e1",
+        "e2",
+        "e3",
+        "e4",
+        "e5",
+        "e6",
+        "e7",
+        "e8",
+        "e9"
+      ]
+    },
+    "126bar": {
+      "channel": "16x16x126bar",
+      "shape": [
+        126,
+        16,
+        16
+      ],
+      "numerator_sha256_i16_real_imag_C_order": "659a997d9b97adb56cb0269ddf53197c3e0049e0359aea42fb7983139d936daf",
+      "denominator": 8,
+      "nonzero_count": 2016,
+      "nonzero_magnitudes": [
+        "2 / 8"
+      ],
+      "numerator_gram_diagonal": 64,
+      "normalized_gram": "identity",
+      "scalar_basis_labels": [
+        "01234+56789",
+        "01235+46789",
+        "01236+45789",
+        "01237+45689",
+        "01238+45679",
+        "01239+45678",
+        "01245+36789",
+        "01246+35789",
+        "01247+35689",
+        "01248+35679",
+        "01249+35678",
+        "01256+34789",
+        "01257+34689",
+        "01258+34679",
+        "01259+34678",
+        "01267+34589",
+        "01268+34579",
+        "01269+34578",
+        "01278+34569",
+        "01279+34568",
+        "01289+34567",
+        "01345+26789",
+        "01346+25789",
+        "01347+25689",
+        "01348+25679",
+        "01349+25678",
+        "01356+24789",
+        "01357+24689",
+        "01358+24679",
+        "01359+24678",
+        "01367+24589",
+        "01368+24579",
+        "01369+24578",
+        "01378+24569",
+        "01379+24568",
+        "01389+24567",
+        "01456+23789",
+        "01457+23689",
+        "01458+23679",
+        "01459+23678",
+        "01467+23589",
+        "01468+23579",
+        "01469+23578",
+        "01478+23569",
+        "01479+23568",
+        "01489+23567",
+        "01567+23489",
+        "01568+23479",
+        "01569+23478",
+        "01578+23469",
+        "01579+23468",
+        "01589+23467",
+        "01678+23459",
+        "01679+23458",
+        "01689+23457",
+        "01789+23456",
+        "02345+16789",
+        "02346+15789",
+        "02347+15689",
+        "02348+15679",
+        "02349+15678",
+        "02356+14789",
+        "02357+14689",
+        "02358+14679",
+        "02359+14678",
+        "02367+14589",
+        "02368+14579",
+        "02369+14578",
+        "02378+14569",
+        "02379+14568",
+        "02389+14567",
+        "02456+13789",
+        "02457+13689",
+        "02458+13679",
+        "02459+13678",
+        "02467+13589",
+        "02468+13579",
+        "02469+13578",
+        "02478+13569",
+        "02479+13568",
+        "02489+13567",
+        "02567+13489",
+        "02568+13479",
+        "02569+13478",
+        "02578+13469",
+        "02579+13468",
+        "02589+13467",
+        "02678+13459",
+        "02679+13458",
+        "02689+13457",
+        "02789+13456",
+        "03456+12789",
+        "03457+12689",
+        "03458+12679",
+        "03459+12678",
+        "03467+12589",
+        "03468+12579",
+        "03469+12578",
+        "03478+12569",
+        "03479+12568",
+        "03489+12567",
+        "03567+12489",
+        "03568+12479",
+        "03569+12478",
+        "03578+12469",
+        "03579+12468",
+        "03589+12467",
+        "03678+12459",
+        "03679+12458",
+        "03689+12457",
+        "03789+12456",
+        "04567+12389",
+        "04568+12379",
+        "04569+12378",
+        "04578+12369",
+        "04579+12368",
+        "04589+12367",
+        "04678+12359",
+        "04679+12358",
+        "04689+12357",
+        "04789+12356",
+        "05678+12349",
+        "05679+12348",
+        "05689+12347",
+        "05789+12346",
+        "06789+12345"
+      ]
+    },
+    "singlet_dual_basis": {
+      "channel": "16x16barx1",
+      "shape": [
+        1,
+        16,
+        16
+      ],
+      "numerator_sha256_i16_real_imag_C_order": "d90608e51c818a0c2b241e187e896246077886ed489ea93c1f0adeb945a6dba6",
+      "denominator": 4,
+      "nonzero_count": 16,
+      "nonzero_magnitudes": [
+        "1 / 4"
+      ],
+      "numerator_gram_diagonal": 16,
+      "normalized_gram": "identity",
+      "scalar_basis_labels": [
+        "1"
+      ]
+    }
+  },
+  "chirality_obstruction": {
+    "wrong_plus_chirality_contraction_rank": 0,
+    "correct_minus_chirality_contraction_rank": 126,
+    "wrong_plus_chirality_is_identically_zero": true,
+    "normalization_is_fixed_not_guessed": true,
+    "model_16_standard_PS_Cartan_weights": [
+      [
+        "-1",
+        "-1/2",
+        "0",
+        1
+      ],
+      [
+        "-1",
+        "1/2",
+        "0",
+        1
+      ],
+      [
+        "-1/3",
+        "0",
+        "-1/2",
+        3
+      ],
+      [
+        "-1/3",
+        "0",
+        "1/2",
+        3
+      ],
+      [
+        "1",
+        "0",
+        "-1/2",
+        1
+      ],
+      [
+        "1",
+        "0",
+        "1/2",
+        1
+      ],
+      [
+        "1/3",
+        "-1/2",
+        "0",
+        3
+      ],
+      [
+        "1/3",
+        "1/2",
+        "0",
+        3
+      ]
+    ],
+    "model_16bar_conjugate_Cartan_weights": [
+      [
+        "-1",
+        "0",
+        "-1/2",
+        1
+      ],
+      [
+        "-1",
+        "0",
+        "1/2",
+        1
+      ],
+      [
+        "-1/3",
+        "-1/2",
+        "0",
+        3
+      ],
+      [
+        "-1/3",
+        "1/2",
+        "0",
+        3
+      ],
+      [
+        "1",
+        "-1/2",
+        "0",
+        1
+      ],
+      [
+        "1",
+        "1/2",
+        "0",
+        1
+      ],
+      [
+        "1/3",
+        "0",
+        "-1/2",
+        3
+      ],
+      [
+        "1/3",
+        "0",
+        "1/2",
+        3
+      ]
+    ]
+  },
+  "covariance": {
+    "generators_tested_per_channel": 45,
+    "exact_integer_residual_maxima": {
+      "10": 0,
+      "126bar": 0,
+      "singlet": 0
+    },
+    "floating_tolerance_used": false
+  },
+  "symmetric_square_theorem": {
+    "dim_Sym2_16": 136,
+    "10_plus_126": 136,
+    "orthonormal_complete_projector_verified_exactly": true
+  },
+  "declared_yukawa_closure": [
+    {
+      "symbol": "Y10",
+      "left": "F",
+      "right": "F",
+      "channel": "10",
+      "family_tensor": "symmetric_3x3",
+      "representation_CGC_closed": true,
+      "flavor_tensor_preserved_symbolically": true,
+      "generic_flavor_sparse_support_count": 1440,
+      "global_left_range": [
+        0,
+        47
+      ],
+      "global_right_range": [
+        0,
+        47
+      ]
+    },
+    {
+      "symbol": "Y126",
+      "left": "F",
+      "right": "F",
+      "channel": "126bar",
+      "family_tensor": "symmetric_3x3",
+      "representation_CGC_closed": true,
+      "flavor_tensor_preserved_symbolically": true,
+      "generic_flavor_sparse_support_count": 18144,
+      "global_left_range": [
+        0,
+        47
+      ],
+      "global_right_range": [
+        0,
+        47
+      ]
+    },
+    {
+      "symbol": "yP",
+      "left": "P",
+      "right": "Pbar",
+      "channel": "singlet",
+      "family_tensor": "scalar",
+      "representation_CGC_closed": true,
+      "flavor_tensor_preserved_symbolically": true,
+      "generic_flavor_sparse_support_count": 16,
+      "global_left_range": [
+        48,
+        63
+      ],
+      "global_right_range": [
+        256,
+        271
+      ]
+    },
+    {
+      "symbol": "yQ",
+      "left": "Q",
+      "right": "Qbar",
+      "channel": "singlet",
+      "family_tensor": "scalar",
+      "representation_CGC_closed": true,
+      "flavor_tensor_preserved_symbolically": true,
+      "generic_flavor_sparse_support_count": 16,
+      "global_left_range": [
+        240,
+        255
+      ],
+      "global_right_range": [
+        272,
+        287
+      ]
+    },
+    {
+      "symbol": "yR",
+      "left": "R",
+      "right": "Rbar",
+      "channel": "singlet",
+      "family_tensor": "scalar",
+      "representation_CGC_closed": true,
+      "flavor_tensor_preserved_symbolically": true,
+      "generic_flavor_sparse_support_count": 16,
+      "global_left_range": [
+        64,
+        79
+      ],
+      "global_right_range": [
+        288,
+        303
+      ]
+    },
+    {
+      "symbol": "ys",
+      "left": "SpecS",
+      "right": "SpecB",
+      "channel": "singlet",
+      "family_tensor": "general_5x5",
+      "representation_CGC_closed": true,
+      "flavor_tensor_preserved_symbolically": true,
+      "generic_flavor_sparse_support_count": 400,
+      "global_left_range": [
+        80,
+        159
+      ],
+      "global_right_range": [
+        160,
+        239
+      ]
+    },
+    {
+      "symbol": "lambdaP",
+      "left": "P",
+      "right": "F",
+      "channel": "10",
+      "family_tensor": "row_1x3",
+      "representation_CGC_closed": true,
+      "flavor_tensor_preserved_symbolically": true,
+      "generic_flavor_sparse_support_count": 480,
+      "global_left_range": [
+        48,
+        63
+      ],
+      "global_right_range": [
+        0,
+        47
+      ]
+    },
+    {
+      "symbol": "lambdaR",
+      "left": "R",
+      "right": "F",
+      "channel": "10",
+      "family_tensor": "row_1x3",
+      "representation_CGC_closed": true,
+      "flavor_tensor_preserved_symbolically": true,
+      "generic_flavor_sparse_support_count": 480,
+      "global_left_range": [
+        64,
+        79
+      ],
+      "global_right_range": [
+        0,
+        47
+      ]
+    },
+    {
+      "symbol": "lambdaQB",
+      "left": "Qbar",
+      "right": "F",
+      "channel": "singlet",
+      "family_tensor": "row_1x3",
+      "representation_CGC_closed": true,
+      "flavor_tensor_preserved_symbolically": true,
+      "generic_flavor_sparse_support_count": 48,
+      "global_left_range": [
+        272,
+        287
+      ],
+      "global_right_range": [
+        0,
+        47
+      ]
+    },
+    {
+      "symbol": "lambdaQR",
+      "left": "Q",
+      "right": "Rbar",
+      "channel": "singlet",
+      "family_tensor": "scalar",
+      "representation_CGC_closed": true,
+      "flavor_tensor_preserved_symbolically": true,
+      "generic_flavor_sparse_support_count": 16,
+      "global_left_range": [
+        240,
+        255
+      ],
+      "global_right_range": [
+        288,
+        303
+      ]
+    }
+  ],
+  "total_generic_flavor_sparse_support_count": 21056,
+  "checks": {
+    "authoritative_sources_match_frozen_hashes": true,
+    "all_ten_declared_yukawa_symbols_found": true,
+    "canonical_inventory_has_19_weyl_multiplets": true,
+    "canonical_inventory_has_304_weyl_components": true,
+    "minus_chirality_has_standard_model_16_weights": true,
+    "plus_chirality_is_conjugate_16bar": true,
+    "vector_has_ten_symmetric_matrices": true,
+    "vector_normalized_gram_is_identity": true,
+    "physical_126bar_has_126_symmetric_matrices": true,
+    "physical_126bar_normalized_gram_is_identity": true,
+    "physical_126bar_complement_shortcut_agrees": true,
+    "opposite_spinor_chirality_annihilates_physical_126bar": true,
+    "ten_and_126bar_are_exactly_orthogonal": true,
+    "ten_plus_126bar_complete_symmetric_square": true,
+    "singlet_duality_map_is_unitary": true,
+    "singlet_dual_basis_normalized_gram_is_identity": true,
+    "all_45_vector_covariance_residuals_zero": true,
+    "all_45_126bar_covariance_residuals_zero": true,
+    "all_45_singlet_covariance_residuals_zero": true,
+    "vector_sparse_count_is_160": true,
+    "physical_126bar_sparse_count_is_2016": true,
+    "singlet_sparse_count_is_16": true,
+    "all_embedded_support_indices_lie_in_304_inventory": true,
+    "all_declared_representation_cgcs_closed": true,
+    "flavor_boundary_values_closed": false,
+    "sarah_symbol_normalization_closed": false,
+    "full_yukawa_rge_closed": false,
+    "full_physical_G7_closed": false
+  },
+  "scope": {
+    "normalized_representation_CGCs_for_all_declared_Yukawas": true,
+    "canonical_304_Weyl_sparse_embedding": true,
+    "flavor_tensor_values_or_textures": false,
+    "sarah_implicit_contraction_normalization": false,
+    "one_or_two_loop_Yukawa_betas": false,
+    "threshold_matching_and_running": false,
+    "full_yukawa_sector": false,
+    "mathematical_G7": false,
+    "release_G7": false
+  },
+  "blockers": [
+    "Fix the conversion between this explicit -1/2 identical-Weyl convention and SARAH's implicit Dot contractions.",
+    "Supply or fit the symbolic flavor tensors and their boundary conditions.",
+    "Compile independently replayed one- and two-loop Yukawa, scalar and dimensionful beta functions.",
+    "Derive physical component masses, mixing matrices and finite threshold matching before claiming G7."
+  ]
+}

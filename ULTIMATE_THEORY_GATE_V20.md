@@ -1,15 +1,15 @@
 # Ultimate theory gate - v20
 
-**Status:** `ULTIMATE_GATE_AUDIT_COMPLETE__MODEL_CONTRACT_BLOCKED`
+**Status:** `ULTIMATE_GATE_AUDIT_COMPLETE__CANONICAL_GATES_OPEN`
 **Overall state:** `BLOCKED`
-**Classification:** `MODEL_CONTRACT_INCONSISTENT__AUTHORITATIVE_GATES_REOPENED`
+**Classification:** `CANONICAL_G1_G8_GATES_OPEN`
 **Decision:** `WITHHOLD_APPROVAL`
 
-WITHHOLD APPROVAL. The audit has no execution failure, but the statically consistent, tool-native gauged-U(1)_X model has no v2 manifest/log-bound external SARAH execution evidence. No internal-candidate, conditional-benchmark, full-phenomenology, empirical-realization, or whole-model-exclusion claim is approved.
+WITHHOLD APPROVAL. One or more qualified canonical V21 gates remain open, or the authoritative summary is inconsistent.
 
 ## Approval levels
 
-- Internal candidate: **False**
+- Internal candidate: **True**
 - Conditional benchmark: **False**
 - Full phenomenology: **False**
 - Empirical realization: **False**
@@ -17,18 +17,11 @@ WITHHOLD APPROVAL. The audit has no execution failure, but the statically consis
 
 ## Scientific blockers
 
-- `AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED`
-- `EFT_G7_THRESHOLD_RESTRICTION_AND_ABSOLUTE_SCALE_NONIDENTIFIABLE`
-- `G1_NOT_CLOSED`
-- `G2_NOT_CLOSED`
-- `G3_ARBITRARY_NON_PURE_DELTA_SIGMA_UNIFORM_COERCIVITY_OPEN`
-- `G3_NOT_CLOSED`
-- `G4_NOT_CLOSED`
-- `G5_NOT_CLOSED`
-- `G6_NOT_CLOSED`
-- `G7_NOT_CLOSED`
-- `G8_NOT_CLOSED`
-- `GAUGED_U1X_G3_G8_CLOSURE_REQUIRED`
+- `CANONICAL_GATE_NOT_CLOSED::canonical.gauged_u1x.phenomenology.v21.G4.protected_ew_hierarchy`
+- `CANONICAL_GATE_NOT_CLOSED::canonical.gauged_u1x.phenomenology.v21.G5.calg_axion_phase_revalidation`
+- `CANONICAL_GATE_NOT_CLOSED::canonical.gauged_u1x.phenomenology.v21.G6.full_nonsusy_two_loop_chain`
+- `CANONICAL_GATE_NOT_CLOSED::canonical.gauged_u1x.phenomenology.v21.G7.physical_pole_threshold_spectrum`
+- `CANONICAL_GATE_NOT_CLOSED::canonical.gauged_u1x.phenomenology.v21.G8.unique_proton_lifetime_distribution`
 - `PROTON_READINESS_complete_mass_basis_gauge_flavour_wilson_coefficients`
 - `PROTON_READINESS_complete_scalar_triplet_masses_mixings_and_yukawas`
 - `PROTON_READINESS_full_component_vacuum_and_competing_extrema`

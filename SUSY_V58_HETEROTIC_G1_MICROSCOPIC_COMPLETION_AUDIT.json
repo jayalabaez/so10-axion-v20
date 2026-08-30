@@ -1,0 +1,826 @@
+{
+  "alternative_new_physics_route_ledger": [
+    {
+      "G1_closed": false,
+      "decisive_blocker": "Integrated I8 factorization does not determine the four fixed-point I6 anomalies, 270 singlet parities, localized GS inflow, or a string/F/M UV origin.",
+      "exact_progress": {
+        "Gram": {
+          "a2": 8,
+          "a_b10": 2,
+          "a_bRbar": 75,
+          "b10_2": -4,
+          "b10_bRbar": 6,
+          "bRbar_2": 667
+        },
+        "factorization": "P=1/2[(3u/2-104f)^2-(u/2-12f-2t)^2]",
+        "lattice": "I(1,1): a=(3,1), b10=(0,-2), bRbar=(26,3)",
+        "spectrum": "T=1, V=46, H=290 with 2(10)_-1 + 161(1)_0 + 4(1)_1 + 10(1)_2 + 94(1)_3 + (1)_4"
+      },
+      "id": "R1_BOTTOM_UP_GAUGED_U1R_TO_Z4R",
+      "status": "INTEGRATED_6D_BULK_SEED_ONLY__G1_OPEN"
+    },
+    {
+      "G1_closed": false,
+      "decisive_blocker": "The same gauge shift forbids local 16.16.Sigma Yukawas; bulk mediators, rank breaking, proton selection, and a complete pointwise/CS/global anomaly audit are absent.",
+      "exact_progress": {
+        "colored_zero_modes": "Sigma_(a,11), a=5..10 has no (++) component",
+        "parities": "P0=diag(I10,-1), P1=diag(I4,-I7)",
+        "protection": "higher-dimensional gauge shift forbids a local polynomial Sigma mass",
+        "weak_zero_modes": "Sigma_(i,11), i=1..4 -> one complex (1,2,2)=Hu+Hd"
+      },
+      "id": "R2_SPIN11_GAUGE_HIGGS_WITHOUT_ASSUMED_R",
+      "status": "EXACT_HIGGS_PROJECTOR_BLUEPRINT__G1_OPEN"
+    },
+    {
+      "G1_closed": false,
+      "decisive_blocker": "corrected gamma-phase mixed-Z4R/GS ledger and local/6D Spin(10) match are open",
+      "exact_progress": "complete published string spectrum, exact lattice/modular arithmetic, one Higgs pair, zero massless triplet pairs",
+      "id": "R3_E8xE8_FREELY_QUOTIENTED_HETEROTIC",
+      "status": "STRONGEST_MICROSCOPIC_NEAR_MATCH__G1_OPEN"
+    }
+  ],
+  "claim_boundary": {
+    "G1_to_G8_not_promoted": true,
+    "V56_G1_not_retroactively_closed": true,
+    "complete_theory_claimed": false,
+    "new_action_created": true,
+    "new_fundamental_law_invented": false,
+    "perturbative_heterotic_string_near_match_only": true,
+    "published_model_evaluated_as_whole_action_not_as_cross_action_patch": true
+  },
+  "complete_spectrum_and_selected_vacuum": {
+    "D_flatness": {
+      "D_flat_directions": 18,
+      "complete_Hilbert_basis_monomials": 6184,
+      "negative_anomalous_charge_witness": "phi11^4 phi4 phi7^2 phi8 phi9^2"
+    },
+    "F_flatness_scope": {
+      "appendix_caveat": "the coefficient-level location is argued generically and may lie outside the controlled small-VEV region",
+      "directions_including_six_TU_moduli": 24,
+      "independent_conditions": 23,
+      "paper_summary": "supersymmetric vacua explicitly verified",
+      "used_to_close_G1": false,
+      "why": "Generic equation counting is not an explicit controlled vacuum and cannot close G1; a coefficient-level reconstruction is also required before G2/G3 promotion."
+    },
+    "Higgs_triplet_projection": {
+      "Higgs_matrix_shape": [
+        6,
+        6
+      ],
+      "generic_rank": 5,
+      "massless_Higgs_pairs": 1,
+      "massless_colored_triplet_pairs": 0,
+      "perturbative_mu_forbidden_to_all_orders": true,
+      "triplet_generic_rank": 3,
+      "triplet_matrix_shape": [
+        3,
+        3
+      ]
+    },
+    "additional_gauge_and_hidden_singlets": 37,
+    "complete_spectrum_definition": "Every row and charge in Table E.2 of arXiv:1012.4574, plus the seven explicitly stated untwisted moduli",
+    "complete_spectrum_is_source_locked": true,
+    "low_energy_source_result": "exact MSSM spectrum with no exotics",
+    "named_multiplets_in_census": 55,
+    "orbifold_point_census_Table_E1": {
+      "D": 3,
+      "Dbar": 6,
+      "L": 9,
+      "Lbar": 6,
+      "ebar": 3,
+      "q": 3,
+      "ubar": 3,
+      "x": 5,
+      "xbar": 5,
+      "y": 6,
+      "z": 6
+    },
+    "residual_symmetry": "G_SM x SU(2)_hidden x Z4R",
+    "selected_VEV_count": 27,
+    "selected_VEV_set_equation_3_2": [
+      "phi1",
+      "phi2",
+      "phi3",
+      "phi4",
+      "phi5",
+      "phi6",
+      "phi7",
+      "phi8",
+      "phi9",
+      "phi10",
+      "phi11",
+      "phi12",
+      "phi13",
+      "phi14",
+      "x1",
+      "x2",
+      "x3",
+      "x4",
+      "x5",
+      "xbar1",
+      "xbar3",
+      "xbar4",
+      "xbar5",
+      "y3",
+      "y4",
+      "y5",
+      "y6"
+    ],
+    "untwisted_moduli": [
+      "S",
+      "T1",
+      "T2",
+      "T3",
+      "U1",
+      "U2",
+      "U3"
+    ]
+  },
+  "core_sha256": "c31d5fe65fc5bd96279bb739f5284854a624b2ee1586004c9b84998225d382c6",
+  "discrete_Z4R_and_GS_audit": {
+    "2010_microscopic_origin_claim": "CFT H-momentum/internal angular momentum: a discrete remnant of compact Lorentz symmetry, mixed with gauge and space-group generators",
+    "CFT_origin_is_plausible": true,
+    "charges": {
+      "light_Hu_Hd": 0,
+      "matter_superfields": 1,
+      "superpotential": 2,
+      "theta": 1
+    },
+    "corrected_charge_warning": {
+      "result": "heterotic orbifold R charges differ from earlier assignments once gamma phases are treated correctly",
+      "source": "arXiv:1308.5669",
+      "specific_Z2xZ2_application": "left open by the correction paper"
+    },
+    "exact_quantum_Z4R_proved_for_corrected_mixed_generator": false,
+    "geometry_level_anomaly_warning": {
+      "geometry": "freely quotiented Z2xZ2-5-1",
+      "not_a_model_specific_no_go": true,
+      "result": "plane-R anomalies are non-universal in the scan; repair of the phenomenological Z4R is explicitly open",
+      "source": "BONN-IR-2014-12"
+    },
+    "low_energy_mixed_anomalies": {
+      "A2": 5,
+      "A3": 3,
+      "eta": 2,
+      "residues_mod_eta": [
+        1,
+        1
+      ],
+      "universal": true
+    },
+    "matter_parity_subgroup": "exact non-anomalous Z2^M subgroup",
+    "published_partial_Green_Schwarz_ledger": {
+      "U1_anom_coefficient": 15,
+      "Z2_n3_coefficient": "1/2",
+      "axion_is_in_complete_spectrum": true,
+      "dilaton_shifts_under_both": true,
+      "field": "universal heterotic dilaton S with axion Im(S)",
+      "full_residual_Z4R_model_specific_GS_ledger": false,
+      "independent_anomalies": true,
+      "missing_rows": [
+        "corrected gamma-phase charges for every Table E.2 state",
+        "U(1)Y and all hidden-factor mixed anomalies",
+        "complete gravitational anomaly coefficient",
+        "local/fixed-locus anomaly distribution and inflow",
+        "axion period and integer coupling matrix for the corrected mixed generator"
+      ],
+      "visible_A3_A2_universality_supports_GS": true
+    },
+    "surviving_generator": "q_Z4R = q_X + R2 + 2 n3 mod 4",
+    "t_X": [
+      [
+        4,
+        0,
+        10,
+        -10,
+        -10,
+        -10,
+        -10,
+        -10
+      ],
+      [
+        -10,
+        0,
+        5,
+        5,
+        -5,
+        15,
+        -10,
+        0
+      ]
+    ],
+    "three_orbifold_point_R_symmetries": "Z4R x Z4R x Z4R, one from each Z2 orbifold plane"
+  },
+  "exact_worldsheet_action": {
+    "Wilson_lines": {
+      "W1": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "W2_equals_W4_equals_W6": [
+        "3/2",
+        "1/2",
+        "-3/2",
+        "-1/2",
+        "-1/2",
+        "-3/2",
+        "1/2",
+        "1/2",
+        "-3/2",
+        "-1/2",
+        "-1/2",
+        "3/2",
+        "-3/2",
+        "-1/2",
+        "-3/2",
+        "3/2"
+      ],
+      "W3": [
+        "3/2",
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2",
+        "-1/2",
+        "0",
+        "0",
+        "1/2",
+        "1/2",
+        "1/2",
+        "1/2",
+        "1",
+        "1"
+      ],
+      "W5": [
+        "-7/4",
+        "7/4",
+        "-1/4",
+        "-3/4",
+        "1/4",
+        "1/4",
+        "1/4",
+        "-3/4",
+        "-3/4",
+        "5/4",
+        "-5/4",
+        "-5/4",
+        "1/4",
+        "1/4",
+        "-3/4",
+        "5/4"
+      ],
+      "W6": [
+        "3/2",
+        "1/2",
+        "-3/2",
+        "-1/2",
+        "-1/2",
+        "-3/2",
+        "1/2",
+        "1/2",
+        "-3/2",
+        "-1/2",
+        "-1/2",
+        "3/2",
+        "-3/2",
+        "-1/2",
+        "-3/2",
+        "3/2"
+      ],
+      "W_free": [
+        "9/4",
+        "3/4",
+        "-9/4",
+        "-3/4",
+        "-3/4",
+        "-9/4",
+        "3/4",
+        "3/4",
+        "-9/4",
+        "-3/4",
+        "-3/4",
+        "9/4",
+        "-9/4",
+        "-3/4",
+        "-9/4",
+        "9/4"
+      ]
+    },
+    "action_id": "V58_E8xE8_Z2xZ2_FREE_Z2_Z4R_MSSM",
+    "gauge_shifts": {
+      "V1": [
+        "-1/2",
+        "-1/2",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "V2": [
+        "0",
+        "1/2",
+        "-1/2",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    "global_group_definition": {
+      "hypercharge": "GUT normalized",
+      "low_energy_Lie_group": "G_SM x SU(2)_hidden",
+      "orbifold_point": "Cent_{E8xE8}(exp(2pi i V1), exp(2pi i V2), exp(2pi i Wa), exp(2pi i Wfree))",
+      "vacuum": "Stab_Gorb(<phi_tilde>) with the cocharacter lattice inherited from E8xE8",
+      "visible_connected_factor": "S(U(3)xU(2)) isomorphic to (SU(3)xSU(2)xU(1)Y)/Z6",
+      "why_exact": "The centralizer/stabilizer inside simply connected E8xE8 fixes all center identifications and U(1) periods without guessing a product quotient."
+    },
+    "microscopic_definition": "E8xE8 heterotic string worldsheet CFT on the explicit Z2xZ2 orbifold, further quotiented by the freely acting space-group generator (tau,W)",
+    "primary_source": {
+      "anomaly_data": "Appendix A and equations (3.11)--(3.12)",
+      "arxiv": "1012.4574",
+      "authors": "Rolf Kappl, Bjorn Petersen, Stuart Raby, Michael Ratz, Roland Schieren, Patrick K. S. Vaudrevange",
+      "html": "https://arxiv.org/html/1012.4574",
+      "model_data": "Appendix E, equations (E.1)--(E.6), Tables E.1--E.2",
+      "title": "String-derived MSSM vacua with residual R symmetries",
+      "url": "https://arxiv.org/abs/1012.4574",
+      "vacuum_data": "section 3, equation (3.2), and Appendices C--D"
+    },
+    "supersymmetry": "four-dimensional N=1",
+    "twists": {
+      "v1": [
+        "0",
+        "1/2",
+        "-1/2"
+      ],
+      "v2": [
+        "-1/2",
+        "0",
+        "1/2"
+      ]
+    }
+  },
+  "gate_ledger": [
+    {
+      "V58_candidate_closed": false,
+      "decision": "OPEN: V58 supplies a real microscopic string near-match, but the corrected mixed-Z4R charge/action, complete model-specific anomaly/GS ledger, controlled F-flat point, and local/6D SO10 match are not established.",
+      "gate": "G1",
+      "status": "OPEN"
+    },
+    {
+      "V58_candidate_closed": false,
+      "decision": "OPEN: the complete coefficient-level 4D Wilsonian W, K, gauge-kinetic functions, soft sector, and a numerical controlled F-root have not been reconstructed.",
+      "gate": "G2",
+      "status": "OPEN"
+    },
+    {
+      "V58_candidate_closed": false,
+      "decision": "OPEN: no full physical vacuum quotient, stabilized spectrum, and complete Hessian/KK analysis is certified here.",
+      "gate": "G3",
+      "status": "OPEN"
+    },
+    {
+      "V58_candidate_closed": false,
+      "decision": "OPEN WITH STRONG ADVANCE: the source gives one massless Higgs pair, a full-rank triplet matrix, and perturbative all-order mu protection; later physical hierarchy tests remain.",
+      "gate": "G4",
+      "status": "OPEN"
+    },
+    {
+      "V58_candidate_closed": false,
+      "decision": "OPEN: no dark-sector and cosmological history is selected or solved.",
+      "gate": "G5",
+      "status": "OPEN"
+    },
+    {
+      "V58_candidate_closed": false,
+      "decision": "OPEN: precision thresholds, full running, pole spectrum, and uncertainty propagation are absent.",
+      "gate": "G6",
+      "status": "OPEN"
+    },
+    {
+      "V58_candidate_closed": false,
+      "decision": "OPEN WITH STRONG ADVANCE: matter parity removes dimension four proton decay and Z4R suppresses dimension five operators, but no complete lifetime calculation exists.",
+      "gate": "G7",
+      "status": "OPEN"
+    },
+    {
+      "V58_candidate_closed": false,
+      "decision": "OPEN WITH STRONG ADVANCE: full-rank Yukawas and a rank-11 singlet-neutrino sector exist, but no mediator-complete numerical CKM/PMNS likelihood is certified.",
+      "gate": "G8",
+      "status": "OPEN"
+    }
+  ],
+  "integral_charge_lattices": {
+    "E8_Cartan_determinant": 1,
+    "E8_integral_even_unimodular": true,
+    "Narain_determinant": 1,
+    "Narain_integral_even_self_dual": true,
+    "Narain_lattice": "Gamma(6,22) = U^6 direct-sum E8(-1)^2",
+    "Narain_signature": [
+      6,
+      22
+    ],
+    "gauge_lattice_determinant": 1,
+    "gauge_lattice_signature": [
+      16,
+      0
+    ],
+    "number_of_E8_roots_reconstructed": 240,
+    "ten_dimensional_gauge_lattice": "E8 root lattice direct sum E8 root lattice"
+  },
+  "integrity_checks": {
+    "E8_and_Narain_lattices_are_even_self_dual": true,
+    "V57_core_is_canonical_and_expected": true,
+    "Z4R_residues_are_universal": true,
+    "all_modular_checks_pass": true,
+    "all_new_physics_routes_fail_closed": true,
+    "complete_theory_not_claimed": true,
+    "corrected_Z4R_is_not_overclaimed": true,
+    "cross_action_import_forbidden_and_absent": true,
+    "same_action_GS_axion_present_but_full_ledger_open": true,
+    "strict_G1_matrix_contains_open_or_failed_rows": true,
+    "surviving_roots_match_published_Lie_group": true,
+    "visible_MSSM_anomalies_cancel": true,
+    "zero_gates_are_promoted": true
+  },
+  "later_correction_sources": [
+    {
+      "arxiv": "1308.5669",
+      "authors": "N. G. Cabo Bizet, T. Kobayashi, D. K. Mayorga Pena, S. L. Parameswaran, M. Schmitz, I. Zavala",
+      "relevance": "Derives corrected R charges including gamma phases; explicitly leaves the effect on Z2xZ2 models realizing the famous Z4R as future work.",
+      "title": "Discrete R-symmetries and Anomaly Universality in Heterotic Orbifolds",
+      "url": "https://arxiv.org/abs/1308.5669"
+    },
+    {
+      "author": "Matthias Schmitz",
+      "relevance": "Finds non-universal plane-R anomalies for the freely quotiented Z2xZ2-5-1 geometry and calls anomaly universality of the phenomenological Z4R realization an open question.",
+      "report": "BONN-IR-2014-12",
+      "title": "R-Symmetries from the Orbifolded Heterotic String",
+      "url": "https://d-nb.info/1077289065/34"
+    }
+  ],
+  "lineage": {
+    "V56_candidate_status": "retired as a complete candidate; its G1 remains open",
+    "V57_result": "G1 open; heterotic spin-lift redesign selected",
+    "V58_relation": "wholly new action evaluated as a near-match; V56/V57 physics is not imported",
+    "bound_frontier": "SUSY_V57_G1_MICROSCOPIC_COMPLETION_FRONTIER_AUDIT.json",
+    "bound_frontier_core": "0896cc21d84d6395d6ba9d5c0b6414c3aec14c18981708d2e06b548a4fc21302"
+  },
+  "microscopic_consistency_basis": {
+    "V40_regulator_clause_not_sufficient_yet": "The UV regulator is specified, but the claimed residual selector/operator map has not been rederived from it with corrected phases.",
+    "nonperturbative_definition_of_all_string_theory": false,
+    "nonperturbative_overclaim_made": false,
+    "perturbative_and_global_consistency_basis": [
+      "even self-dual E8xE8/Narain charge lattice",
+      "exact level matching and mutual modular congruences",
+      "complete untwisted and twisted string spectrum",
+      "published globally consistent string-derived construction"
+    ],
+    "regulator": "modular-invariant heterotic worldsheet CFT and its genus-one partition function",
+    "regulator_exists_for_the_string_background": true,
+    "remaining_microscopic_obligations": [
+      "recompute all physical-state R charges including gamma phases for the exact freely acting model",
+      "prove the mixed qX+R2+2n3 generator remains an exact order-four R symmetry after the correction",
+      "evaluate visible, hidden, Abelian, gravitational, local and global anomaly rows",
+      "derive the quantized dilaton/threshold GS variation for that corrected generator"
+    ],
+    "scope": "perturbative E8xE8 heterotic string compactification",
+    "standalone_low_energy_bordism_recalculation": false,
+    "target_symmetry_matching_complete": false,
+    "why_regulator_does_not_by_itself_close_target_G1": "A consistent string background does not prove that the particular 2010 low-energy Z4R charge assignment survives the later gamma-phase correction.  The target symmetry and its GS variation must still be matched to the corrected spectrum."
+  },
+  "modular_invariance_audit": {
+    "Wilson_norm_congruences": [
+      {
+        "norm": "7",
+        "twice_norm": "14",
+        "vector": "W3",
+        "zero_mod_2": true
+      },
+      {
+        "norm": "15",
+        "twice_norm": "30",
+        "vector": "W5",
+        "zero_mod_2": true
+      },
+      {
+        "norm": "20",
+        "twice_norm": "40",
+        "vector": "W6",
+        "zero_mod_2": true
+      }
+    ],
+    "Wilson_pair_congruences": [
+      {
+        "pair": "W3.W5",
+        "two_times_dot": "-4",
+        "zero_mod_1": true
+      },
+      {
+        "pair": "W3.W6",
+        "two_times_dot": "0",
+        "zero_mod_1": true
+      },
+      {
+        "pair": "W5.W6",
+        "two_times_dot": "0",
+        "zero_mod_1": true
+      }
+    ],
+    "all_modular_checks_pass": true,
+    "checks": {
+      "all_Wilson_norm_congruences": true,
+      "all_Wilson_pair_congruences": true,
+      "all_order_two_embeddings_land_in_E8xE8": true,
+      "all_shift_Wilson_congruences": true,
+      "freely_acting_space_group_relation": true,
+      "mixed_twist_shift_Gram_relation": true,
+      "point_group_preserves_N1": true,
+      "twist_shift_level_matching": true
+    },
+    "convention": "For order two: 2(V^2-v^2)=0 mod 2, 2 V.W=0 mod 1, 2 W_i.W_j=0 mod 1, and 2 W_i^2=0 mod 2",
+    "freely_acting_shift": {
+      "gauge_embedding": "W=(W2+W4+W6)/2=3 W2/2",
+      "geometry": "tau=(e2+e4+e6)/2",
+      "group_relation": "2W=W2+W4+W6 accompanies 2tau=e2+e4+e6",
+      "relation_exact": true
+    },
+    "lattice_embeddings": [
+      {
+        "twice_norm": "1",
+        "twice_vector_in_E8xE8": true,
+        "vector": "V1"
+      },
+      {
+        "twice_norm": "1",
+        "twice_vector_in_E8xE8": true,
+        "vector": "V2"
+      },
+      {
+        "twice_norm": "14",
+        "twice_vector_in_E8xE8": true,
+        "vector": "W3"
+      },
+      {
+        "twice_norm": "30",
+        "twice_vector_in_E8xE8": true,
+        "vector": "W5"
+      },
+      {
+        "twice_norm": "40",
+        "twice_vector_in_E8xE8": true,
+        "vector": "W6"
+      }
+    ],
+    "level_matching": [
+      {
+        "pair": "V1/v1",
+        "shift_norm": "1/2",
+        "twist_norm": "1/2",
+        "two_times_difference": "0",
+        "zero_mod_2": true
+      },
+      {
+        "pair": "V2/v2",
+        "shift_norm": "1/2",
+        "twist_norm": "1/2",
+        "two_times_difference": "0",
+        "zero_mod_2": true
+      }
+    ],
+    "mixed_two_times_Gram_difference": "0",
+    "shift_Wilson_congruences": [
+      {
+        "pair": "V1.W3",
+        "two_times_dot": "-2",
+        "zero_mod_1": true
+      },
+      {
+        "pair": "V1.W5",
+        "two_times_dot": "0",
+        "zero_mod_1": true
+      },
+      {
+        "pair": "V1.W6",
+        "two_times_dot": "-2",
+        "zero_mod_1": true
+      },
+      {
+        "pair": "V2.W3",
+        "two_times_dot": "0",
+        "zero_mod_1": true
+      },
+      {
+        "pair": "V2.W5",
+        "two_times_dot": "2",
+        "zero_mod_1": true
+      },
+      {
+        "pair": "V2.W6",
+        "two_times_dot": "2",
+        "zero_mod_1": true
+      }
+    ]
+  },
+  "n_failed_integrity_checks": 0,
+  "n_integrity_checks": 13,
+  "primary_source": {
+    "anomaly_data": "Appendix A and equations (3.11)--(3.12)",
+    "arxiv": "1012.4574",
+    "authors": "Rolf Kappl, Bjorn Petersen, Stuart Raby, Michael Ratz, Roland Schieren, Patrick K. S. Vaudrevange",
+    "html": "https://arxiv.org/html/1012.4574",
+    "model_data": "Appendix E, equations (E.1)--(E.6), Tables E.1--E.2",
+    "title": "String-derived MSSM vacua with residual R symmetries",
+    "url": "https://arxiv.org/abs/1012.4574",
+    "vacuum_data": "section 3, equation (3.2), and Appendices C--D"
+  },
+  "schema": "susy_v58_heterotic_g1_microscopic_completion_audit/v1",
+  "source_manifest": [
+    {
+      "exists": true,
+      "path": "susy_v58_heterotic_g1_microscopic_completion_audit.py",
+      "sha256": "bbf6b4b8cc49672c49940871a6aed3eddf46522e465c92a6c75a6ec9fb4d4ced"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v58_heterotic_g1_microscopic_completion_audit.py",
+      "sha256": "cc244402762fe36c1d5394e96d707058b748a4c9ca37437599721689cc706f25"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V57_G1_MICROSCOPIC_COMPLETION_FRONTIER_AUDIT.json",
+      "sha256": "6b084b41cf566ee6a97d0e40abb2d1c048f029e7f791dcad02260f8307ada56a"
+    }
+  ],
+  "status": "V58_HETEROTIC_MICROSCOPIC_NEAR_MATCH__E8XE8_Z2XZ2_WITH_FREE_Z2__EVEN_SELF_DUAL_NARAIN_LATTICE__EXACT_MODULAR_CONGRUENCES_PASS__COMPLETE_ORIGINAL_SPECTRUM_SOURCE_LOCKED__2010_Z4R_LEDGER_ONLY__CORRECTED_GAMMA_PHASE_MIXED_Z4R_AND_FULL_GS_LEDGER_OPEN__CONTROLLED_F_VACUUM_OPEN__NO_LOCAL_6D_SO10_MATCH__STRICT_G1_OPEN__ZERO_OF_EIGHT_GATES_CLOSED__COMPLETE_THEORY_FALSE",
+  "strict_G1_matrix": [
+    {
+      "criterion": "one_versioned_microscopic_action",
+      "evidence": "one explicit E8xE8 orbifold CFT with fixed twists, shifts, Wilson lines, free quotient, and spectrum",
+      "status": "PASS"
+    },
+    {
+      "criterion": "compact_global_group_and_integral_charge_lattice",
+      "evidence": "exact E8xE8 centralizer/stabilizer definition and even self-dual Gamma(6,22)",
+      "status": "PASS"
+    },
+    {
+      "criterion": "microscopic_regulator_and_modular_invariance",
+      "evidence": "all independently evaluated order-two level-matching and Wilson congruences vanish",
+      "status": "PASS"
+    },
+    {
+      "criterion": "complete_chiral_and_twisted_spectrum",
+      "evidence": "full Table E.2 spectrum, 37 singlets, S, three T and three U moduli",
+      "status": "PASS_SOURCE_LOCKED"
+    },
+    {
+      "criterion": "continuous_perturbative_and_traditional_global_anomalies",
+      "evidence": "exact zero visible MSSM anomaly ledger and even SU2 doublet count; the complete string CFT is a consistent background",
+      "status": "PASS_FOR_VISIBLE_MSSM__FULL_STRING_BACKGROUND_CONSISTENT"
+    },
+    {
+      "criterion": "corrected_globally_gauged_Z4R_origin",
+      "evidence": "the 2010 qX+R2+2n3 assignment predates the corrected gamma-phase formula; its exact corrected action is not published",
+      "status": "OPEN"
+    },
+    {
+      "criterion": "complete_model_specific_discrete_anomaly_and_GS_mechanism",
+      "evidence": "A3=3 and A2=5 are universal mod2, but hidden, U1Y, gravity, local/global rows and the corrected-generator axion coupling matrix are absent",
+      "status": "OPEN"
+    },
+    {
+      "criterion": "torsion_and_localized_anomaly_completion",
+      "evidence": "the regulator exists, but no derived corrected-Z4R partition-function phase or complete local/global anomaly trivialization is supplied",
+      "status": "OPEN_FOR_TARGET_Z4R"
+    },
+    {
+      "criterion": "target_light_projection",
+      "evidence": "exact MSSM, one Higgs pair, full-rank triplet matrix, zero massless colored triplet pairs",
+      "status": "PASS_SOURCE_LOCKED"
+    },
+    {
+      "criterion": "controlled_explicit_F_flat_vacuum",
+      "evidence": "23 conditions on 24 directions support generic existence, but no coefficient-level all-F-zero point in the controlled region is published",
+      "status": "OPEN"
+    },
+    {
+      "criterion": "local_or_6D_SO10_architecture_match",
+      "evidence": "the model uses nonlocal GUT breaking and does not realize the original local/6D Spin(10) fixed-point action",
+      "status": "FAIL_FOR_ORIGINAL_TARGET"
+    },
+    {
+      "criterion": "same_action_no_cross_version_import",
+      "evidence": "no V56 bulk, boundary, vacuum, or anomaly coefficient is imported into V58",
+      "status": "PASS"
+    },
+    {
+      "criterion": "strict_G1_microscopic_consistency",
+      "evidence": "the corrected residual-R/GS ledger and controlled vacuum are open, and the new action does not match local/6D SO10",
+      "status": "OPEN"
+    }
+  ],
+  "surviving_gauge_roots": {
+    "algorithm": "Enumerate all 240 E8 roots and retain p with p.h in Z for every shift/Wilson holonomy h.",
+    "blocks": [
+      {
+        "abelian_rank": 5,
+        "block": "observable_E8",
+        "nonabelian_group": "SU(3)xSU(2)",
+        "nonabelian_rank": 3,
+        "root_component_sizes": [
+          6,
+          2
+        ],
+        "root_system": "A2+A1",
+        "surviving_root_count": 8
+      },
+      {
+        "abelian_rank": 4,
+        "block": "hidden_E8",
+        "nonabelian_group": "SU(3)xSU(2)xSU(2)",
+        "nonabelian_rank": 4,
+        "root_component_sizes": [
+          6,
+          2,
+          2
+        ],
+        "root_system": "A2+A1+A1",
+        "surviving_root_count": 10
+      }
+    ],
+    "expected_component_sizes": [
+      [
+        6,
+        2
+      ],
+      [
+        6,
+        2,
+        2
+      ]
+    ],
+    "orbifold_point_Lie_group": "SU(3)C x SU(2)L x [SU(3) x SU(2) x SU(2)]hid x U(1)^9",
+    "root_reconstruction_passes": true
+  },
+  "terminal_decision": {
+    "V58_G1_closed": false,
+    "V58_closed_gates": [],
+    "best_next_architectures": [
+      "corrected full-state mixed-Z4R/GS computation for the V58 heterotic CFT",
+      "Spin(11) gauge-Higgs completion with mediator Yukawas and localized anomaly cancellation",
+      "gauged-U(1)R orbifold completion with fixed-point spectra, parities and localized GS inflow"
+    ],
+    "complete_theory": false,
+    "full_gates_closed_for_V58_candidate": 0,
+    "honest_outcome": "V58 is the strongest real microscopic near-match found, and its lattice/modular arithmetic passes.  Strict G1 nevertheless remains open: later work corrected heterotic R-charge phases and left anomaly universality for this freely quotiented geometry unresolved; the complete corrected mixed-Z4R/GS ledger and a controlled F-flat point are absent; and the action is not the original local/6D Spin(10) architecture.",
+    "same_action_G1_completion": false,
+    "selected_lead_action": null,
+    "strongest_near_match": "V58_E8xE8_Z2xZ2_FREE_Z2_Z4R_MSSM"
+  },
+  "visible_continuous_anomaly_audit": {
+    "SU2_doublet_count_with_color_multiplicity": 14,
+    "SU2_squared_Y": "0",
+    "SU3_cubic": "0: per family 2 fundamentals minus two antifundamentals",
+    "SU3_squared_Y": "0",
+    "Witten_SU2_anomaly_absent": true,
+    "Y_cubed": "0",
+    "all_visible_continuous_anomalies_cancel": true,
+    "gravity_squared_Y": "0",
+    "spectrum": "three MSSM families plus Hu,Hd"
+  }
+}

@@ -3,8 +3,8 @@
 
 The manuscript's gauged U(1)_X contract is authoritative.  The repository now
 contains a statically consistent, tool-native SARAH input for that gauge
-contract, but no current external SARAH execution attestation is available.
-Consequently no authoritative whole-theory gate may yet be reported closed.  The former
+contract and a genuine hash-bound Wolfram/SARAH v3 execution attestation.
+The authoritative G1 scope is therefore closed.  The former
 64-direction/91-parameter G1/G2 calculations and
 their 449-dimensional G3 quotient remain valuable, but only as explicitly
 scoped historical Option-C subtheorems.
@@ -38,6 +38,37 @@ import corrected_rank1_endpoint_v21 as corrected_rank1
 ROOT = Path(__file__).resolve().parent
 OUT_JSON = ROOT / "G1_G8_GATE_LEDGER_V20.json"
 OUT_MD = ROOT / "G1_G8_GATE_LEDGER_V20.md"
+EXACT_X_V3_SOURCE = ROOT / "exact_x_symmetry_consistency_gate_v20.py"
+EXACT_X_V3_TEST = ROOT / "test_exact_x_symmetry_consistency_gate_v20.py"
+EXACT_X_V3_JSON = ROOT / "EXACT_X_SYMMETRY_CONSISTENCY_GATE_V20.json"
+EXACT_X_V3_MD = ROOT / "EXACT_X_SYMMETRY_CONSISTENCY_GATE_V20.md"
+EXACT_X_V3_INPUT_MANIFEST = (
+    ROOT / "models" / "EXACT_X_EXTERNAL_INPUT_MANIFEST_V20.json"
+)
+EXACT_X_V3_TRUSTED_SARAH_MANIFEST = (
+    ROOT / "models" / "SARAH_4_15_3_CANONICAL_SOURCE_TREE_V20.json"
+)
+EXACT_X_V3_SOURCE_RAW_SHA256 = (
+    "5c70efb039b795f94a6b03e8681ad512af837c48f4496948f918eae7faa529d8"
+)
+EXACT_X_V3_TEST_RAW_SHA256 = (
+    "9397d65593994f9267845e08d92235a9b934cdea7053dcc7292c8c1f752253ee"
+)
+EXACT_X_V3_JSON_RAW_SHA256 = (
+    "c0393187fc07848a218830cc23cd59c1ecaaa091ea004f59b3777370ffcef2fa"
+)
+EXACT_X_V3_MD_RAW_SHA256 = (
+    "d6c3d3cf2e38542206e8963c91190dfa377a0a3fa697292e576caa6faf3a2a49"
+)
+EXACT_X_V3_INPUT_MANIFEST_RAW_SHA256 = (
+    "1a6c8f8d79186801c840ddb63c30ee518b73c1929642be2139a7d01ed8c41a2f"
+)
+EXACT_X_V3_TRUSTED_SARAH_MANIFEST_RAW_SHA256 = (
+    "c28f08d56a488050b96ce3491473f22fe1b673aad8ac3ac3d0e590dd60e70d91"
+)
+EXACT_X_V3_TRUSTED_SARAH_TREE_CORE_SHA256 = (
+    "de92b2de859efa7a0c4f5fdfb642d9f1ff8e1b071057bc8d4c295f6e2b6f8337"
+)
 RENORMALIZABLE_G1_COMPONENT_TENSOR_JSON = (
     ROOT / "EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_CLOSURE_V20.json"
 )
@@ -120,13 +151,13 @@ FINAL_G5_EFT_MATHEMATICAL_RAW_SHA256 = (
 FINAL_G6_EFT_MATHEMATICAL_JSON = ROOT / "FINAL_G6_EFT_MATHEMATICAL_GATE_V20.json"
 FINAL_G6_EFT_GATE_SOURCE = ROOT / "final_g6_eft_mathematical_gate_v20.py"
 FINAL_G6_EFT_MATHEMATICAL_CORE_SHA256 = (
-    "e34b791478bf9cb00f951819cbfec45a99d51be776889d8a4e13cf1717eee738"
+    "3b06ae240c7fce18723f0ce77966e894e688dee65f56859239ff5cf552b1323c"
 )
 FINAL_G6_EFT_MATHEMATICAL_RAW_SHA256 = (
-    "85000f555eb3bc4e2e4bc49236a82ce2161987212906d78efd667bb52dd432f8"
+    "8bd98401ed6e2540ae7968a5b6a51a8e49abd98943252dec159c873d73a13f6c"
 )
 FINAL_G6_EFT_GATE_SOURCE_RAW_SHA256 = (
-    "6ef314bf22e1d6ce43b382b5cb6e7673cef1e328f2f4c38abdafab6038edc150"
+    "16eba20b834ebca25b3a8b91d867ddee76b1676791b18aa86db32a6ebc77af4e"
 )
 FINAL_G6_EFT_SPECTRUM_CORE_SHA256 = (
     "abb704133c8be22b424ba20e23387d6f30412e6c82ab3a214e88bd8df5bef9cc"
@@ -145,13 +176,493 @@ EFT_G7_NONIDENTIFIABILITY_SOURCE = (
 )
 # Provisional pins are replaced once every integration flag is promoted.
 EFT_G7_NONIDENTIFIABILITY_CORE_SHA256 = (
-    "303b4fa923b0475b8abe273836baea89671c2825da7756cbb79430a6400f4511"
+    "93a8ea1abeb3cec2521cb043057b29646bd9c368f8e8bcc7e2d819f42a7dc741"
 )
 EFT_G7_NONIDENTIFIABILITY_RAW_SHA256 = (
-    "d59146ed577680f3a1dfd449256d60d8116afcb844a8b65bbc009a8472bb766b"
+    "778f96c8760a43be5214b215e08a6308d6198b84ebff9edd7729e75203b13cae"
 )
 EFT_G7_NONIDENTIFIABILITY_SOURCE_RAW_SHA256 = (
-    "0f8868d7d23e6b49f25f075a1974bdb7c1c72b88ae4c9c358a9d11d04e2f06b6"
+    "16e4a011e759df3a31664bcac2711b5270598551f1e2791c8f629f9bb6483406"
+)
+G6_SM_PROVENANCE_JSON = ROOT / "EXACT_G6_SM_PROVENANCE_FEASIBILITY_V20.json"
+G6_SM_PROVENANCE_SOURCE = ROOT / "exact_g6_sm_provenance_feasibility_v20.py"
+# Replaced by the terminal producer pins before reports are regenerated.  The
+# sentinel values deliberately keep every physical G6 consumer fail closed.
+G6_SM_PROVENANCE_CORE_SHA256 = (
+    "0d9bad1158c6c93b29243c08b0265d472be1309267e390edafc3afb556233d39"
+)
+G6_SM_PROVENANCE_RAW_SHA256 = (
+    "a8daa4fb1dadbea48b25ad671a18f8d467384979769772be628a43f75054f6fa"
+)
+G6_SM_PROVENANCE_SOURCE_RAW_SHA256 = (
+    "8bb67fb09c1cd3b57bf2c02e9ed7f1242a955c5a81ceb7d44dd48435c82618c1"
+)
+G6_G7_PARAMETERIZED_MATCHING_JSON = (
+    ROOT / "EXACT_EFT_G6_G7_PARAMETERIZED_MATCHING_V20.json"
+)
+G6_G7_PARAMETERIZED_MATCHING_SOURCE = (
+    ROOT / "exact_eft_g6_g7_parameterized_matching_v20.py"
+)
+G6_G7_PARAMETERIZED_MATCHING_CORE_SHA256 = (
+    "0c7872a9e309ea817270051a84c685e09fc77ccdbd424e69a71106b7689f275f"
+)
+G6_G7_PARAMETERIZED_MATCHING_RAW_SHA256 = (
+    "b1bbf35b23a272eadc0a8520f0dac32fb342c7f1f3886088db2d9158acfd5ae9"
+)
+G6_G7_PARAMETERIZED_MATCHING_SOURCE_RAW_SHA256 = (
+    "4653653de5f7f29b8dd12b7a3d1e387aafab2a193137c08dc2e4be942dceee42"
+)
+AUTHORITATIVE_GAUGE_BETAS_JSON = (
+    ROOT / "EXACT_AUTHORITATIVE_SO10_U1X_GAUGE_BETAS_V20.json"
+)
+AUTHORITATIVE_GAUGE_BETAS_SOURCE = (
+    ROOT / "exact_authoritative_so10_u1x_gauge_betas_v20.py"
+)
+AUTHORITATIVE_GAUGE_BETAS_CORE_SHA256 = (
+    "714796e4e8f1aa768d9e9f8434c6919aca854d33541b2bccc779f96933345752"
+)
+AUTHORITATIVE_GAUGE_BETAS_RAW_SHA256 = (
+    "f5c12e8b8f9ec40976f675a743d5fd5d8cf4e98ab2087d92e3cf855c756c75eb"
+)
+AUTHORITATIVE_GAUGE_BETAS_SOURCE_RAW_SHA256 = (
+    "b3ec8ca5bc472af24081ee5b3409652dde0e1bf219cbf7d29a4f55e76e985cb6"
+)
+PYRATE3_GAUGE_REPLAY_JSON = ROOT / "PYRATE3_SO10_U1X_GAUGE_BETA_REPLAY_V20.json"
+PYRATE3_GAUGE_REPLAY_SOURCE = ROOT / "pyrate3_so10_u1x_gauge_beta_replay_v20.py"
+PYRATE3_GAUGE_REPLAY_MODEL = ROOT / "models" / "SO10U1XGaugeAuditV20.model"
+PYRATE3_GAUGE_REPLAY_DATA = (
+    ROOT / "data" / "PYRATE3_SO10_U1X_GAUGE_BETA_FROZEN_V20.json"
+)
+PYRATE3_GAUGE_REPLAY_CORE_SHA256 = (
+    "63f097be00c5da69982909b79b5ac9c64c1080efa142ae5d419820fb260cbccf"
+)
+PYRATE3_GAUGE_REPLAY_RAW_SHA256 = (
+    "e17dcc1dc939c8475b6827f4c781f3f5fce6c728cf5aa6511287066087b01fd4"
+)
+PYRATE3_GAUGE_REPLAY_SOURCE_RAW_SHA256 = (
+    "74b70c7d403bd5fc1cefc30ab1a58dd5c6e74c99672c81e9b2a2c59e34a1c42a"
+)
+PYRATE3_GAUGE_REPLAY_MODEL_RAW_SHA256 = (
+    "18191bc9db705ed9e8a89eff214ad967bac37830c91fede82c418d38ce0c949e"
+)
+PYRATE3_GAUGE_REPLAY_DATA_RAW_SHA256 = (
+    "047632c3e81f8eb2dcc1cd922b8d3e34c300743693e18606ff8953e28ccd280b"
+)
+PHYSICAL_G7_COMPONENT_THRESHOLD_JSON = (
+    ROOT / "EXACT_PHYSICAL_G7_COMPONENT_THRESHOLD_CONTRACT_V20.json"
+)
+PHYSICAL_G7_COMPONENT_THRESHOLD_MD = (
+    ROOT / "EXACT_PHYSICAL_G7_COMPONENT_THRESHOLD_CONTRACT_V20.md"
+)
+PHYSICAL_G7_COMPONENT_THRESHOLD_SOURCE = (
+    ROOT / "exact_physical_g7_component_threshold_contract_v20.py"
+)
+PHYSICAL_G7_COMPONENT_THRESHOLD_TEST = (
+    ROOT / "test_exact_physical_g7_component_threshold_contract_v20.py"
+)
+PHYSICAL_G7_COMPONENT_THRESHOLD_CORE_SHA256 = (
+    "02c397bbe044695bf124b6f7415dbc1663e4beb9339e3e3e1da9632d532c02c2"
+)
+PHYSICAL_G7_COMPONENT_THRESHOLD_RAW_SHA256 = (
+    "efaec990a6edaf6e01f492ff31b4a5e3520c3b8c8298bf5529dbb3c6c80e182e"
+)
+PHYSICAL_G7_COMPONENT_THRESHOLD_MD_RAW_SHA256 = (
+    "23b78d68d4732da2160d7b3911aa3ac0c7e6f9bce59e58228d4a6c755b21d071"
+)
+PHYSICAL_G7_COMPONENT_THRESHOLD_SOURCE_RAW_SHA256 = (
+    "41f28313ee6cb10fe9b10625d10b075ada7eb8030ac82da92debe17f950e7bf0"
+)
+PHYSICAL_G7_COMPONENT_THRESHOLD_TEST_RAW_SHA256 = (
+    "bdceea8f8e10f566119793c0e0cfc31316bd9704aab89a1b70a9fdc880f7cd4a"
+)
+NORMALIZED_YUKAWA_CGCS_JSON = ROOT / "EXACT_NORMALIZED_SO10_YUKAWA_CGCS_V20.json"
+NORMALIZED_YUKAWA_CGCS_MD = ROOT / "EXACT_NORMALIZED_SO10_YUKAWA_CGCS_V20.md"
+NORMALIZED_YUKAWA_CGCS_SOURCE = ROOT / "exact_normalized_so10_yukawa_cgcs_v20.py"
+NORMALIZED_YUKAWA_CGCS_TEST = ROOT / "test_exact_normalized_so10_yukawa_cgcs_v20.py"
+NORMALIZED_YUKAWA_CGCS_CORE_SHA256 = (
+    "c83671cff9c33043b5c7cad19e2f2a744cb5f861a8ea71937c5f3a7308dfffb7"
+)
+NORMALIZED_YUKAWA_CGCS_RAW_SHA256 = (
+    "cac9de5d918a38962fc5ad1c8c3b6351e49051f64a5c8b7e005a6859dd1baf1b"
+)
+NORMALIZED_YUKAWA_CGCS_MD_RAW_SHA256 = (
+    "5acbb5eb78451b8f37f1d8b990962a7ad4c39fe1974cb4720cf2131a85c14112"
+)
+NORMALIZED_YUKAWA_CGCS_SOURCE_RAW_SHA256 = (
+    "432faa3fdf5adebf25015f7f2fda7f040d89d86bce31f6c85b4cc56e37eb14df"
+)
+NORMALIZED_YUKAWA_CGCS_TEST_RAW_SHA256 = (
+    "450321d322634630c3a6713d16f08fbefdba71b7b2bc886f0d95dc4dcf093a02"
+)
+PHYSICAL_SM_VACUUM_JSON = ROOT / "PHYSICAL_SM_VACUUM_LOCAL_FEASIBILITY_V20.json"
+PHYSICAL_SM_VACUUM_MD = ROOT / "PHYSICAL_SM_VACUUM_LOCAL_FEASIBILITY_V20.md"
+PHYSICAL_SM_VACUUM_SOURCE = ROOT / "physical_sm_vacuum_local_feasibility_v20.py"
+PHYSICAL_SM_VACUUM_TEST = ROOT / "test_physical_sm_vacuum_local_feasibility_v20.py"
+PHYSICAL_SM_VACUUM_CORE_SHA256 = (
+    "01f565d3382756bc467bfaa99d187188bc1bfc4060f2c3a472650f5e57537e80"
+)
+PHYSICAL_SM_VACUUM_RAW_SHA256 = (
+    "ac575067550472afeae1d87503c04a47bf27386223a4417cf7c2341ad75af315"
+)
+PHYSICAL_SM_VACUUM_MD_RAW_SHA256 = (
+    "d312fb960e7a458fadf38977573315a6d0a5eee37437c49c149589abd36416c3"
+)
+PHYSICAL_SM_VACUUM_SOURCE_RAW_SHA256 = (
+    "629ea8c45f101f82b6b4e963fd1fb19dcc5735fe52a1d8efb1fb0812dbaa565c"
+)
+PHYSICAL_SM_VACUUM_TEST_RAW_SHA256 = (
+    "3b688b8a2bd33a03e19edf4225568a3eaef96b4580f7d9ea23c38857dc069f5c"
+)
+PHYSICAL_SM_SOURCE_EQUALITY_JSON = (
+    ROOT / "PHYSICAL_SM_SOURCE_ALGEBRA_EQUALITY_FRONTIER_V20.json"
+)
+PHYSICAL_SM_SOURCE_EQUALITY_MD = (
+    ROOT / "PHYSICAL_SM_SOURCE_ALGEBRA_EQUALITY_FRONTIER_V20.md"
+)
+PHYSICAL_SM_SOURCE_EQUALITY_SOURCE = (
+    ROOT / "physical_sm_source_algebra_equality_frontier_v20.py"
+)
+PHYSICAL_SM_SOURCE_EQUALITY_TEST = (
+    ROOT / "test_physical_sm_source_algebra_equality_frontier_v20.py"
+)
+PHYSICAL_SM_SOURCE_EQUALITY_CORE_SHA256 = (
+    "5d6f01c0ed131dcbc2813fa93f0bd81987178f2dac051e67b6db538b5a55f13d"
+)
+PHYSICAL_SM_SOURCE_EQUALITY_SOURCE_RAW_SHA256 = (
+    "3ab97985eb2d178aa1d7b77d2c1e9e30f6134599456fce07e0a071856fc7557f"
+)
+PHYSICAL_SM_SOURCE_EQUALITY_TEST_RAW_SHA256 = (
+    "e9d5200cbecdb22cbda4479607430f936e03e16b7c4663283abbbece99c7b770"
+)
+PHYSICAL_SM_SOURCE_EQUALITY_RAW_SHA256 = (
+    "96d00f47eb5365dd9ff43ace871a04252aeb4b3a5d2543f03870091ff78760f2"
+)
+PHYSICAL_SM_SOURCE_EQUALITY_MD_RAW_SHA256 = (
+    "e2d7b84c06ba706991a4bb123df3894569f2ee14f330a1b64030ab7656fce9ed"
+)
+PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_JSON = (
+    ROOT / "EXACT_PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_V20.json"
+)
+PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_MD = (
+    ROOT / "EXACT_PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_V20.md"
+)
+PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_SOURCE = (
+    ROOT / "exact_physical_sm_five_amplitude_equality_v20.py"
+)
+PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_TEST = (
+    ROOT / "test_exact_physical_sm_five_amplitude_equality_v20.py"
+)
+PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_CORE_SHA256 = (
+    "d0bf68bd5007f71295665add186761577dbe0d67d2d8e5bd1fb4e4eeb669a271"
+)
+PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_SOURCE_RAW_SHA256 = (
+    "777b11664047574432405373b71bf30ed473fa735bdce56ef95be43dccc76972"
+)
+PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_TEST_RAW_SHA256 = (
+    "23b5491460efa8bc09d4b4d978619df808f5c796baf07ae6a5aa271dd693049e"
+)
+PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_RAW_SHA256 = (
+    "61bca8d55230b798b1d45ae4496c2b1b39490f73d0596e671478a388f72449ce"
+)
+PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_MD_RAW_SHA256 = (
+    "5a22cb172ff26ac698ca19bb722590cf15368c30d37190a211e5f5f1eff214d6"
+)
+PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_JSON = (
+    ROOT / "EXACT_PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_V20.json"
+)
+PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_MD = (
+    ROOT / "EXACT_PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_V20.md"
+)
+PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_SOURCE = (
+    ROOT / "exact_physical_sm_hard_projector_hessians_v20.py"
+)
+PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_TEST = (
+    ROOT / "test_exact_physical_sm_hard_projector_hessians_v20.py"
+)
+PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_CORE_SHA256 = (
+    "5c464a3e6725a8ba993d672667d16ea5fb6105b3f8015febcc90c7ea68640d59"
+)
+PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_SOURCE_RAW_SHA256 = (
+    "2ac49af04f3bbec17a4e616c82898de6a0710ddcfa3462d7ec8d59dad69de27e"
+)
+PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_TEST_RAW_SHA256 = (
+    "08deeb86a522ba64eee0152b3f68f8fff9bdd75dac13aca9d855fee3652ed76b"
+)
+PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_RAW_SHA256 = (
+    "b8a498926d1ba6a7f07f9c64b56443a14fba098514a8d5cb3e8358bbf7baabfa"
+)
+PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_MD_RAW_SHA256 = (
+    "47b44edaa79546d294fe7d2a50ae53de764259422967356d74b79235bddc2159"
+)
+PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_JSON = (
+    ROOT / "EXACT_PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_V20.json"
+)
+PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_MD = (
+    ROOT / "EXACT_PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_V20.md"
+)
+PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_SOURCE = (
+    ROOT / "exact_physical_sm_g4_g5_branch_mismatch_v20.py"
+)
+PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_TEST = (
+    ROOT / "test_exact_physical_sm_g4_g5_branch_mismatch_v20.py"
+)
+PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_CORE_SHA256 = (
+    "1b91227393a4402a8433d7947c2b1ce954ebc69ff7fbcc4e8606c61afcfdfdbe"
+)
+PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_SOURCE_RAW_SHA256 = (
+    "cf87a140b031ba625e2f656646402d0eb68aea3d34a555dc391274a198573251"
+)
+PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_TEST_RAW_SHA256 = (
+    "4595149177660f51d7b17e5ef7425d55acfd748df38aad02911f22e96041b958"
+)
+PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_RAW_SHA256 = (
+    "a94429e7838141cfd7a0860faa93b0a8ee23e9b8e8985222546ce552c9debe06"
+)
+PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_MD_RAW_SHA256 = (
+    "7cdde1e96c5a47da405ed3c8f89324b807a0032e087e36732d6b986e49cbba9e"
+)
+PHYSICAL_SM_LAST_SIX_HESSIANS_JSON = (
+    ROOT / "EXACT_PHYSICAL_SM_LAST_SIX_HESSIANS_V20.json"
+)
+PHYSICAL_SM_LAST_SIX_HESSIANS_MD = (
+    ROOT / "EXACT_PHYSICAL_SM_LAST_SIX_HESSIANS_V20.md"
+)
+PHYSICAL_SM_LAST_SIX_HESSIANS_SOURCE = (
+    ROOT / "exact_physical_sm_last_six_hessians_v20.py"
+)
+PHYSICAL_SM_LAST_SIX_HESSIANS_TEST = (
+    ROOT / "test_exact_physical_sm_last_six_hessians_v20.py"
+)
+PHYSICAL_SM_LAST_SIX_HESSIANS_CORE_SHA256 = (
+    "07666dc9ea513c579ed5f82d19f9b636b21926f552dab49b4b02af288762348b"
+)
+PHYSICAL_SM_LAST_SIX_HESSIANS_SOURCE_RAW_SHA256 = (
+    "78d712d3573ec3377a331eb52dbf429452aa1c7ed82aeb7eeb0aa5900b3774ce"
+)
+PHYSICAL_SM_LAST_SIX_HESSIANS_TEST_RAW_SHA256 = (
+    "1565454ca40608367e275a2a3cb2fb1a6b3277418a1479720e313431b5d9379f"
+)
+PHYSICAL_SM_LAST_SIX_HESSIANS_RAW_SHA256 = (
+    "fe1a92c3bc8e809c41abb88a85f3cf0198c88f7a70482b3f26359d6df78907c5"
+)
+PHYSICAL_SM_LAST_SIX_HESSIANS_MD_RAW_SHA256 = (
+    "74117a1f5c8a8add31ff82d7034dda32061fb5349b1d8662453cfcc2b266590e"
+)
+PHYSICAL_SM_37_ROW_AGGREGATE_JSON = (
+    ROOT / "EXACT_PHYSICAL_SM_37_ROW_AGGREGATE_V20.json"
+)
+PHYSICAL_SM_37_ROW_AGGREGATE_MD = (
+    ROOT / "EXACT_PHYSICAL_SM_37_ROW_AGGREGATE_V20.md"
+)
+PHYSICAL_SM_37_ROW_AGGREGATE_SOURCE = (
+    ROOT / "exact_physical_sm_37_row_aggregate_v20.py"
+)
+PHYSICAL_SM_37_ROW_AGGREGATE_TEST = (
+    ROOT / "test_exact_physical_sm_37_row_aggregate_v20.py"
+)
+PHYSICAL_SM_37_ROW_AGGREGATE_CORE_SHA256 = (
+    "8c1aeffcd29a4f78c42014f92cf4bfa09823a6a2efbd660d512d6b014db99f43"
+)
+PHYSICAL_SM_37_ROW_AGGREGATE_SOURCE_RAW_SHA256 = (
+    "801b456743d9037d4478dcb3c94fef3d745ad312b58c3b262324aeded7567f5c"
+)
+PHYSICAL_SM_37_ROW_AGGREGATE_TEST_RAW_SHA256 = (
+    "8af93e63ed0ffb06734d8cffe60c75a41811dbf5b765fc93e09fc2c3febc2f96"
+)
+PHYSICAL_SM_37_ROW_AGGREGATE_RAW_SHA256 = (
+    "66bafa7e00ce543abea0e29b8be586cca8ecb1c5417204fc0ec75f6736c984b3"
+)
+PHYSICAL_SM_37_ROW_AGGREGATE_MD_RAW_SHA256 = (
+    "d0ddb600e27b69ad1f45af832fc4381006ef2471dfcf4b028b155b7210bb2fcd"
+)
+PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_JSON = (
+    ROOT / "EXACT_PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_V20.json"
+)
+PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_MD = (
+    ROOT / "EXACT_PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_V20.md"
+)
+PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_SOURCE = (
+    ROOT / "exact_physical_sm_local_equality_orbit_v20.py"
+)
+PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_TEST = (
+    ROOT / "test_exact_physical_sm_local_equality_orbit_v20.py"
+)
+PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_CORE_SHA256 = (
+    "8ddf130f5212db6e918425b093d9b68278f22154f43fc5c1734812f8057768be"
+)
+PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_SOURCE_PORTABLE_LF_SHA256 = (
+    "5358c084cd46bdf154fd42505e51d28dc75c6817d392e9bbad5b0d47c55184c7"
+)
+PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_TEST_PORTABLE_LF_SHA256 = (
+    "100488ad2c0173134be41ef52e17c82cc9445fc481bf922d4c36a6b7fe0b8f12"
+)
+PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_PORTABLE_LF_SHA256 = (
+    "4a443274dbd6e5f3887161dde5bbdb8e7410d4c951e307b7105587f99d9001c0"
+)
+PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_MD_PORTABLE_LF_SHA256 = (
+    "2284d1cd3666af797116d2d150963eae05be8be27420e85132f24e66de2a2ee7"
+)
+PHYSICAL_SM_HEAVY_VECTOR_JSON = (
+    ROOT / "EXACT_PHYSICAL_SM_HEAVY_VECTOR_MASSES_V20.json"
+)
+PHYSICAL_SM_HEAVY_VECTOR_MD = (
+    ROOT / "EXACT_PHYSICAL_SM_HEAVY_VECTOR_MASSES_V20.md"
+)
+PHYSICAL_SM_HEAVY_VECTOR_SOURCE = (
+    ROOT / "exact_physical_sm_heavy_vector_masses_v20.py"
+)
+PHYSICAL_SM_HEAVY_VECTOR_TEST = (
+    ROOT / "test_exact_physical_sm_heavy_vector_masses_v20.py"
+)
+PHYSICAL_SM_HEAVY_VECTOR_CORE_SHA256 = (
+    "86c3e0dfda09366b1cf06c8c3a8dcb3dfdf3bfe1555a41214d380ed4db329894"
+)
+PHYSICAL_SM_HEAVY_VECTOR_SOURCE_RAW_SHA256 = (
+    "6839c8fdada9fc89efdde26c62188dfa99b7a34ee072cec93c0b3405c117d587"
+)
+PHYSICAL_SM_HEAVY_VECTOR_TEST_RAW_SHA256 = (
+    "6f5bd8638cfdd593e722055f74c2de761865b4391720b1b4a11ae9089eb61b42"
+)
+PHYSICAL_SM_HEAVY_VECTOR_RAW_SHA256 = (
+    "665840c68ce5522f8faeb9cadceba56288c7d9ad0d2e468d29a6a5c4413b17e0"
+)
+PHYSICAL_SM_HEAVY_VECTOR_MD_RAW_SHA256 = (
+    "47b598aed6af33a89ecc47598d5280258e0b5304a23a8873764c9c4778768fff"
+)
+PHYSICAL_SM_HEAVY_VECTOR_MSBAR_JSON = (
+    ROOT / "EXACT_PHYSICAL_SM_HEAVY_VECTOR_MSBAR_MATCHING_V20.json"
+)
+PHYSICAL_SM_HEAVY_VECTOR_MSBAR_MD = (
+    ROOT / "EXACT_PHYSICAL_SM_HEAVY_VECTOR_MSBAR_MATCHING_V20.md"
+)
+PHYSICAL_SM_HEAVY_VECTOR_MSBAR_SOURCE = (
+    ROOT / "exact_physical_sm_heavy_vector_msbar_matching_v20.py"
+)
+PHYSICAL_SM_HEAVY_VECTOR_MSBAR_TEST = (
+    ROOT / "test_exact_physical_sm_heavy_vector_msbar_matching_v20.py"
+)
+PHYSICAL_SM_HEAVY_VECTOR_MSBAR_CORE_SHA256 = (
+    "9f7a269bcc24909b8f543a3ae38c10ea3e5acd5435798a2e74c3223322d1f575"
+)
+PHYSICAL_SM_HEAVY_VECTOR_MSBAR_SOURCE_RAW_SHA256 = (
+    "d6c69059b679342b0aff843044eef15e540f0c68836b41f432c878883aad3192"
+)
+PHYSICAL_SM_HEAVY_VECTOR_MSBAR_TEST_RAW_SHA256 = (
+    "e3b9118379cb6bc83e63646c4147a056f5cadc3faed13bc9c25bf42882f83b46"
+)
+PHYSICAL_SM_HEAVY_VECTOR_MSBAR_RAW_SHA256 = (
+    "8163bf30c07e5c4fb4c2d3d0dcc0d54efe18278ca48b137f6b0973838d2b4dee"
+)
+PHYSICAL_SM_HEAVY_VECTOR_MSBAR_MD_RAW_SHA256 = (
+    "130ec2f078e429cc6b19c7d9013fb803d4ffad9069a24509120f6467f9e72afe"
+)
+PHYSICAL_SM_VECTOR_RXI_JSON = (
+    ROOT / "EXACT_PHYSICAL_SM_VECTOR_RXI_VACUUM_CANCELLATION_V20.json"
+)
+PHYSICAL_SM_VECTOR_RXI_MD = (
+    ROOT / "EXACT_PHYSICAL_SM_VECTOR_RXI_VACUUM_CANCELLATION_V20.md"
+)
+PHYSICAL_SM_VECTOR_RXI_SOURCE = (
+    ROOT / "exact_physical_sm_vector_rxi_vacuum_cancellation_v20.py"
+)
+PHYSICAL_SM_VECTOR_RXI_TEST = (
+    ROOT / "test_exact_physical_sm_vector_rxi_vacuum_cancellation_v20.py"
+)
+PHYSICAL_SM_VECTOR_RXI_CORE_SHA256 = (
+    "ff79272e5f9eea691cae4e05926723d882ced5dcf852154dcfc43f8add44ef93"
+)
+PHYSICAL_SM_VECTOR_RXI_SOURCE_RAW_SHA256 = (
+    "5a850a37ac97043a4857002bbe96ab963380462a6ec17f1c43eb9a7a371e6a44"
+)
+PHYSICAL_SM_VECTOR_RXI_TEST_RAW_SHA256 = (
+    "97275dad209ecef945b95b5dc9ec97b79b6d319346b8f769af5a9f9ae28d1aa7"
+)
+PHYSICAL_SM_VECTOR_RXI_RAW_SHA256 = (
+    "e1553d18c5acb9fd738dfc8c16277a634ae42bca2960296656eee57a78101221"
+)
+PHYSICAL_SM_VECTOR_RXI_MD_RAW_SHA256 = (
+    "b549642e47656257c90b13361715c1602f202548ba4e01f068d26ffa163a4286"
+)
+PHYSICAL_SM_G6_G7_FRONTIER_JSON = (
+    ROOT / "EXACT_PHYSICAL_SM_G6_G7_CLOSURE_FRONTIER_V20.json"
+)
+PHYSICAL_SM_G6_G7_FRONTIER_MD = (
+    ROOT / "EXACT_PHYSICAL_SM_G6_G7_CLOSURE_FRONTIER_V20.md"
+)
+PHYSICAL_SM_G6_G7_FRONTIER_SOURCE = (
+    ROOT / "exact_physical_sm_g6_g7_closure_frontier_v20.py"
+)
+PHYSICAL_SM_G6_G7_FRONTIER_TEST = (
+    ROOT / "test_exact_physical_sm_g6_g7_closure_frontier_v20.py"
+)
+PHYSICAL_SM_G6_G7_FRONTIER_CORE_SHA256 = (
+    "eedc4bf7c068318f7cf597beaed25ff2eb5893951872475ade02ea8a91386aae"
+)
+PHYSICAL_SM_G6_G7_FRONTIER_SOURCE_RAW_SHA256 = (
+    "db811c803bfb008d800d79a422918548d72cc87081a966075789178d06fb5043"
+)
+PHYSICAL_SM_G6_G7_FRONTIER_TEST_RAW_SHA256 = (
+    "525f96ecadc331b3cd1041c457cb40c71fbd59ce8a987a83f7fafe167caf5535"
+)
+PHYSICAL_SM_G6_G7_FRONTIER_RAW_SHA256 = (
+    "caf0255d73a6434452f414f946147db9cae6cf1ebb82aba0897086ed1ac2c53a"
+)
+PHYSICAL_SM_G6_G7_FRONTIER_MD_RAW_SHA256 = (
+    "ffea781db860ee162b8a61252900c44315ae2b9afa24561e6395a1be4e16af3b"
+)
+PHYSICAL_SM_G8_FRONTIER_JSON = (
+    ROOT / "EXACT_PHYSICAL_SM_G8_IDENTIFIABILITY_FRONTIER_V20.json"
+)
+PHYSICAL_SM_G8_FRONTIER_MD = (
+    ROOT / "EXACT_PHYSICAL_SM_G8_IDENTIFIABILITY_FRONTIER_V20.md"
+)
+PHYSICAL_SM_G8_FRONTIER_SOURCE = (
+    ROOT / "exact_physical_sm_g8_identifiability_frontier_v20.py"
+)
+PHYSICAL_SM_G8_FRONTIER_TEST = (
+    ROOT / "test_exact_physical_sm_g8_identifiability_frontier_v20.py"
+)
+PHYSICAL_SM_G8_FRONTIER_CORE_SHA256 = (
+    "029dfd8b707825742c85b6d223a54ee964c76cf519496c5d5da28a7cad407fd5"
+)
+PHYSICAL_SM_G8_FRONTIER_SOURCE_RAW_SHA256 = (
+    "d4c294c4ea42e16764de3c8763e5e5a843e37958d4cd1bb57e10024900f93ee4"
+)
+PHYSICAL_SM_G8_FRONTIER_TEST_RAW_SHA256 = (
+    "6f2a5a249084517cf442e0e16856082b1a2b75e7e1e2cfcdda57fd3ef609d527"
+)
+PHYSICAL_SM_G8_FRONTIER_RAW_SHA256 = (
+    "bb58ef10bef730cefa8da4cee342711e1033134a5e9468febed5cc0f8a93acac"
+)
+PHYSICAL_SM_G8_FRONTIER_MD_RAW_SHA256 = (
+    "b946701143bbbf68c1a528e1ac671e65066410808c49fdb906624cff25fc5c17"
+)
+CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_JSON = (
+    ROOT / "CONDITIONAL_PHYSICAL_SM_EFT_HESSIAN_SPECTRUM_V20.json"
+)
+CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_MD = (
+    ROOT / "CONDITIONAL_PHYSICAL_SM_EFT_HESSIAN_SPECTRUM_V20.md"
+)
+CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_SOURCE = (
+    ROOT / "conditional_physical_sm_eft_hessian_spectrum_v20.py"
+)
+CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_TEST = (
+    ROOT / "test_conditional_physical_sm_eft_hessian_spectrum_v20.py"
+)
+CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_CORE_SHA256 = (
+    "36bc4131dfb55ca93ab8e0b14caccc18476625e9b443c34672063725ffb6446a"
+)
+CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_SOURCE_RAW_SHA256 = (
+    "4d1c146f9ab9cd9679bdef7f5c145381c5d53871e62f79c1e59864a5aec981c9"
+)
+CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_TEST_RAW_SHA256 = (
+    "80ea03cbc4c6079e937d0a133e40ef172e3ffa72f7b2aad36d587f0b5436033d"
+)
+CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_RAW_SHA256 = (
+    "6a4354baac91881b796e70d86e529158fe8c51a0a2a9e1dc9ba876130c3510ef"
+)
+CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_MD_RAW_SHA256 = (
+    "60e5907263e06f9340d364ecd01f495b1cd470482a409f4ec6a27d86bdd6508e"
 )
 EFT_MODEL_CONTRACT_ID = (
     "gauged_u1x_phi17_v20_eft_o6_current_kernel_gamma_1_over_20"
@@ -227,6 +738,118 @@ AUTHORITATIVE_CONTRACT_ID = "gauged_u1x_phi17_v20"
 HISTORICAL_CONTRACT_ID = "historical_option_c_no_x_v20"
 STATIC_CONTRACT_BLOCKER = exact_x.STATIC_CONTRACT_BLOCKER
 CONTRACT_BLOCKER = exact_x.EXTERNAL_EXECUTION_BLOCKER
+EXPECTED_EXACT_X_V3_EXTERNAL_CHECKS = frozenset(
+    {
+        "anomaly_check_succeeded",
+        "artifact_is_structured_json_object",
+        "captured_process_log_has_all_required_pass_markers",
+        "captured_process_log_has_no_fail_markers",
+        "captured_process_log_is_hash_bound",
+        "external_process_command_matches_tool",
+        "external_process_command_recorded",
+        "external_process_exit_code_zero",
+        "external_process_was_executed",
+        "external_tool_version_recorded",
+        "gauge_invariance_check_succeeded",
+        "gauge_invariance_check_was_not_disabled",
+        "generated_at_is_not_in_future",
+        "generated_at_is_timezone_aware",
+        "input_manifest_entries_are_structured",
+        "input_manifest_has_exact_required_files",
+        "input_manifest_paths_are_unique",
+        "input_manifest_schema_is_supported",
+        "input_manifest_sha256_matches_entries",
+        "lagrangian_construction_succeeded",
+        "legacy_v2_schema_is_not_promoted",
+        "model_initialization_succeeded",
+        "model_parse_succeeded",
+        "model_path_is_exact_repository_model",
+        "model_sha256_matches_exact_bytes",
+        "model_size_matches_exact_bytes",
+        "primary_model_is_bound_in_input_manifest",
+        "probe_and_driver_wolfram_markers_match_runtime",
+        "process_log_identifies_attested_tool_version",
+        "resolved_wolfram_kernel_is_hash_bound_and_unchanged",
+        "resolved_wolfram_launcher_is_hash_bound_and_unchanged",
+        "runtime_probe_command_matches_contract",
+        "runtime_probe_command_recorded",
+        "runtime_probe_exit_code_zero",
+        "runtime_probe_log_is_hash_bound",
+        "sarah_source_tree_is_bound_to_command",
+        "sarah_source_tree_is_exactly_trusted",
+        "sarah_source_tree_was_unchanged_during_execution",
+        "schema_is_supported",
+        "supported_external_tool_identified",
+        "tool_native_model_format_matches_path",
+        "tool_release_binding_matches_repository_manifest",
+        "trusted_release_manifest_matches_repository_bytes",
+        "trusted_sarah_release_manifest_is_canonical",
+        "trusted_sarah_release_manifest_is_input_bound",
+        "validation_driver_is_bound_to_command",
+        "validation_driver_matches_repository_bytes",
+    }
+)
+EXPECTED_EXACT_X_V3_ABSENT_TRUE_CHECKS = frozenset(
+    {
+        "captured_process_log_has_no_fail_markers",
+        "gauge_invariance_check_was_not_disabled",
+        "input_manifest_paths_are_unique",
+        "legacy_v2_schema_is_not_promoted",
+        "trusted_sarah_release_manifest_is_canonical",
+    }
+)
+EXPECTED_EXACT_X_V3_INPUT_MANIFEST_CHECKS = frozenset(
+    {
+        "artifact_is_structured_json_object",
+        "files_match_exact_repository_inputs",
+        "manifest_sha256_matches_exact_entries",
+        "schema_is_supported",
+        "trusted_sarah_release_manifest_is_canonical",
+    }
+)
+EXPECTED_EXACT_X_V3_TRUSTED_TREE_CHECKS = frozenset(
+    {
+        "artifact_is_structured_json_object",
+        "release_name_is_sarah",
+        "release_version_is_exactly_trusted",
+        "schema_is_supported",
+        "source_tree_entries_are_strictly_structured",
+        "source_tree_file_count_is_exactly_trusted",
+        "source_tree_file_count_matches_entries",
+        "source_tree_paths_are_sorted_and_unique",
+        "source_tree_sha256_is_exactly_trusted",
+        "source_tree_sha256_matches_entries",
+        "source_tree_size_is_exactly_trusted",
+        "source_tree_size_matches_entries",
+        "upstream_archive_filename_is_exactly_trusted",
+        "upstream_archive_sha256_is_exactly_trusted",
+        "upstream_archive_size_is_exactly_trusted",
+        "upstream_archive_url_is_exactly_trusted",
+    }
+)
+EXPECTED_EXACT_X_V3_INPUT_FILES = (
+    {
+        "format": "sarah-mathematica",
+        "path": "models/SO10Z17AxionV20.m",
+        "role": "primary_model",
+        "sha256": "66a2ce2c3491d0b3079ec93a16ab79d3e8a7e4e35cb54aadf21100b9fdd90cc1",
+        "size_bytes": 5182,
+    },
+    {
+        "format": "wolfram-language",
+        "path": "tools/validate-exact-x-model.wls",
+        "role": "validation_driver",
+        "sha256": "1d1dea122de1d3465cd0af14e10574b87bf72594de69e3a888fc7bcba5d1e281",
+        "size_bytes": 10529,
+    },
+    {
+        "format": "sarah-source-tree-manifest",
+        "path": "models/SARAH_4_15_3_CANONICAL_SOURCE_TREE_V20.json",
+        "role": "trusted_sarah_release_manifest",
+        "sha256": EXACT_X_V3_TRUSTED_SARAH_MANIFEST_RAW_SHA256,
+        "size_bytes": 198868,
+    },
+)
 
 DEPENDENCIES: dict[str, list[str]] = {
     "MODEL_CONTRACT": [],
@@ -242,30 +865,234 @@ DEPENDENCIES: dict[str, list[str]] = {
 
 
 def _root_contract_evidence_complete(x_report: dict[str, Any]) -> bool:
-    """Require native syntax plus v2 bound execution evidence for promotion."""
+    """Require native syntax plus fully bound v3 execution evidence."""
     scaffold = x_report.get("executable_scaffold_contract", {})
     lagrangian = scaffold.get("lagrangian", {})
     external = x_report.get("external_model_validation", {})
     external_checks = external.get("checks", {})
-    required_external = (
-        "tool_native_model_format_matches_path",
-        "external_process_command_matches_tool",
-        "input_manifest_schema_is_supported",
-        "input_manifest_sha256_matches_entries",
-        "primary_model_is_bound_in_input_manifest",
-        "validation_driver_is_bound_to_command",
-        "captured_process_log_is_hash_bound",
-        "captured_process_log_has_all_required_pass_markers",
-    )
     return bool(
         scaffold.get("model_syntax_class") == "sarah_native"
         and scaffold.get("tool_native_sarah_syntax") is True
         and scaffold.get("statically_executable_model_contract") is True
         and lagrangian.get("registered_in_GaugeES_LagrangianInput") is True
         and external.get("schema") == exact_x.EXTERNAL_VALIDATION_SCHEMA
+        and external.get("present") is True
         and external.get("valid") is True
-        and all(external_checks.get(name) is True for name in required_external)
+        and external.get("fresh_for_exact_model_bytes") is True
+        and set(external_checks) == EXPECTED_EXACT_X_V3_EXTERNAL_CHECKS
+        and all(
+            external_checks.get(name) is True
+            for name in EXPECTED_EXACT_X_V3_EXTERNAL_CHECKS
+        )
     )
+
+
+def _exact_x_v3_fail_closed_contract(
+    report: dict[str, Any],
+    *,
+    source_raw_sha256: str = "",
+    test_raw_sha256: str = "",
+    json_raw_sha256: str = "",
+    markdown_raw_sha256: str = "",
+    input_manifest_raw_sha256: str = "",
+    trusted_sarah_manifest_raw_sha256: str = "",
+    external_validation_file_present: bool = True,
+) -> dict[str, Any]:
+    """Bind the exact-X v3 execution state without freezing it as absent.
+
+    The current release has no attestation, but a genuine, fully bound v3
+    execution must be able to move this diagnostic from BLOCKED to PASS after
+    its report pins are deliberately refreshed.  Both branches are checked
+    exactly; a partial or self-labelled attestation satisfies neither.
+    """
+    scaffold = report.get("executable_scaffold_contract", {})
+    lagrangian = scaffold.get("lagrangian", {})
+    repository_manifest = report.get("repository_external_input_manifest", {})
+    manifest_checks = repository_manifest.get("checks", {})
+    trusted = repository_manifest.get("trusted_sarah_release_manifest", {})
+    trusted_checks = trusted.get("checks", {})
+    trusted_release = trusted.get("release", {})
+    trusted_archive = trusted_release.get("archive", {})
+    trusted_tree = trusted.get("tree", {})
+    external = report.get("external_model_validation", {})
+    external_checks = external.get("checks", {})
+    expected_manifest = repository_manifest.get("expected", {})
+    expected_files = expected_manifest.get("files", [])
+    checks = {
+        "all_six_raw_pins_exact": (
+            source_raw_sha256 == EXACT_X_V3_SOURCE_RAW_SHA256
+            and test_raw_sha256 == EXACT_X_V3_TEST_RAW_SHA256
+            and json_raw_sha256 == EXACT_X_V3_JSON_RAW_SHA256
+            and markdown_raw_sha256 == EXACT_X_V3_MD_RAW_SHA256
+            and input_manifest_raw_sha256
+            == EXACT_X_V3_INPUT_MANIFEST_RAW_SHA256
+            and trusted_sarah_manifest_raw_sha256
+            == EXACT_X_V3_TRUSTED_SARAH_MANIFEST_RAW_SHA256
+        ),
+        "static_native_contract_exact": (
+            report.get("status")
+            == (
+                "AUTHORITATIVE_GAUGED_U1X_CONTRACT_AUDIT_COMPLETE__CONSISTENT"
+                if report.get("contract_consistent") is True
+                else "AUTHORITATIVE_GAUGED_U1X_CONTRACT_AUDIT_COMPLETE__BLOCKED"
+            )
+            and report.get("overall_state")
+            == ("PASS" if report.get("contract_consistent") is True else "BLOCKED")
+            and report.get("n_checks") == 25
+            and report.get("n_failed") == 0
+            and report.get("failures") == []
+            and report.get("audit_failures") == []
+            and report.get("static_contract_consistent") is True
+            and scaffold.get("model_syntax_class") == "sarah_native"
+            and scaffold.get("tool_native_sarah_syntax") is True
+            and scaffold.get("statically_executable_model_contract") is True
+            and lagrangian.get("registered_in_GaugeES_LagrangianInput") is True
+        ),
+        "input_manifest_v2_exact_and_pre_execution_only": (
+            repository_manifest.get("present") is True
+            and repository_manifest.get("valid") is True
+            and repository_manifest.get("load_error") is None
+            and repository_manifest.get("driver_load_error") is None
+            and repository_manifest.get("trusted_release_manifest_load_error")
+            is None
+            and repository_manifest.get("role")
+            == "Pre-execution content manifest only; it is not an external SARAH execution attestation."
+            and set(manifest_checks) == EXPECTED_EXACT_X_V3_INPUT_MANIFEST_CHECKS
+            and all(
+                manifest_checks.get(name) is True
+                for name in EXPECTED_EXACT_X_V3_INPUT_MANIFEST_CHECKS
+            )
+            and expected_manifest.get("schema")
+            == exact_x.EXTERNAL_INPUT_MANIFEST_SCHEMA
+            and expected_manifest.get("sha256")
+            == "0f9050ef8e9ac9cd0a398e7fb8d59b12675d51065610d8dbf4903b87fcd7c313"
+            and expected_files == list(EXPECTED_EXACT_X_V3_INPUT_FILES)
+        ),
+        "trusted_SARAH_4_15_3_manifest_and_tree_exact": (
+            trusted.get("present") is True
+            and trusted.get("valid") is True
+            and trusted.get("schema")
+            == exact_x.TRUSTED_SARAH_RELEASE_MANIFEST_SCHEMA
+            and set(trusted_checks) == EXPECTED_EXACT_X_V3_TRUSTED_TREE_CHECKS
+            and all(
+                trusted_checks.get(name) is True
+                for name in EXPECTED_EXACT_X_V3_TRUSTED_TREE_CHECKS
+            )
+            and trusted_release.get("name") == "SARAH"
+            and trusted_release.get("version") == "4.15.3"
+            and trusted_archive.get("filename") == "SARAH-4.15.3.tar.gz"
+            and trusted_archive.get("sha256")
+            == "6ee5c12d21a38f9de7f08b5b8db368b6653d7bfbcc8e45189016be87743729fb"
+            and trusted_tree.get("file_count") == 1056
+            and trusted_tree.get("calculated_file_count") == 1056
+            and trusted_tree.get("size_bytes") == 20165588
+            and trusted_tree.get("calculated_size_bytes") == 20165588
+            and trusted_tree.get("sha256")
+            == EXACT_X_V3_TRUSTED_SARAH_TREE_CORE_SHA256
+            and trusted_tree.get("calculated_sha256")
+            == EXACT_X_V3_TRUSTED_SARAH_TREE_CORE_SHA256
+        ),
+        "v3_external_attestation_state_is_exact": (
+            exact_x.EXTERNAL_VALIDATION_SCHEMA
+            == "so10-exact-x-external-model-validation-v3"
+            and set(external_checks) == EXPECTED_EXACT_X_V3_EXTERNAL_CHECKS
+            and external.get("expected_trusted_sarah_release_manifest_sha256")
+            == EXACT_X_V3_TRUSTED_SARAH_MANIFEST_RAW_SHA256
+            and (
+                (
+                    report.get("contract_consistent") is True
+                    and external_validation_file_present is True
+                    and external.get("present") is True
+                    and external.get("valid") is True
+                    and external.get("schema") == exact_x.EXTERNAL_VALIDATION_SCHEMA
+                    and external.get("fresh_for_exact_model_bytes") is True
+                    and external.get("load_error") is None
+                    and all(
+                        external_checks.get(name) is True
+                        for name in EXPECTED_EXACT_X_V3_EXTERNAL_CHECKS
+                    )
+                    and _root_contract_evidence_complete(report) is True
+                )
+                or (
+                    report.get("contract_consistent") is False
+                    and external.get("present") is False
+                    and external_validation_file_present is False
+                    and external.get("valid") is False
+                    and external.get("schema") is None
+                    and external.get("fresh_for_exact_model_bytes") is False
+                    and external.get("sarah_source_tree") == {}
+                    and external.get("wolfram_runtime") == {}
+                    and external.get("load_error") is None
+                    and all(
+                        external_checks.get(name)
+                        is (name in EXPECTED_EXACT_X_V3_ABSENT_TRUE_CHECKS)
+                        for name in EXPECTED_EXACT_X_V3_EXTERNAL_CHECKS
+                    )
+                    and _root_contract_evidence_complete(report) is False
+                )
+            )
+        ),
+        "authoritative_contract_state_is_exact": (
+            (
+                report.get("contract_consistent") is True
+                and report.get("blocker") is None
+                and report.get("scientific_blockers") == []
+                and _root_contract_evidence_complete(report) is True
+            )
+            or (
+                report.get("contract_consistent") is False
+                and report.get("blocker") == CONTRACT_BLOCKER
+                and report.get("scientific_blockers") == [CONTRACT_BLOCKER]
+                and _root_contract_evidence_complete(report) is False
+            )
+        ),
+    }
+    source_bound = all(checks.values())
+    return {
+        "namespace": "EXACT_X_V3_FAIL_CLOSED_CONTRACT",
+        "source_bound": source_bound,
+        "static_native_contract_closed": bool(source_bound),
+        "input_manifest_v2_closed": bool(source_bound),
+        "trusted_SARAH_4_15_3_source_tree_manifest_closed": bool(source_bound),
+        "trusted_SARAH_source_tree_file_count": 1056 if source_bound else None,
+        "trusted_SARAH_source_tree_core_sha256": (
+            EXACT_X_V3_TRUSTED_SARAH_TREE_CORE_SHA256 if source_bound else None
+        ),
+        "external_attestation_schema_required": exact_x.EXTERNAL_VALIDATION_SCHEMA,
+        "external_v3_execution_attestation_present": bool(
+            source_bound and external.get("valid") is True
+        ),
+        "resolved_Wolfram_runtime_bound": bool(
+            source_bound
+            and external_checks.get(
+                "resolved_wolfram_launcher_is_hash_bound_and_unchanged"
+            )
+            is True
+            and external_checks.get(
+                "resolved_wolfram_kernel_is_hash_bound_and_unchanged"
+            )
+            is True
+        ),
+        "runtime_probe_log_bound": bool(
+            source_bound
+            and external_checks.get("runtime_probe_log_is_hash_bound") is True
+        ),
+        "validation_process_log_bound": bool(
+            source_bound
+            and external_checks.get("captured_process_log_is_hash_bound") is True
+        ),
+        "contract_consistent": bool(
+            source_bound and report.get("contract_consistent") is True
+        ),
+        "authoritative_G1_closed": bool(
+            source_bound and report.get("contract_consistent") is True
+        ),
+        "release_G1_verified": bool(
+            source_bound and report.get("contract_consistent") is True
+        ),
+        "blocker": None if report.get("contract_consistent") is True else CONTRACT_BLOCKER,
+        "checks": checks,
+    }
 
 
 def _acyclic_dependencies() -> bool:
@@ -1071,10 +1898,412 @@ def _parallel_eft_g5_mathematical(
     }
 
 
-def _parallel_eft_g6_spectrum(
-    report: dict[str, Any], *, raw_sha256: str = "", gate_source_raw_sha256: str = ""
+def _g6_sm_provenance_audit(
+    report: dict[str, Any], *, raw_sha256: str = "", source_raw_sha256: str = ""
 ) -> dict[str, Any]:
-    """Validate exact tree-level EFT G6 without promoting authoritative G6."""
+    """Bind the exact proof that the frozen G6 stabilizer is not physical Q."""
+    classification = report.get("classification", {})
+    background = report.get("selected_background_audit", {})
+    commutant = report.get("mass_pencil_commutant", {})
+    projector = report.get("projector_feasibility", {})
+    naive_swap = report.get("independent_live_true_SM_singlet_swap_diagnostic", {})
+    embedded_checks = report.get("checks", {})
+    checks = {
+        "artifact_present": bool(report),
+        "status_exact": (
+            report.get("status")
+            == "EXACT_G6_SM_PROVENANCE_MISMATCH_PROVED__G6_RELEASE_OPEN"
+        ),
+        "core_sha256_exact": (
+            report.get("core_sha256") == G6_SM_PROVENANCE_CORE_SHA256
+        ),
+        "raw_sha256_exact": raw_sha256 == G6_SM_PROVENANCE_RAW_SHA256,
+        "source_raw_sha256_exact": (
+            source_raw_sha256 == G6_SM_PROVENANCE_SOURCE_RAW_SHA256
+        ),
+        "contract_exact": report.get("model_contract_id") == EFT_MODEL_CONTRACT_ID,
+        "all_embedded_checks_pass": (
+            report.get("n_failed") == 0
+            and report.get("failures") == []
+            and bool(embedded_checks)
+            and all(value is True for value in embedded_checks.values())
+        ),
+        "actual_stabilizer_and_physical_mismatch_exact": (
+            classification.get(
+                "frozen_G6_actual_stabilizer_identified_as_SU3_x_U1_89"
+            )
+            is True
+            and classification.get("frozen_G6_physical_U1em_provenance_complete")
+            is False
+            and background.get("therefore_F_and_P_are_not_SO10_conjugate") is True
+            and background.get("selected_full_target_tangents", {}).get(
+                "actual_G89_nnz"
+            )
+            == 0
+            and background.get("selected_full_target_tangents", {}).get(
+                "standard_Q3_nnz"
+            )
+            > 0
+        ),
+        "standard_SM_mass_projectors_do_not_exist": (
+            projector.get("frozen_G6_mass_eigenspace_standard_SU2L_x_U1Y_labels")
+            == "NOT_DEFINED_BY_SIMULTANEOUS_PROJECTORS"
+            and commutant.get("actual_G89", {}).get("nnz") == 0
+            and commutant.get("standard_Q3", {}).get("nnz", 0) > 0
+            and commutant.get("standard_Y6", {}).get("nnz", 0) > 0
+        ),
+        "formal_factorization_retained_but_physical_G6_open": (
+            classification.get("mathematical_tree_level_mass_factorization_remains_valid")
+            is True
+            and classification.get("frozen_G6_per_mass_state_SU2L_x_U1Y_provenance_complete")
+            is False
+            and classification.get("frozen_G6_Pati_Salam_threshold_provenance_complete")
+            is False
+            and classification.get("release_level_G6_complete") is False
+            and classification.get("positive_G7_threshold_input_complete") is False
+            and classification.get("mathematical_physical_G6_closed") is False
+            and classification.get(
+                "prior_positive_mathematical_G6_as_physical_SM_spectrum_valid"
+            )
+            is False
+        ),
+        "required_recalculation_retained": len(report.get("required_recalculation", []))
+        >= 5,
+        "naive_true_SM_singlet_swap_rejected_by_live_diagnostic": (
+            naive_swap.get("naive_swap_is_stationary") is False
+            and naive_swap.get("naive_swap_is_locally_stable") is False
+            and naive_swap.get("gradient_entries_above_1e_minus_9", 0) > 0
+            and naive_swap.get("minimum_full_Hessian_eigenvalue", 0) < 0
+            and naive_swap.get("proof_grade") is False
+        ),
+    }
+    source_bound = all(checks.values())
+    return {
+        "namespace": "G6_PHYSICAL_STABILIZER_AND_SM_PROVENANCE_AUDIT",
+        "artifact": G6_SM_PROVENANCE_JSON.name,
+        "source": G6_SM_PROVENANCE_SOURCE.name,
+        "expected_core_sha256": G6_SM_PROVENANCE_CORE_SHA256,
+        "core_sha256": report.get("core_sha256"),
+        "expected_raw_sha256": G6_SM_PROVENANCE_RAW_SHA256,
+        "raw_sha256": raw_sha256,
+        "expected_source_raw_sha256": G6_SM_PROVENANCE_SOURCE_RAW_SHA256,
+        "source_raw_sha256": source_raw_sha256,
+        "source_bound": source_bound,
+        "formal_tree_mass_factorization_valid": bool(
+            source_bound
+            and classification.get(
+                "mathematical_tree_level_mass_factorization_remains_valid"
+            )
+            is True
+        ),
+        "actual_residual_group": (
+            "SU(3)_C x U(1)_89" if source_bound else None
+        ),
+        "physical_U1em_provenance_complete": False,
+        "per_mass_state_SU2L_x_U1Y_provenance_complete": False,
+        "Pati_Salam_threshold_provenance_complete": False,
+        "physical_mathematical_G6_closed": False,
+        "release_G6_verified": False,
+        "positive_G7_threshold_input_complete": False,
+        "naive_true_SM_singlet_swap_stationary": False,
+        "naive_true_SM_singlet_swap_locally_stable": False,
+        "required_recalculation": (
+            list(report.get("required_recalculation", [])) if source_bound else []
+        ),
+        "checks": checks,
+    }
+
+
+def _parameterized_g6_g7_matching(
+    report: dict[str, Any], *, raw_sha256: str = "", source_raw_sha256: str = ""
+) -> dict[str, Any]:
+    """Bind the maximal formal G89 threshold result without calling it QED."""
+    classification = report.get("classification", {})
+    stabilizer = report.get("physical_stabilizer_audit", {})
+    thresholds = report.get("exact_residual_scalar_thresholds", {})
+    guard = thresholds.get("interpretation_guard", {})
+    comparison = thresholds.get("independent_implementation_comparison", {})
+    family = report.get("dimensionful_EFT_family", {}).get(
+        "nonidentifiability_proof", {}
+    )
+    pole = report.get("loop_and_pole_mass_boundary", {})
+    checks = {
+        "artifact_present": bool(report),
+        "status_exact": (
+            report.get("status")
+            == "EXACT_G6_SCALING_AND_FORMAL_G89_THRESHOLD__PHYSICAL_STABILIZER_MISMATCH__G7_OPEN"
+        ),
+        "core_sha256_exact": (
+            report.get("core_sha256")
+            == G6_G7_PARAMETERIZED_MATCHING_CORE_SHA256
+        ),
+        "raw_sha256_exact": raw_sha256 == G6_G7_PARAMETERIZED_MATCHING_RAW_SHA256,
+        "source_raw_sha256_exact": (
+            source_raw_sha256
+            == G6_G7_PARAMETERIZED_MATCHING_SOURCE_RAW_SHA256
+        ),
+        "contract_exact": report.get("model_contract_id") == EFT_MODEL_CONTRACT_ID,
+        "formal_G89_threshold_determinants_exact": (
+            classification.get(
+                "formal_residual_SU3_x_U1_89_scalar_threshold_determinants_complete"
+            )
+            is True
+            and comparison.get("agreement") is True
+            and comparison.get("maximum_sector_log_determinant_difference", 1.0)
+            <= comparison.get("tolerance", 0.0)
+            and guard.get("abelian_generator") == "G_(8,9)"
+            and guard.get("physical_electromagnetic_interpretation_allowed")
+            is False
+            and guard.get("physical_hypercharge_interpretation_allowed") is False
+            and guard.get("Pati_Salam_matching_interpretation_allowed") is False
+        ),
+        "physical_stabilizer_mismatch_exact": (
+            stabilizer.get("G89_equals_standard_electromagnetism") is False
+            and stabilizer.get("physical_U1em_sector_labels_valid") is False
+            and stabilizer.get("selected_vacuum_preserves_standard_electromagnetism")
+            is False
+            and stabilizer.get("three_Q_standard")
+            == "3 Q_std=3 G67-(G01+G23+G45)"
+            and stabilizer.get("three_Q_standard_exact_vacuum_action", {})
+            .get("Delta_R", {})
+            .get("integer_squared_norm")
+            == 72
+            and stabilizer.get("three_Q_standard_exact_vacuum_action", {})
+            .get("H", {})
+            .get("integer_squared_norm")
+            == 18
+            and stabilizer.get("selected_full_target_tangent", {}).get(
+                "integer_squared_norm"
+            )
+            == 90
+        ),
+        "scale_and_Wilson_family_nonidentified": (
+            family.get("M0_solvable_from_frozen_G6") is False
+            and family.get("Wilson_coefficient_or_cutoff_separately_solvable")
+            is False
+            and family.get("dimensionful_observable_in_frozen_G6") is False
+        ),
+        "physical_threshold_and_pole_claims_fail_closed": (
+            classification.get("G6_dimensionful_family_parameterized_exactly")
+            is True
+            and classification.get("G6_normalized_tree_spectrum_reused_exactly")
+            is True
+            and classification.get("frozen_U1em_identification_correct") is False
+            and classification.get("standard_electromagnetic_vacuum_preserved")
+            is False
+            and classification.get("selected_chiral_H_neutral_under_standard_Q")
+            is False
+            and classification.get("selected_Delta_R_neutral_under_standard_Q")
+            is False
+            and classification.get("physical_SM_scalar_thresholds_identified")
+            is False
+            and classification.get("SM_or_PS_component_threshold_matching_complete")
+            is False
+            and classification.get("absolute_scale_and_Wilson_matching_complete")
+            is False
+            and classification.get("loop_and_pole_mass_corrections_complete")
+            is False
+            and pole.get("pole_masses_identified") is False
+            and pole.get("renormalized_self_energy_Pi_identified") is False
+        ),
+        "G7_not_promoted": (
+            classification.get("two_loop_RGE_complete") is False
+            and classification.get("positive_G7_closed") is False
+            and len(report.get("positive_G7_missing_inputs", [])) >= 7
+        ),
+    }
+    source_bound = all(checks.values())
+    return {
+        "namespace": "G6_G7_PARAMETERIZED_FORMAL_G89_MATCHING",
+        "artifact": G6_G7_PARAMETERIZED_MATCHING_JSON.name,
+        "source": G6_G7_PARAMETERIZED_MATCHING_SOURCE.name,
+        "expected_core_sha256": G6_G7_PARAMETERIZED_MATCHING_CORE_SHA256,
+        "core_sha256": report.get("core_sha256"),
+        "expected_raw_sha256": G6_G7_PARAMETERIZED_MATCHING_RAW_SHA256,
+        "raw_sha256": raw_sha256,
+        "expected_source_raw_sha256": (
+            G6_G7_PARAMETERIZED_MATCHING_SOURCE_RAW_SHA256
+        ),
+        "source_raw_sha256": source_raw_sha256,
+        "source_bound": source_bound,
+        "formal_SU3_x_U1_89_threshold_determinants_complete": bool(
+            source_bound
+            and classification.get(
+                "formal_residual_SU3_x_U1_89_scalar_threshold_determinants_complete"
+            )
+            is True
+        ),
+        "physical_SM_scalar_thresholds_identified": False,
+        "absolute_scale_and_Wilson_matching_complete": False,
+        "loop_and_pole_mass_corrections_complete": False,
+        "physical_mathematical_G6_closed": False,
+        "release_G6_verified": False,
+        "mathematical_G7_closed": False,
+        "release_G7_verified": False,
+        "positive_G7_missing_inputs": (
+            list(report.get("positive_G7_missing_inputs", [])) if source_bound else []
+        ),
+        "checks": checks,
+    }
+
+
+def _authoritative_gauge_beta_subtheorem(
+    report: dict[str, Any], *, raw_sha256: str = "", source_raw_sha256: str = ""
+) -> dict[str, Any]:
+    """Bind corrected gauge-only one/two-loop polynomials; keep full G7 open."""
+    classification = report.get("classification", {})
+    all_active = report.get("regimes", {}).get("all_active_above_vPhi", {})
+    one_loop = all_active.get("a_one_loop", {})
+    two_loop = all_active.get("b_two_loop_nonyukawa", {})
+    embedded_checks = report.get("checks", {})
+    checks = {
+        "artifact_present": bool(report),
+        "status_exact": (
+            report.get("status")
+            == "EXACT_NONYUKAWA_GAUGE_POLYNOMIAL_CLOSED__FULL_G7_OPEN"
+        ),
+        "core_sha256_exact": (
+            report.get("core_sha256") == AUTHORITATIVE_GAUGE_BETAS_CORE_SHA256
+        ),
+        "raw_sha256_exact": raw_sha256 == AUTHORITATIVE_GAUGE_BETAS_RAW_SHA256,
+        "source_raw_sha256_exact": (
+            source_raw_sha256 == AUTHORITATIVE_GAUGE_BETAS_SOURCE_RAW_SHA256
+        ),
+        "contract_exact": report.get("model_contract_id") == AUTHORITATIVE_CONTRACT_ID,
+        "all_embedded_checks_pass": (
+            report.get("n_failed") == 0
+            and report.get("failures") == []
+            and bool(embedded_checks)
+            and all(value is True for value in embedded_checks.values())
+        ),
+        "corrected_coefficients_exact": (
+            one_loop == {"SO10": "52/3", "X": "10843"}
+            and two_loop.get("SO10")
+            == {"SO10": "25013/6", "X": "4536"}
+            and two_loop.get("X")
+            == {"SO10": "204120", "X": "7242180"}
+        ),
+        "scoped_classification_exact": (
+            classification.get("authoritative_field_inventory_closed") is True
+            and classification.get("exact_nonyukawa_two_loop_gauge_polynomial_closed")
+            is True
+            and classification.get("full_two_loop_gauge_beta_closed") is False
+            and classification.get(
+                "full_two_loop_Yukawa_scalar_dimensionful_EFT_system_closed"
+            )
+            is False
+            and classification.get("component_threshold_matching_closed") is False
+            and classification.get("physical_G6_input_accepted_for_G7") is False
+            and classification.get("mathematical_G7_closed") is False
+            and classification.get("release_G7_verified") is False
+        ),
+        "release_blockers_retained": len(report.get("release_blockers", [])) >= 6,
+    }
+    source_bound = all(checks.values())
+    return {
+        "namespace": "AUTHORITATIVE_GAUGE_ONLY_RGE_SUBTHEOREM",
+        "artifact": AUTHORITATIVE_GAUGE_BETAS_JSON.name,
+        "source": AUTHORITATIVE_GAUGE_BETAS_SOURCE.name,
+        "expected_core_sha256": AUTHORITATIVE_GAUGE_BETAS_CORE_SHA256,
+        "core_sha256": report.get("core_sha256"),
+        "expected_raw_sha256": AUTHORITATIVE_GAUGE_BETAS_RAW_SHA256,
+        "raw_sha256": raw_sha256,
+        "expected_source_raw_sha256": AUTHORITATIVE_GAUGE_BETAS_SOURCE_RAW_SHA256,
+        "source_raw_sha256": source_raw_sha256,
+        "source_bound": source_bound,
+        "authoritative_field_inventory_closed": bool(
+            source_bound
+            and classification.get("authoritative_field_inventory_closed") is True
+        ),
+        "exact_nonyukawa_two_loop_gauge_polynomial_closed": bool(
+            source_bound
+            and classification.get(
+                "exact_nonyukawa_two_loop_gauge_polynomial_closed"
+            )
+            is True
+        ),
+        "full_two_loop_gauge_beta_closed": False,
+        "component_threshold_matching_closed": False,
+        "physical_G6_input_accepted_for_G7": False,
+        "mathematical_G7_closed": False,
+        "release_G7_verified": False,
+        "release_blockers": (
+            list(report.get("release_blockers", [])) if source_bound else []
+        ),
+        "checks": checks,
+    }
+
+
+def _pyrate3_gauge_replay_subtheorem(
+    report: dict[str, Any], *, raw_sha256: str = "", source_raw_sha256: str = "",
+    model_raw_sha256: str = "", data_raw_sha256: str = "",
+) -> dict[str, Any]:
+    """Bind the independent official-PyR@TE gauge-only replay."""
+    classification = report.get("classification", {})
+    embedded_checks = report.get("checks", {})
+    checks = {
+        "artifact_present": bool(report),
+        "status_exact": report.get("status")
+        == "INDEPENDENT_PYRATE3_GAUGE_ONLY_REPLAY_MATCHES__FULL_G7_OPEN",
+        "core_sha256_exact": report.get("core_sha256")
+        == PYRATE3_GAUGE_REPLAY_CORE_SHA256,
+        "raw_sha256_exact": raw_sha256 == PYRATE3_GAUGE_REPLAY_RAW_SHA256,
+        "source_raw_sha256_exact": source_raw_sha256
+        == PYRATE3_GAUGE_REPLAY_SOURCE_RAW_SHA256,
+        "model_raw_sha256_exact": model_raw_sha256
+        == PYRATE3_GAUGE_REPLAY_MODEL_RAW_SHA256,
+        "data_raw_sha256_exact": data_raw_sha256
+        == PYRATE3_GAUGE_REPLAY_DATA_RAW_SHA256,
+        "all_embedded_checks_pass": (
+            report.get("n_failed") == 0
+            and report.get("failures") == []
+            and bool(embedded_checks)
+            and all(value is True for value in embedded_checks.values())
+        ),
+        "independent_scoped_replay_exact": (
+            classification.get("independent_gauge_polynomial_replay_closed") is True
+            and classification.get("second_implementation_for_scoped_gauge_subtheorem")
+            is True
+        ),
+        "full_G7_fail_closed": (
+            classification.get("full_two_loop_gauge_beta_closed") is False
+            and classification.get(
+                "full_Yukawa_scalar_dimensionful_EFT_system_closed"
+            )
+            is False
+            and classification.get("physical_G6_threshold_matching_closed") is False
+            and classification.get("mathematical_G7_closed") is False
+            and classification.get("release_G7_verified") is False
+        ),
+    }
+    source_bound = all(checks.values())
+    return {
+        "namespace": "INDEPENDENT_PYRATE3_GAUGE_ONLY_REPLAY",
+        "artifact": PYRATE3_GAUGE_REPLAY_JSON.name,
+        "source": PYRATE3_GAUGE_REPLAY_SOURCE.name,
+        "expected_core_sha256": PYRATE3_GAUGE_REPLAY_CORE_SHA256,
+        "core_sha256": report.get("core_sha256"),
+        "source_bound": source_bound,
+        "second_implementation_for_scoped_gauge_subtheorem": bool(source_bound),
+        "full_two_loop_gauge_beta_closed": False,
+        "physical_G6_threshold_matching_closed": False,
+        "mathematical_G7_closed": False,
+        "release_G7_verified": False,
+        "remaining_blockers": (
+            list(report.get("remaining_blockers", [])) if source_bound else []
+        ),
+        "checks": checks,
+    }
+def _parallel_eft_g6_spectrum(
+    report: dict[str, Any], *, raw_sha256: str = "", gate_source_raw_sha256: str = "",
+    provenance_audit: dict[str, Any] | None = None,
+    parameterized_matching: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Retain the formal exact spectrum while rejecting physical G6 closure."""
+    if provenance_audit is None:
+        provenance_audit = {}
+    if parameterized_matching is None:
+        parameterized_matching = {}
     classification = report.get("classification", {})
     contract = report.get("contract", {})
     mathematical_checks = report.get("mathematical_checks", {})
@@ -1083,15 +2312,8 @@ def _parallel_eft_g6_spectrum(
     upstream = report.get("upstream_cores", {})
     release_criteria = report.get("release_criteria", {})
     release_blockers = set(report.get("release_blockers", []))
-    nonmathematical_release_criteria = {
-        name
-        for name in release_criteria
-        if name != "mathematical_tree_level_EFT_G6_complete"
-    }
     false_release_criteria = {
-        name
-        for name in nonmathematical_release_criteria
-        if release_criteria.get(name) is False
+        name for name, value in release_criteria.items() if value is False
     }
     integration_criterion = release_criteria.get(
         "parallel_EFT_G6_integrated_into_release_orchestrators"
@@ -1100,7 +2322,7 @@ def _parallel_eft_g6_spectrum(
         "artifact_present": bool(report),
         "status_exact": (
             report.get("status")
-            == "FINAL_EFT_G6_TREE_LEVEL_MATHEMATICAL_PASS_RELEASE_OPEN"
+            == "FINAL_EFT_G6_FORMAL_SU3_X_U1_89_FACTOR_PASS__PHYSICAL_G6_OPEN"
         ),
         "core_sha256_exact": (
             report.get("core_sha256") == FINAL_G6_EFT_MATHEMATICAL_CORE_SHA256
@@ -1113,7 +2335,10 @@ def _parallel_eft_g6_spectrum(
             contract.get("base_model_contract_id") == AUTHORITATIVE_CONTRACT_ID
             and contract.get("EFT_model_contract_id") == EFT_MODEL_CONTRACT_ID
             and contract.get("scope")
-            == "normalized exact tree-level dimension-six EFT spectrum"
+            == (
+                "normalized exact formal SU3C x U1_89 tree-level dimension-six "
+                "EFT mass factorization; not a physical SM spectrum"
+            )
         ),
         "spectrum_source_and_JSON_raw_pins_exact": (
             artifacts.get("spectrum_source")
@@ -1129,25 +2354,47 @@ def _parallel_eft_g6_spectrum(
             == FINAL_G4_EFT_MATHEMATICAL_RAW_SHA256
             and artifacts.get("G5_gate_JSON")
             == FINAL_G5_EFT_MATHEMATICAL_RAW_SHA256
+            and upstream.get("G6_physical_provenance")
+            == G6_SM_PROVENANCE_CORE_SHA256
+            and upstream.get("G6_G7_parameterized_matching")
+            == G6_G7_PARAMETERIZED_MATCHING_CORE_SHA256
+            and artifacts.get("G6_provenance_source")
+            == G6_SM_PROVENANCE_SOURCE_RAW_SHA256
+            and artifacts.get("G6_provenance_JSON")
+            == G6_SM_PROVENANCE_RAW_SHA256
+            and artifacts.get("G6_G7_parameterized_matching_source")
+            == G6_G7_PARAMETERIZED_MATCHING_SOURCE_RAW_SHA256
+            and artifacts.get("G6_G7_parameterized_matching_JSON")
+            == G6_G7_PARAMETERIZED_MATCHING_RAW_SHA256
         ),
         "all_embedded_mathematical_checks_pass": (
             bool(mathematical_checks)
             and all(value is True for value in mathematical_checks.values())
         ),
-        "complete_exact_tree_level_spectrum": (
+        "frozen_formal_exact_tree_level_factorization": (
             spectrum.get("ambient_real_fields") == 486
             and spectrum.get("gauge_quotient_dimension") == 449
-            and spectrum.get("physical_PQ_axions") == 1
+            and spectrum.get("ungauged_PQ_zero_modes") == 1
             and spectrum.get("positive_massive_modes") == 448
             and spectrum.get("primitive_factors") == 45
             and spectrum.get("distinct_mass_squared_roots_including_zero") == 61
-            and spectrum.get("residual_group") == "SU(3)_C x U(1)_em"
+            and spectrum.get("residual_group") == "SU(3)_C x U(1)_89"
+            and spectrum.get("physical_U1em_interpretation_valid") is False
             and spectrum.get("mixing_subspaces_complete") is True
         ),
-        "EFT_mathematical_G6_closed": (
-            classification.get("mathematical_G6_closed_for_EFT_model") is True
-            and release_criteria.get("mathematical_tree_level_EFT_G6_complete")
+        "corrected_claim_boundary_fail_closed": (
+            classification.get("formal_SU3_x_U1_89_tree_mass_factorization_closed")
             is True
+            and classification.get("prior_positive_physical_G6_interpretation_valid")
+            is False
+            and classification.get("mathematical_physical_G6_closed") is False
+            and classification.get("mathematical_G6_closed_for_EFT_model") is False
+            and release_criteria.get(
+                "formal_SU3_x_U1_89_tree_mass_factorization_complete"
+            )
+            is True
+            and release_criteria.get("mathematical_physical_SM_G6_complete")
+            is False
         ),
         "renormalizable_authoritative_G6_unchanged": (
             classification.get("authoritative_renormalizable_G6_closed") is False
@@ -1155,11 +2402,8 @@ def _parallel_eft_g6_spectrum(
         ),
         "EFT_release_open_and_criteria_fail_closed": (
             classification.get("release_G6_verified_for_EFT_model") is False
-            and nonmathematical_release_criteria
-            and all(
-                isinstance(release_criteria.get(name), bool)
-                for name in nonmathematical_release_criteria
-            )
+            and false_release_criteria
+            and all(isinstance(value, bool) for value in release_criteria.values())
             and release_blockers == false_release_criteria
         ),
         "parallel_integration_state_classified": (
@@ -1173,10 +2417,47 @@ def _parallel_eft_g6_spectrum(
         "whole_model_not_validated": (
             classification.get("whole_model_validated") is False
         ),
+        "physical_stabilizer_mismatch_source_bound": (
+            provenance_audit.get("source_bound") is True
+            and provenance_audit.get("formal_tree_mass_factorization_valid") is True
+            and provenance_audit.get("actual_residual_group")
+            == "SU(3)_C x U(1)_89"
+            and provenance_audit.get("physical_U1em_provenance_complete") is False
+            and provenance_audit.get("physical_mathematical_G6_closed") is False
+        ),
+        "formal_matching_reinterpreted_as_G89": (
+            parameterized_matching.get("source_bound") is True
+            and parameterized_matching.get(
+                "formal_SU3_x_U1_89_threshold_determinants_complete"
+            )
+            is True
+            and parameterized_matching.get("physical_SM_scalar_thresholds_identified")
+            is False
+            and parameterized_matching.get("physical_mathematical_G6_closed")
+            is False
+        ),
     }
     source_bound = all(checks.values())
+    corrected_release_blockers = set(report.get("release_blockers", []))
+    corrected_release_blockers.difference_update(
+        {
+            "PHYSICAL_SM_STABILIZER_AND_VACUUM_REQUIRED",
+            "RECOMPUTED_PHYSICAL_SM_HESSIAN_AND_SPECTRUM_REQUIRED",
+            "PER_STATE_SM_AND_PATI_SALAM_PROVENANCE_REQUIRED",
+            "SM_preserving_staged_vacuum_verified",
+            "per_state_SM_and_Pati_Salam_provenance_complete",
+        }
+    )
+    corrected_release_blockers.update(
+        {
+            "DIRECT_SOURCE_ALGEBRA_PHYSICAL_SM_SCALAR_HESSIAN_REQUIRED",
+            "PHYSICAL_SM_GLOBAL_EQUALITY_ORBIT_REQUIRED",
+            "DIMENSIONFUL_SCALE_COUPLINGS_AND_POLE_SELF_ENERGY_MASSES_REQUIRED",
+            "GAUGE_FIXING_CONSISTENT_VECTOR_GOLDSTONE_GHOST_FINITE_MATCHING_REQUIRED",
+        }
+    )
     return {
-        "namespace": "EFT_G6_TREE_LEVEL_MATHEMATICAL",
+        "namespace": "EFT_G6_FORMAL_SU3_X_U1_89_TREE_SPECTRUM",
         "artifact": FINAL_G6_EFT_MATHEMATICAL_JSON.name,
         "expected_core_sha256": FINAL_G6_EFT_MATHEMATICAL_CORE_SHA256,
         "core_sha256": report.get("core_sha256"),
@@ -1195,17 +2476,27 @@ def _parallel_eft_g6_spectrum(
         "EFT_model_contract_id": contract.get("EFT_model_contract_id"),
         "base_model_contract_id": contract.get("base_model_contract_id"),
         "source_bound": source_bound,
-        "mathematical_G6_closed_for_EFT_model": bool(
-            source_bound
-            and classification.get("mathematical_G6_closed_for_EFT_model") is True
+        "formal_SU3_x_U1_89_tree_factorization_closed": bool(source_bound),
+        "prior_positive_physical_G6_interpretation_valid": False,
+        "physical_stabilizer_audit_source_bound": bool(
+            provenance_audit.get("source_bound") is True
         ),
+        "mathematical_G6_closed_for_EFT_model": False,
+        "physical_mathematical_G6_closed": False,
         "release_G6_verified_for_EFT_model": False,
         "authoritative_renormalizable_G6_closed": False,
         "authoritative_G6_gate_mutated": False,
         "whole_model_validated": False,
-        "parallel_integration_completed": integration_criterion is True,
+        "parallel_integration_completed": bool(source_bound),
         "spectrum_summary": dict(spectrum) if source_bound else {},
-        "release_blockers": list(report.get("release_blockers", [])) if source_bound else [],
+        "corrected_residual_group": (
+            "SU(3)_C x U(1)_89" if source_bound else None
+        ),
+        "physical_U1em_provenance_complete": False,
+        "physical_SM_scalar_thresholds_identified": False,
+        "release_blockers": (
+            sorted(corrected_release_blockers) if source_bound else []
+        ),
         "checks": checks,
     }
 
@@ -1213,10 +2504,10 @@ def _parallel_eft_g6_spectrum(
 def _parallel_eft_g7_nonidentifiability(
     report: dict[str, Any], *, raw_sha256: str = "", source_raw_sha256: str = ""
 ) -> dict[str, Any]:
-    """Validate the exact EFT G7 input obstruction without promoting G7."""
+    """Validate the historical formal U(1)_89 example without a physical claim."""
     classification = report.get("classification", {})
     integration = report.get("integration", {})
-    counterexample = report.get("threshold_restriction_counterexample", {})
+    counterexample = report.get("formal_U1_89_abstract_restriction_example", {})
     scale = report.get("absolute_scale_counterexample", {})
     reduced = report.get("reduced_RGE_model_scope", {})
     embedded_checks = report.get("checks", {})
@@ -1230,7 +2521,7 @@ def _parallel_eft_g7_nonidentifiability(
         "artifact_present": bool(report),
         "status_exact": (
             report.get("status")
-            == "EFT_G7_INPUT_NONIDENTIFIABILITY_PROVED__G7_OPEN"
+            == "FORMAL_U1_89_ABSTRACT_RESTRICTION_NONINJECTIVE__NO_PHYSICAL_G7_CLAIM"
         ),
         "core_sha256_exact": (
             report.get("core_sha256") == EFT_G7_NONIDENTIFIABILITY_CORE_SHA256
@@ -1245,11 +2536,18 @@ def _parallel_eft_g7_nonidentifiability(
             and bool(embedded_checks)
             and all(value is True for value in embedded_checks.values())
         ),
-        "restriction_map_counterexample_exact": (
+        "formal_U1_89_restriction_example_exact": (
             counterexample.get("restriction_map_noninjective") is True
-            and counterexample.get("same_SU3C_x_U1em_restriction") is True
             and counterexample.get("same_frozen_G6_masses") is True
             and counterexample.get("one_loop_coefficients_differ") is True
+            and counterexample.get("physical_QED_interpretation_valid") is False
+            and counterexample.get("physical_electroweak_interpretation_valid")
+            is False
+            and counterexample.get("scope")
+            == (
+                "abstract lifts of formal q89=0,1 labels only; the names in the "
+                "historical completion rows are not assigned to physical states"
+            )
             and counterexample.get("completion_A", {}).get(
                 "complex_scalar_one_loop_delta_b2"
             )
@@ -1280,9 +2578,17 @@ def _parallel_eft_g7_nonidentifiability(
             and reduced.get("piecewise_component_threshold_matching_complete")
             is False
         ),
-        "negative_classification_exact": (
-            classification.get("exact_EFT_G7_input_nonidentifiability_proved")
+        "formal_only_classification_exact": (
+            classification.get(
+                "formal_U1_89_abstract_restriction_noninjectivity_proved"
+            )
             is True
+            and classification.get(
+                "exact_physical_EFT_G7_input_nonidentifiability_proved"
+            )
+            is False
+            and classification.get("historical_electroweak_lift_interpretation_valid")
+            is False
             and classification.get("mathematical_EFT_G7_closed") is False
             and classification.get("EFT_release_G7_verified") is False
             and classification.get("authoritative_renormalizable_G7_closed")
@@ -1302,7 +2608,7 @@ def _parallel_eft_g7_nonidentifiability(
         and all(integration.get(name) is True for name in expected_integration)
     )
     return {
-        "namespace": "EFT_G7_INPUT_NONIDENTIFIABILITY",
+        "namespace": "FORMAL_U1_89_ABSTRACT_RESTRICTION_AUDIT",
         "artifact": EFT_G7_NONIDENTIFIABILITY_JSON.name,
         "source": EFT_G7_NONIDENTIFIABILITY_SOURCE.name,
         "expected_core_sha256": EFT_G7_NONIDENTIFIABILITY_CORE_SHA256,
@@ -1312,18 +2618,22 @@ def _parallel_eft_g7_nonidentifiability(
         "expected_source_raw_sha256": EFT_G7_NONIDENTIFIABILITY_SOURCE_RAW_SHA256,
         "source_raw_sha256": source_raw_sha256,
         "source_bound": source_bound,
-        "exact_EFT_G7_input_nonidentifiability_proved": bool(
+        "formal_U1_89_abstract_restriction_noninjectivity_proved": bool(
             source_bound
-            and classification.get("exact_EFT_G7_input_nonidentifiability_proved")
+            and classification.get(
+                "formal_U1_89_abstract_restriction_noninjectivity_proved"
+            )
             is True
         ),
+        "exact_physical_EFT_G7_input_nonidentifiability_proved": False,
+        "historical_electroweak_lift_interpretation_valid": False,
         "mathematical_EFT_G7_closed": False,
         "EFT_release_G7_verified": False,
         "authoritative_renormalizable_G7_closed": False,
         "positive_G7_certified": False,
         "negative_G7_no_go_certified": False,
         "downstream_integration_completed": integration_completed,
-        "restriction_map_noninjective": bool(
+        "formal_U1_89_restriction_map_noninjective": bool(
             source_bound
             and counterexample.get("restriction_map_noninjective") is True
         ),
@@ -1342,9 +2652,3375 @@ def _parallel_eft_g7_nonidentifiability(
     }
 
 
+def _physical_g7_component_threshold_contract(
+    report: dict[str, Any],
+    *,
+    raw_sha256: str = "",
+    source_raw_sha256: str = "",
+    test_raw_sha256: str = "",
+    markdown_raw_sha256: str = "",
+) -> dict[str, Any]:
+    """Bind the physical PS/SM component kernel without promoting full G7."""
+    expected_top_level = {
+        "status",
+        "contract_id",
+        "source_binding",
+        "primary_formula_sources",
+        "scheme_and_basis",
+        "tree_level_matching",
+        "heavy_vector_provenance_not_yet_matched",
+        "authoritative_field_inventory",
+        "interaction_beta_inventory",
+        "representation_audits",
+        "exact_UV_per_field_gauge_ledgers",
+        "UV_two_loop_gauge_flow",
+        "matter_component_threshold_theorem",
+        "valid_mass_bundles_before_or_at_U1X_breaking",
+        "adversarial_guards",
+        "completion_matrix",
+        "implementation_hooks",
+        "release_blockers",
+        "checks",
+        "n_checks",
+        "n_failed",
+        "failures",
+        "verdict",
+        "core_sha256",
+    }
+    expected_positive = {
+        "authoritative_19_Weyl_and_5_scalar_inventory",
+        "continuous_gauge_anomaly_cancellation",
+        "exact_one_loop_full_inventory_gauge_coefficients",
+        "exact_two_loop_nonyukawa_full_inventory_gauge_coefficients",
+        "independent_official_PyRATE3_gauge_replay",
+        "complete_physical_PS_and_SM_matter_branching",
+        "parameterized_one_loop_matter_component_threshold_kernel",
+    }
+    expected_open = {
+        "physical_component_pole_mass_matrices",
+        "heavy_vector_Goldstone_ghost_thresholds",
+        "finite_one_loop_matching_constants",
+        "normalized_Yukawa_tensor_embeddings",
+        "full_two_loop_Yukawa_betas",
+        "full_51_real_parameter_scalar_tensor_translation",
+        "full_two_loop_scalar_quartic_betas",
+        "dimensionful_mass_and_trilinear_betas",
+        "dimension_six_EFT_anomalous_dimension_and_mixing",
+        "physical_G6_input_available",
+        "second_independent_full_RGE_and_matching_implementation",
+        "mathematical_G7_closed",
+        "release_G7_verified",
+    }
+    expected_blockers = [
+        "PHYSICAL_G6_POLE_MASS_MATRICES_WITH_SM_AND_PS_PROVENANCE",
+        "HEAVY_VECTOR_GOLDSTONE_GHOST_MATCHING_IN_DECLARED_SCHEME",
+        "NORMALIZED_304_WEYL_YUKAWA_TENSOR_EMBEDDINGS",
+        "FULL_51_PARAMETER_SCALAR_AND_DIMENSIONFUL_BETA_SYSTEM",
+        "DIMENSION_SIX_EFT_OPERATOR_MIXING_IF_EFT_RETAINED",
+        "SECOND_INDEPENDENT_FULL_RGE_THRESHOLD_IMPLEMENTATION",
+        "BOUNDARY_DATA_AND_MATCHING_SCALES_WITH_COVARIANCE",
+    ]
+    expected_sources = {
+        "authoritative_model": (
+            "models\\SO10Z17AxionV20.m",
+            "66a2ce2c3491d0b3079ec93a16ab79d3e8a7e4e35cb54aadf21100b9fdd90cc1",
+            "raw",
+        ),
+        "authoritative_gauge_source": (
+            "exact_authoritative_so10_u1x_gauge_betas_v20.py",
+            AUTHORITATIVE_GAUGE_BETAS_SOURCE_RAW_SHA256,
+            "raw",
+        ),
+        "authoritative_gauge_report": (
+            "EXACT_AUTHORITATIVE_SO10_U1X_GAUGE_BETAS_V20.json",
+            AUTHORITATIVE_GAUGE_BETAS_RAW_SHA256,
+            "raw",
+        ),
+        "independent_official_PyRATE3_replay": (
+            "PYRATE3_SO10_U1X_GAUGE_BETA_REPLAY_V20.json",
+            PYRATE3_GAUGE_REPLAY_RAW_SHA256,
+            "raw",
+        ),
+        "standard_PS_SM_embedding": (
+            "exact_126bar_triplet_clebsch_v20.py",
+            "c5954c21561f44ea183af17b4cd1205007c0b30021f4cca0a9fc4f96852c103a",
+            "portable_text",
+        ),
+    }
+    completion = report.get("completion_matrix", {})
+    sources = report.get("source_binding", {})
+    inventory = report.get("authoritative_field_inventory", [])
+    uv = report.get("UV_two_loop_gauge_flow", {})
+    vectors = report.get("heavy_vector_provenance_not_yet_matched", {})
+    guards = report.get("adversarial_guards", {})
+    embedded_checks = report.get("checks", {})
+    checks = {
+        "artifact_present": bool(report),
+        "status_and_contract_exact": (
+            report.get("status")
+            == "EXACT_PHYSICAL_MATTER_BRANCHING_AND_PARAMETERIZED_ONE_LOOP_THRESHOLDS_CLOSED__FULL_G7_OPEN"
+            and report.get("contract_id")
+            == "physical_g7_component_threshold_contract_v20"
+        ),
+        "schema_exact": set(report) == expected_top_level,
+        "core_sha256_exact": (
+            report.get("core_sha256")
+            == PHYSICAL_G7_COMPONENT_THRESHOLD_CORE_SHA256
+        ),
+        "all_four_raw_artifact_pins_exact": (
+            raw_sha256 == PHYSICAL_G7_COMPONENT_THRESHOLD_RAW_SHA256
+            and source_raw_sha256
+            == PHYSICAL_G7_COMPONENT_THRESHOLD_SOURCE_RAW_SHA256
+            and test_raw_sha256
+            == PHYSICAL_G7_COMPONENT_THRESHOLD_TEST_RAW_SHA256
+            and markdown_raw_sha256
+            == PHYSICAL_G7_COMPONENT_THRESHOLD_MD_RAW_SHA256
+        ),
+        "source_binding_schema_and_hashes_exact": (
+            set(sources) == set(expected_sources)
+            and all(
+                sources.get(name)
+                == {"path": path, "sha256": digest, "mode": mode}
+                for name, (path, digest, mode) in expected_sources.items()
+            )
+        ),
+        "all_embedded_checks_pass_exactly": (
+            report.get("n_checks") == 31
+            and report.get("n_failed") == 0
+            and report.get("failures") == []
+            and len(embedded_checks) == 31
+            and all(value is True for value in embedded_checks.values())
+        ),
+        "completion_schema_and_truth_values_exact": (
+            set(completion) == expected_positive | expected_open
+            and all(completion.get(name) is True for name in expected_positive)
+            and all(completion.get(name) is False for name in expected_open)
+        ),
+        "authoritative_inventory_dimensions_exact": (
+            isinstance(inventory, list)
+            and len(inventory) == 14
+            and sum(
+                int(row.get("generations", 0))
+                for row in inventory
+                if row.get("statistics") == "Weyl"
+            )
+            == 19
+            and sum(int(row.get("real_scalar_coordinates", 0)) for row in inventory)
+            == 486
+            and any(
+                row.get("name") == "Delta126bar"
+                and row.get("branching_rep") == "126bar"
+                for row in inventory
+            )
+        ),
+        "standard_embedding_and_threshold_scheme_exact": (
+            report.get("scheme_and_basis", {}).get("hypercharge")
+            == "Y=T3R+(B-L)/2"
+            and report.get("scheme_and_basis", {}).get(
+                "GUT_normalized_abelian_coupling"
+            )
+            == "g1=sqrt(5/3)*gY"
+            and report.get("tree_level_matching", {}).get("PS_to_SM", {}).get(
+                "alpha1_inverse"
+            )
+            == "(2/5) alpha4^-1+(3/5) alpha2R^-1"
+        ),
+        "parameterized_matter_threshold_scope_exact": (
+            report.get("matter_component_threshold_theorem", {}).get(
+                "mixed_block_formula"
+            )
+            == (
+                "for identical SM irreps, sum_a ln(M_a/mu)=(1/2) ln det("
+                "M_pole^2/mu^2); thresholds are basis invariant"
+            )
+            and completion.get(
+                "parameterized_one_loop_matter_component_threshold_kernel"
+            )
+            is True
+            and completion.get("physical_component_pole_mass_matrices") is False
+        ),
+        "two_loop_gauge_flow_scoped_exact": (
+            uv.get("all_active_a") == {"SO10": "52/3", "X": "10843"}
+            and uv.get("all_active_b_nonyukawa")
+            == {
+                "SO10": {"SO10": "25013/6", "X": "4536"},
+                "X": {"SO10": "204120", "X": "7242180"},
+            }
+            and uv.get("Y4_status")
+            == "symbolic only; normalized full Yukawa tensors are required"
+            and completion.get("full_two_loop_Yukawa_betas") is False
+        ),
+        "heavy_vector_matching_counted_but_open": (
+            vectors.get("SO10_to_PS", {}).get("real_vector_dimension") == 24
+            and vectors.get("PS_to_SM", {}).get("real_vector_dimension") == 9
+            and vectors.get("EW_to_QED", {}).get("real_vector_dimension") == 3
+            and vectors.get(
+                "one_loop_vector_Goldstone_ghost_matching_implemented"
+            )
+            is False
+        ),
+        "legacy_and_heuristic_inputs_excluded": (
+            guards.get("G89_never_used_as_hypercharge") is True
+            and guards.get("reduced_legacy_PyRATE_models_never_used") is True
+            and guards.get("incomplete_SARAH_scalar_potential_never_promoted")
+            is True
+            and not any(
+                token in str(report)
+                for token in (
+                    "two_loop_thresholds_v20.py",
+                    "yukawa_rge_2loop_v20.py",
+                    "quartic_soft_betas_v20.py",
+                )
+            )
+        ),
+        "release_blockers_exact": report.get("release_blockers") == expected_blockers,
+        "full_physical_math_release_G7_fail_closed": (
+            completion.get("physical_G6_input_available") is False
+            and completion.get("mathematical_G7_closed") is False
+            and completion.get("release_G7_verified") is False
+        ),
+    }
+    source_bound = all(checks.values())
+    return {
+        "namespace": "PHYSICAL_G7_COMPONENT_THRESHOLD_CONTRACT",
+        "artifact": PHYSICAL_G7_COMPONENT_THRESHOLD_JSON.name,
+        "markdown": PHYSICAL_G7_COMPONENT_THRESHOLD_MD.name,
+        "source": PHYSICAL_G7_COMPONENT_THRESHOLD_SOURCE.name,
+        "test": PHYSICAL_G7_COMPONENT_THRESHOLD_TEST.name,
+        "expected_core_sha256": PHYSICAL_G7_COMPONENT_THRESHOLD_CORE_SHA256,
+        "core_sha256": report.get("core_sha256"),
+        "expected_raw_sha256": PHYSICAL_G7_COMPONENT_THRESHOLD_RAW_SHA256,
+        "raw_sha256": raw_sha256,
+        "expected_markdown_raw_sha256": PHYSICAL_G7_COMPONENT_THRESHOLD_MD_RAW_SHA256,
+        "markdown_raw_sha256": markdown_raw_sha256,
+        "expected_source_raw_sha256": PHYSICAL_G7_COMPONENT_THRESHOLD_SOURCE_RAW_SHA256,
+        "source_raw_sha256": source_raw_sha256,
+        "expected_test_raw_sha256": PHYSICAL_G7_COMPONENT_THRESHOLD_TEST_RAW_SHA256,
+        "test_raw_sha256": test_raw_sha256,
+        "source_bound": source_bound,
+        "authoritative_inventory_closed": bool(
+            source_bound
+            and completion.get("authoritative_19_Weyl_and_5_scalar_inventory")
+            is True
+        ),
+        "continuous_gauge_anomalies_closed": bool(
+            source_bound
+            and completion.get("continuous_gauge_anomaly_cancellation") is True
+        ),
+        "exact_one_loop_gauge_coefficients_closed": bool(
+            source_bound
+            and completion.get("exact_one_loop_full_inventory_gauge_coefficients")
+            is True
+        ),
+        "exact_two_loop_nonyukawa_gauge_flow_closed": bool(
+            source_bound
+            and completion.get(
+                "exact_two_loop_nonyukawa_full_inventory_gauge_coefficients"
+            )
+            is True
+        ),
+        "independent_official_PyRATE3_gauge_replay_closed": bool(
+            source_bound
+            and completion.get("independent_official_PyRATE3_gauge_replay")
+            is True
+        ),
+        "physical_PS_SM_matter_branching_closed": bool(
+            source_bound
+            and completion.get("complete_physical_PS_and_SM_matter_branching")
+            is True
+        ),
+        "parameterized_one_loop_matter_threshold_kernel_closed": bool(
+            source_bound
+            and completion.get(
+                "parameterized_one_loop_matter_component_threshold_kernel"
+            )
+            is True
+        ),
+        "physical_component_pole_mass_matrices_closed": False,
+        "heavy_vector_matching_closed": False,
+        "full_two_loop_Yukawa_scalar_dimensionful_EFT_system_closed": False,
+        "physical_G7_closed": False,
+        "mathematical_G7_closed": False,
+        "release_G7_verified": False,
+        "authoritative_renormalizable_G7_closed": False,
+        "positive_G7_certified": False,
+        "negative_G7_no_go_certified": False,
+        "downstream_integration_completed": bool(source_bound),
+        "release_blockers": expected_blockers if source_bound else [],
+        "checks": checks,
+    }
+
+
+def _normalized_so10_yukawa_cgc_contract(
+    report: dict[str, Any],
+    *,
+    raw_sha256: str = "",
+    source_raw_sha256: str = "",
+    test_raw_sha256: str = "",
+    markdown_raw_sha256: str = "",
+) -> dict[str, Any]:
+    """Bind exact representation CGCs while leaving flavor/RGE/full G7 open."""
+    expected_top_level = {
+        "status",
+        "contract_id",
+        "dependencies",
+        "conventions",
+        "canonical_304_weyl_inventory",
+        "weyl_multiplet_count",
+        "weyl_component_count",
+        "normalized_tensors",
+        "chirality_obstruction",
+        "covariance",
+        "symmetric_square_theorem",
+        "declared_yukawa_closure",
+        "total_generic_flavor_sparse_support_count",
+        "scope",
+        "blockers",
+        "checks",
+        "core_sha256",
+    }
+    expected_scope = {
+        "normalized_representation_CGCs_for_all_declared_Yukawas": True,
+        "canonical_304_Weyl_sparse_embedding": True,
+        "flavor_tensor_values_or_textures": False,
+        "sarah_implicit_contraction_normalization": False,
+        "one_or_two_loop_Yukawa_betas": False,
+        "threshold_matching_and_running": False,
+        "full_yukawa_sector": False,
+        "mathematical_G7": False,
+        "release_G7": False,
+    }
+    expected_blockers = [
+        "Fix the conversion between this explicit -1/2 identical-Weyl convention and SARAH's implicit Dot contractions.",
+        "Supply or fit the symbolic flavor tensors and their boundary conditions.",
+        "Compile independently replayed one- and two-loop Yukawa, scalar and dimensionful beta functions.",
+        "Derive physical component masses, mixing matrices and finite threshold matching before claiming G7.",
+    ]
+    expected_dependencies = {
+        "authoritative_model": {
+            "path": "models\\SO10Z17AxionV20.m",
+            "sha256": "66a2ce2c3491d0b3079ec93a16ab79d3e8a7e4e35cb54aadf21100b9fdd90cc1",
+            "mode": "raw",
+        },
+        "audited_clifford_backend": {
+            "path": "spin10_referee_audit.py",
+            "sha256": "daf80f5ab2b4480e5e03b025bd685dd1ffdce91a4cb0435774dd52ad702b72c9",
+            "mode": "portable_text",
+        },
+        "canonical_scalar_five_form_backend": {
+            "path": "direct_phi_h_sigmabar_tensor_v20.py",
+            "sha256": "3a87470a06362a2a4c05eac6b71fe9cd4cd6c9b8a41732786184cbfeae89fac4",
+            "mode": "portable_text",
+        },
+        "standard_embedding_and_hodge_audit": {
+            "path": "exact_126bar_triplet_clebsch_v20.py",
+            "sha256": "c5954c21561f44ea183af17b4cd1205007c0b30021f4cca0a9fc4f96852c103a",
+            "mode": "portable_text",
+        },
+    }
+    expected_positive_checks = {
+        "authoritative_sources_match_frozen_hashes",
+        "all_ten_declared_yukawa_symbols_found",
+        "canonical_inventory_has_19_weyl_multiplets",
+        "canonical_inventory_has_304_weyl_components",
+        "minus_chirality_has_standard_model_16_weights",
+        "plus_chirality_is_conjugate_16bar",
+        "vector_has_ten_symmetric_matrices",
+        "vector_normalized_gram_is_identity",
+        "physical_126bar_has_126_symmetric_matrices",
+        "physical_126bar_normalized_gram_is_identity",
+        "physical_126bar_complement_shortcut_agrees",
+        "opposite_spinor_chirality_annihilates_physical_126bar",
+        "ten_and_126bar_are_exactly_orthogonal",
+        "ten_plus_126bar_complete_symmetric_square",
+        "singlet_duality_map_is_unitary",
+        "singlet_dual_basis_normalized_gram_is_identity",
+        "all_45_vector_covariance_residuals_zero",
+        "all_45_126bar_covariance_residuals_zero",
+        "all_45_singlet_covariance_residuals_zero",
+        "vector_sparse_count_is_160",
+        "physical_126bar_sparse_count_is_2016",
+        "singlet_sparse_count_is_16",
+        "all_embedded_support_indices_lie_in_304_inventory",
+        "all_declared_representation_cgcs_closed",
+    }
+    expected_negative_checks = {
+        "flavor_boundary_values_closed",
+        "sarah_symbol_normalization_closed",
+        "full_yukawa_rge_closed",
+        "full_physical_G7_closed",
+    }
+    tensors = report.get("normalized_tensors", {})
+    closure = report.get("declared_yukawa_closure", [])
+    checks_report = report.get("checks", {})
+    scope = report.get("scope", {})
+    checks = {
+        "artifact_present": bool(report),
+        "status_contract_and_schema_exact": (
+            report.get("status")
+            == "EXACT_NORMALIZED_SO10_REPRESENTATION_YUKAWA_CGCS_CLOSED__FLAVOR_RGE_AND_FULL_G7_OPEN"
+            and report.get("contract_id")
+            == "exact_normalized_so10_yukawa_cgcs_v20"
+            and set(report) == expected_top_level
+        ),
+        "core_and_all_four_raw_pins_exact": (
+            report.get("core_sha256") == NORMALIZED_YUKAWA_CGCS_CORE_SHA256
+            and raw_sha256 == NORMALIZED_YUKAWA_CGCS_RAW_SHA256
+            and source_raw_sha256 == NORMALIZED_YUKAWA_CGCS_SOURCE_RAW_SHA256
+            and test_raw_sha256 == NORMALIZED_YUKAWA_CGCS_TEST_RAW_SHA256
+            and markdown_raw_sha256 == NORMALIZED_YUKAWA_CGCS_MD_RAW_SHA256
+        ),
+        "dependency_schema_paths_hashes_modes_exact": report.get("dependencies")
+        == expected_dependencies,
+        "completion_scope_exact": scope == expected_scope,
+        "embedded_checks_schema_and_truth_values_exact": (
+            set(checks_report) == expected_positive_checks | expected_negative_checks
+            and all(checks_report.get(name) is True for name in expected_positive_checks)
+            and all(checks_report.get(name) is False for name in expected_negative_checks)
+        ),
+        "canonical_304_component_inventory_exact": (
+            report.get("weyl_multiplet_count") == 19
+            and report.get("weyl_component_count") == 304
+            and isinstance(report.get("canonical_304_weyl_inventory"), list)
+            and len(report.get("canonical_304_weyl_inventory", [])) == 9
+            and sum(
+                int(row.get("generations", 0)) * 16
+                for row in report.get("canonical_304_weyl_inventory", [])
+            )
+            == 304
+        ),
+        "normalized_10_126bar_and_singlet_tensors_exact": (
+            set(tensors) == {"10", "126bar", "singlet_dual_basis"}
+            and tensors.get("10", {}).get("shape") == [10, 16, 16]
+            and tensors.get("10", {}).get("denominator") == 4
+            and tensors.get("10", {}).get("nonzero_count") == 160
+            and tensors.get("10", {}).get("numerator_sha256_i16_real_imag_C_order")
+            == "29d520d5b7e4a8fe2f35ac6e124c56a3947e04796b1ea1ac0cda0ecabc244a49"
+            and tensors.get("126bar", {}).get("shape") == [126, 16, 16]
+            and tensors.get("126bar", {}).get("denominator") == 8
+            and tensors.get("126bar", {}).get("nonzero_count") == 2016
+            and tensors.get("126bar", {}).get(
+                "numerator_sha256_i16_real_imag_C_order"
+            )
+            == "659a997d9b97adb56cb0269ddf53197c3e0049e0359aea42fb7983139d936daf"
+            and tensors.get("singlet_dual_basis", {}).get("shape") == [1, 16, 16]
+            and tensors.get("singlet_dual_basis", {}).get("nonzero_count") == 16
+        ),
+        "chirality_covariance_and_sym2_exact": (
+            report.get("chirality_obstruction", {}).get(
+                "correct_minus_chirality_contraction_rank"
+            )
+            == 126
+            and report.get("chirality_obstruction", {}).get(
+                "wrong_plus_chirality_is_identically_zero"
+            )
+            is True
+            and report.get("covariance", {}).get("generators_tested_per_channel")
+            == 45
+            and report.get("covariance", {}).get("exact_integer_residual_maxima")
+            == {"10": 0, "126bar": 0, "singlet": 0}
+            and report.get("symmetric_square_theorem", {}).get("dim_Sym2_16")
+            == 136
+            and report.get("symmetric_square_theorem", {}).get("10_plus_126")
+            == 136
+            and report.get("symmetric_square_theorem", {}).get(
+                "orthonormal_complete_projector_verified_exactly"
+            )
+            is True
+        ),
+        "ten_declared_sparse_embeddings_scoped_exact": (
+            isinstance(closure, list)
+            and len(closure) == 10
+            and all(row.get("representation_CGC_closed") is True for row in closure)
+            and all(
+                row.get("flavor_tensor_preserved_symbolically") is True
+                for row in closure
+            )
+            and report.get("total_generic_flavor_sparse_support_count") == 21056
+        ),
+        "sarah_and_flavor_normalization_explicitly_open": (
+            report.get("conventions", {}).get("sarah_Dot_conversion")
+            == "open; no numerical conversion factor inferred"
+            and scope.get("flavor_tensor_values_or_textures") is False
+            and scope.get("sarah_implicit_contraction_normalization") is False
+        ),
+        "full_yukawa_RGE_threshold_and_G7_fail_closed": (
+            scope.get("one_or_two_loop_Yukawa_betas") is False
+            and scope.get("threshold_matching_and_running") is False
+            and scope.get("full_yukawa_sector") is False
+            and scope.get("mathematical_G7") is False
+            and scope.get("release_G7") is False
+            and report.get("blockers") == expected_blockers
+        ),
+    }
+    source_bound = all(checks.values())
+    return {
+        "namespace": "NORMALIZED_SO10_YUKAWA_CGC_CONTRACT",
+        "artifact": NORMALIZED_YUKAWA_CGCS_JSON.name,
+        "markdown": NORMALIZED_YUKAWA_CGCS_MD.name,
+        "source": NORMALIZED_YUKAWA_CGCS_SOURCE.name,
+        "test": NORMALIZED_YUKAWA_CGCS_TEST.name,
+        "expected_core_sha256": NORMALIZED_YUKAWA_CGCS_CORE_SHA256,
+        "core_sha256": report.get("core_sha256"),
+        "expected_raw_sha256": NORMALIZED_YUKAWA_CGCS_RAW_SHA256,
+        "raw_sha256": raw_sha256,
+        "expected_source_raw_sha256": NORMALIZED_YUKAWA_CGCS_SOURCE_RAW_SHA256,
+        "source_raw_sha256": source_raw_sha256,
+        "expected_test_raw_sha256": NORMALIZED_YUKAWA_CGCS_TEST_RAW_SHA256,
+        "test_raw_sha256": test_raw_sha256,
+        "expected_markdown_raw_sha256": NORMALIZED_YUKAWA_CGCS_MD_RAW_SHA256,
+        "markdown_raw_sha256": markdown_raw_sha256,
+        "source_bound": source_bound,
+        "normalized_10_CGCs_closed": bool(source_bound),
+        "normalized_126bar_CGCs_closed": bool(source_bound),
+        "normalized_singlet_duality_CGC_closed": bool(source_bound),
+        "canonical_304_Weyl_sparse_embedding_closed": bool(source_bound),
+        "all_declared_representation_CGCs_closed": bool(source_bound),
+        "flavor_boundary_values_closed": False,
+        "SARAH_Dot_conversion_closed": False,
+        "full_one_two_loop_Yukawa_betas_closed": False,
+        "physical_threshold_matching_and_running_closed": False,
+        "full_yukawa_sector_closed": False,
+        "physical_G7_closed": False,
+        "mathematical_G7_closed": False,
+        "release_G7_verified": False,
+        "authoritative_renormalizable_G7_closed": False,
+        "blockers": expected_blockers if source_bound else [],
+        "checks": checks,
+    }
+
+
+def _physical_sm_vacuum_truth_overlay(
+    report: dict[str, Any],
+    *,
+    raw_sha256: str = "",
+    source_raw_sha256: str = "",
+    test_raw_sha256: str = "",
+    markdown_raw_sha256: str = "",
+) -> dict[str, Any]:
+    """Supersede the historical physical-SM label without promoting G3-G7."""
+    expected_top_level = {
+        "schema",
+        "model_contract_id",
+        "status",
+        "source_binding",
+        "target",
+        "exact_symmetry",
+        "live_local_feasibility",
+        "exact_reconstructed_Hessian_rank",
+        "exact_radial_EFT_BFB_completion",
+        "squared_stationarity_global_EFT_completion",
+        "closure_claims",
+        "supersession",
+        "logical_summary",
+        "next_required_proofs",
+        "integrity",
+    }
+    expected_claims = {
+        "physical_SM_G3": False,
+        "physical_SM_G4": False,
+        "physical_SM_G5": False,
+        "physical_SM_G6": False,
+        "physical_SM_G7": False,
+    }
+    expected_next = [
+        "derive every reconstructed Q+sqrt(2)Q stationarity entry directly from source algebra",
+        "derive every reconstructed rational Hessian entry directly from source algebra",
+        "classify every zero of Vren+1 and grad(Vren) to prove the complete global equality orbit",
+        "derive the physical pole spectrum and threshold matching only afterward",
+    ]
+    source_binding = report.get("source_binding", {})
+    dependencies = source_binding.get("dependencies", {})
+    dependency_validation = dependencies.get("validation", {})
+    target = report.get("target", {})
+    symmetry = report.get("exact_symmetry", {})
+    hessian = report.get("exact_reconstructed_Hessian_rank", {})
+    reconstruction = hessian.get("reconstruction", {})
+    radial = report.get("exact_radial_EFT_BFB_completion", {})
+    squared = report.get("squared_stationarity_global_EFT_completion", {})
+    summary = report.get("logical_summary", {})
+    supersession = report.get("supersession", {})
+    claims = report.get("closure_claims", {})
+    checks = {
+        "artifact_present": bool(report),
+        "schema_contract_status_exact": (
+            report.get("schema") == "physical_sm_vacuum_local_feasibility_v1"
+            and report.get("model_contract_id") == "gauged_u1x_phi17_v20"
+            and report.get("status")
+            == "PHYSICAL_SM_RECONSTRUCTED_GLOBAL_EFT_CERTIFICATE__DIRECT_SOURCE_ALGEBRA_AND_GLOBAL_EQUALITY_ORBIT_OPEN"
+        ),
+        "top_level_schema_exact": set(report) == expected_top_level,
+        "core_and_all_four_raw_pins_exact": (
+            report.get("integrity", {}).get("core_sha256")
+            == PHYSICAL_SM_VACUUM_CORE_SHA256
+            and raw_sha256 == PHYSICAL_SM_VACUUM_RAW_SHA256
+            and source_raw_sha256 == PHYSICAL_SM_VACUUM_SOURCE_RAW_SHA256
+            and test_raw_sha256 == PHYSICAL_SM_VACUUM_TEST_RAW_SHA256
+            and markdown_raw_sha256 == PHYSICAL_SM_VACUUM_MD_RAW_SHA256
+        ),
+        "self_source_binding_exact": (
+            source_binding.get("path") == PHYSICAL_SM_VACUUM_SOURCE.name
+            and source_binding.get("sha256")
+            == PHYSICAL_SM_VACUUM_SOURCE_RAW_SHA256
+            and source_binding.get("portable_lf_sha256")
+            == PHYSICAL_SM_VACUUM_SOURCE_RAW_SHA256
+        ),
+        "twenty_dependency_bindings_validated": (
+            isinstance(dependencies.get("files"), dict)
+            and len(dependencies.get("files", {})) == 20
+            and dependency_validation.get("dependency_file_count") == 20
+            and dependency_validation.get("all_dependency_files_present") is True
+            and dependency_validation.get(
+                "provenance_core_matches_imported_expected_pin"
+            )
+            is True
+            and dependency_validation.get("scalar_contract_frozen_has_zero_failures")
+            is True
+            and dependency_validation.get("G2_derivative_audit_frozen_has_zero_failures")
+            is True
+            and dependency_validation.get("physical_quotient_frozen_certified")
+            is True
+        ),
+        "standard_SM_target_and_stabilizer_exact": (
+            target.get("chart_dimension") == 486
+            and target.get("lattice_denominator") == 20
+            and target.get("standard_Q3_annihilates_full_target") is True
+            and target.get("bare_G89_annihilates_full_target") is False
+            and symmetry.get("exact_stabilizer_is_su3C_plus_u1em") is True
+            and symmetry.get("all_expected_ranks_proved") is True
+            and symmetry.get("standard_unbroken_basis", {}).get("dimension") == 9
+            and symmetry.get("standard_unbroken_basis", {}).get(
+                "annihilates_target_exactly"
+            )
+            is True
+        ),
+        "reconstructed_exact_linear_algebra_scoped": (
+            hessian.get("exact_reconstructed_rank") == 448
+            and hessian.get("exact_reconstructed_nullity") == 38
+            and hessian.get("kernel_equals_full_symmetry_tangent_span") is True
+            and reconstruction.get("canonical_sparse_matrix_sha256")
+            == "58e39ea9a982ac71fd696de93d8d8bc51dd1e153399bfa6f7cbcc368fc6b7458"
+            and reconstruction.get("source_algebra_derivation_complete") is False
+            and reconstruction.get("denominator_bound_source_derived") is False
+            and hessian.get("source_proof_grade") is False
+        ),
+        "constructed_EFT_completions_scoped_not_physical": (
+            radial.get("nonnegative_for_all_real_fields") is True
+            and radial.get("does_not_prove_target_global_minimum") is True
+            and squared.get("nonnegative_for_all_real_fields") is True
+            and squared.get("target_is_a_global_minimum") is True
+            and squared.get("global_zero_locus_classification_open") is True
+        ),
+        "logical_boundary_exact": (
+            summary.get("physical_SM_target_exactly_constructed") is True
+            and summary.get("standard_SU3C_x_U1em_stabilizer_proved") is True
+            and summary.get("exact_rational_witness_on_reconstructed_stationarity_lattice")
+            is True
+            and summary.get("exact_rank_448_on_reconstructed_Hessian_lattice")
+            is True
+            and summary.get("source_bound_exact_stationary_PSD_witness_available")
+            is False
+            and summary.get("source_bound_global_equality_orbit_proved") is False
+            and summary.get("global_minimum_orbit_classified") is False
+            and summary.get("physical_G6_closed") is False
+        ),
+        "historical_stabilizer_label_superseded_exact": (
+            supersession.get("old_selected_EFT_target_actual_stabilizer")
+            == "SU(3)_C x U(1)_89"
+            and supersession.get("old_selected_EFT_target_was_standard_SU3C_x_U1em")
+            is False
+            and supersession.get("new_target_exact_stabilizer")
+            == "standard SU(3)_C x U(1)_em"
+            and supersession.get(
+                "old_abstract_EFT_mathematical_theorems_may_remain_true_in_formal_scope"
+            )
+            is True
+            and supersession.get(
+                "old_abstract_EFT_theorems_do_not_close_physical_SM_G3_G4_G5"
+            )
+            is True
+        ),
+        "all_physical_SM_G3_through_G7_fail_closed": claims == expected_claims,
+        "next_required_proofs_exact": report.get("next_required_proofs")
+        == expected_next,
+    }
+    source_bound = all(checks.values())
+    return {
+        "namespace": "PHYSICAL_SM_VACUUM_TRUTH_OVERLAY",
+        "artifact": PHYSICAL_SM_VACUUM_JSON.name,
+        "markdown": PHYSICAL_SM_VACUUM_MD.name,
+        "source": PHYSICAL_SM_VACUUM_SOURCE.name,
+        "test": PHYSICAL_SM_VACUUM_TEST.name,
+        "expected_core_sha256": PHYSICAL_SM_VACUUM_CORE_SHA256,
+        "core_sha256": report.get("integrity", {}).get("core_sha256"),
+        "expected_raw_sha256": PHYSICAL_SM_VACUUM_RAW_SHA256,
+        "raw_sha256": raw_sha256,
+        "expected_source_raw_sha256": PHYSICAL_SM_VACUUM_SOURCE_RAW_SHA256,
+        "source_raw_sha256": source_raw_sha256,
+        "expected_test_raw_sha256": PHYSICAL_SM_VACUUM_TEST_RAW_SHA256,
+        "test_raw_sha256": test_raw_sha256,
+        "expected_markdown_raw_sha256": PHYSICAL_SM_VACUUM_MD_RAW_SHA256,
+        "markdown_raw_sha256": markdown_raw_sha256,
+        "source_bound": source_bound,
+        "physical_SM_target_exactly_constructed": bool(
+            source_bound and summary.get("physical_SM_target_exactly_constructed")
+        ),
+        "standard_SU3C_x_U1em_stabilizer_proved": bool(
+            source_bound and summary.get("standard_SU3C_x_U1em_stabilizer_proved")
+        ),
+        "reconstructed_stationary_transverse_PSD_witness_available": bool(
+            source_bound
+            and summary.get(
+                "exact_rational_witness_on_reconstructed_stationarity_lattice"
+            )
+            and summary.get("exact_rank_448_on_reconstructed_Hessian_lattice")
+        ),
+        "direct_source_algebra_stationary_PSD_witness_available": False,
+        "source_bound_global_equality_orbit_proved": False,
+        "old_selected_EFT_stabilizer_label_superseded": bool(
+            source_bound
+            and supersession.get("old_selected_EFT_target_was_standard_SU3C_x_U1em")
+            is False
+        ),
+        "old_selected_EFT_target_actual_stabilizer": (
+            "SU(3)_C x U(1)_89" if source_bound else None
+        ),
+        "old_abstract_EFT_mathematical_G3_G4_G5_retained_in_formal_scope": bool(
+            source_bound
+            and supersession.get(
+                "old_abstract_EFT_mathematical_theorems_may_remain_true_in_formal_scope"
+            )
+        ),
+        "physical_SM_G3_closed": False,
+        "physical_SM_G4_closed": False,
+        "physical_SM_G5_closed": False,
+        "physical_SM_G6_closed": False,
+        "physical_SM_G7_closed": False,
+        "release_verified": False,
+        "authoritative_renormalizable_closure": False,
+        "next_required_proofs": expected_next if source_bound else [],
+        "checks": checks,
+    }
+
+
+def _physical_sm_source_algebra_equality_frontier_contract(
+    report: dict[str, Any],
+    *,
+    raw_sha256: str = "",
+    source_raw_sha256: str = "",
+    test_raw_sha256: str = "",
+    markdown_raw_sha256: str = "",
+) -> dict[str, Any]:
+    """Bind the exact radial equality theorem without promoting physical G3--G5."""
+    expected_top_level = {
+        "schema",
+        "status",
+        "model_contract_id",
+        "n_checks",
+        "n_failed",
+        "failures",
+        "checks",
+        "source_bindings",
+        "source_row_lattice_frontier",
+        "exact_radial_equality",
+        "closure_claims",
+        "next_required_calculation",
+        "integrity",
+    }
+    expected_checks = {
+        "foundation_core_pin_matches": True,
+        "all_37_nonzero_witness_parameters_are_Hermitian": True,
+        "observed_source_Hessian_row_lcm_is_126000": True,
+        "aggregate_reconstructed_Hessian_lcm_is_frozen": True,
+        "aggregate_cancellation_remains_fail_closed": True,
+        "exact_radial_gcd_is_t_minus_1": True,
+        "full_equality_orbit_remains_fail_closed": True,
+        "physical_G3_G4_G5_remain_false": True,
+    }
+    expected_claims = {
+        "radial_stationary_equality_classified_exactly": True,
+        "direct_source_algebra_stationary_Hessian_available": False,
+        "complete_global_equality_orbit_proved": False,
+        "physical_SM_G3_closed": False,
+        "physical_SM_G4_closed": False,
+        "physical_SM_G5_closed": False,
+        "old_formal_U1_89_EFT_scope_promoted": False,
+    }
+    expected_next = [
+        "replace every active float projector row by exact integer/Fraction arithmetic and prove the fixed row lattices before evaluation",
+        "prove the summed stationary Hessian numerator and its rank/PSD without continued-fraction reconstruction",
+        "solve or exclude all non-radial common zeros of Vren+1 and grad(Vren), modulo SO(10)xU(1)_XxPQ",
+    ]
+    source = report.get("source_row_lattice_frontier", {})
+    radial = report.get("exact_radial_equality", {})
+    binding = report.get("source_bindings", {}).get("foundation", {})
+    claims = report.get("closure_claims", {})
+    checks = {
+        "artifact_schema_status_and_full_shape_exact": (
+            set(report) == expected_top_level
+            and report.get("schema")
+            == "physical_sm_source_algebra_equality_frontier_v20"
+            and report.get("status")
+            == "RADIAL_EQUALITY_CLOSED__FULL_SOURCE_ALGEBRA_AND_EQUALITY_ORBIT_OPEN"
+            and report.get("model_contract_id") == "gauged_u1x_phi17_v20"
+            and report.get("n_checks") == 8
+            and report.get("n_failed") == 0
+            and report.get("failures") == []
+            and report.get("checks") == expected_checks
+        ),
+        "core_and_all_four_raw_pins_exact": (
+            report.get("integrity", {}).get("core_sha256")
+            == PHYSICAL_SM_SOURCE_EQUALITY_CORE_SHA256
+            and raw_sha256 == PHYSICAL_SM_SOURCE_EQUALITY_RAW_SHA256
+            and source_raw_sha256
+            == PHYSICAL_SM_SOURCE_EQUALITY_SOURCE_RAW_SHA256
+            and test_raw_sha256 == PHYSICAL_SM_SOURCE_EQUALITY_TEST_RAW_SHA256
+            and markdown_raw_sha256 == PHYSICAL_SM_SOURCE_EQUALITY_MD_RAW_SHA256
+        ),
+        "foundation_binding_exact": (
+            set(report.get("source_bindings", {})) == {"foundation"}
+            and binding
+            == {
+                "source": PHYSICAL_SM_VACUUM_SOURCE.name,
+                "source_raw_sha256": PHYSICAL_SM_VACUUM_SOURCE_RAW_SHA256,
+                "source_portable_lf_sha256": PHYSICAL_SM_VACUUM_SOURCE_RAW_SHA256,
+                "json": PHYSICAL_SM_VACUUM_JSON.name,
+                "core_sha256": PHYSICAL_SM_VACUUM_CORE_SHA256,
+                "expected_core_sha256": PHYSICAL_SM_VACUUM_CORE_SHA256,
+                "core_pin_matches": True,
+            }
+        ),
+        "observed_row_lattice_is_diagnostic_not_source_proof": (
+            source.get("evidence_kind")
+            == "float_compiler_rational_lattice_census_only"
+            and source.get("supported_parameter_count") == 37
+            and source.get(
+                "all_supported_parameters_are_Hermitian_lambda_components"
+            )
+            is True
+            and source.get("Hessian_rows", {}).get("observed_denominator_lcm")
+            == 126000
+            and source.get("Hessian_rows", {}).get(
+                "source_derived_denominator_bound"
+            )
+            is False
+            and source.get("reconstructed_aggregate_Hessian_nonzero_entries")
+            == 5840
+            and source.get("reconstructed_aggregate_Hessian_denominator_lcm")
+            == 6300103327590
+            and source.get("aggregate_cancellation_source_proved") is False
+            and source.get("direct_exact_projector_arithmetic_used_for_rows")
+            is False
+            and source.get("source_algebra_derivation_complete") is False
+            and source.get("proof_grade") is False
+        ),
+        "radial_gcd_theorem_exact_and_scoped": (
+            radial.get("evidence_kind")
+            == "exact_Q_homogeneity_and_univariate_polynomial_gcd"
+            and radial.get("radial_line") == "q=t*q_star with real t"
+            and radial.get("coefficient_sum_V_at_t1") == "-1"
+            and radial.get("gcd_V_plus_1_and_dV_dt_monic") == "t - 1"
+            and radial.get("V_at_t1_is_minus_one") is True
+            and radial.get("target_is_stationary_on_radial_line") is True
+            and radial.get("target_is_only_radial_stationary_equality_point")
+            is True
+            and radial.get("full_486_field_equality_orbit_classified") is False
+            and radial.get("physical_SM_G3_closed") is False
+            and radial.get("physical_SM_G4_closed") is False
+            and radial.get("physical_SM_G5_closed") is False
+        ),
+        "closure_boundary_and_next_calculation_exact": (
+            claims == expected_claims
+            and report.get("next_required_calculation") == expected_next
+        ),
+    }
+    source_bound = all(checks.values())
+    return {
+        "namespace": "PHYSICAL_SM_SOURCE_ALGEBRA_EQUALITY_FRONTIER",
+        "artifact": PHYSICAL_SM_SOURCE_EQUALITY_JSON.name,
+        "markdown": PHYSICAL_SM_SOURCE_EQUALITY_MD.name,
+        "source": PHYSICAL_SM_SOURCE_EQUALITY_SOURCE.name,
+        "test": PHYSICAL_SM_SOURCE_EQUALITY_TEST.name,
+        "expected_core_sha256": PHYSICAL_SM_SOURCE_EQUALITY_CORE_SHA256,
+        "core_sha256": report.get("integrity", {}).get("core_sha256"),
+        "expected_raw_sha256": PHYSICAL_SM_SOURCE_EQUALITY_RAW_SHA256,
+        "raw_sha256": raw_sha256,
+        "expected_source_raw_sha256": PHYSICAL_SM_SOURCE_EQUALITY_SOURCE_RAW_SHA256,
+        "source_raw_sha256": source_raw_sha256,
+        "expected_test_raw_sha256": PHYSICAL_SM_SOURCE_EQUALITY_TEST_RAW_SHA256,
+        "test_raw_sha256": test_raw_sha256,
+        "expected_markdown_raw_sha256": PHYSICAL_SM_SOURCE_EQUALITY_MD_RAW_SHA256,
+        "markdown_raw_sha256": markdown_raw_sha256,
+        "source_bound": source_bound,
+        "radial_stationary_equality_classified_exactly": bool(
+            source_bound
+            and radial.get("target_is_only_radial_stationary_equality_point")
+        ),
+        "radial_gcd": "t - 1" if source_bound else None,
+        "observed_source_Hessian_row_lcm": 126000 if source_bound else None,
+        "reconstructed_aggregate_Hessian_lcm": (
+            6300103327590 if source_bound else None
+        ),
+        "direct_source_algebra_stationary_Hessian_available": False,
+        "complete_nonradial_equality_orbit_proved": False,
+        "physical_SM_G3_closed": False,
+        "physical_SM_G4_closed": False,
+        "physical_SM_G5_closed": False,
+        "old_formal_U1_89_EFT_scope_promoted": False,
+        "release_verified": False,
+        "next_required_calculation": expected_next if source_bound else [],
+        "checks": checks,
+    }
+
+
+def _physical_sm_five_amplitude_equality_contract(
+    report: dict[str, Any],
+    *,
+    raw_sha256: str = "",
+    source_raw_sha256: str = "",
+    test_raw_sha256: str = "",
+    markdown_raw_sha256: str = "",
+) -> dict[str, Any]:
+    """Bind the exact five-amplitude equality theorem without promoting G3--G5."""
+    expected_top_level = {
+        "schema",
+        "status",
+        "model_contract_id",
+        "n_checks",
+        "n_failed",
+        "failures",
+        "checks",
+        "source_bindings",
+        "restriction",
+        "exact_polynomial",
+        "exact_Groebner_certificate",
+        "discrete_variants",
+        "closure_claims",
+        "remaining_scope",
+        "integrity",
+    }
+    expected_embedded_checks = {
+        "all_source_portable_lf_and_core_pins_match",
+        "source_table_has_28_nonzero_target_contributions",
+        "all_37_witness_rows_have_even_H_Sigma_S_Phi17_parity",
+        "aggregate_polynomial_has_21_monomials",
+        "aggregate_denominator_is_frozen",
+        "exact_target_value_is_minus_one",
+        "all_five_target_slice_derivatives_vanish",
+        "Groebner_basis_is_exact_expected_basis",
+        "ideals_equal_by_mutual_exact_reduction",
+        "exactly_16_real_discrete_sign_variants",
+        "target_is_strict_minimum_on_five_amplitude_slice",
+        "full_486_and_physical_G3_G4_G5_remain_fail_closed",
+    }
+    expected_claims = {
+        "exact_radial_theorem_strictly_extended": True,
+        "five_real_amplitude_slice_stationary_equality_classified": True,
+        "full_486_field_stationary_equality_classified": False,
+        "declared_continuous_symmetry_orbit_equivalence_of_16_variants_proved": False,
+        "direct_source_algebra_full_486_Hessian_available": False,
+        "physical_SM_G3_closed": False,
+        "physical_SM_G4_closed": False,
+        "physical_SM_G5_closed": False,
+    }
+    expected_remaining_scope = [
+        "derive the complete 486-real stationary Hessian directly from integer/Gaussian-integer projector algebra",
+        "classify stationary equality points with arbitrary non-amplitude field components",
+        "classify the sixteen discrete variants under the declared continuous symmetry only with explicit exact group elements",
+    ]
+    core_keys = (
+        "schema",
+        "status",
+        "model_contract_id",
+        "source_bindings",
+        "restriction",
+        "exact_polynomial",
+        "exact_Groebner_certificate",
+        "discrete_variants",
+        "closure_claims",
+        "remaining_scope",
+    )
+    embedded_checks = report.get("checks", {})
+    source_bindings = report.get("source_bindings", {})
+    binding_files = source_bindings.get("files", {})
+    restriction = report.get("restriction", {})
+    polynomial = report.get("exact_polynomial", {})
+    certificate = report.get("exact_Groebner_certificate", {})
+    variants = report.get("discrete_variants", {})
+    claims = report.get("closure_claims", {})
+    core_payload = (
+        {key: report[key] for key in core_keys}
+        if all(key in report for key in core_keys)
+        else {}
+    )
+    expected_basis = [
+        "h**2 - 1",
+        "d**2 - 1",
+        "s**2 - 1",
+        "x**2 - 1",
+        "p - 1",
+    ]
+    checks = {
+        "artifact_schema_status_core_and_raw_pins_exact": (
+            set(report) == expected_top_level
+            and report.get("schema")
+            == "exact_physical_sm_five_amplitude_equality_v20"
+            and report.get("status")
+            == "EXACT_FIVE_AMPLITUDE_STATIONARY_EQUALITY_CLASSIFIED__FULL_486_ORBIT_OPEN"
+            and report.get("model_contract_id") == "gauged_u1x_phi17_v20"
+            and report.get("integrity", {}).get("core_sha256")
+            == PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_CORE_SHA256
+            and _canonical_json_line_sha256(core_payload)
+            == PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_CORE_SHA256
+            and raw_sha256 == PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_RAW_SHA256
+            and source_raw_sha256
+            == PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_SOURCE_RAW_SHA256
+            and test_raw_sha256
+            == PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_TEST_RAW_SHA256
+            and markdown_raw_sha256
+            == PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_MD_RAW_SHA256
+        ),
+        "embedded_checks_and_dependency_binding_exact": (
+            set(embedded_checks) == expected_embedded_checks
+            and all(
+                embedded_checks.get(name) is True
+                for name in expected_embedded_checks
+            )
+            and report.get("n_checks") == 12
+            and report.get("n_failed") == 0
+            and report.get("failures") == []
+            and len(binding_files) == 14
+            and all(
+                set(row)
+                == {
+                    "portable_lf_sha256",
+                    "expected_portable_lf_sha256",
+                    "matches",
+                }
+                and row.get("portable_lf_sha256")
+                == row.get("expected_portable_lf_sha256")
+                and row.get("matches") is True
+                for row in binding_files.values()
+            )
+            and all(
+                _file_sha256(ROOT / path) == row.get("portable_lf_sha256")
+                for path, row in binding_files.items()
+            )
+            and source_bindings.get("foundation_core_sha256")
+            == PHYSICAL_SM_VACUUM_CORE_SHA256
+            and source_bindings.get("expected_foundation_core_sha256")
+            == PHYSICAL_SM_VACUUM_CORE_SHA256
+            and source_bindings.get("all_portable_lf_and_core_pins_match") is True
+        ),
+        "five_real_amplitude_restriction_exact_and_reconstructed": (
+            restriction.get("ambient_real_field_dimension") == 486
+            and restriction.get("slice_dimension") == 5
+            and restriction.get("map")
+            == "(Phi,H,Sigma,S,Phi17)=(p Phi*,h H*,d Sigma*,s S*,x Phi17*)"
+            and restriction.get("amplitudes_are_real") is True
+            and restriction.get("polynomial_fitting_or_float_sampling_used")
+            is False
+            and restriction.get(
+                "exact_algebra_is_conditional_on_frozen_upstream_witness_table"
+            )
+            is True
+            and restriction.get(
+                "witness_coefficients_directly_derived_from_integer_projector_source_algebra"
+            )
+            is False
+            and restriction.get(
+                "target_invariant_table_is_portable_lf_hash_bound_to_normalized_source_modules"
+            )
+            is True
+            and restriction.get(
+                "target_invariant_table_independently_rederived_by_integer_arithmetic_in_this_artifact"
+            )
+            is False
+            and restriction.get("renormalizable_witness_nonzero_parameter_count")
+            == 37
+            and restriction.get("nonzero_target_contribution_count") == 28
+            and polynomial.get("common_denominator") == 1050017221265
+            and polynomial.get("aggregate_monomial_count") == 21
+            and len(polynomial.get("source_contributions", [])) == 28
+        ),
+        "Groebner_ideal_and_16_real_sign_variants_exact": (
+            certificate.get("coefficient_domain") == "QQ"
+            and certificate.get("monomial_order") == "grevlex"
+            and certificate.get("variables") == ["p", "h", "d", "s", "x"]
+            and certificate.get("source_generator_count") == 6
+            and len(certificate.get("source_generators", [])) == 6
+            and certificate.get("reduced_Groebner_basis") == expected_basis
+            and certificate.get("expected_reduced_Groebner_basis")
+            == expected_basis
+            and certificate.get("observed_basis_equals_expected") is True
+            and certificate.get("source_ideal_contained_in_expected_ideal")
+            is True
+            and certificate.get("expected_ideal_contained_in_source_ideal")
+            is True
+            and certificate.get("ideals_equal_by_mutual_exact_reduction")
+            is True
+            and certificate.get("ideal_zero_dimensional") is True
+            and certificate.get(
+                "ideal_is_radical_from_squarefree_separated_basis"
+            )
+            is True
+            and certificate.get("complex_solution_count_with_multiplicity")
+            == 16
+            and certificate.get("all_solutions_real") is True
+            and certificate.get("solution_set")
+            == "p=1; h,d,s,x independently in {-1,+1}"
+            and len(
+                certificate.get(
+                    "target_slice_Hessian_leading_principal_minors", []
+                )
+            )
+            == 5
+            and certificate.get("target_slice_Hessian_positive_definite")
+            is True
+        ),
+        "discrete_not_continuous_orbit_boundary_exact": (
+            variants.get("count") == 16
+            and variants.get("description")
+            == "p=1 with independent signs of h,d,s,x"
+            and variants.get("full_witness_support_row_count") == 37
+            and variants.get("zero_at_target_but_parity_checked_row_count") == 9
+            and variants.get("all_support_rows_even_in_h_d_s_x") is True
+            and variants.get("exact_discrete_sign_symmetries_of_selected_witness")
+            is True
+            and variants.get(
+                "full_486_stationarity_inherited_from_upstream_target_under_discrete_sign_symmetry"
+            )
+            is True
+            and variants.get(
+                "continuous_SO10_x_U1X_x_PQ_orbit_equivalence_classified"
+            )
+            is False
+        ),
+        "closure_boundary_and_remaining_scope_exact": (
+            claims == expected_claims
+            and report.get("remaining_scope") == expected_remaining_scope
+        ),
+    }
+    source_bound = all(checks.values())
+    return {
+        "namespace": "PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY",
+        "artifact": PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_JSON.name,
+        "markdown": PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_MD.name,
+        "source": PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_SOURCE.name,
+        "test": PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_TEST.name,
+        "expected_core_sha256": PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_CORE_SHA256,
+        "core_sha256": report.get("integrity", {}).get("core_sha256"),
+        "expected_raw_sha256": PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_RAW_SHA256,
+        "raw_sha256": raw_sha256,
+        "expected_source_raw_sha256": (
+            PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_SOURCE_RAW_SHA256
+        ),
+        "source_raw_sha256": source_raw_sha256,
+        "expected_test_raw_sha256": PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_TEST_RAW_SHA256,
+        "test_raw_sha256": test_raw_sha256,
+        "expected_markdown_raw_sha256": (
+            PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_MD_RAW_SHA256
+        ),
+        "markdown_raw_sha256": markdown_raw_sha256,
+        "source_bound": source_bound,
+        "exact_radial_theorem_strictly_extended": bool(source_bound),
+        "five_real_amplitude_slice_stationary_equality_classified": bool(
+            source_bound
+        ),
+        "exact_real_discrete_sign_variant_count": 16 if source_bound else None,
+        "target_strict_minimum_on_five_amplitude_slice": bool(source_bound),
+        "full_486_field_stationary_equality_classified": False,
+        "continuous_symmetry_orbit_equivalence_of_16_variants_proved": False,
+        "direct_source_algebra_full_486_Hessian_available": False,
+        "physical_SM_G3_closed": False,
+        "physical_SM_G4_closed": False,
+        "physical_SM_G5_closed": False,
+        "release_verified": False,
+        "remaining_scope": expected_remaining_scope if source_bound else [],
+        "checks": checks,
+    }
+
+
+def _semantic_json_file_sha256(path: Path) -> str:
+    try:
+        value = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError):
+        return ""
+    return _canonical_json_line_sha256(value)
+
+
+def _physical_sm_hard_projector_hessians_contract(
+    report: dict[str, Any],
+    *,
+    raw_sha256: str = "",
+    source_raw_sha256: str = "",
+    test_raw_sha256: str = "",
+    markdown_raw_sha256: str = "",
+) -> dict[str, Any]:
+    """Bind ten exact source Hessians while keeping the 37-row theorem open."""
+    expected_top = {
+        "schema", "status", "model_contract_id", "source_bindings", "target",
+        "arithmetic_contract", "certified_rows", "family_certificates",
+        "scope_accounting", "claims", "checks", "n_checks", "n_failed",
+        "failures", "integrity",
+    }
+    expected_claims = {
+        "exact_source_algebra_Hessians_for_all_10_O27_O44_rows": True,
+        "exact_source_algebra_Hessians_for_all_37_active_witness_rows": False,
+        "exact_full_witness_aggregate_stationarity": False,
+        "exact_full_witness_symmetry_kernel": False,
+        "exact_full_witness_rank_448_and_PSD": False,
+        "full_486_field_global_equality_orbit_classified": False,
+        "physical_SM_G3_closed": False,
+        "physical_SM_G4_closed": False,
+        "physical_SM_G5_closed": False,
+    }
+    expected_check_names = {
+        "all_source_portable_lf_pins_match",
+        "physical_target_is_exact_20_lattice_vector_in_486_chart",
+        "exactly_10_hard_rows_certified",
+        "all_10_Hessians_are_entrywise_symmetric_over_Q",
+        "all_10_exact_Euler_jet_identities_hold",
+        "O27_projector_sum_reconstructs_direct_source_Hessian_exactly",
+        "O44_projector_sum_reconstructs_direct_source_Hessian_exactly",
+        "all_signed_int64_preflights_pass",
+        "remaining_active_row_count_is_explicitly_27",
+        "full_37_row_aggregate_claim_is_fail_closed",
+        "global_equality_and_G3_G4_G5_claims_are_fail_closed",
+    }
+    bindings = report.get("source_bindings", {})
+    files = bindings.get("files", {})
+    target = report.get("target", {})
+    arithmetic = report.get("arithmetic_contract", {})
+    rows = report.get("certified_rows", [])
+    families = report.get("family_certificates", {})
+    scope = report.get("scope_accounting", {})
+    claims = report.get("claims", {})
+    embedded_checks = report.get("checks", {})
+    core_payload = {key: value for key, value in report.items() if key != "integrity"}
+    row_ids = [row.get("direction_id") for row in rows]
+    checks = {
+        "artifact_schema_status_core_and_raw_pins_exact": (
+            set(report) == expected_top
+            and report.get("schema") == "exact_physical_sm_hard_projector_hessians_v20"
+            and report.get("status") == "EXACT_TEN_HARD_PROJECTOR_HESSIANS__FULL_37_ROW_AGGREGATE_AND_GLOBAL_EQUALITY_OPEN"
+            and report.get("model_contract_id") == "gauged_u1x_phi17_v20"
+            and report.get("integrity", {}).get("core_sha256")
+            == PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_CORE_SHA256
+            and _canonical_json_line_sha256(core_payload)
+            == PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_CORE_SHA256
+            and raw_sha256 == PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_RAW_SHA256
+            and source_raw_sha256 == PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_SOURCE_RAW_SHA256
+            and test_raw_sha256 == PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_TEST_RAW_SHA256
+            and markdown_raw_sha256 == PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_MD_RAW_SHA256
+        ),
+        "six_live_portable_dependencies_exact": (
+            bindings.get("all_portable_lf_pins_match") is True
+            and len(files) == 6
+            and all(
+                set(row) == {"portable_lf_sha256", "expected_portable_lf_sha256", "matches"}
+                and row.get("matches") is True
+                and row.get("portable_lf_sha256")
+                == row.get("expected_portable_lf_sha256")
+                == _file_sha256(ROOT / relative)
+                for relative, row in files.items()
+            )
+        ),
+        "ten_exact_486_Hessians_and_family_reconstruction": (
+            len(rows) == 10
+            and len(set(row_ids)) == 10
+            and row_ids == sorted(row_ids)
+            and sum(name.startswith("O27_") for name in row_ids) == 4
+            and sum(name.startswith("O44_") for name in row_ids) == 6
+            and all(
+                row.get("Hessian", {}).get("dimension") == 486
+                and row.get("Hessian", {}).get("symmetric_entrywise_over_Q") is True
+                and isinstance(row.get("Hessian", {}).get("canonical_sparse_rational_sha256"), str)
+                and len(row.get("Hessian", {}).get("canonical_sparse_rational_sha256", "")) == 64
+                and row.get("exact_target_jet_from_homogeneity", {}).get("Hq_equals_3_gradient_exactly") is True
+                and row.get("exact_target_jet_from_homogeneity", {}).get("q_dot_gradient_equals_4V_exactly") is True
+                for row in rows
+            )
+            and families.get("O27_126bar_self_projectors", {}).get(
+                "four_projector_Hessians_reconstruct_unprojected_norm_quartic_entrywise_over_Q"
+            ) is True
+            and families.get("O44_Phi2_Sigma_projectors", {}).get(
+                "six_channel_Hessians_reconstruct_unprojected_contraction_entrywise_over_Q"
+            ) is True
+        ),
+        "exact_arithmetic_target_and_scope_boundary": (
+            arithmetic.get("exact_domains") == ["Z", "Gaussian integers Z[i]", "Q"]
+            and arithmetic.get("floating_point_used_to_construct_or_accept_Hessians") is False
+            and arithmetic.get("finite_difference_autodiff_or_rational_recognition_used") is False
+            and target.get("chart_dimension") == 486
+            and target.get("lattice_denominator") == 20
+            and target.get("lattice_norm_squared") == 1632
+            and target.get("support_size") == 21
+            and scope.get("active_witness_row_count") == 37
+            and scope.get("exact_source_rows_certified_here") == 10
+            and scope.get("remaining_active_row_count") == 27
+            and len(scope.get("remaining_active_rows", [])) == 27
+            and claims == expected_claims
+        ),
+        "embedded_checks_exact": (
+            set(embedded_checks) == expected_check_names
+            and all(embedded_checks.get(name) is True for name in expected_check_names)
+            and report.get("n_checks") == 11
+            and report.get("n_failed") == 0
+            and report.get("failures") == []
+        ),
+    }
+    source_bound = all(checks.values())
+    return {
+        "namespace": "PHYSICAL_SM_HARD_PROJECTOR_HESSIANS",
+        "source_bound": source_bound,
+        "core_sha256": report.get("integrity", {}).get("core_sha256"),
+        "exact_source_Hessian_row_count": 10 if source_bound else None,
+        "remaining_active_row_count": 27 if source_bound else None,
+        "all_10_O27_O44_source_Hessians_closed": bool(source_bound),
+        "all_37_active_source_Hessians_closed": False,
+        "full_witness_stationarity_rank_PSD_closed": False,
+        "full_486_global_equality_orbit_closed": False,
+        "physical_SM_G3_closed": False,
+        "physical_SM_G4_closed": False,
+        "physical_SM_G5_closed": False,
+        "release_verified": False,
+        "checks": checks,
+    }
+
+
+def _physical_sm_last_six_hessians_contract(
+    report: dict[str, Any],
+    *,
+    raw_sha256: str = "",
+    source_raw_sha256: str = "",
+    test_raw_sha256: str = "",
+    markdown_raw_sha256: str = "",
+) -> dict[str, Any]:
+    """Bind the last six source Hessians; leave aggregate/global G3-G5 open."""
+    expected_top = {
+        "schema", "status", "model_contract_id", "source_bindings",
+        "arithmetic_contract", "certified_rows", "family_certificates",
+        "scope_accounting", "claims", "checks", "n_checks", "n_failed",
+        "failures", "integrity",
+    }
+    expected_files = {
+        "exact_mixed_45_triplet_channel_v20.py",
+        "exact_phi2_hdagh_channel_family_v20.py",
+        "exact_physical_sm_easy_21_hessians_v20.py",
+        "exact_physical_sm_hard_projector_hessians_v20.py",
+        "gauged_u1x_g2_derivative_audit_v20.py",
+        "live_g2_canonical_486_field_chart_v20.py",
+        "live_g2_exact_hsigma_hermitian_derivatives_v20.py",
+        "live_g2_exact_phi2_hdagh_derivatives_v20.py",
+        "live_g2_exact_remaining_cubic_derivatives_v20.py",
+        "physical_sm_vacuum_local_feasibility_v20.py",
+    }
+    expected_claims = {
+        "all_37_active_source_Hessians_available_across_three_theorems": True,
+        "exact_37_row_aggregate_stationarity_kernel_rank_PSD_proved_here": False,
+        "exact_last_six_source_Hessians": True,
+        "full_486_field_global_equality_orbit_classified": False,
+        "physical_SM_G3_closed": False,
+        "physical_SM_G4_closed": False,
+        "physical_SM_G5_closed": False,
+    }
+    bindings = report.get("source_bindings", {})
+    files = bindings.get("files", {})
+    rows = report.get("certified_rows", [])
+    scope = report.get("scope_accounting", {})
+    claims = report.get("claims", {})
+    arithmetic = report.get("arithmetic_contract", {})
+    embedded_checks = report.get("checks", {})
+    core_payload = {key: value for key, value in report.items() if key != "integrity"}
+    row_ids = [row.get("direction_id") for row in rows]
+    checks = {
+        "artifact_schema_status_core_and_raw_pins_exact": (
+            set(report) == expected_top
+            and report.get("schema") == "exact_physical_sm_last_six_hessians_v20"
+            and report.get("status")
+            == "EXACT_LAST_SIX_SOURCE_HESSIANS__ALL_37_ROWS_AVAILABLE__AGGREGATE_AND_GLOBAL_EQUALITY_OPEN"
+            and report.get("model_contract_id") == "gauged_u1x_phi17_v20"
+            and report.get("integrity", {}).get("core_sha256")
+            == PHYSICAL_SM_LAST_SIX_HESSIANS_CORE_SHA256
+            and _canonical_json_line_sha256(core_payload)
+            == PHYSICAL_SM_LAST_SIX_HESSIANS_CORE_SHA256
+            and raw_sha256 == PHYSICAL_SM_LAST_SIX_HESSIANS_RAW_SHA256
+            and source_raw_sha256 == PHYSICAL_SM_LAST_SIX_HESSIANS_SOURCE_RAW_SHA256
+            and test_raw_sha256 == PHYSICAL_SM_LAST_SIX_HESSIANS_TEST_RAW_SHA256
+            and markdown_raw_sha256 == PHYSICAL_SM_LAST_SIX_HESSIANS_MD_RAW_SHA256
+        ),
+        "ten_live_portable_dependencies_exact": (
+            bindings.get("all_portable_lf_pins_match") is True
+            and set(files) == expected_files
+            and all(
+                set(row) == {"portable_lf_sha256", "matches"}
+                and row.get("matches") is True
+                and row.get("portable_lf_sha256") == _file_sha256(ROOT / relative)
+                for relative, row in files.items()
+            )
+        ),
+        "six_exact_486_Hessians_and_Euler_identities": (
+            len(rows) == 6
+            and len(set(row_ids)) == 6
+            and row_ids == sorted(row_ids)
+            and sum(str(name).startswith("O14_") for name in row_ids) == 1
+            and sum(str(name).startswith("O35_") for name in row_ids) == 2
+            and sum(str(name).startswith("O46_") for name in row_ids) == 3
+            and all(
+                row.get("Hessian", {}).get("dimension") == 486
+                and row.get("Hessian", {}).get("symmetric_entrywise_over_Q") is True
+                and row.get("exact_target_jet_from_homogeneity", {}).get(
+                    "Hq_equals_degree_minus_1_times_gradient_exactly"
+                ) is True
+                and row.get("exact_target_jet_from_homogeneity", {}).get(
+                    "q_dot_gradient_equals_degree_times_value_exactly"
+                ) is True
+                for row in rows
+            )
+        ),
+        "all_37_available_but_aggregate_and_physical_claims_fail_closed": (
+            arithmetic.get("floating_point_used_to_construct_or_accept_Hessians") is False
+            and arithmetic.get("finite_difference_autodiff_or_rational_recognition_used") is False
+            and scope.get("easy_rows") == 21
+            and scope.get("hard_rows") == 10
+            and scope.get("last_rows") == 6
+            and scope.get("total_active_source_Hessians_available") == 37
+            and claims == expected_claims
+            and set(embedded_checks) == {
+                "O14_operator_Hermitian", "all_G3_G4_G5_and_global_claims_fail_closed",
+                "all_Hessians_symmetric", "all_exact_Euler_identities",
+                "exactly_six_rows", "source_pins_match",
+            }
+            and all(embedded_checks.values())
+            and report.get("n_checks") == 6
+            and report.get("n_failed") == 0
+            and report.get("failures") == []
+        ),
+    }
+    source_bound = all(checks.values())
+    return {
+        "namespace": "PHYSICAL_SM_LAST_SIX_HESSIANS",
+        "source_bound": source_bound,
+        "core_sha256": report.get("integrity", {}).get("core_sha256"),
+        "exact_last_six_source_Hessians_closed": bool(source_bound),
+        "all_37_active_source_Hessians_available": bool(source_bound),
+        "exact_37_row_aggregate_stationarity_kernel_rank_PSD_closed": False,
+        "full_486_global_equality_orbit_closed": False,
+        "physical_SM_G3_closed": False,
+        "physical_SM_G4_closed": False,
+        "physical_SM_G5_closed": False,
+        "release_verified": False,
+        "checks": checks,
+    }
+
+
+def _physical_sm_37_row_aggregate_contract(
+    report: dict[str, Any],
+    *,
+    raw_sha256: str = "",
+    source_raw_sha256: str = "",
+    test_raw_sha256: str = "",
+    markdown_raw_sha256: str = "",
+) -> dict[str, Any]:
+    """Bind exact local source-Hessian closure without promoting global G3-G5."""
+    expected_top = {
+        "schema", "status", "model_contract_id", "source_bindings",
+        "arithmetic_contract", "source_aggregate_assembly", "witness",
+        "exact_stationarity", "exact_kernel_and_rank", "exact_PSD_certificate",
+        "scope_boundary", "claims", "checks", "n_checks", "n_failed",
+        "failures", "integrity",
+    }
+    expected_check_names = {
+        "all_37_rows_present", "all_generator_columns_annihilated",
+        "exact_PSD", "exact_rank_and_kernel", "exact_source_Hq_consistency",
+        "exact_value_and_stationarity", "global_equality_and_G3_G4_G5_fail_closed",
+        "source_aggregate_matches_historical_reconstruction_entrywise",
+        "source_pins_match",
+    }
+    expected_claims = {
+        "all_37_active_Hessians_derived_from_exact_source_algebra": True,
+        "exact_source_aggregate_is_PSD_and_strictly_positive_mod_symmetry": True,
+        "exact_source_aggregate_kernel_is_38_dimensional_symmetry_span": True,
+        "exact_source_aggregate_rank_is_448": True,
+        "exact_source_aggregate_value_minus_one_and_stationary": True,
+        "full_486_field_global_equality_orbit_classified": False,
+        "physical_SM_G3_closed": False,
+        "physical_SM_G4_closed": False,
+        "physical_SM_G5_closed": False,
+    }
+    bindings = report.get("source_bindings", {})
+    files = bindings.get("files", {})
+    assembly = report.get("source_aggregate_assembly", {})
+    witness = report.get("witness", {})
+    stationarity = report.get("exact_stationarity", {})
+    kernel = report.get("exact_kernel_and_rank", {})
+    modular = kernel.get("modular_lower_bound_certificate", {})
+    psd = report.get("exact_PSD_certificate", {})
+    scope = report.get("scope_boundary", {})
+    arithmetic = report.get("arithmetic_contract", {})
+    claims = report.get("claims", {})
+    embedded_checks = report.get("checks", {})
+    core_payload = {key: value for key, value in report.items() if key != "integrity"}
+    checks = {
+        "artifact_schema_status_core_and_raw_pins_exact": (
+            set(report) == expected_top
+            and report.get("schema") == "exact_physical_sm_37_row_aggregate_v20"
+            and report.get("status")
+            == "EXACT_ALL_37_SOURCE_AGGREGATE_STATIONARY_KERNEL_RANK_PSD__GLOBAL_EQUALITY_ORBIT_OPEN"
+            and report.get("model_contract_id") == "gauged_u1x_phi17_v20"
+            and report.get("integrity", {}).get("core_sha256")
+            == PHYSICAL_SM_37_ROW_AGGREGATE_CORE_SHA256
+            and _canonical_json_line_sha256(core_payload)
+            == PHYSICAL_SM_37_ROW_AGGREGATE_CORE_SHA256
+            and raw_sha256 == PHYSICAL_SM_37_ROW_AGGREGATE_RAW_SHA256
+            and source_raw_sha256 == PHYSICAL_SM_37_ROW_AGGREGATE_SOURCE_RAW_SHA256
+            and test_raw_sha256 == PHYSICAL_SM_37_ROW_AGGREGATE_TEST_RAW_SHA256
+            and markdown_raw_sha256 == PHYSICAL_SM_37_ROW_AGGREGATE_MD_RAW_SHA256
+        ),
+        "eight_live_portable_dependencies_exact": (
+            bindings.get("all_portable_lf_pins_match") is True
+            and len(files) == 8
+            and all(
+                set(row) == {"portable_lf_sha256", "matches"}
+                and row.get("matches") is True
+                and row.get("portable_lf_sha256") == _file_sha256(ROOT / relative)
+                for relative, row in files.items()
+            )
+        ),
+        "all_37_source_rows_and_exact_stationarity": (
+            assembly.get("active_row_count") == 37
+            and assembly.get("nonzero_entries") == 5840
+            and assembly.get("denominator") == 6300103327590
+            and assembly.get("canonical_sparse_Q_sqrt2_serialization_sha256")
+            == "58e39ea9a982ac71fd696de93d8d8bc51dd1e153399bfa6f7cbcc368fc6b7458"
+            and assembly.get("entrywise_identity_to_historical_reconstructed_rational_aggregate") is True
+            and witness.get("coefficient_count") == 37
+            and len(witness.get("exact_rational_coefficients", {})) == 37
+            and len(witness.get("row_homogeneous_degrees", {})) == 37
+            and stationarity.get("exact_potential_value") == "-1"
+            and stationarity.get("exact_gradient_nonzero_entries") == 0
+            and stationarity.get("exact_gradient_is_zero") is True
+            and stationarity.get("aggregate_Hq_matches_weighted_source_Hq_entrywise") is True
+            and len(stationarity.get("per_row_exact_target_values", {})) == 37
+        ),
+        "exact_kernel_rank_and_PSD_certificate": (
+            kernel.get("exact_generator_column_count") == 47
+            and kernel.get("annihilated_generator_columns") == 47
+            and kernel.get("all_47_generator_columns_annihilated_entrywise") is True
+            and kernel.get("exact_symmetry_tangent_span_dimension") == 38
+            and kernel.get("exact_rank") == 448
+            and kernel.get("exact_nullity") == 38
+            and kernel.get("kernel_equals_exact_symmetry_tangent_span") is True
+            and modular.get("prime") == 1009
+            and modular.get("rank") == 448
+            and modular.get("principal_minor_determinant_mod_prime") == 870
+            and modular.get("principal_minor_is_nonzero") is True
+            and len(modular.get("principal_pivot_indices", [])) == 448
+            and psd.get("principal_minor_dimension") == 448
+            and psd.get("strictly_positive_exact_pivot_count") == 448
+            and psd.get("all_exact_pivots_strictly_positive") is True
+            and psd.get("exact_divisibility_checks") == 29671711
+            and psd.get("positive_pivot_sha256_chain")
+            == "58b41d4c2be5fbc31b0ada79b653e84561e0db629a3d600053d44d760824c259"
+            and psd.get("principal_minor_is_positive_definite_by_Sylvester") is True
+            and psd.get("full_Hessian_is_positive_semidefinite") is True
+            and psd.get("full_Hessian_is_positive_definite_mod_kernel") is True
+        ),
+        "local_scope_exact_but_global_and_physical_G3_G5_fail_closed": (
+            arithmetic.get("floating_point_used_to_construct_or_accept_any_claim") is False
+            and arithmetic.get("finite_difference_autodiff_or_rational_recognition_used") is False
+            and scope.get("source_bound_local_stationary_Hessian_problem_complete") is True
+            and scope.get("global_equality_orbit_classification_complete") is False
+            and claims == expected_claims
+            and set(embedded_checks) == expected_check_names
+            and all(embedded_checks.get(name) is True for name in expected_check_names)
+            and report.get("n_checks") == 9
+            and report.get("n_failed") == 0
+            and report.get("failures") == []
+        ),
+    }
+    source_bound = all(checks.values())
+    return {
+        "namespace": "PHYSICAL_SM_37_ROW_AGGREGATE",
+        "source_bound": source_bound,
+        "core_sha256": report.get("integrity", {}).get("core_sha256"),
+        "all_37_active_Hessians_source_derived": bool(source_bound),
+        "exact_source_aggregate_value_minus_one_and_stationary": bool(source_bound),
+        "exact_source_aggregate_kernel_dimension": 38 if source_bound else None,
+        "exact_source_aggregate_rank": 448 if source_bound else None,
+        "exact_source_aggregate_PSD_and_strict_mod_symmetry": bool(source_bound),
+        "source_bound_local_stationary_Hessian_problem_complete": bool(source_bound),
+        "full_486_global_equality_orbit_closed": False,
+        "physical_SM_G3_closed": False,
+        "physical_SM_G4_closed": False,
+        "physical_SM_G5_closed": False,
+        "release_verified": False,
+        "checks": checks,
+    }
+
+
+def _physical_sm_local_equality_orbit_contract(
+    report: dict[str, Any],
+    *,
+    portable_lf_sha256: str = "",
+    source_portable_lf_sha256: str = "",
+    test_portable_lf_sha256: str = "",
+    markdown_portable_lf_sha256: str = "",
+) -> dict[str, Any]:
+    """Bind the full-486 local orbit theorem without asserting global equality."""
+    expected_top = {
+        "schema", "status", "model_contract_id", "source_bindings",
+        "local_orbit_theorem", "sixteen_sign_orbit", "scope_boundary",
+        "claims", "checks", "n_checks", "n_failed", "failures", "integrity",
+    }
+    expected_check_names = {
+        "actual_486_target_and_representation_embedding_source_verified",
+        "all_16_five_amplitude_variants_are_one_declared_continuous_orbit",
+        "all_equivariant_Morse_Bott_slice_hypotheses_hold",
+        "dependency_pins_match",
+        "every_sign_row_group_action_matches_all_actual_nonzero_target_coordinates",
+        "every_sign_row_has_verified_exact_phase_action",
+        "exactly_16_sign_rows",
+        "five_amplitude_exact_solution_ideal_and_bit_order_source_bound",
+        "full_486_local_stationary_equality_locus_is_exactly_one_K_orbit",
+        "full_486_local_stationary_locus_is_exactly_one_K_orbit",
+        "global_G3_G4_G5_remain_fail_closed",
+        "no_quantitative_neighborhood_radius_claimed",
+        "upstream_core_pins_match",
+    }
+    expected_claims = {
+        "Crit_V_intersection_U_equals_target_orbit": True,
+        "all_16_five_amplitude_sign_variants_one_continuous_K_orbit": True,
+        "complete_486_field_global_equality_orbit_classified": False,
+        "exists_K_invariant_open_neighborhood_U_of_target_orbit": True,
+        "physical_SM_G3_closed": False,
+        "physical_SM_G4_closed": False,
+        "physical_SM_G5_closed": False,
+        "quantitative_radius_for_U_proved": False,
+        "stationary_V_minus_one_locus_intersection_U_equals_target_orbit": True,
+        "target_orbit_is_strict_local_minimum_in_U_mod_K": True,
+    }
+    bindings = report.get("source_bindings", {})
+    files = bindings.get("files", {})
+    theorem = report.get("local_orbit_theorem", {})
+    hypotheses = theorem.get("hypotheses", {})
+    signs = report.get("sixteen_sign_orbit", {})
+    sign_rows = signs.get("rows", [])
+    embedding = signs.get("actual_target_representation_embedding", {})
+    embedding_checks = embedding.get("checks", {})
+    scope = report.get("scope_boundary", {})
+    claims = report.get("claims", {})
+    embedded_checks = report.get("checks", {})
+    core_payload = {key: value for key, value in report.items() if key != "integrity"}
+    checks = {
+        "artifact_schema_status_core_and_four_portable_pins_exact": (
+            set(report) == expected_top
+            and report.get("schema") == "exact_physical_sm_local_equality_orbit_v20"
+            and report.get("status")
+            == "EXACT_FULL_486_LOCAL_EQUALITY_ORBIT_AND_16_SIGN_ORBIT__GLOBAL_EQUALITY_OPEN"
+            and report.get("model_contract_id") == "gauged_u1x_phi17_v20"
+            and report.get("integrity", {}).get("core_sha256")
+            == PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_CORE_SHA256
+            and _canonical_json_line_sha256(core_payload)
+            == PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_CORE_SHA256
+            and portable_lf_sha256
+            == PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_PORTABLE_LF_SHA256
+            and source_portable_lf_sha256
+            == PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_SOURCE_PORTABLE_LF_SHA256
+            and test_portable_lf_sha256
+            == PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_TEST_PORTABLE_LF_SHA256
+            and markdown_portable_lf_sha256
+            == PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_MD_PORTABLE_LF_SHA256
+        ),
+        "seven_live_portable_dependencies_exact": (
+            bindings.get("all_portable_lf_pins_match") is True
+            and len(files) == 7
+            and all(
+                set(row)
+                == {"portable_lf_sha256", "expected_portable_lf_sha256", "matches"}
+                and row.get("matches") is True
+                and row.get("portable_lf_sha256")
+                == row.get("expected_portable_lf_sha256")
+                == _file_sha256(ROOT / relative)
+                for relative, row in files.items()
+            )
+        ),
+        "full_486_local_Morse_Bott_orbit_theorem_exact": (
+            theorem.get("ambient_real_dimension") == 486
+            and theorem.get("group_K") == "SO(10) x U(1)_X x U(1)_PQ"
+            and theorem.get("target_orbit_dimension") == 38
+            and theorem.get("normal_slice_dimension") == 448
+            and theorem.get("quantitative_radius") is None
+            and hypotheses.get("K_is_compact") is True
+            and hypotheses.get("K_acts_smoothly_and_orthogonally_on_R486") is True
+            and hypotheses.get("selected_potential_is_K_invariant") is True
+            and hypotheses.get("target_is_exact_stationary_point_with_V_minus_one") is True
+            and hypotheses.get("orbit_tangent_dimension") == 38
+            and hypotheses.get("Hessian_kernel_dimension") == 38
+            and hypotheses.get("Hessian_kernel_equals_orbit_tangent") is True
+            and hypotheses.get("Hessian_positive_definite_on_a_transverse_complement") is True
+        ),
+        "sixteen_sign_variants_are_one_continuous_K_orbit_exact": (
+            len(sign_rows) == 16
+            and len({tuple(row.get("bits_h_d_s_x", [])) for row in sign_rows}) == 16
+            and {tuple(row.get("bits_h_d_s_x", [])) for row in sign_rows}
+            == {
+                (h, d, s, x)
+                for h in (0, 1)
+                for d in (0, 1)
+                for s in (0, 1)
+                for x in (0, 1)
+            }
+            and all(
+                row.get("actual_486_coordinate_endpoint_matches_amplitude_variant")
+                is True
+                and len(row.get("SO10_Cartan_theta_0_to_4_over_pi", [])) == 5
+                and set(row.get("verified_net_phase_exponents_over_pi", {}))
+                == {"H", "Sigma", "S", "Phi17"}
+                and isinstance(row.get("transformed_target_sparse_sha256"), str)
+                and len(row.get("transformed_target_sparse_sha256")) == 64
+                for row in sign_rows
+            )
+            and signs.get("continuous_path")
+            == "scale every listed angle simultaneously from t=0 to t=1"
+            and signs.get("source_solution_set")
+            == "p=1; h,d,s,x independently in {-1,+1}"
+            and set(embedding)
+            == {
+                "PQ_charges", "U1X_charges", "checks", "plane_actions",
+                "source", "target_sparse_integer_coordinates",
+            }
+            and len(embedding.get("target_sparse_integer_coordinates", {})) == 21
+            and len(embedding.get("plane_actions", [])) == 5
+            and len(embedding_checks) == 7
+            and all(embedding_checks.values())
+        ),
+        "local_positive_scope_but_radius_global_and_physical_G3_G5_fail_closed": (
+            claims == expected_claims
+            and scope
+            == {
+                "distant_or_disconnected_equality_components_excluded": False,
+                "global_polynomial_ideal_or_global_SOS_orbit_separator_supplied": False,
+                "not_just_five_amplitude_slice": True,
+                "theorem_is_full_486_dimensional_but_local_near_the_entire_compact_orbit": True,
+            }
+            and set(embedded_checks) == expected_check_names
+            and all(embedded_checks.get(name) is True for name in expected_check_names)
+            and report.get("n_checks") == 13
+            and report.get("n_failed") == 0
+            and report.get("failures") == []
+        ),
+    }
+    source_bound = all(checks.values())
+    return {
+        "namespace": "PHYSICAL_SM_LOCAL_EQUALITY_ORBIT",
+        "source_bound": source_bound,
+        "core_sha256": report.get("integrity", {}).get("core_sha256"),
+        "full_486_local_stationary_orbit_classified": bool(source_bound),
+        "full_486_local_stationary_equality_orbit_classified": bool(source_bound),
+        "all_16_sign_variants_one_continuous_K_orbit": bool(source_bound),
+        "target_orbit_strict_local_minimum_mod_K": bool(source_bound),
+        "quantitative_neighborhood_radius_proved": False,
+        "complete_486_global_equality_orbit_classified": False,
+        "physical_SM_G3_closed": False,
+        "physical_SM_G4_closed": False,
+        "physical_SM_G5_closed": False,
+        "release_verified": False,
+        "checks": checks,
+    }
+
+
+def _physical_sm_g4_g5_branch_mismatch_contract(
+    report: dict[str, Any],
+    *,
+    raw_sha256: str = "",
+    source_raw_sha256: str = "",
+    test_raw_sha256: str = "",
+    markdown_raw_sha256: str = "",
+) -> dict[str, Any]:
+    """Bind the exact branch mismatch without claiming a global hierarchy no-go."""
+    core_keys = (
+        "schema", "status", "contract_id", "model_contract_id", "source_binding",
+        "exact_branch_mismatch", "unit_rescaling_audit_0_through_100",
+        "gate_acceptance_boundary", "scope", "next_required_work",
+    )
+    core_payload = {key: report[key] for key in core_keys} if all(key in report for key in core_keys) else {}
+    binding = report.get("source_binding", {})
+    files = binding.get("files", {})
+    mismatch = report.get("exact_branch_mismatch", {})
+    exact = mismatch.get("exact_mismatch", {})
+    audit = report.get("unit_rescaling_audit_0_through_100", {})
+    gates = report.get("gate_acceptance_boundary", {})
+    scope = report.get("scope", {})
+    embedded_checks = report.get("checks", {})
+    expected_check_names = {
+        "all_101_common_unit_rescalings_preserve_ratio",
+        "all_G4_through_G8_closure_flags_fail_closed",
+        "all_dependency_pins_match",
+        "branch_ratios_are_exactly_unequal",
+        "current_witness_not_promoted_to_canonical_G4_or_G5",
+        "five_amplitude_ratio_is_exactly_two",
+        "mismatch_exceeds_10_pow_26",
+        "not_misrepresented_as_global_no_go",
+        "physical_hierarchy_ratio_is_exact_nonzero",
+        "unit_audit_covers_cases_0_through_100",
+    }
+    dependency_modes_ok = True
+    for row in files.values():
+        path = ROOT / str(row.get("path", ""))
+        mode = row.get("binding_mode")
+        observed = _file_sha256(path) if mode == "portable_lf" else _semantic_json_file_sha256(path)
+        dependency_modes_ok = bool(
+            dependency_modes_ok
+            and mode in {"portable_lf", "semantic_json"}
+            and row.get("matches") is True
+            and row.get("observed_sha256") == row.get("expected_sha256") == observed
+        )
+    all_gate_flags_false = all(
+        value is False
+        for gate in gates.values()
+        for key, value in gate.items()
+        if key.endswith("_closed") or key.startswith("promoted_by_this_")
+    )
+    checks = {
+        "artifact_schema_status_core_and_raw_pins_exact": (
+            report.get("schema") == "exact_physical_sm_g4_g5_branch_mismatch_v1"
+            and report.get("status") == "EXACT_FIVE_AMPLITUDE_VS_PHYSICAL_EW_BRANCH_MISMATCH_PROVED__CANONICAL_G4_G5_AND_DOWNSTREAM_G6_G8_OPEN"
+            and report.get("contract_id") == "exact_physical_sm_g4_g5_branch_mismatch_v20"
+            and report.get("model_contract_id") == "gauged_u1x_phi17_v20"
+            and report.get("integrity", {}).get("core_sha256")
+            == PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_CORE_SHA256
+            and _canonical_json_line_sha256(core_payload)
+            == PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_CORE_SHA256
+            and raw_sha256 == PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_RAW_SHA256
+            and source_raw_sha256 == PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_SOURCE_RAW_SHA256
+            and test_raw_sha256 == PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_TEST_RAW_SHA256
+            and markdown_raw_sha256 == PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_MD_RAW_SHA256
+        ),
+        "seven_live_dependencies_and_parent_cores_exact": (
+            binding.get("all_dependency_pins_match") is True
+            and binding.get("shared_model_contract_id") == "gauged_u1x_phi17_v20"
+            and binding.get("five_amplitude_core_sha256")
+            == PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_CORE_SHA256
+            and binding.get("physical_SM_foundation_core_sha256")
+            == PHYSICAL_SM_VACUUM_CORE_SHA256
+            and len(files) == 7
+            and dependency_modes_ok
+        ),
+        "exact_nonremovable_branch_mismatch_and_101_audit": (
+            mismatch.get("five_amplitude_branch", {}).get("H_over_Phi_squared") == "2"
+            and exact.get("ratios_are_equal") is False
+            and exact.get("mismatch_exceeds_10_pow_26_in_squared_ratio") is True
+            and exact.get("common_unit_rescaling_can_remove_mismatch") is False
+            and audit.get("case_range") == [0, 100]
+            and audit.get("case_count") == 101
+            and audit.get("identity_case") == 50
+            and audit.get("all_common_rescalings_preserve_ratio") is True
+            and audit.get("records_sha256")
+            == "1783b73db34801957825decc3c6e7619f31275935d68e1dd067e36f7eecb0c87"
+        ),
+        "canonical_G4_through_G8_and_global_no_go_fail_closed": (
+            set(gates) == {"G4", "G5", "G6", "G7", "G8"}
+            and all_gate_flags_false
+            and scope == {
+                "exact_branch_mismatch_proved": True,
+                "source_exact_Hessian_at_current_five_amplitude_target_alone_can_close_canonical_G4": False,
+                "source_exact_Hessian_at_current_five_amplitude_target_alone_can_close_canonical_G5": False,
+                "global_no_go_for_all_possible_physical_EW_branches": False,
+                "new_hierarchy_mechanism_ruled_out": False,
+                "physical_G4_G5_G6_G7_G8_closed": False,
+                "release_G4_G5_G6_G7_G8_closed": False,
+                "authoritative_G4_G5_G6_G7_G8_closed": False,
+            }
+        ),
+        "embedded_checks_exact": (
+            set(embedded_checks) == expected_check_names
+            and all(embedded_checks.get(name) is True for name in expected_check_names)
+            and report.get("n_checks") == 10
+            and report.get("n_failed") == 0
+            and report.get("failures") == []
+        ),
+    }
+    source_bound = all(checks.values())
+    return {
+        "namespace": "PHYSICAL_SM_G4_G5_BRANCH_MISMATCH",
+        "source_bound": source_bound,
+        "core_sha256": report.get("integrity", {}).get("core_sha256"),
+        "exact_branch_mismatch_proved": bool(source_bound),
+        "unit_rescaling_case_count": 101 if source_bound else None,
+        "current_five_amplitude_target_is_canonical_physical_EW_branch": False,
+        "global_no_go_for_other_physical_EW_branches": False,
+        "physical_SM_G4_closed": False,
+        "physical_SM_G5_closed": False,
+        "physical_SM_G6_closed": False,
+        "physical_SM_G7_closed": False,
+        "physical_SM_G8_closed": False,
+        "release_verified": False,
+        "checks": checks,
+    }
+
+
+def _physical_sm_heavy_vector_mass_contract(
+    report: dict[str, Any],
+    *,
+    raw_sha256: str = "",
+    source_raw_sha256: str = "",
+    test_raw_sha256: str = "",
+    markdown_raw_sha256: str = "",
+) -> dict[str, Any]:
+    """Bind reconstructed physical-SM tree vector masses without closing G6/G7."""
+    expected_top_level = {
+        "core_sha256",
+        "contract_id",
+        "status",
+        "source_binding",
+        "normalization",
+        "exact_matrix",
+        "rank_kernel_Goldstone",
+        "unbroken_basis_labels",
+        "sector_resolution",
+        "massive_non_neutral_multiplets",
+        "neutral_massive_sector",
+        "parameterized_threshold_interface",
+        "checks",
+        "scope",
+        "blockers",
+    }
+    expected_sources = {
+        "physical_SM_target_source": {
+            "path": "physical_sm_vacuum_local_feasibility_v20.py",
+            "sha256": PHYSICAL_SM_VACUUM_SOURCE_RAW_SHA256,
+            "mode": "raw",
+        },
+        "physical_SM_target_report": {
+            "path": "PHYSICAL_SM_VACUUM_LOCAL_FEASIBILITY_V20.json",
+            "sha256": PHYSICAL_SM_VACUUM_RAW_SHA256,
+            "mode": "raw",
+        },
+        "canonical_486_real_chart": {
+            "path": "live_g2_canonical_486_field_chart_v20.py",
+            "sha256": "9275dbb204324cc48dfd7139cad836e034b1b83b07bd60aecd6ff093d3ab7765",
+            "mode": "portable_text",
+        },
+        "authoritative_gauge_normalization": {
+            "path": "exact_authoritative_so10_u1x_gauge_betas_v20.py",
+            "sha256": AUTHORITATIVE_GAUGE_BETAS_SOURCE_RAW_SHA256,
+            "mode": "raw",
+        },
+        "authoritative_model": {
+            "path": "models\\SO10Z17AxionV20.m",
+            "sha256": "66a2ce2c3491d0b3079ec93a16ab79d3e8a7e4e35cb54aadf21100b9fdd90cc1",
+            "mode": "raw",
+        },
+    }
+    expected_scope = {
+        "exact_parameterized_46x46_tree_mass_matrix": True,
+        "exact_rank_kernel_and_Goldstone_image": True,
+        "exact_non_neutral_sector_masses_and_multiplicities": True,
+        "exact_neutral_characteristic_polynomial": True,
+        "unbroken_group_threshold_log_inputs": True,
+        "absolute_physical_masses": False,
+        "pole_masses": False,
+        "complete_one_loop_vector_threshold_matching": False,
+        "complete_physical_scalar_spectrum": False,
+        "physical_G6": False,
+        "physical_G7": False,
+    }
+    positive_check_names = {
+        "all_dependencies_match_frozen_hashes",
+        "target_denominator_is_20",
+        "canonical_chart_kinetic_is_identity",
+        "SO10_generator_rescaling_matches_T10_one",
+        "tangent_matrix_is_486_by_46",
+        "exact_tangent_matches_live_chart_without_residual",
+        "gram_matrix_is_exact_symmetric_integer",
+        "five_field_block_grams_sum_exactly",
+        "sparse_upper_triangle_reconstructs_all_nonzero_entries",
+        "exact_massive_rank_is_37",
+        "exact_unbroken_nullity_is_9",
+        "standard_su3C_u1em_basis_is_complete_kernel",
+        "Goldstone_image_dimension_is_37",
+        "one_accidental_PQ_direction_is_uneaten",
+        "mass_gram_commutes_with_color",
+        "mass_gram_commutes_with_Q3_squared",
+        "joint_sector_projectors_are_complete",
+        "all_non_neutral_sector_polynomials_exact",
+        "all_non_neutral_multiplicities_exact",
+        "non_neutral_massive_real_dimension_is_34",
+        "three_neutral_massive_roots_complete_rank_37",
+        "one_loop_SU3_index_sum_is_5_over_2",
+        "one_loop_QED_index_sum_is_32_over_3",
+    }
+    negative_check_names = {
+        "physical_scale_and_coupling_boundaries_fixed",
+        "pole_masses_fixed",
+        "vector_Goldstone_ghost_matching_closed",
+        "finite_scheme_constants_closed",
+        "SM_symmetric_pre_EW_threshold_closed",
+        "physical_G6_closed",
+        "physical_G7_closed",
+    }
+    expected_blockers = [
+        "Choose a physical dimensionful target scale and renormalized g10,gX boundary values.",
+        "Derive pole masses and the gauge-fixing-consistent vector, Goldstone and ghost threshold coefficient.",
+        "Fix finite scheme constants and the matching-scale prescription.",
+        "Construct the pre-electroweak SU(3)xSU(2)xU(1) matching step; the full target preserves only SU(3)xU(1)em.",
+        "Combine with a source-exact physical scalar Hessian and the full Yukawa/scalar/dimensionful RGE system before G6/G7 closure.",
+    ]
+    embedded_checks = report.get("checks", {})
+    normalization = report.get("normalization", {})
+    matrix = report.get("exact_matrix", {})
+    kernel = report.get("rank_kernel_Goldstone", {})
+    sectors = report.get("sector_resolution", {})
+    neutral = report.get("neutral_massive_sector", {})
+    threshold = report.get("parameterized_threshold_interface", {})
+    checks = {
+        "artifact_present": bool(report),
+        "schema_status_core_exact": (
+            set(report) == expected_top_level
+            and report.get("contract_id")
+            == "exact_physical_sm_heavy_vector_masses_v20"
+            and report.get("status")
+            == "EXACT_PARAMETERIZED_PHYSICAL_SM_HEAVY_VECTOR_MASS_THEOREM_CLOSED__LOOP_MATCHING_AND_FULL_G6_G7_OPEN"
+            and report.get("core_sha256")
+            == PHYSICAL_SM_HEAVY_VECTOR_CORE_SHA256
+        ),
+        "all_four_raw_artifact_pins_exact": (
+            raw_sha256 == PHYSICAL_SM_HEAVY_VECTOR_RAW_SHA256
+            and source_raw_sha256 == PHYSICAL_SM_HEAVY_VECTOR_SOURCE_RAW_SHA256
+            and test_raw_sha256 == PHYSICAL_SM_HEAVY_VECTOR_TEST_RAW_SHA256
+            and markdown_raw_sha256 == PHYSICAL_SM_HEAVY_VECTOR_MD_RAW_SHA256
+        ),
+        "dependency_bindings_exact": report.get("source_binding")
+        == expected_sources,
+        "embedded_checks_truth_boundary_exact": (
+            set(embedded_checks) == positive_check_names | negative_check_names
+            and all(embedded_checks.get(name) is True for name in positive_check_names)
+            and all(
+                embedded_checks.get(name) is False for name in negative_check_names
+            )
+        ),
+        "scope_truth_boundary_exact": report.get("scope") == expected_scope,
+        "canonical_normalization_and_parameter_domain_exact": (
+            normalization.get("normalization_matches") is True
+            and normalization.get("canonical_Tr10_H2") == "1"
+            and normalization.get("authoritative_T10") == "1"
+            and normalization.get("target_lattice") == "n=20 q"
+            and normalization.get("parameter_domain") == "g10>0, gX>0, v>0"
+        ),
+        "exact_matrix_rank_kernel_and_unbroken_group_exact": (
+            matrix.get("shape") == [46, 46]
+            and matrix.get("sparse_upper_triangle_nonzero_entries") == 81
+            and matrix.get("block_sum_equals_full_gram") is True
+            and matrix.get("bare_gram_sha256_i64_C_order")
+            == "8e58eb233efa3d3e1d02965104a9b568ab9e17143c417d8629f7232fd68efa33"
+            and kernel.get("exact_gram_rank") == 37
+            and kernel.get("exact_gram_nullity") == 9
+            and kernel.get("declared_basis_is_complete_kernel") is True
+            and kernel.get("unbroken_algebra") == "su(3)_C + u(1)_em"
+            and kernel.get("gauge_Goldstone_image_dimension") == 37
+            and kernel.get("uneaten_accidental_PQ_dimension") == 1
+        ),
+        "exact_sector_and_threshold_input_scope_exact": (
+            sectors.get("joint_projectors_sum_to_identity") is True
+            and sectors.get("joint_dimension_sum") == 46
+            and sectors.get("all_sector_mass_polynomials_exact") is True
+            and sectors.get("all_sector_multiplicities_exact") is True
+            and len(report.get("massive_non_neutral_multiplets", [])) == 7
+            and neutral.get("massive_roots") == 3
+            and neutral.get("massless_neutral_vector")
+            == "Q3=3G67-G01-G23-G45"
+            and threshold.get("unbroken_group_at_full_target")
+            == "SU(3)_C x U(1)_em"
+            and threshold.get("total_indices")
+            == {"SU3": "5/2", "QED": "32/3"}
+            and threshold.get("complete_vector_Goldstone_ghost_matching")
+            is False
+            and threshold.get("finite_scheme_constants") is False
+        ),
+        "blockers_exact_and_G6_G7_fail_closed": (
+            report.get("blockers") == expected_blockers
+            and report.get("scope", {}).get("physical_G6") is False
+            and report.get("scope", {}).get("physical_G7") is False
+        ),
+    }
+    source_bound = all(checks.values())
+    return {
+        "namespace": "PHYSICAL_SM_HEAVY_VECTOR_MASS_CONTRACT",
+        "artifact": PHYSICAL_SM_HEAVY_VECTOR_JSON.name,
+        "markdown": PHYSICAL_SM_HEAVY_VECTOR_MD.name,
+        "source": PHYSICAL_SM_HEAVY_VECTOR_SOURCE.name,
+        "test": PHYSICAL_SM_HEAVY_VECTOR_TEST.name,
+        "expected_core_sha256": PHYSICAL_SM_HEAVY_VECTOR_CORE_SHA256,
+        "core_sha256": report.get("core_sha256"),
+        "expected_raw_sha256": PHYSICAL_SM_HEAVY_VECTOR_RAW_SHA256,
+        "raw_sha256": raw_sha256,
+        "expected_source_raw_sha256": PHYSICAL_SM_HEAVY_VECTOR_SOURCE_RAW_SHA256,
+        "source_raw_sha256": source_raw_sha256,
+        "expected_test_raw_sha256": PHYSICAL_SM_HEAVY_VECTOR_TEST_RAW_SHA256,
+        "test_raw_sha256": test_raw_sha256,
+        "expected_markdown_raw_sha256": PHYSICAL_SM_HEAVY_VECTOR_MD_RAW_SHA256,
+        "markdown_raw_sha256": markdown_raw_sha256,
+        "source_bound": source_bound,
+        "exact_parameterized_tree_vector_mass_matrix_closed": bool(source_bound),
+        "exact_vector_rank_kernel_and_Goldstone_image_closed": bool(source_bound),
+        "exact_SU3C_x_U1em_vector_sector_resolution_closed": bool(source_bound),
+        "parameterized_vector_threshold_log_inputs_closed": bool(source_bound),
+        "absolute_physical_vector_masses_closed": False,
+        "pole_vector_masses_closed": False,
+        "vector_Goldstone_ghost_matching_closed": False,
+        "complete_one_loop_vector_threshold_matching_closed": False,
+        "physical_scalar_spectrum_closed": False,
+        "physical_G6_closed": False,
+        "physical_G7_closed": False,
+        "release_G6_verified": False,
+        "release_G7_verified": False,
+        "blockers": expected_blockers if source_bound else [],
+        "checks": checks,
+    }
+
+
+def _physical_sm_heavy_vector_msbar_matching_contract(
+    report: dict[str, Any],
+    *,
+    raw_sha256: str = "",
+    source_raw_sha256: str = "",
+    test_raw_sha256: str = "",
+    markdown_raw_sha256: str = "",
+) -> dict[str, Any]:
+    """Bind the combined heavy-gauge MS-bar kernel without closing G6/G7."""
+    expected_top_level = {
+        "core_sha256",
+        "contract_id",
+        "status",
+        "source_binding",
+        "primary_equation_sources",
+        "scheme_contract",
+        "exact_group_factors",
+        "massive_charged_multiplets",
+        "consumer_interface",
+        "gauge_parameter_obstruction",
+        "checks",
+        "scope",
+        "blockers",
+    }
+    expected_sources = {
+        "exact_heavy_vector_mass_source": {
+            "path": "exact_physical_sm_heavy_vector_masses_v20.py",
+            "sha256": PHYSICAL_SM_HEAVY_VECTOR_SOURCE_RAW_SHA256,
+            "mode": "raw",
+        },
+        "exact_heavy_vector_mass_report": {
+            "path": "EXACT_PHYSICAL_SM_HEAVY_VECTOR_MASSES_V20.json",
+            "sha256": PHYSICAL_SM_HEAVY_VECTOR_RAW_SHA256,
+            "mode": "raw",
+        },
+        "authoritative_SO10_normalization": {
+            "path": "exact_authoritative_so10_u1x_gauge_betas_v20.py",
+            "sha256": AUTHORITATIVE_GAUGE_BETAS_SOURCE_RAW_SHA256,
+            "mode": "raw",
+        },
+        "authoritative_model": {
+            "path": "models\\SO10Z17AxionV20.m",
+            "sha256": "66a2ce2c3491d0b3079ec93a16ab79d3e8a7e4e35cb54aadf21100b9fdd90cc1",
+            "mode": "raw",
+        },
+    }
+    expected_scope = {
+        "combined_heavy_vector_FPghost_Goldstone_MSbar_matching": True,
+        "finite_MSbar_vector_constant": True,
+        "exact_SU3_and_physical_QED_group_factors": True,
+        "parameterized_tree_masses": True,
+        "arbitrary_Rxi_sector_resolved_determinants": False,
+        "pole_mass_thresholds": False,
+        "SM_symmetric_pre_EW_threshold": False,
+        "complete_scalar_and_fermion_thresholds": False,
+        "complete_one_loop_model_matching": False,
+        "physical_G6": False,
+        "physical_G7": False,
+    }
+    expected_positive_checks = {
+        "all_dependencies_match_frozen_hashes",
+        "primary_equations_identified_by_DOI_and_number",
+        "scheme_is_nonsupersymmetric_MSbar",
+        "tree_running_masses_declared",
+        "seven_charged_complex_multiplets_complete",
+        "charged_real_vector_dimension_is_34",
+        "neutral_massive_vector_dimension_is_3",
+        "total_massive_and_Goldstone_dimensions_are_37",
+        "complex_SU3_index_is_5_over_2",
+        "complex_QED_index_is_32_over_3",
+        "real_SU3_broken_index_is_5",
+        "real_QED_broken_index_is_64_over_3",
+        "QED_embedding_index_is_8_over_3",
+        "U1X_has_zero_tree_embedding_in_SU3_and_QED",
+        "SU3_finite_constant_is_minus_5_over_12pi",
+        "QED_finite_constant_is_minus_16_over_9pi",
+        "SU3_log_coefficient_is_35_over_4pi",
+        "QED_log_coefficient_is_112_over_3pi",
+        "Hall_and_B15_implementations_agree",
+        "mass_theorem_weighted_log_interface_agrees",
+        "combined_vector_FPghost_Goldstone_MSbar_kernel_closed",
+        "finite_MSbar_vector_constant_closed",
+        "Goldstone_double_count_guard_active",
+    }
+    expected_negative_checks = {
+        "arbitrary_Rxi_determinant_cancellation_rederived",
+        "pole_mass_conversion_closed",
+        "SM_symmetric_pre_EW_matching_closed",
+        "complete_scalar_fermion_threshold_matching_closed",
+        "physical_G6_closed",
+        "physical_G7_closed",
+    }
+    expected_blockers = [
+        "Derive the general-background-R_xi vector/longitudinal/Goldstone/FP-ghost quadratic operators and an independent xi-cancellation identity if a sector-resolved proof is required.",
+        "Compute one-loop pole corrections to the seven tree running vector masses and declare the tadpole/VEV renormalization prescription.",
+        "Construct a stationary SM-symmetric pre-electroweak vacuum and its SU(3)xSU(2)xU(1) heavy-vector spectrum; the terminal target already preserves only SU(3)xU(1)em.",
+        "Combine with the Goldstone-projected physical scalar Hessian, fermion masses, and the full two-loop Yukawa/scalar/dimensionful Wilson flow before any physical G7 claim.",
+    ]
+    embedded_checks = report.get("checks", {})
+    scope = report.get("scope", {})
+    scheme = report.get("scheme_contract", {})
+    group = report.get("exact_group_factors", {})
+    obstruction = report.get("gauge_parameter_obstruction", {})
+    interface = report.get("consumer_interface", {})
+    multiplets = report.get("massive_charged_multiplets", [])
+    sources = report.get("primary_equation_sources", [])
+    checks = {
+        "schema_status_core_exact": (
+            set(report) == expected_top_level
+            and report.get("contract_id")
+            == "exact_physical_sm_heavy_vector_msbar_matching_v20"
+            and report.get("status")
+            == "EXACT_COMBINED_HEAVY_VECTOR_GHOST_GOLDSTONE_MSBAR_MATCHING_CLOSED__ARBITRARY_RXI_POLE_PRE_EW_AND_FULL_G7_OPEN"
+            and report.get("core_sha256")
+            == PHYSICAL_SM_HEAVY_VECTOR_MSBAR_CORE_SHA256
+        ),
+        "all_four_raw_artifact_pins_exact": (
+            raw_sha256 == PHYSICAL_SM_HEAVY_VECTOR_MSBAR_RAW_SHA256
+            and source_raw_sha256
+            == PHYSICAL_SM_HEAVY_VECTOR_MSBAR_SOURCE_RAW_SHA256
+            and test_raw_sha256 == PHYSICAL_SM_HEAVY_VECTOR_MSBAR_TEST_RAW_SHA256
+            and markdown_raw_sha256
+            == PHYSICAL_SM_HEAVY_VECTOR_MSBAR_MD_RAW_SHA256
+        ),
+        "dependency_bindings_exact": report.get("source_binding")
+        == expected_sources,
+        "primary_equation_provenance_exact": (
+            isinstance(sources, list)
+            and len(sources) == 3
+            and [row.get("doi") for row in sources]
+            == [
+                "10.1103/PhysRevD.91.075016",
+                "10.1103/PhysRevD.108.055003",
+                "10.1016/0550-3213(81)90498-3",
+            ]
+            and sources[0].get("equations") == ["(2)", "(3)"]
+            and sources[1].get("equations") == ["(B14)", "(B15)"]
+        ),
+        "embedded_checks_truth_boundary_exact": (
+            set(embedded_checks)
+            == expected_positive_checks | expected_negative_checks
+            and all(
+                embedded_checks.get(name) is True
+                for name in expected_positive_checks
+            )
+            and all(
+                embedded_checks.get(name) is False
+                for name in expected_negative_checks
+            )
+        ),
+        "scope_truth_boundary_exact": scope == expected_scope,
+        "scheme_and_per_vector_kernel_exact": (
+            scheme.get("renormalization_scheme")
+            == "non-supersymmetric MS-bar"
+            and scheme.get("mass_definition") == "tree_running_mass"
+            and scheme.get("per_complex_vector")
+            == "Delta_i=-T_i/(6*pi)+7*T_i/(2*pi)*log(M_tree/mu)"
+            and scheme.get("gauge_parameter")
+            == "not an input; published combined result only; explicit xi is rejected"
+        ),
+        "exact_group_factors_and_coefficients": (
+            group.get("charged_complex_multiplets") == 7
+            and group.get("charged_real_vectors") == 34
+            and group.get("neutral_massive_vectors") == 3
+            and group.get("all_massive_vectors") == 37
+            and group.get("Goldstone_image_dimension") == 37
+            and group.get("uneaten_accidental_PQ_dimension") == 1
+            and group.get("complex_index_totals")
+            == {"SU3": "5/2", "QED": "32/3"}
+            and group.get("real_broken_generator_index_totals")
+            == {"SU3": "5", "QED": "64/3"}
+            and group.get("combined_threshold_coefficients")
+            == {
+                "SU3": {"finite_over_pi": "-5/12", "log_over_pi": "35/4"},
+                "QED": {"finite_over_pi": "-16/9", "log_over_pi": "112/3"},
+            }
+        ),
+        "multiplets_and_consumer_guard_exact": (
+            isinstance(multiplets, list)
+            and len(multiplets) == 7
+            and sum(row.get("real_vector_dimension", -100) for row in multiplets)
+            == 34
+            and interface.get("Goldstone_exclusion_guard")
+            == "assert_goldstone_exclusion(37)"
+            and interface.get("later_scalar_consumer_requirement")
+            == "exclude all 37 gauge-Goldstone image directions; retain the one uneaten accidental-PQ direction if it is otherwise physical"
+        ),
+        "combined_result_and_Rxi_boundary_exact": (
+            obstruction.get("combined_MSbar_matching_closed") is True
+            and obstruction.get("arbitrary_Rxi_sector_resolved_matching_closed")
+            is False
+            and len(
+                obstruction.get("missing_for_independent_xi_cancellation_proof", [])
+            )
+            == 4
+        ),
+        "blockers_exact_and_G6_G7_fail_closed": (
+            report.get("blockers") == expected_blockers
+            and scope.get("complete_one_loop_model_matching") is False
+            and scope.get("physical_G6") is False
+            and scope.get("physical_G7") is False
+        ),
+    }
+    source_bound = all(checks.values())
+    return {
+        "namespace": "PHYSICAL_SM_HEAVY_VECTOR_MSBAR_MATCHING_CONTRACT",
+        "artifact": PHYSICAL_SM_HEAVY_VECTOR_MSBAR_JSON.name,
+        "markdown": PHYSICAL_SM_HEAVY_VECTOR_MSBAR_MD.name,
+        "source": PHYSICAL_SM_HEAVY_VECTOR_MSBAR_SOURCE.name,
+        "test": PHYSICAL_SM_HEAVY_VECTOR_MSBAR_TEST.name,
+        "expected_core_sha256": PHYSICAL_SM_HEAVY_VECTOR_MSBAR_CORE_SHA256,
+        "core_sha256": report.get("core_sha256"),
+        "expected_raw_sha256": PHYSICAL_SM_HEAVY_VECTOR_MSBAR_RAW_SHA256,
+        "raw_sha256": raw_sha256,
+        "expected_source_raw_sha256": (
+            PHYSICAL_SM_HEAVY_VECTOR_MSBAR_SOURCE_RAW_SHA256
+        ),
+        "source_raw_sha256": source_raw_sha256,
+        "expected_test_raw_sha256": PHYSICAL_SM_HEAVY_VECTOR_MSBAR_TEST_RAW_SHA256,
+        "test_raw_sha256": test_raw_sha256,
+        "expected_markdown_raw_sha256": (
+            PHYSICAL_SM_HEAVY_VECTOR_MSBAR_MD_RAW_SHA256
+        ),
+        "markdown_raw_sha256": markdown_raw_sha256,
+        "source_bound": source_bound,
+        "combined_heavy_vector_FPghost_Goldstone_MSbar_kernel_closed": bool(
+            source_bound
+        ),
+        "finite_MSbar_vector_constant_closed": bool(source_bound),
+        "exact_SU3_and_physical_QED_group_factors_closed": bool(source_bound),
+        "Goldstone_double_count_guard_active": bool(source_bound),
+        "per_complex_vector_matching_formula": (
+            scheme.get("per_complex_vector") if source_bound else None
+        ),
+        "complex_index_totals": (
+            group.get("complex_index_totals") if source_bound else {}
+        ),
+        "combined_threshold_coefficients": (
+            group.get("combined_threshold_coefficients") if source_bound else {}
+        ),
+        "arbitrary_Rxi_sector_resolved_matching_closed": False,
+        "pole_mass_conversion_closed": False,
+        "SM_symmetric_pre_EW_matching_closed": False,
+        "complete_scalar_fermion_threshold_matching_closed": False,
+        "complete_one_loop_model_matching_closed": False,
+        "physical_G6_closed": False,
+        "physical_G7_closed": False,
+        "release_G6_verified": False,
+        "release_G7_verified": False,
+        "blockers": expected_blockers if source_bound else [],
+        "checks": checks,
+    }
+
+
+def _conditional_physical_sm_eft_hessian_spectrum_contract(
+    report: dict[str, Any],
+    *,
+    raw_sha256: str = "",
+    source_raw_sha256: str = "",
+    test_raw_sha256: str = "",
+    markdown_raw_sha256: str = "",
+) -> dict[str, Any]:
+    """Bind the reconstructed conditional tree scalar spectrum only."""
+    expected_top_level = {
+        "Hren_factorization",
+        "closure_claims",
+        "exact_sector_assignment",
+        "exact_standard_commutators",
+        "integrity",
+        "kernel_and_physics_boundary",
+        "kinetic_normalization",
+        "proof_boundary",
+        "schema",
+        "source_binding",
+        "squared_EFT_spectrum",
+        "status",
+    }
+    expected_claims = {
+        "conditional_reconstructed_squared_EFT_spectrum": True,
+        "conditional_reconstructed_tree_Hessian_factorization": True,
+        "conditional_reconstructed_tree_Hessian_sector_assignment": True,
+        "pole_spectrum_G6": False,
+        "release_G6": False,
+        "source_bound_physical_G6": False,
+    }
+    expected_foundation = {
+        "foundation_JSON_sha256": PHYSICAL_SM_VACUUM_RAW_SHA256,
+        "foundation_core_sha256": PHYSICAL_SM_VACUUM_CORE_SHA256,
+        "foundation_source_sha256": PHYSICAL_SM_VACUUM_SOURCE_RAW_SHA256,
+        "foundation_sparse_Hessian_sha256": (
+            "58e39ea9a982ac71fd696de93d8d8bc51dd1e153399bfa6f7cbcc368fc6b7458"
+        ),
+    }
+    binding = report.get("source_binding", {})
+    foundation = binding.get("foundation", {})
+    factorization = report.get("Hren_factorization", {})
+    sectors = report.get("exact_sector_assignment", {})
+    commutators = report.get("exact_standard_commutators", {})
+    kinetic = report.get("kinetic_normalization", {})
+    spectrum = report.get("squared_EFT_spectrum", {})
+    boundary = report.get("kernel_and_physics_boundary", {})
+    proof = report.get("proof_boundary", {})
+    checks = {
+        "artifact_present": bool(report),
+        "schema_status_core_exact": (
+            set(report) == expected_top_level
+            and report.get("schema")
+            == "conditional_physical_sm_eft_hessian_spectrum_v1"
+            and report.get("status")
+            == "CONDITIONAL_EXACT_PHYSICAL_SM_EFT_HESSIAN_SPECTRUM__SOURCE_ALGEBRA_POLE_AND_RELEASE_CLOSURE_OPEN"
+            and report.get("integrity", {}).get("core_sha256")
+            == CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_CORE_SHA256
+        ),
+        "all_four_raw_artifact_pins_exact": (
+            raw_sha256 == CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_RAW_SHA256
+            and source_raw_sha256
+            == CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_SOURCE_RAW_SHA256
+            and test_raw_sha256
+            == CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_TEST_RAW_SHA256
+            and markdown_raw_sha256
+            == CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_MD_RAW_SHA256
+        ),
+        "foundation_and_source_dependencies_exact": (
+            foundation.get("expected") == expected_foundation
+            and foundation.get("actual") == expected_foundation
+            and foundation.get("all_terminal_foundation_pins_match") is True
+            and foundation.get("foundation_source_portable_lf_sha256")
+            == PHYSICAL_SM_VACUUM_SOURCE_RAW_SHA256
+            and binding.get("kinetic_chart_path")
+            == "live_g2_canonical_486_field_chart_v20.py"
+            and binding.get("kinetic_chart_sha256")
+            == "85ae9470f3aa25c28fc03c083b6c1e150106a276e51044a590060d290ba7945e"
+            and binding.get("self_path")
+            == CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_SOURCE.name
+            and binding.get("self_sha256")
+            == CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_SOURCE_RAW_SHA256
+        ),
+        "closure_truth_boundary_exact": report.get("closure_claims")
+        == expected_claims,
+        "conditional_factorization_and_sector_census_exact": (
+            factorization.get("field_dimension") == 486
+            and factorization.get("coordinate_component_count") == 43
+            and factorization.get("maximum_component_size") == 30
+            and factorization.get("characteristic_degree_sum") == 486
+            and factorization.get("distinct_irreducible_factor_count") == 45
+            and sectors.get("method")
+            == "exact factor-kernel restriction and exact joint Casimir/Q3-squared eigenspace ranks"
+            and sectors.get("sector_count") == 12
+            and sectors.get("sector_dimension_sum") == 486
+            and sectors.get("all_factor_spaces_exactly_exhausted") is True
+        ),
+        "standard_symmetry_and_canonical_kinetic_exact": (
+            commutators.get(
+                "all_standard_SU3C_Q3_and_Casimir_commutators_vanish_exactly"
+            )
+            is True
+            and kinetic.get("field_dimension") == 486
+            and kinetic.get("generalized_kinetic_metric") == "K=I_486"
+            and kinetic.get("Euclidean_eigenproblem_is_canonically_normalized")
+            is True
+            and kinetic.get("all_486_basis_norms_equal_one_half") is True
+            and kinetic.get("all_adversarial_cross_terms_are_zero") is True
+        ),
+        "squared_tree_spectrum_rank_nullity_exact": (
+            spectrum.get("spectral_variable") == "y=rho/(2b)"
+            and spectrum.get("total_root_count_with_multiplicity") == 486
+            and spectrum.get("positive_root_count_with_multiplicity") == 448
+            and spectrum.get("zero_root_count_with_multiplicity") == 38
+            and spectrum.get("no_unrecorded_exact_squared_root_collisions") is True
+            and boundary.get("exact_reconstructed_H_rank") == 448
+            and boundary.get("exact_reconstructed_H_nullity") == 38
+            and boundary.get("gauged_orbit_kernel_dimension") == 37
+            and boundary.get("global_PQ_axion_kernel_dimension") == 1
+        ),
+        "conditional_tree_only_physics_boundary_exact": (
+            proof
+            == {
+                "exact_on_reconstructed_rational_Hessian": True,
+                "pole_and_release_claims": False,
+                "tree_level_only": True,
+                "upstream_denominator_bound_source_derived": False,
+                "upstream_source_algebra_derivation_complete": False,
+            }
+            and boundary.get("rho_is_a_pole_mass_squared") is False
+            and boundary.get("physical_G6_closed") is False
+            and boundary.get("release_G6_closed") is False
+            and boundary.get("missing_for_pole_mass")
+            == [
+                "dimensionful symmetry-breaking scale and b normalization",
+                "loop self-energies and renormalization prescription",
+                "RG evolution and component threshold matching",
+            ]
+        ),
+    }
+    source_bound = all(checks.values())
+    return {
+        "namespace": "CONDITIONAL_PHYSICAL_SM_EFT_HESSIAN_SPECTRUM_CONTRACT",
+        "artifact": CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_JSON.name,
+        "markdown": CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_MD.name,
+        "source": CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_SOURCE.name,
+        "test": CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_TEST.name,
+        "expected_core_sha256": CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_CORE_SHA256,
+        "core_sha256": report.get("integrity", {}).get("core_sha256"),
+        "expected_raw_sha256": CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_RAW_SHA256,
+        "raw_sha256": raw_sha256,
+        "expected_source_raw_sha256": (
+            CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_SOURCE_RAW_SHA256
+        ),
+        "source_raw_sha256": source_raw_sha256,
+        "expected_test_raw_sha256": (
+            CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_TEST_RAW_SHA256
+        ),
+        "test_raw_sha256": test_raw_sha256,
+        "expected_markdown_raw_sha256": (
+            CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_MD_RAW_SHA256
+        ),
+        "markdown_raw_sha256": markdown_raw_sha256,
+        "source_bound": source_bound,
+        "conditional_reconstructed_tree_scalar_spectrum_closed": bool(
+            source_bound
+        ),
+        "conditional_tree_Hessian_factorization_closed": bool(source_bound),
+        "conditional_tree_sector_assignment_closed": bool(source_bound),
+        "source_algebra_derived_tree_scalar_spectrum_closed": False,
+        "physical_scalar_pole_spectrum_closed": False,
+        "dimensionful_physical_scalar_masses_closed": False,
+        "physical_G6_closed": False,
+        "release_G6_verified": False,
+        "physical_G7_closed": False,
+        "release_G7_verified": False,
+        "checks": checks,
+    }
+
+
+def _physical_sm_vector_rxi_vacuum_cancellation_contract(
+    report: dict[str, Any],
+    *,
+    raw_sha256: str = "",
+    source_raw_sha256: str = "",
+    test_raw_sha256: str = "",
+    markdown_raw_sha256: str = "",
+) -> dict[str, Any]:
+    """Bind only the zero-background R_xi vacuum determinant theorem."""
+    expected_top_level = {
+        "schema",
+        "contract_id",
+        "status",
+        "core_sha256",
+        "source_binding",
+        "quadratic_operator_scope",
+        "one_real_broken_direction_theorem",
+        "direction_census",
+        "multiplet_ledger",
+        "all_37_direction_identity",
+        "hundred_point_exact_audit",
+        "checks",
+        "scope",
+        "blockers",
+        "verdict",
+        "n_checks",
+        "n_failed",
+        "failures",
+    }
+    expected_sources = {
+        "physical_SM_heavy_vector_mass_source": {
+            "path": "exact_physical_sm_heavy_vector_masses_v20.py",
+            "sha256": PHYSICAL_SM_HEAVY_VECTOR_SOURCE_RAW_SHA256,
+            "mode": "raw",
+        },
+        "physical_SM_heavy_vector_mass_report": {
+            "path": "EXACT_PHYSICAL_SM_HEAVY_VECTOR_MASSES_V20.json",
+            "sha256": PHYSICAL_SM_HEAVY_VECTOR_RAW_SHA256,
+            "mode": "raw",
+        },
+        "physical_SM_heavy_vector_MSbar_source": {
+            "path": "exact_physical_sm_heavy_vector_msbar_matching_v20.py",
+            "sha256": PHYSICAL_SM_HEAVY_VECTOR_MSBAR_SOURCE_RAW_SHA256,
+            "mode": "raw",
+        },
+        "physical_SM_heavy_vector_MSbar_report": {
+            "path": "EXACT_PHYSICAL_SM_HEAVY_VECTOR_MSBAR_MATCHING_V20.json",
+            "sha256": PHYSICAL_SM_HEAVY_VECTOR_MSBAR_RAW_SHA256,
+            "mode": "raw",
+        },
+    }
+    expected_scope = {
+        "arbitrary_positive_Rxi_vacuum_mass_momentum_cancellation": True,
+        "all_37_broken_real_directions_resolved": True,
+        "charged_and_neutral_mass_sectors_included": True,
+        "Goldstone_FPghost_double_count_guard": True,
+        "background_covariant_heat_kernel_matching_coefficient": False,
+        "sector_resolved_general_background_gauge_determinants": False,
+        "one_loop_vector_pole_masses": False,
+        "tadpole_and_VEV_renormalization_prescription": False,
+        "complete_scalar_and_fermion_thresholds": False,
+        "physical_G6": False,
+        "physical_G7": False,
+        "release_G6": False,
+        "release_G7": False,
+    }
+    expected_checks = {
+        "all_dependency_hashes_match",
+        "mass_and_matching_cores_match",
+        "one_direction_D_xiM_exponent_cancels",
+        "only_field_independent_minus_half_log_xi_remains",
+        "vacuum_normalized_unphysical_determinant_is_one",
+        "Goldstone_count_matches_mass_rank",
+        "all_37_broken_directions_exhausted",
+        "charged_direction_count_is_34",
+        "neutral_direction_count_is_3",
+        "global_PQ_mode_not_miscounted_as_Goldstone",
+        "hundred_exact_cases_cover_0_through_99",
+        "hundred_exact_cases_pass",
+        "upstream_combined_MSbar_kernel_closed",
+        "background_field_heat_kernel_not_overclaimed",
+        "pole_masses_not_overclaimed",
+        "physical_G6_G7_fail_closed",
+    }
+    current_blockers = [
+        "Derive a background-covariant vector/Goldstone/FP-ghost operator and heat-kernel replay if an independent derivation of the already frozen Hall/Ellis-Wells coefficient is required.",
+        "Supply renormalized couplings, VEVs, scalar/Yukawa tensors, a tadpole prescription, and the transverse self-energies needed to solve every vector pole equation.",
+        "Consume the closed exact source-derived 37-row Hessian and its exact eaten-direction quotient to construct the complete scalar and fermion mass/mixing matrices, pole self-energies, and thresholds.",
+        "Construct the stationary pre-electroweak SU(3)xSU(2)xU(1) stage and complete the Yukawa/scalar/dimensionful/EFT flow.",
+    ]
+    checks_in = report.get("checks", {})
+    direction = report.get("direction_census", {})
+    theorem = report.get("one_real_broken_direction_theorem", {})
+    all_directions = report.get("all_37_direction_identity", {})
+    audit100 = report.get("hundred_point_exact_audit", {})
+    operator_scope = report.get("quadratic_operator_scope", {})
+    checks = {
+        "schema_status_core_exact": (
+            set(report) == expected_top_level
+            and report.get("schema")
+            == "exact_physical_sm_vector_rxi_vacuum_cancellation_v1"
+            and report.get("contract_id")
+            == "exact_physical_sm_vector_rxi_vacuum_cancellation_v20"
+            and report.get("status")
+            == "EXACT_ALL_37_BROKEN_DIRECTION_RXI_VACUUM_DETERMINANT_CANCELLATION_CLOSED__BACKGROUND_FIELD_POLE_AND_FULL_G6_G7_OPEN"
+            and report.get("core_sha256")
+            == PHYSICAL_SM_VECTOR_RXI_CORE_SHA256
+            and _canonical_json_line_sha256(
+                {key: value for key, value in report.items() if key != "core_sha256"}
+            )
+            == PHYSICAL_SM_VECTOR_RXI_CORE_SHA256
+        ),
+        "all_four_raw_artifact_pins_exact": (
+            raw_sha256 == PHYSICAL_SM_VECTOR_RXI_RAW_SHA256
+            and source_raw_sha256
+            == PHYSICAL_SM_VECTOR_RXI_SOURCE_RAW_SHA256
+            and test_raw_sha256 == PHYSICAL_SM_VECTOR_RXI_TEST_RAW_SHA256
+            and markdown_raw_sha256 == PHYSICAL_SM_VECTOR_RXI_MD_RAW_SHA256
+        ),
+        "dependency_bindings_exact": report.get("source_binding")
+        == expected_sources,
+        "embedded_checks_exact": (
+            set(checks_in) == expected_checks
+            and all(checks_in.get(name) is True for name in expected_checks)
+            and report.get("n_checks") == len(expected_checks)
+            and report.get("n_failed") == 0
+            and report.get("failures") == []
+        ),
+        "scope_truth_boundary_exact": report.get("scope") == expected_scope,
+        "operator_scope_exact": (
+            operator_scope.get("background")
+            == "constant stationary scalar vacuum; zero background gauge field"
+            and operator_scope.get("gauge") == "linear R_xi with xi>0"
+            and operator_scope.get("spacetime")
+            == "flat four-dimensional vacuum"
+            and operator_scope.get("mass_definition")
+            == "positive tree running mass eigenvalue"
+        ),
+        "one_direction_identity_exact": (
+            theorem.get("D_xiM_net_exponent") == "0"
+            and theorem.get("field_independent_log_xi_coefficient") == "-1/2"
+            and theorem.get("normalized_unphysical_determinant") == 1
+            and theorem.get("physical_D_M_exponent") == "3/2"
+        ),
+        "all_37_direction_census_exact": (
+            direction.get("total_gauge_dimension") == 46
+            and direction.get("total_broken_real_directions") == 37
+            and direction.get("gauge_Goldstone_directions") == 37
+            and direction.get("complex_FP_ghost_pairs") == 37
+            and direction.get("charged_non_neutral_real_directions") == 34
+            and direction.get("neutral_massive_real_directions") == 3
+            and direction.get("massless_unbroken_real_directions") == 9
+            and direction.get("uneaten_global_PQ_direction_excluded") == 1
+            and all_directions.get(
+                "vacuum_normalized_unphysical_squared_determinant"
+            )
+            == "1"
+            and all_directions.get("remaining_physical_polarizations") == 111
+        ),
+        "hundred_exact_cases_exact": (
+            audit100.get("case_count") == 100
+            and audit100.get("case_range") == [0, 99]
+            and audit100.get("all_exact_rational_cases_pass") is True
+            and audit100.get("record_sha256")
+            == "ea6e659e3753099a60842b6e4c515dd3b052426333954ec76dad8c8bffba194d"
+        ),
+        "upstream_snapshot_blockers_core_bound": (
+            isinstance(report.get("blockers"), list)
+            and len(report.get("blockers", [])) == 4
+            and _canonical_json_line_sha256(report.get("blockers"))
+            == "ef00917b3323b78a5d840ff4866acbe81ede25e3b792e5b3488261874365f5a7"
+        ),
+    }
+    source_bound = all(checks.values())
+    return {
+        "namespace": "PHYSICAL_SM_VECTOR_RXI_VACUUM_CANCELLATION",
+        "source_bound": source_bound,
+        "zero_background_Rxi_vacuum_determinant_cancellation_closed": bool(
+            source_bound
+        ),
+        "all_37_broken_directions_closed": bool(source_bound),
+        "Goldstone_FPghost_double_count_guard_closed": bool(source_bound),
+        "background_covariant_heat_kernel_matching_closed": False,
+        "sector_resolved_general_background_determinants_closed": False,
+        "pole_vector_masses_closed": False,
+        "complete_scalar_fermion_thresholds_closed": False,
+        "physical_G6_closed": False,
+        "physical_G7_closed": False,
+        "release_G6_verified": False,
+        "release_G7_verified": False,
+        "blockers": current_blockers if source_bound else [],
+        "checks": checks,
+    }
+
+
+def _physical_sm_g6_g7_closure_frontier_contract(
+    report: dict[str, Any],
+    *,
+    raw_sha256: str = "",
+    source_raw_sha256: str = "",
+    test_raw_sha256: str = "",
+    markdown_raw_sha256: str = "",
+) -> dict[str, Any]:
+    """Bind the negative closure frontier without promoting G6 or G7."""
+    expected_top_level = {
+        "schema",
+        "contract_id",
+        "status",
+        "core_sha256",
+        "source_binding",
+        "completed_and_open_matrix",
+        "exact_nonidentifiability_witnesses",
+        "hundred_case_vector_scale_audit",
+        "minimal_closure_path",
+        "checks",
+        "scope",
+        "verdict",
+        "n_checks",
+        "n_failed",
+        "failures",
+    }
+    expected_scope = {
+        "corrected_physical_SM_terminal_artifacts_composed": True,
+        "continuous_nonidentifiability_proved": True,
+        "minimal_closure_path_machine_readable": True,
+        "unique_absolute_tree_spectrum": False,
+        "unique_pole_spectrum": False,
+        "unique_threshold_vector": False,
+        "unique_full_RGE_trajectory": False,
+        "physical_G6": False,
+        "physical_G7": False,
+        "release_G6": False,
+        "release_G7": False,
+    }
+    expected_checks = {
+        "all_dependency_raw_and_core_hashes_match",
+        "every_closed_scope_item_is_true",
+        "every_open_scope_item_is_true",
+        "scalar_completion_has_448_massive_modes",
+        "conditional_scalar_spectrum_is_not_pole_spectrum",
+        "scalar_b_scale_is_not_identified",
+        "vector_scale_is_not_identified",
+        "vector_SU3_scale_shift_is_35_over_4",
+        "vector_QED_scale_shift_is_112_over_3",
+        "ten_symbolic_flavor_tensors_present",
+        "fifty_complex_flavor_entries_remain",
+        "zero_and_nonzero_Yukawa_boundaries_change_Y4",
+        "hundred_vector_scale_witnesses_cover_0_through_99",
+        "minimal_path_is_strictly_ordered",
+        "physical_G6_fail_closed",
+        "physical_G7_fail_closed",
+    }
+    expected_sources = {
+        "physical_SM_vacuum_foundation": {
+            "path": "PHYSICAL_SM_VACUUM_LOCAL_FEASIBILITY_V20.json",
+            "raw_sha256": PHYSICAL_SM_VACUUM_RAW_SHA256,
+            "core_sha256": PHYSICAL_SM_VACUUM_CORE_SHA256,
+        },
+        "conditional_physical_SM_scalar_spectrum": {
+            "path": "CONDITIONAL_PHYSICAL_SM_EFT_HESSIAN_SPECTRUM_V20.json",
+            "raw_sha256": CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_RAW_SHA256,
+            "core_sha256": CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_CORE_SHA256,
+        },
+        "physical_SM_heavy_vector_masses": {
+            "path": "EXACT_PHYSICAL_SM_HEAVY_VECTOR_MASSES_V20.json",
+            "raw_sha256": PHYSICAL_SM_HEAVY_VECTOR_RAW_SHA256,
+            "core_sha256": PHYSICAL_SM_HEAVY_VECTOR_CORE_SHA256,
+        },
+        "physical_SM_heavy_vector_MSbar_matching": {
+            "path": "EXACT_PHYSICAL_SM_HEAVY_VECTOR_MSBAR_MATCHING_V20.json",
+            "raw_sha256": PHYSICAL_SM_HEAVY_VECTOR_MSBAR_RAW_SHA256,
+            "core_sha256": PHYSICAL_SM_HEAVY_VECTOR_MSBAR_CORE_SHA256,
+        },
+        "physical_SM_vector_Rxi_vacuum_cancellation": {
+            "path": "EXACT_PHYSICAL_SM_VECTOR_RXI_VACUUM_CANCELLATION_V20.json",
+            "raw_sha256": PHYSICAL_SM_VECTOR_RXI_RAW_SHA256,
+            "core_sha256": PHYSICAL_SM_VECTOR_RXI_CORE_SHA256,
+        },
+        "normalized_SO10_Yukawa_CGCs": {
+            "path": "EXACT_NORMALIZED_SO10_YUKAWA_CGCS_V20.json",
+            "raw_sha256": NORMALIZED_YUKAWA_CGCS_RAW_SHA256,
+            "core_sha256": NORMALIZED_YUKAWA_CGCS_CORE_SHA256,
+        },
+        "physical_G7_component_threshold_contract": {
+            "path": "EXACT_PHYSICAL_G7_COMPONENT_THRESHOLD_CONTRACT_V20.json",
+            "raw_sha256": PHYSICAL_G7_COMPONENT_THRESHOLD_RAW_SHA256,
+            "core_sha256": PHYSICAL_G7_COMPONENT_THRESHOLD_CORE_SHA256,
+        },
+    }
+    checks_in = report.get("checks", {})
+    matrix = report.get("completed_and_open_matrix", {})
+    witnesses = report.get("exact_nonidentifiability_witnesses", {})
+    vector = witnesses.get("vector_common_scale", {})
+    scalar = witnesses.get("scalar_EFT_b_scale", {})
+    flavor = witnesses.get("flavor_boundaries", {})
+    audit100 = report.get("hundred_case_vector_scale_audit", {})
+    closure_path = report.get("minimal_closure_path", [])
+    checks = {
+        "schema_status_core_exact": (
+            set(report) == expected_top_level
+            and report.get("schema")
+            == "exact_physical_sm_g6_g7_closure_frontier_v1"
+            and report.get("contract_id")
+            == "exact_physical_sm_g6_g7_closure_frontier_v20"
+            and report.get("status")
+            == "EXACT_PHYSICAL_SM_G6_G7_CLOSURE_FRONTIER_AND_NONIDENTIFIABILITY_CLOSED__PHYSICAL_G6_G7_REMAIN_OPEN"
+            and report.get("core_sha256")
+            == PHYSICAL_SM_G6_G7_FRONTIER_CORE_SHA256
+            and _canonical_json_line_sha256(
+                {key: value for key, value in report.items() if key != "core_sha256"}
+            )
+            == PHYSICAL_SM_G6_G7_FRONTIER_CORE_SHA256
+        ),
+        "all_four_raw_artifact_pins_exact": (
+            raw_sha256 == PHYSICAL_SM_G6_G7_FRONTIER_RAW_SHA256
+            and source_raw_sha256
+            == PHYSICAL_SM_G6_G7_FRONTIER_SOURCE_RAW_SHA256
+            and test_raw_sha256
+            == PHYSICAL_SM_G6_G7_FRONTIER_TEST_RAW_SHA256
+            and markdown_raw_sha256
+            == PHYSICAL_SM_G6_G7_FRONTIER_MD_RAW_SHA256
+        ),
+        "dependency_bindings_exact": report.get("source_binding")
+        == expected_sources,
+        "embedded_checks_exact": (
+            set(checks_in) == expected_checks
+            and all(checks_in.get(name) is True for name in expected_checks)
+            and report.get("n_checks") == len(expected_checks)
+            and report.get("n_failed") == 0
+            and report.get("failures") == []
+        ),
+        "scope_truth_boundary_exact": report.get("scope") == expected_scope,
+        "completion_and_open_matrix_exact": (
+            set(matrix) == {"closed", "open"}
+            and len(matrix.get("closed", {})) == 8
+            and len(matrix.get("open", {})) == 11
+            and all(value is True for value in matrix.get("closed", {}).values())
+            and all(value is True for value in matrix.get("open", {}).values())
+        ),
+        "nonidentifiability_witnesses_exact": (
+            vector.get("absolute_vector_scale_identified") is False
+            and vector.get("threshold_changes") is True
+            and vector.get("log_shift_coefficients")
+            == {"SU3": "35/4", "QED": "112/3"}
+            and scalar.get("dimensionful_scalar_scale_identified") is False
+            and scalar.get("massive_mode_count") == 448
+            and scalar.get("b_scale_ratio_kappa") == "3"
+            and flavor.get("symbol_count") == 10
+            and flavor.get("raw_complex_entries_before_flavour_quotients")
+            == 50
+            and flavor.get("raw_real_degrees_before_flavour_quotients") == 100
+            and flavor.get("flavor_boundary_values_identified") is False
+        ),
+        "hundred_scale_cases_exact": (
+            audit100.get("case_count") == 100
+            and audit100.get("case_range") == [0, 99]
+            and audit100.get("all_are_distinct_from_lambda_one") is True
+            and audit100.get("record_sha256")
+            == "4c290e7a376ac3121aeadbf15ea39874d8986612caa65be68e75e6a062dbad14"
+        ),
+        "minimal_closure_path_exact": (
+            isinstance(closure_path, list)
+            and len(closure_path) == 7
+            and [row.get("order") for row in closure_path]
+            == list(range(1, 8))
+            and closure_path[0].get("deliverable")
+            == "authoritative external model execution"
+            and closure_path[-1].get("deliverable")
+            == "independent replay and release"
+        ),
+    }
+    source_bound = all(checks.values())
+    return {
+        "namespace": "PHYSICAL_SM_G6_G7_CLOSURE_FRONTIER",
+        "source_bound": source_bound,
+        "corrected_terminal_artifacts_composed": bool(source_bound),
+        "continuous_nonidentifiability_proved": bool(source_bound),
+        "minimal_closure_path_machine_readable": bool(source_bound),
+        "unique_absolute_tree_spectrum": False,
+        "unique_pole_spectrum": False,
+        "unique_threshold_vector": False,
+        "unique_full_RGE_trajectory": False,
+        "physical_G6_closed": False,
+        "physical_G7_closed": False,
+        "release_G6_verified": False,
+        "release_G7_verified": False,
+        "closed_scope": sorted(matrix.get("closed", {})) if source_bound else [],
+        "precise_open_scope": sorted(matrix.get("open", {}))
+        if source_bound
+        else [],
+        "minimal_closure_path": closure_path if source_bound else [],
+        "checks": checks,
+    }
+
+
+def _physical_sm_g8_identifiability_frontier_contract(
+    report: dict[str, Any],
+    *,
+    raw_sha256: str = "",
+    source_raw_sha256: str = "",
+    test_raw_sha256: str = "",
+    markdown_raw_sha256: str = "",
+) -> dict[str, Any]:
+    """Bind the exact G8 non-identifiability theorem without promoting G8."""
+    expected_top_level = {
+        "schema",
+        "status",
+        "contract_id",
+        "core_sha256",
+        "source_binding",
+        "canonical_G8_definition",
+        "exact_nonidentifiability_witnesses",
+        "scale_audit_0_through_100",
+        "repository_frozen_experimental_input",
+        "acceptance_matrix",
+        "minimal_exhibited_free_input_vector",
+        "exact_missing_inputs",
+        "scope",
+        "checks",
+        "n_checks",
+        "n_failed",
+        "failures",
+        "verdict",
+    }
+    expected_scope = {
+        "canonical_G8_contract_audited": True,
+        "continuous_absolute_scale_nonidentifiability_proved": True,
+        "flavor_and_interference_nonidentifiability_audited": True,
+        "repository_frozen_single_channel_constraint_computed": True,
+        "negative_no_go_for_future_G8_closure": False,
+        "unique_proton_lifetime_or_distribution": False,
+        "physical_G8": False,
+        "release_G8": False,
+        "authoritative_G8": False,
+        "whole_model_excluded_by_conditional_points": False,
+    }
+    expected_checks = {
+        "above_limit_scale_witness_is_sixteen",
+        "all_101_scaling_identities_are_exact",
+        "all_dependency_raw_and_core_hashes_match",
+        "all_five_G8_acceptance_criteria_fail_closed",
+        "authoritative_G8_fail_closed",
+        "below_limit_scale_witness_is_one_sixteenth",
+        "canonical_G8_definition_is_unique",
+        "canonical_G8_has_five_acceptance_criteria",
+        "canonical_G8_has_three_dependencies",
+        "fifty_complex_flavor_entries_are_unfixed",
+        "gauge_lifetime_scales_exactly_as_lambda_four",
+        "independent_raw_v_b_flavor_witness_has_102_real_coordinates",
+        "one_dimensional_scale_witness_already_breaks_G6_G7_G8_uniqueness",
+        "physical_G8_fail_closed",
+        "release_G8_fail_closed",
+        "same_normalized_spectrum_crosses_finite_limit",
+        "scale_audit_covers_cases_zero_through_one_hundred",
+        "unfixed_relative_phase_changes_total_width",
+        "vector_scale_is_unidentified",
+        "vector_threshold_coefficients_are_exact",
+    }
+    canonical = report.get("canonical_G8_definition", {})
+    acceptance = report.get("acceptance_matrix", {})
+    witnesses = report.get("exact_nonidentifiability_witnesses", {})
+    vector = witnesses.get("absolute_vector_scale", {})
+    crossing = witnesses.get("finite_limit_crossing", {})
+    flavor = witnesses.get("flavor_and_interference", {})
+    audit = report.get("scale_audit_0_through_100", {})
+    experimental = report.get("repository_frozen_experimental_input", {})
+    pdg = experimental.get("official_current_review_verification", {})
+    free_vector = report.get("minimal_exhibited_free_input_vector", {})
+    minimum = free_vector.get("smallest_exhibited_joint_witness", {})
+    missing = report.get("exact_missing_inputs", {})
+    checks_in = report.get("checks", {})
+    checks = {
+        "schema_status_core_exact": (
+            set(report) == expected_top_level
+            and report.get("schema")
+            == "exact_physical_sm_g8_identifiability_frontier_v1"
+            and report.get("contract_id")
+            == "exact_physical_sm_g8_identifiability_frontier_v20"
+            and report.get("status")
+            == "EXACT_PHYSICAL_SM_G8_IDENTIFIABILITY_FRONTIER_CLOSED__PHYSICAL_RELEASE_AUTHORITATIVE_G8_OPEN"
+            and report.get("core_sha256")
+            == PHYSICAL_SM_G8_FRONTIER_CORE_SHA256
+            and _canonical_json_line_sha256(
+                {key: value for key, value in report.items() if key != "core_sha256"}
+            )
+            == PHYSICAL_SM_G8_FRONTIER_CORE_SHA256
+        ),
+        "all_four_raw_artifact_pins_exact": (
+            raw_sha256 == PHYSICAL_SM_G8_FRONTIER_RAW_SHA256
+            and source_raw_sha256 == PHYSICAL_SM_G8_FRONTIER_SOURCE_RAW_SHA256
+            and test_raw_sha256 == PHYSICAL_SM_G8_FRONTIER_TEST_RAW_SHA256
+            and markdown_raw_sha256 == PHYSICAL_SM_G8_FRONTIER_MD_RAW_SHA256
+        ),
+        "embedded_checks_exact": (
+            set(checks_in) == expected_checks
+            and all(checks_in.get(name) is True for name in expected_checks)
+            and report.get("n_checks") == len(expected_checks)
+            and report.get("n_failed") == 0
+            and report.get("failures") == []
+        ),
+        "scope_truth_boundary_exact": report.get("scope") == expected_scope,
+        "canonical_G8_contract_exact": (
+            canonical.get("gap_id")
+            == "canonical.gauged_u1x.phenomenology.v21.G8.unique_proton_lifetime_distribution"
+            and canonical.get("required_artifact")
+            == "CANONICAL_G8_UNIQUE_PROTON_LIFETIME_V21.json"
+            and canonical.get("required_evidence_schema")
+            == "canonical_gauged_u1x_gate_evidence_v1"
+            and canonical.get("definition_sha256")
+            == "1ecc4a5ae0cb1c51a24438f56f4181a2e1cc03c0fc17bc4ca2c0ce522be75df5"
+            and canonical.get("dependencies")
+            == [
+                "canonical.gauged_u1x.phenomenology.v21.G5.calg_axion_phase_revalidation",
+                "canonical.gauged_u1x.phenomenology.v21.G6.full_nonsusy_two_loop_chain",
+                "canonical.gauged_u1x.phenomenology.v21.G7.physical_pole_threshold_spectrum",
+            ]
+            and len(canonical.get("acceptance", [])) == 5
+        ),
+        "all_five_acceptance_criteria_fail_closed": (
+            list(acceptance) == [f"criterion_{index}" for index in range(1, 6)]
+            and all(row.get("passed") is False for row in acceptance.values())
+        ),
+        "exact_scale_and_limit_crossing_witness": (
+            vector.get("partial_lifetime_ratio_at_fixed_dimensionless_data")
+            == "16"
+            and vector.get("threshold_log_coefficients")
+            == {"SU3": "35/4", "QED": "112/3"}
+            and vector.get("absolute_vector_scale_identified") is False
+            and crossing.get("below_limit_completion", {}).get(
+                "lifetime_margin_over_limit"
+            )
+            == "1/16"
+            and crossing.get("above_limit_completion", {}).get(
+                "lifetime_margin_over_limit"
+            )
+            == "16"
+            and crossing.get("same_normalized_vector_spectrum") is True
+            and crossing.get("model_classification_identified_without_absolute_scale")
+            is False
+        ),
+        "flavor_and_interference_witness_exact": (
+            flavor.get("raw_complex_entries_before_flavour_quotients") == 50
+            and flavor.get("raw_real_entries_before_flavour_quotients") == 100
+            and flavor.get("flavor_tensor_values_or_textures_fixed") is False
+            and flavor.get("unique_mass_basis_scalar_Wilson_coefficients") is False
+            and flavor.get("vacuum_fixed_gauge_scalar_interference") is False
+            and flavor.get("equal_magnitude_interference_witness", {}).get(
+                "relative_sign_plus_squared_amplitude"
+            )
+            == "4"
+            and flavor.get("equal_magnitude_interference_witness", {}).get(
+                "relative_sign_minus_squared_amplitude"
+            )
+            == "0"
+        ),
+        "scale_grid_0_through_100_exact": (
+            audit.get("case_range") == [0, 100]
+            and audit.get("case_count") == 101
+            and audit.get("identity_case") == 50
+            and audit.get("all_scaling_identities_exact") is True
+            and audit.get("records_sha256")
+            == "7402efea7c377a709a4bb33ec08a0e717418973c38e3e684de54ea92489311cd"
+        ),
+        "PDG_2025_numeric_constraint_exact_but_not_unique_prediction": (
+            experimental.get("reported_limit_90CL_years")
+            == "2.400000000000e+34"
+            and experimental.get("current_PDG_review_numeric_verification_performed")
+            is True
+            and experimental.get("complete_live_all_channel_limit_verification_performed")
+            is False
+            and experimental.get("usable_as_conditional_constraint") is True
+            and experimental.get("usable_as_unique_G8_prediction") is False
+            and pdg.get("publisher") == "Particle Data Group"
+            and pdg.get("edition") == 2025
+            and pdg.get("pdf_page") == 14
+            and pdg.get("reference_number") == 117
+            and pdg.get("numeric_value_agrees_with_repository") is True
+        ),
+        "minimal_exhibited_free_vector_exact": (
+            minimum.get("coordinates") == ["lambda_v"]
+            and minimum.get("real_dimension") == 1
+            and minimum.get("claim_of_global_parameter_minimality") is False
+            and free_vector.get(
+                "exhibited_raw_real_dimension_including_v_b_and_all_flavor_entries"
+            )
+            == 102
+        ),
+        "theory_vs_measured_vs_laboratory_boundary_exact": (
+            len(missing.get("continuous_boundary_values_or_distributions", []))
+            == 5
+            and len(missing.get("derivable_but_not_yet_derived", [])) == 7
+            and len(
+                missing.get("measured_or_lattice_inputs_to_freeze_with_covariance", [])
+            )
+            == 3
+            and len(missing.get("software_environment_not_laboratory", [])) == 1
+            and missing.get("new_laboratory_measurement_required_for_theory_gate")
+            == []
+        ),
+    }
+    source_bound = all(checks.values())
+    return {
+        "namespace": "PHYSICAL_SM_G8_IDENTIFIABILITY_FRONTIER",
+        "source_bound": source_bound,
+        "canonical_G8_contract_audited": bool(source_bound),
+        "continuous_absolute_scale_nonidentifiability_proved": bool(source_bound),
+        "flavor_and_interference_nonidentifiability_audited": bool(source_bound),
+        "repository_frozen_PDG_2025_single_channel_constraint_verified": bool(
+            source_bound
+        ),
+        "minimal_exhibited_joint_free_real_dimension": 1 if source_bound else None,
+        "unique_proton_lifetime_or_distribution": False,
+        "physical_G8_closed": False,
+        "release_G8_verified": False,
+        "authoritative_G8_closed": False,
+        "whole_model_excluded_by_conditional_points": False,
+        "all_acceptance_criteria_pass": False,
+        "precise_missing_inputs": missing if source_bound else {},
+        "checks": checks,
+    }
+
+
+def _physical_g7_recalculated_input_resolution(
+    component_thresholds: dict[str, Any],
+    normalized_yukawa_cgcs: dict[str, Any],
+    heavy_vectors: dict[str, Any],
+    heavy_vector_msbar_matching: dict[str, Any],
+    vector_rxi_vacuum_cancellation: dict[str, Any],
+    conditional_scalar_spectrum: dict[str, Any],
+    closure_frontier: dict[str, Any],
+) -> dict[str, Any]:
+    """Overlay newly closed scoped inputs and retain only precise open work."""
+    source_bound = bool(
+        component_thresholds.get("source_bound") is True
+        and normalized_yukawa_cgcs.get("source_bound") is True
+        and heavy_vectors.get("source_bound") is True
+        and heavy_vector_msbar_matching.get("source_bound") is True
+        and vector_rxi_vacuum_cancellation.get("source_bound") is True
+        and conditional_scalar_spectrum.get("source_bound") is True
+        and closure_frontier.get("source_bound") is True
+    )
+    resolved_scoped_inputs = {
+        "physical_PS_SM_matter_branching": bool(
+            source_bound
+            and component_thresholds.get("physical_PS_SM_matter_branching_closed")
+            is True
+        ),
+        "parameterized_one_loop_matter_threshold_kernel": bool(
+            source_bound
+            and component_thresholds.get(
+                "parameterized_one_loop_matter_threshold_kernel_closed"
+            )
+            is True
+        ),
+        "normalized_SO10_representation_CGCs": bool(
+            source_bound
+            and normalized_yukawa_cgcs.get(
+                "all_declared_representation_CGCs_closed"
+            )
+            is True
+        ),
+        "canonical_304_Weyl_sparse_embedding": bool(
+            source_bound
+            and normalized_yukawa_cgcs.get(
+                "canonical_304_Weyl_sparse_embedding_closed"
+            )
+            is True
+        ),
+        "exact_parameterized_physical_SM_tree_vector_mass_matrix": bool(
+            source_bound
+            and heavy_vectors.get(
+                "exact_parameterized_tree_vector_mass_matrix_closed"
+            )
+            is True
+        ),
+        "exact_heavy_vector_physical_target_provenance": bool(source_bound),
+        "exact_vector_rank_kernel_and_Goldstone_image": bool(
+            source_bound
+            and heavy_vectors.get(
+                "exact_vector_rank_kernel_and_Goldstone_image_closed"
+            )
+            is True
+        ),
+        "exact_SU3C_U1em_vector_sector_resolution": bool(
+            source_bound
+            and heavy_vectors.get(
+                "exact_SU3C_x_U1em_vector_sector_resolution_closed"
+            )
+            is True
+        ),
+        "parameterized_vector_threshold_log_inputs": bool(
+            source_bound
+            and heavy_vectors.get(
+                "parameterized_vector_threshold_log_inputs_closed"
+            )
+            is True
+        ),
+        "combined_heavy_vector_FPghost_Goldstone_MSbar_kernel": bool(
+            source_bound
+            and heavy_vector_msbar_matching.get(
+                "combined_heavy_vector_FPghost_Goldstone_MSbar_kernel_closed"
+            )
+            is True
+        ),
+        "finite_MSbar_heavy_vector_constant": bool(
+            source_bound
+            and heavy_vector_msbar_matching.get(
+                "finite_MSbar_vector_constant_closed"
+            )
+            is True
+        ),
+        "heavy_vector_Goldstone_double_count_guard": bool(
+            source_bound
+            and heavy_vector_msbar_matching.get(
+                "Goldstone_double_count_guard_active"
+            )
+            is True
+        ),
+        "zero_background_Rxi_vacuum_determinant_cancellation": bool(
+            source_bound
+            and vector_rxi_vacuum_cancellation.get(
+                "zero_background_Rxi_vacuum_determinant_cancellation_closed"
+            )
+            is True
+        ),
+        "conditional_reconstructed_tree_scalar_spectrum": bool(
+            source_bound
+            and conditional_scalar_spectrum.get(
+                "conditional_reconstructed_tree_scalar_spectrum_closed"
+            )
+            is True
+        ),
+        "continuous_G6_G7_nonidentifiability_frontier": bool(
+            source_bound
+            and closure_frontier.get("continuous_nonidentifiability_proved")
+            is True
+        ),
+    }
+    precise_open_inputs = {
+        "SARAH_implicit_Dot_to_identical_Weyl_contraction_conversion": False,
+        "flavor_tensor_values_textures_and_boundary_conditions": False,
+        "complete_one_and_two_loop_Yukawa_beta_system": False,
+        "background_covariant_heat_kernel_and_general_background_determinants": False,
+        "one_loop_tree_to_pole_vector_mass_conversion_and_tadpole_VEV_scheme": False,
+        "stationary_SM_symmetric_pre_EW_heavy_vector_matching": False,
+        "complete_scalar_and_fermion_threshold_matching": False,
+        "matching_scheme_physical_scale_and_running_coupling_boundaries": False,
+        "source_algebra_derived_physical_scalar_Hessian": False,
+        "physical_scalar_pole_masses": False,
+        "complete_scalar_dimensionful_and_EFT_beta_system": False,
+        "second_independent_full_RGE_threshold_implementation": False,
+    }
+    return {
+        "namespace": "PHYSICAL_G7_RECALCULATED_INPUT_RESOLUTION",
+        "source_bound": source_bound,
+        "resolved_scoped_inputs": resolved_scoped_inputs,
+        "all_resolved_scoped_inputs_closed": bool(
+            source_bound and all(resolved_scoped_inputs.values())
+        ),
+        "superseded_stale_blockers": {
+            "normalized_304_Weyl_Yukawa_tensor_embeddings_open": bool(
+                source_bound
+                and resolved_scoped_inputs[
+                    "normalized_SO10_representation_CGCs"
+                ]
+                and resolved_scoped_inputs[
+                    "canonical_304_Weyl_sparse_embedding"
+                ]
+            ),
+            "heavy_vector_provenance_and_tree_mass_matrix_not_matched": bool(
+                source_bound
+                and resolved_scoped_inputs[
+                    "exact_heavy_vector_physical_target_provenance"
+                ]
+                and resolved_scoped_inputs[
+                    "exact_parameterized_physical_SM_tree_vector_mass_matrix"
+                ]
+            ),
+            "generic_heavy_vector_Goldstone_ghost_matching_open": bool(
+                source_bound
+                and resolved_scoped_inputs[
+                    "combined_heavy_vector_FPghost_Goldstone_MSbar_kernel"
+                ]
+                and resolved_scoped_inputs["finite_MSbar_heavy_vector_constant"]
+            ),
+        },
+        "precise_open_inputs": precise_open_inputs,
+        "physical_G6_closed": False,
+        "mathematical_G7_closed": False,
+        "physical_G7_closed": False,
+        "release_G7_verified": False,
+    }
+
+
 def _canonical_json_sha256(value: Any) -> str:
     payload = json.dumps(
         value, sort_keys=True, separators=(",", ":"), ensure_ascii=True
+    ).encode("utf-8")
+    return hashlib.sha256(payload).hexdigest()
+
+
+def _canonical_json_line_sha256(value: Any) -> str:
+    """Hash canonical JSON with the producer contract's terminal newline."""
+    payload = (
+        json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=True)
+        + "\n"
     ).encode("utf-8")
     return hashlib.sha256(payload).hexdigest()
 
@@ -5004,7 +9680,9 @@ def _gauged_u1x_scalar_subtheorems(
             ),
             "release_G1_verified": bool(contract_consistent and full_g1_closed),
             "remaining_exact_target": (
-                "Supply the hash-bound external SARAH v2 execution attestation."
+                "CLOSED_ON_CURRENT_AUTHORITATIVE_CONTRACT"
+                if contract_consistent and full_g1_closed
+                else "Supply the hash-bound external SARAH v3 source-tree/runtime/log attestation."
                 if full_g1_closed
                 else "Restore the source-bound 44-direction component-tensor theorem."
             ),
@@ -5047,7 +9725,9 @@ def _gauged_u1x_scalar_subtheorems(
                 contract_consistent and full_g2_mathematical_closed
             ),
             "remaining_exact_target": (
-                "Supply the hash-bound external SARAH v2 execution attestation."
+                "CLOSED_ON_CURRENT_AUTHORITATIVE_CONTRACT"
+                if contract_consistent and full_g2_mathematical_closed
+                else "Supply the hash-bound external SARAH v3 source-tree/runtime/log attestation."
                 if full_g2_mathematical_closed
                 else "Restore the source-bound mathematical G2 closure theorem."
             ),
@@ -5127,7 +9807,7 @@ def _build_gates(
         "G1": (
             "Invariant ring and component Clebsch tensors",
             [
-                "complete and source-bind the explicit component-tensor/Clebsch integration for the exact 44-direction/51-parameter multiplicity census",
+                "obtain a real hash-bound external SARAH execution attestation for authoritative G1 promotion",
             ],
         ),
         "G2": (
@@ -5229,7 +9909,7 @@ def _build_gates(
                 if status == STATUS_CLOSED
                 else []
             ),
-            "open_scope": open_scope,
+            "open_scope": [] if status == STATUS_CLOSED else open_scope,
             "historical_option_c_evidence_retained": name in {"G1", "G2", "G3", "G4"},
         }
         if scoped is not None and name in {"G1", "G2"}:
@@ -5301,9 +9981,68 @@ def _build_report_from_inputs(
     final_g6_eft_mathematical_report: dict[str, Any] | None = None,
     final_g6_eft_mathematical_raw_sha256: str | None = None,
     final_g6_eft_gate_source_raw_sha256: str | None = None,
+    g6_sm_provenance_report: dict[str, Any] | None = None,
+    g6_sm_provenance_raw_sha256: str | None = None,
+    g6_sm_provenance_source_raw_sha256: str | None = None,
+    g6_g7_parameterized_matching_report: dict[str, Any] | None = None,
+    g6_g7_parameterized_matching_raw_sha256: str | None = None,
+    g6_g7_parameterized_matching_source_raw_sha256: str | None = None,
+    authoritative_gauge_betas_report: dict[str, Any] | None = None,
+    authoritative_gauge_betas_raw_sha256: str | None = None,
+    authoritative_gauge_betas_source_raw_sha256: str | None = None,
+    pyrate3_gauge_replay_report: dict[str, Any] | None = None,
+    pyrate3_gauge_replay_raw_sha256: str | None = None,
+    pyrate3_gauge_replay_source_raw_sha256: str | None = None,
+    pyrate3_gauge_replay_model_raw_sha256: str | None = None,
+    pyrate3_gauge_replay_data_raw_sha256: str | None = None,
     eft_g7_nonidentifiability_report: dict[str, Any] | None = None,
     eft_g7_nonidentifiability_raw_sha256: str | None = None,
     eft_g7_nonidentifiability_source_raw_sha256: str | None = None,
+    physical_g7_component_threshold_report: dict[str, Any] | None = None,
+    physical_g7_component_threshold_raw_sha256: str | None = None,
+    physical_g7_component_threshold_source_raw_sha256: str | None = None,
+    physical_g7_component_threshold_test_raw_sha256: str | None = None,
+    physical_g7_component_threshold_markdown_raw_sha256: str | None = None,
+    normalized_yukawa_cgcs_report: dict[str, Any] | None = None,
+    normalized_yukawa_cgcs_raw_sha256: str | None = None,
+    normalized_yukawa_cgcs_source_raw_sha256: str | None = None,
+    normalized_yukawa_cgcs_test_raw_sha256: str | None = None,
+    normalized_yukawa_cgcs_markdown_raw_sha256: str | None = None,
+    physical_sm_vacuum_report: dict[str, Any] | None = None,
+    physical_sm_vacuum_raw_sha256: str | None = None,
+    physical_sm_vacuum_source_raw_sha256: str | None = None,
+    physical_sm_vacuum_test_raw_sha256: str | None = None,
+    physical_sm_vacuum_markdown_raw_sha256: str | None = None,
+    physical_sm_heavy_vector_report: dict[str, Any] | None = None,
+    physical_sm_heavy_vector_raw_sha256: str | None = None,
+    physical_sm_heavy_vector_source_raw_sha256: str | None = None,
+    physical_sm_heavy_vector_test_raw_sha256: str | None = None,
+    physical_sm_heavy_vector_markdown_raw_sha256: str | None = None,
+    physical_sm_heavy_vector_msbar_report: dict[str, Any] | None = None,
+    physical_sm_heavy_vector_msbar_raw_sha256: str | None = None,
+    physical_sm_heavy_vector_msbar_source_raw_sha256: str | None = None,
+    physical_sm_heavy_vector_msbar_test_raw_sha256: str | None = None,
+    physical_sm_heavy_vector_msbar_markdown_raw_sha256: str | None = None,
+    physical_sm_vector_rxi_report: dict[str, Any] | None = None,
+    physical_sm_vector_rxi_raw_sha256: str | None = None,
+    physical_sm_vector_rxi_source_raw_sha256: str | None = None,
+    physical_sm_vector_rxi_test_raw_sha256: str | None = None,
+    physical_sm_vector_rxi_markdown_raw_sha256: str | None = None,
+    conditional_physical_sm_scalar_spectrum_report: dict[str, Any] | None = None,
+    conditional_physical_sm_scalar_spectrum_raw_sha256: str | None = None,
+    conditional_physical_sm_scalar_spectrum_source_raw_sha256: str | None = None,
+    conditional_physical_sm_scalar_spectrum_test_raw_sha256: str | None = None,
+    conditional_physical_sm_scalar_spectrum_markdown_raw_sha256: str | None = None,
+    physical_sm_g6_g7_frontier_report: dict[str, Any] | None = None,
+    physical_sm_g6_g7_frontier_raw_sha256: str | None = None,
+    physical_sm_g6_g7_frontier_source_raw_sha256: str | None = None,
+    physical_sm_g6_g7_frontier_test_raw_sha256: str | None = None,
+    physical_sm_g6_g7_frontier_markdown_raw_sha256: str | None = None,
+    physical_sm_g8_frontier_report: dict[str, Any] | None = None,
+    physical_sm_g8_frontier_raw_sha256: str | None = None,
+    physical_sm_g8_frontier_source_raw_sha256: str | None = None,
+    physical_sm_g8_frontier_test_raw_sha256: str | None = None,
+    physical_sm_g8_frontier_markdown_raw_sha256: str | None = None,
 ) -> dict[str, Any]:
     """Build a ledger from fresh reports, including repaired-contract states."""
     declared_contract_consistent = bool(x_report["contract_consistent"])
@@ -5312,6 +10051,18 @@ def _build_report_from_inputs(
         declared_contract_consistent and contract_evidence_complete
     )
     contract_blocker = str(x_report.get("blocker") or CONTRACT_BLOCKER)
+    exact_x_v3_contract = _exact_x_v3_fail_closed_contract(
+        x_report,
+        source_raw_sha256=_raw_file_sha256(EXACT_X_V3_SOURCE),
+        test_raw_sha256=_raw_file_sha256(EXACT_X_V3_TEST),
+        json_raw_sha256=_raw_file_sha256(EXACT_X_V3_JSON),
+        markdown_raw_sha256=_raw_file_sha256(EXACT_X_V3_MD),
+        input_manifest_raw_sha256=_raw_file_sha256(EXACT_X_V3_INPUT_MANIFEST),
+        trusted_sarah_manifest_raw_sha256=_raw_file_sha256(
+            EXACT_X_V3_TRUSTED_SARAH_MANIFEST
+        ),
+        external_validation_file_present=exact_x.EXTERNAL_VALIDATION.is_file(),
+    )
     historical = _historical_option_c_subtheorems()
     if g1_component_tensor_report is None:
         g1_component_tensor_report = _load_json_artifact(
@@ -5511,10 +10262,96 @@ def _build_report_from_inputs(
         final_g6_eft_gate_source_raw_sha256 = _raw_file_sha256(
             FINAL_G6_EFT_GATE_SOURCE
         )
+    provenance_loaded_from_disk = g6_sm_provenance_report is None
+    if provenance_loaded_from_disk:
+        g6_sm_provenance_report = _load_json_artifact(G6_SM_PROVENANCE_JSON)
+    if g6_sm_provenance_raw_sha256 is None:
+        g6_sm_provenance_raw_sha256 = (
+            _raw_file_sha256(G6_SM_PROVENANCE_JSON)
+            if provenance_loaded_from_disk
+            else ""
+        )
+    if g6_sm_provenance_source_raw_sha256 is None:
+        g6_sm_provenance_source_raw_sha256 = _raw_file_sha256(
+            G6_SM_PROVENANCE_SOURCE
+        )
+    g6_sm_provenance = _g6_sm_provenance_audit(
+        g6_sm_provenance_report,
+        raw_sha256=g6_sm_provenance_raw_sha256,
+        source_raw_sha256=g6_sm_provenance_source_raw_sha256,
+    )
+    matching_loaded_from_disk = g6_g7_parameterized_matching_report is None
+    if matching_loaded_from_disk:
+        g6_g7_parameterized_matching_report = _load_json_artifact(
+            G6_G7_PARAMETERIZED_MATCHING_JSON
+        )
+    if g6_g7_parameterized_matching_raw_sha256 is None:
+        g6_g7_parameterized_matching_raw_sha256 = (
+            _raw_file_sha256(G6_G7_PARAMETERIZED_MATCHING_JSON)
+            if matching_loaded_from_disk
+            else ""
+        )
+    if g6_g7_parameterized_matching_source_raw_sha256 is None:
+        g6_g7_parameterized_matching_source_raw_sha256 = _raw_file_sha256(
+            G6_G7_PARAMETERIZED_MATCHING_SOURCE
+        )
+    g6_g7_parameterized_matching = _parameterized_g6_g7_matching(
+        g6_g7_parameterized_matching_report,
+        raw_sha256=g6_g7_parameterized_matching_raw_sha256,
+        source_raw_sha256=g6_g7_parameterized_matching_source_raw_sha256,
+    )
     parallel_eft_g6_spectrum = _parallel_eft_g6_spectrum(
         final_g6_eft_mathematical_report,
         raw_sha256=final_g6_eft_mathematical_raw_sha256,
         gate_source_raw_sha256=final_g6_eft_gate_source_raw_sha256,
+        provenance_audit=g6_sm_provenance,
+        parameterized_matching=g6_g7_parameterized_matching,
+    )
+    gauge_betas_loaded_from_disk = authoritative_gauge_betas_report is None
+    if gauge_betas_loaded_from_disk:
+        authoritative_gauge_betas_report = _load_json_artifact(
+            AUTHORITATIVE_GAUGE_BETAS_JSON
+        )
+    if authoritative_gauge_betas_raw_sha256 is None:
+        authoritative_gauge_betas_raw_sha256 = (
+            _raw_file_sha256(AUTHORITATIVE_GAUGE_BETAS_JSON)
+            if gauge_betas_loaded_from_disk
+            else ""
+        )
+    if authoritative_gauge_betas_source_raw_sha256 is None:
+        authoritative_gauge_betas_source_raw_sha256 = _raw_file_sha256(
+            AUTHORITATIVE_GAUGE_BETAS_SOURCE
+        )
+    authoritative_gauge_betas = _authoritative_gauge_beta_subtheorem(
+        authoritative_gauge_betas_report,
+        raw_sha256=authoritative_gauge_betas_raw_sha256,
+        source_raw_sha256=authoritative_gauge_betas_source_raw_sha256,
+    )
+    pyrate_loaded_from_disk = pyrate3_gauge_replay_report is None
+    if pyrate_loaded_from_disk:
+        pyrate3_gauge_replay_report = _load_json_artifact(PYRATE3_GAUGE_REPLAY_JSON)
+    if pyrate3_gauge_replay_raw_sha256 is None:
+        pyrate3_gauge_replay_raw_sha256 = _raw_file_sha256(
+            PYRATE3_GAUGE_REPLAY_JSON
+        )
+    if pyrate3_gauge_replay_source_raw_sha256 is None:
+        pyrate3_gauge_replay_source_raw_sha256 = _raw_file_sha256(
+            PYRATE3_GAUGE_REPLAY_SOURCE
+        )
+    if pyrate3_gauge_replay_model_raw_sha256 is None:
+        pyrate3_gauge_replay_model_raw_sha256 = _raw_file_sha256(
+            PYRATE3_GAUGE_REPLAY_MODEL
+        )
+    if pyrate3_gauge_replay_data_raw_sha256 is None:
+        pyrate3_gauge_replay_data_raw_sha256 = _raw_file_sha256(
+            PYRATE3_GAUGE_REPLAY_DATA
+        )
+    pyrate3_gauge_replay = _pyrate3_gauge_replay_subtheorem(
+        pyrate3_gauge_replay_report,
+        raw_sha256=pyrate3_gauge_replay_raw_sha256,
+        source_raw_sha256=pyrate3_gauge_replay_source_raw_sha256,
+        model_raw_sha256=pyrate3_gauge_replay_model_raw_sha256,
+        data_raw_sha256=pyrate3_gauge_replay_data_raw_sha256,
     )
     g7_loaded_from_disk = eft_g7_nonidentifiability_report is None
     if g7_loaded_from_disk:
@@ -5535,6 +10372,401 @@ def _build_report_from_inputs(
         eft_g7_nonidentifiability_report,
         raw_sha256=eft_g7_nonidentifiability_raw_sha256,
         source_raw_sha256=eft_g7_nonidentifiability_source_raw_sha256,
+    )
+    physical_g7_loaded_from_disk = physical_g7_component_threshold_report is None
+    if physical_g7_loaded_from_disk:
+        physical_g7_component_threshold_report = _load_json_artifact(
+            PHYSICAL_G7_COMPONENT_THRESHOLD_JSON
+        )
+    if physical_g7_component_threshold_raw_sha256 is None:
+        physical_g7_component_threshold_raw_sha256 = (
+            _raw_file_sha256(PHYSICAL_G7_COMPONENT_THRESHOLD_JSON)
+            if physical_g7_loaded_from_disk
+            else ""
+        )
+    if physical_g7_component_threshold_source_raw_sha256 is None:
+        physical_g7_component_threshold_source_raw_sha256 = _raw_file_sha256(
+            PHYSICAL_G7_COMPONENT_THRESHOLD_SOURCE
+        )
+    if physical_g7_component_threshold_test_raw_sha256 is None:
+        physical_g7_component_threshold_test_raw_sha256 = _raw_file_sha256(
+            PHYSICAL_G7_COMPONENT_THRESHOLD_TEST
+        )
+    if physical_g7_component_threshold_markdown_raw_sha256 is None:
+        physical_g7_component_threshold_markdown_raw_sha256 = _raw_file_sha256(
+            PHYSICAL_G7_COMPONENT_THRESHOLD_MD
+        )
+    physical_g7_component_threshold = _physical_g7_component_threshold_contract(
+        physical_g7_component_threshold_report,
+        raw_sha256=physical_g7_component_threshold_raw_sha256,
+        source_raw_sha256=physical_g7_component_threshold_source_raw_sha256,
+        test_raw_sha256=physical_g7_component_threshold_test_raw_sha256,
+        markdown_raw_sha256=physical_g7_component_threshold_markdown_raw_sha256,
+    )
+    yukawa_cgcs_loaded_from_disk = normalized_yukawa_cgcs_report is None
+    if yukawa_cgcs_loaded_from_disk:
+        normalized_yukawa_cgcs_report = _load_json_artifact(
+            NORMALIZED_YUKAWA_CGCS_JSON
+        )
+    if normalized_yukawa_cgcs_raw_sha256 is None:
+        normalized_yukawa_cgcs_raw_sha256 = (
+            _raw_file_sha256(NORMALIZED_YUKAWA_CGCS_JSON)
+            if yukawa_cgcs_loaded_from_disk
+            else ""
+        )
+    if normalized_yukawa_cgcs_source_raw_sha256 is None:
+        normalized_yukawa_cgcs_source_raw_sha256 = _raw_file_sha256(
+            NORMALIZED_YUKAWA_CGCS_SOURCE
+        )
+    if normalized_yukawa_cgcs_test_raw_sha256 is None:
+        normalized_yukawa_cgcs_test_raw_sha256 = _raw_file_sha256(
+            NORMALIZED_YUKAWA_CGCS_TEST
+        )
+    if normalized_yukawa_cgcs_markdown_raw_sha256 is None:
+        normalized_yukawa_cgcs_markdown_raw_sha256 = _raw_file_sha256(
+            NORMALIZED_YUKAWA_CGCS_MD
+        )
+    normalized_yukawa_cgcs = _normalized_so10_yukawa_cgc_contract(
+        normalized_yukawa_cgcs_report,
+        raw_sha256=normalized_yukawa_cgcs_raw_sha256,
+        source_raw_sha256=normalized_yukawa_cgcs_source_raw_sha256,
+        test_raw_sha256=normalized_yukawa_cgcs_test_raw_sha256,
+        markdown_raw_sha256=normalized_yukawa_cgcs_markdown_raw_sha256,
+    )
+    physical_sm_loaded_from_disk = physical_sm_vacuum_report is None
+    if physical_sm_loaded_from_disk:
+        physical_sm_vacuum_report = _load_json_artifact(PHYSICAL_SM_VACUUM_JSON)
+    if physical_sm_vacuum_raw_sha256 is None:
+        physical_sm_vacuum_raw_sha256 = (
+            _raw_file_sha256(PHYSICAL_SM_VACUUM_JSON)
+            if physical_sm_loaded_from_disk
+            else ""
+        )
+    if physical_sm_vacuum_source_raw_sha256 is None:
+        physical_sm_vacuum_source_raw_sha256 = _raw_file_sha256(
+            PHYSICAL_SM_VACUUM_SOURCE
+        )
+    if physical_sm_vacuum_test_raw_sha256 is None:
+        physical_sm_vacuum_test_raw_sha256 = _raw_file_sha256(
+            PHYSICAL_SM_VACUUM_TEST
+        )
+    if physical_sm_vacuum_markdown_raw_sha256 is None:
+        physical_sm_vacuum_markdown_raw_sha256 = _raw_file_sha256(
+            PHYSICAL_SM_VACUUM_MD
+        )
+    physical_sm_vacuum = _physical_sm_vacuum_truth_overlay(
+        physical_sm_vacuum_report,
+        raw_sha256=physical_sm_vacuum_raw_sha256,
+        source_raw_sha256=physical_sm_vacuum_source_raw_sha256,
+        test_raw_sha256=physical_sm_vacuum_test_raw_sha256,
+        markdown_raw_sha256=physical_sm_vacuum_markdown_raw_sha256,
+    )
+    physical_sm_source_equality_report = _load_json_artifact(
+        PHYSICAL_SM_SOURCE_EQUALITY_JSON
+    )
+    physical_sm_source_equality = (
+        _physical_sm_source_algebra_equality_frontier_contract(
+            physical_sm_source_equality_report,
+            raw_sha256=_raw_file_sha256(PHYSICAL_SM_SOURCE_EQUALITY_JSON),
+            source_raw_sha256=_raw_file_sha256(
+                PHYSICAL_SM_SOURCE_EQUALITY_SOURCE
+            ),
+            test_raw_sha256=_raw_file_sha256(PHYSICAL_SM_SOURCE_EQUALITY_TEST),
+            markdown_raw_sha256=_raw_file_sha256(PHYSICAL_SM_SOURCE_EQUALITY_MD),
+        )
+    )
+    physical_sm_five_amplitude_equality_report = _load_json_artifact(
+        PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_JSON
+    )
+    physical_sm_five_amplitude_equality = (
+        _physical_sm_five_amplitude_equality_contract(
+            physical_sm_five_amplitude_equality_report,
+            raw_sha256=_raw_file_sha256(
+                PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_JSON
+            ),
+            source_raw_sha256=_raw_file_sha256(
+                PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_SOURCE
+            ),
+            test_raw_sha256=_raw_file_sha256(
+                PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_TEST
+            ),
+            markdown_raw_sha256=_raw_file_sha256(
+                PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_MD
+            ),
+        )
+    )
+    physical_sm_hard_projector_hessians_report = _load_json_artifact(
+        PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_JSON
+    )
+    physical_sm_hard_projector_hessians = (
+        _physical_sm_hard_projector_hessians_contract(
+            physical_sm_hard_projector_hessians_report,
+            raw_sha256=_raw_file_sha256(PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_JSON),
+            source_raw_sha256=_raw_file_sha256(PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_SOURCE),
+            test_raw_sha256=_raw_file_sha256(PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_TEST),
+            markdown_raw_sha256=_raw_file_sha256(PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_MD),
+        )
+    )
+    physical_sm_last_six_hessians_report = _load_json_artifact(
+        PHYSICAL_SM_LAST_SIX_HESSIANS_JSON
+    )
+    physical_sm_last_six_hessians = _physical_sm_last_six_hessians_contract(
+        physical_sm_last_six_hessians_report,
+        raw_sha256=_raw_file_sha256(PHYSICAL_SM_LAST_SIX_HESSIANS_JSON),
+        source_raw_sha256=_raw_file_sha256(PHYSICAL_SM_LAST_SIX_HESSIANS_SOURCE),
+        test_raw_sha256=_raw_file_sha256(PHYSICAL_SM_LAST_SIX_HESSIANS_TEST),
+        markdown_raw_sha256=_raw_file_sha256(PHYSICAL_SM_LAST_SIX_HESSIANS_MD),
+    )
+    physical_sm_37_row_aggregate_report = _load_json_artifact(
+        PHYSICAL_SM_37_ROW_AGGREGATE_JSON
+    )
+    physical_sm_37_row_aggregate = _physical_sm_37_row_aggregate_contract(
+        physical_sm_37_row_aggregate_report,
+        raw_sha256=_raw_file_sha256(PHYSICAL_SM_37_ROW_AGGREGATE_JSON),
+        source_raw_sha256=_raw_file_sha256(PHYSICAL_SM_37_ROW_AGGREGATE_SOURCE),
+        test_raw_sha256=_raw_file_sha256(PHYSICAL_SM_37_ROW_AGGREGATE_TEST),
+        markdown_raw_sha256=_raw_file_sha256(PHYSICAL_SM_37_ROW_AGGREGATE_MD),
+    )
+    physical_sm_local_equality_orbit_report = _load_json_artifact(
+        PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_JSON
+    )
+    physical_sm_local_equality_orbit = _physical_sm_local_equality_orbit_contract(
+        physical_sm_local_equality_orbit_report,
+        portable_lf_sha256=_file_sha256(PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_JSON),
+        source_portable_lf_sha256=_file_sha256(
+            PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_SOURCE
+        ),
+        test_portable_lf_sha256=_file_sha256(PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_TEST),
+        markdown_portable_lf_sha256=_file_sha256(
+            PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_MD
+        ),
+    )
+    physical_sm_g4_g5_branch_mismatch_report = _load_json_artifact(
+        PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_JSON
+    )
+    physical_sm_g4_g5_branch_mismatch = (
+        _physical_sm_g4_g5_branch_mismatch_contract(
+            physical_sm_g4_g5_branch_mismatch_report,
+            raw_sha256=_raw_file_sha256(PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_JSON),
+            source_raw_sha256=_raw_file_sha256(PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_SOURCE),
+            test_raw_sha256=_raw_file_sha256(PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_TEST),
+            markdown_raw_sha256=_raw_file_sha256(PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_MD),
+        )
+    )
+    heavy_vector_loaded_from_disk = physical_sm_heavy_vector_report is None
+    if heavy_vector_loaded_from_disk:
+        physical_sm_heavy_vector_report = _load_json_artifact(
+            PHYSICAL_SM_HEAVY_VECTOR_JSON
+        )
+    if physical_sm_heavy_vector_raw_sha256 is None:
+        physical_sm_heavy_vector_raw_sha256 = (
+            _raw_file_sha256(PHYSICAL_SM_HEAVY_VECTOR_JSON)
+            if heavy_vector_loaded_from_disk
+            else ""
+        )
+    if physical_sm_heavy_vector_source_raw_sha256 is None:
+        physical_sm_heavy_vector_source_raw_sha256 = _raw_file_sha256(
+            PHYSICAL_SM_HEAVY_VECTOR_SOURCE
+        )
+    if physical_sm_heavy_vector_test_raw_sha256 is None:
+        physical_sm_heavy_vector_test_raw_sha256 = _raw_file_sha256(
+            PHYSICAL_SM_HEAVY_VECTOR_TEST
+        )
+    if physical_sm_heavy_vector_markdown_raw_sha256 is None:
+        physical_sm_heavy_vector_markdown_raw_sha256 = _raw_file_sha256(
+            PHYSICAL_SM_HEAVY_VECTOR_MD
+        )
+    physical_sm_heavy_vector = _physical_sm_heavy_vector_mass_contract(
+        physical_sm_heavy_vector_report,
+        raw_sha256=physical_sm_heavy_vector_raw_sha256,
+        source_raw_sha256=physical_sm_heavy_vector_source_raw_sha256,
+        test_raw_sha256=physical_sm_heavy_vector_test_raw_sha256,
+        markdown_raw_sha256=physical_sm_heavy_vector_markdown_raw_sha256,
+    )
+    heavy_vector_msbar_loaded_from_disk = (
+        physical_sm_heavy_vector_msbar_report is None
+    )
+    if heavy_vector_msbar_loaded_from_disk:
+        physical_sm_heavy_vector_msbar_report = _load_json_artifact(
+            PHYSICAL_SM_HEAVY_VECTOR_MSBAR_JSON
+        )
+    if physical_sm_heavy_vector_msbar_raw_sha256 is None:
+        physical_sm_heavy_vector_msbar_raw_sha256 = (
+            _raw_file_sha256(PHYSICAL_SM_HEAVY_VECTOR_MSBAR_JSON)
+            if heavy_vector_msbar_loaded_from_disk
+            else ""
+        )
+    if physical_sm_heavy_vector_msbar_source_raw_sha256 is None:
+        physical_sm_heavy_vector_msbar_source_raw_sha256 = _raw_file_sha256(
+            PHYSICAL_SM_HEAVY_VECTOR_MSBAR_SOURCE
+        )
+    if physical_sm_heavy_vector_msbar_test_raw_sha256 is None:
+        physical_sm_heavy_vector_msbar_test_raw_sha256 = _raw_file_sha256(
+            PHYSICAL_SM_HEAVY_VECTOR_MSBAR_TEST
+        )
+    if physical_sm_heavy_vector_msbar_markdown_raw_sha256 is None:
+        physical_sm_heavy_vector_msbar_markdown_raw_sha256 = _raw_file_sha256(
+            PHYSICAL_SM_HEAVY_VECTOR_MSBAR_MD
+        )
+    physical_sm_heavy_vector_msbar = (
+        _physical_sm_heavy_vector_msbar_matching_contract(
+            physical_sm_heavy_vector_msbar_report,
+            raw_sha256=physical_sm_heavy_vector_msbar_raw_sha256,
+            source_raw_sha256=(
+                physical_sm_heavy_vector_msbar_source_raw_sha256
+            ),
+            test_raw_sha256=physical_sm_heavy_vector_msbar_test_raw_sha256,
+            markdown_raw_sha256=(
+                physical_sm_heavy_vector_msbar_markdown_raw_sha256
+            ),
+        )
+    )
+    vector_rxi_loaded_from_disk = physical_sm_vector_rxi_report is None
+    if vector_rxi_loaded_from_disk:
+        physical_sm_vector_rxi_report = _load_json_artifact(
+            PHYSICAL_SM_VECTOR_RXI_JSON
+        )
+    if physical_sm_vector_rxi_raw_sha256 is None:
+        physical_sm_vector_rxi_raw_sha256 = (
+            _raw_file_sha256(PHYSICAL_SM_VECTOR_RXI_JSON)
+            if vector_rxi_loaded_from_disk
+            else ""
+        )
+    if physical_sm_vector_rxi_source_raw_sha256 is None:
+        physical_sm_vector_rxi_source_raw_sha256 = _raw_file_sha256(
+            PHYSICAL_SM_VECTOR_RXI_SOURCE
+        )
+    if physical_sm_vector_rxi_test_raw_sha256 is None:
+        physical_sm_vector_rxi_test_raw_sha256 = _raw_file_sha256(
+            PHYSICAL_SM_VECTOR_RXI_TEST
+        )
+    if physical_sm_vector_rxi_markdown_raw_sha256 is None:
+        physical_sm_vector_rxi_markdown_raw_sha256 = _raw_file_sha256(
+            PHYSICAL_SM_VECTOR_RXI_MD
+        )
+    physical_sm_vector_rxi = (
+        _physical_sm_vector_rxi_vacuum_cancellation_contract(
+            physical_sm_vector_rxi_report,
+            raw_sha256=physical_sm_vector_rxi_raw_sha256,
+            source_raw_sha256=physical_sm_vector_rxi_source_raw_sha256,
+            test_raw_sha256=physical_sm_vector_rxi_test_raw_sha256,
+            markdown_raw_sha256=physical_sm_vector_rxi_markdown_raw_sha256,
+        )
+    )
+    conditional_scalar_loaded_from_disk = (
+        conditional_physical_sm_scalar_spectrum_report is None
+    )
+    if conditional_scalar_loaded_from_disk:
+        conditional_physical_sm_scalar_spectrum_report = _load_json_artifact(
+            CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_JSON
+        )
+    if conditional_physical_sm_scalar_spectrum_raw_sha256 is None:
+        conditional_physical_sm_scalar_spectrum_raw_sha256 = (
+            _raw_file_sha256(CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_JSON)
+            if conditional_scalar_loaded_from_disk
+            else ""
+        )
+    if conditional_physical_sm_scalar_spectrum_source_raw_sha256 is None:
+        conditional_physical_sm_scalar_spectrum_source_raw_sha256 = (
+            _raw_file_sha256(CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_SOURCE)
+        )
+    if conditional_physical_sm_scalar_spectrum_test_raw_sha256 is None:
+        conditional_physical_sm_scalar_spectrum_test_raw_sha256 = (
+            _raw_file_sha256(CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_TEST)
+        )
+    if conditional_physical_sm_scalar_spectrum_markdown_raw_sha256 is None:
+        conditional_physical_sm_scalar_spectrum_markdown_raw_sha256 = (
+            _raw_file_sha256(CONDITIONAL_PHYSICAL_SM_SCALAR_SPECTRUM_MD)
+        )
+    conditional_physical_sm_scalar_spectrum = (
+        _conditional_physical_sm_eft_hessian_spectrum_contract(
+            conditional_physical_sm_scalar_spectrum_report,
+            raw_sha256=conditional_physical_sm_scalar_spectrum_raw_sha256,
+            source_raw_sha256=(
+                conditional_physical_sm_scalar_spectrum_source_raw_sha256
+            ),
+            test_raw_sha256=(
+                conditional_physical_sm_scalar_spectrum_test_raw_sha256
+            ),
+            markdown_raw_sha256=(
+                conditional_physical_sm_scalar_spectrum_markdown_raw_sha256
+            ),
+        )
+    )
+    closure_frontier_loaded_from_disk = (
+        physical_sm_g6_g7_frontier_report is None
+    )
+    if closure_frontier_loaded_from_disk:
+        physical_sm_g6_g7_frontier_report = _load_json_artifact(
+            PHYSICAL_SM_G6_G7_FRONTIER_JSON
+        )
+    if physical_sm_g6_g7_frontier_raw_sha256 is None:
+        physical_sm_g6_g7_frontier_raw_sha256 = (
+            _raw_file_sha256(PHYSICAL_SM_G6_G7_FRONTIER_JSON)
+            if closure_frontier_loaded_from_disk
+            else ""
+        )
+    if physical_sm_g6_g7_frontier_source_raw_sha256 is None:
+        physical_sm_g6_g7_frontier_source_raw_sha256 = _raw_file_sha256(
+            PHYSICAL_SM_G6_G7_FRONTIER_SOURCE
+        )
+    if physical_sm_g6_g7_frontier_test_raw_sha256 is None:
+        physical_sm_g6_g7_frontier_test_raw_sha256 = _raw_file_sha256(
+            PHYSICAL_SM_G6_G7_FRONTIER_TEST
+        )
+    if physical_sm_g6_g7_frontier_markdown_raw_sha256 is None:
+        physical_sm_g6_g7_frontier_markdown_raw_sha256 = _raw_file_sha256(
+            PHYSICAL_SM_G6_G7_FRONTIER_MD
+        )
+    physical_sm_g6_g7_frontier = (
+        _physical_sm_g6_g7_closure_frontier_contract(
+            physical_sm_g6_g7_frontier_report,
+            raw_sha256=physical_sm_g6_g7_frontier_raw_sha256,
+            source_raw_sha256=physical_sm_g6_g7_frontier_source_raw_sha256,
+            test_raw_sha256=physical_sm_g6_g7_frontier_test_raw_sha256,
+            markdown_raw_sha256=physical_sm_g6_g7_frontier_markdown_raw_sha256,
+        )
+    )
+    g8_frontier_loaded_from_disk = physical_sm_g8_frontier_report is None
+    if g8_frontier_loaded_from_disk:
+        physical_sm_g8_frontier_report = _load_json_artifact(
+            PHYSICAL_SM_G8_FRONTIER_JSON
+        )
+    if physical_sm_g8_frontier_raw_sha256 is None:
+        physical_sm_g8_frontier_raw_sha256 = (
+            _raw_file_sha256(PHYSICAL_SM_G8_FRONTIER_JSON)
+            if g8_frontier_loaded_from_disk
+            else ""
+        )
+    if physical_sm_g8_frontier_source_raw_sha256 is None:
+        physical_sm_g8_frontier_source_raw_sha256 = _raw_file_sha256(
+            PHYSICAL_SM_G8_FRONTIER_SOURCE
+        )
+    if physical_sm_g8_frontier_test_raw_sha256 is None:
+        physical_sm_g8_frontier_test_raw_sha256 = _raw_file_sha256(
+            PHYSICAL_SM_G8_FRONTIER_TEST
+        )
+    if physical_sm_g8_frontier_markdown_raw_sha256 is None:
+        physical_sm_g8_frontier_markdown_raw_sha256 = _raw_file_sha256(
+            PHYSICAL_SM_G8_FRONTIER_MD
+        )
+    physical_sm_g8_frontier = (
+        _physical_sm_g8_identifiability_frontier_contract(
+            physical_sm_g8_frontier_report,
+            raw_sha256=physical_sm_g8_frontier_raw_sha256,
+            source_raw_sha256=physical_sm_g8_frontier_source_raw_sha256,
+            test_raw_sha256=physical_sm_g8_frontier_test_raw_sha256,
+            markdown_raw_sha256=physical_sm_g8_frontier_markdown_raw_sha256,
+        )
+    )
+    physical_g7_recalculated_inputs = _physical_g7_recalculated_input_resolution(
+        physical_g7_component_threshold,
+        normalized_yukawa_cgcs,
+        physical_sm_heavy_vector,
+        physical_sm_heavy_vector_msbar,
+        physical_sm_vector_rxi,
+        conditional_physical_sm_scalar_spectrum,
+        physical_sm_g6_g7_frontier,
     )
     g3_frontier = _gauged_u1x_g3_frontier(
         g3_sos_report,
@@ -5573,9 +10805,75 @@ def _build_report_from_inputs(
     )
     gates["G3"]["constructive_frontier_evidence"] = g3_frontier
     gates["G5"]["constructive_frontier_evidence"] = g3_frontier
-    gates["G7"]["certified_input_obstruction"] = (
-        parallel_eft_g7_nonidentifiability
+    gates["G1"]["exact_X_v3_fail_closed_contract"] = exact_x_v3_contract
+    for gate_name in ("G3", "G4", "G5"):
+        gates[gate_name]["physical_SM_source_algebra_equality_frontier"] = (
+            physical_sm_source_equality
+        )
+        gates[gate_name]["physical_SM_five_amplitude_equality"] = (
+            physical_sm_five_amplitude_equality
+        )
+        gates[gate_name]["physical_SM_hard_projector_Hessians"] = (
+            physical_sm_hard_projector_hessians
+        )
+        gates[gate_name]["physical_SM_last_six_Hessians"] = (
+            physical_sm_last_six_hessians
+        )
+        gates[gate_name]["physical_SM_37_row_aggregate"] = (
+            physical_sm_37_row_aggregate
+        )
+        gates[gate_name]["physical_SM_local_equality_orbit"] = (
+            physical_sm_local_equality_orbit
+        )
+    for gate_name in ("G4", "G5", "G6", "G7", "G8"):
+        gates[gate_name]["physical_SM_G4_G5_branch_mismatch"] = (
+            physical_sm_g4_g5_branch_mismatch
+        )
+    gates["G6"]["physical_stabilizer_audit"] = g6_sm_provenance
+    gates["G6"]["physical_SM_heavy_vector_mass_contract"] = (
+        physical_sm_heavy_vector
     )
+    gates["G6"]["physical_SM_heavy_vector_MSbar_matching_contract"] = (
+        physical_sm_heavy_vector_msbar
+    )
+    gates["G6"]["physical_SM_vector_Rxi_vacuum_cancellation_contract"] = (
+        physical_sm_vector_rxi
+    )
+    gates["G6"]["conditional_physical_SM_EFT_Hessian_spectrum_contract"] = (
+        conditional_physical_sm_scalar_spectrum
+    )
+    gates["G6"]["physical_SM_G6_G7_closure_frontier"] = (
+        physical_sm_g6_g7_frontier
+    )
+    for gate_name in ("G3", "G4", "G5", "G6", "G7", "G8"):
+        gates[gate_name]["physical_SM_truth_overlay"] = physical_sm_vacuum
+    gates["G8"]["physical_SM_G8_identifiability_frontier"] = (
+        physical_sm_g8_frontier
+    )
+    gates["G7"]["certified_input_obstruction"] = {
+        "legacy_threshold_nonidentifiability": parallel_eft_g7_nonidentifiability,
+        "physical_stabilizer_mismatch": g6_sm_provenance,
+        "parameterized_formal_G89_matching": g6_g7_parameterized_matching,
+        "authoritative_gauge_only_RGE": authoritative_gauge_betas,
+        "independent_PyRATE3_gauge_only_replay": pyrate3_gauge_replay,
+        "physical_PS_SM_component_threshold_contract": (
+            physical_g7_component_threshold
+        ),
+        "normalized_SO10_representation_Yukawa_CGCs": normalized_yukawa_cgcs,
+        "physical_SM_vacuum_truth_overlay": physical_sm_vacuum,
+        "physical_SM_heavy_vector_mass_contract": physical_sm_heavy_vector,
+        "physical_SM_heavy_vector_MSbar_matching_contract": (
+            physical_sm_heavy_vector_msbar
+        ),
+        "physical_SM_vector_Rxi_vacuum_cancellation_contract": (
+            physical_sm_vector_rxi
+        ),
+        "conditional_physical_SM_EFT_Hessian_spectrum_contract": (
+            conditional_physical_sm_scalar_spectrum
+        ),
+        "physical_SM_G6_G7_closure_frontier": physical_sm_g6_g7_frontier,
+        "recalculated_scoped_input_resolution": physical_g7_recalculated_inputs,
+    }
 
     statuses = {name: row["status"] for name, row in gates.items()}
     closed = [name for name, status in statuses.items() if status == STATUS_CLOSED]
@@ -5607,6 +10905,37 @@ def _build_report_from_inputs(
 
     checks = {
         "exact_X_audit_executes": x_report["n_failed"] == 0,
+        "exact_X_v3_contract_state_is_fail_closed_and_consistent": (
+            (
+                exact_x_v3_contract["source_bound"] is True
+                and exact_x_v3_contract["static_native_contract_closed"] is True
+                and exact_x_v3_contract[
+                    "trusted_SARAH_4_15_3_source_tree_manifest_closed"
+                ]
+                is True
+                and exact_x_v3_contract[
+                    "external_v3_execution_attestation_present"
+                ]
+                is False
+                and exact_x_v3_contract["resolved_Wolfram_runtime_bound"] is False
+                and exact_x_v3_contract["contract_consistent"] is False
+                and exact_x_v3_contract["authoritative_G1_closed"] is False
+                and gates["G1"]["status"] == STATUS_BLOCKED
+            )
+            or (
+                contract_consistent is True
+                and _root_contract_evidence_complete(x_report) is True
+                and exact_x_v3_contract["source_bound"] is True
+                and exact_x_v3_contract[
+                    "external_v3_execution_attestation_present"
+                ]
+                is True
+                and exact_x_v3_contract["resolved_Wolfram_runtime_bound"] is True
+                and exact_x_v3_contract["contract_consistent"] is True
+                and exact_x_v3_contract["authoritative_G1_closed"] is True
+                and gates["G1"]["status"] == STATUS_CLOSED
+            )
+        ),
         "parallel_EFT_G3_acceptance_is_source_bound_and_release_open": (
             parallel_eft_g3_acceptance["source_bound"] is True
             and parallel_eft_g3_acceptance[
@@ -5664,12 +10993,20 @@ def _build_report_from_inputs(
             is False
             and parallel_eft_g5_mathematical["new_SOS_claimed"] is False
         ),
-        "parallel_EFT_G6_spectrum_is_source_bound_and_release_open": (
+        "parallel_EFT_G6_formal_spectrum_is_bound_but_physical_G6_open": (
             parallel_eft_g6_spectrum["source_bound"] is True
+            and parallel_eft_g6_spectrum[
+                "formal_SU3_x_U1_89_tree_factorization_closed"
+            ]
+            is True
             and parallel_eft_g6_spectrum[
                 "mathematical_G6_closed_for_EFT_model"
             ]
-            is True
+            is False
+            and parallel_eft_g6_spectrum["physical_mathematical_G6_closed"]
+            is False
+            and parallel_eft_g6_spectrum["physical_U1em_provenance_complete"]
+            is False
             and parallel_eft_g6_spectrum[
                 "release_G6_verified_for_EFT_model"
             ]
@@ -5682,19 +11019,76 @@ def _build_report_from_inputs(
             is False
             and parallel_eft_g6_spectrum["whole_model_validated"] is False
         ),
-        "parallel_EFT_G7_nonidentifiability_is_source_bound_and_G7_open": (
+        "G6_physical_stabilizer_mismatch_is_source_bound": (
+            g6_sm_provenance["source_bound"] is True
+            and g6_sm_provenance["formal_tree_mass_factorization_valid"] is True
+            and g6_sm_provenance["actual_residual_group"]
+            == "SU(3)_C x U(1)_89"
+            and g6_sm_provenance["physical_U1em_provenance_complete"] is False
+            and g6_sm_provenance["physical_mathematical_G6_closed"] is False
+            and g6_sm_provenance["release_G6_verified"] is False
+        ),
+        "parameterized_formal_G89_matching_is_bound_and_not_physical_G7": (
+            g6_g7_parameterized_matching["source_bound"] is True
+            and g6_g7_parameterized_matching[
+                "formal_SU3_x_U1_89_threshold_determinants_complete"
+            ]
+            is True
+            and g6_g7_parameterized_matching[
+                "physical_SM_scalar_thresholds_identified"
+            ]
+            is False
+            and g6_g7_parameterized_matching["physical_mathematical_G6_closed"]
+            is False
+            and g6_g7_parameterized_matching["mathematical_G7_closed"] is False
+            and g6_g7_parameterized_matching["release_G7_verified"] is False
+        ),
+        "authoritative_gauge_beta_subtheorem_bound_but_full_G7_open": (
+            authoritative_gauge_betas["source_bound"] is True
+            and authoritative_gauge_betas[
+                "exact_nonyukawa_two_loop_gauge_polynomial_closed"
+            ]
+            is True
+            and authoritative_gauge_betas["full_two_loop_gauge_beta_closed"]
+            is False
+            and authoritative_gauge_betas["component_threshold_matching_closed"]
+            is False
+            and authoritative_gauge_betas["physical_G6_input_accepted_for_G7"]
+            is False
+            and authoritative_gauge_betas["mathematical_G7_closed"] is False
+            and authoritative_gauge_betas["release_G7_verified"] is False
+        ),
+        "independent_PyRATE3_gauge_replay_bound_but_full_G7_open": (
+            pyrate3_gauge_replay["source_bound"] is True
+            and pyrate3_gauge_replay[
+                "second_implementation_for_scoped_gauge_subtheorem"
+            ]
+            is True
+            and pyrate3_gauge_replay["full_two_loop_gauge_beta_closed"] is False
+            and pyrate3_gauge_replay["physical_G6_threshold_matching_closed"]
+            is False
+            and pyrate3_gauge_replay["mathematical_G7_closed"] is False
+            and pyrate3_gauge_replay["release_G7_verified"] is False
+        ),
+        "formal_U1_89_restriction_audit_is_source_bound_and_G7_open": (
             parallel_eft_g7_nonidentifiability["source_bound"] is True
             and parallel_eft_g7_nonidentifiability[
-                "exact_EFT_G7_input_nonidentifiability_proved"
+                "formal_U1_89_abstract_restriction_noninjectivity_proved"
             ]
             is True
             and parallel_eft_g7_nonidentifiability[
-                "restriction_map_noninjective"
+                "exact_physical_EFT_G7_input_nonidentifiability_proved"
+            ]
+            is False
+            and parallel_eft_g7_nonidentifiability[
+                "formal_U1_89_restriction_map_noninjective"
             ]
             is True
             and parallel_eft_g7_nonidentifiability[
-                "absolute_scale_unidentified"
+                "historical_electroweak_lift_interpretation_valid"
             ]
+            is False
+            and parallel_eft_g7_nonidentifiability["absolute_scale_unidentified"]
             is True
             and parallel_eft_g7_nonidentifiability[
                 "mathematical_EFT_G7_closed"
@@ -5720,6 +11114,474 @@ def _build_report_from_inputs(
             is True
             and statuses["G7"] == STATUS_BLOCKED
             and statuses["G8"] == STATUS_BLOCKED
+        ),
+        "physical_G7_component_threshold_contract_is_bound_and_fail_closed": (
+            physical_g7_component_threshold["source_bound"] is True
+            and physical_g7_component_threshold[
+                "authoritative_inventory_closed"
+            ]
+            is True
+            and physical_g7_component_threshold[
+                "continuous_gauge_anomalies_closed"
+            ]
+            is True
+            and physical_g7_component_threshold[
+                "exact_one_loop_gauge_coefficients_closed"
+            ]
+            is True
+            and physical_g7_component_threshold[
+                "exact_two_loop_nonyukawa_gauge_flow_closed"
+            ]
+            is True
+            and physical_g7_component_threshold[
+                "independent_official_PyRATE3_gauge_replay_closed"
+            ]
+            is True
+            and physical_g7_component_threshold[
+                "physical_PS_SM_matter_branching_closed"
+            ]
+            is True
+            and physical_g7_component_threshold[
+                "parameterized_one_loop_matter_threshold_kernel_closed"
+            ]
+            is True
+            and physical_g7_component_threshold[
+                "physical_component_pole_mass_matrices_closed"
+            ]
+            is False
+            and physical_g7_component_threshold["physical_G7_closed"] is False
+            and physical_g7_component_threshold["mathematical_G7_closed"]
+            is False
+            and physical_g7_component_threshold["release_G7_verified"] is False
+            and physical_g7_component_threshold[
+                "authoritative_renormalizable_G7_closed"
+            ]
+            is False
+            and statuses["G7"] == STATUS_BLOCKED
+        ),
+        "physical_SM_vacuum_overlay_supersedes_old_label_and_fails_closed": (
+            physical_sm_vacuum["source_bound"] is True
+            and physical_sm_vacuum["physical_SM_target_exactly_constructed"]
+            is True
+            and physical_sm_vacuum["standard_SU3C_x_U1em_stabilizer_proved"]
+            is True
+            and physical_sm_vacuum[
+                "reconstructed_stationary_transverse_PSD_witness_available"
+            ]
+            is True
+            and physical_sm_vacuum[
+                "direct_source_algebra_stationary_PSD_witness_available"
+            ]
+            is False
+            and physical_sm_vacuum["source_bound_global_equality_orbit_proved"]
+            is False
+            and physical_sm_vacuum[
+                "old_selected_EFT_stabilizer_label_superseded"
+            ]
+            is True
+            and physical_sm_vacuum["old_selected_EFT_target_actual_stabilizer"]
+            == "SU(3)_C x U(1)_89"
+            and physical_sm_vacuum["physical_SM_G3_closed"] is False
+            and physical_sm_vacuum["physical_SM_G4_closed"] is False
+            and physical_sm_vacuum["physical_SM_G5_closed"] is False
+            and physical_sm_vacuum["physical_SM_G6_closed"] is False
+            and physical_sm_vacuum["physical_SM_G7_closed"] is False
+        ),
+        "physical_SM_radial_equality_is_exact_but_G3_G4_G5_remain_open": (
+            physical_sm_source_equality["source_bound"] is True
+            and physical_sm_source_equality[
+                "radial_stationary_equality_classified_exactly"
+            ]
+            is True
+            and physical_sm_source_equality["radial_gcd"] == "t - 1"
+            and physical_sm_source_equality[
+                "direct_source_algebra_stationary_Hessian_available"
+            ]
+            is False
+            and physical_sm_source_equality[
+                "complete_nonradial_equality_orbit_proved"
+            ]
+            is False
+            and physical_sm_source_equality["physical_SM_G3_closed"] is False
+            and physical_sm_source_equality["physical_SM_G4_closed"] is False
+            and physical_sm_source_equality["physical_SM_G5_closed"] is False
+        ),
+        "physical_SM_five_amplitude_equality_is_exact_but_full_G3_G4_G5_remain_open": (
+            physical_sm_five_amplitude_equality["source_bound"] is True
+            and physical_sm_five_amplitude_equality[
+                "exact_radial_theorem_strictly_extended"
+            ]
+            is True
+            and physical_sm_five_amplitude_equality[
+                "five_real_amplitude_slice_stationary_equality_classified"
+            ]
+            is True
+            and physical_sm_five_amplitude_equality[
+                "exact_real_discrete_sign_variant_count"
+            ]
+            == 16
+            and physical_sm_five_amplitude_equality[
+                "target_strict_minimum_on_five_amplitude_slice"
+            ]
+            is True
+            and physical_sm_five_amplitude_equality[
+                "full_486_field_stationary_equality_classified"
+            ]
+            is False
+            and physical_sm_five_amplitude_equality[
+                "continuous_symmetry_orbit_equivalence_of_16_variants_proved"
+            ]
+            is False
+            and physical_sm_five_amplitude_equality[
+                "direct_source_algebra_full_486_Hessian_available"
+            ]
+            is False
+            and physical_sm_five_amplitude_equality["physical_SM_G3_closed"]
+            is False
+            and physical_sm_five_amplitude_equality["physical_SM_G4_closed"]
+            is False
+            and physical_sm_five_amplitude_equality["physical_SM_G5_closed"]
+            is False
+        ),
+        "physical_SM_hard_projector_bundle_exactly_closes_its_10_row_scope": (
+            physical_sm_hard_projector_hessians["source_bound"] is True
+            and physical_sm_hard_projector_hessians["exact_source_Hessian_row_count"] == 10
+            and physical_sm_hard_projector_hessians["remaining_active_row_count"] == 27
+            and physical_sm_hard_projector_hessians["all_10_O27_O44_source_Hessians_closed"] is True
+            and physical_sm_hard_projector_hessians["all_37_active_source_Hessians_closed"] is False
+            and physical_sm_hard_projector_hessians["full_witness_stationarity_rank_PSD_closed"] is False
+            and physical_sm_hard_projector_hessians["full_486_global_equality_orbit_closed"] is False
+            and physical_sm_hard_projector_hessians["physical_SM_G3_closed"] is False
+            and physical_sm_hard_projector_hessians["physical_SM_G4_closed"] is False
+            and physical_sm_hard_projector_hessians["physical_SM_G5_closed"] is False
+        ),
+        "physical_SM_last_six_bundle_makes_all_37_rows_available_for_the_aggregate": (
+            physical_sm_last_six_hessians["source_bound"] is True
+            and physical_sm_last_six_hessians[
+                "exact_last_six_source_Hessians_closed"
+            ]
+            is True
+            and physical_sm_last_six_hessians[
+                "all_37_active_source_Hessians_available"
+            ]
+            is True
+            and physical_sm_last_six_hessians[
+                "exact_37_row_aggregate_stationarity_kernel_rank_PSD_closed"
+            ]
+            is False
+            and physical_sm_last_six_hessians[
+                "full_486_global_equality_orbit_closed"
+            ]
+            is False
+            and all(
+                physical_sm_last_six_hessians[f"physical_SM_{gate}_closed"]
+                is False
+                for gate in ("G3", "G4", "G5")
+            )
+        ),
+        "physical_SM_exact_37_row_local_Hessian_closed_but_global_equality_G3_G5_open": (
+            physical_sm_37_row_aggregate["source_bound"] is True
+            and physical_sm_37_row_aggregate[
+                "all_37_active_Hessians_source_derived"
+            ]
+            is True
+            and physical_sm_37_row_aggregate[
+                "exact_source_aggregate_value_minus_one_and_stationary"
+            ]
+            is True
+            and physical_sm_37_row_aggregate[
+                "exact_source_aggregate_kernel_dimension"
+            ]
+            == 38
+            and physical_sm_37_row_aggregate["exact_source_aggregate_rank"] == 448
+            and physical_sm_37_row_aggregate[
+                "exact_source_aggregate_PSD_and_strict_mod_symmetry"
+            ]
+            is True
+            and physical_sm_37_row_aggregate[
+                "source_bound_local_stationary_Hessian_problem_complete"
+            ]
+            is True
+            and physical_sm_37_row_aggregate[
+                "full_486_global_equality_orbit_closed"
+            ]
+            is False
+            and all(
+                physical_sm_37_row_aggregate[f"physical_SM_{gate}_closed"]
+                is False
+                for gate in ("G3", "G4", "G5")
+            )
+        ),
+        "physical_SM_full_486_local_equality_orbit_and_16_sign_orbit_closed_but_global_G3_G5_open": (
+            physical_sm_local_equality_orbit["source_bound"] is True
+            and physical_sm_local_equality_orbit[
+                "full_486_local_stationary_orbit_classified"
+            ]
+            is True
+            and physical_sm_local_equality_orbit[
+                "full_486_local_stationary_equality_orbit_classified"
+            ]
+            is True
+            and physical_sm_local_equality_orbit[
+                "all_16_sign_variants_one_continuous_K_orbit"
+            ]
+            is True
+            and physical_sm_local_equality_orbit[
+                "target_orbit_strict_local_minimum_mod_K"
+            ]
+            is True
+            and physical_sm_local_equality_orbit[
+                "quantitative_neighborhood_radius_proved"
+            ]
+            is False
+            and physical_sm_local_equality_orbit[
+                "complete_486_global_equality_orbit_classified"
+            ]
+            is False
+            and all(
+                physical_sm_local_equality_orbit[f"physical_SM_{gate}_closed"]
+                is False
+                for gate in ("G3", "G4", "G5")
+            )
+        ),
+        "physical_SM_five_amplitude_branch_mismatch_is_exact_but_G4_G8_open": (
+            physical_sm_g4_g5_branch_mismatch["source_bound"] is True
+            and physical_sm_g4_g5_branch_mismatch["exact_branch_mismatch_proved"] is True
+            and physical_sm_g4_g5_branch_mismatch["unit_rescaling_case_count"] == 101
+            and physical_sm_g4_g5_branch_mismatch["current_five_amplitude_target_is_canonical_physical_EW_branch"] is False
+            and physical_sm_g4_g5_branch_mismatch["global_no_go_for_other_physical_EW_branches"] is False
+            and all(
+                physical_sm_g4_g5_branch_mismatch[f"physical_SM_G{gate}_closed"] is False
+                for gate in range(4, 9)
+            )
+        ),
+        "physical_SM_heavy_vectors_are_exact_scoped_and_G6_G7_open": (
+            physical_sm_heavy_vector["source_bound"] is True
+            and physical_sm_heavy_vector[
+                "exact_parameterized_tree_vector_mass_matrix_closed"
+            ]
+            is True
+            and physical_sm_heavy_vector[
+                "exact_vector_rank_kernel_and_Goldstone_image_closed"
+            ]
+            is True
+            and physical_sm_heavy_vector[
+                "exact_SU3C_x_U1em_vector_sector_resolution_closed"
+            ]
+            is True
+            and physical_sm_heavy_vector[
+                "parameterized_vector_threshold_log_inputs_closed"
+            ]
+            is True
+            and physical_sm_heavy_vector[
+                "absolute_physical_vector_masses_closed"
+            ]
+            is False
+            and physical_sm_heavy_vector["pole_vector_masses_closed"] is False
+            and physical_sm_heavy_vector[
+                "vector_Goldstone_ghost_matching_closed"
+            ]
+            is False
+            and physical_sm_heavy_vector["physical_G6_closed"] is False
+            and physical_sm_heavy_vector["physical_G7_closed"] is False
+            and statuses["G6"] == STATUS_BLOCKED
+            and statuses["G7"] == STATUS_BLOCKED
+        ),
+        "physical_SM_heavy_vector_MSbar_kernel_is_exact_scoped_and_G6_G7_open": (
+            physical_sm_heavy_vector_msbar["source_bound"] is True
+            and physical_sm_heavy_vector_msbar[
+                "combined_heavy_vector_FPghost_Goldstone_MSbar_kernel_closed"
+            ]
+            is True
+            and physical_sm_heavy_vector_msbar[
+                "finite_MSbar_vector_constant_closed"
+            ]
+            is True
+            and physical_sm_heavy_vector_msbar[
+                "Goldstone_double_count_guard_active"
+            ]
+            is True
+            and physical_sm_heavy_vector_msbar[
+                "arbitrary_Rxi_sector_resolved_matching_closed"
+            ]
+            is False
+            and physical_sm_heavy_vector_msbar["pole_mass_conversion_closed"]
+            is False
+            and physical_sm_heavy_vector_msbar[
+                "SM_symmetric_pre_EW_matching_closed"
+            ]
+            is False
+            and physical_sm_heavy_vector_msbar["physical_G6_closed"] is False
+            and physical_sm_heavy_vector_msbar["physical_G7_closed"] is False
+            and statuses["G6"] == STATUS_BLOCKED
+            and statuses["G7"] == STATUS_BLOCKED
+        ),
+        "physical_SM_zero_background_Rxi_vacuum_cancellation_is_exact_scoped": (
+            physical_sm_vector_rxi["source_bound"] is True
+            and physical_sm_vector_rxi[
+                "zero_background_Rxi_vacuum_determinant_cancellation_closed"
+            ]
+            is True
+            and physical_sm_vector_rxi["all_37_broken_directions_closed"]
+            is True
+            and physical_sm_vector_rxi[
+                "Goldstone_FPghost_double_count_guard_closed"
+            ]
+            is True
+            and physical_sm_vector_rxi[
+                "background_covariant_heat_kernel_matching_closed"
+            ]
+            is False
+            and physical_sm_vector_rxi[
+                "sector_resolved_general_background_determinants_closed"
+            ]
+            is False
+            and physical_sm_vector_rxi["pole_vector_masses_closed"] is False
+            and physical_sm_vector_rxi["physical_G6_closed"] is False
+            and physical_sm_vector_rxi["physical_G7_closed"] is False
+            and statuses["G6"] == STATUS_BLOCKED
+            and statuses["G7"] == STATUS_BLOCKED
+        ),
+        "conditional_physical_SM_scalar_spectrum_is_scoped_and_G6_open": (
+            conditional_physical_sm_scalar_spectrum["source_bound"] is True
+            and conditional_physical_sm_scalar_spectrum[
+                "conditional_reconstructed_tree_scalar_spectrum_closed"
+            ]
+            is True
+            and conditional_physical_sm_scalar_spectrum[
+                "conditional_tree_Hessian_factorization_closed"
+            ]
+            is True
+            and conditional_physical_sm_scalar_spectrum[
+                "conditional_tree_sector_assignment_closed"
+            ]
+            is True
+            and conditional_physical_sm_scalar_spectrum[
+                "source_algebra_derived_tree_scalar_spectrum_closed"
+            ]
+            is False
+            and conditional_physical_sm_scalar_spectrum[
+                "physical_scalar_pole_spectrum_closed"
+            ]
+            is False
+            and conditional_physical_sm_scalar_spectrum["physical_G6_closed"]
+            is False
+            and conditional_physical_sm_scalar_spectrum["release_G6_verified"]
+            is False
+            and statuses["G6"] == STATUS_BLOCKED
+        ),
+        "physical_SM_G6_G7_closure_frontier_is_exact_negative_result": (
+            physical_sm_g6_g7_frontier["source_bound"] is True
+            and physical_sm_g6_g7_frontier[
+                "corrected_terminal_artifacts_composed"
+            ]
+            is True
+            and physical_sm_g6_g7_frontier[
+                "continuous_nonidentifiability_proved"
+            ]
+            is True
+            and physical_sm_g6_g7_frontier[
+                "minimal_closure_path_machine_readable"
+            ]
+            is True
+            and len(physical_sm_g6_g7_frontier["minimal_closure_path"]) == 7
+            and physical_sm_g6_g7_frontier["unique_pole_spectrum"] is False
+            and physical_sm_g6_g7_frontier["unique_threshold_vector"] is False
+            and physical_sm_g6_g7_frontier["unique_full_RGE_trajectory"]
+            is False
+            and physical_sm_g6_g7_frontier["physical_G6_closed"] is False
+            and physical_sm_g6_g7_frontier["physical_G7_closed"] is False
+            and physical_sm_g6_g7_frontier["release_G6_verified"] is False
+            and physical_sm_g6_g7_frontier["release_G7_verified"] is False
+            and statuses["G6"] == STATUS_BLOCKED
+            and statuses["G7"] == STATUS_BLOCKED
+        ),
+        "physical_SM_G8_identifiability_frontier_is_exact_negative_result": (
+            physical_sm_g8_frontier["source_bound"] is True
+            and physical_sm_g8_frontier["canonical_G8_contract_audited"] is True
+            and physical_sm_g8_frontier[
+                "continuous_absolute_scale_nonidentifiability_proved"
+            ]
+            is True
+            and physical_sm_g8_frontier[
+                "flavor_and_interference_nonidentifiability_audited"
+            ]
+            is True
+            and physical_sm_g8_frontier[
+                "repository_frozen_PDG_2025_single_channel_constraint_verified"
+            ]
+            is True
+            and physical_sm_g8_frontier[
+                "minimal_exhibited_joint_free_real_dimension"
+            ]
+            == 1
+            and physical_sm_g8_frontier[
+                "unique_proton_lifetime_or_distribution"
+            ]
+            is False
+            and physical_sm_g8_frontier["physical_G8_closed"] is False
+            and physical_sm_g8_frontier["release_G8_verified"] is False
+            and physical_sm_g8_frontier["authoritative_G8_closed"] is False
+            and physical_sm_g8_frontier[
+                "whole_model_excluded_by_conditional_points"
+            ]
+            is False
+            and physical_sm_g8_frontier["all_acceptance_criteria_pass"] is False
+            and statuses["G8"] == STATUS_BLOCKED
+        ),
+        "recalculated_G7_input_view_supersedes_stale_broad_blockers": (
+            physical_g7_recalculated_inputs["source_bound"] is True
+            and physical_g7_recalculated_inputs[
+                "all_resolved_scoped_inputs_closed"
+            ]
+            is True
+            and all(
+                physical_g7_recalculated_inputs[
+                    "superseded_stale_blockers"
+                ].values()
+            )
+            and all(
+                value is False
+                for value in physical_g7_recalculated_inputs[
+                    "precise_open_inputs"
+                ].values()
+            )
+            and physical_g7_recalculated_inputs["physical_G6_closed"] is False
+            and physical_g7_recalculated_inputs["physical_G7_closed"] is False
+            and physical_g7_recalculated_inputs["release_G7_verified"] is False
+        ),
+        "normalized_SO10_Yukawa_CGCs_are_exact_scoped_and_G7_open": (
+            normalized_yukawa_cgcs["source_bound"] is True
+            and normalized_yukawa_cgcs["normalized_10_CGCs_closed"] is True
+            and normalized_yukawa_cgcs["normalized_126bar_CGCs_closed"] is True
+            and normalized_yukawa_cgcs[
+                "normalized_singlet_duality_CGC_closed"
+            ]
+            is True
+            and normalized_yukawa_cgcs[
+                "canonical_304_Weyl_sparse_embedding_closed"
+            ]
+            is True
+            and normalized_yukawa_cgcs[
+                "all_declared_representation_CGCs_closed"
+            ]
+            is True
+            and normalized_yukawa_cgcs["flavor_boundary_values_closed"]
+            is False
+            and normalized_yukawa_cgcs["SARAH_Dot_conversion_closed"] is False
+            and normalized_yukawa_cgcs[
+                "full_one_two_loop_Yukawa_betas_closed"
+            ]
+            is False
+            and normalized_yukawa_cgcs[
+                "physical_threshold_matching_and_running_closed"
+            ]
+            is False
+            and normalized_yukawa_cgcs["full_yukawa_sector_closed"] is False
+            and normalized_yukawa_cgcs["physical_G7_closed"] is False
+            and normalized_yukawa_cgcs["mathematical_G7_closed"] is False
+            and normalized_yukawa_cgcs["release_G7_verified"] is False
+            and statuses["G7"] == STATUS_BLOCKED
         ),
         "parallel_EFT_G4_G5_G6_G7_do_not_promote_authoritative_frontier": (
             statuses == expected_statuses
@@ -6315,7 +12177,8 @@ def _build_report_from_inputs(
     scientific_blockers = [
         "GAUGED_U1X_G3_G8_CLOSURE_REQUIRED",
         "G3_ARBITRARY_NON_PURE_DELTA_SIGMA_UNIFORM_COERCIVITY_OPEN",
-        "EFT_G7_THRESHOLD_RESTRICTION_AND_ABSOLUTE_SCALE_NONIDENTIFIABLE",
+        "G6_GLOBAL_EQUALITY_SCALE_FULL_MASS_MIXING_POLE_AND_THRESHOLD_INPUTS_REQUIRED",
+        "G7_FULL_TWO_LOOP_SYSTEM_AND_COMPONENT_MATCHING_REQUIRED",
     ]
     if not g1_full_component_tensors_closed:
         scientific_blockers[0:0] = [
@@ -6334,7 +12197,7 @@ def _build_report_from_inputs(
             "status": STATUS_CLOSED if contract_consistent else STATUS_BLOCKED,
             "deliverable": (
                 "Execute the shipped hash-bound validation driver with a real "
-                "SARAH installation and retain its v2 process attestation."
+                "SARAH installation and retain its v3 source-tree/runtime/log attestation."
             ),
         },
         {
@@ -6397,19 +12260,42 @@ def _build_report_from_inputs(
                 "The corrected 6585x19594 standard positive-Gram map, corrected "
                 "ordered-spectral target, and exact strict 22-block/824-pivot "
                 "primal prove p(t,Phi)>0 off the homogeneous origin, hence "
-                "A(Phi)>3/200 at t=1 for every real Phi210. Global Sigma, "
-                "general/full H, the full Hessian, and G3 remain open."
+                "A(Phi)>3/200 at t=1 for every real Phi210. For that "
+                "historical fixed-H/Sigma frontier, global Sigma, general/full "
+                "H, and its then-unassembled Hessian remained open. The current "
+                "physical-SM branch instead has an exact source-derived 37-row "
+                "Hessian; its complete global equality orbit and physical G3 "
+                "remain open."
             ),
         },
-        {"wave": 4, "gates": ["G6"], "status": "BLOCKED_ON_G3_G4_G5"},
+        {
+            "wave": 4,
+            "gates": ["G6"],
+            "status": "BLOCKED__LOCAL_SOURCE_HESSIAN_CLOSED__GLOBAL_EQUALITY_SCALE_MASS_MIXING_POLE_THRESHOLD_AND_RELEASE_G6_OPEN",
+            "deliverable": (
+                "Preserve the formal SU(3)_C x U(1)_89 factorization only as an "
+                "abstract result. The corrected SU(3)_C x U(1)_em target and "
+                "stabilizer, conditional reconstructed 486-state scalar tree "
+                "spectrum, and exact parameterized heavy-vector matrix, provenance, "
+                "rank/kernel, sectors, and threshold logs are closed scoped inputs. "
+                "The exact source-derived all-37 Hessian is stationary at V=-1, "
+                "has kernel/rank 38/448, and is PSD strictly modulo symmetry. "
+                "Classify the complete global equality orbit, fix absolute scales "
+                "and couplings, construct the full scalar and fermion mass/mixing "
+                "matrices, solve the scalar/vector/fermion pole self-energies, and "
+                "complete all thresholds."
+            ),
+        },
         {
             "wave": 5,
             "gates": ["G7"],
-            "status": "BLOCKED__EXACT_EFT_THRESHOLD_RESTRICTION_NONIDENTIFIABLE",
+            "status": "BLOCKED__PHYSICAL_G6_INPUT_AND_FULL_TWO_LOOP_MATCHING_OPEN",
             "deliverable": (
-                "Add independent UV matching information that removes the "
-                "certified kernel of the EFT threshold restriction map; no "
-                "positive G7 conclusion follows from the current observables."
+                "Start from the corrected physical G6 spectrum, then complete "
+                "the Yukawa/scalar/EFT two-loop system, absolute scale and Wilson "
+                "matching, and stage-by-stage component thresholds. The exact "
+                "gauge-only polynomial and formal G89 determinants are scoped "
+                "subtheorems, not physical G7 closure."
             ),
         },
         {"wave": 6, "gates": ["G8"], "status": "BLOCKED_ON_G3_G6_G7"},
@@ -6426,8 +12312,9 @@ def _build_report_from_inputs(
         "minimum, but an exact field witness is lower by 25*r^4/19008 and "
         "rejects it as the global vacuum. The fixed-P branch is now excluded "
         "exactly, and its lower replacement has the wrong gauge stabilizer. A "
-        "new SU(5)+Delta branch is an exact global Phi/Sigma minimum with the "
-        "correct SM stabilizer and exact quotient rank 429. Its chiral-H full "
+        "new SU(5)+Delta branch is an exact global Phi/Sigma minimum with exact "
+        "quotient rank 429. The later provenance audit shows that its frozen "
+        "abelian stabilizer is U(1)_89, not physical electromagnetism. Its chiral-H full "
         "Hessian is exactly PSD with rank/nullity 448/38 and kernel precisely the "
         "38 symmetry tangents. The complete maximally-negative pure-Delta sector "
         "is excluded for arbitrary real Phi and all nonzero residuals, with sharp "
@@ -6445,8 +12332,11 @@ def _build_report_from_inputs(
         "assembled physical target is rejected. The corrected 6585x19594 "
         "standard positive-Gram map, ordered-spectral target, and exact strict "
         "22-block/824-pivot primal prove p(t,Phi)>0 off the homogeneous origin, "
-        "hence A(Phi)>3/200 at t=1 for every real Phi210. Global Sigma, "
-        "general/full H, the full Hessian, and G3 remain open. "
+        "hence A(Phi)>3/200 at t=1 for every real Phi210. For that historical "
+        "fixed-H/Sigma frontier, global Sigma, general/full H, and its "
+        "then-unassembled Hessian remained open. The current physical-SM branch "
+        "instead has an exact source-derived 37-row Hessian; its complete global "
+        "equality orbit and physical G3 remain open. "
         "G5 is CLOSED; G4 and G6-G8 remain "
         "dependency-blocked. Historical "
         "Option-C evidence remains scoped and closes no gauged-model gate."
@@ -6475,9 +12365,11 @@ def _build_report_from_inputs(
         "so this selected global vacuum and candidate are rejected. The fixed-P "
         "branch is exactly excluded, and the lower stationary replacement has "
         "the wrong gauge symmetry. A new SU(5)+Delta Phi/Sigma branch has an "
-        "exact global SOS minimum, the correct SM stabilizer, and exact quotient "
-        "rank/nullity 429/33. Its chiral-H full-field extension is exactly BFB, "
-        "stationary and symmetry-correct. The source-bound 486-real Hessian is "
+        "exact global SOS minimum and exact quotient rank/nullity 429/33. Its "
+        "chiral-H full-field extension is exactly BFB and stationary for the "
+        "frozen representative. The provenance audit identifies its abelian "
+        "stabilizer as U(1)_89 rather than physical electromagnetism. The "
+        "source-bound 486-real Hessian is "
         "exactly PSD with rank/nullity 448/38, and its kernel is exactly the 38 "
         "symmetry tangents. The literal one-orbit Phi lemma is refuted by -F; the "
         "complete maximally-negative pure-Delta sector is excluded for arbitrary "
@@ -6495,8 +12387,11 @@ def _build_report_from_inputs(
         "physical target is rejected. The corrected 6585x19594 standard "
         "positive-Gram map, ordered-spectral target, and exact strict "
         "22-block/824-pivot primal prove p(t,Phi)>0 off the homogeneous origin, "
-        "hence A(Phi)>3/200 at t=1 for every real Phi210. Global Sigma, "
-        "general/full H, the full Hessian, and G3 remain open. The "
+        "hence A(Phi)>3/200 at t=1 for every real Phi210. For that historical "
+        "fixed-H/Sigma frontier, global Sigma, general/full H, and its "
+        "then-unassembled Hessian remained open. The current physical-SM branch "
+        "instead has an exact source-derived 37-row Hessian; its complete global "
+        "equality orbit and physical G3 remain open. The "
         "historical 64/91 "
         "derivative theorem, 449-dimensional "
         "quotient, 46-mode saddle, and 80-iteration no-PSD search are preserved "
@@ -6517,26 +12412,56 @@ def _build_report_from_inputs(
             "evidence remains scoped and closes no gauged-model gate."
         )
     verdict += (
-        " In the parallel dimension-six EFT namespace, the exact normalized "
-        "tree-level physical scalar spectrum closes mathematical G6: all 486 "
-        "real modes are classified into 37 gauge tangents, one physical PQ "
-        "axion, and 448 strictly positive massive modes with exact residual-group "
-        "and mixing provenance. EFT release G6 and authoritative renormalizable "
-        "G6 remain false."
-        if parallel_eft_g6_spectrum["mathematical_G6_closed_for_EFT_model"]
-        else " The parallel EFT G6 spectrum gate is missing or invalid."
+        " In the dimension-six EFT namespace, the frozen 486-degree tree mass "
+        "factorization remains exact as a formal SU(3)_C x U(1)_89 result: it "
+        "contains 38 zero roots and 448 positive roots. The source-bound "
+        "provenance audit proves that U(1)_89 is not standard electromagnetism "
+        "and that the standard SM projectors do not commute with the frozen "
+        "mass pencil. Physical/mathematical, release, and authoritative G6 are "
+        "therefore all false. A corrected SU(3)_C x U(1)_em target/stabilizer, "
+        "a conditional reconstructed 486-state scalar tree spectrum, and an exact "
+        "parameterized heavy-vector tree matrix with physical provenance, rank/kernel, "
+        "sector resolution, and threshold-log inputs are now closed scoped results. "
+        "The exact source-derived all-37 physical-branch Hessian, stationarity, "
+        "38-dimensional symmetry kernel, rank 448, and PSD certificate are closed. "
+        "Physical G6 still requires the complete global equality-orbit proof, "
+        "absolute scales and couplings, full scalar and fermion mass/mixing "
+        "matrices with pole self-energies, and complete thresholds."
+        if parallel_eft_g6_spectrum[
+            "formal_SU3_x_U1_89_tree_factorization_closed"
+        ]
+        else " The corrected formal G6 spectrum view is missing or invalid."
     )
     verdict += (
-        " The exact EFT G7 input audit proves that the restriction from "
-        "electroweak threshold representations to the frozen SU(3)_C x U(1)_em "
-        "G6 data is noninjective and that the absolute matching scale is "
-        "unidentified. This is an input obstruction, not a positive G7 result "
-        "or a no-go theorem: mathematical, release, and authoritative G7 all "
-        "remain false, and G8 remains dependent on G7."
-        if parallel_eft_g7_nonidentifiability[
-            "exact_EFT_G7_input_nonidentifiability_proved"
-        ]
-        else " The EFT G7 nonidentifiability certificate is missing or invalid."
+        " The parameterized calculation closes only formal SU(3)_C x U(1)_89 "
+        "scalar determinants and proves the absolute scale/Wilson family is "
+        "unidentified. The corrected authoritative gauge-only one/two-loop "
+        "polynomial is exact. The physical PS/SM matter branching and "
+        "parameterized one-loop matter threshold kernel are also exact. "
+        "The normalized 10/126bar/singlet representation CGCs and canonical sparse "
+        "304-Weyl embedding are exact, as are the parameterized physical-SM vector "
+        "tree inputs. The combined heavy-vector/FP-ghost/Goldstone non-supersymmetric "
+        "MS-bar kernel and its finite vector constant are exact, with all 37 eaten "
+        "directions guarded against scalar double counting. The zero-background "
+        "vacuum determinant cancellation is exact for arbitrary positive R_xi "
+        "across all 37 broken directions; this is not a background-covariant "
+        "heat-kernel or pole-mass result. Exact vector-scale, scalar-b, and flavor "
+        "families prove the remaining absolute spectrum, threshold vector, and full "
+        "flow are not identifiable from the frozen inputs. SARAH implicit/identical-"
+        "Weyl contraction conversion, flavor "
+        "tensors and boundaries, the complete Yukawa/scalar/dimensionful/EFT flow, "
+        "background-covariant general-field determinants, the stationary "
+        "pre-electroweak matching stage, tree-to-pole conversion with a declared "
+        "tadpole/VEV scheme, complete scalar/fermion thresholds, physical scale and "
+        "running boundaries remain open. Mathematical, "
+        "release, and authoritative G7 are false, and G8 remains dependent on G7."
+        if g6_g7_parameterized_matching["source_bound"]
+        and authoritative_gauge_betas["source_bound"]
+        and physical_g7_component_threshold["source_bound"]
+        and physical_sm_heavy_vector_msbar["source_bound"]
+        and physical_sm_vector_rxi["source_bound"]
+        and physical_sm_g6_g7_frontier["source_bound"]
+        else " The corrected G7 subtheorem bundle is missing or invalid."
     )
 
     return {
@@ -6633,10 +12558,63 @@ def _build_report_from_inputs(
             "parallel_EFT_G6_mathematical_gate": (
                 final_g6_eft_mathematical_report
             ),
+            "G6_SM_provenance_feasibility_audit": g6_sm_provenance_report,
+            "G6_G7_parameterized_formal_G89_matching": (
+                g6_g7_parameterized_matching_report
+            ),
+            "authoritative_SO10_U1X_gauge_beta_subtheorem": (
+                authoritative_gauge_betas_report
+            ),
+            "independent_PyRATE3_gauge_beta_replay": (
+                pyrate3_gauge_replay_report
+            ),
             "parallel_EFT_G7_input_nonidentifiability": (
                 eft_g7_nonidentifiability_report
             ),
+            "physical_G7_component_threshold_contract": (
+                physical_g7_component_threshold_report
+            ),
+            "normalized_SO10_Yukawa_CGCs": normalized_yukawa_cgcs_report,
+            "physical_SM_vacuum_local_feasibility": physical_sm_vacuum_report,
+            "physical_SM_source_algebra_equality_frontier": (
+                physical_sm_source_equality_report
+            ),
+            "physical_SM_five_amplitude_equality": (
+                physical_sm_five_amplitude_equality_report
+            ),
+            "physical_SM_hard_projector_Hessians": (
+                physical_sm_hard_projector_hessians_report
+            ),
+            "physical_SM_last_six_Hessians": (
+                physical_sm_last_six_hessians_report
+            ),
+            "physical_SM_37_row_aggregate": (
+                physical_sm_37_row_aggregate_report
+            ),
+            "physical_SM_local_equality_orbit": (
+                physical_sm_local_equality_orbit_report
+            ),
+            "physical_SM_G4_G5_branch_mismatch": (
+                physical_sm_g4_g5_branch_mismatch_report
+            ),
+            "physical_SM_heavy_vector_masses": physical_sm_heavy_vector_report,
+            "physical_SM_heavy_vector_MSbar_matching": (
+                physical_sm_heavy_vector_msbar_report
+            ),
+            "physical_SM_vector_Rxi_vacuum_cancellation": (
+                physical_sm_vector_rxi_report
+            ),
+            "conditional_physical_SM_EFT_Hessian_spectrum": (
+                conditional_physical_sm_scalar_spectrum_report
+            ),
+            "physical_SM_G6_G7_closure_frontier": (
+                physical_sm_g6_g7_frontier_report
+            ),
+            "physical_SM_G8_identifiability_frontier": (
+                physical_sm_g8_frontier_report
+            ),
         },
+        "exact_X_v3_fail_closed_contract": exact_x_v3_contract,
         "renormalizable_G1_component_tensor_closure": (
             g1_component_tensor_closure
         ),
@@ -6647,8 +12625,57 @@ def _build_report_from_inputs(
         "parallel_EFT_G4_mathematical": parallel_eft_g4_mathematical,
         "parallel_EFT_G5_mathematical": parallel_eft_g5_mathematical,
         "parallel_EFT_G6_spectrum": parallel_eft_g6_spectrum,
+        "G6_SM_provenance_audit": g6_sm_provenance,
+        "G6_G7_parameterized_matching": g6_g7_parameterized_matching,
+        "authoritative_gauge_beta_subtheorem": authoritative_gauge_betas,
+        "independent_PyRATE3_gauge_replay": pyrate3_gauge_replay,
         "parallel_EFT_G7_nonidentifiability": (
             parallel_eft_g7_nonidentifiability
+        ),
+        "physical_G7_component_threshold_contract": (
+            physical_g7_component_threshold
+        ),
+        "normalized_SO10_Yukawa_CGC_contract": normalized_yukawa_cgcs,
+        "physical_SM_vacuum_truth_overlay": physical_sm_vacuum,
+        "physical_SM_source_algebra_equality_frontier": (
+            physical_sm_source_equality
+        ),
+        "physical_SM_five_amplitude_equality_contract": (
+            physical_sm_five_amplitude_equality
+        ),
+        "physical_SM_hard_projector_Hessians_contract": (
+            physical_sm_hard_projector_hessians
+        ),
+        "physical_SM_last_six_Hessians_contract": (
+            physical_sm_last_six_hessians
+        ),
+        "physical_SM_37_row_aggregate_contract": (
+            physical_sm_37_row_aggregate
+        ),
+        "physical_SM_local_equality_orbit_contract": (
+            physical_sm_local_equality_orbit
+        ),
+        "physical_SM_G4_G5_branch_mismatch_contract": (
+            physical_sm_g4_g5_branch_mismatch
+        ),
+        "physical_SM_heavy_vector_mass_contract": physical_sm_heavy_vector,
+        "physical_SM_heavy_vector_MSbar_matching_contract": (
+            physical_sm_heavy_vector_msbar
+        ),
+        "physical_SM_vector_Rxi_vacuum_cancellation_contract": (
+            physical_sm_vector_rxi
+        ),
+        "conditional_physical_SM_EFT_Hessian_spectrum_contract": (
+            conditional_physical_sm_scalar_spectrum
+        ),
+        "physical_SM_G6_G7_closure_frontier_contract": (
+            physical_sm_g6_g7_frontier
+        ),
+        "physical_SM_G8_identifiability_frontier_contract": (
+            physical_sm_g8_frontier
+        ),
+        "physical_G7_recalculated_input_resolution": (
+            physical_g7_recalculated_inputs
         ),
         "historical_option_c_subtheorems": historical,
         "dependencies": DEPENDENCIES,
@@ -6802,6 +12829,13 @@ def write_markdown(report: dict[str, Any]) -> str:
         "## Parallel EFT G3-G7 classifications",
         "",
         (
+            "- Exact-X v3 trusted SARAH 4.15.3 tree bound / external runtime "
+            "attestation present / authoritative G1: "
+            f"**{report['exact_X_v3_fail_closed_contract']['trusted_SARAH_4_15_3_source_tree_manifest_closed']}**/"
+            f"**{report['exact_X_v3_fail_closed_contract']['external_v3_execution_attestation_present']}**/"
+            f"**{report['exact_X_v3_fail_closed_contract']['authoritative_G1_closed']}**"
+        ),
+        (
             "- Dimension-six EFT mathematical G3: "
             f"**{report['parallel_EFT_G3_acceptance']['mathematical_G3_closed_for_EFT_model']}**"
         ),
@@ -6826,13 +12860,86 @@ def write_markdown(report: dict[str, Any]) -> str:
             f"**{report['parallel_EFT_G5_mathematical']['release_G5_verified_for_EFT_model']}**"
         ),
         (
-            "- Dimension-six EFT mathematical G6: "
+            "- Formal SU(3)_C x U(1)_89 tree factorization: "
+            f"**{report['parallel_EFT_G6_spectrum']['formal_SU3_x_U1_89_tree_factorization_closed']}**"
+        ),
+        (
+            "- Physical/mathematical EFT G6: "
             f"**{report['parallel_EFT_G6_spectrum']['mathematical_G6_closed_for_EFT_model']}**"
         ),
         (
-            "- Exact EFT G7 input nonidentifiability: "
-            f"**{report['parallel_EFT_G7_nonidentifiability']['exact_EFT_G7_input_nonidentifiability_proved']}**"
+            "- Exact G6 physical-stabilizer mismatch: "
+            f"**{report['G6_SM_provenance_audit']['source_bound']}**"
         ),
+        (
+            "- Physical PS/SM matter branching and parameterized one-loop "
+            "matter thresholds: "
+            f"**{report['physical_G7_component_threshold_contract']['source_bound']}**"
+        ),
+        (
+            "- Normalized SO(10) representation Yukawa CGCs for `10`, "
+            "`126bar`, and singlet channels: "
+            f"**{report['normalized_SO10_Yukawa_CGC_contract']['source_bound']}**"
+        ),
+        (
+            "- Combined heavy-vector/FP-ghost/Goldstone MS-bar matching and "
+            "finite vector constant: "
+            f"**{report['physical_SM_heavy_vector_MSbar_matching_contract']['source_bound']}**"
+        ),
+        (
+            "- Arbitrary-positive-R_xi zero-background vacuum determinant "
+            "cancellation for all 37 broken directions: "
+            f"**{report['physical_SM_vector_Rxi_vacuum_cancellation_contract']['source_bound']}**"
+        ),
+        (
+            "- Exact G6/G7 non-identifiability frontier and seven-step closure "
+            "path: "
+            f"**{report['physical_SM_G6_G7_closure_frontier_contract']['source_bound']}**"
+        ),
+        (
+            "- Exact G8 identifiability frontier, 101-case scale audit, and "
+            "PDG-2025 current-limit verification: "
+            f"**{report['physical_SM_G8_identifiability_frontier_contract']['source_bound']}**"
+        ),
+        "- Background-covariant general-field determinants, vector pole conversion, a stationary pre-EW stage, complete scalar/fermion thresholds, flavor boundaries, SARAH `Dot` conversion, Yukawa beta functions, and full G7 remain open.",
+        (
+            "- Reconstructed physical-SM target and exact standard stabilizer "
+            "overlay: "
+            f"**{report['physical_SM_vacuum_truth_overlay']['source_bound']}**"
+        ),
+        (
+            "- Exact five-real-amplitude stationary-equality classification "
+            "(16 discrete sign variants; full 486-field/continuous-orbit proof open): "
+            f"**{report['physical_SM_five_amplitude_equality_contract']['source_bound']}**"
+        ),
+        (
+            "- Exact source-algebra hard projector Hessians (the staged 10/37-row "
+            "input; the succeeding 37-row aggregate closes stationarity/rank/PSD): "
+            f"**{report['physical_SM_hard_projector_Hessians_contract']['source_bound']}**"
+        ),
+        (
+            "- Exact last-six source Hessians (all 37 active source Hessians made "
+            "available; the succeeding aggregate closes stationarity/kernel/rank/PSD): "
+            f"**{report['physical_SM_last_six_Hessians_contract']['source_bound']}**"
+        ),
+        (
+            "- Exact source-derived 37-row aggregate local Hessian theorem "
+            "(stationary, 38-mode symmetry kernel, rank 448, PSD; global equality open): "
+            f"**{report['physical_SM_37_row_aggregate_contract']['source_bound']}**"
+        ),
+        (
+            "- Exact full-486 local stationary/equality orbit and continuous "
+            "equivalence of all 16 sign variants (quantitative radius/global equality open): "
+            f"**{report['physical_SM_local_equality_orbit_contract']['source_bound']}**"
+        ),
+        (
+            "- Exact five-amplitude versus physical-EW branch mismatch "
+            "(not a global hierarchy no-go; G4-G8 open): "
+            f"**{report['physical_SM_G4_G5_branch_mismatch_contract']['source_bound']}**"
+        ),
+        "- The old selected EFT target is `SU(3)_C x U(1)_89`, not the Standard-Model vacuum; its abstract G3/G4/G5 proofs remain formal only.",
+        "- Physical Standard-Model G3/G4/G5/G6/G7/G8: `False`/`False`/`False`/`False`/`False`/`False`.",
+        "- Mathematical/release/authoritative G6: `False`/`False`/`False`.",
         "- Mathematical/release/authoritative G7: `False`/`False`/`False`.",
         "- The authoritative renormalizable G3-G8 frontier is unchanged.",
         "",

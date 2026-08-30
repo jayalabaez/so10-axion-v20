@@ -1,6 +1,7 @@
 {
-  "status": "PIECEWISE_YUKAWA_RGE_WITH_CLEBSCH_THRESHOLDS_COMPLETE__PUBLISHED_TWO_LOOP_210_OPEN",
-  "n_checks": 6,
+  "status": "DIAGNOSTIC_ONE_LOOP_PS_2HDM_YUKAWA_CHAIN__FULL_PHYSICAL_G7_OPEN",
+  "artifact_class": "diagnostic_only",
+  "n_checks": 8,
   "n_failed": 0,
   "failures": [],
   "chain": {
@@ -8,8 +9,8 @@
       "M_Z_GeV": 91.1876,
       "M_I_GeV": 160982556355.69574,
       "M_GUT_GeV": 1152023707592865.0,
-      "scheme": "two-loop-corrected",
-      "note": "Uses the repository two-loop-corrected threshold chain (M_I and M_GUT as returned by two_loop_thresholds_v20)."
+      "scheme": "heuristic-two-loop-shift-diagnostic",
+      "note": "Uses the repository heuristic calibrated-shift threshold diagnostic (M_I and M_GUT as returned by two_loop_thresholds_v20)."
     },
     "clebsch_matching_at_MI": {
       "eta_I": 1.0,
@@ -58,7 +59,21 @@
     "explicit_two_loop_yukawa_betas": false,
     "reference_validated_type_II_coefficients": false,
     "running_vevs_included": false,
-    "piecewise_component_threshold_matching_complete": false
+    "piecewise_component_threshold_matching_complete": false,
+    "source_bound_exact_two_loop_gauge_anchor_used": false,
+    "diagnostic_only_for_physical_G7": true,
+    "physical_G7_closed": false,
+    "mathematical_G7_closed": false,
+    "release_G7_verified": false,
+    "authoritative_renormalizable_G7_closed": false
   },
-  "verdict": "The piecewise Yukawa chain with explicit \u22123 lepton Clebsch matching at M_I is integrated (PS one-loop above M_I, diagnostic 2HDM below). Published SO(10)+210 two-loop tensor contractions (SARAH/PyR@TE) and component-current matching remain open."
+  "release_blockers": [
+    "NORMALIZED_COMPLETE_YUKAWA_CLEBSCH_TENSORS",
+    "EXPLICIT_TWO_LOOP_YUKAWA_BETA_FUNCTIONS",
+    "SOURCE_BOUND_TWO_LOOP_GAUGE_AND_SCALAR_SYSTEM",
+    "PHYSICAL_COMPONENT_POLE_MASSES_AND_THRESHOLD_MATCHING",
+    "RUNNING_VEVS_AND_WAVEFUNCTION_MATCHING",
+    "SECOND_INDEPENDENT_FULL_IMPLEMENTATION"
+  ],
+  "verdict": "A diagnostic one-loop piecewise Yukawa chain with explicit \u22123 lepton Clebsch matching at M_I is integrated (PS one loop above M_I and 2HDM one loop below). The gauge scales come from calibrated heuristic shifts. No explicit two-loop Yukawa beta, physical component threshold system, or full G7 closure is present."
 }

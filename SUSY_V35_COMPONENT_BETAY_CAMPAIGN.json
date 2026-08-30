@@ -1,0 +1,77 @@
+{
+  "core_sha256": "96e895f90bd750d55045d820a1cc9aed55e4ac2b2ae8646bd4cafa67503ae392",
+  "decision": "the V33 frozen BetaY strings are not a valid ODE system; V35 replaces them with a rank-42 literal component reconstruction of every trilinear one- and two-loop beta component, adds component gauge feedback, MN and linear betas, and a conditional dimensionless integration, while refusing to invent the absent physical boundary and microscopic data",
+  "evidence_sha256": {
+    "SUSY_V35_FROZEN_BETAY_FORENSIC.json": "d8abda92c359fb596a5ab59f7741368e93f3660583f0c65336bd4ceaf57322f5",
+    "SUSY_V35_G1_G8_GATE_LEDGER.json": "026d8a0717317ed3495afe9bf3cc72ab8d3ce4f46201017db57918e87fc5ebcc",
+    "SUSY_V35_G6_COMPONENT_BETAY_CLOSURE.json": "c1795a3a23f84f0a3eee9799e9eca2bd742d7ad2cef3f1fb522b861b7ef723ac"
+  },
+  "schema": "susy-v35-component-betay-campaign-v1",
+  "source_manifest": [
+    {
+      "exists": true,
+      "path": "susy_v35_component_betay_campaign.py",
+      "sha256": "e4cc871589d61bdd8d8d98494650ba781b5772567483d09b37279b1b004cfff1"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v35_component_betay_campaign.py",
+      "sha256": "eb2265803c27d24ce6cc93bcedc42ba07376d52b607c31e5bf1a90a2df5d1b12"
+    },
+    {
+      "exists": true,
+      "path": "tools/probe-susy-v35-betay.wls",
+      "sha256": "518fee12d633986e999990b102d013b0ee4f4c741e9480cea19a78f140fee356"
+    },
+    {
+      "exists": true,
+      "path": "tools/derive-susy-v35-yijk-basis.wls",
+      "sha256": "91a9b07659d2d3a950a32599ccbb428e05c2f698a63aadc0d710b5e12eb46b12"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V35_SARAH_BETAY_FEASIBILITY_PROBE.json",
+      "sha256": "3baf4158ef4d56ea4cf4e4551018f23821b9d76d8bb589ffe5b2195d3bab3870"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V35_SARAH_YIJK_COMPONENT_BASIS.json",
+      "sha256": "0ca67469c134fafaf894a23e19a5f363ba1f2b40b91bf93b458f0625df5a2c06"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V33_SARAH_RGE_ATTESTATION.json",
+      "sha256": "c828625f380d83df7fa5c34f8f8234b73017aa0f36949f144b39a0a641542291"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V34_NEXT_STEP_CAMPAIGN.json",
+      "sha256": "c331581a2fb20b2834d48da6e7a00444bc9c2a8aeec41e6026f302412a6487d9"
+    },
+    {
+      "exists": true,
+      "path": ".github/workflows/susy-v35-component-betay.yml",
+      "sha256": "2b5e6fd1adfee88898887edd56f2b87cd54f77052bcebe8a14217882a9a55444"
+    }
+  ],
+  "status": "V35_COMPONENT_BETAY_RECONSTRUCTION_COMPLETE__FROZEN_V33_BETAY_PROJECTION_IMPOSSIBLE__LIVE_YIJK_BASIS_111_BY_42_RANK42__ONE_AND_TWO_LOOP_COMPONENT_BETAS_PROJECTED__GAUGE_YUKAWA_MN_LINEAR_ENGINE_COMPLETE__PHYSICAL_BOUNDARY_STILL_MISSING__ESTABLISHED_FULL_GATES_ZERO_OF_EIGHT__NO_COMPLETE_THEORY",
+  "summary": {
+    "Gram_rank": 42,
+    "complete_theory_exists": false,
+    "component_gauge_beta_complete": true,
+    "conditional_dimensionless_integration_complete": true,
+    "coupled_G6_solution_exists": false,
+    "deterministic_projection_passes_1e-11": true,
+    "dimensionful_MN_and_linear_beta_complete": true,
+    "established_full_predictive_closed_count": 0,
+    "frozen_V33_BetaY_accepted_as_ODE_system": false,
+    "independent_dimensionless_coupling_component_count": 42,
+    "literal_component_BetaY_projection_complete": true,
+    "live_chiral_component_count": 111,
+    "materially_updated_frontier_count": 1,
+    "safe_to_claim_new_fundamental_law": false,
+    "source_derived_PS_boundary_present": false,
+    "sparse_ordered_Yijk_entry_count": 2719
+  },
+  "upstream_V34_core_sha256": "053572fbf94c2583311de52beaa0ac9ab376b2c7ee5dab4751b890ebab65e1bb"
+}

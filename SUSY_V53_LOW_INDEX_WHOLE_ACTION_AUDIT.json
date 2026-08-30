@@ -1,0 +1,280 @@
+{
+  "alternative_route_stress_test": {
+    "Babu_Pati_Tavartkiladze_single_adjoint_U1A": {
+      "Higgs_complex_coordinates": 131,
+      "Spin10_Dynkin_index": {
+        "Higgs": 18,
+        "b_Landau_sumT_minus3C2": 0,
+        "sum": 24,
+        "three_families": 6
+      },
+      "action_scope": "contains essential nonrenormalizable A4/M*, Z^k Hprime^2/M*^(k-1), ZA spinor and AHprime C Cprime/M* operators; k=5 is preferred",
+      "decision": "best low-index natural-DT benchmark, but a replacement action rather than a same-lineage exact completion",
+      "field_inventory": [
+        "A45",
+        "H10",
+        "Hprime10",
+        "C16+barCbar16",
+        "Cprime16+barCprimebar16",
+        "S1",
+        "Z1"
+      ],
+      "missing_VEV": "A0=i sigma2 tensor diag(a,a,a,0,0), unlike the exact V52 A0=i sigma2 tensor diag(1,1,1,3,3)",
+      "naive_exact_Hessian_target": {
+        "131_coordinate_Higgs_rank_needed_if_no_physical_modulus": 97,
+        "broken_gauge_orbit_if_U1A_fully_included": 34,
+        "gauge_group_dimension": 46,
+        "unbroken_SM_dimension": 12,
+        "warning": "an anomalous U(1) requires its Green-Schwarz/Stueckelberg chiral sector and FI completion; 131 coordinates alone are not a closed gauge-invariant Hessian domain"
+      },
+      "primary_source": "https://arxiv.org/abs/1003.2625",
+      "proton_claim_scope": "the paper derives threshold/proton correlations for its own charge and mass assumptions; those predictions cannot be inherited by V53",
+      "selector": "Z2-assisted anomalous U(1)A; charges forbid the dangerous A^n(C barC)^m and H^2 classes and stabilize the missing VEV to all operator orders within the stated EFT charge analysis",
+      "why_not_importable_as_V52_enlargement": "it deletes E54, replaces the V52 A/C vacuum and superpotential, adds a second spinor pair, second 10, S,Z, an anomalous gauge factor, FI/GS physics and cutoff operators. No V52 Hessian block or rank survives by direct sum. A new Cartesian invariant implementation, rational F/D-flat witness, full GS-inclusive Q, and differentiated Hessian are required.",
+      "with_three_matter_16_coordinates": 179
+    },
+    "extended_missing_VEV_same_gauge_group": {
+      "Landau_b_sumT_minus3C2_range": [
+        23,
+        24
+      ],
+      "decision": "credible next construction, not an exact V53 completion",
+      "fatal_same_action_issue": "natural DT requires new nonzero missing-VEV backgrounds; their F,D equations and mixed Hessian are not block-diagonal additions to V52, so rank111 cannot be inherited",
+      "field_content_target": "54+2(45)+3(16+bar16)+1 or 2(10)+singlets",
+      "minimum_addition_over_declared_whole_action": "one 45 plus two 16+bar16 pairs; optionally a second 10; singlet count model-dependent",
+      "minimum_new_non_singlet_coordinates": 109,
+      "pole_ratio_range_at_g0p73": [
+        479.87167991557965,
+        627.6185595500677
+      ],
+      "with_second_10_new_non_singlet_coordinates": 119
+    },
+    "flipped_Spin10_times_U1X": {
+      "decision": "not a same-lineage natural-DT repair",
+      "fatal_same_action_issue": "changes the gauge group, family embedding, hypercharge definition, anomaly ledger and operator basis; its minimal DT sector is still tuned",
+      "gauge_dimension": 46,
+      "generic_broken_generators": 34,
+      "published_minimal_Higgs_coordinates": 109,
+      "published_one_loop_coefficients": {
+        "Spin10": 1,
+        "U1Xhat": "67/24"
+      },
+      "required_Hessian_rank_if_isolated": 75
+    },
+    "product_group": {
+      "benefit": "can turn component selection into a vacuum alignment condition",
+      "candidate": "Spin(10)_A x Spin(10)_B with a bifundamental/missing-VEV link",
+      "decision": "research alternative only",
+      "fatal_same_action_issue": "a linear vector bifundamental has 100 coordinates and large spectator index; a group-valued link repeats the nonlinear-UV problem. No exact F-flat missing-VEV vacuum, full Hessian or spinor-link completion is supplied."
+    }
+  },
+  "candidate_name": "V52 low-index source plus three families, H10 and four N",
+  "core_sha256": "9218b06e866c00dcc6e3348751ace04fea2e1958cb6fe046fc5c9b912896bcb8",
+  "exact_whole_action_rank_certificate": {
+    "declared_elementary_action": {
+      "HK_exact_zero": true,
+      "HQ_exact_zero": true,
+      "H_nullity": 82,
+      "H_rank_mod37": 111,
+      "H_sha256": "6502a532aabf301ab17accf3ab880ff8d89b158bffb2d936e3b1ffe5ee37615b",
+      "H_shape": [
+        193,
+        193
+      ],
+      "Q_plus_K_rank_mod37": 82,
+      "Q_rank_mod37": 33,
+      "Q_sha256": "19e17b0579b92cdd8951db56e4187fb7a8b394cfa3fa7ed4e1839f7a1e758b3b",
+      "Q_shape": [
+        193,
+        45
+      ],
+      "coordinate_sum": 193,
+      "field_order": [
+        "E54[54]",
+        "A45[45]",
+        "C16_H[16]",
+        "barC16_H[16]",
+        "16F_1..3[48]",
+        "H10[10]",
+        "N_1..4[4]"
+      ],
+      "intended_light_K_rank_mod37": 49,
+      "intended_light_K_shape": [
+        193,
+        49
+      ],
+      "kernel_decomposition": "ker(H)=33 broken-gauge directions direct-sum 45 light matter coordinates direct-sum 4 weak-Higgs coordinates",
+      "kernel_decomposition_exact": true,
+      "published_H": "20 H_whole",
+      "published_Q": "10 Q_whole",
+      "stationarity_reason": "every added F term contains at least one zero-VEV added field; MS is nonsingular and the source F,D terms remain exactly zero",
+      "superpotential": "W_source + 1/2 Y10_ij 16F_i 16F_j H10 + yN_ia 16F_i barC_H N_a + 1/2 MS_ab N_a N_b + 1/2 mH H10^T H10 + 1/2 kH H10^T E H10",
+      "vacuum": "exact V52 E,A,C,barC witness; all 16F,H10,N scalar VEVs zero",
+      "zero_VEV_block_decoupling": {
+        "H10_block_rank": 6,
+        "Yukawa_H10_16F_16F_Hessian": "zero because H10=16F=0",
+        "matter_N_block_rank": 7,
+        "source_H10_mixed_Hessian": "zero because H10=0",
+        "source_N_mixed_Hessian_except_barC_portal": "zero because 16F=N=0; barC0 turns only 16F-N into a bilinear"
+      }
+    },
+    "optional_same-field_hybrid_EFT": {
+      "HK_exact_zero": true,
+      "HQ_exact_zero": true,
+      "H_nullity": 103,
+      "H_rank_mod37": 135,
+      "H_sha256": "c80273c42753cceaed5a5d990cf4fceca1772dd00d49cae6040bde670f50620b",
+      "H_shape": [
+        238,
+        238
+      ],
+      "Q_plus_K_rank_mod37": 103,
+      "Q_rank_mod37": 54,
+      "Q_sha256": "6be79f5294392eaf273167faae9bedaf3ebc6f16cbca6c78b39b898f7a5ec8b1",
+      "Q_shape": [
+        238,
+        66
+      ],
+      "UV_status": "nonlinear sigma EFT only; not an elementary completion",
+      "coordinate_sum": 238,
+      "intended_light_K_rank_mod37": 49,
+      "kernel_decomposition": "ker(H)=54 broken product-gauge directions direct-sum 45 light matter coordinates direct-sum 4 weak-Higgs coordinates",
+      "kernel_decomposition_exact": true,
+      "published_H": "200 H_hybrid_whole",
+      "scope": "adds the 45-coordinate nonlinear Spin(10,C) link and exact rank-24 alignment to the identical elementary matter/H10/N inventory"
+    }
+  },
+  "gate_effect": {
+    "C1": "PARTIAL: declared 193-coordinate action explicit; most-general selector-protected invariant census absent",
+    "C3": "LOCAL_WHOLE_ACTION_PASS: exact H/Q/light-kernel accounting for the declared elementary action",
+    "C4": "PARTIAL: canonical local metric gives the intended kernel, but DT tuning and global/radiative vacuum stability remain open",
+    "C5": "OPEN: no one-loop matching or threshold cancellation",
+    "C6": "PARTIAL: external Z2 ledger exists but cannot naturalize DT or forbid all even-matter dimension-five operators",
+    "C7": "OPEN: no same-action Wilson array",
+    "G2": "OPEN",
+    "gates_promoted": []
+  },
+  "integrity_checks": {
+    "Abelian_selector_no_go_is_exposed": true,
+    "BPT_benchmark_is_low_index_but_cross_action": true,
+    "H10_rank6": true,
+    "elementary_HQ_zero": true,
+    "elementary_H_rank111_nullity82": true,
+    "elementary_coordinate_count_193": true,
+    "elementary_kernel_is_gauge_plus49_light": true,
+    "existing_E_and_A_are_not_missing_VEVs": true,
+    "hybrid_H_rank135_nullity103": true,
+    "hybrid_coordinate_count238": true,
+    "hybrid_kernel_is_gauge_plus49_light": true,
+    "matter_N_rank7": true,
+    "natural_DT_not_claimed": true,
+    "no_gate_promotion": true,
+    "source_upstream_exact": true
+  },
+  "n_failed_integrity_checks": 0,
+  "natural_DT_obstruction": {
+    "existing_field_missing_eigenvalue_tests": {
+      "A0_determinant": 81,
+      "A0_has_DW_missing_weak_entry": false,
+      "A0_plane_coefficients": [
+        1,
+        1,
+        1,
+        3,
+        3
+      ],
+      "A0_rank": 10,
+      "E0_determinant": 5184,
+      "E0_rank": 10,
+      "conclusion": "E0 and A0 are invertible on both color and weak subspaces. A second 10 coupled through A0 makes all 20 vector coordinates massive; it does not leave a weak pair. Gauge singlets cannot select Spin(10) components.",
+      "one_H_transpose_A_H_identically_zero": true,
+      "singlets_can_distinguish_triplet_from_doublet": false,
+      "two_H_A0_only_block_rank": 20
+    },
+    "ordinary_Abelian_selector_no_go": {
+      "can_enforce_mH_equals_3kH": false,
+      "charge_equations": "2 qE=0 and 3 qE=0 imply qE=0 in every Abelian charge group",
+      "consequence": "H^2 and H E H both carry charge 2 qH",
+      "selector_options": [
+        "allow both with independent coefficients: DT zero requires tuning",
+        "forbid both: all ten H coordinates are massless"
+      ],
+      "source_requirements": "E^2 and E^3 are both nonzero allowed operators"
+    },
+    "scope": "no-go covers ordinary Abelian/discrete selectors acting on the declared fields and renormalizable one- or two-10 bilinears using the exact E0,A0. It is not a theorem against enlarged gauge groups or new missing-VEV order parameters.",
+    "tuned_block": {
+      "Hessian": "mH I_10+kH E0",
+      "codimension": 1,
+      "light_pair_condition": "mH=3 kH",
+      "triplet_eigenvalue": "mH+2 kH",
+      "unit_perturbation_mH_3_to_4_gives_rank": 10,
+      "weak_eigenvalue": "mH-3 kH"
+    }
+  },
+  "perturbativity": {
+    "convention": "b_L=sumT-3C2; b_AF=-b_L=3C2-sumT; T54=12,T45=8,T16=2,T10=1",
+    "elementary_whole_action": {
+      "H10_T": 1,
+      "b_Landau": 7,
+      "b_asymptotic_freedom": -7,
+      "four_N_T": 0,
+      "pole_over_matching_scale": 1557503331.1144598,
+      "source_T": 24,
+      "sum_T": 31,
+      "three_matter_16_T": 6
+    },
+    "natural_missing_VEV_cost": "known low-representation targets raise b_L to 23-24 before thresholds",
+    "scope": "one-loop formal running only; no two-loop thresholds, flavour messengers, U1F repair, proton-decay dressing or SUSY thresholds",
+    "tuned_DT_does_not_cost_extra_index": true
+  },
+  "primary_sources": [
+    "https://arxiv.org/abs/hep-ph/0202278",
+    "https://arxiv.org/abs/hep-ph/9810315",
+    "https://arxiv.org/abs/hep-ph/9705366",
+    "https://arxiv.org/abs/1011.1821",
+    "https://arxiv.org/abs/hep-th/9109045",
+    "https://arxiv.org/abs/1003.2625"
+  ],
+  "provenance": {
+    "existing_files_modified": false,
+    "files": {
+      "SUSY_V52_LOW_INDEX_HYBRID_ALIGNMENT_AUDIT.json": "11835850ce7b4899d40861348db2e493d3ac31f416d341bf9223c29d850fbae7",
+      "SUSY_V52_LOW_INDEX_SOURCE_AUDIT.json": "e1d2b340d263dcf46ff38518a9a788c1f339bb3dd1f5474308c3fa498600c6b1",
+      "SUSY_V52_MINIMAL_SEESAW_DT_REPAIR_AUDIT.json": "d9536b4f19af3b2cdfd64cb6c140557db35b3398ee4834dabf7f843bc9e64aca",
+      "susy_v52_low_index_hybrid_alignment_audit.py": "72ac6638bd7476882ab886dfe3fd8932bbdef11824ef1fca2175fdd1e92012be",
+      "susy_v52_low_index_source_audit.py": "b9481cb6ffb0ce885528be62a23d4f0c8c432cafe0d690254aafd64ccad51438",
+      "susy_v52_minimal_seesaw_dt_repair_audit.py": "9b8d2c25395502f11b9d0db1ebac3266db1d4979946fc1ef24a221929af57736"
+    }
+  },
+  "schema": "susy-v53-low-index-whole-action-audit-v1",
+  "scientific_verdict": "The declared sparse whole action has an exact local Hessian and exactly the intended gauge, matter and weak-Higgs kernel. It does not become a natural complete action: its light Higgs pair is tuned, the external Z2 cannot enforce the tuning, and omitted allowed invariants/operator classes lack a UV selector.",
+  "sharp_next_obligations": [
+    "choose and solve one explicit renormalizable missing-VEV sector, including all new F and D equations",
+    "recompute the enlarged Hessian rather than append literature ranks",
+    "construct a UV selector that permits Yukawa and seesaw terms while forbidding dangerous dimension-five operators",
+    "enumerate the most general selector-allowed action and recheck stationarity",
+    "compute thresholds, two-loop unification, proton decay and the same-action Wilson array"
+  ],
+  "status": "V53_LOW_INDEX_WHOLE_ACTION_193_HESSIAN_RANK111_NULLITY82__KERNEL_EQUALS33_GAUGE_PLUS45_MATTER_PLUS4_WEAK_HIGGS__OPTIONAL238_NONLINEAR_HYBRID_RANK135_NULLITY103_EXACT__ABELIAN_SELECTOR_AND_EXISTING_E_A_N_FIELDS_CANNOT_NATURALIZE_DT__MISSING_VEV_PRODUCT_GROUP_AND_FLIPPED_ROUTES_CHANGE_ACTION__NATURAL_DT_AND_COMPLETE_OPERATOR_CENSUS_OPEN__NO_GATE_PROMOTION",
+  "upstream_binding": {
+    "minimal_repair": {
+      "H10_count": 1,
+      "core_sha256": "f4dadf941dbfe6e540347aa720687b2cc8e08201edc8325cea6fabb8b6b4a723",
+      "singlet_count": 4,
+      "status": "V52_MINIMAL_RENORMALIZABLE_DOUBLE_SEESAW_AND_UNBROKEN_Z2_SELECTOR_CERTIFIED__ONE_10H_EXACT_TRIPLET_RANK6_DOUBLET_NULLITY4_EXISTS_BUT_IS_CODIMENSION_ONE__NATURAL_DT_UV_SELECTOR_AND_FULL_OPERATOR_CENSUS_OPEN__NO_G2_PROMOTION"
+    },
+    "nonlinear_hybrid": {
+      "coordinates": 176,
+      "core_sha256": "234442c35dfee6c0374b5562ac6e42a9674d54f6dc985f1d982d32207ea46365",
+      "status": "V52_TWO_SITE_NONLINEAR_LINK_PLUS_EXACT_54_45_16_BAR16_SOURCE__PS_VS_SM_PARTITION_12_9_0_24__GAUGE_INVARIANT_LOCAL_ALIGNMENT_RANK24__FULL176_HESSIAN_RANK122_NULLITY54_KERNEL_EQUALS_GAUGE_ORBIT__LEAN_INDEX_PROXY_AVOIDS_PRE_CUTOFF_LANDAU_POLE__NONLINEAR_LINK_UV_AND_FULL_MATCHING_OPEN__NO_G2_PROMOTION"
+    },
+    "source": {
+      "H_rank": 98,
+      "Q_rank": 33,
+      "coordinates": 131,
+      "core_sha256": "c07fd055da382cdc461b212679f70971ced8d4d13a319a51e2cbaabfecbeba52",
+      "status": "V52_EXACT_RENORMALIZABLE_54_45_16_BAR16_SOURCE_WITNESS__F_AND_D_FLAT__SPIN10_ORBIT_RANK33_STABILIZER12__FULL_131_HESSIAN_RANK98_NULLITY33_AND_KERNEL_EQUALS_GAUGE_ORBIT__SOURCE_DYNKIN_INDEX24__PERTURBATIVE_SOURCE_REPLACEMENT__SEESAW_MATTER_PARITY_AND_MISSING_PARTNER_OBLIGATIONS_OPEN__NO_G2_CLAUSE_PROMOTED"
+    }
+  },
+  "whole_action_scope_warning": "whole-action means every coordinate of the explicitly declared sparse renormalizable source+matter+H10+N action. It does not mean the most general symmetry-allowed action, because the selector does not yet protect all omitted Higgs-spinor and dimension-five operators."
+}

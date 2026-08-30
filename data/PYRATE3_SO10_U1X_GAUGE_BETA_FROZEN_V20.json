@@ -1,0 +1,89 @@
+{
+  "schema": "pyrate3_so10_u1x_gauge_beta_frozen_v20",
+  "tool": {
+    "name": "PyR@TE",
+    "version": "3.0",
+    "repository": "https://github.com/LSartore/pyrate",
+    "git_commit": "04b219c2016f3fc4f2371d72607edc26a7e06364"
+  },
+  "replay": {
+    "date": "2026-08-12",
+    "canonical_model": "models/SO10U1XGaugeAuditV20.model",
+    "canonical_model_sha256": "18191bc9db705ed9e8a89eff214ad967bac37830c91fede82c418d38ce0c949e",
+    "executed_model": "models/SO10U1XGaugeAudit.model",
+    "executed_model_sha256": "18191bc9db705ed9e8a89eff214ad967bac37830c91fede82c418d38ce0c949e",
+    "canonical_model_is_byte_identical_rename_of_executed_input": true,
+    "command": [
+      "python",
+      "pyR@TE.py",
+      "-m",
+      "models/SO10U1XGaugeAudit.model",
+      "-l",
+      "2",
+      "-gi",
+      "-res",
+      "results-gauge-audit-full",
+      "-tex",
+      "-no-math",
+      "-no-py",
+      "-no-cpp",
+      "-q"
+    ],
+    "gauge_invariance": "All OK",
+    "completed": true,
+    "tensor_initialization_seconds": "248.012",
+    "total_seconds": "251.092",
+    "terminal_log_sha256": "91716c082b3a23a4ecb7e247a62788438966530e004e29ec933b713b05472422",
+    "generated_tex_sha256": "60fa6db068a913efa21cc745869ea8009309af422f247a87d83e072c32c6c203",
+    "generated_tex_bytes": 3192
+  },
+  "scope": {
+    "sector": "gauge couplings only",
+    "loops": 2,
+    "interactions_declared": false,
+    "yukawa_terms_present": false,
+    "interpretation": "independent gauge-only/non-Yukawa replay; not a complete two-loop model RGE"
+  },
+  "convention": "beta(X)=(4*pi)^(-2)*beta^(1)(X)+(4*pi)^(-4)*beta^(2)(X)",
+  "inventory": {
+    "Weyl_16_multiplets": 19,
+    "fermion_generations": {
+      "F": 3,
+      "P": 1,
+      "R": 1,
+      "SpecS": 5,
+      "SpecB": 5,
+      "Q": 1,
+      "Pc": 1,
+      "Qc": 1,
+      "Rc": 1
+    },
+    "parser_safe_conjugate_names": [
+      "Pc",
+      "Qc",
+      "Rc"
+    ]
+  },
+  "coefficients": {
+    "beta_g10_loop1": {
+      "g10^3": "52/3"
+    },
+    "beta_g10_loop2": {
+      "g10^5": "25013/6",
+      "g10^3*gX^2": "4536"
+    },
+    "beta_gX_loop1": {
+      "gX^3": "10843"
+    },
+    "beta_gX_loop2": {
+      "g10^2*gX^3": "204120",
+      "gX^5": "7242180"
+    }
+  },
+  "raw_latex_equations": [
+    "\\beta^{(1)}(g_{10}) =\\frac{52}{3} g_{10}^{3}",
+    "\\beta^{(2)}(g_{10}) = + \\frac{25013}{6} g_{10}^{5} + 4536 g_{10}^{3} gX^{2}",
+    "\\beta^{(1)}(gX) =10843 gX^{3}",
+    "\\beta^{(2)}(gX) = + 204120 g_{10}^{2} gX^{3} + 7242180 gX^{5}"
+  ]
+}

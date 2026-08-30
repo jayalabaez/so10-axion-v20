@@ -1,0 +1,1254 @@
+{
+  "KK_triplet_exchange_certificate": {
+    "basis": "first H-type KK modes, then Hc-type KK modes",
+    "doublet_zero_sector": {
+      "after_unit_soft_mu_nullity": 0,
+      "after_unit_soft_mu_rank": 2,
+      "supersymmetric_nullity": 2,
+      "supersymmetric_rank": 0
+    },
+    "fatal_HcHc_control": {
+      "meaning": "An Hc-Hc block makes the matter-source propagator nonzero and is therefore the controlled colored-Higgsino dimension-five source. Z4R forbids it before breaking, while S Hc Hpc can generate it at the soft scale.",
+      "nonzero_HH_inverse_entries": 4
+    },
+    "matter_support": "At O_GG, Z4R permits q=1 matter Yukawas only to q=0 H-type fields and forbids the corresponding q=2 Hc-type Yukawas.",
+    "meaning": "For invertible bulk H-Hc KK masses and no Hc-Hc mass, the inverse between two matter-coupled H sources vanishes exactly, even with an H-H block. This is only a structural finite-tower witness.",
+    "protected_HH_inverse_block_exactly_zero": true,
+    "protected_matrix_rank": 8,
+    "protected_sample_size_per_block": 4
+  },
+  "O_GG_local_operator_gauge_certificate": {
+    "dimension5_proton_operator_is_gauge_invariant_but_R_forbidden": true,
+    "field_U1X_charges": {
+      "Fbar5": 3,
+      "H5": 2,
+      "Hcbar5": -2,
+      "Hpbar5": -2,
+      "Hpc5": 2,
+      "N1": -5,
+      "S": 0,
+      "T10": -1,
+      "X": 10,
+      "Xbar": -10
+    },
+    "operator_ledger": [
+      {
+        "SU5_singlet_exists": true,
+        "U1X_charge_sum": 0,
+        "factors": [
+          "T10",
+          "T10",
+          "H5"
+        ],
+        "id": "up_Yukawa",
+        "local_gauge_invariant": true
+      },
+      {
+        "SU5_singlet_exists": true,
+        "U1X_charge_sum": 0,
+        "factors": [
+          "T10",
+          "Fbar5",
+          "Hpbar5"
+        ],
+        "id": "down_lepton_Yukawa",
+        "local_gauge_invariant": true
+      },
+      {
+        "SU5_singlet_exists": true,
+        "U1X_charge_sum": 0,
+        "factors": [
+          "N1",
+          "N1",
+          "X"
+        ],
+        "id": "right_neutrino_Majorana",
+        "local_gauge_invariant": true
+      },
+      {
+        "SU5_singlet_exists": true,
+        "U1X_charge_sum": 0,
+        "factors": [
+          "S",
+          "X",
+          "Xbar"
+        ],
+        "id": "rank_breaking_driver",
+        "local_gauge_invariant": true
+      },
+      {
+        "SU5_singlet_exists": true,
+        "U1X_charge_sum": 0,
+        "factors": [
+          "S",
+          "H5",
+          "Hpbar5"
+        ],
+        "id": "soft_mu_parent",
+        "local_gauge_invariant": true
+      },
+      {
+        "SU5_singlet_exists": true,
+        "U1X_charge_sum": 0,
+        "factors": [
+          "S",
+          "Hcbar5",
+          "Hpc5"
+        ],
+        "id": "soft_Hc_Hpc_parent",
+        "local_gauge_invariant": true
+      },
+      {
+        "SU5_singlet_exists": true,
+        "U1X_charge_sum": 0,
+        "factors": [
+          "T10",
+          "T10",
+          "T10",
+          "Fbar5"
+        ],
+        "id": "dimension5_proton_proxy",
+        "local_gauge_invariant": true
+      },
+      {
+        "SU5_singlet_exists": true,
+        "U1X_charge_sum": 5,
+        "factors": [
+          "T10",
+          "Fbar5",
+          "Fbar5"
+        ],
+        "id": "renormalizable_RPV_proxy",
+        "local_gauge_invariant": false
+      }
+    ],
+    "required_rows_gauge_invariant": true
+  },
+  "Z4R_certificate": {
+    "all_selector_expectations_met": true,
+    "bookkeeping_convention": "Conventional 4D N=1 charges: q(theta)=1, q(H)=0, q(Hc)=2, q(D_perp)=q(Sigma)=0. This must not be mixed with a convention that assigns geometric charge to D_perp.",
+    "charge_ledger": {
+      "D_perp": 0,
+      "Fbar5": 1,
+      "H": 0,
+      "Hc": 2,
+      "Hp": 0,
+      "Hpc": 2,
+      "N1": 1,
+      "S": 2,
+      "Sigma": 0,
+      "T10": 1,
+      "W_alpha": 1,
+      "X": 0,
+      "Xbar": 0,
+      "constant": 0,
+      "theta": 1
+    },
+    "conditional_exactness": "If this Z4R is an exact discrete gauge symmetry and every GUT-scale scalar VEV has q_R=0, every non-derivative R0-R0 local superpotential Higgs bilinear is excluded.",
+    "nonderivative_R0_R0_Higgs_bilinears_all_forbidden": true,
+    "not_proved": [
+      "A higher-dimensional/geometric origin for the Z4R has not been embedded in a complete 6D supergravity/string compactification.",
+      "H-Hc and normal-derivative fixed-point operators are allowed and can alter boundary conditions.",
+      "No complete fixed-point operator basis or regulator-level locality theorem is supplied."
+    ],
+    "operator_ledger": [
+      {
+        "R_charge_mod4": 2,
+        "caveat": "",
+        "expected_allowed": true,
+        "factors": [
+          "W_alpha",
+          "W_alpha"
+        ],
+        "id": "gauge_kinetic",
+        "role": "required",
+        "selector_matches_expectation": true,
+        "superpotential_allowed_by_Z4R": true,
+        "support": "bulk"
+      },
+      {
+        "R_charge_mod4": 2,
+        "caveat": "",
+        "expected_allowed": true,
+        "factors": [
+          "Hc",
+          "D_perp",
+          "H"
+        ],
+        "id": "bulk_H",
+        "role": "required",
+        "selector_matches_expectation": true,
+        "superpotential_allowed_by_Z4R": true,
+        "support": "bulk"
+      },
+      {
+        "R_charge_mod4": 2,
+        "caveat": "",
+        "expected_allowed": true,
+        "factors": [
+          "Hc",
+          "Sigma",
+          "H"
+        ],
+        "id": "bulk_H_gauge",
+        "role": "required",
+        "selector_matches_expectation": true,
+        "superpotential_allowed_by_Z4R": true,
+        "support": "bulk"
+      },
+      {
+        "R_charge_mod4": 2,
+        "caveat": "",
+        "expected_allowed": true,
+        "factors": [
+          "Hpc",
+          "D_perp",
+          "Hp"
+        ],
+        "id": "bulk_Hp",
+        "role": "required",
+        "selector_matches_expectation": true,
+        "superpotential_allowed_by_Z4R": true,
+        "support": "bulk"
+      },
+      {
+        "R_charge_mod4": 2,
+        "caveat": "",
+        "expected_allowed": true,
+        "factors": [
+          "Hpc",
+          "Sigma",
+          "Hp"
+        ],
+        "id": "bulk_Hp_gauge",
+        "role": "required",
+        "selector_matches_expectation": true,
+        "superpotential_allowed_by_Z4R": true,
+        "support": "bulk"
+      },
+      {
+        "R_charge_mod4": 2,
+        "caveat": "",
+        "expected_allowed": true,
+        "factors": [
+          "T10",
+          "T10",
+          "H"
+        ],
+        "id": "up_Yukawa",
+        "role": "required",
+        "selector_matches_expectation": true,
+        "superpotential_allowed_by_Z4R": true,
+        "support": "O_GG"
+      },
+      {
+        "R_charge_mod4": 2,
+        "caveat": "",
+        "expected_allowed": true,
+        "factors": [
+          "T10",
+          "Fbar5",
+          "Hp"
+        ],
+        "id": "down_lepton_Yukawa",
+        "role": "required",
+        "selector_matches_expectation": true,
+        "superpotential_allowed_by_Z4R": true,
+        "support": "O_GG"
+      },
+      {
+        "R_charge_mod4": 2,
+        "caveat": "",
+        "expected_allowed": true,
+        "factors": [
+          "N1",
+          "N1",
+          "X"
+        ],
+        "id": "right_neutrino_Majorana",
+        "role": "required",
+        "selector_matches_expectation": true,
+        "superpotential_allowed_by_Z4R": true,
+        "support": "O_GG"
+      },
+      {
+        "R_charge_mod4": 2,
+        "caveat": "",
+        "expected_allowed": true,
+        "factors": [
+          "S",
+          "X",
+          "Xbar"
+        ],
+        "id": "rank_breaking_driver",
+        "role": "required",
+        "selector_matches_expectation": true,
+        "superpotential_allowed_by_Z4R": true,
+        "support": "O_GG"
+      },
+      {
+        "R_charge_mod4": 2,
+        "caveat": "",
+        "expected_allowed": true,
+        "factors": [
+          "S",
+          "constant"
+        ],
+        "id": "rank_breaking_linear",
+        "role": "required",
+        "selector_matches_expectation": true,
+        "superpotential_allowed_by_Z4R": true,
+        "support": "O_GG"
+      },
+      {
+        "R_charge_mod4": 2,
+        "caveat": "It is harmless at the supersymmetric vacuum only if <S>=0.",
+        "expected_allowed": true,
+        "factors": [
+          "S",
+          "H",
+          "Hp"
+        ],
+        "id": "soft_mu_parent",
+        "role": "required",
+        "selector_matches_expectation": true,
+        "superpotential_allowed_by_Z4R": true,
+        "support": "O_GG"
+      },
+      {
+        "R_charge_mod4": 0,
+        "caveat": "",
+        "expected_allowed": false,
+        "factors": [
+          "H",
+          "Hp"
+        ],
+        "id": "direct_H_Hp_mass",
+        "role": "must_forbid",
+        "selector_matches_expectation": true,
+        "superpotential_allowed_by_Z4R": false,
+        "support": "any brane or bulk"
+      },
+      {
+        "R_charge_mod4": 0,
+        "caveat": "",
+        "expected_allowed": false,
+        "factors": [
+          "H",
+          "H"
+        ],
+        "id": "direct_H_H_mass",
+        "role": "must_forbid",
+        "selector_matches_expectation": true,
+        "superpotential_allowed_by_Z4R": false,
+        "support": "any brane or bulk"
+      },
+      {
+        "R_charge_mod4": 0,
+        "caveat": "",
+        "expected_allowed": false,
+        "factors": [
+          "Hp",
+          "Hp"
+        ],
+        "id": "direct_Hp_Hp_mass",
+        "role": "must_forbid",
+        "selector_matches_expectation": true,
+        "superpotential_allowed_by_Z4R": false,
+        "support": "any brane or bulk"
+      },
+      {
+        "R_charge_mod4": 2,
+        "caveat": "It changes boundary conditions but occupies the H-Hc block, not Hc-Hc.",
+        "expected_allowed": true,
+        "factors": [
+          "Hc",
+          "H"
+        ],
+        "id": "boundary_Hc_H",
+        "role": "unresolved_but_bipartite",
+        "selector_matches_expectation": true,
+        "superpotential_allowed_by_Z4R": true,
+        "support": "fixed points with both local components"
+      },
+      {
+        "R_charge_mod4": 2,
+        "caveat": "",
+        "expected_allowed": true,
+        "factors": [
+          "Hc",
+          "Hp"
+        ],
+        "id": "boundary_Hc_Hp",
+        "role": "unresolved_but_bipartite",
+        "selector_matches_expectation": true,
+        "superpotential_allowed_by_Z4R": true,
+        "support": "fixed points with both local components"
+      },
+      {
+        "R_charge_mod4": 2,
+        "caveat": "",
+        "expected_allowed": true,
+        "factors": [
+          "Hpc",
+          "H"
+        ],
+        "id": "boundary_Hpc_H",
+        "role": "unresolved_but_bipartite",
+        "selector_matches_expectation": true,
+        "superpotential_allowed_by_Z4R": true,
+        "support": "fixed points with both local components"
+      },
+      {
+        "R_charge_mod4": 2,
+        "caveat": "",
+        "expected_allowed": true,
+        "factors": [
+          "Hpc",
+          "Hp"
+        ],
+        "id": "boundary_Hpc_Hp",
+        "role": "unresolved_but_bipartite",
+        "selector_matches_expectation": true,
+        "superpotential_allowed_by_Z4R": true,
+        "support": "fixed points with both local components"
+      },
+      {
+        "R_charge_mod4": 0,
+        "caveat": "",
+        "expected_allowed": false,
+        "factors": [
+          "Hc",
+          "Hpc"
+        ],
+        "id": "direct_Hc_Hpc_mass",
+        "role": "must_forbid",
+        "selector_matches_expectation": true,
+        "superpotential_allowed_by_Z4R": false,
+        "support": "any brane"
+      },
+      {
+        "R_charge_mod4": 2,
+        "caveat": "After <S> this supplies the Hc-Hc block and gives C5 proportional to <S>/Mc^2.",
+        "expected_allowed": true,
+        "factors": [
+          "S",
+          "Hc",
+          "Hpc"
+        ],
+        "id": "soft_Hc_Hpc_parent",
+        "role": "controlled_after_R_breaking",
+        "selector_matches_expectation": true,
+        "superpotential_allowed_by_Z4R": true,
+        "support": "O_GG"
+      },
+      {
+        "R_charge_mod4": 0,
+        "caveat": "",
+        "expected_allowed": false,
+        "factors": [
+          "X",
+          "Xbar"
+        ],
+        "id": "direct_X_Xbar_mass",
+        "role": "controlled_by_S",
+        "selector_matches_expectation": true,
+        "superpotential_allowed_by_Z4R": false,
+        "support": "O_GG"
+      },
+      {
+        "R_charge_mod4": 1,
+        "caveat": "",
+        "expected_allowed": false,
+        "factors": [
+          "Fbar5",
+          "H"
+        ],
+        "id": "matter_Higgs_mixing",
+        "role": "must_forbid",
+        "selector_matches_expectation": true,
+        "superpotential_allowed_by_Z4R": false,
+        "support": "O_GG"
+      },
+      {
+        "R_charge_mod4": 0,
+        "caveat": "",
+        "expected_allowed": false,
+        "factors": [
+          "T10",
+          "T10",
+          "Hpc"
+        ],
+        "id": "up_Yukawa_to_Hpc",
+        "role": "must_forbid",
+        "selector_matches_expectation": true,
+        "superpotential_allowed_by_Z4R": false,
+        "support": "O_GG"
+      },
+      {
+        "R_charge_mod4": 0,
+        "caveat": "",
+        "expected_allowed": false,
+        "factors": [
+          "T10",
+          "Fbar5",
+          "Hc"
+        ],
+        "id": "down_Yukawa_to_Hc",
+        "role": "must_forbid",
+        "selector_matches_expectation": true,
+        "superpotential_allowed_by_Z4R": false,
+        "support": "O_GG"
+      },
+      {
+        "R_charge_mod4": 3,
+        "caveat": "",
+        "expected_allowed": false,
+        "factors": [
+          "T10",
+          "Fbar5",
+          "Fbar5"
+        ],
+        "id": "renormalizable_RPV_proxy",
+        "role": "must_forbid",
+        "selector_matches_expectation": true,
+        "superpotential_allowed_by_Z4R": false,
+        "support": "O_GG"
+      },
+      {
+        "R_charge_mod4": 0,
+        "caveat": "",
+        "expected_allowed": false,
+        "factors": [
+          "T10",
+          "T10",
+          "T10",
+          "Fbar5"
+        ],
+        "id": "dimension5_proton_proxy",
+        "role": "must_forbid",
+        "selector_matches_expectation": true,
+        "superpotential_allowed_by_Z4R": false,
+        "support": "O_GG"
+      },
+      {
+        "R_charge_mod4": 2,
+        "caveat": "",
+        "expected_allowed": true,
+        "factors": [
+          "S",
+          "T10",
+          "T10",
+          "T10",
+          "Fbar5"
+        ],
+        "id": "R_broken_dimension5_proton_parent",
+        "role": "controlled_after_R_breaking",
+        "selector_matches_expectation": true,
+        "superpotential_allowed_by_Z4R": true,
+        "support": "O_GG"
+      },
+      {
+        "R_charge_mod4": 2,
+        "caveat": "Z4R alone does not eliminate normal-derivative H-Hc boundary operators.",
+        "expected_allowed": true,
+        "factors": [
+          "H",
+          "D_perp",
+          "Hc"
+        ],
+        "id": "normal_derivative_boundary_loophole",
+        "role": "unresolved",
+        "selector_matches_expectation": true,
+        "superpotential_allowed_by_Z4R": true,
+        "support": "fixed points where the differentiated odd profile is nonzero"
+      }
+    ],
+    "superpotential_selection_rule": "sum(q_R)=2 mod 4"
+  },
+  "anomaly_audit": {
+    "O_GG_local_chiral_gauge_anomalies": {
+      "X_plus10_Xbar_minus10_pair": {
+        "U1X_cubed_sum": 0,
+        "gravity_squared_U1X_sum": 0,
+        "vectorlike_and_gauge_anomaly_free": true
+      },
+      "family_decomposition": [
+        {
+          "SU5_cubic": 1,
+          "T_SU5": "3/2",
+          "X": -1,
+          "dimension": 10,
+          "field": "10_-1"
+        },
+        {
+          "SU5_cubic": -1,
+          "T_SU5": "1/2",
+          "X": 3,
+          "dimension": 5,
+          "field": "bar5_3"
+        },
+        {
+          "SU5_cubic": 0,
+          "T_SU5": "0",
+          "X": -5,
+          "dimension": 1,
+          "field": "1_-5"
+        }
+      ],
+      "per_family_sums": {
+        "SU5_cubic": 0,
+        "SU5_squared_U1X": "0",
+        "U1X_cubed": 0,
+        "gravity_squared_U1X": 0
+      },
+      "scope_warning": "These exact sums close only the explicitly localized family and rank-breaking chiral gauge anomaly. Parity-split bulk Higgs/vector inflow and local discrete-R anomalies are not included.",
+      "three_families_are_each_gauge_anomaly_free": true
+    },
+    "four_dimensional_massless_Z4R": {
+      "A1_R": "-3/5",
+      "A2_R": "1",
+      "A3_R": "3",
+      "convention": "T(fund)=1/2; hypercharge uses SU(5) normalization",
+      "gauge_coefficients_universal_mod_eta": true,
+      "gravitational_discrete_anomaly_closed": false,
+      "integerized_comparison": {
+        "5A1": -3,
+        "A2": 1,
+        "A3": 3
+      },
+      "interpretation": "The familiar low-energy gauge residues are universal modulo eta=2, but this neither computes nor cancels the six-dimensional or fixed-point discrete anomaly.",
+      "residues_mod_eta_with_eta_2": [
+        1,
+        1,
+        1
+      ],
+      "visible_gravitational_coefficient_before_GS_or_singlets": -13
+    },
+    "global_and_local_obligations": [
+      "Compute the anomaly polynomial including every bulk hypermultiplet, tensor, and supergravity multiplet.",
+      "Distribute parity-induced anomalies among all four fixed points and add explicit inflow/counterterms.",
+      "Check mixed Z4R-G_local^2 and Z4R-gravity anomalies separately at every fixed point.",
+      "Specify a quantized axion/tensor shift that cancels all universal residues; low-energy congruence is insufficient.",
+      "Recheck the SU(2) Witten anomaly and all global/cobordism anomalies after adding boundary and hidden matter."
+    ],
+    "low_energy_SU2_doublet_count": {
+      "even_in_declared_massless_spectrum": true,
+      "three_families": 12,
+      "total": 14,
+      "two_Higgs_doublets": 2
+    },
+    "six_dimensional_bulk": {
+      "full_supergravity_status": "OPEN: the H-V+29T=273 condition, gravity/tensor multiplets, and the entire neutral hidden spectrum have not been supplied",
+      "irreducible_gauge_anomaly_cancels": true,
+      "irreducible_gauge_sum": 0,
+      "irreducible_trF4_normalization": "A(10)=1 and A(adj_SO10)=10-8=2",
+      "reducible_anomaly_status": "OPEN: factorization and a physical tensor/GS action are absent",
+      "rigid_chiral_dimension_mismatch_vector_minus_hypers": 25,
+      "two_same_chirality_10_hyper_contributions": [
+        -1,
+        -1
+      ],
+      "vector_contribution": 2
+    }
+  },
+  "candidate_action": {
+    "GG_brane": "three local families 10_-1+bar5_3+1_-5, X_+10, Xbar_-10, and S_0 at the SU(5)xU(1)X fixed point",
+    "Z4R_conventional_4D_N1_bookkeeping": "q(theta)=1, q(D_perp)=q(Sigma)=0, q(H)=0, q(Hc)=2; the superpotential has charge 2. A geometric origin is conditional.",
+    "bulk": "6D N=1 SO(10) vector plus two same-chirality 10 hypermultiplets on T2/Z2",
+    "change_from_V55": "Doublet-triplet splitting is a component-parity/KK-kernel effect, not a four-dimensional h-B-H2 filter or additive selector."
+  },
+  "core_sha256": "09ba35b4e7cc05bf2375818e71610f565d6a330b5e8f0221373c301a58293a55",
+  "decision": {
+    "G1_to_G8_promotions": [],
+    "all_boundary_operators_closed": false,
+    "candidate_mechanism_survives_bounded_algebraic_audit": true,
+    "complete_theory": false,
+    "exact_statement": "All non-derivative R0-R0 Higgs bilinears are Z4R-forbidden to every order in the declared q_R=0 GUT-VEV ring.",
+    "higher_dimensional_Z4R_realization_proved": false,
+    "next_exact_test": "Classify all supersymmetric H-Hc and normal-derivative operators at the four fixed points, then compute the regulated infinite KK determinant.",
+    "one_action_completion": false,
+    "physical_anomaly_cancellation_complete": false
+  },
+  "decisive_open_falsifiers": [
+    "No consistent exact higher-dimensional/discrete-gauge realization of the Z4R exists for the full compactification.",
+    "A permitted H-Hc or normal-derivative brane operator lifts the weak zero modes or indirectly creates an Hc-Hc triplet block.",
+    "Any q_R=2 scalar/spurion has a GUT-scale expectation and regenerates a Higgs mass.",
+    "The full bulk plus localized anomaly system cannot be canceled with quantized inflow and physical fields.",
+    "The infinite KK determinant contains a colored zero mode or lacks exactly one Hu/Hd pair before soft breaking.",
+    "Threshold, seesaw/flavor, proton, or soft-spectrum matching fails data."
+  ],
+  "input_bindings": {
+    "V55_completion_kill_test": {
+      "actual_core_sha256": "52d0044e8d227be29b2cab63c565c1f4335aae9a72c9d51f3c9044fe7289a1f7",
+      "expected_core_sha256": "52d0044e8d227be29b2cab63c565c1f4335aae9a72c9d51f3c9044fe7289a1f7",
+      "path": "SUSY_V55_R1_COMPLETION_KILL_TEST_INTEGRATION_AUDIT.json",
+      "relation": "The candidate replaces the rejected finite 4D R1 filter topology."
+    },
+    "V56_architecture_escape": {
+      "actual_core_sha256": "3f3f662cdb8ba0e1081dc77fa2d579fef7c5421b97ca7b16fdce0760f796af0a",
+      "expected_core_sha256": "3f3f662cdb8ba0e1081dc77fa2d579fef7c5421b97ca7b16fdce0760f796af0a",
+      "path": "SUSY_V56_ARCHITECTURE_ESCAPE_RESEARCH_AUDIT.json",
+      "selected_blueprint": "BP2_6D_SO10_T2_OVER_Z2_LOCALITY"
+    }
+  },
+  "integrity_checks": {
+    "GG_brane_rank_breaking_pair_is_gauge_anomaly_free": true,
+    "HcHc_control_exposes_fatal_propagator": true,
+    "Majorana_operator_is_Z4R_allowed": true,
+    "R0_VEV_dressings_cannot_regenerate_H_Hp_mass": true,
+    "all_nonderivative_R0_R0_Higgs_bilinears_forbidden": true,
+    "both_desired_doublets_are_supported_at_GG_brane": true,
+    "bound_V55_core_is_canonical_and_expected": true,
+    "bound_V56_architecture_core_is_canonical_and_expected": true,
+    "bulk_irreducible_gauge_anomaly_cancels": true,
+    "declared_Z4R_operator_expectations_match": true,
+    "each_GG_brane_family_is_gauge_anomaly_free": true,
+    "exactly_two_weak_doublet_zero_modes": true,
+    "finite_KK_bipartite_HH_inverse_is_zero": true,
+    "low_energy_Z4R_gauge_residues_are_universal": true,
+    "no_gate_is_promoted": true,
+    "required_GG_brane_operators_are_gauge_invariant": true,
+    "zero_Hc_zero_modes": true,
+    "zero_colored_zero_modes": true
+  },
+  "mu_and_neutrino_audit": {
+    "low_energy_mu": {
+      "breaks_Z4R_to": "Z2 matter parity",
+      "route": "soft terms shift the driving field to <S>~m_soft, giving mu_eff=lambda<S>",
+      "status": "Plausible but not calculated: the hidden sector and the soft scalar minimization must demonstrate the magnitude and phases of <S>, B_mu, and the gravitino-dependent operators.",
+      "why_residual_Z2": "all matter has q=1, H/Hp have q=0, and the q(S)=2 VEV is invariant under the squared generator"
+    },
+    "right_handed_neutrino": {
+      "allowed": true,
+      "local_gauge_charge_check": "(-5)+(-5)+(+10)=0",
+      "open": "The full F/D vacuum, hierarchy of yN, light-neutrino seesaw fit, and threshold feedback are not supplied.",
+      "operator_R_charge": 2,
+      "scale_relation": "M_N = yN <X>"
+    },
+    "supersymmetric_rank_breaking_action": "W_GG = yu_ij 10_i 10_j H5 + yd_ij 10_i bar5_j Hprime_bar5 + yN_ij 1_i 1_j X + kappa S(X Xbar-v_X^2) + lambda S H10 H10'",
+    "supersymmetric_vacuum": {
+      "Higgs_zero_mode_mu": 0,
+      "S": 0,
+      "X_Xbar": "v_X^2",
+      "Z4R_preserved_by_GUT_rank_breaking": true
+    }
+  },
+  "n_failed_integrity_checks": 0,
+  "neutral_VEV_dressing_certificate": {
+    "all_declared_VEV_charges": [
+      0,
+      0,
+      0
+    ],
+    "all_dressed_H_Hp_terms_forbidden": true,
+    "declared_GUT_scale_VEV_fields": [
+      "X",
+      "Xbar",
+      "constant"
+    ],
+    "distinct_dressed_H_Hp_charges": [
+      0
+    ],
+    "first_fatal_spurion": "Any scalar or effective spurion of q_R=2 with a GUT-scale expectation allows the mass; S is deliberately q_R=2 but must have <S>=0 before soft breaking.",
+    "maximum_total_insertion_degree": 12,
+    "number_of_exponent_vectors_checked": 455
+  },
+  "orbifold_mode_certificate": {
+    "GG_brane_support_result": {
+      "H_component_count": 4,
+      "Hc_component_count": 4,
+      "Higgs_representations_used": [
+        "H10:H:(h3,h2) = 5_(+2)",
+        "H10_prime:H:(bar_h3,bar_h2) = bar5_(-2)"
+      ],
+      "desired_doublet_zero_modes_supported": true,
+      "meaning": "Both desired doublets and their massive color partners are supported at the SU(5)xU(1)X fixed point. Complementary Hc components also have local support, but q(Hc)=2 forbids their Yukawa coupling to two q=1 matter fields."
+    },
+    "color_triplet_zero_mode_count": 0,
+    "component_ledger": [
+      {
+        "SM_kind": "color_triplet",
+        "base_reflection": 1,
+        "component": "h3",
+        "fixed_point_local_signs": {
+          "O_GG": 1,
+          "O_PS": -1,
+          "O_SO10": 1,
+          "O_flipped": -1
+        },
+        "fixed_point_support": [
+          "O_SO10",
+          "O_GG"
+        ],
+        "four_dimensional_chiral": "H",
+        "has_massless_zero_mode": false,
+        "hypermultiplet": "H10",
+        "lowest_free_m2_R2_equal_radii": "1/4",
+        "translation_parities": [
+          1,
+          -1
+        ]
+      },
+      {
+        "SM_kind": "color_triplet",
+        "base_reflection": -1,
+        "component": "h3",
+        "fixed_point_local_signs": {
+          "O_GG": -1,
+          "O_PS": 1,
+          "O_SO10": -1,
+          "O_flipped": 1
+        },
+        "fixed_point_support": [
+          "O_flipped",
+          "O_PS"
+        ],
+        "four_dimensional_chiral": "Hc",
+        "has_massless_zero_mode": false,
+        "hypermultiplet": "H10",
+        "lowest_free_m2_R2_equal_radii": "1/4",
+        "translation_parities": [
+          1,
+          -1
+        ]
+      },
+      {
+        "SM_kind": "weak_doublet",
+        "base_reflection": 1,
+        "component": "h2",
+        "fixed_point_local_signs": {
+          "O_GG": 1,
+          "O_PS": 1,
+          "O_SO10": 1,
+          "O_flipped": 1
+        },
+        "fixed_point_support": [
+          "O_SO10",
+          "O_GG",
+          "O_flipped",
+          "O_PS"
+        ],
+        "four_dimensional_chiral": "H",
+        "has_massless_zero_mode": true,
+        "hypermultiplet": "H10",
+        "lowest_free_m2_R2_equal_radii": "0",
+        "translation_parities": [
+          1,
+          1
+        ]
+      },
+      {
+        "SM_kind": "weak_doublet",
+        "base_reflection": -1,
+        "component": "h2",
+        "fixed_point_local_signs": {
+          "O_GG": -1,
+          "O_PS": -1,
+          "O_SO10": -1,
+          "O_flipped": -1
+        },
+        "fixed_point_support": [],
+        "four_dimensional_chiral": "Hc",
+        "has_massless_zero_mode": false,
+        "hypermultiplet": "H10",
+        "lowest_free_m2_R2_equal_radii": "1",
+        "translation_parities": [
+          1,
+          1
+        ]
+      },
+      {
+        "SM_kind": "color_triplet",
+        "base_reflection": 1,
+        "component": "bar_h3",
+        "fixed_point_local_signs": {
+          "O_GG": -1,
+          "O_PS": -1,
+          "O_SO10": 1,
+          "O_flipped": 1
+        },
+        "fixed_point_support": [
+          "O_SO10",
+          "O_flipped"
+        ],
+        "four_dimensional_chiral": "H",
+        "has_massless_zero_mode": false,
+        "hypermultiplet": "H10",
+        "lowest_free_m2_R2_equal_radii": "1/4",
+        "translation_parities": [
+          -1,
+          1
+        ]
+      },
+      {
+        "SM_kind": "color_triplet",
+        "base_reflection": -1,
+        "component": "bar_h3",
+        "fixed_point_local_signs": {
+          "O_GG": 1,
+          "O_PS": 1,
+          "O_SO10": -1,
+          "O_flipped": -1
+        },
+        "fixed_point_support": [
+          "O_GG",
+          "O_PS"
+        ],
+        "four_dimensional_chiral": "Hc",
+        "has_massless_zero_mode": false,
+        "hypermultiplet": "H10",
+        "lowest_free_m2_R2_equal_radii": "1/4",
+        "translation_parities": [
+          -1,
+          1
+        ]
+      },
+      {
+        "SM_kind": "weak_doublet",
+        "base_reflection": 1,
+        "component": "bar_h2",
+        "fixed_point_local_signs": {
+          "O_GG": -1,
+          "O_PS": 1,
+          "O_SO10": 1,
+          "O_flipped": -1
+        },
+        "fixed_point_support": [
+          "O_SO10",
+          "O_PS"
+        ],
+        "four_dimensional_chiral": "H",
+        "has_massless_zero_mode": false,
+        "hypermultiplet": "H10",
+        "lowest_free_m2_R2_equal_radii": "1/2",
+        "translation_parities": [
+          -1,
+          -1
+        ]
+      },
+      {
+        "SM_kind": "weak_doublet",
+        "base_reflection": -1,
+        "component": "bar_h2",
+        "fixed_point_local_signs": {
+          "O_GG": 1,
+          "O_PS": -1,
+          "O_SO10": -1,
+          "O_flipped": 1
+        },
+        "fixed_point_support": [
+          "O_GG",
+          "O_flipped"
+        ],
+        "four_dimensional_chiral": "Hc",
+        "has_massless_zero_mode": false,
+        "hypermultiplet": "H10",
+        "lowest_free_m2_R2_equal_radii": "1/2",
+        "translation_parities": [
+          -1,
+          -1
+        ]
+      },
+      {
+        "SM_kind": "color_triplet",
+        "base_reflection": 1,
+        "component": "h3",
+        "fixed_point_local_signs": {
+          "O_GG": -1,
+          "O_PS": -1,
+          "O_SO10": 1,
+          "O_flipped": 1
+        },
+        "fixed_point_support": [
+          "O_SO10",
+          "O_flipped"
+        ],
+        "four_dimensional_chiral": "H",
+        "has_massless_zero_mode": false,
+        "hypermultiplet": "H10_prime",
+        "lowest_free_m2_R2_equal_radii": "1/4",
+        "translation_parities": [
+          -1,
+          1
+        ]
+      },
+      {
+        "SM_kind": "color_triplet",
+        "base_reflection": -1,
+        "component": "h3",
+        "fixed_point_local_signs": {
+          "O_GG": 1,
+          "O_PS": 1,
+          "O_SO10": -1,
+          "O_flipped": -1
+        },
+        "fixed_point_support": [
+          "O_GG",
+          "O_PS"
+        ],
+        "four_dimensional_chiral": "Hc",
+        "has_massless_zero_mode": false,
+        "hypermultiplet": "H10_prime",
+        "lowest_free_m2_R2_equal_radii": "1/4",
+        "translation_parities": [
+          -1,
+          1
+        ]
+      },
+      {
+        "SM_kind": "weak_doublet",
+        "base_reflection": 1,
+        "component": "h2",
+        "fixed_point_local_signs": {
+          "O_GG": -1,
+          "O_PS": 1,
+          "O_SO10": 1,
+          "O_flipped": -1
+        },
+        "fixed_point_support": [
+          "O_SO10",
+          "O_PS"
+        ],
+        "four_dimensional_chiral": "H",
+        "has_massless_zero_mode": false,
+        "hypermultiplet": "H10_prime",
+        "lowest_free_m2_R2_equal_radii": "1/2",
+        "translation_parities": [
+          -1,
+          -1
+        ]
+      },
+      {
+        "SM_kind": "weak_doublet",
+        "base_reflection": -1,
+        "component": "h2",
+        "fixed_point_local_signs": {
+          "O_GG": 1,
+          "O_PS": -1,
+          "O_SO10": -1,
+          "O_flipped": 1
+        },
+        "fixed_point_support": [
+          "O_GG",
+          "O_flipped"
+        ],
+        "four_dimensional_chiral": "Hc",
+        "has_massless_zero_mode": false,
+        "hypermultiplet": "H10_prime",
+        "lowest_free_m2_R2_equal_radii": "1/2",
+        "translation_parities": [
+          -1,
+          -1
+        ]
+      },
+      {
+        "SM_kind": "color_triplet",
+        "base_reflection": 1,
+        "component": "bar_h3",
+        "fixed_point_local_signs": {
+          "O_GG": 1,
+          "O_PS": -1,
+          "O_SO10": 1,
+          "O_flipped": -1
+        },
+        "fixed_point_support": [
+          "O_SO10",
+          "O_GG"
+        ],
+        "four_dimensional_chiral": "H",
+        "has_massless_zero_mode": false,
+        "hypermultiplet": "H10_prime",
+        "lowest_free_m2_R2_equal_radii": "1/4",
+        "translation_parities": [
+          1,
+          -1
+        ]
+      },
+      {
+        "SM_kind": "color_triplet",
+        "base_reflection": -1,
+        "component": "bar_h3",
+        "fixed_point_local_signs": {
+          "O_GG": -1,
+          "O_PS": 1,
+          "O_SO10": -1,
+          "O_flipped": 1
+        },
+        "fixed_point_support": [
+          "O_flipped",
+          "O_PS"
+        ],
+        "four_dimensional_chiral": "Hc",
+        "has_massless_zero_mode": false,
+        "hypermultiplet": "H10_prime",
+        "lowest_free_m2_R2_equal_radii": "1/4",
+        "translation_parities": [
+          1,
+          -1
+        ]
+      },
+      {
+        "SM_kind": "weak_doublet",
+        "base_reflection": 1,
+        "component": "bar_h2",
+        "fixed_point_local_signs": {
+          "O_GG": 1,
+          "O_PS": 1,
+          "O_SO10": 1,
+          "O_flipped": 1
+        },
+        "fixed_point_support": [
+          "O_SO10",
+          "O_GG",
+          "O_flipped",
+          "O_PS"
+        ],
+        "four_dimensional_chiral": "H",
+        "has_massless_zero_mode": true,
+        "hypermultiplet": "H10_prime",
+        "lowest_free_m2_R2_equal_radii": "0",
+        "translation_parities": [
+          1,
+          1
+        ]
+      },
+      {
+        "SM_kind": "weak_doublet",
+        "base_reflection": -1,
+        "component": "bar_h2",
+        "fixed_point_local_signs": {
+          "O_GG": -1,
+          "O_PS": -1,
+          "O_SO10": -1,
+          "O_flipped": -1
+        },
+        "fixed_point_support": [],
+        "four_dimensional_chiral": "Hc",
+        "has_massless_zero_mode": false,
+        "hypermultiplet": "H10_prime",
+        "lowest_free_m2_R2_equal_radii": "1",
+        "translation_parities": [
+          1,
+          1
+        ]
+      }
+    ],
+    "conjugate_Hc_zero_mode_count": 0,
+    "fixed_point_groups": {
+      "O_GG": "SU(5) x U(1)X",
+      "O_PS": "SU(4)C x SU(2)L x SU(2)R",
+      "O_SO10": "SO(10)",
+      "O_flipped": "flipped SU(5)' x U(1)'X"
+    },
+    "geometry": "T^2/Z2 with two independent SO(10) translation twists",
+    "hypermultiplet_intrinsic_translation_choices": {
+      "H10": [
+        1,
+        -1
+      ],
+      "H10_prime": [
+        -1,
+        1
+      ]
+    },
+    "scope": "Exact for the free translation/reflection projector. Boundary quadratic operators can change the KK determinant and are audited separately.",
+    "weak_doublet_zero_mode_count": 2,
+    "zero_modes": [
+      "H10:H:h2",
+      "H10_prime:H:bar_h2"
+    ]
+  },
+  "primary_sources": [
+    {
+      "arxiv": "hep-ph/0108071",
+      "authors": "L.J. Hall, Y. Nomura, T. Okui, D.R. Smith",
+      "id": "HNOS2001",
+      "title": "SO(10) Unified Theories in Six Dimensions",
+      "url": "https://arxiv.org/abs/hep-ph/0108071",
+      "used_for": "T2/Z2 SO(10) twists, Higgs parities, bulk-anomaly and threshold obligations"
+    },
+    {
+      "arxiv": "1009.0905",
+      "authors": "H.M. Lee et al.",
+      "id": "LRRRSSV2010",
+      "title": "A unique Z_4^R symmetry for the MSSM",
+      "url": "https://arxiv.org/abs/1009.0905",
+      "used_for": "SO(10)-compatible low-energy Z4R charges, residual matter parity, mu/proton logic"
+    },
+    {
+      "arxiv": "hep-ph/0407070",
+      "authors": "W. Buchmuller, L. Covi, D. Emmanuel-Costa, S. Wiesenfeldt",
+      "id": "BCECW2004",
+      "title": "Flavour structure and proton decay in 6D orbifold GUTs",
+      "url": "https://arxiv.org/abs/hep-ph/0407070",
+      "used_for": "R-symmetry dimension-five suppression and KK dimension-six proton obligations"
+    }
+  ],
+  "proton_audit": {
+    "KK_colored_higgsino_exchange": {
+      "certificate_passes": true,
+      "conditional_result": "The finite bipartite witness has an exactly zero H-H inverse block because Z4R permits O_GG matter Yukawas only to H, not Hc.",
+      "not_a_full_proof": "The infinite KK determinant with every allowed fixed-point normal-derivative term has not been evaluated."
+    },
+    "after_R_breaking": "S(10 10 10 bar5)/M_*^2 is allowed, so its coefficient scales as <S>/M_*^2; this is parametrically suppressed but still requires flavor, dressing, and lifetime matching.",
+    "colored_Higgsino_after_soft_mu": {
+      "parametric_coefficient": "C5 ~ yu yd lambda_c<S>/Mc^2 ~ yu yd mu_R/Mc^2",
+      "status": "S Hc Hpc is Z4R-allowed and supplies the soft Hc-Hc block. The suppression follows only if the full KK inverse retains the declared block hierarchy; it is not a lifetime prediction."
+    },
+    "colored_zero_modes": 0,
+    "dimension6": "X,Y KK gauge exchange and boundary K\u00e4hler operators remain; Z4R does not remove them.",
+    "direct_superpotential_dimension5": "forbidden: quartic matter charge is 0 mod 4",
+    "falsifier": "Any GUT-scale Hc-Hc quadratic block, direct baryon operator with an unsuppressed q_R=2 spurion, or matched proton lifetime below data rejects the candidate; the intended soft Hc-Hc block must remain small.",
+    "perturbative_RPV_dimension4": "forbidden: cubic matter charge is 3 mod 4"
+  },
+  "schema": "susy_v56_orbifold_z4r_protection_audit/v1",
+  "scope_and_nonclaim": {
+    "bounded_answer": "Yes for direct non-derivative R0-R0 masses inside the declared local operator ring, conditional on a consistent higher-dimensional discrete-gauge realization and only R0 GUT-scale VEVs. This is a candidate mechanism, not a complete theory.",
+    "not_claimed": [
+      "No regulator-level proof of a higher-dimensional/geometric origin for Z4R or complete fixed-point operator ring.",
+      "No infinite KK determinant with normal-derivative boundary interactions.",
+      "No localized/discrete/gravitational anomaly cancellation or physical GS completion.",
+      "No threshold, flavor, seesaw, proton-lifetime, soft-spectrum, or cosmology fit.",
+      "No G1-G8 gate promotion and no empirical discovery."
+    ],
+    "question": "Can a Z4R with a possible higher-dimensional origin protect the V56 T2/Z2 orbifold Higgs zero modes while retaining Yukawas, Majorana mass, and a soft-scale mu?"
+  },
+  "source_manifest": [
+    {
+      "exists": true,
+      "path": "susy_v56_orbifold_geometric_z4r_protection_audit.py",
+      "sha256": "410fc27628994759bf2ffc6309e196ac62a483eea9ed88056649c906bec40a65"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v56_orbifold_geometric_z4r_protection_audit.py",
+      "sha256": "abb1d4be7e52088cf72a7a3d2eb39765d74808f1c30b5c041ccb1e1bade08d97"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V55_R1_COMPLETION_KILL_TEST_INTEGRATION_AUDIT.json",
+      "sha256": "c35a785092e37233954ec3e74174cc66ce57005e5bf47568bdb620502188320b"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V56_ARCHITECTURE_ESCAPE_RESEARCH_AUDIT.json",
+      "sha256": "94abde517c825be5b26de70f9e3db750508880c96c20a6a7980a577f949c6b37"
+    }
+  ],
+  "status": "V56_6D_ORBIFOLD_Z4R_PROTECTION__V55_AND_V56_ARCHITECTURE_CORES_BOUND__TWO_WEAK_ZERO_MODES_AND_ZERO_COLORED_ZERO_MODES__NONDERIVATIVE_R0_R0_HIGGS_MASSES_FORBIDDEN_TO_ALL_R0_VEV_ORDERS__YUKAWA_AND_MAJORANA_ALLOWED__SOFT_R_BREAKING_MU_ROUTE_IDENTIFIED__BULK_IRREDUCIBLE_GAUGE_ANOMALY_CANCELS__HIGHER_DIMENSIONAL_ORIGIN_DERIVATIVE_BRANE_LOCALIZED_ANOMALY_GS_THRESHOLD_AND_UV_OBLIGATIONS_OPEN__ZERO_GATE_PROMOTIONS",
+  "threshold_and_UV_obligations": {
+    "falsifiers": [
+      "No perturbative window M_*/M_c supports the required running.",
+      "Allowed brane kinetic coefficients must be tuned beyond the declared naturalness criterion.",
+      "The matched alpha_s, weak angle, or proton scale fails current constraints."
+    ],
+    "not_calculated": [
+      "The full two-radius KK determinant and regulator-matched gauge thresholds.",
+      "Nonuniversal fixed-point gauge kinetic terms at SO(10), GG, flipped, and PS branes.",
+      "U(1)X/rank-breaking, X/Xbar, S, flavor-mediator, and supersymmetry-breaking thresholds.",
+      "The relation among M_c, M_*, the six-dimensional gauge coupling, and the observed unified coupling."
+    ],
+    "power_law_warning": "Bulk power-law pieces are cutoff sensitive; only symmetry-controlled differences can be used without a declared UV matching prescription."
+  }
+}

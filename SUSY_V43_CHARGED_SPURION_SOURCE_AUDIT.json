@@ -1,0 +1,2579 @@
+{
+  "core_sha256": "2b94159dac9311f14790956bd8fbbf5222ea7c4dfa2aa4a9091975e7bc74de8d",
+  "decision": {
+    "V42_neutral_parameter_no_go_is_evaded_at_renormalizable_F_term_level": true,
+    "conditional_FI_branch_is_a_completed_physical_theory": false,
+    "formal_F_flat_source_times_F_flat_host_branch_exists": true,
+    "full_coupled_PS_PQ_U1F_U1S_vacuum_exists": false,
+    "full_gate_closed": [],
+    "neutral_one_compensator_no_FI_repair_preserves_separation": false,
+    "new_U1S_gauge_parent_completed": false,
+    "renormalizable_source_host_separation_is_symmetry_protected": true,
+    "zero_FI_minimal_gauged_D_flat_branch_exists": false
+  },
+  "full_coupled_F_term_audit": {
+    "anomalon_mass_witness_preserved": {
+      "ThetaMinus_masses": [
+        "four R0/Rplus9 pairs",
+        "E4/E5 pair",
+        "E3/E6 pair"
+      ],
+      "ThetaPlus_masses": [
+        "four L0/Lminus9 pairs",
+        "Eminus2/Eminus7 pair"
+      ],
+      "all_original_V41_anomalons_massable_when_ThetaPlus_and_ThetaMinus_are_nonzero": true,
+      "rank_witness": "lambdaL=lambdaR=I_4; all singlet couplings nonzero"
+    },
+    "declared_full_renormalizable_form": "W = W_host(V40 fields) + kappa STheta ThetaPlus ThetaMinus + M_Omega STheta Omega + W_Theta_anomalon_mass",
+    "does_not_establish": [
+      "a zero-FI D-flat gauged branch",
+      "an anomaly-free U(1)_S parent",
+      "a full Kahler/soft vacuum or a higher-dimensional source-host operator proof"
+    ],
+    "formal_branch": {
+      "Omega": "-(kappa/M_Omega) ThetaPlus ThetaMinus != 0",
+      "STheta": 0,
+      "ThetaPlus_times_ThetaMinus": "-(M_Omega/kappa) Omega != 0",
+      "all_anomalons": 0,
+      "all_host_F_terms_zero_given_an_F_flat_host_solution": true,
+      "all_source_F_terms_zero": true,
+      "host_requirement": "all partial W_host = 0 on the chosen host branch",
+      "renormalizable_product_branch_is_F_flat": true
+    },
+    "source_F_equations_at_zero_anomalon_VEVs": {
+      "F_Omega": "M_Omega STheta",
+      "F_STheta": "kappa ThetaPlus ThetaMinus + M_Omega Omega",
+      "F_ThetaMinus": "kappa STheta ThetaPlus",
+      "F_ThetaPlus": "kappa STheta ThetaMinus",
+      "F_X": "partial_X W_host",
+      "F_Zp": "partial_Zp W_host",
+      "F_anomalons": "ThetaPlus or ThetaMinus times its declared full-rank V41 mass matrix times the partner",
+      "F_other_host": "partial_other_host W_host"
+    },
+    "why_this_is_a_coupled_audit": "The cubic scan has no potentially PS-invariant source--host term after its necessary PS-singlet filter, so at renormalizable order the displayed source F equations and the arbitrary F-flat host equations are simultaneously valid."
+  },
+  "minimal_D_and_residual_audit": {
+    "conditional_FI_escape": {
+      "Omega_U1F_charge": 0,
+      "U1F_nonzero_VEV_charges": [
+        9,
+        -9
+      ],
+      "assumption": "A positive constant xi_S is inserted into D_S/gS = |STheta|^2-|ThetaMinus|^2-|Omega|^2+xi_S.",
+      "equation_on_F_branch": "alpha x^2+x-xi_S=0, with x=|ThetaPlus|^2=|ThetaMinus|^2 and alpha=|kappa/M_Omega|^2.",
+      "formal_F_and_D_flat_solution_exists": true,
+      "positive_solution": "x=(-1+sqrt(1+4 alpha xi_S))/(2 alpha) for xi_S>0.",
+      "unbroken_U1F_subgroup": "Z9",
+      "why_not_a_completion": "A constant FI datum and the anomaly/UV completion of U(1)_S are additional physics. They are not supplied by this minimal spurion Lagrangian."
+    },
+    "minimal_gauged_field_charge_matrix": {
+      "Omega": {
+        "U1F": 0,
+        "U1S": -1,
+        "Z4R": 0
+      },
+      "STheta": {
+        "U1F": 0,
+        "U1S": 1,
+        "Z4R": 2
+      },
+      "ThetaMinus": {
+        "U1F": -9,
+        "U1S": -1,
+        "Z4R": 0
+      },
+      "ThetaPlus": {
+        "U1F": 9,
+        "U1S": 0,
+        "Z4R": 0
+      }
+    },
+    "zero_FI_D_terms": {
+      "D_F_over_gF": "9(|ThetaPlus|^2-|ThetaMinus|^2)",
+      "D_S_over_gS": "|STheta|^2-|ThetaMinus|^2-|Omega|^2",
+      "on_nonzero_F_branch": [
+        "|ThetaPlus|^2=|ThetaMinus|^2=v^2 from D_F=0.",
+        "STheta=0 and Omega!=0 from F_Omega=F_STheta=0.",
+        "D_S/gS = -v^2-|Omega|^2 < 0."
+      ],
+      "proof": "The two nonzero U(1)_S-negative F-branch VEV contributions cannot be balanced in the minimal field set, independent of couplings or of the individual Theta phases.",
+      "zero_FI_D_flat_branch_exists": false
+    }
+  },
+  "neutral_compensator_recurrence": {
+    "F_term_consequence": {
+      "F_X": "partial_X W_host + lambda_X Omega OmegaBar",
+      "F_Zp": "partial_Zp W_host + lambda_Z Omega OmegaBar",
+      "unperturbed_host_branch_is_F_flat_when_Omega_and_OmegaBar_nonzero": false
+    },
+    "OmegaBar": {
+      "PQ": 0,
+      "U1F": 0,
+      "U1S": 1,
+      "Z4R": 0,
+      "Z5610": 0
+    },
+    "attempt": "Add a U(1)_F-neutral, U(1)_S=+1, Z4R-neutral field OmegaBar whose VEV would cancel the minimal D_S contribution without an FI term.",
+    "generic_portals": [
+      {
+        "allowed": true,
+        "charges": {
+          "PQ": 0,
+          "U1F": 0,
+          "U1S": 0,
+          "Z4R": 2,
+          "Z5610": 0
+        },
+        "operator": "X Omega OmegaBar"
+      },
+      {
+        "allowed": true,
+        "charges": {
+          "PQ": 0,
+          "U1F": 0,
+          "U1S": 0,
+          "Z4R": 2,
+          "Z5610": 0
+        },
+        "operator": "Zp Omega OmegaBar"
+      }
+    ],
+    "minimal_compensator_class_no_go": "If the positive compensator is neutral under U(1)_F and the old selectors and preserves Z4R, then its product with Omega is neutral under every declared factor. The generic X/Zp portal is therefore unavoidable. A differently charged or non-minimal compensator is a new model requiring a fresh F/D, residual-group, anomaly, mass, and operator audit."
+  },
+  "new_U1S_anomaly_audit": {
+    "all_new_U1S_local_rows_cancel": false,
+    "conclusion": "The U(1)_S label cannot yet be promoted to a completed gauge symmetry. Any spectator or Green--Schwarz repair must be added explicitly, massed, and re-audited for source-host portals.",
+    "convention": "PS rows use the V40 doubled-Dynkin coefficients; abelian gravity/cubic rows use physical Weyl-component multiplicities.",
+    "new_U1S_rows": {
+      "PS_squared_U1S": {
+        "SU2L": 0,
+        "SU2R": 4,
+        "SU4": 0
+      },
+      "U1F_U1S_squared": -2,
+      "U1F_squared_U1S": -56,
+      "U1S_cubed": 9,
+      "gravity_U1S": 9
+    },
+    "unchanged_U1F_only_check": {
+      "SU2_global_doublet_counts": {
+        "SU2L": 30,
+        "SU2R": 38
+      },
+      "U1F_cubic": 0,
+      "U1F_gravitational": 0,
+      "all_SU2_Witten_parities_even": true,
+      "all_local_continuous_anomalies_cancel": true,
+      "cancellation_ledger": {
+        "four_L_pairs": {
+          "SU2L": -36,
+          "cubic": -5832,
+          "gravitational": -72
+        },
+        "four_R_pairs": {
+          "SU2R": 36,
+          "cubic": 5832,
+          "gravitational": 72
+        },
+        "singlet_pairs_45_36_minus2minus7": {
+          "cubic": 81,
+          "gravitational": 9
+        },
+        "visible_before_completion": {
+          "SU2L": 36,
+          "SU2R": -36,
+          "SU4": 0,
+          "cubic": -81,
+          "gravitational": -9
+        }
+      },
+      "mixed_U1F_PS_squared": {
+        "SU2L": 0,
+        "SU2R": 0,
+        "SU4": 0
+      },
+      "scope_limit": "This closes local anomalies of PS times U(1)_F.  The unspecified continuous parent, if any, of Z5610 is not included, so product cross anomalies remain open."
+    }
+  },
+  "new_charge_assignments": {
+    "E3": {
+      "PQ_numerator_over_170": 0,
+      "U1F": 3,
+      "U1S": 1,
+      "Z4R": 1,
+      "Z5610": 0,
+      "representation": {}
+    },
+    "E4": {
+      "PQ_numerator_over_170": 0,
+      "U1F": 4,
+      "U1S": 1,
+      "Z4R": 1,
+      "Z5610": 0,
+      "representation": {}
+    },
+    "E5": {
+      "PQ_numerator_over_170": 0,
+      "U1F": 5,
+      "U1S": 0,
+      "Z4R": 1,
+      "Z5610": 0,
+      "representation": {}
+    },
+    "E6": {
+      "PQ_numerator_over_170": 0,
+      "U1F": 6,
+      "U1S": 0,
+      "Z4R": 1,
+      "Z5610": 0,
+      "representation": {}
+    },
+    "Eminus2": {
+      "PQ_numerator_over_170": 0,
+      "U1F": -2,
+      "U1S": 0,
+      "Z4R": 1,
+      "Z5610": 0,
+      "representation": {}
+    },
+    "Eminus7": {
+      "PQ_numerator_over_170": 0,
+      "U1F": -7,
+      "U1S": 0,
+      "Z4R": 1,
+      "Z5610": 0,
+      "representation": {}
+    },
+    "L0": {
+      "PQ_numerator_over_170": 0,
+      "U1F": 0,
+      "U1S": 0,
+      "Z4R": 1,
+      "Z5610": 0,
+      "representation": {
+        "SU2L": 4
+      }
+    },
+    "Lminus9": {
+      "PQ_numerator_over_170": 0,
+      "U1F": -9,
+      "U1S": 0,
+      "Z4R": 1,
+      "Z5610": 0,
+      "representation": {
+        "SU2L": 4
+      }
+    },
+    "Omega": {
+      "PQ_numerator_over_170": 0,
+      "U1F": 0,
+      "U1S": -1,
+      "Z4R": 0,
+      "Z5610": 0,
+      "representation": "charged dynamical linear-term spurion"
+    },
+    "R0": {
+      "PQ_numerator_over_170": 0,
+      "U1F": 0,
+      "U1S": 1,
+      "Z4R": 1,
+      "Z5610": 0,
+      "representation": {
+        "SU2R": 4
+      }
+    },
+    "Rplus9": {
+      "PQ_numerator_over_170": 0,
+      "U1F": 9,
+      "U1S": 0,
+      "Z4R": 1,
+      "Z5610": 0,
+      "representation": {
+        "SU2R": 4
+      }
+    },
+    "STheta": {
+      "PQ_numerator_over_170": 0,
+      "U1F": 0,
+      "U1S": 1,
+      "Z4R": 2,
+      "Z5610": 0,
+      "representation": {}
+    },
+    "ThetaMinus": {
+      "PQ_numerator_over_170": 0,
+      "U1F": -9,
+      "U1S": -1,
+      "Z4R": 0,
+      "Z5610": 0,
+      "representation": {}
+    },
+    "ThetaPlus": {
+      "PQ_numerator_over_170": 0,
+      "U1F": 9,
+      "U1S": 0,
+      "Z4R": 0,
+      "Z5610": 0,
+      "representation": {}
+    }
+  },
+  "renormalizable_source_host_portal_audit": {
+    "abelian_allowed_X_or_Zp_source_monomials": [],
+    "abelian_allowed_monomials": [
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 1,
+        "fields": [
+          "X"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 1,
+        "fields": [
+          "SigC"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 1,
+        "fields": [
+          "SigBc"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 1,
+        "fields": [
+          "Zp"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 2,
+        "fields": [
+          "H",
+          "X"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 2,
+        "fields": [
+          "H",
+          "SigC"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 2,
+        "fields": [
+          "H",
+          "SigBc"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 2,
+        "fields": [
+          "H",
+          "Zp"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 2,
+        "fields": [
+          "Q",
+          "Qc"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 2,
+        "fields": [
+          "Q",
+          "PsiC"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 2,
+        "fields": [
+          "Q",
+          "NDirac"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 2,
+        "fields": [
+          "Qc",
+          "Psi"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 2,
+        "fields": [
+          "X",
+          "Sc"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 2,
+        "fields": [
+          "X",
+          "Sbc"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 2,
+        "fields": [
+          "Sc",
+          "SigC"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 2,
+        "fields": [
+          "Sc",
+          "SigBc"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 2,
+        "fields": [
+          "Sc",
+          "Zp"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 2,
+        "fields": [
+          "Sbc",
+          "SigC"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 2,
+        "fields": [
+          "Sbc",
+          "SigBc"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 2,
+        "fields": [
+          "Sbc",
+          "Zp"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 2,
+        "fields": [
+          "Psi",
+          "PsiC"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 2,
+        "fields": [
+          "Psi",
+          "NDirac"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 2,
+        "fields": [
+          "STheta",
+          "Omega"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "H",
+          "H",
+          "X"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "H",
+          "H",
+          "SigC"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "H",
+          "H",
+          "SigBc"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "H",
+          "H",
+          "Zp"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "H",
+          "Q",
+          "Qc"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "H",
+          "Q",
+          "PsiC"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "H",
+          "Q",
+          "NDirac"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "H",
+          "Qc",
+          "Psi"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "H",
+          "X",
+          "Sc"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "H",
+          "X",
+          "Sbc"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "H",
+          "Sc",
+          "SigC"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "H",
+          "Sc",
+          "SigBc"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "H",
+          "Sc",
+          "Zp"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "H",
+          "Sbc",
+          "SigC"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "H",
+          "Sbc",
+          "SigBc"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "H",
+          "Sbc",
+          "Zp"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "H",
+          "Psi",
+          "PsiC"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "H",
+          "Psi",
+          "NDirac"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "H",
+          "STheta",
+          "Omega"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "Q",
+          "Qc",
+          "Sc"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "Q",
+          "Qc",
+          "Sbc"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "Q",
+          "Sc",
+          "PsiC"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "Q",
+          "Sc",
+          "NDirac"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "Q",
+          "Sbc",
+          "PsiC"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "Q",
+          "Sbc",
+          "NDirac"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "Q",
+          "PsiBar",
+          "P"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "Qc",
+          "Sc",
+          "Psi"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "Qc",
+          "Sbc",
+          "Psi"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "Qc",
+          "PsiCBar",
+          "P"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "X",
+          "X",
+          "SigC"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "X",
+          "X",
+          "SigBc"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "X",
+          "X",
+          "Zp"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "X",
+          "Sc",
+          "Sc"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "X",
+          "Sc",
+          "Sbc"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "X",
+          "Sbc",
+          "Sbc"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "X",
+          "SigC",
+          "SigC"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "X",
+          "SigC",
+          "SigBc"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "X",
+          "SigC",
+          "Zp"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "X",
+          "SigBc",
+          "SigBc"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "X",
+          "SigBc",
+          "Zp"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "X",
+          "P",
+          "Pb"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "X",
+          "Zp",
+          "Zp"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "Sc",
+          "Sc",
+          "SigC"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "Sc",
+          "Sc",
+          "SigBc"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "Sc",
+          "Sc",
+          "Zp"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "Sc",
+          "Sbc",
+          "SigC"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "Sc",
+          "Sbc",
+          "SigBc"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "Sc",
+          "Sbc",
+          "Zp"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "Sc",
+          "Psi",
+          "PsiC"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "Sc",
+          "Psi",
+          "NDirac"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "Sc",
+          "STheta",
+          "Omega"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "Sbc",
+          "Sbc",
+          "SigC"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "Sbc",
+          "Sbc",
+          "SigBc"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "Sbc",
+          "Sbc",
+          "Zp"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "Sbc",
+          "Psi",
+          "PsiC"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "Sbc",
+          "Psi",
+          "NDirac"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "Sbc",
+          "STheta",
+          "Omega"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "SigC",
+          "SigC",
+          "SigC"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "SigC",
+          "SigC",
+          "SigBc"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "SigC",
+          "SigC",
+          "Zp"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "SigC",
+          "SigBc",
+          "SigBc"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "SigC",
+          "SigBc",
+          "Zp"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "SigC",
+          "P",
+          "Pb"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "SigC",
+          "Zp",
+          "Zp"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "SigBc",
+          "SigBc",
+          "SigBc"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "SigBc",
+          "SigBc",
+          "Zp"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "SigBc",
+          "P",
+          "Pb"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "SigBc",
+          "Zp",
+          "Zp"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "PsiBar",
+          "Psi",
+          "P"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "PsiC",
+          "PsiCBar",
+          "P"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "PsiCBar",
+          "P",
+          "NDirac"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "P",
+          "Pb",
+          "Zp"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "P",
+          "A15",
+          "A17"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "P",
+          "A16",
+          "A16"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "Pb",
+          "A2",
+          "A32"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "Zp",
+          "Zp",
+          "Zp"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "STheta",
+          "ThetaPlus",
+          "ThetaMinus"
+        ]
+      }
+    ],
+    "abelian_allowed_source_host_monomials": [
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "H",
+          "STheta",
+          "Omega"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "Sc",
+          "STheta",
+          "Omega"
+        ]
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "Sbc",
+          "STheta",
+          "Omega"
+        ]
+      }
+    ],
+    "candidate_field_count": 25,
+    "important_limit": "This is a complete renormalizable abelian scan plus a necessary PS-singlet filter. It is not a classification of arbitrary higher-dimensional operators involving charged V40 host fields.",
+    "method": "All monomials of degree one through three are first filtered only by the declared abelian factors. A gauge invariant mixed portal would have to survive this superset.",
+    "no_renormalizable_X_Zp_source_portal_in_abelian_superset": true,
+    "no_renormalizable_source_host_portal_after_necessary_PS_filter": true,
+    "potentially_PS_invariant_source_host_monomials_after_necessary_filter": [],
+    "source_host_rows_excluded_by_necessary_PS_singlet_filter": [
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "H",
+          "STheta",
+          "Omega"
+        ],
+        "necessary_PS_filter": "one non-singlet host factor times PS-singlet source factors cannot form a PS invariant"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "Sc",
+          "STheta",
+          "Omega"
+        ],
+        "necessary_PS_filter": "one non-singlet host factor times PS-singlet source factors cannot form a PS invariant"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "degree": 3,
+        "fields": [
+          "Sbc",
+          "STheta",
+          "Omega"
+        ],
+        "necessary_PS_filter": "one non-singlet host factor times PS-singlet source factors cannot form a PS invariant"
+      }
+    ]
+  },
+  "restricted_all_order_driver_source_ring": {
+    "all_checked_nontrivial_portals_vanish_on_F_branch": true,
+    "conclusion": "No polynomial X/Zp portal made only from source-branch VEV fields survives on the STheta=0 branch. Any allowed nontrivial restricted-ring portal contains STheta.",
+    "derivation": [
+      "U(1)_F neutrality gives n(ThetaPlus)=n(ThetaMinus)=n.",
+      "U(1)_S neutrality gives n(STheta)-n-n(Omega)=0.",
+      "Z4R requires 2+2 n(STheta) = 2 mod 4, so n(STheta) is even.",
+      "If STheta=0 on the F branch, U(1)_S neutrality forces n=n(Omega)=0."
+    ],
+    "finite_exhaustive_crosscheck_bounds": {
+      "STheta_power": [
+        0,
+        17
+      ],
+      "allowed_examples": [
+        {
+          "STheta_power": 0,
+          "allowed": true,
+          "omega_power": 0,
+          "theta_plus_and_minus_power_each": 0,
+          "vanishes_when_STheta_zero": false
+        },
+        {
+          "STheta_power": 2,
+          "allowed": true,
+          "omega_power": 2,
+          "theta_plus_and_minus_power_each": 0,
+          "vanishes_when_STheta_zero": true
+        },
+        {
+          "STheta_power": 4,
+          "allowed": true,
+          "omega_power": 4,
+          "theta_plus_and_minus_power_each": 0,
+          "vanishes_when_STheta_zero": true
+        },
+        {
+          "STheta_power": 6,
+          "allowed": true,
+          "omega_power": 6,
+          "theta_plus_and_minus_power_each": 0,
+          "vanishes_when_STheta_zero": true
+        },
+        {
+          "STheta_power": 8,
+          "allowed": true,
+          "omega_power": 8,
+          "theta_plus_and_minus_power_each": 0,
+          "vanishes_when_STheta_zero": true
+        },
+        {
+          "STheta_power": 2,
+          "allowed": true,
+          "omega_power": 1,
+          "theta_plus_and_minus_power_each": 1,
+          "vanishes_when_STheta_zero": true
+        },
+        {
+          "STheta_power": 4,
+          "allowed": true,
+          "omega_power": 3,
+          "theta_plus_and_minus_power_each": 1,
+          "vanishes_when_STheta_zero": true
+        },
+        {
+          "STheta_power": 6,
+          "allowed": true,
+          "omega_power": 5,
+          "theta_plus_and_minus_power_each": 1,
+          "vanishes_when_STheta_zero": true
+        },
+        {
+          "STheta_power": 8,
+          "allowed": true,
+          "omega_power": 7,
+          "theta_plus_and_minus_power_each": 1,
+          "vanishes_when_STheta_zero": true
+        },
+        {
+          "STheta_power": 2,
+          "allowed": true,
+          "omega_power": 0,
+          "theta_plus_and_minus_power_each": 2,
+          "vanishes_when_STheta_zero": true
+        },
+        {
+          "STheta_power": 4,
+          "allowed": true,
+          "omega_power": 2,
+          "theta_plus_and_minus_power_each": 2,
+          "vanishes_when_STheta_zero": true
+        },
+        {
+          "STheta_power": 6,
+          "allowed": true,
+          "omega_power": 4,
+          "theta_plus_and_minus_power_each": 2,
+          "vanishes_when_STheta_zero": true
+        },
+        {
+          "STheta_power": 8,
+          "allowed": true,
+          "omega_power": 6,
+          "theta_plus_and_minus_power_each": 2,
+          "vanishes_when_STheta_zero": true
+        },
+        {
+          "STheta_power": 10,
+          "allowed": true,
+          "omega_power": 8,
+          "theta_plus_and_minus_power_each": 2,
+          "vanishes_when_STheta_zero": true
+        },
+        {
+          "STheta_power": 4,
+          "allowed": true,
+          "omega_power": 1,
+          "theta_plus_and_minus_power_each": 3,
+          "vanishes_when_STheta_zero": true
+        },
+        {
+          "STheta_power": 6,
+          "allowed": true,
+          "omega_power": 3,
+          "theta_plus_and_minus_power_each": 3,
+          "vanishes_when_STheta_zero": true
+        },
+        {
+          "STheta_power": 8,
+          "allowed": true,
+          "omega_power": 5,
+          "theta_plus_and_minus_power_each": 3,
+          "vanishes_when_STheta_zero": true
+        },
+        {
+          "STheta_power": 10,
+          "allowed": true,
+          "omega_power": 7,
+          "theta_plus_and_minus_power_each": 3,
+          "vanishes_when_STheta_zero": true
+        },
+        {
+          "STheta_power": 4,
+          "allowed": true,
+          "omega_power": 0,
+          "theta_plus_and_minus_power_each": 4,
+          "vanishes_when_STheta_zero": true
+        },
+        {
+          "STheta_power": 6,
+          "allowed": true,
+          "omega_power": 2,
+          "theta_plus_and_minus_power_each": 4,
+          "vanishes_when_STheta_zero": true
+        },
+        {
+          "STheta_power": 8,
+          "allowed": true,
+          "omega_power": 4,
+          "theta_plus_and_minus_power_each": 4,
+          "vanishes_when_STheta_zero": true
+        },
+        {
+          "STheta_power": 10,
+          "allowed": true,
+          "omega_power": 6,
+          "theta_plus_and_minus_power_each": 4,
+          "vanishes_when_STheta_zero": true
+        },
+        {
+          "STheta_power": 12,
+          "allowed": true,
+          "omega_power": 8,
+          "theta_plus_and_minus_power_each": 4,
+          "vanishes_when_STheta_zero": true
+        },
+        {
+          "STheta_power": 6,
+          "allowed": true,
+          "omega_power": 1,
+          "theta_plus_and_minus_power_each": 5,
+          "vanishes_when_STheta_zero": true
+        },
+        {
+          "STheta_power": 8,
+          "allowed": true,
+          "omega_power": 3,
+          "theta_plus_and_minus_power_each": 5,
+          "vanishes_when_STheta_zero": true
+        },
+        {
+          "STheta_power": 10,
+          "allowed": true,
+          "omega_power": 5,
+          "theta_plus_and_minus_power_each": 5,
+          "vanishes_when_STheta_zero": true
+        },
+        {
+          "STheta_power": 12,
+          "allowed": true,
+          "omega_power": 7,
+          "theta_plus_and_minus_power_each": 5,
+          "vanishes_when_STheta_zero": true
+        },
+        {
+          "STheta_power": 6,
+          "allowed": true,
+          "omega_power": 0,
+          "theta_plus_and_minus_power_each": 6,
+          "vanishes_when_STheta_zero": true
+        },
+        {
+          "STheta_power": 8,
+          "allowed": true,
+          "omega_power": 2,
+          "theta_plus_and_minus_power_each": 6,
+          "vanishes_when_STheta_zero": true
+        },
+        {
+          "STheta_power": 10,
+          "allowed": true,
+          "omega_power": 4,
+          "theta_plus_and_minus_power_each": 6,
+          "vanishes_when_STheta_zero": true
+        },
+        {
+          "STheta_power": 12,
+          "allowed": true,
+          "omega_power": 6,
+          "theta_plus_and_minus_power_each": 6,
+          "vanishes_when_STheta_zero": true
+        },
+        {
+          "STheta_power": 14,
+          "allowed": true,
+          "omega_power": 8,
+          "theta_plus_and_minus_power_each": 6,
+          "vanishes_when_STheta_zero": true
+        },
+        {
+          "STheta_power": 8,
+          "allowed": true,
+          "omega_power": 1,
+          "theta_plus_and_minus_power_each": 7,
+          "vanishes_when_STheta_zero": true
+        },
+        {
+          "STheta_power": 10,
+          "allowed": true,
+          "omega_power": 3,
+          "theta_plus_and_minus_power_each": 7,
+          "vanishes_when_STheta_zero": true
+        },
+        {
+          "STheta_power": 12,
+          "allowed": true,
+          "omega_power": 5,
+          "theta_plus_and_minus_power_each": 7,
+          "vanishes_when_STheta_zero": true
+        },
+        {
+          "STheta_power": 14,
+          "allowed": true,
+          "omega_power": 7,
+          "theta_plus_and_minus_power_each": 7,
+          "vanishes_when_STheta_zero": true
+        },
+        {
+          "STheta_power": 8,
+          "allowed": true,
+          "omega_power": 0,
+          "theta_plus_and_minus_power_each": 8,
+          "vanishes_when_STheta_zero": true
+        },
+        {
+          "STheta_power": 10,
+          "allowed": true,
+          "omega_power": 2,
+          "theta_plus_and_minus_power_each": 8,
+          "vanishes_when_STheta_zero": true
+        },
+        {
+          "STheta_power": 12,
+          "allowed": true,
+          "omega_power": 4,
+          "theta_plus_and_minus_power_each": 8,
+          "vanishes_when_STheta_zero": true
+        },
+        {
+          "STheta_power": 14,
+          "allowed": true,
+          "omega_power": 6,
+          "theta_plus_and_minus_power_each": 8,
+          "vanishes_when_STheta_zero": true
+        },
+        {
+          "STheta_power": 16,
+          "allowed": true,
+          "omega_power": 8,
+          "theta_plus_and_minus_power_each": 8,
+          "vanishes_when_STheta_zero": true
+        }
+      ],
+      "counterexamples": [],
+      "omega_power": [
+        0,
+        8
+      ],
+      "theta_pair_power": [
+        0,
+        8
+      ]
+    },
+    "restricted_ring": "{X or Zp} times C[STheta,ThetaPlus,ThetaMinus,Omega]",
+    "scope_limit": "The theorem deliberately excludes arbitrary additional V40 host fields; those require a separate higher-dimensional PS/operator-ring audit before any proton or full-vacuum claim."
+  },
+  "schema": "susy-v43-charged-spurion-source-audit-v1",
+  "scope": "A minimal charged-spurion attempt to evade the V42 neutral-parameter source-host no-go. It proves a renormalizable F-term separation and proves the minimal gauged completion is not yet viable.",
+  "source_manifest": [
+    {
+      "exists": true,
+      "path": "susy_v43_charged_spurion_source_audit.py",
+      "sha256": "8d86fa2fedad9aceb8e801032f0607b8b1557c67a5b958be585d640b30aab7d7"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v43_charged_spurion_source_audit.py",
+      "sha256": "0e190320fd5a5187ca760a40e2baf483f8c6fd53572c96eb854e85a76f329b90"
+    }
+  ],
+  "status": "V43_CHARGED_SPURION_F_TERM_SOURCE_SEPARATION_CERTIFIED__MINIMAL_GAUGED_D_FLAT_AND_ANOMALY_COMPLETION_NO_GO_CERTIFIED__NO_FULL_GATE_CLOSED",
+  "term_audit": {
+    "all_original_U1F_Z4R_Z5610_PQ_checks_remain_true": true,
+    "all_retained_and_new_terms_allowed": true,
+    "retained_V40_term_count": 35,
+    "rows": [
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "allowed": true,
+        "fields": [
+          "X"
+        ],
+        "label": "X_linear_PS",
+        "origin": "retained_V40"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "allowed": true,
+        "fields": [
+          "X"
+        ],
+        "label": "X_linear_PQ",
+        "origin": "retained_V40"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "allowed": true,
+        "fields": [
+          "Zp"
+        ],
+        "label": "Zp_linear_PS",
+        "origin": "retained_V40"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "allowed": true,
+        "fields": [
+          "Zp"
+        ],
+        "label": "Zp_linear_PQ",
+        "origin": "retained_V40"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "allowed": true,
+        "fields": [
+          "X",
+          "Sbc",
+          "Sc"
+        ],
+        "label": "X_Sbc_Sc",
+        "origin": "retained_V40"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "allowed": true,
+        "fields": [
+          "X",
+          "P",
+          "Pb"
+        ],
+        "label": "X_P_Pb",
+        "origin": "retained_V40"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "allowed": true,
+        "fields": [
+          "Zp",
+          "Sbc",
+          "Sc"
+        ],
+        "label": "Zp_Sbc_Sc",
+        "origin": "retained_V40"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "allowed": true,
+        "fields": [
+          "Zp",
+          "P",
+          "Pb"
+        ],
+        "label": "Zp_P_Pb",
+        "origin": "retained_V40"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "allowed": true,
+        "fields": [
+          "X",
+          "X",
+          "X"
+        ],
+        "label": "X_cubic",
+        "origin": "retained_V40"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "allowed": true,
+        "fields": [
+          "X",
+          "X",
+          "Zp"
+        ],
+        "label": "XXZp",
+        "origin": "retained_V40"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "allowed": true,
+        "fields": [
+          "X",
+          "Zp",
+          "Zp"
+        ],
+        "label": "XZpZp",
+        "origin": "retained_V40"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "allowed": true,
+        "fields": [
+          "Zp",
+          "Zp",
+          "Zp"
+        ],
+        "label": "Zp_cubic",
+        "origin": "retained_V40"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "allowed": true,
+        "fields": [
+          "X",
+          "H",
+          "H"
+        ],
+        "label": "X_HH",
+        "origin": "retained_V40"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "allowed": true,
+        "fields": [
+          "X",
+          "SigC",
+          "SigBc"
+        ],
+        "label": "X_SigC_SigBc",
+        "origin": "retained_V40"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "allowed": true,
+        "fields": [
+          "Zp",
+          "H",
+          "H"
+        ],
+        "label": "Zp_HH",
+        "origin": "retained_V40"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "allowed": true,
+        "fields": [
+          "Zp",
+          "SigC",
+          "SigBc"
+        ],
+        "label": "Zp_SigC_SigBc",
+        "origin": "retained_V40"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "allowed": true,
+        "fields": [
+          "Sc",
+          "Sc",
+          "SigC"
+        ],
+        "label": "ScScSigC",
+        "origin": "retained_V40"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "allowed": true,
+        "fields": [
+          "Sbc",
+          "Sbc",
+          "SigBc"
+        ],
+        "label": "SbcSbcSigBc",
+        "origin": "retained_V40"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "allowed": true,
+        "fields": [
+          "Q",
+          "H",
+          "Qc"
+        ],
+        "label": "Q_H_Qc",
+        "origin": "retained_V40"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "allowed": true,
+        "fields": [
+          "Q",
+          "H",
+          "PsiC"
+        ],
+        "label": "Q_H_PsiC",
+        "origin": "retained_V40"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "allowed": true,
+        "fields": [
+          "Psi",
+          "H",
+          "Qc"
+        ],
+        "label": "Psi_H_Qc",
+        "origin": "retained_V40"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "allowed": true,
+        "fields": [
+          "Psi",
+          "H",
+          "PsiC"
+        ],
+        "label": "Psi_H_PsiC",
+        "origin": "retained_V40"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "allowed": true,
+        "fields": [
+          "P",
+          "PsiBar",
+          "Q"
+        ],
+        "label": "P_PsiBar_Q",
+        "origin": "retained_V40"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "allowed": true,
+        "fields": [
+          "P",
+          "PsiBar",
+          "Psi"
+        ],
+        "label": "P_PsiBar_Psi",
+        "origin": "retained_V40"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "allowed": true,
+        "fields": [
+          "P",
+          "PsiCBar",
+          "Qc"
+        ],
+        "label": "P_PsiCBar_Qc",
+        "origin": "retained_V40"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "allowed": true,
+        "fields": [
+          "P",
+          "PsiCBar",
+          "PsiC"
+        ],
+        "label": "P_PsiCBar_PsiC",
+        "origin": "retained_V40"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "allowed": true,
+        "fields": [
+          "Pb",
+          "A2",
+          "A32"
+        ],
+        "label": "Pb_A2_A32",
+        "origin": "retained_V40"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "allowed": true,
+        "fields": [
+          "P",
+          "A15",
+          "A17"
+        ],
+        "label": "P_A15_A17",
+        "origin": "retained_V40"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "allowed": true,
+        "fields": [
+          "P",
+          "A16",
+          "A16"
+        ],
+        "label": "P_A16_A16",
+        "origin": "retained_V40"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "allowed": true,
+        "fields": [
+          "STheta",
+          "ThetaPlus",
+          "ThetaMinus"
+        ],
+        "label": "STheta_ThetaPlus_ThetaMinus",
+        "origin": "retained_V40"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "allowed": true,
+        "fields": [
+          "ThetaPlus",
+          "L0",
+          "Lminus9"
+        ],
+        "label": "ThetaPlus_L_mass",
+        "origin": "retained_V40"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "allowed": true,
+        "fields": [
+          "ThetaMinus",
+          "R0",
+          "Rplus9"
+        ],
+        "label": "ThetaMinus_R_mass",
+        "origin": "retained_V40"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "allowed": true,
+        "fields": [
+          "ThetaMinus",
+          "E4",
+          "E5"
+        ],
+        "label": "ThetaMinus_E45_mass",
+        "origin": "retained_V40"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "allowed": true,
+        "fields": [
+          "ThetaMinus",
+          "E3",
+          "E6"
+        ],
+        "label": "ThetaMinus_E36_mass",
+        "origin": "retained_V40"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "allowed": true,
+        "fields": [
+          "ThetaPlus",
+          "Eminus2",
+          "Eminus7"
+        ],
+        "label": "ThetaPlus_Em2m7_mass",
+        "origin": "retained_V40"
+      },
+      {
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "U1S": 0,
+        "Z4R": 2,
+        "Z5610": 0,
+        "allowed": true,
+        "expression": "M_Omega STheta Omega",
+        "fields": [
+          "STheta",
+          "Omega"
+        ],
+        "label": "STheta_Omega_mass_mixing",
+        "origin": "new_V43"
+      }
+    ],
+    "source_redesign": {
+      "removed_term": "-kappa mu_F^2 STheta",
+      "renormalizable_source_piece": "W_source = kappa STheta ThetaPlus ThetaMinus + M_Omega STheta Omega + W_Theta_anomalon_mass",
+      "replacement": "M_Omega STheta Omega",
+      "why_V42_neutral_parameter_premise_no_longer_holds": "The coefficient of the effective STheta linear term is M_Omega<Omega>, and Omega has U(1)_S charge -1 rather than being a neutral numerical parameter."
+    }
+  }
+}

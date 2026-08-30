@@ -14,6 +14,255 @@ import validate_release_v20 as release
 
 
 class ValidateReleaseChecksumTests(unittest.TestCase):
+    def test_release_uses_canonical_current_or_future_consistency_not_fixed_block(self):
+        source = (release.ROOT / "validate_release_v20.py").read_text(
+            encoding="utf-8"
+        )
+        self.assertNotIn("--expect-blocked", source)
+        for required in (
+            '"canonical_g1_g8_gauged_u1x_v21.py", "--check"',
+            "canonical_integrity = authoritative_gate._canonical_evidence_complete(",
+            'expected_state = "PASS" if canonical_closed else "BLOCKED"',
+            'matrix["full_theory_validated"] is canonical_closed',
+            'ultimate["full_phenomenology_approved"] is canonical_closed',
+            '"legacy_ledger_controls_authoritative_closure"',
+        ):
+            self.assertIn(required, source)
+
+    def test_superseding_g8_frontier_bundle_is_exactly_pinned(self):
+        report = json.loads(
+            (
+                release.ROOT
+                / "EXACT_PHYSICAL_SM_G8_IDENTIFIABILITY_FRONTIER_V20.json"
+            ).read_text(encoding="utf-8")
+        )
+        self.assertEqual(
+            report["core_sha256"], release.PHYSICAL_SM_G8_FRONTIER_CORE_SHA256
+        )
+        for relative, expected in (
+            (
+                "exact_physical_sm_g8_identifiability_frontier_v20.py",
+                release.PHYSICAL_SM_G8_FRONTIER_SOURCE_RAW_SHA256,
+            ),
+            (
+                "test_exact_physical_sm_g8_identifiability_frontier_v20.py",
+                release.PHYSICAL_SM_G8_FRONTIER_TEST_RAW_SHA256,
+            ),
+            (
+                "EXACT_PHYSICAL_SM_G8_IDENTIFIABILITY_FRONTIER_V20.json",
+                release.PHYSICAL_SM_G8_FRONTIER_JSON_RAW_SHA256,
+            ),
+            (
+                "EXACT_PHYSICAL_SM_G8_IDENTIFIABILITY_FRONTIER_V20.md",
+                release.PHYSICAL_SM_G8_FRONTIER_MD_RAW_SHA256,
+            ),
+        ):
+            self.assertEqual(
+                hashlib.sha256((release.ROOT / relative).read_bytes()).hexdigest(),
+                expected,
+            )
+
+    def test_readme_current_physical_sm_truth_is_not_stale_or_branch_ambiguous(self):
+        readme = (release.ROOT / "README.md").read_text(encoding="utf-8")
+        normalized = " ".join(readme.split())
+        for required in (
+            "all `37` active scalar Hessians are now derived from exact source algebra",
+            "aggregate has `V=-1`, zero gradient, rank/nullity `448/38`",
+            "kernel equal to the 38-dimensional symmetry tangent span",
+            "`CANONICAL_G3_PHYSICAL_EW_GLOBAL_VACUUM_V21.json` now additionally gives the complete 891-direction coefficient ledger",
+            "an exact sum-of-squares global lower bound",
+            "a connected single-orbit classification of every equality point",
+            "Canonical V21 G3 is therefore closed",
+            "canonical G4 remains open",
+        ):
+            with self.subTest(required=required):
+                self.assertIn(required, normalized)
+
+        for stale in (
+            "still requires a direct source-algebra scalar proof",
+            "The new target has a reconstructed rational stationary PSD witness",
+            "the reconstruction's denominator bound is not derived from the source algebra",
+            "`H`, the full Hessian, and G3 remain open",
+            "the full Hessian, G3, and whole-model conclusions remain open",
+        ):
+            with self.subTest(stale=stale):
+                self.assertNotIn(stale, normalized)
+
+        self.assertGreaterEqual(
+            normalized.count("fixed-endpoint `SU(4)` branch"),
+            2,
+        )
+
+    def test_physical_sm_source_hessian_chain_is_wired_read_only_and_pinned(self):
+        theorem_rows = (
+            (
+                "exact_physical_sm_hard_projector_hessians_v20.py",
+                "test_exact_physical_sm_hard_projector_hessians_v20.py",
+                "EXACT_PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_V20.json",
+                "EXACT_PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_V20.md",
+                "2ac49af04f3bbec17a4e616c82898de6a0710ddcfa3462d7ec8d59dad69de27e",
+            ),
+            (
+                "exact_physical_sm_easy_21_hessians_v20.py",
+                "test_exact_physical_sm_easy_21_hessians_v20.py",
+                "EXACT_PHYSICAL_SM_EASY_21_HESSIANS_V20.json",
+                "EXACT_PHYSICAL_SM_EASY_21_HESSIANS_V20.md",
+                "e8b6fcf9bc459ee4c05a74d41cae6d9a82680de88683ba5ffcc4ceb30fe73311",
+            ),
+            (
+                "exact_physical_sm_last_six_hessians_v20.py",
+                "test_exact_physical_sm_last_six_hessians_v20.py",
+                "EXACT_PHYSICAL_SM_LAST_SIX_HESSIANS_V20.json",
+                "EXACT_PHYSICAL_SM_LAST_SIX_HESSIANS_V20.md",
+                "78d712d3573ec3377a331eb52dbf429452aa1c7ed82aeb7eeb0aa5900b3774ce",
+            ),
+            (
+                "exact_physical_sm_37_row_aggregate_v20.py",
+                "test_exact_physical_sm_37_row_aggregate_v20.py",
+                "EXACT_PHYSICAL_SM_37_ROW_AGGREGATE_V20.json",
+                "EXACT_PHYSICAL_SM_37_ROW_AGGREGATE_V20.md",
+                "801b456743d9037d4478dcb3c94fef3d745ad312b58c3b262324aeded7567f5c",
+            ),
+            (
+                "exact_physical_sm_local_equality_orbit_v20.py",
+                "test_exact_physical_sm_local_equality_orbit_v20.py",
+                "EXACT_PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_V20.json",
+                "EXACT_PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_V20.md",
+                "5358c084cd46bdf154fd42505e51d28dc75c6817d392e9bbad5b0d47c55184c7",
+            ),
+            (
+                "exact_physical_sm_g4_g5_branch_mismatch_v20.py",
+                "test_exact_physical_sm_g4_g5_branch_mismatch_v20.py",
+                "EXACT_PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_V20.json",
+                "EXACT_PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_V20.md",
+                "cf87a140b031ba625e2f656646402d0eb68aea3d34a555dc391274a198573251",
+            ),
+        )
+        for source, test, report, markdown, digest in theorem_rows:
+            with self.subTest(source=source):
+                self.assertIn(source, release.FINAL_THEOREM_CORE_PATHS)
+                self.assertIn(test, release.FINAL_THEOREM_CORE_PATHS)
+                self.assertIn(report, release.FINAL_THEOREM_CORE_PATHS)
+                self.assertIn(markdown, release.FINAL_THEOREM_CORE_PATHS)
+                self.assertEqual(
+                    hashlib.sha256((release.ROOT / source).read_bytes()).hexdigest(),
+                    digest,
+                )
+
+        ordered_sources = tuple(row[0] for row in theorem_rows)
+        for relative in (
+            "prepare_validation_artifacts_v20.py",
+            "replicate.py",
+            "validate_release_v20.py",
+        ):
+            source = (release.ROOT / relative).read_text(encoding="utf-8")
+            positions = [source.index(f'"{name}"') for name in ordered_sources]
+            self.assertEqual(positions, sorted(positions), relative)
+            for name in ordered_sources:
+                self.assertNotRegex(
+                    source,
+                    rf'"{re.escape(name)}"\s*,\s*"--write"',
+                    relative,
+                )
+
+        for relative in (
+            ".github/workflows/g1-g8-gate-ledger.yml",
+            ".github/workflows/g1-g8-execution-roadmap.yml",
+            ".github/workflows/gauged-u1x-g3-stability.yml",
+        ):
+            source = (release.ROOT / relative).read_text(encoding="utf-8")
+            commands = [f"python -B {name}" for name in ordered_sources]
+            positions = [source.index(command) for command in commands]
+            self.assertEqual(positions, sorted(positions), relative)
+            central_position = source.find("python g1_g8_", positions[-1])
+            if central_position >= 0:
+                self.assertLess(positions[-1], central_position)
+            for theorem_source, test, report, markdown, digest in theorem_rows:
+                for token in (theorem_source, test, report, markdown, digest):
+                    self.assertIn(token, source, (relative, token))
+
+    def test_physical_sm_transitive_dependencies_trigger_central_ci_and_are_frozen(self):
+        trigger_dependencies = (
+            "EXACT_GAUGED_U1X_PHYSICAL_QUOTIENT_V20.json",
+            "GAUGED_U1X_G2_DERIVATIVE_AUDIT_V20.json",
+            "GAUGED_U1X_SCALAR_CONTRACT_V20.json",
+            "direct_phi_h_sigmabar_tensor_v20.py",
+            "exact_126bar_self_quartic_basis_v20.py",
+            "exact_210_self_invariant_basis_v20.py",
+            "exact_gauged_u1x_physical_quotient_v20.py",
+            "exact_h10_self_quartic_family_v20.py",
+            "exact_hsigma_hermitian_family_closure_v20.py",
+            "exact_mixed_45_triplet_channel_v20.py",
+            "exact_p_delta_second_stage_hessian_v20.py",
+            "exact_phi2_126dag126_six_contractions_v20.py",
+            "exact_phi2_hdagh_channel_family_v20.py",
+            "exact_phisigma_126bar_minus_projectors_v20.py",
+            "exact_phisigma_casimir_projectors_v20.py",
+            "gauged_u1x_g2_derivative_audit_v20.py",
+            "live_g1_tensor_closure_ledger_v20.py",
+            "live_g2_arbitrary_component_potential_values_v20.py",
+            "live_g2_exact_final_mixed_quartic_derivatives_v20.py",
+            "live_g2_exact_h10_self_quartic_derivatives_v20.py",
+            "live_g2_exact_hsigma_hermitian_derivatives_v20.py",
+            "live_g2_exact_phi2_hdagh_derivatives_v20.py",
+            "live_g2_exact_phi_self_quartic_derivatives_v20.py",
+            "live_g2_exact_portal_family_derivatives_v20.py",
+            "live_g2_exact_quadratic_family_derivatives_v20.py",
+            "live_g2_exact_remaining_cubic_derivatives_v20.py",
+            "live_g2_exact_sigma_self_quartic_derivatives_v20.py",
+            "live_g2_exact_unique_hsigma_chiral_derivatives_v20.py",
+            "nonsusy_z17_pq_potential_filter_v20.py",
+            "spin10_referee_audit.py",
+        )
+        for workflow in (
+            ".github/workflows/g1-g8-gate-ledger.yml",
+            ".github/workflows/g1-g8-execution-roadmap.yml",
+            ".github/workflows/gauged-u1x-g3-stability.yml",
+        ):
+            text = (release.ROOT / workflow).read_text(encoding="utf-8")
+            for relative in trigger_dependencies:
+                with self.subTest(workflow=workflow, relative=relative):
+                    self.assertIn(relative, text)
+
+        checksum_paths = {
+            line.split("  ", 1)[1]
+            for line in (release.ROOT / "SHA256SUMS").read_text(
+                encoding="utf-8"
+            ).splitlines()
+        }
+        for relative in trigger_dependencies:
+            with self.subTest(checksum=relative):
+                self.assertIn(relative, checksum_paths)
+        for relative in (
+            "direct_phi_h_sigmabar_tensor_v20.py",
+            "exact_126bar_self_quartic_basis_v20.py",
+            "exact_210_self_invariant_basis_v20.py",
+            "exact_h10_self_quartic_family_v20.py",
+            "exact_hsigma_hermitian_family_closure_v20.py",
+            "exact_mixed_45_triplet_channel_v20.py",
+            "exact_p_delta_second_stage_hessian_v20.py",
+            "exact_phi2_126dag126_six_contractions_v20.py",
+            "exact_phi2_hdagh_channel_family_v20.py",
+            "exact_phisigma_126bar_minus_projectors_v20.py",
+            "exact_phisigma_casimir_projectors_v20.py",
+            "live_g1_tensor_closure_ledger_v20.py",
+            "spin10_referee_audit.py",
+            "live_g2_arbitrary_component_potential_values_v20.py",
+            "live_g2_exact_final_mixed_quartic_derivatives_v20.py",
+            "live_g2_exact_h10_self_quartic_derivatives_v20.py",
+            "live_g2_exact_hsigma_hermitian_derivatives_v20.py",
+            "live_g2_exact_phi2_hdagh_derivatives_v20.py",
+            "live_g2_exact_phi_self_quartic_derivatives_v20.py",
+            "live_g2_exact_portal_family_derivatives_v20.py",
+            "live_g2_exact_quadratic_family_derivatives_v20.py",
+            "live_g2_exact_remaining_cubic_derivatives_v20.py",
+            "live_g2_exact_sigma_self_quartic_derivatives_v20.py",
+            "live_g2_exact_unique_hsigma_chiral_derivatives_v20.py",
+            "nonsusy_z17_pq_potential_filter_v20.py",
+        ):
+            with self.subTest(release_core=relative):
+                self.assertIn(relative, release.FINAL_THEOREM_CORE_PATHS)
+
     def test_frozen_stabilizer_dependency_is_read_only_in_all_orchestrators(self):
         stabilizer = "exact_gauged_u1x_g3_rank1_su4_stabilizer_v20.py"
         mutating_command = re.compile(
@@ -81,11 +330,32 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             "final_g4_eft_mathematical_gate_v20.py",
             "final_g5_eft_mathematical_gate_v20.py",
             "exact_eft_physical_scalar_spectrum_v20.py",
+            "exact_g6_sm_provenance_feasibility_v20.py",
+            "physical_sm_vacuum_local_feasibility_v20.py",
+            "exact_physical_sm_five_amplitude_equality_v20.py",
+            "exact_physical_sm_hard_projector_hessians_v20.py",
+            "exact_physical_sm_easy_21_hessians_v20.py",
+            "exact_physical_sm_last_six_hessians_v20.py",
+            "exact_physical_sm_37_row_aggregate_v20.py",
+            "exact_physical_sm_local_equality_orbit_v20.py",
+            "exact_physical_sm_g4_g5_branch_mismatch_v20.py",
+            "conditional_physical_sm_eft_hessian_spectrum_v20.py",
+            "exact_eft_g6_g7_parameterized_matching_v20.py",
             "final_g6_eft_mathematical_gate_v20.py",
+            "exact_authoritative_so10_u1x_gauge_betas_v20.py",
+            "exact_physical_sm_heavy_vector_masses_v20.py",
+            "exact_physical_sm_heavy_vector_msbar_matching_v20.py",
+            "exact_physical_sm_vector_rxi_vacuum_cancellation_v20.py",
+            "pyrate3_so10_u1x_gauge_beta_replay_v20.py",
+            "exact_normalized_so10_yukawa_cgcs_v20.py",
             "exact_eft_g7_threshold_nonidentifiability_v20.py",
+            "exact_physical_g7_component_threshold_contract_v20.py",
+            "exact_physical_sm_g6_g7_closure_frontier_v20.py",
+            "exact_physical_sm_g8_identifiability_frontier_v20.py",
             "g1_g8_gate_ledger_v20.py",
             "final_g3_acceptance_gate_v20.py",
             "g1_g8_execution_roadmap_v20.py",
+            "canonical_g1_g8_gauged_u1x_v21.py",
         )
         for relative in (
             "prepare_validation_artifacts_v20.py",
@@ -112,6 +382,10 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
                     self.assertTrue(
                         all("--write" not in command for command in commands)
                     )
+                    if script == "canonical_g1_g8_gauged_u1x_v21.py":
+                        self.assertTrue(
+                            any("--check" in command for command in commands)
+                        )
             for script in (
                 "theory_validation_matrix_v20.py",
                 "theory_confirmation_verdict_v20.py",
@@ -140,6 +414,16 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             encoding="utf-8"
         )
         self.assertIn('tempfile.TemporaryDirectory(prefix="so10-latex-")', source)
+        self.assertIn('"MIKTEX_COMMONSTARTUPFILE": str(miktex_startup)', source)
+        self.assertIn('"MIKTEX_USERSTARTUPFILE": str(miktex_startup)', source)
+        self.assertIn('"Config=Portable\\n"', source)
+        self.assertIn('"--disable-installer"', source)
+        self.assertIn("pdfinfo_environment.update(miktex_environment)", source)
+        self.assertIn("[pdfinfo, str(built_pdf)]", source)
+        self.assertEqual(
+            source.count("run(latex, environment_overrides=miktex_environment)"),
+            3,
+        )
         self.assertIn('f"-output-directory={build_root}"', source)
         self.assertIn("built_pdf = build_root / PDF.name", source)
         self.assertIn("built_log = build_root / LOG.name", source)
@@ -147,6 +431,18 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             "release checksum regeneration drifted from the frozen", source
         )
         self.assertIn("regenerated_sums != committed_sums", source)
+
+    def test_focused_pytest_uses_a_private_auto_cleaned_basetemp(self):
+        source = (release.ROOT / "validate_release_v20.py").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("def run_pytest_with_private_basetemp", source)
+        self.assertIn(
+            'tempfile.TemporaryDirectory(prefix=".so10-release-pytest-", dir=ROOT)',
+            source,
+        )
+        self.assertIn('run([*command, "--basetemp", directory])', source)
+        self.assertIn("run_pytest_with_private_basetemp(\n        [", source)
 
     def test_release_runs_parallel_eft_gates_read_only_in_dependency_order(self):
         source = (release.ROOT / "validate_release_v20.py").read_text(
@@ -174,8 +470,28 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             "final_g4_eft_mathematical_gate_v20.py",
             "final_g5_eft_mathematical_gate_v20.py",
             "exact_eft_physical_scalar_spectrum_v20.py",
+            "exact_g6_sm_provenance_feasibility_v20.py",
+            "physical_sm_vacuum_local_feasibility_v20.py",
+            "exact_physical_sm_five_amplitude_equality_v20.py",
+            "exact_physical_sm_hard_projector_hessians_v20.py",
+            "exact_physical_sm_easy_21_hessians_v20.py",
+            "exact_physical_sm_last_six_hessians_v20.py",
+            "exact_physical_sm_37_row_aggregate_v20.py",
+            "exact_physical_sm_local_equality_orbit_v20.py",
+            "exact_physical_sm_g4_g5_branch_mismatch_v20.py",
+            "conditional_physical_sm_eft_hessian_spectrum_v20.py",
+            "exact_eft_g6_g7_parameterized_matching_v20.py",
             "final_g6_eft_mathematical_gate_v20.py",
+            "exact_authoritative_so10_u1x_gauge_betas_v20.py",
+            "exact_physical_sm_heavy_vector_masses_v20.py",
+            "exact_physical_sm_heavy_vector_msbar_matching_v20.py",
+            "exact_physical_sm_vector_rxi_vacuum_cancellation_v20.py",
+            "pyrate3_so10_u1x_gauge_beta_replay_v20.py",
+            "exact_normalized_so10_yukawa_cgcs_v20.py",
             "exact_eft_g7_threshold_nonidentifiability_v20.py",
+            "exact_physical_g7_component_threshold_contract_v20.py",
+            "exact_physical_sm_g6_g7_closure_frontier_v20.py",
+            "exact_physical_sm_g8_identifiability_frontier_v20.py",
         )
         gate_rows = []
         for name in gate_names:
@@ -194,7 +510,7 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
         )
         self.assertLess(gate_rows[-1][0], ledger_line)
 
-    def test_release_pins_the_integrated_g4_g5_g6_and_g7_obstruction_refreezes(self):
+    def test_release_pins_corrected_g6_and_scoped_g7_evidence(self):
         source = (release.ROOT / "validate_release_v20.py").read_text(
             encoding="utf-8"
         )
@@ -205,14 +521,17 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             "931a152aed49eb28bf415a1aca093e923850cf68db3f40ccf1d2027b447a8c09",
             "1b578471e74626e3b186cf7398aebd35349a67f45940b9c37d42bb49c1b8c8ba",
             "abb704133c8be22b424ba20e23387d6f30412e6c82ab3a214e88bd8df5bef9cc",
-            "e34b791478bf9cb00f951819cbfec45a99d51be776889d8a4e13cf1717eee738",
+            "FINAL_EFT_G6_FORMAL_SU3_X_U1_89_FACTOR_PASS__PHYSICAL_G6_OPEN",
             "parallel_EFT_G4_integrated_into_release_orchestrators",
             "release_integration_completed",
             "downstream_parallel_G5_integration_completed",
             "downstream_integration_completed",
             "parallel_EFT_G6_integrated_into_release_orchestrators",
-            "EFT_G7_INPUT_NONIDENTIFIABILITY_PROVED__G7_OPEN",
-            "exact_EFT_G7_input_nonidentifiability_proved",
+            "FORMAL_U1_89_ABSTRACT_RESTRICTION_NONINJECTIVE__NO_PHYSICAL_G7_CLAIM",
+            "formal_U1_89_abstract_restriction_noninjectivity_proved",
+            "exact_physical_EFT_G7_input_nonidentifiability_proved",
+            "INDEPENDENT_PYRATE3_GAUGE_ONLY_REPLAY_MATCHES__FULL_G7_OPEN",
+            "second_implementation_for_scoped_gauge_subtheorem",
             "mathematical_EFT_G7_closed",
             "EFT_release_G7_verified",
             "authoritative_renormalizable_G7_closed",
@@ -221,6 +540,30 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             "release_orchestrators_and_workflows_consume_obstruction",
             "restriction_map_noninjective",
             "absolute_scale_unidentified",
+            "EXACT_PHYSICAL_MATTER_BRANCHING_AND_PARAMETERIZED_ONE_LOOP_THRESHOLDS_CLOSED__FULL_G7_OPEN",
+            "physical_PS_SM_matter_branching_closed",
+            "parameterized_one_loop_matter_threshold_kernel_closed",
+            "physical_component_pole_mass_matrices_closed",
+            "02c397bbe044695bf124b6f7415dbc1663e4beb9339e3e3e1da9632d532c02c2",
+            "41f28313ee6cb10fe9b10625d10b075ada7eb8030ac82da92debe17f950e7bf0",
+            "bdceea8f8e10f566119793c0e0cfc31316bd9704aab89a1b70a9fdc880f7cd4a",
+            "c83671cff9c33043b5c7cad19e2f2a744cb5f861a8ea71937c5f3a7308dfffb7",
+            "all_declared_representation_CGCs_closed",
+            "full_one_two_loop_Yukawa_betas_closed",
+            "01f565d3382756bc467bfaa99d187188bc1bfc4060f2c3a472650f5e57537e80",
+            "old_selected_EFT_target_actual_stabilizer",
+            "physical_SM_G3_closed",
+            "36bc4131dfb55ca93ab8e0b14caccc18476625e9b443c34672063725ffb6446a",
+            "conditional_reconstructed_tree_scalar_spectrum_closed",
+            "source_algebra_derived_tree_scalar_spectrum_closed",
+            "86c3e0dfda09366b1cf06c8c3a8dcb3dfdf3bfe1555a41214d380ed4db329894",
+            "exact_parameterized_tree_vector_mass_matrix_closed",
+            "vector_Goldstone_ghost_matching_closed",
+            "CORRECTED_SO10_NONYUKAWA_GAUGE_POLYNOMIAL__FULL_G7_OPEN",
+            "LEGACY_SO10_210_BETA_DIAGNOSTIC_SOURCE_RAW_SHA256",
+            "sarah_validated_210_betas",
+            "live_sarah_or_pyrate_executable_run",
+            "two_loop_so10_nonyukawa_gauge_polynomial_complete",
         ):
             self.assertIn(token, source)
 
@@ -233,6 +576,11 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             paths,
         )
         for required in (
+            "test_global_flavour_fit_v20.py",
+            "CANONICAL_G1_G8_GAUGED_U1X_V21.json",
+            "CANONICAL_G1_G8_GAUGED_U1X_V21.md",
+            "canonical_g1_g8_gauged_u1x_v21.py",
+            "test_canonical_g1_g8_gauged_u1x_v21.py",
             "FROZEN_PHI_SELF_ZERO_GLOBAL_SIGNED_KAEHLER_CLASSIFICATION_SOURCE_V20.py",
             "exact_phi_self_zero_global_signed_kaehler_classification_v20.py",
             "test_exact_phi_self_zero_global_signed_kaehler_classification_v20.py",
@@ -288,14 +636,112 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
             "EXACT_EFT_PHYSICAL_SCALAR_SPECTRUM_V20.md",
             "exact_eft_physical_scalar_spectrum_v20.py",
             "test_exact_eft_physical_scalar_spectrum_v20.py",
+            "EXACT_G6_SM_PROVENANCE_FEASIBILITY_V20.json",
+            "EXACT_G6_SM_PROVENANCE_FEASIBILITY_V20.md",
+            "exact_g6_sm_provenance_feasibility_v20.py",
+            "test_exact_g6_sm_provenance_feasibility_v20.py",
+            "EXACT_EFT_G6_G7_PARAMETERIZED_MATCHING_V20.json",
+            "EXACT_EFT_G6_G7_PARAMETERIZED_MATCHING_V20.md",
+            "exact_eft_g6_g7_parameterized_matching_v20.py",
+            "test_exact_eft_g6_g7_parameterized_matching_v20.py",
             "FINAL_G6_EFT_MATHEMATICAL_GATE_V20.json",
             "FINAL_G6_EFT_MATHEMATICAL_GATE_V20.md",
             "final_g6_eft_mathematical_gate_v20.py",
             "test_final_g6_eft_mathematical_gate_v20.py",
+            "EXACT_AUTHORITATIVE_SO10_U1X_GAUGE_BETAS_V20.json",
+            "EXACT_AUTHORITATIVE_SO10_U1X_GAUGE_BETAS_V20.md",
+            "exact_authoritative_so10_u1x_gauge_betas_v20.py",
+            "test_exact_authoritative_so10_u1x_gauge_betas_v20.py",
+            "PYRATE3_SO10_U1X_GAUGE_BETA_REPLAY_V20.json",
+            "PYRATE3_SO10_U1X_GAUGE_BETA_REPLAY_V20.md",
+            "pyrate3_so10_u1x_gauge_beta_replay_v20.py",
+            "test_pyrate3_so10_u1x_gauge_beta_replay_v20.py",
+            "models/SO10U1XGaugeAuditV20.model",
+            "data/PYRATE3_SO10_U1X_GAUGE_BETA_FROZEN_V20.json",
             "EXACT_EFT_G7_THRESHOLD_NONIDENTIFIABILITY_V20.json",
             "EXACT_EFT_G7_THRESHOLD_NONIDENTIFIABILITY_V20.md",
             "exact_eft_g7_threshold_nonidentifiability_v20.py",
             "test_exact_eft_g7_threshold_nonidentifiability_v20.py",
+            "EXACT_PHYSICAL_G7_COMPONENT_THRESHOLD_CONTRACT_V20.json",
+            "EXACT_PHYSICAL_G7_COMPONENT_THRESHOLD_CONTRACT_V20.md",
+            "exact_physical_g7_component_threshold_contract_v20.py",
+            "test_exact_physical_g7_component_threshold_contract_v20.py",
+            "EXACT_NORMALIZED_SO10_YUKAWA_CGCS_V20.json",
+            "EXACT_NORMALIZED_SO10_YUKAWA_CGCS_V20.md",
+            "exact_normalized_so10_yukawa_cgcs_v20.py",
+            "test_exact_normalized_so10_yukawa_cgcs_v20.py",
+            "PHYSICAL_SM_VACUUM_LOCAL_FEASIBILITY_V20.json",
+            "PHYSICAL_SM_VACUUM_LOCAL_FEASIBILITY_V20.md",
+            "physical_sm_vacuum_local_feasibility_v20.py",
+            "test_physical_sm_vacuum_local_feasibility_v20.py",
+            "CONDITIONAL_PHYSICAL_SM_EFT_HESSIAN_SPECTRUM_V20.json",
+            "CONDITIONAL_PHYSICAL_SM_EFT_HESSIAN_SPECTRUM_V20.md",
+            "conditional_physical_sm_eft_hessian_spectrum_v20.py",
+            "test_conditional_physical_sm_eft_hessian_spectrum_v20.py",
+            "EXACT_PHYSICAL_SM_HEAVY_VECTOR_MASSES_V20.json",
+            "EXACT_PHYSICAL_SM_HEAVY_VECTOR_MASSES_V20.md",
+            "exact_physical_sm_heavy_vector_masses_v20.py",
+            "test_exact_physical_sm_heavy_vector_masses_v20.py",
+            "EXACT_PHYSICAL_SM_HEAVY_VECTOR_MSBAR_MATCHING_V20.json",
+            "EXACT_PHYSICAL_SM_HEAVY_VECTOR_MSBAR_MATCHING_V20.md",
+            "exact_physical_sm_heavy_vector_msbar_matching_v20.py",
+            "test_exact_physical_sm_heavy_vector_msbar_matching_v20.py",
+            "EXACT_PHYSICAL_SM_VECTOR_RXI_VACUUM_CANCELLATION_V20.json",
+            "EXACT_PHYSICAL_SM_VECTOR_RXI_VACUUM_CANCELLATION_V20.md",
+            "exact_physical_sm_vector_rxi_vacuum_cancellation_v20.py",
+            "test_exact_physical_sm_vector_rxi_vacuum_cancellation_v20.py",
+            "EXACT_PHYSICAL_SM_G6_G7_CLOSURE_FRONTIER_V20.json",
+            "EXACT_PHYSICAL_SM_G6_G7_CLOSURE_FRONTIER_V20.md",
+            "exact_physical_sm_g6_g7_closure_frontier_v20.py",
+            "test_exact_physical_sm_g6_g7_closure_frontier_v20.py",
+            "EXACT_PHYSICAL_SM_G8_IDENTIFIABILITY_FRONTIER_V20.json",
+            "EXACT_PHYSICAL_SM_G8_IDENTIFIABILITY_FRONTIER_V20.md",
+            "exact_physical_sm_g8_identifiability_frontier_v20.py",
+            "test_exact_physical_sm_g8_identifiability_frontier_v20.py",
+            "EXACT_PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_V20.json",
+            "EXACT_PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_V20.md",
+            "exact_physical_sm_five_amplitude_equality_v20.py",
+            "test_exact_physical_sm_five_amplitude_equality_v20.py",
+            "EXACT_PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_V20.json",
+            "EXACT_PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_V20.md",
+            "exact_physical_sm_hard_projector_hessians_v20.py",
+            "test_exact_physical_sm_hard_projector_hessians_v20.py",
+            "EXACT_PHYSICAL_SM_EASY_21_HESSIANS_V20.json",
+            "EXACT_PHYSICAL_SM_EASY_21_HESSIANS_V20.md",
+            "exact_physical_sm_easy_21_hessians_v20.py",
+            "test_exact_physical_sm_easy_21_hessians_v20.py",
+            "EXACT_PHYSICAL_SM_LAST_SIX_HESSIANS_V20.json",
+            "EXACT_PHYSICAL_SM_LAST_SIX_HESSIANS_V20.md",
+            "exact_physical_sm_last_six_hessians_v20.py",
+            "test_exact_physical_sm_last_six_hessians_v20.py",
+            "EXACT_PHYSICAL_SM_37_ROW_AGGREGATE_V20.json",
+            "EXACT_PHYSICAL_SM_37_ROW_AGGREGATE_V20.md",
+            "exact_physical_sm_37_row_aggregate_v20.py",
+            "test_exact_physical_sm_37_row_aggregate_v20.py",
+            "EXACT_PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_V20.json",
+            "EXACT_PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_V20.md",
+            "exact_physical_sm_local_equality_orbit_v20.py",
+            "test_exact_physical_sm_local_equality_orbit_v20.py",
+            "EXACT_PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_V20.json",
+            "EXACT_PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_V20.md",
+            "exact_physical_sm_g4_g5_branch_mismatch_v20.py",
+            "test_exact_physical_sm_g4_g5_branch_mismatch_v20.py",
+            "SARAH_PYRATE_SO10_210_BETAS_V20_VERDICT.json",
+            "SARAH_PYRATE_SO10_210_BETAS_V20.md",
+            ".github/workflows/sarah-pyrate-so10-210-betas.yml",
+            "direct_phi_h_sigmabar_tensor_v20.py",
+            "spin10_referee_audit.py",
+            "live_g2_arbitrary_component_potential_values_v20.py",
+            "live_g2_exact_final_mixed_quartic_derivatives_v20.py",
+            "live_g2_exact_h10_self_quartic_derivatives_v20.py",
+            "live_g2_exact_hsigma_hermitian_derivatives_v20.py",
+            "live_g2_exact_phi2_hdagh_derivatives_v20.py",
+            "live_g2_exact_phi_self_quartic_derivatives_v20.py",
+            "live_g2_exact_portal_family_derivatives_v20.py",
+            "live_g2_exact_quadratic_family_derivatives_v20.py",
+            "live_g2_exact_remaining_cubic_derivatives_v20.py",
+            "live_g2_exact_sigma_self_quartic_derivatives_v20.py",
+            "live_g2_exact_unique_hsigma_chiral_derivatives_v20.py",
             "EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_CLOSURE_V20.json",
             "EXACT_GAUGED_U1X_G1_COMPONENT_TENSOR_CLOSURE_V20.md",
             "exact_gauged_u1x_g1_component_tensor_closure_v20.py",
@@ -789,32 +1235,36 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
         )
         self.assertIn("sympy==1.14.0", requirements.splitlines())
         workflow_contracts = {
-            ".github/workflows/current-main-full-reaudit.yml": (2, (120, 360)),
-            ".github/workflows/g1-g8-execution-roadmap.yml": (1, (90,)),
-            ".github/workflows/g1-g8-gate-ledger.yml": (1, (90,)),
-            ".github/workflows/gauged-u1x-g3-stability.yml": (1, (75,)),
-            ".github/workflows/replicate-and-falsify.yml": (2, (75,)),
+            ".github/workflows/current-main-full-reaudit.yml": (2, 2, (120, 360)),
+            ".github/workflows/g1-g8-execution-roadmap.yml": (2, 1, (90,)),
+            ".github/workflows/g1-g8-gate-ledger.yml": (2, 1, (90,)),
+            ".github/workflows/gauged-u1x-g3-stability.yml": (2, 1, (75,)),
+            ".github/workflows/replicate-and-falsify.yml": (2, 2, (75,)),
         }
         total_heredocs = 0
         heavy_count = 0
-        for relative, (expected_heredocs, timeouts) in workflow_contracts.items():
+        for relative, (
+            expected_heredocs,
+            endpoint_heredocs,
+            timeouts,
+        ) in workflow_contracts.items():
             source = (release.ROOT / relative).read_text(encoding="utf-8")
             self.assertEqual(source.count("python - <<'PY'"), expected_heredocs)
             self.assertEqual(
                 source.count("_rank1_su4_augmented_sos_psd_target_exact("),
-                expected_heredocs,
+                endpoint_heredocs,
                 relative,
             )
             self.assertEqual(
                 source.count(
                     "_rank1_su4_augmented_sos_psd_routes_and_stale_payload_well_formed("
                 ),
-                expected_heredocs,
+                endpoint_heredocs,
                 relative,
             )
             self.assertEqual(
                 source.count("central_view(corrected_publication)"),
-                expected_heredocs,
+                endpoint_heredocs,
                 relative,
             )
             total_heredocs += expected_heredocs
@@ -850,7 +1300,7 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
                 "G3_closed",
             ):
                 self.assertGreaterEqual(
-                    source.count(required), expected_heredocs, (relative, required)
+                    source.count(required), endpoint_heredocs, (relative, required)
                 )
             self.assertNotIn(
                 "python exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py",
@@ -874,7 +1324,7 @@ class ValidateReleaseChecksumTests(unittest.TestCase):
                 "test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py",
                 source,
             )
-        self.assertEqual(total_heredocs, 7)
+        self.assertEqual(total_heredocs, 10)
         self.assertEqual(heavy_count, 1)
 
     def test_checksums_reject_files_outside_repository(self):

@@ -1,0 +1,33 @@
+name: SUSY V25 G1-G3 frontier
+
+on:
+  push:
+    paths:
+      - "susy_v25_*.py"
+      - "test_susy_v25_*.py"
+      - "SUSY_V25_*.json"
+      - "SUSY_V25_*.md"
+      - ".github/workflows/susy-v25-g1-g3-frontier.yml"
+  pull_request:
+    paths:
+      - "susy_v25_*.py"
+      - "test_susy_v25_*.py"
+      - "SUSY_V25_*.json"
+      - "SUSY_V25_*.md"
+      - ".github/workflows/susy-v25-g1-g3-frontier.yml"
+  workflow_dispatch:
+
+jobs:
+  exact-frontier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install focused test dependency
+        run: python -m pip install pytest
+      - name: Replay frozen V25 producer
+        run: python -B susy_v25_g1_g3_completion_frontier.py --check
+      - name: Run focused V25 tests
+        run: python -m pytest -q -o "python_files=test_susy_v25_*.py"

@@ -1,0 +1,556 @@
+{
+  "V40_relevant_field_charges": {
+    "H": {
+      "pq": 0,
+      "ps": "(1,2,2)",
+      "r4": 0,
+      "u1f": 0,
+      "z5610": 0
+    },
+    "P": {
+      "pq": 170,
+      "ps": "(1,1,1)",
+      "r4": 2,
+      "u1f": 0,
+      "z5610": 170
+    },
+    "Pb": {
+      "pq": -170,
+      "ps": "(1,1,1)",
+      "r4": 2,
+      "u1f": 0,
+      "z5610": 5440
+    },
+    "Q": {
+      "pq": 0,
+      "ps": "(4,2,1)",
+      "r4": 1,
+      "u1f": 3,
+      "z5610": 0
+    },
+    "Qc": {
+      "pq": 0,
+      "ps": "(bar4,1,2)",
+      "r4": 1,
+      "u1f": -3,
+      "z5610": 0
+    },
+    "Sbc": {
+      "pq": 0,
+      "ps": "(4,1,2)",
+      "r4": 0,
+      "u1f": 0,
+      "z5610": 0
+    },
+    "Sc": {
+      "pq": 0,
+      "ps": "(bar4,1,2)",
+      "r4": 0,
+      "u1f": 0,
+      "z5610": 0
+    },
+    "ThetaMinus": {
+      "pq": 0,
+      "ps": "(1,1,1)",
+      "r4": 0,
+      "u1f": -9,
+      "z5610": 0
+    },
+    "ThetaPlus": {
+      "pq": 0,
+      "ps": "(1,1,1)",
+      "r4": 0,
+      "u1f": 9,
+      "z5610": 0
+    }
+  },
+  "all_order_limited_conclusion": {
+    "counterexample_is_selector_clean": true,
+    "four_matter_same_orientation_theorem": {
+      "exact_under_declared_VEV_ring": true,
+      "left_Q4_Z9": 3,
+      "proof": "Every declared VEV dressing has Z9 charge zero.  Therefore Q4 remains charge three and Qc4 remains charge six modulo nine at every order in that ring, including conjugate/Kahler dressings.",
+      "right_Qc4_Z9": 6
+    },
+    "one_PS_VEV_epsilon_theorem": {
+      "exact_under_declared_VEV_ring": true,
+      "left_Q3_Sbc_H_Z4R": 3,
+      "proof": "Each primitive has three R-odd matter fields, hence odd Z4R parity.  Every declared VEV and its conjugate is R-even.  Such a dressing can never have W charge two or Kahler charge zero.",
+      "right_Qc3_Sc_Z4R": 3
+    },
+    "scope_boundary": "These are all-order theorems only for the named low-matter primitive families and the declared VEV ring. They do not forbid even-matter multi-epsilon/delta-decorated classes.  The explicit six-matter witness is a counterexample to promoting the low-degree statements into a full G7 proof."
+  },
+  "bounded_single_epsilon_frontier": {
+    "clean_W_selector_rows": [
+      {
+        "Z4R_from_matter": 2,
+        "Z9": 0,
+        "complete_field_degree": 10,
+        "counts": {
+          "H": 0,
+          "Q": 0,
+          "Qc": 6,
+          "Sbc": 2,
+          "Sc": 0
+        },
+        "matter_difference_Q_minus_Qc": -6,
+        "minimal_U1F_theta_completion": [
+          "ThetaPlus",
+          "ThetaPlus"
+        ],
+        "net_SU4_fundamental_number": -4,
+        "qualification": "Representation-count and rank-one-VEV pairing conditions pass.  This is not by itself a full flavour-tensor or component matching calculation.",
+        "raw_field_degree_without_theta": 8,
+        "selector_clean_without_P_or_Pb": true
+      },
+      {
+        "Z4R_from_matter": 2,
+        "Z9": 0,
+        "complete_field_degree": 11,
+        "counts": {
+          "H": 1,
+          "Q": 3,
+          "Qc": 3,
+          "Sbc": 0,
+          "Sc": 4
+        },
+        "matter_difference_Q_minus_Qc": 0,
+        "minimal_U1F_theta_completion": [],
+        "net_SU4_fundamental_number": -4,
+        "qualification": "Representation-count and rank-one-VEV pairing conditions pass.  This is not by itself a full flavour-tensor or component matching calculation.",
+        "raw_field_degree_without_theta": 11,
+        "selector_clean_without_P_or_Pb": true
+      },
+      {
+        "Z4R_from_matter": 2,
+        "Z9": 0,
+        "complete_field_degree": 11,
+        "counts": {
+          "H": 1,
+          "Q": 3,
+          "Qc": 3,
+          "Sbc": 4,
+          "Sc": 0
+        },
+        "matter_difference_Q_minus_Qc": 0,
+        "minimal_U1F_theta_completion": [],
+        "net_SU4_fundamental_number": 4,
+        "qualification": "Representation-count and rank-one-VEV pairing conditions pass.  This is not by itself a full flavour-tensor or component matching calculation.",
+        "raw_field_degree_without_theta": 11,
+        "selector_clean_without_P_or_Pb": true
+      },
+      {
+        "Z4R_from_matter": 2,
+        "Z9": 0,
+        "complete_field_degree": 12,
+        "counts": {
+          "H": 0,
+          "Q": 0,
+          "Qc": 6,
+          "Sbc": 3,
+          "Sc": 1
+        },
+        "matter_difference_Q_minus_Qc": -6,
+        "minimal_U1F_theta_completion": [
+          "ThetaPlus",
+          "ThetaPlus"
+        ],
+        "net_SU4_fundamental_number": -4,
+        "qualification": "Representation-count and rank-one-VEV pairing conditions pass.  This is not by itself a full flavour-tensor or component matching calculation.",
+        "raw_field_degree_without_theta": 10,
+        "selector_clean_without_P_or_Pb": true
+      },
+      {
+        "Z4R_from_matter": 2,
+        "Z9": 0,
+        "complete_field_degree": 12,
+        "counts": {
+          "H": 2,
+          "Q": 0,
+          "Qc": 6,
+          "Sbc": 2,
+          "Sc": 0
+        },
+        "matter_difference_Q_minus_Qc": -6,
+        "minimal_U1F_theta_completion": [
+          "ThetaPlus",
+          "ThetaPlus"
+        ],
+        "net_SU4_fundamental_number": -4,
+        "qualification": "Representation-count and rank-one-VEV pairing conditions pass.  This is not by itself a full flavour-tensor or component matching calculation.",
+        "raw_field_degree_without_theta": 10,
+        "selector_clean_without_P_or_Pb": true
+      },
+      {
+        "Z4R_from_matter": 2,
+        "Z9": 0,
+        "complete_field_degree": 12,
+        "counts": {
+          "H": 2,
+          "Q": 6,
+          "Qc": 0,
+          "Sbc": 0,
+          "Sc": 2
+        },
+        "matter_difference_Q_minus_Qc": 6,
+        "minimal_U1F_theta_completion": [
+          "ThetaMinus",
+          "ThetaMinus"
+        ],
+        "net_SU4_fundamental_number": 4,
+        "qualification": "Representation-count and rank-one-VEV pairing conditions pass.  This is not by itself a full flavour-tensor or component matching calculation.",
+        "raw_field_degree_without_theta": 10,
+        "selector_clean_without_P_or_Pb": true
+      }
+    ],
+    "earliest_clean_W_selector_row": {
+      "Z4R_from_matter": 2,
+      "Z9": 0,
+      "complete_field_degree": 10,
+      "counts": {
+        "H": 0,
+        "Q": 0,
+        "Qc": 6,
+        "Sbc": 2,
+        "Sc": 0
+      },
+      "matter_difference_Q_minus_Qc": -6,
+      "minimal_U1F_theta_completion": [
+        "ThetaPlus",
+        "ThetaPlus"
+      ],
+      "net_SU4_fundamental_number": -4,
+      "qualification": "Representation-count and rank-one-VEV pairing conditions pass.  This is not by itself a full flavour-tensor or component matching calculation.",
+      "raw_field_degree_without_theta": 8,
+      "selector_clean_without_P_or_Pb": true
+    },
+    "group_representation_count_rows": 286,
+    "no_clean_W_selector_row_below_degree_ten": true,
+    "rows_after_rank_one_PS_and_SU2R_pairing_filters": 186,
+    "rows_with_a_minimal_continuous_U1F_theta_lift": 64,
+    "scan_domain": {
+      "maximum_complete_field_degree": 12,
+      "q_H_scanned_through": 4,
+      "q_Q_and_q_Qc_each_scanned_through": 8,
+      "q_Sbc_and_q_Sc_each_scanned_through": 5,
+      "single_epsilon_condition": "|n_4-n_bar4|=4; all remaining SU4 indices are delta-paired"
+    },
+    "scope_limit": "The scan is an exact finite count/charge frontier under its stated bounds, not a complete Hilbert basis, a proof of nonzero Wilson coefficients, or a component-spectrum calculation."
+  },
+  "complete_theory_exists": false,
+  "core_sha256": "9e1bc52a7111b89613b3fad819b95af6c3e2da70c7de6ab3237216e62e351bd2",
+  "decision": {
+    "full_G7_closed": false,
+    "fully_listed_selector_clean_six_matter_B_L_witness_exists": true,
+    "gates_promoted": [],
+    "low_degree_same_orientation_protection_is_exact_in_stated_ring": true,
+    "one_PS_VEV_UDD_or_QQQH_precursor_is_allowed_by_Z9": true,
+    "one_PS_VEV_UDD_or_QQQH_precursor_is_blocked_by_residual_R_parity": true
+  },
+  "declared_VEV_ring_theorem": {
+    "PQ_boundary": "P/Pb can break the old PQ/Z5610 selector.  This audit does not use PQ or Z5610 as a post-PQ proton-stability rule; their inclusion above only makes clear that the clean six-matter witness does not need either field.",
+    "PS_rank_one_branch_statement": "On the canonical PS branch Sc and Sbc each point in one SU(4) lepton direction and opposite SU(2)R spinor directions.  A single SU(4) epsilon cannot contain two copies of the same oriented PS VEV; spectator PS VEV factors can instead occur in delta-paired Sc.Sbc dressings.",
+    "all_VEV_generators_R_even": true,
+    "all_VEV_generators_Z9_neutral": true,
+    "all_order_charge_formula": {
+      "Z4R_parity": "q_R(D)=2(n_P+n_Pb+n_Pdag+n_Pbdag) mod 4, hence q_R(D) is even.",
+      "Z9": "q_Z9(D)=0 for every declared-VEV dressing D.",
+      "residual_statement": "P/Pb carry R charge two, so their VEVs can reduce Z4R to its Z2 subgroup; all Q/Qc matter remains odd under that subgroup."
+    },
+    "canonical_nonzero_visible_VEVs": [
+      "Sc",
+      "Sbc",
+      "P",
+      "Pb",
+      "H",
+      "ThetaPlus",
+      "ThetaMinus"
+    ],
+    "conjugate_statement": "A conjugate changes the integer U(1)_F and Z4R lift sign, but remains Z9-neutral and R-even.  The two conclusions therefore apply to holomorphic, Kahler, soft, and mixed VEV monomials made only from the declared generators.",
+    "generator_rows": [
+      {
+        "PS": "(bar4,1,2)",
+        "U1F": 0,
+        "Z4R": 0,
+        "Z4R_even": true,
+        "Z9": 0,
+        "field": "Sc"
+      },
+      {
+        "PS": "(4,1,2)",
+        "U1F": 0,
+        "Z4R": 0,
+        "Z4R_even": true,
+        "Z9": 0,
+        "field": "Sbc"
+      },
+      {
+        "PS": "(1,1,1)",
+        "U1F": 0,
+        "Z4R": 2,
+        "Z4R_even": true,
+        "Z9": 0,
+        "field": "P"
+      },
+      {
+        "PS": "(1,1,1)",
+        "U1F": 0,
+        "Z4R": 2,
+        "Z4R_even": true,
+        "Z9": 0,
+        "field": "Pb"
+      },
+      {
+        "PS": "(1,2,2)",
+        "U1F": 0,
+        "Z4R": 0,
+        "Z4R_even": true,
+        "Z9": 0,
+        "field": "H"
+      },
+      {
+        "PS": "(1,1,1)",
+        "U1F": 9,
+        "Z4R": 0,
+        "Z4R_even": true,
+        "Z9": 0,
+        "field": "ThetaPlus"
+      },
+      {
+        "PS": "(1,1,1)",
+        "U1F": -9,
+        "Z4R": 0,
+        "Z4R_even": true,
+        "Z9": 0,
+        "field": "ThetaMinus"
+      }
+    ]
+  },
+  "explicit_low_degree_contraction_classification": [
+    {
+      "B_L_class": "actual MSSM-like DeltaB=+1, DeltaL=+1 four-matter epsilon source",
+      "SU2_tensor": "epsilon_ij epsilon_kl (generic flavour tensor understood)",
+      "SU4_tensor": "epsilon_abcd Q^(a i) Q^(b j) Q^(c k) Q^(d l)",
+      "after_declared_VEVs": "Contains the usual QQQL component before any PS VEV substitution.",
+      "fields": [
+        "Q",
+        "Q",
+        "Q",
+        "Q"
+      ],
+      "label": "conventional_left_same_orientation_epsilon",
+      "matter_field_count_Q_plus_Qc": 4,
+      "precise_status": "Z9 blocks it: theta fields shift U1F only by multiples of nine, not by twelve.",
+      "selector_signature": {
+        "Kahler_allowed_by_listed_selectors": false,
+        "PQ_numerator_over_170": 0,
+        "U1F": 12,
+        "W_allowed_by_listed_selectors": false,
+        "Z4R": 0,
+        "Z5610": 0,
+        "Z9": 3
+      }
+    },
+    {
+      "B_L_class": "actual MSSM-like DeltaB=-1, DeltaL=-1 four-matter epsilon source",
+      "SU2_tensor": "epsilon^alpha_beta epsilon^gamma_delta (one of the SU2R singlet pairings)",
+      "SU4_tensor": "epsilon^abcd Qc_(a alpha) Qc_(b beta) Qc_(c gamma) Qc_(d delta)",
+      "after_declared_VEVs": "Contains u^c u^c d^c e^c / nu^c-type components.",
+      "fields": [
+        "Qc",
+        "Qc",
+        "Qc",
+        "Qc"
+      ],
+      "label": "conventional_right_same_orientation_epsilon",
+      "matter_field_count_Q_plus_Qc": 4,
+      "precise_status": "Z9 blocks it: theta fields shift U1F only by multiples of nine, not by minus twelve.",
+      "selector_signature": {
+        "Kahler_allowed_by_listed_selectors": false,
+        "PQ_numerator_over_170": 0,
+        "U1F": -12,
+        "W_allowed_by_listed_selectors": false,
+        "Z4R": 0,
+        "Z5610": 0,
+        "Z9": 6
+      }
+    },
+    {
+      "B_L_class": "genuine PS-VEV precursor to a DeltaB=+1 source; not a rate calculation",
+      "SU2_tensor": "epsilon_ij epsilon_kl epsilon_alpha_beta H^(l beta)",
+      "SU4_tensor": "ThetaMinus epsilon_abcd Q^(a i) Q^(b j) Q^(c k) Sbc^(d alpha)",
+      "after_declared_VEVs": "At <Sbc^(4 alpha)>=v_PS, this becomes epsilon_rgb Q^r Q^g Q^b H: the unbroken-SM QQQH baryon-violating class.  A later electroweak H VEV would turn it into a broken-phase three-matter interaction.",
+      "fields": [
+        "ThetaMinus",
+        "Q",
+        "Q",
+        "Q",
+        "Sbc",
+        "H"
+      ],
+      "label": "left_epsilon_one_PS_VEV_precursor",
+      "matter_field_count_Q_plus_Qc": 3,
+      "precise_status": "Z9 is neutral after ThetaMinus, but Z4R=3 blocks both W and Kahler families under every declared VEV dressing.",
+      "selector_signature": {
+        "Kahler_allowed_by_listed_selectors": false,
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "W_allowed_by_listed_selectors": false,
+        "Z4R": 3,
+        "Z5610": 0,
+        "Z9": 0
+      }
+    },
+    {
+      "B_L_class": "genuine PS-VEV precursor to a DeltaB=-1 UDD source; not a rate calculation",
+      "SU2_tensor": "epsilon^alpha_beta epsilon^gamma_delta",
+      "SU4_tensor": "ThetaPlus epsilon^abcd Qc_(a alpha) Qc_(b beta) Qc_(c gamma) Sc_(d delta)",
+      "after_declared_VEVs": "At <Sc_(4 delta)>=v_PS, the color part contains epsilon^rgb u^c_r d^c_g d^c_b, the UDD-type DeltaB=-1 class.",
+      "fields": [
+        "ThetaPlus",
+        "Qc",
+        "Qc",
+        "Qc",
+        "Sc"
+      ],
+      "label": "right_epsilon_one_PS_VEV_precursor",
+      "matter_field_count_Q_plus_Qc": 3,
+      "precise_status": "Z9 is neutral after ThetaPlus, but Z4R=3 blocks both W and Kahler families under every declared VEV dressing.",
+      "selector_signature": {
+        "Kahler_allowed_by_listed_selectors": false,
+        "PQ_numerator_over_170": 0,
+        "U1F": 0,
+        "W_allowed_by_listed_selectors": false,
+        "Z4R": 3,
+        "Z5610": 0,
+        "Z9": 0
+      }
+    },
+    {
+      "B_L_class": "genuine DeltaL=+1 PS-VEV RPV control class",
+      "SU2_tensor": "epsilon_ij epsilon^alpha_beta",
+      "SU4_tensor": "delta^a_c delta^b_d Q^(a i) Q^(b j) Qc_(c alpha) Sc_(d beta)",
+      "after_declared_VEVs": "At the Sc lepton-direction VEV it has L Q D^c and L L E^c component classes. It is a delta contraction, not a single-epsilon SU4 source.",
+      "fields": [
+        "Q",
+        "Q",
+        "Qc",
+        "Sc"
+      ],
+      "label": "delta_left_lepton_RPV_control",
+      "matter_field_count_Q_plus_Qc": 3,
+      "precise_status": "It has Z9=3 (and Z4R=3), so it is blocked already by the V40 selector.",
+      "selector_signature": {
+        "Kahler_allowed_by_listed_selectors": false,
+        "PQ_numerator_over_170": 0,
+        "U1F": 3,
+        "W_allowed_by_listed_selectors": false,
+        "Z4R": 3,
+        "Z5610": 0,
+        "Z9": 3
+      }
+    },
+    {
+      "B_L_class": "DeltaL=+1 bilinear control; distinct from V40's allowed Q H Sc NDirac term",
+      "SU2_tensor": "epsilon^alpha_beta H_(i beta)",
+      "SU4_tensor": "delta^a_b Q^(a i) Sc_(b alpha)",
+      "after_declared_VEVs": "At <Sc> it is an LH bilinear precursor.",
+      "fields": [
+        "Q",
+        "H",
+        "Sc"
+      ],
+      "label": "delta_bilinear_LH_control",
+      "matter_field_count_Q_plus_Qc": 1,
+      "precise_status": "It has Z9=3 and odd R parity, so it is blocked by the listed selector.",
+      "selector_signature": {
+        "Kahler_allowed_by_listed_selectors": false,
+        "PQ_numerator_over_170": 0,
+        "U1F": 3,
+        "W_allowed_by_listed_selectors": false,
+        "Z4R": 1,
+        "Z5610": 0,
+        "Z9": 3
+      }
+    }
+  ],
+  "gate_boundary": {
+    "G7_closed": false,
+    "landed": [
+      "all-order declared-VEV-ring protection of the conventional Q4/Qc4 epsilon source families by Z9",
+      "all-order residual-R-parity protection of the one-PS-VEV Q3SbcH/Qc3Sc precursor families",
+      "an explicit selector-clean high-degree B/L-violating EFT witness that prevents overclaiming G7"
+    ],
+    "proton_lifetime_reported": false,
+    "still_required": [
+      "complete holomorphic and nonholomorphic PS invariant-ring/Hilbert-basis enumeration",
+      "UV matching or a UV symmetry proving the six-matter Wilson coefficient vanishes",
+      "flavour tensors, PS/PQ/EW vacuum alignment, spectrum, SUSY dressing, RG running, and physical decay calculations"
+    ]
+  },
+  "literature_context": [
+    {
+      "reference": "M.-C. Chen et al., R parity violation from discrete R symmetries",
+      "relevance": "Discusses PS breaking by (4,1,2)+(bar4,1,2) VEVs and the appearance of effective UDD/LLE classes; this audit supplies its own contractions and charge arithmetic.",
+      "url": "https://mediatum.ub.tum.de/doc/1349870/document.pdf"
+    },
+    {
+      "reference": "Dutka and Gargalionis, Dimension-5 baryon-number violation in low-scale Pati-Salam",
+      "relevance": "Independent context that fundamental PS-breaking sectors can expose baryon-violating higher-dimensional structures; no numerical result from that paper is imported here.",
+      "url": "https://arxiv.org/abs/2211.02054"
+    }
+  ],
+  "schema": "susy-v42-g7-ps-vev-epsilon-audit-v1",
+  "scope": "A fail-closed operator/charge audit in the V40 U(1)_F-to-Z9 route.  It is not a complete PS invariant ring, UV completion, vacuum/spectrum calculation, or proton-decay calculation.",
+  "selector_allowed_six_matter_witness": {
+    "Delta_B": -1,
+    "Delta_L": -3,
+    "SU4_and_SU2R_nonzero_component_witness": "Set <Sbc^(4,+)>=v_PS.  The two delta factors select Qc_(4,- m) and Qc_(4,- n). In the epsilon take (a,b,c,d)=(r,g,b,4) and alternating SU2R components for the four Qc fields. For generic distinct flavour labels this gives a nonzero color-epsilon product of three colored Qc components and three SU4-leptonic Qc components.",
+    "SU4_contraction": "epsilon^abcd Qc_(a alpha i) Qc_(b beta j) Qc_(c gamma k) Qc_(d delta l) times (Sbc^(e rho) Qc_(e sigma m) epsilon_rho_sigma) times (Sbc^(f mu) Qc_(f nu n) epsilon_mu_nu), with two independent SU2R epsilon pairings among the first four Qc fields.",
+    "field_degree": 10,
+    "fields": [
+      "ThetaPlus",
+      "ThetaPlus",
+      "Qc",
+      "Qc",
+      "Qc",
+      "Qc",
+      "Qc",
+      "Qc",
+      "Sbc",
+      "Sbc"
+    ],
+    "full_listed_selector_clean": true,
+    "operator": "ThetaPlus^2 (Qc)^6 (Sbc)^2 / M^7",
+    "post_PS_component_class": "epsilon_rgb (u^c_r d^c_g d^c_b) (ell^c ell^c ell^c), where each ell^c is an e^c or nu^c component fixed by the chosen SU2R convention.",
+    "selector_signature": {
+      "Kahler_allowed_by_listed_selectors": false,
+      "PQ_numerator_over_170": 0,
+      "U1F": 0,
+      "W_allowed_by_listed_selectors": true,
+      "Z4R": 2,
+      "Z5610": 0,
+      "Z9": 0
+    },
+    "superpotential_suppression": "1/M^7 for ten chiral superfields",
+    "why_it_is_not_a_proton_lifetime_claim": [
+      "No UV matching has supplied a nonzero Wilson coefficient for this allowed operator.",
+      "No flavour tensor, SUSY dressing, threshold matching, RG evolution, hadronic/nuclear matrix element, or decay calculation is performed.",
+      "A six-matter DeltaB=-1, DeltaL=-3 interaction is not automatically a standard single-nucleon decay amplitude."
+    ],
+    "why_this_is_an_actual_B_L_witness": "The displayed index assignment is nonzero on the canonical rank-one Sbc branch and contains three anti-quark and three anti-lepton chiral matter components.  It is therefore not merely a PS-level representation precursor."
+  },
+  "source_manifest": [
+    {
+      "exists": true,
+      "path": "susy_v42_g7_ps_vev_epsilon_audit.py",
+      "sha256": "78631112b954b6ac5c030a7aa452d0cdbf899c06b6e735c4c700030452dcdec5"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v42_g7_ps_vev_epsilon_audit.py",
+      "sha256": "cee93439b4d0c0e562774d7e9b609babafc5346950f4d77dc319b33e626f4a30"
+    }
+  ],
+  "status": "V42_G7_PS_PQ_EW_VEV_EPSILON_AUDIT__LOW_DEGREE_PROTECTION_EXACT__SELECTOR_ALLOWED_SIX_MATTER_DELTA_B_MINUS_ONE_WITNESS__G7_FAIL_CLOSED"
+}

@@ -1,0 +1,82 @@
+{
+  "complete_theory_exists": false,
+  "declared_4D_EFT_closed_count": 0,
+  "established_full_predictive_closed_count": 0,
+  "gates": [
+    {
+      "closed_at_declared_4D_EFT_level": false,
+      "closed_subproblems": [
+        "pure Spin x Z66 finite counterclass",
+        "minimal full-rank renormalizable anomalon mass sector",
+        "mixed anomaly arithmetic for the declared nonuniversal GS coefficients"
+      ],
+      "established_full_predictive_closed": false,
+      "gate": "G1",
+      "remaining_promotion_requirement": "microscopic origin of the quantized nonuniversal GS sector and a dedicated Spin^Z4R x Z66 bordism/gravitino/PS-center audit",
+      "state": "PURE_FINITE_Z66_AND_FULL_RANK_COUNTERSECTOR_CLOSED__NONUNIVERSAL_GS_DEFINED_AT_4D_EFT_LEVEL__FULL_BORDISM_AND_MICROSCOPIC_PROVENANCE_OPEN"
+    },
+    {
+      "closed_at_declared_4D_EFT_level": false,
+      "established_full_predictive_closed": false,
+      "gate": "G2",
+      "remaining_promotion_requirement": "complete pole matrices, soft splittings, self-energies, mixings, and covariance",
+      "state": "NEW_ANOMALON_TREE_MASS_RANK5_CLOSED__FULL_POLES_OPEN"
+    },
+    {
+      "closed_at_declared_4D_EFT_level": false,
+      "established_full_predictive_closed": false,
+      "gate": "G3",
+      "remaining_promotion_requirement": "derived Kahler/soft potential, saxion stabilization, competing vacua, and tunneling",
+      "state": "LOCAL_TWO_PRODUCT_FTERM_HESSIAN_RANK4__GLOBAL_SELECTION_OPEN"
+    },
+    {
+      "closed_at_declared_4D_EFT_level": false,
+      "established_full_predictive_closed": false,
+      "gate": "G4",
+      "remaining_promotion_requirement": "microscopic mediation, coupled soft running, electroweak poles, and likelihood",
+      "state": "WILSONIAN_SOFT_INTERFACE_SPECIFIABLE__MICROSCOPIC_MEDIATION_OPEN"
+    },
+    {
+      "closed_at_declared_4D_EFT_level": false,
+      "established_full_predictive_closed": false,
+      "gate": "G5",
+      "remaining_promotion_requirement": "all-harmonic quality/sequestering theorem, GS-axion mixing, stable-anomalon relic, and pre-inflation/no-restoration/isocurvature history",
+      "state": "PURE_POLYNOMIAL_DEGREE33_PASSES__GS_DRESSING_AND_COSMOLOGY_OPEN"
+    },
+    {
+      "closed_at_declared_4D_EFT_level": false,
+      "established_full_predictive_closed": false,
+      "gate": "G6",
+      "remaining_promotion_requirement": "source boundary, soft mediation, pole thresholds, matching Wilsons, and uncertainty-propagated piecewise integration",
+      "state": "V36_LIVE_ONE_TWO_LOOP_RGE_ROWS_COMPLETE__PHYSICAL_BOUNDARY_OPEN"
+    },
+    {
+      "closed_at_declared_4D_EFT_level": false,
+      "established_full_predictive_closed": false,
+      "gate": "G7",
+      "remaining_promotion_requirement": "flavour tensors, SUSY dressing, running, lattice covariance, and channels",
+      "state": "BARYON_OPERATOR_CLASSES_RETAINED__FLAVOUR_AND_DRESSING_OPEN"
+    },
+    {
+      "closed_at_declared_4D_EFT_level": false,
+      "established_full_predictive_closed": false,
+      "gate": "G8",
+      "remaining_promotion_requirement": "out-of-sample flavour origin and a joint experimental likelihood",
+      "state": "CONDITIONAL_OBSERVABLE_REPLAY_RETAINED__PREDICTION_OPEN"
+    }
+  ],
+  "internal_cross_checks": {
+    "G1_pure_finite_pass": true,
+    "G3_local_rank": 4,
+    "G6_live_RGE_pass": true
+  },
+  "materially_updated_frontiers": [
+    "G1",
+    "G2",
+    "G3",
+    "G5",
+    "G6"
+  ],
+  "promotion_rule": "an explicit internally consistent EFT subproblem may close at EFT level; a full predictive gate additionally requires its microscopic inputs and likelihood",
+  "schema": "susy-v36-g1-g8-gate-ledger-v1"
+}

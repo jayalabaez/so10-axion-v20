@@ -110,7 +110,14 @@ def probe_live_pyrate() -> dict[str, Any]:
 
 
 def expected_above_vphi_b() -> dict[str, Any]:
-    content = betas.v20_content_blocks()["above_vPhi"]
+    # This live file is intentionally the historical reduced executable with
+    # only 3 Weyl 16s.  Do not confuse it with the corrected authoritative
+    # all-active ledger (19 multiplets) in exact_authoritative_*_gauge_betas.
+    content = {
+        "weyl_16": 3,
+        "complex_scalars": ["126", "10"],
+        "real_scalars": ["210"],
+    }
     b = betas.one_loop_b(
         weyl_16=int(content["weyl_16"]),
         complex_scalars=list(content["complex_scalars"]),

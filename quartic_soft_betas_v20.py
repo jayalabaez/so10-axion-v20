@@ -23,6 +23,7 @@ import numpy as np
 from scipy.integrate import solve_ivp
 
 import charge_allowed_potential_minimize_v20 as pmin
+import exact_physical_g7_component_threshold_contract_v20 as physical_g7
 import scalar_vacuum_proton_decay_v20 as scalar_pd
 import soft_gaugino_uv_masses_v20 as softg
 import two_loop_thresholds_v20 as thr
@@ -45,7 +46,7 @@ PS_COMPONENTS: dict[str, dict[str, Any]] = {
         "casimirs": {"g4": 0.0, "gL": 0.0, "gR": 0.0},
     },
     "DeltaR_126bar": {
-        "irrep": "(10bar,1,3)",
+        "irrep": "(10,1,3)",
         "casimirs": {"g4": 4.5, "gL": 0.0, "gR": 2.0},
     },
     "H10_eff": {
@@ -72,10 +73,41 @@ SOURCES = {
     "gauge_chain": "two_loop_thresholds_v20 B_PS one-loop Pati–Salam chain",
     "component_decomposition": {
         "10_H": "(1,2,2)+(6,1,1); H10_eff uses the bidoublet",
-        "126bar_H": "Delta_R uses (10bar,1,3)",
+        "126bar_H": "Delta_R uses source-bound (10,1,3)",
     },
+    "signed_embedding_source": (
+        "exact_physical_g7_component_threshold_contract_v20.py: "
+        "126bar contains a unique (1,1)_0 in (10,1,3)"
+    ),
     "scope": "reduced radial self-quartics, soft m2 and three portals",
 }
+
+
+def delta_r_standard_embedding() -> dict[str, Any]:
+    """Return the source-bound neutral Delta_R component.
+
+    The older diagnostic called this PS carrier ``(10bar,1,3)``.  In the
+    authoritative signed 126bar convention, the unique standard-SM singlet is
+    instead in ``(10,1,3)`` with ``B-L=-2``, ``T3R=+1`` and ``Y=0``.
+    Conjugation does not change the Casimirs used by this reduced beta ansatz,
+    but it is essential for physical threshold provenance.
+    """
+    candidates = [
+        row
+        for row in physical_g7.expand_sm("126bar")
+        if row.su3 == "1" and row.su2_dim == 1 and row.hypercharge == 0
+    ]
+    if len(candidates) != 1 or candidates[0].ps_label != "(10,1,3)":
+        raise ArithmeticError("the signed standard-embedding Delta_R source drifted")
+    return {
+        "SO10_irrep": "126bar",
+        "PS_irrep": candidates[0].ps_label,
+        "SM_irrep": candidates[0].label,
+        "B_minus_L": "-2",
+        "T3R": "+1",
+        "Y": "0",
+        "source_contract_core_sha256": physical_g7.EXPECTED_CORE_SHA256,
+    }
 
 
 def beta_lambda_one_loop(lam: float, *, g: float, c2: float) -> float:
@@ -311,12 +343,20 @@ def build_report() -> dict[str, Any]:
         gauges=evo["gauge_boundary_MI"],
     )
     soft_rep = softg.build_report()
+    delta_r_embedding = delta_r_standard_embedding()
 
     charged = {r["name"]: r for r in ledger_gut["rows"] if r["kind"] == "self_quartic"}
     checks = {
         "ledger_built": ledger_gut["n_couplings"] == 8,
         "ps_gauge_couplings_split_below_gut": len({round(v, 12) for v in evo["gauge_boundary_MI"].values()}) > 1,
         "deltaR_has_nonzero_ps_dressing": charged["DeltaR_126bar"]["gauge_invariant_Cg2"] > 0.0,
+        "deltaR_signed_PS_label_is_source_bound_10_1_3": (
+            charged["DeltaR_126bar"]["ps_irrep"] == "(10,1,3)"
+            and delta_r_embedding["PS_irrep"] == "(10,1,3)"
+            and delta_r_embedding["SM_irrep"] == "(1,1)_0"
+            and delta_r_embedding["B_minus_L"] == "-2"
+            and delta_r_embedding["T3R"] == "+1"
+        ),
         "H10_has_nonzero_ps_dressing": charged["H10_eff"]["gauge_invariant_Cg2"] > 0.0,
         "singlets_have_zero_ps_dressing": charged["P_210_PS"]["gauge_invariant_Cg2"] == 0.0 and charged["S_PQ"]["gauge_invariant_Cg2"] == 0.0,
         # Evolution singularity is a documented residual, not an execution crash.
@@ -338,7 +378,9 @@ def build_report() -> dict[str, Any]:
         "n_checks": len(checks),
         "n_failed": len(failures),
         "failures": failures,
+        "checks": checks,
         "sources": SOURCES,
+        "signed_DeltaR_embedding": delta_r_embedding,
         "boundary_GUT": {"alpha_inv_GUT_after_spectators": alpha_inv, "gauges": gauges_gut, "lambdas": lambdas0, "portals": portals0, "ledger": ledger_gut},
         "evolution_GUT_to_MI": evo,
         "boundary_MI": {"gauges": evo["gauge_boundary_MI"], "lambdas": evo["lambdas_end"], "portals": evo["portals_end"], "ledger": ledger_mi},
@@ -362,6 +404,10 @@ def build_report() -> dict[str, Any]:
             "vacuum_stability_lambda_positive_along_flow": bool(evo.get("all_quartics_positive")),
             "exact_unique_proton_lifetime": False,
             "whole_model_excluded": False,
+            "diagnostic_only_for_physical_G7": True,
+            "physical_G7_closed": False,
+            "mathematical_G7_closed": False,
+            "release_G7_verified": False,
         },
         "verdict": (
             "Resolved the prior C2=0 error by evolving separate Pati–Salam gauge couplings and nonzero subgroup Casimirs for Delta_R and H10. "

@@ -1,0 +1,413 @@
+{
+  "V53_candidate_clause_ledger": [
+    {
+      "id": "C1",
+      "statement": "Exact finite operator censuses and bounded selector screens exist, but no most-general selector-allowed census for one completed action exists; the Z9 candidate first leaks a dangerous class at degree eight.",
+      "status": "PARTIAL"
+    },
+    {
+      "id": "C2",
+      "statement": "The selector-free source plus elementary filter and driver is an explicit local renormalizable four-dimensional action.",
+      "status": "PASS_LOCAL_ACTION_ONLY"
+    },
+    {
+      "id": "C3",
+      "statement": "Its 218-coordinate holomorphic Hessian is exact, but no single Hessian also contains the Z9 selector, anomaly spectators, three families, four N fields, and a compatible full-rank driver.",
+      "status": "PARTIAL"
+    },
+    {
+      "id": "C4",
+      "statement": "The canonical local supersymmetric vacuum and gauge kernel are exact; global, radiative, soft-term, and tunnelling stability are not established.",
+      "status": "PARTIAL"
+    },
+    {
+      "id": "C5",
+      "statement": "There is no same-action one-loop matching calculation, physical threshold cancellation, or frozen EFT coefficient array.",
+      "status": "OPEN"
+    },
+    {
+      "id": "C6",
+      "statement": "The repaired Z9 selector forbids the elementary X(P^2-v^2) driver, and the safe renormalizable neutral-driver search through six added singlet VEVs is rank deficient.",
+      "status": "OPEN_INCOMPATIBLE"
+    },
+    {
+      "id": "C7",
+      "statement": "No same-action Wilson array, running to observables, likelihood, or withheld prediction has been constructed.",
+      "status": "OPEN"
+    }
+  ],
+  "bounded_stopping_theorem": {
+    "bounded_route": "low-index elementary Spin(10), additive finite Abelian shaping, fixed safe Z9 candidate, neutral polynomial drivers of degree at most three, and at most six added nonzero singlet VEV fields",
+    "honest_next_architectures": [
+      {
+        "id": "N1_nonAbelian_or_continuous_parent",
+        "kill_test": "Reject unless every required term, anomaly, F/D equation, gauge orbit, full Hessian, and dangerous operator class is recomputed in one action.",
+        "task": "Design the selector and P-breaking driver simultaneously using a non-Abelian filter symmetry or a charged continuous parent."
+      },
+      {
+        "id": "N2_degree5_UV_completion",
+        "kill_test": "Reject if mediator-induced operators restore F16^4 dressings, leave moduli, or push the one-loop pole below the declared validity window.",
+        "task": "UV-complete the first degree-five driver escape with explicit mediators and derive the low-energy operator rather than inserting it by hand."
+      },
+      {
+        "id": "N3_anomalous_U1A_missing_VEV_branch",
+        "kill_test": "Do not import literature ranks; require a frozen regulator, Green-Schwarz or Stueckelberg completion, full operator census, thresholds, and proton amplitudes.",
+        "task": "Rebuild the published anomalous-U1A/FI missing-VEV route as a complete explicit action with a repository-executable Hessian and matching calculation."
+      }
+    ],
+    "not_claimed": "This is not a theorem against all Spin(10) theories, non-Abelian shaping groups, charged continuous parents, or explicit nonrenormalizable UV completions.",
+    "route_exhausted": true,
+    "smallest_bounded_algebraic_escape": {
+      "added_Z9_charges": [
+        1,
+        8
+      ],
+      "driver_degree": 5,
+      "status": "nonrenormalizable and therefore a new action requiring explicit UV matching"
+    },
+    "theorem": "Every enumerated proton-safe renormalizable neutral-driver sector has exponent-Jacobian rank at least one below the number of nonzero VEV variables, so its holomorphic driver Hessian retains a modulus."
+  },
+  "core_sha256": "620525de6b9a6ed2a63fe7e734caa18239dc26b4ef3e36b8eadbd4259d9e3cde",
+  "exact_advance_ledger": [
+    {
+      "H_nullity": 82,
+      "H_rank": 111,
+      "Q_rank": 33,
+      "coordinates": 193,
+      "exact": true,
+      "id": "A1_declared_sparse_whole_action",
+      "kernel": "ker(H)=33 broken-gauge directions direct-sum 45 light matter coordinates direct-sum 4 weak-Higgs coordinates",
+      "limitation": "tuned DT and no complete selector",
+      "scope": "unchanged V52 source plus matter, one H10, and four N singlets"
+    },
+    {
+      "F16_power4_family_invariants": 6,
+      "exact": true,
+      "id": "A2_unchanged_action_selector_no_go",
+      "invariant_directions": 365,
+      "invariant_multidegrees": 66,
+      "limitation": "no-go applies to the unchanged declared action and additive finite Abelian products",
+      "proton_safe_assignments": 0,
+      "required_charge_assignments": 227,
+      "scope": "declared V52 field contract through invariant degree four and ZN/ZNR through N=64"
+    },
+    {
+      "exact": true,
+      "id": "A3_cross_coupled_DW_source_and_two10_rank_split",
+      "limitation": "the minimal Abelian selector also permits fatal H1^2 fillers",
+      "scope": "new 176-coordinate E+A+B+C+barC source, plus a separately evaluated two-10 filter",
+      "source_H_nullity": 33,
+      "source_H_rank": 143,
+      "source_Q_rank": 33,
+      "two10_full_rank": 16,
+      "two10_weak_nullity": 4,
+      "uncoupled_control_extra_moduli": 6
+    },
+    {
+      "H_nullity": 37,
+      "H_rank": 181,
+      "Q_rank": 33,
+      "coordinates": 218,
+      "exact": true,
+      "extra_zero_modes": 0,
+      "filter_color_rank": 24,
+      "filter_weak_nullity": 4,
+      "filter_weak_rank": 12,
+      "id": "A4_elementary_filter_Hessian",
+      "limitation": "no complete shaping selector; generic H1^2 lifts the four intended modes",
+      "scope": "selector-free 176-coordinate DW source plus four 10s and P,X driver"
+    },
+    {
+      "all_screened_forbidden": true,
+      "anomaly_residues_after_spectators": {
+        "Spin10_squared_Z9": 0,
+        "Z9_cubed": 0,
+        "gravity_squared_Z9": 0
+      },
+      "exact": true,
+      "exact_matter_parity": true,
+      "first_exposed_degree": 8,
+      "first_exposed_multiplicity": 72,
+      "id": "A5_bounded_Z9xZ2_selector_candidate",
+      "limitation": "Z9 is fully broken and the candidate has no compatible stabilized driver",
+      "scope": "changed filter action, all F16^4 dressings with zero, one, or two declared VEV insertions",
+      "screened_rows": 28,
+      "smallest_modulus_through_Z32": 9
+    },
+    {
+      "elementary_driver_invariant": false,
+      "exact": true,
+      "first_bounded_escape_degree": 5,
+      "id": "A6_filter_driver_compatibility_no_go",
+      "limitation": "bounded theorem, not a no-go for non-Abelian or changed continuous symmetry architectures",
+      "minimum_rank_deficit_by_added_fields": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "renormalizable_compatible_driver_found": false,
+      "safe_charge_multisets_by_added_fields": [
+        1,
+        4,
+        10,
+        20,
+        35,
+        56,
+        84
+      ],
+      "scope": "fixed safe Z9, neutral renormalizable drivers, zero through six added singlet VEV fields"
+    }
+  ],
+  "final_decision": {
+    "G2_closed": false,
+    "V53_candidate_closed_gates": [],
+    "bounded_V53_analysis_finished": true,
+    "complete_theory": false,
+    "cumulative_reusable_closed_gates": [
+      "G1"
+    ],
+    "empirical_new_physics_discovery": false,
+    "full_gates_closed_for_V53_candidate": 0,
+    "same_action_completion": false,
+    "selected_complete_candidate": null,
+    "statement": "V53 is complete as a bounded exact audit: it validates real intermediate source and filter Hessians and proves why they cannot be combined with the tested selector. It does not furnish a complete or experimentally validated theory."
+  },
+  "gate_ledger": [
+    {
+      "V53_candidate_closed": false,
+      "advance": "The previously established ordinary-Spin quotient/anomaly result remains a reusable lemma.",
+      "blocker": "It is not a reclosure for the V53 Z9 filter action and supplies no continuous parent for that selector.",
+      "closed": true,
+      "gate": "G1",
+      "scope": "frozen ordinary-Spin topology/anomaly namespace only"
+    },
+    {
+      "V53_candidate_closed": false,
+      "advance": "V53 provides exact source, filter, selector, and no-go certificates with canonical provenance.",
+      "blocker": "The C1-C7 conjunction fails because the exact filter Hessian and proton-safe selector do not belong to one compatible action.",
+      "closed": false,
+      "gate": "G2"
+    },
+    {
+      "V53_candidate_closed": false,
+      "advance": "The selector-free 218-coordinate action has F=D=0, rank(H)=181, nullity 37, and exactly 33 gauge plus four intended weak-Higgs zero directions.",
+      "blocker": "The result omits the selector-compatible driver, anomaly spectators, full matter sector, SUSY breaking, and global/radiative vacuum analysis.",
+      "closed": false,
+      "gate": "G3"
+    },
+    {
+      "V53_candidate_closed": false,
+      "advance": "The elementary filter has color rank 24 and weak rank 12 with nullity four on an open set, leaving one Higgs-doublet pair without a coefficient equality.",
+      "blocker": "Its shaping protection is incompatible with the tested Z9 driver; mu/Bmu, soft breaking, radiative EWSB, and the physical scalar spectrum are absent.",
+      "closed": false,
+      "gate": "G4"
+    },
+    {
+      "V53_candidate_closed": false,
+      "advance": "No unsupported dark-sector or cosmological claim is made.",
+      "blocker": "No dark/PQ action, relic history, baryogenesis calculation, BBN/CMB test, or cosmological likelihood exists.",
+      "closed": false,
+      "gate": "G5"
+    },
+    {
+      "V53_candidate_closed": false,
+      "advance": "One-loop inventory screens are explicit: the selector-free filter has b=18 and pole ratio 3756.93; the anomaly-repaired selector candidate has b=22 and pole ratio 841.13 at g=0.73.",
+      "blocker": "The former lacks the selector and the latter lacks a stabilized full action; two-loop running, thresholds, unification, and physical pole matching are open.",
+      "closed": false,
+      "gate": "G6"
+    },
+    {
+      "V53_candidate_closed": false,
+      "advance": "The unchanged V52 action has an exact Abelian selector no-go, and the changed Z9 candidate forbids all F16^4 dressings through total degree six.",
+      "blocker": "The Z9 candidate exposes 72 F16^4 barC^4 invariant directions at degree eight; no mediator matching, Wilson coefficients, dressing, or decay rates exist.",
+      "closed": false,
+      "gate": "G7"
+    },
+    {
+      "V53_candidate_closed": false,
+      "advance": "Yukawa and inverse-seesaw operator classes are compatible with the bounded Z9 x exact-matter-parity charge ledger.",
+      "blocker": "The inverse-seesaw mu parameter is not naturally small, and no selector-compatible full mass matrix, flavor fit, uncertainty propagation, or withheld prediction exists.",
+      "closed": false,
+      "gate": "G8"
+    }
+  ],
+  "gate_ledger_scope": "Closed flags are cumulative reusable results in their frozen namespace. V53_candidate_closed is the same-action closure flag for this construction.",
+  "independent_intermediate_referee": {
+    "exact_checks": 20,
+    "expected_sha256": {
+      "SUSY_V53_INTERMEDIATE_REFEREE.md": "63c65af1c8b857eee9ed311b631c945c4fab0732161bbedf9c3f27e6922df044",
+      "susy_v53_intermediate_referee_verification.py": "a91090a344a17a55a6cc3fef84852ea9bdf86da2ed2205728492add5480fa0c9",
+      "test_susy_v53_intermediate_referee_verification.py": "347edc39ecbfd538c02b9ec620dfb1064c4cc21aa0e9aa626253aea4d730071a"
+    },
+    "files": [
+      "SUSY_V53_INTERMEDIATE_REFEREE.md",
+      "susy_v53_intermediate_referee_verification.py",
+      "test_susy_v53_intermediate_referee_verification.py"
+    ],
+    "scope": "cross-coupled natural-DT source, its two-10 rank split, and the unchanged-action selector no-go; it predates and does not independently certify the later Z9 candidate, driver no-go, or this master integration",
+    "status": "APPROVE_SCOPED_INTERMEDIATE_RESULTS__REJECT_THEORY_OR_G2_PROMOTION"
+  },
+  "input_core_hashes": {
+    "driver_no_go": "3777e4ab0f03591ca736f71e282f86a8f232fee83fb2f1d378e789fea6765bf4",
+    "elementary_filter": "993b549668243b06d082a7def8591c63141dfa402d6372b133c19cfa8f8b6ff6",
+    "natural_dt": "e01f86a4b3a2a843d822616bd43980c8ef0c9d24ce6b41b47655d4a4a51c35b2",
+    "selector_candidate": "33de88b196a5096f7169cc3156d68cd9f4fa33e985adf0c23ea6c67a1a732dce",
+    "selector_no_go": "3ad9373cb18224f72bfcedc0457378c996966cc5cbef5e4e3f4f3772e592e58b",
+    "v52_master": "9ffa78a63afd3ff0a1e948ff2deffc701f229c5b7cae46b354d6cf5ebecb3df8",
+    "whole_action": "9218b06e866c00dcc6e3348751ace04fea2e1958cb6fe046fc5c9b912896bcb8"
+  },
+  "integrity_checks": {
+    "C1_C7_conjunction_fails": true,
+    "all_input_cores_are_canonical_and_expected": true,
+    "complete_theory_is_not_claimed": true,
+    "cross_coupled_DW_source_kernel_is_gauge": true,
+    "elementary_driver_is_not_Z9_invariant": true,
+    "elementary_filter_218_kernel_is_gauge_plus_one_pair": true,
+    "only_frozen_G1_is_cumulatively_closed": true,
+    "safe_renormalizable_driver_search_has_rank_deficit": true,
+    "same_action_promotion_is_forbidden": true,
+    "scoped_intermediate_referee_files_are_bound": true,
+    "selector_candidate_is_bounded_and_anomaly_repaired": true,
+    "two10_DT_rank_split_is_exact_but_unprotected": true,
+    "unchanged_action_F4_no_go_is_exact": true,
+    "whole_action_193_rank_nullity_closes": true
+  },
+  "n_failed_integrity_checks": 0,
+  "perturbativity_route_comparison": [
+    {
+      "action": "V52 sparse whole action",
+      "b_Landau": 7,
+      "passes_1000x": true,
+      "passes_100x": true,
+      "pole_over_matching": 1557503331.1144598,
+      "scope": "tuned DT; no selector completion"
+    },
+    {
+      "action": "cross-coupled DW plus two 10s and matter",
+      "b_Landau": 16,
+      "passes_1000x": true,
+      "passes_100x": true,
+      "pole_over_matching": 10512.056357660906,
+      "scope": "filter completion absent"
+    },
+    {
+      "action": "selector-free elementary four-10 filter",
+      "b_Landau": 18,
+      "passes_1000x": true,
+      "passes_100x": true,
+      "pole_over_matching": 3756.9333788231534,
+      "scope": "exact Hessian; shaping selector absent"
+    },
+    {
+      "action": "anomaly-repaired Z9 selector inventory",
+      "b_Landau": 22,
+      "passes_1000x": false,
+      "passes_100x": true,
+      "pole_over_matching": 841.1312487591689,
+      "scope": "selector candidate; stabilized compatible driver absent"
+    }
+  ],
+  "primary_sources": [
+    {
+      "scope": "published filter architecture; V53 ranks are independently recomputed",
+      "title": "A Renormalizable Supersymmetric SO(10) Model with Natural Doublet-Triplet Splitting",
+      "url": "https://arxiv.org/abs/1410.5625"
+    },
+    {
+      "scope": "alternative anomalous-U1A missing-VEV architecture, not imported as a V53 certificate",
+      "title": "Stabilizing the Doublet-Triplet Splitting in SO(10)",
+      "url": "https://arxiv.org/abs/1003.2625"
+    },
+    {
+      "scope": "complementary missing-VEV/filter construction",
+      "title": "A New Doublet-Triplet Splitting Mechanism for Supersymmetric SO(10)",
+      "url": "https://arxiv.org/abs/hep-ph/9810315"
+    },
+    {
+      "scope": "discrete anomaly constraints and instanton-invariance criterion",
+      "title": "Note on Discrete Gauge Anomalies",
+      "url": "https://arxiv.org/abs/hep-th/9109045"
+    }
+  ],
+  "same_action_compatibility": {
+    "Z9_charge_of_P_squared": 4,
+    "closure_rule": "A gate may be promoted only when the action, selector, stabilized vacuum, Hessian, spectrum, matching, and observable map share one field and operator contract.",
+    "cross_action_gate_promotion_permitted": false,
+    "decision": "The exact 218-coordinate Hessian cannot be inherited by the Z9 selector candidate; there is no verified completed V53 action.",
+    "driver_compatibility_core": "3777e4ab0f03591ca736f71e282f86a8f232fee83fb2f1d378e789fea6765bf4",
+    "elementary_driver": "X(P^2-v^2)",
+    "elementary_driver_Z9_invariant": false,
+    "elementary_filter_core": "993b549668243b06d082a7def8591c63141dfa402d6372b133c19cfa8f8b6ff6",
+    "safe_full_rank_renormalizable_driver_found_through_six_added_singlets": false,
+    "same_action_filter_Hessian_and_selector_certificate": false,
+    "selector_candidate_core": "33de88b196a5096f7169cc3156d68cd9f4fa33e985adf0c23ea6c67a1a732dce"
+  },
+  "schema": "susy-v53-theory-completion-verification-audit-v1",
+  "source_manifest": [
+    {
+      "exists": true,
+      "path": "susy_v53_theory_completion_verification_audit.py",
+      "sha256": "2519d0e29c384e3f635dc9267d0fb15e270a76bc5f681b4638895d3a83d93f33"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v53_theory_completion_verification_audit.py",
+      "sha256": "1a6139704d580ae0fb2d3c8a054e457ac9d22985ffbbaee54c2070047d10e92f"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V52_NEW_PHYSICS_ROUTE_INTEGRATION_AUDIT.json",
+      "sha256": "3efe7d00187fea1f9e9636e5032db867bc298efa007387a3d5fc216b7fd98368"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V53_LOW_INDEX_WHOLE_ACTION_AUDIT.json",
+      "sha256": "0fee92670b987442b9823c21c20ba9bfe9f09ddb15abcdf917dce314008cbc84"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V53_PROTON_SAFE_SELECTOR_NO_GO_AUDIT.json",
+      "sha256": "1497c5603e6b06f277cfc3de752da453322f2d89e0b14f3e9a3cf1c0abd86daa"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V53_NATURAL_DT_FILTER_AUDIT.json",
+      "sha256": "5dc4433aeed1ce674bc6e4918547a8c42365f50eba879a2926c200c666154d16"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V53_ELEMENTARY_FILTER_HESSIAN_AUDIT.json",
+      "sha256": "ba06a332a9120877281de32ae6b61f9e4df10acaaca852034768938ff450e2b1"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V53_FILTER_SELECTOR_CANDIDATE_AUDIT.json",
+      "sha256": "9678c3e07f0e472bc7a48eabe032b32eda6bf1944730afbd1568a4610be17996"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V53_FILTER_DRIVER_COMPATIBILITY_NO_GO_AUDIT.json",
+      "sha256": "7a7a50a02db5c3267ea8bbd9e4b460aa7abff46867d57f88900957852d3eb109"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V53_INTERMEDIATE_REFEREE.md",
+      "sha256": "63c65af1c8b857eee9ed311b631c945c4fab0732161bbedf9c3f27e6922df044"
+    },
+    {
+      "exists": true,
+      "path": "susy_v53_intermediate_referee_verification.py",
+      "sha256": "a91090a344a17a55a6cc3fef84852ea9bdf86da2ed2205728492add5480fa0c9"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v53_intermediate_referee_verification.py",
+      "sha256": "347edc39ecbfd538c02b9ec620dfb1064c4cc21aa0e9aa626253aea4d730071a"
+    }
+  ],
+  "status": "V53_THEORY_COMPLETION_VERIFICATION__EXACT193_WHOLE_ACTION_KERNEL__EXACT176_CROSS_COUPLED_DW_SOURCE__EXACT218_ELEMENTARY_FILTER_HESSIAN__BOUNDED_Z9xZ2_SELECTOR_CANDIDATE__ELEMENTARY_DRIVER_NOT_Z9_INVARIANT__EXHAUSTIVE_SAFE_RENORMALIZABLE_DRIVER_NO_GO_THROUGH6_ADDED_SINGLETS__SAME_ACTION_COMPLETION_FALSE__G2_TO_G8_OPEN__ONLY_FROZEN_G1_RETAINED__BOUNDED_ROUTE_FINISHED__COMPLETE_THEORY_REJECTED"
+}

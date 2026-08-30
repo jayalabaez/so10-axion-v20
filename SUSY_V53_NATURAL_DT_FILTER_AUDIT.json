@@ -1,0 +1,519 @@
+{
+  "schema": "susy_v53_natural_dt_filter_audit_v1",
+  "status": "V53_EXACT_CROSS_COUPLED_DW_45_SOURCE__F_D_FLAT__ORBIT_RANK33__HESSIAN_RANK143_NULLITY33_KERNEL_EQUALS_GAUGE__TWO_10_DT_RANK_SPLIT_EXACT__MINIMAL_ADDITIVE_ABELIAN_SELECTOR_NO_GO__NONABELIAN_FILTER_OPEN__NO_G2_PROMOTION",
+  "candidate_action": {
+    "representations": [
+      "E54",
+      "A45",
+      "B45_DW",
+      "C16",
+      "barC16",
+      "H1_10",
+      "H2_10",
+      "four_N_singlets"
+    ],
+    "source_superpotential": "W=(mE/2)TrE2+(lambda/3)TrE3-(mA/4)TrA2-(mB/4)TrB2-(kA/2)Tr(EA2)-(kB/2)Tr(EB2)-(mu/2)Tr(AB)-(kx/2)Tr(E(AB+BA))+barC(mC+eta*rho16(A))C",
+    "DT_superpotential": "W_DT=H1^T B H2+(M2/2)H2^T H2",
+    "renormalizable": true
+  },
+  "exact_source_witness": {
+    "parameters": {
+      "mE": "6/5",
+      "lambda": "1",
+      "mA": "8",
+      "mB": "-9",
+      "kappaA": "1/2",
+      "kappaB": "1",
+      "muAB": "3",
+      "kappaAB": "1/2",
+      "eta": "-3*i/10",
+      "mC": "27/20"
+    },
+    "E0_diagonal": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      -3,
+      -3,
+      -3,
+      -3
+    ],
+    "A0_upper_blocks": [
+      1,
+      1,
+      1,
+      3,
+      3
+    ],
+    "B0_upper_blocks": [
+      1,
+      1,
+      1,
+      0,
+      0
+    ],
+    "C0_equals_barC0": "10 e15",
+    "source_coordinates": 176,
+    "F_nonzero_counts": {
+      "E_F_x400": 0,
+      "A_F_x400": 0,
+      "B_F_x400": 0,
+      "C_F_x400": 0,
+      "barC_F_x400": 0
+    },
+    "D_nonzero_count": 0,
+    "orbit_rank": 33,
+    "hessian_rank": 143,
+    "hessian_nullity": 33,
+    "ward_product_exactly_zero": true,
+    "kernel_equals_broken_gauge_orbit": true
+  },
+  "lean_uncoupled_adjoint_control": {
+    "terms": "-(mB/4)TrB2-(kB/2)Tr(EB2) only",
+    "retuned_parameters": {
+      "mE": "17/10",
+      "mB": "-4",
+      "kappaB": "1"
+    },
+    "hessian_rank": 137,
+    "hessian_nullity": 39,
+    "physical_chiral_zero_modes_beyond_gauge": 6,
+    "decision": "REJECT"
+  },
+  "doublet_triplet": {
+    "superpotential": "W_DT=H1^T B H2+(M2/2)H2^T H2",
+    "witness": {
+      "lambda12": 1,
+      "M2": 2
+    },
+    "cartesian_shape": [
+      20,
+      20
+    ],
+    "cartesian_rank": 16,
+    "cartesian_nullity": 4,
+    "color_shape": [
+      12,
+      12
+    ],
+    "color_rank": 12,
+    "color_nullity": 0,
+    "weak_shape": [
+      8,
+      8
+    ],
+    "weak_rank": 4,
+    "weak_nullity": 4,
+    "reduced_doublet_pair_matrix": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        2
+      ]
+    ],
+    "reduced_triplet_pair_matrix": [
+      [
+        0,
+        1
+      ],
+      [
+        -1,
+        2
+      ]
+    ],
+    "rank_split_parameter_codimension_with_declared_terms": 0,
+    "nonzero_open_conditions": [
+      "lambda12 != 0",
+      "M2 != 0",
+      "B_color != 0",
+      "B_weak = 0 by vacuum"
+    ],
+    "generic_allowed_H1_squared_lifts_all": true
+  },
+  "minimal_Abelian_selector_no_go": {
+    "class": "any product of additive Abelian ordinary symmetries with neutral B and neutral superpotential",
+    "required_congruences": [
+      "q(H1)+q(H2)=0",
+      "2 q(H2)=0"
+    ],
+    "derived_congruence": "2 q(H1)=-2 q(H2)=0",
+    "fatal_operator": "H1^T H1 and H1^T E H1 are symmetry-allowed",
+    "exhaustive_moduli_checked": [
+      2,
+      64
+    ],
+    "total_counterexamples": 0,
+    "per_modulus": [
+      {
+        "N": 2,
+        "solutions": 2,
+        "counterexamples": 0
+      },
+      {
+        "N": 3,
+        "solutions": 1,
+        "counterexamples": 0
+      },
+      {
+        "N": 4,
+        "solutions": 2,
+        "counterexamples": 0
+      },
+      {
+        "N": 5,
+        "solutions": 1,
+        "counterexamples": 0
+      },
+      {
+        "N": 6,
+        "solutions": 2,
+        "counterexamples": 0
+      },
+      {
+        "N": 7,
+        "solutions": 1,
+        "counterexamples": 0
+      },
+      {
+        "N": 8,
+        "solutions": 2,
+        "counterexamples": 0
+      },
+      {
+        "N": 9,
+        "solutions": 1,
+        "counterexamples": 0
+      },
+      {
+        "N": 10,
+        "solutions": 2,
+        "counterexamples": 0
+      },
+      {
+        "N": 11,
+        "solutions": 1,
+        "counterexamples": 0
+      },
+      {
+        "N": 12,
+        "solutions": 2,
+        "counterexamples": 0
+      },
+      {
+        "N": 13,
+        "solutions": 1,
+        "counterexamples": 0
+      },
+      {
+        "N": 14,
+        "solutions": 2,
+        "counterexamples": 0
+      },
+      {
+        "N": 15,
+        "solutions": 1,
+        "counterexamples": 0
+      },
+      {
+        "N": 16,
+        "solutions": 2,
+        "counterexamples": 0
+      },
+      {
+        "N": 17,
+        "solutions": 1,
+        "counterexamples": 0
+      },
+      {
+        "N": 18,
+        "solutions": 2,
+        "counterexamples": 0
+      },
+      {
+        "N": 19,
+        "solutions": 1,
+        "counterexamples": 0
+      },
+      {
+        "N": 20,
+        "solutions": 2,
+        "counterexamples": 0
+      },
+      {
+        "N": 21,
+        "solutions": 1,
+        "counterexamples": 0
+      },
+      {
+        "N": 22,
+        "solutions": 2,
+        "counterexamples": 0
+      },
+      {
+        "N": 23,
+        "solutions": 1,
+        "counterexamples": 0
+      },
+      {
+        "N": 24,
+        "solutions": 2,
+        "counterexamples": 0
+      },
+      {
+        "N": 25,
+        "solutions": 1,
+        "counterexamples": 0
+      },
+      {
+        "N": 26,
+        "solutions": 2,
+        "counterexamples": 0
+      },
+      {
+        "N": 27,
+        "solutions": 1,
+        "counterexamples": 0
+      },
+      {
+        "N": 28,
+        "solutions": 2,
+        "counterexamples": 0
+      },
+      {
+        "N": 29,
+        "solutions": 1,
+        "counterexamples": 0
+      },
+      {
+        "N": 30,
+        "solutions": 2,
+        "counterexamples": 0
+      },
+      {
+        "N": 31,
+        "solutions": 1,
+        "counterexamples": 0
+      },
+      {
+        "N": 32,
+        "solutions": 2,
+        "counterexamples": 0
+      },
+      {
+        "N": 33,
+        "solutions": 1,
+        "counterexamples": 0
+      },
+      {
+        "N": 34,
+        "solutions": 2,
+        "counterexamples": 0
+      },
+      {
+        "N": 35,
+        "solutions": 1,
+        "counterexamples": 0
+      },
+      {
+        "N": 36,
+        "solutions": 2,
+        "counterexamples": 0
+      },
+      {
+        "N": 37,
+        "solutions": 1,
+        "counterexamples": 0
+      },
+      {
+        "N": 38,
+        "solutions": 2,
+        "counterexamples": 0
+      },
+      {
+        "N": 39,
+        "solutions": 1,
+        "counterexamples": 0
+      },
+      {
+        "N": 40,
+        "solutions": 2,
+        "counterexamples": 0
+      },
+      {
+        "N": 41,
+        "solutions": 1,
+        "counterexamples": 0
+      },
+      {
+        "N": 42,
+        "solutions": 2,
+        "counterexamples": 0
+      },
+      {
+        "N": 43,
+        "solutions": 1,
+        "counterexamples": 0
+      },
+      {
+        "N": 44,
+        "solutions": 2,
+        "counterexamples": 0
+      },
+      {
+        "N": 45,
+        "solutions": 1,
+        "counterexamples": 0
+      },
+      {
+        "N": 46,
+        "solutions": 2,
+        "counterexamples": 0
+      },
+      {
+        "N": 47,
+        "solutions": 1,
+        "counterexamples": 0
+      },
+      {
+        "N": 48,
+        "solutions": 2,
+        "counterexamples": 0
+      },
+      {
+        "N": 49,
+        "solutions": 1,
+        "counterexamples": 0
+      },
+      {
+        "N": 50,
+        "solutions": 2,
+        "counterexamples": 0
+      },
+      {
+        "N": 51,
+        "solutions": 1,
+        "counterexamples": 0
+      },
+      {
+        "N": 52,
+        "solutions": 2,
+        "counterexamples": 0
+      },
+      {
+        "N": 53,
+        "solutions": 1,
+        "counterexamples": 0
+      },
+      {
+        "N": 54,
+        "solutions": 2,
+        "counterexamples": 0
+      },
+      {
+        "N": 55,
+        "solutions": 1,
+        "counterexamples": 0
+      },
+      {
+        "N": 56,
+        "solutions": 2,
+        "counterexamples": 0
+      },
+      {
+        "N": 57,
+        "solutions": 1,
+        "counterexamples": 0
+      },
+      {
+        "N": 58,
+        "solutions": 2,
+        "counterexamples": 0
+      },
+      {
+        "N": 59,
+        "solutions": 1,
+        "counterexamples": 0
+      },
+      {
+        "N": 60,
+        "solutions": 2,
+        "counterexamples": 0
+      },
+      {
+        "N": 61,
+        "solutions": 1,
+        "counterexamples": 0
+      },
+      {
+        "N": 62,
+        "solutions": 2,
+        "counterexamples": 0
+      },
+      {
+        "N": 63,
+        "solutions": 1,
+        "counterexamples": 0
+      },
+      {
+        "N": 64,
+        "solutions": 2,
+        "counterexamples": 0
+      }
+    ],
+    "product_group_extension": "the proof holds componentwise for every Abelian factor",
+    "minimal_escape": "a non-Abelian flavor/filter structure or charged mass spurions with a complete vacuum and anomaly completion"
+  },
+  "perturbativity": {
+    "base_54_45_16_bar16_T": 24,
+    "added_DW_45_T": 8,
+    "two_10H_T": 2,
+    "four_seesaw_singlets_T": 0,
+    "three_matter_16_T": 6,
+    "total_chiral_T": 40,
+    "one_loop_b": 16,
+    "formal_pole_over_matching_at_g_0p73": 10512.056357660906,
+    "above_100x": true,
+    "above_1000x": true,
+    "scope": "does not include the still-missing non-Abelian/filter completion"
+  },
+  "literature": {
+    "DW_minimal_model": "https://arxiv.org/abs/hep-ph/9705366",
+    "renormalizable_DW_and_filter": "https://arxiv.org/abs/1410.5625",
+    "complementary_missing_vev": "https://arxiv.org/abs/hep-ph/9810315"
+  },
+  "checks": {
+    "all_176_source_F_terms_vanish": true,
+    "all_45_compact_D_moments_vanish": true,
+    "cross_coupled_source_orbit_rank_is_33": true,
+    "cross_coupled_source_hessian_rank_is_143": true,
+    "cross_coupled_source_kernel_equals_orbit": true,
+    "lean_EB2_only_source_has_six_extra_chiral_zero_modes": true,
+    "two_10_color_block_is_full_rank": true,
+    "two_10_weak_block_leaves_one_HuHd_pair": true,
+    "rank_split_is_parameter_open_in_declared_DT_terms": true,
+    "generic_H1_squared_operator_lifts_the_doublets": true,
+    "additive_Abelian_selector_theorem_has_no_counterexample": true,
+    "one_loop_screen_exceeds_1000x_before_filter_completion": true,
+    "G2_is_not_promoted": true
+  },
+  "n_checks": 13,
+  "n_failed": 0,
+  "failures": [],
+  "gate_effect": {
+    "isolated_low_index_DW_source": "CLOSED FOR DISPLAYED ELEMENTARY SOURCE ACTION",
+    "doublet_triplet_rank_matrix": "CLOSED FOR DECLARED TWO-10 TERMS",
+    "natural_DT_under_minimal_additive_Abelian_selector": "EXACT NO-GO",
+    "complete_nonAbelian_or_filter_action": "OPEN",
+    "full_operator_and_anomaly_census": "OPEN",
+    "G2": "OPEN",
+    "clause_promotions": []
+  },
+  "next_exact_target": "construct a non-Abelian flavor/filter sector that forbids H1^2 and every E/A mass filler, then include its vacuum, gauge/discrete anomalies, Goldstones, and Dynkin inventory in the same Hessian",
+  "core_sha256": "e01f86a4b3a2a843d822616bd43980c8ef0c9d24ce6b41b47655d4a4a51c35b2"
+}

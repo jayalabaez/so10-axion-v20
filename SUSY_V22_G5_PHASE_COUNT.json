@@ -1,0 +1,87 @@
+{
+  "schema": "susy_v22_g5_phase_count_v1",
+  "status": "EXACT_ONE_PHYSICAL_PHASE_AFTER_GUT_AND_EW_GAUGE_QUOTIENT__FULL_CALG_AND_SPECTRUM_OPEN",
+  "dependencies": {
+    "contract_core_sha256": "b50551e10a2052ec2067ca1f440f45079e6dd732be3cd5f1d05df2d9a273053d",
+    "R_protection_core_sha256": "5a22e4866d7fa6159575cf38bd3a68575d4e4b437dd406104fd1a43c8db12cf4",
+    "Z4R_anomaly_core_sha256": "dd8b09018485067b2b8094a5c754f11332bcac2aabd42466a8a0f1ef91ebbfd4",
+    "EW_endpoint_core_sha256": "1d2c0ae4135d5ecfb48fcfaa6b34d46039eaf093a770c02077bea692713e1557"
+  },
+  "source_pins_portable_lf": {
+    "susy_so10x17_v22_contract.py": "f6d1873a01c79d76450e0954c31f79c9e3c94f161885f312fbc67af92cd9b021",
+    "susy_v22_all_order_r_protection.py": "acca136331feef7829d1584486b30b775b08266cc408325a6d75d41a2179eefe",
+    "susy_v22_z4r_anomaly.py": "c272b18b3dfbffe8ac5f141d8650a49bf89c003e8cc8e85d3f70d8e8288692d2",
+    "susy_v22_exact_ew_endpoint.py": "aece0748a277818f84e54650c28346f81a4516311b5ee649225cde6f9e41d1d9",
+    "models/SO10X17SUSYV22/SO10X17SUSYV22.m": "a253e40e712287d654122b74ac94ceeb05b5fc3dddcf8c2af2c790af99be45d4"
+  },
+  "fixed_phase_constraint_rows": {
+    "Phi210_square": [
+      2,
+      0
+    ],
+    "Phi210_cube": [
+      3,
+      0
+    ],
+    "XMP_square": [
+      0,
+      2
+    ]
+  },
+  "GUT_phase_coordinates": [
+    "C16_relative",
+    "S_relative",
+    "Phi17_relative"
+  ],
+  "broken_gauge_phase_rows": {
+    "broken_SO10_Cartan": [
+      1,
+      0,
+      0
+    ],
+    "broken_U1X": [
+      0,
+      4,
+      17
+    ]
+  },
+  "intended_axion_vector": [
+    0,
+    17,
+    -4
+  ],
+  "exact_counts": {
+    "fixed_nonquotient_phase_rank": 2,
+    "GUT_phase_tangent_dimension": 3,
+    "broken_gauge_phase_rank": 2,
+    "physical_GUT_phase_dimension": 1
+  },
+  "remaining_requirements": {
+    "source_exact_calG_chiral_gaugino_matrix_on_the_V22_vacuum": false,
+    "all_zero_VEV_spectator_and_driver_chiral_multiplets_are_massive": false,
+    "complete_F_D_soft_scalar_Hessian_is_positive_modulo_gauge_and_axion": false,
+    "radiative_mu_Bmu_and_phase_alignment_are_source_bound": false,
+    "canonical_V22_G4_dependency_is_closed": false
+  },
+  "checks": {
+    "all_source_dependencies_execute": true,
+    "Phi210_and_XMP_continuous_phases_are_fixed": true,
+    "declared_GUT_VEV_phase_tangent_has_dimension_three": true,
+    "two_independent_broken_gauge_phase_directions_are_quotiented": true,
+    "exactly_one_physical_GUT_phase_direction_remains": true,
+    "declared_axion_vector_is_independent_of_both_gauge_vectors": true,
+    "EW_CP_odd_sector_has_only_one_gauge_zero_and_one_positive_mode": true,
+    "continuous_missing_partner_U1_is_absent_from_source": true,
+    "canonical_G5_not_promoted_without_full_spectrum": true
+  },
+  "n_checks": 9,
+  "n_failed": 0,
+  "failures": [],
+  "claim_boundary": {
+    "declared_VEV_sector_one_axion_phase_count_closed": true,
+    "full_calG_revalidation_closed": false,
+    "complete_scalar_spectrum_positive": false,
+    "canonical_G5_closed": false
+  },
+  "core_sha256": "10840678f554da058814b8ed6fc81be9266eb10247c3d78ca796719c57d24132"
+}

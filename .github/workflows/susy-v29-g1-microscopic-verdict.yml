@@ -1,0 +1,38 @@
+name: SUSY V29 G1 microscopic verdict
+
+on:
+  push:
+    paths:
+      - "susy_v29_g1_microscopic_completion_verdict.py"
+      - "test_susy_v29_g1_microscopic_completion_verdict.py"
+      - "SUSY_V29_G1_MICROSCOPIC_COMPLETION_VERDICT.json"
+      - "SUSY_V29_G1_MICROSCOPIC_COMPLETION_VERDICT.md"
+      - "susy_v28_new_physics_moduli_bridge.py"
+      - "SUSY_V28_NEW_PHYSICS_MODULI_BRIDGE.json"
+      - "SUSY_V28_MICROSCOPIC_INSTANTON_BRIDGE_SCHEMA.json"
+      - "susy_v27_g1_architecture_change_audit.py"
+      - "SUSY_V27_G1_ARCHITECTURE_CHANGE_AUDIT.json"
+      - ".github/workflows/susy-v29-g1-microscopic-verdict.yml"
+  pull_request:
+    paths:
+      - "susy_v29_g1_microscopic_completion_verdict.py"
+      - "test_susy_v29_g1_microscopic_completion_verdict.py"
+      - "SUSY_V29_G1_MICROSCOPIC_COMPLETION_VERDICT.json"
+      - "SUSY_V29_G1_MICROSCOPIC_COMPLETION_VERDICT.md"
+      - "susy_v28_new_physics_moduli_bridge.py"
+      - "SUSY_V28_NEW_PHYSICS_MODULI_BRIDGE.json"
+      - "SUSY_V28_MICROSCOPIC_INSTANTON_BRIDGE_SCHEMA.json"
+      - "susy_v27_g1_architecture_change_audit.py"
+      - "SUSY_V27_G1_ARCHITECTURE_CHANGE_AUDIT.json"
+      - ".github/workflows/susy-v29-g1-microscopic-verdict.yml"
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -B susy_v29_g1_microscopic_completion_verdict.py --check
+      - run: python -m pytest -q test_susy_v29_g1_microscopic_completion_verdict.py

@@ -1,0 +1,5378 @@
+{
+  "checks": {
+    "all_conjugate_maps_involutive_and_orthonormal": true,
+    "all_source_candidate_rows_have_neutral_charge": true,
+    "five_form_conjugation_flips_hodge_chirality": true,
+    "no_candidate_promoted_without_tensor_id": true,
+    "strict_C7_partial": true
+  },
+  "conjugate_maps": {
+    "16x16_to_120__conjugate": {
+      "antiunitary_double_conjugation_residual": 0.0,
+      "conjugate_gram_residual": 0.0,
+      "conjugate_shape": [
+        120,
+        16,
+        16
+      ],
+      "phase_rule": "entrywise complex conjugation in the source-locked Cartesian basis; reverse ordered spinors by transpose when required",
+      "source_shape": [
+        120,
+        16,
+        16
+      ]
+    },
+    "16xbar16_to_210__conjugate": {
+      "antiunitary_double_conjugation_residual": 0.0,
+      "conjugate_gram_residual": 0.0,
+      "conjugate_shape": [
+        210,
+        16,
+        16
+      ],
+      "phase_rule": "entrywise complex conjugation in the source-locked Cartesian basis; reverse ordered spinors by transpose when required",
+      "source_shape": [
+        210,
+        16,
+        16
+      ]
+    },
+    "16xbar16_to_45__conjugate": {
+      "antiunitary_double_conjugation_residual": 0.0,
+      "conjugate_gram_residual": 0.0,
+      "conjugate_shape": [
+        45,
+        16,
+        16
+      ],
+      "phase_rule": "entrywise complex conjugation in the source-locked Cartesian basis; reverse ordered spinors by transpose when required",
+      "source_shape": [
+        45,
+        16,
+        16
+      ]
+    },
+    "PhiSigma_120__conjugate": {
+      "antiunitary_double_conjugation_residual": 0.0,
+      "conjugate_gram_residual": 0.0,
+      "conjugate_shape": [
+        120,
+        210,
+        126
+      ],
+      "phase_rule": "complex conjugate the real 4/3-form contraction coefficients and replace the -i five-form input by its +i conjugate basis",
+      "source_shape": [
+        120,
+        210,
+        126
+      ]
+    },
+    "PhiSigma_126_minus_i__conjugate_plus_i": {
+      "antiunitary_double_conjugation_residual": 0.0,
+      "conjugate_gram_residual": 0.0,
+      "conjugate_hodge_residual": 0.0,
+      "conjugate_shape": [
+        126,
+        210,
+        126
+      ],
+      "phase_rule": "complex conjugation changes (1+i star)/2 to (1-i star)/2 and -i output to +i",
+      "source_shape": [
+        126,
+        210,
+        126
+      ]
+    }
+  },
+  "core_sha256": "f442708070f28309864535a886693ff07d372943ac0d36f90fe7a910f51cf535",
+  "counts": {
+    "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION": 168,
+    "UNINSTANTIATED_PS_STRING_ROW": 8,
+    "total_rows": 176
+  },
+  "coverage_decision": {
+    "C7": "PARTIAL",
+    "important_distinction": "charge-neutral candidate sectors may have empty invariant image and cannot be promoted to operators from U1F neutrality alone",
+    "row_enumeration": "PASS for every machine-listed HH/HcHc/HcH candidate row plus every PS superpotential and derivative row",
+    "tensor_instantiation": "FAIL: V49 candidate rows declare Haar-projector coefficient spaces but omit resolved invariant multiplicity and normalized tensor IDs; PS rows are prose strings without per-term charge/parity/ancestry fields"
+  },
+  "incidence_census": [
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "A",
+        "C"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126bar_convention"
+      ],
+      "degree": 2,
+      "id": "HH_d2_000",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e HLF HRA",
+      "ordered_chirality": [
+        "16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HH",
+      "source_representations": []
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "B",
+        "D"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126_conjugate"
+      ],
+      "degree": 2,
+      "id": "HH_d2_001",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e HLA HRF",
+      "ordered_chirality": [
+        "bar16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HH",
+      "source_representations": []
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "A",
+        "B"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 3,
+      "id": "HH_d3_000",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e ThetaPlus HLF HLA",
+      "ordered_chirality": [
+        "16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HH",
+      "source_representations": [
+        "1"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "A",
+        "C"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126bar_convention"
+      ],
+      "degree": 3,
+      "id": "HH_d3_001",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e S HLF HRA",
+      "ordered_chirality": [
+        "16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HH",
+      "source_representations": [
+        "1"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "A",
+        "C"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126bar_convention"
+      ],
+      "degree": 3,
+      "id": "HH_d3_002",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e Phi HLF HRA",
+      "ordered_chirality": [
+        "16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HH",
+      "source_representations": [
+        "210"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "A",
+        "C"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126bar_convention"
+      ],
+      "degree": 3,
+      "id": "HH_d3_003",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e Sigma HLF HRA",
+      "ordered_chirality": [
+        "16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HH",
+      "source_representations": [
+        "126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "A",
+        "C"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126bar_convention"
+      ],
+      "degree": 3,
+      "id": "HH_d3_004",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e barSigma HLF HRA",
+      "ordered_chirality": [
+        "16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HH",
+      "source_representations": [
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "B",
+        "D"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126_conjugate"
+      ],
+      "degree": 3,
+      "id": "HH_d3_005",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e S HLA HRF",
+      "ordered_chirality": [
+        "bar16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HH",
+      "source_representations": [
+        "1"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "B",
+        "D"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126_conjugate"
+      ],
+      "degree": 3,
+      "id": "HH_d3_006",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e Phi HLA HRF",
+      "ordered_chirality": [
+        "bar16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HH",
+      "source_representations": [
+        "210"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "B",
+        "D"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126_conjugate"
+      ],
+      "degree": 3,
+      "id": "HH_d3_007",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e Sigma HLA HRF",
+      "ordered_chirality": [
+        "bar16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HH",
+      "source_representations": [
+        "126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "B",
+        "D"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126_conjugate"
+      ],
+      "degree": 3,
+      "id": "HH_d3_008",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e barSigma HLA HRF",
+      "ordered_chirality": [
+        "bar16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HH",
+      "source_representations": [
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "C",
+        "D"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 3,
+      "id": "HH_d3_009",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e ThetaMinus HRA HRF",
+      "ordered_chirality": [
+        "16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HH",
+      "source_representations": [
+        "1"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "A",
+        "B"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HH_d4_000",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e S ThetaPlus HLF HLA",
+      "ordered_chirality": [
+        "16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HH",
+      "source_representations": [
+        "1",
+        "1"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "A",
+        "B"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HH_d4_001",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e ThetaPlus Phi HLF HLA",
+      "ordered_chirality": [
+        "16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HH",
+      "source_representations": [
+        "1",
+        "210"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "A",
+        "B"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HH_d4_002",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e ThetaPlus Sigma HLF HLA",
+      "ordered_chirality": [
+        "16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HH",
+      "source_representations": [
+        "1",
+        "126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "A",
+        "B"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HH_d4_003",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e ThetaPlus barSigma HLF HLA",
+      "ordered_chirality": [
+        "16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HH",
+      "source_representations": [
+        "1",
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "A",
+        "C"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126bar_convention"
+      ],
+      "degree": 4,
+      "id": "HH_d4_004",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e S S HLF HRA",
+      "ordered_chirality": [
+        "16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HH",
+      "source_representations": [
+        "1",
+        "1"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "A",
+        "C"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126bar_convention"
+      ],
+      "degree": 4,
+      "id": "HH_d4_005",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e S Phi HLF HRA",
+      "ordered_chirality": [
+        "16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HH",
+      "source_representations": [
+        "1",
+        "210"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "A",
+        "C"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126bar_convention"
+      ],
+      "degree": 4,
+      "id": "HH_d4_006",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e S Sigma HLF HRA",
+      "ordered_chirality": [
+        "16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HH",
+      "source_representations": [
+        "1",
+        "126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "A",
+        "C"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126bar_convention"
+      ],
+      "degree": 4,
+      "id": "HH_d4_007",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e S barSigma HLF HRA",
+      "ordered_chirality": [
+        "16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HH",
+      "source_representations": [
+        "1",
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "A",
+        "C"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126bar_convention"
+      ],
+      "degree": 4,
+      "id": "HH_d4_008",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e ThetaPlus ThetaMinus HLF HRA",
+      "ordered_chirality": [
+        "16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HH",
+      "source_representations": [
+        "1",
+        "1"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "A",
+        "C"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126bar_convention"
+      ],
+      "degree": 4,
+      "id": "HH_d4_009",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e Phi Phi HLF HRA",
+      "ordered_chirality": [
+        "16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HH",
+      "source_representations": [
+        "210",
+        "210"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "A",
+        "C"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126bar_convention"
+      ],
+      "degree": 4,
+      "id": "HH_d4_010",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e Phi Sigma HLF HRA",
+      "ordered_chirality": [
+        "16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HH",
+      "source_representations": [
+        "210",
+        "126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "A",
+        "C"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126bar_convention"
+      ],
+      "degree": 4,
+      "id": "HH_d4_011",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e Phi barSigma HLF HRA",
+      "ordered_chirality": [
+        "16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HH",
+      "source_representations": [
+        "210",
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "A",
+        "C"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126bar_convention"
+      ],
+      "degree": 4,
+      "id": "HH_d4_012",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e Sigma Sigma HLF HRA",
+      "ordered_chirality": [
+        "16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HH",
+      "source_representations": [
+        "126",
+        "126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "A",
+        "C"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126bar_convention"
+      ],
+      "degree": 4,
+      "id": "HH_d4_013",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e Sigma barSigma HLF HRA",
+      "ordered_chirality": [
+        "16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HH",
+      "source_representations": [
+        "126",
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "A",
+        "C"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126bar_convention"
+      ],
+      "degree": 4,
+      "id": "HH_d4_014",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e barSigma barSigma HLF HRA",
+      "ordered_chirality": [
+        "16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HH",
+      "source_representations": [
+        "bar126",
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "B",
+        "D"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126_conjugate"
+      ],
+      "degree": 4,
+      "id": "HH_d4_015",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e S S HLA HRF",
+      "ordered_chirality": [
+        "bar16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HH",
+      "source_representations": [
+        "1",
+        "1"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "B",
+        "D"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126_conjugate"
+      ],
+      "degree": 4,
+      "id": "HH_d4_016",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e S Phi HLA HRF",
+      "ordered_chirality": [
+        "bar16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HH",
+      "source_representations": [
+        "1",
+        "210"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "B",
+        "D"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126_conjugate"
+      ],
+      "degree": 4,
+      "id": "HH_d4_017",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e S Sigma HLA HRF",
+      "ordered_chirality": [
+        "bar16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HH",
+      "source_representations": [
+        "1",
+        "126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "B",
+        "D"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126_conjugate"
+      ],
+      "degree": 4,
+      "id": "HH_d4_018",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e S barSigma HLA HRF",
+      "ordered_chirality": [
+        "bar16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HH",
+      "source_representations": [
+        "1",
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "B",
+        "D"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126_conjugate"
+      ],
+      "degree": 4,
+      "id": "HH_d4_019",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e ThetaPlus ThetaMinus HLA HRF",
+      "ordered_chirality": [
+        "bar16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HH",
+      "source_representations": [
+        "1",
+        "1"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "B",
+        "D"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126_conjugate"
+      ],
+      "degree": 4,
+      "id": "HH_d4_020",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e Phi Phi HLA HRF",
+      "ordered_chirality": [
+        "bar16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HH",
+      "source_representations": [
+        "210",
+        "210"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "B",
+        "D"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126_conjugate"
+      ],
+      "degree": 4,
+      "id": "HH_d4_021",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e Phi Sigma HLA HRF",
+      "ordered_chirality": [
+        "bar16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HH",
+      "source_representations": [
+        "210",
+        "126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "B",
+        "D"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126_conjugate"
+      ],
+      "degree": 4,
+      "id": "HH_d4_022",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e Phi barSigma HLA HRF",
+      "ordered_chirality": [
+        "bar16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HH",
+      "source_representations": [
+        "210",
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "B",
+        "D"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126_conjugate"
+      ],
+      "degree": 4,
+      "id": "HH_d4_023",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e Sigma Sigma HLA HRF",
+      "ordered_chirality": [
+        "bar16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HH",
+      "source_representations": [
+        "126",
+        "126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "B",
+        "D"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126_conjugate"
+      ],
+      "degree": 4,
+      "id": "HH_d4_024",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e Sigma barSigma HLA HRF",
+      "ordered_chirality": [
+        "bar16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HH",
+      "source_representations": [
+        "126",
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "B",
+        "D"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126_conjugate"
+      ],
+      "degree": 4,
+      "id": "HH_d4_025",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e barSigma barSigma HLA HRF",
+      "ordered_chirality": [
+        "bar16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HH",
+      "source_representations": [
+        "bar126",
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "C",
+        "D"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HH_d4_026",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e S ThetaMinus HRA HRF",
+      "ordered_chirality": [
+        "16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HH",
+      "source_representations": [
+        "1",
+        "1"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "C",
+        "D"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HH_d4_027",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e ThetaMinus Phi HRA HRF",
+      "ordered_chirality": [
+        "16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HH",
+      "source_representations": [
+        "1",
+        "210"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "C",
+        "D"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HH_d4_028",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e ThetaMinus Sigma HRA HRF",
+      "ordered_chirality": [
+        "16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HH",
+      "source_representations": [
+        "1",
+        "126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "C",
+        "D"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HH_d4_029",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e ThetaMinus barSigma HRA HRF",
+      "ordered_chirality": [
+        "16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HH",
+      "source_representations": [
+        "1",
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Ac",
+        "Cc"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126_conjugate"
+      ],
+      "degree": 2,
+      "id": "HcHc_d2_000",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e HLFc HRAc",
+      "ordered_chirality": [
+        "bar16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HcHc",
+      "source_representations": []
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Bc",
+        "Dc"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126bar_convention"
+      ],
+      "degree": 2,
+      "id": "HcHc_d2_001",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e HLAc HRFc",
+      "ordered_chirality": [
+        "16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HcHc",
+      "source_representations": []
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Ac",
+        "Bc"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 3,
+      "id": "HcHc_d3_000",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e ThetaMinus HLFc HLAc",
+      "ordered_chirality": [
+        "bar16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HcHc",
+      "source_representations": [
+        "1"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Ac",
+        "Cc"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126_conjugate"
+      ],
+      "degree": 3,
+      "id": "HcHc_d3_001",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e S HLFc HRAc",
+      "ordered_chirality": [
+        "bar16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HcHc",
+      "source_representations": [
+        "1"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Ac",
+        "Cc"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126_conjugate"
+      ],
+      "degree": 3,
+      "id": "HcHc_d3_002",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e Phi HLFc HRAc",
+      "ordered_chirality": [
+        "bar16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HcHc",
+      "source_representations": [
+        "210"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Ac",
+        "Cc"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126_conjugate"
+      ],
+      "degree": 3,
+      "id": "HcHc_d3_003",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e Sigma HLFc HRAc",
+      "ordered_chirality": [
+        "bar16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HcHc",
+      "source_representations": [
+        "126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Ac",
+        "Cc"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126_conjugate"
+      ],
+      "degree": 3,
+      "id": "HcHc_d3_004",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e barSigma HLFc HRAc",
+      "ordered_chirality": [
+        "bar16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HcHc",
+      "source_representations": [
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Bc",
+        "Dc"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126bar_convention"
+      ],
+      "degree": 3,
+      "id": "HcHc_d3_005",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e S HLAc HRFc",
+      "ordered_chirality": [
+        "16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HcHc",
+      "source_representations": [
+        "1"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Bc",
+        "Dc"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126bar_convention"
+      ],
+      "degree": 3,
+      "id": "HcHc_d3_006",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e Phi HLAc HRFc",
+      "ordered_chirality": [
+        "16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HcHc",
+      "source_representations": [
+        "210"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Bc",
+        "Dc"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126bar_convention"
+      ],
+      "degree": 3,
+      "id": "HcHc_d3_007",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e Sigma HLAc HRFc",
+      "ordered_chirality": [
+        "16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HcHc",
+      "source_representations": [
+        "126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Bc",
+        "Dc"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126bar_convention"
+      ],
+      "degree": 3,
+      "id": "HcHc_d3_008",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e barSigma HLAc HRFc",
+      "ordered_chirality": [
+        "16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HcHc",
+      "source_representations": [
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Cc",
+        "Dc"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 3,
+      "id": "HcHc_d3_009",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e ThetaPlus HRAc HRFc",
+      "ordered_chirality": [
+        "bar16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HcHc",
+      "source_representations": [
+        "1"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Ac",
+        "Bc"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcHc_d4_000",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e S ThetaMinus HLFc HLAc",
+      "ordered_chirality": [
+        "bar16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HcHc",
+      "source_representations": [
+        "1",
+        "1"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Ac",
+        "Bc"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcHc_d4_001",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e ThetaMinus Phi HLFc HLAc",
+      "ordered_chirality": [
+        "bar16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HcHc",
+      "source_representations": [
+        "1",
+        "210"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Ac",
+        "Bc"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcHc_d4_002",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e ThetaMinus Sigma HLFc HLAc",
+      "ordered_chirality": [
+        "bar16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HcHc",
+      "source_representations": [
+        "1",
+        "126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Ac",
+        "Bc"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcHc_d4_003",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e ThetaMinus barSigma HLFc HLAc",
+      "ordered_chirality": [
+        "bar16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HcHc",
+      "source_representations": [
+        "1",
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Ac",
+        "Cc"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126_conjugate"
+      ],
+      "degree": 4,
+      "id": "HcHc_d4_004",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e S S HLFc HRAc",
+      "ordered_chirality": [
+        "bar16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HcHc",
+      "source_representations": [
+        "1",
+        "1"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Ac",
+        "Cc"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126_conjugate"
+      ],
+      "degree": 4,
+      "id": "HcHc_d4_005",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e S Phi HLFc HRAc",
+      "ordered_chirality": [
+        "bar16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HcHc",
+      "source_representations": [
+        "1",
+        "210"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Ac",
+        "Cc"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126_conjugate"
+      ],
+      "degree": 4,
+      "id": "HcHc_d4_006",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e S Sigma HLFc HRAc",
+      "ordered_chirality": [
+        "bar16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HcHc",
+      "source_representations": [
+        "1",
+        "126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Ac",
+        "Cc"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126_conjugate"
+      ],
+      "degree": 4,
+      "id": "HcHc_d4_007",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e S barSigma HLFc HRAc",
+      "ordered_chirality": [
+        "bar16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HcHc",
+      "source_representations": [
+        "1",
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Ac",
+        "Cc"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126_conjugate"
+      ],
+      "degree": 4,
+      "id": "HcHc_d4_008",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e ThetaPlus ThetaMinus HLFc HRAc",
+      "ordered_chirality": [
+        "bar16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HcHc",
+      "source_representations": [
+        "1",
+        "1"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Ac",
+        "Cc"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126_conjugate"
+      ],
+      "degree": 4,
+      "id": "HcHc_d4_009",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e Phi Phi HLFc HRAc",
+      "ordered_chirality": [
+        "bar16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HcHc",
+      "source_representations": [
+        "210",
+        "210"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Ac",
+        "Cc"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126_conjugate"
+      ],
+      "degree": 4,
+      "id": "HcHc_d4_010",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e Phi Sigma HLFc HRAc",
+      "ordered_chirality": [
+        "bar16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HcHc",
+      "source_representations": [
+        "210",
+        "126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Ac",
+        "Cc"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126_conjugate"
+      ],
+      "degree": 4,
+      "id": "HcHc_d4_011",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e Phi barSigma HLFc HRAc",
+      "ordered_chirality": [
+        "bar16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HcHc",
+      "source_representations": [
+        "210",
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Ac",
+        "Cc"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126_conjugate"
+      ],
+      "degree": 4,
+      "id": "HcHc_d4_012",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e Sigma Sigma HLFc HRAc",
+      "ordered_chirality": [
+        "bar16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HcHc",
+      "source_representations": [
+        "126",
+        "126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Ac",
+        "Cc"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126_conjugate"
+      ],
+      "degree": 4,
+      "id": "HcHc_d4_013",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e Sigma barSigma HLFc HRAc",
+      "ordered_chirality": [
+        "bar16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HcHc",
+      "source_representations": [
+        "126",
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Ac",
+        "Cc"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126_conjugate"
+      ],
+      "degree": 4,
+      "id": "HcHc_d4_014",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e barSigma barSigma HLFc HRAc",
+      "ordered_chirality": [
+        "bar16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HcHc",
+      "source_representations": [
+        "bar126",
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Bc",
+        "Dc"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126bar_convention"
+      ],
+      "degree": 4,
+      "id": "HcHc_d4_015",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e S S HLAc HRFc",
+      "ordered_chirality": [
+        "16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HcHc",
+      "source_representations": [
+        "1",
+        "1"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Bc",
+        "Dc"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126bar_convention"
+      ],
+      "degree": 4,
+      "id": "HcHc_d4_016",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e S Phi HLAc HRFc",
+      "ordered_chirality": [
+        "16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HcHc",
+      "source_representations": [
+        "1",
+        "210"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Bc",
+        "Dc"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126bar_convention"
+      ],
+      "degree": 4,
+      "id": "HcHc_d4_017",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e S Sigma HLAc HRFc",
+      "ordered_chirality": [
+        "16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HcHc",
+      "source_representations": [
+        "1",
+        "126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Bc",
+        "Dc"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126bar_convention"
+      ],
+      "degree": 4,
+      "id": "HcHc_d4_018",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e S barSigma HLAc HRFc",
+      "ordered_chirality": [
+        "16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HcHc",
+      "source_representations": [
+        "1",
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Bc",
+        "Dc"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126bar_convention"
+      ],
+      "degree": 4,
+      "id": "HcHc_d4_019",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e ThetaPlus ThetaMinus HLAc HRFc",
+      "ordered_chirality": [
+        "16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HcHc",
+      "source_representations": [
+        "1",
+        "1"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Bc",
+        "Dc"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126bar_convention"
+      ],
+      "degree": 4,
+      "id": "HcHc_d4_020",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e Phi Phi HLAc HRFc",
+      "ordered_chirality": [
+        "16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HcHc",
+      "source_representations": [
+        "210",
+        "210"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Bc",
+        "Dc"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126bar_convention"
+      ],
+      "degree": 4,
+      "id": "HcHc_d4_021",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e Phi Sigma HLAc HRFc",
+      "ordered_chirality": [
+        "16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HcHc",
+      "source_representations": [
+        "210",
+        "126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Bc",
+        "Dc"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126bar_convention"
+      ],
+      "degree": 4,
+      "id": "HcHc_d4_022",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e Phi barSigma HLAc HRFc",
+      "ordered_chirality": [
+        "16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HcHc",
+      "source_representations": [
+        "210",
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Bc",
+        "Dc"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126bar_convention"
+      ],
+      "degree": 4,
+      "id": "HcHc_d4_023",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e Sigma Sigma HLAc HRFc",
+      "ordered_chirality": [
+        "16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HcHc",
+      "source_representations": [
+        "126",
+        "126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Bc",
+        "Dc"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126bar_convention"
+      ],
+      "degree": 4,
+      "id": "HcHc_d4_024",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e Sigma barSigma HLAc HRFc",
+      "ordered_chirality": [
+        "16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HcHc",
+      "source_representations": [
+        "126",
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Bc",
+        "Dc"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126bar_convention"
+      ],
+      "degree": 4,
+      "id": "HcHc_d4_025",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e barSigma barSigma HLAc HRFc",
+      "ordered_chirality": [
+        "16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HcHc",
+      "source_representations": [
+        "bar126",
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Cc",
+        "Dc"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcHc_d4_026",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e S ThetaPlus HRAc HRFc",
+      "ordered_chirality": [
+        "bar16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HcHc",
+      "source_representations": [
+        "1",
+        "1"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Cc",
+        "Dc"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcHc_d4_027",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e ThetaPlus Phi HRAc HRFc",
+      "ordered_chirality": [
+        "bar16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HcHc",
+      "source_representations": [
+        "1",
+        "210"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Cc",
+        "Dc"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcHc_d4_028",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e ThetaPlus Sigma HRAc HRFc",
+      "ordered_chirality": [
+        "bar16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HcHc",
+      "source_representations": [
+        "1",
+        "126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Cc",
+        "Dc"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcHc_d4_029",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_e ThetaPlus barSigma HRAc HRFc",
+      "ordered_chirality": [
+        "bar16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "even",
+      "sector": "HcHc",
+      "source_representations": [
+        "1",
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Ac",
+        "A"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 2,
+      "id": "HcH_d2_000",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o HLFc HLF",
+      "ordered_chirality": [
+        "bar16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": []
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Bc",
+        "B"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 2,
+      "id": "HcH_d2_001",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o HLAc HLA",
+      "ordered_chirality": [
+        "16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": []
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Cc",
+        "C"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 2,
+      "id": "HcH_d2_002",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o HRAc HRA",
+      "ordered_chirality": [
+        "bar16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": []
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Dc",
+        "D"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 2,
+      "id": "HcH_d2_003",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o HRFc HRF",
+      "ordered_chirality": [
+        "16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": []
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Ac",
+        "A"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 3,
+      "id": "HcH_d3_000",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o S HLFc HLF",
+      "ordered_chirality": [
+        "bar16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Ac",
+        "A"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 3,
+      "id": "HcH_d3_001",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o Phi HLFc HLF",
+      "ordered_chirality": [
+        "bar16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "210"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Ac",
+        "A"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 3,
+      "id": "HcH_d3_002",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o Sigma HLFc HLF",
+      "ordered_chirality": [
+        "bar16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Ac",
+        "A"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 3,
+      "id": "HcH_d3_003",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o barSigma HLFc HLF",
+      "ordered_chirality": [
+        "bar16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Ac",
+        "D"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126_conjugate"
+      ],
+      "degree": 3,
+      "id": "HcH_d3_004",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o ThetaMinus HLFc HRF",
+      "ordered_chirality": [
+        "bar16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Bc",
+        "B"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 3,
+      "id": "HcH_d3_005",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o S HLAc HLA",
+      "ordered_chirality": [
+        "16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Bc",
+        "B"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 3,
+      "id": "HcH_d3_006",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o Phi HLAc HLA",
+      "ordered_chirality": [
+        "16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "210"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Bc",
+        "B"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 3,
+      "id": "HcH_d3_007",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o Sigma HLAc HLA",
+      "ordered_chirality": [
+        "16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Bc",
+        "B"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 3,
+      "id": "HcH_d3_008",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o barSigma HLAc HLA",
+      "ordered_chirality": [
+        "16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Bc",
+        "C"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126bar_convention"
+      ],
+      "degree": 3,
+      "id": "HcH_d3_009",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o ThetaMinus HLAc HRA",
+      "ordered_chirality": [
+        "16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Cc",
+        "B"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126_conjugate"
+      ],
+      "degree": 3,
+      "id": "HcH_d3_010",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o ThetaPlus HRAc HLA",
+      "ordered_chirality": [
+        "bar16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Cc",
+        "C"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 3,
+      "id": "HcH_d3_011",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o S HRAc HRA",
+      "ordered_chirality": [
+        "bar16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Cc",
+        "C"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 3,
+      "id": "HcH_d3_012",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o Phi HRAc HRA",
+      "ordered_chirality": [
+        "bar16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "210"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Cc",
+        "C"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 3,
+      "id": "HcH_d3_013",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o Sigma HRAc HRA",
+      "ordered_chirality": [
+        "bar16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Cc",
+        "C"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 3,
+      "id": "HcH_d3_014",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o barSigma HRAc HRA",
+      "ordered_chirality": [
+        "bar16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Dc",
+        "A"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126bar_convention"
+      ],
+      "degree": 3,
+      "id": "HcH_d3_015",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o ThetaPlus HRFc HLF",
+      "ordered_chirality": [
+        "16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Dc",
+        "D"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 3,
+      "id": "HcH_d3_016",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o S HRFc HRF",
+      "ordered_chirality": [
+        "16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Dc",
+        "D"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 3,
+      "id": "HcH_d3_017",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o Phi HRFc HRF",
+      "ordered_chirality": [
+        "16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "210"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Dc",
+        "D"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 3,
+      "id": "HcH_d3_018",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o Sigma HRFc HRF",
+      "ordered_chirality": [
+        "16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Dc",
+        "D"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 3,
+      "id": "HcH_d3_019",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o barSigma HRFc HRF",
+      "ordered_chirality": [
+        "16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Ac",
+        "A"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_000",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o S S HLFc HLF",
+      "ordered_chirality": [
+        "bar16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1",
+        "1"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Ac",
+        "A"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_001",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o S Phi HLFc HLF",
+      "ordered_chirality": [
+        "bar16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1",
+        "210"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Ac",
+        "A"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_002",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o S Sigma HLFc HLF",
+      "ordered_chirality": [
+        "bar16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1",
+        "126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Ac",
+        "A"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_003",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o S barSigma HLFc HLF",
+      "ordered_chirality": [
+        "bar16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1",
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Ac",
+        "A"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_004",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o ThetaPlus ThetaMinus HLFc HLF",
+      "ordered_chirality": [
+        "bar16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1",
+        "1"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Ac",
+        "A"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_005",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o Phi Phi HLFc HLF",
+      "ordered_chirality": [
+        "bar16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "210",
+        "210"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Ac",
+        "A"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_006",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o Phi Sigma HLFc HLF",
+      "ordered_chirality": [
+        "bar16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "210",
+        "126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Ac",
+        "A"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_007",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o Phi barSigma HLFc HLF",
+      "ordered_chirality": [
+        "bar16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "210",
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Ac",
+        "A"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_008",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o Sigma Sigma HLFc HLF",
+      "ordered_chirality": [
+        "bar16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "126",
+        "126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Ac",
+        "A"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_009",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o Sigma barSigma HLFc HLF",
+      "ordered_chirality": [
+        "bar16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "126",
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Ac",
+        "A"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_010",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o barSigma barSigma HLFc HLF",
+      "ordered_chirality": [
+        "bar16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "bar126",
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Ac",
+        "D"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126_conjugate"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_011",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o S ThetaMinus HLFc HRF",
+      "ordered_chirality": [
+        "bar16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1",
+        "1"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Ac",
+        "D"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126_conjugate"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_012",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o ThetaMinus Phi HLFc HRF",
+      "ordered_chirality": [
+        "bar16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1",
+        "210"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Ac",
+        "D"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126_conjugate"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_013",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o ThetaMinus Sigma HLFc HRF",
+      "ordered_chirality": [
+        "bar16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1",
+        "126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Ac",
+        "D"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126_conjugate"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_014",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o ThetaMinus barSigma HLFc HRF",
+      "ordered_chirality": [
+        "bar16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1",
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Bc",
+        "B"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_015",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o S S HLAc HLA",
+      "ordered_chirality": [
+        "16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1",
+        "1"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Bc",
+        "B"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_016",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o S Phi HLAc HLA",
+      "ordered_chirality": [
+        "16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1",
+        "210"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Bc",
+        "B"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_017",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o S Sigma HLAc HLA",
+      "ordered_chirality": [
+        "16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1",
+        "126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Bc",
+        "B"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_018",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o S barSigma HLAc HLA",
+      "ordered_chirality": [
+        "16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1",
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Bc",
+        "B"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_019",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o ThetaPlus ThetaMinus HLAc HLA",
+      "ordered_chirality": [
+        "16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1",
+        "1"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Bc",
+        "B"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_020",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o Phi Phi HLAc HLA",
+      "ordered_chirality": [
+        "16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "210",
+        "210"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Bc",
+        "B"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_021",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o Phi Sigma HLAc HLA",
+      "ordered_chirality": [
+        "16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "210",
+        "126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Bc",
+        "B"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_022",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o Phi barSigma HLAc HLA",
+      "ordered_chirality": [
+        "16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "210",
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Bc",
+        "B"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_023",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o Sigma Sigma HLAc HLA",
+      "ordered_chirality": [
+        "16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "126",
+        "126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Bc",
+        "B"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_024",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o Sigma barSigma HLAc HLA",
+      "ordered_chirality": [
+        "16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "126",
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Bc",
+        "B"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_025",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o barSigma barSigma HLAc HLA",
+      "ordered_chirality": [
+        "16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "bar126",
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Bc",
+        "C"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126bar_convention"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_026",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o S ThetaMinus HLAc HRA",
+      "ordered_chirality": [
+        "16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1",
+        "1"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Bc",
+        "C"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126bar_convention"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_027",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o ThetaMinus Phi HLAc HRA",
+      "ordered_chirality": [
+        "16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1",
+        "210"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Bc",
+        "C"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126bar_convention"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_028",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o ThetaMinus Sigma HLAc HRA",
+      "ordered_chirality": [
+        "16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1",
+        "126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Bc",
+        "C"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126bar_convention"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_029",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o ThetaMinus barSigma HLAc HRA",
+      "ordered_chirality": [
+        "16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1",
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Cc",
+        "B"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126_conjugate"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_030",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o S ThetaPlus HRAc HLA",
+      "ordered_chirality": [
+        "bar16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1",
+        "1"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Cc",
+        "B"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126_conjugate"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_031",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o ThetaPlus Phi HRAc HLA",
+      "ordered_chirality": [
+        "bar16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1",
+        "210"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Cc",
+        "B"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126_conjugate"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_032",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o ThetaPlus Sigma HRAc HLA",
+      "ordered_chirality": [
+        "bar16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1",
+        "126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Cc",
+        "B"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126_conjugate"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_033",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o ThetaPlus barSigma HRAc HLA",
+      "ordered_chirality": [
+        "bar16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1",
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Cc",
+        "C"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_034",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o S S HRAc HRA",
+      "ordered_chirality": [
+        "bar16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1",
+        "1"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Cc",
+        "C"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_035",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o S Phi HRAc HRA",
+      "ordered_chirality": [
+        "bar16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1",
+        "210"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Cc",
+        "C"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_036",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o S Sigma HRAc HRA",
+      "ordered_chirality": [
+        "bar16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1",
+        "126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Cc",
+        "C"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_037",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o S barSigma HRAc HRA",
+      "ordered_chirality": [
+        "bar16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1",
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Cc",
+        "C"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_038",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o ThetaPlus ThetaMinus HRAc HRA",
+      "ordered_chirality": [
+        "bar16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1",
+        "1"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Cc",
+        "C"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_039",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o Phi Phi HRAc HRA",
+      "ordered_chirality": [
+        "bar16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "210",
+        "210"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Cc",
+        "C"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_040",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o Phi Sigma HRAc HRA",
+      "ordered_chirality": [
+        "bar16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "210",
+        "126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Cc",
+        "C"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_041",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o Phi barSigma HRAc HRA",
+      "ordered_chirality": [
+        "bar16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "210",
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Cc",
+        "C"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_042",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o Sigma Sigma HRAc HRA",
+      "ordered_chirality": [
+        "bar16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "126",
+        "126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Cc",
+        "C"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_043",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o Sigma barSigma HRAc HRA",
+      "ordered_chirality": [
+        "bar16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "126",
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Cc",
+        "C"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_044",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o barSigma barSigma HRAc HRA",
+      "ordered_chirality": [
+        "bar16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "bar126",
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Dc",
+        "A"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126bar_convention"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_045",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o S ThetaPlus HRFc HLF",
+      "ordered_chirality": [
+        "16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1",
+        "1"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Dc",
+        "A"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126bar_convention"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_046",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o ThetaPlus Phi HRFc HLF",
+      "ordered_chirality": [
+        "16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1",
+        "210"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Dc",
+        "A"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126bar_convention"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_047",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o ThetaPlus Sigma HRFc HLF",
+      "ordered_chirality": [
+        "16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1",
+        "126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Dc",
+        "A"
+      ],
+      "candidate_spinor_channels": [
+        "10",
+        "120",
+        "126bar_convention"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_048",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o ThetaPlus barSigma HRFc HLF",
+      "ordered_chirality": [
+        "16",
+        "16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1",
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Dc",
+        "D"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_049",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o S S HRFc HRF",
+      "ordered_chirality": [
+        "16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1",
+        "1"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Dc",
+        "D"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_050",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o S Phi HRFc HRF",
+      "ordered_chirality": [
+        "16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1",
+        "210"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Dc",
+        "D"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_051",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o S Sigma HRFc HRF",
+      "ordered_chirality": [
+        "16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1",
+        "126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Dc",
+        "D"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_052",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o S barSigma HRFc HRF",
+      "ordered_chirality": [
+        "16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1",
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Dc",
+        "D"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_053",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o ThetaPlus ThetaMinus HRFc HRF",
+      "ordered_chirality": [
+        "16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "1",
+        "1"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Dc",
+        "D"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_054",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o Phi Phi HRFc HRF",
+      "ordered_chirality": [
+        "16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "210",
+        "210"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Dc",
+        "D"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_055",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o Phi Sigma HRFc HRF",
+      "ordered_chirality": [
+        "16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "210",
+        "126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Dc",
+        "D"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_056",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o Phi barSigma HRFc HRF",
+      "ordered_chirality": [
+        "16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "210",
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Dc",
+        "D"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_057",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o Sigma Sigma HRFc HRF",
+      "ordered_chirality": [
+        "16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "126",
+        "126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Dc",
+        "D"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_058",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o Sigma barSigma HRFc HRF",
+      "ordered_chirality": [
+        "16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "126",
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": 0,
+      "bulk_fields": [
+        "Dc",
+        "D"
+      ],
+      "candidate_spinor_channels": [
+        "1",
+        "45",
+        "210"
+      ],
+      "degree": 4,
+      "id": "HcH_d4_059",
+      "instantiation_status": "UNINSTANTIATED_ABSTRACT_HAAR_DIRECTION",
+      "missing_labels": [
+        "invariant_multiplicity",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "rho_o barSigma barSigma HRFc HRF",
+      "ordered_chirality": [
+        "16",
+        "bar16"
+      ],
+      "parity_status": "declared profile parity; component orbifold eigenvalues not row-resolved",
+      "profile_parity": "odd",
+      "sector": "HcH",
+      "source_representations": [
+        "bar126",
+        "bar126"
+      ]
+    },
+    {
+      "U1F_charge": "not machine-labelled per term",
+      "id": "PS_W_00",
+      "instantiation_status": "UNINSTANTIATED_PS_STRING_ROW",
+      "missing_labels": [
+        "structured field list",
+        "SO10 ancestry/orientation",
+        "per-term U1F charge",
+        "parity projector",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "sum_AB Y_AB L_A H R_B, L=(Q1,Q2,Q3,HLF), R=(Qc1,Qc2,Qc3,HRA)",
+      "profile_parity": "endpoint-even traces implicit",
+      "sector": "PS_superpotential"
+    },
+    {
+      "U1F_charge": "not machine-labelled per term",
+      "id": "PS_W_01",
+      "instantiation_status": "UNINSTANTIATED_PS_STRING_ROW",
+      "missing_labels": [
+        "structured field list",
+        "SO10 ancestry/orientation",
+        "per-term U1F charge",
+        "parity projector",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "y_m HLA H HRF",
+      "profile_parity": "endpoint-even traces implicit",
+      "sector": "PS_superpotential"
+    },
+    {
+      "U1F_charge": "not machine-labelled per term",
+      "id": "PS_W_02",
+      "instantiation_status": "UNINSTANTIATED_PS_STRING_ROW",
+      "missing_labels": [
+        "structured field list",
+        "SO10 ancestry/orientation",
+        "per-term U1F charge",
+        "parity projector",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "y_c HRAc H HLFc",
+      "profile_parity": "endpoint-even traces implicit",
+      "sector": "PS_superpotential"
+    },
+    {
+      "U1F_charge": "not machine-labelled per term",
+      "id": "PS_W_03",
+      "instantiation_status": "UNINSTANTIATED_PS_STRING_ROW",
+      "missing_labels": [
+        "structured field list",
+        "SO10 ancestry/orientation",
+        "per-term U1F charge",
+        "parity projector",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "y_cb HRFc H HLAc",
+      "profile_parity": "endpoint-even traces implicit",
+      "sector": "PS_superpotential"
+    },
+    {
+      "U1F_charge": "not machine-labelled per term",
+      "id": "PS_W_04",
+      "instantiation_status": "UNINSTANTIATED_PS_STRING_ROW",
+      "missing_labels": [
+        "structured field list",
+        "SO10 ancestry/orientation",
+        "per-term U1F charge",
+        "parity projector",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "mu_H epsilon_L epsilon_R H H/2",
+      "profile_parity": "endpoint-even traces implicit",
+      "sector": "PS_superpotential"
+    },
+    {
+      "U1F_charge": "not machine-labelled per term",
+      "id": "PS_D_00",
+      "instantiation_status": "UNINSTANTIATED_PS_STRING_ROW",
+      "missing_labels": [
+        "structured field list",
+        "orientation",
+        "per-term charge",
+        "explicit parity projector",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "Q_i (nabla5 HLFc)_L, i=1,2,3",
+      "profile_parity": "normal derivative flips trace parity; projector not encoded",
+      "sector": "PS_derivative"
+    },
+    {
+      "U1F_charge": "not machine-labelled per term",
+      "id": "PS_D_01",
+      "instantiation_status": "UNINSTANTIATED_PS_STRING_ROW",
+      "missing_labels": [
+        "structured field list",
+        "orientation",
+        "per-term charge",
+        "explicit parity projector",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "Qc_i (nabla5 HRAc)_R, i=1,2,3",
+      "profile_parity": "normal derivative flips trace parity; projector not encoded",
+      "sector": "PS_derivative"
+    },
+    {
+      "U1F_charge": "not machine-labelled per term",
+      "id": "PS_D_02",
+      "instantiation_status": "UNINSTANTIATED_PS_STRING_ROW",
+      "missing_labels": [
+        "structured field list",
+        "orientation",
+        "per-term charge",
+        "explicit parity projector",
+        "normalized_tensor_ids"
+      ],
+      "monomial": "four O_minus plus four M_o coordinates after the four O7/O8 IBP relations",
+      "profile_parity": "normal derivative flips trace parity; projector not encoded",
+      "sector": "PS_derivative"
+    }
+  ],
+  "schema": "susy-spin10-v50-c7-conjugate-incidence-v1",
+  "smallest_missing_schema_data": [
+    "resolved invariant multiplicity for each source-collar candidate row",
+    "normalized tensor ID and contraction-copy index for each nonempty invariant direction",
+    "structured PS field/orientation ancestry rather than aggregate prose",
+    "per-term U1F charge and explicit orbifold parity projector",
+    "common phase Cartesian-to-PS intertwiner ID"
+  ],
+  "status": "V50_CONJUGATE_CARTESIAN_PHASE_MAPS_CERTIFIED__V49_INCIDENCE_CENSUS_EXHAUSTIVE_AT_SCHEMA_ROW_LEVEL__UNRESOLVED_HAAR_DIRECTIONS_AND_PS_LABELS_EXPOSED__C7_PARTIAL",
+  "upstream": {
+    "path": "SUSY_V49_RETAINED_BOUNDARY_ACTION_COMPLETENESS.json",
+    "sha256": "029f4237c8247dee35f5ccee35eb624c4ee16c481ccb58b411b30eff3bf6c89a"
+  }
+}

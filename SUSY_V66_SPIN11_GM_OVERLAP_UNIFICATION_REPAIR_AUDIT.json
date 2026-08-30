@@ -1,0 +1,644 @@
+{
+  "V65_integrity_scope_correction": {
+    "claimed_narrow_count": 199,
+    "current_full_test_count": 208,
+    "file_count": 16,
+    "files": [
+      {
+        "path": "test_susy_v59_gauged_u1r_local_completion_audit.py",
+        "test_functions": 13
+      },
+      {
+        "path": "test_susy_v59_heterotic_corrected_z4r_data_sufficiency_audit.py",
+        "test_functions": 9
+      },
+      {
+        "path": "test_susy_v59_multipath_g1_frontier_master_audit.py",
+        "test_functions": 14
+      },
+      {
+        "path": "test_susy_v59_spin11_gauge_higgs_completion_audit.py",
+        "test_functions": 14
+      },
+      {
+        "path": "test_susy_v60_heterotic_corrected_z4r_live_orbifolder_audit.py",
+        "test_functions": 13
+      },
+      {
+        "path": "test_susy_v60_multipath_g1_frontier_master_audit.py",
+        "test_functions": 14
+      },
+      {
+        "path": "test_susy_v61_multipath_g1_frontier_master_audit.py",
+        "test_functions": 12
+      },
+      {
+        "path": "test_susy_v61_spin11_z4r_selector_escape_audit.py",
+        "test_functions": 16
+      },
+      {
+        "path": "test_susy_v62_multipath_g1_frontier_master_audit.py",
+        "test_functions": 11
+      },
+      {
+        "path": "test_susy_v62_spin11_localized_z4r_anomaly_gs_audit.py",
+        "test_functions": 13
+      },
+      {
+        "path": "test_susy_v63_multipath_g1_frontier_master_audit.py",
+        "test_functions": 11
+      },
+      {
+        "path": "test_susy_v63_spin11_goldstone_dissolution_wz_inflow_audit.py",
+        "test_functions": 12
+      },
+      {
+        "path": "test_susy_v64_multipath_g1_frontier_master_audit.py",
+        "test_functions": 18
+      },
+      {
+        "path": "test_susy_v64_spin11_ab_tower_null_mode_retraction_audit.py",
+        "test_functions": 16
+      },
+      {
+        "path": "test_susy_v65_multipath_g1_frontier_master_audit.py",
+        "test_functions": 10
+      },
+      {
+        "path": "test_susy_v65_spin11_orphan_lifting_classification_audit.py",
+        "test_functions": 12
+      }
+    ],
+    "full_suite_is_208_not_199": true,
+    "omitted_file_in_199_run": "test_susy_v59_heterotic_corrected_z4r_data_sufficiency_audit.py",
+    "omitted_file_test_count": 9,
+    "selection": "every test_susy_v59 through test_susy_v65 Python file"
+  },
+  "acceptance_criteria": [
+    {
+      "id": "A1",
+      "requirement": "full pole and running spectrum with every superpartner and exotic threshold",
+      "status": "OPEN"
+    },
+    {
+      "id": "A2",
+      "requirement": "tan(beta) and all relevant Yukawa boundary conditions",
+      "status": "OPEN"
+    },
+    {
+      "id": "A3",
+      "requirement": "two-loop running plus complete one-loop decoupling and scheme matching",
+      "status": "OPEN"
+    },
+    {
+      "id": "A4",
+      "requirement": "Mc, M*, the KK tower and brane-kinetic threshold corrections",
+      "status": "OPEN"
+    },
+    {
+      "id": "A5",
+      "requirement": "physical threshold ordering, perturbativity and vacuum stability",
+      "status": "OPEN"
+    },
+    {
+      "id": "A6",
+      "requirement": "three-coupling residual smaller than a quantified truncation uncertainty",
+      "status": "OPEN"
+    },
+    {
+      "id": "A7",
+      "requirement": "explicit hidden/Kahler/soft sector producing nonzero mu_Q and acceptable B terms",
+      "status": "OPEN"
+    },
+    {
+      "id": "A8",
+      "requirement": "for T66, local Spin(11)/Spin(10) embedding, anomaly/GS closure and baryon safety",
+      "status": "OPEN"
+    }
+  ],
+  "candidate_extensions": [
+    {
+      "diagnostic": "gauge-only two-loop common threshold MS=MQ about 4.76e11 GeV (about 4.99e11 GeV with the universal MSbar-to-DRbar shift)",
+      "field_content": "MSSM plus the V64 Q-type orphan pair",
+      "id": "H66",
+      "name": "high-scale SUSY orphan-only extension",
+      "not_complete": true,
+      "open": [
+        "construct nonzero GM mass from an explicit hidden/Kahler sector",
+        "compute suppressed portal lifetime and cosmology",
+        "supply full matching, Yukawa, soft, KK and brane thresholds"
+      ],
+      "status": "CANDIDATE_CONDITIONAL_EXTENSION"
+    },
+    {
+      "baryon_safety": {
+        "inherits_V65_claim": false,
+        "reason": "the full 10 portal 10_X 5bar 5bar contains Uc_X dc dc and Ec_X L L, so the orphan-only effective B-L assignment does not prove safety for the completion"
+      },
+      "companion_Delta_b": [
+        "14/5",
+        "0",
+        "1"
+      ],
+      "diagnostic": "gauge-only two-loop common threshold MS=M10 about 1.383905e4 GeV and MG about 1.216382e16 GeV",
+      "id": "T66",
+      "missing": [
+        "local Spin(11)/Spin(10) representation and wall embedding",
+        "localized anomaly and Green-Schwarz recomputation",
+        "Kahler and soft-sector construction",
+        "precision thresholds and phenomenology"
+      ],
+      "name": "low-scale full-10 compensator extension",
+      "new_fields": "add Uc_X+U_X and Ec_X+E_X at the orphan threshold, completing a vectorlike SU(5) 10+10bar",
+      "not_complete": true,
+      "status": "CANDIDATE_CONDITIONAL_EXTENSION",
+      "total_Delta_b": [
+        "3",
+        "3",
+        "3"
+      ]
+    }
+  ],
+  "claim_boundary": {
+    "new_physics_status": "CANDIDATE_ONLY",
+    "no_empirical_discovery": true,
+    "no_gate_promotion": true,
+    "no_precision_unification_claim": true
+  },
+  "classification": "CURRENT_V65_ACTION_REJECTED__HIGH_SCALE_ORPHAN_ONLY_AND_LOW_SCALE_FULL_TEN_ARE_CANDIDATE_CONDITIONAL_EXTENSIONS__NEITHER_COMPLETE",
+  "core_sha256": "07593002755158c96647701da7453b1942114424a5d3aff5318ebb891a2964ae",
+  "date": "2026-08-30",
+  "falsifiers": [
+    "an explicit normalized Kahler/hidden sector yields identically zero mu_Q",
+    "precision thresholds cannot make any candidate satisfy three-coupling unification",
+    "the T66 local embedding has an uncancelled localized/global anomaly",
+    "the required T66 portals generate excluded baryon violation",
+    "either candidate violates perturbativity or vacuum stability before MG"
+  ],
+  "gate_ledger": [
+    {
+      "decision": "OPEN: the current action is rejected; H66 and T66 are conditional extensions without complete microscopic actions",
+      "gate": "G1",
+      "status": "OPEN"
+    },
+    {
+      "decision": "OPEN: no complete flavor/KK determinant fit",
+      "gate": "G2",
+      "status": "OPEN"
+    },
+    {
+      "decision": "OPEN: no full vacuum and SUSY-breaking stabilization",
+      "gate": "G3",
+      "status": "OPEN"
+    },
+    {
+      "decision": "OPEN: no Dai-Freed/global anomaly computation for either extension",
+      "gate": "G4",
+      "status": "OPEN"
+    },
+    {
+      "decision": "OPEN: no controlled proton and baryon analysis for the full completion",
+      "gate": "G5",
+      "status": "OPEN"
+    },
+    {
+      "decision": "OPEN: only gauge-only unification diagnostics exist",
+      "gate": "G6",
+      "status": "OPEN"
+    },
+    {
+      "decision": "OPEN: no pole spectrum, lifetimes, relic or collider calculation",
+      "gate": "G7",
+      "status": "OPEN"
+    },
+    {
+      "decision": "OPEN: no UV regulator or quantified predictivity score",
+      "gate": "G8",
+      "status": "OPEN"
+    }
+  ],
+  "gm_overlap_and_retraction": {
+    "V65_action_upgrade": "RETRACTED",
+    "consequence": "both the GM mass coefficient and decay portals can be small or zero; V65 did not establish a mass or a fast decay",
+    "general_supergravity_mass": "mu_Q = [m_3/2 Z_Q - Fbar^I partial_bar_I Z_Q]/sqrt(Y_Q Y_Qbar)",
+    "nonzero_mass_constructed_in_bound_action": false,
+    "reason_allowed_is_not_constructed": "the bound action specifies neither Z_Q, its hidden-sector derivative, nor the SUSY-breaking F terms; symmetry permission does not prove a nonzero numerator",
+    "replacement_status": "CANDIDATE_CONDITIONAL_EXTENSION",
+    "symbols": {
+      "Fbar_I": "hidden-sector auxiliary expectation values",
+      "Y_Q_and_Y_Qbar": "wave-function metrics of the two light chiral modes",
+      "Z_Q": "hidden-sector-dependent Kahler bilinear coefficient"
+    },
+    "v64_null_mode_normalization": {
+      "alpha_squared": "alpha^2 = g5^2 v^2 L",
+      "effective_bilinear": "Z_eff = c_K/(1+alpha^2)",
+      "local_y0_Kahler_term": "c_K C Cbar",
+      "norm_squared": "1 + alpha^2",
+      "portal_amplitude_overlap": "1/sqrt(1+alpha^2)",
+      "portal_rate_suppression": "1/(1+alpha^2)"
+    },
+    "z4r_allows_charge_zero_bilinear": true
+  },
+  "integrity_checks": {
+    "GM_allowed_not_constructed": true,
+    "MSSM_B_reproduced": true,
+    "V64_null_mode_core_bound": true,
+    "V65_master_core_bound": true,
+    "V65_route_core_bound": true,
+    "V65_upgrade_retracted": true,
+    "all_acceptance_criteria_open": true,
+    "all_gates_open": true,
+    "current_action_rejected": true,
+    "full_ten_Delta_b_universal": true,
+    "no_WZ_forced": true,
+    "one_loop_exact_residual": true,
+    "orphan_Delta_B_exact": true,
+    "regression_scope_corrected": true,
+    "two_candidates_neither_accepted": true,
+    "two_loop_diagnostics_match_pins": true
+  },
+  "lineage": {
+    "bound_V64_null_mode_route_core": "fe36b2f6f0e1786253827183bf7f8dc2dd9e15a94b7f036d5e9e6e0739717a1d",
+    "bound_V65_master_core": "5b3056510129107959a6725139942307fc47b8cf56b375511a72cf9c6c8e58b8",
+    "bound_V65_route_core": "b87696403fb46c4a6b044be8abe58dd5f82b63a83a58fff262a6f00bdd6914ae",
+    "relation": "route-B66 correction: V65 files remain valid immutable artifacts, but its inference from allowed GM charge to a constructed lift is retracted"
+  },
+  "martin_vaughn_group_theory": {
+    "MSSM": {
+      "B": [
+        [
+          "199/25",
+          "27/5",
+          "88/5"
+        ],
+        [
+          "9/5",
+          "25",
+          "24"
+        ],
+        [
+          "11/5",
+          "9",
+          "14"
+        ]
+      ],
+      "b": [
+        "33/5",
+        "1",
+        "-3"
+      ],
+      "reproduces_standard_B": true,
+      "reproduces_standard_b": true,
+      "sum_S": [
+        "33/5",
+        "7",
+        "6"
+      ]
+    },
+    "Uc_and_Ec_companions": {
+      "Delta_B": [
+        [
+          "344/75",
+          "0",
+          "128/15"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "16/15",
+          "0",
+          "34/3"
+        ]
+      ],
+      "Delta_b": [
+        "14/5",
+        "0",
+        "1"
+      ],
+      "matches_required": true
+    },
+    "complete_10_plus_10bar": {
+      "Delta_B": [
+        [
+          "23/5",
+          "3/5",
+          "48/5"
+        ],
+        [
+          "1/5",
+          "21",
+          "16"
+        ],
+        [
+          "6/5",
+          "6",
+          "34"
+        ]
+      ],
+      "Delta_b": [
+        "3",
+        "3",
+        "3"
+      ],
+      "matches_required_B": true,
+      "one_loop_shift_is_universal": true
+    },
+    "convention": "rows and columns are ordered (U1_GUT, SU2_L, SU3_c)",
+    "formula": {
+      "B_ab": "-6 C_a(G)^2 delta_ab + 2 C_a(G) S_a delta_ab + 4 sum_i S_a(i) C_b(i)",
+      "b_a": "sum_i S_a(i) - 3 C_a(G)"
+    },
+    "orphan_Q_pair": {
+      "Delta_B": [
+        [
+          "1/75",
+          "3/5",
+          "16/15"
+        ],
+        [
+          "1/5",
+          "21",
+          "16"
+        ],
+        [
+          "2/15",
+          "6",
+          "68/3"
+        ]
+      ],
+      "Delta_b": [
+        "1/5",
+        "3",
+        "2"
+      ],
+      "matches_required": true
+    }
+  },
+  "n_failed_integrity_checks": 0,
+  "n_integrity_checks": 16,
+  "one_loop_threshold_solution": {
+    "analytic_c_family": {
+      "MG": "4.54981e15 GeV * c^(3/64)",
+      "MQ": "2.25084e11 GeV * c^(11/32)",
+      "MS": "2.25084e11 GeV * c^(-21/32)",
+      "alphaU_inverse": "34.16816 - [121/(128*pi)] ln(c)",
+      "definition": "c = MQ/MS",
+      "derived_exact_powers": {
+        "MG": "3/64",
+        "MQ": "11/32",
+        "MS": "-21/32",
+        "alphaU_inverse_ln_c": "-121/(128*pi)"
+      }
+    },
+    "beta_coefficients": {
+      "MSSM": [
+        "33/5",
+        "1",
+        "-3"
+      ],
+      "SM": [
+        "41/10",
+        "-19/6",
+        "-7"
+      ],
+      "companion_Delta_b": [
+        "14/5",
+        "0",
+        "1"
+      ],
+      "full_10_plus_10bar_Delta_b": [
+        "3",
+        "3",
+        "3"
+      ],
+      "orphan_Q_pair_Delta_b": [
+        "1/5",
+        "3",
+        "2"
+      ]
+    },
+    "c_equals_1": {
+      "MG_GeV": 4549789822040069.0,
+      "MQ_GeV": 225082615142.4409,
+      "MS_GeV": 225082615142.4409,
+      "alphaU_inverse": 34.168159510809176,
+      "c_ratio_MQ_over_MS": 1.0,
+      "max_inverse_coupling_residual": 7.105427357601002e-15
+    },
+    "c_equals_1_quoted": {
+      "MG_GeV": 4549810000000000.0,
+      "MQ_GeV": 225084000000.0,
+      "MS_GeV": 225084000000.0,
+      "alphaU_inverse": 34.16816
+    },
+    "conventional_order": [
+      "b1_GUT",
+      "b2",
+      "b3"
+    ],
+    "fixed_MS_1_TeV": {
+      "MG_GeV": 1.797161840637619e+16,
+      "MQ_GeV": 5337995621018032.0,
+      "MS_GeV": 1000.0,
+      "alphaU_inverse": 25.34995500054329,
+      "max_inverse_coupling_residual": 1.7763568394002505e-14
+    },
+    "fixed_MS_1_TeV_quoted": {
+      "MG_GeV": 1.797161841e+16,
+      "MQ_GeV": 5337995621000000.0
+    },
+    "input_scheme": "PDG electroweak inputs at MZ treated as MSbar for this diagnostic",
+    "inputs": {
+      "MZ_GeV": 91.1876,
+      "alphaEM_inverse": 127.93,
+      "alphaS": 0.1177,
+      "derived_alpha_inverse_GUT_order": [
+        59.01001524,
+        29.579974600000003,
+        8.496176720475786
+      ],
+      "input_literals": {
+        "MZ_GeV": "91.1876",
+        "alphaEM_inverse": "127.930",
+        "alphaS": "0.1177",
+        "sin2_thetaW": "0.23122"
+      },
+      "sin2_thetaW": 0.23122
+    },
+    "interpretation": "the orphan-only spectrum unifies at one loop only with a very high common SUSY/orphan threshold, or with the orphan threshold driven near MG when MS is fixed to 1 TeV",
+    "threshold_equation": "alpha_i^-1(MG)=alpha_i^-1(MZ)-b_i^SM ln(MS/MZ)/(2pi)-b_i^MSSM ln(MG/MS)/(2pi)-Delta_b_i ln(MG/MQ)/(2pi)"
+  },
+  "schema": "susy_so10.v66.spin11_gm_overlap_unification_repair_audit.v1",
+  "source_manifest": {
+    "local_files": [
+      {
+        "exists": true,
+        "path": "C:\\Users\\jayal\\Downloads\\So10Theory2\\So10Theory\\_g3_equality_classification_integration\\susy_v66_spin11_gm_overlap_unification_repair_audit.py",
+        "sha256": "d16fb8ff371f30e3e3326be71b427ba2d6601319d6b8c18bdf75427d690b8391"
+      },
+      {
+        "exists": true,
+        "path": "C:\\Users\\jayal\\Downloads\\So10Theory2\\So10Theory\\_g3_equality_classification_integration\\test_susy_v66_spin11_gm_overlap_unification_repair_audit.py",
+        "sha256": "336283b46837b4f069bf708b4f5092220af1b1319ac0644b535cc218e941fd93"
+      },
+      {
+        "exists": true,
+        "path": "C:\\Users\\jayal\\Downloads\\So10Theory2\\So10Theory\\_g3_equality_classification_integration\\SUSY_V65_SPIN11_ORPHAN_LIFTING_CLASSIFICATION_AUDIT.json",
+        "sha256": "d0bf61e662e8489fddfe50fa3bc0f7e69a48b9ec3d996f9cb1db82cb68a34cce"
+      },
+      {
+        "exists": true,
+        "path": "C:\\Users\\jayal\\Downloads\\So10Theory2\\So10Theory\\_g3_equality_classification_integration\\SUSY_V65_MULTIPATH_G1_FRONTIER_MASTER_AUDIT.json",
+        "sha256": "369dae6d0e71eadcf784f71588b3b3dbe1e3de2683333ebe6dd8b6088eb839c8"
+      },
+      {
+        "exists": true,
+        "path": "C:\\Users\\jayal\\Downloads\\So10Theory2\\So10Theory\\_g3_equality_classification_integration\\SUSY_V64_SPIN11_AB_TOWER_NULL_MODE_RETRACTION_AUDIT.json",
+        "sha256": "1b7bf6d4411f269ad4e13cd32ddfa7349b0fd259f41c322a2113fe5886ca01f2"
+      }
+    ],
+    "primary_sources": [
+      {
+        "id": "PDG_2025",
+        "scope": "electroweak and strong-coupling inputs and scheme conventions",
+        "title": "Review of Particle Physics 2025",
+        "url": "https://pdg.lbl.gov/2025/"
+      },
+      {
+        "arxiv": "hep-ph/9311340",
+        "id": "MARTIN_VAUGHN_1994",
+        "scope": "N=1 supersymmetric one- and two-loop gauge beta functions",
+        "title": "Two-loop renormalization group equations for soft supersymmetry-breaking couplings",
+        "url": "https://arxiv.org/abs/hep-ph/9311340"
+      },
+      {
+        "id": "GIUDICE_MASIERO_1988",
+        "scope": "Kahler-induced bilinear masses after supersymmetry breaking",
+        "title": "A natural solution to the mu problem in supergravity theories",
+        "url": "https://doi.org/10.1016/0370-2693(88)91613-9"
+      },
+      {
+        "arxiv": "1009.0905",
+        "id": "LEE_ET_AL_2010",
+        "scope": "nonperturbative mu generation after Z4R breaking",
+        "title": "A unique Z4R symmetry for the MSSM",
+        "url": "https://arxiv.org/abs/1009.0905"
+      },
+      {
+        "arxiv": "1504.03817",
+        "id": "HOSOTANI_YAMATSU_2015",
+        "scope": "Spin(11) gauge-Higgs route and twelve uneaten rank-breaking modes",
+        "title": "Gauge-Higgs Grand Unification",
+        "url": "https://arxiv.org/abs/1504.03817"
+      }
+    ]
+  },
+  "status": "V66_SPIN11_GM_OVERLAP_UNIFICATION_REPAIR__V65_ARTIFACTS_VALID__V65_ACTION_UPGRADE_RETRACTED__GM_ALLOWED_NOT_CONSTRUCTED__V64_NULL_MODE_NORMALIZATION_SUPPRESSES_GM_AND_PORTALS__ONE_LOOP_THRESHOLD_SOLVE_EXACT__GAUGE_ONLY_TWO_LOOP_DIAGNOSTICS__FULL_SU5_TEN_COMPENSATOR_CANDIDATE_EXHIBITED__BARYON_SAFETY_NOT_INHERITED__CURRENT_ACTION_REJECTED__TWO_CONDITIONAL_EXTENSIONS__NO_WZ__G1_TO_G8_OPEN",
+  "terminal_decision": {
+    "V64_null_mode_retraction_preserved": true,
+    "V65_conditionally_viable_upgrade": "RETRACTED",
+    "V66_G1_closed": false,
+    "WZ_term": "NONE_FORCED",
+    "accepted_extension_count": 0,
+    "candidate_extension_count": 2,
+    "candidate_extensions": [
+      "H66",
+      "T66"
+    ],
+    "closed_gates": [],
+    "complete_theory": false,
+    "current_bound_action_status": "REJECTED",
+    "honest_outcome": "V66 converts the V65 claim into two quantitative but conditional research branches.  Allowed GM physics is not a constructed mass, and gauge-only crossing is not precision unification."
+  },
+  "two_loop_gauge_only_diagnostics": {
+    "claim_boundary": "these are gauge-only diagnostics, not precision unification fits",
+    "diagnostics_within_tolerance": true,
+    "engine": "scipy solve_ivp(DOP853) plus root",
+    "equation": "d alpha_a^-1/d ln(mu) = -b_a/(2pi) - sum_b B_ab alpha_b/(8pi^2)",
+    "full_ten_raw_no_matching": {
+      "computed": {
+        "MG": 1.2163816924934198e+16,
+        "MS": 13839.052519326706,
+        "alphaU": 0.07873997224735535,
+        "alphaU_inverse": 12.700029876294337,
+        "max_inverse_coupling_residual": 1.5987211554602254e-14
+      },
+      "description": "gauge-only two-loop running with a common MS=M10 threshold for a vectorlike 10+10bar",
+      "pinned_reference": {
+        "M10": 13839.05,
+        "MG": 1.216382e+16,
+        "MS": 13839.05,
+        "alphaU": 0.07873997
+      },
+      "relative_difference": {
+        "M10": 1.8204477236771766e-07,
+        "MG": 2.5280428372909114e-07,
+        "MS": 1.8204477236771766e-07,
+        "alphaU": 2.854148073438978e-08
+      }
+    },
+    "matrix_derivation_bound": true,
+    "not_included": [
+      "finite one-loop decoupling beyond the universal scheme conversion",
+      "Yukawa and tan(beta) contributions",
+      "soft-spectrum mass splittings",
+      "Mc, M*, KK and brane-kinetic thresholds"
+    ],
+    "numerical_integration_executed": true,
+    "orphan_only_raw_no_matching": {
+      "computed": {
+        "MG": 2266291458696328.0,
+        "MS": 476037822935.29834,
+        "alphaU": 0.028597970126062994,
+        "alphaU_inverse": 34.967516771011724,
+        "max_inverse_coupling_residual": 0.0
+      },
+      "description": "gauge-only two-loop running with a common MS=MQ threshold and no finite matching",
+      "pinned_reference": {
+        "MG": 2266291000000000.0,
+        "MQ": 476037800000.0,
+        "MS": 476037800000.0,
+        "alphaU": 0.02859797
+      },
+      "relative_difference": {
+        "MG": 2.0239957176926282e-07,
+        "MQ": 4.8179573886031335e-08,
+        "MS": 4.8179573886031335e-08,
+        "alphaU": 4.408109877118704e-09
+      }
+    },
+    "orphan_only_universal_MSbar_to_DRbar": {
+      "computed": {
+        "MG": 2367079473998105.0,
+        "MS": 499196975289.7142,
+        "alphaU": 0.02862003369541571,
+        "alphaU_inverse": 34.94055984148536,
+        "max_inverse_coupling_residual": 7.105427357601002e-15
+      },
+      "description": "same gauge-only solve with only the universal one-loop MSbar-to-DRbar conversion",
+      "matching": "alpha_a^-1,DR = alpha_a^-1,MS - C_a(G)/(12pi) at MS",
+      "pinned_reference": {
+        "MG": 2367090000000000.0,
+        "MQ": 499199000000.0,
+        "MS": 499199000000.0,
+        "alphaU_inverse": 34.9406
+      },
+      "relative_difference": {
+        "MG": 4.446811018965491e-06,
+        "MQ": 4.055918152556792e-06,
+        "MS": 4.055918152556792e-06,
+        "alphaU_inverse": 1.1493367212400685e-06
+      }
+    },
+    "tolerance_policy": {
+      "coupling_relative": 1e-05,
+      "inverse_residual_absolute": 1e-08,
+      "scale_relative": 1e-05
+    }
+  },
+  "version": "V66"
+}
+

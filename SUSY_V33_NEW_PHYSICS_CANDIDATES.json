@@ -1,0 +1,96 @@
+{
+  "active_EFT_repair": {
+    "changes": [
+      "Z11 -> Z33 with the same signed visible charges",
+      "accept the full symmetry-allowed Wilsonian tower instead of FCMA-18 exact zeros",
+      "retain the same exact 18 renormalizable Pati--Salam source terms"
+    ],
+    "checks": {
+      "leading_P_power": 33,
+      "matches_V24": true,
+      "renormalizable_terms": 18,
+      "residual_matter_parity": true,
+      "visible_gravity_congruence": true
+    },
+    "decision": "ADOPT_AS_RESEARCH_EFT_SOURCE__DO_NOT_PROMOTE_AS_UV_COMPLETE",
+    "full_discrete_UV_completion": false,
+    "name": "PSZ4RZ33SUSYV33"
+  },
+  "conditional_controlled_flux_repair": {
+    "K": 22027,
+    "Re_T_star": 1.5915532908376049,
+    "W_TT_over_C": 0.0035845478371414564,
+    "all_terms_have_superpotential_charge_Z4R_Z33": [
+      2,
+      0
+    ],
+    "conditional_local_repair": true,
+    "instanton_action": 10.000024252584158,
+    "integer_coefficients": [
+      1,
+      -44054,
+      485188729
+    ],
+    "leading_relative_stationary_shift": 1.8713884307984112e-13,
+    "microscopic_geometry_established": false,
+    "omitted_order_one_x4_relative_to_retained_term": 9.356942153992056e-14,
+    "open_requirements": [
+      "51 independent divisors and a rank-full charge matrix",
+      "charged and neutral zero-mode cohomology plus nonzero Pfaffians",
+      "tadpole, Freed--Witten and K-theory consistency for large flux integers",
+      "derivation of the transforming flux branch and all omitted harmonics"
+    ],
+    "rank_for_51_nonzero_Ci": 51,
+    "repairs_V30_covariance_conditionally": true,
+    "repairs_V30_local_action_control": true,
+    "required_coefficient_charges": [
+      {
+        "Z33": 2,
+        "Z4R": 0,
+        "harmonic": 1
+      },
+      {
+        "Z33": 4,
+        "Z4R": 2,
+        "harmonic": 2
+      },
+      {
+        "Z33": 6,
+        "Z4R": 0,
+        "harmonic": 3
+      }
+    ],
+    "residual_subgroup_after_charged_flux_branch": "Z2",
+    "superpotential": "W_i=C_i*x_i*(1-K*x_i)^2",
+    "x_i": "exp(-2*pi*T_i)",
+    "x_star": 4.539882871021928e-05
+  },
+  "minimal_SUSY_breaking_attempt": {
+    "FZ_GeV2": 4.217543716430216e+22,
+    "K": "K_visible+Zdagger*Z",
+    "W": "W_visible+f*Z+W0, Z^2=0",
+    "W0_GeV3": 5.929225e+40,
+    "canonical_visible_scalar_mass_GeV": 10000.0,
+    "reproduces_V31_soft_benchmark": false,
+    "sequestered_anomaly_mediation_diagnostic_GeV": [
+      92.13178270077077,
+      25.553045029008185,
+      -200.24461615201858
+    ],
+    "sqrt_FZ_GeV": 205366592132.95175,
+    "target_m32_GeV": 10000.0,
+    "tree_gaugino_masses_GeV": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "rejected_claims": [
+    "FCMA-18 cannot be derived from a finite exact internal symmetry",
+    "BFA-8 cannot follow from the V30 supersymmetric Minkowski vacuum",
+    "the V31 hard-coded pole ledger is not a pole calculation",
+    "Pati--Salam gauge-vector-mediated proton decay is not present in the declared source"
+  ],
+  "safe_to_claim_new_fundamental_law": false,
+  "schema": "susy-v33-new-physics-candidates-v1"
+}

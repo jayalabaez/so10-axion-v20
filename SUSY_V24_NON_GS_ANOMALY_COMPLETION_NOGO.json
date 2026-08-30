@@ -1,0 +1,889 @@
+{
+  "G1_G8": [
+    {
+      "closed": false,
+      "full_gate_claim": false,
+      "gate": "G1",
+      "reason": "The minimal anomaly-free heavy completion fails RG and wall tests; GS or materially new shaping physics remains required."
+    },
+    {
+      "closed": false,
+      "full_gate_claim": false,
+      "gate": "G2",
+      "reason": "The P^2/Lambda real-10 threshold is explicit but not part of a viable perturbative pole spectrum."
+    },
+    {
+      "closed": false,
+      "full_gate_claim": false,
+      "gate": "G3",
+      "reason": "No complete alternative spurion vacuum or Hessian is supplied."
+    },
+    {
+      "closed": false,
+      "full_gate_claim": false,
+      "gate": "G4",
+      "reason": "A charged zero-PQ VEV changes the Z4R/Z11 breaking history; the full hierarchy/operator contract is not closed."
+    },
+    {
+      "closed": false,
+      "full_gate_claim": false,
+      "gate": "G5",
+      "reason": "P-mass anomaly cancellation shifts N_DW to 11 and aligns the P11 harmonic; zero-PQ alternatives fail the quality/RG screen."
+    },
+    {
+      "closed": false,
+      "full_gate_claim": false,
+      "gate": "G6",
+      "reason": "The exact Kmin threshold cost exceeds the same-order one-loop SU2R cutoff budget."
+    },
+    {
+      "closed": false,
+      "full_gate_claim": false,
+      "gate": "G7",
+      "reason": "No new proton Wilson/pole calculation is landed, and earlier R breaking is outside the protected contract."
+    },
+    {
+      "closed": false,
+      "full_gate_claim": false,
+      "gate": "G8",
+      "reason": "The negative anomaly certificate does not provide a flavour or global-likelihood fit."
+    }
+  ],
+  "PQ_domain_wall_obstruction": {
+    "P11_lifts_all_QCD_vacua": false,
+    "PQ_invariance_relation": "PQ(P)=1 and P^k*Phi*Phi imply PQ(Phi pair)=-k",
+    "absolute_N_DW_after_completion": 11,
+    "convention": "integer 2N_QCD; the landed KSVZ family has 2N_QCD=-4",
+    "final_2N_QCD": -11,
+    "gcd_explicit_harmonic_and_NDW": 11,
+    "general_divisibility": "K=7+22*l gives |2N_QCD|=|4+K|=11*(1+2*l)",
+    "heavy_Delta_2N_QCD": -7,
+    "initial_2N_QCD": -4,
+    "leading_explicit_P_harmonic": 11,
+    "one_SO10_10_QCD_Dynkin_index": 1
+  },
+  "P_mass_threshold_no_go": {
+    "K_min": 7,
+    "Lambda_GeV": 1e+18,
+    "existing_coupled_gauge_only_two_loop_SU2R_inverse_at_cutoff": 9.68637930122,
+    "existing_one_loop_only_SU2R_inverse_at_cutoff": 10.434113569725,
+    "fPQ_GeV": 176000000000.0,
+    "formula": "Delta alpha_G^-1(1e18)=-K_G/(2*pi)*ln(Lambda/fPQ)",
+    "interpretation": "The same-order one-loop budget already fails; positive gauge two-loop terms reduce the available endpoint further.",
+    "minimum_inverse_coupling_cost": 17.327114762787,
+    "one_loop_necessary_perturbativity_condition_pass": false,
+    "projected_one_loop_SU2R_inverse_after_minimal_completion": -6.893001193062
+  },
+  "baseline_running": {
+    "SU2R_b_above_PS": 9,
+    "alpha_PS_inverse_at_vPS": 17.030533959639,
+    "alpha_R_inverse_at_1e18_one_loop_only": 10.434113569725,
+    "upstream_coupled_gauge_only_two_loop_endpoint": 9.68637930122
+  },
+  "checks": {
+    "K_congruence_and_minimum_are_exact": true,
+    "P_mass_completion_aligns_P11_with_NDW11": true,
+    "all_full_G1_G8_gates_remain_open": true,
+    "continuous_PS_anomalies_remain_canceled": true,
+    "gravity_and_cubic_singlet_repair_is_exact": true,
+    "minimal_real_10_witness_cancels_all_mixed_residues": true,
+    "same_order_one_loop_threshold_budget_fails": true,
+    "zero_PQ_spurion_finite_scan_has_no_quality_RG_overlap": true,
+    "zero_PQ_spurion_mixed_anomaly_congruences_include_R_repair": true
+  },
+  "closure_counts": {
+    "closed": 0,
+    "open": 8
+  },
+  "core_sha256": "ee04ddfb4b879efb8e756f54e174b9e33ec35e39ea9a0a58a6741d1249e78932",
+  "exact_P_mass_congruence": {
+    "K_definition": "K_G=sum_i k_i*S_G(i), with S_G the total massive-sector Dynkin index",
+    "combined_congruence": "K_G=7 (mod 22)",
+    "equations": [
+      "9-K_G/2=0 (mod 11)",
+      "1-K_G=0 (mod 2)"
+    ],
+    "heavy_contributions": {
+      "Delta_A_Z11": "-K_G/2 (mod 11)",
+      "Delta_A_Z4R": "-K_G (mod 2)"
+    },
+    "mass_operator": "W contains Lambda^(1-k) P^k Phi Phi",
+    "minimum_positive_K_each_PS_factor": 7,
+    "normalization": "T(fundamental)=1/2; eta(Z4R)=2; eta(Z11)=11",
+    "solutions_in_scan": [
+      7,
+      29,
+      51
+    ],
+    "visible_mixed_residues": {
+      "Z11_mod11": 9,
+      "Z4R_mod2": 1
+    }
+  },
+  "failures": [],
+  "gravity_cubic_singlet_repair": {
+    "after_singlet_repair": {
+      "Z11_cubic_mod11": 0,
+      "Z11_cubic_raw": 1188,
+      "Z11_gravity_mod11": 0,
+      "Z11_gravity_raw": 0,
+      "Z4R_gravity_mod2": 0,
+      "Z4R_gravity_raw": 8
+    },
+    "before_singlet_repair": {
+      "Z11_cubic_mod11": 6,
+      "Z11_cubic_raw": 1205,
+      "Z11_gravity_mod11": 5,
+      "Z11_gravity_raw": 5,
+      "Z4R_gravity_raw": 10
+    },
+    "complete_generic_singlet_operator_census_landed": false,
+    "role": "algebraic singlet repair showing gravity/cubic residues are not the limiting obstruction",
+    "singlet_pairs": [
+      {
+        "Delta_Z11_cubic": -1,
+        "Delta_Z11_gravity": -1,
+        "Delta_Z4R_gravity": -2,
+        "charges_A_B": {
+          "PQ": [
+            0,
+            -1
+          ],
+          "Z11_signed": [
+            0,
+            -1
+          ],
+          "Z4R": [
+            0,
+            0
+          ]
+        },
+        "mass_operator": "P*A*B",
+        "multiplicity": 1
+      },
+      {
+        "Delta_Z11_cubic_total": -16,
+        "Delta_Z11_gravity_total": -4,
+        "Delta_Z4R_gravity_total": 0,
+        "charges_C_D": {
+          "PQ": [
+            0,
+            -2
+          ],
+          "Z11_signed": [
+            0,
+            -2
+          ],
+          "Z4R": [
+            1,
+            1
+          ]
+        },
+        "mass_operator": "P^2*C*D/Lambda",
+        "multiplicity": 2
+      }
+    ]
+  },
+  "inputs": {
+    "Lambda_GeV": 1e+18,
+    "chi_QCD_GeV4": 3.26653399296e-05,
+    "fPQ_GeV": 176000000000.0,
+    "generic_Delta_theta_bound": 1e-10,
+    "vPS_GeV": 1e+16,
+    "w0_GeV": 100000.0
+  },
+  "minimal_real_10_mixed_anomaly_witness": {
+    "P2_mass_GeV": 30976.0,
+    "continuous_PS_anomalies": {
+      "cancel": true,
+      "reason": "The SO(10) 10 is real; its PS sextet is real and its bidoublet supplies an even number of doublets for each SU(2)."
+    },
+    "fields": [
+      {
+        "PQ": "-1/2",
+        "P_power_k": 1,
+        "SO10_rep": "10=(6,1,1)+(1,2,2)",
+        "Z11": 5,
+        "Z4R": 0,
+        "field": "T0",
+        "mass_GeV": 176000000000.0,
+        "mass_operator": "P*T0*T0",
+        "multiplicity": 1,
+        "signed_Z11": 5
+      },
+      {
+        "PQ": -1,
+        "P_power_k": 2,
+        "SO10_rep": "10=(6,1,1)+(1,2,2)",
+        "Z11": 10,
+        "Z4R": 1,
+        "field": "T2",
+        "mass_GeV": 30976.0,
+        "mass_operator": "P^2*T2*T2/Lambda",
+        "multiplicity": 3,
+        "signed_Z11": -1
+      }
+    ],
+    "mixed_anomalies": {
+      "Z11_after_mod11": [
+        0,
+        0,
+        0
+      ],
+      "Z11_raw_after_by_factor": [
+        22,
+        22,
+        22
+      ],
+      "Z11_raw_before_by_factor": [
+        20,
+        20,
+        20
+      ],
+      "Z4R_after_mod2": [
+        0,
+        0,
+        0
+      ],
+      "Z4R_raw_after_by_factor": [
+        6,
+        4,
+        0
+      ],
+      "Z4R_raw_before_by_factor": [
+        7,
+        5,
+        1
+      ],
+      "heavy_Delta_Z11_each_factor_signed": 2,
+      "heavy_Delta_Z4R_each_factor": -1
+    },
+    "role": "minimal explicit mixed-gauge anomaly cancellation witness; rejected by RG and wall tests",
+    "weighted_index_K_each_factor": 7
+  },
+  "schema_version": 1,
+  "scope": "minimal weakly-coupled PS/SO10-real or vectorlike anomaly sectors with natural P-generated masses or one zero-PQ discrete-charged mass spurion",
+  "source_context": {
+    "primary_discrete_anomaly_reference": "https://arxiv.org/abs/hep-ph/9210211",
+    "primary_discrete_matching_reference": "https://arxiv.org/abs/hep-th/9710105",
+    "selected_V24_frontier": "SUSY_V24_PS_VACUUM_RG_FRONTIER.json",
+    "selected_frontier_core": "9f47db6cb3bb97b10b4554b8b3f51f146c09820bd202d7b6dcb429891fece780"
+  },
+  "status": "V24_MINIMAL_NON_GS_ANOMALY_COMPLETION_NOGO_FROZEN__GS_OR_NEW_SHAPING_PHYSICS_REMAINS_REQUIRED",
+  "verdict": {
+    "Green_Schwarz_dependency_eliminated": false,
+    "minimal_non_GS_completion_viable": false,
+    "next_physics_required": "Specify the dynamical GS modulus/quotient, or replace the selector with an independently anomaly-complete shaping/gauge sector and redo the full PQ vacuum/operator/RG analysis."
+  },
+  "zero_PQ_spurion_scan": {
+    "all_rows_have_no_overlap": true,
+    "caveat": "Additional exact gauge/shaping symmetries, tuned coefficients, a PQ-charged spurion, strong dynamics, or abandoning the landed Z4R protection are outside this scan and require a new theory/vacuum analysis.",
+    "closest_row": {
+      "N_DW_after_required_repairs": 4,
+      "extra_R_repair": null,
+      "limiting_P_power": 10,
+      "limiting_S_power": 1,
+      "limiting_allowed_W_operator": "P^10*S^1/Lambda^8",
+      "log10_one_loop_perturbativity_lower_bound_S_GeV": 13.932554906333,
+      "log10_quality_minus_perturbativity_gap": -2.87359440247,
+      "log10_quality_upper_bound_S_GeV": 11.058960503863,
+      "minimum_charged_real_10_index_units": 7,
+      "mixed_anomaly_equation": "qS*N=7 (mod 11), N odd",
+      "one_loop_perturbativity_lower_bound_S_GeV": 85615994618765.8,
+      "quality_and_one_loop_perturbativity_overlap": false,
+      "quality_upper_bound_S_GeV": 114540876955.21164,
+      "spurion_Z11": 1,
+      "spurion_Z4R": 2,
+      "zero_PQ": true
+    },
+    "closest_row_by_spurion_Z4R": {
+      "0": {
+        "N_DW_after_required_repairs": 5,
+        "extra_R_repair": {
+          "Delta_2N_QCD": -1,
+          "Delta_A_Z11": "-1/2 mod 11",
+          "Delta_A_Z4R_mod2": 1,
+          "N_DW_after_repair_before_S_sector": 5,
+          "P_power_k": 1,
+          "charges": {
+            "PQ": "-1/2",
+            "Z11": 5,
+            "Z4R": 0
+          },
+          "field": "one real SO(10) 10",
+          "index_units": 1,
+          "mass_operator": "P*T_R*T_R",
+          "mass_scale_GeV": 176000000000.0,
+          "one_loop_inverse_coupling_cost": 2.47530210897
+        },
+        "limiting_P_power": 9,
+        "limiting_S_power": 2,
+        "limiting_allowed_W_operator": "P^9*S^2/Lambda^8",
+        "log10_one_loop_perturbativity_lower_bound_S_GeV": 14.38039527942,
+        "log10_quality_minus_perturbativity_gap": -3.205279948301,
+        "log10_quality_upper_bound_S_GeV": 11.175115331119,
+        "minimum_charged_real_10_index_units": 6,
+        "mixed_anomaly_equation": "1+qS*N=7 (mod 11), where 1 is the k=1 P-mass repair",
+        "one_loop_perturbativity_lower_bound_S_GeV": 240101724548109.1,
+        "quality_and_one_loop_perturbativity_overlap": false,
+        "quality_upper_bound_S_GeV": 149663304877.30496,
+        "spurion_Z11": 1,
+        "spurion_Z4R": 0,
+        "zero_PQ": true
+      },
+      "2": {
+        "N_DW_after_required_repairs": 4,
+        "extra_R_repair": null,
+        "limiting_P_power": 10,
+        "limiting_S_power": 1,
+        "limiting_allowed_W_operator": "P^10*S^1/Lambda^8",
+        "log10_one_loop_perturbativity_lower_bound_S_GeV": 13.932554906333,
+        "log10_quality_minus_perturbativity_gap": -2.87359440247,
+        "log10_quality_upper_bound_S_GeV": 11.058960503863,
+        "minimum_charged_real_10_index_units": 7,
+        "mixed_anomaly_equation": "qS*N=7 (mod 11), N odd",
+        "one_loop_perturbativity_lower_bound_S_GeV": 85615994618765.8,
+        "quality_and_one_loop_perturbativity_overlap": false,
+        "quality_upper_bound_S_GeV": 114540876955.21164,
+        "spurion_Z11": 1,
+        "spurion_Z4R": 2,
+        "zero_PQ": true
+      }
+    },
+    "operator_scan_cell": {
+      "P_power": [
+        1,
+        22
+      ],
+      "S_power": [
+        1,
+        22
+      ]
+    },
+    "perturbativity_formula": "alpha_R^-1(1e18)>0 at one loop after all required heavy thresholds",
+    "quality_formula": "Delta theta=n*w0*fPQ^n*S^m/[chi*Lambda^(n+m-3)] < 1e-10",
+    "rows": [
+      {
+        "N_DW_after_required_repairs": 4,
+        "extra_R_repair": null,
+        "limiting_P_power": 10,
+        "limiting_S_power": 1,
+        "limiting_allowed_W_operator": "P^10*S^1/Lambda^8",
+        "log10_one_loop_perturbativity_lower_bound_S_GeV": 13.932554906333,
+        "log10_quality_minus_perturbativity_gap": -2.87359440247,
+        "log10_quality_upper_bound_S_GeV": 11.058960503863,
+        "minimum_charged_real_10_index_units": 7,
+        "mixed_anomaly_equation": "qS*N=7 (mod 11), N odd",
+        "one_loop_perturbativity_lower_bound_S_GeV": 85615994618765.8,
+        "quality_and_one_loop_perturbativity_overlap": false,
+        "quality_upper_bound_S_GeV": 114540876955.21164,
+        "spurion_Z11": 1,
+        "spurion_Z4R": 2,
+        "zero_PQ": true
+      },
+      {
+        "N_DW_after_required_repairs": 4,
+        "extra_R_repair": null,
+        "limiting_P_power": 7,
+        "limiting_S_power": 2,
+        "limiting_allowed_W_operator": "P^7*S^2/Lambda^6",
+        "log10_one_loop_perturbativity_lower_bound_S_GeV": 14.836431593815,
+        "log10_quality_minus_perturbativity_gap": -10.361231360169,
+        "log10_quality_upper_bound_S_GeV": 4.475200233646,
+        "minimum_charged_real_10_index_units": 9,
+        "mixed_anomaly_equation": "qS*N=7 (mod 11), N odd",
+        "one_loop_perturbativity_lower_bound_S_GeV": 686169790566657.8,
+        "quality_and_one_loop_perturbativity_overlap": false,
+        "quality_upper_bound_S_GeV": 29867.593618774543,
+        "spurion_Z11": 2,
+        "spurion_Z4R": 2,
+        "zero_PQ": true
+      },
+      {
+        "N_DW_after_required_repairs": 4,
+        "extra_R_repair": null,
+        "limiting_P_power": 8,
+        "limiting_S_power": 1,
+        "limiting_allowed_W_operator": "P^8*S^1/Lambda^6",
+        "log10_one_loop_perturbativity_lower_bound_S_GeV": 16.325169667314,
+        "log10_quality_minus_perturbativity_gap": -18.678273814814,
+        "log10_quality_upper_bound_S_GeV": -2.3531041475,
+        "minimum_charged_real_10_index_units": 17,
+        "mixed_anomaly_equation": "qS*N=7 (mod 11), N odd",
+        "one_loop_perturbativity_lower_bound_S_GeV": 2.1143148851510624e+16,
+        "quality_and_one_loop_perturbativity_overlap": false,
+        "quality_upper_bound_S_GeV": 0.004435022755705877,
+        "spurion_Z11": 3,
+        "spurion_Z4R": 2,
+        "zero_PQ": true
+      },
+      {
+        "N_DW_after_required_repairs": 4,
+        "extra_R_repair": null,
+        "limiting_P_power": 3,
+        "limiting_S_power": 2,
+        "limiting_allowed_W_operator": "P^3*S^2/Lambda^2",
+        "log10_one_loop_perturbativity_lower_bound_S_GeV": 16.644184968778,
+        "log10_quality_minus_perturbativity_gap": -25.493971006856,
+        "log10_quality_upper_bound_S_GeV": -8.849786038079,
+        "minimum_charged_real_10_index_units": 21,
+        "mixed_anomaly_equation": "qS*N=7 (mod 11), N odd",
+        "one_loop_perturbativity_lower_bound_S_GeV": 4.407425385838048e+16,
+        "quality_and_one_loop_perturbativity_overlap": false,
+        "quality_upper_bound_S_GeV": 1.4132336246348897e-09,
+        "spurion_Z11": 4,
+        "spurion_Z4R": 2,
+        "zero_PQ": true
+      },
+      {
+        "N_DW_after_required_repairs": 4,
+        "extra_R_repair": null,
+        "limiting_P_power": 6,
+        "limiting_S_power": 1,
+        "limiting_allowed_W_operator": "P^6*S^1/Lambda^4",
+        "log10_one_loop_perturbativity_lower_bound_S_GeV": 16.50146759707,
+        "log10_quality_minus_perturbativity_gap": -32.238607672334,
+        "log10_quality_upper_bound_S_GeV": -15.737140075264,
+        "minimum_charged_real_10_index_units": 19,
+        "mixed_anomaly_equation": "qS*N=7 (mod 11), N odd",
+        "one_loop_perturbativity_lower_bound_S_GeV": 3.1729819172271268e+16,
+        "quality_and_one_loop_perturbativity_overlap": false,
+        "quality_upper_bound_S_GeV": 1.8317235317433043e-16,
+        "spurion_Z11": 5,
+        "spurion_Z4R": 2,
+        "zero_PQ": true
+      },
+      {
+        "N_DW_after_required_repairs": 4,
+        "extra_R_repair": null,
+        "limiting_P_power": 4,
+        "limiting_S_power": 3,
+        "limiting_allowed_W_operator": "P^4*S^3/Lambda^4",
+        "log10_one_loop_perturbativity_lower_bound_S_GeV": 8.509294781445,
+        "log10_quality_minus_perturbativity_gap": -6.199302608305,
+        "log10_quality_upper_bound_S_GeV": 2.30999217314,
+        "minimum_charged_real_10_index_units": 3,
+        "mixed_anomaly_equation": "qS*N=7 (mod 11), N odd",
+        "one_loop_perturbativity_lower_bound_S_GeV": 323068623.6191637,
+        "quality_and_one_loop_perturbativity_overlap": false,
+        "quality_upper_bound_S_GeV": 204.1701148777487,
+        "spurion_Z11": 6,
+        "spurion_Z4R": 2,
+        "zero_PQ": true
+      },
+      {
+        "N_DW_after_required_repairs": 4,
+        "extra_R_repair": null,
+        "limiting_P_power": 4,
+        "limiting_S_power": 1,
+        "limiting_allowed_W_operator": "P^4*S^1/Lambda^2",
+        "log10_one_loop_perturbativity_lower_bound_S_GeV": -10.472115655666,
+        "log10_quality_minus_perturbativity_gap": -18.597907824914,
+        "log10_quality_upper_bound_S_GeV": -29.07002348058,
+        "minimum_charged_real_10_index_units": 1,
+        "mixed_anomaly_equation": "qS*N=7 (mod 11), N odd",
+        "one_loop_perturbativity_lower_bound_S_GeV": 3.3719749864229946e-11,
+        "quality_and_one_loop_perturbativity_overlap": false,
+        "quality_upper_bound_S_GeV": 8.510920217891973e-30,
+        "spurion_Z11": 7,
+        "spurion_Z4R": 2,
+        "zero_PQ": true
+      },
+      {
+        "N_DW_after_required_repairs": 4,
+        "extra_R_repair": null,
+        "limiting_P_power": 1,
+        "limiting_S_power": 4,
+        "limiting_allowed_W_operator": "P^1*S^4/Lambda^2",
+        "log10_one_loop_perturbativity_lower_bound_S_GeV": 12.305576868867,
+        "log10_quality_minus_perturbativity_gap": -10.988433240319,
+        "log10_quality_upper_bound_S_GeV": 1.317143628548,
+        "minimum_charged_real_10_index_units": 5,
+        "mixed_anomaly_equation": "qS*N=7 (mod 11), N odd",
+        "one_loop_perturbativity_lower_bound_S_GeV": 2021049120183.3003,
+        "quality_and_one_loop_perturbativity_overlap": false,
+        "quality_upper_bound_S_GeV": 20.755998400137035,
+        "spurion_Z11": 8,
+        "spurion_Z4R": 2,
+        "zero_PQ": true
+      },
+      {
+        "N_DW_after_required_repairs": 4,
+        "extra_R_repair": null,
+        "limiting_P_power": 2,
+        "limiting_S_power": 1,
+        "limiting_allowed_W_operator": "P^2*S^1/Lambda^0",
+        "log10_one_loop_perturbativity_lower_bound_S_GeV": 15.809837257256,
+        "log10_quality_minus_perturbativity_gap": -58.087805406544,
+        "log10_quality_upper_bound_S_GeV": -42.277968149287,
+        "minimum_charged_real_10_index_units": 13,
+        "mixed_anomaly_equation": "qS*N=7 (mod 11), N odd",
+        "one_loop_perturbativity_lower_bound_S_GeV": 6454123289875058.0,
+        "quality_and_one_loop_perturbativity_overlap": false,
+        "quality_upper_bound_S_GeV": 5.272685293388363e-43,
+        "spurion_Z11": 9,
+        "spurion_Z4R": 2,
+        "zero_PQ": true
+      },
+      {
+        "N_DW_after_required_repairs": 4,
+        "extra_R_repair": null,
+        "limiting_P_power": 1,
+        "limiting_S_power": 12,
+        "limiting_allowed_W_operator": "P^1*S^12/Lambda^10",
+        "log10_one_loop_perturbativity_lower_bound_S_GeV": 16.101858956289,
+        "log10_quality_minus_perturbativity_gap": -3.662811080106,
+        "log10_quality_upper_bound_S_GeV": 12.439047876183,
+        "minimum_charged_real_10_index_units": 15,
+        "mixed_anomaly_equation": "qS*N=7 (mod 11), N odd",
+        "one_loop_perturbativity_lower_bound_S_GeV": 1.264325671876048e+16,
+        "quality_and_one_loop_perturbativity_overlap": false,
+        "quality_upper_bound_S_GeV": 2748197094860.3877,
+        "spurion_Z11": 10,
+        "spurion_Z4R": 2,
+        "zero_PQ": true
+      },
+      {
+        "N_DW_after_required_repairs": 5,
+        "extra_R_repair": {
+          "Delta_2N_QCD": -1,
+          "Delta_A_Z11": "-1/2 mod 11",
+          "Delta_A_Z4R_mod2": 1,
+          "N_DW_after_repair_before_S_sector": 5,
+          "P_power_k": 1,
+          "charges": {
+            "PQ": "-1/2",
+            "Z11": 5,
+            "Z4R": 0
+          },
+          "field": "one real SO(10) 10",
+          "index_units": 1,
+          "mass_operator": "P*T_R*T_R",
+          "mass_scale_GeV": 176000000000.0,
+          "one_loop_inverse_coupling_cost": 2.47530210897
+        },
+        "limiting_P_power": 9,
+        "limiting_S_power": 2,
+        "limiting_allowed_W_operator": "P^9*S^2/Lambda^8",
+        "log10_one_loop_perturbativity_lower_bound_S_GeV": 14.38039527942,
+        "log10_quality_minus_perturbativity_gap": -3.205279948301,
+        "log10_quality_upper_bound_S_GeV": 11.175115331119,
+        "minimum_charged_real_10_index_units": 6,
+        "mixed_anomaly_equation": "1+qS*N=7 (mod 11), where 1 is the k=1 P-mass repair",
+        "one_loop_perturbativity_lower_bound_S_GeV": 240101724548109.1,
+        "quality_and_one_loop_perturbativity_overlap": false,
+        "quality_upper_bound_S_GeV": 149663304877.30496,
+        "spurion_Z11": 1,
+        "spurion_Z4R": 0,
+        "zero_PQ": true
+      },
+      {
+        "N_DW_after_required_repairs": 5,
+        "extra_R_repair": {
+          "Delta_2N_QCD": -1,
+          "Delta_A_Z11": "-1/2 mod 11",
+          "Delta_A_Z4R_mod2": 1,
+          "N_DW_after_repair_before_S_sector": 5,
+          "P_power_k": 1,
+          "charges": {
+            "PQ": "-1/2",
+            "Z11": 5,
+            "Z4R": 0
+          },
+          "field": "one real SO(10) 10",
+          "index_units": 1,
+          "mass_operator": "P*T_R*T_R",
+          "mass_scale_GeV": 176000000000.0,
+          "one_loop_inverse_coupling_cost": 2.47530210897
+        },
+        "limiting_P_power": 9,
+        "limiting_S_power": 1,
+        "limiting_allowed_W_operator": "P^9*S^1/Lambda^7",
+        "log10_one_loop_perturbativity_lower_bound_S_GeV": 10.76079055884,
+        "log10_quality_minus_perturbativity_gap": -6.410559896602,
+        "log10_quality_upper_bound_S_GeV": 4.350230662238,
+        "minimum_charged_real_10_index_units": 3,
+        "mixed_anomaly_equation": "1+qS*N=7 (mod 11), where 1 is the k=1 P-mass repair",
+        "one_loop_perturbativity_lower_bound_S_GeV": 57648838130.97605,
+        "quality_and_one_loop_perturbativity_overlap": false,
+        "quality_upper_bound_S_GeV": 22399.10482679714,
+        "spurion_Z11": 2,
+        "spurion_Z4R": 0,
+        "zero_PQ": true
+      },
+      {
+        "N_DW_after_required_repairs": 5,
+        "extra_R_repair": {
+          "Delta_2N_QCD": -1,
+          "Delta_A_Z11": "-1/2 mod 11",
+          "Delta_A_Z4R_mod2": 1,
+          "N_DW_after_repair_before_S_sector": 5,
+          "P_power_k": 1,
+          "charges": {
+            "PQ": "-1/2",
+            "Z11": 5,
+            "Z4R": 0
+          },
+          "field": "one real SO(10) 10",
+          "index_units": 1,
+          "mass_operator": "P*T_R*T_R",
+          "mass_scale_GeV": 176000000000.0,
+          "one_loop_inverse_coupling_cost": 2.47530210897
+        },
+        "limiting_P_power": 5,
+        "limiting_S_power": 2,
+        "limiting_allowed_W_operator": "P^5*S^2/Lambda^4",
+        "log10_one_loop_perturbativity_lower_bound_S_GeV": 7.14118583826,
+        "log10_quality_minus_perturbativity_gap": -9.347408918961,
+        "log10_quality_upper_bound_S_GeV": -2.206223080701,
+        "minimum_charged_real_10_index_units": 2,
+        "mixed_anomaly_equation": "1+qS*N=7 (mod 11), where 1 is the k=1 P-mass repair",
+        "one_loop_perturbativity_lower_bound_S_GeV": 13841585.453442197,
+        "quality_and_one_loop_perturbativity_overlap": false,
+        "quality_upper_bound_S_GeV": 0.006219807150580934,
+        "spurion_Z11": 3,
+        "spurion_Z4R": 0,
+        "zero_PQ": true
+      },
+      {
+        "N_DW_after_required_repairs": 5,
+        "extra_R_repair": {
+          "Delta_2N_QCD": -1,
+          "Delta_A_Z11": "-1/2 mod 11",
+          "Delta_A_Z4R_mod2": 1,
+          "N_DW_after_repair_before_S_sector": 5,
+          "P_power_k": 1,
+          "charges": {
+            "PQ": "-1/2",
+            "Z11": 5,
+            "Z4R": 0
+          },
+          "field": "one real SO(10) 10",
+          "index_units": 1,
+          "mass_operator": "P*T_R*T_R",
+          "mass_scale_GeV": 176000000000.0,
+          "one_loop_inverse_coupling_cost": 2.47530210897
+        },
+        "limiting_P_power": 7,
+        "limiting_S_power": 1,
+        "limiting_allowed_W_operator": "P^7*S^1/Lambda^5",
+        "log10_one_loop_perturbativity_lower_bound_S_GeV": 14.897481668074,
+        "log10_quality_minus_perturbativity_gap": -23.947081200783,
+        "log10_quality_upper_bound_S_GeV": -9.049599532708,
+        "minimum_charged_real_10_index_units": 7,
+        "mixed_anomaly_equation": "1+qS*N=7 (mod 11), where 1 is the k=1 P-mass repair",
+        "one_loop_perturbativity_lower_bound_S_GeV": 789735513313530.8,
+        "quality_and_one_loop_perturbativity_overlap": false,
+        "quality_upper_bound_S_GeV": 8.920731485762618e-10,
+        "spurion_Z11": 4,
+        "spurion_Z4R": 0,
+        "zero_PQ": true
+      },
+      {
+        "N_DW_after_required_repairs": 5,
+        "extra_R_repair": {
+          "Delta_2N_QCD": -1,
+          "Delta_A_Z11": "-1/2 mod 11",
+          "Delta_A_Z4R_mod2": 1,
+          "N_DW_after_repair_before_S_sector": 5,
+          "P_power_k": 1,
+          "charges": {
+            "PQ": "-1/2",
+            "Z11": 5,
+            "Z4R": 0
+          },
+          "field": "one real SO(10) 10",
+          "index_units": 1,
+          "mass_operator": "P*T_R*T_R",
+          "mass_scale_GeV": 176000000000.0,
+          "one_loop_inverse_coupling_cost": 2.47530210897
+        },
+        "limiting_P_power": 1,
+        "limiting_S_power": 2,
+        "limiting_allowed_W_operator": "P^1*S^2/Lambda^0",
+        "log10_one_loop_perturbativity_lower_bound_S_GeV": 15.828237167652,
+        "log10_quality_minus_perturbativity_gap": -31.193949910557,
+        "log10_quality_upper_bound_S_GeV": -15.365712742905,
+        "minimum_charged_real_10_index_units": 10,
+        "mixed_anomaly_equation": "1+qS*N=7 (mod 11), where 1 is the k=1 P-mass repair",
+        "one_loop_perturbativity_lower_bound_S_GeV": 6733442683285166.0,
+        "quality_and_one_loop_perturbativity_overlap": false,
+        "quality_upper_bound_S_GeV": 4.308114695864911e-16,
+        "spurion_Z11": 5,
+        "spurion_Z4R": 0,
+        "zero_PQ": true
+      },
+      {
+        "N_DW_after_required_repairs": 5,
+        "extra_R_repair": {
+          "Delta_2N_QCD": -1,
+          "Delta_A_Z11": "-1/2 mod 11",
+          "Delta_A_Z4R_mod2": 1,
+          "N_DW_after_repair_before_S_sector": 5,
+          "P_power_k": 1,
+          "charges": {
+            "PQ": "-1/2",
+            "Z11": 5,
+            "Z4R": 0
+          },
+          "field": "one real SO(10) 10",
+          "index_units": 1,
+          "mass_operator": "P*T_R*T_R",
+          "mass_scale_GeV": 176000000000.0,
+          "one_loop_inverse_coupling_cost": 2.47530210897
+        },
+        "limiting_P_power": 5,
+        "limiting_S_power": 1,
+        "limiting_allowed_W_operator": "P^5*S^1/Lambda^3",
+        "log10_one_loop_perturbativity_lower_bound_S_GeV": -3.71762832348,
+        "log10_quality_minus_perturbativity_gap": -18.694817837922,
+        "log10_quality_upper_bound_S_GeV": -22.412446161402,
+        "minimum_charged_real_10_index_units": 1,
+        "mixed_anomaly_equation": "1+qS*N=7 (mod 11), where 1 is the k=1 P-mass repair",
+        "one_loop_perturbativity_lower_bound_S_GeV": 0.00019158948786494263,
+        "quality_and_one_loop_perturbativity_overlap": false,
+        "quality_upper_bound_S_GeV": 3.868600099041771e-23,
+        "spurion_Z11": 6,
+        "spurion_Z4R": 0,
+        "zero_PQ": true
+      },
+      {
+        "N_DW_after_required_repairs": 5,
+        "extra_R_repair": {
+          "Delta_2N_QCD": -1,
+          "Delta_A_Z11": "-1/2 mod 11",
+          "Delta_A_Z4R_mod2": 1,
+          "N_DW_after_repair_before_S_sector": 5,
+          "P_power_k": 1,
+          "charges": {
+            "PQ": "-1/2",
+            "Z11": 5,
+            "Z4R": 0
+          },
+          "field": "one real SO(10) 10",
+          "index_units": 1,
+          "mass_operator": "P*T_R*T_R",
+          "mass_scale_GeV": 176000000000.0,
+          "one_loop_inverse_coupling_cost": 2.47530210897
+        },
+        "limiting_P_power": 1,
+        "limiting_S_power": 3,
+        "limiting_allowed_W_operator": "P^1*S^3/Lambda^1",
+        "log10_one_loop_perturbativity_lower_bound_S_GeV": 12.57059291913,
+        "log10_quality_minus_perturbativity_gap": -16.8144014144,
+        "log10_quality_upper_bound_S_GeV": -4.24380849527,
+        "minimum_charged_real_10_index_units": 4,
+        "mixed_anomaly_equation": "1+qS*N=7 (mod 11), where 1 is the k=1 P-mass repair",
+        "one_loop_perturbativity_lower_bound_S_GeV": 3720428127708.173,
+        "quality_and_one_loop_perturbativity_overlap": false,
+        "quality_upper_bound_S_GeV": 5.704157450418345e-05,
+        "spurion_Z11": 7,
+        "spurion_Z4R": 0,
+        "zero_PQ": true
+      },
+      {
+        "N_DW_after_required_repairs": 5,
+        "extra_R_repair": {
+          "Delta_2N_QCD": -1,
+          "Delta_A_Z11": "-1/2 mod 11",
+          "Delta_A_Z4R_mod2": 1,
+          "N_DW_after_repair_before_S_sector": 5,
+          "P_power_k": 1,
+          "charges": {
+            "PQ": "-1/2",
+            "Z11": 5,
+            "Z4R": 0
+          },
+          "field": "one real SO(10) 10",
+          "index_units": 1,
+          "mass_operator": "P*T_R*T_R",
+          "mass_scale_GeV": 176000000000.0,
+          "one_loop_inverse_coupling_cost": 2.47530210897
+        },
+        "limiting_P_power": 3,
+        "limiting_S_power": 1,
+        "limiting_allowed_W_operator": "P^3*S^1/Lambda^1",
+        "log10_one_loop_perturbativity_lower_bound_S_GeV": 15.58693018628,
+        "log10_quality_minus_perturbativity_gap": -51.286502262437,
+        "log10_quality_upper_bound_S_GeV": -35.699572076157,
+        "minimum_charged_real_10_index_units": 9,
+        "mixed_anomaly_equation": "1+qS*N=7 (mod 11), where 1 is the k=1 P-mass repair",
+        "one_loop_perturbativity_lower_bound_S_GeV": 3863048727696127.0,
+        "quality_and_one_loop_perturbativity_overlap": false,
+        "quality_upper_bound_S_GeV": 1.9972292777986685e-36,
+        "spurion_Z11": 8,
+        "spurion_Z4R": 0,
+        "zero_PQ": true
+      },
+      {
+        "N_DW_after_required_repairs": 5,
+        "extra_R_repair": {
+          "Delta_2N_QCD": -1,
+          "Delta_A_Z11": "-1/2 mod 11",
+          "Delta_A_Z4R_mod2": 1,
+          "N_DW_after_repair_before_S_sector": 5,
+          "P_power_k": 1,
+          "charges": {
+            "PQ": "-1/2",
+            "Z11": 5,
+            "Z4R": 0
+          },
+          "field": "one real SO(10) 10",
+          "index_units": 1,
+          "mass_operator": "P*T_R*T_R",
+          "mass_scale_GeV": 176000000000.0,
+          "one_loop_inverse_coupling_cost": 2.47530210897
+        },
+        "limiting_P_power": 1,
+        "limiting_S_power": 6,
+        "limiting_allowed_W_operator": "P^1*S^6/Lambda^4",
+        "log10_one_loop_perturbativity_lower_bound_S_GeV": 15.285296459565,
+        "log10_quality_minus_perturbativity_gap": -8.4072007072,
+        "log10_quality_upper_bound_S_GeV": 6.878095752365,
+        "minimum_charged_real_10_index_units": 8,
+        "mixed_anomaly_equation": "1+qS*N=7 (mod 11), where 1 is the k=1 P-mass repair",
+        "one_loop_perturbativity_lower_bound_S_GeV": 1928841135943593.8,
+        "quality_and_one_loop_perturbativity_overlap": false,
+        "quality_upper_bound_S_GeV": 7552587.272199074,
+        "spurion_Z11": 9,
+        "spurion_Z4R": 0,
+        "zero_PQ": true
+      },
+      {
+        "N_DW_after_required_repairs": 5,
+        "extra_R_repair": {
+          "Delta_2N_QCD": -1,
+          "Delta_A_Z11": "-1/2 mod 11",
+          "Delta_A_Z4R_mod2": 1,
+          "N_DW_after_repair_before_S_sector": 5,
+          "P_power_k": 1,
+          "charges": {
+            "PQ": "-1/2",
+            "Z11": 5,
+            "Z4R": 0
+          },
+          "field": "one real SO(10) 10",
+          "index_units": 1,
+          "mass_operator": "P*T_R*T_R",
+          "mass_scale_GeV": 176000000000.0,
+          "one_loop_inverse_coupling_cost": 2.47530210897
+        },
+        "limiting_P_power": 1,
+        "limiting_S_power": 1,
+        "limiting_allowed_W_operator": "P^1*S^1/Lambda^-1",
+        "log10_one_loop_perturbativity_lower_bound_S_GeV": 13.656474335304,
+        "log10_quality_minus_perturbativity_gap": -62.387899821113,
+        "log10_quality_upper_bound_S_GeV": -48.731425485809,
+        "minimum_charged_real_10_index_units": 5,
+        "mixed_anomaly_equation": "1+qS*N=7 (mod 11), where 1 is the k=1 P-mass repair",
+        "one_loop_perturbativity_lower_bound_S_GeV": 45339250369086.53,
+        "quality_and_one_loop_perturbativity_overlap": false,
+        "quality_upper_bound_S_GeV": 1.855985223272722e-49,
+        "spurion_Z11": 10,
+        "spurion_Z4R": 0,
+        "zero_PQ": true
+      }
+    ],
+    "scope": "finite fundamental charge cell qS=1..10, rS in {0,2}; weakly-coupled real-10 index units; rS=0 includes its required existing-P k=1 real-10 repair; coefficient-one generic-phase A-term quality screen"
+  }
+}

@@ -1,0 +1,769 @@
+{
+  "G7_assessment": {
+    "correction": "The degree-20 invariant has Z4R=0; the first corresponding local W frontier is degree 23.",
+    "positive_result": "No nonzero-orientation PS/U1F invariant exists through degree 19 in the reduced matter ring.",
+    "why_still_open": "Orientation-zero B/L operators, K\u00e4hler operators, broken-gauge and KK exchange, global selection rules, and numerical proton/multinucleon Wilson bounds are not classified. Nonlocal charge flow has a four-unit lower bound but no computed coefficient."
+  },
+  "core_sha256": "02b0d8a6c9fba5b6acb15b9de85dcf4383948b325c6ebcb727c525290795325b",
+  "decision": {
+    "G7_closed": false,
+    "authoritative_core": "Q,Qc,H plus LF,LA,RA,RF zero modes of four bulk 16/bar16 hypers",
+    "closed_gate_count": 0,
+    "degree20_is_a_Z4R_superpotential_term": false,
+    "first_local_oriented_Z4R_superpotential_degree": 23,
+    "first_oriented_PS_U1F_invariant_degree": 20,
+    "local_orientation_bound": "PROVED_FOR_DECLARED_CORE",
+    "pure_light_nonlocal_minimum_source_charge_units": 4,
+    "separate_Bplus_Bminus_singlet_hypers": "REJECTED_AS_REDUNDANT_AND_OPERATOR_WORSENING"
+  },
+  "explicit_local_witnesses": {
+    "definitions": {
+      "A": "epsilon4 epsilon2 epsilon2 Q1 Q2 Q3 LF",
+      "Abar": "epsilon4 epsilon2 epsilon2 Qc1 Qc2 Qc3 RA",
+      "B": "delta4 epsilon2 LA LF",
+      "Bbar": "delta4 epsilon2 RA RF"
+    },
+    "degree20_minus": {
+      "PS_U1F_invariant": true,
+      "fields": [
+        "Qc1",
+        "Qc2",
+        "Qc3",
+        "RA",
+        "Qc1",
+        "Qc2",
+        "Qc3",
+        "RA",
+        "Qc1",
+        "Qc2",
+        "Qc3",
+        "RA",
+        "RA",
+        "RF",
+        "RA",
+        "RF",
+        "RA",
+        "RF",
+        "RA",
+        "RF"
+      ],
+      "operator": "Abar^3 Bbar^4",
+      "quantum_numbers": {
+        "degree": 20,
+        "l2_parity": 0,
+        "orientation": -12,
+        "r2_parity": 0,
+        "r4": 0,
+        "t9": 4,
+        "u1f": 0
+      },
+      "superpotential_allowed": false
+    },
+    "degree20_plus": {
+      "PS_U1F_invariant": true,
+      "fields": [
+        "Q1",
+        "Q2",
+        "Q3",
+        "LF",
+        "Q1",
+        "Q2",
+        "Q3",
+        "LF",
+        "Q1",
+        "Q2",
+        "Q3",
+        "LF",
+        "LA",
+        "LF",
+        "LA",
+        "LF",
+        "LA",
+        "LF",
+        "LA",
+        "LF"
+      ],
+      "operator": "A^3 B^4",
+      "quantum_numbers": {
+        "degree": 20,
+        "l2_parity": 0,
+        "orientation": 12,
+        "r2_parity": 0,
+        "r4": 0,
+        "t9": -4,
+        "u1f": 0
+      },
+      "superpotential_allowed": false
+    },
+    "degree23_minus_W": {
+      "fields": [
+        "Qc1",
+        "Qc2",
+        "Qc3",
+        "RA",
+        "Qc1",
+        "Qc2",
+        "Qc3",
+        "RA",
+        "Qc1",
+        "Qc2",
+        "Qc3",
+        "RA",
+        "RA",
+        "RF",
+        "RA",
+        "RF",
+        "RA",
+        "RF",
+        "RA",
+        "RF",
+        "Q1",
+        "H",
+        "Qc1"
+      ],
+      "operator": "Abar^3 Bbar^4 (Q1 H Qc1)",
+      "quantum_numbers": {
+        "degree": 23,
+        "l2_parity": 0,
+        "orientation": -12,
+        "r2_parity": 0,
+        "r4": 2,
+        "t9": 4,
+        "u1f": 0
+      },
+      "superpotential_allowed": true
+    },
+    "degree23_plus_W": {
+      "fields": [
+        "Q1",
+        "Q2",
+        "Q3",
+        "LF",
+        "Q1",
+        "Q2",
+        "Q3",
+        "LF",
+        "Q1",
+        "Q2",
+        "Q3",
+        "LF",
+        "LA",
+        "LF",
+        "LA",
+        "LF",
+        "LA",
+        "LF",
+        "LA",
+        "LF",
+        "Q1",
+        "H",
+        "Qc1"
+      ],
+      "operator": "A^3 B^4 (Q1 H Qc1)",
+      "quantum_numbers": {
+        "degree": 23,
+        "l2_parity": 0,
+        "orientation": 12,
+        "r2_parity": 0,
+        "r4": 2,
+        "t9": -4,
+        "u1f": 0
+      },
+      "superpotential_allowed": true
+    },
+    "nonzero_reason": "A and Abar use four distinct doublet species; B and Bbar are ordinary conjugate-representation bilinears. Products of these nonzero invariants are nonzero."
+  },
+  "field_table": {
+    "H": {
+      "l2": 1,
+      "origin": "PS wall",
+      "r2": 1,
+      "r4": 0,
+      "rep": "(1,2,2)",
+      "s": 0,
+      "t9": 0,
+      "u1f": 0
+    },
+    "LA": {
+      "l2": 1,
+      "origin": "bar16_(-12) bulk zero mode",
+      "r2": 0,
+      "r4": 1,
+      "rep": "(bar4,2,1)",
+      "s": -1,
+      "t9": -1,
+      "u1f": -12
+    },
+    "LF": {
+      "l2": 1,
+      "origin": "16_(+3) bulk zero mode",
+      "r2": 0,
+      "r4": 1,
+      "rep": "(4,2,1)",
+      "s": 1,
+      "t9": 0,
+      "u1f": 3
+    },
+    "Q1": {
+      "l2": 1,
+      "origin": "PS wall",
+      "r2": 0,
+      "r4": 1,
+      "rep": "(4,2,1)",
+      "s": 1,
+      "t9": 0,
+      "u1f": 3
+    },
+    "Q2": {
+      "l2": 1,
+      "origin": "PS wall",
+      "r2": 0,
+      "r4": 1,
+      "rep": "(4,2,1)",
+      "s": 1,
+      "t9": 0,
+      "u1f": 3
+    },
+    "Q3": {
+      "l2": 1,
+      "origin": "PS wall",
+      "r2": 0,
+      "r4": 1,
+      "rep": "(4,2,1)",
+      "s": 1,
+      "t9": 0,
+      "u1f": 3
+    },
+    "Qc1": {
+      "l2": 0,
+      "origin": "PS wall",
+      "r2": 1,
+      "r4": 1,
+      "rep": "(bar4,1,2)",
+      "s": -1,
+      "t9": 0,
+      "u1f": -3
+    },
+    "Qc2": {
+      "l2": 0,
+      "origin": "PS wall",
+      "r2": 1,
+      "r4": 1,
+      "rep": "(bar4,1,2)",
+      "s": -1,
+      "t9": 0,
+      "u1f": -3
+    },
+    "Qc3": {
+      "l2": 0,
+      "origin": "PS wall",
+      "r2": 1,
+      "r4": 1,
+      "rep": "(bar4,1,2)",
+      "s": -1,
+      "t9": 0,
+      "u1f": -3
+    },
+    "RA": {
+      "l2": 0,
+      "origin": "16_(-3) bulk zero mode",
+      "r2": 1,
+      "r4": 1,
+      "rep": "(bar4,1,2)",
+      "s": -1,
+      "t9": 0,
+      "u1f": -3
+    },
+    "RF": {
+      "l2": 0,
+      "origin": "bar16_(+12) bulk zero mode",
+      "r2": 1,
+      "r4": 1,
+      "rep": "(4,1,2)",
+      "s": 1,
+      "t9": 1,
+      "u1f": 12
+    }
+  },
+  "integrated_anomaly_arithmetic": {
+    "SU2_Witten_doublet_counts_including_H": {
+      "SU2L": 22,
+      "SU2R": 22
+    },
+    "all_displayed_integrated_rows_zero": true,
+    "both_Witten_counts_even": true,
+    "four_spinorial_zero_modes": {
+      "SU2L_squared_U1F": -36,
+      "SU2R_squared_U1F": 36,
+      "SU4_squared_U1F": 0,
+      "U1F_cubic": 0,
+      "gravity_U1F": 0
+    },
+    "integrated_zero_mode_total": {
+      "SU2L_squared_U1F": 0,
+      "SU2R_squared_U1F": 0,
+      "SU4_squared_U1F": 0,
+      "U1F_cubic": 0,
+      "gravity_U1F": 0
+    },
+    "not_certified": "The parity-resolved localized anomaly density of all components of the four bulk 16/bar16 hypermultiplets, boundary counterterms, global quotient and bordism rows.",
+    "three_family_zero_modes": {
+      "SU2L_squared_U1F": 36,
+      "SU2R_squared_U1F": -36,
+      "SU4_squared_U1F": 0,
+      "U1F_cubic": 0,
+      "gravity_U1F": 0
+    }
+  },
+  "integrity_checks": {
+    "authoritative_core_has_no_singlet_shining_hypers": true,
+    "charge_decomposition_exact": true,
+    "degree20_invariant_frontier_matches_wall_audit": true,
+    "degree20_witnesses_are_invariants_but_not_W": true,
+    "degree23_W_witnesses_validate": true,
+    "first_local_oriented_W_is_degree23": true,
+    "integrated_zero_mode_anomalies_cancel": true,
+    "legacy_host_fields_absent": true,
+    "renormalizable_ring_is_exactly_4x4_plus_mirror_Yukawa": true
+  },
+  "literature": {
+    "bulk_fields_generate_nonlocal_boundary_interactions": "https://arxiv.org/abs/hep-ph/0304220",
+    "localized_orbifold_anomalies": "https://arxiv.org/abs/hep-th/0305024",
+    "supersymmetric_5D_superfield_formulation": "https://arxiv.org/abs/hep-th/0106256"
+  },
+  "local_orientation_frontier": {
+    "equations": {
+      "SU4_center": "p+q-r-s=4k",
+      "U1F_neutrality_divided_by_3": "p+4q-r-4s=0",
+      "deduction": "3(q-s)=-4k, hence k=3 ell"
+    },
+    "first_PS_U1F_invariant_degree": 20,
+    "first_W_aggregate_solutions": [
+      {
+        "H": 1,
+        "degree": 23,
+        "orientation": -12,
+        "p_fund_plus3": 0,
+        "q_fund_plus12": 5,
+        "r_antifund_minus3": 16,
+        "s_antifund_minus12": 1
+      },
+      {
+        "H": 1,
+        "degree": 23,
+        "orientation": -12,
+        "p_fund_plus3": 1,
+        "q_fund_plus12": 4,
+        "r_antifund_minus3": 17,
+        "s_antifund_minus12": 0
+      },
+      {
+        "H": 1,
+        "degree": 23,
+        "orientation": 12,
+        "p_fund_plus3": 16,
+        "q_fund_plus12": 1,
+        "r_antifund_minus3": 0,
+        "s_antifund_minus12": 5
+      },
+      {
+        "H": 1,
+        "degree": 23,
+        "orientation": 12,
+        "p_fund_plus3": 17,
+        "q_fund_plus12": 0,
+        "r_antifund_minus3": 1,
+        "s_antifund_minus12": 4
+      }
+    ],
+    "first_Z4R_superpotential_degree": 23,
+    "first_invariant_aggregate_solutions": [
+      {
+        "H": 0,
+        "degree": 20,
+        "orientation": -12,
+        "p_fund_plus3": 0,
+        "q_fund_plus12": 4,
+        "r_antifund_minus3": 16,
+        "s_antifund_minus12": 0
+      },
+      {
+        "H": 0,
+        "degree": 20,
+        "orientation": 12,
+        "p_fund_plus3": 16,
+        "q_fund_plus12": 0,
+        "r_antifund_minus3": 0,
+        "s_antifund_minus12": 4
+      }
+    ],
+    "first_nonzero_orientation": 12,
+    "no_PS_U1F_invariant_through_degree": 19,
+    "no_Z4R_superpotential_through_degree": 22,
+    "variables": "p=(4,+3), q=(4,+12), r=(bar4,-3), s=(bar4,-12)"
+  },
+  "n_failed_integrity_checks": 0,
+  "neutrino_scope": {
+    "G8_closed": false,
+    "NDirac_present": false,
+    "Sc_present": false,
+    "old_Dirac_chain_replaced": false
+  },
+  "next_required_outputs": [
+    "Parity-resolved localized anomaly polynomial for every component of the four bulk spinor hypers.",
+    "Full source-boundary 126/Theta/spinor superpotential, R charges, Clebsches and coupled F/D solution.",
+    "KK-plus-boundary determinant proving LF/LA and RA/RF are lifted with no extra zero mode.",
+    "Three-family Yukawa matching after integrating the fourth/mirror bulk spinors.",
+    "Complete orientation-zero B/L ring and regulated local/nonlocal/gauge/KK Wilson coefficients."
+  ],
+  "rejected_redundant_B_option": {
+    "operator_hazards": [
+      "Bminus^3 (epsilon Q^4)^3 (LF LA) is a local degree-17 Z4R superpotential candidate.",
+      "Bminus^4 (epsilon Q^4)^3 (Q H Qc) is a local degree-19 pure-light-external candidate.",
+      "The conjugate Bplus classes also exist."
+    ],
+    "reason": "Separate charge +/-9 singlet hypers are unnecessary because the spinorial anomalons are bulk fields.",
+    "verdict": "DO_NOT_INCLUDE_IN_AUTHORITATIVE_V45_CORE"
+  },
+  "renormalizable_PS_wall_superpotential": {
+    "count": 17,
+    "matrix_form": {
+      "L_block": [
+        "Q1",
+        "Q2",
+        "Q3",
+        "LF"
+      ],
+      "R_block": [
+        "Qc1",
+        "Qc2",
+        "Qc3",
+        "RA"
+      ],
+      "consequence": "Fourth-family Yukawa mixing is allowed at dimension three. Source-wall Theta masses select LF/LA and RA/RF, but the resulting three-family Yukawa after KK reduction must be derived.",
+      "generic_term": "Y_AB L_A H R_B",
+      "mirror_term": "y_A LA H RF"
+    },
+    "no_linear_or_quadratic_W": true,
+    "no_mu_term": "H H has Z4R=0 and there is no neutral R2 driver on the reduced PS wall.",
+    "operators": [
+      {
+        "fields": [
+          "Q1",
+          "Qc1",
+          "H"
+        ],
+        "quantum_numbers": {
+          "degree": 3,
+          "l2_parity": 0,
+          "orientation": 0,
+          "r2_parity": 0,
+          "r4": 2,
+          "t9": 0,
+          "u1f": 0
+        }
+      },
+      {
+        "fields": [
+          "Q1",
+          "Qc2",
+          "H"
+        ],
+        "quantum_numbers": {
+          "degree": 3,
+          "l2_parity": 0,
+          "orientation": 0,
+          "r2_parity": 0,
+          "r4": 2,
+          "t9": 0,
+          "u1f": 0
+        }
+      },
+      {
+        "fields": [
+          "Q1",
+          "Qc3",
+          "H"
+        ],
+        "quantum_numbers": {
+          "degree": 3,
+          "l2_parity": 0,
+          "orientation": 0,
+          "r2_parity": 0,
+          "r4": 2,
+          "t9": 0,
+          "u1f": 0
+        }
+      },
+      {
+        "fields": [
+          "Q1",
+          "H",
+          "RA"
+        ],
+        "quantum_numbers": {
+          "degree": 3,
+          "l2_parity": 0,
+          "orientation": 0,
+          "r2_parity": 0,
+          "r4": 2,
+          "t9": 0,
+          "u1f": 0
+        }
+      },
+      {
+        "fields": [
+          "Q2",
+          "Qc1",
+          "H"
+        ],
+        "quantum_numbers": {
+          "degree": 3,
+          "l2_parity": 0,
+          "orientation": 0,
+          "r2_parity": 0,
+          "r4": 2,
+          "t9": 0,
+          "u1f": 0
+        }
+      },
+      {
+        "fields": [
+          "Q2",
+          "Qc2",
+          "H"
+        ],
+        "quantum_numbers": {
+          "degree": 3,
+          "l2_parity": 0,
+          "orientation": 0,
+          "r2_parity": 0,
+          "r4": 2,
+          "t9": 0,
+          "u1f": 0
+        }
+      },
+      {
+        "fields": [
+          "Q2",
+          "Qc3",
+          "H"
+        ],
+        "quantum_numbers": {
+          "degree": 3,
+          "l2_parity": 0,
+          "orientation": 0,
+          "r2_parity": 0,
+          "r4": 2,
+          "t9": 0,
+          "u1f": 0
+        }
+      },
+      {
+        "fields": [
+          "Q2",
+          "H",
+          "RA"
+        ],
+        "quantum_numbers": {
+          "degree": 3,
+          "l2_parity": 0,
+          "orientation": 0,
+          "r2_parity": 0,
+          "r4": 2,
+          "t9": 0,
+          "u1f": 0
+        }
+      },
+      {
+        "fields": [
+          "Q3",
+          "Qc1",
+          "H"
+        ],
+        "quantum_numbers": {
+          "degree": 3,
+          "l2_parity": 0,
+          "orientation": 0,
+          "r2_parity": 0,
+          "r4": 2,
+          "t9": 0,
+          "u1f": 0
+        }
+      },
+      {
+        "fields": [
+          "Q3",
+          "Qc2",
+          "H"
+        ],
+        "quantum_numbers": {
+          "degree": 3,
+          "l2_parity": 0,
+          "orientation": 0,
+          "r2_parity": 0,
+          "r4": 2,
+          "t9": 0,
+          "u1f": 0
+        }
+      },
+      {
+        "fields": [
+          "Q3",
+          "Qc3",
+          "H"
+        ],
+        "quantum_numbers": {
+          "degree": 3,
+          "l2_parity": 0,
+          "orientation": 0,
+          "r2_parity": 0,
+          "r4": 2,
+          "t9": 0,
+          "u1f": 0
+        }
+      },
+      {
+        "fields": [
+          "Q3",
+          "H",
+          "RA"
+        ],
+        "quantum_numbers": {
+          "degree": 3,
+          "l2_parity": 0,
+          "orientation": 0,
+          "r2_parity": 0,
+          "r4": 2,
+          "t9": 0,
+          "u1f": 0
+        }
+      },
+      {
+        "fields": [
+          "Qc1",
+          "H",
+          "LF"
+        ],
+        "quantum_numbers": {
+          "degree": 3,
+          "l2_parity": 0,
+          "orientation": 0,
+          "r2_parity": 0,
+          "r4": 2,
+          "t9": 0,
+          "u1f": 0
+        }
+      },
+      {
+        "fields": [
+          "Qc2",
+          "H",
+          "LF"
+        ],
+        "quantum_numbers": {
+          "degree": 3,
+          "l2_parity": 0,
+          "orientation": 0,
+          "r2_parity": 0,
+          "r4": 2,
+          "t9": 0,
+          "u1f": 0
+        }
+      },
+      {
+        "fields": [
+          "Qc3",
+          "H",
+          "LF"
+        ],
+        "quantum_numbers": {
+          "degree": 3,
+          "l2_parity": 0,
+          "orientation": 0,
+          "r2_parity": 0,
+          "r4": 2,
+          "t9": 0,
+          "u1f": 0
+        }
+      },
+      {
+        "fields": [
+          "H",
+          "LF",
+          "RA"
+        ],
+        "quantum_numbers": {
+          "degree": 3,
+          "l2_parity": 0,
+          "orientation": 0,
+          "r2_parity": 0,
+          "r4": 2,
+          "t9": 0,
+          "u1f": 0
+        }
+      },
+      {
+        "fields": [
+          "H",
+          "LA",
+          "RF"
+        ],
+        "quantum_numbers": {
+          "degree": 3,
+          "l2_parity": 0,
+          "orientation": 0,
+          "r2_parity": 0,
+          "r4": 2,
+          "t9": 0,
+          "u1f": 0
+        }
+      }
+    ]
+  },
+  "restricted_four_transmission_theorem": {
+    "assumptions": [
+      "U1F is exact in the microscopic action and broken only by ThetaPlus/ThetaMinus of charge +/-9.",
+      "The 126/bar126 rank-breaking VEVs are U1F neutral.",
+      "No later field or line operator carries a new U1F charge class."
+    ],
+    "equation": "12 k + 9 m = 0 for pure-light net orientation 4k and charge-nine source units m",
+    "faithful_discrete_note": "All displayed nonzero charges have gcd three. The local particle spectrum therefore sees a faithful Z3 after a charge-nine VEV; calling it Z9 additionally requires the unit-charge line lattice specified in the S0 audit. The orientation conclusion is unchanged.",
+    "general_solution": "k=3 ell, m=-4 ell",
+    "important_limit": "This counts charge-flow/source insertions. It does not prove four independent factors of exp(-M L): integrating out Theta-massed bulk spinors may produce inverse powers of Theta, and KK propagators can correlate insertions. The regulated matching calculation decides the coefficient.",
+    "minimum_nonzero": {
+      "net_orientation": 12,
+      "source_units": 4
+    },
+    "schematic_nonlocal_class": "ThetaMinus^4 (epsilon Q^4)^3 (Q H Qc), and the conjugate orientation"
+  },
+  "schema": "susy-v45-reduced-locality-operator-audit-v3",
+  "source_manifest": [
+    {
+      "path": "SUSY_V45_S0_GROUP_ZERO_MODE_AUDIT.json",
+      "sha256": "dd982bd79da39f8d59870fdcd3d3da74515a527ac14415d510dab65136e5e2a5"
+    },
+    {
+      "path": "SUSY_V45_WALL_ANOMALY_MASS_AUDIT.json",
+      "sha256": "f50df368fc718dc2d71d514bdfc6c2153584b169d879f76e685fd9045a4b909b"
+    },
+    {
+      "path": "test_susy_v45_locality_operator_audit.py",
+      "sha256": "5b6c3655fcece2c9700c2c13f7ee092492a11a3caf2197ec8276382f662565ce"
+    }
+  ],
+  "source_wall_bulk_spinor_masses": {
+    "allowed_portal_warning": "Gauge and U1F charges allow 16_(+3) 16_(-3) bar126 and bar16_(-12) bar16_(+12) 126. Whether Z4R allows them and whether the aligned 126 VEV couples the selected zero modes require the missing R assignments, parities and Clebsches.",
+    "coupled_problem_open": "A parity-resolved boundary mass matrix and full KK determinant are absent.",
+    "required_terms": [
+      "ThetaPlus 16_(+3) bar16_(-12)",
+      "ThetaMinus 16_(-3) bar16_(+12)"
+    ],
+    "why_no_B_hypers": "The four anomalons already are zero modes of bulk spinor hypers and reach the full-Spin10 wall. Their source-wall mass terms need no extra singlet transport channel.",
+    "zero_mode_terms": [
+      "ThetaPlus LF LA",
+      "ThetaMinus RA RF"
+    ]
+  },
+  "status": "V45_REDUCED_SPINORIAL_CORE_LOCALITY_AUDITED__DEGREE20_ORIENTED_INVARIANT_CONFIRMED_BUT_Z4R_EXCLUDES_IT_FROM_W__FIRST_LOCAL_ORIENTED_W_DEGREE23__PURE_LIGHT_NONLOCAL_CHARGE_FLOW_REQUIRES_FOUR_SOURCE_UNITS__G7_OPEN"
+}

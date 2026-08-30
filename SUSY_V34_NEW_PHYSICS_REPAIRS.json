@@ -1,0 +1,274 @@
+{
+  "UV_fermion_counterclass_candidate": {
+    "PS_mixed_gauge_anomalies_added": 0,
+    "Z4R_superfield_charges_and_full_product_anomaly_solved": false,
+    "adopted_into_active_source": false,
+    "cancels_visible_residues": true,
+    "candidate": "three PS-singlet chiral Weyl fermions",
+    "exhaustive_charge_domain": "unordered Z33 charges 0..32",
+    "minimal_number": 3,
+    "minimal_unique_charge_witness": [
+      20,
+      29,
+      32
+    ],
+    "minimality_scope": "free unit-multiplicity PS-singlet Weyl counterclasses in the fixed Z33 generator; not topological sectors, non-singlet multiplets or symmetry extensions",
+    "solution_counts_by_number_of_new_fermions": {
+      "1": 0,
+      "2": 0,
+      "3": 1
+    },
+    "symmetry_preserving_mass_and_hidden_dynamics_solved": false,
+    "verdict": "minimal algebraic counterclass candidate, not a UV completion",
+    "witness_cubic_residue_mod99": 15,
+    "witness_cubic_sum": 65157,
+    "witness_linear_residue_mod33": 15,
+    "witness_linear_sum": 81
+  },
+  "active_source_changed": false,
+  "conditional_equal_level_GS_route": {
+    "Z33": {
+      "doubled_representatives_4_L_R": [
+        -4,
+        -4,
+        -4
+      ],
+      "half_normalized_representatives_4_L_R": [
+        -2,
+        -2,
+        -2
+      ],
+      "universal_residue_mod33": [
+        29,
+        29,
+        29
+      ]
+    },
+    "Z4R": {
+      "doubled_representatives_4_L_R": [
+        14,
+        10,
+        2
+      ],
+      "half_normalized_representatives_4_L_R": [
+        7,
+        5,
+        1
+      ],
+      "universal_residue_mod4": [
+        2,
+        2,
+        2
+      ]
+    },
+    "conditional_equal_level_GS_gauge_gravity_arithmetic": true,
+    "coprime_cross_term_reduction": {
+      "V33_raw_q_rfermion_squared": -63,
+      "V33_raw_q_squared_rfermion": 33,
+      "Z132_cubic_modulus": 396,
+      "coefficient_of_q_squared_times_rfermion": 1584,
+      "coefficient_of_q_times_rfermion_squared": 13068,
+      "coefficient_over_modulus": 33,
+      "combined_cross_contribution": -771012,
+      "combined_cross_contribution_over_modulus": -1947,
+      "combined_cross_residue_mod396": 0,
+      "independent_finite_product_anomaly": false,
+      "scope": "untwisted Spin x (Z4R x Z33); a new PS-center quotient needs a new bordism audit",
+      "second_coefficient_over_modulus": 4
+    },
+    "microscopic_axion_period_and_couplings_derived": false,
+    "normalization": "twice T(fund)=1/2 for the instanton phase",
+    "product_generator_h_equals_g4_times_g33": {
+      "24rho_residue_mod66": 6,
+      "Z33_generator_restriction_mod_one": "4/33",
+      "Z4_generator_restriction_mod_one": "1/2",
+      "doubled_representatives_4_L_R": [
+        446,
+        314,
+        50
+      ],
+      "equal_level_gauge_gravity_congruence": true,
+      "gravitational_half_normalized": 600,
+      "gravitational_residue_mod66": 6,
+      "half_normalized_representatives_4_L_R": [
+        223,
+        157,
+        25
+      ],
+      "isomorphism": "Z4 x Z33 ~= Z132 because gcd(4,33)=1",
+      "period_one_axion_shift": "-25/66",
+      "universal_residue_mod132": [
+        50,
+        50,
+        50
+      ],
+      "universal_residue_mod66": [
+        25,
+        25,
+        25
+      ]
+    },
+    "pure_finite_Dai_Freed_counterclass_realized": false
+  },
+  "heavy_threshold_bridge_candidate": {
+    "SO10_split_multiplet_embedding_derived": false,
+    "adopted_into_active_model": false,
+    "candidate": "simple diagonal six-chiral witness in three anomaly-neutral real-representation pairs",
+    "component_fermion_charges_each_pair": [
+      99,
+      33
+    ],
+    "conditional_leading_log_threshold_existence_proved": true,
+    "corrected_alpha_inverse_4_L_R": [
+      18.9419255747675,
+      18.9419255747675,
+      18.9419255747675
+    ],
+    "corrected_common_alpha": 0.05279294314893191,
+    "corrected_common_alpha_inverse": 18.9419255747675,
+    "each_pair_discrete_anomaly_vectorlike": true,
+    "exact_numerical_replay_closes_target": true,
+    "finite_matching_from_source_derived": false,
+    "four_chiral_nonminimality_counterexample_without_zero_sum_convention": {
+      "Delta_alpha_inverse_4_L_R": [
+        -0.12247222000716462,
+        0.3182237281824669,
+        0.0
+      ],
+      "chosen_common_alpha_inverse": 19.007176077492602,
+      "log_mass_ratios": [
+        -0.38475782664334124,
+        0.4998646633279966
+      ],
+      "mass_ratios": [
+        0.680615443174321,
+        1.648498153348611
+      ],
+      "masses_GeV": [
+        8009936798972785.0,
+        1.9400626527017816e+16
+      ],
+      "pairs_used": [
+        "A4+A4c",
+        "AL+ALc"
+      ],
+      "replays_common_value": true
+    },
+    "matching_convention": "alpha_full^-1(Mstar)=alpha_EFT^-1(Mstar)+(Delta b/2pi) ln(M/Mstar)",
+    "matching_order": "conditional one-loop leading-log diagonal threshold",
+    "maximum_to_minimum_mass_ratio": 2.683488802686773,
+    "minimum_zero_sum_target_convention_used": true,
+    "multiplets": [
+      {
+        "Delta_b_4_L_R": [
+          2,
+          0,
+          0
+        ],
+        "PS_representations": [
+          [
+            6,
+            1,
+            1
+          ],
+          [
+            6,
+            1,
+            1
+          ]
+        ],
+        "Z132_superfield_charges": [
+          0,
+          66
+        ],
+        "pair": "A4+A4c"
+      },
+      {
+        "Delta_b_4_L_R": [
+          0,
+          4,
+          0
+        ],
+        "PS_representations": [
+          [
+            1,
+            3,
+            1
+          ],
+          [
+            1,
+            3,
+            1
+          ]
+        ],
+        "Z132_superfield_charges": [
+          0,
+          66
+        ],
+        "pair": "AL+ALc"
+      },
+      {
+        "Delta_b_4_L_R": [
+          0,
+          0,
+          4
+        ],
+        "PS_representations": [
+          [
+            1,
+            1,
+            3
+          ],
+          [
+            1,
+            1,
+            3
+          ]
+        ],
+        "Z132_superfield_charges": [
+          0,
+          66
+        ],
+        "pair": "AR+ARc"
+      }
+    ],
+    "precision_unification_closed": false,
+    "renormalizable_pair_mass_charge_sum_mod132": 66,
+    "replayed_Delta_alpha_inverse_4_L_R": [
+      -0.18772272273226775,
+      0.2529732254573638,
+      -0.06525050272510313
+    ],
+    "six_chiral_witness_minimality_proved": false,
+    "solved_log_mass_ratios": [
+      -0.589748326647566,
+      0.39736941332588427,
+      -0.10249525000211239
+    ],
+    "solved_mass_ratios": [
+      0.5544668116974746,
+      1.4879054806516085,
+      0.9025824370074125
+    ],
+    "solved_masses_GeV": [
+      6525335508273521.0,
+      1.7510664770226396e+16,
+      1.0622192530004844e+16
+    ],
+    "target_Delta_alpha_inverse_4_L_R": [
+      -0.18772272273226775,
+      0.2529732254573638,
+      -0.06525050272510313
+    ],
+    "target_boundary_repair_derived_from_source": false,
+    "target_common_scale_GeV": 1.1768667430781848e+16,
+    "threshold_parity_and_decay_cosmology_derived": false
+  },
+  "rejected_combination": {
+    "claim": "use the V33 charged instanton coefficients while retaining exact Z33 P33 protection",
+    "reason": "the coefficients leave only Z2 and allow C2^2 C3^4 P",
+    "rejected": true
+  },
+  "safe_to_claim_new_fundamental_law": false,
+  "schema": "susy-v34-new-physics-repairs-v1"
+}

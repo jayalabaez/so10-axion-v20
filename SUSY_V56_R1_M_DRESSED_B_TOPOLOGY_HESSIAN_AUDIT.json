@@ -1,0 +1,796 @@
+{
+  "artifact_manifest": {
+    "script": {
+      "path": "susy_v56_r1_m_dressed_b_topology_hessian_audit.py",
+      "sha256": "9d02623f66e36ba712e79dff470910de5abd42b70dcafd50eb2088676ff4867f"
+    },
+    "test": {
+      "path": "test_susy_v56_r1_m_dressed_b_topology_hessian_audit.py",
+      "sha256": "412c7fa1b02f914f54189a9c838228e08fdec2af9dd1b16b44700c88ef12ee05"
+    }
+  },
+  "charge_constraint_certificate": {
+    "all_intended_terms_neutral": true,
+    "both_V55_fillers_forbidden": true,
+    "broken_V55_equality": {
+      "all_equal": false,
+      "qA": 1,
+      "qB": 3,
+      "qL": 1
+    },
+    "charges": {
+      "A": 1,
+      "B": 3,
+      "C": 0,
+      "D1": 0,
+      "D2": 0,
+      "D3": -2,
+      "D4": -2,
+      "D5": -4,
+      "D6": 6,
+      "E": -2,
+      "H1": -24,
+      "H2": 3,
+      "K": 2,
+      "L": 1,
+      "M": -2,
+      "P": 6,
+      "R": 4,
+      "S": -12,
+      "T": -6,
+      "barC": -1,
+      "barh": 18,
+      "h": -6
+    },
+    "equation_matrix_shape": [
+      19,
+      16
+    ],
+    "equation_rank": 14,
+    "filter_filler_charges": {
+      "L_h_H2": -2,
+      "direct_h_H2": -3,
+      "h_A_H2": -2,
+      "h_B_H2": 0
+    },
+    "intended_term_charges": {
+      "D1_MK": 0,
+      "D2_PT": 0,
+      "D3_K": 0,
+      "D3_L2": 0,
+      "D4_K": 0,
+      "D4_RM": 0,
+      "D5_K2": 0,
+      "D5_PM": 0,
+      "D6_PS": 0,
+      "D6_T": 0,
+      "E_A2": 0,
+      "L_barC_C": 0,
+      "M2_AB": 0,
+      "M2_E_B2": 0,
+      "M_A2": 0,
+      "M_E_AB": 0,
+      "P_H1_barh": 0,
+      "R_E2": 0,
+      "S_barh_h": 0,
+      "T_B2": 0,
+      "T_H2_squared": 0,
+      "barC_A_C": 0,
+      "h_B_H2": 0
+    },
+    "normalization": "q(A)=q(L)=1 and q(C)=0",
+    "solution_freedom": "overall normalization plus C/barC vectorlike rephasing"
+  },
+  "checks": {
+    "V54_and_V55_cores_bound": true,
+    "V55_A_B_L_equality_broken": true,
+    "all_declared_terms_U1_neutral": true,
+    "all_order_topology_rejected": true,
+    "complete_filter_retains_four_weak_modes": true,
+    "complete_renormalizable_census_has61": true,
+    "declared_action_correctly_not_symmetry_complete": true,
+    "degree4_fatal_fillers_exact": true,
+    "deletion_only_branch_has_12_extra_modes": true,
+    "dynamical_spurion_F_terms_zero": true,
+    "effective_source_exact_rank143": true,
+    "hAH2_and_LhH2_forbidden": true,
+    "no_gate_promotion": true,
+    "whole_H191_null38": true,
+    "whole_kernel_exact_34gauge_plus4weak": true
+  },
+  "complete_allowed_renormalizable_operator_census": {
+    "allowed_filter_terms": [
+      "D6 H1 barh",
+      "P H1 barh",
+      "S barh h",
+      "T H2 H2",
+      "h B H2"
+    ],
+    "bare_bilinears": [],
+    "decisive_omissions": [
+      "D3 A^2",
+      "D4 A^2",
+      "D5 A B",
+      "D6 H1 barh"
+    ],
+    "declared_action_symmetry_complete": false,
+    "non_singlet_cubic_count": 3,
+    "non_singlet_cubics": [
+      "E A^2",
+      "barC A C",
+      "h B H2"
+    ],
+    "omitted_allowed_count": 39,
+    "omitted_allowed_non_singlet_operators": [
+      "D3 A^2",
+      "D4 A^2",
+      "D5 A B",
+      "D6 H1 barh"
+    ],
+    "omitted_allowed_operators": [
+      "D1 D1",
+      "D1 D1 D1",
+      "D1 D1 D2",
+      "D1 D2",
+      "D1 D2 D2",
+      "D2 D2",
+      "D2 D2 D2",
+      "D3 A^2",
+      "D3 D5 D6",
+      "D4 A^2",
+      "D4 D5 D6",
+      "D5 A B",
+      "D6 H1 barh",
+      "K D1 D3",
+      "K D1 D4",
+      "K D2 D3",
+      "K D2 D4",
+      "L L D4",
+      "M D5 D6",
+      "M K",
+      "M K D2",
+      "M L L",
+      "P D3 D5",
+      "P D4 D5",
+      "P P S",
+      "P T",
+      "P T D1",
+      "R D1 D5",
+      "R D2 D5",
+      "R D3 D3",
+      "R D3 D4",
+      "R D4 D4",
+      "R D5",
+      "R M D3",
+      "R M M",
+      "S D6 D6",
+      "T D1 D6",
+      "T D2 D6",
+      "T R K"
+    ],
+    "scope": "complete holomorphic degree<=3 SO(10)xU(1) monomial census for E54,A45,B45,C16,barCbar16, four 10s and the thirteen displayed singlets; derivative/Kahler and higher-dimensional terms excluded",
+    "singlet_only": [
+      "D1",
+      "D2",
+      "P T",
+      "T D6",
+      "R D5",
+      "M K",
+      "K D3",
+      "K D4",
+      "D1 D1",
+      "D1 D2",
+      "D2 D2",
+      "P P S",
+      "P S D6",
+      "P T D1",
+      "P T D2",
+      "P M D5",
+      "P D3 D5",
+      "P D4 D5",
+      "S D6 D6",
+      "T R K",
+      "T D1 D6",
+      "T D2 D6",
+      "R M M",
+      "R M D3",
+      "R M D4",
+      "R D1 D5",
+      "R D2 D5",
+      "R D3 D3",
+      "R D3 D4",
+      "R D4 D4",
+      "M L L",
+      "M K D1",
+      "M K D2",
+      "M D5 D6",
+      "L L D3",
+      "L L D4",
+      "K K D5",
+      "K D1 D3",
+      "K D1 D4",
+      "K D2 D3",
+      "K D2 D4",
+      "D1 D1 D1",
+      "D1 D1 D2",
+      "D1 D2 D2",
+      "D2 D2 D2",
+      "D3 D5 D6",
+      "D4 D5 D6"
+    ],
+    "singlet_only_count": 47,
+    "singlet_times_bilinear": [
+      "P H1 barh",
+      "S barh h",
+      "T B^2",
+      "T H2 H2",
+      "R E^2",
+      "M A^2",
+      "L barC C",
+      "D3 A^2",
+      "D4 A^2",
+      "D5 A B",
+      "D6 H1 barh"
+    ],
+    "singlet_times_bilinear_count": 11,
+    "template_families": [
+      "singlet monomials",
+      "singlet times every quadratic SO(10) invariant",
+      "E^3 and E(A^2,B^2,AB)",
+      "barC(A,B)C",
+      "10 E 10",
+      "distinct-10 45 couplings",
+      "C C 10 and barC barC 10"
+    ],
+    "total_allowed_count": 61
+  },
+  "core_sha256": "700122eddf3e303c760030c6346402489bc0bc6c9814f7ac6f17519019e16684",
+  "declared_EFT_local_hessian": {
+    "all_spurion_F_residuals": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "combined_gauge_plus_weak_span_rank": 38,
+    "combined_span_annihilated": true,
+    "coordinates": 229,
+    "driver_VEVs_D1_to_D6": [
+      -1920,
+      75,
+      1350,
+      420,
+      75,
+      0
+    ],
+    "effective_source_parameters_at_M_equals_T_equals_1": {
+      "eta": "-6*i",
+      "kappaA": 19,
+      "kappaAB": 1,
+      "kappaB": 10,
+      "lambda": 0,
+      "mA": 214,
+      "mB": -50,
+      "mC": 27,
+      "mE": 14,
+      "muAB": 6
+    },
+    "explicit_weak_basis_rank": 4,
+    "filter_rank": 36,
+    "filter_weak_nullity": 4,
+    "filter_weak_rank": 12,
+    "gauge_orbit_rank": 34,
+    "hessian_nullity": 38,
+    "hessian_rank": 191,
+    "hessian_sha256": "d66d87b21ec1e50ac07e256e110a436a966a47c6979cf16282978aa6d44de935",
+    "kernel_decomposition": {
+      "Spin10_gauge": 33,
+      "U1_gauge": 1,
+      "extra": 0,
+      "weak_Higgs": 4
+    },
+    "kernel_exact": true,
+    "orbit_sha256": "e9487b9093c0d24a7a52415bde13280568bcffaea9cdc46c04a2f9fc62c3cb5c",
+    "source_D_nonzero_count": 0,
+    "source_F_nonzero_counts": {
+      "A_F_x400": 0,
+      "B_F_x400": 0,
+      "C_F_x400": 0,
+      "E_F_x400": 0,
+      "barC_F_x400": 0
+    },
+    "source_H_MM": 156,
+    "source_gradient_P_S_T_R_M_L_K": [
+      0,
+      0,
+      -75,
+      420,
+      2415,
+      2700,
+      0
+    ],
+    "source_hessian_nullity": 33,
+    "source_hessian_rank": 143,
+    "source_orbit_rank": 33,
+    "ward_product_zero": true
+  },
+  "deletion_only_no_go": {
+    "F_nonzero_counts": {
+      "A_F_x400": 0,
+      "B_F_x400": 0,
+      "C_F_x400": 0,
+      "E_F_x400": 0,
+      "barC_F_x400": 0
+    },
+    "conclusion": "deleting the charge-linking cubics loses twelve source modes; dressing is required",
+    "extra_physical_zero_modes": 12,
+    "gauge_orbit_rank": 33,
+    "hessian_nullity": 45,
+    "hessian_rank": 131,
+    "only_nontrivial_F_flat_cross_branch": "retain E A B; set E A^2=E B^2=0",
+    "rational_parameters": {
+      "eta": "-3*i/10",
+      "kappaAB": "1",
+      "mA": "5",
+      "mB": "-10",
+      "mC": "27/20",
+      "mE": "-1/5",
+      "muAB": "6"
+    },
+    "scope": "exact enumeration of the three choices retaining only one of E A^2, E B^2, E A B, with all quadratic masses/cross-mass and the spinor coupling available at the fixed DW VEV"
+  },
+  "fail_closed_findings": [
+    "the exact local action contains dimension-four and dimension-five source operators with no messenger UV completion",
+    "U1 permits 39 renormalizable operators omitted by the declared coefficient witness",
+    "allowed D3 A^2, D4 A^2 and D5 A B terms backreact on the driver constraints in a symmetry-complete action",
+    "K h A H2 and L K h H2 are forced degree-four invariants and each raises the weak rank from 12 to 16",
+    "no anomaly/GS ledger, matter/flavor sector, global vacuum, thresholds, proton matching, SUSY breaking or cosmology is supplied"
+  ],
+  "failures": [],
+  "gate_verdict": {
+    "G1": "FROZEN_PRIOR_NAMESPACE_ONLY",
+    "G2": "OPEN",
+    "G3": "OPEN",
+    "G4": "OPEN",
+    "G5": "OPEN",
+    "G6": "OPEN",
+    "G7": "OPEN",
+    "G8": "OPEN",
+    "promoted_gate_count": 0
+  },
+  "higher_dimensional_fatal_filler_audit": {
+    "all_order_topology_verdict": "REJECTED",
+    "bounded_counts_by_total_degree": {
+      "3": {
+        "fatal_weak_full_rank_fillers": 0,
+        "neutral_matrix_chain_fillers": 1
+      },
+      "4": {
+        "fatal_weak_full_rank_fillers": 2,
+        "neutral_matrix_chain_fillers": 4
+      },
+      "5": {
+        "fatal_weak_full_rank_fillers": 19,
+        "neutral_matrix_chain_fillers": 29
+      },
+      "6": {
+        "fatal_weak_full_rank_fillers": 76,
+        "neutral_matrix_chain_fillers": 160
+      },
+      "7": {
+        "fatal_weak_full_rank_fillers": 227,
+        "neutral_matrix_chain_fillers": 586
+      },
+      "8": {
+        "fatal_weak_full_rank_fillers": 775,
+        "neutral_matrix_chain_fillers": 1965
+      }
+    },
+    "first_fatal_total_degree": 4,
+    "leading_fatal_examples": [
+      {
+        "degree": 4,
+        "matrix_word": [
+          "I"
+        ],
+        "singlets": [
+          "L",
+          "K"
+        ]
+      },
+      {
+        "degree": 4,
+        "matrix_word": [
+          "A"
+        ],
+        "singlets": [
+          "K"
+        ]
+      },
+      {
+        "degree": 5,
+        "matrix_word": [
+          "I"
+        ],
+        "singlets": [
+          "P",
+          "L",
+          "D5"
+        ]
+      },
+      {
+        "degree": 5,
+        "matrix_word": [
+          "I"
+        ],
+        "singlets": [
+          "R",
+          "M",
+          "L"
+        ]
+      },
+      {
+        "degree": 5,
+        "matrix_word": [
+          "I"
+        ],
+        "singlets": [
+          "R",
+          "L",
+          "D3"
+        ]
+      },
+      {
+        "degree": 5,
+        "matrix_word": [
+          "I"
+        ],
+        "singlets": [
+          "R",
+          "L",
+          "D4"
+        ]
+      },
+      {
+        "degree": 5,
+        "matrix_word": [
+          "I"
+        ],
+        "singlets": [
+          "L",
+          "L",
+          "L"
+        ]
+      },
+      {
+        "degree": 5,
+        "matrix_word": [
+          "I"
+        ],
+        "singlets": [
+          "L",
+          "K",
+          "D1"
+        ]
+      },
+      {
+        "degree": 5,
+        "matrix_word": [
+          "I"
+        ],
+        "singlets": [
+          "L",
+          "K",
+          "D2"
+        ]
+      },
+      {
+        "degree": 5,
+        "matrix_word": [
+          "E"
+        ],
+        "singlets": [
+          "R",
+          "L"
+        ]
+      },
+      {
+        "degree": 5,
+        "matrix_word": [
+          "A"
+        ],
+        "singlets": [
+          "P",
+          "D5"
+        ]
+      },
+      {
+        "degree": 5,
+        "matrix_word": [
+          "A"
+        ],
+        "singlets": [
+          "R",
+          "M"
+        ]
+      },
+      {
+        "degree": 5,
+        "matrix_word": [
+          "A"
+        ],
+        "singlets": [
+          "R",
+          "D3"
+        ]
+      },
+      {
+        "degree": 5,
+        "matrix_word": [
+          "A"
+        ],
+        "singlets": [
+          "R",
+          "D4"
+        ]
+      },
+      {
+        "degree": 5,
+        "matrix_word": [
+          "A"
+        ],
+        "singlets": [
+          "L",
+          "L"
+        ]
+      },
+      {
+        "degree": 5,
+        "matrix_word": [
+          "A"
+        ],
+        "singlets": [
+          "K",
+          "D1"
+        ]
+      },
+      {
+        "degree": 5,
+        "matrix_word": [
+          "A"
+        ],
+        "singlets": [
+          "K",
+          "D2"
+        ]
+      },
+      {
+        "degree": 5,
+        "matrix_word": [
+          "E",
+          "A"
+        ],
+        "singlets": [
+          "R"
+        ]
+      },
+      {
+        "degree": 5,
+        "matrix_word": [
+          "A",
+          "E"
+        ],
+        "singlets": [
+          "R"
+        ]
+      },
+      {
+        "degree": 5,
+        "matrix_word": [
+          "A",
+          "A"
+        ],
+        "singlets": [
+          "L"
+        ]
+      },
+      {
+        "degree": 5,
+        "matrix_word": [
+          "A",
+          "A",
+          "A"
+        ],
+        "singlets": []
+      },
+      {
+        "degree": 6,
+        "matrix_word": [
+          "I"
+        ],
+        "singlets": [
+          "P",
+          "T",
+          "L",
+          "K"
+        ]
+      },
+      {
+        "degree": 6,
+        "matrix_word": [
+          "I"
+        ],
+        "singlets": [
+          "P",
+          "M",
+          "M",
+          "L"
+        ]
+      },
+      {
+        "degree": 6,
+        "matrix_word": [
+          "I"
+        ],
+        "singlets": [
+          "P",
+          "M",
+          "L",
+          "D3"
+        ]
+      }
+    ],
+    "named_exact_invariants": [
+      {
+        "charge": 0,
+        "degree": 4,
+        "effect": {
+          "color_rank": 24,
+          "full_rank": 40,
+          "weak_determinant": 6561,
+          "weak_rank": 16
+        },
+        "invariant": "10^T 45 10, multiplied by the singlet K",
+        "operator": "K h^T A H2 / Lambda"
+      },
+      {
+        "charge": 0,
+        "degree": 4,
+        "effect": {
+          "color_rank": 24,
+          "full_rank": 40,
+          "weak_determinant": 1,
+          "weak_rank": 16
+        },
+        "invariant": "the vector bilinear 10^T 10, multiplied by L K",
+        "operator": "L K h^T H2 / Lambda"
+      },
+      {
+        "charge": 0,
+        "degree": 5,
+        "effect": {
+          "color_rank": 18,
+          "full_rank": 34,
+          "weak_determinant": 282429536481,
+          "weak_rank": 16
+        },
+        "invariant": "the contracted matrix chain 10^T 45^3 10",
+        "operator": "h^T A^3 H2 / Lambda^2"
+      },
+      {
+        "charge": 0,
+        "degree": 5,
+        "effect": {
+          "color_rank": 24,
+          "full_rank": 40,
+          "weak_determinant": 43046721,
+          "weak_rank": 16
+        },
+        "invariant": "the contracted matrix chain 10^T 45^2 10, multiplied by L",
+        "operator": "L h^T A^2 H2 / Lambda^2"
+      }
+    ],
+    "ordinary_additive_factor_forcing_derivation": [
+      "barC A C and L barC C imply r(L)=r(A)",
+      "D3(K-L^2) implies r(K)=2 r(L)=2 r(A)",
+      "E A^2 and M E A B imply r(B)=3 r(A)",
+      "h B H2 implies r(h)+r(H2)=-3 r(A)",
+      "therefore r(K h A H2)=2r(A)+r(A)-3r(A)=0",
+      "therefore r(L K h H2)=r(A)+2r(A)-3r(A)=0"
+    ],
+    "product_of_ordinary_additive_selectors_cannot_forbid_degree4_fillers": true,
+    "scope": "complete E/A/B matrix-chain and nonzero-VEV-singlet dressing census through total degree eight; additional spinor contraction channels could only add operators"
+  },
+  "matrix_hashes": {
+    "hessian": "d66d87b21ec1e50ac07e256e110a436a966a47c6979cf16282978aa6d44de935",
+    "orbit": "e9487b9093c0d24a7a52415bde13280568bcffaea9cdc46c04a2f9fc62c3cb5c"
+  },
+  "next_kill_test": "abandon this M-dressed-B charge solution or change the K/L driver topology; ordinary additive selectors factorwise force both degree-four fillers, so a messenger completion alone cannot rescue it",
+  "perturbativity": {
+    "Spin10_field_inventory_changed": false,
+    "one_loop_b_Spin10": 18,
+    "sum_T_including_three_16_families": 42
+  },
+  "schema": "susy_v56_r1_m_dressed_b_topology_hessian_audit_v1",
+  "scope": "zero-new-representation effective-superpotential topology test at the exact V54 vacuum; complete only through renormalizable order, not a UV or phenomenological completion",
+  "status": "V56_R1_ZERO_NEW_FIELD_M_DRESSED_B_TOPOLOGY__A_EQUALS_L_NOT_B__EXACT_FD_FLAT_EFFECTIVE_SOURCE_RANK143_KERNEL33__DYNAMICAL_229_COORDINATE_H191_NULL38_EQUALS34_GAUGE_PLUS4_WEAK__COMPLETE_RENORMALIZABLE_U1_CENSUS_HAS_61_OPERATORS_AND_OMITTED_DRIVER_COUPLINGS__RENORMALIZABLE_FILTER_ROBUST_BUT_FORCED_DEGREE4_KhAH2_AND_LKhH2_FILL_WEAK_RANK16__ALL_ORDER_EFT_TOPOLOGY_REJECTED__NO_GATE_PROMOTION",
+  "symmetry_complete_filter_audit": {
+    "D6_VEV_at_witness": 0,
+    "additional_allowed_term": "D6 H1 barh",
+    "all_allowed_renormalizable_filter_terms": [
+      "D6 H1 barh",
+      "P H1 barh",
+      "S barh h",
+      "T H2 H2",
+      "h B H2"
+    ],
+    "conclusion": "the complete renormalizable filter sector preserves four weak modes; this statement does not extend beyond degree three",
+    "effect_of_generic_D6_VEV": "renormalizes the P H1 barh link; it does not add an h-H2 weak mass",
+    "generic_four_component_weak_rank": 12,
+    "generic_one_weak_component_rank": 3,
+    "generic_open_conditions": [
+      "p_eff != 0",
+      "s_eff != 0",
+      "t_eff != 0"
+    ],
+    "generic_weak_nullity": 4,
+    "h_A_H2_and_L_h_H2_absent_from_complete_census": true,
+    "one_weak_component_generic_matrix": [
+      [
+        0,
+        "p_eff",
+        0,
+        0
+      ],
+      [
+        "p_eff",
+        0,
+        "s_eff",
+        0
+      ],
+      [
+        0,
+        "s_eff",
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        "t_eff"
+      ]
+    ]
+  },
+  "topology_change": {
+    "EFT_maximum_displayed_degree": 5,
+    "minimality_scope": "zero added fields and the four B-containing monomials that independently recreate an A=B charge equation are replaced; exact one-cubic deletion branches were checked and leave 12 modes",
+    "new_fields_or_representations": 0,
+    "replacements": [
+      "M B^2 -> T B^2",
+      "M A B -> M^2 A B/Lambda",
+      "E A B -> M E A B/Lambda",
+      "E B^2 -> M^2 E B^2/Lambda^2"
+    ],
+    "unchanged_terms": [
+      "R E^2",
+      "M A^2",
+      "E A^2",
+      "barC A C",
+      "L barC C"
+    ]
+  },
+  "upstream_certificates": {
+    "V54": {
+      "core_sha256": "25b0a48ea19fe6831049a46b01259a2a465f5f65584528d1670927156956633e",
+      "path": "SUSY_V54_CONTINUOUS_PARENT_FI_ROUTE_AUDIT.json"
+    },
+    "V55": {
+      "core_sha256": "52d0044e8d227be29b2cab63c565c1f4335aae9a72c9d51f3c9044fe7289a1f7",
+      "path": "SUSY_V55_R1_COMPLETION_KILL_TEST_INTEGRATION_AUDIT.json"
+    }
+  }
+}

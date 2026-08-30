@@ -1,0 +1,236 @@
+{
+  "G1_gate": {
+    "closed": false,
+    "full_gate_claim": false,
+    "qualified_local_multimodulus_subgate_closed": true,
+    "remaining_blocker": "derive the rank-51 instanton/condensate system and all seven bridge inputs inside the same globally consistent compactification",
+    "state": "51_MODULUS_LOCAL_STABILIZATION_SOLVED__MICROSCOPIC_BRIDGE_OPEN"
+  },
+  "audit_date": "2026-08-24",
+  "checks": {
+    "V26_core_matches": true,
+    "V27_core_matches": true,
+    "all_raw_source_pins_match": true,
+    "all_seven_bridge_requirements_are_unique": true,
+    "conservative_V26_to_h11_gap_is_50": true,
+    "double_root_identity_closes_W_and_gradient": true,
+    "full_G1_remains_open": true,
+    "holomorphic_Hessian_has_rank_51": true,
+    "microscopic_bridge_is_not_claimed": true,
+    "original_V26_racetrack_is_recovered": true,
+    "racetrack_uses_153_exponential_terms": true,
+    "real_scalar_Hessian_has_rank_102": true,
+    "rigid_target_has_ambient_h11_51": true,
+    "twisted_N1_parity_inventory_is_not_overclaimed": true
+  },
+  "core_sha256": "c682234ef01696ad188dc759091d1830f894972b3b279b69a867266d5ed77517",
+  "exact_51_modulus_racetrack_scaffold": {
+    "Euler_p_at_y1": 0,
+    "Euler_squared_p_at_y1": 8,
+    "W_at_stationary_point": 0,
+    "W_ii_over_pi2_Ciqi5": 3872,
+    "all_102_real_modulus_components_locally_massive": true,
+    "arbitrary_target_points": "t_i*>0 with q_i=exp(-22*pi*t_i*)",
+    "dimensionless_polynomial": "p(y)=y^5-2*y^3+y=y*(y^2-1)^2",
+    "exponential_terms_required": 153,
+    "factorized_form": "W=sum_i C_i*x_i*(x_i^2-q_i^2)^2",
+    "fields": "T_i for i=1,...,51",
+    "gradient_rank_at_stationary_point": 0,
+    "holomorphic_Hessian": "W_ij=delta_ij*3872*pi^2*C_i*q_i^5",
+    "holomorphic_Hessian_rank": 51,
+    "instantonic_exponents_2pi_n": [
+      11,
+      33,
+      55
+    ],
+    "large_volume_diagnostic_tstar_1": {
+      "log10_Wii_over_C_without_pi_units": -145.4991638285779,
+      "log10_q": -30.016279784520503,
+      "warning": "the exact point can be placed at large volume, but the induced Hessian is exponentially small unless microscopic prefactors compensate"
+    },
+    "number_of_complex_moduli": 51,
+    "p_at_y1": 0,
+    "polynomial_coefficients": [
+      1,
+      -2,
+      1
+    ],
+    "polynomial_powers": [
+      1,
+      3,
+      5
+    ],
+    "positive_scales": "C_i>0",
+    "real_scalar_Hessian_rank": 102,
+    "recovers_V26_at_q_half_and_C_32M3": {
+      "C": "32*M^3",
+      "W_TT_over_pi2_M3": 3872,
+      "q": "1/2",
+      "term_values_at_stationary_point_in_M3_units": [
+        1,
+        -2,
+        1
+      ],
+      "three_coefficients_in_M3_units": [
+        2,
+        -16,
+        32
+      ]
+    },
+    "scope": "exact local N=1 supergravity algebra only; it does not identify 51 contributing divisors or derive a string-normalized Kahler potential, prefactors, cross terms, axion quotient, or global branch structure",
+    "stationary_point": "T_i=t_i* real for every i",
+    "supergravity_mass_theorem": "at W=D_iW=0, V_i_jbar=e^K W_ik K^(k,lbar) conjugate(W_jl); an invertible W_ij and any regular positive Kahler metric make this block positive definite, while V_ij=0",
+    "superpotential": "W=sum_i C_i[x_i^5-2*q_i^2*x_i^3+q_i^4*x_i], x_i=exp(-22*pi*T_i)"
+  },
+  "failures": [],
+  "generated_bridge_schema": "SUSY_V28_MICROSCOPIC_INSTANTON_BRIDGE_SCHEMA.json",
+  "microscopic_bridge_requirements": [
+    {
+      "id": "B1_51_divisor_and_Kahler_cone_inventory",
+      "required": "derive the N=1 parity split of all 51 h11 directions and identify every surviving coordinate, axion, intersection, and a controlled Kahler-cone point"
+    },
+    {
+      "id": "B2_discrete_GS_charge_and_period_matrix",
+      "required": "derive the complete Z4R/Z11 axion action, levels, periods, and physical quotient from the compactification"
+    },
+    {
+      "id": "B3_instanton_divisor_and_flux_rows",
+      "required": "supply enough rigid O(1) E3/fluxed-E3 or condensing divisors to generate a rank-51 superpotential"
+    },
+    {
+      "id": "B4_charged_zero_mode_audit",
+      "required": "prove every contributing instanton is free of unsoaked visible and hidden charged zero modes"
+    },
+    {
+      "id": "B5_global_consistency_after_instantons",
+      "required": "recheck RR tadpoles, Freed-Witten/K-theory constraints, flux quantization, and backreaction"
+    },
+    {
+      "id": "B6_prefactor_Hessian_and_branch_derivation",
+      "required": "derive Pfaffian/threshold prefactors, the full physical Hessian, axion branches, and a controlled vacuum"
+    },
+    {
+      "id": "B7_visible_selector_soft_and_component_matching",
+      "required": "derive the visible selection rules, Yukawa/mu/Majorana/soft operators, residual Z2, and executable V24 map"
+    }
+  ],
+  "microscopic_target": {
+    "G3_tree_level_stabilized_complex_moduli": 4,
+    "G3_tree_level_unstabilized_Kahler_sector_envelope": 51,
+    "Hodge_numbers": {
+      "h11": 51,
+      "h21": 3
+    },
+    "V26_explicit_complex_GS_moduli": 1,
+    "ambient_Kahler_sector_h11": 51,
+    "axio_dilaton_moduli": 1,
+    "closed_complex_moduli_total": 55,
+    "complete_twisted_N1_orientifold_parity_inventory_published": false,
+    "complex_structure_moduli": 3,
+    "conservative_V26_to_ambient_h11_dimension_gap": 50,
+    "conservative_complex_no_scale_field_envelope": 51,
+    "direct_one_field_bijection_to_ambient_h11_possible": false,
+    "explicit_untwisted_N1_Kahler_chiral_multiplets": 3,
+    "inference_boundary": "51 is the ambient h11 count and is used as a conservative stabilization envelope; the paper explicitly enumerates only the three untwisted T_i after orientifolding, so a full twisted-sector N=1 parity inventory remains an input",
+    "interpretation": "a microscopic bridge must inventory the full orientifolded Kahler sector and stabilize every surviving direction before the one-field V26 EFT can be derived",
+    "open_string_position_and_Wilson_line_moduli_frozen_by_rigidity": true,
+    "target": "Type-IIB T6/(Z2 x Z2) rigid-brane Pati--Salam flux models"
+  },
+  "n_checks": 14,
+  "n_failed": 0,
+  "namespace": "research.susy_pati_salam.v28.new_physics_moduli_bridge",
+  "new_physics_result": {
+    "direct_match_to_2026_rigid_brane_model": false,
+    "local_51_complex_modulus_stabilization_problem_solved": true,
+    "microscopic_divisor_and_instanton_realization_derived": false,
+    "new_best_research_route": "fluxed O(1) E3 instantons or hidden condensates on the 51-modulus rigid-brane compactification, with a full charged-zero-mode and axion-charge audit",
+    "target_points_can_be_chosen_independently": true,
+    "works_for_any_regular_positive_Kahler_metric_at_the_SUSY_Minkowski_point": true
+  },
+  "primary_sources": [
+    {
+      "citation": "Mansha, Sabir, Li, and Wang, arXiv:2512.21141v2 (2026)",
+      "facts_used": "Type-IIB Hodge numbers (h11,h21)=(51,3); the untwisted N=1 inventory contains three T_i; G3 fixes the complex-structure moduli and axio-dilaton but leaves the Kahler sector unstabilized; RR tadpoles, K-theory, N=1 supersymmetry, and perturbative spectra are explicit",
+      "topic": "globally consistent rigid-brane Pati--Salam target",
+      "url": "https://arxiv.org/pdf/2512.21141"
+    },
+    {
+      "citation": "Abe, Kobayashi, Sumita, and Uemura, arXiv:1703.03402 (2017)",
+      "facts_used": "magnetized D9 Pati--Salam models use FI terms plus E1/E5 instantons to stabilize a three-Kahler-modulus truncation; the vacuum is supersymmetric AdS and a compatible hidden SUSY-breaking sector is left open",
+      "topic": "Pati--Salam E-brane stabilization precedent",
+      "url": "https://arxiv.org/pdf/1703.03402"
+    },
+    {
+      "citation": "Grimm, Kerstan, Palti, and Weigand, arXiv:1105.3193 (2011)",
+      "facts_used": "charged zero modes from a chiral visible sector can remove E3 contributions; instanton flux can sometimes restore them but must be derived divisor by divisor",
+      "topic": "chirality versus instanton zero modes",
+      "url": "https://arxiv.org/abs/1105.3193"
+    }
+  ],
+  "related_instantiation_precedent": {
+    "assumptions": [
+      "supersymmetric three-form flux fixes complex structure and dilaton",
+      "discrete torsions are chosen to obtain O(1)-type instantons",
+      "the analyzed instantons have no harmful charged zero modes"
+    ],
+    "explicit_bulk_Kahler_fields_in_effective_analysis": 3,
+    "mechanisms": [
+      "magnetic-flux FI terms fix two Kahler ratios",
+      "E1/E5 or E3/E(-1) effects fix the remaining bulk direction and dilaton",
+      "orbifold parities remove selected charged instanton zero modes"
+    ],
+    "published_boundaries": [
+      "the stabilized vacuum is supersymmetric with negative energy",
+      "a compatible hidden SUSY-breaking/uplifting sector is not constructed",
+      "hidden branes can reintroduce zero modes that erase the instanton superpotential",
+      "Majorana and mu terms are proposed as future instanton applications"
+    ],
+    "representative_superpotential": "W=A_E exp(-2*pi*T3)+A_S exp(-S)",
+    "same_microscopic_compactification_as_2026_rigid_model": false,
+    "source": "arXiv:1703.03402",
+    "valid_use_here": "proof that an instanton bridge is plausible in related magnetized Pati--Salam models, not evidence that it exists on the 51-modulus rigid-brane target"
+  },
+  "schema": "susy-v28-new-physics-moduli-bridge-v1",
+  "source_manifest": [
+    {
+      "expected_sha256": "6527ee543dd224a10140943ee94d0a23c967bd88384be1a9ae1a11c35bb4da1d",
+      "matches": true,
+      "mode": "raw",
+      "path": "susy_v26_g1_dynamical_gs_completion_attempt.py",
+      "sha256": "6527ee543dd224a10140943ee94d0a23c967bd88384be1a9ae1a11c35bb4da1d"
+    },
+    {
+      "expected_sha256": "3914d0754f8c2d1c70d2952507216a098f7a815c99ee64be1cb51b2dc67306b1",
+      "matches": true,
+      "mode": "raw",
+      "path": "SUSY_V26_G1_DYNAMICAL_GS_COMPLETION_ATTEMPT.json",
+      "sha256": "3914d0754f8c2d1c70d2952507216a098f7a815c99ee64be1cb51b2dc67306b1"
+    },
+    {
+      "expected_sha256": "1158b288ee39601ac4650312ec9e6c83e0d4eb101de5c90ccf0c38cba2f0be9c",
+      "matches": true,
+      "mode": "raw",
+      "path": "susy_v27_g1_architecture_change_audit.py",
+      "sha256": "1158b288ee39601ac4650312ec9e6c83e0d4eb101de5c90ccf0c38cba2f0be9c"
+    },
+    {
+      "expected_sha256": "4dfaa939bc3ef555fdfbb9d46612ee83df082231cc078176605b38421ac50b61",
+      "matches": true,
+      "mode": "raw",
+      "path": "SUSY_V27_G1_ARCHITECTURE_CHANGE_AUDIT.json",
+      "sha256": "4dfaa939bc3ef555fdfbb9d46612ee83df082231cc078176605b38421ac50b61"
+    },
+    {
+      "expected_sha256": "e02bfb0d5881cbc7bdd7d3f4d6e85488db708613885dbcec12047b6ef7ebf4b7",
+      "matches": true,
+      "mode": "raw",
+      "path": "SUSY_V27_G1_UV_COMPLETION_INPUT_SCHEMA.json",
+      "sha256": "e02bfb0d5881cbc7bdd7d3f4d6e85488db708613885dbcec12047b6ef7ebf4b7"
+    }
+  ],
+  "status": "V28_NEW_PHYSICS_INVESTIGATION_COMPLETE__EXACT_51_MODULUS_LOCAL_RACETRACK_SCAFFOLD_CONSTRUCTED__MICROSCOPIC_INSTANTON_BRIDGE_UNDERIVED__FULL_G1_OPEN",
+  "upstream_core_pins": {
+    "V26_dynamical_GS_attempt": "7dd049d43e1ce6cb6e9ca3385ecb2895521443a80f5af1363260d4ea637ba59d",
+    "V27_architecture_audit": "d97af356e9f2e2d7d0d2001a2a3b60027e6845cf4266d6f8c7b36b539281a58e"
+  }
+}

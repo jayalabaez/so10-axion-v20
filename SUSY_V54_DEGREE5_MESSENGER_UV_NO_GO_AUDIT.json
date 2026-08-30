@@ -1,0 +1,931 @@
+{
+  "schema": "susy_v54_degree5_messenger_uv_no_go_audit_v1",
+  "status": "V54_DEGREE5_ESCAPE_HAS_EXACT_RENORMALIZABLE_SELECTED_MESSENGER_ACTION__14_SINGLET_HESSIAN_FULL_RANK__COMBINED_230_RANK193_NULLITY37__BUT_MESSENGER_VEVS_REOPEN_DEGREE6_F16^4_AND_H1_SQUARED__ABELIAN_TREE_COMPLETIONS_FAIL_FACTORWISE__NO_GATE_PROMOTION",
+  "source_manifest": {
+    "SUSY_V53_FILTER_SELECTOR_CANDIDATE_AUDIT.json": "33de88b196a5096f7169cc3156d68cd9f4fa33e985adf0c23ea6c67a1a732dce",
+    "SUSY_V53_FILTER_DRIVER_COMPATIBILITY_NO_GO_AUDIT.json": "3777e4ab0f03591ca736f71e282f86a8f232fee83fb2f1d378e789fea6765bf4",
+    "SUSY_V53_ELEMENTARY_FILTER_HESSIAN_AUDIT.json": "993b549668243b06d082a7def8591c63141dfa402d6372b133c19cfa8f8b6ff6"
+  },
+  "selected_renormalizable_UV_action": {
+    "coordinates": [
+      "P",
+      "S",
+      "T",
+      "X1",
+      "X2",
+      "X3",
+      "U",
+      "Ubar",
+      "A",
+      "Abar",
+      "B",
+      "Bbar",
+      "C",
+      "Cbar"
+    ],
+    "Z9_charges": {
+      "P": 2,
+      "S": 1,
+      "T": 8,
+      "X1": 0,
+      "X2": 0,
+      "X3": 0,
+      "U": 1,
+      "Ubar": 8,
+      "A": 8,
+      "Abar": 1,
+      "B": 6,
+      "Bbar": 3,
+      "C": 4,
+      "Cbar": 5
+    },
+    "SO10_representations": {
+      "P": "1",
+      "S": "1",
+      "T": "1",
+      "X1": "1",
+      "X2": "1",
+      "X3": "1",
+      "U": "1",
+      "Ubar": "1",
+      "A": "1",
+      "Abar": "1",
+      "B": "1",
+      "Bbar": "1",
+      "C": "1",
+      "Cbar": "1"
+    },
+    "matter_parity": {
+      "P": "even",
+      "S": "even",
+      "T": "even",
+      "X1": "even",
+      "X2": "even",
+      "X3": "even",
+      "U": "even",
+      "Ubar": "even",
+      "A": "even",
+      "Abar": "even",
+      "B": "even",
+      "Bbar": "even",
+      "C": "even",
+      "Cbar": "even"
+    },
+    "selected_superpotential": "lambda1 X1 S T-xi1 X1 + MU U Ubar+lambda2 X2 T U+kappa2 Ubar P T+xi2 X2 + MA A Abar+lambda3 X3 S A+MB B Bbar+kappaA Abar P B + MC C Cbar+kappaB Bbar P C+kappaC Cbar P^2+xi3 X3",
+    "unit_witness_terms": [
+      {
+        "term": "X1*S*T",
+        "coefficient_at_witness": 1,
+        "degree": 3,
+        "Z9_charge": 0,
+        "invariant": true
+      },
+      {
+        "term": "-X1",
+        "coefficient_at_witness": -1,
+        "degree": 1,
+        "Z9_charge": 0,
+        "invariant": true
+      },
+      {
+        "term": "U*Ubar",
+        "coefficient_at_witness": 1,
+        "degree": 2,
+        "Z9_charge": 0,
+        "invariant": true
+      },
+      {
+        "term": "X2*T*U",
+        "coefficient_at_witness": 1,
+        "degree": 3,
+        "Z9_charge": 0,
+        "invariant": true
+      },
+      {
+        "term": "Ubar*P*T",
+        "coefficient_at_witness": 1,
+        "degree": 3,
+        "Z9_charge": 0,
+        "invariant": true
+      },
+      {
+        "term": "+X2",
+        "coefficient_at_witness": 1,
+        "degree": 1,
+        "Z9_charge": 0,
+        "invariant": true
+      },
+      {
+        "term": "A*Abar",
+        "coefficient_at_witness": 1,
+        "degree": 2,
+        "Z9_charge": 0,
+        "invariant": true
+      },
+      {
+        "term": "X3*S*A",
+        "coefficient_at_witness": 1,
+        "degree": 3,
+        "Z9_charge": 0,
+        "invariant": true
+      },
+      {
+        "term": "B*Bbar",
+        "coefficient_at_witness": 1,
+        "degree": 2,
+        "Z9_charge": 0,
+        "invariant": true
+      },
+      {
+        "term": "Abar*P*B",
+        "coefficient_at_witness": 1,
+        "degree": 3,
+        "Z9_charge": 0,
+        "invariant": true
+      },
+      {
+        "term": "C*Cbar",
+        "coefficient_at_witness": 1,
+        "degree": 2,
+        "Z9_charge": 0,
+        "invariant": true
+      },
+      {
+        "term": "Bbar*P*C",
+        "coefficient_at_witness": 1,
+        "degree": 3,
+        "Z9_charge": 0,
+        "invariant": true
+      },
+      {
+        "term": "Cbar*P^2",
+        "coefficient_at_witness": 1,
+        "degree": 3,
+        "Z9_charge": 0,
+        "invariant": true
+      },
+      {
+        "term": "+X3",
+        "coefficient_at_witness": 1,
+        "degree": 1,
+        "Z9_charge": 0,
+        "invariant": true
+      }
+    ],
+    "all_terms_Z9_invariant": true,
+    "all_terms_renormalizable": true,
+    "witness": {
+      "P": 1,
+      "S": 1,
+      "T": 1,
+      "X1": 0,
+      "X2": 0,
+      "X3": 0,
+      "U": -1,
+      "Ubar": 0,
+      "A": -1,
+      "Abar": 0,
+      "B": 1,
+      "Bbar": 0,
+      "C": -1,
+      "Cbar": 0
+    },
+    "F_term_ordering": [
+      "P",
+      "S",
+      "T",
+      "X1",
+      "X2",
+      "X3",
+      "U",
+      "Ubar",
+      "A",
+      "Abar",
+      "B",
+      "Bbar",
+      "C",
+      "Cbar"
+    ],
+    "F_terms": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "F_nonzero_count": 0,
+    "hessian": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        2
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        -1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1
+      ],
+      [
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ]
+    ],
+    "hessian_sha256": "ef57ade150601a8ce040f0346668bf9fdfada9ae2715a352adbc2a8b694cb500",
+    "hessian_rank_QQ": 14,
+    "hessian_nullity": 0,
+    "hessian_determinant": -81,
+    "generic_determinant_on_F_flat_messenger_chain_locus": "-81 lambda1^2 lambda2^2 kappa2^2 lambda3^2 kappaA^2 kappaB^2 kappaC^2 P^8 S^2 T^4",
+    "generic_open_set": [
+      "lambda1*lambda2*kappa2*lambda3*kappaA*kappaB*kappaC != 0",
+      "MU*MA*MB*MC != 0",
+      "P*S*T != 0"
+    ],
+    "determinant_scope": "evaluated on the exact F-flat messenger-chain locus after solving for U,Ubar,A,Abar,B,Bbar,C,Cbar",
+    "coefficient_equality_required": false
+  },
+  "tree_level_matching": {
+    "light_field_ordering": [
+      "P",
+      "S",
+      "T"
+    ],
+    "tree_level_effective_superpotential": "X1(lambda1 S T-xi1) + X2(xi2-(lambda2 kappa2/MU) P T^2) + X3(xi3-(lambda3 kappaA kappaB kappaC/(MA MB MC)) S P^4)",
+    "tree_elimination_open_set_assumptions": [
+      "MU != 0",
+      "MA != 0",
+      "MB != 0",
+      "MC != 0",
+      "all displayed link couplings are nonzero",
+      "P*S*T != 0 at the stabilized vacuum"
+    ],
+    "neutral_monomials": [
+      "S*T",
+      "P*T^2",
+      "S*P^4"
+    ],
+    "exponent_rows": [
+      [
+        0,
+        1,
+        1
+      ],
+      [
+        1,
+        0,
+        2
+      ],
+      [
+        4,
+        1,
+        0
+      ]
+    ],
+    "exact_exponent_rank": 3,
+    "exact_exponent_determinant": 9,
+    "solution_definitions": {
+      "a": "xi1/lambda1",
+      "b": "xi2 MU/(lambda2 kappa2)",
+      "c": "xi3 MA MB MC/(lambda3 kappaA kappaB kappaC)"
+    },
+    "nonzero_solution": [
+      "T^9=a*b^4/c",
+      "P=b/T^2",
+      "S=a/T"
+    ],
+    "Z9_orbit_size_at_generic_nonzero_solution": 9
+  },
+  "selected_action_combined_geometry": {
+    "qualification": "selected-action block arithmetic only: it omits symmetry-allowed cross-couplings and is not the Hessian of the symmetry-complete EFT",
+    "coordinate_inventory": {
+      "DW_source": 176,
+      "four_filter_10s": 40,
+      "UV_singlet_sector": 14,
+      "total": 230
+    },
+    "rank_decomposition": {
+      "DW_source": 143,
+      "four_filter_10s": 36,
+      "UV_singlet_sector": 14,
+      "total": 193
+    },
+    "nullity": 37,
+    "nullity_decomposition": {
+      "broken_gauge_orbit": 33,
+      "intended_weak_Higgs": 4,
+      "extra": 0
+    },
+    "selected_action_geometry_passes": true,
+    "symmetry_complete_geometry_passes": false,
+    "reason": "the allowed C_messenger H1^2 term fills the intended weak kernel"
+  },
+  "symmetry_complete_operator_census": {
+    "F16_fourth_power_charge": 4,
+    "F16_fourth_power_Spin10_center_Z4_charge": 0,
+    "VEV_species_and_Z9_charges": {
+      "E54": 0,
+      "A45": 0,
+      "C16H": 1,
+      "Bbar16H": 8,
+      "D45_missingVEV": 0,
+      "P_filter": 2,
+      "S": 1,
+      "T": 8,
+      "U_messenger": 1,
+      "A_messenger": 8,
+      "B_messenger": 6,
+      "C_messenger": 4
+    },
+    "VEV_species_and_Spin10_center_Z4_charges": {
+      "E54": 0,
+      "A45": 0,
+      "C16H": 1,
+      "Bbar16H": 3,
+      "D45_missingVEV": 0,
+      "P_filter": 0,
+      "S": 0,
+      "T": 0,
+      "U_messenger": 0,
+      "A_messenger": 0,
+      "B_messenger": 0,
+      "C_messenger": 0
+    },
+    "Spin10_center_convention": {
+      "16": 1,
+      "bar16": 3,
+      "10": 2,
+      "45_54_and_singlet": 0
+    },
+    "center_filter_scope": "center neutrality is necessary in general; it is sufficient for these survivors because every surviving dressing field is an SO10 singlet and F16^4 has six exact singlets",
+    "census_scope": "all zero-, one-, and two-VEV multisets after adding every nonzero UV witness VEV",
+    "row_count": 91,
+    "Z9_neutral_row_count_before_center_filter": 6,
+    "Z9_neutral_rows_before_center_filter": [
+      {
+        "operator": "F16^4 C16H C_messenger",
+        "dressing": [
+          "C16H",
+          "C_messenger"
+        ],
+        "total_degree": 6,
+        "Z9_charge": 0,
+        "Spin10_center_Z4_charge": 1,
+        "Spin10_center_neutral": false,
+        "Spin10_singlet_multiplicity": 0,
+        "matter_parity": "even"
+      },
+      {
+        "operator": "F16^4 Bbar16H B_messenger",
+        "dressing": [
+          "Bbar16H",
+          "B_messenger"
+        ],
+        "total_degree": 6,
+        "Z9_charge": 0,
+        "Spin10_center_Z4_charge": 3,
+        "Spin10_center_neutral": false,
+        "Spin10_singlet_multiplicity": 0,
+        "matter_parity": "even"
+      },
+      {
+        "operator": "F16^4 S C_messenger",
+        "dressing": [
+          "S",
+          "C_messenger"
+        ],
+        "total_degree": 6,
+        "Z9_charge": 0,
+        "Spin10_center_Z4_charge": 0,
+        "Spin10_center_neutral": true,
+        "Spin10_singlet_multiplicity": 6,
+        "matter_parity": "even"
+      },
+      {
+        "operator": "F16^4 T B_messenger",
+        "dressing": [
+          "T",
+          "B_messenger"
+        ],
+        "total_degree": 6,
+        "Z9_charge": 0,
+        "Spin10_center_Z4_charge": 0,
+        "Spin10_center_neutral": true,
+        "Spin10_singlet_multiplicity": 6,
+        "matter_parity": "even"
+      },
+      {
+        "operator": "F16^4 U_messenger C_messenger",
+        "dressing": [
+          "U_messenger",
+          "C_messenger"
+        ],
+        "total_degree": 6,
+        "Z9_charge": 0,
+        "Spin10_center_Z4_charge": 0,
+        "Spin10_center_neutral": true,
+        "Spin10_singlet_multiplicity": 6,
+        "matter_parity": "even"
+      },
+      {
+        "operator": "F16^4 A_messenger B_messenger",
+        "dressing": [
+          "A_messenger",
+          "B_messenger"
+        ],
+        "total_degree": 6,
+        "Z9_charge": 0,
+        "Spin10_center_Z4_charge": 0,
+        "Spin10_center_neutral": true,
+        "Spin10_singlet_multiplicity": 6,
+        "matter_parity": "even"
+      }
+    ],
+    "center_rejected_row_count": 2,
+    "center_rejected_rows": [
+      {
+        "operator": "F16^4 C16H C_messenger",
+        "dressing": [
+          "C16H",
+          "C_messenger"
+        ],
+        "total_degree": 6,
+        "Z9_charge": 0,
+        "Spin10_center_Z4_charge": 1,
+        "Spin10_center_neutral": false,
+        "Spin10_singlet_multiplicity": 0,
+        "matter_parity": "even",
+        "rejection": "nonzero Spin(10) Z4 center charge forbids a gauge singlet"
+      },
+      {
+        "operator": "F16^4 Bbar16H B_messenger",
+        "dressing": [
+          "Bbar16H",
+          "B_messenger"
+        ],
+        "total_degree": 6,
+        "Z9_charge": 0,
+        "Spin10_center_Z4_charge": 3,
+        "Spin10_center_neutral": false,
+        "Spin10_singlet_multiplicity": 0,
+        "matter_parity": "even",
+        "rejection": "nonzero Spin(10) Z4 center charge forbids a gauge singlet"
+      }
+    ],
+    "allowed_row_count": 4,
+    "allowed_rows": [
+      {
+        "operator": "F16^4 S C_messenger",
+        "dressing": [
+          "S",
+          "C_messenger"
+        ],
+        "total_degree": 6,
+        "Z9_charge": 0,
+        "Spin10_center_Z4_charge": 0,
+        "Spin10_center_neutral": true,
+        "Spin10_singlet_multiplicity": 6,
+        "matter_parity": "even"
+      },
+      {
+        "operator": "F16^4 T B_messenger",
+        "dressing": [
+          "T",
+          "B_messenger"
+        ],
+        "total_degree": 6,
+        "Z9_charge": 0,
+        "Spin10_center_Z4_charge": 0,
+        "Spin10_center_neutral": true,
+        "Spin10_singlet_multiplicity": 6,
+        "matter_parity": "even"
+      },
+      {
+        "operator": "F16^4 U_messenger C_messenger",
+        "dressing": [
+          "U_messenger",
+          "C_messenger"
+        ],
+        "total_degree": 6,
+        "Z9_charge": 0,
+        "Spin10_center_Z4_charge": 0,
+        "Spin10_center_neutral": true,
+        "Spin10_singlet_multiplicity": 6,
+        "matter_parity": "even"
+      },
+      {
+        "operator": "F16^4 A_messenger B_messenger",
+        "dressing": [
+          "A_messenger",
+          "B_messenger"
+        ],
+        "total_degree": 6,
+        "Z9_charge": 0,
+        "Spin10_center_Z4_charge": 0,
+        "Spin10_center_neutral": true,
+        "Spin10_singlet_multiplicity": 6,
+        "matter_parity": "even"
+      }
+    ],
+    "allowed_invariant_directions": 24,
+    "all_allowed_rows_are_degree6": true,
+    "selector_still_forbids_through_degree6": false,
+    "renormalizable_DT_filler": {
+      "operator": "C_messenger H1_10 H1_10",
+      "Z9_charge_arithmetic": "4+7+7=18=0 mod 9",
+      "matter_parity": "even",
+      "C_messenger_VEV_nonzero": true,
+      "filter_rank_before": 36,
+      "generic_filter_rank_after": 40,
+      "weak_Higgs_nullity_after": 0
+    }
+  },
+  "factorwise_tree_no_go": {
+    "bounded_class": "tree-level renormalizable UV completions by massive SO10-singlet messengers, generic nonzero link couplings, nonzero P,S,T, and no tuned source cancellation",
+    "source_R_reduction": {
+      "relations": [
+        "2e=w",
+        "3e=w"
+      ],
+      "consequence": "e=0 and w=0 in every conventional Abelian R factor; each factor reduces to additive non-R charge arithmetic"
+    },
+    "required_factorwise_relations": [
+      "2 h2=0",
+      "h1=-p-h2",
+      "4 f=2 p",
+      "s=-4 p",
+      "t=4 p"
+    ],
+    "tree_lemma": "A rooted cubic messenger tree for the five nonzero leaves P,P,P,P,S has a terminal two-light-field cherry, necessarily PP or PS; the massive partner acquires the composite VEV.",
+    "PP_cherry": {
+      "composite_charge": "2 p",
+      "proton_operator": "F^4 S Y_(2p)",
+      "proton_charge_identity": "2p-4p+2p=0",
+      "DT_operator": "Y_(2p) H1^2",
+      "DT_charge_identity": "2p+2(-p-h2)=-2h2=0"
+    },
+    "PS_cherry": {
+      "composite_charge": "p+s=-3p",
+      "proton_operator": "F^4 P Y_(-3p)",
+      "proton_charge_identity": "2p+p-3p=0"
+    },
+    "product_Abelian_symmetries_fail_factorwise": true,
+    "matter_parity_repairs_failure": false,
+    "scope_limit": "This does not exclude non-Abelian shaping symmetries, a redesigned source with a nontrivial R action, non-singlet mediators, tuned cancellations, or nonperturbative UV physics."
+  },
+  "anomaly_and_perturbativity_scope": {
+    "added_fields_beyond_existing_P": {
+      "light_VEV_singlets": 2,
+      "neutral_drivers": 3,
+      "massive_messenger_singlets": 8,
+      "total": 13
+    },
+    "Z9_vectorlike_pairs": [
+      [
+        1,
+        8
+      ],
+      [
+        1,
+        8
+      ],
+      [
+        8,
+        1
+      ],
+      [
+        6,
+        3
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "three_neutral_driver_charges": [
+      0,
+      0,
+      0
+    ],
+    "added_gravity_Z9_integer_sum": 45,
+    "added_gravity_Z9_mod9": 0,
+    "added_cubic_Z9_integer_sum": 1971,
+    "added_cubic_Z9_mod9": 0,
+    "added_SO10_squared_Z9": 0,
+    "existing_anomaly_repair_retained": {
+      "vector10_pairs": [
+        [
+          1,
+          6
+        ],
+        [
+          1,
+          6
+        ]
+      ],
+      "singlet_pairs": [
+        [
+          1,
+          6
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          1,
+          6
+        ]
+      ],
+      "total_mod9": {
+        "Spin10_squared_Z9": 0,
+        "Z9_cubed": 0,
+        "gravity_squared_Z9": 0
+      }
+    },
+    "new_anomaly_spectators_required": false,
+    "one_loop_SO10_running": {
+      "new_fields_have_total_Dynkin_index": 0,
+      "total_T_unchanged": 46,
+      "b_unchanged": 22,
+      "pole_over_matching_scale_at_g0p73_unchanged": 841.1312487591689,
+      "above_100x": true,
+      "above_1000x": false,
+      "scope": "one-loop SO10 gauge running only; singlet Yukawa thresholds and two-loop effects are not computed"
+    }
+  },
+  "selected_action_vs_complete_EFT": {
+    "selected_action": "exact F-flat and nonsingular on an open set after deliberately retaining only the displayed couplings",
+    "symmetry_complete_EFT": "fails natural DT and degree-six proton safety once all selector-allowed operators are admitted",
+    "strict_same_action_feasibility": false,
+    "complete_theory": false
+  },
+  "primary_sources": {
+    "supersymmetric_nonrenormalization": "https://arxiv.org/abs/hep-ph/9309335",
+    "discrete_gauge_anomalies": "https://arxiv.org/abs/hep-th/9109045"
+  },
+  "checks": {
+    "selector_core_bound": true,
+    "driver_core_bound": true,
+    "filter_core_bound": true,
+    "degree5_escape_is_bound": true,
+    "all_selected_UV_terms_are_Z9_invariant": true,
+    "all_selected_UV_terms_are_renormalizable": true,
+    "exact_F_flat_witness": true,
+    "exact_14_coordinate_Hessian_is_full_rank": true,
+    "exact_14_coordinate_Hessian_determinant_is_minus81": true,
+    "effective_exponent_determinant_is9": true,
+    "tree_elimination_requires_nonzero_messenger_masses": true,
+    "generic_determinant_is_explicitly_F_flat_locus_scoped": true,
+    "selected_combined_rank_is193_of230": true,
+    "selected_combined_nullity_is33_plus4": true,
+    "dangerous_census_has_six_Z9_neutral_rows_before_center_filter": true,
+    "Spin10_center_filter_rejects_two_spinor_dressings": true,
+    "dangerous_census_has_four_gauge_invariant_degree6_rows": true,
+    "dangerous_census_has24_invariant_directions": true,
+    "renormalizable_H1_squared_filler_is_allowed": true,
+    "generic_H1_squared_filler_rank_matches_upstream": true,
+    "Abelian_tree_no_go_is_factorwise": true,
+    "added_discrete_anomaly_residues_vanish": true,
+    "no_new_anomaly_spectators_are_needed": true,
+    "one_loop_running_is_unchanged": true,
+    "one_loop_1000x_screen_still_fails": true,
+    "selected_and_symmetry_complete_actions_are_not_conflated": true,
+    "no_gate_promotion": true
+  },
+  "n_checks": 27,
+  "n_failed": 0,
+  "failures": [],
+  "gate_effect": {
+    "local_selected_action_F_flatness_and_Hessian": "CLOSED_WITHIN_SELECTED_TEXTURE",
+    "symmetry_complete_natural_DT": "OPEN",
+    "proton_selector_through_degree6": "REOPENED_BY_MESSENGER_VEVS",
+    "discrete_anomaly_residue_for_added_singlets": "CLOSED",
+    "one_loop_1000x_perturbativity": "OPEN",
+    "G1_through_G8_promotions": [],
+    "candidate_gate_promotions": 0
+  },
+  "verdict": "A renormalizable singlet-messenger action realizes the degree-five algebraic escape and has an exact full-rank 14-coordinate singlet Hessian. It is not a valid same-action completion: messenger VEVs allow four gauge-invariant degree-six F16^4 dressings and a renormalizable H1^2 filler, and every Abelian singlet-tree topology has the same factorwise proton obstruction. No G gate is promoted.",
+  "core_sha256": "fa9b64b42f439e01a730a8fd98cd911679cbe6968d3492abba7888ecb6490546"
+}

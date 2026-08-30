@@ -1,0 +1,346 @@
+{
+  "G2_G4_G6_G8_gate_conclusions": [
+    {
+      "blocking_fact": "no EWSB/pole state, soft masses, numerical boundary, self energies, or covariance",
+      "full_gate_closed": false,
+      "gate": "G2",
+      "landed_exact_subproblem": "generic rank-five anomalon holomorphic mass block"
+    },
+    {
+      "blocking_fact": "K\u00e4hler/soft potential, competing vacua, tunneling and cosmological selection absent",
+      "full_gate_closed": false,
+      "gate": "G3",
+      "landed_exact_subproblem": "zero-energy F=D=0 branch and rank-four two-driver radial Hessian in canonical global SUSY"
+    },
+    {
+      "blocking_fact": "source disables mediation and all soft terms, so radiative EWSB cannot be calculated",
+      "full_gate_closed": false,
+      "gate": "G4",
+      "landed_exact_subproblem": "mu protection on the canonical branch"
+    },
+    {
+      "blocking_fact": "no physical boundary, soft beta system, individual pole thresholds, matching Wilsons or uncertainty propagation",
+      "full_gate_closed": false,
+      "gate": "G6",
+      "landed_exact_subproblem": "live SARAH one- and two-loop supersymmetric beta functions"
+    },
+    {
+      "blocking_fact": "X/Zp-dressed Q^4 and Qc^4 source monomials are allowed; their coefficients and soft-induced VEVs are not controlled",
+      "full_gate_closed": false,
+      "gate": "G7",
+      "landed_exact_subproblem": "the bare four-matter terms are R-forbidden"
+    },
+    {
+      "blocking_fact": "independent Yukawa/Wilson matrices and no versioned joint likelihood leave observables non-identifiable",
+      "full_gate_closed": false,
+      "gate": "G8",
+      "landed_exact_subproblem": "a flavour-capable renormalizable source exists"
+    }
+  ],
+  "G2_tree_mass_rank": {
+    "determinant": "a^2*b^2*c",
+    "does_not_establish": [
+      "soft scalar splittings",
+      "gauge and matter mixing matrices",
+      "self energies or pole masses",
+      "physical threshold covariance"
+    ],
+    "exact_rational_witness_abc": [
+      2,
+      3,
+      5
+    ],
+    "exact_rational_witness_determinant": "180",
+    "exact_rational_witness_rank": 5,
+    "field_order": [
+      "A2",
+      "A32",
+      "A15",
+      "A17",
+      "A16"
+    ],
+    "generic_full_rank_condition": "a*b*c != 0",
+    "mass_entries": {
+      "a": "yAbar*<Pb>",
+      "b": "yA15*<P>",
+      "c": "yA16*<P>"
+    },
+    "matrix": [
+      [
+        "0",
+        "a",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "a",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "0",
+        "b",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "b",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "0",
+        "0",
+        "c"
+      ]
+    ],
+    "scope": "holomorphic tree mass block only"
+  },
+  "G3_canonical_global_SUSY_branch": {
+    "D_terms_vanish_on_equal_conjugate_PS_VEVs": true,
+    "F_driver_system": "[[kappaPS,kappaPQ],[rhoPS,rhoPQ]] [[U-vPS^2],[V-fPQ^2]] = 0",
+    "F_terms_vanish_on_representative": true,
+    "bilinear_coordinates": [
+      "U=<Sbc Sc>",
+      "V=<P Pb>"
+    ],
+    "branch_representative": {
+      "<P>=<Pb>=fPQ": true,
+      "<Sc>=<Sbc>=vPS along conjugate PS-neutral directions": true,
+      "<X>=<Zp>=<H>=<Sig6>=<Q>=<Qc>=<Psi>=<PsiBar>=<PsiC>=<PsiCBar>=<Nv>=<Ai>=0": true
+    },
+    "canonical_global_energy": "V=sum_i |F_i|^2 + (1/2)sum_a D_a^2 >= 0",
+    "driver_fields": [
+      "X",
+      "Zp"
+    ],
+    "generic_condition": "Delta= kappaPS*rhoPQ-kappaPQ*rhoPS != 0",
+    "not_established": [
+      "K\u00e4hler metric and higher-derivative corrections",
+      "soft terms and SUSY-breaking tadpoles",
+      "saxion stabilization and all competing branches",
+      "tunneling or cosmological vacuum selection"
+    ],
+    "radial_holomorphic_hessian": {
+      "basis": [
+        "X",
+        "Zp",
+        "deltaU",
+        "deltaV"
+      ],
+      "determinant": "Delta^2",
+      "exact_rational_K_witness": [
+        [
+          2,
+          3
+        ],
+        [
+          5,
+          7
+        ]
+      ],
+      "exact_rational_witness_determinant": "1",
+      "exact_rational_witness_rank": 4,
+      "generic_rank": 4,
+      "matrix": "[[0,K],[K^T,0]]"
+    },
+    "scope": "canonical global-N=1 SUSY truncation; not a K\u00e4hler/soft completion",
+    "solution_when_Delta_nonzero": [
+      "U=vPS^2",
+      "V=fPQ^2"
+    ],
+    "zero_energy_branch_is_global_minimum_of_that_truncation": true
+  },
+  "G4_electroweak_boundary": {
+    "H_representation": "(1,2,2)",
+    "all_H_bilinear_source_terms": [
+      "lambdaH/2*X.H.H",
+      "lambdaZH/2*Zp.H.H"
+    ],
+    "all_expected_H_bilinear_terms_present": true,
+    "bare_H_squared_source_term_present": false,
+    "conclusion": "The source preserves the desired supersymmetric mu protection, but it does not specify the mediation data required to test radiative EWSB or a weak-scale pole spectrum.",
+    "derived_Bmu_or_Higgs_soft_masses_present": false,
+    "source_soft_terms_enabled": false,
+    "tree_mu_on_canonical_global_SUSY_branch": "mu=lambdaH*<X>+lambdaZH*<Zp>=0"
+  },
+  "G6_running_and_matching_boundary": {
+    "absent_physical_inputs": {
+      "covariance_or_uncertainty_model": false,
+      "gauge_boundary_numbers": true,
+      "matching_wilson_coefficients": false,
+      "pole_or_threshold_boundary_file": false,
+      "soft_beta_rows": {
+        "gaugino_mass": 0,
+        "soft_bilinear": 0,
+        "soft_linear": 0,
+        "soft_scalar_mass": 0,
+        "soft_trilinear": 0
+      }
+    },
+    "conclusion": "The beta functions are live and useful, but the source cannot select a physical trajectory or calculate a threshold-matched uncertainty band.",
+    "live_SARAH_two_loop_RGE_attestation": {
+      "beta_counts": {
+        "bilinear_superpotential": 1,
+        "gauge": 3,
+        "gaugino_mass": 0,
+        "linear_superpotential": 3,
+        "soft_bilinear": 0,
+        "soft_linear": 0,
+        "soft_scalar_mass": 0,
+        "soft_trilinear": 0,
+        "trilinear_superpotential": 27
+      },
+      "model_initialized": true,
+      "one_loop_gauge_b_4_L_R": [
+        1,
+        5,
+        9
+      ],
+      "source_soft_terms_enabled": false,
+      "two_loop_RGE_calculation_succeeded": true
+    },
+    "structural_matching_results_retained_from_V36_visible_sector": {
+      "PS_to_SM": [
+        "g3=g4",
+        "g2=gL",
+        "1/g1^2=2/(5*g4^2)+3/(5*gR^2)"
+      ],
+      "complete_vectorlike_threshold_sum_Delta_b_1_2_3": [
+        4,
+        4,
+        4
+      ],
+      "qualification": "This is a representation-level sum, not a physical threshold correction: the individual mixed heavy masses are not supplied."
+    }
+  },
+  "G7_proton_and_flavour_boundary": {
+    "flavour_nonidentifiability": {
+      "consequence": "Both assignments satisfy the declared gauge and discrete charges but give different fermion masses and mixings, so CKM/PMNS and a joint likelihood are not predictions.",
+      "symmetry_allowed_counterexamples": [
+        "YQQ=0",
+        "YQQ=y*Identity_3 for arbitrary complex y"
+      ],
+      "unfixed_matrix_couplings": [
+        "YQQ (3x3)",
+        "yNQ (3x3)",
+        "YQX (3)",
+        "YXQ (3)",
+        "lambdaPQ (3)",
+        "lambdaPcQ (3)",
+        "yNX (3)"
+      ]
+    },
+    "selection_rule_result": {
+      "bare_Q4_or_Qc4_has_external_Z4R_charge_mod4": 0,
+      "bare_Q4_or_Qc4_is_forbidden_in_W": true,
+      "driver_dressed_degree5_sources_are_permitted": [
+        {
+          "Pati_Salam_contraction": "epsilon_SU4 times two epsilon_SU2 contractions; nonzero with the available three-family flavour tensors",
+          "Z5610_charge": 0,
+          "branch_value_if_X_and_Zp_zero": 0,
+          "external_Z4R_charge_mod4": 2,
+          "source_monomial": "X*Q^4/M^2",
+          "superfield_degree": 5
+        },
+        {
+          "Pati_Salam_contraction": "epsilon_SU4 times two epsilon_SU2 contractions; nonzero with the available three-family flavour tensors",
+          "Z5610_charge": 0,
+          "branch_value_if_X_and_Zp_zero": 0,
+          "external_Z4R_charge_mod4": 2,
+          "source_monomial": "X*Qc^4/M^2",
+          "superfield_degree": 5
+        },
+        {
+          "Pati_Salam_contraction": "epsilon_SU4 times two epsilon_SU2 contractions; nonzero with the available three-family flavour tensors",
+          "Z5610_charge": 0,
+          "branch_value_if_X_and_Zp_zero": 0,
+          "external_Z4R_charge_mod4": 2,
+          "source_monomial": "Zp*Q^4/M^2",
+          "superfield_degree": 5
+        },
+        {
+          "Pati_Salam_contraction": "epsilon_SU4 times two epsilon_SU2 contractions; nonzero with the available three-family flavour tensors",
+          "Z5610_charge": 0,
+          "branch_value_if_X_and_Zp_zero": 0,
+          "external_Z4R_charge_mod4": 2,
+          "source_monomial": "Zp*Qc^4/M^2",
+          "superfield_degree": 5
+        }
+      ],
+      "exact_Q4_two_family_contraction_witness": 4,
+      "physical_interpretation": "If a driver receives a SUSY-breaking VEV, these induce conventional four-matter dimension-five superpotential operators."
+    },
+    "why_no_lifetime_can_be_inferred": [
+      "the allowed Wilson flavour tensors are not derived or bounded",
+      "the driver VEVs after soft/K\u00e4hler corrections are unknown",
+      "the heavy pole spectrum, SUSY dressing, operator running and lattice matrix elements are not matched"
+    ]
+  },
+  "complete_theory_exists": false,
+  "core_sha256": "5db7eb779af1a0c762fabb913bc14af03c18d01e30b53d46fb6838ed0a76dde4",
+  "established_full_predictive_closed_count": 0,
+  "minimal_honest_extension_contract": {
+    "not_implemented_as_ad_hoc_new_physics": true,
+    "reason": "Assigning arbitrary soft masses, Wilson tensors, thresholds, or likelihood priors would create a benchmark, not derive a complete theory.",
+    "required_single_source_inputs": [
+      "microscopic K\u00e4hler potential, gauge kinetic functions and mediation mechanism",
+      "complete PS-to-SM component spectrum and matching scale(s)",
+      "all baryon-violating Wilson tensors and flavour origin",
+      "experimental/lattice/cosmology likelihood with theory covariance"
+    ]
+  },
+  "model": "PSZ4RZ5610SUSYV37",
+  "schema": "susy-v37-nonanomaly-gate-audit-v1",
+  "source_manifest": [
+    {
+      "path": "models/PSZ4RZ5610SUSYV37/PSZ4RZ5610SUSYV37.m",
+      "sha256": "78d330b7919f3c98183a2c5d0036642810273849c5dd08db0ba077b5d5fc2fdd"
+    },
+    {
+      "path": "models/PSZ4RZ5610SUSYV37/parameters.m",
+      "sha256": "c059e5019413949c318a0ffd0fb2bf2dcee0a9e0ff0ef2d6edcf055ad49949f8"
+    },
+    {
+      "path": "models/PSZ4RZ5610SUSYV37/particles.m",
+      "sha256": "eace92c4f5877c8302e5e3165696996a29799852ba7d8d2ebc9b2b5e8726fac6"
+    },
+    {
+      "path": "SUSY_V37_SARAH_RGE_ATTESTATION.json",
+      "sha256": "3eacc14350a17912a0770c528d127a452d8ae211e7557979079a1c8d8e56d3d3"
+    },
+    {
+      "path": "SUSY_V37_G1_G8_GATE_LEDGER.json",
+      "sha256": "f80552b73707595fbd64f91656116c69244aa59437584cba1b4d9bbe9a4ba6f2"
+    }
+  ],
+  "source_static_contract": {
+    "SPheno_m_present": false,
+    "consequence": "The V37 source is a gauge-basis supersymmetric EFT declaration, not a numerical EWSB/pole-spectrum model.",
+    "declared_state": "GaugeES",
+    "model": "PSZ4RZ5610SUSYV37",
+    "only_gauge_basis_state_declared": true,
+    "parameter_definitions": [
+      "vPS2",
+      "fPQ2"
+    ],
+    "parameter_file_contains_only_scale_definitions": true,
+    "particles_file_is_gauge_basis_only": true,
+    "soft_disable_flags": {
+      "AddSoftGauginoMasses": true,
+      "AddSoftScalarMasses": true,
+      "AddSoftTerms": true
+    },
+    "source_soft_terms_disabled": true,
+    "spectrum_generator_or_boundary_file_present": false
+  },
+  "status": "V37_NONANOMALY_AUDIT_COMPLETE__CANONICAL_GLOBAL_SUSY_BRANCH_AND_ANOMALON_RANK_CERTIFIED__NO_PHYSICAL_POLE_SOFT_RUNNING_PROTON_OR_LIKELIHOOD_CLOSURE"
+}

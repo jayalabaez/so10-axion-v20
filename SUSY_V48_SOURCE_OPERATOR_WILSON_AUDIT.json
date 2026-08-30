@@ -1,0 +1,982 @@
+{
+  "G2_assessment": {
+    "does_not_promote": [
+      "G3",
+      "G4",
+      "G5",
+      "G6",
+      "G7",
+      "G8"
+    ],
+    "fixed_order_boundary_EFT_subgate": "CLOSED_IN_THE_DECLARED_COLLAR_SCHEME",
+    "full_theory_G2": "FAIL_CLOSED_PENDING_ACCEPTANCE_OF_THE_SCOPED_GATE_CONTRACT",
+    "why_not_unqualified": "The renormalizable source action, leading exotic-lifting portal sector, resolved response and actual tree source-dependent PS Wilson kernel are complete in one explicit Wilsonian scheme. A claim that G2 means the regulator-independent all-order boundary action is not proved and is not a finite EFT gate. The integration audit must freeze which contract G2 uses."
+  },
+  "PS_wall_current_and_response_basis": {
+    "boundary_gauge_terms": [
+      "int d2theta tau4 Tr W4^2",
+      "int d2theta tau2L Tr W2L^2",
+      "int d2theta tau2R Tr W2R^2",
+      "int d2theta tauF0 WF^2",
+      "int d4theta xiF0 V_F",
+      "int d4theta zhat Tr Zhat^2 for the gauge-covariant PS-broken Spin10 boundary superfield Zhat"
+    ],
+    "locality_statement": "A source-wall field and a PS-wall field never occur in one local monomial. Every tree cross-wall coefficient factors through a bulk current Y_0, the regulated K_reg^-1 kernel and a source current Y_L.",
+    "localized_Kahler": {
+      "effect": "canonical normalization rotates Y_4x4 and the current vector Y_0; the K^-1 formula is basis covariant",
+      "explicitly_included_mixings": [
+        "Q_i^dagger HLF+h.c. (i=1,2,3)",
+        "Qc_i^dagger HRA+h.c. (i=1,2,3)"
+      ],
+      "isolated_blocks": [
+        "z_LA LA^dagger LA",
+        "z_RF RF^dagger RF",
+        "z_AcR HLFc_R^dagger HLFc_R",
+        "z_BcR HLAc_R^dagger HLAc_R",
+        "z_CcL HRAc_L^dagger HRAc_L",
+        "z_DcL HRFc_L^dagger HRFc_L",
+        "z_H H^dagger H"
+      ],
+      "left_block": "int d4theta L^dagger Z_L L, arbitrary positive Hermitian 4x4 Z_L",
+      "right_block": "int d4theta R^dagger Z_R R, arbitrary positive Hermitian 4x4 Z_R"
+    },
+    "renormalizable_superpotential": {
+      "complementary_even_trace_terms": [
+        "y_c HRAc_L H HLFc_R",
+        "y_cb HRFc_L H HLAc_R"
+      ],
+      "complementary_trace_quantum_numbers": {
+        "HLAc_R": "(bar4,1,2)_+4",
+        "HLFc_R": "(4,1,2)_-1",
+        "HRAc_L": "(bar4,2,1)_+1",
+        "HRFc_L": "(4,2,1)_-4"
+      },
+      "count_breakdown": "9 local QHQc + 6 one-bulk currents + 2 desired/mirror two-bulk vertices + 2 complementary-Hc vertices",
+      "family_resolved_count": 19,
+      "generic": "Y_AB L_A H R_B with L=(Q1,Q2,Q3,LF), R=(Qc1,Qc2,Qc3,RA)",
+      "mirror": "y_m LA H RF"
+    }
+  },
+  "core_sha256": "9e036d222727fa114c986175d0866f2e530e13304c52bb7d9d1a9de9ecdd2d12",
+  "exact_cross_wall_wilson_matching": {
+    "PS_bilinear_vertices": [
+      "Y_44 A_L H C_R",
+      "y_m B_L H D_R",
+      "y_c Cc_L H Ac_R",
+      "y_cb Dc_L H Bc_R"
+    ],
+    "PS_initial_data": "f(0)=E a-O b, g(0)=O a+E b",
+    "V47_characteristic_matrix": "K(m)=(-mS+B F)E+(G+m B S)O",
+    "actual_PS_current": [
+      "J_A=H sum_(j=1)^3 Y_4j Qc_j",
+      "J_C=H sum_(i=1)^3 Y_i4 Q_i",
+      "all other entries vanish before bilinear host vertices"
+    ],
+    "actual_host_kernel": "G_00[A,H]=(K_reg+N_reg V_0(H))^-1 N_reg",
+    "actual_model_fact": "there is no independent source-wall term linear in one bulk H; Theta/Sigma/source fluctuations enter the quadratic collar matrix A",
+    "actual_tree_effective_action": "W_eff=-1/2 J_0^T G_00[A,H] J_0 plus the nine local Q_i H Qc_j terms",
+    "bulk_transfers": "f(L)=R a+P b, g(L)=Q a+T b",
+    "collar_blocks": "K_reg=C R+D Q, N_reg=C P+D T; no division by D",
+    "complementary_trace_note": "the two Hc cubics couple the f/g component sectors but vanish when H=0, so the V47 zero-mode characteristic is unchanged",
+    "decoupling": "at fixed off-shell Euclidean p inside the NDA domain, increasing an invertible source matrix suppresses exchange; the limit is nonuniform at physical poles and at a distinct infinite-boundary extension",
+    "full_component_product": "use E_L for 8 PS-left components, E_R for 7 PS-right nonsinglets, and E_R with the full Theta+Sigma B for the SU5 singlet",
+    "generic_outer_current_diagnostic": "K_reg a+N_reg b=-J_L, so the formal outer-current response is -K_reg^-1 J_L",
+    "locality": "for M_i=0 and m=ip the exact collar kernel falls as exp[-p(L+epsilon)] when its leading matrix is nonsingular",
+    "pole_identity": "K_reg^-1=adj(K_reg)/C_reg(m), C_reg=det K_reg; every Wilson pole is a root of the undivided resolved-wall characteristic",
+    "source_fluctuation_Wilson": "delta_X W_eff=-1/2 J_0^T (partial G_00/partial A : partial A/partial X) J_0"
+  },
+  "field_table": {
+    "A": {
+      "kind": "bulk_trace",
+      "long_name": "HLF",
+      "qF": 1,
+      "rep": "16"
+    },
+    "B": {
+      "kind": "bulk_trace",
+      "long_name": "HLA",
+      "qF": -4,
+      "rep": "bar16"
+    },
+    "C": {
+      "kind": "bulk_trace",
+      "long_name": "HRA",
+      "qF": -1,
+      "rep": "16"
+    },
+    "D": {
+      "kind": "bulk_trace",
+      "long_name": "HRF",
+      "qF": 4,
+      "rep": "bar16"
+    },
+    "Phi": {
+      "kind": "source",
+      "qF": 0,
+      "rep": "210"
+    },
+    "S": {
+      "kind": "source",
+      "qF": 0,
+      "rep": "1"
+    },
+    "Sigma": {
+      "kind": "source",
+      "qF": 0,
+      "rep": "126"
+    },
+    "ThetaMinus": {
+      "kind": "source",
+      "qF": -3,
+      "rep": "1"
+    },
+    "ThetaPlus": {
+      "kind": "source",
+      "qF": 3,
+      "rep": "1"
+    },
+    "barSigma": {
+      "kind": "source",
+      "qF": 0,
+      "rep": "bar126"
+    }
+  },
+  "finite_collar_matching": {
+    "X": "X=eps m (A-eps m I)",
+    "derivative_expansion": "B_eps=A-eps m(I+A^2/3)+eps^2 m^2(2A/3+2A^3/15)+O((eps m)^3)",
+    "generator": "eps G=[[0,eps m I],[A-eps m I,0]]",
+    "renormalized_kernel": "B_eps(m)=D^-1 C",
+    "self_adjointness": "A=A^dagger makes the complete collar transfer J-unitary; the reduced energy-dependent problem must retain det(D) wall poles",
+    "thin_limit": "B_eps(m)->A uniformly on compact m sets as eps->0",
+    "transfer_blocks": "D=cosh(sqrt X), H=sinh(sqrt X)/sqrt X, C=(A-eps m I)H, U=eps m H",
+    "zero_energy_map": "B_eps(0)=A"
+  },
+  "integrity_checks": {
+    "PS_wall_census_includes_complementary_even_Hc_terms": true,
+    "actual_PS_to_PS_kernel_is_finite": true,
+    "adjugate_pole_identity": true,
+    "all_four_source_projectors_enter_actual_Wilson_kernel": true,
+    "charge_exhaustion_has_four_pair_types": true,
+    "collar_is_self_adjoint": true,
+    "collar_matches_B_at_zero": true,
+    "collar_series_matches_exact": true,
+    "cross_wall_zero_energy_kernel_is_finite": true,
+    "euclidean_high_momentum_is_exponentially_local": true,
+    "large_boundary_exchange_decouples_off_shell": true,
+    "leading_dimension_four_portal_count_is_12": true,
+    "leading_dimension_four_portals_are_charge_neutral": true,
+    "regulated_characteristic_has_three_replayed_roots": true,
+    "regulated_first_pole_is_simple": true,
+    "regulated_residue_matches": true,
+    "renormalizable_basis_has_16_raw_rows_including_constant": true,
+    "renormalizable_rows_are_charge_neutral": true,
+    "separation_locality_is_monotone": true,
+    "shifted_basis_has_14_nonconstant_coefficients": true,
+    "specified_B_is_full_rank": true
+  },
+  "leading_degree_four_two_bulk_trace_basis": {
+    "coefficient_rule": "one independent coefficient per displayed SO10 contraction at Lambda",
+    "count": 12,
+    "operators": [
+      {
+        "SO10_channel": "1",
+        "degree_4D_chiral": 4,
+        "fields": [
+          "S",
+          "ThetaPlus",
+          "A",
+          "B"
+        ],
+        "name": "S ThetaPlus (A B)_1",
+        "qF": 0
+      },
+      {
+        "SO10_channel": "210",
+        "degree_4D_chiral": 4,
+        "fields": [
+          "ThetaPlus",
+          "Phi",
+          "A",
+          "B"
+        ],
+        "name": "ThetaPlus Phi (A B)_210",
+        "qF": 0
+      },
+      {
+        "SO10_channel": "1",
+        "degree_4D_chiral": 4,
+        "fields": [
+          "S",
+          "ThetaMinus",
+          "C",
+          "D"
+        ],
+        "name": "S ThetaMinus (C D)_1",
+        "qF": 0
+      },
+      {
+        "SO10_channel": "210",
+        "degree_4D_chiral": 4,
+        "fields": [
+          "ThetaMinus",
+          "Phi",
+          "C",
+          "D"
+        ],
+        "name": "ThetaMinus Phi (C D)_210",
+        "qF": 0
+      },
+      {
+        "SO10_channel": "126",
+        "degree_4D_chiral": 4,
+        "fields": [
+          "S",
+          "barSigma",
+          "A",
+          "C"
+        ],
+        "name": "S barSigma (A C)_126",
+        "qF": 0
+      },
+      {
+        "SO10_channel": "10",
+        "degree_4D_chiral": 4,
+        "fields": [
+          "Phi",
+          "barSigma",
+          "A",
+          "C"
+        ],
+        "name": "Phi barSigma (A C)_10",
+        "qF": 0
+      },
+      {
+        "SO10_channel": "120",
+        "degree_4D_chiral": 4,
+        "fields": [
+          "Phi",
+          "barSigma",
+          "A",
+          "C"
+        ],
+        "name": "Phi barSigma (A C)_120",
+        "qF": 0
+      },
+      {
+        "SO10_channel": "126",
+        "degree_4D_chiral": 4,
+        "fields": [
+          "Phi",
+          "barSigma",
+          "A",
+          "C"
+        ],
+        "name": "Phi barSigma (A C)_126",
+        "qF": 0
+      },
+      {
+        "SO10_channel": "bar126",
+        "degree_4D_chiral": 4,
+        "fields": [
+          "S",
+          "Sigma",
+          "B",
+          "D"
+        ],
+        "name": "S Sigma (B D)_bar126",
+        "qF": 0
+      },
+      {
+        "SO10_channel": "10",
+        "degree_4D_chiral": 4,
+        "fields": [
+          "Phi",
+          "Sigma",
+          "B",
+          "D"
+        ],
+        "name": "Phi Sigma (B D)_10",
+        "qF": 0
+      },
+      {
+        "SO10_channel": "120",
+        "degree_4D_chiral": 4,
+        "fields": [
+          "Phi",
+          "Sigma",
+          "B",
+          "D"
+        ],
+        "name": "Phi Sigma (B D)_120",
+        "qF": 0
+      },
+      {
+        "SO10_channel": "bar126",
+        "degree_4D_chiral": 4,
+        "fields": [
+          "Phi",
+          "Sigma",
+          "B",
+          "D"
+        ],
+        "name": "Phi Sigma (B D)_bar126",
+        "qF": 0
+      }
+    ]
+  },
+  "leading_quadratic_response_basis": {
+    "exhaustiveness_boundary": "The holomorphic source and two-bulk-trace lists are exhaustive at the stated chiral degrees. This is not advertised as the regulator-independent complete distributional 5D dimension-five basis: operators containing odd traces and normal derivatives are convention-dependent and can be singular. Instead the finite collar is the definition of that quadratic response.",
+    "localized_quadratic_terms_that_must_be_declared": {
+      "FI_term": "int d4theta xiF V_F is allowed on the full-Spin10 x U1F source wall; xiF(Lambda) is a renormalized boundary datum. Its effect on D-flatness and the selected vacuum belongs to G3, not this tree quadratic portal match. No non-Abelian FI term exists.",
+      "canonical_kinetic": [
+        "int d4theta r_A h_A^dagger h_A",
+        "int d4theta r_B h_B^dagger h_B",
+        "int d4theta r_C h_C^dagger h_C",
+        "int d4theta r_D h_D^dagger h_D"
+      ],
+      "gauge_kinetic": [
+        "int d2theta tau10 Tr W10_alpha W10^alpha",
+        "int d2theta tauF WF_alpha WF^alpha",
+        "int d2theta (cS10 S/Lambda) Tr W10_alpha W10^alpha",
+        "int d2theta (cSF S/Lambda) WF_alpha WF^alpha",
+        "int d2theta (cPhi/Lambda) [Phi W10_alpha W10^alpha]_1"
+      ],
+      "linear_210_kinetic": [
+        "int d4theta [(zPhi_A/Lambda) h_A^dagger Phi h_A+(h.c.)]",
+        "int d4theta [(zPhi_B/Lambda) h_B^dagger Phi h_B+(h.c.)]",
+        "int d4theta [(zPhi_C/Lambda) h_C^dagger Phi h_C+(h.c.)]",
+        "int d4theta [(zPhi_D/Lambda) h_D^dagger Phi h_D+(h.c.)]"
+      ],
+      "linear_neutral_source_kinetic": [
+        "int d4theta [(zS_A S/Lambda)+(h.c.)] h_A^dagger h_A",
+        "int d4theta [(zS_B S/Lambda)+(h.c.)] h_B^dagger h_B",
+        "int d4theta [(zS_C S/Lambda)+(h.c.)] h_C^dagger h_C",
+        "int d4theta [(zS_D S/Lambda)+(h.c.)] h_D^dagger h_D"
+      ],
+      "normal_derivative_or_wrong_chirality": "encoded without a thin-brane field-value convention by the analytic matrix boundary response B_eps(m)=B0+m B1+...; in the square-collar scheme B1=-eps(I+B0^2/3)"
+    },
+    "off_diagonal_one_insertion_Kahler_terms": "none: pairs in the same Spin10 chirality have U1F differences +/-2 or +/-8, and opposite-chirality pairs cannot form a singlet with one S or Phi",
+    "remainder": "All additional local terms are O(Lambda^-2) in this fixed response scheme or have at least two extra source insertions. This is a truncation error, not a symmetry zero. Normal-derivative terms outside the collar scheme are independent counterterms and must be rematched if the regulator is changed.",
+    "scheme": "4D-normalized boundary traces h_i=H_i/sqrt(Lambda), supersymmetric operator basis modulo integration by parts, leading bulk equations of motion and the affine S shift"
+  },
+  "n_failed_integrity_checks": 0,
+  "numerical_certificate": {
+    "actual_PS_to_PS_matching": {
+      "G00_finite": true,
+      "G00_matrix": [
+        [
+          0.0,
+          2.493765663763,
+          -0.0,
+          -0.000249351008,
+          -0.016623400527,
+          0.0,
+          0.083124483163,
+          0.0
+        ],
+        [
+          2.493765663763,
+          0.0,
+          0.000187013256,
+          0.0,
+          0.0,
+          -0.020779250658,
+          -0.0,
+          -0.124686724744
+        ],
+        [
+          -0.0,
+          0.000187013256,
+          0.0,
+          -0.599938525003,
+          0.004098333166,
+          -0.0,
+          -0.002493510079,
+          -0.0
+        ],
+        [
+          -0.000249351008,
+          0.0,
+          -0.599938525003,
+          0.0,
+          -0.0,
+          -0.006830555276,
+          -0.0,
+          -0.004987020158
+        ],
+        [
+          -0.016623400527,
+          0.0,
+          0.004098333166,
+          -0.0,
+          -0.0,
+          -0.455370351757,
+          -0.0,
+          -0.332468010531
+        ],
+        [
+          0.0,
+          -0.020779250658,
+          -0.0,
+          -0.006830555276,
+          -0.455370351757,
+          0.0,
+          0.277056675442,
+          0.0
+        ],
+        [
+          0.083124483163,
+          -0.0,
+          -0.002493510079,
+          -0.0,
+          -0.0,
+          0.277056675442,
+          0.0,
+          1.662489663258
+        ],
+        [
+          0.0,
+          -0.124686724744,
+          -0.0,
+          -0.004987020158,
+          -0.332468010531,
+          0.0,
+          1.662489663258,
+          0.0
+        ]
+      ],
+      "W_eff_minus_half_JGJ": 0.02327485528561006,
+      "all_four_source_projectors_are_seen": true,
+      "host_Higgs_bilinear_vertices": {
+        "A_L--C_R": 0.03,
+        "B_L--D_R": -0.02,
+        "Cc_L--Ac_R": 0.025,
+        "Dc_L--Bc_R": -0.015
+      },
+      "representative_J0": [
+        0.7,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -0.4,
+        0.0
+      ],
+      "representative_coordinate_order": [
+        "A_L",
+        "B_L",
+        "Cc_L",
+        "Dc_L",
+        "Ac_R",
+        "Bc_R",
+        "C_R",
+        "D_R"
+      ],
+      "source_projector_Wilson_coefficients": {
+        "sigma_16": -1.450945058602244e-06,
+        "sigma_bar16": 1.7410133913911345e-06,
+        "theta_left": -0.05804203489622957,
+        "theta_right": -0.03869468992351114
+      },
+      "source_projector_derivative_norms": {
+        "sigma_16": 1.6874848971605227,
+        "sigma_bar16": 1.6998883467379335,
+        "theta_left": 6.230514267613828,
+        "theta_right": 2.8687251743627242
+      }
+    },
+    "boundary_determinant": 0.07471111111111113,
+    "boundary_matrix": [
+      [
+        0.0,
+        0.4,
+        0.2,
+        0.0
+      ],
+      [
+        0.4,
+        0.0,
+        0.0,
+        -0.16666666666667
+      ],
+      [
+        0.2,
+        0.0,
+        0.0,
+        0.6
+      ],
+      [
+        0.0,
+        -0.16666666666667,
+        0.6,
+        0.0
+      ]
+    ],
+    "boundary_rank": 4,
+    "collar": {
+      "B_epsilon_at_zero_equals_A_max_residual": 3.321540365694357e-16,
+      "scalar_exact": [
+        0.6936170768687188,
+        0.0
+      ],
+      "scalar_exact_minus_series_abs": 8.989794786362637e-08,
+      "scalar_quadratic_series": [
+        0.6936171667666666,
+        0.0
+      ],
+      "zero_mass_transfer_symplectic_residual": 0.0
+    },
+    "euclidean_locality": {
+      "exp_pL_scaled_norms": {
+        "1.0": 1.8398000113749107,
+        "2.0": 1.8393555457770012,
+        "4.0": 1.8696782311754545,
+        "8.0": 1.8950674195716009
+      },
+      "kernel_norms": {
+        "1.0": 0.6438154747952143,
+        "2.0": 0.22524091042316574,
+        "4.0": 0.0280369035451664,
+        "8.0": 0.00042613873977758045
+      },
+      "successive_large_p_ratios": {
+        "expected_exp_minus4": 0.01831563888873418,
+        "norm8_over_norm4": 0.015199208396572286
+      }
+    },
+    "large_boundary_off_shell_decoupling_at_p2": {
+      "kernel_norms": {
+        "1.0": 0.22524091042316574,
+        "16.0": 0.03797131635600871,
+        "2.0": 0.19028324500349875,
+        "4.0": 0.12998687578736878,
+        "8.0": 0.0734064387579144
+      },
+      "norm16_less_than_norm1": true,
+      "scope": "fixed Euclidean p=2 inside |p| epsilon<1; not uniform at p=0 or at the B=infinity spectral-flow endpoint"
+    },
+    "parameters": {
+      "L": 1.0,
+      "bulk_masses": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "collar_epsilon": 0.05,
+      "sigma_16": 0.2,
+      "sigma_bar16": -0.16666666666666666,
+      "theta_left": 0.4,
+      "theta_right": 0.6
+    },
+    "pole_certificate": {
+      "left": {
+        "adjugate_identity_max_residual": 2.6020852139652106e-17,
+        "det_K": [
+          0.01422929635753,
+          0.0
+        ],
+        "inverse_equals_adj_over_det_max_residual": 1.4210854715202004e-14
+      },
+      "right_singlet": {
+        "adjugate_identity_max_residual": 3.717661865012114e-17,
+        "det_K": [
+          -0.1300710137802,
+          0.0
+        ],
+        "inverse_equals_adj_over_det_max_residual": 2.220446049250313e-16
+      }
+    },
+    "regulated_spectral_kernel": {
+      "determinant_at_first_root_abs": 2.953664128545643e-13,
+      "first_root_is_simple_det_derivative": 0.9301030268053997,
+      "first_three_positive_signed_roots": [
+        0.5011737123453057,
+        1.1538853845722044,
+        1.8537031680163927
+      ],
+      "near_pole_residue_max_residual": 1.1725924509570218e-06,
+      "residue_formula": "Res K_reg^-1=adj(K_reg(m_n))/C_reg'(m_n)"
+    },
+    "separation_locality_at_p2": {
+      "kernel_norms": {
+        "0.5": 0.6147463227101551,
+        "1.0": 0.22524091042316574,
+        "1.5": 0.08344170074004817,
+        "2.0": 0.030727968806991177
+      },
+      "monotone_decrease": true
+    },
+    "zero_energy_cross_kernel": {
+      "both_finite": true,
+      "left_matrix_original_ABCD_order": [
+        [
+          0.0,
+          2.5,
+          -0.0,
+          0.0
+        ],
+        [
+          2.5,
+          -0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.5,
+          1.0,
+          0.0
+        ],
+        [
+          0.416666666667,
+          -0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "left_spectral_norm": 2.558336368008463,
+      "right_singlet_matrix_original_ABCD_order": [
+        [
+          1.0,
+          0.0,
+          -0.0,
+          -0.333333333333
+        ],
+        [
+          0.0,
+          1.0,
+          0.277777777778,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.666666666667
+        ],
+        [
+          0.0,
+          -0.0,
+          1.666666666667,
+          0.0
+        ]
+      ],
+      "right_singlet_spectral_norm": 1.7163876209663904
+    }
+  },
+  "portal_exhaustion": {
+    "SO10_survivors": [
+      "AB with ThetaPlus(S or Phi)",
+      "CD with ThetaMinus(S or Phi)",
+      "AC with barSigma(S or Phi)",
+      "BD with Sigma(S or Phi)"
+    ],
+    "charge_survivors_before_SO10": [
+      "AB",
+      "AC",
+      "BD",
+      "CD"
+    ],
+    "excluded_by_SO10_or_center": [
+      "AA",
+      "CC",
+      "BB",
+      "DD",
+      "AD",
+      "CB"
+    ],
+    "two_bulk_trace_charge_table": {
+      "AA": 2,
+      "AB": -3,
+      "AC": 0,
+      "AD": 5,
+      "BB": -8,
+      "BD": 0,
+      "CB": -5,
+      "CC": -2,
+      "CD": 3,
+      "DD": 8
+    },
+    "two_source_field_available_charges": [
+      -6,
+      -3,
+      0,
+      3,
+      6
+    ]
+  },
+  "primary_sources": [
+    {
+      "url": "https://arxiv.org/abs/hep-th/0106256",
+      "use": "5D N=1 hypermultiplets in 4D superspace and local boundary superpotentials"
+    },
+    {
+      "url": "https://arxiv.org/abs/hep-th/0109116",
+      "use": "complete 16/bar16 cubic and quartic SO(10) tensor channels"
+    },
+    {
+      "url": "https://arxiv.org/abs/1707.00580",
+      "use": "complete renormalizable 10/120/126/bar126/210 SO(10) coupling inventory"
+    },
+    {
+      "url": "https://arxiv.org/abs/hep-th/0302023",
+      "use": "localized kinetic and normal-derivative operators require a regulator and renormalization scheme"
+    },
+    {
+      "url": "https://arxiv.org/abs/1408.1852",
+      "use": "thin-brane and infinite-KK limits do not commute without an explicit prescription"
+    }
+  ],
+  "renormalizable_source_wall_basis": {
+    "all_charge_neutral": true,
+    "completeness_reason": "Spin10 tensor products are 16xbar16=1+45+210 and 16x16=10+120+126. U1F neutrality leaves exactly the four displayed two-spinor portals; the neutral 210+126+bar126 source terms are the standard complete retained-irrep renormalizable superpotential, with all neutral-singlet dressings through degree three included.",
+    "raw_basis": [
+      {
+        "SO10_channel": "1",
+        "degree_4D_chiral": 0,
+        "fields": [],
+        "name": "W0",
+        "qF": 0
+      },
+      {
+        "SO10_channel": "1",
+        "degree_4D_chiral": 1,
+        "fields": [
+          "S"
+        ],
+        "name": "f1 S",
+        "qF": 0
+      },
+      {
+        "SO10_channel": "1",
+        "degree_4D_chiral": 2,
+        "fields": [
+          "S",
+          "S"
+        ],
+        "name": "f2 S^2/2",
+        "qF": 0
+      },
+      {
+        "SO10_channel": "1",
+        "degree_4D_chiral": 2,
+        "fields": [
+          "ThetaPlus",
+          "ThetaMinus"
+        ],
+        "name": "muTheta ThetaPlus ThetaMinus",
+        "qF": 0
+      },
+      {
+        "SO10_channel": "210x210->1",
+        "degree_4D_chiral": 2,
+        "fields": [
+          "Phi",
+          "Phi"
+        ],
+        "name": "m Phi^2/2",
+        "qF": 0
+      },
+      {
+        "SO10_channel": "126xbar126->1",
+        "degree_4D_chiral": 2,
+        "fields": [
+          "Sigma",
+          "barSigma"
+        ],
+        "name": "M Sigma barSigma",
+        "qF": 0
+      },
+      {
+        "SO10_channel": "1",
+        "degree_4D_chiral": 3,
+        "fields": [
+          "S",
+          "S",
+          "S"
+        ],
+        "name": "f3 S^3/3",
+        "qF": 0
+      },
+      {
+        "SO10_channel": "1",
+        "degree_4D_chiral": 3,
+        "fields": [
+          "S",
+          "ThetaPlus",
+          "ThetaMinus"
+        ],
+        "name": "kappa S ThetaPlus ThetaMinus",
+        "qF": 0
+      },
+      {
+        "SO10_channel": "210x210->1",
+        "degree_4D_chiral": 3,
+        "fields": [
+          "S",
+          "Phi",
+          "Phi"
+        ],
+        "name": "m1 S Phi^2/2",
+        "qF": 0
+      },
+      {
+        "SO10_channel": "126xbar126->1",
+        "degree_4D_chiral": 3,
+        "fields": [
+          "S",
+          "Sigma",
+          "barSigma"
+        ],
+        "name": "M1 S Sigma barSigma",
+        "qF": 0
+      },
+      {
+        "SO10_channel": "210^3->1",
+        "degree_4D_chiral": 3,
+        "fields": [
+          "Phi",
+          "Phi",
+          "Phi"
+        ],
+        "name": "lambda Phi^3/3",
+        "qF": 0
+      },
+      {
+        "SO10_channel": "210x126xbar126->1",
+        "degree_4D_chiral": 3,
+        "fields": [
+          "Phi",
+          "Sigma",
+          "barSigma"
+        ],
+        "name": "eta Phi Sigma barSigma",
+        "qF": 0
+      },
+      {
+        "SO10_channel": "16xbar16->1",
+        "degree_4D_chiral": 3,
+        "fields": [
+          "ThetaPlus",
+          "A",
+          "B"
+        ],
+        "name": "tL ThetaPlus A B",
+        "qF": 0
+      },
+      {
+        "SO10_channel": "16xbar16->1",
+        "degree_4D_chiral": 3,
+        "fields": [
+          "ThetaMinus",
+          "C",
+          "D"
+        ],
+        "name": "tR ThetaMinus C D",
+        "qF": 0
+      },
+      {
+        "SO10_channel": "16x16->126",
+        "degree_4D_chiral": 3,
+        "fields": [
+          "barSigma",
+          "A",
+          "C"
+        ],
+        "name": "s16 barSigma A C",
+        "qF": 0
+      },
+      {
+        "SO10_channel": "bar16xbar16->bar126",
+        "degree_4D_chiral": 3,
+        "fields": [
+          "Sigma",
+          "B",
+          "D"
+        ],
+        "name": "sbar16 Sigma B D",
+        "qF": 0
+      }
+    ],
+    "raw_count_excluding_constant": 15,
+    "raw_count_including_constant": 16,
+    "shifted_scheme": {
+      "coefficient_redefinitions": "f1,f2,f3,m,M and W0 shift; no operator is forbidden",
+      "condition": "kappa != 0",
+      "field_redefinition": "S -> S-muTheta/kappa",
+      "independent_count_excluding_constant": 14,
+      "independent_count_including_constant": 15,
+      "removed_basis_element": "muTheta ThetaPlus ThetaMinus"
+    }
+  },
+  "renormalization_and_NDA_contract": {
+    "FI_supergravity_warning": "Constant FI coordinates are admissible data in the declared rigid 5D SUSY boundary EFT. A locally supersymmetric completion must replace or justify them (for example by field-dependent moment-map data); that belongs to G4.",
+    "NDA_domain": {
+      "background_expansion": "max(|S|,|Phi|,|Sigma|,|barSigma|,|Theta|)/Lambda<1",
+      "benchmark_units": "Lambda=20/L and epsilon=1/Lambda, so Lambda L=20 and p_max/Lambda=0.4 in the displayed Euclidean checks",
+      "boundary_couplings": "dimensionless eigenvalues of A_R and 4D boundary couplings remain perturbative (no assumed cancellation between unrelated coefficients)",
+      "bulk_gauge_condition": "g5^2 Lambda/(24 pi^3)<1 (declared domain; numerical verification belongs to G6)",
+      "derivative_expansion": "|p|/Lambda<1 and |p| epsilon<1 when the collar is expanded; the exact collar may be retained instead",
+      "geometry": "Lambda L >>1 and Lambda epsilon>=1"
+    },
+    "conditions": {
+      "B0": "B_R(0;mu_match)=A_R",
+      "B1_general_scheme": "dB_R/dm|0=-epsilon(I+A_R^2/3)+Z_ct/Lambda",
+      "B1_minimal_collar": "dB_R/dm|0=-epsilon(I+A_R^2/3)",
+      "FI": "xiF_0 and xiF_L are declared renormalized coefficients; solving their D equation is a G3 obligation",
+      "gauge": "Re tau_a>0",
+      "metrics": "all physical boundary K\u00e4hler eigenvalues >0"
+    },
+    "renormalization_scale": "mu_match=Lambda",
+    "renormalized_data": [
+      "four holomorphic portal tensors tL,tR,s16,sbar16 including their degree-four background corrections",
+      "positive PS-wall matrices Z_L,Z_R and positive diagonal source-wall trace metrics",
+      "source and PS boundary gauge kinetic coefficients with positive real parts",
+      "source and PS U1F FI coefficients xiF_L,xiF_0",
+      "finite-collar derivative counterterm Z_ct if a scheme other than the minimal square collar is chosen"
+    ],
+    "scheme_warning": "Changing the wall profile changes A_R,Z_ct and local contact terms, but not an observable after all coefficients are rematched. The audit proves tree matching in one scheme; it does not calculate the UV values."
+  },
+  "schema": "susy-v48-source-operator-wilson-audit-v1",
+  "scope_contract": {
+    "field_scheme": "4D-normalized boundary traces, affine S shift, leading-EOM/IBP reduced",
+    "holomorphic_order": "complete source action through renormalizable chiral degree three; complete two-bulk-trace portal sector through degree four",
+    "matching_scale": "Lambda",
+    "not_claimed": [
+      "all-order sparsity",
+      "UV-calculated Wilson coefficients",
+      "loop matching or RG closure",
+      "numerical proton/flavour/unification predictions"
+    ],
+    "quadratic_response_order": "complete declared source and PS wall quadratic data in the finite square-collar scheme; exact collar response retained instead of expanding odd-trace distributions",
+    "remainder": "pure-source chiral degree >=4 belongs to the G3 vacuum functional; two-bulk-trace chiral degree >=5 is the next portal order; additional regulator-independent distributional dimension-five claims are not made"
+  },
+  "selector_decision": {
+    "all_order_reason": "Neutral monomials such as ThetaPlus ThetaMinus, S, Phi^2 and Sigma barSigma dress every allowed portal indefinitely. Gauge symmetry therefore generates an infinite tower; a finite symmetry does not assign their numerical Wilson coefficients.",
+    "all_order_sparse_selector_exists_in_declared_fields": false,
+    "finite_selector_required_for_fixed_order_EFT": false,
+    "naturalness_boundary": "Generic O(1) coefficients are legitimate EFT data. Any phenomenological need for a parametrically small coefficient would require a symmetry, localization estimate or UV matching and is not assumed here.",
+    "reason": "Every gauge-allowed coefficient is admitted as independent matching data. No small forbidden coefficient is used in the exotic-lifting proof: finite nonzero Theta blocks lift the zero modes for arbitrary finite Sigma mixing."
+  },
+  "source_manifest": [
+    {
+      "path": "SUSY_V47_G1_CLOSURE_FRONTIER_AUDIT.json",
+      "sha256": "d9cda6a7b25ad3a59d57f0665e9dbd3d7888e372cad927e51b9722b79b004f9c"
+    },
+    {
+      "path": "SUSY_V47_FOUR_SPINOR_MIXED_KK_AUDIT.json",
+      "sha256": "d3f890e4fcfaa6db66ed92ad849f743ac2f5408ab3a77ba9f0534f9e0aa9af45"
+    },
+    {
+      "path": "SUSY_V47_SOURCE_COMPLETION_ROUTE_AUDIT.json",
+      "sha256": "782f66ce31b6b9669ec847768c614b9d7318a578888271c2bd7b593a08c14fdc"
+    },
+    {
+      "path": "test_susy_v48_source_operator_wilson_audit.py",
+      "sha256": "3b57eb10e1b3703410b64fba174941f530d9ae80c764873efbe15effb404be43"
+    }
+  ],
+  "status": "V48_FIXED_ORDER_SOURCE_PORTAL_BASIS_COMPLETE__FINITE_SELF_ADJOINT_COLLAR_MAP_EXACT__FULL_FOUR_SPINOR_CROSS_WALL_WILSON_KERNEL_MATCHED__NO_FINITE_SELECTOR_REQUIRED_FOR_DECLARED_WILSONIAN_EFT__ALL_ORDER_UV_COEFFICIENT_PREDICTION_AND_PHYSICAL_GATES_OPEN"
+}

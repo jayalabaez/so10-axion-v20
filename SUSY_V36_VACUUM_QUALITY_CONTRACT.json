@@ -1,0 +1,281 @@
+{
+  "anomalon_mass": [
+    [
+      "0",
+      "0",
+      "0",
+      "0",
+      "a"
+    ],
+    [
+      "0",
+      "0",
+      "0",
+      "b",
+      "0"
+    ],
+    [
+      "0",
+      "0",
+      "c",
+      "mu",
+      "0"
+    ],
+    [
+      "0",
+      "b",
+      "mu",
+      "d",
+      "0"
+    ],
+    [
+      "a",
+      "0",
+      "0",
+      "0",
+      "0"
+    ]
+  ],
+  "anomalon_mass_determinant": "a^2*b^2*c",
+  "benchmark_quality": {
+    "Asoft_GeV": 10000.0,
+    "Mreduced_GeV": 2.4e+18,
+    "chiQCD_GeV4": 3.26653399296e-05,
+    "fP_GeV": 500000000000.0,
+    "largest_fP_GeV_for_unit_P33_at_theta_1e-10": 1.8311558792169304e+16,
+    "log10_abs_theta_shift_from_unit_P33": -160.60392527450622,
+    "passes_abs_theta_below_1e-10": true
+  },
+  "cosmology_boundary": {
+    "E_over_N_if_single_light_PQ_axion": "8/3",
+    "GS_axion_mixing_and_stabilization_derived": false,
+    "NDW_if_single_light_PQ_axion": 4,
+    "fa_relation_if_single_light_PQ_axion": "fa=fP/4",
+    "isocurvature_and_nonthermal_restoration_checked": false,
+    "required_history": "PQ broken before inflation and never restored",
+    "residual_Z2_lightest_anomalon_relic_checked": false
+  },
+  "full_quality_boundary": {
+    "GS_exponential_spurions_sequestered_from_lower_P_powers": false,
+    "all_non_QCD_harmonics_bounded": false,
+    "fail_closed_requirements": [
+      "positive full anomalon scalar Hessian",
+      "unbroken residual Z2 and exact Ai=0 tree solution",
+      "explicit leading soft/Kahler 1PI matching bound on theta"
+    ],
+    "full_ring_breaking_degree": 10,
+    "full_ring_breaking_vanishes_at_tree_level_on_Ai_zero": true,
+    "heavy_anomalon_soft_loop_matching_done": false,
+    "polynomial_P_Pbar_selector_passes": true,
+    "quality_gate_closed": false,
+    "required_inequality": "sum_h |h| Lambda_h^4 < 1e-10 chi_QCD after all PS, gravitational, GS-stabilization, and hidden harmonics are matched",
+    "supersymmetric_Wilsonian_generation_after_tree_elimination": false
+  },
+  "full_singlet_operator_ring": {
+    "all_first_operators_contain_heavy_anomalons": true,
+    "chosen_anomalon_number_basis": "x=4 with integer Q(P)=2",
+    "first_breaking_degree": 10,
+    "first_breaking_operators": [
+      {
+        "PQ_charge_QP_equals_1": "33/2",
+        "fields": [
+          "P",
+          "P",
+          "A2",
+          "A2",
+          "A2",
+          "A2",
+          "A2",
+          "A2",
+          "A2",
+          "A17"
+        ],
+        "multiplicities": {
+          "A17": 1,
+          "A2": 7,
+          "P": 2
+        }
+      },
+      {
+        "PQ_charge_QP_equals_1": "33/2",
+        "fields": [
+          "A2",
+          "A2",
+          "A2",
+          "A2",
+          "A2",
+          "A2",
+          "A2",
+          "A2",
+          "A2",
+          "A15"
+        ],
+        "multiplicities": {
+          "A15": 1,
+          "A2": 9
+        }
+      }
+    ],
+    "search_max_degree": 12,
+    "vanish_on_classical_Ai_zero_vacuum": true
+  },
+  "global_PQ_fallback_rejected": {
+    "log10_required_coefficient_bounds_at_frozen_benchmark": {
+      "1": -66.49376031225843,
+      "11": 0.7824093546591371,
+      "3": -53.30736909656294,
+      "5": -39.865705375764136,
+      "7": -26.34832094102722,
+      "9": -12.793952940037133
+    },
+    "reason": "Z4R alone permits every odd pure-P superpotential power"
+  },
+  "pure_vev_selector": {
+    "minimum_exponent_pairs_P_Pbar": [
+      [
+        0,
+        33
+      ],
+      [
+        33,
+        0
+      ]
+    ],
+    "minimum_superpotential_degree": 33,
+    "operators": [
+      "Pbar^33",
+      "P^33"
+    ],
+    "search_max_degree": 100
+  },
+  "renormalizable_completeness": {
+    "all_32_unique_displayed_W_structures_have_Z4R_charge_two": true,
+    "all_32_unique_displayed_W_structures_have_Z66_charge_zero": true,
+    "all_32_unique_displayed_W_structures_preserve_accidental_PQ": true,
+    "allowed_count": 14,
+    "allowed_structural_monomials": [
+      [
+        "X"
+      ],
+      [
+        "Zp"
+      ],
+      [
+        "Nv",
+        "Nv"
+      ],
+      [
+        "A17",
+        "A16"
+      ],
+      [
+        "X",
+        "X",
+        "X"
+      ],
+      [
+        "X",
+        "X",
+        "Zp"
+      ],
+      [
+        "X",
+        "Zp",
+        "Zp"
+      ],
+      [
+        "X",
+        "P",
+        "Pbar"
+      ],
+      [
+        "Zp",
+        "Zp",
+        "Zp"
+      ],
+      [
+        "Zp",
+        "P",
+        "Pbar"
+      ],
+      [
+        "P",
+        "A15",
+        "A17"
+      ],
+      [
+        "P",
+        "A16",
+        "A16"
+      ],
+      [
+        "Pbar",
+        "A2",
+        "A32"
+      ],
+      [
+        "Pbar",
+        "A17",
+        "A17"
+      ]
+    ],
+    "anomalon_containing_count": 5,
+    "anomalon_containing_monomials": [
+      [
+        "A17",
+        "A16"
+      ],
+      [
+        "P",
+        "A15",
+        "A17"
+      ],
+      [
+        "P",
+        "A16",
+        "A16"
+      ],
+      [
+        "Pbar",
+        "A2",
+        "A32"
+      ],
+      [
+        "Pbar",
+        "A17",
+        "A17"
+      ]
+    ],
+    "dangerous_P_A32_allowed": false,
+    "enumeration_scope": "all gauge-singlet monomials of superfield degree <=3"
+  },
+  "schema": "susy-v36-vacuum-quality-contract-v1",
+  "two_driver_radial_system": {
+    "bilinears": [
+      "U=Sbar*S",
+      "V=P*Pbar"
+    ],
+    "coupling_matrix": [
+      [
+        "kappaPS",
+        "kappaPQ"
+      ],
+      [
+        "rhoPS",
+        "rhoPQ"
+      ]
+    ],
+    "driver_radial_holomorphic_Hessian_rank": 4,
+    "drivers": [
+      "X",
+      "Zp"
+    ],
+    "expected_remaining_chiral_PQ_Goldstone_multiplet": 1,
+    "rank_condition": "det(K)=kappaPS*rhoPQ-kappaPQ*rhoPS != 0",
+    "saxion_and_global_vacuum_selection_derived": false,
+    "target_F_flat_products": [
+      "U=vPS^2",
+      "V=fPQ^2"
+    ]
+  }
+}

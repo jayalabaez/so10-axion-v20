@@ -1,0 +1,287 @@
+{
+  "PS_SU5_projector_incidence": {
+    "SU5_complex_planes": [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        8,
+        9
+      ]
+    ],
+    "centralizer_dimensions": {
+      "PS": 21,
+      "SU5_after_source_phase_breaks_U1": 24,
+      "U5": 25
+    },
+    "checks": {
+      "J_squared_is_minus_identity": true,
+      "PS_and_SU5_projectors_commute": true,
+      "PS_projector_idempotent": true,
+      "P_and_J_commute": true,
+      "P_squared_is_identity": true,
+      "SU5_projector_idempotent": true,
+      "U5_projector_idempotent": true,
+      "dimensions_sum_to_45": true,
+      "four_sectors_resolve_identity": true
+    },
+    "incidence_sum": 45,
+    "n_failed_checks": 0,
+    "projector_sha256": {
+      "PS": "d407b5ad272ff739807f9a96b27b1171e0b0de7f50d5dfe8f4be21e1774c0ea6",
+      "PS_only": "15b9c4bc43fd648c943a2457d519d732df5d67451eefcd96eda6fb0bcc01b461",
+      "SU5": "584d5528e210bf880008ccde340017534b0a9cef162bc5acce8439be0b229c5f",
+      "SU5_only": "2410274b11d15d27cf10fdc02733e986c20b5738de6df5a2bb2bd1e0978f0f05",
+      "U1_in_U5": "024d36d799277d39ce7aca57789bbc0ab7844a17efbe11f6cbcfadd36629b98e",
+      "U5": "ca1702467b581b8936174a553ae661fba2e70e588e703eea60b0ada4fc471133",
+      "both": "dcae0e8cc744581a06e8669df2b06afc758ebc9e562abb1ee53d52c5d24091c2",
+      "neither": "b6cdd608164e0afdffa2963c86bcbf1d2a757d2ee9b6bc43a3066432fd59608c"
+    },
+    "simultaneous_incidence_dimensions": {
+      "PS_intersection_SU5__SM": 12,
+      "PS_only": 9,
+      "SU5_only": 12,
+      "neither": 12
+    },
+    "vector_PS_parity": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      -1,
+      -1,
+      -1,
+      -1
+    ]
+  },
+  "alignment_and_spectrum": {
+    "full_two_site_Rxi_and_alignment": {
+      "A_D_exact_zero": true,
+      "A_rank": 12,
+      "A_shape": [
+        12,
+        66
+      ],
+      "D_rank": 54,
+      "D_shape": [
+        66,
+        66
+      ],
+      "Goldstone_coordinates": 66,
+      "alignment_Hessian_rank": 12,
+      "combined_Goldstone_mass_determinant": "68719476736",
+      "combined_Goldstone_mass_nullity": 0,
+      "combined_Goldstone_mass_rank": 66,
+      "combined_Goldstone_mass_spectrum": {
+        "(3+sqrt(5))/2": 9,
+        "(3-sqrt(5))/2": 9,
+        "1": 12,
+        "2": 36
+      },
+      "conclusion": "The 54 broken gauge directions are eaten, 12 SM vectors remain massless, and A supplies a nonzero holomorphic mass to each of the 12 and only 12 pre-alignment physical chirals. No uneaten linearized Goldstone remains in this EFT chart.",
+      "gauge_vector_coordinates": 66,
+      "massless_SM_vectors": 12,
+      "neither_block": {
+        "A": [
+          [
+            1,
+            1
+          ]
+        ],
+        "D": [
+          [
+            -1
+          ],
+          [
+            1
+          ]
+        ],
+        "alignment_Hessian_eigenvalues_in_unit_mu_convention": [
+          0,
+          2
+        ],
+        "gauge_direction": [
+          -1,
+          1
+        ],
+        "physical_direction": [
+          1,
+          1
+        ]
+      },
+      "uneaten_chirals_before_alignment": 12,
+      "vector_mass_zero_multiplicity": 12
+    },
+    "holomorphic_alignment": {
+      "definition": "C=[P,U J_s U^{-1}], W_align=(mu f^2/64) Tr(C^2)",
+      "left_gauge_covariance": "for h in PS, [h,P]=0 and C -> h C h^{-1}",
+      "locality": "strictly local for the V52 two-site action because U is its single edge",
+      "renormalizability": "FAIL: holomorphic on the constrained complex group but nonpolynomial in canonical Lie-algebra coordinates; no elementary linear-sigma UV completion is supplied",
+      "right_gauge_covariance": "U->U g^{-1}, J_s->g J_s g^{-1}; hence U J_s U^{-1} is invariant"
+    },
+    "nonlinear_fields": {
+      "link": "mathcal_U in Spin(10,C), with vector image U=rho10(mathcal_U) and U -> h_PS U g_source^{-1}",
+      "source_orientation": "J_s=S J S^{-1} plus the source U(1) phase; together the 21-complex-dimensional Spin(10,C)/SU(5,C) chart",
+      "vacuum": "U=I_10, J_s=J"
+    },
+    "scope": "exact tangent-space theorem at the aligned vacuum; global sigma-model branches, K\u00e4hler completeness and quantum stability are not proved",
+    "single_orientation_linear_map": {
+      "Gram_nullity": 33,
+      "Gram_rank": 12,
+      "Gram_sha256": "6462c2f85a94bc58feaf09803e87505af94a25dd9842461b3e8fc962c62379e1",
+      "W_Hessian_after_mu_f2_over_64_normalization": "mu Pi_neither in one relative-orientation chart",
+      "definition": "L(X)=[P,[X,J]]",
+      "exact_identity": "L^T L = 32 Pi_neither",
+      "identity_holds": true,
+      "nonzero_Gram_eigenvalue": 32,
+      "nonzero_Gram_multiplicity": 12,
+      "rank": 12,
+      "sha256": "ad0247d3dc41a60c26b0739571ec09580e2e5b8a84bb1dd05ecf540d448e9610",
+      "shape": [
+        100,
+        45
+      ]
+    }
+  },
+  "candidate_contract": {
+    "gauge_sites": "PS_host x Spin(10)_source with shared U(1)F",
+    "link_count": 1,
+    "positive_metric_scope": "assumed positive analytic K\u00e4hler metric in a neighbourhood of the identity; no global K\u00e4hler completion is proved",
+    "reason_for_two_sites": "the endpoint alignment is then a genuinely local one-edge operator; on the V51 four-edge chain the same expression contains a Wilson product and is theory-space nonlocal unless separately mediated",
+    "same_action_as_V50_or_V51": false,
+    "spacetime": "finite four-dimensional N=1 gauged nonlinear sigma EFT",
+    "spin_lift_contract": "the fundamental nonlinear field is mathcal_U in Spin(10,C), not only its vector image U; rho16_plus/minus(mathcal_U) therefore exist for spinor hopping. Global bundle sectors are not classified."
+  },
+  "candidate_name": "two-site nonlinear Spin(10) link with PS/SU(5) alignment",
+  "core_sha256": "e8bf5bc17469e2e463fa12828278bcb957529a2de3d1cdc588cb8029c4c610ab",
+  "field_and_perturbativity_stress_test": {
+    "V51_per_edge": {
+      "left_site_index": 106,
+      "right_site_index": 182,
+      "unconstrained_link_plus_multiplier_coordinates": 1179
+    },
+    "V52_nonlinear_link": {
+      "adjoint_tangent_index_proxy": 8,
+      "alignment_elementary_coordinates": 0,
+      "complex_coordinates": 45,
+      "constraint_multiplier_coordinates": 0,
+      "coordinate_reduction_fraction": 0.9618320610687023,
+      "coordinate_reduction_from_V51": 1134,
+      "left_index_proxy_reduction_fraction": 0.9245283018867925,
+      "right_index_proxy_reduction_fraction": 0.9560439560439561,
+      "warning": "A gauged nonlinear sigma field is not an elementary linear 45 above its cutoff. T(45)=8 is only a background-field tangent proxy."
+    },
+    "convention": "b=3 C2(G)-sum_chiral T(R), T(10)=1",
+    "fully_nonlinear_source_hypothesis": {
+      "NDA_cutoff_over_vector_mass_4pi_over_g": 17.214206321039963,
+      "b_one_loop_proxy": 0,
+      "four_source_spinors_T": 8,
+      "link_tangent_proxy_T": 8,
+      "one_loop_logarithmic_pole_in_proxy": null,
+      "source_orientation_tangent_proxy_T": 8,
+      "status": "POSSIBLE_EFT_ONLY: removes the linear-source index catastrophe, but abandons the V51 Cartesian source Hessian and has no explicit UV completion",
+      "sum_T_proxy": 24
+    },
+    "gauge_coupling_at_matching_scale": 0.73,
+    "indices": {
+      "C2_Spin10": 8,
+      "T_10": 1,
+      "T_126": 35,
+      "T_16": 2,
+      "T_210": 56,
+      "T_45": 8
+    },
+    "linear_V51_source_retained": {
+      "210_plus_126_plus_bar126_T": 126,
+      "Landau_pole_over_matching_scale": 3.5100522699197283,
+      "b_one_loop": -118,
+      "controlled_at_g_0p73": false,
+      "four_source_spinors_T": 8,
+      "link_tangent_proxy_T": 8,
+      "sum_T": 142,
+      "tenfold_window_maximum_g": 0.5390710610030238,
+      "three_C2": 24
+    },
+    "verdict": "The lean link repairs V51's multiplier-induced interior running, but the source-faithful embedding still has a pole at 3.51 matching scales. The fully nonlinear variant is only an NDA-limited composite EFT hypothesis."
+  },
+  "gate_effect": {
+    "C2": "CANDIDATE_LOCALITY_PASS_ONLY_FOR_NEW_TWO_SITE_ACTION__NO_FROZEN_CLAUSE_PROMOTION",
+    "C3": "PARTIAL: exact local Goldstone/vector/alignment rank is complete, but the full interacting physical pencil and UV field completion are absent",
+    "C4": "PARTIAL: a positive local K\u00e4hler chart can be chosen, but global K\u00e4hler completeness and radiative stability are unproved",
+    "C5": "OPEN_FOR_NEW_ACTION: no one-loop matching or scale-cancellation audit",
+    "C6": "UNASSESSED_FOR_NEW_ACTION: no selector/naturalness inheritance",
+    "C7": "OPEN_FOR_NEW_ACTION: V51 operator tensors cannot be inherited without matching",
+    "G2_closed": false,
+    "V51_12_chiral_subproblem": "RESOLVED_EXACTLY_INSIDE_THE_NEW_TWO_SITE_NONLINEAR_EFT",
+    "candidate_UV_viability": "FAIL_AS_COMPLETION: nonlinear EFT has no elementary UV completion; retaining the linear source gives pole ratio 3.51 at g=0.73",
+    "gates_promoted": []
+  },
+  "integrity_checks": {
+    "SM_vector_count_preserved": true,
+    "alignment_Gram_exact_projector": true,
+    "alignment_annihilates_gauge_orbit": true,
+    "alignment_map_rank12": true,
+    "endpoint_projectors_exact": true,
+    "incidence_is_12_9_12_12": true,
+    "linear_source_pole_not_hidden": true,
+    "no_alignment_elementary_fields": true,
+    "nonlinear_EFT_not_called_renormalizable": true,
+    "postalignment_Goldstone_block_full_rank": true,
+    "prealignment_has_12_residual_chirals": true
+  },
+  "kill_tests": {
+    "a_chart_projector_was_not_substituted_for_a_symmetry_argument": true,
+    "four_site_nonlocality_not_hidden": true,
+    "linear_source_Landau_pole_not_hidden": true,
+    "no_frozen_clause_inherited": true,
+    "nonrenormalizable_sigma_model_not_called_UV_completion": true
+  },
+  "n_failed_integrity_checks": 0,
+  "primary_sources": [
+    "https://arxiv.org/abs/hep-th/0104005",
+    "https://arxiv.org/abs/hep-th/0006025",
+    "https://arxiv.org/abs/hep-th/0209266"
+  ],
+  "provenance": {
+    "existing_files_modified": false,
+    "upstream_sha256": {
+      "SUSY_V51_CARTESIAN_SOURCE_HESSIAN_AUDIT.json": "a0166f4ff393f3ea00d7bbced7b7da2a15ac7d019f07338e140245561fd7b109",
+      "SUSY_V51_DEGREE4_CARTESIAN_FACTOR_AUDIT.json": "9277f1430d2fc5c929e14a7d248b6f8b528cd7b1fa51637c5e3ec1bce828afa7",
+      "SUSY_V51_NEW_PHYSICS_CANDIDATE_INTEGRATION_AUDIT.json": "0aac672c16c034f64014e280562763b3b09a17bbb4c9e61ac411c07ab8ea0d8f",
+      "SUSY_V51_PHYSICAL_SOURCE_ORBIT_AUDIT.json": "ae337d9b4f97a3ed7e537320569487214a0f34751c2803e317f2c03678245282",
+      "SUSY_V51_REPRESENTATION_FAITHFUL_MEDIATOR_MOOSE_AUDIT.json": "0e00dcddbfb569240bc43a676c863f8360d76b4fcca35d8617dd781f67b795cf"
+    }
+  },
+  "schema": "susy-spin10-v52-lean-nonlinear-alignment-v1",
+  "sharp_next_obligations": [
+    "construct an anomaly-safe linear or calculable composite UV completion of the Spin(10,C) link and source coset",
+    "derive the alignment coefficient and sign from that completion rather than insert it as an EFT parameter",
+    "rebuild the source superpotential, Hessian and operator inventory in the nonlinear-source action",
+    "compute the complete one-loop physical matching and RG cancellation below the sigma cutoff",
+    "prove global target-space/K\u00e4hler consistency and classify remote vacua",
+    "match observables to the frozen V50 target before any G2 clause can move"
+  ],
+  "status": "V52_TWO_SITE_N1_NONLINEAR_SPIN10_LINK_EFT__EXACT_PS_SU5_INCIDENCE_AND_RANK12_ALIGNMENT_HESSIAN__ALL12_A5_LIKE_CHIRALS_LIFTED_WITHOUT_MULTIPLIER_FIELDS__HOLOMORPHIC_BUT_NONRENORMALIZABLE_SIGMA_MODEL__LINEAR_SOURCE_POLE_RATIO3P51_AND_COMPOSITE_SOURCE_UV_OPEN__NEW_ACTION_NOT_G2_CLOSURE",
+  "what_is_repaired": [
+    "567 V51 constraint multipliers are absent",
+    "the exact 12-dimensional neither-endpoint sector is identified",
+    "all 12 residual A5-like chirals receive a holomorphic local EFT mass",
+    "the alignment Hessian is zero on all 54 broken gauge orbits",
+    "the 12 massless SM gauge vectors are unchanged"
+  ]
+}

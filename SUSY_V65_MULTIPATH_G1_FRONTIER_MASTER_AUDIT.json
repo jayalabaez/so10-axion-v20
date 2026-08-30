@@ -1,0 +1,1242 @@
+{
+  "comparison_conclusion": {
+    "Spin11": "The V64 crisis is resolved honestly: the orphans cannot be lifted at the GUT scale in any classified channel, but they are exactly the charge-zero class that the mu mechanism already lifts at m_3/2, with baryon-safe portals and an exact GS-IR closure.  The route now stands or falls on numerics: unification with Delta b = (2,3,1/5), orphan cosmology, and the soft spectrum.",
+    "frontier": "Route B remains the live candidate; its next obligation is the first fully numerical one in the program: the two-loop unification test with the exact orphan Delta b.",
+    "gauged_U1R": "Route C completes the integrated seed and 270-singlet parity problem, then exactly rejects the existing bulk GS direction at three fixed points.",
+    "heterotic": "The live calculation is a decisive advance: the 92-state charge ambiguity is conditionally resolved, and the Kappl candidate fails corrected visible/hidden universality throughout the tested Abelian basis. Full-CFT class preservation and GS completion are still open, so this is not a universal heterotic no-go."
+  },
+  "consolidated_theory_card": {
+    "action_inventory": [
+      "bulk: 5D N=1 Spin(11) super-Yang-Mills on an interval with projectors P0=diag(+^10,-), P1=diag(+^4,-^7)",
+      "bulk: mirror-paired 32 mediator hypermultiplets (superalgebra R charges (1,1))",
+      "bulk: one axion multiplet with faithful quarter-period Z4R shift and wall couplings (3,1,1,3) mod 4",
+      "y=0 wall: three matter 16s at R charge 1 (Yukawas via the mediator Schur kernel)",
+      "y=0 wall: rank sector C(16,0)+Cbar(16bar,0)+T(10,2)+S(1,2) with M_T=0 forced and <S>=0 exact",
+      "symmetry: Z4R = order-four subgroup of the orbifold-preserved SU(2)R Cartan; g^2 acts as exact R parity",
+      "IR remnant: the vectorlike orphan pair (3,2,+1/6)+(3bar,2,-1/6) at m_3/2 with baryon-safe portals"
+    ],
+    "certified_passes": [
+      "exactly two weak Higgs doublet zero modes from the 55-generator projector enumeration",
+      "rank breaking with full-rank 5+5bar mass, det = -lambda lambdabar v^2, M_T not needed",
+      "unique Z4R selector class from the exhaustive 89999-assignment scan (V61)",
+      "all dimension-five proton operators forbidden to all orders in W and at dimension five in K; mu doubly forbidden",
+      "exact per-wall localized Z4R ledger with three integrated-matching validations (V62)",
+      "unique quantized GS wall couplings (3,1,1,3) mod 4 with faithful odd quarter-period shift (V62)",
+      "exact N x (N+1) null-mode theorem: twelve Q-type orphan components survive (V64)",
+      "orphan-included IR ledger (1,-2) equals the wall sum and is cancelled by the V62 couplings with no WZ term (V64+V65)",
+      "six GUT-scale lifting channels closed exactly; the orphan bilinear is charge-zero GM class with mu (V65)",
+      "unique baryon-safe decay portals (3,3) and (-5,-1) forced by X neutrality (V65)",
+      "exact R parity survives <W> != 0: stable LSP, decaying orphans"
+    ],
+    "explicitly_absent": [
+      "no Wess-Zumino inflow term: the V63 claim is retracted and the corrected ledger needs none",
+      "no GUT-scale orphan mass: excluded in all six classified channels"
+    ],
+    "honesty_clause": "this card is the maximal candidate assembled from one action; every listed pass is bound by a hash-pinned audit, every gap is listed, the V63 retraction is incorporated, and the theory is not claimed complete",
+    "name": "5D SUSY Spin(11) gauge-Higgs grand unification on S1/(Z2xZ2') with an exact Z4R selector, a two-wall Green-Schwarz sector, and a gravitino-scale orphan pair",
+    "open_obligations": [
+      "unification numerics with Delta b = (2,3,1/5) at m_3/2",
+      "orphan lifetimes, relic behavior, collider limits",
+      "SUSY-breaking sector fixing mu, B-mu and the orphan mass together",
+      "saxion stabilization; Dai-Freed phase with the corrected spectrum",
+      "exact KK determinant, realistic flavor fit, UV regulator",
+      "G2-G8: Wilsonian action, vacuum/Hessian, cosmology, precision running, proton lifetime number, CKM/PMNS likelihood"
+    ]
+  },
+  "core_sha256": "5b3056510129107959a6725139942307fc47b8cf56b375511a72cf9c6c8e58b8",
+  "cross_route_composition_rule": {
+    "aggregated_G1_closure": false,
+    "cross_route_splicing_allowed": false,
+    "logical_rule": "Strict G1 must be proved by one versioned action. The Spin(11) candidate with its GS sector and orphan lift, conditional heterotic charges and a gauged-U1R lattice cannot be conjoined across inequivalent actions.",
+    "route_specific_obstructions_remain_scoped": true
+  },
+  "gate_ledger": [
+    {
+      "V65_master_closed": false,
+      "cross_route_aggregation_used": false,
+      "decision": "OPEN: the V64 rejection is upgraded to conditional viability. Six GUT-scale lifting channels are closed exactly; the orphan pair is lifted at m_3/2 by the same GM mechanism as mu, decays through baryon-safe portals, and the V62 GS couplings cancel the corrected IR ledger with no WZ term.  The soft spectrum, unification numerics, cosmology, Dai-Freed, KK determinant and UV regulator remain absent; routes A60 and C retain their independent obstructions.",
+      "gate": "G1",
+      "status": "OPEN"
+    },
+    {
+      "V65_master_closed": false,
+      "cross_route_aggregation_used": false,
+      "decision": "OPEN: V65 adds no same-action proof of G2; the prior fail-closed frontier remains: OPEN: the coefficient-level 4D theory now contains an unremoved vectorlike colored pair in addition to the unsolved flavor/soft sectors. Routes A60 and C remain unchanged with their own scoped obstructions; no cross-route splice is allowed.",
+      "gate": "G2",
+      "status": "OPEN"
+    },
+    {
+      "V65_master_closed": false,
+      "cross_route_aggregation_used": false,
+      "decision": "OPEN: V65 adds no same-action proof of G3; the prior fail-closed frontier remains: OPEN: compactification and saxion stabilization remain absent. Routes A60 and C remain unchanged with their own scoped obstructions; no cross-route splice is allowed.",
+      "gate": "G3",
+      "status": "OPEN"
+    },
+    {
+      "V65_master_closed": false,
+      "cross_route_aggregation_used": false,
+      "decision": "OPEN: V65 adds no same-action proof of G4; the prior fail-closed frontier remains: OPEN WITH EXACT FAILURE: the two gauge-Higgs doublets survive, but the complete post-rank spectrum fails the zero-colored-chiral requirement. Routes A60 and C remain unchanged with their own scoped obstructions; no cross-route splice is allowed.",
+      "gate": "G4",
+      "status": "OPEN"
+    },
+    {
+      "V65_master_closed": false,
+      "cross_route_aggregation_used": false,
+      "decision": "OPEN: V65 adds no same-action proof of G5; the prior fail-closed frontier remains: OPEN: arithmetic R parity is retained, but the spectrum and axino/LSP cosmology are not viable or computed. Routes A60 and C remain unchanged with their own scoped obstructions; no cross-route splice is allowed.",
+      "gate": "G5",
+      "status": "OPEN"
+    },
+    {
+      "V65_master_closed": false,
+      "cross_route_aggregation_used": false,
+      "decision": "OPEN: V65 adds no same-action proof of G6; the prior fail-closed frontier remains: OPEN: inflation, reheating, and defect history remain absent. Routes A60 and C remain unchanged with their own scoped obstructions; no cross-route splice is allowed.",
+      "gate": "G6",
+      "status": "OPEN"
+    },
+    {
+      "V65_master_closed": false,
+      "cross_route_aggregation_used": false,
+      "decision": "OPEN: V65 adds no same-action proof of G7; the prior fail-closed frontier remains: OPEN WITH RETRACTION: the V63 rank-VEV-shifted X/Y scale claim is withdrawn; no proton lifetime is derived. Routes A60 and C remain unchanged with their own scoped obstructions; no cross-route splice is allowed.",
+      "gate": "G7",
+      "status": "OPEN"
+    },
+    {
+      "V65_master_closed": false,
+      "cross_route_aggregation_used": false,
+      "decision": "OPEN: V65 adds no same-action proof of G8; the prior fail-closed frontier remains: OPEN: no UV completion, full quantum definition, or quantified predictivity score exists. Routes A60 and C remain unchanged with their own scoped obstructions; no cross-route splice is allowed.",
+      "gate": "G8",
+      "status": "OPEN"
+    }
+  ],
+  "input_core_hashes": {
+    "v59_gauged_u1r": "27b4e032ff10065b534c1c62c2adf88f677b07c228f243b5376227fdb307ac8d",
+    "v60_live_heterotic": "096537e4701bea02c8d6a3563adfd24b4247c90a8258621eef6c2ce801991ecd",
+    "v64_master": "2840d49f02b4eafd75ca856657ea938e0543e35e7e5c8dab5760f9a908b63e16",
+    "v65_orphan_lift": "b87696403fb46c4a6b044be8abe58dd5f82b63a83a58fff262a6f00bdd6914ae"
+  },
+  "integrity_checks": {
+    "V64_route_B_is_replaced_not_mutated": true,
+    "action_upgraded_not_completed": true,
+    "all_G1_to_G8_gates_remain_open": true,
+    "all_four_input_cores_are_canonical_and_expected": true,
+    "cross_route_splicing_is_forbidden": true,
+    "gm_lift_and_r_parity_bound": true,
+    "gs_ir_closure_bound_no_wz": true,
+    "no_route_has_same_action_microscopic_completion": true,
+    "portals_unique_and_baryon_safe": true,
+    "route_A60_is_directly_rebound_unchanged": true,
+    "route_C_is_directly_rebound_unchanged": true,
+    "six_channels_closed_and_bound": true,
+    "theory_card_corrected": true,
+    "unification_shift_bound": true
+  },
+  "lineage": {
+    "V63_master_core_via_parent": "89a16112997c2e0fb8439209b4c17e160f165c20b846697ee7da4a93cc22f3e3",
+    "parent_master_core": "2840d49f02b4eafd75ca856657ea938e0543e35e7e5c8dab5760f9a908b63e16",
+    "supersession": {
+      "V64_master_modified": false,
+      "replacement_route": {
+        "classification": "CONDITIONALLY_VIABLE_WITH_GRAVITINO_SCALE_ORPHAN_EXOTICS__GUT_SCALE_LIFT_EXCLUDED_IN_ALL_CLASSIFIED_CHANNELS__BARYON_SAFE_DECAY_PORTALS_FORCED__UNIFICATION_AND_COSMOLOGY_TESTS_OPEN",
+        "route_core": "b87696403fb46c4a6b044be8abe58dd5f82b63a83a58fff262a6f00bdd6914ae",
+        "route_id": "B65"
+      },
+      "route_A60_core_unchanged": "096537e4701bea02c8d6a3563adfd24b4247c90a8258621eef6c2ce801991ecd",
+      "route_C_core_unchanged": "27b4e032ff10065b534c1c62c2adf88f677b07c228f243b5376227fdb307ac8d",
+      "superseded_route": {
+        "classification": "EXACT_COUNTEREXAMPLE_TO_V63_GOLDSTONE_DISSOLUTION__CURRENT_SPIN11_ACTION_HAS_NORMALIZABLE_COLORED_CHIRAL_ZERO_MODES",
+        "master_core": "2840d49f02b4eafd75ca856657ea938e0543e35e7e5c8dab5760f9a908b63e16",
+        "route_core": "fe36b2f6f0e1786253827183bf7f8dc2dd9e15a94b7f036d5e9e6e0739717a1d",
+        "route_id": "B64"
+      },
+      "what_is_not_resolved": "unification numerics with the exact Delta b, orphan cosmology and collider limits, the SUSY-breaking sector, saxion stabilization, Dai-Freed, the KK determinant/flavor fit and a UV regulator; strict G1 stays open",
+      "what_is_resolved": "the V64 repair question: no GUT-scale lift exists in any classified channel, but the charge-zero orphan bilinear is lifted at the gravitino scale by the same mechanism as mu, with unique baryon-safe portals and an exact GS-IR closure without WZ"
+    }
+  },
+  "n_failed_integrity_checks": 0,
+  "n_integrity_checks": 14,
+  "question": "After the orphan lifting classification, does any route close strict G1 in one action, and what is the corrected candidate theory?",
+  "route_matrix": [
+    {
+      "G1_closed": false,
+      "bound_core_sha256": "096537e4701bea02c8d6a3563adfd24b4247c90a8258621eef6c2ce801991ecd",
+      "candidate_G1_completion_rejected": true,
+      "carried_forward_unchanged_from_V60_master_core": "35395532eaf625886b704ed25b7fa8525482ec1d53b94ccc96e7858d6425898e",
+      "carried_forward_unchanged_from_V61_master_core": "a230fda5699b3bd81552317b94733a9f537b0e9ae2a6c35f644830511fa7a810",
+      "carried_forward_unchanged_from_V62_master_core": "4e1344fbaa148c0369417918e3e39d2c94282d8db568a8ec6fa01522e680cdf0",
+      "carried_forward_unchanged_from_V64_master_core": "2840d49f02b4eafd75ca856657ea938e0543e35e7e5c8dab5760f9a908b63e16",
+      "classification": "KAPPL_CANDIDATE_REJECTED_IN_TESTED_CORRECTED_BASIS__NOT_UNIVERSAL_HETEROTIC_NO_GO",
+      "closed_gates": [],
+      "complete_tested_Abelian_basis_scan": {
+        "available_U1_and_printed_SG_cannot_repair": true,
+        "coefficients_tested": 32,
+        "continuous_U1_columns_all_universal": true,
+        "domain": "c_i in Z4 with c1+c2+c3 odd, so W has charge 2 mod4",
+        "no_combination_in_tested_basis_repairs": true,
+        "residue_pattern_counts": {
+          "0,0,0,1,1": 16,
+          "1,1,1,0,0": 16
+        },
+        "scope_caveat": "The no-repair statement covers the nine continuous U(1) generators and six printed non-R space-group Z2 generators of this exact Orbifolder action. It does not exclude an enlarged sector-permuting symmetry, extra threshold counterterms, or an additional axion not represented by these charge mixings.",
+        "space_group_mixings_enumerated": 64,
+        "space_group_repair_exists": false,
+        "universal_case_count": 0,
+        "universal_case_exists": false
+      },
+      "conditional_charge_reconstruction": {
+        "all_affine_hg_equations_pass": true,
+        "all_oscillators_absent": true,
+        "changed_field_count": 6,
+        "changed_fields": [
+          {
+            "corrected_q_mod4": 2,
+            "field": "F_41",
+            "gamma_h": "1/2",
+            "old_q_mod4": 0,
+            "orbifolder_field_no": 102
+          },
+          {
+            "corrected_q_mod4": 0,
+            "field": "F_42",
+            "gamma_h": "1/2",
+            "old_q_mod4": 2,
+            "orbifolder_field_no": 103
+          },
+          {
+            "corrected_q_mod4": 2,
+            "field": "F_80",
+            "gamma_h": "1/2",
+            "old_q_mod4": 0,
+            "orbifolder_field_no": 180
+          },
+          {
+            "corrected_q_mod4": 0,
+            "field": "F_81",
+            "gamma_h": "1/2",
+            "old_q_mod4": 2,
+            "orbifolder_field_no": 181
+          },
+          {
+            "corrected_q_mod4": 2,
+            "field": "F_91",
+            "gamma_h": "1/2",
+            "old_q_mod4": 0,
+            "orbifolder_field_no": 202
+          },
+          {
+            "corrected_q_mod4": 0,
+            "field": "F_92",
+            "gamma_h": "1/2",
+            "old_q_mod4": 2,
+            "orbifolder_field_no": 203
+          }
+        ],
+        "charge_formula": "qX + R2_corrected + 2 n3 (mod 4)",
+        "field_count": 92,
+        "h_g_equation": "(1-A_g) mu = (rho2-1) lambda for h_g=(1,mu)",
+        "status": "PASS",
+        "vendored_fixture_matches_expected": true,
+        "vendored_fixture_sha256": "79ef2c19fd0b9a563ac36a06a3099e4b240966ef3dd8fe968fe4029d9b237f51"
+      },
+      "corrected_hidden_anomaly_certificate": {
+        "anomaly_representatives": [
+          "3",
+          "1",
+          "7",
+          "2",
+          "2"
+        ],
+        "factor_order": [
+          "SU3_C",
+          "SU2_L",
+          "SU3_hidden",
+          "SU2_hidden_1",
+          "SU2_hidden_2"
+        ],
+        "formula": "A_G=C2(G)+sum_i (q_i-1) T_G(R_i), eta=M/2=2",
+        "hidden_nonuniversality": true,
+        "residue_vector_mod2": [
+          "1",
+          "1",
+          "1",
+          "0",
+          "0"
+        ],
+        "universal": false
+      },
+      "direct_core_rebound_in_V61": true,
+      "direct_core_rebound_in_V62": true,
+      "direct_core_rebound_in_V63": true,
+      "direct_core_rebound_in_V65": true,
+      "full_CFT_scope_obstruction": {
+        "all_odd_plane_R_tau_class_scan": {
+          "R_type_occupied_flip_counts": [
+            1,
+            3
+          ],
+          "class_preserving_count": 0,
+          "coefficient_domain": "c_i in Z4 and c1+c2+c3 odd",
+          "combinations_tested": 32,
+          "derivation": "point-group conjugation flips an even number of tau's occupied half-components, while c1+c2+c3 odd implies an odd number of odd c_i and hence an odd number of flipped occupied half-components",
+          "every_allowed_combination_fails_class_preservation": true,
+          "independent_rows_match_upstream_certificate": true,
+          "point_group_occupied_flip_counts": [
+            0,
+            2
+          ],
+          "point_group_orbit_size": 4,
+          "rows": [
+            {
+              "coefficients_mod4": [
+                0,
+                0,
+                1
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                3
+              ],
+              "rho_tau": [
+                "0",
+                "1/2",
+                "0",
+                "1/2",
+                "0",
+                "-1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                0,
+                0,
+                3
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                3
+              ],
+              "rho_tau": [
+                "0",
+                "1/2",
+                "0",
+                "1/2",
+                "0",
+                "-1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                0,
+                1,
+                0
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                2
+              ],
+              "rho_tau": [
+                "0",
+                "1/2",
+                "0",
+                "-1/2",
+                "0",
+                "1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                0,
+                1,
+                2
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                2
+              ],
+              "rho_tau": [
+                "0",
+                "1/2",
+                "0",
+                "-1/2",
+                "0",
+                "1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                0,
+                2,
+                1
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                3
+              ],
+              "rho_tau": [
+                "0",
+                "1/2",
+                "0",
+                "1/2",
+                "0",
+                "-1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                0,
+                2,
+                3
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                3
+              ],
+              "rho_tau": [
+                "0",
+                "1/2",
+                "0",
+                "1/2",
+                "0",
+                "-1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                0,
+                3,
+                0
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                2
+              ],
+              "rho_tau": [
+                "0",
+                "1/2",
+                "0",
+                "-1/2",
+                "0",
+                "1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                0,
+                3,
+                2
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                2
+              ],
+              "rho_tau": [
+                "0",
+                "1/2",
+                "0",
+                "-1/2",
+                "0",
+                "1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                1,
+                0,
+                0
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                1
+              ],
+              "rho_tau": [
+                "0",
+                "-1/2",
+                "0",
+                "1/2",
+                "0",
+                "1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                1,
+                0,
+                2
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                1
+              ],
+              "rho_tau": [
+                "0",
+                "-1/2",
+                "0",
+                "1/2",
+                "0",
+                "1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                1,
+                1,
+                1
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 3,
+              "odd_planes": [
+                1,
+                2,
+                3
+              ],
+              "rho_tau": [
+                "0",
+                "-1/2",
+                "0",
+                "-1/2",
+                "0",
+                "-1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                1,
+                1,
+                3
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 3,
+              "odd_planes": [
+                1,
+                2,
+                3
+              ],
+              "rho_tau": [
+                "0",
+                "-1/2",
+                "0",
+                "-1/2",
+                "0",
+                "-1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                1,
+                2,
+                0
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                1
+              ],
+              "rho_tau": [
+                "0",
+                "-1/2",
+                "0",
+                "1/2",
+                "0",
+                "1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                1,
+                2,
+                2
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                1
+              ],
+              "rho_tau": [
+                "0",
+                "-1/2",
+                "0",
+                "1/2",
+                "0",
+                "1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                1,
+                3,
+                1
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 3,
+              "odd_planes": [
+                1,
+                2,
+                3
+              ],
+              "rho_tau": [
+                "0",
+                "-1/2",
+                "0",
+                "-1/2",
+                "0",
+                "-1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                1,
+                3,
+                3
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 3,
+              "odd_planes": [
+                1,
+                2,
+                3
+              ],
+              "rho_tau": [
+                "0",
+                "-1/2",
+                "0",
+                "-1/2",
+                "0",
+                "-1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                2,
+                0,
+                1
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                3
+              ],
+              "rho_tau": [
+                "0",
+                "1/2",
+                "0",
+                "1/2",
+                "0",
+                "-1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                2,
+                0,
+                3
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                3
+              ],
+              "rho_tau": [
+                "0",
+                "1/2",
+                "0",
+                "1/2",
+                "0",
+                "-1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                2,
+                1,
+                0
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                2
+              ],
+              "rho_tau": [
+                "0",
+                "1/2",
+                "0",
+                "-1/2",
+                "0",
+                "1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                2,
+                1,
+                2
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                2
+              ],
+              "rho_tau": [
+                "0",
+                "1/2",
+                "0",
+                "-1/2",
+                "0",
+                "1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                2,
+                2,
+                1
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                3
+              ],
+              "rho_tau": [
+                "0",
+                "1/2",
+                "0",
+                "1/2",
+                "0",
+                "-1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                2,
+                2,
+                3
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                3
+              ],
+              "rho_tau": [
+                "0",
+                "1/2",
+                "0",
+                "1/2",
+                "0",
+                "-1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                2,
+                3,
+                0
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                2
+              ],
+              "rho_tau": [
+                "0",
+                "1/2",
+                "0",
+                "-1/2",
+                "0",
+                "1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                2,
+                3,
+                2
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                2
+              ],
+              "rho_tau": [
+                "0",
+                "1/2",
+                "0",
+                "-1/2",
+                "0",
+                "1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                3,
+                0,
+                0
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                1
+              ],
+              "rho_tau": [
+                "0",
+                "-1/2",
+                "0",
+                "1/2",
+                "0",
+                "1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                3,
+                0,
+                2
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                1
+              ],
+              "rho_tau": [
+                "0",
+                "-1/2",
+                "0",
+                "1/2",
+                "0",
+                "1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                3,
+                1,
+                1
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 3,
+              "odd_planes": [
+                1,
+                2,
+                3
+              ],
+              "rho_tau": [
+                "0",
+                "-1/2",
+                "0",
+                "-1/2",
+                "0",
+                "-1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                3,
+                1,
+                3
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 3,
+              "odd_planes": [
+                1,
+                2,
+                3
+              ],
+              "rho_tau": [
+                "0",
+                "-1/2",
+                "0",
+                "-1/2",
+                "0",
+                "-1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                3,
+                2,
+                0
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                1
+              ],
+              "rho_tau": [
+                "0",
+                "-1/2",
+                "0",
+                "1/2",
+                "0",
+                "1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                3,
+                2,
+                2
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 1,
+              "odd_planes": [
+                1
+              ],
+              "rho_tau": [
+                "0",
+                "-1/2",
+                "0",
+                "1/2",
+                "0",
+                "1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                3,
+                3,
+                1
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 3,
+              "odd_planes": [
+                1,
+                2,
+                3
+              ],
+              "rho_tau": [
+                "0",
+                "-1/2",
+                "0",
+                "-1/2",
+                "0",
+                "-1/2"
+              ]
+            },
+            {
+              "coefficients_mod4": [
+                3,
+                3,
+                3
+              ],
+              "in_point_group_conjugacy_orbit": false,
+              "occupied_half_components_flipped": 3,
+              "odd_planes": [
+                1,
+                2,
+                3
+              ],
+              "rho_tau": [
+                "0",
+                "-1/2",
+                "0",
+                "-1/2",
+                "0",
+                "-1/2"
+              ]
+            }
+          ],
+          "scope_caveat": "This excludes a class-preserving diagonal action in the tested space group. It does not exclude a sector-permuting winding or generalized symmetry.",
+          "source": "upstream theorem independently re-enumerated from data bound by the V60 live-route core",
+          "upstream_every_candidate_fails_class_preservation": true,
+          "upstream_parity_theorem": "The Z2xZ2 point group flips an even number of complex planes, whereas each odd-sum c_i combination flips an odd number. Since tau has a half-component in one real coordinate of every plane, rho_c(tau) cannot equal B tau for any point-group B.",
+          "upstream_point_group_plane_flip_parities": [
+            0,
+            2,
+            2,
+            2
+          ]
+        },
+        "no_h_tau_in_space_group": true,
+        "rho2_tau": [
+          "0",
+          "1/2",
+          "0",
+          "-1/2",
+          "0",
+          "1/2"
+        ],
+        "rho2_tau_equals_tau_minus_e4": true,
+        "rho2_tau_in_conjugacy_orbit": false,
+        "scope": "For all 32 plane-R candidates with superpotential charge 2, this blocks direct use of the class-preserving Eq. (3.40) derivation as a proof of a diagonal symmetry of the full freely quotiented CFT. It is not a theorem that no symmetry exists: rho_c may permute winding sectors and require an enlarged treatment."
+      },
+      "full_physical_symmetry_no_go_proved": false,
+      "name": "live-Orbifolder corrected heterotic Z4R route",
+      "route_id": "A60",
+      "same_action_microscopic_completion": false,
+      "supersedes_V59_route_id": "A",
+      "tested_object": "the source-locked Kappl E8xE8 freely quotiented candidate, its 92 regenerated massless chiral multiplets, all corrected plane-R combinations with superpotential charge two, nine available U(1)s, and six printed non-R space-group Z2 generators",
+      "unknown_obligations": [
+        "derive the action of rho2 on all freely twisted/winding sectors when conjugacy classes are permuted",
+        "compute local/fixed-locus anomaly phases and any localized counterterms",
+        "compute moduli-dependent threshold corrections for the corrected mixed generator",
+        "derive the complete quantized axion coupling and transformation matrix",
+        "recheck the corrected generator after the selected singlet VEVs and mass diagonalization"
+      ]
+    },
+    {
+      "G1_closed": false,
+      "action_status": "upgraded from rejected to conditionally viable with gravitino-scale orphan exotics",
+      "bound_core_sha256": "b87696403fb46c4a6b044be8abe58dd5f82b63a83a58fff262a6f00bdd6914ae",
+      "classification": "CONDITIONALLY_VIABLE_WITH_GRAVITINO_SCALE_ORPHAN_EXOTICS__GUT_SCALE_LIFT_EXCLUDED_IN_ALL_CLASSIFIED_CHANNELS__BARYON_SAFE_DECAY_PORTALS_FORCED__UNIFICATION_AND_COSMOLOGY_TESTS_OPEN",
+      "closed_gates": [],
+      "decay_portals": {
+        "anti_orphan": [
+          [
+            -5,
+            -1
+          ],
+          [
+            -1,
+            -5
+          ]
+        ],
+        "orphan": [
+          [
+            3,
+            3
+          ]
+        ],
+        "unique_and_baryon_safe": true
+      },
+      "gravitino_lift": {
+        "orphan_pair_charge": 0,
+        "r_parity_survives": true,
+        "same_gm_class_as_mu": true
+      },
+      "gs_ir_closure": {
+        "closes_exactly": true,
+        "ledger": {
+          "A2": -2,
+          "A3": 1
+        },
+        "wz_term": "NONE"
+      },
+      "gut_scale_channels": {
+        "all_closed": true,
+        "count": 6,
+        "ids": [
+          "B1",
+          "B2",
+          "B3",
+          "B4",
+          "B5",
+          "B6"
+        ]
+      },
+      "name": "Spin(11) gauge-Higgs route with Z4R selector, GS sector, surviving orphan pair lifted at the gravitino scale",
+      "remaining_obligations": [
+        "run the unification test with Delta b = (2,3,1/5) and explicit thresholds",
+        "compute orphan lifetimes, relic behavior and collider limits",
+        "select a SUSY-breaking sector fixing mu, B-mu and the orphan mass together",
+        "compute the Dai-Freed phase with the orphan-included spectrum",
+        "solve the KK determinant/flavor fit and exhibit a UV regulator"
+      ],
+      "route_id": "B65",
+      "same_action_microscopic_completion": false,
+      "supersedes_V64_route_id": "B64",
+      "unification_shift": {
+        "b1_GUT_normalized": "1/5",
+        "b2": "3",
+        "b3": "2"
+      }
+    },
+    {
+      "G1_closed": false,
+      "blocking_certificate": {
+        "failed_fixed_points": [
+          "O_GG",
+          "O_flipped",
+          "O_PS"
+        ],
+        "open_data_deficits": {
+          "faithful_residual_Z4R": false,
+          "normal_bundle": "OPEN_DATA_DEFICIT",
+          "self_dual_strings": "OPEN_DATA_DEFICIT"
+        },
+        "passes_all_four": false,
+        "principle": "For U(1)_R variation, any inflow from the existing two bulk tensors multiplies the restriction of the single Spin(10) invariant tr_10 F^2.  Tensor-lattice rank changes the overall local coefficient, not the relative subgroup embedding indices.",
+        "type": "EXISTING_BULK_GS_DIRECTION_REJECTED_AT_THREE_FIXED_POINTS"
+      },
+      "bound_core_sha256": "27b4e032ff10065b534c1c62c2adf88f677b07c228f243b5376227fdb307ac8d",
+      "carried_forward_unchanged_from_V59_master_core": "9a74431ca080341d56225c6cc85edb937d3cafaa902bbacb556dbb325d78d24a",
+      "carried_forward_unchanged_from_V60_master_core": "35395532eaf625886b704ed25b7fa8525482ec1d53b94ccc96e7858d6425898e",
+      "carried_forward_unchanged_from_V61_master_core": "a230fda5699b3bd81552317b94733a9f537b0e9ae2a6c35f644830511fa7a810",
+      "carried_forward_unchanged_from_V62_master_core": "4e1344fbaa148c0369417918e3e39d2c94282d8db568a8ec6fa01522e680cdf0",
+      "carried_forward_unchanged_from_V64_master_core": "2840d49f02b4eafd75ca856657ea938e0543e35e7e5c8dab5760f9a908b63e16",
+      "classification": "INTEGRATED_BULK_ADVANCE_WITH_EXACT_EXISTING_LOCAL_GS_REJECTION",
+      "closed_gates": [],
+      "direct_core_rebound_in_V60": true,
+      "direct_core_rebound_in_V61": true,
+      "direct_core_rebound_in_V62": true,
+      "direct_core_rebound_in_V63": true,
+      "direct_core_rebound_in_V65": true,
+      "exact_gains": [
+        {
+          "certificate": {
+            "H": 290,
+            "H_minus_V_plus_29T": 273,
+            "T": 1,
+            "V": 46,
+            "factorization_exact": true,
+            "integral_unimodular": true
+          },
+          "claim": "the integrated six-dimensional seed factorizes on an integral unimodular lattice"
+        },
+        {
+          "certificate": {
+            "all_270_singlets_assigned": true,
+            "local_parity_moments": {
+              "sum_q_cubed_sign": [
+                64,
+                64,
+                64,
+                64
+              ],
+              "sum_q_sign": [
+                4,
+                4,
+                4,
+                4
+              ],
+              "sum_sign": [
+                2,
+                2,
+                2,
+                2
+              ]
+            },
+            "q0_global_zero_modes": 1,
+            "q4_global_zero_modes": 1
+          },
+          "claim": "all singlet hypermultiplet parities have a constructive VEV-compatible solution"
+        },
+        {
+          "certificate": {
+            "O_GG": {
+              "bulk_direction": [
+                2,
+                40
+              ],
+              "local": [
+                4,
+                -320
+              ],
+              "minors": {
+                "SU5_squared__X_squared": 800
+              }
+            },
+            "O_PS": {
+              "bulk_direction": [
+                2,
+                2,
+                2
+              ],
+              "local": [
+                4,
+                -12,
+                -12
+              ],
+              "minors": {
+                "SU2L_squared__SU2R_squared": 0,
+                "SU4_squared__SU2L_squared": 32,
+                "SU4_squared__SU2R_squared": 32
+              }
+            },
+            "O_SO10": {
+              "bulk_direction": [
+                1
+              ],
+              "local": [
+                6
+              ],
+              "minors": {}
+            },
+            "O_flipped": {
+              "bulk_direction": [
+                2,
+                40
+              ],
+              "local": [
+                4,
+                -320
+              ],
+              "minors": {
+                "SU5prime_squared__Xprime_squared": 800
+              }
+            }
+          },
+          "claim": "fixed-point proportionality is tested with exact two-by-two minors"
+        }
+      ],
+      "gate_ledger_all_open": true,
+      "name": "gauged-U(1)R to Z4R local-orbifold route",
+      "route_id": "C",
+      "same_action_microscopic_completion": false,
+      "singlet_parity_problem_solved": true,
+      "supersedable_by_live_regeneration": false,
+      "tested_object": "the exact integrated Spin(10) x U(1)R seed on the V56 four-fixed-point projector using only the existing bulk Spin(10) GS direction"
+    }
+  ],
+  "schema": "susy_v65_multipath_g1_frontier_master_audit/v1",
+  "source_manifest": [
+    {
+      "exists": true,
+      "path": "susy_v65_multipath_g1_frontier_master_audit.py",
+      "sha256": "c66630dfd41d4694506bca14a04f43c66f0d0d413b871bb6844368ea7ffc3783"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v65_multipath_g1_frontier_master_audit.py",
+      "sha256": "037fddbff9728ee524bd55a66aba0655583979a066c6967a179477e75cec27fe"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V64_MULTIPATH_G1_FRONTIER_MASTER_AUDIT.json",
+      "sha256": "85528f3182a9c24d7cdc823a394b9842dea99dd4590651fccde50ec443405f03"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V65_SPIN11_ORPHAN_LIFTING_CLASSIFICATION_AUDIT.json",
+      "sha256": "d0bf61e662e8489fddfe50fa3bc0f7e69a48b9ec3d996f9cb1db82cb68a34cce"
+    },
+    {
+      "exists": true,
+      "path": "susy_v60_heterotic_corrected_z4r_live_orbifolder_audit.json",
+      "sha256": "6c404e660be4bfe8b2c2f812f058e8396b9ca6dddafdce4582bdd08e1800a8b6"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V59_GAUGED_U1R_LOCAL_COMPLETION_AUDIT.json",
+      "sha256": "f5d8c4a117ff5fac956cff62f2cf2e3e0434f511ee38ed2258b620d899361bb7"
+    }
+  ],
+  "source_policy": {
+    "master_adds_no_new_literature_claim": true,
+    "route_primary_sources_remain_in_their_bound_artifacts": true
+  },
+  "status": "V65_MULTIPATH_G1_FRONTIER_MASTER__V64_MASTER_AND_ORPHAN_LIFT_CORE_BOUND__V64_ROUTE_B_ROW_SUPERSEDED__SIX_GUT_SCALE_LIFT_CHANNELS_CLOSED_EXACTLY__GRAVITINO_SCALE_GM_LIFT_SHARED_WITH_MU__BARYON_SAFE_PORTALS_FORCED_BY_X_ARITHMETIC__GS_IR_CLOSURE_WITH_ORPHANS_EXACT_NO_WZ__ACTION_UPGRADED_FROM_REJECTED_TO_CONDITIONALLY_VIABLE__THEORY_CARD_CORRECTED_NO_WZ_LINE__UNIFICATION_COSMOLOGY_SOFT_DAI_FREED_KK_UV_OPEN__ROUTES_A60_AND_C_CARRIED_FORWARD__NO_CROSS_ROUTE_SPLICING__G1_TO_G8_OPEN",
+  "strict_master_decision": {
+    "V65_G1_closed": false,
+    "closed_gates": [],
+    "complete_theory": false,
+    "empirical_discovery": false,
+    "gravitino_scale_lift_constructed": true,
+    "gut_scale_lift_excluded": true,
+    "honest_outcome": "The G1 gate is not closed, and the program does not close gates by declaration.  What V65 establishes exactly: no GUT-scale orphan mass exists in the six classified channels; the orphan pair is lifted at the gravitino scale by the same spontaneous R breaking that generates mu; its decay portals are unique and baryon-safe; and the corrected IR ledger is cancelled by the V62 GS sector with no WZ term.  The action is conditionally viable with sharp numerical tests ahead, and G1--G8 remain open.",
+    "master_is_a_frontier_certificate_not_an_action": true,
+    "same_action_microscopic_completion_found": false
+  },
+  "upstream_status": {
+    "V59_gauged_U1R": "V59_GAUGED_U1R_LOCAL_COMPLETION__V56_V57_CORES_BOUND__V58_INTEGRATED_SPIN10_X_U1R_SEED_RECONSTRUCTED_EXACTLY__270_SINGLET_PARITIES_HAVE_AN_EXPLICIT_VEV_COMPATIBLE_SOLUTION__CONVENTIONAL_QTHETA1_LIFT_HAS_NONUNIVERSAL_MIXED_U1R_GFP2_ANOMALIES_AT_GG_FLIPPED_AND_PS__EXISTING_BULK_SPIN10_GS_INVARIANT_CANNOT_CANCEL_THEM__LOCALIZED_LEVELS_NORMAL_BUNDLE_DYONIC_STRING_AND_RESIDUAL_NORMALIZATION_DATA_OPEN__SAME_ACTION_MICROSCOPIC_COMPLETION_FALSE__G1_OPEN__ZERO_GATE_PROMOTIONS",
+    "V60_live_heterotic": "V60_LIVE_ORBIFOLDER_92_STATE_RECONSTRUCTION_PASS__SIX_GAMMA_CORRECTIONS_EXACT__ALL_THREE_CORRECTED_PLANE_R_LEDGERS_EXACT__FULL_4CUBED_ODD_SUM_SCAN_NONUNIVERSAL__AVAILABLE_U1_AND_SPACE_GROUP_MIXINGS_DO_NOT_REPAIR__ALL_32_ODD_PLANE_R_FREE_TAU_CLASS_PRESERVATION_FAIL__LOCAL_THRESHOLD_AXION_LEDGER_UNKNOWN__STRICT_G1_OPEN",
+    "V64_master": "V64_MULTIPATH_G1_FRONTIER_MASTER__V63_MASTER_AND_STABLE_V64_ROUTE_CORE_BOUND__ONLY_ROUTE_B63_SUPERSEDED_BY_B64__TWELVE_NORMALIZABLE_Q_TYPE_COLORED_CHIRAL_COMPONENTS_SURVIVE__ACTUAL_IR_LEDGER_1_MINUS2__NO_WZ_FORCED__V63_XY_NOTE_WITHDRAWN__CURRENT_SPIN11_ACTION_REJECTED__V61_SELECTOR_ARITHMETIC_AND_V62_PRE_VEV_LEDGER_CONDITIONAL_ONLY__A60_AND_C_UNCHANGED__NO_CROSS_ROUTE_SPLICING__G1_TO_G8_OPEN__ZERO_PROMOTIONS",
+    "V65_orphan_lift": "V65_SPIN11_ORPHAN_LIFTING_CLASSIFICATION__SIX_GUT_SCALE_CHANNELS_CLOSED_EXACTLY__S_CHANNEL_KILLED_BY_F_FLATNESS__PARTNER_PAIR_KILLED_BY_SINGLET_EIGENVALUES_1_M5_25_AND_LEFTOVER_EXOTICS__ADJOINT_TRILINEAR_KILLED_BY_PLANE_WEIGHT_TADPOLE__CHARGE_2_VEV_KILLED_BY_Z2R_DEGENERATION__ORPHAN_PAIR_IS_CHARGE_ZERO_GM_CLASS__GRAVITINO_SCALE_LIFT_WITH_MU__X_ARITHMETIC_FORCES_BARYON_SAFE_DECAY_PORTALS__GS_IR_CLOSURE_WITH_ORPHANS_EXACT_NO_WZ__DELTA_B_2_3_ONE_FIFTH__ACTION_UPGRADED_TO_CONDITIONALLY_VIABLE__UNIFICATION_COSMOLOGY_SOFT_SPECTRUM_OPEN__STRICT_G1_OPEN__ZERO_GATES_CLOSED"
+  }
+}

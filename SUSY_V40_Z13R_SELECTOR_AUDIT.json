@@ -1,0 +1,406 @@
+{
+  "PQ_quality": {
+    "Kahler_charge_lattice_lower_bound": 32,
+    "W_charge_lattice_lower_bound": 33,
+    "gauge_singlet_W_upper_witness": {
+      "PQ_numerator_over_170": 5610,
+      "R13": 2,
+      "Z5610": 0,
+      "degree": 34,
+      "operator": "X P^33"
+    },
+    "scope": "No state below the quoted degree exists even before imposing gauge contractions, hence the bounds are conservative. They are not a complete gravitational/PQ-quality proof."
+  },
+  "R13_charges": {
+    "A15": 0,
+    "A16": 1,
+    "A17": 2,
+    "A2": 0,
+    "A32": 2,
+    "H": 5,
+    "Nv": 1,
+    "P": 0,
+    "Pb": 0,
+    "Psi": 9,
+    "PsiBar": 6,
+    "PsiC": 1,
+    "PsiCBar": 1,
+    "Q": 9,
+    "Qc": 1,
+    "Sbc": 0,
+    "Sc": 0,
+    "SigBc": 2,
+    "SigC": 2,
+    "X": 2,
+    "Zp": 2
+  },
+  "comparison_to_U1F_Z9": {
+    "U1F_to_Z9": "A U1F parent can block the pure same-orientation ring after every residual-neutral VEV insertion, but q(ND)=-3 gives 2q(ND)+9k=0 with no integer k: it is Dirac-neutrino only without a material neutrino rebuild.",
+    "Z13R": "Sbc Qc Nv and Nv^2 both have R13=2, evading that ordinary-additive type-I obstruction on the high-scale neutral-VEV branch. Its H charge creates explicit EWSB-dressed counterexamples and it still lacks a GS/product-bordism/source completion.",
+    "result": "Neither route closes G1 or G7; the two routes expose complementary design constraints."
+  },
+  "core_sha256": "5ce4de4a8d32fe12b895ff6272e76ac6010cfb3039b76b8a37ecca35c9221f63",
+  "decision": {
+    "all_VEV_ring_block": false,
+    "complete_V40_source": false,
+    "gates_promoted": [],
+    "high_scale_pure_Q4_Qc4_block": true,
+    "quantized_GS_product_bordism_complete": false,
+    "type_I_source_present": true
+  },
+  "necessary_R_anomalies": {
+    "24rho_mod13": 9,
+    "GS_rho_mod13": 2,
+    "UV_boundary": "This is necessary discrete-R/GS arithmetic only. A quantized axion period and Wess-Zumino action, full Spin^Z13R x G_PS x Z5610 bordism, heavy thresholds, and a microscopic origin remain absent.",
+    "Witten_doublets": {
+      "SU2L": 22,
+      "SU2R": 30
+    },
+    "doubled_total": {
+      "SU2L": 160,
+      "SU2R": 4,
+      "SU4": 82
+    },
+    "formula": "A_G^R=sum T(R_i)(r_i-1)+T(adj); doubled=2 A_G. A_grav=sum dim(R_i)(r_i-1)+21-21 in PS-only N=1 bookkeeping.",
+    "gravity_A": 308,
+    "gravity_A_mod13": 9,
+    "gravity_GS_relation": true,
+    "mixed_GS_universal": true,
+    "standard_A": {
+      "SU2L": 80,
+      "SU2R": 2,
+      "SU4": 41
+    },
+    "standard_A_mod13": {
+      "SU2L": 2,
+      "SU2R": 2,
+      "SU4": 2
+    }
+  },
+  "ring": {
+    "EW_VEV_counterexamples": [
+      {
+        "EWSB_factor": "(v/M)^24",
+        "R13": 2,
+        "operator": "X Q^4 (H.H)^12 / M^25"
+      },
+      {
+        "EWSB_factor": "(v/M)^20",
+        "R13": 2,
+        "operator": "X Qc^4 (H.H)^10 / M^21"
+      }
+    ],
+    "V39_Qc4_dressing_retested": {
+      "R13": 6,
+      "forbidden": true,
+      "operator": "X [epsilon_SU2R delta_SU4 (Qc Sbc)]^4 / M^6"
+    },
+    "all_four_blocked_on_high_scale_branch": true,
+    "high_scale_VEV_branch": {
+      "R13_nonzero_VEVs": {
+        "P": 0,
+        "Pb": 0,
+        "Sbc": 0,
+        "Sc": 0
+      },
+      "nonzero": [
+        "Sc",
+        "Sbc",
+        "P",
+        "Pb"
+      ],
+      "zero": [
+        "X",
+        "Zp",
+        "SigC",
+        "SigBc",
+        "H"
+      ]
+    },
+    "literal_all_VEV_ring_block": false,
+    "proof": "All high-scale VEV insertions have R13=0, so they cannot change a holomorphic operator charge.",
+    "pure_same_orientation_classes": [
+      {
+        "R13": 12,
+        "forbidden": true,
+        "operator": "X Q^4"
+      },
+      {
+        "R13": 6,
+        "forbidden": true,
+        "operator": "X Qc^4"
+      },
+      {
+        "R13": 12,
+        "forbidden": true,
+        "operator": "Zp Q^4"
+      },
+      {
+        "R13": 6,
+        "forbidden": true,
+        "operator": "Zp Qc^4"
+      }
+    ],
+    "scope": "The proof covers PS/PQ high-scale VEV dressings. R13(H)=5 means EWSB breaks the selector; the displayed H.H dressings are allowed and preclude a literal all-VEV/G7 closure."
+  },
+  "scope": "Conditional PS x Z5610 x Z13R source boundary; no active SARAH model, K/W/f solution, spectrum, or likelihood.",
+  "status": "V40_Z13R_HIGH_SCALE_PS_PQ_VEV_RING_BLOCK_AND_TYPE_I_SOURCE_VALIDATED__EW_VEV_DRESSINGS_AND_GS_PRODUCT_UV_OPEN__NO_GATE_PROMOTED",
+  "terms": {
+    "W_target": 2,
+    "all_removed_forbidden": true,
+    "all_retained_allowed": true,
+    "rebuild_required": "R13 forbids the V39 driver self-cubics, X/Zp H^2 and X/Zp SigC SigBc. A new W/K/vacuum and electroweak-doublet source is required.",
+    "removed_V39": [
+      {
+        "R13": 6,
+        "term": [
+          "X",
+          "X",
+          "X"
+        ]
+      },
+      {
+        "R13": 6,
+        "term": [
+          "X",
+          "X",
+          "Zp"
+        ]
+      },
+      {
+        "R13": 6,
+        "term": [
+          "X",
+          "Zp",
+          "Zp"
+        ]
+      },
+      {
+        "R13": 6,
+        "term": [
+          "Zp",
+          "Zp",
+          "Zp"
+        ]
+      },
+      {
+        "R13": 12,
+        "term": [
+          "X",
+          "H",
+          "H"
+        ]
+      },
+      {
+        "R13": 12,
+        "term": [
+          "Zp",
+          "H",
+          "H"
+        ]
+      },
+      {
+        "R13": 6,
+        "term": [
+          "X",
+          "SigC",
+          "SigBc"
+        ]
+      },
+      {
+        "R13": 6,
+        "term": [
+          "Zp",
+          "SigC",
+          "SigBc"
+        ]
+      }
+    ],
+    "retained": [
+      {
+        "R13": 2,
+        "term": [
+          "X"
+        ]
+      },
+      {
+        "R13": 2,
+        "term": [
+          "X"
+        ]
+      },
+      {
+        "R13": 2,
+        "term": [
+          "Zp"
+        ]
+      },
+      {
+        "R13": 2,
+        "term": [
+          "Zp"
+        ]
+      },
+      {
+        "R13": 2,
+        "term": [
+          "X",
+          "Sbc",
+          "Sc"
+        ]
+      },
+      {
+        "R13": 2,
+        "term": [
+          "X",
+          "P",
+          "Pb"
+        ]
+      },
+      {
+        "R13": 2,
+        "term": [
+          "Zp",
+          "Sbc",
+          "Sc"
+        ]
+      },
+      {
+        "R13": 2,
+        "term": [
+          "Zp",
+          "P",
+          "Pb"
+        ]
+      },
+      {
+        "R13": 2,
+        "term": [
+          "Sc",
+          "Sc",
+          "SigC"
+        ]
+      },
+      {
+        "R13": 2,
+        "term": [
+          "Sbc",
+          "Sbc",
+          "SigBc"
+        ]
+      },
+      {
+        "R13": 2,
+        "term": [
+          "Q",
+          "H",
+          "Qc"
+        ]
+      },
+      {
+        "R13": 2,
+        "term": [
+          "Q",
+          "H",
+          "PsiC"
+        ]
+      },
+      {
+        "R13": 2,
+        "term": [
+          "Psi",
+          "H",
+          "Qc"
+        ]
+      },
+      {
+        "R13": 2,
+        "term": [
+          "Psi",
+          "H",
+          "PsiC"
+        ]
+      },
+      {
+        "R13": 2,
+        "term": [
+          "P",
+          "PsiBar",
+          "Q"
+        ]
+      },
+      {
+        "R13": 2,
+        "term": [
+          "P",
+          "PsiBar",
+          "Psi"
+        ]
+      },
+      {
+        "R13": 2,
+        "term": [
+          "P",
+          "PsiCBar",
+          "Qc"
+        ]
+      },
+      {
+        "R13": 2,
+        "term": [
+          "P",
+          "PsiCBar",
+          "PsiC"
+        ]
+      },
+      {
+        "R13": 2,
+        "term": [
+          "Sbc",
+          "Qc",
+          "Nv"
+        ]
+      },
+      {
+        "R13": 2,
+        "term": [
+          "Sbc",
+          "PsiC",
+          "Nv"
+        ]
+      },
+      {
+        "R13": 2,
+        "term": [
+          "Nv",
+          "Nv"
+        ]
+      },
+      {
+        "R13": 2,
+        "term": [
+          "Pb",
+          "A2",
+          "A32"
+        ]
+      },
+      {
+        "R13": 2,
+        "term": [
+          "P",
+          "A15",
+          "A17"
+        ]
+      },
+      {
+        "R13": 2,
+        "term": [
+          "P",
+          "A16",
+          "A16"
+        ]
+      }
+    ],
+    "retained_term_count": 24
+  }
+}

@@ -94,7 +94,7 @@ jobs:
           python integrate_full_complex_orientation_v20.py
       - name: Rebuild authoritative contract and gate chain
         run: |
-          python -B -m py_compile exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py corrected_rank1_endpoint_v21.py test_corrected_rank1_endpoint_v21.py
+          python -B -m py_compile exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_census_v20.py exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_cubic_map_v20.py exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py corrected_rank1_endpoint_v21.py test_corrected_rank1_endpoint_v21.py canonical_g1_g8_gauged_u1x_v21.py test_canonical_g1_g8_gauged_u1x_v21.py canonical_g1_scalar_ring_dim6_frontier_v21.py test_canonical_g1_scalar_ring_dim6_frontier_v21.py test_canonical_g1_susyno_channel_basis_v21.py canonical_g1_complete_operator_ring_dim6_v21.py verify_canonical_g1_complete_operator_ring_dim6_v21.py test_canonical_g1_complete_operator_ring_dim6_v21.py _g2_contraction_graphs.py _g2_metric_rank_probe.py canonical_g2_exact_contraction_basis_v21.py test_canonical_g2_exact_contraction_basis_v21.py canonical_g2_full_component_projection_dim6_v21.py verify_canonical_g2_full_component_projection_dim6_v21.py test_canonical_g2_full_component_projection_dim6_v21.py test_verify_canonical_g2_full_component_projection_dim6_v21.py canonical_g3_physical_ew_global_vacuum_v21.py verify_canonical_g3_physical_ew_global_vacuum_v21.py test_canonical_g3_physical_ew_global_vacuum_v21.py test_verify_canonical_g3_physical_ew_global_vacuum_v21.py
           python exact_x_symmetry_consistency_gate_v20.py
           python sarah_pyrate_210n_model_file_v20.py
           python gauged_u1x_scalar_contract_v20.py --write
@@ -125,6 +125,12 @@ jobs:
           python gauged_u1x_g3_stability_v20.py --write
           python gauged_u1x_g3_corrected_common_kernel_v20.py --recompute-heavy --write
           python g1_g8_gate_ledger_v20.py --write
+          python -B canonical_g1_scalar_ring_dim6_frontier_v21.py --check
+          python -B canonical_g1_complete_operator_ring_dim6_v21.py --check
+          python -B canonical_g2_exact_contraction_basis_v21.py --check
+          python -B canonical_g2_full_component_projection_dim6_v21.py --check
+          python -B canonical_g3_physical_ew_global_vacuum_v21.py --check
+          python -B canonical_g1_g8_gauged_u1x_v21.py --check
           python g1_g8_execution_roadmap_v20.py --write
           python authoritative_full_model_gate_v20.py
           python -B -m pytest -q -p no:cacheprovider \
@@ -148,6 +154,15 @@ jobs:
             test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_quartic_map_v20.py \
             corrected_rank1_publication_v21/test_exact_gauged_u1x_g3_rank1_su4_corrected_publication_v21.py \
             test_corrected_rank1_endpoint_v21.py \
+            test_canonical_g1_g8_gauged_u1x_v21.py \
+            test_canonical_g1_scalar_ring_dim6_frontier_v21.py \
+            test_canonical_g1_susyno_channel_basis_v21.py \
+            test_canonical_g1_complete_operator_ring_dim6_v21.py \
+            test_canonical_g2_exact_contraction_basis_v21.py \
+            test_canonical_g2_full_component_projection_dim6_v21.py \
+            test_verify_canonical_g2_full_component_projection_dim6_v21.py \
+            test_canonical_g3_physical_ew_global_vacuum_v21.py \
+            test_verify_canonical_g3_physical_ew_global_vacuum_v21.py \
             test_exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py \
             test_gauged_u1x_g3_sos_candidate_v20.py \
             test_gauged_u1x_g3_stability_v20.py \
@@ -160,6 +175,13 @@ jobs:
           import json
           import g1_g8_gate_ledger_v20 as gate_ledger
           from corrected_rank1_endpoint_v21 import central_view, load_validated_publication
+          canonical=json.load(open('CANONICAL_G1_G8_GAUGED_U1X_V21.json'))
+          assert canonical['n_failed']==0, canonical['failures']
+          assert canonical['overall_state'] in ('BLOCKED', 'PASS')
+          assert (canonical['overall_state']=='PASS') == (canonical['closure_counts']['closed']==8)
+          assert canonical['classification']['whole_model_validated'] == (canonical['overall_state']=='PASS')
+          assert canonical['classification']['all_canonical_gates_closed'] == (canonical['closure_counts']['closed']==8)
+          assert canonical['closure_counts']['open'] == 8-canonical['closure_counts']['closed']
           r=json.load(open('EXACT_X_SYMMETRY_CONSISTENCY_GATE_V20.json'))
           rank1_su4_stabilizer=json.load(open('EXACT_GAUGED_U1X_G3_RANK1_SU4_STABILIZER_V20.json'))
           rank1_su4_intertwiners=json.load(open('EXACT_GAUGED_U1X_G3_RANK1_SU4_PHI210_INTERTWINERS_V20.json'))
@@ -173,14 +195,18 @@ jobs:
           corrected=central_view(corrected_publication)
           s=r['executable_scaffold_contract']
           e=r['external_model_validation']
-          assert r['n_failed']==0 and r['overall_state']=='BLOCKED', r
+          assert r['n_failed']==0 and r['overall_state'] in ('BLOCKED','PASS'), r
           assert r['static_contract_consistent'] is True, r
-          assert r['blocker']=='AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED', r
           assert s['model_syntax_class']=='sarah_native', s
           assert not s['legacy_pseudo_sarah_grammar'] and s['tool_native_sarah_syntax'], s
           assert s['statically_executable_model_contract'], s
-          assert not e['valid'], e
-          assert not e['checks']['captured_process_log_is_hash_bound'], e
+          if r['contract_consistent']:
+              assert r['overall_state']=='PASS' and r['blocker'] is None, r
+              assert e['valid'] and e['checks']['captured_process_log_is_hash_bound'], e
+          else:
+              assert r['overall_state']=='BLOCKED', r
+              assert r['blocker']=='AUTHORITATIVE_GAUGED_U1X_EXTERNAL_SARAH_EXECUTION_REQUIRED', r
+              assert not e['valid'] and not e['checks']['captured_process_log_is_hash_bound'], e
           assert r['repository_external_input_manifest']['valid'], r
           assert gate_ledger._rank1_su4_augmented_sos_cubic_map_exact(rank1_su4_cubic, rank1_su4_stabilizer, rank1_su4_intertwiners, rank1_su4_aligned, rank1_su4_quadratic, rank1_su4_census)
           cubic_map=rank1_su4_cubic['cubic_coordinate_map']
@@ -501,12 +527,12 @@ jobs:
           python -m unittest discover -v
           python -c "import json,os,pathlib,unittest; n=unittest.defaultTestLoader.discover('.').countTestCases(); payload={'passed':True,'tests_discovered':n,'commit_sha':os.getenv('GITHUB_SHA',''),'workflow_run_id':os.getenv('GITHUB_RUN_ID',''),'scope':'CURRENT_WORKFLOW_RUN'}; pathlib.Path('CURRENT_UNIT_TEST_ATTESTATION.json').write_text(json.dumps(payload,indent=2)+'\n',encoding='utf-8')"
       - name: Full scientific validity matrix
-        run: python theory_validation_matrix_v20.py --expect-blocked
+        run: python theory_validation_matrix_v20.py
       - name: Final honest verdict + ultimate approval gate
         run: |
-          python theory_confirmation_verdict_v20.py --expect-blocked
-          python ultimate_theory_gate_v20.py --expect-blocked
-          python ultimate_theory_gate_v20.py --expect-blocked --no-write
+          python theory_confirmation_verdict_v20.py
+          python ultimate_theory_gate_v20.py
+          python ultimate_theory_gate_v20.py --no-write
       - name: Upload falsification verdict
         if: always()
         uses: actions/upload-artifact@v4
@@ -591,6 +617,18 @@ jobs:
             GAUGED_U1X_G3_CORRECTED_COMMON_KERNEL_V20.md
             G1_G8_GATE_LEDGER_V20.json
             G1_G8_GATE_LEDGER_V20.md
+            CANONICAL_G1_G8_GAUGED_U1X_V21.json
+            CANONICAL_G1_G8_GAUGED_U1X_V21.md
+            CANONICAL_G1_SCALAR_RING_DIM6_FRONTIER_V21.json
+            CANONICAL_G1_SCALAR_RING_DIM6_FRONTIER_V21.md
+            CANONICAL_G1_SUSYNO_CHANNEL_BASIS_V21.json
+            CANONICAL_G1_COMPLETE_OPERATOR_RING_DIM6_V21.json
+            CANONICAL_G1_COMPLETE_OPERATOR_RING_DIM6_V21.md
+            CANONICAL_G2_EXACT_CONTRACTION_BASIS_V21.json
+            CANONICAL_G2_FULL_COMPONENT_PROJECTION_DIM6_V21.json
+            CANONICAL_G2_FULL_COMPONENT_PROJECTION_DIM6_V21.md
+            CANONICAL_G3_PHYSICAL_EW_GLOBAL_VACUUM_V21.json
+            CANONICAL_G3_PHYSICAL_EW_GLOBAL_VACUUM_V21.md
             G1_G8_EXECUTION_ROADMAP_V20.json
             G1_G8_EXECUTION_ROADMAP_V20.md
             AUTHORITATIVE_FULL_MODEL_GATE_V20.json

@@ -1,7 +1,59 @@
 # Content-addressed external-validation inputs use platform-stable bytes.
 models/SO10Z17AxionV20.m text eol=lf
 models/EXACT_X_EXTERNAL_INPUT_MANIFEST_V20.json text eol=lf
+models/SARAH_4_15_3_CANONICAL_SOURCE_TREE_V20.json text eol=lf
+models/EXACT_X_EXTERNAL_MODEL_VALIDATION_V20.json text eol=lf
 tools/validate-exact-x-model.wls text eol=lf
+exact_x_symmetry_consistency_gate_v20.py text eol=lf
+run_exact_x_sarah_validation_v20.py text eol=lf
+test_exact_x_symmetry_consistency_gate_v20.py text eol=lf
+.github/workflows/exact-x-symmetry-consistency-gate.yml text eol=lf
+
+# The V22R degree-four EFT chain is raw-byte pinned and must be stable on Windows.
+susy_v22r_*.py text eol=lf
+test_susy_v22r_*.py text eol=lf
+SUSY_V22R_*.json text eol=lf
+SUSY_V22R_*.md text eol=lf
+susy_so10x17_v22r_contract.py text eol=lf
+test_susy_so10x17_v22r_contract.py text eol=lf
+SUSY_SO10X17_V22R_CONTRACT.json text eol=lf
+SUSY_SO10X17_V22R_CONTRACT.md text eol=lf
+models/SO10X17SUSYV22R/SO10X17SUSYV22R.m text eol=lf
+
+# V23 route-selection, source-frontier, model, and terminal-verdict bytes.
+susy_v23_*.py text eol=lf
+test_susy_v23_*.py text eol=lf
+SUSY_V23_*.json text eol=lf
+SUSY_V23_*.md text eol=lf
+models/SO10U1V23*/** text eol=lf
+.github/workflows/susy-v23-resolution-frontier.yml text eol=lf
+
+# V24 Pati--Salam source, physics frontiers, and terminal-verdict bytes.
+susy_v24_*.py text eol=lf
+test_susy_v24_*.py text eol=lf
+SUSY_V24_*.json text eol=lf
+SUSY_V24_*.md text eol=lf
+models/PSZ4RZ11SUSYV24/** text eol=lf
+tools/validate-susy-v24-ps.wls text eol=lf
+.github/workflows/susy-v24-resolution-frontier.yml text eol=lf
+
+# V25 exact G1--G3 continuation and frozen qualified-spectrum frontier.
+susy_v25_*.py text eol=lf
+test_susy_v25_*.py text eol=lf
+SUSY_V25_*.json text eol=lf
+SUSY_V25_*.md text eol=lf
+.github/workflows/susy-v25-g1-g3-frontier.yml text eol=lf
+.github/workflows/sarah-pyrate-210n-model-file.yml text eol=lf
+g1_g8_execution_roadmap_v20.py text eol=lf
+test_g1_g8_execution_roadmap_v20.py text eol=lf
+g1_g8_gate_ledger_v20.py text eol=lf
+test_g1_g8_gate_ledger_v20.py text eol=lf
+sarah_pyrate_210n_model_file_v20.py text eol=lf
+test_sarah_pyrate_210n_model_file_v20.py text eol=lf
+live_pyrate_so10_beta_dump_v20.py text eol=lf
+test_live_pyrate_so10_beta_dump_v20.py text eol=lf
+EXACT_X_SYMMETRY_CONSISTENCY_GATE_V20.json text eol=crlf
+EXACT_X_SYMMETRY_CONSISTENCY_GATE_V20.md text eol=crlf
 
 # The complete gauged-U(1)_X mathematical G1 component-tensor theorem is raw-byte pinned.
 exact_gauged_u1x_g1_component_tensor_closure_v20.py text eol=lf
@@ -36,6 +88,45 @@ corrected_rank1_publication_v21/*.py text eol=lf
 corrected_rank1_publication_v21/*.json text eol=lf
 corrected_rank1_publication_v21/*.md text eol=lf
 corrected_rank1_publication_v21/*.npz binary
+
+# Qualified, closure-capable canonical G1--G8 contract and frozen evaluation.
+canonical_g1_g8_gauged_u1x_v21.py text eol=lf
+test_canonical_g1_g8_gauged_u1x_v21.py text eol=lf
+CANONICAL_G1_G8_GAUGED_U1X_V21.json text eol=lf
+CANONICAL_G1_G8_GAUGED_U1X_V21.md text eol=lf
+
+# Canonical G1 scalar-ring proof through engineering dimension six.
+canonical_g1_scalar_ring_dim6_frontier_v21.py text eol=lf
+test_canonical_g1_scalar_ring_dim6_frontier_v21.py text eol=lf
+CANONICAL_G1_SCALAR_RING_DIM6_FRONTIER_V21.json text eol=lf
+CANONICAL_G1_SCALAR_RING_DIM6_FRONTIER_V21.md text eol=lf
+canonical_g1_susyno_channel_basis_v21.wls text eol=lf
+CANONICAL_G1_SUSYNO_CHANNEL_BASIS_V21.json text eol=lf
+test_canonical_g1_susyno_channel_basis_v21.py text eol=lf
+canonical_g1_complete_operator_ring_dim6_v21.py text eol=lf
+verify_canonical_g1_complete_operator_ring_dim6_v21.py text eol=lf
+test_canonical_g1_complete_operator_ring_dim6_v21.py text eol=lf
+CANONICAL_G1_COMPLETE_OPERATOR_RING_DIM6_V21.json text eol=lf
+CANONICAL_G1_COMPLETE_OPERATOR_RING_DIM6_V21.md text eol=lf
+
+# Canonical G2 exact contraction bases and degree-five/six PS/SM projections.
+_g2_contraction_graphs.py text eol=lf
+_g2_metric_rank_probe.py text eol=lf
+canonical_g2_exact_contraction_basis_v21.py text eol=lf
+test_canonical_g2_exact_contraction_basis_v21.py text eol=lf
+CANONICAL_G2_EXACT_CONTRACTION_BASIS_V21.json text eol=lf
+canonical_g2_full_component_projection_dim6_v21.py text eol=lf
+verify_canonical_g2_full_component_projection_dim6_v21.py text eol=lf
+test_canonical_g2_full_component_projection_dim6_v21.py text eol=lf
+test_verify_canonical_g2_full_component_projection_dim6_v21.py text eol=lf
+CANONICAL_G2_FULL_COMPONENT_PROJECTION_DIM6_V21.json text eol=lf
+CANONICAL_G2_FULL_COMPONENT_PROJECTION_DIM6_V21.md text eol=lf
+canonical_g3_physical_ew_global_vacuum_v21.py text eol=lf
+verify_canonical_g3_physical_ew_global_vacuum_v21.py text eol=lf
+test_canonical_g3_physical_ew_global_vacuum_v21.py text eol=lf
+test_verify_canonical_g3_physical_ew_global_vacuum_v21.py text eol=lf
+CANONICAL_G3_PHYSICAL_EW_GLOBAL_VACUUM_V21.json text eol=lf
+CANONICAL_G3_PHYSICAL_EW_GLOBAL_VACUUM_V21.md text eol=lf
 
 # The remaining three raw-pinned heavy-reconstruction dependencies use LF.
 exact_gauged_u1x_g3_rank1_su4_augmented_sos_psd_target_v20.py text eol=lf
@@ -114,6 +205,125 @@ test_exact_eft_g7_threshold_nonidentifiability_v20.py text eol=lf
 EXACT_EFT_G7_THRESHOLD_NONIDENTIFIABILITY_V20.json text eol=crlf
 EXACT_EFT_G7_THRESHOLD_NONIDENTIFIABILITY_V20.md text eol=crlf
 
+# Corrected physical-G6 provenance, formal matching and gauge-RGE subtheorems.
+# These two upstream compiler sources are read with raw-byte guards by the
+# provenance audit and are frozen with CRLF bytes.
+exact_126bar_triplet_clebsch_v20.py text eol=crlf
+exact_210_pati_salam_global_vacuum_v20.py text eol=crlf
+exact_g6_sm_provenance_feasibility_v20.py text eol=lf
+test_exact_g6_sm_provenance_feasibility_v20.py text eol=lf
+EXACT_G6_SM_PROVENANCE_FEASIBILITY_V20.json text eol=crlf
+EXACT_G6_SM_PROVENANCE_FEASIBILITY_V20.md text eol=crlf
+exact_eft_g6_g7_parameterized_matching_v20.py text eol=lf
+test_exact_eft_g6_g7_parameterized_matching_v20.py text eol=lf
+EXACT_EFT_G6_G7_PARAMETERIZED_MATCHING_V20.json text eol=crlf
+EXACT_EFT_G6_G7_PARAMETERIZED_MATCHING_V20.md text eol=crlf
+exact_authoritative_so10_u1x_gauge_betas_v20.py text eol=lf
+test_exact_authoritative_so10_u1x_gauge_betas_v20.py text eol=lf
+EXACT_AUTHORITATIVE_SO10_U1X_GAUGE_BETAS_V20.json text eol=crlf
+EXACT_AUTHORITATIVE_SO10_U1X_GAUGE_BETAS_V20.md text eol=crlf
+pyrate3_so10_u1x_gauge_beta_replay_v20.py text eol=lf
+test_pyrate3_so10_u1x_gauge_beta_replay_v20.py text eol=lf
+PYRATE3_SO10_U1X_GAUGE_BETA_REPLAY_V20.json text eol=crlf
+PYRATE3_SO10_U1X_GAUGE_BETA_REPLAY_V20.md text eol=crlf
+models/SO10U1XGaugeAuditV20.model text eol=lf
+data/PYRATE3_SO10_U1X_GAUGE_BETA_FROZEN_V20.json text eol=lf
+exact_physical_g7_component_threshold_contract_v20.py text eol=lf
+test_exact_physical_g7_component_threshold_contract_v20.py text eol=lf
+EXACT_PHYSICAL_G7_COMPONENT_THRESHOLD_CONTRACT_V20.json text eol=lf
+EXACT_PHYSICAL_G7_COMPONENT_THRESHOLD_CONTRACT_V20.md text eol=lf
+
+# Hardened legacy G7 diagnostics.  The patched Python sources/tests retain
+# their intentionally mixed frozen bytes; generated verdicts remain CRLF.
+sarah_pyrate_so10_210_betas_v20.py -text whitespace=cr-at-eol
+test_sarah_pyrate_so10_210_betas_v20.py -text whitespace=cr-at-eol
+SARAH_PYRATE_SO10_210_BETAS_V20_VERDICT.json text eol=crlf
+SARAH_PYRATE_SO10_210_BETAS_V20.md text eol=crlf
+.github/workflows/sarah-pyrate-so10-210-betas.yml text eol=lf
+quartic_soft_betas_v20.py -text whitespace=cr-at-eol
+test_quartic_soft_betas_v20.py -text whitespace=cr-at-eol
+two_loop_thresholds_v20.py -text whitespace=cr-at-eol
+test_two_loop_thresholds_source_only_v20.py -text whitespace=cr-at-eol
+two_loop_thresholds_v20.json text eol=crlf
+yukawa_rge_2loop_v20.py -text whitespace=cr-at-eol
+test_yukawa_rge_2loop_v20.py -text whitespace=cr-at-eol
+YUKAWA_RGE_2LOOP_V20_VERDICT.json text eol=crlf
+YUKAWA_RGE_2LOOP_V20.md text eol=crlf
+
+# Exact normalized SO(10) representation Yukawa-CGC bundle.
+exact_normalized_so10_yukawa_cgcs_v20.py text eol=lf
+test_exact_normalized_so10_yukawa_cgcs_v20.py text eol=lf
+EXACT_NORMALIZED_SO10_YUKAWA_CGCS_V20.json text eol=lf
+EXACT_NORMALIZED_SO10_YUKAWA_CGCS_V20.md text eol=lf
+direct_phi_h_sigmabar_tensor_v20.py text eol=crlf
+spin10_referee_audit.py text eol=crlf
+
+# Physical Standard-Model vacuum rebuild and reconstruction-bound EFT scout.
+physical_sm_vacuum_local_feasibility_v20.py text eol=lf
+test_physical_sm_vacuum_local_feasibility_v20.py text eol=lf
+PHYSICAL_SM_VACUUM_LOCAL_FEASIBILITY_V20.json text eol=lf
+PHYSICAL_SM_VACUUM_LOCAL_FEASIBILITY_V20.md text eol=lf
+conditional_physical_sm_eft_hessian_spectrum_v20.py text eol=lf
+test_conditional_physical_sm_eft_hessian_spectrum_v20.py text eol=lf
+CONDITIONAL_PHYSICAL_SM_EFT_HESSIAN_SPECTRUM_V20.json text eol=lf
+CONDITIONAL_PHYSICAL_SM_EFT_HESSIAN_SPECTRUM_V20.md text eol=lf
+
+# Exact physical-SM heavy-vector tree theorem and threshold-log interface.
+exact_physical_sm_heavy_vector_masses_v20.py text eol=lf
+test_exact_physical_sm_heavy_vector_masses_v20.py text eol=lf
+EXACT_PHYSICAL_SM_HEAVY_VECTOR_MASSES_V20.json text eol=lf
+EXACT_PHYSICAL_SM_HEAVY_VECTOR_MASSES_V20.md text eol=lf
+
+# Exact combined heavy-vector/FP-ghost/Goldstone non-SUSY MSbar matching kernel.
+exact_physical_sm_heavy_vector_msbar_matching_v20.py text eol=lf
+test_exact_physical_sm_heavy_vector_msbar_matching_v20.py text eol=lf
+EXACT_PHYSICAL_SM_HEAVY_VECTOR_MSBAR_MATCHING_V20.json text eol=lf
+EXACT_PHYSICAL_SM_HEAVY_VECTOR_MSBAR_MATCHING_V20.md text eol=lf
+exact_physical_sm_vector_rxi_vacuum_cancellation_v20.py text eol=lf
+test_exact_physical_sm_vector_rxi_vacuum_cancellation_v20.py text eol=lf
+EXACT_PHYSICAL_SM_VECTOR_RXI_VACUUM_CANCELLATION_V20.json text eol=lf
+EXACT_PHYSICAL_SM_VECTOR_RXI_VACUUM_CANCELLATION_V20.md text eol=lf
+exact_physical_sm_g6_g7_closure_frontier_v20.py text eol=lf
+test_exact_physical_sm_g6_g7_closure_frontier_v20.py text eol=lf
+EXACT_PHYSICAL_SM_G6_G7_CLOSURE_FRONTIER_V20.json text eol=lf
+EXACT_PHYSICAL_SM_G6_G7_CLOSURE_FRONTIER_V20.md text eol=lf
+exact_physical_sm_g8_identifiability_frontier_v20.py text eol=lf
+test_exact_physical_sm_g8_identifiability_frontier_v20.py text eol=lf
+EXACT_PHYSICAL_SM_G8_IDENTIFIABILITY_FRONTIER_V20.json text eol=lf
+EXACT_PHYSICAL_SM_G8_IDENTIFIABILITY_FRONTIER_V20.md text eol=lf
+exact_physical_sm_five_amplitude_equality_v20.py text eol=lf
+test_exact_physical_sm_five_amplitude_equality_v20.py text eol=lf
+EXACT_PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_V20.json text eol=lf
+EXACT_PHYSICAL_SM_FIVE_AMPLITUDE_EQUALITY_V20.md text eol=lf
+exact_physical_sm_hard_projector_hessians_v20.py text eol=lf
+test_exact_physical_sm_hard_projector_hessians_v20.py text eol=lf
+EXACT_PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_V20.json text eol=lf
+EXACT_PHYSICAL_SM_HARD_PROJECTOR_HESSIANS_V20.md text eol=lf
+exact_physical_sm_easy_21_hessians_v20.py text eol=lf
+test_exact_physical_sm_easy_21_hessians_v20.py text eol=lf
+EXACT_PHYSICAL_SM_EASY_21_HESSIANS_V20.json text eol=lf
+EXACT_PHYSICAL_SM_EASY_21_HESSIANS_V20.md text eol=lf
+exact_physical_sm_last_six_hessians_v20.py text eol=lf
+test_exact_physical_sm_last_six_hessians_v20.py text eol=lf
+EXACT_PHYSICAL_SM_LAST_SIX_HESSIANS_V20.json text eol=lf
+EXACT_PHYSICAL_SM_LAST_SIX_HESSIANS_V20.md text eol=lf
+exact_physical_sm_37_row_aggregate_v20.py text eol=lf
+test_exact_physical_sm_37_row_aggregate_v20.py text eol=lf
+EXACT_PHYSICAL_SM_37_ROW_AGGREGATE_V20.json text eol=lf
+EXACT_PHYSICAL_SM_37_ROW_AGGREGATE_V20.md text eol=lf
+exact_physical_sm_local_equality_orbit_v20.py text eol=lf
+test_exact_physical_sm_local_equality_orbit_v20.py text eol=lf
+EXACT_PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_V20.json text eol=lf
+EXACT_PHYSICAL_SM_LOCAL_EQUALITY_ORBIT_V20.md text eol=lf
+exact_physical_sm_g4_g5_branch_mismatch_v20.py text eol=lf
+test_exact_physical_sm_g4_g5_branch_mismatch_v20.py text eol=lf
+EXACT_PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_V20.json text eol=lf
+EXACT_PHYSICAL_SM_G4_G5_BRANCH_MISMATCH_V20.md text eol=lf
+physical_sm_source_algebra_equality_frontier_v20.py text eol=lf
+test_physical_sm_source_algebra_equality_frontier_v20.py text eol=lf
+PHYSICAL_SM_SOURCE_ALGEBRA_EQUALITY_FRONTIER_V20.json text eol=lf
+PHYSICAL_SM_SOURCE_ALGEBRA_EQUALITY_FRONTIER_V20.md text eol=lf
+
 # Transitive raw dependencies of the EFT G3/G4/G5 proof chain.
 EXACT_GAUGED_U1X_PHYSICAL_QUOTIENT_V20.json text eol=crlf
 exact_gauged_u1x_physical_quotient_v20.py text eol=crlf
@@ -129,3 +339,130 @@ live_g2_exact_quadratic_family_derivatives_v20.py text eol=crlf
 
 # This historical proof source is raw-pinned with intentionally mixed EOLs.
 exact_gauged_u1x_g3_su5_equality_orbit_v20.py -text whitespace=cr-at-eol
+
+# Canonical V21 authority, orchestration, and state-dynamic release consumers.
+authoritative_full_model_gate_v20.py text eol=lf
+test_authoritative_full_model_gate_v20.py text eol=lf
+publication_referee_gate_v20.py text eol=lf
+test_publication_referee_gate_v20.py text eol=lf
+prepare_validation_artifacts_v20.py text eol=lf
+test_prepare_validation_artifacts_v20.py text eol=lf
+replicate.py text eol=lf
+test_replicate_v20.py text eol=lf
+validate_release_v20.py text eol=lf
+test_validate_release_v20.py text eol=lf
+theory_validation_matrix_v20.py text eol=lf
+test_theory_validation_matrix_v20.py text eol=lf
+theory_confirmation_verdict_v20.py text eol=lf
+ultimate_theory_gate_v20.py text eol=lf
+test_ultimate_theory_gate_v20.py text eol=lf
+README.md text eol=lf
+SHA256SUMS text eol=lf
+.github/workflows/g1-g8-gate-ledger.yml text eol=lf
+.github/workflows/g1-g8-execution-roadmap.yml text eol=lf
+.github/workflows/gauged-u1x-g3-stability.yml text eol=lf
+.github/workflows/current-main-full-reaudit.yml text eol=lf
+.github/workflows/replicate-and-falsify.yml text eol=lf
+.github/workflows/exact-x-symmetry-consistency-gate.yml text eol=lf
+
+# V26 dynamical Green--Schwarz G1 completion attempt.
+susy_v26_g1_dynamical_gs_completion_attempt.py text eol=lf
+test_susy_v26_g1_dynamical_gs_completion_attempt.py text eol=lf
+SUSY_V26_G1_DYNAMICAL_GS_COMPLETION_ATTEMPT.json text eol=lf
+SUSY_V26_G1_DYNAMICAL_GS_COMPLETION_ATTEMPT.md text eol=lf
+.github/workflows/susy-v26-g1-dynamical-gs-attempt.yml text eol=lf
+
+# V27 architecture-changing G1 audit and strict UV candidate schema.
+susy_v27_g1_architecture_change_audit.py text eol=lf
+test_susy_v27_g1_architecture_change_audit.py text eol=lf
+SUSY_V27_G1_ARCHITECTURE_CHANGE_AUDIT.json text eol=lf
+SUSY_V27_G1_ARCHITECTURE_CHANGE_AUDIT.md text eol=lf
+SUSY_V27_G1_UV_COMPLETION_INPUT_SCHEMA.json text eol=lf
+.github/workflows/susy-v27-g1-architecture-audit.yml text eol=lf
+
+# V28 exact 51-modulus new-physics scaffold and microscopic bridge contract.
+susy_v28_new_physics_moduli_bridge.py text eol=lf
+test_susy_v28_new_physics_moduli_bridge.py text eol=lf
+SUSY_V28_NEW_PHYSICS_MODULI_BRIDGE.json text eol=lf
+SUSY_V28_NEW_PHYSICS_MODULI_BRIDGE.md text eol=lf
+SUSY_V28_MICROSCOPIC_INSTANTON_BRIDGE_SCHEMA.json text eol=lf
+.github/workflows/susy-v28-new-physics-moduli-bridge.yml text eol=lf
+
+# V29 all-model hidden-condensate rank theorem and terminal microscopic verdict.
+susy_v29_g1_microscopic_completion_verdict.py text eol=lf
+test_susy_v29_g1_microscopic_completion_verdict.py text eol=lf
+SUSY_V29_G1_MICROSCOPIC_COMPLETION_VERDICT.json text eol=lf
+SUSY_V29_G1_MICROSCOPIC_COMPLETION_VERDICT.md text eol=lf
+.github/workflows/susy-v29-g1-microscopic-verdict.yml text eol=lf
+
+# V30 finite-flux constrained-chiral G1 completion candidate.
+susy_v30_g1_finite_flux_completion.py text eol=lf
+test_susy_v30_g1_finite_flux_completion.py text eol=lf
+SUSY_V30_G1_FINITE_FLUX_COMPLETION.json text eol=lf
+SUSY_V30_G1_FINITE_FLUX_COMPLETION.md text eol=lf
+SUSY_V30_FIELD_AND_SELECTOR_MANIFEST.json text eol=lf
+SUSY_V30_OPERATOR_AND_MATCHING_CONTRACT.json text eol=lf
+SUSY_V30_MODULI_AND_HIDDEN_CONTRACT.json text eol=lf
+SUSY_V30_G1_AXIOMATIC_SUBMISSION.json text eol=lf
+.github/workflows/susy-v30-g1-finite-flux-completion.yml text eol=lf
+
+# V31 unified conditional G1--G8 benchmark completion.
+susy_v31_g1_g8_unified_completion.py text eol=lf
+test_susy_v31_g1_g8_unified_completion.py text eol=lf
+SUSY_V31_G1_G8_UNIFIED_COMPLETION.json text eol=lf
+SUSY_V31_G1_G8_UNIFIED_COMPLETION.md text eol=lf
+SUSY_V31_BENCHMARK_INPUT_LEDGER.json text eol=lf
+SUSY_V31_SPECTRUM_VACUUM_LEDGER.json text eol=lf
+SUSY_V31_RGE_FLAVOUR_COSMOLOGY_LEDGER.json text eol=lf
+SUSY_V31_G1_G8_GATE_LEDGER.json text eol=lf
+.github/workflows/susy-v31-g1-g8-unified-completion.yml text eol=lf
+
+# V32 evidence-grade complete-theory promotion audit and corrected frontier.
+susy_v32_complete_theory_promotion_audit.py text eol=lf
+test_susy_v32_complete_theory_promotion_audit.py text eol=lf
+SUSY_V32_COMPLETE_THEORY_PROMOTION_AUDIT.json text eol=lf
+SUSY_V32_COMPLETE_THEORY_PROMOTION_AUDIT.md text eol=lf
+SUSY_V32_CORRECTED_PHYSICS_LEDGER.json text eol=lf
+SUSY_V32_G1_G8_GATE_LEDGER.json text eol=lf
+SUSY_V32_REQUIRED_DERIVATIONS.json text eol=lf
+.github/workflows/susy-v32-complete-theory-promotion-audit.yml text eol=lf
+
+# V33 exact derivation campaign, Z33 SARAH source, and frozen RGE attestations.
+susy_v33_derivation_campaign.py text eol=lf
+test_susy_v33_derivation_campaign.py text eol=lf
+SUSY_V33_DERIVATION_CAMPAIGN.json text eol=lf
+SUSY_V33_DERIVATION_CAMPAIGN.md text eol=lf
+SUSY_V33_EXACT_DERIVATIONS.json text eol=lf
+SUSY_V33_G1_G8_GATE_LEDGER.json text eol=lf
+SUSY_V33_NEW_PHYSICS_CANDIDATES.json text eol=lf
+SUSY_V33_SARAH_RGE_ATTESTATION.json text eol=lf
+SUSY_V33_SARAH_SOFT_RGE_ATTESTATION.json text eol=lf
+models/PSZ4RZ33SUSYV33/*.m text eol=lf
+tools/validate-susy-v33-z33.wls text eol=lf
+tools/derive-susy-v33-ps-rges.wls text eol=lf
+.github/workflows/susy-v33-derivation-campaign.yml text eol=lf
+
+# V34 finite-anomaly, charged-flux, projected-RGE, and threshold campaign.
+susy_v34_next_step_campaign.py text eol=lf
+test_susy_v34_next_step_campaign.py text eol=lf
+SUSY_V34_NEXT_STEP_CAMPAIGN.json text eol=lf
+SUSY_V34_NEXT_STEP_CAMPAIGN.md text eol=lf
+SUSY_V34_G1_ANOMALY_INSTANTON_CLOSURE.json text eol=lf
+SUSY_V34_G6_PROJECTED_RGE_THRESHOLD.json text eol=lf
+SUSY_V34_NEW_PHYSICS_REPAIRS.json text eol=lf
+SUSY_V34_G1_G8_GATE_LEDGER.json text eol=lf
+.github/workflows/susy-v34-next-step-campaign.yml text eol=lf
+
+# V35 live Yijk basis and literal one/two-loop component BetaY projection.
+susy_v35_component_betay_campaign.py text eol=lf
+test_susy_v35_component_betay_campaign.py text eol=lf
+SUSY_V35_COMPONENT_BETAY_CAMPAIGN.json text eol=lf
+SUSY_V35_COMPONENT_BETAY_CAMPAIGN.md text eol=lf
+SUSY_V35_G6_COMPONENT_BETAY_CLOSURE.json text eol=lf
+SUSY_V35_FROZEN_BETAY_FORENSIC.json text eol=lf
+SUSY_V35_G1_G8_GATE_LEDGER.json text eol=lf
+SUSY_V35_SARAH_BETAY_FEASIBILITY_PROBE.json text eol=lf
+SUSY_V35_SARAH_YIJK_COMPONENT_BASIS.json text eol=lf
+tools/probe-susy-v35-betay.wls text eol=lf
+tools/derive-susy-v35-yijk-basis.wls text eol=lf
+.github/workflows/susy-v35-component-betay.yml text eol=lf

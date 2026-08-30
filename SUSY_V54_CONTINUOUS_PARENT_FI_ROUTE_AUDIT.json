@@ -1,0 +1,489 @@
+{
+  "FI_GS_anomaly_and_running": {
+    "FI_solution": "xi_A<0 and 2|P|^2+xi_A=0 when |C|=|barC|",
+    "GS_nonAbelian_gravity_universality": true,
+    "b_Spin10": 23,
+    "base": {
+      "Spin10_squared_U1": 4,
+      "TrQ": 30,
+      "TrQ3": -24
+    },
+    "passes_1000x": false,
+    "passes_100x": true,
+    "pole_ratio_at_g_0p73": 627.6185595500677,
+    "positive_abelian_normalization_in_1110_6901_convention": 13,
+    "raw_TrQ_squared": 178,
+    "repair_fields": {
+      "five_10s": {
+        "charge_each": -1,
+        "mass": "P V_i^2/2"
+      },
+      "four_singlets": {
+        "charge_each": -1,
+        "mass": "P S_j^2/2"
+      }
+    },
+    "repaired": {
+      "Spin10_squared_U1": -1,
+      "TrQ": -24,
+      "TrQ3": -78
+    },
+    "sum_T_Spin10": 47
+  },
+  "artifact_manifest": {
+    "script": {
+      "path": "susy_v54_continuous_parent_fi_route_audit.py",
+      "sha256": "7a7bf7ace86e957020e1b0b2992e1cc63bba6f920ca1e743d6ff594ae70d49c1"
+    },
+    "test": {
+      "path": "test_susy_v54_continuous_parent_fi_route_audit.py",
+      "sha256": "2392d9bfc22cacffc9e18d9f6a15e79baa0fa72c2f1a3eef8fe17cce70503d5f"
+    }
+  },
+  "charged_source_dynamical_rescue": {
+    "FI_D_flatness": "TrQ>0 gives xi_A>0; the nonzero negative-charge S,T,M,D3,D4 VEVs permit D_A=0. The exact FI magnitude and GS-modulus Kahler stabilization are not fixed by the holomorphic certificate.",
+    "Spin10_running": {
+      "b": 18,
+      "pole_ratio_at_g_0p73": 3756.9333788231534,
+      "singlet_repair_changes_Spin10_running": false,
+      "sum_T": 42
+    },
+    "all_spurion_F_residuals": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "anomalies_before_repair": {
+      "Spin10_squared_U1": 49,
+      "TrQ": 415,
+      "TrQ2": 14081,
+      "TrQ3": -3887
+    },
+    "constraint_jacobian_rank": 6,
+    "constraint_kernel": [
+      6,
+      -12,
+      -6,
+      4,
+      -2,
+      1,
+      2
+    ],
+    "constraints": [
+      "M K=1",
+      "P T=1",
+      "K=L^2",
+      "K=R M",
+      "K^2=P M",
+      "T=P S"
+    ],
+    "driver_VEVs": [
+      -1770,
+      0,
+      1350,
+      420,
+      0,
+      0
+    ],
+    "driver_charges": [
+      0,
+      0,
+      -2,
+      -2,
+      -4,
+      6
+    ],
+    "gate_promotion": false,
+    "local_same_action": {
+      "coordinates": 229,
+      "gauge_orbit_rank": 34,
+      "hessian_nullity": 38,
+      "hessian_rank": 191,
+      "hessian_sha256": "44dfe08b2d9cb19f3e11df33d212dc8451211c90e7c22a73687c52bafa8f6d1d",
+      "kernel_decomposition": {
+        "Spin10_gauge": 33,
+        "U1_gauge": 1,
+        "extra": 0,
+        "weak_Higgs": 4
+      },
+      "orbit_sha256": "fad10b84a0d51453e3efaf616e2699b73c4743c1a0565016d463f90d57b5b063",
+      "ward_product_zero": true
+    },
+    "minimality_scope": "complete enumeration of degree<=2 monomial equalities for the original six VEV charges has rank four; scanning one added integer charge finds |qK|=2 as the smallest safe rank-six repair",
+    "new_field": {
+      "U1_charge": 2,
+      "VEV": 1,
+      "name": "K"
+    },
+    "operator_screen": {
+      "F4_safe_through_total_degree8": true,
+      "H1_squared_safe_through_total_degree8": true,
+      "P_squared_H1_squared_charge": -32,
+      "direct_h_H2_charge": -1,
+      "first_F4_dressing": {
+        "fields": [
+          "S",
+          "S",
+          "S",
+          "S",
+          "R"
+        ],
+        "insertions": 5
+      },
+      "first_H1_squared_dressing": {
+        "fields": [
+          "P",
+          "P",
+          "P",
+          "P",
+          "P",
+          "P",
+          "P",
+          "K"
+        ],
+        "insertions": 8
+      }
+    },
+    "remaining_fail_closed_items": [
+      "first exact charge-neutral F16^4 dressing occurs at total degree nine",
+      "the standard single-GS repair requires 134 extra singlets and has a very large Abelian charge-square trace",
+      "GS axion/modulus, Kahler potential, vector/scalar mass matrix and global vacuum are absent",
+      "no Wilson coefficients, proton lifetime, thresholds, flavor fit, SUSY breaking or cosmology are computed"
+    ],
+    "single_GS_singlet_repair": {
+      "anomalies": {
+        "Spin10_squared_U1": 49,
+        "TrQ": 1176,
+        "TrQ2": 18624,
+        "TrQ3": 23334
+      },
+      "coordinates": 363,
+      "exact_spectator_Z2_odd_count": 134,
+      "gauge_orbit_rank": 34,
+      "hessian_nullity": 38,
+      "hessian_rank": 325,
+      "hessian_sha256": "388c9a1292e99a78c8a6fd8e5d1ed0e2a461d7b37d1b333aa7cac17f073891bb",
+      "masses": [
+        "S X_6^2",
+        "M X_1^2",
+        "K X_minus1^2",
+        "m X_0^2"
+      ],
+      "mixed_gravity_universality": true,
+      "orbit_sha256": "b5978ad8b096830012f7cb3c6bd30426b84c8d370d6bd2ab99bd020bcad81ef7",
+      "positive_abelian_normalization": "3889/49",
+      "spectators": {
+        "q_minus1": 1,
+        "q_plus1": 6,
+        "q_plus6": 126,
+        "q_zero": 1
+      },
+      "ward_product_zero": true
+    },
+    "source_spurion_gradient": [
+      0,
+      0,
+      0,
+      420,
+      2190,
+      2700,
+      0
+    ]
+  },
+  "charged_source_retuning_seed": {
+    "F4_safe_through_total_degree8": true,
+    "H1_squared_safe_through_total_degree8": true,
+    "P_squared_H1_squared_charge": -32,
+    "all_displayed_terms_neutral": true,
+    "charges": {
+      "A": 1,
+      "B": 1,
+      "C": 0,
+      "E": -2,
+      "F": 11,
+      "H1": -22,
+      "H2": 3,
+      "L_Cmass": 1,
+      "M_adj2": -2,
+      "P": 6,
+      "R_E2": 4,
+      "S_hmass": -12,
+      "T_H2mass": -6,
+      "barC": -1,
+      "barh": 16,
+      "h": -4
+    },
+    "constraint_jacobian_null_vector": [
+      6,
+      -12,
+      -6,
+      4,
+      -2,
+      1
+    ],
+    "constraint_jacobian_rank": 4,
+    "direct_h_H2_charge": -1,
+    "effective_source_witness": {
+      "A0_upper_blocks": [
+        1,
+        1,
+        1,
+        3,
+        3
+      ],
+      "B0_upper_blocks": [
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "C0_equals_barC0": "10 e15",
+      "E0_diagonal": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        -3,
+        -3,
+        -3,
+        -3
+      ],
+      "eta": "-6*i",
+      "kappaA": 19,
+      "kappaAB": 1,
+      "kappaB": 10,
+      "lambda": 0,
+      "mA": 214,
+      "mB": -50,
+      "mC": 27,
+      "mE": 14,
+      "muAB": 6
+    },
+    "fatal_open_item": "source/filter dependence on R,M,L backreacts on their F equations; driver-multiplier VEVs, the displayed renormalizable constraint Jacobian has rank four rather than five and leaves a physical spurion modulus before backreaction; the complete enlarged Hessian, anomalies and all allowed singlet operators are not solved",
+    "first_charge_neutral_F4_dressing": {
+      "fields": [
+        "S",
+        "S",
+        "S",
+        "S",
+        "R"
+      ],
+      "insertions": 5
+    },
+    "first_charge_neutral_H1_squared_dressing": {
+      "fields": [
+        "P",
+        "P",
+        "P",
+        "P",
+        "P",
+        "P",
+        "R",
+        "R"
+      ],
+      "insertions": 8
+    },
+    "fixed_spurion_source_certificate": {
+      "D_nonzero_count": 0,
+      "F_nonzero_counts": {
+        "A_F_x400": 0,
+        "B_F_x400": 0,
+        "C_F_x400": 0,
+        "E_F_x400": 0,
+        "barC_F_x400": 0
+      },
+      "hessian_nullity": 33,
+      "hessian_rank_mod37": 143,
+      "orbit_rank_mod37": 33,
+      "ward_product_zero": true
+    },
+    "purpose": "proof that q(B)!=0 admits a tractable exact effective-source retuning",
+    "same_action_promotion": false,
+    "singlet_constraints": [
+      "T=P S",
+      "S=T^2",
+      "P T=v^2",
+      "R=P M",
+      "R M=L^2"
+    ],
+    "term_charges": {
+      "E_A2": 0,
+      "E_AB": 0,
+      "E_B2": 0,
+      "F_F_H1": 0,
+      "L_barC_C": 0,
+      "M_A2": 0,
+      "M_AB": 0,
+      "M_B2": 0,
+      "P_H1_barh": 0,
+      "R_E2": 0,
+      "S_barh_h": 0,
+      "T_H2_squared": 0,
+      "barC_A_C": 0,
+      "h_B_H2": 0
+    }
+  },
+  "checks": {
+    "GS_ledger_universal": true,
+    "P2H1sq_allowed": true,
+    "allowed_filler_makes_weak_block_full_rank16": true,
+    "continuous_lift_all_required_terms_neutral": true,
+    "dynamical_spurion_F_residuals_zero": true,
+    "no_gate_promotion": true,
+    "one_charge2_singlet_repairs_constraint_rank": true,
+    "renormalizable_hH2_filler_allowed": true,
+    "rescued_local_H191_nullity38": true,
+    "rescued_local_kernel_is_34_gauge_plus4_weak": true,
+    "rescued_operator_screen_through_degree8": true,
+    "retuned_fixed_spurion_source_exact": true,
+    "retuned_seed_not_promoted": true,
+    "singlet_only_GS_repair_is_exact_but_large": true,
+    "upstream_cores_bound": true,
+    "visible_generic_H_rank237_nullity34": true,
+    "visible_kernel_equals_rank34_gauge_orbit": true
+  },
+  "continuous_parent": {
+    "all_F4_dressings_with_at_most_two_VEVs_forbidden": true,
+    "all_required_neutral": true,
+    "charges": {
+      "A45": 0,
+      "B45_DW": 0,
+      "C16H": 1,
+      "E54": 0,
+      "F16": 1,
+      "H1_10": -2,
+      "H2_10": 0,
+      "N": 0,
+      "Nc": 0,
+      "P": 2,
+      "barC16H": -1,
+      "barh_10": 0,
+      "h_10": 0
+    },
+    "derivation": [
+      "E2 and E3 => qE=0; A2, B2 and AB => qA=qB=0",
+      "H2^2, h B H2 and barh h => qH2=qh=qbarh=0",
+      "P H1 barh and F F H1 => qH1=-qP and qP=2 qF",
+      "barC C, F barC N, N Nc and Nc^2 => qC=qF, qbarC=-qF, qN=qNc=0"
+    ],
+    "operator_charges": {
+      "F16_power4": 4,
+      "F16_power4_barC_power4": 0,
+      "H1_squared": -4,
+      "P_squared_H1_squared": 0,
+      "h_H2_renormalizable_filler": 0
+    },
+    "required_term_charges": {
+      "A2": 0,
+      "AB": 0,
+      "B2": 0,
+      "E2": 0,
+      "E3": 0,
+      "EA2": 0,
+      "EAB": 0,
+      "EB2": 0,
+      "F_F_H1": 0,
+      "F_barC_N": 0,
+      "H2_squared": 0,
+      "N_Nc": 0,
+      "Nc_squared": 0,
+      "P_H1_barh": 0,
+      "barC_A_C": 0,
+      "barC_C": 0,
+      "barh_h": 0,
+      "h_B_H2": 0
+    }
+  },
+  "core_sha256": "25b0a48ea19fe6831049a46b01259a2a465f5f65584528d1670927156956633e",
+  "failures": [],
+  "gate_verdict": {
+    "G1": "FROZEN_PRIOR_NAMESPACE_ONLY",
+    "G2": "OPEN",
+    "G3": "OPEN",
+    "G4": "OPEN",
+    "G5": "OPEN",
+    "G6": "OPEN",
+    "G7": "OPEN",
+    "G8": "OPEN",
+    "promoted_gate_count": 0
+  },
+  "generic_allowed_visible_action": {
+    "boundary": "visible chiral holomorphic certificate; GS modulus/Kahler/vector scalar matrix not included",
+    "gauge_orbit_rank": 34,
+    "hessian_nullity": 34,
+    "hessian_rank": 237,
+    "inventory": {
+      "P": 1,
+      "exact_DW_source": 176,
+      "five_spectator_10s": 50,
+      "four_10_filter": 40,
+      "four_spectator_singlets": 4
+    },
+    "kernel_equals_Spin10_plus_U1_gauge_orbit": true,
+    "physical_weak_Higgs_zero_modes": 0,
+    "visible_coordinates": 271,
+    "ward_product_zero": true
+  },
+  "literature": {
+    "FI_DW_precedent": "https://arxiv.org/abs/1003.2625",
+    "heterotic_GS_universality": "https://arxiv.org/abs/1110.6901",
+    "renormalizable_filter_scope": "https://arxiv.org/abs/1410.5625"
+  },
+  "matrix_hashes": {
+    "generic_visible_hessian": "dca397062a2d4e4bb03576e763acde1342805191c0ed21c9e9616b4359ca1d1a",
+    "generic_visible_orbit": "82752c985bba3a94f91faff724e58f2553d240bdb0bd462084f0046ea3172b9a"
+  },
+  "neutral_driver_no_go": {
+    "assumptions": [
+      "compact ordinary U(1), charged P, uncharged constant v^2",
+      "renormalizable Lagrange-multiplier F driver",
+      "unchanged filter/Yukawa relations qP=2qF"
+    ],
+    "conclusion": "holomorphic renormalizable P driver fails bounded proton safety; FI breaking avoids S but not filter fillers",
+    "derived_charge": "qS=-qP=-2qF",
+    "fatal_charge_identity": "4qF+2qS=4qF-2qP=0",
+    "fatal_operator": "F16^4 S^2",
+    "only_nontrivial_quadratic_constant_driver": "X(P S-v^2)"
+  },
+  "next_kill_test": "Promote the q(B)!=0 seed only after one dynamical action solves every spurion F/D equation, has ker(H)=gauge+four weak modes, passes a complete allowed-operator census, GS anomalies, thresholds and proton matching.",
+  "renormalizable_filter_filler": {
+    "allowed_filler": "m0 h^T H2",
+    "declared_rank": 36,
+    "declared_weak_nullity": 4,
+    "declared_weak_rank": 12,
+    "exact_weak_determinant_factor": "(P lambdaP)^2 m0^2 per weak internal coordinate",
+    "filled_color_rank": 24,
+    "filled_rank": 40,
+    "filled_weak_nullity": 0,
+    "filled_weak_rank": 16,
+    "filler_charge": 0
+  },
+  "schema": "susy_v54_continuous_parent_fi_route_audit_v1",
+  "scope": "exact algebraic audit of the unchanged continuous-U1/FI route plus a fixed-spurion charged-source seed; not an experimentally validated or complete theory",
+  "status": "V54_CONTINUOUS_U1_PARENT_UNIQUE__UNCHANGED_SOURCE_FORCES_B_NEUTRAL__RENORMALIZABLE_hH2_FILLER_ALLOWED_AND_EXACT_WEAK_RANK16__P2H1SQ_ALLOWED__FI_VISIBLE_ACTION_RANK237_NULLITY34_EQUALS_GAUGE__NO_LIGHT_HIGGS__CHARGED_SOURCE_RETUNING_SEED_RESCUED_BY_ONE_CHARGE2_SINGLET__ANOMALY_REPAIRED_363_COORDINATE_HESSIAN_RANK325_NULLITY38__34_GAUGE_PLUS4_WEAK__FIRST_PROTON_DRESSING_DEGREE9__GS_KAHLER_AND_PHENOMENOLOGY_OPEN__NO_GATE_PROMOTION",
+  "upstream_certificates": {
+    "V53_driver_no_go": {
+      "core_sha256": "3777e4ab0f03591ca736f71e282f86a8f232fee83fb2f1d378e789fea6765bf4",
+      "path": "SUSY_V53_FILTER_DRIVER_COMPATIBILITY_NO_GO_AUDIT.json"
+    },
+    "V53_elementary_filter": {
+      "core_sha256": "993b549668243b06d082a7def8591c63141dfa402d6372b133c19cfa8f8b6ff6",
+      "path": "SUSY_V53_ELEMENTARY_FILTER_HESSIAN_AUDIT.json"
+    },
+    "V53_filter_selector": {
+      "core_sha256": "33de88b196a5096f7169cc3156d68cd9f4fa33e985adf0c23ea6c67a1a732dce",
+      "path": "SUSY_V53_FILTER_SELECTOR_CANDIDATE_AUDIT.json"
+    },
+    "V53_master": {
+      "core_sha256": "620525de6b9a6ed2a63fe7e734caa18239dc26b4ef3e36b8eadbd4259d9e3cde",
+      "path": "SUSY_V53_THEORY_COMPLETION_VERIFICATION_AUDIT.json"
+    }
+  }
+}

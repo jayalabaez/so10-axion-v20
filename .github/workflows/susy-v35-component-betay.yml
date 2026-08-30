@@ -1,0 +1,48 @@
+name: SUSY V35 component BetaY campaign
+
+on:
+  push:
+    paths:
+      - "susy_v35_component_betay_campaign.py"
+      - "test_susy_v35_component_betay_campaign.py"
+      - "SUSY_V35_COMPONENT_BETAY_CAMPAIGN.json"
+      - "SUSY_V35_COMPONENT_BETAY_CAMPAIGN.md"
+      - "SUSY_V35_G6_COMPONENT_BETAY_CLOSURE.json"
+      - "SUSY_V35_FROZEN_BETAY_FORENSIC.json"
+      - "SUSY_V35_G1_G8_GATE_LEDGER.json"
+      - "SUSY_V35_SARAH_BETAY_FEASIBILITY_PROBE.json"
+      - "SUSY_V35_SARAH_YIJK_COMPONENT_BASIS.json"
+      - "tools/probe-susy-v35-betay.wls"
+      - "tools/derive-susy-v35-yijk-basis.wls"
+      - "SUSY_V33_SARAH_RGE_ATTESTATION.json"
+      - "SUSY_V34_NEXT_STEP_CAMPAIGN.json"
+      - ".github/workflows/susy-v35-component-betay.yml"
+  pull_request:
+    paths:
+      - "susy_v35_component_betay_campaign.py"
+      - "test_susy_v35_component_betay_campaign.py"
+      - "SUSY_V35_COMPONENT_BETAY_CAMPAIGN.json"
+      - "SUSY_V35_COMPONENT_BETAY_CAMPAIGN.md"
+      - "SUSY_V35_G6_COMPONENT_BETAY_CLOSURE.json"
+      - "SUSY_V35_FROZEN_BETAY_FORENSIC.json"
+      - "SUSY_V35_G1_G8_GATE_LEDGER.json"
+      - "SUSY_V35_SARAH_BETAY_FEASIBILITY_PROBE.json"
+      - "SUSY_V35_SARAH_YIJK_COMPONENT_BASIS.json"
+      - "tools/probe-susy-v35-betay.wls"
+      - "tools/derive-susy-v35-yijk-basis.wls"
+      - "SUSY_V33_SARAH_RGE_ATTESTATION.json"
+      - "SUSY_V34_NEXT_STEP_CAMPAIGN.json"
+      - ".github/workflows/susy-v35-component-betay.yml"
+  workflow_dispatch:
+
+jobs:
+  verify-v35:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install numpy==2.3.5 pytest==9.0.2
+      - run: python -B susy_v35_component_betay_campaign.py --check
+      - run: python -m pytest -q test_susy_v35_component_betay_campaign.py

@@ -1,0 +1,327 @@
+{
+  "additive_Abelian_rejection": {
+    "allowed_equation_vectors": {
+      "Abar2": {
+        "Abar": 2,
+        "omega": -1
+      },
+      "S2": {
+        "S": 2,
+        "omega": -1
+      },
+      "S3": {
+        "S": 3,
+        "omega": -1
+      },
+      "Y_C_Cbar": {
+        "C": 1,
+        "Cbar": 1,
+        "Y": 1,
+        "omega": -1
+      },
+      "Y_tadpole": {
+        "Y": 1,
+        "omega": -1
+      },
+      "f2_C_Abar_Pbar": {
+        "Abar": 1,
+        "C": 1,
+        "Pbar": 1,
+        "omega": -1
+      },
+      "f3_Cbar_Abar_P": {
+        "Abar": 1,
+        "Cbar": 1,
+        "P": 1,
+        "omega": -1
+      },
+      "h1_C_P_H1": {
+        "C": 1,
+        "H1": 1,
+        "P": 1,
+        "omega": -1
+      },
+      "h2_Cbar_Pbar_H2": {
+        "Cbar": 1,
+        "H2": 1,
+        "Pbar": 1,
+        "omega": -1
+      }
+    },
+    "charge_domain": "arbitrary additive Abelian group; continuous, discrete and products are included",
+    "charge_equation_convention": "E(monomial)=sum(field charges)-omega",
+    "conclusions": {
+      "H1_H2_can_be_forbidden": false,
+      "P_Pbar_can_be_forbidden": false,
+      "genuine_R_selector_for_unchanged_W1_W2": false,
+      "superpotential_charge_omega": 0
+    },
+    "identities": {
+      "H1_H2_is_forced": {
+        "derived_vector": {
+          "H1": 1,
+          "H2": 1,
+          "omega": -1
+        },
+        "exact_match": true,
+        "formula": "E(H1 H2) = E(h1) + E(h2) - E(f2) - E(f3) + E(Abar^2)",
+        "integer_coefficients": {
+          "Abar2": 1,
+          "f2_C_Abar_Pbar": -1,
+          "f3_Cbar_Abar_P": -1,
+          "h1_C_P_H1": 1,
+          "h2_Cbar_Pbar_H2": 1
+        },
+        "target_vector": {
+          "H1": 1,
+          "H2": 1,
+          "omega": -1
+        }
+      },
+      "P_Pbar_is_forced": {
+        "derived_vector": {
+          "P": 1,
+          "Pbar": 1,
+          "omega": -1
+        },
+        "exact_match": true,
+        "formula": "E(P Pbar) = E(f2) + E(f3) - E(Y C Cbar) + E(Y) - E(Abar^2)",
+        "integer_coefficients": {
+          "Abar2": -1,
+          "Y_C_Cbar": -1,
+          "Y_tadpole": 1,
+          "f2_C_Abar_Pbar": 1,
+          "f3_Cbar_Abar_P": 1
+        },
+        "target_vector": {
+          "P": 1,
+          "Pbar": 1,
+          "omega": -1
+        }
+      },
+      "S_charge_is_zero": {
+        "derived_vector": {
+          "S": 1
+        },
+        "exact_match": true,
+        "formula": "E(S^3) - E(S^2) = q(S)",
+        "integer_coefficients": {
+          "S2": -1,
+          "S3": 1
+        },
+        "target_vector": {
+          "S": 1
+        }
+      },
+      "superpotential_charge_is_zero": {
+        "derived_vector": {
+          "omega": 1
+        },
+        "exact_match": true,
+        "formula": "2 E(S^3) - 3 E(S^2) = omega",
+        "integer_coefficients": {
+          "S2": -3,
+          "S3": 2
+        },
+        "target_vector": {
+          "omega": 1
+        }
+      }
+    }
+  },
+  "checks": {
+    "S2_and_S3_force_neutral_superpotential_and_neutral_S": true,
+    "all_G1_through_G8_full_claims_are_false_and_open": true,
+    "all_four_additive_charge_identities_match_exactly": true,
+    "extra_45B_one_loop_pole_is_below_Planck120": true,
+    "extra_45B_pole_bound_has_a_rational_certificate": true,
+    "extra_45B_raises_b_from_27_to_35": true,
+    "gauge_only_two_loop_B_is_exactly_1919": true,
+    "one_loop_b_is_exactly_27": true,
+    "spectrum_is_exactly_nine_16_five_10_two_45_one_54": true,
+    "sum_C2T_is_exactly_1487_over_4": true,
+    "two_loop_loss_of_control_occurs_below_Planck120": true,
+    "two_loop_target_scales_match_requested_values": true,
+    "unchanged_W1_W2_force_P_Pbar_and_H1_H2": true,
+    "universal_small_rep_UV_no_go_is_not_claimed": true
+  },
+  "claim_boundary": {
+    "a_higher_dimensional_or_threshold_UV_completion_excluded": false,
+    "all_restructured_or_spurionic_selectors_excluded": false,
+    "all_small_representation_models_excluded": false,
+    "an_interacting_gauge_Yukawa_UV_fixed_point_excluded": false,
+    "stated_gauge_only_two_loop_Planck120_trajectory_excluded": true,
+    "unchanged_neutral_coefficient_additive_Abelian_selector_excluded": true
+  },
+  "closure_counts": {
+    "closed": 0,
+    "open": 8
+  },
+  "core_sha256": "d0a0f9cbe0ea764327de88be009aa7892e1c41f248feba7dc942581104537a34",
+  "extra_45B_repair_rejection": {
+    "b_one_loop": 35,
+    "delta_sum_T": 8,
+    "one_loop_pole_log_mu_over_MGUT": 4.30846992,
+    "one_loop_pole_mu_over_MGUT": 74.3266765,
+    "proposal": "add one further SO(10) adjoint chiral multiplet 45B",
+    "rational_bound_chain": [
+      "pi < 22/7 and e < 11/4",
+      "48 pi/35 < 1056/245 < 9/2",
+      "exp(48 pi/35) < (11/4)^4 (5/3) = 73205/768 < 120"
+    ],
+    "repairs_Planck120_running": false
+  },
+  "failures": [],
+  "gates": [
+    {
+      "closed": false,
+      "full_gate_claim": false,
+      "gate": "G1",
+      "reason": "unchanged W1/W2 has no additive-Abelian selector that forbids P Pbar and H1 H2",
+      "state": "OPEN"
+    },
+    {
+      "closed": false,
+      "full_gate_claim": false,
+      "gate": "G2",
+      "reason": "forced H1 H2 and absent normalized component Clebsches leave physical doublet/triplet ranks open",
+      "state": "OPEN"
+    },
+    {
+      "closed": false,
+      "full_gate_claim": false,
+      "gate": "G3",
+      "reason": "no source-exact global F+D+soft vacuum and Hessian is landed",
+      "state": "OPEN"
+    },
+    {
+      "closed": false,
+      "full_gate_claim": false,
+      "gate": "G4",
+      "reason": "hierarchy protection fails at G1 and perturbative UV control is lost below MPlanck",
+      "state": "OPEN"
+    },
+    {
+      "closed": false,
+      "full_gate_claim": false,
+      "gate": "G5",
+      "reason": "no complete axion, inverse-seesaw and positive physical spectrum is landed",
+      "state": "OPEN"
+    },
+    {
+      "closed": false,
+      "full_gate_claim": false,
+      "gate": "G6",
+      "reason": "gauge-only two-loop running reaches alpha=1 near 29.54 MGUT, below 120 MGUT",
+      "state": "OPEN"
+    },
+    {
+      "closed": false,
+      "full_gate_claim": false,
+      "gate": "G7",
+      "reason": "the physical pole and threshold spectrum is dependency-blocked",
+      "state": "OPEN"
+    },
+    {
+      "closed": false,
+      "full_gate_claim": false,
+      "gate": "G8",
+      "reason": "proton-decay matching and lifetime distribution are dependency-blocked",
+      "state": "OPEN"
+    }
+  ],
+  "gauge_running_rejection": {
+    "B_gauge_only": 1919,
+    "Planck120_perturbative_completion_demonstrated": false,
+    "b": 27,
+    "coefficient_convention": "d alpha/d ln(mu) = b alpha^2/(2 pi) + B alpha^3/(8 pi^2)",
+    "formulas": {
+      "B_gauge_only": "-6 C2(G)^2 + 2 C2(G) sum_R T(R) + 4 sum_R C2(R) T(R)",
+      "b": "sum_R T(R) - 3 C2(G)"
+    },
+    "group_invariants": {
+      "C2_adjoint": 8,
+      "C2_by_representation": {
+        "10": "9/2",
+        "16_or_16bar": "45/8",
+        "45": 8,
+        "54": 10
+      },
+      "dim_SO10": 45
+    },
+    "representations": [
+      {
+        "T": 2,
+        "dimension": 16,
+        "multiplicity": 9,
+        "representation": "16_or_16bar"
+      },
+      {
+        "T": 1,
+        "dimension": 10,
+        "multiplicity": 5,
+        "representation": "10"
+      },
+      {
+        "T": 8,
+        "dimension": 45,
+        "multiplicity": 2,
+        "representation": "45"
+      },
+      {
+        "T": 12,
+        "dimension": 54,
+        "multiplicity": 1,
+        "representation": "54"
+      }
+    ],
+    "sum_C2_times_T": "1487/4",
+    "sum_T": 51,
+    "two_loop_strong_coupling_scales": [
+      {
+        "alpha": "1/10",
+        "below_MPlanck_over_MGUT_120": true,
+        "expected_mu_over_MGUT": 11.21385794,
+        "log_mu_over_MGUT": 2.41715033,
+        "matches_expected_to_5e_minus_8": true,
+        "mu_over_MGUT": 11.21385794
+      },
+      {
+        "alpha": "3/10",
+        "below_MPlanck_over_MGUT_120": true,
+        "expected_mu_over_MGUT": 25.49052495,
+        "log_mu_over_MGUT": 3.23830681,
+        "matches_expected_to_5e_minus_8": true,
+        "mu_over_MGUT": 25.49052495
+      },
+      {
+        "alpha": "1",
+        "below_MPlanck_over_MGUT_120": true,
+        "expected_mu_over_MGUT": 29.54021,
+        "log_mu_over_MGUT": 3.38575239,
+        "matches_expected_to_5e_minus_8": true,
+        "mu_over_MGUT": 29.54021
+      }
+    ]
+  },
+  "n_checks": 14,
+  "n_failed": 0,
+  "namespace": "rejected.susy_so10.v23.chacko_route",
+  "overall_state": "ROUTE_REJECTED",
+  "route_verdict": {
+    "accepted_as_V23_completion": false,
+    "reason": "The unchanged W1/W2 selector is algebraically nonselective and the stated spectrum loses perturbative control below the Planck benchmark.",
+    "rejected_as_complete_G1_G8_route": true,
+    "safe_to_promote": false,
+    "stop_promoting_unchanged_route": true
+  },
+  "schema": "susy_v23_chacko_route_rejection_v1",
+  "scope": {
+    "MPlanck_over_MGUT": 120,
+    "alpha_SO10_at_MGUT": "1/24",
+    "operator_assumption": "unchanged W1/W2 with neutral fixed coefficients",
+    "published_basis": "Chacko--Mohapatra small-representation missing-VEV route, hep-ph/9810315",
+    "running_assumption": "four-dimensional N=1 SUSY SO(10), all listed nonsinglet chiral multiplets active above MGUT, gauge-only two-loop beta function"
+  },
+  "status": "V23_CHACKO_ROUTE_EXACTLY_REJECTED__SELECTOR_AND_TWO_LOOP_UV_OBSTRUCTIONS"
+}

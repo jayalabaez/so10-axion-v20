@@ -1,0 +1,822 @@
+{
+  "baseline_full_U1F_U1X_U1H_local_triangle_gravity_PS_audit": {
+    "V40_host_full_local_row_ledger": {
+      "U1_PS_squared": {
+        "F": {
+          "SU2L": 0,
+          "SU2R": 0,
+          "SU4": 0
+        },
+        "H": {
+          "SU2L": 0,
+          "SU2R": 0,
+          "SU4": 0
+        },
+        "X": {
+          "SU2L": -8,
+          "SU2R": -8,
+          "SU4": -8
+        }
+      },
+      "U1_cubic_and_all_cross_triangles": {
+        "F_F_F": 0,
+        "F_F_H": 0,
+        "F_F_X": -270,
+        "F_H_H": 0,
+        "F_X_H": 6,
+        "F_X_X": -360,
+        "H_H_H": 0,
+        "X_H_H": -9520,
+        "X_X_H": 432,
+        "X_X_X": 5247
+      },
+      "U1_gravity": {
+        "F": 0,
+        "H": 0,
+        "X": -33
+      },
+      "all_local_continuous_gauge_and_mixed_gravitational_rows_vanish": false,
+      "normalization": "sum over left-handed Weyl fermions; PS mixed entries use the V40 doubled-index normalization 2T(fundamental)=1; product entries are fully symmetric charge monomials",
+      "pure_Pati_Salam_and_SU2_global_checks": {
+        "SU2L_Witten_doublet_count": 30,
+        "SU2L_Witten_even": true,
+        "SU2R_Witten_doublet_count": 38,
+        "SU2R_Witten_even": true,
+        "SU4_cubed": 0
+      }
+    },
+    "critical_X_PS_target": {
+      "SU2L": 8,
+      "SU2R": 8,
+      "SU4": 8
+    },
+    "normalization": "sum over left-handed Weyl fermions; PS mixed entries use the V40 doubled-index normalization 2T(fundamental)=1; product entries are fully symmetric charge monomials",
+    "required_increment_for_a_zero_local_parent": {
+      "U1_PS_squared": {
+        "F": {
+          "SU2L": 0,
+          "SU2R": 0,
+          "SU4": 0
+        },
+        "H": {
+          "SU2L": 0,
+          "SU2R": 0,
+          "SU4": 0
+        },
+        "X": {
+          "SU2L": 8,
+          "SU2R": 8,
+          "SU4": 8
+        }
+      },
+      "U1_cubic_and_all_cross_triangles": {
+        "F_F_F": 0,
+        "F_F_H": 0,
+        "F_F_X": 270,
+        "F_H_H": 0,
+        "F_X_H": -6,
+        "F_X_X": 360,
+        "H_H_H": 0,
+        "X_H_H": 9520,
+        "X_X_H": -432,
+        "X_X_X": -5247
+      },
+      "U1_gravity": {
+        "F": 0,
+        "H": 0,
+        "X": 33
+      }
+    }
+  },
+  "checks": {
+    "Pfaffian_witness_has_even_SU2L_Witten_count": true,
+    "Pfaffian_witness_shift_is_66_divisible": true,
+    "V40_host_X_PS_squared_is_minus_8_each": true,
+    "full_local_product_parent_not_overclaimed": true,
+    "ordinary_self_paired_and_Pfaffian_class_cannot_repair_X_PS_rows": true,
+    "real_majorana_witness_shift_is_33_divisible": true,
+    "self_majorana_block_really_evicts_the_V42_gravity_parity_inference": true,
+    "self_majorana_even_X_VEV_branch_preserves_Z66": true,
+    "source_files_present": true
+  },
+  "complete_theory_exists": false,
+  "core_sha256": "3136432e99d3781bada59869a71171ac27f6c982d563735944f89a7509882a20",
+  "decision": {
+    "fully_local_continuous_anomaly_free_product_parent_exists_in_stated_class": false,
+    "reason": "The necessary +8 X--PS^2 increment is not in 33 Z, while every allowed gapped PS threshold increment is in 33 Z.",
+    "what_remains_distinct_and_unresolved": [
+      "non-polynomial/composite strong-dynamics Pfaffians with a fully specified anomaly and mass matching calculation",
+      "PS-breaking thresholds, intentionally light anomalons, or a quantized Green--Schwarz, inflow, or topological response",
+      "the full discrete-Z4R, Spin/bordism, Pati--Salam global-form, gaugino/gravitino, vacuum, spectrum, RG, flavour, proton, and cosmology programs"
+    ],
+    "what_the_self_majorana_witness_does_establish": "V42's even-X Dirac gravity-parity proof cannot be generalized to self-Majorana blocks without further hypotheses."
+  },
+  "failures": [],
+  "full_gate_closed": false,
+  "n_failed": 0,
+  "ordinary_Z66_self_paired_Pfaffian_threshold_theorem": {
+    "Dirac_block": {
+      "consequence": "The representation-block X-charge sum is 0 modulo 66, hence Delta A[X G^2] is in 66 Z.",
+      "mixed_PS_increment_lattice": "66 Z",
+      "selected_determinant_monomial_relation": "sum_i x(R_i)+sum_i x(Rbar_sigma(i))+sum_entry x(VEV_entry)=0"
+    },
+    "V40_required_increment": {
+      "SU2L": 8,
+      "SU2R": 8,
+      "SU4": 8
+    },
+    "V40_required_increment_mod_33": {
+      "SU2L": 8,
+      "SU2R": 8,
+      "SU4": 8
+    },
+    "conclusion": "No such threshold can cancel the V40 X--SU(4)^2, X--SU(2)_L^2, and X--SU(2)_R^2 residues -8 simultaneously (or individually): the required +8 is nonzero modulo 33.  Therefore a fully local anomaly-free U(1)_F x U(1)_X x U(1)_H parent preserving Z66 does not exist within this ordinary self-paired/Pfaffian threshold class.",
+    "direct_sum_conclusion": "Every ordinary fully gapped threshold built from these block types shifts each X--PS^2 row by an element of 33 Z.",
+    "scope_assumptions": [
+      "Pati--Salam is unbroken at the matching threshold.",
+      "Every X-charged mass-generating VEV has primitive integral X charge in 66 Z, so the old Z66 (and its X-derived Z5610 direction with H-neutral VEVs) is exact at that threshold.",
+      "Every added PS-charged chiral multiplet is gapped by an ordinary finite polynomial holomorphic mass matrix on that branch; real/symmetric Majorana and pseudoreal/skew-Pfaffian blocks are included.",
+      "The doubled Pati--Salam Dynkin index I_R is integral.  No massless anomalon, PS-breaking threshold, Green--Schwarz/Stueckelberg response, anomaly inflow, symmetry-preserving topological order, or non-polynomial strong-dynamics mass mechanism is invoked."
+    ],
+    "singlet_blocks": {
+      "mixed_PS_increment": 0,
+      "reason": "Pati--Salam singlets have zero Pati--Salam Dynkin index, regardless of their self-Majorana mass structure."
+    },
+    "skew_pseudoreal_Pfaffian_block": {
+      "consequence": "Every field occurs once in a nonzero Pfaffian matching, so the representation-block X-charge sum is 0 modulo 66 and Delta A[X G^2] is in 66 Z.",
+      "mixed_PS_increment_lattice": "66 Z",
+      "selected_Pfaffian_monomial_relation": "sum_i x(Phi_i)+sum_pair x(VEV_pair)=0"
+    },
+    "symmetric_real_Majorana_block": {
+      "consequence": "The representation-block X-charge sum is 0 modulo 33, hence Delta A[X G^2]=I_R sum_i x(Phi_i) is in 33 Z.",
+      "mixed_PS_increment_lattice": "33 Z",
+      "selected_determinant_monomial_relation": "2 sum_i x(Phi_i)+sum_entry x(VEV_entry)=0"
+    },
+    "target_lies_in_allowed_lattice": false,
+    "theorem": "Ordinary self-paired and Pfaffian Z66 heavy-threshold obstruction"
+  },
+  "promotion_boundary": {
+    "established": [
+      "a renormalizable isolated Z66-preserving self-Majorana singlet branch that shifts X-gravity by an odd integer",
+      "explicit real-PS symmetric and pseudoreal-PS Pfaffian massability witnesses with all X VEVs in 66 Z",
+      "an exact ordinary-threshold no-go for the remaining X--PS^2 residue under the stated assumptions"
+    ],
+    "not_established": [
+      "a complete local anomaly-free product parent preserving Z66",
+      "a microscopic UV completion or a G1 closure",
+      "any closure of G2--G8"
+    ]
+  },
+  "purpose": "Resolve the V42 self-Majorana/Pfaffian loophole at the level of ordinary local polynomial threshold arithmetic, distinguishing an actual gravity-parity escape from a full anomaly-free product-parent construction.",
+  "references": [
+    "SUSY_V38_G1_UV_COMPLETION_AUDIT.json (the earlier even-order real-representation modulus statement)",
+    "SUSY_V42_PRODUCT_PARENT_LOCAL_COMPLETION.json (the restricted even-X Dirac gravity-parity theorem)",
+    "https://arxiv.org/abs/hep-ph/9210211",
+    "https://arxiv.org/abs/1808.02881"
+  ],
+  "schema": "susy-v43-pfaffian-product-escape-audit-v1",
+  "self_majorana_gravity_escape": {
+    "critical_values": {
+      "V40_host_X_gravity": -33,
+      "combined_X_PS_squared": {
+        "SU2L": -8,
+        "SU2R": -8,
+        "SU4": -8
+      },
+      "combined_X_cubed": 41184,
+      "combined_X_gravity": 0,
+      "self_majorana_packet_X_gravity_increment": 33
+    },
+    "interpretation": "This is a constructive counterexample to extending V42's even-X Dirac gravity-parity proof to self-paired blocks.  It fixes the isolated X-gravity row but leaves the X-cubic, all F-containing cross rows, and most decisively every X--PS^2 row nonzero.",
+    "self_majorana_packet_increment": {
+      "U1_PS_squared": {
+        "F": {
+          "SU2L": 0,
+          "SU2R": 0,
+          "SU4": 0
+        },
+        "H": {
+          "SU2L": 0,
+          "SU2R": 0,
+          "SU4": 0
+        },
+        "X": {
+          "SU2L": 0,
+          "SU2R": 0,
+          "SU4": 0
+        }
+      },
+      "U1_cubic_and_all_cross_triangles": {
+        "F_F_F": 0,
+        "F_F_H": 0,
+        "F_F_X": 0,
+        "F_H_H": 0,
+        "F_X_H": 0,
+        "F_X_X": 0,
+        "H_H_H": 0,
+        "X_H_H": 0,
+        "X_X_H": 0,
+        "X_X_X": 35937
+      },
+      "U1_gravity": {
+        "F": 0,
+        "H": 0,
+        "X": 33
+      }
+    },
+    "why_V42_Dirac_parity_lemma_does_not_extend_to_self_Majorana": "The massive Chi33 field has odd X charge and is permitted by the self-bilinear SigmaMinus66_M Chi33^2.  A determinant of a symmetric self-paired block counts Chi33 twice, so it fixes only 2x=0 modulo 66, not x=0 modulo 66."
+  },
+  "self_paired_massable_witnesses": {
+    "pseudoreal_PS_pfaffian": {
+      "all_declared_X_VEVs_are_multiples_of_66": true,
+      "all_new_threshold_X_VEVs_preserve_old_Z66_and_Z5610_direction": true,
+      "field_packet": [
+        {
+          "F": 0,
+          "H": 0,
+          "X": 66,
+          "dim": 1,
+          "field": "SigmaPlus66_P",
+          "multiplicity": 1,
+          "pq": 0,
+          "ps": {},
+          "r4": 0,
+          "representation": "(1,1,1)",
+          "role": "Z66 Higgs of Pfaffian witness",
+          "su4_cubic": 0,
+          "z5610": 0
+        },
+        {
+          "F": 0,
+          "H": 0,
+          "X": -66,
+          "dim": 1,
+          "field": "SigmaMinus66_P",
+          "multiplicity": 1,
+          "pq": 0,
+          "ps": {},
+          "r4": 0,
+          "representation": "(1,1,1)",
+          "role": "Z66 Higgs and Pfaffian spurion",
+          "su4_cubic": 0,
+          "z5610": 0
+        },
+        {
+          "F": 0,
+          "H": 0,
+          "X": 0,
+          "dim": 1,
+          "field": "TP",
+          "multiplicity": 1,
+          "pq": 0,
+          "ps": {},
+          "r4": 2,
+          "representation": "(1,1,1)",
+          "role": "Z66 Higgs-pair stabilizer",
+          "su4_cubic": 0,
+          "z5610": 0
+        },
+        {
+          "F": 0,
+          "H": 0,
+          "X": 33,
+          "dim": 2,
+          "field": "L33a",
+          "multiplicity": 1,
+          "pq": 0,
+          "ps": {
+            "SU2L": 1
+          },
+          "r4": 1,
+          "representation": "(1,2,1), pseudoreal SU(2)_L doublet",
+          "role": "first Pfaffian flavour",
+          "su4_cubic": 0,
+          "z5610": 2805
+        },
+        {
+          "F": 0,
+          "H": 0,
+          "X": 33,
+          "dim": 2,
+          "field": "L33b",
+          "multiplicity": 1,
+          "pq": 0,
+          "ps": {
+            "SU2L": 1
+          },
+          "r4": 1,
+          "representation": "(1,2,1), pseudoreal SU(2)_L doublet",
+          "role": "second Pfaffian flavour",
+          "su4_cubic": 0,
+          "z5610": 2805
+        }
+      ],
+      "local_anomaly_increment": {
+        "U1_PS_squared": {
+          "F": {
+            "SU2L": 0,
+            "SU2R": 0,
+            "SU4": 0
+          },
+          "H": {
+            "SU2L": 0,
+            "SU2R": 0,
+            "SU4": 0
+          },
+          "X": {
+            "SU2L": 66,
+            "SU2R": 0,
+            "SU4": 0
+          }
+        },
+        "U1_cubic_and_all_cross_triangles": {
+          "F_F_F": 0,
+          "F_F_H": 0,
+          "F_F_X": 0,
+          "F_H_H": 0,
+          "F_X_H": 0,
+          "F_X_X": 0,
+          "H_H_H": 0,
+          "X_H_H": 0,
+          "X_X_H": 0,
+          "X_X_X": 143748
+        },
+        "U1_gravity": {
+          "F": 0,
+          "H": 0,
+          "X": 132
+        },
+        "all_local_continuous_gauge_and_mixed_gravitational_rows_vanish": false,
+        "normalization": "sum over left-handed Weyl fermions; PS mixed entries use the V40 doubled-index normalization 2T(fundamental)=1; product entries are fully symmetric charge monomials",
+        "pure_Pati_Salam_and_SU2_global_checks": {
+          "SU2L_Witten_doublet_count": 2,
+          "SU2L_Witten_even": true,
+          "SU2R_Witten_doublet_count": 0,
+          "SU2R_Witten_even": true,
+          "SU4_cubed": 0
+        }
+      },
+      "massability_and_Z66_branch": {
+        "D_flat_adjustment": {
+          "conclusion": "For any finite host D_X and fixed nonzero product, this equation has positive solutions for the two magnitudes.",
+          "equation": "66(|SigmaPlus66_P|^2-|SigmaMinus66_P|^2)=-D_X^host"
+        },
+        "F_flat_branch": {
+          "conditions": [
+            "TP=0",
+            "<SigmaPlus66_P><SigmaMinus66_P>=mu_P^2 != 0",
+            "the massive matter field(s) have zero VEV"
+          ],
+          "reason": "The matter F equation sets its VEV to zero on the nonzero-SigmaMinus branch; the remaining F equations set T=0 and the fixed nonzero product."
+        },
+        "all_X_charged_VEVs_are_old_Z5610_neutral": true,
+        "all_terms_Z66_and_Z5610_neutral": true,
+        "all_terms_continuous_U1F_X_H_neutral": true,
+        "all_terms_have_Z4R_superpotential_charge_two": true,
+        "mass_rank_witness": {
+          "Pfaffian_value": "The mathematical Pfaffian is y_P<SigmaMinus66_P>, nonzero on the stated branch.",
+          "SU2L_Witten_doublet_count_from_block": 2,
+          "Sigma_T_hessian_rank": 2,
+          "all_isolated_chiral_and_vector_degrees_accounted_for": true,
+          "flavour_rank": 2,
+          "matter_chiral_component_rank": 4,
+          "matter_mass_matrix": "two-by-two antisymmetric flavour matrix y_P<SigmaMinus66_P> epsilon_ab with nonzero Pfaffian",
+          "one_remaining_Sigma_chiral_null_direction_is_eaten_by_the_Higgsed_U1X_vector": true
+        },
+        "mass_source": "SigmaMinus66_P",
+        "superpotential": "W_P=kappa_P TP(SigmaPlus66_P SigmaMinus66_P-mu_P^2) + y_P SigmaMinus66_P epsilon L33a L33b",
+        "term_charge_rows": [
+          {
+            "F": 0,
+            "H": 0,
+            "X": 0,
+            "Z4R": 2,
+            "Z5610": 0,
+            "Z66": 0,
+            "fields": [
+              "SigmaMinus66_P",
+              "L33a",
+              "L33b"
+            ],
+            "label": "P_mass"
+          },
+          {
+            "F": 0,
+            "H": 0,
+            "X": 0,
+            "Z4R": 2,
+            "Z5610": 0,
+            "Z66": 0,
+            "fields": [
+              "SigmaPlus66_P",
+              "SigmaMinus66_P",
+              "TP"
+            ],
+            "label": "P_T_SigmaPlus_SigmaMinus"
+          },
+          {
+            "F": 0,
+            "H": 0,
+            "X": 0,
+            "Z4R": 2,
+            "Z5610": 0,
+            "Z66": 0,
+            "fields": [
+              "TP"
+            ],
+            "label": "P_T_mu2"
+          }
+        ],
+        "threshold_scope": "This is the old-Z66 matching branch before any later V40 P/Pb PQ VEV of X charge +/-2 is turned on.  It is not a solution of the full host vacuum.",
+        "unbroken_X_remnant": "Z66 because the only X-charged VEVs are +66 and -66"
+      },
+      "name": "pseudoreal-Pati--Salam Pfaffian modulus witness"
+    },
+    "real_PS_majorana": {
+      "all_declared_X_VEVs_are_multiples_of_66": true,
+      "all_new_threshold_X_VEVs_preserve_old_Z66_and_Z5610_direction": true,
+      "field_packet": [
+        {
+          "F": 0,
+          "H": 0,
+          "X": 66,
+          "dim": 1,
+          "field": "SigmaPlus66_R",
+          "multiplicity": 1,
+          "pq": 0,
+          "ps": {},
+          "r4": 0,
+          "representation": "(1,1,1)",
+          "role": "Z66 Higgs of real-PS witness",
+          "su4_cubic": 0,
+          "z5610": 0
+        },
+        {
+          "F": 0,
+          "H": 0,
+          "X": -66,
+          "dim": 1,
+          "field": "SigmaMinus66_R",
+          "multiplicity": 1,
+          "pq": 0,
+          "ps": {},
+          "r4": 0,
+          "representation": "(1,1,1)",
+          "role": "Z66 Higgs and real-PS Majorana spurion",
+          "su4_cubic": 0,
+          "z5610": 0
+        },
+        {
+          "F": 0,
+          "H": 0,
+          "X": 0,
+          "dim": 1,
+          "field": "TR",
+          "multiplicity": 1,
+          "pq": 0,
+          "ps": {},
+          "r4": 2,
+          "representation": "(1,1,1)",
+          "role": "Z66 Higgs-pair stabilizer",
+          "su4_cubic": 0,
+          "z5610": 0
+        },
+        {
+          "F": 0,
+          "H": 0,
+          "X": 33,
+          "dim": 6,
+          "field": "D6_33",
+          "multiplicity": 1,
+          "pq": 0,
+          "ps": {
+            "SU4": 2
+          },
+          "r4": 1,
+          "representation": "(6,1,1), real SU(4) sextet",
+          "role": "real-PS self-Majorana field",
+          "su4_cubic": 0,
+          "z5610": 2805
+        }
+      ],
+      "local_anomaly_increment": {
+        "U1_PS_squared": {
+          "F": {
+            "SU2L": 0,
+            "SU2R": 0,
+            "SU4": 0
+          },
+          "H": {
+            "SU2L": 0,
+            "SU2R": 0,
+            "SU4": 0
+          },
+          "X": {
+            "SU2L": 0,
+            "SU2R": 0,
+            "SU4": 66
+          }
+        },
+        "U1_cubic_and_all_cross_triangles": {
+          "F_F_F": 0,
+          "F_F_H": 0,
+          "F_F_X": 0,
+          "F_H_H": 0,
+          "F_X_H": 0,
+          "F_X_X": 0,
+          "H_H_H": 0,
+          "X_H_H": 0,
+          "X_X_H": 0,
+          "X_X_X": 215622
+        },
+        "U1_gravity": {
+          "F": 0,
+          "H": 0,
+          "X": 198
+        },
+        "all_local_continuous_gauge_and_mixed_gravitational_rows_vanish": false,
+        "normalization": "sum over left-handed Weyl fermions; PS mixed entries use the V40 doubled-index normalization 2T(fundamental)=1; product entries are fully symmetric charge monomials",
+        "pure_Pati_Salam_and_SU2_global_checks": {
+          "SU2L_Witten_doublet_count": 0,
+          "SU2L_Witten_even": true,
+          "SU2R_Witten_doublet_count": 0,
+          "SU2R_Witten_even": true,
+          "SU4_cubed": 0
+        }
+      },
+      "massability_and_Z66_branch": {
+        "D_flat_adjustment": {
+          "conclusion": "For any finite host D_X and fixed nonzero product, this equation has positive solutions for the two magnitudes.",
+          "equation": "66(|SigmaPlus66_R|^2-|SigmaMinus66_R|^2)=-D_X^host"
+        },
+        "F_flat_branch": {
+          "conditions": [
+            "TR=0",
+            "<SigmaPlus66_R><SigmaMinus66_R>=mu_R^2 != 0",
+            "the massive matter field(s) have zero VEV"
+          ],
+          "reason": "The matter F equation sets its VEV to zero on the nonzero-SigmaMinus branch; the remaining F equations set T=0 and the fixed nonzero product."
+        },
+        "all_X_charged_VEVs_are_old_Z5610_neutral": true,
+        "all_terms_Z66_and_Z5610_neutral": true,
+        "all_terms_continuous_U1F_X_H_neutral": true,
+        "all_terms_have_Z4R_superpotential_charge_two": true,
+        "mass_rank_witness": {
+          "Sigma_T_hessian_rank": 2,
+          "all_isolated_chiral_and_vector_degrees_accounted_for": true,
+          "matter_chiral_component_rank": 6,
+          "matter_mass_matrix": "one-by-one symmetric real-representation Majorana matrix y_R<SigmaMinus66_R>",
+          "one_remaining_Sigma_chiral_null_direction_is_eaten_by_the_Higgsed_U1X_vector": true
+        },
+        "mass_source": "SigmaMinus66_R",
+        "superpotential": "W_R=kappa_R TR(SigmaPlus66_R SigmaMinus66_R-mu_R^2) + y_R SigmaMinus66_R D6_33^2/2",
+        "term_charge_rows": [
+          {
+            "F": 0,
+            "H": 0,
+            "X": 0,
+            "Z4R": 2,
+            "Z5610": 0,
+            "Z66": 0,
+            "fields": [
+              "SigmaMinus66_R",
+              "D6_33",
+              "D6_33"
+            ],
+            "label": "R_mass"
+          },
+          {
+            "F": 0,
+            "H": 0,
+            "X": 0,
+            "Z4R": 2,
+            "Z5610": 0,
+            "Z66": 0,
+            "fields": [
+              "SigmaPlus66_R",
+              "SigmaMinus66_R",
+              "TR"
+            ],
+            "label": "R_T_SigmaPlus_SigmaMinus"
+          },
+          {
+            "F": 0,
+            "H": 0,
+            "X": 0,
+            "Z4R": 2,
+            "Z5610": 0,
+            "Z66": 0,
+            "fields": [
+              "TR"
+            ],
+            "label": "R_T_mu2"
+          }
+        ],
+        "threshold_scope": "This is the old-Z66 matching branch before any later V40 P/Pb PQ VEV of X charge +/-2 is turned on.  It is not a solution of the full host vacuum.",
+        "unbroken_X_remnant": "Z66 because the only X-charged VEVs are +66 and -66"
+      },
+      "name": "real-Pati--Salam symmetric Majorana modulus witness"
+    },
+    "self_majorana_singlet": {
+      "all_declared_X_VEVs_are_multiples_of_66": true,
+      "all_new_threshold_X_VEVs_preserve_old_Z66_and_Z5610_direction": true,
+      "field_packet": [
+        {
+          "F": 0,
+          "H": 0,
+          "X": 66,
+          "dim": 1,
+          "field": "SigmaPlus66_M",
+          "multiplicity": 1,
+          "pq": 0,
+          "ps": {},
+          "r4": 0,
+          "representation": "(1,1,1)",
+          "role": "Z66 Higgs of self-Majorana witness",
+          "su4_cubic": 0,
+          "z5610": 0
+        },
+        {
+          "F": 0,
+          "H": 0,
+          "X": -66,
+          "dim": 1,
+          "field": "SigmaMinus66_M",
+          "multiplicity": 1,
+          "pq": 0,
+          "ps": {},
+          "r4": 0,
+          "representation": "(1,1,1)",
+          "role": "Z66 Higgs and Majorana spurion",
+          "su4_cubic": 0,
+          "z5610": 0
+        },
+        {
+          "F": 0,
+          "H": 0,
+          "X": 0,
+          "dim": 1,
+          "field": "TM",
+          "multiplicity": 1,
+          "pq": 0,
+          "ps": {},
+          "r4": 2,
+          "representation": "(1,1,1)",
+          "role": "Z66 Higgs-pair stabilizer",
+          "su4_cubic": 0,
+          "z5610": 0
+        },
+        {
+          "F": 0,
+          "H": 0,
+          "X": 33,
+          "dim": 1,
+          "field": "Chi33",
+          "multiplicity": 1,
+          "pq": 0,
+          "ps": {},
+          "r4": 1,
+          "representation": "(1,1,1)",
+          "role": "self-Majorana singlet",
+          "su4_cubic": 0,
+          "z5610": 2805
+        }
+      ],
+      "local_anomaly_increment": {
+        "U1_PS_squared": {
+          "F": {
+            "SU2L": 0,
+            "SU2R": 0,
+            "SU4": 0
+          },
+          "H": {
+            "SU2L": 0,
+            "SU2R": 0,
+            "SU4": 0
+          },
+          "X": {
+            "SU2L": 0,
+            "SU2R": 0,
+            "SU4": 0
+          }
+        },
+        "U1_cubic_and_all_cross_triangles": {
+          "F_F_F": 0,
+          "F_F_H": 0,
+          "F_F_X": 0,
+          "F_H_H": 0,
+          "F_X_H": 0,
+          "F_X_X": 0,
+          "H_H_H": 0,
+          "X_H_H": 0,
+          "X_X_H": 0,
+          "X_X_X": 35937
+        },
+        "U1_gravity": {
+          "F": 0,
+          "H": 0,
+          "X": 33
+        },
+        "all_local_continuous_gauge_and_mixed_gravitational_rows_vanish": false,
+        "normalization": "sum over left-handed Weyl fermions; PS mixed entries use the V40 doubled-index normalization 2T(fundamental)=1; product entries are fully symmetric charge monomials",
+        "pure_Pati_Salam_and_SU2_global_checks": {
+          "SU2L_Witten_doublet_count": 0,
+          "SU2L_Witten_even": true,
+          "SU2R_Witten_doublet_count": 0,
+          "SU2R_Witten_even": true,
+          "SU4_cubed": 0
+        }
+      },
+      "massability_and_Z66_branch": {
+        "D_flat_adjustment": {
+          "conclusion": "For any finite host D_X and fixed nonzero product, this equation has positive solutions for the two magnitudes.",
+          "equation": "66(|SigmaPlus66_M|^2-|SigmaMinus66_M|^2)=-D_X^host"
+        },
+        "F_flat_branch": {
+          "conditions": [
+            "TM=0",
+            "<SigmaPlus66_M><SigmaMinus66_M>=mu_M^2 != 0",
+            "the massive matter field(s) have zero VEV"
+          ],
+          "reason": "The matter F equation sets its VEV to zero on the nonzero-SigmaMinus branch; the remaining F equations set T=0 and the fixed nonzero product."
+        },
+        "all_X_charged_VEVs_are_old_Z5610_neutral": true,
+        "all_terms_Z66_and_Z5610_neutral": true,
+        "all_terms_continuous_U1F_X_H_neutral": true,
+        "all_terms_have_Z4R_superpotential_charge_two": true,
+        "mass_rank_witness": {
+          "Sigma_T_hessian_rank": 2,
+          "all_isolated_chiral_and_vector_degrees_accounted_for": true,
+          "matter_mass_matrix": "one-by-one symmetric Majorana matrix y_M<SigmaMinus66_M>",
+          "matter_rank": 1,
+          "one_remaining_Sigma_chiral_null_direction_is_eaten_by_the_Higgsed_U1X_vector": true
+        },
+        "mass_source": "SigmaMinus66_M",
+        "superpotential": "W_M=kappa_M TM(SigmaPlus66_M SigmaMinus66_M-mu_M^2) + y_M SigmaMinus66_M Chi33^2/2",
+        "term_charge_rows": [
+          {
+            "F": 0,
+            "H": 0,
+            "X": 0,
+            "Z4R": 2,
+            "Z5610": 0,
+            "Z66": 0,
+            "fields": [
+              "SigmaMinus66_M",
+              "Chi33",
+              "Chi33"
+            ],
+            "label": "M_mass"
+          },
+          {
+            "F": 0,
+            "H": 0,
+            "X": 0,
+            "Z4R": 2,
+            "Z5610": 0,
+            "Z66": 0,
+            "fields": [
+              "SigmaPlus66_M",
+              "SigmaMinus66_M",
+              "TM"
+            ],
+            "label": "M_T_SigmaPlus_SigmaMinus"
+          },
+          {
+            "F": 0,
+            "H": 0,
+            "X": 0,
+            "Z4R": 2,
+            "Z5610": 0,
+            "Z66": 0,
+            "fields": [
+              "TM"
+            ],
+            "label": "M_T_mu2"
+          }
+        ],
+        "threshold_scope": "This is the old-Z66 matching branch before any later V40 P/Pb PQ VEV of X charge +/-2 is turned on.  It is not a solution of the full host vacuum.",
+        "unbroken_X_remnant": "Z66 because the only X-charged VEVs are +66 and -66"
+      },
+      "name": "self-Majorana singlet gravity-parity escape"
+    }
+  },
+  "source_manifest": [
+    {
+      "exists": true,
+      "path": "susy_v43_pfaffian_product_escape_audit.py",
+      "sha256": "6aedf3fff3f7a82db3959cdcfb5e1202658bf94a7175238c716f1ccd2c77fa61"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v43_pfaffian_product_escape_audit.py",
+      "sha256": "7ee60711dbcedfcbf17d395f6b7bec3e84558625b47eee4bfb8c73fc4a6c0413"
+    },
+    {
+      "exists": true,
+      "path": "susy_v42_product_parent_local_completion.py",
+      "sha256": "222bc9e5ec0b5b21b33baab29debbf1029f1c779a4dcb06ccd81e560c2ff0076"
+    }
+  ],
+  "status": "V43_SELF_MAJORANA_GRAVITY_ESCAPE_EXPLICIT__ORDINARY_REAL_AND_PFAFFIAN_Z66_PS_THRESHOLD_CLASS_NO_GO_PROVED__FULL_PRODUCT_PARENT_FAIL_CLOSED"
+}

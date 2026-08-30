@@ -1,0 +1,163 @@
+{
+  "status": "INDEPENDENT_PYRATE3_GAUGE_ONLY_REPLAY_MATCHES__FULL_G7_OPEN",
+  "contract_id": "pyrate3_so10_u1x_gauge_beta_replay_v20",
+  "source_binding": {
+    "canonical_model": {
+      "path": "models/SO10U1XGaugeAuditV20.model",
+      "raw_sha256": "18191bc9db705ed9e8a89eff214ad967bac37830c91fede82c418d38ce0c949e"
+    },
+    "frozen_replay_data": {
+      "path": "data/PYRATE3_SO10_U1X_GAUGE_BETA_FROZEN_V20.json",
+      "raw_sha256": "047632c3e81f8eb2dcc1cd922b8d3e34c300743693e18606ff8953e28ccd280b"
+    },
+    "authoritative_gauge_beta_source": {
+      "path": "exact_authoritative_so10_u1x_gauge_betas_v20.py",
+      "raw_sha256": "b3ec8ca5bc472af24081ee5b3409652dde0e1bf219cbf7d29a4f55e76e985cb6"
+    },
+    "authoritative_gauge_beta_report": {
+      "path": "EXACT_AUTHORITATIVE_SO10_U1X_GAUGE_BETAS_V20.json",
+      "raw_sha256": "f5c12e8b8f9ec40976f675a743d5fd5d8cf4e98ab2087d92e3cf855c756c75eb",
+      "core_sha256": "714796e4e8f1aa768d9e9f8434c6919aca854d33541b2bccc779f96933345752"
+    }
+  },
+  "executed_input_provenance": {
+    "executed_model_path": "models/SO10U1XGaugeAudit.model",
+    "tracked_canonical_model_path": "models/SO10U1XGaugeAuditV20.model",
+    "executed_model_sha256": "18191bc9db705ed9e8a89eff214ad967bac37830c91fede82c418d38ce0c949e",
+    "tracked_canonical_model_sha256": "18191bc9db705ed9e8a89eff214ad967bac37830c91fede82c418d38ce0c949e",
+    "byte_identical_rename": true,
+    "reason": "the external temporary PyR@TE checkout used the shorter filename; the byte-identical input is tracked under the V20-qualified name"
+  },
+  "external_tool": {
+    "name": "PyR@TE 3",
+    "repository": "https://github.com/LSartore/pyrate",
+    "git_commit": "04b219c2016f3fc4f2371d72607edc26a7e06364",
+    "terminal_log_sha256": "91716c082b3a23a4ecb7e247a62788438966530e004e29ec933b713b05472422",
+    "generated_tex_sha256": "60fa6db068a913efa21cc745869ea8009309af422f247a87d83e072c32c6c203",
+    "gauge_invariance": "All OK",
+    "completed": true
+  },
+  "replay_command": [
+    "python",
+    "pyR@TE.py",
+    "-m",
+    "models/SO10U1XGaugeAuditV20.model",
+    "-l",
+    "2",
+    "-gi",
+    "-res",
+    "results-gauge-audit-v20",
+    "-tex",
+    "-no-math",
+    "-no-py",
+    "-no-cpp",
+    "-q"
+  ],
+  "normal_test_policy": {
+    "execute_external_PyRATE": false,
+    "verify_hash_bound_frozen_result": true,
+    "reason": "the pinned external replay takes approximately four minutes"
+  },
+  "scope": {
+    "sector": "SO(10) x U(1)_X gauge couplings",
+    "loop_orders": [
+      1,
+      2
+    ],
+    "gauge_only": true,
+    "non_Yukawa": true,
+    "complete_two_loop_model_RGE": false,
+    "G6_physical_threshold_input": false,
+    "G7_closure": false
+  },
+  "inventory": {
+    "Weyl_16_multiplets": 19,
+    "fermion_generations": {
+      "F": 3,
+      "P": 1,
+      "R": 1,
+      "SpecS": 5,
+      "SpecB": 5,
+      "Q": 1,
+      "Pc": 1,
+      "Qc": 1,
+      "Rc": 1
+    },
+    "parser_safe_conjugate_names": [
+      "Pc",
+      "Qc",
+      "Rc"
+    ]
+  },
+  "exact_coefficients": {
+    "beta_g10_loop1": {
+      "g10^3": "52/3"
+    },
+    "beta_g10_loop2": {
+      "g10^5": "25013/6",
+      "g10^3*gX^2": "4536"
+    },
+    "beta_gX_loop1": {
+      "gX^3": "10843"
+    },
+    "beta_gX_loop2": {
+      "g10^2*gX^3": "204120",
+      "gX^5": "7242180"
+    }
+  },
+  "comparison": {
+    "target": "exact_authoritative_so10_u1x_gauge_betas_v20.py/report",
+    "arithmetic": "exact rational",
+    "tolerance": "0",
+    "all_coefficients_match": true
+  },
+  "checks": {
+    "official_PyRATE_commit_pinned": true,
+    "official_PyRATE_repository_pinned": true,
+    "canonical_model_raw_SHA256_bound": true,
+    "frozen_replay_raw_SHA256_bound": true,
+    "terminal_log_SHA256_frozen": true,
+    "generated_TeX_SHA256_frozen": true,
+    "executed_model_path_recorded": true,
+    "tracked_canonical_model_path_recorded": true,
+    "executed_model_hash_matches_tracked_canonical_model": true,
+    "canonical_model_is_documented_byte_identical_rename": true,
+    "canonical_model_inventory_present": true,
+    "nineteen_Weyl_16_multiplets": true,
+    "parser_safe_Pc_Qc_Rc_names_used": true,
+    "empty_interaction_sector_is_gauge_only": true,
+    "two_loop_gauge_replay_completed": true,
+    "PyRATE_gauge_invariance_check_passed": true,
+    "authoritative_source_raw_SHA256_bound": true,
+    "authoritative_report_raw_SHA256_bound": true,
+    "authoritative_report_core_SHA256_bound": true,
+    "authoritative_live_report_matches_frozen_report": true,
+    "all_coefficients_match_exactly": true,
+    "comparison_tolerance_is_exact_zero": true,
+    "normal_verification_does_not_execute_PyRATE": true,
+    "full_G7_not_inferred_from_gauge_only_replay": true,
+    "unverified_G6_threshold_inputs_not_consumed": true
+  },
+  "n_checks": 25,
+  "n_failed": 0,
+  "failures": [],
+  "classification": {
+    "independent_gauge_polynomial_replay_closed": true,
+    "second_implementation_for_scoped_gauge_subtheorem": true,
+    "full_two_loop_gauge_beta_closed": false,
+    "full_Yukawa_scalar_dimensionful_EFT_system_closed": false,
+    "physical_G6_threshold_matching_closed": false,
+    "mathematical_G7_closed": false,
+    "release_G7_verified": false
+  },
+  "remaining_blockers": [
+    "YUKAWA_TRACE_TERMS_NOT_PRESENT_IN_GAUGE_ONLY_MODEL",
+    "FULL_51_PARAMETER_SCALAR_DIMENSIONFUL_EFT_RGE_REQUIRED",
+    "PHYSICAL_G6_REPRESENTATION_AND_POLE_MASS_AUDIT_REQUIRED",
+    "COMPONENT_THRESHOLD_MATCHING_REQUIRED",
+    "SECOND_INDEPENDENT_IMPLEMENTATION_OF_COMPLETE_G7_SYSTEM_REQUIRED"
+  ],
+  "verdict": "Official PyR@TE 3 at the pinned source commit independently reproduces all four exact one-/two-loop non-Yukawa gauge coefficients of the authoritative SO(10) x U(1)_X inventory. This closes only the independent gauge-polynomial cross-check; the missing Yukawa/scalar/EFT flow and physical G6 thresholds leave G7 open.",
+  "core_sha256": "63f097be00c5da69982909b79b5ac9c64c1080efa142ae5d419820fb260cbccf",
+  "source_sha256": "74b70c7d403bd5fc1cefc30ab1a58dd5c6e74c99672c81e9b2a2c59e34a1c42a"
+}

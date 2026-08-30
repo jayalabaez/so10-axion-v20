@@ -1,0 +1,3212 @@
+{
+  "bundle_driver_files": {
+    "susy_v24_ps_source_contract.py": "4993924ebf64a8eb05f83290174adaffe277342234d1ae43e78d992b3efbf4da",
+    "test_susy_v24_ps_source_contract.py": "1ad72aaa2e8ef1fae0a45457b5767685ae8d15d67cd8915ada0420dde2ed3baf"
+  },
+  "checks": {
+    "EFT_Majorana_has_two_channels_and_UV_selects_one": true,
+    "GS_modulus_and_UV_are_not_overclaimed": true,
+    "KR_field_architecture_and_N_UV_completion_count_is_13": true,
+    "P_only_gcd_11_4_is_one_but_not_a_wall_proof": true,
+    "SARAH_Sigma_collision_avoided_by_Sig6_map": true,
+    "Table6_W_and_K_bases_are_exhaustively_redressed": true,
+    "X_H2_and_X_Sigma2_are_explicit": true,
+    "all_symmetry_complete_renormalizable_terms_are_allowed": true,
+    "all_vectorlike_decay_and_mass_mixings_are_explicit": true,
+    "bare_mu_PS_and_vector_masses_are_forbidden": true,
+    "computed_PS_breaking_Hessian_has_only_gauge_nullity": true,
+    "conditional_P_only_P11_quality_estimate_is_below_bound": true,
+    "continuous_PS_anomalies_cancel": true,
+    "declared_W_equals_exhaustive_allowed_census": true,
+    "explicit_topological_GS_contract_has_equal_levels": true,
+    "first_pure_P_superpotential_term_is_P11": true,
+    "genuine_SARAH_Start_attestation_passes": true,
+    "gravitational_GS_congruences_close": true,
+    "matter_parity_and_RPV_are_exact_to_all_spurion_orders": true,
+    "mixed_discrete_gauge_anomalies_are_universal": true,
+    "paper_Majorana_EFT_operator_is_allowed": true,
+    "physical_mixed_axion_quality_is_not_overclaimed": true,
+    "physical_wall_structure_remains_open_for_GS_mixing": true,
+    "post_Start_process_has_no_Dot_dotsh": true,
+    "post_Start_processed_W_has_exactly_18_terms": true,
+    "renormalizable_gauge_invariant_census_is_80_classes": true,
+    "renormalizable_selector_allows_exactly_18_classes": true,
+    "renormalizable_tensors_are_unique": true
+  },
+  "continuous_anomaly_and_one_loop_PS_ledger": {
+    "SU2L_Witten_doublet_count": 22,
+    "SU2R_Witten_doublet_count": 30,
+    "SU4_cubic_anomaly": 0,
+    "continuous_gauge_anomalies_cancel": true,
+    "one_loop_b_PS": {
+      "SU2L": 5,
+      "SU2R": 9,
+      "SU4": 1
+    },
+    "sum_T": {
+      "SU2L": 11,
+      "SU2R": 15,
+      "SU4": 13
+    }
+  },
+  "core_sha256": "d408aa7d7d3096ac917f5bd6f4f37576aace4cd78709bf4810b8e036dc2d93a8",
+  "discrete_anomaly_GS_ledger": {
+    "GS_topological_source_contract": {
+      "Kac_Moody_levels": {
+        "k4": 1,
+        "kL": 1,
+        "kR": 1
+      },
+      "SARAH_encoded": false,
+      "Z11_shift_theta_GS_mod1": "-9/11",
+      "Z4R_shift_theta_GS_mod1": "-1/2",
+      "anomaly_phase_convention": "exp[2*pi*i*(rho/eta)*(I4+IL+IR)]",
+      "counterterm_Euclidean": "S_GS = 2*pi*i*theta_GS*(I4+IL+IR)",
+      "dimensionless_axion": "theta_GS with period 1",
+      "gravitational_level_relation": "A_grav = 24*rho (mod eta)",
+      "integer_instanton_numbers": [
+        "I4",
+        "IL",
+        "IR"
+      ],
+      "topological_variation_cancels_mixed_gauge_phase": true
+    },
+    "UV_realization_of_discrete_GS_landed": false,
+    "Z11_Green_Schwarz_required": true,
+    "Z11_cubic_mod11": 7,
+    "Z11_cubic_signed_representative": -15,
+    "Z11_gravitational_24rho_mod11": 7,
+    "Z11_gravitational_GS_condition_closed": true,
+    "Z11_gravitational_mod11": 7,
+    "Z11_gravitational_signed_representative": -15,
+    "Z11_mixed_anomalies_vanish": false,
+    "Z11_mixed_mod11": {
+      "SU2L": 9,
+      "SU2R": 9,
+      "SU4": 9
+    },
+    "Z11_mixed_visible_signed_representatives": {
+      "SU2L": -2,
+      "SU2R": -2,
+      "SU4": -2
+    },
+    "Z11_universal_rho_mod11": 9,
+    "Z4R_Green_Schwarz_required": true,
+    "Z4R_equivalent_canonical_representatives": {
+      "SU2L": -3,
+      "SU2R": -3,
+      "SU4": -3
+    },
+    "Z4R_gravitational_24rho_mod2": 0,
+    "Z4R_gravitational_GS_condition_closed": true,
+    "Z4R_mixed_anomalies_vanish": false,
+    "Z4R_mixed_mod2": {
+      "SU2L": 1,
+      "SU2R": 1,
+      "SU4": 1
+    },
+    "Z4R_mixed_visible_representatives": {
+      "SU2L": 5,
+      "SU2R": 1,
+      "SU4": 7
+    },
+    "Z4R_universal_rho_mod2": 1,
+    "Z4R_visible_gravitational_mod2": 0,
+    "Z4R_visible_gravitational_representative": 20,
+    "dynamical_GS_modulus_stabilization_landed": false,
+    "equal_level_GS_universality_demonstrated": true,
+    "normalization": "T(fundamental)=1/2; R-fermion charge r_i-1; eta(Z4R)=2; eta(Z11)=11",
+    "pure_discrete_cubic_anomaly_UV_sensitive": true,
+    "topological_GS_counterterm_and_levels_landed": true
+  },
+  "exhaustive_degree_le_3_gauge_invariant_selector_census": [
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": true,
+      "engineering_degree": 1,
+      "monomial": [
+        "X"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 1,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 1,
+      "monomial": [
+        "P"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 1,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 1,
+      "monomial": [
+        "N"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 0,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 2,
+      "monomial": [
+        "H",
+        "H"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 10,
+      "Z4R_sum_mod4": 0,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 2,
+      "monomial": [
+        "Q",
+        "PsiBar"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 1,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 2,
+      "monomial": [
+        "Qc",
+        "Sbc"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 10,
+      "Z4R_sum_mod4": 0,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 2,
+      "monomial": [
+        "Qc",
+        "PsiCBar"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 0,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 2,
+      "monomial": [
+        "X",
+        "X"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 1,
+      "Z4R_sum_mod4": 0,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 2,
+      "monomial": [
+        "X",
+        "P"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 3,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 2,
+      "monomial": [
+        "X",
+        "N"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 0,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 2,
+      "monomial": [
+        "Sc",
+        "Sbc"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 10,
+      "Z4R_sum_mod4": 3,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 2,
+      "monomial": [
+        "Sc",
+        "PsiCBar"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 1,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 2,
+      "monomial": [
+        "Sbc",
+        "PsiC"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 0,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 2,
+      "monomial": [
+        "Sigma",
+        "Sigma"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 10,
+      "Z4R_sum_mod4": 0,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 2,
+      "monomial": [
+        "PsiBar",
+        "Psi"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 10,
+      "Z4R_sum_mod4": 0,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 2,
+      "monomial": [
+        "PsiC",
+        "PsiCBar"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 2,
+      "Z4R_sum_mod4": 0,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 2,
+      "monomial": [
+        "P",
+        "P"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 1,
+      "Z4R_sum_mod4": 3,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 2,
+      "monomial": [
+        "P",
+        "N"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": true,
+      "engineering_degree": 2,
+      "monomial": [
+        "N",
+        "N"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": true,
+      "engineering_degree": 3,
+      "monomial": [
+        "H",
+        "H",
+        "X"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 1,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "H",
+        "H",
+        "P"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 1,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "H",
+        "H",
+        "N"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": true,
+      "engineering_degree": 3,
+      "monomial": [
+        "H",
+        "Q",
+        "Qc"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 1,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "H",
+        "Q",
+        "Sc"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": true,
+      "engineering_degree": 3,
+      "monomial": [
+        "H",
+        "Q",
+        "PsiC"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": true,
+      "engineering_degree": 3,
+      "monomial": [
+        "H",
+        "Qc",
+        "Psi"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 1,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "H",
+        "Sc",
+        "Psi"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 10,
+      "Z4R_sum_mod4": 3,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "H",
+        "Sbc",
+        "PsiBar"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 9,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "H",
+        "PsiBar",
+        "PsiCBar"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": true,
+      "engineering_degree": 3,
+      "monomial": [
+        "H",
+        "Psi",
+        "PsiC"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 0,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "Q",
+        "Q",
+        "Sigma"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 10,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "Q",
+        "X",
+        "PsiBar"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 0,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "Q",
+        "Sigma",
+        "Psi"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": true,
+      "engineering_degree": 3,
+      "monomial": [
+        "Q",
+        "PsiBar",
+        "P"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 10,
+      "Z4R_sum_mod4": 1,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "Q",
+        "PsiBar",
+        "N"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 0,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "Qc",
+        "Qc",
+        "Sigma"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 3,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "Qc",
+        "X",
+        "Sbc"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 10,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "Qc",
+        "X",
+        "PsiCBar"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 3,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "Qc",
+        "Sc",
+        "Sigma"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 1,
+      "Z4R_sum_mod4": 3,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "Qc",
+        "Sbc",
+        "P"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": true,
+      "engineering_degree": 3,
+      "monomial": [
+        "Qc",
+        "Sbc",
+        "N"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 0,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "Qc",
+        "Sigma",
+        "PsiC"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": true,
+      "engineering_degree": 3,
+      "monomial": [
+        "Qc",
+        "PsiCBar",
+        "P"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 10,
+      "Z4R_sum_mod4": 1,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "Qc",
+        "PsiCBar",
+        "N"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": true,
+      "engineering_degree": 3,
+      "monomial": [
+        "X",
+        "X",
+        "X"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 1,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "X",
+        "X",
+        "P"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 1,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "X",
+        "X",
+        "N"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": true,
+      "engineering_degree": 3,
+      "monomial": [
+        "X",
+        "Sc",
+        "Sbc"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 10,
+      "Z4R_sum_mod4": 1,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "X",
+        "Sc",
+        "PsiCBar"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 3,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "X",
+        "Sbc",
+        "PsiC"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": true,
+      "engineering_degree": 3,
+      "monomial": [
+        "X",
+        "Sigma",
+        "Sigma"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 10,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "X",
+        "PsiBar",
+        "Psi"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 10,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "X",
+        "PsiC",
+        "PsiCBar"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 2,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "X",
+        "P",
+        "P"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 1,
+      "Z4R_sum_mod4": 1,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "X",
+        "P",
+        "N"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 0,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "X",
+        "N",
+        "N"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": true,
+      "engineering_degree": 3,
+      "monomial": [
+        "Sc",
+        "Sc",
+        "Sigma"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 1,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "Sc",
+        "Sbc",
+        "P"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 1,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "Sc",
+        "Sbc",
+        "N"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 3,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "Sc",
+        "Sigma",
+        "PsiC"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 1,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "Sc",
+        "PsiCBar",
+        "P"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 10,
+      "Z4R_sum_mod4": 0,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "Sc",
+        "PsiCBar",
+        "N"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": true,
+      "engineering_degree": 3,
+      "monomial": [
+        "Sbc",
+        "Sbc",
+        "Sigma"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 10,
+      "Z4R_sum_mod4": 1,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "Sbc",
+        "Sigma",
+        "PsiCBar"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 1,
+      "Z4R_sum_mod4": 3,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "Sbc",
+        "PsiC",
+        "P"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": true,
+      "engineering_degree": 3,
+      "monomial": [
+        "Sbc",
+        "PsiC",
+        "N"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 1,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "Sigma",
+        "Sigma",
+        "P"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 1,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "Sigma",
+        "Sigma",
+        "N"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 9,
+      "Z4R_sum_mod4": 0,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "Sigma",
+        "PsiBar",
+        "PsiBar"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 0,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "Sigma",
+        "Psi",
+        "Psi"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 0,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "Sigma",
+        "PsiC",
+        "PsiC"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 9,
+      "Z4R_sum_mod4": 0,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "Sigma",
+        "PsiCBar",
+        "PsiCBar"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": true,
+      "engineering_degree": 3,
+      "monomial": [
+        "PsiBar",
+        "Psi",
+        "P"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 10,
+      "Z4R_sum_mod4": 1,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "PsiBar",
+        "Psi",
+        "N"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": true,
+      "engineering_degree": 3,
+      "monomial": [
+        "PsiC",
+        "PsiCBar",
+        "P"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 10,
+      "Z4R_sum_mod4": 1,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "PsiC",
+        "PsiCBar",
+        "N"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 3,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "P",
+        "P",
+        "P"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 2,
+      "Z4R_sum_mod4": 1,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "P",
+        "P",
+        "N"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 1,
+      "Z4R_sum_mod4": 0,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "P",
+        "N",
+        "N"
+      ]
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 3,
+      "allowed_in_superpotential": false,
+      "engineering_degree": 3,
+      "monomial": [
+        "N",
+        "N",
+        "N"
+      ]
+    }
+  ],
+  "exhaustive_leading_PQ_breaking_and_proton_ledger": {
+    "Kahler_rows": [
+      {
+        "P_power": 11,
+        "Pdag_power": 0,
+        "allowed_P_Pdag_w0_dressing_exists": true,
+        "base_PQ_charge": 0,
+        "base_Z11_mod11": 0,
+        "base_Z4R_mod4": 0,
+        "base_tokens": [],
+        "dressed_Z11_mod11": 0,
+        "dressed_Z4R_mod4": 0,
+        "key": "one",
+        "net_PQ_violation": 11,
+        "operator_class": "Kahler",
+        "suppression_score_log10": 101,
+        "w0_power": 1
+      },
+      {
+        "P_power": 11,
+        "Pdag_power": 0,
+        "allowed_P_Pdag_w0_dressing_exists": true,
+        "base_PQ_charge": 0,
+        "base_Z11_mod11": 0,
+        "base_Z4R_mod4": 0,
+        "base_tokens": [
+          "H",
+          "H"
+        ],
+        "dressed_Z11_mod11": 0,
+        "dressed_Z4R_mod4": 0,
+        "key": "H_H",
+        "net_PQ_violation": 11,
+        "operator_class": "Kahler",
+        "suppression_score_log10": 101,
+        "w0_power": 1
+      },
+      {
+        "P_power": 11,
+        "Pdag_power": 0,
+        "allowed_P_Pdag_w0_dressing_exists": true,
+        "base_PQ_charge": 0,
+        "base_Z11_mod11": 0,
+        "base_Z4R_mod4": 0,
+        "base_tokens": [
+          "Qc",
+          "QcDag"
+        ],
+        "dressed_Z11_mod11": 0,
+        "dressed_Z4R_mod4": 0,
+        "key": "Qc_QcDag",
+        "net_PQ_violation": 11,
+        "operator_class": "Kahler",
+        "suppression_score_log10": 101,
+        "w0_power": 1
+      },
+      {
+        "all_order_reason": "P, Pdag, and w0 all carry even Z4R charge, so they cannot change the base R-charge parity to the required target",
+        "allowed_P_Pdag_w0_dressing_exists": false,
+        "base_PQ_charge": 0,
+        "base_Z11_mod11": 0,
+        "base_Z4R_mod4": 1,
+        "base_tokens": [
+          "Qc",
+          "Sbc"
+        ],
+        "key": "Qc_Sbc",
+        "operator_class": "Kahler"
+      },
+      {
+        "P_power": 0,
+        "Pdag_power": 10,
+        "allowed_P_Pdag_w0_dressing_exists": true,
+        "base_PQ_charge": -1,
+        "base_Z11_mod11": 10,
+        "base_Z4R_mod4": 0,
+        "base_tokens": [
+          "Qc",
+          "PsiCBar"
+        ],
+        "dressed_Z11_mod11": 0,
+        "dressed_Z4R_mod4": 0,
+        "key": "Qc_PsiCBar",
+        "net_PQ_violation": -11,
+        "operator_class": "Kahler",
+        "suppression_score_log10": 80,
+        "w0_power": 0
+      },
+      {
+        "P_power": 11,
+        "Pdag_power": 0,
+        "allowed_P_Pdag_w0_dressing_exists": true,
+        "base_PQ_charge": 0,
+        "base_Z11_mod11": 0,
+        "base_Z4R_mod4": 0,
+        "base_tokens": [
+          "Qc",
+          "PsiCDag"
+        ],
+        "dressed_Z11_mod11": 0,
+        "dressed_Z4R_mod4": 0,
+        "key": "Qc_PsiCDag",
+        "net_PQ_violation": 11,
+        "operator_class": "Kahler",
+        "suppression_score_log10": 101,
+        "w0_power": 1
+      },
+      {
+        "all_order_reason": "P, Pdag, and w0 all carry even Z4R charge, so they cannot change the base R-charge parity to the required target",
+        "allowed_P_Pdag_w0_dressing_exists": false,
+        "base_PQ_charge": 0,
+        "base_Z11_mod11": 0,
+        "base_Z4R_mod4": 3,
+        "base_tokens": [
+          "QcDag",
+          "Sc"
+        ],
+        "key": "QcDag_Sc",
+        "operator_class": "Kahler"
+      },
+      {
+        "P_power": 11,
+        "Pdag_power": 0,
+        "allowed_P_Pdag_w0_dressing_exists": true,
+        "base_PQ_charge": 0,
+        "base_Z11_mod11": 0,
+        "base_Z4R_mod4": 0,
+        "base_tokens": [
+          "QcDag",
+          "PsiC"
+        ],
+        "dressed_Z11_mod11": 0,
+        "dressed_Z4R_mod4": 0,
+        "key": "QcDag_PsiC",
+        "net_PQ_violation": 11,
+        "operator_class": "Kahler",
+        "suppression_score_log10": 101,
+        "w0_power": 1
+      },
+      {
+        "P_power": 10,
+        "Pdag_power": 0,
+        "allowed_P_Pdag_w0_dressing_exists": true,
+        "base_PQ_charge": 1,
+        "base_Z11_mod11": 1,
+        "base_Z4R_mod4": 0,
+        "base_tokens": [
+          "QcDag",
+          "PsiCBarDag"
+        ],
+        "dressed_Z11_mod11": 0,
+        "dressed_Z4R_mod4": 0,
+        "key": "QcDag_PsiCBarDag",
+        "net_PQ_violation": 11,
+        "operator_class": "Kahler",
+        "suppression_score_log10": 80,
+        "w0_power": 0
+      },
+      {
+        "P_power": 11,
+        "Pdag_power": 0,
+        "allowed_P_Pdag_w0_dressing_exists": true,
+        "base_PQ_charge": 0,
+        "base_Z11_mod11": 0,
+        "base_Z4R_mod4": 0,
+        "base_tokens": [
+          "Q",
+          "QDag"
+        ],
+        "dressed_Z11_mod11": 0,
+        "dressed_Z4R_mod4": 0,
+        "key": "Q_QDag",
+        "net_PQ_violation": 11,
+        "operator_class": "Kahler",
+        "suppression_score_log10": 101,
+        "w0_power": 1
+      },
+      {
+        "P_power": 0,
+        "Pdag_power": 10,
+        "allowed_P_Pdag_w0_dressing_exists": true,
+        "base_PQ_charge": -1,
+        "base_Z11_mod11": 10,
+        "base_Z4R_mod4": 0,
+        "base_tokens": [
+          "Q",
+          "PsiBar"
+        ],
+        "dressed_Z11_mod11": 0,
+        "dressed_Z4R_mod4": 0,
+        "key": "Q_PsiBar",
+        "net_PQ_violation": -11,
+        "operator_class": "Kahler",
+        "suppression_score_log10": 80,
+        "w0_power": 0
+      },
+      {
+        "P_power": 11,
+        "Pdag_power": 0,
+        "allowed_P_Pdag_w0_dressing_exists": true,
+        "base_PQ_charge": 0,
+        "base_Z11_mod11": 0,
+        "base_Z4R_mod4": 0,
+        "base_tokens": [
+          "Q",
+          "PsiDag"
+        ],
+        "dressed_Z11_mod11": 0,
+        "dressed_Z4R_mod4": 0,
+        "key": "Q_PsiDag",
+        "net_PQ_violation": 11,
+        "operator_class": "Kahler",
+        "suppression_score_log10": 101,
+        "w0_power": 1
+      },
+      {
+        "P_power": 11,
+        "Pdag_power": 0,
+        "allowed_P_Pdag_w0_dressing_exists": true,
+        "base_PQ_charge": 0,
+        "base_Z11_mod11": 0,
+        "base_Z4R_mod4": 0,
+        "base_tokens": [
+          "QDag",
+          "Psi"
+        ],
+        "dressed_Z11_mod11": 0,
+        "dressed_Z4R_mod4": 0,
+        "key": "QDag_Psi",
+        "net_PQ_violation": 11,
+        "operator_class": "Kahler",
+        "suppression_score_log10": 101,
+        "w0_power": 1
+      },
+      {
+        "P_power": 10,
+        "Pdag_power": 0,
+        "allowed_P_Pdag_w0_dressing_exists": true,
+        "base_PQ_charge": 1,
+        "base_Z11_mod11": 1,
+        "base_Z4R_mod4": 0,
+        "base_tokens": [
+          "QDag",
+          "PsiBarDag"
+        ],
+        "dressed_Z11_mod11": 0,
+        "dressed_Z4R_mod4": 0,
+        "key": "QDag_PsiBarDag",
+        "net_PQ_violation": 11,
+        "operator_class": "Kahler",
+        "suppression_score_log10": 80,
+        "w0_power": 0
+      },
+      {
+        "P_power": 11,
+        "Pdag_power": 0,
+        "allowed_P_Pdag_w0_dressing_exists": true,
+        "base_PQ_charge": 0,
+        "base_Z11_mod11": 0,
+        "base_Z4R_mod4": 0,
+        "base_tokens": [
+          "Sbc",
+          "Sc"
+        ],
+        "dressed_Z11_mod11": 0,
+        "dressed_Z4R_mod4": 0,
+        "key": "Sbc_Sc",
+        "net_PQ_violation": 11,
+        "operator_class": "Kahler",
+        "suppression_score_log10": 101,
+        "w0_power": 1
+      },
+      {
+        "all_order_reason": "P, Pdag, and w0 all carry even Z4R charge, so they cannot change the base R-charge parity to the required target",
+        "allowed_P_Pdag_w0_dressing_exists": false,
+        "base_PQ_charge": 0,
+        "base_Z11_mod11": 0,
+        "base_Z4R_mod4": 1,
+        "base_tokens": [
+          "Sbc",
+          "PsiC"
+        ],
+        "key": "Sbc_PsiC",
+        "operator_class": "Kahler"
+      },
+      {
+        "all_order_reason": "P, Pdag, and w0 all carry even Z4R charge, so they cannot change the base R-charge parity to the required target",
+        "allowed_P_Pdag_w0_dressing_exists": false,
+        "base_PQ_charge": 1,
+        "base_Z11_mod11": 1,
+        "base_Z4R_mod4": 1,
+        "base_tokens": [
+          "Sbc",
+          "PsiCBarDag"
+        ],
+        "key": "Sbc_PsiCBarDag",
+        "operator_class": "Kahler"
+      },
+      {
+        "all_order_reason": "P, Pdag, and w0 all carry even Z4R charge, so they cannot change the base R-charge parity to the required target",
+        "allowed_P_Pdag_w0_dressing_exists": false,
+        "base_PQ_charge": -1,
+        "base_Z11_mod11": 10,
+        "base_Z4R_mod4": 3,
+        "base_tokens": [
+          "Sc",
+          "PsiCBar"
+        ],
+        "key": "Sc_PsiCBar",
+        "operator_class": "Kahler"
+      },
+      {
+        "all_order_reason": "P, Pdag, and w0 all carry even Z4R charge, so they cannot change the base R-charge parity to the required target",
+        "allowed_P_Pdag_w0_dressing_exists": false,
+        "base_PQ_charge": 0,
+        "base_Z11_mod11": 0,
+        "base_Z4R_mod4": 3,
+        "base_tokens": [
+          "Sc",
+          "PsiCDag"
+        ],
+        "key": "Sc_PsiCDag",
+        "operator_class": "Kahler"
+      },
+      {
+        "P_power": 11,
+        "Pdag_power": 0,
+        "allowed_P_Pdag_w0_dressing_exists": true,
+        "base_PQ_charge": 0,
+        "base_Z11_mod11": 0,
+        "base_Z4R_mod4": 0,
+        "base_tokens": [
+          "X",
+          "X"
+        ],
+        "dressed_Z11_mod11": 0,
+        "dressed_Z4R_mod4": 0,
+        "key": "X_X",
+        "net_PQ_violation": 11,
+        "operator_class": "Kahler",
+        "suppression_score_log10": 101,
+        "w0_power": 1
+      },
+      {
+        "P_power": 11,
+        "Pdag_power": 0,
+        "allowed_P_Pdag_w0_dressing_exists": true,
+        "base_PQ_charge": 0,
+        "base_Z11_mod11": 0,
+        "base_Z4R_mod4": 0,
+        "base_tokens": [
+          "Sigma",
+          "Sigma"
+        ],
+        "dressed_Z11_mod11": 0,
+        "dressed_Z4R_mod4": 0,
+        "key": "Sigma_Sigma",
+        "net_PQ_violation": 11,
+        "operator_class": "Kahler",
+        "suppression_score_log10": 101,
+        "w0_power": 1
+      },
+      {
+        "P_power": 0,
+        "Pdag_power": 10,
+        "allowed_P_Pdag_w0_dressing_exists": true,
+        "base_PQ_charge": -1,
+        "base_Z11_mod11": 10,
+        "base_Z4R_mod4": 0,
+        "base_tokens": [
+          "Psi",
+          "PsiBar"
+        ],
+        "dressed_Z11_mod11": 0,
+        "dressed_Z4R_mod4": 0,
+        "key": "Psi_PsiBar",
+        "net_PQ_violation": -11,
+        "operator_class": "Kahler",
+        "suppression_score_log10": 80,
+        "w0_power": 0
+      },
+      {
+        "P_power": 11,
+        "Pdag_power": 0,
+        "allowed_P_Pdag_w0_dressing_exists": true,
+        "base_PQ_charge": 0,
+        "base_Z11_mod11": 0,
+        "base_Z4R_mod4": 0,
+        "base_tokens": [
+          "Psi",
+          "PsiDag"
+        ],
+        "dressed_Z11_mod11": 0,
+        "dressed_Z4R_mod4": 0,
+        "key": "Psi_PsiDag",
+        "net_PQ_violation": 11,
+        "operator_class": "Kahler",
+        "suppression_score_log10": 101,
+        "w0_power": 1
+      },
+      {
+        "P_power": 11,
+        "Pdag_power": 0,
+        "allowed_P_Pdag_w0_dressing_exists": true,
+        "base_PQ_charge": 0,
+        "base_Z11_mod11": 0,
+        "base_Z4R_mod4": 0,
+        "base_tokens": [
+          "PsiBar",
+          "PsiBarDag"
+        ],
+        "dressed_Z11_mod11": 0,
+        "dressed_Z4R_mod4": 0,
+        "key": "PsiBar_PsiBarDag",
+        "net_PQ_violation": 11,
+        "operator_class": "Kahler",
+        "suppression_score_log10": 101,
+        "w0_power": 1
+      },
+      {
+        "P_power": 10,
+        "Pdag_power": 0,
+        "allowed_P_Pdag_w0_dressing_exists": true,
+        "base_PQ_charge": 1,
+        "base_Z11_mod11": 1,
+        "base_Z4R_mod4": 0,
+        "base_tokens": [
+          "PsiBarDag",
+          "PsiDag"
+        ],
+        "dressed_Z11_mod11": 0,
+        "dressed_Z4R_mod4": 0,
+        "key": "PsiBarDag_PsiDag",
+        "net_PQ_violation": 11,
+        "operator_class": "Kahler",
+        "suppression_score_log10": 80,
+        "w0_power": 0
+      },
+      {
+        "P_power": 0,
+        "Pdag_power": 10,
+        "allowed_P_Pdag_w0_dressing_exists": true,
+        "base_PQ_charge": -1,
+        "base_Z11_mod11": 10,
+        "base_Z4R_mod4": 0,
+        "base_tokens": [
+          "PsiC",
+          "PsiCBar"
+        ],
+        "dressed_Z11_mod11": 0,
+        "dressed_Z4R_mod4": 0,
+        "key": "PsiC_PsiCBar",
+        "net_PQ_violation": -11,
+        "operator_class": "Kahler",
+        "suppression_score_log10": 80,
+        "w0_power": 0
+      },
+      {
+        "P_power": 11,
+        "Pdag_power": 0,
+        "allowed_P_Pdag_w0_dressing_exists": true,
+        "base_PQ_charge": 0,
+        "base_Z11_mod11": 0,
+        "base_Z4R_mod4": 0,
+        "base_tokens": [
+          "PsiC",
+          "PsiCDag"
+        ],
+        "dressed_Z11_mod11": 0,
+        "dressed_Z4R_mod4": 0,
+        "key": "PsiC_PsiCDag",
+        "net_PQ_violation": 11,
+        "operator_class": "Kahler",
+        "suppression_score_log10": 101,
+        "w0_power": 1
+      },
+      {
+        "P_power": 11,
+        "Pdag_power": 0,
+        "allowed_P_Pdag_w0_dressing_exists": true,
+        "base_PQ_charge": 0,
+        "base_Z11_mod11": 0,
+        "base_Z4R_mod4": 0,
+        "base_tokens": [
+          "PsiCBar",
+          "PsiCBarDag"
+        ],
+        "dressed_Z11_mod11": 0,
+        "dressed_Z4R_mod4": 0,
+        "key": "PsiCBar_PsiCBarDag",
+        "net_PQ_violation": 11,
+        "operator_class": "Kahler",
+        "suppression_score_log10": 101,
+        "w0_power": 1
+      },
+      {
+        "P_power": 10,
+        "Pdag_power": 0,
+        "allowed_P_Pdag_w0_dressing_exists": true,
+        "base_PQ_charge": 1,
+        "base_Z11_mod11": 1,
+        "base_Z4R_mod4": 0,
+        "base_tokens": [
+          "PsiCBarDag",
+          "PsiCDag"
+        ],
+        "dressed_Z11_mod11": 0,
+        "dressed_Z4R_mod4": 0,
+        "key": "PsiCBarDag_PsiCDag",
+        "net_PQ_violation": 11,
+        "operator_class": "Kahler",
+        "suppression_score_log10": 80,
+        "w0_power": 0
+      },
+      {
+        "all_order_reason": "P, Pdag, and w0 all carry even Z4R charge, so they cannot change the base R-charge parity to the required target",
+        "allowed_P_Pdag_w0_dressing_exists": false,
+        "base_PQ_charge": 0,
+        "base_Z11_mod11": 0,
+        "base_Z4R_mod4": 1,
+        "base_tokens": [
+          "H",
+          "Q",
+          "Sc"
+        ],
+        "key": "H_Q_Sc",
+        "operator_class": "Kahler"
+      },
+      {
+        "all_order_reason": "P, Pdag, and w0 all carry even Z4R charge, so they cannot change the base R-charge parity to the required target",
+        "allowed_P_Pdag_w0_dressing_exists": false,
+        "base_PQ_charge": 0,
+        "base_Z11_mod11": 0,
+        "base_Z4R_mod4": 1,
+        "base_tokens": [
+          "H",
+          "Sc",
+          "Psi"
+        ],
+        "key": "H_Sc_Psi",
+        "operator_class": "Kahler"
+      },
+      {
+        "all_order_reason": "P, Pdag, and w0 all carry even Z4R charge, so they cannot change the base R-charge parity to the required target",
+        "allowed_P_Pdag_w0_dressing_exists": false,
+        "base_PQ_charge": 1,
+        "base_Z11_mod11": 1,
+        "base_Z4R_mod4": 1,
+        "base_tokens": [
+          "H",
+          "Sc",
+          "PsiBarDag"
+        ],
+        "key": "H_Sc_PsiBarDag",
+        "operator_class": "Kahler"
+      },
+      {
+        "all_order_reason": "P, Pdag, and w0 all carry even Z4R charge, so they cannot change the base R-charge parity to the required target",
+        "allowed_P_Pdag_w0_dressing_exists": false,
+        "base_PQ_charge": 0,
+        "base_Z11_mod11": 0,
+        "base_Z4R_mod4": 3,
+        "base_tokens": [
+          "Qc",
+          "Sc",
+          "Sigma"
+        ],
+        "key": "Qc_Sc_Sigma",
+        "operator_class": "Kahler"
+      },
+      {
+        "all_order_reason": "P, Pdag, and w0 all carry even Z4R charge, so they cannot change the base R-charge parity to the required target",
+        "allowed_P_Pdag_w0_dressing_exists": false,
+        "base_PQ_charge": 0,
+        "base_Z11_mod11": 0,
+        "base_Z4R_mod4": 3,
+        "base_tokens": [
+          "Sc",
+          "Sigma",
+          "PsiC"
+        ],
+        "key": "Sc_Sigma_PsiC",
+        "operator_class": "Kahler"
+      },
+      {
+        "all_order_reason": "P, Pdag, and w0 all carry even Z4R charge, so they cannot change the base R-charge parity to the required target",
+        "allowed_P_Pdag_w0_dressing_exists": false,
+        "base_PQ_charge": 1,
+        "base_Z11_mod11": 1,
+        "base_Z4R_mod4": 3,
+        "base_tokens": [
+          "Sc",
+          "Sigma",
+          "PsiCBarDag"
+        ],
+        "key": "Sc_Sigma_PsiCBarDag",
+        "operator_class": "Kahler"
+      },
+      {
+        "all_order_reason": "P, Pdag, and w0 all carry even Z4R charge, so they cannot change the base R-charge parity to the required target",
+        "allowed_P_Pdag_w0_dressing_exists": false,
+        "base_PQ_charge": 0,
+        "base_Z11_mod11": 0,
+        "base_Z4R_mod4": 3,
+        "base_tokens": [
+          "H",
+          "QDag",
+          "Sbc"
+        ],
+        "key": "H_QDag_Sbc",
+        "operator_class": "Kahler"
+      },
+      {
+        "all_order_reason": "P, Pdag, and w0 all carry even Z4R charge, so they cannot change the base R-charge parity to the required target",
+        "allowed_P_Pdag_w0_dressing_exists": false,
+        "base_PQ_charge": -1,
+        "base_Z11_mod11": 10,
+        "base_Z4R_mod4": 3,
+        "base_tokens": [
+          "H",
+          "Sbc",
+          "PsiBar"
+        ],
+        "key": "H_Sbc_PsiBar",
+        "operator_class": "Kahler"
+      },
+      {
+        "all_order_reason": "P, Pdag, and w0 all carry even Z4R charge, so they cannot change the base R-charge parity to the required target",
+        "allowed_P_Pdag_w0_dressing_exists": false,
+        "base_PQ_charge": 0,
+        "base_Z11_mod11": 0,
+        "base_Z4R_mod4": 3,
+        "base_tokens": [
+          "H",
+          "Sbc",
+          "PsiDag"
+        ],
+        "key": "H_Sbc_PsiDag",
+        "operator_class": "Kahler"
+      },
+      {
+        "all_order_reason": "P, Pdag, and w0 all carry even Z4R charge, so they cannot change the base R-charge parity to the required target",
+        "allowed_P_Pdag_w0_dressing_exists": false,
+        "base_PQ_charge": 0,
+        "base_Z11_mod11": 0,
+        "base_Z4R_mod4": 1,
+        "base_tokens": [
+          "QcDag",
+          "Sbc",
+          "Sigma"
+        ],
+        "key": "QcDag_Sbc_Sigma",
+        "operator_class": "Kahler"
+      },
+      {
+        "all_order_reason": "P, Pdag, and w0 all carry even Z4R charge, so they cannot change the base R-charge parity to the required target",
+        "allowed_P_Pdag_w0_dressing_exists": false,
+        "base_PQ_charge": -1,
+        "base_Z11_mod11": 10,
+        "base_Z4R_mod4": 1,
+        "base_tokens": [
+          "Sbc",
+          "Sigma",
+          "PsiCBar"
+        ],
+        "key": "Sbc_Sigma_PsiCBar",
+        "operator_class": "Kahler"
+      },
+      {
+        "all_order_reason": "P, Pdag, and w0 all carry even Z4R charge, so they cannot change the base R-charge parity to the required target",
+        "allowed_P_Pdag_w0_dressing_exists": false,
+        "base_PQ_charge": 0,
+        "base_Z11_mod11": 0,
+        "base_Z4R_mod4": 1,
+        "base_tokens": [
+          "Sbc",
+          "Sigma",
+          "PsiCDag"
+        ],
+        "key": "Sbc_Sigma_PsiCDag",
+        "operator_class": "Kahler"
+      }
+    ],
+    "basis_provenance": "complete quadratic/cubic PQ-breaking gauge bases of arXiv:2009.04582 Table 6, redressed by exact congruence search",
+    "conditional_P_only_K_quality_estimate_log10_Delta_theta": -51,
+    "conditional_P_only_W_quality_estimate_log10_Delta_theta": -25,
+    "conditional_P_only_wall_arithmetic": {
+      "P11_explicit_harmonic": 11,
+      "P_only_QCD_harmonic": 4,
+      "gcd": 1,
+      "is_not_a_physical_wall_proof": true,
+      "would_lift_all_P_only_vacua": true
+    },
+    "dressing_search_domain": "0<=n_P,n_Pdag<=22 and 0<=n_w0<=1; exhaustive modulo neutral PPdag and w0^2 insertions",
+    "leading_pure_Kahler_breaker": {
+      "P_power": 11,
+      "Pdag_power": 0,
+      "allowed_P_Pdag_w0_dressing_exists": true,
+      "base_PQ_charge": 0,
+      "base_Z11_mod11": 0,
+      "base_Z4R_mod4": 0,
+      "base_tokens": [],
+      "dressed_Z11_mod11": 0,
+      "dressed_Z4R_mod4": 0,
+      "key": "one",
+      "net_PQ_violation": 11,
+      "operator_class": "Kahler",
+      "suppression_score_log10": 101,
+      "w0_power": 1
+    },
+    "leading_pure_superpotential_breaker": {
+      "P_power": 11,
+      "Pdag_power": 0,
+      "allowed_P_Pdag_w0_dressing_exists": true,
+      "base_PQ_charge": 0,
+      "base_Z11_mod11": 0,
+      "base_Z4R_mod4": 0,
+      "base_tokens": [],
+      "dressed_Z11_mod11": 0,
+      "dressed_Z4R_mod4": 2,
+      "key": "one",
+      "net_PQ_violation": 11,
+      "operator_class": "superpotential",
+      "suppression_score_log10": 88,
+      "w0_power": 0
+    },
+    "matter_parity": {
+      "all_order_RPV_proof": "P and w0 have even Z4R charge; an odd-matter-parity monomial retains odd total R charge and can never equal the even superpotential target 2 mod 4",
+      "even_fields": [
+        "H",
+        "X",
+        "Sc",
+        "Sbc",
+        "Sigma",
+        "P"
+      ],
+      "exact_to_all_P_and_w0_orders": true,
+      "odd_fields": [
+        "Q",
+        "Qc",
+        "Psi",
+        "PsiC",
+        "PsiBar",
+        "PsiCBar",
+        "N"
+      ],
+      "unbroken_generator": "(Z4R)^2 after <P> because r(P)=2"
+    },
+    "physical_mixed_axion_quality_closed": false,
+    "physical_wall_requires_dynamical_GS_axion_and_argP_mixing": true,
+    "physical_wall_vacuum_structure_closed": false,
+    "proton_decay": {
+      "Q4_and_Qc4_bare_Z4R": 0,
+      "coefficient_estimate_GeV_inverse": 1e-31,
+      "leading_W_dressing": "w0*(Q^4 or Qc^4)/Lambda^2",
+      "odd_RPV_operators_forbidden_to_all_orders": [
+        "H Q Sc",
+        "Q Qc Q Sc",
+        "Qc Qc Qc Sc"
+      ]
+    },
+    "quality_bound_log10_Delta_theta": -10,
+    "superpotential_rows": [
+      {
+        "P_power": 11,
+        "Pdag_power": 0,
+        "allowed_P_Pdag_w0_dressing_exists": true,
+        "base_PQ_charge": 0,
+        "base_Z11_mod11": 0,
+        "base_Z4R_mod4": 0,
+        "base_tokens": [],
+        "dressed_Z11_mod11": 0,
+        "dressed_Z4R_mod4": 2,
+        "key": "one",
+        "net_PQ_violation": 11,
+        "operator_class": "superpotential",
+        "suppression_score_log10": 88,
+        "w0_power": 0
+      },
+      {
+        "P_power": 11,
+        "Pdag_power": 0,
+        "allowed_P_Pdag_w0_dressing_exists": true,
+        "base_PQ_charge": 0,
+        "base_Z11_mod11": 0,
+        "base_Z4R_mod4": 0,
+        "base_tokens": [
+          "H",
+          "H"
+        ],
+        "dressed_Z11_mod11": 0,
+        "dressed_Z4R_mod4": 2,
+        "key": "H_H",
+        "net_PQ_violation": 11,
+        "operator_class": "superpotential",
+        "suppression_score_log10": 88,
+        "w0_power": 0
+      },
+      {
+        "all_order_reason": "P, Pdag, and w0 all carry even Z4R charge, so they cannot change the base R-charge parity to the required target",
+        "allowed_P_Pdag_w0_dressing_exists": false,
+        "base_PQ_charge": 0,
+        "base_Z11_mod11": 0,
+        "base_Z4R_mod4": 1,
+        "base_tokens": [
+          "Qc",
+          "Sbc"
+        ],
+        "key": "Qc_Sbc",
+        "operator_class": "superpotential"
+      },
+      {
+        "P_power": 12,
+        "Pdag_power": 0,
+        "allowed_P_Pdag_w0_dressing_exists": true,
+        "base_PQ_charge": -1,
+        "base_Z11_mod11": 10,
+        "base_Z4R_mod4": 0,
+        "base_tokens": [
+          "Qc",
+          "PsiCBar"
+        ],
+        "dressed_Z11_mod11": 0,
+        "dressed_Z4R_mod4": 2,
+        "key": "Qc_PsiCBar",
+        "net_PQ_violation": 11,
+        "operator_class": "superpotential",
+        "suppression_score_log10": 109,
+        "w0_power": 1
+      },
+      {
+        "P_power": 11,
+        "Pdag_power": 0,
+        "allowed_P_Pdag_w0_dressing_exists": true,
+        "base_PQ_charge": 0,
+        "base_Z11_mod11": 0,
+        "base_Z4R_mod4": 0,
+        "base_tokens": [
+          "Sbc",
+          "Sc"
+        ],
+        "dressed_Z11_mod11": 0,
+        "dressed_Z4R_mod4": 2,
+        "key": "Sbc_Sc",
+        "net_PQ_violation": 11,
+        "operator_class": "superpotential",
+        "suppression_score_log10": 88,
+        "w0_power": 0
+      },
+      {
+        "all_order_reason": "P, Pdag, and w0 all carry even Z4R charge, so they cannot change the base R-charge parity to the required target",
+        "allowed_P_Pdag_w0_dressing_exists": false,
+        "base_PQ_charge": 0,
+        "base_Z11_mod11": 0,
+        "base_Z4R_mod4": 1,
+        "base_tokens": [
+          "Sbc",
+          "PsiC"
+        ],
+        "key": "Sbc_PsiC",
+        "operator_class": "superpotential"
+      },
+      {
+        "all_order_reason": "P, Pdag, and w0 all carry even Z4R charge, so they cannot change the base R-charge parity to the required target",
+        "allowed_P_Pdag_w0_dressing_exists": false,
+        "base_PQ_charge": -1,
+        "base_Z11_mod11": 10,
+        "base_Z4R_mod4": 3,
+        "base_tokens": [
+          "Sc",
+          "PsiCBar"
+        ],
+        "key": "Sc_PsiCBar",
+        "operator_class": "superpotential"
+      },
+      {
+        "P_power": 11,
+        "Pdag_power": 0,
+        "allowed_P_Pdag_w0_dressing_exists": true,
+        "base_PQ_charge": 0,
+        "base_Z11_mod11": 0,
+        "base_Z4R_mod4": 0,
+        "base_tokens": [
+          "X",
+          "X"
+        ],
+        "dressed_Z11_mod11": 0,
+        "dressed_Z4R_mod4": 2,
+        "key": "X_X",
+        "net_PQ_violation": 11,
+        "operator_class": "superpotential",
+        "suppression_score_log10": 88,
+        "w0_power": 0
+      },
+      {
+        "P_power": 11,
+        "Pdag_power": 0,
+        "allowed_P_Pdag_w0_dressing_exists": true,
+        "base_PQ_charge": 0,
+        "base_Z11_mod11": 0,
+        "base_Z4R_mod4": 0,
+        "base_tokens": [
+          "Sigma",
+          "Sigma"
+        ],
+        "dressed_Z11_mod11": 0,
+        "dressed_Z4R_mod4": 2,
+        "key": "Sigma_Sigma",
+        "net_PQ_violation": 11,
+        "operator_class": "superpotential",
+        "suppression_score_log10": 88,
+        "w0_power": 0
+      },
+      {
+        "P_power": 12,
+        "Pdag_power": 0,
+        "allowed_P_Pdag_w0_dressing_exists": true,
+        "base_PQ_charge": -1,
+        "base_Z11_mod11": 10,
+        "base_Z4R_mod4": 0,
+        "base_tokens": [
+          "Q",
+          "PsiBar"
+        ],
+        "dressed_Z11_mod11": 0,
+        "dressed_Z4R_mod4": 2,
+        "key": "Q_PsiBar",
+        "net_PQ_violation": 11,
+        "operator_class": "superpotential",
+        "suppression_score_log10": 109,
+        "w0_power": 1
+      },
+      {
+        "P_power": 12,
+        "Pdag_power": 0,
+        "allowed_P_Pdag_w0_dressing_exists": true,
+        "base_PQ_charge": -1,
+        "base_Z11_mod11": 10,
+        "base_Z4R_mod4": 0,
+        "base_tokens": [
+          "Psi",
+          "PsiBar"
+        ],
+        "dressed_Z11_mod11": 0,
+        "dressed_Z4R_mod4": 2,
+        "key": "Psi_PsiBar",
+        "net_PQ_violation": 11,
+        "operator_class": "superpotential",
+        "suppression_score_log10": 109,
+        "w0_power": 1
+      },
+      {
+        "P_power": 12,
+        "Pdag_power": 0,
+        "allowed_P_Pdag_w0_dressing_exists": true,
+        "base_PQ_charge": -1,
+        "base_Z11_mod11": 10,
+        "base_Z4R_mod4": 0,
+        "base_tokens": [
+          "PsiC",
+          "PsiCBar"
+        ],
+        "dressed_Z11_mod11": 0,
+        "dressed_Z4R_mod4": 2,
+        "key": "PsiC_PsiCBar",
+        "net_PQ_violation": 11,
+        "operator_class": "superpotential",
+        "suppression_score_log10": 109,
+        "w0_power": 1
+      },
+      {
+        "all_order_reason": "P, Pdag, and w0 all carry even Z4R charge, so they cannot change the base R-charge parity to the required target",
+        "allowed_P_Pdag_w0_dressing_exists": false,
+        "base_PQ_charge": 0,
+        "base_Z11_mod11": 0,
+        "base_Z4R_mod4": 1,
+        "base_tokens": [
+          "H",
+          "Q",
+          "Sc"
+        ],
+        "key": "H_Q_Sc",
+        "operator_class": "superpotential"
+      },
+      {
+        "all_order_reason": "P, Pdag, and w0 all carry even Z4R charge, so they cannot change the base R-charge parity to the required target",
+        "allowed_P_Pdag_w0_dressing_exists": false,
+        "base_PQ_charge": 0,
+        "base_Z11_mod11": 0,
+        "base_Z4R_mod4": 1,
+        "base_tokens": [
+          "H",
+          "Sc",
+          "Psi"
+        ],
+        "key": "H_Sc_Psi",
+        "operator_class": "superpotential"
+      },
+      {
+        "all_order_reason": "P, Pdag, and w0 all carry even Z4R charge, so they cannot change the base R-charge parity to the required target",
+        "allowed_P_Pdag_w0_dressing_exists": false,
+        "base_PQ_charge": 0,
+        "base_Z11_mod11": 0,
+        "base_Z4R_mod4": 3,
+        "base_tokens": [
+          "Qc",
+          "Sc",
+          "Sigma"
+        ],
+        "key": "Qc_Sc_Sigma",
+        "operator_class": "superpotential"
+      },
+      {
+        "all_order_reason": "P, Pdag, and w0 all carry even Z4R charge, so they cannot change the base R-charge parity to the required target",
+        "allowed_P_Pdag_w0_dressing_exists": false,
+        "base_PQ_charge": 0,
+        "base_Z11_mod11": 0,
+        "base_Z4R_mod4": 3,
+        "base_tokens": [
+          "Sc",
+          "Sigma",
+          "PsiC"
+        ],
+        "key": "Sc_Sigma_PsiC",
+        "operator_class": "superpotential"
+      },
+      {
+        "all_order_reason": "P, Pdag, and w0 all carry even Z4R charge, so they cannot change the base R-charge parity to the required target",
+        "allowed_P_Pdag_w0_dressing_exists": false,
+        "base_PQ_charge": -1,
+        "base_Z11_mod11": 10,
+        "base_Z4R_mod4": 3,
+        "base_tokens": [
+          "H",
+          "Sbc",
+          "PsiBar"
+        ],
+        "key": "H_Sbc_PsiBar",
+        "operator_class": "superpotential"
+      },
+      {
+        "all_order_reason": "P, Pdag, and w0 all carry even Z4R charge, so they cannot change the base R-charge parity to the required target",
+        "allowed_P_Pdag_w0_dressing_exists": false,
+        "base_PQ_charge": -1,
+        "base_Z11_mod11": 10,
+        "base_Z4R_mod4": 1,
+        "base_tokens": [
+          "Sbc",
+          "Sigma",
+          "PsiCBar"
+        ],
+        "key": "Sbc_Sigma_PsiCBar",
+        "operator_class": "superpotential"
+      }
+    ],
+    "w0_contract": {
+      "PQ_charge": 0,
+      "Z11_charge": 0,
+      "Z4R_charge": 2,
+      "mass_dimension": 1
+    }
+  },
+  "field_content": [
+    {
+      "PS_representation": [
+        1,
+        2,
+        2
+      ],
+      "Z11_charge": 0,
+      "Z11_signed_charge": 0,
+      "Z4R_charge": 0,
+      "accidental_PQ_charge": 0,
+      "multiplicity": 1,
+      "name": "H",
+      "role": "MSSM_bidoublet"
+    },
+    {
+      "PS_representation": [
+        4,
+        2,
+        1
+      ],
+      "Z11_charge": 0,
+      "Z11_signed_charge": 0,
+      "Z4R_charge": 1,
+      "accidental_PQ_charge": 0,
+      "multiplicity": 3,
+      "name": "Q",
+      "role": "three_left_families"
+    },
+    {
+      "PS_representation": [
+        -4,
+        1,
+        2
+      ],
+      "Z11_charge": 0,
+      "Z11_signed_charge": 0,
+      "Z4R_charge": 1,
+      "accidental_PQ_charge": 0,
+      "multiplicity": 3,
+      "name": "Qc",
+      "role": "three_right_families"
+    },
+    {
+      "PS_representation": [
+        1,
+        1,
+        1
+      ],
+      "Z11_charge": 0,
+      "Z11_signed_charge": 0,
+      "Z4R_charge": 2,
+      "accidental_PQ_charge": 0,
+      "multiplicity": 1,
+      "name": "X",
+      "role": "PS_driving_singlet"
+    },
+    {
+      "PS_representation": [
+        -4,
+        1,
+        2
+      ],
+      "Z11_charge": 0,
+      "Z11_signed_charge": 0,
+      "Z4R_charge": 0,
+      "accidental_PQ_charge": 0,
+      "multiplicity": 1,
+      "name": "Sc",
+      "role": "PS_breaking"
+    },
+    {
+      "PS_representation": [
+        4,
+        1,
+        2
+      ],
+      "Z11_charge": 0,
+      "Z11_signed_charge": 0,
+      "Z4R_charge": 0,
+      "accidental_PQ_charge": 0,
+      "multiplicity": 1,
+      "name": "Sbc",
+      "role": "PS_breaking_conjugate"
+    },
+    {
+      "PS_representation": [
+        6,
+        1,
+        1
+      ],
+      "Z11_charge": 0,
+      "Z11_signed_charge": 0,
+      "Z4R_charge": 2,
+      "accidental_PQ_charge": 0,
+      "multiplicity": 1,
+      "name": "Sigma",
+      "role": "real_color_sextet"
+    },
+    {
+      "PS_representation": [
+        -4,
+        2,
+        1
+      ],
+      "Z11_charge": 10,
+      "Z11_signed_charge": -1,
+      "Z4R_charge": 3,
+      "accidental_PQ_charge": -1,
+      "multiplicity": 1,
+      "name": "PsiBar",
+      "role": "KSVZ_left_conjugate"
+    },
+    {
+      "PS_representation": [
+        4,
+        2,
+        1
+      ],
+      "Z11_charge": 0,
+      "Z11_signed_charge": 0,
+      "Z4R_charge": 1,
+      "accidental_PQ_charge": 0,
+      "multiplicity": 1,
+      "name": "Psi",
+      "role": "KSVZ_left"
+    },
+    {
+      "PS_representation": [
+        -4,
+        1,
+        2
+      ],
+      "Z11_charge": 0,
+      "Z11_signed_charge": 0,
+      "Z4R_charge": 1,
+      "accidental_PQ_charge": 0,
+      "multiplicity": 1,
+      "name": "PsiC",
+      "role": "KSVZ_right"
+    },
+    {
+      "PS_representation": [
+        4,
+        1,
+        2
+      ],
+      "Z11_charge": 10,
+      "Z11_signed_charge": -1,
+      "Z4R_charge": 3,
+      "accidental_PQ_charge": -1,
+      "multiplicity": 1,
+      "name": "PsiCBar",
+      "role": "KSVZ_right_conjugate"
+    },
+    {
+      "PS_representation": [
+        1,
+        1,
+        1
+      ],
+      "Z11_charge": 1,
+      "Z11_signed_charge": 1,
+      "Z4R_charge": 2,
+      "accidental_PQ_charge": 1,
+      "multiplicity": 1,
+      "name": "P",
+      "role": "radiative_PQ_breaking"
+    },
+    {
+      "PS_representation": [
+        1,
+        1,
+        1
+      ],
+      "Z11_charge": 0,
+      "Z11_signed_charge": 0,
+      "Z4R_charge": 1,
+      "accidental_PQ_charge": 0,
+      "multiplicity": 3,
+      "name": "N",
+      "role": "Majorana_UV_messenger"
+    }
+  ],
+  "forbidden_and_leading_nonrenormalizable_operator_ledger": [
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 0,
+      "allowed_in_superpotential": false,
+      "coefficient": "mu",
+      "engineering_degree": 2,
+      "key": "bare_mu",
+      "monomial": [
+        "H",
+        "H"
+      ],
+      "purpose": "Planck-scale Higgs mass must be absent",
+      "source": "symmetry_complete_audit"
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 0,
+      "allowed_in_superpotential": false,
+      "coefficient": "MPS",
+      "engineering_degree": 2,
+      "key": "bare_PS_mass",
+      "monomial": [
+        "Sbc",
+        "Sc"
+      ],
+      "purpose": "would replace the F-term breaking structure",
+      "source": "symmetry_complete_audit"
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 0,
+      "allowed_in_superpotential": false,
+      "coefficient": "MSigma",
+      "engineering_degree": 2,
+      "key": "bare_sextet_mass",
+      "monomial": [
+        "Sigma",
+        "Sigma"
+      ],
+      "purpose": "forbidden before R breaking",
+      "source": "symmetry_complete_audit"
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 0,
+      "allowed_in_superpotential": false,
+      "coefficient": "MX",
+      "engineering_degree": 2,
+      "key": "bare_X_mass",
+      "monomial": [
+        "X",
+        "X"
+      ],
+      "purpose": "forbidden by Z4R",
+      "source": "symmetry_complete_audit"
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 10,
+      "Z4R_sum_mod4": 0,
+      "allowed_in_superpotential": false,
+      "coefficient": "ML",
+      "engineering_degree": 2,
+      "key": "bare_left_vector_mass",
+      "monomial": [
+        "PsiBar",
+        "Psi"
+      ],
+      "purpose": "PQ mass must track P",
+      "source": "symmetry_complete_audit"
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 10,
+      "Z4R_sum_mod4": 0,
+      "allowed_in_superpotential": false,
+      "coefficient": "MR",
+      "engineering_degree": 2,
+      "key": "bare_right_vector_mass",
+      "monomial": [
+        "PsiCBar",
+        "PsiC"
+      ],
+      "purpose": "PQ mass must track P",
+      "source": "symmetry_complete_audit"
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 10,
+      "Z4R_sum_mod4": 0,
+      "allowed_in_superpotential": false,
+      "coefficient": "c10/Lambda^7",
+      "engineering_degree": 10,
+      "key": "P_to_10",
+      "monomial": [
+        "P",
+        "P",
+        "P",
+        "P",
+        "P",
+        "P",
+        "P",
+        "P",
+        "P",
+        "P"
+      ],
+      "purpose": "last pure-P trial below the selector order",
+      "source": "symmetry_complete_audit"
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": true,
+      "coefficient": "c11/Lambda^8",
+      "engineering_degree": 11,
+      "key": "P_to_11",
+      "monomial": [
+        "P",
+        "P",
+        "P",
+        "P",
+        "P",
+        "P",
+        "P",
+        "P",
+        "P",
+        "P",
+        "P"
+      ],
+      "purpose": "leading pure-P explicit PQ breaking",
+      "source": "derived_Z11_selector"
+    },
+    {
+      "PS_singlet_multiplicity": 2,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": true,
+      "coefficient": "cN/(2 Lambda)",
+      "engineering_degree": 4,
+      "key": "Majorana_EFT",
+      "monomial": [
+        "Sbc",
+        "Qc",
+        "Sbc",
+        "Qc"
+      ],
+      "purpose": "paper EFT right-neutrino mass",
+      "source": "paper_Eq_2"
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 1,
+      "allowed_in_superpotential": false,
+      "coefficient": "cL",
+      "engineering_degree": 2,
+      "key": "bilinear_RPV",
+      "monomial": [
+        "Qc",
+        "Sbc"
+      ],
+      "purpose": "odd matter parity; forbidden for every P and w0 dressing",
+      "source": "all_order_Z2_proof"
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 1,
+      "allowed_in_superpotential": false,
+      "coefficient": "cH",
+      "engineering_degree": 3,
+      "key": "HQS_RPV",
+      "monomial": [
+        "H",
+        "Q",
+        "Sc"
+      ],
+      "purpose": "odd matter parity; forbidden for every P and w0 dressing",
+      "source": "all_order_Z2_proof"
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 3,
+      "allowed_in_superpotential": false,
+      "coefficient": "c4/Lambda",
+      "engineering_degree": 4,
+      "key": "QQcQSc_RPV",
+      "monomial": [
+        "Q",
+        "Qc",
+        "Q",
+        "Sc"
+      ],
+      "purpose": "odd matter parity; forbidden for every P and w0 dressing",
+      "source": "all_order_Z2_proof"
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 3,
+      "allowed_in_superpotential": false,
+      "coefficient": "c4c/Lambda",
+      "engineering_degree": 4,
+      "key": "QcQcQcSc_RPV",
+      "monomial": [
+        "Qc",
+        "Qc",
+        "Qc",
+        "Sc"
+      ],
+      "purpose": "odd matter parity; forbidden for every P and w0 dressing",
+      "source": "all_order_Z2_proof"
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 0,
+      "allowed_in_superpotential": false,
+      "coefficient": "c5L/Lambda",
+      "engineering_degree": 4,
+      "key": "QQQQ",
+      "monomial": [
+        "Q",
+        "Q",
+        "Q",
+        "Q"
+      ],
+      "purpose": "dimension-five proton decay",
+      "source": "symmetry_complete_audit"
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 0,
+      "allowed_in_superpotential": false,
+      "coefficient": "c5R/Lambda",
+      "engineering_degree": 4,
+      "key": "QcQcQcQc",
+      "monomial": [
+        "Qc",
+        "Qc",
+        "Qc",
+        "Qc"
+      ],
+      "purpose": "dimension-five proton decay",
+      "source": "symmetry_complete_audit"
+    }
+  ],
+  "gate_boundary": {
+    "G1": {
+      "landed": "finite charge ledger, symmetry-complete renormalizable W, unique normalized PS cubics, and a renormalizable seesaw UV channel",
+      "open": "dynamical GS axion/modulus, stabilization, UV realization, physical axion mixing/wall structure, and operator bases above the source-complete quadratic/cubic Table-6 sector",
+      "state": "PARTIAL"
+    },
+    "G2": {
+      "landed": "exact constructed PS-breaking-sector W_IJ rank 14/23 with nine gauge Goldstones and rank-one-by-four PQ mass rows",
+      "open": "full component Hessian with gauge fixing, soft/PQ vacuum, SM decomposition, and pole spectrum",
+      "state": "PARTIAL"
+    },
+    "full_G1_or_G2_claim": false
+  },
+  "normalized_tensor_ledger": {
+    "EFT_Sbc2_Qc2_bosonic_singlet_multiplicity": 2,
+    "EFT_channel_decomposition": [
+      "(10,3)x(bar10,3)",
+      "(6,1)x(6,1)"
+    ],
+    "N_exchange_channel": "square of the unique (Sbc Qc)_(1,1) bilinear",
+    "N_exchange_selected_channel_multiplicity": 1,
+    "SARAH_automatic_CGC_normalization_used": true,
+    "all_renormalizable_multiplicities_are_one": true,
+    "all_renormalizable_operator_singlet_multiplicities": {
+      "N_N": 1,
+      "P_PsiBar_Psi": 1,
+      "P_PsiBar_Q": 1,
+      "P_PsiCBar_PsiC": 1,
+      "P_PsiCBar_Qc": 1,
+      "Psi_H_PsiC": 1,
+      "Psi_H_Qc": 1,
+      "Q_H_PsiC": 1,
+      "Q_H_Qc": 1,
+      "Sbc_PsiC_N": 1,
+      "Sbc_Qc_N": 1,
+      "Sbc_Sbc_Sigma": 1,
+      "Sc_Sc_Sigma": 1,
+      "X_H_H": 1,
+      "X_Sbc_Sc": 1,
+      "X_Sigma_Sigma": 1,
+      "X_cubic": 1,
+      "X_tadpole": 1
+    },
+    "full_rank_three_family_coefficient": "c_ij=(yNQ M_N^{-1} yNQ^T)_ij",
+    "index_conventions": {
+      "SU2": "epsilon_12=+1; a,b are SU2L and i,j are SU2R indices",
+      "SU4": "alpha=1..4; epsilon_1234=+1; Sigma^[alpha beta] antisymmetric; kinetic norm (1/2) Sigma*_[alpha beta] Sigma^[alpha beta]"
+    },
+    "normalized_invariants": {
+      "H_H": "(1/2) epsilon_ab epsilon_ij H^(a i) H^(b j)",
+      "P_PsiBar_Q": "P epsilon_ab PsiBar_(alpha)^a Q^(alpha b)",
+      "P_PsiCBar_Qc": "P PsiCBar^(alpha i) Qc_(alpha i)",
+      "Q_H_Qc": "epsilon_ab Q^(alpha a) H^(b i) Qc_(alpha i)",
+      "Sbc_Qc_N": "Sbc^(alpha i) Qc_(alpha i) N",
+      "Sbc_Sbc_Sigma": "(1/4) epsilon_ij epsilon_alpha_beta_gamma_delta Sbc^(alpha i) Sbc^(beta j) Sigma^(gamma delta)",
+      "Sbc_Sc": "Sbc^(alpha i) Sc_(alpha i)",
+      "Sc_Sc_Sigma": "(1/2) epsilon^(ij) Sc_(alpha i) Sc_(beta j) Sigma^(alpha beta)",
+      "Sigma_Sigma": "(1/4) epsilon_alpha_beta_gamma_delta Sigma^(alpha beta) Sigma^(gamma delta)"
+    }
+  },
+  "physics_to_SARAH_symbol_map": {
+    "Sig6_component": "sig6",
+    "Sigma": "Sig6",
+    "physics_ledgers_retain_name_Sigma": true,
+    "reason": "SARAH owns Global`Sigma for the Pauli matrices; reusing Sigma silently corrupts Dot products and truncates the processed superpotential"
+  },
+  "primary_source": {
+    "citation": "J. Kawamura and S. Raby, Phys. Rev. D 103, 015002 (2021), arXiv:2009.04582",
+    "field_architecture": "Table 1/Table 3 and Eqs. (2),(3),(8)",
+    "selector_note": "Z11 charges are a derived anomaly-universal variant, not the paper's published Z5 benchmark",
+    "source_superpotential": "Eqs. (2), (3), (8), and footnote 3",
+    "url": "https://arxiv.org/abs/2009.04582"
+  },
+  "sarah_Start_attestation": {
+    "Start_log_policy": "fail on any Dot::dotsh anywhere in the process, any ModelFile/Extract/Part source error, charge-noninvariance text, a processed-W count other than 18, or any mismatch of the exact processed structural multiset",
+    "all_required_checks_pass": true,
+    "checks": {
+      "Start_log_free_of_model_source_errors_and_Dot_dotsh": true,
+      "Start_reported_model_ready": true,
+      "continuous_gauge_anomaly_check_succeeded": true,
+      "full_process_log_free_of_Dot_dotsh": true,
+      "model_initialization_succeeded": true,
+      "model_parse_succeeded": true,
+      "processed_W_contains_Yukawa_PQ_seesaw_interactions": true,
+      "processed_W_contains_sextet_interactions": true,
+      "processed_W_exactly_18_terms": true,
+      "processed_W_full_structural_multiset_exact": true,
+      "processed_component_superpotential_nonzero": true,
+      "unique_renormalizable_tensor_channels": true,
+      "z11_global_loaded": true
+    },
+    "engine": "Wolfram 15.0.1 for Microsoft Windows (64-bit) (July 2, 2026)",
+    "executed": true,
+    "exit_code": 0,
+    "model_sha256": "09326668d02b32b4a66c3b79cba34fb6a709430a360dce6d2d5d2ab039cad2bf",
+    "processed_superpotential_term_count": 18,
+    "required_checks": [
+      "Start_log_free_of_model_source_errors_and_Dot_dotsh",
+      "Start_reported_model_ready",
+      "continuous_gauge_anomaly_check_succeeded",
+      "full_process_log_free_of_Dot_dotsh",
+      "model_initialization_succeeded",
+      "model_parse_succeeded",
+      "processed_W_contains_Yukawa_PQ_seesaw_interactions",
+      "processed_W_contains_sextet_interactions",
+      "processed_W_exactly_18_terms",
+      "processed_W_full_structural_multiset_exact",
+      "processed_component_superpotential_nonzero",
+      "unique_renormalizable_tensor_channels",
+      "z11_global_loaded"
+    ],
+    "tool": "SARAH 4.15.3",
+    "validator_sha256": "751d44288efebd29daccb8601201b2a8c45eb713dfd06fa23d5d8b39db92deb9"
+  },
+  "schema": "susy_v24_ps_z11_source_contract_v2",
+  "selector_contract": {
+    "P_VEV_preserves_Z2_matter_parity": true,
+    "Z11_encoded_as_SARAH_global_symmetry": true,
+    "Z4R_verified_independently_from_SARAH": true,
+    "accidental_PQ_is_not_an_imposed_exact_global_symmetry": true,
+    "finite_selector_has_no_running_gauge_coupling": true,
+    "superpotential_Z11_target": 0,
+    "superpotential_Z4R_target": 2
+  },
+  "source_files": {
+    "models/PSZ4RZ11SUSYV24/PSZ4RZ11SUSYV24.m": "09326668d02b32b4a66c3b79cba34fb6a709430a360dce6d2d5d2ab039cad2bf",
+    "models/PSZ4RZ11SUSYV24/parameters.m": "1a15d9c29e324a33fc2363fc6fa2e9f871bee2ec3253b98961d25442c32e9992",
+    "models/PSZ4RZ11SUSYV24/particles.m": "6c7be1d5ee866cfd8b6696c48edfec5f385f9da13decd045baa21e4881369b47",
+    "tools/validate-susy-v24-ps.wls": "751d44288efebd29daccb8601201b2a8c45eb713dfd06fa23d5d8b39db92deb9"
+  },
+  "status": "V24_PS_Z11_NONZERO_W_SOURCE_LANDED__G1_G2_PARTIAL__GS_MODULUS_UV_AND_FULL_COMPONENT_HESSIAN_OPEN",
+  "symmetry_complete_renormalizable_operator_ledger": [
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": true,
+      "coefficient": "-kappaPS*vPS^2",
+      "engineering_degree": 1,
+      "key": "X_tadpole",
+      "monomial": [
+        "X"
+      ],
+      "purpose": "sets the PS-breaking radius",
+      "source": "paper_Eq_2"
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": true,
+      "coefficient": "kappaX/3",
+      "engineering_degree": 3,
+      "key": "X_cubic",
+      "monomial": [
+        "X",
+        "X",
+        "X"
+      ],
+      "purpose": "stabilizing singlet interaction",
+      "source": "paper_Eq_2"
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": true,
+      "coefficient": "kappaPS",
+      "engineering_degree": 3,
+      "key": "X_Sbc_Sc",
+      "monomial": [
+        "X",
+        "Sbc",
+        "Sc"
+      ],
+      "purpose": "F-term PS breaking",
+      "source": "paper_Eq_2"
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": true,
+      "coefficient": "lambdaH/2",
+      "engineering_degree": 3,
+      "key": "X_H_H",
+      "monomial": [
+        "X",
+        "H",
+        "H"
+      ],
+      "purpose": "generic selector-allowed bidoublet interaction",
+      "source": "symmetry_complete_audit"
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": true,
+      "coefficient": "lambdaSigma/2",
+      "engineering_degree": 3,
+      "key": "X_Sigma_Sigma",
+      "monomial": [
+        "X",
+        "Sigma",
+        "Sigma"
+      ],
+      "purpose": "generic selector-allowed sextet interaction",
+      "source": "symmetry_complete_audit"
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": true,
+      "coefficient": "lambdaS/2",
+      "engineering_degree": 3,
+      "key": "Sc_Sc_Sigma",
+      "monomial": [
+        "Sc",
+        "Sc",
+        "Sigma"
+      ],
+      "purpose": "lifts one PS-breaking color-triplet chirality",
+      "source": "paper_Eqs_2_3"
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": true,
+      "coefficient": "lambdaSb/2",
+      "engineering_degree": 3,
+      "key": "Sbc_Sbc_Sigma",
+      "monomial": [
+        "Sbc",
+        "Sbc",
+        "Sigma"
+      ],
+      "purpose": "lifts the conjugate color-triplet chirality",
+      "source": "paper_Eq_3"
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": true,
+      "coefficient": "YQQ",
+      "engineering_degree": 3,
+      "key": "Q_H_Qc",
+      "monomial": [
+        "Q",
+        "H",
+        "Qc"
+      ],
+      "purpose": "three-family Yukawa matrix",
+      "source": "paper_Eq_2"
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": true,
+      "coefficient": "YQX",
+      "engineering_degree": 3,
+      "key": "Q_H_PsiC",
+      "monomial": [
+        "Q",
+        "H",
+        "PsiC"
+      ],
+      "purpose": "right-vectorlike decay/mixing",
+      "source": "symmetry_complete_audit"
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": true,
+      "coefficient": "YXQ",
+      "engineering_degree": 3,
+      "key": "Psi_H_Qc",
+      "monomial": [
+        "Psi",
+        "H",
+        "Qc"
+      ],
+      "purpose": "left-vectorlike decay/mixing",
+      "source": "symmetry_complete_audit"
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": true,
+      "coefficient": "YXX",
+      "engineering_degree": 3,
+      "key": "Psi_H_PsiC",
+      "monomial": [
+        "Psi",
+        "H",
+        "PsiC"
+      ],
+      "purpose": "vectorlike Yukawa interaction",
+      "source": "symmetry_complete_audit"
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": true,
+      "coefficient": "lambdaPQ",
+      "engineering_degree": 3,
+      "key": "P_PsiBar_Q",
+      "monomial": [
+        "P",
+        "PsiBar",
+        "Q"
+      ],
+      "purpose": "generic rank-one left PQ mass row",
+      "source": "symmetry_complete_audit"
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": true,
+      "coefficient": "lambdaPX",
+      "engineering_degree": 3,
+      "key": "P_PsiBar_Psi",
+      "monomial": [
+        "P",
+        "PsiBar",
+        "Psi"
+      ],
+      "purpose": "left KSVZ mass",
+      "source": "paper_Eq_8"
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": true,
+      "coefficient": "lambdaPcQ",
+      "engineering_degree": 3,
+      "key": "P_PsiCBar_Qc",
+      "monomial": [
+        "P",
+        "PsiCBar",
+        "Qc"
+      ],
+      "purpose": "generic rank-one right PQ mass row",
+      "source": "symmetry_complete_audit"
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": true,
+      "coefficient": "lambdaPcX",
+      "engineering_degree": 3,
+      "key": "P_PsiCBar_PsiC",
+      "monomial": [
+        "P",
+        "PsiCBar",
+        "PsiC"
+      ],
+      "purpose": "right KSVZ mass",
+      "source": "paper_Eq_8_minimal"
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": true,
+      "coefficient": "yNQ",
+      "engineering_degree": 3,
+      "key": "Sbc_Qc_N",
+      "monomial": [
+        "Sbc",
+        "Qc",
+        "N"
+      ],
+      "purpose": "renormalizable seesaw UV completion",
+      "source": "paper_footnote_3"
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": true,
+      "coefficient": "yNX",
+      "engineering_degree": 3,
+      "key": "Sbc_PsiC_N",
+      "monomial": [
+        "Sbc",
+        "PsiC",
+        "N"
+      ],
+      "purpose": "selector-required UV mixing",
+      "source": "symmetry_complete_audit"
+    },
+    {
+      "PS_singlet_multiplicity": 1,
+      "Z11_sum_mod11": 0,
+      "Z4R_sum_mod4": 2,
+      "allowed_in_superpotential": true,
+      "coefficient": "MN/2",
+      "engineering_degree": 2,
+      "key": "N_N",
+      "monomial": [
+        "N",
+        "N"
+      ],
+      "purpose": "full-rank messenger Majorana mass",
+      "source": "paper_footnote_3"
+    }
+  ],
+  "vacuum_and_generic_rank_ledger": {
+    "H_bidoublet_components_left_light": 4,
+    "H_bidoublet_supersymmetric_mass_at_X0": 0,
+    "PQ_vectorlike_left_mass_matrix_shape": [
+      1,
+      4
+    ],
+    "PQ_vectorlike_right_mass_matrix_shape": [
+      1,
+      4
+    ],
+    "PS_breaking_spinor_pair_components": 16,
+    "PS_to_SM_broken_generators": 9,
+    "P_only_QCD_anomaly_domain_wall_number_from_source": 4,
+    "breaking_sector_physical_chiral_nullity_after_super_Higgs": 0,
+    "chiral_families_left_after_P_VEV": 3,
+    "chiral_families_right_after_P_VEV": 3,
+    "generic_PS_breaking_sector_chiral_W_Hessian": {
+      "Goldstone_identification_proof": "PS/SM has 21-12=9 broken generators; gauge invariance puts their nine tangent chiral directions in ker(W_IJ), and the computed nullity is nine, so the kernel equals the gauge-Goldstone space",
+      "coefficient_perturbation_ranks": [
+        {
+          "couplings": {
+            "kappa": 1,
+            "lambdaS": 1,
+            "lambdaSb": 1,
+            "vPS": 1
+          },
+          "exact_rank": 14
+        },
+        {
+          "couplings": {
+            "kappa": 2,
+            "lambdaS": 3,
+            "lambdaSb": 5,
+            "vPS": 7
+          },
+          "exact_rank": 14
+        },
+        {
+          "couplings": {
+            "kappa": -3,
+            "lambdaS": 4,
+            "lambdaSb": 7,
+            "vPS": 2
+          },
+          "exact_rank": 14
+        },
+        {
+          "couplings": {
+            "kappa": 11,
+            "lambdaS": -5,
+            "lambdaSb": 2,
+            "vPS": -3
+          },
+          "exact_rank": 14
+        }
+      ],
+      "colored_block": {
+        "computed_rank": 12,
+        "dimension": 12,
+        "labels": [
+          "Sc[0,1]",
+          "Sc[1,1]",
+          "Sc[2,1]",
+          "Sbc[0,1]",
+          "Sbc[1,1]",
+          "Sbc[2,1]",
+          "Sigma[0,1]",
+          "Sigma[0,2]",
+          "Sigma[0,3]",
+          "Sigma[1,2]",
+          "Sigma[1,3]",
+          "Sigma[2,3]"
+        ]
+      },
+      "component_ordering": [
+        "Sc[0,0]",
+        "Sc[0,1]",
+        "Sc[1,0]",
+        "Sc[1,1]",
+        "Sc[2,0]",
+        "Sc[2,1]",
+        "Sc[3,0]",
+        "Sc[3,1]",
+        "Sbc[0,0]",
+        "Sbc[0,1]",
+        "Sbc[1,0]",
+        "Sbc[1,1]",
+        "Sbc[2,0]",
+        "Sbc[2,1]",
+        "Sbc[3,0]",
+        "Sbc[3,1]",
+        "Sigma[0,1]",
+        "Sigma[0,2]",
+        "Sigma[0,3]",
+        "Sigma[1,2]",
+        "Sigma[1,3]",
+        "Sigma[2,3]",
+        "X"
+      ],
+      "computed_exact_rank": 14,
+      "computed_nullity": 9,
+      "construction": "exact second derivatives of normalized W_PS invariants at Sc[3,0]=Sbc[3,0]=vPS",
+      "exact_RREF_pivot_columns_zero_based": [
+        1,
+        3,
+        5,
+        6,
+        9,
+        11,
+        13,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "exact_RREF_pivot_labels": [
+        "Sc[0,1]",
+        "Sc[1,1]",
+        "Sc[2,1]",
+        "Sc[3,0]",
+        "Sbc[0,1]",
+        "Sbc[1,1]",
+        "Sbc[2,1]",
+        "Sigma[0,1]",
+        "Sigma[0,2]",
+        "Sigma[0,3]",
+        "Sigma[1,2]",
+        "Sigma[1,3]",
+        "Sigma[2,3]",
+        "X"
+      ],
+      "generic_rank_proof": "the tensor support gives the upper bound 2+12=14; one exact nonzero rational witness saturates it, so rank=14 on the generic nonzero-coupling Zariski-open set",
+      "identically_zero_rows": [
+        "Sc[0,0]",
+        "Sc[1,0]",
+        "Sc[2,0]",
+        "Sc[3,1]",
+        "Sbc[0,0]",
+        "Sbc[1,0]",
+        "Sbc[2,0]",
+        "Sbc[3,1]"
+      ],
+      "matrix_dimension": [
+        23,
+        23
+      ],
+      "matrix_sha256": "2e23fabdace6f2776b7f64c39afa17dfffa254602469101a772d4bc4510fc3e6",
+      "nonzero_upper_triangle": [
+        {
+          "column": "Sigma[0,3]",
+          "row": "Sc[0,1]",
+          "value": -21
+        },
+        {
+          "column": "Sigma[1,3]",
+          "row": "Sc[1,1]",
+          "value": -21
+        },
+        {
+          "column": "Sigma[2,3]",
+          "row": "Sc[2,1]",
+          "value": -21
+        },
+        {
+          "column": "X",
+          "row": "Sc[3,0]",
+          "value": 14
+        },
+        {
+          "column": "Sigma[1,2]",
+          "row": "Sbc[0,1]",
+          "value": -35
+        },
+        {
+          "column": "Sigma[0,2]",
+          "row": "Sbc[1,1]",
+          "value": 35
+        },
+        {
+          "column": "Sigma[0,1]",
+          "row": "Sbc[2,1]",
+          "value": -35
+        },
+        {
+          "column": "X",
+          "row": "Sbc[3,0]",
+          "value": 14
+        }
+      ],
+      "radial_block": {
+        "computed_rank": 2,
+        "dimension": 3,
+        "labels": [
+          "Sc[3,0]",
+          "Sbc[3,0]",
+          "X"
+        ]
+      },
+      "rational_witness": {
+        "kappa": 2,
+        "lambdaS": 3,
+        "lambdaSb": 5,
+        "vPS": 7
+      },
+      "scope_boundary": "representation-level exact superpotential Hessian witness; not a gauge-fixed scalar-potential or pole-mass Hessian"
+    },
+    "generic_rank_each_PQ_mass_row": 1,
+    "low_energy_Higgs_doublet_pairs_before_w0": 1,
+    "physical_axion_domain_wall_number_closed": false,
+    "physical_wall_obstruction": "anomalous Z11 requires the dynamical shifting GS axion and its mixing with arg(P)",
+    "supersymmetric_vacuum": {
+      "D_flat_condition": "|Sc|=|Sbc|",
+      "F_flat_for_generic_nonzero_kappaPS_lambdaS_lambdaSb": true,
+      "nonzero": [
+        "<Sc_(4,1)>=vPS",
+        "<Sbc^(4,1)>=vPS"
+      ],
+      "zero": [
+        "<X>=0",
+        "<Sigma>=0",
+        "<H>=0",
+        "<P>=0 in the supersymmetric PS-stage source"
+      ]
+    },
+    "uneaten_spinor_components": 7,
+    "w0_H2_generates_soft_scale_mu": true
+  }
+}

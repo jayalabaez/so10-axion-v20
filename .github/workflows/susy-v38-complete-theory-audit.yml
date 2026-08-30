@@ -1,0 +1,50 @@
+name: SUSY V38 complete-theory audit
+
+on:
+  push:
+    paths:
+      - "susy_v38_complete_theory_audit.py"
+      - "test_susy_v38_complete_theory_audit.py"
+      - "susy_v38_g1_uv_completion_audit.py"
+      - "susy_v37_g5_relic_cosmology_audit.py"
+      - "susy_v37_nonanomaly_gate_audit.py"
+      - "susy_v37_new_physics_routes.py"
+      - "SUSY_V37_*AUDIT.json"
+      - "SUSY_V37_G1_G8_GATE_LEDGER.json"
+      - "SUSY_V37_G5_QUALITY_CERTIFICATE.json"
+      - "SUSY_V38_G1_UV_COMPLETION_AUDIT.json"
+      - "SUSY_V38_COMPLETE_THEORY_AUDIT.json"
+      - "models/PSZ4RZ5610SUSYV37/**"
+      - ".github/workflows/susy-v38-complete-theory-audit.yml"
+  pull_request:
+    paths:
+      - "susy_v38_complete_theory_audit.py"
+      - "test_susy_v38_complete_theory_audit.py"
+      - "susy_v38_g1_uv_completion_audit.py"
+      - "susy_v37_g5_relic_cosmology_audit.py"
+      - "susy_v37_nonanomaly_gate_audit.py"
+      - "susy_v37_new_physics_routes.py"
+      - "SUSY_V37_*AUDIT.json"
+      - "SUSY_V37_G1_G8_GATE_LEDGER.json"
+      - "SUSY_V37_G5_QUALITY_CERTIFICATE.json"
+      - "SUSY_V38_G1_UV_COMPLETION_AUDIT.json"
+      - "SUSY_V38_COMPLETE_THEORY_AUDIT.json"
+      - "models/PSZ4RZ5610SUSYV37/**"
+      - ".github/workflows/susy-v38-complete-theory-audit.yml"
+  workflow_dispatch:
+
+jobs:
+  verify-v38-completion-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install pytest
+      - run: python -B susy_v37_new_physics_routes.py --check
+      - run: python -B susy_v37_nonanomaly_gate_audit.py --check
+      - run: python -B susy_v37_g5_relic_cosmology_audit.py --check
+      - run: python -B susy_v38_g1_uv_completion_audit.py --check
+      - run: python -B susy_v38_complete_theory_audit.py --check
+      - run: python -m pytest -q test_susy_v37_new_physics_routes.py test_susy_v37_nonanomaly_gate_audit.py test_susy_v37_g5_relic_cosmology_audit.py test_susy_v38_g1_uv_completion_audit.py test_susy_v38_complete_theory_audit.py

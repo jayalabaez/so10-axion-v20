@@ -1,0 +1,100 @@
+{
+  "Pati_Salam_to_SM_gauge_matching": [
+    "g3=g4",
+    "g2=gL",
+    "1/g1^2=2/(5*g4^2)+3/(5*gR^2)"
+  ],
+  "RGE": {
+    "attestation_file": "SUSY_V36_SARAH_RGE_ATTESTATION.json",
+    "attestation_sha256": "666062fecf54c37513e5d9e389e5e3cd7fe6ab0bb4801c13b8fb75a076730029",
+    "beta_counts": {
+      "bilinear_superpotential": 2,
+      "gauge": 3,
+      "gaugino_mass": 0,
+      "linear_superpotential": 3,
+      "soft_bilinear": 0,
+      "soft_linear": 0,
+      "soft_scalar_mass": 0,
+      "soft_trilinear": 0,
+      "trilinear_superpotential": 28
+    },
+    "counts_match": true,
+    "engine": "15.0.1 for Microsoft Windows (64-bit) (July 2, 2026)",
+    "expected_beta_counts": {
+      "bilinear_superpotential": 2,
+      "gauge": 3,
+      "gaugino_mass": 0,
+      "linear_superpotential": 3,
+      "soft_bilinear": 0,
+      "soft_linear": 0,
+      "soft_scalar_mass": 0,
+      "soft_trilinear": 0,
+      "trilinear_superpotential": 28
+    },
+    "model": "PSZ4RZ66SUSYV36",
+    "model_initialized": true,
+    "new_driver_and_anomalon_beta_rows_live_in_SARAH": true,
+    "physical_boundary_or_pole_spectrum_supplied": false,
+    "soft_terms_intentionally_disabled": true,
+    "tool": "SARAH 4.15.3",
+    "two_loop_RGE_calculation_succeeded": true,
+    "visible_V35_component_engine_reusable_as_subblock": true
+  },
+  "higher_dimensional_gauge_kinetic_and_Kahler_policy": {
+    "alternative": "finite enumerated coefficient vector with NDA priors",
+    "default_falsifiable_hypothesis": "set to zero at Mstar",
+    "derived": false,
+    "unbounded_threshold_knobs_forbidden": true
+  },
+  "minimal_PS_breaking_flavour_EFT": {
+    "invariant_channels": [
+      "(1,1)",
+      "(15,1)",
+      "(1,3)",
+      "(15,3)"
+    ],
+    "must_be_counted_in_likelihood": true,
+    "operator": "Q*H*Qc*(Sbar*S)/Mstar^2",
+    "three_irreducible_PS_breaking_3x3_Wilson_matrices": true,
+    "values_source_derived": false
+  },
+  "one_loop_vectorlike_thresholds": {
+    "Delta_b_L_GUT_normalized_1_2_3": [
+      "4/5",
+      4,
+      2
+    ],
+    "Delta_b_R_GUT_normalized_1_2_3": [
+      "16/5",
+      0,
+      2
+    ],
+    "independent_ad_hoc_Delta_a_allowed": false,
+    "matching_convention": "alpha_full^{-1}(mu)=alpha_EFT^{-1}(mu)+Delta_b/(2*pi)*ln(M/mu)",
+    "sum": [
+      4,
+      4,
+      4
+    ]
+  },
+  "physical_matching_complete": false,
+  "right_handed_neutrino_matching": "MR=-vPS^2*yN*MN^{-1}*yN^T",
+  "schema": "susy-v36-matching-contract-v1",
+  "vectorlike_projectors": {
+    "heavy_singular_mass_L": "fP*||lambda_L||/sqrt(2)",
+    "heavy_singular_mass_R": "fP*||lambda_R||/sqrt(2)",
+    "lambda_L": [
+      "lambdaPQ[1]",
+      "lambdaPQ[2]",
+      "lambdaPQ[3]",
+      "lambdaPX"
+    ],
+    "lambda_R": [
+      "lambdaPcQ[1]",
+      "lambdaPcQ[2]",
+      "lambdaPcQ[3]",
+      "lambdaPcX"
+    ],
+    "light_Yukawa_projection": "Ylight=U_L^T [[YQQ,YQX],[YXQ,YXX]] U_R"
+  }
+}

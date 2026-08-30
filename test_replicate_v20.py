@@ -24,9 +24,30 @@ def test_cross_platform_and_central_frozen_reports_are_read_only() -> None:
         "final_g4_eft_mathematical_gate_v20.py",
         "final_g5_eft_mathematical_gate_v20.py",
         "exact_eft_physical_scalar_spectrum_v20.py",
+        "exact_g6_sm_provenance_feasibility_v20.py",
+        "physical_sm_vacuum_local_feasibility_v20.py",
+        "exact_physical_sm_five_amplitude_equality_v20.py",
+        "exact_physical_sm_hard_projector_hessians_v20.py",
+        "exact_physical_sm_easy_21_hessians_v20.py",
+        "exact_physical_sm_last_six_hessians_v20.py",
+        "exact_physical_sm_37_row_aggregate_v20.py",
+        "exact_physical_sm_local_equality_orbit_v20.py",
+        "exact_physical_sm_g4_g5_branch_mismatch_v20.py",
+        "conditional_physical_sm_eft_hessian_spectrum_v20.py",
+        "exact_eft_g6_g7_parameterized_matching_v20.py",
         "final_g6_eft_mathematical_gate_v20.py",
+        "exact_authoritative_so10_u1x_gauge_betas_v20.py",
+        "exact_physical_sm_heavy_vector_masses_v20.py",
+        "exact_physical_sm_heavy_vector_msbar_matching_v20.py",
+        "exact_physical_sm_vector_rxi_vacuum_cancellation_v20.py",
+        "pyrate3_so10_u1x_gauge_beta_replay_v20.py",
+        "exact_normalized_so10_yukawa_cgcs_v20.py",
         "exact_eft_g7_threshold_nonidentifiability_v20.py",
+        "exact_physical_g7_component_threshold_contract_v20.py",
+        "exact_physical_sm_g6_g7_closure_frontier_v20.py",
+        "exact_physical_sm_g8_identifiability_frontier_v20.py",
         "g1_g8_gate_ledger_v20.py",
+        "canonical_g1_g8_gauged_u1x_v21.py",
         "final_g3_acceptance_gate_v20.py",
         "g1_g8_execution_roadmap_v20.py",
     ):
@@ -95,8 +116,28 @@ def test_parallel_eft_gates_run_read_only_in_dependency_order() -> None:
         "final_g4_eft_mathematical_gate_v20.py",
         "final_g5_eft_mathematical_gate_v20.py",
         "exact_eft_physical_scalar_spectrum_v20.py",
+        "exact_g6_sm_provenance_feasibility_v20.py",
+        "physical_sm_vacuum_local_feasibility_v20.py",
+        "exact_physical_sm_five_amplitude_equality_v20.py",
+        "exact_physical_sm_hard_projector_hessians_v20.py",
+        "exact_physical_sm_easy_21_hessians_v20.py",
+        "exact_physical_sm_last_six_hessians_v20.py",
+        "exact_physical_sm_37_row_aggregate_v20.py",
+        "exact_physical_sm_local_equality_orbit_v20.py",
+        "exact_physical_sm_g4_g5_branch_mismatch_v20.py",
+        "conditional_physical_sm_eft_hessian_spectrum_v20.py",
+        "exact_eft_g6_g7_parameterized_matching_v20.py",
         "final_g6_eft_mathematical_gate_v20.py",
+        "exact_authoritative_so10_u1x_gauge_betas_v20.py",
+        "exact_physical_sm_heavy_vector_masses_v20.py",
+        "exact_physical_sm_heavy_vector_msbar_matching_v20.py",
+        "exact_physical_sm_vector_rxi_vacuum_cancellation_v20.py",
+        "pyrate3_so10_u1x_gauge_beta_replay_v20.py",
+        "exact_normalized_so10_yukawa_cgcs_v20.py",
         "exact_eft_g7_threshold_nonidentifiability_v20.py",
+        "exact_physical_g7_component_threshold_contract_v20.py",
+        "exact_physical_sm_g6_g7_closure_frontier_v20.py",
+        "exact_physical_sm_g8_identifiability_frontier_v20.py",
     )
     gate_rows = []
     for name in gate_names:
@@ -117,10 +158,48 @@ def test_parallel_eft_gates_run_read_only_in_dependency_order() -> None:
         "test_final_g4_eft_mathematical_gate_v20.py",
         "test_final_g5_eft_mathematical_gate_v20.py",
         "test_exact_eft_physical_scalar_spectrum_v20.py",
+        "test_exact_g6_sm_provenance_feasibility_v20.py",
+        "test_physical_sm_vacuum_local_feasibility_v20.py",
+        "test_exact_physical_sm_five_amplitude_equality_v20.py",
+        "test_exact_physical_sm_hard_projector_hessians_v20.py",
+        "test_exact_physical_sm_easy_21_hessians_v20.py",
+        "test_exact_physical_sm_last_six_hessians_v20.py",
+        "test_exact_physical_sm_37_row_aggregate_v20.py",
+        "test_exact_physical_sm_local_equality_orbit_v20.py",
+        "test_exact_physical_sm_g4_g5_branch_mismatch_v20.py",
+        "test_conditional_physical_sm_eft_hessian_spectrum_v20.py",
+        "test_exact_eft_g6_g7_parameterized_matching_v20.py",
         "test_final_g6_eft_mathematical_gate_v20.py",
+        "test_exact_authoritative_so10_u1x_gauge_betas_v20.py",
+        "test_exact_physical_sm_heavy_vector_masses_v20.py",
+        "test_exact_physical_sm_heavy_vector_msbar_matching_v20.py",
+        "test_exact_physical_sm_vector_rxi_vacuum_cancellation_v20.py",
+        "test_exact_physical_sm_g6_g7_closure_frontier_v20.py",
+        "test_pyrate3_so10_u1x_gauge_beta_replay_v20.py",
+        "test_exact_normalized_so10_yukawa_cgcs_v20.py",
         "test_exact_eft_g7_threshold_nonidentifiability_v20.py",
+        "test_exact_physical_g7_component_threshold_contract_v20.py",
+        "test_exact_physical_sm_g8_identifiability_frontier_v20.py",
+        "test_canonical_g1_g8_gauged_u1x_v21.py",
     ):
         assert test_name in source
+
+    legacy_line = next(
+        line
+        for line, command in executed_scripts
+        if "g1_g8_gate_ledger_v20.py" in command
+    )
+    canonical_line = next(
+        line
+        for line, command in executed_scripts
+        if "canonical_g1_g8_gauged_u1x_v21.py" in command
+    )
+    authoritative_line = next(
+        line
+        for line, command in executed_scripts
+        if "authoritative_full_model_gate_v20.py" in command
+    )
+    assert legacy_line < canonical_line < authoritative_line
 
 
 def test_mathematical_g2_runs_read_only_after_audit_before_central_gates() -> None:

@@ -1,0 +1,38 @@
+name: SUSY V30 G1 finite-flux completion
+
+on:
+  push:
+    paths:
+      - "susy_v30_g1_finite_flux_completion.py"
+      - "test_susy_v30_g1_finite_flux_completion.py"
+      - "SUSY_V30_G1_FINITE_FLUX_COMPLETION.json"
+      - "SUSY_V30_G1_FINITE_FLUX_COMPLETION.md"
+      - "SUSY_V30_FIELD_AND_SELECTOR_MANIFEST.json"
+      - "SUSY_V30_OPERATOR_AND_MATCHING_CONTRACT.json"
+      - "SUSY_V30_MODULI_AND_HIDDEN_CONTRACT.json"
+      - "SUSY_V30_G1_AXIOMATIC_SUBMISSION.json"
+      - ".github/workflows/susy-v30-g1-finite-flux-completion.yml"
+  pull_request:
+    paths:
+      - "susy_v30_g1_finite_flux_completion.py"
+      - "test_susy_v30_g1_finite_flux_completion.py"
+      - "SUSY_V30_G1_FINITE_FLUX_COMPLETION.json"
+      - "SUSY_V30_G1_FINITE_FLUX_COMPLETION.md"
+      - "SUSY_V30_FIELD_AND_SELECTOR_MANIFEST.json"
+      - "SUSY_V30_OPERATOR_AND_MATCHING_CONTRACT.json"
+      - "SUSY_V30_MODULI_AND_HIDDEN_CONTRACT.json"
+      - "SUSY_V30_G1_AXIOMATIC_SUBMISSION.json"
+      - ".github/workflows/susy-v30-g1-finite-flux-completion.yml"
+  workflow_dispatch:
+
+jobs:
+  verify-v30:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install pytest
+      - run: python -B susy_v30_g1_finite_flux_completion.py --check
+      - run: python -m pytest -q test_susy_v30_g1_finite_flux_completion.py

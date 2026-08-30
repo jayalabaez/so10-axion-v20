@@ -1,0 +1,104 @@
+{
+  "schema": "susy_v22_g4_protection_frontier_v1",
+  "status": "SUSY_G4_PROTECTION_MECHANISM_SCOPED_CLOSED__CANONICAL_G4_G5_OPEN",
+  "dependencies": {
+    "contract": {
+      "path": "SUSY_SO10X17_V22_CONTRACT.json",
+      "core_sha256": "b50551e10a2052ec2067ca1f440f45079e6dd732be3cd5f1d05df2d9a273053d"
+    },
+    "missing_partner": {
+      "path": "SUSY_V22_MISSING_PARTNER_RANK.json",
+      "core_sha256": "f292ed1270e54faa18f2ebe9ec45f85ecf6d119f55995e32dd0593ab3e2340b8"
+    },
+    "ew_endpoint": {
+      "path": "SUSY_V22_EXACT_EW_ENDPOINT.json",
+      "core_sha256": "1d2c0ae4135d5ecfb48fcfaa6b34d46039eaf093a770c02077bea692713e1557"
+    },
+    "perturbative_window": {
+      "path": "SUSY_V22_PERTURBATIVE_WINDOW.json",
+      "core_sha256": "bd8164236c963b093469efb4e5f5123b7b257726274be6e9517eba00fba10d70"
+    },
+    "holomorphic_R_protection": {
+      "path": "SUSY_V22_ALL_ORDER_R_PROTECTION.json",
+      "core_sha256": "5a22e4866d7fa6159575cf38bd3a68575d4e4b437dd406104fd1a43c8db12cf4"
+    },
+    "discrete_R_anomaly": {
+      "path": "SUSY_V22_Z4R_ANOMALY.json",
+      "core_sha256": "dd8b09018485067b2b8094a5c754f11332bcac2aabd42466a8a0f1ef91ebbfd4"
+    },
+    "F_D_flat_GUT_slice": {
+      "path": "SUSY_V22_F_FLAT_GUT_SLICE.json",
+      "core_sha256": "173aef2a5bed3f4fa61c186fd41a02d79004feb23ccca329b113645de993cb57"
+    }
+  },
+  "source_pins_portable_lf": {
+    "susy_so10x17_v22_contract.py": "f6d1873a01c79d76450e0954c31f79c9e3c94f161885f312fbc67af92cd9b021",
+    "susy_v22_missing_partner_rank.py": "fd4a492bb03ecbae32f9cf4c56ff4b27754abdad7e26009b7225fcb0805afa75",
+    "susy_v22_exact_ew_endpoint.py": "aece0748a277818f84e54650c28346f81a4516311b5ee649225cde6f9e41d1d9",
+    "susy_v22_perturbative_window.py": "fcda79250e0412702bb1f8a36f23875f3e8c4f044413b8234035d4526b453cd9",
+    "susy_v22_all_order_r_protection.py": "acca136331feef7829d1584486b30b775b08266cc408325a6d75d41a2179eefe",
+    "susy_v22_z4r_anomaly.py": "c272b18b3dfbffe8ac5f141d8650a49bf89c003e8cc8e85d3f70d8e8288692d2",
+    "susy_v22_f_flat_gut_slice.py": "47a1035b6f5e69c17d3f1e561b5bb3ab55ebf9413be5f1387a0518e79c2fab74"
+  },
+  "exact_supersymmetric_cancellation": {
+    "chiral_multiplet": {
+      "real_scalar_dof": 2,
+      "Weyl_fermion_dof": 2,
+      "supertrace_dof": 0
+    },
+    "massless_vector_multiplet": {
+      "vector_dof": 2,
+      "Weyl_gaugino_dof": 2,
+      "supertrace_dof": 0
+    },
+    "massive_vector_multiplet": {
+      "vector_plus_real_scalar_dof": 4,
+      "two_Weyl_dof": 4,
+      "supertrace_dof": 0
+    }
+  },
+  "positive_frontier": {
+    "N1_source_contract_and_anomalies_closed": true,
+    "light_doublet_pair_count_is_exactly_one": true,
+    "color_triplet_zero_mode_count_is_zero": true,
+    "EW_radius_is_exactly_174_GeV": true,
+    "EW_tree_endpoint_has_no_physical_tachyon": true,
+    "quadratic_dof_supertraces_cancel_exactly": true,
+    "effective_GUT_gauge_window_is_nonempty": true,
+    "holomorphic_light_bilinears_are_forbidden_by_source_landed_R_rule": true,
+    "mixed_discrete_R_anomalies_cancel_mod_eta": true,
+    "exact_local_GUT_singlet_slice_is_F_and_D_flat": true
+  },
+  "open_canonical_requirements": {
+    "source_exact_SO10_component_doublet_triplet_matrices_realize_rank_witness": false,
+    "full_F_D_soft_vacuum_proves_every_R_charge_two_missing_partner_126_VEV_is_zero": false,
+    "Kahler_and_soft_breaking_sector_preserve_the_required_hierarchy_to_all_orders": false,
+    "complete_V22_F_D_soft_global_vacuum_excludes_deeper_branches": false,
+    "complete_tensor_RGE_keeps_all_dimensionless_couplings_perturbative": false,
+    "soft_boundary_and_threshold_flow_reaches_exact_EW_endpoint": false,
+    "UV_completion_before_one_loop_SO10_Landau_pole": false
+  },
+  "scientific_interpretation": {
+    "V21_G3_invalidated": false,
+    "V21_G3_scope": "remains a closed theorem for the frozen non-SUSY V21 potential",
+    "V22_inherits_V21_G3": false,
+    "why": "the hierarchy mechanism changes the field space and potential, so V22 must earn its own G1-G3 certificates",
+    "what_is_now_proved": "an anomaly-free N=1 candidate, an exact missing-partner rank architecture, a source-landed holomorphic R selection rule, exact mixed Z4R anomaly cancellation, an exact stable 174 GeV tree endpoint, and a rigorous finite one-loop gauge window"
+  },
+  "checks": {
+    "all_scoped_inputs_execute": true,
+    "all_positive_frontier_claims_hold": true,
+    "every_unproved_canonical_acceptance_item_remains_false": true,
+    "canonical_G4_and_G5_not_promoted": true
+  },
+  "n_checks": 4,
+  "n_failed": 0,
+  "failures": [],
+  "claim_boundary": {
+    "scoped_hierarchy_protection_mechanism_closed": true,
+    "canonical_V22_G4_closed": false,
+    "canonical_V22_G5_closed": false,
+    "authoritative_G4_G5_closed": false
+  },
+  "core_sha256": "52fcf49275cf462b1c8d3bf00f0e9ced0ac134355931f8f14bf67cb26a7e1331"
+}

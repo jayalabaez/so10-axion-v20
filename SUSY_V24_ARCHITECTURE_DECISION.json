@@ -1,0 +1,1074 @@
+{
+  "checks": {
+    "P11_P_only_integer_gcd_with_inherited_NDW4_is_one": true,
+    "all_G1_through_G8_full_claims_remain_open": true,
+    "all_required_alternative_classes_are_compared": true,
+    "complete_vectorlike_family_has_universal_MSSM_delta_b_4": true,
+    "conditional_Planck120_screen_stays_perturbative": true,
+    "conditional_gauge_only_endpoint_matches": true,
+    "conditional_threshold_inverse_matches": true,
+    "derived_Z11_charge_rows_follow_generic_formula": true,
+    "derived_Z11_first_pure_P_term_is_exactly_P11": true,
+    "derived_Z11_preserves_visible_matter_parity": true,
+    "derived_Z11_required_mass_and_decay_terms_are_allowed": true,
+    "derived_Z11_visible_gravitational_GS_congruences_match": true,
+    "exact_PS_gauge_only_two_loop_matrix_matches": true,
+    "exact_PS_one_loop_b_is_1_5_9": true,
+    "explicit_GS_completion_is_not_claimed": true,
+    "large_rep_routes_fail_one_loop_Planck120": true,
+    "local_PS_gauge_anomalies_cancel": true,
+    "minimal_field_order_is_exact": true,
+    "minimal_superpotential_retains_both_sextet_triplet_pairings": true,
+    "mixed_discrete_anomalies_are_universal_but_nonzero": true,
+    "physical_GS_inclusive_wall_claims_remain_null": true,
+    "published_Z4R_Z5_control_charge_rows_are_exact": true,
+    "published_Z5_control_is_retained_not_rewritten": true
+  },
+  "closure_counts": {
+    "closed": 0,
+    "open": 8
+  },
+  "core_sha256": "f091f1a452b815bb32c780a5062704532818d0517254960ed799fecfe3fcb71b",
+  "decision": {
+    "go_as_V24_research_base": true,
+    "go_as_complete_predictive_theory": false,
+    "hard_boundary": "PSZ4RZ11 is derived here, not published. Universal nonzero shaping anomalies and matching visible gravitational congruences are only GS-eligible, not explicitly GS-completed; the full stabilized vacuum, normalized component spectrum, thresholds, flavor fit, proton decay, and cosmology remain uncomputed.",
+    "published_control_route": "KAWAMURA_RABY_MINIMAL_Z4R_X_Z5_PATI_SALAM",
+    "selected_route": "DERIVED_PSZ4RZ11_KAWAMURA_RABY_MINIMAL_PS_VARIANT",
+    "supersedes_V23_flipped_frontier_for_research_priority": true,
+    "why": "The Kawamura--Raby model is the strongest small-representation published PS base found. The derived N=11 charge choice preserves its field content, superpotential and triplet solution while improving the visible selector: exact residual matter parity, higher P^11 quality order, conditional P-only gcd(11,4)=1 arithmetic, matching visible gravitational GS congruences, and a passing conditional perturbative RG screen."
+  },
+  "failures": [],
+  "gates": [
+    {
+      "closed": false,
+      "evidence_landed": [
+        "published minimal field content and W_PS/W_PQ",
+        "derived Z11 charge table and residual matter parity"
+      ],
+      "full_gate_claim": false,
+      "gate": "G1",
+      "open_requirements": [
+        "all-order holomorphic/Kahler/soft census",
+        "explicit Green--Schwarz completion",
+        "executable component model"
+      ],
+      "state": "PUBLISHED_FIELDS_AND_W_PLUS_DERIVED_Z11_SELECTOR_LANDED__FULL_OPERATOR_CONTRACT_OPEN"
+    },
+    {
+      "closed": false,
+      "evidence_landed": [
+        "Hcal contains only doublets",
+        "both PS-breaking triplets pair with Sigma for s=0"
+      ],
+      "full_gate_claim": false,
+      "gate": "G2",
+      "open_requirements": [
+        "normalized PS-to-SM Clebsches",
+        "full doublet/triplet eigenvalues and thresholds"
+      ],
+      "state": "PUBLISHED_TRIPLET_PAIRING_LANDED__NORMALIZED_PHYSICAL_RANKS_OPEN"
+    },
+    {
+      "closed": false,
+      "evidence_landed": [
+        "published global-SUSY PS-breaking minimum"
+      ],
+      "full_gate_claim": false,
+      "gate": "G3",
+      "open_requirements": [
+        "specified stabilization of other directions",
+        "competing-branch exclusion",
+        "positive full Hessian"
+      ],
+      "state": "GLOBAL_SUSY_PS_MINIMUM_PUBLISHED__FULL_F_D_SOFT_VACUUM_OPEN"
+    },
+    {
+      "closed": false,
+      "evidence_landed": [
+        "w0 Hcal^2 generates mu and b after SUSY breaking"
+      ],
+      "full_gate_claim": false,
+      "gate": "G4",
+      "open_requirements": [
+        "explicit mediation/soft sector",
+        "radiatively stable weak hierarchy",
+        "physical heavy thresholds"
+      ],
+      "state": "W0_MU_MECHANISM_PUBLISHED__ALL_ORDER_HIERARCHY_OPEN"
+    },
+    {
+      "closed": false,
+      "evidence_landed": [
+        "derived P^11/Lambda^8 quality benchmark",
+        "right-handed-neutrino operator",
+        "conditional P-only gcd(11,4)=1 arithmetic"
+      ],
+      "full_gate_claim": false,
+      "gate": "G5",
+      "open_requirements": [
+        "GS-axion/discrete-gauge vacuum quotient",
+        "derived PQ minimum",
+        "complete neutralino/axino spectrum",
+        "domain-wall collapse time and relic likelihood"
+      ],
+      "state": "PQ_QUALITY_AND_RH_NEUTRINO_OPERATORS_LANDED__FULL_SPECTRUM_COSMOLOGY_OPEN"
+    },
+    {
+      "closed": false,
+      "evidence_landed": [
+        "exact b and gauge-only B",
+        "conditional common-threshold run remains perturbative to 120 vPS"
+      ],
+      "full_gate_claim": false,
+      "gate": "G6",
+      "open_requirements": [
+        "stage-resolved threshold matching",
+        "coupled gauge-Yukawa-soft running",
+        "scheme-independent replay"
+      ],
+      "state": "EXACT_BETA_LEDGER_AND_CONDITIONAL_SCREEN_LANDED__PHYSICAL_RGE_CHAIN_OPEN"
+    },
+    {
+      "closed": false,
+      "evidence_landed": [
+        "minimal-model RPV/proton operator estimates"
+      ],
+      "full_gate_claim": false,
+      "gate": "G7",
+      "open_requirements": [
+        "complete pole spectrum",
+        "mass-basis baryon-violating Wilson coefficients",
+        "lifetime distribution"
+      ],
+      "state": "QUALITATIVE_PROTON_SAFETY_PUBLISHED__POLE_SPECTRUM_AND_WILSON_MATCHING_OPEN"
+    },
+    {
+      "closed": false,
+      "evidence_landed": [
+        "Q Hcal Qc and a type-I Majorana operator are present"
+      ],
+      "full_gate_claim": false,
+      "gate": "G8",
+      "open_requirements": [
+        "charged-fermion texture beyond PS mass relations",
+        "neutrino/flavor covariance fit",
+        "joint experimental likelihood"
+      ],
+      "state": "TYPE_I_OPERATOR_PRESENT__GLOBAL_FLAVOR_AND_LIKELIHOOD_FIT_OPEN"
+    }
+  ],
+  "independent_exact_accounting": {
+    "B_gauge_only": [
+      [
+        108,
+        15,
+        21
+      ],
+      [
+        75,
+        53,
+        3
+      ],
+      [
+        105,
+        3,
+        81
+      ]
+    ],
+    "PQ_vectorlike_threshold": {
+      "complete_SO10_16_plus_16bar_under_SM": true,
+      "universal_MSSM_delta_b": [
+        4,
+        4,
+        4
+      ]
+    },
+    "b": [
+      1,
+      5,
+      9
+    ],
+    "coefficient_conventions": {
+      "B_ij_gauge_only": "-6 C2(G_i)^2 delta_ij + 2 C2(G_i) sum_R T_i(R) delta_ij + 4 sum_R T_i(R) C_j(R)",
+      "b_i": "-3 C2(G_i) + sum_R T_i(R)"
+    },
+    "component_source_feasibility": "direct PS-to-SM decomposition uses only 4, 4bar, 6 and doublets; it avoids normalized large-SO10 invariant tensors, but a machine-readable normalized component implementation is still required",
+    "conditional_Planck120_screen": {
+      "assumptions": [
+        "MSSM alpha_G^-1=24 in the absence of the PQ vectorlike threshold",
+        "fPQ=1e10 GeV, vPS=1e16 GeV, common PS inverse coupling at vPS",
+        "all selected PS fields active above vPS",
+        "gauge-only two-loop running; thresholds and Yukawa terms omitted"
+      ],
+      "factor_order": [
+        "SU4C",
+        "SU2L",
+        "SU2R"
+      ],
+      "inverse_alpha_at_120_vPS": [
+        13.80400253,
+        10.81562621,
+        7.44348638
+      ],
+      "inverse_alpha_at_vPS": 15.20477281,
+      "physical_UV_completion_demonstrated": false,
+      "screen_passes": true
+    },
+    "local_gauge_anomalies": {
+      "SU2L_doublets_for_Witten_test": 22,
+      "SU2R_doublets_for_Witten_test": 30,
+      "SU4C_cubic_anomaly": 0,
+      "local_gauge_anomalies_cancel": true
+    },
+    "mixed_shaping_anomalies": {
+      "Z11": {
+        "modulus_for_mixed_anomaly": 11,
+        "raw": [
+          -2,
+          -2,
+          -2
+        ],
+        "residue": [
+          9,
+          9,
+          9
+        ],
+        "universal": true,
+        "vanishing": false
+      },
+      "Z4R": {
+        "modulus_for_mixed_anomaly": 2,
+        "raw": [
+          -3,
+          -3,
+          -3
+        ],
+        "residue": [
+          1,
+          1,
+          1
+        ],
+        "universal": true,
+        "vanishing": false
+      },
+      "explicit_GS_modulus_levels_gravity_hidden_spectrum_landed": false,
+      "factor_order": [
+        "SU4C",
+        "SU2L",
+        "SU2R"
+      ],
+      "paper_criterion": "nonzero universal residues may be canceled by Green--Schwarz"
+    },
+    "provenance": "derived in this certificate from the published field table; not quoted from the paper",
+    "sum_T": [
+      13,
+      11,
+      15
+    ],
+    "visible_gravitational_GS_congruences": {
+      "convention": "Agrav^R=-21+dim(G)+sum_chiral dim(R)(q-1); Agrav^N=sum_chiral dim(R)q; test Agrav=24 rho modulo eta",
+      "full_GS_and_hidden_sector_completion_landed": false,
+      "visible_Z11": {
+        "24rho_residue_mod_11": 7,
+        "congruence_satisfied": true,
+        "raw": 161,
+        "residue_mod_11": 7
+      },
+      "visible_Z4R": {
+        "24rho_residue_mod_2": 0,
+        "congruence_satisfied": true,
+        "raw": 20,
+        "residue_mod_2": 0
+      }
+    }
+  },
+  "n_checks": 23,
+  "n_failed": 0,
+  "namespace": "research.susy_gut.v24.architecture_decision",
+  "next_work_packages": [
+    "Build a nonzero-superpotential PS-to-SM component model with normalized contractions and reproduce the eaten/physical spectrum.",
+    "Specify the GS modulus, Kac--Moody levels, cubic/gravitational discrete anomalies and hidden spectrum; prove that all hidden VEVs preserve the residual Z2.",
+    "Add explicit Kahler and soft terms, solve all F+D+soft stationary branches, and compute the full Hessian.",
+    "Diagonalize all doublet/triplet/exotic matrices, match physical thresholds, and run coupled gauge-Yukawa-soft RGEs.",
+    "Fit charged fermions and neutrinos, then calculate proton decay, GS-axion/P mixing, the discrete-gauge vacuum quotient, physical wall degeneracy/collapse, relics and a joint likelihood."
+  ],
+  "overall_state": "RESEARCH_BASE_SELECTED__FULL_COMPLETION_OPEN",
+  "primary_sources": [
+    {
+      "citation": "J. Kawamura and S. Raby, Qualities of axion and LSP in Pati-Salam unification with Z4R x ZN symmetry, Phys. Rev. D 103, 015002 (2021)",
+      "does_not_publish_PSZ4RZ11": true,
+      "doi": "10.1103/PhysRevD.103.015002",
+      "url": "https://arxiv.org/abs/2009.04582",
+      "used_for": "published Z5 control; generic field/charge and anomaly formulas used to derive PSZ4RZ11; W_PS/W_PQ, vacuum statement, triplet masses and PQ estimates"
+    },
+    {
+      "citation": "K. Hamaguchi, S. Hor and N. Nagata, R-Symmetric Flipped SU(5)",
+      "url": "https://arxiv.org/abs/2008.08940"
+    },
+    {
+      "citation": "Y. Shadmi, Product Groups, Discrete Symmetries, and Grand Unification",
+      "url": "https://arxiv.org/abs/hep-ph/0210365"
+    },
+    {
+      "citation": "N. Maekawa and T. Yamashita, Flipped SO(10) model",
+      "url": "https://arxiv.org/abs/hep-ph/0304293"
+    },
+    {
+      "citation": "Y.-K. Chen and D.-X. Zhang, A renormalizable supersymmetric SO(10) model with natural doublet-triplet splitting",
+      "url": "https://arxiv.org/abs/1410.5625"
+    },
+    {
+      "citation": "Z.-Y. Chen and D.-X. Zhang, Examining A Renormalizable Supersymmetric SO(10) Model",
+      "url": "https://arxiv.org/abs/1611.07760"
+    },
+    {
+      "citation": "K. S. Babu, I. Gogoladze and Z. Tavartkiladze, Missing Partner Mechanism in SO(10) Grand Unification",
+      "url": "https://arxiv.org/abs/hep-ph/0612315"
+    },
+    {
+      "citation": "K. S. Babu et al., Variety of SO(10) GUTs with Natural Doublet-Triplet Splitting via the Missing Partner Mechanism",
+      "url": "https://arxiv.org/abs/1112.5387"
+    }
+  ],
+  "published_Z5_control": {
+    "P_VEV_breaks_Z4R_completely": true,
+    "P_only_fixed_GS_phase_gcd_of_leading_P10_harmonic_and_NDW4": 2,
+    "boundary": "the paper states explicit PQ breaking destabilizes walls; the fixed-GS-phase P-only gcd is 2, while physical degeneracy and collapse require the complete bias, dynamical GS mixing and gauge quotient",
+    "charge_table_order": [
+      "Hcal",
+      "Q",
+      "Qc",
+      "X",
+      "Sc",
+      "Scbar",
+      "Sigma",
+      "Psibar",
+      "Psi",
+      "Psic",
+      "Psicbar",
+      "P"
+    ],
+    "charges": {
+      "Z4R": [
+        0,
+        1,
+        1,
+        2,
+        0,
+        0,
+        2,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "Z5": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        4,
+        0,
+        0,
+        4,
+        1
+      ],
+      "accidental_PQ": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        -1,
+        1
+      ]
+    },
+    "first_pure_P_superpotential_power": 10,
+    "inherited_domain_wall_number": 4,
+    "leading_operator": "P^10/Lambda^7",
+    "mixed_gauge_anomalies": {
+      "Z4R": {
+        "modulus_for_mixed_anomaly": 2,
+        "raw": [
+          -1,
+          -1,
+          -1
+        ],
+        "residue": [
+          1,
+          1,
+          1
+        ],
+        "universal": true,
+        "vanishing": false
+      },
+      "Z5": {
+        "modulus_for_mixed_anomaly": 5,
+        "raw": [
+          -2,
+          -2,
+          -2
+        ],
+        "residue": [
+          3,
+          3,
+          3
+        ],
+        "universal": true,
+        "vanishing": false
+      },
+      "explicit_GS_modulus_levels_gravity_hidden_spectrum_landed": false,
+      "factor_order": [
+        "SU4C",
+        "SU2L",
+        "SU2R"
+      ],
+      "paper_criterion": "nonzero universal residues may be canceled by Green--Schwarz"
+    },
+    "paper_benchmark_Delta_theta": "approximately 1e-17",
+    "paper_minimal_RPV_benchmarks": {
+      "bilinear_GeV": "approximately 1e-24",
+      "lambda_L": "approximately 1e-29 for w0 approximately 1e5 GeV",
+      "lepton_violating_Yukawa": "approximately 1e-55"
+    },
+    "parameters": {
+      "N": 5,
+      "p_P": 1,
+      "p_Psi": 0,
+      "r_P": 1,
+      "r_Psi": 1
+    },
+    "physical_GS_inclusive_vacuum_degeneracy": null,
+    "physical_wall_collapse_time": null,
+    "provenance": "Table III and minimal-model discussion of arXiv:2009.04582",
+    "retained_as": "published source control and fallback, not the derived V24 selector choice",
+    "visible_gravitational_GS_congruences": {
+      "convention": "Agrav^R=-21+dim(G)+sum_chiral dim(R)(q-1); Agrav^N=sum_chiral dim(R)q; test Agrav=24 rho modulo eta",
+      "full_GS_and_hidden_sector_completion_landed": false,
+      "visible_Z4R": {
+        "24rho_residue_mod_2": 0,
+        "congruence_satisfied": false,
+        "raw": -29,
+        "residue_mod_2": 1
+      },
+      "visible_Z5": {
+        "24rho_residue_mod_5": 2,
+        "congruence_satisfied": false,
+        "raw": 65,
+        "residue_mod_5": 0
+      }
+    }
+  },
+  "ranked_alternatives": [
+    {
+      "decision": "RETAIN_AS_SMALL_REP_FALLBACK__DO_NOT_PROMOTE",
+      "derived_one_loop": {
+        "b_SU5": -5,
+        "b_X_with_generator_X_over_sqrt40": "15/2"
+      },
+      "exact_promotion_blocker": "the main construction uses a global U(1)R broken by the constant term; the Z17R appendix does not land a discrete-gauge/GS anomaly completion, and no axion/PQ sector is supplied",
+      "field_content": "3 x (10_1 + 5bar_-3 + 1_5) + 10_H,1 + 10bar_H,-1 + 5_h,-2 + 5bar_h,+2 + singlet S",
+      "rank": 2,
+      "route": "HAMAGUCHI_HOR_NAGATA_R_SYMMETRIC_FLIPPED_SU5_X_U1",
+      "source": "https://arxiv.org/abs/2008.08940",
+      "strengths": [
+        "small representations",
+        "missing-partner doublet--triplet splitting",
+        "explicit supersymmetry-assisted flat vacuum and proton-decay analysis"
+      ]
+    },
+    {
+      "conditional_equal_coupling_screen": {
+        "alpha_SU5_1_inverse": 12,
+        "assumption": "all three 10+5bar matter families on SU5_1 and alpha_diag^-1=24 split equally",
+        "b_SU5_1": 17,
+        "below_120": true,
+        "not_a_universal_no_go": true,
+        "pole_mu_over_MGUT": 84.36812198
+      },
+      "decision": "RETAIN_AS_PRODUCT_GROUP_FALLBACK__DO_NOT_PROMOTE",
+      "derived_one_loop_basic_table_without_matter": {
+        "b_SU5_1": 11,
+        "b_SU5_2": -4
+      },
+      "exact_promotion_blocker": "the source leaves multiple matter/Higgs options, including a basic four-light-doublet case; it does not supply one anomaly-complete realistic flavor assignment, and the equal-coupling all-matter-on-first-factor benchmark loses perturbativity below 120 MGUT",
+      "field_content": "4 bifundamentals + 3 adjoints of SU5_1 + singlet S + h,hbar,hprime,hprimebar fundamentals",
+      "rank": 3,
+      "route": "SHADMI_SU5_X_SU5_PRODUCT_GROUP",
+      "source": "https://arxiv.org/abs/hep-ph/0210365",
+      "strengths": [
+        "residual discrete symmetry distinguishes doublets from triplets",
+        "explicit complementary bifundamental VEVs"
+      ]
+    },
+    {
+      "decision": "REJECT_AS_V24_BASE__RETAIN_RANK_CONTROL",
+      "derived_accounting": {
+        "b_SO10": 1,
+        "level_one_alpha_inverse_24_pole_ratio": 1.06960541,
+        "published_generic_doublet_rank": "3/4",
+        "published_generic_triplet_rank": "7/7",
+        "raw_integer_charge_b_U1A": 2241,
+        "sum_T_SO10": 25
+      },
+      "exact_promotion_blocker": "the anomalous U(1)A normalization, Green--Schwarz modulus/levels and hidden spectrum are absent; the source hierarchy also requires unresolved staged thresholds, so its rank witness is not a physical pole-spectrum completion",
+      "field_content": "7 x 16 + 4 x 16bar + 3 x 10 + 8 singlets",
+      "rank": 4,
+      "route": "MAEKAWA_YAMASHITA_FLIPPED_SO10_X_U1_VPRIME",
+      "source": "https://arxiv.org/abs/hep-ph/0304293"
+    },
+    {
+      "decision": "REJECT_FOR_PLANCK120_PERTURBATIVITY",
+      "derived_accounting": {
+        "b_SO10": 287,
+        "fields": [
+          {
+            "T": 2,
+            "multiplicity": 3,
+            "rep": "16"
+          },
+          {
+            "T": 56,
+            "multiplicity": 1,
+            "rep": "210"
+          },
+          {
+            "T": 8,
+            "multiplicity": 3,
+            "rep": "45"
+          },
+          {
+            "T": 12,
+            "multiplicity": 2,
+            "rep": "54"
+          },
+          {
+            "T": 35,
+            "multiplicity": 4,
+            "rep": "126_or_126bar"
+          },
+          {
+            "T": 28,
+            "multiplicity": 2,
+            "rep": "120"
+          },
+          {
+            "T": 1,
+            "multiplicity": 5,
+            "rep": "10"
+          }
+        ],
+        "one_loop_pole_mu_over_MGUT_for_alpha_inverse_24": 1.69117434,
+        "sum_T": 311
+      },
+      "exact_promotion_blocker": "the explicit full nonsinglet ledger has sum T=311 and b=287, putting the one-loop pole at 1.69117434 MGUT for alpha_G^-1=24; the original paper also identifies an unresolved weak-doublet problem",
+      "rank": 5,
+      "route": "CHEN_ZHANG_FILTER_DW_SO10",
+      "sources": [
+        "https://arxiv.org/abs/1410.5625",
+        "https://arxiv.org/abs/1611.07760"
+      ]
+    },
+    {
+      "decision": "REJECT_FOR_PLANCK120_PERTURBATIVITY",
+      "derived_accounting_for_smallest_126_pair_option": {
+        "b_SO10": 89,
+        "fields": [
+          {
+            "T": 2,
+            "multiplicity": 3,
+            "rep": "16"
+          },
+          {
+            "T": 35,
+            "multiplicity": 1,
+            "rep": "126"
+          },
+          {
+            "T": 35,
+            "multiplicity": 1,
+            "rep": "126bar"
+          },
+          {
+            "T": 8,
+            "multiplicity": 1,
+            "rep": "45"
+          },
+          {
+            "T": 28,
+            "multiplicity": 1,
+            "rep": "120"
+          },
+          {
+            "T": 1,
+            "multiplicity": 1,
+            "rep": "10"
+          }
+        ],
+        "one_loop_pole_mu_over_MGUT_for_alpha_inverse_24": 5.44306382,
+        "sum_T": 113
+      },
+      "exact_promotion_blocker": "even the 126+126bar+45+10+120 option with three matter 16s has sum T=113 and b=89, putting its one-loop pole at 5.44306382 MGUT for alpha_G^-1=24",
+      "rank": 6,
+      "route": "BABU_ET_AL_LARGE_REP_MISSING_PARTNER_SO10",
+      "sources": [
+        "https://arxiv.org/abs/hep-ph/0612315",
+        "https://arxiv.org/abs/1112.5387"
+      ]
+    }
+  ],
+  "schema": "susy_v24_architecture_decision_v1",
+  "selected_architecture": {
+    "PQ_neutrino_and_R_parity": {
+      "PQ_breaking_assumption": "radiatively corrected soft mass drives <P> near fPQ",
+      "P_VEV_breaking": "Z11 is broken; Z4R leaves its Z2 matter-parity subgroup",
+      "P_has_even_Z4R_charge_2": true,
+      "P_only_fixed_GS_phase_integer_gcd_11_4": 1,
+      "benchmark_formula_source": "log10 Delta_theta = 63 - 8 n for pure P^n at the paper benchmark inputs",
+      "derived_same_input_benchmark_Delta_theta": "approximately 1e-25",
+      "dimension_five_Q4": "not forbidden; requires physical proton-decay matching",
+      "full_axion_cosmology_or_flavor_fit_landed": false,
+      "inherited_P_sector_QCD_anomaly_domain_wall_number_before_GS_mixing": 4,
+      "leading_explicit_PQ_breaking_derived": "P^11/Lambda^8",
+      "physical_GS_inclusive_wall_vacuum_degeneracy": null,
+      "physical_P11_lifting_of_NDW4_vacua": null,
+      "physical_wall_collapse_time": null,
+      "renormalizable_MSSM_RPV": "forbidden",
+      "right_handed_neutrino_operator": "(Scbar Qc Scbar Qc)/(2 Lambda)",
+      "visible_sector_matter_parity_exact": true
+    },
+    "PS_breaking_and_doublet_triplet": {
+      "DT_mechanism": "Hcal=(1,2,2) supplies only MSSM-like doublets; for s=0, Sc Sigma Sc and Scbar Sigma Scbar pair both surviving PS-breaking color-triplet fragments at O(vPS)",
+      "normalized_component_mass_matrices_landed_here": false,
+      "published_VEVs": [
+        "<Sc> = vPS delta^(4 alpha) delta^(i 1)",
+        "<Scbar> = vPS delta_(4 alpha) delta_(i 1)"
+      ],
+      "published_conclusion": "all triplets in Sc, Scbar and Sigma have masses of order vPS",
+      "published_global_SUSY_minimum": "<Scbar Sc> != 0 with <Sigmabar Sigma>=<Hcalbar Hcal>=<X^2>=0",
+      "published_stabilization_boundary": "other directions are proposed to be stabilized by Planck-suppressed Kahler operators and/or soft masses"
+    },
+    "charge_table_order": [
+      "Hcal",
+      "Q",
+      "Qc",
+      "X",
+      "Sc",
+      "Scbar",
+      "Sigma",
+      "Psibar",
+      "Psi",
+      "Psic",
+      "Psicbar",
+      "P"
+    ],
+    "derived_minimal_parameters": {
+      "N": 11,
+      "N_Hcalbar": 0,
+      "N_Pbar": 0,
+      "N_Psi": 1,
+      "N_Sigmabar": 0,
+      "h": 0,
+      "p": 1,
+      "p_Psi": 0,
+      "pbar_Psi": 0,
+      "r": 2,
+      "r_Psi": 1,
+      "rbar_Psi": 1,
+      "s": 0
+    },
+    "derived_selector_audit": {
+      "charge_table_order": [
+        "Hcal",
+        "Q",
+        "Qc",
+        "X",
+        "Sc",
+        "Scbar",
+        "Sigma",
+        "Psibar",
+        "Psi",
+        "Psic",
+        "Psicbar",
+        "P"
+      ],
+      "charges": {
+        "Z11": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          10,
+          0,
+          0,
+          10,
+          1
+        ],
+        "Z4R": [
+          0,
+          1,
+          1,
+          2,
+          0,
+          0,
+          2,
+          3,
+          1,
+          1,
+          3,
+          2
+        ],
+        "accidental_PQ": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          0,
+          -1,
+          1
+        ]
+      },
+      "domain_wall_arithmetic": {
+        "P_only_fixed_GS_phase_integer_gcd": 1,
+        "discrete_gauge_quotient_landed": false,
+        "dynamical_GS_axion_mixing_landed": false,
+        "explicit_breaking_harmonic": 11,
+        "inherited_QCD_domain_wall_number": 4,
+        "physical_GS_inclusive_vacuum_degeneracy": null,
+        "physical_P11_lifting_of_NDW4_vacua": null,
+        "physical_wall_analysis_state": "OPEN",
+        "physical_wall_collapse_time": null,
+        "scope": "conditional arithmetic for QCD harmonic 4 and P harmonic 11 with the GS-axion phase held fixed; it is not a physical vacuum-quotient calculation"
+      },
+      "known_hidden_no_go": false,
+      "mixed_gauge_anomalies": {
+        "Z11": {
+          "modulus_for_mixed_anomaly": 11,
+          "raw": [
+            -2,
+            -2,
+            -2
+          ],
+          "residue": [
+            9,
+            9,
+            9
+          ],
+          "universal": true,
+          "vanishing": false
+        },
+        "Z4R": {
+          "modulus_for_mixed_anomaly": 2,
+          "raw": [
+            -3,
+            -3,
+            -3
+          ],
+          "residue": [
+            1,
+            1,
+            1
+          ],
+          "universal": true,
+          "vanishing": false
+        },
+        "explicit_GS_modulus_levels_gravity_hidden_spectrum_landed": false,
+        "factor_order": [
+          "SU4C",
+          "SU2L",
+          "SU2R"
+        ],
+        "paper_criterion": "nonzero universal residues may be canceled by Green--Schwarz"
+      },
+      "parameters": {
+        "N": 11,
+        "h": 0,
+        "p_P": 1,
+        "p_Psi_equals_pbar_Psi": 0,
+        "r_P": 2,
+        "r_Psi_equals_rbar_Psi": 1,
+        "s": 0
+      },
+      "provenance": "derived from the generic Kawamura--Raby charge and anomaly formulas; not published in arXiv:2009.04582",
+      "pure_P_selector": {
+        "conditions": "n*rP=2 mod 4 and n*pP=0 mod 11",
+        "first_positive_power": 11,
+        "leading_superpotential_operator": "P^11/Lambda^8",
+        "same_benchmark_log10_Delta_theta_from_paper_formula": -25
+      },
+      "required_PQ_mass_and_decay_terms_allowed": {
+        "P_Psibar_Psi": true,
+        "P_Psicbar_Psic": true,
+        "Psi_Hcal_Qc": true,
+        "Q_Hcal_Psic": true
+      },
+      "residual_visible_matter_parity": {
+        "Higgs_and_P_are_even": true,
+        "MSSM_matter_Q_Qc_is_odd": true,
+        "UV_exactness_condition": "all hidden-sector VEVs and GS completion must preserve the same Z2",
+        "dimension_five_Q4_is_not_forbidden": true,
+        "field_parities": {
+          "Hcal": 1,
+          "P": 1,
+          "Psi": -1,
+          "Psibar": -1,
+          "Psic": -1,
+          "Psicbar": -1,
+          "Q": -1,
+          "Qc": -1,
+          "Sc": 1,
+          "Scbar": 1,
+          "Sigma": 1,
+          "X": 1
+        },
+        "renormalizable_MSSM_RPV_forbidden": true,
+        "unbroken_subgroup_after_P_VEV": "Z2 generated by the square of the Z4R generator"
+      },
+      "unresolved_non_no_go_boundaries": [
+        "visible gravitational congruences do not provide the GS modulus, levels, cubic-discrete audit or hidden spectrum",
+        "gcd(11,4)=1 is only P-harmonic arithmetic; a shifting GS axion and the discrete-gauge quotient can change the physical vacuum identification",
+        "the radiative PQ minimum and the complete Kahler/soft operator census have not been recomputed",
+        "matter parity is UV-exact only if hidden-sector VEVs preserve the residual Z2"
+      ],
+      "visible_gravitational_GS_congruences": {
+        "convention": "Agrav^R=-21+dim(G)+sum_chiral dim(R)(q-1); Agrav^N=sum_chiral dim(R)q; test Agrav=24 rho modulo eta",
+        "full_GS_and_hidden_sector_completion_landed": false,
+        "visible_Z11": {
+          "24rho_residue_mod_11": 7,
+          "congruence_satisfied": true,
+          "raw": 161,
+          "residue_mod_11": 7
+        },
+        "visible_Z4R": {
+          "24rho_residue_mod_2": 0,
+          "congruence_satisfied": true,
+          "raw": 20,
+          "residue_mod_2": 0
+        }
+      }
+    },
+    "fields": [
+      {
+        "charges": {
+          "Z11": 0,
+          "Z4R": 0,
+          "accidental_PQ": 0
+        },
+        "field": "Hcal",
+        "multiplicity": 1,
+        "reps": {
+          "SU2L": "2",
+          "SU2R": "2",
+          "SU4C": "1"
+        }
+      },
+      {
+        "charges": {
+          "Z11": 0,
+          "Z4R": 1,
+          "accidental_PQ": 0
+        },
+        "field": "Q",
+        "multiplicity": 3,
+        "reps": {
+          "SU2L": "2",
+          "SU2R": "1",
+          "SU4C": "4"
+        }
+      },
+      {
+        "charges": {
+          "Z11": 0,
+          "Z4R": 1,
+          "accidental_PQ": 0
+        },
+        "field": "Qc",
+        "multiplicity": 3,
+        "reps": {
+          "SU2L": "1",
+          "SU2R": "2bar",
+          "SU4C": "4bar"
+        }
+      },
+      {
+        "charges": {
+          "Z11": 0,
+          "Z4R": 2,
+          "accidental_PQ": 0
+        },
+        "field": "X",
+        "multiplicity": 1,
+        "reps": {
+          "SU2L": "1",
+          "SU2R": "1",
+          "SU4C": "1"
+        }
+      },
+      {
+        "charges": {
+          "Z11": 0,
+          "Z4R": 0,
+          "accidental_PQ": 0
+        },
+        "field": "Sc",
+        "multiplicity": 1,
+        "reps": {
+          "SU2L": "1",
+          "SU2R": "2bar",
+          "SU4C": "4bar"
+        }
+      },
+      {
+        "charges": {
+          "Z11": 0,
+          "Z4R": 0,
+          "accidental_PQ": 0
+        },
+        "field": "Scbar",
+        "multiplicity": 1,
+        "reps": {
+          "SU2L": "1",
+          "SU2R": "2",
+          "SU4C": "4"
+        }
+      },
+      {
+        "charges": {
+          "Z11": 0,
+          "Z4R": 2,
+          "accidental_PQ": 0
+        },
+        "field": "Sigma",
+        "multiplicity": 1,
+        "reps": {
+          "SU2L": "1",
+          "SU2R": "1",
+          "SU4C": "6"
+        }
+      },
+      {
+        "charges": {
+          "Z11": 10,
+          "Z4R": 3,
+          "accidental_PQ": -1
+        },
+        "field": "Psibar",
+        "multiplicity": 1,
+        "reps": {
+          "SU2L": "2bar",
+          "SU2R": "1",
+          "SU4C": "4bar"
+        }
+      },
+      {
+        "charges": {
+          "Z11": 0,
+          "Z4R": 1,
+          "accidental_PQ": 0
+        },
+        "field": "Psi",
+        "multiplicity": 1,
+        "reps": {
+          "SU2L": "2",
+          "SU2R": "1",
+          "SU4C": "4"
+        }
+      },
+      {
+        "charges": {
+          "Z11": 0,
+          "Z4R": 1,
+          "accidental_PQ": 0
+        },
+        "field": "Psic",
+        "multiplicity": 1,
+        "reps": {
+          "SU2L": "1",
+          "SU2R": "2bar",
+          "SU4C": "4bar"
+        }
+      },
+      {
+        "charges": {
+          "Z11": 10,
+          "Z4R": 3,
+          "accidental_PQ": -1
+        },
+        "field": "Psicbar",
+        "multiplicity": 1,
+        "reps": {
+          "SU2L": "1",
+          "SU2R": "2",
+          "SU4C": "4"
+        }
+      },
+      {
+        "charges": {
+          "Z11": 1,
+          "Z4R": 2,
+          "accidental_PQ": 1
+        },
+        "field": "P",
+        "multiplicity": 1,
+        "reps": {
+          "SU2L": "1",
+          "SU2R": "1",
+          "SU4C": "1"
+        }
+      }
+    ],
+    "gauge_group": "SU(4)C x SU(2)L x SU(2)R",
+    "name": "PSZ4RZ11",
+    "provenance": "derived V24 candidate built from the generic formulas of arXiv:2009.04582",
+    "shaping_symmetry": "Z4R x Z11",
+    "superpotential": {
+      "W_PQ_retained_in_minimal_model": [
+        "P Psibar Psi",
+        "P Psicbar Psic",
+        "W_dec"
+      ],
+      "W_PS_retained_in_minimal_model": [
+        "Q Hcal Qc",
+        "(Scbar Qc Scbar Qc)/(2 Lambda)",
+        "X (Scbar Sc - vPS^2)",
+        "X^3",
+        "Sc Sigma Sc",
+        "Scbar Sigma Scbar"
+      ],
+      "not_explicit_in_source": "W_dec flavor coefficients and a complete soft/Kahler sector",
+      "post_SUSY_breaking_mu_term": "w0 Hcal^2",
+      "source_convention": "allowed couplings of order one are omitted"
+    }
+  },
+  "source_and_claim_boundary": {
+    "Green_Schwarz_eligibility_is_treated_as_completion": false,
+    "PSZ4RZ11_is_described_as_published": false,
+    "P_only_integer_gcd_is_treated_as_physical_wall_vacuum_lifting": false,
+    "a_complete_G1_G8_theory_is_claimed": false,
+    "a_new_fundamental_law_is_claimed": false,
+    "conditional_gauge_only_running_is_treated_as_physical_matching": false,
+    "mixed_discrete_anomalies_are_declared_zero": false,
+    "published_facts_are_separated_from_new_derivations": true,
+    "selection_means": "derived selector candidate on the highest-priority published research scaffold",
+    "structural_triplet_pairing_is_treated_as_a_normalized_pole_spectrum": false
+  },
+  "status": "V24_ARCHITECTURE_DECISION_FROZEN__DERIVED_PSZ4RZ11_SELECTED_ON_KAWAMURA_RABY_PS_BASE__NO_FULL_G1_G8_COMPLETION"
+}

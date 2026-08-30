@@ -1,0 +1,386 @@
+{
+  "G2_closure_assessment": [
+    {
+      "blocker": "none for C1 at the abstract invariant-tensor level; Cartesian Clebsches belong to C7",
+      "id": "C1",
+      "landed": "The declared tree O(Lambda^-1) sector now has one coefficient for every abstract invariant direction: 23 exact pure-source quartics in 12 sectors, mu_H, direct and conjugate H/Hc portals, mixed Kahler blocks, FI/gauge coordinates, and an IBP/EOM normal form for one normal derivative.",
+      "name": "fixed_order_action_completeness",
+      "status": "pass"
+    },
+    {
+      "blocker": "The Wilson-line source coupling is bilocal over epsilon.  It is not a point-local microscopic 5D wall unless finite-range bilocality is admitted as the regulator class or localized by deconstruction/constrained transport fields.",
+      "id": "C2",
+      "landed": "Strictly 4D source multiplets remove the spurious source KK tower, and fixed profiles plus shortest normal Wilson lines define an explicit gauge-covariant finite-resolution tree prescription.",
+      "name": "explicit_regulator",
+      "status": "conditional"
+    },
+    {
+      "blocker": "All retained strong-collar, Kahler, O7/O8, brane-bulk, and auxiliary blocks have not been varied together into one complete domain.",
+      "id": "C3",
+      "landed": "The general holomorphic A,Xi,C collar generator is Hamiltonian and its transfer is symplectic; passive endpoint pencils have a positive-metric self-adjoint enlargement.",
+      "name": "variational_domain_and_self_adjointness",
+      "status": "partial"
+    },
+    {
+      "blocker": "Positivity of the same complete strong-collar action after every mixed Kahler, normal-derivative, and source-dependent block is assembled remains unproved.",
+      "id": "C4",
+      "landed": "Positive direct/auxiliary endpoint metrics and the monotone Hermitian pencil identity are executable; the restricted witnesses have finite positive norms.",
+      "name": "positive_full_kinetic_form",
+      "status": "partial"
+    },
+    {
+      "blocker": "No independent second-profile rematch or loop/subtraction calculation shows profile and scale independence through O(Lambda^-1).",
+      "id": "C5",
+      "landed": "The matching scale, finite even/odd profiles, coefficient coordinates, and renormalization inputs are declared.",
+      "name": "counterterm_and_matching_scheme",
+      "status": "partial"
+    },
+    {
+      "blocker": "none for the declared fixed-order policy",
+      "id": "C6",
+      "landed": "Every retained invariant direction has an independent matching coefficient; the Hc and odd-profile zeros are identified as finite-part choices rather than symmetry claims, and higher sectors have an explicit remainder assignment.",
+      "name": "selector_and_naturalness_policy",
+      "status": "pass"
+    },
+    {
+      "blocker": "The kernel uses the zero-Hc-counterterm V48 transfer.  The full A,Xi,C path-ordered collar, normalized SO(10)->PS tensors, derivative-current Clebsches, and complete physical Wilson coefficient array have not been matched together.",
+      "id": "C7",
+      "landed": "A generalized Hermitian endpoint pencil, exact restricted Schur kernel, 64-trace PS map, and pole/residue/locality/decoupling witnesses are executable.",
+      "name": "action_to_full_tower_Wilson_matching",
+      "status": "partial"
+    }
+  ],
+  "V49_exact_results": [
+    {
+      "id": "E30",
+      "result": "source-spectrum repair",
+      "statement": "The source fields depend only on (x,theta), so their transverse mode count is exactly zero and the V47 4D source Hessian is retained.",
+      "value": {
+        "action": "integral d4x [integral d4theta K_V47(X,Xdagger,V(L)) + integral d2theta W_source,V47(X)+h.c.]",
+        "fields": [
+          "Phi_210",
+          "Sigma_126",
+          "barSigma_bar126",
+          "S",
+          "ThetaPlus",
+          "ThetaMinus"
+        ],
+        "location": "four-dimensional N=1 source theory at y=L",
+        "no_source_KK_tower": "X_A depends on x and theta only, not y; rho_epsilon belongs solely to the interaction kernel",
+        "normalization": "no y integration occurs in the source kinetic action; the V47 canonical normalization, dimension-one VEVs, F/D equations and 443-mode physical Hessian are unchanged",
+        "source_spectrum": "exactly the already-audited V47 four-dimensional source spectrum; no transverse source label or source-wall KK determinant exists"
+      }
+    },
+    {
+      "id": "E31",
+      "result": "non-uniform strong-wall Hc scaling",
+      "statement": "At m=0, Hc(s)=-(s/epsilon)A H0.  Even-profile Hc Xi Hc and odd-profile H C Hc therefore remain O(1), so they are leading regulator coordinates.",
+      "value": {
+        "HcHc_value": -0.0007434166666666673,
+        "analytic_HcHc_average": "f0^T A^T Xi A f0/3",
+        "analytic_odd_mixed_average": "-f0^T C A f0/3",
+        "conclusion": "both are O(1), not O(epsilon^2) or O(epsilon), because the wall equation gives partial_s Hc=O(A/epsilon).  They are leading matching data.",
+        "epsilon_scan": {
+          "0.025": {
+            "average_Hc_Xi_Hc": -0.0007434166666666673,
+            "average_rho_odd_H_C_Hc": -0.015161666666666665
+          },
+          "0.05": {
+            "average_Hc_Xi_Hc": -0.0007434166666666673,
+            "average_rho_odd_H_C_Hc": -0.015161666666666665
+          },
+          "0.1": {
+            "average_Hc_Xi_Hc": -0.0007434166666666673,
+            "average_rho_odd_H_C_Hc": -0.015161666666666665
+          },
+          "0.2": {
+            "average_Hc_Xi_Hc": -0.0007434166666666673,
+            "average_rho_odd_H_C_Hc": -0.015161666666666665
+          }
+        },
+        "odd_mixed_value": -0.015161666666666665,
+        "solution": "f(s)=f0, Hc(s)=-(s/epsilon) A f0 at m=0 in the A/epsilon wall"
+      }
+    },
+    {
+      "id": "E32",
+      "result": "exact pure-source quartic census",
+      "statement": "Twelve neutral monomial sectors contain 23 independent complex invariant directions.",
+      "value": {
+        "direction_count": 23,
+        "sector_count": 12
+      }
+    },
+    {
+      "id": "E33",
+      "result": "retained boundary-action normal form",
+      "statement": "The fixed-order action includes mu_H, all direct/conjugate collar portals, leading Hc-Hc and odd-profile coordinates, mixed Kahler sectors, and the two-coordinate O7/O8/profile IBP quotient per channel.",
+      "value": {
+        "C1_retained_sector": "PASS_ABSTRACTLY",
+        "blockers": [
+          "insert the full A,Xi,C tensor families into the same-action spectral/Wilson pencil",
+          "publish normalized SO10-to-PS Cartesian tensors for C7 rather than abstract Hom labels",
+          "perform a second-profile counterterm rematch and loop-level subtraction audit",
+          "decide whether finite Wilson-line bilocality is accepted as the G2 regulator contract"
+        ],
+        "full_G2": "OPEN",
+        "superseded_claim": "The V49 fixed-profile statement that O(1) HcHc is O(epsilon^2) is false in the strong A/epsilon wall unless its normal derivative is held fixed contrary to the wall equation.",
+        "why_C1_passes": "Every retained invariant direction has a coefficient.  The 23 pure-source quartic directions have exact Susyno/character multiplicities; remaining collar tensor families are defined as finite orthonormal Haar-projector bases, including empty-space tests."
+      }
+    },
+    {
+      "id": "E34",
+      "result": "general strong-collar symplectic transfer",
+      "statement": "For symmetric A and Xi the full holomorphic collar generator is Hamiltonian; the representative path-ordered transfer preserves the symplectic form.",
+      "value": {
+        "determinant": 0.9999999999999993,
+        "generator_Hamiltonian_residual": 0.0,
+        "path_ordered_transfer_symplectic_residual": 1.2212453270876722e-15,
+        "scope": "real CP benchmark of the general A,Xi,C collar; complex coefficients require the standard Hermitian Nambu lift, not a transpose-only transfer"
+      }
+    },
+    {
+      "id": "E35",
+      "result": "restricted generalized Wilson witness",
+      "statement": "The executable restricted kernel has a 64-coordinate PS trace map and passes its Hermiticity, pole, residue, Euclidean locality, and decoupling checks.",
+      "value": {
+        "coordinate_count": 64,
+        "nonzero_vertex_entries": 64,
+        "pencil_verdict": "G2_REMAINS_OPEN"
+      }
+    },
+    {
+      "id": "E36",
+      "result": "V49 fail-closed decision",
+      "statement": "C1 and C6 pass, while C2 is conditional and C3/C4/C5/C7 remain partial. The seven-clause conjunction is false; G2 is not promoted.",
+      "value": {
+        "G2_closed": false,
+        "full_gate_count": 1
+      }
+    }
+  ],
+  "core_sha256": "ad582070cd5e948c5b999d39aa03353fa2da23c4a41ee55a3ab821457222fb5b",
+  "frozen_G2_contract": {
+    "closure_logic": "G2_closed iff C1 through C7 all pass for the same retained action",
+    "definition": "A fixed-order tree-level Wilsonian source/portal boundary EFT in one declared regulator scheme, with a complete retained-order local action, an action-derived positive self-adjoint domain, and a component-resolved full-tower kernel for that same action.",
+    "not_required_for_G2": {
+      "G3": "solve the vacuum and FI/K\u00e4hler/radion/soft branch",
+      "G6": "compute the complete pole tower, thresholds, unification and RG flow",
+      "G7": "finish the B/L ring, running and decay likelihoods",
+      "G8": "perform the flavor/neutrino fit and withheld prediction",
+      "UV": "predict the infinite irrelevant tower from a fundamental UV completion"
+    }
+  },
+  "fully_passed_clauses": [
+    "C1",
+    "C6"
+  ],
+  "gate_ledger": [
+    {
+      "advance": "V47 exact ordinary-Spin quotient and relative anomaly calculations remain intact.",
+      "blocker": "none within the declared ordinary-Spin model",
+      "closed": true,
+      "gate": "G1"
+    },
+    {
+      "advance": "V49 completes the retained action at the abstract invariant-tensor level, proves 23 pure-source quartic directions and the O(1) strong-collar Hc correction, and supplies a 64-trace restricted Wilson witness.",
+      "blocker": "The regulator is cutoff-range bilocal, the full A/Xi/C strong-collar action has not been assembled into one positive self-adjoint kernel, profile rematching is absent, and physical component tensors remain abstract.",
+      "closed": false,
+      "gate": "G2"
+    },
+    {
+      "advance": "The exact coupled F/D-flat branch and generic physical-rank theorem remain valid at renormalizable order.",
+      "blocker": "Pure-source higher operators, FI/K\u00e4hler/radion/soft terms, global vacuum selection and the controlled 5D branch are unsolved.",
+      "closed": false,
+      "gate": "G3"
+    },
+    {
+      "advance": "The missing PS mu_H term is now identified as an allowed input rather than silently forbidden.",
+      "blocker": "The mu/Bmu mechanism, SUSY breaking, radion stabilization, EWSB and complete scalar vacuum are absent.",
+      "closed": false,
+      "gate": "G4"
+    },
+    {
+      "advance": "No excluded dark benchmark is reintroduced.",
+      "blocker": "No dark-sector Lagrangian, relic calculation or cosmological history is specified.",
+      "closed": false,
+      "gate": "G5"
+    },
+    {
+      "advance": "The regulator map is exact and three representative regulated poles plus one residue replay.",
+      "blocker": "A complete controlled parameter point, every pole, thresholds, NDA cutoff, unification and RG running are absent.",
+      "closed": false,
+      "gate": "G6"
+    },
+    {
+      "advance": "The source-dependent restricted Schur kernel supplies the correct structural starting point for full-tower matching.",
+      "blocker": "The 210-completed B/L ring, component Wilson coefficients, dressing/running and proton or multinucleon rates are absent.",
+      "closed": false,
+      "gate": "G7"
+    },
+    {
+      "advance": "The PS census now includes complementary Hc Higgs cubics and the allowed family/bulk K\u00e4hler mixings.",
+      "blocker": "There is no complete component Clebsch map, neutrino completion, family fit, uncertainty propagation or withheld prediction.",
+      "closed": false,
+      "gate": "G8"
+    }
+  ],
+  "input_core_hashes": {
+    "fixed_profile": "03a9c83da5c0eb0679fcc068861ef8a8869cc92f497a0c4517246a51294c47fa",
+    "generalized_pencil": "173aad00eb3ce89748a402b89d3587574f186b1b01166fe145f297b71956a08c",
+    "retained_action": "ed0b77f66a4f800abbf1dca9a199433d549c13a1f92903748c0013ffef6e90ad",
+    "v48_master": "011ed9c18b48a0bed359e998cde1eb3d04525294f29e03cc8e950e4e7b2c8950"
+  },
+  "integrity_checks": {
+    "G2_conjunction_is_false": true,
+    "V48_started_with_only_G1_closed": true,
+    "all_input_core_hashes_valid": true,
+    "exactly_C1_and_C6_pass": true,
+    "full_collar_generator_certificate_is_symplectic": true,
+    "only_G1_is_closed_after_V49": true,
+    "quartic_census_is_12_sectors_23_directions": true,
+    "regulator_artifact_rejects_microscopic_closure": true,
+    "restricted_pencil_integrity_passes": true,
+    "restricted_pencil_rejects_G2_closure": true,
+    "strictly_4D_sources_have_no_KK_tower": true,
+    "strong_collar_Hc_terms_are_unsuppressed": true
+  },
+  "n_failed_integrity_checks": 0,
+  "number_of_clauses": 7,
+  "primary_sources": [
+    {
+      "title": "Marti--Pomarol: 5D supersymmetry in N=1 superfields",
+      "url": "https://arxiv.org/abs/hep-th/0106256"
+    },
+    {
+      "title": "Hebecker: gauge-covariant brane operators",
+      "url": "https://arxiv.org/abs/hep-ph/0112230"
+    },
+    {
+      "title": "von Gersdorff et al.: interval boundary action principle",
+      "url": "https://arxiv.org/abs/hep-th/0411133"
+    },
+    {
+      "title": "del Aguila et al.: thin-defect EFT and classical renormalization",
+      "url": "https://arxiv.org/abs/hep-ph/0601222"
+    },
+    {
+      "title": "Barcelo--Mitra--Moreau: finite-width brane/KK limit ordering",
+      "url": "https://arxiv.org/abs/1408.1852"
+    },
+    {
+      "title": "Nath--Syed: SO(10) spinor contraction channels",
+      "url": "https://arxiv.org/abs/hep-th/0109116"
+    }
+  ],
+  "route_decision": "Continue the neutral-210 route only as an open EFT research program.  Do not promote G2 until one local or explicitly admitted regulator carries the complete retained action, positive domain, profile rematch, and component Wilson kernel together.",
+  "schema": "susy-v49-g2-frontier-integration-audit-v1",
+  "scientific_verdict": {
+    "G2_closed": false,
+    "claim_scope": "mathematical EFT progress only; not a complete theory, UV completion, phenomenological fit, or empirical validation",
+    "closed_gates": [
+      "G1"
+    ],
+    "full_gates_closed": 1,
+    "statement": "V49 closes the retained-action census and fixed-order coefficient policy, but not the full G2 conjunction.  The exact strong-wall correction makes the missing Hc/counterterm transfer more important, not less."
+  },
+  "smallest_next_closure_patch": [
+    "Localize the source coupling with finite deconstruction or constrained covariantly constant transport fields, unless cutoff-range bilocality is explicitly accepted.",
+    "Insert the complete A,Xi,C and O7/O8 tensor families into one path-ordered strong-collar transfer and vary the full retained action.",
+    "Assemble and prove positivity of the complete bulk+collar+endpoint generalized norm.",
+    "Rematch a second smooth profile and show counterterm-adjusted agreement through O(Lambda^-1).",
+    "Publish normalized SO10-to-PS tensors and the resulting complete physical Wilson coefficient array."
+  ],
+  "source_manifest": [
+    {
+      "exists": true,
+      "path": "susy_v49_g2_frontier_integration_audit.py",
+      "sha256": "23dfaeffd72291fee15d4b129bb765144510bbd2f46c5751675d042a87c39c66"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v49_g2_frontier_integration_audit.py",
+      "sha256": "0d73ef69d3d3885c25a595cd48c3c50106b2f830e6603d565236fa4352b90f3d"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V48_G2_FRONTIER_INTEGRATION_AUDIT.json",
+      "sha256": "eb9945a4cb1940bc6c46e3dae82d4096f6a60b9a10441a484009395980c69676"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V49_FIXED_PROFILE_SOURCE_REGULATOR_AUDIT.json",
+      "sha256": "e22061b418d6dd3cf5870a8ab0044e409f7d7d1b8aab8778408f88e6c17afd3a"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V49_RETAINED_BOUNDARY_ACTION_COMPLETENESS.json",
+      "sha256": "029f4237c8247dee35f5ccee35eb624c4ee16c481ccb58b411b30eff3bf6c89a"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V49_GENERALIZED_BOUNDARY_PENCIL_AUDIT.json",
+      "sha256": "e1a8d98df124140dcaeeb327a02bdbf6da18575d4327c734ca7f1172108fe50e"
+    }
+  ],
+  "stage_ledger": [
+    {
+      "missing": "complete same-action source/collar Kahler and counterterm norm, radion dynamics, and global branch selection",
+      "passed": "exact coupled neutral-210 branch, 443 generic massive physical source chirals, and a strictly 4D source prescription with no source KK tower",
+      "stage": "S0",
+      "status": "OPEN_WITH_COUPLED_SOURCE_RANK_RETAINED"
+    },
+    {
+      "missing": "none within the declared ordinary-Spin boundary-condition model",
+      "passed": "V47 local, quotient, relative and residual-discrete gauge/global anomaly certificate",
+      "stage": "S1",
+      "status": "CLOSED"
+    },
+    {
+      "missing": "complete path-ordered same-action transfer/domain/norm, local regulator decision, full pole tower and thresholds",
+      "passed": "restricted exact V48 transfer, the corrected O(1) Hc scaling, and a Hamiltonian general A/Xi/C collar generator",
+      "stage": "S2",
+      "status": "OPEN_WITH_GENERAL_STRONG_COLLAR_GENERATOR"
+    },
+    {
+      "missing": "same-action strong-collar Wilson kernel, normalized component Clebsches, B/L ring, physical Wilson coefficients and rates",
+      "passed": "23 exact source quartics, complete abstract retained action, IBP/EOM normal form, and restricted 64-trace PS Schur kernel",
+      "stage": "S3",
+      "status": "OPEN_WITH_COMPLETE_ABSTRACT_ACTION_AND_RESTRICTED_64_TRACE_KERNEL"
+    },
+    {
+      "missing": "unification, RG spectrum, flavor, neutrinos, light Higgs, SUSY breaking, dark sector and cosmology",
+      "passed": "no empirical claim imported from the exact microscopic subchecks",
+      "stage": "S4",
+      "status": "OPEN"
+    }
+  ],
+  "status": "V49_G2_RETAINED_ACTION_C1_AND_FIXED_ORDER_POLICY_C6_CLOSED__STRICTLY_4D_SOURCE_REMOVES_SPURIOUS_SOURCE_TOWER__STRONG_COLLAR_HC_COUNTERTERMS_PROVED_UNSUPPRESSED__GENERALIZED_RESTRICTED_KERNEL_AND_64_TRACE_PS_MAP_EXECUTABLE__LOCAL_REGULATOR_COMPLETE_DOMAIN_PROFILE_REMATCH_AND_PHYSICAL_COMPONENT_KERNEL_MISSING__G2_FAIL_CLOSED__ONE_OF_EIGHT_FULL_GATES_CLOSED",
+  "unresolved_defects": [
+    {
+      "defect": "finite_range_bilocal_regulator",
+      "id": "D8",
+      "statement": "The shortest normal Wilson line makes the smearing gauge covariant but bilocal. Localize it by finite deconstruction/constrained transport, or explicitly adopt cutoff-range bilocality in the G2 regulator contract."
+    },
+    {
+      "defect": "complete_strong_collar_transfer_missing",
+      "id": "D9",
+      "statement": "All allowed Hc-Hc and odd-profile H-Hc matrices are O(1) in the strong wall and must enter one path-ordered transfer; the current Wilson witness uses their zero point."
+    },
+    {
+      "defect": "complete_domain_and_positive_norm_missing",
+      "id": "D10",
+      "statement": "The full retained collar, endpoint Kahler, derivative, auxiliary, and counterterm blocks have not been varied and certified positive together."
+    },
+    {
+      "defect": "profile_rematching_missing",
+      "id": "D11",
+      "statement": "An independent profile calculation has not shown counterterm-rematched agreement through O(Lambda^-1)."
+    },
+    {
+      "defect": "physical_component_kernel_missing",
+      "id": "D12",
+      "statement": "Normalized SO(10)-to-PS Cartesian tensors and derivative-current Clebsches are still abstract, so the complete physical Wilson coefficient array is absent."
+    }
+  ]
+}

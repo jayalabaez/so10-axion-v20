@@ -1,0 +1,527 @@
+{
+  "V58_baseline": {
+    "bound_core_sha256": "c31d5fe65fc5bd96279bb739f5284854a624b2ee1586004c9b84998225d382c6",
+    "honest_outcome": "V58 is the strongest real microscopic near-match found, and its lattice/modular arithmetic passes.  Strict G1 nevertheless remains open: later work corrected heterotic R-charge phases and left anomaly universality for this freely quotiented geometry unresolved; the complete corrected mixed-Z4R/GS ledger and a controlled F-flat point are absent; and the action is not the original local/6D Spin(10) architecture.",
+    "same_action_G1_completion": false,
+    "selected_lead_action": null,
+    "strict_G1_matrix": [
+      {
+        "criterion": "one_versioned_microscopic_action",
+        "evidence": "one explicit E8xE8 orbifold CFT with fixed twists, shifts, Wilson lines, free quotient, and spectrum",
+        "status": "PASS"
+      },
+      {
+        "criterion": "compact_global_group_and_integral_charge_lattice",
+        "evidence": "exact E8xE8 centralizer/stabilizer definition and even self-dual Gamma(6,22)",
+        "status": "PASS"
+      },
+      {
+        "criterion": "microscopic_regulator_and_modular_invariance",
+        "evidence": "all independently evaluated order-two level-matching and Wilson congruences vanish",
+        "status": "PASS"
+      },
+      {
+        "criterion": "complete_chiral_and_twisted_spectrum",
+        "evidence": "full Table E.2 spectrum, 37 singlets, S, three T and three U moduli",
+        "status": "PASS_SOURCE_LOCKED"
+      },
+      {
+        "criterion": "continuous_perturbative_and_traditional_global_anomalies",
+        "evidence": "exact zero visible MSSM anomaly ledger and even SU2 doublet count; the complete string CFT is a consistent background",
+        "status": "PASS_FOR_VISIBLE_MSSM__FULL_STRING_BACKGROUND_CONSISTENT"
+      },
+      {
+        "criterion": "corrected_globally_gauged_Z4R_origin",
+        "evidence": "the 2010 qX+R2+2n3 assignment predates the corrected gamma-phase formula; its exact corrected action is not published",
+        "status": "OPEN"
+      },
+      {
+        "criterion": "complete_model_specific_discrete_anomaly_and_GS_mechanism",
+        "evidence": "A3=3 and A2=5 are universal mod2, but hidden, U1Y, gravity, local/global rows and the corrected-generator axion coupling matrix are absent",
+        "status": "OPEN"
+      },
+      {
+        "criterion": "torsion_and_localized_anomaly_completion",
+        "evidence": "the regulator exists, but no derived corrected-Z4R partition-function phase or complete local/global anomaly trivialization is supplied",
+        "status": "OPEN_FOR_TARGET_Z4R"
+      },
+      {
+        "criterion": "target_light_projection",
+        "evidence": "exact MSSM, one Higgs pair, full-rank triplet matrix, zero massless colored triplet pairs",
+        "status": "PASS_SOURCE_LOCKED"
+      },
+      {
+        "criterion": "controlled_explicit_F_flat_vacuum",
+        "evidence": "23 conditions on 24 directions support generic existence, but no coefficient-level all-F-zero point in the controlled region is published",
+        "status": "OPEN"
+      },
+      {
+        "criterion": "local_or_6D_SO10_architecture_match",
+        "evidence": "the model uses nonlocal GUT breaking and does not realize the original local/6D Spin(10) fixed-point action",
+        "status": "FAIL_FOR_ORIGINAL_TARGET"
+      },
+      {
+        "criterion": "same_action_no_cross_version_import",
+        "evidence": "no V56 bulk, boundary, vacuum, or anomaly coefficient is imported into V58",
+        "status": "PASS"
+      },
+      {
+        "criterion": "strict_G1_microscopic_consistency",
+        "evidence": "the corrected residual-R/GS ledger and controlled vacuum are open, and the new action does not match local/6D SO10",
+        "status": "OPEN"
+      }
+    ],
+    "strongest_near_match": "V58_E8xE8_Z2xZ2_FREE_Z2_Z4R_MSSM"
+  },
+  "comparison_conclusion": {
+    "Spin11": "Route B proves an exact two-weak/zero-colored projector and repairs the rank-breaking five block, but proves a commuting Abelian non-R selector no-go in its stated local-family class and leaves quantum/UV data open.",
+    "frontier": "No tested route is a complete theory. The live heterotic regeneration is the only pending computation that may supersede an existing row without first proposing a new action.",
+    "gauged_U1R": "Route C completes the integrated seed and 270-singlet parity problem, then exactly rejects the existing bulk GS direction at three fixed points.",
+    "heterotic": "V58 remains the strongest real microscopic near-match. Route A is a data-identifiability frontier, not a falsification of its physical Z4R."
+  },
+  "core_sha256": "9a74431ca080341d56225c6cc85edb937d3cafaa902bbacb556dbb325d78d24a",
+  "cross_route_composition_rule": {
+    "aggregated_G1_closure": false,
+    "cross_route_splicing_allowed": false,
+    "examples_forbidden": [
+      "V58's modular-invariant CFT plus route B's weak projector",
+      "route B's rank-breaking determinant plus route C's integrated lattice",
+      "route C's singlet parity witness plus an unregenerated heterotic charge ledger"
+    ],
+    "logical_rule": "Strict G1 is existential over a single versioned action, not a conjunction of route-local passes taken from inequivalent actions.",
+    "route_action_families_are_distinct": true
+  },
+  "gate_ledger": [
+    {
+      "V59_master_closed": false,
+      "cross_route_aggregation_used": false,
+      "decision": "OPEN: none of the three canonical V59 routes supplies one same-action microscopic completion. Route A needs regenerated statewise CFT data; route B fails its commuting Abelian non-R selector class and has Dai--Freed/UV obligations; route C fails the existing local GS direction at three points.",
+      "gate": "G1",
+      "status": "OPEN"
+    },
+    {
+      "V59_master_closed": false,
+      "cross_route_aggregation_used": false,
+      "decision": "OPEN: no V59 route proves G2 in the same action; the bound V58 baseline remains: OPEN: the complete coefficient-level 4D Wilsonian W, K, gauge-kinetic functions, soft sector, and a numerical controlled F-root have not been reconstructed.",
+      "gate": "G2",
+      "status": "OPEN"
+    },
+    {
+      "V59_master_closed": false,
+      "cross_route_aggregation_used": false,
+      "decision": "OPEN: no V59 route proves G3 in the same action; the bound V58 baseline remains: OPEN: no full physical vacuum quotient, stabilized spectrum, and complete Hessian/KK analysis is certified here.",
+      "gate": "G3",
+      "status": "OPEN"
+    },
+    {
+      "V59_master_closed": false,
+      "cross_route_aggregation_used": false,
+      "decision": "OPEN: no V59 route proves G4 in the same action; the bound V58 baseline remains: OPEN WITH STRONG ADVANCE: the source gives one massless Higgs pair, a full-rank triplet matrix, and perturbative all-order mu protection; later physical hierarchy tests remain.",
+      "gate": "G4",
+      "status": "OPEN"
+    },
+    {
+      "V59_master_closed": false,
+      "cross_route_aggregation_used": false,
+      "decision": "OPEN: no V59 route proves G5 in the same action; the bound V58 baseline remains: OPEN: no dark-sector and cosmological history is selected or solved.",
+      "gate": "G5",
+      "status": "OPEN"
+    },
+    {
+      "V59_master_closed": false,
+      "cross_route_aggregation_used": false,
+      "decision": "OPEN: no V59 route proves G6 in the same action; the bound V58 baseline remains: OPEN: precision thresholds, full running, pole spectrum, and uncertainty propagation are absent.",
+      "gate": "G6",
+      "status": "OPEN"
+    },
+    {
+      "V59_master_closed": false,
+      "cross_route_aggregation_used": false,
+      "decision": "OPEN: no V59 route proves G7 in the same action; the bound V58 baseline remains: OPEN WITH STRONG ADVANCE: matter parity removes dimension four proton decay and Z4R suppresses dimension five operators, but no complete lifetime calculation exists.",
+      "gate": "G7",
+      "status": "OPEN"
+    },
+    {
+      "V59_master_closed": false,
+      "cross_route_aggregation_used": false,
+      "decision": "OPEN: no V59 route proves G8 in the same action; the bound V58 baseline remains: OPEN WITH STRONG ADVANCE: full-rank Yukawas and a rank-11 singlet-neutrino sector exist, but no mediator-complete numerical CKM/PMNS likelihood is certified.",
+      "gate": "G8",
+      "status": "OPEN"
+    }
+  ],
+  "input_core_hashes": {
+    "route_a_heterotic": "38747dee7e8bafdae38ddea1408c8163d625ff6cb836aaa97304f4479624250b",
+    "route_b_spin11": "bf666eb5e4d57bff18b05182d7d6cc7874bbc26dd71897153faf9ee67a5f8c42",
+    "route_c_gauged_u1r": "27b4e032ff10065b534c1c62c2adf88f677b07c228f243b5376227fdb307ac8d",
+    "v58_baseline": "c31d5fe65fc5bd96279bb739f5284854a624b2ee1586004c9b84998225d382c6"
+  },
+  "integrity_checks": {
+    "V58_baseline_has_zero_closed_gates": true,
+    "all_four_input_cores_are_canonical_and_expected": true,
+    "all_master_gates_remain_open": true,
+    "all_three_route_ledgers_are_open": true,
+    "cross_route_splicing_is_forbidden": true,
+    "live_regeneration_extension_is_explicit_and_nonpromoting": true,
+    "no_route_has_a_same_action_microscopic_completion": true,
+    "route_A_ambiguity_witness_is_bound": true,
+    "route_A_is_not_misreported_as_a_physical_no_go": true,
+    "route_B_projector_and_rank_determinant_are_bound": true,
+    "route_B_selector_no_go_is_scoped_and_bound": true,
+    "route_C_constructive_singlet_parities_are_bound": true,
+    "route_C_existing_local_GS_rejection_is_bound": true
+  },
+  "live_heterotic_regeneration_extension": {
+    "current_bound_route_core": "38747dee7e8bafdae38ddea1408c8163d625ff6cb836aaa97304f4479624250b",
+    "current_route_id": "A",
+    "current_row_is_supersedable": true,
+    "id": "LIVE_ORBIFOLDER_CORRECTED_CHARGE_REGENERATION",
+    "minimum_replacement_payload": [
+      "For every physical state: constructing element representative and full free-quotient orbit.",
+      "For every physical state: p or p_sh, q_sh, and all N_L^i and Nbar_L^i.",
+      "Physical twist-field eigenvectors and gamma_h for all relevant centralizer elements.",
+      "The exact second-plane isometry rho and a statewise h_g solving rho(g)=h_g g h_g^-1.",
+      "A corrected charge attached one-to-one to every Table E.2 state/component.",
+      "The coefficient-level post-VEV massless eigenbasis, including hidden and singlet states.",
+      "Normalized U(1) generator vectors/Kac--Moody metric and all mixed anomaly rows.",
+      "The axion periodicity, threshold corrections, local anomaly distribution and inflow map."
+    ],
+    "replacement_contract": [
+      "write a distinct canonical route artifact rather than mutating this master or the bound route file",
+      "bind statewise constructing elements, p_sh, q_sh, oscillators, twist-field eigenvectors and gamma_h",
+      "map corrected charges one-to-one to the post-VEV physical massless basis",
+      "include the normalized U(1) metric, all visible/hidden/gravitational anomaly rows, and GS/axion/local data",
+      "replace EXPECTED_CORES['route_a_heterotic'] only after canonical validation and focused tests"
+    ],
+    "state": "AWAITING_EXTERNAL_REGENERATION",
+    "supersession_semantics": {
+      "does_not_change_route_B_or_C_certificates": true,
+      "does_not_retroactively_close_G1": true,
+      "new_same_action_proof_required": "corrected Z4R plus complete anomaly/GS trivialization plus a controlled vacuum in the regenerated heterotic action",
+      "supersedes_only": "route A data-sufficiency row"
+    },
+    "why": "route A proves only non-identifiability from the published macrostate projection; it does not prove a physical no-go for the exact CFT"
+  },
+  "n_failed_integrity_checks": 0,
+  "n_integrity_checks": 13,
+  "question": "Do any of the three completed V59 microscopic routes close strict G1 in one action, and what exact frontier remains if none does?",
+  "route_matrix": [
+    {
+      "G1_closed": false,
+      "blocking_certificate": {
+        "equation": "r_alpha = sum_i M xi_i (q_sh^i-N_L^i+Nbar_L^i) - M gamma_hg mod M",
+        "missing_microdata": [
+          "constructing_element_g_for_each_physical_state",
+          "shifted_gauge_momentum_p_sh_for_each_state",
+          "shifted_right_moving_H_momentum_q_sh_for_each_state",
+          "left_oscillators_NL_and_NbarL_in_each_plane",
+          "physical_twist_field_eigenvector_and_gamma_h",
+          "isometry_rho_and_statewise_h_g_for_the_free_quotient",
+          "complete_post_VEV_massless_eigenbasis",
+          "all_U1_generator_vectors_and_Kac_Moody_metric",
+          "local_anomaly_distribution_thresholds_and_axion_coupling_matrix"
+        ],
+        "physical_Z4R_no_go": false,
+        "scope_boundary": "This proves non-identifiability from the published state ledger. The complete worldsheet action may determine the missing data in principle after a new CFT spectrum/eigenphase calculation.",
+        "type": "PUBLISHED_SOURCE_NON_IDENTIFIABILITY"
+      },
+      "bound_core_sha256": "38747dee7e8bafdae38ddea1408c8163d625ff6cb836aaa97304f4479624250b",
+      "classification": "SOURCE_DATA_FRONTIER__NOT_A_PHYSICAL_NO_GO",
+      "closed_gates": [],
+      "exact_gains": [
+        {
+          "certificate": {
+            "A_SU2": "1",
+            "A_SU3": "3",
+            "eta": 2,
+            "universal_mod_eta": true
+          },
+          "claim": "the old visible non-Abelian residues are reproduced exactly",
+          "scope": "2010 MSSM charge pattern only; not the corrected full Table E.2 spectrum"
+        },
+        {
+          "certificate": {
+            "equation": "r_alpha = sum_i M xi_i (q_sh^i-N_L^i+Nbar_L^i) - M gamma_hg mod M",
+            "published_table_determines_corrected_charges": false,
+            "published_table_determines_full_anomalies": false
+          },
+          "claim": "the published table is proven insufficient for corrected charges"
+        },
+        {
+          "certificate": {
+            "SU2_anomaly_difference_mod_2": "1",
+            "charge_difference_mod_4": "2",
+            "gamma_pair": [
+              "0",
+              "1/2"
+            ],
+            "purpose": "information-loss witness only; it does not assert that both gamma assignments solve the exact model's GSO projections"
+          },
+          "claim": "an exact information-loss witness changes a mixed anomaly residue"
+        }
+      ],
+      "gate_ledger_all_open": true,
+      "name": "corrected heterotic Z4R worldsheet route",
+      "requires_new_worldsheet_or_Orbifolder_calculation": true,
+      "route_id": "A",
+      "same_action_microscopic_completion": false,
+      "supersedable_by_live_regeneration": true,
+      "tested_object": "whether the published V58 macrostate ledger alone determines the corrected gamma-sensitive charges and complete anomaly/GS ledger"
+    },
+    {
+      "G1_closed": false,
+      "blocking_certificate": {
+        "additional_open_obligations": {
+          "Dai_Freed_status": "OPEN",
+          "UV_regulator": "NOT_EXHIBITED",
+          "full_quantum_anomaly_trivialization": false,
+          "full_realistic_yukawas": false
+        },
+        "finite_scan": {
+          "counterexamples": [],
+          "full_rank_charge_assignments_checked": 1295,
+          "moduli_scanned": [
+            2,
+            24
+          ],
+          "no_counterexample": true
+        },
+        "loopholes_not_excluded": [
+          "an exact R symmetry",
+          "non-Abelian family symmetry with a complete anomaly-safe UV realization",
+          "noncommuting symmetry after abandoning a local Spin(10) wall",
+          "split or bulk physical families rather than three local 16s",
+          "topological/noninvertible selection with an explicit regulator"
+        ],
+        "proof": [
+          "An allowed Yukawa entry ij obeys q_i+q_j=0 because q_H=0.",
+          "A nonzero determinant monomial selects a permutation of three labels.",
+          "Every permutation of three labels has an odd cycle: a fixed point or a 3-cycle.",
+          "Alternating q_i=-q_j around that odd cycle gives 2q_i=0 for a label on it.",
+          "Therefore 4q_i=0 and the same-family Spin(10) invariant 16_i^4 is allowed."
+        ],
+        "scope": "Any Abelian non-R 0-form symmetry (finite or continuous) commuting with Spin(10), with neutral gauge-Higgs 10 and three wall 16_i, when the symmetric Yukawa support is generically full rank.",
+        "type": "ABELIAN_NON_R_PROTON_SELECTOR_NO_GO_IN_STATED_CLASS"
+      },
+      "bound_core_sha256": "bf666eb5e4d57bff18b05182d7d6cc7874bbc26dd71897153faf9ee67a5f8c42",
+      "classification": "MATHEMATICAL_CANDIDATE_WITH_SCOPED_SELECTOR_NO_GO",
+      "closed_gates": [],
+      "exact_gains": [
+        {
+          "certificate": {
+            "SM_decomposition": [
+              "(1,2)_(+1/2)=Hu",
+              "(1,2)_(-1/2)=Hd"
+            ],
+            "Sigma_zero_component_count": 4,
+            "colored_chiral_zero_modes": 0,
+            "weak_chiral_zero_modes": 2
+          },
+          "claim": "the interval projector leaves only the desired weak chirals"
+        },
+        {
+          "certificate": {
+            "determinant": "-lambda*lambdabar*v^2",
+            "new_light_colored_states": 0,
+            "normalized_example_determinant": "-1",
+            "superpotential": "Wrank=kappa*S*(C*Cbar-v^2)+lambda*C*C*T+lambdabar*Cbar*Cbar*T+(M_T/2)*T*T"
+          },
+          "claim": "the displayed rank-breaking five plus fivebar block is full rank"
+        },
+        {
+          "certificate": {
+            "full_realistic_yukawa_sector_closed": false,
+            "kernel": "K[Sigma]=P_even*(partial5-Sigma/sqrt(2)+M+boundary masses)^(-1)*P_even"
+          },
+          "claim": "a gauge-covariant nonlocal Yukawa kernel is defined"
+        }
+      ],
+      "gate_ledger_all_open": true,
+      "name": "Spin(11) gauge-Higgs route",
+      "route_id": "B",
+      "same_action_microscopic_completion": false,
+      "sharp_obstruction_proved": true,
+      "supersedable_by_live_regeneration": false,
+      "tested_object": "a 5D supersymmetric Spin(11) interval skeleton with local Spin(10) families, gauge-Higgs weak modes, rank breaking, and mirror mediators"
+    },
+    {
+      "G1_closed": false,
+      "blocking_certificate": {
+        "failed_fixed_points": [
+          "O_GG",
+          "O_flipped",
+          "O_PS"
+        ],
+        "open_data_deficits": {
+          "faithful_residual_Z4R": false,
+          "normal_bundle": "OPEN_DATA_DEFICIT",
+          "self_dual_strings": "OPEN_DATA_DEFICIT"
+        },
+        "passes_all_four": false,
+        "principle": "For U(1)_R variation, any inflow from the existing two bulk tensors multiplies the restriction of the single Spin(10) invariant tr_10 F^2.  Tensor-lattice rank changes the overall local coefficient, not the relative subgroup embedding indices.",
+        "type": "EXISTING_BULK_GS_DIRECTION_REJECTED_AT_THREE_FIXED_POINTS"
+      },
+      "bound_core_sha256": "27b4e032ff10065b534c1c62c2adf88f677b07c228f243b5376227fdb307ac8d",
+      "classification": "INTEGRATED_BULK_ADVANCE_WITH_EXACT_EXISTING_LOCAL_GS_REJECTION",
+      "closed_gates": [],
+      "exact_gains": [
+        {
+          "certificate": {
+            "H": 290,
+            "H_minus_V_plus_29T": 273,
+            "T": 1,
+            "V": 46,
+            "factorization_exact": true,
+            "integral_unimodular": true
+          },
+          "claim": "the integrated six-dimensional seed factorizes on an integral unimodular lattice"
+        },
+        {
+          "certificate": {
+            "all_270_singlets_assigned": true,
+            "local_parity_moments": {
+              "sum_q_cubed_sign": [
+                64,
+                64,
+                64,
+                64
+              ],
+              "sum_q_sign": [
+                4,
+                4,
+                4,
+                4
+              ],
+              "sum_sign": [
+                2,
+                2,
+                2,
+                2
+              ]
+            },
+            "q0_global_zero_modes": 1,
+            "q4_global_zero_modes": 1
+          },
+          "claim": "all singlet hypermultiplet parities have a constructive VEV-compatible solution"
+        },
+        {
+          "certificate": {
+            "O_GG": {
+              "bulk_direction": [
+                2,
+                40
+              ],
+              "local": [
+                4,
+                -320
+              ],
+              "minors": {
+                "SU5_squared__X_squared": 800
+              }
+            },
+            "O_PS": {
+              "bulk_direction": [
+                2,
+                2,
+                2
+              ],
+              "local": [
+                4,
+                -12,
+                -12
+              ],
+              "minors": {
+                "SU2L_squared__SU2R_squared": 0,
+                "SU4_squared__SU2L_squared": 32,
+                "SU4_squared__SU2R_squared": 32
+              }
+            },
+            "O_SO10": {
+              "bulk_direction": [
+                1
+              ],
+              "local": [
+                6
+              ],
+              "minors": {}
+            },
+            "O_flipped": {
+              "bulk_direction": [
+                2,
+                40
+              ],
+              "local": [
+                4,
+                -320
+              ],
+              "minors": {
+                "SU5prime_squared__Xprime_squared": 800
+              }
+            }
+          },
+          "claim": "fixed-point proportionality is tested with exact two-by-two minors"
+        }
+      ],
+      "gate_ledger_all_open": true,
+      "name": "gauged-U(1)R to Z4R local-orbifold route",
+      "route_id": "C",
+      "same_action_microscopic_completion": false,
+      "singlet_parity_problem_solved": true,
+      "supersedable_by_live_regeneration": false,
+      "tested_object": "the exact integrated Spin(10) x U(1)R seed on the V56 four-fixed-point projector using only the existing bulk Spin(10) GS direction"
+    }
+  ],
+  "schema": "susy_v59_multipath_g1_frontier_master_audit/v1",
+  "source_manifest": [
+    {
+      "exists": true,
+      "path": "susy_v59_multipath_g1_frontier_master_audit.py",
+      "sha256": "d6abe86672921b3c73f838097b6851c8ab7cd08253c0e046c7858be1ac55d8f8"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v59_multipath_g1_frontier_master_audit.py",
+      "sha256": "da030a257425966b076c9a1458555e673849a9a2096da29c466f5c13a5449b24"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V58_HETEROTIC_G1_MICROSCOPIC_COMPLETION_AUDIT.json",
+      "sha256": "4cf8461b0123b71066dbbe45b5182273ed68e92e59a3fbcc114541cf712df2d5"
+    },
+    {
+      "exists": true,
+      "path": "susy_v59_heterotic_corrected_z4r_data_sufficiency_audit.json",
+      "sha256": "d70bf77406c613cb8a976d6b4b75dc67f4efe2a5323fd9752c670cdf2fb63e32"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V59_SPIN11_GAUGE_HIGGS_COMPLETION_AUDIT.json",
+      "sha256": "dfe07e9af7ef080cd13413dd877f25e73a0e4f22140d8a5e311de590bf92e0e6"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V59_GAUGED_U1R_LOCAL_COMPLETION_AUDIT.json",
+      "sha256": "f5d8c4a117ff5fac956cff62f2cf2e3e0434f511ee38ed2258b620d899361bb7"
+    }
+  ],
+  "source_policy": {
+    "master_adds_no_new_literature_claim": true,
+    "route_claims_are_scoped_by_their_canonical_cores": true,
+    "route_primary_sources_are_in_the_bound_route_artifacts": true
+  },
+  "status": "V59_MULTIPATH_G1_FRONTIER_MASTER__V58_BASELINE_AND_THREE_V59_ROUTE_CORES_BOUND__HETEROTIC_ROUTE_IS_SOURCE_DATA_FRONTIER_NOT_PHYSICAL_NO_GO__SPIN11_ROUTE_HAS_EXACT_TWO_WEAK_ZERO_MODES_AND_SHARP_ABELIAN_SELECTOR_NO_GO__GAUGED_U1R_ROUTE_HAS_CONSTRUCTIVE_270_SINGLET_PARITIES_AND_EXACT_EXISTING_LOCAL_GS_REJECTION__NO_SAME_ACTION_G1_COMPLETION__NO_CROSS_ROUTE_SPLICING__LIVE_ORBIFOLDER_REGENERATION_MAY_SUPERSEDE_ROUTE_A_ROW__G1_TO_G8_OPEN__COMPLETE_THEORY_FALSE",
+  "strict_master_decision": {
+    "V59_G1_closed": false,
+    "closed_gates": [],
+    "complete_theory": false,
+    "empirical_discovery": false,
+    "honest_outcome": "The three routes add exact, non-overlapping information but no one versioned action closes G1. G1--G8 remain open. Route A may be superseded by a live Orbifolder/worldsheet regeneration; such a result must be rebound and re-audited before any promotion.",
+    "master_is_a_frontier_certificate_not_an_action": true,
+    "same_action_microscopic_completion_found": false
+  },
+  "upstream_status": {
+    "V58": "V58_HETEROTIC_MICROSCOPIC_NEAR_MATCH__E8XE8_Z2XZ2_WITH_FREE_Z2__EVEN_SELF_DUAL_NARAIN_LATTICE__EXACT_MODULAR_CONGRUENCES_PASS__COMPLETE_ORIGINAL_SPECTRUM_SOURCE_LOCKED__2010_Z4R_LEDGER_ONLY__CORRECTED_GAMMA_PHASE_MIXED_Z4R_AND_FULL_GS_LEDGER_OPEN__CONTROLLED_F_VACUUM_OPEN__NO_LOCAL_6D_SO10_MATCH__STRICT_G1_OPEN__ZERO_OF_EIGHT_GATES_CLOSED__COMPLETE_THEORY_FALSE",
+    "route_A": "V59_CORRECTED_HETEROTIC_Z4R_ROUTE_A__PUBLISHED_TABLE_E2_IS_COMPLETE_MACRO_SPECTRUM_BUT_INCOMPLETE_VERTEX_OPERATOR_LEDGER__CORRECTED_GAMMA_PHASES_NOT_IDENTIFIABLE_SOURCE_ONLY__OLD_VISIBLE_ANOMALIES_REPRODUCED_EXACTLY__FULL_VISIBLE_HIDDEN_U1_GRAVITY_AND_GS_ROWS_UNDERDETERMINED__NEW_CFT_REGENERATION_REQUIRED__STRICT_G1_OPEN__NO_GATE_PROMOTION",
+    "route_B": "V59_SPIN11_GAUGE_HIGGS_ONE_ACTION_ATTEMPT__EXACT_INTERVAL_PROJECTOR__TWO_WEAK_CHIRAL_ZERO_MODES__ZERO_COLORED_CHIRAL_ZERO_MODES__RANK_BREAKING_5_PLUS_5BAR_HAZARD_REPAIRED__MIRROR_32_MEDIATOR_KERNEL_CONSTRUCTIBLE_BUT_NOT_SOURCE_COMPLETED__ABELIAN_NON_R_PROTON_SELECTOR_NO_GO_PROVED__POINTWISE_PERTURBATIVE_ANOMALY_PAIRING_CONDITIONAL__DAI_FREED_AND_UV_COMPLETION_OPEN__STRICT_G1_OPEN__ZERO_GATES_CLOSED",
+    "route_C": "V59_GAUGED_U1R_LOCAL_COMPLETION__V56_V57_CORES_BOUND__V58_INTEGRATED_SPIN10_X_U1R_SEED_RECONSTRUCTED_EXACTLY__270_SINGLET_PARITIES_HAVE_AN_EXPLICIT_VEV_COMPATIBLE_SOLUTION__CONVENTIONAL_QTHETA1_LIFT_HAS_NONUNIVERSAL_MIXED_U1R_GFP2_ANOMALIES_AT_GG_FLIPPED_AND_PS__EXISTING_BULK_SPIN10_GS_INVARIANT_CANNOT_CANCEL_THEM__LOCALIZED_LEVELS_NORMAL_BUNDLE_DYONIC_STRING_AND_RESIDUAL_NORMALIZATION_DATA_OPEN__SAME_ACTION_MICROSCOPIC_COMPLETION_FALSE__G1_OPEN__ZERO_GATE_PROMOTIONS"
+  }
+}

@@ -13,14 +13,18 @@ class NextGenG1G6ProgressGateTests(unittest.TestCase):
 
     def test_gate_executes(self) -> None:
         self.assertEqual(self.report["n_failed"], 0, self.report["failures"])
-        self.assertEqual(self.report["overall_state"], "BLOCKED")
-        self.assertFalse(self.report["contract_consistent"])
+        self.assertEqual(self.report["overall_state"], "OPEN")
+        self.assertTrue(self.report["contract_consistent"])
         self.assertEqual(self.report["n_closed_subproblems"], 26)
         self.assertTrue(all(self.report["closed_subproblems"].values()))
 
     def test_top_level_gates_remain_honest(self) -> None:
         states = self.report["gate_states"]
-        self.assertTrue(all(state == "BLOCKED" for state in states.values()))
+        self.assertEqual(states["G1"], "CLOSED")
+        self.assertEqual(states["G2"], "CLOSED")
+        self.assertEqual(states["G6"], "BLOCKED")
+        self.assertEqual(states["G7"], "BLOCKED")
+        self.assertEqual(states["G8"], "BLOCKED")
 
         scoped = self.report["scoped_subtheorems"]
         self.assertTrue(scoped["exact_X_G1"]["completed"])
@@ -77,7 +81,7 @@ class NextGenG1G6ProgressGateTests(unittest.TestCase):
         self.assertTrue(flags["exact_X_G1_G2_scoped_subtheorems_complete"])
         self.assertFalse(flags["historical_option_C_authoritative"])
         self.assertTrue(flags["G6_diagnostics_are_scoped_not_gate_closure"])
-        self.assertFalse(flags["G1_closed"])
+        self.assertTrue(flags["G1_closed"])
         self.assertFalse(flags["G6_closed"])
         self.assertFalse(flags["physical_triplet_spectrum_complete"])
         self.assertFalse(flags["exact_unique_proton_lifetime"])

@@ -1,0 +1,287 @@
+{
+  "G1_gate": {
+    "V28_local_51_field_scaffold_retained": true,
+    "V28_promoted_to_microscopic_completion": false,
+    "closed": false,
+    "full_gate_claim": false,
+    "remaining_minimum_input": "a complete orientifolded moduli inventory plus at least 40 additional independent lifting directions in the ambient envelope, followed by zero-mode/global-consistency and visible operator matching",
+    "state": "CURRENT_NEW_PHYSICS_EXHAUSTED__EXTERNAL_MICROSCOPIC_INPUT_REQUIRED"
+  },
+  "all_model_bound": {
+    "V28_conservative_complex_moduli_envelope": 51,
+    "boundary": "this is an envelope bound because the source does not publish the complete twisted-sector N=1 parity inventory; that missing inventory is itself required before a smaller physical moduli count can be claimed. Field-dependent Pfaffians could alter the rank but are also not published",
+    "maximum_published_hidden_factor_count": 11,
+    "minimum_uncovered_envelope_directions": 40,
+    "model_attaining_maximum": "r33f4",
+    "standard_published_hidden_charge_span_can_realize_V28_rank_51": false
+  },
+  "audit_date": "2026-08-24",
+  "checks": {
+    "Kahler_flatness_is_not_relabelled_as_stabilization": true,
+    "V27_core_matches": true,
+    "V28_core_matches": true,
+    "all_17_published_models_are_audited": true,
+    "all_raw_source_pins_match": true,
+    "every_published_hidden_charge_span_is_rank_deficient_for_envelope": true,
+    "full_G1_claim_remains_false": true,
+    "minimum_ambient_envelope_rank_deficiency_is_40": true,
+    "model_ids_are_unique": true,
+    "r33f4_has_largest_hidden_factor_count_11": true,
+    "unpublished_Yukawa_and_soft_terms_are_not_invented": true
+  },
+  "condensate_Hessian_rank_theorem": {
+    "holomorphic_Hessian": "W_ij=sum_alpha c_alpha q_alpha_i q_alpha_j = Q^T diag(c_alpha) Q",
+    "none_of_these_evasions_is_derived_in_the_17_models": true,
+    "rank_bound": "rank(W_ij)<=rank(Q)<=m",
+    "same_factor_harmonics": "multi-instanton or racetrack harmonics parallel to one q_alpha can tune a stationary point but cannot add a new direction to the charge-vector span",
+    "superpotential_class": "W_h=sum_alpha A_alpha exp(-a_alpha sum_i q_alpha_i T_i), alpha=1,...,m, with A_alpha carrying no additional Kahler-direction dependence",
+    "ways_to_evade": [
+      "independent rigid/fluxed E3 instantons with new divisor charge vectors",
+      "published D-term/Stueckelberg lifting of the remaining directions",
+      "additional microscopic sectors with independent gauge kinetic functions",
+      "microscopically derived field-dependent Pfaffian or threshold prefactors"
+    ]
+  },
+  "core_sha256": "c770bbeb49309e13cac8b3438a2decd027da364aa56b696378a24a799e6b8cf7",
+  "failures": [],
+  "n_checks": 11,
+  "n_failed": 0,
+  "namespace": "research.susy_pati_salam.v29.g1_microscopic_completion_verdict",
+  "other_independent_full_G1_blockers": {
+    "published_SUSY_breaking_soft_terms_for_rigid_models": false,
+    "published_all_order_operator_and_coefficient_contract": false,
+    "published_complete_Yukawa_couplings": false,
+    "published_executable_UV_to_component_matching": false,
+    "published_twisted_sector_Yukawa_rules": false,
+    "source_statement": "the conclusion explicitly identifies Yukawas, soft terms, flavor, and twisted-sector Yukawa interpretation as next steps/open problems"
+  },
+  "primary_source": {
+    "citation": "Mansha, Sabir, Li, and Wang, arXiv:2512.21141v2 (12 May 2026)",
+    "locations": {
+      "17_model_gauge_groups": "section 4 and appendix A, tables 22--38",
+      "Kahler_flatness": "pages 16, 19, and conclusion page 52",
+      "phenomenology_open": "conclusion page 52"
+    },
+    "url": "https://arxiv.org/pdf/2512.21141"
+  },
+  "published_model_ledger": [
+    {
+      "additional_nonabelian_factor_multiplicities": {
+        "SU2": 3,
+        "SU4": 2
+      },
+      "maximum_independent_hidden_gauge_kinetic_functions": 5,
+      "model_id": "r15f1",
+      "rank_51_envelope_possible_from_one_published_charge_direction_per_factor": false,
+      "standard_condensate_moduli_Hessian_rank_upper_bound": 5
+    },
+    {
+      "additional_nonabelian_factor_multiplicities": {
+        "SU2": 1,
+        "SU4": 1,
+        "USp4": 4
+      },
+      "maximum_independent_hidden_gauge_kinetic_functions": 6,
+      "model_id": "r17f1",
+      "rank_51_envelope_possible_from_one_published_charge_direction_per_factor": false,
+      "standard_condensate_moduli_Hessian_rank_upper_bound": 6
+    },
+    {
+      "additional_nonabelian_factor_multiplicities": {
+        "SU2": 5,
+        "USp16": 4
+      },
+      "maximum_independent_hidden_gauge_kinetic_functions": 9,
+      "model_id": "r43f1",
+      "rank_51_envelope_possible_from_one_published_charge_direction_per_factor": false,
+      "standard_condensate_moduli_Hessian_rank_upper_bound": 9
+    },
+    {
+      "additional_nonabelian_factor_multiplicities": {
+        "SU2": 1
+      },
+      "maximum_independent_hidden_gauge_kinetic_functions": 1,
+      "model_id": "r7f2",
+      "rank_51_envelope_possible_from_one_published_charge_direction_per_factor": false,
+      "standard_condensate_moduli_Hessian_rank_upper_bound": 1
+    },
+    {
+      "additional_nonabelian_factor_multiplicities": {
+        "SU2": 1,
+        "SU4": 1
+      },
+      "maximum_independent_hidden_gauge_kinetic_functions": 2,
+      "model_id": "r10f2",
+      "rank_51_envelope_possible_from_one_published_charge_direction_per_factor": false,
+      "standard_condensate_moduli_Hessian_rank_upper_bound": 2
+    },
+    {
+      "additional_nonabelian_factor_multiplicities": {
+        "SU2": 5,
+        "USp12": 4
+      },
+      "maximum_independent_hidden_gauge_kinetic_functions": 9,
+      "model_id": "r35f2",
+      "rank_51_envelope_possible_from_one_published_charge_direction_per_factor": false,
+      "standard_condensate_moduli_Hessian_rank_upper_bound": 9
+    },
+    {
+      "additional_nonabelian_factor_multiplicities": {
+        "SU2": 5,
+        "USp16": 4
+      },
+      "maximum_independent_hidden_gauge_kinetic_functions": 9,
+      "model_id": "r43af2",
+      "rank_51_envelope_possible_from_one_published_charge_direction_per_factor": false,
+      "standard_condensate_moduli_Hessian_rank_upper_bound": 9
+    },
+    {
+      "additional_nonabelian_factor_multiplicities": {
+        "SU2": 5,
+        "USp16": 4
+      },
+      "maximum_independent_hidden_gauge_kinetic_functions": 9,
+      "model_id": "r43bf2",
+      "rank_51_envelope_possible_from_one_published_charge_direction_per_factor": false,
+      "standard_condensate_moduli_Hessian_rank_upper_bound": 9
+    },
+    {
+      "additional_nonabelian_factor_multiplicities": {
+        "SU2": 5,
+        "USp56": 4
+      },
+      "maximum_independent_hidden_gauge_kinetic_functions": 9,
+      "model_id": "r123f2",
+      "rank_51_envelope_possible_from_one_published_charge_direction_per_factor": false,
+      "standard_condensate_moduli_Hessian_rank_upper_bound": 9
+    },
+    {
+      "additional_nonabelian_factor_multiplicities": {
+        "SU2": 1,
+        "SU4": 2,
+        "USp56": 4
+      },
+      "maximum_independent_hidden_gauge_kinetic_functions": 7,
+      "model_id": "r125f2",
+      "rank_51_envelope_possible_from_one_published_charge_direction_per_factor": false,
+      "standard_condensate_moduli_Hessian_rank_upper_bound": 7
+    },
+    {
+      "additional_nonabelian_factor_multiplicities": {
+        "SU2": 5,
+        "USp8": 4
+      },
+      "maximum_independent_hidden_gauge_kinetic_functions": 9,
+      "model_id": "r27f3",
+      "rank_51_envelope_possible_from_one_published_charge_direction_per_factor": false,
+      "standard_condensate_moduli_Hessian_rank_upper_bound": 9
+    },
+    {
+      "additional_nonabelian_factor_multiplicities": {
+        "SU2": 5,
+        "USp12": 4
+      },
+      "maximum_independent_hidden_gauge_kinetic_functions": 9,
+      "model_id": "r35f3",
+      "rank_51_envelope_possible_from_one_published_charge_direction_per_factor": false,
+      "standard_condensate_moduli_Hessian_rank_upper_bound": 9
+    },
+    {
+      "additional_nonabelian_factor_multiplicities": {
+        "SU2": 5,
+        "USp32": 4
+      },
+      "maximum_independent_hidden_gauge_kinetic_functions": 9,
+      "model_id": "r75f3",
+      "rank_51_envelope_possible_from_one_published_charge_direction_per_factor": false,
+      "standard_condensate_moduli_Hessian_rank_upper_bound": 9
+    },
+    {
+      "additional_nonabelian_factor_multiplicities": {
+        "SU2": 3,
+        "SU4": 1,
+        "USp32": 4
+      },
+      "maximum_independent_hidden_gauge_kinetic_functions": 8,
+      "model_id": "r76f3",
+      "rank_51_envelope_possible_from_one_published_charge_direction_per_factor": false,
+      "standard_condensate_moduli_Hessian_rank_upper_bound": 8
+    },
+    {
+      "additional_nonabelian_factor_multiplicities": {
+        "SU4": 4,
+        "USp4": 1
+      },
+      "maximum_independent_hidden_gauge_kinetic_functions": 5,
+      "model_id": "r20f4",
+      "rank_51_envelope_possible_from_one_published_charge_direction_per_factor": false,
+      "standard_condensate_moduli_Hessian_rank_upper_bound": 5
+    },
+    {
+      "additional_nonabelian_factor_multiplicities": {
+        "SU2": 4,
+        "SU4": 2,
+        "USp4": 3,
+        "USp8": 1
+      },
+      "maximum_independent_hidden_gauge_kinetic_functions": 10,
+      "model_id": "r26f4",
+      "rank_51_envelope_possible_from_one_published_charge_direction_per_factor": false,
+      "standard_condensate_moduli_Hessian_rank_upper_bound": 10
+    },
+    {
+      "additional_nonabelian_factor_multiplicities": {
+        "SU2": 5,
+        "SU4": 2,
+        "USp8": 4
+      },
+      "maximum_independent_hidden_gauge_kinetic_functions": 11,
+      "model_id": "r33f4",
+      "rank_51_envelope_possible_from_one_published_charge_direction_per_factor": false,
+      "standard_condensate_moduli_Hessian_rank_upper_bound": 11
+    }
+  ],
+  "schema": "susy-v29-g1-microscopic-completion-verdict-v1",
+  "source_manifest": [
+    {
+      "expected_sha256": "4faf4c27fde31f69e81cfd9ec7d30d4a7b7c6860b770b3024076b5c24de0612f",
+      "matches": true,
+      "path": "susy_v28_new_physics_moduli_bridge.py",
+      "sha256": "4faf4c27fde31f69e81cfd9ec7d30d4a7b7c6860b770b3024076b5c24de0612f"
+    },
+    {
+      "expected_sha256": "7b32e13b646eed9700480d29801967069e4a21bde008e4b90dec91cee1db1aa9",
+      "matches": true,
+      "path": "SUSY_V28_NEW_PHYSICS_MODULI_BRIDGE.json",
+      "sha256": "7b32e13b646eed9700480d29801967069e4a21bde008e4b90dec91cee1db1aa9"
+    },
+    {
+      "expected_sha256": "416ffe8375dbbc68e3b2a11e31360533e60cfe4c012719a6c8d5cebf2490799c",
+      "matches": true,
+      "path": "SUSY_V28_MICROSCOPIC_INSTANTON_BRIDGE_SCHEMA.json",
+      "sha256": "416ffe8375dbbc68e3b2a11e31360533e60cfe4c012719a6c8d5cebf2490799c"
+    },
+    {
+      "expected_sha256": "1158b288ee39601ac4650312ec9e6c83e0d4eb101de5c90ccf0c38cba2f0be9c",
+      "matches": true,
+      "path": "susy_v27_g1_architecture_change_audit.py",
+      "sha256": "1158b288ee39601ac4650312ec9e6c83e0d4eb101de5c90ccf0c38cba2f0be9c"
+    },
+    {
+      "expected_sha256": "4dfaa939bc3ef555fdfbb9d46612ee83df082231cc078176605b38421ac50b61",
+      "matches": true,
+      "path": "SUSY_V27_G1_ARCHITECTURE_CHANGE_AUDIT.json",
+      "sha256": "4dfaa939bc3ef555fdfbb9d46612ee83df082231cc078176605b38421ac50b61"
+    }
+  ],
+  "status": "V29_G1_MICROSCOPIC_COMPLETION_AUDIT_COMPLETE__ALL_17_RIGID_BRANE_MODELS_PUBLISHED_HIDDEN_FACTOR_SPAN_AT_MOST_11__YUKAWA_SOFT_MATCHING_UNPUBLISHED__FULL_G1_NOT_CLOSED",
+  "terminal_decision": {
+    "finish_full_G1_with_V28_and_the_17_published_models": false,
+    "reason": "the published hidden charge-vector span is rank deficient and the source does not supply field-dependent Pfaffians, independent instantons, Yukawas, soft terms, or executable matching",
+    "scientifically_valid_completion_of_current_task": "retain V28 as an exact local new-physics theorem and stop before a false microscopic G1 promotion"
+  },
+  "upstream_core_pins": {
+    "V27_architecture_audit": "d97af356e9f2e2d7d0d2001a2a3b60027e6845cf4266d6f8c7b36b539281a58e",
+    "V28_moduli_bridge": "c682234ef01696ad188dc759091d1830f894972b3b279b69a867266d5ed77517"
+  }
+}

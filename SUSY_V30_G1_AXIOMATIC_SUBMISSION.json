@@ -1,0 +1,53 @@
+{
+  "all_acceptance_checks_pass": true,
+  "candidate_id": "V30_FFCC",
+  "evidence_manifest": [
+    {
+      "claim": "field inventory, selector, anomaly residues, and counterterm levels",
+      "path_or_url": "SUSY_V30_FIELD_AND_SELECTOR_MANIFEST.json",
+      "sha256_or_version": "80474e4950bbecebb3a02f678783df26495f8cac21e578a69858ffab59e7f686"
+    },
+    {
+      "claim": "finite all-order operator, coefficient, Kahler, gauge, soft, and visible map",
+      "path_or_url": "SUSY_V30_OPERATOR_AND_MATCHING_CONTRACT.json",
+      "sha256_or_version": "7cb6f39c85d788937418f61eca9e98c46c21a95549bb220b351ef9e27bff2c6f"
+    },
+    {
+      "claim": "55-modulus vacuum, instanton frame, hidden thresholds, and parity",
+      "path_or_url": "SUSY_V30_MODULI_AND_HIDDEN_CONTRACT.json",
+      "sha256_or_version": "2231ef13110662a10d1900f3cbb3fc425610191c80defc8c2effae0cb812eba2"
+    }
+  ],
+  "executable_matching": {
+    "live_engine_pass": true,
+    "model_source_sha256": "09326668d02b32b4a66c3b79cba34fb6a709430a360dce6d2d5d2ab039cad2bf",
+    "uv_to_component_map_sha256": "151170920f7ce1c880adb406a30204992d0d247abbc59ac8ab61bf21ab8acccc"
+  },
+  "hidden_and_parity": {
+    "residual_Z2_preserved": true,
+    "spectrum_threshold_sha256": "2231ef13110662a10d1900f3cbb3fc425610191c80defc8c2effae0cb812eba2",
+    "vev_branch_sha256": "2231ef13110662a10d1900f3cbb3fc425610191c80defc8c2effae0cb812eba2"
+  },
+  "microscopic_source": {
+    "consistency_checks_pass": true,
+    "construction": "invented finite-flux constrained chiral completion",
+    "spectrum_manifest_sha256": "80474e4950bbecebb3a02f678783df26495f8cac21e578a69858ffab59e7f686"
+  },
+  "moduli_and_vacuum": {
+    "all_moduli_stabilized": true,
+    "branch_quotient_sha256": "2231ef13110662a10d1900f3cbb3fc425610191c80defc8c2effae0cb812eba2",
+    "field_manifest_sha256": "2231ef13110662a10d1900f3cbb3fc425610191c80defc8c2effae0cb812eba2",
+    "hessian_sha256": "2231ef13110662a10d1900f3cbb3fc425610191c80defc8c2effae0cb812eba2"
+  },
+  "operator_contract": {
+    "all_orders_closed": true,
+    "kahler_gauge_soft_matching_sha256": "7cb6f39c85d788937418f61eca9e98c46c21a95549bb220b351ef9e27bff2c6f",
+    "normalized_basis_sha256": "7cb6f39c85d788937418f61eca9e98c46c21a95549bb220b351ef9e27bff2c6f",
+    "wilson_matching_sha256": "7cb6f39c85d788937418f61eca9e98c46c21a95549bb220b351ef9e27bff2c6f"
+  },
+  "selector_and_anomalies": {
+    "all_anomalies_canceled": true,
+    "generator_action_sha256": "80474e4950bbecebb3a02f678783df26495f8cac21e578a69858ffab59e7f686",
+    "level_matrix_sha256": "80474e4950bbecebb3a02f678783df26495f8cac21e578a69858ffab59e7f686"
+  }
+}

@@ -1,0 +1,513 @@
+{
+  "AHSS_BP": {
+    "E3_4_1_dimension": 0,
+    "H4_integral_lattice_for_P": {
+      "all_three_H4_mod2_classes_integrally_represented": true,
+      "basis": [
+        "p1(V6)",
+        "e4(V4)",
+        "lambda(V6+V4)=(p1(V6)+p1(V4))/2"
+      ],
+      "mod2_reductions": [
+        "x^2",
+        "b",
+        "a+b+x^2"
+      ]
+    },
+    "Omega5Spin": "0",
+    "P": "(SU4 x SU2L x SU2R)/Z2_diag",
+    "all_total_degree_five_E3_terms_zero": true,
+    "cohomology_bases_mod2": {
+      "H2": [
+        "x"
+      ],
+      "H3": [
+        "y"
+      ],
+      "H4": [
+        "x^2",
+        "a=w4(V6)",
+        "b=w4(V4)"
+      ],
+      "H5": [
+        "x*y"
+      ],
+      "H6": [
+        "x^3",
+        "y^2",
+        "x*a",
+        "x*b",
+        "c=w6(V6)"
+      ]
+    },
+    "d2_into_E2_4_1": {
+      "image_equals_outgoing_kernel": true,
+      "image_generators_in_H4_dual_basis": [
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "rank": 2
+    },
+    "d2_out_of_E2_4_1": {
+      "kernel_dimension": 2,
+      "matrix_rows_H2_columns_H4": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "rank": 1
+    },
+    "higher_differential_or_extension_room": false,
+    "integral_homology_low_degrees": {
+      "H2": "Z2",
+      "H3": "0",
+      "H4": "Z^3",
+      "H5": "Z2"
+    },
+    "integral_reduction_fact": "The annihilator of im[H6(Z)->H6(F2)] is exactly <y^2>; equivalently the only degree-six class invisible to integral six-cycles is the Bockstein image Sq1(xy).",
+    "not_the_spin_charge_spectrum": true,
+    "ordinary_tangential_spectrum": "MSpin smash B(internal_group)_+",
+    "other_total_degree_five_terms": {
+      "E2_3_2": "Z2",
+      "E2_5_0": "Z2",
+      "E3_3_2_dimension": 0,
+      "E3_5_0_dimension": 0,
+      "d2_5_0_rank": 1,
+      "d2_5_1_rank": 1
+    },
+    "relations": [
+      "x=w2(V6)=w2(V4)",
+      "y=w3(V6)=w3(V4)=Sq1(x)",
+      "w5(V6)=0"
+    ],
+    "space": "BP",
+    "steenrod_operations": {
+      "Sq1(x*y)": "y^2",
+      "Sq2(x)": "x^2",
+      "Sq2(y)": "x*y",
+      "Sq2_on_H4_mod_annihilator": {
+        "a=w4(V6)": "x*a+c",
+        "b=w4(V4)": "x*b",
+        "x^2": "y^2 (zero modulo the integral-reduction annihilator <y^2>)"
+      }
+    }
+  },
+  "AHSS_BPxU1F": {
+    "E3_4_1_dimension": 0,
+    "H4_integral_lattice_for_P": {
+      "all_three_H4_mod2_classes_integrally_represented": true,
+      "basis": [
+        "p1(V6)",
+        "e4(V4)",
+        "lambda(V6+V4)=(p1(V6)+p1(V4))/2"
+      ],
+      "mod2_reductions": [
+        "x^2",
+        "b",
+        "a+b+x^2"
+      ]
+    },
+    "Omega5Spin": "0",
+    "P": "(SU4 x SU2L x SU2R)/Z2_diag",
+    "all_total_degree_five_E3_terms_zero": true,
+    "cohomology_bases_mod2": {
+      "H2": [
+        "x",
+        "u"
+      ],
+      "H3": [
+        "y"
+      ],
+      "H4": [
+        "x^2",
+        "x*u",
+        "u^2",
+        "a=w4(V6)",
+        "b=w4(V4)"
+      ],
+      "H5": [
+        "x*y",
+        "u*y"
+      ],
+      "H6": [
+        "x^3",
+        "y^2",
+        "x^2*u",
+        "x*u^2",
+        "u^3",
+        "x*a",
+        "x*b",
+        "u*a",
+        "u*b",
+        "c=w6(V6)"
+      ]
+    },
+    "d2_into_E2_4_1": {
+      "image_equals_outgoing_kernel": true,
+      "image_generators_in_H4_dual_basis": [
+        [
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "rank": 3
+    },
+    "d2_out_of_E2_4_1": {
+      "kernel_dimension": 3,
+      "matrix_rows_H2_columns_H4": [
+        [
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ]
+      ],
+      "rank": 2
+    },
+    "higher_differential_or_extension_room": false,
+    "integral_homology_low_degrees": {
+      "H2": "Z + Z2",
+      "H3": "0",
+      "H4": "Z^4 + Z2",
+      "H5": "Z2"
+    },
+    "integral_reduction_fact": "The annihilator of im[H6(Z)->H6(F2)] is exactly <y^2>; equivalently the only degree-six class invisible to integral six-cycles is the Bockstein image Sq1(xy).",
+    "not_the_spin_charge_spectrum": true,
+    "ordinary_tangential_spectrum": "MSpin smash B(internal_group)_+",
+    "other_total_degree_five_terms": {
+      "E2_3_2": "Z2",
+      "E2_5_0": "Z2",
+      "E3_3_2_dimension": 0,
+      "E3_5_0_dimension": 0,
+      "d2_5_0_rank": 1,
+      "d2_5_1_rank": 1
+    },
+    "relations": [
+      "x=w2(V6)=w2(V4)",
+      "y=w3(V6)=w3(V4)=Sq1(x)",
+      "w5(V6)=0"
+    ],
+    "space": "B(P x U1F)",
+    "steenrod_operations": {
+      "Sq1(x*u)": "y*u",
+      "Sq1(x*y)": "y^2",
+      "Sq2(u)": "u^2",
+      "Sq2(x)": "x^2",
+      "Sq2(y)": "x*y",
+      "Sq2_on_H4_mod_annihilator": {
+        "a=w4(V6)": "x*a+c",
+        "b=w4(V4)": "x*b",
+        "u^2": "0",
+        "x*u": "x^2*u+x*u^2",
+        "x^2": "y^2 (zero modulo the integral-reduction annihilator <y^2>)"
+      }
+    }
+  },
+  "APS_eta_conclusion": {
+    "absolute_exponentiated_eta_value_computed": false,
+    "absolute_phase_not_an_anomaly": true,
+    "allowed_126_terms_requiring_final_KK_operator": [
+      "bar126 HLF HRA",
+      "126 HLA HRF"
+    ],
+    "existence_of_gauge_invariant_Dai_Freed_trivialization": true,
+    "gate_effect": "G1 is closed as the microscopic gauge/global-anomaly consistency gate.  The remaining coupled-boundary, KK, vacuum and phenomenology obligations belong to G2--G8.",
+    "gauge_anomaly_obstruction": "CANCELLED",
+    "logical_effect": "Those data can change a gauge-invariant absolute phase and thresholds, but cannot resurrect the bordism/global gauge anomaly proved absent here.",
+    "neutral_cross_couplings_requiring_selector_or_inclusion": [
+      "STheta Phi(210)^2",
+      "STheta 126 bar126"
+    ],
+    "unfixed_data": [
+      "gauge and metric background on a chosen five/six-manifold",
+      "odd bulk-mass and Pauli-Villars regulator orientations",
+      "renormalized self-adjoint source-wall extension after all allowed 126 couplings",
+      "the enlarged coupled KK spectrum including gauginos, hyperinos, boundary fermions and 210",
+      "integer gauge-invariant Chern-Simons/local counterterm convention"
+    ],
+    "why": [
+      "wall-local anomaly polynomials vanish",
+      "Omega5Spin(B(P x U1F))=0, including non-liftable quotient bundles",
+      "Omega6Spin of the standard interval pair is zero",
+      "the residual Z6 anomaly is a natural pullback of the zero continuous-parent class"
+    ]
+  },
+  "Spin10xU1F": {
+    "AHSS_reason": "Below degree seven H*(BSpin10;F2) starts with w4 and w6=Sq2(w4). Together with Sq2(u)=u^2, the total-degree-five AHSS terms are killed; the total-degree-six free classes are the two BU1 classes and u*lambda10.",
+    "Omega5Spin": "0",
+    "Omega6Spin": "Z^3",
+    "Omega6_free_generators": [
+      "U1F^3",
+      "U1F-gravity^2",
+      "U1F-Spin(10)^2"
+    ],
+    "Omega6_torsion": "0",
+    "group": "Spin(10) x U1F",
+    "primary_cross_check": "Omega5Spin(BSpin(n))=0 for n>=8"
+  },
+  "actual_V46_spectrum": {
+    "PS_boundary": [
+      "3 Q(4,2,1)_+1",
+      "3 Qc(bar4,1,2)_-1",
+      "H(1,2,2)_0"
+    ],
+    "bulk_hypers_primitive": [
+      {
+        "eta0": 1,
+        "etaL": 1,
+        "name": "HLF",
+        "qF": 1,
+        "rep": "16"
+      },
+      {
+        "eta0": 1,
+        "etaL": 1,
+        "name": "HLA",
+        "qF": -4,
+        "rep": "bar16"
+      },
+      {
+        "eta0": -1,
+        "etaL": 1,
+        "name": "HRA",
+        "qF": -1,
+        "rep": "16"
+      },
+      {
+        "eta0": -1,
+        "etaL": 1,
+        "name": "HRF",
+        "qF": 4,
+        "rep": "bar16"
+      }
+    ],
+    "five_dimensional_parity_levels": {
+      "common_orientation_net_zero": true,
+      "common_orientation_totals": {
+        "delta_k_F_Spin10_squared": 0,
+        "delta_k_F_cubed": 0,
+        "delta_k_F_gravity": 0,
+        "delta_k_Spin10_cubed": 0
+      },
+      "every_individual_shift_in_closed_spin_U1_lattice": true,
+      "integer_levels_fixed_by_V46": false
+    },
+    "ordinary_local_anomaly_ledgers_in_V45_units": {
+      "PS_boundary": {
+        "SU4_cubed": 0,
+        "U1F_SU2L_squared_doubled": 36,
+        "U1F_SU2R_squared_doubled": -36,
+        "U1F_SU4_squared_doubled": 0,
+        "U1F_cubed": 0,
+        "gravity_squared_U1F": 0
+      },
+      "PS_bulk_half_density": {
+        "SU4_cubed": 0,
+        "U1F_SU2L_squared_doubled": -36,
+        "U1F_SU2R_squared_doubled": 36,
+        "U1F_SU4_squared_doubled": 0,
+        "U1F_cubed": 0,
+        "gravity_squared_U1F": 0
+      },
+      "PS_sum": {
+        "SU4_cubed": 0,
+        "U1F_SU2L_squared_doubled": 0,
+        "U1F_SU2R_squared_doubled": 0,
+        "U1F_SU4_squared_doubled": 0,
+        "U1F_cubed": 0,
+        "gravity_squared_U1F": 0
+      },
+      "Spin10_boundary": {
+        "Spin10_cubed": 0,
+        "U1F_Spin10_squared_doubled": 0,
+        "U1F_cubed": 0,
+        "gravity_squared_U1F": 0
+      },
+      "Spin10_bulk_half_density": {
+        "Spin10_cubed": 0,
+        "U1F_Spin10_squared_doubled": 0,
+        "U1F_cubed": 0,
+        "gravity_squared_U1F": 0
+      },
+      "Spin10_sum": {
+        "Spin10_cubed": 0,
+        "U1F_Spin10_squared_doubled": 0,
+        "U1F_cubed": 0,
+        "gravity_squared_U1F": 0
+      },
+      "both_walls_zero": true
+    },
+    "source_boundary": [
+      "ThetaPlus_+3",
+      "ThetaMinus_-3",
+      "STheta_0",
+      "126_0",
+      "bar126_0",
+      "210_0 repair"
+    ],
+    "source_multiplets": {
+      "126_plus_bar126": "neutral conjugate pair; local rows cancel and no Omega5 torsion exists",
+      "210": "neutral real representation; adds no U1 rows and no Omega5 torsion exists",
+      "Theta_pair": "charges +3 and -3; U1 cubic and gravitational rows cancel"
+    },
+    "torsion_anomaly_homomorphism": {
+      "actual_fermion_homomorphism": "the unique zero homomorphism",
+      "domain": "Omega5Spin(B(P x U1F))",
+      "domain_group": "0",
+      "nonliftable_PS_bundles_included": true,
+      "number_of_surviving_generators_to_evaluate": 0
+    }
+  },
+  "apparent_quotient_torsion": {
+    "AHSS_fate": "killed by d2; it is not a bordism invariant on closed spin five-manifolds",
+    "candidate": "integral of x*Sq1(x)=x*y",
+    "identity": "x*y=Sq2(y) because w5(V6)=0",
+    "new_pure_quotient_torsion_class_exists": false,
+    "spin_Wu_evaluation": "int_M Sq2(y)=int_M v2(TM)*y=int_M w2(TM)*y=0"
+  },
+  "comparison_warning": {
+    "Wan_Wang_tables_not_imported": true,
+    "reason": "Their Pati-Salam tables use an outer /Z2^F spin-charge tangential structure. Its Thom class obeys Sq2(U)=xU, whereas ordinary MSpin smash BP+ has Sq2(U)=0.",
+    "reason_2": "Omega5Spin(B(SU4 x SU2L x SU2R))=Z2^2 is for the simply-connected product; the diagonal quotient changes the AHSS and here removes both cover classes.",
+    "unquotiented_PS_result_not_imported": true
+  },
+  "core_sha256": "ba075f6e31dc91a63692eeee02ea39095afd60f61922871e057859e50d0c0610",
+  "decision": {
+    "G1_closed": true,
+    "G1_closure_reason": "Both wall-local anomaly polynomials vanish; all free parity levels admit quantized counterterms; the absolute and relative torsion obstruction groups vanish; and the residual Z6 class is the pullback of the zero continuous-parent anomaly.",
+    "G1_promoted": true,
+    "G2_through_G8_open": true,
+    "absolute_KK_eta_phase_closed": false,
+    "absolute_KK_eta_phase_required_for_gauge_consistency": false,
+    "global_eta_anomaly_subproblem_closed": true,
+    "remaining_global_bordism_obstruction_found": false,
+    "theory_complete": false
+  },
+  "group_and_bundle_geometry": {
+    "P": "(SU4 x SU2L x SU2R)/Z2_diag = (Spin6 x Spin4)/Z2_diag",
+    "bundle_description": "A P bundle determines oriented V6,V4 with x=w2(V6)=w2(V4); x!=0 is precisely failure to lift to SU4 x SU2L x SU2R.",
+    "embedding_into_Spin10": "V10=V6+V4 has w2(V10)=x+x=0, so every P bundle, including x!=0, extends along P -> Spin10.",
+    "exact_sequence": "1 -> Z2 -> P -> SO6 x SO4 -> 1",
+    "spacetime_structure": "ordinary independent Spin; no gauge centre is identified with (-1)^F"
+  },
+  "input_core_sha256": {
+    "V45_reconciled_bulk": "2d1e67bff06482fbb6b6e26b3153f8c49e6cd802d07f38e6de2a3505003888d7",
+    "V46_global_parity_eta": "652dd2dfbedd023480b9ead27cdb6a69155789d677565d711a8cecc7eb335470",
+    "V46_source_higgs": "34259ffbc44fcae35443c020f27113dab2daa751d4485e55e4083c73bce2beb3",
+    "V46_spinor_KK": "9b814b32381d2b476f4368054e8f27eedb1423740ac829755ab7570d862d71e8"
+  },
+  "input_sha256": {
+    "V45_reconciled_bulk": "92dc538c67d1e455d8eab36a1d3a1cd7ccb254f1a131cb9af30f4eb45ab35a38",
+    "V46_global_parity_eta": "a26cb28abdee875a35d4dc683af88de7290d0f19e21ca4d1800971b92057ecc1",
+    "V46_source_higgs": "ee9fd4b3c1a1f2bd7796d6b637d5dc6d483d31a6c402f8dfc6d4692840e3929c",
+    "V46_spinor_KK": "744347c6116aa74a333cd3d3ee299d7e1ede1d948a57982bd87b3a640d896511"
+  },
+  "mixed_U1F_quotient_direction": {
+    "AHSS_fate": "hit by d2 from integral H6; no E3 survivor",
+    "Sq2": "Sq2(x*u)=x^2*u+x*u^2",
+    "candidate_E2_direction": "x*u in H4(B(P x U1F);F2)",
+    "new_mixed_global_class_exists": false
+  },
+  "primary_sources": [
+    {
+      "citation": "Wan and Wang, JHEP 07 (2020) 062",
+      "url": "https://arxiv.org/abs/1910.14668",
+      "use": "Serre differential and low mod-two cohomology relations for BP; comparison of tangential structures"
+    },
+    {
+      "citation": "Davighi, Gripaios and Lohitsiri, JHEP 07 (2020) 232",
+      "url": "https://arxiv.org/abs/1910.11277",
+      "use": "homological spin-AHSS d2=dual Sq2 formulas and unquotiented Pati-Salam comparison"
+    },
+    {
+      "citation": "Garcia-Etxebarria and Montero, JHEP 08 (2019) 003",
+      "url": "https://arxiv.org/abs/1808.00009",
+      "use": "Omega5Spin(BSpin(n))=0 for n>=8 and Dai-Freed anomaly criterion"
+    },
+    {
+      "citation": "Witten and Yonekura, SciPost Phys. 8 (2020) 039",
+      "url": "https://arxiv.org/abs/1909.08775",
+      "use": "nonperturbative anomaly inflow and exponentiated APS eta invariant"
+    },
+    {
+      "citation": "Dai and Freed, J. Math. Phys. 35 (1994) 5155",
+      "url": "https://doi.org/10.1063/1.530747",
+      "use": "determinant line and eta-invariant gluing theorem"
+    },
+    {
+      "citation": "Atiyah, Patodi and Singer, Math. Proc. Camb. Phil. Soc. 77 (1975) 43",
+      "url": "https://doi.org/10.1017/S0305004100049410",
+      "use": "spectral asymmetry and index theorem on manifolds with boundary"
+    }
+  ],
+  "residual_Z6_mixing": {
+    "all_Z6_bundles_extend_structure_group_to_PxU1F": true,
+    "anomaly_naturality": "The determinant anomaly of the restricted fermion representation is the pullback of its P x U1F anomaly.",
+    "embedding": "Z6 -> P x U1F sends a generator to the order-two matter-parity centre element and the order-three U1F element.",
+    "important_scope": "This does not claim Omega5Spin(B(P x Z6)) vanishes for arbitrary spectra.  It proves that the V46 spectrum inherited from the anomaly-free continuous parent has zero class.",
+    "mixed_nonliftable_PS_Z6_class_for_this_UV_spectrum": "0",
+    "parent_continuous_anomaly_class": "0",
+    "pulled_back_Z6_class": "0",
+    "unbroken_group": "Z3_F x Z2_M ~= Z6"
+  },
+  "schema": "susy-v47-relative-eta-bordism-audit-v1",
+  "scope": "Exact ordinary-Spin global gauge-anomaly and standard interval-relative bordism audit of the V46 compact witness with the neutral 210 repair.",
+  "standard_interval_relative_pair": {
+    "Omega6Spin_relative": "0",
+    "endpoint_groups": {
+      "Omega5_B_PxU1": "0",
+      "Omega5_B_Spin10xU1": "0",
+      "Omega6_B_Spin10xU1": "Z^3"
+    },
+    "interval_background_homotopy_pullback": "B(P x U1F) x^h_{B(Spin10 x U1F)} B(Spin10 x U1F) ~= B(P x U1F)",
+    "pair": "(B(Spin10 x U1F), B(P x U1F))",
+    "physical_model": "A Spin10 x U1F bulk bundle with a P x U1F reduction at y=0 and no further reduction at the full-Spin10 wall y=L.",
+    "pure_gauge_subpair_also_zero": true,
+    "relevant_long_exact_segment": "Omega6(B(PxU1))->Omega6(B(Spin10xU1))->Omega6(pair)->Omega5(B(PxU1))->Omega5(B(Spin10xU1))",
+    "scope": "This is the standard generalized-homology pair/cofiber model.  No reflection is gauged.  If the orbifold reflection itself is promoted to a microscopic spacetime symmetry, a separate equivariant/Pin bordism problem would have to be specified.",
+    "surjectivity_witness": {
+      "characteristic_class_identity": "i^*lambda10 = lambda(V6+V4) = -(c2(SU4)+c2(SU2L)+c2(SU2R)) on the simply-connected cover",
+      "coefficient_gcd": 1,
+      "map_Omega6_is_surjective": true,
+      "mixed_generator": "A unit SU2L instanton is a liftable P bundle and maps to a primitive Spin10 lambda10 instanton.",
+      "two_pure_U1_generators": "Use trivial P/Spin10 bundle; BU1 -> B(PxU1) -> B(Spin10xU1) splits these classes."
+    }
+  },
+  "status": "V47_ORDINARY_SPIN_PS_QUOTIENT_AND_U1F_OMEGA5_ZERO__STANDARD_PAIR_RELATIVE_OMEGA6_ZERO__NONLIFTABLE_AND_RESIDUAL_Z6_GLOBAL_ANOMALY_OBSTRUCTION_CANCELLED__ABSOLUTE_APS_PHASE_NOT_AN_ANOMALY__G1_MICROSCOPIC_CONSISTENCY_PROMOTED__G2_TO_G8_OPEN",
+  "upstream_core_hashes_validated": true
+}

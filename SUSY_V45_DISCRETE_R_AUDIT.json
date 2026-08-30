@@ -1,0 +1,404 @@
+{
+  "benchmarks": {
+    "Z5R_integrated_screen": {
+      "anomalies": {
+        "common_126_shift_doubled": -140,
+        "doubled_modulus": 10,
+        "doubled_nonabelian": {
+          "SU2L": -120,
+          "SU2R": -120,
+          "SU4": -120
+        },
+        "eta": 5,
+        "gravity": -195,
+        "gravity_exact_screen": true,
+        "gravity_residue_mod_eta": 0,
+        "gravity_universal_GS_screen": true,
+        "mixed_equal_level_universal": true,
+        "mixed_exact_no_GS": true,
+        "normalization": "Atilde_G=2 A_G with 2T(fund)=1; standard eta=N for odd N and N/2 for even N.",
+        "standard_nonabelian": {
+          "SU2L": -60,
+          "SU2R": -60,
+          "SU4": -60
+        },
+        "standard_residues_mod_eta": {
+          "SU2L": 0,
+          "SU2R": 0,
+          "SU4": 0
+        }
+      },
+      "charges": {
+        "A16_plus3": 2,
+        "Bbar16_minus12": 0,
+        "C16_minus3": 2,
+        "Dbar16_plus12": 0,
+        "Delta126": 0,
+        "DeltaBar126": 0,
+        "H": 3,
+        "Q": 2,
+        "Qc": 2,
+        "SDelta": 2,
+        "STheta": 2,
+        "ThetaMinus": 0,
+        "ThetaPlus": 0
+      },
+      "dangerous_126_portal_charges": {
+        "A16_C16_DeltaBar126": 4,
+        "Bbar16_Dbar16_Delta126": 0
+      },
+      "degree20_plus_R_charge": 2,
+      "terms": {
+        "W_target": 2,
+        "all_allowed": true,
+        "charges": {
+          "Q_H_Qc": 2,
+          "SDelta_Delta126_DeltaBar126": 2,
+          "SDelta_constant_spurion": 2,
+          "STheta_ThetaPlus_ThetaMinus": 2,
+          "STheta_constant_spurion": 2,
+          "ThetaMinus_C16_Dbar16": 2,
+          "ThetaPlus_A16_Bbar16": 2
+        },
+        "mu_HH_charge": 1,
+        "mu_HH_forbidden": true
+      },
+      "verdict": "A clean conventional integrated no-GS screen, not a 5D completion; the degree-20 oriented W witness is allowed."
+    },
+    "Z6R_integrated_screen": {
+      "anomalies": {
+        "common_126_shift_doubled": -140,
+        "doubled_modulus": 6,
+        "doubled_nonabelian": {
+          "SU2L": -138,
+          "SU2R": -138,
+          "SU4": -132
+        },
+        "eta": 3,
+        "gravity": -255,
+        "gravity_exact_screen": true,
+        "gravity_residue_mod_eta": 0,
+        "gravity_universal_GS_screen": true,
+        "mixed_equal_level_universal": true,
+        "mixed_exact_no_GS": true,
+        "normalization": "Atilde_G=2 A_G with 2T(fund)=1; standard eta=N for odd N and N/2 for even N.",
+        "standard_nonabelian": {
+          "SU2L": -69,
+          "SU2R": -69,
+          "SU4": -66
+        },
+        "standard_residues_mod_eta": {
+          "SU2L": 0,
+          "SU2R": 0,
+          "SU4": 0
+        }
+      },
+      "charges": {
+        "A16_plus3": 1,
+        "Bbar16_minus12": 1,
+        "C16_minus3": 1,
+        "Dbar16_plus12": 1,
+        "Delta126": 0,
+        "DeltaBar126": 0,
+        "H": 0,
+        "Q": 1,
+        "Qc": 1,
+        "SDelta": 2,
+        "STheta": 2,
+        "ThetaMinus": 0,
+        "ThetaPlus": 0
+      },
+      "contains_matter_parity_pattern": true,
+      "degree20_plus_R_charge": 2,
+      "terms": {
+        "W_target": 2,
+        "all_allowed": true,
+        "charges": {
+          "Q_H_Qc": 2,
+          "SDelta_Delta126_DeltaBar126": 2,
+          "SDelta_constant_spurion": 2,
+          "STheta_ThetaPlus_ThetaMinus": 2,
+          "STheta_constant_spurion": 2,
+          "ThetaMinus_C16_Dbar16": 2,
+          "ThetaPlus_A16_Bbar16": 2
+        },
+        "mu_HH_charge": 0,
+        "mu_HH_forbidden": true
+      },
+      "verdict": "The minimal even integrated screen passes and contains the usual odd-spinor/even-H pattern, but it allows both 126-spinor portals and the degree-20 oriented W witness."
+    },
+    "inherited_Z4R": {
+      "anomalies": {
+        "common_126_shift_doubled": -140,
+        "doubled_modulus": 4,
+        "doubled_nonabelian": {
+          "SU2L": -138,
+          "SU2R": -138,
+          "SU4": -132
+        },
+        "eta": 2,
+        "gravity": -255,
+        "gravity_exact_screen": false,
+        "gravity_residue_mod_eta": 1,
+        "gravity_universal_GS_screen": false,
+        "mixed_equal_level_universal": false,
+        "mixed_exact_no_GS": false,
+        "normalization": "Atilde_G=2 A_G with 2T(fund)=1; standard eta=N for odd N and N/2 for even N.",
+        "standard_nonabelian": {
+          "SU2L": -69,
+          "SU2R": -69,
+          "SU4": -66
+        },
+        "standard_residues_mod_eta": {
+          "SU2L": 1,
+          "SU2R": 1,
+          "SU4": 0
+        }
+      },
+      "charges": {
+        "A16_plus3": 1,
+        "Bbar16_minus12": 1,
+        "C16_minus3": 1,
+        "Dbar16_plus12": 1,
+        "Delta126": 0,
+        "DeltaBar126": 0,
+        "H": 0,
+        "Q": 1,
+        "Qc": 1,
+        "SDelta": 2,
+        "STheta": 2,
+        "ThetaMinus": 0,
+        "ThetaPlus": 0
+      },
+      "terms": {
+        "W_target": 2,
+        "all_allowed": true,
+        "charges": {
+          "Q_H_Qc": 2,
+          "SDelta_Delta126_DeltaBar126": 2,
+          "SDelta_constant_spurion": 2,
+          "STheta_ThetaPlus_ThetaMinus": 2,
+          "STheta_constant_spurion": 2,
+          "ThetaMinus_C16_Dbar16": 2,
+          "ThetaPlus_A16_Bbar16": 2
+        },
+        "mu_HH_charge": 0,
+        "mu_HH_forbidden": true
+      },
+      "verdict": "Required terms pass, but the mixed PS residues are nonuniversal; this is not an exact/one-axion-GS completion."
+    }
+  },
+  "conventions": {
+    "eta": "N for odd N; N/2 for even N",
+    "mixed_anomaly": "A_G=sum T(R_i)(r_i-1)+T(adj); calculations store Atilde_G=2A_G",
+    "superpotential_charge": 2,
+    "universal_GS": "equal PS levels and one residue rho: A4=A2L=A2R=rho mod eta; A_grav=24rho mod eta"
+  },
+  "core_sha256": "4a214e7f34ae2d9fc6b8d16b5aefd990ee6a886b26aaac380e421500171f83e1",
+  "decision": {
+    "G1_closed": false,
+    "G7_closed": false,
+    "any_candidate_forbids_first_oriented_local_W_invariant": false,
+    "discrete_R_sector_complete": false,
+    "inherited_Z4R_retained_as_exact": false,
+    "ordinary_exact_R_massive_packet_repair_exists": false,
+    "some_integrated_exact_candidates_exist": true
+  },
+  "degree20_forcing_theorem": {
+    "assumptions": [
+      "The three Q families have one charge q and the three Qc families one charge qc. A generic 3x3 Q_i H Qc_j matrix enforces this family universality.",
+      "Q H Qc, ThetaPlus A16 Bbar16, and ThetaMinus C16 Dbar16 are allowed W terms.",
+      "r(ThetaPlus)=t and r(ThetaMinus)=-t; no value of r(H)=h is assumed.",
+      "The three PS factors have equal level and one universal GS residue, so A4=A2L=A2R mod eta.",
+      "Any 126/bar126 or other complete-Spin10 threshold contributes the same common shift C to all three mixed rows."
+    ],
+    "conclusion": "No Z_N^R satisfying these equal-level universal mixed-anomaly conditions can forbid both first oriented degree-20 local invariants.",
+    "deduction": [
+      "Adding the two differences gives 12-4h=0 mod 2eta.",
+      "Substitution gives 12q+6-4t=0 mod 2eta and therefore mod N.",
+      "The conjugate equation is 12qc+6+4t=0 mod N."
+    ],
+    "difference_equations_mod_2eta": [
+      "A4-A2L = 18-8h-12q+4t = 0",
+      "A4-A2R = -6+4h+12q-4t = 0 after qc=2-h-q"
+    ],
+    "doubled_rows_mod_2eta": {
+      "A2L": "12q+2h-10-4t+C",
+      "A2R": "12qc+2h-10+4t+C",
+      "A4": "8-6h+C"
+    },
+    "escape_routes_not_solutions": [
+      "family-nonuniversal R charges together with a rebuilt flavour/Yukawa texture",
+      "nonuniversal localized GS axions or boundary counterterms with explicit quantized couplings",
+      "a changed light chiral spectrum or changed required mass/Yukawa couplings",
+      "an R-breaking rather than exact-R mass threshold"
+    ],
+    "minus_witness": {
+      "R_charge": "12qc+4(c+d)=12qc+8+4t=2 mod N",
+      "U1F": 0,
+      "degree": 20,
+      "operator": "[eps4 eps2 eps2 Qc1 Qc1 Qc2 Qc2]^3 [delta4 eps2 RA RF]^4",
+      "orientation": -12
+    },
+    "plus_witness": {
+      "R_charge": "12q+4(a+b)=12q+8-4t=2 mod N",
+      "U1F": 0,
+      "degree": 20,
+      "explicit_nonzero_quartic_evaluation": 4,
+      "operator": "[eps4 eps2 eps2 Q1 Q1 Q2 Q2]^3 [delta4 eps2 LF LA]^4",
+      "orientation": 12
+    },
+    "required_congruences_mod_N": [
+      "q+qc+h=2",
+      "a+b+t=2",
+      "c+d-t=2"
+    ]
+  },
+  "fail_closed_boundary": {
+    "KK_eta_and_quantized_inflow_computed": false,
+    "Spin_ZNR_bordism_for_actual_global_quotient_computed": false,
+    "candidate_promoted_to_exact_5D_symmetry": false,
+    "complete_5D_gravity_radion_regulator_spectrum_computed": false,
+    "gates_promoted": [],
+    "localized_bulk_and_boundary_discrete_anomalies_computed": false,
+    "reason": "Integrated residues are necessary arithmetic only. Bulk hypermultiplets, orbifold parities, boundary gauginos, heavy KK thresholds, the gravity/radion sector, and the actual Spin^Z_N global structure can change or obstruct the localized/global answer."
+  },
+  "finite_integrated_search": {
+    "assumptions": [
+      "ThetaPlus and ThetaMinus are R-neutral, so their nonzero VEVs preserve the full Z_N^R.",
+      "Delta126 and DeltaBar126 are R-neutral and SDelta has charge two.",
+      "The displayed four-dimensional zero-mode/brane spectrum is used; localized KK and gravity sectors are omitted.",
+      "The mu bilinear H H is required to be absent."
+    ],
+    "orders_passing_the_conventional_exact_integrated_screen": [
+      3,
+      5,
+      6,
+      10,
+      15,
+      30
+    ],
+    "qualification": "Every candidate still allows the forced degree-20 oriented W operator and is not a 5D anomaly certificate.",
+    "range": [
+      3,
+      96
+    ],
+    "rows": [
+      {
+        "eta": 3,
+        "first_representative": {
+          "A16": 0,
+          "Bbar16": 2,
+          "C16": 2,
+          "Dbar16": 0,
+          "H": 0,
+          "Q": 0,
+          "Qc": 2
+        },
+        "number_of_charge_representatives": 3,
+        "order": 3
+      },
+      {
+        "eta": 5,
+        "first_representative": {
+          "A16": 2,
+          "Bbar16": 0,
+          "C16": 2,
+          "Dbar16": 0,
+          "H": 3,
+          "Q": 2,
+          "Qc": 2
+        },
+        "number_of_charge_representatives": 1,
+        "order": 5
+      },
+      {
+        "eta": 3,
+        "first_representative": {
+          "A16": 0,
+          "Bbar16": 2,
+          "C16": 2,
+          "Dbar16": 0,
+          "H": 0,
+          "Q": 0,
+          "Qc": 2
+        },
+        "number_of_charge_representatives": 12,
+        "order": 6
+      },
+      {
+        "eta": 5,
+        "first_representative": {
+          "A16": 2,
+          "Bbar16": 0,
+          "C16": 2,
+          "Dbar16": 0,
+          "H": 8,
+          "Q": 2,
+          "Qc": 2
+        },
+        "number_of_charge_representatives": 4,
+        "order": 10
+      },
+      {
+        "eta": 15,
+        "first_representative": {
+          "A16": 2,
+          "Bbar16": 0,
+          "C16": 12,
+          "Dbar16": 5,
+          "H": 3,
+          "Q": 2,
+          "Qc": 12
+        },
+        "number_of_charge_representatives": 3,
+        "order": 15
+      },
+      {
+        "eta": 15,
+        "first_representative": {
+          "A16": 2,
+          "Bbar16": 0,
+          "C16": 12,
+          "Dbar16": 20,
+          "H": 18,
+          "Q": 2,
+          "Qc": 12
+        },
+        "number_of_charge_representatives": 12,
+        "order": 30
+      }
+    ]
+  },
+  "massive_packet_no_go": {
+    "claim": "An ordinary symmetry-preserving massive vectorlike PS packet cannot repair the congruence no-go.",
+    "complex_pair_proof": "For X in R and Xbar in barR, an invariant nondegenerate mass requires rX+rXbar=2 mod N. Its mixed contribution is T(R)[(rX-1)+(rXbar-1)]=0 mod eta.",
+    "real_or_pseudoreal_qualification": "A permitted Majorana/Pfaffian block obeys the analogous mass-determinant condition; its perturbative mixed anomaly shift is trivial modulo eta. A nontrivial gapped topological sector would be new microscopic input, not an ordinary massive matter packet.",
+    "smallest_honest_rep_comment": "A (1,2,2) is honest under the PS diagonal Z2 and can change SU2L/R rows only if it remains R-chiral. If its exact-R mass is allowed, its anomaly shift is trivial; if not, it is an added light field or needs R breaking.",
+    "valid_massive_repair_found": false
+  },
+  "primary_sources": [
+    {
+      "supports": "standard discrete-R anomaly coefficients, eta convention, and anomaly universality",
+      "title": "Lee et al., Discrete R symmetries for the MSSM and its singlet extensions",
+      "url": "https://arxiv.org/abs/1102.3595"
+    },
+    {
+      "supports": "dependence of low-energy anomaly claims on microscopic GS fields and heavy thresholds",
+      "title": "Dine and Monteux, Discrete R Symmetries and Anomalies",
+      "url": "https://arxiv.org/abs/1212.4371"
+    },
+    {
+      "supports": "localized orbifold anomaly and inflow constraints",
+      "title": "von Gersdorff and Quiros, Localized anomalies in orbifold gauge theories",
+      "url": "https://arxiv.org/abs/hep-th/0305024"
+    },
+    {
+      "supports": "global anomaly/inflow information beyond local anomaly polynomials",
+      "title": "Witten and Yonekura, Anomaly Inflow and the eta-Invariant",
+      "url": "https://arxiv.org/abs/1909.08775"
+    }
+  ],
+  "scope": "Family-universal discrete-R charge search for the reconciled minimal V45 core; conventional integrated anomaly screen and exact orientation theorem only.",
+  "status": "V45_INTEGRATED_DISCRETE_R_CANDIDATES_EXIST__EQUAL_LEVEL_PS_UNIVERSALITY_FORCES_THE_DEGREE20_ORIENTED_W_OPERATOR__NO_SYMMETRY_PRESERVING_MASSIVE_PACKET_REPAIR__LOCALIZED_GLOBAL_COMPLETION_OPEN"
+}

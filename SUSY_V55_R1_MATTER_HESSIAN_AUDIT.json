@@ -1,0 +1,346 @@
+{
+  "Spin10_running": {
+    "b_Spin10": 18,
+    "matter_and_singlet_extension_changes_V54_running": false,
+    "pole_ratio_at_g_0p73": 3756.9333788231534,
+    "sum_T_Spin10": 42
+  },
+  "artifact_manifest": {
+    "script": {
+      "path": "susy_v55_r1_matter_hessian_audit.py",
+      "sha256": "f70ea9c1e4ff6382d64b108fb711421ba5d8137f04e505feec65cadf2a3c3a91"
+    },
+    "test": {
+      "path": "test_susy_v55_r1_matter_hessian_audit.py",
+      "sha256": "2950440148a90555a3fb161c1813977d37d328c4c2f4b764c4e26be248872e3f"
+    }
+  },
+  "charges_action_and_operator_screen": {
+    "Majorana": "(1/2) (P^2 R^2/M_*^3) Mu_ij N_i N_j, with Mu=I at the witness",
+    "RHN_link": "Lambda_ij F_i barC N_j, with Lambda=I at the witness",
+    "all_displayed_terms_neutral": true,
+    "charges": {
+      "F1": 11,
+      "F2": 11,
+      "F3": 11,
+      "H1": -22,
+      "H2": 3,
+      "K": 2,
+      "L": 1,
+      "M": -2,
+      "N1": -10,
+      "N2": -10,
+      "N3": -10,
+      "P": 6,
+      "R": 4,
+      "S": -12,
+      "T": -6,
+      "barC": -1,
+      "barh": 16,
+      "h": -4
+    },
+    "declared_sparse_texture": {
+      "Lambda": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "Mu": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "Y10": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "interpretation": "one exact coefficient witness only; zero off-diagonal entries are not symmetry zeros",
+      "protected_by_U1": false
+    },
+    "displayed_term_charges": {
+      "F_i_F_j_H1": 0,
+      "F_i_barC_N_j": 0,
+      "P2_R2_N_i_N_j": 0
+    },
+    "operator_screen": {
+      "F4_safe_through_total_degree8": true,
+      "H1_squared_safe_through_total_degree8": true,
+      "P_squared_H1_squared_charge": -32,
+      "direct_h_H2_charge": -1,
+      "first_F4_dressing": {
+        "fields": [
+          "S",
+          "S",
+          "S",
+          "S",
+          "R"
+        ],
+        "insertions": 5
+      },
+      "first_H1_squared_dressing": {
+        "fields": [
+          "P",
+          "P",
+          "P",
+          "P",
+          "P",
+          "P",
+          "P",
+          "K"
+        ],
+        "insertions": 8
+      }
+    },
+    "other_filter_10_Yukawa_charges": {
+      "F_i_F_j_H2": 25,
+      "F_i_F_j_barh": 38,
+      "F_i_F_j_h": 18
+    },
+    "other_filter_10_Yukawas_forbidden": true,
+    "symmetry_complete_flavor_statement": "U(1) permits every entry of the symmetric F_i F_j H1 matrix, every entry of F_i barC N_j, and every entry of the dressed symmetric N_i N_j matrix",
+    "symmetry_complete_generic_condition": "det(Lambda) != 0; Mu is arbitrary symmetric",
+    "top_Yukawa": "(Y_10)33 F3 F3 H1, with (Y_10)33=1 at the witness"
+  },
+  "checks": {
+    "GS_repair_universal_and_full_rank": true,
+    "Spin10_running_unchanged": true,
+    "V54_core_and_matrices_bound": true,
+    "V54_operator_screen_preserved_through_degree8": true,
+    "bounded_distinct_top_only_short_RHN_screen_no_go": true,
+    "displayed_matter_terms_neutral": true,
+    "local_H197_null83": true,
+    "local_kernel_exact_34plus45plus4": true,
+    "matter_block_rank6_null45": true,
+    "no_gate_promotion": true,
+    "other_filter10_Yukawas_forbidden": true,
+    "universal_action_not_misreported_as_sparse_symmetry": true
+  },
+  "core_sha256": "efe7e8ba789ab93d12fbd4e478af4a91e8e670fe4361b4b4f9191a9e0eb6b098",
+  "fail_closed_findings": [
+    "the U1-universal family assignment does not protect a sparse top-only flavor texture",
+    "the first charge-neutral 16^4 dressing remains at total degree nine",
+    "the exact GS repair adds 133 parity-protected singlets and has a large Abelian normalization",
+    "no global vacuum, Kahler/vector mass matrix, realistic flavor/seesaw fit, proton lifetime, thresholds, SUSY breaking or cosmology is supplied"
+  ],
+  "failures": [],
+  "family_charge_search": {
+    "best_degree_from_internal_sort": 8,
+    "boundary": "finite exact half-integer search, not a theorem for arbitrary long Majorana dressings",
+    "nearest_top_only_candidate": {
+      "Majorana_dressings": [
+        {
+          "fields": [
+            "P",
+            "P",
+            "P"
+          ],
+          "insertions": 3
+        },
+        {
+          "fields": [
+            "P",
+            "P",
+            "P",
+            "L"
+          ],
+          "insertions": 4
+        },
+        {
+          "fields": [
+            "P",
+            "P",
+            "P",
+            "K"
+          ],
+          "insertions": 4
+        }
+      ],
+      "first_F4_dressing": {
+        "dressing": {
+          "fields": [
+            "S",
+            "S",
+            "S",
+            "T"
+          ],
+          "insertions": 4
+        },
+        "family_indices": [
+          0,
+          0,
+          2,
+          2
+        ],
+        "quartic_charge": "42",
+        "total_degree": 8
+      },
+      "qF": [
+        "10",
+        "21/2",
+        "11"
+      ],
+      "qN": [
+        "-9",
+        "-19/2",
+        "-10"
+      ],
+      "rejected_because": "the first proton operator is already total degree eight"
+    },
+    "normalization": "primitive V54 charges with q(L)=1; n_i=2 q(F_i)",
+    "range": {
+      "n1_max": 80,
+      "n1_min": -80,
+      "n2_less_than": 22,
+      "n3": 22
+    },
+    "requirements": [
+      "family-distinct ordered charges",
+      "F3 F3 H1 is the unique renormalizable matter/filter-10 Yukawa",
+      "each diagonal N_i N_i mass has a dressing of at most four VEV insertions",
+      "no charge-neutral 16^4 dressing through total degree eight"
+    ],
+    "scoped_no_go": true,
+    "strict_solution_count": 0
+  },
+  "gate_verdict": {
+    "G1": "FROZEN_PRIOR_NAMESPACE_ONLY",
+    "G2": "OPEN",
+    "G3": "OPEN",
+    "G4": "OPEN",
+    "G5": "OPEN",
+    "G6": "OPEN",
+    "G7": "OPEN",
+    "G8": "OPEN",
+    "promoted_gate_count": 0
+  },
+  "local_matter_hessian_certificate": {
+    "boundary": "holomorphic local Hessian at F_i=N_i=0; 45 light SO(10)-matter coordinates here mean the components orthogonal to the barC singlet-VEV direction before electroweak breaking",
+    "combined_kernel_annihilated": true,
+    "combined_kernel_span_rank": 83,
+    "coordinate_order": [
+      "V54 charged-source/filter/spurion/driver (229)",
+      "F1(16)",
+      "F2(16)",
+      "F3(16)",
+      "N1",
+      "N2",
+      "N3"
+    ],
+    "coordinates": 280,
+    "explicit_matter_kernel_rank": 45,
+    "explicit_weak_kernel_rank": 4,
+    "gauge_orbit_rank": 34,
+    "heavy_RHN_subblock": {
+      "coordinates": 6,
+      "determinant_identity": "det([[0,400 Lambda],[400 Lambda^T,40 Mu]])=-400^6 det(Lambda)^2",
+      "rank": 6
+    },
+    "hessian_nullity": 83,
+    "hessian_rank": 197,
+    "hessian_sha256": "7b82dc04862b86b47543a6b370d5a6849a627a3930f857d40549241b9860c75a",
+    "kernel_decomposition": {
+      "Spin10_gauge": 33,
+      "U1_gauge": 1,
+      "extra": 0,
+      "light_matter": 45,
+      "weak_Higgs": 4
+    },
+    "kernel_exact": true,
+    "matter_block_coordinates": 51,
+    "matter_block_nullity": 45,
+    "matter_block_rank": 6,
+    "orbit_sha256": "e7c2271693d6eeadf662c3048fc022481754b1c542468ed4de97bfc9650a1a02",
+    "ward_product_zero": true
+  },
+  "matrix_hashes": {
+    "GS_repaired_hessian": "9545b9b72db07e336e474167d52596278bb0a8ead228fc0ce69cd14afb98eb16",
+    "GS_repaired_orbit": "c8d1a92d519add6c857bc5a0c0fdbeca7df84af1edcc355ea4c14fde2ed83d14",
+    "local_hessian": "7b82dc04862b86b47543a6b370d5a6849a627a3930f857d40549241b9860c75a",
+    "local_orbit": "e7c2271693d6eeadf662c3048fc022481754b1c542468ed4de97bfc9650a1a02"
+  },
+  "next_kill_test": "replace coefficient-selected flavor sparsity by an explicit family symmetry and rerun the whole-action operator/anomaly/Hessian census; the bounded single-U1 search shows why this cannot be assumed",
+  "schema": "susy_v55_r1_matter_hessian_audit_v1",
+  "scope": "one explicit local supersymmetric action extending the exact V54 rescue by three 16s, three singlet neutrinos and an optional exact singlet-only GS ledger; not a flavor fit or full theory",
+  "single_GS_repaired_action": {
+    "anomalies_after_repair": {
+      "Spin10_squared_U1": 49,
+      "TrQ": 1176,
+      "TrQ2": 21446,
+      "TrQ3": 63240
+    },
+    "anomalies_before_repair": {
+      "Spin10_squared_U1": 49,
+      "TrQ": 385,
+      "TrQ2": 14381,
+      "TrQ3": -6887
+    },
+    "coordinates": 413,
+    "gauge_orbit_rank": 34,
+    "hessian_nullity": 83,
+    "hessian_rank": 330,
+    "hessian_sha256": "9545b9b72db07e336e474167d52596278bb0a8ead228fc0ce69cd14afb98eb16",
+    "kernel_unchanged": true,
+    "mixed_gravity_GS_universality": true,
+    "orbit_sha256": "c8d1a92d519add6c857bc5a0c0fdbeca7df84af1edcc355ea4c14fde2ed83d14",
+    "positive_abelian_normalization": "10540/49",
+    "spectator_Z2": "all 133 repair singlets odd; all main-action fields even",
+    "spectators": {
+      "coordinate_count": 133,
+      "one_K_self_mass": -1,
+      "one_S_mass_pair": [
+        40,
+        -28
+      ],
+      "sixty_five_S_mass_pairs": [
+        6,
+        6
+      ]
+    },
+    "ward_product_zero": true,
+    "warning": "exact but highly nonminimal Abelian repair; no Kac-Moody/string embedding is supplied"
+  },
+  "status": "V55_R1_MATTER_RHN_LOCAL_HESSIAN_EXACT__UNIVERSAL_FAMILY_U1_CHARGES_ALLOW_GENERIC_TEXTURES__280_COORDINATE_H197_NULL83_EQUALS34_GAUGE_PLUS45_MATTER_PLUS4_WEAK__SINGLET_GS_REPAIR_413_COORDINATE_H330_SAME_NULL83__F4_FIRST_DRESSING_DEGREE9__SPARSE_TOP_ONLY_TEXTURE_NOT_SYMMETRY_PROTECTED__NO_GATE_PROMOTION",
+  "upstream_certificate": {
+    "core_sha256": "25b0a48ea19fe6831049a46b01259a2a465f5f65584528d1670927156956633e",
+    "local_hessian_sha256": "44dfe08b2d9cb19f3e11df33d212dc8451211c90e7c22a73687c52bafa8f6d1d",
+    "local_orbit_sha256": "fad10b84a0d51453e3efaf616e2699b73c4743c1a0565016d463f90d57b5b063",
+    "path": "SUSY_V54_CONTINUOUS_PARENT_FI_ROUTE_AUDIT.json"
+  }
+}

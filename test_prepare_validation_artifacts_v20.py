@@ -93,17 +93,38 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
                 "--recompute-heavy"
             ),
             "g1_g8_gate_ledger_v20.py",
+            "canonical_g1_g8_gauged_u1x_v21.py --check",
+            "test_canonical_g1_g8_gauged_u1x_v21.py",
             "final_g3_eft_acceptance_gate_v20.py",
             "final_g4_eft_mathematical_gate_v20.py",
             "final_g5_eft_mathematical_gate_v20.py",
             "exact_eft_physical_scalar_spectrum_v20.py",
+            "exact_g6_sm_provenance_feasibility_v20.py",
+            "physical_sm_vacuum_local_feasibility_v20.py",
+            "exact_physical_sm_five_amplitude_equality_v20.py",
+            "exact_physical_sm_hard_projector_hessians_v20.py",
+            "exact_physical_sm_easy_21_hessians_v20.py",
+            "exact_physical_sm_last_six_hessians_v20.py",
+            "exact_physical_sm_37_row_aggregate_v20.py",
+            "exact_physical_sm_local_equality_orbit_v20.py",
+            "exact_physical_sm_g4_g5_branch_mismatch_v20.py",
+            "conditional_physical_sm_eft_hessian_spectrum_v20.py",
+            "exact_eft_g6_g7_parameterized_matching_v20.py",
             "final_g6_eft_mathematical_gate_v20.py",
+            "exact_authoritative_so10_u1x_gauge_betas_v20.py",
+            "exact_physical_sm_heavy_vector_masses_v20.py",
+            "exact_physical_sm_heavy_vector_msbar_matching_v20.py",
+            "exact_physical_sm_vector_rxi_vacuum_cancellation_v20.py",
+            "exact_normalized_so10_yukawa_cgcs_v20.py",
             "exact_eft_g7_threshold_nonidentifiability_v20.py",
+            "exact_physical_g7_component_threshold_contract_v20.py",
+            "exact_physical_sm_g6_g7_closure_frontier_v20.py",
+            "exact_physical_sm_g8_identifiability_frontier_v20.py",
             "final_g3_acceptance_gate_v20.py",
             "g1_g8_execution_roadmap_v20.py",
             "authoritative_full_model_gate_v20.py",
-            "theory_validation_matrix_v20.py --expect-blocked",
-            "ultimate_theory_gate_v20.py --expect-blocked --no-write",
+            "theory_validation_matrix_v20.py --no-write",
+            "ultimate_theory_gate_v20.py --no-write",
         )
         for token in required:
             self.assertTrue(
@@ -131,9 +152,29 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
             "final_g4_eft_mathematical_gate_v20.py",
             "final_g5_eft_mathematical_gate_v20.py",
             "exact_eft_physical_scalar_spectrum_v20.py",
+            "exact_g6_sm_provenance_feasibility_v20.py",
+            "physical_sm_vacuum_local_feasibility_v20.py",
+            "exact_physical_sm_five_amplitude_equality_v20.py",
+            "exact_physical_sm_hard_projector_hessians_v20.py",
+            "exact_physical_sm_easy_21_hessians_v20.py",
+            "exact_physical_sm_last_six_hessians_v20.py",
+            "exact_physical_sm_37_row_aggregate_v20.py",
+            "exact_physical_sm_local_equality_orbit_v20.py",
+            "exact_physical_sm_g4_g5_branch_mismatch_v20.py",
+            "conditional_physical_sm_eft_hessian_spectrum_v20.py",
+            "exact_eft_g6_g7_parameterized_matching_v20.py",
             "final_g6_eft_mathematical_gate_v20.py",
+            "exact_authoritative_so10_u1x_gauge_betas_v20.py",
+            "exact_physical_sm_heavy_vector_masses_v20.py",
+            "exact_physical_sm_heavy_vector_msbar_matching_v20.py",
+            "exact_physical_sm_vector_rxi_vacuum_cancellation_v20.py",
+            "exact_normalized_so10_yukawa_cgcs_v20.py",
             "exact_eft_g7_threshold_nonidentifiability_v20.py",
+            "exact_physical_g7_component_threshold_contract_v20.py",
+            "exact_physical_sm_g6_g7_closure_frontier_v20.py",
+            "exact_physical_sm_g8_identifiability_frontier_v20.py",
             "g1_g8_gate_ledger_v20.py",
+            "canonical_g1_g8_gauged_u1x_v21.py",
             "final_g3_acceptance_gate_v20.py",
             "g1_g8_execution_roadmap_v20.py",
         ):
@@ -153,6 +194,24 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
             all("--no-write" in command for command in global_flavour_commands)
         )
 
+        legacy_index = next(
+            index
+            for index, display in enumerate(displays)
+            if "g1_g8_gate_ledger_v20.py" in display
+        )
+        canonical_index = next(
+            index
+            for index, display in enumerate(displays)
+            if "canonical_g1_g8_gauged_u1x_v21.py --check" in display
+        )
+        authoritative_index = next(
+            index
+            for index, display in enumerate(displays)
+            if "authoritative_full_model_gate_v20.py" in display
+        )
+        self.assertLess(legacy_index, canonical_index)
+        self.assertLess(canonical_index, authoritative_index)
+
     def test_parallel_eft_gates_are_read_only_and_in_dependency_order(self):
         displays = [prepare._display(command) for command in prepare.FULL_COMMANDS]
         gate_names = (
@@ -160,8 +219,27 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
             "final_g4_eft_mathematical_gate_v20.py",
             "final_g5_eft_mathematical_gate_v20.py",
             "exact_eft_physical_scalar_spectrum_v20.py",
+            "exact_g6_sm_provenance_feasibility_v20.py",
+            "physical_sm_vacuum_local_feasibility_v20.py",
+            "exact_physical_sm_five_amplitude_equality_v20.py",
+            "exact_physical_sm_hard_projector_hessians_v20.py",
+            "exact_physical_sm_easy_21_hessians_v20.py",
+            "exact_physical_sm_last_six_hessians_v20.py",
+            "exact_physical_sm_37_row_aggregate_v20.py",
+            "exact_physical_sm_local_equality_orbit_v20.py",
+            "exact_physical_sm_g4_g5_branch_mismatch_v20.py",
+            "conditional_physical_sm_eft_hessian_spectrum_v20.py",
+            "exact_eft_g6_g7_parameterized_matching_v20.py",
             "final_g6_eft_mathematical_gate_v20.py",
+            "exact_authoritative_so10_u1x_gauge_betas_v20.py",
+            "exact_physical_sm_heavy_vector_masses_v20.py",
+            "exact_physical_sm_heavy_vector_msbar_matching_v20.py",
+            "exact_physical_sm_vector_rxi_vacuum_cancellation_v20.py",
+            "exact_normalized_so10_yukawa_cgcs_v20.py",
             "exact_eft_g7_threshold_nonidentifiability_v20.py",
+            "exact_physical_g7_component_threshold_contract_v20.py",
+            "exact_physical_sm_g6_g7_closure_frontier_v20.py",
+            "exact_physical_sm_g8_identifiability_frontier_v20.py",
         )
         indices = []
         for name in gate_names:
@@ -186,8 +264,27 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
             "test_final_g4_eft_mathematical_gate_v20.py",
             "test_final_g5_eft_mathematical_gate_v20.py",
             "test_exact_eft_physical_scalar_spectrum_v20.py",
+            "test_exact_g6_sm_provenance_feasibility_v20.py",
+            "test_physical_sm_vacuum_local_feasibility_v20.py",
+            "test_exact_physical_sm_five_amplitude_equality_v20.py",
+            "test_exact_physical_sm_hard_projector_hessians_v20.py",
+            "test_exact_physical_sm_easy_21_hessians_v20.py",
+            "test_exact_physical_sm_last_six_hessians_v20.py",
+            "test_exact_physical_sm_37_row_aggregate_v20.py",
+            "test_exact_physical_sm_local_equality_orbit_v20.py",
+            "test_exact_physical_sm_g4_g5_branch_mismatch_v20.py",
+            "test_conditional_physical_sm_eft_hessian_spectrum_v20.py",
+            "test_exact_eft_g6_g7_parameterized_matching_v20.py",
             "test_final_g6_eft_mathematical_gate_v20.py",
+            "test_exact_authoritative_so10_u1x_gauge_betas_v20.py",
+            "test_exact_physical_sm_heavy_vector_masses_v20.py",
+            "test_exact_physical_sm_heavy_vector_msbar_matching_v20.py",
+            "test_exact_physical_sm_vector_rxi_vacuum_cancellation_v20.py",
+            "test_exact_physical_sm_g6_g7_closure_frontier_v20.py",
+            "test_exact_normalized_so10_yukawa_cgcs_v20.py",
             "test_exact_eft_g7_threshold_nonidentifiability_v20.py",
+            "test_exact_physical_g7_component_threshold_contract_v20.py",
+            "test_exact_physical_sm_g8_identifiability_frontier_v20.py",
         ):
             self.assertIn(test_name, "\n".join(displays))
 
@@ -387,12 +484,12 @@ class PrepareValidationArtifactsTests(unittest.TestCase):
         matrix_index = next(
             i
             for i, display in enumerate(displays)
-            if "theory_validation_matrix_v20.py --expect-blocked" in display
+            if "theory_validation_matrix_v20.py --no-write" in display
         )
         ultimate_index = next(
             i
             for i, display in enumerate(displays)
-            if "ultimate_theory_gate_v20.py --expect-blocked --no-write" in display
+            if "ultimate_theory_gate_v20.py --no-write" in display
         )
         unittest_index = next(
             i

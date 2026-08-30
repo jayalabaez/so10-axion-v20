@@ -1,0 +1,126 @@
+{
+  "status": "CORRECTED_SO10_NONYUKAWA_GAUGE_POLYNOMIAL__FULL_G7_OPEN",
+  "n_checks": 11,
+  "n_failed": 0,
+  "failures": [],
+  "sources": {
+    "dynkin": {
+      "citation": "Babu\u2013Bajc\u2013Gogoladze, hep-ph/0412011 Table 1",
+      "convention": "T(10)=1, T(16)=2, T(45)=8, T(126)=35, T(210)=56"
+    },
+    "two_loop_gauge": {
+      "citation": "Machacek\u2013Vaughn / Jones; SARAH & PyR@TE general RGE engine",
+      "scope": "simple-group gauge \u03b2 up to two loops (Yukawa-free b\u2082 piece)"
+    },
+    "casimir": "C\u2082(R) = T(R)\u00b7dim(G)/dim(R), with C\u2082(G)=8 and dim(G)=45"
+  },
+  "content": {
+    "below_vPhi": {
+      "weyl_16": 13,
+      "complex_scalars": [
+        "126",
+        "10"
+      ],
+      "real_scalars": [
+        "210"
+      ],
+      "note": "3 light 16 + 10 S-massed spectators; Phi17-massed P/Q/R pairs decoupled"
+    },
+    "above_vPhi": {
+      "weyl_16": 19,
+      "complex_scalars": [
+        "126",
+        "10"
+      ],
+      "real_scalars": [
+        "210"
+      ],
+      "note": "all 19 declared Weyl 16/16bar multiplets active above v_Phi"
+    },
+    "casimirs": {
+      "10": 4.5,
+      "16": 5.625,
+      "45": 8.0,
+      "126": 12.5,
+      "210": 12.0
+    }
+  },
+  "betas": {
+    "below_vPhi": {
+      "b1": 9.333333333333332,
+      "b2_gauge_only": 3713.833333333334,
+      "weyl_16": 13,
+      "complex_scalars": [
+        "126",
+        "10"
+      ],
+      "real_scalars": [
+        "210"
+      ]
+    },
+    "above_vPhi": {
+      "b1": 17.333333333333332,
+      "b2_gauge_only": 4168.833333333334,
+      "weyl_16": 19,
+      "complex_scalars": [
+        "126",
+        "10"
+      ],
+      "real_scalars": [
+        "210"
+      ]
+    }
+  },
+  "continuous_spin10": {
+    "alpha_inv_vPhi_1loop": 11.911212350496385,
+    "alpha_inv_vPhi_2loop": 0.0,
+    "alpha_inv_MPl_fudge_1p1": 2.2233012637227016,
+    "alpha_inv_MPl_ingested_2loop": 0.0,
+    "delta_inv_MPl_vs_fudge": -2.2233012637227016,
+    "landau_pole_below_MPl_ingested": true,
+    "landau_pole_below_vPhi_ingested": true,
+    "vPhi_method": "perturbative_breakdown",
+    "MPl_method": "inherited_pole_below_vPhi",
+    "weakly_coupled_alpha_lt_0_25": false,
+    "note": "Large T(210)=56 drives a two-loop Landau / non-perturbative breakdown between M_GUT and v_\u03a6 when the full 210 remains light \u2014 consistent with known MSGUT strong-coupling lore."
+  },
+  "yukawa_two_loop": {
+    "g10": 0.8232464663195351,
+    "C2_16": 5.625,
+    "norm_beta_H_heuristic": 0.020050692806462062,
+    "norm_beta_H_ingested": 0.020065372592474217,
+    "norm_beta_F_heuristic": 0.013061257262903369,
+    "norm_beta_F_ingested": 0.014451381665837815,
+    "rel_delta_H": 0.0029714954714542877,
+    "rel_delta_F": 0.10647759321717935
+  },
+  "gauge_width_context": {
+    "note": "SO(10)+210 \u03b2s correct continuous running above M_GUT",
+    "alpha_inv_MPl_ingested": 0.0,
+    "alpha_inv_MPl_prior_fudge": 2.2233012637227016,
+    "delta_inv": -2.2233012637227016,
+    "matrix_gauge_width_tau_e_years": 5.258084311154403e+35,
+    "alpha_inv_GUT_unchanged": 37.313045234373135
+  },
+  "next_exact_calculation": [
+    "Derive UV CP phases from the full SO(10)\u00d7Z\u2081\u2087 potential",
+    "Promote soft-gaugino masses beyond the M_V-matched conditional proxy",
+    "Ingest two-loop quartic / soft \u03b2s (full SARAH/PyR@TE scalar sector)",
+    "Resolve residual G\u2086 \u2194 soft-gaugino CW double-counting if present"
+  ],
+  "flag": {
+    "sarah_validated_210_betas": false,
+    "pyrate_sarah_mv_formulas_ingested": true,
+    "published_so10_dynkin_ledger": true,
+    "live_sarah_or_pyrate_executable_run": false,
+    "two_loop_so10_gauge_complete_for_content": false,
+    "two_loop_so10_nonyukawa_gauge_polynomial_complete": true,
+    "two_loop_quartic_betas_complete": false,
+    "ad_hoc_1p1_fudge_replaced": true,
+    "two_loop_landau_or_breakdown_above_MGUT": true,
+    "one_loop_stability_conditional": true,
+    "exact_unique_proton_lifetime": false,
+    "whole_model_excluded": false
+  },
+  "verdict": "Corrected the SO(10)+210 non-Yukawa two-loop gauge polynomial (b\u2081(below)=9.333, b\u2082=3713.833; \u0394\u03b1\u207b\u00b9(M_Pl) vs 1.1-fudge=-2.223; Yukawa |\u0394\u03b2_H|/|\u03b2_H|=2.971e-03). The Yukawa trace, live independent run, quartic/dimensionful/EFT betas and physical thresholds remain OPEN."
+}

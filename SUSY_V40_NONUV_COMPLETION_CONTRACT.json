@@ -1,0 +1,315 @@
+{
+  "RGE_and_threshold_contract": {
+    "G6_acceptance": [
+      "live one/two-loop beta expressions and source hashes for the exact V40 field content",
+      "derived, not guessed, ultraviolet soft/portal/flavour boundary data from the hidden and UV sectors",
+      "physical pole thresholds and Wilson matching at every threshold, including Abelian kinetic mixing when present",
+      "numerically stable piecewise integration with scale/scheme variation and covariance propagation"
+    ],
+    "V39_advance_to_preserve": "A declared V39 source and a transient formal-soft mirror had live two-loop SARAH beta systems; their PS-only one-loop coefficients were (2,5,9).",
+    "V40_rederivation_rule": "Any new gauge factor, portal, hidden messenger, or selector change invalidates inheritance of those beta functions; regenerate and archive the V40 RGE system from the active source.",
+    "fail_closed_rule": "A beta-function dump plus a boundary ansatz is a calculational scaffold, not G6 closure.",
+    "required_equations": [
+      "d theta_A/d ln(mu) = beta_A(theta, mu) for the coupled gauge, kinetic-mixing, superpotential, soft, and effective-operator parameter vector theta",
+      "theta_below(M_k) = Match_k[theta_above(M_k), physical pole data, Wilson coefficients] at every PS, PQ, messenger, dark, and superpartner threshold",
+      "Cov(output) = J Cov(microscopic inputs) J^T + Cov(thresholds) + Cov(truncation), with J obtained from the complete piecewise evolution"
+    ]
+  },
+  "V39_context": {
+    "audit_core_sha256": "02618ab18babf58611a23c29bd720e616162222ff1f14d2d16c9deee2e8064e1",
+    "available": true,
+    "closed_gate_count": 0,
+    "complete_theory_exists": false,
+    "selected_gate_states": {
+      "G2": {
+        "blocker": "No stabilized broken-phase numerical point, component mass matrices, self energies, mixings, pole solution, or covariance matrix is derived.",
+        "closed": false
+      },
+      "G3": {
+        "blocker": "The K\u00e4hler and gauge-kinetic functions, singlet soft/tadpole sector, competing vacua, bounce actions, finite-temperature history, and cosmological vacuum selection are absent.",
+        "closed": false
+      },
+      "G4": {
+        "blocker": "All exact singlets remain unlifted at gauge-only order; no microscopic singlet mediation, mu/Bmu solution, electroweak vacuum, threshold matching, or collider likelihood is specified.",
+        "closed": false
+      },
+      "G5": {
+        "blocker": "The stated one-loop beta_lambda=3 lambda^3/(16 pi^2) reaches a Landau pole below fPQ absent a new threshold/dynamics. X has allowed linear and cubic superpotential terms while X^2 is R-forbidden; an imposed single mX/width cannot represent its component mass matrix or visible mixing. DDbar->XX, widths, X-visible equilibration, and direct detection lack a component-resolved calculation. The 1 percent axion fraction is imposed but the stated standard-misalignment reference gives about 0.126 percent, so abundance and isocurvature are not jointly solved. The light X and all component masses are imposed, not derived from a V37 K\u00e4hler/soft vacuum or X component mass matrix. The XX annihilation, widths, visible equilibration, and direct-detection formulas are illustrative EFT proxies, not component or nuclear matching calculations. The reheaton sector, Tmax, and direct dark branching are imposed rather than derived. PQ restoration, preheating, axion abundance, domain walls, the global soft vacuum, and a joint isocurvature history remain uncomputed. Z170 leaves D16/Db16 stable by construction; this point makes the relic acceptable but cannot remove it.",
+        "closed": false
+      },
+      "G6": {
+        "blocker": "The boundary is an ansatz, not a derived hidden sector; individual PS/KK thresholds, Abelian mixing when active, Wilson matching, a physical soft trajectory, and uncertainty propagation are absent.",
+        "closed": false
+      },
+      "G8": {
+        "blocker": "a derived flavour texture or UV flavour sector; charged-fermion and neutrino fit; threshold/RG evolution with a spectrum; versioned joint likelihood and covariance",
+        "closed": false
+      }
+    }
+  },
+  "V39_pure_yukawa_G5_scale_no_go": {
+    "V39_fitted_lambda_D": 1.563065,
+    "V39_lambda_pole_GeV": 95377219.36701061,
+    "V39_pole_below_fPQ": true,
+    "V39_target_Omega_h2": 0.1188,
+    "assumptions": {
+      "annihilation_scaling": "<sigma v> proportional to lambda_D^4 at fixed component spectrum",
+      "beta_function": "d lambda_D/d ln(mu) = 3 lambda_D^3/(16 pi^2)",
+      "renormalization_start_scale_GeV": 2000.0,
+      "required_PQ_scale_GeV": 500000000000.0,
+      "thresholds_or_new_gauge_dynamics_below_fPQ": false
+    },
+    "conditional_conclusion": "Within the isolated V39 pure-Yukawa beta function and fixed-spectrum annihilation proxy, a thermal relic matching the fitted target cannot remain perturbative to fPQ.  This does not exclude a new threshold, coannihilation, resonance, nonthermal history, or a new gauge force.",
+    "fitted_lambda_exceeds_PQ_safe_bound": true,
+    "integrated_solution": "1/lambda_D(mu)^2 = 1/lambda_D(mu0)^2 - 3 ln(mu/mu0)/(8 pi^2)",
+    "lambda_D_max_without_a_pole_below_fPQ": 1.166648455782144,
+    "maximum_proxy_annihilation_fraction_if_PQ_safe": 0.31035009886457043,
+    "minimum_proxy_Omega_h2_if_PQ_safe": 0.38279349816428304
+  },
+  "conditional_vector_portal_feasibility_witness": {
+    "candidate_structure_not_yet_a_V40_model": {
+      "gauge_factor": "U(1)_D",
+      "minimal_light_content_for_beta_screen": "one vectorlike unit-charge Dirac carrier plus one unit-charge complex dark Higgs",
+      "new_G1_obligations": [
+        "all U(1)_D, mixed, gravitational, discrete, and global anomalies cancel in the full microscopic spectrum",
+        "kinetic mixing and any Stueckelberg/Green--Schwarz terms have quantized UV matching",
+        "the added fields preserve the V40 selector, PQ-quality theorem, and baryon-operator protection"
+      ],
+      "visible_remnant_requirement": "Every U(1)_D-Higgs/portal VEV is neutral under the exact stabilizing remnant (Z170 if the V39 cascade is retained)."
+    },
+    "feasibility_conclusion": "Unlike the isolated lambda_D point, the displayed minimal-U(1)_D running has wide one-loop scale headroom. It is therefore a coherent route worth constructing, not a derived solution or a promoted G5 gate.",
+    "portal_window_proxies": {
+      "Gamma_VD_to_ee_proxy_GeV": 1.216225428213967e-10,
+      "Gamma_over_H_proxy_at_T_equals_mchi": 17.723217793284455,
+      "kinetic_mixing_epsilon": 1e-05,
+      "qualification": "These are tree/proxy quantities only.  A full acceptance test requires all open V_D and dark-Higgs widths, component amplitudes, thermal masses, Boltzmann equations, current direct/indirect/collider likelihoods, and nucleon matching.",
+      "sigma_chi_nucleon_SI_proxy_cm2": 1.374933239608853e-50,
+      "tau_VD_to_ee_proxy_seconds": 5.411923987369574e-15,
+      "tau_proxy_below_0p1_seconds": true
+    },
+    "tree_level_screen": {
+      "alpha_D_needed_in_tree_proxy": 0.06823744131539701,
+      "annihilation_formula": "sigma v(chi chibar -> V_D V_D) = pi alpha_D^2/m_chi^2 * (1-r)^(3/2)/(1-r/2)^2, r=m_VD^2/m_chi^2",
+      "g_D_below_Planck_safe_bound": true,
+      "g_D_max_for_perturbativity_to_reduced_Planck": 1.1680831695106415,
+      "g_D_needed_in_tree_proxy": 0.9260113267908031,
+      "gauge_beta": "d g_D/d ln(mu) = b_D g_D^3/(16 pi^2)",
+      "gauge_running_solution": "1/g_D(mu)^2 = 1/g_D(mu0)^2 - b_D ln(mu/mu0)/(8 pi^2)",
+      "m_VD_GeV": 500.0,
+      "m_chi_GeV": 2000.0,
+      "minimal_b_D": 1.6666666666666667,
+      "one_loop_U1D_pole_GeV": 1.9700616817016894e+27,
+      "one_loop_pole_above_reduced_Planck": true,
+      "phase_space_factor": 0.9672382966595006,
+      "r": 0.0625,
+      "target_sigma_v_GeV_minus2": 3.537275064267352e-09,
+      "target_sigma_v_cm3_s": 4.128e-26
+    }
+  },
+  "core_sha256": "6cf2d6e65339b320a1e2ef8e3c2f6fbb98992215e4e05d3eb9f233b55cc73e7a",
+  "cross_gate_order": [
+    "G1: establish the microscopic gauge/discrete/topological completion for every V40 addition",
+    "G4: derive hidden-sector mediation, singlet soft terms, mu/Bmu, and flavour alignment",
+    "G3: solve the full zero/finite-temperature vacuum and its selection history",
+    "G2: derive component matrices and pole spectrum at the accepted vacuum",
+    "G6: match/run all physical thresholds with covariance",
+    "G5: solve dark/PQ/reheating cosmology from that spectrum and history",
+    "G7: complete baryon-operator matching and dressing",
+    "G8: evaluate the withheld-observable joint likelihood using all preceding outputs"
+  ],
+  "dark_PQ_cosmology_contract": {
+    "PQ_acceptance": [
+      "recompute the full all-harmonic gravitational/PQ-breaking operator ring, including K\u00e4hler and supergravity dressings, after every V40 addition",
+      "calculate the finite-temperature PQ potential and decide restoration/non-restoration from it, rather than inferring it from T_max/f_a alone",
+      "compute axion, saxion, and axino abundances jointly using the QCD susceptibility, anharmonicity, entropy production, and all decays",
+      "compute isocurvature from the same inflationary history and axion fraction; impose the defect/domain-wall history appropriate to the derived N_DW and PQ timing",
+      "use a joint cosmological likelihood for Omega_DM, Delta N_eff, BBN, CMB energy injection, structure formation, and isocurvature"
+    ],
+    "V40_vector_route": {
+      "nonnegotiable_checks": [
+        "U(1)_D perturbativity and all coupled gauge/Yukawa beta functions remain controlled to the V40 UV matching scale",
+        "the vector and dark-Higgs do not form an additional stable or long-lived excluded relic",
+        "the portal equilibrates or produces the dark sector according to the solved Boltzmann history, not an assumption",
+        "the portal does not reintroduce a PQ-quality, proton-decay, discrete-anomaly, or vacuum-selection failure"
+      ],
+      "purpose": "replace the isolated lambda_D-dominated annihilation that fails the V39 PQ-scale running test",
+      "required_source_level_terms": [
+        "a Higgsed U(1)_D gauge sector with a complete anomaly-free charge table",
+        "a vectorlike assignment for the existing stable carrier or an explicitly matched successor carrier",
+        "a dark-Higgs/portal sector neutral under the retained Z170 remnant",
+        "a visible portal whose allowed operators, kinetic mixing boundary condition, and decays are derived"
+      ]
+    },
+    "component_level_requirements": [
+      "derive the D/Dbar, X/driver, PQ, saxion, axino, dark-vector, dark-Higgs, and portal mass/mixing matrices from the accepted vacuum",
+      "calculate every annihilation, coannihilation, decay, inverse-decay, and scattering amplitude with spin/statistics/thermal masses, rather than using a one-channel proxy",
+      "solve the coupled Boltzmann system dY_i/dx = C_i[Y_j,T]/(H x) for all stable and long-lived components, with derived initial conditions and entropy injection",
+      "match direct detection to nucleons and evaluate mass-dependent direct/indirect/collider/BBN/CMB likelihoods with the same spectrum",
+      "derive reheaton/inflaton couplings, T_reh, T_max, branching fractions, preheating, and nonthermal dark production from a specified cosmological sector"
+    ],
+    "fail_closed_rule": "A relic-density number computed from imposed component masses, an imposed axion fraction, or a proxy width never promotes G5.",
+    "irreducible_fact": "If V40 retains the V39 residual Z170, its lightest nontrivially charged state is stable in every symmetry-preserving completion.  A selector rebuild must instead state its new exact stabilizer and solve every resulting stable-relic abundance; it cannot delete a remnant carrier by declaration."
+  },
+  "flavour_and_joint_likelihood_contract": {
+    "G8_acceptance": [
+      "diagonalize the calculated pole mass matrices to obtain charged-fermion masses, CKM, PMNS, neutrino masses, and CP phases after threshold/RG evolution",
+      "test FCNC, EDM, lepton-flavour violation, neutrino, collider, and proton-decay flavour channels using the same Wilsons and covariance",
+      "keep a registered distinction between observations used to determine genuinely free UV parameters and withheld observables used for prediction",
+      "publish a versioned joint likelihood with experimental correlations, lattice/hadronic uncertainties, and theory truncation/systematic covariance",
+      "require completed G7 Wilson/dressing/hadronic matching before calling any proton lifetime or branching fraction an out-of-sample G8 prediction"
+    ],
+    "V39_nonidentifiability_witness": "Both YQQ=0 and YQQ=y Identity_3 are selector-allowed but generate inequivalent observables; the selector alone therefore does not predict flavour.",
+    "fail_closed_rule": "A numerical Yukawa fit, a texture imposed without its flavon vacuum, or a likelihood that reuses its fitted observables as predictions leaves G8 open.",
+    "minimal_UV_flavour_input_set": [
+      "an exact flavour group (continuous, finite, modular, or geometric), representations of Q, Qc, Nv, vectorlike states, messengers, and flavons, and every relevant anomaly condition",
+      "a complete flavon/messenger superpotential and K\u00e4hler potential that derives the alignment and all small expansion parameters",
+      "matching formulae Y_ij^(r) = sum_a c_ij,a^(r) product_alpha (<phi_alpha>/M_F)^(n_alpha,a), where c and messenger thresholds are UV outputs rather than fitted matrices",
+      "a derived right-neutrino Majorana matrix and the seesaw relation m_nu = -v_u^2 Y_nu^T M_N^(-1) Y_nu in a declared basis",
+      "the full flavour-dependent soft matrices and A terms from the same hidden sector, including CP phases and RG threshold corrections"
+    ]
+  },
+  "gate_decisions": {
+    "G2_closed": false,
+    "G3_closed": false,
+    "G4_closed": false,
+    "G5_closed": false,
+    "G6_closed": false,
+    "G8_closed": false,
+    "complete_theory_exists": false,
+    "why": "This artifact supplies necessary equations and a feasible dark-sector direction, but it deliberately does not invent the hidden W/K/f, V40 source, vacuum, component amplitudes, cosmological history, or flavour UV origin."
+  },
+  "hidden_sector_and_mediation_contract": {
+    "V39_obstruction": {
+      "consequence": "Gauge-only gaugino mediation cannot select the driver/PQ/anomalon/dark vacuum or its component poles.",
+      "gauge_only_boundary_left_unlifted": [
+        "X",
+        "P",
+        "Nv",
+        "Pbar",
+        "Zp",
+        "A2",
+        "A32",
+        "A15",
+        "A17",
+        "A16",
+        "D2",
+        "Db2",
+        "D17",
+        "Db17",
+        "D16",
+        "Db16"
+      ],
+      "number_of_unlifted_exact_singlets": 16
+    },
+    "acceptance_conditions": [
+      "all 16 formerly unlifted singlet scalar/fermion directions receive a calculated component mass matrix; any protected massless mode is identified and phenomenologically acceptable",
+      "all messenger and hidden-sector scalar mass-squared eigenvalues are nonnegative at the selected vacuum",
+      "the hidden-to-visible matching computes m^2, A, B, tadpoles, gaugino masses, mu/Bmu, and CP phases in one convention",
+      "the source proves that each visible-hidden operator is permitted and that omitted allowed operators are absent by a microscopic symmetry, not by declaration",
+      "flavour alignment or a derived flavour symmetry controls off-diagonal soft matrices before flavour data are used"
+    ],
+    "fail_closed_rule": "A list of soft masses, a universal boundary ansatz, or a spurion without W_hidden/K/f and a solved hidden vacuum leaves G3, G4, and G6 open.",
+    "minimal_microscopic_input_set": [
+      "complete hidden gauge group, all chiral/vector multiplets, representations, and V40 selector/PQ/R charges",
+      "a cutoff-complete W_hidden and visible-hidden messenger superpotential, including every allowed relevant and marginal term",
+      "K(visible, hidden) and the visible wavefunction matrix Z_i{}^j through the order that generates every soft term",
+      "holomorphic gauge-kinetic matrix f_AB, including U(1) kinetic mixing and any moduli dependence",
+      "a specified supergravity or global-SUSY decoupling limit, Planck-suppressed operators, and the cosmological constant prescription",
+      "a solved hidden stationary point with F^m, D^A, messenger eigenmasses, phases, and no messenger tachyon",
+      "matching scale(s), regulator/scheme, and a covariance/prior for microscopic couplings rather than fitted weak-scale soft terms"
+    ],
+    "required_matching_equations": [
+      "V_F = exp(K/M_Pl^2) [K^{A Bbar} D_A W D_Bbar Wbar - 3 |W|^2/M_Pl^2]",
+      "V_D = (Re f)^(-1)_ab D^a D^b / 2",
+      "M_a = (Re f_a)^(-1) F^m partial_m f_a / 2",
+      "m_i^2 = m_3/2^2 + V_0 - F^m F^nbar partial_m partial_nbar ln Z_i  (in a diagonal visible metric basis)",
+      "A_ijk = F^m partial_m ln[exp(K/M_Pl^2) Y_ijk/(Z_i Z_j Z_k)]  (with conventions declared)",
+      "mu and Bmu must follow from the displayed W/K operators and the same F/D solution; neither may be inserted as an IR boundary number"
+    ]
+  },
+  "literature_basis": [
+    "https://arxiv.org/abs/0801.3278",
+    "https://arxiv.org/abs/0808.3598",
+    "https://arxiv.org/abs/0909.2863",
+    "https://arxiv.org/abs/0911.1120",
+    "https://arxiv.org/abs/1807.06209",
+    "https://arxiv.org/abs/1807.06211",
+    "https://arxiv.org/abs/1606.07494"
+  ],
+  "schema": "susy-v40-nonuv-completion-contract-v1",
+  "scope": {
+    "central_principle": "A physical gate is promotable only when its input functions, their vacuum, matching, observables, and uncertainties are derived by one specified V40 theory.",
+    "covered_gates": [
+      "G2",
+      "G3",
+      "G4",
+      "G5",
+      "G6",
+      "G8"
+    ],
+    "not_a_substitute_for": [
+      "G1 microscopic anomaly/UV completion",
+      "G7 all-ring baryon-operator protection and matching"
+    ]
+  },
+  "source_manifest": [
+    {
+      "exists": true,
+      "path": "susy_v40_nonuv_completion_contract.py",
+      "sha256": "709926c047ae31a410102d64774e92dbb8a4441ad4306f4e0649c9b335b8e338"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v40_nonuv_completion_contract.py",
+      "sha256": "60a8d9a8c4294764739202ef308db13886b279827a75bc2e3353ea48a990b7a4"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V39_COMPLETE_THEORY_AUDIT.json",
+      "sha256": "04b89ab7c01a305d615e5295d4e348fdf8bee7667aa0b7587994cca5da252976"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V39_SOFT_BOUNDARY_AUDIT.json",
+      "sha256": "88ac92b99e1f0cb16536e76911669e3b315da35f2226333135b03e5ac927f054"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V39_G5_SECLUDED_FREEZEOUT_CERTIFICATE.json",
+      "sha256": "0c1ae675f8de4d3bd1767b387356ba4cc334a1f16d35db0eac6769bf68bf983e"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V39_G7_G8_ARCHITECTURE.json",
+      "sha256": "a5368e8bd18b69bd4d8ed1d32d156d103c40d36d411667c4fb3ec4a6b1c55519"
+    }
+  ],
+  "status": "V40_NONUV_COMPLETION_CONTRACT_DEFINED__V39_PURE_YUKAWA_G5_SCALE_NO_GO_QUANTIFIED__VECTOR_PORTAL_FEASIBILITY_ONLY__ZERO_GATES_PROMOTED",
+  "vacuum_pole_and_EWSB_contract": {
+    "G2_pole_acceptance": [
+      "derive all component mass matrices from the selected vacuum, including scalar CP blocks, fermion Majorana/Dirac blocks, vectors, ghosts, Goldstones, and all mixings",
+      "solve det[p^2 1 - M_tree^2 - Pi(p^2;mu)] = 0 for scalar/vector pole masses and det[p slash - M_tree - Sigma(p slash;mu)] = 0 for fermions in the declared scheme",
+      "treat unstable poles with a complex-pole or explicitly stated narrow-width prescription",
+      "verify gauge-parameter and renormalization-scale stability to the stated perturbative order, with tadpole and threshold counterterms included",
+      "publish the full parameter covariance and propagate it to all masses, mixings, decay widths, and threshold scales"
+    ],
+    "G3_vacuum_acceptance": [
+      "solve partial V_eff/partial phi_i = 0 for every independent real component, including hidden, PQ, driver, dark-Higgs, and visible fields",
+      "identify the unbroken gauge group and every exact discrete remnant at the solution; remove gauge Goldstones only after a rank/Ward check",
+      "compute the physical Hessian on the quotient; no tachyonic physical direction is allowed",
+      "enumerate all stationary branches in the specified EFT domain and compare renormalized vacuum energies, or demonstrate metastability with a calculated tunnelling rate",
+      "evaluate zero-temperature O(4) and finite-temperature O(3) bounce actions with the full multifield potential and integrate the decay/nucleation probability through the derived cosmological history",
+      "show that the selected branch yields the required Pati--Salam, electroweak, PQ, dark, and discrete breaking pattern without an excluded defect history"
+    ],
+    "G4_EWSB_acceptance": [
+      "derive mu/Bmu and run them to the weak scale before solving the electroweak tadpole equations",
+      "compute the loop-corrected Higgs pole and electroweak precision/collider likelihood using the same pole spectrum",
+      "include charge/color-breaking directions and vacuum lifetime in the likelihood rather than treating a tree-level stationary point as EWSB closure"
+    ],
+    "no_shortcut": "Tree-level positive diagonal entries, a local F/D flat branch, or a hand-entered pole table cannot satisfy these requirements.",
+    "potential_to_be_evaluated": [
+      "V_eff(phi,T=0) = V_F + V_D + V_soft + V_CW + counterterms in a declared gauge and tadpole scheme",
+      "V_eff(phi,T) = V_eff(phi,0) + Delta V_T + daisy/resummation prescription for the actual particle content"
+    ]
+  }
+}

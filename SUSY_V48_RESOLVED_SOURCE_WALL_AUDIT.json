@@ -1,0 +1,324 @@
+{
+  "core_sha256": "f7b497bb63d4a5d42b98328db7a0804426b0d71be221d3fd0b48bcfa6f39f34f",
+  "decision": {
+    "G2_closed_by_this_subaudit": false,
+    "S2_closed": false,
+    "bare_to_Wilsonian_boundary_map_exact_in_declared_scheme": true,
+    "explicit_supersymmetric_resolved_regulator_exists": true,
+    "fundamental_problem_self_adjoint_and_positive": true,
+    "gates_promoted": [],
+    "induced_boundary_kinetic_and_derivative_tower_included": true,
+    "loop_level_extension_not_claimed": "give renormalized wall Kahler/normal-derivative coefficients or a UV completion before claiming loop-level bare matching",
+    "regulator_independent_map_proved": false,
+    "remaining_for_S2_or_G2": [
+      "combine with higher-dimensional operator/selector and Wilson-coefficient audits"
+    ],
+    "resolved_regulator_existence_subproblem_closed": true,
+    "separate_G6_work_not_a_G2_blocker": "evaluate the complete regulated KK root tower and threshold sums at a phenomenological parameter point",
+    "thin_wall_reproduces_V47_characteristic": true
+  },
+  "exact_bare_to_boundary_map": {
+    "definitions": {
+      "C": "(Lambda-delta I) H",
+      "D": "cosh(sqrt(X))",
+      "H": "sinh(sqrt(X))/sqrt(X), defined by its entire series at X=0",
+      "T_wall": "[[D,U],[C,D]]",
+      "U": "delta H",
+      "X": "delta (Lambda-delta I)",
+      "delta": "m epsilon"
+    },
+    "derivative_expansion": "B_R=Lambda-m epsilon(I+Lambda^2/3)+m^2 epsilon^2(2Lambda/3+2Lambda^3/15)+O((m epsilon)^3)",
+    "exact_zero_energy_map": "B_R^epsilon(0)=Lambda for every epsilon>0",
+    "higher_derivatives": "the exact matrix functions retain the entire tower; no truncation is used in the spectrum",
+    "induced_boundary_kinetic": "Z_b=epsilon(I+Lambda^2/3), so B_R=Lambda-m Z_b+...",
+    "map_where_D_invertible": "B_R^epsilon(m)=D(m)^(-1) C(m), with g(L-epsilon)+B_R^epsilon(m) f(L-epsilon)=0",
+    "pole_warning": "zeros of det D are poles of B_R and are wall-slab states, not pathologies; the pole-free characteristic below retains them",
+    "signed_mode_equations_in_slab": [
+      "f'=m g",
+      "g'=(Lambda/epsilon-m I)f"
+    ]
+  },
+  "microscopic_regulator": {
+    "CP_contract": "certificate selects real couplings and VEVs; a general complex symmetric holomorphic Lambda uses the Hermitian Nambu lift [[0,Lambda^dagger],[Lambda,0]]",
+    "Wilsonian_scheme": {
+      "allowed_counterterm_coordinates": [
+        "Hermitian Z_ct multiplying wall H^dagger H",
+        "self-adjoint normal-derivative matrices R_ct multiplying gauge-covariant D_y operators",
+        "higher powers of the 4D kinetic operator suppressed by M_star"
+      ],
+      "counterterm_scope": "only the quadratic H/Hc source-wall matching sector is fixed here",
+      "independent_normal_derivative_counterterms_at_M_star": 0,
+      "independent_wall_Kahler_counterterm_at_M_star": 0,
+      "independent_wall_higher_derivative_counterterms_at_M_star": 0,
+      "interpretation": "the zeros are declared finite matching inputs defining this one microscopic EFT candidate, not consequences of symmetry or naturalness; the finite slab-induced tower is retained exactly",
+      "loop_warning": "radiative divergences require these allowed coordinates and their running; a loop-level map must state their renormalized values",
+      "matching_scale": "M_star=1/epsilon",
+      "outside_this_subaudit": [
+        "U(1)F boundary Fayet-Iliopoulos terms",
+        "marginal gauge W_alpha W^alpha and neutral-source gauge kinetic functions",
+        "Pati-Salam boundary and bulk gauge-kinetic mixing",
+        "the complete interacting boundary-EFT counterterm basis"
+      ]
+    },
+    "bare_integrated_entries": {
+      "s_16": "kappa_16 <barSigma_SU5-singlet>/M_star",
+      "s_bar16": "kappa_bar16 <Sigma_SU5-singlet>/M_star",
+      "tau_L": "kappa_L <ThetaPlus>/M_star",
+      "tau_R": "kappa_R <ThetaMinus>/M_star"
+    },
+    "canonical_Kahler": "integral d4theta (H^dagger H+Hc Hc^dagger), positive coefficient one",
+    "channel_order": [
+      "HLF",
+      "HLA",
+      "HRA",
+      "HRF"
+    ],
+    "dynamical_source_collar": {
+      "action": "integral_collar dy { integral d4theta rho_epsilon [X_A^dagger Z^{AbarB} exp(V) X_B + epsilon^2 (D_y X_A)^dagger Z_y^{AbarB}(D_y X_B)] + [integral d2theta rho_epsilon W_source,V47(X)+h.c.] }, with Z and Z_y positive",
+      "dimensions": "X_A and its VEV retain four-dimensional chiral dimension one; rho_epsilon W_source has five-dimensional superpotential-density dimension four, and epsilon^2 makes the positive covariant y-stiffness dimensionally homogeneous",
+      "fields": [
+        "Phi_210",
+        "Sigma_126",
+        "barSigma_bar126",
+        "S",
+        "ThetaPlus",
+        "ThetaMinus"
+      ],
+      "gauge_covariance": "all four H-bilinear couplings are local Spin(10)xU(1)F invariants before inserting the source VEVs; rho_epsilon is a gauge-singlet scalar profile",
+      "interface_domain": "gauge-covariant Neumann conditions for the source fields at both collar faces",
+      "normalization": "rho_epsilon=1/epsilon has integral one, so a constant X_A(x,theta,y)=X_A^(0)(x,theta) has exactly the canonical V47 four-dimensional Kahler norm rather than epsilon times that norm",
+      "scope": "the positive collar stiffness and V47 source Hessian keep nonconstant source excitations massive; this audit diagonalizes only the quadratic H/Hc block in that fixed supersymmetric vacuum",
+      "source_anomaly_check": "126+bar126 and ThetaPlus+ThetaMinus are vectorlike, 210 is real, and S is neutral",
+      "vacuum": "the constant V47 F-flat and D-flat 210+126+bar126+S+ThetaPlus+ThetaMinus branch solves the collar equations pointwise"
+    },
+    "endpoint_domain": "V47 PS parities at y=0, continuity at y=L-epsilon, and g(L)=0 because all H are even at the full-Spin10 endpoint",
+    "geometry": "interior 0<=y<=L-epsilon plus resolved source slab L-epsilon<=y<=L",
+    "hypermultiplet_superpotential": "integral d2theta [Hc^T(partial_y+M(y))H + (rho_epsilon/2) H^T Lambda H] + h.c.",
+    "manifest_supersymmetry": "4D N=1 superspace",
+    "mass_profile": "M_i in the interior and zero in the slab; the supersymmetric step completion is retained",
+    "profile": "rho_epsilon(y)=1/epsilon in the slab and zero outside; integral rho_epsilon dy=1",
+    "source_terms_before_VEVs": [
+      "(kappa_L/M_star) ThetaPlus HLF HLA",
+      "(kappa_R/M_star) ThetaMinus HRA HRF",
+      "(kappa_16/M_star) barSigma HLF HRA",
+      "(kappa_bar16/M_star) Sigma HLA HRF"
+    ]
+  },
+  "numerical_certificate": {
+    "B_R_exact_at_signed_mass": [
+      [
+        -0.01973596574330225,
+        0.4000945272056279,
+        0.20004911283774945,
+        -0.0003701639523545584
+      ],
+      [
+        0.40009452720562805,
+        -0.01962800125719884,
+        6.169399205909279e-05,
+        -0.15003575590793308
+      ],
+      [
+        0.20004911283774954,
+        6.16939920590929e-05,
+        -0.020969845584484118,
+        0.6001479549248937
+      ],
+      [
+        -0.0003701639523545584,
+        -0.15003575590793305,
+        0.6001479549248936,
+        -0.0208618810983807
+      ]
+    ],
+    "B_R_is_Hermitian_for_real_m": true,
+    "K_res_minus_D_K_eff_residual": 1.1102230246251565e-16,
+    "Lambda_SU5_singlet": [
+      [
+        0.0,
+        0.4,
+        0.2,
+        0.0
+      ],
+      [
+        0.4,
+        0.0,
+        0.0,
+        -0.15
+      ],
+      [
+        0.2,
+        0.0,
+        0.0,
+        0.6
+      ],
+      [
+        0.0,
+        -0.15,
+        0.6,
+        0.0
+      ]
+    ],
+    "Lambda_is_Hermitian": true,
+    "Y_b": [
+      [
+        0.0,
+        0.0006903333333333335,
+        0.0003586666666666667,
+        0.0
+      ],
+      [
+        0.0006903333333333335,
+        0.0,
+        0.0,
+        -0.000261125
+      ],
+      [
+        0.0003586666666666667,
+        0.0,
+        0.0,
+        0.0010805
+      ],
+      [
+        0.0,
+        -0.000261125,
+        0.0010805,
+        0.0
+      ]
+    ],
+    "Z_b": [
+      [
+        0.05333333333333334,
+        0.0,
+        0.0,
+        0.0009999999999999998
+      ],
+      [
+        0.0,
+        0.05304166666666667,
+        -0.00016666666666666636,
+        0.0
+      ],
+      [
+        0.0,
+        -0.00016666666666666636,
+        0.05666666666666667,
+        0.0
+      ],
+      [
+        0.0009999999999999998,
+        0.0,
+        0.0,
+        0.056375
+      ]
+    ],
+    "Z_b_is_Hermitian": true,
+    "Z_b_strict_lower_bound": 0.05,
+    "parameters": {
+      "L": 1.0,
+      "M_star": 20.0,
+      "bulk_masses": [
+        0.2,
+        -0.4,
+        0.8,
+        -0.1
+      ],
+      "epsilon": 0.05,
+      "s_16": 0.2,
+      "s_bar16": -0.15,
+      "signed_mass": 0.37,
+      "tau_L": 0.4,
+      "tau_R": 0.6
+    },
+    "second_order_B_error": 3.1789178174500277e-06,
+    "source_collar_normalization": {
+      "constant_mode_Kahler_multiplier": 1.0,
+      "integral_rho_epsilon_dy": 1.0,
+      "rho_epsilon_inside": 20.0,
+      "scaled_y_stiffness_weight_rho_epsilon_epsilon_squared": 0.05
+    },
+    "test_vector_Z_quadratic_form": 0.092335,
+    "test_vector_direct_slab_norm": 0.092335,
+    "thin_wall_convergence": [
+      {
+        "epsilon": 0.1,
+        "max_matrix_error_to_V47_K": 0.03074679422261506
+      },
+      {
+        "epsilon": 0.05,
+        "max_matrix_error_to_V47_K": 0.015968632135859695
+      },
+      {
+        "epsilon": 0.02,
+        "max_matrix_error_to_V47_K": 0.006529150966393782
+      },
+      {
+        "epsilon": 0.01,
+        "max_matrix_error_to_V47_K": 0.003288098168034548
+      },
+      {
+        "epsilon": 0.005,
+        "max_matrix_error_to_V47_K": 0.0016499211048034423
+      }
+    ],
+    "wall_J_unitarity_residual": 3.3306690738754696e-16,
+    "zero_mode_count": {
+      "eight_PS_left_components_each": 0,
+      "one_PS_right_SU5_singlet": 0,
+      "seven_PS_right_non_singlets_each": 0,
+      "total_chiral_component_zero_modes": 0
+    }
+  },
+  "pole_free_spectrum": {
+    "interior_transfer": "f*=F E a+m S O a; g*=-m S E a+G O a at y*=L-epsilon",
+    "order_of_limits": "the slab is solved before epsilon is taken to zero; no finite KK truncation precedes the wall limit",
+    "relation_where_D_invertible": "K_res=D K_eff with K_eff=(-mS+B_R F)E+(G+m B_R S)O",
+    "resolved_characteristic": "K_res=(C F-m D S)E+(m C S+D G)O",
+    "thin_wall_limit": "epsilon->0 gives C->Lambda, D->I, L-epsilon->L and K_res->K_V47"
+  },
+  "primary_sources": [
+    {
+      "url": "https://arxiv.org/abs/hep-th/0106256",
+      "use": "manifest 4D N=1 superfield form of a 5D hypermultiplet"
+    },
+    {
+      "url": "https://arxiv.org/abs/hep-ph/0112230",
+      "use": "gauge-covariant superspace brane operators and higher derivatives"
+    },
+    {
+      "url": "https://arxiv.org/abs/1408.1852",
+      "use": "square-profile brane regularization and order-of-limits warning"
+    }
+  ],
+  "provenance": {
+    "V45_to_V47_files_modified": false,
+    "upstream_sha256": {
+      "SUSY_V47_FOUR_SPINOR_MIXED_KK_AUDIT.json": "d3f890e4fcfaa6db66ed92ad849f743ac2f5408ab3a77ba9f0534f9e0aa9af45",
+      "SUSY_V47_G1_CLOSURE_FRONTIER_AUDIT.json": "d9cda6a7b25ad3a59d57f0665e9dbd3d7888e372cad927e51b9722b79b004f9c",
+      "SUSY_V47_SOURCE_COMPLETION_ROUTE_AUDIT.json": "782f66ce31b6b9669ec847768c614b9d7318a578888271c2bd7b593a08c14fdc"
+    }
+  },
+  "schema_version": "susy-spin10-v48-resolved-source-wall-v1",
+  "scope": {
+    "answer": "yes at tree-level in the declared Wilsonian square-slab scheme",
+    "not_claimed": [
+      "a regulator-independent bare delta coefficient",
+      "loop-level UV completion of the nonrenormalizable 5D EFT",
+      "the numerical full-tower threshold sum",
+      "closure of G2 by this subaudit alone"
+    ],
+    "question": "Does at least one explicit supersymmetric finite-thickness regulator realize the V47 four-spinor boundary extension without ghosts, tachyons or discarded wall states?"
+  },
+  "self_adjointness_positivity_unitarity": {
+    "bosonic_positivity": "unbroken 4D N=1 gives the bosonic operator Q_epsilon^dagger Q_epsilon and hence m_scalar^2>=0",
+    "boundary_form": "[-f_psi^dagger g_phi+g_psi^dagger f_phi]_0^L",
+    "consequence": "real fermion masses, nonnegative scalar mass squares, positive norm and unitary KK reduction",
+    "first_order_operator": "Q_epsilon=[[rho_epsilon Lambda,-partial_y+M],[partial_y+M,0]]",
+    "positive_norm": "canonical slab Kahler metric is positive and no wall variable is discarded in K_res",
+    "proof": "Hermitian Lambda, real M, the parity domain, continuity and g(L)=0 make Q_epsilon self-adjoint",
+    "strict_kinetic_bound": "f^dagger Z_b f=epsilon(||f||^2+||Lambda f||^2/3)>=epsilon||f||^2>0",
+    "transfer_identity": "T_wall^dagger J T_wall=J for real signed m, J=[[0,-I],[I,0]]",
+    "zero_mode_slab_norm": "for f(x)=f0 and g(x)=-(1-x)Lambda f0, integral_slab(|f|^2+|g|^2)=f0^dagger Z_b f0"
+  },
+  "status": "V48_MANIFEST_N1_FINITE_SOURCE_SLAB_DEFINED__EXACT_BARE_TO_WILSONIAN_SELF_ADJOINT_MAP_DERIVED__POSITIVE_INDUCED_BOUNDARY_KINETIC_TOWER_RETAINED__POLE_SAFE_CHARACTERISTIC_REDUCES_TO_V47_IN_THIN_WALL_LIMIT__REGULATOR_EXISTENCE_SUBPROBLEM_CLOSED__REGULATOR_INDEPENDENCE_AND_FULL_THRESHOLDS_NOT_CLAIMED"
+}
