@@ -1,0 +1,1152 @@
+{
+  "F71_repair_candidate": {
+    "accepted": false,
+    "exact_required_variation_ledger": {
+      "Z2_normal_polynomial": "0",
+      "bulk_plus_corrected_modules_normal_gravity": "Delta_00=Delta_11=-10 still gives -(1/8)x p1(T6)",
+      "common_normalization": "bulk=(-1/4,40), GS direction=(1,40), so the aligned target is (-1/4,-10)",
+      "continuous_hypercharge_or_X_Stueckelberg_from_flat_bulk_holonomy_forced": false,
+      "corrected_modules_spectator_moments": "Q1=Q3=U1L^2-X=X^3=grav-X=0 independently at both corners",
+      "four_fermion_module_moments": "Q1=Q3=U1L^2-X=X^3=grav-X=0, but U1L-X^2=-100 overshoots the needed -50",
+      "mixed_gauge_normal_at_z00": "the complete inherited-plus-seven-new module contributes (0,-50), so (-1/4,40)+(0,-50)=(-1/4,-10)=(-1/4)(1,40)",
+      "mixed_gauge_normal_at_z11": "the eight-new-chiral primed module contributes (0,-50), giving the same aligned vector",
+      "neutral_zero_mode_count": 10
+    },
+    "id": "F71",
+    "name": "corrected two-corner spinorial U(5)-preimage charge-lattice frontier after factor-two retraction",
+    "not_yet_passes": [
+      "the corrected local representations have an exact anomaly ledger, but their full defect superpotential, masses, decays and vacuum Hessian are not constructed",
+      "the symmetric quaternionic target/isometry is explicit, but its global H-bundle and the ten neutral-mode stabilization are not constructed",
+      "the primed hypercharge Y=+/-1 exotics require a viable mass/decay/cosmology analysis and the discrete-R anomaly ledger must be recomputed",
+      "factorization is necessary but no generalized global GS/Wu-CS H-cocycle has been constructed"
+    ],
+    "repair_options": {
+      "alternate_fermion_module_at_z11": {
+        "accepted": false,
+        "alignment": "FAIL in the claimed half-integral assignment: it shifts -100 where -50 is needed",
+        "problem": "besides the factor-two failure, the charged pair has Y=+/-2, no R-preserving bare mass, and creates exotic decay/cosmology obligations"
+      },
+      "selected_hybrid": {
+        "mass_decay_cosmology_complete": false,
+        "why_selected": "uses the Spin(11) spinorial-preimage charge lattice and closes every perturbative spectator moment without an unquantized axion",
+        "z00": "inherited X/Xbar/S0 plus seven-new-chiral 1_(+/-5) compensator module",
+        "z11": "eight-new-chiral 1'_(+/-5) compensator module",
+        "z11_primed_hypercharge": "+/-1 for the charged singlets"
+      }
+    },
+    "required_new_data": [
+      "at z00, pin the Spin(11) preimage U(5)-tilde lift, retain the existing X(+10),Xbar(-10),S0 fields and assign/pin their F71 continuous normal lifts, then add two copies each of 1_(+5),1_(-5) with qL=+1/2 plus three neutral qL=-1/2 chirals",
+      "at z11, pin the conjugate preimage lift and add two copies each of 1'_(+5),1'_(-5) with qL=-1/2 plus four neutral qL=+1/2 chirals",
+      "construct R-compatible masses and decay portals for the new vectorlike charged singlets without destabilizing the rank-breaking vacuum or the proton selector",
+      "globalize the explicit Sp(266,1)/(Sp(266)xSp(1)) target-space isometry to a combined Spin-SU2R-Sp266 orbifold H-bundle",
+      "construct an equivariant GS/Wu-Chern-Simons differential cocycle on the combined Spin-SU(2)R-gauge orbifold structure",
+      "cancel the complete localized U1L^3, U1L-gravity, discrete-R and eta/Dai-Freed anomaly ledgers"
+    ],
+    "same_action_complete": false,
+    "selected_for_next_frontier": true,
+    "status": "EXACT_LOCAL_PERTURBATIVE_WITNESS_IN_PROVISIONAL_SPINORIAL_PREIMAGE__MASS_DECAY_GLOBAL_AND_QUANTUM_COMPLETION_OPEN",
+    "supersedes": [
+      "F70",
+      "F70_ALT"
+    ]
+  },
+  "acceptance": {
+    "F70_ALT_unmodified": "REJECTED_BY_Z11_MIXED_NORMAL_GAUGE_ANOMALY",
+    "F70_unmodified": "REJECTED_BY_Z11_MIXED_NORMAL_GAUGE_ANOMALY",
+    "F71_microscopic_supergravity_action": "OPEN_NOT_CONSTRUCTED",
+    "F71_perturbative_alignment": "PASS_EXACT_CONDITIONAL_ON_SPINORIAL_PREIMAGE_GLOBAL_FORM",
+    "continuous_hypercharge_or_X_Stueckelberg_from_flat_holonomy": "PASS_NOT_FORCED",
+    "equivariant_GS_WuCS": "OPEN",
+    "full_local_normal_anomaly": "OPEN",
+    "global_anomaly": "OPEN",
+    "neutral_global_H_bundle": "OPEN",
+    "neutral_hyper_target_isometry": "PASS_EXACT_LOCAL_SYMMETRIC_QK_WITNESS"
+  },
+  "artifact_hashes": {
+    "generator_sha256": "cdccb13566601d720c143dd40ff5e359425a8a4ad8346d1919ef00ac9ac67c98",
+    "test_sha256": "99760b87f538a12a250f3943e2ae558765a0c3ab3ac203b1e59e1588acb91240"
+  },
+  "charged_bulk_normal_gravity_ledger": {
+    "I6_at_each_Z4_corner": "4 (11 x^3+x p1(T4))/192",
+    "Z2_result": "0",
+    "adjoint": {
+      "gaugino_opposite_chirality_units": 5,
+      "phase_dimensions_m0123": [
+        25,
+        5,
+        20,
+        5
+      ],
+      "same_chirality_weighted_sum": -5
+    },
+    "flavor_Wilson_branch": {
+      "active_m3": -1,
+      "spectator_pair_options": {
+        "m0_plus_m2": 0,
+        "m1_plus_m3": 0
+      },
+      "with_gaugino": 4
+    },
+    "full_11_identity": {
+      "formula": "u_11(m)=5 s_(m+1)+5 s_(m-1)+s_m=s_m",
+      "values_m0123": [
+        -1,
+        1,
+        1,
+        -1
+      ]
+    },
+    "integer_m301_branch": {
+      "individual_units": [
+        -1,
+        -1,
+        1
+      ],
+      "m_values": [
+        3,
+        0,
+        1
+      ],
+      "three_11_sum": -1,
+      "with_gaugino": 4
+    },
+    "status": "EXACT_SAME_PLUS4_HYPER_UNITS_FOR_BOTH_V70_BRANCHES",
+    "z00_equals_z11": true
+  },
+  "core_sha256": "0162828ebd2b1e28d4fcbcf4ea1e6c61178d305cec79abd6d36a55719bb0f1ea",
+  "date": "2026-08-30",
+  "equivariant_GS_WuCS_boundary": {
+    "Dai_Freed_phases_computed": false,
+    "SO11_fallback_fails": {
+      "b": [
+        2,
+        -1
+      ],
+      "b_is_even": false,
+      "pullback": "the H4(BSO11;Z) generator pulls back to twice the H4(BSpin11;Z) generator",
+      "strong_quantization_requirement": "b must lie in 2U in Spin normalization",
+      "verdict": "FAIL"
+    },
+    "continuous_Stueckelberg": {
+      "allowed_remaining_effects": [
+        "a discrete differential-cohomology phase",
+        "a continuous mass from deliberately added nonzero real internal flux",
+        "a continuous mass from a localized axion chosen to shift under the gauge U1"
+      ],
+      "assumptions": [
+        "no additional real internal flux",
+        "the eventual generalized H-cocycle does not introduce a gauge-shifting localized axion"
+      ],
+      "bulk_GS_reduction": {
+        "coarse_delta_flux_warning": "a branch-dependent delta-flux representative describes the same flat stack bundle and does not change the de Rham integral",
+        "cohomological_reason": "pushforward of torsion into the free group H2(BU1;Z)=Z cannot generate a nonzero continuous BF coefficient",
+        "schematic_coefficient": "k_A proportional to integral_(T2/Z4) tr(T_A F_internal)",
+        "value": "0"
+      },
+      "four_dimensional_crosscheck": {
+        "V70_zero_mode_gauge_anomalies": "all zero",
+        "forced_mass_for_X": false,
+        "forced_mass_for_hypercharge": false,
+        "two_form_mass_rule": "a canceled mixed U1 anomaly breaks the U1 only if it survives in the 4D theory"
+      },
+      "orbifold_gauge_background": {
+        "data": "Q and W are finite flat space-group holonomies",
+        "de_Rham_internal_curvature": "0",
+        "fixed_point_characteristic_classes": "torsion only"
+      },
+      "repair_design_rule": "a z11 defect axion should shift under normal U1L, not hypercharge, if it is to preserve the massless gauge group",
+      "status": "NO_CONTINUOUS_HYPERCHARGE_OR_X_STUECKELBERG_FOR_FLAT_TORSION_HOLONOMY"
+    },
+    "equivariant_GS_descent_constructed": false,
+    "gauge_lift_boundary": {
+      "qhat_fourth": "-1 in Spin(11)",
+      "spinorial_or_global_bundle": "requires the combined quotient/global orbibundle to be specified",
+      "vector_and_adjoint": "the center is invisible"
+    },
+    "naive_orbifold_torsion_divisibility": {
+      "all_loci_fail_ordinary_divisibility": true,
+      "generator": "u in H2(BZn;Z)=Zn; u^2 generates H4(BZn;Z)",
+      "interpretation": "the smooth Spin(11) shifted cocycle has no naive restriction to the orbifold isotropy groups; an R/flavor torsion correction and generalized integral lift of lambda on the combined H-structure are mandatory",
+      "local_relative_halves_and_gluing_obstruction": {
+        "Z2_boundary": "E11 is already spin with p1(E11)=0, while w2(E11) differs from w2(R)",
+        "Z4_c2_relative": "(p1(E11)-p1(R))/2 is locally integral and can make the local Y class zero",
+        "conclusion": "the local relative halves do not define one global class; an H-characteristic cocycle must be constructed and glued",
+        "lambda_H": "(p1(T)-p1(R))/2 is locally integral because w2(T)=w2(R)"
+      },
+      "local_weight_sums": {
+        "z00": "tangent 1; Q has five vector-plane weights 1, so p1(E11)=5u^2",
+        "z10_z01": "tangent 1; R flips two vector planes, so p1(E11)=2u^2",
+        "z11": "tangent 1; WQ has two weights 1 and three weights 3, so p1(E11)=(2+27)u^2=29u^2"
+      },
+      "minimal_restriction_level_corrections_to_twice_Y": {
+        "SU2R_alone": "p1(R)=u_n^2 at both strata, so one fixed U-vector coefficient cannot realize both correction patterns",
+        "Z2": "delta=(1,1)u^2 is mandatory and changes (1,1) to (0,0)",
+        "Z4": "the first coordinate must be odd; delta=(1,0)u^2 is the smallest choice and changes (3,2) to (0,2)"
+      },
+      "not_a_no_go_for": "a newly constructed combined Spin-SU2R-Sp266-Spin11 equivariant cocycle",
+      "ordinary_smooth_cocycle": {
+        "Y_in_U_basis": [
+          "lambda-2c2",
+          "lambda+c2"
+        ],
+        "c2_Spin11": "p1(E11)/2",
+        "lambda": "p1(T)/2",
+        "twice_Y": [
+          "p1(T)-2p1(E11)",
+          "p1(T)+p1(E11)"
+        ]
+      },
+      "rows": [
+        {
+          "Y_exists_in_ordinary_integral_cohomology": false,
+          "classes_mod_order": {
+            "p1_E11": 1,
+            "p1_Tperp": 1
+          },
+          "cohomology": "H4(BZ4;U)=(Z4)^2",
+          "doubling_image_each_coordinate": [
+            0,
+            2
+          ],
+          "isotropy": "Z4",
+          "locus": "z00",
+          "p1_E11_weight_sum": 5,
+          "p1_Tperp_weight_sum": 1,
+          "two_Y_mod_order": [
+            3,
+            2
+          ]
+        },
+        {
+          "Y_exists_in_ordinary_integral_cohomology": false,
+          "classes_mod_order": {
+            "p1_E11": 1,
+            "p1_Tperp": 1
+          },
+          "cohomology": "H4(BZ4;U)=(Z4)^2",
+          "doubling_image_each_coordinate": [
+            0,
+            2
+          ],
+          "isotropy": "Z4",
+          "locus": "z11",
+          "p1_E11_weight_sum": 29,
+          "p1_Tperp_weight_sum": 1,
+          "two_Y_mod_order": [
+            3,
+            2
+          ]
+        },
+        {
+          "Y_exists_in_ordinary_integral_cohomology": false,
+          "classes_mod_order": {
+            "p1_E11": 0,
+            "p1_Tperp": 1
+          },
+          "cohomology": "H4(BZ2;U)=(Z2)^2",
+          "doubling_image_each_coordinate": [
+            0
+          ],
+          "isotropy": "Z2",
+          "locus": "z10_z01",
+          "p1_E11_weight_sum": 2,
+          "p1_Tperp_weight_sum": 1,
+          "two_Y_mod_order": [
+            1,
+            1
+          ]
+        }
+      ],
+      "status": "EXACT_NAIVE_SMOOTH_MMP_COCYCLE_TORSION_DIVISIBILITY_NO_GO",
+      "weight_rule": "for a real two-plane of complex isotropy weight w, p1=w^2 u^2"
+    },
+    "ordinary_spin_orbifold_obstruction": {
+      "L_theta_fourth": "-1",
+      "conclusion": "there is no order-four lift Z4 -> Spin(2) covering the 90-degree rotation",
+      "geometric_spin_lift": "L_theta=exp(pi Gamma45/4)"
+    },
+    "perturbative_equivariant_index_scope": "computes the local polynomial used here but not torsion, eta holonomy or global gluing",
+    "preserved_supersymmetry_structure": {
+      "SU2R_lift_fourth": "-1",
+      "combined_fourth": "(L_theta,U_R)^4=(-1,-1)=+1 after the diagonal Z2 quotient",
+      "required_tangential_structure": "a combined Spin-SU(2)R equivariant structure, not an ordinary independent spin lift"
+    },
+    "smooth_parent_imported_from_V70": {
+      "a": [
+        2,
+        2
+      ],
+      "a_characteristic": true,
+      "b": [
+        2,
+        -1
+      ],
+      "global_form": "Spin(11)",
+      "integral_unimodular": true,
+      "lattice": "U with Omega=[[0,1],[1,0]]",
+      "reduced_Omega7_spin_BSpin11": "0",
+      "smooth_shifted_WCS_verdict": "PASS, subject to the ordinary self-dual-string/tadpole caveat"
+    },
+    "status": "SMOOTH_PARENT_WUCS_DATA_PASS__ORBIFOLD_EQUIVARIANT_WUCS_OPEN",
+    "why_smooth_WCS_is_not_enough": [
+      "the cited smooth construction assumes a smooth spin spacetime and an independently defined gauge bundle",
+      "the present quotient has fixed strata and only a diagonal Spin-SU(2)R lift",
+      "fixed-stratum differential cocycles, tensor boundary conditions and torsion refinements are not supplied by V70",
+      "replacing Spin(11) by SO(11) does not evade the central lift: b=(2,-1) fails the SO global-form quantization condition"
+    ]
+  },
+  "frontier_status_ledger": [
+    "SMOOTH_SPIN11_WCS_PASS_EXACT",
+    "ORDINARY_SPIN_ORBIFOLD_FAIL_EXACT",
+    "INDEPENDENT_SPIN11_ORBIBUNDLE_FAIL_EXACT",
+    "SO11_FALLBACK_QUANTIZATION_FAIL_EXACT",
+    "NAIVE_FIXED_STRATUM_MMP_COCYCLE_FAIL_EXACT",
+    "COMBINED_H_TANGENTIAL_STRUCTURE_CONSTRUCTED_CLASSICALLY",
+    "GLOBAL_H_DIFFERENTIAL_COCYCLE_AND_OMEGA7_OPEN",
+    "NEUTRAL_QK_SPACE_GROUP_LIFT_PASS_EXACT",
+    "Z4_NORMAL_POLYNOMIAL_GS_ALIGNED_NOT_CANCELLED",
+    "Z4_MIXED_NORMAL_GAUGE_ORTHOGONAL_FAIL_FOR_UNMODIFIED_F70",
+    "Z00_PAIR_PLUS_TWO_NEUTRALS_STANDALONE_REPAIR_FAIL_FACTOR_TWO",
+    "CORRECTED_PROVISIONAL_SPINORIAL_U5_PREIMAGE_MODULES_PASS_EXACT_LOCAL_PERTURBATIVE",
+    "CONTINUOUS_STUECKELBERG_NOT_FORCED",
+    "G1_TO_G8_OPEN"
+  ],
+  "gate_ledger": {
+    "G1": "OPEN",
+    "G2": "OPEN",
+    "G3": "OPEN",
+    "G4": "OPEN",
+    "G5": "OPEN",
+    "G6": "OPEN",
+    "G7": "OPEN",
+    "G8": "OPEN"
+  },
+  "gravity_tensor_equivariant_index": {
+    "I6_gravity_plus_tensor_fermions": {
+      "common_denominator_192": [
+        "42",
+        "-18"
+      ],
+      "formula": "(42 x^3-18 x p1(T4))/192",
+      "x3": "7/32",
+      "x_p1T4": "-3/32"
+    },
+    "Z2_result": "0 in the normal degree-six sector",
+    "explanation": [
+      "the gauge-fixed Rarita-Weyl index is twisted by T_C M6-1",
+      "the gravitino has chirality opposite the hyperino and the tensorino the same chirality",
+      "ch_g(T_C M6-2)=2+p1(T4)+2 cosh(x+i theta_j)"
+    ],
+    "fermionic_virtual_bundle": "-(T_C M6-1)+1 = -(T_C M6-2)",
+    "self_dual_forms": {
+      "extra_tensor_lattice_twist": "NOT_ASSUMED; any O(1,1;Z) twist is new data and requires recomputation",
+      "standard_lift": "the gravity B+ and tensor B- equivariant signature complexes cancel pointwise"
+    },
+    "smooth_identity_crosscheck": "gravity plus one tensor = -273+29=-244 irreducible-gravity units",
+    "status": "EXACT_UNDER_THE_STANDARD_UNTWISTED_TENSOR_LIFT"
+  },
+  "lineage": {
+    "V70_core_matches": true,
+    "bound_V70_core": "3e7b8e53916fbbc05bdcdf9632bcf4359aa4888b037df775c37d8d7d2551b228",
+    "bound_V70_path": "SUSY_V70_SPIN11_LOCALIZED_PARENT_SPIN_FLAVOR_COMPLETION_AUDIT.json",
+    "expected_V70_core": "3e7b8e53916fbbc05bdcdf9632bcf4359aa4888b037df775c37d8d7d2551b228",
+    "imported": [
+      "genuine Spin/SU2R charged lift",
+      "F70 integer-m301 and F70_ALT flavor-Wilson charged branches",
+      "fixed-locus U5, U5-prime and Spin4xSpin7 branching",
+      "smooth U-lattice Green-Schwarz coefficients"
+    ],
+    "not_imported": [
+      "a completed normal-bundle anomaly",
+      "localized U1L charges",
+      "an equivariant Green-Schwarz or Wu-Chern-Simons action"
+    ]
+  },
+  "mixed_normal_gauge_obstruction": {
+    "F70_bulk_result_each_Z4_corner": [
+      "-1/4",
+      "40"
+    ],
+    "U1L_squared_X_ledger": {
+      "adjoint_before_chirality": "-15/8",
+      "both_V70_branches_zero": true,
+      "flavor_Wilson_total_with_gaugino": "0",
+      "gaugino": "15/8",
+      "integer_m301_total_with_gaugino": "0",
+      "one_11_m0123": [
+        "-15/8",
+        "15/8",
+        "15/8",
+        "-15/8"
+      ],
+      "spin_half_x2_coefficients_m0123": [
+        "-7/64",
+        "-5/64",
+        "5/64",
+        "7/64"
+      ]
+    },
+    "Z2_result": "0 because cos(pi/2)=0 in the spin-half remnant-Lorentz trace",
+    "adjoint_branching": [
+      {
+        "T_SU5": "5",
+        "X": 0,
+        "c1_mixed_weight": "1/8",
+        "dimension": 24,
+        "eta": "1",
+        "kappa": "1/4",
+        "representation": "24_0"
+      },
+      {
+        "T_SU5": "0",
+        "X": 0,
+        "c1_mixed_weight": "1/8",
+        "dimension": 1,
+        "eta": "1",
+        "kappa": "1/4",
+        "representation": "1_0"
+      },
+      {
+        "T_SU5": "3/2",
+        "X": 4,
+        "c1_mixed_weight": "-1/8",
+        "dimension": 10,
+        "eta": "-1",
+        "kappa": "-1/4",
+        "representation": "10_4"
+      },
+      {
+        "T_SU5": "3/2",
+        "X": -4,
+        "c1_mixed_weight": "-1/8",
+        "dimension": 10,
+        "eta": "-1",
+        "kappa": "-1/4",
+        "representation": "10bar_-4"
+      },
+      {
+        "T_SU5": "1/2",
+        "X": 2,
+        "c1_mixed_weight": "-1/8",
+        "dimension": 5,
+        "eta": "i",
+        "kappa": "-1/4",
+        "representation": "5_2"
+      },
+      {
+        "T_SU5": "1/2",
+        "X": -2,
+        "c1_mixed_weight": "1/8",
+        "dimension": 5,
+        "eta": "-i",
+        "kappa": "1/4",
+        "representation": "5bar_-2"
+      }
+    ],
+    "basis": {
+      "SU5_index": "T(5)=1/2, T(10)=3/2, T(24)=5",
+      "X_trace": "dimension times X^2",
+      "normalization": "ordinary 4D localized-Weyl anomaly polynomial: a left Weyl of normal charge q contributes q*(T(R),dim(R) X^2)",
+      "order": [
+        "U1L_SU5_squared",
+        "U1L_X_squared"
+      ]
+    },
+    "complete_16_check": {
+      "branching": "16=10_-1+5bar_3+1_-5",
+      "conclusion": "a complete localized 16 with one normal charge cannot remove the orthogonal component",
+      "equals_two_times_bulk_direction": true,
+      "trace_direction": [
+        "2",
+        "80"
+      ]
+    },
+    "corrected_spinorial_U5_preimage_modules": {
+      "V70_z00_R_charge_binding": {
+        "S0": 2,
+        "X_Xbar": 0,
+        "normal_lift_used": "qL(theta)=1/2 gives qpsi(X,Xbar,S0)=(-1/2,-1/2,+1/2)",
+        "source_path": "localized_parent_completion_branches.integer_m301_dynamical_reduction.complete_renormalizable_local_operator_ledger.Z4R_charges"
+      },
+      "aligned_total_vector_each_Z4": [
+        "-1/4",
+        "-10"
+      ],
+      "both_mixed_vectors_align": true,
+      "charge_lattice_reason": "1_(+/-5) are representations of the spinorial preimage U(5)-tilde in Spin(11): the restricted 16 contains 1_(-5) in 16=10_(-1)+5bar_(3)+1_(-5)",
+      "global_form_boundary": "a literal vector-form U(5) in the X normalization of 11=5_(2)+5bar_(-2)+1 permits singlet characters in multiples of 10; the charge-five witness therefore requires the Spin(11) preimage already suggested by V70 localized 16s, and its global orbibundle quotient must still be pinned",
+      "mass_boundary": "bare superpotential masses are Z4R-forbidden at both corners; at z11 the R-neutral and normal-neutral Kahler bilinears can generate only m3/2-scale Giudice-Masiero masses, while at z00 each charged scalar has continuous normal charge +1 and its bilinear needs a charge -2 spurion/section or a proven reduction to the discrete symmetry; all z00 masses, decay portals and cosmology remain open",
+      "old_pair_no_go": "an honest vectorlike 1_(+10)+1_(-10) pair has two half-integral qL charges, hence integer q-sum and an X^2 shift in multiples of 100; it cannot supply -50",
+      "required_local_shift_each_Z4": [
+        "0",
+        "-50"
+      ],
+      "scope_boundary": "this is an exact local perturbative anomaly witness, not a mass spectrum, defect superpotential, global H-bundle, discrete-R anomaly cancellation or Dai-Freed completion",
+      "status": "EXACT_PERTURBATIVE_IN_PROVISIONAL_SPINORIAL_PREIMAGE__GLOBAL_ORBIBUNDLE_AND_MICROSCOPIC_MASSES_OPEN",
+      "z00_complete_ledger": {
+        "Q1": "0",
+        "Q3": "0",
+        "U1L_SU5_squared": "0",
+        "U1L_X_squared": "-50",
+        "U1L_squared_X": "0",
+        "all_spectator_anomalies_zero": true,
+        "field_count": 10,
+        "fields": [
+          {
+            "U5_representation": "1_(+10)",
+            "X": 10,
+            "Z4R_scalar": 0,
+            "field": "X_plus10",
+            "origin": "inherited V70 rank field",
+            "qL_fermion": "-1/2",
+            "qL_scalar": "0"
+          },
+          {
+            "U5_representation": "1_(-10)",
+            "X": -10,
+            "Z4R_scalar": 0,
+            "field": "Xbar_minus10",
+            "origin": "inherited V70 rank field",
+            "qL_fermion": "-1/2",
+            "qL_scalar": "0"
+          },
+          {
+            "U5_representation": "1_(0)",
+            "X": 0,
+            "Z4R_scalar": 2,
+            "field": "S0",
+            "origin": "inherited V70 localized R=2 driver",
+            "qL_fermion": "1/2",
+            "qL_scalar": "1"
+          },
+          {
+            "U5_representation": "1_(+5)",
+            "X": 5,
+            "Z4R_scalar": 2,
+            "field": "P5_plus_1",
+            "origin": "new F71 compensator",
+            "qL_fermion": "1/2",
+            "qL_scalar": "1"
+          },
+          {
+            "U5_representation": "1_(+5)",
+            "X": 5,
+            "Z4R_scalar": 2,
+            "field": "P5_plus_2",
+            "origin": "new F71 compensator",
+            "qL_fermion": "1/2",
+            "qL_scalar": "1"
+          },
+          {
+            "U5_representation": "1_(-5)",
+            "X": -5,
+            "Z4R_scalar": 2,
+            "field": "P5_minus_1",
+            "origin": "new F71 compensator",
+            "qL_fermion": "1/2",
+            "qL_scalar": "1"
+          },
+          {
+            "U5_representation": "1_(-5)",
+            "X": -5,
+            "Z4R_scalar": 2,
+            "field": "P5_minus_2",
+            "origin": "new F71 compensator",
+            "qL_fermion": "1/2",
+            "qL_scalar": "1"
+          },
+          {
+            "U5_representation": "1_(0)",
+            "X": 0,
+            "Z4R_scalar": 0,
+            "field": "N0_1",
+            "origin": "new F71 neutral",
+            "qL_fermion": "-1/2",
+            "qL_scalar": "0"
+          },
+          {
+            "U5_representation": "1_(0)",
+            "X": 0,
+            "Z4R_scalar": 0,
+            "field": "N0_2",
+            "origin": "new F71 neutral",
+            "qL_fermion": "-1/2",
+            "qL_scalar": "0"
+          },
+          {
+            "U5_representation": "1_(0)",
+            "X": 0,
+            "Z4R_scalar": 0,
+            "field": "N0_3",
+            "origin": "new F71 neutral",
+            "qL_fermion": "-1/2",
+            "qL_scalar": "0"
+          }
+        ],
+        "ordinary_X_cubed": 0,
+        "ordinary_gravity_X": 0
+      },
+      "z00_interpretation": "the inherited X(+/-10) pair contributes -100 and S0 contributes only to Q1/Q3; four new 1_(+/-5) fields contribute +50 and three qL=-1/2 neutrals close Q1=Q3=0",
+      "z00_new_fields_relative_to_V70": 7,
+      "z11_complete_ledger": {
+        "Q1": "0",
+        "Q3": "0",
+        "U1L_SU5_squared": "0",
+        "U1L_X_squared": "-50",
+        "U1L_squared_X": "0",
+        "all_spectator_anomalies_zero": true,
+        "field_count": 8,
+        "fields": [
+          {
+            "U5_representation": "1_(+5)",
+            "X": 5,
+            "Z4R_scalar": 0,
+            "field": "P5prime_plus_1",
+            "origin": "new F71 primed compensator",
+            "qL_fermion": "-1/2",
+            "qL_scalar": "0"
+          },
+          {
+            "U5_representation": "1_(+5)",
+            "X": 5,
+            "Z4R_scalar": 0,
+            "field": "P5prime_plus_2",
+            "origin": "new F71 primed compensator",
+            "qL_fermion": "-1/2",
+            "qL_scalar": "0"
+          },
+          {
+            "U5_representation": "1_(-5)",
+            "X": -5,
+            "Z4R_scalar": 0,
+            "field": "P5prime_minus_1",
+            "origin": "new F71 primed compensator",
+            "qL_fermion": "-1/2",
+            "qL_scalar": "0"
+          },
+          {
+            "U5_representation": "1_(-5)",
+            "X": -5,
+            "Z4R_scalar": 0,
+            "field": "P5prime_minus_2",
+            "origin": "new F71 primed compensator",
+            "qL_fermion": "-1/2",
+            "qL_scalar": "0"
+          },
+          {
+            "U5_representation": "1_(0)",
+            "X": 0,
+            "Z4R_scalar": 2,
+            "field": "N2prime_1",
+            "origin": "new F71 primed neutral",
+            "qL_fermion": "1/2",
+            "qL_scalar": "1"
+          },
+          {
+            "U5_representation": "1_(0)",
+            "X": 0,
+            "Z4R_scalar": 2,
+            "field": "N2prime_2",
+            "origin": "new F71 primed neutral",
+            "qL_fermion": "1/2",
+            "qL_scalar": "1"
+          },
+          {
+            "U5_representation": "1_(0)",
+            "X": 0,
+            "Z4R_scalar": 2,
+            "field": "N2prime_3",
+            "origin": "new F71 primed neutral",
+            "qL_fermion": "1/2",
+            "qL_scalar": "1"
+          },
+          {
+            "U5_representation": "1_(0)",
+            "X": 0,
+            "Z4R_scalar": 2,
+            "field": "N2prime_4",
+            "origin": "new F71 primed neutral",
+            "qL_fermion": "1/2",
+            "qL_scalar": "1"
+          }
+        ],
+        "ordinary_X_cubed": 0,
+        "ordinary_gravity_X": 0
+      },
+      "z11_hypercharge": "for an SU(5)' singlet Y=X'/5, so 1'_(+/-5) has Y=+/-1; there are two vectorlike charged-lepton pairs",
+      "z11_new_fields_relative_to_V70": 8
+    },
+    "gaugino_opposite_chirality": [
+      "-1/4",
+      "40"
+    ],
+    "locality": {
+      "one_corner_cannot_cancel_the_other": true,
+      "z00": "the corrected complete ledger uses the existing X/Xbar pair and S0 plus seven new local singlet chirals",
+      "z11": "the corrected complete ledger requires eight new primed local singlet chirals"
+    },
+    "minimal_R_compatible_four_fermion_module": {
+      "Q1": "0",
+      "Q3": "0",
+      "U1L_X_squared": "-100",
+      "U1L_squared_X": "0",
+      "conditional_z00_axion_variation_after_module": "+50 in U1L-X^2",
+      "fermion_content": [
+        "psi_X: 1_(+10), qL=-1/2",
+        "psi_Xbar: 1_(-10), qL=-1/2",
+        "psi_S: gauge neutral, qL=+1/2",
+        "psi_P: gauge neutral, qL=+1/2"
+      ],
+      "localized_family_contract": "V70 R=1 family scalars map to qL=1/2 and qL(psi_16)=0; alternatively any uniform 16 charge shifts only the GS direction (2,80)",
+      "minimality": "one half-integrally charged neutral fermion cannot make the factorization equation admit an integer Delta; two q=+1/2 do",
+      "new_fields_relative_to_V70": {
+        "z00": "V70 has the X pair and one R=2 driver S0; the contract still needs one independent R=2 neutral P0 and a pinned isotropy lift",
+        "z11": "the entire primed pair plus two neutral R=2 drivers is new"
+      },
+      "only_nonzero_local_anomaly_component": "U1L-X^2=-100 in the common local-Weyl convention",
+      "ordinary_X_cubed_and_gravity_X": "0 because the charged pair is vectorlike",
+      "restores_bulk_Delta_condition": "Delta_f=-10 because Q1=Q3=0",
+      "standalone_mixed_repair": "FAIL: the unmodified bulk needs -50, so this module overshoots by -50",
+      "superspace_lift": "qL(theta)=+1/2; scalar charges are (0,0,1,1), mapping to V70-like Z4R charges (0,0,2,2)",
+      "supersymmetric_mass_and_VEV_theorem": {
+        "allowed_driver": "r_S=1 permits W=S(X Xbar-v^2) and maps to Z4R(S)=2",
+        "bare_mass": "M X Xbar requires r_X+r_Xbar=1 and therefore qpsi sum 0; it cannot make the needed anomaly shift",
+        "fermion_charge_sum": "qpsi_X+qpsi_Xbar=r_X+r_Xbar-1 for qL(theta)=1/2",
+        "repair_assignment": "r_X=r_Xbar=0 gives qpsi sum -1",
+        "z11_boundary": "the primed pair must remain at zero VEV because 1'_(+/-10) has common hypercharge +/-2"
+      }
+    },
+    "minimal_singlet_pair_repair": {
+      "aligned_target_vector": [
+        "-1/4",
+        "-10"
+      ],
+      "aligns_with_bulk_direction": false,
+      "conditional_z00_compensating_axion_variation": [
+        "0",
+        "50"
+      ],
+      "mixed_shift": [
+        "0",
+        "-100"
+      ],
+      "pair_overshoot_relative_to_alignment": [
+        "0",
+        "-50"
+      ],
+      "repaired_vector": [
+        "-1/4",
+        "-60"
+      ],
+      "representations": [
+        "1_(+10)",
+        "1_(-10)"
+      ],
+      "required_fermion_normal_charge_sum": "-1",
+      "required_net_local_shift_without_the_pair": [
+        "0",
+        "-50"
+      ],
+      "scope": "the pair's local polynomial is exact, but it overshoots the mixed correction needed for GS alignment and also creates cubic-normal and normal-gravity terms",
+      "status": "FAILS_STANDALONE_ALIGNMENT_BY_FACTOR_TWO_AFTER_COMMON_NORMALIZATION",
+      "symmetric_charge_witness": [
+        "-1/2",
+        "-1/2"
+      ],
+      "symmetric_pair_additional_local_I6": {
+        "formula": "-x^3/24+x p1(T4)/24",
+        "x3": "-1/24",
+        "x_p1T4": "1/24"
+      }
+    },
+    "standard_bulk_GS": {
+      "Spin11_invariant": "tr_11 F^2",
+      "all_tensor_couplings_same_gauge_direction": true,
+      "determinant_with_F70_vector": "-50",
+      "ordinary_bulk_GS_can_cancel_F70_vector": false,
+      "orthogonal_component_nonzero": true,
+      "reason": "11=5_2+5bar_-2+1_0 gives (T_SU5,X^2)=(1,40)",
+      "restriction_to_U5": [
+        "1",
+        "40"
+      ]
+    },
+    "status": "EXACT_ORTHOGONAL_OBSTRUCTION__FORMER_LOCAL_REPAIR_RETRACTED_BY_COMMON_NORMALIZATION",
+    "three_full_11_hypers": {
+      "all_zero": true,
+      "each_intrinsic_phase_m0123": {
+        "m0": [
+          "0",
+          "0"
+        ],
+        "m1": [
+          "0",
+          "0"
+        ],
+        "m2": [
+          "0",
+          "0"
+        ],
+        "m3": [
+          "0",
+          "0"
+        ]
+      }
+    },
+    "von_Gersdorff_factor": {
+      "common_normalization_conversion": "kappa=2*c1; Eq. 4.3-4.5 calibrates |qL|=1/2 to one A2 unit, so a local Weyl contributes 2qL in the kappa/A2 convention and qL in the c1/index-polynomial convention used below",
+      "fixed_density_c1_eta_1_i_minus1_minusi": [
+        "1/8",
+        "-1/8",
+        "-1/8",
+        "1/8"
+      ],
+      "formula": "kappa(eta)=4 w(eta)^2-5/16",
+      "kappa_eta_1_i_minus1_minusi": [
+        "1/4",
+        "-1/4",
+        "-1/4",
+        "1/4"
+      ],
+      "weights_eta_1_i_minus1_minusi": [
+        "3/8",
+        "1/8",
+        "-1/8",
+        "-3/8"
+      ]
+    },
+    "weighted_adjoint_trace_before_chirality": [
+      "1/4",
+      "-40"
+    ],
+    "z11_prime_basis": "WQ has the same eigenvalue multiplicities, so the result is identical in U(5)'"
+  },
+  "neutral_266_phase_classification": {
+    "bulk_gravitational_trace_factorization": {
+      "coefficient_pair_over_192": [
+        -24,
+        -24
+      ],
+      "condition": "coefficient(x^3)=coefficient(x p1(T4))",
+      "factored_polynomial": "-(1/8) x [p1(T4)+x^2] = -(1/8)x p1(T6)|_f",
+      "necessary_not_sufficient": true,
+      "restricted_trace": "p1(T6)|_f=p1(T4)+x^2",
+      "unique_Delta": -10
+    },
+    "cannot_vanish": {
+      "requirements_incompatible": true,
+      "x3_requires_Delta": "-86/11",
+      "xp_requires_Delta": "14"
+    },
+    "component_ledger_over_192": {
+      "before_266_neutrals": [
+        86,
+        -14
+      ],
+      "charged_bulk": [
+        44,
+        4
+      ],
+      "gravity_plus_tensor": [
+        42,
+        -18
+      ],
+      "one_neutral_hyper_phase_m": "s_m*(11,1)"
+    },
+    "conventional_local_fermion_only_no_go_for_factored_residue": {
+      "conclusion": "the residual needs tensor/GS inflow or nonstandard localized isotropy, not ordinary brane fermions alone",
+      "congruence": "every odd r obeys r^3=r mod 24, but +6 is not congruent to -6 mod 24",
+      "half_integer_spin2_rewrite": [
+        "r_i=2q_i odd",
+        "sum r=-6",
+        "sum r^3=+6"
+      ],
+      "required_charge_moments": [
+        "sum q=-3",
+        "sum q^3=+3/4"
+      ],
+      "scope": "conventional half-integral Spin(2) charges; projective/twisted isotropy data require a separate audit",
+      "solution_exists": false,
+      "target_to_cancel": "+(1/8)x[p1(T4)+x^2]"
+    },
+    "definition": "Delta_f=N1_f+N2_f-N0_f-N3_f at a Z4 corner f",
+    "explicit_266_dimensional_witness": {
+      "Delta_at_each_corner": -10,
+      "dimension": 266,
+      "global_H_bundle_constructed": false,
+      "neutral_chiral_zero_modes": 10,
+      "phase_counts_at_each_corner": {
+        "m0": 74,
+        "m1": 64,
+        "m2": 64,
+        "m3": 64
+      },
+      "sixty_four_length4_blocks": {
+        "A": "A e_k=e_(k+1 mod 4)",
+        "U_diagonal": [
+          "i",
+          "-1",
+          "-i",
+          "-1"
+        ],
+        "V_diagonal": [
+          "-1",
+          "i",
+          "-1",
+          "-i"
+        ],
+        "constant_modes": 0,
+        "each_A_and_UA_spectrum": [
+          "1",
+          "i",
+          "-1",
+          "-i"
+        ]
+      },
+      "target_isometry_constructed": true,
+      "ten_trivial_blocks": "A=U=V=1, m=0; ten Phi+ zero modes"
+    },
+    "general_localized_extension": {
+      "definitions": [
+        "Q1_f=sum_local d_i q_i",
+        "Q3_f=sum_local d_i q_i^3"
+      ],
+      "full_directional_factorization_equation": "100+10 Delta_f+32 Q3_f+8 Q1_f=0",
+      "local_Weyl_addition_over_192": "(32 Q3_f, -8 Q1_f)"
+    },
+    "microscopic_caveat": "The symmetric QK target and local isotropy representation now exist explicitly, but their combined H-bundle has not been globalized over the orbifold and the ten neutral zero modes are not stabilized.",
+    "scope_of_Delta_minus10": "bulk fields only, or a localized sector with Q1=sum(d q)=0 and Q3=sum(d q^3)=0; arbitrary localized normal charges change the condition",
+    "status": "EXACT_UNITARY_CLASSIFICATION_AND_SYMMETRIC_QK_TARGET_ISOMETRY_WITNESS__GLOBAL_H_BUNDLE_OPEN",
+    "symmetric_quaternionic_Kahler_realization": {
+      "SU2R_lift": "U_R=diag(zeta^-1,zeta), U_R^4=-I",
+      "complex_symplectic_embedding": "iota(A_F)=diag(A_F,conjugate(A_F)) in the complex 532",
+      "effective_N1_fields": [
+        "Phi+ -> zeta^-1 A_F Phi+ = A_eff Phi+",
+        "Phi- -> zeta^-1 conjugate(A_F) Phi- = -i A_eff^-1 Phi-"
+      ],
+      "effective_superfield_rotation": "A_eff=I_10 direct_sum C4^(direct_sum 64), A_eff^4=I",
+      "effective_translations": "U_eff=I_10 direct_sum U4^64 and V_eff=I_10 direct_sum V4^64 from the exact matrix witness",
+      "fixed_vacuum_point": "the symmetric-space origin fixed by Sp(266)xSp(1)",
+      "hyperino_lift": "A_F^-1=zeta^-1 A_eff^-1=P_f; its fourth -I cancels L_theta^4=-I",
+      "local_space_group_and_bundle_lift": "PASS_EXACT_AT_THE_SYMMETRIC_FIXED_POINT",
+      "real_dimension": 1064,
+      "scalar_order_four": "(iota(A_F),U_R)^4=(-I,-I), trivial in the diagonal-center isotropy quotient",
+      "still_open": [
+        "global T2/Z4 combined Spin-SU2R-Sp266 H-bundle and quotient",
+        "global composite Sp(1) connection and hyperino bundle",
+        "neutral zero-mode stabilization and couplings",
+        "equivariant WCS/H-bordism and Dai-Freed phase"
+      ],
+      "target": "Sp(266,1)/(Sp(266)xSp(1))",
+      "translation_lift": "U_eff,V_eff embed directly in U(266) subset Sp(266) with trivial SU2R translation holonomy",
+      "underlying_half_angle_flavor_lift": "A_F=zeta A_eff in U(266) subset Sp(266), so A_F^4=-I"
+    },
+    "total_polynomial": "[(86+11 Delta_f)x^3+(-14+Delta_f)x p1(T4)]/192",
+    "two_corner_zero_mode_theorem": {
+      "if_Delta00_equals_Delta11_equals_minus10": "N_zero=N_(m0,m3)=N_(m1,m2)+10 >= 10",
+      "minimum_neutral_chiral_zero_modes": 10,
+      "orbit_proof": [
+        "length-four and length-two translation-character orbits give Delta_00=Delta_11=0",
+        "the fixed (-1,-1) character gives opposite signs because (UA)=-A",
+        "only the translation-trivial (+1,+1) eigenspace contributes to the common corner value",
+        "there Delta=N_(m1,m2)-N_(m0,m3), while m0 and m3 are precisely neutral Phi+ and Phi- zero modes"
+      ],
+      "space_group": [
+        "A^4=1, [U,V]=0",
+        "A U A^-1=V",
+        "A V A^-1=U^-1"
+      ]
+    }
+  },
+  "neutral_four_orbit_matrix_witness": {
+    "all_checks_pass": true,
+    "checks": {
+      "A4": true,
+      "A_U_Ainverse_equals_V": true,
+      "A_V_Ainverse_equals_Uinverse": true,
+      "A_nontrivial_power_traces_zero": true,
+      "UA4": true,
+      "UA_nontrivial_power_traces_zero": true,
+      "UV_commute": true,
+      "no_translation_constant_basis_vector": true
+    },
+    "status": "EXACT_4_ORBIT_MATRIX_WITNESS"
+  },
+  "open_obligations": [
+    "globalize the explicit symmetric quaternionic-Kahler target/isometry to the combined orbifold H-bundle and stabilize its ten neutral chiral zero modes",
+    "specify every localized field's normal U1L lift at z00 and z11 and cancel U1L^3, U1L-gravity and mixed anomalies together",
+    "construct and quantize the equivariant GS/Wu-Chern-Simons differential cocycle on the combined tangential structure",
+    "compute fixed-stratum eta/Dai-Freed phases and the global Spin-SU2R-Spin11/flavor quotient",
+    "construct masses, decay portals, vacuum stabilization and cosmology for the new z00 and primed z11 charge-five singlet modules and recompute the discrete-R ledger",
+    "complete the KK determinant, regulator, thresholds, all-order operator ring, soft spectrum, unification and cosmology"
+  ],
+  "primary_sources": [
+    {
+      "id": "VON_GERSDORFF_2007",
+      "scope_boundary": "The paper explicitly leaves gravitino and self-dual-form contributions outside its spin-1/2 calculation; those are derived separately here.",
+      "sourced_fact": "Equation (3.36) gives the localized remnant-Lorentz anomaly of a six-dimensional Weyl fermion.  Equations (4.3)-(4.5) calibrate one four-dimensional zero-mode Weyl of |qL|=1/2 to one A2 unit.  Equations (3.37)-(3.38) show that ordinary bulk GS inflow cancels only bulk-invariant trace directions; F0-dependent orthogonal terms need localized fermions or axions.",
+      "title": "Anomalies on Six Dimensional Orbifolds",
+      "url": "https://arxiv.org/abs/hep-th/0612212"
+    },
+    {
+      "id": "MONNIER_MOORE_2018",
+      "nonimport": "A smooth-spin result is not an equivariant construction on the present orbifold with a diagonal Spin-SU(2)R lift and fixed strata.",
+      "sourced_fact": "The global GS term on smooth spin manifolds is a Wu--Chern--Simons construction and requires the characteristic gravitational coefficient.",
+      "title": "Remarks on the Green-Schwarz terms of six-dimensional supergravity theories",
+      "url": "https://arxiv.org/abs/1808.01334"
+    },
+    {
+      "id": "MONNIER_MOORE_PARK_2017",
+      "sourced_fact": "Six-dimensional gauge anomaly coefficients obey integral string-charge lattice constraints depending on the global gauge group.",
+      "title": "Quantization of anomaly coefficients in 6D N=(1,0) supergravity",
+      "url": "https://arxiv.org/abs/1711.04777"
+    },
+    {
+      "id": "ZHANG_2026",
+      "scope_boundary": "The construction determines perturbative polynomials, not torsion, eta holonomy, or the full Rarita/self-dual/global gluing problem.",
+      "sourced_fact": "The equivariant fixed density is Ahat(TF) K_g(NF) ch_g(E), with K_g=product[2 sinh((x+i theta)/2)]^-1.",
+      "title": "Perturbative Anomaly Inflow on Orbifolds",
+      "url": "https://arxiv.org/abs/2608.23326"
+    },
+    {
+      "id": "LEE_TACHIKAWA_2020",
+      "sourced_fact": "Spin-bordism, rather than pi_6 alone, classifies the relevant global gauge anomaly; the simply connected cases used in six dimensions have trivial degree-seven spin bordism after the GS system is treated properly.",
+      "title": "Some comments on 6d global gauge anomalies",
+      "url": "https://arxiv.org/abs/2012.11622"
+    },
+    {
+      "id": "NISHINO_SEZGIN_1997",
+      "sourced_fact": "Six-dimensional supergravity hypermultiplets admit quaternionic-Kahler symmetric targets, with Sp(n,1)/(Sp(n)xSp(1)) as the generic example.",
+      "title": "New Couplings of Six-Dimensional Supergravity",
+      "url": "https://arxiv.org/abs/hep-th/9703075"
+    },
+    {
+      "id": "MILLS_2023",
+      "scope_boundary": "The larger model-specific H-bordism group is not computed here.",
+      "sourced_fact": "A diagonal Spin-Sp(1) quotient defines a generalized Spin^h-type tangential structure with bordism theory different from ordinary Spin.",
+      "title": "The Structure of the Spin^h Bordism Spectrum",
+      "url": "https://arxiv.org/abs/2306.17709"
+    },
+    {
+      "id": "VON_GERSDORFF_QUIROS_2003",
+      "sourced_fact": "A GS two-form breaks a U(1) only when the canceled mixed anomaly survives in the four-dimensional zero-mode theory; globally vanishing localized anomalies need not generate that mass.",
+      "title": "Localized anomalies in orbifold gauge theories",
+      "url": "https://arxiv.org/abs/hep-th/0305024"
+    }
+  ],
+  "schema": "susy_v71_spin11_normal_bundle_equivariant_gs_audit/v1",
+  "source_manifest": [
+    {
+      "exists": true,
+      "path": "susy_v71_spin11_normal_bundle_equivariant_gs_audit.py",
+      "sha256": "cdccb13566601d720c143dd40ff5e359425a8a4ad8346d1919ef00ac9ac67c98"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v71_spin11_normal_bundle_equivariant_gs_audit.py",
+      "sha256": "99760b87f538a12a250f3943e2ae558765a0c3ab3ac203b1e59e1588acb91240"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V70_SPIN11_LOCALIZED_PARENT_SPIN_FLAVOR_COMPLETION_AUDIT.json",
+      "sha256": "94380393f300add9b215e6e2a32fa9837a35846748f0c36ca452948293afd73c"
+    }
+  ],
+  "spin_half_equivariant_index": {
+    "Z2_result": "0: the order-two normal factor is even in x, so its degree-six x^3 and x p terms vanish",
+    "all_compact_forms_exact": true,
+    "definitions": {
+      "Ahat_T4": "1-p/24+...",
+      "K_j": "[2 sinh((x+i pi j/2)/2)]^-1",
+      "fixed_sum": "(1/4) sum_(j=1..3) h_m^j K_j",
+      "h_m": "zeta*i^m, calibrated to the V70 projector weights",
+      "p": "p1(T4)",
+      "x": "c1(N), the remnant normal U(1)_L root",
+      "zeta": "exp(i pi/4)"
+    },
+    "phase_signs_m0123": [
+      -1,
+      1,
+      1,
+      -1
+    ],
+    "rows": [
+      {
+        "I6_x3": "-11/192",
+        "I6_x_p1T4": "-1/192",
+        "compact_I6": "-1/192 (11 x^3 + x p1(T4))",
+        "eta": "1",
+        "h_m": "zeta*i^0",
+        "m": 0,
+        "matches_compact_form": true,
+        "series_coefficients_1_x_x2_x3": [
+          "3/8",
+          "1/8",
+          "-7/64",
+          "-11/192"
+        ]
+      },
+      {
+        "I6_x3": "11/192",
+        "I6_x_p1T4": "1/192",
+        "compact_I6": "1/192 (11 x^3 + x p1(T4))",
+        "eta": "i",
+        "h_m": "zeta*i^1",
+        "m": 1,
+        "matches_compact_form": true,
+        "series_coefficients_1_x_x2_x3": [
+          "1/8",
+          "-1/8",
+          "-5/64",
+          "11/192"
+        ]
+      },
+      {
+        "I6_x3": "11/192",
+        "I6_x_p1T4": "1/192",
+        "compact_I6": "1/192 (11 x^3 + x p1(T4))",
+        "eta": "-1",
+        "h_m": "zeta*i^2",
+        "m": 2,
+        "matches_compact_form": true,
+        "series_coefficients_1_x_x2_x3": [
+          "-1/8",
+          "-1/8",
+          "5/64",
+          "11/192"
+        ]
+      },
+      {
+        "I6_x3": "-11/192",
+        "I6_x_p1T4": "-1/192",
+        "compact_I6": "-1/192 (11 x^3 + x p1(T4))",
+        "eta": "-i",
+        "h_m": "zeta*i^3",
+        "m": 3,
+        "matches_compact_form": true,
+        "series_coefficients_1_x_x2_x3": [
+          "-3/8",
+          "1/8",
+          "7/64",
+          "-11/192"
+        ]
+      }
+    ],
+    "status": "EXACT_Z4_SPIN_HALF_EQUIVARIANT_FIXED_POLYNOMIAL",
+    "weight_calibration": [
+      "3/8",
+      "1/8",
+      "-1/8",
+      "-3/8"
+    ]
+  },
+  "status": "V71_SPIN11_NORMAL_BUNDLE_EQUIVARIANT_GS_AUDIT__V70_CORE_BOUND__SPIN_HALF_EQUIVARIANT_FIXED_POLYNOMIAL_EXACT__GRAVITINO_TENSORINO_AND_SELF_DUAL_PAIR_LEDGER_EXACT_UNDER_STANDARD_LIFT__CHARGED_BULK_NORMAL_GRAVITY_CLASS_EXACT__NEUTRAL_PHASE_FACTORIZATION_IFF_DELTA_MINUS10__TEN_NEUTRAL_ZERO_MODE_LOWER_BOUND_AND_266_SYMMETRIC_QUATERNIONIC_KAHLER_TARGET_ISOMETRY_WITNESS_EXACT__MIXED_U1L_U5_GAUGE_VECTOR_MINUS_QUARTER_PLUS40__BULK_GS_DIRECTION_1_40__DETERMINANT_MINUS50__U1L2X_LEDGER_ZERO__UNMODIFIED_F70_AND_ALT_REJECTED__FORMER_FOUR_FERMION_REPAIR_RETRACTED_BY_FACTOR_TWO_NORMALIZATION__CORRECTED_PROVISIONAL_SPINORIAL_U5_PREIMAGE_CHARGE_LATTICE_Z00_SEVEN_NEW_AND_Z11_EIGHT_NEW_CHIRAL_MODULES_EXACT_PERTURBATIVELY__EXOTIC_MASSES_DECAYS_AND_COSMOLOGY_OPEN__ORDINARY_SPIN_WUCS_NOT_APPLICABLE_WITHOUT_GENERALIZED_EQUIVARIANT_EXTENSION__LOCALIZED_NORMAL_CHARGES_GLOBAL_PHASES_AND_PHENOMENOLOGY_OPEN__G1_TO_G8_OPEN",
+  "terminal_decision": {
+    "F71_accepted": false,
+    "all_gates_closed": false,
+    "current_V70_candidates_viable_without_new_local_data": false,
+    "honest_outcome": "V71 rejects both unmodified V70 candidates by a nonzero mixed normal-gauge component at the second Z4 corner.  It derives the unique neutral phase imbalance Delta=-10, proves a ten-neutral-zero-mode lower bound, embeds its sharp witness in a symmetric QK target, and retracts the former four-fermion repair after a factor-two normalization check.  It replaces it with exact local fermion modules in the provisional spinorial U(5)-preimage lattice at both Z4 corners; their global group form, mass, decay, vacuum and cosmology sectors are not constructed.  The naive smooth WCS cocycle also fails an exact local torsion-divisibility test.  The repair is not a global microscopic supergravity action and does not supply the required generalized equivariant quantum theory.",
+    "theory_complete": false
+  },
+  "version": "V71"
+}
