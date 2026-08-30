@@ -1,0 +1,1078 @@
+{
+  "G2_G8_closability_ranking": [
+    {
+      "gate": "G7",
+      "rank": 1,
+      "reason": "exact selectors and proxy inputs exist; full matching remains",
+      "status": "OPEN",
+      "topic": "proton/baryon"
+    },
+    {
+      "gate": "G4",
+      "rank": 2,
+      "reason": "projector exact, but V64 null pair and GM coefficient block",
+      "status": "OPEN",
+      "topic": "protected hierarchy"
+    },
+    {
+      "gate": "G5",
+      "rank": 3,
+      "reason": "R parity exact; mass, lifetime, relic and collider calculations absent",
+      "status": "OPEN",
+      "topic": "LSP/exotic phenomenology"
+    },
+    {
+      "gate": "G2",
+      "rank": 4,
+      "reason": "broad Wilsonian action and KK determinant reconstruction required",
+      "status": "OPEN",
+      "topic": "coefficient action/flavour/soft"
+    },
+    {
+      "gate": "G3",
+      "rank": 5,
+      "reason": "hidden vacuum, saxion and full Hessian absent",
+      "status": "OPEN",
+      "topic": "vacuum/compactification"
+    },
+    {
+      "gate": "G6",
+      "rank": 6,
+      "reason": "inflation, reheating, defects and moduli history absent",
+      "status": "OPEN",
+      "topic": "cosmological history"
+    },
+    {
+      "gate": "G8",
+      "rank": 7,
+      "reason": "UV regulator, Dai-Freed phase and predictivity score absent",
+      "status": "OPEN",
+      "topic": "UV/global quantum completion"
+    }
+  ],
+  "claim_boundary": {
+    "B3_embedded_in_5D": false,
+    "any_gate_closed": false,
+    "conditional_diagnostics_only": true,
+    "current_action_accepted": false,
+    "new_empirical_discovery": false,
+    "proton_lifetime_predicted": false
+  },
+  "conditional_b3_ir_escape": {
+    "allowed_operator_charge": 0,
+    "anomaly_sums": {
+      "A2_2T": 9,
+      "A3_2T": 12,
+      "AYY_6Y_integer": 954,
+      "AYZZ_6Y_integer": -90,
+      "AZZZ": 207,
+      "Agrav": 63
+    },
+    "charges": {
+      "Dc": 1,
+      "EX": 1,
+      "Ec": 2,
+      "EcX": 2,
+      "Hd": 2,
+      "Hu": 1,
+      "L": 2,
+      "Nc": 0,
+      "Q": 0,
+      "QX": 0,
+      "QbarX": 0,
+      "UX": 2,
+      "Uc": 2,
+      "UcX": 1
+    },
+    "classification": "CONDITIONAL_IR_ESCAPE_ONLY",
+    "current_action_compatibility": {
+      "IR_anomaly_pass_is_not_a_5D_embedding": true,
+      "accepted": false,
+      "reason": "B3 gives different charges to components of a Spin(10)/Pati-Salam multiplet and therefore cannot simply be imposed on either existing wall",
+      "required_new_physics": "an explicit local orbifold/VEV, non-Abelian, or topological embedding with complete wall anomalies, GS quantization and Dai-Freed phase"
+    },
+    "extra_representative_abelian_congruences": {
+      "not_universal_low_energy_constraints": true,
+      "reason": "YYZ and YZZ depend on U(1) normalization and the heavy charged sector; their displayed mod-3 zeros are additional ledger checks, not the basis of the B3 anomaly claim",
+      "residues_mod3": {
+        "AYY_6Y_integer": 0,
+        "AYZZ_6Y_integer": 0
+      }
+    },
+    "integer_anomaly_normalization": {
+      "hypercharge": "integer 6Y",
+      "nonabelian": "2T(fundamental)=1",
+      "odd_N_linear_condition": "A3_2T, A2_2T and Agrav vanish mod 3 in this normalization"
+    },
+    "known_class_and_exotic_extension": {
+      "MSSM_class": "the charges are the standard family-universal B3 class up to inversion and an integer-hypercharge shift",
+      "T66_pairs": [
+        "(QX,QbarX)=(0,0)",
+        "(UcX,UX)=(1,2)",
+        "(EcX,EX)=(2,1)"
+      ],
+      "pair_statement": "each exotic pair has a Z3-neutral mass and shifts the linear conditions by multiples of 3 and AZZZ by multiples of 9"
+    },
+    "minimality_scan": {
+      "N3_equivalence_orbit_q_l_hu": [
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          2,
+          1
+        ],
+        [
+          1,
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          1
+        ],
+        [
+          2,
+          1,
+          2
+        ],
+        [
+          2,
+          2,
+          1
+        ]
+      ],
+      "N3_orbit_equals_all_minimal_rows": true,
+      "minimal_class_within_scan": "standard Z3 baryon triality, one class within this ansatz up to inversion and an integer-hypercharge redefinition",
+      "minimal_modulus_within_scan": 3,
+      "minimal_raw_solutions_q_l_hu": [
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          2,
+          1
+        ],
+        [
+          1,
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          1
+        ],
+        [
+          2,
+          1,
+          2
+        ],
+        [
+          2,
+          2,
+          1
+        ]
+      ],
+      "not_a_complete_discrete_symmetry_classification": true,
+      "scan_moduli": [
+        2,
+        12
+      ],
+      "scope": "family-universal MSSM charges derived from (q,l,hu), the displayed T66 companion charges, required masses/Yukawas/lambda portals, forbidden rho_U and UDD, and the explicitly stated strong congruence filter",
+      "solution_counts": {
+        "10": 0,
+        "11": 0,
+        "12": 48,
+        "2": 0,
+        "3": 6,
+        "4": 0,
+        "5": 0,
+        "6": 24,
+        "7": 0,
+        "8": 0,
+        "9": 18
+      },
+      "strong_representative_filter": "all six displayed integer sums vanish mod N; for N=3 AZZZ also vanishes mod 9"
+    },
+    "modulus": 3,
+    "name": "Z3 baryon triality B3",
+    "operator_charges_mod3": {
+      "MSSM_LLE": 0,
+      "MSSM_LQD": 0,
+      "MSSM_UDD": 1,
+      "M_E_EcX_EX": 0,
+      "M_Q_QX_QbarX": 0,
+      "M_U_UcX_UX": 0,
+      "Majorana_NcNc": 0,
+      "QQQL": 2,
+      "UUDE": 1,
+      "Y_d": 0,
+      "Y_e": 0,
+      "Y_nu": 0,
+      "Y_u": 0,
+      "lambda_EcX_L_L": 0,
+      "lambda_QX_Dc_L": 0,
+      "lambda_UcX_Dc_Dc": 0,
+      "mu": 0,
+      "rho_EX_Ec_Nc": 0,
+      "rho_QbarX_Q_Nc": 0,
+      "rho_UX_Uc_Nc": 1
+    },
+    "scope": "four-dimensional SM-effective zero-mode spectrum only",
+    "standard_discrete_anomaly_checks": {
+      "integer_parent_cubic_AZZZ_residue_mod9": 0,
+      "integer_parent_cubic_condition": "for the Z3 integer-charge parent used in the standard B3 classification, AZZZ must be a multiple of 9",
+      "linear_residues_mod3": {
+        "A2_2T": 0,
+        "A3_2T": 0,
+        "Agrav": 0
+      },
+      "pass": true
+    },
+    "symmetry_stack": {
+      "B3_alone_allows": [
+        "L L Ec",
+        "L Q Dc"
+      ],
+      "B3_is_not_a_replacement_for_matter_parity": true,
+      "B3_role": "additional conditional ordinary Z3 selector",
+      "matter_parity_role": "the retained Z2, not B3 alone, forbids these odd-matter lepton-number-violating superpotential terms",
+      "operator_charges_mod3": {
+        "MSSM_LLE": 0,
+        "MSSM_LQD": 0
+      },
+      "retained_inherited_remnant": "Z4R -> Z2 matter parity"
+    },
+    "wanted_and_safe_checks": {
+      "DeltaB1_superpotential_classes_forbidden": true,
+      "MSSM_Yukawa_mu_and_Majorana_allowed": true,
+      "Qbar_and_Ebar_portals_allowed": true,
+      "all_lambda_portals_allowed": true,
+      "all_vectorlike_masses_allowed": true,
+      "dangerous_Ubar_portal_forbidden": true
+    }
+  },
+  "core_sha256": "859ecfc4185738bd4e1cb8ecc0c14d3640f3c3abd588b8ce67a167f4771d738f",
+  "date": "2026-08-30",
+  "dimension_five_portal_stress": {
+    "O1_unprotected_portals_pass_comparison": false,
+    "claim_boundary": "CONDITIONAL_FEASIBILITY_BOUND_NOT_A_LIFETIME",
+    "comparison_contract": "repository-frozen V55 p->anti-nu K+ scaling only; channel, flavour, dressing and spectrum are not a T66 calculation",
+    "effective_scale": "M_eff=M10/abs(lambda rho theta_N D_flavour)",
+    "illustrative_common_T66_threshold": {
+      "M10_GeV": 13839.052519326706,
+      "m_squark_TeV": 13.839052519326707,
+      "m_wino_GeV": 13839.052519326706,
+      "maximum_abs_lambda_rho_thetaN_D": 2.521534213303378e-16,
+      "required_Meff_GeV": 5.488346121307085e+19,
+      "spectrum_factor": 0.6393436901318206
+    },
+    "operator_after_heavy_N_and_EWSB": "C5_{ijkr} uc_k dc_i dc_j nu_r with C5_{ijkr}=+(lambda_ij/(2 M10)) sum_l rho_{k l} theta_{l r} in the ordered-family convention",
+    "protection_routes": [
+      "forbid rho_U exactly with an action-compatible selector",
+      "derive sufficient flavour/seesaw suppression in the same action",
+      "raise the physical companion mass while redoing unification and thresholds"
+    ],
+    "testable_condition": "abs(lambda rho theta_N D_flavour) < M10/M_required",
+    "theta_N": "theta_{l r}=sum_m (M_N^-1)_{l m} (y_nu)_{r m} v_u; the matrix-index convention is fixed in the Schur section"
+  },
+  "dimension_six_proton_proxy": {
+    "claim_boundary": "NO_LIFETIME_PREDICTION",
+    "constants": {
+      "A_R": 2.5,
+      "V_ud": 0.97367,
+      "hadronic_W_GeV2": 0.11,
+      "hbar_GeV_s": 6.582119569e-25,
+      "limit_years_90CL": 2.4e+34,
+      "m_p_GeV": 0.9382720813,
+      "m_pi0_GeV": 0.1349768,
+      "seconds_per_year": 31557600.0
+    },
+    "formula": "Gamma=m_p/(32 pi) [1-(m_pi/m_p)^2]^2 [4 pi alpha_X/M_X^2]^2 A_R^2 W^2 {1+[1+|V_ud|^2]^2}; tau=hbar/Gamma",
+    "rows": [
+      {
+        "MG_GeV": 2367079473998105.0,
+        "alphaU_inverse": 34.94055984148536,
+        "branch": "H66",
+        "branch_globally_decided": false,
+        "central_proxy_lifetime_years": 1.5597289442481415e+33,
+        "central_proxy_passes": false,
+        "conditional_identification": "M_X=MG and alpha_X=alphaU",
+        "lifetime_over_limit": 0.06498870601033924,
+        "repository_frozen_limit_years": 2.4e+34,
+        "required_MX_GeV": 4688170168087496.0,
+        "required_MX_over_MG": 1.980571509992,
+        "scoped_decision": "CENTRAL_PROXY_FAIL: M_X=MG is below the frozen single-channel limit; H66 itself is not rejected without its physical KK/vector spectrum"
+      },
+      {
+        "MG_GeV": 1.2163816924934198e+16,
+        "alphaU_inverse": 12.700029876294337,
+        "branch": "T66",
+        "branch_globally_decided": false,
+        "central_proxy_lifetime_years": 1.4369016400754121e+35,
+        "central_proxy_passes": true,
+        "conditional_identification": "M_X=MG and alpha_X=alphaU",
+        "lifetime_over_limit": 5.9870901669808845,
+        "repository_frozen_limit_years": 2.4e+34,
+        "required_MX_GeV": 7776173203826247.0,
+        "required_MX_over_MG": 0.6392872608832292,
+        "scoped_decision": "CENTRAL_PROXY_PASS_ONLY: no G7 promotion because M_X, KK sums, flavour, matrix elements and the T66 dimension-five portal are unresolved"
+      }
+    ],
+    "scaling_identity": "tau(lambda M_X)=lambda^4 tau(M_X)",
+    "source_scope": "repository-frozen conditional p->e+pi0 width proxy; not a current all-channel likelihood and not a model-derived lifetime"
+  },
+  "gate_decision": {
+    "V67_master_gate_promotion": false,
+    "advance": "the displayed T66 U-channel pre-Majorana DeltaB=DeltaL=-1 Schur operator, the scoped family-dependent unified-selector no-go, a conditional IR B3 escape within the stated ansatz, and H66/T66 gauge-proxy conditions are now exact",
+    "gate": "G7",
+    "status": "OPEN_WITH_MATERIAL_ADVANCE",
+    "why_not_closed": "neither a physical lifetime nor an action-compatible B3 embedding and same-action Wilson/pole calculation exists"
+  },
+  "integrity_checks": {
+    "B3_N3_equivalence_orbit_exact": true,
+    "B3_extra_U1_ledger_residues_zero": true,
+    "B3_forbids_only_dangerous_conjugate_U_among_rho": true,
+    "B3_is_minimal_in_scoped_scan": true,
+    "B3_not_promoted_to_5D_action": true,
+    "B3_standard_linear_and_cubic_checks_pass": true,
+    "B3_supplements_retained_matter_parity": true,
+    "DeltaB_DeltaL_exact": true,
+    "H66_proxy_central_fails": true,
+    "Schur_determinant_nonzero": true,
+    "Schur_inverse_exact": true,
+    "T66_dim5_product_bound_is_tiny": true,
+    "T66_proxy_central_passes": true,
+    "V55_comparison_core_bound": true,
+    "V66_master_core_bound": true,
+    "V66_route_core_bound": true,
+    "all_ranked_gates_remain_open": true,
+    "fail_closed_terminal_decision": true,
+    "frozen_flavour_source_bound": true,
+    "frozen_proton_source_bound": true,
+    "frozen_scalar_source_bound": true,
+    "ordered_sum_half_convention_present": true,
+    "post_Majorana_numbers_exact": true,
+    "unified_selector_counterexamples_zero": true,
+    "unified_selector_family_dependent_cases_scanned": true
+  },
+  "lineage": {
+    "V55_proton_comparison": {
+      "binding": "exact canonical core; scaling comparison only",
+      "core_sha256": "6959457039b2828c1602e0e0e225b90a24da402260c24b39535a6c3783cbc665",
+      "path": "SUSY_V55_R1_DEGREE9_PROTON_FEASIBILITY_AUDIT.json"
+    },
+    "V66_master": {
+      "binding": "exact canonical core",
+      "core_sha256": "499382834b9b63a23e10dbc16106dfb1db0f2bfeae17163862afd4f1467e9fa4",
+      "path": "SUSY_V66_MULTIPATH_G1_FRONTIER_MASTER_AUDIT.json"
+    },
+    "V66_route": {
+      "binding": "exact canonical core",
+      "core_sha256": "07593002755158c96647701da7453b1942114424a5d3aff5318ebb891a2964ae",
+      "path": "SUSY_V66_SPIN11_GM_OVERLAP_UNIFICATION_REPAIR_AUDIT.json"
+    },
+    "frozen_proton_sources": {
+      "flavour_path": "xy_flavour_rotations_gauge_v20.py",
+      "flavour_raw_sha256": "a14afb173bca71fbdab0e87995945b1e9de1f1591c5a564e41eecfffaf42ce49",
+      "proton_path": "proton_decay_falsification_gate_v20.py",
+      "proton_raw_sha256": "f2d875ba665707a929bf912dfc83af547452d04cb8ebb6932e67dffd076dd921",
+      "scalar_path": "scalar_vacuum_proton_decay_v20.py",
+      "scalar_raw_sha256": "3b82f262193d585d27d4b19ffc80ad656b9f19e7ff00cef6eefe19c4a6e25d9f"
+    },
+    "supersession": "route-local V67 stress audit only; V66 is not edited and no cross-route evidence is spliced"
+  },
+  "n_failed_integrity_checks": 0,
+  "n_integrity_checks": 25,
+  "primary_sources": [
+    {
+      "scope": "family-independent B3 classification, linear anomaly conditions, purely-Abelian caveats and the integer-parent cubic condition",
+      "title": "What is the Discrete Gauge Symmetry of the MSSM?",
+      "url": "https://arxiv.org/abs/hep-ph/0512163"
+    },
+    {
+      "scope": "p to e+ pi0 lower limit used by the frozen gauge proxy",
+      "title": "Search for proton decay via p to e+ pi0 and p to mu+ pi0 with an enlarged fiducial volume in Super-Kamiokande I-IV",
+      "url": "https://arxiv.org/abs/2010.16098"
+    },
+    {
+      "scope": "inherited through the exact V55 comparison core",
+      "title": "Search for Proton Decay via p to nu K+ using 260 kiloton-year data",
+      "url": "https://arxiv.org/abs/1408.1195"
+    },
+    {
+      "scope": "inherited through the exact V55 comparison core",
+      "title": "Constraining Proton Lifetime in SO(10) with Stabilized Doublet-Triplet Splitting",
+      "url": "https://arxiv.org/abs/1003.2625"
+    }
+  ],
+  "same_action_dependencies": [
+    "physical X/Y and complete KK vector pole spectrum with Mc, brane kinetic terms and wavefunctions",
+    "mass-basis lambda, rho and neutrino tensors with their covariance",
+    "SUSY dressing, operator running and channel-specific lattice matrix elements",
+    "a local/topological realization of any component-splitting selector",
+    "full localized anomaly/GS and relative Dai-Freed recomputation",
+    "soft spectrum, finite thresholds and a quantified truncation error"
+  ],
+  "schema": "susy_v67_spin11_t66_baryon_proton_stress_audit/v1",
+  "source_manifest": [
+    {
+      "exists": true,
+      "path": "susy_v67_spin11_t66_baryon_proton_stress_audit.py",
+      "raw_sha256": "ec5f42dd3da56fdff03b4b0c7a75e5593e172b3809ec38ce66edb318c53175fa"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v67_spin11_t66_baryon_proton_stress_audit.py",
+      "raw_sha256": "74c3fd2d88f20872d8a22e37f236c0fd92bcb7644cbce816a66cc59d862c58f7"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V66_SPIN11_GM_OVERLAP_UNIFICATION_REPAIR_AUDIT.json",
+      "raw_sha256": "aeca71df0ad6b66ea0b94e9dafdef23a7da587eeaf0550d6098dc17d82e23ef4"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V66_MULTIPATH_G1_FRONTIER_MASTER_AUDIT.json",
+      "raw_sha256": "f1c9b4529380f63e2f06ec98f22647d527d5d3a15b9c5b7dd26f92609516bde3"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V55_R1_DEGREE9_PROTON_FEASIBILITY_AUDIT.json",
+      "raw_sha256": "a335305b1820eef58f12ac3e8126573b0165d743da708f6b60256f5f06bcd925"
+    },
+    {
+      "exists": true,
+      "path": "proton_decay_falsification_gate_v20.py",
+      "raw_sha256": "f2d875ba665707a929bf912dfc83af547452d04cb8ebb6932e67dffd076dd921"
+    },
+    {
+      "exists": true,
+      "path": "xy_flavour_rotations_gauge_v20.py",
+      "raw_sha256": "a14afb173bca71fbdab0e87995945b1e9de1f1591c5a564e41eecfffaf42ce49"
+    },
+    {
+      "exists": true,
+      "path": "scalar_vacuum_proton_decay_v20.py",
+      "raw_sha256": "3b82f262193d585d27d4b19ffc80ad656b9f19e7ff00cef6eefe19c4a6e25d9f"
+    }
+  ],
+  "status": "V67_SPIN11_T66_BARYON_PROTON_STRESS__V66_ROUTE_AND_MASTER_CORES_BOUND__UPTYPE_PORTAL_SCHUR_COMPLEMENT_EXACT__PRE_MAJORANA_DELTA_B_EQUALS_DELTA_L_EQUALS_MINUS_ONE__SCOPED_FAMILY_DEPENDENT_UNIFIED_ABELIAN_ONE_SIDED_SELECTOR_NO_GO__CONDITIONAL_IR_BARYON_TRIALITY_LINEAR_MOD3_AND_CUBIC_MOD9_PASS_BUT_NOT_LOCALLY_EMBEDDED__H66_CENTRAL_GAUGE_PROXY_FAILS__T66_CENTRAL_GAUGE_PROXY_PASSES__NO_LIFETIME_PREDICTION__CURRENT_ACTION_REJECTED__G1_TO_G8_OPEN_ZERO_PROMOTIONS",
+  "t66_u_portal_schur_complement": {
+    "effective_superpotential_i_less_than_j": "W_eff=-(lambda_ij rho_kl/M10) epsilon^abc uc_k,a dc_i,b dc_j,c Nc_l",
+    "effective_superpotential_ordered_sum": "W_eff=-(lambda_ij rho_kl/(2 M10)) epsilon^abc uc_k,a dc_i,b dc_j,c Nc_l",
+    "exact_derivation_pass": true,
+    "family_convention": {
+      "full_ordered_family_sum_prefactor": "1/2",
+      "i_less_than_j_sum_prefactor": "1",
+      "lambda_symmetry": "lambda_ij=-lambda_ji"
+    },
+    "global_numbers": {
+      "B_of_uc_dc_dc": "-1",
+      "Delta_B": -1,
+      "Delta_B_minus_L": 0,
+      "Delta_L": -1,
+      "L_of_Nc": "-1",
+      "scope": "pre-Majorana matching: uc dc dc Nc"
+    },
+    "heavy_N_matching": {
+      "after_EWSB": "C5_{ijkr}=+(lambda_ij/(2 M10)) sum_l rho_{k l} theta_{l r}; omit 1/2 when summing only i<j",
+      "before_EWSB": "C6_hol_{ijkr}=+(lambda_ij/(2 M10)) sum_l rho_{k l} sum_m (M_N^-1)_{l m} (y_nu)_{r m} for the ordered-family uc_k dc_i dc_j L_r Hu operator",
+      "claim": "conditional coefficient map, not a proton lifetime",
+      "index_convention": "W_N=(1/2) Nc_l (M_N)_{lm} Nc_m + (y_nu)_{r m} L_r Hu Nc_m",
+      "mixing_tensor": "theta_{l r}=sum_m (M_N^-1)_{l m} (y_nu)_{r m} v_u",
+      "post_Majorana_field_numbers": {
+        "Delta_B": -1,
+        "Delta_B_minus_L": -2,
+        "Delta_B_plus_L": 0,
+        "Delta_L": 1,
+        "operator": "uc dc dc L Hu",
+        "physical_amplitude_caveat": "the Hermitian-conjugate process reverses all displayed field-number signs",
+        "reason": "the Majorana inverse-mass insertion violates lepton number by two units"
+      }
+    },
+    "heavy_basis": [
+      "Uc_X",
+      "U_X"
+    ],
+    "matrix_times_inverse": [
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "normalized_determinant": -1,
+    "normalized_inverse": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        0
+      ]
+    ],
+    "normalized_quadratic_matrix": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        0
+      ]
+    ],
+    "schur_identity": "-1/2 J^T M_H^-1 J = -A B/M10",
+    "sources": {
+      "A": "(1/2) lambda_ij epsilon^abc dc_i,b dc_j,c",
+      "B": "rho_kl uc_k,a Nc_l"
+    },
+    "stationary_solution": {
+      "U_X": "-A/M10",
+      "Uc_X": "-B/M10"
+    },
+    "superpotential": "W=M10 Uc_X U_X + (1/2) lambda_ij epsilon^abc Uc_X,a dc_i,b dc_j,c + rho_kl U_X^a uc_k,a Nc_l"
+  },
+  "terminal_decision": {
+    "B3_status": "IR_ESCAPE_ONLY__NEW_EMBEDDING_REQUIRED",
+    "G7_closed": false,
+    "H66_status": "CANDIDATE_ONLY__CENTRAL_GAUGE_PROXY_FAIL",
+    "T66_status": "CANDIDATE_ONLY__UNPROTECTED_PORTAL_NOT_ACCEPTED",
+    "closed_gates": [],
+    "complete_theory": false,
+    "current_Spin11_action_status": "REJECTED"
+  },
+  "unified_selector_one_sided_no_go": {
+    "assumptions": [
+      "the selector is Abelian and component-uniform inside each unified matter multiplet, but family charges f_i may differ",
+      "the gauge-Higgs selector charge h is zero",
+      "the allowed symmetric FFH Yukawa support is structurally full rank",
+      "at least one wanted C F_i F_j portal with i not equal to j is allowed",
+      "the vectorlike C Cbar bilinear is Kahler/GM neutral: c+cbar=0",
+      "the conjugate Cbar F_k F_l gauge contraction exists for arbitrary family labels, as it does for the T66 U-channel"
+    ],
+    "determinant_permutation_theorem": {
+      "GM_neutrality": "cbar=-c",
+      "complementary_families": "f_sigma(i)=w-f_i and f_sigma(j)=w-f_j",
+      "conclusion": "some complementary-family conjugate portal is selector-allowed; the theorem does not assert that its Wilson coefficient is nonzero",
+      "conjugate_identity": "cbar+f_sigma(i)+f_sigma(j)=-c+(w-f_i)+(w-f_j)=w",
+      "structural_rank_statement": "a nonzero Yukawa determinant term supplies one permutation sigma with f_i+f_sigma(i)=w for every i",
+      "wanted_portal": "c+f_i+f_j=w"
+    },
+    "escape_classes_not_excluded": [
+      "a nonzero Higgs selector charge or changed Yukawa architecture",
+      "a direct superpotential mass or charged mass spurion instead of a GM-neutral bilinear",
+      "a selector that acts only after unified multiplets are split",
+      "a non-Abelian or topological/space-group rule",
+      "a texture mechanism that sets a selector-allowed Wilson coefficient to zero",
+      "abandoning the current local unified-family architecture"
+    ],
+    "extension_to_products": "a nonzero determinant term of the combined Yukawa support supplies the same sigma in every Abelian factor, so the identity holds factor by factor",
+    "family_dependent_scan": {
+      "by_type": {
+        "R": [
+          {
+            "charge_assignments": 8,
+            "modulus": 2,
+            "structurally_full_rank_assignments": 8,
+            "wanted_portal_cases": 24
+          },
+          {
+            "charge_assignments": 27,
+            "modulus": 3,
+            "structurally_full_rank_assignments": 7,
+            "wanted_portal_cases": 21
+          },
+          {
+            "charge_assignments": 64,
+            "modulus": 4,
+            "structurally_full_rank_assignments": 20,
+            "wanted_portal_cases": 60
+          },
+          {
+            "charge_assignments": 125,
+            "modulus": 5,
+            "structurally_full_rank_assignments": 13,
+            "wanted_portal_cases": 39
+          },
+          {
+            "charge_assignments": 216,
+            "modulus": 6,
+            "structurally_full_rank_assignments": 32,
+            "wanted_portal_cases": 96
+          },
+          {
+            "charge_assignments": 343,
+            "modulus": 7,
+            "structurally_full_rank_assignments": 19,
+            "wanted_portal_cases": 57
+          },
+          {
+            "charge_assignments": 512,
+            "modulus": 8,
+            "structurally_full_rank_assignments": 44,
+            "wanted_portal_cases": 132
+          },
+          {
+            "charge_assignments": 729,
+            "modulus": 9,
+            "structurally_full_rank_assignments": 25,
+            "wanted_portal_cases": 75
+          },
+          {
+            "charge_assignments": 1000,
+            "modulus": 10,
+            "structurally_full_rank_assignments": 56,
+            "wanted_portal_cases": 168
+          },
+          {
+            "charge_assignments": 1331,
+            "modulus": 11,
+            "structurally_full_rank_assignments": 31,
+            "wanted_portal_cases": 93
+          },
+          {
+            "charge_assignments": 1728,
+            "modulus": 12,
+            "structurally_full_rank_assignments": 68,
+            "wanted_portal_cases": 204
+          },
+          {
+            "charge_assignments": 2197,
+            "modulus": 13,
+            "structurally_full_rank_assignments": 37,
+            "wanted_portal_cases": 111
+          },
+          {
+            "charge_assignments": 2744,
+            "modulus": 14,
+            "structurally_full_rank_assignments": 80,
+            "wanted_portal_cases": 240
+          },
+          {
+            "charge_assignments": 3375,
+            "modulus": 15,
+            "structurally_full_rank_assignments": 43,
+            "wanted_portal_cases": 129
+          },
+          {
+            "charge_assignments": 4096,
+            "modulus": 16,
+            "structurally_full_rank_assignments": 92,
+            "wanted_portal_cases": 276
+          },
+          {
+            "charge_assignments": 4913,
+            "modulus": 17,
+            "structurally_full_rank_assignments": 49,
+            "wanted_portal_cases": 147
+          },
+          {
+            "charge_assignments": 5832,
+            "modulus": 18,
+            "structurally_full_rank_assignments": 104,
+            "wanted_portal_cases": 312
+          },
+          {
+            "charge_assignments": 6859,
+            "modulus": 19,
+            "structurally_full_rank_assignments": 55,
+            "wanted_portal_cases": 165
+          },
+          {
+            "charge_assignments": 8000,
+            "modulus": 20,
+            "structurally_full_rank_assignments": 116,
+            "wanted_portal_cases": 348
+          },
+          {
+            "charge_assignments": 9261,
+            "modulus": 21,
+            "structurally_full_rank_assignments": 61,
+            "wanted_portal_cases": 183
+          },
+          {
+            "charge_assignments": 10648,
+            "modulus": 22,
+            "structurally_full_rank_assignments": 128,
+            "wanted_portal_cases": 384
+          },
+          {
+            "charge_assignments": 12167,
+            "modulus": 23,
+            "structurally_full_rank_assignments": 67,
+            "wanted_portal_cases": 201
+          },
+          {
+            "charge_assignments": 13824,
+            "modulus": 24,
+            "structurally_full_rank_assignments": 140,
+            "wanted_portal_cases": 420
+          }
+        ],
+        "ordinary": [
+          {
+            "charge_assignments": 8,
+            "modulus": 2,
+            "structurally_full_rank_assignments": 8,
+            "wanted_portal_cases": 24
+          },
+          {
+            "charge_assignments": 27,
+            "modulus": 3,
+            "structurally_full_rank_assignments": 7,
+            "wanted_portal_cases": 21
+          },
+          {
+            "charge_assignments": 64,
+            "modulus": 4,
+            "structurally_full_rank_assignments": 20,
+            "wanted_portal_cases": 60
+          },
+          {
+            "charge_assignments": 125,
+            "modulus": 5,
+            "structurally_full_rank_assignments": 13,
+            "wanted_portal_cases": 39
+          },
+          {
+            "charge_assignments": 216,
+            "modulus": 6,
+            "structurally_full_rank_assignments": 32,
+            "wanted_portal_cases": 96
+          },
+          {
+            "charge_assignments": 343,
+            "modulus": 7,
+            "structurally_full_rank_assignments": 19,
+            "wanted_portal_cases": 57
+          },
+          {
+            "charge_assignments": 512,
+            "modulus": 8,
+            "structurally_full_rank_assignments": 44,
+            "wanted_portal_cases": 132
+          },
+          {
+            "charge_assignments": 729,
+            "modulus": 9,
+            "structurally_full_rank_assignments": 25,
+            "wanted_portal_cases": 75
+          },
+          {
+            "charge_assignments": 1000,
+            "modulus": 10,
+            "structurally_full_rank_assignments": 56,
+            "wanted_portal_cases": 168
+          },
+          {
+            "charge_assignments": 1331,
+            "modulus": 11,
+            "structurally_full_rank_assignments": 31,
+            "wanted_portal_cases": 93
+          },
+          {
+            "charge_assignments": 1728,
+            "modulus": 12,
+            "structurally_full_rank_assignments": 68,
+            "wanted_portal_cases": 204
+          },
+          {
+            "charge_assignments": 2197,
+            "modulus": 13,
+            "structurally_full_rank_assignments": 37,
+            "wanted_portal_cases": 111
+          },
+          {
+            "charge_assignments": 2744,
+            "modulus": 14,
+            "structurally_full_rank_assignments": 80,
+            "wanted_portal_cases": 240
+          },
+          {
+            "charge_assignments": 3375,
+            "modulus": 15,
+            "structurally_full_rank_assignments": 43,
+            "wanted_portal_cases": 129
+          },
+          {
+            "charge_assignments": 4096,
+            "modulus": 16,
+            "structurally_full_rank_assignments": 92,
+            "wanted_portal_cases": 276
+          },
+          {
+            "charge_assignments": 4913,
+            "modulus": 17,
+            "structurally_full_rank_assignments": 49,
+            "wanted_portal_cases": 147
+          },
+          {
+            "charge_assignments": 5832,
+            "modulus": 18,
+            "structurally_full_rank_assignments": 104,
+            "wanted_portal_cases": 312
+          },
+          {
+            "charge_assignments": 6859,
+            "modulus": 19,
+            "structurally_full_rank_assignments": 55,
+            "wanted_portal_cases": 165
+          },
+          {
+            "charge_assignments": 8000,
+            "modulus": 20,
+            "structurally_full_rank_assignments": 116,
+            "wanted_portal_cases": 348
+          },
+          {
+            "charge_assignments": 9261,
+            "modulus": 21,
+            "structurally_full_rank_assignments": 61,
+            "wanted_portal_cases": 183
+          },
+          {
+            "charge_assignments": 10648,
+            "modulus": 22,
+            "structurally_full_rank_assignments": 128,
+            "wanted_portal_cases": 384
+          },
+          {
+            "charge_assignments": 12167,
+            "modulus": 23,
+            "structurally_full_rank_assignments": 67,
+            "wanted_portal_cases": 201
+          },
+          {
+            "charge_assignments": 13824,
+            "modulus": 24,
+            "structurally_full_rank_assignments": 140,
+            "wanted_portal_cases": 420
+          }
+        ]
+      },
+      "charge_assignment_count": 179998,
+      "counterexample_count": 0,
+      "counterexamples": [],
+      "families": 3,
+      "moduli": [
+        2,
+        24
+      ],
+      "sample_determinant_witnesses": [
+        {
+          "GM_partner_charge_cbar": 0,
+          "determinant_permutation": [
+            0,
+            1,
+            2
+          ],
+          "family_charges": [
+            0,
+            0,
+            0
+          ],
+          "guaranteed_conjugate_pair": [
+            0,
+            1
+          ],
+          "modulus": 2,
+          "type": "ordinary",
+          "wanted_companion_charge_c": 0,
+          "wanted_pair": [
+            0,
+            1
+          ]
+        },
+        {
+          "GM_partner_charge_cbar": 0,
+          "determinant_permutation": [
+            0,
+            1,
+            2
+          ],
+          "family_charges": [
+            0,
+            0,
+            0
+          ],
+          "guaranteed_conjugate_pair": [
+            0,
+            2
+          ],
+          "modulus": 2,
+          "type": "ordinary",
+          "wanted_companion_charge_c": 0,
+          "wanted_pair": [
+            0,
+            2
+          ]
+        },
+        {
+          "GM_partner_charge_cbar": 0,
+          "determinant_permutation": [
+            0,
+            1,
+            2
+          ],
+          "family_charges": [
+            0,
+            0,
+            0
+          ],
+          "guaranteed_conjugate_pair": [
+            1,
+            2
+          ],
+          "modulus": 2,
+          "type": "ordinary",
+          "wanted_companion_charge_c": 0,
+          "wanted_pair": [
+            1,
+            2
+          ]
+        },
+        {
+          "GM_partner_charge_cbar": 0,
+          "determinant_permutation": [
+            0,
+            1,
+            2
+          ],
+          "family_charges": [
+            0,
+            0,
+            1
+          ],
+          "guaranteed_conjugate_pair": [
+            0,
+            1
+          ],
+          "modulus": 2,
+          "type": "ordinary",
+          "wanted_companion_charge_c": 0,
+          "wanted_pair": [
+            0,
+            1
+          ]
+        },
+        {
+          "GM_partner_charge_cbar": 1,
+          "determinant_permutation": [
+            0,
+            1,
+            2
+          ],
+          "family_charges": [
+            0,
+            0,
+            1
+          ],
+          "guaranteed_conjugate_pair": [
+            0,
+            2
+          ],
+          "modulus": 2,
+          "type": "ordinary",
+          "wanted_companion_charge_c": 1,
+          "wanted_pair": [
+            0,
+            2
+          ]
+        },
+        {
+          "GM_partner_charge_cbar": 1,
+          "determinant_permutation": [
+            0,
+            1,
+            2
+          ],
+          "family_charges": [
+            0,
+            0,
+            1
+          ],
+          "guaranteed_conjugate_pair": [
+            1,
+            2
+          ],
+          "modulus": 2,
+          "type": "ordinary",
+          "wanted_companion_charge_c": 1,
+          "wanted_pair": [
+            1,
+            2
+          ]
+        },
+        {
+          "GM_partner_charge_cbar": 1,
+          "determinant_permutation": [
+            0,
+            1,
+            2
+          ],
+          "family_charges": [
+            0,
+            1,
+            0
+          ],
+          "guaranteed_conjugate_pair": [
+            0,
+            1
+          ],
+          "modulus": 2,
+          "type": "ordinary",
+          "wanted_companion_charge_c": 1,
+          "wanted_pair": [
+            0,
+            1
+          ]
+        },
+        {
+          "GM_partner_charge_cbar": 0,
+          "determinant_permutation": [
+            0,
+            1,
+            2
+          ],
+          "family_charges": [
+            0,
+            1,
+            0
+          ],
+          "guaranteed_conjugate_pair": [
+            0,
+            2
+          ],
+          "modulus": 2,
+          "type": "ordinary",
+          "wanted_companion_charge_c": 0,
+          "wanted_pair": [
+            0,
+            2
+          ]
+        }
+      ],
+      "selector_types": [
+        "ordinary",
+        "R"
+      ],
+      "structurally_full_rank_assignment_count": 2590,
+      "wanted_portal_case_count": 7770
+    },
+    "result": "NO_SCOPED_FAMILY_DEPENDENT_UNIFIED_ABELIAN_SELECTOR_CAN_FORBID_ALL_CONJUGATE_PORTALS"
+  },
+  "version": "V67"
+}

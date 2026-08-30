@@ -1,0 +1,665 @@
+{
+  "acceptance_matrix": [
+    {
+      "id": "R1",
+      "requirement": "minimal rank/index addition squares the inherited 5D Q-sector mass operator with an explicit opposite chirality",
+      "status": "PASS_MATHEMATICAL"
+    },
+    {
+      "id": "R2",
+      "requirement": "light singular root above the physical colored-exotic floor below the cutoff",
+      "status": "OPEN_PARAMETER_BOUND"
+    },
+    {
+      "id": "R3",
+      "requirement": "preserve Z4R/R parity and null the displayed one-sided tree holomorphic Schur channel without a qR=2 VEV",
+      "status": "PASS_MINIMAL_SCHUR_ARITHMETIC"
+    },
+    {
+      "id": "R4",
+      "requirement": "complete local/global anomaly and GS/Dai-Freed cancellation in the new geometry",
+      "status": "OPEN_6D_LOCAL"
+    },
+    {
+      "id": "R5",
+      "requirement": "complete KK/K\u00e4hler proton matching and a lifetime, beyond the zero tree Schur term",
+      "status": "OPEN_FULL_PROTON"
+    },
+    {
+      "id": "R6",
+      "requirement": "classify a 5D split-bulk realization or construct explicit Spin(11) 6D parities, fields, boundary action and UV regulator",
+      "status": "OPEN_ACTION"
+    }
+  ],
+  "charge_anomaly_and_proton_audit": {
+    "F_flatness_boundary": "the Q-type fields have zero vacuum expectation value, so adding bilinear partner masses does not alter the certified singlet/rank F equations",
+    "field_inventory": [
+      {
+        "SM": "(3,2,+1/6)",
+        "X": -1,
+        "fermion_r": -1,
+        "field": "X_Q",
+        "qR": 0
+      },
+      {
+        "SM": "(3bar,2,-1/6)",
+        "X": 1,
+        "fermion_r": 1,
+        "field": "P_Qbar",
+        "qR": 2
+      },
+      {
+        "SM": "(3bar,2,-1/6)",
+        "X": 1,
+        "fermion_r": -1,
+        "field": "X_Qbar",
+        "qR": 0
+      },
+      {
+        "SM": "(3,2,+1/6)",
+        "X": -1,
+        "fermion_r": 1,
+        "field": "P_Q",
+        "qR": 2
+      }
+    ],
+    "formal_V62_5D_integrated_GS_diagnostic": {
+      "doubled_MSSM_anomaly": {
+        "Ahat2": 2,
+        "Ahat3": 6
+      },
+      "formal_5D_congruence_arithmetic_closes": true,
+      "formal_delta_c_diagnostic_mod4": {
+        "SU2": 2,
+        "SU3": 0
+      },
+      "inherited_5D_effective_c": {
+        "SU2": 4,
+        "SU3": 6
+      },
+      "not_a_6D_local_completion": "U1Y, U1X, gravity, the distribution of the delocalized orphan determinant, 6D levels and tensor/axion content, the 6D anomaly polynomial and Dai-Freed phase are not computed",
+      "residue_after_formal_diagnostic_mod4": {
+        "SU2": 0,
+        "SU3": 0
+      },
+      "residue_if_V62_5D_convention_is_carried_mod4": {
+        "SU2": 2,
+        "SU3": 0
+      },
+      "status": "FORMAL_5D_BOOKKEEPING_NOT_A_DERIVED_6D_LOCAL_COUPLING"
+    },
+    "global_mixed_R_anomaly": {
+      "IR_after_lift": {
+        "A2": 1,
+        "A3": 3
+      },
+      "continuous_gauge_anomaly": "each q0-q2 mass pair is vectorlike under GSM x U1X",
+      "integrated_abelian_and_gravity": {
+        "all_cancel": true,
+        "convention": "sum fermion_R_charge times multiplicity times Y^2, X^2, YX, or 1; AYY_GUT=(3/5)AYY",
+        "qR0_orphan_delta": {
+          "Delta_AXX": "-12",
+          "Delta_AYX": "2",
+          "Delta_AYY_GUT_normalized": "-1/5",
+          "Delta_AYY_unnormalized": "-1/3",
+          "Delta_Agravity": "-12"
+        },
+        "qR2_partner_delta": {
+          "Delta_AXX": "12",
+          "Delta_AYX": "-2",
+          "Delta_AYY_GUT_normalized": "1/5",
+          "Delta_AYY_unnormalized": "1/3",
+          "Delta_Agravity": "12"
+        },
+        "scope": "integrated arithmetic only; fixed-locus distribution and the full discrete/global anomaly problem remain open",
+        "sum": {
+          "Delta_AXX": "0",
+          "Delta_AYX": "0",
+          "Delta_AYY_GUT_normalized": "0",
+          "Delta_AYY_unnormalized": "0",
+          "Delta_Agravity": "0"
+        }
+      },
+      "orphan_delta_from_V64": {
+        "Delta_A2": "-3",
+        "Delta_A3": "-2"
+      },
+      "qR2_partner_delta": {
+        "Delta_A2": 3,
+        "Delta_A3": 2
+      },
+      "representation_by_representation_cancellation": true,
+      "sum": {
+        "Delta_A2": 0,
+        "Delta_A3": 0
+      }
+    },
+    "mass_terms_preserve_Z4R_without_q2_VEV": true,
+    "operator_ledger": [
+      {
+        "allowed_W": true,
+        "operator": "M_Q X_Q P_Qbar",
+        "qR": 2,
+        "role": "index-changing mass"
+      },
+      {
+        "allowed_W": true,
+        "operator": "M_Qbar X_Qbar P_Q",
+        "qR": 2,
+        "role": "index-changing mass"
+      },
+      {
+        "allowed_W": true,
+        "operator": "X_Q F_i F_j",
+        "qR": 2,
+        "role": "V65 baryon-safe decay source"
+      },
+      {
+        "allowed_W": false,
+        "operator": "P_Qbar F_i F_j",
+        "qR": 0,
+        "role": "conjugate source required for a tree Schur operator"
+      },
+      {
+        "allowed_W": true,
+        "operator": "X_Qbar F_i F_j",
+        "qR": 2,
+        "role": "V65 conjugate decay source after the required VEV insertion"
+      },
+      {
+        "allowed_W": false,
+        "operator": "P_Q F_i F_j",
+        "qR": 0,
+        "role": "second conjugate source"
+      }
+    ],
+    "tree_level_Schur_theorem": {
+      "candidate_value": "lambdatilde=0 exactly by Z4R",
+      "eliminated": "W_eff=-(lambda*lambdatilde/M) A B",
+      "general_form": "W=M X P + lambda X A + lambdatilde P B",
+      "induced_four_matter_superpotential": "0",
+      "not_a_complete_selector_proof": "the complete G3211-local operator basis, K\u00e4hler/GM partner masses, KK gauge exchange and nonperturbative Z4R breaking remain open",
+      "scope": "only the displayed one-sided tree-level holomorphic partner exchange",
+      "status": "PASS_MINIMAL_ONE_SIDED_HOLOMORPHIC_CHANNEL_ONLY"
+    }
+  },
+  "claim_boundary": {
+    "mathematical_result": "exact zero removed and light-root equation derived for the inherited 5D operator only",
+    "new_physics_created": "qR=2 index-partner plus 6D G3211-local blueprint",
+    "not_claimed": [
+      "accepted 6D action",
+      "physical exotic mass",
+      "proton lifetime",
+      "UV completion",
+      "gate closure"
+    ]
+  },
+  "classification": "EXACT_INHERITED_5D_INDEX_CHANGING_SPECTRAL_REPAIR__5D_SPLIT_BULK_UNCLASSIFIED__6D_LOCAL_EMBEDDING_CANDIDATE",
+  "core_sha256": "5927f64eec6bc27d68b7d429eab11ee1f0efc9709041064f47baaabc25f0eebb",
+  "date": "2026-08-30",
+  "falsifiers": [
+    {
+      "effect": "the exact V64 kernel returns",
+      "id": "F1",
+      "test": "M=0 or a missing partner component"
+    },
+    {
+      "effect": "reject the benchmark even though det is nonzero",
+      "id": "F2",
+      "test": "the root equation places m below the physical colored bound"
+    },
+    {
+      "effect": "reject D67",
+      "id": "F3",
+      "test": "no G3211-local Spin(11) realization couples to the orphan wavefunction"
+    },
+    {
+      "effect": "reject D67",
+      "id": "F4",
+      "test": "the complete 6D local/global anomaly ledger has an uncancelled class"
+    },
+    {
+      "effect": "reject the proton sector",
+      "id": "F5",
+      "test": "KK/K\u00e4hler exchange violates proton limits"
+    }
+  ],
+  "gate_ledger": [
+    {
+      "V67_closed": false,
+      "decision": "OPEN: the inherited 5D operator index can be changed, but the 5D split-bulk route is unclassified and D67 is not a complete microscopic action.",
+      "gate": "G1",
+      "status": "OPEN"
+    },
+    {
+      "V67_closed": false,
+      "decision": "OPEN: no complete coefficient-level 4D Wilsonian action, flavor determinant or soft spectrum.",
+      "gate": "G2",
+      "status": "OPEN"
+    },
+    {
+      "V67_closed": false,
+      "decision": "OPEN: the 6D compactification, moduli/saxion stabilization and full Hessian are absent.",
+      "gate": "G3",
+      "status": "OPEN"
+    },
+    {
+      "V67_closed": false,
+      "decision": "OPEN WITH EXACT ADVANCE: the exact zero is removable by a qR=2 partner, but its physical mass and local embedding are unproved.",
+      "gate": "G4",
+      "status": "OPEN"
+    },
+    {
+      "V67_closed": false,
+      "decision": "OPEN: D67 can remove the colored relic only conditionally; decays, pole ordering and cosmology remain absent.",
+      "gate": "G5",
+      "status": "OPEN"
+    },
+    {
+      "V67_closed": false,
+      "decision": "OPEN: no inflation, reheating, defect or moduli history is constructed.",
+      "gate": "G6",
+      "status": "OPEN"
+    },
+    {
+      "V67_closed": false,
+      "decision": "OPEN WITH EXACT ADVANCE: the displayed one-sided partner exchange induces zero tree holomorphic four-matter term, but the full local operator basis, K\u00e4hler/KK and lifetime matching remain open.",
+      "gate": "G7",
+      "status": "OPEN"
+    },
+    {
+      "V67_closed": false,
+      "decision": "OPEN: no 6D UV regulator, full Dai-Freed phase or predictivity score exists.",
+      "gate": "G8",
+      "status": "OPEN"
+    }
+  ],
+  "geometry_and_6D_escape": {
+    "D67_6D_escape_candidate": {
+      "alternative_strategy": "remove the brane-spinor rank sector entirely and break the GUT group geometrically, so the Goldstone orphan source never appears",
+      "index_strategy": "place qR=2 conjugate partners on the reduced-symmetry locus and couple them to the nonzero orphan wavefunction",
+      "literature_geometry": "T2/(Z2 x Z2') SO(10) orbifold with a G3211 fixed point",
+      "local_group": "SU3C x SU2L x U1Y x U1X",
+      "not_imported_from_literature": [
+        "an explicit 6D Spin(11), rather than SO(10), parity representation",
+        "a supersymmetric action retaining exactly the desired gauge-Higgs doublets",
+        "the partner/orphan wavefunction overlap and physical singular mass",
+        "complete 6D irreducible and reducible anomaly cancellation",
+        "localized Z4R, U1Y, U1X, gravity and Dai-Freed cancellation",
+        "KK thresholds, proton tensor, flavor, soft sector and compactification stabilization"
+      ],
+      "status": "CANDIDATE_NEW_ACTION_NOT_CONSTRUCTED",
+      "why_partner_is_local_rep": "P_Q and P_Qbar are honest G3211 representations with X charges -1 and +1"
+    },
+    "current_5D_action": {
+      "Q_only_qR2_local_field_allowed_at_y0": false,
+      "Q_only_qR2_local_field_allowed_at_yL": false,
+      "full_Spin10_partner_attempt": {
+        "V65_channel": "charge-2 partner pair Psi(16bar)+Psibar(16) with VEV-dressed quartics",
+        "obstruction": "Psi Psibar self-mass has charge 4 = 0 and is forbidden; the pairing operator is SU(5)-covariant with singlet eigenvalues (1,-5,25) across the (1,45-X,X^2) channels, none zero, so an unaligned coupling gives F(nu-bar_2) != 0 and destabilizes the rank vacuum; the alignment m1=0 is a codimension-one coupling relation protected by no symmetry; and even when aligned, Psi's singlet and its (3bar,1)+(1,1) fragments have eaten or absent partners while the enlarged 5-sector support matrix loses full rank",
+        "scope_boundary": "this rejects the displayed full-16 implementation, not every split-bulk or higher-dimensional embedding",
+        "status": "CLOSED_AS_MECHANISM__OPEN_ONLY_AS_TUNING_WITH_EXOTICS"
+      },
+      "reason": "an isolated GSM Q or Qbar is not a representation of Spin(10) at y0 or Spin(4)xSpin(7) at yL; a fundamental wall field must fill a local-group representation",
+      "same_action_patch_status": "NO_WALL_LOCAL_PATCH_PROVED__SPLIT_BULK_UNRESOLVED",
+      "split_bulk_5D_status": "UNCLASSIFIED__NO_EXHAUSTIVE_SPIN11_PARITY_OR_REPRESENTATION_NO_GO",
+      "wall_groups": {
+        "y0": "Spin(10)",
+        "yL": "Spin(4)xSpin(7)"
+      },
+      "wall_local_Q_only_patch_exists": false
+    },
+    "forced_decision": "the minimal rank/index repair cannot be a Q-only wall-local patch in the present 5D action; a 5D split-bulk realization remains unclassified, while D67 is one new six-dimensional research branch"
+  },
+  "integrity_checks": {
+    "D67_does_not_import_5D_tan_equation": true,
+    "D67_new_action_only": true,
+    "V64_exact_null_rebound": true,
+    "V66_current_action_rejected": true,
+    "Z4R_mass_and_minimal_tree_Schur_arithmetic": true,
+    "acceptance_fail_closed": true,
+    "all_bound_cores_exact": true,
+    "all_gates_open": true,
+    "current_5D_wall_local_embedding_rejected_only": true,
+    "finite_N_ATA_independent_crosscheck": true,
+    "finite_augmented_determinants_exact": true,
+    "formal_V62_5D_GS_diagnostic_not_6D_completion": true,
+    "global_orphan_partner_anomaly_cancels": true,
+    "inherited_5D_infinite_exact_zero_removed": true,
+    "light_root_not_overclaimed": true,
+    "root_equations_numeric": true
+  },
+  "lineage": {
+    "bound_input_cores": {
+      "v59_route": "bf666eb5e4d57bff18b05182d7d6cc7874bbc26dd71897153faf9ee67a5f8c42",
+      "v62_route": "f99b9e09bc6d528480e2ac09cf1f2dd9e2feb5383fda25b3aa3cac436758142e",
+      "v64_route": "fe36b2f6f0e1786253827183bf7f8dc2dd9e15a94b7f036d5e9e6e0739717a1d",
+      "v65_route": "b87696403fb46c4a6b044be8abe58dd5f82b63a83a58fff262a6f00bdd6914ae",
+      "v66_master": "499382834b9b63a23e10dbc16106dfb1db0f2bfeae17163862afd4f1467e9fa4",
+      "v66_route": "07593002755158c96647701da7453b1942114424a5d3aff5318ebb891a2964ae"
+    },
+    "relation": "new route after V66; no prior artifact is modified and no cross-route evidence is spliced"
+  },
+  "n_failed_integrity_checks": 0,
+  "n_integrity_checks": 16,
+  "question": "Can an index-changing partner or a 6D redesign repair the V64 orphan and close G1/G4?",
+  "schema": "susy_v67_spin11_index_partner_6d_escape_audit/v1",
+  "source_manifest": {
+    "local_files": [
+      {
+        "exists": true,
+        "id": "v66_route",
+        "path": "C:\\Users\\jayal\\Downloads\\So10Theory2\\So10Theory\\_g3_equality_classification_integration\\SUSY_V66_SPIN11_GM_OVERLAP_UNIFICATION_REPAIR_AUDIT.json",
+        "sha256": "aeca71df0ad6b66ea0b94e9dafdef23a7da587eeaf0550d6098dc17d82e23ef4"
+      },
+      {
+        "exists": true,
+        "id": "v66_master",
+        "path": "C:\\Users\\jayal\\Downloads\\So10Theory2\\So10Theory\\_g3_equality_classification_integration\\SUSY_V66_MULTIPATH_G1_FRONTIER_MASTER_AUDIT.json",
+        "sha256": "f1c9b4529380f63e2f06ec98f22647d527d5d3a15b9c5b7dd26f92609516bde3"
+      },
+      {
+        "exists": true,
+        "id": "v65_route",
+        "path": "C:\\Users\\jayal\\Downloads\\So10Theory2\\So10Theory\\_g3_equality_classification_integration\\SUSY_V65_SPIN11_ORPHAN_LIFTING_CLASSIFICATION_AUDIT.json",
+        "sha256": "d0bf61e662e8489fddfe50fa3bc0f7e69a48b9ec3d996f9cb1db82cb68a34cce"
+      },
+      {
+        "exists": true,
+        "id": "v64_route",
+        "path": "C:\\Users\\jayal\\Downloads\\So10Theory2\\So10Theory\\_g3_equality_classification_integration\\SUSY_V64_SPIN11_AB_TOWER_NULL_MODE_RETRACTION_AUDIT.json",
+        "sha256": "1b7bf6d4411f269ad4e13cd32ddfa7349b0fd259f41c322a2113fe5886ca01f2"
+      },
+      {
+        "exists": true,
+        "id": "v62_route",
+        "path": "C:\\Users\\jayal\\Downloads\\So10Theory2\\So10Theory\\_g3_equality_classification_integration\\SUSY_V62_SPIN11_LOCALIZED_Z4R_ANOMALY_GS_AUDIT.json",
+        "sha256": "c43847f3be791ad86d38209a73943f30fbe3284966d9c5c66235912d6af26d07"
+      },
+      {
+        "exists": true,
+        "id": "v59_route",
+        "path": "C:\\Users\\jayal\\Downloads\\So10Theory2\\So10Theory\\_g3_equality_classification_integration\\SUSY_V59_SPIN11_GAUGE_HIGGS_COMPLETION_AUDIT.json",
+        "sha256": "dfe07e9af7ef080cd13413dd877f25e73a0e4f22140d8a5e311de590bf92e0e6"
+      }
+    ],
+    "primary_sources": [
+      {
+        "arxiv": "hep-ph/9811428",
+        "id": "DIENES_DUDAS_GHERGHETTA_1999",
+        "scope": "Provides a specific KK-neutrino/Scherk-Schwarz example with an exact normalized massless eigenstate for its structured universal mixing; it is an analogy, not a theorem for arbitrary towers.",
+        "title": "Light Neutrinos without Heavy Mass Scales: A Higher-Dimensional Seesaw Mechanism",
+        "url": "https://arxiv.org/abs/hep-ph/9811428"
+      },
+      {
+        "arxiv": "hep-ph/0108071",
+        "id": "HALL_NOMURA_OKUI_SMITH_2002",
+        "scope": "Two extra dimensions permit intersecting GUT projections and a G3211 fixed point on which incomplete SM multiplets may live.",
+        "title": "SO(10) Unified Theories in Six Dimensions",
+        "url": "https://arxiv.org/abs/hep-ph/0108071"
+      },
+      {
+        "arxiv": "hep-ph/0310355",
+        "id": "CSAKI_GROJEAN_HUBISZ_SHIRMAN_TERNING_2004",
+        "scope": "Derives interval fermion boundary conditions and shows how boundary fermions and localized mass or mixing terms alter them.",
+        "title": "Fermions on an interval: quark and lepton masses without a Higgs",
+        "url": "https://arxiv.org/abs/hep-ph/0310355"
+      },
+      {
+        "arxiv": "hep-th/0103135",
+        "id": "ARKANI_HAMED_COHEN_GEORGI_2001",
+        "scope": "Shows fixed-plane localization for an S1/Z2 anomaly and, for that setup, that anomaly-free four-dimensional zero modes suffice for cancellation.",
+        "title": "Anomalies on orbifolds",
+        "url": "https://arxiv.org/abs/hep-th/0103135"
+      },
+      {
+        "arxiv": "hep-th/0305024",
+        "id": "VON_GERSDORFF_QUIROS_2003",
+        "scope": "Treats localized anomalies and Green-Schwarz cancellation in general five- and six-dimensional orbifold gauge theories, where integrated cancellation need not settle the fixed-locus ledger.",
+        "title": "Localized anomalies in orbifold gauge theories",
+        "url": "https://arxiv.org/abs/hep-th/0305024"
+      },
+      {
+        "arxiv": "1808.00009",
+        "id": "GARCIA_ETXEBARRIA_MONTERO_2019",
+        "scope": "Uses the Dai-Freed framework to refine perturbative anomaly-cancellation conditions and derive possible extra fermion-spectrum constraints.",
+        "title": "Dai-Freed anomalies in particle physics",
+        "url": "https://arxiv.org/abs/1808.00009"
+      }
+    ]
+  },
+  "spectral_index_repair": {
+    "bound_V64_operator": {
+      "finite_shape": "N x (N+1)",
+      "normalizable_infinite_kernel": true,
+      "right_kernel_dimension": 1
+    },
+    "corrected_conclusion": "the partner changes the index and removes the exact null state in the inherited 5D operator, but V64 R2 remains conditional until alpha, L, M, the cutoff and a physical colored-mass floor are supplied; a D67 spectrum must be rederived",
+    "inherited_5D_infinite_tower": {
+      "Dai_Freed_or_GS_changes_index": false,
+      "KK_masses": "k_n=(n+1/2)pi/L",
+      "bounded_inverse_estimate": "||A'^(-1)|| <= 2L/pi + sqrt(1+alpha^2)/|M|",
+      "exact_zero_removed": true,
+      "scope": "exact only for the inherited one-dimensional V64 half-integer tower and its wall mixing",
+      "sum_identity": "sum_n mu^2/k_n^2 = g5^2 v^2 L = alpha^2",
+      "wall_mixing": "mu=sqrt(2/L) g5 v"
+    },
+    "light_singular_value": {
+      "all_independent_finite_N_checks_pass": true,
+      "all_root_residuals_below_1e_10": true,
+      "alpha_zero_branch": {
+        "at_or_above_pole": "there is no secular root below k0; the lowest singular value is the unmixed k0 mode",
+        "below_pole": "m=M for ML<pi/2",
+        "solver_behavior": "raises ValueError instead of returning the pole as a false root"
+      },
+      "exact_equation_for_inherited_5D_operator_below_first_KK_pole": "M^2=m^2[1+alpha^2 tan(mL)/(mL)], 0<mL<pi/2",
+      "finite_roots_converge_from_above_in_sample": true,
+      "independent_finite_N_ATA_checks": [
+        {
+          "N": 2,
+          "absolute_difference": 5.551115123125783e-16,
+          "finite_root_minus_infinite_root": 0.01534976758212614,
+          "finite_sum_secular_root": 0.8653324790695063,
+          "infinite_5D_tan_root": 0.8499827114873801,
+          "matches_below_1e_9": true,
+          "smallest_singular_from_ATA_Jacobi": 0.8653324790695068
+        },
+        {
+          "N": 4,
+          "absolute_difference": 4.440892098500626e-16,
+          "finite_root_minus_infinite_root": 0.007684066712873472,
+          "finite_sum_secular_root": 0.8576667782002536,
+          "infinite_5D_tan_root": 0.8499827114873801,
+          "matches_below_1e_9": true,
+          "smallest_singular_from_ATA_Jacobi": 0.857666778200254
+        },
+        {
+          "N": 8,
+          "absolute_difference": 4.440892098500626e-16,
+          "finite_root_minus_infinite_root": 0.003834909134089459,
+          "finite_sum_secular_root": 0.8538176206214696,
+          "infinite_5D_tan_root": 0.8499827114873801,
+          "matches_below_1e_9": true,
+          "smallest_singular_from_ATA_Jacobi": 0.85381762062147
+        },
+        {
+          "N": 12,
+          "absolute_difference": 2.220446049250313e-16,
+          "finite_root_minus_infinite_root": 0.002554007988705864,
+          "finite_sum_secular_root": 0.852536719476086,
+          "infinite_5D_tan_root": 0.8499827114873801,
+          "matches_below_1e_9": true,
+          "smallest_singular_from_ATA_Jacobi": 0.8525367194760858
+        }
+      ],
+      "large_M_limit_for_positive_alpha": "for alpha^2>0, m approaches k0=pi/(2L) from below",
+      "mass_floor_condition": "M^2 >= m_min^2[1+alpha^2 tan(m_min L)/(m_min L)], with m_min<pi/(2L)",
+      "no_parametrically_light_mode_proved_without_parameters": false,
+      "numerical_dimensionless_checks": [
+        {
+          "M_times_L": 0.1,
+          "alpha_squared": 0.0,
+          "equation_residual": 0.0,
+          "m_over_k0": 0.06366197723675814,
+          "m_times_L": 0.1
+        },
+        {
+          "M_times_L": 1.0,
+          "alpha_squared": 0.0,
+          "equation_residual": 0.0,
+          "m_over_k0": 0.6366197723675814,
+          "m_times_L": 1.0
+        },
+        {
+          "M_times_L": 0.1,
+          "alpha_squared": 1.0,
+          "equation_residual": 0.0,
+          "m_over_k0": 0.04499704906916258,
+          "m_times_L": 0.0706811993944503
+        },
+        {
+          "M_times_L": 1.0,
+          "alpha_squared": 1.0,
+          "equation_residual": 4.440892098500626e-16,
+          "m_over_k0": 0.4305161269233627,
+          "m_times_L": 0.6762531507971836
+        },
+        {
+          "M_times_L": 10.0,
+          "alpha_squared": 1.0,
+          "equation_residual": 3.126388037344441e-13,
+          "m_over_k0": 0.9898570509838085,
+          "m_times_L": 1.554863819737395
+        },
+        {
+          "M_times_L": 0.1,
+          "alpha_squared": 9.0,
+          "equation_residual": -1.734723475976807e-18,
+          "m_over_k0": 0.020128665466558282,
+          "m_times_L": 0.03161803377815303
+        },
+        {
+          "M_times_L": 1.0,
+          "alpha_squared": 9.0,
+          "equation_residual": 0.0,
+          "m_over_k0": 0.19833502466417924,
+          "m_times_L": 0.31154392821726795
+        },
+        {
+          "M_times_L": 10.0,
+          "alpha_squared": 9.0,
+          "equation_residual": 8.526512829121202e-14,
+          "m_over_k0": 0.9162767080434403,
+          "m_times_L": 1.4392840873223558
+        },
+        {
+          "M_times_L": 0.1,
+          "alpha_squared": 100.0,
+          "equation_residual": 1.734723475976807e-18,
+          "m_over_k0": 0.00633450000066071,
+          "m_times_L": 0.009950209333120113
+        },
+        {
+          "M_times_L": 1.0,
+          "alpha_squared": 100.0,
+          "equation_residual": 2.220446049250313e-16,
+          "m_over_k0": 0.06324272027868409,
+          "m_times_L": 0.0993414327102741
+        },
+        {
+          "M_times_L": 10.0,
+          "alpha_squared": 100.0,
+          "equation_residual": 2.842170943040401e-14,
+          "m_over_k0": 0.5462288411961987,
+          "m_times_L": 0.8580142573404219
+        }
+      ],
+      "small_M_limit": "m approximately M/sqrt(1+alpha^2)",
+      "trial_vector_upper_bound": "s_min <= |M|/sqrt(1+alpha^2)"
+    },
+    "minimal_index_change": {
+      "all_finite_checks_pass": true,
+      "finite_determinant": "det A'_N = M product_n k_n",
+      "finite_exact_checks": [
+        {
+          "N": 1,
+          "determinant": "7/6",
+          "expected_M_product_k": "7/6",
+          "matches": true
+        },
+        {
+          "N": 2,
+          "determinant": "7/4",
+          "expected_M_product_k": "7/4",
+          "matches": true
+        },
+        {
+          "N": 3,
+          "determinant": "35/8",
+          "expected_M_product_k": "35/8",
+          "matches": true
+        },
+        {
+          "N": 4,
+          "determinant": "245/16",
+          "expected_M_product_k": "245/16",
+          "matches": true
+        },
+        {
+          "N": 5,
+          "determinant": "2205/32",
+          "expected_M_product_k": "2205/32",
+          "matches": true
+        },
+        {
+          "N": 6,
+          "determinant": "24255/64",
+          "expected_M_product_k": "24255/64",
+          "matches": true
+        },
+        {
+          "N": 7,
+          "determinant": "315315/128",
+          "expected_M_product_k": "315315/128",
+          "matches": true
+        },
+        {
+          "N": 8,
+          "determinant": "4729725/256",
+          "expected_M_product_k": "4729725/256",
+          "matches": true
+        }
+      ],
+      "inverse": "A'^(-1)=[[K^(-1),-K^(-1)mu/M],[0,1/M]]",
+      "kernel_trivial_if": "M != 0 and k_0=pi/(2L)>0",
+      "minimality_scope": "minimal rank/index addition to the displayed mass operator; no claim of a unique or minimal microscopic representation/locality completion",
+      "new_operator": "A'_N=[[diag(k_n),mu 1_N],[0...0,M]], shape (N+1) x (N+1)",
+      "old_operator": "A_N=[diag(k_n) | mu 1_N], shape N x (N+1)",
+      "per_complex_Q_direction": "add one opposite-chirality q_R=2 partner row"
+    },
+    "six_dimensional_nonimport": {
+      "allowed_resolution_paths": [
+        "localize the complete orphan/partner mixing sector on one 5D fixed line and derive its endpoint spectrum",
+        "or regulate and renormalize the genuine 2D lattice Green function and derive the cutoff-dependent singular root"
+      ],
+      "consequence": "the 5D alpha identity, bounded-inverse estimate and tangent secular equation cannot be imported into D67",
+      "point_local_double_KK_asymptotic": "sum_(m,n) |mu_mn|^2/k_mn^2 grows logarithmically with the 6D KK cutoff for unsuppressed point-local overlaps",
+      "status": "OPEN_NOT_THE_INHERITED_5D_TAN_EQUATION"
+    }
+  },
+  "status": "V67_SPIN11_INDEX_PARTNER_6D_ESCAPE__V64_NULL_MODE_REBOUND__Q_R2_CONJUGATE_PARTNER_CHANGES_INDEX__FINITE_KK_DETERMINANT_NONZERO__INHERITED_5D_OPERATOR_KERNEL_TRIVIAL__INHERITED_5D_LIGHT_ROOT_EQUATION_DERIVED__OVERLAP_CAN_STILL_SUPPRESS_MASS__Z4R_AND_MINIMAL_TREE_SCHUR_CHANNEL_PRESERVED__GLOBAL_MIXED_R_ANOMALY_CANCELS_REP_BY_REP__FORMAL_V62_5D_GS_DIAGNOSTIC_SU2_RESIDUE_2__NO_Q_ONLY_FIELD_ON_EXISTING_5D_WALLS__5D_SPLIT_BULK_UNCLASSIFIED__6D_G3211_FIXED_POINT_LOCAL_CANDIDATE__NEW_ACTION_NOT_CONSTRUCTED__G1_TO_G8_OPEN_ZERO_PROMOTIONS",
+  "terminal_decision": {
+    "D67_status": "CANDIDATE_NEW_ACTION_NOT_CONSTRUCTED",
+    "V67_G1_closed": false,
+    "V67_G4_closed": false,
+    "WZ_term_for_bound_5D_V64_matching": "NONE_FORCED_IN_V64__D67_COUNTERTERMS_AND_GS_OPEN",
+    "closed_gates": [],
+    "complete_theory": false,
+    "current_bound_Spin11_action": "REJECTED",
+    "exact_null_mode_removed_in_inherited_5D_candidate_operator": true,
+    "honest_outcome": "V67 finds the minimal rank/index repair for the inherited 5D operator and one 6D local-geometry candidate, but 5D split-bulk locality, the D67 spectrum, local anomaly completion and the new action remain open; no gate is promoted",
+    "physical_colored_mass_certified": false,
+    "same_action_microscopic_completion_found": false
+  },
+  "version": "V67"
+}
