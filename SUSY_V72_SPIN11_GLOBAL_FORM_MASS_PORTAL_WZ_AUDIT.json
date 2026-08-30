@@ -1,0 +1,500 @@
+{
+  "F72_opposite_level_WZ_transfer_candidate": {
+    "GS_direction": [
+      "1",
+      "40"
+    ],
+    "U5tilde_restricted_local_coefficient_integrality": {
+      "anomaly_polynomial_conversion": "coordinate Delta A=+/-50 contributes (1/2)Delta A f_L f_X^2",
+      "coefficient_sum": 0,
+      "full_diagonal_quotient_level_quantization_established": false,
+      "line_class": "l=c1(chi5)=5 f_X",
+      "primitive_character": "chi5=1_(+5)",
+      "restricted_coefficients": {
+        "z00": 1,
+        "z11": -1
+      },
+      "restricted_denominator": 1,
+      "scope": "necessary integrality check after restriction to the U5tilde gauge factor; chi5 is not yet a standalone character of the unresolved full diagonal Spin(2)-U5tilde-SU2R-flavor quotient",
+      "vector_U5_counterfactual": "only chi10=chi5^2 exists, making the same term quarter-integral; the Spin preimage is essential",
+      "z00": "+25 f_L f_X^2=+f_L l^2, restricted coefficient +1",
+      "z11": "-25 f_L f_Xprime^2=-f_L lprime^2, restricted coefficient -1"
+    },
+    "accepted": false,
+    "advantages_over_F71_charge_five_fermions": {
+      "anomaly_matching_is_explicitly_bosonic": true,
+      "new_electrically_charged_fields": 0,
+      "new_one_loop_SM_beta_shift": {
+        "b1": "0",
+        "b2": "0",
+        "b3": "0"
+      },
+      "no_new_F71_type_stable_charged_relic": true
+    },
+    "aligned_target": [
+      "-1/4",
+      "-10"
+    ],
+    "basis": [
+      "U1L-SU5^2",
+      "U1L-X^2"
+    ],
+    "both_corners_align": true,
+    "bulk_each_corner": [
+      "-1/4",
+      "40"
+    ],
+    "globally_vanishing_profile": {
+      "necessary_integrability_sum": 0,
+      "passes_necessary_sum_rule": true,
+      "sufficient_for_global_differential_cocycle": false
+    },
+    "not_yet_constructed": [
+      "the supersymmetric localized axion/linear/tensor multiplet and its axino/saxion ledger",
+      "the identification of the z00 neutral P0 with a globally honest neutral-hyper mode",
+      "the combined Spin(2)-U5tilde-SU2R-flavor quotient on every field",
+      "the central flavor completion of the translation cocycle in the full action",
+      "the differential-cohomology gluing of l and lprime and the bulk U-lattice tensors",
+      "the torsion refinement, regulator and fixed-stratum eta/Dai-Freed phases",
+      "the continuous lifts and invariant operator ring for every V70 boundary field"
+    ],
+    "same_action_complete": false,
+    "selected_for_next_frontier": true,
+    "status": "EXACT_U5TILDE_RESTRICTED_INTEGRAL_OPPOSITE_WZ_COEFFICIENTS__FULL_QUOTIENT_AND_GLOBAL_SUPERSYMMETRIC_COCYCLE_OPEN",
+    "z00": {
+      "Q1": "0",
+      "Q3": "0",
+      "U1L_squared_X": "0",
+      "WZ_variation": [
+        "0",
+        "50"
+      ],
+      "fermion_sector": "inherited X(+10),Xbar(-10),S0 plus one independent neutral R=2 P0",
+      "fermion_shift": [
+        "0",
+        "-100"
+      ],
+      "final_vector": [
+        "-1/4",
+        "-10"
+      ]
+    },
+    "z11": {
+      "WZ_variation": [
+        "0",
+        "-50"
+      ],
+      "charged_defect_fermions_added": 0,
+      "fermion_shift": [
+        "0",
+        "0"
+      ],
+      "final_vector": [
+        "-1/4",
+        "-10"
+      ]
+    }
+  },
+  "artifact_hashes": {
+    "generator_sha256": "be92ee53262ffd71a8b94208e61bb6ff9cb66aa01f156acf554a19e66efc806e",
+    "test_sha256": "ea04b1676b5f7e113995274a894f244fbc3781b7b39f0ca6ada457437a067f4d"
+  },
+  "candidate_adjudication": {
+    "F71_charge_five_local_representation": "PASS_EXACT",
+    "F71_conventional_massive_decaying_completion": "REJECTED_BY_EXACT_MASS_AND_PORTAL_THEOREMS",
+    "F71_standard_thermal_phenomenology": "OPEN_EXPECTED_SEVERELY_CONSTRAINED__FREEZEOUT_YIELD_NOT_COMPUTED",
+    "F71_total_multiplet_and_orbibundle": "OPEN_NOT_CONSTRUCTED",
+    "F72_U5tilde_restricted_WZ_coefficient": "PASS_EXACT_NECESSARY_LOCAL_INTEGRALITY_CHECK",
+    "F72_global_supersymmetric_action": "OPEN_NOT_CONSTRUCTED",
+    "selected_frontier": "F72 opposite-level WZ transfer without new charged exotics"
+  },
+  "charge_five_mass_and_portal_audit": {
+    "all_order_nonderivative_chiral_portal_theorem": {
+      "R_parity_result": "operator is odd while W and K targets are even",
+      "charge_five_center_parity": "odd",
+      "continuous_normal_result": "total is half-integral while W/K targets are integral",
+      "gauge_invariance_linear_in_P": "requires an odd number of spinorial matter insertions",
+      "lightest_charge_five_state_stable": true,
+      "nonderivative_local_chiral_W_or_K_portal_at_any_order": false,
+      "scope": "non-derivative local chiral-superfield operators in the corrected F71 modules and existing V70/MSSM field content with the stated center/R parities; nonlocal interactions, derivative operators, and arbitrary new bridge sectors are not excluded",
+      "spinorial_family_fields": "X-odd and residual-R-odd",
+      "tensor_vector_Higgs_rank_fields": "X-even and residual-R-even",
+      "z11_lightest_electric_charge_absolute": 1,
+      "z11_locality": "no co-localized family or bulk 32 transporter in V70"
+    },
+    "mass_anomaly_matching_theorem": {
+      "F71_required_nonzero_shifts": {
+        "z00_charge_five": "+50",
+        "z11": "-50"
+      },
+      "conjugate_pair_mixed_anomaly": "X^2(qpsi_i+qpsi_j)=0",
+      "fermion_normal_sum": "qpsi_i+qpsi_j=r_i+r_j-1=0",
+      "full_rank_trivially_gapped_sector_nonzero_U1L_X2_anomaly": false,
+      "opposite_q_partners_erase_repair": true,
+      "strict_W_mass_condition": "r_i+r_j=1",
+      "symmetry_breaking_mass_requires_WZ_transfer": true
+    },
+    "normal_charge_convention": "qpsi=rL-1/2 with qL(theta)=1/2",
+    "scope_boundary": {
+      "complete_corrected_module_ring": true,
+      "complete_mixed_V70_V71_ring": false,
+      "reason": "V71 does not pin continuous lifts for every A0/B0/Higgs boundary field; under the minimal lift qL(A0)=qL(S0)=1, V70's discrete-only cubic P3(A0,S0) is not invariant"
+    },
+    "status": "EXACT_MASS_ANOMALY_MATCHING_AND_ALL_ORDER_NONDERIVATIVE_CHIRAL_PORTAL_NO_GO",
+    "z00_all_order_module_ring": {
+      "W_normal_and_R_equation": "c+p+m=1",
+      "charge_five_W_mass_or_interaction_at_any_order": false,
+      "finite_symbolic_check_only_S_times_equal_rank": true,
+      "finite_symbolic_check_solution_count": 5,
+      "first_existing_field_mass_like_Kahler": "(S0^dagger)^2 P+_a P-_b/Lambda^2",
+      "gauge_equation": "2(a-b)+p-m=0 after dividing X charge by 5",
+      "inactive_on_V70_branch": "<S0>=F_S0=0",
+      "monomial": "X^a Xbar^b S^c (P+)^p (P-)^m N^k",
+      "new_spurion_needed_for_GM": "Z with (R,rL)=(0,2)",
+      "ring": "W00=S0 F(N_i,X Xbar)",
+      "solution": "p=m=0, c=1, a=b"
+    },
+    "z11_all_order_module_ring": {
+      "GM_boundary": "K contains c_ab M_ab+h.c.; in rigid SUSY it is a Kahler transformation, while in supergravity a mass needs the R/normal-charged SUSY-breaking order parameter",
+      "bare_mass": false,
+      "determinantal_relation": "M11 M22-M12 M21=0",
+      "full_rank_from_Z_VEV": "requires <Z_alpha> and breaks continuous U1L and Z4R to Z2",
+      "invariants": "M_ab=Pprime+_a Pprime-_b",
+      "renormalizable_terms": "f_alpha Z_alpha+lambda_(alpha ab) Z_alpha M_ab",
+      "ring": "W11=sum_alpha Z_alpha F_alpha(M_ab)"
+    }
+  },
+  "core_sha256": "46edf8f0943316356f0d5f8f918cc9953f00a10471a65e9c95e92f85904ccec3",
+  "date": "2026-08-30",
+  "discrete_R_running_and_relic_audit": {
+    "charged_z11_threshold": {
+      "Delta_b_per_pair": {
+        "b1_GUT": "6/5",
+        "b2": "0",
+        "b3": "0"
+      },
+      "Delta_b_total": {
+        "b1_GUT": "12/5",
+        "b2": "0",
+        "b3": "0"
+      },
+      "do_not_splice_V65_orphans": true,
+      "number_of_vectorlike_pairs": 2,
+      "representations": "two Dirac SU2-singlet charged-lepton pairs after full-rank mass",
+      "two_mass_one_loop_shift": "delta(alpha1^-1-alpha2^-1) at M23 = -(3/(5 pi)) ln(M23^2/(M1 M2))",
+      "unification_without_compensating_thresholds": "requires sqrt(M1 M2)=M23"
+    },
+    "complete_local_modules": {
+      "both_Agrav_zero_from_Q1_zero": true,
+      "doubled_X2R_mod4": {
+        "z00": 0,
+        "z11": 0
+      },
+      "full_bulk_gravitino_tensor_neutral_discrete_ledger": "OPEN_NOT_COMPUTED",
+      "non_Abelian_Z4R_shifts": {
+        "A2": 0,
+        "A3": 0
+      },
+      "z00_Agrav": 0,
+      "z00_X2R": -100,
+      "z11_Agrav": 0,
+      "z11_Xprime2R": -100
+    },
+    "new_field_shifts_relative_to_V70": {
+      "z00": {
+        "Delta_A2": 0,
+        "Delta_A3": 0,
+        "Delta_A_X2R": 100,
+        "Delta_Agrav": 1
+      },
+      "z11": {
+        "Delta_A1_GUT": "-12/5",
+        "Delta_A2": 0,
+        "Delta_A3": 0,
+        "Delta_A_Xprime2R": -100,
+        "Delta_Agrav": 0,
+        "sum_Y2_rpsi": -4
+      }
+    },
+    "scope_boundary": "The primitive-integer Abelian congruences are diagnostics.  The rational A1 value cannot be reduced modulo eta until the global SM quotient and Abelian level are fixed; V62's five-dimensional GS sector is not imported.",
+    "stable_charged_relic": {
+      "CBBN_onset_lifetime_seconds": "about 1e3",
+      "CMS_one_species_Q1_DY_observed_limit_TeV": "1.14",
+      "GM_mass_breaks_exotic_number": false,
+      "lightest_state_stable_without_portal": true,
+      "long_lifetime_reference": {
+        "n_over_s_sensitivity": "3e-17",
+        "tau_seconds": ">1e5"
+      },
+      "low_reheat_loophole": "conditional only; requires Tmax, inflaton branching, freeze-in and residual-yield calculations and does not erase collider bounds",
+      "qualitative_thermal_assessment": "EXPECTED_SEVERELY_CONSTRAINED_FOR_REHEATING_ABOVE_MASS_WITHOUT_DILUTION__FREEZEOUT_YIELD_REQUIRED",
+      "standard_thermal_history_viability": "OPEN_NOT_COMPUTED",
+      "thermal_freezeout_yield_computed": false,
+      "two_species_recast_required": true
+    },
+    "status": "EXACT_DEFECT_SHIFT_AND_ONE_LOOP_THRESHOLD_DIAGNOSTIC__FULL_GLOBAL_LEDGER_OPEN"
+  },
+  "frontier_status_ledger": [
+    "U5_TILDE_FIXED_GROUP_PASS_EXACT",
+    "CHARGE_FIVE_CHARACTER_LATTICE_PASS_EXACT",
+    "TOTAL_SPIN_R_MULTIPLET_OPEN",
+    "TRANSLATION_CENTRAL_COCYCLE_FOUND_EXACT",
+    "FLAVOR_CENTRAL_ALGEBRAIC_COMPLETION_EXISTS",
+    "GLOBAL_EQUIVARIANT_ORBIBUNDLE_OPEN",
+    "MASS_ANOMALY_MATCHING_THEOREM_PASS_EXACT",
+    "ALL_ORDER_NONDERIVATIVE_CHIRAL_PORTAL_NO_GO_PASS_EXACT",
+    "F71_STABLE_CHARGED_RELIC_FAIL",
+    "F72_OPPOSITE_WZ_COEFFICIENTS_U5TILDE_RESTRICTED_INTEGRAL_PASS_EXACT",
+    "F72_SUPERSYMMETRIC_DIFFERENTIAL_COCYCLE_OPEN",
+    "G1_TO_G8_OPEN"
+  ],
+  "gate_ledger": {
+    "G1": "OPEN",
+    "G2": "OPEN",
+    "G3": "OPEN",
+    "G4": "OPEN",
+    "G5": "OPEN",
+    "G6": "OPEN",
+    "G7": "OPEN",
+    "G8": "OPEN"
+  },
+  "lineage": {
+    "V70_core_matches": true,
+    "V71_core_matches": true,
+    "bound_V70_core": "3e7b8e53916fbbc05bdcdf9632bcf4359aa4888b037df775c37d8d7d2551b228",
+    "bound_V70_path": "SUSY_V70_SPIN11_LOCALIZED_PARENT_SPIN_FLAVOR_COMPLETION_AUDIT.json",
+    "bound_V71_core": "0162828ebd2b1e28d4fcbcf4ea1e6c61178d305cec79abd6d36a55719bb0f1ea",
+    "bound_V71_path": "SUSY_V71_SPIN11_NORMAL_BUNDLE_EQUIVARIANT_GS_AUDIT.json",
+    "expected_V70_core": "3e7b8e53916fbbc05bdcdf9632bcf4359aa4888b037df775c37d8d7d2551b228",
+    "expected_V71_core": "0162828ebd2b1e28d4fcbcf4ea1e6c61178d305cec79abd6d36a55719bb0f1ea"
+  },
+  "open_obligations": [
+    "the supersymmetric localized axion/linear/tensor multiplet and its axino/saxion ledger",
+    "the identification of the z00 neutral P0 with a globally honest neutral-hyper mode",
+    "the combined Spin(2)-U5tilde-SU2R-flavor quotient on every field",
+    "the central flavor completion of the translation cocycle in the full action",
+    "the differential-cohomology gluing of l and lprime and the bulk U-lattice tensors",
+    "the torsion refinement, regulator and fixed-stratum eta/Dai-Freed phases",
+    "the continuous lifts and invariant operator ring for every V70 boundary field",
+    "globalize and stabilize the V71 Sp(266,1)/(Sp266 x Sp1) neutral sector",
+    "recompute the full bulk/local discrete-R, Abelian and eta anomaly ledger",
+    "complete the KK determinant, regulator, soft spectrum, unification, flavor, proton decay and cosmology"
+  ],
+  "primary_sources": [
+    {
+      "id": "WOIT_SPIN_NOTES",
+      "sourced_fact": "The pullback of Spin(2n)->SO(2n) to U(n) is U(n)-tilde={(A,u):u^2=det A}.  The quotient and character lattice used here are then derived explicitly, not imported.",
+      "title": "Topics in Representation Theory: Spin Groups",
+      "url": "https://www.math.columbia.edu/~woit/notes18.pdf"
+    },
+    {
+      "id": "TELEMAN_1997",
+      "sourced_fact": "Spin^G structures use a diagonal center quotient rather than independently defined spin and gauge bundles.",
+      "title": "Non-abelian Seiberg-Witten theory and projectively stable pairs",
+      "url": "https://arxiv.org/abs/alg-geom/9609020"
+    },
+    {
+      "id": "HAMBELTON_HAUSMANN_2009",
+      "sourced_fact": "Local isotropy representations are only part of the data of a global equivariant bundle; their groupoid compatibility must also be supplied.",
+      "title": "Equivariant Bundles and Isotropy Representations",
+      "url": "https://arxiv.org/abs/0704.2763"
+    },
+    {
+      "id": "VON_GERSDORFF_2007",
+      "sourced_fact": "The fixed-stratum remnant-Lorentz polynomial and its local-Weyl normalization are the V71 inputs retained here.",
+      "title": "Anomalies on Six Dimensional Orbifolds",
+      "url": "https://arxiv.org/abs/hep-th/0612212"
+    },
+    {
+      "id": "VON_GERSDORFF_QUIROS_2003",
+      "sourced_fact": "Localized mixed anomalies may require Green--Schwarz or localized axionic cancellation; globally vanishing defect profiles obey an integrability condition and need not give a four-dimensional gauge mass.",
+      "title": "Localized anomalies in orbifold gauge theories",
+      "url": "https://arxiv.org/abs/hep-th/0305024"
+    },
+    {
+      "id": "CMS_HSCP_2025",
+      "sourced_fact": "The one-species stable Drell--Yan Q=1 lepton benchmark is excluded below 1.14 TeV; the two-species F71 spectrum requires a recast.",
+      "title": "Search for heavy long-lived charged particles with large ionization energy loss",
+      "url": "https://arxiv.org/abs/2410.09164"
+    },
+    {
+      "id": "POSPELOV_2007",
+      "sourced_fact": "Negatively charged relics with lifetimes above 10^3 s alter BBN; for lifetimes above 10^5 s the stated sensitivity is n_X/s below 3e-17.",
+      "title": "Particle physics catalysis of thermal Big Bang Nucleosynthesis",
+      "url": "https://arxiv.org/abs/hep-ph/0605215"
+    }
+  ],
+  "question": "Are the V71 charge-five modules globally honest and can they be made massive and unstable; if not, is there a cleaner quantized repair?",
+  "schema": "susy_v72_spin11_global_form_mass_portal_wz_audit/v1",
+  "source_manifest": [
+    {
+      "exists": true,
+      "path": "susy_v72_spin11_global_form_mass_portal_wz_audit.py",
+      "sha256": "be92ee53262ffd71a8b94208e61bb6ff9cb66aa01f156acf554a19e66efc806e"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v72_spin11_global_form_mass_portal_wz_audit.py",
+      "sha256": "ea04b1676b5f7e113995274a894f244fbc3781b7b39f0ca6ada457437a067f4d"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V71_SPIN11_NORMAL_BUNDLE_EQUIVARIANT_GS_AUDIT.json",
+      "sha256": "fc763f32869a51aa5382fe12951dfdc4231569cf419e0db5b1a012446a0bb91c"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V70_SPIN11_LOCALIZED_PARENT_SPIN_FLAVOR_COMPLETION_AUDIT.json",
+      "sha256": "94380393f300add9b215e6e2a32fa9837a35846748f0c36ca452948293afd73c"
+    }
+  ],
+  "status": "V72_SPIN11_GLOBAL_FORM_MASS_PORTAL_WZ_AUDIT__V71_AND_V70_CORES_BOUND__TRUE_FIXED_GROUP_U5_TILDE_EXACT__CHARGE_FIVE_CHARACTERS_HONEST_LOCAL_REPS__TOTAL_SPIN_R_MULTIPLET_AND_TRANSLATION_COCYCLE_OPEN__MASS_ANOMALY_MATCHING_THEOREM_EXACT__CHARGE_FIVE_ALL_ORDER_NONDERIVATIVE_CHIRAL_PORTAL_NO_GO__STABLE_Y_PLUSMINUS1_RELIC__F71_CONVENTIONAL_FERMION_COMPLETION_REJECTED__TWO_CORNER_WZ_TRANSFER_COEFFICIENTS_PLUS1_MINUS1_INTEGRAL_AFTER_U5TILDE_RESTRICTION__NO_NEW_CHARGED_EXOTICS__SUPERSYMMETRIC_EQUIVARIANT_DIFFERENTIAL_COCYCLE_AND_GLOBAL_PHASES_OPEN__F72_UNACCEPTED__G1_TO_G8_OPEN",
+  "terminal_decision": {
+    "F71_conventional_completion_accepted": false,
+    "F72_accepted": false,
+    "F72_selected": true,
+    "closed_gates": [],
+    "honest_outcome": "V72 removes V71's provisional local group caveat: charge-five singlets are honest primitive characters of the true U(5)-tilde fixed group.  It then rejects their conventional completion because symmetry-preserving masses erase the required anomaly and every non-derivative local chiral decay portal to the existing V70/MSSM fields is forbidden at all orders, leaving a stable charged relic within that local candidate action.  Nonlocal interactions and arbitrary new bridge sectors are not excluded.  A new opposite-WZ transfer has coefficients (+1,-1) that pass the necessary integral U5tilde-restriction check, aligns both corners, and adds no charged matter.  The combined equivariant supersymmetric differential cocycle and full microscopic action are not constructed.",
+    "same_action_microscopic_completion_found": false,
+    "theory_complete": false
+  },
+  "true_fixed_group_and_global_gluing": {
+    "all_displayed_representations_honest_in_U5_tilde": true,
+    "centralizer_proof": {
+      "SO11_centralizer": "U(5); the one-dimensional +1 eigenspace is fixed",
+      "Spin11_centralizer": "C_Spin11(qhat)=pi^(-1)U(5)=U(5)-tilde",
+      "connectedness": "the pullback cover is connected because pi1(U5)->pi1(SO11)=Z2 is onto; the possible central commutator with qhat is therefore +1",
+      "vector_image": "Q=diag(J,J,J,J,J,1)"
+    },
+    "character_group": {
+      "charge_five_honest": true,
+      "charge_five_not_vector_U5": true,
+      "generator": "chi5([S,t])=t^5=u",
+      "singlet_lattice_U5_tilde": "X in 5 Z",
+      "singlet_lattice_vector_U5": "X in 10 Z"
+    },
+    "combined_local_center_quotient": {
+      "charge_five_checks": [
+        {
+          "fermion_Spin2_weight_n": 1,
+          "hypermultiplet_center_pattern_passes": true,
+          "locus": "z00",
+          "required_SU2R_center_parity_fermion": 0,
+          "required_SU2R_center_parity_scalar": 1,
+          "scalar_Spin2_weight_n": 2,
+          "x_mod2": 1
+        },
+        {
+          "fermion_Spin2_weight_n": -1,
+          "hypermultiplet_center_pattern_passes": true,
+          "locus": "z11",
+          "required_SU2R_center_parity_fermion": 0,
+          "required_SU2R_center_parity_scalar": 1,
+          "scalar_Spin2_weight_n": 0,
+          "x_mod2": 1
+        }
+      ],
+      "component_rule": "n+x+r=0 mod2",
+      "consequence": "the ordinary hypermultiplet center pattern can make the fields honest, but standalone 4D chirals with no SU2R/flavor lift are not yet defined",
+      "group": "(Spin(2)xU5tilde x SU(2)R)/<(zL,c,zR)>"
+    },
+    "presentations": {
+      "map": "[S,t] -> (A=t^2 S,u=t^5)",
+      "omega": "exp(2 pi i/5)",
+      "pullback": "{(A,u) in U(5)xU(1): u^2=det(A)}",
+      "quotient": "(SU(5)xU(1)_X)/<(omega I5,omega^2)>",
+      "spin_cover_kernel": "c=[I,-1]"
+    },
+    "representation_checks": [
+      {
+        "SU5_five_ality": 1,
+        "X": 2,
+        "descends_to_U5_tilde": true,
+        "descends_to_vector_U5": true,
+        "k_plus_2x_mod5": 0,
+        "representation": "5_(+2)",
+        "spin_cover_center_phase": 1
+      },
+      {
+        "SU5_five_ality": 4,
+        "X": -2,
+        "descends_to_U5_tilde": true,
+        "descends_to_vector_U5": true,
+        "k_plus_2x_mod5": 0,
+        "representation": "5bar_(-2)",
+        "spin_cover_center_phase": 1
+      },
+      {
+        "SU5_five_ality": 2,
+        "X": -1,
+        "descends_to_U5_tilde": true,
+        "descends_to_vector_U5": false,
+        "k_plus_2x_mod5": 0,
+        "representation": "10_(-1)",
+        "spin_cover_center_phase": -1
+      },
+      {
+        "SU5_five_ality": 4,
+        "X": 3,
+        "descends_to_U5_tilde": true,
+        "descends_to_vector_U5": false,
+        "k_plus_2x_mod5": 0,
+        "representation": "5bar_(+3)",
+        "spin_cover_center_phase": -1
+      },
+      {
+        "SU5_five_ality": 0,
+        "X": -5,
+        "descends_to_U5_tilde": true,
+        "descends_to_vector_U5": false,
+        "k_plus_2x_mod5": 0,
+        "representation": "1_(-5)",
+        "spin_cover_center_phase": -1
+      },
+      {
+        "SU5_five_ality": 0,
+        "X": 5,
+        "descends_to_U5_tilde": true,
+        "descends_to_vector_U5": false,
+        "k_plus_2x_mod5": 0,
+        "representation": "1_(+5)",
+        "spin_cover_center_phase": -1
+      },
+      {
+        "SU5_five_ality": 0,
+        "X": 10,
+        "descends_to_U5_tilde": true,
+        "descends_to_vector_U5": true,
+        "k_plus_2x_mod5": 0,
+        "representation": "1_(+10)",
+        "spin_cover_center_phase": 1
+      }
+    ],
+    "representation_rule": "SU5 five-ality k and integer X charge x descend iff k+2x=0 mod5",
+    "space_group_cocycle": {
+      "completion_applied_to_full_action": false,
+      "completion_exists_algebraically": true,
+      "global_equivariant_orbibundle_constructed": false,
+      "minimal_algebraic_completion": "add U(1)_F and quotient by (1,c,1,-1_F); give odd X odd F parity and take T1=T2=[what,i_F]",
+      "odd_X_line_mismatch": "-1",
+      "ordinary_wallpaper_homomorphism": false,
+      "relations_in_Spin11": [
+        "what^2=c",
+        "qhat what qhat^-1=what=c what^-1"
+      ]
+    },
+    "spinor_branching": {
+      "11": "5_2 + 5bar_-2 + 1_0",
+      "16_even_p": "1_-5 + 10_-1 + 5bar_3",
+      "32": "direct_sum_(p=0..5) Lambda^p 5_(2p-5)"
+    },
+    "status": "EXACT_LOCAL_FIXED_GROUP_AND_CHARACTER_LATTICE__GLOBAL_EQUIVARIANT_GLUE_OPEN",
+    "z11_conjugate_stabilizer": {
+      "chi5_isotropy_sign_must_be_tracked": true,
+      "group": "s U(5)-tilde s^-1 with the same character lattice",
+      "lift_relation": "qhat_prime=-s qhat s^-1",
+      "transported_qhat_prime": "[I,-zeta] rather than [I,zeta]"
+    }
+  },
+  "version": "V72"
+}
