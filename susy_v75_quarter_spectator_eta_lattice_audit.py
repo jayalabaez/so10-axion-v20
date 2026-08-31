@@ -115,7 +115,12 @@ def quotient_check(*, x: int, n: int, r_parity: int, five_ality: int = 0) -> dic
     }
 
 def weyl_index_moments(*, copies: int, x: int, q: Fraction, su2_doublet: bool) -> dict[str, Fraction]:
-    """Degree-six moments for gauge-singlet Weyl fermions."""
+    """Degree-six moments for gauge-singlet Weyl fermions.
+
+    fX is normalized so ell=5 fX.  For an SU(2)_R doublet,
+    ch(2_R)=2-c2(R)+..., hence the mixed coefficient is -q*c2(R)
+    per doublet copy.
+    """
     rdim = 2 if su2_doublet else 1
     return {
         "weyl_count": Fraction(copies * rdim),
@@ -256,6 +261,9 @@ def endpoint_completion() -> dict[str, Any]:
     }
 
 def build_audit() -> dict[str, Any]:
+    module = eight_weyl_module()
+    theorem = period_and_eta_theorem()
+    endpoint = endpoint_completion()
     audit = {
         "schema": SCHEMA,
         "version": VERSION,
@@ -272,18 +280,40 @@ def build_audit() -> dict[str, Any]:
                 "existing Spin(11) tensor restriction has no AB term",
             ],
         },
-        "eight_weyl_correlated_module": eight_weyl_module(),
-        "period_eta_lattice_theorem": period_and_eta_theorem(),
-        "endpoint_quantized_completion": endpoint_completion(),
+        "eight_weyl_correlated_module": module,
+        "period_eta_lattice_theorem": theorem,
+        "endpoint_quantized_completion": endpoint,
         "candidate_matrix": [
-            {"id": "F75_EIGHT_WEYL_CORRELATED_ENDPOINT", "selected": True, "accepted": False,
-             "status": "FREE_CURVATURE_AND_FULL_QUOTIENT_INDEX_PASS__SUPERSYMMETRIC_Z4_EQUIVARIANT_DEFECT_AND_SPECTRUM_OPEN"},
-            {"id": "F75_CLEAN_R_ETA_SPECTATOR", "selected": False, "accepted": False,
-             "status": "REJECTED_UNIVERSAL_HALF_INDEX_PERIOD_NO_GO"},
-            {"id": "F75_GAUGE_CHARGED_FREE_ETA_ESCAPE", "selected": False, "accepted": False,
-             "status": "REJECTED_IF_ALL_OTHER_FREE_CURVATURE_TERMS_CANCEL__SAME_CP3_HALF_INDEX_PERIOD_NO_GO"},
-            {"id": "F75_INTERACTING_OR_NONFERMIONIC_REFINED_DEFECT", "selected": False, "accepted": False,
-             "status": "OPEN_NOT_CLASSIFIED"},
+            {
+                "id": "F75_EIGHT_WEYL_CORRELATED_ENDPOINT",
+                "selected": True,
+                "accepted": False,
+                "status": (
+                    "FREE_CURVATURE_AND_FULL_QUOTIENT_INDEX_PASS__"
+                    "SUPERSYMMETRIC_Z4_EQUIVARIANT_DEFECT_AND_SPECTRUM_OPEN"
+                ),
+            },
+            {
+                "id": "F75_CLEAN_R_ETA_SPECTATOR",
+                "selected": False,
+                "accepted": False,
+                "status": "REJECTED_UNIVERSAL_HALF_INDEX_PERIOD_NO_GO",
+            },
+            {
+                "id": "F75_GAUGE_CHARGED_FREE_ETA_ESCAPE",
+                "selected": False,
+                "accepted": False,
+                "status": (
+                    "REJECTED_IF_ALL_OTHER_FREE_CURVATURE_TERMS_CANCEL__"
+                    "SAME_CP3_HALF_INDEX_PERIOD_NO_GO"
+                ),
+            },
+            {
+                "id": "F75_INTERACTING_OR_NONFERMIONIC_REFINED_DEFECT",
+                "selected": False,
+                "accepted": False,
+                "status": "OPEN_NOT_CLASSIFIED",
+            },
         ],
         "decision": {
             "quarter_obstruction_interpretation_updated": True,
@@ -309,28 +339,80 @@ def build_audit() -> dict[str, Any]:
     return audit
 
 def render_md(audit: Mapping[str, Any]) -> str:
+    m = audit["eight_weyl_correlated_module"]
     t = audit["period_eta_lattice_theorem"]["witness"]
     lines = [
-        "# V75 quarter-spectator eta-lattice audit", "", f"Status: `{audit['status']}`", "",
-        f"Core SHA-256: `{audit['core_sha256']}`", "", "## Exact correlated endpoint module", "",
-        "The honest eight-Weyl quotient module is", "",
-        "`2 x 1_(+5,qN=+1/2) + 2 x 1_(-5,qN=+1/2) + 2 x (2_R)_(0,qN=-1/2)`.", "",
-        "Its complete degree-six index is", "", "`I6 = nu ell^2 + nu c2(R)`.", "",
+        "# V75 quarter-spectator eta-lattice audit",
+        "",
+        f"Status: `{audit['status']}`",
+        "",
+        f"Core SHA-256: `{audit['core_sha256']}`",
+        "",
+        "## Exact correlated endpoint module",
+        "",
+        "The honest eight-Weyl quotient module is",
+        "",
+        "`2 x 1_(+5,qN=+1/2) + 2 x 1_(-5,qN=+1/2) + 2 x (2_R)_(0,qN=-1/2)`.",
+        "",
+        "Its complete degree-six index is",
+        "",
+        "`I6 = nu ell^2 + nu c2(R)`.",
+        "",
         "The X^3, X-gravity, nu^3, nu-gravity, nu^2 X and X c2(R) terms cancel exactly.",
-        "All eight fields descend through the full quotient.", "", "## Quarter theorem", "",
-        "On the spin `CP3` diagonal-quotient witness,", "",
+        "All eight fields descend through the full quotient.  This is the first explicit",
+        "honest free-fermion module that contains the required P coefficient without hiding",
+        "the correlated term that repairs its global quantization.",
+        "",
+        "## Quarter theorem",
+        "",
+        "On the spin `CP3` diagonal-quotient witness,",
+        "",
         f"`int P={t['P_period']}`, `int nu c2(R)={t['nu_c2R_period']}`, and",
-        f"`int [P+nu c2(R)]={t['correlated_period']}`.", "",
-        "Thus the correlated class has integer period six, while a clean `+/-nu c2(R)` has quarter period.",
-        "Even granting arbitrary signed half-index eta generators, every free-fermion eta curvature has periods in `(1/2) Z`.",
-        "Therefore a clean `+/-nu c2(R)` (and likewise `nu^3/4`) is impossible in the full free-fermion eta lattice.",
-        "This includes gauge-charged free fermions once every other free-curvature coefficient is required to cancel.", "",
-        "## Endpoint consequence", "", "The quantized endpoint completions are", "",
-        "- `z00: +nu[ell^2+c2(R)]`, period `+6`;", "- `z11: -nu[ellprime^2+c2(R)]`, period `-6`.", "",
-        "The forced R profile is antisymmetric `(+R,-R)` and cancels out of the common overlap difference, so V74's bridge stays `nu A B`.", "",
-        "## Strict decision", "", "The free-curvature/global-form part advances, but the theory is not finished.",
-        "The eight-Weyl module has not been realized as a supersymmetric Z4-equivariant gapped defect, and the Dai-Freed/torsion phase and spectrum remain open.",
-        "The current Spin(11) action remains rejected and G1-G8 remain OPEN.", "", "## Primary sources", "",
+        f"`int [P+nu c2(R)]={t['correlated_period']}`.",
+        "",
+        "Thus the correlated class has integer period six, while a clean `+/-nu c2(R)`",
+        "has quarter period.  Even granting arbitrary signed half-index eta generators,",
+        "every free-fermion eta curvature has periods in `(1/2) Z` on a closed spin",
+        "six-manifold because each honest Dirac index is integral.  Therefore a clean",
+        "`+/-nu c2(R)` (and likewise `nu^3/4`) is impossible in the full free-fermion",
+        "eta lattice.  This statement includes gauge-charged free fermions once every",
+        "other free-curvature coefficient is required to cancel.",
+        "",
+        "The earlier neutral mod-8 obstruction is therefore a special case of this global",
+        "period theorem, not the end of the argument.",
+        "",
+        "## Endpoint consequence",
+        "",
+        "The quantized endpoint completions are",
+        "",
+        "- `z00: +nu[ell^2+c2(R)]`, period `+6`;",
+        "- `z11: -nu[ellprime^2+c2(R)]`, period `-6`.",
+        "",
+        "The forced R profile is antisymmetric `(+R,-R)`.  It cancels out of the common",
+        "overlap difference, so V74's exact primitive bridge is unchanged:",
+        "",
+        "`nu[(ell^2+c2R)-(ellprime^2+c2R)] = nu A B`.",
+        "",
+        "This changes the interpretation of the quarter obstruction: the quarter is not an",
+        "independent spectator that should be canceled by a standalone eta counterterm.",
+        "It is evidence that `P` by itself is not the complete index of honest quotient matter.",
+        "",
+        "## Strict decision",
+        "",
+        "The free-curvature/global-form part advances, but the theory is not finished.",
+        "The eight-Weyl module has not been realized as a supersymmetric Z4-equivariant",
+        "gapped defect, the actual bulk/local SU2R equivariant ledger has not been recomputed",
+        "in one raw character, and the Dai-Freed/torsion phase and physical spectrum remain",
+        "unconstructed.  The current Spin(11) action remains rejected and G1-G8 remain OPEN.",
+        "",
+        "The next decisive calculation is the raw endpoint R-character: determine whether the",
+        "existing microscopic spectrum already supplies the forced `(+nu c2(R),-nu c2(R))`",
+        "completion.  If it does, the eight-Weyl correlated inverse can cancel the endpoint",
+        "free curvature without a separate quarter sector.  If it does not, genuinely new",
+        "correlated endpoint/defect physics is required.",
+        "",
+        "## Primary sources",
+        "",
     ]
     for src in audit["primary_sources"]:
         lines.append(f"- [{src['title']}]({src['url']}): {src['scope']}")
@@ -344,9 +426,11 @@ def write_outputs() -> dict[str, Any]:
 
 def check_outputs() -> dict[str, Any]:
     audit = build_audit()
-    if not OUT_JSON.is_file() or OUT_JSON.read_text(encoding="utf-8") != json.dumps(audit, indent=2, sort_keys=True) + "\n":
+    expected_json = json.dumps(audit, indent=2, sort_keys=True) + "\n"
+    expected_md = render_md(audit)
+    if not OUT_JSON.is_file() or OUT_JSON.read_text(encoding="utf-8") != expected_json:
         raise RuntimeError("stale V75 JSON artifact")
-    if not OUT_MD.is_file() or OUT_MD.read_text(encoding="utf-8") != render_md(audit):
+    if not OUT_MD.is_file() or OUT_MD.read_text(encoding="utf-8") != expected_md:
         raise RuntimeError("stale V75 markdown artifact")
     loaded = json.loads(OUT_JSON.read_text(encoding="utf-8"))
     if loaded.get("core_sha256") != canonical_sha(loaded):
