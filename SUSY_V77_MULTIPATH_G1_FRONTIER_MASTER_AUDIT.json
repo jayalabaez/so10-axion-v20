@@ -1,0 +1,260 @@
+{
+  "acceptance_criteria": [
+    {
+      "id": "A1",
+      "requirement": "V76 master and V77 route canonical lineage",
+      "status": "PASS_EXACT"
+    },
+    {
+      "id": "A2",
+      "requirement": "square-torus space-group abelianization and eight flat characters",
+      "status": "PASS_EXACT_DIAGNOSTIC"
+    },
+    {
+      "id": "A3",
+      "requirement": "V71 standard equal-corner parent residue",
+      "status": "PASS_REPRODUCED"
+    },
+    {
+      "id": "A4",
+      "requirement": "unprimed internal KK product at zero external momentum",
+      "status": "REJECTED_TEN_ZERO_MODES"
+    },
+    {
+      "id": "A5",
+      "requirement": "scalar determinant as absolute parent quantum object",
+      "status": "REJECTED_CATEGORY_ERROR"
+    },
+    {
+      "id": "A6",
+      "requirement": "raw field-by-field BRST/BV and global-H input contract",
+      "status": "OPEN_MISSING"
+    },
+    {
+      "id": "A7",
+      "requirement": "unchanged tensor-lattice twist fixing a and b",
+      "status": "REJECTED_IDENTITY_ONLY"
+    },
+    {
+      "id": "A8",
+      "requirement": "ordinary smooth GS class on all orbifold isotropy strata",
+      "status": "REJECTED_DIVISIBILITY"
+    },
+    {
+      "id": "A9",
+      "requirement": "standard-branch Z2 SU2R equivariant index density",
+      "status": "PASS_CONDITIONAL_LOCAL"
+    },
+    {
+      "id": "A10",
+      "requirement": "standard-branch Z4 restricted bulk index cross-check",
+      "status": "PASS_CONDITIONAL_LOCAL"
+    },
+    {
+      "id": "A11",
+      "requirement": "combined Spin-SU2R-Sp266-Spin11 H_Gamma orbibundle",
+      "status": "OPEN_UNCONSTRUCTED"
+    },
+    {
+      "id": "A12",
+      "requirement": "generalized integral differential cocycle checkY_H",
+      "status": "OPEN_UNCONSTRUCTED"
+    },
+    {
+      "id": "A13",
+      "requirement": "self-dual quadratic refinement and equivariant polarization",
+      "status": "OPEN_UNCONSTRUCTED"
+    },
+    {
+      "id": "A14",
+      "requirement": "caps, APS projectors and BRST-compatible boundary domains",
+      "status": "OPEN_UNCONSTRUCTED"
+    },
+    {
+      "id": "A15",
+      "requirement": "combined anomaly-line identity on all seven-bordism classes",
+      "status": "SELECTED_OPEN"
+    },
+    {
+      "id": "A16",
+      "requirement": "same-action microscopic completion",
+      "status": "OPEN_FAILED"
+    },
+    {
+      "id": "A17",
+      "requirement": "spectrum, thresholds, cosmology and phenomenology",
+      "status": "BLOCKED_BY_ACTION"
+    }
+  ],
+  "artifact_hashes": {
+    "generator_sha256": "f61b4b438d643d1ed56c448869c964e46c43dbd35f9ba58fe4a0ae3747d4747a",
+    "line_ending_policy": "SHA256 after CRLF-to-LF normalization",
+    "test_sha256": "b6449f73089b864611157a6d012ad86556c54c735e88d6308b9bbb7ee8333a4d"
+  },
+  "consolidated_theory_card": {
+    "accepted_extension_count": 0,
+    "current_action_status": "REJECTED",
+    "exact_gains": [
+      "space-group abelianization Z4 x Z2 and all eight flat character probes",
+      "exact reconstruction of the bound complete-F71 equal-corner residue from its three bulk/neutral blocks",
+      "separation of unmodified V70, provisional V71-neutral and complete-but-unaccepted F71 action scenarios",
+      "V71-provisional qL lifts on inherited V70 fields: z00 (-28,-20)/192 versus z11 (-24,-24)/192, with mixed vectors (-1/4,-60) versus (-1/4,40)",
+      "ten forced neutral chiral compactification zero modes and the resulting zero-momentum KK-product correction",
+      "tensor-lattice rigidity det(a,b)=-6, forcing the unchanged lift to the identity",
+      "ordinary GS restriction no-go: 2Y=(3,2) at both Z4 corners and (1,1) at the Z2 orbit",
+      "conditional standard-branch Z2 SU2R polynomial rho(4rho^2+21nu^2-25p1)/96",
+      "conditional Z4 restricted bulk cross-check with rho=0 exactly recovering the V71 bulk/neutral profile",
+      "precise combined anomaly-line/WuCS/cap identity required for completion"
+    ],
+    "open_new_physics": [
+      "a global combined-H characteristic/torsion refinement checkY_H with canonical gluing",
+      "an explicit invertible cap/defect sector compatible with the full BRST/BV complex",
+      "a consistent string/flux source and tadpole sector with recomputed anomaly ledger",
+      "a changed isotropy lift or different UV parent followed by complete recomputation"
+    ],
+    "research_program_status": "VIABLE_ONLY_IF_COMBINED_H_COCYCLE_CAP_DEFECT_OR_CHANGED_PARENT_IS_CONSTRUCTED",
+    "retired_shortcuts": [
+      "promoting a local equivariant polynomial to a scalar determinant",
+      "using the zero unprimed determinant as a physical one-loop answer",
+      "repairing the missing integral GS class by regulator choice",
+      "using a nontrivial unchanged-action tensor-lattice twist",
+      "interpreting V71's normal-only Z2 zero as a full SU2R-background zero"
+    ],
+    "selected_open_candidate": "F77E_EQUIVARIANT_ANOMALY_LINE_WUCS_TRIVIALIZATION"
+  },
+  "core_sha256": "abe7657d134a389f79e601434ff3a6ba4eb21f9041d0199ad604c907007e8517",
+  "date": "2026-08-31",
+  "gate_ledger": {
+    "G1": "OPEN: the naive smooth Spin x Spin11 GS/WuCS class has no integral restriction to the current Z4 or Z2 isotropy data, conditional SU2R curvature remains nonzero, and no combined-H anomaly-line trivialization exists.",
+    "G2": "OPEN: there is no accepted Wilsonian action, supersymmetry-breaking sector or regulator-defined physical pole spectrum.",
+    "G3": "OPEN: the global H_Gamma orbibundle, quotient caps, BPS/APS projectors, junction conditions and positive Hessian are absent.",
+    "G4": "OPEN: the gauge-fixed BV/BRST KK operator, zero-mode measure, regulator, hierarchy and thresholds are absent.",
+    "G5": "OPEN: at least ten neutral chiral zero modes remain and no accepted full-rank supersymmetric stabilization sector is present.",
+    "G6": "OPEN: reheating, defects, relic abundances and BBN are uncomputed.",
+    "G7": "OPEN: flavor, decay, proton and collider predictions are not derived from an accepted microscopic action.",
+    "G8": "OPEN: the Dai--Freed, self-dual/WuCS and cap/defect anomaly lines have not been canonically trivialized on the full seven-dimensional bordism domain."
+  },
+  "input_core_hashes": {
+    "V76_master": "202b5c000d2a540179419980f3daac4896fe340670787933cebd8d27943c5247",
+    "V76_route_via_V77_lineage": "5c971c7730d8b2ff90f60df4791381517edc59a2c30600aeeb476baf5ef48e1a",
+    "V77_route": "fa54bc8ad2ed0991bb7923d6ef7d2da80505e27673d32d22c814369df7c152bb"
+  },
+  "lineage": {
+    "new_route": "B77",
+    "parent_master": "V76",
+    "parent_route_count": 4,
+    "parent_route_matrix_sha256": "5e1a84c2cff7f711e6716dc4fbff1cb0deef9681dc2dfb5d0aeef7cfda9b09c4",
+    "supersession_scope": "refines F76's scalar determinant request to the combined anomaly-line problem and rejects the ordinary smooth GS orbifold restriction; it does not exclude a newly constructed combined-H refinement, explicit cap/defect sector, changed isotropy lift or changed UV parent"
+  },
+  "regression_scope": {
+    "inherited_V76_scope_sha256": "96cd724e2cf0e88c4647bccd23f5297e1c44eebcc0aafacd3dbb7a4c337eccc9",
+    "new_test_files": [
+      "test_susy_v77_multipath_g1_frontier_master_audit.py",
+      "test_susy_v77_equivariant_parent_anomaly_line_audit.py"
+    ],
+    "recommended_full_pattern": "test_susy_v*.py"
+  },
+  "route_matrix": [
+    {
+      "accepted": false,
+      "name": "live-Orbifolder corrected heterotic Z4R route",
+      "ordinal": 1,
+      "route_id": "A60",
+      "same_action_microscopic_completion": false
+    },
+    {
+      "accepted": false,
+      "name": "Spin(11) correlated eta-spectator and endpoint-sector frontier",
+      "ordinal": 2,
+      "route_id": "B75",
+      "same_action_microscopic_completion": false
+    },
+    {
+      "accepted": false,
+      "name": "gauged-U(1)R to Z4R local-orbifold route",
+      "ordinal": 3,
+      "route_id": "C",
+      "same_action_microscopic_completion": false
+    },
+    {
+      "accepted": false,
+      "name": "Spin(11) two-corner residue and multiplet-realization frontier",
+      "ordinal": 4,
+      "route_id": "B76",
+      "same_action_microscopic_completion": false
+    },
+    {
+      "accepted": false,
+      "name": "equivariant parent anomaly-line and ordinary GS-cocycle audit",
+      "ordinal": 5,
+      "route_id": "B77",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidate": "F77E_EQUIVARIANT_ANOMALY_LINE_WUCS_TRIVIALIZATION"
+    }
+  ],
+  "schema": "susy_v77_multipath_g1_frontier_master_audit_v1",
+  "source_manifest": {
+    "catalog_sha256": "3381b3f311e30d46ba7999f1e6f7a28accdc39e7ece8676de8300f5f400ff0e2",
+    "count": 12,
+    "ids": [
+      "dai_freed_1994",
+      "von_gersdorff_2006",
+      "zhang_2026",
+      "von_gersdorff_quiros_2003",
+      "monnier_2011",
+      "monnier_2013",
+      "monnier_2016",
+      "monnier_moore_2018",
+      "witten_yonekura_2019",
+      "erler_1993",
+      "alvarez_gaume_witten_1984",
+      "riccioni_2001"
+    ],
+    "kind": "primary_sources_only"
+  },
+  "status": "V77_MULTIPATH_G1_FRONTIER_MASTER_AUDIT__V76_MASTER_AND_V77_ROUTE_CORES_BOUND__SCALAR_PARENT_DETERMINANT_REJECTED_AS_CATEGORY_ERROR__TEN_NEUTRAL_ZERO_MODES_EXACT__NAIVE_SMOOTH_GS_CLASS_ORDINARY_ORBIFOLD_RESTRICTION_REJECTED_EXACT__UNCHANGED_TENSOR_LATTICE_TWIST_FORCED_IDENTITY__V70_AND_F71_ACTION_SCENARIOS_SEPARATED__CONDITIONAL_SU2R_FIXED_INDEX_DENSITIES_NONZERO__COMBINED_H_ANOMALY_LINE_TRIVIALIZATION_SELECTED_OPEN__CURRENT_ACTION_REJECTED__G1_TO_G8_OPEN",
+  "strict_master_decision": {
+    "V71_provisional_lifts_on_V70_fields_normal_profiles": {
+      "z00": [
+        -28,
+        -20
+      ],
+      "z11": [
+        -24,
+        -24
+      ]
+    },
+    "closed_gates": [],
+    "combined_anomaly_line_categorical_target": "a specified natural symmetric-monoidal isomorphism A_bare tensor WCS^s_(Lambda,checkY_H) tensor A_cap_defect ~= 1",
+    "combined_anomaly_line_identity": "A_bare(U) * WCS^s_(Lambda,checkY_H)(U) * A_cap_defect(U) = 1",
+    "combined_anomaly_line_trivialized": false,
+    "complete_theory": false,
+    "conditional_SU2R_results_globalized": false,
+    "conditional_Z2_SU2R_coefficients_over_96": [
+      4,
+      21,
+      -25
+    ],
+    "conditional_Z2_projection_scope": "gauge and flavor curvatures are set to zero; this is only the (nu,rho,p1) projection, not the complete parent polynomial",
+    "conditional_Z4_coefficients_over_192": [
+      -24,
+      -24,
+      -196,
+      -23,
+      303,
+      -132
+    ],
+    "conditional_Z4_projection_scope": "standard induced branch, V71 charged plus Delta=-10 neutral ledger, and gauge/flavor curvatures set to zero; this bulk-plus-neutral projection excludes inherited V70 and new F71 localized fields and is not the full action",
+    "current_Spin11_action_status": "REJECTED",
+    "equal_corner_profile_is_an_accepted_current_action": false,
+    "minimum_neutral_chiral_compactification_zero_modes": 10,
+    "naive_smooth_GS_class_has_ordinary_integral_isotropy_restriction": false,
+    "nontrivial_unchanged_tensor_lattice_twist_exists": false,
+    "reason": "V77 closes the scalar-determinant shortcut and replaces it with the correct anomaly-line problem.  The square-torus Z4 space group has abelianization Z4 x Z2 and eight flat characters; therefore smooth and order-two data alone cannot identify the order-four fixed-point traces or the relative two-corner profile.  For the complete but unaccepted F71 local ledger, V71's standard untwisted lift reproduces the V75-V76 equal-corner residue exactly, so their odd-quarter no-go remains valid for that bound profile.  It is not the unmodified V70 action: V71's provisional qL lifts on the inherited V70 X/Xbar/S0 fields shift the provisional z00 normal-gravity vector to (-28,-20)/192 while z11 remains (-24,-24)/192, and their mixed normal-gauge vector also stays uncanceled.  No accepted action scenario supplies all raw BRST characters or a global H-orbibundle.  In addition, the internal KK product has ten neutral zero eigenvalues at zero external momentum; this does not assert a zero determinant on every external background.  The self-dual sector needs a quadratic refinement and WuCS data.  More sharply, the ordinary smooth GS class fails the integral restriction test at both Z4 corners and the Z2 orbit, while a,b rigidly forbid a nontrivial unchanged-action tensor-lattice twist.  A combined H-cocycle is still possible but unconstructed.  On the standard induced raw branch, retaining the SU2R root also yields the conditional Z2 polynomial rho(4 rho^2+21 nu^2-25 p1)/96; V71's normal-only Z2 zero remains correct, but is not the full parent answer.  The present action remains rejected; the research program remains viable through an explicit equivariant anomaly-line plus GS/WuCS trivialization.",
+    "same_action_microscopic_completion_found": false,
+    "selected_candidate": "F77E_EQUIVARIANT_ANOMALY_LINE_WUCS_TRIVIALIZATION",
+    "selected_candidate_accepted": false,
+    "tensor_lattice_basis_determinant": -6
+  },
+  "version": "V77"
+}

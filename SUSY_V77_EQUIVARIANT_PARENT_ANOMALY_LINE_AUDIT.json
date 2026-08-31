@@ -1,0 +1,932 @@
+{
+  "BRST_and_global_input_contract": {
+    "all_required_inputs_present": false,
+    "full_parent_anomaly_line_computable": false,
+    "index_level_is_not_determinant_level": "the V71 virtual Rarita--Weyl bundle fixes a perturbative index but does not specify the individual kinetic operators, ghost determinants, zero-mode measures or boundary domains",
+    "inputs": [
+      {
+        "evidence": "V71/V76",
+        "id": "D1",
+        "present": true,
+        "required_input": "square T2/Z4 fixed strata and space-group relations"
+      },
+      {
+        "evidence": "V69-V71",
+        "id": "D2",
+        "present": true,
+        "required_input": "smooth Spin(11) spectrum, U lattice and factorized I8"
+      },
+      {
+        "evidence": "V71",
+        "id": "D3",
+        "present": true,
+        "required_input": "charged-sector aggregate Z4 perturbative characters"
+      },
+      {
+        "evidence": "V71",
+        "id": "D4",
+        "present": true,
+        "required_input": "local 266-neutral hyper matrix/isotropy witness"
+      },
+      {
+        "evidence": "not constructed",
+        "id": "D5",
+        "present": false,
+        "required_input": "global Spin-SU2R-Sp266-Spin11 H-orbibundle"
+      },
+      {
+        "evidence": "not specified",
+        "id": "D6",
+        "present": false,
+        "required_input": "raw gravitino and local-supersymmetry ghost space-group characters"
+      },
+      {
+        "evidence": "not specified",
+        "id": "D7",
+        "present": false,
+        "required_input": "raw tensorino, tensor-gauge ghost and reducibility complex"
+      },
+      {
+        "evidence": "not specified",
+        "id": "D8",
+        "present": false,
+        "required_input": "Yang--Mills/diffeomorphism/local-Lorentz gauge-fixed operators and ghosts"
+      },
+      {
+        "evidence": "only partial aggregate data",
+        "id": "D9",
+        "present": false,
+        "required_input": "field-by-field reality, chirality and preserved-supercharge lift"
+      },
+      {
+        "evidence": "lattice automorphism is forced to identity but polarization/refinement are absent",
+        "id": "D10",
+        "present": false,
+        "required_input": "self-dual polarization, quadratic refinement and orbifold tensor lift"
+      },
+      {
+        "evidence": "at least ten zero modes remain",
+        "id": "D11",
+        "present": false,
+        "required_input": "zero-mode measure or full-rank supersymmetric mass trivialization"
+      },
+      {
+        "evidence": "not constructed",
+        "id": "D12",
+        "present": false,
+        "required_input": "fixed-stratum caps, APS projectors and junction orientation"
+      },
+      {
+        "evidence": "not selected",
+        "id": "D13",
+        "present": false,
+        "required_input": "regulator/reference determinant compatible with all symmetries"
+      },
+      {
+        "evidence": "smooth parent only",
+        "id": "D14",
+        "present": false,
+        "required_input": "equivariant GS/WuCS differential cocycle and flat Dai--Freed phase"
+      },
+      {
+        "evidence": "neither string sector nor restricted bordism domain is specified",
+        "id": "D15",
+        "present": false,
+        "required_input": "self-dual-string/tadpole cancellation PD[Y] plus worldsheet anomaly inflow, or an explicit restriction to source-free [Y]=0 backgrounds"
+      }
+    ],
+    "missing_ids": [
+      "D5",
+      "D6",
+      "D7",
+      "D8",
+      "D9",
+      "D10",
+      "D11",
+      "D12",
+      "D13",
+      "D14",
+      "D15"
+    ],
+    "nontrivial_tensor_lattice_twist_preserving_a_and_b_exists": false,
+    "orbifold_tensor_polarization_and_quadratic_refinement_constructed": false,
+    "present_ids": [
+      "D1",
+      "D2",
+      "D3",
+      "D4"
+    ],
+    "standard_self_dual_lift": "the gravity B+ and tensor B- equivariant signature complexes cancel pointwise",
+    "status": "FAIL_CLOSED_PARENT_QUANTUM_INPUT_CONTRACT"
+  },
+  "V71_parent_index_inventory": {
+    "V76_theorem_scope": {
+      "V76_retracted": false,
+      "a_future_different_profile_requires_complete_recomputation": true,
+      "odd_quarter_no_go_remains_exact_for_the_bound_equal_corner_parent_profile": true
+    },
+    "basis": "coefficients of (nu^3, nu p1(T4)) over 192 at each Z4 corner",
+    "blocks_over_192": {
+      "charged_gaugino_plus_three_11_hypers": [
+        44,
+        4
+      ],
+      "gauge_fixed_gravitino_plus_tensorino": [
+        42,
+        -18
+      ],
+      "neutral_266_at_Delta_minus10": [
+        -110,
+        -10
+      ]
+    },
+    "formal_character_sensitivity_probes": {
+      "accepted_as_supersymmetric_lifts": false,
+      "all_order4_characters_common_sign_flipped": {
+        "different_from_standard": true,
+        "reduced_coefficients": [
+          "1/8",
+          "1/8"
+        ],
+        "sum_over_192": [
+          24,
+          24
+        ]
+      },
+      "gravity_tensor_order4_common_sign_flipped": {
+        "different_from_standard": true,
+        "reduced_coefficients": [
+          "-9/16",
+          "1/16"
+        ],
+        "sum_over_192": [
+          -108,
+          12
+        ]
+      },
+      "use": "demonstrates dependence on raw nonidentity characters, not new physics candidates"
+    },
+    "standard_untwisted_lift": {
+      "is_the_parent_input_used_by_V75_V76": true,
+      "matches_V71_total_polynomial": true,
+      "polynomial": "-(1/8) nu (nu^2+p1(T4))",
+      "reduced_coefficients": [
+        "-1/8",
+        "-1/8"
+      ],
+      "sum_over_192": [
+        -24,
+        -24
+      ],
+      "two_equal_corners": "-(1/4) nu (nu^2+p1(T4))"
+    },
+    "status": "EXACT_V71_COMPONENT_RECONSTRUCTION_AND_CHARACTER_SENSITIVITY"
+  },
+  "anomaly_line_trivialization_target": {
+    "categorical_trivialization_target": "a specified natural symmetric-monoidal isomorphism A_bare tensor WCS^s_(Lambda,checkY_H) tensor A_cap_defect ~= 1",
+    "closed_seven_manifold_target": "A_bare(U) * WCS^s_(Lambda,checkY_H)(U) * A_cap_defect(U) = 1",
+    "current_ordinary_characteristic_class": {
+      "Y": [
+        "lambda-2c2(Spin11)",
+        "lambda+c2(Spin11)"
+      ],
+      "orbifold_restriction_exists": false,
+      "two_Y": [
+        "p1(T)-2p1(E11)",
+        "p1(T)+p1(E11)"
+      ]
+    },
+    "domain_explicitly_restricted_to_source_free_Y_zero_backgrounds": false,
+    "identity_proved_on_required_domain": false,
+    "notation_warning": "nu (also called x in V71) is c1 of the normal U(1)_L bundle; it is not the degree-four Wu class sometimes denoted nu_4",
+    "quantum_object": "the tensor product of the fermionic Dai--Freed anomaly line, the self-dual/Wu--Chern--Simons line and every fixed-stratum cap/defect line",
+    "regulator_scope": "a regulator may choose a section/reference phase inside a defined anomaly line; it cannot manufacture the absent integral differential cocycle",
+    "required_domain": "a to-be-defined equivariant/stratified H_Gamma bordism category: six-dimensional objects and seven-dimensional bordisms with caps, junctions and differential cocycles, compatibly with cutting and gluing",
+    "self_dual_string_tadpole_condition": "either cancel PD[Y] in the appropriate equivariant/relative H_2(-;Lambda) group with self-dual strings and their worldsheet anomaly theory/inflow, or restrict the domain explicitly to [Y]=0",
+    "smooth_bordism_shortcut_invalid_for_current_target": "Omega_7^Spin(BSpin11)=0 concerns the smooth Spin x Spin11 problem, not the combined Spin-SU2R-Sp266-Spin11 orbifold H_Gamma structure",
+    "smooth_parent_formula_only": {
+      "bare_phase": "(1/(2 pi i)) log A_bare = (1/2) xi_(R') + (sign(Lambda)/4) xi_sigma",
+      "scope": "these are the smooth Monnier--Moore cancellation formulas; they do not construct the missing orbifold restriction checkY_H or caps",
+      "smooth_WCS_counterphase": "(1/(2 pi i)) log WCS^s = -(1/2) integral_W Omega(Y,Y) + sigma_(H^4(W,boundary W;Lambda))/8",
+      "virtual_fermion_bundle": "R'=(Vec(Spin(7))-1) tensor 1 -(T-1) tensor 1 + Ad(G)-R_H",
+      "when_U_bounds_W": "(1/(2 pi i)) log A_bare = (1/2) integral_W Omega(Y,Y) - sigma_(H^4(W,boundary W;Lambda))/8"
+    },
+    "status": "EXACT_COMPLETION_TARGET_NOT_YET_CONSTRUCTED",
+    "string_worldsheet_anomaly_sector_constructed": false
+  },
+  "artifact_hashes": {
+    "generator_sha256": "84cad52af9e96ffa305be6a3c482f01923efd737b22554fcbdc82517f1443200",
+    "line_ending_policy": "SHA256 after CRLF-to-LF normalization",
+    "test_sha256": "f8694afd84013dd1da47dc06586acb3dc98a555abc236e29146dd539b7cc4ed6"
+  },
+  "candidate_adjudication": {
+    "F77A_V71_POLYNOMIAL_AS_FULL_DETERMINANT": "REJECTED_CATEGORY_ERROR",
+    "F77B_UNPRIMED_NUMERIC_PARENT_DETERMINANT": "REJECTED_EXACT_ZERO_MODES",
+    "F77C_ASSUME_STANDARD_UNTWISTED_RAW_CHARACTERS": "CONDITIONAL_SCAFFOLD_ONLY",
+    "F77D_FLAT_CHARACTER_REPAIR": "DIAGNOSTIC_NOT_A_COMPLETION",
+    "F77E_EQUIVARIANT_ANOMALY_LINE_WUCS_TRIVIALIZATION": "SELECTED_OPEN"
+  },
+  "candidate_matrix": [
+    {
+      "accepted": false,
+      "id": "F77A_V71_POLYNOMIAL_AS_FULL_DETERMINANT",
+      "reason": "a local curvature polynomial is not a determinant-line section or its trivialization",
+      "result": "REJECTED_CATEGORY_ERROR"
+    },
+    {
+      "accepted": false,
+      "id": "F77B_UNPRIMED_NUMERIC_PARENT_DETERMINANT",
+      "reason": "the bound internal operator has ten zero eigenvalues at zero external momentum, while no external background, zero-mode measure or mass is fixed",
+      "result": "REJECTED_EXACT_ZERO_MODES"
+    },
+    {
+      "accepted": false,
+      "id": "F77C_ASSUME_STANDARD_UNTWISTED_RAW_CHARACTERS",
+      "reason": "reproduces V71 but omits field-by-field BRST, cap and global-H proof",
+      "result": "CONDITIONAL_SCAFFOLD_ONLY"
+    },
+    {
+      "accepted": false,
+      "id": "F77D_FLAT_CHARACTER_REPAIR",
+      "reason": "character twists expose sensitivity but are not accepted supersymmetric actions",
+      "result": "DIAGNOSTIC_NOT_A_COMPLETION"
+    },
+    {
+      "accepted": false,
+      "id": "F77E_EQUIVARIANT_ANOMALY_LINE_WUCS_TRIVIALIZATION",
+      "reason": "correct quantum object, but its BRST, zero-mode, tensor, cap and cocycle inputs are absent",
+      "result": "SELECTED_OPEN"
+    }
+  ],
+  "conditional_order2_SU2R_index_density": {
+    "Z4_restricted_bulk_crosscheck": {
+      "accepted_as_global_result": false,
+      "basis_over_192": [
+        "nu^3",
+        "nu p1(T4)",
+        "rho^3",
+        "rho p1(T4)",
+        "rho nu^2",
+        "rho^2 nu"
+      ],
+      "charged_plus_neutral_hyper_coefficients_over_192": [
+        -121,
+        -11,
+        0,
+        0,
+        0,
+        0
+      ],
+      "coefficients_over_192": [
+        -24,
+        -24,
+        -196,
+        -23,
+        303,
+        -132
+      ],
+      "gaugino_coefficients_over_192": [
+        55,
+        5,
+        -180,
+        45,
+        195,
+        -60
+      ],
+      "gaugino_nu_c2R": "5/16",
+      "gravity_tensorino_coefficients_over_192": [
+        42,
+        -18,
+        -16,
+        -68,
+        108,
+        -72
+      ],
+      "gravity_tensorino_nu_c2R": "3/8",
+      "inherited_bulk_nu_c2R": "11/16",
+      "orientation_rule": "rho-odd terms reverse under rho -> -rho; rho^2 nu is invariant",
+      "polynomial": "(-24 nu^3-24 nu p1-196 rho^3-23 rho p1+303 rho nu^2-132 rho^2 nu)/192",
+      "rho2_nu_equals_11_over_16_nu_c2R": true,
+      "rho_zero_reproduces_V71_standard_normal_polynomial": true,
+      "scope": "standard induced branch, V71 charged plus Delta=-10 neutral ledger, and gauge/flavor curvatures set to zero; this bulk-plus-neutral projection excludes inherited V70 and new F71 localized fields and is not the full action"
+    },
+    "accepted_as_regulator_complete_parent_result": false,
+    "assumption_boundary": "the coefficient arithmetic is exact for the displayed standard induced Rarita/ghost/tensor branch, but that branch has not been derived from a global BRST/BV complex or H_Gamma orbibundle",
+    "conventions": {
+      "nu": "c1(N), the remnant normal U(1)_L root",
+      "orientation": "rho -> -rho reverses the displayed Z2 polynomial",
+      "p": "p1(T4)",
+      "rho": "surviving SU(2)_R Cartan root, with c2(R)=-rho^2"
+    },
+    "gravity_tensorino": {
+      "coefficients_over_96_rho3_rho_nu2_rho_p1": [
+        0,
+        24,
+        -24
+      ],
+      "polynomial": "rho (nu^2-p1(T4))/4"
+    },
+    "locus": "the single z10_z01 Z2 orbifold orbit",
+    "opposite_chirality_gaugino": {
+      "coefficients_over_96_rho3_rho_nu2_rho_p1": [
+        4,
+        -3,
+        -1
+      ],
+      "polynomial": "rho^3/24-rho nu^2/32-rho p1(T4)/96"
+    },
+    "other_blocks_under_same_branch": {
+      "hyperini": "SU2R singlets, so they contribute no rho-dependent class",
+      "self_dual_forms": "B+ and B- cancel under the identity tensor lift"
+    },
+    "projection_scope": "gauge and flavor curvatures are set to zero; this is only the (nu,rho,p1) projection, not the complete parent polynomial",
+    "relation_to_V71": {
+      "V71_full_parent_SU2R_dependent_Z2_polynomial_was_computed": false,
+      "V71_normal_only_Z2_coefficients_nu3_and_nu_p1_remain_zero": true,
+      "correction": "the order-two orbit is empty only after projecting to the normal-only nu^3 and nu p1 basis; the displayed restricted parent projection is nonzero on the conditional branch, while the complete polynomial remains uncomputed"
+    },
+    "standard_induced_branch": {
+      "SU2R_holonomy": "U_R^-2=diag(i,-i)",
+      "SU2R_phase_exponents_mod8": {
+        "U_R_inverse": [
+          1,
+          7
+        ],
+        "U_R_inverse_squared": [
+          2,
+          6
+        ],
+        "U_R_minus2_expected": [
+          2,
+          6
+        ],
+        "first_eigenline_root": "+rho"
+      },
+      "Spin11_adjoint_trace": "27-28=-1",
+      "Z4_Z2_root_assignment_consistent": true,
+      "compatible_Z4_holonomy": "U_R^-1=diag(zeta,zeta^-1), zeta=exp(i pi/4), so (U_R^-1)^2=U_R^-2 with +rho on the first eigenline",
+      "complex_Z2_sums": [
+        "+1/(4 cosh(nu/2))",
+        "-1/(4 cosh(nu/2))"
+      ],
+      "isotropy_element": "gamma2=t1 A^2",
+      "normal_fixed_factor": "K=-i/(2 cosh(nu/2))",
+      "physical_SMW_half_character": "F_R=sinh(rho)/(4 cosh(nu/2))",
+      "rarita_virtual_character": "ch_gamma(T_C M6-2)=2+p+2 cosh(nu+i pi)=p-nu^2+...",
+      "single_Z2_orbit_normalization": "2 covering fixed points times 1/4 = 1/2"
+    },
+    "status": "CONDITIONAL_EXACT_EQUIVARIANT_INDEX_DENSITY_NEW_OBLIGATION",
+    "total": {
+      "coefficients_over_96_rho3_rho_nu2_rho_p1": [
+        4,
+        21,
+        -25
+      ],
+      "nonzero_as_formal_polynomial": true,
+      "polynomial": "rho (4 rho^2+21 nu^2-25 p1(T4))/96"
+    },
+    "use": "adds an SU2R-dependent order-two consistency condition to the combined-H anomaly-line construction; it neither repairs nor closes G1"
+  },
+  "core_sha256": "fa54bc8ad2ed0991bb7923d6ef7d2da80505e27673d32d22c814369df7c152bb",
+  "date": "2026-08-31",
+  "fixed_point_identifiability_theorem": {
+    "conclusion": "the V71 smooth polynomial and normal-only order-two screen do not uniquely define the z00/z11 determinant-line curvature or holonomy; retaining SU2R also exposes a conditional order-two class",
+    "flat_character_twist": "rho_B(h) -> chi(h) rho_B(h)",
+    "identity_class_unchanged": true,
+    "nonidentity_fixed_point_traces_can_change": true,
+    "not_a_no_go_for": "an explicit field-by-field supersymmetric BRST lift that selects one character row and completes the global anomaly trivialization",
+    "order4_equal_vs_opposite_profile_can_change": true,
+    "schematic_localization_rule": "a nonidentity fixed-point contribution is the universal normal Lefschetz factor times the equivariant character of the field/BRST block",
+    "smooth_six_dimensional_I8_unchanged": true,
+    "status": "EXACT_NONIDENTIFIABILITY_FROM_SMOOTH_DATA_ALONE"
+  },
+  "gate_ledger": {
+    "G1": "OPEN",
+    "G2": "OPEN",
+    "G3": "OPEN",
+    "G4": "OPEN",
+    "G5": "OPEN",
+    "G6": "OPEN",
+    "G7": "OPEN",
+    "G8": "OPEN"
+  },
+  "lineage": {
+    "V70_route_core": "3e7b8e53916fbbc05bdcdf9632bcf4359aa4888b037df775c37d8d7d2551b228",
+    "V71_route_core": "0162828ebd2b1e28d4fcbcf4ea1e6c61178d305cec79abd6d36a55719bb0f1ea",
+    "V76_master_core": "202b5c000d2a540179419980f3daac4896fe340670787933cebd8d27943c5247",
+    "V76_route_core": "5c971c7730d8b2ff90f60df4791381517edc59a2c30600aeeb476baf5ef48e1a",
+    "V76_selected_candidate": "F76_FULL_EQUIVARIANT_PARENT_DETERMINANT",
+    "supersession_scope": "refines the selected determinant target to the correct anomaly-line object; it does not alter V76's bound equal-corner odd-quarter theorem"
+  },
+  "open_obligations": [
+    "select and construct one accepted same-action parent field, VEV and localized profile, explicitly deciding whether the F71 compensators and provisional qL lifts exist",
+    "write the field-by-field Spin-SU2R-gauge-flavor space-group lift, including translation characters and every BRST ghost",
+    "construct the global Spin-SU2R-Sp266-Spin11 H-orbibundle and its fixed-stratum restrictions",
+    "derive or reject the conditional rho(4 rho^2+21 nu^2-25 p1)/96 order-two polynomial from the complete BRST/BV lift",
+    "choose gauge-fixing operators and elliptic boundary domains for gravitino, Yang--Mills, tensor and ghost complexes",
+    "supply a zero-mode measure or honest supersymmetric mass/stabilization operator for the ten neutral chiral modes",
+    "construct the self-dual quadratic refinement, tensor polarization and equivariant GS/WuCS differential cocycle",
+    "cancel the self-dual-string charge/tadpole with a worldsheet anomaly-inflow sector, or explicitly restrict the bordism domain to source-free [Y]=0 backgrounds",
+    "pin caps, APS projectors, regulator and reference eta invariant, then compute curvature and holonomy of the combined anomaly line",
+    "only if that line is canonically trivialized, recompute the localized residue and reapply the V74-V76 repair classification"
+  ],
+  "parent_action_scenario_audit": {
+    "V70_branch_status": "EXACT_INTEGER_PHASE_M301_CLASSICAL_ACTION_IMPROVED_BRANCH",
+    "V70_charged_hyper_intrinsic_phases": {
+      "A_m3": 3,
+      "B_m0": 0,
+      "C_m1": 1
+    },
+    "V70_full_local_supergravity_and_GS_status": "OPEN",
+    "V70_localized_four_dimensional_spectrum": [
+      "three localized 16 families including N^c",
+      "one H_u+H_d vectorlike doublet pair",
+      "one local X(+10)+Xbar(-10) vectorlike rank pair",
+      "gauge singlets do not enter the gauge ledger"
+    ],
+    "V70_selected_branch": "integer_m301_dynamical_reduction",
+    "V71_neutral_and_local_repair_status": {
+      "accepted": false,
+      "candidate": "F71",
+      "neutral_witness_zero_modes": 10,
+      "same_action_complete": false
+    },
+    "V71_provisional_lifts_on_inherited_V70_z00_fields_shift": {
+      "Q1": "-1/2",
+      "Q3": "-1/8",
+      "U1L_X_squared": "-100",
+      "coefficients_over_192_nu3_nu_p1": [
+        -4,
+        4
+      ],
+      "derivation": "(32 Q3,-8 Q1) over 192",
+      "fermion_normal_charges": [
+        "-1/2",
+        "-1/2",
+        "1/2"
+      ],
+      "fields": [
+        "X_plus10",
+        "Xbar_minus10",
+        "S0"
+      ],
+      "normal_lift_provenance": "F71 provisional qL assignments in V71, applied to fields inherited from V70; V70 itself did not define these continuous normal lifts",
+      "z11_shift": [
+        0,
+        0
+      ]
+    },
+    "accepted_full_parent_action_exists": false,
+    "all_later_routes_unaccepted": true,
+    "later_route_acceptance_rows": [
+      {
+        "accepted": false,
+        "route_id": "A60"
+      },
+      {
+        "accepted": false,
+        "route_id": "B75"
+      },
+      {
+        "accepted": false,
+        "route_id": "C"
+      },
+      {
+        "accepted": false,
+        "route_id": "B76"
+      }
+    ],
+    "scenarios": {
+      "V71_neutral_witness_without_F71_local_compensators": {
+        "accepted_action": false,
+        "equal_corner_profile": false,
+        "use": "exposes the inherited V70 localized shift; this hybrid is not a globally completed action",
+        "z00_over_192": [
+          -28,
+          -20
+        ],
+        "z11_over_192": [
+          -24,
+          -24
+        ]
+      },
+      "complete_F71_local_perturbative_ledger": {
+        "V76_equal_corner_theorem_applies": true,
+        "accepted_action": false,
+        "aligned_mixed_normal_gauge_vector_each_corner": [
+          "-1/4",
+          "-10"
+        ],
+        "equal_corner_profile": true,
+        "same_action_complete": false,
+        "z00_over_192": [
+          -24,
+          -24
+        ],
+        "z11_over_192": [
+          -24,
+          -24
+        ]
+      },
+      "unmodified_V70": {
+        "full_parent_profile_defined": false,
+        "provisional_mixed_normal_gauge_vectors": {
+          "z00": [
+            "-1/4",
+            "-60"
+          ],
+          "z11": [
+            "-1/4",
+            "40"
+          ]
+        },
+        "reason": "gravity/tensor/neutral equivariance and the global quantum action are open, and V71 rejects the mixed normal-gauge ledger"
+      }
+    },
+    "status": "EXACT_PARENT_ACTION_SCENARIO_FREEZE_AND_PROFILE_SCOPE_CORRECTION",
+    "terminology_rule": "[-24,-24] at both corners is the bound complete-F71 equal-corner profile, not the unmodified V70 action or an accepted full parent determinant"
+  },
+  "primary_sources": [
+    {
+      "id": "dai_freed_1994",
+      "title": "Eta-Invariants and Determinant Lines",
+      "url": "https://arxiv.org/abs/hep-th/9405012",
+      "use": "eta invariants with boundary are determinant-line elements; variation, holonomy and gluing"
+    },
+    {
+      "id": "von_gersdorff_2006",
+      "title": "Anomalies on Six Dimensional Orbifolds",
+      "url": "https://arxiv.org/abs/hep-th/0612212",
+      "use": "bulk-fermion contributions to fixed-point anomalies on six-dimensional Zn orbifolds"
+    },
+    {
+      "id": "zhang_2026",
+      "title": "Perturbative Anomaly Inflow on Orbifolds",
+      "url": "https://arxiv.org/abs/2608.23326",
+      "use": "equivariant APS fixed-point density as an orbifold anomaly polynomial"
+    },
+    {
+      "id": "von_gersdorff_quiros_2003",
+      "title": "Localized anomalies in orbifold gauge theories",
+      "url": "https://arxiv.org/abs/hep-th/0305024",
+      "use": "path-integral localized anomalies with Scherk--Schwarz boundary data and GS inflow"
+    },
+    {
+      "id": "monnier_2011",
+      "title": "The global gravitational anomaly of the self-dual field theory",
+      "url": "https://arxiv.org/abs/1110.4639",
+      "use": "self-dual partition/anomaly line and its quadratic-refinement data"
+    },
+    {
+      "id": "monnier_2013",
+      "title": "The global anomaly of the self-dual field in general backgrounds",
+      "url": "https://arxiv.org/abs/1309.6642",
+      "use": "self-dual anomaly line in backgrounds with gauge fields and Wu-class refinements"
+    },
+    {
+      "id": "monnier_2016",
+      "title": "Topological field theories on manifolds with Wu structures",
+      "url": "https://arxiv.org/abs/1607.01396",
+      "use": "seven-dimensional Wu--Chern--Simons anomaly theories and quadratic refinements"
+    },
+    {
+      "id": "monnier_moore_2018",
+      "title": "Remarks on the Green-Schwarz terms of six-dimensional supergravity theories",
+      "url": "https://arxiv.org/abs/1808.01334",
+      "use": "smooth-spin six-dimensional GS/WuCS construction, charge lattice and characteristic element; not an orbifold theorem"
+    },
+    {
+      "id": "witten_yonekura_2019",
+      "title": "Anomaly Inflow and the eta-Invariant",
+      "url": "https://arxiv.org/abs/1909.08775",
+      "use": "regulated fermion phases as eta-invariant anomaly inflow"
+    },
+    {
+      "id": "erler_1993",
+      "title": "Anomaly Cancellation in Six Dimensions",
+      "url": "https://arxiv.org/abs/hep-th/9304104",
+      "use": "smooth six-dimensional multiplet anomaly polynomial and H-V+29T relation"
+    },
+    {
+      "id": "alvarez_gaume_witten_1984",
+      "title": "Gravitational Anomalies",
+      "url": "https://doi.org/10.1016/0550-3213(84)90066-X",
+      "use": "gauge-fixed Rarita complex, reality normalization and chiral gravitational anomaly indices"
+    },
+    {
+      "id": "riccioni_2001",
+      "title": "All couplings of minimal six-dimensional supergravity",
+      "url": "https://arxiv.org/abs/hep-th/0101074",
+      "use": "six-dimensional (1,0) gravity, tensor, vector and hypermultiplet field content"
+    }
+  ],
+  "schema": "susy_v77_equivariant_parent_anomaly_line_audit_v1",
+  "source_manifest": {
+    "catalog_sha256": "3381b3f311e30d46ba7999f1e6f7a28accdc39e7ece8676de8300f5f400ff0e2",
+    "count": 12,
+    "ids": [
+      "dai_freed_1994",
+      "von_gersdorff_2006",
+      "zhang_2026",
+      "von_gersdorff_quiros_2003",
+      "monnier_2011",
+      "monnier_2013",
+      "monnier_2016",
+      "monnier_moore_2018",
+      "witten_yonekura_2019",
+      "erler_1993",
+      "alvarez_gaume_witten_1984",
+      "riccioni_2001"
+    ],
+    "kind": "primary_sources_only"
+  },
+  "space_group_flat_character_audit": {
+    "abelianization": "Z4 x Z2",
+    "abelianization_derivation": [
+      "in a one-dimensional character U=V",
+      "the second conjugation relation gives V=U^-1",
+      "therefore U=V=+/-1 while A is an independent fourth root of unity"
+    ],
+    "character_count": 8,
+    "characters": [
+      {
+        "A": "1",
+        "A2": "1",
+        "U": "1",
+        "UA": "1",
+        "UA2": "1",
+        "V": "1",
+        "corner_relation": "same",
+        "id": "chi_m0_tp",
+        "identity": "1",
+        "real_character": true,
+        "rotation_exponent_mod4": 0,
+        "translation_sign": 1,
+        "z00_character": "1",
+        "z11_character": "1",
+        "z2_character": "1"
+      },
+      {
+        "A": "1",
+        "A2": "1",
+        "U": "-1",
+        "UA": "-1",
+        "UA2": "-1",
+        "V": "-1",
+        "corner_relation": "opposite",
+        "id": "chi_m0_tm",
+        "identity": "1",
+        "real_character": true,
+        "rotation_exponent_mod4": 0,
+        "translation_sign": -1,
+        "z00_character": "1",
+        "z11_character": "-1",
+        "z2_character": "-1"
+      },
+      {
+        "A": "i",
+        "A2": "-1",
+        "U": "1",
+        "UA": "i",
+        "UA2": "-1",
+        "V": "1",
+        "corner_relation": "same",
+        "id": "chi_m1_tp",
+        "identity": "1",
+        "real_character": false,
+        "rotation_exponent_mod4": 1,
+        "translation_sign": 1,
+        "z00_character": "i",
+        "z11_character": "i",
+        "z2_character": "-1"
+      },
+      {
+        "A": "i",
+        "A2": "-1",
+        "U": "-1",
+        "UA": "-i",
+        "UA2": "1",
+        "V": "-1",
+        "corner_relation": "opposite",
+        "id": "chi_m1_tm",
+        "identity": "1",
+        "real_character": false,
+        "rotation_exponent_mod4": 1,
+        "translation_sign": -1,
+        "z00_character": "i",
+        "z11_character": "-i",
+        "z2_character": "1"
+      },
+      {
+        "A": "-1",
+        "A2": "1",
+        "U": "1",
+        "UA": "-1",
+        "UA2": "1",
+        "V": "1",
+        "corner_relation": "same",
+        "id": "chi_m2_tp",
+        "identity": "1",
+        "real_character": true,
+        "rotation_exponent_mod4": 2,
+        "translation_sign": 1,
+        "z00_character": "-1",
+        "z11_character": "-1",
+        "z2_character": "1"
+      },
+      {
+        "A": "-1",
+        "A2": "1",
+        "U": "-1",
+        "UA": "1",
+        "UA2": "-1",
+        "V": "-1",
+        "corner_relation": "opposite",
+        "id": "chi_m2_tm",
+        "identity": "1",
+        "real_character": true,
+        "rotation_exponent_mod4": 2,
+        "translation_sign": -1,
+        "z00_character": "-1",
+        "z11_character": "1",
+        "z2_character": "-1"
+      },
+      {
+        "A": "-i",
+        "A2": "-1",
+        "U": "1",
+        "UA": "-i",
+        "UA2": "-1",
+        "V": "1",
+        "corner_relation": "same",
+        "id": "chi_m3_tp",
+        "identity": "1",
+        "real_character": false,
+        "rotation_exponent_mod4": 3,
+        "translation_sign": 1,
+        "z00_character": "-i",
+        "z11_character": "-i",
+        "z2_character": "-1"
+      },
+      {
+        "A": "-i",
+        "A2": "-1",
+        "U": "-1",
+        "UA": "i",
+        "UA2": "1",
+        "V": "-1",
+        "corner_relation": "opposite",
+        "id": "chi_m3_tm",
+        "identity": "1",
+        "real_character": false,
+        "rotation_exponent_mod4": 3,
+        "translation_sign": -1,
+        "z00_character": "-i",
+        "z11_character": "i",
+        "z2_character": "1"
+      }
+    ],
+    "fixed_point_generators": {
+      "source": "the same A, UA and translation-times-A^2 convention used by V70-V71",
+      "z00": "A",
+      "z10_z01_orbit": "UA^2",
+      "z11": "UA"
+    },
+    "presentation": [
+      "A^4=1",
+      "[U,V]=1",
+      "A U A^-1=V",
+      "A V A^-1=U^-1"
+    ],
+    "scope": "the eight rows are flat-character sensitivity probes.  They are not eight accepted supergravity lifts; the full action must select or exclude them using preserved-supercharge, reality and BRST constraints",
+    "status": "EXACT_SPACE_GROUP_ABELIANIZATION_AND_FLAT_CHARACTER_TABLE",
+    "theorem": "smooth identity-class data and the actual UA^2 order-two screen cannot determine the order-four fixed-point traces; field-by-field space-group lifts and their BRST/supersymmetry compatibility are independent inputs",
+    "two_exact_indistinguishability_witnesses": {
+      "order4_common_sign": {
+        "identity_and_z2_characters_equal": true,
+        "negative_profile": "chi_m2_tp gives (-1,-1)",
+        "positive_profile": "chi_m0_tp gives (1,1)"
+      },
+      "relative_corner_sign": {
+        "identity_and_z2_characters_equal": true,
+        "opposite_profile": "chi_m1_tm gives (z00,z11)=(i,-i)",
+        "same_profile": "chi_m0_tp gives (z00,z11)=(1,1)",
+        "scope": "complex diagnostic character; not asserted as a real supersymmetric lift"
+      }
+    }
+  },
+  "status": "V77_EQUIVARIANT_PARENT_ANOMALY_LINE_AUDIT__V70_V71_AND_V76_CORES_BOUND__T2_Z4_SPACE_GROUP_ABELIANIZATION_Z4_X_Z2_EXACT__EIGHT_FLAT_CHARACTERS_ENUMERATED__SMOOTH_AND_ORDER2_DATA_DO_NOT_FIX_ORDER4_TRACES_EXACT__V71_STANDARD_LIFT_EQUAL_CORNER_RESIDUE_REPRODUCED__TEN_NEUTRAL_CHIRAL_COMPACTIFICATION_ZERO_MODES_EXACT__SCALAR_PARENT_DETERMINANT_NOT_DEFINED__BRST_GHOST_SELF_DUAL_CAP_REGULATOR_AND_ZERO_MODE_TRIVIALIZATIONS_ABSENT__NAIVE_SMOOTH_GS_CLASS_FAILS_ALL_ORDINARY_ORBIFOLD_ISOTROPY_DIVISIBILITY_TESTS__UNCHANGED_TENSOR_LATTICE_TWIST_FORCED_IDENTITY__STANDARD_INDUCED_Z2_RAW_BRANCH_HAS_CONDITIONAL_SU2R_POLYNOMIAL__F76_TARGET_REFINED_TO_EQUIVARIANT_ANOMALY_LINE_PLUS_WUCS_TRIVIALIZATION__SELECTED_OPEN__G1_TO_G8_OPEN",
+  "tensor_lattice_and_isotropy_cocycle_audit": {
+    "a_and_b_span_the_two_dimensional_lattice_over_Q": true,
+    "all_ordinary_integral_restrictions_fail": true,
+    "anomaly_coefficients": {
+      "a": [
+        2,
+        2
+      ],
+      "b": [
+        2,
+        -1
+      ]
+    },
+    "automorphism_theorem": "any linear lattice automorphism fixing both independent vectors a and b is the identity; hence no nontrivial O(U;Z) tensor twist preserves the unchanged anomaly coefficients",
+    "determinant_of_a_b_basis_over_Q": -6,
+    "isotropy_rows": [
+      {
+        "doubling_image_each_coordinate": [
+          0,
+          2
+        ],
+        "isotropy": "Z4",
+        "locus": "z00",
+        "ordinary_integral_Y_exists": false,
+        "two_Y_mod_order": [
+          3,
+          2
+        ]
+      },
+      {
+        "doubling_image_each_coordinate": [
+          0,
+          2
+        ],
+        "isotropy": "Z4",
+        "locus": "z11",
+        "ordinary_integral_Y_exists": false,
+        "two_Y_mod_order": [
+          3,
+          2
+        ]
+      },
+      {
+        "doubling_image_each_coordinate": [
+          0
+        ],
+        "isotropy": "Z2",
+        "locus": "z10_z01",
+        "ordinary_integral_Y_exists": false,
+        "two_Y_mod_order": [
+          1,
+          1
+        ]
+      }
+    ],
+    "nontrivial_O_U_Z_twist_fixing_a_and_b_exists": false,
+    "ordinary_GS_WuCS_state_defined_on_current_naive_isotropy_data": false,
+    "regulator_can_supply_missing_integral_Y_class": false,
+    "scope": "this excludes only the naive Spin x Spin(11) pullback in H^4(BZn;Lambda) with constant coefficient lattice and unchanged a,b, together with any nontrivial lattice twist preserving a,b.  It does not exclude a combined H_Gamma shifted cocycle, a flat/torsion correction, a defect/cap/string source sector, changed isotropy data or a changed action with recomputed coefficients",
+    "smooth_string_charge_lattice": "U with Omega=[[0,1],[1,0]]",
+    "status": "EXACT_TENSOR_LATTICE_RIGIDITY_AND_ORDINARY_ISOTROPY_COCYCLE_NO_GO"
+  },
+  "terminal_decision": {
+    "V71_provisional_lifts_on_V70_fields_profile_is_unequal": true,
+    "V76_equal_corner_theorem_retracted": false,
+    "accepted_full_parent_action_exists": false,
+    "closed_gates": [],
+    "combined_anomaly_line_trivialized": false,
+    "conditional_SU2R_index_densities_promoted_to_global_parent_result": false,
+    "conditional_standard_branch_Z2_SU2R_polynomial_nonzero": true,
+    "equal_corner_profile_is_an_accepted_current_action": false,
+    "flat_character_table_complete": true,
+    "full_equivariant_anomaly_line_computed": false,
+    "honest_outcome": "V77 closes the scalar-determinant shortcut and replaces it with the correct anomaly-line problem.  The square-torus Z4 space group has abelianization Z4 x Z2 and eight flat characters; therefore smooth and order-two data alone cannot identify the order-four fixed-point traces or the relative two-corner profile.  For the complete but unaccepted F71 local ledger, V71's standard untwisted lift reproduces the V75-V76 equal-corner residue exactly, so their odd-quarter no-go remains valid for that bound profile.  It is not the unmodified V70 action: V71's provisional qL lifts on the inherited V70 X/Xbar/S0 fields shift the provisional z00 normal-gravity vector to (-28,-20)/192 while z11 remains (-24,-24)/192, and their mixed normal-gauge vector also stays uncanceled.  No accepted action scenario supplies all raw BRST characters or a global H-orbibundle.  In addition, the internal KK product has ten neutral zero eigenvalues at zero external momentum; this does not assert a zero determinant on every external background.  The self-dual sector needs a quadratic refinement and WuCS data.  More sharply, the ordinary smooth GS class fails the integral restriction test at both Z4 corners and the Z2 orbit, while a,b rigidly forbid a nontrivial unchanged-action tensor-lattice twist.  A combined H-cocycle is still possible but unconstructed.  On the standard induced raw branch, retaining the SU2R root also yields the conditional Z2 polynomial rho(4 rho^2+21 nu^2-25 p1)/96; V71's normal-only Z2 zero remains correct, but is not the full parent answer.  The present action remains rejected; the research program remains viable through an explicit equivariant anomaly-line plus GS/WuCS trivialization.",
+    "naive_smooth_GS_class_has_ordinary_integral_isotropy_restriction": false,
+    "nontrivial_unchanged_tensor_lattice_twist_exists": false,
+    "numeric_unprimed_parent_determinant_defined": false,
+    "same_action_microscopic_completion_found": false,
+    "selected_candidate": "F77E_EQUIVARIANT_ANOMALY_LINE_WUCS_TRIVIALIZATION",
+    "selected_candidate_accepted": false,
+    "space_group_abelianization_computed": true,
+    "standard_V71_residue_reproduced": true,
+    "theory_complete": false
+  },
+  "version": "V77",
+  "zero_mode_and_anomaly_line_audit": {
+    "F76_target_refinement": {
+      "new_label": "F77_EQUIVARIANT_ANOMALY_LINE_WUCS_TRIVIALIZATION",
+      "old_label": "F76_FULL_EQUIVARIANT_PARENT_DETERMINANT",
+      "reason": "zero modes and self-dual fields make a scalar determinant the wrong absolute object",
+      "same_action_completion_constructed": false
+    },
+    "correct_fermionic_object": "a section of the determinant/anomaly line, with a reduced nonzero-mode determinant only after a zero-mode measure or mass trivialization is specified",
+    "full_6D_determinant_identically_zero_on_every_external_background": false,
+    "global_mass_or_stabilization_lifting_all_zero_modes_constructed": false,
+    "minimum_neutral_chiral_zero_modes": 10,
+    "missing_trivializations": [
+      "zero-mode determinant-line basis, measure insertion or honest mass operator",
+      "gauge, diffeomorphism, tensor-gauge and local-supersymmetry BRST complexes",
+      "self-dual quadratic refinement and equivariant tensor polarization",
+      "APS/cap boundary condition and eta-invariant reference",
+      "global equivariant GS/WuCS differential cocycle"
+    ],
+    "numeric_full_parent_determinant_defined_by_current_action": false,
+    "ordinary_unprimed_determinant_is_nonzero_scalar": false,
+    "ordinary_unprimed_fermion_determinant": "not one universal number: the internal KK product has ten zero eigenvalues at zero external momentum, while a four-dimensional determinant depends on its external operator and background",
+    "ordinary_unprimed_internal_KK_determinant_at_zero_external_momentum": "0",
+    "reduced_determinant_phase_defined_by_current_action": false,
+    "self_dual_extension": "the tensor partition function contributes its own anomaly line and quadratic-refinement/Wu data rather than an ordinary Gaussian determinant",
+    "stabilization_evidence": "The symmetric QK target and local isotropy representation now exist explicitly, but their combined H-bundle has not been globalized over the orbifold and the ten neutral zero modes are not stabilized.",
+    "status": "EXACT_COMPACTIFICATION_ZERO_MODE_OBSTRUCTION_AND_CORRECT_QUANTUM_OBJECT",
+    "zero_mode_operator_scope": "the internal orbifold compactification/projector operator for the bound Delta=-10 V71 neutral witness"
+  }
+}
