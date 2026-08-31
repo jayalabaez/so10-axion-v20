@@ -1,0 +1,1307 @@
+{
+  "action_redesign": {
+    "accepted": false,
+    "exactly_removed_obstructions": [
+      "ordinary H^4(BZn;Lambda) divisibility failure at both Z4 corners and the Z2 orbit",
+      "canonical-flat-vacuum torsion Y tadpole within the selected discrete refinement",
+      "absence of a bosonic integral class with common-stratum curvature -nu A B",
+      "uncertainty whether even half-32 flavor space can represent the space group"
+    ],
+    "layers": [
+      "the frozen h=0 integrated Spin11 parent and V70 geometric rank-breaking sector",
+      "the explicit tadpole-free H78 differential GS characteristic candidate checkY78",
+      "the level-one bosonic common-stratum bridge with curvature -nu A B",
+      "a future curved-supergravity supersymmetric completion of the bridge and cap sectors"
+    ],
+    "obstructions_not_removed": [
+      "the bare-parent Dai--Freed phase has not selected or matched the discrete torsion refinement",
+      "shifted WuCS quadratic refinement and holonomy on H78 seven-bordisms",
+      "fermion, supersymmetry and BV/BRST descent to H78",
+      "physical caps, junctions and a curved off-shell supersymmetric bridge",
+      "localized endpoint anomaly and mass/relic completion for the h=0 action",
+      "all fixed-point characters and zero modes for every h>0 parent"
+    ],
+    "status": "SELECTED_MULTILAYER_STRUCTURAL_SCAFFOLD__NOT_AN_ACCEPTED_ACTION"
+  },
+  "artifact_hashes": {
+    "generator_sha256": "33d8573dbc8ed362f5f21df94f300d97f0005357255257b2aaa45afa6215d62c",
+    "line_ending_policy": "SHA256 after CRLF-to-LF normalization",
+    "test_sha256": "08a5ea695a7258c90aaf8c5d9a0cef74753c7f22108b10226a01f5f491c709ee"
+  },
+  "candidate_adjudication": {
+    "accepted_ids": [],
+    "selected_ids": [
+      "F78_TADPOLE_FREE_H78",
+      "F78_LEVEL_ONE_BRIDGE"
+    ],
+    "selected_scaffold_is_same_action_complete": false
+  },
+  "candidate_matrix": [
+    {
+      "accepted": false,
+      "id": "F78_MINIMAL_TORSION",
+      "name": "minimal global (r^2,s^2) isotropy correction",
+      "result": "PASS_INTEGRALITY__NONZERO_TORSION_BIANCHI_CLASS",
+      "selected": false
+    },
+    {
+      "accepted": false,
+      "id": "F78_TADPOLE_FREE_H78",
+      "name": "unique canonical-vacuum tadpole-free H78 GS refinement",
+      "result": "SELECTED_STRUCTURAL_PASS__DAI_FREED_WCS_IDENTITY_OPEN",
+      "selected": true
+    },
+    {
+      "accepted": false,
+      "id": "F78_LEVEL_ONE_BRIDGE",
+      "name": "level-one common U2xU3 differential CS bridge",
+      "result": "BOSONIC_EXACT__CURVED_SUPERSYMMETRIC_EMBEDDING_OPEN",
+      "selected": true
+    },
+    {
+      "accepted": false,
+      "id": "F78_H4_BULK_PARENT",
+      "name": "four-half-32 changed parent scout",
+      "result": "INTEGRATED_AND_SPACE_GROUP_ALGEBRA_PASS__ZERO_MODES_AND_LOCAL_INDICES_OPEN",
+      "selected": false
+    },
+    {
+      "accepted": false,
+      "id": "F78_F71_SINGLET_REPAIR",
+      "name": "localized F71 spectator modules",
+      "result": "EXACT_7_8_FIELD_MINIMUM__MULTIPLET_MASS_AND_RELIC_COMPLETION_FAILS",
+      "selected": false
+    },
+    {
+      "accepted": false,
+      "id": "F78_CURVED_SU2R_PROMOTION",
+      "name": "replace flat r^2 by curved p1(Rad)",
+      "result": "REJECTED__DOES_NOT_FACTOR_FULL_SMOOTH_SU2R_POLYNOMIAL",
+      "selected": false
+    }
+  ],
+  "combined_H78_characteristic_audit": {
+    "H78_background_data": [
+      "an oriented six-dimensional orbifold tangent bundle T",
+      "an oriented rank-11 gauge vector bundle E",
+      "flat orbifold lines L_r and L_s with L_r^4=L_s^2=1",
+      "a chosen Spin^c lift of T with determinant L_r",
+      "a chosen Spin^c lift of T+E with determinant L_s"
+    ],
+    "canonical_flat_product": {
+      "E11": "R + 2(L_r)_R + 3(L_r tensor L_s)_R",
+      "T6": "T4 + (L_r)_R",
+      "canonical_vacuum_torsion_tadpole": false,
+      "cross_term_check": "2rs=0, so 2r^2+3(r+s)^2=5r^2+3s^2",
+      "lambda4": "p1(T4)/2",
+      "p1_E11": "5r^2+3s^2",
+      "p1_T6": "p1(T4)+r^2",
+      "pure_internal_Y": [
+        "0",
+        "0"
+      ],
+      "selected_Y_reduces_to": [
+        "lambda4",
+        "lambda4"
+      ]
+    },
+    "differential_candidate": {
+      "canonical_parent_determinant_selects_this_torsion_refinement": false,
+      "flat_character_curvatures": {
+        "checkr": 0,
+        "checks": 0
+      },
+      "formula": "checkY78=(checkqT+checkr^2+checks^2-checkp1(E), checkqTE+checkr^2+checks^2)",
+      "full_shifted_WCS_holonomy_evaluated": false,
+      "orbifold_differential_character_framework_exists": true,
+      "same_de_Rham_curvature_as_V69_smooth_Y": true
+    },
+    "isotropy_checks": [
+      {
+        "corrected_twice_Y": [
+          0,
+          0
+        ],
+        "integral_half_exists": true,
+        "locus": "z00",
+        "order": 4,
+        "ordinary_twice_Y": [
+          3,
+          2
+        ],
+        "selected_delta": [
+          1,
+          2
+        ]
+      },
+      {
+        "corrected_twice_Y": [
+          0,
+          0
+        ],
+        "integral_half_exists": true,
+        "locus": "z11",
+        "order": 4,
+        "ordinary_twice_Y": [
+          3,
+          2
+        ],
+        "selected_delta": [
+          1,
+          2
+        ]
+      },
+      {
+        "corrected_twice_Y": [
+          0,
+          0
+        ],
+        "integral_half_exists": true,
+        "locus": "z2",
+        "order": 2,
+        "ordinary_twice_Y": [
+          1,
+          1
+        ],
+        "selected_delta": [
+          1,
+          1
+        ]
+      }
+    ],
+    "manifest_integral_generators": {
+      "qT": "(p1(T)-r^2)/2",
+      "qTE": "(p1(T)+p1(E)-s^2)/2"
+    },
+    "minimal_repair_relation": {
+      "corrected_twice_Y": [
+        "0",
+        "2r^2"
+      ],
+      "delta": [
+        "r^2",
+        "s^2"
+      ],
+      "internal_half_example": [
+        "s^2",
+        "-r^2"
+      ],
+      "nonzero_torsion_bianchi_class": true
+    },
+    "mod2_relations": [
+      "w2(T)=r mod2",
+      "w2(E)=r+s mod2",
+      "w2(T+E)=s mod2"
+    ],
+    "scope": "This constructs an integral differential-character candidate after H78 and its Spin^c lifts are supplied.  It does not prove that every parent fermion/ghost representation descends to H78 or that its Dai--Freed line is cancelled by the corresponding shifted WuCS theory.",
+    "selected_tadpole_free_class": {
+      "Y1": "qT+r^2+s^2-p1(E)",
+      "Y2": "qTE+r^2+s^2",
+      "equivalent_Y1": "(p1(T)+r^2)/2-p1(E)+s^2",
+      "equivalent_Y2": "(p1(T)+p1(E)+s^2)/2+r^2",
+      "integral_on_every_H78_background": true,
+      "twice_Y1": "p1(T)-2p1(E)+r^2",
+      "twice_Y2": "p1(T)+p1(E)+2r^2+s^2"
+    },
+    "status": "EXPLICIT_COMBINED_H78_INTEGRAL_CHARACTERISTIC_CLASS_ON_SELECTED_CATEGORY"
+  },
+  "common_stratum_bridge_audit": {
+    "accepted_bridge_sector": false,
+    "bosonic_gluing_curvature_matches_exactly": true,
+    "classes": {
+      "A": "c1(det E2)",
+      "B": "c1(det E3)",
+      "nu": "c1(normal U1L)"
+    },
+    "common_group": "U(2)xU(3) in the vector decomposition",
+    "differential_character": "exp[-2 pi i k integral_M5 checknu cup checkA cup checkB]",
+    "existing_Spin11_tensor_generates_AB": false,
+    "five_dimensional_N1_vector_schema": "a cubic prepotential coefficient C_NAB supplies the standard 5D supersymmetric CS term",
+    "inherited_residue": "nu A B",
+    "level_quantization": "k is an integer on ordinary U1 bundles",
+    "new_partner_anomaly_and_mass_ledger_computed": false,
+    "normal_connection_is_ordinary_dynamical_vector": false,
+    "off_shell_curved_supergravity_embedding_constructed": false,
+    "reason_existing_tensor_fails": "p1(V11)|K=A^2+B^2-2C contains no AB term",
+    "required_bridge_curvature": "-nu A B in the inherited normalization",
+    "scope": "the level-one character solves the free common-stratum cocycle only, not endpoint caps, WCS holonomy or torsion phases",
+    "selected_boundary_anomaly_polynomial": "-nu A B",
+    "selected_level": 1,
+    "status": "EXACT_LEVEL_ONE_BOSONIC_BRIDGE__SUPERSYMMETRIC_SUPERGRAVITY_EMBEDDING_OPEN"
+  },
+  "core_sha256": "1e2d44a6aedff03614cb712d3ba3a88f42d214638edf758ecea532c03d8c4e58",
+  "date": "2026-08-31",
+  "even_half32_flavor_lift_audit": {
+    "Spin11_spin_lift_relations_from_V70": {
+      "qhat_fourth": "-I",
+      "qhat_what_qhat_inverse": "what=-what^-1",
+      "what_squared": "-I"
+    },
+    "accepted_changed_parent": false,
+    "checks": {
+      "K_F1_Kinverse_equals_F2": true,
+      "K_F2_Kinverse_equals_minus_F1inverse": true,
+      "T1_T2_commute": true,
+      "T1_squared": "+I",
+      "T2_squared": "+I",
+      "Theta_T1_Theta_inverse_equals_T2": true,
+      "Theta_T2_Theta_inverse_equals_T1_inverse": true,
+      "Theta_fourth": "+I",
+      "real_orthogonal_flavor_matrices": true
+    },
+    "combined_operators": {
+      "T1": "J tensor what",
+      "T2": "J tensor what",
+      "Theta": "K tensor qhat"
+    },
+    "exact_gain": "V70's odd-h determinant obstruction is sufficient to reject odd h but is not an obstruction for even h; the displayed matrices realize the full space-group algebra on the half-32 field space",
+    "extension": "repeat the two-flavor block h/2 times for every even h",
+    "not_yet_computed": [
+      "N=1 superfield intrinsic phases and every component projector",
+      "three chiral family zero modes with all other half-32 modes lifted",
+      "rank-breaking spinor zero modes",
+      "fixed-point index characters and the changed-parent local anomaly ledger",
+      "BRST and combined-H descent"
+    ],
+    "status": "EXACT_EVEN_HALF32_FIELD_SPACE_REPRESENTATION__ZERO_MODE_PROJECTOR_OPEN",
+    "two_flavor_block": {
+      "F1": "J",
+      "F2": "J",
+      "J": "[[0,-1],[1,0]]",
+      "J_squared": "-I",
+      "K": "(I+J)/sqrt(2)=rotation(pi/4)",
+      "K_fourth": "-I",
+      "K_squared": "J"
+    }
+  },
+  "gate_ledger": {
+    "G1": "OPEN: checkY78 is an exact integral candidate, but the parent Dai--Freed x shifted-WuCS x cap identity and supersymmetric bridge are not proved.",
+    "G2": "OPEN: no accepted Wilsonian action, SUSY-breaking sector or regulator-defined physical spectrum exists.",
+    "G3": "OPEN: the H78 orbibundle has no complete field/ghost descent, cap boundary conditions, junction action or positive Hessian.",
+    "G4": "OPEN: the full BV/BRST KK operator, determinant-line metric, regulator and thresholds are absent.",
+    "G5": "OPEN: neutral zero modes and the complete supersymmetric stabilization sector remain unresolved.",
+    "G6": "OPEN: reheating, strings/defects, relic abundances and BBN have not been computed from an accepted action.",
+    "G7": "OPEN: family projectors, flavor, proton, decay and collider predictions are not derived from an accepted parent.",
+    "G8": "OPEN: no bordism-wide Dai--Freed/WuCS/cap trivialization or global torsion-holonomy calculation exists."
+  },
+  "integrated_parent_family_audit": {
+    "even_h_open_rows": [
+      2,
+      4,
+      6,
+      8
+    ],
+    "first_even_row_with_at_least_three_half32_slots": 4,
+    "formula": {
+      "Gram_det": "-(h-6)^2",
+      "a_dot_b": "2-h",
+      "b2": "h-4",
+      "n0": "266-27h",
+      "n11": "h+3",
+      "n32": "h/2 full-hyper units = h half-32 hypers",
+      "range": "0<=h<=9 from n0>=0"
+    },
+    "h6_warning": "b=-a/2 and the anomaly-coefficient Gram matrix is degenerate",
+    "odd_h_rows_rejected_by_V70_space_group_determinant": [
+      1,
+      3,
+      5,
+      7,
+      9
+    ],
+    "preferred_changed_parent_scout": {
+      "accepted": false,
+      "fixed_point_anomaly_ledger_computed": false,
+      "h": 4,
+      "rank_breaking_zero_modes_constructed": false,
+      "reason": "first parity-allowed row with enough half-spinor slots to scout three families",
+      "spectrum": "7 x 11 + four half-32 + 158 neutral dimensions",
+      "three_family_projector_constructed": false
+    },
+    "rows": [
+      {
+        "V70_space_group_determinant_passes": true,
+        "a": [
+          2,
+          2
+        ],
+        "accepted_parent_action": false,
+        "b": [
+          2,
+          -1
+        ],
+        "computed_products": {
+          "Gram_det": -36,
+          "a2": 8,
+          "a_dot_b": 2,
+          "b2": -4
+        },
+        "half_32_count": 0,
+        "integrated_factorization_passes": true,
+        "lattice": "U",
+        "local_orbifold_action_constructed": true,
+        "n11": 3,
+        "n32_full_hyper_units": "0",
+        "neutral_hyper_dimensions": 266,
+        "required_GS_products": {
+          "Gram_det": -36,
+          "a2": 8,
+          "a_dot_b": 2,
+          "b2": -4
+        },
+        "residual": {
+          "A2": 6,
+          "B4": 0,
+          "C22": "12/4"
+        },
+        "total_H": 299
+      },
+      {
+        "V70_space_group_determinant_passes": false,
+        "a": [
+          3,
+          1
+        ],
+        "accepted_parent_action": false,
+        "b": [
+          1,
+          2
+        ],
+        "computed_products": {
+          "Gram_det": -25,
+          "a2": 8,
+          "a_dot_b": 1,
+          "b2": -3
+        },
+        "half_32_count": 1,
+        "integrated_factorization_passes": true,
+        "lattice": "I(1,1)",
+        "local_orbifold_action_constructed": false,
+        "n11": 4,
+        "n32_full_hyper_units": "1/2",
+        "neutral_hyper_dimensions": 239,
+        "required_GS_products": {
+          "Gram_det": -25,
+          "a2": 8,
+          "a_dot_b": 1,
+          "b2": -3
+        },
+        "residual": {
+          "A2": 3,
+          "B4": 0,
+          "C22": "9/4"
+        },
+        "total_H": 299
+      },
+      {
+        "V70_space_group_determinant_passes": true,
+        "a": [
+          2,
+          2
+        ],
+        "accepted_parent_action": false,
+        "b": [
+          1,
+          -1
+        ],
+        "computed_products": {
+          "Gram_det": -16,
+          "a2": 8,
+          "a_dot_b": 0,
+          "b2": -2
+        },
+        "half_32_count": 2,
+        "integrated_factorization_passes": true,
+        "lattice": "U",
+        "local_orbifold_action_constructed": false,
+        "n11": 5,
+        "n32_full_hyper_units": "1",
+        "neutral_hyper_dimensions": 212,
+        "required_GS_products": {
+          "Gram_det": -16,
+          "a2": 8,
+          "a_dot_b": 0,
+          "b2": -2
+        },
+        "residual": {
+          "A2": 0,
+          "B4": 0,
+          "C22": "6/4"
+        },
+        "total_H": 299
+      },
+      {
+        "V70_space_group_determinant_passes": false,
+        "a": [
+          3,
+          1
+        ],
+        "accepted_parent_action": false,
+        "b": [
+          0,
+          1
+        ],
+        "computed_products": {
+          "Gram_det": -9,
+          "a2": 8,
+          "a_dot_b": -1,
+          "b2": -1
+        },
+        "half_32_count": 3,
+        "integrated_factorization_passes": true,
+        "lattice": "I(1,1)",
+        "local_orbifold_action_constructed": false,
+        "n11": 6,
+        "n32_full_hyper_units": "3/2",
+        "neutral_hyper_dimensions": 185,
+        "required_GS_products": {
+          "Gram_det": -9,
+          "a2": 8,
+          "a_dot_b": -1,
+          "b2": -1
+        },
+        "residual": {
+          "A2": -3,
+          "B4": 0,
+          "C22": "3/4"
+        },
+        "total_H": 299
+      },
+      {
+        "V70_space_group_determinant_passes": true,
+        "a": [
+          2,
+          2
+        ],
+        "accepted_parent_action": false,
+        "b": [
+          0,
+          -1
+        ],
+        "computed_products": {
+          "Gram_det": -4,
+          "a2": 8,
+          "a_dot_b": -2,
+          "b2": 0
+        },
+        "half_32_count": 4,
+        "integrated_factorization_passes": true,
+        "lattice": "U",
+        "local_orbifold_action_constructed": false,
+        "n11": 7,
+        "n32_full_hyper_units": "2",
+        "neutral_hyper_dimensions": 158,
+        "required_GS_products": {
+          "Gram_det": -4,
+          "a2": 8,
+          "a_dot_b": -2,
+          "b2": 0
+        },
+        "residual": {
+          "A2": -6,
+          "B4": 0,
+          "C22": "0/4"
+        },
+        "total_H": 299
+      },
+      {
+        "V70_space_group_determinant_passes": false,
+        "a": [
+          3,
+          1
+        ],
+        "accepted_parent_action": false,
+        "b": [
+          -1,
+          0
+        ],
+        "computed_products": {
+          "Gram_det": -1,
+          "a2": 8,
+          "a_dot_b": -3,
+          "b2": 1
+        },
+        "half_32_count": 5,
+        "integrated_factorization_passes": true,
+        "lattice": "I(1,1)",
+        "local_orbifold_action_constructed": false,
+        "n11": 8,
+        "n32_full_hyper_units": "5/2",
+        "neutral_hyper_dimensions": 131,
+        "required_GS_products": {
+          "Gram_det": -1,
+          "a2": 8,
+          "a_dot_b": -3,
+          "b2": 1
+        },
+        "residual": {
+          "A2": -9,
+          "B4": 0,
+          "C22": "-3/4"
+        },
+        "total_H": 299
+      },
+      {
+        "V70_space_group_determinant_passes": true,
+        "a": [
+          2,
+          2
+        ],
+        "accepted_parent_action": false,
+        "b": [
+          -1,
+          -1
+        ],
+        "computed_products": {
+          "Gram_det": 0,
+          "a2": 8,
+          "a_dot_b": -4,
+          "b2": 2
+        },
+        "half_32_count": 6,
+        "integrated_factorization_passes": true,
+        "lattice": "U",
+        "local_orbifold_action_constructed": false,
+        "n11": 9,
+        "n32_full_hyper_units": "3",
+        "neutral_hyper_dimensions": 104,
+        "required_GS_products": {
+          "Gram_det": 0,
+          "a2": 8,
+          "a_dot_b": -4,
+          "b2": 2
+        },
+        "residual": {
+          "A2": -12,
+          "B4": 0,
+          "C22": "-6/4"
+        },
+        "total_H": 299
+      },
+      {
+        "V70_space_group_determinant_passes": false,
+        "a": [
+          3,
+          1
+        ],
+        "accepted_parent_action": false,
+        "b": [
+          -2,
+          -1
+        ],
+        "computed_products": {
+          "Gram_det": -1,
+          "a2": 8,
+          "a_dot_b": -5,
+          "b2": 3
+        },
+        "half_32_count": 7,
+        "integrated_factorization_passes": true,
+        "lattice": "I(1,1)",
+        "local_orbifold_action_constructed": false,
+        "n11": 10,
+        "n32_full_hyper_units": "7/2",
+        "neutral_hyper_dimensions": 77,
+        "required_GS_products": {
+          "Gram_det": -1,
+          "a2": 8,
+          "a_dot_b": -5,
+          "b2": 3
+        },
+        "residual": {
+          "A2": -15,
+          "B4": 0,
+          "C22": "-9/4"
+        },
+        "total_H": 299
+      },
+      {
+        "V70_space_group_determinant_passes": true,
+        "a": [
+          2,
+          2
+        ],
+        "accepted_parent_action": false,
+        "b": [
+          -2,
+          -1
+        ],
+        "computed_products": {
+          "Gram_det": -4,
+          "a2": 8,
+          "a_dot_b": -6,
+          "b2": 4
+        },
+        "half_32_count": 8,
+        "integrated_factorization_passes": true,
+        "lattice": "U",
+        "local_orbifold_action_constructed": false,
+        "n11": 11,
+        "n32_full_hyper_units": "4",
+        "neutral_hyper_dimensions": 50,
+        "required_GS_products": {
+          "Gram_det": -4,
+          "a2": 8,
+          "a_dot_b": -6,
+          "b2": 4
+        },
+        "residual": {
+          "A2": -18,
+          "B4": 0,
+          "C22": "-12/4"
+        },
+        "total_H": 299
+      },
+      {
+        "V70_space_group_determinant_passes": false,
+        "a": [
+          3,
+          1
+        ],
+        "accepted_parent_action": false,
+        "b": [
+          -3,
+          -2
+        ],
+        "computed_products": {
+          "Gram_det": -9,
+          "a2": 8,
+          "a_dot_b": -7,
+          "b2": 5
+        },
+        "half_32_count": 9,
+        "integrated_factorization_passes": true,
+        "lattice": "I(1,1)",
+        "local_orbifold_action_constructed": false,
+        "n11": 12,
+        "n32_full_hyper_units": "9/2",
+        "neutral_hyper_dimensions": 23,
+        "required_GS_products": {
+          "Gram_det": -9,
+          "a2": 8,
+          "a_dot_b": -7,
+          "b2": 5
+        },
+        "residual": {
+          "A2": -21,
+          "B4": 0,
+          "C22": "-15/4"
+        },
+        "total_H": 299
+      }
+    ],
+    "status": "EXACT_COMPLETE_INTEGRATED_ONE_TENSOR_SPIN11_PARENT_FAMILY"
+  },
+  "lineage": {
+    "V69_route_core": "090843c54f6ce041c758f0301289c3cbc91024cd120ab1bafd86fd7bbad3ef1a",
+    "V70_route_core": "3e7b8e53916fbbc05bdcdf9632bcf4359aa4888b037df775c37d8d7d2551b228",
+    "V72_route_core": "46edf8f0943316356f0d5f8f918cc9953f00a10471a65e9c95e92f85904ccec3",
+    "V73_bridge_target": "-nu A B in the inherited normalization",
+    "V73_route_core": "1ef4890b81885f5a16196865dd8772d9d3b70a20958829481c2397fd9b044c44",
+    "V77_master_core": "abe7657d134a389f79e601434ff3a6ba4eb21f9041d0199ad604c907007e8517",
+    "V77_route_core": "fa54bc8ad2ed0991bb7923d6ef7d2da80505e27673d32d22c814369df7c152bb",
+    "V77_space_group_abelianization": "Z4 x Z2",
+    "supersession_scope": "repairs V77's ordinary isotropy divisibility obstruction and supplies a bosonic V73 bridge; it does not supersede V77's anomaly-line/cap requirements or certify a changed parent action"
+  },
+  "localized_repair_minimality_audit": {
+    "F71_is_microscopic_completion": false,
+    "F71_witnesses": {
+      "z00_fields": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          -1
+        ],
+        [
+          1,
+          -1
+        ],
+        [
+          -1,
+          0
+        ],
+        [
+          -1,
+          0
+        ],
+        [
+          -1,
+          0
+        ]
+      ],
+      "z00_sum": [
+        1,
+        1,
+        4,
+        0,
+        0,
+        0
+      ],
+      "z11_fields": [
+        [
+          -1,
+          1
+        ],
+        [
+          -1,
+          1
+        ],
+        [
+          -1,
+          -1
+        ],
+        [
+          -1,
+          -1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "z11_sum": [
+        0,
+        0,
+        -4,
+        0,
+        0,
+        0
+      ]
+    },
+    "basis": [
+      "sum n",
+      "sum n^3",
+      "sum n y^2",
+      "sum n^2 y",
+      "sum y",
+      "sum y^3"
+    ],
+    "full_diagonal_center": {
+      "conclusion": "every algebraic singlet repair mixes hyper and vector/tensor component classes",
+      "conditions": [
+        "k+2X=0 mod5",
+        "n+X+rho=0 mod2",
+        "optional X+f=0 mod2"
+      ],
+      "even_y_only_reaches_target": false,
+      "odd_y_only_reaches_target": false,
+      "ordinary_hyper_type_singlet_requires": "odd y",
+      "vector_tensor_type_singlet_requires": "even y"
+    },
+    "larger_odd_normal_charges_reduce_minimum": false,
+    "mass_anomaly_theorem": {
+      "consequence": "gapping the localized anomaly carriers erases their repair",
+      "full_rank_invariant_mass_preserves_nonzero_repair_anomaly": false,
+      "invariant_mass_conditions": [
+        "q_i+q_j=0",
+        "X_i+X_j=0"
+      ],
+      "pair_contribution_to_U1L_X2": "q_i X_i^2+q_j X_j^2=0"
+    },
+    "minimum_field_counts": {
+      "z00": 7,
+      "z11": 8
+    },
+    "mod16_sumset_rows": [
+      {
+        "field_count": 1,
+        "reachable_count": 128,
+        "target_z00_reachable": false,
+        "target_z11_reachable": false
+      },
+      {
+        "field_count": 2,
+        "reachable_count": 4383,
+        "target_z00_reachable": false,
+        "target_z11_reachable": false
+      },
+      {
+        "field_count": 3,
+        "reachable_count": 12544,
+        "target_z00_reachable": false,
+        "target_z11_reachable": false
+      },
+      {
+        "field_count": 4,
+        "reachable_count": 21632,
+        "target_z00_reachable": false,
+        "target_z11_reachable": false
+      },
+      {
+        "field_count": 5,
+        "reachable_count": 28672,
+        "target_z00_reachable": false,
+        "target_z11_reachable": false
+      },
+      {
+        "field_count": 6,
+        "reachable_count": 31744,
+        "target_z00_reachable": false,
+        "target_z11_reachable": false
+      },
+      {
+        "field_count": 7,
+        "reachable_count": 32768,
+        "target_z00_reachable": true,
+        "target_z11_reachable": false
+      },
+      {
+        "field_count": 8,
+        "reachable_count": 32768,
+        "target_z00_reachable": false,
+        "target_z11_reachable": true
+      }
+    ],
+    "normalizations": [
+      "n=2q_psi is odd",
+      "y=X/5 is integral for an SU5 singlet"
+    ],
+    "status": "EXACT_Z16_ALL_ODD_NORMAL_LIFT_MINIMALITY_AND_COMPONENT_OBSTRUCTION",
+    "targets": {
+      "z00": [
+        1,
+        1,
+        4,
+        0,
+        0,
+        0
+      ],
+      "z11": [
+        0,
+        0,
+        -4,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "open_obligations": [
+    "compute the complete equivariant Dai--Freed eta phase of the h=0 parent and test whether it selects the tadpole-free torsion refinement",
+    "define and evaluate the shifted U-lattice Wu--Chern--Simons theory on H78 orbifold seven-bordisms",
+    "construct physical caps and junctions and prove the bare x WuCS x bridge x cap anomaly-line identity under gluing",
+    "embed the level-one nu A B bridge in curved 5D/4D supersymmetric supergravity and include all partner anomalies and masses",
+    "supply field-by-field H78 and BV/BRST descent, including self-dual and ghost sectors",
+    "for h=4, compute all half-32/11/vector projectors, three-family and rank-breaking zero modes, and every fixed-point anomaly character",
+    "only after an accepted action, compute spectrum, thresholds, vacuum, cosmology, flavor, proton and collider gates"
+  ],
+  "primary_sources": [
+    {
+      "id": "dai_freed_1994",
+      "title": "Eta-Invariants and Determinant Lines",
+      "url": "https://arxiv.org/abs/hep-th/9405012",
+      "use": "eta invariants with boundary are determinant-line elements; variation, holonomy and gluing"
+    },
+    {
+      "id": "von_gersdorff_2006",
+      "title": "Anomalies on Six Dimensional Orbifolds",
+      "url": "https://arxiv.org/abs/hep-th/0612212",
+      "use": "bulk-fermion contributions to fixed-point anomalies on six-dimensional Zn orbifolds"
+    },
+    {
+      "id": "zhang_2026",
+      "title": "Perturbative Anomaly Inflow on Orbifolds",
+      "url": "https://arxiv.org/abs/2608.23326",
+      "use": "equivariant APS fixed-point density as an orbifold anomaly polynomial"
+    },
+    {
+      "id": "von_gersdorff_quiros_2003",
+      "title": "Localized anomalies in orbifold gauge theories",
+      "url": "https://arxiv.org/abs/hep-th/0305024",
+      "use": "path-integral localized anomalies with Scherk--Schwarz boundary data and GS inflow"
+    },
+    {
+      "id": "monnier_2011",
+      "title": "The global gravitational anomaly of the self-dual field theory",
+      "url": "https://arxiv.org/abs/1110.4639",
+      "use": "self-dual partition/anomaly line and its quadratic-refinement data"
+    },
+    {
+      "id": "monnier_2013",
+      "title": "The global anomaly of the self-dual field in general backgrounds",
+      "url": "https://arxiv.org/abs/1309.6642",
+      "use": "self-dual anomaly line in backgrounds with gauge fields and Wu-class refinements"
+    },
+    {
+      "id": "monnier_2016",
+      "title": "Topological field theories on manifolds with Wu structures",
+      "url": "https://arxiv.org/abs/1607.01396",
+      "use": "seven-dimensional Wu--Chern--Simons anomaly theories and quadratic refinements"
+    },
+    {
+      "id": "monnier_moore_2018",
+      "title": "Remarks on the Green-Schwarz terms of six-dimensional supergravity theories",
+      "url": "https://arxiv.org/abs/1808.01334",
+      "use": "smooth-spin six-dimensional GS/WuCS construction, charge lattice and characteristic element; not an orbifold theorem"
+    },
+    {
+      "id": "witten_yonekura_2019",
+      "title": "Anomaly Inflow and the eta-Invariant",
+      "url": "https://arxiv.org/abs/1909.08775",
+      "use": "regulated fermion phases as eta-invariant anomaly inflow"
+    },
+    {
+      "id": "erler_1993",
+      "title": "Anomaly Cancellation in Six Dimensions",
+      "url": "https://arxiv.org/abs/hep-th/9304104",
+      "use": "smooth six-dimensional multiplet anomaly polynomial and H-V+29T relation"
+    },
+    {
+      "id": "alvarez_gaume_witten_1984",
+      "title": "Gravitational Anomalies",
+      "url": "https://doi.org/10.1016/0550-3213(84)90066-X",
+      "use": "gauge-fixed Rarita complex, reality normalization and chiral gravitational anomaly indices"
+    },
+    {
+      "id": "riccioni_2001",
+      "title": "All couplings of minimal six-dimensional supergravity",
+      "url": "https://arxiv.org/abs/hep-th/0101074",
+      "use": "six-dimensional (1,0) gravity, tensor, vector and hypermultiplet field content"
+    },
+    {
+      "id": "lupercio_uribe_2003",
+      "title": "Differential Characters on Orbifolds and String Connections I",
+      "url": "https://arxiv.org/abs/math/0311008",
+      "use": "Cheeger--Simons/Beilinson--Deligne differential characters on global quotient orbifolds"
+    },
+    {
+      "id": "laurent_gengoux_tu_xu_2004",
+      "title": "Chern-Weil map for principal bundles over groupoids",
+      "url": "https://arxiv.org/abs/math/0401420",
+      "use": "characteristic classes of orbifold and equivariant bundles through Lie groupoids"
+    },
+    {
+      "id": "sati_2010",
+      "title": "Geometric and topological structures related to M-branes II: Twisted String and String^c structures",
+      "url": "https://arxiv.org/abs/1007.5419",
+      "use": "Spin^c and String^c characteristic-class refinements"
+    },
+    {
+      "id": "ohmori_shimizu_tachikawa_yonekura_2014",
+      "title": "Anomaly polynomial of general 6d SCFTs",
+      "url": "https://arxiv.org/abs/1408.5572",
+      "use": "six-dimensional (1,0) hyper, vector and tensor SU2R anomaly polynomials"
+    },
+    {
+      "id": "intriligator_morrison_seiberg_1997",
+      "title": "Five-Dimensional Supersymmetric Gauge Theories and Degenerations of Calabi-Yau Spaces",
+      "url": "https://arxiv.org/abs/hep-th/9702198",
+      "use": "five-dimensional supersymmetric cubic prepotentials and Chern--Simons couplings"
+    }
+  ],
+  "question": "Can a full redesign repair V77's GS obstruction and replace the failed localized parent without overclaiming G1?",
+  "schema": "susy_v78_torsion_character_parent_redesign_audit_v1",
+  "smooth_SU2R_curved_extension_audit": {
+    "Spin11_mixed_trace": "-(1/4)cR tr_adj(F^2)=-(9/4)cR tr_11(F^2)",
+    "V78_flat_torsion_repair_changes_smooth_I8": false,
+    "conventions": "Ohmori-Shimizu-Tachikawa-Yonekura; cR=c2(SU2R), hyper-positive chirality",
+    "curved_substitution": "p1(R_ad)=-4cR",
+    "flat_r2_s2_de_Rham_image": 0,
+    "flat_selected_lift": "p1(R_ad)=r^2 only on the selected flat orbifold lift",
+    "multiplet_contributions_coefficients_cR2_cRp1": {
+      "299_hyper_dimensions": [
+        "0",
+        "0"
+      ],
+      "55_vector_multiplets": [
+        "-55/24",
+        "-55/48"
+      ],
+      "gravity_multiplet": [
+        "-5/24",
+        "19/48"
+      ],
+      "one_tensor_multiplet": [
+        "1/24",
+        "1/48"
+      ]
+    },
+    "single_coordinate_p1R_shift_generates_cR2": false,
+    "single_coordinate_p1R_shift_matches_full_I8_R": false,
+    "status": "EXACT_SMOOTH_SU2R_LEDGER_AND_CURVED_PROMOTION_NO_GO",
+    "total_I8_R": "-(59/24)cR^2-(35/48)cR p1(T)-(9/4)cR tr_11(F^2)",
+    "universal_curved_H_extension_status": "OPEN_REQUIRES_NEW_TWO_COORDINATE_FACTORIZATION"
+  },
+  "source_manifest": {
+    "catalog_sha256": "299d52e610b3c5a1cea88bc3c21d453259c5adcd2025df21d4d1f13283258848",
+    "count": 17,
+    "ids": [
+      "dai_freed_1994",
+      "von_gersdorff_2006",
+      "zhang_2026",
+      "von_gersdorff_quiros_2003",
+      "monnier_2011",
+      "monnier_2013",
+      "monnier_2016",
+      "monnier_moore_2018",
+      "witten_yonekura_2019",
+      "erler_1993",
+      "alvarez_gaume_witten_1984",
+      "riccioni_2001",
+      "lupercio_uribe_2003",
+      "laurent_gengoux_tu_xu_2004",
+      "sati_2010",
+      "ohmori_shimizu_tachikawa_yonekura_2014",
+      "intriligator_morrison_seiberg_1997"
+    ],
+    "kind": "primary_sources_only"
+  },
+  "space_group_torsion_audit": {
+    "basis_restrictions": {
+      "r2": [
+        1,
+        1,
+        1
+      ],
+      "rs": [
+        0,
+        2,
+        1
+      ],
+      "s2": [
+        0,
+        0,
+        1
+      ]
+    },
+    "character_restrictions": {
+      "z00": "(r,s)=(u4,0)",
+      "z11": "(r,s)=(u4,2u4)",
+      "z2": "(r,s)=(u2,u2)"
+    },
+    "characters": {
+      "alpha": {
+        "A": "i",
+        "U": "1",
+        "V": "1",
+        "c1": "r",
+        "order": 4
+      },
+      "epsilon": {
+        "A": "1",
+        "U": "-1",
+        "V": "-1",
+        "c1": "s",
+        "order": 2
+      }
+    },
+    "cohomology_ring_degree4": {
+      "encoding": "(A mod4,B mod2,C mod2)=A r^2+B rs+C s^2",
+      "group": "Z4{r^2} + Z2{rs} + Z2{s^2}",
+      "relations": [
+        "4r=0",
+        "2s=0",
+        "2rs=0"
+      ]
+    },
+    "global_divisible_solution_count": 4,
+    "global_divisible_solutions": [
+      {
+        "admits_zero_internal_Y": false,
+        "corrected_twice_Y": [
+          "0",
+          "2r^2"
+        ],
+        "delta": [
+          "r^2",
+          "s^2"
+        ],
+        "delta_tuples": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      {
+        "admits_zero_internal_Y": true,
+        "corrected_twice_Y": [
+          "0",
+          "0"
+        ],
+        "delta": [
+          "r^2",
+          "2r^2+s^2"
+        ],
+        "delta_tuples": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            1
+          ]
+        ]
+      },
+      {
+        "admits_zero_internal_Y": false,
+        "corrected_twice_Y": [
+          "2r^2",
+          "2r^2"
+        ],
+        "delta": [
+          "3r^2",
+          "s^2"
+        ],
+        "delta_tuples": [
+          [
+            3,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      {
+        "admits_zero_internal_Y": false,
+        "corrected_twice_Y": [
+          "2r^2",
+          "0"
+        ],
+        "delta": [
+          "3r^2",
+          "2r^2+s^2"
+        ],
+        "delta_tuples": [
+          [
+            3,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            1
+          ]
+        ]
+      }
+    ],
+    "local_parity_theorem": {
+      "coordinate1": "A1 odd and B1+C1 even",
+      "coordinate2": "A2 even and B2+C2 odd"
+    },
+    "local_solution_count": 16,
+    "locus_order": [
+      "z00",
+      "z11",
+      "z2"
+    ],
+    "minimal_isotropy_repair": {
+      "corrected_twice_Y": [
+        "0",
+        "2r^2"
+      ],
+      "delta": [
+        "r^2",
+        "s^2"
+      ],
+      "internal_half_example": [
+        "s^2",
+        "-r^2"
+      ],
+      "nonzero_torsion_bianchi_class": true
+    },
+    "ordinary_twice_Y_internal": [
+      "3r^2",
+      "2r^2+s^2"
+    ],
+    "ordinary_twice_Y_tuples": [
+      [
+        3,
+        0,
+        0
+      ],
+      [
+        2,
+        0,
+        1
+      ]
+    ],
+    "selected_tadpole_free_repair": {
+      "corrected_twice_Y": [
+        "0",
+        "0"
+      ],
+      "delta": [
+        "r^2",
+        "2r^2+s^2"
+      ],
+      "delta_tuples": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          1
+        ]
+      ],
+      "interpretation": "the extra allowed 2r^2 in coordinate two and the zero choice of both halves remove the canonical-vacuum torsion Bianchi charge; the bare Dai--Freed anomaly must still select this discrete theta refinement",
+      "unique_among_global_divisible_delta_pairs": true,
+      "zero_internal_half_choice_exists": true
+    },
+    "space_group_presentation": [
+      "A^4=1",
+      "[U,V]=1",
+      "A U A^-1=V",
+      "A V A^-1=U^-1"
+    ],
+    "status": "EXACT_GLOBAL_SPACE_GROUP_TORSION_RING_AND_REFINEMENT_CLASSIFICATION"
+  },
+  "status": "V78_TORSION_CHARACTER_PARENT_REDESIGN_AUDIT__V69_V70_V72_V73_V77_CORES_BOUND__SPACE_GROUP_TORSION_RING_AND_ALL_ISOTROPY_RESTRICTIONS_EXACT__UNIQUE_CANONICAL_VACUUM_TADPOLE_FREE_GS_REFINEMENT_IDENTIFIED__SMOOTH_DE_RHAM_FACTORIZATION_UNCHANGED__LEVEL_ONE_BOSONIC_COMMON_STRATUM_BRIDGE_EXACT__ALL_ONE_TENSOR_SPIN11_PARENT_SPECTRA_CLASSIFIED__EVEN_HALF32_SPACE_GROUP_FLAVOR_REPRESENTATION_EXACT__F71_SINGLET_REPAIR_7_AND_8_FIELD_MINIMAL__CURVED_H_WCS_DAI_FREED_CAP_BRST_AND_SUPERSYMMETRIC_BRIDGE_OPEN__SELECTED_STRUCTURAL_SCAFFOLD_NOT_ACCEPTED__G1_TO_G8_OPEN",
+  "terminal_decision": {
+    "accepted_full_parent_action_exists": false,
+    "canonical_flat_vacuum_internal_Y_zero": true,
+    "changed_parent_three_family_projector_constructed": false,
+    "closed_gates": [],
+    "current_action_status": "REJECTED",
+    "even_half32_space_group_field_representation_constructed": true,
+    "global_space_group_class_not_patchwise_counterterms": true,
+    "honest_outcome": "V78 removes the arithmetic GS obstruction and supplies the missing bosonic bridge, but G1 remains open until one supersymmetric parent anomaly line is trivialized on the full H78 cap/bordism category.",
+    "level_one_bosonic_bridge_constructed": true,
+    "ordinary_V77_GS_isotropy_obstruction_repaired": true,
+    "research_program_status": "VIABLE_STRUCTURAL_FRONTIER",
+    "selected_candidate_accepted": false,
+    "selected_class_integral_on_defined_H78_backgrounds": true,
+    "selected_class_same_smooth_de_Rham_factorization": true,
+    "shifted_WCS_Dai_Freed_cap_identity_proved": false,
+    "supersymmetric_curved_bridge_constructed": false,
+    "theory_complete": false,
+    "torsion_refinement_matched_to_bare_parent_eta_phase": false
+  },
+  "version": "V78"
+}

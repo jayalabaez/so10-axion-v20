@@ -1,0 +1,299 @@
+{
+  "acceptance_criteria": [
+    {
+      "id": "A1",
+      "requirement": "V77 master and V78 route canonical lineage",
+      "status": "PASS_EXACT"
+    },
+    {
+      "id": "A2",
+      "requirement": "global Z4 x Z2 space-group torsion ring and restriction maps",
+      "status": "PASS_EXACT"
+    },
+    {
+      "id": "A3",
+      "requirement": "ordinary V77 GS isotropy divisibility obstruction",
+      "status": "PASS_REPAIRED"
+    },
+    {
+      "id": "A4",
+      "requirement": "globally divisible torsion correction classification",
+      "status": "PASS_FOUR_ROWS"
+    },
+    {
+      "id": "A5",
+      "requirement": "unique canonical-vacuum zero-internal-Y correction",
+      "status": "PASS_EXACT"
+    },
+    {
+      "id": "A6",
+      "requirement": "H78 Spin-c characteristic integrality",
+      "status": "PASS_ON_DEFINED_CATEGORY"
+    },
+    {
+      "id": "A7",
+      "requirement": "flat correction preserves smooth de Rham I8",
+      "status": "PASS_EXACT"
+    },
+    {
+      "id": "A8",
+      "requirement": "curved SU2R promotion of flat r2",
+      "status": "REJECTED_INCOMPLETE_FACTORIZATION"
+    },
+    {
+      "id": "A9",
+      "requirement": "level-one bosonic common-stratum bridge",
+      "status": "PASS_EXACT"
+    },
+    {
+      "id": "A10",
+      "requirement": "curved off-shell supersymmetric bridge",
+      "status": "OPEN_UNCONSTRUCTED"
+    },
+    {
+      "id": "A11",
+      "requirement": "all integrated one-tensor Spin11 parents",
+      "status": "PASS_CLASSIFIED"
+    },
+    {
+      "id": "A12",
+      "requirement": "even half-32 full space-group flavor representation",
+      "status": "PASS_EXACT"
+    },
+    {
+      "id": "A13",
+      "requirement": "changed-parent family/rank projectors and local indices",
+      "status": "OPEN_UNCOMPUTED"
+    },
+    {
+      "id": "A14",
+      "requirement": "F71 singlet spectator field-count minimality",
+      "status": "PASS_7_AND_8"
+    },
+    {
+      "id": "A15",
+      "requirement": "F71 full multiplet, invariant mass and relic completion",
+      "status": "REJECTED"
+    },
+    {
+      "id": "A16",
+      "requirement": "bare-parent eta phase selects V78 torsion refinement",
+      "status": "OPEN_UNCOMPUTED"
+    },
+    {
+      "id": "A17",
+      "requirement": "shifted WuCS quadratic refinement and seven-bordism holonomy",
+      "status": "OPEN_UNCONSTRUCTED"
+    },
+    {
+      "id": "A18",
+      "requirement": "caps, junctions and BV/BRST field descent",
+      "status": "OPEN_UNCONSTRUCTED"
+    },
+    {
+      "id": "A19",
+      "requirement": "bare x WuCS x bridge x cap anomaly-line identity",
+      "status": "SELECTED_OPEN"
+    },
+    {
+      "id": "A20",
+      "requirement": "same-action microscopic completion",
+      "status": "OPEN_FAILED"
+    },
+    {
+      "id": "A21",
+      "requirement": "spectrum, vacuum, thresholds, cosmology and phenomenology",
+      "status": "BLOCKED_BY_ACTION"
+    }
+  ],
+  "artifact_hashes": {
+    "generator_sha256": "5a6b4b568798f5e147cb790845353832a0ace5968d9adaf7e85ae0d239c3735b",
+    "line_ending_policy": "SHA256 after CRLF-to-LF normalization",
+    "test_sha256": "f004c1ff6d3641139d29aecc92fcbab2a5f2f7092e667ba9a72dbabf1ee3096c"
+  },
+  "consolidated_theory_card": {
+    "accepted_extension_count": 0,
+    "current_action_status": "REJECTED",
+    "exact_gains": [
+      "H^4(B(Z4 x Z2);Z)=Z4{r^2}+Z2{rs}+Z2{s^2} and all three stabilizer restrictions",
+      "four globally divisible corrections; unique zero-internal-Y choice ['r^2', '2r^2+s^2']",
+      "manifest H78 integral class Y1=qT+r^2+s^2-p1(E), Y2=qTE+r^2+s^2",
+      "canonical flat-product reduction ['lambda4', 'lambda4']",
+      "flat torsion correction has zero de Rham curvature and preserves the V69 smooth factorization",
+      "integer level 1 differential bridge with boundary curvature -nu A B",
+      "complete h=0,...,9 integrated Spin11 parent family and exact odd-h exclusion",
+      "orthogonal two-flavor block representing the full space group for every even half-32 multiplicity",
+      "all-odd-normal-lift Z16 theorem: F71 requires at least seven z00 and eight z11 singlet fields"
+    ],
+    "remaining_global_blockers": [
+      "the bare-parent Dai--Freed phase has not selected or matched the discrete torsion refinement",
+      "shifted WuCS quadratic refinement and holonomy on H78 seven-bordisms",
+      "fermion, supersymmetry and BV/BRST descent to H78",
+      "physical caps, junctions and a curved off-shell supersymmetric bridge",
+      "localized endpoint anomaly and mass/relic completion for the h=0 action",
+      "all fixed-point characters and zero modes for every h>0 parent"
+    ],
+    "research_program_status": "VIABLE_STRUCTURAL_FRONTIER",
+    "retired_shortcuts": [
+      "declaring the V77 divisibility obstruction terminal without using the existing space-group characters",
+      "using three unrelated fixed-point counterterms instead of one global quotient-stack class",
+      "promoting flat r^2 to curved p1(SU2R) without refactorizing the full R anomaly polynomial",
+      "claiming that even half-32 multiplicity still lacks any space-group representation",
+      "assuming larger odd normal charges can reduce the F71 spectator count",
+      "calling the exact bosonic bridge a completed curved supersymmetric sector"
+    ],
+    "selected_open_candidates": [
+      "F78_TADPOLE_FREE_H78",
+      "F78_LEVEL_ONE_BRIDGE"
+    ],
+    "strongest_action_scaffold": "frozen h=0 Spin11 parent + H78 tadpole-free differential GS candidate + level-one common-stratum bridge + future cap/curved-SUSY completion"
+  },
+  "core_sha256": "5a605cae7157a01ab5cf6c04597510faf4007dde60de9ae76c96eb9b29805ebd",
+  "date": "2026-08-31",
+  "gate_ledger": {
+    "G1": "OPEN: checkY78 is an exact integral candidate, but the parent Dai--Freed x shifted-WuCS x cap identity and supersymmetric bridge are not proved.",
+    "G2": "OPEN: no accepted Wilsonian action, SUSY-breaking sector or regulator-defined physical spectrum exists.",
+    "G3": "OPEN: the H78 orbibundle has no complete field/ghost descent, cap boundary conditions, junction action or positive Hessian.",
+    "G4": "OPEN: the full BV/BRST KK operator, determinant-line metric, regulator and thresholds are absent.",
+    "G5": "OPEN: neutral zero modes and the complete supersymmetric stabilization sector remain unresolved.",
+    "G6": "OPEN: reheating, strings/defects, relic abundances and BBN have not been computed from an accepted action.",
+    "G7": "OPEN: family projectors, flavor, proton, decay and collider predictions are not derived from an accepted parent.",
+    "G8": "OPEN: no bordism-wide Dai--Freed/WuCS/cap trivialization or global torsion-holonomy calculation exists."
+  },
+  "input_core_hashes": {
+    "V77_master": "abe7657d134a389f79e601434ff3a6ba4eb21f9041d0199ad604c907007e8517",
+    "V77_route_via_V78_lineage": "fa54bc8ad2ed0991bb7923d6ef7d2da80505e27673d32d22c814369df7c152bb",
+    "V78_route": "1e2d44a6aedff03614cb712d3ba3a88f42d214638edf758ecea532c03d8c4e58"
+  },
+  "lineage": {
+    "new_route": "B78",
+    "parent_master": "V77",
+    "parent_route_count": 5,
+    "parent_route_matrix_sha256": "827a04e32ad5d2d9bd06c9a03b73d94130a18e2cf587cfa6f1974e6d08761588",
+    "supersession_scope": "repairs V77's ordinary isotropy divisibility obstruction and supplies a bosonic V73 bridge; it does not supersede V77's anomaly-line/cap requirements or certify a changed parent action"
+  },
+  "next_required_action": {
+    "accepted": false,
+    "fallback_if_falsified": "use the explicit even-half32 flavor representation to compute the full h=4 changed-parent projector and fixed-point anomaly ledger",
+    "id": "F79_H78_ANOMALY_LINE_HOLONOMY_AND_CAP_COMPLETION",
+    "objective": "compute the h=0 equivariant Dai--Freed eta phase, test the V78 tadpole-free discrete refinement, construct shifted U-WuCS and cap states, and prove or falsify their gluing identity with the level-one bridge"
+  },
+  "regression_scope": {
+    "inherited_V77_scope_sha256": "1a92fa0eb381ac57bf7c03c7e081561ce59565a95d0d3fd444b3754110ef2224",
+    "new_test_files": [
+      "test_susy_v78_multipath_g1_frontier_master_audit.py",
+      "test_susy_v78_torsion_character_parent_redesign_audit.py"
+    ],
+    "recommended_full_pattern": "test_susy_v*.py"
+  },
+  "route_matrix": [
+    {
+      "accepted": false,
+      "name": "live-Orbifolder corrected heterotic Z4R route",
+      "ordinal": 1,
+      "route_id": "A60",
+      "same_action_microscopic_completion": false
+    },
+    {
+      "accepted": false,
+      "name": "Spin(11) correlated eta-spectator and endpoint-sector frontier",
+      "ordinal": 2,
+      "route_id": "B75",
+      "same_action_microscopic_completion": false
+    },
+    {
+      "accepted": false,
+      "name": "gauged-U(1)R to Z4R local-orbifold route",
+      "ordinal": 3,
+      "route_id": "C",
+      "same_action_microscopic_completion": false
+    },
+    {
+      "accepted": false,
+      "name": "Spin(11) two-corner residue and multiplet-realization frontier",
+      "ordinal": 4,
+      "route_id": "B76",
+      "same_action_microscopic_completion": false
+    },
+    {
+      "accepted": false,
+      "name": "equivariant parent anomaly-line and ordinary GS-cocycle audit",
+      "ordinal": 5,
+      "route_id": "B77",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidate": "F77E_EQUIVARIANT_ANOMALY_LINE_WUCS_TRIVIALIZATION"
+    },
+    {
+      "accepted": false,
+      "name": "space-group torsion characteristic, common-stratum bridge and changed-parent redesign",
+      "ordinal": 6,
+      "route_id": "B78",
+      "same_action_microscopic_completion": false,
+      "selected_open_candidates": [
+        "F78_TADPOLE_FREE_H78",
+        "F78_LEVEL_ONE_BRIDGE"
+      ]
+    }
+  ],
+  "schema": "susy_v78_multipath_g1_frontier_master_audit_v1",
+  "source_manifest": {
+    "catalog_sha256": "299d52e610b3c5a1cea88bc3c21d453259c5adcd2025df21d4d1f13283258848",
+    "count": 17,
+    "ids": [
+      "dai_freed_1994",
+      "von_gersdorff_2006",
+      "zhang_2026",
+      "von_gersdorff_quiros_2003",
+      "monnier_2011",
+      "monnier_2013",
+      "monnier_2016",
+      "monnier_moore_2018",
+      "witten_yonekura_2019",
+      "erler_1993",
+      "alvarez_gaume_witten_1984",
+      "riccioni_2001",
+      "lupercio_uribe_2003",
+      "laurent_gengoux_tu_xu_2004",
+      "sati_2010",
+      "ohmori_shimizu_tachikawa_yonekura_2014",
+      "intriligator_morrison_seiberg_1997"
+    ],
+    "kind": "primary_sources_only"
+  },
+  "status": "V78_MULTIPATH_G1_FRONTIER_MASTER_AUDIT__V77_MASTER_AND_V78_ROUTE_CORES_BOUND__ORDINARY_ISOTROPY_DIVISIBILITY_OBSTRUCTION_REPAIRED_EXACT__UNIQUE_CANONICAL_VACUUM_TADPOLE_FREE_H78_REFINEMENT_SELECTED__SMOOTH_I8_UNCHANGED__LEVEL_ONE_BOSONIC_BRIDGE_EXACT__INTEGRATED_PARENT_FAMILY_AND_EVEN_HALF32_SPACE_GROUP_REPRESENTATION_EXACT__WCS_DAI_FREED_CAP_BRST_CURVED_SUPERSYMMETRY_AND_CHANGED_PARENT_PROJECTORS_OPEN__CURRENT_ACTION_REJECTED__G1_TO_G8_OPEN",
+  "strict_master_decision": {
+    "bare_eta_selects_discrete_refinement": false,
+    "canonical_flat_vacuum_internal_Y": [
+      "0",
+      "0"
+    ],
+    "changed_parent_three_family_projector_constructed": false,
+    "closed_gates": [],
+    "complete_theory": false,
+    "current_action_status": "REJECTED",
+    "even_half32_space_group_representation_constructed": true,
+    "honest_outcome": "V78 removes the arithmetic GS obstruction and supplies the missing bosonic bridge, but G1 remains open until one supersymmetric parent anomaly line is trivialized on the full H78 cap/bordism category.",
+    "integrated_parent_row_count": 10,
+    "level_one_bosonic_bridge_constructed": true,
+    "ordinary_V77_isotropy_divisibility_repaired": true,
+    "parity_allowed_changed_parent_rows": [
+      2,
+      4,
+      6,
+      8
+    ],
+    "research_program_status": "VIABLE_STRUCTURAL_FRONTIER",
+    "same_action_microscopic_completion_found": false,
+    "selected_H78_class_integral": true,
+    "selected_H78_class_preserves_smooth_I8": true,
+    "selected_candidate_accepted": false,
+    "selected_delta_twice_Y": [
+      "r^2",
+      "2r^2+s^2"
+    ],
+    "selected_delta_unique_tadpole_free": true,
+    "shifted_WCS_Dai_Freed_cap_identity_proved": false,
+    "supersymmetric_curved_bridge_constructed": false
+  },
+  "version": "V78"
+}
