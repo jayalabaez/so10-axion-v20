@@ -1,0 +1,486 @@
+{
+  "F74_candidate_matrix": [
+    {
+      "accepted": false,
+      "id": "F74_K_CS_BRIDGE",
+      "name": "primitive common-K differential-cup bridge",
+      "selected": false,
+      "status": "PASS_EXACT_COMMON_GLUING_ONLY__NOT_FULL_ENDPOINT_COMPLETION"
+    },
+    {
+      "accepted": false,
+      "id": "F74_VECTOR_LINEAR_REFINED_BRIDGE",
+      "name": "neutral vector-linear BF bridge plus missing refined endpoint sector",
+      "selected": true,
+      "status": "SELECTED_STRUCTURAL_SCAFFOLD__LOCAL_VARIATION_AND_NEW_FIELD_ANOMALY_LEDGER_PASS__QUARTER_SPECTATOR_AND_GLOBAL_ACTION_OPEN"
+    },
+    {
+      "accepted": false,
+      "id": "F74_COEFFICIENT_FOUR",
+      "name": "ordinary coefficient-four bridge redesign",
+      "selected": false,
+      "status": "REJECTED_FOR_CURRENT_LEVEL__OVERSHOOTS_THREE_ANOMALY_UNITS"
+    },
+    {
+      "accepted": false,
+      "id": "F74_DIRECT_LOCAL_FIVE",
+      "name": "direct vector-type local five cancellation",
+      "selected": false,
+      "status": "REJECTED_UNPAIRED_CHIRAL_COLORED_FIVE_AND_SU5_CUBIC_ANOMALY"
+    },
+    {
+      "accepted": false,
+      "id": "F74_COMMON_MATTER_INTERFACE",
+      "name": "incomplete common-group bifundamental bridge matter",
+      "selected": false,
+      "status": "REJECTED_AS_ENDPOINT_MATTER__INTERFACE_ONLY_AND_GAUGE_ANOMALOUS"
+    }
+  ],
+  "alternative_profile_and_matter_audit": {
+    "common_group_matter_diagnostic": {
+      "accepted": false,
+      "complete_U5_fixed_point_representations": false,
+      "determinant_and_mixed_gauge_anomalies_cancelled": false,
+      "explicit_determinant_anomaly_ledger_complete": false,
+      "fields": "(2,3)_(qL=-1/2)+(2,bar3)_(qL=+1/2)",
+      "full_K_center_and_Z4R_lift_checked": false,
+      "massive_conjugate_completion_preserves_bridge": false,
+      "mixed_bridge_component": "-nu A B",
+      "normal_Q1_Q3": [
+        0,
+        0
+      ]
+    },
+    "direct_local_five": {
+      "R_Phi": 2,
+      "U5tilde_center": "k+2x=1+4=5=0 mod5",
+      "accepted": false,
+      "continuous_SU2R_multiplet_constructed": false,
+      "fatal_obstructions": [
+        "an unpaired chiral five contains a colored triplet and weak doublet",
+        "it changes the pure local SU5^3 anomaly",
+        "a symmetry-preserving massive conjugate has opposite qL and erases the mixed repair",
+        "same-R Giudice--Masiero mass is normal-charge blocked or leaves low colored exotics",
+        "cross-corner conjugation cannot match both U2 and U3 blocks"
+      ],
+      "fermion_diagonal_parity": "n+x+r=1+2+1=4 even",
+      "formal_one_Weyl_mixed_residual_cancelled": true,
+      "full_local_supersymmetric_lift_constructed": false,
+      "mixed_shift_SU5_X2": [
+        "1/4",
+        "10"
+      ],
+      "multiplicity_warning": "the parity label r=1 is not by itself a literal one-component SU2R representation; a doublet would have multiplicity two",
+      "qL": "1/2",
+      "representation": "formal one-Weyl vector-type 5_(+2) ledger",
+      "scalar_diagonal_parity": "n+x+r=2+2+0=4 even",
+      "target_residual_SU5_X2": [
+        "-1/4",
+        "-10"
+      ]
+    },
+    "profile_theorem": {
+      "identity": "k0 ell^2+k1 ellprime^2=[(k0+k1)(A^2+B^2)+2(k0-k1)AB]/4",
+      "only_zero_solution": {
+        "k0": 0,
+        "k1": 0
+      },
+      "remove_flip_consequence": "restores U5 and loses G3211 breaking",
+      "required_profile": {
+        "k0": 1,
+        "k1": -1
+      },
+      "required_profile_residue": "A B",
+      "scope": "displayed pure determinant-square ansatz only",
+      "zero_overlap_coefficients": "k0+k1=0 and k0-k1=0"
+    },
+    "smooth_bulk_changes": {
+      "adjoint_hyper": "spoils irreducible six-dimensional gauge cancellation unless the three vector hypers in the bound parent are removed",
+      "extra_tensor": "Delta T=+1 requires Delta H=-29 at fixed V from H-V+29T=273",
+      "preserves_bound_parent": false,
+      "projector_weighted_bulk_representation_classification_complete": false,
+      "smooth_unprojected_Spin11_invariant_characteristic_generates_AB": false
+    },
+    "status": "ORDINARY_PROFILE_AND_MINIMAL_MATTER_ESCAPES_REJECTED_SCOPED"
+  },
+  "artifact_hashes": {
+    "generator_sha256": "61bfd85c89501e9e16b2ea3dd3ef68e23058674948a28c7bccc8996f474183ee",
+    "test_sha256": "bd9a8e5aa598985a9be8cb5b1d0f3d256ae0368460944fbe2e6e1ff71d71b0a0"
+  },
+  "candidate_adjudication": {
+    "coefficient_four": "REJECTED_FOR_UNIT_ACTION",
+    "direct_local_five": "REJECTED_PHENOMENOLOGY_AND_PURE_GAUGE_ANOMALY",
+    "existing_Spin11_tensor": "REJECTED_NO_AB_IN_RESTRICTION_IMAGE",
+    "primitive_K_bridge": "PASS_EXACT_COMMON_GLUING_ONLY",
+    "quarter_endpoint_spectator": "FAIL_OPEN_NOT_CANCELLED",
+    "torsion_only_eta": "REJECTED_ZERO_CURVATURE_CANNOT_CANCEL_FREE_POLYNOMIAL",
+    "vector_linear_BF_scaffold": "CONDITIONAL_LOCAL_PASS"
+  },
+  "common_K_lattice_and_spin_periods": {
+    "abelian_cocharacter_projection": "Lambda_K={(nu,A,B) in Z^3 | nu-A-B=0 mod2}",
+    "bridge_class": "r=nu A B",
+    "diagonal_cocharacters": {
+      "z00": [
+        1,
+        2,
+        3
+      ],
+      "z11": [
+        1,
+        2,
+        -3
+      ]
+    },
+    "diagonal_relation_checks": {
+      "z00": true,
+      "z11": true
+    },
+    "generators": [
+      [
+        1,
+        1,
+        0
+      ],
+      [
+        0,
+        1,
+        1
+      ],
+      [
+        0,
+        0,
+        2
+      ]
+    ],
+    "group": "full common quotient K with Lie algebra u(2)+u(3)+u(1)L+su(2)R",
+    "honest_lines": {
+      "LA": "A=c1(det E2)",
+      "LB": "B=c1(det E3)",
+      "N": "nu=c1(N)",
+      "S": "s=(nu+A+B)/2"
+    },
+    "ordinary_primitivity_witness": {
+      "allowed_cocharacters": {
+        "lambda_x": [
+          1,
+          1,
+          0
+        ],
+        "lambda_y": [
+          0,
+          1,
+          1
+        ]
+      },
+      "classes": "nu=x, A=x+y, B=y",
+      "conclusion": "r is primitive in ordinary integral cohomology",
+      "period": 1,
+      "six_manifold": "CP2 x CP1"
+    },
+    "spin_period_theorem": {
+      "all_spin_periods_even": true,
+      "free_curvature_candidate_level_lattice": "(1/2) Z",
+      "free_spin_period_gcd": 2,
+      "full_differential_Dai_Freed_refinement": "OPEN",
+      "mod2_relation": "nu=A+B",
+      "sharp_witness": {
+        "allowed_cocharacters": [
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            0,
+            0,
+            2
+          ]
+        ],
+        "classes": "nu=x, A=x+y, B=y+2z",
+        "period": 2,
+        "six_manifold": "(S2)^3"
+      },
+      "steenrod_identity": "r=A^2 B+A B^2=Sq^2(A B) mod2",
+      "wu_evaluation": "integral Sq^2(AB)=integral v2 AB=0 on spin six-manifolds"
+    },
+    "status": "EXACT_COMMON_K_CHARACTER_AND_COCHARACTER_LATTICE"
+  },
+  "core_sha256": "853833b9206e0eacb3a57ef72b7615c4d8c2b28b87a99155c93dc46d803e5603",
+  "date": "2026-08-30",
+  "differential_cohomology_bridge": {
+    "Mayer_Vietoris_scope": {
+      "degree_five_trivialization_exists": false,
+      "interpretation": "the inverse holonomy is a new anomalous K sector, not a trivialization by fields already present in the smooth bulk",
+      "map": "(alpha00,alpha11) -> i00*alpha00-i11*alpha11",
+      "mismatch": "r=nu A B is nonzero in free cohomology"
+    },
+    "closed_five_manifold_partition_function": "Z_bridge(Y5)=Hol_Y5(rcheck_bridge)",
+    "common_gluing_solved_by_new_sector": true,
+    "differential_character": "rcheck_bridge=-c1check(N) cup c1check(det E2) cup c1check(det E3)",
+    "full_endpoint_anomaly_solved": false,
+    "large_normal_gauge_transformation": "Delta log Z=-2 pi i integral_Y5 u A B in 2 pi i Z",
+    "local_Chern_Simons_form": "-2 pi i integral_Y5 (aN/2pi)(FA/2pi)(FB/2pi)",
+    "optional_flavor_residue": "nu B(A+V), V=2v, also integral",
+    "ordinary_level_one_quantized": true,
+    "physical_defect_requirements": {
+      "T2_over_Z4_has_codimension_one_K_fixed_stratum": false,
+      "Z4_orbit_and_isotropy_lifts": "OPEN_NOT_CONSTRUCTED",
+      "flat_H5_and_Dai_Freed_data": "OPEN_NOT_COMPUTED",
+      "new_K_reducing_domain_wall_or_order_parameter": true,
+      "second_boundary_cap_or_topological_source": "OPEN_NOT_CONSTRUCTED"
+    },
+    "smooth_Spin11_restriction": {
+      "AB_coefficient": 0,
+      "existing_two_form_tensor_supplies_bridge": false,
+      "nu_AB_in_image": false,
+      "rational_degree_four_image": "Q[p1(V11)/2]",
+      "restriction": "p1(V11)=A^2+B^2-2[c2(E2)+c2(E3)]"
+    },
+    "status": "LEVEL_ONE_COMMON_K_ANOMALY_THEORY_PASS__NEW_DEFECT_REQUIRED__EXISTING_SPIN11_TENSOR_NO_GO"
+  },
+  "endpoint_spectator_theorem": {
+    "bridge_endpoint_periods": {
+      "z00": 6,
+      "z11": -6
+    },
+    "coefficient_four_escape": {
+      "class": "4P=nu(2ell)^2",
+      "common_mismatch": "4 nu A B",
+      "diagonal_period": "25",
+      "inverse_bridge_level": -4,
+      "mixed_ledger_overshoot_DeltaA": 150,
+      "ordinary_integral": true,
+      "overshoot_units": 3,
+      "repairs_current_action": false,
+      "required_physical_level": 1,
+      "scope": "requires a redesigned matter/anomaly ledger"
+    },
+    "correlated_class_lattice": {
+      "Z_basis": [
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          -1
+        ],
+        [
+          0,
+          0,
+          4
+        ]
+      ],
+      "basis_index_in_Z3": 4,
+      "class": "nu[g ell^2+rR c2(R)+sN nu^2/4]",
+      "diagonal_period": "(25g-rR+sN)/4",
+      "endpoint_symmetric_rR_and_sN_possible_for_g_plus1_minus1": false,
+      "integrality_congruence": "g-rR+sN=0 mod4",
+      "useful_dependent_integral_class": {
+        "class": "nu[c2(R)+nu^2/4]",
+        "identity": "(0,1,1)=(1,1,0)-(1,0,-1)",
+        "vector": [
+          0,
+          1,
+          1
+        ]
+      }
+    },
+    "eta_scope": {
+      "allowed_future_eta_route": "an index theory carrying the opposite free curvature plus every additional correlated term; it is new bridge physics",
+      "reason": "flat eta data lie in the curvature kernel and cannot change a nonzero perturbative polynomial",
+      "torsion_only_or_zero_curvature_eta_cancels_free_residue": false,
+      "torsion_only_or_zero_curvature_eta_cancels_quarter_spectator": false
+    },
+    "free_spin_bridge_shifts": "3 Z at either endpoint",
+    "free_spin_curvature_candidate_bridge_levels": "(1/2) Z",
+    "general_integral_completion_theorem": {
+      "independent_of_choice_of_integral_completion": true,
+      "python_mod1_diagnostic_z00": "3/4",
+      "signed_fractional_spectators": {
+        "z00": "-1/4",
+        "z11": "1/4"
+      },
+      "z00": "for integral C00=P+S00, S00(kappaD)=integer-25/4=-1/4 mod Z",
+      "z11": "for integral C11=-Pprime+S11, S11(kappaD)=integer+25/4=+1/4 mod Z"
+    },
+    "ordinary_bridge_levels": "Z",
+    "ordinary_bridge_shifts_are_integral": true,
+    "quarter_class_changed_by_bridge": false,
+    "status": "EXACT_QUARTER_ENDPOINT_SPECTATOR__ORDINARY_AND_FREE_CURVATURE_SPIN_CANDIDATE_BRIDGES_CANNOT_CANCEL",
+    "unit_target": {
+      "P_diagonal_period": "25/4",
+      "z00": "+P=+nu ell^2",
+      "z11": "-Pprime=-nu ellprime^2"
+    }
+  },
+  "gate_ledger": {
+    "G1": "OPEN",
+    "G2": "OPEN",
+    "G3": "OPEN",
+    "G4": "OPEN",
+    "G5": "OPEN",
+    "G6": "OPEN",
+    "G7": "OPEN",
+    "G8": "OPEN"
+  },
+  "lineage": {
+    "V73_master_core": "3e393acf570a6bc42d406989a0239e2b62e42ff038516d09bb6fc9a0c964f196",
+    "V73_route_core": "1ef4890b81885f5a16196865dd8772d9d3b70a20958829481c2397fd9b044c44",
+    "V73_selected_candidate": "F73_TENSOR_BRIDGE",
+    "supersession_scope": "tests the V73 bridge frontier; preserves every V73 rejection and gate"
+  },
+  "open_obligations": [
+    "construct the mixed normal-supergravity/K-defect deformed linear superform",
+    "supply a quotient-quantized refined endpoint sector carrying the opposite quarter free curvature and all correlated terms",
+    "construct the Z4-equivariant defect orbit, isotropy lifts, cap/source data and flat Dai--Freed phase",
+    "derive parities and the complete spectrum proving the vector-linear BF pair is massive with no chiral remainder",
+    "recompute the full pointwise SU2R, normal, gravitational and discrete-R anomaly ledger with the new defect",
+    "solve the defect BPS/FI equations, kinetic positivity, moduli stabilization and the full Hessian",
+    "retain the V73 KK determinant, regulator, thresholds, flavor, proton and cosmology obligations"
+  ],
+  "primary_sources": [
+    {
+      "scope": "multiplicative differential cohomology, integration and relative theories; framework for the differential cup product used here",
+      "title": "Products in Generalized Differential Cohomology",
+      "url": "https://arxiv.org/abs/1112.4173"
+    },
+    {
+      "scope": "eta-invariant description of perturbative and nonperturbative fermion anomaly inflow; it does not construct the V74 defect",
+      "title": "Anomaly Inflow and the eta-Invariant",
+      "url": "https://arxiv.org/abs/1909.08775"
+    },
+    {
+      "scope": "deformed six-dimensional linear multiplets for chiral anomalies; the ordinary-YM construction does not supply the normal-SUGRA defect",
+      "title": "The anomalous current multiplet in 6D minimal supersymmetry",
+      "url": "https://arxiv.org/abs/1511.06582"
+    },
+    {
+      "scope": "off-shell vector-linear density and four-form linear multiplet; used only as the local BF scaffold",
+      "title": "Off-Shell N=(1,0) Linear Multiplets in Six Dimensions",
+      "url": "https://arxiv.org/abs/2010.14655"
+    },
+    {
+      "scope": "rigid superspace anomaly-inflow and super-Chern-Simons framework; not a curved six-dimensional normal-bundle completion",
+      "title": "Higher dimensional supersymmetry in 4D superspace",
+      "url": "https://arxiv.org/abs/hep-th/0101233"
+    },
+    {
+      "scope": "fixed-locus anomaly and Green--Schwarz/Chern--Simons exchange conditions; motivates the pointwise and globally-vanishing tests",
+      "title": "Localized anomalies in orbifold gauge theories",
+      "url": "https://arxiv.org/abs/hep-th/0305024"
+    },
+    {
+      "scope": "integral string-charge and global Green--Schwarz quantization framework; it does not authorize the new K defect",
+      "title": "Quantization of anomaly coefficients in 6D N=(1,0) supergravity",
+      "url": "https://arxiv.org/abs/1711.04777"
+    }
+  ],
+  "schema": "susy_v74_spin11_bridge_endpoint_obstruction_audit_v1",
+  "source_manifest": [
+    {
+      "exists": true,
+      "path": "SUSY_V73_SPIN11_FULL_QUOTIENT_SUPERSYMMETRIC_WZ_AUDIT.json",
+      "sha256": "ed427748cbac662ec66c95d3810ac12e83decf5f7299c171b19394f2f0712f16"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V73_MULTIPATH_G1_FRONTIER_MASTER_AUDIT.json",
+      "sha256": "abb700ad833b6da8b2e6b25352ccb8cae2d104ca2530533b9a6a5e49487d7d94"
+    },
+    {
+      "exists": true,
+      "path": "susy_v74_spin11_bridge_endpoint_obstruction_audit.py",
+      "sha256": "61bfd85c89501e9e16b2ea3dd3ef68e23058674948a28c7bccc8996f474183ee"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v74_spin11_bridge_endpoint_obstruction_audit.py",
+      "sha256": "bd9a8e5aa598985a9be8cb5b1d0f3d256ae0368460944fbe2e6e1ff71d71b0a0"
+    }
+  ],
+  "status": "V74_SPIN11_BRIDGE_ENDPOINT_OBSTRUCTION_AUDIT__V73_ROUTE_AND_MASTER_CORES_BOUND__COMMON_K_COCHARACTER_LATTICE_EXACT__NU_AB_PRIMITIVE_ORDINARY_INTEGRAL__LEVEL_ONE_DIFFERENTIAL_CUP_BRIDGE_PASS__SPIN_PERIOD_GCD_TWO__SMOOTH_SPIN11_TENSOR_RESTRICTION_NO_GO__LOCAL_VECTOR_LINEAR_BF_SCAFFOLD_PASS__PERTURBATIVE_I8_VECTOR_LINEAR_PAIR_CANCELS__QUARTER_ENDPOINT_SPECTATOR_THEOREM_EXACT__ORDINARY_AND_FREE_CURVATURE_SPIN_CANDIDATE_BRIDGE_CANNOT_CANCEL_SPECTATOR__TORSION_ONLY_ETA_REJECTED__COEFFICIENT_FOUR_OVERSHOOTS_THREE_UNITS__DIRECT_FIVE_REPAIR_PHENOMENOLOGY_REJECTED__CONDITIONAL_LOCAL_BRIDGE_ONLY__G1_TO_G8_OPEN",
+  "supersymmetric_vector_linear_scaffold": {
+    "accepted_same_action_completion": false,
+    "bosonic_local_scaffold": {
+      "BF_GS_term": "S_BF=-2pi i integral_M6 C4 wedge J2",
+      "Chern_Simons_five_form": "omega5_LAB=-(aL/2pi) A B",
+      "derivative": "d omega5_LAB=-nu A B",
+      "endpoint_variation": "-2pi i[integral_z11(lambdaL/2pi)AB-integral_z00(lambdaL/2pi)AB]",
+      "equivalent_flux": "J2=F_Delta/2pi for a neutral U(1)_Delta vector",
+      "invariant_H5": true,
+      "modified_field_strength": "H5=dC4+omega5_LAB",
+      "normal_transformation": "delta_L C4=(lambdaL/2pi) A B",
+      "orientation": "boundary(gamma)=z11-z00",
+      "source": "J2=PD(boundary(gamma))=delta11-delta00"
+    },
+    "deformed_linear_constraint": {
+      "Bardeen_assignment": "preserve A and B currents; assign anomaly to L",
+      "curvature_target": "dH5=-nu A B",
+      "mixed_normal_SUGRA_K_defect_superform_constructed": false,
+      "normal_L_is_ordinary_YM_vector": false,
+      "ordinary_YM_superform_framework_exists": true,
+      "polarized_superfield_source": "W_L W_A W_B symmetrized"
+    },
+    "endpoint_spectator": {
+      "additional_free_curvature_or_fields_required": true,
+      "quarter_spectator_cancelled": false,
+      "twisting_lifts_to_leave_quarter_is_BF_compatible": false,
+      "vector_linear_pair_contribution": "0"
+    },
+    "existing_tensor_distinction": {
+      "bridge_field": "four-form linear multiplet",
+      "existing_physical_field": "anti-self-dual tensor-multiplet two-form B_minus, opposite duality to gravity B_plus",
+      "same_field": false
+    },
+    "minimal_multiplets": {
+      "component_contraction_to_F56_fixed": false,
+      "full_BPS_and_source_equations_solved": false,
+      "gaugino_variation_condition": "Y_Delta^ij epsilon_j=(1/4)(gamma dot F_Delta) epsilon^i",
+      "last_term": "C4 wedge F_Delta",
+      "linear": "L_Delta=(L^ij,phi_-^i,C4)",
+      "off_shell_density": "Y_Delta dot L+2 bar(Omega_Delta) phi+(1/4)F_Delta^MN E_MN",
+      "opposite_endpoint_FI_or_sources": "REQUIRED_NEW_DEFECT_DATA",
+      "singular_flux_ansatz": "F_Delta/2pi=J2",
+      "vector": "V_Delta=(a_Delta,Omega_+^i,Y_Delta^ij)"
+    },
+    "new_multiplet_anomaly_ledger": {
+      "Omega_plus": "+P_R",
+      "P_R": "(7 p1^2-4 p2)/5760+p1 c2(R)/48+c2(R)^2/24",
+      "irreducible_p2_sum": "0",
+      "phi_minus": "-P_R",
+      "pointwise_equivariant_cancellation": "OPEN_PENDING_COMPATIBLE_Z4_LIFTS",
+      "same_orbifold_lift_required": true,
+      "single_linear_without_compensating_anomaly_sector_allowed": false,
+      "smooth_perturbative_I8_cancellation": true,
+      "sum": "0"
+    },
+    "status": "CONDITIONAL_LOCAL_VECTOR_LINEAR_BF_PASS__COMMON_GLUING_ONLY__MIXED_NORMAL_SUPERGRAVITY_AND_GLOBAL_ORBIFOLD_OPEN",
+    "topological_mass": {
+      "BF_bilinear": "2m bar(Omega)phi+Y dot L+C4 wedge F",
+      "no_massless_axino_or_vector": "CONDITIONAL_ON_PARITIES_AND_CAP_DATA",
+      "nonchiral_massive_pair_at_level_one": "CONDITIONAL_LOCAL_RESULT"
+    }
+  },
+  "terminal_decision": {
+    "bridge_is_existing_action_content": false,
+    "closed_gates": [],
+    "common_K_bridge_exists": true,
+    "common_gluing_solved": true,
+    "honest_outcome": "V74 constructs an exact quantized level-one common-K bridge and a conditional vector-linear BF scaffold with cancelling perturbative I8.  It proves that the displayed smooth Spin11 invariant-characteristic tensor coupling cannot generate the bridge and that the bridge cannot change the forced quarter endpoint spectator.  Coefficient four and minimal matter routes redesign or spoil the action.  The selected scaffold is not a complete microscopic action.",
+    "quarter_endpoint_spectator_solved": false,
+    "same_action_microscopic_completion_found": false,
+    "selected_candidate": "F74_VECTOR_LINEAR_REFINED_BRIDGE",
+    "selected_candidate_accepted": false,
+    "supersymmetric_global_orbifold_action_constructed": false,
+    "theory_complete": false
+  },
+  "version": "V74"
+}
