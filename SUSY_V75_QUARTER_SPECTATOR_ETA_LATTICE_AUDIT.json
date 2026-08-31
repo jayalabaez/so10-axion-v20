@@ -1,0 +1,955 @@
+{
+  "F75_candidate_matrix": [
+    {
+      "accepted": false,
+      "blocker": "carries S_eta and lacks the global equivariant supersymmetric defect",
+      "exact_advance": true,
+      "id": "F75_VIRTUAL_LINE_ETA_REPRESENTATIVE",
+      "kind": "exact correlated free-fermion eta curvature",
+      "selected": false
+    },
+    {
+      "accepted": false,
+      "blocker": "realizes an integral completion, not the isolated inverse spectator",
+      "exact_advance": true,
+      "id": "F75_CORRELATED_R_OR_NORMAL_FERMION_MODULE",
+      "kind": "honest quotient endpoint fermions",
+      "selected": false
+    },
+    {
+      "accepted": false,
+      "blocker": "excluded by the mod-eight congruence",
+      "exact_advance": false,
+      "id": "F75_STANDARD_NEUTRAL_FREE_ETA_SPECTATOR",
+      "kind": "neutral singlet/doublet determinants and eta half-levels",
+      "selected": false
+    },
+    {
+      "accepted": false,
+      "blocker": "the vector-type SU2R multiplets, VEV dynamics, neutral masses, bound V71 residue, caps and phenomenology are unconstructed",
+      "exact_advance": true,
+      "id": "F75_GAUGE_CHARGED_SPECTRUM_REDESIGN",
+      "kind": "correlated level-four endpoint matter and conditional cross-mass operator",
+      "selected": true,
+      "status": "PASS_EXACT_ALGEBRAIC_LEVEL4_AND_MASS_OPERATOR__VECTOR_TYPE_VEV_ACTION_OPEN"
+    },
+    {
+      "accepted": false,
+      "blocker": "nonzero mixed normal-SU5 and normal-X-squared curvature",
+      "exact_advance": true,
+      "id": "F75_ODD_X_NEUTRAL_MOD8_EVASION",
+      "kind": "formal gauge-charged half-eta module",
+      "selected": false
+    },
+    {
+      "accepted": false,
+      "blocker": "excluded by the CP3 integer/half-index period and mod-48 theorems",
+      "exact_advance": true,
+      "id": "F75_CLEAN_GAUGE_CHARGED_PARENT_RESIDUE_INVERSE",
+      "kind": "honest localized Weyl or standard half-eta clean residue repair",
+      "selected": false
+    },
+    {
+      "accepted": false,
+      "blocker": "no bordism class, action, supersymmetric lift, gap, or cap construction",
+      "exact_advance": false,
+      "id": "F75_INTERACTING_REFINED_ENDPOINT_SECTOR",
+      "kind": "interacting invertible/noninvertible endpoint physics",
+      "selected": false
+    }
+  ],
+  "artifact_hashes": {
+    "generator_sha256": "e771e713c15e76a39b93d25cc0b0a709e242d9c1b840de04764071409b77fe35",
+    "test_sha256": "c555ebee86203c792e601b8d7560c42608f17a8c0ff1b4d3fb6c0914b2b13659"
+  },
+  "bound_parent_equal_corner_residue": {
+    "CP3_periods": {
+      "R_each_corner": "-5/8",
+      "R_minus_S_z11": "-3/8",
+      "R_plus_S_z00": "-7/8",
+      "S_z00": "-1/4",
+      "S_z11": "+1/4"
+    },
+    "bound_V71_Ahat_T4_convention": "1-p/24+...",
+    "bound_V71_input": "-(1/8) x [p1(T4)+x^2] = -(1/8)x p1(T6)|_f",
+    "combined_residuals": {
+      "z00_R_plus_S": "-nu[nu^2+5p]/24",
+      "z11_R_minus_S": "-nu[5nu^2+p]/24"
+    },
+    "equal_corner_residue": "R=-(1/8)nu[p+nu^2] at z00 and z11",
+    "equal_nonzero_parent_residue_cancelled": false,
+    "eta_spectator_profile": {
+      "z00": "+S_eta=+nu(nu^2-p)/12",
+      "z11": "-S_eta=-nu(nu^2-p)/12"
+    },
+    "notation": "p=p1(T4), so p1(T6)|fixed=p+nu^2",
+    "orientation_independent_reason": "the eta spectators are antisymmetric while the bound parent residue is equal at the two corners",
+    "primitive_AB_bridge_contains_normal_gravity_curvature": false,
+    "status": "EXACT_EQUAL_CORNER_PARENT_RESIDUE_CANNOT_MATCH_ANTISYMMETRIC_ETA_SPECTATOR"
+  },
+  "candidate_adjudication": {
+    "clean_gauge_charged_parent_residue_inverse": "REJECTED_CP3_INDEX_PERIOD_AND_MOD48",
+    "correlated_eta_representative": "PASS_EXACT_CLOSED_SPIN_PHASE__ORBIFOLD_EXTENSION_OPEN",
+    "gauge_charged_level4_redesign": "SELECTED_PASS_EXACT_ALGEBRAIC__MICROSCOPIC_ACTION_OPEN",
+    "interacting_refined_sector": "OPEN_UNCONSTRUCTED",
+    "odd_X_mod8_evasion": "PASS_EXACT_FORMAL__MIXED_GAUGE_ANOMALIES_SURVIVE",
+    "pure_P_eta_refinement": "FAIL_FOR_CONSTRUCTED_REPRESENTATIVE",
+    "standard_neutral_free_inverse_spectator": "REJECTED_MOD8"
+  },
+  "clean_parent_residue_index_period_no_go": {
+    "CP3_full_quotient_witness": {
+      "admissibility": "the diagonal kappa_D is an honest cocharacter of the full quotient H; c1=H induces an H bundle although ell=5H/2 and rho=H/2 split fractionally",
+      "c2R_period": "-1/4",
+      "ell_period": "5/2",
+      "inverse_residue_period": "5/8",
+      "nu_period": 1,
+      "p1_TCP3_period": 4,
+      "spin": true
+    },
+    "clean_parent_residue_inverse_exists": false,
+    "correlated_scope_witnesses_not_repairs": {
+      "charge_five": "one each 1_(+/-5) at q=-3/2, two each 1_(+/-5) at q=-1/2, and one neutral q=+2 hit Q1=-3,Q3=3/4 with seven Weyls but retain -(5/2)nu ell^2; CP3 index=-15",
+      "neutral": "2 singlets q=+1 plus 5 SU2R doublets q=-1/2 hit Q1=-3,Q3=3/4 but retain +(5/2)nu c2(R) and odd Witten parity"
+    },
+    "flat_or_torsion_phase_changes_free_period": false,
+    "forced_correlated_remainder": {
+      "meaning": "any candidate hitting Q1=-3,Q3=3/4 must retain gauge, SU2R, flavor or other free curvature that restores the total index lattice",
+      "ordinary_Weyl_module": "G=-5/8 mod Z=3/8 mod Z",
+      "standard_half_eta_module": "G=-5/8 mod (1/2)Z"
+    },
+    "index_lattices": {
+      "V74_free_spin_half_bridge_period_shift": "3Z",
+      "finite_integer_virtual_sum_of_honest_localized_complex_Weyl_indices": "Z",
+      "inverse_period_belongs_to_half_integer_lattice": false,
+      "inverse_period_belongs_to_integer_lattice": false,
+      "level4_completed_endpoint_periods": [
+        24,
+        -24
+      ],
+      "ordinary_integral_counterterms_change_conclusion": false,
+      "permissive_signed_standard_half_eta_sum": "(1/2)Z"
+    },
+    "mod48_singlet_doublet_cross_check": {
+      "clean_constraints": [
+        "X1=sum m d s x=0",
+        "sum m d s x^3=0",
+        "sum m d s n x^2=0",
+        "sum m d s n^2 x=0",
+        "D_n=sum_doublet m d n=0",
+        "D_x=sum_doublet m d x=0"
+      ],
+      "doublet_identity": "for z=n+x odd, 2(z^3-z)=0 mod48",
+      "honesty_parity": "n+x+epsilon=0 mod2",
+      "required_zero_mod48": 0,
+      "singlet_identity": "for z=n+x even, z^3-4z=0 mod48",
+      "solution_exists": false,
+      "species_data": "multiplicity m, SU5 dimension d, SU2R component count s=1 or 2, normal n=2q, X charge x, epsilon=0 or 1",
+      "summed_identity": "F=N3-4N1-4X1+6(D_n+D_x)=0 mod48 after clean Abelian moments",
+      "target_residue_mod48": 30
+    },
+    "not_excluded": [
+      "a correlated completion retaining new gauge, SU2R or flavor curvature",
+      "projector-distributed bulk anomalies completed across other fixed points",
+      "quarter/eighth-refined higher-spin, self-dual, GS or interacting anomaly theories",
+      "a changed parent action or a different globally admissible background ledger"
+    ],
+    "optional_flavor_quotient": {
+      "evades_theorem": false,
+      "reason": "kappa_D extends with v=0; honest flavor-quotient representations still have integral index, while surviving flavor curvature is a spectator"
+    },
+    "status": "EXACT_REPRESENTATION_INDEPENDENT_CP3_INDEX_PERIOD_NO_GO_FOR_CLEAN_LOCAL_WEYL_AND_STANDARD_HALF_ETA_PARENT_RESIDUE_INVERSE",
+    "target": {
+      "inverse_bound_V71_residue": "+(1/8)nu[p1(T4)+nu^2]",
+      "local_Weyl_moments": {
+        "Q1": "-3",
+        "Q3": "3/4"
+      },
+      "scaled_n_moments": {
+        "N1_equals_2Q1": "-6",
+        "N3_equals_8Q3": "6"
+      }
+    },
+    "theorem_scope": "all finite integer virtual sums of honest localized Weyl representations when every gauge, SU2R, flavor and other free-curvature coefficient cancels identically; standard signed half-eta copies are also excluded"
+  },
+  "core_sha256": "cd11d5412d0fa9ed28ac1cced7ad8b429bc3ee36b56fcb3cdf418814a6eb96f6",
+  "correlated_level4_spectrum_redesign": {
+    "accepted": false,
+    "added_modules": {
+      "M00": {
+        "SU2R_doublet_count": 4,
+        "Witten_SU2_global_parity_even": true,
+        "all_full_quotient_center_checks_pass": true,
+        "complex_Weyl_component_count": 12,
+        "continuous_moments": {
+          "Q1_sum_mdq": "0",
+          "Q3_sum_mdq3": "0",
+          "U1L_squared_X_sum_mdq2x": "0",
+          "X_c2R_sum_mxIR": "0",
+          "X_cubed_sum_mdx3": "0",
+          "gravity_X_sum_mdx": "0"
+        },
+        "discrete_checks": {
+          "SU2R_mod2": 0,
+          "SU2R_sum_mnIR": -6,
+          "X_squared_mod4": 0,
+          "X_squared_sum_mdnx2": 300,
+          "gravity_sum_mdn": 0
+        },
+        "fields": [
+          {
+            "SU2R_dimension": 1,
+            "U5_representation": "1_(+5)",
+            "U5tilde_center_pass": true,
+            "X": 5,
+            "Z4R_scalar_if_diagonal_lift": 0,
+            "diagonal_center_pass": true,
+            "id": "field_1",
+            "multiplicity": 2,
+            "n_equals_2qpsi": 3,
+            "qphi_if_local_N1_lift_exists": "2",
+            "qpsi": "3/2"
+          },
+          {
+            "SU2R_dimension": 1,
+            "U5_representation": "1_(-5)",
+            "U5tilde_center_pass": true,
+            "X": -5,
+            "Z4R_scalar_if_diagonal_lift": 0,
+            "diagonal_center_pass": true,
+            "id": "field_2",
+            "multiplicity": 2,
+            "n_equals_2qpsi": 3,
+            "qphi_if_local_N1_lift_exists": "2",
+            "qpsi": "3/2"
+          },
+          {
+            "SU2R_dimension": 2,
+            "U5_representation": "1_(+0)",
+            "U5tilde_center_pass": true,
+            "X": 0,
+            "Z4R_scalar_if_diagonal_lift": 0,
+            "diagonal_center_pass": true,
+            "id": "field_3",
+            "multiplicity": 1,
+            "n_equals_2qpsi": -5,
+            "qphi_if_local_N1_lift_exists": "-2",
+            "qpsi": "-5/2"
+          },
+          {
+            "SU2R_dimension": 2,
+            "U5_representation": "1_(+0)",
+            "U5tilde_center_pass": true,
+            "X": 0,
+            "Z4R_scalar_if_diagonal_lift": 2,
+            "diagonal_center_pass": true,
+            "id": "field_4",
+            "multiplicity": 2,
+            "n_equals_2qpsi": -3,
+            "qphi_if_local_N1_lift_exists": "-1",
+            "qpsi": "-3/2"
+          },
+          {
+            "SU2R_dimension": 2,
+            "U5_representation": "1_(+0)",
+            "U5tilde_center_pass": true,
+            "X": 0,
+            "Z4R_scalar_if_diagonal_lift": 2,
+            "diagonal_center_pass": true,
+            "id": "field_5",
+            "multiplicity": 1,
+            "n_equals_2qpsi": 5,
+            "qphi_if_local_N1_lift_exists": "3",
+            "qpsi": "5/2"
+          }
+        ],
+        "target_coefficients_g_r_s": [
+          "3",
+          "3",
+          "0"
+        ]
+      },
+      "M11": {
+        "SU2R_doublet_count": 2,
+        "Witten_SU2_global_parity_even": true,
+        "all_full_quotient_center_checks_pass": true,
+        "complex_Weyl_component_count": 8,
+        "continuous_moments": {
+          "Q1_sum_mdq": "0",
+          "Q3_sum_mdq3": "0",
+          "U1L_squared_X_sum_mdq2x": "0",
+          "X_c2R_sum_mxIR": "0",
+          "X_cubed_sum_mdx3": "0",
+          "gravity_X_sum_mdx": "0"
+        },
+        "discrete_checks": {
+          "SU2R_mod2": 0,
+          "SU2R_sum_mnIR": 6,
+          "X_squared_mod4": 0,
+          "X_squared_sum_mdnx2": -300,
+          "gravity_sum_mdn": 0
+        },
+        "fields": [
+          {
+            "SU2R_dimension": 1,
+            "U5_representation": "1_(+5)",
+            "U5tilde_center_pass": true,
+            "X": 5,
+            "Z4R_scalar_if_diagonal_lift": 2,
+            "diagonal_center_pass": true,
+            "id": "field_1",
+            "multiplicity": 2,
+            "n_equals_2qpsi": -3,
+            "qphi_if_local_N1_lift_exists": "-1",
+            "qpsi": "-3/2"
+          },
+          {
+            "SU2R_dimension": 1,
+            "U5_representation": "1_(-5)",
+            "U5tilde_center_pass": true,
+            "X": -5,
+            "Z4R_scalar_if_diagonal_lift": 2,
+            "diagonal_center_pass": true,
+            "id": "field_2",
+            "multiplicity": 2,
+            "n_equals_2qpsi": -3,
+            "qphi_if_local_N1_lift_exists": "-1",
+            "qpsi": "-3/2"
+          },
+          {
+            "SU2R_dimension": 2,
+            "U5_representation": "1_(+0)",
+            "U5tilde_center_pass": true,
+            "X": 0,
+            "Z4R_scalar_if_diagonal_lift": 0,
+            "diagonal_center_pass": true,
+            "id": "field_3",
+            "multiplicity": 2,
+            "n_equals_2qpsi": 3,
+            "qphi_if_local_N1_lift_exists": "2",
+            "qpsi": "3/2"
+          }
+        ],
+        "target_coefficients_g_r_s": [
+          "-3",
+          "-3",
+          "0"
+        ]
+      }
+    },
+    "baseline_correlated_classes": {
+      "meaning": "(g,r,s) in nu[g ell^2+r c2(R)+s nu^2/4]",
+      "z00": [
+        "1",
+        "1",
+        "0"
+      ],
+      "z11": [
+        "-1",
+        "-1",
+        "0"
+      ]
+    },
+    "beta_function_branches": {
+      "both_cross_blocks_GUT_rank_two": [
+        "0",
+        "0",
+        "0"
+      ],
+      "new_charge_five_fields_light": [
+        "12/5",
+        "0",
+        "0"
+      ],
+      "old_plus_new_charge_five_fields_light": [
+        "24/5",
+        "0",
+        "0"
+      ]
+    },
+    "common_overlap_and_bridge": {
+      "level_is_quantized": true,
+      "mismatch_without_flavor": "4 nu A B",
+      "optional_flavor_bridge_built": false,
+      "optional_flavor_mismatch": "4 nu B(A+2v)",
+      "required_V74_bridge_level": -4
+    },
+    "completed_classes": {
+      "diagonal_periods": [
+        24,
+        -24
+      ],
+      "period_formula": "(25g-r+s)/4",
+      "quarter_coset_removed_algebraically": true,
+      "z00": [
+        "4",
+        "4",
+        "0"
+      ],
+      "z11": [
+        "-4",
+        "-4",
+        "0"
+      ]
+    },
+    "conditional_cross_mass_operator": {
+      "Z4R_preserved_by_condensates": true,
+      "mu_or_16_four_regenerated_by_selection_rule": false,
+      "new_charge_five_qpsi": {
+        "z00": "+3/2",
+        "z11": "-3/2"
+      },
+      "old_charge_five_qpsi": {
+        "z00": "+1/2",
+        "z11": "-1/2"
+      },
+      "operator": "W includes Z(E_old_plus E_new_minus+E_old_minus E_new_plus)",
+      "two_by_two_cross_blocks_full_rank_proven": false,
+      "vector_type_scalars": {
+        "Z00": {
+          "Qphi": -2,
+          "Z4R": 0
+        },
+        "Z11": {
+          "Qphi": 2,
+          "Z4R": 0
+        }
+      },
+      "z00_charge_check": {
+        "Z4R": "0+2+0=2 mod4",
+        "normal": "-2+1+2=1"
+      },
+      "z11_charge_check": {
+        "Z4R": "0+0+2=2 mod4",
+        "normal": "+2+0-1=1"
+      }
+    },
+    "microscopic_blockers": [
+      "construct a vector/Sigma-type local N=1 origin for every neutral SU2R-doublet Weyl",
+      "derive the Qphi=+/-2 scalar potential, radial drivers, F/D/BPS equations and positive Hessian",
+      "prove both charged cross-mass matrices have rank two and mass every neutral remnant",
+      "match anomalies after continuous normal-U1 breaking",
+      "construct the Z4 orbifold profiles, defect caps and preserved-supercharge lifts",
+      "complete proton, flavor, unification, collider, reheating, relic and BBN audits"
+    ],
+    "same_action_microscopic_completion": false,
+    "scope_without_optional_flavor_quotient": true,
+    "status": "PASS_EXACT_ALGEBRAIC_LEVEL4_AND_MASS_OPERATOR__VECTOR_TYPE_VEV_ACTION_OPEN",
+    "unresolved_bound_parent": {
+      "V71_equal_corner_normal_gravity_residue_cancelled": false,
+      "reason": "M00 and M11 have Q1=Q3=0 and do not alter R=-(1/8)nu(p+nu^2)"
+    }
+  },
+  "date": "2026-08-31",
+  "exact_correlated_fermion_modules": {
+    "R_completion": {
+      "SU2R_doublet_count": 2,
+      "Witten_SU2_global_parity_even": true,
+      "all_full_quotient_center_checks_pass": true,
+      "complete_polynomial": "C_R=nu[ell^2+c2(R)]",
+      "complex_Weyl_count": 8,
+      "content": "2 x [1_(+5),qL=+1/2]+2 x [1_(-5),qL=+1/2]+2 x [SU2R doublet,qL=-1/2]",
+      "diagonal_period": 6,
+      "normal_X2": 50,
+      "normal_moments_Q1_Q3": [
+        "0",
+        "0"
+      ],
+      "polynomial_coefficients_beyond_gauge": {
+        "nu3": "0",
+        "nu_c2R": "1",
+        "nu_p1": "0"
+      },
+      "pure_gauge_target_obtained": false
+    },
+    "conclusion": "honest free fermions realize the correlated completions and their integral difference, not an isolated inverse quarter spectator",
+    "integral_spectator_shift_module": {
+      "SU2R_doublet_count": 2,
+      "Witten_SU2_global_parity_even": true,
+      "all_full_quotient_center_checks_pass": true,
+      "complete_polynomial": "D=C_R-C_N=nu[c2(R)+nu^2/4]",
+      "complex_Weyl_count": 6,
+      "content": "2 x [SU2R doublet,qL=-1/2]+2 x [singlet,qL=+1]",
+      "ordinary_integral": true,
+      "polynomial_coefficients": {
+        "nu3": "1/4",
+        "nu_c2R": "1",
+        "nu_p1": "0"
+      }
+    },
+    "normal_line_completion": {
+      "all_full_quotient_center_checks_pass": true,
+      "complete_polynomial": "C_N=nu[ell^2-nu^2/4]",
+      "complex_Weyl_count": 6,
+      "content": "2 x [1_(+5),qL=+1/2]+2 x [1_(-5),qL=+1/2]+2 x [singlet,qL=-1]",
+      "diagonal_period": 6,
+      "normal_X2": 50,
+      "normal_moments_Q1_Q3": [
+        "0",
+        "-3/2"
+      ],
+      "polynomial_coefficients_beyond_gauge": {
+        "nu3": "-1/4",
+        "nu_c2R": "0",
+        "nu_p1": "0"
+      },
+      "pure_gauge_target_obtained": false
+    },
+    "status": "EXACT_HONEST_QUOTIENT_FREE_FERMION_CORRELATED_MODULES"
+  },
+  "gate_ledger": {
+    "G1": "OPEN",
+    "G2": "OPEN",
+    "G3": "OPEN",
+    "G4": "OPEN",
+    "G5": "OPEN",
+    "G6": "OPEN",
+    "G7": "OPEN",
+    "G8": "OPEN"
+  },
+  "gauge_charged_neutral_theorem_loophole": {
+    "all_center_checks_pass": true,
+    "formal_module": "(5_(-3)+5bar_(+3)) tensor 2_R, q_N=1, signed eta weight t=1/2",
+    "full_odd_X_representation_ring_classified": false,
+    "gauge_independent_curvature": "(5/3)nu^3-5nu c2(R)-(5/12)nu p1(T4)",
+    "neutral_mod8_R_coefficient_evasion": "-5=-1 mod4",
+    "parity_flip": "n+x+r_hw=0 mod2: for odd x an SU2R doublet has integral q=n/2, while a singlet has half-integral q",
+    "pure_U5_anomalies_cancel": [
+      "SU5^3",
+      "X SU5^2",
+      "X^3",
+      "X-gravity",
+      "X c2(R)",
+      "nu^2 X"
+    ],
+    "quotient_rows": [
+      {
+        "U5tilde_center_pass": true,
+        "diagonal_center_pass": true,
+        "k": 1,
+        "n": 2,
+        "r_hw": 1,
+        "representation": "5_(-3)",
+        "x": -3
+      },
+      {
+        "U5tilde_center_pass": true,
+        "diagonal_center_pass": true,
+        "k": -1,
+        "n": 2,
+        "r_hw": 1,
+        "representation": "5bar_(+3)",
+        "x": 3
+      }
+    ],
+    "same_action_repair": false,
+    "status": "EXACT_ODD_X_COUNTEREXAMPLE_TO_EXTENDING_THE_NEUTRAL_MOD8_PREMISE",
+    "surviving_mixed_gauge_curvature": {
+      "normal_SU5_squared": "2 nu ch2(5), nonzero; equivalent coefficients depend on trace normalization",
+      "normal_X_squared": "45 nu f_X^2"
+    },
+    "symmetry_mass_obstruction": "same-normal-charge conjugates are gauge-vectorlike but normal/R-chiral; opposite normal charges allow an invariant mass but cancel the spectator"
+  },
+  "lineage": {
+    "V71_route_core_for_equal_corner_residue": "0162828ebd2b1e28d4fcbcf4ea1e6c61178d305cec79abd6d36a55719bb0f1ea",
+    "V74_master_core": "3d51a7c13060dad547d8bedffb7f8299c0e24e67a21c8e121dd98b0efcbc57f9",
+    "V74_route_core": "853833b9206e0eacb3a57ef72b7615c4d8c2b28b87a99155c93dc46d803e5603",
+    "V74_selected_candidate": "F74_VECTOR_LINEAR_REFINED_BRIDGE",
+    "supersession_scope": "constructs and tests the correlated eta endpoint sector while preserving V74's exact bridge and every fail-closed gate"
+  },
+  "open_obligations": [
+    "compute the full raw parent fixed-point determinant including SU2R, normal, gravitational and ghost characters to identify its actual correlated eta class",
+    "compute the exact Spin-SU2R-U5-flavor orbifold bordism/anomaly group, flat ambiguities and Z4-equivariant capped extension of the exact closed-spin Dai--Freed phase",
+    "classify correlated odd-X quotient sectors that retain compensating gauge/R curvature; the clean parent-residue inverse is now excluded",
+    "construct the selected level-four vector/Sigma multiplets, Qphi=+/-2 VEV sector, full-rank mass matrices, anomaly matching and neutral mass gap",
+    "construct a curved-supergravity and Z4-equivariant defect action with caps, isotropy lifts and a symmetry-preserving mass gap",
+    "prove that any interacting/topological sector matches the continuous free anomaly and does not merely cancel torsion",
+    "derive the resulting spectrum, thresholds, proton operators, flavor, reheating, relics and cosmology",
+    "retain every V74 KK determinant, regulator, BPS, soft-breaking and phenomenology obligation"
+  ],
+  "primary_sources": [
+    {
+      "scope": "the exponentiated eta invariant is a determinant-line section with gluing and variation laws; this supports the exact closed-spin virtual line phase, not its missing orbifold extension",
+      "title": "Eta-Invariants and Determinant Lines",
+      "url": "https://arxiv.org/abs/hep-th/9405012"
+    },
+    {
+      "scope": "Dai--Freed/eta phases supply the global anomaly theory of fermion determinants; this does not identify the V75 microscopic sector",
+      "title": "Anomaly Inflow and the eta-Invariant",
+      "url": "https://arxiv.org/abs/1909.08775"
+    },
+    {
+      "scope": "invertible phases are classified using bordism spectra; the exact Spin-SU2R-U5 orbifold bordism group is not computed here",
+      "title": "Reflection positivity and invertible topological phases",
+      "url": "https://arxiv.org/abs/1604.06527"
+    },
+    {
+      "scope": "equivariant localized spin-half anomalies and remnant Lorentz charges; higher-spin and global eta data require separate treatment",
+      "title": "Anomalies on Six Dimensional Orbifolds",
+      "url": "https://arxiv.org/abs/hep-th/0612212"
+    },
+    {
+      "scope": "five-dimensional chiral boundary conditions split anomaly onto orbifold fixed planes; used to bound the permissive half-copy convention, not to construct the V75 six-dimensional defect",
+      "title": "Anomalies on Orbifolds",
+      "url": "https://arxiv.org/abs/hep-th/0103135"
+    },
+    {
+      "scope": "five-dimensional supersymmetric Chern--Simons and anomaly-inflow terms admit 4D N=1 superspace descriptions; the normal Lorentz connection is not thereby promoted to an ordinary vector multiplet",
+      "title": "Higher dimensional supersymmetry in 4D superspace",
+      "url": "https://arxiv.org/abs/hep-th/0101233"
+    },
+    {
+      "scope": "massive hypermultiplets generate sign-dependent supersymmetric Chern--Simons terms; V75 deliberately allows an even larger signed half-level lattice in its neutral no-go",
+      "title": "Five-dimensional supersymmetric Chern-Simons action as a hypermultiplet quantum correction",
+      "url": "https://arxiv.org/abs/hep-th/0609078"
+    },
+    {
+      "scope": "global gauge form and cocharacter lattices constrain anomaly quantization; it does not construct the singular V75 defect",
+      "title": "Quantization of anomaly coefficients in 6D N=(1,0) supergravity",
+      "url": "https://arxiv.org/abs/1711.04777"
+    },
+    {
+      "scope": "quotient/generalized-spin structures correlate perturbative and global anomalies; used as structural precedent, not a U5 calculation",
+      "title": "Anomaly interplay in U(2) gauge theories",
+      "url": "https://arxiv.org/abs/2001.07731"
+    },
+    {
+      "scope": "the vector-linear density and four-form multiplet support V74's local scaffold, not the missing equivariant eta completion",
+      "title": "Off-Shell N=(1,0) Linear Multiplets in Six Dimensions",
+      "url": "https://arxiv.org/abs/2010.14655"
+    },
+    {
+      "scope": "R and supersymmetry anomalies obey coupled Wess--Zumino consistency; the paper is four-dimensional conformal supergravity, not this model",
+      "title": "Supersymmetry anomalies in N=1 conformal supergravity",
+      "url": "https://arxiv.org/abs/1902.06717"
+    },
+    {
+      "scope": "sixteen-fold symmetric mass generation is model- and symmetry-dependent and is not an automatic gap for the V75 quotient module",
+      "title": "Interacting Topological Superconductors and possible Origin of 16n Chiral Fermions in the Standard Model",
+      "url": "https://arxiv.org/abs/1402.4151"
+    }
+  ],
+  "quarter_target_coset": {
+    "V74_bridge_changes_quarter_coset": false,
+    "V74_bridge_periods": {
+      "z00": 6,
+      "z11": -6
+    },
+    "diagonal_periods": {
+      "z00": "25/4",
+      "z11": "-25/4"
+    },
+    "flat_or_torsion_phase_changes_free_curvature": false,
+    "ordinary_correlated_lattice": {
+      "class": "nu[g ell^2+rR c2(R)+sN nu^2/4]",
+      "coset_difference_mod4": 2,
+      "integrality": "g-rR+sN=0 mod4",
+      "z00_target_coset": 1,
+      "z11_target_coset": 3
+    },
+    "ordinary_integral_additions_change_coset": false,
+    "required_object": "an inverse anomaly theory with the opposite free curvature and every forced correlated term, plus a same-action microscopic realization",
+    "status": "QUARTER_COSET_RECONSTRUCTED_AND_UNCHANGED",
+    "targets": {
+      "z00": "+P=+nu ell^2",
+      "z11": "-Pprime=-nu ellprime^2"
+    }
+  },
+  "schema": "susy_v75_quarter_spectator_eta_lattice_audit_v1",
+  "source_manifest": [
+    {
+      "scope": "the exponentiated eta invariant is a determinant-line section with gluing and variation laws; this supports the exact closed-spin virtual line phase, not its missing orbifold extension",
+      "title": "Eta-Invariants and Determinant Lines",
+      "url": "https://arxiv.org/abs/hep-th/9405012"
+    },
+    {
+      "scope": "Dai--Freed/eta phases supply the global anomaly theory of fermion determinants; this does not identify the V75 microscopic sector",
+      "title": "Anomaly Inflow and the eta-Invariant",
+      "url": "https://arxiv.org/abs/1909.08775"
+    },
+    {
+      "scope": "invertible phases are classified using bordism spectra; the exact Spin-SU2R-U5 orbifold bordism group is not computed here",
+      "title": "Reflection positivity and invertible topological phases",
+      "url": "https://arxiv.org/abs/1604.06527"
+    },
+    {
+      "scope": "equivariant localized spin-half anomalies and remnant Lorentz charges; higher-spin and global eta data require separate treatment",
+      "title": "Anomalies on Six Dimensional Orbifolds",
+      "url": "https://arxiv.org/abs/hep-th/0612212"
+    },
+    {
+      "scope": "five-dimensional chiral boundary conditions split anomaly onto orbifold fixed planes; used to bound the permissive half-copy convention, not to construct the V75 six-dimensional defect",
+      "title": "Anomalies on Orbifolds",
+      "url": "https://arxiv.org/abs/hep-th/0103135"
+    },
+    {
+      "scope": "five-dimensional supersymmetric Chern--Simons and anomaly-inflow terms admit 4D N=1 superspace descriptions; the normal Lorentz connection is not thereby promoted to an ordinary vector multiplet",
+      "title": "Higher dimensional supersymmetry in 4D superspace",
+      "url": "https://arxiv.org/abs/hep-th/0101233"
+    },
+    {
+      "scope": "massive hypermultiplets generate sign-dependent supersymmetric Chern--Simons terms; V75 deliberately allows an even larger signed half-level lattice in its neutral no-go",
+      "title": "Five-dimensional supersymmetric Chern-Simons action as a hypermultiplet quantum correction",
+      "url": "https://arxiv.org/abs/hep-th/0609078"
+    },
+    {
+      "scope": "global gauge form and cocharacter lattices constrain anomaly quantization; it does not construct the singular V75 defect",
+      "title": "Quantization of anomaly coefficients in 6D N=(1,0) supergravity",
+      "url": "https://arxiv.org/abs/1711.04777"
+    },
+    {
+      "scope": "quotient/generalized-spin structures correlate perturbative and global anomalies; used as structural precedent, not a U5 calculation",
+      "title": "Anomaly interplay in U(2) gauge theories",
+      "url": "https://arxiv.org/abs/2001.07731"
+    },
+    {
+      "scope": "the vector-linear density and four-form multiplet support V74's local scaffold, not the missing equivariant eta completion",
+      "title": "Off-Shell N=(1,0) Linear Multiplets in Six Dimensions",
+      "url": "https://arxiv.org/abs/2010.14655"
+    },
+    {
+      "scope": "R and supersymmetry anomalies obey coupled Wess--Zumino consistency; the paper is four-dimensional conformal supergravity, not this model",
+      "title": "Supersymmetry anomalies in N=1 conformal supergravity",
+      "url": "https://arxiv.org/abs/1902.06717"
+    },
+    {
+      "scope": "sixteen-fold symmetric mass generation is model- and symmetry-dependent and is not an automatic gap for the V75 quotient module",
+      "title": "Interacting Topological Superconductors and possible Origin of 16n Chiral Fermions in the Standard Model",
+      "url": "https://arxiv.org/abs/1402.4151"
+    }
+  ],
+  "standard_neutral_free_eta_no_go": {
+    "allowed_charges": {
+      "SU2R_doublet": "q=n/2 with n odd",
+      "SU2R_singlet": "q=m in Z",
+      "five_dimensional_convention": "an individual parity/eta half-copy is permitted at t=+/-1/2; a regulator mass-sign difference is integer",
+      "index_unit": "I_s and I_d denote one positive complex 4D Weyl determinant",
+      "ordinary_4D_determinant_multiplicity": "t in Z",
+      "signed_multiplicity": "t=u/2 with u in Z (an overgenerous half-level lattice)"
+    },
+    "eta_gravity_spectator": {
+      "both_signs_excluded": true,
+      "cubic_left_mod8": 0,
+      "cubic_right_mod8": 4,
+      "one_orientation_equations": [
+        "sum_d u n=0",
+        "sum_s u m=-4",
+        "sum_d u n^3+4 sum_s u m^3=-4"
+      ],
+      "solution_exists": false,
+      "target": "+/- S_eta=+/-nu(nu^2-p1(T4))/12, with zero c2(R)"
+    },
+    "eta_spectator_plus_bound_V71_residue": {
+      "cubic_left_mod8": 0,
+      "cubic_right_mod8": 2,
+      "solution_exists": false,
+      "z00_inverse_target_equations": [
+        "sum_d u n=0",
+        "sum_s u m=-10",
+        "sum_d u n^3+4 sum_s u m^3=2"
+      ],
+      "z11_inverse_target_equations": [
+        "sum_d u n=0",
+        "sum_s u m=-2",
+        "sum_d u n^3+4 sum_s u m^3=10"
+      ]
+    },
+    "modular_identities": [
+      "n^3=n mod8 for odd n",
+      "m^3=m mod2 for every integer m"
+    ],
+    "not_a_no_go_for": [
+      "gauge-charged modules whose complete gauge anomaly ledger cancels",
+      "higher-spin/tangent-twisted eta theories",
+      "classical axionic normal/gravitational WZ terms",
+      "interacting invertible or noninvertible topological sectors"
+    ],
+    "pure_R_spectator": {
+      "both_signs_excluded": true,
+      "cubic_left_mod8": 4,
+      "cubic_right_mod8": 0,
+      "necessary_equations": [
+        "sum_d u n=4",
+        "sum_s u m=-4",
+        "sum_d u n^3+4 sum_s u m^3=0"
+      ],
+      "solution_exists": false,
+      "target": "-nu c2(R), with zero nu^3 and nu p1(T4)"
+    },
+    "pure_normal_quarter": {
+      "cubic_equation": "sum_d u n^3+4 sum_s u m^3=+/-12",
+      "cubic_left_mod8": 0,
+      "cubic_right_mod8": 4,
+      "necessary_linear_equations": [
+        "sum_d u n=0",
+        "sum_s u m=0"
+      ],
+      "solution_exists": false,
+      "target": "+/- nu^3/4, with zero c2(R) and nu p1(T4)"
+    },
+    "scope": "finite signed combinations of ordinary 4D Weyl determinants and standard 5D parity/eta half-copies, using gauge-neutral Spin2 singlets and SU2R doublets only",
+    "single_field_polynomials": {
+      "doublet": "I_d=q^3 nu^3/3-q nu c2(R)-q nu p1(T4)/12",
+      "singlet": "I_s=q^3 nu^3/6-q nu p1(T4)/24"
+    },
+    "status": "EXACT_MOD8_NO_GO_IN_STANDARD_NEUTRAL_FREE_ETA_IMAGE"
+  },
+  "status": "V75_QUARTER_SPECTATOR_ETA_LATTICE_AUDIT__V74_ROUTE_AND_MASTER_CORES_BOUND__HONEST_LINE_ETA_REPRESENTATIVE_EXACT__ETA_CURVATURE_P_PLUS_GRAVITY_SPECTATOR__COMMON_NU_AB_BRIDGE_UNCHANGED__CORRELATED_R_AND_NORMAL_MODULES_EXACT__BOUND_V71_EQUAL_CORNER_RESIDUE_MISMATCH_EXACT__STANDARD_NEUTRAL_FREE_ETA_INVERSE_SPECTATOR_MOD8_NO_GO__CLEAN_GAUGE_CHARGED_PARENT_RESIDUE_INVERSE_INDEX_PERIOD_NO_GO__CORRELATED_LEVEL4_SPECTRUM_AND_MASS_OPERATOR_ALGEBRA_EXACT__VECTOR_TYPE_VEV_ACTION_AND_BOUND_PARENT_RESIDUE_OPEN__LEVEL4_REDESIGN_SELECTED_UNACCEPTED__G1_TO_G8_OPEN",
+  "supersymmetry_and_mass_audit": {
+    "V74_vector_linear_pair_supplies_eta_spectator": false,
+    "accepted_same_action_completion": false,
+    "eta_domain_wall_scope": {
+      "Z4_equivariant_caps_and_isotropy_lifts_constructed": false,
+      "boundary_zero_modes_or_topological_order_audited": false,
+      "closed_smooth_spin_H_Dai_Freed_phase_exact": true,
+      "full_H_bordism_and_flat_ambiguity_classification_computed": false,
+      "literal_4D_N1_realization": "four chiral multiplets: two each with (x,qpsi)=(+5,+1/2) and (-5,+1/2); gauge-vectorlike but normal/R-chiral",
+      "orbifold_relative_capped_Dai_Freed_theory_constructed": false,
+      "permissive_individual_5D_half_eta_realization": "four hypermultiplet half-copies per sign; a regulator mass-sign difference instead shifts the level integrally",
+      "symmetry_preserving_gap_proven": false
+    },
+    "local_N1_implications": {
+      "charged_holomorphic_bilinear_normal_charge": "+2",
+      "continuous_SU2R_doublets_as_local_N1_multiplets_constructed": false,
+      "normal_charge_units": "q_N=1 corresponds to conventional continuous R=2",
+      "q_theta": "+1/2",
+      "z00_Kahler_GM_bilinear": "REQUIRES_A_Q_N_MINUS2_SECTION_WITH_R_MINUS4_EQUIVALENT_ZERO_MOD4",
+      "z00_certified_high_scale_mass": false,
+      "z00_charged_qpsi_plus_half_scalar_normal_charge": "+1 (R=+2)",
+      "z00_superpotential_mass": "REQUIRES_A_Q_N_MINUS1_SECTION_WITH_R_MINUS2_EQUIVALENT_TWO_MOD4; ITS_VEV_BREAKS_Z4R",
+      "z11_preserved_supercharge_and_isotropy_lift": "UNBUILT__NO_MASS_CLAIM"
+    },
+    "sixteen_fold_interaction_scope": {
+      "applies_automatically_to_V75_gauge_and_R_quotient": false,
+      "continuous_free_anomaly_matched": false,
+      "explicit_local_Hamiltonian_or_SUSY_action": "ABSENT",
+      "model_specific_sixteen_Weyl_symmetric_mass_generation_proposal_exists": true
+    },
+    "status": "CORRELATED_ETA_SECTOR_NOT_A_SUPERSYMMETRIC_MASSIVE_DEFECT"
+  },
+  "terminal_decision": {
+    "Z4_equivariant_orbifold_extension_constructed": false,
+    "bound_V71_equal_corner_residue_cancelled": false,
+    "clean_local_Weyl_or_standard_half_eta_parent_residue_route_closed": true,
+    "closed_gates": [],
+    "closed_smooth_spin_H_Dai_Freed_phase_constructed": true,
+    "correlated_eta_representative_constructed": true,
+    "gauge_charged_routes_exhaustively_classified": false,
+    "honest_outcome": "V75 constructs an exact closed-spin correlated eta phase and exact quotient fermion modules.  Its forced spectator neither cancels V71's equal-corner residue nor lies in the standard neutral free eta image, by exact sign and mod-eight theorems.  A new correlated level-four spectrum removes the quarter coset algebraically and admits symmetry-safe cross-mass operators, but its vector-type VEV action, neutral gap, bound residue, caps and phenomenology are absent. A representation-independent CP3 index-period theorem excludes all clean localized-Weyl and standard half-eta repairs of that residue. The current action is therefore still rejected.",
+    "interacting_endpoint_action_constructed": false,
+    "level4_mass_operator_charge_checks_pass": true,
+    "level4_microscopic_action_constructed": false,
+    "level4_quarter_coset_removed_algebraically": true,
+    "odd_X_neutral_mod8_loophole_exhibited": true,
+    "pure_quarter_spectator_cancelled_by_eta_route": false,
+    "same_action_microscopic_completion_found": false,
+    "selected_candidate": "F75_GAUGE_CHARGED_SPECTRUM_REDESIGN",
+    "selected_candidate_accepted": false,
+    "standard_neutral_free_eta_route_closed": true,
+    "theory_complete": false
+  },
+  "version": "V75",
+  "virtual_line_eta_representative": {
+    "CP3_diagonal_witness": {
+      "C_eta_period": "6",
+      "I6_L_minus": "1",
+      "I6_L_plus": "4",
+      "L_minus_c1": 2,
+      "L_plus_c1": 3,
+      "P_period": "25/4",
+      "S_eta_period": "-1/4",
+      "ell": "5/2",
+      "nu": 1,
+      "p1_TCP3": 4
+    },
+    "V74_common_bridge_changed": false,
+    "Z4_equivariant_orbifold_extension_constructed": false,
+    "closed_five_dimensional_phase": "Z_eta(Y5)=exp{2 pi i*2[xi(D_L_plus)-xi(D_L_minus)]}=[tau(D_L_plus)/tau(D_L_minus)]^2, up to chirality/inverse convention",
+    "closed_smooth_spin_H_Dai_Freed_phase_constructed": true,
+    "common_overlap_difference": "C_eta(ell)-C_eta(ellprime)=nu(ell^2-ellprime^2)=nu A B",
+    "computed_coefficients": {
+      "nu3": "1/12",
+      "nu_ell2": "1",
+      "nu_p1": "-1/12"
+    },
+    "curvature": "C_eta=nu ell^2+nu(nu^2-p1(T4))/12",
+    "diagonal_spin_normal_gravity_lattice": {
+      "C_eta_diagonal_coefficients_a_b": [
+        "19/3",
+        "-1/12"
+      ],
+      "C_eta_passes_dual_lattice": true,
+      "congruence": "Y=4X mod24",
+      "determinant_absolute": 24,
+      "dual_integrality_for_a_nu3_plus_b_nu_p1": [
+        "24b in Z",
+        "a+4b in Z"
+      ],
+      "witness_rows_X_Y": [
+        [
+          1,
+          4
+        ],
+        [
+          3,
+          -12
+        ]
+      ]
+    },
+    "full_H_bordism_classification_computed": false,
+    "honest_endpoint_lines": {
+      "L_minus": {
+        "c1": "ell-nu/2",
+        "center_checks": {
+          "U5tilde": "0+2*5=0 mod5",
+          "diagonal": "-1+5+0=0 mod2"
+        },
+        "weight_n_x_r": [
+          -1,
+          5,
+          0
+        ]
+      },
+      "L_plus": {
+        "c1": "ell+nu/2",
+        "center_checks": {
+          "U5tilde": "0+2*5=0 mod5",
+          "diagonal": "1+5+0=0 mod2"
+        },
+        "weight_n_x_r": [
+          1,
+          5,
+          0
+        ]
+      }
+    },
+    "index_curvature_combination": "C_eta=2[I6(L_plus)-I6(L_minus)]",
+    "line_index": "I6(w)=w^3/6-w p1(T4)/24",
+    "optional_flavor_quotient": {
+      "additional_center_check": "x+f=5+1=0 mod2",
+      "complete_flavor_anomaly_ledger": false,
+      "honest_lines": "Lhat_plus/minus have c1=ell+v+/-nu/2",
+      "minimal_flavor_charge": 1,
+      "required_change": "give both lines odd flavor charge and replace ell by ell+v; the overlap becomes nu B(A+2v)",
+      "used_in_displayed_formula": false
+    },
+    "pure_P_refinement_constructed": false,
+    "reason_not_pure": "the eta representative necessarily carries S_eta",
+    "scope_without_optional_flavor_quotient": true,
+    "spectator": "S_eta=nu(nu^2-p1(T4))/12",
+    "spin_cubic_threefold_witness": {
+      "C_eta_period": "20",
+      "I6_L_minus": "5",
+      "I6_L_plus": "15",
+      "L_minus_c1": "2h",
+      "L_plus_c1": "3h",
+      "construction": "smooth degree-three hypersurface X3 in CP4",
+      "nu3_period_X": 3,
+      "nu_p1_period_Y": -12,
+      "spin_reason": "c1(TX3)=2h, hence w2=0"
+    },
+    "status": "EXACT_CLOSED_SMOOTH_SPIN_H_DAI_FREED_LINE_RATIO__FULL_BORDISM_CLASSIFICATION_AND_ORBIFOLD_EQUIVARIANCE_OPEN",
+    "tau_normalization": "tau(D)=exp[2 pi i xi(D)], xi=(eta+dim ker D)/2",
+    "virtual_sector": "2[D_L_plus]-2[D_L_minus] in fermion group completion",
+    "z11_inverse": "-C_eta(ellprime)=-nu ellprime^2-nu(nu^2-p1(T4))/12"
+  }
+}
