@@ -1,0 +1,670 @@
+{
+  "F73_candidate_matrix": [
+    {
+      "accepted": false,
+      "exact_result": "kappaD period 25/4; minimal pure multiplier four",
+      "id": "F72_PURE",
+      "name": "V72 pure opposite localized WZ levels",
+      "selected": false,
+      "status": "REJECTED_AS_ORDINARY_FULL_QUOTIENT_COUNTERTERM"
+    },
+    {
+      "accepted": false,
+      "exact_result": "nu c2(E5R) is integral, but it forces nu c2(R), two axinos, and neutral R2 anomaly partners",
+      "id": "F73_AXION",
+      "name": "two localized N=1 affine axions with correlated E5R classes",
+      "selected": false,
+      "status": "LOCAL_INTEGRAL_CLASS_PASS__R_LEDGER_AND_GLOBAL_ORBIFOLD_ACTION_OPEN"
+    },
+    {
+      "accepted": false,
+      "exact_result": "nu(ell^2-nu^2/4) is integral but adds opposite-sign nu^3/4 terms not supplied by V71's symmetric normal residue",
+      "id": "F73_NORMAL",
+      "name": "normal-line correlated completion",
+      "selected": false,
+      "status": "LOCAL_INTEGRAL_CLASS_PASS__FORCED_ASYMMETRIC_NORMAL_CUBIC_LEDGER_FAILS"
+    },
+    {
+      "accepted": false,
+      "exact_result": "nu[(ell+v)^2+c2(R)] adds R, X-F and F^2 terms",
+      "id": "F73_FLAVOR",
+      "name": "flavor-central correlated E5RF completion",
+      "selected": false,
+      "status": "LOCAL_INTEGRAL_CLASS_PASS__FLAVOR_R_TORSION_AND_GLUE_OPEN"
+    },
+    {
+      "accepted": false,
+      "exact_result": "the displayed slopes leave nu A B, so a new bridge/transgression with perturbative curvature -nu A B is mandatory; any spin-eta realization with that curvature is the bridge, not an alternative",
+      "id": "F73_TENSOR_BRIDGE",
+      "name": "existing 6D tensor/linear multiplet plus required bridge/inflow sector",
+      "selected": true,
+      "status": "SELECTED_STRUCTURAL_FRONTIER__PURE_OPPOSITE_SLOPE_SUBCANDIDATE_REJECTED__BRIDGE_FIELD_CONTENT_OPEN"
+    }
+  ],
+  "N1_axion_GCS_and_tensor_completion": {
+    "N1_structure": {
+      "affine_chiral_axion": "A has homogeneous R=0 and an inhomogeneous imaginary shift",
+      "consistency_scope": "0705.4216 supplies the N=1 consistency framework, not the missing F73 coefficient tensor or orbifold action",
+      "gauge_kinetic_positivity_and_stabilization": "OPEN_NOT_COMPUTED",
+      "linear_chiral_duality_scope": "hep-th/9910143 supports a linear/chiral description of the GS multiplet; it does not construct this compactification",
+      "linear_dual_schema": {
+        "BF_term": "m_i integral d4theta L_i V_L",
+        "fermion_warning": "chiral-linear duality retains the axino/tensorino and is not a fermion-free localized escape",
+        "modified_linearity": "barD^2 L_i=k_i W(E_i)^2"
+      },
+      "local_chiral_action_schema": {
+        "Bardeen_GCS": "c_i^GCS integral d4theta V_L Omega(E_i), with barD^2 Omega(E_i)=W(E_i)^2",
+        "Kahler_Stueckelberg": "integral d4theta K_i(A_i+A_i^dagger+2 m_i V_L)",
+        "gauge_kinetic": "(1/4) integral d2theta [tau_i+k_i A_i] W(E_i)^2+h.c.; E_i=E5R for the integral correlated route",
+        "gauge_transformations": [
+          "V_L -> V_L+(i/2)(Lambda_L-Lambda_L^dagger)",
+          "A_i -> A_i-i m_i Lambda_L"
+        ],
+        "scope": "schematic local N1 descent: V_L is actually the normal/Lorentz-R connection, and E5R contains SU2R curvature; the required off-shell supergravity multiplets and curved-superspace completion are absent",
+        "why_GCS_is_required": "the consistent mixed triangle varies both currents; the GCS term assigns the anomaly to U1L while preserving the fixed-group gauge current"
+      },
+      "provisional_compact_level_normalization": {
+        "formal_integer_solution_after_unit_normalization": "|m_i|=|k_i|=1 for one compact multiplet",
+        "normalization_pinned": false,
+        "scope": "conditional on a 2pi axion period, unit large normal rotation, and trace normalization that have not been installed; it applies only to an integral correlated class, while the isolated pure full-quotient class has already failed",
+        "z00": "m00 k00=+1",
+        "z11": "m11 k11=-1"
+      },
+      "status": "SCHEMATIC_FLAT_N1_DESCENT_ONLY__CURVED_NORMAL_R_SUPERGRAVITY_EMBEDDING_AND_LARGE_GAUGE_NORMALIZATION_OPEN",
+      "supersymmetric_partner_couplings": [
+        "Re(A_i) F(E_i)^2 and the resulting boundary gauge threshold",
+        "axino-gaugino-field-strength interactions",
+        "F_A lambda_E lambda_E"
+      ],
+      "supersymmetric_terms_required": [
+        "holomorphic A-dependent gauge kinetic/Peccei--Quinn term",
+        "the correlated generalized Chern--Simons term when required",
+        "Kahler/Stueckelberg data implementing the affine shift"
+      ]
+    },
+    "P0_is_not_the_axion": {
+      "A": "homogeneous R=0 with qpsi=-1/2 and an affine shift",
+      "P0": "homogeneous R=2 with qpsi=+1/2",
+      "identification_valid": false,
+      "log_P0": "singular at P0=0; a nonzero charge-two P0 background breaks Z4R to Z2R, re-admitting the mu and 16^4 operator classes, and cannot be imported as a regular affine axion"
+    },
+    "axino": {
+      "I6": "(-x^3+x p1)/48",
+      "I6_coefficients_x3_xp1": [
+        "-1/48",
+        "1/48"
+      ],
+      "homogeneous_R": 0,
+      "qL_fermion": "-1/2",
+      "qL_scalar": "0"
+    },
+    "neutral_R2_partner": {
+      "I6": "(x^3-x p1)/48",
+      "I6_coefficients_x3_xp1": [
+        "1/48",
+        "-1/48"
+      ],
+      "homogeneous_R": 2,
+      "qL_fermion": "1/2",
+      "qL_scalar": "1"
+    },
+    "pair_ledger": {
+      "I6_coefficients_x3_xp1": [
+        "0",
+        "0"
+      ],
+      "Q1": "0",
+      "Q3": "0",
+      "minimality_assumptions": [
+        "no new classical axion couplings to nu^3 or nu p1(T)",
+        "no additional compensating fermions",
+        "the inherited local Delta=-10 normal-gravity ledger is unchanged"
+      ],
+      "preserves_local_Delta_minus10_normal_gravity_factorization": true,
+      "rule": "minimal repair: one qL=+1/2 neutral R2 partner per newly localized axion",
+      "unique_consequence_of_supersymmetry_alone": false
+    },
+    "preferred_existing_tensor_route": {
+      "accepted": false,
+      "candidate": "reuse the existing six-dimensional tensor/linear multiplet plus a new bridge/transgression/inflow sector",
+      "common_residue": "nu A B",
+      "common_residue_is_nonzero_free_de_Rham_class": true,
+      "complete_bridge_field_content_known": false,
+      "globally_vanishing_profile_source_scope": "hep-th/0305024",
+      "modified_linearity_target": "barD^2 L_T=(bulk Spin11 GS source)+delta00 W(E00)^2-delta11 W(E11)^2+(required bridge/inflow with curvature -nu A B)",
+      "ordinary_opposite_slope_tensor_subcandidate_rejected": true,
+      "potential_advantage": "the pre-existing tensor itself adds no new localized axino; the unconstructed supersymmetric bridge/inflow may still require new boundary multiplets",
+      "required_bridge_curvature_or_anomaly_polynomial": "-nu A B",
+      "selected_for_next_frontier": true,
+      "single_ordinary_transfer_cocycle_exists": false,
+      "spin_eta_scope": "a spin/eta theory is admissible here only if its perturbative curvature/anomaly polynomial is -nu A B; it then is the bridge/inflow sector",
+      "torsion_or_zero_curvature_eta_refinement_can_cancel_residue": false
+    },
+    "status": "LOCAL_N1_AXION_GCS_STRUCTURE_IDENTIFIED__AXINO_PARTNER_LEDGER_EXACT__MICROSCOPIC_ACTION_AND_GLOBAL_COCYCLE_OPEN",
+    "two_independent_localized_axion_route": {
+      "accepted": false,
+      "correlated_R_and_flavor_anomalies_cancelled": false,
+      "new_R2_partners_beyond_the_provisional_F72_P0": 2,
+      "new_axinos": 2,
+      "partner_count_scope": "minimal under the pair-ledger assumptions; extra fields or classical normal/gravitational GS couplings can change the repair",
+      "z00": "new affine A00 plus a new neutral R2 partner P00; the provisional F72 P0 is already counted in the Q1=Q3=0 base module and cannot cancel the new axino a second time",
+      "z11": "new affine A11 plus one new neutral R2 partner P11"
+    }
+  },
+  "artifact_hashes": {
+    "generator_sha256": "76828b05a932a003bc3e2b4f0cc5cd6382d84264e99f3eddbe741e3c93a72fee",
+    "test_sha256": "85f3a891ea30a89cb9c79cda59ad711efa0c7fb1502546d16401964a40e65001"
+  },
+  "candidate_adjudication": {
+    "F72_U5tilde_restricted_coefficient": "RETAINED_PASS_EXACT",
+    "F72_pure_full_quotient_ordinary_WZ": "REJECTED_PERIOD_25_OVER_4",
+    "F73_correlated_E5R_local_class": "PASS_EXACT_INTEGRAL_WITH_FORCED_R_TERM",
+    "F73_correlated_normal_line_class": "PASS_EXACT_INTEGRAL_WITH_UNMATCHED_NORMAL_CUBIC_TERM",
+    "F73_existing_bulk_SU2R_spectator": "OPEN_11_OVER_16_ATTEMPT_NOT_CERTIFIED__COMMON_C_NO_GO_EXACT",
+    "F73_global_equivariant_differential_cocycle": "FAIL_OPEN_NONZERO_COMMON_RESIDUE",
+    "F73_local_axion_supermultiplet": "OPEN_MICROSCOPIC_ACTION_NOT_CONSTRUCTED",
+    "F73_plain_opposite_slope_tensor": "REJECTED_NONZERO_COMMON_RESIDUE",
+    "F73_tensor_bridge_inflow_route": "SELECTED_PREFERRED_BUT_UNACCEPTED"
+  },
+  "core_sha256": "1ef4890b81885f5a16196865dd8772d9d3b70a20958829481c2397fd9b044c44",
+  "date": "2026-08-30",
+  "existing_bulk_SU2R_spectator": {
+    "adding_smooth_c2R_GS_is_free_parameter": false,
+    "bulk_total_each_Z4_corner_nu_c2R": "OPEN_NOT_CERTIFIED",
+    "common_bulk_R_GS_solution_exists": false,
+    "exact_bound_inputs": {
+      "Spin11_adjoint_phase_dimensions_m0123": [
+        25,
+        5,
+        20,
+        5
+      ],
+      "V71_spin_half_linear_coefficients_c_m0123": [
+        "1/8",
+        "-1/8",
+        "-1/8",
+        "1/8"
+      ],
+      "gravity_tensor_virtual_bundle": "-(T_C M6-1)+1 = -(T_C M6-2)"
+    },
+    "hyperini": "all charged and neutral hyperini are SU2R singlets; the weighted gravitational count is 3*11+266=299 and their c2(R) shift is zero",
+    "inherited_bulk_sources_have_identical_corner_lift": true,
+    "localized_V70_F72_continuous_SU2R_representations_constructed": false,
+    "normalization": "nu=x=c1(N), c2(R)=-rho^2",
+    "proof": "any inherited identical-corner contribution C leaves (C+1,C-1), which cannot vanish at both corners",
+    "required_new_antisymmetric_source": [
+      "-nu c2(R)",
+      "+nu c2(R)"
+    ],
+    "smooth_GS_warning": "a new string-lattice coefficient changes p1*c2R, trF^2*c2R and c2R^2 terms and must match the complete smooth one-loop polynomial",
+    "status": "SU2R_COEFFICIENT_ATTEMPT_NOT_CERTIFIED__PHASE_REALITY_AND_GHOST_CHARACTERS_UNBOUND__COMMON_C_NO_GO_EXACT",
+    "uncertified_11_over_16_attempt": {
+      "SU2R_half_character_ansatz": "Fcal_m=(1/2)[exp(rho)F_(m-1)+exp(-rho)F_m]",
+      "adjoint_same_chirality_nu_rho2": "5/16",
+      "assumed_gravity_tensor_R_eigenlift_linear_nu": [
+        "-3/4",
+        "-3/4"
+      ],
+      "assumed_gravity_tensor_nu_c2R": "3/8",
+      "attempted_after_PR_z00_z11": [
+        "27/16",
+        "-5/16"
+      ],
+      "attempted_total_each_corner": "11/16",
+      "blocking_reason": "V71's F_m already uses the total phase h_m=zeta i^m; the additional SU2R phase, Pfaffian reality factor, Rarita/tensor ghost characters and both-corner lifts have not been derived from one raw equivariant character",
+      "certified": false,
+      "gaugino_nu_c2R": "5/16",
+      "nu_rho2_coefficients_m0123": [
+        "1/16",
+        "0",
+        "-1/16",
+        "0"
+      ]
+    }
+  },
+  "frontier_status_ledger": [
+    "FULL_WEIGHT_LATTICE_PASS_EXACT",
+    "FULL_COCHARACTER_LATTICE_PASS_EXACT",
+    "INHERITED_NORMAL_VECTOR_NORMALIZATION_PASS_EXACT",
+    "PURE_WZ_PERIOD_25_OVER_4_PASS_EXACT",
+    "MINIMAL_PURE_MULTIPLIER_FOUR_PASS_EXACT",
+    "F72_PURE_ORDINARY_WZ_REJECTED",
+    "CORRELATED_E5R_INTEGRAL_CLASS_PASS_EXACT",
+    "EXISTING_BULK_SU2R_NUMERICAL_COEFFICIENT_OPEN_NOT_CERTIFIED",
+    "PR_ANTISYMMETRIC_R_SOURCE_ABSENT",
+    "CORRELATED_NORMAL_LINE_CLASS_PASS_EXACT_SPECTATOR_UNMATCHED",
+    "FORCED_SU2R_TERM_OPEN_LEDGER",
+    "COMMON_RESIDUE_NU_AB_PASS_EXACT",
+    "P0_NOT_AFFINE_AXION_PASS_EXACT",
+    "AXINO_PARTNER_LEDGER_PASS_EXACT",
+    "EXISTING_TENSOR_ROUTE_SELECTED_UNACCEPTED",
+    "G1_TO_G8_OPEN"
+  ],
+  "full_diagonal_quotient_lattice": {
+    "abelian_character_lattice_with_flavor": "x=5b and n congruent b congruent f mod2",
+    "abelian_character_lattice_without_flavor": "x=5b and n+b=0 mod2; generated by (n,x)=(2,0),(1,5)",
+    "abelian_cocharacter_projection_with_flavor": "(p,q,s) in (1/2 Z)^3 with p+q+s integral",
+    "abelian_cocharacter_projection_without_flavor": "Z^2 union (Z+1/2)^2 in the cover roots (sigma,ell)",
+    "chi5_squared_full_quotient_character": true,
+    "chi5_standalone_full_quotient_character": false,
+    "chiL_chi5_full_quotient_character": true,
+    "cocharacter_lattice_generators_beyond_the_cover": {
+      "kappa5": "(0,varpi5_dual,2/5,0[,0])",
+      "kappaD": "(1/2,0,1/2,varpiR_dual[,0])",
+      "kappaF_optional": "(0,0,1/2,0,-1/2)"
+    },
+    "full_weight_lattice": "{(n,lambda5,x,r[,f]): k(lambda5)+2x=0 mod5, n+x+r=0 mod2[, x+f=0 mod2]}",
+    "group_with_flavor": "(Spin(2)xU5tilde x SU(2)R x U(1)F)/<(zL,c,zR,1),(1,c,1,-1F)>",
+    "group_without_flavor": "(Spin(2)xU5tilde x SU(2)R)/<(zL,c,zR)>",
+    "representation_checks": [
+      {
+        "F": 0,
+        "SU2R_highest_weight_parity": 0,
+        "SU5_five_ality": 0,
+        "U5tilde_descends": true,
+        "X": 5,
+        "full_diagonal_descends_with_flavor_quotient": false,
+        "full_diagonal_descends_without_flavor_quotient": false,
+        "n": 0,
+        "name": "chi5_standalone"
+      },
+      {
+        "F": 0,
+        "SU2R_highest_weight_parity": 0,
+        "SU5_five_ality": 0,
+        "U5tilde_descends": true,
+        "X": 5,
+        "full_diagonal_descends_with_flavor_quotient": false,
+        "full_diagonal_descends_without_flavor_quotient": true,
+        "n": 1,
+        "name": "chiL_chi5"
+      },
+      {
+        "F": 0,
+        "SU2R_highest_weight_parity": 1,
+        "SU5_five_ality": 0,
+        "U5tilde_descends": true,
+        "X": 5,
+        "full_diagonal_descends_with_flavor_quotient": false,
+        "full_diagonal_descends_without_flavor_quotient": true,
+        "n": 0,
+        "name": "E5R"
+      },
+      {
+        "F": 1,
+        "SU2R_highest_weight_parity": 1,
+        "SU5_five_ality": 0,
+        "U5tilde_descends": true,
+        "X": 5,
+        "full_diagonal_descends_with_flavor_quotient": true,
+        "full_diagonal_descends_without_flavor_quotient": true,
+        "n": 0,
+        "name": "E5RF"
+      },
+      {
+        "F": 0,
+        "SU2R_highest_weight_parity": 0,
+        "SU5_five_ality": 0,
+        "U5tilde_descends": true,
+        "X": 10,
+        "full_diagonal_descends_with_flavor_quotient": true,
+        "full_diagonal_descends_without_flavor_quotient": true,
+        "n": 0,
+        "name": "chi5_squared"
+      }
+    ],
+    "status": "EXACT_WEIGHT_AND_COCHARACTER_LATTICES",
+    "weight_rules": {
+      "U5tilde": "k+2x=0 mod5",
+      "diagonal_center": "n+x+r=0 mod2",
+      "normal_charge": "qL=n/2",
+      "optional_flavor_center": "x+f=0 mod2"
+    }
+  },
+  "gate_ledger": {
+    "G1": "OPEN",
+    "G2": "OPEN",
+    "G3": "OPEN",
+    "G4": "OPEN",
+    "G5": "OPEN",
+    "G6": "OPEN",
+    "G7": "OPEN",
+    "G8": "OPEN"
+  },
+  "lineage": {
+    "V71_route_core_matches": true,
+    "V72_all_gates_open": true,
+    "V72_master_core_matches": true,
+    "V72_restricted_coefficients": {
+      "z00": 1,
+      "z11": -1
+    },
+    "V72_route_core_matches": true,
+    "bound_V71_route_core": "0162828ebd2b1e28d4fcbcf4ea1e6c61178d305cec79abd6d36a55719bb0f1ea",
+    "bound_V71_route_path": "SUSY_V71_SPIN11_NORMAL_BUNDLE_EQUIVARIANT_GS_AUDIT.json",
+    "bound_V72_master_core": "eb77fff51a96155a1f162889ae4e073db8837a87bfe4cc804e498dac1eda5530",
+    "bound_V72_master_path": "SUSY_V72_MULTIPATH_G1_FRONTIER_MASTER_AUDIT.json",
+    "bound_V72_route_core": "46edf8f0943316356f0d5f8f918cc9953f00a10471a65e9c95e92f85904ccec3",
+    "bound_V72_route_path": "SUSY_V72_SPIN11_GLOBAL_FORM_MASS_PORTAL_WZ_AUDIT.json",
+    "expected_V71_route_core": "0162828ebd2b1e28d4fcbcf4ea1e6c61178d305cec79abd6d36a55719bb0f1ea",
+    "expected_V72_master_core": "eb77fff51a96155a1f162889ae4e073db8837a87bfe4cc804e498dac1eda5530",
+    "expected_V72_route_core": "46edf8f0943316356f0d5f8f918cc9953f00a10471a65e9c95e92f85904ccec3"
+  },
+  "open_obligations": [
+    "derive the raw gaugino, gravitino, tensorino and ghost SU2R equivariant characters and the complete localized R ledger",
+    "add and quantize an antisymmetric (-1,+1) nu c2(R) source if the E5R route is retained",
+    "construct either two honest localized axion/linear multiplets or a regular existing-tensor coupling",
+    "supply a bridge/transgression that cancels the common nu A B residue, or redesign the profile",
+    "construct the full equivariant differential cocycle including torsion and fixed-stratum data",
+    "compute the regulator and eta/Dai-Freed phases on the actual combined quotient",
+    "identify a global vector-type source for P0 and all its projected partners",
+    "retain the complete V72 KK, vacuum, soft, unification, flavor, proton and cosmology obligations"
+  ],
+  "ordinary_WZ_quantization_and_correlated_repair": {
+    "F72_pure_ordinary_WZ_accepted": false,
+    "alternate_spin_root_convention_not_inherited": {
+      "class": "(nu/2) ell^2",
+      "consistent_conversion": "using sigma instead of nu requires integer Spin weights n=2qL, which doubles DeltaA from 50 to 100",
+      "consistent_minimal_multiplier": 4,
+      "consistent_physical_class": "(1/2)(100)(nu/2)fX^2=nu ell^2",
+      "ledger_warning": "holding DeltaA=50 while replacing fL=nu by sigma=nu/2 is a hybrid diagnostic, not a second physical normalization",
+      "minimal_pure_multiplier": 8,
+      "period": "25/8"
+    },
+    "correlated_E5R_repair": {
+      "Chern_roots": "ell+rhoR, ell-rhoR",
+      "c2": "ell^2+c2(R)=ell^2-rhoR^2",
+      "center_check": "x+r=5+1=0 mod2",
+      "desired_component": "+nu ell^2",
+      "forced_component": "+nu c2(R), equivalently -nu rhoR^2 on the Cartan",
+      "full_R_anomaly_ledger_computed": false,
+      "integral_by_associated_bundle": true,
+      "kappaD_c2_period": "6",
+      "kappaD_nu_c2_period": "6",
+      "representation": "E5R=1_(+5) tensor 2_R"
+    },
+    "correlated_normal_line_repair": {
+      "class": "nu c1(chi_plus)c1(chi_minus)=nu(ell^2-nu^2/4)",
+      "desired_component": "+nu ell^2",
+      "existing_V71_symmetric_normal_cubic_ledger_supplies_it": false,
+      "forced_component": "-nu^3/4",
+      "honest_characters_without_optional_flavor_quotient": [
+        "chi_plus=chi_sigma chi5 with c1=ell+sigma",
+        "chi_minus=chi_sigma^(-1) chi5 with c1=ell-sigma"
+      ],
+      "integral_by_product_of_honest_lines": true,
+      "kappaD_period": "6",
+      "optional_flavor_quotient_scope": "odd-X lines additionally need odd flavor charge and then acquire the corresponding flavor characteristic terms",
+      "reason": "the forced terms have signs (-1/4,+1/4) at z00,z11, while the inherited normal-cubic residue is (-1/8,-1/8)"
+    },
+    "diagonal_cocharacter_test": {
+      "CP3_witness": "pullback to spin CP3 has integral z^3 but coefficient 25/4",
+      "P_integral": false,
+      "P_period": "25/4",
+      "cocharacter": "kappaD ending at (zL,c,zR)",
+      "ell": "5/2",
+      "integral_multipliers_through_16": [
+        4,
+        8,
+        12,
+        16
+      ],
+      "minimal_pure_multiplier": 4,
+      "nu": "1",
+      "rhoR": "1/2",
+      "sufficiency_identity": "4 P=nu (2 ell)^2",
+      "sufficiency_reason": "nu and 2 ell are first Chern classes of honest full-quotient lines, so their integral cup product proves that 4P is integral"
+    },
+    "normalization": {
+      "V71_definition": "fL=x=c1(N)=nu, the normal vector root",
+      "V72_conversion": "(1/2) DeltaA fL fX^2 with DeltaA=50 and ell=5 fX",
+      "physical_charge": "qL=n/2",
+      "primitive_Spin2_root": "sigma=nu/2",
+      "pure_full_quotient_class": "P=nu ell^2",
+      "restricted_U5tilde_level": "1"
+    },
+    "optional_flavor_completion": {
+      "c2": "(ell+v)^2+c2(R)",
+      "center_checks": [
+        "x+r=0 mod2",
+        "x+f=0 mod2"
+      ],
+      "expanded_forced_terms": [
+        "nu c2(R)",
+        "2 nu ell v",
+        "nu v^2"
+      ],
+      "if_F_is_flat": "de Rham flavor terms vanish, but torsion holonomy and the R term remain",
+      "pure_term_rescued_without_correlated_terms": false,
+      "representation": "E5RF=1_(+5) tensor 2_R tensor F_(odd)"
+    },
+    "ordinary_vs_spin_eta_scope": {
+      "eta_or_Wu_refined_invertible_theory": "OPEN_NOT_CONSTRUCTED",
+      "inference_for_F72": "an integer coefficient after U5tilde restriction does not define an isolated bosonic WZ term for every full-quotient bundle",
+      "ordinary_integral_H6_counterterm": "FAIL",
+      "rational_perturbative_spin_anomaly_polynomial": "ALLOWED_AS_LOCAL_DATA"
+    },
+    "status": "PURE_F72_ORDINARY_WZ_REJECTED__CORRELATED_E5R_CLASS_INTEGRAL_WITH_FORCED_R_TERM"
+  },
+  "primary_sources": [
+    {
+      "id": "MONNIER_MOORE_PARK_2018",
+      "sourced_fact": "Global-form quantization is tested on the cocharacter lattice; quotient cocharacters can give half- and quarter-integral periods.",
+      "title": "Quantization of anomaly coefficients in 6D N=(1,0) supergravity",
+      "url": "https://arxiv.org/abs/1711.04777"
+    },
+    {
+      "id": "DE_RYDT_ET_AL_2007",
+      "sourced_fact": "N=1 Peccei--Quinn, generalized Chern--Simons and quantum-anomaly terms have correlated gauge- and supersymmetry-consistency conditions.",
+      "title": "Symplectic structure of N=1 supergravity with anomalies and Chern-Simons terms",
+      "url": "https://arxiv.org/abs/0705.4216"
+    },
+    {
+      "id": "VON_GERSDORFF_QUIROS_2003",
+      "sourced_fact": "Bulk Green--Schwarz forms distinguish globally vanishing localized profiles from mixed U(1) anomalies that survive in four dimensions.",
+      "title": "Localized anomalies in orbifold gauge theories",
+      "url": "https://arxiv.org/abs/hep-th/0305024"
+    },
+    {
+      "id": "KLEIN_2000",
+      "sourced_fact": "Four-dimensional N=1 Green--Schwarz axions admit chiral/linear multiplet descriptions; only the appropriate linear multiplets participate in anomaly cancellation.",
+      "title": "Anomaly cancellation in D=4, N=1 orientifolds and linear/chiral multiplet duality",
+      "url": "https://arxiv.org/abs/hep-th/9910143"
+    },
+    {
+      "id": "OHMORI_SHIMIZU_TACHIKAWA_YONEKURA_2014",
+      "sourced_fact": "Tensor-branch Green--Schwarz data are theory-dependent anomaly-matching coefficients, not coefficients fixed by supersymmetry alone.",
+      "title": "Anomaly polynomial of general 6d SCFTs",
+      "url": "https://arxiv.org/abs/1408.5572"
+    },
+    {
+      "id": "MONNIER_MOORE_2018",
+      "sourced_fact": "A global six-dimensional Green--Schwarz term is tied to the string-charge lattice and can leave residual global anomalies on nontrivial bundles.",
+      "title": "Remarks on the Green--Schwarz terms of six-dimensional supergravity theories",
+      "url": "https://arxiv.org/abs/1808.01334"
+    }
+  ],
+  "question": "Do the V72 opposite WZ levels descend through the full diagonal quotient and admit a complete N=1 realization?",
+  "scalar_fermion_center_patterns": {
+    "F72_z00_rows": [
+      {
+        "X": 10,
+        "flavor_parity_required": 0,
+        "n_phi": 0,
+        "n_psi": -1,
+        "name": "X_plus10",
+        "standard_hyper_center_pass": false,
+        "vector_type_center_pass": true
+      },
+      {
+        "X": -10,
+        "flavor_parity_required": 0,
+        "n_phi": 0,
+        "n_psi": -1,
+        "name": "Xbar_minus10",
+        "standard_hyper_center_pass": false,
+        "vector_type_center_pass": true
+      },
+      {
+        "X": 0,
+        "flavor_parity_required": 0,
+        "n_phi": 2,
+        "n_psi": 1,
+        "name": "S0",
+        "standard_hyper_center_pass": false,
+        "vector_type_center_pass": true
+      },
+      {
+        "X": 0,
+        "flavor_parity_required": 0,
+        "n_phi": 2,
+        "n_psi": 1,
+        "name": "P0",
+        "standard_hyper_center_pass": false,
+        "vector_type_center_pass": true
+      }
+    ],
+    "P0_as_ordinary_neutral_hyper": false,
+    "P0_minimal_repair": "source P0 from a Sigma/vector-type full multiplet or change its normal lift and recompute its partners and anomaly moments",
+    "all_F71_charge_five_standard_hypers_pass": true,
+    "all_F72_z00_fields_standard_hypers_pass": false,
+    "all_F72_z00_fields_vector_type_centers_pass": true,
+    "charge_five_rows": [
+      {
+        "X": 5,
+        "flavor_parity_required": 1,
+        "n_phi": 2,
+        "n_psi": 1,
+        "name": "F71_charge5_z00",
+        "standard_hyper_center_pass": true,
+        "vector_type_center_pass": false
+      },
+      {
+        "X": 5,
+        "flavor_parity_required": 1,
+        "n_phi": 0,
+        "n_psi": -1,
+        "name": "F71_charge5_z11",
+        "standard_hyper_center_pass": true,
+        "vector_type_center_pass": false
+      }
+    ],
+    "component_rule": "n+x+r=0 mod2",
+    "flavor_completion_effect": "odd X requires odd F and even X requires even F; the original diagonal condition is unchanged and P0 is not repaired",
+    "standard_hyper_pattern": {
+      "center_parities_scalar_fermion": [
+        1,
+        0
+      ],
+      "criterion": "n_phi+x is odd"
+    },
+    "status": "EXACT_COMPONENT_CENTER_CLASSIFICATION__F72_STANDARD_HYPER_LIFT_FAILS",
+    "superspace_relation": "n_psi=n_phi-1 for qL(theta)=1/2",
+    "vector_type_pattern": {
+      "center_parities_scalar_fermion": [
+        0,
+        1
+      ],
+      "criterion": "n_phi+x is even"
+    }
+  },
+  "schema": "susy_v73_spin11_full_quotient_supersymmetric_wz_audit/v1",
+  "source_manifest": [
+    {
+      "exists": true,
+      "path": "SUSY_V71_SPIN11_NORMAL_BUNDLE_EQUIVARIANT_GS_AUDIT.json",
+      "sha256": "fc763f32869a51aa5382fe12951dfdc4231569cf419e0db5b1a012446a0bb91c"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V72_SPIN11_GLOBAL_FORM_MASS_PORTAL_WZ_AUDIT.json",
+      "sha256": "f6879ae5e284642b729dfaffce1a298fc4b550f71f36b0e20c4e222ea1409df0"
+    },
+    {
+      "exists": true,
+      "path": "SUSY_V72_MULTIPATH_G1_FRONTIER_MASTER_AUDIT.json",
+      "sha256": "23413106d68b8d5f4a53427cb53a3386a1733f8e614ee18b0e367ed48fa25700"
+    },
+    {
+      "exists": true,
+      "path": "susy_v73_spin11_full_quotient_supersymmetric_wz_audit.py",
+      "sha256": "76828b05a932a003bc3e2b4f0cc5cd6382d84264e99f3eddbe741e3c93a72fee"
+    },
+    {
+      "exists": true,
+      "path": "test_susy_v73_spin11_full_quotient_supersymmetric_wz_audit.py",
+      "sha256": "85f3a891ea30a89cb9c79cda59ad711efa0c7fb1502546d16401964a40e65001"
+    }
+  ],
+  "status": "V73_SPIN11_FULL_QUOTIENT_SUPERSYMMETRIC_WZ_AUDIT__V72_ROUTE_AND_MASTER_CORES_BOUND__EXACT_CHARACTER_AND_COCHARACTER_LATTICES__INHERITED_NORMAL_VECTOR_NORMALIZATION_PINNED__KAPPA_D_PURE_WZ_PERIOD_25_OVER_4__MINIMUM_PURE_MULTIPLIER_FOUR__F72_PURE_ORDINARY_WZ_REJECTED__CORRELATED_E5R_LEVEL_ONE_CLASS_INTEGRAL_BUT_FORCES_SU2R_TERM__OPTIONAL_FLAVOR_TERMS_EXACT__COMMON_U2_U3_RESIDUE_NU_AB_NONZERO__P0_NOT_AFFINE_AXION__AXINO_PARTNER_LEDGER_EXACT__PLAIN_OPPOSITE_SLOPE_TENSOR_REJECTED__TENSOR_BRIDGE_INFLOW_FRONTIER_SELECTED_UNACCEPTED__G1_TO_G8_OPEN",
+  "terminal_decision": {
+    "F72_pure_WZ_accepted": false,
+    "F73_correlated_local_class_accepted_as_full_action": false,
+    "F73_plain_tensor_subcandidate_rejected": true,
+    "F73_tensor_bridge_inflow_route_accepted": false,
+    "F73_tensor_bridge_inflow_route_selected": true,
+    "closed_gates": [],
+    "honest_outcome": "V73 retains V72's correctly scoped U5tilde-restricted result and rejects its extension to a pure full-quotient ordinary WZ counterterm.  The exact diagonal-cocharacter period is 25/4.  Correlated SU2R and normal-line completions are locally integral, and the N=1 axino/partner ledger can be balanced exactly, but their forced spectator anomalies are not cancelled. The plain opposite-slope tensor also fails by the nonzero common residue. The selected frontier is therefore the existing tensor plus a genuinely new bridge/inflow sector of curvature -nu A B.  A spin-eta realization is admissible only as such a bridge, not as a torsion escape.",
+    "same_action_microscopic_completion_found": false,
+    "theory_complete": false
+  },
+  "version": "V73",
+  "z00_z11_common_subgroup_gluing": {
+    "SU5_characteristic_correction_theorem": {
+      "Pontryagin_identity": "p1(V10)=4 ell^2-2 c2(E)=4 ellprime^2-2 c2(Eprime)",
+      "ansatz": {
+        "W00": "ell^2+a c2(E)",
+        "W11": "-ellprime^2+b c2(Eprime)"
+      },
+      "bundle_Chern_classes": {
+        "E": "E2 direct_sum E3",
+        "Eprime": "E2 direct_sum conjugate(E3)",
+        "c2(E)": "c2(E2)+c2(E3)+A B",
+        "c2(Eprime)": "c2(E2)+c2(E3)-A B",
+        "difference": "c2(E)-c2(Eprime)=2 A B"
+      },
+      "common_subgroup_equations": [
+        "a+b=0",
+        "1+a-b=0",
+        "1-2b=0"
+      ],
+      "corrected_forms": {
+        "W00": "+p1(V10)/4",
+        "W11": "-p1(V10)/4"
+      },
+      "p1_over_4_ordinary_integrality": "OPEN_REQUIRES_FULL_QUOTIENT_OR_REFINED_PROOF",
+      "physics_consequence": "within the displayed degree-four SU5-characteristic ansatz, the only correction that removes the common residue is the bulk Spin11 gauge direction, so it cannot repair the anomaly component orthogonal to that direction",
+      "rescues_F72_orthogonal_transfer": false,
+      "solution_checks": {
+        "common_AB_coefficient": "0",
+        "common_c2_coefficient": "0"
+      },
+      "unique_solution": {
+        "a": "-1/2",
+        "b": "1/2"
+      }
+    },
+    "coefficient_sum_zero_sufficient": false,
+    "common_group": "U(2)xU(3) in the vector decomposition",
+    "definitions": {
+      "A": "c1(det E2)",
+      "B": "c1(det E3)",
+      "z00": "2 ell=A+B from E5=E2 direct_sum E3",
+      "z11": "2 ellprime=A-B from E5prime=E2 direct_sum conjugate(E3)"
+    },
+    "exact_identity": "ell^2-ellprime^2=A B",
+    "missing_bridge_variation": "-nu A B in the inherited normalization",
+    "opposite_profile_common_restriction_inherited_normalization": "nu A B",
+    "opposite_profile_common_restriction_spin_root_convention": "(nu/2) A B",
+    "optional_flavor_identity": "(ell+v)^2-(ellprime+v)^2=A B+2 B v",
+    "ordinary_single_transfer_glues": false,
+    "scope": "This rejects a single ordinary opposite-slope transfer constructed only from the displayed local forms.  Two independent stratum axions or a new bridge/transgression sector are not excluded.",
+    "status": "EXACT_NONZERO_COMMON_SUBGROUP_RESIDUE__SINGLE_TRANSFER_COCYCLE_FAILS",
+    "z11_conjugation": {
+      "curvature_square_gets_automatic_minus_sign": false,
+      "lift": "qhatprime=c s qhat s^-1",
+      "normal_derivative_orientation": "the t1 theta stabilizer still acts by +i",
+      "odd_X_isotropy_phase_flips": true
+    }
+  }
+}
